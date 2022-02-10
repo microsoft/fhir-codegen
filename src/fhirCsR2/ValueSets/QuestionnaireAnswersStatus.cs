@@ -45,13 +45,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralAmended = "amended";
 
     /// <summary>
+    /// Literal for code: QuestionnaireAnswersStatusAmended
+    /// </summary>
+    public const string LiteralQuestionnaireAnswersStatusAmended = "http://hl7.org/fhir/questionnaire-answers-status#amended";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: QuestionnaireAnswersStatusCompleted
+    /// </summary>
+    public const string LiteralQuestionnaireAnswersStatusCompleted = "http://hl7.org/fhir/questionnaire-answers-status#completed";
+
+    /// <summary>
     /// Literal for code: InProgress
     /// </summary>
     public const string LiteralInProgress = "in-progress";
+
+    /// <summary>
+    /// Literal for code: QuestionnaireAnswersStatusInProgress
+    /// </summary>
+    public const string LiteralQuestionnaireAnswersStatusInProgress = "http://hl7.org/fhir/questionnaire-answers-status#in-progress";
+
+    /// <summary>
+    /// Dictionary for looking up QuestionnaireAnswersStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "amended", Amended }, 
+      { "http://hl7.org/fhir/questionnaire-answers-status#amended", Amended }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/questionnaire-answers-status#completed", Completed }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/questionnaire-answers-status#in-progress", InProgress }, 
+    };
   };
 }

@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class VisionProductCodes
   {
     /// <summary>
-    /// 
+    /// Contact Lens
     /// </summary>
     public static readonly Coding ContactLens = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"
     };
     /// <summary>
-    /// 
+    /// Lens
     /// </summary>
     public static readonly Coding Lens = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralContactLens = "contact";
 
     /// <summary>
+    /// Literal for code: ExVisionprescriptionproductContactLens
+    /// </summary>
+    public const string LiteralExVisionprescriptionproductContactLens = "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct#contact";
+
+    /// <summary>
     /// Literal for code: Lens
     /// </summary>
     public const string LiteralLens = "lens";
+
+    /// <summary>
+    /// Literal for code: ExVisionprescriptionproductLens
+    /// </summary>
+    public const string LiteralExVisionprescriptionproductLens = "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct#lens";
+
+    /// <summary>
+    /// Dictionary for looking up VisionProduct Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "contact", ContactLens }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct#contact", ContactLens }, 
+      { "lens", Lens }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct#lens", Lens }, 
+    };
   };
 }

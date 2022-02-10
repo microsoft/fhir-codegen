@@ -72,9 +72,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRepairOfPriorServiceOrInstallation = "a";
 
     /// <summary>
+    /// Literal for code: ClaimModifiersRepairOfPriorServiceOrInstallation
+    /// </summary>
+    public const string LiteralClaimModifiersRepairOfPriorServiceOrInstallation = "http://terminology.hl7.org/CodeSystem/modifiers#a";
+
+    /// <summary>
     /// Literal for code: TemporaryServiceOrInstallation
     /// </summary>
     public const string LiteralTemporaryServiceOrInstallation = "b";
+
+    /// <summary>
+    /// Literal for code: ClaimModifiersTemporaryServiceOrInstallation
+    /// </summary>
+    public const string LiteralClaimModifiersTemporaryServiceOrInstallation = "http://terminology.hl7.org/CodeSystem/modifiers#b";
 
     /// <summary>
     /// Literal for code: TMJTreatment
@@ -82,9 +92,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTMJTreatment = "c";
 
     /// <summary>
+    /// Literal for code: ClaimModifiersTMJTreatment
+    /// </summary>
+    public const string LiteralClaimModifiersTMJTreatment = "http://terminology.hl7.org/CodeSystem/modifiers#c";
+
+    /// <summary>
     /// Literal for code: ImplantOrAssociatedWithAnImplant
     /// </summary>
     public const string LiteralImplantOrAssociatedWithAnImplant = "e";
+
+    /// <summary>
+    /// Literal for code: ClaimModifiersImplantOrAssociatedWithAnImplant
+    /// </summary>
+    public const string LiteralClaimModifiersImplantOrAssociatedWithAnImplant = "http://terminology.hl7.org/CodeSystem/modifiers#e";
 
     /// <summary>
     /// Literal for code: RushOrOutsideOfOfficeHours
@@ -92,8 +112,36 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRushOrOutsideOfOfficeHours = "rooh";
 
     /// <summary>
+    /// Literal for code: ClaimModifiersRushOrOutsideOfOfficeHours
+    /// </summary>
+    public const string LiteralClaimModifiersRushOrOutsideOfOfficeHours = "http://terminology.hl7.org/CodeSystem/modifiers#rooh";
+
+    /// <summary>
     /// Literal for code: None
     /// </summary>
     public const string LiteralNone = "x";
+
+    /// <summary>
+    /// Literal for code: ClaimModifiersNone
+    /// </summary>
+    public const string LiteralClaimModifiersNone = "http://terminology.hl7.org/CodeSystem/modifiers#x";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimModifiers Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "a", RepairOfPriorServiceOrInstallation }, 
+      { "http://terminology.hl7.org/CodeSystem/modifiers#a", RepairOfPriorServiceOrInstallation }, 
+      { "b", TemporaryServiceOrInstallation }, 
+      { "http://terminology.hl7.org/CodeSystem/modifiers#b", TemporaryServiceOrInstallation }, 
+      { "c", TMJTreatment }, 
+      { "http://terminology.hl7.org/CodeSystem/modifiers#c", TMJTreatment }, 
+      { "e", ImplantOrAssociatedWithAnImplant }, 
+      { "http://terminology.hl7.org/CodeSystem/modifiers#e", ImplantOrAssociatedWithAnImplant }, 
+      { "rooh", RushOrOutsideOfOfficeHours }, 
+      { "http://terminology.hl7.org/CodeSystem/modifiers#rooh", RushOrOutsideOfOfficeHours }, 
+      { "x", None }, 
+      { "http://terminology.hl7.org/CodeSystem/modifiers#x", None }, 
+    };
   };
 }

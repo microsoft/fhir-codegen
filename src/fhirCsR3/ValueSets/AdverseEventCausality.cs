@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class AdverseEventCausalityCodes
   {
     /// <summary>
-    /// 
+    /// causality1 placeholder
     /// </summary>
     public static readonly Coding Causality1Placeholder = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/adverse-event-causality"
     };
     /// <summary>
-    /// 
+    /// causality2 placeholder
     /// </summary>
     public static readonly Coding Causality2Placeholder = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCausality1Placeholder = "causality1";
 
     /// <summary>
+    /// Literal for code: AdverseEventCausalityCausality1Placeholder
+    /// </summary>
+    public const string LiteralAdverseEventCausalityCausality1Placeholder = "http://hl7.org/fhir/adverse-event-causality#causality1";
+
+    /// <summary>
     /// Literal for code: Causality2Placeholder
     /// </summary>
     public const string LiteralCausality2Placeholder = "causality2";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCausalityCausality2Placeholder
+    /// </summary>
+    public const string LiteralAdverseEventCausalityCausality2Placeholder = "http://hl7.org/fhir/adverse-event-causality#causality2";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventCausality Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "causality1", Causality1Placeholder }, 
+      { "http://hl7.org/fhir/adverse-event-causality#causality1", Causality1Placeholder }, 
+      { "causality2", Causality2Placeholder }, 
+      { "http://hl7.org/fhir/adverse-event-causality#causality2", Causality2Placeholder }, 
+    };
   };
 }

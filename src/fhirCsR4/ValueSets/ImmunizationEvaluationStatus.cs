@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: MedicationAdminStatusCompleted
+    /// </summary>
+    public const string LiteralMedicationAdminStatusCompleted = "http://terminology.hl7.org/CodeSystem/medication-admin-status#completed";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: MedicationAdminStatusEnteredInError
+    /// </summary>
+    public const string LiteralMedicationAdminStatusEnteredInError = "http://terminology.hl7.org/CodeSystem/medication-admin-status#entered-in-error";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationEvaluationStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "completed", Completed }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-admin-status#completed", Completed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-admin-status#entered-in-error", EnteredInError }, 
+    };
   };
 }

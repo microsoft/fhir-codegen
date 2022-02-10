@@ -549,6 +549,11 @@ namespace fhirCsR2.Models
     public const string WORKING = "working";
     public const string SNAPSHOT = "snapshot";
     public const string CHANGES = "changes";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "working",
+      "snapshot",
+      "changes",
+    };
   }
   /// <summary>
   /// Code Values for the List.status field
@@ -557,5 +562,10 @@ namespace fhirCsR2.Models
     public const string CURRENT = "current";
     public const string RETIRED = "retired";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "current",
+      "retired",
+      "entered-in-error",
+    };
   }
 }

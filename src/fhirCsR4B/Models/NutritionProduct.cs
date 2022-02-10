@@ -284,6 +284,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// Serialize to a JSON object
     /// </summary>
     public new void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
@@ -339,6 +343,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -386,6 +396,11 @@ namespace fhirCsR4B.Models
 
         case "valueBoolean":
           ValueBoolean = reader.GetBoolean();
+          break;
+
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR4B.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -1063,5 +1078,10 @@ namespace fhirCsR4B.Models
     public const string ACTIVE = "active";
     public const string INACTIVE = "inactive";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "inactive",
+      "entered-in-error",
+    };
   }
 }

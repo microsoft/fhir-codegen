@@ -99,9 +99,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralContraindicatedUnlessTheOtherTherapyIsGiven = "contraindicated-except-with";
 
     /// <summary>
+    /// Literal for code: TherapyRelationshipTypeContraindicatedUnlessTheOtherTherapyIsGiven
+    /// </summary>
+    public const string LiteralTherapyRelationshipTypeContraindicatedUnlessTheOtherTherapyIsGiven = "http://hl7.org/fhir/therapy-relationship-type#contraindicated-except-with";
+
+    /// <summary>
     /// Literal for code: OnlyContraindicatedIfTheOtherTherapyIsGiven
     /// </summary>
     public const string LiteralOnlyContraindicatedIfTheOtherTherapyIsGiven = "contraindicated-only-with";
+
+    /// <summary>
+    /// Literal for code: TherapyRelationshipTypeOnlyContraindicatedIfTheOtherTherapyIsGiven
+    /// </summary>
+    public const string LiteralTherapyRelationshipTypeOnlyContraindicatedIfTheOtherTherapyIsGiven = "http://hl7.org/fhir/therapy-relationship-type#contraindicated-only-with";
 
     /// <summary>
     /// Literal for code: IndicatedExceptWhenTheOtherTherapyIsGiven
@@ -109,9 +119,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIndicatedExceptWhenTheOtherTherapyIsGiven = "indicated-except-with";
 
     /// <summary>
+    /// Literal for code: TherapyRelationshipTypeIndicatedExceptWhenTheOtherTherapyIsGiven
+    /// </summary>
+    public const string LiteralTherapyRelationshipTypeIndicatedExceptWhenTheOtherTherapyIsGiven = "http://hl7.org/fhir/therapy-relationship-type#indicated-except-with";
+
+    /// <summary>
     /// Literal for code: IndicatedOnlyIfTheOtherTherapyIsPlannedToBeGivenAfterwardsPrep
     /// </summary>
     public const string LiteralIndicatedOnlyIfTheOtherTherapyIsPlannedToBeGivenAfterwardsPrep = "indicated-only-before";
+
+    /// <summary>
+    /// Literal for code: TherapyRelationshipTypeIndicatedOnlyIfTheOtherTherapyIsPlannedToBeGivenAfterwardsPrep
+    /// </summary>
+    public const string LiteralTherapyRelationshipTypeIndicatedOnlyIfTheOtherTherapyIsPlannedToBeGivenAfterwardsPrep = "http://hl7.org/fhir/therapy-relationship-type#indicated-only-before";
 
     /// <summary>
     /// Literal for code: IndicatedOnlyWhenTheOtherTherapyIsGivenCoOccurrent
@@ -119,9 +139,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIndicatedOnlyWhenTheOtherTherapyIsGivenCoOccurrent = "indicated-only-with";
 
     /// <summary>
+    /// Literal for code: TherapyRelationshipTypeIndicatedOnlyWhenTheOtherTherapyIsGivenCoOccurrent
+    /// </summary>
+    public const string LiteralTherapyRelationshipTypeIndicatedOnlyWhenTheOtherTherapyIsGivenCoOccurrent = "http://hl7.org/fhir/therapy-relationship-type#indicated-only-with";
+
+    /// <summary>
     /// Literal for code: IndicatedToReplaceTheOtherTherapy
     /// </summary>
     public const string LiteralIndicatedToReplaceTheOtherTherapy = "replace-other-therapy";
+
+    /// <summary>
+    /// Literal for code: TherapyRelationshipTypeIndicatedToReplaceTheOtherTherapy
+    /// </summary>
+    public const string LiteralTherapyRelationshipTypeIndicatedToReplaceTheOtherTherapy = "http://hl7.org/fhir/therapy-relationship-type#replace-other-therapy";
 
     /// <summary>
     /// Literal for code: IndicatedToReplaceTheOtherContraindicatedTherapy
@@ -129,13 +159,52 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIndicatedToReplaceTheOtherContraindicatedTherapy = "replace-other-therapy-contraindicated";
 
     /// <summary>
+    /// Literal for code: TherapyRelationshipTypeIndicatedToReplaceTheOtherContraindicatedTherapy
+    /// </summary>
+    public const string LiteralTherapyRelationshipTypeIndicatedToReplaceTheOtherContraindicatedTherapy = "http://hl7.org/fhir/therapy-relationship-type#replace-other-therapy-contraindicated";
+
+    /// <summary>
     /// Literal for code: IndicatedToReplaceTheOtherTherapyNotEffectiveOnPatient
     /// </summary>
     public const string LiteralIndicatedToReplaceTheOtherTherapyNotEffectiveOnPatient = "replace-other-therapy-not-effective";
 
     /// <summary>
+    /// Literal for code: TherapyRelationshipTypeIndicatedToReplaceTheOtherTherapyNotEffectiveOnPatient
+    /// </summary>
+    public const string LiteralTherapyRelationshipTypeIndicatedToReplaceTheOtherTherapyNotEffectiveOnPatient = "http://hl7.org/fhir/therapy-relationship-type#replace-other-therapy-not-effective";
+
+    /// <summary>
     /// Literal for code: IndicatedToReplaceTheOtherTherapyNotWellToleratedByPatient
     /// </summary>
     public const string LiteralIndicatedToReplaceTheOtherTherapyNotWellToleratedByPatient = "replace-other-therapy-not-tolerated";
+
+    /// <summary>
+    /// Literal for code: TherapyRelationshipTypeIndicatedToReplaceTheOtherTherapyNotWellToleratedByPatient
+    /// </summary>
+    public const string LiteralTherapyRelationshipTypeIndicatedToReplaceTheOtherTherapyNotWellToleratedByPatient = "http://hl7.org/fhir/therapy-relationship-type#replace-other-therapy-not-tolerated";
+
+    /// <summary>
+    /// Dictionary for looking up TherapyRelationshipType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "contraindicated-except-with", ContraindicatedUnlessTheOtherTherapyIsGiven }, 
+      { "http://hl7.org/fhir/therapy-relationship-type#contraindicated-except-with", ContraindicatedUnlessTheOtherTherapyIsGiven }, 
+      { "contraindicated-only-with", OnlyContraindicatedIfTheOtherTherapyIsGiven }, 
+      { "http://hl7.org/fhir/therapy-relationship-type#contraindicated-only-with", OnlyContraindicatedIfTheOtherTherapyIsGiven }, 
+      { "indicated-except-with", IndicatedExceptWhenTheOtherTherapyIsGiven }, 
+      { "http://hl7.org/fhir/therapy-relationship-type#indicated-except-with", IndicatedExceptWhenTheOtherTherapyIsGiven }, 
+      { "indicated-only-before", IndicatedOnlyIfTheOtherTherapyIsPlannedToBeGivenAfterwardsPrep }, 
+      { "http://hl7.org/fhir/therapy-relationship-type#indicated-only-before", IndicatedOnlyIfTheOtherTherapyIsPlannedToBeGivenAfterwardsPrep }, 
+      { "indicated-only-with", IndicatedOnlyWhenTheOtherTherapyIsGivenCoOccurrent }, 
+      { "http://hl7.org/fhir/therapy-relationship-type#indicated-only-with", IndicatedOnlyWhenTheOtherTherapyIsGivenCoOccurrent }, 
+      { "replace-other-therapy", IndicatedToReplaceTheOtherTherapy }, 
+      { "http://hl7.org/fhir/therapy-relationship-type#replace-other-therapy", IndicatedToReplaceTheOtherTherapy }, 
+      { "replace-other-therapy-contraindicated", IndicatedToReplaceTheOtherContraindicatedTherapy }, 
+      { "http://hl7.org/fhir/therapy-relationship-type#replace-other-therapy-contraindicated", IndicatedToReplaceTheOtherContraindicatedTherapy }, 
+      { "replace-other-therapy-not-effective", IndicatedToReplaceTheOtherTherapyNotEffectiveOnPatient }, 
+      { "http://hl7.org/fhir/therapy-relationship-type#replace-other-therapy-not-effective", IndicatedToReplaceTheOtherTherapyNotEffectiveOnPatient }, 
+      { "replace-other-therapy-not-tolerated", IndicatedToReplaceTheOtherTherapyNotWellToleratedByPatient }, 
+      { "http://hl7.org/fhir/therapy-relationship-type#replace-other-therapy-not-tolerated", IndicatedToReplaceTheOtherTherapyNotWellToleratedByPatient }, 
+    };
   };
 }

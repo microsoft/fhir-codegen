@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralQS = "qs";
 
     /// <summary>
+    /// Literal for code: MedicationIngredientstrengthQS
+    /// </summary>
+    public const string LiteralMedicationIngredientstrengthQS = "http://hl7.org/fhir/CodeSystem/medication-ingredientstrength#qs";
+
+    /// <summary>
     /// Literal for code: Trace
     /// </summary>
     public const string LiteralTrace = "trace";
+
+    /// <summary>
+    /// Literal for code: MedicationIngredientstrengthTrace
+    /// </summary>
+    public const string LiteralMedicationIngredientstrengthTrace = "http://hl7.org/fhir/CodeSystem/medication-ingredientstrength#trace";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationIngredientstrength Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "qs", QS }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-ingredientstrength#qs", QS }, 
+      { "trace", Trace }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-ingredientstrength#trace", Trace }, 
+    };
   };
 }

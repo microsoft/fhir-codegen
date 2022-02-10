@@ -45,13 +45,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralClosed = "closed";
 
     /// <summary>
+    /// Literal for code: ResourceSlicingRulesClosed
+    /// </summary>
+    public const string LiteralResourceSlicingRulesClosed = "http://hl7.org/fhir/resource-slicing-rules#closed";
+
+    /// <summary>
     /// Literal for code: Open
     /// </summary>
     public const string LiteralOpen = "open";
 
     /// <summary>
+    /// Literal for code: ResourceSlicingRulesOpen
+    /// </summary>
+    public const string LiteralResourceSlicingRulesOpen = "http://hl7.org/fhir/resource-slicing-rules#open";
+
+    /// <summary>
     /// Literal for code: OpenAtEnd
     /// </summary>
     public const string LiteralOpenAtEnd = "openAtEnd";
+
+    /// <summary>
+    /// Literal for code: ResourceSlicingRulesOpenAtEnd
+    /// </summary>
+    public const string LiteralResourceSlicingRulesOpenAtEnd = "http://hl7.org/fhir/resource-slicing-rules#openAtEnd";
+
+    /// <summary>
+    /// Dictionary for looking up ResourceSlicingRules Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "closed", Closed }, 
+      { "http://hl7.org/fhir/resource-slicing-rules#closed", Closed }, 
+      { "open", Open }, 
+      { "http://hl7.org/fhir/resource-slicing-rules#open", Open }, 
+      { "openAtEnd", OpenAtEnd }, 
+      { "http://hl7.org/fhir/resource-slicing-rules#openAtEnd", OpenAtEnd }, 
+    };
   };
 }

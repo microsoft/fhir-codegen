@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLegal = "legal";
 
     /// <summary>
+    /// Literal for code: CompositionAttestationModeLegal
+    /// </summary>
+    public const string LiteralCompositionAttestationModeLegal = "http://hl7.org/fhir/composition-attestation-mode#legal";
+
+    /// <summary>
     /// Literal for code: Official
     /// </summary>
     public const string LiteralOfficial = "official";
+
+    /// <summary>
+    /// Literal for code: CompositionAttestationModeOfficial
+    /// </summary>
+    public const string LiteralCompositionAttestationModeOfficial = "http://hl7.org/fhir/composition-attestation-mode#official";
 
     /// <summary>
     /// Literal for code: Personal
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPersonal = "personal";
 
     /// <summary>
+    /// Literal for code: CompositionAttestationModePersonal
+    /// </summary>
+    public const string LiteralCompositionAttestationModePersonal = "http://hl7.org/fhir/composition-attestation-mode#personal";
+
+    /// <summary>
     /// Literal for code: Professional
     /// </summary>
     public const string LiteralProfessional = "professional";
+
+    /// <summary>
+    /// Literal for code: CompositionAttestationModeProfessional
+    /// </summary>
+    public const string LiteralCompositionAttestationModeProfessional = "http://hl7.org/fhir/composition-attestation-mode#professional";
+
+    /// <summary>
+    /// Dictionary for looking up CompositionAttestationMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "legal", Legal }, 
+      { "http://hl7.org/fhir/composition-attestation-mode#legal", Legal }, 
+      { "official", Official }, 
+      { "http://hl7.org/fhir/composition-attestation-mode#official", Official }, 
+      { "personal", Personal }, 
+      { "http://hl7.org/fhir/composition-attestation-mode#personal", Personal }, 
+      { "professional", Professional }, 
+      { "http://hl7.org/fhir/composition-attestation-mode#professional", Professional }, 
+    };
   };
 }

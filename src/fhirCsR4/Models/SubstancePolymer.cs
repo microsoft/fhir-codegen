@@ -24,6 +24,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? IsDefining { get; set; }
     /// <summary>
+    /// Extension container element for IsDefining
+    /// </summary>
+    public Element _IsDefining { get; set; }
+    /// <summary>
     /// Todo.
     /// </summary>
     public CodeableConcept Material { get; set; }
@@ -59,6 +63,12 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("isDefining", (bool)IsDefining!);
       }
 
+      if (_IsDefining != null)
+      {
+        writer.WritePropertyName("_isDefining");
+        _IsDefining.SerializeJson(writer, options);
+      }
+
       if (Amount != null)
       {
         writer.WritePropertyName("amount");
@@ -84,6 +94,11 @@ namespace fhirCsR4.Models
 
         case "isDefining":
           IsDefining = reader.GetBoolean();
+          break;
+
+        case "_isDefining":
+          _IsDefining = new fhirCsR4.Models.Element();
+          _IsDefining.DeserializeJson(ref reader, options);
           break;
 
         case "material":
@@ -674,6 +689,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public int? NumberOfUnits { get; set; }
     /// <summary>
+    /// Extension container element for NumberOfUnits
+    /// </summary>
+    public Element _NumberOfUnits { get; set; }
+    /// <summary>
     /// Todo.
     /// </summary>
     public List<SubstancePolymerRepeatRepeatUnit> RepeatUnit { get; set; }
@@ -695,6 +714,12 @@ namespace fhirCsR4.Models
       if (NumberOfUnits != null)
       {
         writer.WriteNumber("numberOfUnits", (int)NumberOfUnits!);
+      }
+
+      if (_NumberOfUnits != null)
+      {
+        writer.WritePropertyName("_numberOfUnits");
+        _NumberOfUnits.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(AverageMolecularFormula))
@@ -750,6 +775,11 @@ namespace fhirCsR4.Models
 
         case "numberOfUnits":
           NumberOfUnits = reader.GetInt32();
+          break;
+
+        case "_numberOfUnits":
+          _NumberOfUnits = new fhirCsR4.Models.Element();
+          _NumberOfUnits.DeserializeJson(ref reader, options);
           break;
 
         case "repeatUnit":

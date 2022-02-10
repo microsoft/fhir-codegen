@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralActionA = "action-a";
 
     /// <summary>
+    /// Literal for code: ContractActionActionA
+    /// </summary>
+    public const string LiteralContractActionActionA = "http://terminology.hl7.org/CodeSystem/contractaction#action-a";
+
+    /// <summary>
     /// Literal for code: ActionB
     /// </summary>
     public const string LiteralActionB = "action-b";
+
+    /// <summary>
+    /// Literal for code: ContractActionActionB
+    /// </summary>
+    public const string LiteralContractActionActionB = "http://terminology.hl7.org/CodeSystem/contractaction#action-b";
+
+    /// <summary>
+    /// Dictionary for looking up ContractAction Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "action-a", ActionA }, 
+      { "http://terminology.hl7.org/CodeSystem/contractaction#action-a", ActionA }, 
+      { "action-b", ActionB }, 
+      { "http://terminology.hl7.org/CodeSystem/contractaction#action-b", ActionB }, 
+    };
   };
 }

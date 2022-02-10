@@ -36,8 +36,28 @@ namespace fhirCsR2.ValueSets
     public const string LiteralOperation = "operation";
 
     /// <summary>
+    /// Literal for code: OperationKindOperation
+    /// </summary>
+    public const string LiteralOperationKindOperation = "http://hl7.org/fhir/operation-kind#operation";
+
+    /// <summary>
     /// Literal for code: Query
     /// </summary>
     public const string LiteralQuery = "query";
+
+    /// <summary>
+    /// Literal for code: OperationKindQuery
+    /// </summary>
+    public const string LiteralOperationKindQuery = "http://hl7.org/fhir/operation-kind#query";
+
+    /// <summary>
+    /// Dictionary for looking up OperationKind Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "operation", Operation }, 
+      { "http://hl7.org/fhir/operation-kind#operation", Operation }, 
+      { "query", Query }, 
+      { "http://hl7.org/fhir/operation-kind#query", Query }, 
+    };
   };
 }

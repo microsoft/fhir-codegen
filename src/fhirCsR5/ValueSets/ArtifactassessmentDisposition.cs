@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotPersuasive = "not-persuasive";
 
     /// <summary>
+    /// Literal for code: ArtifactassessmentDispositionNotPersuasive
+    /// </summary>
+    public const string LiteralArtifactassessmentDispositionNotPersuasive = "http://hl7.org/fhir/artifactassessment-disposition#not-persuasive";
+
+    /// <summary>
     /// Literal for code: NotPersuasiveWithModification
     /// </summary>
     public const string LiteralNotPersuasiveWithModification = "not-persuasive-with-modification";
+
+    /// <summary>
+    /// Literal for code: ArtifactassessmentDispositionNotPersuasiveWithModification
+    /// </summary>
+    public const string LiteralArtifactassessmentDispositionNotPersuasiveWithModification = "http://hl7.org/fhir/artifactassessment-disposition#not-persuasive-with-modification";
 
     /// <summary>
     /// Literal for code: Persuasive
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPersuasive = "persuasive";
 
     /// <summary>
+    /// Literal for code: ArtifactassessmentDispositionPersuasive
+    /// </summary>
+    public const string LiteralArtifactassessmentDispositionPersuasive = "http://hl7.org/fhir/artifactassessment-disposition#persuasive";
+
+    /// <summary>
     /// Literal for code: PersuasiveWithModification
     /// </summary>
     public const string LiteralPersuasiveWithModification = "persuasive-with-modification";
 
     /// <summary>
+    /// Literal for code: ArtifactassessmentDispositionPersuasiveWithModification
+    /// </summary>
+    public const string LiteralArtifactassessmentDispositionPersuasiveWithModification = "http://hl7.org/fhir/artifactassessment-disposition#persuasive-with-modification";
+
+    /// <summary>
     /// Literal for code: Unresolved
     /// </summary>
     public const string LiteralUnresolved = "unresolved";
+
+    /// <summary>
+    /// Literal for code: ArtifactassessmentDispositionUnresolved
+    /// </summary>
+    public const string LiteralArtifactassessmentDispositionUnresolved = "http://hl7.org/fhir/artifactassessment-disposition#unresolved";
+
+    /// <summary>
+    /// Dictionary for looking up ArtifactassessmentDisposition Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "not-persuasive", NotPersuasive }, 
+      { "http://hl7.org/fhir/artifactassessment-disposition#not-persuasive", NotPersuasive }, 
+      { "not-persuasive-with-modification", NotPersuasiveWithModification }, 
+      { "http://hl7.org/fhir/artifactassessment-disposition#not-persuasive-with-modification", NotPersuasiveWithModification }, 
+      { "persuasive", Persuasive }, 
+      { "http://hl7.org/fhir/artifactassessment-disposition#persuasive", Persuasive }, 
+      { "persuasive-with-modification", PersuasiveWithModification }, 
+      { "http://hl7.org/fhir/artifactassessment-disposition#persuasive-with-modification", PersuasiveWithModification }, 
+      { "unresolved", Unresolved }, 
+      { "http://hl7.org/fhir/artifactassessment-disposition#unresolved", Unresolved }, 
+    };
   };
 }

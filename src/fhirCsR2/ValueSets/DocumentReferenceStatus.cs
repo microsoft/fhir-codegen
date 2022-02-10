@@ -45,13 +45,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralCurrent = "current";
 
     /// <summary>
+    /// Literal for code: DocumentReferenceStatusCurrent
+    /// </summary>
+    public const string LiteralDocumentReferenceStatusCurrent = "http://hl7.org/fhir/document-reference-status#current";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: DocumentReferenceStatusEnteredInError
+    /// </summary>
+    public const string LiteralDocumentReferenceStatusEnteredInError = "http://hl7.org/fhir/document-reference-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Superseded
     /// </summary>
     public const string LiteralSuperseded = "superseded";
+
+    /// <summary>
+    /// Literal for code: DocumentReferenceStatusSuperseded
+    /// </summary>
+    public const string LiteralDocumentReferenceStatusSuperseded = "http://hl7.org/fhir/document-reference-status#superseded";
+
+    /// <summary>
+    /// Dictionary for looking up DocumentReferenceStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "current", Current }, 
+      { "http://hl7.org/fhir/document-reference-status#current", Current }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/document-reference-status#entered-in-error", EnteredInError }, 
+      { "superseded", Superseded }, 
+      { "http://hl7.org/fhir/document-reference-status#superseded", Superseded }, 
+    };
   };
 }

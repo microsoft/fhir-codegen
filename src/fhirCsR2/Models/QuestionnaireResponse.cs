@@ -1067,5 +1067,10 @@ namespace fhirCsR2.Models
     public const string IN_PROGRESS = "in-progress";
     public const string COMPLETED = "completed";
     public const string AMENDED = "amended";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "in-progress",
+      "completed",
+      "amended",
+    };
   }
 }

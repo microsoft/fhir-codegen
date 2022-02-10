@@ -1482,6 +1482,10 @@ namespace fhirCsR5.Models
   public static class AdverseEventActualityCodes {
     public const string ACTUAL = "actual";
     public const string POTENTIAL = "potential";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "actual",
+      "potential",
+    };
   }
   /// <summary>
   /// Code Values for the AdverseEvent.status field
@@ -1491,5 +1495,11 @@ namespace fhirCsR5.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "in-progress",
+      "completed",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

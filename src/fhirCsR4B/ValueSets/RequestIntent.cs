@@ -99,9 +99,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDirective = "directive";
 
     /// <summary>
+    /// Literal for code: RequestIntentDirective
+    /// </summary>
+    public const string LiteralRequestIntentDirective = "http://hl7.org/fhir/request-intent#directive";
+
+    /// <summary>
     /// Literal for code: FillerOrder
     /// </summary>
     public const string LiteralFillerOrder = "filler-order";
+
+    /// <summary>
+    /// Literal for code: RequestIntentFillerOrder
+    /// </summary>
+    public const string LiteralRequestIntentFillerOrder = "http://hl7.org/fhir/request-intent#filler-order";
 
     /// <summary>
     /// Literal for code: InstanceOrder
@@ -109,9 +119,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInstanceOrder = "instance-order";
 
     /// <summary>
+    /// Literal for code: RequestIntentInstanceOrder
+    /// </summary>
+    public const string LiteralRequestIntentInstanceOrder = "http://hl7.org/fhir/request-intent#instance-order";
+
+    /// <summary>
     /// Literal for code: Option
     /// </summary>
     public const string LiteralOption = "option";
+
+    /// <summary>
+    /// Literal for code: RequestIntentOption
+    /// </summary>
+    public const string LiteralRequestIntentOption = "http://hl7.org/fhir/request-intent#option";
 
     /// <summary>
     /// Literal for code: Order
@@ -119,9 +139,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOrder = "order";
 
     /// <summary>
+    /// Literal for code: RequestIntentOrder
+    /// </summary>
+    public const string LiteralRequestIntentOrder = "http://hl7.org/fhir/request-intent#order";
+
+    /// <summary>
     /// Literal for code: OriginalOrder
     /// </summary>
     public const string LiteralOriginalOrder = "original-order";
+
+    /// <summary>
+    /// Literal for code: RequestIntentOriginalOrder
+    /// </summary>
+    public const string LiteralRequestIntentOriginalOrder = "http://hl7.org/fhir/request-intent#original-order";
 
     /// <summary>
     /// Literal for code: Plan
@@ -129,13 +159,52 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlan = "plan";
 
     /// <summary>
+    /// Literal for code: RequestIntentPlan
+    /// </summary>
+    public const string LiteralRequestIntentPlan = "http://hl7.org/fhir/request-intent#plan";
+
+    /// <summary>
     /// Literal for code: Proposal
     /// </summary>
     public const string LiteralProposal = "proposal";
 
     /// <summary>
+    /// Literal for code: RequestIntentProposal
+    /// </summary>
+    public const string LiteralRequestIntentProposal = "http://hl7.org/fhir/request-intent#proposal";
+
+    /// <summary>
     /// Literal for code: ReflexOrder
     /// </summary>
     public const string LiteralReflexOrder = "reflex-order";
+
+    /// <summary>
+    /// Literal for code: RequestIntentReflexOrder
+    /// </summary>
+    public const string LiteralRequestIntentReflexOrder = "http://hl7.org/fhir/request-intent#reflex-order";
+
+    /// <summary>
+    /// Dictionary for looking up RequestIntent Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "directive", Directive }, 
+      { "http://hl7.org/fhir/request-intent#directive", Directive }, 
+      { "filler-order", FillerOrder }, 
+      { "http://hl7.org/fhir/request-intent#filler-order", FillerOrder }, 
+      { "instance-order", InstanceOrder }, 
+      { "http://hl7.org/fhir/request-intent#instance-order", InstanceOrder }, 
+      { "option", Option }, 
+      { "http://hl7.org/fhir/request-intent#option", Option }, 
+      { "order", Order }, 
+      { "http://hl7.org/fhir/request-intent#order", Order }, 
+      { "original-order", OriginalOrder }, 
+      { "http://hl7.org/fhir/request-intent#original-order", OriginalOrder }, 
+      { "plan", Plan }, 
+      { "http://hl7.org/fhir/request-intent#plan", Plan }, 
+      { "proposal", Proposal }, 
+      { "http://hl7.org/fhir/request-intent#proposal", Proposal }, 
+      { "reflex-order", ReflexOrder }, 
+      { "http://hl7.org/fhir/request-intent#reflex-order", ReflexOrder }, 
+    };
   };
 }

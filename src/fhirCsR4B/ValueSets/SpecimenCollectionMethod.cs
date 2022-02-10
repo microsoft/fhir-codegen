@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class SpecimenCollectionMethodCodes
   {
     /// <summary>
-    /// 
+    /// Puncture - action
     /// </summary>
     public static readonly Coding PunctureAction = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision - action
     /// </summary>
     public static readonly Coding ExcisionAction = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biopsy - action
     /// </summary>
     public static readonly Coding BiopsyAction = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aspiration - action
     /// </summary>
     public static readonly Coding AspirationAction = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scraping - action
     /// </summary>
     public static readonly Coding ScrapingAction = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Timed urine collection
     /// </summary>
     public static readonly Coding TimedUrineCollection = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Finger-prick sampling
     /// </summary>
     public static readonly Coding FingerPrickSampling = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Collection of coughed sputum
     /// </summary>
     public static readonly Coding CollectionOfCoughedSputum = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urine specimen collection, catheterized
     /// </summary>
     public static readonly Coding UrineSpecimenCollectionCatheterized = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urine specimen collection, clean catch
     /// </summary>
     public static readonly Coding UrineSpecimenCollectionCleanCatch = new Coding
     {
@@ -108,9 +108,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPunctureAction = "129300006";
 
     /// <summary>
+    /// Literal for code: NONEPunctureAction
+    /// </summary>
+    public const string LiteralNONEPunctureAction = "http://snomed.info/sct#129300006";
+
+    /// <summary>
     /// Literal for code: ExcisionAction
     /// </summary>
     public const string LiteralExcisionAction = "129304002";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionAction
+    /// </summary>
+    public const string LiteralNONEExcisionAction = "http://snomed.info/sct#129304002";
 
     /// <summary>
     /// Literal for code: BiopsyAction
@@ -118,9 +128,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBiopsyAction = "129314006";
 
     /// <summary>
+    /// Literal for code: NONEBiopsyAction
+    /// </summary>
+    public const string LiteralNONEBiopsyAction = "http://snomed.info/sct#129314006";
+
+    /// <summary>
     /// Literal for code: AspirationAction
     /// </summary>
     public const string LiteralAspirationAction = "129316008";
+
+    /// <summary>
+    /// Literal for code: NONEAspirationAction
+    /// </summary>
+    public const string LiteralNONEAspirationAction = "http://snomed.info/sct#129316008";
 
     /// <summary>
     /// Literal for code: ScrapingAction
@@ -128,9 +148,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralScrapingAction = "129323009";
 
     /// <summary>
+    /// Literal for code: NONEScrapingAction
+    /// </summary>
+    public const string LiteralNONEScrapingAction = "http://snomed.info/sct#129323009";
+
+    /// <summary>
     /// Literal for code: TimedUrineCollection
     /// </summary>
     public const string LiteralTimedUrineCollection = "225113003";
+
+    /// <summary>
+    /// Literal for code: NONETimedUrineCollection
+    /// </summary>
+    public const string LiteralNONETimedUrineCollection = "http://snomed.info/sct#225113003";
 
     /// <summary>
     /// Literal for code: FingerPrickSampling
@@ -138,9 +168,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFingerPrickSampling = "278450005";
 
     /// <summary>
+    /// Literal for code: NONEFingerPrickSampling
+    /// </summary>
+    public const string LiteralNONEFingerPrickSampling = "http://snomed.info/sct#278450005";
+
+    /// <summary>
     /// Literal for code: CollectionOfCoughedSputum
     /// </summary>
     public const string LiteralCollectionOfCoughedSputum = "386089008";
+
+    /// <summary>
+    /// Literal for code: NONECollectionOfCoughedSputum
+    /// </summary>
+    public const string LiteralNONECollectionOfCoughedSputum = "http://snomed.info/sct#386089008";
 
     /// <summary>
     /// Literal for code: UrineSpecimenCollectionCatheterized
@@ -148,8 +188,44 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUrineSpecimenCollectionCatheterized = "70777001";
 
     /// <summary>
+    /// Literal for code: NONEUrineSpecimenCollectionCatheterized
+    /// </summary>
+    public const string LiteralNONEUrineSpecimenCollectionCatheterized = "http://snomed.info/sct#70777001";
+
+    /// <summary>
     /// Literal for code: UrineSpecimenCollectionCleanCatch
     /// </summary>
     public const string LiteralUrineSpecimenCollectionCleanCatch = "73416001";
+
+    /// <summary>
+    /// Literal for code: NONEUrineSpecimenCollectionCleanCatch
+    /// </summary>
+    public const string LiteralNONEUrineSpecimenCollectionCleanCatch = "http://snomed.info/sct#73416001";
+
+    /// <summary>
+    /// Dictionary for looking up SpecimenCollectionMethod Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "129300006", PunctureAction }, 
+      { "http://snomed.info/sct#129300006", PunctureAction }, 
+      { "129304002", ExcisionAction }, 
+      { "http://snomed.info/sct#129304002", ExcisionAction }, 
+      { "129314006", BiopsyAction }, 
+      { "http://snomed.info/sct#129314006", BiopsyAction }, 
+      { "129316008", AspirationAction }, 
+      { "http://snomed.info/sct#129316008", AspirationAction }, 
+      { "129323009", ScrapingAction }, 
+      { "http://snomed.info/sct#129323009", ScrapingAction }, 
+      { "225113003", TimedUrineCollection }, 
+      { "http://snomed.info/sct#225113003", TimedUrineCollection }, 
+      { "278450005", FingerPrickSampling }, 
+      { "http://snomed.info/sct#278450005", FingerPrickSampling }, 
+      { "386089008", CollectionOfCoughedSputum }, 
+      { "http://snomed.info/sct#386089008", CollectionOfCoughedSputum }, 
+      { "70777001", UrineSpecimenCollectionCatheterized }, 
+      { "http://snomed.info/sct#70777001", UrineSpecimenCollectionCatheterized }, 
+      { "73416001", UrineSpecimenCollectionCleanCatch }, 
+      { "http://snomed.info/sct#73416001", UrineSpecimenCollectionCleanCatch }, 
+    };
   };
 }

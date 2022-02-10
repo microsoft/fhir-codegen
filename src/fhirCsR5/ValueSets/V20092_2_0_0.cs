@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class V20092Codes
   {
     /// <summary>
-    /// 
+    /// Re-admission
     /// </summary>
     public static readonly Coding ReAdmission = new Coding
     {
@@ -25,5 +25,18 @@ namespace fhirCsR5.ValueSets
     /// Literal for code: ReAdmission
     /// </summary>
     public const string LiteralReAdmission = "R";
+
+    /// <summary>
+    /// Literal for code: V20092ReAdmission
+    /// </summary>
+    public const string LiteralV20092ReAdmission = "http://terminology.hl7.org/CodeSystem/v2-0092#R";
+
+    /// <summary>
+    /// Dictionary for looking up V20092 Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "R", ReAdmission }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0092#R", ReAdmission }, 
+    };
   };
 }

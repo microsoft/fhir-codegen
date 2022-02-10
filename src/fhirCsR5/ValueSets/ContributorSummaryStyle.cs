@@ -162,9 +162,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFirstAuthorFullNameEtAl = "a1full";
 
     /// <summary>
+    /// Literal for code: ContributorSummaryStyleFirstAuthorFullNameEtAl
+    /// </summary>
+    public const string LiteralContributorSummaryStyleFirstAuthorFullNameEtAl = "http://terminology.hl7.org/CodeSystem/contributor-summary-style#a1full";
+
+    /// <summary>
     /// Literal for code: FirstAuthorLastNameFirstInitialsEtAl
     /// </summary>
     public const string LiteralFirstAuthorLastNameFirstInitialsEtAl = "a1init";
+
+    /// <summary>
+    /// Literal for code: ContributorSummaryStyleFirstAuthorLastNameFirstInitialsEtAl
+    /// </summary>
+    public const string LiteralContributorSummaryStyleFirstAuthorLastNameFirstInitialsEtAl = "http://terminology.hl7.org/CodeSystem/contributor-summary-style#a1init";
 
     /// <summary>
     /// Literal for code: First3AuthorsFullNameEtAl
@@ -172,9 +182,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFirst3AuthorsFullNameEtAl = "a3full";
 
     /// <summary>
+    /// Literal for code: ContributorSummaryStyleFirst3AuthorsFullNameEtAl
+    /// </summary>
+    public const string LiteralContributorSummaryStyleFirst3AuthorsFullNameEtAl = "http://terminology.hl7.org/CodeSystem/contributor-summary-style#a3full";
+
+    /// <summary>
     /// Literal for code: First3AuthorsLastNameFirstInitialsEtAl
     /// </summary>
     public const string LiteralFirst3AuthorsLastNameFirstInitialsEtAl = "a3init";
+
+    /// <summary>
+    /// Literal for code: ContributorSummaryStyleFirst3AuthorsLastNameFirstInitialsEtAl
+    /// </summary>
+    public const string LiteralContributorSummaryStyleFirst3AuthorsLastNameFirstInitialsEtAl = "http://terminology.hl7.org/CodeSystem/contributor-summary-style#a3init";
 
     /// <summary>
     /// Literal for code: First6AuthorsFullNameEtAl
@@ -182,9 +202,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFirst6AuthorsFullNameEtAl = "a6full";
 
     /// <summary>
+    /// Literal for code: ContributorSummaryStyleFirst6AuthorsFullNameEtAl
+    /// </summary>
+    public const string LiteralContributorSummaryStyleFirst6AuthorsFullNameEtAl = "http://terminology.hl7.org/CodeSystem/contributor-summary-style#a6full";
+
+    /// <summary>
     /// Literal for code: First6AuthorsLastNameFirstInitialsEtAl
     /// </summary>
     public const string LiteralFirst6AuthorsLastNameFirstInitialsEtAl = "a6init";
+
+    /// <summary>
+    /// Literal for code: ContributorSummaryStyleFirst6AuthorsLastNameFirstInitialsEtAl
+    /// </summary>
+    public const string LiteralContributorSummaryStyleFirst6AuthorsLastNameFirstInitialsEtAl = "http://terminology.hl7.org/CodeSystem/contributor-summary-style#a6init";
 
     /// <summary>
     /// Literal for code: AllAuthorsFullName
@@ -192,9 +222,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAllAuthorsFullName = "aallfull";
 
     /// <summary>
+    /// Literal for code: ContributorSummaryStyleAllAuthorsFullName
+    /// </summary>
+    public const string LiteralContributorSummaryStyleAllAuthorsFullName = "http://terminology.hl7.org/CodeSystem/contributor-summary-style#aallfull";
+
+    /// <summary>
     /// Literal for code: AllAuthorsFullNameWithAnAmpersandBeforeLastAuthor
     /// </summary>
     public const string LiteralAllAuthorsFullNameWithAnAmpersandBeforeLastAuthor = "aallfullwithampersand";
+
+    /// <summary>
+    /// Literal for code: ContributorSummaryStyleAllAuthorsFullNameWithAnAmpersandBeforeLastAuthor
+    /// </summary>
+    public const string LiteralContributorSummaryStyleAllAuthorsFullNameWithAnAmpersandBeforeLastAuthor = "http://terminology.hl7.org/CodeSystem/contributor-summary-style#aallfullwithampersand";
 
     /// <summary>
     /// Literal for code: AllAuthorsFullNameWithAndBeforeLastAuthor
@@ -202,9 +242,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAllAuthorsFullNameWithAndBeforeLastAuthor = "aallfullwithand";
 
     /// <summary>
+    /// Literal for code: ContributorSummaryStyleAllAuthorsFullNameWithAndBeforeLastAuthor
+    /// </summary>
+    public const string LiteralContributorSummaryStyleAllAuthorsFullNameWithAndBeforeLastAuthor = "http://terminology.hl7.org/CodeSystem/contributor-summary-style#aallfullwithand";
+
+    /// <summary>
     /// Literal for code: AllAuthorsLastNameFirstInitials
     /// </summary>
     public const string LiteralAllAuthorsLastNameFirstInitials = "aallinit";
+
+    /// <summary>
+    /// Literal for code: ContributorSummaryStyleAllAuthorsLastNameFirstInitials
+    /// </summary>
+    public const string LiteralContributorSummaryStyleAllAuthorsLastNameFirstInitials = "http://terminology.hl7.org/CodeSystem/contributor-summary-style#aallinit";
 
     /// <summary>
     /// Literal for code: AllAuthorsLastNameFirstInitialsWithAnAmpersandBeforeLastAuthor
@@ -212,9 +262,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAllAuthorsLastNameFirstInitialsWithAnAmpersandBeforeLastAuthor = "aallinitwithampersand";
 
     /// <summary>
+    /// Literal for code: ContributorSummaryStyleAllAuthorsLastNameFirstInitialsWithAnAmpersandBeforeLastAuthor
+    /// </summary>
+    public const string LiteralContributorSummaryStyleAllAuthorsLastNameFirstInitialsWithAnAmpersandBeforeLastAuthor = "http://terminology.hl7.org/CodeSystem/contributor-summary-style#aallinitwithampersand";
+
+    /// <summary>
     /// Literal for code: AllAuthorsLastNameFirstInitialsWithAndBeforeLastAuthor
     /// </summary>
     public const string LiteralAllAuthorsLastNameFirstInitialsWithAndBeforeLastAuthor = "aallinitwithand";
+
+    /// <summary>
+    /// Literal for code: ContributorSummaryStyleAllAuthorsLastNameFirstInitialsWithAndBeforeLastAuthor
+    /// </summary>
+    public const string LiteralContributorSummaryStyleAllAuthorsLastNameFirstInitialsWithAndBeforeLastAuthor = "http://terminology.hl7.org/CodeSystem/contributor-summary-style#aallinitwithand";
 
     /// <summary>
     /// Literal for code: ContributorshipStatementListedByContributionWithFullNames
@@ -222,9 +282,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralContributorshipStatementListedByContributionWithFullNames = "contr-full-by-contr";
 
     /// <summary>
+    /// Literal for code: ContributorSummaryStyleContributorshipStatementListedByContributionWithFullNames
+    /// </summary>
+    public const string LiteralContributorSummaryStyleContributorshipStatementListedByContributionWithFullNames = "http://terminology.hl7.org/CodeSystem/contributor-summary-style#contr-full-by-contr";
+
+    /// <summary>
     /// Literal for code: ContributorshipStatementListedByPersonWithFullNames
     /// </summary>
     public const string LiteralContributorshipStatementListedByPersonWithFullNames = "contr-full-by-person";
+
+    /// <summary>
+    /// Literal for code: ContributorSummaryStyleContributorshipStatementListedByPersonWithFullNames
+    /// </summary>
+    public const string LiteralContributorSummaryStyleContributorshipStatementListedByPersonWithFullNames = "http://terminology.hl7.org/CodeSystem/contributor-summary-style#contr-full-by-person";
 
     /// <summary>
     /// Literal for code: ContributorshipStatementListedByContributionWithInitials
@@ -232,8 +302,56 @@ namespace fhirCsR5.ValueSets
     public const string LiteralContributorshipStatementListedByContributionWithInitials = "contr-init-by-contr";
 
     /// <summary>
+    /// Literal for code: ContributorSummaryStyleContributorshipStatementListedByContributionWithInitials
+    /// </summary>
+    public const string LiteralContributorSummaryStyleContributorshipStatementListedByContributionWithInitials = "http://terminology.hl7.org/CodeSystem/contributor-summary-style#contr-init-by-contr";
+
+    /// <summary>
     /// Literal for code: ContributorshipStatementListedByPersonWithInitials
     /// </summary>
     public const string LiteralContributorshipStatementListedByPersonWithInitials = "contr-init-by-person";
+
+    /// <summary>
+    /// Literal for code: ContributorSummaryStyleContributorshipStatementListedByPersonWithInitials
+    /// </summary>
+    public const string LiteralContributorSummaryStyleContributorshipStatementListedByPersonWithInitials = "http://terminology.hl7.org/CodeSystem/contributor-summary-style#contr-init-by-person";
+
+    /// <summary>
+    /// Dictionary for looking up ContributorSummaryStyle Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "a1full", FirstAuthorFullNameEtAl }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-style#a1full", FirstAuthorFullNameEtAl }, 
+      { "a1init", FirstAuthorLastNameFirstInitialsEtAl }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-style#a1init", FirstAuthorLastNameFirstInitialsEtAl }, 
+      { "a3full", First3AuthorsFullNameEtAl }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-style#a3full", First3AuthorsFullNameEtAl }, 
+      { "a3init", First3AuthorsLastNameFirstInitialsEtAl }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-style#a3init", First3AuthorsLastNameFirstInitialsEtAl }, 
+      { "a6full", First6AuthorsFullNameEtAl }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-style#a6full", First6AuthorsFullNameEtAl }, 
+      { "a6init", First6AuthorsLastNameFirstInitialsEtAl }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-style#a6init", First6AuthorsLastNameFirstInitialsEtAl }, 
+      { "aallfull", AllAuthorsFullName }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-style#aallfull", AllAuthorsFullName }, 
+      { "aallfullwithampersand", AllAuthorsFullNameWithAnAmpersandBeforeLastAuthor }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-style#aallfullwithampersand", AllAuthorsFullNameWithAnAmpersandBeforeLastAuthor }, 
+      { "aallfullwithand", AllAuthorsFullNameWithAndBeforeLastAuthor }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-style#aallfullwithand", AllAuthorsFullNameWithAndBeforeLastAuthor }, 
+      { "aallinit", AllAuthorsLastNameFirstInitials }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-style#aallinit", AllAuthorsLastNameFirstInitials }, 
+      { "aallinitwithampersand", AllAuthorsLastNameFirstInitialsWithAnAmpersandBeforeLastAuthor }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-style#aallinitwithampersand", AllAuthorsLastNameFirstInitialsWithAnAmpersandBeforeLastAuthor }, 
+      { "aallinitwithand", AllAuthorsLastNameFirstInitialsWithAndBeforeLastAuthor }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-style#aallinitwithand", AllAuthorsLastNameFirstInitialsWithAndBeforeLastAuthor }, 
+      { "contr-full-by-contr", ContributorshipStatementListedByContributionWithFullNames }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-style#contr-full-by-contr", ContributorshipStatementListedByContributionWithFullNames }, 
+      { "contr-full-by-person", ContributorshipStatementListedByPersonWithFullNames }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-style#contr-full-by-person", ContributorshipStatementListedByPersonWithFullNames }, 
+      { "contr-init-by-contr", ContributorshipStatementListedByContributionWithInitials }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-style#contr-init-by-contr", ContributorshipStatementListedByContributionWithInitials }, 
+      { "contr-init-by-person", ContributorshipStatementListedByPersonWithInitials }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-style#contr-init-by-person", ContributorshipStatementListedByPersonWithInitials }, 
+    };
   };
 }

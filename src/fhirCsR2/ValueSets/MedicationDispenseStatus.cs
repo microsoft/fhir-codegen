@@ -65,9 +65,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: MedicationDispenseStatusCompleted
+    /// </summary>
+    public const string LiteralMedicationDispenseStatusCompleted = "http://hl7.org/fhir/medication-dispense-status#completed";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: MedicationDispenseStatusEnteredInError
+    /// </summary>
+    public const string LiteralMedicationDispenseStatusEnteredInError = "http://hl7.org/fhir/medication-dispense-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: InProgress
@@ -75,13 +85,44 @@ namespace fhirCsR2.ValueSets
     public const string LiteralInProgress = "in-progress";
 
     /// <summary>
+    /// Literal for code: MedicationDispenseStatusInProgress
+    /// </summary>
+    public const string LiteralMedicationDispenseStatusInProgress = "http://hl7.org/fhir/medication-dispense-status#in-progress";
+
+    /// <summary>
     /// Literal for code: OnHold
     /// </summary>
     public const string LiteralOnHold = "on-hold";
 
     /// <summary>
+    /// Literal for code: MedicationDispenseStatusOnHold
+    /// </summary>
+    public const string LiteralMedicationDispenseStatusOnHold = "http://hl7.org/fhir/medication-dispense-status#on-hold";
+
+    /// <summary>
     /// Literal for code: Stopped
     /// </summary>
     public const string LiteralStopped = "stopped";
+
+    /// <summary>
+    /// Literal for code: MedicationDispenseStatusStopped
+    /// </summary>
+    public const string LiteralMedicationDispenseStatusStopped = "http://hl7.org/fhir/medication-dispense-status#stopped";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationDispenseStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/medication-dispense-status#completed", Completed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/medication-dispense-status#entered-in-error", EnteredInError }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/medication-dispense-status#in-progress", InProgress }, 
+      { "on-hold", OnHold }, 
+      { "http://hl7.org/fhir/medication-dispense-status#on-hold", OnHold }, 
+      { "stopped", Stopped }, 
+      { "http://hl7.org/fhir/medication-dispense-status#stopped", Stopped }, 
+    };
   };
 }

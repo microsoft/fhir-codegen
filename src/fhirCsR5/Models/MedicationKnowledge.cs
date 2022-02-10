@@ -1358,6 +1358,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool Allowed { get; set; }
     /// <summary>
+    /// Extension container element for Allowed
+    /// </summary>
+    public Element _Allowed { get; set; }
+    /// <summary>
     /// Specifies the type of substitution allowed.
     /// </summary>
     public CodeableConcept Type { get; set; }
@@ -1380,6 +1384,12 @@ namespace fhirCsR5.Models
 
       writer.WriteBoolean("allowed", Allowed);
 
+      if (_Allowed != null)
+      {
+        writer.WritePropertyName("_allowed");
+        _Allowed.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -1394,6 +1404,11 @@ namespace fhirCsR5.Models
       {
         case "allowed":
           Allowed = reader.GetBoolean();
+          break;
+
+        case "_allowed":
+          _Allowed = new fhirCsR5.Models.Element();
+          _Allowed.DeserializeJson(ref reader, options);
           break;
 
         case "type":
@@ -3077,5 +3092,10 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string INACTIVE = "inactive";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "entered-in-error",
+      "inactive",
+    };
   }
 }

@@ -44,6 +44,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? UserSelected { get; set; }
     /// <summary>
+    /// Extension container element for UserSelected
+    /// </summary>
+    public Element _UserSelected { get; set; }
+    /// <summary>
     /// Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date.
     /// </summary>
     public string Version { get; set; }
@@ -111,6 +115,12 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("userSelected", (bool)UserSelected!);
       }
 
+      if (_UserSelected != null)
+      {
+        writer.WritePropertyName("_userSelected");
+        _UserSelected.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -152,6 +162,11 @@ namespace fhirCsR4.Models
 
         case "userSelected":
           UserSelected = reader.GetBoolean();
+          break;
+
+        case "_userSelected":
+          _UserSelected = new fhirCsR4.Models.Element();
+          _UserSelected.DeserializeJson(ref reader, options);
           break;
 
         case "version":

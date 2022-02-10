@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class V20003Codes
   {
     /// <summary>
-    /// 
+    /// ADT/ACK - Admit/visit notification
     /// </summary>
     public static readonly Coding ADTACKAdmitVisitNotification = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Transfer a patient
     /// </summary>
     public static readonly Coding ADTACKTransferAPatient = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Discharge/end visit
     /// </summary>
     public static readonly Coding ADTACKDischargeEndVisit = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Register a patient
     /// </summary>
     public static readonly Coding ADTACKRegisterAPatient = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Pre-admit a patient
     /// </summary>
     public static readonly Coding ADTACKPreAdmitAPatient = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Change an outpatient to an inpatient
     /// </summary>
     public static readonly Coding ADTACKChangeAnOutpatientToAnInpatient = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Change an inpatient to an outpatient
     /// </summary>
     public static readonly Coding ADTACKChangeAnInpatientToAnOutpatient = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Update patient information
     /// </summary>
     public static readonly Coding ADTACKUpdatePatientInformation = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Patient departing - tracking
     /// </summary>
     public static readonly Coding ADTACKPatientDepartingTracking = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Patient arriving - tracking
     /// </summary>
     public static readonly Coding ADTACKPatientArrivingTracking = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Cancel admit/visit notification
     /// </summary>
     public static readonly Coding ADTACKCancelAdmitVisitNotification = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Cancel transfer
     /// </summary>
     public static readonly Coding ADTACKCancelTransfer = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Cancel discharge/end visit
     /// </summary>
     public static readonly Coding ADTACKCancelDischargeEndVisit = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Pending admit
     /// </summary>
     public static readonly Coding ADTACKPendingAdmit = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Pending transfer
     /// </summary>
     public static readonly Coding ADTACKPendingTransfer = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Pending discharge
     /// </summary>
     public static readonly Coding ADTACKPendingDischarge = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Swap patients
     /// </summary>
     public static readonly Coding ADTACKSwapPatients = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Merge patient information
     /// </summary>
     public static readonly Coding ADTACKMergePatientInformation = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QRY/ADR -  Patient query
     /// </summary>
     public static readonly Coding QRYADRPatientQuery = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Bed status update
     /// </summary>
     public static readonly Coding ADTACKBedStatusUpdate = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Patient goes on a "leave of absence"
     /// </summary>
     public static readonly Coding ADTACKPatientGoesOnAQuotationLeaveOfAbsenceQuotation = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Patient returns from a "leave of absence"
     /// </summary>
     public static readonly Coding ADTACKPatientReturnsFromAQuotationLeaveOfAbsenceQuotation = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Delete a patient record
     /// </summary>
     public static readonly Coding ADTACKDeleteAPatientRecord = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Link patient information
     /// </summary>
     public static readonly Coding ADTACKLinkPatientInformation = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Cancel pending discharge
     /// </summary>
     public static readonly Coding ADTACKCancelPendingDischarge = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Cancel pending transfer
     /// </summary>
     public static readonly Coding ADTACKCancelPendingTransfer = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Cancel pending admit
     /// </summary>
     public static readonly Coding ADTACKCancelPendingAdmit = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Add person information
     /// </summary>
     public static readonly Coding ADTACKAddPersonInformation = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Delete person information
     /// </summary>
     public static readonly Coding ADTACKDeletePersonInformation = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Merge person information
     /// </summary>
     public static readonly Coding ADTACKMergePersonInformation = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Update person information
     /// </summary>
     public static readonly Coding ADTACKUpdatePersonInformation = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Cancel patient arriving - tracking
     /// </summary>
     public static readonly Coding ADTACKCancelPatientArrivingTracking = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Cancel patient departing - tracking
     /// </summary>
     public static readonly Coding ADTACKCancelPatientDepartingTracking = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Merge patient information - patient ID only
     /// </summary>
     public static readonly Coding ADTACKMergePatientInformationPatientIDOnly = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Merge patient information - account number only
     /// </summary>
     public static readonly Coding ADTACKMergePatientInformationAccountNumberOnly = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Merge patient information - patient ID and account number
     /// </summary>
     public static readonly Coding ADTACKMergePatientInformationPatientIDAndAccountNumber = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK -  Unlink patient information
     /// </summary>
     public static readonly Coding ADTACKUnlinkPatientInformation = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Cancel pre-admit
     /// </summary>
     public static readonly Coding ADTACKCancelPreAdmit = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Merge person - patient ID
     /// </summary>
     public static readonly Coding ADTACKMergePersonPatientID = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Merge patient - patient identifier list
     /// </summary>
     public static readonly Coding ADTACKMergePatientPatientIdentifierList = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Merge account - patient account number
     /// </summary>
     public static readonly Coding ADTACKMergeAccountPatientAccountNumber = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Merge visit - visit number
     /// </summary>
     public static readonly Coding ADTACKMergeVisitVisitNumber = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Move patient information - patient identifier list
     /// </summary>
     public static readonly Coding ADTACKMovePatientInformationPatientIdentifierList = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Move account information - patient account number
     /// </summary>
     public static readonly Coding ADTACKMoveAccountInformationPatientAccountNumber = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Move visit information - visit number
     /// </summary>
     public static readonly Coding ADTACKMoveVisitInformationVisitNumber = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Change patient ID
     /// </summary>
     public static readonly Coding ADTACKChangePatientID = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Change patient identifier list
     /// </summary>
     public static readonly Coding ADTACKChangePatientIdentifierList = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Change alternate patient ID
     /// </summary>
     public static readonly Coding ADTACKChangeAlternatePatientID = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Change patient account number
     /// </summary>
     public static readonly Coding ADTACKChangePatientAccountNumber = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Change visit number
     /// </summary>
     public static readonly Coding ADTACKChangeVisitNumber = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Change alternate visit ID
     /// </summary>
     public static readonly Coding ADTACKChangeAlternateVisitID = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Cancel leave of absence for a patient
     /// </summary>
     public static readonly Coding ADTACKCancelLeaveOfAbsenceForAPatient = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Cancel patient returns from a leave of absence
     /// </summary>
     public static readonly Coding ADTACKCancelPatientReturnsFromALeaveOfAbsence = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Change attending doctor
     /// </summary>
     public static readonly Coding ADTACKChangeAttendingDoctor = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Cancel change attending doctor
     /// </summary>
     public static readonly Coding ADTACKCancelChangeAttendingDoctor = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Update allergy information
     /// </summary>
     public static readonly Coding ADTACKUpdateAllergyInformation = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Change consulting doctor
     /// </summary>
     public static readonly Coding ADTACKChangeConsultingDoctor = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ADT/ACK - Cancel change consulting doctor
     /// </summary>
     public static readonly Coding ADTACKCancelChangeConsultingDoctor = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PMU/ACK - Add personnel record
     /// </summary>
     public static readonly Coding PMUACKAddPersonnelRecord = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PMU/ACK - Update personnel record
     /// </summary>
     public static readonly Coding PMUACKUpdatePersonnelRecord = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PMU/ACK - Delete personnel re cord
     /// </summary>
     public static readonly Coding PMUACKDeletePersonnelReCord = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PMU/ACK - Active practicing person
     /// </summary>
     public static readonly Coding PMUACKActivePracticingPerson = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PMU/ACK - Deactivate practicing person
     /// </summary>
     public static readonly Coding PMUACKDeactivatePracticingPerson = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PMU/ACK - Terminate practicing person
     /// </summary>
     public static readonly Coding PMUACKTerminatePracticingPerson = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PMU/ACK - Grant Certificate/Permission
     /// </summary>
     public static readonly Coding PMUACKGrantCertificatePermission = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PMU/ACK - Revoke Certificate/Permission
     /// </summary>
     public static readonly Coding PMUACKRevokeCertificatePermission = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// CRM - Register a patient on a clinical trial
     /// </summary>
     public static readonly Coding CRMRegisterAPatientOnAClinicalTrial = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// CRM - Cancel a patient registration on clinical trial (for clerical mistakes only)
     /// </summary>
     public static readonly Coding CRMCancelAPatientRegistrationOnClinicalTrialForClericalMistakesOnly = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// CRM - Correct/update registration information
     /// </summary>
     public static readonly Coding CRMCorrectUpdateRegistrationInformation = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// CRM - Patient has gone off a clinical trial
     /// </summary>
     public static readonly Coding CRMPatientHasGoneOffAClinicalTrial = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// CRM - Patient enters phase of clinical trial
     /// </summary>
     public static readonly Coding CRMPatientEntersPhaseOfClinicalTrial = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// CRM - Cancel patient entering a phase (clerical mistake)
     /// </summary>
     public static readonly Coding CRMCancelPatientEnteringAPhaseClericalMistake = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// CRM - Correct/update phase information
     /// </summary>
     public static readonly Coding CRMCorrectUpdatePhaseInformation = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// CRM - Patient has gone off phase of clinical trial
     /// </summary>
     public static readonly Coding CRMPatientHasGoneOffPhaseOfClinicalTrial = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// CSU - Automated time intervals for reporting, like monthly
     /// </summary>
     public static readonly Coding CSUAutomatedTimeIntervalsForReportingLikeMonthly = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// CSU - Patient completes the clinical trial
     /// </summary>
     public static readonly Coding CSUPatientCompletesTheClinicalTrial = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// CSU - Patient completes a phase of the clinical trial
     /// </summary>
     public static readonly Coding CSUPatientCompletesAPhaseOfTheClinicalTrial = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// CSU - Update/correction of patient order/result information
     /// </summary>
     public static readonly Coding CSUUpdateCorrectionOfPatientOrderResultInformation = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Cancel Query
     /// </summary>
     public static readonly Coding CancelQuery = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Submit HealthCare Services Invoice
     /// </summary>
     public static readonly Coding SubmitHealthCareServicesInvoice = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Cancel HealthCare Services Invoice
     /// </summary>
     public static readonly Coding CancelHealthCareServicesInvoice = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// HealthCare Services Invoice Status
     /// </summary>
     public static readonly Coding HealthCareServicesInvoiceStatus = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Re-Assess HealthCare Services Invoice Request
     /// </summary>
     public static readonly Coding ReAssessHealthCareServicesInvoiceRequest = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Edit/Adjudication Results
     /// </summary>
     public static readonly Coding EditAdjudicationResults = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Request Additional Information
     /// </summary>
     public static readonly Coding RequestAdditionalInformation = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Additional Information Response
     /// </summary>
     public static readonly Coding AdditionalInformationResponse = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Payment/Remittance Advice
     /// </summary>
     public static readonly Coding PaymentRemittanceAdvice = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Submit Authorization Request
     /// </summary>
     public static readonly Coding SubmitAuthorizationRequest = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Cancel Authorization Request
     /// </summary>
     public static readonly Coding CancelAuthorizationRequest = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Authorization Request Status
     /// </summary>
     public static readonly Coding AuthorizationRequestStatus = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Authorization Response
     /// </summary>
     public static readonly Coding AuthorizationResponse = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Submit Health Document related to Authorization Request
     /// </summary>
     public static readonly Coding SubmitHealthDocumentRelatedToAuthorizationRequest = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Cancel Health Document related to Authorization Request
     /// </summary>
     public static readonly Coding CancelHealthDocumentRelatedToAuthorizationRequest = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RQI/RPI - Request for insurance information
     /// </summary>
     public static readonly Coding RQIRPIRequestForInsuranceInformation = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RQI/RPL - Request/receipt of patient selection display list
     /// </summary>
     public static readonly Coding RQIRPLRequestReceiptOfPatientSelectionDisplayList = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RQI/RPR - Request/receipt of patient selection list
     /// </summary>
     public static readonly Coding RQIRPRRequestReceiptOfPatientSelectionList = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RQD/RPI - Request for patient demographic data
     /// </summary>
     public static readonly Coding RQDRPIRequestForPatientDemographicData = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RQC/RCI - Request for patient clinical information
     /// </summary>
     public static readonly Coding RQCRCIRequestForPatientClinicalInformation = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RQC/RCL - Request/receipt of clinical data listing
     /// </summary>
     public static readonly Coding RQCRCLRequestReceiptOfClinicalDataListing = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PIN/ACK - Unsolicited insurance information
     /// </summary>
     public static readonly Coding PINACKUnsolicitedInsuranceInformation = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RQA/RPA - Request for treatment authorization information
     /// </summary>
     public static readonly Coding RQARPARequestForTreatmentAuthorizationInformation = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RQA/RPA - Request for modification to an authorization
     /// </summary>
     public static readonly Coding RQARPARequestForModificationToAnAuthorization = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RQA/RPA - Request for resubmission of an authorization
     /// </summary>
     public static readonly Coding RQARPARequestForResubmissionOfAnAuthorization = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RQA/RPA - Request for cancellation of an authorization
     /// </summary>
     public static readonly Coding RQARPARequestForCancellationOfAnAuthorization = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// REF/RRI - Patient referral
     /// </summary>
     public static readonly Coding REFRRIPatientReferral = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// REF/RRI - Modify patient referral
     /// </summary>
     public static readonly Coding REFRRIModifyPatientReferral = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// REF/RRI - Cancel patient referral
     /// </summary>
     public static readonly Coding REFRRICancelPatientReferral = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// REF/RRI - Request patient referral status
     /// </summary>
     public static readonly Coding REFRRIRequestPatientReferralStatus = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Collaborative Care Referral
     /// </summary>
     public static readonly Coding CollaborativeCareReferral = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Modify Collaborative Care Referral
     /// </summary>
     public static readonly Coding ModifyCollaborativeCareReferral = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Cancel Collaborative Care Referral
     /// </summary>
     public static readonly Coding CancelCollaborativeCareReferral = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Collaborative Care Query/Collaborative Care Query Update
     /// </summary>
     public static readonly Coding CollaborativeCareQueryCollaborativeCareQueryUpdate = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Asynchronous Collaborative Care Update
     /// </summary>
     public static readonly Coding AsynchronousCollaborativeCareUpdate = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Collaborative Care Message
     /// </summary>
     public static readonly Coding CollaborativeCareMessage = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Collaborative Care Fetch / Collaborative Care Information
     /// </summary>
     public static readonly Coding CollaborativeCareFetchCollaborativeCareInformation = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QCN/ACK - Cancel query/acknowledge message
     /// </summary>
     public static readonly Coding QCNACKCancelQueryAcknowledgeMessage = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QSX/ACK - Cancel subscription/acknowledge message
     /// </summary>
     public static readonly Coding QSXACKCancelSubscriptionAcknowledgeMessage = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RSP - Segment pattern response in response to QBP^Q11
     /// </summary>
     public static readonly Coding RSPSegmentPatternResponseInResponseToQBPPowerQ11 = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RTB - Tabular response in response to QBP^Q13
     /// </summary>
     public static readonly Coding RTBTabularResponseInResponseToQBPPowerQ13 = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RDY - Display response in response to QBP^Q15
     /// </summary>
     public static readonly Coding RDYDisplayResponseInResponseToQBPPowerQ15 = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RSP - Get person demographics response
     /// </summary>
     public static readonly Coding RSPGetPersonDemographicsResponse = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RSP - Find candidates response
     /// </summary>
     public static readonly Coding RSPFindCandidatesResponse = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RSP - Get corresponding identifiers response
     /// </summary>
     public static readonly Coding RSPGetCorrespondingIdentifiersResponse = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RSP - Allocate identifiers response
     /// </summary>
     public static readonly Coding RSPAllocateIdentifiersResponse = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RSP - Personnel Information by Segment Response
     /// </summary>
     public static readonly Coding RSPPersonnelInformationBySegmentResponse = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RSP -Dispense History Response
     /// </summary>
     public static readonly Coding RSPDispenseHistoryResponse = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Find Candidates including Visit Information Response
     /// </summary>
     public static readonly Coding FindCandidatesIncludingVisitInformationResponse = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Get Donor Record Candidates Response Message
     /// </summary>
     public static readonly Coding GetDonorRecordCandidatesResponseMessage = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Segment Pattern Response Message
     /// </summary>
     public static readonly Coding SegmentPatternResponseMessage = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Master file not otherwise specified
     /// </summary>
     public static readonly Coding MFNMFKMasterFileNotOtherwiseSpecified = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Master file - staff practitioner
     /// </summary>
     public static readonly Coding MFNMFKMasterFileStaffPractitioner = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Master file - test/observation
     /// </summary>
     public static readonly Coding MFNMFKMasterFileTestObservation = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Master files charge description
     /// </summary>
     public static readonly Coding MFNMFKMasterFilesChargeDescription = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Patient location master file
     /// </summary>
     public static readonly Coding MFNMFKPatientLocationMasterFile = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Clinical study with phases and schedules master file
     /// </summary>
     public static readonly Coding MFNMFKClinicalStudyWithPhasesAndSchedulesMasterFile = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Clinical study without phases but with schedules master file
     /// </summary>
     public static readonly Coding MFNMFKClinicalStudyWithoutPhasesButWithSchedulesMasterFile = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Test/observation (numeric) master file
     /// </summary>
     public static readonly Coding MFNMFKTestObservationNumericMasterFile = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Test/observation (categorical) master file
     /// </summary>
     public static readonly Coding MFNMFKTestObservationCategoricalMasterFile = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Test /observation batteries master file
     /// </summary>
     public static readonly Coding MFNMFKTestObservationBatteriesMasterFile = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Test/calculated observations master file
     /// </summary>
     public static readonly Coding MFNMFKTestCalculatedObservationsMasterFile = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Master file notification message
     /// </summary>
     public static readonly Coding MFNMFKMasterFileNotificationMessage = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Master file notification - general
     /// </summary>
     public static readonly Coding MFNMFKMasterFileNotificationGeneral = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Master file notification - site defined
     /// </summary>
     public static readonly Coding MFNMFKMasterFileNotificationSiteDefined = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Inventory item master file notification
     /// </summary>
     public static readonly Coding MFNMFKInventoryItemMasterFileNotification = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Master File Notification Inventory Item Enhanced
     /// </summary>
     public static readonly Coding MFNMFKMasterFileNotificationInventoryItemEnhanced = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// DRG Master File Message
     /// </summary>
     public static readonly Coding DRGMasterFileMessage = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFN/MFK - Master file notification - Test/Observation (Payer)
     /// </summary>
     public static readonly Coding MFNMFKMasterFileNotificationTestObservationPayer = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// NMQ/NMR - Application management query message
     /// </summary>
     public static readonly Coding NMQNMRApplicationManagementQueryMessage = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// NMD/ACK - Application management data message (unsolicited)
     /// </summary>
     public static readonly Coding NMDACKApplicationManagementDataMessageUnsolicited = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORM - Order message (also RDE, RDS, RGV, RAS)
     /// </summary>
     public static readonly Coding ORMOrderMessageAlsoRDERDSRGVRAS = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORR - Order response (also RRE, RRD, RRG, RRA)
     /// </summary>
     public static readonly Coding ORROrderResponseAlsoRRERRDRRGRRA = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OMD - Diet order
     /// </summary>
     public static readonly Coding OMDDietOrder = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORD - Diet order acknowledgment
     /// </summary>
     public static readonly Coding ORDDietOrderAcknowledgment = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OMS - Stock requisition order
     /// </summary>
     public static readonly Coding OMSStockRequisitionOrder = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORS - Stock requisition acknowledgment
     /// </summary>
     public static readonly Coding ORSStockRequisitionAcknowledgment = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OMN - Non-stock requisition order
     /// </summary>
     public static readonly Coding OMNNonStockRequisitionOrder = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORN - Non-stock requisition acknowledgment
     /// </summary>
     public static readonly Coding ORNNonStockRequisitionAcknowledgment = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OMP - Pharmacy/treatment order
     /// </summary>
     public static readonly Coding OMPPharmacyTreatmentOrder = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORP - Pharmacy/treatment order acknowledgment
     /// </summary>
     public static readonly Coding ORPPharmacyTreatmentOrderAcknowledgment = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RDE - Pharmacy/treatment encoded order
     /// </summary>
     public static readonly Coding RDEPharmacyTreatmentEncodedOrder = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RRE - Pharmacy/treatment encoded order acknowledgment
     /// </summary>
     public static readonly Coding RREPharmacyTreatmentEncodedOrderAcknowledgment = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RDS - Pharmacy/treatment dispense
     /// </summary>
     public static readonly Coding RDSPharmacyTreatmentDispense = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RRD - Pharmacy/treatment dispense acknowledgment
     /// </summary>
     public static readonly Coding RRDPharmacyTreatmentDispenseAcknowledgment = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RGV - Pharmacy/treatment give
     /// </summary>
     public static readonly Coding RGVPharmacyTreatmentGive = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RRG - Pharmacy/treatment give acknowledgment
     /// </summary>
     public static readonly Coding RRGPharmacyTreatmentGiveAcknowledgment = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RAS - Pharmacy/treatment administration
     /// </summary>
     public static readonly Coding RASPharmacyTreatmentAdministration = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RRA - Pharmacy/treatment administration acknowledgment
     /// </summary>
     public static readonly Coding RRAPharmacyTreatmentAdministrationAcknowledgment = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OMG - General clinical order
     /// </summary>
     public static readonly Coding OMGGeneralClinicalOrder = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORG/ORL - General clinical order response
     /// </summary>
     public static readonly Coding ORGORLGeneralClinicalOrderResponse = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OML - Laboratory order
     /// </summary>
     public static readonly Coding OMLLaboratoryOrder = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORL - General laboratory order response message to any OML
     /// </summary>
     public static readonly Coding ORLGeneralLaboratoryOrderResponseMessageToAnyOML = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OMI - Imaging order
     /// </summary>
     public static readonly Coding OMIImagingOrder = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORI - Imaging order response message to any OMI
     /// </summary>
     public static readonly Coding ORIImagingOrderResponseMessageToAnyOMI = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RDE - Pharmacy/treatment refill authorization request
     /// </summary>
     public static readonly Coding RDEPharmacyTreatmentRefillAuthorizationRequest = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RRE - Pharmacy/Treatment Refill Authorization Acknowledgement
     /// </summary>
     public static readonly Coding RREPharmacyTreatmentRefillAuthorizationAcknowledgement = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OMB - Blood product order
     /// </summary>
     public static readonly Coding OMBBloodProductOrder = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORB - Blood product order acknowledgment
     /// </summary>
     public static readonly Coding ORBBloodProductOrderAcknowledgment = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// BPS - Blood product dispense status
     /// </summary>
     public static readonly Coding BPSBloodProductDispenseStatus = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// BRP - Blood product dispense status acknowledgment
     /// </summary>
     public static readonly Coding BRPBloodProductDispenseStatusAcknowledgment = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// BTS - Blood product transfusion/disposition
     /// </summary>
     public static readonly Coding BTSBloodProductTransfusionDisposition = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// BRT - Blood product transfusion/disposition acknowledgment
     /// </summary>
     public static readonly Coding BRTBloodProductTransfusionDispositionAcknowledgment = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OML - Laboratory order for multiple orders related to a single specimen
     /// </summary>
     public static readonly Coding OMLLaboratoryOrderForMultipleOrdersRelatedToASingleSpecimen = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORL - Laboratory order response message to a multiple order related to single specimen OML
     /// </summary>
     public static readonly Coding ORLLaboratoryOrderResponseMessageToAMultipleOrderRelatedToSingleSpecimenOML = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OML - Laboratory order for multiple orders related to a single container of a specimen
     /// </summary>
     public static readonly Coding OMLLaboratoryOrderForMultipleOrdersRelatedToASingleContainerOfASpecimen = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORL - Laboratory order response message to a single container of a specimen OML
     /// </summary>
     public static readonly Coding ORLLaboratoryOrderResponseMessageToASingleContainerOfASpecimenOML = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OPL - Population/Location-Based Laboratory Order Message
     /// </summary>
     public static readonly Coding OPLPopulationLocationBasedLaboratoryOrderMessage = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OPR - Population/Location-Based Laboratory Order Acknowledgment Message
     /// </summary>
     public static readonly Coding OPRPopulationLocationBasedLaboratoryOrderAcknowledgmentMessage = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Specimen shipment centric laboratory order
     /// </summary>
     public static readonly Coding SpecimenShipmentCentricLaboratoryOrder = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Specimen Shipment Centric Laboratory Order Acknowledgment Message
     /// </summary>
     public static readonly Coding SpecimenShipmentCentricLaboratoryOrderAcknowledgmentMessage = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// DBC - Create Donor Record Message
     /// </summary>
     public static readonly Coding DBCCreateDonorRecordMessage = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// DBU - Update Donor Record Message
     /// </summary>
     public static readonly Coding DBUUpdateDonorRecordMessage = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// General Order Message with Document Payload Acknowledgement Message
     /// </summary>
     public static readonly Coding GeneralOrderMessageWithDocumentPayloadAcknowledgementMessage = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Donor Registration - Minimal Message
     /// </summary>
     public static readonly Coding DonorRegistrationMinimalMessage = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Donor Eligibility Observations Message
     /// </summary>
     public static readonly Coding DonorEligibilityObservationsMessage = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Donor Eligiblity Message
     /// </summary>
     public static readonly Coding DonorEligiblityMessage = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Donor Request to Collect Message
     /// </summary>
     public static readonly Coding DonorRequestToCollectMessage = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Donation Procedure Message
     /// </summary>
     public static readonly Coding DonationProcedureMessage = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Pharmacy/Treatment Dispense Request Message
     /// </summary>
     public static readonly Coding PharmacyTreatmentDispenseRequestMessage = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Pharmacy/Treatment Encoded Order Acknowledgment
     /// </summary>
     public static readonly Coding PharmacyTreatmentEncodedOrderAcknowledgment = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OSU – Order Status Update
     /// </summary>
     public static readonly Coding OSUOrderStatusUpdate = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OSU – Order Status Update Acknowledgement
     /// </summary>
     public static readonly Coding OSUOrderStatusUpdateAcknowledgement = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORL - General Laboratory Order Acknowledgment Message (Patient Optional)
     /// </summary>
     public static readonly Coding ORLGeneralLaboratoryOrderAcknowledgmentMessagePatientOptional = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORL - Laboratory Order Acknowledgment Message  – Multiple Order Per Specimen (Patient Optional)
     /// </summary>
     public static readonly Coding ORLLaboratoryOrderAcknowledgmentMessageMultipleOrderPerSpecimenPatientOptional = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORL - Laboratory Order Acknowledgment Message  – Multiple Order Per Container of Specimen (Patient Optional)
     /// </summary>
     public static readonly Coding ORLLaboratoryOrderAcknowledgmentMessageMultipleOrderPerContainerOfSpecimenPatientOptional = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORL - Specimen Shipment Centric Laboratory Order Acknowledgment Message (Patient Optional)
     /// </summary>
     public static readonly Coding ORLSpecimenShipmentCentricLaboratoryOrderAcknowledgmentMessagePatientOptional = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OMQ- General Order Message with Document Payload
     /// </summary>
     public static readonly Coding OMQGeneralOrderMessageWithDocumentPayload = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORX - General Order Message with Document Payload Acknowledgement Message
     /// </summary>
     public static readonly Coding ORXGeneralOrderMessageWithDocumentPayloadAcknowledgementMessage = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OML - Laboratory order for additional work up
     /// </summary>
     public static readonly Coding OMLLaboratoryOrderForAdditionalWorkUp = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// BAR/ACK - Add patient accounts
     /// </summary>
     public static readonly Coding BARACKAddPatientAccounts = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// BAR/ACK - Purge patient accounts
     /// </summary>
     public static readonly Coding BARACKPurgePatientAccounts = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// DFT/ACK - Post detail financial transaction
     /// </summary>
     public static readonly Coding DFTACKPostDetailFinancialTransaction = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QRY/DSP - Generate bill and A/R statements
     /// </summary>
     public static readonly Coding QRYDSPGenerateBillAndARStatements = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// BAR/ACK - Update account
     /// </summary>
     public static readonly Coding BARACKUpdateAccount = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// BAR/ACK - End account
     /// </summary>
     public static readonly Coding BARACKEndAccount = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PEX - Unsolicited initial individual product experience report
     /// </summary>
     public static readonly Coding PEXUnsolicitedInitialIndividualProductExperienceReport = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PEX - Unsolicited update individual product experience report
     /// </summary>
     public static readonly Coding PEXUnsolicitedUpdateIndividualProductExperienceReport = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SUR - Summary product experience report
     /// </summary>
     public static readonly Coding SURSummaryProductExperienceReport = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// BAR/ACK -Transmit Ambulatory Payment  Classification(APC)
     /// </summary>
     public static readonly Coding BARACKTransmitAmbulatoryPaymentClassificationAPC = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// DFT/ACK - Post Detail Financial Transactions - New
     /// </summary>
     public static readonly Coding DFTACKPostDetailFinancialTransactionsNew = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// BAR/ACK - Update Diagnosis/Procedure
     /// </summary>
     public static readonly Coding BARACKUpdateDiagnosisProcedure = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PPR - PC/ problem add
     /// </summary>
     public static readonly Coding PPRPCProblemAdd = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PPR - PC/ problem update
     /// </summary>
     public static readonly Coding PPRPCProblemUpdate = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PPR - PC/ problem delete
     /// </summary>
     public static readonly Coding PPRPCProblemDelete = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QRY - PC/ problem query
     /// </summary>
     public static readonly Coding QRYPCProblemQuery = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PRR - PC/ problem response
     /// </summary>
     public static readonly Coding PRRPCProblemResponse = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PGL - PC/ goal add
     /// </summary>
     public static readonly Coding PGLPCGoalAdd = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PGL - PC/ goal update
     /// </summary>
     public static readonly Coding PGLPCGoalUpdate = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PGL - PC/ goal delete
     /// </summary>
     public static readonly Coding PGLPCGoalDelete = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QRY - PC/ goal query
     /// </summary>
     public static readonly Coding QRYPCGoalQuery = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PPV - PC/ goal response
     /// </summary>
     public static readonly Coding PPVPCGoalResponse = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PPP - PC/ pathway (problem-oriented) add
     /// </summary>
     public static readonly Coding PPPPCPathwayProblemOrientedAdd = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PPP - PC/ pathway (problem-oriented) update
     /// </summary>
     public static readonly Coding PPPPCPathwayProblemOrientedUpdate = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PPP - PC/ pathway (problem-oriented) delete
     /// </summary>
     public static readonly Coding PPPPCPathwayProblemOrientedDelete = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QRY - PC/ pathway (problem-oriented) query
     /// </summary>
     public static readonly Coding QRYPCPathwayProblemOrientedQuery = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PTR - PC/ pathway (problem-oriented) query response
     /// </summary>
     public static readonly Coding PTRPCPathwayProblemOrientedQueryResponse = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PPG - PC/ pathway (goal-oriented) add
     /// </summary>
     public static readonly Coding PPGPCPathwayGoalOrientedAdd = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PPG - PC/ pathway (goal-oriented) update
     /// </summary>
     public static readonly Coding PPGPCPathwayGoalOrientedUpdate = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PPG - PC/ pathway (goal-oriented) delete
     /// </summary>
     public static readonly Coding PPGPCPathwayGoalOrientedDelete = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QRY - PC/ pathway (goal-oriented) query
     /// </summary>
     public static readonly Coding QRYPCPathwayGoalOrientedQuery = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PPT - PC/ pathway (goal-oriented) query response
     /// </summary>
     public static readonly Coding PPTPCPathwayGoalOrientedQueryResponse = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QRY/DSR - Query sent for immediate response
     /// </summary>
     public static readonly Coding QRYDSRQuerySentForImmediateResponse = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QRY/QCK - Query sent for deferred response
     /// </summary>
     public static readonly Coding QRYQCKQuerySentForDeferredResponse = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// DSR/ACK - Deferred response to a query
     /// </summary>
     public static readonly Coding DSRACKDeferredResponseToAQuery = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// EQQ - Embedded query language query
     /// </summary>
     public static readonly Coding EQQEmbeddedQueryLanguageQuery = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// UDM/ACK - Unsolicited display update message
     /// </summary>
     public static readonly Coding UDMACKUnsolicitedDisplayUpdateMessage = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OSQ/OSR - Query for order status
     /// </summary>
     public static readonly Coding OSQOSRQueryForOrderStatus = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// VQQ - Virtual table query
     /// </summary>
     public static readonly Coding VQQVirtualTableQuery = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SPQ - Stored procedure request
     /// </summary>
     public static readonly Coding SPQStoredProcedureRequest = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RQQ - event replay query
     /// </summary>
     public static readonly Coding RQQEventReplayQuery = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QBP - Query by parameter requesting an RSP segment pattern response
     /// </summary>
     public static readonly Coding QBPQueryByParameterRequestingAnRSPSegmentPatternResponse = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QBP - Query by parameter requesting an  RTB - tabular response
     /// </summary>
     public static readonly Coding QBPQueryByParameterRequestingAnRTBTabularResponse = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QBP - Query by parameter requesting an RDY display response
     /// </summary>
     public static readonly Coding QBPQueryByParameterRequestingAnRDYDisplayResponse = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QSB - Create subscription
     /// </summary>
     public static readonly Coding QSBCreateSubscription = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QVR - Query for previous events
     /// </summary>
     public static readonly Coding QVRQueryForPreviousEvents = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QBP - Get person demographics
     /// </summary>
     public static readonly Coding QBPGetPersonDemographics = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QBP - Find candidates
     /// </summary>
     public static readonly Coding QBPFindCandidates = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QBP - Get corresponding identifiers
     /// </summary>
     public static readonly Coding QBPGetCorrespondingIdentifiers = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QBP - Allocate identifiers
     /// </summary>
     public static readonly Coding QBPAllocateIdentifiers = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QBP - Personnel Information by Segment Query
     /// </summary>
     public static readonly Coding QBPPersonnelInformationBySegmentQuery = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ROR - Pharmacy/treatment order response
     /// </summary>
     public static readonly Coding RORPharmacyTreatmentOrderResponse = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RAR - Pharmacy/treatment administration information
     /// </summary>
     public static readonly Coding RARPharmacyTreatmentAdministrationInformation = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RDR - Pharmacy/treatment dispense information
     /// </summary>
     public static readonly Coding RDRPharmacyTreatmentDispenseInformation = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RER - Pharmacy/treatment encoded order information
     /// </summary>
     public static readonly Coding RERPharmacyTreatmentEncodedOrderInformation = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RGR - Pharmacy/treatment dose information
     /// </summary>
     public static readonly Coding RGRPharmacyTreatmentDoseInformation = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QBP Query Dispense history
     /// </summary>
     public static readonly Coding QBPQueryDispenseHistory = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Find Candidates including Visit Information
     /// </summary>
     public static readonly Coding FindCandidatesIncludingVisitInformation = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QBP - Get Donor Record Candidates
     /// </summary>
     public static readonly Coding QBPGetDonorRecordCandidates = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QBP - Get Donor Record
     /// </summary>
     public static readonly Coding QBPGetDonorRecord = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORU/ACK - Unsolicited transmission of an observation message
     /// </summary>
     public static readonly Coding ORUACKUnsolicitedTransmissionOfAnObservationMessage = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QRY - Query for results of observation
     /// </summary>
     public static readonly Coding QRYQueryForResultsOfObservation = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QRY/DSR Display-oriented results, query/unsol. update (for backward compatibility only) (Replaced by Q05)
     /// </summary>
     public static readonly Coding QRYDSRDisplayOrientedResultsQueryUnsolUpdateForBackwardCompatibilityOnlyReplacedByQ05 = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORF - Response to query; transmission of requested observation
     /// </summary>
     public static readonly Coding ORFResponseToQueryTransmissionOfRequestedObservation = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QRY/DSR - query for display results (See Q01)
     /// </summary>
     public static readonly Coding QRYDSRQueryForDisplayResultsSeeQ01 = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// UDM - unsolicited update/display results (See Q05)
     /// </summary>
     public static readonly Coding UDMUnsolicitedUpdateDisplayResultsSeeQ05 = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// EDR - Enhanced Display Response
     /// </summary>
     public static readonly Coding EDREnhancedDisplayResponse = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// TBR - Tabular Data Response
     /// </summary>
     public static readonly Coding TBRTabularDataResponse = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ERP - Event Replay Response
     /// </summary>
     public static readonly Coding ERPEventReplayResponse = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// R0R - Pharmacy prescription order query response
     /// </summary>
     public static readonly Coding R0RPharmacyPrescriptionOrderQueryResponse = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OUL - Unsolicited laboratory observation
     /// </summary>
     public static readonly Coding OULUnsolicitedLaboratoryObservation = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OUL - Unsolicited Specimen Oriented Observation Message
     /// </summary>
     public static readonly Coding OULUnsolicitedSpecimenOrientedObservationMessage = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OUL - Unsolicited Specimen Container Oriented Observation Message
     /// </summary>
     public static readonly Coding OULUnsolicitedSpecimenContainerOrientedObservationMessage = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OUL - Unsolicited Order Oriented Observation Message
     /// </summary>
     public static readonly Coding OULUnsolicitedOrderOrientedObservationMessage = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OPU - Unsolicited Population/Location-Based Laboratory Observation Message
     /// </summary>
     public static readonly Coding OPUUnsolicitedPopulationLocationBasedLaboratoryObservationMessage = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// OSM - Unsolicited Specimen Shipment Manifest Message
     /// </summary>
     public static readonly Coding OSMUnsolicitedSpecimenShipmentManifestMessage = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORU - Unsolicited Point-Of-Care Observation Message Without Existing Order - Place An Order
     /// </summary>
     public static readonly Coding ORUUnsolicitedPointOfCareObservationMessageWithoutExistingOrderPlaceAnOrder = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORU - Unsolicited New Point-Of-Care Observation Message - Search For An Order
     /// </summary>
     public static readonly Coding ORUUnsolicitedNewPointOfCareObservationMessageSearchForAnOrder = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORU - Unsolicited Pre-Ordered Point-Of-Care Observation
     /// </summary>
     public static readonly Coding ORUUnsolicitedPreOrderedPointOfCareObservation = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORA - Observation Report Acknowledgement
     /// </summary>
     public static readonly Coding ORAObservationReportAcknowledgement = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORU - Unsolicited Report Alarm
     /// </summary>
     public static readonly Coding ORUUnsolicitedReportAlarm = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Observation Report Alert Acknowledgement
     /// </summary>
     public static readonly Coding ObservationReportAlertAcknowledgement = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORU – Unsolicited Device Event Observation Message
     /// </summary>
     public static readonly Coding ORUUnsolicitedDeviceEventObservationMessage = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORU – Unsolicited Patient-Device Association Observation Message
     /// </summary>
     public static readonly Coding ORUUnsolicitedPatientDeviceAssociationObservationMessage = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RAR - Pharmacy administration information query response
     /// </summary>
     public static readonly Coding RARPharmacyAdministrationInformationQueryResponse = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RDR - Pharmacy dispense information query response
     /// </summary>
     public static readonly Coding RDRPharmacyDispenseInformationQueryResponse = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RER - Pharmacy encoded order information query response
     /// </summary>
     public static readonly Coding RERPharmacyEncodedOrderInformationQueryResponse = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// RGR - Pharmacy dose information query response
     /// </summary>
     public static readonly Coding RGRPharmacyDoseInformationQueryResponse = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ROR - Pharmacy prescription order query response
     /// </summary>
     public static readonly Coding RORPharmacyPrescriptionOrderQueryResponse = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SRM/SRR - Request new appointment booking
     /// </summary>
     public static readonly Coding SRMSRRRequestNewAppointmentBooking = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SRM/SRR - Request appointment rescheduling
     /// </summary>
     public static readonly Coding SRMSRRRequestAppointmentRescheduling = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SRM/SRR - Request appointment modification
     /// </summary>
     public static readonly Coding SRMSRRRequestAppointmentModification = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SRM/SRR - Request appointment cancellation
     /// </summary>
     public static readonly Coding SRMSRRRequestAppointmentCancellation = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SRM/SRR - Request appointment discontinuation
     /// </summary>
     public static readonly Coding SRMSRRRequestAppointmentDiscontinuation = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SRM/SRR - Request appointment deletion
     /// </summary>
     public static readonly Coding SRMSRRRequestAppointmentDeletion = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SRM/SRR - Request addition of service/resource on appointment
     /// </summary>
     public static readonly Coding SRMSRRRequestAdditionOfServiceResourceOnAppointment = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SRM/SRR - Request modification of service/resource on appointment
     /// </summary>
     public static readonly Coding SRMSRRRequestModificationOfServiceResourceOnAppointment = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SRM/SRR - Request cancellation of service/resource on appointment
     /// </summary>
     public static readonly Coding SRMSRRRequestCancellationOfServiceResourceOnAppointment = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SRM/SRR - Request discontinuation of service/resource on appointment
     /// </summary>
     public static readonly Coding SRMSRRRequestDiscontinuationOfServiceResourceOnAppointment = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SRM/SRR - Request deletion of service/resource on appointment
     /// </summary>
     public static readonly Coding SRMSRRRequestDeletionOfServiceResourceOnAppointment = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SIU/ACK - Notification of new appointment booking
     /// </summary>
     public static readonly Coding SIUACKNotificationOfNewAppointmentBooking = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SIU/ACK - Notification of appointment rescheduling
     /// </summary>
     public static readonly Coding SIUACKNotificationOfAppointmentRescheduling = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SIU/ACK - Notification of appointment modification
     /// </summary>
     public static readonly Coding SIUACKNotificationOfAppointmentModification = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SIU/ACK - Notification of appointment cancellation
     /// </summary>
     public static readonly Coding SIUACKNotificationOfAppointmentCancellation = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SIU/ACK - Notification of appointment discontinuation
     /// </summary>
     public static readonly Coding SIUACKNotificationOfAppointmentDiscontinuation = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SIU/ACK - Notification of appointment deletion
     /// </summary>
     public static readonly Coding SIUACKNotificationOfAppointmentDeletion = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SIU/ACK - Notification of addition of service/resource on appointment
     /// </summary>
     public static readonly Coding SIUACKNotificationOfAdditionOfServiceResourceOnAppointment = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SIU/ACK - Notification of modification of service/resource on appointment
     /// </summary>
     public static readonly Coding SIUACKNotificationOfModificationOfServiceResourceOnAppointment = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SIU/ACK - Notification of cancellation of service/resource on appointment
     /// </summary>
     public static readonly Coding SIUACKNotificationOfCancellationOfServiceResourceOnAppointment = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SIU/ACK - Notification of discontinuation of service/resource on appointment
     /// </summary>
     public static readonly Coding SIUACKNotificationOfDiscontinuationOfServiceResourceOnAppointment = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SIU/ACK - Notification of deletion of service/resource on appointment
     /// </summary>
     public static readonly Coding SIUACKNotificationOfDeletionOfServiceResourceOnAppointment = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SIU/ACK - Notification of blocked schedule time slot(s)
     /// </summary>
     public static readonly Coding SIUACKNotificationOfBlockedScheduleTimeSlotS = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SIU/ACK - Notification of opened ("unblocked") schedule time slot(s)
     /// </summary>
     public static readonly Coding SIUACKNotificationOfOpenedQuotationUnblockedQuotationScheduleTimeSlotS = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SQM/SQR - Schedule query message and response
     /// </summary>
     public static readonly Coding SQMSQRScheduleQueryMessageAndResponse = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SIU/ACK Notification that patient did not show up for schedule appointment
     /// </summary>
     public static readonly Coding SIUACKNotificationThatPatientDidNotShowUpForScheduleAppointment = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SIU/ACK - Broadcast Notification of Scheduled Appointments
     /// </summary>
     public static readonly Coding SIUACKBroadcastNotificationOfScheduledAppointments = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SLR/SLS - Request new sterilization lot
     /// </summary>
     public static readonly Coding SLRSLSRequestNewSterilizationLot = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SLR/SLS - Request Sterilization lot deletion
     /// </summary>
     public static readonly Coding SLRSLSRequestSterilizationLotDeletion = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// STI/STS - Request item
     /// </summary>
     public static readonly Coding STISTSRequestItem = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SDR/SDS - Request anti-microbial device data
     /// </summary>
     public static readonly Coding SDRSDSRequestAntiMicrobialDeviceData = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SMD/SMS - Request anti-microbial device cycle data
     /// </summary>
     public static readonly Coding SMDSMSRequestAntiMicrobialDeviceCycleData = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// STC/ACK - Notification of sterilization configuration
     /// </summary>
     public static readonly Coding STCACKNotificationOfSterilizationConfiguration = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SLN/ACK - Notification of sterilization lot
     /// </summary>
     public static readonly Coding SLNACKNotificationOfSterilizationLot = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SLN/ACK - Notification of sterilization lot deletion
     /// </summary>
     public static readonly Coding SLNACKNotificationOfSterilizationLotDeletion = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SDN/ACK - Notification of anti-microbial device data
     /// </summary>
     public static readonly Coding SDNACKNotificationOfAntiMicrobialDeviceData = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SCN/ACK - Notification of anti-microbial device cycle data
     /// </summary>
     public static readonly Coding SCNACKNotificationOfAntiMicrobialDeviceCycleData = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Containers Prepared for Specimen Collection
     /// </summary>
     public static readonly Coding ContainersPreparedForSpecimenCollection = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Specimen Collection Successful
     /// </summary>
     public static readonly Coding SpecimenCollectionSuccessful = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Specimen Collection Unsuccessful
     /// </summary>
     public static readonly Coding SpecimenCollectionUnsuccessful = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Specimen Departed
     /// </summary>
     public static readonly Coding SpecimenDeparted = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Specimen Arrived
     /// </summary>
     public static readonly Coding SpecimenArrived = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Specimen Accepted
     /// </summary>
     public static readonly Coding SpecimenAccepted = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Specimen Rejected
     /// </summary>
     public static readonly Coding SpecimenRejected = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Specimen Re-identified
     /// </summary>
     public static readonly Coding SpecimenReIdentified = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Specimen De-identified
     /// </summary>
     public static readonly Coding SpecimenDeIdentified = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Specimen Sent to Archive
     /// </summary>
     public static readonly Coding SpecimenSentToArchive = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Specimen Retrieved from Archive
     /// </summary>
     public static readonly Coding SpecimenRetrievedFromArchive = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Specimen Disposed of
     /// </summary>
     public static readonly Coding SpecimenDisposedOf = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Specimen Procedure Step Successful , with Derived Specimen(s)
     /// </summary>
     public static readonly Coding SpecimenProcedureStepSuccessfulWithDerivedSpecimenS = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Specimen Procedure Step Successful, no Derived Specimen(s)
     /// </summary>
     public static readonly Coding SpecimenProcedureStepSuccessfulNoDerivedSpecimenS = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// Specimen Procedure Step Unsuccessful
     /// </summary>
     public static readonly Coding SpecimenProcedureStepUnsuccessful = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MDM/ACK - Original document notification
     /// </summary>
     public static readonly Coding MDMACKOriginalDocumentNotification = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MDM/ACK - Original document notification and content
     /// </summary>
     public static readonly Coding MDMACKOriginalDocumentNotificationAndContent = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MDM/ACK - Document status change notification
     /// </summary>
     public static readonly Coding MDMACKDocumentStatusChangeNotification = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MDM/ACK - Document status change notification and content
     /// </summary>
     public static readonly Coding MDMACKDocumentStatusChangeNotificationAndContent = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MDM/ACK - Document addendum notification
     /// </summary>
     public static readonly Coding MDMACKDocumentAddendumNotification = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MDM/ACK - Document addendum notification and content
     /// </summary>
     public static readonly Coding MDMACKDocumentAddendumNotificationAndContent = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MDM/ACK - Document edit notification
     /// </summary>
     public static readonly Coding MDMACKDocumentEditNotification = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MDM/ACK - Document edit notification and content
     /// </summary>
     public static readonly Coding MDMACKDocumentEditNotificationAndContent = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MDM/ACK - Document replacement notification
     /// </summary>
     public static readonly Coding MDMACKDocumentReplacementNotification = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MDM/ACK - Document replacement notification and content
     /// </summary>
     public static readonly Coding MDMACKDocumentReplacementNotificationAndContent = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MDM/ACK - Document cancel notification
     /// </summary>
     public static readonly Coding MDMACKDocumentCancelNotification = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QRY/DOC - Document query
     /// </summary>
     public static readonly Coding QRYDOCDocumentQuery = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ESU/ACK - Automated equipment status update
     /// </summary>
     public static readonly Coding ESUACKAutomatedEquipmentStatusUpdate = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ESR/ACK - Automated equipment status request
     /// </summary>
     public static readonly Coding ESRACKAutomatedEquipmentStatusRequest = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SSU/ACK - Specimen status update
     /// </summary>
     public static readonly Coding SSUACKSpecimenStatusUpdate = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// SSR/ACK - specimen status request
     /// </summary>
     public static readonly Coding SSRACKSpecimenStatusRequest = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// INU/ACK  - Automated equipment inventory update
     /// </summary>
     public static readonly Coding INUACKAutomatedEquipmentInventoryUpdate = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// INR/ACK - Automated equipment inventory request
     /// </summary>
     public static readonly Coding INRACKAutomatedEquipmentInventoryRequest = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// EAC/ACK - Automated equipment command
     /// </summary>
     public static readonly Coding EACACKAutomatedEquipmentCommand = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// EAR/ACK - Automated equipment response
     /// </summary>
     public static readonly Coding EARACKAutomatedEquipmentResponse = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// EAN/ACK - Automated equipment notification
     /// </summary>
     public static readonly Coding EANACKAutomatedEquipmentNotification = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// TCU/ACK - Automated equipment test code settings update
     /// </summary>
     public static readonly Coding TCUACKAutomatedEquipmentTestCodeSettingsUpdate = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// TCR/ACK - Automated equipment test code settings request
     /// </summary>
     public static readonly Coding TCRACKAutomatedEquipmentTestCodeSettingsRequest = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// LSU/ACK - Automated equipment log/service update
     /// </summary>
     public static readonly Coding LSUACKAutomatedEquipmentLogServiceUpdate = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// LSR/ACK - Automated equipment log/service request
     /// </summary>
     public static readonly Coding LSRACKAutomatedEquipmentLogServiceRequest = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// INR/ACK – Automated Equipment Inventory Request
     /// </summary>
     public static readonly Coding INRACKAutomatedEquipmentInventoryRequest_2 = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// VXQ - Query for vaccination record
     /// </summary>
     public static readonly Coding VXQQueryForVaccinationRecord = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// VXX - Response to vaccination query returning multiple PID matches
     /// </summary>
     public static readonly Coding VXXResponseToVaccinationQueryReturningMultiplePIDMatches = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// VXR - Vaccination record response
     /// </summary>
     public static readonly Coding VXRVaccinationRecordResponse = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// VXU - Unsolicited vaccination record update
     /// </summary>
     public static readonly Coding VXUUnsolicitedVaccinationRecordUpdate = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFQ/MFR - Master files query (use event same as asking for e.g., M05 - location)
     /// </summary>
     public static readonly Coding MFQMFRMasterFilesQueryUseEventSameAsAskingForEGM05Location = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// MFQ/MFR - Master files query (use event same as asking for e.g., M05 - location)
     /// </summary>
     public static readonly Coding MFQMFRMasterFilesQueryUseEventSameAsAskingForEGM05Location_2 = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// ORU - Waveform result, unsolicited transmission of requested information
     /// </summary>
     public static readonly Coding ORUWaveformResultUnsolicitedTransmissionOfRequestedInformation = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// QRF - Waveform result, response to query
     /// </summary>
     public static readonly Coding QRFWaveformResultResponseToQuery = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0003"
     };
     /// <summary>
-    /// 
+    /// PEX - Product experience
     /// </summary>
     public static readonly Coding PEXProductExperience = new Coding
     {
@@ -3474,9 +3474,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKAdmitVisitNotification = "A01";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKAdmitVisitNotification
+    /// </summary>
+    public const string LiteralV20003ADTACKAdmitVisitNotification = "http://terminology.hl7.org/CodeSystem/v2-0003#A01";
+
+    /// <summary>
     /// Literal for code: ADTACKTransferAPatient
     /// </summary>
     public const string LiteralADTACKTransferAPatient = "A02";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKTransferAPatient
+    /// </summary>
+    public const string LiteralV20003ADTACKTransferAPatient = "http://terminology.hl7.org/CodeSystem/v2-0003#A02";
 
     /// <summary>
     /// Literal for code: ADTACKDischargeEndVisit
@@ -3484,9 +3494,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKDischargeEndVisit = "A03";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKDischargeEndVisit
+    /// </summary>
+    public const string LiteralV20003ADTACKDischargeEndVisit = "http://terminology.hl7.org/CodeSystem/v2-0003#A03";
+
+    /// <summary>
     /// Literal for code: ADTACKRegisterAPatient
     /// </summary>
     public const string LiteralADTACKRegisterAPatient = "A04";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKRegisterAPatient
+    /// </summary>
+    public const string LiteralV20003ADTACKRegisterAPatient = "http://terminology.hl7.org/CodeSystem/v2-0003#A04";
 
     /// <summary>
     /// Literal for code: ADTACKPreAdmitAPatient
@@ -3494,9 +3514,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKPreAdmitAPatient = "A05";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKPreAdmitAPatient
+    /// </summary>
+    public const string LiteralV20003ADTACKPreAdmitAPatient = "http://terminology.hl7.org/CodeSystem/v2-0003#A05";
+
+    /// <summary>
     /// Literal for code: ADTACKChangeAnOutpatientToAnInpatient
     /// </summary>
     public const string LiteralADTACKChangeAnOutpatientToAnInpatient = "A06";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKChangeAnOutpatientToAnInpatient
+    /// </summary>
+    public const string LiteralV20003ADTACKChangeAnOutpatientToAnInpatient = "http://terminology.hl7.org/CodeSystem/v2-0003#A06";
 
     /// <summary>
     /// Literal for code: ADTACKChangeAnInpatientToAnOutpatient
@@ -3504,9 +3534,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKChangeAnInpatientToAnOutpatient = "A07";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKChangeAnInpatientToAnOutpatient
+    /// </summary>
+    public const string LiteralV20003ADTACKChangeAnInpatientToAnOutpatient = "http://terminology.hl7.org/CodeSystem/v2-0003#A07";
+
+    /// <summary>
     /// Literal for code: ADTACKUpdatePatientInformation
     /// </summary>
     public const string LiteralADTACKUpdatePatientInformation = "A08";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKUpdatePatientInformation
+    /// </summary>
+    public const string LiteralV20003ADTACKUpdatePatientInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#A08";
 
     /// <summary>
     /// Literal for code: ADTACKPatientDepartingTracking
@@ -3514,9 +3554,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKPatientDepartingTracking = "A09";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKPatientDepartingTracking
+    /// </summary>
+    public const string LiteralV20003ADTACKPatientDepartingTracking = "http://terminology.hl7.org/CodeSystem/v2-0003#A09";
+
+    /// <summary>
     /// Literal for code: ADTACKPatientArrivingTracking
     /// </summary>
     public const string LiteralADTACKPatientArrivingTracking = "A10";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKPatientArrivingTracking
+    /// </summary>
+    public const string LiteralV20003ADTACKPatientArrivingTracking = "http://terminology.hl7.org/CodeSystem/v2-0003#A10";
 
     /// <summary>
     /// Literal for code: ADTACKCancelAdmitVisitNotification
@@ -3524,9 +3574,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKCancelAdmitVisitNotification = "A11";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKCancelAdmitVisitNotification
+    /// </summary>
+    public const string LiteralV20003ADTACKCancelAdmitVisitNotification = "http://terminology.hl7.org/CodeSystem/v2-0003#A11";
+
+    /// <summary>
     /// Literal for code: ADTACKCancelTransfer
     /// </summary>
     public const string LiteralADTACKCancelTransfer = "A12";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKCancelTransfer
+    /// </summary>
+    public const string LiteralV20003ADTACKCancelTransfer = "http://terminology.hl7.org/CodeSystem/v2-0003#A12";
 
     /// <summary>
     /// Literal for code: ADTACKCancelDischargeEndVisit
@@ -3534,9 +3594,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKCancelDischargeEndVisit = "A13";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKCancelDischargeEndVisit
+    /// </summary>
+    public const string LiteralV20003ADTACKCancelDischargeEndVisit = "http://terminology.hl7.org/CodeSystem/v2-0003#A13";
+
+    /// <summary>
     /// Literal for code: ADTACKPendingAdmit
     /// </summary>
     public const string LiteralADTACKPendingAdmit = "A14";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKPendingAdmit
+    /// </summary>
+    public const string LiteralV20003ADTACKPendingAdmit = "http://terminology.hl7.org/CodeSystem/v2-0003#A14";
 
     /// <summary>
     /// Literal for code: ADTACKPendingTransfer
@@ -3544,9 +3614,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKPendingTransfer = "A15";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKPendingTransfer
+    /// </summary>
+    public const string LiteralV20003ADTACKPendingTransfer = "http://terminology.hl7.org/CodeSystem/v2-0003#A15";
+
+    /// <summary>
     /// Literal for code: ADTACKPendingDischarge
     /// </summary>
     public const string LiteralADTACKPendingDischarge = "A16";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKPendingDischarge
+    /// </summary>
+    public const string LiteralV20003ADTACKPendingDischarge = "http://terminology.hl7.org/CodeSystem/v2-0003#A16";
 
     /// <summary>
     /// Literal for code: ADTACKSwapPatients
@@ -3554,9 +3634,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKSwapPatients = "A17";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKSwapPatients
+    /// </summary>
+    public const string LiteralV20003ADTACKSwapPatients = "http://terminology.hl7.org/CodeSystem/v2-0003#A17";
+
+    /// <summary>
     /// Literal for code: ADTACKMergePatientInformation
     /// </summary>
     public const string LiteralADTACKMergePatientInformation = "A18";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKMergePatientInformation
+    /// </summary>
+    public const string LiteralV20003ADTACKMergePatientInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#A18";
 
     /// <summary>
     /// Literal for code: QRYADRPatientQuery
@@ -3564,9 +3654,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQRYADRPatientQuery = "A19";
 
     /// <summary>
+    /// Literal for code: V20003QRYADRPatientQuery
+    /// </summary>
+    public const string LiteralV20003QRYADRPatientQuery = "http://terminology.hl7.org/CodeSystem/v2-0003#A19";
+
+    /// <summary>
     /// Literal for code: ADTACKBedStatusUpdate
     /// </summary>
     public const string LiteralADTACKBedStatusUpdate = "A20";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKBedStatusUpdate
+    /// </summary>
+    public const string LiteralV20003ADTACKBedStatusUpdate = "http://terminology.hl7.org/CodeSystem/v2-0003#A20";
 
     /// <summary>
     /// Literal for code: ADTACKPatientGoesOnAQuotationLeaveOfAbsenceQuotation
@@ -3574,9 +3674,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKPatientGoesOnAQuotationLeaveOfAbsenceQuotation = "A21";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKPatientGoesOnAQuotationLeaveOfAbsenceQuotation
+    /// </summary>
+    public const string LiteralV20003ADTACKPatientGoesOnAQuotationLeaveOfAbsenceQuotation = "http://terminology.hl7.org/CodeSystem/v2-0003#A21";
+
+    /// <summary>
     /// Literal for code: ADTACKPatientReturnsFromAQuotationLeaveOfAbsenceQuotation
     /// </summary>
     public const string LiteralADTACKPatientReturnsFromAQuotationLeaveOfAbsenceQuotation = "A22";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKPatientReturnsFromAQuotationLeaveOfAbsenceQuotation
+    /// </summary>
+    public const string LiteralV20003ADTACKPatientReturnsFromAQuotationLeaveOfAbsenceQuotation = "http://terminology.hl7.org/CodeSystem/v2-0003#A22";
 
     /// <summary>
     /// Literal for code: ADTACKDeleteAPatientRecord
@@ -3584,9 +3694,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKDeleteAPatientRecord = "A23";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKDeleteAPatientRecord
+    /// </summary>
+    public const string LiteralV20003ADTACKDeleteAPatientRecord = "http://terminology.hl7.org/CodeSystem/v2-0003#A23";
+
+    /// <summary>
     /// Literal for code: ADTACKLinkPatientInformation
     /// </summary>
     public const string LiteralADTACKLinkPatientInformation = "A24";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKLinkPatientInformation
+    /// </summary>
+    public const string LiteralV20003ADTACKLinkPatientInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#A24";
 
     /// <summary>
     /// Literal for code: ADTACKCancelPendingDischarge
@@ -3594,9 +3714,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKCancelPendingDischarge = "A25";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKCancelPendingDischarge
+    /// </summary>
+    public const string LiteralV20003ADTACKCancelPendingDischarge = "http://terminology.hl7.org/CodeSystem/v2-0003#A25";
+
+    /// <summary>
     /// Literal for code: ADTACKCancelPendingTransfer
     /// </summary>
     public const string LiteralADTACKCancelPendingTransfer = "A26";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKCancelPendingTransfer
+    /// </summary>
+    public const string LiteralV20003ADTACKCancelPendingTransfer = "http://terminology.hl7.org/CodeSystem/v2-0003#A26";
 
     /// <summary>
     /// Literal for code: ADTACKCancelPendingAdmit
@@ -3604,9 +3734,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKCancelPendingAdmit = "A27";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKCancelPendingAdmit
+    /// </summary>
+    public const string LiteralV20003ADTACKCancelPendingAdmit = "http://terminology.hl7.org/CodeSystem/v2-0003#A27";
+
+    /// <summary>
     /// Literal for code: ADTACKAddPersonInformation
     /// </summary>
     public const string LiteralADTACKAddPersonInformation = "A28";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKAddPersonInformation
+    /// </summary>
+    public const string LiteralV20003ADTACKAddPersonInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#A28";
 
     /// <summary>
     /// Literal for code: ADTACKDeletePersonInformation
@@ -3614,9 +3754,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKDeletePersonInformation = "A29";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKDeletePersonInformation
+    /// </summary>
+    public const string LiteralV20003ADTACKDeletePersonInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#A29";
+
+    /// <summary>
     /// Literal for code: ADTACKMergePersonInformation
     /// </summary>
     public const string LiteralADTACKMergePersonInformation = "A30";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKMergePersonInformation
+    /// </summary>
+    public const string LiteralV20003ADTACKMergePersonInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#A30";
 
     /// <summary>
     /// Literal for code: ADTACKUpdatePersonInformation
@@ -3624,9 +3774,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKUpdatePersonInformation = "A31";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKUpdatePersonInformation
+    /// </summary>
+    public const string LiteralV20003ADTACKUpdatePersonInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#A31";
+
+    /// <summary>
     /// Literal for code: ADTACKCancelPatientArrivingTracking
     /// </summary>
     public const string LiteralADTACKCancelPatientArrivingTracking = "A32";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKCancelPatientArrivingTracking
+    /// </summary>
+    public const string LiteralV20003ADTACKCancelPatientArrivingTracking = "http://terminology.hl7.org/CodeSystem/v2-0003#A32";
 
     /// <summary>
     /// Literal for code: ADTACKCancelPatientDepartingTracking
@@ -3634,9 +3794,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKCancelPatientDepartingTracking = "A33";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKCancelPatientDepartingTracking
+    /// </summary>
+    public const string LiteralV20003ADTACKCancelPatientDepartingTracking = "http://terminology.hl7.org/CodeSystem/v2-0003#A33";
+
+    /// <summary>
     /// Literal for code: ADTACKMergePatientInformationPatientIDOnly
     /// </summary>
     public const string LiteralADTACKMergePatientInformationPatientIDOnly = "A34";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKMergePatientInformationPatientIDOnly
+    /// </summary>
+    public const string LiteralV20003ADTACKMergePatientInformationPatientIDOnly = "http://terminology.hl7.org/CodeSystem/v2-0003#A34";
 
     /// <summary>
     /// Literal for code: ADTACKMergePatientInformationAccountNumberOnly
@@ -3644,9 +3814,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKMergePatientInformationAccountNumberOnly = "A35";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKMergePatientInformationAccountNumberOnly
+    /// </summary>
+    public const string LiteralV20003ADTACKMergePatientInformationAccountNumberOnly = "http://terminology.hl7.org/CodeSystem/v2-0003#A35";
+
+    /// <summary>
     /// Literal for code: ADTACKMergePatientInformationPatientIDAndAccountNumber
     /// </summary>
     public const string LiteralADTACKMergePatientInformationPatientIDAndAccountNumber = "A36";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKMergePatientInformationPatientIDAndAccountNumber
+    /// </summary>
+    public const string LiteralV20003ADTACKMergePatientInformationPatientIDAndAccountNumber = "http://terminology.hl7.org/CodeSystem/v2-0003#A36";
 
     /// <summary>
     /// Literal for code: ADTACKUnlinkPatientInformation
@@ -3654,9 +3834,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKUnlinkPatientInformation = "A37";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKUnlinkPatientInformation
+    /// </summary>
+    public const string LiteralV20003ADTACKUnlinkPatientInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#A37";
+
+    /// <summary>
     /// Literal for code: ADTACKCancelPreAdmit
     /// </summary>
     public const string LiteralADTACKCancelPreAdmit = "A38";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKCancelPreAdmit
+    /// </summary>
+    public const string LiteralV20003ADTACKCancelPreAdmit = "http://terminology.hl7.org/CodeSystem/v2-0003#A38";
 
     /// <summary>
     /// Literal for code: ADTACKMergePersonPatientID
@@ -3664,9 +3854,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKMergePersonPatientID = "A39";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKMergePersonPatientID
+    /// </summary>
+    public const string LiteralV20003ADTACKMergePersonPatientID = "http://terminology.hl7.org/CodeSystem/v2-0003#A39";
+
+    /// <summary>
     /// Literal for code: ADTACKMergePatientPatientIdentifierList
     /// </summary>
     public const string LiteralADTACKMergePatientPatientIdentifierList = "A40";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKMergePatientPatientIdentifierList
+    /// </summary>
+    public const string LiteralV20003ADTACKMergePatientPatientIdentifierList = "http://terminology.hl7.org/CodeSystem/v2-0003#A40";
 
     /// <summary>
     /// Literal for code: ADTACKMergeAccountPatientAccountNumber
@@ -3674,9 +3874,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKMergeAccountPatientAccountNumber = "A41";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKMergeAccountPatientAccountNumber
+    /// </summary>
+    public const string LiteralV20003ADTACKMergeAccountPatientAccountNumber = "http://terminology.hl7.org/CodeSystem/v2-0003#A41";
+
+    /// <summary>
     /// Literal for code: ADTACKMergeVisitVisitNumber
     /// </summary>
     public const string LiteralADTACKMergeVisitVisitNumber = "A42";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKMergeVisitVisitNumber
+    /// </summary>
+    public const string LiteralV20003ADTACKMergeVisitVisitNumber = "http://terminology.hl7.org/CodeSystem/v2-0003#A42";
 
     /// <summary>
     /// Literal for code: ADTACKMovePatientInformationPatientIdentifierList
@@ -3684,9 +3894,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKMovePatientInformationPatientIdentifierList = "A43";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKMovePatientInformationPatientIdentifierList
+    /// </summary>
+    public const string LiteralV20003ADTACKMovePatientInformationPatientIdentifierList = "http://terminology.hl7.org/CodeSystem/v2-0003#A43";
+
+    /// <summary>
     /// Literal for code: ADTACKMoveAccountInformationPatientAccountNumber
     /// </summary>
     public const string LiteralADTACKMoveAccountInformationPatientAccountNumber = "A44";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKMoveAccountInformationPatientAccountNumber
+    /// </summary>
+    public const string LiteralV20003ADTACKMoveAccountInformationPatientAccountNumber = "http://terminology.hl7.org/CodeSystem/v2-0003#A44";
 
     /// <summary>
     /// Literal for code: ADTACKMoveVisitInformationVisitNumber
@@ -3694,9 +3914,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKMoveVisitInformationVisitNumber = "A45";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKMoveVisitInformationVisitNumber
+    /// </summary>
+    public const string LiteralV20003ADTACKMoveVisitInformationVisitNumber = "http://terminology.hl7.org/CodeSystem/v2-0003#A45";
+
+    /// <summary>
     /// Literal for code: ADTACKChangePatientID
     /// </summary>
     public const string LiteralADTACKChangePatientID = "A46";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKChangePatientID
+    /// </summary>
+    public const string LiteralV20003ADTACKChangePatientID = "http://terminology.hl7.org/CodeSystem/v2-0003#A46";
 
     /// <summary>
     /// Literal for code: ADTACKChangePatientIdentifierList
@@ -3704,9 +3934,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKChangePatientIdentifierList = "A47";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKChangePatientIdentifierList
+    /// </summary>
+    public const string LiteralV20003ADTACKChangePatientIdentifierList = "http://terminology.hl7.org/CodeSystem/v2-0003#A47";
+
+    /// <summary>
     /// Literal for code: ADTACKChangeAlternatePatientID
     /// </summary>
     public const string LiteralADTACKChangeAlternatePatientID = "A48";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKChangeAlternatePatientID
+    /// </summary>
+    public const string LiteralV20003ADTACKChangeAlternatePatientID = "http://terminology.hl7.org/CodeSystem/v2-0003#A48";
 
     /// <summary>
     /// Literal for code: ADTACKChangePatientAccountNumber
@@ -3714,9 +3954,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKChangePatientAccountNumber = "A49";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKChangePatientAccountNumber
+    /// </summary>
+    public const string LiteralV20003ADTACKChangePatientAccountNumber = "http://terminology.hl7.org/CodeSystem/v2-0003#A49";
+
+    /// <summary>
     /// Literal for code: ADTACKChangeVisitNumber
     /// </summary>
     public const string LiteralADTACKChangeVisitNumber = "A50";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKChangeVisitNumber
+    /// </summary>
+    public const string LiteralV20003ADTACKChangeVisitNumber = "http://terminology.hl7.org/CodeSystem/v2-0003#A50";
 
     /// <summary>
     /// Literal for code: ADTACKChangeAlternateVisitID
@@ -3724,9 +3974,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKChangeAlternateVisitID = "A51";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKChangeAlternateVisitID
+    /// </summary>
+    public const string LiteralV20003ADTACKChangeAlternateVisitID = "http://terminology.hl7.org/CodeSystem/v2-0003#A51";
+
+    /// <summary>
     /// Literal for code: ADTACKCancelLeaveOfAbsenceForAPatient
     /// </summary>
     public const string LiteralADTACKCancelLeaveOfAbsenceForAPatient = "A52";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKCancelLeaveOfAbsenceForAPatient
+    /// </summary>
+    public const string LiteralV20003ADTACKCancelLeaveOfAbsenceForAPatient = "http://terminology.hl7.org/CodeSystem/v2-0003#A52";
 
     /// <summary>
     /// Literal for code: ADTACKCancelPatientReturnsFromALeaveOfAbsence
@@ -3734,9 +3994,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKCancelPatientReturnsFromALeaveOfAbsence = "A53";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKCancelPatientReturnsFromALeaveOfAbsence
+    /// </summary>
+    public const string LiteralV20003ADTACKCancelPatientReturnsFromALeaveOfAbsence = "http://terminology.hl7.org/CodeSystem/v2-0003#A53";
+
+    /// <summary>
     /// Literal for code: ADTACKChangeAttendingDoctor
     /// </summary>
     public const string LiteralADTACKChangeAttendingDoctor = "A54";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKChangeAttendingDoctor
+    /// </summary>
+    public const string LiteralV20003ADTACKChangeAttendingDoctor = "http://terminology.hl7.org/CodeSystem/v2-0003#A54";
 
     /// <summary>
     /// Literal for code: ADTACKCancelChangeAttendingDoctor
@@ -3744,9 +4014,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKCancelChangeAttendingDoctor = "A55";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKCancelChangeAttendingDoctor
+    /// </summary>
+    public const string LiteralV20003ADTACKCancelChangeAttendingDoctor = "http://terminology.hl7.org/CodeSystem/v2-0003#A55";
+
+    /// <summary>
     /// Literal for code: ADTACKUpdateAllergyInformation
     /// </summary>
     public const string LiteralADTACKUpdateAllergyInformation = "A60";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKUpdateAllergyInformation
+    /// </summary>
+    public const string LiteralV20003ADTACKUpdateAllergyInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#A60";
 
     /// <summary>
     /// Literal for code: ADTACKChangeConsultingDoctor
@@ -3754,9 +4034,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralADTACKChangeConsultingDoctor = "A61";
 
     /// <summary>
+    /// Literal for code: V20003ADTACKChangeConsultingDoctor
+    /// </summary>
+    public const string LiteralV20003ADTACKChangeConsultingDoctor = "http://terminology.hl7.org/CodeSystem/v2-0003#A61";
+
+    /// <summary>
     /// Literal for code: ADTACKCancelChangeConsultingDoctor
     /// </summary>
     public const string LiteralADTACKCancelChangeConsultingDoctor = "A62";
+
+    /// <summary>
+    /// Literal for code: V20003ADTACKCancelChangeConsultingDoctor
+    /// </summary>
+    public const string LiteralV20003ADTACKCancelChangeConsultingDoctor = "http://terminology.hl7.org/CodeSystem/v2-0003#A62";
 
     /// <summary>
     /// Literal for code: PMUACKAddPersonnelRecord
@@ -3764,9 +4054,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPMUACKAddPersonnelRecord = "B01";
 
     /// <summary>
+    /// Literal for code: V20003PMUACKAddPersonnelRecord
+    /// </summary>
+    public const string LiteralV20003PMUACKAddPersonnelRecord = "http://terminology.hl7.org/CodeSystem/v2-0003#B01";
+
+    /// <summary>
     /// Literal for code: PMUACKUpdatePersonnelRecord
     /// </summary>
     public const string LiteralPMUACKUpdatePersonnelRecord = "B02";
+
+    /// <summary>
+    /// Literal for code: V20003PMUACKUpdatePersonnelRecord
+    /// </summary>
+    public const string LiteralV20003PMUACKUpdatePersonnelRecord = "http://terminology.hl7.org/CodeSystem/v2-0003#B02";
 
     /// <summary>
     /// Literal for code: PMUACKDeletePersonnelReCord
@@ -3774,9 +4074,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPMUACKDeletePersonnelReCord = "B03";
 
     /// <summary>
+    /// Literal for code: V20003PMUACKDeletePersonnelReCord
+    /// </summary>
+    public const string LiteralV20003PMUACKDeletePersonnelReCord = "http://terminology.hl7.org/CodeSystem/v2-0003#B03";
+
+    /// <summary>
     /// Literal for code: PMUACKActivePracticingPerson
     /// </summary>
     public const string LiteralPMUACKActivePracticingPerson = "B04";
+
+    /// <summary>
+    /// Literal for code: V20003PMUACKActivePracticingPerson
+    /// </summary>
+    public const string LiteralV20003PMUACKActivePracticingPerson = "http://terminology.hl7.org/CodeSystem/v2-0003#B04";
 
     /// <summary>
     /// Literal for code: PMUACKDeactivatePracticingPerson
@@ -3784,9 +4094,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPMUACKDeactivatePracticingPerson = "B05";
 
     /// <summary>
+    /// Literal for code: V20003PMUACKDeactivatePracticingPerson
+    /// </summary>
+    public const string LiteralV20003PMUACKDeactivatePracticingPerson = "http://terminology.hl7.org/CodeSystem/v2-0003#B05";
+
+    /// <summary>
     /// Literal for code: PMUACKTerminatePracticingPerson
     /// </summary>
     public const string LiteralPMUACKTerminatePracticingPerson = "B06";
+
+    /// <summary>
+    /// Literal for code: V20003PMUACKTerminatePracticingPerson
+    /// </summary>
+    public const string LiteralV20003PMUACKTerminatePracticingPerson = "http://terminology.hl7.org/CodeSystem/v2-0003#B06";
 
     /// <summary>
     /// Literal for code: PMUACKGrantCertificatePermission
@@ -3794,9 +4114,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPMUACKGrantCertificatePermission = "B07";
 
     /// <summary>
+    /// Literal for code: V20003PMUACKGrantCertificatePermission
+    /// </summary>
+    public const string LiteralV20003PMUACKGrantCertificatePermission = "http://terminology.hl7.org/CodeSystem/v2-0003#B07";
+
+    /// <summary>
     /// Literal for code: PMUACKRevokeCertificatePermission
     /// </summary>
     public const string LiteralPMUACKRevokeCertificatePermission = "B08";
+
+    /// <summary>
+    /// Literal for code: V20003PMUACKRevokeCertificatePermission
+    /// </summary>
+    public const string LiteralV20003PMUACKRevokeCertificatePermission = "http://terminology.hl7.org/CodeSystem/v2-0003#B08";
 
     /// <summary>
     /// Literal for code: CRMRegisterAPatientOnAClinicalTrial
@@ -3804,9 +4134,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCRMRegisterAPatientOnAClinicalTrial = "C01";
 
     /// <summary>
+    /// Literal for code: V20003CRMRegisterAPatientOnAClinicalTrial
+    /// </summary>
+    public const string LiteralV20003CRMRegisterAPatientOnAClinicalTrial = "http://terminology.hl7.org/CodeSystem/v2-0003#C01";
+
+    /// <summary>
     /// Literal for code: CRMCancelAPatientRegistrationOnClinicalTrialForClericalMistakesOnly
     /// </summary>
     public const string LiteralCRMCancelAPatientRegistrationOnClinicalTrialForClericalMistakesOnly = "C02";
+
+    /// <summary>
+    /// Literal for code: V20003CRMCancelAPatientRegistrationOnClinicalTrialForClericalMistakesOnly
+    /// </summary>
+    public const string LiteralV20003CRMCancelAPatientRegistrationOnClinicalTrialForClericalMistakesOnly = "http://terminology.hl7.org/CodeSystem/v2-0003#C02";
 
     /// <summary>
     /// Literal for code: CRMCorrectUpdateRegistrationInformation
@@ -3814,9 +4154,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCRMCorrectUpdateRegistrationInformation = "C03";
 
     /// <summary>
+    /// Literal for code: V20003CRMCorrectUpdateRegistrationInformation
+    /// </summary>
+    public const string LiteralV20003CRMCorrectUpdateRegistrationInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#C03";
+
+    /// <summary>
     /// Literal for code: CRMPatientHasGoneOffAClinicalTrial
     /// </summary>
     public const string LiteralCRMPatientHasGoneOffAClinicalTrial = "C04";
+
+    /// <summary>
+    /// Literal for code: V20003CRMPatientHasGoneOffAClinicalTrial
+    /// </summary>
+    public const string LiteralV20003CRMPatientHasGoneOffAClinicalTrial = "http://terminology.hl7.org/CodeSystem/v2-0003#C04";
 
     /// <summary>
     /// Literal for code: CRMPatientEntersPhaseOfClinicalTrial
@@ -3824,9 +4174,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCRMPatientEntersPhaseOfClinicalTrial = "C05";
 
     /// <summary>
+    /// Literal for code: V20003CRMPatientEntersPhaseOfClinicalTrial
+    /// </summary>
+    public const string LiteralV20003CRMPatientEntersPhaseOfClinicalTrial = "http://terminology.hl7.org/CodeSystem/v2-0003#C05";
+
+    /// <summary>
     /// Literal for code: CRMCancelPatientEnteringAPhaseClericalMistake
     /// </summary>
     public const string LiteralCRMCancelPatientEnteringAPhaseClericalMistake = "C06";
+
+    /// <summary>
+    /// Literal for code: V20003CRMCancelPatientEnteringAPhaseClericalMistake
+    /// </summary>
+    public const string LiteralV20003CRMCancelPatientEnteringAPhaseClericalMistake = "http://terminology.hl7.org/CodeSystem/v2-0003#C06";
 
     /// <summary>
     /// Literal for code: CRMCorrectUpdatePhaseInformation
@@ -3834,9 +4194,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCRMCorrectUpdatePhaseInformation = "C07";
 
     /// <summary>
+    /// Literal for code: V20003CRMCorrectUpdatePhaseInformation
+    /// </summary>
+    public const string LiteralV20003CRMCorrectUpdatePhaseInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#C07";
+
+    /// <summary>
     /// Literal for code: CRMPatientHasGoneOffPhaseOfClinicalTrial
     /// </summary>
     public const string LiteralCRMPatientHasGoneOffPhaseOfClinicalTrial = "C08";
+
+    /// <summary>
+    /// Literal for code: V20003CRMPatientHasGoneOffPhaseOfClinicalTrial
+    /// </summary>
+    public const string LiteralV20003CRMPatientHasGoneOffPhaseOfClinicalTrial = "http://terminology.hl7.org/CodeSystem/v2-0003#C08";
 
     /// <summary>
     /// Literal for code: CSUAutomatedTimeIntervalsForReportingLikeMonthly
@@ -3844,9 +4214,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCSUAutomatedTimeIntervalsForReportingLikeMonthly = "C09";
 
     /// <summary>
+    /// Literal for code: V20003CSUAutomatedTimeIntervalsForReportingLikeMonthly
+    /// </summary>
+    public const string LiteralV20003CSUAutomatedTimeIntervalsForReportingLikeMonthly = "http://terminology.hl7.org/CodeSystem/v2-0003#C09";
+
+    /// <summary>
     /// Literal for code: CSUPatientCompletesTheClinicalTrial
     /// </summary>
     public const string LiteralCSUPatientCompletesTheClinicalTrial = "C10";
+
+    /// <summary>
+    /// Literal for code: V20003CSUPatientCompletesTheClinicalTrial
+    /// </summary>
+    public const string LiteralV20003CSUPatientCompletesTheClinicalTrial = "http://terminology.hl7.org/CodeSystem/v2-0003#C10";
 
     /// <summary>
     /// Literal for code: CSUPatientCompletesAPhaseOfTheClinicalTrial
@@ -3854,9 +4234,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCSUPatientCompletesAPhaseOfTheClinicalTrial = "C11";
 
     /// <summary>
+    /// Literal for code: V20003CSUPatientCompletesAPhaseOfTheClinicalTrial
+    /// </summary>
+    public const string LiteralV20003CSUPatientCompletesAPhaseOfTheClinicalTrial = "http://terminology.hl7.org/CodeSystem/v2-0003#C11";
+
+    /// <summary>
     /// Literal for code: CSUUpdateCorrectionOfPatientOrderResultInformation
     /// </summary>
     public const string LiteralCSUUpdateCorrectionOfPatientOrderResultInformation = "C12";
+
+    /// <summary>
+    /// Literal for code: V20003CSUUpdateCorrectionOfPatientOrderResultInformation
+    /// </summary>
+    public const string LiteralV20003CSUUpdateCorrectionOfPatientOrderResultInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#C12";
 
     /// <summary>
     /// Literal for code: CancelQuery
@@ -3864,9 +4254,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCancelQuery = "CNQ";
 
     /// <summary>
+    /// Literal for code: V20003CancelQuery
+    /// </summary>
+    public const string LiteralV20003CancelQuery = "http://terminology.hl7.org/CodeSystem/v2-0003#CNQ";
+
+    /// <summary>
     /// Literal for code: SubmitHealthCareServicesInvoice
     /// </summary>
     public const string LiteralSubmitHealthCareServicesInvoice = "E01";
+
+    /// <summary>
+    /// Literal for code: V20003SubmitHealthCareServicesInvoice
+    /// </summary>
+    public const string LiteralV20003SubmitHealthCareServicesInvoice = "http://terminology.hl7.org/CodeSystem/v2-0003#E01";
 
     /// <summary>
     /// Literal for code: CancelHealthCareServicesInvoice
@@ -3874,9 +4274,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCancelHealthCareServicesInvoice = "E02";
 
     /// <summary>
+    /// Literal for code: V20003CancelHealthCareServicesInvoice
+    /// </summary>
+    public const string LiteralV20003CancelHealthCareServicesInvoice = "http://terminology.hl7.org/CodeSystem/v2-0003#E02";
+
+    /// <summary>
     /// Literal for code: HealthCareServicesInvoiceStatus
     /// </summary>
     public const string LiteralHealthCareServicesInvoiceStatus = "E03";
+
+    /// <summary>
+    /// Literal for code: V20003HealthCareServicesInvoiceStatus
+    /// </summary>
+    public const string LiteralV20003HealthCareServicesInvoiceStatus = "http://terminology.hl7.org/CodeSystem/v2-0003#E03";
 
     /// <summary>
     /// Literal for code: ReAssessHealthCareServicesInvoiceRequest
@@ -3884,9 +4294,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralReAssessHealthCareServicesInvoiceRequest = "E04";
 
     /// <summary>
+    /// Literal for code: V20003ReAssessHealthCareServicesInvoiceRequest
+    /// </summary>
+    public const string LiteralV20003ReAssessHealthCareServicesInvoiceRequest = "http://terminology.hl7.org/CodeSystem/v2-0003#E04";
+
+    /// <summary>
     /// Literal for code: EditAdjudicationResults
     /// </summary>
     public const string LiteralEditAdjudicationResults = "E10";
+
+    /// <summary>
+    /// Literal for code: V20003EditAdjudicationResults
+    /// </summary>
+    public const string LiteralV20003EditAdjudicationResults = "http://terminology.hl7.org/CodeSystem/v2-0003#E10";
 
     /// <summary>
     /// Literal for code: RequestAdditionalInformation
@@ -3894,9 +4314,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRequestAdditionalInformation = "E12";
 
     /// <summary>
+    /// Literal for code: V20003RequestAdditionalInformation
+    /// </summary>
+    public const string LiteralV20003RequestAdditionalInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#E12";
+
+    /// <summary>
     /// Literal for code: AdditionalInformationResponse
     /// </summary>
     public const string LiteralAdditionalInformationResponse = "E13";
+
+    /// <summary>
+    /// Literal for code: V20003AdditionalInformationResponse
+    /// </summary>
+    public const string LiteralV20003AdditionalInformationResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#E13";
 
     /// <summary>
     /// Literal for code: PaymentRemittanceAdvice
@@ -3904,9 +4334,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPaymentRemittanceAdvice = "E15";
 
     /// <summary>
+    /// Literal for code: V20003PaymentRemittanceAdvice
+    /// </summary>
+    public const string LiteralV20003PaymentRemittanceAdvice = "http://terminology.hl7.org/CodeSystem/v2-0003#E15";
+
+    /// <summary>
     /// Literal for code: SubmitAuthorizationRequest
     /// </summary>
     public const string LiteralSubmitAuthorizationRequest = "E20";
+
+    /// <summary>
+    /// Literal for code: V20003SubmitAuthorizationRequest
+    /// </summary>
+    public const string LiteralV20003SubmitAuthorizationRequest = "http://terminology.hl7.org/CodeSystem/v2-0003#E20";
 
     /// <summary>
     /// Literal for code: CancelAuthorizationRequest
@@ -3914,9 +4354,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCancelAuthorizationRequest = "E21";
 
     /// <summary>
+    /// Literal for code: V20003CancelAuthorizationRequest
+    /// </summary>
+    public const string LiteralV20003CancelAuthorizationRequest = "http://terminology.hl7.org/CodeSystem/v2-0003#E21";
+
+    /// <summary>
     /// Literal for code: AuthorizationRequestStatus
     /// </summary>
     public const string LiteralAuthorizationRequestStatus = "E22";
+
+    /// <summary>
+    /// Literal for code: V20003AuthorizationRequestStatus
+    /// </summary>
+    public const string LiteralV20003AuthorizationRequestStatus = "http://terminology.hl7.org/CodeSystem/v2-0003#E22";
 
     /// <summary>
     /// Literal for code: AuthorizationResponse
@@ -3924,9 +4374,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAuthorizationResponse = "E24";
 
     /// <summary>
+    /// Literal for code: V20003AuthorizationResponse
+    /// </summary>
+    public const string LiteralV20003AuthorizationResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#E24";
+
+    /// <summary>
     /// Literal for code: SubmitHealthDocumentRelatedToAuthorizationRequest
     /// </summary>
     public const string LiteralSubmitHealthDocumentRelatedToAuthorizationRequest = "E30";
+
+    /// <summary>
+    /// Literal for code: V20003SubmitHealthDocumentRelatedToAuthorizationRequest
+    /// </summary>
+    public const string LiteralV20003SubmitHealthDocumentRelatedToAuthorizationRequest = "http://terminology.hl7.org/CodeSystem/v2-0003#E30";
 
     /// <summary>
     /// Literal for code: CancelHealthDocumentRelatedToAuthorizationRequest
@@ -3934,9 +4394,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCancelHealthDocumentRelatedToAuthorizationRequest = "E31";
 
     /// <summary>
+    /// Literal for code: V20003CancelHealthDocumentRelatedToAuthorizationRequest
+    /// </summary>
+    public const string LiteralV20003CancelHealthDocumentRelatedToAuthorizationRequest = "http://terminology.hl7.org/CodeSystem/v2-0003#E31";
+
+    /// <summary>
     /// Literal for code: RQIRPIRequestForInsuranceInformation
     /// </summary>
     public const string LiteralRQIRPIRequestForInsuranceInformation = "I01";
+
+    /// <summary>
+    /// Literal for code: V20003RQIRPIRequestForInsuranceInformation
+    /// </summary>
+    public const string LiteralV20003RQIRPIRequestForInsuranceInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#I01";
 
     /// <summary>
     /// Literal for code: RQIRPLRequestReceiptOfPatientSelectionDisplayList
@@ -3944,9 +4414,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRQIRPLRequestReceiptOfPatientSelectionDisplayList = "I02";
 
     /// <summary>
+    /// Literal for code: V20003RQIRPLRequestReceiptOfPatientSelectionDisplayList
+    /// </summary>
+    public const string LiteralV20003RQIRPLRequestReceiptOfPatientSelectionDisplayList = "http://terminology.hl7.org/CodeSystem/v2-0003#I02";
+
+    /// <summary>
     /// Literal for code: RQIRPRRequestReceiptOfPatientSelectionList
     /// </summary>
     public const string LiteralRQIRPRRequestReceiptOfPatientSelectionList = "I03";
+
+    /// <summary>
+    /// Literal for code: V20003RQIRPRRequestReceiptOfPatientSelectionList
+    /// </summary>
+    public const string LiteralV20003RQIRPRRequestReceiptOfPatientSelectionList = "http://terminology.hl7.org/CodeSystem/v2-0003#I03";
 
     /// <summary>
     /// Literal for code: RQDRPIRequestForPatientDemographicData
@@ -3954,9 +4434,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRQDRPIRequestForPatientDemographicData = "I04";
 
     /// <summary>
+    /// Literal for code: V20003RQDRPIRequestForPatientDemographicData
+    /// </summary>
+    public const string LiteralV20003RQDRPIRequestForPatientDemographicData = "http://terminology.hl7.org/CodeSystem/v2-0003#I04";
+
+    /// <summary>
     /// Literal for code: RQCRCIRequestForPatientClinicalInformation
     /// </summary>
     public const string LiteralRQCRCIRequestForPatientClinicalInformation = "I05";
+
+    /// <summary>
+    /// Literal for code: V20003RQCRCIRequestForPatientClinicalInformation
+    /// </summary>
+    public const string LiteralV20003RQCRCIRequestForPatientClinicalInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#I05";
 
     /// <summary>
     /// Literal for code: RQCRCLRequestReceiptOfClinicalDataListing
@@ -3964,9 +4454,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRQCRCLRequestReceiptOfClinicalDataListing = "I06";
 
     /// <summary>
+    /// Literal for code: V20003RQCRCLRequestReceiptOfClinicalDataListing
+    /// </summary>
+    public const string LiteralV20003RQCRCLRequestReceiptOfClinicalDataListing = "http://terminology.hl7.org/CodeSystem/v2-0003#I06";
+
+    /// <summary>
     /// Literal for code: PINACKUnsolicitedInsuranceInformation
     /// </summary>
     public const string LiteralPINACKUnsolicitedInsuranceInformation = "I07";
+
+    /// <summary>
+    /// Literal for code: V20003PINACKUnsolicitedInsuranceInformation
+    /// </summary>
+    public const string LiteralV20003PINACKUnsolicitedInsuranceInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#I07";
 
     /// <summary>
     /// Literal for code: RQARPARequestForTreatmentAuthorizationInformation
@@ -3974,9 +4474,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRQARPARequestForTreatmentAuthorizationInformation = "I08";
 
     /// <summary>
+    /// Literal for code: V20003RQARPARequestForTreatmentAuthorizationInformation
+    /// </summary>
+    public const string LiteralV20003RQARPARequestForTreatmentAuthorizationInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#I08";
+
+    /// <summary>
     /// Literal for code: RQARPARequestForModificationToAnAuthorization
     /// </summary>
     public const string LiteralRQARPARequestForModificationToAnAuthorization = "I09";
+
+    /// <summary>
+    /// Literal for code: V20003RQARPARequestForModificationToAnAuthorization
+    /// </summary>
+    public const string LiteralV20003RQARPARequestForModificationToAnAuthorization = "http://terminology.hl7.org/CodeSystem/v2-0003#I09";
 
     /// <summary>
     /// Literal for code: RQARPARequestForResubmissionOfAnAuthorization
@@ -3984,9 +4494,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRQARPARequestForResubmissionOfAnAuthorization = "I10";
 
     /// <summary>
+    /// Literal for code: V20003RQARPARequestForResubmissionOfAnAuthorization
+    /// </summary>
+    public const string LiteralV20003RQARPARequestForResubmissionOfAnAuthorization = "http://terminology.hl7.org/CodeSystem/v2-0003#I10";
+
+    /// <summary>
     /// Literal for code: RQARPARequestForCancellationOfAnAuthorization
     /// </summary>
     public const string LiteralRQARPARequestForCancellationOfAnAuthorization = "I11";
+
+    /// <summary>
+    /// Literal for code: V20003RQARPARequestForCancellationOfAnAuthorization
+    /// </summary>
+    public const string LiteralV20003RQARPARequestForCancellationOfAnAuthorization = "http://terminology.hl7.org/CodeSystem/v2-0003#I11";
 
     /// <summary>
     /// Literal for code: REFRRIPatientReferral
@@ -3994,9 +4514,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralREFRRIPatientReferral = "I12";
 
     /// <summary>
+    /// Literal for code: V20003REFRRIPatientReferral
+    /// </summary>
+    public const string LiteralV20003REFRRIPatientReferral = "http://terminology.hl7.org/CodeSystem/v2-0003#I12";
+
+    /// <summary>
     /// Literal for code: REFRRIModifyPatientReferral
     /// </summary>
     public const string LiteralREFRRIModifyPatientReferral = "I13";
+
+    /// <summary>
+    /// Literal for code: V20003REFRRIModifyPatientReferral
+    /// </summary>
+    public const string LiteralV20003REFRRIModifyPatientReferral = "http://terminology.hl7.org/CodeSystem/v2-0003#I13";
 
     /// <summary>
     /// Literal for code: REFRRICancelPatientReferral
@@ -4004,9 +4534,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralREFRRICancelPatientReferral = "I14";
 
     /// <summary>
+    /// Literal for code: V20003REFRRICancelPatientReferral
+    /// </summary>
+    public const string LiteralV20003REFRRICancelPatientReferral = "http://terminology.hl7.org/CodeSystem/v2-0003#I14";
+
+    /// <summary>
     /// Literal for code: REFRRIRequestPatientReferralStatus
     /// </summary>
     public const string LiteralREFRRIRequestPatientReferralStatus = "I15";
+
+    /// <summary>
+    /// Literal for code: V20003REFRRIRequestPatientReferralStatus
+    /// </summary>
+    public const string LiteralV20003REFRRIRequestPatientReferralStatus = "http://terminology.hl7.org/CodeSystem/v2-0003#I15";
 
     /// <summary>
     /// Literal for code: CollaborativeCareReferral
@@ -4014,9 +4554,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCollaborativeCareReferral = "I16";
 
     /// <summary>
+    /// Literal for code: V20003CollaborativeCareReferral
+    /// </summary>
+    public const string LiteralV20003CollaborativeCareReferral = "http://terminology.hl7.org/CodeSystem/v2-0003#I16";
+
+    /// <summary>
     /// Literal for code: ModifyCollaborativeCareReferral
     /// </summary>
     public const string LiteralModifyCollaborativeCareReferral = "I17";
+
+    /// <summary>
+    /// Literal for code: V20003ModifyCollaborativeCareReferral
+    /// </summary>
+    public const string LiteralV20003ModifyCollaborativeCareReferral = "http://terminology.hl7.org/CodeSystem/v2-0003#I17";
 
     /// <summary>
     /// Literal for code: CancelCollaborativeCareReferral
@@ -4024,9 +4574,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCancelCollaborativeCareReferral = "I18";
 
     /// <summary>
+    /// Literal for code: V20003CancelCollaborativeCareReferral
+    /// </summary>
+    public const string LiteralV20003CancelCollaborativeCareReferral = "http://terminology.hl7.org/CodeSystem/v2-0003#I18";
+
+    /// <summary>
     /// Literal for code: CollaborativeCareQueryCollaborativeCareQueryUpdate
     /// </summary>
     public const string LiteralCollaborativeCareQueryCollaborativeCareQueryUpdate = "I19";
+
+    /// <summary>
+    /// Literal for code: V20003CollaborativeCareQueryCollaborativeCareQueryUpdate
+    /// </summary>
+    public const string LiteralV20003CollaborativeCareQueryCollaborativeCareQueryUpdate = "http://terminology.hl7.org/CodeSystem/v2-0003#I19";
 
     /// <summary>
     /// Literal for code: AsynchronousCollaborativeCareUpdate
@@ -4034,9 +4594,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAsynchronousCollaborativeCareUpdate = "I20";
 
     /// <summary>
+    /// Literal for code: V20003AsynchronousCollaborativeCareUpdate
+    /// </summary>
+    public const string LiteralV20003AsynchronousCollaborativeCareUpdate = "http://terminology.hl7.org/CodeSystem/v2-0003#I20";
+
+    /// <summary>
     /// Literal for code: CollaborativeCareMessage
     /// </summary>
     public const string LiteralCollaborativeCareMessage = "I21";
+
+    /// <summary>
+    /// Literal for code: V20003CollaborativeCareMessage
+    /// </summary>
+    public const string LiteralV20003CollaborativeCareMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#I21";
 
     /// <summary>
     /// Literal for code: CollaborativeCareFetchCollaborativeCareInformation
@@ -4044,9 +4614,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCollaborativeCareFetchCollaborativeCareInformation = "I22";
 
     /// <summary>
+    /// Literal for code: V20003CollaborativeCareFetchCollaborativeCareInformation
+    /// </summary>
+    public const string LiteralV20003CollaborativeCareFetchCollaborativeCareInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#I22";
+
+    /// <summary>
     /// Literal for code: QCNACKCancelQueryAcknowledgeMessage
     /// </summary>
     public const string LiteralQCNACKCancelQueryAcknowledgeMessage = "J01";
+
+    /// <summary>
+    /// Literal for code: V20003QCNACKCancelQueryAcknowledgeMessage
+    /// </summary>
+    public const string LiteralV20003QCNACKCancelQueryAcknowledgeMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#J01";
 
     /// <summary>
     /// Literal for code: QSXACKCancelSubscriptionAcknowledgeMessage
@@ -4054,9 +4634,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQSXACKCancelSubscriptionAcknowledgeMessage = "J02";
 
     /// <summary>
+    /// Literal for code: V20003QSXACKCancelSubscriptionAcknowledgeMessage
+    /// </summary>
+    public const string LiteralV20003QSXACKCancelSubscriptionAcknowledgeMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#J02";
+
+    /// <summary>
     /// Literal for code: RSPSegmentPatternResponseInResponseToQBPPowerQ11
     /// </summary>
     public const string LiteralRSPSegmentPatternResponseInResponseToQBPPowerQ11 = "K11";
+
+    /// <summary>
+    /// Literal for code: V20003RSPSegmentPatternResponseInResponseToQBPPowerQ11
+    /// </summary>
+    public const string LiteralV20003RSPSegmentPatternResponseInResponseToQBPPowerQ11 = "http://terminology.hl7.org/CodeSystem/v2-0003#K11";
 
     /// <summary>
     /// Literal for code: RTBTabularResponseInResponseToQBPPowerQ13
@@ -4064,9 +4654,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRTBTabularResponseInResponseToQBPPowerQ13 = "K13";
 
     /// <summary>
+    /// Literal for code: V20003RTBTabularResponseInResponseToQBPPowerQ13
+    /// </summary>
+    public const string LiteralV20003RTBTabularResponseInResponseToQBPPowerQ13 = "http://terminology.hl7.org/CodeSystem/v2-0003#K13";
+
+    /// <summary>
     /// Literal for code: RDYDisplayResponseInResponseToQBPPowerQ15
     /// </summary>
     public const string LiteralRDYDisplayResponseInResponseToQBPPowerQ15 = "K15";
+
+    /// <summary>
+    /// Literal for code: V20003RDYDisplayResponseInResponseToQBPPowerQ15
+    /// </summary>
+    public const string LiteralV20003RDYDisplayResponseInResponseToQBPPowerQ15 = "http://terminology.hl7.org/CodeSystem/v2-0003#K15";
 
     /// <summary>
     /// Literal for code: RSPGetPersonDemographicsResponse
@@ -4074,9 +4674,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRSPGetPersonDemographicsResponse = "K21";
 
     /// <summary>
+    /// Literal for code: V20003RSPGetPersonDemographicsResponse
+    /// </summary>
+    public const string LiteralV20003RSPGetPersonDemographicsResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#K21";
+
+    /// <summary>
     /// Literal for code: RSPFindCandidatesResponse
     /// </summary>
     public const string LiteralRSPFindCandidatesResponse = "K22";
+
+    /// <summary>
+    /// Literal for code: V20003RSPFindCandidatesResponse
+    /// </summary>
+    public const string LiteralV20003RSPFindCandidatesResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#K22";
 
     /// <summary>
     /// Literal for code: RSPGetCorrespondingIdentifiersResponse
@@ -4084,9 +4694,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRSPGetCorrespondingIdentifiersResponse = "K23";
 
     /// <summary>
+    /// Literal for code: V20003RSPGetCorrespondingIdentifiersResponse
+    /// </summary>
+    public const string LiteralV20003RSPGetCorrespondingIdentifiersResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#K23";
+
+    /// <summary>
     /// Literal for code: RSPAllocateIdentifiersResponse
     /// </summary>
     public const string LiteralRSPAllocateIdentifiersResponse = "K24";
+
+    /// <summary>
+    /// Literal for code: V20003RSPAllocateIdentifiersResponse
+    /// </summary>
+    public const string LiteralV20003RSPAllocateIdentifiersResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#K24";
 
     /// <summary>
     /// Literal for code: RSPPersonnelInformationBySegmentResponse
@@ -4094,9 +4714,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRSPPersonnelInformationBySegmentResponse = "K25";
 
     /// <summary>
+    /// Literal for code: V20003RSPPersonnelInformationBySegmentResponse
+    /// </summary>
+    public const string LiteralV20003RSPPersonnelInformationBySegmentResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#K25";
+
+    /// <summary>
     /// Literal for code: RSPDispenseHistoryResponse
     /// </summary>
     public const string LiteralRSPDispenseHistoryResponse = "K31";
+
+    /// <summary>
+    /// Literal for code: V20003RSPDispenseHistoryResponse
+    /// </summary>
+    public const string LiteralV20003RSPDispenseHistoryResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#K31";
 
     /// <summary>
     /// Literal for code: FindCandidatesIncludingVisitInformationResponse
@@ -4104,9 +4734,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFindCandidatesIncludingVisitInformationResponse = "K32";
 
     /// <summary>
+    /// Literal for code: V20003FindCandidatesIncludingVisitInformationResponse
+    /// </summary>
+    public const string LiteralV20003FindCandidatesIncludingVisitInformationResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#K32";
+
+    /// <summary>
     /// Literal for code: GetDonorRecordCandidatesResponseMessage
     /// </summary>
     public const string LiteralGetDonorRecordCandidatesResponseMessage = "K33";
+
+    /// <summary>
+    /// Literal for code: V20003GetDonorRecordCandidatesResponseMessage
+    /// </summary>
+    public const string LiteralV20003GetDonorRecordCandidatesResponseMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#K33";
 
     /// <summary>
     /// Literal for code: SegmentPatternResponseMessage
@@ -4114,9 +4754,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSegmentPatternResponseMessage = "K34";
 
     /// <summary>
+    /// Literal for code: V20003SegmentPatternResponseMessage
+    /// </summary>
+    public const string LiteralV20003SegmentPatternResponseMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#K34";
+
+    /// <summary>
     /// Literal for code: MFNMFKMasterFileNotOtherwiseSpecified
     /// </summary>
     public const string LiteralMFNMFKMasterFileNotOtherwiseSpecified = "M01";
+
+    /// <summary>
+    /// Literal for code: V20003MFNMFKMasterFileNotOtherwiseSpecified
+    /// </summary>
+    public const string LiteralV20003MFNMFKMasterFileNotOtherwiseSpecified = "http://terminology.hl7.org/CodeSystem/v2-0003#M01";
 
     /// <summary>
     /// Literal for code: MFNMFKMasterFileStaffPractitioner
@@ -4124,9 +4774,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMFNMFKMasterFileStaffPractitioner = "M02";
 
     /// <summary>
+    /// Literal for code: V20003MFNMFKMasterFileStaffPractitioner
+    /// </summary>
+    public const string LiteralV20003MFNMFKMasterFileStaffPractitioner = "http://terminology.hl7.org/CodeSystem/v2-0003#M02";
+
+    /// <summary>
     /// Literal for code: MFNMFKMasterFileTestObservation
     /// </summary>
     public const string LiteralMFNMFKMasterFileTestObservation = "M03";
+
+    /// <summary>
+    /// Literal for code: V20003MFNMFKMasterFileTestObservation
+    /// </summary>
+    public const string LiteralV20003MFNMFKMasterFileTestObservation = "http://terminology.hl7.org/CodeSystem/v2-0003#M03";
 
     /// <summary>
     /// Literal for code: MFNMFKMasterFilesChargeDescription
@@ -4134,9 +4794,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMFNMFKMasterFilesChargeDescription = "M04";
 
     /// <summary>
+    /// Literal for code: V20003MFNMFKMasterFilesChargeDescription
+    /// </summary>
+    public const string LiteralV20003MFNMFKMasterFilesChargeDescription = "http://terminology.hl7.org/CodeSystem/v2-0003#M04";
+
+    /// <summary>
     /// Literal for code: MFNMFKPatientLocationMasterFile
     /// </summary>
     public const string LiteralMFNMFKPatientLocationMasterFile = "M05";
+
+    /// <summary>
+    /// Literal for code: V20003MFNMFKPatientLocationMasterFile
+    /// </summary>
+    public const string LiteralV20003MFNMFKPatientLocationMasterFile = "http://terminology.hl7.org/CodeSystem/v2-0003#M05";
 
     /// <summary>
     /// Literal for code: MFNMFKClinicalStudyWithPhasesAndSchedulesMasterFile
@@ -4144,9 +4814,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMFNMFKClinicalStudyWithPhasesAndSchedulesMasterFile = "M06";
 
     /// <summary>
+    /// Literal for code: V20003MFNMFKClinicalStudyWithPhasesAndSchedulesMasterFile
+    /// </summary>
+    public const string LiteralV20003MFNMFKClinicalStudyWithPhasesAndSchedulesMasterFile = "http://terminology.hl7.org/CodeSystem/v2-0003#M06";
+
+    /// <summary>
     /// Literal for code: MFNMFKClinicalStudyWithoutPhasesButWithSchedulesMasterFile
     /// </summary>
     public const string LiteralMFNMFKClinicalStudyWithoutPhasesButWithSchedulesMasterFile = "M07";
+
+    /// <summary>
+    /// Literal for code: V20003MFNMFKClinicalStudyWithoutPhasesButWithSchedulesMasterFile
+    /// </summary>
+    public const string LiteralV20003MFNMFKClinicalStudyWithoutPhasesButWithSchedulesMasterFile = "http://terminology.hl7.org/CodeSystem/v2-0003#M07";
 
     /// <summary>
     /// Literal for code: MFNMFKTestObservationNumericMasterFile
@@ -4154,9 +4834,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMFNMFKTestObservationNumericMasterFile = "M08";
 
     /// <summary>
+    /// Literal for code: V20003MFNMFKTestObservationNumericMasterFile
+    /// </summary>
+    public const string LiteralV20003MFNMFKTestObservationNumericMasterFile = "http://terminology.hl7.org/CodeSystem/v2-0003#M08";
+
+    /// <summary>
     /// Literal for code: MFNMFKTestObservationCategoricalMasterFile
     /// </summary>
     public const string LiteralMFNMFKTestObservationCategoricalMasterFile = "M09";
+
+    /// <summary>
+    /// Literal for code: V20003MFNMFKTestObservationCategoricalMasterFile
+    /// </summary>
+    public const string LiteralV20003MFNMFKTestObservationCategoricalMasterFile = "http://terminology.hl7.org/CodeSystem/v2-0003#M09";
 
     /// <summary>
     /// Literal for code: MFNMFKTestObservationBatteriesMasterFile
@@ -4164,9 +4854,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMFNMFKTestObservationBatteriesMasterFile = "M10";
 
     /// <summary>
+    /// Literal for code: V20003MFNMFKTestObservationBatteriesMasterFile
+    /// </summary>
+    public const string LiteralV20003MFNMFKTestObservationBatteriesMasterFile = "http://terminology.hl7.org/CodeSystem/v2-0003#M10";
+
+    /// <summary>
     /// Literal for code: MFNMFKTestCalculatedObservationsMasterFile
     /// </summary>
     public const string LiteralMFNMFKTestCalculatedObservationsMasterFile = "M11";
+
+    /// <summary>
+    /// Literal for code: V20003MFNMFKTestCalculatedObservationsMasterFile
+    /// </summary>
+    public const string LiteralV20003MFNMFKTestCalculatedObservationsMasterFile = "http://terminology.hl7.org/CodeSystem/v2-0003#M11";
 
     /// <summary>
     /// Literal for code: MFNMFKMasterFileNotificationMessage
@@ -4174,9 +4874,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMFNMFKMasterFileNotificationMessage = "M12";
 
     /// <summary>
+    /// Literal for code: V20003MFNMFKMasterFileNotificationMessage
+    /// </summary>
+    public const string LiteralV20003MFNMFKMasterFileNotificationMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#M12";
+
+    /// <summary>
     /// Literal for code: MFNMFKMasterFileNotificationGeneral
     /// </summary>
     public const string LiteralMFNMFKMasterFileNotificationGeneral = "M13";
+
+    /// <summary>
+    /// Literal for code: V20003MFNMFKMasterFileNotificationGeneral
+    /// </summary>
+    public const string LiteralV20003MFNMFKMasterFileNotificationGeneral = "http://terminology.hl7.org/CodeSystem/v2-0003#M13";
 
     /// <summary>
     /// Literal for code: MFNMFKMasterFileNotificationSiteDefined
@@ -4184,9 +4894,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMFNMFKMasterFileNotificationSiteDefined = "M14";
 
     /// <summary>
+    /// Literal for code: V20003MFNMFKMasterFileNotificationSiteDefined
+    /// </summary>
+    public const string LiteralV20003MFNMFKMasterFileNotificationSiteDefined = "http://terminology.hl7.org/CodeSystem/v2-0003#M14";
+
+    /// <summary>
     /// Literal for code: MFNMFKInventoryItemMasterFileNotification
     /// </summary>
     public const string LiteralMFNMFKInventoryItemMasterFileNotification = "M15";
+
+    /// <summary>
+    /// Literal for code: V20003MFNMFKInventoryItemMasterFileNotification
+    /// </summary>
+    public const string LiteralV20003MFNMFKInventoryItemMasterFileNotification = "http://terminology.hl7.org/CodeSystem/v2-0003#M15";
 
     /// <summary>
     /// Literal for code: MFNMFKMasterFileNotificationInventoryItemEnhanced
@@ -4194,9 +4914,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMFNMFKMasterFileNotificationInventoryItemEnhanced = "M16";
 
     /// <summary>
+    /// Literal for code: V20003MFNMFKMasterFileNotificationInventoryItemEnhanced
+    /// </summary>
+    public const string LiteralV20003MFNMFKMasterFileNotificationInventoryItemEnhanced = "http://terminology.hl7.org/CodeSystem/v2-0003#M16";
+
+    /// <summary>
     /// Literal for code: DRGMasterFileMessage
     /// </summary>
     public const string LiteralDRGMasterFileMessage = "M17";
+
+    /// <summary>
+    /// Literal for code: V20003DRGMasterFileMessage
+    /// </summary>
+    public const string LiteralV20003DRGMasterFileMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#M17";
 
     /// <summary>
     /// Literal for code: MFNMFKMasterFileNotificationTestObservationPayer
@@ -4204,9 +4934,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMFNMFKMasterFileNotificationTestObservationPayer = "M18";
 
     /// <summary>
+    /// Literal for code: V20003MFNMFKMasterFileNotificationTestObservationPayer
+    /// </summary>
+    public const string LiteralV20003MFNMFKMasterFileNotificationTestObservationPayer = "http://terminology.hl7.org/CodeSystem/v2-0003#M18";
+
+    /// <summary>
     /// Literal for code: NMQNMRApplicationManagementQueryMessage
     /// </summary>
     public const string LiteralNMQNMRApplicationManagementQueryMessage = "N01";
+
+    /// <summary>
+    /// Literal for code: V20003NMQNMRApplicationManagementQueryMessage
+    /// </summary>
+    public const string LiteralV20003NMQNMRApplicationManagementQueryMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#N01";
 
     /// <summary>
     /// Literal for code: NMDACKApplicationManagementDataMessageUnsolicited
@@ -4214,9 +4954,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNMDACKApplicationManagementDataMessageUnsolicited = "N02";
 
     /// <summary>
+    /// Literal for code: V20003NMDACKApplicationManagementDataMessageUnsolicited
+    /// </summary>
+    public const string LiteralV20003NMDACKApplicationManagementDataMessageUnsolicited = "http://terminology.hl7.org/CodeSystem/v2-0003#N02";
+
+    /// <summary>
     /// Literal for code: ORMOrderMessageAlsoRDERDSRGVRAS
     /// </summary>
     public const string LiteralORMOrderMessageAlsoRDERDSRGVRAS = "O01";
+
+    /// <summary>
+    /// Literal for code: V20003ORMOrderMessageAlsoRDERDSRGVRAS
+    /// </summary>
+    public const string LiteralV20003ORMOrderMessageAlsoRDERDSRGVRAS = "http://terminology.hl7.org/CodeSystem/v2-0003#O01";
 
     /// <summary>
     /// Literal for code: ORROrderResponseAlsoRRERRDRRGRRA
@@ -4224,9 +4974,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORROrderResponseAlsoRRERRDRRGRRA = "O02";
 
     /// <summary>
+    /// Literal for code: V20003ORROrderResponseAlsoRRERRDRRGRRA
+    /// </summary>
+    public const string LiteralV20003ORROrderResponseAlsoRRERRDRRGRRA = "http://terminology.hl7.org/CodeSystem/v2-0003#O02";
+
+    /// <summary>
     /// Literal for code: OMDDietOrder
     /// </summary>
     public const string LiteralOMDDietOrder = "O03";
+
+    /// <summary>
+    /// Literal for code: V20003OMDDietOrder
+    /// </summary>
+    public const string LiteralV20003OMDDietOrder = "http://terminology.hl7.org/CodeSystem/v2-0003#O03";
 
     /// <summary>
     /// Literal for code: ORDDietOrderAcknowledgment
@@ -4234,9 +4994,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORDDietOrderAcknowledgment = "O04";
 
     /// <summary>
+    /// Literal for code: V20003ORDDietOrderAcknowledgment
+    /// </summary>
+    public const string LiteralV20003ORDDietOrderAcknowledgment = "http://terminology.hl7.org/CodeSystem/v2-0003#O04";
+
+    /// <summary>
     /// Literal for code: OMSStockRequisitionOrder
     /// </summary>
     public const string LiteralOMSStockRequisitionOrder = "O05";
+
+    /// <summary>
+    /// Literal for code: V20003OMSStockRequisitionOrder
+    /// </summary>
+    public const string LiteralV20003OMSStockRequisitionOrder = "http://terminology.hl7.org/CodeSystem/v2-0003#O05";
 
     /// <summary>
     /// Literal for code: ORSStockRequisitionAcknowledgment
@@ -4244,9 +5014,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORSStockRequisitionAcknowledgment = "O06";
 
     /// <summary>
+    /// Literal for code: V20003ORSStockRequisitionAcknowledgment
+    /// </summary>
+    public const string LiteralV20003ORSStockRequisitionAcknowledgment = "http://terminology.hl7.org/CodeSystem/v2-0003#O06";
+
+    /// <summary>
     /// Literal for code: OMNNonStockRequisitionOrder
     /// </summary>
     public const string LiteralOMNNonStockRequisitionOrder = "O07";
+
+    /// <summary>
+    /// Literal for code: V20003OMNNonStockRequisitionOrder
+    /// </summary>
+    public const string LiteralV20003OMNNonStockRequisitionOrder = "http://terminology.hl7.org/CodeSystem/v2-0003#O07";
 
     /// <summary>
     /// Literal for code: ORNNonStockRequisitionAcknowledgment
@@ -4254,9 +5034,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORNNonStockRequisitionAcknowledgment = "O08";
 
     /// <summary>
+    /// Literal for code: V20003ORNNonStockRequisitionAcknowledgment
+    /// </summary>
+    public const string LiteralV20003ORNNonStockRequisitionAcknowledgment = "http://terminology.hl7.org/CodeSystem/v2-0003#O08";
+
+    /// <summary>
     /// Literal for code: OMPPharmacyTreatmentOrder
     /// </summary>
     public const string LiteralOMPPharmacyTreatmentOrder = "O09";
+
+    /// <summary>
+    /// Literal for code: V20003OMPPharmacyTreatmentOrder
+    /// </summary>
+    public const string LiteralV20003OMPPharmacyTreatmentOrder = "http://terminology.hl7.org/CodeSystem/v2-0003#O09";
 
     /// <summary>
     /// Literal for code: ORPPharmacyTreatmentOrderAcknowledgment
@@ -4264,9 +5054,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORPPharmacyTreatmentOrderAcknowledgment = "O10";
 
     /// <summary>
+    /// Literal for code: V20003ORPPharmacyTreatmentOrderAcknowledgment
+    /// </summary>
+    public const string LiteralV20003ORPPharmacyTreatmentOrderAcknowledgment = "http://terminology.hl7.org/CodeSystem/v2-0003#O10";
+
+    /// <summary>
     /// Literal for code: RDEPharmacyTreatmentEncodedOrder
     /// </summary>
     public const string LiteralRDEPharmacyTreatmentEncodedOrder = "O11";
+
+    /// <summary>
+    /// Literal for code: V20003RDEPharmacyTreatmentEncodedOrder
+    /// </summary>
+    public const string LiteralV20003RDEPharmacyTreatmentEncodedOrder = "http://terminology.hl7.org/CodeSystem/v2-0003#O11";
 
     /// <summary>
     /// Literal for code: RREPharmacyTreatmentEncodedOrderAcknowledgment
@@ -4274,9 +5074,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRREPharmacyTreatmentEncodedOrderAcknowledgment = "O12";
 
     /// <summary>
+    /// Literal for code: V20003RREPharmacyTreatmentEncodedOrderAcknowledgment
+    /// </summary>
+    public const string LiteralV20003RREPharmacyTreatmentEncodedOrderAcknowledgment = "http://terminology.hl7.org/CodeSystem/v2-0003#O12";
+
+    /// <summary>
     /// Literal for code: RDSPharmacyTreatmentDispense
     /// </summary>
     public const string LiteralRDSPharmacyTreatmentDispense = "O13";
+
+    /// <summary>
+    /// Literal for code: V20003RDSPharmacyTreatmentDispense
+    /// </summary>
+    public const string LiteralV20003RDSPharmacyTreatmentDispense = "http://terminology.hl7.org/CodeSystem/v2-0003#O13";
 
     /// <summary>
     /// Literal for code: RRDPharmacyTreatmentDispenseAcknowledgment
@@ -4284,9 +5094,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRRDPharmacyTreatmentDispenseAcknowledgment = "O14";
 
     /// <summary>
+    /// Literal for code: V20003RRDPharmacyTreatmentDispenseAcknowledgment
+    /// </summary>
+    public const string LiteralV20003RRDPharmacyTreatmentDispenseAcknowledgment = "http://terminology.hl7.org/CodeSystem/v2-0003#O14";
+
+    /// <summary>
     /// Literal for code: RGVPharmacyTreatmentGive
     /// </summary>
     public const string LiteralRGVPharmacyTreatmentGive = "O15";
+
+    /// <summary>
+    /// Literal for code: V20003RGVPharmacyTreatmentGive
+    /// </summary>
+    public const string LiteralV20003RGVPharmacyTreatmentGive = "http://terminology.hl7.org/CodeSystem/v2-0003#O15";
 
     /// <summary>
     /// Literal for code: RRGPharmacyTreatmentGiveAcknowledgment
@@ -4294,9 +5114,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRRGPharmacyTreatmentGiveAcknowledgment = "O16";
 
     /// <summary>
+    /// Literal for code: V20003RRGPharmacyTreatmentGiveAcknowledgment
+    /// </summary>
+    public const string LiteralV20003RRGPharmacyTreatmentGiveAcknowledgment = "http://terminology.hl7.org/CodeSystem/v2-0003#O16";
+
+    /// <summary>
     /// Literal for code: RASPharmacyTreatmentAdministration
     /// </summary>
     public const string LiteralRASPharmacyTreatmentAdministration = "O17";
+
+    /// <summary>
+    /// Literal for code: V20003RASPharmacyTreatmentAdministration
+    /// </summary>
+    public const string LiteralV20003RASPharmacyTreatmentAdministration = "http://terminology.hl7.org/CodeSystem/v2-0003#O17";
 
     /// <summary>
     /// Literal for code: RRAPharmacyTreatmentAdministrationAcknowledgment
@@ -4304,9 +5134,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRRAPharmacyTreatmentAdministrationAcknowledgment = "O18";
 
     /// <summary>
+    /// Literal for code: V20003RRAPharmacyTreatmentAdministrationAcknowledgment
+    /// </summary>
+    public const string LiteralV20003RRAPharmacyTreatmentAdministrationAcknowledgment = "http://terminology.hl7.org/CodeSystem/v2-0003#O18";
+
+    /// <summary>
     /// Literal for code: OMGGeneralClinicalOrder
     /// </summary>
     public const string LiteralOMGGeneralClinicalOrder = "O19";
+
+    /// <summary>
+    /// Literal for code: V20003OMGGeneralClinicalOrder
+    /// </summary>
+    public const string LiteralV20003OMGGeneralClinicalOrder = "http://terminology.hl7.org/CodeSystem/v2-0003#O19";
 
     /// <summary>
     /// Literal for code: ORGORLGeneralClinicalOrderResponse
@@ -4314,9 +5154,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORGORLGeneralClinicalOrderResponse = "O20";
 
     /// <summary>
+    /// Literal for code: V20003ORGORLGeneralClinicalOrderResponse
+    /// </summary>
+    public const string LiteralV20003ORGORLGeneralClinicalOrderResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#O20";
+
+    /// <summary>
     /// Literal for code: OMLLaboratoryOrder
     /// </summary>
     public const string LiteralOMLLaboratoryOrder = "O21";
+
+    /// <summary>
+    /// Literal for code: V20003OMLLaboratoryOrder
+    /// </summary>
+    public const string LiteralV20003OMLLaboratoryOrder = "http://terminology.hl7.org/CodeSystem/v2-0003#O21";
 
     /// <summary>
     /// Literal for code: ORLGeneralLaboratoryOrderResponseMessageToAnyOML
@@ -4324,9 +5174,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORLGeneralLaboratoryOrderResponseMessageToAnyOML = "O22";
 
     /// <summary>
+    /// Literal for code: V20003ORLGeneralLaboratoryOrderResponseMessageToAnyOML
+    /// </summary>
+    public const string LiteralV20003ORLGeneralLaboratoryOrderResponseMessageToAnyOML = "http://terminology.hl7.org/CodeSystem/v2-0003#O22";
+
+    /// <summary>
     /// Literal for code: OMIImagingOrder
     /// </summary>
     public const string LiteralOMIImagingOrder = "O23";
+
+    /// <summary>
+    /// Literal for code: V20003OMIImagingOrder
+    /// </summary>
+    public const string LiteralV20003OMIImagingOrder = "http://terminology.hl7.org/CodeSystem/v2-0003#O23";
 
     /// <summary>
     /// Literal for code: ORIImagingOrderResponseMessageToAnyOMI
@@ -4334,9 +5194,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORIImagingOrderResponseMessageToAnyOMI = "O24";
 
     /// <summary>
+    /// Literal for code: V20003ORIImagingOrderResponseMessageToAnyOMI
+    /// </summary>
+    public const string LiteralV20003ORIImagingOrderResponseMessageToAnyOMI = "http://terminology.hl7.org/CodeSystem/v2-0003#O24";
+
+    /// <summary>
     /// Literal for code: RDEPharmacyTreatmentRefillAuthorizationRequest
     /// </summary>
     public const string LiteralRDEPharmacyTreatmentRefillAuthorizationRequest = "O25";
+
+    /// <summary>
+    /// Literal for code: V20003RDEPharmacyTreatmentRefillAuthorizationRequest
+    /// </summary>
+    public const string LiteralV20003RDEPharmacyTreatmentRefillAuthorizationRequest = "http://terminology.hl7.org/CodeSystem/v2-0003#O25";
 
     /// <summary>
     /// Literal for code: RREPharmacyTreatmentRefillAuthorizationAcknowledgement
@@ -4344,9 +5214,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRREPharmacyTreatmentRefillAuthorizationAcknowledgement = "O26";
 
     /// <summary>
+    /// Literal for code: V20003RREPharmacyTreatmentRefillAuthorizationAcknowledgement
+    /// </summary>
+    public const string LiteralV20003RREPharmacyTreatmentRefillAuthorizationAcknowledgement = "http://terminology.hl7.org/CodeSystem/v2-0003#O26";
+
+    /// <summary>
     /// Literal for code: OMBBloodProductOrder
     /// </summary>
     public const string LiteralOMBBloodProductOrder = "O27";
+
+    /// <summary>
+    /// Literal for code: V20003OMBBloodProductOrder
+    /// </summary>
+    public const string LiteralV20003OMBBloodProductOrder = "http://terminology.hl7.org/CodeSystem/v2-0003#O27";
 
     /// <summary>
     /// Literal for code: ORBBloodProductOrderAcknowledgment
@@ -4354,9 +5234,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORBBloodProductOrderAcknowledgment = "O28";
 
     /// <summary>
+    /// Literal for code: V20003ORBBloodProductOrderAcknowledgment
+    /// </summary>
+    public const string LiteralV20003ORBBloodProductOrderAcknowledgment = "http://terminology.hl7.org/CodeSystem/v2-0003#O28";
+
+    /// <summary>
     /// Literal for code: BPSBloodProductDispenseStatus
     /// </summary>
     public const string LiteralBPSBloodProductDispenseStatus = "O29";
+
+    /// <summary>
+    /// Literal for code: V20003BPSBloodProductDispenseStatus
+    /// </summary>
+    public const string LiteralV20003BPSBloodProductDispenseStatus = "http://terminology.hl7.org/CodeSystem/v2-0003#O29";
 
     /// <summary>
     /// Literal for code: BRPBloodProductDispenseStatusAcknowledgment
@@ -4364,9 +5254,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBRPBloodProductDispenseStatusAcknowledgment = "O30";
 
     /// <summary>
+    /// Literal for code: V20003BRPBloodProductDispenseStatusAcknowledgment
+    /// </summary>
+    public const string LiteralV20003BRPBloodProductDispenseStatusAcknowledgment = "http://terminology.hl7.org/CodeSystem/v2-0003#O30";
+
+    /// <summary>
     /// Literal for code: BTSBloodProductTransfusionDisposition
     /// </summary>
     public const string LiteralBTSBloodProductTransfusionDisposition = "O31";
+
+    /// <summary>
+    /// Literal for code: V20003BTSBloodProductTransfusionDisposition
+    /// </summary>
+    public const string LiteralV20003BTSBloodProductTransfusionDisposition = "http://terminology.hl7.org/CodeSystem/v2-0003#O31";
 
     /// <summary>
     /// Literal for code: BRTBloodProductTransfusionDispositionAcknowledgment
@@ -4374,9 +5274,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBRTBloodProductTransfusionDispositionAcknowledgment = "O32";
 
     /// <summary>
+    /// Literal for code: V20003BRTBloodProductTransfusionDispositionAcknowledgment
+    /// </summary>
+    public const string LiteralV20003BRTBloodProductTransfusionDispositionAcknowledgment = "http://terminology.hl7.org/CodeSystem/v2-0003#O32";
+
+    /// <summary>
     /// Literal for code: OMLLaboratoryOrderForMultipleOrdersRelatedToASingleSpecimen
     /// </summary>
     public const string LiteralOMLLaboratoryOrderForMultipleOrdersRelatedToASingleSpecimen = "O33";
+
+    /// <summary>
+    /// Literal for code: V20003OMLLaboratoryOrderForMultipleOrdersRelatedToASingleSpecimen
+    /// </summary>
+    public const string LiteralV20003OMLLaboratoryOrderForMultipleOrdersRelatedToASingleSpecimen = "http://terminology.hl7.org/CodeSystem/v2-0003#O33";
 
     /// <summary>
     /// Literal for code: ORLLaboratoryOrderResponseMessageToAMultipleOrderRelatedToSingleSpecimenOML
@@ -4384,9 +5294,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORLLaboratoryOrderResponseMessageToAMultipleOrderRelatedToSingleSpecimenOML = "O34";
 
     /// <summary>
+    /// Literal for code: V20003ORLLaboratoryOrderResponseMessageToAMultipleOrderRelatedToSingleSpecimenOML
+    /// </summary>
+    public const string LiteralV20003ORLLaboratoryOrderResponseMessageToAMultipleOrderRelatedToSingleSpecimenOML = "http://terminology.hl7.org/CodeSystem/v2-0003#O34";
+
+    /// <summary>
     /// Literal for code: OMLLaboratoryOrderForMultipleOrdersRelatedToASingleContainerOfASpecimen
     /// </summary>
     public const string LiteralOMLLaboratoryOrderForMultipleOrdersRelatedToASingleContainerOfASpecimen = "O35";
+
+    /// <summary>
+    /// Literal for code: V20003OMLLaboratoryOrderForMultipleOrdersRelatedToASingleContainerOfASpecimen
+    /// </summary>
+    public const string LiteralV20003OMLLaboratoryOrderForMultipleOrdersRelatedToASingleContainerOfASpecimen = "http://terminology.hl7.org/CodeSystem/v2-0003#O35";
 
     /// <summary>
     /// Literal for code: ORLLaboratoryOrderResponseMessageToASingleContainerOfASpecimenOML
@@ -4394,9 +5314,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORLLaboratoryOrderResponseMessageToASingleContainerOfASpecimenOML = "O36";
 
     /// <summary>
+    /// Literal for code: V20003ORLLaboratoryOrderResponseMessageToASingleContainerOfASpecimenOML
+    /// </summary>
+    public const string LiteralV20003ORLLaboratoryOrderResponseMessageToASingleContainerOfASpecimenOML = "http://terminology.hl7.org/CodeSystem/v2-0003#O36";
+
+    /// <summary>
     /// Literal for code: OPLPopulationLocationBasedLaboratoryOrderMessage
     /// </summary>
     public const string LiteralOPLPopulationLocationBasedLaboratoryOrderMessage = "O37";
+
+    /// <summary>
+    /// Literal for code: V20003OPLPopulationLocationBasedLaboratoryOrderMessage
+    /// </summary>
+    public const string LiteralV20003OPLPopulationLocationBasedLaboratoryOrderMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#O37";
 
     /// <summary>
     /// Literal for code: OPRPopulationLocationBasedLaboratoryOrderAcknowledgmentMessage
@@ -4404,9 +5334,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOPRPopulationLocationBasedLaboratoryOrderAcknowledgmentMessage = "O38";
 
     /// <summary>
+    /// Literal for code: V20003OPRPopulationLocationBasedLaboratoryOrderAcknowledgmentMessage
+    /// </summary>
+    public const string LiteralV20003OPRPopulationLocationBasedLaboratoryOrderAcknowledgmentMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#O38";
+
+    /// <summary>
     /// Literal for code: SpecimenShipmentCentricLaboratoryOrder
     /// </summary>
     public const string LiteralSpecimenShipmentCentricLaboratoryOrder = "O39";
+
+    /// <summary>
+    /// Literal for code: V20003SpecimenShipmentCentricLaboratoryOrder
+    /// </summary>
+    public const string LiteralV20003SpecimenShipmentCentricLaboratoryOrder = "http://terminology.hl7.org/CodeSystem/v2-0003#O39";
 
     /// <summary>
     /// Literal for code: SpecimenShipmentCentricLaboratoryOrderAcknowledgmentMessage
@@ -4414,9 +5354,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpecimenShipmentCentricLaboratoryOrderAcknowledgmentMessage = "O40";
 
     /// <summary>
+    /// Literal for code: V20003SpecimenShipmentCentricLaboratoryOrderAcknowledgmentMessage
+    /// </summary>
+    public const string LiteralV20003SpecimenShipmentCentricLaboratoryOrderAcknowledgmentMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#O40";
+
+    /// <summary>
     /// Literal for code: DBCCreateDonorRecordMessage
     /// </summary>
     public const string LiteralDBCCreateDonorRecordMessage = "O41";
+
+    /// <summary>
+    /// Literal for code: V20003DBCCreateDonorRecordMessage
+    /// </summary>
+    public const string LiteralV20003DBCCreateDonorRecordMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#O41";
 
     /// <summary>
     /// Literal for code: DBUUpdateDonorRecordMessage
@@ -4424,9 +5374,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDBUUpdateDonorRecordMessage = "O42";
 
     /// <summary>
+    /// Literal for code: V20003DBUUpdateDonorRecordMessage
+    /// </summary>
+    public const string LiteralV20003DBUUpdateDonorRecordMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#O42";
+
+    /// <summary>
     /// Literal for code: GeneralOrderMessageWithDocumentPayloadAcknowledgementMessage
     /// </summary>
     public const string LiteralGeneralOrderMessageWithDocumentPayloadAcknowledgementMessage = "O43";
+
+    /// <summary>
+    /// Literal for code: V20003GeneralOrderMessageWithDocumentPayloadAcknowledgementMessage
+    /// </summary>
+    public const string LiteralV20003GeneralOrderMessageWithDocumentPayloadAcknowledgementMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#O43";
 
     /// <summary>
     /// Literal for code: DonorRegistrationMinimalMessage
@@ -4434,9 +5394,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDonorRegistrationMinimalMessage = "O44";
 
     /// <summary>
+    /// Literal for code: V20003DonorRegistrationMinimalMessage
+    /// </summary>
+    public const string LiteralV20003DonorRegistrationMinimalMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#O44";
+
+    /// <summary>
     /// Literal for code: DonorEligibilityObservationsMessage
     /// </summary>
     public const string LiteralDonorEligibilityObservationsMessage = "O45";
+
+    /// <summary>
+    /// Literal for code: V20003DonorEligibilityObservationsMessage
+    /// </summary>
+    public const string LiteralV20003DonorEligibilityObservationsMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#O45";
 
     /// <summary>
     /// Literal for code: DonorEligiblityMessage
@@ -4444,9 +5414,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDonorEligiblityMessage = "O46";
 
     /// <summary>
+    /// Literal for code: V20003DonorEligiblityMessage
+    /// </summary>
+    public const string LiteralV20003DonorEligiblityMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#O46";
+
+    /// <summary>
     /// Literal for code: DonorRequestToCollectMessage
     /// </summary>
     public const string LiteralDonorRequestToCollectMessage = "O47";
+
+    /// <summary>
+    /// Literal for code: V20003DonorRequestToCollectMessage
+    /// </summary>
+    public const string LiteralV20003DonorRequestToCollectMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#O47";
 
     /// <summary>
     /// Literal for code: DonationProcedureMessage
@@ -4454,9 +5434,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDonationProcedureMessage = "O48";
 
     /// <summary>
+    /// Literal for code: V20003DonationProcedureMessage
+    /// </summary>
+    public const string LiteralV20003DonationProcedureMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#O48";
+
+    /// <summary>
     /// Literal for code: PharmacyTreatmentDispenseRequestMessage
     /// </summary>
     public const string LiteralPharmacyTreatmentDispenseRequestMessage = "O49";
+
+    /// <summary>
+    /// Literal for code: V20003PharmacyTreatmentDispenseRequestMessage
+    /// </summary>
+    public const string LiteralV20003PharmacyTreatmentDispenseRequestMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#O49";
 
     /// <summary>
     /// Literal for code: PharmacyTreatmentEncodedOrderAcknowledgment
@@ -4464,9 +5454,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPharmacyTreatmentEncodedOrderAcknowledgment = "O50";
 
     /// <summary>
+    /// Literal for code: V20003PharmacyTreatmentEncodedOrderAcknowledgment
+    /// </summary>
+    public const string LiteralV20003PharmacyTreatmentEncodedOrderAcknowledgment = "http://terminology.hl7.org/CodeSystem/v2-0003#O50";
+
+    /// <summary>
     /// Literal for code: OSUOrderStatusUpdate
     /// </summary>
     public const string LiteralOSUOrderStatusUpdate = "O51";
+
+    /// <summary>
+    /// Literal for code: V20003OSUOrderStatusUpdate
+    /// </summary>
+    public const string LiteralV20003OSUOrderStatusUpdate = "http://terminology.hl7.org/CodeSystem/v2-0003#O51";
 
     /// <summary>
     /// Literal for code: OSUOrderStatusUpdateAcknowledgement
@@ -4474,9 +5474,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOSUOrderStatusUpdateAcknowledgement = "O52";
 
     /// <summary>
+    /// Literal for code: V20003OSUOrderStatusUpdateAcknowledgement
+    /// </summary>
+    public const string LiteralV20003OSUOrderStatusUpdateAcknowledgement = "http://terminology.hl7.org/CodeSystem/v2-0003#O52";
+
+    /// <summary>
     /// Literal for code: ORLGeneralLaboratoryOrderAcknowledgmentMessagePatientOptional
     /// </summary>
     public const string LiteralORLGeneralLaboratoryOrderAcknowledgmentMessagePatientOptional = "O53";
+
+    /// <summary>
+    /// Literal for code: V20003ORLGeneralLaboratoryOrderAcknowledgmentMessagePatientOptional
+    /// </summary>
+    public const string LiteralV20003ORLGeneralLaboratoryOrderAcknowledgmentMessagePatientOptional = "http://terminology.hl7.org/CodeSystem/v2-0003#O53";
 
     /// <summary>
     /// Literal for code: ORLLaboratoryOrderAcknowledgmentMessageMultipleOrderPerSpecimenPatientOptional
@@ -4484,9 +5494,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORLLaboratoryOrderAcknowledgmentMessageMultipleOrderPerSpecimenPatientOptional = "O54";
 
     /// <summary>
+    /// Literal for code: V20003ORLLaboratoryOrderAcknowledgmentMessageMultipleOrderPerSpecimenPatientOptional
+    /// </summary>
+    public const string LiteralV20003ORLLaboratoryOrderAcknowledgmentMessageMultipleOrderPerSpecimenPatientOptional = "http://terminology.hl7.org/CodeSystem/v2-0003#O54";
+
+    /// <summary>
     /// Literal for code: ORLLaboratoryOrderAcknowledgmentMessageMultipleOrderPerContainerOfSpecimenPatientOptional
     /// </summary>
     public const string LiteralORLLaboratoryOrderAcknowledgmentMessageMultipleOrderPerContainerOfSpecimenPatientOptional = "O55";
+
+    /// <summary>
+    /// Literal for code: V20003ORLLaboratoryOrderAcknowledgmentMessageMultipleOrderPerContainerOfSpecimenPatientOptional
+    /// </summary>
+    public const string LiteralV20003ORLLaboratoryOrderAcknowledgmentMessageMultipleOrderPerContainerOfSpecimenPatientOptional = "http://terminology.hl7.org/CodeSystem/v2-0003#O55";
 
     /// <summary>
     /// Literal for code: ORLSpecimenShipmentCentricLaboratoryOrderAcknowledgmentMessagePatientOptional
@@ -4494,9 +5514,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORLSpecimenShipmentCentricLaboratoryOrderAcknowledgmentMessagePatientOptional = "O56";
 
     /// <summary>
+    /// Literal for code: V20003ORLSpecimenShipmentCentricLaboratoryOrderAcknowledgmentMessagePatientOptional
+    /// </summary>
+    public const string LiteralV20003ORLSpecimenShipmentCentricLaboratoryOrderAcknowledgmentMessagePatientOptional = "http://terminology.hl7.org/CodeSystem/v2-0003#O56";
+
+    /// <summary>
     /// Literal for code: OMQGeneralOrderMessageWithDocumentPayload
     /// </summary>
     public const string LiteralOMQGeneralOrderMessageWithDocumentPayload = "O57";
+
+    /// <summary>
+    /// Literal for code: V20003OMQGeneralOrderMessageWithDocumentPayload
+    /// </summary>
+    public const string LiteralV20003OMQGeneralOrderMessageWithDocumentPayload = "http://terminology.hl7.org/CodeSystem/v2-0003#O57";
 
     /// <summary>
     /// Literal for code: ORXGeneralOrderMessageWithDocumentPayloadAcknowledgementMessage
@@ -4504,9 +5534,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORXGeneralOrderMessageWithDocumentPayloadAcknowledgementMessage = "O58";
 
     /// <summary>
+    /// Literal for code: V20003ORXGeneralOrderMessageWithDocumentPayloadAcknowledgementMessage
+    /// </summary>
+    public const string LiteralV20003ORXGeneralOrderMessageWithDocumentPayloadAcknowledgementMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#O58";
+
+    /// <summary>
     /// Literal for code: OMLLaboratoryOrderForAdditionalWorkUp
     /// </summary>
     public const string LiteralOMLLaboratoryOrderForAdditionalWorkUp = "O59";
+
+    /// <summary>
+    /// Literal for code: V20003OMLLaboratoryOrderForAdditionalWorkUp
+    /// </summary>
+    public const string LiteralV20003OMLLaboratoryOrderForAdditionalWorkUp = "http://terminology.hl7.org/CodeSystem/v2-0003#O59";
 
     /// <summary>
     /// Literal for code: BARACKAddPatientAccounts
@@ -4514,9 +5554,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBARACKAddPatientAccounts = "P01";
 
     /// <summary>
+    /// Literal for code: V20003BARACKAddPatientAccounts
+    /// </summary>
+    public const string LiteralV20003BARACKAddPatientAccounts = "http://terminology.hl7.org/CodeSystem/v2-0003#P01";
+
+    /// <summary>
     /// Literal for code: BARACKPurgePatientAccounts
     /// </summary>
     public const string LiteralBARACKPurgePatientAccounts = "P02";
+
+    /// <summary>
+    /// Literal for code: V20003BARACKPurgePatientAccounts
+    /// </summary>
+    public const string LiteralV20003BARACKPurgePatientAccounts = "http://terminology.hl7.org/CodeSystem/v2-0003#P02";
 
     /// <summary>
     /// Literal for code: DFTACKPostDetailFinancialTransaction
@@ -4524,9 +5574,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDFTACKPostDetailFinancialTransaction = "P03";
 
     /// <summary>
+    /// Literal for code: V20003DFTACKPostDetailFinancialTransaction
+    /// </summary>
+    public const string LiteralV20003DFTACKPostDetailFinancialTransaction = "http://terminology.hl7.org/CodeSystem/v2-0003#P03";
+
+    /// <summary>
     /// Literal for code: QRYDSPGenerateBillAndARStatements
     /// </summary>
     public const string LiteralQRYDSPGenerateBillAndARStatements = "P04";
+
+    /// <summary>
+    /// Literal for code: V20003QRYDSPGenerateBillAndARStatements
+    /// </summary>
+    public const string LiteralV20003QRYDSPGenerateBillAndARStatements = "http://terminology.hl7.org/CodeSystem/v2-0003#P04";
 
     /// <summary>
     /// Literal for code: BARACKUpdateAccount
@@ -4534,9 +5594,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBARACKUpdateAccount = "P05";
 
     /// <summary>
+    /// Literal for code: V20003BARACKUpdateAccount
+    /// </summary>
+    public const string LiteralV20003BARACKUpdateAccount = "http://terminology.hl7.org/CodeSystem/v2-0003#P05";
+
+    /// <summary>
     /// Literal for code: BARACKEndAccount
     /// </summary>
     public const string LiteralBARACKEndAccount = "P06";
+
+    /// <summary>
+    /// Literal for code: V20003BARACKEndAccount
+    /// </summary>
+    public const string LiteralV20003BARACKEndAccount = "http://terminology.hl7.org/CodeSystem/v2-0003#P06";
 
     /// <summary>
     /// Literal for code: PEXUnsolicitedInitialIndividualProductExperienceReport
@@ -4544,9 +5614,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPEXUnsolicitedInitialIndividualProductExperienceReport = "P07";
 
     /// <summary>
+    /// Literal for code: V20003PEXUnsolicitedInitialIndividualProductExperienceReport
+    /// </summary>
+    public const string LiteralV20003PEXUnsolicitedInitialIndividualProductExperienceReport = "http://terminology.hl7.org/CodeSystem/v2-0003#P07";
+
+    /// <summary>
     /// Literal for code: PEXUnsolicitedUpdateIndividualProductExperienceReport
     /// </summary>
     public const string LiteralPEXUnsolicitedUpdateIndividualProductExperienceReport = "P08";
+
+    /// <summary>
+    /// Literal for code: V20003PEXUnsolicitedUpdateIndividualProductExperienceReport
+    /// </summary>
+    public const string LiteralV20003PEXUnsolicitedUpdateIndividualProductExperienceReport = "http://terminology.hl7.org/CodeSystem/v2-0003#P08";
 
     /// <summary>
     /// Literal for code: SURSummaryProductExperienceReport
@@ -4554,9 +5634,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSURSummaryProductExperienceReport = "P09";
 
     /// <summary>
+    /// Literal for code: V20003SURSummaryProductExperienceReport
+    /// </summary>
+    public const string LiteralV20003SURSummaryProductExperienceReport = "http://terminology.hl7.org/CodeSystem/v2-0003#P09";
+
+    /// <summary>
     /// Literal for code: BARACKTransmitAmbulatoryPaymentClassificationAPC
     /// </summary>
     public const string LiteralBARACKTransmitAmbulatoryPaymentClassificationAPC = "P10";
+
+    /// <summary>
+    /// Literal for code: V20003BARACKTransmitAmbulatoryPaymentClassificationAPC
+    /// </summary>
+    public const string LiteralV20003BARACKTransmitAmbulatoryPaymentClassificationAPC = "http://terminology.hl7.org/CodeSystem/v2-0003#P10";
 
     /// <summary>
     /// Literal for code: DFTACKPostDetailFinancialTransactionsNew
@@ -4564,9 +5654,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDFTACKPostDetailFinancialTransactionsNew = "P11";
 
     /// <summary>
+    /// Literal for code: V20003DFTACKPostDetailFinancialTransactionsNew
+    /// </summary>
+    public const string LiteralV20003DFTACKPostDetailFinancialTransactionsNew = "http://terminology.hl7.org/CodeSystem/v2-0003#P11";
+
+    /// <summary>
     /// Literal for code: BARACKUpdateDiagnosisProcedure
     /// </summary>
     public const string LiteralBARACKUpdateDiagnosisProcedure = "P12";
+
+    /// <summary>
+    /// Literal for code: V20003BARACKUpdateDiagnosisProcedure
+    /// </summary>
+    public const string LiteralV20003BARACKUpdateDiagnosisProcedure = "http://terminology.hl7.org/CodeSystem/v2-0003#P12";
 
     /// <summary>
     /// Literal for code: PPRPCProblemAdd
@@ -4574,9 +5674,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPPRPCProblemAdd = "PC1";
 
     /// <summary>
+    /// Literal for code: V20003PPRPCProblemAdd
+    /// </summary>
+    public const string LiteralV20003PPRPCProblemAdd = "http://terminology.hl7.org/CodeSystem/v2-0003#PC1";
+
+    /// <summary>
     /// Literal for code: PPRPCProblemUpdate
     /// </summary>
     public const string LiteralPPRPCProblemUpdate = "PC2";
+
+    /// <summary>
+    /// Literal for code: V20003PPRPCProblemUpdate
+    /// </summary>
+    public const string LiteralV20003PPRPCProblemUpdate = "http://terminology.hl7.org/CodeSystem/v2-0003#PC2";
 
     /// <summary>
     /// Literal for code: PPRPCProblemDelete
@@ -4584,9 +5694,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPPRPCProblemDelete = "PC3";
 
     /// <summary>
+    /// Literal for code: V20003PPRPCProblemDelete
+    /// </summary>
+    public const string LiteralV20003PPRPCProblemDelete = "http://terminology.hl7.org/CodeSystem/v2-0003#PC3";
+
+    /// <summary>
     /// Literal for code: QRYPCProblemQuery
     /// </summary>
     public const string LiteralQRYPCProblemQuery = "PC4";
+
+    /// <summary>
+    /// Literal for code: V20003QRYPCProblemQuery
+    /// </summary>
+    public const string LiteralV20003QRYPCProblemQuery = "http://terminology.hl7.org/CodeSystem/v2-0003#PC4";
 
     /// <summary>
     /// Literal for code: PRRPCProblemResponse
@@ -4594,9 +5714,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPRRPCProblemResponse = "PC5";
 
     /// <summary>
+    /// Literal for code: V20003PRRPCProblemResponse
+    /// </summary>
+    public const string LiteralV20003PRRPCProblemResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#PC5";
+
+    /// <summary>
     /// Literal for code: PGLPCGoalAdd
     /// </summary>
     public const string LiteralPGLPCGoalAdd = "PC6";
+
+    /// <summary>
+    /// Literal for code: V20003PGLPCGoalAdd
+    /// </summary>
+    public const string LiteralV20003PGLPCGoalAdd = "http://terminology.hl7.org/CodeSystem/v2-0003#PC6";
 
     /// <summary>
     /// Literal for code: PGLPCGoalUpdate
@@ -4604,9 +5734,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPGLPCGoalUpdate = "PC7";
 
     /// <summary>
+    /// Literal for code: V20003PGLPCGoalUpdate
+    /// </summary>
+    public const string LiteralV20003PGLPCGoalUpdate = "http://terminology.hl7.org/CodeSystem/v2-0003#PC7";
+
+    /// <summary>
     /// Literal for code: PGLPCGoalDelete
     /// </summary>
     public const string LiteralPGLPCGoalDelete = "PC8";
+
+    /// <summary>
+    /// Literal for code: V20003PGLPCGoalDelete
+    /// </summary>
+    public const string LiteralV20003PGLPCGoalDelete = "http://terminology.hl7.org/CodeSystem/v2-0003#PC8";
 
     /// <summary>
     /// Literal for code: QRYPCGoalQuery
@@ -4614,9 +5754,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQRYPCGoalQuery = "PC9";
 
     /// <summary>
+    /// Literal for code: V20003QRYPCGoalQuery
+    /// </summary>
+    public const string LiteralV20003QRYPCGoalQuery = "http://terminology.hl7.org/CodeSystem/v2-0003#PC9";
+
+    /// <summary>
     /// Literal for code: PPVPCGoalResponse
     /// </summary>
     public const string LiteralPPVPCGoalResponse = "PCA";
+
+    /// <summary>
+    /// Literal for code: V20003PPVPCGoalResponse
+    /// </summary>
+    public const string LiteralV20003PPVPCGoalResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#PCA";
 
     /// <summary>
     /// Literal for code: PPPPCPathwayProblemOrientedAdd
@@ -4624,9 +5774,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPPPPCPathwayProblemOrientedAdd = "PCB";
 
     /// <summary>
+    /// Literal for code: V20003PPPPCPathwayProblemOrientedAdd
+    /// </summary>
+    public const string LiteralV20003PPPPCPathwayProblemOrientedAdd = "http://terminology.hl7.org/CodeSystem/v2-0003#PCB";
+
+    /// <summary>
     /// Literal for code: PPPPCPathwayProblemOrientedUpdate
     /// </summary>
     public const string LiteralPPPPCPathwayProblemOrientedUpdate = "PCC";
+
+    /// <summary>
+    /// Literal for code: V20003PPPPCPathwayProblemOrientedUpdate
+    /// </summary>
+    public const string LiteralV20003PPPPCPathwayProblemOrientedUpdate = "http://terminology.hl7.org/CodeSystem/v2-0003#PCC";
 
     /// <summary>
     /// Literal for code: PPPPCPathwayProblemOrientedDelete
@@ -4634,9 +5794,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPPPPCPathwayProblemOrientedDelete = "PCD";
 
     /// <summary>
+    /// Literal for code: V20003PPPPCPathwayProblemOrientedDelete
+    /// </summary>
+    public const string LiteralV20003PPPPCPathwayProblemOrientedDelete = "http://terminology.hl7.org/CodeSystem/v2-0003#PCD";
+
+    /// <summary>
     /// Literal for code: QRYPCPathwayProblemOrientedQuery
     /// </summary>
     public const string LiteralQRYPCPathwayProblemOrientedQuery = "PCE";
+
+    /// <summary>
+    /// Literal for code: V20003QRYPCPathwayProblemOrientedQuery
+    /// </summary>
+    public const string LiteralV20003QRYPCPathwayProblemOrientedQuery = "http://terminology.hl7.org/CodeSystem/v2-0003#PCE";
 
     /// <summary>
     /// Literal for code: PTRPCPathwayProblemOrientedQueryResponse
@@ -4644,9 +5814,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPTRPCPathwayProblemOrientedQueryResponse = "PCF";
 
     /// <summary>
+    /// Literal for code: V20003PTRPCPathwayProblemOrientedQueryResponse
+    /// </summary>
+    public const string LiteralV20003PTRPCPathwayProblemOrientedQueryResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#PCF";
+
+    /// <summary>
     /// Literal for code: PPGPCPathwayGoalOrientedAdd
     /// </summary>
     public const string LiteralPPGPCPathwayGoalOrientedAdd = "PCG";
+
+    /// <summary>
+    /// Literal for code: V20003PPGPCPathwayGoalOrientedAdd
+    /// </summary>
+    public const string LiteralV20003PPGPCPathwayGoalOrientedAdd = "http://terminology.hl7.org/CodeSystem/v2-0003#PCG";
 
     /// <summary>
     /// Literal for code: PPGPCPathwayGoalOrientedUpdate
@@ -4654,9 +5834,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPPGPCPathwayGoalOrientedUpdate = "PCH";
 
     /// <summary>
+    /// Literal for code: V20003PPGPCPathwayGoalOrientedUpdate
+    /// </summary>
+    public const string LiteralV20003PPGPCPathwayGoalOrientedUpdate = "http://terminology.hl7.org/CodeSystem/v2-0003#PCH";
+
+    /// <summary>
     /// Literal for code: PPGPCPathwayGoalOrientedDelete
     /// </summary>
     public const string LiteralPPGPCPathwayGoalOrientedDelete = "PCJ";
+
+    /// <summary>
+    /// Literal for code: V20003PPGPCPathwayGoalOrientedDelete
+    /// </summary>
+    public const string LiteralV20003PPGPCPathwayGoalOrientedDelete = "http://terminology.hl7.org/CodeSystem/v2-0003#PCJ";
 
     /// <summary>
     /// Literal for code: QRYPCPathwayGoalOrientedQuery
@@ -4664,9 +5854,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQRYPCPathwayGoalOrientedQuery = "PCK";
 
     /// <summary>
+    /// Literal for code: V20003QRYPCPathwayGoalOrientedQuery
+    /// </summary>
+    public const string LiteralV20003QRYPCPathwayGoalOrientedQuery = "http://terminology.hl7.org/CodeSystem/v2-0003#PCK";
+
+    /// <summary>
     /// Literal for code: PPTPCPathwayGoalOrientedQueryResponse
     /// </summary>
     public const string LiteralPPTPCPathwayGoalOrientedQueryResponse = "PCL";
+
+    /// <summary>
+    /// Literal for code: V20003PPTPCPathwayGoalOrientedQueryResponse
+    /// </summary>
+    public const string LiteralV20003PPTPCPathwayGoalOrientedQueryResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#PCL";
 
     /// <summary>
     /// Literal for code: QRYDSRQuerySentForImmediateResponse
@@ -4674,9 +5874,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQRYDSRQuerySentForImmediateResponse = "Q01";
 
     /// <summary>
+    /// Literal for code: V20003QRYDSRQuerySentForImmediateResponse
+    /// </summary>
+    public const string LiteralV20003QRYDSRQuerySentForImmediateResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#Q01";
+
+    /// <summary>
     /// Literal for code: QRYQCKQuerySentForDeferredResponse
     /// </summary>
     public const string LiteralQRYQCKQuerySentForDeferredResponse = "Q02";
+
+    /// <summary>
+    /// Literal for code: V20003QRYQCKQuerySentForDeferredResponse
+    /// </summary>
+    public const string LiteralV20003QRYQCKQuerySentForDeferredResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#Q02";
 
     /// <summary>
     /// Literal for code: DSRACKDeferredResponseToAQuery
@@ -4684,9 +5894,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDSRACKDeferredResponseToAQuery = "Q03";
 
     /// <summary>
+    /// Literal for code: V20003DSRACKDeferredResponseToAQuery
+    /// </summary>
+    public const string LiteralV20003DSRACKDeferredResponseToAQuery = "http://terminology.hl7.org/CodeSystem/v2-0003#Q03";
+
+    /// <summary>
     /// Literal for code: EQQEmbeddedQueryLanguageQuery
     /// </summary>
     public const string LiteralEQQEmbeddedQueryLanguageQuery = "Q04";
+
+    /// <summary>
+    /// Literal for code: V20003EQQEmbeddedQueryLanguageQuery
+    /// </summary>
+    public const string LiteralV20003EQQEmbeddedQueryLanguageQuery = "http://terminology.hl7.org/CodeSystem/v2-0003#Q04";
 
     /// <summary>
     /// Literal for code: UDMACKUnsolicitedDisplayUpdateMessage
@@ -4694,9 +5914,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUDMACKUnsolicitedDisplayUpdateMessage = "Q05";
 
     /// <summary>
+    /// Literal for code: V20003UDMACKUnsolicitedDisplayUpdateMessage
+    /// </summary>
+    public const string LiteralV20003UDMACKUnsolicitedDisplayUpdateMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#Q05";
+
+    /// <summary>
     /// Literal for code: OSQOSRQueryForOrderStatus
     /// </summary>
     public const string LiteralOSQOSRQueryForOrderStatus = "Q06";
+
+    /// <summary>
+    /// Literal for code: V20003OSQOSRQueryForOrderStatus
+    /// </summary>
+    public const string LiteralV20003OSQOSRQueryForOrderStatus = "http://terminology.hl7.org/CodeSystem/v2-0003#Q06";
 
     /// <summary>
     /// Literal for code: VQQVirtualTableQuery
@@ -4704,9 +5934,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVQQVirtualTableQuery = "Q07";
 
     /// <summary>
+    /// Literal for code: V20003VQQVirtualTableQuery
+    /// </summary>
+    public const string LiteralV20003VQQVirtualTableQuery = "http://terminology.hl7.org/CodeSystem/v2-0003#Q07";
+
+    /// <summary>
     /// Literal for code: SPQStoredProcedureRequest
     /// </summary>
     public const string LiteralSPQStoredProcedureRequest = "Q08";
+
+    /// <summary>
+    /// Literal for code: V20003SPQStoredProcedureRequest
+    /// </summary>
+    public const string LiteralV20003SPQStoredProcedureRequest = "http://terminology.hl7.org/CodeSystem/v2-0003#Q08";
 
     /// <summary>
     /// Literal for code: RQQEventReplayQuery
@@ -4714,9 +5954,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRQQEventReplayQuery = "Q09";
 
     /// <summary>
+    /// Literal for code: V20003RQQEventReplayQuery
+    /// </summary>
+    public const string LiteralV20003RQQEventReplayQuery = "http://terminology.hl7.org/CodeSystem/v2-0003#Q09";
+
+    /// <summary>
     /// Literal for code: QBPQueryByParameterRequestingAnRSPSegmentPatternResponse
     /// </summary>
     public const string LiteralQBPQueryByParameterRequestingAnRSPSegmentPatternResponse = "Q11";
+
+    /// <summary>
+    /// Literal for code: V20003QBPQueryByParameterRequestingAnRSPSegmentPatternResponse
+    /// </summary>
+    public const string LiteralV20003QBPQueryByParameterRequestingAnRSPSegmentPatternResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#Q11";
 
     /// <summary>
     /// Literal for code: QBPQueryByParameterRequestingAnRTBTabularResponse
@@ -4724,9 +5974,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQBPQueryByParameterRequestingAnRTBTabularResponse = "Q13";
 
     /// <summary>
+    /// Literal for code: V20003QBPQueryByParameterRequestingAnRTBTabularResponse
+    /// </summary>
+    public const string LiteralV20003QBPQueryByParameterRequestingAnRTBTabularResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#Q13";
+
+    /// <summary>
     /// Literal for code: QBPQueryByParameterRequestingAnRDYDisplayResponse
     /// </summary>
     public const string LiteralQBPQueryByParameterRequestingAnRDYDisplayResponse = "Q15";
+
+    /// <summary>
+    /// Literal for code: V20003QBPQueryByParameterRequestingAnRDYDisplayResponse
+    /// </summary>
+    public const string LiteralV20003QBPQueryByParameterRequestingAnRDYDisplayResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#Q15";
 
     /// <summary>
     /// Literal for code: QSBCreateSubscription
@@ -4734,9 +5994,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQSBCreateSubscription = "Q16";
 
     /// <summary>
+    /// Literal for code: V20003QSBCreateSubscription
+    /// </summary>
+    public const string LiteralV20003QSBCreateSubscription = "http://terminology.hl7.org/CodeSystem/v2-0003#Q16";
+
+    /// <summary>
     /// Literal for code: QVRQueryForPreviousEvents
     /// </summary>
     public const string LiteralQVRQueryForPreviousEvents = "Q17";
+
+    /// <summary>
+    /// Literal for code: V20003QVRQueryForPreviousEvents
+    /// </summary>
+    public const string LiteralV20003QVRQueryForPreviousEvents = "http://terminology.hl7.org/CodeSystem/v2-0003#Q17";
 
     /// <summary>
     /// Literal for code: QBPGetPersonDemographics
@@ -4744,9 +6014,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQBPGetPersonDemographics = "Q21";
 
     /// <summary>
+    /// Literal for code: V20003QBPGetPersonDemographics
+    /// </summary>
+    public const string LiteralV20003QBPGetPersonDemographics = "http://terminology.hl7.org/CodeSystem/v2-0003#Q21";
+
+    /// <summary>
     /// Literal for code: QBPFindCandidates
     /// </summary>
     public const string LiteralQBPFindCandidates = "Q22";
+
+    /// <summary>
+    /// Literal for code: V20003QBPFindCandidates
+    /// </summary>
+    public const string LiteralV20003QBPFindCandidates = "http://terminology.hl7.org/CodeSystem/v2-0003#Q22";
 
     /// <summary>
     /// Literal for code: QBPGetCorrespondingIdentifiers
@@ -4754,9 +6034,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQBPGetCorrespondingIdentifiers = "Q23";
 
     /// <summary>
+    /// Literal for code: V20003QBPGetCorrespondingIdentifiers
+    /// </summary>
+    public const string LiteralV20003QBPGetCorrespondingIdentifiers = "http://terminology.hl7.org/CodeSystem/v2-0003#Q23";
+
+    /// <summary>
     /// Literal for code: QBPAllocateIdentifiers
     /// </summary>
     public const string LiteralQBPAllocateIdentifiers = "Q24";
+
+    /// <summary>
+    /// Literal for code: V20003QBPAllocateIdentifiers
+    /// </summary>
+    public const string LiteralV20003QBPAllocateIdentifiers = "http://terminology.hl7.org/CodeSystem/v2-0003#Q24";
 
     /// <summary>
     /// Literal for code: QBPPersonnelInformationBySegmentQuery
@@ -4764,9 +6054,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQBPPersonnelInformationBySegmentQuery = "Q25";
 
     /// <summary>
+    /// Literal for code: V20003QBPPersonnelInformationBySegmentQuery
+    /// </summary>
+    public const string LiteralV20003QBPPersonnelInformationBySegmentQuery = "http://terminology.hl7.org/CodeSystem/v2-0003#Q25";
+
+    /// <summary>
     /// Literal for code: RORPharmacyTreatmentOrderResponse
     /// </summary>
     public const string LiteralRORPharmacyTreatmentOrderResponse = "Q26";
+
+    /// <summary>
+    /// Literal for code: V20003RORPharmacyTreatmentOrderResponse
+    /// </summary>
+    public const string LiteralV20003RORPharmacyTreatmentOrderResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#Q26";
 
     /// <summary>
     /// Literal for code: RARPharmacyTreatmentAdministrationInformation
@@ -4774,9 +6074,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRARPharmacyTreatmentAdministrationInformation = "Q27";
 
     /// <summary>
+    /// Literal for code: V20003RARPharmacyTreatmentAdministrationInformation
+    /// </summary>
+    public const string LiteralV20003RARPharmacyTreatmentAdministrationInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#Q27";
+
+    /// <summary>
     /// Literal for code: RDRPharmacyTreatmentDispenseInformation
     /// </summary>
     public const string LiteralRDRPharmacyTreatmentDispenseInformation = "Q28";
+
+    /// <summary>
+    /// Literal for code: V20003RDRPharmacyTreatmentDispenseInformation
+    /// </summary>
+    public const string LiteralV20003RDRPharmacyTreatmentDispenseInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#Q28";
 
     /// <summary>
     /// Literal for code: RERPharmacyTreatmentEncodedOrderInformation
@@ -4784,9 +6094,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRERPharmacyTreatmentEncodedOrderInformation = "Q29";
 
     /// <summary>
+    /// Literal for code: V20003RERPharmacyTreatmentEncodedOrderInformation
+    /// </summary>
+    public const string LiteralV20003RERPharmacyTreatmentEncodedOrderInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#Q29";
+
+    /// <summary>
     /// Literal for code: RGRPharmacyTreatmentDoseInformation
     /// </summary>
     public const string LiteralRGRPharmacyTreatmentDoseInformation = "Q30";
+
+    /// <summary>
+    /// Literal for code: V20003RGRPharmacyTreatmentDoseInformation
+    /// </summary>
+    public const string LiteralV20003RGRPharmacyTreatmentDoseInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#Q30";
 
     /// <summary>
     /// Literal for code: QBPQueryDispenseHistory
@@ -4794,9 +6114,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQBPQueryDispenseHistory = "Q31";
 
     /// <summary>
+    /// Literal for code: V20003QBPQueryDispenseHistory
+    /// </summary>
+    public const string LiteralV20003QBPQueryDispenseHistory = "http://terminology.hl7.org/CodeSystem/v2-0003#Q31";
+
+    /// <summary>
     /// Literal for code: FindCandidatesIncludingVisitInformation
     /// </summary>
     public const string LiteralFindCandidatesIncludingVisitInformation = "Q32";
+
+    /// <summary>
+    /// Literal for code: V20003FindCandidatesIncludingVisitInformation
+    /// </summary>
+    public const string LiteralV20003FindCandidatesIncludingVisitInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#Q32";
 
     /// <summary>
     /// Literal for code: QBPGetDonorRecordCandidates
@@ -4804,9 +6134,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQBPGetDonorRecordCandidates = "Q33";
 
     /// <summary>
+    /// Literal for code: V20003QBPGetDonorRecordCandidates
+    /// </summary>
+    public const string LiteralV20003QBPGetDonorRecordCandidates = "http://terminology.hl7.org/CodeSystem/v2-0003#Q33";
+
+    /// <summary>
     /// Literal for code: QBPGetDonorRecord
     /// </summary>
     public const string LiteralQBPGetDonorRecord = "Q34";
+
+    /// <summary>
+    /// Literal for code: V20003QBPGetDonorRecord
+    /// </summary>
+    public const string LiteralV20003QBPGetDonorRecord = "http://terminology.hl7.org/CodeSystem/v2-0003#Q34";
 
     /// <summary>
     /// Literal for code: ORUACKUnsolicitedTransmissionOfAnObservationMessage
@@ -4814,9 +6154,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORUACKUnsolicitedTransmissionOfAnObservationMessage = "R01";
 
     /// <summary>
+    /// Literal for code: V20003ORUACKUnsolicitedTransmissionOfAnObservationMessage
+    /// </summary>
+    public const string LiteralV20003ORUACKUnsolicitedTransmissionOfAnObservationMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#R01";
+
+    /// <summary>
     /// Literal for code: QRYQueryForResultsOfObservation
     /// </summary>
     public const string LiteralQRYQueryForResultsOfObservation = "R02";
+
+    /// <summary>
+    /// Literal for code: V20003QRYQueryForResultsOfObservation
+    /// </summary>
+    public const string LiteralV20003QRYQueryForResultsOfObservation = "http://terminology.hl7.org/CodeSystem/v2-0003#R02";
 
     /// <summary>
     /// Literal for code: QRYDSRDisplayOrientedResultsQueryUnsolUpdateForBackwardCompatibilityOnlyReplacedByQ05
@@ -4824,9 +6174,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQRYDSRDisplayOrientedResultsQueryUnsolUpdateForBackwardCompatibilityOnlyReplacedByQ05 = "R03";
 
     /// <summary>
+    /// Literal for code: V20003QRYDSRDisplayOrientedResultsQueryUnsolUpdateForBackwardCompatibilityOnlyReplacedByQ05
+    /// </summary>
+    public const string LiteralV20003QRYDSRDisplayOrientedResultsQueryUnsolUpdateForBackwardCompatibilityOnlyReplacedByQ05 = "http://terminology.hl7.org/CodeSystem/v2-0003#R03";
+
+    /// <summary>
     /// Literal for code: ORFResponseToQueryTransmissionOfRequestedObservation
     /// </summary>
     public const string LiteralORFResponseToQueryTransmissionOfRequestedObservation = "R04";
+
+    /// <summary>
+    /// Literal for code: V20003ORFResponseToQueryTransmissionOfRequestedObservation
+    /// </summary>
+    public const string LiteralV20003ORFResponseToQueryTransmissionOfRequestedObservation = "http://terminology.hl7.org/CodeSystem/v2-0003#R04";
 
     /// <summary>
     /// Literal for code: QRYDSRQueryForDisplayResultsSeeQ01
@@ -4834,9 +6194,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQRYDSRQueryForDisplayResultsSeeQ01 = "R05";
 
     /// <summary>
+    /// Literal for code: V20003QRYDSRQueryForDisplayResultsSeeQ01
+    /// </summary>
+    public const string LiteralV20003QRYDSRQueryForDisplayResultsSeeQ01 = "http://terminology.hl7.org/CodeSystem/v2-0003#R05";
+
+    /// <summary>
     /// Literal for code: UDMUnsolicitedUpdateDisplayResultsSeeQ05
     /// </summary>
     public const string LiteralUDMUnsolicitedUpdateDisplayResultsSeeQ05 = "R06";
+
+    /// <summary>
+    /// Literal for code: V20003UDMUnsolicitedUpdateDisplayResultsSeeQ05
+    /// </summary>
+    public const string LiteralV20003UDMUnsolicitedUpdateDisplayResultsSeeQ05 = "http://terminology.hl7.org/CodeSystem/v2-0003#R06";
 
     /// <summary>
     /// Literal for code: EDREnhancedDisplayResponse
@@ -4844,9 +6214,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEDREnhancedDisplayResponse = "R07";
 
     /// <summary>
+    /// Literal for code: V20003EDREnhancedDisplayResponse
+    /// </summary>
+    public const string LiteralV20003EDREnhancedDisplayResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#R07";
+
+    /// <summary>
     /// Literal for code: TBRTabularDataResponse
     /// </summary>
     public const string LiteralTBRTabularDataResponse = "R08";
+
+    /// <summary>
+    /// Literal for code: V20003TBRTabularDataResponse
+    /// </summary>
+    public const string LiteralV20003TBRTabularDataResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#R08";
 
     /// <summary>
     /// Literal for code: ERPEventReplayResponse
@@ -4854,9 +6234,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralERPEventReplayResponse = "R09";
 
     /// <summary>
+    /// Literal for code: V20003ERPEventReplayResponse
+    /// </summary>
+    public const string LiteralV20003ERPEventReplayResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#R09";
+
+    /// <summary>
     /// Literal for code: R0RPharmacyPrescriptionOrderQueryResponse
     /// </summary>
     public const string LiteralR0RPharmacyPrescriptionOrderQueryResponse = "R0R";
+
+    /// <summary>
+    /// Literal for code: V20003R0RPharmacyPrescriptionOrderQueryResponse
+    /// </summary>
+    public const string LiteralV20003R0RPharmacyPrescriptionOrderQueryResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#R0R";
 
     /// <summary>
     /// Literal for code: OULUnsolicitedLaboratoryObservation
@@ -4864,9 +6254,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOULUnsolicitedLaboratoryObservation = "R21";
 
     /// <summary>
+    /// Literal for code: V20003OULUnsolicitedLaboratoryObservation
+    /// </summary>
+    public const string LiteralV20003OULUnsolicitedLaboratoryObservation = "http://terminology.hl7.org/CodeSystem/v2-0003#R21";
+
+    /// <summary>
     /// Literal for code: OULUnsolicitedSpecimenOrientedObservationMessage
     /// </summary>
     public const string LiteralOULUnsolicitedSpecimenOrientedObservationMessage = "R22";
+
+    /// <summary>
+    /// Literal for code: V20003OULUnsolicitedSpecimenOrientedObservationMessage
+    /// </summary>
+    public const string LiteralV20003OULUnsolicitedSpecimenOrientedObservationMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#R22";
 
     /// <summary>
     /// Literal for code: OULUnsolicitedSpecimenContainerOrientedObservationMessage
@@ -4874,9 +6274,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOULUnsolicitedSpecimenContainerOrientedObservationMessage = "R23";
 
     /// <summary>
+    /// Literal for code: V20003OULUnsolicitedSpecimenContainerOrientedObservationMessage
+    /// </summary>
+    public const string LiteralV20003OULUnsolicitedSpecimenContainerOrientedObservationMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#R23";
+
+    /// <summary>
     /// Literal for code: OULUnsolicitedOrderOrientedObservationMessage
     /// </summary>
     public const string LiteralOULUnsolicitedOrderOrientedObservationMessage = "R24";
+
+    /// <summary>
+    /// Literal for code: V20003OULUnsolicitedOrderOrientedObservationMessage
+    /// </summary>
+    public const string LiteralV20003OULUnsolicitedOrderOrientedObservationMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#R24";
 
     /// <summary>
     /// Literal for code: OPUUnsolicitedPopulationLocationBasedLaboratoryObservationMessage
@@ -4884,9 +6294,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOPUUnsolicitedPopulationLocationBasedLaboratoryObservationMessage = "R25";
 
     /// <summary>
+    /// Literal for code: V20003OPUUnsolicitedPopulationLocationBasedLaboratoryObservationMessage
+    /// </summary>
+    public const string LiteralV20003OPUUnsolicitedPopulationLocationBasedLaboratoryObservationMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#R25";
+
+    /// <summary>
     /// Literal for code: OSMUnsolicitedSpecimenShipmentManifestMessage
     /// </summary>
     public const string LiteralOSMUnsolicitedSpecimenShipmentManifestMessage = "R26";
+
+    /// <summary>
+    /// Literal for code: V20003OSMUnsolicitedSpecimenShipmentManifestMessage
+    /// </summary>
+    public const string LiteralV20003OSMUnsolicitedSpecimenShipmentManifestMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#R26";
 
     /// <summary>
     /// Literal for code: ORUUnsolicitedPointOfCareObservationMessageWithoutExistingOrderPlaceAnOrder
@@ -4894,9 +6314,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORUUnsolicitedPointOfCareObservationMessageWithoutExistingOrderPlaceAnOrder = "R30";
 
     /// <summary>
+    /// Literal for code: V20003ORUUnsolicitedPointOfCareObservationMessageWithoutExistingOrderPlaceAnOrder
+    /// </summary>
+    public const string LiteralV20003ORUUnsolicitedPointOfCareObservationMessageWithoutExistingOrderPlaceAnOrder = "http://terminology.hl7.org/CodeSystem/v2-0003#R30";
+
+    /// <summary>
     /// Literal for code: ORUUnsolicitedNewPointOfCareObservationMessageSearchForAnOrder
     /// </summary>
     public const string LiteralORUUnsolicitedNewPointOfCareObservationMessageSearchForAnOrder = "R31";
+
+    /// <summary>
+    /// Literal for code: V20003ORUUnsolicitedNewPointOfCareObservationMessageSearchForAnOrder
+    /// </summary>
+    public const string LiteralV20003ORUUnsolicitedNewPointOfCareObservationMessageSearchForAnOrder = "http://terminology.hl7.org/CodeSystem/v2-0003#R31";
 
     /// <summary>
     /// Literal for code: ORUUnsolicitedPreOrderedPointOfCareObservation
@@ -4904,9 +6334,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORUUnsolicitedPreOrderedPointOfCareObservation = "R32";
 
     /// <summary>
+    /// Literal for code: V20003ORUUnsolicitedPreOrderedPointOfCareObservation
+    /// </summary>
+    public const string LiteralV20003ORUUnsolicitedPreOrderedPointOfCareObservation = "http://terminology.hl7.org/CodeSystem/v2-0003#R32";
+
+    /// <summary>
     /// Literal for code: ORAObservationReportAcknowledgement
     /// </summary>
     public const string LiteralORAObservationReportAcknowledgement = "R33";
+
+    /// <summary>
+    /// Literal for code: V20003ORAObservationReportAcknowledgement
+    /// </summary>
+    public const string LiteralV20003ORAObservationReportAcknowledgement = "http://terminology.hl7.org/CodeSystem/v2-0003#R33";
 
     /// <summary>
     /// Literal for code: ORUUnsolicitedReportAlarm
@@ -4914,9 +6354,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORUUnsolicitedReportAlarm = "R40";
 
     /// <summary>
+    /// Literal for code: V20003ORUUnsolicitedReportAlarm
+    /// </summary>
+    public const string LiteralV20003ORUUnsolicitedReportAlarm = "http://terminology.hl7.org/CodeSystem/v2-0003#R40";
+
+    /// <summary>
     /// Literal for code: ObservationReportAlertAcknowledgement
     /// </summary>
     public const string LiteralObservationReportAlertAcknowledgement = "R41";
+
+    /// <summary>
+    /// Literal for code: V20003ObservationReportAlertAcknowledgement
+    /// </summary>
+    public const string LiteralV20003ObservationReportAlertAcknowledgement = "http://terminology.hl7.org/CodeSystem/v2-0003#R41";
 
     /// <summary>
     /// Literal for code: ORUUnsolicitedDeviceEventObservationMessage
@@ -4924,9 +6374,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralORUUnsolicitedDeviceEventObservationMessage = "R42";
 
     /// <summary>
+    /// Literal for code: V20003ORUUnsolicitedDeviceEventObservationMessage
+    /// </summary>
+    public const string LiteralV20003ORUUnsolicitedDeviceEventObservationMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#R42";
+
+    /// <summary>
     /// Literal for code: ORUUnsolicitedPatientDeviceAssociationObservationMessage
     /// </summary>
     public const string LiteralORUUnsolicitedPatientDeviceAssociationObservationMessage = "R43";
+
+    /// <summary>
+    /// Literal for code: V20003ORUUnsolicitedPatientDeviceAssociationObservationMessage
+    /// </summary>
+    public const string LiteralV20003ORUUnsolicitedPatientDeviceAssociationObservationMessage = "http://terminology.hl7.org/CodeSystem/v2-0003#R43";
 
     /// <summary>
     /// Literal for code: RARPharmacyAdministrationInformationQueryResponse
@@ -4934,9 +6394,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRARPharmacyAdministrationInformationQueryResponse = "RAR";
 
     /// <summary>
+    /// Literal for code: V20003RARPharmacyAdministrationInformationQueryResponse
+    /// </summary>
+    public const string LiteralV20003RARPharmacyAdministrationInformationQueryResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#RAR";
+
+    /// <summary>
     /// Literal for code: RDRPharmacyDispenseInformationQueryResponse
     /// </summary>
     public const string LiteralRDRPharmacyDispenseInformationQueryResponse = "RDR";
+
+    /// <summary>
+    /// Literal for code: V20003RDRPharmacyDispenseInformationQueryResponse
+    /// </summary>
+    public const string LiteralV20003RDRPharmacyDispenseInformationQueryResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#RDR";
 
     /// <summary>
     /// Literal for code: RERPharmacyEncodedOrderInformationQueryResponse
@@ -4944,9 +6414,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRERPharmacyEncodedOrderInformationQueryResponse = "RER";
 
     /// <summary>
+    /// Literal for code: V20003RERPharmacyEncodedOrderInformationQueryResponse
+    /// </summary>
+    public const string LiteralV20003RERPharmacyEncodedOrderInformationQueryResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#RER";
+
+    /// <summary>
     /// Literal for code: RGRPharmacyDoseInformationQueryResponse
     /// </summary>
     public const string LiteralRGRPharmacyDoseInformationQueryResponse = "RGR";
+
+    /// <summary>
+    /// Literal for code: V20003RGRPharmacyDoseInformationQueryResponse
+    /// </summary>
+    public const string LiteralV20003RGRPharmacyDoseInformationQueryResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#RGR";
 
     /// <summary>
     /// Literal for code: RORPharmacyPrescriptionOrderQueryResponse
@@ -4954,9 +6434,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRORPharmacyPrescriptionOrderQueryResponse = "ROR";
 
     /// <summary>
+    /// Literal for code: V20003RORPharmacyPrescriptionOrderQueryResponse
+    /// </summary>
+    public const string LiteralV20003RORPharmacyPrescriptionOrderQueryResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#ROR";
+
+    /// <summary>
     /// Literal for code: SRMSRRRequestNewAppointmentBooking
     /// </summary>
     public const string LiteralSRMSRRRequestNewAppointmentBooking = "S01";
+
+    /// <summary>
+    /// Literal for code: V20003SRMSRRRequestNewAppointmentBooking
+    /// </summary>
+    public const string LiteralV20003SRMSRRRequestNewAppointmentBooking = "http://terminology.hl7.org/CodeSystem/v2-0003#S01";
 
     /// <summary>
     /// Literal for code: SRMSRRRequestAppointmentRescheduling
@@ -4964,9 +6454,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSRMSRRRequestAppointmentRescheduling = "S02";
 
     /// <summary>
+    /// Literal for code: V20003SRMSRRRequestAppointmentRescheduling
+    /// </summary>
+    public const string LiteralV20003SRMSRRRequestAppointmentRescheduling = "http://terminology.hl7.org/CodeSystem/v2-0003#S02";
+
+    /// <summary>
     /// Literal for code: SRMSRRRequestAppointmentModification
     /// </summary>
     public const string LiteralSRMSRRRequestAppointmentModification = "S03";
+
+    /// <summary>
+    /// Literal for code: V20003SRMSRRRequestAppointmentModification
+    /// </summary>
+    public const string LiteralV20003SRMSRRRequestAppointmentModification = "http://terminology.hl7.org/CodeSystem/v2-0003#S03";
 
     /// <summary>
     /// Literal for code: SRMSRRRequestAppointmentCancellation
@@ -4974,9 +6474,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSRMSRRRequestAppointmentCancellation = "S04";
 
     /// <summary>
+    /// Literal for code: V20003SRMSRRRequestAppointmentCancellation
+    /// </summary>
+    public const string LiteralV20003SRMSRRRequestAppointmentCancellation = "http://terminology.hl7.org/CodeSystem/v2-0003#S04";
+
+    /// <summary>
     /// Literal for code: SRMSRRRequestAppointmentDiscontinuation
     /// </summary>
     public const string LiteralSRMSRRRequestAppointmentDiscontinuation = "S05";
+
+    /// <summary>
+    /// Literal for code: V20003SRMSRRRequestAppointmentDiscontinuation
+    /// </summary>
+    public const string LiteralV20003SRMSRRRequestAppointmentDiscontinuation = "http://terminology.hl7.org/CodeSystem/v2-0003#S05";
 
     /// <summary>
     /// Literal for code: SRMSRRRequestAppointmentDeletion
@@ -4984,9 +6494,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSRMSRRRequestAppointmentDeletion = "S06";
 
     /// <summary>
+    /// Literal for code: V20003SRMSRRRequestAppointmentDeletion
+    /// </summary>
+    public const string LiteralV20003SRMSRRRequestAppointmentDeletion = "http://terminology.hl7.org/CodeSystem/v2-0003#S06";
+
+    /// <summary>
     /// Literal for code: SRMSRRRequestAdditionOfServiceResourceOnAppointment
     /// </summary>
     public const string LiteralSRMSRRRequestAdditionOfServiceResourceOnAppointment = "S07";
+
+    /// <summary>
+    /// Literal for code: V20003SRMSRRRequestAdditionOfServiceResourceOnAppointment
+    /// </summary>
+    public const string LiteralV20003SRMSRRRequestAdditionOfServiceResourceOnAppointment = "http://terminology.hl7.org/CodeSystem/v2-0003#S07";
 
     /// <summary>
     /// Literal for code: SRMSRRRequestModificationOfServiceResourceOnAppointment
@@ -4994,9 +6514,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSRMSRRRequestModificationOfServiceResourceOnAppointment = "S08";
 
     /// <summary>
+    /// Literal for code: V20003SRMSRRRequestModificationOfServiceResourceOnAppointment
+    /// </summary>
+    public const string LiteralV20003SRMSRRRequestModificationOfServiceResourceOnAppointment = "http://terminology.hl7.org/CodeSystem/v2-0003#S08";
+
+    /// <summary>
     /// Literal for code: SRMSRRRequestCancellationOfServiceResourceOnAppointment
     /// </summary>
     public const string LiteralSRMSRRRequestCancellationOfServiceResourceOnAppointment = "S09";
+
+    /// <summary>
+    /// Literal for code: V20003SRMSRRRequestCancellationOfServiceResourceOnAppointment
+    /// </summary>
+    public const string LiteralV20003SRMSRRRequestCancellationOfServiceResourceOnAppointment = "http://terminology.hl7.org/CodeSystem/v2-0003#S09";
 
     /// <summary>
     /// Literal for code: SRMSRRRequestDiscontinuationOfServiceResourceOnAppointment
@@ -5004,9 +6534,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSRMSRRRequestDiscontinuationOfServiceResourceOnAppointment = "S10";
 
     /// <summary>
+    /// Literal for code: V20003SRMSRRRequestDiscontinuationOfServiceResourceOnAppointment
+    /// </summary>
+    public const string LiteralV20003SRMSRRRequestDiscontinuationOfServiceResourceOnAppointment = "http://terminology.hl7.org/CodeSystem/v2-0003#S10";
+
+    /// <summary>
     /// Literal for code: SRMSRRRequestDeletionOfServiceResourceOnAppointment
     /// </summary>
     public const string LiteralSRMSRRRequestDeletionOfServiceResourceOnAppointment = "S11";
+
+    /// <summary>
+    /// Literal for code: V20003SRMSRRRequestDeletionOfServiceResourceOnAppointment
+    /// </summary>
+    public const string LiteralV20003SRMSRRRequestDeletionOfServiceResourceOnAppointment = "http://terminology.hl7.org/CodeSystem/v2-0003#S11";
 
     /// <summary>
     /// Literal for code: SIUACKNotificationOfNewAppointmentBooking
@@ -5014,9 +6554,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSIUACKNotificationOfNewAppointmentBooking = "S12";
 
     /// <summary>
+    /// Literal for code: V20003SIUACKNotificationOfNewAppointmentBooking
+    /// </summary>
+    public const string LiteralV20003SIUACKNotificationOfNewAppointmentBooking = "http://terminology.hl7.org/CodeSystem/v2-0003#S12";
+
+    /// <summary>
     /// Literal for code: SIUACKNotificationOfAppointmentRescheduling
     /// </summary>
     public const string LiteralSIUACKNotificationOfAppointmentRescheduling = "S13";
+
+    /// <summary>
+    /// Literal for code: V20003SIUACKNotificationOfAppointmentRescheduling
+    /// </summary>
+    public const string LiteralV20003SIUACKNotificationOfAppointmentRescheduling = "http://terminology.hl7.org/CodeSystem/v2-0003#S13";
 
     /// <summary>
     /// Literal for code: SIUACKNotificationOfAppointmentModification
@@ -5024,9 +6574,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSIUACKNotificationOfAppointmentModification = "S14";
 
     /// <summary>
+    /// Literal for code: V20003SIUACKNotificationOfAppointmentModification
+    /// </summary>
+    public const string LiteralV20003SIUACKNotificationOfAppointmentModification = "http://terminology.hl7.org/CodeSystem/v2-0003#S14";
+
+    /// <summary>
     /// Literal for code: SIUACKNotificationOfAppointmentCancellation
     /// </summary>
     public const string LiteralSIUACKNotificationOfAppointmentCancellation = "S15";
+
+    /// <summary>
+    /// Literal for code: V20003SIUACKNotificationOfAppointmentCancellation
+    /// </summary>
+    public const string LiteralV20003SIUACKNotificationOfAppointmentCancellation = "http://terminology.hl7.org/CodeSystem/v2-0003#S15";
 
     /// <summary>
     /// Literal for code: SIUACKNotificationOfAppointmentDiscontinuation
@@ -5034,9 +6594,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSIUACKNotificationOfAppointmentDiscontinuation = "S16";
 
     /// <summary>
+    /// Literal for code: V20003SIUACKNotificationOfAppointmentDiscontinuation
+    /// </summary>
+    public const string LiteralV20003SIUACKNotificationOfAppointmentDiscontinuation = "http://terminology.hl7.org/CodeSystem/v2-0003#S16";
+
+    /// <summary>
     /// Literal for code: SIUACKNotificationOfAppointmentDeletion
     /// </summary>
     public const string LiteralSIUACKNotificationOfAppointmentDeletion = "S17";
+
+    /// <summary>
+    /// Literal for code: V20003SIUACKNotificationOfAppointmentDeletion
+    /// </summary>
+    public const string LiteralV20003SIUACKNotificationOfAppointmentDeletion = "http://terminology.hl7.org/CodeSystem/v2-0003#S17";
 
     /// <summary>
     /// Literal for code: SIUACKNotificationOfAdditionOfServiceResourceOnAppointment
@@ -5044,9 +6614,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSIUACKNotificationOfAdditionOfServiceResourceOnAppointment = "S18";
 
     /// <summary>
+    /// Literal for code: V20003SIUACKNotificationOfAdditionOfServiceResourceOnAppointment
+    /// </summary>
+    public const string LiteralV20003SIUACKNotificationOfAdditionOfServiceResourceOnAppointment = "http://terminology.hl7.org/CodeSystem/v2-0003#S18";
+
+    /// <summary>
     /// Literal for code: SIUACKNotificationOfModificationOfServiceResourceOnAppointment
     /// </summary>
     public const string LiteralSIUACKNotificationOfModificationOfServiceResourceOnAppointment = "S19";
+
+    /// <summary>
+    /// Literal for code: V20003SIUACKNotificationOfModificationOfServiceResourceOnAppointment
+    /// </summary>
+    public const string LiteralV20003SIUACKNotificationOfModificationOfServiceResourceOnAppointment = "http://terminology.hl7.org/CodeSystem/v2-0003#S19";
 
     /// <summary>
     /// Literal for code: SIUACKNotificationOfCancellationOfServiceResourceOnAppointment
@@ -5054,9 +6634,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSIUACKNotificationOfCancellationOfServiceResourceOnAppointment = "S20";
 
     /// <summary>
+    /// Literal for code: V20003SIUACKNotificationOfCancellationOfServiceResourceOnAppointment
+    /// </summary>
+    public const string LiteralV20003SIUACKNotificationOfCancellationOfServiceResourceOnAppointment = "http://terminology.hl7.org/CodeSystem/v2-0003#S20";
+
+    /// <summary>
     /// Literal for code: SIUACKNotificationOfDiscontinuationOfServiceResourceOnAppointment
     /// </summary>
     public const string LiteralSIUACKNotificationOfDiscontinuationOfServiceResourceOnAppointment = "S21";
+
+    /// <summary>
+    /// Literal for code: V20003SIUACKNotificationOfDiscontinuationOfServiceResourceOnAppointment
+    /// </summary>
+    public const string LiteralV20003SIUACKNotificationOfDiscontinuationOfServiceResourceOnAppointment = "http://terminology.hl7.org/CodeSystem/v2-0003#S21";
 
     /// <summary>
     /// Literal for code: SIUACKNotificationOfDeletionOfServiceResourceOnAppointment
@@ -5064,9 +6654,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSIUACKNotificationOfDeletionOfServiceResourceOnAppointment = "S22";
 
     /// <summary>
+    /// Literal for code: V20003SIUACKNotificationOfDeletionOfServiceResourceOnAppointment
+    /// </summary>
+    public const string LiteralV20003SIUACKNotificationOfDeletionOfServiceResourceOnAppointment = "http://terminology.hl7.org/CodeSystem/v2-0003#S22";
+
+    /// <summary>
     /// Literal for code: SIUACKNotificationOfBlockedScheduleTimeSlotS
     /// </summary>
     public const string LiteralSIUACKNotificationOfBlockedScheduleTimeSlotS = "S23";
+
+    /// <summary>
+    /// Literal for code: V20003SIUACKNotificationOfBlockedScheduleTimeSlotS
+    /// </summary>
+    public const string LiteralV20003SIUACKNotificationOfBlockedScheduleTimeSlotS = "http://terminology.hl7.org/CodeSystem/v2-0003#S23";
 
     /// <summary>
     /// Literal for code: SIUACKNotificationOfOpenedQuotationUnblockedQuotationScheduleTimeSlotS
@@ -5074,9 +6674,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSIUACKNotificationOfOpenedQuotationUnblockedQuotationScheduleTimeSlotS = "S24";
 
     /// <summary>
+    /// Literal for code: V20003SIUACKNotificationOfOpenedQuotationUnblockedQuotationScheduleTimeSlotS
+    /// </summary>
+    public const string LiteralV20003SIUACKNotificationOfOpenedQuotationUnblockedQuotationScheduleTimeSlotS = "http://terminology.hl7.org/CodeSystem/v2-0003#S24";
+
+    /// <summary>
     /// Literal for code: SQMSQRScheduleQueryMessageAndResponse
     /// </summary>
     public const string LiteralSQMSQRScheduleQueryMessageAndResponse = "S25";
+
+    /// <summary>
+    /// Literal for code: V20003SQMSQRScheduleQueryMessageAndResponse
+    /// </summary>
+    public const string LiteralV20003SQMSQRScheduleQueryMessageAndResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#S25";
 
     /// <summary>
     /// Literal for code: SIUACKNotificationThatPatientDidNotShowUpForScheduleAppointment
@@ -5084,9 +6694,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSIUACKNotificationThatPatientDidNotShowUpForScheduleAppointment = "S26";
 
     /// <summary>
+    /// Literal for code: V20003SIUACKNotificationThatPatientDidNotShowUpForScheduleAppointment
+    /// </summary>
+    public const string LiteralV20003SIUACKNotificationThatPatientDidNotShowUpForScheduleAppointment = "http://terminology.hl7.org/CodeSystem/v2-0003#S26";
+
+    /// <summary>
     /// Literal for code: SIUACKBroadcastNotificationOfScheduledAppointments
     /// </summary>
     public const string LiteralSIUACKBroadcastNotificationOfScheduledAppointments = "S27";
+
+    /// <summary>
+    /// Literal for code: V20003SIUACKBroadcastNotificationOfScheduledAppointments
+    /// </summary>
+    public const string LiteralV20003SIUACKBroadcastNotificationOfScheduledAppointments = "http://terminology.hl7.org/CodeSystem/v2-0003#S27";
 
     /// <summary>
     /// Literal for code: SLRSLSRequestNewSterilizationLot
@@ -5094,9 +6714,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSLRSLSRequestNewSterilizationLot = "S28";
 
     /// <summary>
+    /// Literal for code: V20003SLRSLSRequestNewSterilizationLot
+    /// </summary>
+    public const string LiteralV20003SLRSLSRequestNewSterilizationLot = "http://terminology.hl7.org/CodeSystem/v2-0003#S28";
+
+    /// <summary>
     /// Literal for code: SLRSLSRequestSterilizationLotDeletion
     /// </summary>
     public const string LiteralSLRSLSRequestSterilizationLotDeletion = "S29";
+
+    /// <summary>
+    /// Literal for code: V20003SLRSLSRequestSterilizationLotDeletion
+    /// </summary>
+    public const string LiteralV20003SLRSLSRequestSterilizationLotDeletion = "http://terminology.hl7.org/CodeSystem/v2-0003#S29";
 
     /// <summary>
     /// Literal for code: STISTSRequestItem
@@ -5104,9 +6734,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSTISTSRequestItem = "S30";
 
     /// <summary>
+    /// Literal for code: V20003STISTSRequestItem
+    /// </summary>
+    public const string LiteralV20003STISTSRequestItem = "http://terminology.hl7.org/CodeSystem/v2-0003#S30";
+
+    /// <summary>
     /// Literal for code: SDRSDSRequestAntiMicrobialDeviceData
     /// </summary>
     public const string LiteralSDRSDSRequestAntiMicrobialDeviceData = "S31";
+
+    /// <summary>
+    /// Literal for code: V20003SDRSDSRequestAntiMicrobialDeviceData
+    /// </summary>
+    public const string LiteralV20003SDRSDSRequestAntiMicrobialDeviceData = "http://terminology.hl7.org/CodeSystem/v2-0003#S31";
 
     /// <summary>
     /// Literal for code: SMDSMSRequestAntiMicrobialDeviceCycleData
@@ -5114,9 +6754,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSMDSMSRequestAntiMicrobialDeviceCycleData = "S32";
 
     /// <summary>
+    /// Literal for code: V20003SMDSMSRequestAntiMicrobialDeviceCycleData
+    /// </summary>
+    public const string LiteralV20003SMDSMSRequestAntiMicrobialDeviceCycleData = "http://terminology.hl7.org/CodeSystem/v2-0003#S32";
+
+    /// <summary>
     /// Literal for code: STCACKNotificationOfSterilizationConfiguration
     /// </summary>
     public const string LiteralSTCACKNotificationOfSterilizationConfiguration = "S33";
+
+    /// <summary>
+    /// Literal for code: V20003STCACKNotificationOfSterilizationConfiguration
+    /// </summary>
+    public const string LiteralV20003STCACKNotificationOfSterilizationConfiguration = "http://terminology.hl7.org/CodeSystem/v2-0003#S33";
 
     /// <summary>
     /// Literal for code: SLNACKNotificationOfSterilizationLot
@@ -5124,9 +6774,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSLNACKNotificationOfSterilizationLot = "S34";
 
     /// <summary>
+    /// Literal for code: V20003SLNACKNotificationOfSterilizationLot
+    /// </summary>
+    public const string LiteralV20003SLNACKNotificationOfSterilizationLot = "http://terminology.hl7.org/CodeSystem/v2-0003#S34";
+
+    /// <summary>
     /// Literal for code: SLNACKNotificationOfSterilizationLotDeletion
     /// </summary>
     public const string LiteralSLNACKNotificationOfSterilizationLotDeletion = "S35";
+
+    /// <summary>
+    /// Literal for code: V20003SLNACKNotificationOfSterilizationLotDeletion
+    /// </summary>
+    public const string LiteralV20003SLNACKNotificationOfSterilizationLotDeletion = "http://terminology.hl7.org/CodeSystem/v2-0003#S35";
 
     /// <summary>
     /// Literal for code: SDNACKNotificationOfAntiMicrobialDeviceData
@@ -5134,9 +6794,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSDNACKNotificationOfAntiMicrobialDeviceData = "S36";
 
     /// <summary>
+    /// Literal for code: V20003SDNACKNotificationOfAntiMicrobialDeviceData
+    /// </summary>
+    public const string LiteralV20003SDNACKNotificationOfAntiMicrobialDeviceData = "http://terminology.hl7.org/CodeSystem/v2-0003#S36";
+
+    /// <summary>
     /// Literal for code: SCNACKNotificationOfAntiMicrobialDeviceCycleData
     /// </summary>
     public const string LiteralSCNACKNotificationOfAntiMicrobialDeviceCycleData = "S37";
+
+    /// <summary>
+    /// Literal for code: V20003SCNACKNotificationOfAntiMicrobialDeviceCycleData
+    /// </summary>
+    public const string LiteralV20003SCNACKNotificationOfAntiMicrobialDeviceCycleData = "http://terminology.hl7.org/CodeSystem/v2-0003#S37";
 
     /// <summary>
     /// Literal for code: ContainersPreparedForSpecimenCollection
@@ -5144,9 +6814,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralContainersPreparedForSpecimenCollection = "S38";
 
     /// <summary>
+    /// Literal for code: V20003ContainersPreparedForSpecimenCollection
+    /// </summary>
+    public const string LiteralV20003ContainersPreparedForSpecimenCollection = "http://terminology.hl7.org/CodeSystem/v2-0003#S38";
+
+    /// <summary>
     /// Literal for code: SpecimenCollectionSuccessful
     /// </summary>
     public const string LiteralSpecimenCollectionSuccessful = "S39";
+
+    /// <summary>
+    /// Literal for code: V20003SpecimenCollectionSuccessful
+    /// </summary>
+    public const string LiteralV20003SpecimenCollectionSuccessful = "http://terminology.hl7.org/CodeSystem/v2-0003#S39";
 
     /// <summary>
     /// Literal for code: SpecimenCollectionUnsuccessful
@@ -5154,9 +6834,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpecimenCollectionUnsuccessful = "S40";
 
     /// <summary>
+    /// Literal for code: V20003SpecimenCollectionUnsuccessful
+    /// </summary>
+    public const string LiteralV20003SpecimenCollectionUnsuccessful = "http://terminology.hl7.org/CodeSystem/v2-0003#S40";
+
+    /// <summary>
     /// Literal for code: SpecimenDeparted
     /// </summary>
     public const string LiteralSpecimenDeparted = "S41";
+
+    /// <summary>
+    /// Literal for code: V20003SpecimenDeparted
+    /// </summary>
+    public const string LiteralV20003SpecimenDeparted = "http://terminology.hl7.org/CodeSystem/v2-0003#S41";
 
     /// <summary>
     /// Literal for code: SpecimenArrived
@@ -5164,9 +6854,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpecimenArrived = "S42";
 
     /// <summary>
+    /// Literal for code: V20003SpecimenArrived
+    /// </summary>
+    public const string LiteralV20003SpecimenArrived = "http://terminology.hl7.org/CodeSystem/v2-0003#S42";
+
+    /// <summary>
     /// Literal for code: SpecimenAccepted
     /// </summary>
     public const string LiteralSpecimenAccepted = "S43";
+
+    /// <summary>
+    /// Literal for code: V20003SpecimenAccepted
+    /// </summary>
+    public const string LiteralV20003SpecimenAccepted = "http://terminology.hl7.org/CodeSystem/v2-0003#S43";
 
     /// <summary>
     /// Literal for code: SpecimenRejected
@@ -5174,9 +6874,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpecimenRejected = "S44";
 
     /// <summary>
+    /// Literal for code: V20003SpecimenRejected
+    /// </summary>
+    public const string LiteralV20003SpecimenRejected = "http://terminology.hl7.org/CodeSystem/v2-0003#S44";
+
+    /// <summary>
     /// Literal for code: SpecimenReIdentified
     /// </summary>
     public const string LiteralSpecimenReIdentified = "S45";
+
+    /// <summary>
+    /// Literal for code: V20003SpecimenReIdentified
+    /// </summary>
+    public const string LiteralV20003SpecimenReIdentified = "http://terminology.hl7.org/CodeSystem/v2-0003#S45";
 
     /// <summary>
     /// Literal for code: SpecimenDeIdentified
@@ -5184,9 +6894,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpecimenDeIdentified = "S46";
 
     /// <summary>
+    /// Literal for code: V20003SpecimenDeIdentified
+    /// </summary>
+    public const string LiteralV20003SpecimenDeIdentified = "http://terminology.hl7.org/CodeSystem/v2-0003#S46";
+
+    /// <summary>
     /// Literal for code: SpecimenSentToArchive
     /// </summary>
     public const string LiteralSpecimenSentToArchive = "S47";
+
+    /// <summary>
+    /// Literal for code: V20003SpecimenSentToArchive
+    /// </summary>
+    public const string LiteralV20003SpecimenSentToArchive = "http://terminology.hl7.org/CodeSystem/v2-0003#S47";
 
     /// <summary>
     /// Literal for code: SpecimenRetrievedFromArchive
@@ -5194,9 +6914,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpecimenRetrievedFromArchive = "S48";
 
     /// <summary>
+    /// Literal for code: V20003SpecimenRetrievedFromArchive
+    /// </summary>
+    public const string LiteralV20003SpecimenRetrievedFromArchive = "http://terminology.hl7.org/CodeSystem/v2-0003#S48";
+
+    /// <summary>
     /// Literal for code: SpecimenDisposedOf
     /// </summary>
     public const string LiteralSpecimenDisposedOf = "S49";
+
+    /// <summary>
+    /// Literal for code: V20003SpecimenDisposedOf
+    /// </summary>
+    public const string LiteralV20003SpecimenDisposedOf = "http://terminology.hl7.org/CodeSystem/v2-0003#S49";
 
     /// <summary>
     /// Literal for code: SpecimenProcedureStepSuccessfulWithDerivedSpecimenS
@@ -5204,9 +6934,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpecimenProcedureStepSuccessfulWithDerivedSpecimenS = "S50";
 
     /// <summary>
+    /// Literal for code: V20003SpecimenProcedureStepSuccessfulWithDerivedSpecimenS
+    /// </summary>
+    public const string LiteralV20003SpecimenProcedureStepSuccessfulWithDerivedSpecimenS = "http://terminology.hl7.org/CodeSystem/v2-0003#S50";
+
+    /// <summary>
     /// Literal for code: SpecimenProcedureStepSuccessfulNoDerivedSpecimenS
     /// </summary>
     public const string LiteralSpecimenProcedureStepSuccessfulNoDerivedSpecimenS = "S51";
+
+    /// <summary>
+    /// Literal for code: V20003SpecimenProcedureStepSuccessfulNoDerivedSpecimenS
+    /// </summary>
+    public const string LiteralV20003SpecimenProcedureStepSuccessfulNoDerivedSpecimenS = "http://terminology.hl7.org/CodeSystem/v2-0003#S51";
 
     /// <summary>
     /// Literal for code: SpecimenProcedureStepUnsuccessful
@@ -5214,9 +6954,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpecimenProcedureStepUnsuccessful = "S52";
 
     /// <summary>
+    /// Literal for code: V20003SpecimenProcedureStepUnsuccessful
+    /// </summary>
+    public const string LiteralV20003SpecimenProcedureStepUnsuccessful = "http://terminology.hl7.org/CodeSystem/v2-0003#S52";
+
+    /// <summary>
     /// Literal for code: MDMACKOriginalDocumentNotification
     /// </summary>
     public const string LiteralMDMACKOriginalDocumentNotification = "T01";
+
+    /// <summary>
+    /// Literal for code: V20003MDMACKOriginalDocumentNotification
+    /// </summary>
+    public const string LiteralV20003MDMACKOriginalDocumentNotification = "http://terminology.hl7.org/CodeSystem/v2-0003#T01";
 
     /// <summary>
     /// Literal for code: MDMACKOriginalDocumentNotificationAndContent
@@ -5224,9 +6974,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMDMACKOriginalDocumentNotificationAndContent = "T02";
 
     /// <summary>
+    /// Literal for code: V20003MDMACKOriginalDocumentNotificationAndContent
+    /// </summary>
+    public const string LiteralV20003MDMACKOriginalDocumentNotificationAndContent = "http://terminology.hl7.org/CodeSystem/v2-0003#T02";
+
+    /// <summary>
     /// Literal for code: MDMACKDocumentStatusChangeNotification
     /// </summary>
     public const string LiteralMDMACKDocumentStatusChangeNotification = "T03";
+
+    /// <summary>
+    /// Literal for code: V20003MDMACKDocumentStatusChangeNotification
+    /// </summary>
+    public const string LiteralV20003MDMACKDocumentStatusChangeNotification = "http://terminology.hl7.org/CodeSystem/v2-0003#T03";
 
     /// <summary>
     /// Literal for code: MDMACKDocumentStatusChangeNotificationAndContent
@@ -5234,9 +6994,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMDMACKDocumentStatusChangeNotificationAndContent = "T04";
 
     /// <summary>
+    /// Literal for code: V20003MDMACKDocumentStatusChangeNotificationAndContent
+    /// </summary>
+    public const string LiteralV20003MDMACKDocumentStatusChangeNotificationAndContent = "http://terminology.hl7.org/CodeSystem/v2-0003#T04";
+
+    /// <summary>
     /// Literal for code: MDMACKDocumentAddendumNotification
     /// </summary>
     public const string LiteralMDMACKDocumentAddendumNotification = "T05";
+
+    /// <summary>
+    /// Literal for code: V20003MDMACKDocumentAddendumNotification
+    /// </summary>
+    public const string LiteralV20003MDMACKDocumentAddendumNotification = "http://terminology.hl7.org/CodeSystem/v2-0003#T05";
 
     /// <summary>
     /// Literal for code: MDMACKDocumentAddendumNotificationAndContent
@@ -5244,9 +7014,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMDMACKDocumentAddendumNotificationAndContent = "T06";
 
     /// <summary>
+    /// Literal for code: V20003MDMACKDocumentAddendumNotificationAndContent
+    /// </summary>
+    public const string LiteralV20003MDMACKDocumentAddendumNotificationAndContent = "http://terminology.hl7.org/CodeSystem/v2-0003#T06";
+
+    /// <summary>
     /// Literal for code: MDMACKDocumentEditNotification
     /// </summary>
     public const string LiteralMDMACKDocumentEditNotification = "T07";
+
+    /// <summary>
+    /// Literal for code: V20003MDMACKDocumentEditNotification
+    /// </summary>
+    public const string LiteralV20003MDMACKDocumentEditNotification = "http://terminology.hl7.org/CodeSystem/v2-0003#T07";
 
     /// <summary>
     /// Literal for code: MDMACKDocumentEditNotificationAndContent
@@ -5254,9 +7034,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMDMACKDocumentEditNotificationAndContent = "T08";
 
     /// <summary>
+    /// Literal for code: V20003MDMACKDocumentEditNotificationAndContent
+    /// </summary>
+    public const string LiteralV20003MDMACKDocumentEditNotificationAndContent = "http://terminology.hl7.org/CodeSystem/v2-0003#T08";
+
+    /// <summary>
     /// Literal for code: MDMACKDocumentReplacementNotification
     /// </summary>
     public const string LiteralMDMACKDocumentReplacementNotification = "T09";
+
+    /// <summary>
+    /// Literal for code: V20003MDMACKDocumentReplacementNotification
+    /// </summary>
+    public const string LiteralV20003MDMACKDocumentReplacementNotification = "http://terminology.hl7.org/CodeSystem/v2-0003#T09";
 
     /// <summary>
     /// Literal for code: MDMACKDocumentReplacementNotificationAndContent
@@ -5264,9 +7054,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMDMACKDocumentReplacementNotificationAndContent = "T10";
 
     /// <summary>
+    /// Literal for code: V20003MDMACKDocumentReplacementNotificationAndContent
+    /// </summary>
+    public const string LiteralV20003MDMACKDocumentReplacementNotificationAndContent = "http://terminology.hl7.org/CodeSystem/v2-0003#T10";
+
+    /// <summary>
     /// Literal for code: MDMACKDocumentCancelNotification
     /// </summary>
     public const string LiteralMDMACKDocumentCancelNotification = "T11";
+
+    /// <summary>
+    /// Literal for code: V20003MDMACKDocumentCancelNotification
+    /// </summary>
+    public const string LiteralV20003MDMACKDocumentCancelNotification = "http://terminology.hl7.org/CodeSystem/v2-0003#T11";
 
     /// <summary>
     /// Literal for code: QRYDOCDocumentQuery
@@ -5274,9 +7074,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQRYDOCDocumentQuery = "T12";
 
     /// <summary>
+    /// Literal for code: V20003QRYDOCDocumentQuery
+    /// </summary>
+    public const string LiteralV20003QRYDOCDocumentQuery = "http://terminology.hl7.org/CodeSystem/v2-0003#T12";
+
+    /// <summary>
     /// Literal for code: ESUACKAutomatedEquipmentStatusUpdate
     /// </summary>
     public const string LiteralESUACKAutomatedEquipmentStatusUpdate = "U01";
+
+    /// <summary>
+    /// Literal for code: V20003ESUACKAutomatedEquipmentStatusUpdate
+    /// </summary>
+    public const string LiteralV20003ESUACKAutomatedEquipmentStatusUpdate = "http://terminology.hl7.org/CodeSystem/v2-0003#U01";
 
     /// <summary>
     /// Literal for code: ESRACKAutomatedEquipmentStatusRequest
@@ -5284,9 +7094,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralESRACKAutomatedEquipmentStatusRequest = "U02";
 
     /// <summary>
+    /// Literal for code: V20003ESRACKAutomatedEquipmentStatusRequest
+    /// </summary>
+    public const string LiteralV20003ESRACKAutomatedEquipmentStatusRequest = "http://terminology.hl7.org/CodeSystem/v2-0003#U02";
+
+    /// <summary>
     /// Literal for code: SSUACKSpecimenStatusUpdate
     /// </summary>
     public const string LiteralSSUACKSpecimenStatusUpdate = "U03";
+
+    /// <summary>
+    /// Literal for code: V20003SSUACKSpecimenStatusUpdate
+    /// </summary>
+    public const string LiteralV20003SSUACKSpecimenStatusUpdate = "http://terminology.hl7.org/CodeSystem/v2-0003#U03";
 
     /// <summary>
     /// Literal for code: SSRACKSpecimenStatusRequest
@@ -5294,9 +7114,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSSRACKSpecimenStatusRequest = "U04";
 
     /// <summary>
+    /// Literal for code: V20003SSRACKSpecimenStatusRequest
+    /// </summary>
+    public const string LiteralV20003SSRACKSpecimenStatusRequest = "http://terminology.hl7.org/CodeSystem/v2-0003#U04";
+
+    /// <summary>
     /// Literal for code: INUACKAutomatedEquipmentInventoryUpdate
     /// </summary>
     public const string LiteralINUACKAutomatedEquipmentInventoryUpdate = "U05";
+
+    /// <summary>
+    /// Literal for code: V20003INUACKAutomatedEquipmentInventoryUpdate
+    /// </summary>
+    public const string LiteralV20003INUACKAutomatedEquipmentInventoryUpdate = "http://terminology.hl7.org/CodeSystem/v2-0003#U05";
 
     /// <summary>
     /// Literal for code: INRACKAutomatedEquipmentInventoryRequest
@@ -5304,9 +7134,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralINRACKAutomatedEquipmentInventoryRequest = "U06";
 
     /// <summary>
+    /// Literal for code: V20003INRACKAutomatedEquipmentInventoryRequest
+    /// </summary>
+    public const string LiteralV20003INRACKAutomatedEquipmentInventoryRequest = "http://terminology.hl7.org/CodeSystem/v2-0003#U06";
+
+    /// <summary>
     /// Literal for code: EACACKAutomatedEquipmentCommand
     /// </summary>
     public const string LiteralEACACKAutomatedEquipmentCommand = "U07";
+
+    /// <summary>
+    /// Literal for code: V20003EACACKAutomatedEquipmentCommand
+    /// </summary>
+    public const string LiteralV20003EACACKAutomatedEquipmentCommand = "http://terminology.hl7.org/CodeSystem/v2-0003#U07";
 
     /// <summary>
     /// Literal for code: EARACKAutomatedEquipmentResponse
@@ -5314,9 +7154,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEARACKAutomatedEquipmentResponse = "U08";
 
     /// <summary>
+    /// Literal for code: V20003EARACKAutomatedEquipmentResponse
+    /// </summary>
+    public const string LiteralV20003EARACKAutomatedEquipmentResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#U08";
+
+    /// <summary>
     /// Literal for code: EANACKAutomatedEquipmentNotification
     /// </summary>
     public const string LiteralEANACKAutomatedEquipmentNotification = "U09";
+
+    /// <summary>
+    /// Literal for code: V20003EANACKAutomatedEquipmentNotification
+    /// </summary>
+    public const string LiteralV20003EANACKAutomatedEquipmentNotification = "http://terminology.hl7.org/CodeSystem/v2-0003#U09";
 
     /// <summary>
     /// Literal for code: TCUACKAutomatedEquipmentTestCodeSettingsUpdate
@@ -5324,9 +7174,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTCUACKAutomatedEquipmentTestCodeSettingsUpdate = "U10";
 
     /// <summary>
+    /// Literal for code: V20003TCUACKAutomatedEquipmentTestCodeSettingsUpdate
+    /// </summary>
+    public const string LiteralV20003TCUACKAutomatedEquipmentTestCodeSettingsUpdate = "http://terminology.hl7.org/CodeSystem/v2-0003#U10";
+
+    /// <summary>
     /// Literal for code: TCRACKAutomatedEquipmentTestCodeSettingsRequest
     /// </summary>
     public const string LiteralTCRACKAutomatedEquipmentTestCodeSettingsRequest = "U11";
+
+    /// <summary>
+    /// Literal for code: V20003TCRACKAutomatedEquipmentTestCodeSettingsRequest
+    /// </summary>
+    public const string LiteralV20003TCRACKAutomatedEquipmentTestCodeSettingsRequest = "http://terminology.hl7.org/CodeSystem/v2-0003#U11";
 
     /// <summary>
     /// Literal for code: LSUACKAutomatedEquipmentLogServiceUpdate
@@ -5334,9 +7194,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLSUACKAutomatedEquipmentLogServiceUpdate = "U12";
 
     /// <summary>
+    /// Literal for code: V20003LSUACKAutomatedEquipmentLogServiceUpdate
+    /// </summary>
+    public const string LiteralV20003LSUACKAutomatedEquipmentLogServiceUpdate = "http://terminology.hl7.org/CodeSystem/v2-0003#U12";
+
+    /// <summary>
     /// Literal for code: LSRACKAutomatedEquipmentLogServiceRequest
     /// </summary>
     public const string LiteralLSRACKAutomatedEquipmentLogServiceRequest = "U13";
+
+    /// <summary>
+    /// Literal for code: V20003LSRACKAutomatedEquipmentLogServiceRequest
+    /// </summary>
+    public const string LiteralV20003LSRACKAutomatedEquipmentLogServiceRequest = "http://terminology.hl7.org/CodeSystem/v2-0003#U13";
 
     /// <summary>
     /// Literal for code: INRACKAutomatedEquipmentInventoryRequest_2
@@ -5344,9 +7214,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralINRACKAutomatedEquipmentInventoryRequest_2 = "U14";
 
     /// <summary>
+    /// Literal for code: V20003INRACKAutomatedEquipmentInventoryRequest_2
+    /// </summary>
+    public const string LiteralV20003INRACKAutomatedEquipmentInventoryRequest_2 = "http://terminology.hl7.org/CodeSystem/v2-0003#U14";
+
+    /// <summary>
     /// Literal for code: VXQQueryForVaccinationRecord
     /// </summary>
     public const string LiteralVXQQueryForVaccinationRecord = "V01";
+
+    /// <summary>
+    /// Literal for code: V20003VXQQueryForVaccinationRecord
+    /// </summary>
+    public const string LiteralV20003VXQQueryForVaccinationRecord = "http://terminology.hl7.org/CodeSystem/v2-0003#V01";
 
     /// <summary>
     /// Literal for code: VXXResponseToVaccinationQueryReturningMultiplePIDMatches
@@ -5354,9 +7234,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVXXResponseToVaccinationQueryReturningMultiplePIDMatches = "V02";
 
     /// <summary>
+    /// Literal for code: V20003VXXResponseToVaccinationQueryReturningMultiplePIDMatches
+    /// </summary>
+    public const string LiteralV20003VXXResponseToVaccinationQueryReturningMultiplePIDMatches = "http://terminology.hl7.org/CodeSystem/v2-0003#V02";
+
+    /// <summary>
     /// Literal for code: VXRVaccinationRecordResponse
     /// </summary>
     public const string LiteralVXRVaccinationRecordResponse = "V03";
+
+    /// <summary>
+    /// Literal for code: V20003VXRVaccinationRecordResponse
+    /// </summary>
+    public const string LiteralV20003VXRVaccinationRecordResponse = "http://terminology.hl7.org/CodeSystem/v2-0003#V03";
 
     /// <summary>
     /// Literal for code: VXUUnsolicitedVaccinationRecordUpdate
@@ -5364,9 +7254,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVXUUnsolicitedVaccinationRecordUpdate = "V04";
 
     /// <summary>
+    /// Literal for code: V20003VXUUnsolicitedVaccinationRecordUpdate
+    /// </summary>
+    public const string LiteralV20003VXUUnsolicitedVaccinationRecordUpdate = "http://terminology.hl7.org/CodeSystem/v2-0003#V04";
+
+    /// <summary>
     /// Literal for code: MFQMFRMasterFilesQueryUseEventSameAsAskingForEGM05Location
     /// </summary>
     public const string LiteralMFQMFRMasterFilesQueryUseEventSameAsAskingForEGM05Location = "varies";
+
+    /// <summary>
+    /// Literal for code: V20003MFQMFRMasterFilesQueryUseEventSameAsAskingForEGM05Location
+    /// </summary>
+    public const string LiteralV20003MFQMFRMasterFilesQueryUseEventSameAsAskingForEGM05Location = "http://terminology.hl7.org/CodeSystem/v2-0003#varies";
 
     /// <summary>
     /// Literal for code: MFQMFRMasterFilesQueryUseEventSameAsAskingForEGM05Location_2
@@ -5374,9 +7274,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMFQMFRMasterFilesQueryUseEventSameAsAskingForEGM05Location_2 = "Varies";
 
     /// <summary>
+    /// Literal for code: V20003MFQMFRMasterFilesQueryUseEventSameAsAskingForEGM05Location_2
+    /// </summary>
+    public const string LiteralV20003MFQMFRMasterFilesQueryUseEventSameAsAskingForEGM05Location_2 = "http://terminology.hl7.org/CodeSystem/v2-0003#Varies";
+
+    /// <summary>
     /// Literal for code: ORUWaveformResultUnsolicitedTransmissionOfRequestedInformation
     /// </summary>
     public const string LiteralORUWaveformResultUnsolicitedTransmissionOfRequestedInformation = "W01";
+
+    /// <summary>
+    /// Literal for code: V20003ORUWaveformResultUnsolicitedTransmissionOfRequestedInformation
+    /// </summary>
+    public const string LiteralV20003ORUWaveformResultUnsolicitedTransmissionOfRequestedInformation = "http://terminology.hl7.org/CodeSystem/v2-0003#W01";
 
     /// <summary>
     /// Literal for code: QRFWaveformResultResponseToQuery
@@ -5384,8 +7294,792 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQRFWaveformResultResponseToQuery = "W02";
 
     /// <summary>
+    /// Literal for code: V20003QRFWaveformResultResponseToQuery
+    /// </summary>
+    public const string LiteralV20003QRFWaveformResultResponseToQuery = "http://terminology.hl7.org/CodeSystem/v2-0003#W02";
+
+    /// <summary>
     /// Literal for code: PEXProductExperience
     /// </summary>
     public const string LiteralPEXProductExperience = "X01";
+
+    /// <summary>
+    /// Literal for code: V20003PEXProductExperience
+    /// </summary>
+    public const string LiteralV20003PEXProductExperience = "http://terminology.hl7.org/CodeSystem/v2-0003#X01";
+
+    /// <summary>
+    /// Dictionary for looking up V20003 Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "A01", ADTACKAdmitVisitNotification }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A01", ADTACKAdmitVisitNotification }, 
+      { "A02", ADTACKTransferAPatient }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A02", ADTACKTransferAPatient }, 
+      { "A03", ADTACKDischargeEndVisit }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A03", ADTACKDischargeEndVisit }, 
+      { "A04", ADTACKRegisterAPatient }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A04", ADTACKRegisterAPatient }, 
+      { "A05", ADTACKPreAdmitAPatient }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A05", ADTACKPreAdmitAPatient }, 
+      { "A06", ADTACKChangeAnOutpatientToAnInpatient }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A06", ADTACKChangeAnOutpatientToAnInpatient }, 
+      { "A07", ADTACKChangeAnInpatientToAnOutpatient }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A07", ADTACKChangeAnInpatientToAnOutpatient }, 
+      { "A08", ADTACKUpdatePatientInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A08", ADTACKUpdatePatientInformation }, 
+      { "A09", ADTACKPatientDepartingTracking }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A09", ADTACKPatientDepartingTracking }, 
+      { "A10", ADTACKPatientArrivingTracking }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A10", ADTACKPatientArrivingTracking }, 
+      { "A11", ADTACKCancelAdmitVisitNotification }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A11", ADTACKCancelAdmitVisitNotification }, 
+      { "A12", ADTACKCancelTransfer }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A12", ADTACKCancelTransfer }, 
+      { "A13", ADTACKCancelDischargeEndVisit }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A13", ADTACKCancelDischargeEndVisit }, 
+      { "A14", ADTACKPendingAdmit }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A14", ADTACKPendingAdmit }, 
+      { "A15", ADTACKPendingTransfer }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A15", ADTACKPendingTransfer }, 
+      { "A16", ADTACKPendingDischarge }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A16", ADTACKPendingDischarge }, 
+      { "A17", ADTACKSwapPatients }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A17", ADTACKSwapPatients }, 
+      { "A18", ADTACKMergePatientInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A18", ADTACKMergePatientInformation }, 
+      { "A19", QRYADRPatientQuery }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A19", QRYADRPatientQuery }, 
+      { "A20", ADTACKBedStatusUpdate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A20", ADTACKBedStatusUpdate }, 
+      { "A21", ADTACKPatientGoesOnAQuotationLeaveOfAbsenceQuotation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A21", ADTACKPatientGoesOnAQuotationLeaveOfAbsenceQuotation }, 
+      { "A22", ADTACKPatientReturnsFromAQuotationLeaveOfAbsenceQuotation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A22", ADTACKPatientReturnsFromAQuotationLeaveOfAbsenceQuotation }, 
+      { "A23", ADTACKDeleteAPatientRecord }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A23", ADTACKDeleteAPatientRecord }, 
+      { "A24", ADTACKLinkPatientInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A24", ADTACKLinkPatientInformation }, 
+      { "A25", ADTACKCancelPendingDischarge }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A25", ADTACKCancelPendingDischarge }, 
+      { "A26", ADTACKCancelPendingTransfer }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A26", ADTACKCancelPendingTransfer }, 
+      { "A27", ADTACKCancelPendingAdmit }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A27", ADTACKCancelPendingAdmit }, 
+      { "A28", ADTACKAddPersonInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A28", ADTACKAddPersonInformation }, 
+      { "A29", ADTACKDeletePersonInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A29", ADTACKDeletePersonInformation }, 
+      { "A30", ADTACKMergePersonInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A30", ADTACKMergePersonInformation }, 
+      { "A31", ADTACKUpdatePersonInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A31", ADTACKUpdatePersonInformation }, 
+      { "A32", ADTACKCancelPatientArrivingTracking }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A32", ADTACKCancelPatientArrivingTracking }, 
+      { "A33", ADTACKCancelPatientDepartingTracking }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A33", ADTACKCancelPatientDepartingTracking }, 
+      { "A34", ADTACKMergePatientInformationPatientIDOnly }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A34", ADTACKMergePatientInformationPatientIDOnly }, 
+      { "A35", ADTACKMergePatientInformationAccountNumberOnly }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A35", ADTACKMergePatientInformationAccountNumberOnly }, 
+      { "A36", ADTACKMergePatientInformationPatientIDAndAccountNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A36", ADTACKMergePatientInformationPatientIDAndAccountNumber }, 
+      { "A37", ADTACKUnlinkPatientInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A37", ADTACKUnlinkPatientInformation }, 
+      { "A38", ADTACKCancelPreAdmit }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A38", ADTACKCancelPreAdmit }, 
+      { "A39", ADTACKMergePersonPatientID }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A39", ADTACKMergePersonPatientID }, 
+      { "A40", ADTACKMergePatientPatientIdentifierList }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A40", ADTACKMergePatientPatientIdentifierList }, 
+      { "A41", ADTACKMergeAccountPatientAccountNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A41", ADTACKMergeAccountPatientAccountNumber }, 
+      { "A42", ADTACKMergeVisitVisitNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A42", ADTACKMergeVisitVisitNumber }, 
+      { "A43", ADTACKMovePatientInformationPatientIdentifierList }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A43", ADTACKMovePatientInformationPatientIdentifierList }, 
+      { "A44", ADTACKMoveAccountInformationPatientAccountNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A44", ADTACKMoveAccountInformationPatientAccountNumber }, 
+      { "A45", ADTACKMoveVisitInformationVisitNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A45", ADTACKMoveVisitInformationVisitNumber }, 
+      { "A46", ADTACKChangePatientID }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A46", ADTACKChangePatientID }, 
+      { "A47", ADTACKChangePatientIdentifierList }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A47", ADTACKChangePatientIdentifierList }, 
+      { "A48", ADTACKChangeAlternatePatientID }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A48", ADTACKChangeAlternatePatientID }, 
+      { "A49", ADTACKChangePatientAccountNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A49", ADTACKChangePatientAccountNumber }, 
+      { "A50", ADTACKChangeVisitNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A50", ADTACKChangeVisitNumber }, 
+      { "A51", ADTACKChangeAlternateVisitID }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A51", ADTACKChangeAlternateVisitID }, 
+      { "A52", ADTACKCancelLeaveOfAbsenceForAPatient }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A52", ADTACKCancelLeaveOfAbsenceForAPatient }, 
+      { "A53", ADTACKCancelPatientReturnsFromALeaveOfAbsence }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A53", ADTACKCancelPatientReturnsFromALeaveOfAbsence }, 
+      { "A54", ADTACKChangeAttendingDoctor }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A54", ADTACKChangeAttendingDoctor }, 
+      { "A55", ADTACKCancelChangeAttendingDoctor }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A55", ADTACKCancelChangeAttendingDoctor }, 
+      { "A60", ADTACKUpdateAllergyInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A60", ADTACKUpdateAllergyInformation }, 
+      { "A61", ADTACKChangeConsultingDoctor }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A61", ADTACKChangeConsultingDoctor }, 
+      { "A62", ADTACKCancelChangeConsultingDoctor }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#A62", ADTACKCancelChangeConsultingDoctor }, 
+      { "B01", PMUACKAddPersonnelRecord }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#B01", PMUACKAddPersonnelRecord }, 
+      { "B02", PMUACKUpdatePersonnelRecord }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#B02", PMUACKUpdatePersonnelRecord }, 
+      { "B03", PMUACKDeletePersonnelReCord }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#B03", PMUACKDeletePersonnelReCord }, 
+      { "B04", PMUACKActivePracticingPerson }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#B04", PMUACKActivePracticingPerson }, 
+      { "B05", PMUACKDeactivatePracticingPerson }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#B05", PMUACKDeactivatePracticingPerson }, 
+      { "B06", PMUACKTerminatePracticingPerson }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#B06", PMUACKTerminatePracticingPerson }, 
+      { "B07", PMUACKGrantCertificatePermission }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#B07", PMUACKGrantCertificatePermission }, 
+      { "B08", PMUACKRevokeCertificatePermission }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#B08", PMUACKRevokeCertificatePermission }, 
+      { "C01", CRMRegisterAPatientOnAClinicalTrial }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#C01", CRMRegisterAPatientOnAClinicalTrial }, 
+      { "C02", CRMCancelAPatientRegistrationOnClinicalTrialForClericalMistakesOnly }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#C02", CRMCancelAPatientRegistrationOnClinicalTrialForClericalMistakesOnly }, 
+      { "C03", CRMCorrectUpdateRegistrationInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#C03", CRMCorrectUpdateRegistrationInformation }, 
+      { "C04", CRMPatientHasGoneOffAClinicalTrial }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#C04", CRMPatientHasGoneOffAClinicalTrial }, 
+      { "C05", CRMPatientEntersPhaseOfClinicalTrial }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#C05", CRMPatientEntersPhaseOfClinicalTrial }, 
+      { "C06", CRMCancelPatientEnteringAPhaseClericalMistake }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#C06", CRMCancelPatientEnteringAPhaseClericalMistake }, 
+      { "C07", CRMCorrectUpdatePhaseInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#C07", CRMCorrectUpdatePhaseInformation }, 
+      { "C08", CRMPatientHasGoneOffPhaseOfClinicalTrial }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#C08", CRMPatientHasGoneOffPhaseOfClinicalTrial }, 
+      { "C09", CSUAutomatedTimeIntervalsForReportingLikeMonthly }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#C09", CSUAutomatedTimeIntervalsForReportingLikeMonthly }, 
+      { "C10", CSUPatientCompletesTheClinicalTrial }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#C10", CSUPatientCompletesTheClinicalTrial }, 
+      { "C11", CSUPatientCompletesAPhaseOfTheClinicalTrial }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#C11", CSUPatientCompletesAPhaseOfTheClinicalTrial }, 
+      { "C12", CSUUpdateCorrectionOfPatientOrderResultInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#C12", CSUUpdateCorrectionOfPatientOrderResultInformation }, 
+      { "CNQ", CancelQuery }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#CNQ", CancelQuery }, 
+      { "E01", SubmitHealthCareServicesInvoice }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#E01", SubmitHealthCareServicesInvoice }, 
+      { "E02", CancelHealthCareServicesInvoice }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#E02", CancelHealthCareServicesInvoice }, 
+      { "E03", HealthCareServicesInvoiceStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#E03", HealthCareServicesInvoiceStatus }, 
+      { "E04", ReAssessHealthCareServicesInvoiceRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#E04", ReAssessHealthCareServicesInvoiceRequest }, 
+      { "E10", EditAdjudicationResults }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#E10", EditAdjudicationResults }, 
+      { "E12", RequestAdditionalInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#E12", RequestAdditionalInformation }, 
+      { "E13", AdditionalInformationResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#E13", AdditionalInformationResponse }, 
+      { "E15", PaymentRemittanceAdvice }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#E15", PaymentRemittanceAdvice }, 
+      { "E20", SubmitAuthorizationRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#E20", SubmitAuthorizationRequest }, 
+      { "E21", CancelAuthorizationRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#E21", CancelAuthorizationRequest }, 
+      { "E22", AuthorizationRequestStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#E22", AuthorizationRequestStatus }, 
+      { "E24", AuthorizationResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#E24", AuthorizationResponse }, 
+      { "E30", SubmitHealthDocumentRelatedToAuthorizationRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#E30", SubmitHealthDocumentRelatedToAuthorizationRequest }, 
+      { "E31", CancelHealthDocumentRelatedToAuthorizationRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#E31", CancelHealthDocumentRelatedToAuthorizationRequest }, 
+      { "I01", RQIRPIRequestForInsuranceInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I01", RQIRPIRequestForInsuranceInformation }, 
+      { "I02", RQIRPLRequestReceiptOfPatientSelectionDisplayList }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I02", RQIRPLRequestReceiptOfPatientSelectionDisplayList }, 
+      { "I03", RQIRPRRequestReceiptOfPatientSelectionList }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I03", RQIRPRRequestReceiptOfPatientSelectionList }, 
+      { "I04", RQDRPIRequestForPatientDemographicData }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I04", RQDRPIRequestForPatientDemographicData }, 
+      { "I05", RQCRCIRequestForPatientClinicalInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I05", RQCRCIRequestForPatientClinicalInformation }, 
+      { "I06", RQCRCLRequestReceiptOfClinicalDataListing }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I06", RQCRCLRequestReceiptOfClinicalDataListing }, 
+      { "I07", PINACKUnsolicitedInsuranceInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I07", PINACKUnsolicitedInsuranceInformation }, 
+      { "I08", RQARPARequestForTreatmentAuthorizationInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I08", RQARPARequestForTreatmentAuthorizationInformation }, 
+      { "I09", RQARPARequestForModificationToAnAuthorization }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I09", RQARPARequestForModificationToAnAuthorization }, 
+      { "I10", RQARPARequestForResubmissionOfAnAuthorization }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I10", RQARPARequestForResubmissionOfAnAuthorization }, 
+      { "I11", RQARPARequestForCancellationOfAnAuthorization }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I11", RQARPARequestForCancellationOfAnAuthorization }, 
+      { "I12", REFRRIPatientReferral }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I12", REFRRIPatientReferral }, 
+      { "I13", REFRRIModifyPatientReferral }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I13", REFRRIModifyPatientReferral }, 
+      { "I14", REFRRICancelPatientReferral }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I14", REFRRICancelPatientReferral }, 
+      { "I15", REFRRIRequestPatientReferralStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I15", REFRRIRequestPatientReferralStatus }, 
+      { "I16", CollaborativeCareReferral }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I16", CollaborativeCareReferral }, 
+      { "I17", ModifyCollaborativeCareReferral }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I17", ModifyCollaborativeCareReferral }, 
+      { "I18", CancelCollaborativeCareReferral }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I18", CancelCollaborativeCareReferral }, 
+      { "I19", CollaborativeCareQueryCollaborativeCareQueryUpdate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I19", CollaborativeCareQueryCollaborativeCareQueryUpdate }, 
+      { "I20", AsynchronousCollaborativeCareUpdate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I20", AsynchronousCollaborativeCareUpdate }, 
+      { "I21", CollaborativeCareMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I21", CollaborativeCareMessage }, 
+      { "I22", CollaborativeCareFetchCollaborativeCareInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#I22", CollaborativeCareFetchCollaborativeCareInformation }, 
+      { "J01", QCNACKCancelQueryAcknowledgeMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#J01", QCNACKCancelQueryAcknowledgeMessage }, 
+      { "J02", QSXACKCancelSubscriptionAcknowledgeMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#J02", QSXACKCancelSubscriptionAcknowledgeMessage }, 
+      { "K11", RSPSegmentPatternResponseInResponseToQBPPowerQ11 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#K11", RSPSegmentPatternResponseInResponseToQBPPowerQ11 }, 
+      { "K13", RTBTabularResponseInResponseToQBPPowerQ13 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#K13", RTBTabularResponseInResponseToQBPPowerQ13 }, 
+      { "K15", RDYDisplayResponseInResponseToQBPPowerQ15 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#K15", RDYDisplayResponseInResponseToQBPPowerQ15 }, 
+      { "K21", RSPGetPersonDemographicsResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#K21", RSPGetPersonDemographicsResponse }, 
+      { "K22", RSPFindCandidatesResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#K22", RSPFindCandidatesResponse }, 
+      { "K23", RSPGetCorrespondingIdentifiersResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#K23", RSPGetCorrespondingIdentifiersResponse }, 
+      { "K24", RSPAllocateIdentifiersResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#K24", RSPAllocateIdentifiersResponse }, 
+      { "K25", RSPPersonnelInformationBySegmentResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#K25", RSPPersonnelInformationBySegmentResponse }, 
+      { "K31", RSPDispenseHistoryResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#K31", RSPDispenseHistoryResponse }, 
+      { "K32", FindCandidatesIncludingVisitInformationResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#K32", FindCandidatesIncludingVisitInformationResponse }, 
+      { "K33", GetDonorRecordCandidatesResponseMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#K33", GetDonorRecordCandidatesResponseMessage }, 
+      { "K34", SegmentPatternResponseMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#K34", SegmentPatternResponseMessage }, 
+      { "M01", MFNMFKMasterFileNotOtherwiseSpecified }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M01", MFNMFKMasterFileNotOtherwiseSpecified }, 
+      { "M02", MFNMFKMasterFileStaffPractitioner }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M02", MFNMFKMasterFileStaffPractitioner }, 
+      { "M03", MFNMFKMasterFileTestObservation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M03", MFNMFKMasterFileTestObservation }, 
+      { "M04", MFNMFKMasterFilesChargeDescription }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M04", MFNMFKMasterFilesChargeDescription }, 
+      { "M05", MFNMFKPatientLocationMasterFile }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M05", MFNMFKPatientLocationMasterFile }, 
+      { "M06", MFNMFKClinicalStudyWithPhasesAndSchedulesMasterFile }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M06", MFNMFKClinicalStudyWithPhasesAndSchedulesMasterFile }, 
+      { "M07", MFNMFKClinicalStudyWithoutPhasesButWithSchedulesMasterFile }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M07", MFNMFKClinicalStudyWithoutPhasesButWithSchedulesMasterFile }, 
+      { "M08", MFNMFKTestObservationNumericMasterFile }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M08", MFNMFKTestObservationNumericMasterFile }, 
+      { "M09", MFNMFKTestObservationCategoricalMasterFile }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M09", MFNMFKTestObservationCategoricalMasterFile }, 
+      { "M10", MFNMFKTestObservationBatteriesMasterFile }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M10", MFNMFKTestObservationBatteriesMasterFile }, 
+      { "M11", MFNMFKTestCalculatedObservationsMasterFile }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M11", MFNMFKTestCalculatedObservationsMasterFile }, 
+      { "M12", MFNMFKMasterFileNotificationMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M12", MFNMFKMasterFileNotificationMessage }, 
+      { "M13", MFNMFKMasterFileNotificationGeneral }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M13", MFNMFKMasterFileNotificationGeneral }, 
+      { "M14", MFNMFKMasterFileNotificationSiteDefined }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M14", MFNMFKMasterFileNotificationSiteDefined }, 
+      { "M15", MFNMFKInventoryItemMasterFileNotification }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M15", MFNMFKInventoryItemMasterFileNotification }, 
+      { "M16", MFNMFKMasterFileNotificationInventoryItemEnhanced }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M16", MFNMFKMasterFileNotificationInventoryItemEnhanced }, 
+      { "M17", DRGMasterFileMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M17", DRGMasterFileMessage }, 
+      { "M18", MFNMFKMasterFileNotificationTestObservationPayer }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#M18", MFNMFKMasterFileNotificationTestObservationPayer }, 
+      { "N01", NMQNMRApplicationManagementQueryMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#N01", NMQNMRApplicationManagementQueryMessage }, 
+      { "N02", NMDACKApplicationManagementDataMessageUnsolicited }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#N02", NMDACKApplicationManagementDataMessageUnsolicited }, 
+      { "O01", ORMOrderMessageAlsoRDERDSRGVRAS }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O01", ORMOrderMessageAlsoRDERDSRGVRAS }, 
+      { "O02", ORROrderResponseAlsoRRERRDRRGRRA }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O02", ORROrderResponseAlsoRRERRDRRGRRA }, 
+      { "O03", OMDDietOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O03", OMDDietOrder }, 
+      { "O04", ORDDietOrderAcknowledgment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O04", ORDDietOrderAcknowledgment }, 
+      { "O05", OMSStockRequisitionOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O05", OMSStockRequisitionOrder }, 
+      { "O06", ORSStockRequisitionAcknowledgment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O06", ORSStockRequisitionAcknowledgment }, 
+      { "O07", OMNNonStockRequisitionOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O07", OMNNonStockRequisitionOrder }, 
+      { "O08", ORNNonStockRequisitionAcknowledgment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O08", ORNNonStockRequisitionAcknowledgment }, 
+      { "O09", OMPPharmacyTreatmentOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O09", OMPPharmacyTreatmentOrder }, 
+      { "O10", ORPPharmacyTreatmentOrderAcknowledgment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O10", ORPPharmacyTreatmentOrderAcknowledgment }, 
+      { "O11", RDEPharmacyTreatmentEncodedOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O11", RDEPharmacyTreatmentEncodedOrder }, 
+      { "O12", RREPharmacyTreatmentEncodedOrderAcknowledgment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O12", RREPharmacyTreatmentEncodedOrderAcknowledgment }, 
+      { "O13", RDSPharmacyTreatmentDispense }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O13", RDSPharmacyTreatmentDispense }, 
+      { "O14", RRDPharmacyTreatmentDispenseAcknowledgment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O14", RRDPharmacyTreatmentDispenseAcknowledgment }, 
+      { "O15", RGVPharmacyTreatmentGive }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O15", RGVPharmacyTreatmentGive }, 
+      { "O16", RRGPharmacyTreatmentGiveAcknowledgment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O16", RRGPharmacyTreatmentGiveAcknowledgment }, 
+      { "O17", RASPharmacyTreatmentAdministration }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O17", RASPharmacyTreatmentAdministration }, 
+      { "O18", RRAPharmacyTreatmentAdministrationAcknowledgment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O18", RRAPharmacyTreatmentAdministrationAcknowledgment }, 
+      { "O19", OMGGeneralClinicalOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O19", OMGGeneralClinicalOrder }, 
+      { "O20", ORGORLGeneralClinicalOrderResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O20", ORGORLGeneralClinicalOrderResponse }, 
+      { "O21", OMLLaboratoryOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O21", OMLLaboratoryOrder }, 
+      { "O22", ORLGeneralLaboratoryOrderResponseMessageToAnyOML }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O22", ORLGeneralLaboratoryOrderResponseMessageToAnyOML }, 
+      { "O23", OMIImagingOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O23", OMIImagingOrder }, 
+      { "O24", ORIImagingOrderResponseMessageToAnyOMI }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O24", ORIImagingOrderResponseMessageToAnyOMI }, 
+      { "O25", RDEPharmacyTreatmentRefillAuthorizationRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O25", RDEPharmacyTreatmentRefillAuthorizationRequest }, 
+      { "O26", RREPharmacyTreatmentRefillAuthorizationAcknowledgement }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O26", RREPharmacyTreatmentRefillAuthorizationAcknowledgement }, 
+      { "O27", OMBBloodProductOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O27", OMBBloodProductOrder }, 
+      { "O28", ORBBloodProductOrderAcknowledgment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O28", ORBBloodProductOrderAcknowledgment }, 
+      { "O29", BPSBloodProductDispenseStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O29", BPSBloodProductDispenseStatus }, 
+      { "O30", BRPBloodProductDispenseStatusAcknowledgment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O30", BRPBloodProductDispenseStatusAcknowledgment }, 
+      { "O31", BTSBloodProductTransfusionDisposition }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O31", BTSBloodProductTransfusionDisposition }, 
+      { "O32", BRTBloodProductTransfusionDispositionAcknowledgment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O32", BRTBloodProductTransfusionDispositionAcknowledgment }, 
+      { "O33", OMLLaboratoryOrderForMultipleOrdersRelatedToASingleSpecimen }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O33", OMLLaboratoryOrderForMultipleOrdersRelatedToASingleSpecimen }, 
+      { "O34", ORLLaboratoryOrderResponseMessageToAMultipleOrderRelatedToSingleSpecimenOML }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O34", ORLLaboratoryOrderResponseMessageToAMultipleOrderRelatedToSingleSpecimenOML }, 
+      { "O35", OMLLaboratoryOrderForMultipleOrdersRelatedToASingleContainerOfASpecimen }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O35", OMLLaboratoryOrderForMultipleOrdersRelatedToASingleContainerOfASpecimen }, 
+      { "O36", ORLLaboratoryOrderResponseMessageToASingleContainerOfASpecimenOML }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O36", ORLLaboratoryOrderResponseMessageToASingleContainerOfASpecimenOML }, 
+      { "O37", OPLPopulationLocationBasedLaboratoryOrderMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O37", OPLPopulationLocationBasedLaboratoryOrderMessage }, 
+      { "O38", OPRPopulationLocationBasedLaboratoryOrderAcknowledgmentMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O38", OPRPopulationLocationBasedLaboratoryOrderAcknowledgmentMessage }, 
+      { "O39", SpecimenShipmentCentricLaboratoryOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O39", SpecimenShipmentCentricLaboratoryOrder }, 
+      { "O40", SpecimenShipmentCentricLaboratoryOrderAcknowledgmentMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O40", SpecimenShipmentCentricLaboratoryOrderAcknowledgmentMessage }, 
+      { "O41", DBCCreateDonorRecordMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O41", DBCCreateDonorRecordMessage }, 
+      { "O42", DBUUpdateDonorRecordMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O42", DBUUpdateDonorRecordMessage }, 
+      { "O43", GeneralOrderMessageWithDocumentPayloadAcknowledgementMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O43", GeneralOrderMessageWithDocumentPayloadAcknowledgementMessage }, 
+      { "O44", DonorRegistrationMinimalMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O44", DonorRegistrationMinimalMessage }, 
+      { "O45", DonorEligibilityObservationsMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O45", DonorEligibilityObservationsMessage }, 
+      { "O46", DonorEligiblityMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O46", DonorEligiblityMessage }, 
+      { "O47", DonorRequestToCollectMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O47", DonorRequestToCollectMessage }, 
+      { "O48", DonationProcedureMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O48", DonationProcedureMessage }, 
+      { "O49", PharmacyTreatmentDispenseRequestMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O49", PharmacyTreatmentDispenseRequestMessage }, 
+      { "O50", PharmacyTreatmentEncodedOrderAcknowledgment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O50", PharmacyTreatmentEncodedOrderAcknowledgment }, 
+      { "O51", OSUOrderStatusUpdate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O51", OSUOrderStatusUpdate }, 
+      { "O52", OSUOrderStatusUpdateAcknowledgement }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O52", OSUOrderStatusUpdateAcknowledgement }, 
+      { "O53", ORLGeneralLaboratoryOrderAcknowledgmentMessagePatientOptional }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O53", ORLGeneralLaboratoryOrderAcknowledgmentMessagePatientOptional }, 
+      { "O54", ORLLaboratoryOrderAcknowledgmentMessageMultipleOrderPerSpecimenPatientOptional }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O54", ORLLaboratoryOrderAcknowledgmentMessageMultipleOrderPerSpecimenPatientOptional }, 
+      { "O55", ORLLaboratoryOrderAcknowledgmentMessageMultipleOrderPerContainerOfSpecimenPatientOptional }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O55", ORLLaboratoryOrderAcknowledgmentMessageMultipleOrderPerContainerOfSpecimenPatientOptional }, 
+      { "O56", ORLSpecimenShipmentCentricLaboratoryOrderAcknowledgmentMessagePatientOptional }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O56", ORLSpecimenShipmentCentricLaboratoryOrderAcknowledgmentMessagePatientOptional }, 
+      { "O57", OMQGeneralOrderMessageWithDocumentPayload }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O57", OMQGeneralOrderMessageWithDocumentPayload }, 
+      { "O58", ORXGeneralOrderMessageWithDocumentPayloadAcknowledgementMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O58", ORXGeneralOrderMessageWithDocumentPayloadAcknowledgementMessage }, 
+      { "O59", OMLLaboratoryOrderForAdditionalWorkUp }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#O59", OMLLaboratoryOrderForAdditionalWorkUp }, 
+      { "P01", BARACKAddPatientAccounts }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#P01", BARACKAddPatientAccounts }, 
+      { "P02", BARACKPurgePatientAccounts }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#P02", BARACKPurgePatientAccounts }, 
+      { "P03", DFTACKPostDetailFinancialTransaction }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#P03", DFTACKPostDetailFinancialTransaction }, 
+      { "P04", QRYDSPGenerateBillAndARStatements }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#P04", QRYDSPGenerateBillAndARStatements }, 
+      { "P05", BARACKUpdateAccount }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#P05", BARACKUpdateAccount }, 
+      { "P06", BARACKEndAccount }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#P06", BARACKEndAccount }, 
+      { "P07", PEXUnsolicitedInitialIndividualProductExperienceReport }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#P07", PEXUnsolicitedInitialIndividualProductExperienceReport }, 
+      { "P08", PEXUnsolicitedUpdateIndividualProductExperienceReport }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#P08", PEXUnsolicitedUpdateIndividualProductExperienceReport }, 
+      { "P09", SURSummaryProductExperienceReport }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#P09", SURSummaryProductExperienceReport }, 
+      { "P10", BARACKTransmitAmbulatoryPaymentClassificationAPC }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#P10", BARACKTransmitAmbulatoryPaymentClassificationAPC }, 
+      { "P11", DFTACKPostDetailFinancialTransactionsNew }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#P11", DFTACKPostDetailFinancialTransactionsNew }, 
+      { "P12", BARACKUpdateDiagnosisProcedure }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#P12", BARACKUpdateDiagnosisProcedure }, 
+      { "PC1", PPRPCProblemAdd }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PC1", PPRPCProblemAdd }, 
+      { "PC2", PPRPCProblemUpdate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PC2", PPRPCProblemUpdate }, 
+      { "PC3", PPRPCProblemDelete }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PC3", PPRPCProblemDelete }, 
+      { "PC4", QRYPCProblemQuery }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PC4", QRYPCProblemQuery }, 
+      { "PC5", PRRPCProblemResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PC5", PRRPCProblemResponse }, 
+      { "PC6", PGLPCGoalAdd }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PC6", PGLPCGoalAdd }, 
+      { "PC7", PGLPCGoalUpdate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PC7", PGLPCGoalUpdate }, 
+      { "PC8", PGLPCGoalDelete }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PC8", PGLPCGoalDelete }, 
+      { "PC9", QRYPCGoalQuery }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PC9", QRYPCGoalQuery }, 
+      { "PCA", PPVPCGoalResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PCA", PPVPCGoalResponse }, 
+      { "PCB", PPPPCPathwayProblemOrientedAdd }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PCB", PPPPCPathwayProblemOrientedAdd }, 
+      { "PCC", PPPPCPathwayProblemOrientedUpdate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PCC", PPPPCPathwayProblemOrientedUpdate }, 
+      { "PCD", PPPPCPathwayProblemOrientedDelete }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PCD", PPPPCPathwayProblemOrientedDelete }, 
+      { "PCE", QRYPCPathwayProblemOrientedQuery }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PCE", QRYPCPathwayProblemOrientedQuery }, 
+      { "PCF", PTRPCPathwayProblemOrientedQueryResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PCF", PTRPCPathwayProblemOrientedQueryResponse }, 
+      { "PCG", PPGPCPathwayGoalOrientedAdd }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PCG", PPGPCPathwayGoalOrientedAdd }, 
+      { "PCH", PPGPCPathwayGoalOrientedUpdate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PCH", PPGPCPathwayGoalOrientedUpdate }, 
+      { "PCJ", PPGPCPathwayGoalOrientedDelete }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PCJ", PPGPCPathwayGoalOrientedDelete }, 
+      { "PCK", QRYPCPathwayGoalOrientedQuery }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PCK", QRYPCPathwayGoalOrientedQuery }, 
+      { "PCL", PPTPCPathwayGoalOrientedQueryResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#PCL", PPTPCPathwayGoalOrientedQueryResponse }, 
+      { "Q01", QRYDSRQuerySentForImmediateResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q01", QRYDSRQuerySentForImmediateResponse }, 
+      { "Q02", QRYQCKQuerySentForDeferredResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q02", QRYQCKQuerySentForDeferredResponse }, 
+      { "Q03", DSRACKDeferredResponseToAQuery }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q03", DSRACKDeferredResponseToAQuery }, 
+      { "Q04", EQQEmbeddedQueryLanguageQuery }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q04", EQQEmbeddedQueryLanguageQuery }, 
+      { "Q05", UDMACKUnsolicitedDisplayUpdateMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q05", UDMACKUnsolicitedDisplayUpdateMessage }, 
+      { "Q06", OSQOSRQueryForOrderStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q06", OSQOSRQueryForOrderStatus }, 
+      { "Q07", VQQVirtualTableQuery }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q07", VQQVirtualTableQuery }, 
+      { "Q08", SPQStoredProcedureRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q08", SPQStoredProcedureRequest }, 
+      { "Q09", RQQEventReplayQuery }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q09", RQQEventReplayQuery }, 
+      { "Q11", QBPQueryByParameterRequestingAnRSPSegmentPatternResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q11", QBPQueryByParameterRequestingAnRSPSegmentPatternResponse }, 
+      { "Q13", QBPQueryByParameterRequestingAnRTBTabularResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q13", QBPQueryByParameterRequestingAnRTBTabularResponse }, 
+      { "Q15", QBPQueryByParameterRequestingAnRDYDisplayResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q15", QBPQueryByParameterRequestingAnRDYDisplayResponse }, 
+      { "Q16", QSBCreateSubscription }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q16", QSBCreateSubscription }, 
+      { "Q17", QVRQueryForPreviousEvents }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q17", QVRQueryForPreviousEvents }, 
+      { "Q21", QBPGetPersonDemographics }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q21", QBPGetPersonDemographics }, 
+      { "Q22", QBPFindCandidates }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q22", QBPFindCandidates }, 
+      { "Q23", QBPGetCorrespondingIdentifiers }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q23", QBPGetCorrespondingIdentifiers }, 
+      { "Q24", QBPAllocateIdentifiers }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q24", QBPAllocateIdentifiers }, 
+      { "Q25", QBPPersonnelInformationBySegmentQuery }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q25", QBPPersonnelInformationBySegmentQuery }, 
+      { "Q26", RORPharmacyTreatmentOrderResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q26", RORPharmacyTreatmentOrderResponse }, 
+      { "Q27", RARPharmacyTreatmentAdministrationInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q27", RARPharmacyTreatmentAdministrationInformation }, 
+      { "Q28", RDRPharmacyTreatmentDispenseInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q28", RDRPharmacyTreatmentDispenseInformation }, 
+      { "Q29", RERPharmacyTreatmentEncodedOrderInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q29", RERPharmacyTreatmentEncodedOrderInformation }, 
+      { "Q30", RGRPharmacyTreatmentDoseInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q30", RGRPharmacyTreatmentDoseInformation }, 
+      { "Q31", QBPQueryDispenseHistory }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q31", QBPQueryDispenseHistory }, 
+      { "Q32", FindCandidatesIncludingVisitInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q32", FindCandidatesIncludingVisitInformation }, 
+      { "Q33", QBPGetDonorRecordCandidates }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q33", QBPGetDonorRecordCandidates }, 
+      { "Q34", QBPGetDonorRecord }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Q34", QBPGetDonorRecord }, 
+      { "R01", ORUACKUnsolicitedTransmissionOfAnObservationMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R01", ORUACKUnsolicitedTransmissionOfAnObservationMessage }, 
+      { "R02", QRYQueryForResultsOfObservation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R02", QRYQueryForResultsOfObservation }, 
+      { "R03", QRYDSRDisplayOrientedResultsQueryUnsolUpdateForBackwardCompatibilityOnlyReplacedByQ05 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R03", QRYDSRDisplayOrientedResultsQueryUnsolUpdateForBackwardCompatibilityOnlyReplacedByQ05 }, 
+      { "R04", ORFResponseToQueryTransmissionOfRequestedObservation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R04", ORFResponseToQueryTransmissionOfRequestedObservation }, 
+      { "R05", QRYDSRQueryForDisplayResultsSeeQ01 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R05", QRYDSRQueryForDisplayResultsSeeQ01 }, 
+      { "R06", UDMUnsolicitedUpdateDisplayResultsSeeQ05 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R06", UDMUnsolicitedUpdateDisplayResultsSeeQ05 }, 
+      { "R07", EDREnhancedDisplayResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R07", EDREnhancedDisplayResponse }, 
+      { "R08", TBRTabularDataResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R08", TBRTabularDataResponse }, 
+      { "R09", ERPEventReplayResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R09", ERPEventReplayResponse }, 
+      { "R0R", R0RPharmacyPrescriptionOrderQueryResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R0R", R0RPharmacyPrescriptionOrderQueryResponse }, 
+      { "R21", OULUnsolicitedLaboratoryObservation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R21", OULUnsolicitedLaboratoryObservation }, 
+      { "R22", OULUnsolicitedSpecimenOrientedObservationMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R22", OULUnsolicitedSpecimenOrientedObservationMessage }, 
+      { "R23", OULUnsolicitedSpecimenContainerOrientedObservationMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R23", OULUnsolicitedSpecimenContainerOrientedObservationMessage }, 
+      { "R24", OULUnsolicitedOrderOrientedObservationMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R24", OULUnsolicitedOrderOrientedObservationMessage }, 
+      { "R25", OPUUnsolicitedPopulationLocationBasedLaboratoryObservationMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R25", OPUUnsolicitedPopulationLocationBasedLaboratoryObservationMessage }, 
+      { "R26", OSMUnsolicitedSpecimenShipmentManifestMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R26", OSMUnsolicitedSpecimenShipmentManifestMessage }, 
+      { "R30", ORUUnsolicitedPointOfCareObservationMessageWithoutExistingOrderPlaceAnOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R30", ORUUnsolicitedPointOfCareObservationMessageWithoutExistingOrderPlaceAnOrder }, 
+      { "R31", ORUUnsolicitedNewPointOfCareObservationMessageSearchForAnOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R31", ORUUnsolicitedNewPointOfCareObservationMessageSearchForAnOrder }, 
+      { "R32", ORUUnsolicitedPreOrderedPointOfCareObservation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R32", ORUUnsolicitedPreOrderedPointOfCareObservation }, 
+      { "R33", ORAObservationReportAcknowledgement }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R33", ORAObservationReportAcknowledgement }, 
+      { "R40", ORUUnsolicitedReportAlarm }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R40", ORUUnsolicitedReportAlarm }, 
+      { "R41", ObservationReportAlertAcknowledgement }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R41", ObservationReportAlertAcknowledgement }, 
+      { "R42", ORUUnsolicitedDeviceEventObservationMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R42", ORUUnsolicitedDeviceEventObservationMessage }, 
+      { "R43", ORUUnsolicitedPatientDeviceAssociationObservationMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#R43", ORUUnsolicitedPatientDeviceAssociationObservationMessage }, 
+      { "RAR", RARPharmacyAdministrationInformationQueryResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#RAR", RARPharmacyAdministrationInformationQueryResponse }, 
+      { "RDR", RDRPharmacyDispenseInformationQueryResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#RDR", RDRPharmacyDispenseInformationQueryResponse }, 
+      { "RER", RERPharmacyEncodedOrderInformationQueryResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#RER", RERPharmacyEncodedOrderInformationQueryResponse }, 
+      { "RGR", RGRPharmacyDoseInformationQueryResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#RGR", RGRPharmacyDoseInformationQueryResponse }, 
+      { "ROR", RORPharmacyPrescriptionOrderQueryResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#ROR", RORPharmacyPrescriptionOrderQueryResponse }, 
+      { "S01", SRMSRRRequestNewAppointmentBooking }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S01", SRMSRRRequestNewAppointmentBooking }, 
+      { "S02", SRMSRRRequestAppointmentRescheduling }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S02", SRMSRRRequestAppointmentRescheduling }, 
+      { "S03", SRMSRRRequestAppointmentModification }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S03", SRMSRRRequestAppointmentModification }, 
+      { "S04", SRMSRRRequestAppointmentCancellation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S04", SRMSRRRequestAppointmentCancellation }, 
+      { "S05", SRMSRRRequestAppointmentDiscontinuation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S05", SRMSRRRequestAppointmentDiscontinuation }, 
+      { "S06", SRMSRRRequestAppointmentDeletion }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S06", SRMSRRRequestAppointmentDeletion }, 
+      { "S07", SRMSRRRequestAdditionOfServiceResourceOnAppointment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S07", SRMSRRRequestAdditionOfServiceResourceOnAppointment }, 
+      { "S08", SRMSRRRequestModificationOfServiceResourceOnAppointment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S08", SRMSRRRequestModificationOfServiceResourceOnAppointment }, 
+      { "S09", SRMSRRRequestCancellationOfServiceResourceOnAppointment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S09", SRMSRRRequestCancellationOfServiceResourceOnAppointment }, 
+      { "S10", SRMSRRRequestDiscontinuationOfServiceResourceOnAppointment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S10", SRMSRRRequestDiscontinuationOfServiceResourceOnAppointment }, 
+      { "S11", SRMSRRRequestDeletionOfServiceResourceOnAppointment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S11", SRMSRRRequestDeletionOfServiceResourceOnAppointment }, 
+      { "S12", SIUACKNotificationOfNewAppointmentBooking }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S12", SIUACKNotificationOfNewAppointmentBooking }, 
+      { "S13", SIUACKNotificationOfAppointmentRescheduling }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S13", SIUACKNotificationOfAppointmentRescheduling }, 
+      { "S14", SIUACKNotificationOfAppointmentModification }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S14", SIUACKNotificationOfAppointmentModification }, 
+      { "S15", SIUACKNotificationOfAppointmentCancellation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S15", SIUACKNotificationOfAppointmentCancellation }, 
+      { "S16", SIUACKNotificationOfAppointmentDiscontinuation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S16", SIUACKNotificationOfAppointmentDiscontinuation }, 
+      { "S17", SIUACKNotificationOfAppointmentDeletion }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S17", SIUACKNotificationOfAppointmentDeletion }, 
+      { "S18", SIUACKNotificationOfAdditionOfServiceResourceOnAppointment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S18", SIUACKNotificationOfAdditionOfServiceResourceOnAppointment }, 
+      { "S19", SIUACKNotificationOfModificationOfServiceResourceOnAppointment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S19", SIUACKNotificationOfModificationOfServiceResourceOnAppointment }, 
+      { "S20", SIUACKNotificationOfCancellationOfServiceResourceOnAppointment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S20", SIUACKNotificationOfCancellationOfServiceResourceOnAppointment }, 
+      { "S21", SIUACKNotificationOfDiscontinuationOfServiceResourceOnAppointment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S21", SIUACKNotificationOfDiscontinuationOfServiceResourceOnAppointment }, 
+      { "S22", SIUACKNotificationOfDeletionOfServiceResourceOnAppointment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S22", SIUACKNotificationOfDeletionOfServiceResourceOnAppointment }, 
+      { "S23", SIUACKNotificationOfBlockedScheduleTimeSlotS }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S23", SIUACKNotificationOfBlockedScheduleTimeSlotS }, 
+      { "S24", SIUACKNotificationOfOpenedQuotationUnblockedQuotationScheduleTimeSlotS }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S24", SIUACKNotificationOfOpenedQuotationUnblockedQuotationScheduleTimeSlotS }, 
+      { "S25", SQMSQRScheduleQueryMessageAndResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S25", SQMSQRScheduleQueryMessageAndResponse }, 
+      { "S26", SIUACKNotificationThatPatientDidNotShowUpForScheduleAppointment }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S26", SIUACKNotificationThatPatientDidNotShowUpForScheduleAppointment }, 
+      { "S27", SIUACKBroadcastNotificationOfScheduledAppointments }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S27", SIUACKBroadcastNotificationOfScheduledAppointments }, 
+      { "S28", SLRSLSRequestNewSterilizationLot }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S28", SLRSLSRequestNewSterilizationLot }, 
+      { "S29", SLRSLSRequestSterilizationLotDeletion }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S29", SLRSLSRequestSterilizationLotDeletion }, 
+      { "S30", STISTSRequestItem }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S30", STISTSRequestItem }, 
+      { "S31", SDRSDSRequestAntiMicrobialDeviceData }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S31", SDRSDSRequestAntiMicrobialDeviceData }, 
+      { "S32", SMDSMSRequestAntiMicrobialDeviceCycleData }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S32", SMDSMSRequestAntiMicrobialDeviceCycleData }, 
+      { "S33", STCACKNotificationOfSterilizationConfiguration }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S33", STCACKNotificationOfSterilizationConfiguration }, 
+      { "S34", SLNACKNotificationOfSterilizationLot }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S34", SLNACKNotificationOfSterilizationLot }, 
+      { "S35", SLNACKNotificationOfSterilizationLotDeletion }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S35", SLNACKNotificationOfSterilizationLotDeletion }, 
+      { "S36", SDNACKNotificationOfAntiMicrobialDeviceData }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S36", SDNACKNotificationOfAntiMicrobialDeviceData }, 
+      { "S37", SCNACKNotificationOfAntiMicrobialDeviceCycleData }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S37", SCNACKNotificationOfAntiMicrobialDeviceCycleData }, 
+      { "S38", ContainersPreparedForSpecimenCollection }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S38", ContainersPreparedForSpecimenCollection }, 
+      { "S39", SpecimenCollectionSuccessful }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S39", SpecimenCollectionSuccessful }, 
+      { "S40", SpecimenCollectionUnsuccessful }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S40", SpecimenCollectionUnsuccessful }, 
+      { "S41", SpecimenDeparted }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S41", SpecimenDeparted }, 
+      { "S42", SpecimenArrived }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S42", SpecimenArrived }, 
+      { "S43", SpecimenAccepted }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S43", SpecimenAccepted }, 
+      { "S44", SpecimenRejected }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S44", SpecimenRejected }, 
+      { "S45", SpecimenReIdentified }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S45", SpecimenReIdentified }, 
+      { "S46", SpecimenDeIdentified }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S46", SpecimenDeIdentified }, 
+      { "S47", SpecimenSentToArchive }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S47", SpecimenSentToArchive }, 
+      { "S48", SpecimenRetrievedFromArchive }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S48", SpecimenRetrievedFromArchive }, 
+      { "S49", SpecimenDisposedOf }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S49", SpecimenDisposedOf }, 
+      { "S50", SpecimenProcedureStepSuccessfulWithDerivedSpecimenS }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S50", SpecimenProcedureStepSuccessfulWithDerivedSpecimenS }, 
+      { "S51", SpecimenProcedureStepSuccessfulNoDerivedSpecimenS }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S51", SpecimenProcedureStepSuccessfulNoDerivedSpecimenS }, 
+      { "S52", SpecimenProcedureStepUnsuccessful }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#S52", SpecimenProcedureStepUnsuccessful }, 
+      { "T01", MDMACKOriginalDocumentNotification }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#T01", MDMACKOriginalDocumentNotification }, 
+      { "T02", MDMACKOriginalDocumentNotificationAndContent }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#T02", MDMACKOriginalDocumentNotificationAndContent }, 
+      { "T03", MDMACKDocumentStatusChangeNotification }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#T03", MDMACKDocumentStatusChangeNotification }, 
+      { "T04", MDMACKDocumentStatusChangeNotificationAndContent }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#T04", MDMACKDocumentStatusChangeNotificationAndContent }, 
+      { "T05", MDMACKDocumentAddendumNotification }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#T05", MDMACKDocumentAddendumNotification }, 
+      { "T06", MDMACKDocumentAddendumNotificationAndContent }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#T06", MDMACKDocumentAddendumNotificationAndContent }, 
+      { "T07", MDMACKDocumentEditNotification }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#T07", MDMACKDocumentEditNotification }, 
+      { "T08", MDMACKDocumentEditNotificationAndContent }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#T08", MDMACKDocumentEditNotificationAndContent }, 
+      { "T09", MDMACKDocumentReplacementNotification }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#T09", MDMACKDocumentReplacementNotification }, 
+      { "T10", MDMACKDocumentReplacementNotificationAndContent }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#T10", MDMACKDocumentReplacementNotificationAndContent }, 
+      { "T11", MDMACKDocumentCancelNotification }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#T11", MDMACKDocumentCancelNotification }, 
+      { "T12", QRYDOCDocumentQuery }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#T12", QRYDOCDocumentQuery }, 
+      { "U01", ESUACKAutomatedEquipmentStatusUpdate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#U01", ESUACKAutomatedEquipmentStatusUpdate }, 
+      { "U02", ESRACKAutomatedEquipmentStatusRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#U02", ESRACKAutomatedEquipmentStatusRequest }, 
+      { "U03", SSUACKSpecimenStatusUpdate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#U03", SSUACKSpecimenStatusUpdate }, 
+      { "U04", SSRACKSpecimenStatusRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#U04", SSRACKSpecimenStatusRequest }, 
+      { "U05", INUACKAutomatedEquipmentInventoryUpdate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#U05", INUACKAutomatedEquipmentInventoryUpdate }, 
+      { "U06", INRACKAutomatedEquipmentInventoryRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#U06", INRACKAutomatedEquipmentInventoryRequest }, 
+      { "U07", EACACKAutomatedEquipmentCommand }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#U07", EACACKAutomatedEquipmentCommand }, 
+      { "U08", EARACKAutomatedEquipmentResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#U08", EARACKAutomatedEquipmentResponse }, 
+      { "U09", EANACKAutomatedEquipmentNotification }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#U09", EANACKAutomatedEquipmentNotification }, 
+      { "U10", TCUACKAutomatedEquipmentTestCodeSettingsUpdate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#U10", TCUACKAutomatedEquipmentTestCodeSettingsUpdate }, 
+      { "U11", TCRACKAutomatedEquipmentTestCodeSettingsRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#U11", TCRACKAutomatedEquipmentTestCodeSettingsRequest }, 
+      { "U12", LSUACKAutomatedEquipmentLogServiceUpdate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#U12", LSUACKAutomatedEquipmentLogServiceUpdate }, 
+      { "U13", LSRACKAutomatedEquipmentLogServiceRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#U13", LSRACKAutomatedEquipmentLogServiceRequest }, 
+      { "U14", INRACKAutomatedEquipmentInventoryRequest_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#U14", INRACKAutomatedEquipmentInventoryRequest_2 }, 
+      { "V01", VXQQueryForVaccinationRecord }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#V01", VXQQueryForVaccinationRecord }, 
+      { "V02", VXXResponseToVaccinationQueryReturningMultiplePIDMatches }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#V02", VXXResponseToVaccinationQueryReturningMultiplePIDMatches }, 
+      { "V03", VXRVaccinationRecordResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#V03", VXRVaccinationRecordResponse }, 
+      { "V04", VXUUnsolicitedVaccinationRecordUpdate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#V04", VXUUnsolicitedVaccinationRecordUpdate }, 
+      { "varies", MFQMFRMasterFilesQueryUseEventSameAsAskingForEGM05Location }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#varies", MFQMFRMasterFilesQueryUseEventSameAsAskingForEGM05Location }, 
+      { "Varies", MFQMFRMasterFilesQueryUseEventSameAsAskingForEGM05Location_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#Varies", MFQMFRMasterFilesQueryUseEventSameAsAskingForEGM05Location_2 }, 
+      { "W01", ORUWaveformResultUnsolicitedTransmissionOfRequestedInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#W01", ORUWaveformResultUnsolicitedTransmissionOfRequestedInformation }, 
+      { "W02", QRFWaveformResultResponseToQuery }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#W02", QRFWaveformResultResponseToQuery }, 
+      { "X01", PEXProductExperience }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0003#X01", PEXProductExperience }, 
+    };
   };
 }

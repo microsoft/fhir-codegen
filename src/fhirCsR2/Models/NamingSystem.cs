@@ -307,6 +307,12 @@ namespace fhirCsR2.Models
     public const string UUID = "uuid";
     public const string URI = "uri";
     public const string OTHER = "other";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "oid",
+      "uuid",
+      "uri",
+      "other",
+    };
   }
   /// <summary>
   /// A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a "System" used within the Identifier and Coding data types.
@@ -770,6 +776,11 @@ namespace fhirCsR2.Models
     public const string CODESYSTEM = "codesystem";
     public const string IDENTIFIER = "identifier";
     public const string ROOT = "root";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "codesystem",
+      "identifier",
+      "root",
+    };
   }
   /// <summary>
   /// Code Values for the NamingSystem.status field
@@ -778,5 +789,10 @@ namespace fhirCsR2.Models
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+    };
   }
 }

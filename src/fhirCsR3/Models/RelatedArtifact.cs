@@ -223,5 +223,15 @@ namespace fhirCsR3.Models
     public const string DERIVED_FROM = "derived-from";
     public const string DEPENDS_ON = "depends-on";
     public const string COMPOSED_OF = "composed-of";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "documentation",
+      "justification",
+      "citation",
+      "predecessor",
+      "successor",
+      "derived-from",
+      "depends-on",
+      "composed-of",
+    };
   }
 }

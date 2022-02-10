@@ -1497,5 +1497,15 @@ namespace fhirCsR2.Models
     public const string ON_HOLD = "on-hold";
     public const string COMPLETED = "completed";
     public const string CANCELLED = "cancelled";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposed",
+      "draft",
+      "planned",
+      "requested",
+      "active",
+      "on-hold",
+      "completed",
+      "cancelled",
+    };
   }
 }

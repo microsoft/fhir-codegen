@@ -135,9 +135,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralAccepted = "accepted";
 
     /// <summary>
+    /// Literal for code: DiagnosticOrderStatusAccepted
+    /// </summary>
+    public const string LiteralDiagnosticOrderStatusAccepted = "http://hl7.org/fhir/diagnostic-order-status#accepted";
+
+    /// <summary>
     /// Literal for code: Cancelled
     /// </summary>
     public const string LiteralCancelled = "cancelled";
+
+    /// <summary>
+    /// Literal for code: DiagnosticOrderStatusCancelled
+    /// </summary>
+    public const string LiteralDiagnosticOrderStatusCancelled = "http://hl7.org/fhir/diagnostic-order-status#cancelled";
 
     /// <summary>
     /// Literal for code: Completed
@@ -145,9 +155,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: DiagnosticOrderStatusCompleted
+    /// </summary>
+    public const string LiteralDiagnosticOrderStatusCompleted = "http://hl7.org/fhir/diagnostic-order-status#completed";
+
+    /// <summary>
     /// Literal for code: Draft
     /// </summary>
     public const string LiteralDraft = "draft";
+
+    /// <summary>
+    /// Literal for code: DiagnosticOrderStatusDraft
+    /// </summary>
+    public const string LiteralDiagnosticOrderStatusDraft = "http://hl7.org/fhir/diagnostic-order-status#draft";
 
     /// <summary>
     /// Literal for code: Failed
@@ -155,9 +175,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralFailed = "failed";
 
     /// <summary>
+    /// Literal for code: DiagnosticOrderStatusFailed
+    /// </summary>
+    public const string LiteralDiagnosticOrderStatusFailed = "http://hl7.org/fhir/diagnostic-order-status#failed";
+
+    /// <summary>
     /// Literal for code: InProgress
     /// </summary>
     public const string LiteralInProgress = "in-progress";
+
+    /// <summary>
+    /// Literal for code: DiagnosticOrderStatusInProgress
+    /// </summary>
+    public const string LiteralDiagnosticOrderStatusInProgress = "http://hl7.org/fhir/diagnostic-order-status#in-progress";
 
     /// <summary>
     /// Literal for code: Planned
@@ -165,9 +195,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralPlanned = "planned";
 
     /// <summary>
+    /// Literal for code: DiagnosticOrderStatusPlanned
+    /// </summary>
+    public const string LiteralDiagnosticOrderStatusPlanned = "http://hl7.org/fhir/diagnostic-order-status#planned";
+
+    /// <summary>
     /// Literal for code: Proposed
     /// </summary>
     public const string LiteralProposed = "proposed";
+
+    /// <summary>
+    /// Literal for code: DiagnosticOrderStatusProposed
+    /// </summary>
+    public const string LiteralDiagnosticOrderStatusProposed = "http://hl7.org/fhir/diagnostic-order-status#proposed";
 
     /// <summary>
     /// Literal for code: Received
@@ -175,9 +215,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralReceived = "received";
 
     /// <summary>
+    /// Literal for code: DiagnosticOrderStatusReceived
+    /// </summary>
+    public const string LiteralDiagnosticOrderStatusReceived = "http://hl7.org/fhir/diagnostic-order-status#received";
+
+    /// <summary>
     /// Literal for code: Rejected
     /// </summary>
     public const string LiteralRejected = "rejected";
+
+    /// <summary>
+    /// Literal for code: DiagnosticOrderStatusRejected
+    /// </summary>
+    public const string LiteralDiagnosticOrderStatusRejected = "http://hl7.org/fhir/diagnostic-order-status#rejected";
 
     /// <summary>
     /// Literal for code: Requested
@@ -185,13 +235,60 @@ namespace fhirCsR2.ValueSets
     public const string LiteralRequested = "requested";
 
     /// <summary>
+    /// Literal for code: DiagnosticOrderStatusRequested
+    /// </summary>
+    public const string LiteralDiagnosticOrderStatusRequested = "http://hl7.org/fhir/diagnostic-order-status#requested";
+
+    /// <summary>
     /// Literal for code: Review
     /// </summary>
     public const string LiteralReview = "review";
 
     /// <summary>
+    /// Literal for code: DiagnosticOrderStatusReview
+    /// </summary>
+    public const string LiteralDiagnosticOrderStatusReview = "http://hl7.org/fhir/diagnostic-order-status#review";
+
+    /// <summary>
     /// Literal for code: Suspended
     /// </summary>
     public const string LiteralSuspended = "suspended";
+
+    /// <summary>
+    /// Literal for code: DiagnosticOrderStatusSuspended
+    /// </summary>
+    public const string LiteralDiagnosticOrderStatusSuspended = "http://hl7.org/fhir/diagnostic-order-status#suspended";
+
+    /// <summary>
+    /// Dictionary for looking up DiagnosticOrderStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "accepted", Accepted }, 
+      { "http://hl7.org/fhir/diagnostic-order-status#accepted", Accepted }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/diagnostic-order-status#cancelled", Cancelled }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/diagnostic-order-status#completed", Completed }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/diagnostic-order-status#draft", Draft }, 
+      { "failed", Failed }, 
+      { "http://hl7.org/fhir/diagnostic-order-status#failed", Failed }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/diagnostic-order-status#in-progress", InProgress }, 
+      { "planned", Planned }, 
+      { "http://hl7.org/fhir/diagnostic-order-status#planned", Planned }, 
+      { "proposed", Proposed }, 
+      { "http://hl7.org/fhir/diagnostic-order-status#proposed", Proposed }, 
+      { "received", Received }, 
+      { "http://hl7.org/fhir/diagnostic-order-status#received", Received }, 
+      { "rejected", Rejected }, 
+      { "http://hl7.org/fhir/diagnostic-order-status#rejected", Rejected }, 
+      { "requested", Requested }, 
+      { "http://hl7.org/fhir/diagnostic-order-status#requested", Requested }, 
+      { "review", Review }, 
+      { "http://hl7.org/fhir/diagnostic-order-status#review", Review }, 
+      { "suspended", Suspended }, 
+      { "http://hl7.org/fhir/diagnostic-order-status#suspended", Suspended }, 
+    };
   };
 }

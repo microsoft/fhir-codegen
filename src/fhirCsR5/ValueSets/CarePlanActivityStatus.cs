@@ -99,9 +99,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCancelled = "cancelled";
 
     /// <summary>
+    /// Literal for code: CarePlanActivityStatusCancelled
+    /// </summary>
+    public const string LiteralCarePlanActivityStatusCancelled = "http://hl7.org/fhir/care-plan-activity-status#cancelled";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: CarePlanActivityStatusCompleted
+    /// </summary>
+    public const string LiteralCarePlanActivityStatusCompleted = "http://hl7.org/fhir/care-plan-activity-status#completed";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -109,9 +119,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: CarePlanActivityStatusEnteredInError
+    /// </summary>
+    public const string LiteralCarePlanActivityStatusEnteredInError = "http://hl7.org/fhir/care-plan-activity-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: InProgress
     /// </summary>
     public const string LiteralInProgress = "in-progress";
+
+    /// <summary>
+    /// Literal for code: CarePlanActivityStatusInProgress
+    /// </summary>
+    public const string LiteralCarePlanActivityStatusInProgress = "http://hl7.org/fhir/care-plan-activity-status#in-progress";
 
     /// <summary>
     /// Literal for code: NotStarted
@@ -119,9 +139,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotStarted = "not-started";
 
     /// <summary>
+    /// Literal for code: CarePlanActivityStatusNotStarted
+    /// </summary>
+    public const string LiteralCarePlanActivityStatusNotStarted = "http://hl7.org/fhir/care-plan-activity-status#not-started";
+
+    /// <summary>
     /// Literal for code: OnHold
     /// </summary>
     public const string LiteralOnHold = "on-hold";
+
+    /// <summary>
+    /// Literal for code: CarePlanActivityStatusOnHold
+    /// </summary>
+    public const string LiteralCarePlanActivityStatusOnHold = "http://hl7.org/fhir/care-plan-activity-status#on-hold";
 
     /// <summary>
     /// Literal for code: Scheduled
@@ -129,13 +159,52 @@ namespace fhirCsR5.ValueSets
     public const string LiteralScheduled = "scheduled";
 
     /// <summary>
+    /// Literal for code: CarePlanActivityStatusScheduled
+    /// </summary>
+    public const string LiteralCarePlanActivityStatusScheduled = "http://hl7.org/fhir/care-plan-activity-status#scheduled";
+
+    /// <summary>
     /// Literal for code: Stopped
     /// </summary>
     public const string LiteralStopped = "stopped";
 
     /// <summary>
+    /// Literal for code: CarePlanActivityStatusStopped
+    /// </summary>
+    public const string LiteralCarePlanActivityStatusStopped = "http://hl7.org/fhir/care-plan-activity-status#stopped";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: CarePlanActivityStatusUnknown
+    /// </summary>
+    public const string LiteralCarePlanActivityStatusUnknown = "http://hl7.org/fhir/care-plan-activity-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up CarePlanActivityStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/care-plan-activity-status#cancelled", Cancelled }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/care-plan-activity-status#completed", Completed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/care-plan-activity-status#entered-in-error", EnteredInError }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/care-plan-activity-status#in-progress", InProgress }, 
+      { "not-started", NotStarted }, 
+      { "http://hl7.org/fhir/care-plan-activity-status#not-started", NotStarted }, 
+      { "on-hold", OnHold }, 
+      { "http://hl7.org/fhir/care-plan-activity-status#on-hold", OnHold }, 
+      { "scheduled", Scheduled }, 
+      { "http://hl7.org/fhir/care-plan-activity-status#scheduled", Scheduled }, 
+      { "stopped", Stopped }, 
+      { "http://hl7.org/fhir/care-plan-activity-status#stopped", Stopped }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/care-plan-activity-status#unknown", Unknown }, 
+    };
   };
 }

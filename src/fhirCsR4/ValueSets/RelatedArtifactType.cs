@@ -90,9 +90,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCitation = "citation";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeCitation
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeCitation = "http://hl7.org/fhir/related-artifact-type#citation";
+
+    /// <summary>
     /// Literal for code: ComposedOf
     /// </summary>
     public const string LiteralComposedOf = "composed-of";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeComposedOf
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeComposedOf = "http://hl7.org/fhir/related-artifact-type#composed-of";
 
     /// <summary>
     /// Literal for code: DependsOn
@@ -100,9 +110,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDependsOn = "depends-on";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeDependsOn
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeDependsOn = "http://hl7.org/fhir/related-artifact-type#depends-on";
+
+    /// <summary>
     /// Literal for code: DerivedFrom
     /// </summary>
     public const string LiteralDerivedFrom = "derived-from";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeDerivedFrom
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeDerivedFrom = "http://hl7.org/fhir/related-artifact-type#derived-from";
 
     /// <summary>
     /// Literal for code: Documentation
@@ -110,9 +130,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDocumentation = "documentation";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeDocumentation
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeDocumentation = "http://hl7.org/fhir/related-artifact-type#documentation";
+
+    /// <summary>
     /// Literal for code: Justification
     /// </summary>
     public const string LiteralJustification = "justification";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeJustification
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeJustification = "http://hl7.org/fhir/related-artifact-type#justification";
 
     /// <summary>
     /// Literal for code: Predecessor
@@ -120,8 +150,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPredecessor = "predecessor";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypePredecessor
+    /// </summary>
+    public const string LiteralRelatedArtifactTypePredecessor = "http://hl7.org/fhir/related-artifact-type#predecessor";
+
+    /// <summary>
     /// Literal for code: Successor
     /// </summary>
     public const string LiteralSuccessor = "successor";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeSuccessor
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeSuccessor = "http://hl7.org/fhir/related-artifact-type#successor";
+
+    /// <summary>
+    /// Dictionary for looking up RelatedArtifactType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "citation", Citation }, 
+      { "http://hl7.org/fhir/related-artifact-type#citation", Citation }, 
+      { "composed-of", ComposedOf }, 
+      { "http://hl7.org/fhir/related-artifact-type#composed-of", ComposedOf }, 
+      { "depends-on", DependsOn }, 
+      { "http://hl7.org/fhir/related-artifact-type#depends-on", DependsOn }, 
+      { "derived-from", DerivedFrom }, 
+      { "http://hl7.org/fhir/related-artifact-type#derived-from", DerivedFrom }, 
+      { "documentation", Documentation }, 
+      { "http://hl7.org/fhir/related-artifact-type#documentation", Documentation }, 
+      { "justification", Justification }, 
+      { "http://hl7.org/fhir/related-artifact-type#justification", Justification }, 
+      { "predecessor", Predecessor }, 
+      { "http://hl7.org/fhir/related-artifact-type#predecessor", Predecessor }, 
+      { "successor", Successor }, 
+      { "http://hl7.org/fhir/related-artifact-type#successor", Successor }, 
+    };
   };
 }

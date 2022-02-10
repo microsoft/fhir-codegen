@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCohort = "cohort";
 
     /// <summary>
+    /// Literal for code: MeasureScoringCohort
+    /// </summary>
+    public const string LiteralMeasureScoringCohort = "http://terminology.hl7.org/CodeSystem/measure-scoring#cohort";
+
+    /// <summary>
     /// Literal for code: ContinuousVariable
     /// </summary>
     public const string LiteralContinuousVariable = "continuous-variable";
+
+    /// <summary>
+    /// Literal for code: MeasureScoringContinuousVariable
+    /// </summary>
+    public const string LiteralMeasureScoringContinuousVariable = "http://terminology.hl7.org/CodeSystem/measure-scoring#continuous-variable";
 
     /// <summary>
     /// Literal for code: Proportion
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProportion = "proportion";
 
     /// <summary>
+    /// Literal for code: MeasureScoringProportion
+    /// </summary>
+    public const string LiteralMeasureScoringProportion = "http://terminology.hl7.org/CodeSystem/measure-scoring#proportion";
+
+    /// <summary>
     /// Literal for code: Ratio
     /// </summary>
     public const string LiteralRatio = "ratio";
+
+    /// <summary>
+    /// Literal for code: MeasureScoringRatio
+    /// </summary>
+    public const string LiteralMeasureScoringRatio = "http://terminology.hl7.org/CodeSystem/measure-scoring#ratio";
+
+    /// <summary>
+    /// Dictionary for looking up MeasureScoring Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "cohort", Cohort }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-scoring#cohort", Cohort }, 
+      { "continuous-variable", ContinuousVariable }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-scoring#continuous-variable", ContinuousVariable }, 
+      { "proportion", Proportion }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-scoring#proportion", Proportion }, 
+      { "ratio", Ratio }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-scoring#ratio", Ratio }, 
+    };
   };
 }

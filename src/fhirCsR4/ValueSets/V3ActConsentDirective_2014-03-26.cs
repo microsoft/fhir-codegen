@@ -257,9 +257,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralActConsentDirective = "_ActConsentDirective";
 
     /// <summary>
+    /// Literal for code: V3ActCodeActConsentDirective
+    /// </summary>
+    public const string LiteralV3ActCodeActConsentDirective = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActConsentDirective";
+
+    /// <summary>
     /// Literal for code: EmergencyOnly
     /// </summary>
     public const string LiteralEmergencyOnly = "EMRGONLY";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEmergencyOnly
+    /// </summary>
+    public const string LiteralV3ActCodeEmergencyOnly = "http://terminology.hl7.org/CodeSystem/v3-ActCode#EMRGONLY";
 
     /// <summary>
     /// Literal for code: GrantorChoice
@@ -267,9 +277,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGrantorChoice = "GRANTORCHOICE";
 
     /// <summary>
+    /// Literal for code: V3ActCodeGrantorChoice
+    /// </summary>
+    public const string LiteralV3ActCodeGrantorChoice = "http://terminology.hl7.org/CodeSystem/v3-ActCode#GRANTORCHOICE";
+
+    /// <summary>
     /// Literal for code: ImpliedConsent
     /// </summary>
     public const string LiteralImpliedConsent = "IMPLIED";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeImpliedConsent
+    /// </summary>
+    public const string LiteralV3ActCodeImpliedConsent = "http://terminology.hl7.org/CodeSystem/v3-ActCode#IMPLIED";
 
     /// <summary>
     /// Literal for code: ImpliedConsentWithOpportunityToDissent
@@ -277,9 +297,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImpliedConsentWithOpportunityToDissent = "IMPLIEDD";
 
     /// <summary>
+    /// Literal for code: V3ActCodeImpliedConsentWithOpportunityToDissent
+    /// </summary>
+    public const string LiteralV3ActCodeImpliedConsentWithOpportunityToDissent = "http://terminology.hl7.org/CodeSystem/v3-ActCode#IMPLIEDD";
+
+    /// <summary>
     /// Literal for code: NoConsent
     /// </summary>
     public const string LiteralNoConsent = "NOCONSENT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoConsent
+    /// </summary>
+    public const string LiteralV3ActCodeNoConsent = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOCONSENT";
 
     /// <summary>
     /// Literal for code: NoticeOfPrivacyPractices
@@ -287,9 +317,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNoticeOfPrivacyPractices = "NOPP";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoticeOfPrivacyPractices
+    /// </summary>
+    public const string LiteralV3ActCodeNoticeOfPrivacyPractices = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOPP";
+
+    /// <summary>
     /// Literal for code: OptIn
     /// </summary>
     public const string LiteralOptIn = "OPTIN";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeOptIn
+    /// </summary>
+    public const string LiteralV3ActCodeOptIn = "http://terminology.hl7.org/CodeSystem/v3-ActCode#OPTIN";
 
     /// <summary>
     /// Literal for code: OptInWithRestrictions
@@ -297,13 +337,56 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOptInWithRestrictions = "OPTINR";
 
     /// <summary>
+    /// Literal for code: V3ActCodeOptInWithRestrictions
+    /// </summary>
+    public const string LiteralV3ActCodeOptInWithRestrictions = "http://terminology.hl7.org/CodeSystem/v3-ActCode#OPTINR";
+
+    /// <summary>
     /// Literal for code: OpOut
     /// </summary>
     public const string LiteralOpOut = "OPTOUT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeOpOut
+    /// </summary>
+    public const string LiteralV3ActCodeOpOut = "http://terminology.hl7.org/CodeSystem/v3-ActCode#OPTOUT";
+
+    /// <summary>
     /// Literal for code: OptOutWithExceptions
     /// </summary>
     public const string LiteralOptOutWithExceptions = "OPTOUTE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeOptOutWithExceptions
+    /// </summary>
+    public const string LiteralV3ActCodeOptOutWithExceptions = "http://terminology.hl7.org/CodeSystem/v3-ActCode#OPTOUTE";
+
+    /// <summary>
+    /// Dictionary for looking up V3ActConsentDirective Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "_ActConsentDirective", ActConsentDirective }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActConsentDirective", ActConsentDirective }, 
+      { "EMRGONLY", EmergencyOnly }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#EMRGONLY", EmergencyOnly }, 
+      { "GRANTORCHOICE", GrantorChoice }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#GRANTORCHOICE", GrantorChoice }, 
+      { "IMPLIED", ImpliedConsent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#IMPLIED", ImpliedConsent }, 
+      { "IMPLIEDD", ImpliedConsentWithOpportunityToDissent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#IMPLIEDD", ImpliedConsentWithOpportunityToDissent }, 
+      { "NOCONSENT", NoConsent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOCONSENT", NoConsent }, 
+      { "NOPP", NoticeOfPrivacyPractices }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOPP", NoticeOfPrivacyPractices }, 
+      { "OPTIN", OptIn }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#OPTIN", OptIn }, 
+      { "OPTINR", OptInWithRestrictions }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#OPTINR", OptInWithRestrictions }, 
+      { "OPTOUT", OpOut }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#OPTOUT", OpOut }, 
+      { "OPTOUTE", OptOutWithExceptions }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#OPTOUTE", OptOutWithExceptions }, 
+    };
   };
 }

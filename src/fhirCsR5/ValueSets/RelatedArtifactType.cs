@@ -306,9 +306,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAmendedWith = "amended-with";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeAmendedWith
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeAmendedWith = "http://hl7.org/fhir/related-artifact-type#amended-with";
+
+    /// <summary>
     /// Literal for code: Amends
     /// </summary>
     public const string LiteralAmends = "amends";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeAmends
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeAmends = "http://hl7.org/fhir/related-artifact-type#amends";
 
     /// <summary>
     /// Literal for code: AppendedWith
@@ -316,9 +326,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAppendedWith = "appended-with";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeAppendedWith
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeAppendedWith = "http://hl7.org/fhir/related-artifact-type#appended-with";
+
+    /// <summary>
     /// Literal for code: Appends
     /// </summary>
     public const string LiteralAppends = "appends";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeAppends
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeAppends = "http://hl7.org/fhir/related-artifact-type#appends";
 
     /// <summary>
     /// Literal for code: Citation
@@ -326,9 +346,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCitation = "citation";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeCitation
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeCitation = "http://hl7.org/fhir/related-artifact-type#citation";
+
+    /// <summary>
     /// Literal for code: CitedBy
     /// </summary>
     public const string LiteralCitedBy = "cited-by";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeCitedBy
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeCitedBy = "http://hl7.org/fhir/related-artifact-type#cited-by";
 
     /// <summary>
     /// Literal for code: Cites
@@ -336,9 +366,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCites = "cites";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeCites
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeCites = "http://hl7.org/fhir/related-artifact-type#cites";
+
+    /// <summary>
     /// Literal for code: HasCommentIn
     /// </summary>
     public const string LiteralHasCommentIn = "comment-in";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeHasCommentIn
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeHasCommentIn = "http://hl7.org/fhir/related-artifact-type#comment-in";
 
     /// <summary>
     /// Literal for code: IsCommentOn
@@ -346,9 +386,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIsCommentOn = "comments-on";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeIsCommentOn
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeIsCommentOn = "http://hl7.org/fhir/related-artifact-type#comments-on";
+
+    /// <summary>
     /// Literal for code: ComposedOf
     /// </summary>
     public const string LiteralComposedOf = "composed-of";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeComposedOf
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeComposedOf = "http://hl7.org/fhir/related-artifact-type#composed-of";
 
     /// <summary>
     /// Literal for code: ContainedIn
@@ -356,9 +406,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralContainedIn = "contained-in";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeContainedIn
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeContainedIn = "http://hl7.org/fhir/related-artifact-type#contained-in";
+
+    /// <summary>
     /// Literal for code: Contains
     /// </summary>
     public const string LiteralContains = "contains";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeContains
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeContains = "http://hl7.org/fhir/related-artifact-type#contains";
 
     /// <summary>
     /// Literal for code: CorrectionIn
@@ -366,9 +426,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCorrectionIn = "correction-in";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeCorrectionIn
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeCorrectionIn = "http://hl7.org/fhir/related-artifact-type#correction-in";
+
+    /// <summary>
     /// Literal for code: Corrects
     /// </summary>
     public const string LiteralCorrects = "corrects";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeCorrects
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeCorrects = "http://hl7.org/fhir/related-artifact-type#corrects";
 
     /// <summary>
     /// Literal for code: DependsOn
@@ -376,9 +446,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDependsOn = "depends-on";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeDependsOn
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeDependsOn = "http://hl7.org/fhir/related-artifact-type#depends-on";
+
+    /// <summary>
     /// Literal for code: DerivedFrom
     /// </summary>
     public const string LiteralDerivedFrom = "derived-from";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeDerivedFrom
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeDerivedFrom = "http://hl7.org/fhir/related-artifact-type#derived-from";
 
     /// <summary>
     /// Literal for code: Documentation
@@ -386,9 +466,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDocumentation = "documentation";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeDocumentation
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeDocumentation = "http://hl7.org/fhir/related-artifact-type#documentation";
+
+    /// <summary>
     /// Literal for code: Justification
     /// </summary>
     public const string LiteralJustification = "justification";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeJustification
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeJustification = "http://hl7.org/fhir/related-artifact-type#justification";
 
     /// <summary>
     /// Literal for code: PartOf
@@ -396,9 +486,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPartOf = "part-of";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypePartOf
+    /// </summary>
+    public const string LiteralRelatedArtifactTypePartOf = "http://hl7.org/fhir/related-artifact-type#part-of";
+
+    /// <summary>
     /// Literal for code: Predecessor
     /// </summary>
     public const string LiteralPredecessor = "predecessor";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypePredecessor
+    /// </summary>
+    public const string LiteralRelatedArtifactTypePredecessor = "http://hl7.org/fhir/related-artifact-type#predecessor";
 
     /// <summary>
     /// Literal for code: ReplacedWith
@@ -406,9 +506,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralReplacedWith = "replaced-with";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeReplacedWith
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeReplacedWith = "http://hl7.org/fhir/related-artifact-type#replaced-with";
+
+    /// <summary>
     /// Literal for code: Replaces
     /// </summary>
     public const string LiteralReplaces = "replaces";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeReplaces
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeReplaces = "http://hl7.org/fhir/related-artifact-type#replaces";
 
     /// <summary>
     /// Literal for code: RetractedBy
@@ -416,9 +526,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRetractedBy = "retracted-by";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeRetractedBy
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeRetractedBy = "http://hl7.org/fhir/related-artifact-type#retracted-by";
+
+    /// <summary>
     /// Literal for code: Retracts
     /// </summary>
     public const string LiteralRetracts = "retracts";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeRetracts
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeRetracts = "http://hl7.org/fhir/related-artifact-type#retracts";
 
     /// <summary>
     /// Literal for code: Signs
@@ -426,9 +546,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSigns = "signs";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeSigns
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeSigns = "http://hl7.org/fhir/related-artifact-type#signs";
+
+    /// <summary>
     /// Literal for code: SimilarTo
     /// </summary>
     public const string LiteralSimilarTo = "similar-to";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeSimilarTo
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeSimilarTo = "http://hl7.org/fhir/related-artifact-type#similar-to";
 
     /// <summary>
     /// Literal for code: Successor
@@ -436,9 +566,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSuccessor = "successor";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeSuccessor
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeSuccessor = "http://hl7.org/fhir/related-artifact-type#successor";
+
+    /// <summary>
     /// Literal for code: SupportedWith
     /// </summary>
     public const string LiteralSupportedWith = "supported-with";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeSupportedWith
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeSupportedWith = "http://hl7.org/fhir/related-artifact-type#supported-with";
 
     /// <summary>
     /// Literal for code: Supports
@@ -446,9 +586,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSupports = "supports";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeSupports
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeSupports = "http://hl7.org/fhir/related-artifact-type#supports";
+
+    /// <summary>
     /// Literal for code: TransformedInto
     /// </summary>
     public const string LiteralTransformedInto = "transformed-into";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeTransformedInto
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeTransformedInto = "http://hl7.org/fhir/related-artifact-type#transformed-into";
 
     /// <summary>
     /// Literal for code: TransformedWith
@@ -456,8 +606,88 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTransformedWith = "transformed-with";
 
     /// <summary>
+    /// Literal for code: RelatedArtifactTypeTransformedWith
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeTransformedWith = "http://hl7.org/fhir/related-artifact-type#transformed-with";
+
+    /// <summary>
     /// Literal for code: Transforms
     /// </summary>
     public const string LiteralTransforms = "transforms";
+
+    /// <summary>
+    /// Literal for code: RelatedArtifactTypeTransforms
+    /// </summary>
+    public const string LiteralRelatedArtifactTypeTransforms = "http://hl7.org/fhir/related-artifact-type#transforms";
+
+    /// <summary>
+    /// Dictionary for looking up RelatedArtifactType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "amended-with", AmendedWith }, 
+      { "http://hl7.org/fhir/related-artifact-type#amended-with", AmendedWith }, 
+      { "amends", Amends }, 
+      { "http://hl7.org/fhir/related-artifact-type#amends", Amends }, 
+      { "appended-with", AppendedWith }, 
+      { "http://hl7.org/fhir/related-artifact-type#appended-with", AppendedWith }, 
+      { "appends", Appends }, 
+      { "http://hl7.org/fhir/related-artifact-type#appends", Appends }, 
+      { "citation", Citation }, 
+      { "http://hl7.org/fhir/related-artifact-type#citation", Citation }, 
+      { "cited-by", CitedBy }, 
+      { "http://hl7.org/fhir/related-artifact-type#cited-by", CitedBy }, 
+      { "cites", Cites }, 
+      { "http://hl7.org/fhir/related-artifact-type#cites", Cites }, 
+      { "comment-in", HasCommentIn }, 
+      { "http://hl7.org/fhir/related-artifact-type#comment-in", HasCommentIn }, 
+      { "comments-on", IsCommentOn }, 
+      { "http://hl7.org/fhir/related-artifact-type#comments-on", IsCommentOn }, 
+      { "composed-of", ComposedOf }, 
+      { "http://hl7.org/fhir/related-artifact-type#composed-of", ComposedOf }, 
+      { "contained-in", ContainedIn }, 
+      { "http://hl7.org/fhir/related-artifact-type#contained-in", ContainedIn }, 
+      { "contains", Contains }, 
+      { "http://hl7.org/fhir/related-artifact-type#contains", Contains }, 
+      { "correction-in", CorrectionIn }, 
+      { "http://hl7.org/fhir/related-artifact-type#correction-in", CorrectionIn }, 
+      { "corrects", Corrects }, 
+      { "http://hl7.org/fhir/related-artifact-type#corrects", Corrects }, 
+      { "depends-on", DependsOn }, 
+      { "http://hl7.org/fhir/related-artifact-type#depends-on", DependsOn }, 
+      { "derived-from", DerivedFrom }, 
+      { "http://hl7.org/fhir/related-artifact-type#derived-from", DerivedFrom }, 
+      { "documentation", Documentation }, 
+      { "http://hl7.org/fhir/related-artifact-type#documentation", Documentation }, 
+      { "justification", Justification }, 
+      { "http://hl7.org/fhir/related-artifact-type#justification", Justification }, 
+      { "part-of", PartOf }, 
+      { "http://hl7.org/fhir/related-artifact-type#part-of", PartOf }, 
+      { "predecessor", Predecessor }, 
+      { "http://hl7.org/fhir/related-artifact-type#predecessor", Predecessor }, 
+      { "replaced-with", ReplacedWith }, 
+      { "http://hl7.org/fhir/related-artifact-type#replaced-with", ReplacedWith }, 
+      { "replaces", Replaces }, 
+      { "http://hl7.org/fhir/related-artifact-type#replaces", Replaces }, 
+      { "retracted-by", RetractedBy }, 
+      { "http://hl7.org/fhir/related-artifact-type#retracted-by", RetractedBy }, 
+      { "retracts", Retracts }, 
+      { "http://hl7.org/fhir/related-artifact-type#retracts", Retracts }, 
+      { "signs", Signs }, 
+      { "http://hl7.org/fhir/related-artifact-type#signs", Signs }, 
+      { "similar-to", SimilarTo }, 
+      { "http://hl7.org/fhir/related-artifact-type#similar-to", SimilarTo }, 
+      { "successor", Successor }, 
+      { "http://hl7.org/fhir/related-artifact-type#successor", Successor }, 
+      { "supported-with", SupportedWith }, 
+      { "http://hl7.org/fhir/related-artifact-type#supported-with", SupportedWith }, 
+      { "supports", Supports }, 
+      { "http://hl7.org/fhir/related-artifact-type#supports", Supports }, 
+      { "transformed-into", TransformedInto }, 
+      { "http://hl7.org/fhir/related-artifact-type#transformed-into", TransformedInto }, 
+      { "transformed-with", TransformedWith }, 
+      { "http://hl7.org/fhir/related-artifact-type#transformed-with", TransformedWith }, 
+      { "transforms", Transforms }, 
+      { "http://hl7.org/fhir/related-artifact-type#transforms", Transforms }, 
+    };
   };
 }

@@ -108,9 +108,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralActAccountCode = "_ActAccountCode";
 
     /// <summary>
+    /// Literal for code: V3ActCodeActAccountCode
+    /// </summary>
+    public const string LiteralV3ActCodeActAccountCode = "http://hl7.org/fhir/v3/ActCode#_ActAccountCode";
+
+    /// <summary>
     /// Literal for code: AccountReceivable
     /// </summary>
     public const string LiteralAccountReceivable = "ACCTRECEIVABLE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAccountReceivable
+    /// </summary>
+    public const string LiteralV3ActCodeAccountReceivable = "http://hl7.org/fhir/v3/ActCode#ACCTRECEIVABLE";
 
     /// <summary>
     /// Literal for code: AmericanExpress
@@ -118,9 +128,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAmericanExpress = "AE";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAmericanExpress
+    /// </summary>
+    public const string LiteralV3ActCodeAmericanExpress = "http://hl7.org/fhir/v3/ActCode#AE";
+
+    /// <summary>
     /// Literal for code: Cash
     /// </summary>
     public const string LiteralCash = "CASH";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCash
+    /// </summary>
+    public const string LiteralV3ActCodeCash = "http://hl7.org/fhir/v3/ActCode#CASH";
 
     /// <summary>
     /// Literal for code: CreditCard
@@ -128,9 +148,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCreditCard = "CC";
 
     /// <summary>
+    /// Literal for code: V3ActCodeCreditCard
+    /// </summary>
+    public const string LiteralV3ActCodeCreditCard = "http://hl7.org/fhir/v3/ActCode#CC";
+
+    /// <summary>
     /// Literal for code: DinerQuoteSClub
     /// </summary>
     public const string LiteralDinerQuoteSClub = "DN";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDinerQuoteSClub
+    /// </summary>
+    public const string LiteralV3ActCodeDinerQuoteSClub = "http://hl7.org/fhir/v3/ActCode#DN";
 
     /// <summary>
     /// Literal for code: DiscoverCard
@@ -138,9 +168,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiscoverCard = "DV";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDiscoverCard
+    /// </summary>
+    public const string LiteralV3ActCodeDiscoverCard = "http://hl7.org/fhir/v3/ActCode#DV";
+
+    /// <summary>
     /// Literal for code: MasterCard
     /// </summary>
     public const string LiteralMasterCard = "MC";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeMasterCard
+    /// </summary>
+    public const string LiteralV3ActCodeMasterCard = "http://hl7.org/fhir/v3/ActCode#MC";
 
     /// <summary>
     /// Literal for code: PatientBillingAccount
@@ -148,8 +188,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientBillingAccount = "PBILLACCT";
 
     /// <summary>
+    /// Literal for code: V3ActCodePatientBillingAccount
+    /// </summary>
+    public const string LiteralV3ActCodePatientBillingAccount = "http://hl7.org/fhir/v3/ActCode#PBILLACCT";
+
+    /// <summary>
     /// Literal for code: Visa
     /// </summary>
     public const string LiteralVisa = "V";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeVisa
+    /// </summary>
+    public const string LiteralV3ActCodeVisa = "http://hl7.org/fhir/v3/ActCode#V";
+
+    /// <summary>
+    /// Dictionary for looking up AccountType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "_ActAccountCode", ActAccountCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#_ActAccountCode", ActAccountCode }, 
+      { "ACCTRECEIVABLE", AccountReceivable }, 
+      { "http://hl7.org/fhir/v3/ActCode#ACCTRECEIVABLE", AccountReceivable }, 
+      { "AE", AmericanExpress }, 
+      { "http://hl7.org/fhir/v3/ActCode#AE", AmericanExpress }, 
+      { "CASH", Cash }, 
+      { "http://hl7.org/fhir/v3/ActCode#CASH", Cash }, 
+      { "CC", CreditCard }, 
+      { "http://hl7.org/fhir/v3/ActCode#CC", CreditCard }, 
+      { "DN", DinerQuoteSClub }, 
+      { "http://hl7.org/fhir/v3/ActCode#DN", DinerQuoteSClub }, 
+      { "DV", DiscoverCard }, 
+      { "http://hl7.org/fhir/v3/ActCode#DV", DiscoverCard }, 
+      { "MC", MasterCard }, 
+      { "http://hl7.org/fhir/v3/ActCode#MC", MasterCard }, 
+      { "PBILLACCT", PatientBillingAccount }, 
+      { "http://hl7.org/fhir/v3/ActCode#PBILLACCT", PatientBillingAccount }, 
+      { "V", Visa }, 
+      { "http://hl7.org/fhir/v3/ActCode#V", Visa }, 
+    };
   };
 }

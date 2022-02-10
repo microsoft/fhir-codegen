@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class ReferralTypeCodes
   {
     /// <summary>
-    /// 
+    /// Patient referral to specialist
     /// </summary>
     public static readonly Coding PatientReferralToSpecialist = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for dental care
     /// </summary>
     public static readonly Coding PatientReferralForDentalCare = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral to non-physician provider
     /// </summary>
     public static readonly Coding PatientReferralToNonPhysicianProvider = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral to dietitian
     /// </summary>
     public static readonly Coding PatientReferralToDietitian = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral to massage therapist
     /// </summary>
     public static readonly Coding PatientReferralToMassageTherapist = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral to homeopath
     /// </summary>
     public static readonly Coding PatientReferralToHomeopath = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral to naturopath
     /// </summary>
     public static readonly Coding PatientReferralToNaturopath = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral to acupuncturist
     /// </summary>
     public static readonly Coding PatientReferralToAcupuncturist = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral to sex therapist
     /// </summary>
     public static readonly Coding PatientReferralToSexTherapist = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral of patient to certified pastoral caregiver
     /// </summary>
     public static readonly Coding ReferralOfPatientToCertifiedPastoralCaregiver = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral of patient to parish chaplain for follow-up care
     /// </summary>
     public static readonly Coding ReferralOfPatientToParishChaplainForFollowUpCare = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urgent referral
     /// </summary>
     public static readonly Coding UrgentReferral = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to heart failure clinic
     /// </summary>
     public static readonly Coding ReferralToHeartFailureClinic = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child: refer for surveillance
     /// </summary>
     public static readonly Coding ChildReferForSurveillance = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral of child to medical officer
     /// </summary>
     public static readonly Coding ReferralOfChildToMedicalOfficer = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral of child to school medical officer
     /// </summary>
     public static readonly Coding ReferralOfChildToSchoolMedicalOfficer = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral of child to school nurse
     /// </summary>
     public static readonly Coding ReferralOfChildToSchoolNurse = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral of child to child guidance
     /// </summary>
     public static readonly Coding ReferralOfChildToChildGuidance = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for special education
     /// </summary>
     public static readonly Coding PatientReferralForSpecialEducation = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for further care
     /// </summary>
     public static readonly Coding ReferralForFurtherCare = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to physician
     /// </summary>
     public static readonly Coding ReferralToPhysician = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to general medical service
     /// </summary>
     public static readonly Coding ReferralToGeneralMedicalService = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatrician
     /// </summary>
     public static readonly Coding ReferralToPediatrician = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dermatological referral
     /// </summary>
     public static readonly Coding DermatologicalReferral = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to cardiology service
     /// </summary>
     public static readonly Coding ReferralToCardiologyService = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immunological referral
     /// </summary>
     public static readonly Coding ImmunologicalReferral = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to neurology service
     /// </summary>
     public static readonly Coding ReferralToNeurologyService = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to geriatric medicine service
     /// </summary>
     public static readonly Coding ReferralToGeriatricMedicineService = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to gastroenterology service
     /// </summary>
     public static readonly Coding ReferralToGastroenterologyService = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychiatric referral
     /// </summary>
     public static readonly Coding PsychiatricReferral = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to psychiatrist for the elderly mentally ill
     /// </summary>
     public static readonly Coding ReferralToPsychiatristForTheElderlyMentallyIll = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to oncologist
     /// </summary>
     public static readonly Coding ReferralToOncologist = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to diabetologist
     /// </summary>
     public static readonly Coding ReferralToDiabetologist = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical pharmacologist
     /// </summary>
     public static readonly Coding ReferralToClinicalPharmacologist = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to surgeon
     /// </summary>
     public static readonly Coding ReferralToSurgeon = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to general surgical service
     /// </summary>
     public static readonly Coding ReferralToGeneralSurgicalService = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmological referral
     /// </summary>
     public static readonly Coding OphthalmologicalReferral = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to ear, nose and throat service
     /// </summary>
     public static readonly Coding ReferralToEarNoseAndThroatService = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthopedic referral
     /// </summary>
     public static readonly Coding OrthopedicReferral = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neurosurgical referral
     /// </summary>
     public static readonly Coding NeurosurgicalReferral = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric surgical referral
     /// </summary>
     public static readonly Coding PediatricSurgicalReferral = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to obstetrics service
     /// </summary>
     public static readonly Coding ReferralToObstetricsService = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gynecological referral
     /// </summary>
     public static readonly Coding GynecologicalReferral = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Burns referral
     /// </summary>
     public static readonly Coding BurnsReferral = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to cardiothoracic surgeon
     /// </summary>
     public static readonly Coding ReferralToCardiothoracicSurgeon = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to GP
     /// </summary>
     public static readonly Coding ReferralToGP = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to house officer
     /// </summary>
     public static readonly Coding ReferToHouseOfficer = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to hospital registrar
     /// </summary>
     public static readonly Coding ReferToHospitalRegistrar = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to child medical officer
     /// </summary>
     public static readonly Coding ReferToChildMedicalOfficer = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hematologist
     /// </summary>
     public static readonly Coding ReferralToHematologist = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to pain clinic
     /// </summary>
     public static readonly Coding ReferToPainClinic = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to terminal care consult
     /// </summary>
     public static readonly Coding ReferToTerminalCareConsult = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to mental health worker
     /// </summary>
     public static readonly Coding ReferToMentalHealthWorker = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community psychiatric nurse
     /// </summary>
     public static readonly Coding ReferralToCommunityPsychiatricNurse = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to partner
     /// </summary>
     public static readonly Coding ReferToPartner = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for terminal care
     /// </summary>
     public static readonly Coding ReferForTerminalCare = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for colposcopy
     /// </summary>
     public static readonly Coding ReferForColposcopy = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to Radiology department
     /// </summary>
     public static readonly Coding ReferToRadiologyDepartment = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for counseling for termination of pregnancy
     /// </summary>
     public static readonly Coding ReferralForCounselingForTerminationOfPregnancy = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to acupuncture
     /// </summary>
     public static readonly Coding ReferToAcupuncture = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to occupational health department
     /// </summary>
     public static readonly Coding ReferToOccupationalHealthDepartment = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to hospital casualty
     /// </summary>
     public static readonly Coding ReferToHospitalCasualty = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to A &amp; E department
     /// </summary>
     public static readonly Coding ReferToAAndEDepartment = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to hospital eye casualty
     /// </summary>
     public static readonly Coding ReferToHospitalEyeCasualty = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to hospital pediatrics casualty
     /// </summary>
     public static readonly Coding ReferToHospitalPediatricsCasualty = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to hospital OPD
     /// </summary>
     public static readonly Coding ReferToHospitalOPD = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to domiciliary physiotherapy
     /// </summary>
     public static readonly Coding ReferToDomiciliaryPhysiotherapy = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to Macmillan nurse
     /// </summary>
     public static readonly Coding ReferralToMacmillanNurse = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer - no direct consultation
     /// </summary>
     public static readonly Coding ReferNoDirectConsultation = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Self-referral to hospital
     /// </summary>
     public static readonly Coding SelfReferralToHospital = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General medical self-referral
     /// </summary>
     public static readonly Coding GeneralMedicalSelfReferral = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General surgical self-referral
     /// </summary>
     public static readonly Coding GeneralSurgicalSelfReferral = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychiatric self-referral
     /// </summary>
     public static readonly Coding PsychiatricSelfReferral = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Geriatric self-referral
     /// </summary>
     public static readonly Coding GeriatricSelfReferral = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric self-referral
     /// </summary>
     public static readonly Coding PediatricSelfReferral = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gynecological self-referral
     /// </summary>
     public static readonly Coding GynecologicalSelfReferral = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obstetric self-referral
     /// </summary>
     public static readonly Coding ObstetricSelfReferral = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthopedic self-referral
     /// </summary>
     public static readonly Coding OrthopedicSelfReferral = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// ENT self-referral
     /// </summary>
     public static readonly Coding ENTSelfReferral = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmology self-referral
     /// </summary>
     public static readonly Coding OphthalmologySelfReferral = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rheumatology self-referral
     /// </summary>
     public static readonly Coding RheumatologySelfReferral = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dermatology self-referral
     /// </summary>
     public static readonly Coding DermatologySelfReferral = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neurology self-referral
     /// </summary>
     public static readonly Coding NeurologySelfReferral = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urology self-referral
     /// </summary>
     public static readonly Coding UrologySelfReferral = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiotherapy self-referral
     /// </summary>
     public static readonly Coding RadiotherapySelfReferral = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hematology self-referral
     /// </summary>
     public static readonly Coding HematologySelfReferral = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plastic surgery self-referral
     /// </summary>
     public static readonly Coding PlasticSurgerySelfReferral = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for hematology test
     /// </summary>
     public static readonly Coding ReferralForHematologyTest = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for microbiological test
     /// </summary>
     public static readonly Coding ReferForMicrobiologicalTest = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for biochemical test
     /// </summary>
     public static readonly Coding ReferForBiochemicalTest = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for radioimmune assay
     /// </summary>
     public static readonly Coding ReferForRadioimmuneAssay = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for thyroid test
     /// </summary>
     public static readonly Coding ReferForThyroidTest = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for cytological test
     /// </summary>
     public static readonly Coding ReferForCytologicalTest = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for histology
     /// </summary>
     public static readonly Coding ReferForHistology = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for serological testing
     /// </summary>
     public static readonly Coding ReferForSerologicalTesting = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for immunological test
     /// </summary>
     public static readonly Coding ReferForImmunologicalTest = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for imaging
     /// </summary>
     public static readonly Coding ReferForImaging = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for X-ray
     /// </summary>
     public static readonly Coding ReferForXRay = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for ultrasound investigation
     /// </summary>
     public static readonly Coding ReferForUltrasoundInvestigation = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for NMR scanning
     /// </summary>
     public static readonly Coding ReferForNMRScanning = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for CAT scanning
     /// </summary>
     public static readonly Coding ReferForCATScanning = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for medical photography
     /// </summary>
     public static readonly Coding ReferForMedicalPhotography = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for angiogram
     /// </summary>
     public static readonly Coding ReferForAngiogram = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for ECG recording
     /// </summary>
     public static readonly Coding ReferForECGRecording = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for audiometry
     /// </summary>
     public static readonly Coding ReferForAudiometry = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for nerve conduct study
     /// </summary>
     public static readonly Coding ReferForNerveConductStudy = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for lung function test
     /// </summary>
     public static readonly Coding ReferForLungFunctionTest = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for EEG
     /// </summary>
     public static readonly Coding ReferForEEG = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to urodynamic studies
     /// </summary>
     public static readonly Coding ReferToUrodynamicStudies = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for vascular studies
     /// </summary>
     public static readonly Coding ReferForVascularStudies = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinic
     /// </summary>
     public static readonly Coding ReferralToClinic = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to lipid clinic
     /// </summary>
     public static readonly Coding ReferralToLipidClinic = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to hearing aid clinic
     /// </summary>
     public static readonly Coding ReferToHearingAidClinic = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to audiology clinic
     /// </summary>
     public static readonly Coding ReferralToAudiologyClinic = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to orthodontic clinic
     /// </summary>
     public static readonly Coding ReferralToOrthodonticClinic = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hypertension clinic
     /// </summary>
     public static readonly Coding ReferralToHypertensionClinic = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to developmental clinic
     /// </summary>
     public static readonly Coding ReferralToDevelopmentalClinic = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to varicose vein clinic
     /// </summary>
     public static readonly Coding ReferralToVaricoseVeinClinic = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to mammography clinic
     /// </summary>
     public static readonly Coding ReferralToMammographyClinic = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to antenatal clinic
     /// </summary>
     public static readonly Coding ReferralToAntenatalClinic = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to postnatal clinic
     /// </summary>
     public static readonly Coding ReferralToPostnatalClinic = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to fertility clinic
     /// </summary>
     public static readonly Coding ReferralToFertilityClinic = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to well woman clinic
     /// </summary>
     public static readonly Coding ReferralToWellWomanClinic = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to family planning clinic
     /// </summary>
     public static readonly Coding ReferralToFamilyPlanningClinic = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to emergency clinic
     /// </summary>
     public static readonly Coding ReferralToEmergencyClinic = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referred to acute chest pain clinic
     /// </summary>
     public static readonly Coding ReferredToAcuteChestPainClinic = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to back pain clinic
     /// </summary>
     public static readonly Coding ReferralToBackPainClinic = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for bronchoscopy
     /// </summary>
     public static readonly Coding ReferralForBronchoscopy = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for colonoscopy
     /// </summary>
     public static readonly Coding ReferralForColonoscopy = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for sigmoidoscopy
     /// </summary>
     public static readonly Coding ReferralForSigmoidoscopy = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral
     /// </summary>
     public static readonly Coding PrivateReferral = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to general surgeon
     /// </summary>
     public static readonly Coding PrivateReferralToGeneralSurgeon = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to ophthalmologist
     /// </summary>
     public static readonly Coding PrivateReferralToOphthalmologist = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to ENT surgeon
     /// </summary>
     public static readonly Coding PrivateReferralToENTSurgeon = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to orthopedic surgeon
     /// </summary>
     public static readonly Coding PrivateReferralToOrthopedicSurgeon = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to neurosurgeon
     /// </summary>
     public static readonly Coding PrivateReferralToNeurosurgeon = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to pediatric surgeon
     /// </summary>
     public static readonly Coding PrivateReferralToPediatricSurgeon = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to obstetrician
     /// </summary>
     public static readonly Coding PrivateReferralToObstetrician = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to gynecologist
     /// </summary>
     public static readonly Coding PrivateReferralToGynecologist = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to plastic surgeon
     /// </summary>
     public static readonly Coding PrivateReferralToPlasticSurgeon = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to oral surgeon
     /// </summary>
     public static readonly Coding PrivateReferralToOralSurgeon = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to urologist
     /// </summary>
     public static readonly Coding PrivateReferralToUrologist = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to thoracic surgeon
     /// </summary>
     public static readonly Coding PrivateReferralToThoracicSurgeon = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to vascular surgeon
     /// </summary>
     public static readonly Coding PrivateReferralToVascularSurgeon = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to maxillofacial surgeon
     /// </summary>
     public static readonly Coding PrivateReferralToMaxillofacialSurgeon = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral cardiothoracic surgeon
     /// </summary>
     public static readonly Coding PrivateReferralCardiothoracicSurgeon = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to physician
     /// </summary>
     public static readonly Coding PrivateReferralToPhysician = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to general physician
     /// </summary>
     public static readonly Coding PrivateReferralToGeneralPhysician = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to pediatrician
     /// </summary>
     public static readonly Coding PrivateReferralToPediatrician = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to dermatologist
     /// </summary>
     public static readonly Coding PrivateReferralToDermatologist = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to cardiologist
     /// </summary>
     public static readonly Coding PrivateReferralToCardiologist = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to immunologist
     /// </summary>
     public static readonly Coding PrivateReferralToImmunologist = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to neurologist
     /// </summary>
     public static readonly Coding PrivateReferralToNeurologist = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to geriatrician
     /// </summary>
     public static readonly Coding PrivateReferralToGeriatrician = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to gastroenterologist
     /// </summary>
     public static readonly Coding PrivateReferralToGastroenterologist = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to psychiatrist
     /// </summary>
     public static readonly Coding PrivateReferralToPsychiatrist = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to venereologist
     /// </summary>
     public static readonly Coding PrivateReferralToVenereologist = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to rheumatologist
     /// </summary>
     public static readonly Coding PrivateReferralToRheumatologist = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to chest physician
     /// </summary>
     public static readonly Coding PrivateReferralToChestPhysician = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to psychogeriatrician
     /// </summary>
     public static readonly Coding PrivateReferralToPsychogeriatrician = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to oncologist
     /// </summary>
     public static readonly Coding PrivateReferralToOncologist = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to diabetologist
     /// </summary>
     public static readonly Coding PrivateReferralToDiabetologist = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to radiotherapist
     /// </summary>
     public static readonly Coding PrivateReferralToRadiotherapist = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to clinical pharmacologist
     /// </summary>
     public static readonly Coding PrivateReferralToClinicalPharmacologist = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to geneticist
     /// </summary>
     public static readonly Coding PrivateReferralToGeneticist = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to anesthetist
     /// </summary>
     public static readonly Coding PrivateReferralToAnesthetist = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to endocrinologist
     /// </summary>
     public static readonly Coding PrivateReferralToEndocrinologist = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to nephrologist
     /// </summary>
     public static readonly Coding PrivateReferralToNephrologist = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by nurse
     /// </summary>
     public static readonly Coding ReferralByNurse = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for vocational rehabilitation
     /// </summary>
     public static readonly Coding PatientReferralForVocationalRehabilitation = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to private doctor
     /// </summary>
     public static readonly Coding ReferralToPrivateDoctor = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to surgical fitter
     /// </summary>
     public static readonly Coding ReferralToSurgicalFitter = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trauma self-referral
     /// </summary>
     public static readonly Coding TraumaSelfReferral = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for laboratory tests
     /// </summary>
     public static readonly Coding ReferralForLaboratoryTests = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for physiology investigation
     /// </summary>
     public static readonly Coding ReferralForPhysiologyInvestigation = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for endoscopy
     /// </summary>
     public static readonly Coding ReferralForEndoscopy = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to pathology department
     /// </summary>
     public static readonly Coding ReferToPathologyDepartment = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for evaluation, aging problem
     /// </summary>
     public static readonly Coding PatientReferralForEvaluationAgingProblem = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental referral - child
     /// </summary>
     public static readonly Coding DentalReferralChild = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to pathology laboratory
     /// </summary>
     public static readonly Coding ReferToPathologyLaboratory = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for medical physics
     /// </summary>
     public static readonly Coding ReferForMedicalPhysics = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral of child
     /// </summary>
     public static readonly Coding ReferralOfChild = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to member of Primary Health Care Team
     /// </summary>
     public static readonly Coding ReferToMemberOfPrimaryHealthCareTeam = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for investigation
     /// </summary>
     public static readonly Coding ReferralForInvestigation = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to appliance officer
     /// </summary>
     public static readonly Coding ReferToApplianceOfficer = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to nurse
     /// </summary>
     public static readonly Coding ReferralToNurse = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to health worker
     /// </summary>
     public static readonly Coding ReferralToHealthWorker = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for specialized training
     /// </summary>
     public static readonly Coding PatientReferralForSpecializedTraining = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by health worker
     /// </summary>
     public static readonly Coding ReferralByHealthWorker = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from audiologist
     /// </summary>
     public static readonly Coding ReferralFromAudiologist = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by audiological physician
     /// </summary>
     public static readonly Coding ReferralByAudiologicalPhysician = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from community doctor in audiology
     /// </summary>
     public static readonly Coding ReferralFromCommunityDoctorInAudiology = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by hearing therapist
     /// </summary>
     public static readonly Coding ReferralByHearingTherapist = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by pediatric audiologist
     /// </summary>
     public static readonly Coding ReferralByPediatricAudiologist = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by counselor
     /// </summary>
     public static readonly Coding ReferralByCounselor = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by bereavement counselor
     /// </summary>
     public static readonly Coding ReferralByBereavementCounselor = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by genetic counselor
     /// </summary>
     public static readonly Coding ReferralByGeneticCounselor = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by marriage guidance counselor
     /// </summary>
     public static readonly Coding ReferralByMarriageGuidanceCounselor = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by mental health counselor
     /// </summary>
     public static readonly Coding ReferralByMentalHealthCounselor = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from complementary therapist
     /// </summary>
     public static readonly Coding ReferralFromComplementaryTherapist = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by doctor
     /// </summary>
     public static readonly Coding ReferralByDoctor = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from A &amp; E doctor
     /// </summary>
     public static readonly Coding ReferralFromAAndEDoctor = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from anesthetist
     /// </summary>
     public static readonly Coding ReferralFromAnesthetist = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from clinical oncologist
     /// </summary>
     public static readonly Coding ReferralFromClinicalOncologist = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from radiotherapist
     /// </summary>
     public static readonly Coding ReferralFromRadiotherapist = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by family planning doctor
     /// </summary>
     public static readonly Coding ReferralByFamilyPlanningDoctor = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by GP
     /// </summary>
     public static readonly Coding ReferralByGP = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from own GP
     /// </summary>
     public static readonly Coding ReferralFromOwnGP = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by partner of GP
     /// </summary>
     public static readonly Coding ReferralByPartnerOfGP = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by ITU specialist
     /// </summary>
     public static readonly Coding ReferralByITUSpecialist = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by adult ITU specialist
     /// </summary>
     public static readonly Coding ReferralByAdultITUSpecialist = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by pediatric ITU specialist
     /// </summary>
     public static readonly Coding ReferralByPediatricITUSpecialist = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by pediatrician
     /// </summary>
     public static readonly Coding ReferralByPediatrician = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from community pediatrician
     /// </summary>
     public static readonly Coding ReferralFromCommunityPediatrician = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from neonatologist
     /// </summary>
     public static readonly Coding ReferralFromNeonatologist = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from pediatric neurologist
     /// </summary>
     public static readonly Coding ReferralFromPediatricNeurologist = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by pediatric oncologist
     /// </summary>
     public static readonly Coding ReferralByPediatricOncologist = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by pain management specialist
     /// </summary>
     public static readonly Coding ReferralByPainManagementSpecialist = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from pathologist
     /// </summary>
     public static readonly Coding ReferralFromPathologist = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by blood transfusion doctor
     /// </summary>
     public static readonly Coding ReferralByBloodTransfusionDoctor = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by chemical pathologist
     /// </summary>
     public static readonly Coding ReferralByChemicalPathologist = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from general pathologist
     /// </summary>
     public static readonly Coding ReferralFromGeneralPathologist = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from hematologist
     /// </summary>
     public static readonly Coding ReferralFromHematologist = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from medical microbiologist
     /// </summary>
     public static readonly Coding ReferralFromMedicalMicrobiologist = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by neuropathologist
     /// </summary>
     public static readonly Coding ReferralByNeuropathologist = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from physician
     /// </summary>
     public static readonly Coding ReferralFromPhysician = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by clinical allergist
     /// </summary>
     public static readonly Coding ReferralByClinicalAllergist = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from cardiologist
     /// </summary>
     public static readonly Coding ReferralFromCardiologist = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by chest physician
     /// </summary>
     public static readonly Coding ReferralByChestPhysician = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from thoracic physician
     /// </summary>
     public static readonly Coding ReferralFromThoracicPhysician = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from respiratory physician
     /// </summary>
     public static readonly Coding ReferralFromRespiratoryPhysician = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by clinical immunologist
     /// </summary>
     public static readonly Coding ReferralByClinicalImmunologist = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from clinical neurophysiologist
     /// </summary>
     public static readonly Coding ReferralFromClinicalNeurophysiologist = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by clinical pharmacologist
     /// </summary>
     public static readonly Coding ReferralByClinicalPharmacologist = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from clinical physiologist
     /// </summary>
     public static readonly Coding ReferralFromClinicalPhysiologist = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by dermatologist
     /// </summary>
     public static readonly Coding ReferralByDermatologist = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from endocrinologist
     /// </summary>
     public static readonly Coding ReferralFromEndocrinologist = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by gastroenterologist
     /// </summary>
     public static readonly Coding ReferralByGastroenterologist = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by general physician
     /// </summary>
     public static readonly Coding ReferralByGeneralPhysician = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from geneticist
     /// </summary>
     public static readonly Coding ReferralFromGeneticist = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from clinical geneticist
     /// </summary>
     public static readonly Coding ReferralFromClinicalGeneticist = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by clinical cytogeneticist
     /// </summary>
     public static readonly Coding ReferralByClinicalCytogeneticist = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from clinical molecular geneticist
     /// </summary>
     public static readonly Coding ReferralFromClinicalMolecularGeneticist = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by genitourinary medicine physician
     /// </summary>
     public static readonly Coding ReferralByGenitourinaryMedicinePhysician = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from care of the elderly physician
     /// </summary>
     public static readonly Coding ReferralFromCareOfTheElderlyPhysician = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by infectious diseases physician
     /// </summary>
     public static readonly Coding ReferralByInfectiousDiseasesPhysician = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from nephrologist
     /// </summary>
     public static readonly Coding ReferralFromNephrologist = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by neurologist
     /// </summary>
     public static readonly Coding ReferralByNeurologist = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from nuclear medicine physician
     /// </summary>
     public static readonly Coding ReferralFromNuclearMedicinePhysician = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by palliative care physician
     /// </summary>
     public static readonly Coding ReferralByPalliativeCarePhysician = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by rehabilitation physician
     /// </summary>
     public static readonly Coding ReferralByRehabilitationPhysician = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by rheumatologist
     /// </summary>
     public static readonly Coding ReferralByRheumatologist = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from psychiatrist
     /// </summary>
     public static readonly Coding ReferralFromPsychiatrist = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by child and adolescent psychiatrist
     /// </summary>
     public static readonly Coding ReferralByChildAndAdolescentPsychiatrist = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from forensic psychiatrist
     /// </summary>
     public static readonly Coding ReferralFromForensicPsychiatrist = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by liaison psychiatrist
     /// </summary>
     public static readonly Coding ReferralByLiaisonPsychiatrist = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from psychiatrist for the elderly mentally ill
     /// </summary>
     public static readonly Coding ReferralFromPsychiatristForTheElderlyMentallyIll = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by psychiatrist for mental handicap
     /// </summary>
     public static readonly Coding ReferralByPsychiatristForMentalHandicap = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from rehabilitation psychiatrist
     /// </summary>
     public static readonly Coding ReferralFromRehabilitationPsychiatrist = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by public health physician
     /// </summary>
     public static readonly Coding ReferralByPublicHealthPhysician = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from obstetrician and gynecologist
     /// </summary>
     public static readonly Coding ReferralFromObstetricianAndGynecologist = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by gynecologist
     /// </summary>
     public static readonly Coding ReferralByGynecologist = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by obstetrician
     /// </summary>
     public static readonly Coding ReferralByObstetrician = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from occupational health physician
     /// </summary>
     public static readonly Coding ReferralFromOccupationalHealthPhysician = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by radiologist
     /// </summary>
     public static readonly Coding ReferralByRadiologist = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from surgeon
     /// </summary>
     public static readonly Coding ReferralFromSurgeon = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by breast surgeon
     /// </summary>
     public static readonly Coding ReferralByBreastSurgeon = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from cardiothoracic surgeon
     /// </summary>
     public static readonly Coding ReferralFromCardiothoracicSurgeon = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by thoracic surgeon
     /// </summary>
     public static readonly Coding ReferralByThoracicSurgeon = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from cardiac surgeon
     /// </summary>
     public static readonly Coding ReferralFromCardiacSurgeon = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from dental surgeon
     /// </summary>
     public static readonly Coding ReferralFromDentalSurgeon = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by orthodontist
     /// </summary>
     public static readonly Coding ReferralByOrthodontist = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by pediatric dentist
     /// </summary>
     public static readonly Coding ReferralByPediatricDentist = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by restorative dentist
     /// </summary>
     public static readonly Coding ReferralByRestorativeDentist = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by ENT surgeon
     /// </summary>
     public static readonly Coding ReferralByENTSurgeon = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by endocrine surgeon
     /// </summary>
     public static readonly Coding ReferralByEndocrineSurgeon = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from gastrointestinal surgeon
     /// </summary>
     public static readonly Coding ReferralFromGastrointestinalSurgeon = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by general gastrointestinal surgeon
     /// </summary>
     public static readonly Coding ReferralByGeneralGastrointestinalSurgeon = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by upper GI surgeon
     /// </summary>
     public static readonly Coding ReferralByUpperGISurgeon = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by colorectal surgeon
     /// </summary>
     public static readonly Coding ReferralByColorectalSurgeon = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by general surgeon
     /// </summary>
     public static readonly Coding ReferralByGeneralSurgeon = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from hand surgeon
     /// </summary>
     public static readonly Coding ReferralFromHandSurgeon = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by hepatobiliary surgeon
     /// </summary>
     public static readonly Coding ReferralByHepatobiliarySurgeon = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from neurosurgeon
     /// </summary>
     public static readonly Coding ReferralFromNeurosurgeon = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by ophthalmologist
     /// </summary>
     public static readonly Coding ReferralByOphthalmologist = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from oral surgeon
     /// </summary>
     public static readonly Coding ReferralFromOralSurgeon = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from orthopedic surgeon
     /// </summary>
     public static readonly Coding ReferralFromOrthopedicSurgeon = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by pediatric surgeon
     /// </summary>
     public static readonly Coding ReferralByPediatricSurgeon = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by pancreatic surgeon
     /// </summary>
     public static readonly Coding ReferralByPancreaticSurgeon = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from plastic surgeon
     /// </summary>
     public static readonly Coding ReferralFromPlasticSurgeon = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from transplant surgeon
     /// </summary>
     public static readonly Coding ReferralFromTransplantSurgeon = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by trauma surgeon
     /// </summary>
     public static readonly Coding ReferralByTraumaSurgeon = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from urologist
     /// </summary>
     public static readonly Coding ReferralFromUrologist = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by vascular surgeon
     /// </summary>
     public static readonly Coding ReferralByVascularSurgeon = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from clinical nurse specialist
     /// </summary>
     public static readonly Coding ReferralFromClinicalNurseSpecialist = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by breast care nurse
     /// </summary>
     public static readonly Coding ReferralByBreastCareNurse = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from cardiac rehabilitation nurse
     /// </summary>
     public static readonly Coding ReferralFromCardiacRehabilitationNurse = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by contact tracing nurse
     /// </summary>
     public static readonly Coding ReferralByContactTracingNurse = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from continence nurse
     /// </summary>
     public static readonly Coding ReferralFromContinenceNurse = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by diabetic liaison nurse
     /// </summary>
     public static readonly Coding ReferralByDiabeticLiaisonNurse = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by genitourinary nurse
     /// </summary>
     public static readonly Coding ReferralByGenitourinaryNurse = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from Macmillan nurse
     /// </summary>
     public static readonly Coding ReferralFromMacmillanNurse = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by Marie Curie nurse
     /// </summary>
     public static readonly Coding ReferralByMarieCurieNurse = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by lymphedema care nurse
     /// </summary>
     public static readonly Coding ReferralByLymphedemaCareNurse = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from nurse behavioral therapist
     /// </summary>
     public static readonly Coding ReferralFromNurseBehavioralTherapist = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from nurse psychotherapist
     /// </summary>
     public static readonly Coding ReferralFromNursePsychotherapist = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by pain management nurse
     /// </summary>
     public static readonly Coding ReferralByPainManagementNurse = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by pediatric nurse
     /// </summary>
     public static readonly Coding ReferralByPediatricNurse = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by psychiatric nurse
     /// </summary>
     public static readonly Coding ReferralByPsychiatricNurse = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from oncology nurse
     /// </summary>
     public static readonly Coding ReferralFromOncologyNurse = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from rheumatology nurse specialist
     /// </summary>
     public static readonly Coding ReferralFromRheumatologyNurseSpecialist = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by stoma nurse
     /// </summary>
     public static readonly Coding ReferralByStomaNurse = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from community-based nurse
     /// </summary>
     public static readonly Coding ReferralFromCommunityBasedNurse = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by community psychiatric nurse
     /// </summary>
     public static readonly Coding ReferralByCommunityPsychiatricNurse = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from company nurse
     /// </summary>
     public static readonly Coding ReferralFromCompanyNurse = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by district nurse
     /// </summary>
     public static readonly Coding ReferralByDistrictNurse = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by practice nurse
     /// </summary>
     public static readonly Coding ReferralByPracticeNurse = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from school nurse
     /// </summary>
     public static readonly Coding ReferralFromSchoolNurse = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by midwife
     /// </summary>
     public static readonly Coding ReferralByMidwife = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by community-based midwife
     /// </summary>
     public static readonly Coding ReferralByCommunityBasedMidwife = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from hospital midwife
     /// </summary>
     public static readonly Coding ReferralFromHospitalMidwife = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by psychotherapist
     /// </summary>
     public static readonly Coding ReferralByPsychotherapist = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from professional allied to medicine
     /// </summary>
     public static readonly Coding ReferralFromProfessionalAlliedToMedicine = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by arts therapist
     /// </summary>
     public static readonly Coding ReferralByArtsTherapist = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from art therapist
     /// </summary>
     public static readonly Coding ReferralFromArtTherapist = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by dance therapist
     /// </summary>
     public static readonly Coding ReferralByDanceTherapist = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from drama therapist
     /// </summary>
     public static readonly Coding ReferralFromDramaTherapist = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by music therapist
     /// </summary>
     public static readonly Coding ReferralByMusicTherapist = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from play therapist
     /// </summary>
     public static readonly Coding ReferralFromPlayTherapist = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by audiology technician
     /// </summary>
     public static readonly Coding ReferralByAudiologyTechnician = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by podiatrist
     /// </summary>
     public static readonly Coding ReferralByPodiatrist = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from community-based podiatrist
     /// </summary>
     public static readonly Coding ReferralFromCommunityBasedPodiatrist = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by hospital-based podiatrist
     /// </summary>
     public static readonly Coding ReferralByHospitalBasedPodiatrist = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from dietitian
     /// </summary>
     public static readonly Coding ReferralFromDietitian = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by community-based dietitian
     /// </summary>
     public static readonly Coding ReferralByCommunityBasedDietitian = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by hospital dietitian
     /// </summary>
     public static readonly Coding ReferralByHospitalDietitian = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by occupational therapist
     /// </summary>
     public static readonly Coding ReferralByOccupationalTherapist = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from community occupational therapist
     /// </summary>
     public static readonly Coding ReferralFromCommunityOccupationalTherapist = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by social services department occupational therapist
     /// </summary>
     public static readonly Coding ReferralBySocialServicesDepartmentOccupationalTherapist = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by hospital-based occupational therapist
     /// </summary>
     public static readonly Coding ReferralByHospitalBasedOccupationalTherapist = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by orthoptist
     /// </summary>
     public static readonly Coding ReferralByOrthoptist = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from orthotist
     /// </summary>
     public static readonly Coding ReferralFromOrthotist = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by surgical fitter
     /// </summary>
     public static readonly Coding ReferralBySurgicalFitter = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from physiotherapist
     /// </summary>
     public static readonly Coding ReferralFromPhysiotherapist = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by community-based physiotherapist
     /// </summary>
     public static readonly Coding ReferralByCommunityBasedPhysiotherapist = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from hospital physiotherapist
     /// </summary>
     public static readonly Coding ReferralFromHospitalPhysiotherapist = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by radiographer
     /// </summary>
     public static readonly Coding ReferralByRadiographer = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from therapeutic radiographer
     /// </summary>
     public static readonly Coding ReferralFromTherapeuticRadiographer = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from diagnostic radiographer
     /// </summary>
     public static readonly Coding ReferralFromDiagnosticRadiographer = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by speech and language therapist
     /// </summary>
     public static readonly Coding ReferralBySpeechAndLanguageTherapist = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from community-based speech and language therapist
     /// </summary>
     public static readonly Coding ReferralFromCommunityBasedSpeechAndLanguageTherapist = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by hospital-based speech and language therapist
     /// </summary>
     public static readonly Coding ReferralByHospitalBasedSpeechAndLanguageTherapist = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from pharmacist
     /// </summary>
     public static readonly Coding ReferralFromPharmacist = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by social worker
     /// </summary>
     public static readonly Coding ReferralBySocialWorker = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by SSD social worker
     /// </summary>
     public static readonly Coding ReferralBySSDSocialWorker = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by social services department care manager
     /// </summary>
     public static readonly Coding ReferralBySocialServicesDepartmentCareManager = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from teacher
     /// </summary>
     public static readonly Coding ReferralFromTeacher = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by lip/speech-reading teacher
     /// </summary>
     public static readonly Coding ReferralByLipSpeechReadingTeacher = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by teacher of the deaf
     /// </summary>
     public static readonly Coding ReferralByTeacherOfTheDeaf = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from teacher of the hearing impaired
     /// </summary>
     public static readonly Coding ReferralFromTeacherOfTheHearingImpaired = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by school teacher
     /// </summary>
     public static readonly Coding ReferralBySchoolTeacher = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by self
     /// </summary>
     public static readonly Coding ReferralBySelf = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by carer
     /// </summary>
     public static readonly Coding ReferralByCarer = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by relative
     /// </summary>
     public static readonly Coding ReferralByRelative = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to establishment
     /// </summary>
     public static readonly Coding ReferralToEstablishment = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to primary health care clinic
     /// </summary>
     public static readonly Coding ReferralToPrimaryHealthCareClinic = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to department
     /// </summary>
     public static readonly Coding ReferralToDepartment = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to casualty service
     /// </summary>
     public static readonly Coding ReferralToCasualtyService = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to anesthetic service
     /// </summary>
     public static readonly Coding ReferralToAnestheticService = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to ITU service
     /// </summary>
     public static readonly Coding ReferralToITUService = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to adult intensive care service
     /// </summary>
     public static readonly Coding ReferralToAdultIntensiveCareService = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric intensive care service
     /// </summary>
     public static readonly Coding ReferralToPediatricIntensiveCareService = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pain management service
     /// </summary>
     public static readonly Coding ReferralToPainManagementService = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to medical service
     /// </summary>
     public static readonly Coding ReferralToMedicalService = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical allergy service
     /// </summary>
     public static readonly Coding ReferralToClinicalAllergyService = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to chest medicine service
     /// </summary>
     public static readonly Coding ReferralToChestMedicineService = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to thoracic medicine service
     /// </summary>
     public static readonly Coding ReferralToThoracicMedicineService = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to respiratory medicine service
     /// </summary>
     public static readonly Coding ReferralToRespiratoryMedicineService = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical neurophysiology service
     /// </summary>
     public static readonly Coding ReferralToClinicalNeurophysiologyService = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical pharmacology service
     /// </summary>
     public static readonly Coding ReferralToClinicalPharmacologyService = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical physiology service
     /// </summary>
     public static readonly Coding ReferralToClinicalPhysiologyService = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to endocrinology service
     /// </summary>
     public static readonly Coding ReferralToEndocrinologyService = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to genetics service
     /// </summary>
     public static readonly Coding ReferralToGeneticsService = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical genetics service
     /// </summary>
     public static readonly Coding ReferralToClinicalGeneticsService = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical cytogenetics service
     /// </summary>
     public static readonly Coding ReferralToClinicalCytogeneticsService = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical molecular genetics service
     /// </summary>
     public static readonly Coding ReferralToClinicalMolecularGeneticsService = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to genitourinary medicine service
     /// </summary>
     public static readonly Coding ReferralToGenitourinaryMedicineService = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to infectious diseases service
     /// </summary>
     public static readonly Coding ReferralToInfectiousDiseasesService = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to nephrology service
     /// </summary>
     public static readonly Coding ReferralToNephrologyService = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to nuclear medicine service
     /// </summary>
     public static readonly Coding ReferralToNuclearMedicineService = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to rheumatology service
     /// </summary>
     public static readonly Coding ReferralToRheumatologyService = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric service
     /// </summary>
     public static readonly Coding ReferralToPediatricService = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community pediatric service
     /// </summary>
     public static readonly Coding ReferralToCommunityPediatricService = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric neurology service
     /// </summary>
     public static readonly Coding ReferralToPediatricNeurologyService = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric oncology service
     /// </summary>
     public static readonly Coding ReferralToPediatricOncologyService = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to special care baby unit
     /// </summary>
     public static readonly Coding ReferralToSpecialCareBabyUnit = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to obstetrics and gynecology service
     /// </summary>
     public static readonly Coding ReferralToObstetricsAndGynecologyService = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to child and adolescent psychiatry service
     /// </summary>
     public static readonly Coding ReferralToChildAndAdolescentPsychiatryService = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to forensic psychiatry service
     /// </summary>
     public static readonly Coding ReferralToForensicPsychiatryService = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to liaison psychiatry service
     /// </summary>
     public static readonly Coding ReferralToLiaisonPsychiatryService = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to mental handicap psychiatry service
     /// </summary>
     public static readonly Coding ReferralToMentalHandicapPsychiatryService = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to psychogeriatric service
     /// </summary>
     public static readonly Coding ReferralToPsychogeriatricService = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to rehabilitation psychiatry service
     /// </summary>
     public static readonly Coding ReferralToRehabilitationPsychiatryService = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical oncology service
     /// </summary>
     public static readonly Coding ReferralToClinicalOncologyService = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to radiotherapy service
     /// </summary>
     public static readonly Coding ReferralToRadiotherapyService = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to ultrasonography service
     /// </summary>
     public static readonly Coding ReferralToUltrasonographyService = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to computerized tomography service
     /// </summary>
     public static readonly Coding ReferralToComputerizedTomographyService = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to magnetic resonance imaging service
     /// </summary>
     public static readonly Coding ReferralToMagneticResonanceImagingService = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to blood transfusion service
     /// </summary>
     public static readonly Coding ReferralToBloodTransfusionService = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to chemical pathology service
     /// </summary>
     public static readonly Coding ReferralToChemicalPathologyService = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to general pathology service
     /// </summary>
     public static readonly Coding ReferralToGeneralPathologyService = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hematology service
     /// </summary>
     public static readonly Coding ReferralToHematologyService = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to medical microbiology service
     /// </summary>
     public static readonly Coding ReferralToMedicalMicrobiologyService = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to neuropathology service
     /// </summary>
     public static readonly Coding ReferralToNeuropathologyService = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to public health service
     /// </summary>
     public static readonly Coding ReferralToPublicHealthService = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to occupational health service
     /// </summary>
     public static readonly Coding ReferralToOccupationalHealthService = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to professional allied to medicine service
     /// </summary>
     public static readonly Coding ReferralToProfessionalAlliedToMedicineService = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to arts therapy services
     /// </summary>
     public static readonly Coding ReferralToArtsTherapyServices = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to dance therapy service
     /// </summary>
     public static readonly Coding ReferralToDanceTherapyService = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to drama therapy service
     /// </summary>
     public static readonly Coding ReferralToDramaTherapyService = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to music therapy service
     /// </summary>
     public static readonly Coding ReferralToMusicTherapyService = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to play therapy service
     /// </summary>
     public static readonly Coding ReferralToPlayTherapyService = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to podiatry service
     /// </summary>
     public static readonly Coding ReferralToPodiatryService = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community podiatry service
     /// </summary>
     public static readonly Coding ReferralToCommunityPodiatryService = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hospital-based podiatry service
     /// </summary>
     public static readonly Coding ReferralToHospitalBasedPodiatryService = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to dietetics service
     /// </summary>
     public static readonly Coding ReferralToDieteticsService = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community-based dietetics service
     /// </summary>
     public static readonly Coding ReferralToCommunityBasedDieteticsService = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hospital dietetics service
     /// </summary>
     public static readonly Coding ReferralToHospitalDieteticsService = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to occupational therapy service
     /// </summary>
     public static readonly Coding ReferralToOccupationalTherapyService = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community-based occupational therapy service
     /// </summary>
     public static readonly Coding ReferralToCommunityBasedOccupationalTherapyService = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hospital occupational therapy service
     /// </summary>
     public static readonly Coding ReferralToHospitalOccupationalTherapyService = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to medical physics service
     /// </summary>
     public static readonly Coding ReferralToMedicalPhysicsService = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to physiotherapy service
     /// </summary>
     public static readonly Coding ReferralToPhysiotherapyService = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community-based physiotherapy service
     /// </summary>
     public static readonly Coding ReferralToCommunityBasedPhysiotherapyService = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hospital physiotherapy service
     /// </summary>
     public static readonly Coding ReferralToHospitalPhysiotherapyService = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to speech and language therapy service
     /// </summary>
     public static readonly Coding ReferralToSpeechAndLanguageTherapyService = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community-based speech and language therapy service
     /// </summary>
     public static readonly Coding ReferralToCommunityBasedSpeechAndLanguageTherapyService = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hospital speech and language therapy service
     /// </summary>
     public static readonly Coding ReferralToHospitalSpeechAndLanguageTherapyService = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to orthoptics service
     /// </summary>
     public static readonly Coding ReferralToOrthopticsService = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to orthotics service
     /// </summary>
     public static readonly Coding ReferralToOrthoticsService = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to surgical fitting service
     /// </summary>
     public static readonly Coding ReferralToSurgicalFittingService = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pharmacy service
     /// </summary>
     public static readonly Coding ReferralToPharmacyService = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to surgical service
     /// </summary>
     public static readonly Coding ReferralToSurgicalService = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to breast surgery service
     /// </summary>
     public static readonly Coding ReferralToBreastSurgeryService = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to cardiothoracic surgery service
     /// </summary>
     public static readonly Coding ReferralToCardiothoracicSurgeryService = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to thoracic surgery service
     /// </summary>
     public static readonly Coding ReferralToThoracicSurgeryService = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to cardiac surgery service
     /// </summary>
     public static readonly Coding ReferralToCardiacSurgeryService = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to dental surgery service
     /// </summary>
     public static readonly Coding ReferralToDentalSurgeryService = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to orthodontics service
     /// </summary>
     public static readonly Coding ReferralToOrthodonticsService = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric dentistry service
     /// </summary>
     public static readonly Coding ReferralToPediatricDentistryService = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to restorative dentistry service
     /// </summary>
     public static readonly Coding ReferralToRestorativeDentistryService = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to endocrine surgery service
     /// </summary>
     public static readonly Coding ReferralToEndocrineSurgeryService = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to gastrointestinal surgery service
     /// </summary>
     public static readonly Coding ReferralToGastrointestinalSurgeryService = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to general GI surgery service
     /// </summary>
     public static readonly Coding ReferralToGeneralGISurgeryService = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to upper gastrointestinal surgery service
     /// </summary>
     public static readonly Coding ReferralToUpperGastrointestinalSurgeryService = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to colorectal surgery service
     /// </summary>
     public static readonly Coding ReferralToColorectalSurgeryService = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hepatobiliary surgical service
     /// </summary>
     public static readonly Coding ReferralToHepatobiliarySurgicalService = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pancreatic surgery service
     /// </summary>
     public static readonly Coding ReferralToPancreaticSurgeryService = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to plastic surgery service
     /// </summary>
     public static readonly Coding ReferralToPlasticSurgeryService = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to surgical transplant service
     /// </summary>
     public static readonly Coding ReferralToSurgicalTransplantService = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to trauma surgery service
     /// </summary>
     public static readonly Coding ReferralToTraumaSurgeryService = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to urology service
     /// </summary>
     public static readonly Coding ReferralToUrologyService = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to care of the elderly day hospital
     /// </summary>
     public static readonly Coding ReferralToCareOfTheElderlyDayHospital = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to psychiatry day hospital
     /// </summary>
     public static readonly Coding ReferralToPsychiatryDayHospital = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to old age psychiatry day hospital
     /// </summary>
     public static readonly Coding ReferralToOldAgePsychiatryDayHospital = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hospice
     /// </summary>
     public static readonly Coding ReferralToHospice = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to service
     /// </summary>
     public static readonly Coding ReferralToService = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to audiological service
     /// </summary>
     public static readonly Coding ReferralToAudiologicalService = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to diagnostic audiology service
     /// </summary>
     public static readonly Coding ReferralToDiagnosticAudiologyService = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to adult diagnostic audiology service
     /// </summary>
     public static readonly Coding ReferralToAdultDiagnosticAudiologyService = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric diagnostic audiology service
     /// </summary>
     public static readonly Coding ReferralToPediatricDiagnosticAudiologyService = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to audiological screening service
     /// </summary>
     public static readonly Coding ReferralToAudiologicalScreeningService = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to neonatal audiological screening
     /// </summary>
     public static readonly Coding ReferralToNeonatalAudiologicalScreening = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to distraction test audiological screening
     /// </summary>
     public static readonly Coding ReferralToDistractionTestAudiologicalScreening = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to aural rehabilitation service
     /// </summary>
     public static readonly Coding ReferralToAuralRehabilitationService = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to cochlear implant service
     /// </summary>
     public static readonly Coding ReferralToCochlearImplantService = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to adult cochlear implant service
     /// </summary>
     public static readonly Coding ReferralToAdultCochlearImplantService = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric cochlear implant service
     /// </summary>
     public static readonly Coding ReferralToPediatricCochlearImplantService = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hearing aid service
     /// </summary>
     public static readonly Coding ReferralToHearingAidService = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to adult hearing aid service
     /// </summary>
     public static readonly Coding ReferralToAdultHearingAidService = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric hearing aid service
     /// </summary>
     public static readonly Coding ReferralToPediatricHearingAidService = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to speech-reading training service
     /// </summary>
     public static readonly Coding ReferralToSpeechReadingTrainingService = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to tinnitus management service
     /// </summary>
     public static readonly Coding ReferralToTinnitusManagementService = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hearing therapy service
     /// </summary>
     public static readonly Coding ReferralToHearingTherapyService = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to ALD service
     /// </summary>
     public static readonly Coding ReferralToALDService = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to counseling service
     /// </summary>
     public static readonly Coding ReferralToCounselingService = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to mental health counseling service
     /// </summary>
     public static readonly Coding ReferralToMentalHealthCounselingService = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for mental health counseling
     /// </summary>
     public static readonly Coding ReferralForMentalHealthCounseling = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for diagnostic investigation
     /// </summary>
     public static readonly Coding ReferralForDiagnosticInvestigation = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for domiciliary visit
     /// </summary>
     public static readonly Coding ReferralForDomiciliaryVisit = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for dermatology DV
     /// </summary>
     public static readonly Coding ReferralForDermatologyDV = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for general medical domiciliary visit
     /// </summary>
     public static readonly Coding ReferralForGeneralMedicalDomiciliaryVisit = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for general surgery DV
     /// </summary>
     public static readonly Coding ReferralForGeneralSurgeryDV = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for care of the elderly domiciliary visit
     /// </summary>
     public static readonly Coding ReferralForCareOfTheElderlyDomiciliaryVisit = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for mental illness domiciliary visit
     /// </summary>
     public static readonly Coding ReferralForMentalIllnessDomiciliaryVisit = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to endoscopy service
     /// </summary>
     public static readonly Coding ReferralToEndoscopyService = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to open access service
     /// </summary>
     public static readonly Coding ReferralToOpenAccessService = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for palliative care
     /// </summary>
     public static readonly Coding ReferralForPalliativeCare = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to Social Services
     /// </summary>
     public static readonly Coding ReferralToSocialServices = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to SSD customer services
     /// </summary>
     public static readonly Coding ReferralToSSDCustomerServices = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to social services department duty team
     /// </summary>
     public static readonly Coding ReferralToSocialServicesDepartmentDutyTeam = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to audiological physician
     /// </summary>
     public static readonly Coding ReferralToAudiologicalPhysician = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to audiological scientist
     /// </summary>
     public static readonly Coding ReferralToAudiologicalScientist = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community doctor in audiology
     /// </summary>
     public static readonly Coding ReferralToCommunityDoctorInAudiology = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to medical technical officer in audiology
     /// </summary>
     public static readonly Coding ReferralToMedicalTechnicalOfficerInAudiology = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hearing therapist
     /// </summary>
     public static readonly Coding ReferralToHearingTherapist = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to registered hearing aid dispenser
     /// </summary>
     public static readonly Coding ReferralToRegisteredHearingAidDispenser = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric audiologist
     /// </summary>
     public static readonly Coding ReferralToPediatricAudiologist = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to complementary therapist
     /// </summary>
     public static readonly Coding ReferralToComplementaryTherapist = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to bereavement counselor
     /// </summary>
     public static readonly Coding ReferralToBereavementCounselor = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to genetic counselor
     /// </summary>
     public static readonly Coding ReferralToGeneticCounselor = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to marriage guidance counselor
     /// </summary>
     public static readonly Coding ReferralToMarriageGuidanceCounselor = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to mental health counselor
     /// </summary>
     public static readonly Coding ReferralToMentalHealthCounselor = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to doctor
     /// </summary>
     public static readonly Coding ReferralToDoctor = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to casualty officer
     /// </summary>
     public static readonly Coding ReferToCasualtyOfficer = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to anesthetist
     /// </summary>
     public static readonly Coding ReferralToAnesthetist = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to radiotherapist
     /// </summary>
     public static readonly Coding ReferToRadiotherapist = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to family planning doctor
     /// </summary>
     public static readonly Coding ReferralToFamilyPlanningDoctor = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to ITU specialist
     /// </summary>
     public static readonly Coding ReferralToITUSpecialist = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to adult intensive care specialist
     /// </summary>
     public static readonly Coding ReferralToAdultIntensiveCareSpecialist = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric intensive care specialist
     /// </summary>
     public static readonly Coding ReferralToPediatricIntensiveCareSpecialist = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community pediatrician
     /// </summary>
     public static readonly Coding ReferralToCommunityPediatrician = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to neonatologist
     /// </summary>
     public static readonly Coding ReferralToNeonatologist = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric neurologist
     /// </summary>
     public static readonly Coding ReferralToPediatricNeurologist = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric oncologist
     /// </summary>
     public static readonly Coding ReferralToPediatricOncologist = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pain management specialist
     /// </summary>
     public static readonly Coding ReferralToPainManagementSpecialist = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pathologist
     /// </summary>
     public static readonly Coding ReferralToPathologist = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to blood transfusion doctor
     /// </summary>
     public static readonly Coding ReferralToBloodTransfusionDoctor = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to chemical pathologist
     /// </summary>
     public static readonly Coding ReferralToChemicalPathologist = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to general pathologist
     /// </summary>
     public static readonly Coding ReferralToGeneralPathologist = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to medical microbiologist
     /// </summary>
     public static readonly Coding ReferralToMedicalMicrobiologist = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to neuropathologist
     /// </summary>
     public static readonly Coding ReferralToNeuropathologist = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical allergist
     /// </summary>
     public static readonly Coding ReferralToClinicalAllergist = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to chest physician
     /// </summary>
     public static readonly Coding ReferralToChestPhysician = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to thoracic physician
     /// </summary>
     public static readonly Coding ReferralToThoracicPhysician = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to respiratory physician
     /// </summary>
     public static readonly Coding ReferralToRespiratoryPhysician = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical neurophysiologist
     /// </summary>
     public static readonly Coding ReferralToClinicalNeurophysiologist = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical physiologist
     /// </summary>
     public static readonly Coding ReferralToClinicalPhysiologist = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to endocrinologist
     /// </summary>
     public static readonly Coding ReferralToEndocrinologist = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical geneticist
     /// </summary>
     public static readonly Coding ReferralToClinicalGeneticist = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical cytogeneticist
     /// </summary>
     public static readonly Coding ReferralToClinicalCytogeneticist = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical molecular geneticist
     /// </summary>
     public static readonly Coding ReferralToClinicalMolecularGeneticist = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to sexually transmittable diseases physician
     /// </summary>
     public static readonly Coding ReferralToSexuallyTransmittableDiseasesPhysician = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to infectious diseases physician
     /// </summary>
     public static readonly Coding ReferralToInfectiousDiseasesPhysician = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to medical ophthalmologist
     /// </summary>
     public static readonly Coding ReferralToMedicalOphthalmologist = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to nephrologist
     /// </summary>
     public static readonly Coding ReferralToNephrologist = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to nuclear medicine physician
     /// </summary>
     public static readonly Coding ReferralToNuclearMedicinePhysician = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to palliative care physician
     /// </summary>
     public static readonly Coding ReferralToPalliativeCarePhysician = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to rehabilitation physician
     /// </summary>
     public static readonly Coding ReferralToRehabilitationPhysician = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to rheumatologist
     /// </summary>
     public static readonly Coding ReferralToRheumatologist = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to child and adolescent psychiatrist
     /// </summary>
     public static readonly Coding ReferralToChildAndAdolescentPsychiatrist = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to forensic psychiatrist
     /// </summary>
     public static readonly Coding ReferralToForensicPsychiatrist = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to liaison psychiatrist
     /// </summary>
     public static readonly Coding ReferralToLiaisonPsychiatrist = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to psychiatrist for mental handicap
     /// </summary>
     public static readonly Coding ReferralToPsychiatristForMentalHandicap = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to rehabilitation psychiatrist
     /// </summary>
     public static readonly Coding ReferralToRehabilitationPsychiatrist = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to public health physician
     /// </summary>
     public static readonly Coding ReferralToPublicHealthPhysician = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to obstetrician and gynecologist
     /// </summary>
     public static readonly Coding ReferralToObstetricianAndGynecologist = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to occupational health physician
     /// </summary>
     public static readonly Coding ReferralToOccupationalHealthPhysician = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to radiologist
     /// </summary>
     public static readonly Coding ReferralToRadiologist = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to breast surgeon
     /// </summary>
     public static readonly Coding ReferralToBreastSurgeon = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to thoracic surgeon
     /// </summary>
     public static readonly Coding ReferralToThoracicSurgeon = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to cardiac surgeon
     /// </summary>
     public static readonly Coding ReferralToCardiacSurgeon = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to dental surgeon
     /// </summary>
     public static readonly Coding ReferralToDentalSurgeon = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to orthodontist
     /// </summary>
     public static readonly Coding ReferralToOrthodontist = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric dentist
     /// </summary>
     public static readonly Coding ReferralToPediatricDentist = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to restorative dentist
     /// </summary>
     public static readonly Coding ReferralToRestorativeDentist = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to endocrine surgeon
     /// </summary>
     public static readonly Coding ReferralToEndocrineSurgeon = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to GI surgeon
     /// </summary>
     public static readonly Coding ReferralToGISurgeon = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to general gastrointestinal surgeon
     /// </summary>
     public static readonly Coding ReferralToGeneralGastrointestinalSurgeon = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to upper GI surgeon
     /// </summary>
     public static readonly Coding ReferralToUpperGISurgeon = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to colorectal surgeon
     /// </summary>
     public static readonly Coding ReferralToColorectalSurgeon = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hand surgeon
     /// </summary>
     public static readonly Coding ReferralToHandSurgeon = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hepatobiliary surgeon
     /// </summary>
     public static readonly Coding ReferralToHepatobiliarySurgeon = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pancreatic surgeon
     /// </summary>
     public static readonly Coding ReferralToPancreaticSurgeon = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to plastic surgeon
     /// </summary>
     public static readonly Coding ReferralToPlasticSurgeon = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to transplant surgeon
     /// </summary>
     public static readonly Coding ReferralToTransplantSurgeon = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to trauma surgeon
     /// </summary>
     public static readonly Coding ReferralToTraumaSurgeon = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to urologist
     /// </summary>
     public static readonly Coding ReferralToUrologist = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to agency nurse
     /// </summary>
     public static readonly Coding ReferralToAgencyNurse = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical nurse specialist
     /// </summary>
     public static readonly Coding ReferralToClinicalNurseSpecialist = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to breast care nurse
     /// </summary>
     public static readonly Coding ReferralToBreastCareNurse = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to cardiac rehabilitation nurse
     /// </summary>
     public static readonly Coding ReferralToCardiacRehabilitationNurse = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to contact tracing nurse
     /// </summary>
     public static readonly Coding ReferralToContactTracingNurse = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to continence nurse
     /// </summary>
     public static readonly Coding ReferralToContinenceNurse = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to genitourinary nurse
     /// </summary>
     public static readonly Coding ReferralToGenitourinaryNurse = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to Marie Curie nurse
     /// </summary>
     public static readonly Coding ReferralToMarieCurieNurse = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to lymphedema care nurse
     /// </summary>
     public static readonly Coding ReferralToLymphedemaCareNurse = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to nurse behavioral therapist
     /// </summary>
     public static readonly Coding ReferralToNurseBehavioralTherapist = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to nurse psychotherapist
     /// </summary>
     public static readonly Coding ReferralToNursePsychotherapist = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pain management nurse
     /// </summary>
     public static readonly Coding ReferralToPainManagementNurse = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric nurse
     /// </summary>
     public static readonly Coding ReferralToPediatricNurse = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to psychiatric nurse
     /// </summary>
     public static readonly Coding ReferralToPsychiatricNurse = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to oncology nurse
     /// </summary>
     public static readonly Coding ReferralToOncologyNurse = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to rheumatology nurse specialist
     /// </summary>
     public static readonly Coding ReferralToRheumatologyNurseSpecialist = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community nurse
     /// </summary>
     public static readonly Coding ReferralToCommunityNurse = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to company nurse
     /// </summary>
     public static readonly Coding ReferralToCompanyNurse = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to liaison nurse
     /// </summary>
     public static readonly Coding ReferralToLiaisonNurse = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to nurse practitioner
     /// </summary>
     public static readonly Coding ReferralToNursePractitioner = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to outreach nurse
     /// </summary>
     public static readonly Coding ReferralToOutreachNurse = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to research nurse
     /// </summary>
     public static readonly Coding ReferralToResearchNurse = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community midwife
     /// </summary>
     public static readonly Coding ReferralToCommunityMidwife = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hospital-based midwife
     /// </summary>
     public static readonly Coding ReferralToHospitalBasedMidwife = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to psychotherapist
     /// </summary>
     public static readonly Coding ReferralToPsychotherapist = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to professional allied to medicine
     /// </summary>
     public static readonly Coding ReferralToProfessionalAlliedToMedicine = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to arts therapist
     /// </summary>
     public static readonly Coding ReferralToArtsTherapist = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to dance therapist
     /// </summary>
     public static readonly Coding ReferralToDanceTherapist = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to drama therapist
     /// </summary>
     public static readonly Coding ReferralToDramaTherapist = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to music therapist
     /// </summary>
     public static readonly Coding ReferralToMusicTherapist = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to play therapist
     /// </summary>
     public static readonly Coding ReferralToPlayTherapist = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community-based podiatrist
     /// </summary>
     public static readonly Coding ReferralToCommunityBasedPodiatrist = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hospital-based podiatrist
     /// </summary>
     public static readonly Coding ReferralToHospitalBasedPodiatrist = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community dietitian
     /// </summary>
     public static readonly Coding ReferralToCommunityDietitian = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hospital-based dietitian
     /// </summary>
     public static readonly Coding ReferralToHospitalBasedDietitian = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community occupational therapist
     /// </summary>
     public static readonly Coding ReferralToCommunityOccupationalTherapist = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to social services department occupational therapist
     /// </summary>
     public static readonly Coding ReferralToSocialServicesDepartmentOccupationalTherapist = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hospital occupational therapist
     /// </summary>
     public static readonly Coding ReferralToHospitalOccupationalTherapist = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community-based physiotherapist
     /// </summary>
     public static readonly Coding ReferralToCommunityBasedPhysiotherapist = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hospital physiotherapist
     /// </summary>
     public static readonly Coding ReferralToHospitalPhysiotherapist = new Coding
     {
@@ -5574,7 +5574,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community-based speech and language therapist
     /// </summary>
     public static readonly Coding ReferralToCommunityBasedSpeechAndLanguageTherapist = new Coding
     {
@@ -5583,7 +5583,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hospital speech and language therapist
     /// </summary>
     public static readonly Coding ReferralToHospitalSpeechAndLanguageTherapist = new Coding
     {
@@ -5592,7 +5592,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pharmacist
     /// </summary>
     public static readonly Coding ReferralToPharmacist = new Coding
     {
@@ -5601,7 +5601,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to radiographer
     /// </summary>
     public static readonly Coding ReferralToRadiographer = new Coding
     {
@@ -5610,7 +5610,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to therapeutic radiographer
     /// </summary>
     public static readonly Coding ReferralToTherapeuticRadiographer = new Coding
     {
@@ -5619,7 +5619,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to diagnostic radiographer
     /// </summary>
     public static readonly Coding ReferralToDiagnosticRadiographer = new Coding
     {
@@ -5628,7 +5628,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to social services department social worker
     /// </summary>
     public static readonly Coding ReferralToSocialServicesDepartmentSocialWorker = new Coding
     {
@@ -5637,7 +5637,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to SSD care manager
     /// </summary>
     public static readonly Coding ReferralToSSDCareManager = new Coding
     {
@@ -5646,7 +5646,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to teacher
     /// </summary>
     public static readonly Coding ReferralToTeacher = new Coding
     {
@@ -5655,7 +5655,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to lip/speech-reading teacher
     /// </summary>
     public static readonly Coding ReferralToLipSpeechReadingTeacher = new Coding
     {
@@ -5664,7 +5664,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to teacher of the deaf
     /// </summary>
     public static readonly Coding ReferralToTeacherOfTheDeaf = new Coding
     {
@@ -5673,7 +5673,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to teacher of the hearing impaired
     /// </summary>
     public static readonly Coding ReferralToTeacherOfTheHearingImpaired = new Coding
     {
@@ -5682,7 +5682,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by agency nurse
     /// </summary>
     public static readonly Coding ReferralByAgencyNurse = new Coding
     {
@@ -5691,7 +5691,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from liaison nurse
     /// </summary>
     public static readonly Coding ReferralFromLiaisonNurse = new Coding
     {
@@ -5700,7 +5700,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by nurse practitioner
     /// </summary>
     public static readonly Coding ReferralByNursePractitioner = new Coding
     {
@@ -5709,7 +5709,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral from outreach nurse
     /// </summary>
     public static readonly Coding ReferralFromOutreachNurse = new Coding
     {
@@ -5718,7 +5718,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by research nurse
     /// </summary>
     public static readonly Coding ReferralByResearchNurse = new Coding
     {
@@ -5727,7 +5727,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for gastroscopy
     /// </summary>
     public static readonly Coding ReferralForGastroscopy = new Coding
     {
@@ -5736,7 +5736,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by general dental surgeon
     /// </summary>
     public static readonly Coding ReferralByGeneralDentalSurgeon = new Coding
     {
@@ -5745,7 +5745,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to general dental surgery service
     /// </summary>
     public static readonly Coding ReferralToGeneralDentalSurgeryService = new Coding
     {
@@ -5754,7 +5754,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to general dental surgeon
     /// </summary>
     public static readonly Coding ReferralToGeneralDentalSurgeon = new Coding
     {
@@ -5763,7 +5763,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to stroke service
     /// </summary>
     public static readonly Coding ReferralToStrokeService = new Coding
     {
@@ -5772,7 +5772,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hand surgery service
     /// </summary>
     public static readonly Coding ReferralToHandSurgeryService = new Coding
     {
@@ -5781,7 +5781,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to vascular surgery service
     /// </summary>
     public static readonly Coding ReferralToVascularSurgeryService = new Coding
     {
@@ -5790,7 +5790,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by clinical hematologist
     /// </summary>
     public static readonly Coding ReferralByClinicalHematologist = new Coding
     {
@@ -5799,7 +5799,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical hematologist
     /// </summary>
     public static readonly Coding ReferralToClinicalHematologist = new Coding
     {
@@ -5808,7 +5808,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to acute pain service
     /// </summary>
     public static readonly Coding ReferralToAcutePainService = new Coding
     {
@@ -5817,7 +5817,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to rehabilitation service
     /// </summary>
     public static readonly Coding ReferralToRehabilitationService = new Coding
     {
@@ -5826,7 +5826,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to head injury rehabilitation
     /// </summary>
     public static readonly Coding ReferralToHeadInjuryRehabilitation = new Coding
     {
@@ -5835,7 +5835,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community rehabilitation
     /// </summary>
     public static readonly Coding ReferralToCommunityRehabilitation = new Coding
     {
@@ -5844,7 +5844,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to young disabled service
     /// </summary>
     public static readonly Coding ReferralToYoungDisabledService = new Coding
     {
@@ -5853,7 +5853,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to assessment service
     /// </summary>
     public static readonly Coding ReferralToAssessmentService = new Coding
     {
@@ -5862,7 +5862,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to child assessment service
     /// </summary>
     public static readonly Coding ReferralToChildAssessmentService = new Coding
     {
@@ -5871,7 +5871,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to swallow clinic
     /// </summary>
     public static readonly Coding ReferralToSwallowClinic = new Coding
     {
@@ -5880,7 +5880,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to vascular surgeon
     /// </summary>
     public static readonly Coding ReferralToVascularSurgeon = new Coding
     {
@@ -5889,7 +5889,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by person
     /// </summary>
     public static readonly Coding ReferralByPerson = new Coding
     {
@@ -5898,7 +5898,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by service
     /// </summary>
     public static readonly Coding ReferralByService = new Coding
     {
@@ -5907,7 +5907,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by establishment
     /// </summary>
     public static readonly Coding ReferralByEstablishment = new Coding
     {
@@ -5916,7 +5916,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to person
     /// </summary>
     public static readonly Coding ReferralToPerson = new Coding
     {
@@ -5925,7 +5925,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to complementary therapy service
     /// </summary>
     public static readonly Coding ReferralToComplementaryTherapyService = new Coding
     {
@@ -5934,7 +5934,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to practice nurse
     /// </summary>
     public static readonly Coding ReferralToPracticeNurse = new Coding
     {
@@ -5943,7 +5943,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to district nurse
     /// </summary>
     public static readonly Coding ReferToDistrictNurse = new Coding
     {
@@ -5952,7 +5952,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to midwife
     /// </summary>
     public static readonly Coding ReferralToMidwife = new Coding
     {
@@ -5961,7 +5961,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to social worker
     /// </summary>
     public static readonly Coding ReferralToSocialWorker = new Coding
     {
@@ -5970,7 +5970,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to physiotherapist
     /// </summary>
     public static readonly Coding ReferToPhysiotherapist = new Coding
     {
@@ -5979,7 +5979,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to counselor
     /// </summary>
     public static readonly Coding ReferralToCounselor = new Coding
     {
@@ -5988,7 +5988,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to chiropractor
     /// </summary>
     public static readonly Coding ReferToChiropractor = new Coding
     {
@@ -5997,7 +5997,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to osteopath
     /// </summary>
     public static readonly Coding ReferralToOsteopath = new Coding
     {
@@ -6006,7 +6006,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to podiatrist
     /// </summary>
     public static readonly Coding ReferralToPodiatrist = new Coding
     {
@@ -6015,7 +6015,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to speech therapist
     /// </summary>
     public static readonly Coding ReferToSpeechTherapist = new Coding
     {
@@ -6024,7 +6024,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to occupational therapist
     /// </summary>
     public static readonly Coding ReferralToOccupationalTherapist = new Coding
     {
@@ -6033,7 +6033,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to orthoptist
     /// </summary>
     public static readonly Coding ReferralToOrthoptist = new Coding
     {
@@ -6042,7 +6042,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to orthotist
     /// </summary>
     public static readonly Coding ReferToOrthotist = new Coding
     {
@@ -6051,7 +6051,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to audiologist
     /// </summary>
     public static readonly Coding ReferralToAudiologist = new Coding
     {
@@ -6060,7 +6060,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to stoma nurse
     /// </summary>
     public static readonly Coding ReferToStomaNurse = new Coding
     {
@@ -6069,7 +6069,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to diabetic liaison nurse
     /// </summary>
     public static readonly Coding ReferralToDiabeticLiaisonNurse = new Coding
     {
@@ -6078,7 +6078,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to psychologist
     /// </summary>
     public static readonly Coding ReferralToPsychologist = new Coding
     {
@@ -6087,7 +6087,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to colposcopy service
     /// </summary>
     public static readonly Coding ReferralToColposcopyService = new Coding
     {
@@ -6096,7 +6096,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to radiology service
     /// </summary>
     public static readonly Coding ReferralToRadiologyService = new Coding
     {
@@ -6105,7 +6105,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pathology service
     /// </summary>
     public static readonly Coding ReferralToPathologyService = new Coding
     {
@@ -6114,7 +6114,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to community day center
     /// </summary>
     public static readonly Coding ReferToCommunityDayCenter = new Coding
     {
@@ -6123,7 +6123,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to day hospital
     /// </summary>
     public static readonly Coding ReferToDayHospital = new Coding
     {
@@ -6132,7 +6132,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to optometrist
     /// </summary>
     public static readonly Coding ReferralToOptometrist = new Coding
     {
@@ -6141,7 +6141,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to school nurse
     /// </summary>
     public static readonly Coding ReferToSchoolNurse = new Coding
     {
@@ -6150,7 +6150,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to coroner
     /// </summary>
     public static readonly Coding ReferralToCoroner = new Coding
     {
@@ -6159,7 +6159,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to geneticist
     /// </summary>
     public static readonly Coding ReferralToGeneticist = new Coding
     {
@@ -6168,7 +6168,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to general physician
     /// </summary>
     public static readonly Coding ReferralToGeneralPhysician = new Coding
     {
@@ -6177,7 +6177,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to cardiologist
     /// </summary>
     public static readonly Coding ReferralToCardiologist = new Coding
     {
@@ -6186,7 +6186,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to dermatologist
     /// </summary>
     public static readonly Coding ReferralToDermatologist = new Coding
     {
@@ -6195,7 +6195,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical immunologist
     /// </summary>
     public static readonly Coding ReferralToClinicalImmunologist = new Coding
     {
@@ -6204,7 +6204,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to neurologist
     /// </summary>
     public static readonly Coding ReferralToNeurologist = new Coding
     {
@@ -6213,7 +6213,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to care of the elderly physician
     /// </summary>
     public static readonly Coding ReferralToCareOfTheElderlyPhysician = new Coding
     {
@@ -6222,7 +6222,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to gastroenterologist
     /// </summary>
     public static readonly Coding ReferralToGastroenterologist = new Coding
     {
@@ -6231,7 +6231,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to psychiatrist
     /// </summary>
     public static readonly Coding ReferralToPsychiatrist = new Coding
     {
@@ -6240,7 +6240,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to general surgeon
     /// </summary>
     public static readonly Coding ReferralToGeneralSurgeon = new Coding
     {
@@ -6249,7 +6249,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to ophthalmologist
     /// </summary>
     public static readonly Coding ReferralToOphthalmologist = new Coding
     {
@@ -6258,7 +6258,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to ear, nose and throat surgeon
     /// </summary>
     public static readonly Coding ReferralToEarNoseAndThroatSurgeon = new Coding
     {
@@ -6267,7 +6267,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to orthopedic surgeon
     /// </summary>
     public static readonly Coding ReferralToOrthopedicSurgeon = new Coding
     {
@@ -6276,7 +6276,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to neurosurgeon
     /// </summary>
     public static readonly Coding ReferralToNeurosurgeon = new Coding
     {
@@ -6285,7 +6285,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric surgeon
     /// </summary>
     public static readonly Coding ReferralToPediatricSurgeon = new Coding
     {
@@ -6294,7 +6294,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to obstetrician
     /// </summary>
     public static readonly Coding ReferralToObstetrician = new Coding
     {
@@ -6303,7 +6303,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to gynecologist
     /// </summary>
     public static readonly Coding ReferralToGynecologist = new Coding
     {
@@ -6312,7 +6312,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to surgeon
     /// </summary>
     public static readonly Coding PrivateReferralToSurgeon = new Coding
     {
@@ -6321,7 +6321,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child referral for audiology
     /// </summary>
     public static readonly Coding ChildReferralForAudiology = new Coding
     {
@@ -6330,7 +6330,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child referral for audiometry
     /// </summary>
     public static readonly Coding ChildReferralForAudiometry = new Coding
     {
@@ -6339,7 +6339,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child referral- speech therapy
     /// </summary>
     public static readonly Coding ChildReferralSpeechTherapy = new Coding
     {
@@ -6348,7 +6348,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child referral to optician
     /// </summary>
     public static readonly Coding ChildReferralToOptician = new Coding
     {
@@ -6357,7 +6357,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child referral - ophthalmology
     /// </summary>
     public static readonly Coding ChildReferralOphthalmology = new Coding
     {
@@ -6366,7 +6366,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to psychology service
     /// </summary>
     public static readonly Coding ReferralToPsychologyService = new Coding
     {
@@ -6375,7 +6375,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child referral - school psychologist
     /// </summary>
     public static readonly Coding ChildReferralSchoolPsychologist = new Coding
     {
@@ -6384,7 +6384,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child referral - clinical psychologist
     /// </summary>
     public static readonly Coding ChildReferralClinicalPsychologist = new Coding
     {
@@ -6393,7 +6393,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child referral - physiotherapy
     /// </summary>
     public static readonly Coding ChildReferralPhysiotherapy = new Coding
     {
@@ -6402,7 +6402,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child referral - community dentist
     /// </summary>
     public static readonly Coding ChildReferralCommunityDentist = new Coding
     {
@@ -6411,7 +6411,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child referral-social services
     /// </summary>
     public static readonly Coding ChildReferralSocialServices = new Coding
     {
@@ -6420,7 +6420,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for 24 hour blood pressure recording
     /// </summary>
     public static readonly Coding ReferralFor24HourBloodPressureRecording = new Coding
     {
@@ -6429,7 +6429,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for 24 hour ECG
     /// </summary>
     public static readonly Coding ReferralFor24HourECG = new Coding
     {
@@ -6438,7 +6438,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for exercise ECG
     /// </summary>
     public static readonly Coding ReferralForExerciseECG = new Coding
     {
@@ -6447,7 +6447,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Self-referral to service
     /// </summary>
     public static readonly Coding SelfReferralToService = new Coding
     {
@@ -6456,7 +6456,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hospital
     /// </summary>
     public static readonly Coding ReferralToHospital = new Coding
     {
@@ -6465,7 +6465,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by medical oncologist
     /// </summary>
     public static readonly Coding ReferralByMedicalOncologist = new Coding
     {
@@ -6474,7 +6474,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to medical oncologist
     /// </summary>
     public static readonly Coding ReferralToMedicalOncologist = new Coding
     {
@@ -6483,7 +6483,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to appliance service
     /// </summary>
     public static readonly Coding ReferralToApplianceService = new Coding
     {
@@ -6492,7 +6492,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to cosmetic camouflage service
     /// </summary>
     public static readonly Coding ReferralToCosmeticCamouflageService = new Coding
     {
@@ -6501,7 +6501,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to charitable service
     /// </summary>
     public static readonly Coding ReferralToCharitableService = new Coding
     {
@@ -6510,7 +6510,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric cardiologist
     /// </summary>
     public static readonly Coding ReferralToPediatricCardiologist = new Coding
     {
@@ -6519,7 +6519,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community child health doctor
     /// </summary>
     public static readonly Coding ReferralToCommunityChildHealthDoctor = new Coding
     {
@@ -6528,7 +6528,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to diabetes nurse
     /// </summary>
     public static readonly Coding ReferralToDiabetesNurse = new Coding
     {
@@ -6537,7 +6537,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to breast clinic
     /// </summary>
     public static readonly Coding ReferralToBreastClinic = new Coding
     {
@@ -6546,7 +6546,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to rapid access chest pain clinic
     /// </summary>
     public static readonly Coding ReferralToRapidAccessChestPainClinic = new Coding
     {
@@ -6555,7 +6555,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to stop-smoking clinic
     /// </summary>
     public static readonly Coding ReferralToStopSmokingClinic = new Coding
     {
@@ -6564,7 +6564,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Social service referral of home patient
     /// </summary>
     public static readonly Coding SocialServiceReferralOfHomePatient = new Coding
     {
@@ -6573,7 +6573,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to maxillofacial surgery service
     /// </summary>
     public static readonly Coding ReferralToMaxillofacialSurgeryService = new Coding
     {
@@ -6582,7 +6582,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to oral surgery service
     /// </summary>
     public static readonly Coding ReferralToOralSurgeryService = new Coding
     {
@@ -6591,7 +6591,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for alcoholism rehabilitation
     /// </summary>
     public static readonly Coding PatientReferralForAlcoholismRehabilitation = new Coding
     {
@@ -6600,7 +6600,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by optician
     /// </summary>
     public static readonly Coding ReferralByOptician = new Coding
     {
@@ -6609,7 +6609,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by optometrist
     /// </summary>
     public static readonly Coding ReferralByOptometrist = new Coding
     {
@@ -6618,7 +6618,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for echocardiography
     /// </summary>
     public static readonly Coding ReferralForEchocardiography = new Coding
     {
@@ -6627,7 +6627,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to respiratory rapid response team
     /// </summary>
     public static readonly Coding ReferralToRespiratoryRapidResponseTeam = new Coding
     {
@@ -6636,7 +6636,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to private state registered podiatry service
     /// </summary>
     public static readonly Coding ReferralToPrivateStateRegisteredPodiatryService = new Coding
     {
@@ -6645,7 +6645,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to retinal screener
     /// </summary>
     public static readonly Coding ReferralToRetinalScreener = new Coding
     {
@@ -6654,7 +6654,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community alcohol team
     /// </summary>
     public static readonly Coding ReferralToCommunityAlcoholTeam = new Coding
     {
@@ -6663,7 +6663,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for exercise therapy
     /// </summary>
     public static readonly Coding ReferralForExerciseTherapy = new Coding
     {
@@ -6672,7 +6672,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to mental health team
     /// </summary>
     public static readonly Coding ReferralToMentalHealthTeam = new Coding
     {
@@ -6681,7 +6681,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to GP - beta-blocker management
     /// </summary>
     public static readonly Coding ReferralToGPBetaBlockerManagement = new Coding
     {
@@ -6690,7 +6690,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to GP - aspirin management
     /// </summary>
     public static readonly Coding ReferralToGPAspirinManagement = new Coding
     {
@@ -6699,7 +6699,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to GP - lipid management
     /// </summary>
     public static readonly Coding ReferralToGPLipidManagement = new Coding
     {
@@ -6708,7 +6708,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to diabetic foot screener
     /// </summary>
     public static readonly Coding ReferToDiabeticFootScreener = new Coding
     {
@@ -6717,7 +6717,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to physical activity program
     /// </summary>
     public static readonly Coding ReferralToPhysicalActivityProgram = new Coding
     {
@@ -6726,7 +6726,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for dual energy X-ray photon absorptiometry scan
     /// </summary>
     public static readonly Coding ReferralForDualEnergyXRayPhotonAbsorptiometryScan = new Coding
     {
@@ -6735,7 +6735,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for quantitative ultrasound scan
     /// </summary>
     public static readonly Coding ReferralForQuantitativeUltrasoundScan = new Coding
     {
@@ -6744,7 +6744,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to osteoporosis specialist
     /// </summary>
     public static readonly Coding ReferToOsteoporosisSpecialist = new Coding
     {
@@ -6753,7 +6753,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer for falls assessment
     /// </summary>
     public static readonly Coding ReferForFallsAssessment = new Coding
     {
@@ -6762,7 +6762,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to soft tissue injury clinic
     /// </summary>
     public static readonly Coding ReferralToSoftTissueInjuryClinic = new Coding
     {
@@ -6771,7 +6771,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to smoking cessation advisor
     /// </summary>
     public static readonly Coding ReferralToSmokingCessationAdvisor = new Coding
     {
@@ -6780,7 +6780,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to urology service for hematuria
     /// </summary>
     public static readonly Coding ReferralToUrologyServiceForHematuria = new Coding
     {
@@ -6789,7 +6789,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for substance abuse
     /// </summary>
     public static readonly Coding ReferralForSubstanceAbuse = new Coding
     {
@@ -6798,7 +6798,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to urology service for elevated PSA
     /// </summary>
     public static readonly Coding ReferralToUrologyServiceForElevatedPSA = new Coding
     {
@@ -6807,7 +6807,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for therapeutic abortion
     /// </summary>
     public static readonly Coding ReferralForTherapeuticAbortion = new Coding
     {
@@ -6816,7 +6816,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to rheumatology service for osteoarthritis
     /// </summary>
     public static readonly Coding ReferralToRheumatologyServiceForOsteoarthritis = new Coding
     {
@@ -6825,7 +6825,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to urology service for recurrent female urinary tract infection
     /// </summary>
     public static readonly Coding ReferralToUrologyServiceForRecurrentFemaleUrinaryTractInfection = new Coding
     {
@@ -6834,7 +6834,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by emergency medical admissions unit
     /// </summary>
     public static readonly Coding ReferralByEmergencyMedicalAdmissionsUnit = new Coding
     {
@@ -6843,7 +6843,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by general dental practitioner
     /// </summary>
     public static readonly Coding ReferralByGeneralDentalPractitioner = new Coding
     {
@@ -6852,7 +6852,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by consultant - domiciliary visit
     /// </summary>
     public static readonly Coding ReferralByConsultantDomiciliaryVisit = new Coding
     {
@@ -6861,7 +6861,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by consultant
     /// </summary>
     public static readonly Coding ReferralByConsultant = new Coding
     {
@@ -6870,7 +6870,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by prosthetist
     /// </summary>
     public static readonly Coding ReferralByProsthetist = new Coding
     {
@@ -6879,7 +6879,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by Accident and Emergency
     /// </summary>
     public static readonly Coding ReferralByAccidentAndEmergency = new Coding
     {
@@ -6888,7 +6888,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by community dental service
     /// </summary>
     public static readonly Coding ReferralByCommunityDentalService = new Coding
     {
@@ -6897,7 +6897,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to weight maintenance regimen service
     /// </summary>
     public static readonly Coding ReferralToWeightMaintenanceRegimenService = new Coding
     {
@@ -6906,7 +6906,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community retinal screening service
     /// </summary>
     public static readonly Coding ReferralToCommunityRetinalScreeningService = new Coding
     {
@@ -6915,7 +6915,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for eye ultrasound
     /// </summary>
     public static readonly Coding ReferralForEyeUltrasound = new Coding
     {
@@ -6924,7 +6924,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to eating disorders clinic
     /// </summary>
     public static readonly Coding ReferralToEatingDisordersClinic = new Coding
     {
@@ -6933,7 +6933,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to community physiotherapist
     /// </summary>
     public static readonly Coding ReferToCommunityPhysiotherapist = new Coding
     {
@@ -6942,7 +6942,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to drug abuse counselor
     /// </summary>
     public static readonly Coding ReferralToDrugAbuseCounselor = new Coding
     {
@@ -6951,7 +6951,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to oral surgeon
     /// </summary>
     public static readonly Coding ReferralToOralSurgeon = new Coding
     {
@@ -6960,7 +6960,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to maxillofacial surgeon
     /// </summary>
     public static readonly Coding ReferralToMaxillofacialSurgeon = new Coding
     {
@@ -6969,7 +6969,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to pediatric dietitian
     /// </summary>
     public static readonly Coding ReferToPediatricDietitian = new Coding
     {
@@ -6978,7 +6978,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to footcare protection program
     /// </summary>
     public static readonly Coding ReferralToFootcareProtectionProgram = new Coding
     {
@@ -6987,7 +6987,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to multidisciplinary footcare team
     /// </summary>
     public static readonly Coding ReferToMultidisciplinaryFootcareTeam = new Coding
     {
@@ -6996,7 +6996,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to weight management program
     /// </summary>
     public static readonly Coding ReferToWeightManagementProgram = new Coding
     {
@@ -7005,7 +7005,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to tissue viability nurse specialist
     /// </summary>
     public static readonly Coding ReferralToTissueViabilityNurseSpecialist = new Coding
     {
@@ -7014,7 +7014,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for cataract extraction
     /// </summary>
     public static readonly Coding ReferralForCataractExtraction = new Coding
     {
@@ -7023,7 +7023,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for DXA scan of hip and spine
     /// </summary>
     public static readonly Coding ReferralForDXAScanOfHipAndSpine = new Coding
     {
@@ -7032,7 +7032,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for DXA scan of forearm
     /// </summary>
     public static readonly Coding ReferralForDXAScanOfForearm = new Coding
     {
@@ -7041,7 +7041,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for DXA scan of heel
     /// </summary>
     public static readonly Coding ReferralForDXAScanOfHeel = new Coding
     {
@@ -7050,7 +7050,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for quantitative ultrasound scan of heel
     /// </summary>
     public static readonly Coding ReferralForQuantitativeUltrasoundScanOfHeel = new Coding
     {
@@ -7059,7 +7059,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to sexually transmitted infections clinic
     /// </summary>
     public static readonly Coding ReferralToSexuallyTransmittedInfectionsClinic = new Coding
     {
@@ -7068,7 +7068,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to osteoporosis clinic
     /// </summary>
     public static readonly Coding ReferralToOsteoporosisClinic = new Coding
     {
@@ -7077,7 +7077,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to stroke clinic
     /// </summary>
     public static readonly Coding ReferralToStrokeClinic = new Coding
     {
@@ -7086,7 +7086,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for carotid doppler
     /// </summary>
     public static readonly Coding ReferralForCarotidDoppler = new Coding
     {
@@ -7095,7 +7095,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to respiratory nurse specialist
     /// </summary>
     public static readonly Coding ReferralToRespiratoryNurseSpecialist = new Coding
     {
@@ -7104,7 +7104,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to voluntary service
     /// </summary>
     public static readonly Coding ReferralToVoluntaryService = new Coding
     {
@@ -7113,7 +7113,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to learning disability team
     /// </summary>
     public static readonly Coding ReferralToLearningDisabilityTeam = new Coding
     {
@@ -7122,7 +7122,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to musculoskeletal clinic
     /// </summary>
     public static readonly Coding ReferralToMusculoskeletalClinic = new Coding
     {
@@ -7131,7 +7131,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient to initiate further contact
     /// </summary>
     public static readonly Coding PatientToInitiateFurtherContact = new Coding
     {
@@ -7140,7 +7140,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Family/carer referral to diabetes structured education program
     /// </summary>
     public static readonly Coding FamilyCarerReferralToDiabetesStructuredEducationProgram = new Coding
     {
@@ -7149,7 +7149,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for minor surgery
     /// </summary>
     public static readonly Coding ReferralForMinorSurgery = new Coding
     {
@@ -7158,7 +7158,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for spirometry
     /// </summary>
     public static readonly Coding ReferralForSpirometry = new Coding
     {
@@ -7167,7 +7167,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for termination of pregnancy
     /// </summary>
     public static readonly Coding ReferralForTerminationOfPregnancy = new Coding
     {
@@ -7176,7 +7176,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for warfarin monitoring
     /// </summary>
     public static readonly Coding ReferralForWarfarinMonitoring = new Coding
     {
@@ -7185,7 +7185,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to advanced primary nurse
     /// </summary>
     public static readonly Coding ReferralToAdvancedPrimaryNurse = new Coding
     {
@@ -7194,7 +7194,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to asthma clinic
     /// </summary>
     public static readonly Coding ReferralToAsthmaClinic = new Coding
     {
@@ -7203,7 +7203,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to cataract clinic
     /// </summary>
     public static readonly Coding ReferralToCataractClinic = new Coding
     {
@@ -7212,7 +7212,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community nursery nurse
     /// </summary>
     public static readonly Coding ReferralToCommunityNurseryNurse = new Coding
     {
@@ -7221,7 +7221,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to dermatology nurse specialist
     /// </summary>
     public static readonly Coding ReferralToDermatologyNurseSpecialist = new Coding
     {
@@ -7230,7 +7230,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to diabetes preconception counseling clinic
     /// </summary>
     public static readonly Coding ReferralToDiabetesPreconceptionCounselingClinic = new Coding
     {
@@ -7239,7 +7239,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to diabetes structured education program
     /// </summary>
     public static readonly Coding ReferralToDiabetesStructuredEducationProgram = new Coding
     {
@@ -7248,7 +7248,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to education service
     /// </summary>
     public static readonly Coding ReferralToEducationService = new Coding
     {
@@ -7257,7 +7257,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to genitourinary clinic
     /// </summary>
     public static readonly Coding ReferralToGenitourinaryClinic = new Coding
     {
@@ -7266,7 +7266,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to glaucoma clinic
     /// </summary>
     public static readonly Coding ReferralToGlaucomaClinic = new Coding
     {
@@ -7275,7 +7275,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to incontinence clinic
     /// </summary>
     public static readonly Coding ReferralToIncontinenceClinic = new Coding
     {
@@ -7284,7 +7284,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to male urology clinic
     /// </summary>
     public static readonly Coding ReferralToMaleUrologyClinic = new Coding
     {
@@ -7293,7 +7293,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to memory clinic
     /// </summary>
     public static readonly Coding ReferralToMemoryClinic = new Coding
     {
@@ -7302,7 +7302,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric endocrinologist
     /// </summary>
     public static readonly Coding ReferralToPediatricEndocrinologist = new Coding
     {
@@ -7311,7 +7311,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to psychosexual clinic
     /// </summary>
     public static readonly Coding ReferralToPsychosexualClinic = new Coding
     {
@@ -7320,7 +7320,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to rheumatology clinic
     /// </summary>
     public static readonly Coding ReferralToRheumatologyClinic = new Coding
     {
@@ -7329,7 +7329,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric dermatology service
     /// </summary>
     public static readonly Coding ReferralToPediatricDermatologyService = new Coding
     {
@@ -7338,7 +7338,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to home registered dietitian
     /// </summary>
     public static readonly Coding ReferralToHomeRegisteredDietitian = new Coding
     {
@@ -7347,7 +7347,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for neuropsychological testing
     /// </summary>
     public static readonly Coding ReferralForNeuropsychologicalTesting = new Coding
     {
@@ -7356,7 +7356,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric service for acne
     /// </summary>
     public static readonly Coding ReferralToPediatricServiceForAcne = new Coding
     {
@@ -7365,7 +7365,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for home intravenous medication administration
     /// </summary>
     public static readonly Coding ReferralForHomeIntravenousMedicationAdministration = new Coding
     {
@@ -7374,7 +7374,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for bipolar disorder
     /// </summary>
     public static readonly Coding ReferralForBipolarDisorder = new Coding
     {
@@ -7383,7 +7383,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to vasectomy clinic
     /// </summary>
     public static readonly Coding ReferralToVasectomyClinic = new Coding
     {
@@ -7392,7 +7392,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for sweat chloride test
     /// </summary>
     public static readonly Coding ReferralForSweatChlorideTest = new Coding
     {
@@ -7401,7 +7401,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for home tube feeding instruction
     /// </summary>
     public static readonly Coding ReferralForHomeTubeFeedingInstruction = new Coding
     {
@@ -7410,7 +7410,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for home physical therapy
     /// </summary>
     public static readonly Coding ReferralForHomePhysicalTherapy = new Coding
     {
@@ -7419,7 +7419,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community matron
     /// </summary>
     public static readonly Coding ReferralToCommunityMatron = new Coding
     {
@@ -7428,7 +7428,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to minor ailments clinic
     /// </summary>
     public static readonly Coding ReferralToMinorAilmentsClinic = new Coding
     {
@@ -7437,7 +7437,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to physiotherapist
     /// </summary>
     public static readonly Coding PrivateReferralToPhysiotherapist = new Coding
     {
@@ -7446,7 +7446,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for home based phlebotomy
     /// </summary>
     public static readonly Coding ReferralForHomeBasedPhlebotomy = new Coding
     {
@@ -7455,7 +7455,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for dialysis
     /// </summary>
     public static readonly Coding ReferralForDialysis = new Coding
     {
@@ -7464,7 +7464,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for hematuria
     /// </summary>
     public static readonly Coding ReferralForHematuria = new Coding
     {
@@ -7473,7 +7473,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community drug and alcohol team
     /// </summary>
     public static readonly Coding ReferralToCommunityDrugAndAlcoholTeam = new Coding
     {
@@ -7482,7 +7482,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for perinatal home care
     /// </summary>
     public static readonly Coding ReferralForPerinatalHomeCare = new Coding
     {
@@ -7491,7 +7491,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to heart failure nurse
     /// </summary>
     public static readonly Coding ReferralToHeartFailureNurse = new Coding
     {
@@ -7500,7 +7500,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for home nurse visit
     /// </summary>
     public static readonly Coding ReferralForHomeNurseVisit = new Coding
     {
@@ -7509,7 +7509,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to psycho-educational group
     /// </summary>
     public static readonly Coding ReferralToPsychoEducationalGroup = new Coding
     {
@@ -7518,7 +7518,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hospital-based discharge planning
     /// </summary>
     public static readonly Coding ReferralToHospitalBasedDischargePlanning = new Coding
     {
@@ -7527,7 +7527,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for proteinuria test
     /// </summary>
     public static readonly Coding ReferralForProteinuriaTest = new Coding
     {
@@ -7536,7 +7536,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to epidural anesthesia for reflex sympathetic dystrophy
     /// </summary>
     public static readonly Coding ReferralToEpiduralAnesthesiaForReflexSympatheticDystrophy = new Coding
     {
@@ -7545,7 +7545,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric cardiology service
     /// </summary>
     public static readonly Coding ReferralToPediatricCardiologyService = new Coding
     {
@@ -7554,7 +7554,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for pediatric arrhythmia
     /// </summary>
     public static readonly Coding ReferralForPediatricArrhythmia = new Coding
     {
@@ -7563,7 +7563,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to epidural anesthesia service
     /// </summary>
     public static readonly Coding ReferralToEpiduralAnesthesiaService = new Coding
     {
@@ -7572,7 +7572,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to home health care service
     /// </summary>
     public static readonly Coding ReferralToHomeHealthCareService = new Coding
     {
@@ -7581,7 +7581,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for pediatric congenital heart disease
     /// </summary>
     public static readonly Coding ReferralForPediatricCongenitalHeartDisease = new Coding
     {
@@ -7590,7 +7590,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refer to early pregnancy unit
     /// </summary>
     public static readonly Coding ReferToEarlyPregnancyUnit = new Coding
     {
@@ -7599,7 +7599,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to drug treatment center
     /// </summary>
     public static readonly Coding ReferralToDrugTreatmentCenter = new Coding
     {
@@ -7608,7 +7608,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to long term care service
     /// </summary>
     public static readonly Coding ReferralToLongTermCareService = new Coding
     {
@@ -7617,7 +7617,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to epidural anesthesia for spinal pain
     /// </summary>
     public static readonly Coding ReferralToEpiduralAnesthesiaForSpinalPain = new Coding
     {
@@ -7626,7 +7626,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for socioeconomic factors
     /// </summary>
     public static readonly Coding PatientReferralForSocioeconomicFactors = new Coding
     {
@@ -7635,7 +7635,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric pulmonologist
     /// </summary>
     public static readonly Coding ReferralToPediatricPulmonologist = new Coding
     {
@@ -7644,7 +7644,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for drug addiction rehabilitation
     /// </summary>
     public static readonly Coding PatientReferralForDrugAddictionRehabilitation = new Coding
     {
@@ -7653,7 +7653,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to diagnostic nuclear medicine service
     /// </summary>
     public static readonly Coding ReferralToDiagnosticNuclearMedicineService = new Coding
     {
@@ -7662,7 +7662,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to enuresis clinic
     /// </summary>
     public static readonly Coding ReferralToEnuresisClinic = new Coding
     {
@@ -7671,7 +7671,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to therapeutic nuclear medicine service
     /// </summary>
     public static readonly Coding ReferralToTherapeuticNuclearMedicineService = new Coding
     {
@@ -7680,7 +7680,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric gastroenterologist
     /// </summary>
     public static readonly Coding ReferralToPediatricGastroenterologist = new Coding
     {
@@ -7689,7 +7689,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by psychologist
     /// </summary>
     public static readonly Coding ReferralByPsychologist = new Coding
     {
@@ -7698,7 +7698,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by osteopath
     /// </summary>
     public static readonly Coding ReferralByOsteopath = new Coding
     {
@@ -7707,7 +7707,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for radionuclide myocardial perfusion study
     /// </summary>
     public static readonly Coding ReferralForRadionuclideMyocardialPerfusionStudy = new Coding
     {
@@ -7716,7 +7716,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to endodontic service
     /// </summary>
     public static readonly Coding ReferralToEndodonticService = new Coding
     {
@@ -7725,7 +7725,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to specialist alcohol treatment service
     /// </summary>
     public static readonly Coding ReferralToSpecialistAlcoholTreatmentService = new Coding
     {
@@ -7734,7 +7734,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to breast feeding peer support service
     /// </summary>
     public static readonly Coding ReferralToBreastFeedingPeerSupportService = new Coding
     {
@@ -7743,7 +7743,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to periodontic service
     /// </summary>
     public static readonly Coding ReferralToPeriodonticService = new Coding
     {
@@ -7752,7 +7752,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to prosthodontic service
     /// </summary>
     public static readonly Coding ReferralToProsthodonticService = new Coding
     {
@@ -7761,7 +7761,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to domestic violence advocate
     /// </summary>
     public static readonly Coding ReferralToDomesticViolenceAdvocate = new Coding
     {
@@ -7770,7 +7770,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to deep vein thrombosis clinic
     /// </summary>
     public static readonly Coding ReferralToDeepVeinThrombosisClinic = new Coding
     {
@@ -7779,7 +7779,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to educational psychologist
     /// </summary>
     public static readonly Coding ReferralToEducationalPsychologist = new Coding
     {
@@ -7788,7 +7788,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric occupational therapy service
     /// </summary>
     public static readonly Coding ReferralToPediatricOccupationalTherapyService = new Coding
     {
@@ -7797,7 +7797,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to sleep clinic
     /// </summary>
     public static readonly Coding ReferralToSleepClinic = new Coding
     {
@@ -7806,7 +7806,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for medical termination of pregnancy
     /// </summary>
     public static readonly Coding ReferralForMedicalTerminationOfPregnancy = new Coding
     {
@@ -7815,7 +7815,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pregnancy counseling service
     /// </summary>
     public static readonly Coding ReferralToPregnancyCounselingService = new Coding
     {
@@ -7824,7 +7824,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for surgical termination of pregnancy
     /// </summary>
     public static readonly Coding ReferralForSurgicalTerminationOfPregnancy = new Coding
     {
@@ -7833,7 +7833,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to infectious disease clinic
     /// </summary>
     public static readonly Coding ReferralToInfectiousDiseaseClinic = new Coding
     {
@@ -7842,7 +7842,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for ambulatory electrocardiogram
     /// </summary>
     public static readonly Coding ReferralForAmbulatoryElectrocardiogram = new Coding
     {
@@ -7851,7 +7851,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for consultation
     /// </summary>
     public static readonly Coding PatientReferralForConsultation = new Coding
     {
@@ -7860,7 +7860,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to social services for adult protection
     /// </summary>
     public static readonly Coding ReferralToSocialServicesForAdultProtection = new Coding
     {
@@ -7869,7 +7869,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for medical consultation
     /// </summary>
     public static readonly Coding PatientReferralForMedicalConsultation = new Coding
     {
@@ -7878,7 +7878,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for specialized institutional services
     /// </summary>
     public static readonly Coding PatientReferralForSpecializedInstitutionalServices = new Coding
     {
@@ -7887,7 +7887,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for psychiatric aftercare
     /// </summary>
     public static readonly Coding PatientReferralForPsychiatricAftercare = new Coding
     {
@@ -7896,7 +7896,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for special care, aging problem
     /// </summary>
     public static readonly Coding PatientReferralForSpecialCareAgingProblem = new Coding
     {
@@ -7905,7 +7905,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for rehabilitation, psychological
     /// </summary>
     public static readonly Coding PatientReferralForRehabilitationPsychological = new Coding
     {
@@ -7914,7 +7914,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to surgical transplant service for renal transplant evaluation
     /// </summary>
     public static readonly Coding ReferralToSurgicalTransplantServiceForRenalTransplantEvaluation = new Coding
     {
@@ -7923,7 +7923,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to tropical medicine clinic
     /// </summary>
     public static readonly Coding ReferralToTropicalMedicineClinic = new Coding
     {
@@ -7932,7 +7932,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to sleep apnea clinic
     /// </summary>
     public static readonly Coding ReferralToSleepApneaClinic = new Coding
     {
@@ -7941,7 +7941,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to nurse case manager
     /// </summary>
     public static readonly Coding ReferralToNurseCaseManager = new Coding
     {
@@ -7950,7 +7950,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hypnotherapist
     /// </summary>
     public static readonly Coding ReferralToHypnotherapist = new Coding
     {
@@ -7959,7 +7959,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to bariatric surgeon
     /// </summary>
     public static readonly Coding ReferralToBariatricSurgeon = new Coding
     {
@@ -7968,7 +7968,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for obstetric ultrasound scan
     /// </summary>
     public static readonly Coding ReferralForObstetricUltrasoundScan = new Coding
     {
@@ -7977,7 +7977,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral by podiatric surgeon
     /// </summary>
     public static readonly Coding ReferralByPodiatricSurgeon = new Coding
     {
@@ -7986,7 +7986,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to breast surgeon
     /// </summary>
     public static readonly Coding PrivateReferralToBreastSurgeon = new Coding
     {
@@ -7995,7 +7995,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to nurse complex case manager
     /// </summary>
     public static readonly Coding ReferralToNurseComplexCaseManager = new Coding
     {
@@ -8004,7 +8004,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to pediatric gynecology service
     /// </summary>
     public static readonly Coding ReferralToPediatricGynecologyService = new Coding
     {
@@ -8013,7 +8013,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for procedure
     /// </summary>
     public static readonly Coding ReferralForProcedure = new Coding
     {
@@ -8022,7 +8022,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for anesthesia consultation
     /// </summary>
     public static readonly Coding ReferralForAnesthesiaConsultation = new Coding
     {
@@ -8031,7 +8031,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for anesthesia management
     /// </summary>
     public static readonly Coding ReferralForAnesthesiaManagement = new Coding
     {
@@ -8040,7 +8040,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to hematuria clinic
     /// </summary>
     public static readonly Coding ReferralToHematuriaClinic = new Coding
     {
@@ -8049,7 +8049,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to clinical trial
     /// </summary>
     public static readonly Coding ReferralToClinicalTrial = new Coding
     {
@@ -8058,7 +8058,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for spirometry reversibility test
     /// </summary>
     public static readonly Coding ReferralForSpirometryReversibilityTest = new Coding
     {
@@ -8067,7 +8067,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to voluntary support service for carers
     /// </summary>
     public static readonly Coding ReferralToVoluntarySupportServiceForCarers = new Coding
     {
@@ -8076,7 +8076,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to maternity service
     /// </summary>
     public static readonly Coding ReferralToMaternityService = new Coding
     {
@@ -8085,7 +8085,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for cryopreservation
     /// </summary>
     public static readonly Coding ReferralForCryopreservation = new Coding
     {
@@ -8094,7 +8094,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for decongestive lymphatic therapy
     /// </summary>
     public static readonly Coding ReferralForDecongestiveLymphaticTherapy = new Coding
     {
@@ -8103,7 +8103,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to colorectal surgeon
     /// </summary>
     public static readonly Coding PrivateReferralToColorectalSurgeon = new Coding
     {
@@ -8112,7 +8112,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to podiatrist
     /// </summary>
     public static readonly Coding PrivateReferralToPodiatrist = new Coding
     {
@@ -8121,7 +8121,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private referral to radiologist
     /// </summary>
     public static readonly Coding PrivateReferralToRadiologist = new Coding
     {
@@ -8130,7 +8130,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to primary care service
     /// </summary>
     public static readonly Coding ReferralToPrimaryCareService = new Coding
     {
@@ -8139,7 +8139,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for overseas medical treatment
     /// </summary>
     public static readonly Coding ReferralForOverseasMedicalTreatment = new Coding
     {
@@ -8148,7 +8148,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to erectile dysfunction clinic
     /// </summary>
     public static readonly Coding ReferralToErectileDysfunctionClinic = new Coding
     {
@@ -8157,7 +8157,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to cardiac rehabilitation program
     /// </summary>
     public static readonly Coding ReferralToCardiacRehabilitationProgram = new Coding
     {
@@ -8166,7 +8166,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to heart failure exercise program
     /// </summary>
     public static readonly Coding ReferralToHeartFailureExerciseProgram = new Coding
     {
@@ -8175,7 +8175,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral for manual lymphatic drainage
     /// </summary>
     public static readonly Coding ReferralForManualLymphaticDrainage = new Coding
     {
@@ -8184,7 +8184,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to transient ischemic attack clinic
     /// </summary>
     public static readonly Coding ReferralToTransientIschemicAttackClinic = new Coding
     {
@@ -8193,7 +8193,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to physical training instructor
     /// </summary>
     public static readonly Coding ReferralToPhysicalTrainingInstructor = new Coding
     {
@@ -8202,7 +8202,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to self help service
     /// </summary>
     public static readonly Coding ReferralToSelfHelpService = new Coding
     {
@@ -8211,7 +8211,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to religious service
     /// </summary>
     public static readonly Coding ReferralToReligiousService = new Coding
     {
@@ -8220,7 +8220,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to legal service
     /// </summary>
     public static readonly Coding ReferralToLegalService = new Coding
     {
@@ -8229,7 +8229,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to housing service
     /// </summary>
     public static readonly Coding ReferralToHousingService = new Coding
     {
@@ -8238,7 +8238,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to funeral service
     /// </summary>
     public static readonly Coding ReferralToFuneralService = new Coding
     {
@@ -8247,7 +8247,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to financial service
     /// </summary>
     public static readonly Coding ReferralToFinancialService = new Coding
     {
@@ -8256,7 +8256,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to family therapy
     /// </summary>
     public static readonly Coding ReferralToFamilyTherapy = new Coding
     {
@@ -8265,7 +8265,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community service
     /// </summary>
     public static readonly Coding ReferralToCommunityService = new Coding
     {
@@ -8274,7 +8274,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to breastfeeding education class during prenatal period
     /// </summary>
     public static readonly Coding ReferralToBreastfeedingEducationClassDuringPrenatalPeriod = new Coding
     {
@@ -8283,7 +8283,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to support group
     /// </summary>
     public static readonly Coding ReferralToSupportGroup = new Coding
     {
@@ -8292,7 +8292,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to community meals service
     /// </summary>
     public static readonly Coding ReferralToCommunityMealsService = new Coding
     {
@@ -8301,7 +8301,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to health aide service
     /// </summary>
     public static readonly Coding ReferralToHealthAideService = new Coding
     {
@@ -8310,7 +8310,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to medical emergency team
     /// </summary>
     public static readonly Coding ReferralToMedicalEmergencyTeam = new Coding
     {
@@ -8319,7 +8319,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to cardiac rapid response team
     /// </summary>
     public static readonly Coding ReferralToCardiacRapidResponseTeam = new Coding
     {
@@ -8328,7 +8328,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to diabetes service
     /// </summary>
     public static readonly Coding ReferralToDiabetesService = new Coding
     {
@@ -8337,7 +8337,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to burns service
     /// </summary>
     public static readonly Coding ReferralToBurnsService = new Coding
     {
@@ -8346,7 +8346,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to critical care service
     /// </summary>
     public static readonly Coding ReferralToCriticalCareService = new Coding
     {
@@ -8355,7 +8355,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to sport and exercise medicine service
     /// </summary>
     public static readonly Coding ReferralToSportAndExerciseMedicineService = new Coding
     {
@@ -8364,7 +8364,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral to neurological physiotherapist
     /// </summary>
     public static readonly Coding ReferralToNeurologicalPhysiotherapist = new Coding
     {
@@ -8373,7 +8373,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for rehabilitation, physical
     /// </summary>
     public static readonly Coding PatientReferralForRehabilitationPhysical = new Coding
     {
@@ -8382,7 +8382,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for psychotherapy
     /// </summary>
     public static readonly Coding PatientReferralForPsychotherapy = new Coding
     {
@@ -8391,7 +8391,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for family planning
     /// </summary>
     public static readonly Coding PatientReferralForFamilyPlanning = new Coding
     {
@@ -8406,9 +8406,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientReferralToSpecialist = "103696004";
 
     /// <summary>
+    /// Literal for code: NONEPatientReferralToSpecialist
+    /// </summary>
+    public const string LiteralNONEPatientReferralToSpecialist = "http://snomed.info/sct#103696004";
+
+    /// <summary>
     /// Literal for code: PatientReferralForDentalCare
     /// </summary>
     public const string LiteralPatientReferralForDentalCare = "103697008";
+
+    /// <summary>
+    /// Literal for code: NONEPatientReferralForDentalCare
+    /// </summary>
+    public const string LiteralNONEPatientReferralForDentalCare = "http://snomed.info/sct#103697008";
 
     /// <summary>
     /// Literal for code: PatientReferralToNonPhysicianProvider
@@ -8416,9 +8426,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientReferralToNonPhysicianProvider = "103698003";
 
     /// <summary>
+    /// Literal for code: NONEPatientReferralToNonPhysicianProvider
+    /// </summary>
+    public const string LiteralNONEPatientReferralToNonPhysicianProvider = "http://snomed.info/sct#103698003";
+
+    /// <summary>
     /// Literal for code: PatientReferralToDietitian
     /// </summary>
     public const string LiteralPatientReferralToDietitian = "103699006";
+
+    /// <summary>
+    /// Literal for code: NONEPatientReferralToDietitian
+    /// </summary>
+    public const string LiteralNONEPatientReferralToDietitian = "http://snomed.info/sct#103699006";
 
     /// <summary>
     /// Literal for code: PatientReferralToMassageTherapist
@@ -8426,9 +8446,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientReferralToMassageTherapist = "103700007";
 
     /// <summary>
+    /// Literal for code: NONEPatientReferralToMassageTherapist
+    /// </summary>
+    public const string LiteralNONEPatientReferralToMassageTherapist = "http://snomed.info/sct#103700007";
+
+    /// <summary>
     /// Literal for code: PatientReferralToHomeopath
     /// </summary>
     public const string LiteralPatientReferralToHomeopath = "103701006";
+
+    /// <summary>
+    /// Literal for code: NONEPatientReferralToHomeopath
+    /// </summary>
+    public const string LiteralNONEPatientReferralToHomeopath = "http://snomed.info/sct#103701006";
 
     /// <summary>
     /// Literal for code: PatientReferralToNaturopath
@@ -8436,9 +8466,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientReferralToNaturopath = "103702004";
 
     /// <summary>
+    /// Literal for code: NONEPatientReferralToNaturopath
+    /// </summary>
+    public const string LiteralNONEPatientReferralToNaturopath = "http://snomed.info/sct#103702004";
+
+    /// <summary>
     /// Literal for code: PatientReferralToAcupuncturist
     /// </summary>
     public const string LiteralPatientReferralToAcupuncturist = "103703009";
+
+    /// <summary>
+    /// Literal for code: NONEPatientReferralToAcupuncturist
+    /// </summary>
+    public const string LiteralNONEPatientReferralToAcupuncturist = "http://snomed.info/sct#103703009";
 
     /// <summary>
     /// Literal for code: PatientReferralToSexTherapist
@@ -8446,9 +8486,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientReferralToSexTherapist = "103704003";
 
     /// <summary>
+    /// Literal for code: NONEPatientReferralToSexTherapist
+    /// </summary>
+    public const string LiteralNONEPatientReferralToSexTherapist = "http://snomed.info/sct#103704003";
+
+    /// <summary>
     /// Literal for code: ReferralOfPatientToCertifiedPastoralCaregiver
     /// </summary>
     public const string LiteralReferralOfPatientToCertifiedPastoralCaregiver = "105406002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralOfPatientToCertifiedPastoralCaregiver
+    /// </summary>
+    public const string LiteralNONEReferralOfPatientToCertifiedPastoralCaregiver = "http://snomed.info/sct#105406002";
 
     /// <summary>
     /// Literal for code: ReferralOfPatientToParishChaplainForFollowUpCare
@@ -8456,9 +8506,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralOfPatientToParishChaplainForFollowUpCare = "105407006";
 
     /// <summary>
+    /// Literal for code: NONEReferralOfPatientToParishChaplainForFollowUpCare
+    /// </summary>
+    public const string LiteralNONEReferralOfPatientToParishChaplainForFollowUpCare = "http://snomed.info/sct#105407006";
+
+    /// <summary>
     /// Literal for code: UrgentReferral
     /// </summary>
     public const string LiteralUrgentReferral = "134403003";
+
+    /// <summary>
+    /// Literal for code: NONEUrgentReferral
+    /// </summary>
+    public const string LiteralNONEUrgentReferral = "http://snomed.info/sct#134403003";
 
     /// <summary>
     /// Literal for code: ReferralToHeartFailureClinic
@@ -8466,9 +8526,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHeartFailureClinic = "134440006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHeartFailureClinic
+    /// </summary>
+    public const string LiteralNONEReferralToHeartFailureClinic = "http://snomed.info/sct#134440006";
+
+    /// <summary>
     /// Literal for code: ChildReferForSurveillance
     /// </summary>
     public const string LiteralChildReferForSurveillance = "170223003";
+
+    /// <summary>
+    /// Literal for code: NONEChildReferForSurveillance
+    /// </summary>
+    public const string LiteralNONEChildReferForSurveillance = "http://snomed.info/sct#170223003";
 
     /// <summary>
     /// Literal for code: ReferralOfChildToMedicalOfficer
@@ -8476,9 +8546,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralOfChildToMedicalOfficer = "170224009";
 
     /// <summary>
+    /// Literal for code: NONEReferralOfChildToMedicalOfficer
+    /// </summary>
+    public const string LiteralNONEReferralOfChildToMedicalOfficer = "http://snomed.info/sct#170224009";
+
+    /// <summary>
     /// Literal for code: ReferralOfChildToSchoolMedicalOfficer
     /// </summary>
     public const string LiteralReferralOfChildToSchoolMedicalOfficer = "170225005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralOfChildToSchoolMedicalOfficer
+    /// </summary>
+    public const string LiteralNONEReferralOfChildToSchoolMedicalOfficer = "http://snomed.info/sct#170225005";
 
     /// <summary>
     /// Literal for code: ReferralOfChildToSchoolNurse
@@ -8486,9 +8566,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralOfChildToSchoolNurse = "170229004";
 
     /// <summary>
+    /// Literal for code: NONEReferralOfChildToSchoolNurse
+    /// </summary>
+    public const string LiteralNONEReferralOfChildToSchoolNurse = "http://snomed.info/sct#170229004";
+
+    /// <summary>
     /// Literal for code: ReferralOfChildToChildGuidance
     /// </summary>
     public const string LiteralReferralOfChildToChildGuidance = "170230009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralOfChildToChildGuidance
+    /// </summary>
+    public const string LiteralNONEReferralOfChildToChildGuidance = "http://snomed.info/sct#170230009";
 
     /// <summary>
     /// Literal for code: PatientReferralForSpecialEducation
@@ -8496,9 +8586,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientReferralForSpecialEducation = "17294003";
 
     /// <summary>
+    /// Literal for code: NONEPatientReferralForSpecialEducation
+    /// </summary>
+    public const string LiteralNONEPatientReferralForSpecialEducation = "http://snomed.info/sct#17294003";
+
+    /// <summary>
     /// Literal for code: ReferralForFurtherCare
     /// </summary>
     public const string LiteralReferralForFurtherCare = "183444007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForFurtherCare
+    /// </summary>
+    public const string LiteralNONEReferralForFurtherCare = "http://snomed.info/sct#183444007";
 
     /// <summary>
     /// Literal for code: ReferralToPhysician
@@ -8506,9 +8606,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPhysician = "183515008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPhysician
+    /// </summary>
+    public const string LiteralNONEReferralToPhysician = "http://snomed.info/sct#183515008";
+
+    /// <summary>
     /// Literal for code: ReferralToGeneralMedicalService
     /// </summary>
     public const string LiteralReferralToGeneralMedicalService = "183516009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToGeneralMedicalService
+    /// </summary>
+    public const string LiteralNONEReferralToGeneralMedicalService = "http://snomed.info/sct#183516009";
 
     /// <summary>
     /// Literal for code: ReferralToPediatrician
@@ -8516,9 +8626,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPediatrician = "183517000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPediatrician
+    /// </summary>
+    public const string LiteralNONEReferralToPediatrician = "http://snomed.info/sct#183517000";
+
+    /// <summary>
     /// Literal for code: DermatologicalReferral
     /// </summary>
     public const string LiteralDermatologicalReferral = "183518005";
+
+    /// <summary>
+    /// Literal for code: NONEDermatologicalReferral
+    /// </summary>
+    public const string LiteralNONEDermatologicalReferral = "http://snomed.info/sct#183518005";
 
     /// <summary>
     /// Literal for code: ReferralToCardiologyService
@@ -8526,9 +8646,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCardiologyService = "183519002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCardiologyService
+    /// </summary>
+    public const string LiteralNONEReferralToCardiologyService = "http://snomed.info/sct#183519002";
+
+    /// <summary>
     /// Literal for code: ImmunologicalReferral
     /// </summary>
     public const string LiteralImmunologicalReferral = "183520008";
+
+    /// <summary>
+    /// Literal for code: NONEImmunologicalReferral
+    /// </summary>
+    public const string LiteralNONEImmunologicalReferral = "http://snomed.info/sct#183520008";
 
     /// <summary>
     /// Literal for code: ReferralToNeurologyService
@@ -8536,9 +8666,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToNeurologyService = "183521007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToNeurologyService
+    /// </summary>
+    public const string LiteralNONEReferralToNeurologyService = "http://snomed.info/sct#183521007";
+
+    /// <summary>
     /// Literal for code: ReferralToGeriatricMedicineService
     /// </summary>
     public const string LiteralReferralToGeriatricMedicineService = "183522000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToGeriatricMedicineService
+    /// </summary>
+    public const string LiteralNONEReferralToGeriatricMedicineService = "http://snomed.info/sct#183522000";
 
     /// <summary>
     /// Literal for code: ReferralToGastroenterologyService
@@ -8546,9 +8686,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToGastroenterologyService = "183523005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToGastroenterologyService
+    /// </summary>
+    public const string LiteralNONEReferralToGastroenterologyService = "http://snomed.info/sct#183523005";
+
+    /// <summary>
     /// Literal for code: PsychiatricReferral
     /// </summary>
     public const string LiteralPsychiatricReferral = "183524004";
+
+    /// <summary>
+    /// Literal for code: NONEPsychiatricReferral
+    /// </summary>
+    public const string LiteralNONEPsychiatricReferral = "http://snomed.info/sct#183524004";
 
     /// <summary>
     /// Literal for code: ReferralToPsychiatristForTheElderlyMentallyIll
@@ -8556,9 +8706,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPsychiatristForTheElderlyMentallyIll = "183528001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPsychiatristForTheElderlyMentallyIll
+    /// </summary>
+    public const string LiteralNONEReferralToPsychiatristForTheElderlyMentallyIll = "http://snomed.info/sct#183528001";
+
+    /// <summary>
     /// Literal for code: ReferralToOncologist
     /// </summary>
     public const string LiteralReferralToOncologist = "183529009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToOncologist
+    /// </summary>
+    public const string LiteralNONEReferralToOncologist = "http://snomed.info/sct#183529009";
 
     /// <summary>
     /// Literal for code: ReferralToDiabetologist
@@ -8566,9 +8726,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToDiabetologist = "183530004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToDiabetologist
+    /// </summary>
+    public const string LiteralNONEReferralToDiabetologist = "http://snomed.info/sct#183530004";
+
+    /// <summary>
     /// Literal for code: ReferralToClinicalPharmacologist
     /// </summary>
     public const string LiteralReferralToClinicalPharmacologist = "183532007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToClinicalPharmacologist
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalPharmacologist = "http://snomed.info/sct#183532007";
 
     /// <summary>
     /// Literal for code: ReferralToSurgeon
@@ -8576,9 +8746,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToSurgeon = "183541002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToSurgeon = "http://snomed.info/sct#183541002";
+
+    /// <summary>
     /// Literal for code: ReferralToGeneralSurgicalService
     /// </summary>
     public const string LiteralReferralToGeneralSurgicalService = "183542009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToGeneralSurgicalService
+    /// </summary>
+    public const string LiteralNONEReferralToGeneralSurgicalService = "http://snomed.info/sct#183542009";
 
     /// <summary>
     /// Literal for code: OphthalmologicalReferral
@@ -8586,9 +8766,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOphthalmologicalReferral = "183543004";
 
     /// <summary>
+    /// Literal for code: NONEOphthalmologicalReferral
+    /// </summary>
+    public const string LiteralNONEOphthalmologicalReferral = "http://snomed.info/sct#183543004";
+
+    /// <summary>
     /// Literal for code: ReferralToEarNoseAndThroatService
     /// </summary>
     public const string LiteralReferralToEarNoseAndThroatService = "183544005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToEarNoseAndThroatService
+    /// </summary>
+    public const string LiteralNONEReferralToEarNoseAndThroatService = "http://snomed.info/sct#183544005";
 
     /// <summary>
     /// Literal for code: OrthopedicReferral
@@ -8596,9 +8786,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOrthopedicReferral = "183545006";
 
     /// <summary>
+    /// Literal for code: NONEOrthopedicReferral
+    /// </summary>
+    public const string LiteralNONEOrthopedicReferral = "http://snomed.info/sct#183545006";
+
+    /// <summary>
     /// Literal for code: NeurosurgicalReferral
     /// </summary>
     public const string LiteralNeurosurgicalReferral = "183546007";
+
+    /// <summary>
+    /// Literal for code: NONENeurosurgicalReferral
+    /// </summary>
+    public const string LiteralNONENeurosurgicalReferral = "http://snomed.info/sct#183546007";
 
     /// <summary>
     /// Literal for code: PediatricSurgicalReferral
@@ -8606,9 +8806,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPediatricSurgicalReferral = "183547003";
 
     /// <summary>
+    /// Literal for code: NONEPediatricSurgicalReferral
+    /// </summary>
+    public const string LiteralNONEPediatricSurgicalReferral = "http://snomed.info/sct#183547003";
+
+    /// <summary>
     /// Literal for code: ReferralToObstetricsService
     /// </summary>
     public const string LiteralReferralToObstetricsService = "183548008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToObstetricsService
+    /// </summary>
+    public const string LiteralNONEReferralToObstetricsService = "http://snomed.info/sct#183548008";
 
     /// <summary>
     /// Literal for code: GynecologicalReferral
@@ -8616,9 +8826,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGynecologicalReferral = "183549000";
 
     /// <summary>
+    /// Literal for code: NONEGynecologicalReferral
+    /// </summary>
+    public const string LiteralNONEGynecologicalReferral = "http://snomed.info/sct#183549000";
+
+    /// <summary>
     /// Literal for code: BurnsReferral
     /// </summary>
     public const string LiteralBurnsReferral = "183555005";
+
+    /// <summary>
+    /// Literal for code: NONEBurnsReferral
+    /// </summary>
+    public const string LiteralNONEBurnsReferral = "http://snomed.info/sct#183555005";
 
     /// <summary>
     /// Literal for code: ReferralToCardiothoracicSurgeon
@@ -8626,9 +8846,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCardiothoracicSurgeon = "183557002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCardiothoracicSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToCardiothoracicSurgeon = "http://snomed.info/sct#183557002";
+
+    /// <summary>
     /// Literal for code: ReferralToGP
     /// </summary>
     public const string LiteralReferralToGP = "183561008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToGP
+    /// </summary>
+    public const string LiteralNONEReferralToGP = "http://snomed.info/sct#183561008";
 
     /// <summary>
     /// Literal for code: ReferToHouseOfficer
@@ -8636,9 +8866,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToHouseOfficer = "183563006";
 
     /// <summary>
+    /// Literal for code: NONEReferToHouseOfficer
+    /// </summary>
+    public const string LiteralNONEReferToHouseOfficer = "http://snomed.info/sct#183563006";
+
+    /// <summary>
     /// Literal for code: ReferToHospitalRegistrar
     /// </summary>
     public const string LiteralReferToHospitalRegistrar = "183564000";
+
+    /// <summary>
+    /// Literal for code: NONEReferToHospitalRegistrar
+    /// </summary>
+    public const string LiteralNONEReferToHospitalRegistrar = "http://snomed.info/sct#183564000";
 
     /// <summary>
     /// Literal for code: ReferToChildMedicalOfficer
@@ -8646,9 +8886,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToChildMedicalOfficer = "183565004";
 
     /// <summary>
+    /// Literal for code: NONEReferToChildMedicalOfficer
+    /// </summary>
+    public const string LiteralNONEReferToChildMedicalOfficer = "http://snomed.info/sct#183565004";
+
+    /// <summary>
     /// Literal for code: ReferralToHematologist
     /// </summary>
     public const string LiteralReferralToHematologist = "183567007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToHematologist
+    /// </summary>
+    public const string LiteralNONEReferralToHematologist = "http://snomed.info/sct#183567007";
 
     /// <summary>
     /// Literal for code: ReferToPainClinic
@@ -8656,9 +8906,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToPainClinic = "183568002";
 
     /// <summary>
+    /// Literal for code: NONEReferToPainClinic
+    /// </summary>
+    public const string LiteralNONEReferToPainClinic = "http://snomed.info/sct#183568002";
+
+    /// <summary>
     /// Literal for code: ReferToTerminalCareConsult
     /// </summary>
     public const string LiteralReferToTerminalCareConsult = "183569005";
+
+    /// <summary>
+    /// Literal for code: NONEReferToTerminalCareConsult
+    /// </summary>
+    public const string LiteralNONEReferToTerminalCareConsult = "http://snomed.info/sct#183569005";
 
     /// <summary>
     /// Literal for code: ReferToMentalHealthWorker
@@ -8666,9 +8926,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToMentalHealthWorker = "183583007";
 
     /// <summary>
+    /// Literal for code: NONEReferToMentalHealthWorker
+    /// </summary>
+    public const string LiteralNONEReferToMentalHealthWorker = "http://snomed.info/sct#183583007";
+
+    /// <summary>
     /// Literal for code: ReferralToCommunityPsychiatricNurse
     /// </summary>
     public const string LiteralReferralToCommunityPsychiatricNurse = "183584001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCommunityPsychiatricNurse
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityPsychiatricNurse = "http://snomed.info/sct#183584001";
 
     /// <summary>
     /// Literal for code: ReferToPartner
@@ -8676,9 +8946,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToPartner = "183591003";
 
     /// <summary>
+    /// Literal for code: NONEReferToPartner
+    /// </summary>
+    public const string LiteralNONEReferToPartner = "http://snomed.info/sct#183591003";
+
+    /// <summary>
     /// Literal for code: ReferForTerminalCare
     /// </summary>
     public const string LiteralReferForTerminalCare = "183595007";
+
+    /// <summary>
+    /// Literal for code: NONEReferForTerminalCare
+    /// </summary>
+    public const string LiteralNONEReferForTerminalCare = "http://snomed.info/sct#183595007";
 
     /// <summary>
     /// Literal for code: ReferForColposcopy
@@ -8686,9 +8966,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferForColposcopy = "183597004";
 
     /// <summary>
+    /// Literal for code: NONEReferForColposcopy
+    /// </summary>
+    public const string LiteralNONEReferForColposcopy = "http://snomed.info/sct#183597004";
+
+    /// <summary>
     /// Literal for code: ReferToRadiologyDepartment
     /// </summary>
     public const string LiteralReferToRadiologyDepartment = "183598009";
+
+    /// <summary>
+    /// Literal for code: NONEReferToRadiologyDepartment
+    /// </summary>
+    public const string LiteralNONEReferToRadiologyDepartment = "http://snomed.info/sct#183598009";
 
     /// <summary>
     /// Literal for code: ReferralForCounselingForTerminationOfPregnancy
@@ -8696,9 +8986,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForCounselingForTerminationOfPregnancy = "183606009";
 
     /// <summary>
+    /// Literal for code: NONEReferralForCounselingForTerminationOfPregnancy
+    /// </summary>
+    public const string LiteralNONEReferralForCounselingForTerminationOfPregnancy = "http://snomed.info/sct#183606009";
+
+    /// <summary>
     /// Literal for code: ReferToAcupuncture
     /// </summary>
     public const string LiteralReferToAcupuncture = "183608005";
+
+    /// <summary>
+    /// Literal for code: NONEReferToAcupuncture
+    /// </summary>
+    public const string LiteralNONEReferToAcupuncture = "http://snomed.info/sct#183608005";
 
     /// <summary>
     /// Literal for code: ReferToOccupationalHealthDepartment
@@ -8706,9 +9006,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToOccupationalHealthDepartment = "183612004";
 
     /// <summary>
+    /// Literal for code: NONEReferToOccupationalHealthDepartment
+    /// </summary>
+    public const string LiteralNONEReferToOccupationalHealthDepartment = "http://snomed.info/sct#183612004";
+
+    /// <summary>
     /// Literal for code: ReferToHospitalCasualty
     /// </summary>
     public const string LiteralReferToHospitalCasualty = "183659006";
+
+    /// <summary>
+    /// Literal for code: NONEReferToHospitalCasualty
+    /// </summary>
+    public const string LiteralNONEReferToHospitalCasualty = "http://snomed.info/sct#183659006";
 
     /// <summary>
     /// Literal for code: ReferToAAndEDepartment
@@ -8716,9 +9026,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToAAndEDepartment = "183660001";
 
     /// <summary>
+    /// Literal for code: NONEReferToAAndEDepartment
+    /// </summary>
+    public const string LiteralNONEReferToAAndEDepartment = "http://snomed.info/sct#183660001";
+
+    /// <summary>
     /// Literal for code: ReferToHospitalEyeCasualty
     /// </summary>
     public const string LiteralReferToHospitalEyeCasualty = "183661002";
+
+    /// <summary>
+    /// Literal for code: NONEReferToHospitalEyeCasualty
+    /// </summary>
+    public const string LiteralNONEReferToHospitalEyeCasualty = "http://snomed.info/sct#183661002";
 
     /// <summary>
     /// Literal for code: ReferToHospitalPediatricsCasualty
@@ -8726,9 +9046,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToHospitalPediatricsCasualty = "183662009";
 
     /// <summary>
+    /// Literal for code: NONEReferToHospitalPediatricsCasualty
+    /// </summary>
+    public const string LiteralNONEReferToHospitalPediatricsCasualty = "http://snomed.info/sct#183662009";
+
+    /// <summary>
     /// Literal for code: ReferToHospitalOPD
     /// </summary>
     public const string LiteralReferToHospitalOPD = "183664005";
+
+    /// <summary>
+    /// Literal for code: NONEReferToHospitalOPD
+    /// </summary>
+    public const string LiteralNONEReferToHospitalOPD = "http://snomed.info/sct#183664005";
 
     /// <summary>
     /// Literal for code: ReferToDomiciliaryPhysiotherapy
@@ -8736,9 +9066,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToDomiciliaryPhysiotherapy = "183683003";
 
     /// <summary>
+    /// Literal for code: NONEReferToDomiciliaryPhysiotherapy
+    /// </summary>
+    public const string LiteralNONEReferToDomiciliaryPhysiotherapy = "http://snomed.info/sct#183683003";
+
+    /// <summary>
     /// Literal for code: ReferralToMacmillanNurse
     /// </summary>
     public const string LiteralReferralToMacmillanNurse = "183684009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToMacmillanNurse
+    /// </summary>
+    public const string LiteralNONEReferralToMacmillanNurse = "http://snomed.info/sct#183684009";
 
     /// <summary>
     /// Literal for code: ReferNoDirectConsultation
@@ -8746,9 +9086,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferNoDirectConsultation = "183686006";
 
     /// <summary>
+    /// Literal for code: NONEReferNoDirectConsultation
+    /// </summary>
+    public const string LiteralNONEReferNoDirectConsultation = "http://snomed.info/sct#183686006";
+
+    /// <summary>
     /// Literal for code: SelfReferralToHospital
     /// </summary>
     public const string LiteralSelfReferralToHospital = "183687002";
+
+    /// <summary>
+    /// Literal for code: NONESelfReferralToHospital
+    /// </summary>
+    public const string LiteralNONESelfReferralToHospital = "http://snomed.info/sct#183687002";
 
     /// <summary>
     /// Literal for code: GeneralMedicalSelfReferral
@@ -8756,9 +9106,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGeneralMedicalSelfReferral = "183688007";
 
     /// <summary>
+    /// Literal for code: NONEGeneralMedicalSelfReferral
+    /// </summary>
+    public const string LiteralNONEGeneralMedicalSelfReferral = "http://snomed.info/sct#183688007";
+
+    /// <summary>
     /// Literal for code: GeneralSurgicalSelfReferral
     /// </summary>
     public const string LiteralGeneralSurgicalSelfReferral = "183689004";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralSurgicalSelfReferral
+    /// </summary>
+    public const string LiteralNONEGeneralSurgicalSelfReferral = "http://snomed.info/sct#183689004";
 
     /// <summary>
     /// Literal for code: PsychiatricSelfReferral
@@ -8766,9 +9126,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPsychiatricSelfReferral = "183690008";
 
     /// <summary>
+    /// Literal for code: NONEPsychiatricSelfReferral
+    /// </summary>
+    public const string LiteralNONEPsychiatricSelfReferral = "http://snomed.info/sct#183690008";
+
+    /// <summary>
     /// Literal for code: GeriatricSelfReferral
     /// </summary>
     public const string LiteralGeriatricSelfReferral = "183691007";
+
+    /// <summary>
+    /// Literal for code: NONEGeriatricSelfReferral
+    /// </summary>
+    public const string LiteralNONEGeriatricSelfReferral = "http://snomed.info/sct#183691007";
 
     /// <summary>
     /// Literal for code: PediatricSelfReferral
@@ -8776,9 +9146,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPediatricSelfReferral = "183692000";
 
     /// <summary>
+    /// Literal for code: NONEPediatricSelfReferral
+    /// </summary>
+    public const string LiteralNONEPediatricSelfReferral = "http://snomed.info/sct#183692000";
+
+    /// <summary>
     /// Literal for code: GynecologicalSelfReferral
     /// </summary>
     public const string LiteralGynecologicalSelfReferral = "183693005";
+
+    /// <summary>
+    /// Literal for code: NONEGynecologicalSelfReferral
+    /// </summary>
+    public const string LiteralNONEGynecologicalSelfReferral = "http://snomed.info/sct#183693005";
 
     /// <summary>
     /// Literal for code: ObstetricSelfReferral
@@ -8786,9 +9166,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralObstetricSelfReferral = "183695003";
 
     /// <summary>
+    /// Literal for code: NONEObstetricSelfReferral
+    /// </summary>
+    public const string LiteralNONEObstetricSelfReferral = "http://snomed.info/sct#183695003";
+
+    /// <summary>
     /// Literal for code: OrthopedicSelfReferral
     /// </summary>
     public const string LiteralOrthopedicSelfReferral = "183696002";
+
+    /// <summary>
+    /// Literal for code: NONEOrthopedicSelfReferral
+    /// </summary>
+    public const string LiteralNONEOrthopedicSelfReferral = "http://snomed.info/sct#183696002";
 
     /// <summary>
     /// Literal for code: ENTSelfReferral
@@ -8796,9 +9186,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralENTSelfReferral = "183697006";
 
     /// <summary>
+    /// Literal for code: NONEENTSelfReferral
+    /// </summary>
+    public const string LiteralNONEENTSelfReferral = "http://snomed.info/sct#183697006";
+
+    /// <summary>
     /// Literal for code: OphthalmologySelfReferral
     /// </summary>
     public const string LiteralOphthalmologySelfReferral = "183699009";
+
+    /// <summary>
+    /// Literal for code: NONEOphthalmologySelfReferral
+    /// </summary>
+    public const string LiteralNONEOphthalmologySelfReferral = "http://snomed.info/sct#183699009";
 
     /// <summary>
     /// Literal for code: RheumatologySelfReferral
@@ -8806,9 +9206,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRheumatologySelfReferral = "183700005";
 
     /// <summary>
+    /// Literal for code: NONERheumatologySelfReferral
+    /// </summary>
+    public const string LiteralNONERheumatologySelfReferral = "http://snomed.info/sct#183700005";
+
+    /// <summary>
     /// Literal for code: DermatologySelfReferral
     /// </summary>
     public const string LiteralDermatologySelfReferral = "183701009";
+
+    /// <summary>
+    /// Literal for code: NONEDermatologySelfReferral
+    /// </summary>
+    public const string LiteralNONEDermatologySelfReferral = "http://snomed.info/sct#183701009";
 
     /// <summary>
     /// Literal for code: NeurologySelfReferral
@@ -8816,9 +9226,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNeurologySelfReferral = "183702002";
 
     /// <summary>
+    /// Literal for code: NONENeurologySelfReferral
+    /// </summary>
+    public const string LiteralNONENeurologySelfReferral = "http://snomed.info/sct#183702002";
+
+    /// <summary>
     /// Literal for code: UrologySelfReferral
     /// </summary>
     public const string LiteralUrologySelfReferral = "183703007";
+
+    /// <summary>
+    /// Literal for code: NONEUrologySelfReferral
+    /// </summary>
+    public const string LiteralNONEUrologySelfReferral = "http://snomed.info/sct#183703007";
 
     /// <summary>
     /// Literal for code: RadiotherapySelfReferral
@@ -8826,9 +9246,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiotherapySelfReferral = "183704001";
 
     /// <summary>
+    /// Literal for code: NONERadiotherapySelfReferral
+    /// </summary>
+    public const string LiteralNONERadiotherapySelfReferral = "http://snomed.info/sct#183704001";
+
+    /// <summary>
     /// Literal for code: HematologySelfReferral
     /// </summary>
     public const string LiteralHematologySelfReferral = "183705000";
+
+    /// <summary>
+    /// Literal for code: NONEHematologySelfReferral
+    /// </summary>
+    public const string LiteralNONEHematologySelfReferral = "http://snomed.info/sct#183705000";
 
     /// <summary>
     /// Literal for code: PlasticSurgerySelfReferral
@@ -8836,9 +9266,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlasticSurgerySelfReferral = "183706004";
 
     /// <summary>
+    /// Literal for code: NONEPlasticSurgerySelfReferral
+    /// </summary>
+    public const string LiteralNONEPlasticSurgerySelfReferral = "http://snomed.info/sct#183706004";
+
+    /// <summary>
     /// Literal for code: ReferralForHematologyTest
     /// </summary>
     public const string LiteralReferralForHematologyTest = "183819005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForHematologyTest
+    /// </summary>
+    public const string LiteralNONEReferralForHematologyTest = "http://snomed.info/sct#183819005";
 
     /// <summary>
     /// Literal for code: ReferForMicrobiologicalTest
@@ -8846,9 +9286,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferForMicrobiologicalTest = "183820004";
 
     /// <summary>
+    /// Literal for code: NONEReferForMicrobiologicalTest
+    /// </summary>
+    public const string LiteralNONEReferForMicrobiologicalTest = "http://snomed.info/sct#183820004";
+
+    /// <summary>
     /// Literal for code: ReferForBiochemicalTest
     /// </summary>
     public const string LiteralReferForBiochemicalTest = "183821000";
+
+    /// <summary>
+    /// Literal for code: NONEReferForBiochemicalTest
+    /// </summary>
+    public const string LiteralNONEReferForBiochemicalTest = "http://snomed.info/sct#183821000";
 
     /// <summary>
     /// Literal for code: ReferForRadioimmuneAssay
@@ -8856,9 +9306,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferForRadioimmuneAssay = "183822007";
 
     /// <summary>
+    /// Literal for code: NONEReferForRadioimmuneAssay
+    /// </summary>
+    public const string LiteralNONEReferForRadioimmuneAssay = "http://snomed.info/sct#183822007";
+
+    /// <summary>
     /// Literal for code: ReferForThyroidTest
     /// </summary>
     public const string LiteralReferForThyroidTest = "183823002";
+
+    /// <summary>
+    /// Literal for code: NONEReferForThyroidTest
+    /// </summary>
+    public const string LiteralNONEReferForThyroidTest = "http://snomed.info/sct#183823002";
 
     /// <summary>
     /// Literal for code: ReferForCytologicalTest
@@ -8866,9 +9326,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferForCytologicalTest = "183824008";
 
     /// <summary>
+    /// Literal for code: NONEReferForCytologicalTest
+    /// </summary>
+    public const string LiteralNONEReferForCytologicalTest = "http://snomed.info/sct#183824008";
+
+    /// <summary>
     /// Literal for code: ReferForHistology
     /// </summary>
     public const string LiteralReferForHistology = "183825009";
+
+    /// <summary>
+    /// Literal for code: NONEReferForHistology
+    /// </summary>
+    public const string LiteralNONEReferForHistology = "http://snomed.info/sct#183825009";
 
     /// <summary>
     /// Literal for code: ReferForSerologicalTesting
@@ -8876,9 +9346,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferForSerologicalTesting = "183826005";
 
     /// <summary>
+    /// Literal for code: NONEReferForSerologicalTesting
+    /// </summary>
+    public const string LiteralNONEReferForSerologicalTesting = "http://snomed.info/sct#183826005";
+
+    /// <summary>
     /// Literal for code: ReferForImmunologicalTest
     /// </summary>
     public const string LiteralReferForImmunologicalTest = "183827001";
+
+    /// <summary>
+    /// Literal for code: NONEReferForImmunologicalTest
+    /// </summary>
+    public const string LiteralNONEReferForImmunologicalTest = "http://snomed.info/sct#183827001";
 
     /// <summary>
     /// Literal for code: ReferForImaging
@@ -8886,9 +9366,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferForImaging = "183829003";
 
     /// <summary>
+    /// Literal for code: NONEReferForImaging
+    /// </summary>
+    public const string LiteralNONEReferForImaging = "http://snomed.info/sct#183829003";
+
+    /// <summary>
     /// Literal for code: ReferForXRay
     /// </summary>
     public const string LiteralReferForXRay = "183830008";
+
+    /// <summary>
+    /// Literal for code: NONEReferForXRay
+    /// </summary>
+    public const string LiteralNONEReferForXRay = "http://snomed.info/sct#183830008";
 
     /// <summary>
     /// Literal for code: ReferForUltrasoundInvestigation
@@ -8896,9 +9386,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferForUltrasoundInvestigation = "183831007";
 
     /// <summary>
+    /// Literal for code: NONEReferForUltrasoundInvestigation
+    /// </summary>
+    public const string LiteralNONEReferForUltrasoundInvestigation = "http://snomed.info/sct#183831007";
+
+    /// <summary>
     /// Literal for code: ReferForNMRScanning
     /// </summary>
     public const string LiteralReferForNMRScanning = "183832000";
+
+    /// <summary>
+    /// Literal for code: NONEReferForNMRScanning
+    /// </summary>
+    public const string LiteralNONEReferForNMRScanning = "http://snomed.info/sct#183832000";
 
     /// <summary>
     /// Literal for code: ReferForCATScanning
@@ -8906,9 +9406,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferForCATScanning = "183833005";
 
     /// <summary>
+    /// Literal for code: NONEReferForCATScanning
+    /// </summary>
+    public const string LiteralNONEReferForCATScanning = "http://snomed.info/sct#183833005";
+
+    /// <summary>
     /// Literal for code: ReferForMedicalPhotography
     /// </summary>
     public const string LiteralReferForMedicalPhotography = "183834004";
+
+    /// <summary>
+    /// Literal for code: NONEReferForMedicalPhotography
+    /// </summary>
+    public const string LiteralNONEReferForMedicalPhotography = "http://snomed.info/sct#183834004";
 
     /// <summary>
     /// Literal for code: ReferForAngiogram
@@ -8916,9 +9426,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferForAngiogram = "183835003";
 
     /// <summary>
+    /// Literal for code: NONEReferForAngiogram
+    /// </summary>
+    public const string LiteralNONEReferForAngiogram = "http://snomed.info/sct#183835003";
+
+    /// <summary>
     /// Literal for code: ReferForECGRecording
     /// </summary>
     public const string LiteralReferForECGRecording = "183838001";
+
+    /// <summary>
+    /// Literal for code: NONEReferForECGRecording
+    /// </summary>
+    public const string LiteralNONEReferForECGRecording = "http://snomed.info/sct#183838001";
 
     /// <summary>
     /// Literal for code: ReferForAudiometry
@@ -8926,9 +9446,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferForAudiometry = "183839009";
 
     /// <summary>
+    /// Literal for code: NONEReferForAudiometry
+    /// </summary>
+    public const string LiteralNONEReferForAudiometry = "http://snomed.info/sct#183839009";
+
+    /// <summary>
     /// Literal for code: ReferForNerveConductStudy
     /// </summary>
     public const string LiteralReferForNerveConductStudy = "183840006";
+
+    /// <summary>
+    /// Literal for code: NONEReferForNerveConductStudy
+    /// </summary>
+    public const string LiteralNONEReferForNerveConductStudy = "http://snomed.info/sct#183840006";
 
     /// <summary>
     /// Literal for code: ReferForLungFunctionTest
@@ -8936,9 +9466,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferForLungFunctionTest = "183841005";
 
     /// <summary>
+    /// Literal for code: NONEReferForLungFunctionTest
+    /// </summary>
+    public const string LiteralNONEReferForLungFunctionTest = "http://snomed.info/sct#183841005";
+
+    /// <summary>
     /// Literal for code: ReferForEEG
     /// </summary>
     public const string LiteralReferForEEG = "183842003";
+
+    /// <summary>
+    /// Literal for code: NONEReferForEEG
+    /// </summary>
+    public const string LiteralNONEReferForEEG = "http://snomed.info/sct#183842003";
 
     /// <summary>
     /// Literal for code: ReferToUrodynamicStudies
@@ -8946,9 +9486,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToUrodynamicStudies = "183843008";
 
     /// <summary>
+    /// Literal for code: NONEReferToUrodynamicStudies
+    /// </summary>
+    public const string LiteralNONEReferToUrodynamicStudies = "http://snomed.info/sct#183843008";
+
+    /// <summary>
     /// Literal for code: ReferForVascularStudies
     /// </summary>
     public const string LiteralReferForVascularStudies = "183844002";
+
+    /// <summary>
+    /// Literal for code: NONEReferForVascularStudies
+    /// </summary>
+    public const string LiteralNONEReferForVascularStudies = "http://snomed.info/sct#183844002";
 
     /// <summary>
     /// Literal for code: ReferralToClinic
@@ -8956,9 +9506,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToClinic = "183851006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToClinic
+    /// </summary>
+    public const string LiteralNONEReferralToClinic = "http://snomed.info/sct#183851006";
+
+    /// <summary>
     /// Literal for code: ReferralToLipidClinic
     /// </summary>
     public const string LiteralReferralToLipidClinic = "183852004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToLipidClinic
+    /// </summary>
+    public const string LiteralNONEReferralToLipidClinic = "http://snomed.info/sct#183852004";
 
     /// <summary>
     /// Literal for code: ReferToHearingAidClinic
@@ -8966,9 +9526,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToHearingAidClinic = "183853009";
 
     /// <summary>
+    /// Literal for code: NONEReferToHearingAidClinic
+    /// </summary>
+    public const string LiteralNONEReferToHearingAidClinic = "http://snomed.info/sct#183853009";
+
+    /// <summary>
     /// Literal for code: ReferralToAudiologyClinic
     /// </summary>
     public const string LiteralReferralToAudiologyClinic = "183854003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToAudiologyClinic
+    /// </summary>
+    public const string LiteralNONEReferralToAudiologyClinic = "http://snomed.info/sct#183854003";
 
     /// <summary>
     /// Literal for code: ReferralToOrthodonticClinic
@@ -8976,9 +9546,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToOrthodonticClinic = "183855002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToOrthodonticClinic
+    /// </summary>
+    public const string LiteralNONEReferralToOrthodonticClinic = "http://snomed.info/sct#183855002";
+
+    /// <summary>
     /// Literal for code: ReferralToHypertensionClinic
     /// </summary>
     public const string LiteralReferralToHypertensionClinic = "183856001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToHypertensionClinic
+    /// </summary>
+    public const string LiteralNONEReferralToHypertensionClinic = "http://snomed.info/sct#183856001";
 
     /// <summary>
     /// Literal for code: ReferralToDevelopmentalClinic
@@ -8986,9 +9566,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToDevelopmentalClinic = "183857005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToDevelopmentalClinic
+    /// </summary>
+    public const string LiteralNONEReferralToDevelopmentalClinic = "http://snomed.info/sct#183857005";
+
+    /// <summary>
     /// Literal for code: ReferralToVaricoseVeinClinic
     /// </summary>
     public const string LiteralReferralToVaricoseVeinClinic = "183858000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToVaricoseVeinClinic
+    /// </summary>
+    public const string LiteralNONEReferralToVaricoseVeinClinic = "http://snomed.info/sct#183858000";
 
     /// <summary>
     /// Literal for code: ReferralToMammographyClinic
@@ -8996,9 +9586,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMammographyClinic = "183859008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMammographyClinic
+    /// </summary>
+    public const string LiteralNONEReferralToMammographyClinic = "http://snomed.info/sct#183859008";
+
+    /// <summary>
     /// Literal for code: ReferralToAntenatalClinic
     /// </summary>
     public const string LiteralReferralToAntenatalClinic = "183860003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToAntenatalClinic
+    /// </summary>
+    public const string LiteralNONEReferralToAntenatalClinic = "http://snomed.info/sct#183860003";
 
     /// <summary>
     /// Literal for code: ReferralToPostnatalClinic
@@ -9006,9 +9606,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPostnatalClinic = "183861004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPostnatalClinic
+    /// </summary>
+    public const string LiteralNONEReferralToPostnatalClinic = "http://snomed.info/sct#183861004";
+
+    /// <summary>
     /// Literal for code: ReferralToFertilityClinic
     /// </summary>
     public const string LiteralReferralToFertilityClinic = "183862006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToFertilityClinic
+    /// </summary>
+    public const string LiteralNONEReferralToFertilityClinic = "http://snomed.info/sct#183862006";
 
     /// <summary>
     /// Literal for code: ReferralToWellWomanClinic
@@ -9016,9 +9626,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToWellWomanClinic = "183863001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToWellWomanClinic
+    /// </summary>
+    public const string LiteralNONEReferralToWellWomanClinic = "http://snomed.info/sct#183863001";
+
+    /// <summary>
     /// Literal for code: ReferralToFamilyPlanningClinic
     /// </summary>
     public const string LiteralReferralToFamilyPlanningClinic = "183864007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToFamilyPlanningClinic
+    /// </summary>
+    public const string LiteralNONEReferralToFamilyPlanningClinic = "http://snomed.info/sct#183864007";
 
     /// <summary>
     /// Literal for code: ReferralToEmergencyClinic
@@ -9026,9 +9646,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToEmergencyClinic = "183866009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToEmergencyClinic
+    /// </summary>
+    public const string LiteralNONEReferralToEmergencyClinic = "http://snomed.info/sct#183866009";
+
+    /// <summary>
     /// Literal for code: ReferredToAcuteChestPainClinic
     /// </summary>
     public const string LiteralReferredToAcuteChestPainClinic = "183867000";
+
+    /// <summary>
+    /// Literal for code: NONEReferredToAcuteChestPainClinic
+    /// </summary>
+    public const string LiteralNONEReferredToAcuteChestPainClinic = "http://snomed.info/sct#183867000";
 
     /// <summary>
     /// Literal for code: ReferralToBackPainClinic
@@ -9036,9 +9666,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToBackPainClinic = "183868005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToBackPainClinic
+    /// </summary>
+    public const string LiteralNONEReferralToBackPainClinic = "http://snomed.info/sct#183868005";
+
+    /// <summary>
     /// Literal for code: ReferralForBronchoscopy
     /// </summary>
     public const string LiteralReferralForBronchoscopy = "183874005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForBronchoscopy
+    /// </summary>
+    public const string LiteralNONEReferralForBronchoscopy = "http://snomed.info/sct#183874005";
 
     /// <summary>
     /// Literal for code: ReferralForColonoscopy
@@ -9046,9 +9686,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForColonoscopy = "183875006";
 
     /// <summary>
+    /// Literal for code: NONEReferralForColonoscopy
+    /// </summary>
+    public const string LiteralNONEReferralForColonoscopy = "http://snomed.info/sct#183875006";
+
+    /// <summary>
     /// Literal for code: ReferralForSigmoidoscopy
     /// </summary>
     public const string LiteralReferralForSigmoidoscopy = "183876007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForSigmoidoscopy
+    /// </summary>
+    public const string LiteralNONEReferralForSigmoidoscopy = "http://snomed.info/sct#183876007";
 
     /// <summary>
     /// Literal for code: PrivateReferral
@@ -9056,9 +9706,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferral = "183877003";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferral
+    /// </summary>
+    public const string LiteralNONEPrivateReferral = "http://snomed.info/sct#183877003";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToGeneralSurgeon
     /// </summary>
     public const string LiteralPrivateReferralToGeneralSurgeon = "183878008";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToGeneralSurgeon
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToGeneralSurgeon = "http://snomed.info/sct#183878008";
 
     /// <summary>
     /// Literal for code: PrivateReferralToOphthalmologist
@@ -9066,9 +9726,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToOphthalmologist = "183879000";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToOphthalmologist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToOphthalmologist = "http://snomed.info/sct#183879000";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToENTSurgeon
     /// </summary>
     public const string LiteralPrivateReferralToENTSurgeon = "183880002";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToENTSurgeon
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToENTSurgeon = "http://snomed.info/sct#183880002";
 
     /// <summary>
     /// Literal for code: PrivateReferralToOrthopedicSurgeon
@@ -9076,9 +9746,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToOrthopedicSurgeon = "183881003";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToOrthopedicSurgeon
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToOrthopedicSurgeon = "http://snomed.info/sct#183881003";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToNeurosurgeon
     /// </summary>
     public const string LiteralPrivateReferralToNeurosurgeon = "183882005";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToNeurosurgeon
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToNeurosurgeon = "http://snomed.info/sct#183882005";
 
     /// <summary>
     /// Literal for code: PrivateReferralToPediatricSurgeon
@@ -9086,9 +9766,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToPediatricSurgeon = "183884006";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToPediatricSurgeon
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToPediatricSurgeon = "http://snomed.info/sct#183884006";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToObstetrician
     /// </summary>
     public const string LiteralPrivateReferralToObstetrician = "183885007";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToObstetrician
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToObstetrician = "http://snomed.info/sct#183885007";
 
     /// <summary>
     /// Literal for code: PrivateReferralToGynecologist
@@ -9096,9 +9786,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToGynecologist = "183886008";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToGynecologist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToGynecologist = "http://snomed.info/sct#183886008";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToPlasticSurgeon
     /// </summary>
     public const string LiteralPrivateReferralToPlasticSurgeon = "183887004";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToPlasticSurgeon
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToPlasticSurgeon = "http://snomed.info/sct#183887004";
 
     /// <summary>
     /// Literal for code: PrivateReferralToOralSurgeon
@@ -9106,9 +9806,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToOralSurgeon = "183888009";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToOralSurgeon
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToOralSurgeon = "http://snomed.info/sct#183888009";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToUrologist
     /// </summary>
     public const string LiteralPrivateReferralToUrologist = "183889001";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToUrologist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToUrologist = "http://snomed.info/sct#183889001";
 
     /// <summary>
     /// Literal for code: PrivateReferralToThoracicSurgeon
@@ -9116,9 +9826,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToThoracicSurgeon = "183890005";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToThoracicSurgeon
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToThoracicSurgeon = "http://snomed.info/sct#183890005";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToVascularSurgeon
     /// </summary>
     public const string LiteralPrivateReferralToVascularSurgeon = "183891009";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToVascularSurgeon
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToVascularSurgeon = "http://snomed.info/sct#183891009";
 
     /// <summary>
     /// Literal for code: PrivateReferralToMaxillofacialSurgeon
@@ -9126,9 +9846,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToMaxillofacialSurgeon = "183892002";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToMaxillofacialSurgeon
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToMaxillofacialSurgeon = "http://snomed.info/sct#183892002";
+
+    /// <summary>
     /// Literal for code: PrivateReferralCardiothoracicSurgeon
     /// </summary>
     public const string LiteralPrivateReferralCardiothoracicSurgeon = "183893007";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralCardiothoracicSurgeon
+    /// </summary>
+    public const string LiteralNONEPrivateReferralCardiothoracicSurgeon = "http://snomed.info/sct#183893007";
 
     /// <summary>
     /// Literal for code: PrivateReferralToPhysician
@@ -9136,9 +9866,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToPhysician = "183894001";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToPhysician
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToPhysician = "http://snomed.info/sct#183894001";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToGeneralPhysician
     /// </summary>
     public const string LiteralPrivateReferralToGeneralPhysician = "183895000";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToGeneralPhysician
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToGeneralPhysician = "http://snomed.info/sct#183895000";
 
     /// <summary>
     /// Literal for code: PrivateReferralToPediatrician
@@ -9146,9 +9886,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToPediatrician = "183896004";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToPediatrician
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToPediatrician = "http://snomed.info/sct#183896004";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToDermatologist
     /// </summary>
     public const string LiteralPrivateReferralToDermatologist = "183897008";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToDermatologist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToDermatologist = "http://snomed.info/sct#183897008";
 
     /// <summary>
     /// Literal for code: PrivateReferralToCardiologist
@@ -9156,9 +9906,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToCardiologist = "183899006";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToCardiologist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToCardiologist = "http://snomed.info/sct#183899006";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToImmunologist
     /// </summary>
     public const string LiteralPrivateReferralToImmunologist = "183900001";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToImmunologist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToImmunologist = "http://snomed.info/sct#183900001";
 
     /// <summary>
     /// Literal for code: PrivateReferralToNeurologist
@@ -9166,9 +9926,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToNeurologist = "183901002";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToNeurologist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToNeurologist = "http://snomed.info/sct#183901002";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToGeriatrician
     /// </summary>
     public const string LiteralPrivateReferralToGeriatrician = "183902009";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToGeriatrician
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToGeriatrician = "http://snomed.info/sct#183902009";
 
     /// <summary>
     /// Literal for code: PrivateReferralToGastroenterologist
@@ -9176,9 +9946,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToGastroenterologist = "183903004";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToGastroenterologist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToGastroenterologist = "http://snomed.info/sct#183903004";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToPsychiatrist
     /// </summary>
     public const string LiteralPrivateReferralToPsychiatrist = "183904005";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToPsychiatrist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToPsychiatrist = "http://snomed.info/sct#183904005";
 
     /// <summary>
     /// Literal for code: PrivateReferralToVenereologist
@@ -9186,9 +9966,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToVenereologist = "183905006";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToVenereologist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToVenereologist = "http://snomed.info/sct#183905006";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToRheumatologist
     /// </summary>
     public const string LiteralPrivateReferralToRheumatologist = "183906007";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToRheumatologist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToRheumatologist = "http://snomed.info/sct#183906007";
 
     /// <summary>
     /// Literal for code: PrivateReferralToChestPhysician
@@ -9196,9 +9986,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToChestPhysician = "183907003";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToChestPhysician
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToChestPhysician = "http://snomed.info/sct#183907003";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToPsychogeriatrician
     /// </summary>
     public const string LiteralPrivateReferralToPsychogeriatrician = "183908008";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToPsychogeriatrician
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToPsychogeriatrician = "http://snomed.info/sct#183908008";
 
     /// <summary>
     /// Literal for code: PrivateReferralToOncologist
@@ -9206,9 +10006,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToOncologist = "183909000";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToOncologist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToOncologist = "http://snomed.info/sct#183909000";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToDiabetologist
     /// </summary>
     public const string LiteralPrivateReferralToDiabetologist = "183910005";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToDiabetologist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToDiabetologist = "http://snomed.info/sct#183910005";
 
     /// <summary>
     /// Literal for code: PrivateReferralToRadiotherapist
@@ -9216,9 +10026,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToRadiotherapist = "183911009";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToRadiotherapist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToRadiotherapist = "http://snomed.info/sct#183911009";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToClinicalPharmacologist
     /// </summary>
     public const string LiteralPrivateReferralToClinicalPharmacologist = "183912002";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToClinicalPharmacologist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToClinicalPharmacologist = "http://snomed.info/sct#183912002";
 
     /// <summary>
     /// Literal for code: PrivateReferralToGeneticist
@@ -9226,9 +10046,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToGeneticist = "183913007";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToGeneticist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToGeneticist = "http://snomed.info/sct#183913007";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToAnesthetist
     /// </summary>
     public const string LiteralPrivateReferralToAnesthetist = "183914001";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToAnesthetist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToAnesthetist = "http://snomed.info/sct#183914001";
 
     /// <summary>
     /// Literal for code: PrivateReferralToEndocrinologist
@@ -9236,9 +10066,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToEndocrinologist = "183915000";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToEndocrinologist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToEndocrinologist = "http://snomed.info/sct#183915000";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToNephrologist
     /// </summary>
     public const string LiteralPrivateReferralToNephrologist = "183916004";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToNephrologist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToNephrologist = "http://snomed.info/sct#183916004";
 
     /// <summary>
     /// Literal for code: ReferralByNurse
@@ -9246,9 +10086,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByNurse = "183917008";
 
     /// <summary>
+    /// Literal for code: NONEReferralByNurse
+    /// </summary>
+    public const string LiteralNONEReferralByNurse = "http://snomed.info/sct#183917008";
+
+    /// <summary>
     /// Literal for code: PatientReferralForVocationalRehabilitation
     /// </summary>
     public const string LiteralPatientReferralForVocationalRehabilitation = "18781004";
+
+    /// <summary>
+    /// Literal for code: NONEPatientReferralForVocationalRehabilitation
+    /// </summary>
+    public const string LiteralNONEPatientReferralForVocationalRehabilitation = "http://snomed.info/sct#18781004";
 
     /// <summary>
     /// Literal for code: ReferralToPrivateDoctor
@@ -9256,9 +10106,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPrivateDoctor = "266747000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPrivateDoctor
+    /// </summary>
+    public const string LiteralNONEReferralToPrivateDoctor = "http://snomed.info/sct#266747000";
+
+    /// <summary>
     /// Literal for code: ReferralToSurgicalFitter
     /// </summary>
     public const string LiteralReferralToSurgicalFitter = "266749002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToSurgicalFitter
+    /// </summary>
+    public const string LiteralNONEReferralToSurgicalFitter = "http://snomed.info/sct#266749002";
 
     /// <summary>
     /// Literal for code: TraumaSelfReferral
@@ -9266,9 +10126,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTraumaSelfReferral = "266752005";
 
     /// <summary>
+    /// Literal for code: NONETraumaSelfReferral
+    /// </summary>
+    public const string LiteralNONETraumaSelfReferral = "http://snomed.info/sct#266752005";
+
+    /// <summary>
     /// Literal for code: ReferralForLaboratoryTests
     /// </summary>
     public const string LiteralReferralForLaboratoryTests = "266753000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForLaboratoryTests
+    /// </summary>
+    public const string LiteralNONEReferralForLaboratoryTests = "http://snomed.info/sct#266753000";
 
     /// <summary>
     /// Literal for code: ReferralForPhysiologyInvestigation
@@ -9276,9 +10146,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForPhysiologyInvestigation = "266754006";
 
     /// <summary>
+    /// Literal for code: NONEReferralForPhysiologyInvestigation
+    /// </summary>
+    public const string LiteralNONEReferralForPhysiologyInvestigation = "http://snomed.info/sct#266754006";
+
+    /// <summary>
     /// Literal for code: ReferralForEndoscopy
     /// </summary>
     public const string LiteralReferralForEndoscopy = "266755007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForEndoscopy
+    /// </summary>
+    public const string LiteralNONEReferralForEndoscopy = "http://snomed.info/sct#266755007";
 
     /// <summary>
     /// Literal for code: ReferToPathologyDepartment
@@ -9286,9 +10166,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToPathologyDepartment = "271363008";
 
     /// <summary>
+    /// Literal for code: NONEReferToPathologyDepartment
+    /// </summary>
+    public const string LiteralNONEReferToPathologyDepartment = "http://snomed.info/sct#271363008";
+
+    /// <summary>
     /// Literal for code: PatientReferralForEvaluationAgingProblem
     /// </summary>
     public const string LiteralPatientReferralForEvaluationAgingProblem = "27217005";
+
+    /// <summary>
+    /// Literal for code: NONEPatientReferralForEvaluationAgingProblem
+    /// </summary>
+    public const string LiteralNONEPatientReferralForEvaluationAgingProblem = "http://snomed.info/sct#27217005";
 
     /// <summary>
     /// Literal for code: DentalReferralChild
@@ -9296,9 +10186,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDentalReferralChild = "274410002";
 
     /// <summary>
+    /// Literal for code: NONEDentalReferralChild
+    /// </summary>
+    public const string LiteralNONEDentalReferralChild = "http://snomed.info/sct#274410002";
+
+    /// <summary>
     /// Literal for code: ReferToPathologyLaboratory
     /// </summary>
     public const string LiteralReferToPathologyLaboratory = "275640004";
+
+    /// <summary>
+    /// Literal for code: NONEReferToPathologyLaboratory
+    /// </summary>
+    public const string LiteralNONEReferToPathologyLaboratory = "http://snomed.info/sct#275640004";
 
     /// <summary>
     /// Literal for code: ReferForMedicalPhysics
@@ -9306,9 +10206,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferForMedicalPhysics = "275648006";
 
     /// <summary>
+    /// Literal for code: NONEReferForMedicalPhysics
+    /// </summary>
+    public const string LiteralNONEReferForMedicalPhysics = "http://snomed.info/sct#275648006";
+
+    /// <summary>
     /// Literal for code: ReferralOfChild
     /// </summary>
     public const string LiteralReferralOfChild = "275821008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralOfChild
+    /// </summary>
+    public const string LiteralNONEReferralOfChild = "http://snomed.info/sct#275821008";
 
     /// <summary>
     /// Literal for code: ReferToMemberOfPrimaryHealthCareTeam
@@ -9316,9 +10226,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToMemberOfPrimaryHealthCareTeam = "276490004";
 
     /// <summary>
+    /// Literal for code: NONEReferToMemberOfPrimaryHealthCareTeam
+    /// </summary>
+    public const string LiteralNONEReferToMemberOfPrimaryHealthCareTeam = "http://snomed.info/sct#276490004";
+
+    /// <summary>
     /// Literal for code: ReferralForInvestigation
     /// </summary>
     public const string LiteralReferralForInvestigation = "281097001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForInvestigation
+    /// </summary>
+    public const string LiteralNONEReferralForInvestigation = "http://snomed.info/sct#281097001";
 
     /// <summary>
     /// Literal for code: ReferToApplianceOfficer
@@ -9326,9 +10246,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToApplianceOfficer = "281098006";
 
     /// <summary>
+    /// Literal for code: NONEReferToApplianceOfficer
+    /// </summary>
+    public const string LiteralNONEReferToApplianceOfficer = "http://snomed.info/sct#281098006";
+
+    /// <summary>
     /// Literal for code: ReferralToNurse
     /// </summary>
     public const string LiteralReferralToNurse = "281099003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToNurse
+    /// </summary>
+    public const string LiteralNONEReferralToNurse = "http://snomed.info/sct#281099003";
 
     /// <summary>
     /// Literal for code: ReferralToHealthWorker
@@ -9336,9 +10266,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHealthWorker = "281100006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHealthWorker
+    /// </summary>
+    public const string LiteralNONEReferralToHealthWorker = "http://snomed.info/sct#281100006";
+
+    /// <summary>
     /// Literal for code: PatientReferralForSpecializedTraining
     /// </summary>
     public const string LiteralPatientReferralForSpecializedTraining = "28214001";
+
+    /// <summary>
+    /// Literal for code: NONEPatientReferralForSpecializedTraining
+    /// </summary>
+    public const string LiteralNONEPatientReferralForSpecializedTraining = "http://snomed.info/sct#28214001";
 
     /// <summary>
     /// Literal for code: ReferralByHealthWorker
@@ -9346,9 +10286,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByHealthWorker = "305912004";
 
     /// <summary>
+    /// Literal for code: NONEReferralByHealthWorker
+    /// </summary>
+    public const string LiteralNONEReferralByHealthWorker = "http://snomed.info/sct#305912004";
+
+    /// <summary>
     /// Literal for code: ReferralFromAudiologist
     /// </summary>
     public const string LiteralReferralFromAudiologist = "305913009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromAudiologist
+    /// </summary>
+    public const string LiteralNONEReferralFromAudiologist = "http://snomed.info/sct#305913009";
 
     /// <summary>
     /// Literal for code: ReferralByAudiologicalPhysician
@@ -9356,9 +10306,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByAudiologicalPhysician = "305914003";
 
     /// <summary>
+    /// Literal for code: NONEReferralByAudiologicalPhysician
+    /// </summary>
+    public const string LiteralNONEReferralByAudiologicalPhysician = "http://snomed.info/sct#305914003";
+
+    /// <summary>
     /// Literal for code: ReferralFromCommunityDoctorInAudiology
     /// </summary>
     public const string LiteralReferralFromCommunityDoctorInAudiology = "305915002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromCommunityDoctorInAudiology
+    /// </summary>
+    public const string LiteralNONEReferralFromCommunityDoctorInAudiology = "http://snomed.info/sct#305915002";
 
     /// <summary>
     /// Literal for code: ReferralByHearingTherapist
@@ -9366,9 +10326,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByHearingTherapist = "305916001";
 
     /// <summary>
+    /// Literal for code: NONEReferralByHearingTherapist
+    /// </summary>
+    public const string LiteralNONEReferralByHearingTherapist = "http://snomed.info/sct#305916001";
+
+    /// <summary>
     /// Literal for code: ReferralByPediatricAudiologist
     /// </summary>
     public const string LiteralReferralByPediatricAudiologist = "305917005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByPediatricAudiologist
+    /// </summary>
+    public const string LiteralNONEReferralByPediatricAudiologist = "http://snomed.info/sct#305917005";
 
     /// <summary>
     /// Literal for code: ReferralByCounselor
@@ -9376,9 +10346,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByCounselor = "305918000";
 
     /// <summary>
+    /// Literal for code: NONEReferralByCounselor
+    /// </summary>
+    public const string LiteralNONEReferralByCounselor = "http://snomed.info/sct#305918000";
+
+    /// <summary>
     /// Literal for code: ReferralByBereavementCounselor
     /// </summary>
     public const string LiteralReferralByBereavementCounselor = "305919008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByBereavementCounselor
+    /// </summary>
+    public const string LiteralNONEReferralByBereavementCounselor = "http://snomed.info/sct#305919008";
 
     /// <summary>
     /// Literal for code: ReferralByGeneticCounselor
@@ -9386,9 +10366,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByGeneticCounselor = "305920002";
 
     /// <summary>
+    /// Literal for code: NONEReferralByGeneticCounselor
+    /// </summary>
+    public const string LiteralNONEReferralByGeneticCounselor = "http://snomed.info/sct#305920002";
+
+    /// <summary>
     /// Literal for code: ReferralByMarriageGuidanceCounselor
     /// </summary>
     public const string LiteralReferralByMarriageGuidanceCounselor = "305921003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByMarriageGuidanceCounselor
+    /// </summary>
+    public const string LiteralNONEReferralByMarriageGuidanceCounselor = "http://snomed.info/sct#305921003";
 
     /// <summary>
     /// Literal for code: ReferralByMentalHealthCounselor
@@ -9396,9 +10386,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByMentalHealthCounselor = "305922005";
 
     /// <summary>
+    /// Literal for code: NONEReferralByMentalHealthCounselor
+    /// </summary>
+    public const string LiteralNONEReferralByMentalHealthCounselor = "http://snomed.info/sct#305922005";
+
+    /// <summary>
     /// Literal for code: ReferralFromComplementaryTherapist
     /// </summary>
     public const string LiteralReferralFromComplementaryTherapist = "305923000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromComplementaryTherapist
+    /// </summary>
+    public const string LiteralNONEReferralFromComplementaryTherapist = "http://snomed.info/sct#305923000";
 
     /// <summary>
     /// Literal for code: ReferralByDoctor
@@ -9406,9 +10406,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByDoctor = "305924006";
 
     /// <summary>
+    /// Literal for code: NONEReferralByDoctor
+    /// </summary>
+    public const string LiteralNONEReferralByDoctor = "http://snomed.info/sct#305924006";
+
+    /// <summary>
     /// Literal for code: ReferralFromAAndEDoctor
     /// </summary>
     public const string LiteralReferralFromAAndEDoctor = "305925007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromAAndEDoctor
+    /// </summary>
+    public const string LiteralNONEReferralFromAAndEDoctor = "http://snomed.info/sct#305925007";
 
     /// <summary>
     /// Literal for code: ReferralFromAnesthetist
@@ -9416,9 +10426,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromAnesthetist = "305926008";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromAnesthetist
+    /// </summary>
+    public const string LiteralNONEReferralFromAnesthetist = "http://snomed.info/sct#305926008";
+
+    /// <summary>
     /// Literal for code: ReferralFromClinicalOncologist
     /// </summary>
     public const string LiteralReferralFromClinicalOncologist = "305927004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromClinicalOncologist
+    /// </summary>
+    public const string LiteralNONEReferralFromClinicalOncologist = "http://snomed.info/sct#305927004";
 
     /// <summary>
     /// Literal for code: ReferralFromRadiotherapist
@@ -9426,9 +10446,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromRadiotherapist = "305929001";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromRadiotherapist
+    /// </summary>
+    public const string LiteralNONEReferralFromRadiotherapist = "http://snomed.info/sct#305929001";
+
+    /// <summary>
     /// Literal for code: ReferralByFamilyPlanningDoctor
     /// </summary>
     public const string LiteralReferralByFamilyPlanningDoctor = "305930006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByFamilyPlanningDoctor
+    /// </summary>
+    public const string LiteralNONEReferralByFamilyPlanningDoctor = "http://snomed.info/sct#305930006";
 
     /// <summary>
     /// Literal for code: ReferralByGP
@@ -9436,9 +10466,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByGP = "305931005";
 
     /// <summary>
+    /// Literal for code: NONEReferralByGP
+    /// </summary>
+    public const string LiteralNONEReferralByGP = "http://snomed.info/sct#305931005";
+
+    /// <summary>
     /// Literal for code: ReferralFromOwnGP
     /// </summary>
     public const string LiteralReferralFromOwnGP = "305932003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromOwnGP
+    /// </summary>
+    public const string LiteralNONEReferralFromOwnGP = "http://snomed.info/sct#305932003";
 
     /// <summary>
     /// Literal for code: ReferralByPartnerOfGP
@@ -9446,9 +10486,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByPartnerOfGP = "305933008";
 
     /// <summary>
+    /// Literal for code: NONEReferralByPartnerOfGP
+    /// </summary>
+    public const string LiteralNONEReferralByPartnerOfGP = "http://snomed.info/sct#305933008";
+
+    /// <summary>
     /// Literal for code: ReferralByITUSpecialist
     /// </summary>
     public const string LiteralReferralByITUSpecialist = "305940009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByITUSpecialist
+    /// </summary>
+    public const string LiteralNONEReferralByITUSpecialist = "http://snomed.info/sct#305940009";
 
     /// <summary>
     /// Literal for code: ReferralByAdultITUSpecialist
@@ -9456,9 +10506,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByAdultITUSpecialist = "305941008";
 
     /// <summary>
+    /// Literal for code: NONEReferralByAdultITUSpecialist
+    /// </summary>
+    public const string LiteralNONEReferralByAdultITUSpecialist = "http://snomed.info/sct#305941008";
+
+    /// <summary>
     /// Literal for code: ReferralByPediatricITUSpecialist
     /// </summary>
     public const string LiteralReferralByPediatricITUSpecialist = "305942001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByPediatricITUSpecialist
+    /// </summary>
+    public const string LiteralNONEReferralByPediatricITUSpecialist = "http://snomed.info/sct#305942001";
 
     /// <summary>
     /// Literal for code: ReferralByPediatrician
@@ -9466,9 +10526,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByPediatrician = "305943006";
 
     /// <summary>
+    /// Literal for code: NONEReferralByPediatrician
+    /// </summary>
+    public const string LiteralNONEReferralByPediatrician = "http://snomed.info/sct#305943006";
+
+    /// <summary>
     /// Literal for code: ReferralFromCommunityPediatrician
     /// </summary>
     public const string LiteralReferralFromCommunityPediatrician = "305944000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromCommunityPediatrician
+    /// </summary>
+    public const string LiteralNONEReferralFromCommunityPediatrician = "http://snomed.info/sct#305944000";
 
     /// <summary>
     /// Literal for code: ReferralFromNeonatologist
@@ -9476,9 +10546,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromNeonatologist = "305945004";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromNeonatologist
+    /// </summary>
+    public const string LiteralNONEReferralFromNeonatologist = "http://snomed.info/sct#305945004";
+
+    /// <summary>
     /// Literal for code: ReferralFromPediatricNeurologist
     /// </summary>
     public const string LiteralReferralFromPediatricNeurologist = "305946003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromPediatricNeurologist
+    /// </summary>
+    public const string LiteralNONEReferralFromPediatricNeurologist = "http://snomed.info/sct#305946003";
 
     /// <summary>
     /// Literal for code: ReferralByPediatricOncologist
@@ -9486,9 +10566,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByPediatricOncologist = "305947007";
 
     /// <summary>
+    /// Literal for code: NONEReferralByPediatricOncologist
+    /// </summary>
+    public const string LiteralNONEReferralByPediatricOncologist = "http://snomed.info/sct#305947007";
+
+    /// <summary>
     /// Literal for code: ReferralByPainManagementSpecialist
     /// </summary>
     public const string LiteralReferralByPainManagementSpecialist = "305948002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByPainManagementSpecialist
+    /// </summary>
+    public const string LiteralNONEReferralByPainManagementSpecialist = "http://snomed.info/sct#305948002";
 
     /// <summary>
     /// Literal for code: ReferralFromPathologist
@@ -9496,9 +10586,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromPathologist = "305949005";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromPathologist
+    /// </summary>
+    public const string LiteralNONEReferralFromPathologist = "http://snomed.info/sct#305949005";
+
+    /// <summary>
     /// Literal for code: ReferralByBloodTransfusionDoctor
     /// </summary>
     public const string LiteralReferralByBloodTransfusionDoctor = "305950005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByBloodTransfusionDoctor
+    /// </summary>
+    public const string LiteralNONEReferralByBloodTransfusionDoctor = "http://snomed.info/sct#305950005";
 
     /// <summary>
     /// Literal for code: ReferralByChemicalPathologist
@@ -9506,9 +10606,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByChemicalPathologist = "305951009";
 
     /// <summary>
+    /// Literal for code: NONEReferralByChemicalPathologist
+    /// </summary>
+    public const string LiteralNONEReferralByChemicalPathologist = "http://snomed.info/sct#305951009";
+
+    /// <summary>
     /// Literal for code: ReferralFromGeneralPathologist
     /// </summary>
     public const string LiteralReferralFromGeneralPathologist = "305952002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromGeneralPathologist
+    /// </summary>
+    public const string LiteralNONEReferralFromGeneralPathologist = "http://snomed.info/sct#305952002";
 
     /// <summary>
     /// Literal for code: ReferralFromHematologist
@@ -9516,9 +10626,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromHematologist = "305953007";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromHematologist
+    /// </summary>
+    public const string LiteralNONEReferralFromHematologist = "http://snomed.info/sct#305953007";
+
+    /// <summary>
     /// Literal for code: ReferralFromMedicalMicrobiologist
     /// </summary>
     public const string LiteralReferralFromMedicalMicrobiologist = "305954001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromMedicalMicrobiologist
+    /// </summary>
+    public const string LiteralNONEReferralFromMedicalMicrobiologist = "http://snomed.info/sct#305954001";
 
     /// <summary>
     /// Literal for code: ReferralByNeuropathologist
@@ -9526,9 +10646,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByNeuropathologist = "305955000";
 
     /// <summary>
+    /// Literal for code: NONEReferralByNeuropathologist
+    /// </summary>
+    public const string LiteralNONEReferralByNeuropathologist = "http://snomed.info/sct#305955000";
+
+    /// <summary>
     /// Literal for code: ReferralFromPhysician
     /// </summary>
     public const string LiteralReferralFromPhysician = "305956004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromPhysician
+    /// </summary>
+    public const string LiteralNONEReferralFromPhysician = "http://snomed.info/sct#305956004";
 
     /// <summary>
     /// Literal for code: ReferralByClinicalAllergist
@@ -9536,9 +10666,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByClinicalAllergist = "305957008";
 
     /// <summary>
+    /// Literal for code: NONEReferralByClinicalAllergist
+    /// </summary>
+    public const string LiteralNONEReferralByClinicalAllergist = "http://snomed.info/sct#305957008";
+
+    /// <summary>
     /// Literal for code: ReferralFromCardiologist
     /// </summary>
     public const string LiteralReferralFromCardiologist = "305958003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromCardiologist
+    /// </summary>
+    public const string LiteralNONEReferralFromCardiologist = "http://snomed.info/sct#305958003";
 
     /// <summary>
     /// Literal for code: ReferralByChestPhysician
@@ -9546,9 +10686,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByChestPhysician = "305959006";
 
     /// <summary>
+    /// Literal for code: NONEReferralByChestPhysician
+    /// </summary>
+    public const string LiteralNONEReferralByChestPhysician = "http://snomed.info/sct#305959006";
+
+    /// <summary>
     /// Literal for code: ReferralFromThoracicPhysician
     /// </summary>
     public const string LiteralReferralFromThoracicPhysician = "305960001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromThoracicPhysician
+    /// </summary>
+    public const string LiteralNONEReferralFromThoracicPhysician = "http://snomed.info/sct#305960001";
 
     /// <summary>
     /// Literal for code: ReferralFromRespiratoryPhysician
@@ -9556,9 +10706,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromRespiratoryPhysician = "305961002";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromRespiratoryPhysician
+    /// </summary>
+    public const string LiteralNONEReferralFromRespiratoryPhysician = "http://snomed.info/sct#305961002";
+
+    /// <summary>
     /// Literal for code: ReferralByClinicalImmunologist
     /// </summary>
     public const string LiteralReferralByClinicalImmunologist = "305962009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByClinicalImmunologist
+    /// </summary>
+    public const string LiteralNONEReferralByClinicalImmunologist = "http://snomed.info/sct#305962009";
 
     /// <summary>
     /// Literal for code: ReferralFromClinicalNeurophysiologist
@@ -9566,9 +10726,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromClinicalNeurophysiologist = "305963004";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromClinicalNeurophysiologist
+    /// </summary>
+    public const string LiteralNONEReferralFromClinicalNeurophysiologist = "http://snomed.info/sct#305963004";
+
+    /// <summary>
     /// Literal for code: ReferralByClinicalPharmacologist
     /// </summary>
     public const string LiteralReferralByClinicalPharmacologist = "305964005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByClinicalPharmacologist
+    /// </summary>
+    public const string LiteralNONEReferralByClinicalPharmacologist = "http://snomed.info/sct#305964005";
 
     /// <summary>
     /// Literal for code: ReferralFromClinicalPhysiologist
@@ -9576,9 +10746,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromClinicalPhysiologist = "305965006";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromClinicalPhysiologist
+    /// </summary>
+    public const string LiteralNONEReferralFromClinicalPhysiologist = "http://snomed.info/sct#305965006";
+
+    /// <summary>
     /// Literal for code: ReferralByDermatologist
     /// </summary>
     public const string LiteralReferralByDermatologist = "305966007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByDermatologist
+    /// </summary>
+    public const string LiteralNONEReferralByDermatologist = "http://snomed.info/sct#305966007";
 
     /// <summary>
     /// Literal for code: ReferralFromEndocrinologist
@@ -9586,9 +10766,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromEndocrinologist = "305967003";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromEndocrinologist
+    /// </summary>
+    public const string LiteralNONEReferralFromEndocrinologist = "http://snomed.info/sct#305967003";
+
+    /// <summary>
     /// Literal for code: ReferralByGastroenterologist
     /// </summary>
     public const string LiteralReferralByGastroenterologist = "305968008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByGastroenterologist
+    /// </summary>
+    public const string LiteralNONEReferralByGastroenterologist = "http://snomed.info/sct#305968008";
 
     /// <summary>
     /// Literal for code: ReferralByGeneralPhysician
@@ -9596,9 +10786,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByGeneralPhysician = "305970004";
 
     /// <summary>
+    /// Literal for code: NONEReferralByGeneralPhysician
+    /// </summary>
+    public const string LiteralNONEReferralByGeneralPhysician = "http://snomed.info/sct#305970004";
+
+    /// <summary>
     /// Literal for code: ReferralFromGeneticist
     /// </summary>
     public const string LiteralReferralFromGeneticist = "305971000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromGeneticist
+    /// </summary>
+    public const string LiteralNONEReferralFromGeneticist = "http://snomed.info/sct#305971000";
 
     /// <summary>
     /// Literal for code: ReferralFromClinicalGeneticist
@@ -9606,9 +10806,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromClinicalGeneticist = "305972007";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromClinicalGeneticist
+    /// </summary>
+    public const string LiteralNONEReferralFromClinicalGeneticist = "http://snomed.info/sct#305972007";
+
+    /// <summary>
     /// Literal for code: ReferralByClinicalCytogeneticist
     /// </summary>
     public const string LiteralReferralByClinicalCytogeneticist = "305973002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByClinicalCytogeneticist
+    /// </summary>
+    public const string LiteralNONEReferralByClinicalCytogeneticist = "http://snomed.info/sct#305973002";
 
     /// <summary>
     /// Literal for code: ReferralFromClinicalMolecularGeneticist
@@ -9616,9 +10826,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromClinicalMolecularGeneticist = "305974008";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromClinicalMolecularGeneticist
+    /// </summary>
+    public const string LiteralNONEReferralFromClinicalMolecularGeneticist = "http://snomed.info/sct#305974008";
+
+    /// <summary>
     /// Literal for code: ReferralByGenitourinaryMedicinePhysician
     /// </summary>
     public const string LiteralReferralByGenitourinaryMedicinePhysician = "305975009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByGenitourinaryMedicinePhysician
+    /// </summary>
+    public const string LiteralNONEReferralByGenitourinaryMedicinePhysician = "http://snomed.info/sct#305975009";
 
     /// <summary>
     /// Literal for code: ReferralFromCareOfTheElderlyPhysician
@@ -9626,9 +10846,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromCareOfTheElderlyPhysician = "305976005";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromCareOfTheElderlyPhysician
+    /// </summary>
+    public const string LiteralNONEReferralFromCareOfTheElderlyPhysician = "http://snomed.info/sct#305976005";
+
+    /// <summary>
     /// Literal for code: ReferralByInfectiousDiseasesPhysician
     /// </summary>
     public const string LiteralReferralByInfectiousDiseasesPhysician = "305977001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByInfectiousDiseasesPhysician
+    /// </summary>
+    public const string LiteralNONEReferralByInfectiousDiseasesPhysician = "http://snomed.info/sct#305977001";
 
     /// <summary>
     /// Literal for code: ReferralFromNephrologist
@@ -9636,9 +10866,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromNephrologist = "305978006";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromNephrologist
+    /// </summary>
+    public const string LiteralNONEReferralFromNephrologist = "http://snomed.info/sct#305978006";
+
+    /// <summary>
     /// Literal for code: ReferralByNeurologist
     /// </summary>
     public const string LiteralReferralByNeurologist = "305979003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByNeurologist
+    /// </summary>
+    public const string LiteralNONEReferralByNeurologist = "http://snomed.info/sct#305979003";
 
     /// <summary>
     /// Literal for code: ReferralFromNuclearMedicinePhysician
@@ -9646,9 +10886,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromNuclearMedicinePhysician = "305980000";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromNuclearMedicinePhysician
+    /// </summary>
+    public const string LiteralNONEReferralFromNuclearMedicinePhysician = "http://snomed.info/sct#305980000";
+
+    /// <summary>
     /// Literal for code: ReferralByPalliativeCarePhysician
     /// </summary>
     public const string LiteralReferralByPalliativeCarePhysician = "305981001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByPalliativeCarePhysician
+    /// </summary>
+    public const string LiteralNONEReferralByPalliativeCarePhysician = "http://snomed.info/sct#305981001";
 
     /// <summary>
     /// Literal for code: ReferralByRehabilitationPhysician
@@ -9656,9 +10906,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByRehabilitationPhysician = "305983003";
 
     /// <summary>
+    /// Literal for code: NONEReferralByRehabilitationPhysician
+    /// </summary>
+    public const string LiteralNONEReferralByRehabilitationPhysician = "http://snomed.info/sct#305983003";
+
+    /// <summary>
     /// Literal for code: ReferralByRheumatologist
     /// </summary>
     public const string LiteralReferralByRheumatologist = "305984009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByRheumatologist
+    /// </summary>
+    public const string LiteralNONEReferralByRheumatologist = "http://snomed.info/sct#305984009";
 
     /// <summary>
     /// Literal for code: ReferralFromPsychiatrist
@@ -9666,9 +10926,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromPsychiatrist = "305985005";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromPsychiatrist
+    /// </summary>
+    public const string LiteralNONEReferralFromPsychiatrist = "http://snomed.info/sct#305985005";
+
+    /// <summary>
     /// Literal for code: ReferralByChildAndAdolescentPsychiatrist
     /// </summary>
     public const string LiteralReferralByChildAndAdolescentPsychiatrist = "305986006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByChildAndAdolescentPsychiatrist
+    /// </summary>
+    public const string LiteralNONEReferralByChildAndAdolescentPsychiatrist = "http://snomed.info/sct#305986006";
 
     /// <summary>
     /// Literal for code: ReferralFromForensicPsychiatrist
@@ -9676,9 +10946,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromForensicPsychiatrist = "305987002";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromForensicPsychiatrist
+    /// </summary>
+    public const string LiteralNONEReferralFromForensicPsychiatrist = "http://snomed.info/sct#305987002";
+
+    /// <summary>
     /// Literal for code: ReferralByLiaisonPsychiatrist
     /// </summary>
     public const string LiteralReferralByLiaisonPsychiatrist = "305988007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByLiaisonPsychiatrist
+    /// </summary>
+    public const string LiteralNONEReferralByLiaisonPsychiatrist = "http://snomed.info/sct#305988007";
 
     /// <summary>
     /// Literal for code: ReferralFromPsychiatristForTheElderlyMentallyIll
@@ -9686,9 +10966,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromPsychiatristForTheElderlyMentallyIll = "305989004";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromPsychiatristForTheElderlyMentallyIll
+    /// </summary>
+    public const string LiteralNONEReferralFromPsychiatristForTheElderlyMentallyIll = "http://snomed.info/sct#305989004";
+
+    /// <summary>
     /// Literal for code: ReferralByPsychiatristForMentalHandicap
     /// </summary>
     public const string LiteralReferralByPsychiatristForMentalHandicap = "305990008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByPsychiatristForMentalHandicap
+    /// </summary>
+    public const string LiteralNONEReferralByPsychiatristForMentalHandicap = "http://snomed.info/sct#305990008";
 
     /// <summary>
     /// Literal for code: ReferralFromRehabilitationPsychiatrist
@@ -9696,9 +10986,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromRehabilitationPsychiatrist = "305991007";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromRehabilitationPsychiatrist
+    /// </summary>
+    public const string LiteralNONEReferralFromRehabilitationPsychiatrist = "http://snomed.info/sct#305991007";
+
+    /// <summary>
     /// Literal for code: ReferralByPublicHealthPhysician
     /// </summary>
     public const string LiteralReferralByPublicHealthPhysician = "305992000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByPublicHealthPhysician
+    /// </summary>
+    public const string LiteralNONEReferralByPublicHealthPhysician = "http://snomed.info/sct#305992000";
 
     /// <summary>
     /// Literal for code: ReferralFromObstetricianAndGynecologist
@@ -9706,9 +11006,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromObstetricianAndGynecologist = "305993005";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromObstetricianAndGynecologist
+    /// </summary>
+    public const string LiteralNONEReferralFromObstetricianAndGynecologist = "http://snomed.info/sct#305993005";
+
+    /// <summary>
     /// Literal for code: ReferralByGynecologist
     /// </summary>
     public const string LiteralReferralByGynecologist = "305994004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByGynecologist
+    /// </summary>
+    public const string LiteralNONEReferralByGynecologist = "http://snomed.info/sct#305994004";
 
     /// <summary>
     /// Literal for code: ReferralByObstetrician
@@ -9716,9 +11026,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByObstetrician = "305995003";
 
     /// <summary>
+    /// Literal for code: NONEReferralByObstetrician
+    /// </summary>
+    public const string LiteralNONEReferralByObstetrician = "http://snomed.info/sct#305995003";
+
+    /// <summary>
     /// Literal for code: ReferralFromOccupationalHealthPhysician
     /// </summary>
     public const string LiteralReferralFromOccupationalHealthPhysician = "305996002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromOccupationalHealthPhysician
+    /// </summary>
+    public const string LiteralNONEReferralFromOccupationalHealthPhysician = "http://snomed.info/sct#305996002";
 
     /// <summary>
     /// Literal for code: ReferralByRadiologist
@@ -9726,9 +11046,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByRadiologist = "305997006";
 
     /// <summary>
+    /// Literal for code: NONEReferralByRadiologist
+    /// </summary>
+    public const string LiteralNONEReferralByRadiologist = "http://snomed.info/sct#305997006";
+
+    /// <summary>
     /// Literal for code: ReferralFromSurgeon
     /// </summary>
     public const string LiteralReferralFromSurgeon = "305998001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralFromSurgeon = "http://snomed.info/sct#305998001";
 
     /// <summary>
     /// Literal for code: ReferralByBreastSurgeon
@@ -9736,9 +11066,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByBreastSurgeon = "305999009";
 
     /// <summary>
+    /// Literal for code: NONEReferralByBreastSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralByBreastSurgeon = "http://snomed.info/sct#305999009";
+
+    /// <summary>
     /// Literal for code: ReferralFromCardiothoracicSurgeon
     /// </summary>
     public const string LiteralReferralFromCardiothoracicSurgeon = "306000006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromCardiothoracicSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralFromCardiothoracicSurgeon = "http://snomed.info/sct#306000006";
 
     /// <summary>
     /// Literal for code: ReferralByThoracicSurgeon
@@ -9746,9 +11086,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByThoracicSurgeon = "306001005";
 
     /// <summary>
+    /// Literal for code: NONEReferralByThoracicSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralByThoracicSurgeon = "http://snomed.info/sct#306001005";
+
+    /// <summary>
     /// Literal for code: ReferralFromCardiacSurgeon
     /// </summary>
     public const string LiteralReferralFromCardiacSurgeon = "306002003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromCardiacSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralFromCardiacSurgeon = "http://snomed.info/sct#306002003";
 
     /// <summary>
     /// Literal for code: ReferralFromDentalSurgeon
@@ -9756,9 +11106,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromDentalSurgeon = "306003008";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromDentalSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralFromDentalSurgeon = "http://snomed.info/sct#306003008";
+
+    /// <summary>
     /// Literal for code: ReferralByOrthodontist
     /// </summary>
     public const string LiteralReferralByOrthodontist = "306004002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByOrthodontist
+    /// </summary>
+    public const string LiteralNONEReferralByOrthodontist = "http://snomed.info/sct#306004002";
 
     /// <summary>
     /// Literal for code: ReferralByPediatricDentist
@@ -9766,9 +11126,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByPediatricDentist = "306005001";
 
     /// <summary>
+    /// Literal for code: NONEReferralByPediatricDentist
+    /// </summary>
+    public const string LiteralNONEReferralByPediatricDentist = "http://snomed.info/sct#306005001";
+
+    /// <summary>
     /// Literal for code: ReferralByRestorativeDentist
     /// </summary>
     public const string LiteralReferralByRestorativeDentist = "306006000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByRestorativeDentist
+    /// </summary>
+    public const string LiteralNONEReferralByRestorativeDentist = "http://snomed.info/sct#306006000";
 
     /// <summary>
     /// Literal for code: ReferralByENTSurgeon
@@ -9776,9 +11146,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByENTSurgeon = "306007009";
 
     /// <summary>
+    /// Literal for code: NONEReferralByENTSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralByENTSurgeon = "http://snomed.info/sct#306007009";
+
+    /// <summary>
     /// Literal for code: ReferralByEndocrineSurgeon
     /// </summary>
     public const string LiteralReferralByEndocrineSurgeon = "306008004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByEndocrineSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralByEndocrineSurgeon = "http://snomed.info/sct#306008004";
 
     /// <summary>
     /// Literal for code: ReferralFromGastrointestinalSurgeon
@@ -9786,9 +11166,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromGastrointestinalSurgeon = "306009007";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromGastrointestinalSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralFromGastrointestinalSurgeon = "http://snomed.info/sct#306009007";
+
+    /// <summary>
     /// Literal for code: ReferralByGeneralGastrointestinalSurgeon
     /// </summary>
     public const string LiteralReferralByGeneralGastrointestinalSurgeon = "306010002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByGeneralGastrointestinalSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralByGeneralGastrointestinalSurgeon = "http://snomed.info/sct#306010002";
 
     /// <summary>
     /// Literal for code: ReferralByUpperGISurgeon
@@ -9796,9 +11186,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByUpperGISurgeon = "306011003";
 
     /// <summary>
+    /// Literal for code: NONEReferralByUpperGISurgeon
+    /// </summary>
+    public const string LiteralNONEReferralByUpperGISurgeon = "http://snomed.info/sct#306011003";
+
+    /// <summary>
     /// Literal for code: ReferralByColorectalSurgeon
     /// </summary>
     public const string LiteralReferralByColorectalSurgeon = "306012005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByColorectalSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralByColorectalSurgeon = "http://snomed.info/sct#306012005";
 
     /// <summary>
     /// Literal for code: ReferralByGeneralSurgeon
@@ -9806,9 +11206,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByGeneralSurgeon = "306013000";
 
     /// <summary>
+    /// Literal for code: NONEReferralByGeneralSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralByGeneralSurgeon = "http://snomed.info/sct#306013000";
+
+    /// <summary>
     /// Literal for code: ReferralFromHandSurgeon
     /// </summary>
     public const string LiteralReferralFromHandSurgeon = "306014006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromHandSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralFromHandSurgeon = "http://snomed.info/sct#306014006";
 
     /// <summary>
     /// Literal for code: ReferralByHepatobiliarySurgeon
@@ -9816,9 +11226,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByHepatobiliarySurgeon = "306015007";
 
     /// <summary>
+    /// Literal for code: NONEReferralByHepatobiliarySurgeon
+    /// </summary>
+    public const string LiteralNONEReferralByHepatobiliarySurgeon = "http://snomed.info/sct#306015007";
+
+    /// <summary>
     /// Literal for code: ReferralFromNeurosurgeon
     /// </summary>
     public const string LiteralReferralFromNeurosurgeon = "306016008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromNeurosurgeon
+    /// </summary>
+    public const string LiteralNONEReferralFromNeurosurgeon = "http://snomed.info/sct#306016008";
 
     /// <summary>
     /// Literal for code: ReferralByOphthalmologist
@@ -9826,9 +11246,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByOphthalmologist = "306017004";
 
     /// <summary>
+    /// Literal for code: NONEReferralByOphthalmologist
+    /// </summary>
+    public const string LiteralNONEReferralByOphthalmologist = "http://snomed.info/sct#306017004";
+
+    /// <summary>
     /// Literal for code: ReferralFromOralSurgeon
     /// </summary>
     public const string LiteralReferralFromOralSurgeon = "306018009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromOralSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralFromOralSurgeon = "http://snomed.info/sct#306018009";
 
     /// <summary>
     /// Literal for code: ReferralFromOrthopedicSurgeon
@@ -9836,9 +11266,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromOrthopedicSurgeon = "306019001";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromOrthopedicSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralFromOrthopedicSurgeon = "http://snomed.info/sct#306019001";
+
+    /// <summary>
     /// Literal for code: ReferralByPediatricSurgeon
     /// </summary>
     public const string LiteralReferralByPediatricSurgeon = "306020007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByPediatricSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralByPediatricSurgeon = "http://snomed.info/sct#306020007";
 
     /// <summary>
     /// Literal for code: ReferralByPancreaticSurgeon
@@ -9846,9 +11286,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByPancreaticSurgeon = "306021006";
 
     /// <summary>
+    /// Literal for code: NONEReferralByPancreaticSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralByPancreaticSurgeon = "http://snomed.info/sct#306021006";
+
+    /// <summary>
     /// Literal for code: ReferralFromPlasticSurgeon
     /// </summary>
     public const string LiteralReferralFromPlasticSurgeon = "306022004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromPlasticSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralFromPlasticSurgeon = "http://snomed.info/sct#306022004";
 
     /// <summary>
     /// Literal for code: ReferralFromTransplantSurgeon
@@ -9856,9 +11306,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromTransplantSurgeon = "306023009";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromTransplantSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralFromTransplantSurgeon = "http://snomed.info/sct#306023009";
+
+    /// <summary>
     /// Literal for code: ReferralByTraumaSurgeon
     /// </summary>
     public const string LiteralReferralByTraumaSurgeon = "306024003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByTraumaSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralByTraumaSurgeon = "http://snomed.info/sct#306024003";
 
     /// <summary>
     /// Literal for code: ReferralFromUrologist
@@ -9866,9 +11326,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromUrologist = "306025002";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromUrologist
+    /// </summary>
+    public const string LiteralNONEReferralFromUrologist = "http://snomed.info/sct#306025002";
+
+    /// <summary>
     /// Literal for code: ReferralByVascularSurgeon
     /// </summary>
     public const string LiteralReferralByVascularSurgeon = "306026001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByVascularSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralByVascularSurgeon = "http://snomed.info/sct#306026001";
 
     /// <summary>
     /// Literal for code: ReferralFromClinicalNurseSpecialist
@@ -9876,9 +11346,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromClinicalNurseSpecialist = "306027005";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromClinicalNurseSpecialist
+    /// </summary>
+    public const string LiteralNONEReferralFromClinicalNurseSpecialist = "http://snomed.info/sct#306027005";
+
+    /// <summary>
     /// Literal for code: ReferralByBreastCareNurse
     /// </summary>
     public const string LiteralReferralByBreastCareNurse = "306028000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByBreastCareNurse
+    /// </summary>
+    public const string LiteralNONEReferralByBreastCareNurse = "http://snomed.info/sct#306028000";
 
     /// <summary>
     /// Literal for code: ReferralFromCardiacRehabilitationNurse
@@ -9886,9 +11366,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromCardiacRehabilitationNurse = "306029008";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromCardiacRehabilitationNurse
+    /// </summary>
+    public const string LiteralNONEReferralFromCardiacRehabilitationNurse = "http://snomed.info/sct#306029008";
+
+    /// <summary>
     /// Literal for code: ReferralByContactTracingNurse
     /// </summary>
     public const string LiteralReferralByContactTracingNurse = "306030003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByContactTracingNurse
+    /// </summary>
+    public const string LiteralNONEReferralByContactTracingNurse = "http://snomed.info/sct#306030003";
 
     /// <summary>
     /// Literal for code: ReferralFromContinenceNurse
@@ -9896,9 +11386,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromContinenceNurse = "306031004";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromContinenceNurse
+    /// </summary>
+    public const string LiteralNONEReferralFromContinenceNurse = "http://snomed.info/sct#306031004";
+
+    /// <summary>
     /// Literal for code: ReferralByDiabeticLiaisonNurse
     /// </summary>
     public const string LiteralReferralByDiabeticLiaisonNurse = "306032006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByDiabeticLiaisonNurse
+    /// </summary>
+    public const string LiteralNONEReferralByDiabeticLiaisonNurse = "http://snomed.info/sct#306032006";
 
     /// <summary>
     /// Literal for code: ReferralByGenitourinaryNurse
@@ -9906,9 +11406,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByGenitourinaryNurse = "306033001";
 
     /// <summary>
+    /// Literal for code: NONEReferralByGenitourinaryNurse
+    /// </summary>
+    public const string LiteralNONEReferralByGenitourinaryNurse = "http://snomed.info/sct#306033001";
+
+    /// <summary>
     /// Literal for code: ReferralFromMacmillanNurse
     /// </summary>
     public const string LiteralReferralFromMacmillanNurse = "306034007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromMacmillanNurse
+    /// </summary>
+    public const string LiteralNONEReferralFromMacmillanNurse = "http://snomed.info/sct#306034007";
 
     /// <summary>
     /// Literal for code: ReferralByMarieCurieNurse
@@ -9916,9 +11426,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByMarieCurieNurse = "306035008";
 
     /// <summary>
+    /// Literal for code: NONEReferralByMarieCurieNurse
+    /// </summary>
+    public const string LiteralNONEReferralByMarieCurieNurse = "http://snomed.info/sct#306035008";
+
+    /// <summary>
     /// Literal for code: ReferralByLymphedemaCareNurse
     /// </summary>
     public const string LiteralReferralByLymphedemaCareNurse = "306036009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByLymphedemaCareNurse
+    /// </summary>
+    public const string LiteralNONEReferralByLymphedemaCareNurse = "http://snomed.info/sct#306036009";
 
     /// <summary>
     /// Literal for code: ReferralFromNurseBehavioralTherapist
@@ -9926,9 +11446,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromNurseBehavioralTherapist = "306037000";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromNurseBehavioralTherapist
+    /// </summary>
+    public const string LiteralNONEReferralFromNurseBehavioralTherapist = "http://snomed.info/sct#306037000";
+
+    /// <summary>
     /// Literal for code: ReferralFromNursePsychotherapist
     /// </summary>
     public const string LiteralReferralFromNursePsychotherapist = "306038005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromNursePsychotherapist
+    /// </summary>
+    public const string LiteralNONEReferralFromNursePsychotherapist = "http://snomed.info/sct#306038005";
 
     /// <summary>
     /// Literal for code: ReferralByPainManagementNurse
@@ -9936,9 +11466,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByPainManagementNurse = "306039002";
 
     /// <summary>
+    /// Literal for code: NONEReferralByPainManagementNurse
+    /// </summary>
+    public const string LiteralNONEReferralByPainManagementNurse = "http://snomed.info/sct#306039002";
+
+    /// <summary>
     /// Literal for code: ReferralByPediatricNurse
     /// </summary>
     public const string LiteralReferralByPediatricNurse = "306040000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByPediatricNurse
+    /// </summary>
+    public const string LiteralNONEReferralByPediatricNurse = "http://snomed.info/sct#306040000";
 
     /// <summary>
     /// Literal for code: ReferralByPsychiatricNurse
@@ -9946,9 +11486,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByPsychiatricNurse = "306041001";
 
     /// <summary>
+    /// Literal for code: NONEReferralByPsychiatricNurse
+    /// </summary>
+    public const string LiteralNONEReferralByPsychiatricNurse = "http://snomed.info/sct#306041001";
+
+    /// <summary>
     /// Literal for code: ReferralFromOncologyNurse
     /// </summary>
     public const string LiteralReferralFromOncologyNurse = "306042008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromOncologyNurse
+    /// </summary>
+    public const string LiteralNONEReferralFromOncologyNurse = "http://snomed.info/sct#306042008";
 
     /// <summary>
     /// Literal for code: ReferralFromRheumatologyNurseSpecialist
@@ -9956,9 +11506,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromRheumatologyNurseSpecialist = "306043003";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromRheumatologyNurseSpecialist
+    /// </summary>
+    public const string LiteralNONEReferralFromRheumatologyNurseSpecialist = "http://snomed.info/sct#306043003";
+
+    /// <summary>
     /// Literal for code: ReferralByStomaNurse
     /// </summary>
     public const string LiteralReferralByStomaNurse = "306044009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByStomaNurse
+    /// </summary>
+    public const string LiteralNONEReferralByStomaNurse = "http://snomed.info/sct#306044009";
 
     /// <summary>
     /// Literal for code: ReferralFromCommunityBasedNurse
@@ -9966,9 +11526,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromCommunityBasedNurse = "306045005";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromCommunityBasedNurse
+    /// </summary>
+    public const string LiteralNONEReferralFromCommunityBasedNurse = "http://snomed.info/sct#306045005";
+
+    /// <summary>
     /// Literal for code: ReferralByCommunityPsychiatricNurse
     /// </summary>
     public const string LiteralReferralByCommunityPsychiatricNurse = "306046006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByCommunityPsychiatricNurse
+    /// </summary>
+    public const string LiteralNONEReferralByCommunityPsychiatricNurse = "http://snomed.info/sct#306046006";
 
     /// <summary>
     /// Literal for code: ReferralFromCompanyNurse
@@ -9976,9 +11546,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromCompanyNurse = "306047002";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromCompanyNurse
+    /// </summary>
+    public const string LiteralNONEReferralFromCompanyNurse = "http://snomed.info/sct#306047002";
+
+    /// <summary>
     /// Literal for code: ReferralByDistrictNurse
     /// </summary>
     public const string LiteralReferralByDistrictNurse = "306048007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByDistrictNurse
+    /// </summary>
+    public const string LiteralNONEReferralByDistrictNurse = "http://snomed.info/sct#306048007";
 
     /// <summary>
     /// Literal for code: ReferralByPracticeNurse
@@ -9986,9 +11566,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByPracticeNurse = "306050004";
 
     /// <summary>
+    /// Literal for code: NONEReferralByPracticeNurse
+    /// </summary>
+    public const string LiteralNONEReferralByPracticeNurse = "http://snomed.info/sct#306050004";
+
+    /// <summary>
     /// Literal for code: ReferralFromSchoolNurse
     /// </summary>
     public const string LiteralReferralFromSchoolNurse = "306051000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromSchoolNurse
+    /// </summary>
+    public const string LiteralNONEReferralFromSchoolNurse = "http://snomed.info/sct#306051000";
 
     /// <summary>
     /// Literal for code: ReferralByMidwife
@@ -9996,9 +11586,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByMidwife = "306052007";
 
     /// <summary>
+    /// Literal for code: NONEReferralByMidwife
+    /// </summary>
+    public const string LiteralNONEReferralByMidwife = "http://snomed.info/sct#306052007";
+
+    /// <summary>
     /// Literal for code: ReferralByCommunityBasedMidwife
     /// </summary>
     public const string LiteralReferralByCommunityBasedMidwife = "306053002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByCommunityBasedMidwife
+    /// </summary>
+    public const string LiteralNONEReferralByCommunityBasedMidwife = "http://snomed.info/sct#306053002";
 
     /// <summary>
     /// Literal for code: ReferralFromHospitalMidwife
@@ -10006,9 +11606,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromHospitalMidwife = "306054008";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromHospitalMidwife
+    /// </summary>
+    public const string LiteralNONEReferralFromHospitalMidwife = "http://snomed.info/sct#306054008";
+
+    /// <summary>
     /// Literal for code: ReferralByPsychotherapist
     /// </summary>
     public const string LiteralReferralByPsychotherapist = "306055009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByPsychotherapist
+    /// </summary>
+    public const string LiteralNONEReferralByPsychotherapist = "http://snomed.info/sct#306055009";
 
     /// <summary>
     /// Literal for code: ReferralFromProfessionalAlliedToMedicine
@@ -10016,9 +11626,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromProfessionalAlliedToMedicine = "306056005";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromProfessionalAlliedToMedicine
+    /// </summary>
+    public const string LiteralNONEReferralFromProfessionalAlliedToMedicine = "http://snomed.info/sct#306056005";
+
+    /// <summary>
     /// Literal for code: ReferralByArtsTherapist
     /// </summary>
     public const string LiteralReferralByArtsTherapist = "306057001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByArtsTherapist
+    /// </summary>
+    public const string LiteralNONEReferralByArtsTherapist = "http://snomed.info/sct#306057001";
 
     /// <summary>
     /// Literal for code: ReferralFromArtTherapist
@@ -10026,9 +11646,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromArtTherapist = "306059003";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromArtTherapist
+    /// </summary>
+    public const string LiteralNONEReferralFromArtTherapist = "http://snomed.info/sct#306059003";
+
+    /// <summary>
     /// Literal for code: ReferralByDanceTherapist
     /// </summary>
     public const string LiteralReferralByDanceTherapist = "306060008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByDanceTherapist
+    /// </summary>
+    public const string LiteralNONEReferralByDanceTherapist = "http://snomed.info/sct#306060008";
 
     /// <summary>
     /// Literal for code: ReferralFromDramaTherapist
@@ -10036,9 +11666,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromDramaTherapist = "306061007";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromDramaTherapist
+    /// </summary>
+    public const string LiteralNONEReferralFromDramaTherapist = "http://snomed.info/sct#306061007";
+
+    /// <summary>
     /// Literal for code: ReferralByMusicTherapist
     /// </summary>
     public const string LiteralReferralByMusicTherapist = "306062000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByMusicTherapist
+    /// </summary>
+    public const string LiteralNONEReferralByMusicTherapist = "http://snomed.info/sct#306062000";
 
     /// <summary>
     /// Literal for code: ReferralFromPlayTherapist
@@ -10046,9 +11686,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromPlayTherapist = "306063005";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromPlayTherapist
+    /// </summary>
+    public const string LiteralNONEReferralFromPlayTherapist = "http://snomed.info/sct#306063005";
+
+    /// <summary>
     /// Literal for code: ReferralByAudiologyTechnician
     /// </summary>
     public const string LiteralReferralByAudiologyTechnician = "306064004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByAudiologyTechnician
+    /// </summary>
+    public const string LiteralNONEReferralByAudiologyTechnician = "http://snomed.info/sct#306064004";
 
     /// <summary>
     /// Literal for code: ReferralByPodiatrist
@@ -10056,9 +11706,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByPodiatrist = "306065003";
 
     /// <summary>
+    /// Literal for code: NONEReferralByPodiatrist
+    /// </summary>
+    public const string LiteralNONEReferralByPodiatrist = "http://snomed.info/sct#306065003";
+
+    /// <summary>
     /// Literal for code: ReferralFromCommunityBasedPodiatrist
     /// </summary>
     public const string LiteralReferralFromCommunityBasedPodiatrist = "306066002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromCommunityBasedPodiatrist
+    /// </summary>
+    public const string LiteralNONEReferralFromCommunityBasedPodiatrist = "http://snomed.info/sct#306066002";
 
     /// <summary>
     /// Literal for code: ReferralByHospitalBasedPodiatrist
@@ -10066,9 +11726,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByHospitalBasedPodiatrist = "306067006";
 
     /// <summary>
+    /// Literal for code: NONEReferralByHospitalBasedPodiatrist
+    /// </summary>
+    public const string LiteralNONEReferralByHospitalBasedPodiatrist = "http://snomed.info/sct#306067006";
+
+    /// <summary>
     /// Literal for code: ReferralFromDietitian
     /// </summary>
     public const string LiteralReferralFromDietitian = "306068001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromDietitian
+    /// </summary>
+    public const string LiteralNONEReferralFromDietitian = "http://snomed.info/sct#306068001";
 
     /// <summary>
     /// Literal for code: ReferralByCommunityBasedDietitian
@@ -10076,9 +11746,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByCommunityBasedDietitian = "306069009";
 
     /// <summary>
+    /// Literal for code: NONEReferralByCommunityBasedDietitian
+    /// </summary>
+    public const string LiteralNONEReferralByCommunityBasedDietitian = "http://snomed.info/sct#306069009";
+
+    /// <summary>
     /// Literal for code: ReferralByHospitalDietitian
     /// </summary>
     public const string LiteralReferralByHospitalDietitian = "306070005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByHospitalDietitian
+    /// </summary>
+    public const string LiteralNONEReferralByHospitalDietitian = "http://snomed.info/sct#306070005";
 
     /// <summary>
     /// Literal for code: ReferralByOccupationalTherapist
@@ -10086,9 +11766,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByOccupationalTherapist = "306071009";
 
     /// <summary>
+    /// Literal for code: NONEReferralByOccupationalTherapist
+    /// </summary>
+    public const string LiteralNONEReferralByOccupationalTherapist = "http://snomed.info/sct#306071009";
+
+    /// <summary>
     /// Literal for code: ReferralFromCommunityOccupationalTherapist
     /// </summary>
     public const string LiteralReferralFromCommunityOccupationalTherapist = "306072002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromCommunityOccupationalTherapist
+    /// </summary>
+    public const string LiteralNONEReferralFromCommunityOccupationalTherapist = "http://snomed.info/sct#306072002";
 
     /// <summary>
     /// Literal for code: ReferralBySocialServicesDepartmentOccupationalTherapist
@@ -10096,9 +11786,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralBySocialServicesDepartmentOccupationalTherapist = "306073007";
 
     /// <summary>
+    /// Literal for code: NONEReferralBySocialServicesDepartmentOccupationalTherapist
+    /// </summary>
+    public const string LiteralNONEReferralBySocialServicesDepartmentOccupationalTherapist = "http://snomed.info/sct#306073007";
+
+    /// <summary>
     /// Literal for code: ReferralByHospitalBasedOccupationalTherapist
     /// </summary>
     public const string LiteralReferralByHospitalBasedOccupationalTherapist = "306074001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByHospitalBasedOccupationalTherapist
+    /// </summary>
+    public const string LiteralNONEReferralByHospitalBasedOccupationalTherapist = "http://snomed.info/sct#306074001";
 
     /// <summary>
     /// Literal for code: ReferralByOrthoptist
@@ -10106,9 +11806,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByOrthoptist = "306076004";
 
     /// <summary>
+    /// Literal for code: NONEReferralByOrthoptist
+    /// </summary>
+    public const string LiteralNONEReferralByOrthoptist = "http://snomed.info/sct#306076004";
+
+    /// <summary>
     /// Literal for code: ReferralFromOrthotist
     /// </summary>
     public const string LiteralReferralFromOrthotist = "306077008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromOrthotist
+    /// </summary>
+    public const string LiteralNONEReferralFromOrthotist = "http://snomed.info/sct#306077008";
 
     /// <summary>
     /// Literal for code: ReferralBySurgicalFitter
@@ -10116,9 +11826,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralBySurgicalFitter = "306078003";
 
     /// <summary>
+    /// Literal for code: NONEReferralBySurgicalFitter
+    /// </summary>
+    public const string LiteralNONEReferralBySurgicalFitter = "http://snomed.info/sct#306078003";
+
+    /// <summary>
     /// Literal for code: ReferralFromPhysiotherapist
     /// </summary>
     public const string LiteralReferralFromPhysiotherapist = "306079006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromPhysiotherapist
+    /// </summary>
+    public const string LiteralNONEReferralFromPhysiotherapist = "http://snomed.info/sct#306079006";
 
     /// <summary>
     /// Literal for code: ReferralByCommunityBasedPhysiotherapist
@@ -10126,9 +11846,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByCommunityBasedPhysiotherapist = "306080009";
 
     /// <summary>
+    /// Literal for code: NONEReferralByCommunityBasedPhysiotherapist
+    /// </summary>
+    public const string LiteralNONEReferralByCommunityBasedPhysiotherapist = "http://snomed.info/sct#306080009";
+
+    /// <summary>
     /// Literal for code: ReferralFromHospitalPhysiotherapist
     /// </summary>
     public const string LiteralReferralFromHospitalPhysiotherapist = "306081008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromHospitalPhysiotherapist
+    /// </summary>
+    public const string LiteralNONEReferralFromHospitalPhysiotherapist = "http://snomed.info/sct#306081008";
 
     /// <summary>
     /// Literal for code: ReferralByRadiographer
@@ -10136,9 +11866,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByRadiographer = "306082001";
 
     /// <summary>
+    /// Literal for code: NONEReferralByRadiographer
+    /// </summary>
+    public const string LiteralNONEReferralByRadiographer = "http://snomed.info/sct#306082001";
+
+    /// <summary>
     /// Literal for code: ReferralFromTherapeuticRadiographer
     /// </summary>
     public const string LiteralReferralFromTherapeuticRadiographer = "306083006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromTherapeuticRadiographer
+    /// </summary>
+    public const string LiteralNONEReferralFromTherapeuticRadiographer = "http://snomed.info/sct#306083006";
 
     /// <summary>
     /// Literal for code: ReferralFromDiagnosticRadiographer
@@ -10146,9 +11886,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromDiagnosticRadiographer = "306085004";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromDiagnosticRadiographer
+    /// </summary>
+    public const string LiteralNONEReferralFromDiagnosticRadiographer = "http://snomed.info/sct#306085004";
+
+    /// <summary>
     /// Literal for code: ReferralBySpeechAndLanguageTherapist
     /// </summary>
     public const string LiteralReferralBySpeechAndLanguageTherapist = "306086003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralBySpeechAndLanguageTherapist
+    /// </summary>
+    public const string LiteralNONEReferralBySpeechAndLanguageTherapist = "http://snomed.info/sct#306086003";
 
     /// <summary>
     /// Literal for code: ReferralFromCommunityBasedSpeechAndLanguageTherapist
@@ -10156,9 +11906,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromCommunityBasedSpeechAndLanguageTherapist = "306087007";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromCommunityBasedSpeechAndLanguageTherapist
+    /// </summary>
+    public const string LiteralNONEReferralFromCommunityBasedSpeechAndLanguageTherapist = "http://snomed.info/sct#306087007";
+
+    /// <summary>
     /// Literal for code: ReferralByHospitalBasedSpeechAndLanguageTherapist
     /// </summary>
     public const string LiteralReferralByHospitalBasedSpeechAndLanguageTherapist = "306088002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByHospitalBasedSpeechAndLanguageTherapist
+    /// </summary>
+    public const string LiteralNONEReferralByHospitalBasedSpeechAndLanguageTherapist = "http://snomed.info/sct#306088002";
 
     /// <summary>
     /// Literal for code: ReferralFromPharmacist
@@ -10166,9 +11926,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromPharmacist = "306089005";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromPharmacist
+    /// </summary>
+    public const string LiteralNONEReferralFromPharmacist = "http://snomed.info/sct#306089005";
+
+    /// <summary>
     /// Literal for code: ReferralBySocialWorker
     /// </summary>
     public const string LiteralReferralBySocialWorker = "306090001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralBySocialWorker
+    /// </summary>
+    public const string LiteralNONEReferralBySocialWorker = "http://snomed.info/sct#306090001";
 
     /// <summary>
     /// Literal for code: ReferralBySSDSocialWorker
@@ -10176,9 +11946,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralBySSDSocialWorker = "306091002";
 
     /// <summary>
+    /// Literal for code: NONEReferralBySSDSocialWorker
+    /// </summary>
+    public const string LiteralNONEReferralBySSDSocialWorker = "http://snomed.info/sct#306091002";
+
+    /// <summary>
     /// Literal for code: ReferralBySocialServicesDepartmentCareManager
     /// </summary>
     public const string LiteralReferralBySocialServicesDepartmentCareManager = "306092009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralBySocialServicesDepartmentCareManager
+    /// </summary>
+    public const string LiteralNONEReferralBySocialServicesDepartmentCareManager = "http://snomed.info/sct#306092009";
 
     /// <summary>
     /// Literal for code: ReferralFromTeacher
@@ -10186,9 +11966,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFromTeacher = "306093004";
 
     /// <summary>
+    /// Literal for code: NONEReferralFromTeacher
+    /// </summary>
+    public const string LiteralNONEReferralFromTeacher = "http://snomed.info/sct#306093004";
+
+    /// <summary>
     /// Literal for code: ReferralByLipSpeechReadingTeacher
     /// </summary>
     public const string LiteralReferralByLipSpeechReadingTeacher = "306094005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByLipSpeechReadingTeacher
+    /// </summary>
+    public const string LiteralNONEReferralByLipSpeechReadingTeacher = "http://snomed.info/sct#306094005";
 
     /// <summary>
     /// Literal for code: ReferralByTeacherOfTheDeaf
@@ -10196,9 +11986,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByTeacherOfTheDeaf = "306095006";
 
     /// <summary>
+    /// Literal for code: NONEReferralByTeacherOfTheDeaf
+    /// </summary>
+    public const string LiteralNONEReferralByTeacherOfTheDeaf = "http://snomed.info/sct#306095006";
+
+    /// <summary>
     /// Literal for code: ReferralFromTeacherOfTheHearingImpaired
     /// </summary>
     public const string LiteralReferralFromTeacherOfTheHearingImpaired = "306096007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromTeacherOfTheHearingImpaired
+    /// </summary>
+    public const string LiteralNONEReferralFromTeacherOfTheHearingImpaired = "http://snomed.info/sct#306096007";
 
     /// <summary>
     /// Literal for code: ReferralBySchoolTeacher
@@ -10206,9 +12006,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralBySchoolTeacher = "306097003";
 
     /// <summary>
+    /// Literal for code: NONEReferralBySchoolTeacher
+    /// </summary>
+    public const string LiteralNONEReferralBySchoolTeacher = "http://snomed.info/sct#306097003";
+
+    /// <summary>
     /// Literal for code: ReferralBySelf
     /// </summary>
     public const string LiteralReferralBySelf = "306098008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralBySelf
+    /// </summary>
+    public const string LiteralNONEReferralBySelf = "http://snomed.info/sct#306098008";
 
     /// <summary>
     /// Literal for code: ReferralByCarer
@@ -10216,9 +12026,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByCarer = "306099000";
 
     /// <summary>
+    /// Literal for code: NONEReferralByCarer
+    /// </summary>
+    public const string LiteralNONEReferralByCarer = "http://snomed.info/sct#306099000";
+
+    /// <summary>
     /// Literal for code: ReferralByRelative
     /// </summary>
     public const string LiteralReferralByRelative = "306100008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByRelative
+    /// </summary>
+    public const string LiteralNONEReferralByRelative = "http://snomed.info/sct#306100008";
 
     /// <summary>
     /// Literal for code: ReferralToEstablishment
@@ -10226,9 +12046,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToEstablishment = "306101007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToEstablishment
+    /// </summary>
+    public const string LiteralNONEReferralToEstablishment = "http://snomed.info/sct#306101007";
+
+    /// <summary>
     /// Literal for code: ReferralToPrimaryHealthCareClinic
     /// </summary>
     public const string LiteralReferralToPrimaryHealthCareClinic = "306102000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPrimaryHealthCareClinic
+    /// </summary>
+    public const string LiteralNONEReferralToPrimaryHealthCareClinic = "http://snomed.info/sct#306102000";
 
     /// <summary>
     /// Literal for code: ReferralToDepartment
@@ -10236,9 +12066,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToDepartment = "306103005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToDepartment
+    /// </summary>
+    public const string LiteralNONEReferralToDepartment = "http://snomed.info/sct#306103005";
+
+    /// <summary>
     /// Literal for code: ReferralToCasualtyService
     /// </summary>
     public const string LiteralReferralToCasualtyService = "306104004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCasualtyService
+    /// </summary>
+    public const string LiteralNONEReferralToCasualtyService = "http://snomed.info/sct#306104004";
 
     /// <summary>
     /// Literal for code: ReferralToAnestheticService
@@ -10246,9 +12086,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToAnestheticService = "306105003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToAnestheticService
+    /// </summary>
+    public const string LiteralNONEReferralToAnestheticService = "http://snomed.info/sct#306105003";
+
+    /// <summary>
     /// Literal for code: ReferralToITUService
     /// </summary>
     public const string LiteralReferralToITUService = "306106002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToITUService
+    /// </summary>
+    public const string LiteralNONEReferralToITUService = "http://snomed.info/sct#306106002";
 
     /// <summary>
     /// Literal for code: ReferralToAdultIntensiveCareService
@@ -10256,9 +12106,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToAdultIntensiveCareService = "306107006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToAdultIntensiveCareService
+    /// </summary>
+    public const string LiteralNONEReferralToAdultIntensiveCareService = "http://snomed.info/sct#306107006";
+
+    /// <summary>
     /// Literal for code: ReferralToPediatricIntensiveCareService
     /// </summary>
     public const string LiteralReferralToPediatricIntensiveCareService = "306108001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPediatricIntensiveCareService
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricIntensiveCareService = "http://snomed.info/sct#306108001";
 
     /// <summary>
     /// Literal for code: ReferralToPainManagementService
@@ -10266,9 +12126,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPainManagementService = "306109009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPainManagementService
+    /// </summary>
+    public const string LiteralNONEReferralToPainManagementService = "http://snomed.info/sct#306109009";
+
+    /// <summary>
     /// Literal for code: ReferralToMedicalService
     /// </summary>
     public const string LiteralReferralToMedicalService = "306110004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToMedicalService
+    /// </summary>
+    public const string LiteralNONEReferralToMedicalService = "http://snomed.info/sct#306110004";
 
     /// <summary>
     /// Literal for code: ReferralToClinicalAllergyService
@@ -10276,9 +12146,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToClinicalAllergyService = "306111000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToClinicalAllergyService
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalAllergyService = "http://snomed.info/sct#306111000";
+
+    /// <summary>
     /// Literal for code: ReferralToChestMedicineService
     /// </summary>
     public const string LiteralReferralToChestMedicineService = "306112007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToChestMedicineService
+    /// </summary>
+    public const string LiteralNONEReferralToChestMedicineService = "http://snomed.info/sct#306112007";
 
     /// <summary>
     /// Literal for code: ReferralToThoracicMedicineService
@@ -10286,9 +12166,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToThoracicMedicineService = "306113002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToThoracicMedicineService
+    /// </summary>
+    public const string LiteralNONEReferralToThoracicMedicineService = "http://snomed.info/sct#306113002";
+
+    /// <summary>
     /// Literal for code: ReferralToRespiratoryMedicineService
     /// </summary>
     public const string LiteralReferralToRespiratoryMedicineService = "306114008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToRespiratoryMedicineService
+    /// </summary>
+    public const string LiteralNONEReferralToRespiratoryMedicineService = "http://snomed.info/sct#306114008";
 
     /// <summary>
     /// Literal for code: ReferralToClinicalNeurophysiologyService
@@ -10296,9 +12186,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToClinicalNeurophysiologyService = "306115009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToClinicalNeurophysiologyService
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalNeurophysiologyService = "http://snomed.info/sct#306115009";
+
+    /// <summary>
     /// Literal for code: ReferralToClinicalPharmacologyService
     /// </summary>
     public const string LiteralReferralToClinicalPharmacologyService = "306116005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToClinicalPharmacologyService
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalPharmacologyService = "http://snomed.info/sct#306116005";
 
     /// <summary>
     /// Literal for code: ReferralToClinicalPhysiologyService
@@ -10306,9 +12206,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToClinicalPhysiologyService = "306117001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToClinicalPhysiologyService
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalPhysiologyService = "http://snomed.info/sct#306117001";
+
+    /// <summary>
     /// Literal for code: ReferralToEndocrinologyService
     /// </summary>
     public const string LiteralReferralToEndocrinologyService = "306118006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToEndocrinologyService
+    /// </summary>
+    public const string LiteralNONEReferralToEndocrinologyService = "http://snomed.info/sct#306118006";
 
     /// <summary>
     /// Literal for code: ReferralToGeneticsService
@@ -10316,9 +12226,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToGeneticsService = "306119003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToGeneticsService
+    /// </summary>
+    public const string LiteralNONEReferralToGeneticsService = "http://snomed.info/sct#306119003";
+
+    /// <summary>
     /// Literal for code: ReferralToClinicalGeneticsService
     /// </summary>
     public const string LiteralReferralToClinicalGeneticsService = "306120009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToClinicalGeneticsService
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalGeneticsService = "http://snomed.info/sct#306120009";
 
     /// <summary>
     /// Literal for code: ReferralToClinicalCytogeneticsService
@@ -10326,9 +12246,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToClinicalCytogeneticsService = "306121008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToClinicalCytogeneticsService
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalCytogeneticsService = "http://snomed.info/sct#306121008";
+
+    /// <summary>
     /// Literal for code: ReferralToClinicalMolecularGeneticsService
     /// </summary>
     public const string LiteralReferralToClinicalMolecularGeneticsService = "306122001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToClinicalMolecularGeneticsService
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalMolecularGeneticsService = "http://snomed.info/sct#306122001";
 
     /// <summary>
     /// Literal for code: ReferralToGenitourinaryMedicineService
@@ -10336,9 +12266,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToGenitourinaryMedicineService = "306123006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToGenitourinaryMedicineService
+    /// </summary>
+    public const string LiteralNONEReferralToGenitourinaryMedicineService = "http://snomed.info/sct#306123006";
+
+    /// <summary>
     /// Literal for code: ReferralToInfectiousDiseasesService
     /// </summary>
     public const string LiteralReferralToInfectiousDiseasesService = "306124000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToInfectiousDiseasesService
+    /// </summary>
+    public const string LiteralNONEReferralToInfectiousDiseasesService = "http://snomed.info/sct#306124000";
 
     /// <summary>
     /// Literal for code: ReferralToNephrologyService
@@ -10346,9 +12286,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToNephrologyService = "306125004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToNephrologyService
+    /// </summary>
+    public const string LiteralNONEReferralToNephrologyService = "http://snomed.info/sct#306125004";
+
+    /// <summary>
     /// Literal for code: ReferralToNuclearMedicineService
     /// </summary>
     public const string LiteralReferralToNuclearMedicineService = "306126003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToNuclearMedicineService
+    /// </summary>
+    public const string LiteralNONEReferralToNuclearMedicineService = "http://snomed.info/sct#306126003";
 
     /// <summary>
     /// Literal for code: ReferralToRheumatologyService
@@ -10356,9 +12306,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToRheumatologyService = "306127007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToRheumatologyService
+    /// </summary>
+    public const string LiteralNONEReferralToRheumatologyService = "http://snomed.info/sct#306127007";
+
+    /// <summary>
     /// Literal for code: ReferralToPediatricService
     /// </summary>
     public const string LiteralReferralToPediatricService = "306128002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPediatricService
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricService = "http://snomed.info/sct#306128002";
 
     /// <summary>
     /// Literal for code: ReferralToCommunityPediatricService
@@ -10366,9 +12326,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCommunityPediatricService = "306129005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCommunityPediatricService
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityPediatricService = "http://snomed.info/sct#306129005";
+
+    /// <summary>
     /// Literal for code: ReferralToPediatricNeurologyService
     /// </summary>
     public const string LiteralReferralToPediatricNeurologyService = "306130000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPediatricNeurologyService
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricNeurologyService = "http://snomed.info/sct#306130000";
 
     /// <summary>
     /// Literal for code: ReferralToPediatricOncologyService
@@ -10376,9 +12346,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPediatricOncologyService = "306131001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPediatricOncologyService
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricOncologyService = "http://snomed.info/sct#306131001";
+
+    /// <summary>
     /// Literal for code: ReferralToSpecialCareBabyUnit
     /// </summary>
     public const string LiteralReferralToSpecialCareBabyUnit = "306132008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToSpecialCareBabyUnit
+    /// </summary>
+    public const string LiteralNONEReferralToSpecialCareBabyUnit = "http://snomed.info/sct#306132008";
 
     /// <summary>
     /// Literal for code: ReferralToObstetricsAndGynecologyService
@@ -10386,9 +12366,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToObstetricsAndGynecologyService = "306133003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToObstetricsAndGynecologyService
+    /// </summary>
+    public const string LiteralNONEReferralToObstetricsAndGynecologyService = "http://snomed.info/sct#306133003";
+
+    /// <summary>
     /// Literal for code: ReferralToChildAndAdolescentPsychiatryService
     /// </summary>
     public const string LiteralReferralToChildAndAdolescentPsychiatryService = "306134009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToChildAndAdolescentPsychiatryService
+    /// </summary>
+    public const string LiteralNONEReferralToChildAndAdolescentPsychiatryService = "http://snomed.info/sct#306134009";
 
     /// <summary>
     /// Literal for code: ReferralToForensicPsychiatryService
@@ -10396,9 +12386,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToForensicPsychiatryService = "306135005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToForensicPsychiatryService
+    /// </summary>
+    public const string LiteralNONEReferralToForensicPsychiatryService = "http://snomed.info/sct#306135005";
+
+    /// <summary>
     /// Literal for code: ReferralToLiaisonPsychiatryService
     /// </summary>
     public const string LiteralReferralToLiaisonPsychiatryService = "306136006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToLiaisonPsychiatryService
+    /// </summary>
+    public const string LiteralNONEReferralToLiaisonPsychiatryService = "http://snomed.info/sct#306136006";
 
     /// <summary>
     /// Literal for code: ReferralToMentalHandicapPsychiatryService
@@ -10406,9 +12406,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMentalHandicapPsychiatryService = "306137002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMentalHandicapPsychiatryService
+    /// </summary>
+    public const string LiteralNONEReferralToMentalHandicapPsychiatryService = "http://snomed.info/sct#306137002";
+
+    /// <summary>
     /// Literal for code: ReferralToPsychogeriatricService
     /// </summary>
     public const string LiteralReferralToPsychogeriatricService = "306138007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPsychogeriatricService
+    /// </summary>
+    public const string LiteralNONEReferralToPsychogeriatricService = "http://snomed.info/sct#306138007";
 
     /// <summary>
     /// Literal for code: ReferralToRehabilitationPsychiatryService
@@ -10416,9 +12426,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToRehabilitationPsychiatryService = "306139004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToRehabilitationPsychiatryService
+    /// </summary>
+    public const string LiteralNONEReferralToRehabilitationPsychiatryService = "http://snomed.info/sct#306139004";
+
+    /// <summary>
     /// Literal for code: ReferralToClinicalOncologyService
     /// </summary>
     public const string LiteralReferralToClinicalOncologyService = "306140002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToClinicalOncologyService
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalOncologyService = "http://snomed.info/sct#306140002";
 
     /// <summary>
     /// Literal for code: ReferralToRadiotherapyService
@@ -10426,9 +12446,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToRadiotherapyService = "306141003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToRadiotherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToRadiotherapyService = "http://snomed.info/sct#306141003";
+
+    /// <summary>
     /// Literal for code: ReferralToUltrasonographyService
     /// </summary>
     public const string LiteralReferralToUltrasonographyService = "306142005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToUltrasonographyService
+    /// </summary>
+    public const string LiteralNONEReferralToUltrasonographyService = "http://snomed.info/sct#306142005";
 
     /// <summary>
     /// Literal for code: ReferralToComputerizedTomographyService
@@ -10436,9 +12466,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToComputerizedTomographyService = "306143000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToComputerizedTomographyService
+    /// </summary>
+    public const string LiteralNONEReferralToComputerizedTomographyService = "http://snomed.info/sct#306143000";
+
+    /// <summary>
     /// Literal for code: ReferralToMagneticResonanceImagingService
     /// </summary>
     public const string LiteralReferralToMagneticResonanceImagingService = "306144006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToMagneticResonanceImagingService
+    /// </summary>
+    public const string LiteralNONEReferralToMagneticResonanceImagingService = "http://snomed.info/sct#306144006";
 
     /// <summary>
     /// Literal for code: ReferralToBloodTransfusionService
@@ -10446,9 +12486,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToBloodTransfusionService = "306145007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToBloodTransfusionService
+    /// </summary>
+    public const string LiteralNONEReferralToBloodTransfusionService = "http://snomed.info/sct#306145007";
+
+    /// <summary>
     /// Literal for code: ReferralToChemicalPathologyService
     /// </summary>
     public const string LiteralReferralToChemicalPathologyService = "306146008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToChemicalPathologyService
+    /// </summary>
+    public const string LiteralNONEReferralToChemicalPathologyService = "http://snomed.info/sct#306146008";
 
     /// <summary>
     /// Literal for code: ReferralToGeneralPathologyService
@@ -10456,9 +12506,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToGeneralPathologyService = "306147004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToGeneralPathologyService
+    /// </summary>
+    public const string LiteralNONEReferralToGeneralPathologyService = "http://snomed.info/sct#306147004";
+
+    /// <summary>
     /// Literal for code: ReferralToHematologyService
     /// </summary>
     public const string LiteralReferralToHematologyService = "306148009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToHematologyService
+    /// </summary>
+    public const string LiteralNONEReferralToHematologyService = "http://snomed.info/sct#306148009";
 
     /// <summary>
     /// Literal for code: ReferralToMedicalMicrobiologyService
@@ -10466,9 +12526,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMedicalMicrobiologyService = "306149001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMedicalMicrobiologyService
+    /// </summary>
+    public const string LiteralNONEReferralToMedicalMicrobiologyService = "http://snomed.info/sct#306149001";
+
+    /// <summary>
     /// Literal for code: ReferralToNeuropathologyService
     /// </summary>
     public const string LiteralReferralToNeuropathologyService = "306150001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToNeuropathologyService
+    /// </summary>
+    public const string LiteralNONEReferralToNeuropathologyService = "http://snomed.info/sct#306150001";
 
     /// <summary>
     /// Literal for code: ReferralToPublicHealthService
@@ -10476,9 +12546,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPublicHealthService = "306151002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPublicHealthService
+    /// </summary>
+    public const string LiteralNONEReferralToPublicHealthService = "http://snomed.info/sct#306151002";
+
+    /// <summary>
     /// Literal for code: ReferralToOccupationalHealthService
     /// </summary>
     public const string LiteralReferralToOccupationalHealthService = "306152009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToOccupationalHealthService
+    /// </summary>
+    public const string LiteralNONEReferralToOccupationalHealthService = "http://snomed.info/sct#306152009";
 
     /// <summary>
     /// Literal for code: ReferralToProfessionalAlliedToMedicineService
@@ -10486,9 +12566,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToProfessionalAlliedToMedicineService = "306153004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToProfessionalAlliedToMedicineService
+    /// </summary>
+    public const string LiteralNONEReferralToProfessionalAlliedToMedicineService = "http://snomed.info/sct#306153004";
+
+    /// <summary>
     /// Literal for code: ReferralToArtsTherapyServices
     /// </summary>
     public const string LiteralReferralToArtsTherapyServices = "306154005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToArtsTherapyServices
+    /// </summary>
+    public const string LiteralNONEReferralToArtsTherapyServices = "http://snomed.info/sct#306154005";
 
     /// <summary>
     /// Literal for code: ReferralToDanceTherapyService
@@ -10496,9 +12586,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToDanceTherapyService = "306156007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToDanceTherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToDanceTherapyService = "http://snomed.info/sct#306156007";
+
+    /// <summary>
     /// Literal for code: ReferralToDramaTherapyService
     /// </summary>
     public const string LiteralReferralToDramaTherapyService = "306157003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToDramaTherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToDramaTherapyService = "http://snomed.info/sct#306157003";
 
     /// <summary>
     /// Literal for code: ReferralToMusicTherapyService
@@ -10506,9 +12606,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMusicTherapyService = "306158008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMusicTherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToMusicTherapyService = "http://snomed.info/sct#306158008";
+
+    /// <summary>
     /// Literal for code: ReferralToPlayTherapyService
     /// </summary>
     public const string LiteralReferralToPlayTherapyService = "306159000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPlayTherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToPlayTherapyService = "http://snomed.info/sct#306159000";
 
     /// <summary>
     /// Literal for code: ReferralToPodiatryService
@@ -10516,9 +12626,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPodiatryService = "306160005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPodiatryService
+    /// </summary>
+    public const string LiteralNONEReferralToPodiatryService = "http://snomed.info/sct#306160005";
+
+    /// <summary>
     /// Literal for code: ReferralToCommunityPodiatryService
     /// </summary>
     public const string LiteralReferralToCommunityPodiatryService = "306161009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCommunityPodiatryService
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityPodiatryService = "http://snomed.info/sct#306161009";
 
     /// <summary>
     /// Literal for code: ReferralToHospitalBasedPodiatryService
@@ -10526,9 +12646,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHospitalBasedPodiatryService = "306162002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHospitalBasedPodiatryService
+    /// </summary>
+    public const string LiteralNONEReferralToHospitalBasedPodiatryService = "http://snomed.info/sct#306162002";
+
+    /// <summary>
     /// Literal for code: ReferralToDieteticsService
     /// </summary>
     public const string LiteralReferralToDieteticsService = "306163007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToDieteticsService
+    /// </summary>
+    public const string LiteralNONEReferralToDieteticsService = "http://snomed.info/sct#306163007";
 
     /// <summary>
     /// Literal for code: ReferralToCommunityBasedDieteticsService
@@ -10536,9 +12666,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCommunityBasedDieteticsService = "306164001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCommunityBasedDieteticsService
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityBasedDieteticsService = "http://snomed.info/sct#306164001";
+
+    /// <summary>
     /// Literal for code: ReferralToHospitalDieteticsService
     /// </summary>
     public const string LiteralReferralToHospitalDieteticsService = "306165000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToHospitalDieteticsService
+    /// </summary>
+    public const string LiteralNONEReferralToHospitalDieteticsService = "http://snomed.info/sct#306165000";
 
     /// <summary>
     /// Literal for code: ReferralToOccupationalTherapyService
@@ -10546,9 +12686,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToOccupationalTherapyService = "306166004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToOccupationalTherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToOccupationalTherapyService = "http://snomed.info/sct#306166004";
+
+    /// <summary>
     /// Literal for code: ReferralToCommunityBasedOccupationalTherapyService
     /// </summary>
     public const string LiteralReferralToCommunityBasedOccupationalTherapyService = "306167008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCommunityBasedOccupationalTherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityBasedOccupationalTherapyService = "http://snomed.info/sct#306167008";
 
     /// <summary>
     /// Literal for code: ReferralToHospitalOccupationalTherapyService
@@ -10556,9 +12706,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHospitalOccupationalTherapyService = "306168003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHospitalOccupationalTherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToHospitalOccupationalTherapyService = "http://snomed.info/sct#306168003";
+
+    /// <summary>
     /// Literal for code: ReferralToMedicalPhysicsService
     /// </summary>
     public const string LiteralReferralToMedicalPhysicsService = "306169006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToMedicalPhysicsService
+    /// </summary>
+    public const string LiteralNONEReferralToMedicalPhysicsService = "http://snomed.info/sct#306169006";
 
     /// <summary>
     /// Literal for code: ReferralToPhysiotherapyService
@@ -10566,9 +12726,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPhysiotherapyService = "306170007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPhysiotherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToPhysiotherapyService = "http://snomed.info/sct#306170007";
+
+    /// <summary>
     /// Literal for code: ReferralToCommunityBasedPhysiotherapyService
     /// </summary>
     public const string LiteralReferralToCommunityBasedPhysiotherapyService = "306171006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCommunityBasedPhysiotherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityBasedPhysiotherapyService = "http://snomed.info/sct#306171006";
 
     /// <summary>
     /// Literal for code: ReferralToHospitalPhysiotherapyService
@@ -10576,9 +12746,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHospitalPhysiotherapyService = "306172004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHospitalPhysiotherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToHospitalPhysiotherapyService = "http://snomed.info/sct#306172004";
+
+    /// <summary>
     /// Literal for code: ReferralToSpeechAndLanguageTherapyService
     /// </summary>
     public const string LiteralReferralToSpeechAndLanguageTherapyService = "306173009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToSpeechAndLanguageTherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToSpeechAndLanguageTherapyService = "http://snomed.info/sct#306173009";
 
     /// <summary>
     /// Literal for code: ReferralToCommunityBasedSpeechAndLanguageTherapyService
@@ -10586,9 +12766,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCommunityBasedSpeechAndLanguageTherapyService = "306174003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCommunityBasedSpeechAndLanguageTherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityBasedSpeechAndLanguageTherapyService = "http://snomed.info/sct#306174003";
+
+    /// <summary>
     /// Literal for code: ReferralToHospitalSpeechAndLanguageTherapyService
     /// </summary>
     public const string LiteralReferralToHospitalSpeechAndLanguageTherapyService = "306175002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToHospitalSpeechAndLanguageTherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToHospitalSpeechAndLanguageTherapyService = "http://snomed.info/sct#306175002";
 
     /// <summary>
     /// Literal for code: ReferralToOrthopticsService
@@ -10596,9 +12786,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToOrthopticsService = "306176001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToOrthopticsService
+    /// </summary>
+    public const string LiteralNONEReferralToOrthopticsService = "http://snomed.info/sct#306176001";
+
+    /// <summary>
     /// Literal for code: ReferralToOrthoticsService
     /// </summary>
     public const string LiteralReferralToOrthoticsService = "306177005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToOrthoticsService
+    /// </summary>
+    public const string LiteralNONEReferralToOrthoticsService = "http://snomed.info/sct#306177005";
 
     /// <summary>
     /// Literal for code: ReferralToSurgicalFittingService
@@ -10606,9 +12806,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToSurgicalFittingService = "306178000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToSurgicalFittingService
+    /// </summary>
+    public const string LiteralNONEReferralToSurgicalFittingService = "http://snomed.info/sct#306178000";
+
+    /// <summary>
     /// Literal for code: ReferralToPharmacyService
     /// </summary>
     public const string LiteralReferralToPharmacyService = "306179008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPharmacyService
+    /// </summary>
+    public const string LiteralNONEReferralToPharmacyService = "http://snomed.info/sct#306179008";
 
     /// <summary>
     /// Literal for code: ReferralToSurgicalService
@@ -10616,9 +12826,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToSurgicalService = "306180006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToSurgicalService
+    /// </summary>
+    public const string LiteralNONEReferralToSurgicalService = "http://snomed.info/sct#306180006";
+
+    /// <summary>
     /// Literal for code: ReferralToBreastSurgeryService
     /// </summary>
     public const string LiteralReferralToBreastSurgeryService = "306181005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToBreastSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToBreastSurgeryService = "http://snomed.info/sct#306181005";
 
     /// <summary>
     /// Literal for code: ReferralToCardiothoracicSurgeryService
@@ -10626,9 +12846,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCardiothoracicSurgeryService = "306182003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCardiothoracicSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToCardiothoracicSurgeryService = "http://snomed.info/sct#306182003";
+
+    /// <summary>
     /// Literal for code: ReferralToThoracicSurgeryService
     /// </summary>
     public const string LiteralReferralToThoracicSurgeryService = "306184002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToThoracicSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToThoracicSurgeryService = "http://snomed.info/sct#306184002";
 
     /// <summary>
     /// Literal for code: ReferralToCardiacSurgeryService
@@ -10636,9 +12866,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCardiacSurgeryService = "306185001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCardiacSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToCardiacSurgeryService = "http://snomed.info/sct#306185001";
+
+    /// <summary>
     /// Literal for code: ReferralToDentalSurgeryService
     /// </summary>
     public const string LiteralReferralToDentalSurgeryService = "306186000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToDentalSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToDentalSurgeryService = "http://snomed.info/sct#306186000";
 
     /// <summary>
     /// Literal for code: ReferralToOrthodonticsService
@@ -10646,9 +12886,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToOrthodonticsService = "306187009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToOrthodonticsService
+    /// </summary>
+    public const string LiteralNONEReferralToOrthodonticsService = "http://snomed.info/sct#306187009";
+
+    /// <summary>
     /// Literal for code: ReferralToPediatricDentistryService
     /// </summary>
     public const string LiteralReferralToPediatricDentistryService = "306188004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPediatricDentistryService
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricDentistryService = "http://snomed.info/sct#306188004";
 
     /// <summary>
     /// Literal for code: ReferralToRestorativeDentistryService
@@ -10656,9 +12906,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToRestorativeDentistryService = "306189007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToRestorativeDentistryService
+    /// </summary>
+    public const string LiteralNONEReferralToRestorativeDentistryService = "http://snomed.info/sct#306189007";
+
+    /// <summary>
     /// Literal for code: ReferralToEndocrineSurgeryService
     /// </summary>
     public const string LiteralReferralToEndocrineSurgeryService = "306190003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToEndocrineSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToEndocrineSurgeryService = "http://snomed.info/sct#306190003";
 
     /// <summary>
     /// Literal for code: ReferralToGastrointestinalSurgeryService
@@ -10666,9 +12926,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToGastrointestinalSurgeryService = "306191004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToGastrointestinalSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToGastrointestinalSurgeryService = "http://snomed.info/sct#306191004";
+
+    /// <summary>
     /// Literal for code: ReferralToGeneralGISurgeryService
     /// </summary>
     public const string LiteralReferralToGeneralGISurgeryService = "306192006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToGeneralGISurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToGeneralGISurgeryService = "http://snomed.info/sct#306192006";
 
     /// <summary>
     /// Literal for code: ReferralToUpperGastrointestinalSurgeryService
@@ -10676,9 +12946,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToUpperGastrointestinalSurgeryService = "306193001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToUpperGastrointestinalSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToUpperGastrointestinalSurgeryService = "http://snomed.info/sct#306193001";
+
+    /// <summary>
     /// Literal for code: ReferralToColorectalSurgeryService
     /// </summary>
     public const string LiteralReferralToColorectalSurgeryService = "306194007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToColorectalSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToColorectalSurgeryService = "http://snomed.info/sct#306194007";
 
     /// <summary>
     /// Literal for code: ReferralToHepatobiliarySurgicalService
@@ -10686,9 +12966,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHepatobiliarySurgicalService = "306195008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHepatobiliarySurgicalService
+    /// </summary>
+    public const string LiteralNONEReferralToHepatobiliarySurgicalService = "http://snomed.info/sct#306195008";
+
+    /// <summary>
     /// Literal for code: ReferralToPancreaticSurgeryService
     /// </summary>
     public const string LiteralReferralToPancreaticSurgeryService = "306197000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPancreaticSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToPancreaticSurgeryService = "http://snomed.info/sct#306197000";
 
     /// <summary>
     /// Literal for code: ReferralToPlasticSurgeryService
@@ -10696,9 +12986,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPlasticSurgeryService = "306198005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPlasticSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToPlasticSurgeryService = "http://snomed.info/sct#306198005";
+
+    /// <summary>
     /// Literal for code: ReferralToSurgicalTransplantService
     /// </summary>
     public const string LiteralReferralToSurgicalTransplantService = "306199002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToSurgicalTransplantService
+    /// </summary>
+    public const string LiteralNONEReferralToSurgicalTransplantService = "http://snomed.info/sct#306199002";
 
     /// <summary>
     /// Literal for code: ReferralToTraumaSurgeryService
@@ -10706,9 +13006,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToTraumaSurgeryService = "306200004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToTraumaSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToTraumaSurgeryService = "http://snomed.info/sct#306200004";
+
+    /// <summary>
     /// Literal for code: ReferralToUrologyService
     /// </summary>
     public const string LiteralReferralToUrologyService = "306201000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToUrologyService
+    /// </summary>
+    public const string LiteralNONEReferralToUrologyService = "http://snomed.info/sct#306201000";
 
     /// <summary>
     /// Literal for code: ReferralToCareOfTheElderlyDayHospital
@@ -10716,9 +13026,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCareOfTheElderlyDayHospital = "306202007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCareOfTheElderlyDayHospital
+    /// </summary>
+    public const string LiteralNONEReferralToCareOfTheElderlyDayHospital = "http://snomed.info/sct#306202007";
+
+    /// <summary>
     /// Literal for code: ReferralToPsychiatryDayHospital
     /// </summary>
     public const string LiteralReferralToPsychiatryDayHospital = "306203002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPsychiatryDayHospital
+    /// </summary>
+    public const string LiteralNONEReferralToPsychiatryDayHospital = "http://snomed.info/sct#306203002";
 
     /// <summary>
     /// Literal for code: ReferralToOldAgePsychiatryDayHospital
@@ -10726,9 +13046,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToOldAgePsychiatryDayHospital = "306204008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToOldAgePsychiatryDayHospital
+    /// </summary>
+    public const string LiteralNONEReferralToOldAgePsychiatryDayHospital = "http://snomed.info/sct#306204008";
+
+    /// <summary>
     /// Literal for code: ReferralToHospice
     /// </summary>
     public const string LiteralReferralToHospice = "306205009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToHospice
+    /// </summary>
+    public const string LiteralNONEReferralToHospice = "http://snomed.info/sct#306205009";
 
     /// <summary>
     /// Literal for code: ReferralToService
@@ -10736,9 +13066,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToService = "306206005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToService
+    /// </summary>
+    public const string LiteralNONEReferralToService = "http://snomed.info/sct#306206005";
+
+    /// <summary>
     /// Literal for code: ReferralToAudiologicalService
     /// </summary>
     public const string LiteralReferralToAudiologicalService = "306207001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToAudiologicalService
+    /// </summary>
+    public const string LiteralNONEReferralToAudiologicalService = "http://snomed.info/sct#306207001";
 
     /// <summary>
     /// Literal for code: ReferralToDiagnosticAudiologyService
@@ -10746,9 +13086,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToDiagnosticAudiologyService = "306208006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToDiagnosticAudiologyService
+    /// </summary>
+    public const string LiteralNONEReferralToDiagnosticAudiologyService = "http://snomed.info/sct#306208006";
+
+    /// <summary>
     /// Literal for code: ReferralToAdultDiagnosticAudiologyService
     /// </summary>
     public const string LiteralReferralToAdultDiagnosticAudiologyService = "306209003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToAdultDiagnosticAudiologyService
+    /// </summary>
+    public const string LiteralNONEReferralToAdultDiagnosticAudiologyService = "http://snomed.info/sct#306209003";
 
     /// <summary>
     /// Literal for code: ReferralToPediatricDiagnosticAudiologyService
@@ -10756,9 +13106,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPediatricDiagnosticAudiologyService = "306210008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPediatricDiagnosticAudiologyService
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricDiagnosticAudiologyService = "http://snomed.info/sct#306210008";
+
+    /// <summary>
     /// Literal for code: ReferralToAudiologicalScreeningService
     /// </summary>
     public const string LiteralReferralToAudiologicalScreeningService = "306211007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToAudiologicalScreeningService
+    /// </summary>
+    public const string LiteralNONEReferralToAudiologicalScreeningService = "http://snomed.info/sct#306211007";
 
     /// <summary>
     /// Literal for code: ReferralToNeonatalAudiologicalScreening
@@ -10766,9 +13126,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToNeonatalAudiologicalScreening = "306212000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToNeonatalAudiologicalScreening
+    /// </summary>
+    public const string LiteralNONEReferralToNeonatalAudiologicalScreening = "http://snomed.info/sct#306212000";
+
+    /// <summary>
     /// Literal for code: ReferralToDistractionTestAudiologicalScreening
     /// </summary>
     public const string LiteralReferralToDistractionTestAudiologicalScreening = "306213005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToDistractionTestAudiologicalScreening
+    /// </summary>
+    public const string LiteralNONEReferralToDistractionTestAudiologicalScreening = "http://snomed.info/sct#306213005";
 
     /// <summary>
     /// Literal for code: ReferralToAuralRehabilitationService
@@ -10776,9 +13146,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToAuralRehabilitationService = "306214004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToAuralRehabilitationService
+    /// </summary>
+    public const string LiteralNONEReferralToAuralRehabilitationService = "http://snomed.info/sct#306214004";
+
+    /// <summary>
     /// Literal for code: ReferralToCochlearImplantService
     /// </summary>
     public const string LiteralReferralToCochlearImplantService = "306215003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCochlearImplantService
+    /// </summary>
+    public const string LiteralNONEReferralToCochlearImplantService = "http://snomed.info/sct#306215003";
 
     /// <summary>
     /// Literal for code: ReferralToAdultCochlearImplantService
@@ -10786,9 +13166,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToAdultCochlearImplantService = "306216002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToAdultCochlearImplantService
+    /// </summary>
+    public const string LiteralNONEReferralToAdultCochlearImplantService = "http://snomed.info/sct#306216002";
+
+    /// <summary>
     /// Literal for code: ReferralToPediatricCochlearImplantService
     /// </summary>
     public const string LiteralReferralToPediatricCochlearImplantService = "306217006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPediatricCochlearImplantService
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricCochlearImplantService = "http://snomed.info/sct#306217006";
 
     /// <summary>
     /// Literal for code: ReferralToHearingAidService
@@ -10796,9 +13186,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHearingAidService = "306218001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHearingAidService
+    /// </summary>
+    public const string LiteralNONEReferralToHearingAidService = "http://snomed.info/sct#306218001";
+
+    /// <summary>
     /// Literal for code: ReferralToAdultHearingAidService
     /// </summary>
     public const string LiteralReferralToAdultHearingAidService = "306219009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToAdultHearingAidService
+    /// </summary>
+    public const string LiteralNONEReferralToAdultHearingAidService = "http://snomed.info/sct#306219009";
 
     /// <summary>
     /// Literal for code: ReferralToPediatricHearingAidService
@@ -10806,9 +13206,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPediatricHearingAidService = "306220003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPediatricHearingAidService
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricHearingAidService = "http://snomed.info/sct#306220003";
+
+    /// <summary>
     /// Literal for code: ReferralToSpeechReadingTrainingService
     /// </summary>
     public const string LiteralReferralToSpeechReadingTrainingService = "306221004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToSpeechReadingTrainingService
+    /// </summary>
+    public const string LiteralNONEReferralToSpeechReadingTrainingService = "http://snomed.info/sct#306221004";
 
     /// <summary>
     /// Literal for code: ReferralToTinnitusManagementService
@@ -10816,9 +13226,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToTinnitusManagementService = "306222006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToTinnitusManagementService
+    /// </summary>
+    public const string LiteralNONEReferralToTinnitusManagementService = "http://snomed.info/sct#306222006";
+
+    /// <summary>
     /// Literal for code: ReferralToHearingTherapyService
     /// </summary>
     public const string LiteralReferralToHearingTherapyService = "306223001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToHearingTherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToHearingTherapyService = "http://snomed.info/sct#306223001";
 
     /// <summary>
     /// Literal for code: ReferralToALDService
@@ -10826,9 +13246,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToALDService = "306224007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToALDService
+    /// </summary>
+    public const string LiteralNONEReferralToALDService = "http://snomed.info/sct#306224007";
+
+    /// <summary>
     /// Literal for code: ReferralToCounselingService
     /// </summary>
     public const string LiteralReferralToCounselingService = "306225008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCounselingService
+    /// </summary>
+    public const string LiteralNONEReferralToCounselingService = "http://snomed.info/sct#306225008";
 
     /// <summary>
     /// Literal for code: ReferralToMentalHealthCounselingService
@@ -10836,9 +13266,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMentalHealthCounselingService = "306226009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMentalHealthCounselingService
+    /// </summary>
+    public const string LiteralNONEReferralToMentalHealthCounselingService = "http://snomed.info/sct#306226009";
+
+    /// <summary>
     /// Literal for code: ReferralForMentalHealthCounseling
     /// </summary>
     public const string LiteralReferralForMentalHealthCounseling = "306227000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForMentalHealthCounseling
+    /// </summary>
+    public const string LiteralNONEReferralForMentalHealthCounseling = "http://snomed.info/sct#306227000";
 
     /// <summary>
     /// Literal for code: ReferralForDiagnosticInvestigation
@@ -10846,9 +13286,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForDiagnosticInvestigation = "306228005";
 
     /// <summary>
+    /// Literal for code: NONEReferralForDiagnosticInvestigation
+    /// </summary>
+    public const string LiteralNONEReferralForDiagnosticInvestigation = "http://snomed.info/sct#306228005";
+
+    /// <summary>
     /// Literal for code: ReferralForDomiciliaryVisit
     /// </summary>
     public const string LiteralReferralForDomiciliaryVisit = "306229002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForDomiciliaryVisit
+    /// </summary>
+    public const string LiteralNONEReferralForDomiciliaryVisit = "http://snomed.info/sct#306229002";
 
     /// <summary>
     /// Literal for code: ReferralForDermatologyDV
@@ -10856,9 +13306,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForDermatologyDV = "306230007";
 
     /// <summary>
+    /// Literal for code: NONEReferralForDermatologyDV
+    /// </summary>
+    public const string LiteralNONEReferralForDermatologyDV = "http://snomed.info/sct#306230007";
+
+    /// <summary>
     /// Literal for code: ReferralForGeneralMedicalDomiciliaryVisit
     /// </summary>
     public const string LiteralReferralForGeneralMedicalDomiciliaryVisit = "306231006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForGeneralMedicalDomiciliaryVisit
+    /// </summary>
+    public const string LiteralNONEReferralForGeneralMedicalDomiciliaryVisit = "http://snomed.info/sct#306231006";
 
     /// <summary>
     /// Literal for code: ReferralForGeneralSurgeryDV
@@ -10866,9 +13326,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForGeneralSurgeryDV = "306232004";
 
     /// <summary>
+    /// Literal for code: NONEReferralForGeneralSurgeryDV
+    /// </summary>
+    public const string LiteralNONEReferralForGeneralSurgeryDV = "http://snomed.info/sct#306232004";
+
+    /// <summary>
     /// Literal for code: ReferralForCareOfTheElderlyDomiciliaryVisit
     /// </summary>
     public const string LiteralReferralForCareOfTheElderlyDomiciliaryVisit = "306233009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForCareOfTheElderlyDomiciliaryVisit
+    /// </summary>
+    public const string LiteralNONEReferralForCareOfTheElderlyDomiciliaryVisit = "http://snomed.info/sct#306233009";
 
     /// <summary>
     /// Literal for code: ReferralForMentalIllnessDomiciliaryVisit
@@ -10876,9 +13346,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForMentalIllnessDomiciliaryVisit = "306234003";
 
     /// <summary>
+    /// Literal for code: NONEReferralForMentalIllnessDomiciliaryVisit
+    /// </summary>
+    public const string LiteralNONEReferralForMentalIllnessDomiciliaryVisit = "http://snomed.info/sct#306234003";
+
+    /// <summary>
     /// Literal for code: ReferralToEndoscopyService
     /// </summary>
     public const string LiteralReferralToEndoscopyService = "306235002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToEndoscopyService
+    /// </summary>
+    public const string LiteralNONEReferralToEndoscopyService = "http://snomed.info/sct#306235002";
 
     /// <summary>
     /// Literal for code: ReferralToOpenAccessService
@@ -10886,9 +13366,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToOpenAccessService = "306236001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToOpenAccessService
+    /// </summary>
+    public const string LiteralNONEReferralToOpenAccessService = "http://snomed.info/sct#306236001";
+
+    /// <summary>
     /// Literal for code: ReferralForPalliativeCare
     /// </summary>
     public const string LiteralReferralForPalliativeCare = "306237005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForPalliativeCare
+    /// </summary>
+    public const string LiteralNONEReferralForPalliativeCare = "http://snomed.info/sct#306237005";
 
     /// <summary>
     /// Literal for code: ReferralToSocialServices
@@ -10896,9 +13386,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToSocialServices = "306238000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToSocialServices
+    /// </summary>
+    public const string LiteralNONEReferralToSocialServices = "http://snomed.info/sct#306238000";
+
+    /// <summary>
     /// Literal for code: ReferralToSSDCustomerServices
     /// </summary>
     public const string LiteralReferralToSSDCustomerServices = "306239008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToSSDCustomerServices
+    /// </summary>
+    public const string LiteralNONEReferralToSSDCustomerServices = "http://snomed.info/sct#306239008";
 
     /// <summary>
     /// Literal for code: ReferralToSocialServicesDepartmentDutyTeam
@@ -10906,9 +13406,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToSocialServicesDepartmentDutyTeam = "306240005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToSocialServicesDepartmentDutyTeam
+    /// </summary>
+    public const string LiteralNONEReferralToSocialServicesDepartmentDutyTeam = "http://snomed.info/sct#306240005";
+
+    /// <summary>
     /// Literal for code: ReferralToAudiologicalPhysician
     /// </summary>
     public const string LiteralReferralToAudiologicalPhysician = "306241009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToAudiologicalPhysician
+    /// </summary>
+    public const string LiteralNONEReferralToAudiologicalPhysician = "http://snomed.info/sct#306241009";
 
     /// <summary>
     /// Literal for code: ReferralToAudiologicalScientist
@@ -10916,9 +13426,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToAudiologicalScientist = "306242002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToAudiologicalScientist
+    /// </summary>
+    public const string LiteralNONEReferralToAudiologicalScientist = "http://snomed.info/sct#306242002";
+
+    /// <summary>
     /// Literal for code: ReferralToCommunityDoctorInAudiology
     /// </summary>
     public const string LiteralReferralToCommunityDoctorInAudiology = "306243007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCommunityDoctorInAudiology
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityDoctorInAudiology = "http://snomed.info/sct#306243007";
 
     /// <summary>
     /// Literal for code: ReferralToMedicalTechnicalOfficerInAudiology
@@ -10926,9 +13446,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMedicalTechnicalOfficerInAudiology = "306244001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMedicalTechnicalOfficerInAudiology
+    /// </summary>
+    public const string LiteralNONEReferralToMedicalTechnicalOfficerInAudiology = "http://snomed.info/sct#306244001";
+
+    /// <summary>
     /// Literal for code: ReferralToHearingTherapist
     /// </summary>
     public const string LiteralReferralToHearingTherapist = "306245000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToHearingTherapist
+    /// </summary>
+    public const string LiteralNONEReferralToHearingTherapist = "http://snomed.info/sct#306245000";
 
     /// <summary>
     /// Literal for code: ReferralToRegisteredHearingAidDispenser
@@ -10936,9 +13466,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToRegisteredHearingAidDispenser = "306246004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToRegisteredHearingAidDispenser
+    /// </summary>
+    public const string LiteralNONEReferralToRegisteredHearingAidDispenser = "http://snomed.info/sct#306246004";
+
+    /// <summary>
     /// Literal for code: ReferralToPediatricAudiologist
     /// </summary>
     public const string LiteralReferralToPediatricAudiologist = "306247008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPediatricAudiologist
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricAudiologist = "http://snomed.info/sct#306247008";
 
     /// <summary>
     /// Literal for code: ReferralToComplementaryTherapist
@@ -10946,9 +13486,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToComplementaryTherapist = "306248003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToComplementaryTherapist
+    /// </summary>
+    public const string LiteralNONEReferralToComplementaryTherapist = "http://snomed.info/sct#306248003";
+
+    /// <summary>
     /// Literal for code: ReferralToBereavementCounselor
     /// </summary>
     public const string LiteralReferralToBereavementCounselor = "306249006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToBereavementCounselor
+    /// </summary>
+    public const string LiteralNONEReferralToBereavementCounselor = "http://snomed.info/sct#306249006";
 
     /// <summary>
     /// Literal for code: ReferralToGeneticCounselor
@@ -10956,9 +13506,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToGeneticCounselor = "306250006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToGeneticCounselor
+    /// </summary>
+    public const string LiteralNONEReferralToGeneticCounselor = "http://snomed.info/sct#306250006";
+
+    /// <summary>
     /// Literal for code: ReferralToMarriageGuidanceCounselor
     /// </summary>
     public const string LiteralReferralToMarriageGuidanceCounselor = "306251005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToMarriageGuidanceCounselor
+    /// </summary>
+    public const string LiteralNONEReferralToMarriageGuidanceCounselor = "http://snomed.info/sct#306251005";
 
     /// <summary>
     /// Literal for code: ReferralToMentalHealthCounselor
@@ -10966,9 +13526,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMentalHealthCounselor = "306252003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMentalHealthCounselor
+    /// </summary>
+    public const string LiteralNONEReferralToMentalHealthCounselor = "http://snomed.info/sct#306252003";
+
+    /// <summary>
     /// Literal for code: ReferralToDoctor
     /// </summary>
     public const string LiteralReferralToDoctor = "306253008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToDoctor
+    /// </summary>
+    public const string LiteralNONEReferralToDoctor = "http://snomed.info/sct#306253008";
 
     /// <summary>
     /// Literal for code: ReferToCasualtyOfficer
@@ -10976,9 +13546,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToCasualtyOfficer = "306254002";
 
     /// <summary>
+    /// Literal for code: NONEReferToCasualtyOfficer
+    /// </summary>
+    public const string LiteralNONEReferToCasualtyOfficer = "http://snomed.info/sct#306254002";
+
+    /// <summary>
     /// Literal for code: ReferralToAnesthetist
     /// </summary>
     public const string LiteralReferralToAnesthetist = "306255001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToAnesthetist
+    /// </summary>
+    public const string LiteralNONEReferralToAnesthetist = "http://snomed.info/sct#306255001";
 
     /// <summary>
     /// Literal for code: ReferToRadiotherapist
@@ -10986,9 +13566,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToRadiotherapist = "306256000";
 
     /// <summary>
+    /// Literal for code: NONEReferToRadiotherapist
+    /// </summary>
+    public const string LiteralNONEReferToRadiotherapist = "http://snomed.info/sct#306256000";
+
+    /// <summary>
     /// Literal for code: ReferralToFamilyPlanningDoctor
     /// </summary>
     public const string LiteralReferralToFamilyPlanningDoctor = "306257009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToFamilyPlanningDoctor
+    /// </summary>
+    public const string LiteralNONEReferralToFamilyPlanningDoctor = "http://snomed.info/sct#306257009";
 
     /// <summary>
     /// Literal for code: ReferralToITUSpecialist
@@ -10996,9 +13586,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToITUSpecialist = "306258004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToITUSpecialist
+    /// </summary>
+    public const string LiteralNONEReferralToITUSpecialist = "http://snomed.info/sct#306258004";
+
+    /// <summary>
     /// Literal for code: ReferralToAdultIntensiveCareSpecialist
     /// </summary>
     public const string LiteralReferralToAdultIntensiveCareSpecialist = "306259007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToAdultIntensiveCareSpecialist
+    /// </summary>
+    public const string LiteralNONEReferralToAdultIntensiveCareSpecialist = "http://snomed.info/sct#306259007";
 
     /// <summary>
     /// Literal for code: ReferralToPediatricIntensiveCareSpecialist
@@ -11006,9 +13606,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPediatricIntensiveCareSpecialist = "306260002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPediatricIntensiveCareSpecialist
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricIntensiveCareSpecialist = "http://snomed.info/sct#306260002";
+
+    /// <summary>
     /// Literal for code: ReferralToCommunityPediatrician
     /// </summary>
     public const string LiteralReferralToCommunityPediatrician = "306261003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCommunityPediatrician
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityPediatrician = "http://snomed.info/sct#306261003";
 
     /// <summary>
     /// Literal for code: ReferralToNeonatologist
@@ -11016,9 +13626,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToNeonatologist = "306262005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToNeonatologist
+    /// </summary>
+    public const string LiteralNONEReferralToNeonatologist = "http://snomed.info/sct#306262005";
+
+    /// <summary>
     /// Literal for code: ReferralToPediatricNeurologist
     /// </summary>
     public const string LiteralReferralToPediatricNeurologist = "306263000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPediatricNeurologist
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricNeurologist = "http://snomed.info/sct#306263000";
 
     /// <summary>
     /// Literal for code: ReferralToPediatricOncologist
@@ -11026,9 +13646,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPediatricOncologist = "306264006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPediatricOncologist
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricOncologist = "http://snomed.info/sct#306264006";
+
+    /// <summary>
     /// Literal for code: ReferralToPainManagementSpecialist
     /// </summary>
     public const string LiteralReferralToPainManagementSpecialist = "306265007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPainManagementSpecialist
+    /// </summary>
+    public const string LiteralNONEReferralToPainManagementSpecialist = "http://snomed.info/sct#306265007";
 
     /// <summary>
     /// Literal for code: ReferralToPathologist
@@ -11036,9 +13666,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPathologist = "306266008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPathologist
+    /// </summary>
+    public const string LiteralNONEReferralToPathologist = "http://snomed.info/sct#306266008";
+
+    /// <summary>
     /// Literal for code: ReferralToBloodTransfusionDoctor
     /// </summary>
     public const string LiteralReferralToBloodTransfusionDoctor = "306267004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToBloodTransfusionDoctor
+    /// </summary>
+    public const string LiteralNONEReferralToBloodTransfusionDoctor = "http://snomed.info/sct#306267004";
 
     /// <summary>
     /// Literal for code: ReferralToChemicalPathologist
@@ -11046,9 +13686,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToChemicalPathologist = "306268009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToChemicalPathologist
+    /// </summary>
+    public const string LiteralNONEReferralToChemicalPathologist = "http://snomed.info/sct#306268009";
+
+    /// <summary>
     /// Literal for code: ReferralToGeneralPathologist
     /// </summary>
     public const string LiteralReferralToGeneralPathologist = "306269001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToGeneralPathologist
+    /// </summary>
+    public const string LiteralNONEReferralToGeneralPathologist = "http://snomed.info/sct#306269001";
 
     /// <summary>
     /// Literal for code: ReferralToMedicalMicrobiologist
@@ -11056,9 +13706,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMedicalMicrobiologist = "306270000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMedicalMicrobiologist
+    /// </summary>
+    public const string LiteralNONEReferralToMedicalMicrobiologist = "http://snomed.info/sct#306270000";
+
+    /// <summary>
     /// Literal for code: ReferralToNeuropathologist
     /// </summary>
     public const string LiteralReferralToNeuropathologist = "306271001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToNeuropathologist
+    /// </summary>
+    public const string LiteralNONEReferralToNeuropathologist = "http://snomed.info/sct#306271001";
 
     /// <summary>
     /// Literal for code: ReferralToClinicalAllergist
@@ -11066,9 +13726,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToClinicalAllergist = "306272008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToClinicalAllergist
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalAllergist = "http://snomed.info/sct#306272008";
+
+    /// <summary>
     /// Literal for code: ReferralToChestPhysician
     /// </summary>
     public const string LiteralReferralToChestPhysician = "306273003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToChestPhysician
+    /// </summary>
+    public const string LiteralNONEReferralToChestPhysician = "http://snomed.info/sct#306273003";
 
     /// <summary>
     /// Literal for code: ReferralToThoracicPhysician
@@ -11076,9 +13746,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToThoracicPhysician = "306274009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToThoracicPhysician
+    /// </summary>
+    public const string LiteralNONEReferralToThoracicPhysician = "http://snomed.info/sct#306274009";
+
+    /// <summary>
     /// Literal for code: ReferralToRespiratoryPhysician
     /// </summary>
     public const string LiteralReferralToRespiratoryPhysician = "306275005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToRespiratoryPhysician
+    /// </summary>
+    public const string LiteralNONEReferralToRespiratoryPhysician = "http://snomed.info/sct#306275005";
 
     /// <summary>
     /// Literal for code: ReferralToClinicalNeurophysiologist
@@ -11086,9 +13766,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToClinicalNeurophysiologist = "306276006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToClinicalNeurophysiologist
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalNeurophysiologist = "http://snomed.info/sct#306276006";
+
+    /// <summary>
     /// Literal for code: ReferralToClinicalPhysiologist
     /// </summary>
     public const string LiteralReferralToClinicalPhysiologist = "306277002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToClinicalPhysiologist
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalPhysiologist = "http://snomed.info/sct#306277002";
 
     /// <summary>
     /// Literal for code: ReferralToEndocrinologist
@@ -11096,9 +13786,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToEndocrinologist = "306278007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToEndocrinologist
+    /// </summary>
+    public const string LiteralNONEReferralToEndocrinologist = "http://snomed.info/sct#306278007";
+
+    /// <summary>
     /// Literal for code: ReferralToClinicalGeneticist
     /// </summary>
     public const string LiteralReferralToClinicalGeneticist = "306279004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToClinicalGeneticist
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalGeneticist = "http://snomed.info/sct#306279004";
 
     /// <summary>
     /// Literal for code: ReferralToClinicalCytogeneticist
@@ -11106,9 +13806,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToClinicalCytogeneticist = "306280001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToClinicalCytogeneticist
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalCytogeneticist = "http://snomed.info/sct#306280001";
+
+    /// <summary>
     /// Literal for code: ReferralToClinicalMolecularGeneticist
     /// </summary>
     public const string LiteralReferralToClinicalMolecularGeneticist = "306281002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToClinicalMolecularGeneticist
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalMolecularGeneticist = "http://snomed.info/sct#306281002";
 
     /// <summary>
     /// Literal for code: ReferralToSexuallyTransmittableDiseasesPhysician
@@ -11116,9 +13826,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToSexuallyTransmittableDiseasesPhysician = "306282009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToSexuallyTransmittableDiseasesPhysician
+    /// </summary>
+    public const string LiteralNONEReferralToSexuallyTransmittableDiseasesPhysician = "http://snomed.info/sct#306282009";
+
+    /// <summary>
     /// Literal for code: ReferralToInfectiousDiseasesPhysician
     /// </summary>
     public const string LiteralReferralToInfectiousDiseasesPhysician = "306284005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToInfectiousDiseasesPhysician
+    /// </summary>
+    public const string LiteralNONEReferralToInfectiousDiseasesPhysician = "http://snomed.info/sct#306284005";
 
     /// <summary>
     /// Literal for code: ReferralToMedicalOphthalmologist
@@ -11126,9 +13846,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMedicalOphthalmologist = "306285006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMedicalOphthalmologist
+    /// </summary>
+    public const string LiteralNONEReferralToMedicalOphthalmologist = "http://snomed.info/sct#306285006";
+
+    /// <summary>
     /// Literal for code: ReferralToNephrologist
     /// </summary>
     public const string LiteralReferralToNephrologist = "306286007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToNephrologist
+    /// </summary>
+    public const string LiteralNONEReferralToNephrologist = "http://snomed.info/sct#306286007";
 
     /// <summary>
     /// Literal for code: ReferralToNuclearMedicinePhysician
@@ -11136,9 +13866,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToNuclearMedicinePhysician = "306287003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToNuclearMedicinePhysician
+    /// </summary>
+    public const string LiteralNONEReferralToNuclearMedicinePhysician = "http://snomed.info/sct#306287003";
+
+    /// <summary>
     /// Literal for code: ReferralToPalliativeCarePhysician
     /// </summary>
     public const string LiteralReferralToPalliativeCarePhysician = "306288008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPalliativeCarePhysician
+    /// </summary>
+    public const string LiteralNONEReferralToPalliativeCarePhysician = "http://snomed.info/sct#306288008";
 
     /// <summary>
     /// Literal for code: ReferralToRehabilitationPhysician
@@ -11146,9 +13886,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToRehabilitationPhysician = "306289000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToRehabilitationPhysician
+    /// </summary>
+    public const string LiteralNONEReferralToRehabilitationPhysician = "http://snomed.info/sct#306289000";
+
+    /// <summary>
     /// Literal for code: ReferralToRheumatologist
     /// </summary>
     public const string LiteralReferralToRheumatologist = "306290009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToRheumatologist
+    /// </summary>
+    public const string LiteralNONEReferralToRheumatologist = "http://snomed.info/sct#306290009";
 
     /// <summary>
     /// Literal for code: ReferralToChildAndAdolescentPsychiatrist
@@ -11156,9 +13906,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToChildAndAdolescentPsychiatrist = "306291008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToChildAndAdolescentPsychiatrist
+    /// </summary>
+    public const string LiteralNONEReferralToChildAndAdolescentPsychiatrist = "http://snomed.info/sct#306291008";
+
+    /// <summary>
     /// Literal for code: ReferralToForensicPsychiatrist
     /// </summary>
     public const string LiteralReferralToForensicPsychiatrist = "306292001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToForensicPsychiatrist
+    /// </summary>
+    public const string LiteralNONEReferralToForensicPsychiatrist = "http://snomed.info/sct#306292001";
 
     /// <summary>
     /// Literal for code: ReferralToLiaisonPsychiatrist
@@ -11166,9 +13926,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToLiaisonPsychiatrist = "306293006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToLiaisonPsychiatrist
+    /// </summary>
+    public const string LiteralNONEReferralToLiaisonPsychiatrist = "http://snomed.info/sct#306293006";
+
+    /// <summary>
     /// Literal for code: ReferralToPsychiatristForMentalHandicap
     /// </summary>
     public const string LiteralReferralToPsychiatristForMentalHandicap = "306294000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPsychiatristForMentalHandicap
+    /// </summary>
+    public const string LiteralNONEReferralToPsychiatristForMentalHandicap = "http://snomed.info/sct#306294000";
 
     /// <summary>
     /// Literal for code: ReferralToRehabilitationPsychiatrist
@@ -11176,9 +13946,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToRehabilitationPsychiatrist = "306295004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToRehabilitationPsychiatrist
+    /// </summary>
+    public const string LiteralNONEReferralToRehabilitationPsychiatrist = "http://snomed.info/sct#306295004";
+
+    /// <summary>
     /// Literal for code: ReferralToPublicHealthPhysician
     /// </summary>
     public const string LiteralReferralToPublicHealthPhysician = "306296003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPublicHealthPhysician
+    /// </summary>
+    public const string LiteralNONEReferralToPublicHealthPhysician = "http://snomed.info/sct#306296003";
 
     /// <summary>
     /// Literal for code: ReferralToObstetricianAndGynecologist
@@ -11186,9 +13966,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToObstetricianAndGynecologist = "306297007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToObstetricianAndGynecologist
+    /// </summary>
+    public const string LiteralNONEReferralToObstetricianAndGynecologist = "http://snomed.info/sct#306297007";
+
+    /// <summary>
     /// Literal for code: ReferralToOccupationalHealthPhysician
     /// </summary>
     public const string LiteralReferralToOccupationalHealthPhysician = "306298002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToOccupationalHealthPhysician
+    /// </summary>
+    public const string LiteralNONEReferralToOccupationalHealthPhysician = "http://snomed.info/sct#306298002";
 
     /// <summary>
     /// Literal for code: ReferralToRadiologist
@@ -11196,9 +13986,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToRadiologist = "306299005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToRadiologist
+    /// </summary>
+    public const string LiteralNONEReferralToRadiologist = "http://snomed.info/sct#306299005";
+
+    /// <summary>
     /// Literal for code: ReferralToBreastSurgeon
     /// </summary>
     public const string LiteralReferralToBreastSurgeon = "306300002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToBreastSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToBreastSurgeon = "http://snomed.info/sct#306300002";
 
     /// <summary>
     /// Literal for code: ReferralToThoracicSurgeon
@@ -11206,9 +14006,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToThoracicSurgeon = "306301003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToThoracicSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToThoracicSurgeon = "http://snomed.info/sct#306301003";
+
+    /// <summary>
     /// Literal for code: ReferralToCardiacSurgeon
     /// </summary>
     public const string LiteralReferralToCardiacSurgeon = "306302005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCardiacSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToCardiacSurgeon = "http://snomed.info/sct#306302005";
 
     /// <summary>
     /// Literal for code: ReferralToDentalSurgeon
@@ -11216,9 +14026,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToDentalSurgeon = "306303000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToDentalSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToDentalSurgeon = "http://snomed.info/sct#306303000";
+
+    /// <summary>
     /// Literal for code: ReferralToOrthodontist
     /// </summary>
     public const string LiteralReferralToOrthodontist = "306304006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToOrthodontist
+    /// </summary>
+    public const string LiteralNONEReferralToOrthodontist = "http://snomed.info/sct#306304006";
 
     /// <summary>
     /// Literal for code: ReferralToPediatricDentist
@@ -11226,9 +14046,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPediatricDentist = "306305007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPediatricDentist
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricDentist = "http://snomed.info/sct#306305007";
+
+    /// <summary>
     /// Literal for code: ReferralToRestorativeDentist
     /// </summary>
     public const string LiteralReferralToRestorativeDentist = "306306008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToRestorativeDentist
+    /// </summary>
+    public const string LiteralNONEReferralToRestorativeDentist = "http://snomed.info/sct#306306008";
 
     /// <summary>
     /// Literal for code: ReferralToEndocrineSurgeon
@@ -11236,9 +14066,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToEndocrineSurgeon = "306307004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToEndocrineSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToEndocrineSurgeon = "http://snomed.info/sct#306307004";
+
+    /// <summary>
     /// Literal for code: ReferralToGISurgeon
     /// </summary>
     public const string LiteralReferralToGISurgeon = "306308009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToGISurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToGISurgeon = "http://snomed.info/sct#306308009";
 
     /// <summary>
     /// Literal for code: ReferralToGeneralGastrointestinalSurgeon
@@ -11246,9 +14086,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToGeneralGastrointestinalSurgeon = "306309001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToGeneralGastrointestinalSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToGeneralGastrointestinalSurgeon = "http://snomed.info/sct#306309001";
+
+    /// <summary>
     /// Literal for code: ReferralToUpperGISurgeon
     /// </summary>
     public const string LiteralReferralToUpperGISurgeon = "306310006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToUpperGISurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToUpperGISurgeon = "http://snomed.info/sct#306310006";
 
     /// <summary>
     /// Literal for code: ReferralToColorectalSurgeon
@@ -11256,9 +14106,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToColorectalSurgeon = "306311005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToColorectalSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToColorectalSurgeon = "http://snomed.info/sct#306311005";
+
+    /// <summary>
     /// Literal for code: ReferralToHandSurgeon
     /// </summary>
     public const string LiteralReferralToHandSurgeon = "306312003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToHandSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToHandSurgeon = "http://snomed.info/sct#306312003";
 
     /// <summary>
     /// Literal for code: ReferralToHepatobiliarySurgeon
@@ -11266,9 +14126,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHepatobiliarySurgeon = "306313008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHepatobiliarySurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToHepatobiliarySurgeon = "http://snomed.info/sct#306313008";
+
+    /// <summary>
     /// Literal for code: ReferralToPancreaticSurgeon
     /// </summary>
     public const string LiteralReferralToPancreaticSurgeon = "306314002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPancreaticSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToPancreaticSurgeon = "http://snomed.info/sct#306314002";
 
     /// <summary>
     /// Literal for code: ReferralToPlasticSurgeon
@@ -11276,9 +14146,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPlasticSurgeon = "306315001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPlasticSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToPlasticSurgeon = "http://snomed.info/sct#306315001";
+
+    /// <summary>
     /// Literal for code: ReferralToTransplantSurgeon
     /// </summary>
     public const string LiteralReferralToTransplantSurgeon = "306316000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToTransplantSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToTransplantSurgeon = "http://snomed.info/sct#306316000";
 
     /// <summary>
     /// Literal for code: ReferralToTraumaSurgeon
@@ -11286,9 +14166,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToTraumaSurgeon = "306317009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToTraumaSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToTraumaSurgeon = "http://snomed.info/sct#306317009";
+
+    /// <summary>
     /// Literal for code: ReferralToUrologist
     /// </summary>
     public const string LiteralReferralToUrologist = "306318004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToUrologist
+    /// </summary>
+    public const string LiteralNONEReferralToUrologist = "http://snomed.info/sct#306318004";
 
     /// <summary>
     /// Literal for code: ReferralToAgencyNurse
@@ -11296,9 +14186,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToAgencyNurse = "306319007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToAgencyNurse
+    /// </summary>
+    public const string LiteralNONEReferralToAgencyNurse = "http://snomed.info/sct#306319007";
+
+    /// <summary>
     /// Literal for code: ReferralToClinicalNurseSpecialist
     /// </summary>
     public const string LiteralReferralToClinicalNurseSpecialist = "306320001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToClinicalNurseSpecialist
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalNurseSpecialist = "http://snomed.info/sct#306320001";
 
     /// <summary>
     /// Literal for code: ReferralToBreastCareNurse
@@ -11306,9 +14206,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToBreastCareNurse = "306321002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToBreastCareNurse
+    /// </summary>
+    public const string LiteralNONEReferralToBreastCareNurse = "http://snomed.info/sct#306321002";
+
+    /// <summary>
     /// Literal for code: ReferralToCardiacRehabilitationNurse
     /// </summary>
     public const string LiteralReferralToCardiacRehabilitationNurse = "306322009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCardiacRehabilitationNurse
+    /// </summary>
+    public const string LiteralNONEReferralToCardiacRehabilitationNurse = "http://snomed.info/sct#306322009";
 
     /// <summary>
     /// Literal for code: ReferralToContactTracingNurse
@@ -11316,9 +14226,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToContactTracingNurse = "306323004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToContactTracingNurse
+    /// </summary>
+    public const string LiteralNONEReferralToContactTracingNurse = "http://snomed.info/sct#306323004";
+
+    /// <summary>
     /// Literal for code: ReferralToContinenceNurse
     /// </summary>
     public const string LiteralReferralToContinenceNurse = "306324005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToContinenceNurse
+    /// </summary>
+    public const string LiteralNONEReferralToContinenceNurse = "http://snomed.info/sct#306324005";
 
     /// <summary>
     /// Literal for code: ReferralToGenitourinaryNurse
@@ -11326,9 +14246,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToGenitourinaryNurse = "306325006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToGenitourinaryNurse
+    /// </summary>
+    public const string LiteralNONEReferralToGenitourinaryNurse = "http://snomed.info/sct#306325006";
+
+    /// <summary>
     /// Literal for code: ReferralToMarieCurieNurse
     /// </summary>
     public const string LiteralReferralToMarieCurieNurse = "306326007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToMarieCurieNurse
+    /// </summary>
+    public const string LiteralNONEReferralToMarieCurieNurse = "http://snomed.info/sct#306326007";
 
     /// <summary>
     /// Literal for code: ReferralToLymphedemaCareNurse
@@ -11336,9 +14266,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToLymphedemaCareNurse = "306327003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToLymphedemaCareNurse
+    /// </summary>
+    public const string LiteralNONEReferralToLymphedemaCareNurse = "http://snomed.info/sct#306327003";
+
+    /// <summary>
     /// Literal for code: ReferralToNurseBehavioralTherapist
     /// </summary>
     public const string LiteralReferralToNurseBehavioralTherapist = "306328008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToNurseBehavioralTherapist
+    /// </summary>
+    public const string LiteralNONEReferralToNurseBehavioralTherapist = "http://snomed.info/sct#306328008";
 
     /// <summary>
     /// Literal for code: ReferralToNursePsychotherapist
@@ -11346,9 +14286,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToNursePsychotherapist = "306329000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToNursePsychotherapist
+    /// </summary>
+    public const string LiteralNONEReferralToNursePsychotherapist = "http://snomed.info/sct#306329000";
+
+    /// <summary>
     /// Literal for code: ReferralToPainManagementNurse
     /// </summary>
     public const string LiteralReferralToPainManagementNurse = "306330005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPainManagementNurse
+    /// </summary>
+    public const string LiteralNONEReferralToPainManagementNurse = "http://snomed.info/sct#306330005";
 
     /// <summary>
     /// Literal for code: ReferralToPediatricNurse
@@ -11356,9 +14306,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPediatricNurse = "306331009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPediatricNurse
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricNurse = "http://snomed.info/sct#306331009";
+
+    /// <summary>
     /// Literal for code: ReferralToPsychiatricNurse
     /// </summary>
     public const string LiteralReferralToPsychiatricNurse = "306332002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPsychiatricNurse
+    /// </summary>
+    public const string LiteralNONEReferralToPsychiatricNurse = "http://snomed.info/sct#306332002";
 
     /// <summary>
     /// Literal for code: ReferralToOncologyNurse
@@ -11366,9 +14326,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToOncologyNurse = "306333007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToOncologyNurse
+    /// </summary>
+    public const string LiteralNONEReferralToOncologyNurse = "http://snomed.info/sct#306333007";
+
+    /// <summary>
     /// Literal for code: ReferralToRheumatologyNurseSpecialist
     /// </summary>
     public const string LiteralReferralToRheumatologyNurseSpecialist = "306334001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToRheumatologyNurseSpecialist
+    /// </summary>
+    public const string LiteralNONEReferralToRheumatologyNurseSpecialist = "http://snomed.info/sct#306334001";
 
     /// <summary>
     /// Literal for code: ReferralToCommunityNurse
@@ -11376,9 +14346,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCommunityNurse = "306335000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCommunityNurse
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityNurse = "http://snomed.info/sct#306335000";
+
+    /// <summary>
     /// Literal for code: ReferralToCompanyNurse
     /// </summary>
     public const string LiteralReferralToCompanyNurse = "306336004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCompanyNurse
+    /// </summary>
+    public const string LiteralNONEReferralToCompanyNurse = "http://snomed.info/sct#306336004";
 
     /// <summary>
     /// Literal for code: ReferralToLiaisonNurse
@@ -11386,9 +14366,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToLiaisonNurse = "306337008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToLiaisonNurse
+    /// </summary>
+    public const string LiteralNONEReferralToLiaisonNurse = "http://snomed.info/sct#306337008";
+
+    /// <summary>
     /// Literal for code: ReferralToNursePractitioner
     /// </summary>
     public const string LiteralReferralToNursePractitioner = "306338003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToNursePractitioner
+    /// </summary>
+    public const string LiteralNONEReferralToNursePractitioner = "http://snomed.info/sct#306338003";
 
     /// <summary>
     /// Literal for code: ReferralToOutreachNurse
@@ -11396,9 +14386,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToOutreachNurse = "306339006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToOutreachNurse
+    /// </summary>
+    public const string LiteralNONEReferralToOutreachNurse = "http://snomed.info/sct#306339006";
+
+    /// <summary>
     /// Literal for code: ReferralToResearchNurse
     /// </summary>
     public const string LiteralReferralToResearchNurse = "306340008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToResearchNurse
+    /// </summary>
+    public const string LiteralNONEReferralToResearchNurse = "http://snomed.info/sct#306340008";
 
     /// <summary>
     /// Literal for code: ReferralToCommunityMidwife
@@ -11406,9 +14406,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCommunityMidwife = "306341007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCommunityMidwife
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityMidwife = "http://snomed.info/sct#306341007";
+
+    /// <summary>
     /// Literal for code: ReferralToHospitalBasedMidwife
     /// </summary>
     public const string LiteralReferralToHospitalBasedMidwife = "306342000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToHospitalBasedMidwife
+    /// </summary>
+    public const string LiteralNONEReferralToHospitalBasedMidwife = "http://snomed.info/sct#306342000";
 
     /// <summary>
     /// Literal for code: ReferralToPsychotherapist
@@ -11416,9 +14426,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPsychotherapist = "306343005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPsychotherapist
+    /// </summary>
+    public const string LiteralNONEReferralToPsychotherapist = "http://snomed.info/sct#306343005";
+
+    /// <summary>
     /// Literal for code: ReferralToProfessionalAlliedToMedicine
     /// </summary>
     public const string LiteralReferralToProfessionalAlliedToMedicine = "306344004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToProfessionalAlliedToMedicine
+    /// </summary>
+    public const string LiteralNONEReferralToProfessionalAlliedToMedicine = "http://snomed.info/sct#306344004";
 
     /// <summary>
     /// Literal for code: ReferralToArtsTherapist
@@ -11426,9 +14446,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToArtsTherapist = "306345003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToArtsTherapist
+    /// </summary>
+    public const string LiteralNONEReferralToArtsTherapist = "http://snomed.info/sct#306345003";
+
+    /// <summary>
     /// Literal for code: ReferralToDanceTherapist
     /// </summary>
     public const string LiteralReferralToDanceTherapist = "306347006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToDanceTherapist
+    /// </summary>
+    public const string LiteralNONEReferralToDanceTherapist = "http://snomed.info/sct#306347006";
 
     /// <summary>
     /// Literal for code: ReferralToDramaTherapist
@@ -11436,9 +14466,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToDramaTherapist = "306348001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToDramaTherapist
+    /// </summary>
+    public const string LiteralNONEReferralToDramaTherapist = "http://snomed.info/sct#306348001";
+
+    /// <summary>
     /// Literal for code: ReferralToMusicTherapist
     /// </summary>
     public const string LiteralReferralToMusicTherapist = "306349009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToMusicTherapist
+    /// </summary>
+    public const string LiteralNONEReferralToMusicTherapist = "http://snomed.info/sct#306349009";
 
     /// <summary>
     /// Literal for code: ReferralToPlayTherapist
@@ -11446,9 +14486,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPlayTherapist = "306350009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPlayTherapist
+    /// </summary>
+    public const string LiteralNONEReferralToPlayTherapist = "http://snomed.info/sct#306350009";
+
+    /// <summary>
     /// Literal for code: ReferralToCommunityBasedPodiatrist
     /// </summary>
     public const string LiteralReferralToCommunityBasedPodiatrist = "306351008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCommunityBasedPodiatrist
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityBasedPodiatrist = "http://snomed.info/sct#306351008";
 
     /// <summary>
     /// Literal for code: ReferralToHospitalBasedPodiatrist
@@ -11456,9 +14506,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHospitalBasedPodiatrist = "306352001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHospitalBasedPodiatrist
+    /// </summary>
+    public const string LiteralNONEReferralToHospitalBasedPodiatrist = "http://snomed.info/sct#306352001";
+
+    /// <summary>
     /// Literal for code: ReferralToCommunityDietitian
     /// </summary>
     public const string LiteralReferralToCommunityDietitian = "306353006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCommunityDietitian
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityDietitian = "http://snomed.info/sct#306353006";
 
     /// <summary>
     /// Literal for code: ReferralToHospitalBasedDietitian
@@ -11466,9 +14526,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHospitalBasedDietitian = "306354000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHospitalBasedDietitian
+    /// </summary>
+    public const string LiteralNONEReferralToHospitalBasedDietitian = "http://snomed.info/sct#306354000";
+
+    /// <summary>
     /// Literal for code: ReferralToCommunityOccupationalTherapist
     /// </summary>
     public const string LiteralReferralToCommunityOccupationalTherapist = "306355004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCommunityOccupationalTherapist
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityOccupationalTherapist = "http://snomed.info/sct#306355004";
 
     /// <summary>
     /// Literal for code: ReferralToSocialServicesDepartmentOccupationalTherapist
@@ -11476,9 +14546,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToSocialServicesDepartmentOccupationalTherapist = "306356003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToSocialServicesDepartmentOccupationalTherapist
+    /// </summary>
+    public const string LiteralNONEReferralToSocialServicesDepartmentOccupationalTherapist = "http://snomed.info/sct#306356003";
+
+    /// <summary>
     /// Literal for code: ReferralToHospitalOccupationalTherapist
     /// </summary>
     public const string LiteralReferralToHospitalOccupationalTherapist = "306357007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToHospitalOccupationalTherapist
+    /// </summary>
+    public const string LiteralNONEReferralToHospitalOccupationalTherapist = "http://snomed.info/sct#306357007";
 
     /// <summary>
     /// Literal for code: ReferralToCommunityBasedPhysiotherapist
@@ -11486,9 +14566,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCommunityBasedPhysiotherapist = "306358002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCommunityBasedPhysiotherapist
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityBasedPhysiotherapist = "http://snomed.info/sct#306358002";
+
+    /// <summary>
     /// Literal for code: ReferralToHospitalPhysiotherapist
     /// </summary>
     public const string LiteralReferralToHospitalPhysiotherapist = "306359005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToHospitalPhysiotherapist
+    /// </summary>
+    public const string LiteralNONEReferralToHospitalPhysiotherapist = "http://snomed.info/sct#306359005";
 
     /// <summary>
     /// Literal for code: ReferralToCommunityBasedSpeechAndLanguageTherapist
@@ -11496,9 +14586,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCommunityBasedSpeechAndLanguageTherapist = "306360000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCommunityBasedSpeechAndLanguageTherapist
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityBasedSpeechAndLanguageTherapist = "http://snomed.info/sct#306360000";
+
+    /// <summary>
     /// Literal for code: ReferralToHospitalSpeechAndLanguageTherapist
     /// </summary>
     public const string LiteralReferralToHospitalSpeechAndLanguageTherapist = "306361001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToHospitalSpeechAndLanguageTherapist
+    /// </summary>
+    public const string LiteralNONEReferralToHospitalSpeechAndLanguageTherapist = "http://snomed.info/sct#306361001";
 
     /// <summary>
     /// Literal for code: ReferralToPharmacist
@@ -11506,9 +14606,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPharmacist = "306362008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPharmacist
+    /// </summary>
+    public const string LiteralNONEReferralToPharmacist = "http://snomed.info/sct#306362008";
+
+    /// <summary>
     /// Literal for code: ReferralToRadiographer
     /// </summary>
     public const string LiteralReferralToRadiographer = "306363003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToRadiographer
+    /// </summary>
+    public const string LiteralNONEReferralToRadiographer = "http://snomed.info/sct#306363003";
 
     /// <summary>
     /// Literal for code: ReferralToTherapeuticRadiographer
@@ -11516,9 +14626,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToTherapeuticRadiographer = "306364009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToTherapeuticRadiographer
+    /// </summary>
+    public const string LiteralNONEReferralToTherapeuticRadiographer = "http://snomed.info/sct#306364009";
+
+    /// <summary>
     /// Literal for code: ReferralToDiagnosticRadiographer
     /// </summary>
     public const string LiteralReferralToDiagnosticRadiographer = "306365005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToDiagnosticRadiographer
+    /// </summary>
+    public const string LiteralNONEReferralToDiagnosticRadiographer = "http://snomed.info/sct#306365005";
 
     /// <summary>
     /// Literal for code: ReferralToSocialServicesDepartmentSocialWorker
@@ -11526,9 +14646,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToSocialServicesDepartmentSocialWorker = "306366006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToSocialServicesDepartmentSocialWorker
+    /// </summary>
+    public const string LiteralNONEReferralToSocialServicesDepartmentSocialWorker = "http://snomed.info/sct#306366006";
+
+    /// <summary>
     /// Literal for code: ReferralToSSDCareManager
     /// </summary>
     public const string LiteralReferralToSSDCareManager = "306367002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToSSDCareManager
+    /// </summary>
+    public const string LiteralNONEReferralToSSDCareManager = "http://snomed.info/sct#306367002";
 
     /// <summary>
     /// Literal for code: ReferralToTeacher
@@ -11536,9 +14666,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToTeacher = "306368007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToTeacher
+    /// </summary>
+    public const string LiteralNONEReferralToTeacher = "http://snomed.info/sct#306368007";
+
+    /// <summary>
     /// Literal for code: ReferralToLipSpeechReadingTeacher
     /// </summary>
     public const string LiteralReferralToLipSpeechReadingTeacher = "306369004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToLipSpeechReadingTeacher
+    /// </summary>
+    public const string LiteralNONEReferralToLipSpeechReadingTeacher = "http://snomed.info/sct#306369004";
 
     /// <summary>
     /// Literal for code: ReferralToTeacherOfTheDeaf
@@ -11546,9 +14686,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToTeacherOfTheDeaf = "306370003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToTeacherOfTheDeaf
+    /// </summary>
+    public const string LiteralNONEReferralToTeacherOfTheDeaf = "http://snomed.info/sct#306370003";
+
+    /// <summary>
     /// Literal for code: ReferralToTeacherOfTheHearingImpaired
     /// </summary>
     public const string LiteralReferralToTeacherOfTheHearingImpaired = "306371004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToTeacherOfTheHearingImpaired
+    /// </summary>
+    public const string LiteralNONEReferralToTeacherOfTheHearingImpaired = "http://snomed.info/sct#306371004";
 
     /// <summary>
     /// Literal for code: ReferralByAgencyNurse
@@ -11556,9 +14706,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByAgencyNurse = "306722007";
 
     /// <summary>
+    /// Literal for code: NONEReferralByAgencyNurse
+    /// </summary>
+    public const string LiteralNONEReferralByAgencyNurse = "http://snomed.info/sct#306722007";
+
+    /// <summary>
     /// Literal for code: ReferralFromLiaisonNurse
     /// </summary>
     public const string LiteralReferralFromLiaisonNurse = "306723002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromLiaisonNurse
+    /// </summary>
+    public const string LiteralNONEReferralFromLiaisonNurse = "http://snomed.info/sct#306723002";
 
     /// <summary>
     /// Literal for code: ReferralByNursePractitioner
@@ -11566,9 +14726,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByNursePractitioner = "306724008";
 
     /// <summary>
+    /// Literal for code: NONEReferralByNursePractitioner
+    /// </summary>
+    public const string LiteralNONEReferralByNursePractitioner = "http://snomed.info/sct#306724008";
+
+    /// <summary>
     /// Literal for code: ReferralFromOutreachNurse
     /// </summary>
     public const string LiteralReferralFromOutreachNurse = "306725009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFromOutreachNurse
+    /// </summary>
+    public const string LiteralNONEReferralFromOutreachNurse = "http://snomed.info/sct#306725009";
 
     /// <summary>
     /// Literal for code: ReferralByResearchNurse
@@ -11576,9 +14746,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByResearchNurse = "306726005";
 
     /// <summary>
+    /// Literal for code: NONEReferralByResearchNurse
+    /// </summary>
+    public const string LiteralNONEReferralByResearchNurse = "http://snomed.info/sct#306726005";
+
+    /// <summary>
     /// Literal for code: ReferralForGastroscopy
     /// </summary>
     public const string LiteralReferralForGastroscopy = "306730008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForGastroscopy
+    /// </summary>
+    public const string LiteralNONEReferralForGastroscopy = "http://snomed.info/sct#306730008";
 
     /// <summary>
     /// Literal for code: ReferralByGeneralDentalSurgeon
@@ -11586,9 +14766,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByGeneralDentalSurgeon = "306734004";
 
     /// <summary>
+    /// Literal for code: NONEReferralByGeneralDentalSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralByGeneralDentalSurgeon = "http://snomed.info/sct#306734004";
+
+    /// <summary>
     /// Literal for code: ReferralToGeneralDentalSurgeryService
     /// </summary>
     public const string LiteralReferralToGeneralDentalSurgeryService = "306735003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToGeneralDentalSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToGeneralDentalSurgeryService = "http://snomed.info/sct#306735003";
 
     /// <summary>
     /// Literal for code: ReferralToGeneralDentalSurgeon
@@ -11596,9 +14786,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToGeneralDentalSurgeon = "306736002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToGeneralDentalSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToGeneralDentalSurgeon = "http://snomed.info/sct#306736002";
+
+    /// <summary>
     /// Literal for code: ReferralToStrokeService
     /// </summary>
     public const string LiteralReferralToStrokeService = "306802002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToStrokeService
+    /// </summary>
+    public const string LiteralNONEReferralToStrokeService = "http://snomed.info/sct#306802002";
 
     /// <summary>
     /// Literal for code: ReferralToHandSurgeryService
@@ -11606,9 +14806,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHandSurgeryService = "306929006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHandSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToHandSurgeryService = "http://snomed.info/sct#306929006";
+
+    /// <summary>
     /// Literal for code: ReferralToVascularSurgeryService
     /// </summary>
     public const string LiteralReferralToVascularSurgeryService = "306934005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToVascularSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToVascularSurgeryService = "http://snomed.info/sct#306934005";
 
     /// <summary>
     /// Literal for code: ReferralByClinicalHematologist
@@ -11616,9 +14826,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByClinicalHematologist = "307061004";
 
     /// <summary>
+    /// Literal for code: NONEReferralByClinicalHematologist
+    /// </summary>
+    public const string LiteralNONEReferralByClinicalHematologist = "http://snomed.info/sct#307061004";
+
+    /// <summary>
     /// Literal for code: ReferralToClinicalHematologist
     /// </summary>
     public const string LiteralReferralToClinicalHematologist = "307063001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToClinicalHematologist
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalHematologist = "http://snomed.info/sct#307063001";
 
     /// <summary>
     /// Literal for code: ReferralToAcutePainService
@@ -11626,9 +14846,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToAcutePainService = "307373005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToAcutePainService
+    /// </summary>
+    public const string LiteralNONEReferralToAcutePainService = "http://snomed.info/sct#307373005";
+
+    /// <summary>
     /// Literal for code: ReferralToRehabilitationService
     /// </summary>
     public const string LiteralReferralToRehabilitationService = "307374004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToRehabilitationService
+    /// </summary>
+    public const string LiteralNONEReferralToRehabilitationService = "http://snomed.info/sct#307374004";
 
     /// <summary>
     /// Literal for code: ReferralToHeadInjuryRehabilitation
@@ -11636,9 +14866,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHeadInjuryRehabilitation = "307375003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHeadInjuryRehabilitation
+    /// </summary>
+    public const string LiteralNONEReferralToHeadInjuryRehabilitation = "http://snomed.info/sct#307375003";
+
+    /// <summary>
     /// Literal for code: ReferralToCommunityRehabilitation
     /// </summary>
     public const string LiteralReferralToCommunityRehabilitation = "307376002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCommunityRehabilitation
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityRehabilitation = "http://snomed.info/sct#307376002";
 
     /// <summary>
     /// Literal for code: ReferralToYoungDisabledService
@@ -11646,9 +14886,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToYoungDisabledService = "307377006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToYoungDisabledService
+    /// </summary>
+    public const string LiteralNONEReferralToYoungDisabledService = "http://snomed.info/sct#307377006";
+
+    /// <summary>
     /// Literal for code: ReferralToAssessmentService
     /// </summary>
     public const string LiteralReferralToAssessmentService = "307378001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToAssessmentService
+    /// </summary>
+    public const string LiteralNONEReferralToAssessmentService = "http://snomed.info/sct#307378001";
 
     /// <summary>
     /// Literal for code: ReferralToChildAssessmentService
@@ -11656,9 +14906,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToChildAssessmentService = "307379009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToChildAssessmentService
+    /// </summary>
+    public const string LiteralNONEReferralToChildAssessmentService = "http://snomed.info/sct#307379009";
+
+    /// <summary>
     /// Literal for code: ReferralToSwallowClinic
     /// </summary>
     public const string LiteralReferralToSwallowClinic = "307380007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToSwallowClinic
+    /// </summary>
+    public const string LiteralNONEReferralToSwallowClinic = "http://snomed.info/sct#307380007";
 
     /// <summary>
     /// Literal for code: ReferralToVascularSurgeon
@@ -11666,9 +14926,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToVascularSurgeon = "307777008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToVascularSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToVascularSurgeon = "http://snomed.info/sct#307777008";
+
+    /// <summary>
     /// Literal for code: ReferralByPerson
     /// </summary>
     public const string LiteralReferralByPerson = "307834000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByPerson
+    /// </summary>
+    public const string LiteralNONEReferralByPerson = "http://snomed.info/sct#307834000";
 
     /// <summary>
     /// Literal for code: ReferralByService
@@ -11676,9 +14946,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByService = "307835004";
 
     /// <summary>
+    /// Literal for code: NONEReferralByService
+    /// </summary>
+    public const string LiteralNONEReferralByService = "http://snomed.info/sct#307835004";
+
+    /// <summary>
     /// Literal for code: ReferralByEstablishment
     /// </summary>
     public const string LiteralReferralByEstablishment = "307836003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByEstablishment
+    /// </summary>
+    public const string LiteralNONEReferralByEstablishment = "http://snomed.info/sct#307836003";
 
     /// <summary>
     /// Literal for code: ReferralToPerson
@@ -11686,9 +14966,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPerson = "307837007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPerson
+    /// </summary>
+    public const string LiteralNONEReferralToPerson = "http://snomed.info/sct#307837007";
+
+    /// <summary>
     /// Literal for code: ReferralToComplementaryTherapyService
     /// </summary>
     public const string LiteralReferralToComplementaryTherapyService = "308250002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToComplementaryTherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToComplementaryTherapyService = "http://snomed.info/sct#308250002";
 
     /// <summary>
     /// Literal for code: ReferralToPracticeNurse
@@ -11696,9 +14986,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPracticeNurse = "308435009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPracticeNurse
+    /// </summary>
+    public const string LiteralNONEReferralToPracticeNurse = "http://snomed.info/sct#308435009";
+
+    /// <summary>
     /// Literal for code: ReferToDistrictNurse
     /// </summary>
     public const string LiteralReferToDistrictNurse = "308436005";
+
+    /// <summary>
+    /// Literal for code: NONEReferToDistrictNurse
+    /// </summary>
+    public const string LiteralNONEReferToDistrictNurse = "http://snomed.info/sct#308436005";
 
     /// <summary>
     /// Literal for code: ReferralToMidwife
@@ -11706,9 +15006,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMidwife = "308439003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMidwife
+    /// </summary>
+    public const string LiteralNONEReferralToMidwife = "http://snomed.info/sct#308439003";
+
+    /// <summary>
     /// Literal for code: ReferralToSocialWorker
     /// </summary>
     public const string LiteralReferralToSocialWorker = "308440001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToSocialWorker
+    /// </summary>
+    public const string LiteralNONEReferralToSocialWorker = "http://snomed.info/sct#308440001";
 
     /// <summary>
     /// Literal for code: ReferToPhysiotherapist
@@ -11716,9 +15026,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToPhysiotherapist = "308447003";
 
     /// <summary>
+    /// Literal for code: NONEReferToPhysiotherapist
+    /// </summary>
+    public const string LiteralNONEReferToPhysiotherapist = "http://snomed.info/sct#308447003";
+
+    /// <summary>
     /// Literal for code: ReferralToCounselor
     /// </summary>
     public const string LiteralReferralToCounselor = "308448008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCounselor
+    /// </summary>
+    public const string LiteralNONEReferralToCounselor = "http://snomed.info/sct#308448008";
 
     /// <summary>
     /// Literal for code: ReferToChiropractor
@@ -11726,9 +15046,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToChiropractor = "308449000";
 
     /// <summary>
+    /// Literal for code: NONEReferToChiropractor
+    /// </summary>
+    public const string LiteralNONEReferToChiropractor = "http://snomed.info/sct#308449000";
+
+    /// <summary>
     /// Literal for code: ReferralToOsteopath
     /// </summary>
     public const string LiteralReferralToOsteopath = "308450000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToOsteopath
+    /// </summary>
+    public const string LiteralNONEReferralToOsteopath = "http://snomed.info/sct#308450000";
 
     /// <summary>
     /// Literal for code: ReferralToPodiatrist
@@ -11736,9 +15066,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPodiatrist = "308451001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPodiatrist
+    /// </summary>
+    public const string LiteralNONEReferralToPodiatrist = "http://snomed.info/sct#308451001";
+
+    /// <summary>
     /// Literal for code: ReferToSpeechTherapist
     /// </summary>
     public const string LiteralReferToSpeechTherapist = "308452008";
+
+    /// <summary>
+    /// Literal for code: NONEReferToSpeechTherapist
+    /// </summary>
+    public const string LiteralNONEReferToSpeechTherapist = "http://snomed.info/sct#308452008";
 
     /// <summary>
     /// Literal for code: ReferralToOccupationalTherapist
@@ -11746,9 +15086,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToOccupationalTherapist = "308453003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToOccupationalTherapist
+    /// </summary>
+    public const string LiteralNONEReferralToOccupationalTherapist = "http://snomed.info/sct#308453003";
+
+    /// <summary>
     /// Literal for code: ReferralToOrthoptist
     /// </summary>
     public const string LiteralReferralToOrthoptist = "308454009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToOrthoptist
+    /// </summary>
+    public const string LiteralNONEReferralToOrthoptist = "http://snomed.info/sct#308454009";
 
     /// <summary>
     /// Literal for code: ReferToOrthotist
@@ -11756,9 +15106,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToOrthotist = "308455005";
 
     /// <summary>
+    /// Literal for code: NONEReferToOrthotist
+    /// </summary>
+    public const string LiteralNONEReferToOrthotist = "http://snomed.info/sct#308455005";
+
+    /// <summary>
     /// Literal for code: ReferralToAudiologist
     /// </summary>
     public const string LiteralReferralToAudiologist = "308456006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToAudiologist
+    /// </summary>
+    public const string LiteralNONEReferralToAudiologist = "http://snomed.info/sct#308456006";
 
     /// <summary>
     /// Literal for code: ReferToStomaNurse
@@ -11766,9 +15126,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToStomaNurse = "308457002";
 
     /// <summary>
+    /// Literal for code: NONEReferToStomaNurse
+    /// </summary>
+    public const string LiteralNONEReferToStomaNurse = "http://snomed.info/sct#308457002";
+
+    /// <summary>
     /// Literal for code: ReferralToDiabeticLiaisonNurse
     /// </summary>
     public const string LiteralReferralToDiabeticLiaisonNurse = "308458007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToDiabeticLiaisonNurse
+    /// </summary>
+    public const string LiteralNONEReferralToDiabeticLiaisonNurse = "http://snomed.info/sct#308458007";
 
     /// <summary>
     /// Literal for code: ReferralToPsychologist
@@ -11776,9 +15146,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPsychologist = "308459004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPsychologist
+    /// </summary>
+    public const string LiteralNONEReferralToPsychologist = "http://snomed.info/sct#308459004";
+
+    /// <summary>
     /// Literal for code: ReferralToColposcopyService
     /// </summary>
     public const string LiteralReferralToColposcopyService = "308460009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToColposcopyService
+    /// </summary>
+    public const string LiteralNONEReferralToColposcopyService = "http://snomed.info/sct#308460009";
 
     /// <summary>
     /// Literal for code: ReferralToRadiologyService
@@ -11786,9 +15166,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToRadiologyService = "308461008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToRadiologyService
+    /// </summary>
+    public const string LiteralNONEReferralToRadiologyService = "http://snomed.info/sct#308461008";
+
+    /// <summary>
     /// Literal for code: ReferralToPathologyService
     /// </summary>
     public const string LiteralReferralToPathologyService = "308462001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPathologyService
+    /// </summary>
+    public const string LiteralNONEReferralToPathologyService = "http://snomed.info/sct#308462001";
 
     /// <summary>
     /// Literal for code: ReferToCommunityDayCenter
@@ -11796,9 +15186,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToCommunityDayCenter = "308463006";
 
     /// <summary>
+    /// Literal for code: NONEReferToCommunityDayCenter
+    /// </summary>
+    public const string LiteralNONEReferToCommunityDayCenter = "http://snomed.info/sct#308463006";
+
+    /// <summary>
     /// Literal for code: ReferToDayHospital
     /// </summary>
     public const string LiteralReferToDayHospital = "308464000";
+
+    /// <summary>
+    /// Literal for code: NONEReferToDayHospital
+    /// </summary>
+    public const string LiteralNONEReferToDayHospital = "http://snomed.info/sct#308464000";
 
     /// <summary>
     /// Literal for code: ReferralToOptometrist
@@ -11806,9 +15206,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToOptometrist = "308465004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToOptometrist
+    /// </summary>
+    public const string LiteralNONEReferralToOptometrist = "http://snomed.info/sct#308465004";
+
+    /// <summary>
     /// Literal for code: ReferToSchoolNurse
     /// </summary>
     public const string LiteralReferToSchoolNurse = "308466003";
+
+    /// <summary>
+    /// Literal for code: NONEReferToSchoolNurse
+    /// </summary>
+    public const string LiteralNONEReferToSchoolNurse = "http://snomed.info/sct#308466003";
 
     /// <summary>
     /// Literal for code: ReferralToCoroner
@@ -11816,9 +15226,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCoroner = "308468002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCoroner
+    /// </summary>
+    public const string LiteralNONEReferralToCoroner = "http://snomed.info/sct#308468002";
+
+    /// <summary>
     /// Literal for code: ReferralToGeneticist
     /// </summary>
     public const string LiteralReferralToGeneticist = "308469005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToGeneticist
+    /// </summary>
+    public const string LiteralNONEReferralToGeneticist = "http://snomed.info/sct#308469005";
 
     /// <summary>
     /// Literal for code: ReferralToGeneralPhysician
@@ -11826,9 +15246,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToGeneralPhysician = "308470006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToGeneralPhysician
+    /// </summary>
+    public const string LiteralNONEReferralToGeneralPhysician = "http://snomed.info/sct#308470006";
+
+    /// <summary>
     /// Literal for code: ReferralToCardiologist
     /// </summary>
     public const string LiteralReferralToCardiologist = "308471005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCardiologist
+    /// </summary>
+    public const string LiteralNONEReferralToCardiologist = "http://snomed.info/sct#308471005";
 
     /// <summary>
     /// Literal for code: ReferralToDermatologist
@@ -11836,9 +15266,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToDermatologist = "308472003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToDermatologist
+    /// </summary>
+    public const string LiteralNONEReferralToDermatologist = "http://snomed.info/sct#308472003";
+
+    /// <summary>
     /// Literal for code: ReferralToClinicalImmunologist
     /// </summary>
     public const string LiteralReferralToClinicalImmunologist = "308473008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToClinicalImmunologist
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalImmunologist = "http://snomed.info/sct#308473008";
 
     /// <summary>
     /// Literal for code: ReferralToNeurologist
@@ -11846,9 +15286,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToNeurologist = "308474002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToNeurologist
+    /// </summary>
+    public const string LiteralNONEReferralToNeurologist = "http://snomed.info/sct#308474002";
+
+    /// <summary>
     /// Literal for code: ReferralToCareOfTheElderlyPhysician
     /// </summary>
     public const string LiteralReferralToCareOfTheElderlyPhysician = "308475001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCareOfTheElderlyPhysician
+    /// </summary>
+    public const string LiteralNONEReferralToCareOfTheElderlyPhysician = "http://snomed.info/sct#308475001";
 
     /// <summary>
     /// Literal for code: ReferralToGastroenterologist
@@ -11856,9 +15306,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToGastroenterologist = "308476000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToGastroenterologist
+    /// </summary>
+    public const string LiteralNONEReferralToGastroenterologist = "http://snomed.info/sct#308476000";
+
+    /// <summary>
     /// Literal for code: ReferralToPsychiatrist
     /// </summary>
     public const string LiteralReferralToPsychiatrist = "308477009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPsychiatrist
+    /// </summary>
+    public const string LiteralNONEReferralToPsychiatrist = "http://snomed.info/sct#308477009";
 
     /// <summary>
     /// Literal for code: ReferralToGeneralSurgeon
@@ -11866,9 +15326,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToGeneralSurgeon = "308478004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToGeneralSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToGeneralSurgeon = "http://snomed.info/sct#308478004";
+
+    /// <summary>
     /// Literal for code: ReferralToOphthalmologist
     /// </summary>
     public const string LiteralReferralToOphthalmologist = "308479007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToOphthalmologist
+    /// </summary>
+    public const string LiteralNONEReferralToOphthalmologist = "http://snomed.info/sct#308479007";
 
     /// <summary>
     /// Literal for code: ReferralToEarNoseAndThroatSurgeon
@@ -11876,9 +15346,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToEarNoseAndThroatSurgeon = "308480005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToEarNoseAndThroatSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToEarNoseAndThroatSurgeon = "http://snomed.info/sct#308480005";
+
+    /// <summary>
     /// Literal for code: ReferralToOrthopedicSurgeon
     /// </summary>
     public const string LiteralReferralToOrthopedicSurgeon = "308481009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToOrthopedicSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToOrthopedicSurgeon = "http://snomed.info/sct#308481009";
 
     /// <summary>
     /// Literal for code: ReferralToNeurosurgeon
@@ -11886,9 +15366,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToNeurosurgeon = "308482002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToNeurosurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToNeurosurgeon = "http://snomed.info/sct#308482002";
+
+    /// <summary>
     /// Literal for code: ReferralToPediatricSurgeon
     /// </summary>
     public const string LiteralReferralToPediatricSurgeon = "308483007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPediatricSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricSurgeon = "http://snomed.info/sct#308483007";
 
     /// <summary>
     /// Literal for code: ReferralToObstetrician
@@ -11896,9 +15386,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToObstetrician = "308484001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToObstetrician
+    /// </summary>
+    public const string LiteralNONEReferralToObstetrician = "http://snomed.info/sct#308484001";
+
+    /// <summary>
     /// Literal for code: ReferralToGynecologist
     /// </summary>
     public const string LiteralReferralToGynecologist = "308485000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToGynecologist
+    /// </summary>
+    public const string LiteralNONEReferralToGynecologist = "http://snomed.info/sct#308485000";
 
     /// <summary>
     /// Literal for code: PrivateReferralToSurgeon
@@ -11906,9 +15406,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToSurgeon = "309046007";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToSurgeon
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToSurgeon = "http://snomed.info/sct#309046007";
+
+    /// <summary>
     /// Literal for code: ChildReferralForAudiology
     /// </summary>
     public const string LiteralChildReferralForAudiology = "309619003";
+
+    /// <summary>
+    /// Literal for code: NONEChildReferralForAudiology
+    /// </summary>
+    public const string LiteralNONEChildReferralForAudiology = "http://snomed.info/sct#309619003";
 
     /// <summary>
     /// Literal for code: ChildReferralForAudiometry
@@ -11916,9 +15426,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChildReferralForAudiometry = "309620009";
 
     /// <summary>
+    /// Literal for code: NONEChildReferralForAudiometry
+    /// </summary>
+    public const string LiteralNONEChildReferralForAudiometry = "http://snomed.info/sct#309620009";
+
+    /// <summary>
     /// Literal for code: ChildReferralSpeechTherapy
     /// </summary>
     public const string LiteralChildReferralSpeechTherapy = "309622001";
+
+    /// <summary>
+    /// Literal for code: NONEChildReferralSpeechTherapy
+    /// </summary>
+    public const string LiteralNONEChildReferralSpeechTherapy = "http://snomed.info/sct#309622001";
 
     /// <summary>
     /// Literal for code: ChildReferralToOptician
@@ -11926,9 +15446,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChildReferralToOptician = "309623006";
 
     /// <summary>
+    /// Literal for code: NONEChildReferralToOptician
+    /// </summary>
+    public const string LiteralNONEChildReferralToOptician = "http://snomed.info/sct#309623006";
+
+    /// <summary>
     /// Literal for code: ChildReferralOphthalmology
     /// </summary>
     public const string LiteralChildReferralOphthalmology = "309624000";
+
+    /// <summary>
+    /// Literal for code: NONEChildReferralOphthalmology
+    /// </summary>
+    public const string LiteralNONEChildReferralOphthalmology = "http://snomed.info/sct#309624000";
 
     /// <summary>
     /// Literal for code: ReferralToPsychologyService
@@ -11936,9 +15466,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPsychologyService = "309625004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPsychologyService
+    /// </summary>
+    public const string LiteralNONEReferralToPsychologyService = "http://snomed.info/sct#309625004";
+
+    /// <summary>
     /// Literal for code: ChildReferralSchoolPsychologist
     /// </summary>
     public const string LiteralChildReferralSchoolPsychologist = "309626003";
+
+    /// <summary>
+    /// Literal for code: NONEChildReferralSchoolPsychologist
+    /// </summary>
+    public const string LiteralNONEChildReferralSchoolPsychologist = "http://snomed.info/sct#309626003";
 
     /// <summary>
     /// Literal for code: ChildReferralClinicalPsychologist
@@ -11946,9 +15486,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChildReferralClinicalPsychologist = "309627007";
 
     /// <summary>
+    /// Literal for code: NONEChildReferralClinicalPsychologist
+    /// </summary>
+    public const string LiteralNONEChildReferralClinicalPsychologist = "http://snomed.info/sct#309627007";
+
+    /// <summary>
     /// Literal for code: ChildReferralPhysiotherapy
     /// </summary>
     public const string LiteralChildReferralPhysiotherapy = "309628002";
+
+    /// <summary>
+    /// Literal for code: NONEChildReferralPhysiotherapy
+    /// </summary>
+    public const string LiteralNONEChildReferralPhysiotherapy = "http://snomed.info/sct#309628002";
 
     /// <summary>
     /// Literal for code: ChildReferralCommunityDentist
@@ -11956,9 +15506,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChildReferralCommunityDentist = "309629005";
 
     /// <summary>
+    /// Literal for code: NONEChildReferralCommunityDentist
+    /// </summary>
+    public const string LiteralNONEChildReferralCommunityDentist = "http://snomed.info/sct#309629005";
+
+    /// <summary>
     /// Literal for code: ChildReferralSocialServices
     /// </summary>
     public const string LiteralChildReferralSocialServices = "309630000";
+
+    /// <summary>
+    /// Literal for code: NONEChildReferralSocialServices
+    /// </summary>
+    public const string LiteralNONEChildReferralSocialServices = "http://snomed.info/sct#309630000";
 
     /// <summary>
     /// Literal for code: ReferralFor24HourBloodPressureRecording
@@ -11966,9 +15526,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralFor24HourBloodPressureRecording = "310353008";
 
     /// <summary>
+    /// Literal for code: NONEReferralFor24HourBloodPressureRecording
+    /// </summary>
+    public const string LiteralNONEReferralFor24HourBloodPressureRecording = "http://snomed.info/sct#310353008";
+
+    /// <summary>
     /// Literal for code: ReferralFor24HourECG
     /// </summary>
     public const string LiteralReferralFor24HourECG = "310354002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralFor24HourECG
+    /// </summary>
+    public const string LiteralNONEReferralFor24HourECG = "http://snomed.info/sct#310354002";
 
     /// <summary>
     /// Literal for code: ReferralForExerciseECG
@@ -11976,9 +15546,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForExerciseECG = "310355001";
 
     /// <summary>
+    /// Literal for code: NONEReferralForExerciseECG
+    /// </summary>
+    public const string LiteralNONEReferralForExerciseECG = "http://snomed.info/sct#310355001";
+
+    /// <summary>
     /// Literal for code: SelfReferralToService
     /// </summary>
     public const string LiteralSelfReferralToService = "310434002";
+
+    /// <summary>
+    /// Literal for code: NONESelfReferralToService
+    /// </summary>
+    public const string LiteralNONESelfReferralToService = "http://snomed.info/sct#310434002";
 
     /// <summary>
     /// Literal for code: ReferralToHospital
@@ -11986,9 +15566,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHospital = "310449005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHospital
+    /// </summary>
+    public const string LiteralNONEReferralToHospital = "http://snomed.info/sct#310449005";
+
+    /// <summary>
     /// Literal for code: ReferralByMedicalOncologist
     /// </summary>
     public const string LiteralReferralByMedicalOncologist = "310514000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByMedicalOncologist
+    /// </summary>
+    public const string LiteralNONEReferralByMedicalOncologist = "http://snomed.info/sct#310514000";
 
     /// <summary>
     /// Literal for code: ReferralToMedicalOncologist
@@ -11996,9 +15586,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMedicalOncologist = "310515004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMedicalOncologist
+    /// </summary>
+    public const string LiteralNONEReferralToMedicalOncologist = "http://snomed.info/sct#310515004";
+
+    /// <summary>
     /// Literal for code: ReferralToApplianceService
     /// </summary>
     public const string LiteralReferralToApplianceService = "310519005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToApplianceService
+    /// </summary>
+    public const string LiteralNONEReferralToApplianceService = "http://snomed.info/sct#310519005";
 
     /// <summary>
     /// Literal for code: ReferralToCosmeticCamouflageService
@@ -12006,9 +15606,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCosmeticCamouflageService = "312047007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCosmeticCamouflageService
+    /// </summary>
+    public const string LiteralNONEReferralToCosmeticCamouflageService = "http://snomed.info/sct#312047007";
+
+    /// <summary>
     /// Literal for code: ReferralToCharitableService
     /// </summary>
     public const string LiteralReferralToCharitableService = "312051009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCharitableService
+    /// </summary>
+    public const string LiteralNONEReferralToCharitableService = "http://snomed.info/sct#312051009";
 
     /// <summary>
     /// Literal for code: ReferralToPediatricCardiologist
@@ -12016,9 +15626,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPediatricCardiologist = "312487009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPediatricCardiologist
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricCardiologist = "http://snomed.info/sct#312487009";
+
+    /// <summary>
     /// Literal for code: ReferralToCommunityChildHealthDoctor
     /// </summary>
     public const string LiteralReferralToCommunityChildHealthDoctor = "312488004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCommunityChildHealthDoctor
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityChildHealthDoctor = "http://snomed.info/sct#312488004";
 
     /// <summary>
     /// Literal for code: ReferralToDiabetesNurse
@@ -12026,9 +15646,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToDiabetesNurse = "312856000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToDiabetesNurse
+    /// </summary>
+    public const string LiteralNONEReferralToDiabetesNurse = "http://snomed.info/sct#312856000";
+
+    /// <summary>
     /// Literal for code: ReferralToBreastClinic
     /// </summary>
     public const string LiteralReferralToBreastClinic = "313186001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToBreastClinic
+    /// </summary>
+    public const string LiteralNONEReferralToBreastClinic = "http://snomed.info/sct#313186001";
 
     /// <summary>
     /// Literal for code: ReferralToRapidAccessChestPainClinic
@@ -12036,9 +15666,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToRapidAccessChestPainClinic = "315015006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToRapidAccessChestPainClinic
+    /// </summary>
+    public const string LiteralNONEReferralToRapidAccessChestPainClinic = "http://snomed.info/sct#315015006";
+
+    /// <summary>
     /// Literal for code: ReferralToStopSmokingClinic
     /// </summary>
     public const string LiteralReferralToStopSmokingClinic = "315232003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToStopSmokingClinic
+    /// </summary>
+    public const string LiteralNONEReferralToStopSmokingClinic = "http://snomed.info/sct#315232003";
 
     /// <summary>
     /// Literal for code: SocialServiceReferralOfHomePatient
@@ -12046,9 +15686,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSocialServiceReferralOfHomePatient = "31751007";
 
     /// <summary>
+    /// Literal for code: NONESocialServiceReferralOfHomePatient
+    /// </summary>
+    public const string LiteralNONESocialServiceReferralOfHomePatient = "http://snomed.info/sct#31751007";
+
+    /// <summary>
     /// Literal for code: ReferralToMaxillofacialSurgeryService
     /// </summary>
     public const string LiteralReferralToMaxillofacialSurgeryService = "384711009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToMaxillofacialSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToMaxillofacialSurgeryService = "http://snomed.info/sct#384711009";
 
     /// <summary>
     /// Literal for code: ReferralToOralSurgeryService
@@ -12056,9 +15706,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToOralSurgeryService = "384712002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToOralSurgeryService
+    /// </summary>
+    public const string LiteralNONEReferralToOralSurgeryService = "http://snomed.info/sct#384712002";
+
+    /// <summary>
     /// Literal for code: PatientReferralForAlcoholismRehabilitation
     /// </summary>
     public const string LiteralPatientReferralForAlcoholismRehabilitation = "38670004";
+
+    /// <summary>
+    /// Literal for code: NONEPatientReferralForAlcoholismRehabilitation
+    /// </summary>
+    public const string LiteralNONEPatientReferralForAlcoholismRehabilitation = "http://snomed.info/sct#38670004";
 
     /// <summary>
     /// Literal for code: ReferralByOptician
@@ -12066,9 +15726,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByOptician = "387624005";
 
     /// <summary>
+    /// Literal for code: NONEReferralByOptician
+    /// </summary>
+    public const string LiteralNONEReferralByOptician = "http://snomed.info/sct#387624005";
+
+    /// <summary>
     /// Literal for code: ReferralByOptometrist
     /// </summary>
     public const string LiteralReferralByOptometrist = "387625006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByOptometrist
+    /// </summary>
+    public const string LiteralNONEReferralByOptometrist = "http://snomed.info/sct#387625006";
 
     /// <summary>
     /// Literal for code: ReferralForEchocardiography
@@ -12076,9 +15746,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForEchocardiography = "390791001";
 
     /// <summary>
+    /// Literal for code: NONEReferralForEchocardiography
+    /// </summary>
+    public const string LiteralNONEReferralForEchocardiography = "http://snomed.info/sct#390791001";
+
+    /// <summary>
     /// Literal for code: ReferralToRespiratoryRapidResponseTeam
     /// </summary>
     public const string LiteralReferralToRespiratoryRapidResponseTeam = "390797002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToRespiratoryRapidResponseTeam
+    /// </summary>
+    public const string LiteralNONEReferralToRespiratoryRapidResponseTeam = "http://snomed.info/sct#390797002";
 
     /// <summary>
     /// Literal for code: ReferralToPrivateStateRegisteredPodiatryService
@@ -12086,9 +15766,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPrivateStateRegisteredPodiatryService = "390807002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPrivateStateRegisteredPodiatryService
+    /// </summary>
+    public const string LiteralNONEReferralToPrivateStateRegisteredPodiatryService = "http://snomed.info/sct#390807002";
+
+    /// <summary>
     /// Literal for code: ReferralToRetinalScreener
     /// </summary>
     public const string LiteralReferralToRetinalScreener = "390841005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToRetinalScreener
+    /// </summary>
+    public const string LiteralNONEReferralToRetinalScreener = "http://snomed.info/sct#390841005";
 
     /// <summary>
     /// Literal for code: ReferralToCommunityAlcoholTeam
@@ -12096,9 +15786,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCommunityAlcoholTeam = "390857005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCommunityAlcoholTeam
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityAlcoholTeam = "http://snomed.info/sct#390857005";
+
+    /// <summary>
     /// Literal for code: ReferralForExerciseTherapy
     /// </summary>
     public const string LiteralReferralForExerciseTherapy = "390864007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForExerciseTherapy
+    /// </summary>
+    public const string LiteralNONEReferralForExerciseTherapy = "http://snomed.info/sct#390864007";
 
     /// <summary>
     /// Literal for code: ReferralToMentalHealthTeam
@@ -12106,9 +15806,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMentalHealthTeam = "390866009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMentalHealthTeam
+    /// </summary>
+    public const string LiteralNONEReferralToMentalHealthTeam = "http://snomed.info/sct#390866009";
+
+    /// <summary>
     /// Literal for code: ReferralToGPBetaBlockerManagement
     /// </summary>
     public const string LiteralReferralToGPBetaBlockerManagement = "390881003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToGPBetaBlockerManagement
+    /// </summary>
+    public const string LiteralNONEReferralToGPBetaBlockerManagement = "http://snomed.info/sct#390881003";
 
     /// <summary>
     /// Literal for code: ReferralToGPAspirinManagement
@@ -12116,9 +15826,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToGPAspirinManagement = "390882005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToGPAspirinManagement
+    /// </summary>
+    public const string LiteralNONEReferralToGPAspirinManagement = "http://snomed.info/sct#390882005";
+
+    /// <summary>
     /// Literal for code: ReferralToGPLipidManagement
     /// </summary>
     public const string LiteralReferralToGPLipidManagement = "390883000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToGPLipidManagement
+    /// </summary>
+    public const string LiteralNONEReferralToGPLipidManagement = "http://snomed.info/sct#390883000";
 
     /// <summary>
     /// Literal for code: ReferToDiabeticFootScreener
@@ -12126,9 +15846,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToDiabeticFootScreener = "390890005";
 
     /// <summary>
+    /// Literal for code: NONEReferToDiabeticFootScreener
+    /// </summary>
+    public const string LiteralNONEReferToDiabeticFootScreener = "http://snomed.info/sct#390890005";
+
+    /// <summary>
     /// Literal for code: ReferralToPhysicalActivityProgram
     /// </summary>
     public const string LiteralReferralToPhysicalActivityProgram = "390893007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPhysicalActivityProgram
+    /// </summary>
+    public const string LiteralNONEReferralToPhysicalActivityProgram = "http://snomed.info/sct#390893007";
 
     /// <summary>
     /// Literal for code: ReferralForDualEnergyXRayPhotonAbsorptiometryScan
@@ -12136,9 +15866,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForDualEnergyXRayPhotonAbsorptiometryScan = "390983001";
 
     /// <summary>
+    /// Literal for code: NONEReferralForDualEnergyXRayPhotonAbsorptiometryScan
+    /// </summary>
+    public const string LiteralNONEReferralForDualEnergyXRayPhotonAbsorptiometryScan = "http://snomed.info/sct#390983001";
+
+    /// <summary>
     /// Literal for code: ReferralForQuantitativeUltrasoundScan
     /// </summary>
     public const string LiteralReferralForQuantitativeUltrasoundScan = "390984007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForQuantitativeUltrasoundScan
+    /// </summary>
+    public const string LiteralNONEReferralForQuantitativeUltrasoundScan = "http://snomed.info/sct#390984007";
 
     /// <summary>
     /// Literal for code: ReferToOsteoporosisSpecialist
@@ -12146,9 +15886,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToOsteoporosisSpecialist = "391033001";
 
     /// <summary>
+    /// Literal for code: NONEReferToOsteoporosisSpecialist
+    /// </summary>
+    public const string LiteralNONEReferToOsteoporosisSpecialist = "http://snomed.info/sct#391033001";
+
+    /// <summary>
     /// Literal for code: ReferForFallsAssessment
     /// </summary>
     public const string LiteralReferForFallsAssessment = "391034007";
+
+    /// <summary>
+    /// Literal for code: NONEReferForFallsAssessment
+    /// </summary>
+    public const string LiteralNONEReferForFallsAssessment = "http://snomed.info/sct#391034007";
 
     /// <summary>
     /// Literal for code: ReferralToSoftTissueInjuryClinic
@@ -12156,9 +15906,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToSoftTissueInjuryClinic = "391104004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToSoftTissueInjuryClinic
+    /// </summary>
+    public const string LiteralNONEReferralToSoftTissueInjuryClinic = "http://snomed.info/sct#391104004";
+
+    /// <summary>
     /// Literal for code: ReferralToSmokingCessationAdvisor
     /// </summary>
     public const string LiteralReferralToSmokingCessationAdvisor = "395700008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToSmokingCessationAdvisor
+    /// </summary>
+    public const string LiteralNONEReferralToSmokingCessationAdvisor = "http://snomed.info/sct#395700008";
 
     /// <summary>
     /// Literal for code: ReferralToUrologyServiceForHematuria
@@ -12166,9 +15926,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToUrologyServiceForHematuria = "396104000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToUrologyServiceForHematuria
+    /// </summary>
+    public const string LiteralNONEReferralToUrologyServiceForHematuria = "http://snomed.info/sct#396104000";
+
+    /// <summary>
     /// Literal for code: ReferralForSubstanceAbuse
     /// </summary>
     public const string LiteralReferralForSubstanceAbuse = "396150002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForSubstanceAbuse
+    /// </summary>
+    public const string LiteralNONEReferralForSubstanceAbuse = "http://snomed.info/sct#396150002";
 
     /// <summary>
     /// Literal for code: ReferralToUrologyServiceForElevatedPSA
@@ -12176,9 +15946,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToUrologyServiceForElevatedPSA = "396151003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToUrologyServiceForElevatedPSA
+    /// </summary>
+    public const string LiteralNONEReferralToUrologyServiceForElevatedPSA = "http://snomed.info/sct#396151003";
+
+    /// <summary>
     /// Literal for code: ReferralForTherapeuticAbortion
     /// </summary>
     public const string LiteralReferralForTherapeuticAbortion = "396158009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForTherapeuticAbortion
+    /// </summary>
+    public const string LiteralNONEReferralForTherapeuticAbortion = "http://snomed.info/sct#396158009";
 
     /// <summary>
     /// Literal for code: ReferralToRheumatologyServiceForOsteoarthritis
@@ -12186,9 +15966,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToRheumatologyServiceForOsteoarthritis = "396159001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToRheumatologyServiceForOsteoarthritis
+    /// </summary>
+    public const string LiteralNONEReferralToRheumatologyServiceForOsteoarthritis = "http://snomed.info/sct#396159001";
+
+    /// <summary>
     /// Literal for code: ReferralToUrologyServiceForRecurrentFemaleUrinaryTractInfection
     /// </summary>
     public const string LiteralReferralToUrologyServiceForRecurrentFemaleUrinaryTractInfection = "396185002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToUrologyServiceForRecurrentFemaleUrinaryTractInfection
+    /// </summary>
+    public const string LiteralNONEReferralToUrologyServiceForRecurrentFemaleUrinaryTractInfection = "http://snomed.info/sct#396185002";
 
     /// <summary>
     /// Literal for code: ReferralByEmergencyMedicalAdmissionsUnit
@@ -12196,9 +15986,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByEmergencyMedicalAdmissionsUnit = "397593002";
 
     /// <summary>
+    /// Literal for code: NONEReferralByEmergencyMedicalAdmissionsUnit
+    /// </summary>
+    public const string LiteralNONEReferralByEmergencyMedicalAdmissionsUnit = "http://snomed.info/sct#397593002";
+
+    /// <summary>
     /// Literal for code: ReferralByGeneralDentalPractitioner
     /// </summary>
     public const string LiteralReferralByGeneralDentalPractitioner = "397603003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByGeneralDentalPractitioner
+    /// </summary>
+    public const string LiteralNONEReferralByGeneralDentalPractitioner = "http://snomed.info/sct#397603003";
 
     /// <summary>
     /// Literal for code: ReferralByConsultantDomiciliaryVisit
@@ -12206,9 +16006,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByConsultantDomiciliaryVisit = "397654003";
 
     /// <summary>
+    /// Literal for code: NONEReferralByConsultantDomiciliaryVisit
+    /// </summary>
+    public const string LiteralNONEReferralByConsultantDomiciliaryVisit = "http://snomed.info/sct#397654003";
+
+    /// <summary>
     /// Literal for code: ReferralByConsultant
     /// </summary>
     public const string LiteralReferralByConsultant = "397671002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByConsultant
+    /// </summary>
+    public const string LiteralNONEReferralByConsultant = "http://snomed.info/sct#397671002";
 
     /// <summary>
     /// Literal for code: ReferralByProsthetist
@@ -12216,9 +16026,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByProsthetist = "397684006";
 
     /// <summary>
+    /// Literal for code: NONEReferralByProsthetist
+    /// </summary>
+    public const string LiteralNONEReferralByProsthetist = "http://snomed.info/sct#397684006";
+
+    /// <summary>
     /// Literal for code: ReferralByAccidentAndEmergency
     /// </summary>
     public const string LiteralReferralByAccidentAndEmergency = "397721007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByAccidentAndEmergency
+    /// </summary>
+    public const string LiteralNONEReferralByAccidentAndEmergency = "http://snomed.info/sct#397721007";
 
     /// <summary>
     /// Literal for code: ReferralByCommunityDentalService
@@ -12226,9 +16046,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByCommunityDentalService = "397722000";
 
     /// <summary>
+    /// Literal for code: NONEReferralByCommunityDentalService
+    /// </summary>
+    public const string LiteralNONEReferralByCommunityDentalService = "http://snomed.info/sct#397722000";
+
+    /// <summary>
     /// Literal for code: ReferralToWeightMaintenanceRegimenService
     /// </summary>
     public const string LiteralReferralToWeightMaintenanceRegimenService = "398752005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToWeightMaintenanceRegimenService
+    /// </summary>
+    public const string LiteralNONEReferralToWeightMaintenanceRegimenService = "http://snomed.info/sct#398752005";
 
     /// <summary>
     /// Literal for code: ReferralToCommunityRetinalScreeningService
@@ -12236,9 +16066,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCommunityRetinalScreeningService = "398852003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCommunityRetinalScreeningService
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityRetinalScreeningService = "http://snomed.info/sct#398852003";
+
+    /// <summary>
     /// Literal for code: ReferralForEyeUltrasound
     /// </summary>
     public const string LiteralReferralForEyeUltrasound = "398855001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForEyeUltrasound
+    /// </summary>
+    public const string LiteralNONEReferralForEyeUltrasound = "http://snomed.info/sct#398855001";
 
     /// <summary>
     /// Literal for code: ReferralToEatingDisordersClinic
@@ -12246,9 +16086,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToEatingDisordersClinic = "400973003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToEatingDisordersClinic
+    /// </summary>
+    public const string LiteralNONEReferralToEatingDisordersClinic = "http://snomed.info/sct#400973003";
+
+    /// <summary>
     /// Literal for code: ReferToCommunityPhysiotherapist
     /// </summary>
     public const string LiteralReferToCommunityPhysiotherapist = "400992001";
+
+    /// <summary>
+    /// Literal for code: NONEReferToCommunityPhysiotherapist
+    /// </summary>
+    public const string LiteralNONEReferToCommunityPhysiotherapist = "http://snomed.info/sct#400992001";
 
     /// <summary>
     /// Literal for code: ReferralToDrugAbuseCounselor
@@ -12256,9 +16106,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToDrugAbuseCounselor = "401266006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToDrugAbuseCounselor
+    /// </summary>
+    public const string LiteralNONEReferralToDrugAbuseCounselor = "http://snomed.info/sct#401266006";
+
+    /// <summary>
     /// Literal for code: ReferralToOralSurgeon
     /// </summary>
     public const string LiteralReferralToOralSurgeon = "406158007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToOralSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToOralSurgeon = "http://snomed.info/sct#406158007";
 
     /// <summary>
     /// Literal for code: ReferralToMaxillofacialSurgeon
@@ -12266,9 +16126,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMaxillofacialSurgeon = "406159004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMaxillofacialSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToMaxillofacialSurgeon = "http://snomed.info/sct#406159004";
+
+    /// <summary>
     /// Literal for code: ReferToPediatricDietitian
     /// </summary>
     public const string LiteralReferToPediatricDietitian = "408285001";
+
+    /// <summary>
+    /// Literal for code: NONEReferToPediatricDietitian
+    /// </summary>
+    public const string LiteralNONEReferToPediatricDietitian = "http://snomed.info/sct#408285001";
 
     /// <summary>
     /// Literal for code: ReferralToFootcareProtectionProgram
@@ -12276,9 +16146,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToFootcareProtectionProgram = "408286000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToFootcareProtectionProgram
+    /// </summary>
+    public const string LiteralNONEReferralToFootcareProtectionProgram = "http://snomed.info/sct#408286000";
+
+    /// <summary>
     /// Literal for code: ReferToMultidisciplinaryFootcareTeam
     /// </summary>
     public const string LiteralReferToMultidisciplinaryFootcareTeam = "408288004";
+
+    /// <summary>
+    /// Literal for code: NONEReferToMultidisciplinaryFootcareTeam
+    /// </summary>
+    public const string LiteralNONEReferToMultidisciplinaryFootcareTeam = "http://snomed.info/sct#408288004";
 
     /// <summary>
     /// Literal for code: ReferToWeightManagementProgram
@@ -12286,9 +16166,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToWeightManagementProgram = "408289007";
 
     /// <summary>
+    /// Literal for code: NONEReferToWeightManagementProgram
+    /// </summary>
+    public const string LiteralNONEReferToWeightManagementProgram = "http://snomed.info/sct#408289007";
+
+    /// <summary>
     /// Literal for code: ReferralToTissueViabilityNurseSpecialist
     /// </summary>
     public const string LiteralReferralToTissueViabilityNurseSpecialist = "408342007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToTissueViabilityNurseSpecialist
+    /// </summary>
+    public const string LiteralNONEReferralToTissueViabilityNurseSpecialist = "http://snomed.info/sct#408342007";
 
     /// <summary>
     /// Literal for code: ReferralForCataractExtraction
@@ -12296,9 +16186,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForCataractExtraction = "408383005";
 
     /// <summary>
+    /// Literal for code: NONEReferralForCataractExtraction
+    /// </summary>
+    public const string LiteralNONEReferralForCataractExtraction = "http://snomed.info/sct#408383005";
+
+    /// <summary>
     /// Literal for code: ReferralForDXAScanOfHipAndSpine
     /// </summary>
     public const string LiteralReferralForDXAScanOfHipAndSpine = "408493004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForDXAScanOfHipAndSpine
+    /// </summary>
+    public const string LiteralNONEReferralForDXAScanOfHipAndSpine = "http://snomed.info/sct#408493004";
 
     /// <summary>
     /// Literal for code: ReferralForDXAScanOfForearm
@@ -12306,9 +16206,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForDXAScanOfForearm = "408494005";
 
     /// <summary>
+    /// Literal for code: NONEReferralForDXAScanOfForearm
+    /// </summary>
+    public const string LiteralNONEReferralForDXAScanOfForearm = "http://snomed.info/sct#408494005";
+
+    /// <summary>
     /// Literal for code: ReferralForDXAScanOfHeel
     /// </summary>
     public const string LiteralReferralForDXAScanOfHeel = "408495006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForDXAScanOfHeel
+    /// </summary>
+    public const string LiteralNONEReferralForDXAScanOfHeel = "http://snomed.info/sct#408495006";
 
     /// <summary>
     /// Literal for code: ReferralForQuantitativeUltrasoundScanOfHeel
@@ -12316,9 +16226,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForQuantitativeUltrasoundScanOfHeel = "408496007";
 
     /// <summary>
+    /// Literal for code: NONEReferralForQuantitativeUltrasoundScanOfHeel
+    /// </summary>
+    public const string LiteralNONEReferralForQuantitativeUltrasoundScanOfHeel = "http://snomed.info/sct#408496007";
+
+    /// <summary>
     /// Literal for code: ReferralToSexuallyTransmittedInfectionsClinic
     /// </summary>
     public const string LiteralReferralToSexuallyTransmittedInfectionsClinic = "412712007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToSexuallyTransmittedInfectionsClinic
+    /// </summary>
+    public const string LiteralNONEReferralToSexuallyTransmittedInfectionsClinic = "http://snomed.info/sct#412712007";
 
     /// <summary>
     /// Literal for code: ReferralToOsteoporosisClinic
@@ -12326,9 +16246,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToOsteoporosisClinic = "412717001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToOsteoporosisClinic
+    /// </summary>
+    public const string LiteralNONEReferralToOsteoporosisClinic = "http://snomed.info/sct#412717001";
+
+    /// <summary>
     /// Literal for code: ReferralToStrokeClinic
     /// </summary>
     public const string LiteralReferralToStrokeClinic = "412773009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToStrokeClinic
+    /// </summary>
+    public const string LiteralNONEReferralToStrokeClinic = "http://snomed.info/sct#412773009";
 
     /// <summary>
     /// Literal for code: ReferralForCarotidDoppler
@@ -12336,9 +16266,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForCarotidDoppler = "413082001";
 
     /// <summary>
+    /// Literal for code: NONEReferralForCarotidDoppler
+    /// </summary>
+    public const string LiteralNONEReferralForCarotidDoppler = "http://snomed.info/sct#413082001";
+
+    /// <summary>
     /// Literal for code: ReferralToRespiratoryNurseSpecialist
     /// </summary>
     public const string LiteralReferralToRespiratoryNurseSpecialist = "413087007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToRespiratoryNurseSpecialist
+    /// </summary>
+    public const string LiteralNONEReferralToRespiratoryNurseSpecialist = "http://snomed.info/sct#413087007";
 
     /// <summary>
     /// Literal for code: ReferralToVoluntaryService
@@ -12346,9 +16286,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToVoluntaryService = "413125004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToVoluntaryService
+    /// </summary>
+    public const string LiteralNONEReferralToVoluntaryService = "http://snomed.info/sct#413125004";
+
+    /// <summary>
     /// Literal for code: ReferralToLearningDisabilityTeam
     /// </summary>
     public const string LiteralReferralToLearningDisabilityTeam = "413127007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToLearningDisabilityTeam
+    /// </summary>
+    public const string LiteralNONEReferralToLearningDisabilityTeam = "http://snomed.info/sct#413127007";
 
     /// <summary>
     /// Literal for code: ReferralToMusculoskeletalClinic
@@ -12356,9 +16306,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMusculoskeletalClinic = "413159000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMusculoskeletalClinic
+    /// </summary>
+    public const string LiteralNONEReferralToMusculoskeletalClinic = "http://snomed.info/sct#413159000";
+
+    /// <summary>
     /// Literal for code: PatientToInitiateFurtherContact
     /// </summary>
     public const string LiteralPatientToInitiateFurtherContact = "413293006";
+
+    /// <summary>
+    /// Literal for code: NONEPatientToInitiateFurtherContact
+    /// </summary>
+    public const string LiteralNONEPatientToInitiateFurtherContact = "http://snomed.info/sct#413293006";
 
     /// <summary>
     /// Literal for code: FamilyCarerReferralToDiabetesStructuredEducationProgram
@@ -12366,9 +16326,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFamilyCarerReferralToDiabetesStructuredEducationProgram = "414230000";
 
     /// <summary>
+    /// Literal for code: NONEFamilyCarerReferralToDiabetesStructuredEducationProgram
+    /// </summary>
+    public const string LiteralNONEFamilyCarerReferralToDiabetesStructuredEducationProgram = "http://snomed.info/sct#414230000";
+
+    /// <summary>
     /// Literal for code: ReferralForMinorSurgery
     /// </summary>
     public const string LiteralReferralForMinorSurgery = "415260000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForMinorSurgery
+    /// </summary>
+    public const string LiteralNONEReferralForMinorSurgery = "http://snomed.info/sct#415260000";
 
     /// <summary>
     /// Literal for code: ReferralForSpirometry
@@ -12376,9 +16346,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForSpirometry = "415261001";
 
     /// <summary>
+    /// Literal for code: NONEReferralForSpirometry
+    /// </summary>
+    public const string LiteralNONEReferralForSpirometry = "http://snomed.info/sct#415261001";
+
+    /// <summary>
     /// Literal for code: ReferralForTerminationOfPregnancy
     /// </summary>
     public const string LiteralReferralForTerminationOfPregnancy = "415262008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForTerminationOfPregnancy
+    /// </summary>
+    public const string LiteralNONEReferralForTerminationOfPregnancy = "http://snomed.info/sct#415262008";
 
     /// <summary>
     /// Literal for code: ReferralForWarfarinMonitoring
@@ -12386,9 +16366,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForWarfarinMonitoring = "415263003";
 
     /// <summary>
+    /// Literal for code: NONEReferralForWarfarinMonitoring
+    /// </summary>
+    public const string LiteralNONEReferralForWarfarinMonitoring = "http://snomed.info/sct#415263003";
+
+    /// <summary>
     /// Literal for code: ReferralToAdvancedPrimaryNurse
     /// </summary>
     public const string LiteralReferralToAdvancedPrimaryNurse = "415264009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToAdvancedPrimaryNurse
+    /// </summary>
+    public const string LiteralNONEReferralToAdvancedPrimaryNurse = "http://snomed.info/sct#415264009";
 
     /// <summary>
     /// Literal for code: ReferralToAsthmaClinic
@@ -12396,9 +16386,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToAsthmaClinic = "415265005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToAsthmaClinic
+    /// </summary>
+    public const string LiteralNONEReferralToAsthmaClinic = "http://snomed.info/sct#415265005";
+
+    /// <summary>
     /// Literal for code: ReferralToCataractClinic
     /// </summary>
     public const string LiteralReferralToCataractClinic = "415266006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCataractClinic
+    /// </summary>
+    public const string LiteralNONEReferralToCataractClinic = "http://snomed.info/sct#415266006";
 
     /// <summary>
     /// Literal for code: ReferralToCommunityNurseryNurse
@@ -12406,9 +16406,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCommunityNurseryNurse = "415267002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCommunityNurseryNurse
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityNurseryNurse = "http://snomed.info/sct#415267002";
+
+    /// <summary>
     /// Literal for code: ReferralToDermatologyNurseSpecialist
     /// </summary>
     public const string LiteralReferralToDermatologyNurseSpecialist = "415268007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToDermatologyNurseSpecialist
+    /// </summary>
+    public const string LiteralNONEReferralToDermatologyNurseSpecialist = "http://snomed.info/sct#415268007";
 
     /// <summary>
     /// Literal for code: ReferralToDiabetesPreconceptionCounselingClinic
@@ -12416,9 +16426,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToDiabetesPreconceptionCounselingClinic = "415269004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToDiabetesPreconceptionCounselingClinic
+    /// </summary>
+    public const string LiteralNONEReferralToDiabetesPreconceptionCounselingClinic = "http://snomed.info/sct#415269004";
+
+    /// <summary>
     /// Literal for code: ReferralToDiabetesStructuredEducationProgram
     /// </summary>
     public const string LiteralReferralToDiabetesStructuredEducationProgram = "415270003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToDiabetesStructuredEducationProgram
+    /// </summary>
+    public const string LiteralNONEReferralToDiabetesStructuredEducationProgram = "http://snomed.info/sct#415270003";
 
     /// <summary>
     /// Literal for code: ReferralToEducationService
@@ -12426,9 +16446,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToEducationService = "415271004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToEducationService
+    /// </summary>
+    public const string LiteralNONEReferralToEducationService = "http://snomed.info/sct#415271004";
+
+    /// <summary>
     /// Literal for code: ReferralToGenitourinaryClinic
     /// </summary>
     public const string LiteralReferralToGenitourinaryClinic = "415272006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToGenitourinaryClinic
+    /// </summary>
+    public const string LiteralNONEReferralToGenitourinaryClinic = "http://snomed.info/sct#415272006";
 
     /// <summary>
     /// Literal for code: ReferralToGlaucomaClinic
@@ -12436,9 +16466,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToGlaucomaClinic = "415273001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToGlaucomaClinic
+    /// </summary>
+    public const string LiteralNONEReferralToGlaucomaClinic = "http://snomed.info/sct#415273001";
+
+    /// <summary>
     /// Literal for code: ReferralToIncontinenceClinic
     /// </summary>
     public const string LiteralReferralToIncontinenceClinic = "415274007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToIncontinenceClinic
+    /// </summary>
+    public const string LiteralNONEReferralToIncontinenceClinic = "http://snomed.info/sct#415274007";
 
     /// <summary>
     /// Literal for code: ReferralToMaleUrologyClinic
@@ -12446,9 +16486,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMaleUrologyClinic = "415275008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMaleUrologyClinic
+    /// </summary>
+    public const string LiteralNONEReferralToMaleUrologyClinic = "http://snomed.info/sct#415275008";
+
+    /// <summary>
     /// Literal for code: ReferralToMemoryClinic
     /// </summary>
     public const string LiteralReferralToMemoryClinic = "415276009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToMemoryClinic
+    /// </summary>
+    public const string LiteralNONEReferralToMemoryClinic = "http://snomed.info/sct#415276009";
 
     /// <summary>
     /// Literal for code: ReferralToPediatricEndocrinologist
@@ -12456,9 +16506,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPediatricEndocrinologist = "415277000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPediatricEndocrinologist
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricEndocrinologist = "http://snomed.info/sct#415277000";
+
+    /// <summary>
     /// Literal for code: ReferralToPsychosexualClinic
     /// </summary>
     public const string LiteralReferralToPsychosexualClinic = "415278005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPsychosexualClinic
+    /// </summary>
+    public const string LiteralNONEReferralToPsychosexualClinic = "http://snomed.info/sct#415278005";
 
     /// <summary>
     /// Literal for code: ReferralToRheumatologyClinic
@@ -12466,9 +16526,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToRheumatologyClinic = "415279002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToRheumatologyClinic
+    /// </summary>
+    public const string LiteralNONEReferralToRheumatologyClinic = "http://snomed.info/sct#415279002";
+
+    /// <summary>
     /// Literal for code: ReferralToPediatricDermatologyService
     /// </summary>
     public const string LiteralReferralToPediatricDermatologyService = "416076006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPediatricDermatologyService
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricDermatologyService = "http://snomed.info/sct#416076006";
 
     /// <summary>
     /// Literal for code: ReferralToHomeRegisteredDietitian
@@ -12476,9 +16546,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHomeRegisteredDietitian = "416116000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHomeRegisteredDietitian
+    /// </summary>
+    public const string LiteralNONEReferralToHomeRegisteredDietitian = "http://snomed.info/sct#416116000";
+
+    /// <summary>
     /// Literal for code: ReferralForNeuropsychologicalTesting
     /// </summary>
     public const string LiteralReferralForNeuropsychologicalTesting = "416194003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForNeuropsychologicalTesting
+    /// </summary>
+    public const string LiteralNONEReferralForNeuropsychologicalTesting = "http://snomed.info/sct#416194003";
 
     /// <summary>
     /// Literal for code: ReferralToPediatricServiceForAcne
@@ -12486,9 +16566,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPediatricServiceForAcne = "416291002";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPediatricServiceForAcne
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricServiceForAcne = "http://snomed.info/sct#416291002";
+
+    /// <summary>
     /// Literal for code: ReferralForHomeIntravenousMedicationAdministration
     /// </summary>
     public const string LiteralReferralForHomeIntravenousMedicationAdministration = "416414009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForHomeIntravenousMedicationAdministration
+    /// </summary>
+    public const string LiteralNONEReferralForHomeIntravenousMedicationAdministration = "http://snomed.info/sct#416414009";
 
     /// <summary>
     /// Literal for code: ReferralForBipolarDisorder
@@ -12496,9 +16586,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForBipolarDisorder = "416422002";
 
     /// <summary>
+    /// Literal for code: NONEReferralForBipolarDisorder
+    /// </summary>
+    public const string LiteralNONEReferralForBipolarDisorder = "http://snomed.info/sct#416422002";
+
+    /// <summary>
     /// Literal for code: ReferralToVasectomyClinic
     /// </summary>
     public const string LiteralReferralToVasectomyClinic = "416457004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToVasectomyClinic
+    /// </summary>
+    public const string LiteralNONEReferralToVasectomyClinic = "http://snomed.info/sct#416457004";
 
     /// <summary>
     /// Literal for code: ReferralForSweatChlorideTest
@@ -12506,9 +16606,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForSweatChlorideTest = "416492007";
 
     /// <summary>
+    /// Literal for code: NONEReferralForSweatChlorideTest
+    /// </summary>
+    public const string LiteralNONEReferralForSweatChlorideTest = "http://snomed.info/sct#416492007";
+
+    /// <summary>
     /// Literal for code: ReferralForHomeTubeFeedingInstruction
     /// </summary>
     public const string LiteralReferralForHomeTubeFeedingInstruction = "416609002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForHomeTubeFeedingInstruction
+    /// </summary>
+    public const string LiteralNONEReferralForHomeTubeFeedingInstruction = "http://snomed.info/sct#416609002";
 
     /// <summary>
     /// Literal for code: ReferralForHomePhysicalTherapy
@@ -12516,9 +16626,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForHomePhysicalTherapy = "416790000";
 
     /// <summary>
+    /// Literal for code: NONEReferralForHomePhysicalTherapy
+    /// </summary>
+    public const string LiteralNONEReferralForHomePhysicalTherapy = "http://snomed.info/sct#416790000";
+
+    /// <summary>
     /// Literal for code: ReferralToCommunityMatron
     /// </summary>
     public const string LiteralReferralToCommunityMatron = "416851006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCommunityMatron
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityMatron = "http://snomed.info/sct#416851006";
 
     /// <summary>
     /// Literal for code: ReferralToMinorAilmentsClinic
@@ -12526,9 +16646,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMinorAilmentsClinic = "416977004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMinorAilmentsClinic
+    /// </summary>
+    public const string LiteralNONEReferralToMinorAilmentsClinic = "http://snomed.info/sct#416977004";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToPhysiotherapist
     /// </summary>
     public const string LiteralPrivateReferralToPhysiotherapist = "416999007";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToPhysiotherapist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToPhysiotherapist = "http://snomed.info/sct#416999007";
 
     /// <summary>
     /// Literal for code: ReferralForHomeBasedPhlebotomy
@@ -12536,9 +16666,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForHomeBasedPhlebotomy = "417033000";
 
     /// <summary>
+    /// Literal for code: NONEReferralForHomeBasedPhlebotomy
+    /// </summary>
+    public const string LiteralNONEReferralForHomeBasedPhlebotomy = "http://snomed.info/sct#417033000";
+
+    /// <summary>
     /// Literal for code: ReferralForDialysis
     /// </summary>
     public const string LiteralReferralForDialysis = "417038009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForDialysis
+    /// </summary>
+    public const string LiteralNONEReferralForDialysis = "http://snomed.info/sct#417038009";
 
     /// <summary>
     /// Literal for code: ReferralForHematuria
@@ -12546,9 +16686,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForHematuria = "417073006";
 
     /// <summary>
+    /// Literal for code: NONEReferralForHematuria
+    /// </summary>
+    public const string LiteralNONEReferralForHematuria = "http://snomed.info/sct#417073006";
+
+    /// <summary>
     /// Literal for code: ReferralToCommunityDrugAndAlcoholTeam
     /// </summary>
     public const string LiteralReferralToCommunityDrugAndAlcoholTeam = "417096006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCommunityDrugAndAlcoholTeam
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityDrugAndAlcoholTeam = "http://snomed.info/sct#417096006";
 
     /// <summary>
     /// Literal for code: ReferralForPerinatalHomeCare
@@ -12556,9 +16706,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForPerinatalHomeCare = "417105002";
 
     /// <summary>
+    /// Literal for code: NONEReferralForPerinatalHomeCare
+    /// </summary>
+    public const string LiteralNONEReferralForPerinatalHomeCare = "http://snomed.info/sct#417105002";
+
+    /// <summary>
     /// Literal for code: ReferralToHeartFailureNurse
     /// </summary>
     public const string LiteralReferralToHeartFailureNurse = "417146007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToHeartFailureNurse
+    /// </summary>
+    public const string LiteralNONEReferralToHeartFailureNurse = "http://snomed.info/sct#417146007";
 
     /// <summary>
     /// Literal for code: ReferralForHomeNurseVisit
@@ -12566,9 +16726,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForHomeNurseVisit = "417153003";
 
     /// <summary>
+    /// Literal for code: NONEReferralForHomeNurseVisit
+    /// </summary>
+    public const string LiteralNONEReferralForHomeNurseVisit = "http://snomed.info/sct#417153003";
+
+    /// <summary>
     /// Literal for code: ReferralToPsychoEducationalGroup
     /// </summary>
     public const string LiteralReferralToPsychoEducationalGroup = "417158007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPsychoEducationalGroup
+    /// </summary>
+    public const string LiteralNONEReferralToPsychoEducationalGroup = "http://snomed.info/sct#417158007";
 
     /// <summary>
     /// Literal for code: ReferralToHospitalBasedDischargePlanning
@@ -12576,9 +16746,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHospitalBasedDischargePlanning = "417213009";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHospitalBasedDischargePlanning
+    /// </summary>
+    public const string LiteralNONEReferralToHospitalBasedDischargePlanning = "http://snomed.info/sct#417213009";
+
+    /// <summary>
     /// Literal for code: ReferralForProteinuriaTest
     /// </summary>
     public const string LiteralReferralForProteinuriaTest = "417282008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForProteinuriaTest
+    /// </summary>
+    public const string LiteralNONEReferralForProteinuriaTest = "http://snomed.info/sct#417282008";
 
     /// <summary>
     /// Literal for code: ReferralToEpiduralAnesthesiaForReflexSympatheticDystrophy
@@ -12586,9 +16766,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToEpiduralAnesthesiaForReflexSympatheticDystrophy = "417291007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToEpiduralAnesthesiaForReflexSympatheticDystrophy
+    /// </summary>
+    public const string LiteralNONEReferralToEpiduralAnesthesiaForReflexSympatheticDystrophy = "http://snomed.info/sct#417291007";
+
+    /// <summary>
     /// Literal for code: ReferralToPediatricCardiologyService
     /// </summary>
     public const string LiteralReferralToPediatricCardiologyService = "417311009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPediatricCardiologyService
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricCardiologyService = "http://snomed.info/sct#417311009";
 
     /// <summary>
     /// Literal for code: ReferralForPediatricArrhythmia
@@ -12596,9 +16786,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForPediatricArrhythmia = "417421000";
 
     /// <summary>
+    /// Literal for code: NONEReferralForPediatricArrhythmia
+    /// </summary>
+    public const string LiteralNONEReferralForPediatricArrhythmia = "http://snomed.info/sct#417421000";
+
+    /// <summary>
     /// Literal for code: ReferralToEpiduralAnesthesiaService
     /// </summary>
     public const string LiteralReferralToEpiduralAnesthesiaService = "417504006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToEpiduralAnesthesiaService
+    /// </summary>
+    public const string LiteralNONEReferralToEpiduralAnesthesiaService = "http://snomed.info/sct#417504006";
 
     /// <summary>
     /// Literal for code: ReferralToHomeHealthCareService
@@ -12606,9 +16806,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHomeHealthCareService = "417511005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHomeHealthCareService
+    /// </summary>
+    public const string LiteralNONEReferralToHomeHealthCareService = "http://snomed.info/sct#417511005";
+
+    /// <summary>
     /// Literal for code: ReferralForPediatricCongenitalHeartDisease
     /// </summary>
     public const string LiteralReferralForPediatricCongenitalHeartDisease = "417546002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForPediatricCongenitalHeartDisease
+    /// </summary>
+    public const string LiteralNONEReferralForPediatricCongenitalHeartDisease = "http://snomed.info/sct#417546002";
 
     /// <summary>
     /// Literal for code: ReferToEarlyPregnancyUnit
@@ -12616,9 +16826,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferToEarlyPregnancyUnit = "417577000";
 
     /// <summary>
+    /// Literal for code: NONEReferToEarlyPregnancyUnit
+    /// </summary>
+    public const string LiteralNONEReferToEarlyPregnancyUnit = "http://snomed.info/sct#417577000";
+
+    /// <summary>
     /// Literal for code: ReferralToDrugTreatmentCenter
     /// </summary>
     public const string LiteralReferralToDrugTreatmentCenter = "417699000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToDrugTreatmentCenter
+    /// </summary>
+    public const string LiteralNONEReferralToDrugTreatmentCenter = "http://snomed.info/sct#417699000";
 
     /// <summary>
     /// Literal for code: ReferralToLongTermCareService
@@ -12626,9 +16846,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToLongTermCareService = "417708006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToLongTermCareService
+    /// </summary>
+    public const string LiteralNONEReferralToLongTermCareService = "http://snomed.info/sct#417708006";
+
+    /// <summary>
     /// Literal for code: ReferralToEpiduralAnesthesiaForSpinalPain
     /// </summary>
     public const string LiteralReferralToEpiduralAnesthesiaForSpinalPain = "417724007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToEpiduralAnesthesiaForSpinalPain
+    /// </summary>
+    public const string LiteralNONEReferralToEpiduralAnesthesiaForSpinalPain = "http://snomed.info/sct#417724007";
 
     /// <summary>
     /// Literal for code: PatientReferralForSocioeconomicFactors
@@ -12636,9 +16866,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientReferralForSocioeconomicFactors = "41920009";
 
     /// <summary>
+    /// Literal for code: NONEPatientReferralForSocioeconomicFactors
+    /// </summary>
+    public const string LiteralNONEPatientReferralForSocioeconomicFactors = "http://snomed.info/sct#41920009";
+
+    /// <summary>
     /// Literal for code: ReferralToPediatricPulmonologist
     /// </summary>
     public const string LiteralReferralToPediatricPulmonologist = "425971006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPediatricPulmonologist
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricPulmonologist = "http://snomed.info/sct#425971006";
 
     /// <summary>
     /// Literal for code: PatientReferralForDrugAddictionRehabilitation
@@ -12646,9 +16886,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientReferralForDrugAddictionRehabilitation = "4266003";
 
     /// <summary>
+    /// Literal for code: NONEPatientReferralForDrugAddictionRehabilitation
+    /// </summary>
+    public const string LiteralNONEPatientReferralForDrugAddictionRehabilitation = "http://snomed.info/sct#4266003";
+
+    /// <summary>
     /// Literal for code: ReferralToDiagnosticNuclearMedicineService
     /// </summary>
     public const string LiteralReferralToDiagnosticNuclearMedicineService = "428573000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToDiagnosticNuclearMedicineService
+    /// </summary>
+    public const string LiteralNONEReferralToDiagnosticNuclearMedicineService = "http://snomed.info/sct#428573000";
 
     /// <summary>
     /// Literal for code: ReferralToEnuresisClinic
@@ -12656,9 +16906,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToEnuresisClinic = "428574006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToEnuresisClinic
+    /// </summary>
+    public const string LiteralNONEReferralToEnuresisClinic = "http://snomed.info/sct#428574006";
+
+    /// <summary>
     /// Literal for code: ReferralToTherapeuticNuclearMedicineService
     /// </summary>
     public const string LiteralReferralToTherapeuticNuclearMedicineService = "429201005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToTherapeuticNuclearMedicineService
+    /// </summary>
+    public const string LiteralNONEReferralToTherapeuticNuclearMedicineService = "http://snomed.info/sct#429201005";
 
     /// <summary>
     /// Literal for code: ReferralToPediatricGastroenterologist
@@ -12666,9 +16926,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPediatricGastroenterologist = "429365000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPediatricGastroenterologist
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricGastroenterologist = "http://snomed.info/sct#429365000";
+
+    /// <summary>
     /// Literal for code: ReferralByPsychologist
     /// </summary>
     public const string LiteralReferralByPsychologist = "429387009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByPsychologist
+    /// </summary>
+    public const string LiteralNONEReferralByPsychologist = "http://snomed.info/sct#429387009";
 
     /// <summary>
     /// Literal for code: ReferralByOsteopath
@@ -12676,9 +16946,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralByOsteopath = "429709006";
 
     /// <summary>
+    /// Literal for code: NONEReferralByOsteopath
+    /// </summary>
+    public const string LiteralNONEReferralByOsteopath = "http://snomed.info/sct#429709006";
+
+    /// <summary>
     /// Literal for code: ReferralForRadionuclideMyocardialPerfusionStudy
     /// </summary>
     public const string LiteralReferralForRadionuclideMyocardialPerfusionStudy = "429711002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForRadionuclideMyocardialPerfusionStudy
+    /// </summary>
+    public const string LiteralNONEReferralForRadionuclideMyocardialPerfusionStudy = "http://snomed.info/sct#429711002";
 
     /// <summary>
     /// Literal for code: ReferralToEndodonticService
@@ -12686,9 +16966,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToEndodonticService = "431183005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToEndodonticService
+    /// </summary>
+    public const string LiteralNONEReferralToEndodonticService = "http://snomed.info/sct#431183005";
+
+    /// <summary>
     /// Literal for code: ReferralToSpecialistAlcoholTreatmentService
     /// </summary>
     public const string LiteralReferralToSpecialistAlcoholTreatmentService = "431260004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToSpecialistAlcoholTreatmentService
+    /// </summary>
+    public const string LiteralNONEReferralToSpecialistAlcoholTreatmentService = "http://snomed.info/sct#431260004";
 
     /// <summary>
     /// Literal for code: ReferralToBreastFeedingPeerSupportService
@@ -12696,9 +16986,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToBreastFeedingPeerSupportService = "431340005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToBreastFeedingPeerSupportService
+    /// </summary>
+    public const string LiteralNONEReferralToBreastFeedingPeerSupportService = "http://snomed.info/sct#431340005";
+
+    /// <summary>
     /// Literal for code: ReferralToPeriodonticService
     /// </summary>
     public const string LiteralReferralToPeriodonticService = "431550007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPeriodonticService
+    /// </summary>
+    public const string LiteralNONEReferralToPeriodonticService = "http://snomed.info/sct#431550007";
 
     /// <summary>
     /// Literal for code: ReferralToProsthodonticService
@@ -12706,9 +17006,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToProsthodonticService = "431551006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToProsthodonticService
+    /// </summary>
+    public const string LiteralNONEReferralToProsthodonticService = "http://snomed.info/sct#431551006";
+
+    /// <summary>
     /// Literal for code: ReferralToDomesticViolenceAdvocate
     /// </summary>
     public const string LiteralReferralToDomesticViolenceAdvocate = "431719007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToDomesticViolenceAdvocate
+    /// </summary>
+    public const string LiteralNONEReferralToDomesticViolenceAdvocate = "http://snomed.info/sct#431719007";
 
     /// <summary>
     /// Literal for code: ReferralToDeepVeinThrombosisClinic
@@ -12716,9 +17026,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToDeepVeinThrombosisClinic = "431883007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToDeepVeinThrombosisClinic
+    /// </summary>
+    public const string LiteralNONEReferralToDeepVeinThrombosisClinic = "http://snomed.info/sct#431883007";
+
+    /// <summary>
     /// Literal for code: ReferralToEducationalPsychologist
     /// </summary>
     public const string LiteralReferralToEducationalPsychologist = "433151006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToEducationalPsychologist
+    /// </summary>
+    public const string LiteralNONEReferralToEducationalPsychologist = "http://snomed.info/sct#433151006";
 
     /// <summary>
     /// Literal for code: ReferralToPediatricOccupationalTherapyService
@@ -12726,9 +17046,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPediatricOccupationalTherapyService = "437950007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPediatricOccupationalTherapyService
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricOccupationalTherapyService = "http://snomed.info/sct#437950007";
+
+    /// <summary>
     /// Literal for code: ReferralToSleepClinic
     /// </summary>
     public const string LiteralReferralToSleepClinic = "438517001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToSleepClinic
+    /// </summary>
+    public const string LiteralNONEReferralToSleepClinic = "http://snomed.info/sct#438517001";
 
     /// <summary>
     /// Literal for code: ReferralForMedicalTerminationOfPregnancy
@@ -12736,9 +17066,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForMedicalTerminationOfPregnancy = "439163006";
 
     /// <summary>
+    /// Literal for code: NONEReferralForMedicalTerminationOfPregnancy
+    /// </summary>
+    public const string LiteralNONEReferralForMedicalTerminationOfPregnancy = "http://snomed.info/sct#439163006";
+
+    /// <summary>
     /// Literal for code: ReferralToPregnancyCounselingService
     /// </summary>
     public const string LiteralReferralToPregnancyCounselingService = "439306007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPregnancyCounselingService
+    /// </summary>
+    public const string LiteralNONEReferralToPregnancyCounselingService = "http://snomed.info/sct#439306007";
 
     /// <summary>
     /// Literal for code: ReferralForSurgicalTerminationOfPregnancy
@@ -12746,9 +17086,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForSurgicalTerminationOfPregnancy = "439310005";
 
     /// <summary>
+    /// Literal for code: NONEReferralForSurgicalTerminationOfPregnancy
+    /// </summary>
+    public const string LiteralNONEReferralForSurgicalTerminationOfPregnancy = "http://snomed.info/sct#439310005";
+
+    /// <summary>
     /// Literal for code: ReferralToInfectiousDiseaseClinic
     /// </summary>
     public const string LiteralReferralToInfectiousDiseaseClinic = "442135008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToInfectiousDiseaseClinic
+    /// </summary>
+    public const string LiteralNONEReferralToInfectiousDiseaseClinic = "http://snomed.info/sct#442135008";
 
     /// <summary>
     /// Literal for code: ReferralForAmbulatoryElectrocardiogram
@@ -12756,9 +17106,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForAmbulatoryElectrocardiogram = "442305005";
 
     /// <summary>
+    /// Literal for code: NONEReferralForAmbulatoryElectrocardiogram
+    /// </summary>
+    public const string LiteralNONEReferralForAmbulatoryElectrocardiogram = "http://snomed.info/sct#442305005";
+
+    /// <summary>
     /// Literal for code: PatientReferralForConsultation
     /// </summary>
     public const string LiteralPatientReferralForConsultation = "44383000";
+
+    /// <summary>
+    /// Literal for code: NONEPatientReferralForConsultation
+    /// </summary>
+    public const string LiteralNONEPatientReferralForConsultation = "http://snomed.info/sct#44383000";
 
     /// <summary>
     /// Literal for code: ReferralToSocialServicesForAdultProtection
@@ -12766,9 +17126,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToSocialServicesForAdultProtection = "444543005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToSocialServicesForAdultProtection
+    /// </summary>
+    public const string LiteralNONEReferralToSocialServicesForAdultProtection = "http://snomed.info/sct#444543005";
+
+    /// <summary>
     /// Literal for code: PatientReferralForMedicalConsultation
     /// </summary>
     public const string LiteralPatientReferralForMedicalConsultation = "54395008";
+
+    /// <summary>
+    /// Literal for code: NONEPatientReferralForMedicalConsultation
+    /// </summary>
+    public const string LiteralNONEPatientReferralForMedicalConsultation = "http://snomed.info/sct#54395008";
 
     /// <summary>
     /// Literal for code: PatientReferralForSpecializedInstitutionalServices
@@ -12776,9 +17146,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientReferralForSpecializedInstitutionalServices = "55974000";
 
     /// <summary>
+    /// Literal for code: NONEPatientReferralForSpecializedInstitutionalServices
+    /// </summary>
+    public const string LiteralNONEPatientReferralForSpecializedInstitutionalServices = "http://snomed.info/sct#55974000";
+
+    /// <summary>
     /// Literal for code: PatientReferralForPsychiatricAftercare
     /// </summary>
     public const string LiteralPatientReferralForPsychiatricAftercare = "61801003";
+
+    /// <summary>
+    /// Literal for code: NONEPatientReferralForPsychiatricAftercare
+    /// </summary>
+    public const string LiteralNONEPatientReferralForPsychiatricAftercare = "http://snomed.info/sct#61801003";
 
     /// <summary>
     /// Literal for code: PatientReferralForSpecialCareAgingProblem
@@ -12786,9 +17166,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientReferralForSpecialCareAgingProblem = "62435005";
 
     /// <summary>
+    /// Literal for code: NONEPatientReferralForSpecialCareAgingProblem
+    /// </summary>
+    public const string LiteralNONEPatientReferralForSpecialCareAgingProblem = "http://snomed.info/sct#62435005";
+
+    /// <summary>
     /// Literal for code: PatientReferralForRehabilitationPsychological
     /// </summary>
     public const string LiteralPatientReferralForRehabilitationPsychological = "69377005";
+
+    /// <summary>
+    /// Literal for code: NONEPatientReferralForRehabilitationPsychological
+    /// </summary>
+    public const string LiteralNONEPatientReferralForRehabilitationPsychological = "http://snomed.info/sct#69377005";
 
     /// <summary>
     /// Literal for code: ReferralToSurgicalTransplantServiceForRenalTransplantEvaluation
@@ -12796,9 +17186,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToSurgicalTransplantServiceForRenalTransplantEvaluation = "697982000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToSurgicalTransplantServiceForRenalTransplantEvaluation
+    /// </summary>
+    public const string LiteralNONEReferralToSurgicalTransplantServiceForRenalTransplantEvaluation = "http://snomed.info/sct#697982000";
+
+    /// <summary>
     /// Literal for code: ReferralToTropicalMedicineClinic
     /// </summary>
     public const string LiteralReferralToTropicalMedicineClinic = "698559005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToTropicalMedicineClinic
+    /// </summary>
+    public const string LiteralNONEReferralToTropicalMedicineClinic = "http://snomed.info/sct#698559005";
 
     /// <summary>
     /// Literal for code: ReferralToSleepApneaClinic
@@ -12806,9 +17206,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToSleepApneaClinic = "698560000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToSleepApneaClinic
+    /// </summary>
+    public const string LiteralNONEReferralToSleepApneaClinic = "http://snomed.info/sct#698560000";
+
+    /// <summary>
     /// Literal for code: ReferralToNurseCaseManager
     /// </summary>
     public const string LiteralReferralToNurseCaseManager = "698561001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToNurseCaseManager
+    /// </summary>
+    public const string LiteralNONEReferralToNurseCaseManager = "http://snomed.info/sct#698561001";
 
     /// <summary>
     /// Literal for code: ReferralToHypnotherapist
@@ -12816,9 +17226,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHypnotherapist = "698562008";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHypnotherapist
+    /// </summary>
+    public const string LiteralNONEReferralToHypnotherapist = "http://snomed.info/sct#698562008";
+
+    /// <summary>
     /// Literal for code: ReferralToBariatricSurgeon
     /// </summary>
     public const string LiteralReferralToBariatricSurgeon = "698563003";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToBariatricSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralToBariatricSurgeon = "http://snomed.info/sct#698563003";
 
     /// <summary>
     /// Literal for code: ReferralForObstetricUltrasoundScan
@@ -12826,9 +17246,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForObstetricUltrasoundScan = "698564009";
 
     /// <summary>
+    /// Literal for code: NONEReferralForObstetricUltrasoundScan
+    /// </summary>
+    public const string LiteralNONEReferralForObstetricUltrasoundScan = "http://snomed.info/sct#698564009";
+
+    /// <summary>
     /// Literal for code: ReferralByPodiatricSurgeon
     /// </summary>
     public const string LiteralReferralByPodiatricSurgeon = "698565005";
+
+    /// <summary>
+    /// Literal for code: NONEReferralByPodiatricSurgeon
+    /// </summary>
+    public const string LiteralNONEReferralByPodiatricSurgeon = "http://snomed.info/sct#698565005";
 
     /// <summary>
     /// Literal for code: PrivateReferralToBreastSurgeon
@@ -12836,9 +17266,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToBreastSurgeon = "698599008";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToBreastSurgeon
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToBreastSurgeon = "http://snomed.info/sct#698599008";
+
+    /// <summary>
     /// Literal for code: ReferralToNurseComplexCaseManager
     /// </summary>
     public const string LiteralReferralToNurseComplexCaseManager = "698943000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToNurseComplexCaseManager
+    /// </summary>
+    public const string LiteralNONEReferralToNurseComplexCaseManager = "http://snomed.info/sct#698943000";
 
     /// <summary>
     /// Literal for code: ReferralToPediatricGynecologyService
@@ -12846,9 +17286,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPediatricGynecologyService = "700125004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPediatricGynecologyService
+    /// </summary>
+    public const string LiteralNONEReferralToPediatricGynecologyService = "http://snomed.info/sct#700125004";
+
+    /// <summary>
     /// Literal for code: ReferralForProcedure
     /// </summary>
     public const string LiteralReferralForProcedure = "700274009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForProcedure
+    /// </summary>
+    public const string LiteralNONEReferralForProcedure = "http://snomed.info/sct#700274009";
 
     /// <summary>
     /// Literal for code: ReferralForAnesthesiaConsultation
@@ -12856,9 +17306,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForAnesthesiaConsultation = "700275005";
 
     /// <summary>
+    /// Literal for code: NONEReferralForAnesthesiaConsultation
+    /// </summary>
+    public const string LiteralNONEReferralForAnesthesiaConsultation = "http://snomed.info/sct#700275005";
+
+    /// <summary>
     /// Literal for code: ReferralForAnesthesiaManagement
     /// </summary>
     public const string LiteralReferralForAnesthesiaManagement = "700282009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForAnesthesiaManagement
+    /// </summary>
+    public const string LiteralNONEReferralForAnesthesiaManagement = "http://snomed.info/sct#700282009";
 
     /// <summary>
     /// Literal for code: ReferralToHematuriaClinic
@@ -12866,9 +17326,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHematuriaClinic = "700432001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHematuriaClinic
+    /// </summary>
+    public const string LiteralNONEReferralToHematuriaClinic = "http://snomed.info/sct#700432001";
+
+    /// <summary>
     /// Literal for code: ReferralToClinicalTrial
     /// </summary>
     public const string LiteralReferralToClinicalTrial = "702475000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToClinicalTrial
+    /// </summary>
+    public const string LiteralNONEReferralToClinicalTrial = "http://snomed.info/sct#702475000";
 
     /// <summary>
     /// Literal for code: ReferralForSpirometryReversibilityTest
@@ -12876,9 +17346,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForSpirometryReversibilityTest = "702540003";
 
     /// <summary>
+    /// Literal for code: NONEReferralForSpirometryReversibilityTest
+    /// </summary>
+    public const string LiteralNONEReferralForSpirometryReversibilityTest = "http://snomed.info/sct#702540003";
+
+    /// <summary>
     /// Literal for code: ReferralToVoluntarySupportServiceForCarers
     /// </summary>
     public const string LiteralReferralToVoluntarySupportServiceForCarers = "702982008";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToVoluntarySupportServiceForCarers
+    /// </summary>
+    public const string LiteralNONEReferralToVoluntarySupportServiceForCarers = "http://snomed.info/sct#702982008";
 
     /// <summary>
     /// Literal for code: ReferralToMaternityService
@@ -12886,9 +17366,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMaternityService = "703155005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMaternityService
+    /// </summary>
+    public const string LiteralNONEReferralToMaternityService = "http://snomed.info/sct#703155005";
+
+    /// <summary>
     /// Literal for code: ReferralForCryopreservation
     /// </summary>
     public const string LiteralReferralForCryopreservation = "703939004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForCryopreservation
+    /// </summary>
+    public const string LiteralNONEReferralForCryopreservation = "http://snomed.info/sct#703939004";
 
     /// <summary>
     /// Literal for code: ReferralForDecongestiveLymphaticTherapy
@@ -12896,9 +17386,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralForDecongestiveLymphaticTherapy = "703944006";
 
     /// <summary>
+    /// Literal for code: NONEReferralForDecongestiveLymphaticTherapy
+    /// </summary>
+    public const string LiteralNONEReferralForDecongestiveLymphaticTherapy = "http://snomed.info/sct#703944006";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToColorectalSurgeon
     /// </summary>
     public const string LiteralPrivateReferralToColorectalSurgeon = "703974003";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToColorectalSurgeon
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToColorectalSurgeon = "http://snomed.info/sct#703974003";
 
     /// <summary>
     /// Literal for code: PrivateReferralToPodiatrist
@@ -12906,9 +17406,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivateReferralToPodiatrist = "703975002";
 
     /// <summary>
+    /// Literal for code: NONEPrivateReferralToPodiatrist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToPodiatrist = "http://snomed.info/sct#703975002";
+
+    /// <summary>
     /// Literal for code: PrivateReferralToRadiologist
     /// </summary>
     public const string LiteralPrivateReferralToRadiologist = "703976001";
+
+    /// <summary>
+    /// Literal for code: NONEPrivateReferralToRadiologist
+    /// </summary>
+    public const string LiteralNONEPrivateReferralToRadiologist = "http://snomed.info/sct#703976001";
 
     /// <summary>
     /// Literal for code: ReferralToPrimaryCareService
@@ -12916,9 +17426,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToPrimaryCareService = "703978000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToPrimaryCareService
+    /// </summary>
+    public const string LiteralNONEReferralToPrimaryCareService = "http://snomed.info/sct#703978000";
+
+    /// <summary>
     /// Literal for code: ReferralForOverseasMedicalTreatment
     /// </summary>
     public const string LiteralReferralForOverseasMedicalTreatment = "704031007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForOverseasMedicalTreatment
+    /// </summary>
+    public const string LiteralNONEReferralForOverseasMedicalTreatment = "http://snomed.info/sct#704031007";
 
     /// <summary>
     /// Literal for code: ReferralToErectileDysfunctionClinic
@@ -12926,9 +17446,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToErectileDysfunctionClinic = "704048004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToErectileDysfunctionClinic
+    /// </summary>
+    public const string LiteralNONEReferralToErectileDysfunctionClinic = "http://snomed.info/sct#704048004";
+
+    /// <summary>
     /// Literal for code: ReferralToCardiacRehabilitationProgram
     /// </summary>
     public const string LiteralReferralToCardiacRehabilitationProgram = "704050007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCardiacRehabilitationProgram
+    /// </summary>
+    public const string LiteralNONEReferralToCardiacRehabilitationProgram = "http://snomed.info/sct#704050007";
 
     /// <summary>
     /// Literal for code: ReferralToHeartFailureExerciseProgram
@@ -12936,9 +17466,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToHeartFailureExerciseProgram = "704095000";
 
     /// <summary>
+    /// Literal for code: NONEReferralToHeartFailureExerciseProgram
+    /// </summary>
+    public const string LiteralNONEReferralToHeartFailureExerciseProgram = "http://snomed.info/sct#704095000";
+
+    /// <summary>
     /// Literal for code: ReferralForManualLymphaticDrainage
     /// </summary>
     public const string LiteralReferralForManualLymphaticDrainage = "704124006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralForManualLymphaticDrainage
+    /// </summary>
+    public const string LiteralNONEReferralForManualLymphaticDrainage = "http://snomed.info/sct#704124006";
 
     /// <summary>
     /// Literal for code: ReferralToTransientIschemicAttackClinic
@@ -12946,9 +17486,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToTransientIschemicAttackClinic = "705146005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToTransientIschemicAttackClinic
+    /// </summary>
+    public const string LiteralNONEReferralToTransientIschemicAttackClinic = "http://snomed.info/sct#705146005";
+
+    /// <summary>
     /// Literal for code: ReferralToPhysicalTrainingInstructor
     /// </summary>
     public const string LiteralReferralToPhysicalTrainingInstructor = "710005006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToPhysicalTrainingInstructor
+    /// </summary>
+    public const string LiteralNONEReferralToPhysicalTrainingInstructor = "http://snomed.info/sct#710005006";
 
     /// <summary>
     /// Literal for code: ReferralToSelfHelpService
@@ -12956,9 +17506,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToSelfHelpService = "710908005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToSelfHelpService
+    /// </summary>
+    public const string LiteralNONEReferralToSelfHelpService = "http://snomed.info/sct#710908005";
+
+    /// <summary>
     /// Literal for code: ReferralToReligiousService
     /// </summary>
     public const string LiteralReferralToReligiousService = "710909002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToReligiousService
+    /// </summary>
+    public const string LiteralNONEReferralToReligiousService = "http://snomed.info/sct#710909002";
 
     /// <summary>
     /// Literal for code: ReferralToLegalService
@@ -12966,9 +17526,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToLegalService = "710910007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToLegalService
+    /// </summary>
+    public const string LiteralNONEReferralToLegalService = "http://snomed.info/sct#710910007";
+
+    /// <summary>
     /// Literal for code: ReferralToHousingService
     /// </summary>
     public const string LiteralReferralToHousingService = "710911006";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToHousingService
+    /// </summary>
+    public const string LiteralNONEReferralToHousingService = "http://snomed.info/sct#710911006";
 
     /// <summary>
     /// Literal for code: ReferralToFuneralService
@@ -12976,9 +17546,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToFuneralService = "710912004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToFuneralService
+    /// </summary>
+    public const string LiteralNONEReferralToFuneralService = "http://snomed.info/sct#710912004";
+
+    /// <summary>
     /// Literal for code: ReferralToFinancialService
     /// </summary>
     public const string LiteralReferralToFinancialService = "710913009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToFinancialService
+    /// </summary>
+    public const string LiteralNONEReferralToFinancialService = "http://snomed.info/sct#710913009";
 
     /// <summary>
     /// Literal for code: ReferralToFamilyTherapy
@@ -12986,9 +17566,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToFamilyTherapy = "710914003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToFamilyTherapy
+    /// </summary>
+    public const string LiteralNONEReferralToFamilyTherapy = "http://snomed.info/sct#710914003";
+
+    /// <summary>
     /// Literal for code: ReferralToCommunityService
     /// </summary>
     public const string LiteralReferralToCommunityService = "710915002";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCommunityService
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityService = "http://snomed.info/sct#710915002";
 
     /// <summary>
     /// Literal for code: ReferralToBreastfeedingEducationClassDuringPrenatalPeriod
@@ -12996,9 +17586,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToBreastfeedingEducationClassDuringPrenatalPeriod = "710916001";
 
     /// <summary>
+    /// Literal for code: NONEReferralToBreastfeedingEducationClassDuringPrenatalPeriod
+    /// </summary>
+    public const string LiteralNONEReferralToBreastfeedingEducationClassDuringPrenatalPeriod = "http://snomed.info/sct#710916001";
+
+    /// <summary>
     /// Literal for code: ReferralToSupportGroup
     /// </summary>
     public const string LiteralReferralToSupportGroup = "711281004";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToSupportGroup
+    /// </summary>
+    public const string LiteralNONEReferralToSupportGroup = "http://snomed.info/sct#711281004";
 
     /// <summary>
     /// Literal for code: ReferralToCommunityMealsService
@@ -13006,9 +17606,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCommunityMealsService = "713109004";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCommunityMealsService
+    /// </summary>
+    public const string LiteralNONEReferralToCommunityMealsService = "http://snomed.info/sct#713109004";
+
+    /// <summary>
     /// Literal for code: ReferralToHealthAideService
     /// </summary>
     public const string LiteralReferralToHealthAideService = "713146000";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToHealthAideService
+    /// </summary>
+    public const string LiteralNONEReferralToHealthAideService = "http://snomed.info/sct#713146000";
 
     /// <summary>
     /// Literal for code: ReferralToMedicalEmergencyTeam
@@ -13016,9 +17626,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToMedicalEmergencyTeam = "713400007";
 
     /// <summary>
+    /// Literal for code: NONEReferralToMedicalEmergencyTeam
+    /// </summary>
+    public const string LiteralNONEReferralToMedicalEmergencyTeam = "http://snomed.info/sct#713400007";
+
+    /// <summary>
     /// Literal for code: ReferralToCardiacRapidResponseTeam
     /// </summary>
     public const string LiteralReferralToCardiacRapidResponseTeam = "713442009";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToCardiacRapidResponseTeam
+    /// </summary>
+    public const string LiteralNONEReferralToCardiacRapidResponseTeam = "http://snomed.info/sct#713442009";
 
     /// <summary>
     /// Literal for code: ReferralToDiabetesService
@@ -13026,9 +17646,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToDiabetesService = "715159005";
 
     /// <summary>
+    /// Literal for code: NONEReferralToDiabetesService
+    /// </summary>
+    public const string LiteralNONEReferralToDiabetesService = "http://snomed.info/sct#715159005";
+
+    /// <summary>
     /// Literal for code: ReferralToBurnsService
     /// </summary>
     public const string LiteralReferralToBurnsService = "715161001";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToBurnsService
+    /// </summary>
+    public const string LiteralNONEReferralToBurnsService = "http://snomed.info/sct#715161001";
 
     /// <summary>
     /// Literal for code: ReferralToCriticalCareService
@@ -13036,9 +17666,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToCriticalCareService = "715189003";
 
     /// <summary>
+    /// Literal for code: NONEReferralToCriticalCareService
+    /// </summary>
+    public const string LiteralNONEReferralToCriticalCareService = "http://snomed.info/sct#715189003";
+
+    /// <summary>
     /// Literal for code: ReferralToSportAndExerciseMedicineService
     /// </summary>
     public const string LiteralReferralToSportAndExerciseMedicineService = "715962007";
+
+    /// <summary>
+    /// Literal for code: NONEReferralToSportAndExerciseMedicineService
+    /// </summary>
+    public const string LiteralNONEReferralToSportAndExerciseMedicineService = "http://snomed.info/sct#715962007";
 
     /// <summary>
     /// Literal for code: ReferralToNeurologicalPhysiotherapist
@@ -13046,9 +17686,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralToNeurologicalPhysiotherapist = "716634006";
 
     /// <summary>
+    /// Literal for code: NONEReferralToNeurologicalPhysiotherapist
+    /// </summary>
+    public const string LiteralNONEReferralToNeurologicalPhysiotherapist = "http://snomed.info/sct#716634006";
+
+    /// <summary>
     /// Literal for code: PatientReferralForRehabilitationPhysical
     /// </summary>
     public const string LiteralPatientReferralForRehabilitationPhysical = "78429003";
+
+    /// <summary>
+    /// Literal for code: NONEPatientReferralForRehabilitationPhysical
+    /// </summary>
+    public const string LiteralNONEPatientReferralForRehabilitationPhysical = "http://snomed.info/sct#78429003";
 
     /// <summary>
     /// Literal for code: PatientReferralForPsychotherapy
@@ -13056,8 +17706,1888 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientReferralForPsychotherapy = "81294000";
 
     /// <summary>
+    /// Literal for code: NONEPatientReferralForPsychotherapy
+    /// </summary>
+    public const string LiteralNONEPatientReferralForPsychotherapy = "http://snomed.info/sct#81294000";
+
+    /// <summary>
     /// Literal for code: PatientReferralForFamilyPlanning
     /// </summary>
     public const string LiteralPatientReferralForFamilyPlanning = "86395003";
+
+    /// <summary>
+    /// Literal for code: NONEPatientReferralForFamilyPlanning
+    /// </summary>
+    public const string LiteralNONEPatientReferralForFamilyPlanning = "http://snomed.info/sct#86395003";
+
+    /// <summary>
+    /// Dictionary for looking up ReferralType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "103696004", PatientReferralToSpecialist }, 
+      { "http://snomed.info/sct#103696004", PatientReferralToSpecialist }, 
+      { "103697008", PatientReferralForDentalCare }, 
+      { "http://snomed.info/sct#103697008", PatientReferralForDentalCare }, 
+      { "103698003", PatientReferralToNonPhysicianProvider }, 
+      { "http://snomed.info/sct#103698003", PatientReferralToNonPhysicianProvider }, 
+      { "103699006", PatientReferralToDietitian }, 
+      { "http://snomed.info/sct#103699006", PatientReferralToDietitian }, 
+      { "103700007", PatientReferralToMassageTherapist }, 
+      { "http://snomed.info/sct#103700007", PatientReferralToMassageTherapist }, 
+      { "103701006", PatientReferralToHomeopath }, 
+      { "http://snomed.info/sct#103701006", PatientReferralToHomeopath }, 
+      { "103702004", PatientReferralToNaturopath }, 
+      { "http://snomed.info/sct#103702004", PatientReferralToNaturopath }, 
+      { "103703009", PatientReferralToAcupuncturist }, 
+      { "http://snomed.info/sct#103703009", PatientReferralToAcupuncturist }, 
+      { "103704003", PatientReferralToSexTherapist }, 
+      { "http://snomed.info/sct#103704003", PatientReferralToSexTherapist }, 
+      { "105406002", ReferralOfPatientToCertifiedPastoralCaregiver }, 
+      { "http://snomed.info/sct#105406002", ReferralOfPatientToCertifiedPastoralCaregiver }, 
+      { "105407006", ReferralOfPatientToParishChaplainForFollowUpCare }, 
+      { "http://snomed.info/sct#105407006", ReferralOfPatientToParishChaplainForFollowUpCare }, 
+      { "134403003", UrgentReferral }, 
+      { "http://snomed.info/sct#134403003", UrgentReferral }, 
+      { "134440006", ReferralToHeartFailureClinic }, 
+      { "http://snomed.info/sct#134440006", ReferralToHeartFailureClinic }, 
+      { "170223003", ChildReferForSurveillance }, 
+      { "http://snomed.info/sct#170223003", ChildReferForSurveillance }, 
+      { "170224009", ReferralOfChildToMedicalOfficer }, 
+      { "http://snomed.info/sct#170224009", ReferralOfChildToMedicalOfficer }, 
+      { "170225005", ReferralOfChildToSchoolMedicalOfficer }, 
+      { "http://snomed.info/sct#170225005", ReferralOfChildToSchoolMedicalOfficer }, 
+      { "170229004", ReferralOfChildToSchoolNurse }, 
+      { "http://snomed.info/sct#170229004", ReferralOfChildToSchoolNurse }, 
+      { "170230009", ReferralOfChildToChildGuidance }, 
+      { "http://snomed.info/sct#170230009", ReferralOfChildToChildGuidance }, 
+      { "17294003", PatientReferralForSpecialEducation }, 
+      { "http://snomed.info/sct#17294003", PatientReferralForSpecialEducation }, 
+      { "183444007", ReferralForFurtherCare }, 
+      { "http://snomed.info/sct#183444007", ReferralForFurtherCare }, 
+      { "183515008", ReferralToPhysician }, 
+      { "http://snomed.info/sct#183515008", ReferralToPhysician }, 
+      { "183516009", ReferralToGeneralMedicalService }, 
+      { "http://snomed.info/sct#183516009", ReferralToGeneralMedicalService }, 
+      { "183517000", ReferralToPediatrician }, 
+      { "http://snomed.info/sct#183517000", ReferralToPediatrician }, 
+      { "183518005", DermatologicalReferral }, 
+      { "http://snomed.info/sct#183518005", DermatologicalReferral }, 
+      { "183519002", ReferralToCardiologyService }, 
+      { "http://snomed.info/sct#183519002", ReferralToCardiologyService }, 
+      { "183520008", ImmunologicalReferral }, 
+      { "http://snomed.info/sct#183520008", ImmunologicalReferral }, 
+      { "183521007", ReferralToNeurologyService }, 
+      { "http://snomed.info/sct#183521007", ReferralToNeurologyService }, 
+      { "183522000", ReferralToGeriatricMedicineService }, 
+      { "http://snomed.info/sct#183522000", ReferralToGeriatricMedicineService }, 
+      { "183523005", ReferralToGastroenterologyService }, 
+      { "http://snomed.info/sct#183523005", ReferralToGastroenterologyService }, 
+      { "183524004", PsychiatricReferral }, 
+      { "http://snomed.info/sct#183524004", PsychiatricReferral }, 
+      { "183528001", ReferralToPsychiatristForTheElderlyMentallyIll }, 
+      { "http://snomed.info/sct#183528001", ReferralToPsychiatristForTheElderlyMentallyIll }, 
+      { "183529009", ReferralToOncologist }, 
+      { "http://snomed.info/sct#183529009", ReferralToOncologist }, 
+      { "183530004", ReferralToDiabetologist }, 
+      { "http://snomed.info/sct#183530004", ReferralToDiabetologist }, 
+      { "183532007", ReferralToClinicalPharmacologist }, 
+      { "http://snomed.info/sct#183532007", ReferralToClinicalPharmacologist }, 
+      { "183541002", ReferralToSurgeon }, 
+      { "http://snomed.info/sct#183541002", ReferralToSurgeon }, 
+      { "183542009", ReferralToGeneralSurgicalService }, 
+      { "http://snomed.info/sct#183542009", ReferralToGeneralSurgicalService }, 
+      { "183543004", OphthalmologicalReferral }, 
+      { "http://snomed.info/sct#183543004", OphthalmologicalReferral }, 
+      { "183544005", ReferralToEarNoseAndThroatService }, 
+      { "http://snomed.info/sct#183544005", ReferralToEarNoseAndThroatService }, 
+      { "183545006", OrthopedicReferral }, 
+      { "http://snomed.info/sct#183545006", OrthopedicReferral }, 
+      { "183546007", NeurosurgicalReferral }, 
+      { "http://snomed.info/sct#183546007", NeurosurgicalReferral }, 
+      { "183547003", PediatricSurgicalReferral }, 
+      { "http://snomed.info/sct#183547003", PediatricSurgicalReferral }, 
+      { "183548008", ReferralToObstetricsService }, 
+      { "http://snomed.info/sct#183548008", ReferralToObstetricsService }, 
+      { "183549000", GynecologicalReferral }, 
+      { "http://snomed.info/sct#183549000", GynecologicalReferral }, 
+      { "183555005", BurnsReferral }, 
+      { "http://snomed.info/sct#183555005", BurnsReferral }, 
+      { "183557002", ReferralToCardiothoracicSurgeon }, 
+      { "http://snomed.info/sct#183557002", ReferralToCardiothoracicSurgeon }, 
+      { "183561008", ReferralToGP }, 
+      { "http://snomed.info/sct#183561008", ReferralToGP }, 
+      { "183563006", ReferToHouseOfficer }, 
+      { "http://snomed.info/sct#183563006", ReferToHouseOfficer }, 
+      { "183564000", ReferToHospitalRegistrar }, 
+      { "http://snomed.info/sct#183564000", ReferToHospitalRegistrar }, 
+      { "183565004", ReferToChildMedicalOfficer }, 
+      { "http://snomed.info/sct#183565004", ReferToChildMedicalOfficer }, 
+      { "183567007", ReferralToHematologist }, 
+      { "http://snomed.info/sct#183567007", ReferralToHematologist }, 
+      { "183568002", ReferToPainClinic }, 
+      { "http://snomed.info/sct#183568002", ReferToPainClinic }, 
+      { "183569005", ReferToTerminalCareConsult }, 
+      { "http://snomed.info/sct#183569005", ReferToTerminalCareConsult }, 
+      { "183583007", ReferToMentalHealthWorker }, 
+      { "http://snomed.info/sct#183583007", ReferToMentalHealthWorker }, 
+      { "183584001", ReferralToCommunityPsychiatricNurse }, 
+      { "http://snomed.info/sct#183584001", ReferralToCommunityPsychiatricNurse }, 
+      { "183591003", ReferToPartner }, 
+      { "http://snomed.info/sct#183591003", ReferToPartner }, 
+      { "183595007", ReferForTerminalCare }, 
+      { "http://snomed.info/sct#183595007", ReferForTerminalCare }, 
+      { "183597004", ReferForColposcopy }, 
+      { "http://snomed.info/sct#183597004", ReferForColposcopy }, 
+      { "183598009", ReferToRadiologyDepartment }, 
+      { "http://snomed.info/sct#183598009", ReferToRadiologyDepartment }, 
+      { "183606009", ReferralForCounselingForTerminationOfPregnancy }, 
+      { "http://snomed.info/sct#183606009", ReferralForCounselingForTerminationOfPregnancy }, 
+      { "183608005", ReferToAcupuncture }, 
+      { "http://snomed.info/sct#183608005", ReferToAcupuncture }, 
+      { "183612004", ReferToOccupationalHealthDepartment }, 
+      { "http://snomed.info/sct#183612004", ReferToOccupationalHealthDepartment }, 
+      { "183659006", ReferToHospitalCasualty }, 
+      { "http://snomed.info/sct#183659006", ReferToHospitalCasualty }, 
+      { "183660001", ReferToAAndEDepartment }, 
+      { "http://snomed.info/sct#183660001", ReferToAAndEDepartment }, 
+      { "183661002", ReferToHospitalEyeCasualty }, 
+      { "http://snomed.info/sct#183661002", ReferToHospitalEyeCasualty }, 
+      { "183662009", ReferToHospitalPediatricsCasualty }, 
+      { "http://snomed.info/sct#183662009", ReferToHospitalPediatricsCasualty }, 
+      { "183664005", ReferToHospitalOPD }, 
+      { "http://snomed.info/sct#183664005", ReferToHospitalOPD }, 
+      { "183683003", ReferToDomiciliaryPhysiotherapy }, 
+      { "http://snomed.info/sct#183683003", ReferToDomiciliaryPhysiotherapy }, 
+      { "183684009", ReferralToMacmillanNurse }, 
+      { "http://snomed.info/sct#183684009", ReferralToMacmillanNurse }, 
+      { "183686006", ReferNoDirectConsultation }, 
+      { "http://snomed.info/sct#183686006", ReferNoDirectConsultation }, 
+      { "183687002", SelfReferralToHospital }, 
+      { "http://snomed.info/sct#183687002", SelfReferralToHospital }, 
+      { "183688007", GeneralMedicalSelfReferral }, 
+      { "http://snomed.info/sct#183688007", GeneralMedicalSelfReferral }, 
+      { "183689004", GeneralSurgicalSelfReferral }, 
+      { "http://snomed.info/sct#183689004", GeneralSurgicalSelfReferral }, 
+      { "183690008", PsychiatricSelfReferral }, 
+      { "http://snomed.info/sct#183690008", PsychiatricSelfReferral }, 
+      { "183691007", GeriatricSelfReferral }, 
+      { "http://snomed.info/sct#183691007", GeriatricSelfReferral }, 
+      { "183692000", PediatricSelfReferral }, 
+      { "http://snomed.info/sct#183692000", PediatricSelfReferral }, 
+      { "183693005", GynecologicalSelfReferral }, 
+      { "http://snomed.info/sct#183693005", GynecologicalSelfReferral }, 
+      { "183695003", ObstetricSelfReferral }, 
+      { "http://snomed.info/sct#183695003", ObstetricSelfReferral }, 
+      { "183696002", OrthopedicSelfReferral }, 
+      { "http://snomed.info/sct#183696002", OrthopedicSelfReferral }, 
+      { "183697006", ENTSelfReferral }, 
+      { "http://snomed.info/sct#183697006", ENTSelfReferral }, 
+      { "183699009", OphthalmologySelfReferral }, 
+      { "http://snomed.info/sct#183699009", OphthalmologySelfReferral }, 
+      { "183700005", RheumatologySelfReferral }, 
+      { "http://snomed.info/sct#183700005", RheumatologySelfReferral }, 
+      { "183701009", DermatologySelfReferral }, 
+      { "http://snomed.info/sct#183701009", DermatologySelfReferral }, 
+      { "183702002", NeurologySelfReferral }, 
+      { "http://snomed.info/sct#183702002", NeurologySelfReferral }, 
+      { "183703007", UrologySelfReferral }, 
+      { "http://snomed.info/sct#183703007", UrologySelfReferral }, 
+      { "183704001", RadiotherapySelfReferral }, 
+      { "http://snomed.info/sct#183704001", RadiotherapySelfReferral }, 
+      { "183705000", HematologySelfReferral }, 
+      { "http://snomed.info/sct#183705000", HematologySelfReferral }, 
+      { "183706004", PlasticSurgerySelfReferral }, 
+      { "http://snomed.info/sct#183706004", PlasticSurgerySelfReferral }, 
+      { "183819005", ReferralForHematologyTest }, 
+      { "http://snomed.info/sct#183819005", ReferralForHematologyTest }, 
+      { "183820004", ReferForMicrobiologicalTest }, 
+      { "http://snomed.info/sct#183820004", ReferForMicrobiologicalTest }, 
+      { "183821000", ReferForBiochemicalTest }, 
+      { "http://snomed.info/sct#183821000", ReferForBiochemicalTest }, 
+      { "183822007", ReferForRadioimmuneAssay }, 
+      { "http://snomed.info/sct#183822007", ReferForRadioimmuneAssay }, 
+      { "183823002", ReferForThyroidTest }, 
+      { "http://snomed.info/sct#183823002", ReferForThyroidTest }, 
+      { "183824008", ReferForCytologicalTest }, 
+      { "http://snomed.info/sct#183824008", ReferForCytologicalTest }, 
+      { "183825009", ReferForHistology }, 
+      { "http://snomed.info/sct#183825009", ReferForHistology }, 
+      { "183826005", ReferForSerologicalTesting }, 
+      { "http://snomed.info/sct#183826005", ReferForSerologicalTesting }, 
+      { "183827001", ReferForImmunologicalTest }, 
+      { "http://snomed.info/sct#183827001", ReferForImmunologicalTest }, 
+      { "183829003", ReferForImaging }, 
+      { "http://snomed.info/sct#183829003", ReferForImaging }, 
+      { "183830008", ReferForXRay }, 
+      { "http://snomed.info/sct#183830008", ReferForXRay }, 
+      { "183831007", ReferForUltrasoundInvestigation }, 
+      { "http://snomed.info/sct#183831007", ReferForUltrasoundInvestigation }, 
+      { "183832000", ReferForNMRScanning }, 
+      { "http://snomed.info/sct#183832000", ReferForNMRScanning }, 
+      { "183833005", ReferForCATScanning }, 
+      { "http://snomed.info/sct#183833005", ReferForCATScanning }, 
+      { "183834004", ReferForMedicalPhotography }, 
+      { "http://snomed.info/sct#183834004", ReferForMedicalPhotography }, 
+      { "183835003", ReferForAngiogram }, 
+      { "http://snomed.info/sct#183835003", ReferForAngiogram }, 
+      { "183838001", ReferForECGRecording }, 
+      { "http://snomed.info/sct#183838001", ReferForECGRecording }, 
+      { "183839009", ReferForAudiometry }, 
+      { "http://snomed.info/sct#183839009", ReferForAudiometry }, 
+      { "183840006", ReferForNerveConductStudy }, 
+      { "http://snomed.info/sct#183840006", ReferForNerveConductStudy }, 
+      { "183841005", ReferForLungFunctionTest }, 
+      { "http://snomed.info/sct#183841005", ReferForLungFunctionTest }, 
+      { "183842003", ReferForEEG }, 
+      { "http://snomed.info/sct#183842003", ReferForEEG }, 
+      { "183843008", ReferToUrodynamicStudies }, 
+      { "http://snomed.info/sct#183843008", ReferToUrodynamicStudies }, 
+      { "183844002", ReferForVascularStudies }, 
+      { "http://snomed.info/sct#183844002", ReferForVascularStudies }, 
+      { "183851006", ReferralToClinic }, 
+      { "http://snomed.info/sct#183851006", ReferralToClinic }, 
+      { "183852004", ReferralToLipidClinic }, 
+      { "http://snomed.info/sct#183852004", ReferralToLipidClinic }, 
+      { "183853009", ReferToHearingAidClinic }, 
+      { "http://snomed.info/sct#183853009", ReferToHearingAidClinic }, 
+      { "183854003", ReferralToAudiologyClinic }, 
+      { "http://snomed.info/sct#183854003", ReferralToAudiologyClinic }, 
+      { "183855002", ReferralToOrthodonticClinic }, 
+      { "http://snomed.info/sct#183855002", ReferralToOrthodonticClinic }, 
+      { "183856001", ReferralToHypertensionClinic }, 
+      { "http://snomed.info/sct#183856001", ReferralToHypertensionClinic }, 
+      { "183857005", ReferralToDevelopmentalClinic }, 
+      { "http://snomed.info/sct#183857005", ReferralToDevelopmentalClinic }, 
+      { "183858000", ReferralToVaricoseVeinClinic }, 
+      { "http://snomed.info/sct#183858000", ReferralToVaricoseVeinClinic }, 
+      { "183859008", ReferralToMammographyClinic }, 
+      { "http://snomed.info/sct#183859008", ReferralToMammographyClinic }, 
+      { "183860003", ReferralToAntenatalClinic }, 
+      { "http://snomed.info/sct#183860003", ReferralToAntenatalClinic }, 
+      { "183861004", ReferralToPostnatalClinic }, 
+      { "http://snomed.info/sct#183861004", ReferralToPostnatalClinic }, 
+      { "183862006", ReferralToFertilityClinic }, 
+      { "http://snomed.info/sct#183862006", ReferralToFertilityClinic }, 
+      { "183863001", ReferralToWellWomanClinic }, 
+      { "http://snomed.info/sct#183863001", ReferralToWellWomanClinic }, 
+      { "183864007", ReferralToFamilyPlanningClinic }, 
+      { "http://snomed.info/sct#183864007", ReferralToFamilyPlanningClinic }, 
+      { "183866009", ReferralToEmergencyClinic }, 
+      { "http://snomed.info/sct#183866009", ReferralToEmergencyClinic }, 
+      { "183867000", ReferredToAcuteChestPainClinic }, 
+      { "http://snomed.info/sct#183867000", ReferredToAcuteChestPainClinic }, 
+      { "183868005", ReferralToBackPainClinic }, 
+      { "http://snomed.info/sct#183868005", ReferralToBackPainClinic }, 
+      { "183874005", ReferralForBronchoscopy }, 
+      { "http://snomed.info/sct#183874005", ReferralForBronchoscopy }, 
+      { "183875006", ReferralForColonoscopy }, 
+      { "http://snomed.info/sct#183875006", ReferralForColonoscopy }, 
+      { "183876007", ReferralForSigmoidoscopy }, 
+      { "http://snomed.info/sct#183876007", ReferralForSigmoidoscopy }, 
+      { "183877003", PrivateReferral }, 
+      { "http://snomed.info/sct#183877003", PrivateReferral }, 
+      { "183878008", PrivateReferralToGeneralSurgeon }, 
+      { "http://snomed.info/sct#183878008", PrivateReferralToGeneralSurgeon }, 
+      { "183879000", PrivateReferralToOphthalmologist }, 
+      { "http://snomed.info/sct#183879000", PrivateReferralToOphthalmologist }, 
+      { "183880002", PrivateReferralToENTSurgeon }, 
+      { "http://snomed.info/sct#183880002", PrivateReferralToENTSurgeon }, 
+      { "183881003", PrivateReferralToOrthopedicSurgeon }, 
+      { "http://snomed.info/sct#183881003", PrivateReferralToOrthopedicSurgeon }, 
+      { "183882005", PrivateReferralToNeurosurgeon }, 
+      { "http://snomed.info/sct#183882005", PrivateReferralToNeurosurgeon }, 
+      { "183884006", PrivateReferralToPediatricSurgeon }, 
+      { "http://snomed.info/sct#183884006", PrivateReferralToPediatricSurgeon }, 
+      { "183885007", PrivateReferralToObstetrician }, 
+      { "http://snomed.info/sct#183885007", PrivateReferralToObstetrician }, 
+      { "183886008", PrivateReferralToGynecologist }, 
+      { "http://snomed.info/sct#183886008", PrivateReferralToGynecologist }, 
+      { "183887004", PrivateReferralToPlasticSurgeon }, 
+      { "http://snomed.info/sct#183887004", PrivateReferralToPlasticSurgeon }, 
+      { "183888009", PrivateReferralToOralSurgeon }, 
+      { "http://snomed.info/sct#183888009", PrivateReferralToOralSurgeon }, 
+      { "183889001", PrivateReferralToUrologist }, 
+      { "http://snomed.info/sct#183889001", PrivateReferralToUrologist }, 
+      { "183890005", PrivateReferralToThoracicSurgeon }, 
+      { "http://snomed.info/sct#183890005", PrivateReferralToThoracicSurgeon }, 
+      { "183891009", PrivateReferralToVascularSurgeon }, 
+      { "http://snomed.info/sct#183891009", PrivateReferralToVascularSurgeon }, 
+      { "183892002", PrivateReferralToMaxillofacialSurgeon }, 
+      { "http://snomed.info/sct#183892002", PrivateReferralToMaxillofacialSurgeon }, 
+      { "183893007", PrivateReferralCardiothoracicSurgeon }, 
+      { "http://snomed.info/sct#183893007", PrivateReferralCardiothoracicSurgeon }, 
+      { "183894001", PrivateReferralToPhysician }, 
+      { "http://snomed.info/sct#183894001", PrivateReferralToPhysician }, 
+      { "183895000", PrivateReferralToGeneralPhysician }, 
+      { "http://snomed.info/sct#183895000", PrivateReferralToGeneralPhysician }, 
+      { "183896004", PrivateReferralToPediatrician }, 
+      { "http://snomed.info/sct#183896004", PrivateReferralToPediatrician }, 
+      { "183897008", PrivateReferralToDermatologist }, 
+      { "http://snomed.info/sct#183897008", PrivateReferralToDermatologist }, 
+      { "183899006", PrivateReferralToCardiologist }, 
+      { "http://snomed.info/sct#183899006", PrivateReferralToCardiologist }, 
+      { "183900001", PrivateReferralToImmunologist }, 
+      { "http://snomed.info/sct#183900001", PrivateReferralToImmunologist }, 
+      { "183901002", PrivateReferralToNeurologist }, 
+      { "http://snomed.info/sct#183901002", PrivateReferralToNeurologist }, 
+      { "183902009", PrivateReferralToGeriatrician }, 
+      { "http://snomed.info/sct#183902009", PrivateReferralToGeriatrician }, 
+      { "183903004", PrivateReferralToGastroenterologist }, 
+      { "http://snomed.info/sct#183903004", PrivateReferralToGastroenterologist }, 
+      { "183904005", PrivateReferralToPsychiatrist }, 
+      { "http://snomed.info/sct#183904005", PrivateReferralToPsychiatrist }, 
+      { "183905006", PrivateReferralToVenereologist }, 
+      { "http://snomed.info/sct#183905006", PrivateReferralToVenereologist }, 
+      { "183906007", PrivateReferralToRheumatologist }, 
+      { "http://snomed.info/sct#183906007", PrivateReferralToRheumatologist }, 
+      { "183907003", PrivateReferralToChestPhysician }, 
+      { "http://snomed.info/sct#183907003", PrivateReferralToChestPhysician }, 
+      { "183908008", PrivateReferralToPsychogeriatrician }, 
+      { "http://snomed.info/sct#183908008", PrivateReferralToPsychogeriatrician }, 
+      { "183909000", PrivateReferralToOncologist }, 
+      { "http://snomed.info/sct#183909000", PrivateReferralToOncologist }, 
+      { "183910005", PrivateReferralToDiabetologist }, 
+      { "http://snomed.info/sct#183910005", PrivateReferralToDiabetologist }, 
+      { "183911009", PrivateReferralToRadiotherapist }, 
+      { "http://snomed.info/sct#183911009", PrivateReferralToRadiotherapist }, 
+      { "183912002", PrivateReferralToClinicalPharmacologist }, 
+      { "http://snomed.info/sct#183912002", PrivateReferralToClinicalPharmacologist }, 
+      { "183913007", PrivateReferralToGeneticist }, 
+      { "http://snomed.info/sct#183913007", PrivateReferralToGeneticist }, 
+      { "183914001", PrivateReferralToAnesthetist }, 
+      { "http://snomed.info/sct#183914001", PrivateReferralToAnesthetist }, 
+      { "183915000", PrivateReferralToEndocrinologist }, 
+      { "http://snomed.info/sct#183915000", PrivateReferralToEndocrinologist }, 
+      { "183916004", PrivateReferralToNephrologist }, 
+      { "http://snomed.info/sct#183916004", PrivateReferralToNephrologist }, 
+      { "183917008", ReferralByNurse }, 
+      { "http://snomed.info/sct#183917008", ReferralByNurse }, 
+      { "18781004", PatientReferralForVocationalRehabilitation }, 
+      { "http://snomed.info/sct#18781004", PatientReferralForVocationalRehabilitation }, 
+      { "266747000", ReferralToPrivateDoctor }, 
+      { "http://snomed.info/sct#266747000", ReferralToPrivateDoctor }, 
+      { "266749002", ReferralToSurgicalFitter }, 
+      { "http://snomed.info/sct#266749002", ReferralToSurgicalFitter }, 
+      { "266752005", TraumaSelfReferral }, 
+      { "http://snomed.info/sct#266752005", TraumaSelfReferral }, 
+      { "266753000", ReferralForLaboratoryTests }, 
+      { "http://snomed.info/sct#266753000", ReferralForLaboratoryTests }, 
+      { "266754006", ReferralForPhysiologyInvestigation }, 
+      { "http://snomed.info/sct#266754006", ReferralForPhysiologyInvestigation }, 
+      { "266755007", ReferralForEndoscopy }, 
+      { "http://snomed.info/sct#266755007", ReferralForEndoscopy }, 
+      { "271363008", ReferToPathologyDepartment }, 
+      { "http://snomed.info/sct#271363008", ReferToPathologyDepartment }, 
+      { "27217005", PatientReferralForEvaluationAgingProblem }, 
+      { "http://snomed.info/sct#27217005", PatientReferralForEvaluationAgingProblem }, 
+      { "274410002", DentalReferralChild }, 
+      { "http://snomed.info/sct#274410002", DentalReferralChild }, 
+      { "275640004", ReferToPathologyLaboratory }, 
+      { "http://snomed.info/sct#275640004", ReferToPathologyLaboratory }, 
+      { "275648006", ReferForMedicalPhysics }, 
+      { "http://snomed.info/sct#275648006", ReferForMedicalPhysics }, 
+      { "275821008", ReferralOfChild }, 
+      { "http://snomed.info/sct#275821008", ReferralOfChild }, 
+      { "276490004", ReferToMemberOfPrimaryHealthCareTeam }, 
+      { "http://snomed.info/sct#276490004", ReferToMemberOfPrimaryHealthCareTeam }, 
+      { "281097001", ReferralForInvestigation }, 
+      { "http://snomed.info/sct#281097001", ReferralForInvestigation }, 
+      { "281098006", ReferToApplianceOfficer }, 
+      { "http://snomed.info/sct#281098006", ReferToApplianceOfficer }, 
+      { "281099003", ReferralToNurse }, 
+      { "http://snomed.info/sct#281099003", ReferralToNurse }, 
+      { "281100006", ReferralToHealthWorker }, 
+      { "http://snomed.info/sct#281100006", ReferralToHealthWorker }, 
+      { "28214001", PatientReferralForSpecializedTraining }, 
+      { "http://snomed.info/sct#28214001", PatientReferralForSpecializedTraining }, 
+      { "305912004", ReferralByHealthWorker }, 
+      { "http://snomed.info/sct#305912004", ReferralByHealthWorker }, 
+      { "305913009", ReferralFromAudiologist }, 
+      { "http://snomed.info/sct#305913009", ReferralFromAudiologist }, 
+      { "305914003", ReferralByAudiologicalPhysician }, 
+      { "http://snomed.info/sct#305914003", ReferralByAudiologicalPhysician }, 
+      { "305915002", ReferralFromCommunityDoctorInAudiology }, 
+      { "http://snomed.info/sct#305915002", ReferralFromCommunityDoctorInAudiology }, 
+      { "305916001", ReferralByHearingTherapist }, 
+      { "http://snomed.info/sct#305916001", ReferralByHearingTherapist }, 
+      { "305917005", ReferralByPediatricAudiologist }, 
+      { "http://snomed.info/sct#305917005", ReferralByPediatricAudiologist }, 
+      { "305918000", ReferralByCounselor }, 
+      { "http://snomed.info/sct#305918000", ReferralByCounselor }, 
+      { "305919008", ReferralByBereavementCounselor }, 
+      { "http://snomed.info/sct#305919008", ReferralByBereavementCounselor }, 
+      { "305920002", ReferralByGeneticCounselor }, 
+      { "http://snomed.info/sct#305920002", ReferralByGeneticCounselor }, 
+      { "305921003", ReferralByMarriageGuidanceCounselor }, 
+      { "http://snomed.info/sct#305921003", ReferralByMarriageGuidanceCounselor }, 
+      { "305922005", ReferralByMentalHealthCounselor }, 
+      { "http://snomed.info/sct#305922005", ReferralByMentalHealthCounselor }, 
+      { "305923000", ReferralFromComplementaryTherapist }, 
+      { "http://snomed.info/sct#305923000", ReferralFromComplementaryTherapist }, 
+      { "305924006", ReferralByDoctor }, 
+      { "http://snomed.info/sct#305924006", ReferralByDoctor }, 
+      { "305925007", ReferralFromAAndEDoctor }, 
+      { "http://snomed.info/sct#305925007", ReferralFromAAndEDoctor }, 
+      { "305926008", ReferralFromAnesthetist }, 
+      { "http://snomed.info/sct#305926008", ReferralFromAnesthetist }, 
+      { "305927004", ReferralFromClinicalOncologist }, 
+      { "http://snomed.info/sct#305927004", ReferralFromClinicalOncologist }, 
+      { "305929001", ReferralFromRadiotherapist }, 
+      { "http://snomed.info/sct#305929001", ReferralFromRadiotherapist }, 
+      { "305930006", ReferralByFamilyPlanningDoctor }, 
+      { "http://snomed.info/sct#305930006", ReferralByFamilyPlanningDoctor }, 
+      { "305931005", ReferralByGP }, 
+      { "http://snomed.info/sct#305931005", ReferralByGP }, 
+      { "305932003", ReferralFromOwnGP }, 
+      { "http://snomed.info/sct#305932003", ReferralFromOwnGP }, 
+      { "305933008", ReferralByPartnerOfGP }, 
+      { "http://snomed.info/sct#305933008", ReferralByPartnerOfGP }, 
+      { "305940009", ReferralByITUSpecialist }, 
+      { "http://snomed.info/sct#305940009", ReferralByITUSpecialist }, 
+      { "305941008", ReferralByAdultITUSpecialist }, 
+      { "http://snomed.info/sct#305941008", ReferralByAdultITUSpecialist }, 
+      { "305942001", ReferralByPediatricITUSpecialist }, 
+      { "http://snomed.info/sct#305942001", ReferralByPediatricITUSpecialist }, 
+      { "305943006", ReferralByPediatrician }, 
+      { "http://snomed.info/sct#305943006", ReferralByPediatrician }, 
+      { "305944000", ReferralFromCommunityPediatrician }, 
+      { "http://snomed.info/sct#305944000", ReferralFromCommunityPediatrician }, 
+      { "305945004", ReferralFromNeonatologist }, 
+      { "http://snomed.info/sct#305945004", ReferralFromNeonatologist }, 
+      { "305946003", ReferralFromPediatricNeurologist }, 
+      { "http://snomed.info/sct#305946003", ReferralFromPediatricNeurologist }, 
+      { "305947007", ReferralByPediatricOncologist }, 
+      { "http://snomed.info/sct#305947007", ReferralByPediatricOncologist }, 
+      { "305948002", ReferralByPainManagementSpecialist }, 
+      { "http://snomed.info/sct#305948002", ReferralByPainManagementSpecialist }, 
+      { "305949005", ReferralFromPathologist }, 
+      { "http://snomed.info/sct#305949005", ReferralFromPathologist }, 
+      { "305950005", ReferralByBloodTransfusionDoctor }, 
+      { "http://snomed.info/sct#305950005", ReferralByBloodTransfusionDoctor }, 
+      { "305951009", ReferralByChemicalPathologist }, 
+      { "http://snomed.info/sct#305951009", ReferralByChemicalPathologist }, 
+      { "305952002", ReferralFromGeneralPathologist }, 
+      { "http://snomed.info/sct#305952002", ReferralFromGeneralPathologist }, 
+      { "305953007", ReferralFromHematologist }, 
+      { "http://snomed.info/sct#305953007", ReferralFromHematologist }, 
+      { "305954001", ReferralFromMedicalMicrobiologist }, 
+      { "http://snomed.info/sct#305954001", ReferralFromMedicalMicrobiologist }, 
+      { "305955000", ReferralByNeuropathologist }, 
+      { "http://snomed.info/sct#305955000", ReferralByNeuropathologist }, 
+      { "305956004", ReferralFromPhysician }, 
+      { "http://snomed.info/sct#305956004", ReferralFromPhysician }, 
+      { "305957008", ReferralByClinicalAllergist }, 
+      { "http://snomed.info/sct#305957008", ReferralByClinicalAllergist }, 
+      { "305958003", ReferralFromCardiologist }, 
+      { "http://snomed.info/sct#305958003", ReferralFromCardiologist }, 
+      { "305959006", ReferralByChestPhysician }, 
+      { "http://snomed.info/sct#305959006", ReferralByChestPhysician }, 
+      { "305960001", ReferralFromThoracicPhysician }, 
+      { "http://snomed.info/sct#305960001", ReferralFromThoracicPhysician }, 
+      { "305961002", ReferralFromRespiratoryPhysician }, 
+      { "http://snomed.info/sct#305961002", ReferralFromRespiratoryPhysician }, 
+      { "305962009", ReferralByClinicalImmunologist }, 
+      { "http://snomed.info/sct#305962009", ReferralByClinicalImmunologist }, 
+      { "305963004", ReferralFromClinicalNeurophysiologist }, 
+      { "http://snomed.info/sct#305963004", ReferralFromClinicalNeurophysiologist }, 
+      { "305964005", ReferralByClinicalPharmacologist }, 
+      { "http://snomed.info/sct#305964005", ReferralByClinicalPharmacologist }, 
+      { "305965006", ReferralFromClinicalPhysiologist }, 
+      { "http://snomed.info/sct#305965006", ReferralFromClinicalPhysiologist }, 
+      { "305966007", ReferralByDermatologist }, 
+      { "http://snomed.info/sct#305966007", ReferralByDermatologist }, 
+      { "305967003", ReferralFromEndocrinologist }, 
+      { "http://snomed.info/sct#305967003", ReferralFromEndocrinologist }, 
+      { "305968008", ReferralByGastroenterologist }, 
+      { "http://snomed.info/sct#305968008", ReferralByGastroenterologist }, 
+      { "305970004", ReferralByGeneralPhysician }, 
+      { "http://snomed.info/sct#305970004", ReferralByGeneralPhysician }, 
+      { "305971000", ReferralFromGeneticist }, 
+      { "http://snomed.info/sct#305971000", ReferralFromGeneticist }, 
+      { "305972007", ReferralFromClinicalGeneticist }, 
+      { "http://snomed.info/sct#305972007", ReferralFromClinicalGeneticist }, 
+      { "305973002", ReferralByClinicalCytogeneticist }, 
+      { "http://snomed.info/sct#305973002", ReferralByClinicalCytogeneticist }, 
+      { "305974008", ReferralFromClinicalMolecularGeneticist }, 
+      { "http://snomed.info/sct#305974008", ReferralFromClinicalMolecularGeneticist }, 
+      { "305975009", ReferralByGenitourinaryMedicinePhysician }, 
+      { "http://snomed.info/sct#305975009", ReferralByGenitourinaryMedicinePhysician }, 
+      { "305976005", ReferralFromCareOfTheElderlyPhysician }, 
+      { "http://snomed.info/sct#305976005", ReferralFromCareOfTheElderlyPhysician }, 
+      { "305977001", ReferralByInfectiousDiseasesPhysician }, 
+      { "http://snomed.info/sct#305977001", ReferralByInfectiousDiseasesPhysician }, 
+      { "305978006", ReferralFromNephrologist }, 
+      { "http://snomed.info/sct#305978006", ReferralFromNephrologist }, 
+      { "305979003", ReferralByNeurologist }, 
+      { "http://snomed.info/sct#305979003", ReferralByNeurologist }, 
+      { "305980000", ReferralFromNuclearMedicinePhysician }, 
+      { "http://snomed.info/sct#305980000", ReferralFromNuclearMedicinePhysician }, 
+      { "305981001", ReferralByPalliativeCarePhysician }, 
+      { "http://snomed.info/sct#305981001", ReferralByPalliativeCarePhysician }, 
+      { "305983003", ReferralByRehabilitationPhysician }, 
+      { "http://snomed.info/sct#305983003", ReferralByRehabilitationPhysician }, 
+      { "305984009", ReferralByRheumatologist }, 
+      { "http://snomed.info/sct#305984009", ReferralByRheumatologist }, 
+      { "305985005", ReferralFromPsychiatrist }, 
+      { "http://snomed.info/sct#305985005", ReferralFromPsychiatrist }, 
+      { "305986006", ReferralByChildAndAdolescentPsychiatrist }, 
+      { "http://snomed.info/sct#305986006", ReferralByChildAndAdolescentPsychiatrist }, 
+      { "305987002", ReferralFromForensicPsychiatrist }, 
+      { "http://snomed.info/sct#305987002", ReferralFromForensicPsychiatrist }, 
+      { "305988007", ReferralByLiaisonPsychiatrist }, 
+      { "http://snomed.info/sct#305988007", ReferralByLiaisonPsychiatrist }, 
+      { "305989004", ReferralFromPsychiatristForTheElderlyMentallyIll }, 
+      { "http://snomed.info/sct#305989004", ReferralFromPsychiatristForTheElderlyMentallyIll }, 
+      { "305990008", ReferralByPsychiatristForMentalHandicap }, 
+      { "http://snomed.info/sct#305990008", ReferralByPsychiatristForMentalHandicap }, 
+      { "305991007", ReferralFromRehabilitationPsychiatrist }, 
+      { "http://snomed.info/sct#305991007", ReferralFromRehabilitationPsychiatrist }, 
+      { "305992000", ReferralByPublicHealthPhysician }, 
+      { "http://snomed.info/sct#305992000", ReferralByPublicHealthPhysician }, 
+      { "305993005", ReferralFromObstetricianAndGynecologist }, 
+      { "http://snomed.info/sct#305993005", ReferralFromObstetricianAndGynecologist }, 
+      { "305994004", ReferralByGynecologist }, 
+      { "http://snomed.info/sct#305994004", ReferralByGynecologist }, 
+      { "305995003", ReferralByObstetrician }, 
+      { "http://snomed.info/sct#305995003", ReferralByObstetrician }, 
+      { "305996002", ReferralFromOccupationalHealthPhysician }, 
+      { "http://snomed.info/sct#305996002", ReferralFromOccupationalHealthPhysician }, 
+      { "305997006", ReferralByRadiologist }, 
+      { "http://snomed.info/sct#305997006", ReferralByRadiologist }, 
+      { "305998001", ReferralFromSurgeon }, 
+      { "http://snomed.info/sct#305998001", ReferralFromSurgeon }, 
+      { "305999009", ReferralByBreastSurgeon }, 
+      { "http://snomed.info/sct#305999009", ReferralByBreastSurgeon }, 
+      { "306000006", ReferralFromCardiothoracicSurgeon }, 
+      { "http://snomed.info/sct#306000006", ReferralFromCardiothoracicSurgeon }, 
+      { "306001005", ReferralByThoracicSurgeon }, 
+      { "http://snomed.info/sct#306001005", ReferralByThoracicSurgeon }, 
+      { "306002003", ReferralFromCardiacSurgeon }, 
+      { "http://snomed.info/sct#306002003", ReferralFromCardiacSurgeon }, 
+      { "306003008", ReferralFromDentalSurgeon }, 
+      { "http://snomed.info/sct#306003008", ReferralFromDentalSurgeon }, 
+      { "306004002", ReferralByOrthodontist }, 
+      { "http://snomed.info/sct#306004002", ReferralByOrthodontist }, 
+      { "306005001", ReferralByPediatricDentist }, 
+      { "http://snomed.info/sct#306005001", ReferralByPediatricDentist }, 
+      { "306006000", ReferralByRestorativeDentist }, 
+      { "http://snomed.info/sct#306006000", ReferralByRestorativeDentist }, 
+      { "306007009", ReferralByENTSurgeon }, 
+      { "http://snomed.info/sct#306007009", ReferralByENTSurgeon }, 
+      { "306008004", ReferralByEndocrineSurgeon }, 
+      { "http://snomed.info/sct#306008004", ReferralByEndocrineSurgeon }, 
+      { "306009007", ReferralFromGastrointestinalSurgeon }, 
+      { "http://snomed.info/sct#306009007", ReferralFromGastrointestinalSurgeon }, 
+      { "306010002", ReferralByGeneralGastrointestinalSurgeon }, 
+      { "http://snomed.info/sct#306010002", ReferralByGeneralGastrointestinalSurgeon }, 
+      { "306011003", ReferralByUpperGISurgeon }, 
+      { "http://snomed.info/sct#306011003", ReferralByUpperGISurgeon }, 
+      { "306012005", ReferralByColorectalSurgeon }, 
+      { "http://snomed.info/sct#306012005", ReferralByColorectalSurgeon }, 
+      { "306013000", ReferralByGeneralSurgeon }, 
+      { "http://snomed.info/sct#306013000", ReferralByGeneralSurgeon }, 
+      { "306014006", ReferralFromHandSurgeon }, 
+      { "http://snomed.info/sct#306014006", ReferralFromHandSurgeon }, 
+      { "306015007", ReferralByHepatobiliarySurgeon }, 
+      { "http://snomed.info/sct#306015007", ReferralByHepatobiliarySurgeon }, 
+      { "306016008", ReferralFromNeurosurgeon }, 
+      { "http://snomed.info/sct#306016008", ReferralFromNeurosurgeon }, 
+      { "306017004", ReferralByOphthalmologist }, 
+      { "http://snomed.info/sct#306017004", ReferralByOphthalmologist }, 
+      { "306018009", ReferralFromOralSurgeon }, 
+      { "http://snomed.info/sct#306018009", ReferralFromOralSurgeon }, 
+      { "306019001", ReferralFromOrthopedicSurgeon }, 
+      { "http://snomed.info/sct#306019001", ReferralFromOrthopedicSurgeon }, 
+      { "306020007", ReferralByPediatricSurgeon }, 
+      { "http://snomed.info/sct#306020007", ReferralByPediatricSurgeon }, 
+      { "306021006", ReferralByPancreaticSurgeon }, 
+      { "http://snomed.info/sct#306021006", ReferralByPancreaticSurgeon }, 
+      { "306022004", ReferralFromPlasticSurgeon }, 
+      { "http://snomed.info/sct#306022004", ReferralFromPlasticSurgeon }, 
+      { "306023009", ReferralFromTransplantSurgeon }, 
+      { "http://snomed.info/sct#306023009", ReferralFromTransplantSurgeon }, 
+      { "306024003", ReferralByTraumaSurgeon }, 
+      { "http://snomed.info/sct#306024003", ReferralByTraumaSurgeon }, 
+      { "306025002", ReferralFromUrologist }, 
+      { "http://snomed.info/sct#306025002", ReferralFromUrologist }, 
+      { "306026001", ReferralByVascularSurgeon }, 
+      { "http://snomed.info/sct#306026001", ReferralByVascularSurgeon }, 
+      { "306027005", ReferralFromClinicalNurseSpecialist }, 
+      { "http://snomed.info/sct#306027005", ReferralFromClinicalNurseSpecialist }, 
+      { "306028000", ReferralByBreastCareNurse }, 
+      { "http://snomed.info/sct#306028000", ReferralByBreastCareNurse }, 
+      { "306029008", ReferralFromCardiacRehabilitationNurse }, 
+      { "http://snomed.info/sct#306029008", ReferralFromCardiacRehabilitationNurse }, 
+      { "306030003", ReferralByContactTracingNurse }, 
+      { "http://snomed.info/sct#306030003", ReferralByContactTracingNurse }, 
+      { "306031004", ReferralFromContinenceNurse }, 
+      { "http://snomed.info/sct#306031004", ReferralFromContinenceNurse }, 
+      { "306032006", ReferralByDiabeticLiaisonNurse }, 
+      { "http://snomed.info/sct#306032006", ReferralByDiabeticLiaisonNurse }, 
+      { "306033001", ReferralByGenitourinaryNurse }, 
+      { "http://snomed.info/sct#306033001", ReferralByGenitourinaryNurse }, 
+      { "306034007", ReferralFromMacmillanNurse }, 
+      { "http://snomed.info/sct#306034007", ReferralFromMacmillanNurse }, 
+      { "306035008", ReferralByMarieCurieNurse }, 
+      { "http://snomed.info/sct#306035008", ReferralByMarieCurieNurse }, 
+      { "306036009", ReferralByLymphedemaCareNurse }, 
+      { "http://snomed.info/sct#306036009", ReferralByLymphedemaCareNurse }, 
+      { "306037000", ReferralFromNurseBehavioralTherapist }, 
+      { "http://snomed.info/sct#306037000", ReferralFromNurseBehavioralTherapist }, 
+      { "306038005", ReferralFromNursePsychotherapist }, 
+      { "http://snomed.info/sct#306038005", ReferralFromNursePsychotherapist }, 
+      { "306039002", ReferralByPainManagementNurse }, 
+      { "http://snomed.info/sct#306039002", ReferralByPainManagementNurse }, 
+      { "306040000", ReferralByPediatricNurse }, 
+      { "http://snomed.info/sct#306040000", ReferralByPediatricNurse }, 
+      { "306041001", ReferralByPsychiatricNurse }, 
+      { "http://snomed.info/sct#306041001", ReferralByPsychiatricNurse }, 
+      { "306042008", ReferralFromOncologyNurse }, 
+      { "http://snomed.info/sct#306042008", ReferralFromOncologyNurse }, 
+      { "306043003", ReferralFromRheumatologyNurseSpecialist }, 
+      { "http://snomed.info/sct#306043003", ReferralFromRheumatologyNurseSpecialist }, 
+      { "306044009", ReferralByStomaNurse }, 
+      { "http://snomed.info/sct#306044009", ReferralByStomaNurse }, 
+      { "306045005", ReferralFromCommunityBasedNurse }, 
+      { "http://snomed.info/sct#306045005", ReferralFromCommunityBasedNurse }, 
+      { "306046006", ReferralByCommunityPsychiatricNurse }, 
+      { "http://snomed.info/sct#306046006", ReferralByCommunityPsychiatricNurse }, 
+      { "306047002", ReferralFromCompanyNurse }, 
+      { "http://snomed.info/sct#306047002", ReferralFromCompanyNurse }, 
+      { "306048007", ReferralByDistrictNurse }, 
+      { "http://snomed.info/sct#306048007", ReferralByDistrictNurse }, 
+      { "306050004", ReferralByPracticeNurse }, 
+      { "http://snomed.info/sct#306050004", ReferralByPracticeNurse }, 
+      { "306051000", ReferralFromSchoolNurse }, 
+      { "http://snomed.info/sct#306051000", ReferralFromSchoolNurse }, 
+      { "306052007", ReferralByMidwife }, 
+      { "http://snomed.info/sct#306052007", ReferralByMidwife }, 
+      { "306053002", ReferralByCommunityBasedMidwife }, 
+      { "http://snomed.info/sct#306053002", ReferralByCommunityBasedMidwife }, 
+      { "306054008", ReferralFromHospitalMidwife }, 
+      { "http://snomed.info/sct#306054008", ReferralFromHospitalMidwife }, 
+      { "306055009", ReferralByPsychotherapist }, 
+      { "http://snomed.info/sct#306055009", ReferralByPsychotherapist }, 
+      { "306056005", ReferralFromProfessionalAlliedToMedicine }, 
+      { "http://snomed.info/sct#306056005", ReferralFromProfessionalAlliedToMedicine }, 
+      { "306057001", ReferralByArtsTherapist }, 
+      { "http://snomed.info/sct#306057001", ReferralByArtsTherapist }, 
+      { "306059003", ReferralFromArtTherapist }, 
+      { "http://snomed.info/sct#306059003", ReferralFromArtTherapist }, 
+      { "306060008", ReferralByDanceTherapist }, 
+      { "http://snomed.info/sct#306060008", ReferralByDanceTherapist }, 
+      { "306061007", ReferralFromDramaTherapist }, 
+      { "http://snomed.info/sct#306061007", ReferralFromDramaTherapist }, 
+      { "306062000", ReferralByMusicTherapist }, 
+      { "http://snomed.info/sct#306062000", ReferralByMusicTherapist }, 
+      { "306063005", ReferralFromPlayTherapist }, 
+      { "http://snomed.info/sct#306063005", ReferralFromPlayTherapist }, 
+      { "306064004", ReferralByAudiologyTechnician }, 
+      { "http://snomed.info/sct#306064004", ReferralByAudiologyTechnician }, 
+      { "306065003", ReferralByPodiatrist }, 
+      { "http://snomed.info/sct#306065003", ReferralByPodiatrist }, 
+      { "306066002", ReferralFromCommunityBasedPodiatrist }, 
+      { "http://snomed.info/sct#306066002", ReferralFromCommunityBasedPodiatrist }, 
+      { "306067006", ReferralByHospitalBasedPodiatrist }, 
+      { "http://snomed.info/sct#306067006", ReferralByHospitalBasedPodiatrist }, 
+      { "306068001", ReferralFromDietitian }, 
+      { "http://snomed.info/sct#306068001", ReferralFromDietitian }, 
+      { "306069009", ReferralByCommunityBasedDietitian }, 
+      { "http://snomed.info/sct#306069009", ReferralByCommunityBasedDietitian }, 
+      { "306070005", ReferralByHospitalDietitian }, 
+      { "http://snomed.info/sct#306070005", ReferralByHospitalDietitian }, 
+      { "306071009", ReferralByOccupationalTherapist }, 
+      { "http://snomed.info/sct#306071009", ReferralByOccupationalTherapist }, 
+      { "306072002", ReferralFromCommunityOccupationalTherapist }, 
+      { "http://snomed.info/sct#306072002", ReferralFromCommunityOccupationalTherapist }, 
+      { "306073007", ReferralBySocialServicesDepartmentOccupationalTherapist }, 
+      { "http://snomed.info/sct#306073007", ReferralBySocialServicesDepartmentOccupationalTherapist }, 
+      { "306074001", ReferralByHospitalBasedOccupationalTherapist }, 
+      { "http://snomed.info/sct#306074001", ReferralByHospitalBasedOccupationalTherapist }, 
+      { "306076004", ReferralByOrthoptist }, 
+      { "http://snomed.info/sct#306076004", ReferralByOrthoptist }, 
+      { "306077008", ReferralFromOrthotist }, 
+      { "http://snomed.info/sct#306077008", ReferralFromOrthotist }, 
+      { "306078003", ReferralBySurgicalFitter }, 
+      { "http://snomed.info/sct#306078003", ReferralBySurgicalFitter }, 
+      { "306079006", ReferralFromPhysiotherapist }, 
+      { "http://snomed.info/sct#306079006", ReferralFromPhysiotherapist }, 
+      { "306080009", ReferralByCommunityBasedPhysiotherapist }, 
+      { "http://snomed.info/sct#306080009", ReferralByCommunityBasedPhysiotherapist }, 
+      { "306081008", ReferralFromHospitalPhysiotherapist }, 
+      { "http://snomed.info/sct#306081008", ReferralFromHospitalPhysiotherapist }, 
+      { "306082001", ReferralByRadiographer }, 
+      { "http://snomed.info/sct#306082001", ReferralByRadiographer }, 
+      { "306083006", ReferralFromTherapeuticRadiographer }, 
+      { "http://snomed.info/sct#306083006", ReferralFromTherapeuticRadiographer }, 
+      { "306085004", ReferralFromDiagnosticRadiographer }, 
+      { "http://snomed.info/sct#306085004", ReferralFromDiagnosticRadiographer }, 
+      { "306086003", ReferralBySpeechAndLanguageTherapist }, 
+      { "http://snomed.info/sct#306086003", ReferralBySpeechAndLanguageTherapist }, 
+      { "306087007", ReferralFromCommunityBasedSpeechAndLanguageTherapist }, 
+      { "http://snomed.info/sct#306087007", ReferralFromCommunityBasedSpeechAndLanguageTherapist }, 
+      { "306088002", ReferralByHospitalBasedSpeechAndLanguageTherapist }, 
+      { "http://snomed.info/sct#306088002", ReferralByHospitalBasedSpeechAndLanguageTherapist }, 
+      { "306089005", ReferralFromPharmacist }, 
+      { "http://snomed.info/sct#306089005", ReferralFromPharmacist }, 
+      { "306090001", ReferralBySocialWorker }, 
+      { "http://snomed.info/sct#306090001", ReferralBySocialWorker }, 
+      { "306091002", ReferralBySSDSocialWorker }, 
+      { "http://snomed.info/sct#306091002", ReferralBySSDSocialWorker }, 
+      { "306092009", ReferralBySocialServicesDepartmentCareManager }, 
+      { "http://snomed.info/sct#306092009", ReferralBySocialServicesDepartmentCareManager }, 
+      { "306093004", ReferralFromTeacher }, 
+      { "http://snomed.info/sct#306093004", ReferralFromTeacher }, 
+      { "306094005", ReferralByLipSpeechReadingTeacher }, 
+      { "http://snomed.info/sct#306094005", ReferralByLipSpeechReadingTeacher }, 
+      { "306095006", ReferralByTeacherOfTheDeaf }, 
+      { "http://snomed.info/sct#306095006", ReferralByTeacherOfTheDeaf }, 
+      { "306096007", ReferralFromTeacherOfTheHearingImpaired }, 
+      { "http://snomed.info/sct#306096007", ReferralFromTeacherOfTheHearingImpaired }, 
+      { "306097003", ReferralBySchoolTeacher }, 
+      { "http://snomed.info/sct#306097003", ReferralBySchoolTeacher }, 
+      { "306098008", ReferralBySelf }, 
+      { "http://snomed.info/sct#306098008", ReferralBySelf }, 
+      { "306099000", ReferralByCarer }, 
+      { "http://snomed.info/sct#306099000", ReferralByCarer }, 
+      { "306100008", ReferralByRelative }, 
+      { "http://snomed.info/sct#306100008", ReferralByRelative }, 
+      { "306101007", ReferralToEstablishment }, 
+      { "http://snomed.info/sct#306101007", ReferralToEstablishment }, 
+      { "306102000", ReferralToPrimaryHealthCareClinic }, 
+      { "http://snomed.info/sct#306102000", ReferralToPrimaryHealthCareClinic }, 
+      { "306103005", ReferralToDepartment }, 
+      { "http://snomed.info/sct#306103005", ReferralToDepartment }, 
+      { "306104004", ReferralToCasualtyService }, 
+      { "http://snomed.info/sct#306104004", ReferralToCasualtyService }, 
+      { "306105003", ReferralToAnestheticService }, 
+      { "http://snomed.info/sct#306105003", ReferralToAnestheticService }, 
+      { "306106002", ReferralToITUService }, 
+      { "http://snomed.info/sct#306106002", ReferralToITUService }, 
+      { "306107006", ReferralToAdultIntensiveCareService }, 
+      { "http://snomed.info/sct#306107006", ReferralToAdultIntensiveCareService }, 
+      { "306108001", ReferralToPediatricIntensiveCareService }, 
+      { "http://snomed.info/sct#306108001", ReferralToPediatricIntensiveCareService }, 
+      { "306109009", ReferralToPainManagementService }, 
+      { "http://snomed.info/sct#306109009", ReferralToPainManagementService }, 
+      { "306110004", ReferralToMedicalService }, 
+      { "http://snomed.info/sct#306110004", ReferralToMedicalService }, 
+      { "306111000", ReferralToClinicalAllergyService }, 
+      { "http://snomed.info/sct#306111000", ReferralToClinicalAllergyService }, 
+      { "306112007", ReferralToChestMedicineService }, 
+      { "http://snomed.info/sct#306112007", ReferralToChestMedicineService }, 
+      { "306113002", ReferralToThoracicMedicineService }, 
+      { "http://snomed.info/sct#306113002", ReferralToThoracicMedicineService }, 
+      { "306114008", ReferralToRespiratoryMedicineService }, 
+      { "http://snomed.info/sct#306114008", ReferralToRespiratoryMedicineService }, 
+      { "306115009", ReferralToClinicalNeurophysiologyService }, 
+      { "http://snomed.info/sct#306115009", ReferralToClinicalNeurophysiologyService }, 
+      { "306116005", ReferralToClinicalPharmacologyService }, 
+      { "http://snomed.info/sct#306116005", ReferralToClinicalPharmacologyService }, 
+      { "306117001", ReferralToClinicalPhysiologyService }, 
+      { "http://snomed.info/sct#306117001", ReferralToClinicalPhysiologyService }, 
+      { "306118006", ReferralToEndocrinologyService }, 
+      { "http://snomed.info/sct#306118006", ReferralToEndocrinologyService }, 
+      { "306119003", ReferralToGeneticsService }, 
+      { "http://snomed.info/sct#306119003", ReferralToGeneticsService }, 
+      { "306120009", ReferralToClinicalGeneticsService }, 
+      { "http://snomed.info/sct#306120009", ReferralToClinicalGeneticsService }, 
+      { "306121008", ReferralToClinicalCytogeneticsService }, 
+      { "http://snomed.info/sct#306121008", ReferralToClinicalCytogeneticsService }, 
+      { "306122001", ReferralToClinicalMolecularGeneticsService }, 
+      { "http://snomed.info/sct#306122001", ReferralToClinicalMolecularGeneticsService }, 
+      { "306123006", ReferralToGenitourinaryMedicineService }, 
+      { "http://snomed.info/sct#306123006", ReferralToGenitourinaryMedicineService }, 
+      { "306124000", ReferralToInfectiousDiseasesService }, 
+      { "http://snomed.info/sct#306124000", ReferralToInfectiousDiseasesService }, 
+      { "306125004", ReferralToNephrologyService }, 
+      { "http://snomed.info/sct#306125004", ReferralToNephrologyService }, 
+      { "306126003", ReferralToNuclearMedicineService }, 
+      { "http://snomed.info/sct#306126003", ReferralToNuclearMedicineService }, 
+      { "306127007", ReferralToRheumatologyService }, 
+      { "http://snomed.info/sct#306127007", ReferralToRheumatologyService }, 
+      { "306128002", ReferralToPediatricService }, 
+      { "http://snomed.info/sct#306128002", ReferralToPediatricService }, 
+      { "306129005", ReferralToCommunityPediatricService }, 
+      { "http://snomed.info/sct#306129005", ReferralToCommunityPediatricService }, 
+      { "306130000", ReferralToPediatricNeurologyService }, 
+      { "http://snomed.info/sct#306130000", ReferralToPediatricNeurologyService }, 
+      { "306131001", ReferralToPediatricOncologyService }, 
+      { "http://snomed.info/sct#306131001", ReferralToPediatricOncologyService }, 
+      { "306132008", ReferralToSpecialCareBabyUnit }, 
+      { "http://snomed.info/sct#306132008", ReferralToSpecialCareBabyUnit }, 
+      { "306133003", ReferralToObstetricsAndGynecologyService }, 
+      { "http://snomed.info/sct#306133003", ReferralToObstetricsAndGynecologyService }, 
+      { "306134009", ReferralToChildAndAdolescentPsychiatryService }, 
+      { "http://snomed.info/sct#306134009", ReferralToChildAndAdolescentPsychiatryService }, 
+      { "306135005", ReferralToForensicPsychiatryService }, 
+      { "http://snomed.info/sct#306135005", ReferralToForensicPsychiatryService }, 
+      { "306136006", ReferralToLiaisonPsychiatryService }, 
+      { "http://snomed.info/sct#306136006", ReferralToLiaisonPsychiatryService }, 
+      { "306137002", ReferralToMentalHandicapPsychiatryService }, 
+      { "http://snomed.info/sct#306137002", ReferralToMentalHandicapPsychiatryService }, 
+      { "306138007", ReferralToPsychogeriatricService }, 
+      { "http://snomed.info/sct#306138007", ReferralToPsychogeriatricService }, 
+      { "306139004", ReferralToRehabilitationPsychiatryService }, 
+      { "http://snomed.info/sct#306139004", ReferralToRehabilitationPsychiatryService }, 
+      { "306140002", ReferralToClinicalOncologyService }, 
+      { "http://snomed.info/sct#306140002", ReferralToClinicalOncologyService }, 
+      { "306141003", ReferralToRadiotherapyService }, 
+      { "http://snomed.info/sct#306141003", ReferralToRadiotherapyService }, 
+      { "306142005", ReferralToUltrasonographyService }, 
+      { "http://snomed.info/sct#306142005", ReferralToUltrasonographyService }, 
+      { "306143000", ReferralToComputerizedTomographyService }, 
+      { "http://snomed.info/sct#306143000", ReferralToComputerizedTomographyService }, 
+      { "306144006", ReferralToMagneticResonanceImagingService }, 
+      { "http://snomed.info/sct#306144006", ReferralToMagneticResonanceImagingService }, 
+      { "306145007", ReferralToBloodTransfusionService }, 
+      { "http://snomed.info/sct#306145007", ReferralToBloodTransfusionService }, 
+      { "306146008", ReferralToChemicalPathologyService }, 
+      { "http://snomed.info/sct#306146008", ReferralToChemicalPathologyService }, 
+      { "306147004", ReferralToGeneralPathologyService }, 
+      { "http://snomed.info/sct#306147004", ReferralToGeneralPathologyService }, 
+      { "306148009", ReferralToHematologyService }, 
+      { "http://snomed.info/sct#306148009", ReferralToHematologyService }, 
+      { "306149001", ReferralToMedicalMicrobiologyService }, 
+      { "http://snomed.info/sct#306149001", ReferralToMedicalMicrobiologyService }, 
+      { "306150001", ReferralToNeuropathologyService }, 
+      { "http://snomed.info/sct#306150001", ReferralToNeuropathologyService }, 
+      { "306151002", ReferralToPublicHealthService }, 
+      { "http://snomed.info/sct#306151002", ReferralToPublicHealthService }, 
+      { "306152009", ReferralToOccupationalHealthService }, 
+      { "http://snomed.info/sct#306152009", ReferralToOccupationalHealthService }, 
+      { "306153004", ReferralToProfessionalAlliedToMedicineService }, 
+      { "http://snomed.info/sct#306153004", ReferralToProfessionalAlliedToMedicineService }, 
+      { "306154005", ReferralToArtsTherapyServices }, 
+      { "http://snomed.info/sct#306154005", ReferralToArtsTherapyServices }, 
+      { "306156007", ReferralToDanceTherapyService }, 
+      { "http://snomed.info/sct#306156007", ReferralToDanceTherapyService }, 
+      { "306157003", ReferralToDramaTherapyService }, 
+      { "http://snomed.info/sct#306157003", ReferralToDramaTherapyService }, 
+      { "306158008", ReferralToMusicTherapyService }, 
+      { "http://snomed.info/sct#306158008", ReferralToMusicTherapyService }, 
+      { "306159000", ReferralToPlayTherapyService }, 
+      { "http://snomed.info/sct#306159000", ReferralToPlayTherapyService }, 
+      { "306160005", ReferralToPodiatryService }, 
+      { "http://snomed.info/sct#306160005", ReferralToPodiatryService }, 
+      { "306161009", ReferralToCommunityPodiatryService }, 
+      { "http://snomed.info/sct#306161009", ReferralToCommunityPodiatryService }, 
+      { "306162002", ReferralToHospitalBasedPodiatryService }, 
+      { "http://snomed.info/sct#306162002", ReferralToHospitalBasedPodiatryService }, 
+      { "306163007", ReferralToDieteticsService }, 
+      { "http://snomed.info/sct#306163007", ReferralToDieteticsService }, 
+      { "306164001", ReferralToCommunityBasedDieteticsService }, 
+      { "http://snomed.info/sct#306164001", ReferralToCommunityBasedDieteticsService }, 
+      { "306165000", ReferralToHospitalDieteticsService }, 
+      { "http://snomed.info/sct#306165000", ReferralToHospitalDieteticsService }, 
+      { "306166004", ReferralToOccupationalTherapyService }, 
+      { "http://snomed.info/sct#306166004", ReferralToOccupationalTherapyService }, 
+      { "306167008", ReferralToCommunityBasedOccupationalTherapyService }, 
+      { "http://snomed.info/sct#306167008", ReferralToCommunityBasedOccupationalTherapyService }, 
+      { "306168003", ReferralToHospitalOccupationalTherapyService }, 
+      { "http://snomed.info/sct#306168003", ReferralToHospitalOccupationalTherapyService }, 
+      { "306169006", ReferralToMedicalPhysicsService }, 
+      { "http://snomed.info/sct#306169006", ReferralToMedicalPhysicsService }, 
+      { "306170007", ReferralToPhysiotherapyService }, 
+      { "http://snomed.info/sct#306170007", ReferralToPhysiotherapyService }, 
+      { "306171006", ReferralToCommunityBasedPhysiotherapyService }, 
+      { "http://snomed.info/sct#306171006", ReferralToCommunityBasedPhysiotherapyService }, 
+      { "306172004", ReferralToHospitalPhysiotherapyService }, 
+      { "http://snomed.info/sct#306172004", ReferralToHospitalPhysiotherapyService }, 
+      { "306173009", ReferralToSpeechAndLanguageTherapyService }, 
+      { "http://snomed.info/sct#306173009", ReferralToSpeechAndLanguageTherapyService }, 
+      { "306174003", ReferralToCommunityBasedSpeechAndLanguageTherapyService }, 
+      { "http://snomed.info/sct#306174003", ReferralToCommunityBasedSpeechAndLanguageTherapyService }, 
+      { "306175002", ReferralToHospitalSpeechAndLanguageTherapyService }, 
+      { "http://snomed.info/sct#306175002", ReferralToHospitalSpeechAndLanguageTherapyService }, 
+      { "306176001", ReferralToOrthopticsService }, 
+      { "http://snomed.info/sct#306176001", ReferralToOrthopticsService }, 
+      { "306177005", ReferralToOrthoticsService }, 
+      { "http://snomed.info/sct#306177005", ReferralToOrthoticsService }, 
+      { "306178000", ReferralToSurgicalFittingService }, 
+      { "http://snomed.info/sct#306178000", ReferralToSurgicalFittingService }, 
+      { "306179008", ReferralToPharmacyService }, 
+      { "http://snomed.info/sct#306179008", ReferralToPharmacyService }, 
+      { "306180006", ReferralToSurgicalService }, 
+      { "http://snomed.info/sct#306180006", ReferralToSurgicalService }, 
+      { "306181005", ReferralToBreastSurgeryService }, 
+      { "http://snomed.info/sct#306181005", ReferralToBreastSurgeryService }, 
+      { "306182003", ReferralToCardiothoracicSurgeryService }, 
+      { "http://snomed.info/sct#306182003", ReferralToCardiothoracicSurgeryService }, 
+      { "306184002", ReferralToThoracicSurgeryService }, 
+      { "http://snomed.info/sct#306184002", ReferralToThoracicSurgeryService }, 
+      { "306185001", ReferralToCardiacSurgeryService }, 
+      { "http://snomed.info/sct#306185001", ReferralToCardiacSurgeryService }, 
+      { "306186000", ReferralToDentalSurgeryService }, 
+      { "http://snomed.info/sct#306186000", ReferralToDentalSurgeryService }, 
+      { "306187009", ReferralToOrthodonticsService }, 
+      { "http://snomed.info/sct#306187009", ReferralToOrthodonticsService }, 
+      { "306188004", ReferralToPediatricDentistryService }, 
+      { "http://snomed.info/sct#306188004", ReferralToPediatricDentistryService }, 
+      { "306189007", ReferralToRestorativeDentistryService }, 
+      { "http://snomed.info/sct#306189007", ReferralToRestorativeDentistryService }, 
+      { "306190003", ReferralToEndocrineSurgeryService }, 
+      { "http://snomed.info/sct#306190003", ReferralToEndocrineSurgeryService }, 
+      { "306191004", ReferralToGastrointestinalSurgeryService }, 
+      { "http://snomed.info/sct#306191004", ReferralToGastrointestinalSurgeryService }, 
+      { "306192006", ReferralToGeneralGISurgeryService }, 
+      { "http://snomed.info/sct#306192006", ReferralToGeneralGISurgeryService }, 
+      { "306193001", ReferralToUpperGastrointestinalSurgeryService }, 
+      { "http://snomed.info/sct#306193001", ReferralToUpperGastrointestinalSurgeryService }, 
+      { "306194007", ReferralToColorectalSurgeryService }, 
+      { "http://snomed.info/sct#306194007", ReferralToColorectalSurgeryService }, 
+      { "306195008", ReferralToHepatobiliarySurgicalService }, 
+      { "http://snomed.info/sct#306195008", ReferralToHepatobiliarySurgicalService }, 
+      { "306197000", ReferralToPancreaticSurgeryService }, 
+      { "http://snomed.info/sct#306197000", ReferralToPancreaticSurgeryService }, 
+      { "306198005", ReferralToPlasticSurgeryService }, 
+      { "http://snomed.info/sct#306198005", ReferralToPlasticSurgeryService }, 
+      { "306199002", ReferralToSurgicalTransplantService }, 
+      { "http://snomed.info/sct#306199002", ReferralToSurgicalTransplantService }, 
+      { "306200004", ReferralToTraumaSurgeryService }, 
+      { "http://snomed.info/sct#306200004", ReferralToTraumaSurgeryService }, 
+      { "306201000", ReferralToUrologyService }, 
+      { "http://snomed.info/sct#306201000", ReferralToUrologyService }, 
+      { "306202007", ReferralToCareOfTheElderlyDayHospital }, 
+      { "http://snomed.info/sct#306202007", ReferralToCareOfTheElderlyDayHospital }, 
+      { "306203002", ReferralToPsychiatryDayHospital }, 
+      { "http://snomed.info/sct#306203002", ReferralToPsychiatryDayHospital }, 
+      { "306204008", ReferralToOldAgePsychiatryDayHospital }, 
+      { "http://snomed.info/sct#306204008", ReferralToOldAgePsychiatryDayHospital }, 
+      { "306205009", ReferralToHospice }, 
+      { "http://snomed.info/sct#306205009", ReferralToHospice }, 
+      { "306206005", ReferralToService }, 
+      { "http://snomed.info/sct#306206005", ReferralToService }, 
+      { "306207001", ReferralToAudiologicalService }, 
+      { "http://snomed.info/sct#306207001", ReferralToAudiologicalService }, 
+      { "306208006", ReferralToDiagnosticAudiologyService }, 
+      { "http://snomed.info/sct#306208006", ReferralToDiagnosticAudiologyService }, 
+      { "306209003", ReferralToAdultDiagnosticAudiologyService }, 
+      { "http://snomed.info/sct#306209003", ReferralToAdultDiagnosticAudiologyService }, 
+      { "306210008", ReferralToPediatricDiagnosticAudiologyService }, 
+      { "http://snomed.info/sct#306210008", ReferralToPediatricDiagnosticAudiologyService }, 
+      { "306211007", ReferralToAudiologicalScreeningService }, 
+      { "http://snomed.info/sct#306211007", ReferralToAudiologicalScreeningService }, 
+      { "306212000", ReferralToNeonatalAudiologicalScreening }, 
+      { "http://snomed.info/sct#306212000", ReferralToNeonatalAudiologicalScreening }, 
+      { "306213005", ReferralToDistractionTestAudiologicalScreening }, 
+      { "http://snomed.info/sct#306213005", ReferralToDistractionTestAudiologicalScreening }, 
+      { "306214004", ReferralToAuralRehabilitationService }, 
+      { "http://snomed.info/sct#306214004", ReferralToAuralRehabilitationService }, 
+      { "306215003", ReferralToCochlearImplantService }, 
+      { "http://snomed.info/sct#306215003", ReferralToCochlearImplantService }, 
+      { "306216002", ReferralToAdultCochlearImplantService }, 
+      { "http://snomed.info/sct#306216002", ReferralToAdultCochlearImplantService }, 
+      { "306217006", ReferralToPediatricCochlearImplantService }, 
+      { "http://snomed.info/sct#306217006", ReferralToPediatricCochlearImplantService }, 
+      { "306218001", ReferralToHearingAidService }, 
+      { "http://snomed.info/sct#306218001", ReferralToHearingAidService }, 
+      { "306219009", ReferralToAdultHearingAidService }, 
+      { "http://snomed.info/sct#306219009", ReferralToAdultHearingAidService }, 
+      { "306220003", ReferralToPediatricHearingAidService }, 
+      { "http://snomed.info/sct#306220003", ReferralToPediatricHearingAidService }, 
+      { "306221004", ReferralToSpeechReadingTrainingService }, 
+      { "http://snomed.info/sct#306221004", ReferralToSpeechReadingTrainingService }, 
+      { "306222006", ReferralToTinnitusManagementService }, 
+      { "http://snomed.info/sct#306222006", ReferralToTinnitusManagementService }, 
+      { "306223001", ReferralToHearingTherapyService }, 
+      { "http://snomed.info/sct#306223001", ReferralToHearingTherapyService }, 
+      { "306224007", ReferralToALDService }, 
+      { "http://snomed.info/sct#306224007", ReferralToALDService }, 
+      { "306225008", ReferralToCounselingService }, 
+      { "http://snomed.info/sct#306225008", ReferralToCounselingService }, 
+      { "306226009", ReferralToMentalHealthCounselingService }, 
+      { "http://snomed.info/sct#306226009", ReferralToMentalHealthCounselingService }, 
+      { "306227000", ReferralForMentalHealthCounseling }, 
+      { "http://snomed.info/sct#306227000", ReferralForMentalHealthCounseling }, 
+      { "306228005", ReferralForDiagnosticInvestigation }, 
+      { "http://snomed.info/sct#306228005", ReferralForDiagnosticInvestigation }, 
+      { "306229002", ReferralForDomiciliaryVisit }, 
+      { "http://snomed.info/sct#306229002", ReferralForDomiciliaryVisit }, 
+      { "306230007", ReferralForDermatologyDV }, 
+      { "http://snomed.info/sct#306230007", ReferralForDermatologyDV }, 
+      { "306231006", ReferralForGeneralMedicalDomiciliaryVisit }, 
+      { "http://snomed.info/sct#306231006", ReferralForGeneralMedicalDomiciliaryVisit }, 
+      { "306232004", ReferralForGeneralSurgeryDV }, 
+      { "http://snomed.info/sct#306232004", ReferralForGeneralSurgeryDV }, 
+      { "306233009", ReferralForCareOfTheElderlyDomiciliaryVisit }, 
+      { "http://snomed.info/sct#306233009", ReferralForCareOfTheElderlyDomiciliaryVisit }, 
+      { "306234003", ReferralForMentalIllnessDomiciliaryVisit }, 
+      { "http://snomed.info/sct#306234003", ReferralForMentalIllnessDomiciliaryVisit }, 
+      { "306235002", ReferralToEndoscopyService }, 
+      { "http://snomed.info/sct#306235002", ReferralToEndoscopyService }, 
+      { "306236001", ReferralToOpenAccessService }, 
+      { "http://snomed.info/sct#306236001", ReferralToOpenAccessService }, 
+      { "306237005", ReferralForPalliativeCare }, 
+      { "http://snomed.info/sct#306237005", ReferralForPalliativeCare }, 
+      { "306238000", ReferralToSocialServices }, 
+      { "http://snomed.info/sct#306238000", ReferralToSocialServices }, 
+      { "306239008", ReferralToSSDCustomerServices }, 
+      { "http://snomed.info/sct#306239008", ReferralToSSDCustomerServices }, 
+      { "306240005", ReferralToSocialServicesDepartmentDutyTeam }, 
+      { "http://snomed.info/sct#306240005", ReferralToSocialServicesDepartmentDutyTeam }, 
+      { "306241009", ReferralToAudiologicalPhysician }, 
+      { "http://snomed.info/sct#306241009", ReferralToAudiologicalPhysician }, 
+      { "306242002", ReferralToAudiologicalScientist }, 
+      { "http://snomed.info/sct#306242002", ReferralToAudiologicalScientist }, 
+      { "306243007", ReferralToCommunityDoctorInAudiology }, 
+      { "http://snomed.info/sct#306243007", ReferralToCommunityDoctorInAudiology }, 
+      { "306244001", ReferralToMedicalTechnicalOfficerInAudiology }, 
+      { "http://snomed.info/sct#306244001", ReferralToMedicalTechnicalOfficerInAudiology }, 
+      { "306245000", ReferralToHearingTherapist }, 
+      { "http://snomed.info/sct#306245000", ReferralToHearingTherapist }, 
+      { "306246004", ReferralToRegisteredHearingAidDispenser }, 
+      { "http://snomed.info/sct#306246004", ReferralToRegisteredHearingAidDispenser }, 
+      { "306247008", ReferralToPediatricAudiologist }, 
+      { "http://snomed.info/sct#306247008", ReferralToPediatricAudiologist }, 
+      { "306248003", ReferralToComplementaryTherapist }, 
+      { "http://snomed.info/sct#306248003", ReferralToComplementaryTherapist }, 
+      { "306249006", ReferralToBereavementCounselor }, 
+      { "http://snomed.info/sct#306249006", ReferralToBereavementCounselor }, 
+      { "306250006", ReferralToGeneticCounselor }, 
+      { "http://snomed.info/sct#306250006", ReferralToGeneticCounselor }, 
+      { "306251005", ReferralToMarriageGuidanceCounselor }, 
+      { "http://snomed.info/sct#306251005", ReferralToMarriageGuidanceCounselor }, 
+      { "306252003", ReferralToMentalHealthCounselor }, 
+      { "http://snomed.info/sct#306252003", ReferralToMentalHealthCounselor }, 
+      { "306253008", ReferralToDoctor }, 
+      { "http://snomed.info/sct#306253008", ReferralToDoctor }, 
+      { "306254002", ReferToCasualtyOfficer }, 
+      { "http://snomed.info/sct#306254002", ReferToCasualtyOfficer }, 
+      { "306255001", ReferralToAnesthetist }, 
+      { "http://snomed.info/sct#306255001", ReferralToAnesthetist }, 
+      { "306256000", ReferToRadiotherapist }, 
+      { "http://snomed.info/sct#306256000", ReferToRadiotherapist }, 
+      { "306257009", ReferralToFamilyPlanningDoctor }, 
+      { "http://snomed.info/sct#306257009", ReferralToFamilyPlanningDoctor }, 
+      { "306258004", ReferralToITUSpecialist }, 
+      { "http://snomed.info/sct#306258004", ReferralToITUSpecialist }, 
+      { "306259007", ReferralToAdultIntensiveCareSpecialist }, 
+      { "http://snomed.info/sct#306259007", ReferralToAdultIntensiveCareSpecialist }, 
+      { "306260002", ReferralToPediatricIntensiveCareSpecialist }, 
+      { "http://snomed.info/sct#306260002", ReferralToPediatricIntensiveCareSpecialist }, 
+      { "306261003", ReferralToCommunityPediatrician }, 
+      { "http://snomed.info/sct#306261003", ReferralToCommunityPediatrician }, 
+      { "306262005", ReferralToNeonatologist }, 
+      { "http://snomed.info/sct#306262005", ReferralToNeonatologist }, 
+      { "306263000", ReferralToPediatricNeurologist }, 
+      { "http://snomed.info/sct#306263000", ReferralToPediatricNeurologist }, 
+      { "306264006", ReferralToPediatricOncologist }, 
+      { "http://snomed.info/sct#306264006", ReferralToPediatricOncologist }, 
+      { "306265007", ReferralToPainManagementSpecialist }, 
+      { "http://snomed.info/sct#306265007", ReferralToPainManagementSpecialist }, 
+      { "306266008", ReferralToPathologist }, 
+      { "http://snomed.info/sct#306266008", ReferralToPathologist }, 
+      { "306267004", ReferralToBloodTransfusionDoctor }, 
+      { "http://snomed.info/sct#306267004", ReferralToBloodTransfusionDoctor }, 
+      { "306268009", ReferralToChemicalPathologist }, 
+      { "http://snomed.info/sct#306268009", ReferralToChemicalPathologist }, 
+      { "306269001", ReferralToGeneralPathologist }, 
+      { "http://snomed.info/sct#306269001", ReferralToGeneralPathologist }, 
+      { "306270000", ReferralToMedicalMicrobiologist }, 
+      { "http://snomed.info/sct#306270000", ReferralToMedicalMicrobiologist }, 
+      { "306271001", ReferralToNeuropathologist }, 
+      { "http://snomed.info/sct#306271001", ReferralToNeuropathologist }, 
+      { "306272008", ReferralToClinicalAllergist }, 
+      { "http://snomed.info/sct#306272008", ReferralToClinicalAllergist }, 
+      { "306273003", ReferralToChestPhysician }, 
+      { "http://snomed.info/sct#306273003", ReferralToChestPhysician }, 
+      { "306274009", ReferralToThoracicPhysician }, 
+      { "http://snomed.info/sct#306274009", ReferralToThoracicPhysician }, 
+      { "306275005", ReferralToRespiratoryPhysician }, 
+      { "http://snomed.info/sct#306275005", ReferralToRespiratoryPhysician }, 
+      { "306276006", ReferralToClinicalNeurophysiologist }, 
+      { "http://snomed.info/sct#306276006", ReferralToClinicalNeurophysiologist }, 
+      { "306277002", ReferralToClinicalPhysiologist }, 
+      { "http://snomed.info/sct#306277002", ReferralToClinicalPhysiologist }, 
+      { "306278007", ReferralToEndocrinologist }, 
+      { "http://snomed.info/sct#306278007", ReferralToEndocrinologist }, 
+      { "306279004", ReferralToClinicalGeneticist }, 
+      { "http://snomed.info/sct#306279004", ReferralToClinicalGeneticist }, 
+      { "306280001", ReferralToClinicalCytogeneticist }, 
+      { "http://snomed.info/sct#306280001", ReferralToClinicalCytogeneticist }, 
+      { "306281002", ReferralToClinicalMolecularGeneticist }, 
+      { "http://snomed.info/sct#306281002", ReferralToClinicalMolecularGeneticist }, 
+      { "306282009", ReferralToSexuallyTransmittableDiseasesPhysician }, 
+      { "http://snomed.info/sct#306282009", ReferralToSexuallyTransmittableDiseasesPhysician }, 
+      { "306284005", ReferralToInfectiousDiseasesPhysician }, 
+      { "http://snomed.info/sct#306284005", ReferralToInfectiousDiseasesPhysician }, 
+      { "306285006", ReferralToMedicalOphthalmologist }, 
+      { "http://snomed.info/sct#306285006", ReferralToMedicalOphthalmologist }, 
+      { "306286007", ReferralToNephrologist }, 
+      { "http://snomed.info/sct#306286007", ReferralToNephrologist }, 
+      { "306287003", ReferralToNuclearMedicinePhysician }, 
+      { "http://snomed.info/sct#306287003", ReferralToNuclearMedicinePhysician }, 
+      { "306288008", ReferralToPalliativeCarePhysician }, 
+      { "http://snomed.info/sct#306288008", ReferralToPalliativeCarePhysician }, 
+      { "306289000", ReferralToRehabilitationPhysician }, 
+      { "http://snomed.info/sct#306289000", ReferralToRehabilitationPhysician }, 
+      { "306290009", ReferralToRheumatologist }, 
+      { "http://snomed.info/sct#306290009", ReferralToRheumatologist }, 
+      { "306291008", ReferralToChildAndAdolescentPsychiatrist }, 
+      { "http://snomed.info/sct#306291008", ReferralToChildAndAdolescentPsychiatrist }, 
+      { "306292001", ReferralToForensicPsychiatrist }, 
+      { "http://snomed.info/sct#306292001", ReferralToForensicPsychiatrist }, 
+      { "306293006", ReferralToLiaisonPsychiatrist }, 
+      { "http://snomed.info/sct#306293006", ReferralToLiaisonPsychiatrist }, 
+      { "306294000", ReferralToPsychiatristForMentalHandicap }, 
+      { "http://snomed.info/sct#306294000", ReferralToPsychiatristForMentalHandicap }, 
+      { "306295004", ReferralToRehabilitationPsychiatrist }, 
+      { "http://snomed.info/sct#306295004", ReferralToRehabilitationPsychiatrist }, 
+      { "306296003", ReferralToPublicHealthPhysician }, 
+      { "http://snomed.info/sct#306296003", ReferralToPublicHealthPhysician }, 
+      { "306297007", ReferralToObstetricianAndGynecologist }, 
+      { "http://snomed.info/sct#306297007", ReferralToObstetricianAndGynecologist }, 
+      { "306298002", ReferralToOccupationalHealthPhysician }, 
+      { "http://snomed.info/sct#306298002", ReferralToOccupationalHealthPhysician }, 
+      { "306299005", ReferralToRadiologist }, 
+      { "http://snomed.info/sct#306299005", ReferralToRadiologist }, 
+      { "306300002", ReferralToBreastSurgeon }, 
+      { "http://snomed.info/sct#306300002", ReferralToBreastSurgeon }, 
+      { "306301003", ReferralToThoracicSurgeon }, 
+      { "http://snomed.info/sct#306301003", ReferralToThoracicSurgeon }, 
+      { "306302005", ReferralToCardiacSurgeon }, 
+      { "http://snomed.info/sct#306302005", ReferralToCardiacSurgeon }, 
+      { "306303000", ReferralToDentalSurgeon }, 
+      { "http://snomed.info/sct#306303000", ReferralToDentalSurgeon }, 
+      { "306304006", ReferralToOrthodontist }, 
+      { "http://snomed.info/sct#306304006", ReferralToOrthodontist }, 
+      { "306305007", ReferralToPediatricDentist }, 
+      { "http://snomed.info/sct#306305007", ReferralToPediatricDentist }, 
+      { "306306008", ReferralToRestorativeDentist }, 
+      { "http://snomed.info/sct#306306008", ReferralToRestorativeDentist }, 
+      { "306307004", ReferralToEndocrineSurgeon }, 
+      { "http://snomed.info/sct#306307004", ReferralToEndocrineSurgeon }, 
+      { "306308009", ReferralToGISurgeon }, 
+      { "http://snomed.info/sct#306308009", ReferralToGISurgeon }, 
+      { "306309001", ReferralToGeneralGastrointestinalSurgeon }, 
+      { "http://snomed.info/sct#306309001", ReferralToGeneralGastrointestinalSurgeon }, 
+      { "306310006", ReferralToUpperGISurgeon }, 
+      { "http://snomed.info/sct#306310006", ReferralToUpperGISurgeon }, 
+      { "306311005", ReferralToColorectalSurgeon }, 
+      { "http://snomed.info/sct#306311005", ReferralToColorectalSurgeon }, 
+      { "306312003", ReferralToHandSurgeon }, 
+      { "http://snomed.info/sct#306312003", ReferralToHandSurgeon }, 
+      { "306313008", ReferralToHepatobiliarySurgeon }, 
+      { "http://snomed.info/sct#306313008", ReferralToHepatobiliarySurgeon }, 
+      { "306314002", ReferralToPancreaticSurgeon }, 
+      { "http://snomed.info/sct#306314002", ReferralToPancreaticSurgeon }, 
+      { "306315001", ReferralToPlasticSurgeon }, 
+      { "http://snomed.info/sct#306315001", ReferralToPlasticSurgeon }, 
+      { "306316000", ReferralToTransplantSurgeon }, 
+      { "http://snomed.info/sct#306316000", ReferralToTransplantSurgeon }, 
+      { "306317009", ReferralToTraumaSurgeon }, 
+      { "http://snomed.info/sct#306317009", ReferralToTraumaSurgeon }, 
+      { "306318004", ReferralToUrologist }, 
+      { "http://snomed.info/sct#306318004", ReferralToUrologist }, 
+      { "306319007", ReferralToAgencyNurse }, 
+      { "http://snomed.info/sct#306319007", ReferralToAgencyNurse }, 
+      { "306320001", ReferralToClinicalNurseSpecialist }, 
+      { "http://snomed.info/sct#306320001", ReferralToClinicalNurseSpecialist }, 
+      { "306321002", ReferralToBreastCareNurse }, 
+      { "http://snomed.info/sct#306321002", ReferralToBreastCareNurse }, 
+      { "306322009", ReferralToCardiacRehabilitationNurse }, 
+      { "http://snomed.info/sct#306322009", ReferralToCardiacRehabilitationNurse }, 
+      { "306323004", ReferralToContactTracingNurse }, 
+      { "http://snomed.info/sct#306323004", ReferralToContactTracingNurse }, 
+      { "306324005", ReferralToContinenceNurse }, 
+      { "http://snomed.info/sct#306324005", ReferralToContinenceNurse }, 
+      { "306325006", ReferralToGenitourinaryNurse }, 
+      { "http://snomed.info/sct#306325006", ReferralToGenitourinaryNurse }, 
+      { "306326007", ReferralToMarieCurieNurse }, 
+      { "http://snomed.info/sct#306326007", ReferralToMarieCurieNurse }, 
+      { "306327003", ReferralToLymphedemaCareNurse }, 
+      { "http://snomed.info/sct#306327003", ReferralToLymphedemaCareNurse }, 
+      { "306328008", ReferralToNurseBehavioralTherapist }, 
+      { "http://snomed.info/sct#306328008", ReferralToNurseBehavioralTherapist }, 
+      { "306329000", ReferralToNursePsychotherapist }, 
+      { "http://snomed.info/sct#306329000", ReferralToNursePsychotherapist }, 
+      { "306330005", ReferralToPainManagementNurse }, 
+      { "http://snomed.info/sct#306330005", ReferralToPainManagementNurse }, 
+      { "306331009", ReferralToPediatricNurse }, 
+      { "http://snomed.info/sct#306331009", ReferralToPediatricNurse }, 
+      { "306332002", ReferralToPsychiatricNurse }, 
+      { "http://snomed.info/sct#306332002", ReferralToPsychiatricNurse }, 
+      { "306333007", ReferralToOncologyNurse }, 
+      { "http://snomed.info/sct#306333007", ReferralToOncologyNurse }, 
+      { "306334001", ReferralToRheumatologyNurseSpecialist }, 
+      { "http://snomed.info/sct#306334001", ReferralToRheumatologyNurseSpecialist }, 
+      { "306335000", ReferralToCommunityNurse }, 
+      { "http://snomed.info/sct#306335000", ReferralToCommunityNurse }, 
+      { "306336004", ReferralToCompanyNurse }, 
+      { "http://snomed.info/sct#306336004", ReferralToCompanyNurse }, 
+      { "306337008", ReferralToLiaisonNurse }, 
+      { "http://snomed.info/sct#306337008", ReferralToLiaisonNurse }, 
+      { "306338003", ReferralToNursePractitioner }, 
+      { "http://snomed.info/sct#306338003", ReferralToNursePractitioner }, 
+      { "306339006", ReferralToOutreachNurse }, 
+      { "http://snomed.info/sct#306339006", ReferralToOutreachNurse }, 
+      { "306340008", ReferralToResearchNurse }, 
+      { "http://snomed.info/sct#306340008", ReferralToResearchNurse }, 
+      { "306341007", ReferralToCommunityMidwife }, 
+      { "http://snomed.info/sct#306341007", ReferralToCommunityMidwife }, 
+      { "306342000", ReferralToHospitalBasedMidwife }, 
+      { "http://snomed.info/sct#306342000", ReferralToHospitalBasedMidwife }, 
+      { "306343005", ReferralToPsychotherapist }, 
+      { "http://snomed.info/sct#306343005", ReferralToPsychotherapist }, 
+      { "306344004", ReferralToProfessionalAlliedToMedicine }, 
+      { "http://snomed.info/sct#306344004", ReferralToProfessionalAlliedToMedicine }, 
+      { "306345003", ReferralToArtsTherapist }, 
+      { "http://snomed.info/sct#306345003", ReferralToArtsTherapist }, 
+      { "306347006", ReferralToDanceTherapist }, 
+      { "http://snomed.info/sct#306347006", ReferralToDanceTherapist }, 
+      { "306348001", ReferralToDramaTherapist }, 
+      { "http://snomed.info/sct#306348001", ReferralToDramaTherapist }, 
+      { "306349009", ReferralToMusicTherapist }, 
+      { "http://snomed.info/sct#306349009", ReferralToMusicTherapist }, 
+      { "306350009", ReferralToPlayTherapist }, 
+      { "http://snomed.info/sct#306350009", ReferralToPlayTherapist }, 
+      { "306351008", ReferralToCommunityBasedPodiatrist }, 
+      { "http://snomed.info/sct#306351008", ReferralToCommunityBasedPodiatrist }, 
+      { "306352001", ReferralToHospitalBasedPodiatrist }, 
+      { "http://snomed.info/sct#306352001", ReferralToHospitalBasedPodiatrist }, 
+      { "306353006", ReferralToCommunityDietitian }, 
+      { "http://snomed.info/sct#306353006", ReferralToCommunityDietitian }, 
+      { "306354000", ReferralToHospitalBasedDietitian }, 
+      { "http://snomed.info/sct#306354000", ReferralToHospitalBasedDietitian }, 
+      { "306355004", ReferralToCommunityOccupationalTherapist }, 
+      { "http://snomed.info/sct#306355004", ReferralToCommunityOccupationalTherapist }, 
+      { "306356003", ReferralToSocialServicesDepartmentOccupationalTherapist }, 
+      { "http://snomed.info/sct#306356003", ReferralToSocialServicesDepartmentOccupationalTherapist }, 
+      { "306357007", ReferralToHospitalOccupationalTherapist }, 
+      { "http://snomed.info/sct#306357007", ReferralToHospitalOccupationalTherapist }, 
+      { "306358002", ReferralToCommunityBasedPhysiotherapist }, 
+      { "http://snomed.info/sct#306358002", ReferralToCommunityBasedPhysiotherapist }, 
+      { "306359005", ReferralToHospitalPhysiotherapist }, 
+      { "http://snomed.info/sct#306359005", ReferralToHospitalPhysiotherapist }, 
+      { "306360000", ReferralToCommunityBasedSpeechAndLanguageTherapist }, 
+      { "http://snomed.info/sct#306360000", ReferralToCommunityBasedSpeechAndLanguageTherapist }, 
+      { "306361001", ReferralToHospitalSpeechAndLanguageTherapist }, 
+      { "http://snomed.info/sct#306361001", ReferralToHospitalSpeechAndLanguageTherapist }, 
+      { "306362008", ReferralToPharmacist }, 
+      { "http://snomed.info/sct#306362008", ReferralToPharmacist }, 
+      { "306363003", ReferralToRadiographer }, 
+      { "http://snomed.info/sct#306363003", ReferralToRadiographer }, 
+      { "306364009", ReferralToTherapeuticRadiographer }, 
+      { "http://snomed.info/sct#306364009", ReferralToTherapeuticRadiographer }, 
+      { "306365005", ReferralToDiagnosticRadiographer }, 
+      { "http://snomed.info/sct#306365005", ReferralToDiagnosticRadiographer }, 
+      { "306366006", ReferralToSocialServicesDepartmentSocialWorker }, 
+      { "http://snomed.info/sct#306366006", ReferralToSocialServicesDepartmentSocialWorker }, 
+      { "306367002", ReferralToSSDCareManager }, 
+      { "http://snomed.info/sct#306367002", ReferralToSSDCareManager }, 
+      { "306368007", ReferralToTeacher }, 
+      { "http://snomed.info/sct#306368007", ReferralToTeacher }, 
+      { "306369004", ReferralToLipSpeechReadingTeacher }, 
+      { "http://snomed.info/sct#306369004", ReferralToLipSpeechReadingTeacher }, 
+      { "306370003", ReferralToTeacherOfTheDeaf }, 
+      { "http://snomed.info/sct#306370003", ReferralToTeacherOfTheDeaf }, 
+      { "306371004", ReferralToTeacherOfTheHearingImpaired }, 
+      { "http://snomed.info/sct#306371004", ReferralToTeacherOfTheHearingImpaired }, 
+      { "306722007", ReferralByAgencyNurse }, 
+      { "http://snomed.info/sct#306722007", ReferralByAgencyNurse }, 
+      { "306723002", ReferralFromLiaisonNurse }, 
+      { "http://snomed.info/sct#306723002", ReferralFromLiaisonNurse }, 
+      { "306724008", ReferralByNursePractitioner }, 
+      { "http://snomed.info/sct#306724008", ReferralByNursePractitioner }, 
+      { "306725009", ReferralFromOutreachNurse }, 
+      { "http://snomed.info/sct#306725009", ReferralFromOutreachNurse }, 
+      { "306726005", ReferralByResearchNurse }, 
+      { "http://snomed.info/sct#306726005", ReferralByResearchNurse }, 
+      { "306730008", ReferralForGastroscopy }, 
+      { "http://snomed.info/sct#306730008", ReferralForGastroscopy }, 
+      { "306734004", ReferralByGeneralDentalSurgeon }, 
+      { "http://snomed.info/sct#306734004", ReferralByGeneralDentalSurgeon }, 
+      { "306735003", ReferralToGeneralDentalSurgeryService }, 
+      { "http://snomed.info/sct#306735003", ReferralToGeneralDentalSurgeryService }, 
+      { "306736002", ReferralToGeneralDentalSurgeon }, 
+      { "http://snomed.info/sct#306736002", ReferralToGeneralDentalSurgeon }, 
+      { "306802002", ReferralToStrokeService }, 
+      { "http://snomed.info/sct#306802002", ReferralToStrokeService }, 
+      { "306929006", ReferralToHandSurgeryService }, 
+      { "http://snomed.info/sct#306929006", ReferralToHandSurgeryService }, 
+      { "306934005", ReferralToVascularSurgeryService }, 
+      { "http://snomed.info/sct#306934005", ReferralToVascularSurgeryService }, 
+      { "307061004", ReferralByClinicalHematologist }, 
+      { "http://snomed.info/sct#307061004", ReferralByClinicalHematologist }, 
+      { "307063001", ReferralToClinicalHematologist }, 
+      { "http://snomed.info/sct#307063001", ReferralToClinicalHematologist }, 
+      { "307373005", ReferralToAcutePainService }, 
+      { "http://snomed.info/sct#307373005", ReferralToAcutePainService }, 
+      { "307374004", ReferralToRehabilitationService }, 
+      { "http://snomed.info/sct#307374004", ReferralToRehabilitationService }, 
+      { "307375003", ReferralToHeadInjuryRehabilitation }, 
+      { "http://snomed.info/sct#307375003", ReferralToHeadInjuryRehabilitation }, 
+      { "307376002", ReferralToCommunityRehabilitation }, 
+      { "http://snomed.info/sct#307376002", ReferralToCommunityRehabilitation }, 
+      { "307377006", ReferralToYoungDisabledService }, 
+      { "http://snomed.info/sct#307377006", ReferralToYoungDisabledService }, 
+      { "307378001", ReferralToAssessmentService }, 
+      { "http://snomed.info/sct#307378001", ReferralToAssessmentService }, 
+      { "307379009", ReferralToChildAssessmentService }, 
+      { "http://snomed.info/sct#307379009", ReferralToChildAssessmentService }, 
+      { "307380007", ReferralToSwallowClinic }, 
+      { "http://snomed.info/sct#307380007", ReferralToSwallowClinic }, 
+      { "307777008", ReferralToVascularSurgeon }, 
+      { "http://snomed.info/sct#307777008", ReferralToVascularSurgeon }, 
+      { "307834000", ReferralByPerson }, 
+      { "http://snomed.info/sct#307834000", ReferralByPerson }, 
+      { "307835004", ReferralByService }, 
+      { "http://snomed.info/sct#307835004", ReferralByService }, 
+      { "307836003", ReferralByEstablishment }, 
+      { "http://snomed.info/sct#307836003", ReferralByEstablishment }, 
+      { "307837007", ReferralToPerson }, 
+      { "http://snomed.info/sct#307837007", ReferralToPerson }, 
+      { "308250002", ReferralToComplementaryTherapyService }, 
+      { "http://snomed.info/sct#308250002", ReferralToComplementaryTherapyService }, 
+      { "308435009", ReferralToPracticeNurse }, 
+      { "http://snomed.info/sct#308435009", ReferralToPracticeNurse }, 
+      { "308436005", ReferToDistrictNurse }, 
+      { "http://snomed.info/sct#308436005", ReferToDistrictNurse }, 
+      { "308439003", ReferralToMidwife }, 
+      { "http://snomed.info/sct#308439003", ReferralToMidwife }, 
+      { "308440001", ReferralToSocialWorker }, 
+      { "http://snomed.info/sct#308440001", ReferralToSocialWorker }, 
+      { "308447003", ReferToPhysiotherapist }, 
+      { "http://snomed.info/sct#308447003", ReferToPhysiotherapist }, 
+      { "308448008", ReferralToCounselor }, 
+      { "http://snomed.info/sct#308448008", ReferralToCounselor }, 
+      { "308449000", ReferToChiropractor }, 
+      { "http://snomed.info/sct#308449000", ReferToChiropractor }, 
+      { "308450000", ReferralToOsteopath }, 
+      { "http://snomed.info/sct#308450000", ReferralToOsteopath }, 
+      { "308451001", ReferralToPodiatrist }, 
+      { "http://snomed.info/sct#308451001", ReferralToPodiatrist }, 
+      { "308452008", ReferToSpeechTherapist }, 
+      { "http://snomed.info/sct#308452008", ReferToSpeechTherapist }, 
+      { "308453003", ReferralToOccupationalTherapist }, 
+      { "http://snomed.info/sct#308453003", ReferralToOccupationalTherapist }, 
+      { "308454009", ReferralToOrthoptist }, 
+      { "http://snomed.info/sct#308454009", ReferralToOrthoptist }, 
+      { "308455005", ReferToOrthotist }, 
+      { "http://snomed.info/sct#308455005", ReferToOrthotist }, 
+      { "308456006", ReferralToAudiologist }, 
+      { "http://snomed.info/sct#308456006", ReferralToAudiologist }, 
+      { "308457002", ReferToStomaNurse }, 
+      { "http://snomed.info/sct#308457002", ReferToStomaNurse }, 
+      { "308458007", ReferralToDiabeticLiaisonNurse }, 
+      { "http://snomed.info/sct#308458007", ReferralToDiabeticLiaisonNurse }, 
+      { "308459004", ReferralToPsychologist }, 
+      { "http://snomed.info/sct#308459004", ReferralToPsychologist }, 
+      { "308460009", ReferralToColposcopyService }, 
+      { "http://snomed.info/sct#308460009", ReferralToColposcopyService }, 
+      { "308461008", ReferralToRadiologyService }, 
+      { "http://snomed.info/sct#308461008", ReferralToRadiologyService }, 
+      { "308462001", ReferralToPathologyService }, 
+      { "http://snomed.info/sct#308462001", ReferralToPathologyService }, 
+      { "308463006", ReferToCommunityDayCenter }, 
+      { "http://snomed.info/sct#308463006", ReferToCommunityDayCenter }, 
+      { "308464000", ReferToDayHospital }, 
+      { "http://snomed.info/sct#308464000", ReferToDayHospital }, 
+      { "308465004", ReferralToOptometrist }, 
+      { "http://snomed.info/sct#308465004", ReferralToOptometrist }, 
+      { "308466003", ReferToSchoolNurse }, 
+      { "http://snomed.info/sct#308466003", ReferToSchoolNurse }, 
+      { "308468002", ReferralToCoroner }, 
+      { "http://snomed.info/sct#308468002", ReferralToCoroner }, 
+      { "308469005", ReferralToGeneticist }, 
+      { "http://snomed.info/sct#308469005", ReferralToGeneticist }, 
+      { "308470006", ReferralToGeneralPhysician }, 
+      { "http://snomed.info/sct#308470006", ReferralToGeneralPhysician }, 
+      { "308471005", ReferralToCardiologist }, 
+      { "http://snomed.info/sct#308471005", ReferralToCardiologist }, 
+      { "308472003", ReferralToDermatologist }, 
+      { "http://snomed.info/sct#308472003", ReferralToDermatologist }, 
+      { "308473008", ReferralToClinicalImmunologist }, 
+      { "http://snomed.info/sct#308473008", ReferralToClinicalImmunologist }, 
+      { "308474002", ReferralToNeurologist }, 
+      { "http://snomed.info/sct#308474002", ReferralToNeurologist }, 
+      { "308475001", ReferralToCareOfTheElderlyPhysician }, 
+      { "http://snomed.info/sct#308475001", ReferralToCareOfTheElderlyPhysician }, 
+      { "308476000", ReferralToGastroenterologist }, 
+      { "http://snomed.info/sct#308476000", ReferralToGastroenterologist }, 
+      { "308477009", ReferralToPsychiatrist }, 
+      { "http://snomed.info/sct#308477009", ReferralToPsychiatrist }, 
+      { "308478004", ReferralToGeneralSurgeon }, 
+      { "http://snomed.info/sct#308478004", ReferralToGeneralSurgeon }, 
+      { "308479007", ReferralToOphthalmologist }, 
+      { "http://snomed.info/sct#308479007", ReferralToOphthalmologist }, 
+      { "308480005", ReferralToEarNoseAndThroatSurgeon }, 
+      { "http://snomed.info/sct#308480005", ReferralToEarNoseAndThroatSurgeon }, 
+      { "308481009", ReferralToOrthopedicSurgeon }, 
+      { "http://snomed.info/sct#308481009", ReferralToOrthopedicSurgeon }, 
+      { "308482002", ReferralToNeurosurgeon }, 
+      { "http://snomed.info/sct#308482002", ReferralToNeurosurgeon }, 
+      { "308483007", ReferralToPediatricSurgeon }, 
+      { "http://snomed.info/sct#308483007", ReferralToPediatricSurgeon }, 
+      { "308484001", ReferralToObstetrician }, 
+      { "http://snomed.info/sct#308484001", ReferralToObstetrician }, 
+      { "308485000", ReferralToGynecologist }, 
+      { "http://snomed.info/sct#308485000", ReferralToGynecologist }, 
+      { "309046007", PrivateReferralToSurgeon }, 
+      { "http://snomed.info/sct#309046007", PrivateReferralToSurgeon }, 
+      { "309619003", ChildReferralForAudiology }, 
+      { "http://snomed.info/sct#309619003", ChildReferralForAudiology }, 
+      { "309620009", ChildReferralForAudiometry }, 
+      { "http://snomed.info/sct#309620009", ChildReferralForAudiometry }, 
+      { "309622001", ChildReferralSpeechTherapy }, 
+      { "http://snomed.info/sct#309622001", ChildReferralSpeechTherapy }, 
+      { "309623006", ChildReferralToOptician }, 
+      { "http://snomed.info/sct#309623006", ChildReferralToOptician }, 
+      { "309624000", ChildReferralOphthalmology }, 
+      { "http://snomed.info/sct#309624000", ChildReferralOphthalmology }, 
+      { "309625004", ReferralToPsychologyService }, 
+      { "http://snomed.info/sct#309625004", ReferralToPsychologyService }, 
+      { "309626003", ChildReferralSchoolPsychologist }, 
+      { "http://snomed.info/sct#309626003", ChildReferralSchoolPsychologist }, 
+      { "309627007", ChildReferralClinicalPsychologist }, 
+      { "http://snomed.info/sct#309627007", ChildReferralClinicalPsychologist }, 
+      { "309628002", ChildReferralPhysiotherapy }, 
+      { "http://snomed.info/sct#309628002", ChildReferralPhysiotherapy }, 
+      { "309629005", ChildReferralCommunityDentist }, 
+      { "http://snomed.info/sct#309629005", ChildReferralCommunityDentist }, 
+      { "309630000", ChildReferralSocialServices }, 
+      { "http://snomed.info/sct#309630000", ChildReferralSocialServices }, 
+      { "310353008", ReferralFor24HourBloodPressureRecording }, 
+      { "http://snomed.info/sct#310353008", ReferralFor24HourBloodPressureRecording }, 
+      { "310354002", ReferralFor24HourECG }, 
+      { "http://snomed.info/sct#310354002", ReferralFor24HourECG }, 
+      { "310355001", ReferralForExerciseECG }, 
+      { "http://snomed.info/sct#310355001", ReferralForExerciseECG }, 
+      { "310434002", SelfReferralToService }, 
+      { "http://snomed.info/sct#310434002", SelfReferralToService }, 
+      { "310449005", ReferralToHospital }, 
+      { "http://snomed.info/sct#310449005", ReferralToHospital }, 
+      { "310514000", ReferralByMedicalOncologist }, 
+      { "http://snomed.info/sct#310514000", ReferralByMedicalOncologist }, 
+      { "310515004", ReferralToMedicalOncologist }, 
+      { "http://snomed.info/sct#310515004", ReferralToMedicalOncologist }, 
+      { "310519005", ReferralToApplianceService }, 
+      { "http://snomed.info/sct#310519005", ReferralToApplianceService }, 
+      { "312047007", ReferralToCosmeticCamouflageService }, 
+      { "http://snomed.info/sct#312047007", ReferralToCosmeticCamouflageService }, 
+      { "312051009", ReferralToCharitableService }, 
+      { "http://snomed.info/sct#312051009", ReferralToCharitableService }, 
+      { "312487009", ReferralToPediatricCardiologist }, 
+      { "http://snomed.info/sct#312487009", ReferralToPediatricCardiologist }, 
+      { "312488004", ReferralToCommunityChildHealthDoctor }, 
+      { "http://snomed.info/sct#312488004", ReferralToCommunityChildHealthDoctor }, 
+      { "312856000", ReferralToDiabetesNurse }, 
+      { "http://snomed.info/sct#312856000", ReferralToDiabetesNurse }, 
+      { "313186001", ReferralToBreastClinic }, 
+      { "http://snomed.info/sct#313186001", ReferralToBreastClinic }, 
+      { "315015006", ReferralToRapidAccessChestPainClinic }, 
+      { "http://snomed.info/sct#315015006", ReferralToRapidAccessChestPainClinic }, 
+      { "315232003", ReferralToStopSmokingClinic }, 
+      { "http://snomed.info/sct#315232003", ReferralToStopSmokingClinic }, 
+      { "31751007", SocialServiceReferralOfHomePatient }, 
+      { "http://snomed.info/sct#31751007", SocialServiceReferralOfHomePatient }, 
+      { "384711009", ReferralToMaxillofacialSurgeryService }, 
+      { "http://snomed.info/sct#384711009", ReferralToMaxillofacialSurgeryService }, 
+      { "384712002", ReferralToOralSurgeryService }, 
+      { "http://snomed.info/sct#384712002", ReferralToOralSurgeryService }, 
+      { "38670004", PatientReferralForAlcoholismRehabilitation }, 
+      { "http://snomed.info/sct#38670004", PatientReferralForAlcoholismRehabilitation }, 
+      { "387624005", ReferralByOptician }, 
+      { "http://snomed.info/sct#387624005", ReferralByOptician }, 
+      { "387625006", ReferralByOptometrist }, 
+      { "http://snomed.info/sct#387625006", ReferralByOptometrist }, 
+      { "390791001", ReferralForEchocardiography }, 
+      { "http://snomed.info/sct#390791001", ReferralForEchocardiography }, 
+      { "390797002", ReferralToRespiratoryRapidResponseTeam }, 
+      { "http://snomed.info/sct#390797002", ReferralToRespiratoryRapidResponseTeam }, 
+      { "390807002", ReferralToPrivateStateRegisteredPodiatryService }, 
+      { "http://snomed.info/sct#390807002", ReferralToPrivateStateRegisteredPodiatryService }, 
+      { "390841005", ReferralToRetinalScreener }, 
+      { "http://snomed.info/sct#390841005", ReferralToRetinalScreener }, 
+      { "390857005", ReferralToCommunityAlcoholTeam }, 
+      { "http://snomed.info/sct#390857005", ReferralToCommunityAlcoholTeam }, 
+      { "390864007", ReferralForExerciseTherapy }, 
+      { "http://snomed.info/sct#390864007", ReferralForExerciseTherapy }, 
+      { "390866009", ReferralToMentalHealthTeam }, 
+      { "http://snomed.info/sct#390866009", ReferralToMentalHealthTeam }, 
+      { "390881003", ReferralToGPBetaBlockerManagement }, 
+      { "http://snomed.info/sct#390881003", ReferralToGPBetaBlockerManagement }, 
+      { "390882005", ReferralToGPAspirinManagement }, 
+      { "http://snomed.info/sct#390882005", ReferralToGPAspirinManagement }, 
+      { "390883000", ReferralToGPLipidManagement }, 
+      { "http://snomed.info/sct#390883000", ReferralToGPLipidManagement }, 
+      { "390890005", ReferToDiabeticFootScreener }, 
+      { "http://snomed.info/sct#390890005", ReferToDiabeticFootScreener }, 
+      { "390893007", ReferralToPhysicalActivityProgram }, 
+      { "http://snomed.info/sct#390893007", ReferralToPhysicalActivityProgram }, 
+      { "390983001", ReferralForDualEnergyXRayPhotonAbsorptiometryScan }, 
+      { "http://snomed.info/sct#390983001", ReferralForDualEnergyXRayPhotonAbsorptiometryScan }, 
+      { "390984007", ReferralForQuantitativeUltrasoundScan }, 
+      { "http://snomed.info/sct#390984007", ReferralForQuantitativeUltrasoundScan }, 
+      { "391033001", ReferToOsteoporosisSpecialist }, 
+      { "http://snomed.info/sct#391033001", ReferToOsteoporosisSpecialist }, 
+      { "391034007", ReferForFallsAssessment }, 
+      { "http://snomed.info/sct#391034007", ReferForFallsAssessment }, 
+      { "391104004", ReferralToSoftTissueInjuryClinic }, 
+      { "http://snomed.info/sct#391104004", ReferralToSoftTissueInjuryClinic }, 
+      { "395700008", ReferralToSmokingCessationAdvisor }, 
+      { "http://snomed.info/sct#395700008", ReferralToSmokingCessationAdvisor }, 
+      { "396104000", ReferralToUrologyServiceForHematuria }, 
+      { "http://snomed.info/sct#396104000", ReferralToUrologyServiceForHematuria }, 
+      { "396150002", ReferralForSubstanceAbuse }, 
+      { "http://snomed.info/sct#396150002", ReferralForSubstanceAbuse }, 
+      { "396151003", ReferralToUrologyServiceForElevatedPSA }, 
+      { "http://snomed.info/sct#396151003", ReferralToUrologyServiceForElevatedPSA }, 
+      { "396158009", ReferralForTherapeuticAbortion }, 
+      { "http://snomed.info/sct#396158009", ReferralForTherapeuticAbortion }, 
+      { "396159001", ReferralToRheumatologyServiceForOsteoarthritis }, 
+      { "http://snomed.info/sct#396159001", ReferralToRheumatologyServiceForOsteoarthritis }, 
+      { "396185002", ReferralToUrologyServiceForRecurrentFemaleUrinaryTractInfection }, 
+      { "http://snomed.info/sct#396185002", ReferralToUrologyServiceForRecurrentFemaleUrinaryTractInfection }, 
+      { "397593002", ReferralByEmergencyMedicalAdmissionsUnit }, 
+      { "http://snomed.info/sct#397593002", ReferralByEmergencyMedicalAdmissionsUnit }, 
+      { "397603003", ReferralByGeneralDentalPractitioner }, 
+      { "http://snomed.info/sct#397603003", ReferralByGeneralDentalPractitioner }, 
+      { "397654003", ReferralByConsultantDomiciliaryVisit }, 
+      { "http://snomed.info/sct#397654003", ReferralByConsultantDomiciliaryVisit }, 
+      { "397671002", ReferralByConsultant }, 
+      { "http://snomed.info/sct#397671002", ReferralByConsultant }, 
+      { "397684006", ReferralByProsthetist }, 
+      { "http://snomed.info/sct#397684006", ReferralByProsthetist }, 
+      { "397721007", ReferralByAccidentAndEmergency }, 
+      { "http://snomed.info/sct#397721007", ReferralByAccidentAndEmergency }, 
+      { "397722000", ReferralByCommunityDentalService }, 
+      { "http://snomed.info/sct#397722000", ReferralByCommunityDentalService }, 
+      { "398752005", ReferralToWeightMaintenanceRegimenService }, 
+      { "http://snomed.info/sct#398752005", ReferralToWeightMaintenanceRegimenService }, 
+      { "398852003", ReferralToCommunityRetinalScreeningService }, 
+      { "http://snomed.info/sct#398852003", ReferralToCommunityRetinalScreeningService }, 
+      { "398855001", ReferralForEyeUltrasound }, 
+      { "http://snomed.info/sct#398855001", ReferralForEyeUltrasound }, 
+      { "400973003", ReferralToEatingDisordersClinic }, 
+      { "http://snomed.info/sct#400973003", ReferralToEatingDisordersClinic }, 
+      { "400992001", ReferToCommunityPhysiotherapist }, 
+      { "http://snomed.info/sct#400992001", ReferToCommunityPhysiotherapist }, 
+      { "401266006", ReferralToDrugAbuseCounselor }, 
+      { "http://snomed.info/sct#401266006", ReferralToDrugAbuseCounselor }, 
+      { "406158007", ReferralToOralSurgeon }, 
+      { "http://snomed.info/sct#406158007", ReferralToOralSurgeon }, 
+      { "406159004", ReferralToMaxillofacialSurgeon }, 
+      { "http://snomed.info/sct#406159004", ReferralToMaxillofacialSurgeon }, 
+      { "408285001", ReferToPediatricDietitian }, 
+      { "http://snomed.info/sct#408285001", ReferToPediatricDietitian }, 
+      { "408286000", ReferralToFootcareProtectionProgram }, 
+      { "http://snomed.info/sct#408286000", ReferralToFootcareProtectionProgram }, 
+      { "408288004", ReferToMultidisciplinaryFootcareTeam }, 
+      { "http://snomed.info/sct#408288004", ReferToMultidisciplinaryFootcareTeam }, 
+      { "408289007", ReferToWeightManagementProgram }, 
+      { "http://snomed.info/sct#408289007", ReferToWeightManagementProgram }, 
+      { "408342007", ReferralToTissueViabilityNurseSpecialist }, 
+      { "http://snomed.info/sct#408342007", ReferralToTissueViabilityNurseSpecialist }, 
+      { "408383005", ReferralForCataractExtraction }, 
+      { "http://snomed.info/sct#408383005", ReferralForCataractExtraction }, 
+      { "408493004", ReferralForDXAScanOfHipAndSpine }, 
+      { "http://snomed.info/sct#408493004", ReferralForDXAScanOfHipAndSpine }, 
+      { "408494005", ReferralForDXAScanOfForearm }, 
+      { "http://snomed.info/sct#408494005", ReferralForDXAScanOfForearm }, 
+      { "408495006", ReferralForDXAScanOfHeel }, 
+      { "http://snomed.info/sct#408495006", ReferralForDXAScanOfHeel }, 
+      { "408496007", ReferralForQuantitativeUltrasoundScanOfHeel }, 
+      { "http://snomed.info/sct#408496007", ReferralForQuantitativeUltrasoundScanOfHeel }, 
+      { "412712007", ReferralToSexuallyTransmittedInfectionsClinic }, 
+      { "http://snomed.info/sct#412712007", ReferralToSexuallyTransmittedInfectionsClinic }, 
+      { "412717001", ReferralToOsteoporosisClinic }, 
+      { "http://snomed.info/sct#412717001", ReferralToOsteoporosisClinic }, 
+      { "412773009", ReferralToStrokeClinic }, 
+      { "http://snomed.info/sct#412773009", ReferralToStrokeClinic }, 
+      { "413082001", ReferralForCarotidDoppler }, 
+      { "http://snomed.info/sct#413082001", ReferralForCarotidDoppler }, 
+      { "413087007", ReferralToRespiratoryNurseSpecialist }, 
+      { "http://snomed.info/sct#413087007", ReferralToRespiratoryNurseSpecialist }, 
+      { "413125004", ReferralToVoluntaryService }, 
+      { "http://snomed.info/sct#413125004", ReferralToVoluntaryService }, 
+      { "413127007", ReferralToLearningDisabilityTeam }, 
+      { "http://snomed.info/sct#413127007", ReferralToLearningDisabilityTeam }, 
+      { "413159000", ReferralToMusculoskeletalClinic }, 
+      { "http://snomed.info/sct#413159000", ReferralToMusculoskeletalClinic }, 
+      { "413293006", PatientToInitiateFurtherContact }, 
+      { "http://snomed.info/sct#413293006", PatientToInitiateFurtherContact }, 
+      { "414230000", FamilyCarerReferralToDiabetesStructuredEducationProgram }, 
+      { "http://snomed.info/sct#414230000", FamilyCarerReferralToDiabetesStructuredEducationProgram }, 
+      { "415260000", ReferralForMinorSurgery }, 
+      { "http://snomed.info/sct#415260000", ReferralForMinorSurgery }, 
+      { "415261001", ReferralForSpirometry }, 
+      { "http://snomed.info/sct#415261001", ReferralForSpirometry }, 
+      { "415262008", ReferralForTerminationOfPregnancy }, 
+      { "http://snomed.info/sct#415262008", ReferralForTerminationOfPregnancy }, 
+      { "415263003", ReferralForWarfarinMonitoring }, 
+      { "http://snomed.info/sct#415263003", ReferralForWarfarinMonitoring }, 
+      { "415264009", ReferralToAdvancedPrimaryNurse }, 
+      { "http://snomed.info/sct#415264009", ReferralToAdvancedPrimaryNurse }, 
+      { "415265005", ReferralToAsthmaClinic }, 
+      { "http://snomed.info/sct#415265005", ReferralToAsthmaClinic }, 
+      { "415266006", ReferralToCataractClinic }, 
+      { "http://snomed.info/sct#415266006", ReferralToCataractClinic }, 
+      { "415267002", ReferralToCommunityNurseryNurse }, 
+      { "http://snomed.info/sct#415267002", ReferralToCommunityNurseryNurse }, 
+      { "415268007", ReferralToDermatologyNurseSpecialist }, 
+      { "http://snomed.info/sct#415268007", ReferralToDermatologyNurseSpecialist }, 
+      { "415269004", ReferralToDiabetesPreconceptionCounselingClinic }, 
+      { "http://snomed.info/sct#415269004", ReferralToDiabetesPreconceptionCounselingClinic }, 
+      { "415270003", ReferralToDiabetesStructuredEducationProgram }, 
+      { "http://snomed.info/sct#415270003", ReferralToDiabetesStructuredEducationProgram }, 
+      { "415271004", ReferralToEducationService }, 
+      { "http://snomed.info/sct#415271004", ReferralToEducationService }, 
+      { "415272006", ReferralToGenitourinaryClinic }, 
+      { "http://snomed.info/sct#415272006", ReferralToGenitourinaryClinic }, 
+      { "415273001", ReferralToGlaucomaClinic }, 
+      { "http://snomed.info/sct#415273001", ReferralToGlaucomaClinic }, 
+      { "415274007", ReferralToIncontinenceClinic }, 
+      { "http://snomed.info/sct#415274007", ReferralToIncontinenceClinic }, 
+      { "415275008", ReferralToMaleUrologyClinic }, 
+      { "http://snomed.info/sct#415275008", ReferralToMaleUrologyClinic }, 
+      { "415276009", ReferralToMemoryClinic }, 
+      { "http://snomed.info/sct#415276009", ReferralToMemoryClinic }, 
+      { "415277000", ReferralToPediatricEndocrinologist }, 
+      { "http://snomed.info/sct#415277000", ReferralToPediatricEndocrinologist }, 
+      { "415278005", ReferralToPsychosexualClinic }, 
+      { "http://snomed.info/sct#415278005", ReferralToPsychosexualClinic }, 
+      { "415279002", ReferralToRheumatologyClinic }, 
+      { "http://snomed.info/sct#415279002", ReferralToRheumatologyClinic }, 
+      { "416076006", ReferralToPediatricDermatologyService }, 
+      { "http://snomed.info/sct#416076006", ReferralToPediatricDermatologyService }, 
+      { "416116000", ReferralToHomeRegisteredDietitian }, 
+      { "http://snomed.info/sct#416116000", ReferralToHomeRegisteredDietitian }, 
+      { "416194003", ReferralForNeuropsychologicalTesting }, 
+      { "http://snomed.info/sct#416194003", ReferralForNeuropsychologicalTesting }, 
+      { "416291002", ReferralToPediatricServiceForAcne }, 
+      { "http://snomed.info/sct#416291002", ReferralToPediatricServiceForAcne }, 
+      { "416414009", ReferralForHomeIntravenousMedicationAdministration }, 
+      { "http://snomed.info/sct#416414009", ReferralForHomeIntravenousMedicationAdministration }, 
+      { "416422002", ReferralForBipolarDisorder }, 
+      { "http://snomed.info/sct#416422002", ReferralForBipolarDisorder }, 
+      { "416457004", ReferralToVasectomyClinic }, 
+      { "http://snomed.info/sct#416457004", ReferralToVasectomyClinic }, 
+      { "416492007", ReferralForSweatChlorideTest }, 
+      { "http://snomed.info/sct#416492007", ReferralForSweatChlorideTest }, 
+      { "416609002", ReferralForHomeTubeFeedingInstruction }, 
+      { "http://snomed.info/sct#416609002", ReferralForHomeTubeFeedingInstruction }, 
+      { "416790000", ReferralForHomePhysicalTherapy }, 
+      { "http://snomed.info/sct#416790000", ReferralForHomePhysicalTherapy }, 
+      { "416851006", ReferralToCommunityMatron }, 
+      { "http://snomed.info/sct#416851006", ReferralToCommunityMatron }, 
+      { "416977004", ReferralToMinorAilmentsClinic }, 
+      { "http://snomed.info/sct#416977004", ReferralToMinorAilmentsClinic }, 
+      { "416999007", PrivateReferralToPhysiotherapist }, 
+      { "http://snomed.info/sct#416999007", PrivateReferralToPhysiotherapist }, 
+      { "417033000", ReferralForHomeBasedPhlebotomy }, 
+      { "http://snomed.info/sct#417033000", ReferralForHomeBasedPhlebotomy }, 
+      { "417038009", ReferralForDialysis }, 
+      { "http://snomed.info/sct#417038009", ReferralForDialysis }, 
+      { "417073006", ReferralForHematuria }, 
+      { "http://snomed.info/sct#417073006", ReferralForHematuria }, 
+      { "417096006", ReferralToCommunityDrugAndAlcoholTeam }, 
+      { "http://snomed.info/sct#417096006", ReferralToCommunityDrugAndAlcoholTeam }, 
+      { "417105002", ReferralForPerinatalHomeCare }, 
+      { "http://snomed.info/sct#417105002", ReferralForPerinatalHomeCare }, 
+      { "417146007", ReferralToHeartFailureNurse }, 
+      { "http://snomed.info/sct#417146007", ReferralToHeartFailureNurse }, 
+      { "417153003", ReferralForHomeNurseVisit }, 
+      { "http://snomed.info/sct#417153003", ReferralForHomeNurseVisit }, 
+      { "417158007", ReferralToPsychoEducationalGroup }, 
+      { "http://snomed.info/sct#417158007", ReferralToPsychoEducationalGroup }, 
+      { "417213009", ReferralToHospitalBasedDischargePlanning }, 
+      { "http://snomed.info/sct#417213009", ReferralToHospitalBasedDischargePlanning }, 
+      { "417282008", ReferralForProteinuriaTest }, 
+      { "http://snomed.info/sct#417282008", ReferralForProteinuriaTest }, 
+      { "417291007", ReferralToEpiduralAnesthesiaForReflexSympatheticDystrophy }, 
+      { "http://snomed.info/sct#417291007", ReferralToEpiduralAnesthesiaForReflexSympatheticDystrophy }, 
+      { "417311009", ReferralToPediatricCardiologyService }, 
+      { "http://snomed.info/sct#417311009", ReferralToPediatricCardiologyService }, 
+      { "417421000", ReferralForPediatricArrhythmia }, 
+      { "http://snomed.info/sct#417421000", ReferralForPediatricArrhythmia }, 
+      { "417504006", ReferralToEpiduralAnesthesiaService }, 
+      { "http://snomed.info/sct#417504006", ReferralToEpiduralAnesthesiaService }, 
+      { "417511005", ReferralToHomeHealthCareService }, 
+      { "http://snomed.info/sct#417511005", ReferralToHomeHealthCareService }, 
+      { "417546002", ReferralForPediatricCongenitalHeartDisease }, 
+      { "http://snomed.info/sct#417546002", ReferralForPediatricCongenitalHeartDisease }, 
+      { "417577000", ReferToEarlyPregnancyUnit }, 
+      { "http://snomed.info/sct#417577000", ReferToEarlyPregnancyUnit }, 
+      { "417699000", ReferralToDrugTreatmentCenter }, 
+      { "http://snomed.info/sct#417699000", ReferralToDrugTreatmentCenter }, 
+      { "417708006", ReferralToLongTermCareService }, 
+      { "http://snomed.info/sct#417708006", ReferralToLongTermCareService }, 
+      { "417724007", ReferralToEpiduralAnesthesiaForSpinalPain }, 
+      { "http://snomed.info/sct#417724007", ReferralToEpiduralAnesthesiaForSpinalPain }, 
+      { "41920009", PatientReferralForSocioeconomicFactors }, 
+      { "http://snomed.info/sct#41920009", PatientReferralForSocioeconomicFactors }, 
+      { "425971006", ReferralToPediatricPulmonologist }, 
+      { "http://snomed.info/sct#425971006", ReferralToPediatricPulmonologist }, 
+      { "4266003", PatientReferralForDrugAddictionRehabilitation }, 
+      { "http://snomed.info/sct#4266003", PatientReferralForDrugAddictionRehabilitation }, 
+      { "428573000", ReferralToDiagnosticNuclearMedicineService }, 
+      { "http://snomed.info/sct#428573000", ReferralToDiagnosticNuclearMedicineService }, 
+      { "428574006", ReferralToEnuresisClinic }, 
+      { "http://snomed.info/sct#428574006", ReferralToEnuresisClinic }, 
+      { "429201005", ReferralToTherapeuticNuclearMedicineService }, 
+      { "http://snomed.info/sct#429201005", ReferralToTherapeuticNuclearMedicineService }, 
+      { "429365000", ReferralToPediatricGastroenterologist }, 
+      { "http://snomed.info/sct#429365000", ReferralToPediatricGastroenterologist }, 
+      { "429387009", ReferralByPsychologist }, 
+      { "http://snomed.info/sct#429387009", ReferralByPsychologist }, 
+      { "429709006", ReferralByOsteopath }, 
+      { "http://snomed.info/sct#429709006", ReferralByOsteopath }, 
+      { "429711002", ReferralForRadionuclideMyocardialPerfusionStudy }, 
+      { "http://snomed.info/sct#429711002", ReferralForRadionuclideMyocardialPerfusionStudy }, 
+      { "431183005", ReferralToEndodonticService }, 
+      { "http://snomed.info/sct#431183005", ReferralToEndodonticService }, 
+      { "431260004", ReferralToSpecialistAlcoholTreatmentService }, 
+      { "http://snomed.info/sct#431260004", ReferralToSpecialistAlcoholTreatmentService }, 
+      { "431340005", ReferralToBreastFeedingPeerSupportService }, 
+      { "http://snomed.info/sct#431340005", ReferralToBreastFeedingPeerSupportService }, 
+      { "431550007", ReferralToPeriodonticService }, 
+      { "http://snomed.info/sct#431550007", ReferralToPeriodonticService }, 
+      { "431551006", ReferralToProsthodonticService }, 
+      { "http://snomed.info/sct#431551006", ReferralToProsthodonticService }, 
+      { "431719007", ReferralToDomesticViolenceAdvocate }, 
+      { "http://snomed.info/sct#431719007", ReferralToDomesticViolenceAdvocate }, 
+      { "431883007", ReferralToDeepVeinThrombosisClinic }, 
+      { "http://snomed.info/sct#431883007", ReferralToDeepVeinThrombosisClinic }, 
+      { "433151006", ReferralToEducationalPsychologist }, 
+      { "http://snomed.info/sct#433151006", ReferralToEducationalPsychologist }, 
+      { "437950007", ReferralToPediatricOccupationalTherapyService }, 
+      { "http://snomed.info/sct#437950007", ReferralToPediatricOccupationalTherapyService }, 
+      { "438517001", ReferralToSleepClinic }, 
+      { "http://snomed.info/sct#438517001", ReferralToSleepClinic }, 
+      { "439163006", ReferralForMedicalTerminationOfPregnancy }, 
+      { "http://snomed.info/sct#439163006", ReferralForMedicalTerminationOfPregnancy }, 
+      { "439306007", ReferralToPregnancyCounselingService }, 
+      { "http://snomed.info/sct#439306007", ReferralToPregnancyCounselingService }, 
+      { "439310005", ReferralForSurgicalTerminationOfPregnancy }, 
+      { "http://snomed.info/sct#439310005", ReferralForSurgicalTerminationOfPregnancy }, 
+      { "442135008", ReferralToInfectiousDiseaseClinic }, 
+      { "http://snomed.info/sct#442135008", ReferralToInfectiousDiseaseClinic }, 
+      { "442305005", ReferralForAmbulatoryElectrocardiogram }, 
+      { "http://snomed.info/sct#442305005", ReferralForAmbulatoryElectrocardiogram }, 
+      { "44383000", PatientReferralForConsultation }, 
+      { "http://snomed.info/sct#44383000", PatientReferralForConsultation }, 
+      { "444543005", ReferralToSocialServicesForAdultProtection }, 
+      { "http://snomed.info/sct#444543005", ReferralToSocialServicesForAdultProtection }, 
+      { "54395008", PatientReferralForMedicalConsultation }, 
+      { "http://snomed.info/sct#54395008", PatientReferralForMedicalConsultation }, 
+      { "55974000", PatientReferralForSpecializedInstitutionalServices }, 
+      { "http://snomed.info/sct#55974000", PatientReferralForSpecializedInstitutionalServices }, 
+      { "61801003", PatientReferralForPsychiatricAftercare }, 
+      { "http://snomed.info/sct#61801003", PatientReferralForPsychiatricAftercare }, 
+      { "62435005", PatientReferralForSpecialCareAgingProblem }, 
+      { "http://snomed.info/sct#62435005", PatientReferralForSpecialCareAgingProblem }, 
+      { "69377005", PatientReferralForRehabilitationPsychological }, 
+      { "http://snomed.info/sct#69377005", PatientReferralForRehabilitationPsychological }, 
+      { "697982000", ReferralToSurgicalTransplantServiceForRenalTransplantEvaluation }, 
+      { "http://snomed.info/sct#697982000", ReferralToSurgicalTransplantServiceForRenalTransplantEvaluation }, 
+      { "698559005", ReferralToTropicalMedicineClinic }, 
+      { "http://snomed.info/sct#698559005", ReferralToTropicalMedicineClinic }, 
+      { "698560000", ReferralToSleepApneaClinic }, 
+      { "http://snomed.info/sct#698560000", ReferralToSleepApneaClinic }, 
+      { "698561001", ReferralToNurseCaseManager }, 
+      { "http://snomed.info/sct#698561001", ReferralToNurseCaseManager }, 
+      { "698562008", ReferralToHypnotherapist }, 
+      { "http://snomed.info/sct#698562008", ReferralToHypnotherapist }, 
+      { "698563003", ReferralToBariatricSurgeon }, 
+      { "http://snomed.info/sct#698563003", ReferralToBariatricSurgeon }, 
+      { "698564009", ReferralForObstetricUltrasoundScan }, 
+      { "http://snomed.info/sct#698564009", ReferralForObstetricUltrasoundScan }, 
+      { "698565005", ReferralByPodiatricSurgeon }, 
+      { "http://snomed.info/sct#698565005", ReferralByPodiatricSurgeon }, 
+      { "698599008", PrivateReferralToBreastSurgeon }, 
+      { "http://snomed.info/sct#698599008", PrivateReferralToBreastSurgeon }, 
+      { "698943000", ReferralToNurseComplexCaseManager }, 
+      { "http://snomed.info/sct#698943000", ReferralToNurseComplexCaseManager }, 
+      { "700125004", ReferralToPediatricGynecologyService }, 
+      { "http://snomed.info/sct#700125004", ReferralToPediatricGynecologyService }, 
+      { "700274009", ReferralForProcedure }, 
+      { "http://snomed.info/sct#700274009", ReferralForProcedure }, 
+      { "700275005", ReferralForAnesthesiaConsultation }, 
+      { "http://snomed.info/sct#700275005", ReferralForAnesthesiaConsultation }, 
+      { "700282009", ReferralForAnesthesiaManagement }, 
+      { "http://snomed.info/sct#700282009", ReferralForAnesthesiaManagement }, 
+      { "700432001", ReferralToHematuriaClinic }, 
+      { "http://snomed.info/sct#700432001", ReferralToHematuriaClinic }, 
+      { "702475000", ReferralToClinicalTrial }, 
+      { "http://snomed.info/sct#702475000", ReferralToClinicalTrial }, 
+      { "702540003", ReferralForSpirometryReversibilityTest }, 
+      { "http://snomed.info/sct#702540003", ReferralForSpirometryReversibilityTest }, 
+      { "702982008", ReferralToVoluntarySupportServiceForCarers }, 
+      { "http://snomed.info/sct#702982008", ReferralToVoluntarySupportServiceForCarers }, 
+      { "703155005", ReferralToMaternityService }, 
+      { "http://snomed.info/sct#703155005", ReferralToMaternityService }, 
+      { "703939004", ReferralForCryopreservation }, 
+      { "http://snomed.info/sct#703939004", ReferralForCryopreservation }, 
+      { "703944006", ReferralForDecongestiveLymphaticTherapy }, 
+      { "http://snomed.info/sct#703944006", ReferralForDecongestiveLymphaticTherapy }, 
+      { "703974003", PrivateReferralToColorectalSurgeon }, 
+      { "http://snomed.info/sct#703974003", PrivateReferralToColorectalSurgeon }, 
+      { "703975002", PrivateReferralToPodiatrist }, 
+      { "http://snomed.info/sct#703975002", PrivateReferralToPodiatrist }, 
+      { "703976001", PrivateReferralToRadiologist }, 
+      { "http://snomed.info/sct#703976001", PrivateReferralToRadiologist }, 
+      { "703978000", ReferralToPrimaryCareService }, 
+      { "http://snomed.info/sct#703978000", ReferralToPrimaryCareService }, 
+      { "704031007", ReferralForOverseasMedicalTreatment }, 
+      { "http://snomed.info/sct#704031007", ReferralForOverseasMedicalTreatment }, 
+      { "704048004", ReferralToErectileDysfunctionClinic }, 
+      { "http://snomed.info/sct#704048004", ReferralToErectileDysfunctionClinic }, 
+      { "704050007", ReferralToCardiacRehabilitationProgram }, 
+      { "http://snomed.info/sct#704050007", ReferralToCardiacRehabilitationProgram }, 
+      { "704095000", ReferralToHeartFailureExerciseProgram }, 
+      { "http://snomed.info/sct#704095000", ReferralToHeartFailureExerciseProgram }, 
+      { "704124006", ReferralForManualLymphaticDrainage }, 
+      { "http://snomed.info/sct#704124006", ReferralForManualLymphaticDrainage }, 
+      { "705146005", ReferralToTransientIschemicAttackClinic }, 
+      { "http://snomed.info/sct#705146005", ReferralToTransientIschemicAttackClinic }, 
+      { "710005006", ReferralToPhysicalTrainingInstructor }, 
+      { "http://snomed.info/sct#710005006", ReferralToPhysicalTrainingInstructor }, 
+      { "710908005", ReferralToSelfHelpService }, 
+      { "http://snomed.info/sct#710908005", ReferralToSelfHelpService }, 
+      { "710909002", ReferralToReligiousService }, 
+      { "http://snomed.info/sct#710909002", ReferralToReligiousService }, 
+      { "710910007", ReferralToLegalService }, 
+      { "http://snomed.info/sct#710910007", ReferralToLegalService }, 
+      { "710911006", ReferralToHousingService }, 
+      { "http://snomed.info/sct#710911006", ReferralToHousingService }, 
+      { "710912004", ReferralToFuneralService }, 
+      { "http://snomed.info/sct#710912004", ReferralToFuneralService }, 
+      { "710913009", ReferralToFinancialService }, 
+      { "http://snomed.info/sct#710913009", ReferralToFinancialService }, 
+      { "710914003", ReferralToFamilyTherapy }, 
+      { "http://snomed.info/sct#710914003", ReferralToFamilyTherapy }, 
+      { "710915002", ReferralToCommunityService }, 
+      { "http://snomed.info/sct#710915002", ReferralToCommunityService }, 
+      { "710916001", ReferralToBreastfeedingEducationClassDuringPrenatalPeriod }, 
+      { "http://snomed.info/sct#710916001", ReferralToBreastfeedingEducationClassDuringPrenatalPeriod }, 
+      { "711281004", ReferralToSupportGroup }, 
+      { "http://snomed.info/sct#711281004", ReferralToSupportGroup }, 
+      { "713109004", ReferralToCommunityMealsService }, 
+      { "http://snomed.info/sct#713109004", ReferralToCommunityMealsService }, 
+      { "713146000", ReferralToHealthAideService }, 
+      { "http://snomed.info/sct#713146000", ReferralToHealthAideService }, 
+      { "713400007", ReferralToMedicalEmergencyTeam }, 
+      { "http://snomed.info/sct#713400007", ReferralToMedicalEmergencyTeam }, 
+      { "713442009", ReferralToCardiacRapidResponseTeam }, 
+      { "http://snomed.info/sct#713442009", ReferralToCardiacRapidResponseTeam }, 
+      { "715159005", ReferralToDiabetesService }, 
+      { "http://snomed.info/sct#715159005", ReferralToDiabetesService }, 
+      { "715161001", ReferralToBurnsService }, 
+      { "http://snomed.info/sct#715161001", ReferralToBurnsService }, 
+      { "715189003", ReferralToCriticalCareService }, 
+      { "http://snomed.info/sct#715189003", ReferralToCriticalCareService }, 
+      { "715962007", ReferralToSportAndExerciseMedicineService }, 
+      { "http://snomed.info/sct#715962007", ReferralToSportAndExerciseMedicineService }, 
+      { "716634006", ReferralToNeurologicalPhysiotherapist }, 
+      { "http://snomed.info/sct#716634006", ReferralToNeurologicalPhysiotherapist }, 
+      { "78429003", PatientReferralForRehabilitationPhysical }, 
+      { "http://snomed.info/sct#78429003", PatientReferralForRehabilitationPhysical }, 
+      { "81294000", PatientReferralForPsychotherapy }, 
+      { "http://snomed.info/sct#81294000", PatientReferralForPsychotherapy }, 
+      { "86395003", PatientReferralForFamilyPlanning }, 
+      { "http://snomed.info/sct#86395003", PatientReferralForFamilyPlanning }, 
+    };
   };
 }

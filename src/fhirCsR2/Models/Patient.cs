@@ -253,6 +253,12 @@ namespace fhirCsR2.Models
     public const string FEMALE = "female";
     public const string OTHER = "other";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "male",
+      "female",
+      "other",
+      "unknown",
+    };
   }
   /// <summary>
   /// Many clinical systems are extended to care for animal patients as well as human.
@@ -569,6 +575,11 @@ namespace fhirCsR2.Models
     public const string REPLACE = "replace";
     public const string REFER = "refer";
     public const string SEEALSO = "seealso";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "replace",
+      "refer",
+      "seealso",
+    };
   }
   /// <summary>
   /// Demographics and other administrative information about an individual or animal receiving care or other health-related services.
@@ -1284,5 +1295,11 @@ namespace fhirCsR2.Models
     public const string FEMALE = "female";
     public const string OTHER = "other";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "male",
+      "female",
+      "other",
+      "unknown",
+    };
   }
 }

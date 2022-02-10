@@ -72,9 +72,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVALFalse = "false";
 
     /// <summary>
+    /// Literal for code: SpecialValuesVALFalse
+    /// </summary>
+    public const string LiteralSpecialValuesVALFalse = "http://terminology.hl7.org/CodeSystem/special-values#false";
+
+    /// <summary>
     /// Literal for code: NilKnown
     /// </summary>
     public const string LiteralNilKnown = "nil-known";
+
+    /// <summary>
+    /// Literal for code: SpecialValuesNilKnown
+    /// </summary>
+    public const string LiteralSpecialValuesNilKnown = "http://terminology.hl7.org/CodeSystem/special-values#nil-known";
 
     /// <summary>
     /// Literal for code: SufficientQuantity
@@ -82,9 +92,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSufficientQuantity = "sufficient";
 
     /// <summary>
+    /// Literal for code: SpecialValuesSufficientQuantity
+    /// </summary>
+    public const string LiteralSpecialValuesSufficientQuantity = "http://terminology.hl7.org/CodeSystem/special-values#sufficient";
+
+    /// <summary>
     /// Literal for code: TraceAmountDetected
     /// </summary>
     public const string LiteralTraceAmountDetected = "trace";
+
+    /// <summary>
+    /// Literal for code: SpecialValuesTraceAmountDetected
+    /// </summary>
+    public const string LiteralSpecialValuesTraceAmountDetected = "http://terminology.hl7.org/CodeSystem/special-values#trace";
 
     /// <summary>
     /// Literal for code: VALTrue
@@ -92,8 +112,36 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVALTrue = "true";
 
     /// <summary>
+    /// Literal for code: SpecialValuesVALTrue
+    /// </summary>
+    public const string LiteralSpecialValuesVALTrue = "http://terminology.hl7.org/CodeSystem/special-values#true";
+
+    /// <summary>
     /// Literal for code: ValueWithdrawn
     /// </summary>
     public const string LiteralValueWithdrawn = "withdrawn";
+
+    /// <summary>
+    /// Literal for code: SpecialValuesValueWithdrawn
+    /// </summary>
+    public const string LiteralSpecialValuesValueWithdrawn = "http://terminology.hl7.org/CodeSystem/special-values#withdrawn";
+
+    /// <summary>
+    /// Dictionary for looking up SpecialValues Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "false", VALFalse }, 
+      { "http://terminology.hl7.org/CodeSystem/special-values#false", VALFalse }, 
+      { "nil-known", NilKnown }, 
+      { "http://terminology.hl7.org/CodeSystem/special-values#nil-known", NilKnown }, 
+      { "sufficient", SufficientQuantity }, 
+      { "http://terminology.hl7.org/CodeSystem/special-values#sufficient", SufficientQuantity }, 
+      { "trace", TraceAmountDetected }, 
+      { "http://terminology.hl7.org/CodeSystem/special-values#trace", TraceAmountDetected }, 
+      { "true", VALTrue }, 
+      { "http://terminology.hl7.org/CodeSystem/special-values#true", VALTrue }, 
+      { "withdrawn", ValueWithdrawn }, 
+      { "http://terminology.hl7.org/CodeSystem/special-values#withdrawn", ValueWithdrawn }, 
+    };
   };
 }

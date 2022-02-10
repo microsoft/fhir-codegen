@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: EventStatusCompleted
+    /// </summary>
+    public const string LiteralEventStatusCompleted = "http://hl7.org/fhir/event-status#completed";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: EventStatusEnteredInError
+    /// </summary>
+    public const string LiteralEventStatusEnteredInError = "http://hl7.org/fhir/event-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: InProgress
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInProgress = "in-progress";
 
     /// <summary>
+    /// Literal for code: EventStatusInProgress
+    /// </summary>
+    public const string LiteralEventStatusInProgress = "http://hl7.org/fhir/event-status#in-progress";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: EventStatusUnknown
+    /// </summary>
+    public const string LiteralEventStatusUnknown = "http://hl7.org/fhir/event-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/event-status#completed", Completed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/event-status#entered-in-error", EnteredInError }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/event-status#in-progress", InProgress }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/event-status#unknown", Unknown }, 
+    };
   };
 }

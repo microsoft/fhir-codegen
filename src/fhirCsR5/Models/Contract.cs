@@ -217,6 +217,23 @@ namespace fhirCsR5.Models
     public const string REVOKED = "revoked";
     public const string RESOLVED = "resolved";
     public const string TERMINATED = "terminated";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "amended",
+      "appended",
+      "cancelled",
+      "disputed",
+      "entered-in-error",
+      "executable",
+      "executed",
+      "negotiable",
+      "offered",
+      "policy",
+      "rejected",
+      "renewed",
+      "revoked",
+      "resolved",
+      "terminated",
+    };
   }
   /// <summary>
   /// Security labels that protect the handling of information about the term and its elements, which may be specifically identified..
@@ -550,6 +567,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research.
     /// </summary>
     public decimal? ValueDecimal { get; set; }
@@ -561,6 +582,10 @@ namespace fhirCsR5.Models
     /// Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research.
     /// </summary>
     public int? ValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
     /// <summary>
     /// Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research.
     /// </summary>
@@ -633,6 +658,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (ValueDecimal != null)
       {
         writer.WriteNumber("valueDecimal", (decimal)ValueDecimal!);
@@ -647,6 +678,12 @@ namespace fhirCsR5.Models
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(ValueDate))
@@ -744,6 +781,11 @@ namespace fhirCsR5.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR5.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueDecimal":
           ValueDecimal = reader.GetDecimal();
           break;
@@ -755,6 +797,11 @@ namespace fhirCsR5.Models
 
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR5.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueDate":
@@ -2695,6 +2742,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? DoNotPerform { get; set; }
     /// <summary>
+    /// Extension container element for DoNotPerform
+    /// </summary>
+    public Element _DoNotPerform { get; set; }
+    /// <summary>
     /// Reason or purpose for the action stipulated by this Contract Provision.
     /// </summary>
     public CodeableConcept Intent { get; set; }
@@ -2800,6 +2851,12 @@ namespace fhirCsR5.Models
       if (DoNotPerform != null)
       {
         writer.WriteBoolean("doNotPerform", (bool)DoNotPerform!);
+      }
+
+      if (_DoNotPerform != null)
+      {
+        writer.WritePropertyName("_doNotPerform");
+        _DoNotPerform.SerializeJson(writer, options);
       }
 
       if (Type != null)
@@ -3140,6 +3197,11 @@ namespace fhirCsR5.Models
 
         case "doNotPerform":
           DoNotPerform = reader.GetBoolean();
+          break;
+
+        case "_doNotPerform":
+          _DoNotPerform = new fhirCsR5.Models.Element();
+          _DoNotPerform.DeserializeJson(ref reader, options);
           break;
 
         case "intent":
@@ -5551,5 +5613,22 @@ namespace fhirCsR5.Models
     public const string REVOKED = "revoked";
     public const string RESOLVED = "resolved";
     public const string TERMINATED = "terminated";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "amended",
+      "appended",
+      "cancelled",
+      "disputed",
+      "entered-in-error",
+      "executable",
+      "executed",
+      "negotiable",
+      "offered",
+      "policy",
+      "rejected",
+      "renewed",
+      "revoked",
+      "resolved",
+      "terminated",
+    };
   }
 }

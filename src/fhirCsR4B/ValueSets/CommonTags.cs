@@ -25,5 +25,18 @@ namespace fhirCsR4B.ValueSets
     /// Literal for code: Actionable
     /// </summary>
     public const string LiteralActionable = "actionable";
+
+    /// <summary>
+    /// Literal for code: CommonTagsActionable
+    /// </summary>
+    public const string LiteralCommonTagsActionable = "http://terminology.hl7.org/CodeSystem/common-tags#actionable";
+
+    /// <summary>
+    /// Dictionary for looking up CommonTags Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "actionable", Actionable }, 
+      { "http://terminology.hl7.org/CodeSystem/common-tags#actionable", Actionable }, 
+    };
   };
 }

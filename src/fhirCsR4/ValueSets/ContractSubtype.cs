@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDisclosureCA = "disclosure-ca";
 
     /// <summary>
+    /// Literal for code: ContractSubtypeDisclosureCA
+    /// </summary>
+    public const string LiteralContractSubtypeDisclosureCA = "http://terminology.hl7.org/CodeSystem/contractsubtypecodes#disclosure-ca";
+
+    /// <summary>
     /// Literal for code: DisclosureUS
     /// </summary>
     public const string LiteralDisclosureUS = "disclosure-us";
+
+    /// <summary>
+    /// Literal for code: ContractSubtypeDisclosureUS
+    /// </summary>
+    public const string LiteralContractSubtypeDisclosureUS = "http://terminology.hl7.org/CodeSystem/contractsubtypecodes#disclosure-us";
+
+    /// <summary>
+    /// Dictionary for looking up ContractSubtype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "disclosure-ca", DisclosureCA }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsubtypecodes#disclosure-ca", DisclosureCA }, 
+      { "disclosure-us", DisclosureUS }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsubtypecodes#disclosure-us", DisclosureUS }, 
+    };
   };
 }

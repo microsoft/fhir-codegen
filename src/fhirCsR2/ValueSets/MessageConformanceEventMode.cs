@@ -36,8 +36,28 @@ namespace fhirCsR2.ValueSets
     public const string LiteralReceiver = "receiver";
 
     /// <summary>
+    /// Literal for code: MessageConformanceEventModeReceiver
+    /// </summary>
+    public const string LiteralMessageConformanceEventModeReceiver = "http://hl7.org/fhir/message-conformance-event-mode#receiver";
+
+    /// <summary>
     /// Literal for code: Sender
     /// </summary>
     public const string LiteralSender = "sender";
+
+    /// <summary>
+    /// Literal for code: MessageConformanceEventModeSender
+    /// </summary>
+    public const string LiteralMessageConformanceEventModeSender = "http://hl7.org/fhir/message-conformance-event-mode#sender";
+
+    /// <summary>
+    /// Dictionary for looking up MessageConformanceEventMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "receiver", Receiver }, 
+      { "http://hl7.org/fhir/message-conformance-event-mode#receiver", Receiver }, 
+      { "sender", Sender }, 
+      { "http://hl7.org/fhir/message-conformance-event-mode#sender", Sender }, 
+    };
   };
 }

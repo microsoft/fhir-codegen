@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class FormsCodes
   {
     /// <summary>
-    /// 
+    /// Form #1
     /// </summary>
     public static readonly Coding FormNumber1 = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/forms-codes"
     };
     /// <summary>
-    /// 
+    /// Form #1
     /// </summary>
     public static readonly Coding FormNumber1_2 = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFormNumber1 = "1";
 
     /// <summary>
+    /// Literal for code: FormsCodesFormNumber1
+    /// </summary>
+    public const string LiteralFormsCodesFormNumber1 = "http://terminology.hl7.org/CodeSystem/forms-codes#1";
+
+    /// <summary>
     /// Literal for code: FormNumber1_2
     /// </summary>
     public const string LiteralFormNumber1_2 = "2";
+
+    /// <summary>
+    /// Literal for code: FormsCodesFormNumber1_2
+    /// </summary>
+    public const string LiteralFormsCodesFormNumber1_2 = "http://terminology.hl7.org/CodeSystem/forms-codes#2";
+
+    /// <summary>
+    /// Dictionary for looking up Forms Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1", FormNumber1 }, 
+      { "http://terminology.hl7.org/CodeSystem/forms-codes#1", FormNumber1 }, 
+      { "2", FormNumber1_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/forms-codes#2", FormNumber1_2 }, 
+    };
   };
 }

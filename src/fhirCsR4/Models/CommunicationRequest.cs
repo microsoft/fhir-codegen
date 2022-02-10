@@ -161,6 +161,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? DoNotPerform { get; set; }
     /// <summary>
+    /// Extension container element for DoNotPerform
+    /// </summary>
+    public Element _DoNotPerform { get; set; }
+    /// <summary>
     /// This will typically be the encounter the event occurred within, but some activities may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter.
     /// </summary>
     public Reference Encounter { get; set; }
@@ -350,6 +354,12 @@ namespace fhirCsR4.Models
       if (DoNotPerform != null)
       {
         writer.WriteBoolean("doNotPerform", (bool)DoNotPerform!);
+      }
+
+      if (_DoNotPerform != null)
+      {
+        writer.WritePropertyName("_doNotPerform");
+        _DoNotPerform.SerializeJson(writer, options);
       }
 
       if ((Medium != null) && (Medium.Count != 0))
@@ -599,6 +609,11 @@ namespace fhirCsR4.Models
 
         case "doNotPerform":
           DoNotPerform = reader.GetBoolean();
+          break;
+
+        case "_doNotPerform":
+          _DoNotPerform = new fhirCsR4.Models.Element();
+          _DoNotPerform.DeserializeJson(ref reader, options);
           break;
 
         case "encounter":
@@ -918,6 +933,12 @@ namespace fhirCsR4.Models
     public const string URGENT = "urgent";
     public const string ASAP = "asap";
     public const string STAT = "stat";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "routine",
+      "urgent",
+      "asap",
+      "stat",
+    };
   }
   /// <summary>
   /// Code Values for the CommunicationRequest.status field
@@ -930,5 +951,14 @@ namespace fhirCsR4.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "on-hold",
+      "revoked",
+      "completed",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

@@ -247,6 +247,11 @@ namespace fhirCsR2.Models
     public const string MATCH = "match";
     public const string INCLUDE = "include";
     public const string OUTCOME = "outcome";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "match",
+      "include",
+      "outcome",
+    };
   }
   /// <summary>
   /// Additional information about how this entry should be processed as part of a transaction.
@@ -483,6 +488,12 @@ namespace fhirCsR2.Models
     public const string POST = "POST";
     public const string PUT = "PUT";
     public const string DELETE = "DELETE";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE",
+    };
   }
   /// <summary>
   /// Additional information about how this entry should be processed as part of a transaction.
@@ -1071,5 +1082,16 @@ namespace fhirCsR2.Models
     public const string HISTORY = "history";
     public const string SEARCHSET = "searchset";
     public const string COLLECTION = "collection";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "document",
+      "message",
+      "transaction",
+      "transaction-response",
+      "batch",
+      "batch-response",
+      "history",
+      "searchset",
+      "collection",
+    };
   }
 }

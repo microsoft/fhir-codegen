@@ -228,7 +228,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/evidence-report-section"
     };
     /// <summary>
-    /// 
+    /// Table
     /// </summary>
     public static readonly Coding Table = new Coding
     {
@@ -270,9 +270,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAssertion = "Assertion";
 
     /// <summary>
+    /// Literal for code: EvidenceReportSectionAssertion
+    /// </summary>
+    public const string LiteralEvidenceReportSectionAssertion = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Assertion";
+
+    /// <summary>
     /// Literal for code: CertaintyOfEvidence
     /// </summary>
     public const string LiteralCertaintyOfEvidence = "Certainty-of-Evidence";
+
+    /// <summary>
+    /// Literal for code: EvidenceReportSectionCertaintyOfEvidence
+    /// </summary>
+    public const string LiteralEvidenceReportSectionCertaintyOfEvidence = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Certainty-of-Evidence";
 
     /// <summary>
     /// Literal for code: ColumnHeader
@@ -280,9 +290,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralColumnHeader = "Column-Header";
 
     /// <summary>
+    /// Literal for code: EvidenceReportSectionColumnHeader
+    /// </summary>
+    public const string LiteralEvidenceReportSectionColumnHeader = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Column-Header";
+
+    /// <summary>
     /// Literal for code: ColumnHeaders
     /// </summary>
     public const string LiteralColumnHeaders = "Column-Headers";
+
+    /// <summary>
+    /// Literal for code: EvidenceReportSectionColumnHeaders
+    /// </summary>
+    public const string LiteralEvidenceReportSectionColumnHeaders = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Column-Headers";
 
     /// <summary>
     /// Literal for code: EvidenceResultsForTheControlExposureOnly
@@ -290,9 +310,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEvidenceResultsForTheControlExposureOnly = "Control-group-alone-Evidence";
 
     /// <summary>
+    /// Literal for code: EvidenceReportSectionEvidenceResultsForTheControlExposureOnly
+    /// </summary>
+    public const string LiteralEvidenceReportSectionEvidenceResultsForTheControlExposureOnly = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Control-group-alone-Evidence";
+
+    /// <summary>
     /// Literal for code: EfficacyOutcomes
     /// </summary>
     public const string LiteralEfficacyOutcomes = "Efficacy-outcomes";
+
+    /// <summary>
+    /// Literal for code: EvidenceReportSectionEfficacyOutcomes
+    /// </summary>
+    public const string LiteralEvidenceReportSectionEfficacyOutcomes = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Efficacy-outcomes";
 
     /// <summary>
     /// Literal for code: EvidenceResults
@@ -300,9 +330,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEvidenceResults = "Evidence";
 
     /// <summary>
+    /// Literal for code: EvidenceReportSectionEvidenceResults
+    /// </summary>
+    public const string LiteralEvidenceReportSectionEvidenceResults = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Evidence";
+
+    /// <summary>
     /// Literal for code: EvidenceClassifierSection
     /// </summary>
     public const string LiteralEvidenceClassifierSection = "Evidence-Classifier";
+
+    /// <summary>
+    /// Literal for code: EvidenceReportSectionEvidenceClassifierSection
+    /// </summary>
+    public const string LiteralEvidenceReportSectionEvidenceClassifierSection = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Evidence-Classifier";
 
     /// <summary>
     /// Literal for code: EvidenceVariablesUsed
@@ -310,9 +350,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEvidenceVariablesUsed = "EvidenceVariable";
 
     /// <summary>
+    /// Literal for code: EvidenceReportSectionEvidenceVariablesUsed
+    /// </summary>
+    public const string LiteralEvidenceReportSectionEvidenceVariablesUsed = "http://terminology.hl7.org/CodeSystem/evidence-report-section#EvidenceVariable";
+
+    /// <summary>
     /// Literal for code: EvidenceVariableInVariableRoleExposure
     /// </summary>
     public const string LiteralEvidenceVariableInVariableRoleExposure = "EvidenceVariable-exposure";
+
+    /// <summary>
+    /// Literal for code: EvidenceReportSectionEvidenceVariableInVariableRoleExposure
+    /// </summary>
+    public const string LiteralEvidenceReportSectionEvidenceVariableInVariableRoleExposure = "http://terminology.hl7.org/CodeSystem/evidence-report-section#EvidenceVariable-exposure";
 
     /// <summary>
     /// Literal for code: EvidenceVariablesIntendedForInterpretation
@@ -320,9 +370,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEvidenceVariablesIntendedForInterpretation = "EvidenceVariable-intended";
 
     /// <summary>
+    /// Literal for code: EvidenceReportSectionEvidenceVariablesIntendedForInterpretation
+    /// </summary>
+    public const string LiteralEvidenceReportSectionEvidenceVariablesIntendedForInterpretation = "http://terminology.hl7.org/CodeSystem/evidence-report-section#EvidenceVariable-intended";
+
+    /// <summary>
     /// Literal for code: EvidenceVariablesActuallyObserved
     /// </summary>
     public const string LiteralEvidenceVariablesActuallyObserved = "EvidenceVariable-observed";
+
+    /// <summary>
+    /// Literal for code: EvidenceReportSectionEvidenceVariablesActuallyObserved
+    /// </summary>
+    public const string LiteralEvidenceReportSectionEvidenceVariablesActuallyObserved = "http://terminology.hl7.org/CodeSystem/evidence-report-section#EvidenceVariable-observed";
 
     /// <summary>
     /// Literal for code: EvidenceVariableInVariableRoleOutcomeMeasuredVariable
@@ -330,9 +390,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEvidenceVariableInVariableRoleOutcomeMeasuredVariable = "EvidenceVariable-outcome";
 
     /// <summary>
+    /// Literal for code: EvidenceReportSectionEvidenceVariableInVariableRoleOutcomeMeasuredVariable
+    /// </summary>
+    public const string LiteralEvidenceReportSectionEvidenceVariableInVariableRoleOutcomeMeasuredVariable = "http://terminology.hl7.org/CodeSystem/evidence-report-section#EvidenceVariable-outcome";
+
+    /// <summary>
     /// Literal for code: EvidenceVariableInVariableRolePopulation
     /// </summary>
     public const string LiteralEvidenceVariableInVariableRolePopulation = "EvidenceVariable-population";
+
+    /// <summary>
+    /// Literal for code: EvidenceReportSectionEvidenceVariableInVariableRolePopulation
+    /// </summary>
+    public const string LiteralEvidenceReportSectionEvidenceVariableInVariableRolePopulation = "http://terminology.hl7.org/CodeSystem/evidence-report-section#EvidenceVariable-population";
 
     /// <summary>
     /// Literal for code: HarmsOutcomes
@@ -340,9 +410,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHarmsOutcomes = "Harms-outcomes";
 
     /// <summary>
+    /// Literal for code: EvidenceReportSectionHarmsOutcomes
+    /// </summary>
+    public const string LiteralEvidenceReportSectionHarmsOutcomes = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Harms-outcomes";
+
+    /// <summary>
     /// Literal for code: Header
     /// </summary>
     public const string LiteralHeader = "Header";
+
+    /// <summary>
+    /// Literal for code: EvidenceReportSectionHeader
+    /// </summary>
+    public const string LiteralEvidenceReportSectionHeader = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Header";
 
     /// <summary>
     /// Literal for code: EvidenceResultsForTheInterventionExposureOnly
@@ -350,9 +430,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEvidenceResultsForTheInterventionExposureOnly = "Intervention-group-alone-Evidence";
 
     /// <summary>
+    /// Literal for code: EvidenceReportSectionEvidenceResultsForTheInterventionExposureOnly
+    /// </summary>
+    public const string LiteralEvidenceReportSectionEvidenceResultsForTheInterventionExposureOnly = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Intervention-group-alone-Evidence";
+
+    /// <summary>
     /// Literal for code: EvidenceResultsForComparisonOfInterventionAndControl
     /// </summary>
     public const string LiteralEvidenceResultsForComparisonOfInterventionAndControl = "Intervention-vs-Control-Evidence";
+
+    /// <summary>
+    /// Literal for code: EvidenceReportSectionEvidenceResultsForComparisonOfInterventionAndControl
+    /// </summary>
+    public const string LiteralEvidenceReportSectionEvidenceResultsForComparisonOfInterventionAndControl = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Intervention-vs-Control-Evidence";
 
     /// <summary>
     /// Literal for code: Reasons
@@ -360,9 +450,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralReasons = "Reasons";
 
     /// <summary>
+    /// Literal for code: EvidenceReportSectionReasons
+    /// </summary>
+    public const string LiteralEvidenceReportSectionReasons = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Reasons";
+
+    /// <summary>
     /// Literal for code: References
     /// </summary>
     public const string LiteralReferences = "References";
+
+    /// <summary>
+    /// Literal for code: EvidenceReportSectionReferences
+    /// </summary>
+    public const string LiteralEvidenceReportSectionReferences = "http://terminology.hl7.org/CodeSystem/evidence-report-section#References";
 
     /// <summary>
     /// Literal for code: RowHeaders
@@ -370,9 +470,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRowHeaders = "Row-Headers";
 
     /// <summary>
+    /// Literal for code: EvidenceReportSectionRowHeaders
+    /// </summary>
+    public const string LiteralEvidenceReportSectionRowHeaders = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Row-Headers";
+
+    /// <summary>
     /// Literal for code: SampleSize
     /// </summary>
     public const string LiteralSampleSize = "SampleSize";
+
+    /// <summary>
+    /// Literal for code: EvidenceReportSectionSampleSize
+    /// </summary>
+    public const string LiteralEvidenceReportSectionSampleSize = "http://terminology.hl7.org/CodeSystem/evidence-report-section#SampleSize";
 
     /// <summary>
     /// Literal for code: SummaryOfBodyOfEvidenceFindings
@@ -380,9 +490,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSummaryOfBodyOfEvidenceFindings = "SummaryOfBodyOfEvidenceFindings";
 
     /// <summary>
+    /// Literal for code: EvidenceReportSectionSummaryOfBodyOfEvidenceFindings
+    /// </summary>
+    public const string LiteralEvidenceReportSectionSummaryOfBodyOfEvidenceFindings = "http://terminology.hl7.org/CodeSystem/evidence-report-section#SummaryOfBodyOfEvidenceFindings";
+
+    /// <summary>
     /// Literal for code: SummaryOfIndividualStudyFindings
     /// </summary>
     public const string LiteralSummaryOfIndividualStudyFindings = "SummaryOfIndividualStudyFindings";
+
+    /// <summary>
+    /// Literal for code: EvidenceReportSectionSummaryOfIndividualStudyFindings
+    /// </summary>
+    public const string LiteralEvidenceReportSectionSummaryOfIndividualStudyFindings = "http://terminology.hl7.org/CodeSystem/evidence-report-section#SummaryOfIndividualStudyFindings";
 
     /// <summary>
     /// Literal for code: Table
@@ -390,9 +510,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTable = "Table";
 
     /// <summary>
+    /// Literal for code: EvidenceReportSectionTable
+    /// </summary>
+    public const string LiteralEvidenceReportSectionTable = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Table";
+
+    /// <summary>
     /// Literal for code: Tables
     /// </summary>
     public const string LiteralTables = "Tables";
+
+    /// <summary>
+    /// Literal for code: EvidenceReportSectionTables
+    /// </summary>
+    public const string LiteralEvidenceReportSectionTables = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Tables";
 
     /// <summary>
     /// Literal for code: TextSummary
@@ -400,8 +530,80 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTextSummary = "Text-Summary";
 
     /// <summary>
+    /// Literal for code: EvidenceReportSectionTextSummary
+    /// </summary>
+    public const string LiteralEvidenceReportSectionTextSummary = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Text-Summary";
+
+    /// <summary>
     /// Literal for code: Warnings
     /// </summary>
     public const string LiteralWarnings = "Warnings";
+
+    /// <summary>
+    /// Literal for code: EvidenceReportSectionWarnings
+    /// </summary>
+    public const string LiteralEvidenceReportSectionWarnings = "http://terminology.hl7.org/CodeSystem/evidence-report-section#Warnings";
+
+    /// <summary>
+    /// Dictionary for looking up EvidenceReportSection Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "Assertion", Assertion }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Assertion", Assertion }, 
+      { "Certainty-of-Evidence", CertaintyOfEvidence }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Certainty-of-Evidence", CertaintyOfEvidence }, 
+      { "Column-Header", ColumnHeader }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Column-Header", ColumnHeader }, 
+      { "Column-Headers", ColumnHeaders }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Column-Headers", ColumnHeaders }, 
+      { "Control-group-alone-Evidence", EvidenceResultsForTheControlExposureOnly }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Control-group-alone-Evidence", EvidenceResultsForTheControlExposureOnly }, 
+      { "Efficacy-outcomes", EfficacyOutcomes }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Efficacy-outcomes", EfficacyOutcomes }, 
+      { "Evidence", EvidenceResults }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Evidence", EvidenceResults }, 
+      { "Evidence-Classifier", EvidenceClassifierSection }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Evidence-Classifier", EvidenceClassifierSection }, 
+      { "EvidenceVariable", EvidenceVariablesUsed }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#EvidenceVariable", EvidenceVariablesUsed }, 
+      { "EvidenceVariable-exposure", EvidenceVariableInVariableRoleExposure }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#EvidenceVariable-exposure", EvidenceVariableInVariableRoleExposure }, 
+      { "EvidenceVariable-intended", EvidenceVariablesIntendedForInterpretation }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#EvidenceVariable-intended", EvidenceVariablesIntendedForInterpretation }, 
+      { "EvidenceVariable-observed", EvidenceVariablesActuallyObserved }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#EvidenceVariable-observed", EvidenceVariablesActuallyObserved }, 
+      { "EvidenceVariable-outcome", EvidenceVariableInVariableRoleOutcomeMeasuredVariable }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#EvidenceVariable-outcome", EvidenceVariableInVariableRoleOutcomeMeasuredVariable }, 
+      { "EvidenceVariable-population", EvidenceVariableInVariableRolePopulation }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#EvidenceVariable-population", EvidenceVariableInVariableRolePopulation }, 
+      { "Harms-outcomes", HarmsOutcomes }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Harms-outcomes", HarmsOutcomes }, 
+      { "Header", Header }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Header", Header }, 
+      { "Intervention-group-alone-Evidence", EvidenceResultsForTheInterventionExposureOnly }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Intervention-group-alone-Evidence", EvidenceResultsForTheInterventionExposureOnly }, 
+      { "Intervention-vs-Control-Evidence", EvidenceResultsForComparisonOfInterventionAndControl }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Intervention-vs-Control-Evidence", EvidenceResultsForComparisonOfInterventionAndControl }, 
+      { "Reasons", Reasons }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Reasons", Reasons }, 
+      { "References", References }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#References", References }, 
+      { "Row-Headers", RowHeaders }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Row-Headers", RowHeaders }, 
+      { "SampleSize", SampleSize }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#SampleSize", SampleSize }, 
+      { "SummaryOfBodyOfEvidenceFindings", SummaryOfBodyOfEvidenceFindings }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#SummaryOfBodyOfEvidenceFindings", SummaryOfBodyOfEvidenceFindings }, 
+      { "SummaryOfIndividualStudyFindings", SummaryOfIndividualStudyFindings }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#SummaryOfIndividualStudyFindings", SummaryOfIndividualStudyFindings }, 
+      { "Table", Table }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Table", Table }, 
+      { "Tables", Tables }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Tables", Tables }, 
+      { "Text-Summary", TextSummary }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Text-Summary", TextSummary }, 
+      { "Warnings", Warnings }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-section#Warnings", Warnings }, 
+    };
   };
 }

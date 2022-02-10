@@ -108,9 +108,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralAborted = "aborted";
 
     /// <summary>
+    /// Literal for code: ProcedureRequestStatusAborted
+    /// </summary>
+    public const string LiteralProcedureRequestStatusAborted = "http://hl7.org/fhir/procedure-request-status#aborted";
+
+    /// <summary>
     /// Literal for code: Accepted
     /// </summary>
     public const string LiteralAccepted = "accepted";
+
+    /// <summary>
+    /// Literal for code: ProcedureRequestStatusAccepted
+    /// </summary>
+    public const string LiteralProcedureRequestStatusAccepted = "http://hl7.org/fhir/procedure-request-status#accepted";
 
     /// <summary>
     /// Literal for code: Completed
@@ -118,9 +128,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: ProcedureRequestStatusCompleted
+    /// </summary>
+    public const string LiteralProcedureRequestStatusCompleted = "http://hl7.org/fhir/procedure-request-status#completed";
+
+    /// <summary>
     /// Literal for code: Draft
     /// </summary>
     public const string LiteralDraft = "draft";
+
+    /// <summary>
+    /// Literal for code: ProcedureRequestStatusDraft
+    /// </summary>
+    public const string LiteralProcedureRequestStatusDraft = "http://hl7.org/fhir/procedure-request-status#draft";
 
     /// <summary>
     /// Literal for code: InProgress
@@ -128,9 +148,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralInProgress = "in-progress";
 
     /// <summary>
+    /// Literal for code: ProcedureRequestStatusInProgress
+    /// </summary>
+    public const string LiteralProcedureRequestStatusInProgress = "http://hl7.org/fhir/procedure-request-status#in-progress";
+
+    /// <summary>
     /// Literal for code: Proposed
     /// </summary>
     public const string LiteralProposed = "proposed";
+
+    /// <summary>
+    /// Literal for code: ProcedureRequestStatusProposed
+    /// </summary>
+    public const string LiteralProcedureRequestStatusProposed = "http://hl7.org/fhir/procedure-request-status#proposed";
 
     /// <summary>
     /// Literal for code: Received
@@ -138,9 +168,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralReceived = "received";
 
     /// <summary>
+    /// Literal for code: ProcedureRequestStatusReceived
+    /// </summary>
+    public const string LiteralProcedureRequestStatusReceived = "http://hl7.org/fhir/procedure-request-status#received";
+
+    /// <summary>
     /// Literal for code: Rejected
     /// </summary>
     public const string LiteralRejected = "rejected";
+
+    /// <summary>
+    /// Literal for code: ProcedureRequestStatusRejected
+    /// </summary>
+    public const string LiteralProcedureRequestStatusRejected = "http://hl7.org/fhir/procedure-request-status#rejected";
 
     /// <summary>
     /// Literal for code: Requested
@@ -148,8 +188,44 @@ namespace fhirCsR2.ValueSets
     public const string LiteralRequested = "requested";
 
     /// <summary>
+    /// Literal for code: ProcedureRequestStatusRequested
+    /// </summary>
+    public const string LiteralProcedureRequestStatusRequested = "http://hl7.org/fhir/procedure-request-status#requested";
+
+    /// <summary>
     /// Literal for code: Suspended
     /// </summary>
     public const string LiteralSuspended = "suspended";
+
+    /// <summary>
+    /// Literal for code: ProcedureRequestStatusSuspended
+    /// </summary>
+    public const string LiteralProcedureRequestStatusSuspended = "http://hl7.org/fhir/procedure-request-status#suspended";
+
+    /// <summary>
+    /// Dictionary for looking up ProcedureRequestStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "aborted", Aborted }, 
+      { "http://hl7.org/fhir/procedure-request-status#aborted", Aborted }, 
+      { "accepted", Accepted }, 
+      { "http://hl7.org/fhir/procedure-request-status#accepted", Accepted }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/procedure-request-status#completed", Completed }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/procedure-request-status#draft", Draft }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/procedure-request-status#in-progress", InProgress }, 
+      { "proposed", Proposed }, 
+      { "http://hl7.org/fhir/procedure-request-status#proposed", Proposed }, 
+      { "received", Received }, 
+      { "http://hl7.org/fhir/procedure-request-status#received", Received }, 
+      { "rejected", Rejected }, 
+      { "http://hl7.org/fhir/procedure-request-status#rejected", Rejected }, 
+      { "requested", Requested }, 
+      { "http://hl7.org/fhir/procedure-request-status#requested", Requested }, 
+      { "suspended", Suspended }, 
+      { "http://hl7.org/fhir/procedure-request-status#suspended", Suspended }, 
+    };
   };
 }

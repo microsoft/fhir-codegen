@@ -121,6 +121,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool WasSubstituted { get; set; }
     /// <summary>
+    /// Extension container element for WasSubstituted
+    /// </summary>
+    public Element _WasSubstituted { get; set; }
+    /// <summary>
     /// Serialize to a JSON object
     /// </summary>
     public new void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
@@ -132,6 +136,12 @@ namespace fhirCsR3.Models
       ((fhirCsR3.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
       writer.WriteBoolean("wasSubstituted", WasSubstituted);
+
+      if (_WasSubstituted != null)
+      {
+        writer.WritePropertyName("_wasSubstituted");
+        _WasSubstituted.SerializeJson(writer, options);
+      }
 
       if (Type != null)
       {
@@ -240,6 +250,11 @@ namespace fhirCsR3.Models
           WasSubstituted = reader.GetBoolean();
           break;
 
+        case "_wasSubstituted":
+          _WasSubstituted = new fhirCsR3.Models.Element();
+          _WasSubstituted.DeserializeJson(ref reader, options);
+          break;
+
         default:
           ((fhirCsR3.Models.BackboneElement)this).DeserializeJsonProperty(ref reader, options, propertyName);
           break;
@@ -329,6 +344,10 @@ namespace fhirCsR3.Models
     /// True if the dispense was not performed for some reason.
     /// </summary>
     public bool? NotDone { get; set; }
+    /// <summary>
+    /// Extension container element for NotDone
+    /// </summary>
+    public Element _NotDone { get; set; }
     /// <summary>
     /// Indicates the reason why a dispense was not performed.
     /// </summary>
@@ -629,6 +648,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("notDone", (bool)NotDone!);
       }
 
+      if (_NotDone != null)
+      {
+        writer.WritePropertyName("_notDone");
+        _NotDone.SerializeJson(writer, options);
+      }
+
       if (NotDoneReasonCodeableConcept != null)
       {
         writer.WritePropertyName("notDoneReasonCodeableConcept");
@@ -833,6 +858,11 @@ namespace fhirCsR3.Models
 
         case "notDone":
           NotDone = reader.GetBoolean();
+          break;
+
+        case "_notDone":
+          _NotDone = new fhirCsR3.Models.Element();
+          _NotDone.DeserializeJson(ref reader, options);
           break;
 
         case "notDoneReasonCodeableConcept":
@@ -1068,5 +1098,13 @@ namespace fhirCsR3.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string STOPPED = "stopped";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "preparation",
+      "in-progress",
+      "on-hold",
+      "completed",
+      "entered-in-error",
+      "stopped",
+    };
   }
 }

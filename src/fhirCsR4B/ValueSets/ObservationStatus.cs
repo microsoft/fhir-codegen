@@ -90,9 +90,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAmended = "amended";
 
     /// <summary>
+    /// Literal for code: ObservationStatusAmended
+    /// </summary>
+    public const string LiteralObservationStatusAmended = "http://hl7.org/fhir/observation-status#amended";
+
+    /// <summary>
     /// Literal for code: Cancelled
     /// </summary>
     public const string LiteralCancelled = "cancelled";
+
+    /// <summary>
+    /// Literal for code: ObservationStatusCancelled
+    /// </summary>
+    public const string LiteralObservationStatusCancelled = "http://hl7.org/fhir/observation-status#cancelled";
 
     /// <summary>
     /// Literal for code: Corrected
@@ -100,9 +110,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCorrected = "corrected";
 
     /// <summary>
+    /// Literal for code: ObservationStatusCorrected
+    /// </summary>
+    public const string LiteralObservationStatusCorrected = "http://hl7.org/fhir/observation-status#corrected";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: ObservationStatusEnteredInError
+    /// </summary>
+    public const string LiteralObservationStatusEnteredInError = "http://hl7.org/fhir/observation-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: Final
@@ -110,9 +130,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFinal = "final";
 
     /// <summary>
+    /// Literal for code: ObservationStatusFinal
+    /// </summary>
+    public const string LiteralObservationStatusFinal = "http://hl7.org/fhir/observation-status#final";
+
+    /// <summary>
     /// Literal for code: Preliminary
     /// </summary>
     public const string LiteralPreliminary = "preliminary";
+
+    /// <summary>
+    /// Literal for code: ObservationStatusPreliminary
+    /// </summary>
+    public const string LiteralObservationStatusPreliminary = "http://hl7.org/fhir/observation-status#preliminary";
 
     /// <summary>
     /// Literal for code: Registered
@@ -120,8 +150,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRegistered = "registered";
 
     /// <summary>
+    /// Literal for code: ObservationStatusRegistered
+    /// </summary>
+    public const string LiteralObservationStatusRegistered = "http://hl7.org/fhir/observation-status#registered";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: ObservationStatusUnknown
+    /// </summary>
+    public const string LiteralObservationStatusUnknown = "http://hl7.org/fhir/observation-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up ObservationStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "amended", Amended }, 
+      { "http://hl7.org/fhir/observation-status#amended", Amended }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/observation-status#cancelled", Cancelled }, 
+      { "corrected", Corrected }, 
+      { "http://hl7.org/fhir/observation-status#corrected", Corrected }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/observation-status#entered-in-error", EnteredInError }, 
+      { "final", Final }, 
+      { "http://hl7.org/fhir/observation-status#final", Final }, 
+      { "preliminary", Preliminary }, 
+      { "http://hl7.org/fhir/observation-status#preliminary", Preliminary }, 
+      { "registered", Registered }, 
+      { "http://hl7.org/fhir/observation-status#registered", Registered }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/observation-status#unknown", Unknown }, 
+    };
   };
 }

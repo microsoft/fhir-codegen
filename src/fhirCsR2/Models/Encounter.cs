@@ -122,6 +122,14 @@ namespace fhirCsR2.Models
     public const string ONLEAVE = "onleave";
     public const string FINISHED = "finished";
     public const string CANCELLED = "cancelled";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "planned",
+      "arrived",
+      "in-progress",
+      "onleave",
+      "finished",
+      "cancelled",
+    };
   }
   /// <summary>
   /// The list of people responsible for providing the service.
@@ -750,6 +758,12 @@ namespace fhirCsR2.Models
     public const string ACTIVE = "active";
     public const string RESERVED = "reserved";
     public const string COMPLETED = "completed";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "planned",
+      "active",
+      "reserved",
+      "completed",
+    };
   }
   /// <summary>
   /// An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.
@@ -1405,6 +1419,17 @@ namespace fhirCsR2.Models
     public const string DAYTIME = "daytime";
     public const string VAL_VIRTUAL = "virtual";
     public const string OTHER = "other";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "inpatient",
+      "outpatient",
+      "ambulatory",
+      "emergency",
+      "home",
+      "field",
+      "daytime",
+      "virtual",
+      "other",
+    };
   }
   /// <summary>
   /// Code Values for the Encounter.status field
@@ -1416,5 +1441,13 @@ namespace fhirCsR2.Models
     public const string ONLEAVE = "onleave";
     public const string FINISHED = "finished";
     public const string CANCELLED = "cancelled";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "planned",
+      "arrived",
+      "in-progress",
+      "onleave",
+      "finished",
+      "cancelled",
+    };
   }
 }

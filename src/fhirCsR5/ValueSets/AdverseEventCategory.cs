@@ -81,9 +81,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDevice = "device";
 
     /// <summary>
+    /// Literal for code: AdverseEventCategoryDevice
+    /// </summary>
+    public const string LiteralAdverseEventCategoryDevice = "http://terminology.hl7.org/CodeSystem/adverse-event-category#device";
+
+    /// <summary>
     /// Literal for code: HospitalAcquiredInfection
     /// </summary>
     public const string LiteralHospitalAcquiredInfection = "hospital-aquired-infection";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCategoryHospitalAcquiredInfection
+    /// </summary>
+    public const string LiteralAdverseEventCategoryHospitalAcquiredInfection = "http://terminology.hl7.org/CodeSystem/adverse-event-category#hospital-aquired-infection";
 
     /// <summary>
     /// Literal for code: MedicationMishap
@@ -91,9 +101,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicationMishap = "medication-mishap";
 
     /// <summary>
+    /// Literal for code: AdverseEventCategoryMedicationMishap
+    /// </summary>
+    public const string LiteralAdverseEventCategoryMedicationMishap = "http://terminology.hl7.org/CodeSystem/adverse-event-category#medication-mishap";
+
+    /// <summary>
     /// Literal for code: ProcedureMishap
     /// </summary>
     public const string LiteralProcedureMishap = "procedure-mishap";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCategoryProcedureMishap
+    /// </summary>
+    public const string LiteralAdverseEventCategoryProcedureMishap = "http://terminology.hl7.org/CodeSystem/adverse-event-category#procedure-mishap";
 
     /// <summary>
     /// Literal for code: UnsafePhysicalEnvironment
@@ -101,13 +121,48 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUnsafePhysicalEnvironment = "unsafe-physical-environment";
 
     /// <summary>
+    /// Literal for code: AdverseEventCategoryUnsafePhysicalEnvironment
+    /// </summary>
+    public const string LiteralAdverseEventCategoryUnsafePhysicalEnvironment = "http://terminology.hl7.org/CodeSystem/adverse-event-category#unsafe-physical-environment";
+
+    /// <summary>
     /// Literal for code: WrongBodySite
     /// </summary>
     public const string LiteralWrongBodySite = "wrong-body-site";
 
     /// <summary>
+    /// Literal for code: AdverseEventCategoryWrongBodySite
+    /// </summary>
+    public const string LiteralAdverseEventCategoryWrongBodySite = "http://terminology.hl7.org/CodeSystem/adverse-event-category#wrong-body-site";
+
+    /// <summary>
     /// Literal for code: WrongPatient
     /// </summary>
     public const string LiteralWrongPatient = "wrong-patient";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCategoryWrongPatient
+    /// </summary>
+    public const string LiteralAdverseEventCategoryWrongPatient = "http://terminology.hl7.org/CodeSystem/adverse-event-category#wrong-patient";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "device", Device }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#device", Device }, 
+      { "hospital-aquired-infection", HospitalAcquiredInfection }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#hospital-aquired-infection", HospitalAcquiredInfection }, 
+      { "medication-mishap", MedicationMishap }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#medication-mishap", MedicationMishap }, 
+      { "procedure-mishap", ProcedureMishap }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#procedure-mishap", ProcedureMishap }, 
+      { "unsafe-physical-environment", UnsafePhysicalEnvironment }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#unsafe-physical-environment", UnsafePhysicalEnvironment }, 
+      { "wrong-body-site", WrongBodySite }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#wrong-body-site", WrongBodySite }, 
+      { "wrong-patient", WrongPatient }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#wrong-patient", WrongPatient }, 
+    };
   };
 }

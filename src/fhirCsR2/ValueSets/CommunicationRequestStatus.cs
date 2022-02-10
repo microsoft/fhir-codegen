@@ -108,9 +108,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralAccepted = "accepted";
 
     /// <summary>
+    /// Literal for code: CommunicationRequestStatusAccepted
+    /// </summary>
+    public const string LiteralCommunicationRequestStatusAccepted = "http://hl7.org/fhir/communication-request-status#accepted";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: CommunicationRequestStatusCompleted
+    /// </summary>
+    public const string LiteralCommunicationRequestStatusCompleted = "http://hl7.org/fhir/communication-request-status#completed";
 
     /// <summary>
     /// Literal for code: Failed
@@ -118,9 +128,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralFailed = "failed";
 
     /// <summary>
+    /// Literal for code: CommunicationRequestStatusFailed
+    /// </summary>
+    public const string LiteralCommunicationRequestStatusFailed = "http://hl7.org/fhir/communication-request-status#failed";
+
+    /// <summary>
     /// Literal for code: InProgress
     /// </summary>
     public const string LiteralInProgress = "in-progress";
+
+    /// <summary>
+    /// Literal for code: CommunicationRequestStatusInProgress
+    /// </summary>
+    public const string LiteralCommunicationRequestStatusInProgress = "http://hl7.org/fhir/communication-request-status#in-progress";
 
     /// <summary>
     /// Literal for code: Planned
@@ -128,9 +148,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralPlanned = "planned";
 
     /// <summary>
+    /// Literal for code: CommunicationRequestStatusPlanned
+    /// </summary>
+    public const string LiteralCommunicationRequestStatusPlanned = "http://hl7.org/fhir/communication-request-status#planned";
+
+    /// <summary>
     /// Literal for code: Proposed
     /// </summary>
     public const string LiteralProposed = "proposed";
+
+    /// <summary>
+    /// Literal for code: CommunicationRequestStatusProposed
+    /// </summary>
+    public const string LiteralCommunicationRequestStatusProposed = "http://hl7.org/fhir/communication-request-status#proposed";
 
     /// <summary>
     /// Literal for code: Received
@@ -138,9 +168,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralReceived = "received";
 
     /// <summary>
+    /// Literal for code: CommunicationRequestStatusReceived
+    /// </summary>
+    public const string LiteralCommunicationRequestStatusReceived = "http://hl7.org/fhir/communication-request-status#received";
+
+    /// <summary>
     /// Literal for code: Rejected
     /// </summary>
     public const string LiteralRejected = "rejected";
+
+    /// <summary>
+    /// Literal for code: CommunicationRequestStatusRejected
+    /// </summary>
+    public const string LiteralCommunicationRequestStatusRejected = "http://hl7.org/fhir/communication-request-status#rejected";
 
     /// <summary>
     /// Literal for code: Requested
@@ -148,8 +188,44 @@ namespace fhirCsR2.ValueSets
     public const string LiteralRequested = "requested";
 
     /// <summary>
+    /// Literal for code: CommunicationRequestStatusRequested
+    /// </summary>
+    public const string LiteralCommunicationRequestStatusRequested = "http://hl7.org/fhir/communication-request-status#requested";
+
+    /// <summary>
     /// Literal for code: Suspended
     /// </summary>
     public const string LiteralSuspended = "suspended";
+
+    /// <summary>
+    /// Literal for code: CommunicationRequestStatusSuspended
+    /// </summary>
+    public const string LiteralCommunicationRequestStatusSuspended = "http://hl7.org/fhir/communication-request-status#suspended";
+
+    /// <summary>
+    /// Dictionary for looking up CommunicationRequestStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "accepted", Accepted }, 
+      { "http://hl7.org/fhir/communication-request-status#accepted", Accepted }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/communication-request-status#completed", Completed }, 
+      { "failed", Failed }, 
+      { "http://hl7.org/fhir/communication-request-status#failed", Failed }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/communication-request-status#in-progress", InProgress }, 
+      { "planned", Planned }, 
+      { "http://hl7.org/fhir/communication-request-status#planned", Planned }, 
+      { "proposed", Proposed }, 
+      { "http://hl7.org/fhir/communication-request-status#proposed", Proposed }, 
+      { "received", Received }, 
+      { "http://hl7.org/fhir/communication-request-status#received", Received }, 
+      { "rejected", Rejected }, 
+      { "http://hl7.org/fhir/communication-request-status#rejected", Rejected }, 
+      { "requested", Requested }, 
+      { "http://hl7.org/fhir/communication-request-status#requested", Requested }, 
+      { "suspended", Suspended }, 
+      { "http://hl7.org/fhir/communication-request-status#suspended", Suspended }, 
+    };
   };
 }

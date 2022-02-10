@@ -729,9 +729,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdjustedAnalysis = "adjusted";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeAdjustedAnalysis
+    /// </summary>
+    public const string LiteralStatisticModelCodeAdjustedAnalysis = "http://terminology.hl7.org/CodeSystem/statistic-model-code#adjusted";
+
+    /// <summary>
     /// Literal for code: ANOVAANalysisOfVAriance
     /// </summary>
     public const string LiteralANOVAANalysisOfVAriance = "anova";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeANOVAANalysisOfVAriance
+    /// </summary>
+    public const string LiteralStatisticModelCodeANOVAANalysisOfVAriance = "http://terminology.hl7.org/CodeSystem/statistic-model-code#anova";
 
     /// <summary>
     /// Literal for code: OneWayANOVA
@@ -739,9 +749,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOneWayANOVA = "anovaOneWay";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeOneWayANOVA
+    /// </summary>
+    public const string LiteralStatisticModelCodeOneWayANOVA = "http://terminology.hl7.org/CodeSystem/statistic-model-code#anovaOneWay";
+
+    /// <summary>
     /// Literal for code: VAL3WayANOVA
     /// </summary>
     public const string LiteralVAL3WayANOVA = "anovaThreeWay";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeVAL3WayANOVA
+    /// </summary>
+    public const string LiteralStatisticModelCodeVAL3WayANOVA = "http://terminology.hl7.org/CodeSystem/statistic-model-code#anovaThreeWay";
 
     /// <summary>
     /// Literal for code: VAL2WayANOVAWithoutReplication
@@ -749,9 +769,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVAL2WayANOVAWithoutReplication = "anovaTwoWay";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeVAL2WayANOVAWithoutReplication
+    /// </summary>
+    public const string LiteralStatisticModelCodeVAL2WayANOVAWithoutReplication = "http://terminology.hl7.org/CodeSystem/statistic-model-code#anovaTwoWay";
+
+    /// <summary>
     /// Literal for code: VAL2WayANOVAWithReplication
     /// </summary>
     public const string LiteralVAL2WayANOVAWithReplication = "anovaTwoWayReplication";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeVAL2WayANOVAWithReplication
+    /// </summary>
+    public const string LiteralStatisticModelCodeVAL2WayANOVAWithReplication = "http://terminology.hl7.org/CodeSystem/statistic-model-code#anovaTwoWayReplication";
 
     /// <summary>
     /// Literal for code: BinomialDistributionForRegression
@@ -759,9 +789,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBinomialDistributionForRegression = "binomialDistributionRegression";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeBinomialDistributionForRegression
+    /// </summary>
+    public const string LiteralStatisticModelCodeBinomialDistributionForRegression = "http://terminology.hl7.org/CodeSystem/statistic-model-code#binomialDistributionRegression";
+
+    /// <summary>
     /// Literal for code: ChiSquareTest
     /// </summary>
     public const string LiteralChiSquareTest = "chiSquareTest";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeChiSquareTest
+    /// </summary>
+    public const string LiteralStatisticModelCodeChiSquareTest = "http://terminology.hl7.org/CodeSystem/statistic-model-code#chiSquareTest";
 
     /// <summary>
     /// Literal for code: ChiSquareTestForHomogeneity
@@ -769,9 +809,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChiSquareTestForHomogeneity = "chiSquareTestHomogeneity";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeChiSquareTestForHomogeneity
+    /// </summary>
+    public const string LiteralStatisticModelCodeChiSquareTestForHomogeneity = "http://terminology.hl7.org/CodeSystem/statistic-model-code#chiSquareTestHomogeneity";
+
+    /// <summary>
     /// Literal for code: ChiSquareTestForTrend
     /// </summary>
     public const string LiteralChiSquareTestForTrend = "chiSquareTestTrend";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeChiSquareTestForTrend
+    /// </summary>
+    public const string LiteralStatisticModelCodeChiSquareTestForTrend = "http://terminology.hl7.org/CodeSystem/statistic-model-code#chiSquareTestTrend";
 
     /// <summary>
     /// Literal for code: CoxProportionalHazards
@@ -779,9 +829,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCoxProportionalHazards = "coxProportionalHazards";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeCoxProportionalHazards
+    /// </summary>
+    public const string LiteralStatisticModelCodeCoxProportionalHazards = "http://terminology.hl7.org/CodeSystem/statistic-model-code#coxProportionalHazards";
+
+    /// <summary>
     /// Literal for code: DersimonianLairdMethod
     /// </summary>
     public const string LiteralDersimonianLairdMethod = "dersimonianLairdMethod";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeDersimonianLairdMethod
+    /// </summary>
+    public const string LiteralStatisticModelCodeDersimonianLairdMethod = "http://terminology.hl7.org/CodeSystem/statistic-model-code#dersimonianLairdMethod";
 
     /// <summary>
     /// Literal for code: FixedEffects
@@ -789,9 +849,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFixedEffects = "effectsFixed";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeFixedEffects
+    /// </summary>
+    public const string LiteralStatisticModelCodeFixedEffects = "http://terminology.hl7.org/CodeSystem/statistic-model-code#effectsFixed";
+
+    /// <summary>
     /// Literal for code: RandomEffects
     /// </summary>
     public const string LiteralRandomEffects = "effectsRandom";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeRandomEffects
+    /// </summary>
+    public const string LiteralStatisticModelCodeRandomEffects = "http://terminology.hl7.org/CodeSystem/statistic-model-code#effectsRandom";
 
     /// <summary>
     /// Literal for code: EmpiricalBayesMethod
@@ -799,9 +869,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEmpiricalBayesMethod = "empiricalBayes";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeEmpiricalBayesMethod
+    /// </summary>
+    public const string LiteralStatisticModelCodeEmpiricalBayesMethod = "http://terminology.hl7.org/CodeSystem/statistic-model-code#empiricalBayes";
+
+    /// <summary>
     /// Literal for code: FisherQuoteSExactTest
     /// </summary>
     public const string LiteralFisherQuoteSExactTest = "fishersExactTest";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeFisherQuoteSExactTest
+    /// </summary>
+    public const string LiteralStatisticModelCodeFisherQuoteSExactTest = "http://terminology.hl7.org/CodeSystem/statistic-model-code#fishersExactTest";
 
     /// <summary>
     /// Literal for code: FriedmanTest
@@ -809,9 +889,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFriedmanTest = "friedmanTest";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeFriedmanTest
+    /// </summary>
+    public const string LiteralStatisticModelCodeFriedmanTest = "http://terminology.hl7.org/CodeSystem/statistic-model-code#friedmanTest";
+
+    /// <summary>
     /// Literal for code: GLMGeneralizedLinearModel
     /// </summary>
     public const string LiteralGLMGeneralizedLinearModel = "glm";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeGLMGeneralizedLinearModel
+    /// </summary>
+    public const string LiteralStatisticModelCodeGLMGeneralizedLinearModel = "http://terminology.hl7.org/CodeSystem/statistic-model-code#glm";
 
     /// <summary>
     /// Literal for code: GLMWithGeneralizedLogitLink
@@ -819,9 +909,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGLMWithGeneralizedLogitLink = "glmGeneralizedLogit";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeGLMWithGeneralizedLogitLink
+    /// </summary>
+    public const string LiteralStatisticModelCodeGLMWithGeneralizedLogitLink = "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmGeneralizedLogit";
+
+    /// <summary>
     /// Literal for code: GLMWithIdentityLink
     /// </summary>
     public const string LiteralGLMWithIdentityLink = "glmIdentity";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeGLMWithIdentityLink
+    /// </summary>
+    public const string LiteralStatisticModelCodeGLMWithIdentityLink = "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmIdentity";
 
     /// <summary>
     /// Literal for code: GLMWithLogLink
@@ -829,9 +929,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGLMWithLogLink = "glmLog";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeGLMWithLogLink
+    /// </summary>
+    public const string LiteralStatisticModelCodeGLMWithLogLink = "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmLog";
+
+    /// <summary>
     /// Literal for code: GLMWithLogitLink
     /// </summary>
     public const string LiteralGLMWithLogitLink = "glmLogit";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeGLMWithLogitLink
+    /// </summary>
+    public const string LiteralStatisticModelCodeGLMWithLogitLink = "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmLogit";
 
     /// <summary>
     /// Literal for code: GeneralizedLinearMixedModelGLMM
@@ -839,9 +949,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGeneralizedLinearMixedModelGLMM = "glmm";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeGeneralizedLinearMixedModelGLMM
+    /// </summary>
+    public const string LiteralStatisticModelCodeGeneralizedLinearMixedModelGLMM = "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmm";
+
+    /// <summary>
     /// Literal for code: GLMMWithGeneralizedLogitLink
     /// </summary>
     public const string LiteralGLMMWithGeneralizedLogitLink = "glmmGeneralizedLogit";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeGLMMWithGeneralizedLogitLink
+    /// </summary>
+    public const string LiteralStatisticModelCodeGLMMWithGeneralizedLogitLink = "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmmGeneralizedLogit";
 
     /// <summary>
     /// Literal for code: GLMMWithIdentityLink
@@ -849,9 +969,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGLMMWithIdentityLink = "glmmIdentity";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeGLMMWithIdentityLink
+    /// </summary>
+    public const string LiteralStatisticModelCodeGLMMWithIdentityLink = "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmmIdentity";
+
+    /// <summary>
     /// Literal for code: GLMMWithLogLink
     /// </summary>
     public const string LiteralGLMMWithLogLink = "glmmLog";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeGLMMWithLogLink
+    /// </summary>
+    public const string LiteralStatisticModelCodeGLMMWithLogLink = "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmmLog";
 
     /// <summary>
     /// Literal for code: GLMMWithLogitLink
@@ -859,9 +989,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGLMMWithLogitLink = "glmmLogit";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeGLMMWithLogitLink
+    /// </summary>
+    public const string LiteralStatisticModelCodeGLMMWithLogitLink = "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmmLogit";
+
+    /// <summary>
     /// Literal for code: GLMMWithProbitLink
     /// </summary>
     public const string LiteralGLMMWithProbitLink = "glmmProbit";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeGLMMWithProbitLink
+    /// </summary>
+    public const string LiteralStatisticModelCodeGLMMWithProbitLink = "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmmProbit";
 
     /// <summary>
     /// Literal for code: GLMWithProbitLink
@@ -869,9 +1009,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGLMWithProbitLink = "glmProbit";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeGLMWithProbitLink
+    /// </summary>
+    public const string LiteralStatisticModelCodeGLMWithProbitLink = "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmProbit";
+
+    /// <summary>
     /// Literal for code: GoodmanKruskaQuoteSGamma
     /// </summary>
     public const string LiteralGoodmanKruskaQuoteSGamma = "goodmanKruskasGamma";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeGoodmanKruskaQuoteSGamma
+    /// </summary>
+    public const string LiteralStatisticModelCodeGoodmanKruskaQuoteSGamma = "http://terminology.hl7.org/CodeSystem/statistic-model-code#goodmanKruskasGamma";
 
     /// <summary>
     /// Literal for code: HartungKnappAdjustment
@@ -879,9 +1029,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHartungKnappAdjustment = "hartungKnapp";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeHartungKnappAdjustment
+    /// </summary>
+    public const string LiteralStatisticModelCodeHartungKnappAdjustment = "http://terminology.hl7.org/CodeSystem/statistic-model-code#hartungKnapp";
+
+    /// <summary>
     /// Literal for code: HedgesMethod
     /// </summary>
     public const string LiteralHedgesMethod = "hedgesMethod";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeHedgesMethod
+    /// </summary>
+    public const string LiteralStatisticModelCodeHedgesMethod = "http://terminology.hl7.org/CodeSystem/statistic-model-code#hedgesMethod";
 
     /// <summary>
     /// Literal for code: HunterSchmidtMethod
@@ -889,9 +1049,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHunterSchmidtMethod = "hunterSchmidt";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeHunterSchmidtMethod
+    /// </summary>
+    public const string LiteralStatisticModelCodeHunterSchmidtMethod = "http://terminology.hl7.org/CodeSystem/statistic-model-code#hunterSchmidt";
+
+    /// <summary>
     /// Literal for code: InteractionTerm
     /// </summary>
     public const string LiteralInteractionTerm = "interactionTerm";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeInteractionTerm
+    /// </summary>
+    public const string LiteralStatisticModelCodeInteractionTerm = "http://terminology.hl7.org/CodeSystem/statistic-model-code#interactionTerm";
 
     /// <summary>
     /// Literal for code: InverseVarianceMethod
@@ -899,9 +1069,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInverseVarianceMethod = "inverseVariance";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeInverseVarianceMethod
+    /// </summary>
+    public const string LiteralStatisticModelCodeInverseVarianceMethod = "http://terminology.hl7.org/CodeSystem/statistic-model-code#inverseVariance";
+
+    /// <summary>
     /// Literal for code: KendallCorrelation
     /// </summary>
     public const string LiteralKendallCorrelation = "kendallCorrelation";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeKendallCorrelation
+    /// </summary>
+    public const string LiteralStatisticModelCodeKendallCorrelation = "http://terminology.hl7.org/CodeSystem/statistic-model-code#kendallCorrelation";
 
     /// <summary>
     /// Literal for code: KruskalWallisTest
@@ -909,9 +1089,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralKruskalWallisTest = "kruskalWallisTest";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeKruskalWallisTest
+    /// </summary>
+    public const string LiteralStatisticModelCodeKruskalWallisTest = "http://terminology.hl7.org/CodeSystem/statistic-model-code#kruskalWallisTest";
+
+    /// <summary>
     /// Literal for code: LinearRegression
     /// </summary>
     public const string LiteralLinearRegression = "linearRegression";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeLinearRegression
+    /// </summary>
+    public const string LiteralStatisticModelCodeLinearRegression = "http://terminology.hl7.org/CodeSystem/statistic-model-code#linearRegression";
 
     /// <summary>
     /// Literal for code: LogisticRegression
@@ -919,9 +1109,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLogisticRegression = "logisticRegression";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeLogisticRegression
+    /// </summary>
+    public const string LiteralStatisticModelCodeLogisticRegression = "http://terminology.hl7.org/CodeSystem/statistic-model-code#logisticRegression";
+
+    /// <summary>
     /// Literal for code: MannWhitneyUTest
     /// </summary>
     public const string LiteralMannWhitneyUTest = "mannWhitneyUTest";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeMannWhitneyUTest
+    /// </summary>
+    public const string LiteralStatisticModelCodeMannWhitneyUTest = "http://terminology.hl7.org/CodeSystem/statistic-model-code#mannWhitneyUTest";
 
     /// <summary>
     /// Literal for code: MultivariateANOVAMANOVA
@@ -929,9 +1129,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMultivariateANOVAMANOVA = "manova";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeMultivariateANOVAMANOVA
+    /// </summary>
+    public const string LiteralStatisticModelCodeMultivariateANOVAMANOVA = "http://terminology.hl7.org/CodeSystem/statistic-model-code#manova";
+
+    /// <summary>
     /// Literal for code: MantelHaenszelMethod
     /// </summary>
     public const string LiteralMantelHaenszelMethod = "manteHaenszelMethod";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeMantelHaenszelMethod
+    /// </summary>
+    public const string LiteralStatisticModelCodeMantelHaenszelMethod = "http://terminology.hl7.org/CodeSystem/statistic-model-code#manteHaenszelMethod";
 
     /// <summary>
     /// Literal for code: MaximumLikelihoodMethod
@@ -939,9 +1149,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMaximumLikelihoodMethod = "maximumLikelihood";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeMaximumLikelihoodMethod
+    /// </summary>
+    public const string LiteralStatisticModelCodeMaximumLikelihoodMethod = "http://terminology.hl7.org/CodeSystem/statistic-model-code#maximumLikelihood";
+
+    /// <summary>
     /// Literal for code: McNemarQuoteSTest
     /// </summary>
     public const string LiteralMcNemarQuoteSTest = "mcnemarsTest";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeMcNemarQuoteSTest
+    /// </summary>
+    public const string LiteralStatisticModelCodeMcNemarQuoteSTest = "http://terminology.hl7.org/CodeSystem/statistic-model-code#mcnemarsTest";
 
     /// <summary>
     /// Literal for code: MetaAnalysis
@@ -949,9 +1169,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMetaAnalysis = "metaAnalysis";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeMetaAnalysis
+    /// </summary>
+    public const string LiteralStatisticModelCodeMetaAnalysis = "http://terminology.hl7.org/CodeSystem/statistic-model-code#metaAnalysis";
+
+    /// <summary>
     /// Literal for code: ModifiedHartungKnappAdjustment
     /// </summary>
     public const string LiteralModifiedHartungKnappAdjustment = "modifiedHartungKnapp";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeModifiedHartungKnappAdjustment
+    /// </summary>
+    public const string LiteralStatisticModelCodeModifiedHartungKnappAdjustment = "http://terminology.hl7.org/CodeSystem/statistic-model-code#modifiedHartungKnapp";
 
     /// <summary>
     /// Literal for code: MultinomialDistributionForRegression
@@ -959,9 +1189,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMultinomialDistributionForRegression = "multinomialDistributionRegression";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeMultinomialDistributionForRegression
+    /// </summary>
+    public const string LiteralStatisticModelCodeMultinomialDistributionForRegression = "http://terminology.hl7.org/CodeSystem/statistic-model-code#multinomialDistributionRegression";
+
+    /// <summary>
     /// Literal for code: NegativeBinomialRegression
     /// </summary>
     public const string LiteralNegativeBinomialRegression = "negativeBinomialRegression";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeNegativeBinomialRegression
+    /// </summary>
+    public const string LiteralStatisticModelCodeNegativeBinomialRegression = "http://terminology.hl7.org/CodeSystem/statistic-model-code#negativeBinomialRegression";
 
     /// <summary>
     /// Literal for code: VAL1SampleTTest
@@ -969,9 +1209,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVAL1SampleTTest = "oneSampleTTest";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeVAL1SampleTTest
+    /// </summary>
+    public const string LiteralStatisticModelCodeVAL1SampleTTest = "http://terminology.hl7.org/CodeSystem/statistic-model-code#oneSampleTTest";
+
+    /// <summary>
     /// Literal for code: OneTailedTest1Threshold
     /// </summary>
     public const string LiteralOneTailedTest1Threshold = "oneTailedTest";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeOneTailedTest1Threshold
+    /// </summary>
+    public const string LiteralStatisticModelCodeOneTailedTest1Threshold = "http://terminology.hl7.org/CodeSystem/statistic-model-code#oneTailedTest";
 
     /// <summary>
     /// Literal for code: PairedTTest
@@ -979,9 +1229,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPairedTTest = "pairedTTest";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodePairedTTest
+    /// </summary>
+    public const string LiteralStatisticModelCodePairedTTest = "http://terminology.hl7.org/CodeSystem/statistic-model-code#pairedTTest";
+
+    /// <summary>
     /// Literal for code: PauleMandelMethod
     /// </summary>
     public const string LiteralPauleMandelMethod = "pauleMandelMethod";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodePauleMandelMethod
+    /// </summary>
+    public const string LiteralStatisticModelCodePauleMandelMethod = "http://terminology.hl7.org/CodeSystem/statistic-model-code#pauleMandelMethod";
 
     /// <summary>
     /// Literal for code: PearsonCorrelation
@@ -989,9 +1249,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPearsonCorrelation = "pearsonCorrelation";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodePearsonCorrelation
+    /// </summary>
+    public const string LiteralStatisticModelCodePearsonCorrelation = "http://terminology.hl7.org/CodeSystem/statistic-model-code#pearsonCorrelation";
+
+    /// <summary>
     /// Literal for code: PetoMethod
     /// </summary>
     public const string LiteralPetoMethod = "petoMethod";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodePetoMethod
+    /// </summary>
+    public const string LiteralStatisticModelCodePetoMethod = "http://terminology.hl7.org/CodeSystem/statistic-model-code#petoMethod";
 
     /// <summary>
     /// Literal for code: PoissonRegression
@@ -999,9 +1269,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPoissonRegression = "poissonRegression";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodePoissonRegression
+    /// </summary>
+    public const string LiteralStatisticModelCodePoissonRegression = "http://terminology.hl7.org/CodeSystem/statistic-model-code#poissonRegression";
+
+    /// <summary>
     /// Literal for code: PolynomialRegression
     /// </summary>
     public const string LiteralPolynomialRegression = "polynomialRegression";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodePolynomialRegression
+    /// </summary>
+    public const string LiteralStatisticModelCodePolynomialRegression = "http://terminology.hl7.org/CodeSystem/statistic-model-code#polynomialRegression";
 
     /// <summary>
     /// Literal for code: GeneralizedLinearMixedModelGLMM_2
@@ -1009,9 +1289,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGeneralizedLinearMixedModelGLMM_2 = "poolGeneralizedLinearMixedModel";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeGeneralizedLinearMixedModelGLMM_2
+    /// </summary>
+    public const string LiteralStatisticModelCodeGeneralizedLinearMixedModelGLMM_2 = "http://terminology.hl7.org/CodeSystem/statistic-model-code#poolGeneralizedLinearMixedModel";
+
+    /// <summary>
     /// Literal for code: InverseVarianceMethod_2
     /// </summary>
     public const string LiteralInverseVarianceMethod_2 = "poolInverseVariance";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeInverseVarianceMethod_2
+    /// </summary>
+    public const string LiteralStatisticModelCodeInverseVarianceMethod_2 = "http://terminology.hl7.org/CodeSystem/statistic-model-code#poolInverseVariance";
 
     /// <summary>
     /// Literal for code: MantelHaenszelMethod_2
@@ -1019,9 +1309,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMantelHaenszelMethod_2 = "poolMantelHaenzsel";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeMantelHaenszelMethod_2
+    /// </summary>
+    public const string LiteralStatisticModelCodeMantelHaenszelMethod_2 = "http://terminology.hl7.org/CodeSystem/statistic-model-code#poolMantelHaenzsel";
+
+    /// <summary>
     /// Literal for code: PetoMethod_2
     /// </summary>
     public const string LiteralPetoMethod_2 = "poolPeto";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodePetoMethod_2
+    /// </summary>
+    public const string LiteralStatisticModelCodePetoMethod_2 = "http://terminology.hl7.org/CodeSystem/statistic-model-code#poolPeto";
 
     /// <summary>
     /// Literal for code: RestrictedMaximumLikelihoodMethod
@@ -1029,9 +1329,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRestrictedMaximumLikelihoodMethod = "restrictedLikelihood";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeRestrictedMaximumLikelihoodMethod
+    /// </summary>
+    public const string LiteralStatisticModelCodeRestrictedMaximumLikelihoodMethod = "http://terminology.hl7.org/CodeSystem/statistic-model-code#restrictedLikelihood";
+
+    /// <summary>
     /// Literal for code: SidikJonkmanMethod
     /// </summary>
     public const string LiteralSidikJonkmanMethod = "sidikJonkman";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeSidikJonkmanMethod
+    /// </summary>
+    public const string LiteralStatisticModelCodeSidikJonkmanMethod = "http://terminology.hl7.org/CodeSystem/statistic-model-code#sidikJonkman";
 
     /// <summary>
     /// Literal for code: SignTest
@@ -1039,9 +1349,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSignTest = "signTest";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeSignTest
+    /// </summary>
+    public const string LiteralStatisticModelCodeSignTest = "http://terminology.hl7.org/CodeSystem/statistic-model-code#signTest";
+
+    /// <summary>
     /// Literal for code: SpearmanCorrelation
     /// </summary>
     public const string LiteralSpearmanCorrelation = "spearmanCorrelation";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeSpearmanCorrelation
+    /// </summary>
+    public const string LiteralStatisticModelCodeSpearmanCorrelation = "http://terminology.hl7.org/CodeSystem/statistic-model-code#spearmanCorrelation";
 
     /// <summary>
     /// Literal for code: DersimonianLairdMethod_2
@@ -1049,9 +1369,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDersimonianLairdMethod_2 = "tauDersimonianLaird";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeDersimonianLairdMethod_2
+    /// </summary>
+    public const string LiteralStatisticModelCodeDersimonianLairdMethod_2 = "http://terminology.hl7.org/CodeSystem/statistic-model-code#tauDersimonianLaird";
+
+    /// <summary>
     /// Literal for code: EmpiricalBayesMethod_2
     /// </summary>
     public const string LiteralEmpiricalBayesMethod_2 = "tauEmpiricalBayes";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeEmpiricalBayesMethod_2
+    /// </summary>
+    public const string LiteralStatisticModelCodeEmpiricalBayesMethod_2 = "http://terminology.hl7.org/CodeSystem/statistic-model-code#tauEmpiricalBayes";
 
     /// <summary>
     /// Literal for code: HedgesMethod_2
@@ -1059,9 +1389,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHedgesMethod_2 = "tauHedges";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeHedgesMethod_2
+    /// </summary>
+    public const string LiteralStatisticModelCodeHedgesMethod_2 = "http://terminology.hl7.org/CodeSystem/statistic-model-code#tauHedges";
+
+    /// <summary>
     /// Literal for code: HunterSchmidtMethod_2
     /// </summary>
     public const string LiteralHunterSchmidtMethod_2 = "tauHunterSchmidt";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeHunterSchmidtMethod_2
+    /// </summary>
+    public const string LiteralStatisticModelCodeHunterSchmidtMethod_2 = "http://terminology.hl7.org/CodeSystem/statistic-model-code#tauHunterSchmidt";
 
     /// <summary>
     /// Literal for code: MaximumLikelihoodMethod_2
@@ -1069,9 +1409,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMaximumLikelihoodMethod_2 = "tauMaximumLikelihood";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeMaximumLikelihoodMethod_2
+    /// </summary>
+    public const string LiteralStatisticModelCodeMaximumLikelihoodMethod_2 = "http://terminology.hl7.org/CodeSystem/statistic-model-code#tauMaximumLikelihood";
+
+    /// <summary>
     /// Literal for code: PauleMandelMethod_2
     /// </summary>
     public const string LiteralPauleMandelMethod_2 = "tauPauleMandel";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodePauleMandelMethod_2
+    /// </summary>
+    public const string LiteralStatisticModelCodePauleMandelMethod_2 = "http://terminology.hl7.org/CodeSystem/statistic-model-code#tauPauleMandel";
 
     /// <summary>
     /// Literal for code: RestrictedMaximumLikelihoodMethod_2
@@ -1079,9 +1429,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRestrictedMaximumLikelihoodMethod_2 = "tauRestrictedMaximumLikelihood";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeRestrictedMaximumLikelihoodMethod_2
+    /// </summary>
+    public const string LiteralStatisticModelCodeRestrictedMaximumLikelihoodMethod_2 = "http://terminology.hl7.org/CodeSystem/statistic-model-code#tauRestrictedMaximumLikelihood";
+
+    /// <summary>
     /// Literal for code: SidikJonkmanMethod_2
     /// </summary>
     public const string LiteralSidikJonkmanMethod_2 = "tauSidikJonkman";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeSidikJonkmanMethod_2
+    /// </summary>
+    public const string LiteralStatisticModelCodeSidikJonkmanMethod_2 = "http://terminology.hl7.org/CodeSystem/statistic-model-code#tauSidikJonkman";
 
     /// <summary>
     /// Literal for code: VAL2SampleTTest
@@ -1089,9 +1449,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVAL2SampleTTest = "twoSampleTTest";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeVAL2SampleTTest
+    /// </summary>
+    public const string LiteralStatisticModelCodeVAL2SampleTTest = "http://terminology.hl7.org/CodeSystem/statistic-model-code#twoSampleTTest";
+
+    /// <summary>
     /// Literal for code: TwoTailedTest2Thresholds
     /// </summary>
     public const string LiteralTwoTailedTest2Thresholds = "twoTailedTest";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeTwoTailedTest2Thresholds
+    /// </summary>
+    public const string LiteralStatisticModelCodeTwoTailedTest2Thresholds = "http://terminology.hl7.org/CodeSystem/statistic-model-code#twoTailedTest";
 
     /// <summary>
     /// Literal for code: WilcoxonRankSumTest
@@ -1099,9 +1469,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWilcoxonRankSumTest = "wilcoxonRankSumTest";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeWilcoxonRankSumTest
+    /// </summary>
+    public const string LiteralStatisticModelCodeWilcoxonRankSumTest = "http://terminology.hl7.org/CodeSystem/statistic-model-code#wilcoxonRankSumTest";
+
+    /// <summary>
     /// Literal for code: WilcoxonSignedRankTest
     /// </summary>
     public const string LiteralWilcoxonSignedRankTest = "wilcoxonSignedRankTest";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeWilcoxonSignedRankTest
+    /// </summary>
+    public const string LiteralStatisticModelCodeWilcoxonSignedRankTest = "http://terminology.hl7.org/CodeSystem/statistic-model-code#wilcoxonSignedRankTest";
 
     /// <summary>
     /// Literal for code: ZeroCellAdjustmentWithConstant
@@ -1109,13 +1489,192 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralZeroCellAdjustmentWithConstant = "zeroCellConstant";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeZeroCellAdjustmentWithConstant
+    /// </summary>
+    public const string LiteralStatisticModelCodeZeroCellAdjustmentWithConstant = "http://terminology.hl7.org/CodeSystem/statistic-model-code#zeroCellConstant";
+
+    /// <summary>
     /// Literal for code: ZeroCellAdjustmentWithContinuityCorrection
     /// </summary>
     public const string LiteralZeroCellAdjustmentWithContinuityCorrection = "zeroCellContinuityCorrection";
 
     /// <summary>
+    /// Literal for code: StatisticModelCodeZeroCellAdjustmentWithContinuityCorrection
+    /// </summary>
+    public const string LiteralStatisticModelCodeZeroCellAdjustmentWithContinuityCorrection = "http://terminology.hl7.org/CodeSystem/statistic-model-code#zeroCellContinuityCorrection";
+
+    /// <summary>
     /// Literal for code: ZTest
     /// </summary>
     public const string LiteralZTest = "zTest";
+
+    /// <summary>
+    /// Literal for code: StatisticModelCodeZTest
+    /// </summary>
+    public const string LiteralStatisticModelCodeZTest = "http://terminology.hl7.org/CodeSystem/statistic-model-code#zTest";
+
+    /// <summary>
+    /// Dictionary for looking up StatisticModelCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "adjusted", AdjustedAnalysis }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#adjusted", AdjustedAnalysis }, 
+      { "anova", ANOVAANalysisOfVAriance }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#anova", ANOVAANalysisOfVAriance }, 
+      { "anovaOneWay", OneWayANOVA }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#anovaOneWay", OneWayANOVA }, 
+      { "anovaThreeWay", VAL3WayANOVA }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#anovaThreeWay", VAL3WayANOVA }, 
+      { "anovaTwoWay", VAL2WayANOVAWithoutReplication }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#anovaTwoWay", VAL2WayANOVAWithoutReplication }, 
+      { "anovaTwoWayReplication", VAL2WayANOVAWithReplication }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#anovaTwoWayReplication", VAL2WayANOVAWithReplication }, 
+      { "binomialDistributionRegression", BinomialDistributionForRegression }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#binomialDistributionRegression", BinomialDistributionForRegression }, 
+      { "chiSquareTest", ChiSquareTest }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#chiSquareTest", ChiSquareTest }, 
+      { "chiSquareTestHomogeneity", ChiSquareTestForHomogeneity }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#chiSquareTestHomogeneity", ChiSquareTestForHomogeneity }, 
+      { "chiSquareTestTrend", ChiSquareTestForTrend }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#chiSquareTestTrend", ChiSquareTestForTrend }, 
+      { "coxProportionalHazards", CoxProportionalHazards }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#coxProportionalHazards", CoxProportionalHazards }, 
+      { "dersimonianLairdMethod", DersimonianLairdMethod }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#dersimonianLairdMethod", DersimonianLairdMethod }, 
+      { "effectsFixed", FixedEffects }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#effectsFixed", FixedEffects }, 
+      { "effectsRandom", RandomEffects }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#effectsRandom", RandomEffects }, 
+      { "empiricalBayes", EmpiricalBayesMethod }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#empiricalBayes", EmpiricalBayesMethod }, 
+      { "fishersExactTest", FisherQuoteSExactTest }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#fishersExactTest", FisherQuoteSExactTest }, 
+      { "friedmanTest", FriedmanTest }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#friedmanTest", FriedmanTest }, 
+      { "glm", GLMGeneralizedLinearModel }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#glm", GLMGeneralizedLinearModel }, 
+      { "glmGeneralizedLogit", GLMWithGeneralizedLogitLink }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmGeneralizedLogit", GLMWithGeneralizedLogitLink }, 
+      { "glmIdentity", GLMWithIdentityLink }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmIdentity", GLMWithIdentityLink }, 
+      { "glmLog", GLMWithLogLink }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmLog", GLMWithLogLink }, 
+      { "glmLogit", GLMWithLogitLink }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmLogit", GLMWithLogitLink }, 
+      { "glmm", GeneralizedLinearMixedModelGLMM }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmm", GeneralizedLinearMixedModelGLMM }, 
+      { "glmmGeneralizedLogit", GLMMWithGeneralizedLogitLink }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmmGeneralizedLogit", GLMMWithGeneralizedLogitLink }, 
+      { "glmmIdentity", GLMMWithIdentityLink }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmmIdentity", GLMMWithIdentityLink }, 
+      { "glmmLog", GLMMWithLogLink }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmmLog", GLMMWithLogLink }, 
+      { "glmmLogit", GLMMWithLogitLink }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmmLogit", GLMMWithLogitLink }, 
+      { "glmmProbit", GLMMWithProbitLink }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmmProbit", GLMMWithProbitLink }, 
+      { "glmProbit", GLMWithProbitLink }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#glmProbit", GLMWithProbitLink }, 
+      { "goodmanKruskasGamma", GoodmanKruskaQuoteSGamma }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#goodmanKruskasGamma", GoodmanKruskaQuoteSGamma }, 
+      { "hartungKnapp", HartungKnappAdjustment }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#hartungKnapp", HartungKnappAdjustment }, 
+      { "hedgesMethod", HedgesMethod }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#hedgesMethod", HedgesMethod }, 
+      { "hunterSchmidt", HunterSchmidtMethod }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#hunterSchmidt", HunterSchmidtMethod }, 
+      { "interactionTerm", InteractionTerm }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#interactionTerm", InteractionTerm }, 
+      { "inverseVariance", InverseVarianceMethod }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#inverseVariance", InverseVarianceMethod }, 
+      { "kendallCorrelation", KendallCorrelation }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#kendallCorrelation", KendallCorrelation }, 
+      { "kruskalWallisTest", KruskalWallisTest }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#kruskalWallisTest", KruskalWallisTest }, 
+      { "linearRegression", LinearRegression }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#linearRegression", LinearRegression }, 
+      { "logisticRegression", LogisticRegression }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#logisticRegression", LogisticRegression }, 
+      { "mannWhitneyUTest", MannWhitneyUTest }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#mannWhitneyUTest", MannWhitneyUTest }, 
+      { "manova", MultivariateANOVAMANOVA }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#manova", MultivariateANOVAMANOVA }, 
+      { "manteHaenszelMethod", MantelHaenszelMethod }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#manteHaenszelMethod", MantelHaenszelMethod }, 
+      { "maximumLikelihood", MaximumLikelihoodMethod }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#maximumLikelihood", MaximumLikelihoodMethod }, 
+      { "mcnemarsTest", McNemarQuoteSTest }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#mcnemarsTest", McNemarQuoteSTest }, 
+      { "metaAnalysis", MetaAnalysis }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#metaAnalysis", MetaAnalysis }, 
+      { "modifiedHartungKnapp", ModifiedHartungKnappAdjustment }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#modifiedHartungKnapp", ModifiedHartungKnappAdjustment }, 
+      { "multinomialDistributionRegression", MultinomialDistributionForRegression }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#multinomialDistributionRegression", MultinomialDistributionForRegression }, 
+      { "negativeBinomialRegression", NegativeBinomialRegression }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#negativeBinomialRegression", NegativeBinomialRegression }, 
+      { "oneSampleTTest", VAL1SampleTTest }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#oneSampleTTest", VAL1SampleTTest }, 
+      { "oneTailedTest", OneTailedTest1Threshold }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#oneTailedTest", OneTailedTest1Threshold }, 
+      { "pairedTTest", PairedTTest }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#pairedTTest", PairedTTest }, 
+      { "pauleMandelMethod", PauleMandelMethod }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#pauleMandelMethod", PauleMandelMethod }, 
+      { "pearsonCorrelation", PearsonCorrelation }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#pearsonCorrelation", PearsonCorrelation }, 
+      { "petoMethod", PetoMethod }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#petoMethod", PetoMethod }, 
+      { "poissonRegression", PoissonRegression }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#poissonRegression", PoissonRegression }, 
+      { "polynomialRegression", PolynomialRegression }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#polynomialRegression", PolynomialRegression }, 
+      { "poolGeneralizedLinearMixedModel", GeneralizedLinearMixedModelGLMM_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#poolGeneralizedLinearMixedModel", GeneralizedLinearMixedModelGLMM_2 }, 
+      { "poolInverseVariance", InverseVarianceMethod_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#poolInverseVariance", InverseVarianceMethod_2 }, 
+      { "poolMantelHaenzsel", MantelHaenszelMethod_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#poolMantelHaenzsel", MantelHaenszelMethod_2 }, 
+      { "poolPeto", PetoMethod_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#poolPeto", PetoMethod_2 }, 
+      { "restrictedLikelihood", RestrictedMaximumLikelihoodMethod }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#restrictedLikelihood", RestrictedMaximumLikelihoodMethod }, 
+      { "sidikJonkman", SidikJonkmanMethod }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#sidikJonkman", SidikJonkmanMethod }, 
+      { "signTest", SignTest }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#signTest", SignTest }, 
+      { "spearmanCorrelation", SpearmanCorrelation }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#spearmanCorrelation", SpearmanCorrelation }, 
+      { "tauDersimonianLaird", DersimonianLairdMethod_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#tauDersimonianLaird", DersimonianLairdMethod_2 }, 
+      { "tauEmpiricalBayes", EmpiricalBayesMethod_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#tauEmpiricalBayes", EmpiricalBayesMethod_2 }, 
+      { "tauHedges", HedgesMethod_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#tauHedges", HedgesMethod_2 }, 
+      { "tauHunterSchmidt", HunterSchmidtMethod_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#tauHunterSchmidt", HunterSchmidtMethod_2 }, 
+      { "tauMaximumLikelihood", MaximumLikelihoodMethod_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#tauMaximumLikelihood", MaximumLikelihoodMethod_2 }, 
+      { "tauPauleMandel", PauleMandelMethod_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#tauPauleMandel", PauleMandelMethod_2 }, 
+      { "tauRestrictedMaximumLikelihood", RestrictedMaximumLikelihoodMethod_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#tauRestrictedMaximumLikelihood", RestrictedMaximumLikelihoodMethod_2 }, 
+      { "tauSidikJonkman", SidikJonkmanMethod_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#tauSidikJonkman", SidikJonkmanMethod_2 }, 
+      { "twoSampleTTest", VAL2SampleTTest }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#twoSampleTTest", VAL2SampleTTest }, 
+      { "twoTailedTest", TwoTailedTest2Thresholds }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#twoTailedTest", TwoTailedTest2Thresholds }, 
+      { "wilcoxonRankSumTest", WilcoxonRankSumTest }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#wilcoxonRankSumTest", WilcoxonRankSumTest }, 
+      { "wilcoxonSignedRankTest", WilcoxonSignedRankTest }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#wilcoxonSignedRankTest", WilcoxonSignedRankTest }, 
+      { "zeroCellConstant", ZeroCellAdjustmentWithConstant }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#zeroCellConstant", ZeroCellAdjustmentWithConstant }, 
+      { "zeroCellContinuityCorrection", ZeroCellAdjustmentWithContinuityCorrection }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#zeroCellContinuityCorrection", ZeroCellAdjustmentWithContinuityCorrection }, 
+      { "zTest", ZTest }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-model-code#zTest", ZTest }, 
+    };
   };
 }

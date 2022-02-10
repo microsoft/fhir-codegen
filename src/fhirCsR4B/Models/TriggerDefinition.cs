@@ -282,5 +282,15 @@ namespace fhirCsR4B.Models
     public const string DATA_REMOVED = "data-removed";
     public const string DATA_ACCESSED = "data-accessed";
     public const string DATA_ACCESS_ENDED = "data-access-ended";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "named-event",
+      "periodic",
+      "data-changed",
+      "data-added",
+      "data-modified",
+      "data-removed",
+      "data-accessed",
+      "data-access-ended",
+    };
   }
 }

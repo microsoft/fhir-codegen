@@ -63,9 +63,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCreate = "C";
 
     /// <summary>
+    /// Literal for code: AuditEventActionCreate
+    /// </summary>
+    public const string LiteralAuditEventActionCreate = "http://hl7.org/fhir/audit-event-action#C";
+
+    /// <summary>
     /// Literal for code: Delete
     /// </summary>
     public const string LiteralDelete = "D";
+
+    /// <summary>
+    /// Literal for code: AuditEventActionDelete
+    /// </summary>
+    public const string LiteralAuditEventActionDelete = "http://hl7.org/fhir/audit-event-action#D";
 
     /// <summary>
     /// Literal for code: Execute
@@ -73,13 +83,44 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExecute = "E";
 
     /// <summary>
+    /// Literal for code: AuditEventActionExecute
+    /// </summary>
+    public const string LiteralAuditEventActionExecute = "http://hl7.org/fhir/audit-event-action#E";
+
+    /// <summary>
     /// Literal for code: ReadViewPrint
     /// </summary>
     public const string LiteralReadViewPrint = "R";
 
     /// <summary>
+    /// Literal for code: AuditEventActionReadViewPrint
+    /// </summary>
+    public const string LiteralAuditEventActionReadViewPrint = "http://hl7.org/fhir/audit-event-action#R";
+
+    /// <summary>
     /// Literal for code: Update
     /// </summary>
     public const string LiteralUpdate = "U";
+
+    /// <summary>
+    /// Literal for code: AuditEventActionUpdate
+    /// </summary>
+    public const string LiteralAuditEventActionUpdate = "http://hl7.org/fhir/audit-event-action#U";
+
+    /// <summary>
+    /// Dictionary for looking up AuditEventAction Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "C", Create }, 
+      { "http://hl7.org/fhir/audit-event-action#C", Create }, 
+      { "D", Delete }, 
+      { "http://hl7.org/fhir/audit-event-action#D", Delete }, 
+      { "E", Execute }, 
+      { "http://hl7.org/fhir/audit-event-action#E", Execute }, 
+      { "R", ReadViewPrint }, 
+      { "http://hl7.org/fhir/audit-event-action#R", ReadViewPrint }, 
+      { "U", Update }, 
+      { "http://hl7.org/fhir/audit-event-action#U", Update }, 
+    };
   };
 }

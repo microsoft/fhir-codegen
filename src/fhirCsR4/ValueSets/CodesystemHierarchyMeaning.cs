@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClassifiedWith = "classified-with";
 
     /// <summary>
+    /// Literal for code: CodesystemHierarchyMeaningClassifiedWith
+    /// </summary>
+    public const string LiteralCodesystemHierarchyMeaningClassifiedWith = "http://hl7.org/fhir/codesystem-hierarchy-meaning#classified-with";
+
+    /// <summary>
     /// Literal for code: GroupedBy
     /// </summary>
     public const string LiteralGroupedBy = "grouped-by";
+
+    /// <summary>
+    /// Literal for code: CodesystemHierarchyMeaningGroupedBy
+    /// </summary>
+    public const string LiteralCodesystemHierarchyMeaningGroupedBy = "http://hl7.org/fhir/codesystem-hierarchy-meaning#grouped-by";
 
     /// <summary>
     /// Literal for code: IsA
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIsA = "is-a";
 
     /// <summary>
+    /// Literal for code: CodesystemHierarchyMeaningIsA
+    /// </summary>
+    public const string LiteralCodesystemHierarchyMeaningIsA = "http://hl7.org/fhir/codesystem-hierarchy-meaning#is-a";
+
+    /// <summary>
     /// Literal for code: PartOf
     /// </summary>
     public const string LiteralPartOf = "part-of";
+
+    /// <summary>
+    /// Literal for code: CodesystemHierarchyMeaningPartOf
+    /// </summary>
+    public const string LiteralCodesystemHierarchyMeaningPartOf = "http://hl7.org/fhir/codesystem-hierarchy-meaning#part-of";
+
+    /// <summary>
+    /// Dictionary for looking up CodesystemHierarchyMeaning Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "classified-with", ClassifiedWith }, 
+      { "http://hl7.org/fhir/codesystem-hierarchy-meaning#classified-with", ClassifiedWith }, 
+      { "grouped-by", GroupedBy }, 
+      { "http://hl7.org/fhir/codesystem-hierarchy-meaning#grouped-by", GroupedBy }, 
+      { "is-a", IsA }, 
+      { "http://hl7.org/fhir/codesystem-hierarchy-meaning#is-a", IsA }, 
+      { "part-of", PartOf }, 
+      { "http://hl7.org/fhir/codesystem-hierarchy-meaning#part-of", PartOf }, 
+    };
   };
 }

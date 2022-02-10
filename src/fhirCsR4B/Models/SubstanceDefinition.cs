@@ -273,6 +273,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// A value for the characteristic.
     /// </summary>
     public Attachment ValueAttachment { get; set; }
@@ -321,6 +325,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (ValueAttachment != null)
       {
         writer.WritePropertyName("valueAttachment");
@@ -365,6 +375,11 @@ namespace fhirCsR4B.Models
 
         case "valueBoolean":
           ValueBoolean = reader.GetBoolean();
+          break;
+
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR4B.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "valueAttachment":
@@ -1287,6 +1302,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? Preferred { get; set; }
     /// <summary>
+    /// Extension container element for Preferred
+    /// </summary>
+    public Element _Preferred { get; set; }
+    /// <summary>
     /// Supporting literature.
     /// </summary>
     public List<Reference> Source { get; set; }
@@ -1343,6 +1362,12 @@ namespace fhirCsR4B.Models
       if (Preferred != null)
       {
         writer.WriteBoolean("preferred", (bool)Preferred!);
+      }
+
+      if (_Preferred != null)
+      {
+        writer.WritePropertyName("_preferred");
+        _Preferred.SerializeJson(writer, options);
       }
 
       if ((Language != null) && (Language.Count != 0))
@@ -1569,6 +1594,11 @@ namespace fhirCsR4B.Models
           Preferred = reader.GetBoolean();
           break;
 
+        case "_preferred":
+          _Preferred = new fhirCsR4B.Models.Element();
+          _Preferred.DeserializeJson(ref reader, options);
+          break;
+
         case "source":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -1725,6 +1755,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? IsDefining { get; set; }
     /// <summary>
+    /// Extension container element for IsDefining
+    /// </summary>
+    public Element _IsDefining { get; set; }
+    /// <summary>
     /// Supporting literature.
     /// </summary>
     public List<Reference> Source { get; set; }
@@ -1772,6 +1806,12 @@ namespace fhirCsR4B.Models
       if (IsDefining != null)
       {
         writer.WriteBoolean("isDefining", (bool)IsDefining!);
+      }
+
+      if (_IsDefining != null)
+      {
+        writer.WritePropertyName("_isDefining");
+        _IsDefining.SerializeJson(writer, options);
       }
 
       if (AmountQuantity != null)
@@ -1865,6 +1905,11 @@ namespace fhirCsR4B.Models
 
         case "isDefining":
           IsDefining = reader.GetBoolean();
+          break;
+
+        case "_isDefining":
+          _IsDefining = new fhirCsR4B.Models.Element();
+          _IsDefining.DeserializeJson(ref reader, options);
           break;
 
         case "source":

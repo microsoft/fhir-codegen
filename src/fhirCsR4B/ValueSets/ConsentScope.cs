@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdvancedCareDirective = "adr";
 
     /// <summary>
+    /// Literal for code: ConsentScopeAdvancedCareDirective
+    /// </summary>
+    public const string LiteralConsentScopeAdvancedCareDirective = "http://terminology.hl7.org/CodeSystem/consentscope#adr";
+
+    /// <summary>
     /// Literal for code: PrivacyConsent
     /// </summary>
     public const string LiteralPrivacyConsent = "patient-privacy";
+
+    /// <summary>
+    /// Literal for code: ConsentScopePrivacyConsent
+    /// </summary>
+    public const string LiteralConsentScopePrivacyConsent = "http://terminology.hl7.org/CodeSystem/consentscope#patient-privacy";
 
     /// <summary>
     /// Literal for code: Research
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralResearch = "research";
 
     /// <summary>
+    /// Literal for code: ConsentScopeResearch
+    /// </summary>
+    public const string LiteralConsentScopeResearch = "http://terminology.hl7.org/CodeSystem/consentscope#research";
+
+    /// <summary>
     /// Literal for code: Treatment
     /// </summary>
     public const string LiteralTreatment = "treatment";
+
+    /// <summary>
+    /// Literal for code: ConsentScopeTreatment
+    /// </summary>
+    public const string LiteralConsentScopeTreatment = "http://terminology.hl7.org/CodeSystem/consentscope#treatment";
+
+    /// <summary>
+    /// Dictionary for looking up ConsentScope Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "adr", AdvancedCareDirective }, 
+      { "http://terminology.hl7.org/CodeSystem/consentscope#adr", AdvancedCareDirective }, 
+      { "patient-privacy", PrivacyConsent }, 
+      { "http://terminology.hl7.org/CodeSystem/consentscope#patient-privacy", PrivacyConsent }, 
+      { "research", Research }, 
+      { "http://terminology.hl7.org/CodeSystem/consentscope#research", Research }, 
+      { "treatment", Treatment }, 
+      { "http://terminology.hl7.org/CodeSystem/consentscope#treatment", Treatment }, 
+    };
   };
 }

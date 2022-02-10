@@ -1059,5 +1059,14 @@ namespace fhirCsR4B.Models
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string STOPPED = "stopped";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "in-progress",
+      "not-done",
+      "on-hold",
+      "completed",
+      "entered-in-error",
+      "stopped",
+      "unknown",
+    };
   }
 }

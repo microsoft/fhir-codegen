@@ -161,6 +161,12 @@ namespace fhirCsR4B.Models
     public const string CALIBRATION_REQUIRED = "calibration-required";
     public const string CALIBRATED = "calibrated";
     public const string UNSPECIFIED = "unspecified";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "not-calibrated",
+      "calibration-required",
+      "calibrated",
+      "unspecified",
+    };
   }
   /// <summary>
   /// Code Values for the DeviceMetric.calibration.type field
@@ -170,6 +176,12 @@ namespace fhirCsR4B.Models
     public const string OFFSET = "offset";
     public const string GAIN = "gain";
     public const string TWO_POINT = "two-point";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "unspecified",
+      "offset",
+      "gain",
+      "two-point",
+    };
   }
   /// <summary>
   /// Describes a measurement, calculation or setting capability of a medical device.
@@ -495,6 +507,12 @@ namespace fhirCsR4B.Models
     public const string SETTING = "setting";
     public const string CALCULATION = "calculation";
     public const string UNSPECIFIED = "unspecified";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "measurement",
+      "setting",
+      "calculation",
+      "unspecified",
+    };
   }
   /// <summary>
   /// Code Values for the DeviceMetric.color field
@@ -508,6 +526,16 @@ namespace fhirCsR4B.Models
     public const string MAGENTA = "magenta";
     public const string CYAN = "cyan";
     public const string WHITE = "white";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "black",
+      "red",
+      "green",
+      "yellow",
+      "blue",
+      "magenta",
+      "cyan",
+      "white",
+    };
   }
   /// <summary>
   /// Code Values for the DeviceMetric.operationalStatus field
@@ -517,5 +545,11 @@ namespace fhirCsR4B.Models
     public const string OFF = "off";
     public const string STANDBY = "standby";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "on",
+      "off",
+      "standby",
+      "entered-in-error",
+    };
   }
 }

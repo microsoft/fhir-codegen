@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ConditionCategoryCodes
   {
     /// <summary>
-    /// 
+    /// Encounter Diagnosis
     /// </summary>
     public static readonly Coding EncounterDiagnosis = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/condition-category"
     };
     /// <summary>
-    /// 
+    /// Problem List Item
     /// </summary>
     public static readonly Coding ProblemListItem = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEncounterDiagnosis = "encounter-diagnosis";
 
     /// <summary>
+    /// Literal for code: ConditionCategoryEncounterDiagnosis
+    /// </summary>
+    public const string LiteralConditionCategoryEncounterDiagnosis = "http://terminology.hl7.org/CodeSystem/condition-category#encounter-diagnosis";
+
+    /// <summary>
     /// Literal for code: ProblemListItem
     /// </summary>
     public const string LiteralProblemListItem = "problem-list-item";
+
+    /// <summary>
+    /// Literal for code: ConditionCategoryProblemListItem
+    /// </summary>
+    public const string LiteralConditionCategoryProblemListItem = "http://terminology.hl7.org/CodeSystem/condition-category#problem-list-item";
+
+    /// <summary>
+    /// Dictionary for looking up ConditionCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "encounter-diagnosis", EncounterDiagnosis }, 
+      { "http://terminology.hl7.org/CodeSystem/condition-category#encounter-diagnosis", EncounterDiagnosis }, 
+      { "problem-list-item", ProblemListItem }, 
+      { "http://terminology.hl7.org/CodeSystem/condition-category#problem-list-item", ProblemListItem }, 
+    };
   };
 }

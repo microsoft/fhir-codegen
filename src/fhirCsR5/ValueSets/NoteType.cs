@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDisplay = "display";
 
     /// <summary>
+    /// Literal for code: NoteTypeDisplay
+    /// </summary>
+    public const string LiteralNoteTypeDisplay = "http://hl7.org/fhir/note-type#display";
+
+    /// <summary>
     /// Literal for code: PrintForm
     /// </summary>
     public const string LiteralPrintForm = "print";
 
     /// <summary>
+    /// Literal for code: NoteTypePrintForm
+    /// </summary>
+    public const string LiteralNoteTypePrintForm = "http://hl7.org/fhir/note-type#print";
+
+    /// <summary>
     /// Literal for code: PrintOperator
     /// </summary>
     public const string LiteralPrintOperator = "printoper";
+
+    /// <summary>
+    /// Literal for code: NoteTypePrintOperator
+    /// </summary>
+    public const string LiteralNoteTypePrintOperator = "http://hl7.org/fhir/note-type#printoper";
+
+    /// <summary>
+    /// Dictionary for looking up NoteType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "display", Display }, 
+      { "http://hl7.org/fhir/note-type#display", Display }, 
+      { "print", PrintForm }, 
+      { "http://hl7.org/fhir/note-type#print", PrintForm }, 
+      { "printoper", PrintOperator }, 
+      { "http://hl7.org/fhir/note-type#printoper", PrintOperator }, 
+    };
   };
 }

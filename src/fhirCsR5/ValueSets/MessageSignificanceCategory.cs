@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralConsequence = "consequence";
 
     /// <summary>
+    /// Literal for code: MessageSignificanceCategoryConsequence
+    /// </summary>
+    public const string LiteralMessageSignificanceCategoryConsequence = "http://hl7.org/fhir/message-significance-category#consequence";
+
+    /// <summary>
     /// Literal for code: Currency
     /// </summary>
     public const string LiteralCurrency = "currency";
 
     /// <summary>
+    /// Literal for code: MessageSignificanceCategoryCurrency
+    /// </summary>
+    public const string LiteralMessageSignificanceCategoryCurrency = "http://hl7.org/fhir/message-significance-category#currency";
+
+    /// <summary>
     /// Literal for code: Notification
     /// </summary>
     public const string LiteralNotification = "notification";
+
+    /// <summary>
+    /// Literal for code: MessageSignificanceCategoryNotification
+    /// </summary>
+    public const string LiteralMessageSignificanceCategoryNotification = "http://hl7.org/fhir/message-significance-category#notification";
+
+    /// <summary>
+    /// Dictionary for looking up MessageSignificanceCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "consequence", Consequence }, 
+      { "http://hl7.org/fhir/message-significance-category#consequence", Consequence }, 
+      { "currency", Currency }, 
+      { "http://hl7.org/fhir/message-significance-category#currency", Currency }, 
+      { "notification", Notification }, 
+      { "http://hl7.org/fhir/message-significance-category#notification", Notification }, 
+    };
   };
 }

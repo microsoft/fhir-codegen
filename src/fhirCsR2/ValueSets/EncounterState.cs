@@ -72,9 +72,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralArrived = "arrived";
 
     /// <summary>
+    /// Literal for code: EncounterStateArrived
+    /// </summary>
+    public const string LiteralEncounterStateArrived = "http://hl7.org/fhir/encounter-state#arrived";
+
+    /// <summary>
     /// Literal for code: Cancelled
     /// </summary>
     public const string LiteralCancelled = "cancelled";
+
+    /// <summary>
+    /// Literal for code: EncounterStateCancelled
+    /// </summary>
+    public const string LiteralEncounterStateCancelled = "http://hl7.org/fhir/encounter-state#cancelled";
 
     /// <summary>
     /// Literal for code: Finished
@@ -82,9 +92,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralFinished = "finished";
 
     /// <summary>
+    /// Literal for code: EncounterStateFinished
+    /// </summary>
+    public const string LiteralEncounterStateFinished = "http://hl7.org/fhir/encounter-state#finished";
+
+    /// <summary>
     /// Literal for code: InProgress
     /// </summary>
     public const string LiteralInProgress = "in-progress";
+
+    /// <summary>
+    /// Literal for code: EncounterStateInProgress
+    /// </summary>
+    public const string LiteralEncounterStateInProgress = "http://hl7.org/fhir/encounter-state#in-progress";
 
     /// <summary>
     /// Literal for code: OnLeave
@@ -92,8 +112,36 @@ namespace fhirCsR2.ValueSets
     public const string LiteralOnLeave = "onleave";
 
     /// <summary>
+    /// Literal for code: EncounterStateOnLeave
+    /// </summary>
+    public const string LiteralEncounterStateOnLeave = "http://hl7.org/fhir/encounter-state#onleave";
+
+    /// <summary>
     /// Literal for code: Planned
     /// </summary>
     public const string LiteralPlanned = "planned";
+
+    /// <summary>
+    /// Literal for code: EncounterStatePlanned
+    /// </summary>
+    public const string LiteralEncounterStatePlanned = "http://hl7.org/fhir/encounter-state#planned";
+
+    /// <summary>
+    /// Dictionary for looking up EncounterState Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "arrived", Arrived }, 
+      { "http://hl7.org/fhir/encounter-state#arrived", Arrived }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/encounter-state#cancelled", Cancelled }, 
+      { "finished", Finished }, 
+      { "http://hl7.org/fhir/encounter-state#finished", Finished }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/encounter-state#in-progress", InProgress }, 
+      { "onleave", OnLeave }, 
+      { "http://hl7.org/fhir/encounter-state#onleave", OnLeave }, 
+      { "planned", Planned }, 
+      { "http://hl7.org/fhir/encounter-state#planned", Planned }, 
+    };
   };
 }

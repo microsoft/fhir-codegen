@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHidden = "hidden";
 
     /// <summary>
+    /// Literal for code: QuestionnaireDisabledDisplayHidden
+    /// </summary>
+    public const string LiteralQuestionnaireDisabledDisplayHidden = "http://hl7.org/fhir/questionnaire-disabled-display#hidden";
+
+    /// <summary>
     /// Literal for code: Protected
     /// </summary>
     public const string LiteralProtected = "protected";
+
+    /// <summary>
+    /// Literal for code: QuestionnaireDisabledDisplayProtected
+    /// </summary>
+    public const string LiteralQuestionnaireDisabledDisplayProtected = "http://hl7.org/fhir/questionnaire-disabled-display#protected";
+
+    /// <summary>
+    /// Dictionary for looking up QuestionnaireDisabledDisplay Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "hidden", Hidden }, 
+      { "http://hl7.org/fhir/questionnaire-disabled-display#hidden", Hidden }, 
+      { "protected", Protected }, 
+      { "http://hl7.org/fhir/questionnaire-disabled-display#protected", Protected }, 
+    };
   };
 }

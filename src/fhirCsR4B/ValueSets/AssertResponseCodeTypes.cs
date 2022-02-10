@@ -126,9 +126,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBad = "bad";
 
     /// <summary>
+    /// Literal for code: AssertResponseCodeTypesBad
+    /// </summary>
+    public const string LiteralAssertResponseCodeTypesBad = "http://hl7.org/fhir/assert-response-code-types#bad";
+
+    /// <summary>
     /// Literal for code: Conflict
     /// </summary>
     public const string LiteralConflict = "conflict";
+
+    /// <summary>
+    /// Literal for code: AssertResponseCodeTypesConflict
+    /// </summary>
+    public const string LiteralAssertResponseCodeTypesConflict = "http://hl7.org/fhir/assert-response-code-types#conflict";
 
     /// <summary>
     /// Literal for code: Created
@@ -136,9 +146,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCreated = "created";
 
     /// <summary>
+    /// Literal for code: AssertResponseCodeTypesCreated
+    /// </summary>
+    public const string LiteralAssertResponseCodeTypesCreated = "http://hl7.org/fhir/assert-response-code-types#created";
+
+    /// <summary>
     /// Literal for code: Forbidden
     /// </summary>
     public const string LiteralForbidden = "forbidden";
+
+    /// <summary>
+    /// Literal for code: AssertResponseCodeTypesForbidden
+    /// </summary>
+    public const string LiteralAssertResponseCodeTypesForbidden = "http://hl7.org/fhir/assert-response-code-types#forbidden";
 
     /// <summary>
     /// Literal for code: Gone
@@ -146,9 +166,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGone = "gone";
 
     /// <summary>
+    /// Literal for code: AssertResponseCodeTypesGone
+    /// </summary>
+    public const string LiteralAssertResponseCodeTypesGone = "http://hl7.org/fhir/assert-response-code-types#gone";
+
+    /// <summary>
     /// Literal for code: MethodNotAllowed
     /// </summary>
     public const string LiteralMethodNotAllowed = "methodNotAllowed";
+
+    /// <summary>
+    /// Literal for code: AssertResponseCodeTypesMethodNotAllowed
+    /// </summary>
+    public const string LiteralAssertResponseCodeTypesMethodNotAllowed = "http://hl7.org/fhir/assert-response-code-types#methodNotAllowed";
 
     /// <summary>
     /// Literal for code: NoContent
@@ -156,9 +186,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNoContent = "noContent";
 
     /// <summary>
+    /// Literal for code: AssertResponseCodeTypesNoContent
+    /// </summary>
+    public const string LiteralAssertResponseCodeTypesNoContent = "http://hl7.org/fhir/assert-response-code-types#noContent";
+
+    /// <summary>
     /// Literal for code: NotFound
     /// </summary>
     public const string LiteralNotFound = "notFound";
+
+    /// <summary>
+    /// Literal for code: AssertResponseCodeTypesNotFound
+    /// </summary>
+    public const string LiteralAssertResponseCodeTypesNotFound = "http://hl7.org/fhir/assert-response-code-types#notFound";
 
     /// <summary>
     /// Literal for code: NotModified
@@ -166,9 +206,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNotModified = "notModified";
 
     /// <summary>
+    /// Literal for code: AssertResponseCodeTypesNotModified
+    /// </summary>
+    public const string LiteralAssertResponseCodeTypesNotModified = "http://hl7.org/fhir/assert-response-code-types#notModified";
+
+    /// <summary>
     /// Literal for code: Okay
     /// </summary>
     public const string LiteralOkay = "okay";
+
+    /// <summary>
+    /// Literal for code: AssertResponseCodeTypesOkay
+    /// </summary>
+    public const string LiteralAssertResponseCodeTypesOkay = "http://hl7.org/fhir/assert-response-code-types#okay";
 
     /// <summary>
     /// Literal for code: PreconditionFailed
@@ -176,8 +226,48 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPreconditionFailed = "preconditionFailed";
 
     /// <summary>
+    /// Literal for code: AssertResponseCodeTypesPreconditionFailed
+    /// </summary>
+    public const string LiteralAssertResponseCodeTypesPreconditionFailed = "http://hl7.org/fhir/assert-response-code-types#preconditionFailed";
+
+    /// <summary>
     /// Literal for code: Unprocessable
     /// </summary>
     public const string LiteralUnprocessable = "unprocessable";
+
+    /// <summary>
+    /// Literal for code: AssertResponseCodeTypesUnprocessable
+    /// </summary>
+    public const string LiteralAssertResponseCodeTypesUnprocessable = "http://hl7.org/fhir/assert-response-code-types#unprocessable";
+
+    /// <summary>
+    /// Dictionary for looking up AssertResponseCodeTypes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "bad", Bad }, 
+      { "http://hl7.org/fhir/assert-response-code-types#bad", Bad }, 
+      { "conflict", Conflict }, 
+      { "http://hl7.org/fhir/assert-response-code-types#conflict", Conflict }, 
+      { "created", Created }, 
+      { "http://hl7.org/fhir/assert-response-code-types#created", Created }, 
+      { "forbidden", Forbidden }, 
+      { "http://hl7.org/fhir/assert-response-code-types#forbidden", Forbidden }, 
+      { "gone", Gone }, 
+      { "http://hl7.org/fhir/assert-response-code-types#gone", Gone }, 
+      { "methodNotAllowed", MethodNotAllowed }, 
+      { "http://hl7.org/fhir/assert-response-code-types#methodNotAllowed", MethodNotAllowed }, 
+      { "noContent", NoContent }, 
+      { "http://hl7.org/fhir/assert-response-code-types#noContent", NoContent }, 
+      { "notFound", NotFound }, 
+      { "http://hl7.org/fhir/assert-response-code-types#notFound", NotFound }, 
+      { "notModified", NotModified }, 
+      { "http://hl7.org/fhir/assert-response-code-types#notModified", NotModified }, 
+      { "okay", Okay }, 
+      { "http://hl7.org/fhir/assert-response-code-types#okay", Okay }, 
+      { "preconditionFailed", PreconditionFailed }, 
+      { "http://hl7.org/fhir/assert-response-code-types#preconditionFailed", PreconditionFailed }, 
+      { "unprocessable", Unprocessable }, 
+      { "http://hl7.org/fhir/assert-response-code-types#unprocessable", Unprocessable }, 
+    };
   };
 }

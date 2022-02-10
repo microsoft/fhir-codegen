@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCareGapDetected = "care-gap";
 
     /// <summary>
+    /// Literal for code: ActionReasonCodeCareGapDetected
+    /// </summary>
+    public const string LiteralActionReasonCodeCareGapDetected = "http://terminology.hl7.org/CodeSystem/action-reason-code#care-gap";
+
+    /// <summary>
     /// Literal for code: DrugDrugInteraction
     /// </summary>
     public const string LiteralDrugDrugInteraction = "drug-drug-interaction";
+
+    /// <summary>
+    /// Literal for code: ActionReasonCodeDrugDrugInteraction
+    /// </summary>
+    public const string LiteralActionReasonCodeDrugDrugInteraction = "http://terminology.hl7.org/CodeSystem/action-reason-code#drug-drug-interaction";
 
     /// <summary>
     /// Literal for code: OffPathway
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOffPathway = "off-pathway";
 
     /// <summary>
+    /// Literal for code: ActionReasonCodeOffPathway
+    /// </summary>
+    public const string LiteralActionReasonCodeOffPathway = "http://terminology.hl7.org/CodeSystem/action-reason-code#off-pathway";
+
+    /// <summary>
     /// Literal for code: QualityMeasure
     /// </summary>
     public const string LiteralQualityMeasure = "quality-measure";
 
     /// <summary>
+    /// Literal for code: ActionReasonCodeQualityMeasure
+    /// </summary>
+    public const string LiteralActionReasonCodeQualityMeasure = "http://terminology.hl7.org/CodeSystem/action-reason-code#quality-measure";
+
+    /// <summary>
     /// Literal for code: RiskAssessment
     /// </summary>
     public const string LiteralRiskAssessment = "risk-assessment";
+
+    /// <summary>
+    /// Literal for code: ActionReasonCodeRiskAssessment
+    /// </summary>
+    public const string LiteralActionReasonCodeRiskAssessment = "http://terminology.hl7.org/CodeSystem/action-reason-code#risk-assessment";
+
+    /// <summary>
+    /// Dictionary for looking up ActionReasonCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "care-gap", CareGapDetected }, 
+      { "http://terminology.hl7.org/CodeSystem/action-reason-code#care-gap", CareGapDetected }, 
+      { "drug-drug-interaction", DrugDrugInteraction }, 
+      { "http://terminology.hl7.org/CodeSystem/action-reason-code#drug-drug-interaction", DrugDrugInteraction }, 
+      { "off-pathway", OffPathway }, 
+      { "http://terminology.hl7.org/CodeSystem/action-reason-code#off-pathway", OffPathway }, 
+      { "quality-measure", QualityMeasure }, 
+      { "http://terminology.hl7.org/CodeSystem/action-reason-code#quality-measure", QualityMeasure }, 
+      { "risk-assessment", RiskAssessment }, 
+      { "http://terminology.hl7.org/CodeSystem/action-reason-code#risk-assessment", RiskAssessment }, 
+    };
   };
 }

@@ -130,6 +130,12 @@ namespace fhirCsR4.Models
     public const string DOWN = "down";
     public const string VAL_IN = "in";
     public const string VAL_OUT = "out";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "up",
+      "down",
+      "in",
+      "out",
+    };
   }
   /// <summary>
   /// Contain the details of  the individual lens specifications and serves as the authorization for the fullfillment by certified professionals.
@@ -148,6 +154,10 @@ namespace fhirCsR4.Models
     /// The limits are +180 and -180 degrees.
     /// </summary>
     public int? Axis { get; set; }
+    /// <summary>
+    /// Extension container element for Axis
+    /// </summary>
+    public Element _Axis { get; set; }
     /// <summary>
     /// Back curvature measured in millimetres.
     /// </summary>
@@ -284,6 +294,12 @@ namespace fhirCsR4.Models
         writer.WriteNumber("axis", (int)Axis!);
       }
 
+      if (_Axis != null)
+      {
+        writer.WritePropertyName("_axis");
+        _Axis.SerializeJson(writer, options);
+      }
+
       if ((Prism != null) && (Prism.Count != 0))
       {
         writer.WritePropertyName("prism");
@@ -405,6 +421,11 @@ namespace fhirCsR4.Models
 
         case "axis":
           Axis = reader.GetInt32();
+          break;
+
+        case "_axis":
+          _Axis = new fhirCsR4.Models.Element();
+          _Axis.DeserializeJson(ref reader, options);
           break;
 
         case "backCurve":
@@ -580,6 +601,10 @@ namespace fhirCsR4.Models
   public static class VisionPrescriptionLensSpecificationEyeCodes {
     public const string RIGHT = "right";
     public const string LEFT = "left";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "right",
+      "left",
+    };
   }
   /// <summary>
   /// An authorization for the provision of glasses and/or contact lenses to a patient.
@@ -875,5 +900,11 @@ namespace fhirCsR4.Models
     public const string CANCELLED = "cancelled";
     public const string DRAFT = "draft";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "cancelled",
+      "draft",
+      "entered-in-error",
+    };
   }
 }

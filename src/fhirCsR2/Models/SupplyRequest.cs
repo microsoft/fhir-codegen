@@ -396,5 +396,11 @@ namespace fhirCsR2.Models
     public const string COMPLETED = "completed";
     public const string FAILED = "failed";
     public const string CANCELLED = "cancelled";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "requested",
+      "completed",
+      "failed",
+      "cancelled",
+    };
   }
 }

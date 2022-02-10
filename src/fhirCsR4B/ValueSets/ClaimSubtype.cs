@@ -36,8 +36,28 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEmergencyClaim = "emergency";
 
     /// <summary>
+    /// Literal for code: ClaimSubtypeEmergencyClaim
+    /// </summary>
+    public const string LiteralClaimSubtypeEmergencyClaim = "http://terminology.hl7.org/CodeSystem/ex-claimsubtype#emergency";
+
+    /// <summary>
     /// Literal for code: OrthodonticClaim
     /// </summary>
     public const string LiteralOrthodonticClaim = "ortho";
+
+    /// <summary>
+    /// Literal for code: ClaimSubtypeOrthodonticClaim
+    /// </summary>
+    public const string LiteralClaimSubtypeOrthodonticClaim = "http://terminology.hl7.org/CodeSystem/ex-claimsubtype#ortho";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimSubtype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "emergency", EmergencyClaim }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-claimsubtype#emergency", EmergencyClaim }, 
+      { "ortho", OrthodonticClaim }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-claimsubtype#ortho", OrthodonticClaim }, 
+    };
   };
 }

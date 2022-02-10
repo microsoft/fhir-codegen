@@ -288,6 +288,12 @@ namespace fhirCsR4.Models
     public const string COMPLETE = "complete";
     public const string ERROR = "error";
     public const string PARTIAL = "partial";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "queued",
+      "complete",
+      "error",
+      "partial",
+    };
   }
   /// <summary>
   /// Code Values for the EnrollmentResponse.status field
@@ -297,5 +303,11 @@ namespace fhirCsR4.Models
     public const string CANCELLED = "cancelled";
     public const string DRAFT = "draft";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "cancelled",
+      "draft",
+      "entered-in-error",
+    };
   }
 }

@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class MedicationFormCodesCodes
   {
     /// <summary>
-    /// 
+    /// Drug stick
     /// </summary>
     public static readonly Coding DrugStick = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lotion
     /// </summary>
     public static readonly Coding Lotion = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug aerosol foam
     /// </summary>
     public static readonly Coding DrugAerosolFoam = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug patch
     /// </summary>
     public static readonly Coding DrugPatch = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug paste
     /// </summary>
     public static readonly Coding DrugPaste = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral drops
     /// </summary>
     public static readonly Coding OralDrops = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral drops solution
     /// </summary>
     public static readonly Coding OralDropsSolution = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral drops suspension
     /// </summary>
     public static readonly Coding OralDropsSuspension = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral drops emulsion
     /// </summary>
     public static readonly Coding OralDropsEmulsion = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral liquid
     /// </summary>
     public static readonly Coding OralLiquid = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral solution
     /// </summary>
     public static readonly Coding OralSolution = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral suspension
     /// </summary>
     public static readonly Coding OralSuspension = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral emulsion
     /// </summary>
     public static readonly Coding OralEmulsion = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for oral solution
     /// </summary>
     public static readonly Coding PowderForOralSolution = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for oral suspension
     /// </summary>
     public static readonly Coding PowderForOralSuspension = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Granules for oral solution
     /// </summary>
     public static readonly Coding GranulesForOralSolution = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Granules for oral suspension
     /// </summary>
     public static readonly Coding GranulesForOralSuspension = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Syrup
     /// </summary>
     public static readonly Coding Syrup = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for syrup
     /// </summary>
     public static readonly Coding PowderForSyrup = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Granules for syrup
     /// </summary>
     public static readonly Coding GranulesForSyrup = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soluble tablet
     /// </summary>
     public static readonly Coding SolubleTablet = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dispersible tablet
     /// </summary>
     public static readonly Coding DispersibleTablet = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral gel
     /// </summary>
     public static readonly Coding OralGel = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral paste
     /// </summary>
     public static readonly Coding OralPaste = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral powder
     /// </summary>
     public static readonly Coding OralPowder = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Effervescent powder
     /// </summary>
     public static readonly Coding EffervescentPowder = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Granules
     /// </summary>
     public static readonly Coding Granules = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Effervescent granules
     /// </summary>
     public static readonly Coding EffervescentGranules = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastro-resistant granules
     /// </summary>
     public static readonly Coding GastroResistantGranules = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prolonged-release granules
     /// </summary>
     public static readonly Coding ProlongedReleaseGranules = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Modified-release granules
     /// </summary>
     public static readonly Coding ModifiedReleaseGranules = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cachet
     /// </summary>
     public static readonly Coding Cachet = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Capsule
     /// </summary>
     public static readonly Coding Capsule = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hard capsule
     /// </summary>
     public static readonly Coding HardCapsule = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft capsule
     /// </summary>
     public static readonly Coding SoftCapsule = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastro-resistant capsule
     /// </summary>
     public static readonly Coding GastroResistantCapsule = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prolonged-release capsule
     /// </summary>
     public static readonly Coding ProlongedReleaseCapsule = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Modified-release capsule
     /// </summary>
     public static readonly Coding ModifiedReleaseCapsule = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tablet
     /// </summary>
     public static readonly Coding Tablet = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Film-coated tablet
     /// </summary>
     public static readonly Coding FilmCoatedTablet = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Effervescent tablet
     /// </summary>
     public static readonly Coding EffervescentTablet = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastro-resistant tablet
     /// </summary>
     public static readonly Coding GastroResistantTablet = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prolonged-release tablet
     /// </summary>
     public static readonly Coding ProlongedReleaseTablet = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Modified-release tablet
     /// </summary>
     public static readonly Coding ModifiedReleaseTablet = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral lyophilisate
     /// </summary>
     public static readonly Coding OralLyophilisate = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral gum
     /// </summary>
     public static readonly Coding OralGum = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pillule
     /// </summary>
     public static readonly Coding Pillule = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oromucosal liquid
     /// </summary>
     public static readonly Coding OromucosalLiquid = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oromucosal solution
     /// </summary>
     public static readonly Coding OromucosalSolution = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oromucosal suspension
     /// </summary>
     public static readonly Coding OromucosalSuspension = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oromucosal spray
     /// </summary>
     public static readonly Coding OromucosalSpray = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sublingual spray
     /// </summary>
     public static readonly Coding SublingualSpray = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gingival solution
     /// </summary>
     public static readonly Coding GingivalSolution = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oromucosal gel
     /// </summary>
     public static readonly Coding OromucosalGel = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oromucosal paste
     /// </summary>
     public static readonly Coding OromucosalPaste = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicated chewing-gum
     /// </summary>
     public static readonly Coding MedicatedChewingGum = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gingival gel
     /// </summary>
     public static readonly Coding GingivalGel = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gingival paste
     /// </summary>
     public static readonly Coding GingivalPaste = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oromucosal capsule
     /// </summary>
     public static readonly Coding OromucosalCapsule = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sublingual tablet
     /// </summary>
     public static readonly Coding SublingualTablet = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Buccal tablet
     /// </summary>
     public static readonly Coding BuccalTablet = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muco-adhesive buccal tablet
     /// </summary>
     public static readonly Coding MucoAdhesiveBuccalTablet = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lozenge
     /// </summary>
     public static readonly Coding Lozenge = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental gel
     /// </summary>
     public static readonly Coding DentalGel = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental stick
     /// </summary>
     public static readonly Coding DentalStick = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental insert
     /// </summary>
     public static readonly Coding DentalInsert = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental powder
     /// </summary>
     public static readonly Coding DentalPowder = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental liquid
     /// </summary>
     public static readonly Coding DentalLiquid = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental solution
     /// </summary>
     public static readonly Coding DentalSolution = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental suspension
     /// </summary>
     public static readonly Coding DentalSuspension = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental emulsion
     /// </summary>
     public static readonly Coding DentalEmulsion = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bath additive
     /// </summary>
     public static readonly Coding BathAdditive = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cream
     /// </summary>
     public static readonly Coding Cream = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gel
     /// </summary>
     public static readonly Coding Gel = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ointment
     /// </summary>
     public static readonly Coding Ointment = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous paste
     /// </summary>
     public static readonly Coding CutaneousPaste = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous foam
     /// </summary>
     public static readonly Coding CutaneousFoam = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shampoo
     /// </summary>
     public static readonly Coding Shampoo = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous spray
     /// </summary>
     public static readonly Coding CutaneousSpray = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous solution spray
     /// </summary>
     public static readonly Coding CutaneousSolutionSpray = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous liquid
     /// </summary>
     public static readonly Coding CutaneousLiquid = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous solution
     /// </summary>
     public static readonly Coding CutaneousSolution = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous suspension
     /// </summary>
     public static readonly Coding CutaneousSuspension = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous emulsion
     /// </summary>
     public static readonly Coding CutaneousEmulsion = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous powder
     /// </summary>
     public static readonly Coding CutaneousPowder = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Solution for iontophoresis
     /// </summary>
     public static readonly Coding SolutionForIontophoresis = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transdermal patch
     /// </summary>
     public static readonly Coding TransdermalPatch = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Collodion
     /// </summary>
     public static readonly Coding Collodion = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicated nail laquer
     /// </summary>
     public static readonly Coding MedicatedNailLaquer = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poultice
     /// </summary>
     public static readonly Coding Poultice = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous stick
     /// </summary>
     public static readonly Coding CutaneousStick = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous sponge
     /// </summary>
     public static readonly Coding CutaneousSponge = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eye cream
     /// </summary>
     public static readonly Coding EyeCream = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eye gel
     /// </summary>
     public static readonly Coding EyeGel = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eye ointment
     /// </summary>
     public static readonly Coding EyeOintment = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eye drops
     /// </summary>
     public static readonly Coding EyeDrops = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eye drops solution
     /// </summary>
     public static readonly Coding EyeDropsSolution = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prolonged-release eye drops
     /// </summary>
     public static readonly Coding ProlongedReleaseEyeDrops = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eye lotion
     /// </summary>
     public static readonly Coding EyeLotion = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmic insert
     /// </summary>
     public static readonly Coding OphthalmicInsert = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear cream
     /// </summary>
     public static readonly Coding EarCream = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear gel
     /// </summary>
     public static readonly Coding EarGel = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear ointment
     /// </summary>
     public static readonly Coding EarOintment = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear drops
     /// </summary>
     public static readonly Coding EarDrops = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear drops solution
     /// </summary>
     public static readonly Coding EarDropsSolution = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear drops emulsion
     /// </summary>
     public static readonly Coding EarDropsEmulsion = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear powder
     /// </summary>
     public static readonly Coding EarPowder = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear spray
     /// </summary>
     public static readonly Coding EarSpray = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear spray solution
     /// </summary>
     public static readonly Coding EarSpraySolution = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear spray suspension
     /// </summary>
     public static readonly Coding EarSpraySuspension = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear spray emulsion
     /// </summary>
     public static readonly Coding EarSprayEmulsion = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear tampon
     /// </summary>
     public static readonly Coding EarTampon = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear stick
     /// </summary>
     public static readonly Coding EarStick = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal cream
     /// </summary>
     public static readonly Coding NasalCream = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal gel
     /// </summary>
     public static readonly Coding NasalGel = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal ointment
     /// </summary>
     public static readonly Coding NasalOintment = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal drops
     /// </summary>
     public static readonly Coding NasalDrops = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal drops solution
     /// </summary>
     public static readonly Coding NasalDropsSolution = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal drops suspension
     /// </summary>
     public static readonly Coding NasalDropsSuspension = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal drops emulsion
     /// </summary>
     public static readonly Coding NasalDropsEmulsion = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal powder
     /// </summary>
     public static readonly Coding NasalPowder = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal spray
     /// </summary>
     public static readonly Coding NasalSpray = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal spray solution
     /// </summary>
     public static readonly Coding NasalSpraySolution = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal spray suspension
     /// </summary>
     public static readonly Coding NasalSpraySuspension = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal spray emulsion
     /// </summary>
     public static readonly Coding NasalSprayEmulsion = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal stick
     /// </summary>
     public static readonly Coding NasalStick = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eye/ear/nose drops
     /// </summary>
     public static readonly Coding EyeEarNoseDrops = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eye/ear/nose ointment
     /// </summary>
     public static readonly Coding EyeEarNoseOintment = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal cream
     /// </summary>
     public static readonly Coding VaginalCream = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal gel
     /// </summary>
     public static readonly Coding VaginalGel = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal ointment
     /// </summary>
     public static readonly Coding VaginalOintment = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal foam
     /// </summary>
     public static readonly Coding VaginalFoam = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal liquid
     /// </summary>
     public static readonly Coding VaginalLiquid = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal solution
     /// </summary>
     public static readonly Coding VaginalSolution = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal suspension
     /// </summary>
     public static readonly Coding VaginalSuspension = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal emulsion
     /// </summary>
     public static readonly Coding VaginalEmulsion = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tablet for vaginal solution
     /// </summary>
     public static readonly Coding TabletForVaginalSolution = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pessary
     /// </summary>
     public static readonly Coding Pessary = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal capsule
     /// </summary>
     public static readonly Coding VaginalCapsule = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hard vaginal capsule
     /// </summary>
     public static readonly Coding HardVaginalCapsule = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft vaginal capsule
     /// </summary>
     public static readonly Coding SoftVaginalCapsule = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal tablet
     /// </summary>
     public static readonly Coding VaginalTablet = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Effervescent vaginal tablet
     /// </summary>
     public static readonly Coding EffervescentVaginalTablet = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicated vaginal tampon
     /// </summary>
     public static readonly Coding MedicatedVaginalTampon = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rectal cream
     /// </summary>
     public static readonly Coding RectalCream = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rectal gel
     /// </summary>
     public static readonly Coding RectalGel = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rectal ointment
     /// </summary>
     public static readonly Coding RectalOintment = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rectal foam
     /// </summary>
     public static readonly Coding RectalFoam = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enema
     /// </summary>
     public static readonly Coding Enema = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rectal solution
     /// </summary>
     public static readonly Coding RectalSolution = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rectal suspension
     /// </summary>
     public static readonly Coding RectalSuspension = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rectal emulsion
     /// </summary>
     public static readonly Coding RectalEmulsion = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for rectal suspension
     /// </summary>
     public static readonly Coding PowderForRectalSuspension = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tablet for rectal solution
     /// </summary>
     public static readonly Coding TabletForRectalSolution = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tablet for rectal suspension
     /// </summary>
     public static readonly Coding TabletForRectalSuspension = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suppository
     /// </summary>
     public static readonly Coding Suppository = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rectal capsule
     /// </summary>
     public static readonly Coding RectalCapsule = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rectal tampon
     /// </summary>
     public static readonly Coding RectalTampon = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nebulizer liquid
     /// </summary>
     public static readonly Coding NebulizerLiquid = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nebulizer solution
     /// </summary>
     public static readonly Coding NebulizerSolution = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nebulizer suspension
     /// </summary>
     public static readonly Coding NebulizerSuspension = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for nebulizer suspension
     /// </summary>
     public static readonly Coding PowderForNebulizerSuspension = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for nebulizer solution
     /// </summary>
     public static readonly Coding PowderForNebulizerSolution = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nebulizer emulsion
     /// </summary>
     public static readonly Coding NebulizerEmulsion = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pressurised inhalation
     /// </summary>
     public static readonly Coding PressurisedInhalation = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pressurised inhalation solution
     /// </summary>
     public static readonly Coding PressurisedInhalationSolution = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pressurised inhalation suspension
     /// </summary>
     public static readonly Coding PressurisedInhalationSuspension = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pressurised inhalation emulsion
     /// </summary>
     public static readonly Coding PressurisedInhalationEmulsion = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhalation powder
     /// </summary>
     public static readonly Coding InhalationPowder = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hard capsule inhalation powder
     /// </summary>
     public static readonly Coding HardCapsuleInhalationPowder = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhalation vapor
     /// </summary>
     public static readonly Coding InhalationVapor = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhalation vapor powder
     /// </summary>
     public static readonly Coding InhalationVaporPowder = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhalation vapor capsule
     /// </summary>
     public static readonly Coding InhalationVaporCapsule = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhalation vapor solution
     /// </summary>
     public static readonly Coding InhalationVaporSolution = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhalation vapor tablet
     /// </summary>
     public static readonly Coding InhalationVaporTablet = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhalation vapor ointment
     /// </summary>
     public static readonly Coding InhalationVaporOintment = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhalation vapor liquid
     /// </summary>
     public static readonly Coding InhalationVaporLiquid = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhalation gas
     /// </summary>
     public static readonly Coding InhalationGas = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injection solution
     /// </summary>
     public static readonly Coding InjectionSolution = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injection suspension
     /// </summary>
     public static readonly Coding InjectionSuspension = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injection emulsion
     /// </summary>
     public static readonly Coding InjectionEmulsion = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injection powder
     /// </summary>
     public static readonly Coding InjectionPowder = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for injection solution
     /// </summary>
     public static readonly Coding PowderForInjectionSolution = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for injection suspension
     /// </summary>
     public static readonly Coding PowderForInjectionSuspension = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infusion solution
     /// </summary>
     public static readonly Coding InfusionSolution = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infusion powder
     /// </summary>
     public static readonly Coding InfusionPowder = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for infusion solution
     /// </summary>
     public static readonly Coding PowderForInfusionSolution = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantation tablet
     /// </summary>
     public static readonly Coding ImplantationTablet = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantation chain
     /// </summary>
     public static readonly Coding ImplantationChain = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravesical solution
     /// </summary>
     public static readonly Coding IntravesicalSolution = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urethral gel
     /// </summary>
     public static readonly Coding UrethralGel = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urethral stick
     /// </summary>
     public static readonly Coding UrethralStick = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endotracheopulmonary instillation solution
     /// </summary>
     public static readonly Coding EndotracheopulmonaryInstillationSolution = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for endotracheopulmonary instillation solution
     /// </summary>
     public static readonly Coding PowderForEndotracheopulmonaryInstillationSolution = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endotracheopulmonary instillation suspension
     /// </summary>
     public static readonly Coding EndotracheopulmonaryInstillationSuspension = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endocervical gel
     /// </summary>
     public static readonly Coding EndocervicalGel = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastroenteral liquid
     /// </summary>
     public static readonly Coding GastroenteralLiquid = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastroenteral solution
     /// </summary>
     public static readonly Coding GastroenteralSolution = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastroenteral suspension
     /// </summary>
     public static readonly Coding GastroenteralSuspension = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastroenteral emulsion
     /// </summary>
     public static readonly Coding GastroenteralEmulsion = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wound stick
     /// </summary>
     public static readonly Coding WoundStick = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Organ preservation solution
     /// </summary>
     public static readonly Coding OrganPreservationSolution = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous powder spray
     /// </summary>
     public static readonly Coding CutaneousPowderSpray = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous suspension spray
     /// </summary>
     public static readonly Coding CutaneousSuspensionSpray = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implant dosage form
     /// </summary>
     public static readonly Coding ImplantDosageForm = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral elixir
     /// </summary>
     public static readonly Coding OralElixir = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tampon dose form
     /// </summary>
     public static readonly Coding TamponDoseForm = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oil injection
     /// </summary>
     public static readonly Coding OilInjection = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Semi-solid dose form
     /// </summary>
     public static readonly Coding SemiSolidDoseForm = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal emulsion
     /// </summary>
     public static readonly Coding NasalEmulsion = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rectal powder
     /// </summary>
     public static readonly Coding RectalPowder = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coated pellets capsule
     /// </summary>
     public static readonly Coding CoatedPelletsCapsule = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for oral liquid
     /// </summary>
     public static readonly Coding PowderForOralLiquid = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhaler
     /// </summary>
     public static readonly Coding Inhaler = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended-release film coated tablet
     /// </summary>
     public static readonly Coding ExtendedReleaseFilmCoatedTablet = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended-release insert
     /// </summary>
     public static readonly Coding ExtendedReleaseInsert = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Emulsion
     /// </summary>
     public static readonly Coding Emulsion = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhalation aerosol solution
     /// </summary>
     public static readonly Coding InhalationAerosolSolution = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lyophilized powder for injectable extended release liposomal suspension
     /// </summary>
     public static readonly Coding LyophilizedPowderForInjectableExtendedReleaseLiposomalSuspension = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pressurized nebulizer suspension
     /// </summary>
     public static readonly Coding PressurizedNebulizerSuspension = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Film
     /// </summary>
     public static readonly Coding Film = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral granules
     /// </summary>
     public static readonly Coding OralGranules = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal powder
     /// </summary>
     public static readonly Coding VaginalPowder = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous oil
     /// </summary>
     public static readonly Coding CutaneousOil = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal aerosol
     /// </summary>
     public static readonly Coding NasalAerosol = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended-release tablet
     /// </summary>
     public static readonly Coding ExtendedReleaseTablet = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal insert
     /// </summary>
     public static readonly Coding VaginalInsert = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microspheres for injectable suspension
     /// </summary>
     public static readonly Coding MicrospheresForInjectableSuspension = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eye/ear drops
     /// </summary>
     public static readonly Coding EyeEarDrops = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Solution for inhalation
     /// </summary>
     public static readonly Coding SolutionForInhalation = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lyophilized powder for injectable liposomal suspension
     /// </summary>
     public static readonly Coding LyophilizedPowderForInjectableLiposomalSuspension = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral capsule
     /// </summary>
     public static readonly Coding OralCapsule = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liquid dose form
     /// </summary>
     public static readonly Coding LiquidDoseForm = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhalation aerosol suspension
     /// </summary>
     public static readonly Coding InhalationAerosolSuspension = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eye suspension
     /// </summary>
     public static readonly Coding EyeSuspension = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delayed-release granules
     /// </summary>
     public static readonly Coding DelayedReleaseGranules = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urethral suppository
     /// </summary>
     public static readonly Coding UrethralSuppository = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delayed-release pellets capsule
     /// </summary>
     public static readonly Coding DelayedReleasePelletsCapsule = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pellet
     /// </summary>
     public static readonly Coding Pellet = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended-release liquid
     /// </summary>
     public static readonly Coding ExtendedReleaseLiquid = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for reconstitution for drug product
     /// </summary>
     public static readonly Coding PowderForReconstitutionForDrugProduct = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metered dose aerosol
     /// </summary>
     public static readonly Coding MeteredDoseAerosol = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended release injectable suspension
     /// </summary>
     public static readonly Coding ExtendedReleaseInjectableSuspension = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrathecal suspension
     /// </summary>
     public static readonly Coding IntrathecalSuspension = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear drops suspension
     /// </summary>
     public static readonly Coding EarDropsSuspension = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear emulsion
     /// </summary>
     public static readonly Coding EarEmulsion = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metered powder
     /// </summary>
     public static readonly Coding MeteredPowder = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rectal suppository
     /// </summary>
     public static readonly Coding RectalSuppository = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for solution
     /// </summary>
     public static readonly Coding PowderForSolution = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultramicronized tablet
     /// </summary>
     public static readonly Coding UltramicronizedTablet = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantable pellet
     /// </summary>
     public static readonly Coding ImplantablePellet = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral tablet
     /// </summary>
     public static readonly Coding OralTablet = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delayed-release capsule
     /// </summary>
     public static readonly Coding DelayedReleaseCapsule = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended-release suppository
     /// </summary>
     public static readonly Coding ExtendedReleaseSuppository = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended-release film
     /// </summary>
     public static readonly Coding ExtendedReleaseFilm = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sonicated injectable suspension
     /// </summary>
     public static readonly Coding SonicatedInjectableSuspension = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Emulsion for inhalation
     /// </summary>
     public static readonly Coding EmulsionForInhalation = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pastille
     /// </summary>
     public static readonly Coding Pastille = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for suspension
     /// </summary>
     public static readonly Coding PowderForSuspension = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aerosol powder
     /// </summary>
     public static readonly Coding AerosolPowder = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gaseous dose form
     /// </summary>
     public static readonly Coding GaseousDoseForm = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended-release enteric coated tablet
     /// </summary>
     public static readonly Coding ExtendedReleaseEntericCoatedTablet = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foam
     /// </summary>
     public static readonly Coding Foam = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal suppository
     /// </summary>
     public static readonly Coding VaginalSuppository = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suspension for inhalation
     /// </summary>
     public static readonly Coding SuspensionForInhalation = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended-release bead implant
     /// </summary>
     public static readonly Coding ExtendedReleaseBeadImplant = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sponge
     /// </summary>
     public static readonly Coding Sponge = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended-release film coated capsule
     /// </summary>
     public static readonly Coding ExtendedReleaseFilmCoatedCapsule = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for eye drops
     /// </summary>
     public static readonly Coding PowderForEyeDrops = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended-release coated capsule
     /// </summary>
     public static readonly Coding ExtendedReleaseCoatedCapsule = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder spray
     /// </summary>
     public static readonly Coding PowderSpray = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for cutaneous solution
     /// </summary>
     public static readonly Coding PowderForCutaneousSolution = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous aerosol
     /// </summary>
     public static readonly Coding CutaneousAerosol = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tablet for oral suspension
     /// </summary>
     public static readonly Coding TabletForOralSuspension = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delayed-release tablet
     /// </summary>
     public static readonly Coding DelayedReleaseTablet = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Solid dose form
     /// </summary>
     public static readonly Coding SolidDoseForm = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear suspension
     /// </summary>
     public static readonly Coding EarSuspension = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravenous solution
     /// </summary>
     public static readonly Coding IntravenousSolution = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for inhalation solution
     /// </summary>
     public static readonly Coding PowderForInhalationSolution = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eye/ear ointment
     /// </summary>
     public static readonly Coding EyeEarOintment = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injectable oil suspension
     /// </summary>
     public static readonly Coding InjectableOilSuspension = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended-release granules for suspension
     /// </summary>
     public static readonly Coding ExtendedReleaseGranulesForSuspension = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cone
     /// </summary>
     public static readonly Coding Cone = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liposomal injectable suspension
     /// </summary>
     public static readonly Coding LiposomalInjectableSuspension = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insert
     /// </summary>
     public static readonly Coding Insert = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delayed-release particles tablet
     /// </summary>
     public static readonly Coding DelayedReleaseParticlesTablet = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for ear drops
     /// </summary>
     public static readonly Coding PowderForEarDrops = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aerosol spray
     /// </summary>
     public static readonly Coding AerosolSpray = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for nasal drops
     /// </summary>
     public static readonly Coding PowderForNasalDrops = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended-release capsule
     /// </summary>
     public static readonly Coding ExtendedReleaseCapsule = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sustained-release buccal tablet
     /// </summary>
     public static readonly Coding SustainedReleaseBuccalTablet = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous cream
     /// </summary>
     public static readonly Coding CutaneousCream = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lyophilized powder for injectable solution
     /// </summary>
     public static readonly Coding LyophilizedPowderForInjectableSolution = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metered gel
     /// </summary>
     public static readonly Coding MeteredGel = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tablet for oral solution
     /// </summary>
     public static readonly Coding TabletForOralSolution = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear solution
     /// </summary>
     public static readonly Coding EarSolution = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transdermal drug delivery system
     /// </summary>
     public static readonly Coding TransdermalDrugDeliverySystem = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spray dose form
     /// </summary>
     public static readonly Coding SprayDoseForm = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coated particles tablet
     /// </summary>
     public static readonly Coding CoatedParticlesTablet = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended-release enteric coated capsule
     /// </summary>
     public static readonly Coding ExtendedReleaseEntericCoatedCapsule = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metered dose aerosol inhaler
     /// </summary>
     public static readonly Coding MeteredDoseAerosolInhaler = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraperitoneal solution
     /// </summary>
     public static readonly Coding IntraperitonealSolution = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for ophthalmic solution
     /// </summary>
     public static readonly Coding PowderForOphthalmicSolution = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral cream
     /// </summary>
     public static readonly Coding OralCream = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oil
     /// </summary>
     public static readonly Coding Oil = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multilayer tablet
     /// </summary>
     public static readonly Coding MultilayerTablet = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicated toothpaste
     /// </summary>
     public static readonly Coding MedicatedToothpaste = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lyophilized powder for injectable suspension
     /// </summary>
     public static readonly Coding LyophilizedPowderForInjectableSuspension = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous gel
     /// </summary>
     public static readonly Coding CutaneousGel = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraocular solution
     /// </summary>
     public static readonly Coding IntraocularSolution = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended-release coated pellets
     /// </summary>
     public static readonly Coding ExtendedReleaseCoatedPellets = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metered dose powder inhaler
     /// </summary>
     public static readonly Coding MeteredDosePowderInhaler = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metered dose inhaler
     /// </summary>
     public static readonly Coding MeteredDoseInhaler = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmic solution
     /// </summary>
     public static readonly Coding OphthalmicSolution = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eye drops suspension
     /// </summary>
     public static readonly Coding EyeDropsSuspension = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal suspension
     /// </summary>
     public static readonly Coding NasalSuspension = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for ophthalmic suspension
     /// </summary>
     public static readonly Coding PowderForOphthalmicSuspension = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breath activated powder inhaler
     /// </summary>
     public static readonly Coding BreathActivatedPowderInhaler = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tincture
     /// </summary>
     public static readonly Coding Tincture = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breath activated inhaler
     /// </summary>
     public static readonly Coding BreathActivatedInhaler = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental cone
     /// </summary>
     public static readonly Coding DentalCone = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tablet for cutaneous solution
     /// </summary>
     public static readonly Coding TabletForCutaneousSolution = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Colloidal suspension for injection
     /// </summary>
     public static readonly Coding ColloidalSuspensionForInjection = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spirit
     /// </summary>
     public static readonly Coding Spirit = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powder for injectable extended release suspension
     /// </summary>
     public static readonly Coding PowderForInjectableExtendedReleaseSuspension = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Modified-release pessary
     /// </summary>
     public static readonly Coding ModifiedReleasePessary = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal solution
     /// </summary>
     public static readonly Coding NasalSolution = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended-release suspension
     /// </summary>
     public static readonly Coding ExtendedReleaseSuspension = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aerosol generator
     /// </summary>
     public static readonly Coding AerosolGenerator = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal sponge
     /// </summary>
     public static readonly Coding VaginalSponge = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Topical ointment
     /// </summary>
     public static readonly Coding TopicalOintment = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rectal spray
     /// </summary>
     public static readonly Coding RectalSpray = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gum
     /// </summary>
     public static readonly Coding Gum = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drops dose form
     /// </summary>
     public static readonly Coding DropsDoseForm = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal spray
     /// </summary>
     public static readonly Coding VaginalSpray = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metered spray
     /// </summary>
     public static readonly Coding MeteredSpray = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coated capsule
     /// </summary>
     public static readonly Coding CoatedCapsule = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pressurized spray
     /// </summary>
     public static readonly Coding PressurizedSpray = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Modified release drops dose form
     /// </summary>
     public static readonly Coding ModifiedReleaseDropsDoseForm = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bar
     /// </summary>
     public static readonly Coding Bar = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Buccal film
     /// </summary>
     public static readonly Coding BuccalFilm = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orodispersible film
     /// </summary>
     public static readonly Coding OrodispersibleFilm = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orodispersible tablet
     /// </summary>
     public static readonly Coding OrodispersibleTablet = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pill
     /// </summary>
     public static readonly Coding Pill = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Caplet
     /// </summary>
     public static readonly Coding Caplet = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug aerosol
     /// </summary>
     public static readonly Coding DrugAerosol = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liniment
     /// </summary>
     public static readonly Coding Liniment = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug pledget
     /// </summary>
     public static readonly Coding DrugPledget = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chewable tablet
     /// </summary>
     public static readonly Coding ChewableTablet = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug solution
     /// </summary>
     public static readonly Coding DrugSolution = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug suspension
     /// </summary>
     public static readonly Coding DrugSuspension = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug powder
     /// </summary>
     public static readonly Coding DrugPowder = new Coding
     {
@@ -3186,9 +3186,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrugStick = "11190007";
 
     /// <summary>
+    /// Literal for code: NONEDrugStick
+    /// </summary>
+    public const string LiteralNONEDrugStick = "http://snomed.info/sct#11190007";
+
+    /// <summary>
     /// Literal for code: Lotion
     /// </summary>
     public const string LiteralLotion = "17519006";
+
+    /// <summary>
+    /// Literal for code: NONELotion
+    /// </summary>
+    public const string LiteralNONELotion = "http://snomed.info/sct#17519006";
 
     /// <summary>
     /// Literal for code: DrugAerosolFoam
@@ -3196,9 +3206,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrugAerosolFoam = "30843009";
 
     /// <summary>
+    /// Literal for code: NONEDrugAerosolFoam
+    /// </summary>
+    public const string LiteralNONEDrugAerosolFoam = "http://snomed.info/sct#30843009";
+
+    /// <summary>
     /// Literal for code: DrugPatch
     /// </summary>
     public const string LiteralDrugPatch = "36875001";
+
+    /// <summary>
+    /// Literal for code: NONEDrugPatch
+    /// </summary>
+    public const string LiteralNONEDrugPatch = "http://snomed.info/sct#36875001";
 
     /// <summary>
     /// Literal for code: DrugPaste
@@ -3206,9 +3226,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrugPaste = "37937005";
 
     /// <summary>
+    /// Literal for code: NONEDrugPaste
+    /// </summary>
+    public const string LiteralNONEDrugPaste = "http://snomed.info/sct#37937005";
+
+    /// <summary>
     /// Literal for code: OralDrops
     /// </summary>
     public const string LiteralOralDrops = "385018001";
+
+    /// <summary>
+    /// Literal for code: NONEOralDrops
+    /// </summary>
+    public const string LiteralNONEOralDrops = "http://snomed.info/sct#385018001";
 
     /// <summary>
     /// Literal for code: OralDropsSolution
@@ -3216,9 +3246,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOralDropsSolution = "385019009";
 
     /// <summary>
+    /// Literal for code: NONEOralDropsSolution
+    /// </summary>
+    public const string LiteralNONEOralDropsSolution = "http://snomed.info/sct#385019009";
+
+    /// <summary>
     /// Literal for code: OralDropsSuspension
     /// </summary>
     public const string LiteralOralDropsSuspension = "385020003";
+
+    /// <summary>
+    /// Literal for code: NONEOralDropsSuspension
+    /// </summary>
+    public const string LiteralNONEOralDropsSuspension = "http://snomed.info/sct#385020003";
 
     /// <summary>
     /// Literal for code: OralDropsEmulsion
@@ -3226,9 +3266,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOralDropsEmulsion = "385021004";
 
     /// <summary>
+    /// Literal for code: NONEOralDropsEmulsion
+    /// </summary>
+    public const string LiteralNONEOralDropsEmulsion = "http://snomed.info/sct#385021004";
+
+    /// <summary>
     /// Literal for code: OralLiquid
     /// </summary>
     public const string LiteralOralLiquid = "385022006";
+
+    /// <summary>
+    /// Literal for code: NONEOralLiquid
+    /// </summary>
+    public const string LiteralNONEOralLiquid = "http://snomed.info/sct#385022006";
 
     /// <summary>
     /// Literal for code: OralSolution
@@ -3236,9 +3286,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOralSolution = "385023001";
 
     /// <summary>
+    /// Literal for code: NONEOralSolution
+    /// </summary>
+    public const string LiteralNONEOralSolution = "http://snomed.info/sct#385023001";
+
+    /// <summary>
     /// Literal for code: OralSuspension
     /// </summary>
     public const string LiteralOralSuspension = "385024007";
+
+    /// <summary>
+    /// Literal for code: NONEOralSuspension
+    /// </summary>
+    public const string LiteralNONEOralSuspension = "http://snomed.info/sct#385024007";
 
     /// <summary>
     /// Literal for code: OralEmulsion
@@ -3246,9 +3306,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOralEmulsion = "385025008";
 
     /// <summary>
+    /// Literal for code: NONEOralEmulsion
+    /// </summary>
+    public const string LiteralNONEOralEmulsion = "http://snomed.info/sct#385025008";
+
+    /// <summary>
     /// Literal for code: PowderForOralSolution
     /// </summary>
     public const string LiteralPowderForOralSolution = "385026009";
+
+    /// <summary>
+    /// Literal for code: NONEPowderForOralSolution
+    /// </summary>
+    public const string LiteralNONEPowderForOralSolution = "http://snomed.info/sct#385026009";
 
     /// <summary>
     /// Literal for code: PowderForOralSuspension
@@ -3256,9 +3326,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForOralSuspension = "385027000";
 
     /// <summary>
+    /// Literal for code: NONEPowderForOralSuspension
+    /// </summary>
+    public const string LiteralNONEPowderForOralSuspension = "http://snomed.info/sct#385027000";
+
+    /// <summary>
     /// Literal for code: GranulesForOralSolution
     /// </summary>
     public const string LiteralGranulesForOralSolution = "385028005";
+
+    /// <summary>
+    /// Literal for code: NONEGranulesForOralSolution
+    /// </summary>
+    public const string LiteralNONEGranulesForOralSolution = "http://snomed.info/sct#385028005";
 
     /// <summary>
     /// Literal for code: GranulesForOralSuspension
@@ -3266,9 +3346,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGranulesForOralSuspension = "385029002";
 
     /// <summary>
+    /// Literal for code: NONEGranulesForOralSuspension
+    /// </summary>
+    public const string LiteralNONEGranulesForOralSuspension = "http://snomed.info/sct#385029002";
+
+    /// <summary>
     /// Literal for code: Syrup
     /// </summary>
     public const string LiteralSyrup = "385032004";
+
+    /// <summary>
+    /// Literal for code: NONESyrup
+    /// </summary>
+    public const string LiteralNONESyrup = "http://snomed.info/sct#385032004";
 
     /// <summary>
     /// Literal for code: PowderForSyrup
@@ -3276,9 +3366,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForSyrup = "385033009";
 
     /// <summary>
+    /// Literal for code: NONEPowderForSyrup
+    /// </summary>
+    public const string LiteralNONEPowderForSyrup = "http://snomed.info/sct#385033009";
+
+    /// <summary>
     /// Literal for code: GranulesForSyrup
     /// </summary>
     public const string LiteralGranulesForSyrup = "385034003";
+
+    /// <summary>
+    /// Literal for code: NONEGranulesForSyrup
+    /// </summary>
+    public const string LiteralNONEGranulesForSyrup = "http://snomed.info/sct#385034003";
 
     /// <summary>
     /// Literal for code: SolubleTablet
@@ -3286,9 +3386,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSolubleTablet = "385035002";
 
     /// <summary>
+    /// Literal for code: NONESolubleTablet
+    /// </summary>
+    public const string LiteralNONESolubleTablet = "http://snomed.info/sct#385035002";
+
+    /// <summary>
     /// Literal for code: DispersibleTablet
     /// </summary>
     public const string LiteralDispersibleTablet = "385036001";
+
+    /// <summary>
+    /// Literal for code: NONEDispersibleTablet
+    /// </summary>
+    public const string LiteralNONEDispersibleTablet = "http://snomed.info/sct#385036001";
 
     /// <summary>
     /// Literal for code: OralGel
@@ -3296,9 +3406,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOralGel = "385038000";
 
     /// <summary>
+    /// Literal for code: NONEOralGel
+    /// </summary>
+    public const string LiteralNONEOralGel = "http://snomed.info/sct#385038000";
+
+    /// <summary>
     /// Literal for code: OralPaste
     /// </summary>
     public const string LiteralOralPaste = "385039008";
+
+    /// <summary>
+    /// Literal for code: NONEOralPaste
+    /// </summary>
+    public const string LiteralNONEOralPaste = "http://snomed.info/sct#385039008";
 
     /// <summary>
     /// Literal for code: OralPowder
@@ -3306,9 +3426,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOralPowder = "385041009";
 
     /// <summary>
+    /// Literal for code: NONEOralPowder
+    /// </summary>
+    public const string LiteralNONEOralPowder = "http://snomed.info/sct#385041009";
+
+    /// <summary>
     /// Literal for code: EffervescentPowder
     /// </summary>
     public const string LiteralEffervescentPowder = "385042002";
+
+    /// <summary>
+    /// Literal for code: NONEEffervescentPowder
+    /// </summary>
+    public const string LiteralNONEEffervescentPowder = "http://snomed.info/sct#385042002";
 
     /// <summary>
     /// Literal for code: Granules
@@ -3316,9 +3446,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGranules = "385043007";
 
     /// <summary>
+    /// Literal for code: NONEGranules
+    /// </summary>
+    public const string LiteralNONEGranules = "http://snomed.info/sct#385043007";
+
+    /// <summary>
     /// Literal for code: EffervescentGranules
     /// </summary>
     public const string LiteralEffervescentGranules = "385044001";
+
+    /// <summary>
+    /// Literal for code: NONEEffervescentGranules
+    /// </summary>
+    public const string LiteralNONEEffervescentGranules = "http://snomed.info/sct#385044001";
 
     /// <summary>
     /// Literal for code: GastroResistantGranules
@@ -3326,9 +3466,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGastroResistantGranules = "385045000";
 
     /// <summary>
+    /// Literal for code: NONEGastroResistantGranules
+    /// </summary>
+    public const string LiteralNONEGastroResistantGranules = "http://snomed.info/sct#385045000";
+
+    /// <summary>
     /// Literal for code: ProlongedReleaseGranules
     /// </summary>
     public const string LiteralProlongedReleaseGranules = "385046004";
+
+    /// <summary>
+    /// Literal for code: NONEProlongedReleaseGranules
+    /// </summary>
+    public const string LiteralNONEProlongedReleaseGranules = "http://snomed.info/sct#385046004";
 
     /// <summary>
     /// Literal for code: ModifiedReleaseGranules
@@ -3336,9 +3486,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralModifiedReleaseGranules = "385047008";
 
     /// <summary>
+    /// Literal for code: NONEModifiedReleaseGranules
+    /// </summary>
+    public const string LiteralNONEModifiedReleaseGranules = "http://snomed.info/sct#385047008";
+
+    /// <summary>
     /// Literal for code: Cachet
     /// </summary>
     public const string LiteralCachet = "385048003";
+
+    /// <summary>
+    /// Literal for code: NONECachet
+    /// </summary>
+    public const string LiteralNONECachet = "http://snomed.info/sct#385048003";
 
     /// <summary>
     /// Literal for code: Capsule
@@ -3346,9 +3506,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCapsule = "385049006";
 
     /// <summary>
+    /// Literal for code: NONECapsule
+    /// </summary>
+    public const string LiteralNONECapsule = "http://snomed.info/sct#385049006";
+
+    /// <summary>
     /// Literal for code: HardCapsule
     /// </summary>
     public const string LiteralHardCapsule = "385050006";
+
+    /// <summary>
+    /// Literal for code: NONEHardCapsule
+    /// </summary>
+    public const string LiteralNONEHardCapsule = "http://snomed.info/sct#385050006";
 
     /// <summary>
     /// Literal for code: SoftCapsule
@@ -3356,9 +3526,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSoftCapsule = "385051005";
 
     /// <summary>
+    /// Literal for code: NONESoftCapsule
+    /// </summary>
+    public const string LiteralNONESoftCapsule = "http://snomed.info/sct#385051005";
+
+    /// <summary>
     /// Literal for code: GastroResistantCapsule
     /// </summary>
     public const string LiteralGastroResistantCapsule = "385052003";
+
+    /// <summary>
+    /// Literal for code: NONEGastroResistantCapsule
+    /// </summary>
+    public const string LiteralNONEGastroResistantCapsule = "http://snomed.info/sct#385052003";
 
     /// <summary>
     /// Literal for code: ProlongedReleaseCapsule
@@ -3366,9 +3546,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProlongedReleaseCapsule = "385053008";
 
     /// <summary>
+    /// Literal for code: NONEProlongedReleaseCapsule
+    /// </summary>
+    public const string LiteralNONEProlongedReleaseCapsule = "http://snomed.info/sct#385053008";
+
+    /// <summary>
     /// Literal for code: ModifiedReleaseCapsule
     /// </summary>
     public const string LiteralModifiedReleaseCapsule = "385054002";
+
+    /// <summary>
+    /// Literal for code: NONEModifiedReleaseCapsule
+    /// </summary>
+    public const string LiteralNONEModifiedReleaseCapsule = "http://snomed.info/sct#385054002";
 
     /// <summary>
     /// Literal for code: Tablet
@@ -3376,9 +3566,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTablet = "385055001";
 
     /// <summary>
+    /// Literal for code: NONETablet
+    /// </summary>
+    public const string LiteralNONETablet = "http://snomed.info/sct#385055001";
+
+    /// <summary>
     /// Literal for code: FilmCoatedTablet
     /// </summary>
     public const string LiteralFilmCoatedTablet = "385057009";
+
+    /// <summary>
+    /// Literal for code: NONEFilmCoatedTablet
+    /// </summary>
+    public const string LiteralNONEFilmCoatedTablet = "http://snomed.info/sct#385057009";
 
     /// <summary>
     /// Literal for code: EffervescentTablet
@@ -3386,9 +3586,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEffervescentTablet = "385058004";
 
     /// <summary>
+    /// Literal for code: NONEEffervescentTablet
+    /// </summary>
+    public const string LiteralNONEEffervescentTablet = "http://snomed.info/sct#385058004";
+
+    /// <summary>
     /// Literal for code: GastroResistantTablet
     /// </summary>
     public const string LiteralGastroResistantTablet = "385059007";
+
+    /// <summary>
+    /// Literal for code: NONEGastroResistantTablet
+    /// </summary>
+    public const string LiteralNONEGastroResistantTablet = "http://snomed.info/sct#385059007";
 
     /// <summary>
     /// Literal for code: ProlongedReleaseTablet
@@ -3396,9 +3606,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProlongedReleaseTablet = "385060002";
 
     /// <summary>
+    /// Literal for code: NONEProlongedReleaseTablet
+    /// </summary>
+    public const string LiteralNONEProlongedReleaseTablet = "http://snomed.info/sct#385060002";
+
+    /// <summary>
     /// Literal for code: ModifiedReleaseTablet
     /// </summary>
     public const string LiteralModifiedReleaseTablet = "385061003";
+
+    /// <summary>
+    /// Literal for code: NONEModifiedReleaseTablet
+    /// </summary>
+    public const string LiteralNONEModifiedReleaseTablet = "http://snomed.info/sct#385061003";
 
     /// <summary>
     /// Literal for code: OralLyophilisate
@@ -3406,9 +3626,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOralLyophilisate = "385062005";
 
     /// <summary>
+    /// Literal for code: NONEOralLyophilisate
+    /// </summary>
+    public const string LiteralNONEOralLyophilisate = "http://snomed.info/sct#385062005";
+
+    /// <summary>
     /// Literal for code: OralGum
     /// </summary>
     public const string LiteralOralGum = "385063000";
+
+    /// <summary>
+    /// Literal for code: NONEOralGum
+    /// </summary>
+    public const string LiteralNONEOralGum = "http://snomed.info/sct#385063000";
 
     /// <summary>
     /// Literal for code: Pillule
@@ -3416,9 +3646,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPillule = "385064006";
 
     /// <summary>
+    /// Literal for code: NONEPillule
+    /// </summary>
+    public const string LiteralNONEPillule = "http://snomed.info/sct#385064006";
+
+    /// <summary>
     /// Literal for code: OromucosalLiquid
     /// </summary>
     public const string LiteralOromucosalLiquid = "385069001";
+
+    /// <summary>
+    /// Literal for code: NONEOromucosalLiquid
+    /// </summary>
+    public const string LiteralNONEOromucosalLiquid = "http://snomed.info/sct#385069001";
 
     /// <summary>
     /// Literal for code: OromucosalSolution
@@ -3426,9 +3666,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOromucosalSolution = "385070000";
 
     /// <summary>
+    /// Literal for code: NONEOromucosalSolution
+    /// </summary>
+    public const string LiteralNONEOromucosalSolution = "http://snomed.info/sct#385070000";
+
+    /// <summary>
     /// Literal for code: OromucosalSuspension
     /// </summary>
     public const string LiteralOromucosalSuspension = "385071001";
+
+    /// <summary>
+    /// Literal for code: NONEOromucosalSuspension
+    /// </summary>
+    public const string LiteralNONEOromucosalSuspension = "http://snomed.info/sct#385071001";
 
     /// <summary>
     /// Literal for code: OromucosalSpray
@@ -3436,9 +3686,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOromucosalSpray = "385073003";
 
     /// <summary>
+    /// Literal for code: NONEOromucosalSpray
+    /// </summary>
+    public const string LiteralNONEOromucosalSpray = "http://snomed.info/sct#385073003";
+
+    /// <summary>
     /// Literal for code: SublingualSpray
     /// </summary>
     public const string LiteralSublingualSpray = "385074009";
+
+    /// <summary>
+    /// Literal for code: NONESublingualSpray
+    /// </summary>
+    public const string LiteralNONESublingualSpray = "http://snomed.info/sct#385074009";
 
     /// <summary>
     /// Literal for code: GingivalSolution
@@ -3446,9 +3706,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGingivalSolution = "385077002";
 
     /// <summary>
+    /// Literal for code: NONEGingivalSolution
+    /// </summary>
+    public const string LiteralNONEGingivalSolution = "http://snomed.info/sct#385077002";
+
+    /// <summary>
     /// Literal for code: OromucosalGel
     /// </summary>
     public const string LiteralOromucosalGel = "385078007";
+
+    /// <summary>
+    /// Literal for code: NONEOromucosalGel
+    /// </summary>
+    public const string LiteralNONEOromucosalGel = "http://snomed.info/sct#385078007";
 
     /// <summary>
     /// Literal for code: OromucosalPaste
@@ -3456,9 +3726,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOromucosalPaste = "385079004";
 
     /// <summary>
+    /// Literal for code: NONEOromucosalPaste
+    /// </summary>
+    public const string LiteralNONEOromucosalPaste = "http://snomed.info/sct#385079004";
+
+    /// <summary>
     /// Literal for code: MedicatedChewingGum
     /// </summary>
     public const string LiteralMedicatedChewingGum = "385080001";
+
+    /// <summary>
+    /// Literal for code: NONEMedicatedChewingGum
+    /// </summary>
+    public const string LiteralNONEMedicatedChewingGum = "http://snomed.info/sct#385080001";
 
     /// <summary>
     /// Literal for code: GingivalGel
@@ -3466,9 +3746,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGingivalGel = "385081002";
 
     /// <summary>
+    /// Literal for code: NONEGingivalGel
+    /// </summary>
+    public const string LiteralNONEGingivalGel = "http://snomed.info/sct#385081002";
+
+    /// <summary>
     /// Literal for code: GingivalPaste
     /// </summary>
     public const string LiteralGingivalPaste = "385082009";
+
+    /// <summary>
+    /// Literal for code: NONEGingivalPaste
+    /// </summary>
+    public const string LiteralNONEGingivalPaste = "http://snomed.info/sct#385082009";
 
     /// <summary>
     /// Literal for code: OromucosalCapsule
@@ -3476,9 +3766,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOromucosalCapsule = "385083004";
 
     /// <summary>
+    /// Literal for code: NONEOromucosalCapsule
+    /// </summary>
+    public const string LiteralNONEOromucosalCapsule = "http://snomed.info/sct#385083004";
+
+    /// <summary>
     /// Literal for code: SublingualTablet
     /// </summary>
     public const string LiteralSublingualTablet = "385084005";
+
+    /// <summary>
+    /// Literal for code: NONESublingualTablet
+    /// </summary>
+    public const string LiteralNONESublingualTablet = "http://snomed.info/sct#385084005";
 
     /// <summary>
     /// Literal for code: BuccalTablet
@@ -3486,9 +3786,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBuccalTablet = "385085006";
 
     /// <summary>
+    /// Literal for code: NONEBuccalTablet
+    /// </summary>
+    public const string LiteralNONEBuccalTablet = "http://snomed.info/sct#385085006";
+
+    /// <summary>
     /// Literal for code: MucoAdhesiveBuccalTablet
     /// </summary>
     public const string LiteralMucoAdhesiveBuccalTablet = "385086007";
+
+    /// <summary>
+    /// Literal for code: NONEMucoAdhesiveBuccalTablet
+    /// </summary>
+    public const string LiteralNONEMucoAdhesiveBuccalTablet = "http://snomed.info/sct#385086007";
 
     /// <summary>
     /// Literal for code: Lozenge
@@ -3496,9 +3806,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLozenge = "385087003";
 
     /// <summary>
+    /// Literal for code: NONELozenge
+    /// </summary>
+    public const string LiteralNONELozenge = "http://snomed.info/sct#385087003";
+
+    /// <summary>
     /// Literal for code: DentalGel
     /// </summary>
     public const string LiteralDentalGel = "385088008";
+
+    /// <summary>
+    /// Literal for code: NONEDentalGel
+    /// </summary>
+    public const string LiteralNONEDentalGel = "http://snomed.info/sct#385088008";
 
     /// <summary>
     /// Literal for code: DentalStick
@@ -3506,9 +3826,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDentalStick = "385089000";
 
     /// <summary>
+    /// Literal for code: NONEDentalStick
+    /// </summary>
+    public const string LiteralNONEDentalStick = "http://snomed.info/sct#385089000";
+
+    /// <summary>
     /// Literal for code: DentalInsert
     /// </summary>
     public const string LiteralDentalInsert = "385090009";
+
+    /// <summary>
+    /// Literal for code: NONEDentalInsert
+    /// </summary>
+    public const string LiteralNONEDentalInsert = "http://snomed.info/sct#385090009";
 
     /// <summary>
     /// Literal for code: DentalPowder
@@ -3516,9 +3846,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDentalPowder = "385091008";
 
     /// <summary>
+    /// Literal for code: NONEDentalPowder
+    /// </summary>
+    public const string LiteralNONEDentalPowder = "http://snomed.info/sct#385091008";
+
+    /// <summary>
     /// Literal for code: DentalLiquid
     /// </summary>
     public const string LiteralDentalLiquid = "385092001";
+
+    /// <summary>
+    /// Literal for code: NONEDentalLiquid
+    /// </summary>
+    public const string LiteralNONEDentalLiquid = "http://snomed.info/sct#385092001";
 
     /// <summary>
     /// Literal for code: DentalSolution
@@ -3526,9 +3866,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDentalSolution = "385094000";
 
     /// <summary>
+    /// Literal for code: NONEDentalSolution
+    /// </summary>
+    public const string LiteralNONEDentalSolution = "http://snomed.info/sct#385094000";
+
+    /// <summary>
     /// Literal for code: DentalSuspension
     /// </summary>
     public const string LiteralDentalSuspension = "385095004";
+
+    /// <summary>
+    /// Literal for code: NONEDentalSuspension
+    /// </summary>
+    public const string LiteralNONEDentalSuspension = "http://snomed.info/sct#385095004";
 
     /// <summary>
     /// Literal for code: DentalEmulsion
@@ -3536,9 +3886,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDentalEmulsion = "385096003";
 
     /// <summary>
+    /// Literal for code: NONEDentalEmulsion
+    /// </summary>
+    public const string LiteralNONEDentalEmulsion = "http://snomed.info/sct#385096003";
+
+    /// <summary>
     /// Literal for code: BathAdditive
     /// </summary>
     public const string LiteralBathAdditive = "385098002";
+
+    /// <summary>
+    /// Literal for code: NONEBathAdditive
+    /// </summary>
+    public const string LiteralNONEBathAdditive = "http://snomed.info/sct#385098002";
 
     /// <summary>
     /// Literal for code: Cream
@@ -3546,9 +3906,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCream = "385099005";
 
     /// <summary>
+    /// Literal for code: NONECream
+    /// </summary>
+    public const string LiteralNONECream = "http://snomed.info/sct#385099005";
+
+    /// <summary>
     /// Literal for code: Gel
     /// </summary>
     public const string LiteralGel = "385100002";
+
+    /// <summary>
+    /// Literal for code: NONEGel
+    /// </summary>
+    public const string LiteralNONEGel = "http://snomed.info/sct#385100002";
 
     /// <summary>
     /// Literal for code: Ointment
@@ -3556,9 +3926,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOintment = "385101003";
 
     /// <summary>
+    /// Literal for code: NONEOintment
+    /// </summary>
+    public const string LiteralNONEOintment = "http://snomed.info/sct#385101003";
+
+    /// <summary>
     /// Literal for code: CutaneousPaste
     /// </summary>
     public const string LiteralCutaneousPaste = "385102005";
+
+    /// <summary>
+    /// Literal for code: NONECutaneousPaste
+    /// </summary>
+    public const string LiteralNONECutaneousPaste = "http://snomed.info/sct#385102005";
 
     /// <summary>
     /// Literal for code: CutaneousFoam
@@ -3566,9 +3946,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCutaneousFoam = "385103000";
 
     /// <summary>
+    /// Literal for code: NONECutaneousFoam
+    /// </summary>
+    public const string LiteralNONECutaneousFoam = "http://snomed.info/sct#385103000";
+
+    /// <summary>
     /// Literal for code: Shampoo
     /// </summary>
     public const string LiteralShampoo = "385104006";
+
+    /// <summary>
+    /// Literal for code: NONEShampoo
+    /// </summary>
+    public const string LiteralNONEShampoo = "http://snomed.info/sct#385104006";
 
     /// <summary>
     /// Literal for code: CutaneousSpray
@@ -3576,9 +3966,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCutaneousSpray = "385105007";
 
     /// <summary>
+    /// Literal for code: NONECutaneousSpray
+    /// </summary>
+    public const string LiteralNONECutaneousSpray = "http://snomed.info/sct#385105007";
+
+    /// <summary>
     /// Literal for code: CutaneousSolutionSpray
     /// </summary>
     public const string LiteralCutaneousSolutionSpray = "385106008";
+
+    /// <summary>
+    /// Literal for code: NONECutaneousSolutionSpray
+    /// </summary>
+    public const string LiteralNONECutaneousSolutionSpray = "http://snomed.info/sct#385106008";
 
     /// <summary>
     /// Literal for code: CutaneousLiquid
@@ -3586,9 +3986,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCutaneousLiquid = "385107004";
 
     /// <summary>
+    /// Literal for code: NONECutaneousLiquid
+    /// </summary>
+    public const string LiteralNONECutaneousLiquid = "http://snomed.info/sct#385107004";
+
+    /// <summary>
     /// Literal for code: CutaneousSolution
     /// </summary>
     public const string LiteralCutaneousSolution = "385108009";
+
+    /// <summary>
+    /// Literal for code: NONECutaneousSolution
+    /// </summary>
+    public const string LiteralNONECutaneousSolution = "http://snomed.info/sct#385108009";
 
     /// <summary>
     /// Literal for code: CutaneousSuspension
@@ -3596,9 +4006,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCutaneousSuspension = "385110006";
 
     /// <summary>
+    /// Literal for code: NONECutaneousSuspension
+    /// </summary>
+    public const string LiteralNONECutaneousSuspension = "http://snomed.info/sct#385110006";
+
+    /// <summary>
     /// Literal for code: CutaneousEmulsion
     /// </summary>
     public const string LiteralCutaneousEmulsion = "385111005";
+
+    /// <summary>
+    /// Literal for code: NONECutaneousEmulsion
+    /// </summary>
+    public const string LiteralNONECutaneousEmulsion = "http://snomed.info/sct#385111005";
 
     /// <summary>
     /// Literal for code: CutaneousPowder
@@ -3606,9 +4026,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCutaneousPowder = "385112003";
 
     /// <summary>
+    /// Literal for code: NONECutaneousPowder
+    /// </summary>
+    public const string LiteralNONECutaneousPowder = "http://snomed.info/sct#385112003";
+
+    /// <summary>
     /// Literal for code: SolutionForIontophoresis
     /// </summary>
     public const string LiteralSolutionForIontophoresis = "385113008";
+
+    /// <summary>
+    /// Literal for code: NONESolutionForIontophoresis
+    /// </summary>
+    public const string LiteralNONESolutionForIontophoresis = "http://snomed.info/sct#385113008";
 
     /// <summary>
     /// Literal for code: TransdermalPatch
@@ -3616,9 +4046,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransdermalPatch = "385114002";
 
     /// <summary>
+    /// Literal for code: NONETransdermalPatch
+    /// </summary>
+    public const string LiteralNONETransdermalPatch = "http://snomed.info/sct#385114002";
+
+    /// <summary>
     /// Literal for code: Collodion
     /// </summary>
     public const string LiteralCollodion = "385115001";
+
+    /// <summary>
+    /// Literal for code: NONECollodion
+    /// </summary>
+    public const string LiteralNONECollodion = "http://snomed.info/sct#385115001";
 
     /// <summary>
     /// Literal for code: MedicatedNailLaquer
@@ -3626,9 +4066,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicatedNailLaquer = "385116000";
 
     /// <summary>
+    /// Literal for code: NONEMedicatedNailLaquer
+    /// </summary>
+    public const string LiteralNONEMedicatedNailLaquer = "http://snomed.info/sct#385116000";
+
+    /// <summary>
     /// Literal for code: Poultice
     /// </summary>
     public const string LiteralPoultice = "385117009";
+
+    /// <summary>
+    /// Literal for code: NONEPoultice
+    /// </summary>
+    public const string LiteralNONEPoultice = "http://snomed.info/sct#385117009";
 
     /// <summary>
     /// Literal for code: CutaneousStick
@@ -3636,9 +4086,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCutaneousStick = "385118004";
 
     /// <summary>
+    /// Literal for code: NONECutaneousStick
+    /// </summary>
+    public const string LiteralNONECutaneousStick = "http://snomed.info/sct#385118004";
+
+    /// <summary>
     /// Literal for code: CutaneousSponge
     /// </summary>
     public const string LiteralCutaneousSponge = "385119007";
+
+    /// <summary>
+    /// Literal for code: NONECutaneousSponge
+    /// </summary>
+    public const string LiteralNONECutaneousSponge = "http://snomed.info/sct#385119007";
 
     /// <summary>
     /// Literal for code: EyeCream
@@ -3646,9 +4106,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEyeCream = "385121002";
 
     /// <summary>
+    /// Literal for code: NONEEyeCream
+    /// </summary>
+    public const string LiteralNONEEyeCream = "http://snomed.info/sct#385121002";
+
+    /// <summary>
     /// Literal for code: EyeGel
     /// </summary>
     public const string LiteralEyeGel = "385122009";
+
+    /// <summary>
+    /// Literal for code: NONEEyeGel
+    /// </summary>
+    public const string LiteralNONEEyeGel = "http://snomed.info/sct#385122009";
 
     /// <summary>
     /// Literal for code: EyeOintment
@@ -3656,9 +4126,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEyeOintment = "385123004";
 
     /// <summary>
+    /// Literal for code: NONEEyeOintment
+    /// </summary>
+    public const string LiteralNONEEyeOintment = "http://snomed.info/sct#385123004";
+
+    /// <summary>
     /// Literal for code: EyeDrops
     /// </summary>
     public const string LiteralEyeDrops = "385124005";
+
+    /// <summary>
+    /// Literal for code: NONEEyeDrops
+    /// </summary>
+    public const string LiteralNONEEyeDrops = "http://snomed.info/sct#385124005";
 
     /// <summary>
     /// Literal for code: EyeDropsSolution
@@ -3666,9 +4146,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEyeDropsSolution = "385125006";
 
     /// <summary>
+    /// Literal for code: NONEEyeDropsSolution
+    /// </summary>
+    public const string LiteralNONEEyeDropsSolution = "http://snomed.info/sct#385125006";
+
+    /// <summary>
     /// Literal for code: ProlongedReleaseEyeDrops
     /// </summary>
     public const string LiteralProlongedReleaseEyeDrops = "385128008";
+
+    /// <summary>
+    /// Literal for code: NONEProlongedReleaseEyeDrops
+    /// </summary>
+    public const string LiteralNONEProlongedReleaseEyeDrops = "http://snomed.info/sct#385128008";
 
     /// <summary>
     /// Literal for code: EyeLotion
@@ -3676,9 +4166,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEyeLotion = "385130005";
 
     /// <summary>
+    /// Literal for code: NONEEyeLotion
+    /// </summary>
+    public const string LiteralNONEEyeLotion = "http://snomed.info/sct#385130005";
+
+    /// <summary>
     /// Literal for code: OphthalmicInsert
     /// </summary>
     public const string LiteralOphthalmicInsert = "385132002";
+
+    /// <summary>
+    /// Literal for code: NONEOphthalmicInsert
+    /// </summary>
+    public const string LiteralNONEOphthalmicInsert = "http://snomed.info/sct#385132002";
 
     /// <summary>
     /// Literal for code: EarCream
@@ -3686,9 +4186,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEarCream = "385133007";
 
     /// <summary>
+    /// Literal for code: NONEEarCream
+    /// </summary>
+    public const string LiteralNONEEarCream = "http://snomed.info/sct#385133007";
+
+    /// <summary>
     /// Literal for code: EarGel
     /// </summary>
     public const string LiteralEarGel = "385134001";
+
+    /// <summary>
+    /// Literal for code: NONEEarGel
+    /// </summary>
+    public const string LiteralNONEEarGel = "http://snomed.info/sct#385134001";
 
     /// <summary>
     /// Literal for code: EarOintment
@@ -3696,9 +4206,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEarOintment = "385135000";
 
     /// <summary>
+    /// Literal for code: NONEEarOintment
+    /// </summary>
+    public const string LiteralNONEEarOintment = "http://snomed.info/sct#385135000";
+
+    /// <summary>
     /// Literal for code: EarDrops
     /// </summary>
     public const string LiteralEarDrops = "385136004";
+
+    /// <summary>
+    /// Literal for code: NONEEarDrops
+    /// </summary>
+    public const string LiteralNONEEarDrops = "http://snomed.info/sct#385136004";
 
     /// <summary>
     /// Literal for code: EarDropsSolution
@@ -3706,9 +4226,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEarDropsSolution = "385137008";
 
     /// <summary>
+    /// Literal for code: NONEEarDropsSolution
+    /// </summary>
+    public const string LiteralNONEEarDropsSolution = "http://snomed.info/sct#385137008";
+
+    /// <summary>
     /// Literal for code: EarDropsEmulsion
     /// </summary>
     public const string LiteralEarDropsEmulsion = "385138003";
+
+    /// <summary>
+    /// Literal for code: NONEEarDropsEmulsion
+    /// </summary>
+    public const string LiteralNONEEarDropsEmulsion = "http://snomed.info/sct#385138003";
 
     /// <summary>
     /// Literal for code: EarPowder
@@ -3716,9 +4246,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEarPowder = "385139006";
 
     /// <summary>
+    /// Literal for code: NONEEarPowder
+    /// </summary>
+    public const string LiteralNONEEarPowder = "http://snomed.info/sct#385139006";
+
+    /// <summary>
     /// Literal for code: EarSpray
     /// </summary>
     public const string LiteralEarSpray = "385140008";
+
+    /// <summary>
+    /// Literal for code: NONEEarSpray
+    /// </summary>
+    public const string LiteralNONEEarSpray = "http://snomed.info/sct#385140008";
 
     /// <summary>
     /// Literal for code: EarSpraySolution
@@ -3726,9 +4266,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEarSpraySolution = "385141007";
 
     /// <summary>
+    /// Literal for code: NONEEarSpraySolution
+    /// </summary>
+    public const string LiteralNONEEarSpraySolution = "http://snomed.info/sct#385141007";
+
+    /// <summary>
     /// Literal for code: EarSpraySuspension
     /// </summary>
     public const string LiteralEarSpraySuspension = "385142000";
+
+    /// <summary>
+    /// Literal for code: NONEEarSpraySuspension
+    /// </summary>
+    public const string LiteralNONEEarSpraySuspension = "http://snomed.info/sct#385142000";
 
     /// <summary>
     /// Literal for code: EarSprayEmulsion
@@ -3736,9 +4286,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEarSprayEmulsion = "385143005";
 
     /// <summary>
+    /// Literal for code: NONEEarSprayEmulsion
+    /// </summary>
+    public const string LiteralNONEEarSprayEmulsion = "http://snomed.info/sct#385143005";
+
+    /// <summary>
     /// Literal for code: EarTampon
     /// </summary>
     public const string LiteralEarTampon = "385147006";
+
+    /// <summary>
+    /// Literal for code: NONEEarTampon
+    /// </summary>
+    public const string LiteralNONEEarTampon = "http://snomed.info/sct#385147006";
 
     /// <summary>
     /// Literal for code: EarStick
@@ -3746,9 +4306,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEarStick = "385148001";
 
     /// <summary>
+    /// Literal for code: NONEEarStick
+    /// </summary>
+    public const string LiteralNONEEarStick = "http://snomed.info/sct#385148001";
+
+    /// <summary>
     /// Literal for code: NasalCream
     /// </summary>
     public const string LiteralNasalCream = "385149009";
+
+    /// <summary>
+    /// Literal for code: NONENasalCream
+    /// </summary>
+    public const string LiteralNONENasalCream = "http://snomed.info/sct#385149009";
 
     /// <summary>
     /// Literal for code: NasalGel
@@ -3756,9 +4326,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNasalGel = "385150009";
 
     /// <summary>
+    /// Literal for code: NONENasalGel
+    /// </summary>
+    public const string LiteralNONENasalGel = "http://snomed.info/sct#385150009";
+
+    /// <summary>
     /// Literal for code: NasalOintment
     /// </summary>
     public const string LiteralNasalOintment = "385151008";
+
+    /// <summary>
+    /// Literal for code: NONENasalOintment
+    /// </summary>
+    public const string LiteralNONENasalOintment = "http://snomed.info/sct#385151008";
 
     /// <summary>
     /// Literal for code: NasalDrops
@@ -3766,9 +4346,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNasalDrops = "385152001";
 
     /// <summary>
+    /// Literal for code: NONENasalDrops
+    /// </summary>
+    public const string LiteralNONENasalDrops = "http://snomed.info/sct#385152001";
+
+    /// <summary>
     /// Literal for code: NasalDropsSolution
     /// </summary>
     public const string LiteralNasalDropsSolution = "385153006";
+
+    /// <summary>
+    /// Literal for code: NONENasalDropsSolution
+    /// </summary>
+    public const string LiteralNONENasalDropsSolution = "http://snomed.info/sct#385153006";
 
     /// <summary>
     /// Literal for code: NasalDropsSuspension
@@ -3776,9 +4366,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNasalDropsSuspension = "385154000";
 
     /// <summary>
+    /// Literal for code: NONENasalDropsSuspension
+    /// </summary>
+    public const string LiteralNONENasalDropsSuspension = "http://snomed.info/sct#385154000";
+
+    /// <summary>
     /// Literal for code: NasalDropsEmulsion
     /// </summary>
     public const string LiteralNasalDropsEmulsion = "385155004";
+
+    /// <summary>
+    /// Literal for code: NONENasalDropsEmulsion
+    /// </summary>
+    public const string LiteralNONENasalDropsEmulsion = "http://snomed.info/sct#385155004";
 
     /// <summary>
     /// Literal for code: NasalPowder
@@ -3786,9 +4386,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNasalPowder = "385156003";
 
     /// <summary>
+    /// Literal for code: NONENasalPowder
+    /// </summary>
+    public const string LiteralNONENasalPowder = "http://snomed.info/sct#385156003";
+
+    /// <summary>
     /// Literal for code: NasalSpray
     /// </summary>
     public const string LiteralNasalSpray = "385157007";
+
+    /// <summary>
+    /// Literal for code: NONENasalSpray
+    /// </summary>
+    public const string LiteralNONENasalSpray = "http://snomed.info/sct#385157007";
 
     /// <summary>
     /// Literal for code: NasalSpraySolution
@@ -3796,9 +4406,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNasalSpraySolution = "385158002";
 
     /// <summary>
+    /// Literal for code: NONENasalSpraySolution
+    /// </summary>
+    public const string LiteralNONENasalSpraySolution = "http://snomed.info/sct#385158002";
+
+    /// <summary>
     /// Literal for code: NasalSpraySuspension
     /// </summary>
     public const string LiteralNasalSpraySuspension = "385159005";
+
+    /// <summary>
+    /// Literal for code: NONENasalSpraySuspension
+    /// </summary>
+    public const string LiteralNONENasalSpraySuspension = "http://snomed.info/sct#385159005";
 
     /// <summary>
     /// Literal for code: NasalSprayEmulsion
@@ -3806,9 +4426,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNasalSprayEmulsion = "385160000";
 
     /// <summary>
+    /// Literal for code: NONENasalSprayEmulsion
+    /// </summary>
+    public const string LiteralNONENasalSprayEmulsion = "http://snomed.info/sct#385160000";
+
+    /// <summary>
     /// Literal for code: NasalStick
     /// </summary>
     public const string LiteralNasalStick = "385162008";
+
+    /// <summary>
+    /// Literal for code: NONENasalStick
+    /// </summary>
+    public const string LiteralNONENasalStick = "http://snomed.info/sct#385162008";
 
     /// <summary>
     /// Literal for code: EyeEarNoseDrops
@@ -3816,9 +4446,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEyeEarNoseDrops = "385163003";
 
     /// <summary>
+    /// Literal for code: NONEEyeEarNoseDrops
+    /// </summary>
+    public const string LiteralNONEEyeEarNoseDrops = "http://snomed.info/sct#385163003";
+
+    /// <summary>
     /// Literal for code: EyeEarNoseOintment
     /// </summary>
     public const string LiteralEyeEarNoseOintment = "385164009";
+
+    /// <summary>
+    /// Literal for code: NONEEyeEarNoseOintment
+    /// </summary>
+    public const string LiteralNONEEyeEarNoseOintment = "http://snomed.info/sct#385164009";
 
     /// <summary>
     /// Literal for code: VaginalCream
@@ -3826,9 +4466,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVaginalCream = "385165005";
 
     /// <summary>
+    /// Literal for code: NONEVaginalCream
+    /// </summary>
+    public const string LiteralNONEVaginalCream = "http://snomed.info/sct#385165005";
+
+    /// <summary>
     /// Literal for code: VaginalGel
     /// </summary>
     public const string LiteralVaginalGel = "385166006";
+
+    /// <summary>
+    /// Literal for code: NONEVaginalGel
+    /// </summary>
+    public const string LiteralNONEVaginalGel = "http://snomed.info/sct#385166006";
 
     /// <summary>
     /// Literal for code: VaginalOintment
@@ -3836,9 +4486,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVaginalOintment = "385167002";
 
     /// <summary>
+    /// Literal for code: NONEVaginalOintment
+    /// </summary>
+    public const string LiteralNONEVaginalOintment = "http://snomed.info/sct#385167002";
+
+    /// <summary>
     /// Literal for code: VaginalFoam
     /// </summary>
     public const string LiteralVaginalFoam = "385168007";
+
+    /// <summary>
+    /// Literal for code: NONEVaginalFoam
+    /// </summary>
+    public const string LiteralNONEVaginalFoam = "http://snomed.info/sct#385168007";
 
     /// <summary>
     /// Literal for code: VaginalLiquid
@@ -3846,9 +4506,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVaginalLiquid = "385169004";
 
     /// <summary>
+    /// Literal for code: NONEVaginalLiquid
+    /// </summary>
+    public const string LiteralNONEVaginalLiquid = "http://snomed.info/sct#385169004";
+
+    /// <summary>
     /// Literal for code: VaginalSolution
     /// </summary>
     public const string LiteralVaginalSolution = "385170003";
+
+    /// <summary>
+    /// Literal for code: NONEVaginalSolution
+    /// </summary>
+    public const string LiteralNONEVaginalSolution = "http://snomed.info/sct#385170003";
 
     /// <summary>
     /// Literal for code: VaginalSuspension
@@ -3856,9 +4526,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVaginalSuspension = "385171004";
 
     /// <summary>
+    /// Literal for code: NONEVaginalSuspension
+    /// </summary>
+    public const string LiteralNONEVaginalSuspension = "http://snomed.info/sct#385171004";
+
+    /// <summary>
     /// Literal for code: VaginalEmulsion
     /// </summary>
     public const string LiteralVaginalEmulsion = "385172006";
+
+    /// <summary>
+    /// Literal for code: NONEVaginalEmulsion
+    /// </summary>
+    public const string LiteralNONEVaginalEmulsion = "http://snomed.info/sct#385172006";
 
     /// <summary>
     /// Literal for code: TabletForVaginalSolution
@@ -3866,9 +4546,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTabletForVaginalSolution = "385173001";
 
     /// <summary>
+    /// Literal for code: NONETabletForVaginalSolution
+    /// </summary>
+    public const string LiteralNONETabletForVaginalSolution = "http://snomed.info/sct#385173001";
+
+    /// <summary>
     /// Literal for code: Pessary
     /// </summary>
     public const string LiteralPessary = "385174007";
+
+    /// <summary>
+    /// Literal for code: NONEPessary
+    /// </summary>
+    public const string LiteralNONEPessary = "http://snomed.info/sct#385174007";
 
     /// <summary>
     /// Literal for code: VaginalCapsule
@@ -3876,9 +4566,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVaginalCapsule = "385175008";
 
     /// <summary>
+    /// Literal for code: NONEVaginalCapsule
+    /// </summary>
+    public const string LiteralNONEVaginalCapsule = "http://snomed.info/sct#385175008";
+
+    /// <summary>
     /// Literal for code: HardVaginalCapsule
     /// </summary>
     public const string LiteralHardVaginalCapsule = "385176009";
+
+    /// <summary>
+    /// Literal for code: NONEHardVaginalCapsule
+    /// </summary>
+    public const string LiteralNONEHardVaginalCapsule = "http://snomed.info/sct#385176009";
 
     /// <summary>
     /// Literal for code: SoftVaginalCapsule
@@ -3886,9 +4586,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSoftVaginalCapsule = "385177000";
 
     /// <summary>
+    /// Literal for code: NONESoftVaginalCapsule
+    /// </summary>
+    public const string LiteralNONESoftVaginalCapsule = "http://snomed.info/sct#385177000";
+
+    /// <summary>
     /// Literal for code: VaginalTablet
     /// </summary>
     public const string LiteralVaginalTablet = "385178005";
+
+    /// <summary>
+    /// Literal for code: NONEVaginalTablet
+    /// </summary>
+    public const string LiteralNONEVaginalTablet = "http://snomed.info/sct#385178005";
 
     /// <summary>
     /// Literal for code: EffervescentVaginalTablet
@@ -3896,9 +4606,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEffervescentVaginalTablet = "385179002";
 
     /// <summary>
+    /// Literal for code: NONEEffervescentVaginalTablet
+    /// </summary>
+    public const string LiteralNONEEffervescentVaginalTablet = "http://snomed.info/sct#385179002";
+
+    /// <summary>
     /// Literal for code: MedicatedVaginalTampon
     /// </summary>
     public const string LiteralMedicatedVaginalTampon = "385180004";
+
+    /// <summary>
+    /// Literal for code: NONEMedicatedVaginalTampon
+    /// </summary>
+    public const string LiteralNONEMedicatedVaginalTampon = "http://snomed.info/sct#385180004";
 
     /// <summary>
     /// Literal for code: RectalCream
@@ -3906,9 +4626,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRectalCream = "385182007";
 
     /// <summary>
+    /// Literal for code: NONERectalCream
+    /// </summary>
+    public const string LiteralNONERectalCream = "http://snomed.info/sct#385182007";
+
+    /// <summary>
     /// Literal for code: RectalGel
     /// </summary>
     public const string LiteralRectalGel = "385183002";
+
+    /// <summary>
+    /// Literal for code: NONERectalGel
+    /// </summary>
+    public const string LiteralNONERectalGel = "http://snomed.info/sct#385183002";
 
     /// <summary>
     /// Literal for code: RectalOintment
@@ -3916,9 +4646,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRectalOintment = "385184008";
 
     /// <summary>
+    /// Literal for code: NONERectalOintment
+    /// </summary>
+    public const string LiteralNONERectalOintment = "http://snomed.info/sct#385184008";
+
+    /// <summary>
     /// Literal for code: RectalFoam
     /// </summary>
     public const string LiteralRectalFoam = "385185009";
+
+    /// <summary>
+    /// Literal for code: NONERectalFoam
+    /// </summary>
+    public const string LiteralNONERectalFoam = "http://snomed.info/sct#385185009";
 
     /// <summary>
     /// Literal for code: Enema
@@ -3926,9 +4666,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEnema = "385186005";
 
     /// <summary>
+    /// Literal for code: NONEEnema
+    /// </summary>
+    public const string LiteralNONEEnema = "http://snomed.info/sct#385186005";
+
+    /// <summary>
     /// Literal for code: RectalSolution
     /// </summary>
     public const string LiteralRectalSolution = "385187001";
+
+    /// <summary>
+    /// Literal for code: NONERectalSolution
+    /// </summary>
+    public const string LiteralNONERectalSolution = "http://snomed.info/sct#385187001";
 
     /// <summary>
     /// Literal for code: RectalSuspension
@@ -3936,9 +4686,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRectalSuspension = "385188006";
 
     /// <summary>
+    /// Literal for code: NONERectalSuspension
+    /// </summary>
+    public const string LiteralNONERectalSuspension = "http://snomed.info/sct#385188006";
+
+    /// <summary>
     /// Literal for code: RectalEmulsion
     /// </summary>
     public const string LiteralRectalEmulsion = "385189003";
+
+    /// <summary>
+    /// Literal for code: NONERectalEmulsion
+    /// </summary>
+    public const string LiteralNONERectalEmulsion = "http://snomed.info/sct#385189003";
 
     /// <summary>
     /// Literal for code: PowderForRectalSuspension
@@ -3946,9 +4706,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForRectalSuspension = "385191006";
 
     /// <summary>
+    /// Literal for code: NONEPowderForRectalSuspension
+    /// </summary>
+    public const string LiteralNONEPowderForRectalSuspension = "http://snomed.info/sct#385191006";
+
+    /// <summary>
     /// Literal for code: TabletForRectalSolution
     /// </summary>
     public const string LiteralTabletForRectalSolution = "385192004";
+
+    /// <summary>
+    /// Literal for code: NONETabletForRectalSolution
+    /// </summary>
+    public const string LiteralNONETabletForRectalSolution = "http://snomed.info/sct#385192004";
 
     /// <summary>
     /// Literal for code: TabletForRectalSuspension
@@ -3956,9 +4726,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTabletForRectalSuspension = "385193009";
 
     /// <summary>
+    /// Literal for code: NONETabletForRectalSuspension
+    /// </summary>
+    public const string LiteralNONETabletForRectalSuspension = "http://snomed.info/sct#385193009";
+
+    /// <summary>
     /// Literal for code: Suppository
     /// </summary>
     public const string LiteralSuppository = "385194003";
+
+    /// <summary>
+    /// Literal for code: NONESuppository
+    /// </summary>
+    public const string LiteralNONESuppository = "http://snomed.info/sct#385194003";
 
     /// <summary>
     /// Literal for code: RectalCapsule
@@ -3966,9 +4746,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRectalCapsule = "385195002";
 
     /// <summary>
+    /// Literal for code: NONERectalCapsule
+    /// </summary>
+    public const string LiteralNONERectalCapsule = "http://snomed.info/sct#385195002";
+
+    /// <summary>
     /// Literal for code: RectalTampon
     /// </summary>
     public const string LiteralRectalTampon = "385196001";
+
+    /// <summary>
+    /// Literal for code: NONERectalTampon
+    /// </summary>
+    public const string LiteralNONERectalTampon = "http://snomed.info/sct#385196001";
 
     /// <summary>
     /// Literal for code: NebulizerLiquid
@@ -3976,9 +4766,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNebulizerLiquid = "385197005";
 
     /// <summary>
+    /// Literal for code: NONENebulizerLiquid
+    /// </summary>
+    public const string LiteralNONENebulizerLiquid = "http://snomed.info/sct#385197005";
+
+    /// <summary>
     /// Literal for code: NebulizerSolution
     /// </summary>
     public const string LiteralNebulizerSolution = "385198000";
+
+    /// <summary>
+    /// Literal for code: NONENebulizerSolution
+    /// </summary>
+    public const string LiteralNONENebulizerSolution = "http://snomed.info/sct#385198000";
 
     /// <summary>
     /// Literal for code: NebulizerSuspension
@@ -3986,9 +4786,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNebulizerSuspension = "385199008";
 
     /// <summary>
+    /// Literal for code: NONENebulizerSuspension
+    /// </summary>
+    public const string LiteralNONENebulizerSuspension = "http://snomed.info/sct#385199008";
+
+    /// <summary>
     /// Literal for code: PowderForNebulizerSuspension
     /// </summary>
     public const string LiteralPowderForNebulizerSuspension = "385200006";
+
+    /// <summary>
+    /// Literal for code: NONEPowderForNebulizerSuspension
+    /// </summary>
+    public const string LiteralNONEPowderForNebulizerSuspension = "http://snomed.info/sct#385200006";
 
     /// <summary>
     /// Literal for code: PowderForNebulizerSolution
@@ -3996,9 +4806,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForNebulizerSolution = "385201005";
 
     /// <summary>
+    /// Literal for code: NONEPowderForNebulizerSolution
+    /// </summary>
+    public const string LiteralNONEPowderForNebulizerSolution = "http://snomed.info/sct#385201005";
+
+    /// <summary>
     /// Literal for code: NebulizerEmulsion
     /// </summary>
     public const string LiteralNebulizerEmulsion = "385202003";
+
+    /// <summary>
+    /// Literal for code: NONENebulizerEmulsion
+    /// </summary>
+    public const string LiteralNONENebulizerEmulsion = "http://snomed.info/sct#385202003";
 
     /// <summary>
     /// Literal for code: PressurisedInhalation
@@ -4006,9 +4826,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPressurisedInhalation = "385203008";
 
     /// <summary>
+    /// Literal for code: NONEPressurisedInhalation
+    /// </summary>
+    public const string LiteralNONEPressurisedInhalation = "http://snomed.info/sct#385203008";
+
+    /// <summary>
     /// Literal for code: PressurisedInhalationSolution
     /// </summary>
     public const string LiteralPressurisedInhalationSolution = "385204002";
+
+    /// <summary>
+    /// Literal for code: NONEPressurisedInhalationSolution
+    /// </summary>
+    public const string LiteralNONEPressurisedInhalationSolution = "http://snomed.info/sct#385204002";
 
     /// <summary>
     /// Literal for code: PressurisedInhalationSuspension
@@ -4016,9 +4846,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPressurisedInhalationSuspension = "385205001";
 
     /// <summary>
+    /// Literal for code: NONEPressurisedInhalationSuspension
+    /// </summary>
+    public const string LiteralNONEPressurisedInhalationSuspension = "http://snomed.info/sct#385205001";
+
+    /// <summary>
     /// Literal for code: PressurisedInhalationEmulsion
     /// </summary>
     public const string LiteralPressurisedInhalationEmulsion = "385206000";
+
+    /// <summary>
+    /// Literal for code: NONEPressurisedInhalationEmulsion
+    /// </summary>
+    public const string LiteralNONEPressurisedInhalationEmulsion = "http://snomed.info/sct#385206000";
 
     /// <summary>
     /// Literal for code: InhalationPowder
@@ -4026,9 +4866,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInhalationPowder = "385207009";
 
     /// <summary>
+    /// Literal for code: NONEInhalationPowder
+    /// </summary>
+    public const string LiteralNONEInhalationPowder = "http://snomed.info/sct#385207009";
+
+    /// <summary>
     /// Literal for code: HardCapsuleInhalationPowder
     /// </summary>
     public const string LiteralHardCapsuleInhalationPowder = "385208004";
+
+    /// <summary>
+    /// Literal for code: NONEHardCapsuleInhalationPowder
+    /// </summary>
+    public const string LiteralNONEHardCapsuleInhalationPowder = "http://snomed.info/sct#385208004";
 
     /// <summary>
     /// Literal for code: InhalationVapor
@@ -4036,9 +4886,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInhalationVapor = "385210002";
 
     /// <summary>
+    /// Literal for code: NONEInhalationVapor
+    /// </summary>
+    public const string LiteralNONEInhalationVapor = "http://snomed.info/sct#385210002";
+
+    /// <summary>
     /// Literal for code: InhalationVaporPowder
     /// </summary>
     public const string LiteralInhalationVaporPowder = "385211003";
+
+    /// <summary>
+    /// Literal for code: NONEInhalationVaporPowder
+    /// </summary>
+    public const string LiteralNONEInhalationVaporPowder = "http://snomed.info/sct#385211003";
 
     /// <summary>
     /// Literal for code: InhalationVaporCapsule
@@ -4046,9 +4906,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInhalationVaporCapsule = "385212005";
 
     /// <summary>
+    /// Literal for code: NONEInhalationVaporCapsule
+    /// </summary>
+    public const string LiteralNONEInhalationVaporCapsule = "http://snomed.info/sct#385212005";
+
+    /// <summary>
     /// Literal for code: InhalationVaporSolution
     /// </summary>
     public const string LiteralInhalationVaporSolution = "385213000";
+
+    /// <summary>
+    /// Literal for code: NONEInhalationVaporSolution
+    /// </summary>
+    public const string LiteralNONEInhalationVaporSolution = "http://snomed.info/sct#385213000";
 
     /// <summary>
     /// Literal for code: InhalationVaporTablet
@@ -4056,9 +4926,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInhalationVaporTablet = "385214006";
 
     /// <summary>
+    /// Literal for code: NONEInhalationVaporTablet
+    /// </summary>
+    public const string LiteralNONEInhalationVaporTablet = "http://snomed.info/sct#385214006";
+
+    /// <summary>
     /// Literal for code: InhalationVaporOintment
     /// </summary>
     public const string LiteralInhalationVaporOintment = "385215007";
+
+    /// <summary>
+    /// Literal for code: NONEInhalationVaporOintment
+    /// </summary>
+    public const string LiteralNONEInhalationVaporOintment = "http://snomed.info/sct#385215007";
 
     /// <summary>
     /// Literal for code: InhalationVaporLiquid
@@ -4066,9 +4946,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInhalationVaporLiquid = "385216008";
 
     /// <summary>
+    /// Literal for code: NONEInhalationVaporLiquid
+    /// </summary>
+    public const string LiteralNONEInhalationVaporLiquid = "http://snomed.info/sct#385216008";
+
+    /// <summary>
     /// Literal for code: InhalationGas
     /// </summary>
     public const string LiteralInhalationGas = "385217004";
+
+    /// <summary>
+    /// Literal for code: NONEInhalationGas
+    /// </summary>
+    public const string LiteralNONEInhalationGas = "http://snomed.info/sct#385217004";
 
     /// <summary>
     /// Literal for code: InjectionSolution
@@ -4076,9 +4966,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInjectionSolution = "385219001";
 
     /// <summary>
+    /// Literal for code: NONEInjectionSolution
+    /// </summary>
+    public const string LiteralNONEInjectionSolution = "http://snomed.info/sct#385219001";
+
+    /// <summary>
     /// Literal for code: InjectionSuspension
     /// </summary>
     public const string LiteralInjectionSuspension = "385220007";
+
+    /// <summary>
+    /// Literal for code: NONEInjectionSuspension
+    /// </summary>
+    public const string LiteralNONEInjectionSuspension = "http://snomed.info/sct#385220007";
 
     /// <summary>
     /// Literal for code: InjectionEmulsion
@@ -4086,9 +4986,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInjectionEmulsion = "385221006";
 
     /// <summary>
+    /// Literal for code: NONEInjectionEmulsion
+    /// </summary>
+    public const string LiteralNONEInjectionEmulsion = "http://snomed.info/sct#385221006";
+
+    /// <summary>
     /// Literal for code: InjectionPowder
     /// </summary>
     public const string LiteralInjectionPowder = "385222004";
+
+    /// <summary>
+    /// Literal for code: NONEInjectionPowder
+    /// </summary>
+    public const string LiteralNONEInjectionPowder = "http://snomed.info/sct#385222004";
 
     /// <summary>
     /// Literal for code: PowderForInjectionSolution
@@ -4096,9 +5006,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForInjectionSolution = "385223009";
 
     /// <summary>
+    /// Literal for code: NONEPowderForInjectionSolution
+    /// </summary>
+    public const string LiteralNONEPowderForInjectionSolution = "http://snomed.info/sct#385223009";
+
+    /// <summary>
     /// Literal for code: PowderForInjectionSuspension
     /// </summary>
     public const string LiteralPowderForInjectionSuspension = "385224003";
+
+    /// <summary>
+    /// Literal for code: NONEPowderForInjectionSuspension
+    /// </summary>
+    public const string LiteralNONEPowderForInjectionSuspension = "http://snomed.info/sct#385224003";
 
     /// <summary>
     /// Literal for code: InfusionSolution
@@ -4106,9 +5026,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfusionSolution = "385229008";
 
     /// <summary>
+    /// Literal for code: NONEInfusionSolution
+    /// </summary>
+    public const string LiteralNONEInfusionSolution = "http://snomed.info/sct#385229008";
+
+    /// <summary>
     /// Literal for code: InfusionPowder
     /// </summary>
     public const string LiteralInfusionPowder = "385230003";
+
+    /// <summary>
+    /// Literal for code: NONEInfusionPowder
+    /// </summary>
+    public const string LiteralNONEInfusionPowder = "http://snomed.info/sct#385230003";
 
     /// <summary>
     /// Literal for code: PowderForInfusionSolution
@@ -4116,9 +5046,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForInfusionSolution = "385231004";
 
     /// <summary>
+    /// Literal for code: NONEPowderForInfusionSolution
+    /// </summary>
+    public const string LiteralNONEPowderForInfusionSolution = "http://snomed.info/sct#385231004";
+
+    /// <summary>
     /// Literal for code: ImplantationTablet
     /// </summary>
     public const string LiteralImplantationTablet = "385236009";
+
+    /// <summary>
+    /// Literal for code: NONEImplantationTablet
+    /// </summary>
+    public const string LiteralNONEImplantationTablet = "http://snomed.info/sct#385236009";
 
     /// <summary>
     /// Literal for code: ImplantationChain
@@ -4126,9 +5066,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImplantationChain = "385237000";
 
     /// <summary>
+    /// Literal for code: NONEImplantationChain
+    /// </summary>
+    public const string LiteralNONEImplantationChain = "http://snomed.info/sct#385237000";
+
+    /// <summary>
     /// Literal for code: IntravesicalSolution
     /// </summary>
     public const string LiteralIntravesicalSolution = "385242008";
+
+    /// <summary>
+    /// Literal for code: NONEIntravesicalSolution
+    /// </summary>
+    public const string LiteralNONEIntravesicalSolution = "http://snomed.info/sct#385242008";
 
     /// <summary>
     /// Literal for code: UrethralGel
@@ -4136,9 +5086,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUrethralGel = "385245005";
 
     /// <summary>
+    /// Literal for code: NONEUrethralGel
+    /// </summary>
+    public const string LiteralNONEUrethralGel = "http://snomed.info/sct#385245005";
+
+    /// <summary>
     /// Literal for code: UrethralStick
     /// </summary>
     public const string LiteralUrethralStick = "385246006";
+
+    /// <summary>
+    /// Literal for code: NONEUrethralStick
+    /// </summary>
+    public const string LiteralNONEUrethralStick = "http://snomed.info/sct#385246006";
 
     /// <summary>
     /// Literal for code: EndotracheopulmonaryInstillationSolution
@@ -4146,9 +5106,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndotracheopulmonaryInstillationSolution = "385247002";
 
     /// <summary>
+    /// Literal for code: NONEEndotracheopulmonaryInstillationSolution
+    /// </summary>
+    public const string LiteralNONEEndotracheopulmonaryInstillationSolution = "http://snomed.info/sct#385247002";
+
+    /// <summary>
     /// Literal for code: PowderForEndotracheopulmonaryInstillationSolution
     /// </summary>
     public const string LiteralPowderForEndotracheopulmonaryInstillationSolution = "385248007";
+
+    /// <summary>
+    /// Literal for code: NONEPowderForEndotracheopulmonaryInstillationSolution
+    /// </summary>
+    public const string LiteralNONEPowderForEndotracheopulmonaryInstillationSolution = "http://snomed.info/sct#385248007";
 
     /// <summary>
     /// Literal for code: EndotracheopulmonaryInstillationSuspension
@@ -4156,9 +5126,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndotracheopulmonaryInstillationSuspension = "385250004";
 
     /// <summary>
+    /// Literal for code: NONEEndotracheopulmonaryInstillationSuspension
+    /// </summary>
+    public const string LiteralNONEEndotracheopulmonaryInstillationSuspension = "http://snomed.info/sct#385250004";
+
+    /// <summary>
     /// Literal for code: EndocervicalGel
     /// </summary>
     public const string LiteralEndocervicalGel = "385251000";
+
+    /// <summary>
+    /// Literal for code: NONEEndocervicalGel
+    /// </summary>
+    public const string LiteralNONEEndocervicalGel = "http://snomed.info/sct#385251000";
 
     /// <summary>
     /// Literal for code: GastroenteralLiquid
@@ -4166,9 +5146,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGastroenteralLiquid = "385257001";
 
     /// <summary>
+    /// Literal for code: NONEGastroenteralLiquid
+    /// </summary>
+    public const string LiteralNONEGastroenteralLiquid = "http://snomed.info/sct#385257001";
+
+    /// <summary>
     /// Literal for code: GastroenteralSolution
     /// </summary>
     public const string LiteralGastroenteralSolution = "385258006";
+
+    /// <summary>
+    /// Literal for code: NONEGastroenteralSolution
+    /// </summary>
+    public const string LiteralNONEGastroenteralSolution = "http://snomed.info/sct#385258006";
 
     /// <summary>
     /// Literal for code: GastroenteralSuspension
@@ -4176,9 +5166,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGastroenteralSuspension = "385259003";
 
     /// <summary>
+    /// Literal for code: NONEGastroenteralSuspension
+    /// </summary>
+    public const string LiteralNONEGastroenteralSuspension = "http://snomed.info/sct#385259003";
+
+    /// <summary>
     /// Literal for code: GastroenteralEmulsion
     /// </summary>
     public const string LiteralGastroenteralEmulsion = "385260008";
+
+    /// <summary>
+    /// Literal for code: NONEGastroenteralEmulsion
+    /// </summary>
+    public const string LiteralNONEGastroenteralEmulsion = "http://snomed.info/sct#385260008";
 
     /// <summary>
     /// Literal for code: WoundStick
@@ -4186,9 +5186,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWoundStick = "385261007";
 
     /// <summary>
+    /// Literal for code: NONEWoundStick
+    /// </summary>
+    public const string LiteralNONEWoundStick = "http://snomed.info/sct#385261007";
+
+    /// <summary>
     /// Literal for code: OrganPreservationSolution
     /// </summary>
     public const string LiteralOrganPreservationSolution = "385262000";
+
+    /// <summary>
+    /// Literal for code: NONEOrganPreservationSolution
+    /// </summary>
+    public const string LiteralNONEOrganPreservationSolution = "http://snomed.info/sct#385262000";
 
     /// <summary>
     /// Literal for code: CutaneousPowderSpray
@@ -4196,9 +5206,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCutaneousPowderSpray = "385278003";
 
     /// <summary>
+    /// Literal for code: NONECutaneousPowderSpray
+    /// </summary>
+    public const string LiteralNONECutaneousPowderSpray = "http://snomed.info/sct#385278003";
+
+    /// <summary>
     /// Literal for code: CutaneousSuspensionSpray
     /// </summary>
     public const string LiteralCutaneousSuspensionSpray = "385279006";
+
+    /// <summary>
+    /// Literal for code: NONECutaneousSuspensionSpray
+    /// </summary>
+    public const string LiteralNONECutaneousSuspensionSpray = "http://snomed.info/sct#385279006";
 
     /// <summary>
     /// Literal for code: ImplantDosageForm
@@ -4206,9 +5226,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImplantDosageForm = "385286003";
 
     /// <summary>
+    /// Literal for code: NONEImplantDosageForm
+    /// </summary>
+    public const string LiteralNONEImplantDosageForm = "http://snomed.info/sct#385286003";
+
+    /// <summary>
     /// Literal for code: OralElixir
     /// </summary>
     public const string LiteralOralElixir = "414951009";
+
+    /// <summary>
+    /// Literal for code: NONEOralElixir
+    /// </summary>
+    public const string LiteralNONEOralElixir = "http://snomed.info/sct#414951009";
 
     /// <summary>
     /// Literal for code: TamponDoseForm
@@ -4216,9 +5246,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTamponDoseForm = "420243009";
 
     /// <summary>
+    /// Literal for code: NONETamponDoseForm
+    /// </summary>
+    public const string LiteralNONETamponDoseForm = "http://snomed.info/sct#420243009";
+
+    /// <summary>
     /// Literal for code: OilInjection
     /// </summary>
     public const string LiteralOilInjection = "420253005";
+
+    /// <summary>
+    /// Literal for code: NONEOilInjection
+    /// </summary>
+    public const string LiteralNONEOilInjection = "http://snomed.info/sct#420253005";
 
     /// <summary>
     /// Literal for code: SemiSolidDoseForm
@@ -4226,9 +5266,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSemiSolidDoseForm = "420275007";
 
     /// <summary>
+    /// Literal for code: NONESemiSolidDoseForm
+    /// </summary>
+    public const string LiteralNONESemiSolidDoseForm = "http://snomed.info/sct#420275007";
+
+    /// <summary>
     /// Literal for code: NasalEmulsion
     /// </summary>
     public const string LiteralNasalEmulsion = "420283001";
+
+    /// <summary>
+    /// Literal for code: NONENasalEmulsion
+    /// </summary>
+    public const string LiteralNONENasalEmulsion = "http://snomed.info/sct#420283001";
 
     /// <summary>
     /// Literal for code: RectalPowder
@@ -4236,9 +5286,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRectalPowder = "420292003";
 
     /// <summary>
+    /// Literal for code: NONERectalPowder
+    /// </summary>
+    public const string LiteralNONERectalPowder = "http://snomed.info/sct#420292003";
+
+    /// <summary>
     /// Literal for code: CoatedPelletsCapsule
     /// </summary>
     public const string LiteralCoatedPelletsCapsule = "420293008";
+
+    /// <summary>
+    /// Literal for code: NONECoatedPelletsCapsule
+    /// </summary>
+    public const string LiteralNONECoatedPelletsCapsule = "http://snomed.info/sct#420293008";
 
     /// <summary>
     /// Literal for code: PowderForOralLiquid
@@ -4246,9 +5306,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForOralLiquid = "420305009";
 
     /// <summary>
+    /// Literal for code: NONEPowderForOralLiquid
+    /// </summary>
+    public const string LiteralNONEPowderForOralLiquid = "http://snomed.info/sct#420305009";
+
+    /// <summary>
     /// Literal for code: Inhaler
     /// </summary>
     public const string LiteralInhaler = "420317006";
+
+    /// <summary>
+    /// Literal for code: NONEInhaler
+    /// </summary>
+    public const string LiteralNONEInhaler = "http://snomed.info/sct#420317006";
 
     /// <summary>
     /// Literal for code: ExtendedReleaseFilmCoatedTablet
@@ -4256,9 +5326,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExtendedReleaseFilmCoatedTablet = "420378007";
 
     /// <summary>
+    /// Literal for code: NONEExtendedReleaseFilmCoatedTablet
+    /// </summary>
+    public const string LiteralNONEExtendedReleaseFilmCoatedTablet = "http://snomed.info/sct#420378007";
+
+    /// <summary>
     /// Literal for code: ExtendedReleaseInsert
     /// </summary>
     public const string LiteralExtendedReleaseInsert = "420385006";
+
+    /// <summary>
+    /// Literal for code: NONEExtendedReleaseInsert
+    /// </summary>
+    public const string LiteralNONEExtendedReleaseInsert = "http://snomed.info/sct#420385006";
 
     /// <summary>
     /// Literal for code: Emulsion
@@ -4266,9 +5346,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmulsion = "420386007";
 
     /// <summary>
+    /// Literal for code: NONEEmulsion
+    /// </summary>
+    public const string LiteralNONEEmulsion = "http://snomed.info/sct#420386007";
+
+    /// <summary>
     /// Literal for code: InhalationAerosolSolution
     /// </summary>
     public const string LiteralInhalationAerosolSolution = "420407000";
+
+    /// <summary>
+    /// Literal for code: NONEInhalationAerosolSolution
+    /// </summary>
+    public const string LiteralNONEInhalationAerosolSolution = "http://snomed.info/sct#420407000";
 
     /// <summary>
     /// Literal for code: LyophilizedPowderForInjectableExtendedReleaseLiposomalSuspension
@@ -4276,9 +5366,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLyophilizedPowderForInjectableExtendedReleaseLiposomalSuspension = "420430006";
 
     /// <summary>
+    /// Literal for code: NONELyophilizedPowderForInjectableExtendedReleaseLiposomalSuspension
+    /// </summary>
+    public const string LiteralNONELyophilizedPowderForInjectableExtendedReleaseLiposomalSuspension = "http://snomed.info/sct#420430006";
+
+    /// <summary>
     /// Literal for code: PressurizedNebulizerSuspension
     /// </summary>
     public const string LiteralPressurizedNebulizerSuspension = "420450005";
+
+    /// <summary>
+    /// Literal for code: NONEPressurizedNebulizerSuspension
+    /// </summary>
+    public const string LiteralNONEPressurizedNebulizerSuspension = "http://snomed.info/sct#420450005";
 
     /// <summary>
     /// Literal for code: Film
@@ -4286,9 +5386,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFilm = "420460001";
 
     /// <summary>
+    /// Literal for code: NONEFilm
+    /// </summary>
+    public const string LiteralNONEFilm = "http://snomed.info/sct#420460001";
+
+    /// <summary>
     /// Literal for code: OralGranules
     /// </summary>
     public const string LiteralOralGranules = "420509004";
+
+    /// <summary>
+    /// Literal for code: NONEOralGranules
+    /// </summary>
+    public const string LiteralNONEOralGranules = "http://snomed.info/sct#420509004";
 
     /// <summary>
     /// Literal for code: VaginalPowder
@@ -4296,9 +5406,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVaginalPowder = "420536002";
 
     /// <summary>
+    /// Literal for code: NONEVaginalPowder
+    /// </summary>
+    public const string LiteralNONEVaginalPowder = "http://snomed.info/sct#420536002";
+
+    /// <summary>
     /// Literal for code: CutaneousOil
     /// </summary>
     public const string LiteralCutaneousOil = "420540006";
+
+    /// <summary>
+    /// Literal for code: NONECutaneousOil
+    /// </summary>
+    public const string LiteralNONECutaneousOil = "http://snomed.info/sct#420540006";
 
     /// <summary>
     /// Literal for code: NasalAerosol
@@ -4306,9 +5426,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNasalAerosol = "420610000";
 
     /// <summary>
+    /// Literal for code: NONENasalAerosol
+    /// </summary>
+    public const string LiteralNONENasalAerosol = "http://snomed.info/sct#420610000";
+
+    /// <summary>
     /// Literal for code: ExtendedReleaseTablet
     /// </summary>
     public const string LiteralExtendedReleaseTablet = "420627008";
+
+    /// <summary>
+    /// Literal for code: NONEExtendedReleaseTablet
+    /// </summary>
+    public const string LiteralNONEExtendedReleaseTablet = "http://snomed.info/sct#420627008";
 
     /// <summary>
     /// Literal for code: VaginalInsert
@@ -4316,9 +5446,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVaginalInsert = "420631002";
 
     /// <summary>
+    /// Literal for code: NONEVaginalInsert
+    /// </summary>
+    public const string LiteralNONEVaginalInsert = "http://snomed.info/sct#420631002";
+
+    /// <summary>
     /// Literal for code: MicrospheresForInjectableSuspension
     /// </summary>
     public const string LiteralMicrospheresForInjectableSuspension = "420634005";
+
+    /// <summary>
+    /// Literal for code: NONEMicrospheresForInjectableSuspension
+    /// </summary>
+    public const string LiteralNONEMicrospheresForInjectableSuspension = "http://snomed.info/sct#420634005";
 
     /// <summary>
     /// Literal for code: EyeEarDrops
@@ -4326,9 +5466,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEyeEarDrops = "420636007";
 
     /// <summary>
+    /// Literal for code: NONEEyeEarDrops
+    /// </summary>
+    public const string LiteralNONEEyeEarDrops = "http://snomed.info/sct#420636007";
+
+    /// <summary>
     /// Literal for code: SolutionForInhalation
     /// </summary>
     public const string LiteralSolutionForInhalation = "420641004";
+
+    /// <summary>
+    /// Literal for code: NONESolutionForInhalation
+    /// </summary>
+    public const string LiteralNONESolutionForInhalation = "http://snomed.info/sct#420641004";
 
     /// <summary>
     /// Literal for code: LyophilizedPowderForInjectableLiposomalSuspension
@@ -4336,9 +5486,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLyophilizedPowderForInjectableLiposomalSuspension = "420656008";
 
     /// <summary>
+    /// Literal for code: NONELyophilizedPowderForInjectableLiposomalSuspension
+    /// </summary>
+    public const string LiteralNONELyophilizedPowderForInjectableLiposomalSuspension = "http://snomed.info/sct#420656008";
+
+    /// <summary>
     /// Literal for code: OralCapsule
     /// </summary>
     public const string LiteralOralCapsule = "420692007";
+
+    /// <summary>
+    /// Literal for code: NONEOralCapsule
+    /// </summary>
+    public const string LiteralNONEOralCapsule = "http://snomed.info/sct#420692007";
 
     /// <summary>
     /// Literal for code: LiquidDoseForm
@@ -4346,9 +5506,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLiquidDoseForm = "420699003";
 
     /// <summary>
+    /// Literal for code: NONELiquidDoseForm
+    /// </summary>
+    public const string LiteralNONELiquidDoseForm = "http://snomed.info/sct#420699003";
+
+    /// <summary>
     /// Literal for code: InhalationAerosolSuspension
     /// </summary>
     public const string LiteralInhalationAerosolSuspension = "420705007";
+
+    /// <summary>
+    /// Literal for code: NONEInhalationAerosolSuspension
+    /// </summary>
+    public const string LiteralNONEInhalationAerosolSuspension = "http://snomed.info/sct#420705007";
 
     /// <summary>
     /// Literal for code: EyeSuspension
@@ -4356,9 +5526,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEyeSuspension = "420736004";
 
     /// <summary>
+    /// Literal for code: NONEEyeSuspension
+    /// </summary>
+    public const string LiteralNONEEyeSuspension = "http://snomed.info/sct#420736004";
+
+    /// <summary>
     /// Literal for code: DelayedReleaseGranules
     /// </summary>
     public const string LiteralDelayedReleaseGranules = "420757007";
+
+    /// <summary>
+    /// Literal for code: NONEDelayedReleaseGranules
+    /// </summary>
+    public const string LiteralNONEDelayedReleaseGranules = "http://snomed.info/sct#420757007";
 
     /// <summary>
     /// Literal for code: UrethralSuppository
@@ -4366,9 +5546,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUrethralSuppository = "420761001";
 
     /// <summary>
+    /// Literal for code: NONEUrethralSuppository
+    /// </summary>
+    public const string LiteralNONEUrethralSuppository = "http://snomed.info/sct#420761001";
+
+    /// <summary>
     /// Literal for code: DelayedReleasePelletsCapsule
     /// </summary>
     public const string LiteralDelayedReleasePelletsCapsule = "420767002";
+
+    /// <summary>
+    /// Literal for code: NONEDelayedReleasePelletsCapsule
+    /// </summary>
+    public const string LiteralNONEDelayedReleasePelletsCapsule = "http://snomed.info/sct#420767002";
 
     /// <summary>
     /// Literal for code: Pellet
@@ -4376,9 +5566,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPellet = "420768007";
 
     /// <summary>
+    /// Literal for code: NONEPellet
+    /// </summary>
+    public const string LiteralNONEPellet = "http://snomed.info/sct#420768007";
+
+    /// <summary>
     /// Literal for code: ExtendedReleaseLiquid
     /// </summary>
     public const string LiteralExtendedReleaseLiquid = "420802004";
+
+    /// <summary>
+    /// Literal for code: NONEExtendedReleaseLiquid
+    /// </summary>
+    public const string LiteralNONEExtendedReleaseLiquid = "http://snomed.info/sct#420802004";
 
     /// <summary>
     /// Literal for code: PowderForReconstitutionForDrugProduct
@@ -4386,9 +5586,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForReconstitutionForDrugProduct = "420828001";
 
     /// <summary>
+    /// Literal for code: NONEPowderForReconstitutionForDrugProduct
+    /// </summary>
+    public const string LiteralNONEPowderForReconstitutionForDrugProduct = "http://snomed.info/sct#420828001";
+
+    /// <summary>
     /// Literal for code: MeteredDoseAerosol
     /// </summary>
     public const string LiteralMeteredDoseAerosol = "420847003";
+
+    /// <summary>
+    /// Literal for code: NONEMeteredDoseAerosol
+    /// </summary>
+    public const string LiteralNONEMeteredDoseAerosol = "http://snomed.info/sct#420847003";
 
     /// <summary>
     /// Literal for code: ExtendedReleaseInjectableSuspension
@@ -4396,9 +5606,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExtendedReleaseInjectableSuspension = "420873008";
 
     /// <summary>
+    /// Literal for code: NONEExtendedReleaseInjectableSuspension
+    /// </summary>
+    public const string LiteralNONEExtendedReleaseInjectableSuspension = "http://snomed.info/sct#420873008";
+
+    /// <summary>
     /// Literal for code: IntrathecalSuspension
     /// </summary>
     public const string LiteralIntrathecalSuspension = "420887008";
+
+    /// <summary>
+    /// Literal for code: NONEIntrathecalSuspension
+    /// </summary>
+    public const string LiteralNONEIntrathecalSuspension = "http://snomed.info/sct#420887008";
 
     /// <summary>
     /// Literal for code: EarDropsSuspension
@@ -4406,9 +5626,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEarDropsSuspension = "420891003";
 
     /// <summary>
+    /// Literal for code: NONEEarDropsSuspension
+    /// </summary>
+    public const string LiteralNONEEarDropsSuspension = "http://snomed.info/sct#420891003";
+
+    /// <summary>
     /// Literal for code: EarEmulsion
     /// </summary>
     public const string LiteralEarEmulsion = "420901005";
+
+    /// <summary>
+    /// Literal for code: NONEEarEmulsion
+    /// </summary>
+    public const string LiteralNONEEarEmulsion = "http://snomed.info/sct#420901005";
 
     /// <summary>
     /// Literal for code: MeteredPowder
@@ -4416,9 +5646,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeteredPowder = "420927005";
 
     /// <summary>
+    /// Literal for code: NONEMeteredPowder
+    /// </summary>
+    public const string LiteralNONEMeteredPowder = "http://snomed.info/sct#420927005";
+
+    /// <summary>
     /// Literal for code: RectalSuppository
     /// </summary>
     public const string LiteralRectalSuppository = "420929008";
+
+    /// <summary>
+    /// Literal for code: NONERectalSuppository
+    /// </summary>
+    public const string LiteralNONERectalSuppository = "http://snomed.info/sct#420929008";
 
     /// <summary>
     /// Literal for code: PowderForSolution
@@ -4426,9 +5666,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForSolution = "420955009";
 
     /// <summary>
+    /// Literal for code: NONEPowderForSolution
+    /// </summary>
+    public const string LiteralNONEPowderForSolution = "http://snomed.info/sct#420955009";
+
+    /// <summary>
     /// Literal for code: UltramicronizedTablet
     /// </summary>
     public const string LiteralUltramicronizedTablet = "420956005";
+
+    /// <summary>
+    /// Literal for code: NONEUltramicronizedTablet
+    /// </summary>
+    public const string LiteralNONEUltramicronizedTablet = "http://snomed.info/sct#420956005";
 
     /// <summary>
     /// Literal for code: ImplantablePellet
@@ -4436,9 +5686,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImplantablePellet = "420992009";
 
     /// <summary>
+    /// Literal for code: NONEImplantablePellet
+    /// </summary>
+    public const string LiteralNONEImplantablePellet = "http://snomed.info/sct#420992009";
+
+    /// <summary>
     /// Literal for code: OralTablet
     /// </summary>
     public const string LiteralOralTablet = "421026006";
+
+    /// <summary>
+    /// Literal for code: NONEOralTablet
+    /// </summary>
+    public const string LiteralNONEOralTablet = "http://snomed.info/sct#421026006";
 
     /// <summary>
     /// Literal for code: DelayedReleaseCapsule
@@ -4446,9 +5706,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDelayedReleaseCapsule = "421027002";
 
     /// <summary>
+    /// Literal for code: NONEDelayedReleaseCapsule
+    /// </summary>
+    public const string LiteralNONEDelayedReleaseCapsule = "http://snomed.info/sct#421027002";
+
+    /// <summary>
     /// Literal for code: ExtendedReleaseSuppository
     /// </summary>
     public const string LiteralExtendedReleaseSuppository = "421034000";
+
+    /// <summary>
+    /// Literal for code: NONEExtendedReleaseSuppository
+    /// </summary>
+    public const string LiteralNONEExtendedReleaseSuppository = "http://snomed.info/sct#421034000";
 
     /// <summary>
     /// Literal for code: ExtendedReleaseFilm
@@ -4456,9 +5726,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExtendedReleaseFilm = "421043009";
 
     /// <summary>
+    /// Literal for code: NONEExtendedReleaseFilm
+    /// </summary>
+    public const string LiteralNONEExtendedReleaseFilm = "http://snomed.info/sct#421043009";
+
+    /// <summary>
     /// Literal for code: SonicatedInjectableSuspension
     /// </summary>
     public const string LiteralSonicatedInjectableSuspension = "421051007";
+
+    /// <summary>
+    /// Literal for code: NONESonicatedInjectableSuspension
+    /// </summary>
+    public const string LiteralNONESonicatedInjectableSuspension = "http://snomed.info/sct#421051007";
 
     /// <summary>
     /// Literal for code: EmulsionForInhalation
@@ -4466,9 +5746,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmulsionForInhalation = "421056002";
 
     /// <summary>
+    /// Literal for code: NONEEmulsionForInhalation
+    /// </summary>
+    public const string LiteralNONEEmulsionForInhalation = "http://snomed.info/sct#421056002";
+
+    /// <summary>
     /// Literal for code: Pastille
     /// </summary>
     public const string LiteralPastille = "421079001";
+
+    /// <summary>
+    /// Literal for code: NONEPastille
+    /// </summary>
+    public const string LiteralNONEPastille = "http://snomed.info/sct#421079001";
 
     /// <summary>
     /// Literal for code: PowderForSuspension
@@ -4476,9 +5766,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForSuspension = "421080003";
 
     /// <summary>
+    /// Literal for code: NONEPowderForSuspension
+    /// </summary>
+    public const string LiteralNONEPowderForSuspension = "http://snomed.info/sct#421080003";
+
+    /// <summary>
     /// Literal for code: AerosolPowder
     /// </summary>
     public const string LiteralAerosolPowder = "421104008";
+
+    /// <summary>
+    /// Literal for code: NONEAerosolPowder
+    /// </summary>
+    public const string LiteralNONEAerosolPowder = "http://snomed.info/sct#421104008";
 
     /// <summary>
     /// Literal for code: GaseousDoseForm
@@ -4486,9 +5786,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGaseousDoseForm = "421131006";
 
     /// <summary>
+    /// Literal for code: NONEGaseousDoseForm
+    /// </summary>
+    public const string LiteralNONEGaseousDoseForm = "http://snomed.info/sct#421131006";
+
+    /// <summary>
     /// Literal for code: ExtendedReleaseEntericCoatedTablet
     /// </summary>
     public const string LiteralExtendedReleaseEntericCoatedTablet = "421155001";
+
+    /// <summary>
+    /// Literal for code: NONEExtendedReleaseEntericCoatedTablet
+    /// </summary>
+    public const string LiteralNONEExtendedReleaseEntericCoatedTablet = "http://snomed.info/sct#421155001";
 
     /// <summary>
     /// Literal for code: Foam
@@ -4496,9 +5806,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFoam = "421166008";
 
     /// <summary>
+    /// Literal for code: NONEFoam
+    /// </summary>
+    public const string LiteralNONEFoam = "http://snomed.info/sct#421166008";
+
+    /// <summary>
     /// Literal for code: VaginalSuppository
     /// </summary>
     public const string LiteralVaginalSuppository = "421195004";
+
+    /// <summary>
+    /// Literal for code: NONEVaginalSuppository
+    /// </summary>
+    public const string LiteralNONEVaginalSuppository = "http://snomed.info/sct#421195004";
 
     /// <summary>
     /// Literal for code: SuspensionForInhalation
@@ -4506,9 +5826,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuspensionForInhalation = "421221008";
 
     /// <summary>
+    /// Literal for code: NONESuspensionForInhalation
+    /// </summary>
+    public const string LiteralNONESuspensionForInhalation = "http://snomed.info/sct#421221008";
+
+    /// <summary>
     /// Literal for code: ExtendedReleaseBeadImplant
     /// </summary>
     public const string LiteralExtendedReleaseBeadImplant = "421271006";
+
+    /// <summary>
+    /// Literal for code: NONEExtendedReleaseBeadImplant
+    /// </summary>
+    public const string LiteralNONEExtendedReleaseBeadImplant = "http://snomed.info/sct#421271006";
 
     /// <summary>
     /// Literal for code: Sponge
@@ -4516,9 +5846,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSponge = "421288004";
 
     /// <summary>
+    /// Literal for code: NONESponge
+    /// </summary>
+    public const string LiteralNONESponge = "http://snomed.info/sct#421288004";
+
+    /// <summary>
     /// Literal for code: ExtendedReleaseFilmCoatedCapsule
     /// </summary>
     public const string LiteralExtendedReleaseFilmCoatedCapsule = "421300005";
+
+    /// <summary>
+    /// Literal for code: NONEExtendedReleaseFilmCoatedCapsule
+    /// </summary>
+    public const string LiteralNONEExtendedReleaseFilmCoatedCapsule = "http://snomed.info/sct#421300005";
 
     /// <summary>
     /// Literal for code: PowderForEyeDrops
@@ -4526,9 +5866,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForEyeDrops = "421316007";
 
     /// <summary>
+    /// Literal for code: NONEPowderForEyeDrops
+    /// </summary>
+    public const string LiteralNONEPowderForEyeDrops = "http://snomed.info/sct#421316007";
+
+    /// <summary>
     /// Literal for code: ExtendedReleaseCoatedCapsule
     /// </summary>
     public const string LiteralExtendedReleaseCoatedCapsule = "421338009";
+
+    /// <summary>
+    /// Literal for code: NONEExtendedReleaseCoatedCapsule
+    /// </summary>
+    public const string LiteralNONEExtendedReleaseCoatedCapsule = "http://snomed.info/sct#421338009";
 
     /// <summary>
     /// Literal for code: PowderSpray
@@ -4536,9 +5886,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderSpray = "421340004";
 
     /// <summary>
+    /// Literal for code: NONEPowderSpray
+    /// </summary>
+    public const string LiteralNONEPowderSpray = "http://snomed.info/sct#421340004";
+
+    /// <summary>
     /// Literal for code: PowderForCutaneousSolution
     /// </summary>
     public const string LiteralPowderForCutaneousSolution = "421343002";
+
+    /// <summary>
+    /// Literal for code: NONEPowderForCutaneousSolution
+    /// </summary>
+    public const string LiteralNONEPowderForCutaneousSolution = "http://snomed.info/sct#421343002";
 
     /// <summary>
     /// Literal for code: CutaneousAerosol
@@ -4546,9 +5906,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCutaneousAerosol = "421347001";
 
     /// <summary>
+    /// Literal for code: NONECutaneousAerosol
+    /// </summary>
+    public const string LiteralNONECutaneousAerosol = "http://snomed.info/sct#421347001";
+
+    /// <summary>
     /// Literal for code: TabletForOralSuspension
     /// </summary>
     public const string LiteralTabletForOralSuspension = "421366001";
+
+    /// <summary>
+    /// Literal for code: NONETabletForOralSuspension
+    /// </summary>
+    public const string LiteralNONETabletForOralSuspension = "http://snomed.info/sct#421366001";
 
     /// <summary>
     /// Literal for code: DelayedReleaseTablet
@@ -4556,9 +5926,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDelayedReleaseTablet = "421374000";
 
     /// <summary>
+    /// Literal for code: NONEDelayedReleaseTablet
+    /// </summary>
+    public const string LiteralNONEDelayedReleaseTablet = "http://snomed.info/sct#421374000";
+
+    /// <summary>
     /// Literal for code: SolidDoseForm
     /// </summary>
     public const string LiteralSolidDoseForm = "421378002";
+
+    /// <summary>
+    /// Literal for code: NONESolidDoseForm
+    /// </summary>
+    public const string LiteralNONESolidDoseForm = "http://snomed.info/sct#421378002";
 
     /// <summary>
     /// Literal for code: EarSuspension
@@ -4566,9 +5946,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEarSuspension = "421382000";
 
     /// <summary>
+    /// Literal for code: NONEEarSuspension
+    /// </summary>
+    public const string LiteralNONEEarSuspension = "http://snomed.info/sct#421382000";
+
+    /// <summary>
     /// Literal for code: IntravenousSolution
     /// </summary>
     public const string LiteralIntravenousSolution = "421410002";
+
+    /// <summary>
+    /// Literal for code: NONEIntravenousSolution
+    /// </summary>
+    public const string LiteralNONEIntravenousSolution = "http://snomed.info/sct#421410002";
 
     /// <summary>
     /// Literal for code: PowderForInhalationSolution
@@ -4576,9 +5966,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForInhalationSolution = "421425002";
 
     /// <summary>
+    /// Literal for code: NONEPowderForInhalationSolution
+    /// </summary>
+    public const string LiteralNONEPowderForInhalationSolution = "http://snomed.info/sct#421425002";
+
+    /// <summary>
     /// Literal for code: EyeEarOintment
     /// </summary>
     public const string LiteralEyeEarOintment = "421427005";
+
+    /// <summary>
+    /// Literal for code: NONEEyeEarOintment
+    /// </summary>
+    public const string LiteralNONEEyeEarOintment = "http://snomed.info/sct#421427005";
 
     /// <summary>
     /// Literal for code: InjectableOilSuspension
@@ -4586,9 +5986,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInjectableOilSuspension = "421428000";
 
     /// <summary>
+    /// Literal for code: NONEInjectableOilSuspension
+    /// </summary>
+    public const string LiteralNONEInjectableOilSuspension = "http://snomed.info/sct#421428000";
+
+    /// <summary>
     /// Literal for code: ExtendedReleaseGranulesForSuspension
     /// </summary>
     public const string LiteralExtendedReleaseGranulesForSuspension = "421446006";
+
+    /// <summary>
+    /// Literal for code: NONEExtendedReleaseGranulesForSuspension
+    /// </summary>
+    public const string LiteralNONEExtendedReleaseGranulesForSuspension = "http://snomed.info/sct#421446006";
 
     /// <summary>
     /// Literal for code: Cone
@@ -4596,9 +6006,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCone = "421504000";
 
     /// <summary>
+    /// Literal for code: NONECone
+    /// </summary>
+    public const string LiteralNONECone = "http://snomed.info/sct#421504000";
+
+    /// <summary>
     /// Literal for code: LiposomalInjectableSuspension
     /// </summary>
     public const string LiteralLiposomalInjectableSuspension = "421522002";
+
+    /// <summary>
+    /// Literal for code: NONELiposomalInjectableSuspension
+    /// </summary>
+    public const string LiteralNONELiposomalInjectableSuspension = "http://snomed.info/sct#421522002";
 
     /// <summary>
     /// Literal for code: Insert
@@ -4606,9 +6026,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInsert = "421532009";
 
     /// <summary>
+    /// Literal for code: NONEInsert
+    /// </summary>
+    public const string LiteralNONEInsert = "http://snomed.info/sct#421532009";
+
+    /// <summary>
     /// Literal for code: DelayedReleaseParticlesTablet
     /// </summary>
     public const string LiteralDelayedReleaseParticlesTablet = "421535006";
+
+    /// <summary>
+    /// Literal for code: NONEDelayedReleaseParticlesTablet
+    /// </summary>
+    public const string LiteralNONEDelayedReleaseParticlesTablet = "http://snomed.info/sct#421535006";
 
     /// <summary>
     /// Literal for code: PowderForEarDrops
@@ -4616,9 +6046,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForEarDrops = "421575003";
 
     /// <summary>
+    /// Literal for code: NONEPowderForEarDrops
+    /// </summary>
+    public const string LiteralNONEPowderForEarDrops = "http://snomed.info/sct#421575003";
+
+    /// <summary>
     /// Literal for code: AerosolSpray
     /// </summary>
     public const string LiteralAerosolSpray = "421606006";
+
+    /// <summary>
+    /// Literal for code: NONEAerosolSpray
+    /// </summary>
+    public const string LiteralNONEAerosolSpray = "http://snomed.info/sct#421606006";
 
     /// <summary>
     /// Literal for code: PowderForNasalDrops
@@ -4626,9 +6066,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForNasalDrops = "421607002";
 
     /// <summary>
+    /// Literal for code: NONEPowderForNasalDrops
+    /// </summary>
+    public const string LiteralNONEPowderForNasalDrops = "http://snomed.info/sct#421607002";
+
+    /// <summary>
     /// Literal for code: ExtendedReleaseCapsule
     /// </summary>
     public const string LiteralExtendedReleaseCapsule = "421618002";
+
+    /// <summary>
+    /// Literal for code: NONEExtendedReleaseCapsule
+    /// </summary>
+    public const string LiteralNONEExtendedReleaseCapsule = "http://snomed.info/sct#421618002";
 
     /// <summary>
     /// Literal for code: SustainedReleaseBuccalTablet
@@ -4636,9 +6086,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSustainedReleaseBuccalTablet = "421620004";
 
     /// <summary>
+    /// Literal for code: NONESustainedReleaseBuccalTablet
+    /// </summary>
+    public const string LiteralNONESustainedReleaseBuccalTablet = "http://snomed.info/sct#421620004";
+
+    /// <summary>
     /// Literal for code: CutaneousCream
     /// </summary>
     public const string LiteralCutaneousCream = "421628006";
+
+    /// <summary>
+    /// Literal for code: NONECutaneousCream
+    /// </summary>
+    public const string LiteralNONECutaneousCream = "http://snomed.info/sct#421628006";
 
     /// <summary>
     /// Literal for code: LyophilizedPowderForInjectableSolution
@@ -4646,9 +6106,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLyophilizedPowderForInjectableSolution = "421637006";
 
     /// <summary>
+    /// Literal for code: NONELyophilizedPowderForInjectableSolution
+    /// </summary>
+    public const string LiteralNONELyophilizedPowderForInjectableSolution = "http://snomed.info/sct#421637006";
+
+    /// <summary>
     /// Literal for code: MeteredGel
     /// </summary>
     public const string LiteralMeteredGel = "421669002";
+
+    /// <summary>
+    /// Literal for code: NONEMeteredGel
+    /// </summary>
+    public const string LiteralNONEMeteredGel = "http://snomed.info/sct#421669002";
 
     /// <summary>
     /// Literal for code: TabletForOralSolution
@@ -4656,9 +6126,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTabletForOralSolution = "421701006";
 
     /// <summary>
+    /// Literal for code: NONETabletForOralSolution
+    /// </summary>
+    public const string LiteralNONETabletForOralSolution = "http://snomed.info/sct#421701006";
+
+    /// <summary>
     /// Literal for code: EarSolution
     /// </summary>
     public const string LiteralEarSolution = "421713001";
+
+    /// <summary>
+    /// Literal for code: NONEEarSolution
+    /// </summary>
+    public const string LiteralNONEEarSolution = "http://snomed.info/sct#421713001";
 
     /// <summary>
     /// Literal for code: TransdermalDrugDeliverySystem
@@ -4666,9 +6146,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransdermalDrugDeliverySystem = "421716009";
 
     /// <summary>
+    /// Literal for code: NONETransdermalDrugDeliverySystem
+    /// </summary>
+    public const string LiteralNONETransdermalDrugDeliverySystem = "http://snomed.info/sct#421716009";
+
+    /// <summary>
     /// Literal for code: SprayDoseForm
     /// </summary>
     public const string LiteralSprayDoseForm = "421720008";
+
+    /// <summary>
+    /// Literal for code: NONESprayDoseForm
+    /// </summary>
+    public const string LiteralNONESprayDoseForm = "http://snomed.info/sct#421720008";
 
     /// <summary>
     /// Literal for code: CoatedParticlesTablet
@@ -4676,9 +6166,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoatedParticlesTablet = "421721007";
 
     /// <summary>
+    /// Literal for code: NONECoatedParticlesTablet
+    /// </summary>
+    public const string LiteralNONECoatedParticlesTablet = "http://snomed.info/sct#421721007";
+
+    /// <summary>
     /// Literal for code: ExtendedReleaseEntericCoatedCapsule
     /// </summary>
     public const string LiteralExtendedReleaseEntericCoatedCapsule = "421752008";
+
+    /// <summary>
+    /// Literal for code: NONEExtendedReleaseEntericCoatedCapsule
+    /// </summary>
+    public const string LiteralNONEExtendedReleaseEntericCoatedCapsule = "http://snomed.info/sct#421752008";
 
     /// <summary>
     /// Literal for code: MeteredDoseAerosolInhaler
@@ -4686,9 +6186,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeteredDoseAerosolInhaler = "421759004";
 
     /// <summary>
+    /// Literal for code: NONEMeteredDoseAerosolInhaler
+    /// </summary>
+    public const string LiteralNONEMeteredDoseAerosolInhaler = "http://snomed.info/sct#421759004";
+
+    /// <summary>
     /// Literal for code: IntraperitonealSolution
     /// </summary>
     public const string LiteralIntraperitonealSolution = "421765004";
+
+    /// <summary>
+    /// Literal for code: NONEIntraperitonealSolution
+    /// </summary>
+    public const string LiteralNONEIntraperitonealSolution = "http://snomed.info/sct#421765004";
 
     /// <summary>
     /// Literal for code: PowderForOphthalmicSolution
@@ -4696,9 +6206,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForOphthalmicSolution = "421857007";
 
     /// <summary>
+    /// Literal for code: NONEPowderForOphthalmicSolution
+    /// </summary>
+    public const string LiteralNONEPowderForOphthalmicSolution = "http://snomed.info/sct#421857007";
+
+    /// <summary>
     /// Literal for code: OralCream
     /// </summary>
     public const string LiteralOralCream = "421873001";
+
+    /// <summary>
+    /// Literal for code: NONEOralCream
+    /// </summary>
+    public const string LiteralNONEOralCream = "http://snomed.info/sct#421873001";
 
     /// <summary>
     /// Literal for code: Oil
@@ -4706,9 +6226,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOil = "421890007";
 
     /// <summary>
+    /// Literal for code: NONEOil
+    /// </summary>
+    public const string LiteralNONEOil = "http://snomed.info/sct#421890007";
+
+    /// <summary>
     /// Literal for code: MultilayerTablet
     /// </summary>
     public const string LiteralMultilayerTablet = "421932003";
+
+    /// <summary>
+    /// Literal for code: NONEMultilayerTablet
+    /// </summary>
+    public const string LiteralNONEMultilayerTablet = "http://snomed.info/sct#421932003";
 
     /// <summary>
     /// Literal for code: MedicatedToothpaste
@@ -4716,9 +6246,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicatedToothpaste = "421937009";
 
     /// <summary>
+    /// Literal for code: NONEMedicatedToothpaste
+    /// </summary>
+    public const string LiteralNONEMedicatedToothpaste = "http://snomed.info/sct#421937009";
+
+    /// <summary>
     /// Literal for code: LyophilizedPowderForInjectableSuspension
     /// </summary>
     public const string LiteralLyophilizedPowderForInjectableSuspension = "421943006";
+
+    /// <summary>
+    /// Literal for code: NONELyophilizedPowderForInjectableSuspension
+    /// </summary>
+    public const string LiteralNONELyophilizedPowderForInjectableSuspension = "http://snomed.info/sct#421943006";
 
     /// <summary>
     /// Literal for code: CutaneousGel
@@ -4726,9 +6266,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCutaneousGel = "421949005";
 
     /// <summary>
+    /// Literal for code: NONECutaneousGel
+    /// </summary>
+    public const string LiteralNONECutaneousGel = "http://snomed.info/sct#421949005";
+
+    /// <summary>
     /// Literal for code: IntraocularSolution
     /// </summary>
     public const string LiteralIntraocularSolution = "421987002";
+
+    /// <summary>
+    /// Literal for code: NONEIntraocularSolution
+    /// </summary>
+    public const string LiteralNONEIntraocularSolution = "http://snomed.info/sct#421987002";
 
     /// <summary>
     /// Literal for code: ExtendedReleaseCoatedPellets
@@ -4736,9 +6286,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExtendedReleaseCoatedPellets = "421999009";
 
     /// <summary>
+    /// Literal for code: NONEExtendedReleaseCoatedPellets
+    /// </summary>
+    public const string LiteralNONEExtendedReleaseCoatedPellets = "http://snomed.info/sct#421999009";
+
+    /// <summary>
     /// Literal for code: MeteredDosePowderInhaler
     /// </summary>
     public const string LiteralMeteredDosePowderInhaler = "422054001";
+
+    /// <summary>
+    /// Literal for code: NONEMeteredDosePowderInhaler
+    /// </summary>
+    public const string LiteralNONEMeteredDosePowderInhaler = "http://snomed.info/sct#422054001";
 
     /// <summary>
     /// Literal for code: MeteredDoseInhaler
@@ -4746,9 +6306,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeteredDoseInhaler = "422059006";
 
     /// <summary>
+    /// Literal for code: NONEMeteredDoseInhaler
+    /// </summary>
+    public const string LiteralNONEMeteredDoseInhaler = "http://snomed.info/sct#422059006";
+
+    /// <summary>
     /// Literal for code: OphthalmicSolution
     /// </summary>
     public const string LiteralOphthalmicSolution = "422060001";
+
+    /// <summary>
+    /// Literal for code: NONEOphthalmicSolution
+    /// </summary>
+    public const string LiteralNONEOphthalmicSolution = "http://snomed.info/sct#422060001";
 
     /// <summary>
     /// Literal for code: EyeDropsSuspension
@@ -4756,9 +6326,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEyeDropsSuspension = "422068008";
 
     /// <summary>
+    /// Literal for code: NONEEyeDropsSuspension
+    /// </summary>
+    public const string LiteralNONEEyeDropsSuspension = "http://snomed.info/sct#422068008";
+
+    /// <summary>
     /// Literal for code: NasalSuspension
     /// </summary>
     public const string LiteralNasalSuspension = "422080000";
+
+    /// <summary>
+    /// Literal for code: NONENasalSuspension
+    /// </summary>
+    public const string LiteralNONENasalSuspension = "http://snomed.info/sct#422080000";
 
     /// <summary>
     /// Literal for code: PowderForOphthalmicSuspension
@@ -4766,9 +6346,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForOphthalmicSuspension = "422085005";
 
     /// <summary>
+    /// Literal for code: NONEPowderForOphthalmicSuspension
+    /// </summary>
+    public const string LiteralNONEPowderForOphthalmicSuspension = "http://snomed.info/sct#422085005";
+
+    /// <summary>
     /// Literal for code: BreathActivatedPowderInhaler
     /// </summary>
     public const string LiteralBreathActivatedPowderInhaler = "422151007";
+
+    /// <summary>
+    /// Literal for code: NONEBreathActivatedPowderInhaler
+    /// </summary>
+    public const string LiteralNONEBreathActivatedPowderInhaler = "http://snomed.info/sct#422151007";
 
     /// <summary>
     /// Literal for code: Tincture
@@ -4776,9 +6366,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTincture = "422186009";
 
     /// <summary>
+    /// Literal for code: NONETincture
+    /// </summary>
+    public const string LiteralNONETincture = "http://snomed.info/sct#422186009";
+
+    /// <summary>
     /// Literal for code: BreathActivatedInhaler
     /// </summary>
     public const string LiteralBreathActivatedInhaler = "422197009";
+
+    /// <summary>
+    /// Literal for code: NONEBreathActivatedInhaler
+    /// </summary>
+    public const string LiteralNONEBreathActivatedInhaler = "http://snomed.info/sct#422197009";
 
     /// <summary>
     /// Literal for code: DentalCone
@@ -4786,9 +6386,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDentalCone = "422199007";
 
     /// <summary>
+    /// Literal for code: NONEDentalCone
+    /// </summary>
+    public const string LiteralNONEDentalCone = "http://snomed.info/sct#422199007";
+
+    /// <summary>
     /// Literal for code: TabletForCutaneousSolution
     /// </summary>
     public const string LiteralTabletForCutaneousSolution = "422201009";
+
+    /// <summary>
+    /// Literal for code: NONETabletForCutaneousSolution
+    /// </summary>
+    public const string LiteralNONETabletForCutaneousSolution = "http://snomed.info/sct#422201009";
 
     /// <summary>
     /// Literal for code: ColloidalSuspensionForInjection
@@ -4796,9 +6406,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralColloidalSuspensionForInjection = "422202002";
 
     /// <summary>
+    /// Literal for code: NONEColloidalSuspensionForInjection
+    /// </summary>
+    public const string LiteralNONEColloidalSuspensionForInjection = "http://snomed.info/sct#422202002";
+
+    /// <summary>
     /// Literal for code: Spirit
     /// </summary>
     public const string LiteralSpirit = "422259002";
+
+    /// <summary>
+    /// Literal for code: NONESpirit
+    /// </summary>
+    public const string LiteralNONESpirit = "http://snomed.info/sct#422259002";
 
     /// <summary>
     /// Literal for code: PowderForInjectableExtendedReleaseSuspension
@@ -4806,9 +6426,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowderForInjectableExtendedReleaseSuspension = "422264003";
 
     /// <summary>
+    /// Literal for code: NONEPowderForInjectableExtendedReleaseSuspension
+    /// </summary>
+    public const string LiteralNONEPowderForInjectableExtendedReleaseSuspension = "http://snomed.info/sct#422264003";
+
+    /// <summary>
     /// Literal for code: ModifiedReleasePessary
     /// </summary>
     public const string LiteralModifiedReleasePessary = "422301006";
+
+    /// <summary>
+    /// Literal for code: NONEModifiedReleasePessary
+    /// </summary>
+    public const string LiteralNONEModifiedReleasePessary = "http://snomed.info/sct#422301006";
 
     /// <summary>
     /// Literal for code: NasalSolution
@@ -4816,9 +6446,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNasalSolution = "422336005";
 
     /// <summary>
+    /// Literal for code: NONENasalSolution
+    /// </summary>
+    public const string LiteralNONENasalSolution = "http://snomed.info/sct#422336005";
+
+    /// <summary>
     /// Literal for code: ExtendedReleaseSuspension
     /// </summary>
     public const string LiteralExtendedReleaseSuspension = "422353003";
+
+    /// <summary>
+    /// Literal for code: NONEExtendedReleaseSuspension
+    /// </summary>
+    public const string LiteralNONEExtendedReleaseSuspension = "http://snomed.info/sct#422353003";
 
     /// <summary>
     /// Literal for code: AerosolGenerator
@@ -4826,9 +6466,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAerosolGenerator = "424179000";
 
     /// <summary>
+    /// Literal for code: NONEAerosolGenerator
+    /// </summary>
+    public const string LiteralNONEAerosolGenerator = "http://snomed.info/sct#424179000";
+
+    /// <summary>
     /// Literal for code: VaginalSponge
     /// </summary>
     public const string LiteralVaginalSponge = "424552006";
+
+    /// <summary>
+    /// Literal for code: NONEVaginalSponge
+    /// </summary>
+    public const string LiteralNONEVaginalSponge = "http://snomed.info/sct#424552006";
 
     /// <summary>
     /// Literal for code: TopicalOintment
@@ -4836,9 +6486,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTopicalOintment = "425753008";
 
     /// <summary>
+    /// Literal for code: NONETopicalOintment
+    /// </summary>
+    public const string LiteralNONETopicalOintment = "http://snomed.info/sct#425753008";
+
+    /// <summary>
     /// Literal for code: RectalSpray
     /// </summary>
     public const string LiteralRectalSpray = "425965000";
+
+    /// <summary>
+    /// Literal for code: NONERectalSpray
+    /// </summary>
+    public const string LiteralNONERectalSpray = "http://snomed.info/sct#425965000";
 
     /// <summary>
     /// Literal for code: Gum
@@ -4846,9 +6506,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGum = "426210003";
 
     /// <summary>
+    /// Literal for code: NONEGum
+    /// </summary>
+    public const string LiteralNONEGum = "http://snomed.info/sct#426210003";
+
+    /// <summary>
     /// Literal for code: DropsDoseForm
     /// </summary>
     public const string LiteralDropsDoseForm = "426684005";
+
+    /// <summary>
+    /// Literal for code: NONEDropsDoseForm
+    /// </summary>
+    public const string LiteralNONEDropsDoseForm = "http://snomed.info/sct#426684005";
 
     /// <summary>
     /// Literal for code: VaginalSpray
@@ -4856,9 +6526,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVaginalSpray = "426823003";
 
     /// <summary>
+    /// Literal for code: NONEVaginalSpray
+    /// </summary>
+    public const string LiteralNONEVaginalSpray = "http://snomed.info/sct#426823003";
+
+    /// <summary>
     /// Literal for code: MeteredSpray
     /// </summary>
     public const string LiteralMeteredSpray = "426969004";
+
+    /// <summary>
+    /// Literal for code: NONEMeteredSpray
+    /// </summary>
+    public const string LiteralNONEMeteredSpray = "http://snomed.info/sct#426969004";
 
     /// <summary>
     /// Literal for code: CoatedCapsule
@@ -4866,9 +6546,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoatedCapsule = "427129005";
 
     /// <summary>
+    /// Literal for code: NONECoatedCapsule
+    /// </summary>
+    public const string LiteralNONECoatedCapsule = "http://snomed.info/sct#427129005";
+
+    /// <summary>
     /// Literal for code: PressurizedSpray
     /// </summary>
     public const string LiteralPressurizedSpray = "427564005";
+
+    /// <summary>
+    /// Literal for code: NONEPressurizedSpray
+    /// </summary>
+    public const string LiteralNONEPressurizedSpray = "http://snomed.info/sct#427564005";
 
     /// <summary>
     /// Literal for code: ModifiedReleaseDropsDoseForm
@@ -4876,9 +6566,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralModifiedReleaseDropsDoseForm = "427609008";
 
     /// <summary>
+    /// Literal for code: NONEModifiedReleaseDropsDoseForm
+    /// </summary>
+    public const string LiteralNONEModifiedReleaseDropsDoseForm = "http://snomed.info/sct#427609008";
+
+    /// <summary>
     /// Literal for code: Bar
     /// </summary>
     public const string LiteralBar = "429885007";
+
+    /// <summary>
+    /// Literal for code: NONEBar
+    /// </summary>
+    public const string LiteralNONEBar = "http://snomed.info/sct#429885007";
 
     /// <summary>
     /// Literal for code: BuccalFilm
@@ -4886,9 +6586,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBuccalFilm = "443424002";
 
     /// <summary>
+    /// Literal for code: NONEBuccalFilm
+    /// </summary>
+    public const string LiteralNONEBuccalFilm = "http://snomed.info/sct#443424002";
+
+    /// <summary>
     /// Literal for code: OrodispersibleFilm
     /// </summary>
     public const string LiteralOrodispersibleFilm = "447050008";
+
+    /// <summary>
+    /// Literal for code: NONEOrodispersibleFilm
+    /// </summary>
+    public const string LiteralNONEOrodispersibleFilm = "http://snomed.info/sct#447050008";
 
     /// <summary>
     /// Literal for code: OrodispersibleTablet
@@ -4896,9 +6606,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOrodispersibleTablet = "447079001";
 
     /// <summary>
+    /// Literal for code: NONEOrodispersibleTablet
+    /// </summary>
+    public const string LiteralNONEOrodispersibleTablet = "http://snomed.info/sct#447079001";
+
+    /// <summary>
     /// Literal for code: Pill
     /// </summary>
     public const string LiteralPill = "46992007";
+
+    /// <summary>
+    /// Literal for code: NONEPill
+    /// </summary>
+    public const string LiteralNONEPill = "http://snomed.info/sct#46992007";
 
     /// <summary>
     /// Literal for code: Caplet
@@ -4906,9 +6626,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCaplet = "48582000";
 
     /// <summary>
+    /// Literal for code: NONECaplet
+    /// </summary>
+    public const string LiteralNONECaplet = "http://snomed.info/sct#48582000";
+
+    /// <summary>
     /// Literal for code: DrugAerosol
     /// </summary>
     public const string LiteralDrugAerosol = "52262001";
+
+    /// <summary>
+    /// Literal for code: NONEDrugAerosol
+    /// </summary>
+    public const string LiteralNONEDrugAerosol = "http://snomed.info/sct#52262001";
 
     /// <summary>
     /// Literal for code: Liniment
@@ -4916,9 +6646,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLiniment = "63316001";
 
     /// <summary>
+    /// Literal for code: NONELiniment
+    /// </summary>
+    public const string LiteralNONELiniment = "http://snomed.info/sct#63316001";
+
+    /// <summary>
     /// Literal for code: DrugPledget
     /// </summary>
     public const string LiteralDrugPledget = "64241004";
+
+    /// <summary>
+    /// Literal for code: NONEDrugPledget
+    /// </summary>
+    public const string LiteralNONEDrugPledget = "http://snomed.info/sct#64241004";
 
     /// <summary>
     /// Literal for code: ChewableTablet
@@ -4926,9 +6666,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChewableTablet = "66076007";
 
     /// <summary>
+    /// Literal for code: NONEChewableTablet
+    /// </summary>
+    public const string LiteralNONEChewableTablet = "http://snomed.info/sct#66076007";
+
+    /// <summary>
     /// Literal for code: DrugSolution
     /// </summary>
     public const string LiteralDrugSolution = "77899000";
+
+    /// <summary>
+    /// Literal for code: NONEDrugSolution
+    /// </summary>
+    public const string LiteralNONEDrugSolution = "http://snomed.info/sct#77899000";
 
     /// <summary>
     /// Literal for code: DrugSuspension
@@ -4936,8 +6686,728 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrugSuspension = "7946007";
 
     /// <summary>
+    /// Literal for code: NONEDrugSuspension
+    /// </summary>
+    public const string LiteralNONEDrugSuspension = "http://snomed.info/sct#7946007";
+
+    /// <summary>
     /// Literal for code: DrugPowder
     /// </summary>
     public const string LiteralDrugPowder = "85581007";
+
+    /// <summary>
+    /// Literal for code: NONEDrugPowder
+    /// </summary>
+    public const string LiteralNONEDrugPowder = "http://snomed.info/sct#85581007";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationFormCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "11190007", DrugStick }, 
+      { "http://snomed.info/sct#11190007", DrugStick }, 
+      { "17519006", Lotion }, 
+      { "http://snomed.info/sct#17519006", Lotion }, 
+      { "30843009", DrugAerosolFoam }, 
+      { "http://snomed.info/sct#30843009", DrugAerosolFoam }, 
+      { "36875001", DrugPatch }, 
+      { "http://snomed.info/sct#36875001", DrugPatch }, 
+      { "37937005", DrugPaste }, 
+      { "http://snomed.info/sct#37937005", DrugPaste }, 
+      { "385018001", OralDrops }, 
+      { "http://snomed.info/sct#385018001", OralDrops }, 
+      { "385019009", OralDropsSolution }, 
+      { "http://snomed.info/sct#385019009", OralDropsSolution }, 
+      { "385020003", OralDropsSuspension }, 
+      { "http://snomed.info/sct#385020003", OralDropsSuspension }, 
+      { "385021004", OralDropsEmulsion }, 
+      { "http://snomed.info/sct#385021004", OralDropsEmulsion }, 
+      { "385022006", OralLiquid }, 
+      { "http://snomed.info/sct#385022006", OralLiquid }, 
+      { "385023001", OralSolution }, 
+      { "http://snomed.info/sct#385023001", OralSolution }, 
+      { "385024007", OralSuspension }, 
+      { "http://snomed.info/sct#385024007", OralSuspension }, 
+      { "385025008", OralEmulsion }, 
+      { "http://snomed.info/sct#385025008", OralEmulsion }, 
+      { "385026009", PowderForOralSolution }, 
+      { "http://snomed.info/sct#385026009", PowderForOralSolution }, 
+      { "385027000", PowderForOralSuspension }, 
+      { "http://snomed.info/sct#385027000", PowderForOralSuspension }, 
+      { "385028005", GranulesForOralSolution }, 
+      { "http://snomed.info/sct#385028005", GranulesForOralSolution }, 
+      { "385029002", GranulesForOralSuspension }, 
+      { "http://snomed.info/sct#385029002", GranulesForOralSuspension }, 
+      { "385032004", Syrup }, 
+      { "http://snomed.info/sct#385032004", Syrup }, 
+      { "385033009", PowderForSyrup }, 
+      { "http://snomed.info/sct#385033009", PowderForSyrup }, 
+      { "385034003", GranulesForSyrup }, 
+      { "http://snomed.info/sct#385034003", GranulesForSyrup }, 
+      { "385035002", SolubleTablet }, 
+      { "http://snomed.info/sct#385035002", SolubleTablet }, 
+      { "385036001", DispersibleTablet }, 
+      { "http://snomed.info/sct#385036001", DispersibleTablet }, 
+      { "385038000", OralGel }, 
+      { "http://snomed.info/sct#385038000", OralGel }, 
+      { "385039008", OralPaste }, 
+      { "http://snomed.info/sct#385039008", OralPaste }, 
+      { "385041009", OralPowder }, 
+      { "http://snomed.info/sct#385041009", OralPowder }, 
+      { "385042002", EffervescentPowder }, 
+      { "http://snomed.info/sct#385042002", EffervescentPowder }, 
+      { "385043007", Granules }, 
+      { "http://snomed.info/sct#385043007", Granules }, 
+      { "385044001", EffervescentGranules }, 
+      { "http://snomed.info/sct#385044001", EffervescentGranules }, 
+      { "385045000", GastroResistantGranules }, 
+      { "http://snomed.info/sct#385045000", GastroResistantGranules }, 
+      { "385046004", ProlongedReleaseGranules }, 
+      { "http://snomed.info/sct#385046004", ProlongedReleaseGranules }, 
+      { "385047008", ModifiedReleaseGranules }, 
+      { "http://snomed.info/sct#385047008", ModifiedReleaseGranules }, 
+      { "385048003", Cachet }, 
+      { "http://snomed.info/sct#385048003", Cachet }, 
+      { "385049006", Capsule }, 
+      { "http://snomed.info/sct#385049006", Capsule }, 
+      { "385050006", HardCapsule }, 
+      { "http://snomed.info/sct#385050006", HardCapsule }, 
+      { "385051005", SoftCapsule }, 
+      { "http://snomed.info/sct#385051005", SoftCapsule }, 
+      { "385052003", GastroResistantCapsule }, 
+      { "http://snomed.info/sct#385052003", GastroResistantCapsule }, 
+      { "385053008", ProlongedReleaseCapsule }, 
+      { "http://snomed.info/sct#385053008", ProlongedReleaseCapsule }, 
+      { "385054002", ModifiedReleaseCapsule }, 
+      { "http://snomed.info/sct#385054002", ModifiedReleaseCapsule }, 
+      { "385055001", Tablet }, 
+      { "http://snomed.info/sct#385055001", Tablet }, 
+      { "385057009", FilmCoatedTablet }, 
+      { "http://snomed.info/sct#385057009", FilmCoatedTablet }, 
+      { "385058004", EffervescentTablet }, 
+      { "http://snomed.info/sct#385058004", EffervescentTablet }, 
+      { "385059007", GastroResistantTablet }, 
+      { "http://snomed.info/sct#385059007", GastroResistantTablet }, 
+      { "385060002", ProlongedReleaseTablet }, 
+      { "http://snomed.info/sct#385060002", ProlongedReleaseTablet }, 
+      { "385061003", ModifiedReleaseTablet }, 
+      { "http://snomed.info/sct#385061003", ModifiedReleaseTablet }, 
+      { "385062005", OralLyophilisate }, 
+      { "http://snomed.info/sct#385062005", OralLyophilisate }, 
+      { "385063000", OralGum }, 
+      { "http://snomed.info/sct#385063000", OralGum }, 
+      { "385064006", Pillule }, 
+      { "http://snomed.info/sct#385064006", Pillule }, 
+      { "385069001", OromucosalLiquid }, 
+      { "http://snomed.info/sct#385069001", OromucosalLiquid }, 
+      { "385070000", OromucosalSolution }, 
+      { "http://snomed.info/sct#385070000", OromucosalSolution }, 
+      { "385071001", OromucosalSuspension }, 
+      { "http://snomed.info/sct#385071001", OromucosalSuspension }, 
+      { "385073003", OromucosalSpray }, 
+      { "http://snomed.info/sct#385073003", OromucosalSpray }, 
+      { "385074009", SublingualSpray }, 
+      { "http://snomed.info/sct#385074009", SublingualSpray }, 
+      { "385077002", GingivalSolution }, 
+      { "http://snomed.info/sct#385077002", GingivalSolution }, 
+      { "385078007", OromucosalGel }, 
+      { "http://snomed.info/sct#385078007", OromucosalGel }, 
+      { "385079004", OromucosalPaste }, 
+      { "http://snomed.info/sct#385079004", OromucosalPaste }, 
+      { "385080001", MedicatedChewingGum }, 
+      { "http://snomed.info/sct#385080001", MedicatedChewingGum }, 
+      { "385081002", GingivalGel }, 
+      { "http://snomed.info/sct#385081002", GingivalGel }, 
+      { "385082009", GingivalPaste }, 
+      { "http://snomed.info/sct#385082009", GingivalPaste }, 
+      { "385083004", OromucosalCapsule }, 
+      { "http://snomed.info/sct#385083004", OromucosalCapsule }, 
+      { "385084005", SublingualTablet }, 
+      { "http://snomed.info/sct#385084005", SublingualTablet }, 
+      { "385085006", BuccalTablet }, 
+      { "http://snomed.info/sct#385085006", BuccalTablet }, 
+      { "385086007", MucoAdhesiveBuccalTablet }, 
+      { "http://snomed.info/sct#385086007", MucoAdhesiveBuccalTablet }, 
+      { "385087003", Lozenge }, 
+      { "http://snomed.info/sct#385087003", Lozenge }, 
+      { "385088008", DentalGel }, 
+      { "http://snomed.info/sct#385088008", DentalGel }, 
+      { "385089000", DentalStick }, 
+      { "http://snomed.info/sct#385089000", DentalStick }, 
+      { "385090009", DentalInsert }, 
+      { "http://snomed.info/sct#385090009", DentalInsert }, 
+      { "385091008", DentalPowder }, 
+      { "http://snomed.info/sct#385091008", DentalPowder }, 
+      { "385092001", DentalLiquid }, 
+      { "http://snomed.info/sct#385092001", DentalLiquid }, 
+      { "385094000", DentalSolution }, 
+      { "http://snomed.info/sct#385094000", DentalSolution }, 
+      { "385095004", DentalSuspension }, 
+      { "http://snomed.info/sct#385095004", DentalSuspension }, 
+      { "385096003", DentalEmulsion }, 
+      { "http://snomed.info/sct#385096003", DentalEmulsion }, 
+      { "385098002", BathAdditive }, 
+      { "http://snomed.info/sct#385098002", BathAdditive }, 
+      { "385099005", Cream }, 
+      { "http://snomed.info/sct#385099005", Cream }, 
+      { "385100002", Gel }, 
+      { "http://snomed.info/sct#385100002", Gel }, 
+      { "385101003", Ointment }, 
+      { "http://snomed.info/sct#385101003", Ointment }, 
+      { "385102005", CutaneousPaste }, 
+      { "http://snomed.info/sct#385102005", CutaneousPaste }, 
+      { "385103000", CutaneousFoam }, 
+      { "http://snomed.info/sct#385103000", CutaneousFoam }, 
+      { "385104006", Shampoo }, 
+      { "http://snomed.info/sct#385104006", Shampoo }, 
+      { "385105007", CutaneousSpray }, 
+      { "http://snomed.info/sct#385105007", CutaneousSpray }, 
+      { "385106008", CutaneousSolutionSpray }, 
+      { "http://snomed.info/sct#385106008", CutaneousSolutionSpray }, 
+      { "385107004", CutaneousLiquid }, 
+      { "http://snomed.info/sct#385107004", CutaneousLiquid }, 
+      { "385108009", CutaneousSolution }, 
+      { "http://snomed.info/sct#385108009", CutaneousSolution }, 
+      { "385110006", CutaneousSuspension }, 
+      { "http://snomed.info/sct#385110006", CutaneousSuspension }, 
+      { "385111005", CutaneousEmulsion }, 
+      { "http://snomed.info/sct#385111005", CutaneousEmulsion }, 
+      { "385112003", CutaneousPowder }, 
+      { "http://snomed.info/sct#385112003", CutaneousPowder }, 
+      { "385113008", SolutionForIontophoresis }, 
+      { "http://snomed.info/sct#385113008", SolutionForIontophoresis }, 
+      { "385114002", TransdermalPatch }, 
+      { "http://snomed.info/sct#385114002", TransdermalPatch }, 
+      { "385115001", Collodion }, 
+      { "http://snomed.info/sct#385115001", Collodion }, 
+      { "385116000", MedicatedNailLaquer }, 
+      { "http://snomed.info/sct#385116000", MedicatedNailLaquer }, 
+      { "385117009", Poultice }, 
+      { "http://snomed.info/sct#385117009", Poultice }, 
+      { "385118004", CutaneousStick }, 
+      { "http://snomed.info/sct#385118004", CutaneousStick }, 
+      { "385119007", CutaneousSponge }, 
+      { "http://snomed.info/sct#385119007", CutaneousSponge }, 
+      { "385121002", EyeCream }, 
+      { "http://snomed.info/sct#385121002", EyeCream }, 
+      { "385122009", EyeGel }, 
+      { "http://snomed.info/sct#385122009", EyeGel }, 
+      { "385123004", EyeOintment }, 
+      { "http://snomed.info/sct#385123004", EyeOintment }, 
+      { "385124005", EyeDrops }, 
+      { "http://snomed.info/sct#385124005", EyeDrops }, 
+      { "385125006", EyeDropsSolution }, 
+      { "http://snomed.info/sct#385125006", EyeDropsSolution }, 
+      { "385128008", ProlongedReleaseEyeDrops }, 
+      { "http://snomed.info/sct#385128008", ProlongedReleaseEyeDrops }, 
+      { "385130005", EyeLotion }, 
+      { "http://snomed.info/sct#385130005", EyeLotion }, 
+      { "385132002", OphthalmicInsert }, 
+      { "http://snomed.info/sct#385132002", OphthalmicInsert }, 
+      { "385133007", EarCream }, 
+      { "http://snomed.info/sct#385133007", EarCream }, 
+      { "385134001", EarGel }, 
+      { "http://snomed.info/sct#385134001", EarGel }, 
+      { "385135000", EarOintment }, 
+      { "http://snomed.info/sct#385135000", EarOintment }, 
+      { "385136004", EarDrops }, 
+      { "http://snomed.info/sct#385136004", EarDrops }, 
+      { "385137008", EarDropsSolution }, 
+      { "http://snomed.info/sct#385137008", EarDropsSolution }, 
+      { "385138003", EarDropsEmulsion }, 
+      { "http://snomed.info/sct#385138003", EarDropsEmulsion }, 
+      { "385139006", EarPowder }, 
+      { "http://snomed.info/sct#385139006", EarPowder }, 
+      { "385140008", EarSpray }, 
+      { "http://snomed.info/sct#385140008", EarSpray }, 
+      { "385141007", EarSpraySolution }, 
+      { "http://snomed.info/sct#385141007", EarSpraySolution }, 
+      { "385142000", EarSpraySuspension }, 
+      { "http://snomed.info/sct#385142000", EarSpraySuspension }, 
+      { "385143005", EarSprayEmulsion }, 
+      { "http://snomed.info/sct#385143005", EarSprayEmulsion }, 
+      { "385147006", EarTampon }, 
+      { "http://snomed.info/sct#385147006", EarTampon }, 
+      { "385148001", EarStick }, 
+      { "http://snomed.info/sct#385148001", EarStick }, 
+      { "385149009", NasalCream }, 
+      { "http://snomed.info/sct#385149009", NasalCream }, 
+      { "385150009", NasalGel }, 
+      { "http://snomed.info/sct#385150009", NasalGel }, 
+      { "385151008", NasalOintment }, 
+      { "http://snomed.info/sct#385151008", NasalOintment }, 
+      { "385152001", NasalDrops }, 
+      { "http://snomed.info/sct#385152001", NasalDrops }, 
+      { "385153006", NasalDropsSolution }, 
+      { "http://snomed.info/sct#385153006", NasalDropsSolution }, 
+      { "385154000", NasalDropsSuspension }, 
+      { "http://snomed.info/sct#385154000", NasalDropsSuspension }, 
+      { "385155004", NasalDropsEmulsion }, 
+      { "http://snomed.info/sct#385155004", NasalDropsEmulsion }, 
+      { "385156003", NasalPowder }, 
+      { "http://snomed.info/sct#385156003", NasalPowder }, 
+      { "385157007", NasalSpray }, 
+      { "http://snomed.info/sct#385157007", NasalSpray }, 
+      { "385158002", NasalSpraySolution }, 
+      { "http://snomed.info/sct#385158002", NasalSpraySolution }, 
+      { "385159005", NasalSpraySuspension }, 
+      { "http://snomed.info/sct#385159005", NasalSpraySuspension }, 
+      { "385160000", NasalSprayEmulsion }, 
+      { "http://snomed.info/sct#385160000", NasalSprayEmulsion }, 
+      { "385162008", NasalStick }, 
+      { "http://snomed.info/sct#385162008", NasalStick }, 
+      { "385163003", EyeEarNoseDrops }, 
+      { "http://snomed.info/sct#385163003", EyeEarNoseDrops }, 
+      { "385164009", EyeEarNoseOintment }, 
+      { "http://snomed.info/sct#385164009", EyeEarNoseOintment }, 
+      { "385165005", VaginalCream }, 
+      { "http://snomed.info/sct#385165005", VaginalCream }, 
+      { "385166006", VaginalGel }, 
+      { "http://snomed.info/sct#385166006", VaginalGel }, 
+      { "385167002", VaginalOintment }, 
+      { "http://snomed.info/sct#385167002", VaginalOintment }, 
+      { "385168007", VaginalFoam }, 
+      { "http://snomed.info/sct#385168007", VaginalFoam }, 
+      { "385169004", VaginalLiquid }, 
+      { "http://snomed.info/sct#385169004", VaginalLiquid }, 
+      { "385170003", VaginalSolution }, 
+      { "http://snomed.info/sct#385170003", VaginalSolution }, 
+      { "385171004", VaginalSuspension }, 
+      { "http://snomed.info/sct#385171004", VaginalSuspension }, 
+      { "385172006", VaginalEmulsion }, 
+      { "http://snomed.info/sct#385172006", VaginalEmulsion }, 
+      { "385173001", TabletForVaginalSolution }, 
+      { "http://snomed.info/sct#385173001", TabletForVaginalSolution }, 
+      { "385174007", Pessary }, 
+      { "http://snomed.info/sct#385174007", Pessary }, 
+      { "385175008", VaginalCapsule }, 
+      { "http://snomed.info/sct#385175008", VaginalCapsule }, 
+      { "385176009", HardVaginalCapsule }, 
+      { "http://snomed.info/sct#385176009", HardVaginalCapsule }, 
+      { "385177000", SoftVaginalCapsule }, 
+      { "http://snomed.info/sct#385177000", SoftVaginalCapsule }, 
+      { "385178005", VaginalTablet }, 
+      { "http://snomed.info/sct#385178005", VaginalTablet }, 
+      { "385179002", EffervescentVaginalTablet }, 
+      { "http://snomed.info/sct#385179002", EffervescentVaginalTablet }, 
+      { "385180004", MedicatedVaginalTampon }, 
+      { "http://snomed.info/sct#385180004", MedicatedVaginalTampon }, 
+      { "385182007", RectalCream }, 
+      { "http://snomed.info/sct#385182007", RectalCream }, 
+      { "385183002", RectalGel }, 
+      { "http://snomed.info/sct#385183002", RectalGel }, 
+      { "385184008", RectalOintment }, 
+      { "http://snomed.info/sct#385184008", RectalOintment }, 
+      { "385185009", RectalFoam }, 
+      { "http://snomed.info/sct#385185009", RectalFoam }, 
+      { "385186005", Enema }, 
+      { "http://snomed.info/sct#385186005", Enema }, 
+      { "385187001", RectalSolution }, 
+      { "http://snomed.info/sct#385187001", RectalSolution }, 
+      { "385188006", RectalSuspension }, 
+      { "http://snomed.info/sct#385188006", RectalSuspension }, 
+      { "385189003", RectalEmulsion }, 
+      { "http://snomed.info/sct#385189003", RectalEmulsion }, 
+      { "385191006", PowderForRectalSuspension }, 
+      { "http://snomed.info/sct#385191006", PowderForRectalSuspension }, 
+      { "385192004", TabletForRectalSolution }, 
+      { "http://snomed.info/sct#385192004", TabletForRectalSolution }, 
+      { "385193009", TabletForRectalSuspension }, 
+      { "http://snomed.info/sct#385193009", TabletForRectalSuspension }, 
+      { "385194003", Suppository }, 
+      { "http://snomed.info/sct#385194003", Suppository }, 
+      { "385195002", RectalCapsule }, 
+      { "http://snomed.info/sct#385195002", RectalCapsule }, 
+      { "385196001", RectalTampon }, 
+      { "http://snomed.info/sct#385196001", RectalTampon }, 
+      { "385197005", NebulizerLiquid }, 
+      { "http://snomed.info/sct#385197005", NebulizerLiquid }, 
+      { "385198000", NebulizerSolution }, 
+      { "http://snomed.info/sct#385198000", NebulizerSolution }, 
+      { "385199008", NebulizerSuspension }, 
+      { "http://snomed.info/sct#385199008", NebulizerSuspension }, 
+      { "385200006", PowderForNebulizerSuspension }, 
+      { "http://snomed.info/sct#385200006", PowderForNebulizerSuspension }, 
+      { "385201005", PowderForNebulizerSolution }, 
+      { "http://snomed.info/sct#385201005", PowderForNebulizerSolution }, 
+      { "385202003", NebulizerEmulsion }, 
+      { "http://snomed.info/sct#385202003", NebulizerEmulsion }, 
+      { "385203008", PressurisedInhalation }, 
+      { "http://snomed.info/sct#385203008", PressurisedInhalation }, 
+      { "385204002", PressurisedInhalationSolution }, 
+      { "http://snomed.info/sct#385204002", PressurisedInhalationSolution }, 
+      { "385205001", PressurisedInhalationSuspension }, 
+      { "http://snomed.info/sct#385205001", PressurisedInhalationSuspension }, 
+      { "385206000", PressurisedInhalationEmulsion }, 
+      { "http://snomed.info/sct#385206000", PressurisedInhalationEmulsion }, 
+      { "385207009", InhalationPowder }, 
+      { "http://snomed.info/sct#385207009", InhalationPowder }, 
+      { "385208004", HardCapsuleInhalationPowder }, 
+      { "http://snomed.info/sct#385208004", HardCapsuleInhalationPowder }, 
+      { "385210002", InhalationVapor }, 
+      { "http://snomed.info/sct#385210002", InhalationVapor }, 
+      { "385211003", InhalationVaporPowder }, 
+      { "http://snomed.info/sct#385211003", InhalationVaporPowder }, 
+      { "385212005", InhalationVaporCapsule }, 
+      { "http://snomed.info/sct#385212005", InhalationVaporCapsule }, 
+      { "385213000", InhalationVaporSolution }, 
+      { "http://snomed.info/sct#385213000", InhalationVaporSolution }, 
+      { "385214006", InhalationVaporTablet }, 
+      { "http://snomed.info/sct#385214006", InhalationVaporTablet }, 
+      { "385215007", InhalationVaporOintment }, 
+      { "http://snomed.info/sct#385215007", InhalationVaporOintment }, 
+      { "385216008", InhalationVaporLiquid }, 
+      { "http://snomed.info/sct#385216008", InhalationVaporLiquid }, 
+      { "385217004", InhalationGas }, 
+      { "http://snomed.info/sct#385217004", InhalationGas }, 
+      { "385219001", InjectionSolution }, 
+      { "http://snomed.info/sct#385219001", InjectionSolution }, 
+      { "385220007", InjectionSuspension }, 
+      { "http://snomed.info/sct#385220007", InjectionSuspension }, 
+      { "385221006", InjectionEmulsion }, 
+      { "http://snomed.info/sct#385221006", InjectionEmulsion }, 
+      { "385222004", InjectionPowder }, 
+      { "http://snomed.info/sct#385222004", InjectionPowder }, 
+      { "385223009", PowderForInjectionSolution }, 
+      { "http://snomed.info/sct#385223009", PowderForInjectionSolution }, 
+      { "385224003", PowderForInjectionSuspension }, 
+      { "http://snomed.info/sct#385224003", PowderForInjectionSuspension }, 
+      { "385229008", InfusionSolution }, 
+      { "http://snomed.info/sct#385229008", InfusionSolution }, 
+      { "385230003", InfusionPowder }, 
+      { "http://snomed.info/sct#385230003", InfusionPowder }, 
+      { "385231004", PowderForInfusionSolution }, 
+      { "http://snomed.info/sct#385231004", PowderForInfusionSolution }, 
+      { "385236009", ImplantationTablet }, 
+      { "http://snomed.info/sct#385236009", ImplantationTablet }, 
+      { "385237000", ImplantationChain }, 
+      { "http://snomed.info/sct#385237000", ImplantationChain }, 
+      { "385242008", IntravesicalSolution }, 
+      { "http://snomed.info/sct#385242008", IntravesicalSolution }, 
+      { "385245005", UrethralGel }, 
+      { "http://snomed.info/sct#385245005", UrethralGel }, 
+      { "385246006", UrethralStick }, 
+      { "http://snomed.info/sct#385246006", UrethralStick }, 
+      { "385247002", EndotracheopulmonaryInstillationSolution }, 
+      { "http://snomed.info/sct#385247002", EndotracheopulmonaryInstillationSolution }, 
+      { "385248007", PowderForEndotracheopulmonaryInstillationSolution }, 
+      { "http://snomed.info/sct#385248007", PowderForEndotracheopulmonaryInstillationSolution }, 
+      { "385250004", EndotracheopulmonaryInstillationSuspension }, 
+      { "http://snomed.info/sct#385250004", EndotracheopulmonaryInstillationSuspension }, 
+      { "385251000", EndocervicalGel }, 
+      { "http://snomed.info/sct#385251000", EndocervicalGel }, 
+      { "385257001", GastroenteralLiquid }, 
+      { "http://snomed.info/sct#385257001", GastroenteralLiquid }, 
+      { "385258006", GastroenteralSolution }, 
+      { "http://snomed.info/sct#385258006", GastroenteralSolution }, 
+      { "385259003", GastroenteralSuspension }, 
+      { "http://snomed.info/sct#385259003", GastroenteralSuspension }, 
+      { "385260008", GastroenteralEmulsion }, 
+      { "http://snomed.info/sct#385260008", GastroenteralEmulsion }, 
+      { "385261007", WoundStick }, 
+      { "http://snomed.info/sct#385261007", WoundStick }, 
+      { "385262000", OrganPreservationSolution }, 
+      { "http://snomed.info/sct#385262000", OrganPreservationSolution }, 
+      { "385278003", CutaneousPowderSpray }, 
+      { "http://snomed.info/sct#385278003", CutaneousPowderSpray }, 
+      { "385279006", CutaneousSuspensionSpray }, 
+      { "http://snomed.info/sct#385279006", CutaneousSuspensionSpray }, 
+      { "385286003", ImplantDosageForm }, 
+      { "http://snomed.info/sct#385286003", ImplantDosageForm }, 
+      { "414951009", OralElixir }, 
+      { "http://snomed.info/sct#414951009", OralElixir }, 
+      { "420243009", TamponDoseForm }, 
+      { "http://snomed.info/sct#420243009", TamponDoseForm }, 
+      { "420253005", OilInjection }, 
+      { "http://snomed.info/sct#420253005", OilInjection }, 
+      { "420275007", SemiSolidDoseForm }, 
+      { "http://snomed.info/sct#420275007", SemiSolidDoseForm }, 
+      { "420283001", NasalEmulsion }, 
+      { "http://snomed.info/sct#420283001", NasalEmulsion }, 
+      { "420292003", RectalPowder }, 
+      { "http://snomed.info/sct#420292003", RectalPowder }, 
+      { "420293008", CoatedPelletsCapsule }, 
+      { "http://snomed.info/sct#420293008", CoatedPelletsCapsule }, 
+      { "420305009", PowderForOralLiquid }, 
+      { "http://snomed.info/sct#420305009", PowderForOralLiquid }, 
+      { "420317006", Inhaler }, 
+      { "http://snomed.info/sct#420317006", Inhaler }, 
+      { "420378007", ExtendedReleaseFilmCoatedTablet }, 
+      { "http://snomed.info/sct#420378007", ExtendedReleaseFilmCoatedTablet }, 
+      { "420385006", ExtendedReleaseInsert }, 
+      { "http://snomed.info/sct#420385006", ExtendedReleaseInsert }, 
+      { "420386007", Emulsion }, 
+      { "http://snomed.info/sct#420386007", Emulsion }, 
+      { "420407000", InhalationAerosolSolution }, 
+      { "http://snomed.info/sct#420407000", InhalationAerosolSolution }, 
+      { "420430006", LyophilizedPowderForInjectableExtendedReleaseLiposomalSuspension }, 
+      { "http://snomed.info/sct#420430006", LyophilizedPowderForInjectableExtendedReleaseLiposomalSuspension }, 
+      { "420450005", PressurizedNebulizerSuspension }, 
+      { "http://snomed.info/sct#420450005", PressurizedNebulizerSuspension }, 
+      { "420460001", Film }, 
+      { "http://snomed.info/sct#420460001", Film }, 
+      { "420509004", OralGranules }, 
+      { "http://snomed.info/sct#420509004", OralGranules }, 
+      { "420536002", VaginalPowder }, 
+      { "http://snomed.info/sct#420536002", VaginalPowder }, 
+      { "420540006", CutaneousOil }, 
+      { "http://snomed.info/sct#420540006", CutaneousOil }, 
+      { "420610000", NasalAerosol }, 
+      { "http://snomed.info/sct#420610000", NasalAerosol }, 
+      { "420627008", ExtendedReleaseTablet }, 
+      { "http://snomed.info/sct#420627008", ExtendedReleaseTablet }, 
+      { "420631002", VaginalInsert }, 
+      { "http://snomed.info/sct#420631002", VaginalInsert }, 
+      { "420634005", MicrospheresForInjectableSuspension }, 
+      { "http://snomed.info/sct#420634005", MicrospheresForInjectableSuspension }, 
+      { "420636007", EyeEarDrops }, 
+      { "http://snomed.info/sct#420636007", EyeEarDrops }, 
+      { "420641004", SolutionForInhalation }, 
+      { "http://snomed.info/sct#420641004", SolutionForInhalation }, 
+      { "420656008", LyophilizedPowderForInjectableLiposomalSuspension }, 
+      { "http://snomed.info/sct#420656008", LyophilizedPowderForInjectableLiposomalSuspension }, 
+      { "420692007", OralCapsule }, 
+      { "http://snomed.info/sct#420692007", OralCapsule }, 
+      { "420699003", LiquidDoseForm }, 
+      { "http://snomed.info/sct#420699003", LiquidDoseForm }, 
+      { "420705007", InhalationAerosolSuspension }, 
+      { "http://snomed.info/sct#420705007", InhalationAerosolSuspension }, 
+      { "420736004", EyeSuspension }, 
+      { "http://snomed.info/sct#420736004", EyeSuspension }, 
+      { "420757007", DelayedReleaseGranules }, 
+      { "http://snomed.info/sct#420757007", DelayedReleaseGranules }, 
+      { "420761001", UrethralSuppository }, 
+      { "http://snomed.info/sct#420761001", UrethralSuppository }, 
+      { "420767002", DelayedReleasePelletsCapsule }, 
+      { "http://snomed.info/sct#420767002", DelayedReleasePelletsCapsule }, 
+      { "420768007", Pellet }, 
+      { "http://snomed.info/sct#420768007", Pellet }, 
+      { "420802004", ExtendedReleaseLiquid }, 
+      { "http://snomed.info/sct#420802004", ExtendedReleaseLiquid }, 
+      { "420828001", PowderForReconstitutionForDrugProduct }, 
+      { "http://snomed.info/sct#420828001", PowderForReconstitutionForDrugProduct }, 
+      { "420847003", MeteredDoseAerosol }, 
+      { "http://snomed.info/sct#420847003", MeteredDoseAerosol }, 
+      { "420873008", ExtendedReleaseInjectableSuspension }, 
+      { "http://snomed.info/sct#420873008", ExtendedReleaseInjectableSuspension }, 
+      { "420887008", IntrathecalSuspension }, 
+      { "http://snomed.info/sct#420887008", IntrathecalSuspension }, 
+      { "420891003", EarDropsSuspension }, 
+      { "http://snomed.info/sct#420891003", EarDropsSuspension }, 
+      { "420901005", EarEmulsion }, 
+      { "http://snomed.info/sct#420901005", EarEmulsion }, 
+      { "420927005", MeteredPowder }, 
+      { "http://snomed.info/sct#420927005", MeteredPowder }, 
+      { "420929008", RectalSuppository }, 
+      { "http://snomed.info/sct#420929008", RectalSuppository }, 
+      { "420955009", PowderForSolution }, 
+      { "http://snomed.info/sct#420955009", PowderForSolution }, 
+      { "420956005", UltramicronizedTablet }, 
+      { "http://snomed.info/sct#420956005", UltramicronizedTablet }, 
+      { "420992009", ImplantablePellet }, 
+      { "http://snomed.info/sct#420992009", ImplantablePellet }, 
+      { "421026006", OralTablet }, 
+      { "http://snomed.info/sct#421026006", OralTablet }, 
+      { "421027002", DelayedReleaseCapsule }, 
+      { "http://snomed.info/sct#421027002", DelayedReleaseCapsule }, 
+      { "421034000", ExtendedReleaseSuppository }, 
+      { "http://snomed.info/sct#421034000", ExtendedReleaseSuppository }, 
+      { "421043009", ExtendedReleaseFilm }, 
+      { "http://snomed.info/sct#421043009", ExtendedReleaseFilm }, 
+      { "421051007", SonicatedInjectableSuspension }, 
+      { "http://snomed.info/sct#421051007", SonicatedInjectableSuspension }, 
+      { "421056002", EmulsionForInhalation }, 
+      { "http://snomed.info/sct#421056002", EmulsionForInhalation }, 
+      { "421079001", Pastille }, 
+      { "http://snomed.info/sct#421079001", Pastille }, 
+      { "421080003", PowderForSuspension }, 
+      { "http://snomed.info/sct#421080003", PowderForSuspension }, 
+      { "421104008", AerosolPowder }, 
+      { "http://snomed.info/sct#421104008", AerosolPowder }, 
+      { "421131006", GaseousDoseForm }, 
+      { "http://snomed.info/sct#421131006", GaseousDoseForm }, 
+      { "421155001", ExtendedReleaseEntericCoatedTablet }, 
+      { "http://snomed.info/sct#421155001", ExtendedReleaseEntericCoatedTablet }, 
+      { "421166008", Foam }, 
+      { "http://snomed.info/sct#421166008", Foam }, 
+      { "421195004", VaginalSuppository }, 
+      { "http://snomed.info/sct#421195004", VaginalSuppository }, 
+      { "421221008", SuspensionForInhalation }, 
+      { "http://snomed.info/sct#421221008", SuspensionForInhalation }, 
+      { "421271006", ExtendedReleaseBeadImplant }, 
+      { "http://snomed.info/sct#421271006", ExtendedReleaseBeadImplant }, 
+      { "421288004", Sponge }, 
+      { "http://snomed.info/sct#421288004", Sponge }, 
+      { "421300005", ExtendedReleaseFilmCoatedCapsule }, 
+      { "http://snomed.info/sct#421300005", ExtendedReleaseFilmCoatedCapsule }, 
+      { "421316007", PowderForEyeDrops }, 
+      { "http://snomed.info/sct#421316007", PowderForEyeDrops }, 
+      { "421338009", ExtendedReleaseCoatedCapsule }, 
+      { "http://snomed.info/sct#421338009", ExtendedReleaseCoatedCapsule }, 
+      { "421340004", PowderSpray }, 
+      { "http://snomed.info/sct#421340004", PowderSpray }, 
+      { "421343002", PowderForCutaneousSolution }, 
+      { "http://snomed.info/sct#421343002", PowderForCutaneousSolution }, 
+      { "421347001", CutaneousAerosol }, 
+      { "http://snomed.info/sct#421347001", CutaneousAerosol }, 
+      { "421366001", TabletForOralSuspension }, 
+      { "http://snomed.info/sct#421366001", TabletForOralSuspension }, 
+      { "421374000", DelayedReleaseTablet }, 
+      { "http://snomed.info/sct#421374000", DelayedReleaseTablet }, 
+      { "421378002", SolidDoseForm }, 
+      { "http://snomed.info/sct#421378002", SolidDoseForm }, 
+      { "421382000", EarSuspension }, 
+      { "http://snomed.info/sct#421382000", EarSuspension }, 
+      { "421410002", IntravenousSolution }, 
+      { "http://snomed.info/sct#421410002", IntravenousSolution }, 
+      { "421425002", PowderForInhalationSolution }, 
+      { "http://snomed.info/sct#421425002", PowderForInhalationSolution }, 
+      { "421427005", EyeEarOintment }, 
+      { "http://snomed.info/sct#421427005", EyeEarOintment }, 
+      { "421428000", InjectableOilSuspension }, 
+      { "http://snomed.info/sct#421428000", InjectableOilSuspension }, 
+      { "421446006", ExtendedReleaseGranulesForSuspension }, 
+      { "http://snomed.info/sct#421446006", ExtendedReleaseGranulesForSuspension }, 
+      { "421504000", Cone }, 
+      { "http://snomed.info/sct#421504000", Cone }, 
+      { "421522002", LiposomalInjectableSuspension }, 
+      { "http://snomed.info/sct#421522002", LiposomalInjectableSuspension }, 
+      { "421532009", Insert }, 
+      { "http://snomed.info/sct#421532009", Insert }, 
+      { "421535006", DelayedReleaseParticlesTablet }, 
+      { "http://snomed.info/sct#421535006", DelayedReleaseParticlesTablet }, 
+      { "421575003", PowderForEarDrops }, 
+      { "http://snomed.info/sct#421575003", PowderForEarDrops }, 
+      { "421606006", AerosolSpray }, 
+      { "http://snomed.info/sct#421606006", AerosolSpray }, 
+      { "421607002", PowderForNasalDrops }, 
+      { "http://snomed.info/sct#421607002", PowderForNasalDrops }, 
+      { "421618002", ExtendedReleaseCapsule }, 
+      { "http://snomed.info/sct#421618002", ExtendedReleaseCapsule }, 
+      { "421620004", SustainedReleaseBuccalTablet }, 
+      { "http://snomed.info/sct#421620004", SustainedReleaseBuccalTablet }, 
+      { "421628006", CutaneousCream }, 
+      { "http://snomed.info/sct#421628006", CutaneousCream }, 
+      { "421637006", LyophilizedPowderForInjectableSolution }, 
+      { "http://snomed.info/sct#421637006", LyophilizedPowderForInjectableSolution }, 
+      { "421669002", MeteredGel }, 
+      { "http://snomed.info/sct#421669002", MeteredGel }, 
+      { "421701006", TabletForOralSolution }, 
+      { "http://snomed.info/sct#421701006", TabletForOralSolution }, 
+      { "421713001", EarSolution }, 
+      { "http://snomed.info/sct#421713001", EarSolution }, 
+      { "421716009", TransdermalDrugDeliverySystem }, 
+      { "http://snomed.info/sct#421716009", TransdermalDrugDeliverySystem }, 
+      { "421720008", SprayDoseForm }, 
+      { "http://snomed.info/sct#421720008", SprayDoseForm }, 
+      { "421721007", CoatedParticlesTablet }, 
+      { "http://snomed.info/sct#421721007", CoatedParticlesTablet }, 
+      { "421752008", ExtendedReleaseEntericCoatedCapsule }, 
+      { "http://snomed.info/sct#421752008", ExtendedReleaseEntericCoatedCapsule }, 
+      { "421759004", MeteredDoseAerosolInhaler }, 
+      { "http://snomed.info/sct#421759004", MeteredDoseAerosolInhaler }, 
+      { "421765004", IntraperitonealSolution }, 
+      { "http://snomed.info/sct#421765004", IntraperitonealSolution }, 
+      { "421857007", PowderForOphthalmicSolution }, 
+      { "http://snomed.info/sct#421857007", PowderForOphthalmicSolution }, 
+      { "421873001", OralCream }, 
+      { "http://snomed.info/sct#421873001", OralCream }, 
+      { "421890007", Oil }, 
+      { "http://snomed.info/sct#421890007", Oil }, 
+      { "421932003", MultilayerTablet }, 
+      { "http://snomed.info/sct#421932003", MultilayerTablet }, 
+      { "421937009", MedicatedToothpaste }, 
+      { "http://snomed.info/sct#421937009", MedicatedToothpaste }, 
+      { "421943006", LyophilizedPowderForInjectableSuspension }, 
+      { "http://snomed.info/sct#421943006", LyophilizedPowderForInjectableSuspension }, 
+      { "421949005", CutaneousGel }, 
+      { "http://snomed.info/sct#421949005", CutaneousGel }, 
+      { "421987002", IntraocularSolution }, 
+      { "http://snomed.info/sct#421987002", IntraocularSolution }, 
+      { "421999009", ExtendedReleaseCoatedPellets }, 
+      { "http://snomed.info/sct#421999009", ExtendedReleaseCoatedPellets }, 
+      { "422054001", MeteredDosePowderInhaler }, 
+      { "http://snomed.info/sct#422054001", MeteredDosePowderInhaler }, 
+      { "422059006", MeteredDoseInhaler }, 
+      { "http://snomed.info/sct#422059006", MeteredDoseInhaler }, 
+      { "422060001", OphthalmicSolution }, 
+      { "http://snomed.info/sct#422060001", OphthalmicSolution }, 
+      { "422068008", EyeDropsSuspension }, 
+      { "http://snomed.info/sct#422068008", EyeDropsSuspension }, 
+      { "422080000", NasalSuspension }, 
+      { "http://snomed.info/sct#422080000", NasalSuspension }, 
+      { "422085005", PowderForOphthalmicSuspension }, 
+      { "http://snomed.info/sct#422085005", PowderForOphthalmicSuspension }, 
+      { "422151007", BreathActivatedPowderInhaler }, 
+      { "http://snomed.info/sct#422151007", BreathActivatedPowderInhaler }, 
+      { "422186009", Tincture }, 
+      { "http://snomed.info/sct#422186009", Tincture }, 
+      { "422197009", BreathActivatedInhaler }, 
+      { "http://snomed.info/sct#422197009", BreathActivatedInhaler }, 
+      { "422199007", DentalCone }, 
+      { "http://snomed.info/sct#422199007", DentalCone }, 
+      { "422201009", TabletForCutaneousSolution }, 
+      { "http://snomed.info/sct#422201009", TabletForCutaneousSolution }, 
+      { "422202002", ColloidalSuspensionForInjection }, 
+      { "http://snomed.info/sct#422202002", ColloidalSuspensionForInjection }, 
+      { "422259002", Spirit }, 
+      { "http://snomed.info/sct#422259002", Spirit }, 
+      { "422264003", PowderForInjectableExtendedReleaseSuspension }, 
+      { "http://snomed.info/sct#422264003", PowderForInjectableExtendedReleaseSuspension }, 
+      { "422301006", ModifiedReleasePessary }, 
+      { "http://snomed.info/sct#422301006", ModifiedReleasePessary }, 
+      { "422336005", NasalSolution }, 
+      { "http://snomed.info/sct#422336005", NasalSolution }, 
+      { "422353003", ExtendedReleaseSuspension }, 
+      { "http://snomed.info/sct#422353003", ExtendedReleaseSuspension }, 
+      { "424179000", AerosolGenerator }, 
+      { "http://snomed.info/sct#424179000", AerosolGenerator }, 
+      { "424552006", VaginalSponge }, 
+      { "http://snomed.info/sct#424552006", VaginalSponge }, 
+      { "425753008", TopicalOintment }, 
+      { "http://snomed.info/sct#425753008", TopicalOintment }, 
+      { "425965000", RectalSpray }, 
+      { "http://snomed.info/sct#425965000", RectalSpray }, 
+      { "426210003", Gum }, 
+      { "http://snomed.info/sct#426210003", Gum }, 
+      { "426684005", DropsDoseForm }, 
+      { "http://snomed.info/sct#426684005", DropsDoseForm }, 
+      { "426823003", VaginalSpray }, 
+      { "http://snomed.info/sct#426823003", VaginalSpray }, 
+      { "426969004", MeteredSpray }, 
+      { "http://snomed.info/sct#426969004", MeteredSpray }, 
+      { "427129005", CoatedCapsule }, 
+      { "http://snomed.info/sct#427129005", CoatedCapsule }, 
+      { "427564005", PressurizedSpray }, 
+      { "http://snomed.info/sct#427564005", PressurizedSpray }, 
+      { "427609008", ModifiedReleaseDropsDoseForm }, 
+      { "http://snomed.info/sct#427609008", ModifiedReleaseDropsDoseForm }, 
+      { "429885007", Bar }, 
+      { "http://snomed.info/sct#429885007", Bar }, 
+      { "443424002", BuccalFilm }, 
+      { "http://snomed.info/sct#443424002", BuccalFilm }, 
+      { "447050008", OrodispersibleFilm }, 
+      { "http://snomed.info/sct#447050008", OrodispersibleFilm }, 
+      { "447079001", OrodispersibleTablet }, 
+      { "http://snomed.info/sct#447079001", OrodispersibleTablet }, 
+      { "46992007", Pill }, 
+      { "http://snomed.info/sct#46992007", Pill }, 
+      { "48582000", Caplet }, 
+      { "http://snomed.info/sct#48582000", Caplet }, 
+      { "52262001", DrugAerosol }, 
+      { "http://snomed.info/sct#52262001", DrugAerosol }, 
+      { "63316001", Liniment }, 
+      { "http://snomed.info/sct#63316001", Liniment }, 
+      { "64241004", DrugPledget }, 
+      { "http://snomed.info/sct#64241004", DrugPledget }, 
+      { "66076007", ChewableTablet }, 
+      { "http://snomed.info/sct#66076007", ChewableTablet }, 
+      { "77899000", DrugSolution }, 
+      { "http://snomed.info/sct#77899000", DrugSolution }, 
+      { "7946007", DrugSuspension }, 
+      { "http://snomed.info/sct#7946007", DrugSuspension }, 
+      { "85581007", DrugPowder }, 
+      { "http://snomed.info/sct#85581007", DrugPowder }, 
+    };
   };
 }

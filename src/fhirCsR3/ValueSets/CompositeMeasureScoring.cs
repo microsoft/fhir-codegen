@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAllOrNothing = "all-or-nothing";
 
     /// <summary>
+    /// Literal for code: CompositeMeasureScoringAllOrNothing
+    /// </summary>
+    public const string LiteralCompositeMeasureScoringAllOrNothing = "http://hl7.org/fhir/composite-measure-scoring#all-or-nothing";
+
+    /// <summary>
     /// Literal for code: Linear
     /// </summary>
     public const string LiteralLinear = "linear";
+
+    /// <summary>
+    /// Literal for code: CompositeMeasureScoringLinear
+    /// </summary>
+    public const string LiteralCompositeMeasureScoringLinear = "http://hl7.org/fhir/composite-measure-scoring#linear";
 
     /// <summary>
     /// Literal for code: Opportunity
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOpportunity = "opportunity";
 
     /// <summary>
+    /// Literal for code: CompositeMeasureScoringOpportunity
+    /// </summary>
+    public const string LiteralCompositeMeasureScoringOpportunity = "http://hl7.org/fhir/composite-measure-scoring#opportunity";
+
+    /// <summary>
     /// Literal for code: Weighted
     /// </summary>
     public const string LiteralWeighted = "weighted";
+
+    /// <summary>
+    /// Literal for code: CompositeMeasureScoringWeighted
+    /// </summary>
+    public const string LiteralCompositeMeasureScoringWeighted = "http://hl7.org/fhir/composite-measure-scoring#weighted";
+
+    /// <summary>
+    /// Dictionary for looking up CompositeMeasureScoring Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "all-or-nothing", AllOrNothing }, 
+      { "http://hl7.org/fhir/composite-measure-scoring#all-or-nothing", AllOrNothing }, 
+      { "linear", Linear }, 
+      { "http://hl7.org/fhir/composite-measure-scoring#linear", Linear }, 
+      { "opportunity", Opportunity }, 
+      { "http://hl7.org/fhir/composite-measure-scoring#opportunity", Opportunity }, 
+      { "weighted", Weighted }, 
+      { "http://hl7.org/fhir/composite-measure-scoring#weighted", Weighted }, 
+    };
   };
 }

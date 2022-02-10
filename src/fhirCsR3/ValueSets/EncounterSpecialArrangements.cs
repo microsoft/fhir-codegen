@@ -63,9 +63,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdditionalBedding = "add-bed";
 
     /// <summary>
+    /// Literal for code: EncounterSpecialArrangementsAdditionalBedding
+    /// </summary>
+    public const string LiteralEncounterSpecialArrangementsAdditionalBedding = "http://hl7.org/fhir/encounter-special-arrangements#add-bed";
+
+    /// <summary>
     /// Literal for code: Attendant
     /// </summary>
     public const string LiteralAttendant = "att";
+
+    /// <summary>
+    /// Literal for code: EncounterSpecialArrangementsAttendant
+    /// </summary>
+    public const string LiteralEncounterSpecialArrangementsAttendant = "http://hl7.org/fhir/encounter-special-arrangements#att";
 
     /// <summary>
     /// Literal for code: GuideDog
@@ -73,13 +83,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGuideDog = "dog";
 
     /// <summary>
+    /// Literal for code: EncounterSpecialArrangementsGuideDog
+    /// </summary>
+    public const string LiteralEncounterSpecialArrangementsGuideDog = "http://hl7.org/fhir/encounter-special-arrangements#dog";
+
+    /// <summary>
     /// Literal for code: Interpreter
     /// </summary>
     public const string LiteralInterpreter = "int";
 
     /// <summary>
+    /// Literal for code: EncounterSpecialArrangementsInterpreter
+    /// </summary>
+    public const string LiteralEncounterSpecialArrangementsInterpreter = "http://hl7.org/fhir/encounter-special-arrangements#int";
+
+    /// <summary>
     /// Literal for code: Wheelchair
     /// </summary>
     public const string LiteralWheelchair = "wheel";
+
+    /// <summary>
+    /// Literal for code: EncounterSpecialArrangementsWheelchair
+    /// </summary>
+    public const string LiteralEncounterSpecialArrangementsWheelchair = "http://hl7.org/fhir/encounter-special-arrangements#wheel";
+
+    /// <summary>
+    /// Dictionary for looking up EncounterSpecialArrangements Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "add-bed", AdditionalBedding }, 
+      { "http://hl7.org/fhir/encounter-special-arrangements#add-bed", AdditionalBedding }, 
+      { "att", Attendant }, 
+      { "http://hl7.org/fhir/encounter-special-arrangements#att", Attendant }, 
+      { "dog", GuideDog }, 
+      { "http://hl7.org/fhir/encounter-special-arrangements#dog", GuideDog }, 
+      { "int", Interpreter }, 
+      { "http://hl7.org/fhir/encounter-special-arrangements#int", Interpreter }, 
+      { "wheel", Wheelchair }, 
+      { "http://hl7.org/fhir/encounter-special-arrangements#wheel", Wheelchair }, 
+    };
   };
 }

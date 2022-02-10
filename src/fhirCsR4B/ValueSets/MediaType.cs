@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAudio = "audio";
 
     /// <summary>
+    /// Literal for code: MediaTypeAudio
+    /// </summary>
+    public const string LiteralMediaTypeAudio = "http://terminology.hl7.org/CodeSystem/media-type#audio";
+
+    /// <summary>
     /// Literal for code: Image
     /// </summary>
     public const string LiteralImage = "image";
 
     /// <summary>
+    /// Literal for code: MediaTypeImage
+    /// </summary>
+    public const string LiteralMediaTypeImage = "http://terminology.hl7.org/CodeSystem/media-type#image";
+
+    /// <summary>
     /// Literal for code: Video
     /// </summary>
     public const string LiteralVideo = "video";
+
+    /// <summary>
+    /// Literal for code: MediaTypeVideo
+    /// </summary>
+    public const string LiteralMediaTypeVideo = "http://terminology.hl7.org/CodeSystem/media-type#video";
+
+    /// <summary>
+    /// Dictionary for looking up MediaType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "audio", Audio }, 
+      { "http://terminology.hl7.org/CodeSystem/media-type#audio", Audio }, 
+      { "image", Image }, 
+      { "http://terminology.hl7.org/CodeSystem/media-type#image", Image }, 
+      { "video", Video }, 
+      { "http://terminology.hl7.org/CodeSystem/media-type#video", Video }, 
+    };
   };
 }

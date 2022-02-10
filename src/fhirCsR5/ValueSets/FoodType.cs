@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class FoodTypeCodes
   {
     /// <summary>
-    /// 
+    /// Citrus fruit
     /// </summary>
     public static readonly Coding CitrusFruit = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peanut butter
     /// </summary>
     public static readonly Coding PeanutButter = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Strawberry
     /// </summary>
     public static readonly Coding Strawberry = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chocolate
     /// </summary>
     public static readonly Coding Chocolate = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eggs (edible)
     /// </summary>
     public static readonly Coding EggsEdible = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cheese
     /// </summary>
     public static readonly Coding Cheese = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Growth stimulant
     /// </summary>
     public static readonly Coding GrowthStimulant = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Efrotomycin
     /// </summary>
     public static readonly Coding Efrotomycin = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Agar
     /// </summary>
     public static readonly Coding Agar = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lactalbumin
     /// </summary>
     public static readonly Coding Lactalbumin = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Minor lactalbumin
     /// </summary>
     public static readonly Coding MinorLactalbumin = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beta-lactalbumin
     /// </summary>
     public static readonly Coding BetaLactalbumin = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Milk protein
     /// </summary>
     public static readonly Coding MilkProtein = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pegademase bovine
     /// </summary>
     public static readonly Coding PegademaseBovine = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microfibrillar collagen hemostat
     /// </summary>
     public static readonly Coding MicrofibrillarCollagenHemostat = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bovine shock protein antibody
     /// </summary>
     public static readonly Coding BovineShockProteinAntibody = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bovine osteocalcin
     /// </summary>
     public static readonly Coding BovineOsteocalcin = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fish liver oil
     /// </summary>
     public static readonly Coding FishLiverOil = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Burbot liver oil
     /// </summary>
     public static readonly Coding BurbotLiverOil = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percomorph liver oil
     /// </summary>
     public static readonly Coding PercomorphLiverOil = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percoid liver oil
     /// </summary>
     public static readonly Coding PercoidLiverOil = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shark liver oil
     /// </summary>
     public static readonly Coding SharkLiverOil = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Halibut liver oil
     /// </summary>
     public static readonly Coding HalibutLiverOil = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cod liver oil
     /// </summary>
     public static readonly Coding CodLiverOil = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salmon calcitonin
     /// </summary>
     public static readonly Coding SalmonCalcitonin = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nut
     /// </summary>
     public static readonly Coding Nut = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prepared fish
     /// </summary>
     public static readonly Coding PreparedFish = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bombay mix
     /// </summary>
     public static readonly Coding BombayMix = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cauliflower cheese
     /// </summary>
     public static readonly Coding CauliflowerCheese = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cheese pastry
     /// </summary>
     public static readonly Coding CheesePastry = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cheesecake
     /// </summary>
     public static readonly Coding Cheesecake = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chocolate digestive biscuit
     /// </summary>
     public static readonly Coding ChocolateDigestiveBiscuit = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lasagne
     /// </summary>
     public static readonly Coding Lasagne = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mint - sweet (substance)
     /// </summary>
     public static readonly Coding MintSweetSubstance = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain digestive biscuit
     /// </summary>
     public static readonly Coding PlainDigestiveBiscuit = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tamarind
     /// </summary>
     public static readonly Coding Tamarind = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trail mix
     /// </summary>
     public static readonly Coding TrailMix = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eicosapentaenoic acid
     /// </summary>
     public static readonly Coding EicosapentaenoicAcid = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// DHA - Docosahexaenoic acid
     /// </summary>
     public static readonly Coding DHADocosahexaenoicAcid = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apple juice
     /// </summary>
     public static readonly Coding AppleJuice = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grape juice
     /// </summary>
     public static readonly Coding GrapeJuice = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grapefruit juice
     /// </summary>
     public static readonly Coding GrapefruitJuice = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lemon juice
     /// </summary>
     public static readonly Coding LemonJuice = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orange juice
     /// </summary>
     public static readonly Coding OrangeJuice = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pineapple juice
     /// </summary>
     public static readonly Coding PineappleJuice = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tomato juice
     /// </summary>
     public static readonly Coding TomatoJuice = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Starchy food
     /// </summary>
     public static readonly Coding StarchyFood = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Baby cereal
     /// </summary>
     public static readonly Coding BabyCereal = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rusk
     /// </summary>
     public static readonly Coding Rusk = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flavored rusk
     /// </summary>
     public static readonly Coding FlavoredRusk = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low sugar rusk
     /// </summary>
     public static readonly Coding LowSugarRusk = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain rusk
     /// </summary>
     public static readonly Coding PlainRusk = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wholemeal rusk
     /// </summary>
     public static readonly Coding WholemealRusk = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rice-based baby cereal
     /// </summary>
     public static readonly Coding RiceBasedBabyCereal = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mixed cereal-based baby cereal
     /// </summary>
     public static readonly Coding MixedCerealBasedBabyCereal = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wheat-based baby cereal
     /// </summary>
     public static readonly Coding WheatBasedBabyCereal = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cookie and/or cracker
     /// </summary>
     public static readonly Coding CookieAndOrCracker = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chocolate biscuit
     /// </summary>
     public static readonly Coding ChocolateBiscuit = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Full coated chocolate biscuit
     /// </summary>
     public static readonly Coding FullCoatedChocolateBiscuit = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Half-coated chocolate biscuit
     /// </summary>
     public static readonly Coding HalfCoatedChocolateBiscuit = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cracker
     /// </summary>
     public static readonly Coding Cracker = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cream cracker
     /// </summary>
     public static readonly Coding CreamCracker = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wholemeal cracker
     /// </summary>
     public static readonly Coding WholemealCracker = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crispbread
     /// </summary>
     public static readonly Coding Crispbread = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Digestive biscuit
     /// </summary>
     public static readonly Coding DigestiveBiscuit = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gingernut biscuit
     /// </summary>
     public static readonly Coding GingernutBiscuit = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Home-made biscuit
     /// </summary>
     public static readonly Coding HomeMadeBiscuit = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Matzo
     /// </summary>
     public static readonly Coding Matzo = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oatcake
     /// </summary>
     public static readonly Coding Oatcake = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sandwich biscuit
     /// </summary>
     public static readonly Coding SandwichBiscuit = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Semi-sweet biscuit
     /// </summary>
     public static readonly Coding SemiSweetBiscuit = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Short-sweet biscuit
     /// </summary>
     public static readonly Coding ShortSweetBiscuit = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shortbread biscuit
     /// </summary>
     public static readonly Coding ShortbreadBiscuit = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wafer biscuit
     /// </summary>
     public static readonly Coding WaferBiscuit = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Water biscuit
     /// </summary>
     public static readonly Coding WaterBiscuit = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bread
     /// </summary>
     public static readonly Coding Bread = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brown bread
     /// </summary>
     public static readonly Coding BrownBread = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brown bread roll
     /// </summary>
     public static readonly Coding BrownBreadRoll = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breadcrumbs
     /// </summary>
     public static readonly Coding Breadcrumbs = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chapati
     /// </summary>
     public static readonly Coding Chapati = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White chapati
     /// </summary>
     public static readonly Coding WhiteChapati = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White chapati made with fat
     /// </summary>
     public static readonly Coding WhiteChapatiMadeWithFat = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White chapati made without fat
     /// </summary>
     public static readonly Coding WhiteChapatiMadeWithoutFat = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wholemeal chapati
     /// </summary>
     public static readonly Coding WholemealChapati = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wholemeal chapati made with fat
     /// </summary>
     public static readonly Coding WholemealChapatiMadeWithFat = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wholemeal chapati made without fat
     /// </summary>
     public static readonly Coding WholemealChapatiMadeWithoutFat = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Currant bread
     /// </summary>
     public static readonly Coding CurrantBread = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Granary bread
     /// </summary>
     public static readonly Coding GranaryBread = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Granary bread roll
     /// </summary>
     public static readonly Coding GranaryBreadRoll = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malt bread
     /// </summary>
     public static readonly Coding MaltBread = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Naan bread
     /// </summary>
     public static readonly Coding NaanBread = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Papadum
     /// </summary>
     public static readonly Coding Papadum = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried papadum
     /// </summary>
     public static readonly Coding FriedPapadum = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled papadum
     /// </summary>
     public static readonly Coding GrilledPapadum = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paratha
     /// </summary>
     public static readonly Coding Paratha = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pita bread (substance)
     /// </summary>
     public static readonly Coding PitaBreadSubstance = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White pita bread (substance)
     /// </summary>
     public static readonly Coding WhitePitaBreadSubstance = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wholemeal pita bread (substance)
     /// </summary>
     public static readonly Coding WholemealPitaBreadSubstance = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Milk bread
     /// </summary>
     public static readonly Coding MilkBread = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rye bread
     /// </summary>
     public static readonly Coding RyeBread = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soda bread
     /// </summary>
     public static readonly Coding SodaBread = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tortilla
     /// </summary>
     public static readonly Coding Tortilla = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wheatgerm bread
     /// </summary>
     public static readonly Coding WheatgermBread = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White bread
     /// </summary>
     public static readonly Coding WhiteBread = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried white bread
     /// </summary>
     public static readonly Coding FriedWhiteBread = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// West Indian white bread
     /// </summary>
     public static readonly Coding WestIndianWhiteBread = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White bread roll
     /// </summary>
     public static readonly Coding WhiteBreadRoll = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wholemeal bread
     /// </summary>
     public static readonly Coding WholemealBread = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wholemeal bread roll
     /// </summary>
     public static readonly Coding WholemealBreadRoll = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breakfast cereal
     /// </summary>
     public static readonly Coding BreakfastCereal = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bran flakes
     /// </summary>
     public static readonly Coding BranFlakes = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cornflakes
     /// </summary>
     public static readonly Coding Cornflakes = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muesli
     /// </summary>
     public static readonly Coding Muesli = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muesli Swiss style
     /// </summary>
     public static readonly Coding MuesliSwissStyle = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muesli with extra fruit
     /// </summary>
     public static readonly Coding MuesliWithExtraFruit = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muesli with no added sugar
     /// </summary>
     public static readonly Coding MuesliWithNoAddedSugar = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oat and wheat bran
     /// </summary>
     public static readonly Coding OatAndWheatBran = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Porridge
     /// </summary>
     public static readonly Coding Porridge = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Porridge made with milk
     /// </summary>
     public static readonly Coding PorridgeMadeWithMilk = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Porridge made with semi-skimmed milk
     /// </summary>
     public static readonly Coding PorridgeMadeWithSemiSkimmedMilk = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Porridge made with skimmed milk
     /// </summary>
     public static readonly Coding PorridgeMadeWithSkimmedMilk = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Porridge made with whole milk
     /// </summary>
     public static readonly Coding PorridgeMadeWithWholeMilk = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Porridge made with water
     /// </summary>
     public static readonly Coding PorridgeMadeWithWater = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cake
     /// </summary>
     public static readonly Coding Cake = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// All bran loaf
     /// </summary>
     public static readonly Coding AllBranLoaf = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Battenburg cake
     /// </summary>
     public static readonly Coding BattenburgCake = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Welsh cheesecake
     /// </summary>
     public static readonly Coding WelshCheesecake = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cherry cake
     /// </summary>
     public static readonly Coding CherryCake = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chinese cake
     /// </summary>
     public static readonly Coding ChineseCake = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chinese glutinous rice flour cake
     /// </summary>
     public static readonly Coding ChineseGlutinousRiceFlourCake = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chocolate cake
     /// </summary>
     public static readonly Coding ChocolateCake = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chocolate cake with butter icing
     /// </summary>
     public static readonly Coding ChocolateCakeWithButterIcing = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coconut cake
     /// </summary>
     public static readonly Coding CoconutCake = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crispie cake
     /// </summary>
     public static readonly Coding CrispieCake = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fancy iced cake
     /// </summary>
     public static readonly Coding FancyIcedCake = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fruit cake
     /// </summary>
     public static readonly Coding FruitCake = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain fruit cake
     /// </summary>
     public static readonly Coding PlainFruitCake = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rich fruit cake
     /// </summary>
     public static readonly Coding RichFruitCake = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iced fruit cake
     /// </summary>
     public static readonly Coding IcedFruitCake = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wholemeal fruit cake
     /// </summary>
     public static readonly Coding WholemealFruitCake = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gateau
     /// </summary>
     public static readonly Coding Gateau = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gingerbread
     /// </summary>
     public static readonly Coding Gingerbread = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lardy cake
     /// </summary>
     public static readonly Coding LardyCake = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Madeira cake
     /// </summary>
     public static readonly Coding MadeiraCake = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rock cake
     /// </summary>
     public static readonly Coding RockCake = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sevyiann
     /// </summary>
     public static readonly Coding Sevyiann = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sponge cake
     /// </summary>
     public static readonly Coding SpongeCake = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fatless sponge cake
     /// </summary>
     public static readonly Coding FatlessSpongeCake = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frozen sponge cake
     /// </summary>
     public static readonly Coding FrozenSpongeCake = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jam-filled sponge cake
     /// </summary>
     public static readonly Coding JamFilledSpongeCake = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fresh cream-filled sponge cake
     /// </summary>
     public static readonly Coding FreshCreamFilledSpongeCake = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sponge cake with butter icing
     /// </summary>
     public static readonly Coding SpongeCakeWithButterIcing = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sponge cake made with cake mix
     /// </summary>
     public static readonly Coding SpongeCakeMadeWithCakeMix = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swiss roll
     /// </summary>
     public static readonly Coding SwissRoll = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chocolate filled swiss roll
     /// </summary>
     public static readonly Coding ChocolateFilledSwissRoll = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jam filled swiss roll
     /// </summary>
     public static readonly Coding JamFilledSwissRoll = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Individual swiss roll
     /// </summary>
     public static readonly Coding IndividualSwissRoll = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Welsh cake
     /// </summary>
     public static readonly Coding WelshCake = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Individual cakes and pastries
     /// </summary>
     public static readonly Coding IndividualCakesAndPastries = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Asian pastry
     /// </summary>
     public static readonly Coding AsianPastry = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brandy snap
     /// </summary>
     public static readonly Coding BrandySnap = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Burfi
     /// </summary>
     public static readonly Coding Burfi = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chelsea bun
     /// </summary>
     public static readonly Coding ChelseaBun = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Choux bun
     /// </summary>
     public static readonly Coding ChouxBun = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cream horn
     /// </summary>
     public static readonly Coding CreamHorn = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crumpet
     /// </summary>
     public static readonly Coding Crumpet = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Currant bun
     /// </summary>
     public static readonly Coding CurrantBun = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Custard tart
     /// </summary>
     public static readonly Coding CustardTart = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Danish pastry
     /// </summary>
     public static readonly Coding DanishPastry = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doughnut
     /// </summary>
     public static readonly Coding Doughnut = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jam doughnut
     /// </summary>
     public static readonly Coding JamDoughnut = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ring doughnut
     /// </summary>
     public static readonly Coding RingDoughnut = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fresh cream doughnut
     /// </summary>
     public static readonly Coding FreshCreamDoughnut = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eccles cake
     /// </summary>
     public static readonly Coding EcclesCake = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eclair
     /// </summary>
     public static readonly Coding Eclair = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flapjack
     /// </summary>
     public static readonly Coding Flapjack = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Greek pastry
     /// </summary>
     public static readonly Coding GreekPastry = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gulab jamen
     /// </summary>
     public static readonly Coding GulabJamen = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Halwa
     /// </summary>
     public static readonly Coding Halwa = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hot cross bun
     /// </summary>
     public static readonly Coding HotCrossBun = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jam tart
     /// </summary>
     public static readonly Coding JamTart = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jellabi
     /// </summary>
     public static readonly Coding Jellabi = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Melting moment
     /// </summary>
     public static readonly Coding MeltingMoment = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mince pie
     /// </summary>
     public static readonly Coding MincePie = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mincemeat tart
     /// </summary>
     public static readonly Coding MincemeatTart = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muffin
     /// </summary>
     public static readonly Coding Muffin = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pinni
     /// </summary>
     public static readonly Coding Pinni = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rum baba
     /// </summary>
     public static readonly Coding RumBaba = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scone
     /// </summary>
     public static readonly Coding Scone = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cheese scone
     /// </summary>
     public static readonly Coding CheeseScone = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fruit scone
     /// </summary>
     public static readonly Coding FruitScone = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain scone
     /// </summary>
     public static readonly Coding PlainScone = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potato scone
     /// </summary>
     public static readonly Coding PotatoScone = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wholemeal scone
     /// </summary>
     public static readonly Coding WholemealScone = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wholemeal fruit scone
     /// </summary>
     public static readonly Coding WholemealFruitScone = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scotch pancake
     /// </summary>
     public static readonly Coding ScotchPancake = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shortbread
     /// </summary>
     public static readonly Coding Shortbread = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Strawberry tartlet
     /// </summary>
     public static readonly Coding StrawberryTartlet = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Teacake
     /// </summary>
     public static readonly Coding Teacake = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vanilla slice
     /// </summary>
     public static readonly Coding VanillaSlice = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Waffle
     /// </summary>
     public static readonly Coding Waffle = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arrowroot
     /// </summary>
     public static readonly Coding Arrowroot = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pearl barley
     /// </summary>
     public static readonly Coding PearlBarley = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whole grain barley
     /// </summary>
     public static readonly Coding WholeGrainBarley = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Buckwheat - cereal
     /// </summary>
     public static readonly Coding BuckwheatCereal = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bulgur wheat
     /// </summary>
     public static readonly Coding BulgurWheat = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oatmeal
     /// </summary>
     public static readonly Coding Oatmeal = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Popcorn
     /// </summary>
     public static readonly Coding Popcorn = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain popcorn
     /// </summary>
     public static readonly Coding PlainPopcorn = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sweet popcorn
     /// </summary>
     public static readonly Coding SweetPopcorn = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salted popcorn
     /// </summary>
     public static readonly Coding SaltedPopcorn = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Buttered popcorn
     /// </summary>
     public static readonly Coding ButteredPopcorn = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sago
     /// </summary>
     public static readonly Coding Sago = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Semolina
     /// </summary>
     public static readonly Coding Semolina = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tapioca
     /// </summary>
     public static readonly Coding Tapioca = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wheatgerm
     /// </summary>
     public static readonly Coding Wheatgerm = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Noodles
     /// </summary>
     public static readonly Coding Noodles = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Egg noodles
     /// </summary>
     public static readonly Coding EggNoodles = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried noodles
     /// </summary>
     public static readonly Coding FriedNoodles = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain noodles
     /// </summary>
     public static readonly Coding PlainNoodles = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pot noodles
     /// </summary>
     public static readonly Coding PotNoodles = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pasta
     /// </summary>
     public static readonly Coding Pasta = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cannelloni
     /// </summary>
     public static readonly Coding Cannelloni = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macaroni
     /// </summary>
     public static readonly Coding Macaroni = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ravioli
     /// </summary>
     public static readonly Coding Ravioli = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spaghetti
     /// </summary>
     public static readonly Coding Spaghetti = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White spaghetti
     /// </summary>
     public static readonly Coding WhiteSpaghetti = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wholemeal spaghetti
     /// </summary>
     public static readonly Coding WholemealSpaghetti = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned spaghetti
     /// </summary>
     public static readonly Coding TinnedSpaghetti = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vermicelli
     /// </summary>
     public static readonly Coding Vermicelli = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pastry
     /// </summary>
     public static readonly Coding Pastry = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Choux pastry
     /// </summary>
     public static readonly Coding ChouxPastry = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flaky pastry
     /// </summary>
     public static readonly Coding FlakyPastry = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flan case pastry
     /// </summary>
     public static readonly Coding FlanCasePastry = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Puff pastry
     /// </summary>
     public static readonly Coding PuffPastry = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shortcrust pastry
     /// </summary>
     public static readonly Coding ShortcrustPastry = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wholemeal pastry
     /// </summary>
     public static readonly Coding WholemealPastry = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brown rice
     /// </summary>
     public static readonly Coding BrownRice = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Red rice
     /// </summary>
     public static readonly Coding RedRice = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Savory rice
     /// </summary>
     public static readonly Coding SavoryRice = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White rice
     /// </summary>
     public static readonly Coding WhiteRice = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dairy foods
     /// </summary>
     public static readonly Coding DairyFoods = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gold top milk
     /// </summary>
     public static readonly Coding GoldTopMilk = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flavored cow's milk
     /// </summary>
     public static readonly Coding FlavoredCowQuoteSMilk = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Semi-skimmed milk
     /// </summary>
     public static readonly Coding SemiSkimmedMilk = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calcium fortified semi-skimmed milk
     /// </summary>
     public static readonly Coding CalciumFortifiedSemiSkimmedMilk = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calcium fortified skimmed milk
     /// </summary>
     public static readonly Coding CalciumFortifiedSkimmedMilk = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sterilized milk
     /// </summary>
     public static readonly Coding SterilizedMilk = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whole milk
     /// </summary>
     public static readonly Coding WholeMilk = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calcium fortified whole milk
     /// </summary>
     public static readonly Coding CalciumFortifiedWholeMilk = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Buttermilk
     /// </summary>
     public static readonly Coding Buttermilk = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whey
     /// </summary>
     public static readonly Coding Whey = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried milk
     /// </summary>
     public static readonly Coding DriedMilk = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Buttermilk powder
     /// </summary>
     public static readonly Coding ButtermilkPowder = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried goat's milk
     /// </summary>
     public static readonly Coding DriedGoatQuoteSMilk = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried cow's milk
     /// </summary>
     public static readonly Coding DriedCowQuoteSMilk = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried semi-skimmed cow's milk
     /// </summary>
     public static readonly Coding DriedSemiSkimmedCowQuoteSMilk = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skimmed milk powder
     /// </summary>
     public static readonly Coding SkimmedMilkPowder = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried skimmed cow's milk with vegetable fat
     /// </summary>
     public static readonly Coding DriedSkimmedCowQuoteSMilkWithVegetableFat = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried whole milk
     /// </summary>
     public static readonly Coding DriedWholeMilk = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried soya milk
     /// </summary>
     public static readonly Coding DriedSoyaMilk = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried whey
     /// </summary>
     public static readonly Coding DriedWhey = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned milk
     /// </summary>
     public static readonly Coding TinnedMilk = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Condensed milk
     /// </summary>
     public static readonly Coding CondensedMilk = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skimmed sweetened condensed milk
     /// </summary>
     public static readonly Coding SkimmedSweetenedCondensedMilk = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whole sweetened condensed milk
     /// </summary>
     public static readonly Coding WholeSweetenedCondensedMilk = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evaporated milk
     /// </summary>
     public static readonly Coding EvaporatedMilk = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low fat evaporated milk
     /// </summary>
     public static readonly Coding LowFatEvaporatedMilk = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breast milk
     /// </summary>
     public static readonly Coding BreastMilk = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// EBM - Expressed breast milk
     /// </summary>
     public static readonly Coding EBMExpressedBreastMilk = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sheep milk
     /// </summary>
     public static readonly Coding SheepMilk = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soya milk
     /// </summary>
     public static readonly Coding SoyaMilk = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Junior milk
     /// </summary>
     public static readonly Coding JuniorMilk = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fresh cream
     /// </summary>
     public static readonly Coding FreshCream = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Half-cream
     /// </summary>
     public static readonly Coding HalfCream = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Double cream
     /// </summary>
     public static readonly Coding DoubleCream = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clotted cream
     /// </summary>
     public static readonly Coding ClottedCream = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Single cream
     /// </summary>
     public static readonly Coding SingleCream = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soured cream
     /// </summary>
     public static readonly Coding SouredCream = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whipping cream
     /// </summary>
     public static readonly Coding WhippingCream = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned cream
     /// </summary>
     public static readonly Coding TinnedCream = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Imitation cream
     /// </summary>
     public static readonly Coding ImitationCream = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Smatana
     /// </summary>
     public static readonly Coding Smatana = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cheese spread
     /// </summary>
     public static readonly Coding CheeseSpread = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain cheese spread
     /// </summary>
     public static readonly Coding PlainCheeseSpread = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flavored cheese spread
     /// </summary>
     public static readonly Coding FlavoredCheeseSpread = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lactic cheese spread
     /// </summary>
     public static readonly Coding LacticCheeseSpread = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low fat cheese spread
     /// </summary>
     public static readonly Coding LowFatCheeseSpread = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cottage cheese
     /// </summary>
     public static readonly Coding CottageCheese = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain cottage cheese
     /// </summary>
     public static readonly Coding PlainCottageCheese = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Very low fat cottage cheese
     /// </summary>
     public static readonly Coding VeryLowFatCottageCheese = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cottage cheese with additions
     /// </summary>
     public static readonly Coding CottageCheeseWithAdditions = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hard cheese
     /// </summary>
     public static readonly Coding HardCheese = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Caerphilly cheese
     /// </summary>
     public static readonly Coding CaerphillyCheese = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cheddar cheese
     /// </summary>
     public static readonly Coding CheddarCheese = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reduced fat cheddar cheese
     /// </summary>
     public static readonly Coding ReducedFatCheddarCheese = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vegetarian cheddar cheese
     /// </summary>
     public static readonly Coding VegetarianCheddarCheese = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cheshire cheese
     /// </summary>
     public static readonly Coding CheshireCheese = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reduced fat Cheshire cheese
     /// </summary>
     public static readonly Coding ReducedFatCheshireCheese = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Derby cheese
     /// </summary>
     public static readonly Coding DerbyCheese = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Danish blue cheese
     /// </summary>
     public static readonly Coding DanishBlueCheese = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Double Gloucester cheese
     /// </summary>
     public static readonly Coding DoubleGloucesterCheese = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Edam cheese
     /// </summary>
     public static readonly Coding EdamCheese = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Edam-type cheese reduced fat
     /// </summary>
     public static readonly Coding EdamTypeCheeseReducedFat = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Emmental cheese
     /// </summary>
     public static readonly Coding EmmentalCheese = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Feta cheese
     /// </summary>
     public static readonly Coding FetaCheese = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gouda cheese
     /// </summary>
     public static readonly Coding GoudaCheese = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gruyere cheese
     /// </summary>
     public static readonly Coding GruyereCheese = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lancashire cheese
     /// </summary>
     public static readonly Coding LancashireCheese = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leicester cheese
     /// </summary>
     public static readonly Coding LeicesterCheese = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mozzarella cheese
     /// </summary>
     public static readonly Coding MozzarellaCheese = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parmesan cheese
     /// </summary>
     public static readonly Coding ParmesanCheese = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Red Windsor cheese
     /// </summary>
     public static readonly Coding RedWindsorCheese = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roquefort cheese
     /// </summary>
     public static readonly Coding RoquefortCheese = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sage Derby cheese
     /// </summary>
     public static readonly Coding SageDerbyCheese = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soya cheese
     /// </summary>
     public static readonly Coding SoyaCheese = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stilton - white cheese
     /// </summary>
     public static readonly Coding StiltonWhiteCheese = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stilton - blue cheese
     /// </summary>
     public static readonly Coding StiltonBlueCheese = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wensleydale cheese
     /// </summary>
     public static readonly Coding WensleydaleCheese = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Processed cheese
     /// </summary>
     public static readonly Coding ProcessedCheese = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Smoked processed cheese
     /// </summary>
     public static readonly Coding SmokedProcessedCheese = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft cheese
     /// </summary>
     public static readonly Coding SoftCheese = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cream cheese
     /// </summary>
     public static readonly Coding CreamCheese = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medium fat cream cheese
     /// </summary>
     public static readonly Coding MediumFatCreamCheese = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low fat cream cheese
     /// </summary>
     public static readonly Coding LowFatCreamCheese = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Goats milk soft cheese
     /// </summary>
     public static readonly Coding GoatsMilkSoftCheese = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ricotta cheese
     /// </summary>
     public static readonly Coding RicottaCheese = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft mold ripened cheese
     /// </summary>
     public static readonly Coding SoftMoldRipenedCheese = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brie cheese
     /// </summary>
     public static readonly Coding BrieCheese = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Camembert cheese
     /// </summary>
     public static readonly Coding CamembertCheese = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fromage frais
     /// </summary>
     public static readonly Coding FromageFrais = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain fromage frais
     /// </summary>
     public static readonly Coding PlainFromageFrais = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flavored fromage frais
     /// </summary>
     public static readonly Coding FlavoredFromageFrais = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fruit fromage frais
     /// </summary>
     public static readonly Coding FruitFromageFrais = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Very low fat fromage frais
     /// </summary>
     public static readonly Coding VeryLowFatFromageFrais = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Quark
     /// </summary>
     public static readonly Coding Quark = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Yoghurt
     /// </summary>
     public static readonly Coding Yoghurt = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whole milk yogurt
     /// </summary>
     public static readonly Coding WholeMilkYogurt = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whole milk plain yogurt
     /// </summary>
     public static readonly Coding WholeMilkPlainYogurt = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whole milk fruit yogurt
     /// </summary>
     public static readonly Coding WholeMilkFruitYogurt = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whole milk flavored yoghurt
     /// </summary>
     public static readonly Coding WholeMilkFlavoredYoghurt = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Live yogurt
     /// </summary>
     public static readonly Coding LiveYogurt = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Organic yogurt
     /// </summary>
     public static readonly Coding OrganicYogurt = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Goat's milk yogurt
     /// </summary>
     public static readonly Coding GoatQuoteSMilkYogurt = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low fat yogurt
     /// </summary>
     public static readonly Coding LowFatYogurt = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain low fat yogurt
     /// </summary>
     public static readonly Coding PlainLowFatYogurt = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flavored low fat yoghurt
     /// </summary>
     public static readonly Coding FlavoredLowFatYoghurt = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fruit low fat yogurt
     /// </summary>
     public static readonly Coding FruitLowFatYogurt = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muesli-nut low fat yogurt
     /// </summary>
     public static readonly Coding MuesliNutLowFatYogurt = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low calorie yogurt
     /// </summary>
     public static readonly Coding LowCalorieYogurt = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drinking yogurt
     /// </summary>
     public static readonly Coding DrinkingYogurt = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Greek yogurt
     /// </summary>
     public static readonly Coding GreekYogurt = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sheep's milk yogurt
     /// </summary>
     public static readonly Coding SheepQuoteSMilkYogurt = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soya milk yogurt
     /// </summary>
     public static readonly Coding SoyaMilkYogurt = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried egg
     /// </summary>
     public static readonly Coding DriedEgg = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// BE - Boiled egg
     /// </summary>
     public static readonly Coding BEBoiledEgg = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried egg
     /// </summary>
     public static readonly Coding FriedEgg = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PE - Poached egg
     /// </summary>
     public static readonly Coding PEPoachedEgg = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Raw egg
     /// </summary>
     public static readonly Coding RawEgg = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scrambled egg
     /// </summary>
     public static readonly Coding ScrambledEgg = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fat and oil
     /// </summary>
     public static readonly Coding FatAndOil = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Butter
     /// </summary>
     public static readonly Coding Butter = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blended spread
     /// </summary>
     public static readonly Coding BlendedSpread = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Margarine
     /// </summary>
     public static readonly Coding Margarine = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hard vegetable fat margarine
     /// </summary>
     public static readonly Coding HardVegetableFatMargarine = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hard animal and vegetable fat margarine
     /// </summary>
     public static readonly Coding HardAnimalAndVegetableFatMargarine = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft polyunsaturated fat margarine
     /// </summary>
     public static readonly Coding SoftPolyunsaturatedFatMargarine = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Olive oil margarine
     /// </summary>
     public static readonly Coding OliveOilMargarine = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low fat spread
     /// </summary>
     public static readonly Coding LowFatSpread = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// VLF - Very low fat spread
     /// </summary>
     public static readonly Coding VLFVeryLowFatSpread = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dripping
     /// </summary>
     public static readonly Coding Dripping = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lard
     /// </summary>
     public static readonly Coding Lard = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suet
     /// </summary>
     public static readonly Coding Suet = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ghee
     /// </summary>
     public static readonly Coding Ghee = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Butter ghee
     /// </summary>
     public static readonly Coding ButterGhee = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Palm oil ghee
     /// </summary>
     public static readonly Coding PalmOilGhee = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vegetable oil ghee
     /// </summary>
     public static readonly Coding VegetableOilGhee = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Palm oil
     /// </summary>
     public static readonly Coding PalmOil = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rapeseed oil
     /// </summary>
     public static readonly Coding RapeseedOil = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rapeseed oil high erucic acid
     /// </summary>
     public static readonly Coding RapeseedOilHighErucicAcid = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rapeseed oil low erucic acid
     /// </summary>
     public static readonly Coding RapeseedOilLowErucicAcid = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soya oil
     /// </summary>
     public static readonly Coding SoyaOil = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sunflowerseed oil
     /// </summary>
     public static readonly Coding SunflowerseedOil = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blended vegetable oil
     /// </summary>
     public static readonly Coding BlendedVegetableOil = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polyunsaturated vegetable oil
     /// </summary>
     public static readonly Coding PolyunsaturatedVegetableOil = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Red meat
     /// </summary>
     public static readonly Coding RedMeat = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beef
     /// </summary>
     public static readonly Coding Beef = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beef steak
     /// </summary>
     public static readonly Coding BeefSteak = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled beef steak
     /// </summary>
     public static readonly Coding GrilledBeefSteak = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried beef steak
     /// </summary>
     public static readonly Coding FriedBeefSteak = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boiled beef
     /// </summary>
     public static readonly Coding BoiledBeef = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boiled salt beef
     /// </summary>
     public static readonly Coding BoiledSaltBeef = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Minced beef
     /// </summary>
     public static readonly Coding MincedBeef = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stewed minced beef
     /// </summary>
     public static readonly Coding StewedMincedBeef = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stewed extra-lean minced beef
     /// </summary>
     public static readonly Coding StewedExtraLeanMincedBeef = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast beef
     /// </summary>
     public static readonly Coding RoastBeef = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lean roast beef
     /// </summary>
     public static readonly Coding LeanRoastBeef = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stewed beef
     /// </summary>
     public static readonly Coding StewedBeef = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bacon
     /// </summary>
     public static readonly Coding Bacon = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boiled bacon
     /// </summary>
     public static readonly Coding BoiledBacon = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried bacon
     /// </summary>
     public static readonly Coding FriedBacon = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled bacon
     /// </summary>
     public static readonly Coding GrilledBacon = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gammon
     /// </summary>
     public static readonly Coding Gammon = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast ham
     /// </summary>
     public static readonly Coding RoastHam = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pork
     /// </summary>
     public static readonly Coding Pork = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried pork chop
     /// </summary>
     public static readonly Coding FriedPorkChop = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled pork chop
     /// </summary>
     public static readonly Coding GrilledPorkChop = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Minced pork
     /// </summary>
     public static readonly Coding MincedPork = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast pork
     /// </summary>
     public static readonly Coding RoastPork = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lean roast pork
     /// </summary>
     public static readonly Coding LeanRoastPork = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast belly pork
     /// </summary>
     public static readonly Coding RoastBellyPork = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boiled ham
     /// </summary>
     public static readonly Coding BoiledHam = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lamb
     /// </summary>
     public static readonly Coding Lamb = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried lamb chop
     /// </summary>
     public static readonly Coding FriedLambChop = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled lamb chop
     /// </summary>
     public static readonly Coding GrilledLambChop = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Minced lamb
     /// </summary>
     public static readonly Coding MincedLamb = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast lamb
     /// </summary>
     public static readonly Coding RoastLamb = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lean roast lamb
     /// </summary>
     public static readonly Coding LeanRoastLamb = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast leg of lamb
     /// </summary>
     public static readonly Coding RoastLegOfLamb = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast shoulder of lamb
     /// </summary>
     public static readonly Coding RoastShoulderOfLamb = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast breast of lamb
     /// </summary>
     public static readonly Coding RoastBreastOfLamb = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stewed lamb
     /// </summary>
     public static readonly Coding StewedLamb = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Veal
     /// </summary>
     public static readonly Coding Veal = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried veal
     /// </summary>
     public static readonly Coding FriedVeal = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled veal
     /// </summary>
     public static readonly Coding GrilledVeal = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chicken
     /// </summary>
     public static readonly Coding Chicken = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boiled chicken
     /// </summary>
     public static readonly Coding BoiledChicken = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried chicken
     /// </summary>
     public static readonly Coding FriedChicken = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried chicken in batter
     /// </summary>
     public static readonly Coding FriedChickenInBatter = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried chicken in breadcrumb
     /// </summary>
     public static readonly Coding FriedChickenInBreadcrumb = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried chicken nuggets
     /// </summary>
     public static readonly Coding FriedChickenNuggets = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast chicken
     /// </summary>
     public static readonly Coding RoastChicken = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Minced chicken
     /// </summary>
     public static readonly Coding MincedChicken = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Duck - meat
     /// </summary>
     public static readonly Coding DuckMeat = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast duck
     /// </summary>
     public static readonly Coding RoastDuck = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Goose
     /// </summary>
     public static readonly Coding Goose = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast goose
     /// </summary>
     public static readonly Coding RoastGoose = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Turkey - meat
     /// </summary>
     public static readonly Coding TurkeyMeat = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast turkey
     /// </summary>
     public static readonly Coding RoastTurkey = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stewed turkey
     /// </summary>
     public static readonly Coding StewedTurkey = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Minced turkey
     /// </summary>
     public static readonly Coding MincedTurkey = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Game - meat
     /// </summary>
     public static readonly Coding GameMeat = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grouse - meat
     /// </summary>
     public static readonly Coding GrouseMeat = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast grouse
     /// </summary>
     public static readonly Coding RoastGrouse = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Partridge - meat
     /// </summary>
     public static readonly Coding PartridgeMeat = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast partridge
     /// </summary>
     public static readonly Coding RoastPartridge = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pheasant
     /// </summary>
     public static readonly Coding Pheasant = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast pheasant
     /// </summary>
     public static readonly Coding RoastPheasant = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast pigeon
     /// </summary>
     public static readonly Coding RoastPigeon = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast venison
     /// </summary>
     public static readonly Coding RoastVenison = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stewed hare
     /// </summary>
     public static readonly Coding StewedHare = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stewed rabbit
     /// </summary>
     public static readonly Coding StewedRabbit = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Offal
     /// </summary>
     public static readonly Coding Offal = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heart - meat
     /// </summary>
     public static readonly Coding HeartMeat = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stewed heart
     /// </summary>
     public static readonly Coding StewedHeart = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast heart
     /// </summary>
     public static readonly Coding RoastHeart = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kidney - meat
     /// </summary>
     public static readonly Coding KidneyMeat = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried kidney
     /// </summary>
     public static readonly Coding FriedKidney = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled kidney
     /// </summary>
     public static readonly Coding GrilledKidney = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stewed kidney
     /// </summary>
     public static readonly Coding StewedKidney = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liver - meat
     /// </summary>
     public static readonly Coding LiverMeat = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried liver
     /// </summary>
     public static readonly Coding FriedLiver = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled liver
     /// </summary>
     public static readonly Coding GrilledLiver = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stewed liver
     /// </summary>
     public static readonly Coding StewedLiver = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oxtail
     /// </summary>
     public static readonly Coding Oxtail = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stewed oxtail
     /// </summary>
     public static readonly Coding StewedOxtail = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sweetbread
     /// </summary>
     public static readonly Coding Sweetbread = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried sweetbread
     /// </summary>
     public static readonly Coding FriedSweetbread = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tongue - meat
     /// </summary>
     public static readonly Coding TongueMeat = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tripe
     /// </summary>
     public static readonly Coding Tripe = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dressed tripe
     /// </summary>
     public static readonly Coding DressedTripe = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dressed stewed tripe
     /// </summary>
     public static readonly Coding DressedStewedTripe = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Meat products
     /// </summary>
     public static readonly Coding MeatProducts = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Meat burger
     /// </summary>
     public static readonly Coding MeatBurger = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beef burger
     /// </summary>
     public static readonly Coding BeefBurger = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pork burger
     /// </summary>
     public static readonly Coding PorkBurger = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lamb burger
     /// </summary>
     public static readonly Coding LambBurger = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chicken burger
     /// </summary>
     public static readonly Coding ChickenBurger = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Turkey burger
     /// </summary>
     public static readonly Coding TurkeyBurger = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Black pudding
     /// </summary>
     public static readonly Coding BlackPudding = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brawn
     /// </summary>
     public static readonly Coding Brawn = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Faggot
     /// </summary>
     public static readonly Coding Faggot = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Haggis
     /// </summary>
     public static readonly Coding Haggis = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liver pate
     /// </summary>
     public static readonly Coding LiverPate = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// LF - Low fat liver pate
     /// </summary>
     public static readonly Coding LFLowFatLiverPate = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Meat paste
     /// </summary>
     public static readonly Coding MeatPaste = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polony
     /// </summary>
     public static readonly Coding Polony = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salami
     /// </summary>
     public static readonly Coding Salami = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Saveloy
     /// </summary>
     public static readonly Coding Saveloy = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sausage
     /// </summary>
     public static readonly Coding Sausage = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frankfurter
     /// </summary>
     public static readonly Coding Frankfurter = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// LF - Low fat sausage
     /// </summary>
     public static readonly Coding LFLowFatSausage = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beef sausage
     /// </summary>
     public static readonly Coding BeefSausage = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// LF - Low fat beef sausage
     /// </summary>
     public static readonly Coding LFLowFatBeefSausage = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pork sausage
     /// </summary>
     public static readonly Coding PorkSausage = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// LF - Low fat pork sausage
     /// </summary>
     public static readonly Coding LFLowFatPorkSausage = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Turkey sausage
     /// </summary>
     public static readonly Coding TurkeySausage = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low fat turkey sausage
     /// </summary>
     public static readonly Coding LowFatTurkeySausage = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liver sausage
     /// </summary>
     public static readonly Coding LiverSausage = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White pudding
     /// </summary>
     public static readonly Coding WhitePudding = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Processed meat
     /// </summary>
     public static readonly Coding ProcessedMeat = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chicken roll
     /// </summary>
     public static readonly Coding ChickenRoll = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chopped ham and pork
     /// </summary>
     public static readonly Coding ChoppedHamAndPork = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corned beef
     /// </summary>
     public static readonly Coding CornedBeef = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Luncheon meat
     /// </summary>
     public static readonly Coding LuncheonMeat = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White fish
     /// </summary>
     public static readonly Coding WhiteFish = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bele
     /// </summary>
     public static readonly Coding Bele = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boal
     /// </summary>
     public static readonly Coding Boal = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bream
     /// </summary>
     public static readonly Coding Bream = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chinese salted fish
     /// </summary>
     public static readonly Coding ChineseSaltedFish = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chital
     /// </summary>
     public static readonly Coding Chital = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Baked cod
     /// </summary>
     public static readonly Coding BakedCod = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poached cod
     /// </summary>
     public static readonly Coding PoachedCod = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled cod
     /// </summary>
     public static readonly Coding GrilledCod = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried cod
     /// </summary>
     public static readonly Coding FriedCod = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried cod in batter
     /// </summary>
     public static readonly Coding FriedCodInBatter = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried cod in breadcrumbs
     /// </summary>
     public static readonly Coding FriedCodInBreadcrumbs = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried cod goujons in breadcrumbs
     /// </summary>
     public static readonly Coding FriedCodGoujonsInBreadcrumbs = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cod in batter baked in the oven
     /// </summary>
     public static readonly Coding CodInBatterBakedInTheOven = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried salted cod
     /// </summary>
     public static readonly Coding DriedSaltedCod = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Smoked poached cod
     /// </summary>
     public static readonly Coding SmokedPoachedCod = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dab
     /// </summary>
     public static readonly Coding Dab = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poached haddock
     /// </summary>
     public static readonly Coding PoachedHaddock = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried haddock
     /// </summary>
     public static readonly Coding FriedHaddock = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried haddock in batter
     /// </summary>
     public static readonly Coding FriedHaddockInBatter = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried haddock in breadcrumbs
     /// </summary>
     public static readonly Coding FriedHaddockInBreadcrumbs = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried haddock goujons in breadcrumbs
     /// </summary>
     public static readonly Coding FriedHaddockGoujonsInBreadcrumbs = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Smoked poached haddock
     /// </summary>
     public static readonly Coding SmokedPoachedHaddock = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hake
     /// </summary>
     public static readonly Coding Hake = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Halibut
     /// </summary>
     public static readonly Coding Halibut = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hoki
     /// </summary>
     public static readonly Coding Hoki = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried hoki in batter
     /// </summary>
     public static readonly Coding FriedHokiInBatter = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// John dory
     /// </summary>
     public static readonly Coding JohnDory = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kalabasu
     /// </summary>
     public static readonly Coding Kalabasu = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lemon sole
     /// </summary>
     public static readonly Coding LemonSole = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poached lemon sole
     /// </summary>
     public static readonly Coding PoachedLemonSole = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried lemon sole
     /// </summary>
     public static readonly Coding FriedLemonSole = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried lemon sole in breadcrumbs
     /// </summary>
     public static readonly Coding FriedLemonSoleInBreadcrumbs = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ling
     /// </summary>
     public static readonly Coding Ling = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monkfish
     /// </summary>
     public static readonly Coding Monkfish = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grey mullet
     /// </summary>
     public static readonly Coding GreyMullet = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Red mullet
     /// </summary>
     public static readonly Coding RedMullet = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plaice
     /// </summary>
     public static readonly Coding Plaice = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poached plaice
     /// </summary>
     public static readonly Coding PoachedPlaice = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried plaice
     /// </summary>
     public static readonly Coding FriedPlaice = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried plaice in batter
     /// </summary>
     public static readonly Coding FriedPlaiceInBatter = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried plaice in breadcrumbs
     /// </summary>
     public static readonly Coding FriedPlaiceInBreadcrumbs = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried plaice goujons in breadcrumbs
     /// </summary>
     public static readonly Coding FriedPlaiceGoujonsInBreadcrumbs = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pollack
     /// </summary>
     public static readonly Coding Pollack = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Black pomfret
     /// </summary>
     public static readonly Coding BlackPomfret = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White pomfret
     /// </summary>
     public static readonly Coding WhitePomfret = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rohu
     /// </summary>
     public static readonly Coding Rohu = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dogfish
     /// </summary>
     public static readonly Coding Dogfish = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried rock salmon in batter
     /// </summary>
     public static readonly Coding FriedRockSalmonInBatter = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Saithe
     /// </summary>
     public static readonly Coding Saithe = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shark - food
     /// </summary>
     public static readonly Coding SharkFood = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried skate in batter
     /// </summary>
     public static readonly Coding FriedSkateInBatter = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tiliapa
     /// </summary>
     public static readonly Coding Tiliapa = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Turbot
     /// </summary>
     public static readonly Coding Turbot = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whiting
     /// </summary>
     public static readonly Coding Whiting = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poached whiting
     /// </summary>
     public static readonly Coding PoachedWhiting = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried whiting
     /// </summary>
     public static readonly Coding FriedWhiting = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried whiting in breadcrumbs
     /// </summary>
     public static readonly Coding FriedWhitingInBreadcrumbs = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oily fish
     /// </summary>
     public static readonly Coding OilyFish = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bacha
     /// </summary>
     public static readonly Coding Bacha = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jellied eel
     /// </summary>
     public static readonly Coding JelliedEel = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried herring
     /// </summary>
     public static readonly Coding DriedHerring = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried herring in oatmeal
     /// </summary>
     public static readonly Coding FriedHerringInOatmeal = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled herring
     /// </summary>
     public static readonly Coding GrilledHerring = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pickled herring
     /// </summary>
     public static readonly Coding PickledHerring = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hilsa
     /// </summary>
     public static readonly Coding Hilsa = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jackfish
     /// </summary>
     public static readonly Coding Jackfish = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Katla
     /// </summary>
     public static readonly Coding Katla = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kipper
     /// </summary>
     public static readonly Coding Kipper = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poached kipper
     /// </summary>
     public static readonly Coding PoachedKipper = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled kipper
     /// </summary>
     public static readonly Coding GrilledKipper = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried mackerel
     /// </summary>
     public static readonly Coding FriedMackerel = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled mackerel
     /// </summary>
     public static readonly Coding GrilledMackerel = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Smoked mackerel
     /// </summary>
     public static readonly Coding SmokedMackerel = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled smoked mackerel
     /// </summary>
     public static readonly Coding GrilledSmokedMackerel = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orange roughy
     /// </summary>
     public static readonly Coding OrangeRoughy = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pangas
     /// </summary>
     public static readonly Coding Pangas = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled salmon
     /// </summary>
     public static readonly Coding GrilledSalmon = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poached salmon
     /// </summary>
     public static readonly Coding PoachedSalmon = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Smoked salmon
     /// </summary>
     public static readonly Coding SmokedSalmon = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salmon en croute
     /// </summary>
     public static readonly Coding SalmonEnCroute = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sardine
     /// </summary>
     public static readonly Coding Sardine = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled sardine
     /// </summary>
     public static readonly Coding GrilledSardine = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried sardine
     /// </summary>
     public static readonly Coding FriedSardine = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sprats
     /// </summary>
     public static readonly Coding Sprats = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried trout
     /// </summary>
     public static readonly Coding FriedTrout = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Baked trout
     /// </summary>
     public static readonly Coding BakedTrout = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Smoked trout
     /// </summary>
     public static readonly Coding SmokedTrout = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tuna fish
     /// </summary>
     public static readonly Coding TunaFish = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whitebait fried
     /// </summary>
     public static readonly Coding WhitebaitFried = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cockles
     /// </summary>
     public static readonly Coding Cockles = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cockles bottled in vinegar
     /// </summary>
     public static readonly Coding CocklesBottledInVinegar = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mussels
     /// </summary>
     public static readonly Coding Mussels = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prawns
     /// </summary>
     public static readonly Coding Prawns = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boiled prawns
     /// </summary>
     public static readonly Coding BoiledPrawns = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried prawns
     /// </summary>
     public static readonly Coding FriedPrawns = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried prawns in batter
     /// </summary>
     public static readonly Coding FriedPrawnsInBatter = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried prawns
     /// </summary>
     public static readonly Coding DriedPrawns = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scampi
     /// </summary>
     public static readonly Coding Scampi = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried scampi in batter
     /// </summary>
     public static readonly Coding FriedScampiInBatter = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried scampi in breadcrumbs
     /// </summary>
     public static readonly Coding FriedScampiInBreadcrumbs = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried shrimp
     /// </summary>
     public static readonly Coding FriedShrimp = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried shrimp
     /// </summary>
     public static readonly Coding DriedShrimp = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried squid
     /// </summary>
     public static readonly Coding DriedSquid = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried squid
     /// </summary>
     public static readonly Coding FriedSquid = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried squid in batter
     /// </summary>
     public static readonly Coding FriedSquidInBatter = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whelks
     /// </summary>
     public static readonly Coding Whelks = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Winkles
     /// </summary>
     public static readonly Coding Winkles = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fish products
     /// </summary>
     public static readonly Coding FishProducts = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crabstick
     /// </summary>
     public static readonly Coding Crabstick = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fish ball
     /// </summary>
     public static readonly Coding FishBall = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fishcake
     /// </summary>
     public static readonly Coding Fishcake = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled fishcake
     /// </summary>
     public static readonly Coding GrilledFishcake = new Coding
     {
@@ -5574,7 +5574,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried fishcake
     /// </summary>
     public static readonly Coding FriedFishcake = new Coding
     {
@@ -5583,7 +5583,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fish fingers
     /// </summary>
     public static readonly Coding FishFingers = new Coding
     {
@@ -5592,7 +5592,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried fish fingers
     /// </summary>
     public static readonly Coding FriedFishFingers = new Coding
     {
@@ -5601,7 +5601,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grilled fish fingers
     /// </summary>
     public static readonly Coding GrilledFishFingers = new Coding
     {
@@ -5610,7 +5610,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fish paste
     /// </summary>
     public static readonly Coding FishPaste = new Coding
     {
@@ -5619,7 +5619,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fish pate
     /// </summary>
     public static readonly Coding FishPate = new Coding
     {
@@ -5628,7 +5628,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fish pie
     /// </summary>
     public static readonly Coding FishPie = new Coding
     {
@@ -5637,7 +5637,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kedgeree
     /// </summary>
     public static readonly Coding Kedgeree = new Coding
     {
@@ -5646,7 +5646,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fish roe
     /// </summary>
     public static readonly Coding FishRoe = new Coding
     {
@@ -5655,7 +5655,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Raw hard fish roe
     /// </summary>
     public static readonly Coding RawHardFishRoe = new Coding
     {
@@ -5664,7 +5664,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried hard fish roe
     /// </summary>
     public static readonly Coding FriedHardFishRoe = new Coding
     {
@@ -5673,7 +5673,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried hard fish roe in batter
     /// </summary>
     public static readonly Coding FriedHardFishRoeInBatter = new Coding
     {
@@ -5682,7 +5682,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Raw soft fish roe
     /// </summary>
     public static readonly Coding RawSoftFishRoe = new Coding
     {
@@ -5691,7 +5691,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fried soft fish roe
     /// </summary>
     public static readonly Coding FriedSoftFishRoe = new Coding
     {
@@ -5700,7 +5700,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Seafood cocktail
     /// </summary>
     public static readonly Coding SeafoodCocktail = new Coding
     {
@@ -5709,7 +5709,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Taramasalata
     /// </summary>
     public static readonly Coding Taramasalata = new Coding
     {
@@ -5718,7 +5718,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned fish
     /// </summary>
     public static readonly Coding TinnedFish = new Coding
     {
@@ -5727,7 +5727,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anchovies canned in oil
     /// </summary>
     public static readonly Coding AnchoviesCannedInOil = new Coding
     {
@@ -5736,7 +5736,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Herring canned in tomato sauce
     /// </summary>
     public static readonly Coding HerringCannedInTomatoSauce = new Coding
     {
@@ -5745,7 +5745,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mackerel canned in tomato sauce
     /// </summary>
     public static readonly Coding MackerelCannedInTomatoSauce = new Coding
     {
@@ -5754,7 +5754,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mackerel canned in brine
     /// </summary>
     public static readonly Coding MackerelCannedInBrine = new Coding
     {
@@ -5763,7 +5763,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mussels canned in brine
     /// </summary>
     public static readonly Coding MusselsCannedInBrine = new Coding
     {
@@ -5772,7 +5772,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pilchards canned in tomato sauce
     /// </summary>
     public static readonly Coding PilchardsCannedInTomatoSauce = new Coding
     {
@@ -5781,7 +5781,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pilchards canned in brine
     /// </summary>
     public static readonly Coding PilchardsCannedInBrine = new Coding
     {
@@ -5790,7 +5790,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salmon canned in brine
     /// </summary>
     public static readonly Coding SalmonCannedInBrine = new Coding
     {
@@ -5799,7 +5799,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sardines canned in brine
     /// </summary>
     public static readonly Coding SardinesCannedInBrine = new Coding
     {
@@ -5808,7 +5808,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sardines canned in oil
     /// </summary>
     public static readonly Coding SardinesCannedInOil = new Coding
     {
@@ -5817,7 +5817,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sardines canned in tomato sauce
     /// </summary>
     public static readonly Coding SardinesCannedInTomatoSauce = new Coding
     {
@@ -5826,7 +5826,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tuna canned in brine
     /// </summary>
     public static readonly Coding TunaCannedInBrine = new Coding
     {
@@ -5835,7 +5835,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tuna canned in oil
     /// </summary>
     public static readonly Coding TunaCannedInOil = new Coding
     {
@@ -5844,7 +5844,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crab canned in brine
     /// </summary>
     public static readonly Coding CrabCannedInBrine = new Coding
     {
@@ -5853,7 +5853,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shrimps canned in brine
     /// </summary>
     public static readonly Coding ShrimpsCannedInBrine = new Coding
     {
@@ -5862,7 +5862,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abalone canned in brine
     /// </summary>
     public static readonly Coding AbaloneCannedInBrine = new Coding
     {
@@ -5871,7 +5871,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clams canned in brine
     /// </summary>
     public static readonly Coding ClamsCannedInBrine = new Coding
     {
@@ -5880,7 +5880,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vegetables pulses herbs and spices
     /// </summary>
     public static readonly Coding VegetablesPulsesHerbsAndSpices = new Coding
     {
@@ -5889,7 +5889,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alfalfa sprout
     /// </summary>
     public static readonly Coding AlfalfaSprout = new Coding
     {
@@ -5898,7 +5898,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amaranth leaf
     /// </summary>
     public static readonly Coding AmaranthLeaf = new Coding
     {
@@ -5907,7 +5907,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arrowhead
     /// </summary>
     public static readonly Coding Arrowhead = new Coding
     {
@@ -5916,7 +5916,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Artichoke
     /// </summary>
     public static readonly Coding Artichoke = new Coding
     {
@@ -5925,7 +5925,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Globe artichoke
     /// </summary>
     public static readonly Coding GlobeArtichoke = new Coding
     {
@@ -5934,7 +5934,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jerusalem artichoke
     /// </summary>
     public static readonly Coding JerusalemArtichoke = new Coding
     {
@@ -5943,7 +5943,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Asparagus
     /// </summary>
     public static readonly Coding Asparagus = new Coding
     {
@@ -5952,7 +5952,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aubergine
     /// </summary>
     public static readonly Coding Aubergine = new Coding
     {
@@ -5961,7 +5961,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beetroot
     /// </summary>
     public static readonly Coding Beetroot = new Coding
     {
@@ -5970,7 +5970,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brassica vegetable
     /// </summary>
     public static readonly Coding BrassicaVegetable = new Coding
     {
@@ -5979,7 +5979,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chinese cabbage
     /// </summary>
     public static readonly Coding ChineseCabbage = new Coding
     {
@@ -5988,7 +5988,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Red cabbage
     /// </summary>
     public static readonly Coding RedCabbage = new Coding
     {
@@ -5997,7 +5997,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Savoy cabbage
     /// </summary>
     public static readonly Coding SavoyCabbage = new Coding
     {
@@ -6006,7 +6006,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spring cabbage
     /// </summary>
     public static readonly Coding SpringCabbage = new Coding
     {
@@ -6015,7 +6015,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White cabbage
     /// </summary>
     public static readonly Coding WhiteCabbage = new Coding
     {
@@ -6024,7 +6024,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Curly kale
     /// </summary>
     public static readonly Coding CurlyKale = new Coding
     {
@@ -6033,7 +6033,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kohl rabi
     /// </summary>
     public static readonly Coding KohlRabi = new Coding
     {
@@ -6042,7 +6042,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Seakale
     /// </summary>
     public static readonly Coding Seakale = new Coding
     {
@@ -6051,7 +6051,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breadfruit
     /// </summary>
     public static readonly Coding Breadfruit = new Coding
     {
@@ -6060,7 +6060,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cassava
     /// </summary>
     public static readonly Coding Cassava = new Coding
     {
@@ -6069,7 +6069,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Celeriac
     /// </summary>
     public static readonly Coding Celeriac = new Coding
     {
@@ -6078,7 +6078,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chard
     /// </summary>
     public static readonly Coding Chard = new Coding
     {
@@ -6087,7 +6087,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cho cho
     /// </summary>
     public static readonly Coding ChoCho = new Coding
     {
@@ -6096,7 +6096,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zucchini
     /// </summary>
     public static readonly Coding Zucchini = new Coding
     {
@@ -6105,7 +6105,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cole leaf
     /// </summary>
     public static readonly Coding ColeLeaf = new Coding
     {
@@ -6114,7 +6114,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drumstick leaf
     /// </summary>
     public static readonly Coding DrumstickLeaf = new Coding
     {
@@ -6123,7 +6123,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fenugreek
     /// </summary>
     public static readonly Coding Fenugreek = new Coding
     {
@@ -6132,7 +6132,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gherkin
     /// </summary>
     public static readonly Coding Gherkin = new Coding
     {
@@ -6141,7 +6141,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jackfruit
     /// </summary>
     public static readonly Coding Jackfruit = new Coding
     {
@@ -6150,7 +6150,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lotus tuber
     /// </summary>
     public static readonly Coding LotusTuber = new Coding
     {
@@ -6159,7 +6159,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Marrow
     /// </summary>
     public static readonly Coding Marrow = new Coding
     {
@@ -6168,7 +6168,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Matoki
     /// </summary>
     public static readonly Coding Matoki = new Coding
     {
@@ -6177,7 +6177,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mustard leaf
     /// </summary>
     public static readonly Coding MustardLeaf = new Coding
     {
@@ -6186,7 +6186,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Okra
     /// </summary>
     public static readonly Coding Okra = new Coding
     {
@@ -6195,7 +6195,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spring onion
     /// </summary>
     public static readonly Coding SpringOnion = new Coding
     {
@@ -6204,7 +6204,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patra leaf
     /// </summary>
     public static readonly Coding PatraLeaf = new Coding
     {
@@ -6213,7 +6213,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plantain
     /// </summary>
     public static readonly Coding Plantain = new Coding
     {
@@ -6222,7 +6222,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pumpkin
     /// </summary>
     public static readonly Coding Pumpkin = new Coding
     {
@@ -6231,7 +6231,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Raddiccio
     /// </summary>
     public static readonly Coding Raddiccio = new Coding
     {
@@ -6240,7 +6240,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radish white - mooli
     /// </summary>
     public static readonly Coding RadishWhiteMooli = new Coding
     {
@@ -6249,7 +6249,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rape leaf
     /// </summary>
     public static readonly Coding RapeLeaf = new Coding
     {
@@ -6258,7 +6258,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salsify
     /// </summary>
     public static readonly Coding Salsify = new Coding
     {
@@ -6267,7 +6267,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Seaweed
     /// </summary>
     public static readonly Coding Seaweed = new Coding
     {
@@ -6276,7 +6276,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swede
     /// </summary>
     public static readonly Coding Swede = new Coding
     {
@@ -6285,7 +6285,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sweetcorn
     /// </summary>
     public static readonly Coding Sweetcorn = new Coding
     {
@@ -6294,7 +6294,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sweetcorn kernels
     /// </summary>
     public static readonly Coding SweetcornKernels = new Coding
     {
@@ -6303,7 +6303,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sweetcorn on-the-cob
     /// </summary>
     public static readonly Coding SweetcornOnTheCob = new Coding
     {
@@ -6312,7 +6312,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tannia
     /// </summary>
     public static readonly Coding Tannia = new Coding
     {
@@ -6321,7 +6321,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Taro
     /// </summary>
     public static readonly Coding Taro = new Coding
     {
@@ -6330,7 +6330,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Taro leaves
     /// </summary>
     public static readonly Coding TaroLeaves = new Coding
     {
@@ -6339,7 +6339,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tomato puree
     /// </summary>
     public static readonly Coding TomatoPuree = new Coding
     {
@@ -6348,7 +6348,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Turnip
     /// </summary>
     public static readonly Coding Turnip = new Coding
     {
@@ -6357,7 +6357,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Water chestnut
     /// </summary>
     public static readonly Coding WaterChestnut = new Coding
     {
@@ -6366,7 +6366,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Watercress
     /// </summary>
     public static readonly Coding Watercress = new Coding
     {
@@ -6375,7 +6375,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boiled potato
     /// </summary>
     public static readonly Coding BoiledPotato = new Coding
     {
@@ -6384,7 +6384,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potato boiled in salted water
     /// </summary>
     public static readonly Coding PotatoBoiledInSaltedWater = new Coding
     {
@@ -6393,7 +6393,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potato boiled in unsalted water
     /// </summary>
     public static readonly Coding PotatoBoiledInUnsaltedWater = new Coding
     {
@@ -6402,7 +6402,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// French fries
     /// </summary>
     public static readonly Coding FrenchFries = new Coding
     {
@@ -6411,7 +6411,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thick cut French fries
     /// </summary>
     public static readonly Coding ThickCutFrenchFries = new Coding
     {
@@ -6420,7 +6420,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thin cut French fries
     /// </summary>
     public static readonly Coding ThinCutFrenchFries = new Coding
     {
@@ -6429,7 +6429,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crinkle cut chips
     /// </summary>
     public static readonly Coding CrinkleCutChips = new Coding
     {
@@ -6438,7 +6438,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// French fries cooked in corn oil
     /// </summary>
     public static readonly Coding FrenchFriesCookedInCornOil = new Coding
     {
@@ -6447,7 +6447,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// French fries cooked in fat drippings
     /// </summary>
     public static readonly Coding FrenchFriesCookedInFatDrippings = new Coding
     {
@@ -6456,7 +6456,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// French fries cooked in blended oil
     /// </summary>
     public static readonly Coding FrenchFriesCookedInBlendedOil = new Coding
     {
@@ -6465,7 +6465,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// French fries cooked in polyunsaturated oil
     /// </summary>
     public static readonly Coding FrenchFriesCookedInPolyunsaturatedOil = new Coding
     {
@@ -6474,7 +6474,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microwave French fries
     /// </summary>
     public static readonly Coding MicrowaveFrenchFries = new Coding
     {
@@ -6483,7 +6483,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oven French fries
     /// </summary>
     public static readonly Coding OvenFrenchFries = new Coding
     {
@@ -6492,7 +6492,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jacket potato
     /// </summary>
     public static readonly Coding JacketPotato = new Coding
     {
@@ -6501,7 +6501,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mashed potato
     /// </summary>
     public static readonly Coding MashedPotato = new Coding
     {
@@ -6510,7 +6510,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potato mashed with butter
     /// </summary>
     public static readonly Coding PotatoMashedWithButter = new Coding
     {
@@ -6519,7 +6519,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potato mashed with margarine
     /// </summary>
     public static readonly Coding PotatoMashedWithMargarine = new Coding
     {
@@ -6528,7 +6528,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potato mashed with milk
     /// </summary>
     public static readonly Coding PotatoMashedWithMilk = new Coding
     {
@@ -6537,7 +6537,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potato mashed with polyunsaturated margarine
     /// </summary>
     public static readonly Coding PotatoMashedWithPolyunsaturatedMargarine = new Coding
     {
@@ -6546,7 +6546,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roast potato
     /// </summary>
     public static readonly Coding RoastPotato = new Coding
     {
@@ -6555,7 +6555,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potato roasted in vegetable oil
     /// </summary>
     public static readonly Coding PotatoRoastedInVegetableOil = new Coding
     {
@@ -6564,7 +6564,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potato roasted in polyunsaturated oil
     /// </summary>
     public static readonly Coding PotatoRoastedInPolyunsaturatedOil = new Coding
     {
@@ -6573,7 +6573,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potato roasted in dripping
     /// </summary>
     public static readonly Coding PotatoRoastedInDripping = new Coding
     {
@@ -6582,7 +6582,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned potato
     /// </summary>
     public static readonly Coding TinnedPotato = new Coding
     {
@@ -6591,7 +6591,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potato tinned in salted water
     /// </summary>
     public static readonly Coding PotatoTinnedInSaltedWater = new Coding
     {
@@ -6600,7 +6600,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potato tinned in unsalted water
     /// </summary>
     public static readonly Coding PotatoTinnedInUnsaltedWater = new Coding
     {
@@ -6609,7 +6609,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Instant potato
     /// </summary>
     public static readonly Coding InstantPotato = new Coding
     {
@@ -6618,7 +6618,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Instant potato made up with water
     /// </summary>
     public static readonly Coding InstantPotatoMadeUpWithWater = new Coding
     {
@@ -6627,7 +6627,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Instant potato made up with semi-skimmed milk
     /// </summary>
     public static readonly Coding InstantPotatoMadeUpWithSemiSkimmedMilk = new Coding
     {
@@ -6636,7 +6636,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Instant potato made up with skimmed milk
     /// </summary>
     public static readonly Coding InstantPotatoMadeUpWithSkimmedMilk = new Coding
     {
@@ -6645,7 +6645,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Instant potato made up with whole milk
     /// </summary>
     public static readonly Coding InstantPotatoMadeUpWithWholeMilk = new Coding
     {
@@ -6654,7 +6654,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potato croquette fried in blended oil
     /// </summary>
     public static readonly Coding PotatoCroquetteFriedInBlendedOil = new Coding
     {
@@ -6663,7 +6663,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potato waffle
     /// </summary>
     public static readonly Coding PotatoWaffle = new Coding
     {
@@ -6672,7 +6672,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulse vegetables
     /// </summary>
     public static readonly Coding PulseVegetables = new Coding
     {
@@ -6681,7 +6681,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned beans
     /// </summary>
     public static readonly Coding CannedBeans = new Coding
     {
@@ -6690,7 +6690,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Baked beans
     /// </summary>
     public static readonly Coding BakedBeans = new Coding
     {
@@ -6699,7 +6699,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Baked beans canned in tomato sauce
     /// </summary>
     public static readonly Coding BakedBeansCannedInTomatoSauce = new Coding
     {
@@ -6708,7 +6708,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Baked beans canned in tomato sauce reduced sugar
     /// </summary>
     public static readonly Coding BakedBeansCannedInTomatoSauceReducedSugar = new Coding
     {
@@ -6717,7 +6717,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Baked beans canned in tomato sauce reduced salt
     /// </summary>
     public static readonly Coding BakedBeansCannedInTomatoSauceReducedSalt = new Coding
     {
@@ -6726,7 +6726,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Baked beans canned in tomato sauce with burgers
     /// </summary>
     public static readonly Coding BakedBeansCannedInTomatoSauceWithBurgers = new Coding
     {
@@ -6735,7 +6735,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Baked beans canned in tomato sauce with pork sausages
     /// </summary>
     public static readonly Coding BakedBeansCannedInTomatoSauceWithPorkSausages = new Coding
     {
@@ -6744,7 +6744,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Balor beans canned
     /// </summary>
     public static readonly Coding BalorBeansCanned = new Coding
     {
@@ -6753,7 +6753,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Barbecue beans canned in sauce
     /// </summary>
     public static readonly Coding BarbecueBeansCannedInSauce = new Coding
     {
@@ -6762,7 +6762,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned mung beansprouts
     /// </summary>
     public static readonly Coding CannedMungBeansprouts = new Coding
     {
@@ -6771,7 +6771,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned broad beans
     /// </summary>
     public static readonly Coding CannedBroadBeans = new Coding
     {
@@ -6780,7 +6780,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned butter beans
     /// </summary>
     public static readonly Coding CannedButterBeans = new Coding
     {
@@ -6789,7 +6789,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned chick peas
     /// </summary>
     public static readonly Coding CannedChickPeas = new Coding
     {
@@ -6798,7 +6798,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned chili beans
     /// </summary>
     public static readonly Coding CannedChiliBeans = new Coding
     {
@@ -6807,7 +6807,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned haricot beans
     /// </summary>
     public static readonly Coding CannedHaricotBeans = new Coding
     {
@@ -6816,7 +6816,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned lilva beans
     /// </summary>
     public static readonly Coding CannedLilvaBeans = new Coding
     {
@@ -6825,7 +6825,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned lentils in tomato sauce
     /// </summary>
     public static readonly Coding CannedLentilsInTomatoSauce = new Coding
     {
@@ -6834,7 +6834,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned papri beans
     /// </summary>
     public static readonly Coding CannedPapriBeans = new Coding
     {
@@ -6843,7 +6843,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned peas
     /// </summary>
     public static readonly Coding CannedPeas = new Coding
     {
@@ -6852,7 +6852,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned garden peas
     /// </summary>
     public static readonly Coding CannedGardenPeas = new Coding
     {
@@ -6861,7 +6861,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned marrowfat peas
     /// </summary>
     public static readonly Coding CannedMarrowfatPeas = new Coding
     {
@@ -6870,7 +6870,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned mushy peas
     /// </summary>
     public static readonly Coding CannedMushyPeas = new Coding
     {
@@ -6879,7 +6879,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned pease pudding
     /// </summary>
     public static readonly Coding CannedPeasePudding = new Coding
     {
@@ -6888,7 +6888,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned red kidney beans
     /// </summary>
     public static readonly Coding CannedRedKidneyBeans = new Coding
     {
@@ -6897,7 +6897,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aduki beans
     /// </summary>
     public static readonly Coding AdukiBeans = new Coding
     {
@@ -6906,7 +6906,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beansprouts
     /// </summary>
     public static readonly Coding Beansprouts = new Coding
     {
@@ -6915,7 +6915,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Raw mung beansprouts
     /// </summary>
     public static readonly Coding RawMungBeansprouts = new Coding
     {
@@ -6924,7 +6924,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stir-fried mung beansprouts
     /// </summary>
     public static readonly Coding StirFriedMungBeansprouts = new Coding
     {
@@ -6933,7 +6933,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Black gram beans
     /// </summary>
     public static readonly Coding BlackGramBeans = new Coding
     {
@@ -6942,7 +6942,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blackeye beans
     /// </summary>
     public static readonly Coding BlackeyeBeans = new Coding
     {
@@ -6951,7 +6951,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Butter beans
     /// </summary>
     public static readonly Coding ButterBeans = new Coding
     {
@@ -6960,7 +6960,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chick peas
     /// </summary>
     public static readonly Coding ChickPeas = new Coding
     {
@@ -6969,7 +6969,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cluster beans
     /// </summary>
     public static readonly Coding ClusterBeans = new Coding
     {
@@ -6978,7 +6978,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Haricot beans
     /// </summary>
     public static readonly Coding HaricotBeans = new Coding
     {
@@ -6987,7 +6987,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hummus
     /// </summary>
     public static readonly Coding Hummus = new Coding
     {
@@ -6996,7 +6996,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lentils
     /// </summary>
     public static readonly Coding Lentils = new Coding
     {
@@ -7005,7 +7005,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Green lentils
     /// </summary>
     public static readonly Coding GreenLentils = new Coding
     {
@@ -7014,7 +7014,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brown lentils
     /// </summary>
     public static readonly Coding BrownLentils = new Coding
     {
@@ -7023,7 +7023,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Red split lentils
     /// </summary>
     public static readonly Coding RedSplitLentils = new Coding
     {
@@ -7032,7 +7032,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Miso
     /// </summary>
     public static readonly Coding Miso = new Coding
     {
@@ -7041,7 +7041,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mung beans
     /// </summary>
     public static readonly Coding MungBeans = new Coding
     {
@@ -7050,7 +7050,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mung bean dahl
     /// </summary>
     public static readonly Coding MungBeanDahl = new Coding
     {
@@ -7059,7 +7059,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Papri beans
     /// </summary>
     public static readonly Coding PapriBeans = new Coding
     {
@@ -7068,7 +7068,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pigeon peas
     /// </summary>
     public static readonly Coding PigeonPeas = new Coding
     {
@@ -7077,7 +7077,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pigeon pea dahl
     /// </summary>
     public static readonly Coding PigeonPeaDahl = new Coding
     {
@@ -7086,7 +7086,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pinto beans
     /// </summary>
     public static readonly Coding PintoBeans = new Coding
     {
@@ -7095,7 +7095,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refried pinto beans
     /// </summary>
     public static readonly Coding RefriedPintoBeans = new Coding
     {
@@ -7104,7 +7104,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Red kidney beans
     /// </summary>
     public static readonly Coding RedKidneyBeans = new Coding
     {
@@ -7113,7 +7113,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sword beans
     /// </summary>
     public static readonly Coding SwordBeans = new Coding
     {
@@ -7122,7 +7122,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tempeh
     /// </summary>
     public static readonly Coding Tempeh = new Coding
     {
@@ -7131,7 +7131,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tofu
     /// </summary>
     public static readonly Coding Tofu = new Coding
     {
@@ -7140,7 +7140,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Steamed tofu
     /// </summary>
     public static readonly Coding SteamedTofu = new Coding
     {
@@ -7149,7 +7149,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Steamed fried tofu
     /// </summary>
     public static readonly Coding SteamedFriedTofu = new Coding
     {
@@ -7158,7 +7158,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fu-juk tofu
     /// </summary>
     public static readonly Coding FuJukTofu = new Coding
     {
@@ -7167,7 +7167,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fresh peas
     /// </summary>
     public static readonly Coding FreshPeas = new Coding
     {
@@ -7176,7 +7176,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fresh raw peas
     /// </summary>
     public static readonly Coding FreshRawPeas = new Coding
     {
@@ -7185,7 +7185,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fresh boiled peas
     /// </summary>
     public static readonly Coding FreshBoiledPeas = new Coding
     {
@@ -7194,7 +7194,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried boiled peas
     /// </summary>
     public static readonly Coding DriedBoiledPeas = new Coding
     {
@@ -7203,7 +7203,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried boiled split peas
     /// </summary>
     public static readonly Coding DriedBoiledSplitPeas = new Coding
     {
@@ -7212,7 +7212,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Herbs and spices
     /// </summary>
     public static readonly Coding HerbsAndSpices = new Coding
     {
@@ -7221,7 +7221,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Allspice
     /// </summary>
     public static readonly Coding Allspice = new Coding
     {
@@ -7230,7 +7230,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anise seed
     /// </summary>
     public static readonly Coding AniseSeed = new Coding
     {
@@ -7239,7 +7239,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Asafetida (substance)
     /// </summary>
     public static readonly Coding AsafetidaSubstance = new Coding
     {
@@ -7248,7 +7248,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bay leaf
     /// </summary>
     public static readonly Coding BayLeaf = new Coding
     {
@@ -7257,7 +7257,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Betel leaf
     /// </summary>
     public static readonly Coding BetelLeaf = new Coding
     {
@@ -7266,7 +7266,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Caraway seed
     /// </summary>
     public static readonly Coding CarawaySeed = new Coding
     {
@@ -7275,7 +7275,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardamom
     /// </summary>
     public static readonly Coding Cardamom = new Coding
     {
@@ -7284,7 +7284,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Celery seed
     /// </summary>
     public static readonly Coding CelerySeed = new Coding
     {
@@ -7293,7 +7293,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chervil, dried
     /// </summary>
     public static readonly Coding ChervilDried = new Coding
     {
@@ -7302,7 +7302,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chili powder (substance)
     /// </summary>
     public static readonly Coding ChiliPowderSubstance = new Coding
     {
@@ -7311,7 +7311,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chinese five spice
     /// </summary>
     public static readonly Coding ChineseFiveSpice = new Coding
     {
@@ -7320,7 +7320,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chive - herb
     /// </summary>
     public static readonly Coding ChiveHerb = new Coding
     {
@@ -7329,7 +7329,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cinnamon
     /// </summary>
     public static readonly Coding Cinnamon = new Coding
     {
@@ -7338,7 +7338,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clove
     /// </summary>
     public static readonly Coding Clove = new Coding
     {
@@ -7347,7 +7347,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coriander leaf
     /// </summary>
     public static readonly Coding CorianderLeaf = new Coding
     {
@@ -7356,7 +7356,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coriander seed
     /// </summary>
     public static readonly Coding CorianderSeed = new Coding
     {
@@ -7365,7 +7365,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cumin seed
     /// </summary>
     public static readonly Coding CuminSeed = new Coding
     {
@@ -7374,7 +7374,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Curry leaf
     /// </summary>
     public static readonly Coding CurryLeaf = new Coding
     {
@@ -7383,7 +7383,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Curry powder
     /// </summary>
     public static readonly Coding CurryPowder = new Coding
     {
@@ -7392,7 +7392,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fennel
     /// </summary>
     public static readonly Coding Fennel = new Coding
     {
@@ -7401,7 +7401,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fennel seed
     /// </summary>
     public static readonly Coding FennelSeed = new Coding
     {
@@ -7410,7 +7410,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fenugreek seed
     /// </summary>
     public static readonly Coding FenugreekSeed = new Coding
     {
@@ -7419,7 +7419,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Garam masala
     /// </summary>
     public static readonly Coding GaramMasala = new Coding
     {
@@ -7428,7 +7428,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ginger
     /// </summary>
     public static readonly Coding Ginger = new Coding
     {
@@ -7437,7 +7437,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ground ginger
     /// </summary>
     public static readonly Coding GroundGinger = new Coding
     {
@@ -7446,7 +7446,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Root ginger
     /// </summary>
     public static readonly Coding RootGinger = new Coding
     {
@@ -7455,7 +7455,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liquorice powder
     /// </summary>
     public static readonly Coding LiquoricePowder = new Coding
     {
@@ -7464,7 +7464,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mace
     /// </summary>
     public static readonly Coding Mace = new Coding
     {
@@ -7473,7 +7473,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Marjoram
     /// </summary>
     public static readonly Coding Marjoram = new Coding
     {
@@ -7482,7 +7482,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mustard seed
     /// </summary>
     public static readonly Coding MustardSeed = new Coding
     {
@@ -7491,7 +7491,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oregano
     /// </summary>
     public static readonly Coding Oregano = new Coding
     {
@@ -7500,7 +7500,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paprika
     /// </summary>
     public static readonly Coding Paprika = new Coding
     {
@@ -7509,7 +7509,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poppy seed
     /// </summary>
     public static readonly Coding PoppySeed = new Coding
     {
@@ -7518,7 +7518,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rosemary
     /// </summary>
     public static readonly Coding Rosemary = new Coding
     {
@@ -7527,7 +7527,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sage
     /// </summary>
     public static readonly Coding Sage = new Coding
     {
@@ -7536,7 +7536,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tarragon
     /// </summary>
     public static readonly Coding Tarragon = new Coding
     {
@@ -7545,7 +7545,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thyme
     /// </summary>
     public static readonly Coding Thyme = new Coding
     {
@@ -7554,7 +7554,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Turmeric
     /// </summary>
     public static readonly Coding Turmeric = new Coding
     {
@@ -7563,7 +7563,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fruit nuts and seeds
     /// </summary>
     public static readonly Coding FruitNutsAndSeeds = new Coding
     {
@@ -7572,7 +7572,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fresh fruit
     /// </summary>
     public static readonly Coding FreshFruit = new Coding
     {
@@ -7581,7 +7581,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilberry
     /// </summary>
     public static readonly Coding Bilberry = new Coding
     {
@@ -7590,7 +7590,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blackberries
     /// </summary>
     public static readonly Coding Blackberries = new Coding
     {
@@ -7599,7 +7599,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blackcurrant
     /// </summary>
     public static readonly Coding Blackcurrant = new Coding
     {
@@ -7608,7 +7608,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clementine
     /// </summary>
     public static readonly Coding Clementine = new Coding
     {
@@ -7617,7 +7617,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cranberries
     /// </summary>
     public static readonly Coding Cranberries = new Coding
     {
@@ -7626,7 +7626,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Damson
     /// </summary>
     public static readonly Coding Damson = new Coding
     {
@@ -7635,7 +7635,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dates - food
     /// </summary>
     public static readonly Coding DatesFood = new Coding
     {
@@ -7644,7 +7644,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elderberries
     /// </summary>
     public static readonly Coding Elderberries = new Coding
     {
@@ -7653,7 +7653,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Figs
     /// </summary>
     public static readonly Coding Figs = new Coding
     {
@@ -7662,7 +7662,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fresh fruit salad
     /// </summary>
     public static readonly Coding FreshFruitSalad = new Coding
     {
@@ -7671,7 +7671,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gooseberries
     /// </summary>
     public static readonly Coding Gooseberries = new Coding
     {
@@ -7680,7 +7680,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Greengage
     /// </summary>
     public static readonly Coding Greengage = new Coding
     {
@@ -7689,7 +7689,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Guava
     /// </summary>
     public static readonly Coding Guava = new Coding
     {
@@ -7698,7 +7698,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lime - fruit
     /// </summary>
     public static readonly Coding LimeFruit = new Coding
     {
@@ -7707,7 +7707,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kumquat
     /// </summary>
     public static readonly Coding Kumquat = new Coding
     {
@@ -7716,7 +7716,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Loganberries
     /// </summary>
     public static readonly Coding Loganberries = new Coding
     {
@@ -7725,7 +7725,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lychee
     /// </summary>
     public static readonly Coding Lychee = new Coding
     {
@@ -7734,7 +7734,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mulberries
     /// </summary>
     public static readonly Coding Mulberries = new Coding
     {
@@ -7743,7 +7743,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nectarine
     /// </summary>
     public static readonly Coding Nectarine = new Coding
     {
@@ -7752,7 +7752,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Olives
     /// </summary>
     public static readonly Coding Olives = new Coding
     {
@@ -7761,7 +7761,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ortanique
     /// </summary>
     public static readonly Coding Ortanique = new Coding
     {
@@ -7770,7 +7770,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Passion fruit
     /// </summary>
     public static readonly Coding PassionFruit = new Coding
     {
@@ -7779,7 +7779,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paw-paw
     /// </summary>
     public static readonly Coding PawPaw = new Coding
     {
@@ -7788,7 +7788,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pomegranate
     /// </summary>
     public static readonly Coding Pomegranate = new Coding
     {
@@ -7797,7 +7797,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pomelo
     /// </summary>
     public static readonly Coding Pomelo = new Coding
     {
@@ -7806,7 +7806,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Quince
     /// </summary>
     public static readonly Coding Quince = new Coding
     {
@@ -7815,7 +7815,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Raspberries
     /// </summary>
     public static readonly Coding Raspberries = new Coding
     {
@@ -7824,7 +7824,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Redcurrant
     /// </summary>
     public static readonly Coding Redcurrant = new Coding
     {
@@ -7833,7 +7833,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Satsuma
     /// </summary>
     public static readonly Coding Satsuma = new Coding
     {
@@ -7842,7 +7842,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sharon fruit
     /// </summary>
     public static readonly Coding SharonFruit = new Coding
     {
@@ -7851,7 +7851,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White currant
     /// </summary>
     public static readonly Coding WhiteCurrant = new Coding
     {
@@ -7860,7 +7860,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried fruit
     /// </summary>
     public static readonly Coding DriedFruit = new Coding
     {
@@ -7869,7 +7869,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried banana
     /// </summary>
     public static readonly Coding DriedBanana = new Coding
     {
@@ -7878,7 +7878,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried apple
     /// </summary>
     public static readonly Coding DriedApple = new Coding
     {
@@ -7887,7 +7887,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried apricot
     /// </summary>
     public static readonly Coding DriedApricot = new Coding
     {
@@ -7896,7 +7896,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Currants
     /// </summary>
     public static readonly Coding Currants = new Coding
     {
@@ -7905,7 +7905,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried date
     /// </summary>
     public static readonly Coding DriedDate = new Coding
     {
@@ -7914,7 +7914,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried fig
     /// </summary>
     public static readonly Coding DriedFig = new Coding
     {
@@ -7923,7 +7923,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried mixed fruit
     /// </summary>
     public static readonly Coding DriedMixedFruit = new Coding
     {
@@ -7932,7 +7932,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried mixed peel
     /// </summary>
     public static readonly Coding DriedMixedPeel = new Coding
     {
@@ -7941,7 +7941,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried peach
     /// </summary>
     public static readonly Coding DriedPeach = new Coding
     {
@@ -7950,7 +7950,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried pear
     /// </summary>
     public static readonly Coding DriedPear = new Coding
     {
@@ -7959,7 +7959,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried pineapple
     /// </summary>
     public static readonly Coding DriedPineapple = new Coding
     {
@@ -7968,7 +7968,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glace cherry
     /// </summary>
     public static readonly Coding GlaceCherry = new Coding
     {
@@ -7977,7 +7977,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prunes
     /// </summary>
     public static readonly Coding Prunes = new Coding
     {
@@ -7986,7 +7986,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Raisin
     /// </summary>
     public static readonly Coding Raisin = new Coding
     {
@@ -7995,7 +7995,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sultanas
     /// </summary>
     public static readonly Coding Sultanas = new Coding
     {
@@ -8004,7 +8004,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned fruit
     /// </summary>
     public static readonly Coding CannedFruit = new Coding
     {
@@ -8013,7 +8013,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned apple
     /// </summary>
     public static readonly Coding TinnedApple = new Coding
     {
@@ -8022,7 +8022,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned apricot
     /// </summary>
     public static readonly Coding TinnedApricot = new Coding
     {
@@ -8031,7 +8031,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned blackcurrants
     /// </summary>
     public static readonly Coding TinnedBlackcurrants = new Coding
     {
@@ -8040,7 +8040,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned cherries
     /// </summary>
     public static readonly Coding TinnedCherries = new Coding
     {
@@ -8049,7 +8049,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned figs
     /// </summary>
     public static readonly Coding TinnedFigs = new Coding
     {
@@ -8058,7 +8058,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned fruit cocktail
     /// </summary>
     public static readonly Coding TinnedFruitCocktail = new Coding
     {
@@ -8067,7 +8067,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned gooseberries
     /// </summary>
     public static readonly Coding TinnedGooseberries = new Coding
     {
@@ -8076,7 +8076,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned grapefruit
     /// </summary>
     public static readonly Coding TinnedGrapefruit = new Coding
     {
@@ -8085,7 +8085,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned guava
     /// </summary>
     public static readonly Coding TinnedGuava = new Coding
     {
@@ -8094,7 +8094,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned kumquat
     /// </summary>
     public static readonly Coding TinnedKumquat = new Coding
     {
@@ -8103,7 +8103,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned loganberries
     /// </summary>
     public static readonly Coding TinnedLoganberries = new Coding
     {
@@ -8112,7 +8112,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned lychees
     /// </summary>
     public static readonly Coding TinnedLychees = new Coding
     {
@@ -8121,7 +8121,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned mandarin oranges
     /// </summary>
     public static readonly Coding TinnedMandarinOranges = new Coding
     {
@@ -8130,7 +8130,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned mango
     /// </summary>
     public static readonly Coding TinnedMango = new Coding
     {
@@ -8139,7 +8139,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned paw-paw
     /// </summary>
     public static readonly Coding TinnedPawPaw = new Coding
     {
@@ -8148,7 +8148,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned peaches
     /// </summary>
     public static readonly Coding TinnedPeaches = new Coding
     {
@@ -8157,7 +8157,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned pears
     /// </summary>
     public static readonly Coding TinnedPears = new Coding
     {
@@ -8166,7 +8166,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned pineapple
     /// </summary>
     public static readonly Coding TinnedPineapple = new Coding
     {
@@ -8175,7 +8175,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned plums
     /// </summary>
     public static readonly Coding TinnedPlums = new Coding
     {
@@ -8184,7 +8184,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned prunes
     /// </summary>
     public static readonly Coding TinnedPrunes = new Coding
     {
@@ -8193,7 +8193,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned raspberries
     /// </summary>
     public static readonly Coding TinnedRaspberries = new Coding
     {
@@ -8202,7 +8202,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned rhubarb
     /// </summary>
     public static readonly Coding TinnedRhubarb = new Coding
     {
@@ -8211,7 +8211,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned strawberries
     /// </summary>
     public static readonly Coding TinnedStrawberries = new Coding
     {
@@ -8220,7 +8220,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tinned fruit pie filling
     /// </summary>
     public static readonly Coding TinnedFruitPieFilling = new Coding
     {
@@ -8229,7 +8229,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Barcelona nut
     /// </summary>
     public static readonly Coding BarcelonaNut = new Coding
     {
@@ -8238,7 +8238,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Betel nuts
     /// </summary>
     public static readonly Coding BetelNuts = new Coding
     {
@@ -8247,7 +8247,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breadnut seed
     /// </summary>
     public static readonly Coding BreadnutSeed = new Coding
     {
@@ -8256,7 +8256,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cashew nuts
     /// </summary>
     public static readonly Coding CashewNuts = new Coding
     {
@@ -8265,7 +8265,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roasted and salted cashew nuts
     /// </summary>
     public static readonly Coding RoastedAndSaltedCashewNuts = new Coding
     {
@@ -8274,7 +8274,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fresh coconut
     /// </summary>
     public static readonly Coding FreshCoconut = new Coding
     {
@@ -8283,7 +8283,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Creamed coconut
     /// </summary>
     public static readonly Coding CreamedCoconut = new Coding
     {
@@ -8292,7 +8292,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Desiccated coconut
     /// </summary>
     public static readonly Coding DesiccatedCoconut = new Coding
     {
@@ -8301,7 +8301,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coconut cream
     /// </summary>
     public static readonly Coding CoconutCream = new Coding
     {
@@ -8310,7 +8310,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coconut milk
     /// </summary>
     public static readonly Coding CoconutMilk = new Coding
     {
@@ -8319,7 +8319,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macadamia nut
     /// </summary>
     public static readonly Coding MacadamiaNut = new Coding
     {
@@ -8328,7 +8328,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Marzipan home-made
     /// </summary>
     public static readonly Coding MarzipanHomeMade = new Coding
     {
@@ -8337,7 +8337,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Marzipan retail
     /// </summary>
     public static readonly Coding MarzipanRetail = new Coding
     {
@@ -8346,7 +8346,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Melon seed
     /// </summary>
     public static readonly Coding MelonSeed = new Coding
     {
@@ -8355,7 +8355,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mixed nuts
     /// </summary>
     public static readonly Coding MixedNuts = new Coding
     {
@@ -8364,7 +8364,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mixed nuts and raisins
     /// </summary>
     public static readonly Coding MixedNutsAndRaisins = new Coding
     {
@@ -8373,7 +8373,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Smooth peanut butter
     /// </summary>
     public static readonly Coding SmoothPeanutButter = new Coding
     {
@@ -8382,7 +8382,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crunchy peanut butter
     /// </summary>
     public static readonly Coding CrunchyPeanutButter = new Coding
     {
@@ -8391,7 +8391,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dry roasted peanuts
     /// </summary>
     public static readonly Coding DryRoastedPeanuts = new Coding
     {
@@ -8400,7 +8400,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salted peanuts
     /// </summary>
     public static readonly Coding SaltedPeanuts = new Coding
     {
@@ -8409,7 +8409,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pine nut
     /// </summary>
     public static readonly Coding PineNut = new Coding
     {
@@ -8418,7 +8418,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pistachio nuts
     /// </summary>
     public static readonly Coding PistachioNuts = new Coding
     {
@@ -8427,7 +8427,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roasted salted pistachio nut
     /// </summary>
     public static readonly Coding RoastedSaltedPistachioNut = new Coding
     {
@@ -8436,7 +8436,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pumpkin seed
     /// </summary>
     public static readonly Coding PumpkinSeed = new Coding
     {
@@ -8445,7 +8445,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Quinoa
     /// </summary>
     public static readonly Coding Quinoa = new Coding
     {
@@ -8454,7 +8454,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tahini paste
     /// </summary>
     public static readonly Coding TahiniPaste = new Coding
     {
@@ -8463,7 +8463,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tigernut
     /// </summary>
     public static readonly Coding Tigernut = new Coding
     {
@@ -8472,7 +8472,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sauces seasonings and soups
     /// </summary>
     public static readonly Coding SaucesSeasoningsAndSoups = new Coding
     {
@@ -8481,7 +8481,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sauce
     /// </summary>
     public static readonly Coding Sauce = new Coding
     {
@@ -8490,7 +8490,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dairy sauce
     /// </summary>
     public static readonly Coding DairySauce = new Coding
     {
@@ -8499,7 +8499,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bread sauce
     /// </summary>
     public static readonly Coding BreadSauce = new Coding
     {
@@ -8508,7 +8508,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cheese sauce
     /// </summary>
     public static readonly Coding CheeseSauce = new Coding
     {
@@ -8517,7 +8517,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cheese sauce packet mix
     /// </summary>
     public static readonly Coding CheeseSaucePacketMix = new Coding
     {
@@ -8526,7 +8526,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Onion sauce
     /// </summary>
     public static readonly Coding OnionSauce = new Coding
     {
@@ -8535,7 +8535,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Savory white sauce
     /// </summary>
     public static readonly Coding SavoryWhiteSauce = new Coding
     {
@@ -8544,7 +8544,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sweet white sauce
     /// </summary>
     public static readonly Coding SweetWhiteSauce = new Coding
     {
@@ -8553,7 +8553,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Barbecue sauce
     /// </summary>
     public static readonly Coding BarbecueSauce = new Coding
     {
@@ -8562,7 +8562,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brown sauce
     /// </summary>
     public static readonly Coding BrownSauce = new Coding
     {
@@ -8571,7 +8571,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cook-in-sauce
     /// </summary>
     public static readonly Coding CookInSauce = new Coding
     {
@@ -8580,7 +8580,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Packet cook-in sauce
     /// </summary>
     public static readonly Coding PacketCookInSauce = new Coding
     {
@@ -8589,7 +8589,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canned cook-in sauce
     /// </summary>
     public static readonly Coding CannedCookInSauce = new Coding
     {
@@ -8598,7 +8598,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Curry sauce
     /// </summary>
     public static readonly Coding CurrySauce = new Coding
     {
@@ -8607,7 +8607,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Horseradish sauce
     /// </summary>
     public static readonly Coding HorseradishSauce = new Coding
     {
@@ -8616,7 +8616,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mint sauce
     /// </summary>
     public static readonly Coding MintSauce = new Coding
     {
@@ -8625,7 +8625,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pasta sauce
     /// </summary>
     public static readonly Coding PastaSauce = new Coding
     {
@@ -8634,7 +8634,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vegetable
     /// </summary>
     public static readonly Coding Vegetable = new Coding
     {
@@ -8643,7 +8643,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cereal
     /// </summary>
     public static readonly Coding Cereal = new Coding
     {
@@ -8652,7 +8652,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spice
     /// </summary>
     public static readonly Coding Spice = new Coding
     {
@@ -8661,7 +8661,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Food (substance)
     /// </summary>
     public static readonly Coding FoodSubstance = new Coding
     {
@@ -8670,7 +8670,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skim milk
     /// </summary>
     public static readonly Coding SkimMilk = new Coding
     {
@@ -8679,7 +8679,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poultry
     /// </summary>
     public static readonly Coding Poultry = new Coding
     {
@@ -8688,7 +8688,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Meat
     /// </summary>
     public static readonly Coding Meat = new Coding
     {
@@ -8697,7 +8697,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coconut oil
     /// </summary>
     public static readonly Coding CoconutOil = new Coding
     {
@@ -8706,7 +8706,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cow's milk
     /// </summary>
     public static readonly Coding CowQuoteSMilk = new Coding
     {
@@ -8715,7 +8715,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Food particle
     /// </summary>
     public static readonly Coding FoodParticle = new Coding
     {
@@ -8724,7 +8724,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Olive oil
     /// </summary>
     public static readonly Coding OliveOil = new Coding
     {
@@ -8733,7 +8733,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Animal feed additive
     /// </summary>
     public static readonly Coding AnimalFeedAdditive = new Coding
     {
@@ -8742,7 +8742,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Seafood
     /// </summary>
     public static readonly Coding Seafood = new Coding
     {
@@ -8751,7 +8751,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chocolate milk
     /// </summary>
     public static readonly Coding ChocolateMilk = new Coding
     {
@@ -8760,7 +8760,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beef insulin
     /// </summary>
     public static readonly Coding BeefInsulin = new Coding
     {
@@ -8769,7 +8769,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soy protein-iron complex
     /// </summary>
     public static readonly Coding SoyProteinIronComplex = new Coding
     {
@@ -8778,7 +8778,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Casein
     /// </summary>
     public static readonly Coding Casein = new Coding
     {
@@ -8787,7 +8787,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mustard
     /// </summary>
     public static readonly Coding Mustard = new Coding
     {
@@ -8796,7 +8796,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Colostrum
     /// </summary>
     public static readonly Coding Colostrum = new Coding
     {
@@ -8805,7 +8805,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Safflower oil
     /// </summary>
     public static readonly Coding SafflowerOil = new Coding
     {
@@ -8814,7 +8814,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Berry
     /// </summary>
     public static readonly Coding Berry = new Coding
     {
@@ -8823,7 +8823,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flour
     /// </summary>
     public static readonly Coding Flour = new Coding
     {
@@ -8832,7 +8832,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pork insulin
     /// </summary>
     public static readonly Coding PorkInsulin = new Coding
     {
@@ -8841,7 +8841,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rice
     /// </summary>
     public static readonly Coding Rice = new Coding
     {
@@ -8850,7 +8850,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Milk
     /// </summary>
     public static readonly Coding Milk = new Coding
     {
@@ -8859,7 +8859,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fruit
     /// </summary>
     public static readonly Coding Fruit = new Coding
     {
@@ -8868,7 +8868,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Food starch
     /// </summary>
     public static readonly Coding FoodStarch = new Coding
     {
@@ -8877,7 +8877,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bovine growth hormone
     /// </summary>
     public static readonly Coding BovineGrowthHormone = new Coding
     {
@@ -8886,7 +8886,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fish bone
     /// </summary>
     public static readonly Coding FishBone = new Coding
     {
@@ -8895,7 +8895,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poultry bone
     /// </summary>
     public static readonly Coding PoultryBone = new Coding
     {
@@ -8904,7 +8904,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soy protein
     /// </summary>
     public static readonly Coding SoyProtein = new Coding
     {
@@ -8913,7 +8913,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mustard black
     /// </summary>
     public static readonly Coding MustardBlack = new Coding
     {
@@ -8922,7 +8922,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cottonseed oil
     /// </summary>
     public static readonly Coding CottonseedOil = new Coding
     {
@@ -8931,7 +8931,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Animal feed
     /// </summary>
     public static readonly Coding AnimalFeed = new Coding
     {
@@ -8940,7 +8940,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bovine growth hormone recombinant
     /// </summary>
     public static readonly Coding BovineGrowthHormoneRecombinant = new Coding
     {
@@ -8949,7 +8949,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Goat's milk
     /// </summary>
     public static readonly Coding GoatQuoteSMilk = new Coding
     {
@@ -8958,7 +8958,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Starch powder
     /// </summary>
     public static readonly Coding StarchPowder = new Coding
     {
@@ -8967,7 +8967,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sesame oil
     /// </summary>
     public static readonly Coding SesameOil = new Coding
     {
@@ -8976,7 +8976,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gluten
     /// </summary>
     public static readonly Coding Gluten = new Coding
     {
@@ -8985,7 +8985,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mustard white
     /// </summary>
     public static readonly Coding MustardWhite = new Coding
     {
@@ -8994,7 +8994,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cochineal
     /// </summary>
     public static readonly Coding Cochineal = new Coding
     {
@@ -9003,7 +9003,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sometribove
     /// </summary>
     public static readonly Coding Sometribove = new Coding
     {
@@ -9018,9 +9018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCitrusFruit = "102259006";
 
     /// <summary>
+    /// Literal for code: NONECitrusFruit
+    /// </summary>
+    public const string LiteralNONECitrusFruit = "http://snomed.info/sct#102259006";
+
+    /// <summary>
     /// Literal for code: PeanutButter
     /// </summary>
     public const string LiteralPeanutButter = "102260001";
+
+    /// <summary>
+    /// Literal for code: NONEPeanutButter
+    /// </summary>
+    public const string LiteralNONEPeanutButter = "http://snomed.info/sct#102260001";
 
     /// <summary>
     /// Literal for code: Strawberry
@@ -9028,9 +9038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStrawberry = "102261002";
 
     /// <summary>
+    /// Literal for code: NONEStrawberry
+    /// </summary>
+    public const string LiteralNONEStrawberry = "http://snomed.info/sct#102261002";
+
+    /// <summary>
     /// Literal for code: Chocolate
     /// </summary>
     public const string LiteralChocolate = "102262009";
+
+    /// <summary>
+    /// Literal for code: NONEChocolate
+    /// </summary>
+    public const string LiteralNONEChocolate = "http://snomed.info/sct#102262009";
 
     /// <summary>
     /// Literal for code: EggsEdible
@@ -9038,9 +9058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEggsEdible = "102263004";
 
     /// <summary>
+    /// Literal for code: NONEEggsEdible
+    /// </summary>
+    public const string LiteralNONEEggsEdible = "http://snomed.info/sct#102263004";
+
+    /// <summary>
     /// Literal for code: Cheese
     /// </summary>
     public const string LiteralCheese = "102264005";
+
+    /// <summary>
+    /// Literal for code: NONECheese
+    /// </summary>
+    public const string LiteralNONECheese = "http://snomed.info/sct#102264005";
 
     /// <summary>
     /// Literal for code: GrowthStimulant
@@ -9048,9 +9078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGrowthStimulant = "102270004";
 
     /// <summary>
+    /// Literal for code: NONEGrowthStimulant
+    /// </summary>
+    public const string LiteralNONEGrowthStimulant = "http://snomed.info/sct#102270004";
+
+    /// <summary>
     /// Literal for code: Efrotomycin
     /// </summary>
     public const string LiteralEfrotomycin = "102271000";
+
+    /// <summary>
+    /// Literal for code: NONEEfrotomycin
+    /// </summary>
+    public const string LiteralNONEEfrotomycin = "http://snomed.info/sct#102271000";
 
     /// <summary>
     /// Literal for code: Agar
@@ -9058,9 +9098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAgar = "10249006";
 
     /// <summary>
+    /// Literal for code: NONEAgar
+    /// </summary>
+    public const string LiteralNONEAgar = "http://snomed.info/sct#10249006";
+
+    /// <summary>
     /// Literal for code: Lactalbumin
     /// </summary>
     public const string LiteralLactalbumin = "102697003";
+
+    /// <summary>
+    /// Literal for code: NONELactalbumin
+    /// </summary>
+    public const string LiteralNONELactalbumin = "http://snomed.info/sct#102697003";
 
     /// <summary>
     /// Literal for code: MinorLactalbumin
@@ -9068,9 +9118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMinorLactalbumin = "102698008";
 
     /// <summary>
+    /// Literal for code: NONEMinorLactalbumin
+    /// </summary>
+    public const string LiteralNONEMinorLactalbumin = "http://snomed.info/sct#102698008";
+
+    /// <summary>
     /// Literal for code: BetaLactalbumin
     /// </summary>
     public const string LiteralBetaLactalbumin = "102699000";
+
+    /// <summary>
+    /// Literal for code: NONEBetaLactalbumin
+    /// </summary>
+    public const string LiteralNONEBetaLactalbumin = "http://snomed.info/sct#102699000";
 
     /// <summary>
     /// Literal for code: MilkProtein
@@ -9078,9 +9138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMilkProtein = "10827009";
 
     /// <summary>
+    /// Literal for code: NONEMilkProtein
+    /// </summary>
+    public const string LiteralNONEMilkProtein = "http://snomed.info/sct#10827009";
+
+    /// <summary>
     /// Literal for code: PegademaseBovine
     /// </summary>
     public const string LiteralPegademaseBovine = "108743002";
+
+    /// <summary>
+    /// Literal for code: NONEPegademaseBovine
+    /// </summary>
+    public const string LiteralNONEPegademaseBovine = "http://snomed.info/sct#108743002";
 
     /// <summary>
     /// Literal for code: MicrofibrillarCollagenHemostat
@@ -9088,9 +9158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMicrofibrillarCollagenHemostat = "109010000";
 
     /// <summary>
+    /// Literal for code: NONEMicrofibrillarCollagenHemostat
+    /// </summary>
+    public const string LiteralNONEMicrofibrillarCollagenHemostat = "http://snomed.info/sct#109010000";
+
+    /// <summary>
     /// Literal for code: BovineShockProteinAntibody
     /// </summary>
     public const string LiteralBovineShockProteinAntibody = "116957009";
+
+    /// <summary>
+    /// Literal for code: NONEBovineShockProteinAntibody
+    /// </summary>
+    public const string LiteralNONEBovineShockProteinAntibody = "http://snomed.info/sct#116957009";
 
     /// <summary>
     /// Literal for code: BovineOsteocalcin
@@ -9098,9 +9178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBovineOsteocalcin = "117633004";
 
     /// <summary>
+    /// Literal for code: NONEBovineOsteocalcin
+    /// </summary>
+    public const string LiteralNONEBovineOsteocalcin = "http://snomed.info/sct#117633004";
+
+    /// <summary>
     /// Literal for code: FishLiverOil
     /// </summary>
     public const string LiteralFishLiverOil = "126076005";
+
+    /// <summary>
+    /// Literal for code: NONEFishLiverOil
+    /// </summary>
+    public const string LiteralNONEFishLiverOil = "http://snomed.info/sct#126076005";
 
     /// <summary>
     /// Literal for code: BurbotLiverOil
@@ -9108,9 +9198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBurbotLiverOil = "126077001";
 
     /// <summary>
+    /// Literal for code: NONEBurbotLiverOil
+    /// </summary>
+    public const string LiteralNONEBurbotLiverOil = "http://snomed.info/sct#126077001";
+
+    /// <summary>
     /// Literal for code: PercomorphLiverOil
     /// </summary>
     public const string LiteralPercomorphLiverOil = "126078006";
+
+    /// <summary>
+    /// Literal for code: NONEPercomorphLiverOil
+    /// </summary>
+    public const string LiteralNONEPercomorphLiverOil = "http://snomed.info/sct#126078006";
 
     /// <summary>
     /// Literal for code: PercoidLiverOil
@@ -9118,9 +9218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPercoidLiverOil = "126079003";
 
     /// <summary>
+    /// Literal for code: NONEPercoidLiverOil
+    /// </summary>
+    public const string LiteralNONEPercoidLiverOil = "http://snomed.info/sct#126079003";
+
+    /// <summary>
     /// Literal for code: SharkLiverOil
     /// </summary>
     public const string LiteralSharkLiverOil = "126080000";
+
+    /// <summary>
+    /// Literal for code: NONESharkLiverOil
+    /// </summary>
+    public const string LiteralNONESharkLiverOil = "http://snomed.info/sct#126080000";
 
     /// <summary>
     /// Literal for code: HalibutLiverOil
@@ -9128,9 +9238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHalibutLiverOil = "126081001";
 
     /// <summary>
+    /// Literal for code: NONEHalibutLiverOil
+    /// </summary>
+    public const string LiteralNONEHalibutLiverOil = "http://snomed.info/sct#126081001";
+
+    /// <summary>
     /// Literal for code: CodLiverOil
     /// </summary>
     public const string LiteralCodLiverOil = "126082008";
+
+    /// <summary>
+    /// Literal for code: NONECodLiverOil
+    /// </summary>
+    public const string LiteralNONECodLiverOil = "http://snomed.info/sct#126082008";
 
     /// <summary>
     /// Literal for code: SalmonCalcitonin
@@ -9138,9 +9258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSalmonCalcitonin = "127384006";
 
     /// <summary>
+    /// Literal for code: NONESalmonCalcitonin
+    /// </summary>
+    public const string LiteralNONESalmonCalcitonin = "http://snomed.info/sct#127384006";
+
+    /// <summary>
     /// Literal for code: Nut
     /// </summary>
     public const string LiteralNut = "13577000";
+
+    /// <summary>
+    /// Literal for code: NONENut
+    /// </summary>
+    public const string LiteralNONENut = "http://snomed.info/sct#13577000";
 
     /// <summary>
     /// Literal for code: PreparedFish
@@ -9148,9 +9278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPreparedFish = "14263006";
 
     /// <summary>
+    /// Literal for code: NONEPreparedFish
+    /// </summary>
+    public const string LiteralNONEPreparedFish = "http://snomed.info/sct#14263006";
+
+    /// <summary>
     /// Literal for code: BombayMix
     /// </summary>
     public const string LiteralBombayMix = "226017009";
+
+    /// <summary>
+    /// Literal for code: NONEBombayMix
+    /// </summary>
+    public const string LiteralNONEBombayMix = "http://snomed.info/sct#226017009";
 
     /// <summary>
     /// Literal for code: CauliflowerCheese
@@ -9158,9 +9298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCauliflowerCheese = "226021002";
 
     /// <summary>
+    /// Literal for code: NONECauliflowerCheese
+    /// </summary>
+    public const string LiteralNONECauliflowerCheese = "http://snomed.info/sct#226021002";
+
+    /// <summary>
     /// Literal for code: CheesePastry
     /// </summary>
     public const string LiteralCheesePastry = "226022009";
+
+    /// <summary>
+    /// Literal for code: NONECheesePastry
+    /// </summary>
+    public const string LiteralNONECheesePastry = "http://snomed.info/sct#226022009";
 
     /// <summary>
     /// Literal for code: Cheesecake
@@ -9168,9 +9318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCheesecake = "226023004";
 
     /// <summary>
+    /// Literal for code: NONECheesecake
+    /// </summary>
+    public const string LiteralNONECheesecake = "http://snomed.info/sct#226023004";
+
+    /// <summary>
     /// Literal for code: ChocolateDigestiveBiscuit
     /// </summary>
     public const string LiteralChocolateDigestiveBiscuit = "226024005";
+
+    /// <summary>
+    /// Literal for code: NONEChocolateDigestiveBiscuit
+    /// </summary>
+    public const string LiteralNONEChocolateDigestiveBiscuit = "http://snomed.info/sct#226024005";
 
     /// <summary>
     /// Literal for code: Lasagne
@@ -9178,9 +9338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLasagne = "226037008";
 
     /// <summary>
+    /// Literal for code: NONELasagne
+    /// </summary>
+    public const string LiteralNONELasagne = "http://snomed.info/sct#226037008";
+
+    /// <summary>
     /// Literal for code: MintSweetSubstance
     /// </summary>
     public const string LiteralMintSweetSubstance = "226041007";
+
+    /// <summary>
+    /// Literal for code: NONEMintSweetSubstance
+    /// </summary>
+    public const string LiteralNONEMintSweetSubstance = "http://snomed.info/sct#226041007";
 
     /// <summary>
     /// Literal for code: PlainDigestiveBiscuit
@@ -9188,9 +9358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPlainDigestiveBiscuit = "226046002";
 
     /// <summary>
+    /// Literal for code: NONEPlainDigestiveBiscuit
+    /// </summary>
+    public const string LiteralNONEPlainDigestiveBiscuit = "http://snomed.info/sct#226046002";
+
+    /// <summary>
     /// Literal for code: Tamarind
     /// </summary>
     public const string LiteralTamarind = "226061001";
+
+    /// <summary>
+    /// Literal for code: NONETamarind
+    /// </summary>
+    public const string LiteralNONETamarind = "http://snomed.info/sct#226061001";
 
     /// <summary>
     /// Literal for code: TrailMix
@@ -9198,9 +9378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTrailMix = "226062008";
 
     /// <summary>
+    /// Literal for code: NONETrailMix
+    /// </summary>
+    public const string LiteralNONETrailMix = "http://snomed.info/sct#226062008";
+
+    /// <summary>
     /// Literal for code: EicosapentaenoicAcid
     /// </summary>
     public const string LiteralEicosapentaenoicAcid = "226367006";
+
+    /// <summary>
+    /// Literal for code: NONEEicosapentaenoicAcid
+    /// </summary>
+    public const string LiteralNONEEicosapentaenoicAcid = "http://snomed.info/sct#226367006";
 
     /// <summary>
     /// Literal for code: DHADocosahexaenoicAcid
@@ -9208,9 +9398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDHADocosahexaenoicAcid = "226368001";
 
     /// <summary>
+    /// Literal for code: NONEDHADocosahexaenoicAcid
+    /// </summary>
+    public const string LiteralNONEDHADocosahexaenoicAcid = "http://snomed.info/sct#226368001";
+
+    /// <summary>
     /// Literal for code: AppleJuice
     /// </summary>
     public const string LiteralAppleJuice = "226491003";
+
+    /// <summary>
+    /// Literal for code: NONEAppleJuice
+    /// </summary>
+    public const string LiteralNONEAppleJuice = "http://snomed.info/sct#226491003";
 
     /// <summary>
     /// Literal for code: GrapeJuice
@@ -9218,9 +9418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGrapeJuice = "226492005";
 
     /// <summary>
+    /// Literal for code: NONEGrapeJuice
+    /// </summary>
+    public const string LiteralNONEGrapeJuice = "http://snomed.info/sct#226492005";
+
+    /// <summary>
     /// Literal for code: GrapefruitJuice
     /// </summary>
     public const string LiteralGrapefruitJuice = "226493000";
+
+    /// <summary>
+    /// Literal for code: NONEGrapefruitJuice
+    /// </summary>
+    public const string LiteralNONEGrapefruitJuice = "http://snomed.info/sct#226493000";
 
     /// <summary>
     /// Literal for code: LemonJuice
@@ -9228,9 +9438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLemonJuice = "226495007";
 
     /// <summary>
+    /// Literal for code: NONELemonJuice
+    /// </summary>
+    public const string LiteralNONELemonJuice = "http://snomed.info/sct#226495007";
+
+    /// <summary>
     /// Literal for code: OrangeJuice
     /// </summary>
     public const string LiteralOrangeJuice = "226496008";
+
+    /// <summary>
+    /// Literal for code: NONEOrangeJuice
+    /// </summary>
+    public const string LiteralNONEOrangeJuice = "http://snomed.info/sct#226496008";
 
     /// <summary>
     /// Literal for code: PineappleJuice
@@ -9238,9 +9458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPineappleJuice = "226497004";
 
     /// <summary>
+    /// Literal for code: NONEPineappleJuice
+    /// </summary>
+    public const string LiteralNONEPineappleJuice = "http://snomed.info/sct#226497004";
+
+    /// <summary>
     /// Literal for code: TomatoJuice
     /// </summary>
     public const string LiteralTomatoJuice = "226498009";
+
+    /// <summary>
+    /// Literal for code: NONETomatoJuice
+    /// </summary>
+    public const string LiteralNONETomatoJuice = "http://snomed.info/sct#226498009";
 
     /// <summary>
     /// Literal for code: StarchyFood
@@ -9248,9 +9478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStarchyFood = "226529007";
 
     /// <summary>
+    /// Literal for code: NONEStarchyFood
+    /// </summary>
+    public const string LiteralNONEStarchyFood = "http://snomed.info/sct#226529007";
+
+    /// <summary>
     /// Literal for code: BabyCereal
     /// </summary>
     public const string LiteralBabyCereal = "226530002";
+
+    /// <summary>
+    /// Literal for code: NONEBabyCereal
+    /// </summary>
+    public const string LiteralNONEBabyCereal = "http://snomed.info/sct#226530002";
 
     /// <summary>
     /// Literal for code: Rusk
@@ -9258,9 +9498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRusk = "226531003";
 
     /// <summary>
+    /// Literal for code: NONERusk
+    /// </summary>
+    public const string LiteralNONERusk = "http://snomed.info/sct#226531003";
+
+    /// <summary>
     /// Literal for code: FlavoredRusk
     /// </summary>
     public const string LiteralFlavoredRusk = "226532005";
+
+    /// <summary>
+    /// Literal for code: NONEFlavoredRusk
+    /// </summary>
+    public const string LiteralNONEFlavoredRusk = "http://snomed.info/sct#226532005";
 
     /// <summary>
     /// Literal for code: LowSugarRusk
@@ -9268,9 +9518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLowSugarRusk = "226533000";
 
     /// <summary>
+    /// Literal for code: NONELowSugarRusk
+    /// </summary>
+    public const string LiteralNONELowSugarRusk = "http://snomed.info/sct#226533000";
+
+    /// <summary>
     /// Literal for code: PlainRusk
     /// </summary>
     public const string LiteralPlainRusk = "226534006";
+
+    /// <summary>
+    /// Literal for code: NONEPlainRusk
+    /// </summary>
+    public const string LiteralNONEPlainRusk = "http://snomed.info/sct#226534006";
 
     /// <summary>
     /// Literal for code: WholemealRusk
@@ -9278,9 +9538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWholemealRusk = "226535007";
 
     /// <summary>
+    /// Literal for code: NONEWholemealRusk
+    /// </summary>
+    public const string LiteralNONEWholemealRusk = "http://snomed.info/sct#226535007";
+
+    /// <summary>
     /// Literal for code: RiceBasedBabyCereal
     /// </summary>
     public const string LiteralRiceBasedBabyCereal = "226536008";
+
+    /// <summary>
+    /// Literal for code: NONERiceBasedBabyCereal
+    /// </summary>
+    public const string LiteralNONERiceBasedBabyCereal = "http://snomed.info/sct#226536008";
 
     /// <summary>
     /// Literal for code: MixedCerealBasedBabyCereal
@@ -9288,9 +9558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMixedCerealBasedBabyCereal = "226537004";
 
     /// <summary>
+    /// Literal for code: NONEMixedCerealBasedBabyCereal
+    /// </summary>
+    public const string LiteralNONEMixedCerealBasedBabyCereal = "http://snomed.info/sct#226537004";
+
+    /// <summary>
     /// Literal for code: WheatBasedBabyCereal
     /// </summary>
     public const string LiteralWheatBasedBabyCereal = "226538009";
+
+    /// <summary>
+    /// Literal for code: NONEWheatBasedBabyCereal
+    /// </summary>
+    public const string LiteralNONEWheatBasedBabyCereal = "http://snomed.info/sct#226538009";
 
     /// <summary>
     /// Literal for code: CookieAndOrCracker
@@ -9298,9 +9578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCookieAndOrCracker = "226539001";
 
     /// <summary>
+    /// Literal for code: NONECookieAndOrCracker
+    /// </summary>
+    public const string LiteralNONECookieAndOrCracker = "http://snomed.info/sct#226539001";
+
+    /// <summary>
     /// Literal for code: ChocolateBiscuit
     /// </summary>
     public const string LiteralChocolateBiscuit = "226540004";
+
+    /// <summary>
+    /// Literal for code: NONEChocolateBiscuit
+    /// </summary>
+    public const string LiteralNONEChocolateBiscuit = "http://snomed.info/sct#226540004";
 
     /// <summary>
     /// Literal for code: FullCoatedChocolateBiscuit
@@ -9308,9 +9598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFullCoatedChocolateBiscuit = "226541000";
 
     /// <summary>
+    /// Literal for code: NONEFullCoatedChocolateBiscuit
+    /// </summary>
+    public const string LiteralNONEFullCoatedChocolateBiscuit = "http://snomed.info/sct#226541000";
+
+    /// <summary>
     /// Literal for code: HalfCoatedChocolateBiscuit
     /// </summary>
     public const string LiteralHalfCoatedChocolateBiscuit = "226542007";
+
+    /// <summary>
+    /// Literal for code: NONEHalfCoatedChocolateBiscuit
+    /// </summary>
+    public const string LiteralNONEHalfCoatedChocolateBiscuit = "http://snomed.info/sct#226542007";
 
     /// <summary>
     /// Literal for code: Cracker
@@ -9318,9 +9618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCracker = "226543002";
 
     /// <summary>
+    /// Literal for code: NONECracker
+    /// </summary>
+    public const string LiteralNONECracker = "http://snomed.info/sct#226543002";
+
+    /// <summary>
     /// Literal for code: CreamCracker
     /// </summary>
     public const string LiteralCreamCracker = "226544008";
+
+    /// <summary>
+    /// Literal for code: NONECreamCracker
+    /// </summary>
+    public const string LiteralNONECreamCracker = "http://snomed.info/sct#226544008";
 
     /// <summary>
     /// Literal for code: WholemealCracker
@@ -9328,9 +9638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWholemealCracker = "226546005";
 
     /// <summary>
+    /// Literal for code: NONEWholemealCracker
+    /// </summary>
+    public const string LiteralNONEWholemealCracker = "http://snomed.info/sct#226546005";
+
+    /// <summary>
     /// Literal for code: Crispbread
     /// </summary>
     public const string LiteralCrispbread = "226547001";
+
+    /// <summary>
+    /// Literal for code: NONECrispbread
+    /// </summary>
+    public const string LiteralNONECrispbread = "http://snomed.info/sct#226547001";
 
     /// <summary>
     /// Literal for code: DigestiveBiscuit
@@ -9338,9 +9658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDigestiveBiscuit = "226548006";
 
     /// <summary>
+    /// Literal for code: NONEDigestiveBiscuit
+    /// </summary>
+    public const string LiteralNONEDigestiveBiscuit = "http://snomed.info/sct#226548006";
+
+    /// <summary>
     /// Literal for code: GingernutBiscuit
     /// </summary>
     public const string LiteralGingernutBiscuit = "226549003";
+
+    /// <summary>
+    /// Literal for code: NONEGingernutBiscuit
+    /// </summary>
+    public const string LiteralNONEGingernutBiscuit = "http://snomed.info/sct#226549003";
 
     /// <summary>
     /// Literal for code: HomeMadeBiscuit
@@ -9348,9 +9678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHomeMadeBiscuit = "226550003";
 
     /// <summary>
+    /// Literal for code: NONEHomeMadeBiscuit
+    /// </summary>
+    public const string LiteralNONEHomeMadeBiscuit = "http://snomed.info/sct#226550003";
+
+    /// <summary>
     /// Literal for code: Matzo
     /// </summary>
     public const string LiteralMatzo = "226551004";
+
+    /// <summary>
+    /// Literal for code: NONEMatzo
+    /// </summary>
+    public const string LiteralNONEMatzo = "http://snomed.info/sct#226551004";
 
     /// <summary>
     /// Literal for code: Oatcake
@@ -9358,9 +9698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOatcake = "226552006";
 
     /// <summary>
+    /// Literal for code: NONEOatcake
+    /// </summary>
+    public const string LiteralNONEOatcake = "http://snomed.info/sct#226552006";
+
+    /// <summary>
     /// Literal for code: SandwichBiscuit
     /// </summary>
     public const string LiteralSandwichBiscuit = "226553001";
+
+    /// <summary>
+    /// Literal for code: NONESandwichBiscuit
+    /// </summary>
+    public const string LiteralNONESandwichBiscuit = "http://snomed.info/sct#226553001";
 
     /// <summary>
     /// Literal for code: SemiSweetBiscuit
@@ -9368,9 +9718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSemiSweetBiscuit = "226554007";
 
     /// <summary>
+    /// Literal for code: NONESemiSweetBiscuit
+    /// </summary>
+    public const string LiteralNONESemiSweetBiscuit = "http://snomed.info/sct#226554007";
+
+    /// <summary>
     /// Literal for code: ShortSweetBiscuit
     /// </summary>
     public const string LiteralShortSweetBiscuit = "226555008";
+
+    /// <summary>
+    /// Literal for code: NONEShortSweetBiscuit
+    /// </summary>
+    public const string LiteralNONEShortSweetBiscuit = "http://snomed.info/sct#226555008";
 
     /// <summary>
     /// Literal for code: ShortbreadBiscuit
@@ -9378,9 +9738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralShortbreadBiscuit = "226556009";
 
     /// <summary>
+    /// Literal for code: NONEShortbreadBiscuit
+    /// </summary>
+    public const string LiteralNONEShortbreadBiscuit = "http://snomed.info/sct#226556009";
+
+    /// <summary>
     /// Literal for code: WaferBiscuit
     /// </summary>
     public const string LiteralWaferBiscuit = "226557000";
+
+    /// <summary>
+    /// Literal for code: NONEWaferBiscuit
+    /// </summary>
+    public const string LiteralNONEWaferBiscuit = "http://snomed.info/sct#226557000";
 
     /// <summary>
     /// Literal for code: WaterBiscuit
@@ -9388,9 +9758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWaterBiscuit = "226558005";
 
     /// <summary>
+    /// Literal for code: NONEWaterBiscuit
+    /// </summary>
+    public const string LiteralNONEWaterBiscuit = "http://snomed.info/sct#226558005";
+
+    /// <summary>
     /// Literal for code: Bread
     /// </summary>
     public const string LiteralBread = "226559002";
+
+    /// <summary>
+    /// Literal for code: NONEBread
+    /// </summary>
+    public const string LiteralNONEBread = "http://snomed.info/sct#226559002";
 
     /// <summary>
     /// Literal for code: BrownBread
@@ -9398,9 +9778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBrownBread = "226560007";
 
     /// <summary>
+    /// Literal for code: NONEBrownBread
+    /// </summary>
+    public const string LiteralNONEBrownBread = "http://snomed.info/sct#226560007";
+
+    /// <summary>
     /// Literal for code: BrownBreadRoll
     /// </summary>
     public const string LiteralBrownBreadRoll = "226561006";
+
+    /// <summary>
+    /// Literal for code: NONEBrownBreadRoll
+    /// </summary>
+    public const string LiteralNONEBrownBreadRoll = "http://snomed.info/sct#226561006";
 
     /// <summary>
     /// Literal for code: Breadcrumbs
@@ -9408,9 +9798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBreadcrumbs = "226562004";
 
     /// <summary>
+    /// Literal for code: NONEBreadcrumbs
+    /// </summary>
+    public const string LiteralNONEBreadcrumbs = "http://snomed.info/sct#226562004";
+
+    /// <summary>
     /// Literal for code: Chapati
     /// </summary>
     public const string LiteralChapati = "226563009";
+
+    /// <summary>
+    /// Literal for code: NONEChapati
+    /// </summary>
+    public const string LiteralNONEChapati = "http://snomed.info/sct#226563009";
 
     /// <summary>
     /// Literal for code: WhiteChapati
@@ -9418,9 +9818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWhiteChapati = "226564003";
 
     /// <summary>
+    /// Literal for code: NONEWhiteChapati
+    /// </summary>
+    public const string LiteralNONEWhiteChapati = "http://snomed.info/sct#226564003";
+
+    /// <summary>
     /// Literal for code: WhiteChapatiMadeWithFat
     /// </summary>
     public const string LiteralWhiteChapatiMadeWithFat = "226565002";
+
+    /// <summary>
+    /// Literal for code: NONEWhiteChapatiMadeWithFat
+    /// </summary>
+    public const string LiteralNONEWhiteChapatiMadeWithFat = "http://snomed.info/sct#226565002";
 
     /// <summary>
     /// Literal for code: WhiteChapatiMadeWithoutFat
@@ -9428,9 +9838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWhiteChapatiMadeWithoutFat = "226566001";
 
     /// <summary>
+    /// Literal for code: NONEWhiteChapatiMadeWithoutFat
+    /// </summary>
+    public const string LiteralNONEWhiteChapatiMadeWithoutFat = "http://snomed.info/sct#226566001";
+
+    /// <summary>
     /// Literal for code: WholemealChapati
     /// </summary>
     public const string LiteralWholemealChapati = "226567005";
+
+    /// <summary>
+    /// Literal for code: NONEWholemealChapati
+    /// </summary>
+    public const string LiteralNONEWholemealChapati = "http://snomed.info/sct#226567005";
 
     /// <summary>
     /// Literal for code: WholemealChapatiMadeWithFat
@@ -9438,9 +9858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWholemealChapatiMadeWithFat = "226568000";
 
     /// <summary>
+    /// Literal for code: NONEWholemealChapatiMadeWithFat
+    /// </summary>
+    public const string LiteralNONEWholemealChapatiMadeWithFat = "http://snomed.info/sct#226568000";
+
+    /// <summary>
     /// Literal for code: WholemealChapatiMadeWithoutFat
     /// </summary>
     public const string LiteralWholemealChapatiMadeWithoutFat = "226569008";
+
+    /// <summary>
+    /// Literal for code: NONEWholemealChapatiMadeWithoutFat
+    /// </summary>
+    public const string LiteralNONEWholemealChapatiMadeWithoutFat = "http://snomed.info/sct#226569008";
 
     /// <summary>
     /// Literal for code: CurrantBread
@@ -9448,9 +9878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCurrantBread = "226570009";
 
     /// <summary>
+    /// Literal for code: NONECurrantBread
+    /// </summary>
+    public const string LiteralNONECurrantBread = "http://snomed.info/sct#226570009";
+
+    /// <summary>
     /// Literal for code: GranaryBread
     /// </summary>
     public const string LiteralGranaryBread = "226571008";
+
+    /// <summary>
+    /// Literal for code: NONEGranaryBread
+    /// </summary>
+    public const string LiteralNONEGranaryBread = "http://snomed.info/sct#226571008";
 
     /// <summary>
     /// Literal for code: GranaryBreadRoll
@@ -9458,9 +9898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGranaryBreadRoll = "226572001";
 
     /// <summary>
+    /// Literal for code: NONEGranaryBreadRoll
+    /// </summary>
+    public const string LiteralNONEGranaryBreadRoll = "http://snomed.info/sct#226572001";
+
+    /// <summary>
     /// Literal for code: MaltBread
     /// </summary>
     public const string LiteralMaltBread = "226574000";
+
+    /// <summary>
+    /// Literal for code: NONEMaltBread
+    /// </summary>
+    public const string LiteralNONEMaltBread = "http://snomed.info/sct#226574000";
 
     /// <summary>
     /// Literal for code: NaanBread
@@ -9468,9 +9918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNaanBread = "226575004";
 
     /// <summary>
+    /// Literal for code: NONENaanBread
+    /// </summary>
+    public const string LiteralNONENaanBread = "http://snomed.info/sct#226575004";
+
+    /// <summary>
     /// Literal for code: Papadum
     /// </summary>
     public const string LiteralPapadum = "226576003";
+
+    /// <summary>
+    /// Literal for code: NONEPapadum
+    /// </summary>
+    public const string LiteralNONEPapadum = "http://snomed.info/sct#226576003";
 
     /// <summary>
     /// Literal for code: FriedPapadum
@@ -9478,9 +9938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedPapadum = "226577007";
 
     /// <summary>
+    /// Literal for code: NONEFriedPapadum
+    /// </summary>
+    public const string LiteralNONEFriedPapadum = "http://snomed.info/sct#226577007";
+
+    /// <summary>
     /// Literal for code: GrilledPapadum
     /// </summary>
     public const string LiteralGrilledPapadum = "226578002";
+
+    /// <summary>
+    /// Literal for code: NONEGrilledPapadum
+    /// </summary>
+    public const string LiteralNONEGrilledPapadum = "http://snomed.info/sct#226578002";
 
     /// <summary>
     /// Literal for code: Paratha
@@ -9488,9 +9958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralParatha = "226579005";
 
     /// <summary>
+    /// Literal for code: NONEParatha
+    /// </summary>
+    public const string LiteralNONEParatha = "http://snomed.info/sct#226579005";
+
+    /// <summary>
     /// Literal for code: PitaBreadSubstance
     /// </summary>
     public const string LiteralPitaBreadSubstance = "226580008";
+
+    /// <summary>
+    /// Literal for code: NONEPitaBreadSubstance
+    /// </summary>
+    public const string LiteralNONEPitaBreadSubstance = "http://snomed.info/sct#226580008";
 
     /// <summary>
     /// Literal for code: WhitePitaBreadSubstance
@@ -9498,9 +9978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWhitePitaBreadSubstance = "226581007";
 
     /// <summary>
+    /// Literal for code: NONEWhitePitaBreadSubstance
+    /// </summary>
+    public const string LiteralNONEWhitePitaBreadSubstance = "http://snomed.info/sct#226581007";
+
+    /// <summary>
     /// Literal for code: WholemealPitaBreadSubstance
     /// </summary>
     public const string LiteralWholemealPitaBreadSubstance = "226582000";
+
+    /// <summary>
+    /// Literal for code: NONEWholemealPitaBreadSubstance
+    /// </summary>
+    public const string LiteralNONEWholemealPitaBreadSubstance = "http://snomed.info/sct#226582000";
 
     /// <summary>
     /// Literal for code: MilkBread
@@ -9508,9 +9998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMilkBread = "226583005";
 
     /// <summary>
+    /// Literal for code: NONEMilkBread
+    /// </summary>
+    public const string LiteralNONEMilkBread = "http://snomed.info/sct#226583005";
+
+    /// <summary>
     /// Literal for code: RyeBread
     /// </summary>
     public const string LiteralRyeBread = "226584004";
+
+    /// <summary>
+    /// Literal for code: NONERyeBread
+    /// </summary>
+    public const string LiteralNONERyeBread = "http://snomed.info/sct#226584004";
 
     /// <summary>
     /// Literal for code: SodaBread
@@ -9518,9 +10018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSodaBread = "226585003";
 
     /// <summary>
+    /// Literal for code: NONESodaBread
+    /// </summary>
+    public const string LiteralNONESodaBread = "http://snomed.info/sct#226585003";
+
+    /// <summary>
     /// Literal for code: Tortilla
     /// </summary>
     public const string LiteralTortilla = "226587006";
+
+    /// <summary>
+    /// Literal for code: NONETortilla
+    /// </summary>
+    public const string LiteralNONETortilla = "http://snomed.info/sct#226587006";
 
     /// <summary>
     /// Literal for code: WheatgermBread
@@ -9528,9 +10038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWheatgermBread = "226589009";
 
     /// <summary>
+    /// Literal for code: NONEWheatgermBread
+    /// </summary>
+    public const string LiteralNONEWheatgermBread = "http://snomed.info/sct#226589009";
+
+    /// <summary>
     /// Literal for code: WhiteBread
     /// </summary>
     public const string LiteralWhiteBread = "226590000";
+
+    /// <summary>
+    /// Literal for code: NONEWhiteBread
+    /// </summary>
+    public const string LiteralNONEWhiteBread = "http://snomed.info/sct#226590000";
 
     /// <summary>
     /// Literal for code: FriedWhiteBread
@@ -9538,9 +10058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedWhiteBread = "226592008";
 
     /// <summary>
+    /// Literal for code: NONEFriedWhiteBread
+    /// </summary>
+    public const string LiteralNONEFriedWhiteBread = "http://snomed.info/sct#226592008";
+
+    /// <summary>
     /// Literal for code: WestIndianWhiteBread
     /// </summary>
     public const string LiteralWestIndianWhiteBread = "226593003";
+
+    /// <summary>
+    /// Literal for code: NONEWestIndianWhiteBread
+    /// </summary>
+    public const string LiteralNONEWestIndianWhiteBread = "http://snomed.info/sct#226593003";
 
     /// <summary>
     /// Literal for code: WhiteBreadRoll
@@ -9548,9 +10078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWhiteBreadRoll = "226595005";
 
     /// <summary>
+    /// Literal for code: NONEWhiteBreadRoll
+    /// </summary>
+    public const string LiteralNONEWhiteBreadRoll = "http://snomed.info/sct#226595005";
+
+    /// <summary>
     /// Literal for code: WholemealBread
     /// </summary>
     public const string LiteralWholemealBread = "226596006";
+
+    /// <summary>
+    /// Literal for code: NONEWholemealBread
+    /// </summary>
+    public const string LiteralNONEWholemealBread = "http://snomed.info/sct#226596006";
 
     /// <summary>
     /// Literal for code: WholemealBreadRoll
@@ -9558,9 +10098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWholemealBreadRoll = "226597002";
 
     /// <summary>
+    /// Literal for code: NONEWholemealBreadRoll
+    /// </summary>
+    public const string LiteralNONEWholemealBreadRoll = "http://snomed.info/sct#226597002";
+
+    /// <summary>
     /// Literal for code: BreakfastCereal
     /// </summary>
     public const string LiteralBreakfastCereal = "226598007";
+
+    /// <summary>
+    /// Literal for code: NONEBreakfastCereal
+    /// </summary>
+    public const string LiteralNONEBreakfastCereal = "http://snomed.info/sct#226598007";
 
     /// <summary>
     /// Literal for code: BranFlakes
@@ -9568,9 +10118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBranFlakes = "226601002";
 
     /// <summary>
+    /// Literal for code: NONEBranFlakes
+    /// </summary>
+    public const string LiteralNONEBranFlakes = "http://snomed.info/sct#226601002";
+
+    /// <summary>
     /// Literal for code: Cornflakes
     /// </summary>
     public const string LiteralCornflakes = "226604005";
+
+    /// <summary>
+    /// Literal for code: NONECornflakes
+    /// </summary>
+    public const string LiteralNONECornflakes = "http://snomed.info/sct#226604005";
 
     /// <summary>
     /// Literal for code: Muesli
@@ -9578,9 +10138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMuesli = "226611009";
 
     /// <summary>
+    /// Literal for code: NONEMuesli
+    /// </summary>
+    public const string LiteralNONEMuesli = "http://snomed.info/sct#226611009";
+
+    /// <summary>
     /// Literal for code: MuesliSwissStyle
     /// </summary>
     public const string LiteralMuesliSwissStyle = "226612002";
+
+    /// <summary>
+    /// Literal for code: NONEMuesliSwissStyle
+    /// </summary>
+    public const string LiteralNONEMuesliSwissStyle = "http://snomed.info/sct#226612002";
 
     /// <summary>
     /// Literal for code: MuesliWithExtraFruit
@@ -9588,9 +10158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMuesliWithExtraFruit = "226613007";
 
     /// <summary>
+    /// Literal for code: NONEMuesliWithExtraFruit
+    /// </summary>
+    public const string LiteralNONEMuesliWithExtraFruit = "http://snomed.info/sct#226613007";
+
+    /// <summary>
     /// Literal for code: MuesliWithNoAddedSugar
     /// </summary>
     public const string LiteralMuesliWithNoAddedSugar = "226614001";
+
+    /// <summary>
+    /// Literal for code: NONEMuesliWithNoAddedSugar
+    /// </summary>
+    public const string LiteralNONEMuesliWithNoAddedSugar = "http://snomed.info/sct#226614001";
 
     /// <summary>
     /// Literal for code: OatAndWheatBran
@@ -9598,9 +10178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOatAndWheatBran = "226616004";
 
     /// <summary>
+    /// Literal for code: NONEOatAndWheatBran
+    /// </summary>
+    public const string LiteralNONEOatAndWheatBran = "http://snomed.info/sct#226616004";
+
+    /// <summary>
     /// Literal for code: Porridge
     /// </summary>
     public const string LiteralPorridge = "226617008";
+
+    /// <summary>
+    /// Literal for code: NONEPorridge
+    /// </summary>
+    public const string LiteralNONEPorridge = "http://snomed.info/sct#226617008";
 
     /// <summary>
     /// Literal for code: PorridgeMadeWithMilk
@@ -9608,9 +10198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPorridgeMadeWithMilk = "226618003";
 
     /// <summary>
+    /// Literal for code: NONEPorridgeMadeWithMilk
+    /// </summary>
+    public const string LiteralNONEPorridgeMadeWithMilk = "http://snomed.info/sct#226618003";
+
+    /// <summary>
     /// Literal for code: PorridgeMadeWithSemiSkimmedMilk
     /// </summary>
     public const string LiteralPorridgeMadeWithSemiSkimmedMilk = "226619006";
+
+    /// <summary>
+    /// Literal for code: NONEPorridgeMadeWithSemiSkimmedMilk
+    /// </summary>
+    public const string LiteralNONEPorridgeMadeWithSemiSkimmedMilk = "http://snomed.info/sct#226619006";
 
     /// <summary>
     /// Literal for code: PorridgeMadeWithSkimmedMilk
@@ -9618,9 +10218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPorridgeMadeWithSkimmedMilk = "226620000";
 
     /// <summary>
+    /// Literal for code: NONEPorridgeMadeWithSkimmedMilk
+    /// </summary>
+    public const string LiteralNONEPorridgeMadeWithSkimmedMilk = "http://snomed.info/sct#226620000";
+
+    /// <summary>
     /// Literal for code: PorridgeMadeWithWholeMilk
     /// </summary>
     public const string LiteralPorridgeMadeWithWholeMilk = "226621001";
+
+    /// <summary>
+    /// Literal for code: NONEPorridgeMadeWithWholeMilk
+    /// </summary>
+    public const string LiteralNONEPorridgeMadeWithWholeMilk = "http://snomed.info/sct#226621001";
 
     /// <summary>
     /// Literal for code: PorridgeMadeWithWater
@@ -9628,9 +10238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPorridgeMadeWithWater = "226622008";
 
     /// <summary>
+    /// Literal for code: NONEPorridgeMadeWithWater
+    /// </summary>
+    public const string LiteralNONEPorridgeMadeWithWater = "http://snomed.info/sct#226622008";
+
+    /// <summary>
     /// Literal for code: Cake
     /// </summary>
     public const string LiteralCake = "226639005";
+
+    /// <summary>
+    /// Literal for code: NONECake
+    /// </summary>
+    public const string LiteralNONECake = "http://snomed.info/sct#226639005";
 
     /// <summary>
     /// Literal for code: AllBranLoaf
@@ -9638,9 +10258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAllBranLoaf = "226640007";
 
     /// <summary>
+    /// Literal for code: NONEAllBranLoaf
+    /// </summary>
+    public const string LiteralNONEAllBranLoaf = "http://snomed.info/sct#226640007";
+
+    /// <summary>
     /// Literal for code: BattenburgCake
     /// </summary>
     public const string LiteralBattenburgCake = "226641006";
+
+    /// <summary>
+    /// Literal for code: NONEBattenburgCake
+    /// </summary>
+    public const string LiteralNONEBattenburgCake = "http://snomed.info/sct#226641006";
 
     /// <summary>
     /// Literal for code: WelshCheesecake
@@ -9648,9 +10278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWelshCheesecake = "226642004";
 
     /// <summary>
+    /// Literal for code: NONEWelshCheesecake
+    /// </summary>
+    public const string LiteralNONEWelshCheesecake = "http://snomed.info/sct#226642004";
+
+    /// <summary>
     /// Literal for code: CherryCake
     /// </summary>
     public const string LiteralCherryCake = "226643009";
+
+    /// <summary>
+    /// Literal for code: NONECherryCake
+    /// </summary>
+    public const string LiteralNONECherryCake = "http://snomed.info/sct#226643009";
 
     /// <summary>
     /// Literal for code: ChineseCake
@@ -9658,9 +10298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChineseCake = "226644003";
 
     /// <summary>
+    /// Literal for code: NONEChineseCake
+    /// </summary>
+    public const string LiteralNONEChineseCake = "http://snomed.info/sct#226644003";
+
+    /// <summary>
     /// Literal for code: ChineseGlutinousRiceFlourCake
     /// </summary>
     public const string LiteralChineseGlutinousRiceFlourCake = "226645002";
+
+    /// <summary>
+    /// Literal for code: NONEChineseGlutinousRiceFlourCake
+    /// </summary>
+    public const string LiteralNONEChineseGlutinousRiceFlourCake = "http://snomed.info/sct#226645002";
 
     /// <summary>
     /// Literal for code: ChocolateCake
@@ -9668,9 +10318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChocolateCake = "226647005";
 
     /// <summary>
+    /// Literal for code: NONEChocolateCake
+    /// </summary>
+    public const string LiteralNONEChocolateCake = "http://snomed.info/sct#226647005";
+
+    /// <summary>
     /// Literal for code: ChocolateCakeWithButterIcing
     /// </summary>
     public const string LiteralChocolateCakeWithButterIcing = "226648000";
+
+    /// <summary>
+    /// Literal for code: NONEChocolateCakeWithButterIcing
+    /// </summary>
+    public const string LiteralNONEChocolateCakeWithButterIcing = "http://snomed.info/sct#226648000";
 
     /// <summary>
     /// Literal for code: CoconutCake
@@ -9678,9 +10338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCoconutCake = "226649008";
 
     /// <summary>
+    /// Literal for code: NONECoconutCake
+    /// </summary>
+    public const string LiteralNONECoconutCake = "http://snomed.info/sct#226649008";
+
+    /// <summary>
     /// Literal for code: CrispieCake
     /// </summary>
     public const string LiteralCrispieCake = "226650008";
+
+    /// <summary>
+    /// Literal for code: NONECrispieCake
+    /// </summary>
+    public const string LiteralNONECrispieCake = "http://snomed.info/sct#226650008";
 
     /// <summary>
     /// Literal for code: FancyIcedCake
@@ -9688,9 +10358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFancyIcedCake = "226651007";
 
     /// <summary>
+    /// Literal for code: NONEFancyIcedCake
+    /// </summary>
+    public const string LiteralNONEFancyIcedCake = "http://snomed.info/sct#226651007";
+
+    /// <summary>
     /// Literal for code: FruitCake
     /// </summary>
     public const string LiteralFruitCake = "226652000";
+
+    /// <summary>
+    /// Literal for code: NONEFruitCake
+    /// </summary>
+    public const string LiteralNONEFruitCake = "http://snomed.info/sct#226652000";
 
     /// <summary>
     /// Literal for code: PlainFruitCake
@@ -9698,9 +10378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPlainFruitCake = "226653005";
 
     /// <summary>
+    /// Literal for code: NONEPlainFruitCake
+    /// </summary>
+    public const string LiteralNONEPlainFruitCake = "http://snomed.info/sct#226653005";
+
+    /// <summary>
     /// Literal for code: RichFruitCake
     /// </summary>
     public const string LiteralRichFruitCake = "226654004";
+
+    /// <summary>
+    /// Literal for code: NONERichFruitCake
+    /// </summary>
+    public const string LiteralNONERichFruitCake = "http://snomed.info/sct#226654004";
 
     /// <summary>
     /// Literal for code: IcedFruitCake
@@ -9708,9 +10398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIcedFruitCake = "226655003";
 
     /// <summary>
+    /// Literal for code: NONEIcedFruitCake
+    /// </summary>
+    public const string LiteralNONEIcedFruitCake = "http://snomed.info/sct#226655003";
+
+    /// <summary>
     /// Literal for code: WholemealFruitCake
     /// </summary>
     public const string LiteralWholemealFruitCake = "226656002";
+
+    /// <summary>
+    /// Literal for code: NONEWholemealFruitCake
+    /// </summary>
+    public const string LiteralNONEWholemealFruitCake = "http://snomed.info/sct#226656002";
 
     /// <summary>
     /// Literal for code: Gateau
@@ -9718,9 +10418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGateau = "226657006";
 
     /// <summary>
+    /// Literal for code: NONEGateau
+    /// </summary>
+    public const string LiteralNONEGateau = "http://snomed.info/sct#226657006";
+
+    /// <summary>
     /// Literal for code: Gingerbread
     /// </summary>
     public const string LiteralGingerbread = "226658001";
+
+    /// <summary>
+    /// Literal for code: NONEGingerbread
+    /// </summary>
+    public const string LiteralNONEGingerbread = "http://snomed.info/sct#226658001";
 
     /// <summary>
     /// Literal for code: LardyCake
@@ -9728,9 +10438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLardyCake = "226659009";
 
     /// <summary>
+    /// Literal for code: NONELardyCake
+    /// </summary>
+    public const string LiteralNONELardyCake = "http://snomed.info/sct#226659009";
+
+    /// <summary>
     /// Literal for code: MadeiraCake
     /// </summary>
     public const string LiteralMadeiraCake = "226660004";
+
+    /// <summary>
+    /// Literal for code: NONEMadeiraCake
+    /// </summary>
+    public const string LiteralNONEMadeiraCake = "http://snomed.info/sct#226660004";
 
     /// <summary>
     /// Literal for code: RockCake
@@ -9738,9 +10458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRockCake = "226661000";
 
     /// <summary>
+    /// Literal for code: NONERockCake
+    /// </summary>
+    public const string LiteralNONERockCake = "http://snomed.info/sct#226661000";
+
+    /// <summary>
     /// Literal for code: Sevyiann
     /// </summary>
     public const string LiteralSevyiann = "226662007";
+
+    /// <summary>
+    /// Literal for code: NONESevyiann
+    /// </summary>
+    public const string LiteralNONESevyiann = "http://snomed.info/sct#226662007";
 
     /// <summary>
     /// Literal for code: SpongeCake
@@ -9748,9 +10478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSpongeCake = "226663002";
 
     /// <summary>
+    /// Literal for code: NONESpongeCake
+    /// </summary>
+    public const string LiteralNONESpongeCake = "http://snomed.info/sct#226663002";
+
+    /// <summary>
     /// Literal for code: FatlessSpongeCake
     /// </summary>
     public const string LiteralFatlessSpongeCake = "226664008";
+
+    /// <summary>
+    /// Literal for code: NONEFatlessSpongeCake
+    /// </summary>
+    public const string LiteralNONEFatlessSpongeCake = "http://snomed.info/sct#226664008";
 
     /// <summary>
     /// Literal for code: FrozenSpongeCake
@@ -9758,9 +10498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFrozenSpongeCake = "226665009";
 
     /// <summary>
+    /// Literal for code: NONEFrozenSpongeCake
+    /// </summary>
+    public const string LiteralNONEFrozenSpongeCake = "http://snomed.info/sct#226665009";
+
+    /// <summary>
     /// Literal for code: JamFilledSpongeCake
     /// </summary>
     public const string LiteralJamFilledSpongeCake = "226666005";
+
+    /// <summary>
+    /// Literal for code: NONEJamFilledSpongeCake
+    /// </summary>
+    public const string LiteralNONEJamFilledSpongeCake = "http://snomed.info/sct#226666005";
 
     /// <summary>
     /// Literal for code: FreshCreamFilledSpongeCake
@@ -9768,9 +10518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFreshCreamFilledSpongeCake = "226667001";
 
     /// <summary>
+    /// Literal for code: NONEFreshCreamFilledSpongeCake
+    /// </summary>
+    public const string LiteralNONEFreshCreamFilledSpongeCake = "http://snomed.info/sct#226667001";
+
+    /// <summary>
     /// Literal for code: SpongeCakeWithButterIcing
     /// </summary>
     public const string LiteralSpongeCakeWithButterIcing = "226668006";
+
+    /// <summary>
+    /// Literal for code: NONESpongeCakeWithButterIcing
+    /// </summary>
+    public const string LiteralNONESpongeCakeWithButterIcing = "http://snomed.info/sct#226668006";
 
     /// <summary>
     /// Literal for code: SpongeCakeMadeWithCakeMix
@@ -9778,9 +10538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSpongeCakeMadeWithCakeMix = "226669003";
 
     /// <summary>
+    /// Literal for code: NONESpongeCakeMadeWithCakeMix
+    /// </summary>
+    public const string LiteralNONESpongeCakeMadeWithCakeMix = "http://snomed.info/sct#226669003";
+
+    /// <summary>
     /// Literal for code: SwissRoll
     /// </summary>
     public const string LiteralSwissRoll = "226670002";
+
+    /// <summary>
+    /// Literal for code: NONESwissRoll
+    /// </summary>
+    public const string LiteralNONESwissRoll = "http://snomed.info/sct#226670002";
 
     /// <summary>
     /// Literal for code: ChocolateFilledSwissRoll
@@ -9788,9 +10558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChocolateFilledSwissRoll = "226671003";
 
     /// <summary>
+    /// Literal for code: NONEChocolateFilledSwissRoll
+    /// </summary>
+    public const string LiteralNONEChocolateFilledSwissRoll = "http://snomed.info/sct#226671003";
+
+    /// <summary>
     /// Literal for code: JamFilledSwissRoll
     /// </summary>
     public const string LiteralJamFilledSwissRoll = "226672005";
+
+    /// <summary>
+    /// Literal for code: NONEJamFilledSwissRoll
+    /// </summary>
+    public const string LiteralNONEJamFilledSwissRoll = "http://snomed.info/sct#226672005";
 
     /// <summary>
     /// Literal for code: IndividualSwissRoll
@@ -9798,9 +10578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIndividualSwissRoll = "226673000";
 
     /// <summary>
+    /// Literal for code: NONEIndividualSwissRoll
+    /// </summary>
+    public const string LiteralNONEIndividualSwissRoll = "http://snomed.info/sct#226673000";
+
+    /// <summary>
     /// Literal for code: WelshCake
     /// </summary>
     public const string LiteralWelshCake = "226674006";
+
+    /// <summary>
+    /// Literal for code: NONEWelshCake
+    /// </summary>
+    public const string LiteralNONEWelshCake = "http://snomed.info/sct#226674006";
 
     /// <summary>
     /// Literal for code: IndividualCakesAndPastries
@@ -9808,9 +10598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIndividualCakesAndPastries = "226675007";
 
     /// <summary>
+    /// Literal for code: NONEIndividualCakesAndPastries
+    /// </summary>
+    public const string LiteralNONEIndividualCakesAndPastries = "http://snomed.info/sct#226675007";
+
+    /// <summary>
     /// Literal for code: AsianPastry
     /// </summary>
     public const string LiteralAsianPastry = "226676008";
+
+    /// <summary>
+    /// Literal for code: NONEAsianPastry
+    /// </summary>
+    public const string LiteralNONEAsianPastry = "http://snomed.info/sct#226676008";
 
     /// <summary>
     /// Literal for code: BrandySnap
@@ -9818,9 +10618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBrandySnap = "226677004";
 
     /// <summary>
+    /// Literal for code: NONEBrandySnap
+    /// </summary>
+    public const string LiteralNONEBrandySnap = "http://snomed.info/sct#226677004";
+
+    /// <summary>
     /// Literal for code: Burfi
     /// </summary>
     public const string LiteralBurfi = "226678009";
+
+    /// <summary>
+    /// Literal for code: NONEBurfi
+    /// </summary>
+    public const string LiteralNONEBurfi = "http://snomed.info/sct#226678009";
 
     /// <summary>
     /// Literal for code: ChelseaBun
@@ -9828,9 +10638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChelseaBun = "226679001";
 
     /// <summary>
+    /// Literal for code: NONEChelseaBun
+    /// </summary>
+    public const string LiteralNONEChelseaBun = "http://snomed.info/sct#226679001";
+
+    /// <summary>
     /// Literal for code: ChouxBun
     /// </summary>
     public const string LiteralChouxBun = "226680003";
+
+    /// <summary>
+    /// Literal for code: NONEChouxBun
+    /// </summary>
+    public const string LiteralNONEChouxBun = "http://snomed.info/sct#226680003";
 
     /// <summary>
     /// Literal for code: CreamHorn
@@ -9838,9 +10658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCreamHorn = "226681004";
 
     /// <summary>
+    /// Literal for code: NONECreamHorn
+    /// </summary>
+    public const string LiteralNONECreamHorn = "http://snomed.info/sct#226681004";
+
+    /// <summary>
     /// Literal for code: Crumpet
     /// </summary>
     public const string LiteralCrumpet = "226682006";
+
+    /// <summary>
+    /// Literal for code: NONECrumpet
+    /// </summary>
+    public const string LiteralNONECrumpet = "http://snomed.info/sct#226682006";
 
     /// <summary>
     /// Literal for code: CurrantBun
@@ -9848,9 +10678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCurrantBun = "226683001";
 
     /// <summary>
+    /// Literal for code: NONECurrantBun
+    /// </summary>
+    public const string LiteralNONECurrantBun = "http://snomed.info/sct#226683001";
+
+    /// <summary>
     /// Literal for code: CustardTart
     /// </summary>
     public const string LiteralCustardTart = "226684007";
+
+    /// <summary>
+    /// Literal for code: NONECustardTart
+    /// </summary>
+    public const string LiteralNONECustardTart = "http://snomed.info/sct#226684007";
 
     /// <summary>
     /// Literal for code: DanishPastry
@@ -9858,9 +10698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDanishPastry = "226685008";
 
     /// <summary>
+    /// Literal for code: NONEDanishPastry
+    /// </summary>
+    public const string LiteralNONEDanishPastry = "http://snomed.info/sct#226685008";
+
+    /// <summary>
     /// Literal for code: Doughnut
     /// </summary>
     public const string LiteralDoughnut = "226686009";
+
+    /// <summary>
+    /// Literal for code: NONEDoughnut
+    /// </summary>
+    public const string LiteralNONEDoughnut = "http://snomed.info/sct#226686009";
 
     /// <summary>
     /// Literal for code: JamDoughnut
@@ -9868,9 +10718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralJamDoughnut = "226687000";
 
     /// <summary>
+    /// Literal for code: NONEJamDoughnut
+    /// </summary>
+    public const string LiteralNONEJamDoughnut = "http://snomed.info/sct#226687000";
+
+    /// <summary>
     /// Literal for code: RingDoughnut
     /// </summary>
     public const string LiteralRingDoughnut = "226688005";
+
+    /// <summary>
+    /// Literal for code: NONERingDoughnut
+    /// </summary>
+    public const string LiteralNONERingDoughnut = "http://snomed.info/sct#226688005";
 
     /// <summary>
     /// Literal for code: FreshCreamDoughnut
@@ -9878,9 +10738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFreshCreamDoughnut = "226689002";
 
     /// <summary>
+    /// Literal for code: NONEFreshCreamDoughnut
+    /// </summary>
+    public const string LiteralNONEFreshCreamDoughnut = "http://snomed.info/sct#226689002";
+
+    /// <summary>
     /// Literal for code: EcclesCake
     /// </summary>
     public const string LiteralEcclesCake = "226690006";
+
+    /// <summary>
+    /// Literal for code: NONEEcclesCake
+    /// </summary>
+    public const string LiteralNONEEcclesCake = "http://snomed.info/sct#226690006";
 
     /// <summary>
     /// Literal for code: Eclair
@@ -9888,9 +10758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEclair = "226691005";
 
     /// <summary>
+    /// Literal for code: NONEEclair
+    /// </summary>
+    public const string LiteralNONEEclair = "http://snomed.info/sct#226691005";
+
+    /// <summary>
     /// Literal for code: Flapjack
     /// </summary>
     public const string LiteralFlapjack = "226692003";
+
+    /// <summary>
+    /// Literal for code: NONEFlapjack
+    /// </summary>
+    public const string LiteralNONEFlapjack = "http://snomed.info/sct#226692003";
 
     /// <summary>
     /// Literal for code: GreekPastry
@@ -9898,9 +10778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGreekPastry = "226693008";
 
     /// <summary>
+    /// Literal for code: NONEGreekPastry
+    /// </summary>
+    public const string LiteralNONEGreekPastry = "http://snomed.info/sct#226693008";
+
+    /// <summary>
     /// Literal for code: GulabJamen
     /// </summary>
     public const string LiteralGulabJamen = "226694002";
+
+    /// <summary>
+    /// Literal for code: NONEGulabJamen
+    /// </summary>
+    public const string LiteralNONEGulabJamen = "http://snomed.info/sct#226694002";
 
     /// <summary>
     /// Literal for code: Halwa
@@ -9908,9 +10798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHalwa = "226695001";
 
     /// <summary>
+    /// Literal for code: NONEHalwa
+    /// </summary>
+    public const string LiteralNONEHalwa = "http://snomed.info/sct#226695001";
+
+    /// <summary>
     /// Literal for code: HotCrossBun
     /// </summary>
     public const string LiteralHotCrossBun = "226697009";
+
+    /// <summary>
+    /// Literal for code: NONEHotCrossBun
+    /// </summary>
+    public const string LiteralNONEHotCrossBun = "http://snomed.info/sct#226697009";
 
     /// <summary>
     /// Literal for code: JamTart
@@ -9918,9 +10818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralJamTart = "226699007";
 
     /// <summary>
+    /// Literal for code: NONEJamTart
+    /// </summary>
+    public const string LiteralNONEJamTart = "http://snomed.info/sct#226699007";
+
+    /// <summary>
     /// Literal for code: Jellabi
     /// </summary>
     public const string LiteralJellabi = "226700008";
+
+    /// <summary>
+    /// Literal for code: NONEJellabi
+    /// </summary>
+    public const string LiteralNONEJellabi = "http://snomed.info/sct#226700008";
 
     /// <summary>
     /// Literal for code: MeltingMoment
@@ -9928,9 +10838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMeltingMoment = "226701007";
 
     /// <summary>
+    /// Literal for code: NONEMeltingMoment
+    /// </summary>
+    public const string LiteralNONEMeltingMoment = "http://snomed.info/sct#226701007";
+
+    /// <summary>
     /// Literal for code: MincePie
     /// </summary>
     public const string LiteralMincePie = "226702000";
+
+    /// <summary>
+    /// Literal for code: NONEMincePie
+    /// </summary>
+    public const string LiteralNONEMincePie = "http://snomed.info/sct#226702000";
 
     /// <summary>
     /// Literal for code: MincemeatTart
@@ -9938,9 +10858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMincemeatTart = "226703005";
 
     /// <summary>
+    /// Literal for code: NONEMincemeatTart
+    /// </summary>
+    public const string LiteralNONEMincemeatTart = "http://snomed.info/sct#226703005";
+
+    /// <summary>
     /// Literal for code: Muffin
     /// </summary>
     public const string LiteralMuffin = "226704004";
+
+    /// <summary>
+    /// Literal for code: NONEMuffin
+    /// </summary>
+    public const string LiteralNONEMuffin = "http://snomed.info/sct#226704004";
 
     /// <summary>
     /// Literal for code: Pinni
@@ -9948,9 +10878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPinni = "226705003";
 
     /// <summary>
+    /// Literal for code: NONEPinni
+    /// </summary>
+    public const string LiteralNONEPinni = "http://snomed.info/sct#226705003";
+
+    /// <summary>
     /// Literal for code: RumBaba
     /// </summary>
     public const string LiteralRumBaba = "226706002";
+
+    /// <summary>
+    /// Literal for code: NONERumBaba
+    /// </summary>
+    public const string LiteralNONERumBaba = "http://snomed.info/sct#226706002";
 
     /// <summary>
     /// Literal for code: Scone
@@ -9958,9 +10898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralScone = "226707006";
 
     /// <summary>
+    /// Literal for code: NONEScone
+    /// </summary>
+    public const string LiteralNONEScone = "http://snomed.info/sct#226707006";
+
+    /// <summary>
     /// Literal for code: CheeseScone
     /// </summary>
     public const string LiteralCheeseScone = "226708001";
+
+    /// <summary>
+    /// Literal for code: NONECheeseScone
+    /// </summary>
+    public const string LiteralNONECheeseScone = "http://snomed.info/sct#226708001";
 
     /// <summary>
     /// Literal for code: FruitScone
@@ -9968,9 +10918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFruitScone = "226709009";
 
     /// <summary>
+    /// Literal for code: NONEFruitScone
+    /// </summary>
+    public const string LiteralNONEFruitScone = "http://snomed.info/sct#226709009";
+
+    /// <summary>
     /// Literal for code: PlainScone
     /// </summary>
     public const string LiteralPlainScone = "226710004";
+
+    /// <summary>
+    /// Literal for code: NONEPlainScone
+    /// </summary>
+    public const string LiteralNONEPlainScone = "http://snomed.info/sct#226710004";
 
     /// <summary>
     /// Literal for code: PotatoScone
@@ -9978,9 +10938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPotatoScone = "226711000";
 
     /// <summary>
+    /// Literal for code: NONEPotatoScone
+    /// </summary>
+    public const string LiteralNONEPotatoScone = "http://snomed.info/sct#226711000";
+
+    /// <summary>
     /// Literal for code: WholemealScone
     /// </summary>
     public const string LiteralWholemealScone = "226712007";
+
+    /// <summary>
+    /// Literal for code: NONEWholemealScone
+    /// </summary>
+    public const string LiteralNONEWholemealScone = "http://snomed.info/sct#226712007";
 
     /// <summary>
     /// Literal for code: WholemealFruitScone
@@ -9988,9 +10958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWholemealFruitScone = "226713002";
 
     /// <summary>
+    /// Literal for code: NONEWholemealFruitScone
+    /// </summary>
+    public const string LiteralNONEWholemealFruitScone = "http://snomed.info/sct#226713002";
+
+    /// <summary>
     /// Literal for code: ScotchPancake
     /// </summary>
     public const string LiteralScotchPancake = "226714008";
+
+    /// <summary>
+    /// Literal for code: NONEScotchPancake
+    /// </summary>
+    public const string LiteralNONEScotchPancake = "http://snomed.info/sct#226714008";
 
     /// <summary>
     /// Literal for code: Shortbread
@@ -9998,9 +10978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralShortbread = "226715009";
 
     /// <summary>
+    /// Literal for code: NONEShortbread
+    /// </summary>
+    public const string LiteralNONEShortbread = "http://snomed.info/sct#226715009";
+
+    /// <summary>
     /// Literal for code: StrawberryTartlet
     /// </summary>
     public const string LiteralStrawberryTartlet = "226716005";
+
+    /// <summary>
+    /// Literal for code: NONEStrawberryTartlet
+    /// </summary>
+    public const string LiteralNONEStrawberryTartlet = "http://snomed.info/sct#226716005";
 
     /// <summary>
     /// Literal for code: Teacake
@@ -10008,9 +10998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTeacake = "226717001";
 
     /// <summary>
+    /// Literal for code: NONETeacake
+    /// </summary>
+    public const string LiteralNONETeacake = "http://snomed.info/sct#226717001";
+
+    /// <summary>
     /// Literal for code: VanillaSlice
     /// </summary>
     public const string LiteralVanillaSlice = "226718006";
+
+    /// <summary>
+    /// Literal for code: NONEVanillaSlice
+    /// </summary>
+    public const string LiteralNONEVanillaSlice = "http://snomed.info/sct#226718006";
 
     /// <summary>
     /// Literal for code: Waffle
@@ -10018,9 +11018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWaffle = "226719003";
 
     /// <summary>
+    /// Literal for code: NONEWaffle
+    /// </summary>
+    public const string LiteralNONEWaffle = "http://snomed.info/sct#226719003";
+
+    /// <summary>
     /// Literal for code: Arrowroot
     /// </summary>
     public const string LiteralArrowroot = "226720009";
+
+    /// <summary>
+    /// Literal for code: NONEArrowroot
+    /// </summary>
+    public const string LiteralNONEArrowroot = "http://snomed.info/sct#226720009";
 
     /// <summary>
     /// Literal for code: PearlBarley
@@ -10028,9 +11038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPearlBarley = "226721008";
 
     /// <summary>
+    /// Literal for code: NONEPearlBarley
+    /// </summary>
+    public const string LiteralNONEPearlBarley = "http://snomed.info/sct#226721008";
+
+    /// <summary>
     /// Literal for code: WholeGrainBarley
     /// </summary>
     public const string LiteralWholeGrainBarley = "226722001";
+
+    /// <summary>
+    /// Literal for code: NONEWholeGrainBarley
+    /// </summary>
+    public const string LiteralNONEWholeGrainBarley = "http://snomed.info/sct#226722001";
 
     /// <summary>
     /// Literal for code: BuckwheatCereal
@@ -10038,9 +11058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBuckwheatCereal = "226723006";
 
     /// <summary>
+    /// Literal for code: NONEBuckwheatCereal
+    /// </summary>
+    public const string LiteralNONEBuckwheatCereal = "http://snomed.info/sct#226723006";
+
+    /// <summary>
     /// Literal for code: BulgurWheat
     /// </summary>
     public const string LiteralBulgurWheat = "226724000";
+
+    /// <summary>
+    /// Literal for code: NONEBulgurWheat
+    /// </summary>
+    public const string LiteralNONEBulgurWheat = "http://snomed.info/sct#226724000";
 
     /// <summary>
     /// Literal for code: Oatmeal
@@ -10048,9 +11078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOatmeal = "226725004";
 
     /// <summary>
+    /// Literal for code: NONEOatmeal
+    /// </summary>
+    public const string LiteralNONEOatmeal = "http://snomed.info/sct#226725004";
+
+    /// <summary>
     /// Literal for code: Popcorn
     /// </summary>
     public const string LiteralPopcorn = "226726003";
+
+    /// <summary>
+    /// Literal for code: NONEPopcorn
+    /// </summary>
+    public const string LiteralNONEPopcorn = "http://snomed.info/sct#226726003";
 
     /// <summary>
     /// Literal for code: PlainPopcorn
@@ -10058,9 +11098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPlainPopcorn = "226727007";
 
     /// <summary>
+    /// Literal for code: NONEPlainPopcorn
+    /// </summary>
+    public const string LiteralNONEPlainPopcorn = "http://snomed.info/sct#226727007";
+
+    /// <summary>
     /// Literal for code: SweetPopcorn
     /// </summary>
     public const string LiteralSweetPopcorn = "226728002";
+
+    /// <summary>
+    /// Literal for code: NONESweetPopcorn
+    /// </summary>
+    public const string LiteralNONESweetPopcorn = "http://snomed.info/sct#226728002";
 
     /// <summary>
     /// Literal for code: SaltedPopcorn
@@ -10068,9 +11118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSaltedPopcorn = "226729005";
 
     /// <summary>
+    /// Literal for code: NONESaltedPopcorn
+    /// </summary>
+    public const string LiteralNONESaltedPopcorn = "http://snomed.info/sct#226729005";
+
+    /// <summary>
     /// Literal for code: ButteredPopcorn
     /// </summary>
     public const string LiteralButteredPopcorn = "226730000";
+
+    /// <summary>
+    /// Literal for code: NONEButteredPopcorn
+    /// </summary>
+    public const string LiteralNONEButteredPopcorn = "http://snomed.info/sct#226730000";
 
     /// <summary>
     /// Literal for code: Sago
@@ -10078,9 +11138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSago = "226731001";
 
     /// <summary>
+    /// Literal for code: NONESago
+    /// </summary>
+    public const string LiteralNONESago = "http://snomed.info/sct#226731001";
+
+    /// <summary>
     /// Literal for code: Semolina
     /// </summary>
     public const string LiteralSemolina = "226732008";
+
+    /// <summary>
+    /// Literal for code: NONESemolina
+    /// </summary>
+    public const string LiteralNONESemolina = "http://snomed.info/sct#226732008";
 
     /// <summary>
     /// Literal for code: Tapioca
@@ -10088,9 +11158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTapioca = "226733003";
 
     /// <summary>
+    /// Literal for code: NONETapioca
+    /// </summary>
+    public const string LiteralNONETapioca = "http://snomed.info/sct#226733003";
+
+    /// <summary>
     /// Literal for code: Wheatgerm
     /// </summary>
     public const string LiteralWheatgerm = "226734009";
+
+    /// <summary>
+    /// Literal for code: NONEWheatgerm
+    /// </summary>
+    public const string LiteralNONEWheatgerm = "http://snomed.info/sct#226734009";
 
     /// <summary>
     /// Literal for code: Noodles
@@ -10098,9 +11178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoodles = "226735005";
 
     /// <summary>
+    /// Literal for code: NONENoodles
+    /// </summary>
+    public const string LiteralNONENoodles = "http://snomed.info/sct#226735005";
+
+    /// <summary>
     /// Literal for code: EggNoodles
     /// </summary>
     public const string LiteralEggNoodles = "226736006";
+
+    /// <summary>
+    /// Literal for code: NONEEggNoodles
+    /// </summary>
+    public const string LiteralNONEEggNoodles = "http://snomed.info/sct#226736006";
 
     /// <summary>
     /// Literal for code: FriedNoodles
@@ -10108,9 +11198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedNoodles = "226737002";
 
     /// <summary>
+    /// Literal for code: NONEFriedNoodles
+    /// </summary>
+    public const string LiteralNONEFriedNoodles = "http://snomed.info/sct#226737002";
+
+    /// <summary>
     /// Literal for code: PlainNoodles
     /// </summary>
     public const string LiteralPlainNoodles = "226738007";
+
+    /// <summary>
+    /// Literal for code: NONEPlainNoodles
+    /// </summary>
+    public const string LiteralNONEPlainNoodles = "http://snomed.info/sct#226738007";
 
     /// <summary>
     /// Literal for code: PotNoodles
@@ -10118,9 +11218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPotNoodles = "226739004";
 
     /// <summary>
+    /// Literal for code: NONEPotNoodles
+    /// </summary>
+    public const string LiteralNONEPotNoodles = "http://snomed.info/sct#226739004";
+
+    /// <summary>
     /// Literal for code: Pasta
     /// </summary>
     public const string LiteralPasta = "226740002";
+
+    /// <summary>
+    /// Literal for code: NONEPasta
+    /// </summary>
+    public const string LiteralNONEPasta = "http://snomed.info/sct#226740002";
 
     /// <summary>
     /// Literal for code: Cannelloni
@@ -10128,9 +11238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCannelloni = "226741003";
 
     /// <summary>
+    /// Literal for code: NONECannelloni
+    /// </summary>
+    public const string LiteralNONECannelloni = "http://snomed.info/sct#226741003";
+
+    /// <summary>
     /// Literal for code: Macaroni
     /// </summary>
     public const string LiteralMacaroni = "226742005";
+
+    /// <summary>
+    /// Literal for code: NONEMacaroni
+    /// </summary>
+    public const string LiteralNONEMacaroni = "http://snomed.info/sct#226742005";
 
     /// <summary>
     /// Literal for code: Ravioli
@@ -10138,9 +11258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRavioli = "226743000";
 
     /// <summary>
+    /// Literal for code: NONERavioli
+    /// </summary>
+    public const string LiteralNONERavioli = "http://snomed.info/sct#226743000";
+
+    /// <summary>
     /// Literal for code: Spaghetti
     /// </summary>
     public const string LiteralSpaghetti = "226744006";
+
+    /// <summary>
+    /// Literal for code: NONESpaghetti
+    /// </summary>
+    public const string LiteralNONESpaghetti = "http://snomed.info/sct#226744006";
 
     /// <summary>
     /// Literal for code: WhiteSpaghetti
@@ -10148,9 +11278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWhiteSpaghetti = "226745007";
 
     /// <summary>
+    /// Literal for code: NONEWhiteSpaghetti
+    /// </summary>
+    public const string LiteralNONEWhiteSpaghetti = "http://snomed.info/sct#226745007";
+
+    /// <summary>
     /// Literal for code: WholemealSpaghetti
     /// </summary>
     public const string LiteralWholemealSpaghetti = "226746008";
+
+    /// <summary>
+    /// Literal for code: NONEWholemealSpaghetti
+    /// </summary>
+    public const string LiteralNONEWholemealSpaghetti = "http://snomed.info/sct#226746008";
 
     /// <summary>
     /// Literal for code: TinnedSpaghetti
@@ -10158,9 +11298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedSpaghetti = "226747004";
 
     /// <summary>
+    /// Literal for code: NONETinnedSpaghetti
+    /// </summary>
+    public const string LiteralNONETinnedSpaghetti = "http://snomed.info/sct#226747004";
+
+    /// <summary>
     /// Literal for code: Vermicelli
     /// </summary>
     public const string LiteralVermicelli = "226748009";
+
+    /// <summary>
+    /// Literal for code: NONEVermicelli
+    /// </summary>
+    public const string LiteralNONEVermicelli = "http://snomed.info/sct#226748009";
 
     /// <summary>
     /// Literal for code: Pastry
@@ -10168,9 +11318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPastry = "226749001";
 
     /// <summary>
+    /// Literal for code: NONEPastry
+    /// </summary>
+    public const string LiteralNONEPastry = "http://snomed.info/sct#226749001";
+
+    /// <summary>
     /// Literal for code: ChouxPastry
     /// </summary>
     public const string LiteralChouxPastry = "226750001";
+
+    /// <summary>
+    /// Literal for code: NONEChouxPastry
+    /// </summary>
+    public const string LiteralNONEChouxPastry = "http://snomed.info/sct#226750001";
 
     /// <summary>
     /// Literal for code: FlakyPastry
@@ -10178,9 +11338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFlakyPastry = "226751002";
 
     /// <summary>
+    /// Literal for code: NONEFlakyPastry
+    /// </summary>
+    public const string LiteralNONEFlakyPastry = "http://snomed.info/sct#226751002";
+
+    /// <summary>
     /// Literal for code: FlanCasePastry
     /// </summary>
     public const string LiteralFlanCasePastry = "226752009";
+
+    /// <summary>
+    /// Literal for code: NONEFlanCasePastry
+    /// </summary>
+    public const string LiteralNONEFlanCasePastry = "http://snomed.info/sct#226752009";
 
     /// <summary>
     /// Literal for code: PuffPastry
@@ -10188,9 +11358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPuffPastry = "226753004";
 
     /// <summary>
+    /// Literal for code: NONEPuffPastry
+    /// </summary>
+    public const string LiteralNONEPuffPastry = "http://snomed.info/sct#226753004";
+
+    /// <summary>
     /// Literal for code: ShortcrustPastry
     /// </summary>
     public const string LiteralShortcrustPastry = "226754005";
+
+    /// <summary>
+    /// Literal for code: NONEShortcrustPastry
+    /// </summary>
+    public const string LiteralNONEShortcrustPastry = "http://snomed.info/sct#226754005";
 
     /// <summary>
     /// Literal for code: WholemealPastry
@@ -10198,9 +11378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWholemealPastry = "226755006";
 
     /// <summary>
+    /// Literal for code: NONEWholemealPastry
+    /// </summary>
+    public const string LiteralNONEWholemealPastry = "http://snomed.info/sct#226755006";
+
+    /// <summary>
     /// Literal for code: BrownRice
     /// </summary>
     public const string LiteralBrownRice = "226756007";
+
+    /// <summary>
+    /// Literal for code: NONEBrownRice
+    /// </summary>
+    public const string LiteralNONEBrownRice = "http://snomed.info/sct#226756007";
 
     /// <summary>
     /// Literal for code: RedRice
@@ -10208,9 +11398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRedRice = "226757003";
 
     /// <summary>
+    /// Literal for code: NONERedRice
+    /// </summary>
+    public const string LiteralNONERedRice = "http://snomed.info/sct#226757003";
+
+    /// <summary>
     /// Literal for code: SavoryRice
     /// </summary>
     public const string LiteralSavoryRice = "226758008";
+
+    /// <summary>
+    /// Literal for code: NONESavoryRice
+    /// </summary>
+    public const string LiteralNONESavoryRice = "http://snomed.info/sct#226758008";
 
     /// <summary>
     /// Literal for code: WhiteRice
@@ -10218,9 +11418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWhiteRice = "226759000";
 
     /// <summary>
+    /// Literal for code: NONEWhiteRice
+    /// </summary>
+    public const string LiteralNONEWhiteRice = "http://snomed.info/sct#226759000";
+
+    /// <summary>
     /// Literal for code: DairyFoods
     /// </summary>
     public const string LiteralDairyFoods = "226760005";
+
+    /// <summary>
+    /// Literal for code: NONEDairyFoods
+    /// </summary>
+    public const string LiteralNONEDairyFoods = "http://snomed.info/sct#226760005";
 
     /// <summary>
     /// Literal for code: GoldTopMilk
@@ -10228,9 +11438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGoldTopMilk = "226761009";
 
     /// <summary>
+    /// Literal for code: NONEGoldTopMilk
+    /// </summary>
+    public const string LiteralNONEGoldTopMilk = "http://snomed.info/sct#226761009";
+
+    /// <summary>
     /// Literal for code: FlavoredCowQuoteSMilk
     /// </summary>
     public const string LiteralFlavoredCowQuoteSMilk = "226762002";
+
+    /// <summary>
+    /// Literal for code: NONEFlavoredCowQuoteSMilk
+    /// </summary>
+    public const string LiteralNONEFlavoredCowQuoteSMilk = "http://snomed.info/sct#226762002";
 
     /// <summary>
     /// Literal for code: SemiSkimmedMilk
@@ -10238,9 +11458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSemiSkimmedMilk = "226763007";
 
     /// <summary>
+    /// Literal for code: NONESemiSkimmedMilk
+    /// </summary>
+    public const string LiteralNONESemiSkimmedMilk = "http://snomed.info/sct#226763007";
+
+    /// <summary>
     /// Literal for code: CalciumFortifiedSemiSkimmedMilk
     /// </summary>
     public const string LiteralCalciumFortifiedSemiSkimmedMilk = "226764001";
+
+    /// <summary>
+    /// Literal for code: NONECalciumFortifiedSemiSkimmedMilk
+    /// </summary>
+    public const string LiteralNONECalciumFortifiedSemiSkimmedMilk = "http://snomed.info/sct#226764001";
 
     /// <summary>
     /// Literal for code: CalciumFortifiedSkimmedMilk
@@ -10248,9 +11478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCalciumFortifiedSkimmedMilk = "226765000";
 
     /// <summary>
+    /// Literal for code: NONECalciumFortifiedSkimmedMilk
+    /// </summary>
+    public const string LiteralNONECalciumFortifiedSkimmedMilk = "http://snomed.info/sct#226765000";
+
+    /// <summary>
     /// Literal for code: SterilizedMilk
     /// </summary>
     public const string LiteralSterilizedMilk = "226766004";
+
+    /// <summary>
+    /// Literal for code: NONESterilizedMilk
+    /// </summary>
+    public const string LiteralNONESterilizedMilk = "http://snomed.info/sct#226766004";
 
     /// <summary>
     /// Literal for code: WholeMilk
@@ -10258,9 +11498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWholeMilk = "226767008";
 
     /// <summary>
+    /// Literal for code: NONEWholeMilk
+    /// </summary>
+    public const string LiteralNONEWholeMilk = "http://snomed.info/sct#226767008";
+
+    /// <summary>
     /// Literal for code: CalciumFortifiedWholeMilk
     /// </summary>
     public const string LiteralCalciumFortifiedWholeMilk = "226768003";
+
+    /// <summary>
+    /// Literal for code: NONECalciumFortifiedWholeMilk
+    /// </summary>
+    public const string LiteralNONECalciumFortifiedWholeMilk = "http://snomed.info/sct#226768003";
 
     /// <summary>
     /// Literal for code: Buttermilk
@@ -10268,9 +11518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralButtermilk = "226769006";
 
     /// <summary>
+    /// Literal for code: NONEButtermilk
+    /// </summary>
+    public const string LiteralNONEButtermilk = "http://snomed.info/sct#226769006";
+
+    /// <summary>
     /// Literal for code: Whey
     /// </summary>
     public const string LiteralWhey = "226770007";
+
+    /// <summary>
+    /// Literal for code: NONEWhey
+    /// </summary>
+    public const string LiteralNONEWhey = "http://snomed.info/sct#226770007";
 
     /// <summary>
     /// Literal for code: DriedMilk
@@ -10278,9 +11538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDriedMilk = "226771006";
 
     /// <summary>
+    /// Literal for code: NONEDriedMilk
+    /// </summary>
+    public const string LiteralNONEDriedMilk = "http://snomed.info/sct#226771006";
+
+    /// <summary>
     /// Literal for code: ButtermilkPowder
     /// </summary>
     public const string LiteralButtermilkPowder = "226774003";
+
+    /// <summary>
+    /// Literal for code: NONEButtermilkPowder
+    /// </summary>
+    public const string LiteralNONEButtermilkPowder = "http://snomed.info/sct#226774003";
 
     /// <summary>
     /// Literal for code: DriedGoatQuoteSMilk
@@ -10288,9 +11558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDriedGoatQuoteSMilk = "226775002";
 
     /// <summary>
+    /// Literal for code: NONEDriedGoatQuoteSMilk
+    /// </summary>
+    public const string LiteralNONEDriedGoatQuoteSMilk = "http://snomed.info/sct#226775002";
+
+    /// <summary>
     /// Literal for code: DriedCowQuoteSMilk
     /// </summary>
     public const string LiteralDriedCowQuoteSMilk = "226776001";
+
+    /// <summary>
+    /// Literal for code: NONEDriedCowQuoteSMilk
+    /// </summary>
+    public const string LiteralNONEDriedCowQuoteSMilk = "http://snomed.info/sct#226776001";
 
     /// <summary>
     /// Literal for code: DriedSemiSkimmedCowQuoteSMilk
@@ -10298,9 +11578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDriedSemiSkimmedCowQuoteSMilk = "226777005";
 
     /// <summary>
+    /// Literal for code: NONEDriedSemiSkimmedCowQuoteSMilk
+    /// </summary>
+    public const string LiteralNONEDriedSemiSkimmedCowQuoteSMilk = "http://snomed.info/sct#226777005";
+
+    /// <summary>
     /// Literal for code: SkimmedMilkPowder
     /// </summary>
     public const string LiteralSkimmedMilkPowder = "226778000";
+
+    /// <summary>
+    /// Literal for code: NONESkimmedMilkPowder
+    /// </summary>
+    public const string LiteralNONESkimmedMilkPowder = "http://snomed.info/sct#226778000";
 
     /// <summary>
     /// Literal for code: DriedSkimmedCowQuoteSMilkWithVegetableFat
@@ -10308,9 +11598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDriedSkimmedCowQuoteSMilkWithVegetableFat = "226779008";
 
     /// <summary>
+    /// Literal for code: NONEDriedSkimmedCowQuoteSMilkWithVegetableFat
+    /// </summary>
+    public const string LiteralNONEDriedSkimmedCowQuoteSMilkWithVegetableFat = "http://snomed.info/sct#226779008";
+
+    /// <summary>
     /// Literal for code: DriedWholeMilk
     /// </summary>
     public const string LiteralDriedWholeMilk = "226780006";
+
+    /// <summary>
+    /// Literal for code: NONEDriedWholeMilk
+    /// </summary>
+    public const string LiteralNONEDriedWholeMilk = "http://snomed.info/sct#226780006";
 
     /// <summary>
     /// Literal for code: DriedSoyaMilk
@@ -10318,9 +11618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDriedSoyaMilk = "226781005";
 
     /// <summary>
+    /// Literal for code: NONEDriedSoyaMilk
+    /// </summary>
+    public const string LiteralNONEDriedSoyaMilk = "http://snomed.info/sct#226781005";
+
+    /// <summary>
     /// Literal for code: DriedWhey
     /// </summary>
     public const string LiteralDriedWhey = "226782003";
+
+    /// <summary>
+    /// Literal for code: NONEDriedWhey
+    /// </summary>
+    public const string LiteralNONEDriedWhey = "http://snomed.info/sct#226782003";
 
     /// <summary>
     /// Literal for code: TinnedMilk
@@ -10328,9 +11638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedMilk = "226783008";
 
     /// <summary>
+    /// Literal for code: NONETinnedMilk
+    /// </summary>
+    public const string LiteralNONETinnedMilk = "http://snomed.info/sct#226783008";
+
+    /// <summary>
     /// Literal for code: CondensedMilk
     /// </summary>
     public const string LiteralCondensedMilk = "226784002";
+
+    /// <summary>
+    /// Literal for code: NONECondensedMilk
+    /// </summary>
+    public const string LiteralNONECondensedMilk = "http://snomed.info/sct#226784002";
 
     /// <summary>
     /// Literal for code: SkimmedSweetenedCondensedMilk
@@ -10338,9 +11658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSkimmedSweetenedCondensedMilk = "226785001";
 
     /// <summary>
+    /// Literal for code: NONESkimmedSweetenedCondensedMilk
+    /// </summary>
+    public const string LiteralNONESkimmedSweetenedCondensedMilk = "http://snomed.info/sct#226785001";
+
+    /// <summary>
     /// Literal for code: WholeSweetenedCondensedMilk
     /// </summary>
     public const string LiteralWholeSweetenedCondensedMilk = "226786000";
+
+    /// <summary>
+    /// Literal for code: NONEWholeSweetenedCondensedMilk
+    /// </summary>
+    public const string LiteralNONEWholeSweetenedCondensedMilk = "http://snomed.info/sct#226786000";
 
     /// <summary>
     /// Literal for code: EvaporatedMilk
@@ -10348,9 +11678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEvaporatedMilk = "226787009";
 
     /// <summary>
+    /// Literal for code: NONEEvaporatedMilk
+    /// </summary>
+    public const string LiteralNONEEvaporatedMilk = "http://snomed.info/sct#226787009";
+
+    /// <summary>
     /// Literal for code: LowFatEvaporatedMilk
     /// </summary>
     public const string LiteralLowFatEvaporatedMilk = "226788004";
+
+    /// <summary>
+    /// Literal for code: NONELowFatEvaporatedMilk
+    /// </summary>
+    public const string LiteralNONELowFatEvaporatedMilk = "http://snomed.info/sct#226788004";
 
     /// <summary>
     /// Literal for code: BreastMilk
@@ -10358,9 +11698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBreastMilk = "226789007";
 
     /// <summary>
+    /// Literal for code: NONEBreastMilk
+    /// </summary>
+    public const string LiteralNONEBreastMilk = "http://snomed.info/sct#226789007";
+
+    /// <summary>
     /// Literal for code: EBMExpressedBreastMilk
     /// </summary>
     public const string LiteralEBMExpressedBreastMilk = "226790003";
+
+    /// <summary>
+    /// Literal for code: NONEEBMExpressedBreastMilk
+    /// </summary>
+    public const string LiteralNONEEBMExpressedBreastMilk = "http://snomed.info/sct#226790003";
 
     /// <summary>
     /// Literal for code: SheepMilk
@@ -10368,9 +11718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSheepMilk = "226791004";
 
     /// <summary>
+    /// Literal for code: NONESheepMilk
+    /// </summary>
+    public const string LiteralNONESheepMilk = "http://snomed.info/sct#226791004";
+
+    /// <summary>
     /// Literal for code: SoyaMilk
     /// </summary>
     public const string LiteralSoyaMilk = "226793001";
+
+    /// <summary>
+    /// Literal for code: NONESoyaMilk
+    /// </summary>
+    public const string LiteralNONESoyaMilk = "http://snomed.info/sct#226793001";
 
     /// <summary>
     /// Literal for code: JuniorMilk
@@ -10378,9 +11738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralJuniorMilk = "226795008";
 
     /// <summary>
+    /// Literal for code: NONEJuniorMilk
+    /// </summary>
+    public const string LiteralNONEJuniorMilk = "http://snomed.info/sct#226795008";
+
+    /// <summary>
     /// Literal for code: FreshCream
     /// </summary>
     public const string LiteralFreshCream = "226796009";
+
+    /// <summary>
+    /// Literal for code: NONEFreshCream
+    /// </summary>
+    public const string LiteralNONEFreshCream = "http://snomed.info/sct#226796009";
 
     /// <summary>
     /// Literal for code: HalfCream
@@ -10388,9 +11758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHalfCream = "226797000";
 
     /// <summary>
+    /// Literal for code: NONEHalfCream
+    /// </summary>
+    public const string LiteralNONEHalfCream = "http://snomed.info/sct#226797000";
+
+    /// <summary>
     /// Literal for code: DoubleCream
     /// </summary>
     public const string LiteralDoubleCream = "226798005";
+
+    /// <summary>
+    /// Literal for code: NONEDoubleCream
+    /// </summary>
+    public const string LiteralNONEDoubleCream = "http://snomed.info/sct#226798005";
 
     /// <summary>
     /// Literal for code: ClottedCream
@@ -10398,9 +11778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClottedCream = "226799002";
 
     /// <summary>
+    /// Literal for code: NONEClottedCream
+    /// </summary>
+    public const string LiteralNONEClottedCream = "http://snomed.info/sct#226799002";
+
+    /// <summary>
     /// Literal for code: SingleCream
     /// </summary>
     public const string LiteralSingleCream = "226800003";
+
+    /// <summary>
+    /// Literal for code: NONESingleCream
+    /// </summary>
+    public const string LiteralNONESingleCream = "http://snomed.info/sct#226800003";
 
     /// <summary>
     /// Literal for code: SouredCream
@@ -10408,9 +11798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSouredCream = "226801004";
 
     /// <summary>
+    /// Literal for code: NONESouredCream
+    /// </summary>
+    public const string LiteralNONESouredCream = "http://snomed.info/sct#226801004";
+
+    /// <summary>
     /// Literal for code: WhippingCream
     /// </summary>
     public const string LiteralWhippingCream = "226802006";
+
+    /// <summary>
+    /// Literal for code: NONEWhippingCream
+    /// </summary>
+    public const string LiteralNONEWhippingCream = "http://snomed.info/sct#226802006";
 
     /// <summary>
     /// Literal for code: TinnedCream
@@ -10418,9 +11818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedCream = "226803001";
 
     /// <summary>
+    /// Literal for code: NONETinnedCream
+    /// </summary>
+    public const string LiteralNONETinnedCream = "http://snomed.info/sct#226803001";
+
+    /// <summary>
     /// Literal for code: ImitationCream
     /// </summary>
     public const string LiteralImitationCream = "226805008";
+
+    /// <summary>
+    /// Literal for code: NONEImitationCream
+    /// </summary>
+    public const string LiteralNONEImitationCream = "http://snomed.info/sct#226805008";
 
     /// <summary>
     /// Literal for code: Smatana
@@ -10428,9 +11838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSmatana = "226808005";
 
     /// <summary>
+    /// Literal for code: NONESmatana
+    /// </summary>
+    public const string LiteralNONESmatana = "http://snomed.info/sct#226808005";
+
+    /// <summary>
     /// Literal for code: CheeseSpread
     /// </summary>
     public const string LiteralCheeseSpread = "226809002";
+
+    /// <summary>
+    /// Literal for code: NONECheeseSpread
+    /// </summary>
+    public const string LiteralNONECheeseSpread = "http://snomed.info/sct#226809002";
 
     /// <summary>
     /// Literal for code: PlainCheeseSpread
@@ -10438,9 +11858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPlainCheeseSpread = "226810007";
 
     /// <summary>
+    /// Literal for code: NONEPlainCheeseSpread
+    /// </summary>
+    public const string LiteralNONEPlainCheeseSpread = "http://snomed.info/sct#226810007";
+
+    /// <summary>
     /// Literal for code: FlavoredCheeseSpread
     /// </summary>
     public const string LiteralFlavoredCheeseSpread = "226811006";
+
+    /// <summary>
+    /// Literal for code: NONEFlavoredCheeseSpread
+    /// </summary>
+    public const string LiteralNONEFlavoredCheeseSpread = "http://snomed.info/sct#226811006";
 
     /// <summary>
     /// Literal for code: LacticCheeseSpread
@@ -10448,9 +11878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLacticCheeseSpread = "226812004";
 
     /// <summary>
+    /// Literal for code: NONELacticCheeseSpread
+    /// </summary>
+    public const string LiteralNONELacticCheeseSpread = "http://snomed.info/sct#226812004";
+
+    /// <summary>
     /// Literal for code: LowFatCheeseSpread
     /// </summary>
     public const string LiteralLowFatCheeseSpread = "226813009";
+
+    /// <summary>
+    /// Literal for code: NONELowFatCheeseSpread
+    /// </summary>
+    public const string LiteralNONELowFatCheeseSpread = "http://snomed.info/sct#226813009";
 
     /// <summary>
     /// Literal for code: CottageCheese
@@ -10458,9 +11898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCottageCheese = "226814003";
 
     /// <summary>
+    /// Literal for code: NONECottageCheese
+    /// </summary>
+    public const string LiteralNONECottageCheese = "http://snomed.info/sct#226814003";
+
+    /// <summary>
     /// Literal for code: PlainCottageCheese
     /// </summary>
     public const string LiteralPlainCottageCheese = "226815002";
+
+    /// <summary>
+    /// Literal for code: NONEPlainCottageCheese
+    /// </summary>
+    public const string LiteralNONEPlainCottageCheese = "http://snomed.info/sct#226815002";
 
     /// <summary>
     /// Literal for code: VeryLowFatCottageCheese
@@ -10468,9 +11918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVeryLowFatCottageCheese = "226816001";
 
     /// <summary>
+    /// Literal for code: NONEVeryLowFatCottageCheese
+    /// </summary>
+    public const string LiteralNONEVeryLowFatCottageCheese = "http://snomed.info/sct#226816001";
+
+    /// <summary>
     /// Literal for code: CottageCheeseWithAdditions
     /// </summary>
     public const string LiteralCottageCheeseWithAdditions = "226817005";
+
+    /// <summary>
+    /// Literal for code: NONECottageCheeseWithAdditions
+    /// </summary>
+    public const string LiteralNONECottageCheeseWithAdditions = "http://snomed.info/sct#226817005";
 
     /// <summary>
     /// Literal for code: HardCheese
@@ -10478,9 +11938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHardCheese = "226818000";
 
     /// <summary>
+    /// Literal for code: NONEHardCheese
+    /// </summary>
+    public const string LiteralNONEHardCheese = "http://snomed.info/sct#226818000";
+
+    /// <summary>
     /// Literal for code: CaerphillyCheese
     /// </summary>
     public const string LiteralCaerphillyCheese = "226819008";
+
+    /// <summary>
+    /// Literal for code: NONECaerphillyCheese
+    /// </summary>
+    public const string LiteralNONECaerphillyCheese = "http://snomed.info/sct#226819008";
 
     /// <summary>
     /// Literal for code: CheddarCheese
@@ -10488,9 +11958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCheddarCheese = "226820002";
 
     /// <summary>
+    /// Literal for code: NONECheddarCheese
+    /// </summary>
+    public const string LiteralNONECheddarCheese = "http://snomed.info/sct#226820002";
+
+    /// <summary>
     /// Literal for code: ReducedFatCheddarCheese
     /// </summary>
     public const string LiteralReducedFatCheddarCheese = "226821003";
+
+    /// <summary>
+    /// Literal for code: NONEReducedFatCheddarCheese
+    /// </summary>
+    public const string LiteralNONEReducedFatCheddarCheese = "http://snomed.info/sct#226821003";
 
     /// <summary>
     /// Literal for code: VegetarianCheddarCheese
@@ -10498,9 +11978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVegetarianCheddarCheese = "226822005";
 
     /// <summary>
+    /// Literal for code: NONEVegetarianCheddarCheese
+    /// </summary>
+    public const string LiteralNONEVegetarianCheddarCheese = "http://snomed.info/sct#226822005";
+
+    /// <summary>
     /// Literal for code: CheshireCheese
     /// </summary>
     public const string LiteralCheshireCheese = "226823000";
+
+    /// <summary>
+    /// Literal for code: NONECheshireCheese
+    /// </summary>
+    public const string LiteralNONECheshireCheese = "http://snomed.info/sct#226823000";
 
     /// <summary>
     /// Literal for code: ReducedFatCheshireCheese
@@ -10508,9 +11998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralReducedFatCheshireCheese = "226824006";
 
     /// <summary>
+    /// Literal for code: NONEReducedFatCheshireCheese
+    /// </summary>
+    public const string LiteralNONEReducedFatCheshireCheese = "http://snomed.info/sct#226824006";
+
+    /// <summary>
     /// Literal for code: DerbyCheese
     /// </summary>
     public const string LiteralDerbyCheese = "226825007";
+
+    /// <summary>
+    /// Literal for code: NONEDerbyCheese
+    /// </summary>
+    public const string LiteralNONEDerbyCheese = "http://snomed.info/sct#226825007";
 
     /// <summary>
     /// Literal for code: DanishBlueCheese
@@ -10518,9 +12018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDanishBlueCheese = "226826008";
 
     /// <summary>
+    /// Literal for code: NONEDanishBlueCheese
+    /// </summary>
+    public const string LiteralNONEDanishBlueCheese = "http://snomed.info/sct#226826008";
+
+    /// <summary>
     /// Literal for code: DoubleGloucesterCheese
     /// </summary>
     public const string LiteralDoubleGloucesterCheese = "226827004";
+
+    /// <summary>
+    /// Literal for code: NONEDoubleGloucesterCheese
+    /// </summary>
+    public const string LiteralNONEDoubleGloucesterCheese = "http://snomed.info/sct#226827004";
 
     /// <summary>
     /// Literal for code: EdamCheese
@@ -10528,9 +12038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEdamCheese = "226828009";
 
     /// <summary>
+    /// Literal for code: NONEEdamCheese
+    /// </summary>
+    public const string LiteralNONEEdamCheese = "http://snomed.info/sct#226828009";
+
+    /// <summary>
     /// Literal for code: EdamTypeCheeseReducedFat
     /// </summary>
     public const string LiteralEdamTypeCheeseReducedFat = "226829001";
+
+    /// <summary>
+    /// Literal for code: NONEEdamTypeCheeseReducedFat
+    /// </summary>
+    public const string LiteralNONEEdamTypeCheeseReducedFat = "http://snomed.info/sct#226829001";
 
     /// <summary>
     /// Literal for code: EmmentalCheese
@@ -10538,9 +12058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmmentalCheese = "226830006";
 
     /// <summary>
+    /// Literal for code: NONEEmmentalCheese
+    /// </summary>
+    public const string LiteralNONEEmmentalCheese = "http://snomed.info/sct#226830006";
+
+    /// <summary>
     /// Literal for code: FetaCheese
     /// </summary>
     public const string LiteralFetaCheese = "226831005";
+
+    /// <summary>
+    /// Literal for code: NONEFetaCheese
+    /// </summary>
+    public const string LiteralNONEFetaCheese = "http://snomed.info/sct#226831005";
 
     /// <summary>
     /// Literal for code: GoudaCheese
@@ -10548,9 +12078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGoudaCheese = "226832003";
 
     /// <summary>
+    /// Literal for code: NONEGoudaCheese
+    /// </summary>
+    public const string LiteralNONEGoudaCheese = "http://snomed.info/sct#226832003";
+
+    /// <summary>
     /// Literal for code: GruyereCheese
     /// </summary>
     public const string LiteralGruyereCheese = "226834002";
+
+    /// <summary>
+    /// Literal for code: NONEGruyereCheese
+    /// </summary>
+    public const string LiteralNONEGruyereCheese = "http://snomed.info/sct#226834002";
 
     /// <summary>
     /// Literal for code: LancashireCheese
@@ -10558,9 +12098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLancashireCheese = "226835001";
 
     /// <summary>
+    /// Literal for code: NONELancashireCheese
+    /// </summary>
+    public const string LiteralNONELancashireCheese = "http://snomed.info/sct#226835001";
+
+    /// <summary>
     /// Literal for code: LeicesterCheese
     /// </summary>
     public const string LiteralLeicesterCheese = "226836000";
+
+    /// <summary>
+    /// Literal for code: NONELeicesterCheese
+    /// </summary>
+    public const string LiteralNONELeicesterCheese = "http://snomed.info/sct#226836000";
 
     /// <summary>
     /// Literal for code: MozzarellaCheese
@@ -10568,9 +12118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMozzarellaCheese = "226837009";
 
     /// <summary>
+    /// Literal for code: NONEMozzarellaCheese
+    /// </summary>
+    public const string LiteralNONEMozzarellaCheese = "http://snomed.info/sct#226837009";
+
+    /// <summary>
     /// Literal for code: ParmesanCheese
     /// </summary>
     public const string LiteralParmesanCheese = "226838004";
+
+    /// <summary>
+    /// Literal for code: NONEParmesanCheese
+    /// </summary>
+    public const string LiteralNONEParmesanCheese = "http://snomed.info/sct#226838004";
 
     /// <summary>
     /// Literal for code: RedWindsorCheese
@@ -10578,9 +12138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRedWindsorCheese = "226839007";
 
     /// <summary>
+    /// Literal for code: NONERedWindsorCheese
+    /// </summary>
+    public const string LiteralNONERedWindsorCheese = "http://snomed.info/sct#226839007";
+
+    /// <summary>
     /// Literal for code: RoquefortCheese
     /// </summary>
     public const string LiteralRoquefortCheese = "226840009";
+
+    /// <summary>
+    /// Literal for code: NONERoquefortCheese
+    /// </summary>
+    public const string LiteralNONERoquefortCheese = "http://snomed.info/sct#226840009";
 
     /// <summary>
     /// Literal for code: SageDerbyCheese
@@ -10588,9 +12158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSageDerbyCheese = "226841008";
 
     /// <summary>
+    /// Literal for code: NONESageDerbyCheese
+    /// </summary>
+    public const string LiteralNONESageDerbyCheese = "http://snomed.info/sct#226841008";
+
+    /// <summary>
     /// Literal for code: SoyaCheese
     /// </summary>
     public const string LiteralSoyaCheese = "226842001";
+
+    /// <summary>
+    /// Literal for code: NONESoyaCheese
+    /// </summary>
+    public const string LiteralNONESoyaCheese = "http://snomed.info/sct#226842001";
 
     /// <summary>
     /// Literal for code: StiltonWhiteCheese
@@ -10598,9 +12178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStiltonWhiteCheese = "226843006";
 
     /// <summary>
+    /// Literal for code: NONEStiltonWhiteCheese
+    /// </summary>
+    public const string LiteralNONEStiltonWhiteCheese = "http://snomed.info/sct#226843006";
+
+    /// <summary>
     /// Literal for code: StiltonBlueCheese
     /// </summary>
     public const string LiteralStiltonBlueCheese = "226844000";
+
+    /// <summary>
+    /// Literal for code: NONEStiltonBlueCheese
+    /// </summary>
+    public const string LiteralNONEStiltonBlueCheese = "http://snomed.info/sct#226844000";
 
     /// <summary>
     /// Literal for code: WensleydaleCheese
@@ -10608,9 +12198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWensleydaleCheese = "226845004";
 
     /// <summary>
+    /// Literal for code: NONEWensleydaleCheese
+    /// </summary>
+    public const string LiteralNONEWensleydaleCheese = "http://snomed.info/sct#226845004";
+
+    /// <summary>
     /// Literal for code: ProcessedCheese
     /// </summary>
     public const string LiteralProcessedCheese = "226846003";
+
+    /// <summary>
+    /// Literal for code: NONEProcessedCheese
+    /// </summary>
+    public const string LiteralNONEProcessedCheese = "http://snomed.info/sct#226846003";
 
     /// <summary>
     /// Literal for code: SmokedProcessedCheese
@@ -10618,9 +12218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSmokedProcessedCheese = "226847007";
 
     /// <summary>
+    /// Literal for code: NONESmokedProcessedCheese
+    /// </summary>
+    public const string LiteralNONESmokedProcessedCheese = "http://snomed.info/sct#226847007";
+
+    /// <summary>
     /// Literal for code: SoftCheese
     /// </summary>
     public const string LiteralSoftCheese = "226848002";
+
+    /// <summary>
+    /// Literal for code: NONESoftCheese
+    /// </summary>
+    public const string LiteralNONESoftCheese = "http://snomed.info/sct#226848002";
 
     /// <summary>
     /// Literal for code: CreamCheese
@@ -10628,9 +12238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCreamCheese = "226849005";
 
     /// <summary>
+    /// Literal for code: NONECreamCheese
+    /// </summary>
+    public const string LiteralNONECreamCheese = "http://snomed.info/sct#226849005";
+
+    /// <summary>
     /// Literal for code: MediumFatCreamCheese
     /// </summary>
     public const string LiteralMediumFatCreamCheese = "226850005";
+
+    /// <summary>
+    /// Literal for code: NONEMediumFatCreamCheese
+    /// </summary>
+    public const string LiteralNONEMediumFatCreamCheese = "http://snomed.info/sct#226850005";
 
     /// <summary>
     /// Literal for code: LowFatCreamCheese
@@ -10638,9 +12258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLowFatCreamCheese = "226851009";
 
     /// <summary>
+    /// Literal for code: NONELowFatCreamCheese
+    /// </summary>
+    public const string LiteralNONELowFatCreamCheese = "http://snomed.info/sct#226851009";
+
+    /// <summary>
     /// Literal for code: GoatsMilkSoftCheese
     /// </summary>
     public const string LiteralGoatsMilkSoftCheese = "226852002";
+
+    /// <summary>
+    /// Literal for code: NONEGoatsMilkSoftCheese
+    /// </summary>
+    public const string LiteralNONEGoatsMilkSoftCheese = "http://snomed.info/sct#226852002";
 
     /// <summary>
     /// Literal for code: RicottaCheese
@@ -10648,9 +12278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRicottaCheese = "226853007";
 
     /// <summary>
+    /// Literal for code: NONERicottaCheese
+    /// </summary>
+    public const string LiteralNONERicottaCheese = "http://snomed.info/sct#226853007";
+
+    /// <summary>
     /// Literal for code: SoftMoldRipenedCheese
     /// </summary>
     public const string LiteralSoftMoldRipenedCheese = "226854001";
+
+    /// <summary>
+    /// Literal for code: NONESoftMoldRipenedCheese
+    /// </summary>
+    public const string LiteralNONESoftMoldRipenedCheese = "http://snomed.info/sct#226854001";
 
     /// <summary>
     /// Literal for code: BrieCheese
@@ -10658,9 +12298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBrieCheese = "226855000";
 
     /// <summary>
+    /// Literal for code: NONEBrieCheese
+    /// </summary>
+    public const string LiteralNONEBrieCheese = "http://snomed.info/sct#226855000";
+
+    /// <summary>
     /// Literal for code: CamembertCheese
     /// </summary>
     public const string LiteralCamembertCheese = "226856004";
+
+    /// <summary>
+    /// Literal for code: NONECamembertCheese
+    /// </summary>
+    public const string LiteralNONECamembertCheese = "http://snomed.info/sct#226856004";
 
     /// <summary>
     /// Literal for code: FromageFrais
@@ -10668,9 +12318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFromageFrais = "226857008";
 
     /// <summary>
+    /// Literal for code: NONEFromageFrais
+    /// </summary>
+    public const string LiteralNONEFromageFrais = "http://snomed.info/sct#226857008";
+
+    /// <summary>
     /// Literal for code: PlainFromageFrais
     /// </summary>
     public const string LiteralPlainFromageFrais = "226858003";
+
+    /// <summary>
+    /// Literal for code: NONEPlainFromageFrais
+    /// </summary>
+    public const string LiteralNONEPlainFromageFrais = "http://snomed.info/sct#226858003";
 
     /// <summary>
     /// Literal for code: FlavoredFromageFrais
@@ -10678,9 +12338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFlavoredFromageFrais = "226859006";
 
     /// <summary>
+    /// Literal for code: NONEFlavoredFromageFrais
+    /// </summary>
+    public const string LiteralNONEFlavoredFromageFrais = "http://snomed.info/sct#226859006";
+
+    /// <summary>
     /// Literal for code: FruitFromageFrais
     /// </summary>
     public const string LiteralFruitFromageFrais = "226860001";
+
+    /// <summary>
+    /// Literal for code: NONEFruitFromageFrais
+    /// </summary>
+    public const string LiteralNONEFruitFromageFrais = "http://snomed.info/sct#226860001";
 
     /// <summary>
     /// Literal for code: VeryLowFatFromageFrais
@@ -10688,9 +12358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVeryLowFatFromageFrais = "226861002";
 
     /// <summary>
+    /// Literal for code: NONEVeryLowFatFromageFrais
+    /// </summary>
+    public const string LiteralNONEVeryLowFatFromageFrais = "http://snomed.info/sct#226861002";
+
+    /// <summary>
     /// Literal for code: Quark
     /// </summary>
     public const string LiteralQuark = "226862009";
+
+    /// <summary>
+    /// Literal for code: NONEQuark
+    /// </summary>
+    public const string LiteralNONEQuark = "http://snomed.info/sct#226862009";
 
     /// <summary>
     /// Literal for code: Yoghurt
@@ -10698,9 +12378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralYoghurt = "226863004";
 
     /// <summary>
+    /// Literal for code: NONEYoghurt
+    /// </summary>
+    public const string LiteralNONEYoghurt = "http://snomed.info/sct#226863004";
+
+    /// <summary>
     /// Literal for code: WholeMilkYogurt
     /// </summary>
     public const string LiteralWholeMilkYogurt = "226864005";
+
+    /// <summary>
+    /// Literal for code: NONEWholeMilkYogurt
+    /// </summary>
+    public const string LiteralNONEWholeMilkYogurt = "http://snomed.info/sct#226864005";
 
     /// <summary>
     /// Literal for code: WholeMilkPlainYogurt
@@ -10708,9 +12398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWholeMilkPlainYogurt = "226865006";
 
     /// <summary>
+    /// Literal for code: NONEWholeMilkPlainYogurt
+    /// </summary>
+    public const string LiteralNONEWholeMilkPlainYogurt = "http://snomed.info/sct#226865006";
+
+    /// <summary>
     /// Literal for code: WholeMilkFruitYogurt
     /// </summary>
     public const string LiteralWholeMilkFruitYogurt = "226866007";
+
+    /// <summary>
+    /// Literal for code: NONEWholeMilkFruitYogurt
+    /// </summary>
+    public const string LiteralNONEWholeMilkFruitYogurt = "http://snomed.info/sct#226866007";
 
     /// <summary>
     /// Literal for code: WholeMilkFlavoredYoghurt
@@ -10718,9 +12418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWholeMilkFlavoredYoghurt = "226867003";
 
     /// <summary>
+    /// Literal for code: NONEWholeMilkFlavoredYoghurt
+    /// </summary>
+    public const string LiteralNONEWholeMilkFlavoredYoghurt = "http://snomed.info/sct#226867003";
+
+    /// <summary>
     /// Literal for code: LiveYogurt
     /// </summary>
     public const string LiteralLiveYogurt = "226868008";
+
+    /// <summary>
+    /// Literal for code: NONELiveYogurt
+    /// </summary>
+    public const string LiteralNONELiveYogurt = "http://snomed.info/sct#226868008";
 
     /// <summary>
     /// Literal for code: OrganicYogurt
@@ -10728,9 +12438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOrganicYogurt = "226869000";
 
     /// <summary>
+    /// Literal for code: NONEOrganicYogurt
+    /// </summary>
+    public const string LiteralNONEOrganicYogurt = "http://snomed.info/sct#226869000";
+
+    /// <summary>
     /// Literal for code: GoatQuoteSMilkYogurt
     /// </summary>
     public const string LiteralGoatQuoteSMilkYogurt = "226870004";
+
+    /// <summary>
+    /// Literal for code: NONEGoatQuoteSMilkYogurt
+    /// </summary>
+    public const string LiteralNONEGoatQuoteSMilkYogurt = "http://snomed.info/sct#226870004";
 
     /// <summary>
     /// Literal for code: LowFatYogurt
@@ -10738,9 +12458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLowFatYogurt = "226871000";
 
     /// <summary>
+    /// Literal for code: NONELowFatYogurt
+    /// </summary>
+    public const string LiteralNONELowFatYogurt = "http://snomed.info/sct#226871000";
+
+    /// <summary>
     /// Literal for code: PlainLowFatYogurt
     /// </summary>
     public const string LiteralPlainLowFatYogurt = "226872007";
+
+    /// <summary>
+    /// Literal for code: NONEPlainLowFatYogurt
+    /// </summary>
+    public const string LiteralNONEPlainLowFatYogurt = "http://snomed.info/sct#226872007";
 
     /// <summary>
     /// Literal for code: FlavoredLowFatYoghurt
@@ -10748,9 +12478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFlavoredLowFatYoghurt = "226873002";
 
     /// <summary>
+    /// Literal for code: NONEFlavoredLowFatYoghurt
+    /// </summary>
+    public const string LiteralNONEFlavoredLowFatYoghurt = "http://snomed.info/sct#226873002";
+
+    /// <summary>
     /// Literal for code: FruitLowFatYogurt
     /// </summary>
     public const string LiteralFruitLowFatYogurt = "226874008";
+
+    /// <summary>
+    /// Literal for code: NONEFruitLowFatYogurt
+    /// </summary>
+    public const string LiteralNONEFruitLowFatYogurt = "http://snomed.info/sct#226874008";
 
     /// <summary>
     /// Literal for code: MuesliNutLowFatYogurt
@@ -10758,9 +12498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMuesliNutLowFatYogurt = "226875009";
 
     /// <summary>
+    /// Literal for code: NONEMuesliNutLowFatYogurt
+    /// </summary>
+    public const string LiteralNONEMuesliNutLowFatYogurt = "http://snomed.info/sct#226875009";
+
+    /// <summary>
     /// Literal for code: LowCalorieYogurt
     /// </summary>
     public const string LiteralLowCalorieYogurt = "226876005";
+
+    /// <summary>
+    /// Literal for code: NONELowCalorieYogurt
+    /// </summary>
+    public const string LiteralNONELowCalorieYogurt = "http://snomed.info/sct#226876005";
 
     /// <summary>
     /// Literal for code: DrinkingYogurt
@@ -10768,9 +12518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDrinkingYogurt = "226877001";
 
     /// <summary>
+    /// Literal for code: NONEDrinkingYogurt
+    /// </summary>
+    public const string LiteralNONEDrinkingYogurt = "http://snomed.info/sct#226877001";
+
+    /// <summary>
     /// Literal for code: GreekYogurt
     /// </summary>
     public const string LiteralGreekYogurt = "226878006";
+
+    /// <summary>
+    /// Literal for code: NONEGreekYogurt
+    /// </summary>
+    public const string LiteralNONEGreekYogurt = "http://snomed.info/sct#226878006";
 
     /// <summary>
     /// Literal for code: SheepQuoteSMilkYogurt
@@ -10778,9 +12538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSheepQuoteSMilkYogurt = "226879003";
 
     /// <summary>
+    /// Literal for code: NONESheepQuoteSMilkYogurt
+    /// </summary>
+    public const string LiteralNONESheepQuoteSMilkYogurt = "http://snomed.info/sct#226879003";
+
+    /// <summary>
     /// Literal for code: SoyaMilkYogurt
     /// </summary>
     public const string LiteralSoyaMilkYogurt = "226880000";
+
+    /// <summary>
+    /// Literal for code: NONESoyaMilkYogurt
+    /// </summary>
+    public const string LiteralNONESoyaMilkYogurt = "http://snomed.info/sct#226880000";
 
     /// <summary>
     /// Literal for code: DriedEgg
@@ -10788,9 +12558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDriedEgg = "226881001";
 
     /// <summary>
+    /// Literal for code: NONEDriedEgg
+    /// </summary>
+    public const string LiteralNONEDriedEgg = "http://snomed.info/sct#226881001";
+
+    /// <summary>
     /// Literal for code: BEBoiledEgg
     /// </summary>
     public const string LiteralBEBoiledEgg = "226882008";
+
+    /// <summary>
+    /// Literal for code: NONEBEBoiledEgg
+    /// </summary>
+    public const string LiteralNONEBEBoiledEgg = "http://snomed.info/sct#226882008";
 
     /// <summary>
     /// Literal for code: FriedEgg
@@ -10798,9 +12578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedEgg = "226883003";
 
     /// <summary>
+    /// Literal for code: NONEFriedEgg
+    /// </summary>
+    public const string LiteralNONEFriedEgg = "http://snomed.info/sct#226883003";
+
+    /// <summary>
     /// Literal for code: PEPoachedEgg
     /// </summary>
     public const string LiteralPEPoachedEgg = "226884009";
+
+    /// <summary>
+    /// Literal for code: NONEPEPoachedEgg
+    /// </summary>
+    public const string LiteralNONEPEPoachedEgg = "http://snomed.info/sct#226884009";
 
     /// <summary>
     /// Literal for code: RawEgg
@@ -10808,9 +12598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRawEgg = "226885005";
 
     /// <summary>
+    /// Literal for code: NONERawEgg
+    /// </summary>
+    public const string LiteralNONERawEgg = "http://snomed.info/sct#226885005";
+
+    /// <summary>
     /// Literal for code: ScrambledEgg
     /// </summary>
     public const string LiteralScrambledEgg = "226886006";
+
+    /// <summary>
+    /// Literal for code: NONEScrambledEgg
+    /// </summary>
+    public const string LiteralNONEScrambledEgg = "http://snomed.info/sct#226886006";
 
     /// <summary>
     /// Literal for code: FatAndOil
@@ -10818,9 +12618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFatAndOil = "226887002";
 
     /// <summary>
+    /// Literal for code: NONEFatAndOil
+    /// </summary>
+    public const string LiteralNONEFatAndOil = "http://snomed.info/sct#226887002";
+
+    /// <summary>
     /// Literal for code: Butter
     /// </summary>
     public const string LiteralButter = "226888007";
+
+    /// <summary>
+    /// Literal for code: NONEButter
+    /// </summary>
+    public const string LiteralNONEButter = "http://snomed.info/sct#226888007";
 
     /// <summary>
     /// Literal for code: BlendedSpread
@@ -10828,9 +12638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBlendedSpread = "226889004";
 
     /// <summary>
+    /// Literal for code: NONEBlendedSpread
+    /// </summary>
+    public const string LiteralNONEBlendedSpread = "http://snomed.info/sct#226889004";
+
+    /// <summary>
     /// Literal for code: Margarine
     /// </summary>
     public const string LiteralMargarine = "226890008";
+
+    /// <summary>
+    /// Literal for code: NONEMargarine
+    /// </summary>
+    public const string LiteralNONEMargarine = "http://snomed.info/sct#226890008";
 
     /// <summary>
     /// Literal for code: HardVegetableFatMargarine
@@ -10838,9 +12658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHardVegetableFatMargarine = "226891007";
 
     /// <summary>
+    /// Literal for code: NONEHardVegetableFatMargarine
+    /// </summary>
+    public const string LiteralNONEHardVegetableFatMargarine = "http://snomed.info/sct#226891007";
+
+    /// <summary>
     /// Literal for code: HardAnimalAndVegetableFatMargarine
     /// </summary>
     public const string LiteralHardAnimalAndVegetableFatMargarine = "226892000";
+
+    /// <summary>
+    /// Literal for code: NONEHardAnimalAndVegetableFatMargarine
+    /// </summary>
+    public const string LiteralNONEHardAnimalAndVegetableFatMargarine = "http://snomed.info/sct#226892000";
 
     /// <summary>
     /// Literal for code: SoftPolyunsaturatedFatMargarine
@@ -10848,9 +12678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSoftPolyunsaturatedFatMargarine = "226894004";
 
     /// <summary>
+    /// Literal for code: NONESoftPolyunsaturatedFatMargarine
+    /// </summary>
+    public const string LiteralNONESoftPolyunsaturatedFatMargarine = "http://snomed.info/sct#226894004";
+
+    /// <summary>
     /// Literal for code: OliveOilMargarine
     /// </summary>
     public const string LiteralOliveOilMargarine = "226895003";
+
+    /// <summary>
+    /// Literal for code: NONEOliveOilMargarine
+    /// </summary>
+    public const string LiteralNONEOliveOilMargarine = "http://snomed.info/sct#226895003";
 
     /// <summary>
     /// Literal for code: LowFatSpread
@@ -10858,9 +12698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLowFatSpread = "226896002";
 
     /// <summary>
+    /// Literal for code: NONELowFatSpread
+    /// </summary>
+    public const string LiteralNONELowFatSpread = "http://snomed.info/sct#226896002";
+
+    /// <summary>
     /// Literal for code: VLFVeryLowFatSpread
     /// </summary>
     public const string LiteralVLFVeryLowFatSpread = "226897006";
+
+    /// <summary>
+    /// Literal for code: NONEVLFVeryLowFatSpread
+    /// </summary>
+    public const string LiteralNONEVLFVeryLowFatSpread = "http://snomed.info/sct#226897006";
 
     /// <summary>
     /// Literal for code: Dripping
@@ -10868,9 +12718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDripping = "226898001";
 
     /// <summary>
+    /// Literal for code: NONEDripping
+    /// </summary>
+    public const string LiteralNONEDripping = "http://snomed.info/sct#226898001";
+
+    /// <summary>
     /// Literal for code: Lard
     /// </summary>
     public const string LiteralLard = "226899009";
+
+    /// <summary>
+    /// Literal for code: NONELard
+    /// </summary>
+    public const string LiteralNONELard = "http://snomed.info/sct#226899009";
 
     /// <summary>
     /// Literal for code: Suet
@@ -10878,9 +12738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSuet = "226900004";
 
     /// <summary>
+    /// Literal for code: NONESuet
+    /// </summary>
+    public const string LiteralNONESuet = "http://snomed.info/sct#226900004";
+
+    /// <summary>
     /// Literal for code: Ghee
     /// </summary>
     public const string LiteralGhee = "226901000";
+
+    /// <summary>
+    /// Literal for code: NONEGhee
+    /// </summary>
+    public const string LiteralNONEGhee = "http://snomed.info/sct#226901000";
 
     /// <summary>
     /// Literal for code: ButterGhee
@@ -10888,9 +12758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralButterGhee = "226902007";
 
     /// <summary>
+    /// Literal for code: NONEButterGhee
+    /// </summary>
+    public const string LiteralNONEButterGhee = "http://snomed.info/sct#226902007";
+
+    /// <summary>
     /// Literal for code: PalmOilGhee
     /// </summary>
     public const string LiteralPalmOilGhee = "226903002";
+
+    /// <summary>
+    /// Literal for code: NONEPalmOilGhee
+    /// </summary>
+    public const string LiteralNONEPalmOilGhee = "http://snomed.info/sct#226903002";
 
     /// <summary>
     /// Literal for code: VegetableOilGhee
@@ -10898,9 +12778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVegetableOilGhee = "226904008";
 
     /// <summary>
+    /// Literal for code: NONEVegetableOilGhee
+    /// </summary>
+    public const string LiteralNONEVegetableOilGhee = "http://snomed.info/sct#226904008";
+
+    /// <summary>
     /// Literal for code: PalmOil
     /// </summary>
     public const string LiteralPalmOil = "226907001";
+
+    /// <summary>
+    /// Literal for code: NONEPalmOil
+    /// </summary>
+    public const string LiteralNONEPalmOil = "http://snomed.info/sct#226907001";
 
     /// <summary>
     /// Literal for code: RapeseedOil
@@ -10908,9 +12798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRapeseedOil = "226908006";
 
     /// <summary>
+    /// Literal for code: NONERapeseedOil
+    /// </summary>
+    public const string LiteralNONERapeseedOil = "http://snomed.info/sct#226908006";
+
+    /// <summary>
     /// Literal for code: RapeseedOilHighErucicAcid
     /// </summary>
     public const string LiteralRapeseedOilHighErucicAcid = "226909003";
+
+    /// <summary>
+    /// Literal for code: NONERapeseedOilHighErucicAcid
+    /// </summary>
+    public const string LiteralNONERapeseedOilHighErucicAcid = "http://snomed.info/sct#226909003";
 
     /// <summary>
     /// Literal for code: RapeseedOilLowErucicAcid
@@ -10918,9 +12818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRapeseedOilLowErucicAcid = "226910008";
 
     /// <summary>
+    /// Literal for code: NONERapeseedOilLowErucicAcid
+    /// </summary>
+    public const string LiteralNONERapeseedOilLowErucicAcid = "http://snomed.info/sct#226910008";
+
+    /// <summary>
     /// Literal for code: SoyaOil
     /// </summary>
     public const string LiteralSoyaOil = "226911007";
+
+    /// <summary>
+    /// Literal for code: NONESoyaOil
+    /// </summary>
+    public const string LiteralNONESoyaOil = "http://snomed.info/sct#226911007";
 
     /// <summary>
     /// Literal for code: SunflowerseedOil
@@ -10928,9 +12838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSunflowerseedOil = "226912000";
 
     /// <summary>
+    /// Literal for code: NONESunflowerseedOil
+    /// </summary>
+    public const string LiteralNONESunflowerseedOil = "http://snomed.info/sct#226912000";
+
+    /// <summary>
     /// Literal for code: BlendedVegetableOil
     /// </summary>
     public const string LiteralBlendedVegetableOil = "226913005";
+
+    /// <summary>
+    /// Literal for code: NONEBlendedVegetableOil
+    /// </summary>
+    public const string LiteralNONEBlendedVegetableOil = "http://snomed.info/sct#226913005";
 
     /// <summary>
     /// Literal for code: PolyunsaturatedVegetableOil
@@ -10938,9 +12858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPolyunsaturatedVegetableOil = "226914004";
 
     /// <summary>
+    /// Literal for code: NONEPolyunsaturatedVegetableOil
+    /// </summary>
+    public const string LiteralNONEPolyunsaturatedVegetableOil = "http://snomed.info/sct#226914004";
+
+    /// <summary>
     /// Literal for code: RedMeat
     /// </summary>
     public const string LiteralRedMeat = "226915003";
+
+    /// <summary>
+    /// Literal for code: NONERedMeat
+    /// </summary>
+    public const string LiteralNONERedMeat = "http://snomed.info/sct#226915003";
 
     /// <summary>
     /// Literal for code: Beef
@@ -10948,9 +12878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBeef = "226916002";
 
     /// <summary>
+    /// Literal for code: NONEBeef
+    /// </summary>
+    public const string LiteralNONEBeef = "http://snomed.info/sct#226916002";
+
+    /// <summary>
     /// Literal for code: BeefSteak
     /// </summary>
     public const string LiteralBeefSteak = "226917006";
+
+    /// <summary>
+    /// Literal for code: NONEBeefSteak
+    /// </summary>
+    public const string LiteralNONEBeefSteak = "http://snomed.info/sct#226917006";
 
     /// <summary>
     /// Literal for code: GrilledBeefSteak
@@ -10958,9 +12898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGrilledBeefSteak = "226918001";
 
     /// <summary>
+    /// Literal for code: NONEGrilledBeefSteak
+    /// </summary>
+    public const string LiteralNONEGrilledBeefSteak = "http://snomed.info/sct#226918001";
+
+    /// <summary>
     /// Literal for code: FriedBeefSteak
     /// </summary>
     public const string LiteralFriedBeefSteak = "226919009";
+
+    /// <summary>
+    /// Literal for code: NONEFriedBeefSteak
+    /// </summary>
+    public const string LiteralNONEFriedBeefSteak = "http://snomed.info/sct#226919009";
 
     /// <summary>
     /// Literal for code: BoiledBeef
@@ -10968,9 +12918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBoiledBeef = "226920003";
 
     /// <summary>
+    /// Literal for code: NONEBoiledBeef
+    /// </summary>
+    public const string LiteralNONEBoiledBeef = "http://snomed.info/sct#226920003";
+
+    /// <summary>
     /// Literal for code: BoiledSaltBeef
     /// </summary>
     public const string LiteralBoiledSaltBeef = "226921004";
+
+    /// <summary>
+    /// Literal for code: NONEBoiledSaltBeef
+    /// </summary>
+    public const string LiteralNONEBoiledSaltBeef = "http://snomed.info/sct#226921004";
 
     /// <summary>
     /// Literal for code: MincedBeef
@@ -10978,9 +12938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMincedBeef = "226922006";
 
     /// <summary>
+    /// Literal for code: NONEMincedBeef
+    /// </summary>
+    public const string LiteralNONEMincedBeef = "http://snomed.info/sct#226922006";
+
+    /// <summary>
     /// Literal for code: StewedMincedBeef
     /// </summary>
     public const string LiteralStewedMincedBeef = "226923001";
+
+    /// <summary>
+    /// Literal for code: NONEStewedMincedBeef
+    /// </summary>
+    public const string LiteralNONEStewedMincedBeef = "http://snomed.info/sct#226923001";
 
     /// <summary>
     /// Literal for code: StewedExtraLeanMincedBeef
@@ -10988,9 +12958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStewedExtraLeanMincedBeef = "226924007";
 
     /// <summary>
+    /// Literal for code: NONEStewedExtraLeanMincedBeef
+    /// </summary>
+    public const string LiteralNONEStewedExtraLeanMincedBeef = "http://snomed.info/sct#226924007";
+
+    /// <summary>
     /// Literal for code: RoastBeef
     /// </summary>
     public const string LiteralRoastBeef = "226925008";
+
+    /// <summary>
+    /// Literal for code: NONERoastBeef
+    /// </summary>
+    public const string LiteralNONERoastBeef = "http://snomed.info/sct#226925008";
 
     /// <summary>
     /// Literal for code: LeanRoastBeef
@@ -10998,9 +12978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLeanRoastBeef = "226926009";
 
     /// <summary>
+    /// Literal for code: NONELeanRoastBeef
+    /// </summary>
+    public const string LiteralNONELeanRoastBeef = "http://snomed.info/sct#226926009";
+
+    /// <summary>
     /// Literal for code: StewedBeef
     /// </summary>
     public const string LiteralStewedBeef = "226927000";
+
+    /// <summary>
+    /// Literal for code: NONEStewedBeef
+    /// </summary>
+    public const string LiteralNONEStewedBeef = "http://snomed.info/sct#226927000";
 
     /// <summary>
     /// Literal for code: Bacon
@@ -11008,9 +12998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBacon = "226928005";
 
     /// <summary>
+    /// Literal for code: NONEBacon
+    /// </summary>
+    public const string LiteralNONEBacon = "http://snomed.info/sct#226928005";
+
+    /// <summary>
     /// Literal for code: BoiledBacon
     /// </summary>
     public const string LiteralBoiledBacon = "226929002";
+
+    /// <summary>
+    /// Literal for code: NONEBoiledBacon
+    /// </summary>
+    public const string LiteralNONEBoiledBacon = "http://snomed.info/sct#226929002";
 
     /// <summary>
     /// Literal for code: FriedBacon
@@ -11018,9 +13018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedBacon = "226930007";
 
     /// <summary>
+    /// Literal for code: NONEFriedBacon
+    /// </summary>
+    public const string LiteralNONEFriedBacon = "http://snomed.info/sct#226930007";
+
+    /// <summary>
     /// Literal for code: GrilledBacon
     /// </summary>
     public const string LiteralGrilledBacon = "226931006";
+
+    /// <summary>
+    /// Literal for code: NONEGrilledBacon
+    /// </summary>
+    public const string LiteralNONEGrilledBacon = "http://snomed.info/sct#226931006";
 
     /// <summary>
     /// Literal for code: Gammon
@@ -11028,9 +13038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGammon = "226932004";
 
     /// <summary>
+    /// Literal for code: NONEGammon
+    /// </summary>
+    public const string LiteralNONEGammon = "http://snomed.info/sct#226932004";
+
+    /// <summary>
     /// Literal for code: RoastHam
     /// </summary>
     public const string LiteralRoastHam = "226933009";
+
+    /// <summary>
+    /// Literal for code: NONERoastHam
+    /// </summary>
+    public const string LiteralNONERoastHam = "http://snomed.info/sct#226933009";
 
     /// <summary>
     /// Literal for code: Pork
@@ -11038,9 +13058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPork = "226934003";
 
     /// <summary>
+    /// Literal for code: NONEPork
+    /// </summary>
+    public const string LiteralNONEPork = "http://snomed.info/sct#226934003";
+
+    /// <summary>
     /// Literal for code: FriedPorkChop
     /// </summary>
     public const string LiteralFriedPorkChop = "226935002";
+
+    /// <summary>
+    /// Literal for code: NONEFriedPorkChop
+    /// </summary>
+    public const string LiteralNONEFriedPorkChop = "http://snomed.info/sct#226935002";
 
     /// <summary>
     /// Literal for code: GrilledPorkChop
@@ -11048,9 +13078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGrilledPorkChop = "226936001";
 
     /// <summary>
+    /// Literal for code: NONEGrilledPorkChop
+    /// </summary>
+    public const string LiteralNONEGrilledPorkChop = "http://snomed.info/sct#226936001";
+
+    /// <summary>
     /// Literal for code: MincedPork
     /// </summary>
     public const string LiteralMincedPork = "226937005";
+
+    /// <summary>
+    /// Literal for code: NONEMincedPork
+    /// </summary>
+    public const string LiteralNONEMincedPork = "http://snomed.info/sct#226937005";
 
     /// <summary>
     /// Literal for code: RoastPork
@@ -11058,9 +13098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRoastPork = "226938000";
 
     /// <summary>
+    /// Literal for code: NONERoastPork
+    /// </summary>
+    public const string LiteralNONERoastPork = "http://snomed.info/sct#226938000";
+
+    /// <summary>
     /// Literal for code: LeanRoastPork
     /// </summary>
     public const string LiteralLeanRoastPork = "226939008";
+
+    /// <summary>
+    /// Literal for code: NONELeanRoastPork
+    /// </summary>
+    public const string LiteralNONELeanRoastPork = "http://snomed.info/sct#226939008";
 
     /// <summary>
     /// Literal for code: RoastBellyPork
@@ -11068,9 +13118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRoastBellyPork = "226940005";
 
     /// <summary>
+    /// Literal for code: NONERoastBellyPork
+    /// </summary>
+    public const string LiteralNONERoastBellyPork = "http://snomed.info/sct#226940005";
+
+    /// <summary>
     /// Literal for code: BoiledHam
     /// </summary>
     public const string LiteralBoiledHam = "226941009";
+
+    /// <summary>
+    /// Literal for code: NONEBoiledHam
+    /// </summary>
+    public const string LiteralNONEBoiledHam = "http://snomed.info/sct#226941009";
 
     /// <summary>
     /// Literal for code: Lamb
@@ -11078,9 +13138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLamb = "226942002";
 
     /// <summary>
+    /// Literal for code: NONELamb
+    /// </summary>
+    public const string LiteralNONELamb = "http://snomed.info/sct#226942002";
+
+    /// <summary>
     /// Literal for code: FriedLambChop
     /// </summary>
     public const string LiteralFriedLambChop = "226943007";
+
+    /// <summary>
+    /// Literal for code: NONEFriedLambChop
+    /// </summary>
+    public const string LiteralNONEFriedLambChop = "http://snomed.info/sct#226943007";
 
     /// <summary>
     /// Literal for code: GrilledLambChop
@@ -11088,9 +13158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGrilledLambChop = "226944001";
 
     /// <summary>
+    /// Literal for code: NONEGrilledLambChop
+    /// </summary>
+    public const string LiteralNONEGrilledLambChop = "http://snomed.info/sct#226944001";
+
+    /// <summary>
     /// Literal for code: MincedLamb
     /// </summary>
     public const string LiteralMincedLamb = "226945000";
+
+    /// <summary>
+    /// Literal for code: NONEMincedLamb
+    /// </summary>
+    public const string LiteralNONEMincedLamb = "http://snomed.info/sct#226945000";
 
     /// <summary>
     /// Literal for code: RoastLamb
@@ -11098,9 +13178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRoastLamb = "226946004";
 
     /// <summary>
+    /// Literal for code: NONERoastLamb
+    /// </summary>
+    public const string LiteralNONERoastLamb = "http://snomed.info/sct#226946004";
+
+    /// <summary>
     /// Literal for code: LeanRoastLamb
     /// </summary>
     public const string LiteralLeanRoastLamb = "226947008";
+
+    /// <summary>
+    /// Literal for code: NONELeanRoastLamb
+    /// </summary>
+    public const string LiteralNONELeanRoastLamb = "http://snomed.info/sct#226947008";
 
     /// <summary>
     /// Literal for code: RoastLegOfLamb
@@ -11108,9 +13198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRoastLegOfLamb = "226948003";
 
     /// <summary>
+    /// Literal for code: NONERoastLegOfLamb
+    /// </summary>
+    public const string LiteralNONERoastLegOfLamb = "http://snomed.info/sct#226948003";
+
+    /// <summary>
     /// Literal for code: RoastShoulderOfLamb
     /// </summary>
     public const string LiteralRoastShoulderOfLamb = "226949006";
+
+    /// <summary>
+    /// Literal for code: NONERoastShoulderOfLamb
+    /// </summary>
+    public const string LiteralNONERoastShoulderOfLamb = "http://snomed.info/sct#226949006";
 
     /// <summary>
     /// Literal for code: RoastBreastOfLamb
@@ -11118,9 +13218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRoastBreastOfLamb = "226950006";
 
     /// <summary>
+    /// Literal for code: NONERoastBreastOfLamb
+    /// </summary>
+    public const string LiteralNONERoastBreastOfLamb = "http://snomed.info/sct#226950006";
+
+    /// <summary>
     /// Literal for code: StewedLamb
     /// </summary>
     public const string LiteralStewedLamb = "226951005";
+
+    /// <summary>
+    /// Literal for code: NONEStewedLamb
+    /// </summary>
+    public const string LiteralNONEStewedLamb = "http://snomed.info/sct#226951005";
 
     /// <summary>
     /// Literal for code: Veal
@@ -11128,9 +13238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVeal = "226952003";
 
     /// <summary>
+    /// Literal for code: NONEVeal
+    /// </summary>
+    public const string LiteralNONEVeal = "http://snomed.info/sct#226952003";
+
+    /// <summary>
     /// Literal for code: FriedVeal
     /// </summary>
     public const string LiteralFriedVeal = "226953008";
+
+    /// <summary>
+    /// Literal for code: NONEFriedVeal
+    /// </summary>
+    public const string LiteralNONEFriedVeal = "http://snomed.info/sct#226953008";
 
     /// <summary>
     /// Literal for code: GrilledVeal
@@ -11138,9 +13258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGrilledVeal = "226954002";
 
     /// <summary>
+    /// Literal for code: NONEGrilledVeal
+    /// </summary>
+    public const string LiteralNONEGrilledVeal = "http://snomed.info/sct#226954002";
+
+    /// <summary>
     /// Literal for code: Chicken
     /// </summary>
     public const string LiteralChicken = "226955001";
+
+    /// <summary>
+    /// Literal for code: NONEChicken
+    /// </summary>
+    public const string LiteralNONEChicken = "http://snomed.info/sct#226955001";
 
     /// <summary>
     /// Literal for code: BoiledChicken
@@ -11148,9 +13278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBoiledChicken = "226956000";
 
     /// <summary>
+    /// Literal for code: NONEBoiledChicken
+    /// </summary>
+    public const string LiteralNONEBoiledChicken = "http://snomed.info/sct#226956000";
+
+    /// <summary>
     /// Literal for code: FriedChicken
     /// </summary>
     public const string LiteralFriedChicken = "226957009";
+
+    /// <summary>
+    /// Literal for code: NONEFriedChicken
+    /// </summary>
+    public const string LiteralNONEFriedChicken = "http://snomed.info/sct#226957009";
 
     /// <summary>
     /// Literal for code: FriedChickenInBatter
@@ -11158,9 +13298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedChickenInBatter = "226958004";
 
     /// <summary>
+    /// Literal for code: NONEFriedChickenInBatter
+    /// </summary>
+    public const string LiteralNONEFriedChickenInBatter = "http://snomed.info/sct#226958004";
+
+    /// <summary>
     /// Literal for code: FriedChickenInBreadcrumb
     /// </summary>
     public const string LiteralFriedChickenInBreadcrumb = "226959007";
+
+    /// <summary>
+    /// Literal for code: NONEFriedChickenInBreadcrumb
+    /// </summary>
+    public const string LiteralNONEFriedChickenInBreadcrumb = "http://snomed.info/sct#226959007";
 
     /// <summary>
     /// Literal for code: FriedChickenNuggets
@@ -11168,9 +13318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedChickenNuggets = "226960002";
 
     /// <summary>
+    /// Literal for code: NONEFriedChickenNuggets
+    /// </summary>
+    public const string LiteralNONEFriedChickenNuggets = "http://snomed.info/sct#226960002";
+
+    /// <summary>
     /// Literal for code: RoastChicken
     /// </summary>
     public const string LiteralRoastChicken = "226961003";
+
+    /// <summary>
+    /// Literal for code: NONERoastChicken
+    /// </summary>
+    public const string LiteralNONERoastChicken = "http://snomed.info/sct#226961003";
 
     /// <summary>
     /// Literal for code: MincedChicken
@@ -11178,9 +13338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMincedChicken = "226962005";
 
     /// <summary>
+    /// Literal for code: NONEMincedChicken
+    /// </summary>
+    public const string LiteralNONEMincedChicken = "http://snomed.info/sct#226962005";
+
+    /// <summary>
     /// Literal for code: DuckMeat
     /// </summary>
     public const string LiteralDuckMeat = "226963000";
+
+    /// <summary>
+    /// Literal for code: NONEDuckMeat
+    /// </summary>
+    public const string LiteralNONEDuckMeat = "http://snomed.info/sct#226963000";
 
     /// <summary>
     /// Literal for code: RoastDuck
@@ -11188,9 +13358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRoastDuck = "226964006";
 
     /// <summary>
+    /// Literal for code: NONERoastDuck
+    /// </summary>
+    public const string LiteralNONERoastDuck = "http://snomed.info/sct#226964006";
+
+    /// <summary>
     /// Literal for code: Goose
     /// </summary>
     public const string LiteralGoose = "226965007";
+
+    /// <summary>
+    /// Literal for code: NONEGoose
+    /// </summary>
+    public const string LiteralNONEGoose = "http://snomed.info/sct#226965007";
 
     /// <summary>
     /// Literal for code: RoastGoose
@@ -11198,9 +13378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRoastGoose = "226966008";
 
     /// <summary>
+    /// Literal for code: NONERoastGoose
+    /// </summary>
+    public const string LiteralNONERoastGoose = "http://snomed.info/sct#226966008";
+
+    /// <summary>
     /// Literal for code: TurkeyMeat
     /// </summary>
     public const string LiteralTurkeyMeat = "226967004";
+
+    /// <summary>
+    /// Literal for code: NONETurkeyMeat
+    /// </summary>
+    public const string LiteralNONETurkeyMeat = "http://snomed.info/sct#226967004";
 
     /// <summary>
     /// Literal for code: RoastTurkey
@@ -11208,9 +13398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRoastTurkey = "226968009";
 
     /// <summary>
+    /// Literal for code: NONERoastTurkey
+    /// </summary>
+    public const string LiteralNONERoastTurkey = "http://snomed.info/sct#226968009";
+
+    /// <summary>
     /// Literal for code: StewedTurkey
     /// </summary>
     public const string LiteralStewedTurkey = "226969001";
+
+    /// <summary>
+    /// Literal for code: NONEStewedTurkey
+    /// </summary>
+    public const string LiteralNONEStewedTurkey = "http://snomed.info/sct#226969001";
 
     /// <summary>
     /// Literal for code: MincedTurkey
@@ -11218,9 +13418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMincedTurkey = "226970000";
 
     /// <summary>
+    /// Literal for code: NONEMincedTurkey
+    /// </summary>
+    public const string LiteralNONEMincedTurkey = "http://snomed.info/sct#226970000";
+
+    /// <summary>
     /// Literal for code: GameMeat
     /// </summary>
     public const string LiteralGameMeat = "226971001";
+
+    /// <summary>
+    /// Literal for code: NONEGameMeat
+    /// </summary>
+    public const string LiteralNONEGameMeat = "http://snomed.info/sct#226971001";
 
     /// <summary>
     /// Literal for code: GrouseMeat
@@ -11228,9 +13438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGrouseMeat = "226972008";
 
     /// <summary>
+    /// Literal for code: NONEGrouseMeat
+    /// </summary>
+    public const string LiteralNONEGrouseMeat = "http://snomed.info/sct#226972008";
+
+    /// <summary>
     /// Literal for code: RoastGrouse
     /// </summary>
     public const string LiteralRoastGrouse = "226973003";
+
+    /// <summary>
+    /// Literal for code: NONERoastGrouse
+    /// </summary>
+    public const string LiteralNONERoastGrouse = "http://snomed.info/sct#226973003";
 
     /// <summary>
     /// Literal for code: PartridgeMeat
@@ -11238,9 +13458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPartridgeMeat = "226974009";
 
     /// <summary>
+    /// Literal for code: NONEPartridgeMeat
+    /// </summary>
+    public const string LiteralNONEPartridgeMeat = "http://snomed.info/sct#226974009";
+
+    /// <summary>
     /// Literal for code: RoastPartridge
     /// </summary>
     public const string LiteralRoastPartridge = "226975005";
+
+    /// <summary>
+    /// Literal for code: NONERoastPartridge
+    /// </summary>
+    public const string LiteralNONERoastPartridge = "http://snomed.info/sct#226975005";
 
     /// <summary>
     /// Literal for code: Pheasant
@@ -11248,9 +13478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPheasant = "226976006";
 
     /// <summary>
+    /// Literal for code: NONEPheasant
+    /// </summary>
+    public const string LiteralNONEPheasant = "http://snomed.info/sct#226976006";
+
+    /// <summary>
     /// Literal for code: RoastPheasant
     /// </summary>
     public const string LiteralRoastPheasant = "226977002";
+
+    /// <summary>
+    /// Literal for code: NONERoastPheasant
+    /// </summary>
+    public const string LiteralNONERoastPheasant = "http://snomed.info/sct#226977002";
 
     /// <summary>
     /// Literal for code: RoastPigeon
@@ -11258,9 +13498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRoastPigeon = "226978007";
 
     /// <summary>
+    /// Literal for code: NONERoastPigeon
+    /// </summary>
+    public const string LiteralNONERoastPigeon = "http://snomed.info/sct#226978007";
+
+    /// <summary>
     /// Literal for code: RoastVenison
     /// </summary>
     public const string LiteralRoastVenison = "226979004";
+
+    /// <summary>
+    /// Literal for code: NONERoastVenison
+    /// </summary>
+    public const string LiteralNONERoastVenison = "http://snomed.info/sct#226979004";
 
     /// <summary>
     /// Literal for code: StewedHare
@@ -11268,9 +13518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStewedHare = "226980001";
 
     /// <summary>
+    /// Literal for code: NONEStewedHare
+    /// </summary>
+    public const string LiteralNONEStewedHare = "http://snomed.info/sct#226980001";
+
+    /// <summary>
     /// Literal for code: StewedRabbit
     /// </summary>
     public const string LiteralStewedRabbit = "226981002";
+
+    /// <summary>
+    /// Literal for code: NONEStewedRabbit
+    /// </summary>
+    public const string LiteralNONEStewedRabbit = "http://snomed.info/sct#226981002";
 
     /// <summary>
     /// Literal for code: Offal
@@ -11278,9 +13538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOffal = "226982009";
 
     /// <summary>
+    /// Literal for code: NONEOffal
+    /// </summary>
+    public const string LiteralNONEOffal = "http://snomed.info/sct#226982009";
+
+    /// <summary>
     /// Literal for code: HeartMeat
     /// </summary>
     public const string LiteralHeartMeat = "226983004";
+
+    /// <summary>
+    /// Literal for code: NONEHeartMeat
+    /// </summary>
+    public const string LiteralNONEHeartMeat = "http://snomed.info/sct#226983004";
 
     /// <summary>
     /// Literal for code: StewedHeart
@@ -11288,9 +13558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStewedHeart = "226984005";
 
     /// <summary>
+    /// Literal for code: NONEStewedHeart
+    /// </summary>
+    public const string LiteralNONEStewedHeart = "http://snomed.info/sct#226984005";
+
+    /// <summary>
     /// Literal for code: RoastHeart
     /// </summary>
     public const string LiteralRoastHeart = "226985006";
+
+    /// <summary>
+    /// Literal for code: NONERoastHeart
+    /// </summary>
+    public const string LiteralNONERoastHeart = "http://snomed.info/sct#226985006";
 
     /// <summary>
     /// Literal for code: KidneyMeat
@@ -11298,9 +13578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralKidneyMeat = "226987003";
 
     /// <summary>
+    /// Literal for code: NONEKidneyMeat
+    /// </summary>
+    public const string LiteralNONEKidneyMeat = "http://snomed.info/sct#226987003";
+
+    /// <summary>
     /// Literal for code: FriedKidney
     /// </summary>
     public const string LiteralFriedKidney = "226988008";
+
+    /// <summary>
+    /// Literal for code: NONEFriedKidney
+    /// </summary>
+    public const string LiteralNONEFriedKidney = "http://snomed.info/sct#226988008";
 
     /// <summary>
     /// Literal for code: GrilledKidney
@@ -11308,9 +13598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGrilledKidney = "226989000";
 
     /// <summary>
+    /// Literal for code: NONEGrilledKidney
+    /// </summary>
+    public const string LiteralNONEGrilledKidney = "http://snomed.info/sct#226989000";
+
+    /// <summary>
     /// Literal for code: StewedKidney
     /// </summary>
     public const string LiteralStewedKidney = "226990009";
+
+    /// <summary>
+    /// Literal for code: NONEStewedKidney
+    /// </summary>
+    public const string LiteralNONEStewedKidney = "http://snomed.info/sct#226990009";
 
     /// <summary>
     /// Literal for code: LiverMeat
@@ -11318,9 +13618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLiverMeat = "226991008";
 
     /// <summary>
+    /// Literal for code: NONELiverMeat
+    /// </summary>
+    public const string LiteralNONELiverMeat = "http://snomed.info/sct#226991008";
+
+    /// <summary>
     /// Literal for code: FriedLiver
     /// </summary>
     public const string LiteralFriedLiver = "226992001";
+
+    /// <summary>
+    /// Literal for code: NONEFriedLiver
+    /// </summary>
+    public const string LiteralNONEFriedLiver = "http://snomed.info/sct#226992001";
 
     /// <summary>
     /// Literal for code: GrilledLiver
@@ -11328,9 +13638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGrilledLiver = "226993006";
 
     /// <summary>
+    /// Literal for code: NONEGrilledLiver
+    /// </summary>
+    public const string LiteralNONEGrilledLiver = "http://snomed.info/sct#226993006";
+
+    /// <summary>
     /// Literal for code: StewedLiver
     /// </summary>
     public const string LiteralStewedLiver = "226994000";
+
+    /// <summary>
+    /// Literal for code: NONEStewedLiver
+    /// </summary>
+    public const string LiteralNONEStewedLiver = "http://snomed.info/sct#226994000";
 
     /// <summary>
     /// Literal for code: Oxtail
@@ -11338,9 +13658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOxtail = "226995004";
 
     /// <summary>
+    /// Literal for code: NONEOxtail
+    /// </summary>
+    public const string LiteralNONEOxtail = "http://snomed.info/sct#226995004";
+
+    /// <summary>
     /// Literal for code: StewedOxtail
     /// </summary>
     public const string LiteralStewedOxtail = "226996003";
+
+    /// <summary>
+    /// Literal for code: NONEStewedOxtail
+    /// </summary>
+    public const string LiteralNONEStewedOxtail = "http://snomed.info/sct#226996003";
 
     /// <summary>
     /// Literal for code: Sweetbread
@@ -11348,9 +13678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSweetbread = "226997007";
 
     /// <summary>
+    /// Literal for code: NONESweetbread
+    /// </summary>
+    public const string LiteralNONESweetbread = "http://snomed.info/sct#226997007";
+
+    /// <summary>
     /// Literal for code: FriedSweetbread
     /// </summary>
     public const string LiteralFriedSweetbread = "226998002";
+
+    /// <summary>
+    /// Literal for code: NONEFriedSweetbread
+    /// </summary>
+    public const string LiteralNONEFriedSweetbread = "http://snomed.info/sct#226998002";
 
     /// <summary>
     /// Literal for code: TongueMeat
@@ -11358,9 +13698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTongueMeat = "226999005";
 
     /// <summary>
+    /// Literal for code: NONETongueMeat
+    /// </summary>
+    public const string LiteralNONETongueMeat = "http://snomed.info/sct#226999005";
+
+    /// <summary>
     /// Literal for code: Tripe
     /// </summary>
     public const string LiteralTripe = "227000008";
+
+    /// <summary>
+    /// Literal for code: NONETripe
+    /// </summary>
+    public const string LiteralNONETripe = "http://snomed.info/sct#227000008";
 
     /// <summary>
     /// Literal for code: DressedTripe
@@ -11368,9 +13718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDressedTripe = "227001007";
 
     /// <summary>
+    /// Literal for code: NONEDressedTripe
+    /// </summary>
+    public const string LiteralNONEDressedTripe = "http://snomed.info/sct#227001007";
+
+    /// <summary>
     /// Literal for code: DressedStewedTripe
     /// </summary>
     public const string LiteralDressedStewedTripe = "227002000";
+
+    /// <summary>
+    /// Literal for code: NONEDressedStewedTripe
+    /// </summary>
+    public const string LiteralNONEDressedStewedTripe = "http://snomed.info/sct#227002000";
 
     /// <summary>
     /// Literal for code: MeatProducts
@@ -11378,9 +13738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMeatProducts = "227003005";
 
     /// <summary>
+    /// Literal for code: NONEMeatProducts
+    /// </summary>
+    public const string LiteralNONEMeatProducts = "http://snomed.info/sct#227003005";
+
+    /// <summary>
     /// Literal for code: MeatBurger
     /// </summary>
     public const string LiteralMeatBurger = "227004004";
+
+    /// <summary>
+    /// Literal for code: NONEMeatBurger
+    /// </summary>
+    public const string LiteralNONEMeatBurger = "http://snomed.info/sct#227004004";
 
     /// <summary>
     /// Literal for code: BeefBurger
@@ -11388,9 +13758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBeefBurger = "227005003";
 
     /// <summary>
+    /// Literal for code: NONEBeefBurger
+    /// </summary>
+    public const string LiteralNONEBeefBurger = "http://snomed.info/sct#227005003";
+
+    /// <summary>
     /// Literal for code: PorkBurger
     /// </summary>
     public const string LiteralPorkBurger = "227006002";
+
+    /// <summary>
+    /// Literal for code: NONEPorkBurger
+    /// </summary>
+    public const string LiteralNONEPorkBurger = "http://snomed.info/sct#227006002";
 
     /// <summary>
     /// Literal for code: LambBurger
@@ -11398,9 +13778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLambBurger = "227007006";
 
     /// <summary>
+    /// Literal for code: NONELambBurger
+    /// </summary>
+    public const string LiteralNONELambBurger = "http://snomed.info/sct#227007006";
+
+    /// <summary>
     /// Literal for code: ChickenBurger
     /// </summary>
     public const string LiteralChickenBurger = "227008001";
+
+    /// <summary>
+    /// Literal for code: NONEChickenBurger
+    /// </summary>
+    public const string LiteralNONEChickenBurger = "http://snomed.info/sct#227008001";
 
     /// <summary>
     /// Literal for code: TurkeyBurger
@@ -11408,9 +13798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTurkeyBurger = "227009009";
 
     /// <summary>
+    /// Literal for code: NONETurkeyBurger
+    /// </summary>
+    public const string LiteralNONETurkeyBurger = "http://snomed.info/sct#227009009";
+
+    /// <summary>
     /// Literal for code: BlackPudding
     /// </summary>
     public const string LiteralBlackPudding = "227010004";
+
+    /// <summary>
+    /// Literal for code: NONEBlackPudding
+    /// </summary>
+    public const string LiteralNONEBlackPudding = "http://snomed.info/sct#227010004";
 
     /// <summary>
     /// Literal for code: Brawn
@@ -11418,9 +13818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBrawn = "227011000";
 
     /// <summary>
+    /// Literal for code: NONEBrawn
+    /// </summary>
+    public const string LiteralNONEBrawn = "http://snomed.info/sct#227011000";
+
+    /// <summary>
     /// Literal for code: Faggot
     /// </summary>
     public const string LiteralFaggot = "227012007";
+
+    /// <summary>
+    /// Literal for code: NONEFaggot
+    /// </summary>
+    public const string LiteralNONEFaggot = "http://snomed.info/sct#227012007";
 
     /// <summary>
     /// Literal for code: Haggis
@@ -11428,9 +13838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHaggis = "227013002";
 
     /// <summary>
+    /// Literal for code: NONEHaggis
+    /// </summary>
+    public const string LiteralNONEHaggis = "http://snomed.info/sct#227013002";
+
+    /// <summary>
     /// Literal for code: LiverPate
     /// </summary>
     public const string LiteralLiverPate = "227014008";
+
+    /// <summary>
+    /// Literal for code: NONELiverPate
+    /// </summary>
+    public const string LiteralNONELiverPate = "http://snomed.info/sct#227014008";
 
     /// <summary>
     /// Literal for code: LFLowFatLiverPate
@@ -11438,9 +13858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLFLowFatLiverPate = "227015009";
 
     /// <summary>
+    /// Literal for code: NONELFLowFatLiverPate
+    /// </summary>
+    public const string LiteralNONELFLowFatLiverPate = "http://snomed.info/sct#227015009";
+
+    /// <summary>
     /// Literal for code: MeatPaste
     /// </summary>
     public const string LiteralMeatPaste = "227016005";
+
+    /// <summary>
+    /// Literal for code: NONEMeatPaste
+    /// </summary>
+    public const string LiteralNONEMeatPaste = "http://snomed.info/sct#227016005";
 
     /// <summary>
     /// Literal for code: Polony
@@ -11448,9 +13878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPolony = "227017001";
 
     /// <summary>
+    /// Literal for code: NONEPolony
+    /// </summary>
+    public const string LiteralNONEPolony = "http://snomed.info/sct#227017001";
+
+    /// <summary>
     /// Literal for code: Salami
     /// </summary>
     public const string LiteralSalami = "227018006";
+
+    /// <summary>
+    /// Literal for code: NONESalami
+    /// </summary>
+    public const string LiteralNONESalami = "http://snomed.info/sct#227018006";
 
     /// <summary>
     /// Literal for code: Saveloy
@@ -11458,9 +13898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSaveloy = "227019003";
 
     /// <summary>
+    /// Literal for code: NONESaveloy
+    /// </summary>
+    public const string LiteralNONESaveloy = "http://snomed.info/sct#227019003";
+
+    /// <summary>
     /// Literal for code: Sausage
     /// </summary>
     public const string LiteralSausage = "227020009";
+
+    /// <summary>
+    /// Literal for code: NONESausage
+    /// </summary>
+    public const string LiteralNONESausage = "http://snomed.info/sct#227020009";
 
     /// <summary>
     /// Literal for code: Frankfurter
@@ -11468,9 +13918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFrankfurter = "227021008";
 
     /// <summary>
+    /// Literal for code: NONEFrankfurter
+    /// </summary>
+    public const string LiteralNONEFrankfurter = "http://snomed.info/sct#227021008";
+
+    /// <summary>
     /// Literal for code: LFLowFatSausage
     /// </summary>
     public const string LiteralLFLowFatSausage = "227022001";
+
+    /// <summary>
+    /// Literal for code: NONELFLowFatSausage
+    /// </summary>
+    public const string LiteralNONELFLowFatSausage = "http://snomed.info/sct#227022001";
 
     /// <summary>
     /// Literal for code: BeefSausage
@@ -11478,9 +13938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBeefSausage = "227023006";
 
     /// <summary>
+    /// Literal for code: NONEBeefSausage
+    /// </summary>
+    public const string LiteralNONEBeefSausage = "http://snomed.info/sct#227023006";
+
+    /// <summary>
     /// Literal for code: LFLowFatBeefSausage
     /// </summary>
     public const string LiteralLFLowFatBeefSausage = "227024000";
+
+    /// <summary>
+    /// Literal for code: NONELFLowFatBeefSausage
+    /// </summary>
+    public const string LiteralNONELFLowFatBeefSausage = "http://snomed.info/sct#227024000";
 
     /// <summary>
     /// Literal for code: PorkSausage
@@ -11488,9 +13958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPorkSausage = "227025004";
 
     /// <summary>
+    /// Literal for code: NONEPorkSausage
+    /// </summary>
+    public const string LiteralNONEPorkSausage = "http://snomed.info/sct#227025004";
+
+    /// <summary>
     /// Literal for code: LFLowFatPorkSausage
     /// </summary>
     public const string LiteralLFLowFatPorkSausage = "227026003";
+
+    /// <summary>
+    /// Literal for code: NONELFLowFatPorkSausage
+    /// </summary>
+    public const string LiteralNONELFLowFatPorkSausage = "http://snomed.info/sct#227026003";
 
     /// <summary>
     /// Literal for code: TurkeySausage
@@ -11498,9 +13978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTurkeySausage = "227027007";
 
     /// <summary>
+    /// Literal for code: NONETurkeySausage
+    /// </summary>
+    public const string LiteralNONETurkeySausage = "http://snomed.info/sct#227027007";
+
+    /// <summary>
     /// Literal for code: LowFatTurkeySausage
     /// </summary>
     public const string LiteralLowFatTurkeySausage = "227028002";
+
+    /// <summary>
+    /// Literal for code: NONELowFatTurkeySausage
+    /// </summary>
+    public const string LiteralNONELowFatTurkeySausage = "http://snomed.info/sct#227028002";
 
     /// <summary>
     /// Literal for code: LiverSausage
@@ -11508,9 +13998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLiverSausage = "227029005";
 
     /// <summary>
+    /// Literal for code: NONELiverSausage
+    /// </summary>
+    public const string LiteralNONELiverSausage = "http://snomed.info/sct#227029005";
+
+    /// <summary>
     /// Literal for code: WhitePudding
     /// </summary>
     public const string LiteralWhitePudding = "227030000";
+
+    /// <summary>
+    /// Literal for code: NONEWhitePudding
+    /// </summary>
+    public const string LiteralNONEWhitePudding = "http://snomed.info/sct#227030000";
 
     /// <summary>
     /// Literal for code: ProcessedMeat
@@ -11518,9 +14018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProcessedMeat = "227031001";
 
     /// <summary>
+    /// Literal for code: NONEProcessedMeat
+    /// </summary>
+    public const string LiteralNONEProcessedMeat = "http://snomed.info/sct#227031001";
+
+    /// <summary>
     /// Literal for code: ChickenRoll
     /// </summary>
     public const string LiteralChickenRoll = "227032008";
+
+    /// <summary>
+    /// Literal for code: NONEChickenRoll
+    /// </summary>
+    public const string LiteralNONEChickenRoll = "http://snomed.info/sct#227032008";
 
     /// <summary>
     /// Literal for code: ChoppedHamAndPork
@@ -11528,9 +14038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChoppedHamAndPork = "227033003";
 
     /// <summary>
+    /// Literal for code: NONEChoppedHamAndPork
+    /// </summary>
+    public const string LiteralNONEChoppedHamAndPork = "http://snomed.info/sct#227033003";
+
+    /// <summary>
     /// Literal for code: CornedBeef
     /// </summary>
     public const string LiteralCornedBeef = "227034009";
+
+    /// <summary>
+    /// Literal for code: NONECornedBeef
+    /// </summary>
+    public const string LiteralNONECornedBeef = "http://snomed.info/sct#227034009";
 
     /// <summary>
     /// Literal for code: LuncheonMeat
@@ -11538,9 +14058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLuncheonMeat = "227036006";
 
     /// <summary>
+    /// Literal for code: NONELuncheonMeat
+    /// </summary>
+    public const string LiteralNONELuncheonMeat = "http://snomed.info/sct#227036006";
+
+    /// <summary>
     /// Literal for code: WhiteFish
     /// </summary>
     public const string LiteralWhiteFish = "227038007";
+
+    /// <summary>
+    /// Literal for code: NONEWhiteFish
+    /// </summary>
+    public const string LiteralNONEWhiteFish = "http://snomed.info/sct#227038007";
 
     /// <summary>
     /// Literal for code: Bele
@@ -11548,9 +14078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBele = "227040002";
 
     /// <summary>
+    /// Literal for code: NONEBele
+    /// </summary>
+    public const string LiteralNONEBele = "http://snomed.info/sct#227040002";
+
+    /// <summary>
     /// Literal for code: Boal
     /// </summary>
     public const string LiteralBoal = "227041003";
+
+    /// <summary>
+    /// Literal for code: NONEBoal
+    /// </summary>
+    public const string LiteralNONEBoal = "http://snomed.info/sct#227041003";
 
     /// <summary>
     /// Literal for code: Bream
@@ -11558,9 +14098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBream = "227042005";
 
     /// <summary>
+    /// Literal for code: NONEBream
+    /// </summary>
+    public const string LiteralNONEBream = "http://snomed.info/sct#227042005";
+
+    /// <summary>
     /// Literal for code: ChineseSaltedFish
     /// </summary>
     public const string LiteralChineseSaltedFish = "227044006";
+
+    /// <summary>
+    /// Literal for code: NONEChineseSaltedFish
+    /// </summary>
+    public const string LiteralNONEChineseSaltedFish = "http://snomed.info/sct#227044006";
 
     /// <summary>
     /// Literal for code: Chital
@@ -11568,9 +14118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChital = "227045007";
 
     /// <summary>
+    /// Literal for code: NONEChital
+    /// </summary>
+    public const string LiteralNONEChital = "http://snomed.info/sct#227045007";
+
+    /// <summary>
     /// Literal for code: BakedCod
     /// </summary>
     public const string LiteralBakedCod = "227046008";
+
+    /// <summary>
+    /// Literal for code: NONEBakedCod
+    /// </summary>
+    public const string LiteralNONEBakedCod = "http://snomed.info/sct#227046008";
 
     /// <summary>
     /// Literal for code: PoachedCod
@@ -11578,9 +14138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPoachedCod = "227047004";
 
     /// <summary>
+    /// Literal for code: NONEPoachedCod
+    /// </summary>
+    public const string LiteralNONEPoachedCod = "http://snomed.info/sct#227047004";
+
+    /// <summary>
     /// Literal for code: GrilledCod
     /// </summary>
     public const string LiteralGrilledCod = "227048009";
+
+    /// <summary>
+    /// Literal for code: NONEGrilledCod
+    /// </summary>
+    public const string LiteralNONEGrilledCod = "http://snomed.info/sct#227048009";
 
     /// <summary>
     /// Literal for code: FriedCod
@@ -11588,9 +14158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedCod = "227049001";
 
     /// <summary>
+    /// Literal for code: NONEFriedCod
+    /// </summary>
+    public const string LiteralNONEFriedCod = "http://snomed.info/sct#227049001";
+
+    /// <summary>
     /// Literal for code: FriedCodInBatter
     /// </summary>
     public const string LiteralFriedCodInBatter = "227050001";
+
+    /// <summary>
+    /// Literal for code: NONEFriedCodInBatter
+    /// </summary>
+    public const string LiteralNONEFriedCodInBatter = "http://snomed.info/sct#227050001";
 
     /// <summary>
     /// Literal for code: FriedCodInBreadcrumbs
@@ -11598,9 +14178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedCodInBreadcrumbs = "227051002";
 
     /// <summary>
+    /// Literal for code: NONEFriedCodInBreadcrumbs
+    /// </summary>
+    public const string LiteralNONEFriedCodInBreadcrumbs = "http://snomed.info/sct#227051002";
+
+    /// <summary>
     /// Literal for code: FriedCodGoujonsInBreadcrumbs
     /// </summary>
     public const string LiteralFriedCodGoujonsInBreadcrumbs = "227052009";
+
+    /// <summary>
+    /// Literal for code: NONEFriedCodGoujonsInBreadcrumbs
+    /// </summary>
+    public const string LiteralNONEFriedCodGoujonsInBreadcrumbs = "http://snomed.info/sct#227052009";
 
     /// <summary>
     /// Literal for code: CodInBatterBakedInTheOven
@@ -11608,9 +14198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCodInBatterBakedInTheOven = "227053004";
 
     /// <summary>
+    /// Literal for code: NONECodInBatterBakedInTheOven
+    /// </summary>
+    public const string LiteralNONECodInBatterBakedInTheOven = "http://snomed.info/sct#227053004";
+
+    /// <summary>
     /// Literal for code: DriedSaltedCod
     /// </summary>
     public const string LiteralDriedSaltedCod = "227054005";
+
+    /// <summary>
+    /// Literal for code: NONEDriedSaltedCod
+    /// </summary>
+    public const string LiteralNONEDriedSaltedCod = "http://snomed.info/sct#227054005";
 
     /// <summary>
     /// Literal for code: SmokedPoachedCod
@@ -11618,9 +14218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSmokedPoachedCod = "227055006";
 
     /// <summary>
+    /// Literal for code: NONESmokedPoachedCod
+    /// </summary>
+    public const string LiteralNONESmokedPoachedCod = "http://snomed.info/sct#227055006";
+
+    /// <summary>
     /// Literal for code: Dab
     /// </summary>
     public const string LiteralDab = "227058008";
+
+    /// <summary>
+    /// Literal for code: NONEDab
+    /// </summary>
+    public const string LiteralNONEDab = "http://snomed.info/sct#227058008";
 
     /// <summary>
     /// Literal for code: PoachedHaddock
@@ -11628,9 +14238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPoachedHaddock = "227060005";
 
     /// <summary>
+    /// Literal for code: NONEPoachedHaddock
+    /// </summary>
+    public const string LiteralNONEPoachedHaddock = "http://snomed.info/sct#227060005";
+
+    /// <summary>
     /// Literal for code: FriedHaddock
     /// </summary>
     public const string LiteralFriedHaddock = "227061009";
+
+    /// <summary>
+    /// Literal for code: NONEFriedHaddock
+    /// </summary>
+    public const string LiteralNONEFriedHaddock = "http://snomed.info/sct#227061009";
 
     /// <summary>
     /// Literal for code: FriedHaddockInBatter
@@ -11638,9 +14258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedHaddockInBatter = "227062002";
 
     /// <summary>
+    /// Literal for code: NONEFriedHaddockInBatter
+    /// </summary>
+    public const string LiteralNONEFriedHaddockInBatter = "http://snomed.info/sct#227062002";
+
+    /// <summary>
     /// Literal for code: FriedHaddockInBreadcrumbs
     /// </summary>
     public const string LiteralFriedHaddockInBreadcrumbs = "227063007";
+
+    /// <summary>
+    /// Literal for code: NONEFriedHaddockInBreadcrumbs
+    /// </summary>
+    public const string LiteralNONEFriedHaddockInBreadcrumbs = "http://snomed.info/sct#227063007";
 
     /// <summary>
     /// Literal for code: FriedHaddockGoujonsInBreadcrumbs
@@ -11648,9 +14278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedHaddockGoujonsInBreadcrumbs = "227064001";
 
     /// <summary>
+    /// Literal for code: NONEFriedHaddockGoujonsInBreadcrumbs
+    /// </summary>
+    public const string LiteralNONEFriedHaddockGoujonsInBreadcrumbs = "http://snomed.info/sct#227064001";
+
+    /// <summary>
     /// Literal for code: SmokedPoachedHaddock
     /// </summary>
     public const string LiteralSmokedPoachedHaddock = "227065000";
+
+    /// <summary>
+    /// Literal for code: NONESmokedPoachedHaddock
+    /// </summary>
+    public const string LiteralNONESmokedPoachedHaddock = "http://snomed.info/sct#227065000";
 
     /// <summary>
     /// Literal for code: Hake
@@ -11658,9 +14298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHake = "227066004";
 
     /// <summary>
+    /// Literal for code: NONEHake
+    /// </summary>
+    public const string LiteralNONEHake = "http://snomed.info/sct#227066004";
+
+    /// <summary>
     /// Literal for code: Halibut
     /// </summary>
     public const string LiteralHalibut = "227067008";
+
+    /// <summary>
+    /// Literal for code: NONEHalibut
+    /// </summary>
+    public const string LiteralNONEHalibut = "http://snomed.info/sct#227067008";
 
     /// <summary>
     /// Literal for code: Hoki
@@ -11668,9 +14318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHoki = "227068003";
 
     /// <summary>
+    /// Literal for code: NONEHoki
+    /// </summary>
+    public const string LiteralNONEHoki = "http://snomed.info/sct#227068003";
+
+    /// <summary>
     /// Literal for code: FriedHokiInBatter
     /// </summary>
     public const string LiteralFriedHokiInBatter = "227069006";
+
+    /// <summary>
+    /// Literal for code: NONEFriedHokiInBatter
+    /// </summary>
+    public const string LiteralNONEFriedHokiInBatter = "http://snomed.info/sct#227069006";
 
     /// <summary>
     /// Literal for code: JohnDory
@@ -11678,9 +14338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralJohnDory = "227070007";
 
     /// <summary>
+    /// Literal for code: NONEJohnDory
+    /// </summary>
+    public const string LiteralNONEJohnDory = "http://snomed.info/sct#227070007";
+
+    /// <summary>
     /// Literal for code: Kalabasu
     /// </summary>
     public const string LiteralKalabasu = "227071006";
+
+    /// <summary>
+    /// Literal for code: NONEKalabasu
+    /// </summary>
+    public const string LiteralNONEKalabasu = "http://snomed.info/sct#227071006";
 
     /// <summary>
     /// Literal for code: LemonSole
@@ -11688,9 +14358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLemonSole = "227072004";
 
     /// <summary>
+    /// Literal for code: NONELemonSole
+    /// </summary>
+    public const string LiteralNONELemonSole = "http://snomed.info/sct#227072004";
+
+    /// <summary>
     /// Literal for code: PoachedLemonSole
     /// </summary>
     public const string LiteralPoachedLemonSole = "227073009";
+
+    /// <summary>
+    /// Literal for code: NONEPoachedLemonSole
+    /// </summary>
+    public const string LiteralNONEPoachedLemonSole = "http://snomed.info/sct#227073009";
 
     /// <summary>
     /// Literal for code: FriedLemonSole
@@ -11698,9 +14378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedLemonSole = "227074003";
 
     /// <summary>
+    /// Literal for code: NONEFriedLemonSole
+    /// </summary>
+    public const string LiteralNONEFriedLemonSole = "http://snomed.info/sct#227074003";
+
+    /// <summary>
     /// Literal for code: FriedLemonSoleInBreadcrumbs
     /// </summary>
     public const string LiteralFriedLemonSoleInBreadcrumbs = "227075002";
+
+    /// <summary>
+    /// Literal for code: NONEFriedLemonSoleInBreadcrumbs
+    /// </summary>
+    public const string LiteralNONEFriedLemonSoleInBreadcrumbs = "http://snomed.info/sct#227075002";
 
     /// <summary>
     /// Literal for code: Ling
@@ -11708,9 +14398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLing = "227076001";
 
     /// <summary>
+    /// Literal for code: NONELing
+    /// </summary>
+    public const string LiteralNONELing = "http://snomed.info/sct#227076001";
+
+    /// <summary>
     /// Literal for code: Monkfish
     /// </summary>
     public const string LiteralMonkfish = "227078000";
+
+    /// <summary>
+    /// Literal for code: NONEMonkfish
+    /// </summary>
+    public const string LiteralNONEMonkfish = "http://snomed.info/sct#227078000";
 
     /// <summary>
     /// Literal for code: GreyMullet
@@ -11718,9 +14418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGreyMullet = "227080006";
 
     /// <summary>
+    /// Literal for code: NONEGreyMullet
+    /// </summary>
+    public const string LiteralNONEGreyMullet = "http://snomed.info/sct#227080006";
+
+    /// <summary>
     /// Literal for code: RedMullet
     /// </summary>
     public const string LiteralRedMullet = "227081005";
+
+    /// <summary>
+    /// Literal for code: NONERedMullet
+    /// </summary>
+    public const string LiteralNONERedMullet = "http://snomed.info/sct#227081005";
 
     /// <summary>
     /// Literal for code: Plaice
@@ -11728,9 +14438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPlaice = "227083008";
 
     /// <summary>
+    /// Literal for code: NONEPlaice
+    /// </summary>
+    public const string LiteralNONEPlaice = "http://snomed.info/sct#227083008";
+
+    /// <summary>
     /// Literal for code: PoachedPlaice
     /// </summary>
     public const string LiteralPoachedPlaice = "227084002";
+
+    /// <summary>
+    /// Literal for code: NONEPoachedPlaice
+    /// </summary>
+    public const string LiteralNONEPoachedPlaice = "http://snomed.info/sct#227084002";
 
     /// <summary>
     /// Literal for code: FriedPlaice
@@ -11738,9 +14458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedPlaice = "227085001";
 
     /// <summary>
+    /// Literal for code: NONEFriedPlaice
+    /// </summary>
+    public const string LiteralNONEFriedPlaice = "http://snomed.info/sct#227085001";
+
+    /// <summary>
     /// Literal for code: FriedPlaiceInBatter
     /// </summary>
     public const string LiteralFriedPlaiceInBatter = "227086000";
+
+    /// <summary>
+    /// Literal for code: NONEFriedPlaiceInBatter
+    /// </summary>
+    public const string LiteralNONEFriedPlaiceInBatter = "http://snomed.info/sct#227086000";
 
     /// <summary>
     /// Literal for code: FriedPlaiceInBreadcrumbs
@@ -11748,9 +14478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedPlaiceInBreadcrumbs = "227087009";
 
     /// <summary>
+    /// Literal for code: NONEFriedPlaiceInBreadcrumbs
+    /// </summary>
+    public const string LiteralNONEFriedPlaiceInBreadcrumbs = "http://snomed.info/sct#227087009";
+
+    /// <summary>
     /// Literal for code: FriedPlaiceGoujonsInBreadcrumbs
     /// </summary>
     public const string LiteralFriedPlaiceGoujonsInBreadcrumbs = "227088004";
+
+    /// <summary>
+    /// Literal for code: NONEFriedPlaiceGoujonsInBreadcrumbs
+    /// </summary>
+    public const string LiteralNONEFriedPlaiceGoujonsInBreadcrumbs = "http://snomed.info/sct#227088004";
 
     /// <summary>
     /// Literal for code: Pollack
@@ -11758,9 +14498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPollack = "227089007";
 
     /// <summary>
+    /// Literal for code: NONEPollack
+    /// </summary>
+    public const string LiteralNONEPollack = "http://snomed.info/sct#227089007";
+
+    /// <summary>
     /// Literal for code: BlackPomfret
     /// </summary>
     public const string LiteralBlackPomfret = "227092006";
+
+    /// <summary>
+    /// Literal for code: NONEBlackPomfret
+    /// </summary>
+    public const string LiteralNONEBlackPomfret = "http://snomed.info/sct#227092006";
 
     /// <summary>
     /// Literal for code: WhitePomfret
@@ -11768,9 +14518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWhitePomfret = "227093001";
 
     /// <summary>
+    /// Literal for code: NONEWhitePomfret
+    /// </summary>
+    public const string LiteralNONEWhitePomfret = "http://snomed.info/sct#227093001";
+
+    /// <summary>
     /// Literal for code: Rohu
     /// </summary>
     public const string LiteralRohu = "227096009";
+
+    /// <summary>
+    /// Literal for code: NONERohu
+    /// </summary>
+    public const string LiteralNONERohu = "http://snomed.info/sct#227096009";
 
     /// <summary>
     /// Literal for code: Dogfish
@@ -11778,9 +14538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDogfish = "227097000";
 
     /// <summary>
+    /// Literal for code: NONEDogfish
+    /// </summary>
+    public const string LiteralNONEDogfish = "http://snomed.info/sct#227097000";
+
+    /// <summary>
     /// Literal for code: FriedRockSalmonInBatter
     /// </summary>
     public const string LiteralFriedRockSalmonInBatter = "227098005";
+
+    /// <summary>
+    /// Literal for code: NONEFriedRockSalmonInBatter
+    /// </summary>
+    public const string LiteralNONEFriedRockSalmonInBatter = "http://snomed.info/sct#227098005";
 
     /// <summary>
     /// Literal for code: Saithe
@@ -11788,9 +14558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSaithe = "227099002";
 
     /// <summary>
+    /// Literal for code: NONESaithe
+    /// </summary>
+    public const string LiteralNONESaithe = "http://snomed.info/sct#227099002";
+
+    /// <summary>
     /// Literal for code: SharkFood
     /// </summary>
     public const string LiteralSharkFood = "227101009";
+
+    /// <summary>
+    /// Literal for code: NONESharkFood
+    /// </summary>
+    public const string LiteralNONESharkFood = "http://snomed.info/sct#227101009";
 
     /// <summary>
     /// Literal for code: FriedSkateInBatter
@@ -11798,9 +14578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedSkateInBatter = "227103007";
 
     /// <summary>
+    /// Literal for code: NONEFriedSkateInBatter
+    /// </summary>
+    public const string LiteralNONEFriedSkateInBatter = "http://snomed.info/sct#227103007";
+
+    /// <summary>
     /// Literal for code: Tiliapa
     /// </summary>
     public const string LiteralTiliapa = "227104001";
+
+    /// <summary>
+    /// Literal for code: NONETiliapa
+    /// </summary>
+    public const string LiteralNONETiliapa = "http://snomed.info/sct#227104001";
 
     /// <summary>
     /// Literal for code: Turbot
@@ -11808,9 +14598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTurbot = "227105000";
 
     /// <summary>
+    /// Literal for code: NONETurbot
+    /// </summary>
+    public const string LiteralNONETurbot = "http://snomed.info/sct#227105000";
+
+    /// <summary>
     /// Literal for code: Whiting
     /// </summary>
     public const string LiteralWhiting = "227106004";
+
+    /// <summary>
+    /// Literal for code: NONEWhiting
+    /// </summary>
+    public const string LiteralNONEWhiting = "http://snomed.info/sct#227106004";
 
     /// <summary>
     /// Literal for code: PoachedWhiting
@@ -11818,9 +14618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPoachedWhiting = "227107008";
 
     /// <summary>
+    /// Literal for code: NONEPoachedWhiting
+    /// </summary>
+    public const string LiteralNONEPoachedWhiting = "http://snomed.info/sct#227107008";
+
+    /// <summary>
     /// Literal for code: FriedWhiting
     /// </summary>
     public const string LiteralFriedWhiting = "227108003";
+
+    /// <summary>
+    /// Literal for code: NONEFriedWhiting
+    /// </summary>
+    public const string LiteralNONEFriedWhiting = "http://snomed.info/sct#227108003";
 
     /// <summary>
     /// Literal for code: FriedWhitingInBreadcrumbs
@@ -11828,9 +14638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedWhitingInBreadcrumbs = "227109006";
 
     /// <summary>
+    /// Literal for code: NONEFriedWhitingInBreadcrumbs
+    /// </summary>
+    public const string LiteralNONEFriedWhitingInBreadcrumbs = "http://snomed.info/sct#227109006";
+
+    /// <summary>
     /// Literal for code: OilyFish
     /// </summary>
     public const string LiteralOilyFish = "227110001";
+
+    /// <summary>
+    /// Literal for code: NONEOilyFish
+    /// </summary>
+    public const string LiteralNONEOilyFish = "http://snomed.info/sct#227110001";
 
     /// <summary>
     /// Literal for code: Bacha
@@ -11838,9 +14658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBacha = "227111002";
 
     /// <summary>
+    /// Literal for code: NONEBacha
+    /// </summary>
+    public const string LiteralNONEBacha = "http://snomed.info/sct#227111002";
+
+    /// <summary>
     /// Literal for code: JelliedEel
     /// </summary>
     public const string LiteralJelliedEel = "227114005";
+
+    /// <summary>
+    /// Literal for code: NONEJelliedEel
+    /// </summary>
+    public const string LiteralNONEJelliedEel = "http://snomed.info/sct#227114005";
 
     /// <summary>
     /// Literal for code: DriedHerring
@@ -11848,9 +14678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDriedHerring = "227115006";
 
     /// <summary>
+    /// Literal for code: NONEDriedHerring
+    /// </summary>
+    public const string LiteralNONEDriedHerring = "http://snomed.info/sct#227115006";
+
+    /// <summary>
     /// Literal for code: FriedHerringInOatmeal
     /// </summary>
     public const string LiteralFriedHerringInOatmeal = "227116007";
+
+    /// <summary>
+    /// Literal for code: NONEFriedHerringInOatmeal
+    /// </summary>
+    public const string LiteralNONEFriedHerringInOatmeal = "http://snomed.info/sct#227116007";
 
     /// <summary>
     /// Literal for code: GrilledHerring
@@ -11858,9 +14698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGrilledHerring = "227117003";
 
     /// <summary>
+    /// Literal for code: NONEGrilledHerring
+    /// </summary>
+    public const string LiteralNONEGrilledHerring = "http://snomed.info/sct#227117003";
+
+    /// <summary>
     /// Literal for code: PickledHerring
     /// </summary>
     public const string LiteralPickledHerring = "227118008";
+
+    /// <summary>
+    /// Literal for code: NONEPickledHerring
+    /// </summary>
+    public const string LiteralNONEPickledHerring = "http://snomed.info/sct#227118008";
 
     /// <summary>
     /// Literal for code: Hilsa
@@ -11868,9 +14718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHilsa = "227119000";
 
     /// <summary>
+    /// Literal for code: NONEHilsa
+    /// </summary>
+    public const string LiteralNONEHilsa = "http://snomed.info/sct#227119000";
+
+    /// <summary>
     /// Literal for code: Jackfish
     /// </summary>
     public const string LiteralJackfish = "227120006";
+
+    /// <summary>
+    /// Literal for code: NONEJackfish
+    /// </summary>
+    public const string LiteralNONEJackfish = "http://snomed.info/sct#227120006";
 
     /// <summary>
     /// Literal for code: Katla
@@ -11878,9 +14738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralKatla = "227121005";
 
     /// <summary>
+    /// Literal for code: NONEKatla
+    /// </summary>
+    public const string LiteralNONEKatla = "http://snomed.info/sct#227121005";
+
+    /// <summary>
     /// Literal for code: Kipper
     /// </summary>
     public const string LiteralKipper = "227122003";
+
+    /// <summary>
+    /// Literal for code: NONEKipper
+    /// </summary>
+    public const string LiteralNONEKipper = "http://snomed.info/sct#227122003";
 
     /// <summary>
     /// Literal for code: PoachedKipper
@@ -11888,9 +14758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPoachedKipper = "227123008";
 
     /// <summary>
+    /// Literal for code: NONEPoachedKipper
+    /// </summary>
+    public const string LiteralNONEPoachedKipper = "http://snomed.info/sct#227123008";
+
+    /// <summary>
     /// Literal for code: GrilledKipper
     /// </summary>
     public const string LiteralGrilledKipper = "227124002";
+
+    /// <summary>
+    /// Literal for code: NONEGrilledKipper
+    /// </summary>
+    public const string LiteralNONEGrilledKipper = "http://snomed.info/sct#227124002";
 
     /// <summary>
     /// Literal for code: FriedMackerel
@@ -11898,9 +14778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedMackerel = "227126000";
 
     /// <summary>
+    /// Literal for code: NONEFriedMackerel
+    /// </summary>
+    public const string LiteralNONEFriedMackerel = "http://snomed.info/sct#227126000";
+
+    /// <summary>
     /// Literal for code: GrilledMackerel
     /// </summary>
     public const string LiteralGrilledMackerel = "227127009";
+
+    /// <summary>
+    /// Literal for code: NONEGrilledMackerel
+    /// </summary>
+    public const string LiteralNONEGrilledMackerel = "http://snomed.info/sct#227127009";
 
     /// <summary>
     /// Literal for code: SmokedMackerel
@@ -11908,9 +14798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSmokedMackerel = "227128004";
 
     /// <summary>
+    /// Literal for code: NONESmokedMackerel
+    /// </summary>
+    public const string LiteralNONESmokedMackerel = "http://snomed.info/sct#227128004";
+
+    /// <summary>
     /// Literal for code: GrilledSmokedMackerel
     /// </summary>
     public const string LiteralGrilledSmokedMackerel = "227129007";
+
+    /// <summary>
+    /// Literal for code: NONEGrilledSmokedMackerel
+    /// </summary>
+    public const string LiteralNONEGrilledSmokedMackerel = "http://snomed.info/sct#227129007";
 
     /// <summary>
     /// Literal for code: OrangeRoughy
@@ -11918,9 +14818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOrangeRoughy = "227130002";
 
     /// <summary>
+    /// Literal for code: NONEOrangeRoughy
+    /// </summary>
+    public const string LiteralNONEOrangeRoughy = "http://snomed.info/sct#227130002";
+
+    /// <summary>
     /// Literal for code: Pangas
     /// </summary>
     public const string LiteralPangas = "227131003";
+
+    /// <summary>
+    /// Literal for code: NONEPangas
+    /// </summary>
+    public const string LiteralNONEPangas = "http://snomed.info/sct#227131003";
 
     /// <summary>
     /// Literal for code: GrilledSalmon
@@ -11928,9 +14838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGrilledSalmon = "227132005";
 
     /// <summary>
+    /// Literal for code: NONEGrilledSalmon
+    /// </summary>
+    public const string LiteralNONEGrilledSalmon = "http://snomed.info/sct#227132005";
+
+    /// <summary>
     /// Literal for code: PoachedSalmon
     /// </summary>
     public const string LiteralPoachedSalmon = "227133000";
+
+    /// <summary>
+    /// Literal for code: NONEPoachedSalmon
+    /// </summary>
+    public const string LiteralNONEPoachedSalmon = "http://snomed.info/sct#227133000";
 
     /// <summary>
     /// Literal for code: SmokedSalmon
@@ -11938,9 +14858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSmokedSalmon = "227134006";
 
     /// <summary>
+    /// Literal for code: NONESmokedSalmon
+    /// </summary>
+    public const string LiteralNONESmokedSalmon = "http://snomed.info/sct#227134006";
+
+    /// <summary>
     /// Literal for code: SalmonEnCroute
     /// </summary>
     public const string LiteralSalmonEnCroute = "227135007";
+
+    /// <summary>
+    /// Literal for code: NONESalmonEnCroute
+    /// </summary>
+    public const string LiteralNONESalmonEnCroute = "http://snomed.info/sct#227135007";
 
     /// <summary>
     /// Literal for code: Sardine
@@ -11948,9 +14878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSardine = "227136008";
 
     /// <summary>
+    /// Literal for code: NONESardine
+    /// </summary>
+    public const string LiteralNONESardine = "http://snomed.info/sct#227136008";
+
+    /// <summary>
     /// Literal for code: GrilledSardine
     /// </summary>
     public const string LiteralGrilledSardine = "227137004";
+
+    /// <summary>
+    /// Literal for code: NONEGrilledSardine
+    /// </summary>
+    public const string LiteralNONEGrilledSardine = "http://snomed.info/sct#227137004";
 
     /// <summary>
     /// Literal for code: FriedSardine
@@ -11958,9 +14898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedSardine = "227138009";
 
     /// <summary>
+    /// Literal for code: NONEFriedSardine
+    /// </summary>
+    public const string LiteralNONEFriedSardine = "http://snomed.info/sct#227138009";
+
+    /// <summary>
     /// Literal for code: Sprats
     /// </summary>
     public const string LiteralSprats = "227139001";
+
+    /// <summary>
+    /// Literal for code: NONESprats
+    /// </summary>
+    public const string LiteralNONESprats = "http://snomed.info/sct#227139001";
 
     /// <summary>
     /// Literal for code: FriedTrout
@@ -11968,9 +14918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedTrout = "227141000";
 
     /// <summary>
+    /// Literal for code: NONEFriedTrout
+    /// </summary>
+    public const string LiteralNONEFriedTrout = "http://snomed.info/sct#227141000";
+
+    /// <summary>
     /// Literal for code: BakedTrout
     /// </summary>
     public const string LiteralBakedTrout = "227142007";
+
+    /// <summary>
+    /// Literal for code: NONEBakedTrout
+    /// </summary>
+    public const string LiteralNONEBakedTrout = "http://snomed.info/sct#227142007";
 
     /// <summary>
     /// Literal for code: SmokedTrout
@@ -11978,9 +14938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSmokedTrout = "227143002";
 
     /// <summary>
+    /// Literal for code: NONESmokedTrout
+    /// </summary>
+    public const string LiteralNONESmokedTrout = "http://snomed.info/sct#227143002";
+
+    /// <summary>
     /// Literal for code: TunaFish
     /// </summary>
     public const string LiteralTunaFish = "227144008";
+
+    /// <summary>
+    /// Literal for code: NONETunaFish
+    /// </summary>
+    public const string LiteralNONETunaFish = "http://snomed.info/sct#227144008";
 
     /// <summary>
     /// Literal for code: WhitebaitFried
@@ -11988,9 +14958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWhitebaitFried = "227145009";
 
     /// <summary>
+    /// Literal for code: NONEWhitebaitFried
+    /// </summary>
+    public const string LiteralNONEWhitebaitFried = "http://snomed.info/sct#227145009";
+
+    /// <summary>
     /// Literal for code: Cockles
     /// </summary>
     public const string LiteralCockles = "227147001";
+
+    /// <summary>
+    /// Literal for code: NONECockles
+    /// </summary>
+    public const string LiteralNONECockles = "http://snomed.info/sct#227147001";
 
     /// <summary>
     /// Literal for code: CocklesBottledInVinegar
@@ -11998,9 +14978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCocklesBottledInVinegar = "227148006";
 
     /// <summary>
+    /// Literal for code: NONECocklesBottledInVinegar
+    /// </summary>
+    public const string LiteralNONECocklesBottledInVinegar = "http://snomed.info/sct#227148006";
+
+    /// <summary>
     /// Literal for code: Mussels
     /// </summary>
     public const string LiteralMussels = "227150003";
+
+    /// <summary>
+    /// Literal for code: NONEMussels
+    /// </summary>
+    public const string LiteralNONEMussels = "http://snomed.info/sct#227150003";
 
     /// <summary>
     /// Literal for code: Prawns
@@ -12008,9 +14998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPrawns = "227151004";
 
     /// <summary>
+    /// Literal for code: NONEPrawns
+    /// </summary>
+    public const string LiteralNONEPrawns = "http://snomed.info/sct#227151004";
+
+    /// <summary>
     /// Literal for code: BoiledPrawns
     /// </summary>
     public const string LiteralBoiledPrawns = "227152006";
+
+    /// <summary>
+    /// Literal for code: NONEBoiledPrawns
+    /// </summary>
+    public const string LiteralNONEBoiledPrawns = "http://snomed.info/sct#227152006";
 
     /// <summary>
     /// Literal for code: FriedPrawns
@@ -12018,9 +15018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedPrawns = "227153001";
 
     /// <summary>
+    /// Literal for code: NONEFriedPrawns
+    /// </summary>
+    public const string LiteralNONEFriedPrawns = "http://snomed.info/sct#227153001";
+
+    /// <summary>
     /// Literal for code: FriedPrawnsInBatter
     /// </summary>
     public const string LiteralFriedPrawnsInBatter = "227154007";
+
+    /// <summary>
+    /// Literal for code: NONEFriedPrawnsInBatter
+    /// </summary>
+    public const string LiteralNONEFriedPrawnsInBatter = "http://snomed.info/sct#227154007";
 
     /// <summary>
     /// Literal for code: DriedPrawns
@@ -12028,9 +15038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDriedPrawns = "227155008";
 
     /// <summary>
+    /// Literal for code: NONEDriedPrawns
+    /// </summary>
+    public const string LiteralNONEDriedPrawns = "http://snomed.info/sct#227155008";
+
+    /// <summary>
     /// Literal for code: Scampi
     /// </summary>
     public const string LiteralScampi = "227156009";
+
+    /// <summary>
+    /// Literal for code: NONEScampi
+    /// </summary>
+    public const string LiteralNONEScampi = "http://snomed.info/sct#227156009";
 
     /// <summary>
     /// Literal for code: FriedScampiInBatter
@@ -12038,9 +15058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedScampiInBatter = "227157000";
 
     /// <summary>
+    /// Literal for code: NONEFriedScampiInBatter
+    /// </summary>
+    public const string LiteralNONEFriedScampiInBatter = "http://snomed.info/sct#227157000";
+
+    /// <summary>
     /// Literal for code: FriedScampiInBreadcrumbs
     /// </summary>
     public const string LiteralFriedScampiInBreadcrumbs = "227158005";
+
+    /// <summary>
+    /// Literal for code: NONEFriedScampiInBreadcrumbs
+    /// </summary>
+    public const string LiteralNONEFriedScampiInBreadcrumbs = "http://snomed.info/sct#227158005";
 
     /// <summary>
     /// Literal for code: FriedShrimp
@@ -12048,9 +15078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedShrimp = "227159002";
 
     /// <summary>
+    /// Literal for code: NONEFriedShrimp
+    /// </summary>
+    public const string LiteralNONEFriedShrimp = "http://snomed.info/sct#227159002";
+
+    /// <summary>
     /// Literal for code: DriedShrimp
     /// </summary>
     public const string LiteralDriedShrimp = "227160007";
+
+    /// <summary>
+    /// Literal for code: NONEDriedShrimp
+    /// </summary>
+    public const string LiteralNONEDriedShrimp = "http://snomed.info/sct#227160007";
 
     /// <summary>
     /// Literal for code: DriedSquid
@@ -12058,9 +15098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDriedSquid = "227164003";
 
     /// <summary>
+    /// Literal for code: NONEDriedSquid
+    /// </summary>
+    public const string LiteralNONEDriedSquid = "http://snomed.info/sct#227164003";
+
+    /// <summary>
     /// Literal for code: FriedSquid
     /// </summary>
     public const string LiteralFriedSquid = "227165002";
+
+    /// <summary>
+    /// Literal for code: NONEFriedSquid
+    /// </summary>
+    public const string LiteralNONEFriedSquid = "http://snomed.info/sct#227165002";
 
     /// <summary>
     /// Literal for code: FriedSquidInBatter
@@ -12068,9 +15118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedSquidInBatter = "227167005";
 
     /// <summary>
+    /// Literal for code: NONEFriedSquidInBatter
+    /// </summary>
+    public const string LiteralNONEFriedSquidInBatter = "http://snomed.info/sct#227167005";
+
+    /// <summary>
     /// Literal for code: Whelks
     /// </summary>
     public const string LiteralWhelks = "227168000";
+
+    /// <summary>
+    /// Literal for code: NONEWhelks
+    /// </summary>
+    public const string LiteralNONEWhelks = "http://snomed.info/sct#227168000";
 
     /// <summary>
     /// Literal for code: Winkles
@@ -12078,9 +15138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWinkles = "227169008";
 
     /// <summary>
+    /// Literal for code: NONEWinkles
+    /// </summary>
+    public const string LiteralNONEWinkles = "http://snomed.info/sct#227169008";
+
+    /// <summary>
     /// Literal for code: FishProducts
     /// </summary>
     public const string LiteralFishProducts = "227170009";
+
+    /// <summary>
+    /// Literal for code: NONEFishProducts
+    /// </summary>
+    public const string LiteralNONEFishProducts = "http://snomed.info/sct#227170009";
 
     /// <summary>
     /// Literal for code: Crabstick
@@ -12088,9 +15158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCrabstick = "227171008";
 
     /// <summary>
+    /// Literal for code: NONECrabstick
+    /// </summary>
+    public const string LiteralNONECrabstick = "http://snomed.info/sct#227171008";
+
+    /// <summary>
     /// Literal for code: FishBall
     /// </summary>
     public const string LiteralFishBall = "227172001";
+
+    /// <summary>
+    /// Literal for code: NONEFishBall
+    /// </summary>
+    public const string LiteralNONEFishBall = "http://snomed.info/sct#227172001";
 
     /// <summary>
     /// Literal for code: Fishcake
@@ -12098,9 +15178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFishcake = "227173006";
 
     /// <summary>
+    /// Literal for code: NONEFishcake
+    /// </summary>
+    public const string LiteralNONEFishcake = "http://snomed.info/sct#227173006";
+
+    /// <summary>
     /// Literal for code: GrilledFishcake
     /// </summary>
     public const string LiteralGrilledFishcake = "227174000";
+
+    /// <summary>
+    /// Literal for code: NONEGrilledFishcake
+    /// </summary>
+    public const string LiteralNONEGrilledFishcake = "http://snomed.info/sct#227174000";
 
     /// <summary>
     /// Literal for code: FriedFishcake
@@ -12108,9 +15198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedFishcake = "227175004";
 
     /// <summary>
+    /// Literal for code: NONEFriedFishcake
+    /// </summary>
+    public const string LiteralNONEFriedFishcake = "http://snomed.info/sct#227175004";
+
+    /// <summary>
     /// Literal for code: FishFingers
     /// </summary>
     public const string LiteralFishFingers = "227176003";
+
+    /// <summary>
+    /// Literal for code: NONEFishFingers
+    /// </summary>
+    public const string LiteralNONEFishFingers = "http://snomed.info/sct#227176003";
 
     /// <summary>
     /// Literal for code: FriedFishFingers
@@ -12118,9 +15218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedFishFingers = "227177007";
 
     /// <summary>
+    /// Literal for code: NONEFriedFishFingers
+    /// </summary>
+    public const string LiteralNONEFriedFishFingers = "http://snomed.info/sct#227177007";
+
+    /// <summary>
     /// Literal for code: GrilledFishFingers
     /// </summary>
     public const string LiteralGrilledFishFingers = "227178002";
+
+    /// <summary>
+    /// Literal for code: NONEGrilledFishFingers
+    /// </summary>
+    public const string LiteralNONEGrilledFishFingers = "http://snomed.info/sct#227178002";
 
     /// <summary>
     /// Literal for code: FishPaste
@@ -12128,9 +15238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFishPaste = "227179005";
 
     /// <summary>
+    /// Literal for code: NONEFishPaste
+    /// </summary>
+    public const string LiteralNONEFishPaste = "http://snomed.info/sct#227179005";
+
+    /// <summary>
     /// Literal for code: FishPate
     /// </summary>
     public const string LiteralFishPate = "227180008";
+
+    /// <summary>
+    /// Literal for code: NONEFishPate
+    /// </summary>
+    public const string LiteralNONEFishPate = "http://snomed.info/sct#227180008";
 
     /// <summary>
     /// Literal for code: FishPie
@@ -12138,9 +15258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFishPie = "227181007";
 
     /// <summary>
+    /// Literal for code: NONEFishPie
+    /// </summary>
+    public const string LiteralNONEFishPie = "http://snomed.info/sct#227181007";
+
+    /// <summary>
     /// Literal for code: Kedgeree
     /// </summary>
     public const string LiteralKedgeree = "227182000";
+
+    /// <summary>
+    /// Literal for code: NONEKedgeree
+    /// </summary>
+    public const string LiteralNONEKedgeree = "http://snomed.info/sct#227182000";
 
     /// <summary>
     /// Literal for code: FishRoe
@@ -12148,9 +15278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFishRoe = "227183005";
 
     /// <summary>
+    /// Literal for code: NONEFishRoe
+    /// </summary>
+    public const string LiteralNONEFishRoe = "http://snomed.info/sct#227183005";
+
+    /// <summary>
     /// Literal for code: RawHardFishRoe
     /// </summary>
     public const string LiteralRawHardFishRoe = "227184004";
+
+    /// <summary>
+    /// Literal for code: NONERawHardFishRoe
+    /// </summary>
+    public const string LiteralNONERawHardFishRoe = "http://snomed.info/sct#227184004";
 
     /// <summary>
     /// Literal for code: FriedHardFishRoe
@@ -12158,9 +15298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFriedHardFishRoe = "227185003";
 
     /// <summary>
+    /// Literal for code: NONEFriedHardFishRoe
+    /// </summary>
+    public const string LiteralNONEFriedHardFishRoe = "http://snomed.info/sct#227185003";
+
+    /// <summary>
     /// Literal for code: FriedHardFishRoeInBatter
     /// </summary>
     public const string LiteralFriedHardFishRoeInBatter = "227186002";
+
+    /// <summary>
+    /// Literal for code: NONEFriedHardFishRoeInBatter
+    /// </summary>
+    public const string LiteralNONEFriedHardFishRoeInBatter = "http://snomed.info/sct#227186002";
 
     /// <summary>
     /// Literal for code: RawSoftFishRoe
@@ -12168,9 +15318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRawSoftFishRoe = "227187006";
 
     /// <summary>
+    /// Literal for code: NONERawSoftFishRoe
+    /// </summary>
+    public const string LiteralNONERawSoftFishRoe = "http://snomed.info/sct#227187006";
+
+    /// <summary>
     /// Literal for code: FriedSoftFishRoe
     /// </summary>
     public const string LiteralFriedSoftFishRoe = "227188001";
+
+    /// <summary>
+    /// Literal for code: NONEFriedSoftFishRoe
+    /// </summary>
+    public const string LiteralNONEFriedSoftFishRoe = "http://snomed.info/sct#227188001";
 
     /// <summary>
     /// Literal for code: SeafoodCocktail
@@ -12178,9 +15338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSeafoodCocktail = "227189009";
 
     /// <summary>
+    /// Literal for code: NONESeafoodCocktail
+    /// </summary>
+    public const string LiteralNONESeafoodCocktail = "http://snomed.info/sct#227189009";
+
+    /// <summary>
     /// Literal for code: Taramasalata
     /// </summary>
     public const string LiteralTaramasalata = "227190000";
+
+    /// <summary>
+    /// Literal for code: NONETaramasalata
+    /// </summary>
+    public const string LiteralNONETaramasalata = "http://snomed.info/sct#227190000";
 
     /// <summary>
     /// Literal for code: TinnedFish
@@ -12188,9 +15358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedFish = "227191001";
 
     /// <summary>
+    /// Literal for code: NONETinnedFish
+    /// </summary>
+    public const string LiteralNONETinnedFish = "http://snomed.info/sct#227191001";
+
+    /// <summary>
     /// Literal for code: AnchoviesCannedInOil
     /// </summary>
     public const string LiteralAnchoviesCannedInOil = "227193003";
+
+    /// <summary>
+    /// Literal for code: NONEAnchoviesCannedInOil
+    /// </summary>
+    public const string LiteralNONEAnchoviesCannedInOil = "http://snomed.info/sct#227193003";
 
     /// <summary>
     /// Literal for code: HerringCannedInTomatoSauce
@@ -12198,9 +15378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHerringCannedInTomatoSauce = "227194009";
 
     /// <summary>
+    /// Literal for code: NONEHerringCannedInTomatoSauce
+    /// </summary>
+    public const string LiteralNONEHerringCannedInTomatoSauce = "http://snomed.info/sct#227194009";
+
+    /// <summary>
     /// Literal for code: MackerelCannedInTomatoSauce
     /// </summary>
     public const string LiteralMackerelCannedInTomatoSauce = "227195005";
+
+    /// <summary>
+    /// Literal for code: NONEMackerelCannedInTomatoSauce
+    /// </summary>
+    public const string LiteralNONEMackerelCannedInTomatoSauce = "http://snomed.info/sct#227195005";
 
     /// <summary>
     /// Literal for code: MackerelCannedInBrine
@@ -12208,9 +15398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMackerelCannedInBrine = "227196006";
 
     /// <summary>
+    /// Literal for code: NONEMackerelCannedInBrine
+    /// </summary>
+    public const string LiteralNONEMackerelCannedInBrine = "http://snomed.info/sct#227196006";
+
+    /// <summary>
     /// Literal for code: MusselsCannedInBrine
     /// </summary>
     public const string LiteralMusselsCannedInBrine = "227197002";
+
+    /// <summary>
+    /// Literal for code: NONEMusselsCannedInBrine
+    /// </summary>
+    public const string LiteralNONEMusselsCannedInBrine = "http://snomed.info/sct#227197002";
 
     /// <summary>
     /// Literal for code: PilchardsCannedInTomatoSauce
@@ -12218,9 +15418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPilchardsCannedInTomatoSauce = "227198007";
 
     /// <summary>
+    /// Literal for code: NONEPilchardsCannedInTomatoSauce
+    /// </summary>
+    public const string LiteralNONEPilchardsCannedInTomatoSauce = "http://snomed.info/sct#227198007";
+
+    /// <summary>
     /// Literal for code: PilchardsCannedInBrine
     /// </summary>
     public const string LiteralPilchardsCannedInBrine = "227199004";
+
+    /// <summary>
+    /// Literal for code: NONEPilchardsCannedInBrine
+    /// </summary>
+    public const string LiteralNONEPilchardsCannedInBrine = "http://snomed.info/sct#227199004";
 
     /// <summary>
     /// Literal for code: SalmonCannedInBrine
@@ -12228,9 +15438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSalmonCannedInBrine = "227200001";
 
     /// <summary>
+    /// Literal for code: NONESalmonCannedInBrine
+    /// </summary>
+    public const string LiteralNONESalmonCannedInBrine = "http://snomed.info/sct#227200001";
+
+    /// <summary>
     /// Literal for code: SardinesCannedInBrine
     /// </summary>
     public const string LiteralSardinesCannedInBrine = "227201002";
+
+    /// <summary>
+    /// Literal for code: NONESardinesCannedInBrine
+    /// </summary>
+    public const string LiteralNONESardinesCannedInBrine = "http://snomed.info/sct#227201002";
 
     /// <summary>
     /// Literal for code: SardinesCannedInOil
@@ -12238,9 +15458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSardinesCannedInOil = "227202009";
 
     /// <summary>
+    /// Literal for code: NONESardinesCannedInOil
+    /// </summary>
+    public const string LiteralNONESardinesCannedInOil = "http://snomed.info/sct#227202009";
+
+    /// <summary>
     /// Literal for code: SardinesCannedInTomatoSauce
     /// </summary>
     public const string LiteralSardinesCannedInTomatoSauce = "227203004";
+
+    /// <summary>
+    /// Literal for code: NONESardinesCannedInTomatoSauce
+    /// </summary>
+    public const string LiteralNONESardinesCannedInTomatoSauce = "http://snomed.info/sct#227203004";
 
     /// <summary>
     /// Literal for code: TunaCannedInBrine
@@ -12248,9 +15478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTunaCannedInBrine = "227204005";
 
     /// <summary>
+    /// Literal for code: NONETunaCannedInBrine
+    /// </summary>
+    public const string LiteralNONETunaCannedInBrine = "http://snomed.info/sct#227204005";
+
+    /// <summary>
     /// Literal for code: TunaCannedInOil
     /// </summary>
     public const string LiteralTunaCannedInOil = "227205006";
+
+    /// <summary>
+    /// Literal for code: NONETunaCannedInOil
+    /// </summary>
+    public const string LiteralNONETunaCannedInOil = "http://snomed.info/sct#227205006";
 
     /// <summary>
     /// Literal for code: CrabCannedInBrine
@@ -12258,9 +15498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCrabCannedInBrine = "227206007";
 
     /// <summary>
+    /// Literal for code: NONECrabCannedInBrine
+    /// </summary>
+    public const string LiteralNONECrabCannedInBrine = "http://snomed.info/sct#227206007";
+
+    /// <summary>
     /// Literal for code: ShrimpsCannedInBrine
     /// </summary>
     public const string LiteralShrimpsCannedInBrine = "227207003";
+
+    /// <summary>
+    /// Literal for code: NONEShrimpsCannedInBrine
+    /// </summary>
+    public const string LiteralNONEShrimpsCannedInBrine = "http://snomed.info/sct#227207003";
 
     /// <summary>
     /// Literal for code: AbaloneCannedInBrine
@@ -12268,9 +15518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAbaloneCannedInBrine = "227208008";
 
     /// <summary>
+    /// Literal for code: NONEAbaloneCannedInBrine
+    /// </summary>
+    public const string LiteralNONEAbaloneCannedInBrine = "http://snomed.info/sct#227208008";
+
+    /// <summary>
     /// Literal for code: ClamsCannedInBrine
     /// </summary>
     public const string LiteralClamsCannedInBrine = "227209000";
+
+    /// <summary>
+    /// Literal for code: NONEClamsCannedInBrine
+    /// </summary>
+    public const string LiteralNONEClamsCannedInBrine = "http://snomed.info/sct#227209000";
 
     /// <summary>
     /// Literal for code: VegetablesPulsesHerbsAndSpices
@@ -12278,9 +15538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVegetablesPulsesHerbsAndSpices = "227210005";
 
     /// <summary>
+    /// Literal for code: NONEVegetablesPulsesHerbsAndSpices
+    /// </summary>
+    public const string LiteralNONEVegetablesPulsesHerbsAndSpices = "http://snomed.info/sct#227210005";
+
+    /// <summary>
     /// Literal for code: AlfalfaSprout
     /// </summary>
     public const string LiteralAlfalfaSprout = "227212002";
+
+    /// <summary>
+    /// Literal for code: NONEAlfalfaSprout
+    /// </summary>
+    public const string LiteralNONEAlfalfaSprout = "http://snomed.info/sct#227212002";
 
     /// <summary>
     /// Literal for code: AmaranthLeaf
@@ -12288,9 +15558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAmaranthLeaf = "227213007";
 
     /// <summary>
+    /// Literal for code: NONEAmaranthLeaf
+    /// </summary>
+    public const string LiteralNONEAmaranthLeaf = "http://snomed.info/sct#227213007";
+
+    /// <summary>
     /// Literal for code: Arrowhead
     /// </summary>
     public const string LiteralArrowhead = "227214001";
+
+    /// <summary>
+    /// Literal for code: NONEArrowhead
+    /// </summary>
+    public const string LiteralNONEArrowhead = "http://snomed.info/sct#227214001";
 
     /// <summary>
     /// Literal for code: Artichoke
@@ -12298,9 +15578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralArtichoke = "227215000";
 
     /// <summary>
+    /// Literal for code: NONEArtichoke
+    /// </summary>
+    public const string LiteralNONEArtichoke = "http://snomed.info/sct#227215000";
+
+    /// <summary>
     /// Literal for code: GlobeArtichoke
     /// </summary>
     public const string LiteralGlobeArtichoke = "227216004";
+
+    /// <summary>
+    /// Literal for code: NONEGlobeArtichoke
+    /// </summary>
+    public const string LiteralNONEGlobeArtichoke = "http://snomed.info/sct#227216004";
 
     /// <summary>
     /// Literal for code: JerusalemArtichoke
@@ -12308,9 +15598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralJerusalemArtichoke = "227217008";
 
     /// <summary>
+    /// Literal for code: NONEJerusalemArtichoke
+    /// </summary>
+    public const string LiteralNONEJerusalemArtichoke = "http://snomed.info/sct#227217008";
+
+    /// <summary>
     /// Literal for code: Asparagus
     /// </summary>
     public const string LiteralAsparagus = "227218003";
+
+    /// <summary>
+    /// Literal for code: NONEAsparagus
+    /// </summary>
+    public const string LiteralNONEAsparagus = "http://snomed.info/sct#227218003";
 
     /// <summary>
     /// Literal for code: Aubergine
@@ -12318,9 +15618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAubergine = "227219006";
 
     /// <summary>
+    /// Literal for code: NONEAubergine
+    /// </summary>
+    public const string LiteralNONEAubergine = "http://snomed.info/sct#227219006";
+
+    /// <summary>
     /// Literal for code: Beetroot
     /// </summary>
     public const string LiteralBeetroot = "227220000";
+
+    /// <summary>
+    /// Literal for code: NONEBeetroot
+    /// </summary>
+    public const string LiteralNONEBeetroot = "http://snomed.info/sct#227220000";
 
     /// <summary>
     /// Literal for code: BrassicaVegetable
@@ -12328,9 +15638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBrassicaVegetable = "227221001";
 
     /// <summary>
+    /// Literal for code: NONEBrassicaVegetable
+    /// </summary>
+    public const string LiteralNONEBrassicaVegetable = "http://snomed.info/sct#227221001";
+
+    /// <summary>
     /// Literal for code: ChineseCabbage
     /// </summary>
     public const string LiteralChineseCabbage = "227225005";
+
+    /// <summary>
+    /// Literal for code: NONEChineseCabbage
+    /// </summary>
+    public const string LiteralNONEChineseCabbage = "http://snomed.info/sct#227225005";
 
     /// <summary>
     /// Literal for code: RedCabbage
@@ -12338,9 +15658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRedCabbage = "227226006";
 
     /// <summary>
+    /// Literal for code: NONERedCabbage
+    /// </summary>
+    public const string LiteralNONERedCabbage = "http://snomed.info/sct#227226006";
+
+    /// <summary>
     /// Literal for code: SavoyCabbage
     /// </summary>
     public const string LiteralSavoyCabbage = "227227002";
+
+    /// <summary>
+    /// Literal for code: NONESavoyCabbage
+    /// </summary>
+    public const string LiteralNONESavoyCabbage = "http://snomed.info/sct#227227002";
 
     /// <summary>
     /// Literal for code: SpringCabbage
@@ -12348,9 +15678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSpringCabbage = "227228007";
 
     /// <summary>
+    /// Literal for code: NONESpringCabbage
+    /// </summary>
+    public const string LiteralNONESpringCabbage = "http://snomed.info/sct#227228007";
+
+    /// <summary>
     /// Literal for code: WhiteCabbage
     /// </summary>
     public const string LiteralWhiteCabbage = "227229004";
+
+    /// <summary>
+    /// Literal for code: NONEWhiteCabbage
+    /// </summary>
+    public const string LiteralNONEWhiteCabbage = "http://snomed.info/sct#227229004";
 
     /// <summary>
     /// Literal for code: CurlyKale
@@ -12358,9 +15698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCurlyKale = "227230009";
 
     /// <summary>
+    /// Literal for code: NONECurlyKale
+    /// </summary>
+    public const string LiteralNONECurlyKale = "http://snomed.info/sct#227230009";
+
+    /// <summary>
     /// Literal for code: KohlRabi
     /// </summary>
     public const string LiteralKohlRabi = "227231008";
+
+    /// <summary>
+    /// Literal for code: NONEKohlRabi
+    /// </summary>
+    public const string LiteralNONEKohlRabi = "http://snomed.info/sct#227231008";
 
     /// <summary>
     /// Literal for code: Seakale
@@ -12368,9 +15718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSeakale = "227232001";
 
     /// <summary>
+    /// Literal for code: NONESeakale
+    /// </summary>
+    public const string LiteralNONESeakale = "http://snomed.info/sct#227232001";
+
+    /// <summary>
     /// Literal for code: Breadfruit
     /// </summary>
     public const string LiteralBreadfruit = "227233006";
+
+    /// <summary>
+    /// Literal for code: NONEBreadfruit
+    /// </summary>
+    public const string LiteralNONEBreadfruit = "http://snomed.info/sct#227233006";
 
     /// <summary>
     /// Literal for code: Cassava
@@ -12378,9 +15738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCassava = "227234000";
 
     /// <summary>
+    /// Literal for code: NONECassava
+    /// </summary>
+    public const string LiteralNONECassava = "http://snomed.info/sct#227234000";
+
+    /// <summary>
     /// Literal for code: Celeriac
     /// </summary>
     public const string LiteralCeleriac = "227235004";
+
+    /// <summary>
+    /// Literal for code: NONECeleriac
+    /// </summary>
+    public const string LiteralNONECeleriac = "http://snomed.info/sct#227235004";
 
     /// <summary>
     /// Literal for code: Chard
@@ -12388,9 +15758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChard = "227236003";
 
     /// <summary>
+    /// Literal for code: NONEChard
+    /// </summary>
+    public const string LiteralNONEChard = "http://snomed.info/sct#227236003";
+
+    /// <summary>
     /// Literal for code: ChoCho
     /// </summary>
     public const string LiteralChoCho = "227238002";
+
+    /// <summary>
+    /// Literal for code: NONEChoCho
+    /// </summary>
+    public const string LiteralNONEChoCho = "http://snomed.info/sct#227238002";
 
     /// <summary>
     /// Literal for code: Zucchini
@@ -12398,9 +15778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralZucchini = "227239005";
 
     /// <summary>
+    /// Literal for code: NONEZucchini
+    /// </summary>
+    public const string LiteralNONEZucchini = "http://snomed.info/sct#227239005";
+
+    /// <summary>
     /// Literal for code: ColeLeaf
     /// </summary>
     public const string LiteralColeLeaf = "227240007";
+
+    /// <summary>
+    /// Literal for code: NONEColeLeaf
+    /// </summary>
+    public const string LiteralNONEColeLeaf = "http://snomed.info/sct#227240007";
 
     /// <summary>
     /// Literal for code: DrumstickLeaf
@@ -12408,9 +15798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDrumstickLeaf = "227242004";
 
     /// <summary>
+    /// Literal for code: NONEDrumstickLeaf
+    /// </summary>
+    public const string LiteralNONEDrumstickLeaf = "http://snomed.info/sct#227242004";
+
+    /// <summary>
     /// Literal for code: Fenugreek
     /// </summary>
     public const string LiteralFenugreek = "227244003";
+
+    /// <summary>
+    /// Literal for code: NONEFenugreek
+    /// </summary>
+    public const string LiteralNONEFenugreek = "http://snomed.info/sct#227244003";
 
     /// <summary>
     /// Literal for code: Gherkin
@@ -12418,9 +15818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGherkin = "227245002";
 
     /// <summary>
+    /// Literal for code: NONEGherkin
+    /// </summary>
+    public const string LiteralNONEGherkin = "http://snomed.info/sct#227245002";
+
+    /// <summary>
     /// Literal for code: Jackfruit
     /// </summary>
     public const string LiteralJackfruit = "227247005";
+
+    /// <summary>
+    /// Literal for code: NONEJackfruit
+    /// </summary>
+    public const string LiteralNONEJackfruit = "http://snomed.info/sct#227247005";
 
     /// <summary>
     /// Literal for code: LotusTuber
@@ -12428,9 +15838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLotusTuber = "227249008";
 
     /// <summary>
+    /// Literal for code: NONELotusTuber
+    /// </summary>
+    public const string LiteralNONELotusTuber = "http://snomed.info/sct#227249008";
+
+    /// <summary>
     /// Literal for code: Marrow
     /// </summary>
     public const string LiteralMarrow = "227250008";
+
+    /// <summary>
+    /// Literal for code: NONEMarrow
+    /// </summary>
+    public const string LiteralNONEMarrow = "http://snomed.info/sct#227250008";
 
     /// <summary>
     /// Literal for code: Matoki
@@ -12438,9 +15858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMatoki = "227251007";
 
     /// <summary>
+    /// Literal for code: NONEMatoki
+    /// </summary>
+    public const string LiteralNONEMatoki = "http://snomed.info/sct#227251007";
+
+    /// <summary>
     /// Literal for code: MustardLeaf
     /// </summary>
     public const string LiteralMustardLeaf = "227253005";
+
+    /// <summary>
+    /// Literal for code: NONEMustardLeaf
+    /// </summary>
+    public const string LiteralNONEMustardLeaf = "http://snomed.info/sct#227253005";
 
     /// <summary>
     /// Literal for code: Okra
@@ -12448,9 +15878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOkra = "227254004";
 
     /// <summary>
+    /// Literal for code: NONEOkra
+    /// </summary>
+    public const string LiteralNONEOkra = "http://snomed.info/sct#227254004";
+
+    /// <summary>
     /// Literal for code: SpringOnion
     /// </summary>
     public const string LiteralSpringOnion = "227255003";
+
+    /// <summary>
+    /// Literal for code: NONESpringOnion
+    /// </summary>
+    public const string LiteralNONESpringOnion = "http://snomed.info/sct#227255003";
 
     /// <summary>
     /// Literal for code: PatraLeaf
@@ -12458,9 +15898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatraLeaf = "227258001";
 
     /// <summary>
+    /// Literal for code: NONEPatraLeaf
+    /// </summary>
+    public const string LiteralNONEPatraLeaf = "http://snomed.info/sct#227258001";
+
+    /// <summary>
     /// Literal for code: Plantain
     /// </summary>
     public const string LiteralPlantain = "227259009";
+
+    /// <summary>
+    /// Literal for code: NONEPlantain
+    /// </summary>
+    public const string LiteralNONEPlantain = "http://snomed.info/sct#227259009";
 
     /// <summary>
     /// Literal for code: Pumpkin
@@ -12468,9 +15918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPumpkin = "227260004";
 
     /// <summary>
+    /// Literal for code: NONEPumpkin
+    /// </summary>
+    public const string LiteralNONEPumpkin = "http://snomed.info/sct#227260004";
+
+    /// <summary>
     /// Literal for code: Raddiccio
     /// </summary>
     public const string LiteralRaddiccio = "227261000";
+
+    /// <summary>
+    /// Literal for code: NONERaddiccio
+    /// </summary>
+    public const string LiteralNONERaddiccio = "http://snomed.info/sct#227261000";
 
     /// <summary>
     /// Literal for code: RadishWhiteMooli
@@ -12478,9 +15938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRadishWhiteMooli = "227262007";
 
     /// <summary>
+    /// Literal for code: NONERadishWhiteMooli
+    /// </summary>
+    public const string LiteralNONERadishWhiteMooli = "http://snomed.info/sct#227262007";
+
+    /// <summary>
     /// Literal for code: RapeLeaf
     /// </summary>
     public const string LiteralRapeLeaf = "227263002";
+
+    /// <summary>
+    /// Literal for code: NONERapeLeaf
+    /// </summary>
+    public const string LiteralNONERapeLeaf = "http://snomed.info/sct#227263002";
 
     /// <summary>
     /// Literal for code: Salsify
@@ -12488,9 +15958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSalsify = "227264008";
 
     /// <summary>
+    /// Literal for code: NONESalsify
+    /// </summary>
+    public const string LiteralNONESalsify = "http://snomed.info/sct#227264008";
+
+    /// <summary>
     /// Literal for code: Seaweed
     /// </summary>
     public const string LiteralSeaweed = "227265009";
+
+    /// <summary>
+    /// Literal for code: NONESeaweed
+    /// </summary>
+    public const string LiteralNONESeaweed = "http://snomed.info/sct#227265009";
 
     /// <summary>
     /// Literal for code: Swede
@@ -12498,9 +15978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSwede = "227266005";
 
     /// <summary>
+    /// Literal for code: NONESwede
+    /// </summary>
+    public const string LiteralNONESwede = "http://snomed.info/sct#227266005";
+
+    /// <summary>
     /// Literal for code: Sweetcorn
     /// </summary>
     public const string LiteralSweetcorn = "227268006";
+
+    /// <summary>
+    /// Literal for code: NONESweetcorn
+    /// </summary>
+    public const string LiteralNONESweetcorn = "http://snomed.info/sct#227268006";
 
     /// <summary>
     /// Literal for code: SweetcornKernels
@@ -12508,9 +15998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSweetcornKernels = "227269003";
 
     /// <summary>
+    /// Literal for code: NONESweetcornKernels
+    /// </summary>
+    public const string LiteralNONESweetcornKernels = "http://snomed.info/sct#227269003";
+
+    /// <summary>
     /// Literal for code: SweetcornOnTheCob
     /// </summary>
     public const string LiteralSweetcornOnTheCob = "227270002";
+
+    /// <summary>
+    /// Literal for code: NONESweetcornOnTheCob
+    /// </summary>
+    public const string LiteralNONESweetcornOnTheCob = "http://snomed.info/sct#227270002";
 
     /// <summary>
     /// Literal for code: Tannia
@@ -12518,9 +16018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTannia = "227271003";
 
     /// <summary>
+    /// Literal for code: NONETannia
+    /// </summary>
+    public const string LiteralNONETannia = "http://snomed.info/sct#227271003";
+
+    /// <summary>
     /// Literal for code: Taro
     /// </summary>
     public const string LiteralTaro = "227272005";
+
+    /// <summary>
+    /// Literal for code: NONETaro
+    /// </summary>
+    public const string LiteralNONETaro = "http://snomed.info/sct#227272005";
 
     /// <summary>
     /// Literal for code: TaroLeaves
@@ -12528,9 +16038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTaroLeaves = "227273000";
 
     /// <summary>
+    /// Literal for code: NONETaroLeaves
+    /// </summary>
+    public const string LiteralNONETaroLeaves = "http://snomed.info/sct#227273000";
+
+    /// <summary>
     /// Literal for code: TomatoPuree
     /// </summary>
     public const string LiteralTomatoPuree = "227274006";
+
+    /// <summary>
+    /// Literal for code: NONETomatoPuree
+    /// </summary>
+    public const string LiteralNONETomatoPuree = "http://snomed.info/sct#227274006";
 
     /// <summary>
     /// Literal for code: Turnip
@@ -12538,9 +16058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTurnip = "227275007";
 
     /// <summary>
+    /// Literal for code: NONETurnip
+    /// </summary>
+    public const string LiteralNONETurnip = "http://snomed.info/sct#227275007";
+
+    /// <summary>
     /// Literal for code: WaterChestnut
     /// </summary>
     public const string LiteralWaterChestnut = "227276008";
+
+    /// <summary>
+    /// Literal for code: NONEWaterChestnut
+    /// </summary>
+    public const string LiteralNONEWaterChestnut = "http://snomed.info/sct#227276008";
 
     /// <summary>
     /// Literal for code: Watercress
@@ -12548,9 +16078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWatercress = "227277004";
 
     /// <summary>
+    /// Literal for code: NONEWatercress
+    /// </summary>
+    public const string LiteralNONEWatercress = "http://snomed.info/sct#227277004";
+
+    /// <summary>
     /// Literal for code: BoiledPotato
     /// </summary>
     public const string LiteralBoiledPotato = "227279001";
+
+    /// <summary>
+    /// Literal for code: NONEBoiledPotato
+    /// </summary>
+    public const string LiteralNONEBoiledPotato = "http://snomed.info/sct#227279001";
 
     /// <summary>
     /// Literal for code: PotatoBoiledInSaltedWater
@@ -12558,9 +16098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPotatoBoiledInSaltedWater = "227280003";
 
     /// <summary>
+    /// Literal for code: NONEPotatoBoiledInSaltedWater
+    /// </summary>
+    public const string LiteralNONEPotatoBoiledInSaltedWater = "http://snomed.info/sct#227280003";
+
+    /// <summary>
     /// Literal for code: PotatoBoiledInUnsaltedWater
     /// </summary>
     public const string LiteralPotatoBoiledInUnsaltedWater = "227281004";
+
+    /// <summary>
+    /// Literal for code: NONEPotatoBoiledInUnsaltedWater
+    /// </summary>
+    public const string LiteralNONEPotatoBoiledInUnsaltedWater = "http://snomed.info/sct#227281004";
 
     /// <summary>
     /// Literal for code: FrenchFries
@@ -12568,9 +16118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFrenchFries = "227282006";
 
     /// <summary>
+    /// Literal for code: NONEFrenchFries
+    /// </summary>
+    public const string LiteralNONEFrenchFries = "http://snomed.info/sct#227282006";
+
+    /// <summary>
     /// Literal for code: ThickCutFrenchFries
     /// </summary>
     public const string LiteralThickCutFrenchFries = "227283001";
+
+    /// <summary>
+    /// Literal for code: NONEThickCutFrenchFries
+    /// </summary>
+    public const string LiteralNONEThickCutFrenchFries = "http://snomed.info/sct#227283001";
 
     /// <summary>
     /// Literal for code: ThinCutFrenchFries
@@ -12578,9 +16138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralThinCutFrenchFries = "227284007";
 
     /// <summary>
+    /// Literal for code: NONEThinCutFrenchFries
+    /// </summary>
+    public const string LiteralNONEThinCutFrenchFries = "http://snomed.info/sct#227284007";
+
+    /// <summary>
     /// Literal for code: CrinkleCutChips
     /// </summary>
     public const string LiteralCrinkleCutChips = "227285008";
+
+    /// <summary>
+    /// Literal for code: NONECrinkleCutChips
+    /// </summary>
+    public const string LiteralNONECrinkleCutChips = "http://snomed.info/sct#227285008";
 
     /// <summary>
     /// Literal for code: FrenchFriesCookedInCornOil
@@ -12588,9 +16158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFrenchFriesCookedInCornOil = "227286009";
 
     /// <summary>
+    /// Literal for code: NONEFrenchFriesCookedInCornOil
+    /// </summary>
+    public const string LiteralNONEFrenchFriesCookedInCornOil = "http://snomed.info/sct#227286009";
+
+    /// <summary>
     /// Literal for code: FrenchFriesCookedInFatDrippings
     /// </summary>
     public const string LiteralFrenchFriesCookedInFatDrippings = "227287000";
+
+    /// <summary>
+    /// Literal for code: NONEFrenchFriesCookedInFatDrippings
+    /// </summary>
+    public const string LiteralNONEFrenchFriesCookedInFatDrippings = "http://snomed.info/sct#227287000";
 
     /// <summary>
     /// Literal for code: FrenchFriesCookedInBlendedOil
@@ -12598,9 +16178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFrenchFriesCookedInBlendedOil = "227288005";
 
     /// <summary>
+    /// Literal for code: NONEFrenchFriesCookedInBlendedOil
+    /// </summary>
+    public const string LiteralNONEFrenchFriesCookedInBlendedOil = "http://snomed.info/sct#227288005";
+
+    /// <summary>
     /// Literal for code: FrenchFriesCookedInPolyunsaturatedOil
     /// </summary>
     public const string LiteralFrenchFriesCookedInPolyunsaturatedOil = "227289002";
+
+    /// <summary>
+    /// Literal for code: NONEFrenchFriesCookedInPolyunsaturatedOil
+    /// </summary>
+    public const string LiteralNONEFrenchFriesCookedInPolyunsaturatedOil = "http://snomed.info/sct#227289002";
 
     /// <summary>
     /// Literal for code: MicrowaveFrenchFries
@@ -12608,9 +16198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMicrowaveFrenchFries = "227290006";
 
     /// <summary>
+    /// Literal for code: NONEMicrowaveFrenchFries
+    /// </summary>
+    public const string LiteralNONEMicrowaveFrenchFries = "http://snomed.info/sct#227290006";
+
+    /// <summary>
     /// Literal for code: OvenFrenchFries
     /// </summary>
     public const string LiteralOvenFrenchFries = "227291005";
+
+    /// <summary>
+    /// Literal for code: NONEOvenFrenchFries
+    /// </summary>
+    public const string LiteralNONEOvenFrenchFries = "http://snomed.info/sct#227291005";
 
     /// <summary>
     /// Literal for code: JacketPotato
@@ -12618,9 +16218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralJacketPotato = "227292003";
 
     /// <summary>
+    /// Literal for code: NONEJacketPotato
+    /// </summary>
+    public const string LiteralNONEJacketPotato = "http://snomed.info/sct#227292003";
+
+    /// <summary>
     /// Literal for code: MashedPotato
     /// </summary>
     public const string LiteralMashedPotato = "227294002";
+
+    /// <summary>
+    /// Literal for code: NONEMashedPotato
+    /// </summary>
+    public const string LiteralNONEMashedPotato = "http://snomed.info/sct#227294002";
 
     /// <summary>
     /// Literal for code: PotatoMashedWithButter
@@ -12628,9 +16238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPotatoMashedWithButter = "227295001";
 
     /// <summary>
+    /// Literal for code: NONEPotatoMashedWithButter
+    /// </summary>
+    public const string LiteralNONEPotatoMashedWithButter = "http://snomed.info/sct#227295001";
+
+    /// <summary>
     /// Literal for code: PotatoMashedWithMargarine
     /// </summary>
     public const string LiteralPotatoMashedWithMargarine = "227296000";
+
+    /// <summary>
+    /// Literal for code: NONEPotatoMashedWithMargarine
+    /// </summary>
+    public const string LiteralNONEPotatoMashedWithMargarine = "http://snomed.info/sct#227296000";
 
     /// <summary>
     /// Literal for code: PotatoMashedWithMilk
@@ -12638,9 +16258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPotatoMashedWithMilk = "227297009";
 
     /// <summary>
+    /// Literal for code: NONEPotatoMashedWithMilk
+    /// </summary>
+    public const string LiteralNONEPotatoMashedWithMilk = "http://snomed.info/sct#227297009";
+
+    /// <summary>
     /// Literal for code: PotatoMashedWithPolyunsaturatedMargarine
     /// </summary>
     public const string LiteralPotatoMashedWithPolyunsaturatedMargarine = "227298004";
+
+    /// <summary>
+    /// Literal for code: NONEPotatoMashedWithPolyunsaturatedMargarine
+    /// </summary>
+    public const string LiteralNONEPotatoMashedWithPolyunsaturatedMargarine = "http://snomed.info/sct#227298004";
 
     /// <summary>
     /// Literal for code: RoastPotato
@@ -12648,9 +16278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRoastPotato = "227299007";
 
     /// <summary>
+    /// Literal for code: NONERoastPotato
+    /// </summary>
+    public const string LiteralNONERoastPotato = "http://snomed.info/sct#227299007";
+
+    /// <summary>
     /// Literal for code: PotatoRoastedInVegetableOil
     /// </summary>
     public const string LiteralPotatoRoastedInVegetableOil = "227300004";
+
+    /// <summary>
+    /// Literal for code: NONEPotatoRoastedInVegetableOil
+    /// </summary>
+    public const string LiteralNONEPotatoRoastedInVegetableOil = "http://snomed.info/sct#227300004";
 
     /// <summary>
     /// Literal for code: PotatoRoastedInPolyunsaturatedOil
@@ -12658,9 +16298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPotatoRoastedInPolyunsaturatedOil = "227301000";
 
     /// <summary>
+    /// Literal for code: NONEPotatoRoastedInPolyunsaturatedOil
+    /// </summary>
+    public const string LiteralNONEPotatoRoastedInPolyunsaturatedOil = "http://snomed.info/sct#227301000";
+
+    /// <summary>
     /// Literal for code: PotatoRoastedInDripping
     /// </summary>
     public const string LiteralPotatoRoastedInDripping = "227302007";
+
+    /// <summary>
+    /// Literal for code: NONEPotatoRoastedInDripping
+    /// </summary>
+    public const string LiteralNONEPotatoRoastedInDripping = "http://snomed.info/sct#227302007";
 
     /// <summary>
     /// Literal for code: TinnedPotato
@@ -12668,9 +16318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedPotato = "227303002";
 
     /// <summary>
+    /// Literal for code: NONETinnedPotato
+    /// </summary>
+    public const string LiteralNONETinnedPotato = "http://snomed.info/sct#227303002";
+
+    /// <summary>
     /// Literal for code: PotatoTinnedInSaltedWater
     /// </summary>
     public const string LiteralPotatoTinnedInSaltedWater = "227304008";
+
+    /// <summary>
+    /// Literal for code: NONEPotatoTinnedInSaltedWater
+    /// </summary>
+    public const string LiteralNONEPotatoTinnedInSaltedWater = "http://snomed.info/sct#227304008";
 
     /// <summary>
     /// Literal for code: PotatoTinnedInUnsaltedWater
@@ -12678,9 +16338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPotatoTinnedInUnsaltedWater = "227305009";
 
     /// <summary>
+    /// Literal for code: NONEPotatoTinnedInUnsaltedWater
+    /// </summary>
+    public const string LiteralNONEPotatoTinnedInUnsaltedWater = "http://snomed.info/sct#227305009";
+
+    /// <summary>
     /// Literal for code: InstantPotato
     /// </summary>
     public const string LiteralInstantPotato = "227306005";
+
+    /// <summary>
+    /// Literal for code: NONEInstantPotato
+    /// </summary>
+    public const string LiteralNONEInstantPotato = "http://snomed.info/sct#227306005";
 
     /// <summary>
     /// Literal for code: InstantPotatoMadeUpWithWater
@@ -12688,9 +16358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInstantPotatoMadeUpWithWater = "227307001";
 
     /// <summary>
+    /// Literal for code: NONEInstantPotatoMadeUpWithWater
+    /// </summary>
+    public const string LiteralNONEInstantPotatoMadeUpWithWater = "http://snomed.info/sct#227307001";
+
+    /// <summary>
     /// Literal for code: InstantPotatoMadeUpWithSemiSkimmedMilk
     /// </summary>
     public const string LiteralInstantPotatoMadeUpWithSemiSkimmedMilk = "227308006";
+
+    /// <summary>
+    /// Literal for code: NONEInstantPotatoMadeUpWithSemiSkimmedMilk
+    /// </summary>
+    public const string LiteralNONEInstantPotatoMadeUpWithSemiSkimmedMilk = "http://snomed.info/sct#227308006";
 
     /// <summary>
     /// Literal for code: InstantPotatoMadeUpWithSkimmedMilk
@@ -12698,9 +16378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInstantPotatoMadeUpWithSkimmedMilk = "227309003";
 
     /// <summary>
+    /// Literal for code: NONEInstantPotatoMadeUpWithSkimmedMilk
+    /// </summary>
+    public const string LiteralNONEInstantPotatoMadeUpWithSkimmedMilk = "http://snomed.info/sct#227309003";
+
+    /// <summary>
     /// Literal for code: InstantPotatoMadeUpWithWholeMilk
     /// </summary>
     public const string LiteralInstantPotatoMadeUpWithWholeMilk = "227310008";
+
+    /// <summary>
+    /// Literal for code: NONEInstantPotatoMadeUpWithWholeMilk
+    /// </summary>
+    public const string LiteralNONEInstantPotatoMadeUpWithWholeMilk = "http://snomed.info/sct#227310008";
 
     /// <summary>
     /// Literal for code: PotatoCroquetteFriedInBlendedOil
@@ -12708,9 +16398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPotatoCroquetteFriedInBlendedOil = "227311007";
 
     /// <summary>
+    /// Literal for code: NONEPotatoCroquetteFriedInBlendedOil
+    /// </summary>
+    public const string LiteralNONEPotatoCroquetteFriedInBlendedOil = "http://snomed.info/sct#227311007";
+
+    /// <summary>
     /// Literal for code: PotatoWaffle
     /// </summary>
     public const string LiteralPotatoWaffle = "227312000";
+
+    /// <summary>
+    /// Literal for code: NONEPotatoWaffle
+    /// </summary>
+    public const string LiteralNONEPotatoWaffle = "http://snomed.info/sct#227312000";
 
     /// <summary>
     /// Literal for code: PulseVegetables
@@ -12718,9 +16418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPulseVegetables = "227313005";
 
     /// <summary>
+    /// Literal for code: NONEPulseVegetables
+    /// </summary>
+    public const string LiteralNONEPulseVegetables = "http://snomed.info/sct#227313005";
+
+    /// <summary>
     /// Literal for code: CannedBeans
     /// </summary>
     public const string LiteralCannedBeans = "227314004";
+
+    /// <summary>
+    /// Literal for code: NONECannedBeans
+    /// </summary>
+    public const string LiteralNONECannedBeans = "http://snomed.info/sct#227314004";
 
     /// <summary>
     /// Literal for code: BakedBeans
@@ -12728,9 +16438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBakedBeans = "227315003";
 
     /// <summary>
+    /// Literal for code: NONEBakedBeans
+    /// </summary>
+    public const string LiteralNONEBakedBeans = "http://snomed.info/sct#227315003";
+
+    /// <summary>
     /// Literal for code: BakedBeansCannedInTomatoSauce
     /// </summary>
     public const string LiteralBakedBeansCannedInTomatoSauce = "227316002";
+
+    /// <summary>
+    /// Literal for code: NONEBakedBeansCannedInTomatoSauce
+    /// </summary>
+    public const string LiteralNONEBakedBeansCannedInTomatoSauce = "http://snomed.info/sct#227316002";
 
     /// <summary>
     /// Literal for code: BakedBeansCannedInTomatoSauceReducedSugar
@@ -12738,9 +16458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBakedBeansCannedInTomatoSauceReducedSugar = "227317006";
 
     /// <summary>
+    /// Literal for code: NONEBakedBeansCannedInTomatoSauceReducedSugar
+    /// </summary>
+    public const string LiteralNONEBakedBeansCannedInTomatoSauceReducedSugar = "http://snomed.info/sct#227317006";
+
+    /// <summary>
     /// Literal for code: BakedBeansCannedInTomatoSauceReducedSalt
     /// </summary>
     public const string LiteralBakedBeansCannedInTomatoSauceReducedSalt = "227318001";
+
+    /// <summary>
+    /// Literal for code: NONEBakedBeansCannedInTomatoSauceReducedSalt
+    /// </summary>
+    public const string LiteralNONEBakedBeansCannedInTomatoSauceReducedSalt = "http://snomed.info/sct#227318001";
 
     /// <summary>
     /// Literal for code: BakedBeansCannedInTomatoSauceWithBurgers
@@ -12748,9 +16478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBakedBeansCannedInTomatoSauceWithBurgers = "227319009";
 
     /// <summary>
+    /// Literal for code: NONEBakedBeansCannedInTomatoSauceWithBurgers
+    /// </summary>
+    public const string LiteralNONEBakedBeansCannedInTomatoSauceWithBurgers = "http://snomed.info/sct#227319009";
+
+    /// <summary>
     /// Literal for code: BakedBeansCannedInTomatoSauceWithPorkSausages
     /// </summary>
     public const string LiteralBakedBeansCannedInTomatoSauceWithPorkSausages = "227320003";
+
+    /// <summary>
+    /// Literal for code: NONEBakedBeansCannedInTomatoSauceWithPorkSausages
+    /// </summary>
+    public const string LiteralNONEBakedBeansCannedInTomatoSauceWithPorkSausages = "http://snomed.info/sct#227320003";
 
     /// <summary>
     /// Literal for code: BalorBeansCanned
@@ -12758,9 +16498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBalorBeansCanned = "227321004";
 
     /// <summary>
+    /// Literal for code: NONEBalorBeansCanned
+    /// </summary>
+    public const string LiteralNONEBalorBeansCanned = "http://snomed.info/sct#227321004";
+
+    /// <summary>
     /// Literal for code: BarbecueBeansCannedInSauce
     /// </summary>
     public const string LiteralBarbecueBeansCannedInSauce = "227322006";
+
+    /// <summary>
+    /// Literal for code: NONEBarbecueBeansCannedInSauce
+    /// </summary>
+    public const string LiteralNONEBarbecueBeansCannedInSauce = "http://snomed.info/sct#227322006";
 
     /// <summary>
     /// Literal for code: CannedMungBeansprouts
@@ -12768,9 +16518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCannedMungBeansprouts = "227323001";
 
     /// <summary>
+    /// Literal for code: NONECannedMungBeansprouts
+    /// </summary>
+    public const string LiteralNONECannedMungBeansprouts = "http://snomed.info/sct#227323001";
+
+    /// <summary>
     /// Literal for code: CannedBroadBeans
     /// </summary>
     public const string LiteralCannedBroadBeans = "227324007";
+
+    /// <summary>
+    /// Literal for code: NONECannedBroadBeans
+    /// </summary>
+    public const string LiteralNONECannedBroadBeans = "http://snomed.info/sct#227324007";
 
     /// <summary>
     /// Literal for code: CannedButterBeans
@@ -12778,9 +16538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCannedButterBeans = "227325008";
 
     /// <summary>
+    /// Literal for code: NONECannedButterBeans
+    /// </summary>
+    public const string LiteralNONECannedButterBeans = "http://snomed.info/sct#227325008";
+
+    /// <summary>
     /// Literal for code: CannedChickPeas
     /// </summary>
     public const string LiteralCannedChickPeas = "227326009";
+
+    /// <summary>
+    /// Literal for code: NONECannedChickPeas
+    /// </summary>
+    public const string LiteralNONECannedChickPeas = "http://snomed.info/sct#227326009";
 
     /// <summary>
     /// Literal for code: CannedChiliBeans
@@ -12788,9 +16558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCannedChiliBeans = "227327000";
 
     /// <summary>
+    /// Literal for code: NONECannedChiliBeans
+    /// </summary>
+    public const string LiteralNONECannedChiliBeans = "http://snomed.info/sct#227327000";
+
+    /// <summary>
     /// Literal for code: CannedHaricotBeans
     /// </summary>
     public const string LiteralCannedHaricotBeans = "227328005";
+
+    /// <summary>
+    /// Literal for code: NONECannedHaricotBeans
+    /// </summary>
+    public const string LiteralNONECannedHaricotBeans = "http://snomed.info/sct#227328005";
 
     /// <summary>
     /// Literal for code: CannedLilvaBeans
@@ -12798,9 +16578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCannedLilvaBeans = "227329002";
 
     /// <summary>
+    /// Literal for code: NONECannedLilvaBeans
+    /// </summary>
+    public const string LiteralNONECannedLilvaBeans = "http://snomed.info/sct#227329002";
+
+    /// <summary>
     /// Literal for code: CannedLentilsInTomatoSauce
     /// </summary>
     public const string LiteralCannedLentilsInTomatoSauce = "227330007";
+
+    /// <summary>
+    /// Literal for code: NONECannedLentilsInTomatoSauce
+    /// </summary>
+    public const string LiteralNONECannedLentilsInTomatoSauce = "http://snomed.info/sct#227330007";
 
     /// <summary>
     /// Literal for code: CannedPapriBeans
@@ -12808,9 +16598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCannedPapriBeans = "227331006";
 
     /// <summary>
+    /// Literal for code: NONECannedPapriBeans
+    /// </summary>
+    public const string LiteralNONECannedPapriBeans = "http://snomed.info/sct#227331006";
+
+    /// <summary>
     /// Literal for code: CannedPeas
     /// </summary>
     public const string LiteralCannedPeas = "227332004";
+
+    /// <summary>
+    /// Literal for code: NONECannedPeas
+    /// </summary>
+    public const string LiteralNONECannedPeas = "http://snomed.info/sct#227332004";
 
     /// <summary>
     /// Literal for code: CannedGardenPeas
@@ -12818,9 +16618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCannedGardenPeas = "227333009";
 
     /// <summary>
+    /// Literal for code: NONECannedGardenPeas
+    /// </summary>
+    public const string LiteralNONECannedGardenPeas = "http://snomed.info/sct#227333009";
+
+    /// <summary>
     /// Literal for code: CannedMarrowfatPeas
     /// </summary>
     public const string LiteralCannedMarrowfatPeas = "227334003";
+
+    /// <summary>
+    /// Literal for code: NONECannedMarrowfatPeas
+    /// </summary>
+    public const string LiteralNONECannedMarrowfatPeas = "http://snomed.info/sct#227334003";
 
     /// <summary>
     /// Literal for code: CannedMushyPeas
@@ -12828,9 +16638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCannedMushyPeas = "227335002";
 
     /// <summary>
+    /// Literal for code: NONECannedMushyPeas
+    /// </summary>
+    public const string LiteralNONECannedMushyPeas = "http://snomed.info/sct#227335002";
+
+    /// <summary>
     /// Literal for code: CannedPeasePudding
     /// </summary>
     public const string LiteralCannedPeasePudding = "227336001";
+
+    /// <summary>
+    /// Literal for code: NONECannedPeasePudding
+    /// </summary>
+    public const string LiteralNONECannedPeasePudding = "http://snomed.info/sct#227336001";
 
     /// <summary>
     /// Literal for code: CannedRedKidneyBeans
@@ -12838,9 +16658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCannedRedKidneyBeans = "227337005";
 
     /// <summary>
+    /// Literal for code: NONECannedRedKidneyBeans
+    /// </summary>
+    public const string LiteralNONECannedRedKidneyBeans = "http://snomed.info/sct#227337005";
+
+    /// <summary>
     /// Literal for code: AdukiBeans
     /// </summary>
     public const string LiteralAdukiBeans = "227338000";
+
+    /// <summary>
+    /// Literal for code: NONEAdukiBeans
+    /// </summary>
+    public const string LiteralNONEAdukiBeans = "http://snomed.info/sct#227338000";
 
     /// <summary>
     /// Literal for code: Beansprouts
@@ -12848,9 +16678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBeansprouts = "227339008";
 
     /// <summary>
+    /// Literal for code: NONEBeansprouts
+    /// </summary>
+    public const string LiteralNONEBeansprouts = "http://snomed.info/sct#227339008";
+
+    /// <summary>
     /// Literal for code: RawMungBeansprouts
     /// </summary>
     public const string LiteralRawMungBeansprouts = "227340005";
+
+    /// <summary>
+    /// Literal for code: NONERawMungBeansprouts
+    /// </summary>
+    public const string LiteralNONERawMungBeansprouts = "http://snomed.info/sct#227340005";
 
     /// <summary>
     /// Literal for code: StirFriedMungBeansprouts
@@ -12858,9 +16698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStirFriedMungBeansprouts = "227341009";
 
     /// <summary>
+    /// Literal for code: NONEStirFriedMungBeansprouts
+    /// </summary>
+    public const string LiteralNONEStirFriedMungBeansprouts = "http://snomed.info/sct#227341009";
+
+    /// <summary>
     /// Literal for code: BlackGramBeans
     /// </summary>
     public const string LiteralBlackGramBeans = "227342002";
+
+    /// <summary>
+    /// Literal for code: NONEBlackGramBeans
+    /// </summary>
+    public const string LiteralNONEBlackGramBeans = "http://snomed.info/sct#227342002";
 
     /// <summary>
     /// Literal for code: BlackeyeBeans
@@ -12868,9 +16718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBlackeyeBeans = "227343007";
 
     /// <summary>
+    /// Literal for code: NONEBlackeyeBeans
+    /// </summary>
+    public const string LiteralNONEBlackeyeBeans = "http://snomed.info/sct#227343007";
+
+    /// <summary>
     /// Literal for code: ButterBeans
     /// </summary>
     public const string LiteralButterBeans = "227345000";
+
+    /// <summary>
+    /// Literal for code: NONEButterBeans
+    /// </summary>
+    public const string LiteralNONEButterBeans = "http://snomed.info/sct#227345000";
 
     /// <summary>
     /// Literal for code: ChickPeas
@@ -12878,9 +16738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChickPeas = "227346004";
 
     /// <summary>
+    /// Literal for code: NONEChickPeas
+    /// </summary>
+    public const string LiteralNONEChickPeas = "http://snomed.info/sct#227346004";
+
+    /// <summary>
     /// Literal for code: ClusterBeans
     /// </summary>
     public const string LiteralClusterBeans = "227347008";
+
+    /// <summary>
+    /// Literal for code: NONEClusterBeans
+    /// </summary>
+    public const string LiteralNONEClusterBeans = "http://snomed.info/sct#227347008";
 
     /// <summary>
     /// Literal for code: HaricotBeans
@@ -12888,9 +16758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHaricotBeans = "227348003";
 
     /// <summary>
+    /// Literal for code: NONEHaricotBeans
+    /// </summary>
+    public const string LiteralNONEHaricotBeans = "http://snomed.info/sct#227348003";
+
+    /// <summary>
     /// Literal for code: Hummus
     /// </summary>
     public const string LiteralHummus = "227349006";
+
+    /// <summary>
+    /// Literal for code: NONEHummus
+    /// </summary>
+    public const string LiteralNONEHummus = "http://snomed.info/sct#227349006";
 
     /// <summary>
     /// Literal for code: Lentils
@@ -12898,9 +16778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLentils = "227350006";
 
     /// <summary>
+    /// Literal for code: NONELentils
+    /// </summary>
+    public const string LiteralNONELentils = "http://snomed.info/sct#227350006";
+
+    /// <summary>
     /// Literal for code: GreenLentils
     /// </summary>
     public const string LiteralGreenLentils = "227351005";
+
+    /// <summary>
+    /// Literal for code: NONEGreenLentils
+    /// </summary>
+    public const string LiteralNONEGreenLentils = "http://snomed.info/sct#227351005";
 
     /// <summary>
     /// Literal for code: BrownLentils
@@ -12908,9 +16798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBrownLentils = "227352003";
 
     /// <summary>
+    /// Literal for code: NONEBrownLentils
+    /// </summary>
+    public const string LiteralNONEBrownLentils = "http://snomed.info/sct#227352003";
+
+    /// <summary>
     /// Literal for code: RedSplitLentils
     /// </summary>
     public const string LiteralRedSplitLentils = "227353008";
+
+    /// <summary>
+    /// Literal for code: NONERedSplitLentils
+    /// </summary>
+    public const string LiteralNONERedSplitLentils = "http://snomed.info/sct#227353008";
 
     /// <summary>
     /// Literal for code: Miso
@@ -12918,9 +16818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMiso = "227354002";
 
     /// <summary>
+    /// Literal for code: NONEMiso
+    /// </summary>
+    public const string LiteralNONEMiso = "http://snomed.info/sct#227354002";
+
+    /// <summary>
     /// Literal for code: MungBeans
     /// </summary>
     public const string LiteralMungBeans = "227355001";
+
+    /// <summary>
+    /// Literal for code: NONEMungBeans
+    /// </summary>
+    public const string LiteralNONEMungBeans = "http://snomed.info/sct#227355001";
 
     /// <summary>
     /// Literal for code: MungBeanDahl
@@ -12928,9 +16838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMungBeanDahl = "227356000";
 
     /// <summary>
+    /// Literal for code: NONEMungBeanDahl
+    /// </summary>
+    public const string LiteralNONEMungBeanDahl = "http://snomed.info/sct#227356000";
+
+    /// <summary>
     /// Literal for code: PapriBeans
     /// </summary>
     public const string LiteralPapriBeans = "227357009";
+
+    /// <summary>
+    /// Literal for code: NONEPapriBeans
+    /// </summary>
+    public const string LiteralNONEPapriBeans = "http://snomed.info/sct#227357009";
 
     /// <summary>
     /// Literal for code: PigeonPeas
@@ -12938,9 +16858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPigeonPeas = "227358004";
 
     /// <summary>
+    /// Literal for code: NONEPigeonPeas
+    /// </summary>
+    public const string LiteralNONEPigeonPeas = "http://snomed.info/sct#227358004";
+
+    /// <summary>
     /// Literal for code: PigeonPeaDahl
     /// </summary>
     public const string LiteralPigeonPeaDahl = "227359007";
+
+    /// <summary>
+    /// Literal for code: NONEPigeonPeaDahl
+    /// </summary>
+    public const string LiteralNONEPigeonPeaDahl = "http://snomed.info/sct#227359007";
 
     /// <summary>
     /// Literal for code: PintoBeans
@@ -12948,9 +16878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPintoBeans = "227360002";
 
     /// <summary>
+    /// Literal for code: NONEPintoBeans
+    /// </summary>
+    public const string LiteralNONEPintoBeans = "http://snomed.info/sct#227360002";
+
+    /// <summary>
     /// Literal for code: RefriedPintoBeans
     /// </summary>
     public const string LiteralRefriedPintoBeans = "227361003";
+
+    /// <summary>
+    /// Literal for code: NONERefriedPintoBeans
+    /// </summary>
+    public const string LiteralNONERefriedPintoBeans = "http://snomed.info/sct#227361003";
 
     /// <summary>
     /// Literal for code: RedKidneyBeans
@@ -12958,9 +16898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRedKidneyBeans = "227362005";
 
     /// <summary>
+    /// Literal for code: NONERedKidneyBeans
+    /// </summary>
+    public const string LiteralNONERedKidneyBeans = "http://snomed.info/sct#227362005";
+
+    /// <summary>
     /// Literal for code: SwordBeans
     /// </summary>
     public const string LiteralSwordBeans = "227363000";
+
+    /// <summary>
+    /// Literal for code: NONESwordBeans
+    /// </summary>
+    public const string LiteralNONESwordBeans = "http://snomed.info/sct#227363000";
 
     /// <summary>
     /// Literal for code: Tempeh
@@ -12968,9 +16918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTempeh = "227364006";
 
     /// <summary>
+    /// Literal for code: NONETempeh
+    /// </summary>
+    public const string LiteralNONETempeh = "http://snomed.info/sct#227364006";
+
+    /// <summary>
     /// Literal for code: Tofu
     /// </summary>
     public const string LiteralTofu = "227365007";
+
+    /// <summary>
+    /// Literal for code: NONETofu
+    /// </summary>
+    public const string LiteralNONETofu = "http://snomed.info/sct#227365007";
 
     /// <summary>
     /// Literal for code: SteamedTofu
@@ -12978,9 +16938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSteamedTofu = "227366008";
 
     /// <summary>
+    /// Literal for code: NONESteamedTofu
+    /// </summary>
+    public const string LiteralNONESteamedTofu = "http://snomed.info/sct#227366008";
+
+    /// <summary>
     /// Literal for code: SteamedFriedTofu
     /// </summary>
     public const string LiteralSteamedFriedTofu = "227367004";
+
+    /// <summary>
+    /// Literal for code: NONESteamedFriedTofu
+    /// </summary>
+    public const string LiteralNONESteamedFriedTofu = "http://snomed.info/sct#227367004";
 
     /// <summary>
     /// Literal for code: FuJukTofu
@@ -12988,9 +16958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFuJukTofu = "227368009";
 
     /// <summary>
+    /// Literal for code: NONEFuJukTofu
+    /// </summary>
+    public const string LiteralNONEFuJukTofu = "http://snomed.info/sct#227368009";
+
+    /// <summary>
     /// Literal for code: FreshPeas
     /// </summary>
     public const string LiteralFreshPeas = "227369001";
+
+    /// <summary>
+    /// Literal for code: NONEFreshPeas
+    /// </summary>
+    public const string LiteralNONEFreshPeas = "http://snomed.info/sct#227369001";
 
     /// <summary>
     /// Literal for code: FreshRawPeas
@@ -12998,9 +16978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFreshRawPeas = "227370000";
 
     /// <summary>
+    /// Literal for code: NONEFreshRawPeas
+    /// </summary>
+    public const string LiteralNONEFreshRawPeas = "http://snomed.info/sct#227370000";
+
+    /// <summary>
     /// Literal for code: FreshBoiledPeas
     /// </summary>
     public const string LiteralFreshBoiledPeas = "227371001";
+
+    /// <summary>
+    /// Literal for code: NONEFreshBoiledPeas
+    /// </summary>
+    public const string LiteralNONEFreshBoiledPeas = "http://snomed.info/sct#227371001";
 
     /// <summary>
     /// Literal for code: DriedBoiledPeas
@@ -13008,9 +16998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDriedBoiledPeas = "227372008";
 
     /// <summary>
+    /// Literal for code: NONEDriedBoiledPeas
+    /// </summary>
+    public const string LiteralNONEDriedBoiledPeas = "http://snomed.info/sct#227372008";
+
+    /// <summary>
     /// Literal for code: DriedBoiledSplitPeas
     /// </summary>
     public const string LiteralDriedBoiledSplitPeas = "227373003";
+
+    /// <summary>
+    /// Literal for code: NONEDriedBoiledSplitPeas
+    /// </summary>
+    public const string LiteralNONEDriedBoiledSplitPeas = "http://snomed.info/sct#227373003";
 
     /// <summary>
     /// Literal for code: HerbsAndSpices
@@ -13018,9 +17018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHerbsAndSpices = "227374009";
 
     /// <summary>
+    /// Literal for code: NONEHerbsAndSpices
+    /// </summary>
+    public const string LiteralNONEHerbsAndSpices = "http://snomed.info/sct#227374009";
+
+    /// <summary>
     /// Literal for code: Allspice
     /// </summary>
     public const string LiteralAllspice = "227375005";
+
+    /// <summary>
+    /// Literal for code: NONEAllspice
+    /// </summary>
+    public const string LiteralNONEAllspice = "http://snomed.info/sct#227375005";
 
     /// <summary>
     /// Literal for code: AniseSeed
@@ -13028,9 +17038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAniseSeed = "227376006";
 
     /// <summary>
+    /// Literal for code: NONEAniseSeed
+    /// </summary>
+    public const string LiteralNONEAniseSeed = "http://snomed.info/sct#227376006";
+
+    /// <summary>
     /// Literal for code: AsafetidaSubstance
     /// </summary>
     public const string LiteralAsafetidaSubstance = "227377002";
+
+    /// <summary>
+    /// Literal for code: NONEAsafetidaSubstance
+    /// </summary>
+    public const string LiteralNONEAsafetidaSubstance = "http://snomed.info/sct#227377002";
 
     /// <summary>
     /// Literal for code: BayLeaf
@@ -13038,9 +17058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBayLeaf = "227379004";
 
     /// <summary>
+    /// Literal for code: NONEBayLeaf
+    /// </summary>
+    public const string LiteralNONEBayLeaf = "http://snomed.info/sct#227379004";
+
+    /// <summary>
     /// Literal for code: BetelLeaf
     /// </summary>
     public const string LiteralBetelLeaf = "227380001";
+
+    /// <summary>
+    /// Literal for code: NONEBetelLeaf
+    /// </summary>
+    public const string LiteralNONEBetelLeaf = "http://snomed.info/sct#227380001";
 
     /// <summary>
     /// Literal for code: CarawaySeed
@@ -13048,9 +17078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCarawaySeed = "227381002";
 
     /// <summary>
+    /// Literal for code: NONECarawaySeed
+    /// </summary>
+    public const string LiteralNONECarawaySeed = "http://snomed.info/sct#227381002";
+
+    /// <summary>
     /// Literal for code: Cardamom
     /// </summary>
     public const string LiteralCardamom = "227382009";
+
+    /// <summary>
+    /// Literal for code: NONECardamom
+    /// </summary>
+    public const string LiteralNONECardamom = "http://snomed.info/sct#227382009";
 
     /// <summary>
     /// Literal for code: CelerySeed
@@ -13058,9 +17098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCelerySeed = "227383004";
 
     /// <summary>
+    /// Literal for code: NONECelerySeed
+    /// </summary>
+    public const string LiteralNONECelerySeed = "http://snomed.info/sct#227383004";
+
+    /// <summary>
     /// Literal for code: ChervilDried
     /// </summary>
     public const string LiteralChervilDried = "227384005";
+
+    /// <summary>
+    /// Literal for code: NONEChervilDried
+    /// </summary>
+    public const string LiteralNONEChervilDried = "http://snomed.info/sct#227384005";
 
     /// <summary>
     /// Literal for code: ChiliPowderSubstance
@@ -13068,9 +17118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChiliPowderSubstance = "227385006";
 
     /// <summary>
+    /// Literal for code: NONEChiliPowderSubstance
+    /// </summary>
+    public const string LiteralNONEChiliPowderSubstance = "http://snomed.info/sct#227385006";
+
+    /// <summary>
     /// Literal for code: ChineseFiveSpice
     /// </summary>
     public const string LiteralChineseFiveSpice = "227386007";
+
+    /// <summary>
+    /// Literal for code: NONEChineseFiveSpice
+    /// </summary>
+    public const string LiteralNONEChineseFiveSpice = "http://snomed.info/sct#227386007";
 
     /// <summary>
     /// Literal for code: ChiveHerb
@@ -13078,9 +17138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChiveHerb = "227387003";
 
     /// <summary>
+    /// Literal for code: NONEChiveHerb
+    /// </summary>
+    public const string LiteralNONEChiveHerb = "http://snomed.info/sct#227387003";
+
+    /// <summary>
     /// Literal for code: Cinnamon
     /// </summary>
     public const string LiteralCinnamon = "227388008";
+
+    /// <summary>
+    /// Literal for code: NONECinnamon
+    /// </summary>
+    public const string LiteralNONECinnamon = "http://snomed.info/sct#227388008";
 
     /// <summary>
     /// Literal for code: Clove
@@ -13088,9 +17158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClove = "227389000";
 
     /// <summary>
+    /// Literal for code: NONEClove
+    /// </summary>
+    public const string LiteralNONEClove = "http://snomed.info/sct#227389000";
+
+    /// <summary>
     /// Literal for code: CorianderLeaf
     /// </summary>
     public const string LiteralCorianderLeaf = "227390009";
+
+    /// <summary>
+    /// Literal for code: NONECorianderLeaf
+    /// </summary>
+    public const string LiteralNONECorianderLeaf = "http://snomed.info/sct#227390009";
 
     /// <summary>
     /// Literal for code: CorianderSeed
@@ -13098,9 +17178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCorianderSeed = "227391008";
 
     /// <summary>
+    /// Literal for code: NONECorianderSeed
+    /// </summary>
+    public const string LiteralNONECorianderSeed = "http://snomed.info/sct#227391008";
+
+    /// <summary>
     /// Literal for code: CuminSeed
     /// </summary>
     public const string LiteralCuminSeed = "227392001";
+
+    /// <summary>
+    /// Literal for code: NONECuminSeed
+    /// </summary>
+    public const string LiteralNONECuminSeed = "http://snomed.info/sct#227392001";
 
     /// <summary>
     /// Literal for code: CurryLeaf
@@ -13108,9 +17198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCurryLeaf = "227393006";
 
     /// <summary>
+    /// Literal for code: NONECurryLeaf
+    /// </summary>
+    public const string LiteralNONECurryLeaf = "http://snomed.info/sct#227393006";
+
+    /// <summary>
     /// Literal for code: CurryPowder
     /// </summary>
     public const string LiteralCurryPowder = "227395004";
+
+    /// <summary>
+    /// Literal for code: NONECurryPowder
+    /// </summary>
+    public const string LiteralNONECurryPowder = "http://snomed.info/sct#227395004";
 
     /// <summary>
     /// Literal for code: Fennel
@@ -13118,9 +17218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFennel = "227396003";
 
     /// <summary>
+    /// Literal for code: NONEFennel
+    /// </summary>
+    public const string LiteralNONEFennel = "http://snomed.info/sct#227396003";
+
+    /// <summary>
     /// Literal for code: FennelSeed
     /// </summary>
     public const string LiteralFennelSeed = "227397007";
+
+    /// <summary>
+    /// Literal for code: NONEFennelSeed
+    /// </summary>
+    public const string LiteralNONEFennelSeed = "http://snomed.info/sct#227397007";
 
     /// <summary>
     /// Literal for code: FenugreekSeed
@@ -13128,9 +17238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFenugreekSeed = "227398002";
 
     /// <summary>
+    /// Literal for code: NONEFenugreekSeed
+    /// </summary>
+    public const string LiteralNONEFenugreekSeed = "http://snomed.info/sct#227398002";
+
+    /// <summary>
     /// Literal for code: GaramMasala
     /// </summary>
     public const string LiteralGaramMasala = "227399005";
+
+    /// <summary>
+    /// Literal for code: NONEGaramMasala
+    /// </summary>
+    public const string LiteralNONEGaramMasala = "http://snomed.info/sct#227399005";
 
     /// <summary>
     /// Literal for code: Ginger
@@ -13138,9 +17258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGinger = "227400003";
 
     /// <summary>
+    /// Literal for code: NONEGinger
+    /// </summary>
+    public const string LiteralNONEGinger = "http://snomed.info/sct#227400003";
+
+    /// <summary>
     /// Literal for code: GroundGinger
     /// </summary>
     public const string LiteralGroundGinger = "227401004";
+
+    /// <summary>
+    /// Literal for code: NONEGroundGinger
+    /// </summary>
+    public const string LiteralNONEGroundGinger = "http://snomed.info/sct#227401004";
 
     /// <summary>
     /// Literal for code: RootGinger
@@ -13148,9 +17278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRootGinger = "227402006";
 
     /// <summary>
+    /// Literal for code: NONERootGinger
+    /// </summary>
+    public const string LiteralNONERootGinger = "http://snomed.info/sct#227402006";
+
+    /// <summary>
     /// Literal for code: LiquoricePowder
     /// </summary>
     public const string LiteralLiquoricePowder = "227403001";
+
+    /// <summary>
+    /// Literal for code: NONELiquoricePowder
+    /// </summary>
+    public const string LiteralNONELiquoricePowder = "http://snomed.info/sct#227403001";
 
     /// <summary>
     /// Literal for code: Mace
@@ -13158,9 +17298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMace = "227404007";
 
     /// <summary>
+    /// Literal for code: NONEMace
+    /// </summary>
+    public const string LiteralNONEMace = "http://snomed.info/sct#227404007";
+
+    /// <summary>
     /// Literal for code: Marjoram
     /// </summary>
     public const string LiteralMarjoram = "227405008";
+
+    /// <summary>
+    /// Literal for code: NONEMarjoram
+    /// </summary>
+    public const string LiteralNONEMarjoram = "http://snomed.info/sct#227405008";
 
     /// <summary>
     /// Literal for code: MustardSeed
@@ -13168,9 +17318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMustardSeed = "227406009";
 
     /// <summary>
+    /// Literal for code: NONEMustardSeed
+    /// </summary>
+    public const string LiteralNONEMustardSeed = "http://snomed.info/sct#227406009";
+
+    /// <summary>
     /// Literal for code: Oregano
     /// </summary>
     public const string LiteralOregano = "227407000";
+
+    /// <summary>
+    /// Literal for code: NONEOregano
+    /// </summary>
+    public const string LiteralNONEOregano = "http://snomed.info/sct#227407000";
 
     /// <summary>
     /// Literal for code: Paprika
@@ -13178,9 +17338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPaprika = "227408005";
 
     /// <summary>
+    /// Literal for code: NONEPaprika
+    /// </summary>
+    public const string LiteralNONEPaprika = "http://snomed.info/sct#227408005";
+
+    /// <summary>
     /// Literal for code: PoppySeed
     /// </summary>
     public const string LiteralPoppySeed = "227409002";
+
+    /// <summary>
+    /// Literal for code: NONEPoppySeed
+    /// </summary>
+    public const string LiteralNONEPoppySeed = "http://snomed.info/sct#227409002";
 
     /// <summary>
     /// Literal for code: Rosemary
@@ -13188,9 +17358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRosemary = "227410007";
 
     /// <summary>
+    /// Literal for code: NONERosemary
+    /// </summary>
+    public const string LiteralNONERosemary = "http://snomed.info/sct#227410007";
+
+    /// <summary>
     /// Literal for code: Sage
     /// </summary>
     public const string LiteralSage = "227411006";
+
+    /// <summary>
+    /// Literal for code: NONESage
+    /// </summary>
+    public const string LiteralNONESage = "http://snomed.info/sct#227411006";
 
     /// <summary>
     /// Literal for code: Tarragon
@@ -13198,9 +17378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTarragon = "227412004";
 
     /// <summary>
+    /// Literal for code: NONETarragon
+    /// </summary>
+    public const string LiteralNONETarragon = "http://snomed.info/sct#227412004";
+
+    /// <summary>
     /// Literal for code: Thyme
     /// </summary>
     public const string LiteralThyme = "227413009";
+
+    /// <summary>
+    /// Literal for code: NONEThyme
+    /// </summary>
+    public const string LiteralNONEThyme = "http://snomed.info/sct#227413009";
 
     /// <summary>
     /// Literal for code: Turmeric
@@ -13208,9 +17398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTurmeric = "227414003";
 
     /// <summary>
+    /// Literal for code: NONETurmeric
+    /// </summary>
+    public const string LiteralNONETurmeric = "http://snomed.info/sct#227414003";
+
+    /// <summary>
     /// Literal for code: FruitNutsAndSeeds
     /// </summary>
     public const string LiteralFruitNutsAndSeeds = "227415002";
+
+    /// <summary>
+    /// Literal for code: NONEFruitNutsAndSeeds
+    /// </summary>
+    public const string LiteralNONEFruitNutsAndSeeds = "http://snomed.info/sct#227415002";
 
     /// <summary>
     /// Literal for code: FreshFruit
@@ -13218,9 +17418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFreshFruit = "227416001";
 
     /// <summary>
+    /// Literal for code: NONEFreshFruit
+    /// </summary>
+    public const string LiteralNONEFreshFruit = "http://snomed.info/sct#227416001";
+
+    /// <summary>
     /// Literal for code: Bilberry
     /// </summary>
     public const string LiteralBilberry = "227417005";
+
+    /// <summary>
+    /// Literal for code: NONEBilberry
+    /// </summary>
+    public const string LiteralNONEBilberry = "http://snomed.info/sct#227417005";
 
     /// <summary>
     /// Literal for code: Blackberries
@@ -13228,9 +17438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBlackberries = "227418000";
 
     /// <summary>
+    /// Literal for code: NONEBlackberries
+    /// </summary>
+    public const string LiteralNONEBlackberries = "http://snomed.info/sct#227418000";
+
+    /// <summary>
     /// Literal for code: Blackcurrant
     /// </summary>
     public const string LiteralBlackcurrant = "227419008";
+
+    /// <summary>
+    /// Literal for code: NONEBlackcurrant
+    /// </summary>
+    public const string LiteralNONEBlackcurrant = "http://snomed.info/sct#227419008";
 
     /// <summary>
     /// Literal for code: Clementine
@@ -13238,9 +17458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClementine = "227420002";
 
     /// <summary>
+    /// Literal for code: NONEClementine
+    /// </summary>
+    public const string LiteralNONEClementine = "http://snomed.info/sct#227420002";
+
+    /// <summary>
     /// Literal for code: Cranberries
     /// </summary>
     public const string LiteralCranberries = "227421003";
+
+    /// <summary>
+    /// Literal for code: NONECranberries
+    /// </summary>
+    public const string LiteralNONECranberries = "http://snomed.info/sct#227421003";
 
     /// <summary>
     /// Literal for code: Damson
@@ -13248,9 +17478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDamson = "227422005";
 
     /// <summary>
+    /// Literal for code: NONEDamson
+    /// </summary>
+    public const string LiteralNONEDamson = "http://snomed.info/sct#227422005";
+
+    /// <summary>
     /// Literal for code: DatesFood
     /// </summary>
     public const string LiteralDatesFood = "227423000";
+
+    /// <summary>
+    /// Literal for code: NONEDatesFood
+    /// </summary>
+    public const string LiteralNONEDatesFood = "http://snomed.info/sct#227423000";
 
     /// <summary>
     /// Literal for code: Elderberries
@@ -13258,9 +17498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralElderberries = "227424006";
 
     /// <summary>
+    /// Literal for code: NONEElderberries
+    /// </summary>
+    public const string LiteralNONEElderberries = "http://snomed.info/sct#227424006";
+
+    /// <summary>
     /// Literal for code: Figs
     /// </summary>
     public const string LiteralFigs = "227425007";
+
+    /// <summary>
+    /// Literal for code: NONEFigs
+    /// </summary>
+    public const string LiteralNONEFigs = "http://snomed.info/sct#227425007";
 
     /// <summary>
     /// Literal for code: FreshFruitSalad
@@ -13268,9 +17518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFreshFruitSalad = "227426008";
 
     /// <summary>
+    /// Literal for code: NONEFreshFruitSalad
+    /// </summary>
+    public const string LiteralNONEFreshFruitSalad = "http://snomed.info/sct#227426008";
+
+    /// <summary>
     /// Literal for code: Gooseberries
     /// </summary>
     public const string LiteralGooseberries = "227427004";
+
+    /// <summary>
+    /// Literal for code: NONEGooseberries
+    /// </summary>
+    public const string LiteralNONEGooseberries = "http://snomed.info/sct#227427004";
 
     /// <summary>
     /// Literal for code: Greengage
@@ -13278,9 +17538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGreengage = "227428009";
 
     /// <summary>
+    /// Literal for code: NONEGreengage
+    /// </summary>
+    public const string LiteralNONEGreengage = "http://snomed.info/sct#227428009";
+
+    /// <summary>
     /// Literal for code: Guava
     /// </summary>
     public const string LiteralGuava = "227429001";
+
+    /// <summary>
+    /// Literal for code: NONEGuava
+    /// </summary>
+    public const string LiteralNONEGuava = "http://snomed.info/sct#227429001";
 
     /// <summary>
     /// Literal for code: LimeFruit
@@ -13288,9 +17558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLimeFruit = "227430006";
 
     /// <summary>
+    /// Literal for code: NONELimeFruit
+    /// </summary>
+    public const string LiteralNONELimeFruit = "http://snomed.info/sct#227430006";
+
+    /// <summary>
     /// Literal for code: Kumquat
     /// </summary>
     public const string LiteralKumquat = "227431005";
+
+    /// <summary>
+    /// Literal for code: NONEKumquat
+    /// </summary>
+    public const string LiteralNONEKumquat = "http://snomed.info/sct#227431005";
 
     /// <summary>
     /// Literal for code: Loganberries
@@ -13298,9 +17578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLoganberries = "227432003";
 
     /// <summary>
+    /// Literal for code: NONELoganberries
+    /// </summary>
+    public const string LiteralNONELoganberries = "http://snomed.info/sct#227432003";
+
+    /// <summary>
     /// Literal for code: Lychee
     /// </summary>
     public const string LiteralLychee = "227433008";
+
+    /// <summary>
+    /// Literal for code: NONELychee
+    /// </summary>
+    public const string LiteralNONELychee = "http://snomed.info/sct#227433008";
 
     /// <summary>
     /// Literal for code: Mulberries
@@ -13308,9 +17598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMulberries = "227434002";
 
     /// <summary>
+    /// Literal for code: NONEMulberries
+    /// </summary>
+    public const string LiteralNONEMulberries = "http://snomed.info/sct#227434002";
+
+    /// <summary>
     /// Literal for code: Nectarine
     /// </summary>
     public const string LiteralNectarine = "227435001";
+
+    /// <summary>
+    /// Literal for code: NONENectarine
+    /// </summary>
+    public const string LiteralNONENectarine = "http://snomed.info/sct#227435001";
 
     /// <summary>
     /// Literal for code: Olives
@@ -13318,9 +17618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOlives = "227436000";
 
     /// <summary>
+    /// Literal for code: NONEOlives
+    /// </summary>
+    public const string LiteralNONEOlives = "http://snomed.info/sct#227436000";
+
+    /// <summary>
     /// Literal for code: Ortanique
     /// </summary>
     public const string LiteralOrtanique = "227437009";
+
+    /// <summary>
+    /// Literal for code: NONEOrtanique
+    /// </summary>
+    public const string LiteralNONEOrtanique = "http://snomed.info/sct#227437009";
 
     /// <summary>
     /// Literal for code: PassionFruit
@@ -13328,9 +17638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPassionFruit = "227438004";
 
     /// <summary>
+    /// Literal for code: NONEPassionFruit
+    /// </summary>
+    public const string LiteralNONEPassionFruit = "http://snomed.info/sct#227438004";
+
+    /// <summary>
     /// Literal for code: PawPaw
     /// </summary>
     public const string LiteralPawPaw = "227439007";
+
+    /// <summary>
+    /// Literal for code: NONEPawPaw
+    /// </summary>
+    public const string LiteralNONEPawPaw = "http://snomed.info/sct#227439007";
 
     /// <summary>
     /// Literal for code: Pomegranate
@@ -13338,9 +17658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPomegranate = "227441008";
 
     /// <summary>
+    /// Literal for code: NONEPomegranate
+    /// </summary>
+    public const string LiteralNONEPomegranate = "http://snomed.info/sct#227441008";
+
+    /// <summary>
     /// Literal for code: Pomelo
     /// </summary>
     public const string LiteralPomelo = "227442001";
+
+    /// <summary>
+    /// Literal for code: NONEPomelo
+    /// </summary>
+    public const string LiteralNONEPomelo = "http://snomed.info/sct#227442001";
 
     /// <summary>
     /// Literal for code: Quince
@@ -13348,9 +17678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralQuince = "227443006";
 
     /// <summary>
+    /// Literal for code: NONEQuince
+    /// </summary>
+    public const string LiteralNONEQuince = "http://snomed.info/sct#227443006";
+
+    /// <summary>
     /// Literal for code: Raspberries
     /// </summary>
     public const string LiteralRaspberries = "227444000";
+
+    /// <summary>
+    /// Literal for code: NONERaspberries
+    /// </summary>
+    public const string LiteralNONERaspberries = "http://snomed.info/sct#227444000";
 
     /// <summary>
     /// Literal for code: Redcurrant
@@ -13358,9 +17698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRedcurrant = "227445004";
 
     /// <summary>
+    /// Literal for code: NONERedcurrant
+    /// </summary>
+    public const string LiteralNONERedcurrant = "http://snomed.info/sct#227445004";
+
+    /// <summary>
     /// Literal for code: Satsuma
     /// </summary>
     public const string LiteralSatsuma = "227446003";
+
+    /// <summary>
+    /// Literal for code: NONESatsuma
+    /// </summary>
+    public const string LiteralNONESatsuma = "http://snomed.info/sct#227446003";
 
     /// <summary>
     /// Literal for code: SharonFruit
@@ -13368,9 +17718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSharonFruit = "227447007";
 
     /// <summary>
+    /// Literal for code: NONESharonFruit
+    /// </summary>
+    public const string LiteralNONESharonFruit = "http://snomed.info/sct#227447007";
+
+    /// <summary>
     /// Literal for code: WhiteCurrant
     /// </summary>
     public const string LiteralWhiteCurrant = "227448002";
+
+    /// <summary>
+    /// Literal for code: NONEWhiteCurrant
+    /// </summary>
+    public const string LiteralNONEWhiteCurrant = "http://snomed.info/sct#227448002";
 
     /// <summary>
     /// Literal for code: DriedFruit
@@ -13378,9 +17738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDriedFruit = "227449005";
 
     /// <summary>
+    /// Literal for code: NONEDriedFruit
+    /// </summary>
+    public const string LiteralNONEDriedFruit = "http://snomed.info/sct#227449005";
+
+    /// <summary>
     /// Literal for code: DriedBanana
     /// </summary>
     public const string LiteralDriedBanana = "227450005";
+
+    /// <summary>
+    /// Literal for code: NONEDriedBanana
+    /// </summary>
+    public const string LiteralNONEDriedBanana = "http://snomed.info/sct#227450005";
 
     /// <summary>
     /// Literal for code: DriedApple
@@ -13388,9 +17758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDriedApple = "227451009";
 
     /// <summary>
+    /// Literal for code: NONEDriedApple
+    /// </summary>
+    public const string LiteralNONEDriedApple = "http://snomed.info/sct#227451009";
+
+    /// <summary>
     /// Literal for code: DriedApricot
     /// </summary>
     public const string LiteralDriedApricot = "227452002";
+
+    /// <summary>
+    /// Literal for code: NONEDriedApricot
+    /// </summary>
+    public const string LiteralNONEDriedApricot = "http://snomed.info/sct#227452002";
 
     /// <summary>
     /// Literal for code: Currants
@@ -13398,9 +17778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCurrants = "227453007";
 
     /// <summary>
+    /// Literal for code: NONECurrants
+    /// </summary>
+    public const string LiteralNONECurrants = "http://snomed.info/sct#227453007";
+
+    /// <summary>
     /// Literal for code: DriedDate
     /// </summary>
     public const string LiteralDriedDate = "227454001";
+
+    /// <summary>
+    /// Literal for code: NONEDriedDate
+    /// </summary>
+    public const string LiteralNONEDriedDate = "http://snomed.info/sct#227454001";
 
     /// <summary>
     /// Literal for code: DriedFig
@@ -13408,9 +17798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDriedFig = "227455000";
 
     /// <summary>
+    /// Literal for code: NONEDriedFig
+    /// </summary>
+    public const string LiteralNONEDriedFig = "http://snomed.info/sct#227455000";
+
+    /// <summary>
     /// Literal for code: DriedMixedFruit
     /// </summary>
     public const string LiteralDriedMixedFruit = "227456004";
+
+    /// <summary>
+    /// Literal for code: NONEDriedMixedFruit
+    /// </summary>
+    public const string LiteralNONEDriedMixedFruit = "http://snomed.info/sct#227456004";
 
     /// <summary>
     /// Literal for code: DriedMixedPeel
@@ -13418,9 +17818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDriedMixedPeel = "227457008";
 
     /// <summary>
+    /// Literal for code: NONEDriedMixedPeel
+    /// </summary>
+    public const string LiteralNONEDriedMixedPeel = "http://snomed.info/sct#227457008";
+
+    /// <summary>
     /// Literal for code: DriedPeach
     /// </summary>
     public const string LiteralDriedPeach = "227458003";
+
+    /// <summary>
+    /// Literal for code: NONEDriedPeach
+    /// </summary>
+    public const string LiteralNONEDriedPeach = "http://snomed.info/sct#227458003";
 
     /// <summary>
     /// Literal for code: DriedPear
@@ -13428,9 +17838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDriedPear = "227459006";
 
     /// <summary>
+    /// Literal for code: NONEDriedPear
+    /// </summary>
+    public const string LiteralNONEDriedPear = "http://snomed.info/sct#227459006";
+
+    /// <summary>
     /// Literal for code: DriedPineapple
     /// </summary>
     public const string LiteralDriedPineapple = "227460001";
+
+    /// <summary>
+    /// Literal for code: NONEDriedPineapple
+    /// </summary>
+    public const string LiteralNONEDriedPineapple = "http://snomed.info/sct#227460001";
 
     /// <summary>
     /// Literal for code: GlaceCherry
@@ -13438,9 +17858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGlaceCherry = "227461002";
 
     /// <summary>
+    /// Literal for code: NONEGlaceCherry
+    /// </summary>
+    public const string LiteralNONEGlaceCherry = "http://snomed.info/sct#227461002";
+
+    /// <summary>
     /// Literal for code: Prunes
     /// </summary>
     public const string LiteralPrunes = "227462009";
+
+    /// <summary>
+    /// Literal for code: NONEPrunes
+    /// </summary>
+    public const string LiteralNONEPrunes = "http://snomed.info/sct#227462009";
 
     /// <summary>
     /// Literal for code: Raisin
@@ -13448,9 +17878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRaisin = "227463004";
 
     /// <summary>
+    /// Literal for code: NONERaisin
+    /// </summary>
+    public const string LiteralNONERaisin = "http://snomed.info/sct#227463004";
+
+    /// <summary>
     /// Literal for code: Sultanas
     /// </summary>
     public const string LiteralSultanas = "227464005";
+
+    /// <summary>
+    /// Literal for code: NONESultanas
+    /// </summary>
+    public const string LiteralNONESultanas = "http://snomed.info/sct#227464005";
 
     /// <summary>
     /// Literal for code: CannedFruit
@@ -13458,9 +17898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCannedFruit = "227465006";
 
     /// <summary>
+    /// Literal for code: NONECannedFruit
+    /// </summary>
+    public const string LiteralNONECannedFruit = "http://snomed.info/sct#227465006";
+
+    /// <summary>
     /// Literal for code: TinnedApple
     /// </summary>
     public const string LiteralTinnedApple = "227466007";
+
+    /// <summary>
+    /// Literal for code: NONETinnedApple
+    /// </summary>
+    public const string LiteralNONETinnedApple = "http://snomed.info/sct#227466007";
 
     /// <summary>
     /// Literal for code: TinnedApricot
@@ -13468,9 +17918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedApricot = "227467003";
 
     /// <summary>
+    /// Literal for code: NONETinnedApricot
+    /// </summary>
+    public const string LiteralNONETinnedApricot = "http://snomed.info/sct#227467003";
+
+    /// <summary>
     /// Literal for code: TinnedBlackcurrants
     /// </summary>
     public const string LiteralTinnedBlackcurrants = "227468008";
+
+    /// <summary>
+    /// Literal for code: NONETinnedBlackcurrants
+    /// </summary>
+    public const string LiteralNONETinnedBlackcurrants = "http://snomed.info/sct#227468008";
 
     /// <summary>
     /// Literal for code: TinnedCherries
@@ -13478,9 +17938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedCherries = "227469000";
 
     /// <summary>
+    /// Literal for code: NONETinnedCherries
+    /// </summary>
+    public const string LiteralNONETinnedCherries = "http://snomed.info/sct#227469000";
+
+    /// <summary>
     /// Literal for code: TinnedFigs
     /// </summary>
     public const string LiteralTinnedFigs = "227470004";
+
+    /// <summary>
+    /// Literal for code: NONETinnedFigs
+    /// </summary>
+    public const string LiteralNONETinnedFigs = "http://snomed.info/sct#227470004";
 
     /// <summary>
     /// Literal for code: TinnedFruitCocktail
@@ -13488,9 +17958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedFruitCocktail = "227471000";
 
     /// <summary>
+    /// Literal for code: NONETinnedFruitCocktail
+    /// </summary>
+    public const string LiteralNONETinnedFruitCocktail = "http://snomed.info/sct#227471000";
+
+    /// <summary>
     /// Literal for code: TinnedGooseberries
     /// </summary>
     public const string LiteralTinnedGooseberries = "227472007";
+
+    /// <summary>
+    /// Literal for code: NONETinnedGooseberries
+    /// </summary>
+    public const string LiteralNONETinnedGooseberries = "http://snomed.info/sct#227472007";
 
     /// <summary>
     /// Literal for code: TinnedGrapefruit
@@ -13498,9 +17978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedGrapefruit = "227473002";
 
     /// <summary>
+    /// Literal for code: NONETinnedGrapefruit
+    /// </summary>
+    public const string LiteralNONETinnedGrapefruit = "http://snomed.info/sct#227473002";
+
+    /// <summary>
     /// Literal for code: TinnedGuava
     /// </summary>
     public const string LiteralTinnedGuava = "227474008";
+
+    /// <summary>
+    /// Literal for code: NONETinnedGuava
+    /// </summary>
+    public const string LiteralNONETinnedGuava = "http://snomed.info/sct#227474008";
 
     /// <summary>
     /// Literal for code: TinnedKumquat
@@ -13508,9 +17998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedKumquat = "227475009";
 
     /// <summary>
+    /// Literal for code: NONETinnedKumquat
+    /// </summary>
+    public const string LiteralNONETinnedKumquat = "http://snomed.info/sct#227475009";
+
+    /// <summary>
     /// Literal for code: TinnedLoganberries
     /// </summary>
     public const string LiteralTinnedLoganberries = "227476005";
+
+    /// <summary>
+    /// Literal for code: NONETinnedLoganberries
+    /// </summary>
+    public const string LiteralNONETinnedLoganberries = "http://snomed.info/sct#227476005";
 
     /// <summary>
     /// Literal for code: TinnedLychees
@@ -13518,9 +18018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedLychees = "227477001";
 
     /// <summary>
+    /// Literal for code: NONETinnedLychees
+    /// </summary>
+    public const string LiteralNONETinnedLychees = "http://snomed.info/sct#227477001";
+
+    /// <summary>
     /// Literal for code: TinnedMandarinOranges
     /// </summary>
     public const string LiteralTinnedMandarinOranges = "227478006";
+
+    /// <summary>
+    /// Literal for code: NONETinnedMandarinOranges
+    /// </summary>
+    public const string LiteralNONETinnedMandarinOranges = "http://snomed.info/sct#227478006";
 
     /// <summary>
     /// Literal for code: TinnedMango
@@ -13528,9 +18038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedMango = "227479003";
 
     /// <summary>
+    /// Literal for code: NONETinnedMango
+    /// </summary>
+    public const string LiteralNONETinnedMango = "http://snomed.info/sct#227479003";
+
+    /// <summary>
     /// Literal for code: TinnedPawPaw
     /// </summary>
     public const string LiteralTinnedPawPaw = "227480000";
+
+    /// <summary>
+    /// Literal for code: NONETinnedPawPaw
+    /// </summary>
+    public const string LiteralNONETinnedPawPaw = "http://snomed.info/sct#227480000";
 
     /// <summary>
     /// Literal for code: TinnedPeaches
@@ -13538,9 +18058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedPeaches = "227481001";
 
     /// <summary>
+    /// Literal for code: NONETinnedPeaches
+    /// </summary>
+    public const string LiteralNONETinnedPeaches = "http://snomed.info/sct#227481001";
+
+    /// <summary>
     /// Literal for code: TinnedPears
     /// </summary>
     public const string LiteralTinnedPears = "227482008";
+
+    /// <summary>
+    /// Literal for code: NONETinnedPears
+    /// </summary>
+    public const string LiteralNONETinnedPears = "http://snomed.info/sct#227482008";
 
     /// <summary>
     /// Literal for code: TinnedPineapple
@@ -13548,9 +18078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedPineapple = "227483003";
 
     /// <summary>
+    /// Literal for code: NONETinnedPineapple
+    /// </summary>
+    public const string LiteralNONETinnedPineapple = "http://snomed.info/sct#227483003";
+
+    /// <summary>
     /// Literal for code: TinnedPlums
     /// </summary>
     public const string LiteralTinnedPlums = "227484009";
+
+    /// <summary>
+    /// Literal for code: NONETinnedPlums
+    /// </summary>
+    public const string LiteralNONETinnedPlums = "http://snomed.info/sct#227484009";
 
     /// <summary>
     /// Literal for code: TinnedPrunes
@@ -13558,9 +18098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedPrunes = "227485005";
 
     /// <summary>
+    /// Literal for code: NONETinnedPrunes
+    /// </summary>
+    public const string LiteralNONETinnedPrunes = "http://snomed.info/sct#227485005";
+
+    /// <summary>
     /// Literal for code: TinnedRaspberries
     /// </summary>
     public const string LiteralTinnedRaspberries = "227486006";
+
+    /// <summary>
+    /// Literal for code: NONETinnedRaspberries
+    /// </summary>
+    public const string LiteralNONETinnedRaspberries = "http://snomed.info/sct#227486006";
 
     /// <summary>
     /// Literal for code: TinnedRhubarb
@@ -13568,9 +18118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedRhubarb = "227487002";
 
     /// <summary>
+    /// Literal for code: NONETinnedRhubarb
+    /// </summary>
+    public const string LiteralNONETinnedRhubarb = "http://snomed.info/sct#227487002";
+
+    /// <summary>
     /// Literal for code: TinnedStrawberries
     /// </summary>
     public const string LiteralTinnedStrawberries = "227488007";
+
+    /// <summary>
+    /// Literal for code: NONETinnedStrawberries
+    /// </summary>
+    public const string LiteralNONETinnedStrawberries = "http://snomed.info/sct#227488007";
 
     /// <summary>
     /// Literal for code: TinnedFruitPieFilling
@@ -13578,9 +18138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTinnedFruitPieFilling = "227489004";
 
     /// <summary>
+    /// Literal for code: NONETinnedFruitPieFilling
+    /// </summary>
+    public const string LiteralNONETinnedFruitPieFilling = "http://snomed.info/sct#227489004";
+
+    /// <summary>
     /// Literal for code: BarcelonaNut
     /// </summary>
     public const string LiteralBarcelonaNut = "227490008";
+
+    /// <summary>
+    /// Literal for code: NONEBarcelonaNut
+    /// </summary>
+    public const string LiteralNONEBarcelonaNut = "http://snomed.info/sct#227490008";
 
     /// <summary>
     /// Literal for code: BetelNuts
@@ -13588,9 +18158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBetelNuts = "227491007";
 
     /// <summary>
+    /// Literal for code: NONEBetelNuts
+    /// </summary>
+    public const string LiteralNONEBetelNuts = "http://snomed.info/sct#227491007";
+
+    /// <summary>
     /// Literal for code: BreadnutSeed
     /// </summary>
     public const string LiteralBreadnutSeed = "227492000";
+
+    /// <summary>
+    /// Literal for code: NONEBreadnutSeed
+    /// </summary>
+    public const string LiteralNONEBreadnutSeed = "http://snomed.info/sct#227492000";
 
     /// <summary>
     /// Literal for code: CashewNuts
@@ -13598,9 +18178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCashewNuts = "227493005";
 
     /// <summary>
+    /// Literal for code: NONECashewNuts
+    /// </summary>
+    public const string LiteralNONECashewNuts = "http://snomed.info/sct#227493005";
+
+    /// <summary>
     /// Literal for code: RoastedAndSaltedCashewNuts
     /// </summary>
     public const string LiteralRoastedAndSaltedCashewNuts = "227495003";
+
+    /// <summary>
+    /// Literal for code: NONERoastedAndSaltedCashewNuts
+    /// </summary>
+    public const string LiteralNONERoastedAndSaltedCashewNuts = "http://snomed.info/sct#227495003";
 
     /// <summary>
     /// Literal for code: FreshCoconut
@@ -13608,9 +18198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFreshCoconut = "227496002";
 
     /// <summary>
+    /// Literal for code: NONEFreshCoconut
+    /// </summary>
+    public const string LiteralNONEFreshCoconut = "http://snomed.info/sct#227496002";
+
+    /// <summary>
     /// Literal for code: CreamedCoconut
     /// </summary>
     public const string LiteralCreamedCoconut = "227497006";
+
+    /// <summary>
+    /// Literal for code: NONECreamedCoconut
+    /// </summary>
+    public const string LiteralNONECreamedCoconut = "http://snomed.info/sct#227497006";
 
     /// <summary>
     /// Literal for code: DesiccatedCoconut
@@ -13618,9 +18218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDesiccatedCoconut = "227498001";
 
     /// <summary>
+    /// Literal for code: NONEDesiccatedCoconut
+    /// </summary>
+    public const string LiteralNONEDesiccatedCoconut = "http://snomed.info/sct#227498001";
+
+    /// <summary>
     /// Literal for code: CoconutCream
     /// </summary>
     public const string LiteralCoconutCream = "227499009";
+
+    /// <summary>
+    /// Literal for code: NONECoconutCream
+    /// </summary>
+    public const string LiteralNONECoconutCream = "http://snomed.info/sct#227499009";
 
     /// <summary>
     /// Literal for code: CoconutMilk
@@ -13628,9 +18238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCoconutMilk = "227500000";
 
     /// <summary>
+    /// Literal for code: NONECoconutMilk
+    /// </summary>
+    public const string LiteralNONECoconutMilk = "http://snomed.info/sct#227500000";
+
+    /// <summary>
     /// Literal for code: MacadamiaNut
     /// </summary>
     public const string LiteralMacadamiaNut = "227501001";
+
+    /// <summary>
+    /// Literal for code: NONEMacadamiaNut
+    /// </summary>
+    public const string LiteralNONEMacadamiaNut = "http://snomed.info/sct#227501001";
 
     /// <summary>
     /// Literal for code: MarzipanHomeMade
@@ -13638,9 +18258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMarzipanHomeMade = "227502008";
 
     /// <summary>
+    /// Literal for code: NONEMarzipanHomeMade
+    /// </summary>
+    public const string LiteralNONEMarzipanHomeMade = "http://snomed.info/sct#227502008";
+
+    /// <summary>
     /// Literal for code: MarzipanRetail
     /// </summary>
     public const string LiteralMarzipanRetail = "227503003";
+
+    /// <summary>
+    /// Literal for code: NONEMarzipanRetail
+    /// </summary>
+    public const string LiteralNONEMarzipanRetail = "http://snomed.info/sct#227503003";
 
     /// <summary>
     /// Literal for code: MelonSeed
@@ -13648,9 +18278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMelonSeed = "227504009";
 
     /// <summary>
+    /// Literal for code: NONEMelonSeed
+    /// </summary>
+    public const string LiteralNONEMelonSeed = "http://snomed.info/sct#227504009";
+
+    /// <summary>
     /// Literal for code: MixedNuts
     /// </summary>
     public const string LiteralMixedNuts = "227505005";
+
+    /// <summary>
+    /// Literal for code: NONEMixedNuts
+    /// </summary>
+    public const string LiteralNONEMixedNuts = "http://snomed.info/sct#227505005";
 
     /// <summary>
     /// Literal for code: MixedNutsAndRaisins
@@ -13658,9 +18298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMixedNutsAndRaisins = "227506006";
 
     /// <summary>
+    /// Literal for code: NONEMixedNutsAndRaisins
+    /// </summary>
+    public const string LiteralNONEMixedNutsAndRaisins = "http://snomed.info/sct#227506006";
+
+    /// <summary>
     /// Literal for code: SmoothPeanutButter
     /// </summary>
     public const string LiteralSmoothPeanutButter = "227507002";
+
+    /// <summary>
+    /// Literal for code: NONESmoothPeanutButter
+    /// </summary>
+    public const string LiteralNONESmoothPeanutButter = "http://snomed.info/sct#227507002";
 
     /// <summary>
     /// Literal for code: CrunchyPeanutButter
@@ -13668,9 +18318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCrunchyPeanutButter = "227508007";
 
     /// <summary>
+    /// Literal for code: NONECrunchyPeanutButter
+    /// </summary>
+    public const string LiteralNONECrunchyPeanutButter = "http://snomed.info/sct#227508007";
+
+    /// <summary>
     /// Literal for code: DryRoastedPeanuts
     /// </summary>
     public const string LiteralDryRoastedPeanuts = "227509004";
+
+    /// <summary>
+    /// Literal for code: NONEDryRoastedPeanuts
+    /// </summary>
+    public const string LiteralNONEDryRoastedPeanuts = "http://snomed.info/sct#227509004";
 
     /// <summary>
     /// Literal for code: SaltedPeanuts
@@ -13678,9 +18338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSaltedPeanuts = "227510009";
 
     /// <summary>
+    /// Literal for code: NONESaltedPeanuts
+    /// </summary>
+    public const string LiteralNONESaltedPeanuts = "http://snomed.info/sct#227510009";
+
+    /// <summary>
     /// Literal for code: PineNut
     /// </summary>
     public const string LiteralPineNut = "227511008";
+
+    /// <summary>
+    /// Literal for code: NONEPineNut
+    /// </summary>
+    public const string LiteralNONEPineNut = "http://snomed.info/sct#227511008";
 
     /// <summary>
     /// Literal for code: PistachioNuts
@@ -13688,9 +18358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPistachioNuts = "227512001";
 
     /// <summary>
+    /// Literal for code: NONEPistachioNuts
+    /// </summary>
+    public const string LiteralNONEPistachioNuts = "http://snomed.info/sct#227512001";
+
+    /// <summary>
     /// Literal for code: RoastedSaltedPistachioNut
     /// </summary>
     public const string LiteralRoastedSaltedPistachioNut = "227513006";
+
+    /// <summary>
+    /// Literal for code: NONERoastedSaltedPistachioNut
+    /// </summary>
+    public const string LiteralNONERoastedSaltedPistachioNut = "http://snomed.info/sct#227513006";
 
     /// <summary>
     /// Literal for code: PumpkinSeed
@@ -13698,9 +18378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPumpkinSeed = "227514000";
 
     /// <summary>
+    /// Literal for code: NONEPumpkinSeed
+    /// </summary>
+    public const string LiteralNONEPumpkinSeed = "http://snomed.info/sct#227514000";
+
+    /// <summary>
     /// Literal for code: Quinoa
     /// </summary>
     public const string LiteralQuinoa = "227515004";
+
+    /// <summary>
+    /// Literal for code: NONEQuinoa
+    /// </summary>
+    public const string LiteralNONEQuinoa = "http://snomed.info/sct#227515004";
 
     /// <summary>
     /// Literal for code: TahiniPaste
@@ -13708,9 +18398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTahiniPaste = "227516003";
 
     /// <summary>
+    /// Literal for code: NONETahiniPaste
+    /// </summary>
+    public const string LiteralNONETahiniPaste = "http://snomed.info/sct#227516003";
+
+    /// <summary>
     /// Literal for code: Tigernut
     /// </summary>
     public const string LiteralTigernut = "227517007";
+
+    /// <summary>
+    /// Literal for code: NONETigernut
+    /// </summary>
+    public const string LiteralNONETigernut = "http://snomed.info/sct#227517007";
 
     /// <summary>
     /// Literal for code: SaucesSeasoningsAndSoups
@@ -13718,9 +18418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSaucesSeasoningsAndSoups = "227518002";
 
     /// <summary>
+    /// Literal for code: NONESaucesSeasoningsAndSoups
+    /// </summary>
+    public const string LiteralNONESaucesSeasoningsAndSoups = "http://snomed.info/sct#227518002";
+
+    /// <summary>
     /// Literal for code: Sauce
     /// </summary>
     public const string LiteralSauce = "227519005";
+
+    /// <summary>
+    /// Literal for code: NONESauce
+    /// </summary>
+    public const string LiteralNONESauce = "http://snomed.info/sct#227519005";
 
     /// <summary>
     /// Literal for code: DairySauce
@@ -13728,9 +18438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDairySauce = "227520004";
 
     /// <summary>
+    /// Literal for code: NONEDairySauce
+    /// </summary>
+    public const string LiteralNONEDairySauce = "http://snomed.info/sct#227520004";
+
+    /// <summary>
     /// Literal for code: BreadSauce
     /// </summary>
     public const string LiteralBreadSauce = "227521000";
+
+    /// <summary>
+    /// Literal for code: NONEBreadSauce
+    /// </summary>
+    public const string LiteralNONEBreadSauce = "http://snomed.info/sct#227521000";
 
     /// <summary>
     /// Literal for code: CheeseSauce
@@ -13738,9 +18458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCheeseSauce = "227522007";
 
     /// <summary>
+    /// Literal for code: NONECheeseSauce
+    /// </summary>
+    public const string LiteralNONECheeseSauce = "http://snomed.info/sct#227522007";
+
+    /// <summary>
     /// Literal for code: CheeseSaucePacketMix
     /// </summary>
     public const string LiteralCheeseSaucePacketMix = "227523002";
+
+    /// <summary>
+    /// Literal for code: NONECheeseSaucePacketMix
+    /// </summary>
+    public const string LiteralNONECheeseSaucePacketMix = "http://snomed.info/sct#227523002";
 
     /// <summary>
     /// Literal for code: OnionSauce
@@ -13748,9 +18478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOnionSauce = "227524008";
 
     /// <summary>
+    /// Literal for code: NONEOnionSauce
+    /// </summary>
+    public const string LiteralNONEOnionSauce = "http://snomed.info/sct#227524008";
+
+    /// <summary>
     /// Literal for code: SavoryWhiteSauce
     /// </summary>
     public const string LiteralSavoryWhiteSauce = "227525009";
+
+    /// <summary>
+    /// Literal for code: NONESavoryWhiteSauce
+    /// </summary>
+    public const string LiteralNONESavoryWhiteSauce = "http://snomed.info/sct#227525009";
 
     /// <summary>
     /// Literal for code: SweetWhiteSauce
@@ -13758,9 +18498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSweetWhiteSauce = "227526005";
 
     /// <summary>
+    /// Literal for code: NONESweetWhiteSauce
+    /// </summary>
+    public const string LiteralNONESweetWhiteSauce = "http://snomed.info/sct#227526005";
+
+    /// <summary>
     /// Literal for code: BarbecueSauce
     /// </summary>
     public const string LiteralBarbecueSauce = "227527001";
+
+    /// <summary>
+    /// Literal for code: NONEBarbecueSauce
+    /// </summary>
+    public const string LiteralNONEBarbecueSauce = "http://snomed.info/sct#227527001";
 
     /// <summary>
     /// Literal for code: BrownSauce
@@ -13768,9 +18518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBrownSauce = "227528006";
 
     /// <summary>
+    /// Literal for code: NONEBrownSauce
+    /// </summary>
+    public const string LiteralNONEBrownSauce = "http://snomed.info/sct#227528006";
+
+    /// <summary>
     /// Literal for code: CookInSauce
     /// </summary>
     public const string LiteralCookInSauce = "227529003";
+
+    /// <summary>
+    /// Literal for code: NONECookInSauce
+    /// </summary>
+    public const string LiteralNONECookInSauce = "http://snomed.info/sct#227529003";
 
     /// <summary>
     /// Literal for code: PacketCookInSauce
@@ -13778,9 +18538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPacketCookInSauce = "227530008";
 
     /// <summary>
+    /// Literal for code: NONEPacketCookInSauce
+    /// </summary>
+    public const string LiteralNONEPacketCookInSauce = "http://snomed.info/sct#227530008";
+
+    /// <summary>
     /// Literal for code: CannedCookInSauce
     /// </summary>
     public const string LiteralCannedCookInSauce = "227531007";
+
+    /// <summary>
+    /// Literal for code: NONECannedCookInSauce
+    /// </summary>
+    public const string LiteralNONECannedCookInSauce = "http://snomed.info/sct#227531007";
 
     /// <summary>
     /// Literal for code: CurrySauce
@@ -13788,9 +18558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCurrySauce = "227532000";
 
     /// <summary>
+    /// Literal for code: NONECurrySauce
+    /// </summary>
+    public const string LiteralNONECurrySauce = "http://snomed.info/sct#227532000";
+
+    /// <summary>
     /// Literal for code: HorseradishSauce
     /// </summary>
     public const string LiteralHorseradishSauce = "227533005";
+
+    /// <summary>
+    /// Literal for code: NONEHorseradishSauce
+    /// </summary>
+    public const string LiteralNONEHorseradishSauce = "http://snomed.info/sct#227533005";
 
     /// <summary>
     /// Literal for code: MintSauce
@@ -13798,9 +18578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMintSauce = "227534004";
 
     /// <summary>
+    /// Literal for code: NONEMintSauce
+    /// </summary>
+    public const string LiteralNONEMintSauce = "http://snomed.info/sct#227534004";
+
+    /// <summary>
     /// Literal for code: PastaSauce
     /// </summary>
     public const string LiteralPastaSauce = "227535003";
+
+    /// <summary>
+    /// Literal for code: NONEPastaSauce
+    /// </summary>
+    public const string LiteralNONEPastaSauce = "http://snomed.info/sct#227535003";
 
     /// <summary>
     /// Literal for code: Vegetable
@@ -13808,9 +18598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVegetable = "22836000";
 
     /// <summary>
+    /// Literal for code: NONEVegetable
+    /// </summary>
+    public const string LiteralNONEVegetable = "http://snomed.info/sct#22836000";
+
+    /// <summary>
     /// Literal for code: Cereal
     /// </summary>
     public const string LiteralCereal = "23182003";
+
+    /// <summary>
+    /// Literal for code: NONECereal
+    /// </summary>
+    public const string LiteralNONECereal = "http://snomed.info/sct#23182003";
 
     /// <summary>
     /// Literal for code: Spice
@@ -13818,9 +18618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSpice = "24515005";
 
     /// <summary>
+    /// Literal for code: NONESpice
+    /// </summary>
+    public const string LiteralNONESpice = "http://snomed.info/sct#24515005";
+
+    /// <summary>
     /// Literal for code: FoodSubstance
     /// </summary>
     public const string LiteralFoodSubstance = "255620007";
+
+    /// <summary>
+    /// Literal for code: NONEFoodSubstance
+    /// </summary>
+    public const string LiteralNONEFoodSubstance = "http://snomed.info/sct#255620007";
 
     /// <summary>
     /// Literal for code: SkimMilk
@@ -13828,9 +18638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSkimMilk = "25743006";
 
     /// <summary>
+    /// Literal for code: NONESkimMilk
+    /// </summary>
+    public const string LiteralNONESkimMilk = "http://snomed.info/sct#25743006";
+
+    /// <summary>
     /// Literal for code: Poultry
     /// </summary>
     public const string LiteralPoultry = "28230009";
+
+    /// <summary>
+    /// Literal for code: NONEPoultry
+    /// </summary>
+    public const string LiteralNONEPoultry = "http://snomed.info/sct#28230009";
 
     /// <summary>
     /// Literal for code: Meat
@@ -13838,9 +18658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMeat = "28647000";
 
     /// <summary>
+    /// Literal for code: NONEMeat
+    /// </summary>
+    public const string LiteralNONEMeat = "http://snomed.info/sct#28647000";
+
+    /// <summary>
     /// Literal for code: CoconutOil
     /// </summary>
     public const string LiteralCoconutOil = "28942008";
+
+    /// <summary>
+    /// Literal for code: NONECoconutOil
+    /// </summary>
+    public const string LiteralNONECoconutOil = "http://snomed.info/sct#28942008";
 
     /// <summary>
     /// Literal for code: CowQuoteSMilk
@@ -13848,9 +18678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCowQuoteSMilk = "3718001";
 
     /// <summary>
+    /// Literal for code: NONECowQuoteSMilk
+    /// </summary>
+    public const string LiteralNONECowQuoteSMilk = "http://snomed.info/sct#3718001";
+
+    /// <summary>
     /// Literal for code: FoodParticle
     /// </summary>
     public const string LiteralFoodParticle = "39102003";
+
+    /// <summary>
+    /// Literal for code: NONEFoodParticle
+    /// </summary>
+    public const string LiteralNONEFoodParticle = "http://snomed.info/sct#39102003";
 
     /// <summary>
     /// Literal for code: OliveOil
@@ -13858,9 +18698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOliveOil = "41834005";
 
     /// <summary>
+    /// Literal for code: NONEOliveOil
+    /// </summary>
+    public const string LiteralNONEOliveOil = "http://snomed.info/sct#41834005";
+
+    /// <summary>
     /// Literal for code: AnimalFeedAdditive
     /// </summary>
     public const string LiteralAnimalFeedAdditive = "43708003";
+
+    /// <summary>
+    /// Literal for code: NONEAnimalFeedAdditive
+    /// </summary>
+    public const string LiteralNONEAnimalFeedAdditive = "http://snomed.info/sct#43708003";
 
     /// <summary>
     /// Literal for code: Seafood
@@ -13868,9 +18718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSeafood = "44027008";
 
     /// <summary>
+    /// Literal for code: NONESeafood
+    /// </summary>
+    public const string LiteralNONESeafood = "http://snomed.info/sct#44027008";
+
+    /// <summary>
     /// Literal for code: ChocolateMilk
     /// </summary>
     public const string LiteralChocolateMilk = "46329000";
+
+    /// <summary>
+    /// Literal for code: NONEChocolateMilk
+    /// </summary>
+    public const string LiteralNONEChocolateMilk = "http://snomed.info/sct#46329000";
 
     /// <summary>
     /// Literal for code: BeefInsulin
@@ -13878,9 +18738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBeefInsulin = "4700006";
 
     /// <summary>
+    /// Literal for code: NONEBeefInsulin
+    /// </summary>
+    public const string LiteralNONEBeefInsulin = "http://snomed.info/sct#4700006";
+
+    /// <summary>
     /// Literal for code: SoyProteinIronComplex
     /// </summary>
     public const string LiteralSoyProteinIronComplex = "50479000";
+
+    /// <summary>
+    /// Literal for code: NONESoyProteinIronComplex
+    /// </summary>
+    public const string LiteralNONESoyProteinIronComplex = "http://snomed.info/sct#50479000";
 
     /// <summary>
     /// Literal for code: Casein
@@ -13888,9 +18758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCasein = "50593009";
 
     /// <summary>
+    /// Literal for code: NONECasein
+    /// </summary>
+    public const string LiteralNONECasein = "http://snomed.info/sct#50593009";
+
+    /// <summary>
     /// Literal for code: Mustard
     /// </summary>
     public const string LiteralMustard = "51905005";
+
+    /// <summary>
+    /// Literal for code: NONEMustard
+    /// </summary>
+    public const string LiteralNONEMustard = "http://snomed.info/sct#51905005";
 
     /// <summary>
     /// Literal for code: Colostrum
@@ -13898,9 +18778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralColostrum = "53875002";
 
     /// <summary>
+    /// Literal for code: NONEColostrum
+    /// </summary>
+    public const string LiteralNONEColostrum = "http://snomed.info/sct#53875002";
+
+    /// <summary>
     /// Literal for code: SafflowerOil
     /// </summary>
     public const string LiteralSafflowerOil = "54041009";
+
+    /// <summary>
+    /// Literal for code: NONESafflowerOil
+    /// </summary>
+    public const string LiteralNONESafflowerOil = "http://snomed.info/sct#54041009";
 
     /// <summary>
     /// Literal for code: Berry
@@ -13908,9 +18798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBerry = "63045006";
 
     /// <summary>
+    /// Literal for code: NONEBerry
+    /// </summary>
+    public const string LiteralNONEBerry = "http://snomed.info/sct#63045006";
+
+    /// <summary>
     /// Literal for code: Flour
     /// </summary>
     public const string LiteralFlour = "63766005";
+
+    /// <summary>
+    /// Literal for code: NONEFlour
+    /// </summary>
+    public const string LiteralNONEFlour = "http://snomed.info/sct#63766005";
 
     /// <summary>
     /// Literal for code: PorkInsulin
@@ -13918,9 +18818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPorkInsulin = "67296003";
 
     /// <summary>
+    /// Literal for code: NONEPorkInsulin
+    /// </summary>
+    public const string LiteralNONEPorkInsulin = "http://snomed.info/sct#67296003";
+
+    /// <summary>
     /// Literal for code: Rice
     /// </summary>
     public const string LiteralRice = "67324005";
+
+    /// <summary>
+    /// Literal for code: NONERice
+    /// </summary>
+    public const string LiteralNONERice = "http://snomed.info/sct#67324005";
 
     /// <summary>
     /// Literal for code: Milk
@@ -13928,9 +18838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMilk = "70813002";
 
     /// <summary>
+    /// Literal for code: NONEMilk
+    /// </summary>
+    public const string LiteralNONEMilk = "http://snomed.info/sct#70813002";
+
+    /// <summary>
     /// Literal for code: Fruit
     /// </summary>
     public const string LiteralFruit = "72511004";
+
+    /// <summary>
+    /// Literal for code: NONEFruit
+    /// </summary>
+    public const string LiteralNONEFruit = "http://snomed.info/sct#72511004";
 
     /// <summary>
     /// Literal for code: FoodStarch
@@ -13938,9 +18858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFoodStarch = "74242007";
 
     /// <summary>
+    /// Literal for code: NONEFoodStarch
+    /// </summary>
+    public const string LiteralNONEFoodStarch = "http://snomed.info/sct#74242007";
+
+    /// <summary>
     /// Literal for code: BovineGrowthHormone
     /// </summary>
     public const string LiteralBovineGrowthHormone = "75476008";
+
+    /// <summary>
+    /// Literal for code: NONEBovineGrowthHormone
+    /// </summary>
+    public const string LiteralNONEBovineGrowthHormone = "http://snomed.info/sct#75476008";
 
     /// <summary>
     /// Literal for code: FishBone
@@ -13948,9 +18878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFishBone = "7661006";
 
     /// <summary>
+    /// Literal for code: NONEFishBone
+    /// </summary>
+    public const string LiteralNONEFishBone = "http://snomed.info/sct#7661006";
+
+    /// <summary>
     /// Literal for code: PoultryBone
     /// </summary>
     public const string LiteralPoultryBone = "77722008";
+
+    /// <summary>
+    /// Literal for code: NONEPoultryBone
+    /// </summary>
+    public const string LiteralNONEPoultryBone = "http://snomed.info/sct#77722008";
 
     /// <summary>
     /// Literal for code: SoyProtein
@@ -13958,9 +18898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSoyProtein = "7791007";
 
     /// <summary>
+    /// Literal for code: NONESoyProtein
+    /// </summary>
+    public const string LiteralNONESoyProtein = "http://snomed.info/sct#7791007";
+
+    /// <summary>
     /// Literal for code: MustardBlack
     /// </summary>
     public const string LiteralMustardBlack = "80743002";
+
+    /// <summary>
+    /// Literal for code: NONEMustardBlack
+    /// </summary>
+    public const string LiteralNONEMustardBlack = "http://snomed.info/sct#80743002";
 
     /// <summary>
     /// Literal for code: CottonseedOil
@@ -13968,9 +18918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCottonseedOil = "82450006";
 
     /// <summary>
+    /// Literal for code: NONECottonseedOil
+    /// </summary>
+    public const string LiteralNONECottonseedOil = "http://snomed.info/sct#82450006";
+
+    /// <summary>
     /// Literal for code: AnimalFeed
     /// </summary>
     public const string LiteralAnimalFeed = "82566005";
+
+    /// <summary>
+    /// Literal for code: NONEAnimalFeed
+    /// </summary>
+    public const string LiteralNONEAnimalFeed = "http://snomed.info/sct#82566005";
 
     /// <summary>
     /// Literal for code: BovineGrowthHormoneRecombinant
@@ -13978,9 +18938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBovineGrowthHormoneRecombinant = "83235009";
 
     /// <summary>
+    /// Literal for code: NONEBovineGrowthHormoneRecombinant
+    /// </summary>
+    public const string LiteralNONEBovineGrowthHormoneRecombinant = "http://snomed.info/sct#83235009";
+
+    /// <summary>
     /// Literal for code: GoatQuoteSMilk
     /// </summary>
     public const string LiteralGoatQuoteSMilk = "83595008";
+
+    /// <summary>
+    /// Literal for code: NONEGoatQuoteSMilk
+    /// </summary>
+    public const string LiteralNONEGoatQuoteSMilk = "http://snomed.info/sct#83595008";
 
     /// <summary>
     /// Literal for code: StarchPowder
@@ -13988,9 +18958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStarchPowder = "85668006";
 
     /// <summary>
+    /// Literal for code: NONEStarchPowder
+    /// </summary>
+    public const string LiteralNONEStarchPowder = "http://snomed.info/sct#85668006";
+
+    /// <summary>
     /// Literal for code: SesameOil
     /// </summary>
     public const string LiteralSesameOil = "89707004";
+
+    /// <summary>
+    /// Literal for code: NONESesameOil
+    /// </summary>
+    public const string LiteralNONESesameOil = "http://snomed.info/sct#89707004";
 
     /// <summary>
     /// Literal for code: Gluten
@@ -13998,9 +18978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGluten = "89811004";
 
     /// <summary>
+    /// Literal for code: NONEGluten
+    /// </summary>
+    public const string LiteralNONEGluten = "http://snomed.info/sct#89811004";
+
+    /// <summary>
     /// Literal for code: MustardWhite
     /// </summary>
     public const string LiteralMustardWhite = "90677004";
+
+    /// <summary>
+    /// Literal for code: NONEMustardWhite
+    /// </summary>
+    public const string LiteralNONEMustardWhite = "http://snomed.info/sct#90677004";
 
     /// <summary>
     /// Literal for code: Cochineal
@@ -14008,8 +18998,2024 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCochineal = "91606004";
 
     /// <summary>
+    /// Literal for code: NONECochineal
+    /// </summary>
+    public const string LiteralNONECochineal = "http://snomed.info/sct#91606004";
+
+    /// <summary>
     /// Literal for code: Sometribove
     /// </summary>
     public const string LiteralSometribove = "96364008";
+
+    /// <summary>
+    /// Literal for code: NONESometribove
+    /// </summary>
+    public const string LiteralNONESometribove = "http://snomed.info/sct#96364008";
+
+    /// <summary>
+    /// Dictionary for looking up FoodType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "102259006", CitrusFruit }, 
+      { "http://snomed.info/sct#102259006", CitrusFruit }, 
+      { "102260001", PeanutButter }, 
+      { "http://snomed.info/sct#102260001", PeanutButter }, 
+      { "102261002", Strawberry }, 
+      { "http://snomed.info/sct#102261002", Strawberry }, 
+      { "102262009", Chocolate }, 
+      { "http://snomed.info/sct#102262009", Chocolate }, 
+      { "102263004", EggsEdible }, 
+      { "http://snomed.info/sct#102263004", EggsEdible }, 
+      { "102264005", Cheese }, 
+      { "http://snomed.info/sct#102264005", Cheese }, 
+      { "102270004", GrowthStimulant }, 
+      { "http://snomed.info/sct#102270004", GrowthStimulant }, 
+      { "102271000", Efrotomycin }, 
+      { "http://snomed.info/sct#102271000", Efrotomycin }, 
+      { "10249006", Agar }, 
+      { "http://snomed.info/sct#10249006", Agar }, 
+      { "102697003", Lactalbumin }, 
+      { "http://snomed.info/sct#102697003", Lactalbumin }, 
+      { "102698008", MinorLactalbumin }, 
+      { "http://snomed.info/sct#102698008", MinorLactalbumin }, 
+      { "102699000", BetaLactalbumin }, 
+      { "http://snomed.info/sct#102699000", BetaLactalbumin }, 
+      { "10827009", MilkProtein }, 
+      { "http://snomed.info/sct#10827009", MilkProtein }, 
+      { "108743002", PegademaseBovine }, 
+      { "http://snomed.info/sct#108743002", PegademaseBovine }, 
+      { "109010000", MicrofibrillarCollagenHemostat }, 
+      { "http://snomed.info/sct#109010000", MicrofibrillarCollagenHemostat }, 
+      { "116957009", BovineShockProteinAntibody }, 
+      { "http://snomed.info/sct#116957009", BovineShockProteinAntibody }, 
+      { "117633004", BovineOsteocalcin }, 
+      { "http://snomed.info/sct#117633004", BovineOsteocalcin }, 
+      { "126076005", FishLiverOil }, 
+      { "http://snomed.info/sct#126076005", FishLiverOil }, 
+      { "126077001", BurbotLiverOil }, 
+      { "http://snomed.info/sct#126077001", BurbotLiverOil }, 
+      { "126078006", PercomorphLiverOil }, 
+      { "http://snomed.info/sct#126078006", PercomorphLiverOil }, 
+      { "126079003", PercoidLiverOil }, 
+      { "http://snomed.info/sct#126079003", PercoidLiverOil }, 
+      { "126080000", SharkLiverOil }, 
+      { "http://snomed.info/sct#126080000", SharkLiverOil }, 
+      { "126081001", HalibutLiverOil }, 
+      { "http://snomed.info/sct#126081001", HalibutLiverOil }, 
+      { "126082008", CodLiverOil }, 
+      { "http://snomed.info/sct#126082008", CodLiverOil }, 
+      { "127384006", SalmonCalcitonin }, 
+      { "http://snomed.info/sct#127384006", SalmonCalcitonin }, 
+      { "13577000", Nut }, 
+      { "http://snomed.info/sct#13577000", Nut }, 
+      { "14263006", PreparedFish }, 
+      { "http://snomed.info/sct#14263006", PreparedFish }, 
+      { "226017009", BombayMix }, 
+      { "http://snomed.info/sct#226017009", BombayMix }, 
+      { "226021002", CauliflowerCheese }, 
+      { "http://snomed.info/sct#226021002", CauliflowerCheese }, 
+      { "226022009", CheesePastry }, 
+      { "http://snomed.info/sct#226022009", CheesePastry }, 
+      { "226023004", Cheesecake }, 
+      { "http://snomed.info/sct#226023004", Cheesecake }, 
+      { "226024005", ChocolateDigestiveBiscuit }, 
+      { "http://snomed.info/sct#226024005", ChocolateDigestiveBiscuit }, 
+      { "226037008", Lasagne }, 
+      { "http://snomed.info/sct#226037008", Lasagne }, 
+      { "226041007", MintSweetSubstance }, 
+      { "http://snomed.info/sct#226041007", MintSweetSubstance }, 
+      { "226046002", PlainDigestiveBiscuit }, 
+      { "http://snomed.info/sct#226046002", PlainDigestiveBiscuit }, 
+      { "226061001", Tamarind }, 
+      { "http://snomed.info/sct#226061001", Tamarind }, 
+      { "226062008", TrailMix }, 
+      { "http://snomed.info/sct#226062008", TrailMix }, 
+      { "226367006", EicosapentaenoicAcid }, 
+      { "http://snomed.info/sct#226367006", EicosapentaenoicAcid }, 
+      { "226368001", DHADocosahexaenoicAcid }, 
+      { "http://snomed.info/sct#226368001", DHADocosahexaenoicAcid }, 
+      { "226491003", AppleJuice }, 
+      { "http://snomed.info/sct#226491003", AppleJuice }, 
+      { "226492005", GrapeJuice }, 
+      { "http://snomed.info/sct#226492005", GrapeJuice }, 
+      { "226493000", GrapefruitJuice }, 
+      { "http://snomed.info/sct#226493000", GrapefruitJuice }, 
+      { "226495007", LemonJuice }, 
+      { "http://snomed.info/sct#226495007", LemonJuice }, 
+      { "226496008", OrangeJuice }, 
+      { "http://snomed.info/sct#226496008", OrangeJuice }, 
+      { "226497004", PineappleJuice }, 
+      { "http://snomed.info/sct#226497004", PineappleJuice }, 
+      { "226498009", TomatoJuice }, 
+      { "http://snomed.info/sct#226498009", TomatoJuice }, 
+      { "226529007", StarchyFood }, 
+      { "http://snomed.info/sct#226529007", StarchyFood }, 
+      { "226530002", BabyCereal }, 
+      { "http://snomed.info/sct#226530002", BabyCereal }, 
+      { "226531003", Rusk }, 
+      { "http://snomed.info/sct#226531003", Rusk }, 
+      { "226532005", FlavoredRusk }, 
+      { "http://snomed.info/sct#226532005", FlavoredRusk }, 
+      { "226533000", LowSugarRusk }, 
+      { "http://snomed.info/sct#226533000", LowSugarRusk }, 
+      { "226534006", PlainRusk }, 
+      { "http://snomed.info/sct#226534006", PlainRusk }, 
+      { "226535007", WholemealRusk }, 
+      { "http://snomed.info/sct#226535007", WholemealRusk }, 
+      { "226536008", RiceBasedBabyCereal }, 
+      { "http://snomed.info/sct#226536008", RiceBasedBabyCereal }, 
+      { "226537004", MixedCerealBasedBabyCereal }, 
+      { "http://snomed.info/sct#226537004", MixedCerealBasedBabyCereal }, 
+      { "226538009", WheatBasedBabyCereal }, 
+      { "http://snomed.info/sct#226538009", WheatBasedBabyCereal }, 
+      { "226539001", CookieAndOrCracker }, 
+      { "http://snomed.info/sct#226539001", CookieAndOrCracker }, 
+      { "226540004", ChocolateBiscuit }, 
+      { "http://snomed.info/sct#226540004", ChocolateBiscuit }, 
+      { "226541000", FullCoatedChocolateBiscuit }, 
+      { "http://snomed.info/sct#226541000", FullCoatedChocolateBiscuit }, 
+      { "226542007", HalfCoatedChocolateBiscuit }, 
+      { "http://snomed.info/sct#226542007", HalfCoatedChocolateBiscuit }, 
+      { "226543002", Cracker }, 
+      { "http://snomed.info/sct#226543002", Cracker }, 
+      { "226544008", CreamCracker }, 
+      { "http://snomed.info/sct#226544008", CreamCracker }, 
+      { "226546005", WholemealCracker }, 
+      { "http://snomed.info/sct#226546005", WholemealCracker }, 
+      { "226547001", Crispbread }, 
+      { "http://snomed.info/sct#226547001", Crispbread }, 
+      { "226548006", DigestiveBiscuit }, 
+      { "http://snomed.info/sct#226548006", DigestiveBiscuit }, 
+      { "226549003", GingernutBiscuit }, 
+      { "http://snomed.info/sct#226549003", GingernutBiscuit }, 
+      { "226550003", HomeMadeBiscuit }, 
+      { "http://snomed.info/sct#226550003", HomeMadeBiscuit }, 
+      { "226551004", Matzo }, 
+      { "http://snomed.info/sct#226551004", Matzo }, 
+      { "226552006", Oatcake }, 
+      { "http://snomed.info/sct#226552006", Oatcake }, 
+      { "226553001", SandwichBiscuit }, 
+      { "http://snomed.info/sct#226553001", SandwichBiscuit }, 
+      { "226554007", SemiSweetBiscuit }, 
+      { "http://snomed.info/sct#226554007", SemiSweetBiscuit }, 
+      { "226555008", ShortSweetBiscuit }, 
+      { "http://snomed.info/sct#226555008", ShortSweetBiscuit }, 
+      { "226556009", ShortbreadBiscuit }, 
+      { "http://snomed.info/sct#226556009", ShortbreadBiscuit }, 
+      { "226557000", WaferBiscuit }, 
+      { "http://snomed.info/sct#226557000", WaferBiscuit }, 
+      { "226558005", WaterBiscuit }, 
+      { "http://snomed.info/sct#226558005", WaterBiscuit }, 
+      { "226559002", Bread }, 
+      { "http://snomed.info/sct#226559002", Bread }, 
+      { "226560007", BrownBread }, 
+      { "http://snomed.info/sct#226560007", BrownBread }, 
+      { "226561006", BrownBreadRoll }, 
+      { "http://snomed.info/sct#226561006", BrownBreadRoll }, 
+      { "226562004", Breadcrumbs }, 
+      { "http://snomed.info/sct#226562004", Breadcrumbs }, 
+      { "226563009", Chapati }, 
+      { "http://snomed.info/sct#226563009", Chapati }, 
+      { "226564003", WhiteChapati }, 
+      { "http://snomed.info/sct#226564003", WhiteChapati }, 
+      { "226565002", WhiteChapatiMadeWithFat }, 
+      { "http://snomed.info/sct#226565002", WhiteChapatiMadeWithFat }, 
+      { "226566001", WhiteChapatiMadeWithoutFat }, 
+      { "http://snomed.info/sct#226566001", WhiteChapatiMadeWithoutFat }, 
+      { "226567005", WholemealChapati }, 
+      { "http://snomed.info/sct#226567005", WholemealChapati }, 
+      { "226568000", WholemealChapatiMadeWithFat }, 
+      { "http://snomed.info/sct#226568000", WholemealChapatiMadeWithFat }, 
+      { "226569008", WholemealChapatiMadeWithoutFat }, 
+      { "http://snomed.info/sct#226569008", WholemealChapatiMadeWithoutFat }, 
+      { "226570009", CurrantBread }, 
+      { "http://snomed.info/sct#226570009", CurrantBread }, 
+      { "226571008", GranaryBread }, 
+      { "http://snomed.info/sct#226571008", GranaryBread }, 
+      { "226572001", GranaryBreadRoll }, 
+      { "http://snomed.info/sct#226572001", GranaryBreadRoll }, 
+      { "226574000", MaltBread }, 
+      { "http://snomed.info/sct#226574000", MaltBread }, 
+      { "226575004", NaanBread }, 
+      { "http://snomed.info/sct#226575004", NaanBread }, 
+      { "226576003", Papadum }, 
+      { "http://snomed.info/sct#226576003", Papadum }, 
+      { "226577007", FriedPapadum }, 
+      { "http://snomed.info/sct#226577007", FriedPapadum }, 
+      { "226578002", GrilledPapadum }, 
+      { "http://snomed.info/sct#226578002", GrilledPapadum }, 
+      { "226579005", Paratha }, 
+      { "http://snomed.info/sct#226579005", Paratha }, 
+      { "226580008", PitaBreadSubstance }, 
+      { "http://snomed.info/sct#226580008", PitaBreadSubstance }, 
+      { "226581007", WhitePitaBreadSubstance }, 
+      { "http://snomed.info/sct#226581007", WhitePitaBreadSubstance }, 
+      { "226582000", WholemealPitaBreadSubstance }, 
+      { "http://snomed.info/sct#226582000", WholemealPitaBreadSubstance }, 
+      { "226583005", MilkBread }, 
+      { "http://snomed.info/sct#226583005", MilkBread }, 
+      { "226584004", RyeBread }, 
+      { "http://snomed.info/sct#226584004", RyeBread }, 
+      { "226585003", SodaBread }, 
+      { "http://snomed.info/sct#226585003", SodaBread }, 
+      { "226587006", Tortilla }, 
+      { "http://snomed.info/sct#226587006", Tortilla }, 
+      { "226589009", WheatgermBread }, 
+      { "http://snomed.info/sct#226589009", WheatgermBread }, 
+      { "226590000", WhiteBread }, 
+      { "http://snomed.info/sct#226590000", WhiteBread }, 
+      { "226592008", FriedWhiteBread }, 
+      { "http://snomed.info/sct#226592008", FriedWhiteBread }, 
+      { "226593003", WestIndianWhiteBread }, 
+      { "http://snomed.info/sct#226593003", WestIndianWhiteBread }, 
+      { "226595005", WhiteBreadRoll }, 
+      { "http://snomed.info/sct#226595005", WhiteBreadRoll }, 
+      { "226596006", WholemealBread }, 
+      { "http://snomed.info/sct#226596006", WholemealBread }, 
+      { "226597002", WholemealBreadRoll }, 
+      { "http://snomed.info/sct#226597002", WholemealBreadRoll }, 
+      { "226598007", BreakfastCereal }, 
+      { "http://snomed.info/sct#226598007", BreakfastCereal }, 
+      { "226601002", BranFlakes }, 
+      { "http://snomed.info/sct#226601002", BranFlakes }, 
+      { "226604005", Cornflakes }, 
+      { "http://snomed.info/sct#226604005", Cornflakes }, 
+      { "226611009", Muesli }, 
+      { "http://snomed.info/sct#226611009", Muesli }, 
+      { "226612002", MuesliSwissStyle }, 
+      { "http://snomed.info/sct#226612002", MuesliSwissStyle }, 
+      { "226613007", MuesliWithExtraFruit }, 
+      { "http://snomed.info/sct#226613007", MuesliWithExtraFruit }, 
+      { "226614001", MuesliWithNoAddedSugar }, 
+      { "http://snomed.info/sct#226614001", MuesliWithNoAddedSugar }, 
+      { "226616004", OatAndWheatBran }, 
+      { "http://snomed.info/sct#226616004", OatAndWheatBran }, 
+      { "226617008", Porridge }, 
+      { "http://snomed.info/sct#226617008", Porridge }, 
+      { "226618003", PorridgeMadeWithMilk }, 
+      { "http://snomed.info/sct#226618003", PorridgeMadeWithMilk }, 
+      { "226619006", PorridgeMadeWithSemiSkimmedMilk }, 
+      { "http://snomed.info/sct#226619006", PorridgeMadeWithSemiSkimmedMilk }, 
+      { "226620000", PorridgeMadeWithSkimmedMilk }, 
+      { "http://snomed.info/sct#226620000", PorridgeMadeWithSkimmedMilk }, 
+      { "226621001", PorridgeMadeWithWholeMilk }, 
+      { "http://snomed.info/sct#226621001", PorridgeMadeWithWholeMilk }, 
+      { "226622008", PorridgeMadeWithWater }, 
+      { "http://snomed.info/sct#226622008", PorridgeMadeWithWater }, 
+      { "226639005", Cake }, 
+      { "http://snomed.info/sct#226639005", Cake }, 
+      { "226640007", AllBranLoaf }, 
+      { "http://snomed.info/sct#226640007", AllBranLoaf }, 
+      { "226641006", BattenburgCake }, 
+      { "http://snomed.info/sct#226641006", BattenburgCake }, 
+      { "226642004", WelshCheesecake }, 
+      { "http://snomed.info/sct#226642004", WelshCheesecake }, 
+      { "226643009", CherryCake }, 
+      { "http://snomed.info/sct#226643009", CherryCake }, 
+      { "226644003", ChineseCake }, 
+      { "http://snomed.info/sct#226644003", ChineseCake }, 
+      { "226645002", ChineseGlutinousRiceFlourCake }, 
+      { "http://snomed.info/sct#226645002", ChineseGlutinousRiceFlourCake }, 
+      { "226647005", ChocolateCake }, 
+      { "http://snomed.info/sct#226647005", ChocolateCake }, 
+      { "226648000", ChocolateCakeWithButterIcing }, 
+      { "http://snomed.info/sct#226648000", ChocolateCakeWithButterIcing }, 
+      { "226649008", CoconutCake }, 
+      { "http://snomed.info/sct#226649008", CoconutCake }, 
+      { "226650008", CrispieCake }, 
+      { "http://snomed.info/sct#226650008", CrispieCake }, 
+      { "226651007", FancyIcedCake }, 
+      { "http://snomed.info/sct#226651007", FancyIcedCake }, 
+      { "226652000", FruitCake }, 
+      { "http://snomed.info/sct#226652000", FruitCake }, 
+      { "226653005", PlainFruitCake }, 
+      { "http://snomed.info/sct#226653005", PlainFruitCake }, 
+      { "226654004", RichFruitCake }, 
+      { "http://snomed.info/sct#226654004", RichFruitCake }, 
+      { "226655003", IcedFruitCake }, 
+      { "http://snomed.info/sct#226655003", IcedFruitCake }, 
+      { "226656002", WholemealFruitCake }, 
+      { "http://snomed.info/sct#226656002", WholemealFruitCake }, 
+      { "226657006", Gateau }, 
+      { "http://snomed.info/sct#226657006", Gateau }, 
+      { "226658001", Gingerbread }, 
+      { "http://snomed.info/sct#226658001", Gingerbread }, 
+      { "226659009", LardyCake }, 
+      { "http://snomed.info/sct#226659009", LardyCake }, 
+      { "226660004", MadeiraCake }, 
+      { "http://snomed.info/sct#226660004", MadeiraCake }, 
+      { "226661000", RockCake }, 
+      { "http://snomed.info/sct#226661000", RockCake }, 
+      { "226662007", Sevyiann }, 
+      { "http://snomed.info/sct#226662007", Sevyiann }, 
+      { "226663002", SpongeCake }, 
+      { "http://snomed.info/sct#226663002", SpongeCake }, 
+      { "226664008", FatlessSpongeCake }, 
+      { "http://snomed.info/sct#226664008", FatlessSpongeCake }, 
+      { "226665009", FrozenSpongeCake }, 
+      { "http://snomed.info/sct#226665009", FrozenSpongeCake }, 
+      { "226666005", JamFilledSpongeCake }, 
+      { "http://snomed.info/sct#226666005", JamFilledSpongeCake }, 
+      { "226667001", FreshCreamFilledSpongeCake }, 
+      { "http://snomed.info/sct#226667001", FreshCreamFilledSpongeCake }, 
+      { "226668006", SpongeCakeWithButterIcing }, 
+      { "http://snomed.info/sct#226668006", SpongeCakeWithButterIcing }, 
+      { "226669003", SpongeCakeMadeWithCakeMix }, 
+      { "http://snomed.info/sct#226669003", SpongeCakeMadeWithCakeMix }, 
+      { "226670002", SwissRoll }, 
+      { "http://snomed.info/sct#226670002", SwissRoll }, 
+      { "226671003", ChocolateFilledSwissRoll }, 
+      { "http://snomed.info/sct#226671003", ChocolateFilledSwissRoll }, 
+      { "226672005", JamFilledSwissRoll }, 
+      { "http://snomed.info/sct#226672005", JamFilledSwissRoll }, 
+      { "226673000", IndividualSwissRoll }, 
+      { "http://snomed.info/sct#226673000", IndividualSwissRoll }, 
+      { "226674006", WelshCake }, 
+      { "http://snomed.info/sct#226674006", WelshCake }, 
+      { "226675007", IndividualCakesAndPastries }, 
+      { "http://snomed.info/sct#226675007", IndividualCakesAndPastries }, 
+      { "226676008", AsianPastry }, 
+      { "http://snomed.info/sct#226676008", AsianPastry }, 
+      { "226677004", BrandySnap }, 
+      { "http://snomed.info/sct#226677004", BrandySnap }, 
+      { "226678009", Burfi }, 
+      { "http://snomed.info/sct#226678009", Burfi }, 
+      { "226679001", ChelseaBun }, 
+      { "http://snomed.info/sct#226679001", ChelseaBun }, 
+      { "226680003", ChouxBun }, 
+      { "http://snomed.info/sct#226680003", ChouxBun }, 
+      { "226681004", CreamHorn }, 
+      { "http://snomed.info/sct#226681004", CreamHorn }, 
+      { "226682006", Crumpet }, 
+      { "http://snomed.info/sct#226682006", Crumpet }, 
+      { "226683001", CurrantBun }, 
+      { "http://snomed.info/sct#226683001", CurrantBun }, 
+      { "226684007", CustardTart }, 
+      { "http://snomed.info/sct#226684007", CustardTart }, 
+      { "226685008", DanishPastry }, 
+      { "http://snomed.info/sct#226685008", DanishPastry }, 
+      { "226686009", Doughnut }, 
+      { "http://snomed.info/sct#226686009", Doughnut }, 
+      { "226687000", JamDoughnut }, 
+      { "http://snomed.info/sct#226687000", JamDoughnut }, 
+      { "226688005", RingDoughnut }, 
+      { "http://snomed.info/sct#226688005", RingDoughnut }, 
+      { "226689002", FreshCreamDoughnut }, 
+      { "http://snomed.info/sct#226689002", FreshCreamDoughnut }, 
+      { "226690006", EcclesCake }, 
+      { "http://snomed.info/sct#226690006", EcclesCake }, 
+      { "226691005", Eclair }, 
+      { "http://snomed.info/sct#226691005", Eclair }, 
+      { "226692003", Flapjack }, 
+      { "http://snomed.info/sct#226692003", Flapjack }, 
+      { "226693008", GreekPastry }, 
+      { "http://snomed.info/sct#226693008", GreekPastry }, 
+      { "226694002", GulabJamen }, 
+      { "http://snomed.info/sct#226694002", GulabJamen }, 
+      { "226695001", Halwa }, 
+      { "http://snomed.info/sct#226695001", Halwa }, 
+      { "226697009", HotCrossBun }, 
+      { "http://snomed.info/sct#226697009", HotCrossBun }, 
+      { "226699007", JamTart }, 
+      { "http://snomed.info/sct#226699007", JamTart }, 
+      { "226700008", Jellabi }, 
+      { "http://snomed.info/sct#226700008", Jellabi }, 
+      { "226701007", MeltingMoment }, 
+      { "http://snomed.info/sct#226701007", MeltingMoment }, 
+      { "226702000", MincePie }, 
+      { "http://snomed.info/sct#226702000", MincePie }, 
+      { "226703005", MincemeatTart }, 
+      { "http://snomed.info/sct#226703005", MincemeatTart }, 
+      { "226704004", Muffin }, 
+      { "http://snomed.info/sct#226704004", Muffin }, 
+      { "226705003", Pinni }, 
+      { "http://snomed.info/sct#226705003", Pinni }, 
+      { "226706002", RumBaba }, 
+      { "http://snomed.info/sct#226706002", RumBaba }, 
+      { "226707006", Scone }, 
+      { "http://snomed.info/sct#226707006", Scone }, 
+      { "226708001", CheeseScone }, 
+      { "http://snomed.info/sct#226708001", CheeseScone }, 
+      { "226709009", FruitScone }, 
+      { "http://snomed.info/sct#226709009", FruitScone }, 
+      { "226710004", PlainScone }, 
+      { "http://snomed.info/sct#226710004", PlainScone }, 
+      { "226711000", PotatoScone }, 
+      { "http://snomed.info/sct#226711000", PotatoScone }, 
+      { "226712007", WholemealScone }, 
+      { "http://snomed.info/sct#226712007", WholemealScone }, 
+      { "226713002", WholemealFruitScone }, 
+      { "http://snomed.info/sct#226713002", WholemealFruitScone }, 
+      { "226714008", ScotchPancake }, 
+      { "http://snomed.info/sct#226714008", ScotchPancake }, 
+      { "226715009", Shortbread }, 
+      { "http://snomed.info/sct#226715009", Shortbread }, 
+      { "226716005", StrawberryTartlet }, 
+      { "http://snomed.info/sct#226716005", StrawberryTartlet }, 
+      { "226717001", Teacake }, 
+      { "http://snomed.info/sct#226717001", Teacake }, 
+      { "226718006", VanillaSlice }, 
+      { "http://snomed.info/sct#226718006", VanillaSlice }, 
+      { "226719003", Waffle }, 
+      { "http://snomed.info/sct#226719003", Waffle }, 
+      { "226720009", Arrowroot }, 
+      { "http://snomed.info/sct#226720009", Arrowroot }, 
+      { "226721008", PearlBarley }, 
+      { "http://snomed.info/sct#226721008", PearlBarley }, 
+      { "226722001", WholeGrainBarley }, 
+      { "http://snomed.info/sct#226722001", WholeGrainBarley }, 
+      { "226723006", BuckwheatCereal }, 
+      { "http://snomed.info/sct#226723006", BuckwheatCereal }, 
+      { "226724000", BulgurWheat }, 
+      { "http://snomed.info/sct#226724000", BulgurWheat }, 
+      { "226725004", Oatmeal }, 
+      { "http://snomed.info/sct#226725004", Oatmeal }, 
+      { "226726003", Popcorn }, 
+      { "http://snomed.info/sct#226726003", Popcorn }, 
+      { "226727007", PlainPopcorn }, 
+      { "http://snomed.info/sct#226727007", PlainPopcorn }, 
+      { "226728002", SweetPopcorn }, 
+      { "http://snomed.info/sct#226728002", SweetPopcorn }, 
+      { "226729005", SaltedPopcorn }, 
+      { "http://snomed.info/sct#226729005", SaltedPopcorn }, 
+      { "226730000", ButteredPopcorn }, 
+      { "http://snomed.info/sct#226730000", ButteredPopcorn }, 
+      { "226731001", Sago }, 
+      { "http://snomed.info/sct#226731001", Sago }, 
+      { "226732008", Semolina }, 
+      { "http://snomed.info/sct#226732008", Semolina }, 
+      { "226733003", Tapioca }, 
+      { "http://snomed.info/sct#226733003", Tapioca }, 
+      { "226734009", Wheatgerm }, 
+      { "http://snomed.info/sct#226734009", Wheatgerm }, 
+      { "226735005", Noodles }, 
+      { "http://snomed.info/sct#226735005", Noodles }, 
+      { "226736006", EggNoodles }, 
+      { "http://snomed.info/sct#226736006", EggNoodles }, 
+      { "226737002", FriedNoodles }, 
+      { "http://snomed.info/sct#226737002", FriedNoodles }, 
+      { "226738007", PlainNoodles }, 
+      { "http://snomed.info/sct#226738007", PlainNoodles }, 
+      { "226739004", PotNoodles }, 
+      { "http://snomed.info/sct#226739004", PotNoodles }, 
+      { "226740002", Pasta }, 
+      { "http://snomed.info/sct#226740002", Pasta }, 
+      { "226741003", Cannelloni }, 
+      { "http://snomed.info/sct#226741003", Cannelloni }, 
+      { "226742005", Macaroni }, 
+      { "http://snomed.info/sct#226742005", Macaroni }, 
+      { "226743000", Ravioli }, 
+      { "http://snomed.info/sct#226743000", Ravioli }, 
+      { "226744006", Spaghetti }, 
+      { "http://snomed.info/sct#226744006", Spaghetti }, 
+      { "226745007", WhiteSpaghetti }, 
+      { "http://snomed.info/sct#226745007", WhiteSpaghetti }, 
+      { "226746008", WholemealSpaghetti }, 
+      { "http://snomed.info/sct#226746008", WholemealSpaghetti }, 
+      { "226747004", TinnedSpaghetti }, 
+      { "http://snomed.info/sct#226747004", TinnedSpaghetti }, 
+      { "226748009", Vermicelli }, 
+      { "http://snomed.info/sct#226748009", Vermicelli }, 
+      { "226749001", Pastry }, 
+      { "http://snomed.info/sct#226749001", Pastry }, 
+      { "226750001", ChouxPastry }, 
+      { "http://snomed.info/sct#226750001", ChouxPastry }, 
+      { "226751002", FlakyPastry }, 
+      { "http://snomed.info/sct#226751002", FlakyPastry }, 
+      { "226752009", FlanCasePastry }, 
+      { "http://snomed.info/sct#226752009", FlanCasePastry }, 
+      { "226753004", PuffPastry }, 
+      { "http://snomed.info/sct#226753004", PuffPastry }, 
+      { "226754005", ShortcrustPastry }, 
+      { "http://snomed.info/sct#226754005", ShortcrustPastry }, 
+      { "226755006", WholemealPastry }, 
+      { "http://snomed.info/sct#226755006", WholemealPastry }, 
+      { "226756007", BrownRice }, 
+      { "http://snomed.info/sct#226756007", BrownRice }, 
+      { "226757003", RedRice }, 
+      { "http://snomed.info/sct#226757003", RedRice }, 
+      { "226758008", SavoryRice }, 
+      { "http://snomed.info/sct#226758008", SavoryRice }, 
+      { "226759000", WhiteRice }, 
+      { "http://snomed.info/sct#226759000", WhiteRice }, 
+      { "226760005", DairyFoods }, 
+      { "http://snomed.info/sct#226760005", DairyFoods }, 
+      { "226761009", GoldTopMilk }, 
+      { "http://snomed.info/sct#226761009", GoldTopMilk }, 
+      { "226762002", FlavoredCowQuoteSMilk }, 
+      { "http://snomed.info/sct#226762002", FlavoredCowQuoteSMilk }, 
+      { "226763007", SemiSkimmedMilk }, 
+      { "http://snomed.info/sct#226763007", SemiSkimmedMilk }, 
+      { "226764001", CalciumFortifiedSemiSkimmedMilk }, 
+      { "http://snomed.info/sct#226764001", CalciumFortifiedSemiSkimmedMilk }, 
+      { "226765000", CalciumFortifiedSkimmedMilk }, 
+      { "http://snomed.info/sct#226765000", CalciumFortifiedSkimmedMilk }, 
+      { "226766004", SterilizedMilk }, 
+      { "http://snomed.info/sct#226766004", SterilizedMilk }, 
+      { "226767008", WholeMilk }, 
+      { "http://snomed.info/sct#226767008", WholeMilk }, 
+      { "226768003", CalciumFortifiedWholeMilk }, 
+      { "http://snomed.info/sct#226768003", CalciumFortifiedWholeMilk }, 
+      { "226769006", Buttermilk }, 
+      { "http://snomed.info/sct#226769006", Buttermilk }, 
+      { "226770007", Whey }, 
+      { "http://snomed.info/sct#226770007", Whey }, 
+      { "226771006", DriedMilk }, 
+      { "http://snomed.info/sct#226771006", DriedMilk }, 
+      { "226774003", ButtermilkPowder }, 
+      { "http://snomed.info/sct#226774003", ButtermilkPowder }, 
+      { "226775002", DriedGoatQuoteSMilk }, 
+      { "http://snomed.info/sct#226775002", DriedGoatQuoteSMilk }, 
+      { "226776001", DriedCowQuoteSMilk }, 
+      { "http://snomed.info/sct#226776001", DriedCowQuoteSMilk }, 
+      { "226777005", DriedSemiSkimmedCowQuoteSMilk }, 
+      { "http://snomed.info/sct#226777005", DriedSemiSkimmedCowQuoteSMilk }, 
+      { "226778000", SkimmedMilkPowder }, 
+      { "http://snomed.info/sct#226778000", SkimmedMilkPowder }, 
+      { "226779008", DriedSkimmedCowQuoteSMilkWithVegetableFat }, 
+      { "http://snomed.info/sct#226779008", DriedSkimmedCowQuoteSMilkWithVegetableFat }, 
+      { "226780006", DriedWholeMilk }, 
+      { "http://snomed.info/sct#226780006", DriedWholeMilk }, 
+      { "226781005", DriedSoyaMilk }, 
+      { "http://snomed.info/sct#226781005", DriedSoyaMilk }, 
+      { "226782003", DriedWhey }, 
+      { "http://snomed.info/sct#226782003", DriedWhey }, 
+      { "226783008", TinnedMilk }, 
+      { "http://snomed.info/sct#226783008", TinnedMilk }, 
+      { "226784002", CondensedMilk }, 
+      { "http://snomed.info/sct#226784002", CondensedMilk }, 
+      { "226785001", SkimmedSweetenedCondensedMilk }, 
+      { "http://snomed.info/sct#226785001", SkimmedSweetenedCondensedMilk }, 
+      { "226786000", WholeSweetenedCondensedMilk }, 
+      { "http://snomed.info/sct#226786000", WholeSweetenedCondensedMilk }, 
+      { "226787009", EvaporatedMilk }, 
+      { "http://snomed.info/sct#226787009", EvaporatedMilk }, 
+      { "226788004", LowFatEvaporatedMilk }, 
+      { "http://snomed.info/sct#226788004", LowFatEvaporatedMilk }, 
+      { "226789007", BreastMilk }, 
+      { "http://snomed.info/sct#226789007", BreastMilk }, 
+      { "226790003", EBMExpressedBreastMilk }, 
+      { "http://snomed.info/sct#226790003", EBMExpressedBreastMilk }, 
+      { "226791004", SheepMilk }, 
+      { "http://snomed.info/sct#226791004", SheepMilk }, 
+      { "226793001", SoyaMilk }, 
+      { "http://snomed.info/sct#226793001", SoyaMilk }, 
+      { "226795008", JuniorMilk }, 
+      { "http://snomed.info/sct#226795008", JuniorMilk }, 
+      { "226796009", FreshCream }, 
+      { "http://snomed.info/sct#226796009", FreshCream }, 
+      { "226797000", HalfCream }, 
+      { "http://snomed.info/sct#226797000", HalfCream }, 
+      { "226798005", DoubleCream }, 
+      { "http://snomed.info/sct#226798005", DoubleCream }, 
+      { "226799002", ClottedCream }, 
+      { "http://snomed.info/sct#226799002", ClottedCream }, 
+      { "226800003", SingleCream }, 
+      { "http://snomed.info/sct#226800003", SingleCream }, 
+      { "226801004", SouredCream }, 
+      { "http://snomed.info/sct#226801004", SouredCream }, 
+      { "226802006", WhippingCream }, 
+      { "http://snomed.info/sct#226802006", WhippingCream }, 
+      { "226803001", TinnedCream }, 
+      { "http://snomed.info/sct#226803001", TinnedCream }, 
+      { "226805008", ImitationCream }, 
+      { "http://snomed.info/sct#226805008", ImitationCream }, 
+      { "226808005", Smatana }, 
+      { "http://snomed.info/sct#226808005", Smatana }, 
+      { "226809002", CheeseSpread }, 
+      { "http://snomed.info/sct#226809002", CheeseSpread }, 
+      { "226810007", PlainCheeseSpread }, 
+      { "http://snomed.info/sct#226810007", PlainCheeseSpread }, 
+      { "226811006", FlavoredCheeseSpread }, 
+      { "http://snomed.info/sct#226811006", FlavoredCheeseSpread }, 
+      { "226812004", LacticCheeseSpread }, 
+      { "http://snomed.info/sct#226812004", LacticCheeseSpread }, 
+      { "226813009", LowFatCheeseSpread }, 
+      { "http://snomed.info/sct#226813009", LowFatCheeseSpread }, 
+      { "226814003", CottageCheese }, 
+      { "http://snomed.info/sct#226814003", CottageCheese }, 
+      { "226815002", PlainCottageCheese }, 
+      { "http://snomed.info/sct#226815002", PlainCottageCheese }, 
+      { "226816001", VeryLowFatCottageCheese }, 
+      { "http://snomed.info/sct#226816001", VeryLowFatCottageCheese }, 
+      { "226817005", CottageCheeseWithAdditions }, 
+      { "http://snomed.info/sct#226817005", CottageCheeseWithAdditions }, 
+      { "226818000", HardCheese }, 
+      { "http://snomed.info/sct#226818000", HardCheese }, 
+      { "226819008", CaerphillyCheese }, 
+      { "http://snomed.info/sct#226819008", CaerphillyCheese }, 
+      { "226820002", CheddarCheese }, 
+      { "http://snomed.info/sct#226820002", CheddarCheese }, 
+      { "226821003", ReducedFatCheddarCheese }, 
+      { "http://snomed.info/sct#226821003", ReducedFatCheddarCheese }, 
+      { "226822005", VegetarianCheddarCheese }, 
+      { "http://snomed.info/sct#226822005", VegetarianCheddarCheese }, 
+      { "226823000", CheshireCheese }, 
+      { "http://snomed.info/sct#226823000", CheshireCheese }, 
+      { "226824006", ReducedFatCheshireCheese }, 
+      { "http://snomed.info/sct#226824006", ReducedFatCheshireCheese }, 
+      { "226825007", DerbyCheese }, 
+      { "http://snomed.info/sct#226825007", DerbyCheese }, 
+      { "226826008", DanishBlueCheese }, 
+      { "http://snomed.info/sct#226826008", DanishBlueCheese }, 
+      { "226827004", DoubleGloucesterCheese }, 
+      { "http://snomed.info/sct#226827004", DoubleGloucesterCheese }, 
+      { "226828009", EdamCheese }, 
+      { "http://snomed.info/sct#226828009", EdamCheese }, 
+      { "226829001", EdamTypeCheeseReducedFat }, 
+      { "http://snomed.info/sct#226829001", EdamTypeCheeseReducedFat }, 
+      { "226830006", EmmentalCheese }, 
+      { "http://snomed.info/sct#226830006", EmmentalCheese }, 
+      { "226831005", FetaCheese }, 
+      { "http://snomed.info/sct#226831005", FetaCheese }, 
+      { "226832003", GoudaCheese }, 
+      { "http://snomed.info/sct#226832003", GoudaCheese }, 
+      { "226834002", GruyereCheese }, 
+      { "http://snomed.info/sct#226834002", GruyereCheese }, 
+      { "226835001", LancashireCheese }, 
+      { "http://snomed.info/sct#226835001", LancashireCheese }, 
+      { "226836000", LeicesterCheese }, 
+      { "http://snomed.info/sct#226836000", LeicesterCheese }, 
+      { "226837009", MozzarellaCheese }, 
+      { "http://snomed.info/sct#226837009", MozzarellaCheese }, 
+      { "226838004", ParmesanCheese }, 
+      { "http://snomed.info/sct#226838004", ParmesanCheese }, 
+      { "226839007", RedWindsorCheese }, 
+      { "http://snomed.info/sct#226839007", RedWindsorCheese }, 
+      { "226840009", RoquefortCheese }, 
+      { "http://snomed.info/sct#226840009", RoquefortCheese }, 
+      { "226841008", SageDerbyCheese }, 
+      { "http://snomed.info/sct#226841008", SageDerbyCheese }, 
+      { "226842001", SoyaCheese }, 
+      { "http://snomed.info/sct#226842001", SoyaCheese }, 
+      { "226843006", StiltonWhiteCheese }, 
+      { "http://snomed.info/sct#226843006", StiltonWhiteCheese }, 
+      { "226844000", StiltonBlueCheese }, 
+      { "http://snomed.info/sct#226844000", StiltonBlueCheese }, 
+      { "226845004", WensleydaleCheese }, 
+      { "http://snomed.info/sct#226845004", WensleydaleCheese }, 
+      { "226846003", ProcessedCheese }, 
+      { "http://snomed.info/sct#226846003", ProcessedCheese }, 
+      { "226847007", SmokedProcessedCheese }, 
+      { "http://snomed.info/sct#226847007", SmokedProcessedCheese }, 
+      { "226848002", SoftCheese }, 
+      { "http://snomed.info/sct#226848002", SoftCheese }, 
+      { "226849005", CreamCheese }, 
+      { "http://snomed.info/sct#226849005", CreamCheese }, 
+      { "226850005", MediumFatCreamCheese }, 
+      { "http://snomed.info/sct#226850005", MediumFatCreamCheese }, 
+      { "226851009", LowFatCreamCheese }, 
+      { "http://snomed.info/sct#226851009", LowFatCreamCheese }, 
+      { "226852002", GoatsMilkSoftCheese }, 
+      { "http://snomed.info/sct#226852002", GoatsMilkSoftCheese }, 
+      { "226853007", RicottaCheese }, 
+      { "http://snomed.info/sct#226853007", RicottaCheese }, 
+      { "226854001", SoftMoldRipenedCheese }, 
+      { "http://snomed.info/sct#226854001", SoftMoldRipenedCheese }, 
+      { "226855000", BrieCheese }, 
+      { "http://snomed.info/sct#226855000", BrieCheese }, 
+      { "226856004", CamembertCheese }, 
+      { "http://snomed.info/sct#226856004", CamembertCheese }, 
+      { "226857008", FromageFrais }, 
+      { "http://snomed.info/sct#226857008", FromageFrais }, 
+      { "226858003", PlainFromageFrais }, 
+      { "http://snomed.info/sct#226858003", PlainFromageFrais }, 
+      { "226859006", FlavoredFromageFrais }, 
+      { "http://snomed.info/sct#226859006", FlavoredFromageFrais }, 
+      { "226860001", FruitFromageFrais }, 
+      { "http://snomed.info/sct#226860001", FruitFromageFrais }, 
+      { "226861002", VeryLowFatFromageFrais }, 
+      { "http://snomed.info/sct#226861002", VeryLowFatFromageFrais }, 
+      { "226862009", Quark }, 
+      { "http://snomed.info/sct#226862009", Quark }, 
+      { "226863004", Yoghurt }, 
+      { "http://snomed.info/sct#226863004", Yoghurt }, 
+      { "226864005", WholeMilkYogurt }, 
+      { "http://snomed.info/sct#226864005", WholeMilkYogurt }, 
+      { "226865006", WholeMilkPlainYogurt }, 
+      { "http://snomed.info/sct#226865006", WholeMilkPlainYogurt }, 
+      { "226866007", WholeMilkFruitYogurt }, 
+      { "http://snomed.info/sct#226866007", WholeMilkFruitYogurt }, 
+      { "226867003", WholeMilkFlavoredYoghurt }, 
+      { "http://snomed.info/sct#226867003", WholeMilkFlavoredYoghurt }, 
+      { "226868008", LiveYogurt }, 
+      { "http://snomed.info/sct#226868008", LiveYogurt }, 
+      { "226869000", OrganicYogurt }, 
+      { "http://snomed.info/sct#226869000", OrganicYogurt }, 
+      { "226870004", GoatQuoteSMilkYogurt }, 
+      { "http://snomed.info/sct#226870004", GoatQuoteSMilkYogurt }, 
+      { "226871000", LowFatYogurt }, 
+      { "http://snomed.info/sct#226871000", LowFatYogurt }, 
+      { "226872007", PlainLowFatYogurt }, 
+      { "http://snomed.info/sct#226872007", PlainLowFatYogurt }, 
+      { "226873002", FlavoredLowFatYoghurt }, 
+      { "http://snomed.info/sct#226873002", FlavoredLowFatYoghurt }, 
+      { "226874008", FruitLowFatYogurt }, 
+      { "http://snomed.info/sct#226874008", FruitLowFatYogurt }, 
+      { "226875009", MuesliNutLowFatYogurt }, 
+      { "http://snomed.info/sct#226875009", MuesliNutLowFatYogurt }, 
+      { "226876005", LowCalorieYogurt }, 
+      { "http://snomed.info/sct#226876005", LowCalorieYogurt }, 
+      { "226877001", DrinkingYogurt }, 
+      { "http://snomed.info/sct#226877001", DrinkingYogurt }, 
+      { "226878006", GreekYogurt }, 
+      { "http://snomed.info/sct#226878006", GreekYogurt }, 
+      { "226879003", SheepQuoteSMilkYogurt }, 
+      { "http://snomed.info/sct#226879003", SheepQuoteSMilkYogurt }, 
+      { "226880000", SoyaMilkYogurt }, 
+      { "http://snomed.info/sct#226880000", SoyaMilkYogurt }, 
+      { "226881001", DriedEgg }, 
+      { "http://snomed.info/sct#226881001", DriedEgg }, 
+      { "226882008", BEBoiledEgg }, 
+      { "http://snomed.info/sct#226882008", BEBoiledEgg }, 
+      { "226883003", FriedEgg }, 
+      { "http://snomed.info/sct#226883003", FriedEgg }, 
+      { "226884009", PEPoachedEgg }, 
+      { "http://snomed.info/sct#226884009", PEPoachedEgg }, 
+      { "226885005", RawEgg }, 
+      { "http://snomed.info/sct#226885005", RawEgg }, 
+      { "226886006", ScrambledEgg }, 
+      { "http://snomed.info/sct#226886006", ScrambledEgg }, 
+      { "226887002", FatAndOil }, 
+      { "http://snomed.info/sct#226887002", FatAndOil }, 
+      { "226888007", Butter }, 
+      { "http://snomed.info/sct#226888007", Butter }, 
+      { "226889004", BlendedSpread }, 
+      { "http://snomed.info/sct#226889004", BlendedSpread }, 
+      { "226890008", Margarine }, 
+      { "http://snomed.info/sct#226890008", Margarine }, 
+      { "226891007", HardVegetableFatMargarine }, 
+      { "http://snomed.info/sct#226891007", HardVegetableFatMargarine }, 
+      { "226892000", HardAnimalAndVegetableFatMargarine }, 
+      { "http://snomed.info/sct#226892000", HardAnimalAndVegetableFatMargarine }, 
+      { "226894004", SoftPolyunsaturatedFatMargarine }, 
+      { "http://snomed.info/sct#226894004", SoftPolyunsaturatedFatMargarine }, 
+      { "226895003", OliveOilMargarine }, 
+      { "http://snomed.info/sct#226895003", OliveOilMargarine }, 
+      { "226896002", LowFatSpread }, 
+      { "http://snomed.info/sct#226896002", LowFatSpread }, 
+      { "226897006", VLFVeryLowFatSpread }, 
+      { "http://snomed.info/sct#226897006", VLFVeryLowFatSpread }, 
+      { "226898001", Dripping }, 
+      { "http://snomed.info/sct#226898001", Dripping }, 
+      { "226899009", Lard }, 
+      { "http://snomed.info/sct#226899009", Lard }, 
+      { "226900004", Suet }, 
+      { "http://snomed.info/sct#226900004", Suet }, 
+      { "226901000", Ghee }, 
+      { "http://snomed.info/sct#226901000", Ghee }, 
+      { "226902007", ButterGhee }, 
+      { "http://snomed.info/sct#226902007", ButterGhee }, 
+      { "226903002", PalmOilGhee }, 
+      { "http://snomed.info/sct#226903002", PalmOilGhee }, 
+      { "226904008", VegetableOilGhee }, 
+      { "http://snomed.info/sct#226904008", VegetableOilGhee }, 
+      { "226907001", PalmOil }, 
+      { "http://snomed.info/sct#226907001", PalmOil }, 
+      { "226908006", RapeseedOil }, 
+      { "http://snomed.info/sct#226908006", RapeseedOil }, 
+      { "226909003", RapeseedOilHighErucicAcid }, 
+      { "http://snomed.info/sct#226909003", RapeseedOilHighErucicAcid }, 
+      { "226910008", RapeseedOilLowErucicAcid }, 
+      { "http://snomed.info/sct#226910008", RapeseedOilLowErucicAcid }, 
+      { "226911007", SoyaOil }, 
+      { "http://snomed.info/sct#226911007", SoyaOil }, 
+      { "226912000", SunflowerseedOil }, 
+      { "http://snomed.info/sct#226912000", SunflowerseedOil }, 
+      { "226913005", BlendedVegetableOil }, 
+      { "http://snomed.info/sct#226913005", BlendedVegetableOil }, 
+      { "226914004", PolyunsaturatedVegetableOil }, 
+      { "http://snomed.info/sct#226914004", PolyunsaturatedVegetableOil }, 
+      { "226915003", RedMeat }, 
+      { "http://snomed.info/sct#226915003", RedMeat }, 
+      { "226916002", Beef }, 
+      { "http://snomed.info/sct#226916002", Beef }, 
+      { "226917006", BeefSteak }, 
+      { "http://snomed.info/sct#226917006", BeefSteak }, 
+      { "226918001", GrilledBeefSteak }, 
+      { "http://snomed.info/sct#226918001", GrilledBeefSteak }, 
+      { "226919009", FriedBeefSteak }, 
+      { "http://snomed.info/sct#226919009", FriedBeefSteak }, 
+      { "226920003", BoiledBeef }, 
+      { "http://snomed.info/sct#226920003", BoiledBeef }, 
+      { "226921004", BoiledSaltBeef }, 
+      { "http://snomed.info/sct#226921004", BoiledSaltBeef }, 
+      { "226922006", MincedBeef }, 
+      { "http://snomed.info/sct#226922006", MincedBeef }, 
+      { "226923001", StewedMincedBeef }, 
+      { "http://snomed.info/sct#226923001", StewedMincedBeef }, 
+      { "226924007", StewedExtraLeanMincedBeef }, 
+      { "http://snomed.info/sct#226924007", StewedExtraLeanMincedBeef }, 
+      { "226925008", RoastBeef }, 
+      { "http://snomed.info/sct#226925008", RoastBeef }, 
+      { "226926009", LeanRoastBeef }, 
+      { "http://snomed.info/sct#226926009", LeanRoastBeef }, 
+      { "226927000", StewedBeef }, 
+      { "http://snomed.info/sct#226927000", StewedBeef }, 
+      { "226928005", Bacon }, 
+      { "http://snomed.info/sct#226928005", Bacon }, 
+      { "226929002", BoiledBacon }, 
+      { "http://snomed.info/sct#226929002", BoiledBacon }, 
+      { "226930007", FriedBacon }, 
+      { "http://snomed.info/sct#226930007", FriedBacon }, 
+      { "226931006", GrilledBacon }, 
+      { "http://snomed.info/sct#226931006", GrilledBacon }, 
+      { "226932004", Gammon }, 
+      { "http://snomed.info/sct#226932004", Gammon }, 
+      { "226933009", RoastHam }, 
+      { "http://snomed.info/sct#226933009", RoastHam }, 
+      { "226934003", Pork }, 
+      { "http://snomed.info/sct#226934003", Pork }, 
+      { "226935002", FriedPorkChop }, 
+      { "http://snomed.info/sct#226935002", FriedPorkChop }, 
+      { "226936001", GrilledPorkChop }, 
+      { "http://snomed.info/sct#226936001", GrilledPorkChop }, 
+      { "226937005", MincedPork }, 
+      { "http://snomed.info/sct#226937005", MincedPork }, 
+      { "226938000", RoastPork }, 
+      { "http://snomed.info/sct#226938000", RoastPork }, 
+      { "226939008", LeanRoastPork }, 
+      { "http://snomed.info/sct#226939008", LeanRoastPork }, 
+      { "226940005", RoastBellyPork }, 
+      { "http://snomed.info/sct#226940005", RoastBellyPork }, 
+      { "226941009", BoiledHam }, 
+      { "http://snomed.info/sct#226941009", BoiledHam }, 
+      { "226942002", Lamb }, 
+      { "http://snomed.info/sct#226942002", Lamb }, 
+      { "226943007", FriedLambChop }, 
+      { "http://snomed.info/sct#226943007", FriedLambChop }, 
+      { "226944001", GrilledLambChop }, 
+      { "http://snomed.info/sct#226944001", GrilledLambChop }, 
+      { "226945000", MincedLamb }, 
+      { "http://snomed.info/sct#226945000", MincedLamb }, 
+      { "226946004", RoastLamb }, 
+      { "http://snomed.info/sct#226946004", RoastLamb }, 
+      { "226947008", LeanRoastLamb }, 
+      { "http://snomed.info/sct#226947008", LeanRoastLamb }, 
+      { "226948003", RoastLegOfLamb }, 
+      { "http://snomed.info/sct#226948003", RoastLegOfLamb }, 
+      { "226949006", RoastShoulderOfLamb }, 
+      { "http://snomed.info/sct#226949006", RoastShoulderOfLamb }, 
+      { "226950006", RoastBreastOfLamb }, 
+      { "http://snomed.info/sct#226950006", RoastBreastOfLamb }, 
+      { "226951005", StewedLamb }, 
+      { "http://snomed.info/sct#226951005", StewedLamb }, 
+      { "226952003", Veal }, 
+      { "http://snomed.info/sct#226952003", Veal }, 
+      { "226953008", FriedVeal }, 
+      { "http://snomed.info/sct#226953008", FriedVeal }, 
+      { "226954002", GrilledVeal }, 
+      { "http://snomed.info/sct#226954002", GrilledVeal }, 
+      { "226955001", Chicken }, 
+      { "http://snomed.info/sct#226955001", Chicken }, 
+      { "226956000", BoiledChicken }, 
+      { "http://snomed.info/sct#226956000", BoiledChicken }, 
+      { "226957009", FriedChicken }, 
+      { "http://snomed.info/sct#226957009", FriedChicken }, 
+      { "226958004", FriedChickenInBatter }, 
+      { "http://snomed.info/sct#226958004", FriedChickenInBatter }, 
+      { "226959007", FriedChickenInBreadcrumb }, 
+      { "http://snomed.info/sct#226959007", FriedChickenInBreadcrumb }, 
+      { "226960002", FriedChickenNuggets }, 
+      { "http://snomed.info/sct#226960002", FriedChickenNuggets }, 
+      { "226961003", RoastChicken }, 
+      { "http://snomed.info/sct#226961003", RoastChicken }, 
+      { "226962005", MincedChicken }, 
+      { "http://snomed.info/sct#226962005", MincedChicken }, 
+      { "226963000", DuckMeat }, 
+      { "http://snomed.info/sct#226963000", DuckMeat }, 
+      { "226964006", RoastDuck }, 
+      { "http://snomed.info/sct#226964006", RoastDuck }, 
+      { "226965007", Goose }, 
+      { "http://snomed.info/sct#226965007", Goose }, 
+      { "226966008", RoastGoose }, 
+      { "http://snomed.info/sct#226966008", RoastGoose }, 
+      { "226967004", TurkeyMeat }, 
+      { "http://snomed.info/sct#226967004", TurkeyMeat }, 
+      { "226968009", RoastTurkey }, 
+      { "http://snomed.info/sct#226968009", RoastTurkey }, 
+      { "226969001", StewedTurkey }, 
+      { "http://snomed.info/sct#226969001", StewedTurkey }, 
+      { "226970000", MincedTurkey }, 
+      { "http://snomed.info/sct#226970000", MincedTurkey }, 
+      { "226971001", GameMeat }, 
+      { "http://snomed.info/sct#226971001", GameMeat }, 
+      { "226972008", GrouseMeat }, 
+      { "http://snomed.info/sct#226972008", GrouseMeat }, 
+      { "226973003", RoastGrouse }, 
+      { "http://snomed.info/sct#226973003", RoastGrouse }, 
+      { "226974009", PartridgeMeat }, 
+      { "http://snomed.info/sct#226974009", PartridgeMeat }, 
+      { "226975005", RoastPartridge }, 
+      { "http://snomed.info/sct#226975005", RoastPartridge }, 
+      { "226976006", Pheasant }, 
+      { "http://snomed.info/sct#226976006", Pheasant }, 
+      { "226977002", RoastPheasant }, 
+      { "http://snomed.info/sct#226977002", RoastPheasant }, 
+      { "226978007", RoastPigeon }, 
+      { "http://snomed.info/sct#226978007", RoastPigeon }, 
+      { "226979004", RoastVenison }, 
+      { "http://snomed.info/sct#226979004", RoastVenison }, 
+      { "226980001", StewedHare }, 
+      { "http://snomed.info/sct#226980001", StewedHare }, 
+      { "226981002", StewedRabbit }, 
+      { "http://snomed.info/sct#226981002", StewedRabbit }, 
+      { "226982009", Offal }, 
+      { "http://snomed.info/sct#226982009", Offal }, 
+      { "226983004", HeartMeat }, 
+      { "http://snomed.info/sct#226983004", HeartMeat }, 
+      { "226984005", StewedHeart }, 
+      { "http://snomed.info/sct#226984005", StewedHeart }, 
+      { "226985006", RoastHeart }, 
+      { "http://snomed.info/sct#226985006", RoastHeart }, 
+      { "226987003", KidneyMeat }, 
+      { "http://snomed.info/sct#226987003", KidneyMeat }, 
+      { "226988008", FriedKidney }, 
+      { "http://snomed.info/sct#226988008", FriedKidney }, 
+      { "226989000", GrilledKidney }, 
+      { "http://snomed.info/sct#226989000", GrilledKidney }, 
+      { "226990009", StewedKidney }, 
+      { "http://snomed.info/sct#226990009", StewedKidney }, 
+      { "226991008", LiverMeat }, 
+      { "http://snomed.info/sct#226991008", LiverMeat }, 
+      { "226992001", FriedLiver }, 
+      { "http://snomed.info/sct#226992001", FriedLiver }, 
+      { "226993006", GrilledLiver }, 
+      { "http://snomed.info/sct#226993006", GrilledLiver }, 
+      { "226994000", StewedLiver }, 
+      { "http://snomed.info/sct#226994000", StewedLiver }, 
+      { "226995004", Oxtail }, 
+      { "http://snomed.info/sct#226995004", Oxtail }, 
+      { "226996003", StewedOxtail }, 
+      { "http://snomed.info/sct#226996003", StewedOxtail }, 
+      { "226997007", Sweetbread }, 
+      { "http://snomed.info/sct#226997007", Sweetbread }, 
+      { "226998002", FriedSweetbread }, 
+      { "http://snomed.info/sct#226998002", FriedSweetbread }, 
+      { "226999005", TongueMeat }, 
+      { "http://snomed.info/sct#226999005", TongueMeat }, 
+      { "227000008", Tripe }, 
+      { "http://snomed.info/sct#227000008", Tripe }, 
+      { "227001007", DressedTripe }, 
+      { "http://snomed.info/sct#227001007", DressedTripe }, 
+      { "227002000", DressedStewedTripe }, 
+      { "http://snomed.info/sct#227002000", DressedStewedTripe }, 
+      { "227003005", MeatProducts }, 
+      { "http://snomed.info/sct#227003005", MeatProducts }, 
+      { "227004004", MeatBurger }, 
+      { "http://snomed.info/sct#227004004", MeatBurger }, 
+      { "227005003", BeefBurger }, 
+      { "http://snomed.info/sct#227005003", BeefBurger }, 
+      { "227006002", PorkBurger }, 
+      { "http://snomed.info/sct#227006002", PorkBurger }, 
+      { "227007006", LambBurger }, 
+      { "http://snomed.info/sct#227007006", LambBurger }, 
+      { "227008001", ChickenBurger }, 
+      { "http://snomed.info/sct#227008001", ChickenBurger }, 
+      { "227009009", TurkeyBurger }, 
+      { "http://snomed.info/sct#227009009", TurkeyBurger }, 
+      { "227010004", BlackPudding }, 
+      { "http://snomed.info/sct#227010004", BlackPudding }, 
+      { "227011000", Brawn }, 
+      { "http://snomed.info/sct#227011000", Brawn }, 
+      { "227012007", Faggot }, 
+      { "http://snomed.info/sct#227012007", Faggot }, 
+      { "227013002", Haggis }, 
+      { "http://snomed.info/sct#227013002", Haggis }, 
+      { "227014008", LiverPate }, 
+      { "http://snomed.info/sct#227014008", LiverPate }, 
+      { "227015009", LFLowFatLiverPate }, 
+      { "http://snomed.info/sct#227015009", LFLowFatLiverPate }, 
+      { "227016005", MeatPaste }, 
+      { "http://snomed.info/sct#227016005", MeatPaste }, 
+      { "227017001", Polony }, 
+      { "http://snomed.info/sct#227017001", Polony }, 
+      { "227018006", Salami }, 
+      { "http://snomed.info/sct#227018006", Salami }, 
+      { "227019003", Saveloy }, 
+      { "http://snomed.info/sct#227019003", Saveloy }, 
+      { "227020009", Sausage }, 
+      { "http://snomed.info/sct#227020009", Sausage }, 
+      { "227021008", Frankfurter }, 
+      { "http://snomed.info/sct#227021008", Frankfurter }, 
+      { "227022001", LFLowFatSausage }, 
+      { "http://snomed.info/sct#227022001", LFLowFatSausage }, 
+      { "227023006", BeefSausage }, 
+      { "http://snomed.info/sct#227023006", BeefSausage }, 
+      { "227024000", LFLowFatBeefSausage }, 
+      { "http://snomed.info/sct#227024000", LFLowFatBeefSausage }, 
+      { "227025004", PorkSausage }, 
+      { "http://snomed.info/sct#227025004", PorkSausage }, 
+      { "227026003", LFLowFatPorkSausage }, 
+      { "http://snomed.info/sct#227026003", LFLowFatPorkSausage }, 
+      { "227027007", TurkeySausage }, 
+      { "http://snomed.info/sct#227027007", TurkeySausage }, 
+      { "227028002", LowFatTurkeySausage }, 
+      { "http://snomed.info/sct#227028002", LowFatTurkeySausage }, 
+      { "227029005", LiverSausage }, 
+      { "http://snomed.info/sct#227029005", LiverSausage }, 
+      { "227030000", WhitePudding }, 
+      { "http://snomed.info/sct#227030000", WhitePudding }, 
+      { "227031001", ProcessedMeat }, 
+      { "http://snomed.info/sct#227031001", ProcessedMeat }, 
+      { "227032008", ChickenRoll }, 
+      { "http://snomed.info/sct#227032008", ChickenRoll }, 
+      { "227033003", ChoppedHamAndPork }, 
+      { "http://snomed.info/sct#227033003", ChoppedHamAndPork }, 
+      { "227034009", CornedBeef }, 
+      { "http://snomed.info/sct#227034009", CornedBeef }, 
+      { "227036006", LuncheonMeat }, 
+      { "http://snomed.info/sct#227036006", LuncheonMeat }, 
+      { "227038007", WhiteFish }, 
+      { "http://snomed.info/sct#227038007", WhiteFish }, 
+      { "227040002", Bele }, 
+      { "http://snomed.info/sct#227040002", Bele }, 
+      { "227041003", Boal }, 
+      { "http://snomed.info/sct#227041003", Boal }, 
+      { "227042005", Bream }, 
+      { "http://snomed.info/sct#227042005", Bream }, 
+      { "227044006", ChineseSaltedFish }, 
+      { "http://snomed.info/sct#227044006", ChineseSaltedFish }, 
+      { "227045007", Chital }, 
+      { "http://snomed.info/sct#227045007", Chital }, 
+      { "227046008", BakedCod }, 
+      { "http://snomed.info/sct#227046008", BakedCod }, 
+      { "227047004", PoachedCod }, 
+      { "http://snomed.info/sct#227047004", PoachedCod }, 
+      { "227048009", GrilledCod }, 
+      { "http://snomed.info/sct#227048009", GrilledCod }, 
+      { "227049001", FriedCod }, 
+      { "http://snomed.info/sct#227049001", FriedCod }, 
+      { "227050001", FriedCodInBatter }, 
+      { "http://snomed.info/sct#227050001", FriedCodInBatter }, 
+      { "227051002", FriedCodInBreadcrumbs }, 
+      { "http://snomed.info/sct#227051002", FriedCodInBreadcrumbs }, 
+      { "227052009", FriedCodGoujonsInBreadcrumbs }, 
+      { "http://snomed.info/sct#227052009", FriedCodGoujonsInBreadcrumbs }, 
+      { "227053004", CodInBatterBakedInTheOven }, 
+      { "http://snomed.info/sct#227053004", CodInBatterBakedInTheOven }, 
+      { "227054005", DriedSaltedCod }, 
+      { "http://snomed.info/sct#227054005", DriedSaltedCod }, 
+      { "227055006", SmokedPoachedCod }, 
+      { "http://snomed.info/sct#227055006", SmokedPoachedCod }, 
+      { "227058008", Dab }, 
+      { "http://snomed.info/sct#227058008", Dab }, 
+      { "227060005", PoachedHaddock }, 
+      { "http://snomed.info/sct#227060005", PoachedHaddock }, 
+      { "227061009", FriedHaddock }, 
+      { "http://snomed.info/sct#227061009", FriedHaddock }, 
+      { "227062002", FriedHaddockInBatter }, 
+      { "http://snomed.info/sct#227062002", FriedHaddockInBatter }, 
+      { "227063007", FriedHaddockInBreadcrumbs }, 
+      { "http://snomed.info/sct#227063007", FriedHaddockInBreadcrumbs }, 
+      { "227064001", FriedHaddockGoujonsInBreadcrumbs }, 
+      { "http://snomed.info/sct#227064001", FriedHaddockGoujonsInBreadcrumbs }, 
+      { "227065000", SmokedPoachedHaddock }, 
+      { "http://snomed.info/sct#227065000", SmokedPoachedHaddock }, 
+      { "227066004", Hake }, 
+      { "http://snomed.info/sct#227066004", Hake }, 
+      { "227067008", Halibut }, 
+      { "http://snomed.info/sct#227067008", Halibut }, 
+      { "227068003", Hoki }, 
+      { "http://snomed.info/sct#227068003", Hoki }, 
+      { "227069006", FriedHokiInBatter }, 
+      { "http://snomed.info/sct#227069006", FriedHokiInBatter }, 
+      { "227070007", JohnDory }, 
+      { "http://snomed.info/sct#227070007", JohnDory }, 
+      { "227071006", Kalabasu }, 
+      { "http://snomed.info/sct#227071006", Kalabasu }, 
+      { "227072004", LemonSole }, 
+      { "http://snomed.info/sct#227072004", LemonSole }, 
+      { "227073009", PoachedLemonSole }, 
+      { "http://snomed.info/sct#227073009", PoachedLemonSole }, 
+      { "227074003", FriedLemonSole }, 
+      { "http://snomed.info/sct#227074003", FriedLemonSole }, 
+      { "227075002", FriedLemonSoleInBreadcrumbs }, 
+      { "http://snomed.info/sct#227075002", FriedLemonSoleInBreadcrumbs }, 
+      { "227076001", Ling }, 
+      { "http://snomed.info/sct#227076001", Ling }, 
+      { "227078000", Monkfish }, 
+      { "http://snomed.info/sct#227078000", Monkfish }, 
+      { "227080006", GreyMullet }, 
+      { "http://snomed.info/sct#227080006", GreyMullet }, 
+      { "227081005", RedMullet }, 
+      { "http://snomed.info/sct#227081005", RedMullet }, 
+      { "227083008", Plaice }, 
+      { "http://snomed.info/sct#227083008", Plaice }, 
+      { "227084002", PoachedPlaice }, 
+      { "http://snomed.info/sct#227084002", PoachedPlaice }, 
+      { "227085001", FriedPlaice }, 
+      { "http://snomed.info/sct#227085001", FriedPlaice }, 
+      { "227086000", FriedPlaiceInBatter }, 
+      { "http://snomed.info/sct#227086000", FriedPlaiceInBatter }, 
+      { "227087009", FriedPlaiceInBreadcrumbs }, 
+      { "http://snomed.info/sct#227087009", FriedPlaiceInBreadcrumbs }, 
+      { "227088004", FriedPlaiceGoujonsInBreadcrumbs }, 
+      { "http://snomed.info/sct#227088004", FriedPlaiceGoujonsInBreadcrumbs }, 
+      { "227089007", Pollack }, 
+      { "http://snomed.info/sct#227089007", Pollack }, 
+      { "227092006", BlackPomfret }, 
+      { "http://snomed.info/sct#227092006", BlackPomfret }, 
+      { "227093001", WhitePomfret }, 
+      { "http://snomed.info/sct#227093001", WhitePomfret }, 
+      { "227096009", Rohu }, 
+      { "http://snomed.info/sct#227096009", Rohu }, 
+      { "227097000", Dogfish }, 
+      { "http://snomed.info/sct#227097000", Dogfish }, 
+      { "227098005", FriedRockSalmonInBatter }, 
+      { "http://snomed.info/sct#227098005", FriedRockSalmonInBatter }, 
+      { "227099002", Saithe }, 
+      { "http://snomed.info/sct#227099002", Saithe }, 
+      { "227101009", SharkFood }, 
+      { "http://snomed.info/sct#227101009", SharkFood }, 
+      { "227103007", FriedSkateInBatter }, 
+      { "http://snomed.info/sct#227103007", FriedSkateInBatter }, 
+      { "227104001", Tiliapa }, 
+      { "http://snomed.info/sct#227104001", Tiliapa }, 
+      { "227105000", Turbot }, 
+      { "http://snomed.info/sct#227105000", Turbot }, 
+      { "227106004", Whiting }, 
+      { "http://snomed.info/sct#227106004", Whiting }, 
+      { "227107008", PoachedWhiting }, 
+      { "http://snomed.info/sct#227107008", PoachedWhiting }, 
+      { "227108003", FriedWhiting }, 
+      { "http://snomed.info/sct#227108003", FriedWhiting }, 
+      { "227109006", FriedWhitingInBreadcrumbs }, 
+      { "http://snomed.info/sct#227109006", FriedWhitingInBreadcrumbs }, 
+      { "227110001", OilyFish }, 
+      { "http://snomed.info/sct#227110001", OilyFish }, 
+      { "227111002", Bacha }, 
+      { "http://snomed.info/sct#227111002", Bacha }, 
+      { "227114005", JelliedEel }, 
+      { "http://snomed.info/sct#227114005", JelliedEel }, 
+      { "227115006", DriedHerring }, 
+      { "http://snomed.info/sct#227115006", DriedHerring }, 
+      { "227116007", FriedHerringInOatmeal }, 
+      { "http://snomed.info/sct#227116007", FriedHerringInOatmeal }, 
+      { "227117003", GrilledHerring }, 
+      { "http://snomed.info/sct#227117003", GrilledHerring }, 
+      { "227118008", PickledHerring }, 
+      { "http://snomed.info/sct#227118008", PickledHerring }, 
+      { "227119000", Hilsa }, 
+      { "http://snomed.info/sct#227119000", Hilsa }, 
+      { "227120006", Jackfish }, 
+      { "http://snomed.info/sct#227120006", Jackfish }, 
+      { "227121005", Katla }, 
+      { "http://snomed.info/sct#227121005", Katla }, 
+      { "227122003", Kipper }, 
+      { "http://snomed.info/sct#227122003", Kipper }, 
+      { "227123008", PoachedKipper }, 
+      { "http://snomed.info/sct#227123008", PoachedKipper }, 
+      { "227124002", GrilledKipper }, 
+      { "http://snomed.info/sct#227124002", GrilledKipper }, 
+      { "227126000", FriedMackerel }, 
+      { "http://snomed.info/sct#227126000", FriedMackerel }, 
+      { "227127009", GrilledMackerel }, 
+      { "http://snomed.info/sct#227127009", GrilledMackerel }, 
+      { "227128004", SmokedMackerel }, 
+      { "http://snomed.info/sct#227128004", SmokedMackerel }, 
+      { "227129007", GrilledSmokedMackerel }, 
+      { "http://snomed.info/sct#227129007", GrilledSmokedMackerel }, 
+      { "227130002", OrangeRoughy }, 
+      { "http://snomed.info/sct#227130002", OrangeRoughy }, 
+      { "227131003", Pangas }, 
+      { "http://snomed.info/sct#227131003", Pangas }, 
+      { "227132005", GrilledSalmon }, 
+      { "http://snomed.info/sct#227132005", GrilledSalmon }, 
+      { "227133000", PoachedSalmon }, 
+      { "http://snomed.info/sct#227133000", PoachedSalmon }, 
+      { "227134006", SmokedSalmon }, 
+      { "http://snomed.info/sct#227134006", SmokedSalmon }, 
+      { "227135007", SalmonEnCroute }, 
+      { "http://snomed.info/sct#227135007", SalmonEnCroute }, 
+      { "227136008", Sardine }, 
+      { "http://snomed.info/sct#227136008", Sardine }, 
+      { "227137004", GrilledSardine }, 
+      { "http://snomed.info/sct#227137004", GrilledSardine }, 
+      { "227138009", FriedSardine }, 
+      { "http://snomed.info/sct#227138009", FriedSardine }, 
+      { "227139001", Sprats }, 
+      { "http://snomed.info/sct#227139001", Sprats }, 
+      { "227141000", FriedTrout }, 
+      { "http://snomed.info/sct#227141000", FriedTrout }, 
+      { "227142007", BakedTrout }, 
+      { "http://snomed.info/sct#227142007", BakedTrout }, 
+      { "227143002", SmokedTrout }, 
+      { "http://snomed.info/sct#227143002", SmokedTrout }, 
+      { "227144008", TunaFish }, 
+      { "http://snomed.info/sct#227144008", TunaFish }, 
+      { "227145009", WhitebaitFried }, 
+      { "http://snomed.info/sct#227145009", WhitebaitFried }, 
+      { "227147001", Cockles }, 
+      { "http://snomed.info/sct#227147001", Cockles }, 
+      { "227148006", CocklesBottledInVinegar }, 
+      { "http://snomed.info/sct#227148006", CocklesBottledInVinegar }, 
+      { "227150003", Mussels }, 
+      { "http://snomed.info/sct#227150003", Mussels }, 
+      { "227151004", Prawns }, 
+      { "http://snomed.info/sct#227151004", Prawns }, 
+      { "227152006", BoiledPrawns }, 
+      { "http://snomed.info/sct#227152006", BoiledPrawns }, 
+      { "227153001", FriedPrawns }, 
+      { "http://snomed.info/sct#227153001", FriedPrawns }, 
+      { "227154007", FriedPrawnsInBatter }, 
+      { "http://snomed.info/sct#227154007", FriedPrawnsInBatter }, 
+      { "227155008", DriedPrawns }, 
+      { "http://snomed.info/sct#227155008", DriedPrawns }, 
+      { "227156009", Scampi }, 
+      { "http://snomed.info/sct#227156009", Scampi }, 
+      { "227157000", FriedScampiInBatter }, 
+      { "http://snomed.info/sct#227157000", FriedScampiInBatter }, 
+      { "227158005", FriedScampiInBreadcrumbs }, 
+      { "http://snomed.info/sct#227158005", FriedScampiInBreadcrumbs }, 
+      { "227159002", FriedShrimp }, 
+      { "http://snomed.info/sct#227159002", FriedShrimp }, 
+      { "227160007", DriedShrimp }, 
+      { "http://snomed.info/sct#227160007", DriedShrimp }, 
+      { "227164003", DriedSquid }, 
+      { "http://snomed.info/sct#227164003", DriedSquid }, 
+      { "227165002", FriedSquid }, 
+      { "http://snomed.info/sct#227165002", FriedSquid }, 
+      { "227167005", FriedSquidInBatter }, 
+      { "http://snomed.info/sct#227167005", FriedSquidInBatter }, 
+      { "227168000", Whelks }, 
+      { "http://snomed.info/sct#227168000", Whelks }, 
+      { "227169008", Winkles }, 
+      { "http://snomed.info/sct#227169008", Winkles }, 
+      { "227170009", FishProducts }, 
+      { "http://snomed.info/sct#227170009", FishProducts }, 
+      { "227171008", Crabstick }, 
+      { "http://snomed.info/sct#227171008", Crabstick }, 
+      { "227172001", FishBall }, 
+      { "http://snomed.info/sct#227172001", FishBall }, 
+      { "227173006", Fishcake }, 
+      { "http://snomed.info/sct#227173006", Fishcake }, 
+      { "227174000", GrilledFishcake }, 
+      { "http://snomed.info/sct#227174000", GrilledFishcake }, 
+      { "227175004", FriedFishcake }, 
+      { "http://snomed.info/sct#227175004", FriedFishcake }, 
+      { "227176003", FishFingers }, 
+      { "http://snomed.info/sct#227176003", FishFingers }, 
+      { "227177007", FriedFishFingers }, 
+      { "http://snomed.info/sct#227177007", FriedFishFingers }, 
+      { "227178002", GrilledFishFingers }, 
+      { "http://snomed.info/sct#227178002", GrilledFishFingers }, 
+      { "227179005", FishPaste }, 
+      { "http://snomed.info/sct#227179005", FishPaste }, 
+      { "227180008", FishPate }, 
+      { "http://snomed.info/sct#227180008", FishPate }, 
+      { "227181007", FishPie }, 
+      { "http://snomed.info/sct#227181007", FishPie }, 
+      { "227182000", Kedgeree }, 
+      { "http://snomed.info/sct#227182000", Kedgeree }, 
+      { "227183005", FishRoe }, 
+      { "http://snomed.info/sct#227183005", FishRoe }, 
+      { "227184004", RawHardFishRoe }, 
+      { "http://snomed.info/sct#227184004", RawHardFishRoe }, 
+      { "227185003", FriedHardFishRoe }, 
+      { "http://snomed.info/sct#227185003", FriedHardFishRoe }, 
+      { "227186002", FriedHardFishRoeInBatter }, 
+      { "http://snomed.info/sct#227186002", FriedHardFishRoeInBatter }, 
+      { "227187006", RawSoftFishRoe }, 
+      { "http://snomed.info/sct#227187006", RawSoftFishRoe }, 
+      { "227188001", FriedSoftFishRoe }, 
+      { "http://snomed.info/sct#227188001", FriedSoftFishRoe }, 
+      { "227189009", SeafoodCocktail }, 
+      { "http://snomed.info/sct#227189009", SeafoodCocktail }, 
+      { "227190000", Taramasalata }, 
+      { "http://snomed.info/sct#227190000", Taramasalata }, 
+      { "227191001", TinnedFish }, 
+      { "http://snomed.info/sct#227191001", TinnedFish }, 
+      { "227193003", AnchoviesCannedInOil }, 
+      { "http://snomed.info/sct#227193003", AnchoviesCannedInOil }, 
+      { "227194009", HerringCannedInTomatoSauce }, 
+      { "http://snomed.info/sct#227194009", HerringCannedInTomatoSauce }, 
+      { "227195005", MackerelCannedInTomatoSauce }, 
+      { "http://snomed.info/sct#227195005", MackerelCannedInTomatoSauce }, 
+      { "227196006", MackerelCannedInBrine }, 
+      { "http://snomed.info/sct#227196006", MackerelCannedInBrine }, 
+      { "227197002", MusselsCannedInBrine }, 
+      { "http://snomed.info/sct#227197002", MusselsCannedInBrine }, 
+      { "227198007", PilchardsCannedInTomatoSauce }, 
+      { "http://snomed.info/sct#227198007", PilchardsCannedInTomatoSauce }, 
+      { "227199004", PilchardsCannedInBrine }, 
+      { "http://snomed.info/sct#227199004", PilchardsCannedInBrine }, 
+      { "227200001", SalmonCannedInBrine }, 
+      { "http://snomed.info/sct#227200001", SalmonCannedInBrine }, 
+      { "227201002", SardinesCannedInBrine }, 
+      { "http://snomed.info/sct#227201002", SardinesCannedInBrine }, 
+      { "227202009", SardinesCannedInOil }, 
+      { "http://snomed.info/sct#227202009", SardinesCannedInOil }, 
+      { "227203004", SardinesCannedInTomatoSauce }, 
+      { "http://snomed.info/sct#227203004", SardinesCannedInTomatoSauce }, 
+      { "227204005", TunaCannedInBrine }, 
+      { "http://snomed.info/sct#227204005", TunaCannedInBrine }, 
+      { "227205006", TunaCannedInOil }, 
+      { "http://snomed.info/sct#227205006", TunaCannedInOil }, 
+      { "227206007", CrabCannedInBrine }, 
+      { "http://snomed.info/sct#227206007", CrabCannedInBrine }, 
+      { "227207003", ShrimpsCannedInBrine }, 
+      { "http://snomed.info/sct#227207003", ShrimpsCannedInBrine }, 
+      { "227208008", AbaloneCannedInBrine }, 
+      { "http://snomed.info/sct#227208008", AbaloneCannedInBrine }, 
+      { "227209000", ClamsCannedInBrine }, 
+      { "http://snomed.info/sct#227209000", ClamsCannedInBrine }, 
+      { "227210005", VegetablesPulsesHerbsAndSpices }, 
+      { "http://snomed.info/sct#227210005", VegetablesPulsesHerbsAndSpices }, 
+      { "227212002", AlfalfaSprout }, 
+      { "http://snomed.info/sct#227212002", AlfalfaSprout }, 
+      { "227213007", AmaranthLeaf }, 
+      { "http://snomed.info/sct#227213007", AmaranthLeaf }, 
+      { "227214001", Arrowhead }, 
+      { "http://snomed.info/sct#227214001", Arrowhead }, 
+      { "227215000", Artichoke }, 
+      { "http://snomed.info/sct#227215000", Artichoke }, 
+      { "227216004", GlobeArtichoke }, 
+      { "http://snomed.info/sct#227216004", GlobeArtichoke }, 
+      { "227217008", JerusalemArtichoke }, 
+      { "http://snomed.info/sct#227217008", JerusalemArtichoke }, 
+      { "227218003", Asparagus }, 
+      { "http://snomed.info/sct#227218003", Asparagus }, 
+      { "227219006", Aubergine }, 
+      { "http://snomed.info/sct#227219006", Aubergine }, 
+      { "227220000", Beetroot }, 
+      { "http://snomed.info/sct#227220000", Beetroot }, 
+      { "227221001", BrassicaVegetable }, 
+      { "http://snomed.info/sct#227221001", BrassicaVegetable }, 
+      { "227225005", ChineseCabbage }, 
+      { "http://snomed.info/sct#227225005", ChineseCabbage }, 
+      { "227226006", RedCabbage }, 
+      { "http://snomed.info/sct#227226006", RedCabbage }, 
+      { "227227002", SavoyCabbage }, 
+      { "http://snomed.info/sct#227227002", SavoyCabbage }, 
+      { "227228007", SpringCabbage }, 
+      { "http://snomed.info/sct#227228007", SpringCabbage }, 
+      { "227229004", WhiteCabbage }, 
+      { "http://snomed.info/sct#227229004", WhiteCabbage }, 
+      { "227230009", CurlyKale }, 
+      { "http://snomed.info/sct#227230009", CurlyKale }, 
+      { "227231008", KohlRabi }, 
+      { "http://snomed.info/sct#227231008", KohlRabi }, 
+      { "227232001", Seakale }, 
+      { "http://snomed.info/sct#227232001", Seakale }, 
+      { "227233006", Breadfruit }, 
+      { "http://snomed.info/sct#227233006", Breadfruit }, 
+      { "227234000", Cassava }, 
+      { "http://snomed.info/sct#227234000", Cassava }, 
+      { "227235004", Celeriac }, 
+      { "http://snomed.info/sct#227235004", Celeriac }, 
+      { "227236003", Chard }, 
+      { "http://snomed.info/sct#227236003", Chard }, 
+      { "227238002", ChoCho }, 
+      { "http://snomed.info/sct#227238002", ChoCho }, 
+      { "227239005", Zucchini }, 
+      { "http://snomed.info/sct#227239005", Zucchini }, 
+      { "227240007", ColeLeaf }, 
+      { "http://snomed.info/sct#227240007", ColeLeaf }, 
+      { "227242004", DrumstickLeaf }, 
+      { "http://snomed.info/sct#227242004", DrumstickLeaf }, 
+      { "227244003", Fenugreek }, 
+      { "http://snomed.info/sct#227244003", Fenugreek }, 
+      { "227245002", Gherkin }, 
+      { "http://snomed.info/sct#227245002", Gherkin }, 
+      { "227247005", Jackfruit }, 
+      { "http://snomed.info/sct#227247005", Jackfruit }, 
+      { "227249008", LotusTuber }, 
+      { "http://snomed.info/sct#227249008", LotusTuber }, 
+      { "227250008", Marrow }, 
+      { "http://snomed.info/sct#227250008", Marrow }, 
+      { "227251007", Matoki }, 
+      { "http://snomed.info/sct#227251007", Matoki }, 
+      { "227253005", MustardLeaf }, 
+      { "http://snomed.info/sct#227253005", MustardLeaf }, 
+      { "227254004", Okra }, 
+      { "http://snomed.info/sct#227254004", Okra }, 
+      { "227255003", SpringOnion }, 
+      { "http://snomed.info/sct#227255003", SpringOnion }, 
+      { "227258001", PatraLeaf }, 
+      { "http://snomed.info/sct#227258001", PatraLeaf }, 
+      { "227259009", Plantain }, 
+      { "http://snomed.info/sct#227259009", Plantain }, 
+      { "227260004", Pumpkin }, 
+      { "http://snomed.info/sct#227260004", Pumpkin }, 
+      { "227261000", Raddiccio }, 
+      { "http://snomed.info/sct#227261000", Raddiccio }, 
+      { "227262007", RadishWhiteMooli }, 
+      { "http://snomed.info/sct#227262007", RadishWhiteMooli }, 
+      { "227263002", RapeLeaf }, 
+      { "http://snomed.info/sct#227263002", RapeLeaf }, 
+      { "227264008", Salsify }, 
+      { "http://snomed.info/sct#227264008", Salsify }, 
+      { "227265009", Seaweed }, 
+      { "http://snomed.info/sct#227265009", Seaweed }, 
+      { "227266005", Swede }, 
+      { "http://snomed.info/sct#227266005", Swede }, 
+      { "227268006", Sweetcorn }, 
+      { "http://snomed.info/sct#227268006", Sweetcorn }, 
+      { "227269003", SweetcornKernels }, 
+      { "http://snomed.info/sct#227269003", SweetcornKernels }, 
+      { "227270002", SweetcornOnTheCob }, 
+      { "http://snomed.info/sct#227270002", SweetcornOnTheCob }, 
+      { "227271003", Tannia }, 
+      { "http://snomed.info/sct#227271003", Tannia }, 
+      { "227272005", Taro }, 
+      { "http://snomed.info/sct#227272005", Taro }, 
+      { "227273000", TaroLeaves }, 
+      { "http://snomed.info/sct#227273000", TaroLeaves }, 
+      { "227274006", TomatoPuree }, 
+      { "http://snomed.info/sct#227274006", TomatoPuree }, 
+      { "227275007", Turnip }, 
+      { "http://snomed.info/sct#227275007", Turnip }, 
+      { "227276008", WaterChestnut }, 
+      { "http://snomed.info/sct#227276008", WaterChestnut }, 
+      { "227277004", Watercress }, 
+      { "http://snomed.info/sct#227277004", Watercress }, 
+      { "227279001", BoiledPotato }, 
+      { "http://snomed.info/sct#227279001", BoiledPotato }, 
+      { "227280003", PotatoBoiledInSaltedWater }, 
+      { "http://snomed.info/sct#227280003", PotatoBoiledInSaltedWater }, 
+      { "227281004", PotatoBoiledInUnsaltedWater }, 
+      { "http://snomed.info/sct#227281004", PotatoBoiledInUnsaltedWater }, 
+      { "227282006", FrenchFries }, 
+      { "http://snomed.info/sct#227282006", FrenchFries }, 
+      { "227283001", ThickCutFrenchFries }, 
+      { "http://snomed.info/sct#227283001", ThickCutFrenchFries }, 
+      { "227284007", ThinCutFrenchFries }, 
+      { "http://snomed.info/sct#227284007", ThinCutFrenchFries }, 
+      { "227285008", CrinkleCutChips }, 
+      { "http://snomed.info/sct#227285008", CrinkleCutChips }, 
+      { "227286009", FrenchFriesCookedInCornOil }, 
+      { "http://snomed.info/sct#227286009", FrenchFriesCookedInCornOil }, 
+      { "227287000", FrenchFriesCookedInFatDrippings }, 
+      { "http://snomed.info/sct#227287000", FrenchFriesCookedInFatDrippings }, 
+      { "227288005", FrenchFriesCookedInBlendedOil }, 
+      { "http://snomed.info/sct#227288005", FrenchFriesCookedInBlendedOil }, 
+      { "227289002", FrenchFriesCookedInPolyunsaturatedOil }, 
+      { "http://snomed.info/sct#227289002", FrenchFriesCookedInPolyunsaturatedOil }, 
+      { "227290006", MicrowaveFrenchFries }, 
+      { "http://snomed.info/sct#227290006", MicrowaveFrenchFries }, 
+      { "227291005", OvenFrenchFries }, 
+      { "http://snomed.info/sct#227291005", OvenFrenchFries }, 
+      { "227292003", JacketPotato }, 
+      { "http://snomed.info/sct#227292003", JacketPotato }, 
+      { "227294002", MashedPotato }, 
+      { "http://snomed.info/sct#227294002", MashedPotato }, 
+      { "227295001", PotatoMashedWithButter }, 
+      { "http://snomed.info/sct#227295001", PotatoMashedWithButter }, 
+      { "227296000", PotatoMashedWithMargarine }, 
+      { "http://snomed.info/sct#227296000", PotatoMashedWithMargarine }, 
+      { "227297009", PotatoMashedWithMilk }, 
+      { "http://snomed.info/sct#227297009", PotatoMashedWithMilk }, 
+      { "227298004", PotatoMashedWithPolyunsaturatedMargarine }, 
+      { "http://snomed.info/sct#227298004", PotatoMashedWithPolyunsaturatedMargarine }, 
+      { "227299007", RoastPotato }, 
+      { "http://snomed.info/sct#227299007", RoastPotato }, 
+      { "227300004", PotatoRoastedInVegetableOil }, 
+      { "http://snomed.info/sct#227300004", PotatoRoastedInVegetableOil }, 
+      { "227301000", PotatoRoastedInPolyunsaturatedOil }, 
+      { "http://snomed.info/sct#227301000", PotatoRoastedInPolyunsaturatedOil }, 
+      { "227302007", PotatoRoastedInDripping }, 
+      { "http://snomed.info/sct#227302007", PotatoRoastedInDripping }, 
+      { "227303002", TinnedPotato }, 
+      { "http://snomed.info/sct#227303002", TinnedPotato }, 
+      { "227304008", PotatoTinnedInSaltedWater }, 
+      { "http://snomed.info/sct#227304008", PotatoTinnedInSaltedWater }, 
+      { "227305009", PotatoTinnedInUnsaltedWater }, 
+      { "http://snomed.info/sct#227305009", PotatoTinnedInUnsaltedWater }, 
+      { "227306005", InstantPotato }, 
+      { "http://snomed.info/sct#227306005", InstantPotato }, 
+      { "227307001", InstantPotatoMadeUpWithWater }, 
+      { "http://snomed.info/sct#227307001", InstantPotatoMadeUpWithWater }, 
+      { "227308006", InstantPotatoMadeUpWithSemiSkimmedMilk }, 
+      { "http://snomed.info/sct#227308006", InstantPotatoMadeUpWithSemiSkimmedMilk }, 
+      { "227309003", InstantPotatoMadeUpWithSkimmedMilk }, 
+      { "http://snomed.info/sct#227309003", InstantPotatoMadeUpWithSkimmedMilk }, 
+      { "227310008", InstantPotatoMadeUpWithWholeMilk }, 
+      { "http://snomed.info/sct#227310008", InstantPotatoMadeUpWithWholeMilk }, 
+      { "227311007", PotatoCroquetteFriedInBlendedOil }, 
+      { "http://snomed.info/sct#227311007", PotatoCroquetteFriedInBlendedOil }, 
+      { "227312000", PotatoWaffle }, 
+      { "http://snomed.info/sct#227312000", PotatoWaffle }, 
+      { "227313005", PulseVegetables }, 
+      { "http://snomed.info/sct#227313005", PulseVegetables }, 
+      { "227314004", CannedBeans }, 
+      { "http://snomed.info/sct#227314004", CannedBeans }, 
+      { "227315003", BakedBeans }, 
+      { "http://snomed.info/sct#227315003", BakedBeans }, 
+      { "227316002", BakedBeansCannedInTomatoSauce }, 
+      { "http://snomed.info/sct#227316002", BakedBeansCannedInTomatoSauce }, 
+      { "227317006", BakedBeansCannedInTomatoSauceReducedSugar }, 
+      { "http://snomed.info/sct#227317006", BakedBeansCannedInTomatoSauceReducedSugar }, 
+      { "227318001", BakedBeansCannedInTomatoSauceReducedSalt }, 
+      { "http://snomed.info/sct#227318001", BakedBeansCannedInTomatoSauceReducedSalt }, 
+      { "227319009", BakedBeansCannedInTomatoSauceWithBurgers }, 
+      { "http://snomed.info/sct#227319009", BakedBeansCannedInTomatoSauceWithBurgers }, 
+      { "227320003", BakedBeansCannedInTomatoSauceWithPorkSausages }, 
+      { "http://snomed.info/sct#227320003", BakedBeansCannedInTomatoSauceWithPorkSausages }, 
+      { "227321004", BalorBeansCanned }, 
+      { "http://snomed.info/sct#227321004", BalorBeansCanned }, 
+      { "227322006", BarbecueBeansCannedInSauce }, 
+      { "http://snomed.info/sct#227322006", BarbecueBeansCannedInSauce }, 
+      { "227323001", CannedMungBeansprouts }, 
+      { "http://snomed.info/sct#227323001", CannedMungBeansprouts }, 
+      { "227324007", CannedBroadBeans }, 
+      { "http://snomed.info/sct#227324007", CannedBroadBeans }, 
+      { "227325008", CannedButterBeans }, 
+      { "http://snomed.info/sct#227325008", CannedButterBeans }, 
+      { "227326009", CannedChickPeas }, 
+      { "http://snomed.info/sct#227326009", CannedChickPeas }, 
+      { "227327000", CannedChiliBeans }, 
+      { "http://snomed.info/sct#227327000", CannedChiliBeans }, 
+      { "227328005", CannedHaricotBeans }, 
+      { "http://snomed.info/sct#227328005", CannedHaricotBeans }, 
+      { "227329002", CannedLilvaBeans }, 
+      { "http://snomed.info/sct#227329002", CannedLilvaBeans }, 
+      { "227330007", CannedLentilsInTomatoSauce }, 
+      { "http://snomed.info/sct#227330007", CannedLentilsInTomatoSauce }, 
+      { "227331006", CannedPapriBeans }, 
+      { "http://snomed.info/sct#227331006", CannedPapriBeans }, 
+      { "227332004", CannedPeas }, 
+      { "http://snomed.info/sct#227332004", CannedPeas }, 
+      { "227333009", CannedGardenPeas }, 
+      { "http://snomed.info/sct#227333009", CannedGardenPeas }, 
+      { "227334003", CannedMarrowfatPeas }, 
+      { "http://snomed.info/sct#227334003", CannedMarrowfatPeas }, 
+      { "227335002", CannedMushyPeas }, 
+      { "http://snomed.info/sct#227335002", CannedMushyPeas }, 
+      { "227336001", CannedPeasePudding }, 
+      { "http://snomed.info/sct#227336001", CannedPeasePudding }, 
+      { "227337005", CannedRedKidneyBeans }, 
+      { "http://snomed.info/sct#227337005", CannedRedKidneyBeans }, 
+      { "227338000", AdukiBeans }, 
+      { "http://snomed.info/sct#227338000", AdukiBeans }, 
+      { "227339008", Beansprouts }, 
+      { "http://snomed.info/sct#227339008", Beansprouts }, 
+      { "227340005", RawMungBeansprouts }, 
+      { "http://snomed.info/sct#227340005", RawMungBeansprouts }, 
+      { "227341009", StirFriedMungBeansprouts }, 
+      { "http://snomed.info/sct#227341009", StirFriedMungBeansprouts }, 
+      { "227342002", BlackGramBeans }, 
+      { "http://snomed.info/sct#227342002", BlackGramBeans }, 
+      { "227343007", BlackeyeBeans }, 
+      { "http://snomed.info/sct#227343007", BlackeyeBeans }, 
+      { "227345000", ButterBeans }, 
+      { "http://snomed.info/sct#227345000", ButterBeans }, 
+      { "227346004", ChickPeas }, 
+      { "http://snomed.info/sct#227346004", ChickPeas }, 
+      { "227347008", ClusterBeans }, 
+      { "http://snomed.info/sct#227347008", ClusterBeans }, 
+      { "227348003", HaricotBeans }, 
+      { "http://snomed.info/sct#227348003", HaricotBeans }, 
+      { "227349006", Hummus }, 
+      { "http://snomed.info/sct#227349006", Hummus }, 
+      { "227350006", Lentils }, 
+      { "http://snomed.info/sct#227350006", Lentils }, 
+      { "227351005", GreenLentils }, 
+      { "http://snomed.info/sct#227351005", GreenLentils }, 
+      { "227352003", BrownLentils }, 
+      { "http://snomed.info/sct#227352003", BrownLentils }, 
+      { "227353008", RedSplitLentils }, 
+      { "http://snomed.info/sct#227353008", RedSplitLentils }, 
+      { "227354002", Miso }, 
+      { "http://snomed.info/sct#227354002", Miso }, 
+      { "227355001", MungBeans }, 
+      { "http://snomed.info/sct#227355001", MungBeans }, 
+      { "227356000", MungBeanDahl }, 
+      { "http://snomed.info/sct#227356000", MungBeanDahl }, 
+      { "227357009", PapriBeans }, 
+      { "http://snomed.info/sct#227357009", PapriBeans }, 
+      { "227358004", PigeonPeas }, 
+      { "http://snomed.info/sct#227358004", PigeonPeas }, 
+      { "227359007", PigeonPeaDahl }, 
+      { "http://snomed.info/sct#227359007", PigeonPeaDahl }, 
+      { "227360002", PintoBeans }, 
+      { "http://snomed.info/sct#227360002", PintoBeans }, 
+      { "227361003", RefriedPintoBeans }, 
+      { "http://snomed.info/sct#227361003", RefriedPintoBeans }, 
+      { "227362005", RedKidneyBeans }, 
+      { "http://snomed.info/sct#227362005", RedKidneyBeans }, 
+      { "227363000", SwordBeans }, 
+      { "http://snomed.info/sct#227363000", SwordBeans }, 
+      { "227364006", Tempeh }, 
+      { "http://snomed.info/sct#227364006", Tempeh }, 
+      { "227365007", Tofu }, 
+      { "http://snomed.info/sct#227365007", Tofu }, 
+      { "227366008", SteamedTofu }, 
+      { "http://snomed.info/sct#227366008", SteamedTofu }, 
+      { "227367004", SteamedFriedTofu }, 
+      { "http://snomed.info/sct#227367004", SteamedFriedTofu }, 
+      { "227368009", FuJukTofu }, 
+      { "http://snomed.info/sct#227368009", FuJukTofu }, 
+      { "227369001", FreshPeas }, 
+      { "http://snomed.info/sct#227369001", FreshPeas }, 
+      { "227370000", FreshRawPeas }, 
+      { "http://snomed.info/sct#227370000", FreshRawPeas }, 
+      { "227371001", FreshBoiledPeas }, 
+      { "http://snomed.info/sct#227371001", FreshBoiledPeas }, 
+      { "227372008", DriedBoiledPeas }, 
+      { "http://snomed.info/sct#227372008", DriedBoiledPeas }, 
+      { "227373003", DriedBoiledSplitPeas }, 
+      { "http://snomed.info/sct#227373003", DriedBoiledSplitPeas }, 
+      { "227374009", HerbsAndSpices }, 
+      { "http://snomed.info/sct#227374009", HerbsAndSpices }, 
+      { "227375005", Allspice }, 
+      { "http://snomed.info/sct#227375005", Allspice }, 
+      { "227376006", AniseSeed }, 
+      { "http://snomed.info/sct#227376006", AniseSeed }, 
+      { "227377002", AsafetidaSubstance }, 
+      { "http://snomed.info/sct#227377002", AsafetidaSubstance }, 
+      { "227379004", BayLeaf }, 
+      { "http://snomed.info/sct#227379004", BayLeaf }, 
+      { "227380001", BetelLeaf }, 
+      { "http://snomed.info/sct#227380001", BetelLeaf }, 
+      { "227381002", CarawaySeed }, 
+      { "http://snomed.info/sct#227381002", CarawaySeed }, 
+      { "227382009", Cardamom }, 
+      { "http://snomed.info/sct#227382009", Cardamom }, 
+      { "227383004", CelerySeed }, 
+      { "http://snomed.info/sct#227383004", CelerySeed }, 
+      { "227384005", ChervilDried }, 
+      { "http://snomed.info/sct#227384005", ChervilDried }, 
+      { "227385006", ChiliPowderSubstance }, 
+      { "http://snomed.info/sct#227385006", ChiliPowderSubstance }, 
+      { "227386007", ChineseFiveSpice }, 
+      { "http://snomed.info/sct#227386007", ChineseFiveSpice }, 
+      { "227387003", ChiveHerb }, 
+      { "http://snomed.info/sct#227387003", ChiveHerb }, 
+      { "227388008", Cinnamon }, 
+      { "http://snomed.info/sct#227388008", Cinnamon }, 
+      { "227389000", Clove }, 
+      { "http://snomed.info/sct#227389000", Clove }, 
+      { "227390009", CorianderLeaf }, 
+      { "http://snomed.info/sct#227390009", CorianderLeaf }, 
+      { "227391008", CorianderSeed }, 
+      { "http://snomed.info/sct#227391008", CorianderSeed }, 
+      { "227392001", CuminSeed }, 
+      { "http://snomed.info/sct#227392001", CuminSeed }, 
+      { "227393006", CurryLeaf }, 
+      { "http://snomed.info/sct#227393006", CurryLeaf }, 
+      { "227395004", CurryPowder }, 
+      { "http://snomed.info/sct#227395004", CurryPowder }, 
+      { "227396003", Fennel }, 
+      { "http://snomed.info/sct#227396003", Fennel }, 
+      { "227397007", FennelSeed }, 
+      { "http://snomed.info/sct#227397007", FennelSeed }, 
+      { "227398002", FenugreekSeed }, 
+      { "http://snomed.info/sct#227398002", FenugreekSeed }, 
+      { "227399005", GaramMasala }, 
+      { "http://snomed.info/sct#227399005", GaramMasala }, 
+      { "227400003", Ginger }, 
+      { "http://snomed.info/sct#227400003", Ginger }, 
+      { "227401004", GroundGinger }, 
+      { "http://snomed.info/sct#227401004", GroundGinger }, 
+      { "227402006", RootGinger }, 
+      { "http://snomed.info/sct#227402006", RootGinger }, 
+      { "227403001", LiquoricePowder }, 
+      { "http://snomed.info/sct#227403001", LiquoricePowder }, 
+      { "227404007", Mace }, 
+      { "http://snomed.info/sct#227404007", Mace }, 
+      { "227405008", Marjoram }, 
+      { "http://snomed.info/sct#227405008", Marjoram }, 
+      { "227406009", MustardSeed }, 
+      { "http://snomed.info/sct#227406009", MustardSeed }, 
+      { "227407000", Oregano }, 
+      { "http://snomed.info/sct#227407000", Oregano }, 
+      { "227408005", Paprika }, 
+      { "http://snomed.info/sct#227408005", Paprika }, 
+      { "227409002", PoppySeed }, 
+      { "http://snomed.info/sct#227409002", PoppySeed }, 
+      { "227410007", Rosemary }, 
+      { "http://snomed.info/sct#227410007", Rosemary }, 
+      { "227411006", Sage }, 
+      { "http://snomed.info/sct#227411006", Sage }, 
+      { "227412004", Tarragon }, 
+      { "http://snomed.info/sct#227412004", Tarragon }, 
+      { "227413009", Thyme }, 
+      { "http://snomed.info/sct#227413009", Thyme }, 
+      { "227414003", Turmeric }, 
+      { "http://snomed.info/sct#227414003", Turmeric }, 
+      { "227415002", FruitNutsAndSeeds }, 
+      { "http://snomed.info/sct#227415002", FruitNutsAndSeeds }, 
+      { "227416001", FreshFruit }, 
+      { "http://snomed.info/sct#227416001", FreshFruit }, 
+      { "227417005", Bilberry }, 
+      { "http://snomed.info/sct#227417005", Bilberry }, 
+      { "227418000", Blackberries }, 
+      { "http://snomed.info/sct#227418000", Blackberries }, 
+      { "227419008", Blackcurrant }, 
+      { "http://snomed.info/sct#227419008", Blackcurrant }, 
+      { "227420002", Clementine }, 
+      { "http://snomed.info/sct#227420002", Clementine }, 
+      { "227421003", Cranberries }, 
+      { "http://snomed.info/sct#227421003", Cranberries }, 
+      { "227422005", Damson }, 
+      { "http://snomed.info/sct#227422005", Damson }, 
+      { "227423000", DatesFood }, 
+      { "http://snomed.info/sct#227423000", DatesFood }, 
+      { "227424006", Elderberries }, 
+      { "http://snomed.info/sct#227424006", Elderberries }, 
+      { "227425007", Figs }, 
+      { "http://snomed.info/sct#227425007", Figs }, 
+      { "227426008", FreshFruitSalad }, 
+      { "http://snomed.info/sct#227426008", FreshFruitSalad }, 
+      { "227427004", Gooseberries }, 
+      { "http://snomed.info/sct#227427004", Gooseberries }, 
+      { "227428009", Greengage }, 
+      { "http://snomed.info/sct#227428009", Greengage }, 
+      { "227429001", Guava }, 
+      { "http://snomed.info/sct#227429001", Guava }, 
+      { "227430006", LimeFruit }, 
+      { "http://snomed.info/sct#227430006", LimeFruit }, 
+      { "227431005", Kumquat }, 
+      { "http://snomed.info/sct#227431005", Kumquat }, 
+      { "227432003", Loganberries }, 
+      { "http://snomed.info/sct#227432003", Loganberries }, 
+      { "227433008", Lychee }, 
+      { "http://snomed.info/sct#227433008", Lychee }, 
+      { "227434002", Mulberries }, 
+      { "http://snomed.info/sct#227434002", Mulberries }, 
+      { "227435001", Nectarine }, 
+      { "http://snomed.info/sct#227435001", Nectarine }, 
+      { "227436000", Olives }, 
+      { "http://snomed.info/sct#227436000", Olives }, 
+      { "227437009", Ortanique }, 
+      { "http://snomed.info/sct#227437009", Ortanique }, 
+      { "227438004", PassionFruit }, 
+      { "http://snomed.info/sct#227438004", PassionFruit }, 
+      { "227439007", PawPaw }, 
+      { "http://snomed.info/sct#227439007", PawPaw }, 
+      { "227441008", Pomegranate }, 
+      { "http://snomed.info/sct#227441008", Pomegranate }, 
+      { "227442001", Pomelo }, 
+      { "http://snomed.info/sct#227442001", Pomelo }, 
+      { "227443006", Quince }, 
+      { "http://snomed.info/sct#227443006", Quince }, 
+      { "227444000", Raspberries }, 
+      { "http://snomed.info/sct#227444000", Raspberries }, 
+      { "227445004", Redcurrant }, 
+      { "http://snomed.info/sct#227445004", Redcurrant }, 
+      { "227446003", Satsuma }, 
+      { "http://snomed.info/sct#227446003", Satsuma }, 
+      { "227447007", SharonFruit }, 
+      { "http://snomed.info/sct#227447007", SharonFruit }, 
+      { "227448002", WhiteCurrant }, 
+      { "http://snomed.info/sct#227448002", WhiteCurrant }, 
+      { "227449005", DriedFruit }, 
+      { "http://snomed.info/sct#227449005", DriedFruit }, 
+      { "227450005", DriedBanana }, 
+      { "http://snomed.info/sct#227450005", DriedBanana }, 
+      { "227451009", DriedApple }, 
+      { "http://snomed.info/sct#227451009", DriedApple }, 
+      { "227452002", DriedApricot }, 
+      { "http://snomed.info/sct#227452002", DriedApricot }, 
+      { "227453007", Currants }, 
+      { "http://snomed.info/sct#227453007", Currants }, 
+      { "227454001", DriedDate }, 
+      { "http://snomed.info/sct#227454001", DriedDate }, 
+      { "227455000", DriedFig }, 
+      { "http://snomed.info/sct#227455000", DriedFig }, 
+      { "227456004", DriedMixedFruit }, 
+      { "http://snomed.info/sct#227456004", DriedMixedFruit }, 
+      { "227457008", DriedMixedPeel }, 
+      { "http://snomed.info/sct#227457008", DriedMixedPeel }, 
+      { "227458003", DriedPeach }, 
+      { "http://snomed.info/sct#227458003", DriedPeach }, 
+      { "227459006", DriedPear }, 
+      { "http://snomed.info/sct#227459006", DriedPear }, 
+      { "227460001", DriedPineapple }, 
+      { "http://snomed.info/sct#227460001", DriedPineapple }, 
+      { "227461002", GlaceCherry }, 
+      { "http://snomed.info/sct#227461002", GlaceCherry }, 
+      { "227462009", Prunes }, 
+      { "http://snomed.info/sct#227462009", Prunes }, 
+      { "227463004", Raisin }, 
+      { "http://snomed.info/sct#227463004", Raisin }, 
+      { "227464005", Sultanas }, 
+      { "http://snomed.info/sct#227464005", Sultanas }, 
+      { "227465006", CannedFruit }, 
+      { "http://snomed.info/sct#227465006", CannedFruit }, 
+      { "227466007", TinnedApple }, 
+      { "http://snomed.info/sct#227466007", TinnedApple }, 
+      { "227467003", TinnedApricot }, 
+      { "http://snomed.info/sct#227467003", TinnedApricot }, 
+      { "227468008", TinnedBlackcurrants }, 
+      { "http://snomed.info/sct#227468008", TinnedBlackcurrants }, 
+      { "227469000", TinnedCherries }, 
+      { "http://snomed.info/sct#227469000", TinnedCherries }, 
+      { "227470004", TinnedFigs }, 
+      { "http://snomed.info/sct#227470004", TinnedFigs }, 
+      { "227471000", TinnedFruitCocktail }, 
+      { "http://snomed.info/sct#227471000", TinnedFruitCocktail }, 
+      { "227472007", TinnedGooseberries }, 
+      { "http://snomed.info/sct#227472007", TinnedGooseberries }, 
+      { "227473002", TinnedGrapefruit }, 
+      { "http://snomed.info/sct#227473002", TinnedGrapefruit }, 
+      { "227474008", TinnedGuava }, 
+      { "http://snomed.info/sct#227474008", TinnedGuava }, 
+      { "227475009", TinnedKumquat }, 
+      { "http://snomed.info/sct#227475009", TinnedKumquat }, 
+      { "227476005", TinnedLoganberries }, 
+      { "http://snomed.info/sct#227476005", TinnedLoganberries }, 
+      { "227477001", TinnedLychees }, 
+      { "http://snomed.info/sct#227477001", TinnedLychees }, 
+      { "227478006", TinnedMandarinOranges }, 
+      { "http://snomed.info/sct#227478006", TinnedMandarinOranges }, 
+      { "227479003", TinnedMango }, 
+      { "http://snomed.info/sct#227479003", TinnedMango }, 
+      { "227480000", TinnedPawPaw }, 
+      { "http://snomed.info/sct#227480000", TinnedPawPaw }, 
+      { "227481001", TinnedPeaches }, 
+      { "http://snomed.info/sct#227481001", TinnedPeaches }, 
+      { "227482008", TinnedPears }, 
+      { "http://snomed.info/sct#227482008", TinnedPears }, 
+      { "227483003", TinnedPineapple }, 
+      { "http://snomed.info/sct#227483003", TinnedPineapple }, 
+      { "227484009", TinnedPlums }, 
+      { "http://snomed.info/sct#227484009", TinnedPlums }, 
+      { "227485005", TinnedPrunes }, 
+      { "http://snomed.info/sct#227485005", TinnedPrunes }, 
+      { "227486006", TinnedRaspberries }, 
+      { "http://snomed.info/sct#227486006", TinnedRaspberries }, 
+      { "227487002", TinnedRhubarb }, 
+      { "http://snomed.info/sct#227487002", TinnedRhubarb }, 
+      { "227488007", TinnedStrawberries }, 
+      { "http://snomed.info/sct#227488007", TinnedStrawberries }, 
+      { "227489004", TinnedFruitPieFilling }, 
+      { "http://snomed.info/sct#227489004", TinnedFruitPieFilling }, 
+      { "227490008", BarcelonaNut }, 
+      { "http://snomed.info/sct#227490008", BarcelonaNut }, 
+      { "227491007", BetelNuts }, 
+      { "http://snomed.info/sct#227491007", BetelNuts }, 
+      { "227492000", BreadnutSeed }, 
+      { "http://snomed.info/sct#227492000", BreadnutSeed }, 
+      { "227493005", CashewNuts }, 
+      { "http://snomed.info/sct#227493005", CashewNuts }, 
+      { "227495003", RoastedAndSaltedCashewNuts }, 
+      { "http://snomed.info/sct#227495003", RoastedAndSaltedCashewNuts }, 
+      { "227496002", FreshCoconut }, 
+      { "http://snomed.info/sct#227496002", FreshCoconut }, 
+      { "227497006", CreamedCoconut }, 
+      { "http://snomed.info/sct#227497006", CreamedCoconut }, 
+      { "227498001", DesiccatedCoconut }, 
+      { "http://snomed.info/sct#227498001", DesiccatedCoconut }, 
+      { "227499009", CoconutCream }, 
+      { "http://snomed.info/sct#227499009", CoconutCream }, 
+      { "227500000", CoconutMilk }, 
+      { "http://snomed.info/sct#227500000", CoconutMilk }, 
+      { "227501001", MacadamiaNut }, 
+      { "http://snomed.info/sct#227501001", MacadamiaNut }, 
+      { "227502008", MarzipanHomeMade }, 
+      { "http://snomed.info/sct#227502008", MarzipanHomeMade }, 
+      { "227503003", MarzipanRetail }, 
+      { "http://snomed.info/sct#227503003", MarzipanRetail }, 
+      { "227504009", MelonSeed }, 
+      { "http://snomed.info/sct#227504009", MelonSeed }, 
+      { "227505005", MixedNuts }, 
+      { "http://snomed.info/sct#227505005", MixedNuts }, 
+      { "227506006", MixedNutsAndRaisins }, 
+      { "http://snomed.info/sct#227506006", MixedNutsAndRaisins }, 
+      { "227507002", SmoothPeanutButter }, 
+      { "http://snomed.info/sct#227507002", SmoothPeanutButter }, 
+      { "227508007", CrunchyPeanutButter }, 
+      { "http://snomed.info/sct#227508007", CrunchyPeanutButter }, 
+      { "227509004", DryRoastedPeanuts }, 
+      { "http://snomed.info/sct#227509004", DryRoastedPeanuts }, 
+      { "227510009", SaltedPeanuts }, 
+      { "http://snomed.info/sct#227510009", SaltedPeanuts }, 
+      { "227511008", PineNut }, 
+      { "http://snomed.info/sct#227511008", PineNut }, 
+      { "227512001", PistachioNuts }, 
+      { "http://snomed.info/sct#227512001", PistachioNuts }, 
+      { "227513006", RoastedSaltedPistachioNut }, 
+      { "http://snomed.info/sct#227513006", RoastedSaltedPistachioNut }, 
+      { "227514000", PumpkinSeed }, 
+      { "http://snomed.info/sct#227514000", PumpkinSeed }, 
+      { "227515004", Quinoa }, 
+      { "http://snomed.info/sct#227515004", Quinoa }, 
+      { "227516003", TahiniPaste }, 
+      { "http://snomed.info/sct#227516003", TahiniPaste }, 
+      { "227517007", Tigernut }, 
+      { "http://snomed.info/sct#227517007", Tigernut }, 
+      { "227518002", SaucesSeasoningsAndSoups }, 
+      { "http://snomed.info/sct#227518002", SaucesSeasoningsAndSoups }, 
+      { "227519005", Sauce }, 
+      { "http://snomed.info/sct#227519005", Sauce }, 
+      { "227520004", DairySauce }, 
+      { "http://snomed.info/sct#227520004", DairySauce }, 
+      { "227521000", BreadSauce }, 
+      { "http://snomed.info/sct#227521000", BreadSauce }, 
+      { "227522007", CheeseSauce }, 
+      { "http://snomed.info/sct#227522007", CheeseSauce }, 
+      { "227523002", CheeseSaucePacketMix }, 
+      { "http://snomed.info/sct#227523002", CheeseSaucePacketMix }, 
+      { "227524008", OnionSauce }, 
+      { "http://snomed.info/sct#227524008", OnionSauce }, 
+      { "227525009", SavoryWhiteSauce }, 
+      { "http://snomed.info/sct#227525009", SavoryWhiteSauce }, 
+      { "227526005", SweetWhiteSauce }, 
+      { "http://snomed.info/sct#227526005", SweetWhiteSauce }, 
+      { "227527001", BarbecueSauce }, 
+      { "http://snomed.info/sct#227527001", BarbecueSauce }, 
+      { "227528006", BrownSauce }, 
+      { "http://snomed.info/sct#227528006", BrownSauce }, 
+      { "227529003", CookInSauce }, 
+      { "http://snomed.info/sct#227529003", CookInSauce }, 
+      { "227530008", PacketCookInSauce }, 
+      { "http://snomed.info/sct#227530008", PacketCookInSauce }, 
+      { "227531007", CannedCookInSauce }, 
+      { "http://snomed.info/sct#227531007", CannedCookInSauce }, 
+      { "227532000", CurrySauce }, 
+      { "http://snomed.info/sct#227532000", CurrySauce }, 
+      { "227533005", HorseradishSauce }, 
+      { "http://snomed.info/sct#227533005", HorseradishSauce }, 
+      { "227534004", MintSauce }, 
+      { "http://snomed.info/sct#227534004", MintSauce }, 
+      { "227535003", PastaSauce }, 
+      { "http://snomed.info/sct#227535003", PastaSauce }, 
+      { "22836000", Vegetable }, 
+      { "http://snomed.info/sct#22836000", Vegetable }, 
+      { "23182003", Cereal }, 
+      { "http://snomed.info/sct#23182003", Cereal }, 
+      { "24515005", Spice }, 
+      { "http://snomed.info/sct#24515005", Spice }, 
+      { "255620007", FoodSubstance }, 
+      { "http://snomed.info/sct#255620007", FoodSubstance }, 
+      { "25743006", SkimMilk }, 
+      { "http://snomed.info/sct#25743006", SkimMilk }, 
+      { "28230009", Poultry }, 
+      { "http://snomed.info/sct#28230009", Poultry }, 
+      { "28647000", Meat }, 
+      { "http://snomed.info/sct#28647000", Meat }, 
+      { "28942008", CoconutOil }, 
+      { "http://snomed.info/sct#28942008", CoconutOil }, 
+      { "3718001", CowQuoteSMilk }, 
+      { "http://snomed.info/sct#3718001", CowQuoteSMilk }, 
+      { "39102003", FoodParticle }, 
+      { "http://snomed.info/sct#39102003", FoodParticle }, 
+      { "41834005", OliveOil }, 
+      { "http://snomed.info/sct#41834005", OliveOil }, 
+      { "43708003", AnimalFeedAdditive }, 
+      { "http://snomed.info/sct#43708003", AnimalFeedAdditive }, 
+      { "44027008", Seafood }, 
+      { "http://snomed.info/sct#44027008", Seafood }, 
+      { "46329000", ChocolateMilk }, 
+      { "http://snomed.info/sct#46329000", ChocolateMilk }, 
+      { "4700006", BeefInsulin }, 
+      { "http://snomed.info/sct#4700006", BeefInsulin }, 
+      { "50479000", SoyProteinIronComplex }, 
+      { "http://snomed.info/sct#50479000", SoyProteinIronComplex }, 
+      { "50593009", Casein }, 
+      { "http://snomed.info/sct#50593009", Casein }, 
+      { "51905005", Mustard }, 
+      { "http://snomed.info/sct#51905005", Mustard }, 
+      { "53875002", Colostrum }, 
+      { "http://snomed.info/sct#53875002", Colostrum }, 
+      { "54041009", SafflowerOil }, 
+      { "http://snomed.info/sct#54041009", SafflowerOil }, 
+      { "63045006", Berry }, 
+      { "http://snomed.info/sct#63045006", Berry }, 
+      { "63766005", Flour }, 
+      { "http://snomed.info/sct#63766005", Flour }, 
+      { "67296003", PorkInsulin }, 
+      { "http://snomed.info/sct#67296003", PorkInsulin }, 
+      { "67324005", Rice }, 
+      { "http://snomed.info/sct#67324005", Rice }, 
+      { "70813002", Milk }, 
+      { "http://snomed.info/sct#70813002", Milk }, 
+      { "72511004", Fruit }, 
+      { "http://snomed.info/sct#72511004", Fruit }, 
+      { "74242007", FoodStarch }, 
+      { "http://snomed.info/sct#74242007", FoodStarch }, 
+      { "75476008", BovineGrowthHormone }, 
+      { "http://snomed.info/sct#75476008", BovineGrowthHormone }, 
+      { "7661006", FishBone }, 
+      { "http://snomed.info/sct#7661006", FishBone }, 
+      { "77722008", PoultryBone }, 
+      { "http://snomed.info/sct#77722008", PoultryBone }, 
+      { "7791007", SoyProtein }, 
+      { "http://snomed.info/sct#7791007", SoyProtein }, 
+      { "80743002", MustardBlack }, 
+      { "http://snomed.info/sct#80743002", MustardBlack }, 
+      { "82450006", CottonseedOil }, 
+      { "http://snomed.info/sct#82450006", CottonseedOil }, 
+      { "82566005", AnimalFeed }, 
+      { "http://snomed.info/sct#82566005", AnimalFeed }, 
+      { "83235009", BovineGrowthHormoneRecombinant }, 
+      { "http://snomed.info/sct#83235009", BovineGrowthHormoneRecombinant }, 
+      { "83595008", GoatQuoteSMilk }, 
+      { "http://snomed.info/sct#83595008", GoatQuoteSMilk }, 
+      { "85668006", StarchPowder }, 
+      { "http://snomed.info/sct#85668006", StarchPowder }, 
+      { "89707004", SesameOil }, 
+      { "http://snomed.info/sct#89707004", SesameOil }, 
+      { "89811004", Gluten }, 
+      { "http://snomed.info/sct#89811004", Gluten }, 
+      { "90677004", MustardWhite }, 
+      { "http://snomed.info/sct#90677004", MustardWhite }, 
+      { "91606004", Cochineal }, 
+      { "http://snomed.info/sct#91606004", Cochineal }, 
+      { "96364008", Sometribove }, 
+      { "http://snomed.info/sct#96364008", Sometribove }, 
+    };
   };
 }

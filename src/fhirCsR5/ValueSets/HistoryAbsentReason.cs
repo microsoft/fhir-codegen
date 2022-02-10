@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDeferred = "deferred";
 
     /// <summary>
+    /// Literal for code: HistoryAbsentReasonDeferred
+    /// </summary>
+    public const string LiteralHistoryAbsentReasonDeferred = "http://terminology.hl7.org/CodeSystem/history-absent-reason#deferred";
+
+    /// <summary>
     /// Literal for code: SubjectUnknown
     /// </summary>
     public const string LiteralSubjectUnknown = "subject-unknown";
+
+    /// <summary>
+    /// Literal for code: HistoryAbsentReasonSubjectUnknown
+    /// </summary>
+    public const string LiteralHistoryAbsentReasonSubjectUnknown = "http://terminology.hl7.org/CodeSystem/history-absent-reason#subject-unknown";
 
     /// <summary>
     /// Literal for code: UnableToObtain
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUnableToObtain = "unable-to-obtain";
 
     /// <summary>
+    /// Literal for code: HistoryAbsentReasonUnableToObtain
+    /// </summary>
+    public const string LiteralHistoryAbsentReasonUnableToObtain = "http://terminology.hl7.org/CodeSystem/history-absent-reason#unable-to-obtain";
+
+    /// <summary>
     /// Literal for code: InformationWithheld
     /// </summary>
     public const string LiteralInformationWithheld = "withheld";
+
+    /// <summary>
+    /// Literal for code: HistoryAbsentReasonInformationWithheld
+    /// </summary>
+    public const string LiteralHistoryAbsentReasonInformationWithheld = "http://terminology.hl7.org/CodeSystem/history-absent-reason#withheld";
+
+    /// <summary>
+    /// Dictionary for looking up HistoryAbsentReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "deferred", Deferred }, 
+      { "http://terminology.hl7.org/CodeSystem/history-absent-reason#deferred", Deferred }, 
+      { "subject-unknown", SubjectUnknown }, 
+      { "http://terminology.hl7.org/CodeSystem/history-absent-reason#subject-unknown", SubjectUnknown }, 
+      { "unable-to-obtain", UnableToObtain }, 
+      { "http://terminology.hl7.org/CodeSystem/history-absent-reason#unable-to-obtain", UnableToObtain }, 
+      { "withheld", InformationWithheld }, 
+      { "http://terminology.hl7.org/CodeSystem/history-absent-reason#withheld", InformationWithheld }, 
+    };
   };
 }

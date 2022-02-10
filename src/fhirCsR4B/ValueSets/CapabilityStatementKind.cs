@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCapability = "capability";
 
     /// <summary>
+    /// Literal for code: CapabilityStatementKindCapability
+    /// </summary>
+    public const string LiteralCapabilityStatementKindCapability = "http://hl7.org/fhir/capability-statement-kind#capability";
+
+    /// <summary>
     /// Literal for code: Instance
     /// </summary>
     public const string LiteralInstance = "instance";
 
     /// <summary>
+    /// Literal for code: CapabilityStatementKindInstance
+    /// </summary>
+    public const string LiteralCapabilityStatementKindInstance = "http://hl7.org/fhir/capability-statement-kind#instance";
+
+    /// <summary>
     /// Literal for code: Requirements
     /// </summary>
     public const string LiteralRequirements = "requirements";
+
+    /// <summary>
+    /// Literal for code: CapabilityStatementKindRequirements
+    /// </summary>
+    public const string LiteralCapabilityStatementKindRequirements = "http://hl7.org/fhir/capability-statement-kind#requirements";
+
+    /// <summary>
+    /// Dictionary for looking up CapabilityStatementKind Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "capability", Capability }, 
+      { "http://hl7.org/fhir/capability-statement-kind#capability", Capability }, 
+      { "instance", Instance }, 
+      { "http://hl7.org/fhir/capability-statement-kind#instance", Instance }, 
+      { "requirements", Requirements }, 
+      { "http://hl7.org/fhir/capability-statement-kind#requirements", Requirements }, 
+    };
   };
 }

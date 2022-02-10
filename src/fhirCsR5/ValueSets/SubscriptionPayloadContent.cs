@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmpty = "empty";
 
     /// <summary>
+    /// Literal for code: SubscriptionPayloadContentEmpty
+    /// </summary>
+    public const string LiteralSubscriptionPayloadContentEmpty = "http://hl7.org/fhir/subscription-payload-content#empty";
+
+    /// <summary>
     /// Literal for code: FullResource
     /// </summary>
     public const string LiteralFullResource = "full-resource";
 
     /// <summary>
+    /// Literal for code: SubscriptionPayloadContentFullResource
+    /// </summary>
+    public const string LiteralSubscriptionPayloadContentFullResource = "http://hl7.org/fhir/subscription-payload-content#full-resource";
+
+    /// <summary>
     /// Literal for code: IdOnly
     /// </summary>
     public const string LiteralIdOnly = "id-only";
+
+    /// <summary>
+    /// Literal for code: SubscriptionPayloadContentIdOnly
+    /// </summary>
+    public const string LiteralSubscriptionPayloadContentIdOnly = "http://hl7.org/fhir/subscription-payload-content#id-only";
+
+    /// <summary>
+    /// Dictionary for looking up SubscriptionPayloadContent Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "empty", Empty }, 
+      { "http://hl7.org/fhir/subscription-payload-content#empty", Empty }, 
+      { "full-resource", FullResource }, 
+      { "http://hl7.org/fhir/subscription-payload-content#full-resource", FullResource }, 
+      { "id-only", IdOnly }, 
+      { "http://hl7.org/fhir/subscription-payload-content#id-only", IdOnly }, 
+    };
   };
 }

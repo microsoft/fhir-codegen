@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClient = "client";
 
     /// <summary>
+    /// Literal for code: RestfulCapabilityModeClient
+    /// </summary>
+    public const string LiteralRestfulCapabilityModeClient = "http://hl7.org/fhir/restful-capability-mode#client";
+
+    /// <summary>
     /// Literal for code: Server
     /// </summary>
     public const string LiteralServer = "server";
+
+    /// <summary>
+    /// Literal for code: RestfulCapabilityModeServer
+    /// </summary>
+    public const string LiteralRestfulCapabilityModeServer = "http://hl7.org/fhir/restful-capability-mode#server";
+
+    /// <summary>
+    /// Dictionary for looking up RestfulCapabilityMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "client", Client }, 
+      { "http://hl7.org/fhir/restful-capability-mode#client", Client }, 
+      { "server", Server }, 
+      { "http://hl7.org/fhir/restful-capability-mode#server", Server }, 
+    };
   };
 }

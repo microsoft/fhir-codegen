@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ClaimCareteamroleCodes
   {
     /// <summary>
-    /// 
+    /// Assisting Provider
     /// </summary>
     public static readonly Coding AssistingProvider = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/claimcareteamrole"
     };
     /// <summary>
-    /// 
+    /// Other
     /// </summary>
     public static readonly Coding Other = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/claimcareteamrole"
     };
     /// <summary>
-    /// 
+    /// Primary provider
     /// </summary>
     public static readonly Coding PrimaryProvider = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/claimcareteamrole"
     };
     /// <summary>
-    /// 
+    /// Supervising Provider
     /// </summary>
     public static readonly Coding SupervisingProvider = new Coding
     {
@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAssistingProvider = "assist";
 
     /// <summary>
+    /// Literal for code: ClaimcareteamroleAssistingProvider
+    /// </summary>
+    public const string LiteralClaimcareteamroleAssistingProvider = "http://terminology.hl7.org/CodeSystem/claimcareteamrole#assist";
+
+    /// <summary>
     /// Literal for code: Other
     /// </summary>
     public const string LiteralOther = "other";
+
+    /// <summary>
+    /// Literal for code: ClaimcareteamroleOther
+    /// </summary>
+    public const string LiteralClaimcareteamroleOther = "http://terminology.hl7.org/CodeSystem/claimcareteamrole#other";
 
     /// <summary>
     /// Literal for code: PrimaryProvider
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPrimaryProvider = "primary";
 
     /// <summary>
+    /// Literal for code: ClaimcareteamrolePrimaryProvider
+    /// </summary>
+    public const string LiteralClaimcareteamrolePrimaryProvider = "http://terminology.hl7.org/CodeSystem/claimcareteamrole#primary";
+
+    /// <summary>
     /// Literal for code: SupervisingProvider
     /// </summary>
     public const string LiteralSupervisingProvider = "supervisor";
+
+    /// <summary>
+    /// Literal for code: ClaimcareteamroleSupervisingProvider
+    /// </summary>
+    public const string LiteralClaimcareteamroleSupervisingProvider = "http://terminology.hl7.org/CodeSystem/claimcareteamrole#supervisor";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimCareteamrole Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "assist", AssistingProvider }, 
+      { "http://terminology.hl7.org/CodeSystem/claimcareteamrole#assist", AssistingProvider }, 
+      { "other", Other }, 
+      { "http://terminology.hl7.org/CodeSystem/claimcareteamrole#other", Other }, 
+      { "primary", PrimaryProvider }, 
+      { "http://terminology.hl7.org/CodeSystem/claimcareteamrole#primary", PrimaryProvider }, 
+      { "supervisor", SupervisingProvider }, 
+      { "http://terminology.hl7.org/CodeSystem/claimcareteamrole#supervisor", SupervisingProvider }, 
+    };
   };
 }

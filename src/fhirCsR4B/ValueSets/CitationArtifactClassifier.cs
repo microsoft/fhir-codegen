@@ -234,9 +234,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVideoAudioMedia = "68059040";
 
     /// <summary>
+    /// Literal for code: CitationArtifactClassifierVideoAudioMedia
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierVideoAudioMedia = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#68059040";
+
+    /// <summary>
     /// Literal for code: AudioFile
     /// </summary>
     public const string LiteralAudioFile = "audio";
+
+    /// <summary>
+    /// Literal for code: CitationArtifactClassifierAudioFile
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierAudioFile = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#audio";
 
     /// <summary>
     /// Literal for code: CommonShare
@@ -244,9 +254,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCommonShare = "common-share";
 
     /// <summary>
+    /// Literal for code: CitationArtifactClassifierCommonShare
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierCommonShare = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#common-share";
+
+    /// <summary>
     /// Literal for code: Preprint
     /// </summary>
     public const string LiteralPreprint = "D000076942";
+
+    /// <summary>
+    /// Literal for code: CitationArtifactClassifierPreprint
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierPreprint = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#D000076942";
 
     /// <summary>
     /// Literal for code: Book
@@ -254,9 +274,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBook = "D001877";
 
     /// <summary>
+    /// Literal for code: CitationArtifactClassifierBook
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierBook = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#D001877";
+
+    /// <summary>
     /// Literal for code: Comment
     /// </summary>
     public const string LiteralComment = "D016420";
+
+    /// <summary>
+    /// Literal for code: CitationArtifactClassifierComment
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierComment = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#D016420";
 
     /// <summary>
     /// Literal for code: Letter
@@ -264,9 +294,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLetter = "D016422";
 
     /// <summary>
+    /// Literal for code: CitationArtifactClassifierLetter
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierLetter = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#D016422";
+
+    /// <summary>
     /// Literal for code: PublishedErratum
     /// </summary>
     public const string LiteralPublishedErratum = "D016425";
+
+    /// <summary>
+    /// Literal for code: CitationArtifactClassifierPublishedErratum
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierPublishedErratum = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#D016425";
 
     /// <summary>
     /// Literal for code: JournalArticle
@@ -274,9 +314,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralJournalArticle = "D016428";
 
     /// <summary>
+    /// Literal for code: CitationArtifactClassifierJournalArticle
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierJournalArticle = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#D016428";
+
+    /// <summary>
     /// Literal for code: Database
     /// </summary>
     public const string LiteralDatabase = "D019991";
+
+    /// <summary>
+    /// Literal for code: CitationArtifactClassifierDatabase
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierDatabase = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#D019991";
 
     /// <summary>
     /// Literal for code: Dataset
@@ -284,9 +334,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDataset = "D064886";
 
     /// <summary>
+    /// Literal for code: CitationArtifactClassifierDataset
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierDataset = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#D064886";
+
+    /// <summary>
     /// Literal for code: Electronic
     /// </summary>
     public const string LiteralElectronic = "Electronic";
+
+    /// <summary>
+    /// Literal for code: CitationArtifactClassifierElectronic
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierElectronic = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#Electronic";
 
     /// <summary>
     /// Literal for code: ElectronicECollection
@@ -294,9 +354,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralElectronicECollection = "Electronic-eCollection";
 
     /// <summary>
+    /// Literal for code: CitationArtifactClassifierElectronicECollection
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierElectronicECollection = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#Electronic-eCollection";
+
+    /// <summary>
     /// Literal for code: ElectronicPrint
     /// </summary>
     public const string LiteralElectronicPrint = "Electronic-Print";
+
+    /// <summary>
+    /// Literal for code: CitationArtifactClassifierElectronicPrint
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierElectronicPrint = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#Electronic-Print";
 
     /// <summary>
     /// Literal for code: ExecutableApp
@@ -304,9 +374,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExecutableApp = "executable-app";
 
     /// <summary>
+    /// Literal for code: CitationArtifactClassifierExecutableApp
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierExecutableApp = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#executable-app";
+
+    /// <summary>
     /// Literal for code: FHIRResource
     /// </summary>
     public const string LiteralFHIRResource = "fhir-resource";
+
+    /// <summary>
+    /// Literal for code: CitationArtifactClassifierFHIRResource
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierFHIRResource = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#fhir-resource";
 
     /// <summary>
     /// Literal for code: ImageFile
@@ -314,9 +394,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralImageFile = "image";
 
     /// <summary>
+    /// Literal for code: CitationArtifactClassifierImageFile
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierImageFile = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#image";
+
+    /// <summary>
     /// Literal for code: MachineCode
     /// </summary>
     public const string LiteralMachineCode = "machine-code";
+
+    /// <summary>
+    /// Literal for code: CitationArtifactClassifierMachineCode
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierMachineCode = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#machine-code";
 
     /// <summary>
     /// Literal for code: MedlineBase
@@ -324,9 +414,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMedlineBase = "medline-base";
 
     /// <summary>
+    /// Literal for code: CitationArtifactClassifierMedlineBase
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierMedlineBase = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#medline-base";
+
+    /// <summary>
     /// Literal for code: Print
     /// </summary>
     public const string LiteralPrint = "Print";
+
+    /// <summary>
+    /// Literal for code: CitationArtifactClassifierPrint
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierPrint = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#Print";
 
     /// <summary>
     /// Literal for code: PrintElectronic
@@ -334,9 +434,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrintElectronic = "Print-Electronic";
 
     /// <summary>
+    /// Literal for code: CitationArtifactClassifierPrintElectronic
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierPrintElectronic = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#Print-Electronic";
+
+    /// <summary>
     /// Literal for code: ProjectSpecific
     /// </summary>
     public const string LiteralProjectSpecific = "project-specific";
+
+    /// <summary>
+    /// Literal for code: CitationArtifactClassifierProjectSpecific
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierProjectSpecific = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#project-specific";
 
     /// <summary>
     /// Literal for code: Protocol
@@ -344,8 +454,72 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProtocol = "protocol";
 
     /// <summary>
+    /// Literal for code: CitationArtifactClassifierProtocol
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierProtocol = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#protocol";
+
+    /// <summary>
     /// Literal for code: Webpage
     /// </summary>
     public const string LiteralWebpage = "webpage";
+
+    /// <summary>
+    /// Literal for code: CitationArtifactClassifierWebpage
+    /// </summary>
+    public const string LiteralCitationArtifactClassifierWebpage = "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#webpage";
+
+    /// <summary>
+    /// Dictionary for looking up CitationArtifactClassifier Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "68059040", VideoAudioMedia }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#68059040", VideoAudioMedia }, 
+      { "audio", AudioFile }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#audio", AudioFile }, 
+      { "common-share", CommonShare }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#common-share", CommonShare }, 
+      { "D000076942", Preprint }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#D000076942", Preprint }, 
+      { "D001877", Book }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#D001877", Book }, 
+      { "D016420", Comment }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#D016420", Comment }, 
+      { "D016422", Letter }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#D016422", Letter }, 
+      { "D016425", PublishedErratum }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#D016425", PublishedErratum }, 
+      { "D016428", JournalArticle }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#D016428", JournalArticle }, 
+      { "D019991", Database }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#D019991", Database }, 
+      { "D064886", Dataset }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#D064886", Dataset }, 
+      { "Electronic", Electronic }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#Electronic", Electronic }, 
+      { "Electronic-eCollection", ElectronicECollection }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#Electronic-eCollection", ElectronicECollection }, 
+      { "Electronic-Print", ElectronicPrint }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#Electronic-Print", ElectronicPrint }, 
+      { "executable-app", ExecutableApp }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#executable-app", ExecutableApp }, 
+      { "fhir-resource", FHIRResource }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#fhir-resource", FHIRResource }, 
+      { "image", ImageFile }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#image", ImageFile }, 
+      { "machine-code", MachineCode }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#machine-code", MachineCode }, 
+      { "medline-base", MedlineBase }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#medline-base", MedlineBase }, 
+      { "Print", Print }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#Print", Print }, 
+      { "Print-Electronic", PrintElectronic }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#Print-Electronic", PrintElectronic }, 
+      { "project-specific", ProjectSpecific }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#project-specific", ProjectSpecific }, 
+      { "protocol", Protocol }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#protocol", Protocol }, 
+      { "webpage", Webpage }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-artifact-classifier#webpage", Webpage }, 
+    };
   };
 }

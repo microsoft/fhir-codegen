@@ -431,6 +431,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Compositional { get; set; }
     /// <summary>
+    /// Extension container element for Compositional
+    /// </summary>
+    public Element _Compositional { get; set; }
+    /// <summary>
     /// Filter Properties supported.
     /// </summary>
     public List<TerminologyCapabilitiesCodeSystemVersionFilter> Filter { get; set; }
@@ -438,6 +442,10 @@ namespace fhirCsR5.Models
     /// If this is the default version for this code system.
     /// </summary>
     public bool? IsDefault { get; set; }
+    /// <summary>
+    /// Extension container element for IsDefault
+    /// </summary>
+    public Element _IsDefault { get; set; }
     /// <summary>
     /// Language Displays supported.
     /// </summary>
@@ -481,9 +489,21 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("isDefault", (bool)IsDefault!);
       }
 
+      if (_IsDefault != null)
+      {
+        writer.WritePropertyName("_isDefault");
+        _IsDefault.SerializeJson(writer, options);
+      }
+
       if (Compositional != null)
       {
         writer.WriteBoolean("compositional", (bool)Compositional!);
+      }
+
+      if (_Compositional != null)
+      {
+        writer.WritePropertyName("_compositional");
+        _Compositional.SerializeJson(writer, options);
       }
 
       if ((Language != null) && (Language.Count != 0))
@@ -576,6 +596,11 @@ namespace fhirCsR5.Models
           Compositional = reader.GetBoolean();
           break;
 
+        case "_compositional":
+          _Compositional = new fhirCsR5.Models.Element();
+          _Compositional.DeserializeJson(ref reader, options);
+          break;
+
         case "filter":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -605,6 +630,11 @@ namespace fhirCsR5.Models
 
         case "isDefault":
           IsDefault = reader.GetBoolean();
+          break;
+
+        case "_isDefault":
+          _IsDefault = new fhirCsR5.Models.Element();
+          _IsDefault.DeserializeJson(ref reader, options);
           break;
 
         case "language":
@@ -752,6 +782,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Subsumption { get; set; }
     /// <summary>
+    /// Extension container element for Subsumption
+    /// </summary>
+    public Element _Subsumption { get; set; }
+    /// <summary>
     /// Canonical identifier for the code system, represented as a URI.
     /// </summary>
     public string Uri { get; set; }
@@ -803,6 +837,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("subsumption", (bool)Subsumption!);
       }
 
+      if (_Subsumption != null)
+      {
+        writer.WritePropertyName("_subsumption");
+        _Subsumption.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -817,6 +857,11 @@ namespace fhirCsR5.Models
       {
         case "subsumption":
           Subsumption = reader.GetBoolean();
+          break;
+
+        case "_subsumption":
+          _Subsumption = new fhirCsR5.Models.Element();
+          _Subsumption.DeserializeJson(ref reader, options);
           break;
 
         case "uri":
@@ -1011,13 +1056,25 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Hierarchical { get; set; }
     /// <summary>
+    /// Extension container element for Hierarchical
+    /// </summary>
+    public Element _Hierarchical { get; set; }
+    /// <summary>
     /// True if requests for incomplete expansions are allowed.
     /// </summary>
     public bool? Incomplete { get; set; }
     /// <summary>
+    /// Extension container element for Incomplete
+    /// </summary>
+    public Element _Incomplete { get; set; }
+    /// <summary>
     /// Whether the server supports paging on expansion.
     /// </summary>
     public bool? Paging { get; set; }
+    /// <summary>
+    /// Extension container element for Paging
+    /// </summary>
+    public Element _Paging { get; set; }
     /// <summary>
     /// Supported expansion parameter.
     /// </summary>
@@ -1046,14 +1103,32 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("hierarchical", (bool)Hierarchical!);
       }
 
+      if (_Hierarchical != null)
+      {
+        writer.WritePropertyName("_hierarchical");
+        _Hierarchical.SerializeJson(writer, options);
+      }
+
       if (Paging != null)
       {
         writer.WriteBoolean("paging", (bool)Paging!);
       }
 
+      if (_Paging != null)
+      {
+        writer.WritePropertyName("_paging");
+        _Paging.SerializeJson(writer, options);
+      }
+
       if (Incomplete != null)
       {
         writer.WriteBoolean("incomplete", (bool)Incomplete!);
+      }
+
+      if (_Incomplete != null)
+      {
+        writer.WritePropertyName("_incomplete");
+        _Incomplete.SerializeJson(writer, options);
       }
 
       if ((Parameter != null) && (Parameter.Count != 0))
@@ -1096,12 +1171,27 @@ namespace fhirCsR5.Models
           Hierarchical = reader.GetBoolean();
           break;
 
+        case "_hierarchical":
+          _Hierarchical = new fhirCsR5.Models.Element();
+          _Hierarchical.DeserializeJson(ref reader, options);
+          break;
+
         case "incomplete":
           Incomplete = reader.GetBoolean();
           break;
 
+        case "_incomplete":
+          _Incomplete = new fhirCsR5.Models.Element();
+          _Incomplete.DeserializeJson(ref reader, options);
+          break;
+
         case "paging":
           Paging = reader.GetBoolean();
+          break;
+
+        case "_paging":
+          _Paging = new fhirCsR5.Models.Element();
+          _Paging.DeserializeJson(ref reader, options);
           break;
 
         case "parameter":
@@ -1181,6 +1271,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool Translations { get; set; }
     /// <summary>
+    /// Extension container element for Translations
+    /// </summary>
+    public Element _Translations { get; set; }
+    /// <summary>
     /// Serialize to a JSON object
     /// </summary>
     public new void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
@@ -1192,6 +1286,12 @@ namespace fhirCsR5.Models
       ((fhirCsR5.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
       writer.WriteBoolean("translations", Translations);
+
+      if (_Translations != null)
+      {
+        writer.WritePropertyName("_translations");
+        _Translations.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -1207,6 +1307,11 @@ namespace fhirCsR5.Models
       {
         case "translations":
           Translations = reader.GetBoolean();
+          break;
+
+        case "_translations":
+          _Translations = new fhirCsR5.Models.Element();
+          _Translations.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -1250,6 +1355,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool NeedsMap { get; set; }
     /// <summary>
+    /// Extension container element for NeedsMap
+    /// </summary>
+    public Element _NeedsMap { get; set; }
+    /// <summary>
     /// Serialize to a JSON object
     /// </summary>
     public new void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
@@ -1261,6 +1370,12 @@ namespace fhirCsR5.Models
       ((fhirCsR5.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
       writer.WriteBoolean("needsMap", NeedsMap);
+
+      if (_NeedsMap != null)
+      {
+        writer.WritePropertyName("_needsMap");
+        _NeedsMap.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -1276,6 +1391,11 @@ namespace fhirCsR5.Models
       {
         case "needsMap":
           NeedsMap = reader.GetBoolean();
+          break;
+
+        case "_needsMap":
+          _NeedsMap = new fhirCsR5.Models.Element();
+          _NeedsMap.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -1319,6 +1439,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Translation { get; set; }
     /// <summary>
+    /// Extension container element for Translation
+    /// </summary>
+    public Element _Translation { get; set; }
+    /// <summary>
     /// Serialize to a JSON object
     /// </summary>
     public new void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
@@ -1332,6 +1456,12 @@ namespace fhirCsR5.Models
       if (Translation != null)
       {
         writer.WriteBoolean("translation", (bool)Translation!);
+      }
+
+      if (_Translation != null)
+      {
+        writer.WritePropertyName("_translation");
+        _Translation.SerializeJson(writer, options);
       }
 
       if (includeStartObject)
@@ -1348,6 +1478,11 @@ namespace fhirCsR5.Models
       {
         case "translation":
           Translation = reader.GetBoolean();
+          break;
+
+        case "_translation":
+          _Translation = new fhirCsR5.Models.Element();
+          _Translation.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -1443,6 +1578,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// Typically, this is used for identifiers that can go in an HL7 V3 II (instance identifier) data type, and can then identify this terminology capabilities outside of FHIR, where it is not possible to use the logical URI.
     /// </summary>
     public List<Identifier> Identifier { get; set; }
@@ -1466,6 +1605,10 @@ namespace fhirCsR5.Models
     /// Whether the server supports lockedDate.
     /// </summary>
     public bool? LockedDate { get; set; }
+    /// <summary>
+    /// Extension container element for LockedDate
+    /// </summary>
+    public Element _LockedDate { get; set; }
     /// <summary>
     /// The name is not expected to be globally unique. The name should be a simple alphanumeric type name to ensure that it is machine-processing friendly.
     /// </summary>
@@ -1630,6 +1773,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("experimental", (bool)Experimental!);
       }
 
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Date))
       {
         writer.WriteString("date", (string)Date!);
@@ -1750,6 +1899,12 @@ namespace fhirCsR5.Models
       if (LockedDate != null)
       {
         writer.WriteBoolean("lockedDate", (bool)LockedDate!);
+      }
+
+      if (_LockedDate != null)
+      {
+        writer.WritePropertyName("_lockedDate");
+        _LockedDate.SerializeJson(writer, options);
       }
 
       if ((CodeSystem != null) && (CodeSystem.Count != 0))
@@ -1916,6 +2071,11 @@ namespace fhirCsR5.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR5.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "identifier":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -1986,6 +2146,11 @@ namespace fhirCsR5.Models
 
         case "lockedDate":
           LockedDate = reader.GetBoolean();
+          break;
+
+        case "_lockedDate":
+          _LockedDate = new fhirCsR5.Models.Element();
+          _LockedDate.DeserializeJson(ref reader, options);
           break;
 
         case "name":
@@ -2130,6 +2295,10 @@ namespace fhirCsR5.Models
   public static class TerminologyCapabilitiesCodeSearchCodes {
     public const string VAL_EXPLICIT = "explicit";
     public const string ALL = "all";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "explicit",
+      "all",
+    };
   }
   /// <summary>
   /// Code Values for the TerminologyCapabilities.kind field
@@ -2138,6 +2307,11 @@ namespace fhirCsR5.Models
     public const string INSTANCE = "instance";
     public const string CAPABILITY = "capability";
     public const string REQUIREMENTS = "requirements";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "instance",
+      "capability",
+      "requirements",
+    };
   }
   /// <summary>
   /// Code Values for the TerminologyCapabilities.status field
@@ -2147,5 +2321,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

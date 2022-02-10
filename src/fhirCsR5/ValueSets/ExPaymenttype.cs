@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ExPaymenttypeCodes
   {
     /// <summary>
-    /// 
+    /// Complete
     /// </summary>
     public static readonly Coding Complete = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-paymenttype"
     };
     /// <summary>
-    /// 
+    /// Partial
     /// </summary>
     public static readonly Coding Partial = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralComplete = "complete";
 
     /// <summary>
+    /// Literal for code: ExPaymenttypeComplete
+    /// </summary>
+    public const string LiteralExPaymenttypeComplete = "http://terminology.hl7.org/CodeSystem/ex-paymenttype#complete";
+
+    /// <summary>
     /// Literal for code: Partial
     /// </summary>
     public const string LiteralPartial = "partial";
+
+    /// <summary>
+    /// Literal for code: ExPaymenttypePartial
+    /// </summary>
+    public const string LiteralExPaymenttypePartial = "http://terminology.hl7.org/CodeSystem/ex-paymenttype#partial";
+
+    /// <summary>
+    /// Dictionary for looking up ExPaymenttype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", Complete }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-paymenttype#complete", Complete }, 
+      { "partial", Partial }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-paymenttype#partial", Partial }, 
+    };
   };
 }

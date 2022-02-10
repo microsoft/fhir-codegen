@@ -45,13 +45,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCurrent = "current";
 
     /// <summary>
+    /// Literal for code: ListStatusCurrent
+    /// </summary>
+    public const string LiteralListStatusCurrent = "http://hl7.org/fhir/list-status#current";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: ListStatusEnteredInError
+    /// </summary>
+    public const string LiteralListStatusEnteredInError = "http://hl7.org/fhir/list-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Retired
     /// </summary>
     public const string LiteralRetired = "retired";
+
+    /// <summary>
+    /// Literal for code: ListStatusRetired
+    /// </summary>
+    public const string LiteralListStatusRetired = "http://hl7.org/fhir/list-status#retired";
+
+    /// <summary>
+    /// Dictionary for looking up ListStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "current", Current }, 
+      { "http://hl7.org/fhir/list-status#current", Current }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/list-status#entered-in-error", EnteredInError }, 
+      { "retired", Retired }, 
+      { "http://hl7.org/fhir/list-status#retired", Retired }, 
+    };
   };
 }

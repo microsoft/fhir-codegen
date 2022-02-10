@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class SeriesPerformerFunctionCodes
   {
     /// <summary>
-    /// 
+    /// consultant
     /// </summary>
     public static readonly Coding Consultant = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// performer
     /// </summary>
     public static readonly Coding Performer = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// referrer
     /// </summary>
     public static readonly Coding Referrer = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// secondary performer
     /// </summary>
     public static readonly Coding SecondaryPerformer = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// verifier
     /// </summary>
     public static readonly Coding Verifier = new Coding
     {
@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralConsultant = "CON";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeConsultant
+    /// </summary>
+    public const string LiteralV3ParticipationTypeConsultant = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CON";
+
+    /// <summary>
     /// Literal for code: Performer
     /// </summary>
     public const string LiteralPerformer = "PRF";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypePerformer
+    /// </summary>
+    public const string LiteralV3ParticipationTypePerformer = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PRF";
 
     /// <summary>
     /// Literal for code: Referrer
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralReferrer = "REF";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeReferrer
+    /// </summary>
+    public const string LiteralV3ParticipationTypeReferrer = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#REF";
+
+    /// <summary>
     /// Literal for code: SecondaryPerformer
     /// </summary>
     public const string LiteralSecondaryPerformer = "SPRF";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeSecondaryPerformer
+    /// </summary>
+    public const string LiteralV3ParticipationTypeSecondaryPerformer = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF";
+
+    /// <summary>
     /// Literal for code: Verifier
     /// </summary>
     public const string LiteralVerifier = "VRF";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeVerifier
+    /// </summary>
+    public const string LiteralV3ParticipationTypeVerifier = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#VRF";
+
+    /// <summary>
+    /// Dictionary for looking up SeriesPerformerFunction Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "CON", Consultant }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CON", Consultant }, 
+      { "PRF", Performer }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PRF", Performer }, 
+      { "REF", Referrer }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#REF", Referrer }, 
+      { "SPRF", SecondaryPerformer }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF", SecondaryPerformer }, 
+      { "VRF", Verifier }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#VRF", Verifier }, 
+    };
   };
 }

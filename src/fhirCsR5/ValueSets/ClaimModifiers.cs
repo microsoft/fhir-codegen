@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ClaimModifiersCodes
   {
     /// <summary>
-    /// 
+    /// Repair of prior service or installation
     /// </summary>
     public static readonly Coding RepairOfPriorServiceOrInstallation = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/modifiers"
     };
     /// <summary>
-    /// 
+    /// Temporary service or installation
     /// </summary>
     public static readonly Coding TemporaryServiceOrInstallation = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/modifiers"
     };
     /// <summary>
-    /// 
+    /// TMJ treatment
     /// </summary>
     public static readonly Coding TMJTreatment = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/modifiers"
     };
     /// <summary>
-    /// 
+    /// Implant or associated with an implant
     /// </summary>
     public static readonly Coding ImplantOrAssociatedWithAnImplant = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/modifiers"
     };
     /// <summary>
-    /// 
+    /// Rush or Outside of office hours
     /// </summary>
     public static readonly Coding RushOrOutsideOfOfficeHours = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/modifiers"
     };
     /// <summary>
-    /// 
+    /// None
     /// </summary>
     public static readonly Coding None = new Coding
     {
@@ -72,9 +72,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRepairOfPriorServiceOrInstallation = "a";
 
     /// <summary>
+    /// Literal for code: ModifiersRepairOfPriorServiceOrInstallation
+    /// </summary>
+    public const string LiteralModifiersRepairOfPriorServiceOrInstallation = "http://terminology.hl7.org/CodeSystem/modifiers#a";
+
+    /// <summary>
     /// Literal for code: TemporaryServiceOrInstallation
     /// </summary>
     public const string LiteralTemporaryServiceOrInstallation = "b";
+
+    /// <summary>
+    /// Literal for code: ModifiersTemporaryServiceOrInstallation
+    /// </summary>
+    public const string LiteralModifiersTemporaryServiceOrInstallation = "http://terminology.hl7.org/CodeSystem/modifiers#b";
 
     /// <summary>
     /// Literal for code: TMJTreatment
@@ -82,9 +92,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTMJTreatment = "c";
 
     /// <summary>
+    /// Literal for code: ModifiersTMJTreatment
+    /// </summary>
+    public const string LiteralModifiersTMJTreatment = "http://terminology.hl7.org/CodeSystem/modifiers#c";
+
+    /// <summary>
     /// Literal for code: ImplantOrAssociatedWithAnImplant
     /// </summary>
     public const string LiteralImplantOrAssociatedWithAnImplant = "e";
+
+    /// <summary>
+    /// Literal for code: ModifiersImplantOrAssociatedWithAnImplant
+    /// </summary>
+    public const string LiteralModifiersImplantOrAssociatedWithAnImplant = "http://terminology.hl7.org/CodeSystem/modifiers#e";
 
     /// <summary>
     /// Literal for code: RushOrOutsideOfOfficeHours
@@ -92,8 +112,36 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRushOrOutsideOfOfficeHours = "rooh";
 
     /// <summary>
+    /// Literal for code: ModifiersRushOrOutsideOfOfficeHours
+    /// </summary>
+    public const string LiteralModifiersRushOrOutsideOfOfficeHours = "http://terminology.hl7.org/CodeSystem/modifiers#rooh";
+
+    /// <summary>
     /// Literal for code: None
     /// </summary>
     public const string LiteralNone = "x";
+
+    /// <summary>
+    /// Literal for code: ModifiersNone
+    /// </summary>
+    public const string LiteralModifiersNone = "http://terminology.hl7.org/CodeSystem/modifiers#x";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimModifiers Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "a", RepairOfPriorServiceOrInstallation }, 
+      { "http://terminology.hl7.org/CodeSystem/modifiers#a", RepairOfPriorServiceOrInstallation }, 
+      { "b", TemporaryServiceOrInstallation }, 
+      { "http://terminology.hl7.org/CodeSystem/modifiers#b", TemporaryServiceOrInstallation }, 
+      { "c", TMJTreatment }, 
+      { "http://terminology.hl7.org/CodeSystem/modifiers#c", TMJTreatment }, 
+      { "e", ImplantOrAssociatedWithAnImplant }, 
+      { "http://terminology.hl7.org/CodeSystem/modifiers#e", ImplantOrAssociatedWithAnImplant }, 
+      { "rooh", RushOrOutsideOfOfficeHours }, 
+      { "http://terminology.hl7.org/CodeSystem/modifiers#rooh", RushOrOutsideOfOfficeHours }, 
+      { "x", None }, 
+      { "http://terminology.hl7.org/CodeSystem/modifiers#x", None }, 
+    };
   };
 }

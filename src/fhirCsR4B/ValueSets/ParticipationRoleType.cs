@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class ParticipationRoleTypeCodes
   {
     /// <summary>
-    /// 
+    /// CitizenRoleType
     /// </summary>
     public static readonly Coding CitizenRoleType_v3_RoleCode = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"
     };
     /// <summary>
-    /// 
+    /// asylum seeker
     /// </summary>
     public static readonly Coding AsylumSeeker_v3_RoleCode = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     };
     /// <summary>
-    /// 
+    /// single minor asylum seeker
     /// </summary>
     public static readonly Coding SingleMinorAsylumSeeker_v3_RoleCode = new Coding
     {
@@ -190,7 +190,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     };
     /// <summary>
-    /// 
+    /// national
     /// </summary>
     public static readonly Coding National_v3_RoleCode = new Coding
     {
@@ -199,7 +199,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     };
     /// <summary>
-    /// 
+    /// non-country member without residence permit
     /// </summary>
     public static readonly Coding NonCountryMemberWithoutResidencePermit_v3_RoleCode = new Coding
     {
@@ -208,7 +208,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     };
     /// <summary>
-    /// 
+    /// non-country member minor without residence permit
     /// </summary>
     public static readonly Coding NonCountryMemberMinorWithoutResidencePermit_v3_RoleCode = new Coding
     {
@@ -265,7 +265,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleClass"
     };
     /// <summary>
-    /// 
+    /// permit card applicant
     /// </summary>
     public static readonly Coding PermitCardApplicant_v3_RoleCode = new Coding
     {
@@ -274,7 +274,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     };
     /// <summary>
-    /// 
+    /// non-country member with residence permit
     /// </summary>
     public static readonly Coding NonCountryMemberWithResidencePermit_v3_RoleCode = new Coding
     {
@@ -283,7 +283,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     };
     /// <summary>
-    /// 
+    /// non-country member minor with residence permit
     /// </summary>
     public static readonly Coding NonCountryMemberMinorWithResidencePermit_v3_RoleCode = new Coding
     {
@@ -646,9 +646,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCitizenRoleType_v3_RoleCode = "_CitizenRoleType";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeCitizenRoleType_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeCitizenRoleType_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#_CitizenRoleType";
+
+    /// <summary>
     /// Literal for code: Application_dicom_dcim
     /// </summary>
     public const string LiteralApplication_dicom_dcim = "110150";
+
+    /// <summary>
+    /// Literal for code: DicomDcimApplication_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimApplication_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110150";
 
     /// <summary>
     /// Literal for code: ApplicationLauncher_dicom_dcim
@@ -656,9 +666,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralApplicationLauncher_dicom_dcim = "110151";
 
     /// <summary>
+    /// Literal for code: DicomDcimApplicationLauncher_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimApplicationLauncher_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110151";
+
+    /// <summary>
     /// Literal for code: DestinationRoleID_dicom_dcim
     /// </summary>
     public const string LiteralDestinationRoleID_dicom_dcim = "110152";
+
+    /// <summary>
+    /// Literal for code: DicomDcimDestinationRoleID_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimDestinationRoleID_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110152";
 
     /// <summary>
     /// Literal for code: SourceRoleID_dicom_dcim
@@ -666,9 +686,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSourceRoleID_dicom_dcim = "110153";
 
     /// <summary>
+    /// Literal for code: DicomDcimSourceRoleID_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimSourceRoleID_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110153";
+
+    /// <summary>
     /// Literal for code: DestinationMedia_dicom_dcim
     /// </summary>
     public const string LiteralDestinationMedia_dicom_dcim = "110154";
+
+    /// <summary>
+    /// Literal for code: DicomDcimDestinationMedia_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimDestinationMedia_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110154";
 
     /// <summary>
     /// Literal for code: SourceMedia_dicom_dcim
@@ -676,9 +706,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSourceMedia_dicom_dcim = "110155";
 
     /// <summary>
+    /// Literal for code: DicomDcimSourceMedia_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimSourceMedia_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110155";
+
+    /// <summary>
     /// Literal for code: AFFL_v3_RoleClass
     /// </summary>
     public const string LiteralAFFL_v3_RoleClass = "AFFL";
+
+    /// <summary>
+    /// Literal for code: V3RoleClassAFFL_v3_RoleClass
+    /// </summary>
+    public const string LiteralV3RoleClassAFFL_v3_RoleClass = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#AFFL";
 
     /// <summary>
     /// Literal for code: AGNT_v3_RoleClass
@@ -686,9 +726,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAGNT_v3_RoleClass = "AGNT";
 
     /// <summary>
+    /// Literal for code: V3RoleClassAGNT_v3_RoleClass
+    /// </summary>
+    public const string LiteralV3RoleClassAGNT_v3_RoleClass = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#AGNT";
+
+    /// <summary>
     /// Literal for code: AMENDER_contractsignertypecodes
     /// </summary>
     public const string LiteralAMENDER_contractsignertypecodes = "AMENDER";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesAMENDER_contractsignertypecodes
+    /// </summary>
+    public const string LiteralContractsignertypecodesAMENDER_contractsignertypecodes = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#AMENDER";
 
     /// <summary>
     /// Literal for code: ASSIGNED_v3_RoleClass
@@ -696,9 +746,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralASSIGNED_v3_RoleClass = "ASSIGNED";
 
     /// <summary>
+    /// Literal for code: V3RoleClassASSIGNED_v3_RoleClass
+    /// </summary>
+    public const string LiteralV3RoleClassASSIGNED_v3_RoleClass = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#ASSIGNED";
+
+    /// <summary>
     /// Literal for code: AUCG_v3_ParticipationFunction
     /// </summary>
     public const string LiteralAUCG_v3_ParticipationFunction = "AUCG";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationFunctionAUCG_v3_ParticipationFunction
+    /// </summary>
+    public const string LiteralV3ParticipationFunctionAUCG_v3_ParticipationFunction = "http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction#AUCG";
 
     /// <summary>
     /// Literal for code: AULR_v3_ParticipationFunction
@@ -706,9 +766,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAULR_v3_ParticipationFunction = "AULR";
 
     /// <summary>
+    /// Literal for code: V3ParticipationFunctionAULR_v3_ParticipationFunction
+    /// </summary>
+    public const string LiteralV3ParticipationFunctionAULR_v3_ParticipationFunction = "http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction#AULR";
+
+    /// <summary>
     /// Literal for code: AUT_v3_ParticipationType
     /// </summary>
     public const string LiteralAUT_v3_ParticipationType = "AUT";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeAUT_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypeAUT_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#AUT";
 
     /// <summary>
     /// Literal for code: AuthorizationServer_extra_security_role_type
@@ -716,9 +786,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAuthorizationServer_extra_security_role_type = "authserver";
 
     /// <summary>
+    /// Literal for code: ExtraSecurityRoleTypeAuthorizationServer_extra_security_role_type
+    /// </summary>
+    public const string LiteralExtraSecurityRoleTypeAuthorizationServer_extra_security_role_type = "http://terminology.hl7.org/CodeSystem/extra-security-role-type#authserver";
+
+    /// <summary>
     /// Literal for code: AUTM_v3_ParticipationFunction
     /// </summary>
     public const string LiteralAUTM_v3_ParticipationFunction = "AUTM";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationFunctionAUTM_v3_ParticipationFunction
+    /// </summary>
+    public const string LiteralV3ParticipationFunctionAUTM_v3_ParticipationFunction = "http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction#AUTM";
 
     /// <summary>
     /// Literal for code: AUWA_v3_ParticipationFunction
@@ -726,9 +806,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAUWA_v3_ParticipationFunction = "AUWA";
 
     /// <summary>
+    /// Literal for code: V3ParticipationFunctionAUWA_v3_ParticipationFunction
+    /// </summary>
+    public const string LiteralV3ParticipationFunctionAUWA_v3_ParticipationFunction = "http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction#AUWA";
+
+    /// <summary>
     /// Literal for code: AsylumSeeker_v3_RoleCode
     /// </summary>
     public const string LiteralAsylumSeeker_v3_RoleCode = "CAS";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeAsylumSeeker_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeAsylumSeeker_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CAS";
 
     /// <summary>
     /// Literal for code: SingleMinorAsylumSeeker_v3_RoleCode
@@ -736,9 +826,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSingleMinorAsylumSeeker_v3_RoleCode = "CASM";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeSingleMinorAsylumSeeker_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeSingleMinorAsylumSeeker_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CASM";
+
+    /// <summary>
     /// Literal for code: CLAIM_v3_RoleClass
     /// </summary>
     public const string LiteralCLAIM_v3_RoleClass = "CLAIM";
+
+    /// <summary>
+    /// Literal for code: V3RoleClassCLAIM_v3_RoleClass
+    /// </summary>
+    public const string LiteralV3RoleClassCLAIM_v3_RoleClass = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#CLAIM";
 
     /// <summary>
     /// Literal for code: CLASSIFIER_v3_RoleCode
@@ -746,9 +846,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCLASSIFIER_v3_RoleCode = "CLASSIFIER";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeCLASSIFIER_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeCLASSIFIER_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CLASSIFIER";
+
+    /// <summary>
     /// Literal for code: National_v3_RoleCode
     /// </summary>
     public const string LiteralNational_v3_RoleCode = "CN";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeNational_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNational_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CN";
 
     /// <summary>
     /// Literal for code: NonCountryMemberWithoutResidencePermit_v3_RoleCode
@@ -756,9 +866,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNonCountryMemberWithoutResidencePermit_v3_RoleCode = "CNRP";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeNonCountryMemberWithoutResidencePermit_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNonCountryMemberWithoutResidencePermit_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CNRP";
+
+    /// <summary>
     /// Literal for code: NonCountryMemberMinorWithoutResidencePermit_v3_RoleCode
     /// </summary>
     public const string LiteralNonCountryMemberMinorWithoutResidencePermit_v3_RoleCode = "CNRPM";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeNonCountryMemberMinorWithoutResidencePermit_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNonCountryMemberMinorWithoutResidencePermit_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CNRPM";
 
     /// <summary>
     /// Literal for code: COAUTH_contractsignertypecodes
@@ -766,9 +886,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCOAUTH_contractsignertypecodes = "COAUTH";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesCOAUTH_contractsignertypecodes
+    /// </summary>
+    public const string LiteralContractsignertypecodesCOAUTH_contractsignertypecodes = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#COAUTH";
+
+    /// <summary>
     /// Literal for code: CONSENTER_v3_RoleCode
     /// </summary>
     public const string LiteralCONSENTER_v3_RoleCode = "CONSENTER";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeCONSENTER_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeCONSENTER_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CONSENTER";
 
     /// <summary>
     /// Literal for code: CONSWIT_v3_RoleCode
@@ -776,9 +906,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCONSWIT_v3_RoleCode = "CONSWIT";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeCONSWIT_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeCONSWIT_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CONSWIT";
+
+    /// <summary>
     /// Literal for code: CONT_contractsignertypecodes
     /// </summary>
     public const string LiteralCONT_contractsignertypecodes = "CONT";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesCONT_contractsignertypecodes
+    /// </summary>
+    public const string LiteralContractsignertypecodesCONT_contractsignertypecodes = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#CONT";
 
     /// <summary>
     /// Literal for code: COPART_v3_RoleCode
@@ -786,9 +926,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCOPART_v3_RoleCode = "COPART";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeCOPART_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeCOPART_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#COPART";
+
+    /// <summary>
     /// Literal for code: COVPTY_v3_RoleClass
     /// </summary>
     public const string LiteralCOVPTY_v3_RoleClass = "COVPTY";
+
+    /// <summary>
+    /// Literal for code: V3RoleClassCOVPTY_v3_RoleClass
+    /// </summary>
+    public const string LiteralV3RoleClassCOVPTY_v3_RoleClass = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#COVPTY";
 
     /// <summary>
     /// Literal for code: PermitCardApplicant_v3_RoleCode
@@ -796,9 +946,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPermitCardApplicant_v3_RoleCode = "CPCA";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePermitCardApplicant_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodePermitCardApplicant_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CPCA";
+
+    /// <summary>
     /// Literal for code: NonCountryMemberWithResidencePermit_v3_RoleCode
     /// </summary>
     public const string LiteralNonCountryMemberWithResidencePermit_v3_RoleCode = "CRP";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeNonCountryMemberWithResidencePermit_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNonCountryMemberWithResidencePermit_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CRP";
 
     /// <summary>
     /// Literal for code: NonCountryMemberMinorWithResidencePermit_v3_RoleCode
@@ -806,9 +966,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNonCountryMemberMinorWithResidencePermit_v3_RoleCode = "CRPM";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeNonCountryMemberMinorWithResidencePermit_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNonCountryMemberMinorWithResidencePermit_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CRPM";
+
+    /// <summary>
     /// Literal for code: CST_v3_ParticipationType
     /// </summary>
     public const string LiteralCST_v3_ParticipationType = "CST";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeCST_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypeCST_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CST";
 
     /// <summary>
     /// Literal for code: DataCollector_extra_security_role_type
@@ -816,9 +986,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDataCollector_extra_security_role_type = "datacollector";
 
     /// <summary>
+    /// Literal for code: ExtraSecurityRoleTypeDataCollector_extra_security_role_type
+    /// </summary>
+    public const string LiteralExtraSecurityRoleTypeDataCollector_extra_security_role_type = "http://terminology.hl7.org/CodeSystem/extra-security-role-type#datacollector";
+
+    /// <summary>
     /// Literal for code: DataProcessor_extra_security_role_type
     /// </summary>
     public const string LiteralDataProcessor_extra_security_role_type = "dataprocessor";
+
+    /// <summary>
+    /// Literal for code: ExtraSecurityRoleTypeDataProcessor_extra_security_role_type
+    /// </summary>
+    public const string LiteralExtraSecurityRoleTypeDataProcessor_extra_security_role_type = "http://terminology.hl7.org/CodeSystem/extra-security-role-type#dataprocessor";
 
     /// <summary>
     /// Literal for code: DataSubject_extra_security_role_type
@@ -826,9 +1006,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDataSubject_extra_security_role_type = "datasubject";
 
     /// <summary>
+    /// Literal for code: ExtraSecurityRoleTypeDataSubject_extra_security_role_type
+    /// </summary>
+    public const string LiteralExtraSecurityRoleTypeDataSubject_extra_security_role_type = "http://terminology.hl7.org/CodeSystem/extra-security-role-type#datasubject";
+
+    /// <summary>
     /// Literal for code: DECLASSIFIER_v3_RoleCode
     /// </summary>
     public const string LiteralDECLASSIFIER_v3_RoleCode = "DECLASSIFIER";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeDECLASSIFIER_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeDECLASSIFIER_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DECLASSIFIER";
 
     /// <summary>
     /// Literal for code: DELEGATEE_v3_RoleCode
@@ -836,9 +1026,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDELEGATEE_v3_RoleCode = "DELEGATEE";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeDELEGATEE_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeDELEGATEE_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DELEGATEE";
+
+    /// <summary>
     /// Literal for code: DELEGATOR_v3_RoleCode
     /// </summary>
     public const string LiteralDELEGATOR_v3_RoleCode = "DELEGATOR";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeDELEGATOR_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeDELEGATOR_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DELEGATOR";
 
     /// <summary>
     /// Literal for code: DEPEN_v3_RoleClass
@@ -846,9 +1046,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDEPEN_v3_RoleClass = "DEPEN";
 
     /// <summary>
+    /// Literal for code: V3RoleClassDEPEN_v3_RoleClass
+    /// </summary>
+    public const string LiteralV3RoleClassDEPEN_v3_RoleClass = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#DEPEN";
+
+    /// <summary>
     /// Literal for code: DOWNGRDER_v3_RoleCode
     /// </summary>
     public const string LiteralDOWNGRDER_v3_RoleCode = "DOWNGRDER";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeDOWNGRDER_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeDOWNGRDER_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DOWNGRDER";
 
     /// <summary>
     /// Literal for code: DPOWATT_v3_RoleCode
@@ -856,9 +1066,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDPOWATT_v3_RoleCode = "DPOWATT";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeDPOWATT_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeDPOWATT_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DPOWATT";
+
+    /// <summary>
     /// Literal for code: ECON_v3_RoleClass
     /// </summary>
     public const string LiteralECON_v3_RoleClass = "ECON";
+
+    /// <summary>
+    /// Literal for code: V3RoleClassECON_v3_RoleClass
+    /// </summary>
+    public const string LiteralV3RoleClassECON_v3_RoleClass = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#ECON";
 
     /// <summary>
     /// Literal for code: EMP_v3_RoleClass
@@ -866,9 +1086,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEMP_v3_RoleClass = "EMP";
 
     /// <summary>
+    /// Literal for code: V3RoleClassEMP_v3_RoleClass
+    /// </summary>
+    public const string LiteralV3RoleClassEMP_v3_RoleClass = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#EMP";
+
+    /// <summary>
     /// Literal for code: EVTWIT_contractsignertypecodes
     /// </summary>
     public const string LiteralEVTWIT_contractsignertypecodes = "EVTWIT";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesEVTWIT_contractsignertypecodes
+    /// </summary>
+    public const string LiteralContractsignertypecodesEVTWIT_contractsignertypecodes = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#EVTWIT";
 
     /// <summary>
     /// Literal for code: EXCEST_v3_RoleCode
@@ -876,9 +1106,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEXCEST_v3_RoleCode = "EXCEST";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeEXCEST_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeEXCEST_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#EXCEST";
+
+    /// <summary>
     /// Literal for code: GRANTEE_v3_RoleCode
     /// </summary>
     public const string LiteralGRANTEE_v3_RoleCode = "GRANTEE";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeGRANTEE_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeGRANTEE_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GRANTEE";
 
     /// <summary>
     /// Literal for code: GRANTOR_v3_RoleCode
@@ -886,9 +1126,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGRANTOR_v3_RoleCode = "GRANTOR";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeGRANTOR_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeGRANTOR_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GRANTOR";
+
+    /// <summary>
     /// Literal for code: GT_v3_RoleCode
     /// </summary>
     public const string LiteralGT_v3_RoleCode = "GT";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeGT_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeGT_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GT";
 
     /// <summary>
     /// Literal for code: GUADLTM_v3_RoleCode
@@ -896,9 +1146,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGUADLTM_v3_RoleCode = "GUADLTM";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeGUADLTM_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeGUADLTM_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GUADLTM";
+
+    /// <summary>
     /// Literal for code: GUARD_v3_RoleClass
     /// </summary>
     public const string LiteralGUARD_v3_RoleClass = "GUARD";
+
+    /// <summary>
+    /// Literal for code: V3RoleClassGUARD_v3_RoleClass
+    /// </summary>
+    public const string LiteralV3RoleClassGUARD_v3_RoleClass = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#GUARD";
 
     /// <summary>
     /// Literal for code: HPOWATT_v3_RoleCode
@@ -906,9 +1166,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHPOWATT_v3_RoleCode = "HPOWATT";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeHPOWATT_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeHPOWATT_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HPOWATT";
+
+    /// <summary>
     /// Literal for code: HumanUser_extra_security_role_type
     /// </summary>
     public const string LiteralHumanUser_extra_security_role_type = "humanuser";
+
+    /// <summary>
+    /// Literal for code: ExtraSecurityRoleTypeHumanUser_extra_security_role_type
+    /// </summary>
+    public const string LiteralExtraSecurityRoleTypeHumanUser_extra_security_role_type = "http://terminology.hl7.org/CodeSystem/extra-security-role-type#humanuser";
 
     /// <summary>
     /// Literal for code: INF_v3_ParticipationType
@@ -916,9 +1186,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralINF_v3_ParticipationType = "INF";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeINF_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypeINF_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#INF";
+
+    /// <summary>
     /// Literal for code: INTPRTER_v3_RoleCode
     /// </summary>
     public const string LiteralINTPRTER_v3_RoleCode = "INTPRTER";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeINTPRTER_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeINTPRTER_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#INTPRTER";
 
     /// <summary>
     /// Literal for code: INVSBJ_v3_RoleClass
@@ -926,9 +1206,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralINVSBJ_v3_RoleClass = "INVSBJ";
 
     /// <summary>
+    /// Literal for code: V3RoleClassINVSBJ_v3_RoleClass
+    /// </summary>
+    public const string LiteralV3RoleClassINVSBJ_v3_RoleClass = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#INVSBJ";
+
+    /// <summary>
     /// Literal for code: IRCP_v3_ParticipationType
     /// </summary>
     public const string LiteralIRCP_v3_ParticipationType = "IRCP";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeIRCP_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypeIRCP_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#IRCP";
 
     /// <summary>
     /// Literal for code: LA_v3_ParticipationType
@@ -936,9 +1226,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLA_v3_ParticipationType = "LA";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeLA_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypeLA_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#LA";
+
+    /// <summary>
     /// Literal for code: NAMED_v3_RoleClass
     /// </summary>
     public const string LiteralNAMED_v3_RoleClass = "NAMED";
+
+    /// <summary>
+    /// Literal for code: V3RoleClassNAMED_v3_RoleClass
+    /// </summary>
+    public const string LiteralV3RoleClassNAMED_v3_RoleClass = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#NAMED";
 
     /// <summary>
     /// Literal for code: NOK_v3_RoleClass
@@ -946,9 +1246,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNOK_v3_RoleClass = "NOK";
 
     /// <summary>
+    /// Literal for code: V3RoleClassNOK_v3_RoleClass
+    /// </summary>
+    public const string LiteralV3RoleClassNOK_v3_RoleClass = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#NOK";
+
+    /// <summary>
     /// Literal for code: NOT_v3_RoleClass
     /// </summary>
     public const string LiteralNOT_v3_RoleClass = "NOT";
+
+    /// <summary>
+    /// Literal for code: V3RoleClassNOT_v3_RoleClass
+    /// </summary>
+    public const string LiteralV3RoleClassNOT_v3_RoleClass = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#NOT";
 
     /// <summary>
     /// Literal for code: PAT_v3_RoleClass
@@ -956,9 +1266,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPAT_v3_RoleClass = "PAT";
 
     /// <summary>
+    /// Literal for code: V3RoleClassPAT_v3_RoleClass
+    /// </summary>
+    public const string LiteralV3RoleClassPAT_v3_RoleClass = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#PAT";
+
+    /// <summary>
     /// Literal for code: POWATT_v3_RoleCode
     /// </summary>
     public const string LiteralPOWATT_v3_RoleCode = "POWATT";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePOWATT_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodePOWATT_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#POWATT";
 
     /// <summary>
     /// Literal for code: PRIMAUTH_contractsignertypecodes
@@ -966,9 +1286,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPRIMAUTH_contractsignertypecodes = "PRIMAUTH";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesPRIMAUTH_contractsignertypecodes
+    /// </summary>
+    public const string LiteralContractsignertypecodesPRIMAUTH_contractsignertypecodes = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#PRIMAUTH";
+
+    /// <summary>
     /// Literal for code: PROMSK_v3_ParticipationFunction
     /// </summary>
     public const string LiteralPROMSK_v3_ParticipationFunction = "PROMSK";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationFunctionPROMSK_v3_ParticipationFunction
+    /// </summary>
+    public const string LiteralV3ParticipationFunctionPROMSK_v3_ParticipationFunction = "http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction#PROMSK";
 
     /// <summary>
     /// Literal for code: PROV_v3_RoleClass
@@ -976,9 +1306,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPROV_v3_RoleClass = "PROV";
 
     /// <summary>
+    /// Literal for code: V3RoleClassPROV_v3_RoleClass
+    /// </summary>
+    public const string LiteralV3RoleClassPROV_v3_RoleClass = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#PROV";
+
+    /// <summary>
     /// Literal for code: RESPRSN_v3_RoleCode
     /// </summary>
     public const string LiteralRESPRSN_v3_RoleCode = "RESPRSN";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeRESPRSN_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeRESPRSN_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RESPRSN";
 
     /// <summary>
     /// Literal for code: REVIEWER_contractsignertypecodes
@@ -986,9 +1326,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralREVIEWER_contractsignertypecodes = "REVIEWER";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesREVIEWER_contractsignertypecodes
+    /// </summary>
+    public const string LiteralContractsignertypecodesREVIEWER_contractsignertypecodes = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#REVIEWER";
+
+    /// <summary>
     /// Literal for code: SOURCE_contractsignertypecodes
     /// </summary>
     public const string LiteralSOURCE_contractsignertypecodes = "SOURCE";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesSOURCE_contractsignertypecodes
+    /// </summary>
+    public const string LiteralContractsignertypecodesSOURCE_contractsignertypecodes = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#SOURCE";
 
     /// <summary>
     /// Literal for code: SPOWATT_v3_RoleCode
@@ -996,9 +1346,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSPOWATT_v3_RoleCode = "SPOWATT";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeSPOWATT_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeSPOWATT_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SPOWATT";
+
+    /// <summary>
     /// Literal for code: TRANS_contractsignertypecodes
     /// </summary>
     public const string LiteralTRANS_contractsignertypecodes = "TRANS";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesTRANS_contractsignertypecodes
+    /// </summary>
+    public const string LiteralContractsignertypecodesTRANS_contractsignertypecodes = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#TRANS";
 
     /// <summary>
     /// Literal for code: TRC_v3_ParticipationType
@@ -1006,9 +1366,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTRC_v3_ParticipationType = "TRC";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeTRC_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypeTRC_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#TRC";
+
+    /// <summary>
     /// Literal for code: VALID_contractsignertypecodes
     /// </summary>
     public const string LiteralVALID_contractsignertypecodes = "VALID";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesVALID_contractsignertypecodes
+    /// </summary>
+    public const string LiteralContractsignertypecodesVALID_contractsignertypecodes = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#VALID";
 
     /// <summary>
     /// Literal for code: VERF_contractsignertypecodes
@@ -1016,8 +1386,176 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVERF_contractsignertypecodes = "VERF";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesVERF_contractsignertypecodes
+    /// </summary>
+    public const string LiteralContractsignertypecodesVERF_contractsignertypecodes = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#VERF";
+
+    /// <summary>
     /// Literal for code: WIT_v3_ParticipationType
     /// </summary>
     public const string LiteralWIT_v3_ParticipationType = "WIT";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeWIT_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypeWIT_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#WIT";
+
+    /// <summary>
+    /// Dictionary for looking up ParticipationRoleType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "_CitizenRoleType", CitizenRoleType_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#_CitizenRoleType", CitizenRoleType_v3_RoleCode }, 
+      { "110150", Application_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110150", Application_dicom_dcim }, 
+      { "110151", ApplicationLauncher_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110151", ApplicationLauncher_dicom_dcim }, 
+      { "110152", DestinationRoleID_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110152", DestinationRoleID_dicom_dcim }, 
+      { "110153", SourceRoleID_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110153", SourceRoleID_dicom_dcim }, 
+      { "110154", DestinationMedia_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110154", DestinationMedia_dicom_dcim }, 
+      { "110155", SourceMedia_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110155", SourceMedia_dicom_dcim }, 
+      { "AFFL", AFFL_v3_RoleClass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#AFFL", AFFL_v3_RoleClass }, 
+      { "AGNT", AGNT_v3_RoleClass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#AGNT", AGNT_v3_RoleClass }, 
+      { "AMENDER", AMENDER_contractsignertypecodes }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#AMENDER", AMENDER_contractsignertypecodes }, 
+      { "ASSIGNED", ASSIGNED_v3_RoleClass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#ASSIGNED", ASSIGNED_v3_RoleClass }, 
+      { "AUCG", AUCG_v3_ParticipationFunction }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction#AUCG", AUCG_v3_ParticipationFunction }, 
+      { "AULR", AULR_v3_ParticipationFunction }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction#AULR", AULR_v3_ParticipationFunction }, 
+      { "AUT", AUT_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#AUT", AUT_v3_ParticipationType }, 
+      { "authserver", AuthorizationServer_extra_security_role_type }, 
+      { "http://terminology.hl7.org/CodeSystem/extra-security-role-type#authserver", AuthorizationServer_extra_security_role_type }, 
+      { "AUTM", AUTM_v3_ParticipationFunction }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction#AUTM", AUTM_v3_ParticipationFunction }, 
+      { "AUWA", AUWA_v3_ParticipationFunction }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction#AUWA", AUWA_v3_ParticipationFunction }, 
+      { "CAS", AsylumSeeker_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CAS", AsylumSeeker_v3_RoleCode }, 
+      { "CASM", SingleMinorAsylumSeeker_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CASM", SingleMinorAsylumSeeker_v3_RoleCode }, 
+      { "CLAIM", CLAIM_v3_RoleClass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#CLAIM", CLAIM_v3_RoleClass }, 
+      { "CLASSIFIER", CLASSIFIER_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CLASSIFIER", CLASSIFIER_v3_RoleCode }, 
+      { "CN", National_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CN", National_v3_RoleCode }, 
+      { "CNRP", NonCountryMemberWithoutResidencePermit_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CNRP", NonCountryMemberWithoutResidencePermit_v3_RoleCode }, 
+      { "CNRPM", NonCountryMemberMinorWithoutResidencePermit_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CNRPM", NonCountryMemberMinorWithoutResidencePermit_v3_RoleCode }, 
+      { "COAUTH", COAUTH_contractsignertypecodes }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#COAUTH", COAUTH_contractsignertypecodes }, 
+      { "CONSENTER", CONSENTER_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CONSENTER", CONSENTER_v3_RoleCode }, 
+      { "CONSWIT", CONSWIT_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CONSWIT", CONSWIT_v3_RoleCode }, 
+      { "CONT", CONT_contractsignertypecodes }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#CONT", CONT_contractsignertypecodes }, 
+      { "COPART", COPART_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#COPART", COPART_v3_RoleCode }, 
+      { "COVPTY", COVPTY_v3_RoleClass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#COVPTY", COVPTY_v3_RoleClass }, 
+      { "CPCA", PermitCardApplicant_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CPCA", PermitCardApplicant_v3_RoleCode }, 
+      { "CRP", NonCountryMemberWithResidencePermit_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CRP", NonCountryMemberWithResidencePermit_v3_RoleCode }, 
+      { "CRPM", NonCountryMemberMinorWithResidencePermit_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CRPM", NonCountryMemberMinorWithResidencePermit_v3_RoleCode }, 
+      { "CST", CST_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CST", CST_v3_ParticipationType }, 
+      { "datacollector", DataCollector_extra_security_role_type }, 
+      { "http://terminology.hl7.org/CodeSystem/extra-security-role-type#datacollector", DataCollector_extra_security_role_type }, 
+      { "dataprocessor", DataProcessor_extra_security_role_type }, 
+      { "http://terminology.hl7.org/CodeSystem/extra-security-role-type#dataprocessor", DataProcessor_extra_security_role_type }, 
+      { "datasubject", DataSubject_extra_security_role_type }, 
+      { "http://terminology.hl7.org/CodeSystem/extra-security-role-type#datasubject", DataSubject_extra_security_role_type }, 
+      { "DECLASSIFIER", DECLASSIFIER_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DECLASSIFIER", DECLASSIFIER_v3_RoleCode }, 
+      { "DELEGATEE", DELEGATEE_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DELEGATEE", DELEGATEE_v3_RoleCode }, 
+      { "DELEGATOR", DELEGATOR_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DELEGATOR", DELEGATOR_v3_RoleCode }, 
+      { "DEPEN", DEPEN_v3_RoleClass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#DEPEN", DEPEN_v3_RoleClass }, 
+      { "DOWNGRDER", DOWNGRDER_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DOWNGRDER", DOWNGRDER_v3_RoleCode }, 
+      { "DPOWATT", DPOWATT_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DPOWATT", DPOWATT_v3_RoleCode }, 
+      { "ECON", ECON_v3_RoleClass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#ECON", ECON_v3_RoleClass }, 
+      { "EMP", EMP_v3_RoleClass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#EMP", EMP_v3_RoleClass }, 
+      { "EVTWIT", EVTWIT_contractsignertypecodes }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#EVTWIT", EVTWIT_contractsignertypecodes }, 
+      { "EXCEST", EXCEST_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#EXCEST", EXCEST_v3_RoleCode }, 
+      { "GRANTEE", GRANTEE_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GRANTEE", GRANTEE_v3_RoleCode }, 
+      { "GRANTOR", GRANTOR_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GRANTOR", GRANTOR_v3_RoleCode }, 
+      { "GT", GT_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GT", GT_v3_RoleCode }, 
+      { "GUADLTM", GUADLTM_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GUADLTM", GUADLTM_v3_RoleCode }, 
+      { "GUARD", GUARD_v3_RoleClass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#GUARD", GUARD_v3_RoleClass }, 
+      { "HPOWATT", HPOWATT_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HPOWATT", HPOWATT_v3_RoleCode }, 
+      { "humanuser", HumanUser_extra_security_role_type }, 
+      { "http://terminology.hl7.org/CodeSystem/extra-security-role-type#humanuser", HumanUser_extra_security_role_type }, 
+      { "INF", INF_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#INF", INF_v3_ParticipationType }, 
+      { "INTPRTER", INTPRTER_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#INTPRTER", INTPRTER_v3_RoleCode }, 
+      { "INVSBJ", INVSBJ_v3_RoleClass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#INVSBJ", INVSBJ_v3_RoleClass }, 
+      { "IRCP", IRCP_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#IRCP", IRCP_v3_ParticipationType }, 
+      { "LA", LA_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#LA", LA_v3_ParticipationType }, 
+      { "NAMED", NAMED_v3_RoleClass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#NAMED", NAMED_v3_RoleClass }, 
+      { "NOK", NOK_v3_RoleClass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#NOK", NOK_v3_RoleClass }, 
+      { "NOT", NOT_v3_RoleClass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#NOT", NOT_v3_RoleClass }, 
+      { "PAT", PAT_v3_RoleClass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#PAT", PAT_v3_RoleClass }, 
+      { "POWATT", POWATT_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#POWATT", POWATT_v3_RoleCode }, 
+      { "PRIMAUTH", PRIMAUTH_contractsignertypecodes }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#PRIMAUTH", PRIMAUTH_contractsignertypecodes }, 
+      { "PROMSK", PROMSK_v3_ParticipationFunction }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction#PROMSK", PROMSK_v3_ParticipationFunction }, 
+      { "PROV", PROV_v3_RoleClass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#PROV", PROV_v3_RoleClass }, 
+      { "RESPRSN", RESPRSN_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RESPRSN", RESPRSN_v3_RoleCode }, 
+      { "REVIEWER", REVIEWER_contractsignertypecodes }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#REVIEWER", REVIEWER_contractsignertypecodes }, 
+      { "SOURCE", SOURCE_contractsignertypecodes }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#SOURCE", SOURCE_contractsignertypecodes }, 
+      { "SPOWATT", SPOWATT_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SPOWATT", SPOWATT_v3_RoleCode }, 
+      { "TRANS", TRANS_contractsignertypecodes }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#TRANS", TRANS_contractsignertypecodes }, 
+      { "TRC", TRC_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#TRC", TRC_v3_ParticipationType }, 
+      { "VALID", VALID_contractsignertypecodes }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#VALID", VALID_contractsignertypecodes }, 
+      { "VERF", VERF_contractsignertypecodes }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#VERF", VERF_contractsignertypecodes }, 
+      { "WIT", WIT_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#WIT", WIT_v3_ParticipationType }, 
+    };
   };
 }

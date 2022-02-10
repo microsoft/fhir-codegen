@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class BodySiteCodes
   {
     /// <summary>
-    /// 
+    /// Lateral meniscus of knee joint
     /// </summary>
     public static readonly Coding LateralMeniscusOfKneeJoint = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Base of lung
     /// </summary>
     public static readonly Coding BaseOfLung = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Base of phalanx of index finger
     /// </summary>
     public static readonly Coding BaseOfPhalanxOfIndexFinger = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ventral spinocerebellar tract of pons
     /// </summary>
     public static readonly Coding VentralSpinocerebellarTractOfPons = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nucleus pulposus of intervertebral disc of eighth thoracic vertebra
     /// </summary>
     public static readonly Coding NucleusPulposusOfIntervertebralDiscOfEighthThoracicVertebra = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intervertebral foramen of fifth thoracic vertebra
     /// </summary>
     public static readonly Coding IntervertebralForamenOfFifthThoracicVertebra = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transplanted lung
     /// </summary>
     public static readonly Coding TransplantedLung = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire diaphragmatic lymph node
     /// </summary>
     public static readonly Coding EntireDiaphragmaticLymphNode = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Male
     /// </summary>
     public static readonly Coding Male = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmic nerve
     /// </summary>
     public static readonly Coding OphthalmicNerve = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Levator labii superioris muscle
     /// </summary>
     public static readonly Coding LevatorLabiiSuperiorisMuscle = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep volar arch of radial artery
     /// </summary>
     public static readonly Coding DeepVolarArchOfRadialArtery = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of fibrous portion of pericardium
     /// </summary>
     public static readonly Coding StructureOfFibrousPortionOfPericardium = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep dorsal sacrococcygeal ligament
     /// </summary>
     public static readonly Coding DeepDorsalSacrococcygealLigament = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of peritonsillar tissue
     /// </summary>
     public static readonly Coding StructureOfPeritonsillarTissue = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sebaceous gland structure
     /// </summary>
     public static readonly Coding SebaceousGlandStructure = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of vesicular bursa of sternohyoid muscle
     /// </summary>
     public static readonly Coding StructureOfVesicularBursaOfSternohyoidMuscle = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior carpal region
     /// </summary>
     public static readonly Coding PosteriorCarpalRegion = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frontozygomatic suture of skull
     /// </summary>
     public static readonly Coding FrontozygomaticSutureOfSkull = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fetal part of placenta
     /// </summary>
     public static readonly Coding FetalPartOfPlacenta = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Promonocyte
     /// </summary>
     public static readonly Coding Promonocyte = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous prepatellar bursa
     /// </summary>
     public static readonly Coding SubcutaneousPrepatellarBursa = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Condylar emissary vein
     /// </summary>
     public static readonly Coding CondylarEmissaryVein = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Female
     /// </summary>
     public static readonly Coding Female = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sternothyroid muscle
     /// </summary>
     public static readonly Coding SternothyroidMuscle = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior occipital gyrus
     /// </summary>
     public static readonly Coding SuperiorOccipitalGyrus = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thymic cortex
     /// </summary>
     public static readonly Coding ThymicCortex = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Visceral layer of Bowman's capsule
     /// </summary>
     public static readonly Coding VisceralLayerOfBowmanQuoteSCapsule = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cranial cavity
     /// </summary>
     public static readonly Coding CranialCavity = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Major calyx
     /// </summary>
     public static readonly Coding MajorCalyx = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tarsal gland
     /// </summary>
     public static readonly Coding TarsalGland = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parathyroid gland
     /// </summary>
     public static readonly Coding ParathyroidGland = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inferior longitudinal muscle of tongue
     /// </summary>
     public static readonly Coding InferiorLongitudinalMuscleOfTongue = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aortopulmonary septum
     /// </summary>
     public static readonly Coding AortopulmonarySeptum = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frenulum linguae
     /// </summary>
     public static readonly Coding FrenulumLinguae = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue of medial surface of index finger
     /// </summary>
     public static readonly Coding SubcutaneousTissueOfMedialSurfaceOfIndexFinger = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Odontoid process of axis
     /// </summary>
     public static readonly Coding OdontoidProcessOfAxis = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mandibular nerve
     /// </summary>
     public static readonly Coding MandibularNerve = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chromosomes, group E
     /// </summary>
     public static readonly Coding ChromosomesGroupE = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Teres major muscle
     /// </summary>
     public static readonly Coding TeresMajorMuscle = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Synostosis
     /// </summary>
     public static readonly Coding Synostosis = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Central nervous system meninges
     /// </summary>
     public static readonly Coding CentralNervousSystemMeninges = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Duodenal serosa
     /// </summary>
     public static readonly Coding DuodenalSerosa = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coronoid process of mandible
     /// </summary>
     public static readonly Coding CoronoidProcessOfMandible = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inferior articular process of sixth cervical vertebra
     /// </summary>
     public static readonly Coding InferiorArticularProcessOfSixthCervicalVertebra = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dorsal digital nerves of radial nerve
     /// </summary>
     public static readonly Coding DorsalDigitalNervesOfRadialNerve = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Distinctive arrangement of microtubules
     /// </summary>
     public static readonly Coding DistinctiveArrangementOfMicrotubules = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vertebral nerve
     /// </summary>
     public static readonly Coding VertebralNerve = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glottis
     /// </summary>
     public static readonly Coding Glottis = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Telogen hair
     /// </summary>
     public static readonly Coding TelogenHair = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep flexor tendon of index finger
     /// </summary>
     public static readonly Coding DeepFlexorTendonOfIndexFinger = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastric serosa
     /// </summary>
     public static readonly Coding GastricSerosa = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vastus lateralis muscle
     /// </summary>
     public static readonly Coding VastusLateralisMuscle = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior limb of stapes
     /// </summary>
     public static readonly Coding PosteriorLimbOfStapes = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paravesicular lymph node
     /// </summary>
     public static readonly Coding ParavesicularLymphNode = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laryngeal saccule
     /// </summary>
     public static readonly Coding LaryngealSaccule = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Yellow fibrocartilage
     /// </summary>
     public static readonly Coding YellowFibrocartilage = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parietal branch of superficial temporal artery
     /// </summary>
     public static readonly Coding ParietalBranchOfSuperficialTemporalArtery = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of metatarsal region of foot
     /// </summary>
     public static readonly Coding StructureOfMetatarsalRegionOfFoot = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissues of trunk
     /// </summary>
     public static readonly Coding SoftTissuesOfTrunk = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Central pair of microtubules, cilium or flagellum, not bacterial
     /// </summary>
     public static readonly Coding CentralPairOfMicrotubulesCiliumOrFlagellumNotBacterial = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior cecal artery
     /// </summary>
     public static readonly Coding AnteriorCecalArtery = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ejaculatory duct
     /// </summary>
     public static readonly Coding EjaculatoryDuct = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frontomental diameter of head
     /// </summary>
     public static readonly Coding FrontomentalDiameterOfHead = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lamina of fourth thoracic vertebra
     /// </summary>
     public static readonly Coding LaminaOfFourthThoracicVertebra = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intervertebral disc of eleventh thoracic vertebra
     /// </summary>
     public static readonly Coding IntervertebralDiscOfEleventhThoracicVertebra = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coccygeal plexus
     /// </summary>
     public static readonly Coding CoccygealPlexus = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep circumflex artery of ilium
     /// </summary>
     public static readonly Coding DeepCircumflexArteryOfIlium = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nucleus pulposus of intervertebral disc of third lumbar vertebra
     /// </summary>
     public static readonly Coding NucleusPulposusOfIntervertebralDiscOfThirdLumbarVertebra = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nail of third toe
     /// </summary>
     public static readonly Coding NailOfThirdToe = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nucleus ventralis lateralis
     /// </summary>
     public static readonly Coding NucleusVentralisLateralis = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ileal artery
     /// </summary>
     public static readonly Coding IlealArtery = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Symphysis
     /// </summary>
     public static readonly Coding Symphysis = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Splenius capitis muscle
     /// </summary>
     public static readonly Coding SpleniusCapitisMuscle = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Histioblast
     /// </summary>
     public static readonly Coding Histioblast = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Otoconia
     /// </summary>
     public static readonly Coding Otoconia = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paramammary lymph node
     /// </summary>
     public static readonly Coding ParamammaryLymphNode = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrinsic larynx
     /// </summary>
     public static readonly Coding IntrinsicLarynx = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metaphase nucleus
     /// </summary>
     public static readonly Coding MetaphaseNucleus = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Third thoracic vertebra
     /// </summary>
     public static readonly Coding ThirdThoracicVertebra = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medial collateral ligament of knee joint
     /// </summary>
     public static readonly Coding MedialCollateralLigamentOfKneeJoint = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Supraorbital vein
     /// </summary>
     public static readonly Coding SupraorbitalVein = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foregut
     /// </summary>
     public static readonly Coding Foregut = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hilum of left lung
     /// </summary>
     public static readonly Coding HilumOfLeftLung = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transverse peduncular tract nucleus
     /// </summary>
     public static readonly Coding TransversePeduncularTractNucleus = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nucleus medialis dorsalis
     /// </summary>
     public static readonly Coding NucleusMedialisDorsalis = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Supraclavicular part of brachial plexus
     /// </summary>
     public static readonly Coding SupraclavicularPartOfBrachialPlexus = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligamentum teres of liver
     /// </summary>
     public static readonly Coding LigamentumTeresOfLiver = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thymic lobule
     /// </summary>
     public static readonly Coding ThymicLobule = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ventral nuclear group of thalamus
     /// </summary>
     public static readonly Coding VentralNuclearGroupOfThalamus = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Periorbital region
     /// </summary>
     public static readonly Coding PeriorbitalRegion = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cupula ampullaris
     /// </summary>
     public static readonly Coding CupulaAmpullaris = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right tonsil
     /// </summary>
     public static readonly Coding RightTonsil = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Central tegmental tract
     /// </summary>
     public static readonly Coding CentralTegmentalTract = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// TD - Thoracic duct
     /// </summary>
     public static readonly Coding TDThoracicDuct = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of lymphatic vessel of thorax
     /// </summary>
     public static readonly Coding StructureOfLymphaticVesselOfThorax = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Premelanosome
     /// </summary>
     public static readonly Coding Premelanosome = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sacroiliac region
     /// </summary>
     public static readonly Coding SacroiliacRegion = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Naris
     /// </summary>
     public static readonly Coding Naris = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Greater circulus arteriosus of iris
     /// </summary>
     public static readonly Coding GreaterCirculusArteriosusOfIris = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Root of nose
     /// </summary>
     public static readonly Coding RootOfNose = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scleral conjunctiva
     /// </summary>
     public static readonly Coding ScleralConjunctiva = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arrector pili muscle
     /// </summary>
     public static readonly Coding ArrectorPiliMuscle = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pharyngeal recess
     /// </summary>
     public static readonly Coding PharyngealRecess = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of suprahyoid muscle
     /// </summary>
     public static readonly Coding StructureOfSuprahyoidMuscle = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Promontory lymph node
     /// </summary>
     public static readonly Coding PromontoryLymphNode = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Joint of upper extremity
     /// </summary>
     public static readonly Coding JointOfUpperExtremity = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Musculophrenic vein
     /// </summary>
     public static readonly Coding MusculophrenicVein = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skin of external ear
     /// </summary>
     public static readonly Coding SkinOfExternalEar = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear
     /// </summary>
     public static readonly Coding Ear = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suprarenal aorta
     /// </summary>
     public static readonly Coding SuprarenalAorta = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left elbow
     /// </summary>
     public static readonly Coding LeftElbow = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Porus acusticus internus
     /// </summary>
     public static readonly Coding PorusAcusticusInternus = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cingulum dentis
     /// </summary>
     public static readonly Coding CingulumDentis = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clavicular facet of scapula
     /// </summary>
     public static readonly Coding ClavicularFacetOfScapula = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior thoracic artery
     /// </summary>
     public static readonly Coding SuperiorThoracicArtery = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior division of renal artery
     /// </summary>
     public static readonly Coding AnteriorDivisionOfRenalArtery = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of anterior median fissure of spinal cord
     /// </summary>
     public static readonly Coding StructureOfAnteriorMedianFissureOfSpinalCord = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right fallopian tube
     /// </summary>
     public static readonly Coding RightFallopianTube = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal nerves
     /// </summary>
     public static readonly Coding VaginalNerves = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lingual tonsil
     /// </summary>
     public static readonly Coding LingualTonsil = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chorionic villi
     /// </summary>
     public static readonly Coding ChorionicVilli = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left commissure of aortic valve
     /// </summary>
     public static readonly Coding LeftCommissureOfAorticValve = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skin of ear lobule
     /// </summary>
     public static readonly Coding SkinOfEarLobule = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gluteus maximus muscle
     /// </summary>
     public static readonly Coding GluteusMaximusMuscle = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reticular formation of spinal cord
     /// </summary>
     public static readonly Coding ReticularFormationOfSpinalCord = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Head of phalanx of hand
     /// </summary>
     public static readonly Coding HeadOfPhalanxOfHand = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nucleus ambiguus
     /// </summary>
     public static readonly Coding NucleusAmbiguus = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Accessory sinus
     /// </summary>
     public static readonly Coding AccessorySinus = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mammilloinfundibular nucleus
     /// </summary>
     public static readonly Coding MammilloinfundibularNucleus = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urinary tract transitional epithelial cell
     /// </summary>
     public static readonly Coding UrinaryTractTransitionalEpithelialCell = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glial cell
     /// </summary>
     public static readonly Coding GlialCell = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligamentum arteriosum
     /// </summary>
     public static readonly Coding LigamentumArteriosum = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pharyngeal cavity
     /// </summary>
     public static readonly Coding PharyngealCavity = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endometrial zona basalis
     /// </summary>
     public static readonly Coding EndometrialZonaBasalis = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clavicular part of pectoralis major muscle
     /// </summary>
     public static readonly Coding ClavicularPartOfPectoralisMajorMuscle = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lamina of fifth thoracic vertebra
     /// </summary>
     public static readonly Coding LaminaOfFifthThoracicVertebra = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebral basal surface
     /// </summary>
     public static readonly Coding CerebralBasalSurface = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Articular surface, phalanges, of fourth metacarpal bone
     /// </summary>
     public static readonly Coding ArticularSurfacePhalangesOfFourthMetacarpalBone = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lesser osseous pelvis
     /// </summary>
     public static readonly Coding LesserOsseousPelvis = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Type I hair cell
     /// </summary>
     public static readonly Coding TypeIHairCell = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subserosa
     /// </summary>
     public static readonly Coding Subserosa = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canal of Hering
     /// </summary>
     public static readonly Coding CanalOfHering = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of torcular Herophili
     /// </summary>
     public static readonly Coding StructureOfTorcularHerophili = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of nasopharyngeal gland
     /// </summary>
     public static readonly Coding StructureOfNasopharyngealGland = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vein of the knee
     /// </summary>
     public static readonly Coding VeinOfTheKnee = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of spinous process of cervical vertebra
     /// </summary>
     public static readonly Coding StructureOfSpinousProcessOfCervicalVertebra = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of base of third metacarpal bone
     /// </summary>
     public static readonly Coding StructureOfBaseOfThirdMetacarpalBone = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salivary seromucous gland
     /// </summary>
     public static readonly Coding SalivarySeromucousGland = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of segmental bronchial branches
     /// </summary>
     public static readonly Coding StructureOfSegmentalBronchialBranches = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepatocolic ligament
     /// </summary>
     public static readonly Coding HepatocolicLigament = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metencephalon of foetus
     /// </summary>
     public static readonly Coding MetencephalonOfFoetus = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Renal calyx
     /// </summary>
     public static readonly Coding RenalCalyx = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of nasal suture of skull
     /// </summary>
     public static readonly Coding StructureOfNasalSutureOfSkull = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior labial artery
     /// </summary>
     public static readonly Coding SuperiorLabialArtery = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of medial surface of toe
     /// </summary>
     public static readonly Coding StructureOfMedialSurfaceOfToe = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of papillary muscles of right ventricle
     /// </summary>
     public static readonly Coding StructureOfPapillaryMusclesOfRightVentricle = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of superior margin of adrenal gland
     /// </summary>
     public static readonly Coding StructureOfSuperiorMarginOfAdrenalGland = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of transverse facial artery
     /// </summary>
     public static readonly Coding StructureOfTransverseFacialArtery = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of first metatarsal facet of medial cuneiform bone
     /// </summary>
     public static readonly Coding StructureOfFirstMetatarsalFacetOfMedialCuneiformBone = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Universal designation 21
     /// </summary>
     public static readonly Coding UniversalDesignation21 = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of dorsum of foot
     /// </summary>
     public static readonly Coding StructureOfDorsumOfFoot = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of submaxillary ganglion
     /// </summary>
     public static readonly Coding StructureOfSubmaxillaryGanglion = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of digital tendon and tendon sheath of foot
     /// </summary>
     public static readonly Coding StructureOfDigitalTendonAndTendonSheathOfFoot = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tunica intima of vein
     /// </summary>
     public static readonly Coding TunicaIntimaOfVein = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue structure of posterior surface of forearm
     /// </summary>
     public static readonly Coding SubcutaneousTissueStructureOfPosteriorSurfaceOfForearm = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of articular surface, third metacarpal, of second metacarpal bone
     /// </summary>
     public static readonly Coding StructureOfArticularSurfaceThirdMetacarpalOfSecondMetacarpalBone = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral vestibular nucleus
     /// </summary>
     public static readonly Coding LateralVestibularNucleus = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mesotympanum
     /// </summary>
     public static readonly Coding Mesotympanum = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skin structure of frenulum of clitoris
     /// </summary>
     public static readonly Coding SkinStructureOfFrenulumOfClitoris = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of medial check ligament of eye
     /// </summary>
     public static readonly Coding StructureOfMedialCheckLigamentOfEye = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire cisterna pontis
     /// </summary>
     public static readonly Coding EntireCisternaPontis = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Membrane of lysosome
     /// </summary>
     public static readonly Coding MembraneOfLysosome = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of pancreatic plexus
     /// </summary>
     public static readonly Coding StructureOfPancreaticPlexus = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Femoral triangle structure
     /// </summary>
     public static readonly Coding FemoralTriangleStructure = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pectoral region
     /// </summary>
     public static readonly Coding PectoralRegion = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of superior rectal artery
     /// </summary>
     public static readonly Coding StructureOfSuperiorRectalArtery = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of cuboid articular facet of fourth metatarsal bone
     /// </summary>
     public static readonly Coding StructureOfCuboidArticularFacetOfFourthMetatarsalBone = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone structure of phalanx of thumb
     /// </summary>
     public static readonly Coding BoneStructureOfPhalanxOfThumb = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kupffer cell
     /// </summary>
     public static readonly Coding KupfferCell = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of gracilis muscle
     /// </summary>
     public static readonly Coding StructureOfGracilisMuscle = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plasmablast
     /// </summary>
     public static readonly Coding Plasmablast = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// All extremities
     /// </summary>
     public static readonly Coding AllExtremities = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of flexor pollicis longus muscle tendon
     /// </summary>
     public static readonly Coding StructureOfFlexorPollicisLongusMuscleTendon = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intervertebral disc structure of third thoracic vertebra
     /// </summary>
     public static readonly Coding IntervertebralDiscStructureOfThirdThoracicVertebra = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracic nerve
     /// </summary>
     public static readonly Coding ThoracicNerve = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neuroendocrine tissue
     /// </summary>
     public static readonly Coding NeuroendocrineTissue = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of posterior thalamic radiation of internal capsule
     /// </summary>
     public static readonly Coding StructureOfPosteriorThalamicRadiationOfInternalCapsule = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right lower lobe of lung
     /// </summary>
     public static readonly Coding RightLowerLobeOfLung = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of semispinalis capitis muscle
     /// </summary>
     public static readonly Coding StructureOfSemispinalisCapitisMuscle = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of anterior cutaneous branch of lumbosacral plexus
     /// </summary>
     public static readonly Coding StructureOfAnteriorCutaneousBranchOfLumbosacralPlexus = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of anterior ethmoidal artery
     /// </summary>
     public static readonly Coding StructureOfAnteriorEthmoidalArtery = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of dorsal nerve of penis
     /// </summary>
     public static readonly Coding StructureOfDorsalNerveOfPenis = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bladder mucosa
     /// </summary>
     public static readonly Coding BladderMucosa = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of medial olfactory gyrus
     /// </summary>
     public static readonly Coding StructureOfMedialOlfactoryGyrus = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of Bowman space
     /// </summary>
     public static readonly Coding StructureOfBowmanSpace = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left maxillary sinus structure
     /// </summary>
     public static readonly Coding LeftMaxillarySinusStructure = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire calcarine artery
     /// </summary>
     public static readonly Coding EntireCalcarineArtery = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of capsule of ankle joint
     /// </summary>
     public static readonly Coding StructureOfCapsuleOfAnkleJoint = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of apical foramen of tooth
     /// </summary>
     public static readonly Coding StructureOfApicalForamenOfTooth = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior articular process of lumbar vertebra
     /// </summary>
     public static readonly Coding SuperiorArticularProcessOfLumbarVertebra = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of fold for stapes
     /// </summary>
     public static readonly Coding StructureOfFoldForStapes = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral myocardium
     /// </summary>
     public static readonly Coding LateralMyocardium = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire vitelline vein of placenta
     /// </summary>
     public static readonly Coding EntireVitellineVeinOfPlacenta = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endometrial structure
     /// </summary>
     public static readonly Coding EndometrialStructure = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of medial occipitotemporal gyrus
     /// </summary>
     public static readonly Coding StructureOfMedialOccipitotemporalGyrus = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Circular layer of gastric muscularis
     /// </summary>
     public static readonly Coding CircularLayerOfGastricMuscularis = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spinal cord structure
     /// </summary>
     public static readonly Coding SpinalCordStructure = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eccrine gland structure
     /// </summary>
     public static readonly Coding EccrineGlandStructure = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lamina propria of ureter
     /// </summary>
     public static readonly Coding LaminaPropriaOfUreter = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apocrine gland structure
     /// </summary>
     public static readonly Coding ApocrineGlandStructure = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of pars tensa of tympanic membrane
     /// </summary>
     public static readonly Coding StructureOfParsTensaOfTympanicMembrane = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of tendon sheath of popliteus muscle
     /// </summary>
     public static readonly Coding StructureOfTendonSheathOfPopliteusMuscle = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of cremasteric fascia
     /// </summary>
     public static readonly Coding StructureOfCremastericFascia = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of head of femur
     /// </summary>
     public static readonly Coding StructureOfHeadOfFemur = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of spinous process of fourth thoracic vertebra
     /// </summary>
     public static readonly Coding StructureOfSpinousProcessOfFourthThoracicVertebra = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of lamina of fourth lumbar vertebra
     /// </summary>
     public static readonly Coding StructureOfLaminaOfFourthLumbarVertebra = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of dorsal digital nerves of lateral hallux and medial second toe
     /// </summary>
     public static readonly Coding StructureOfDorsalDigitalNervesOfLateralHalluxAndMedialSecondToe = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Central axillary lymph node
     /// </summary>
     public static readonly Coding CentralAxillaryLymphNode = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of perivesicular tissues of seminal vesicles
     /// </summary>
     public static readonly Coding StructureOfPerivesicularTissuesOfSeminalVesicles = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flexor tendon and tendon sheath of fourth toe
     /// </summary>
     public static readonly Coding FlexorTendonAndTendonSheathOfFourthToe = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Renal artery structure
     /// </summary>
     public static readonly Coding RenalArteryStructure = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of respiratory epithelium
     /// </summary>
     public static readonly Coding StructureOfRespiratoryEpithelium = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of superficial epigastric artery
     /// </summary>
     public static readonly Coding StructureOfSuperficialEpigastricArtery = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of accessory cephalic vein
     /// </summary>
     public static readonly Coding StructureOfAccessoryCephalicVein = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire gland (organ)
     /// </summary>
     public static readonly Coding EntireGlandOrgan = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metacarpophalangeal joint of index finger
     /// </summary>
     public static readonly Coding MetacarpophalangealJointOfIndexFinger = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of posterior epiglottis
     /// </summary>
     public static readonly Coding StructureOfPosteriorEpiglottis = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of anterior ligament of uterus
     /// </summary>
     public static readonly Coding StructureOfAnteriorLigamentOfUterus = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of posterior portion of diaphragmatic aspect of liver
     /// </summary>
     public static readonly Coding StructureOfPosteriorPortionOfDiaphragmaticAspectOfLiver = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of facial nerve motor branch
     /// </summary>
     public static readonly Coding StructureOfFacialNerveMotorBranch = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of posterior papillary muscle of left ventricle
     /// </summary>
     public static readonly Coding StructureOfPosteriorPapillaryMuscleOfLeftVentricle = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue structure of supraorbital area
     /// </summary>
     public static readonly Coding SubcutaneousTissueStructureOfSupraorbitalArea = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Supernumerary deciduous tooth
     /// </summary>
     public static readonly Coding SupernumeraryDeciduousTooth = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anatomical space structure
     /// </summary>
     public static readonly Coding AnatomicalSpaceStructure = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone structure of medial cuneiform
     /// </summary>
     public static readonly Coding BoneStructureOfMedialCuneiform = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of talar facet of navicular bone of foot
     /// </summary>
     public static readonly Coding StructureOfTalarFacetOfNavicularBoneOfFoot = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire right margin of uterus
     /// </summary>
     public static readonly Coding EntireRightMarginOfUterus = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Internal capsule anterior limb structure
     /// </summary>
     public static readonly Coding InternalCapsuleAnteriorLimbStructure = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White fibrocartilage
     /// </summary>
     public static readonly Coding WhiteFibrocartilage = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fifth metatarsal bone
     /// </summary>
     public static readonly Coding FifthMetatarsalBone = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transitional epithelial cell
     /// </summary>
     public static readonly Coding TransitionalEpithelialCell = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue structure of thigh
     /// </summary>
     public static readonly Coding SubcutaneousTissueStructureOfThigh = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of glomerular urinary pole
     /// </summary>
     public static readonly Coding StructureOfGlomerularUrinaryPole = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of articular surface, metacarpal, of phalanx of thumb
     /// </summary>
     public static readonly Coding StructureOfArticularSurfaceMetacarpalOfPhalanxOfThumb = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of bone marrow of vertebral body
     /// </summary>
     public static readonly Coding StructureOfBoneMarrowOfVertebralBody = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of anteroventral nucleus of thalamus
     /// </summary>
     public static readonly Coding StructureOfAnteroventralNucleusOfThalamus = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nerve structure
     /// </summary>
     public static readonly Coding NerveStructure = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PNS - Peripheral nervous system
     /// </summary>
     public static readonly Coding PNSPeripheralNervousSystem = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spinal arachnoid
     /// </summary>
     public static readonly Coding SpinalArachnoid = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of seminal vesicle lumen
     /// </summary>
     public static readonly Coding StructureOfSeminalVesicleLumen = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mitochondrion in division
     /// </summary>
     public static readonly Coding MitochondrionInDivision = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of tendinous arch of pelvic fascia
     /// </summary>
     public static readonly Coding StructureOfTendinousArchOfPelvicFascia = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical crown of tooth
     /// </summary>
     public static readonly Coding ClinicalCrownOfTooth = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plantar surface of great toe
     /// </summary>
     public static readonly Coding PlantarSurfaceOfGreatToe = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of suprachoroidal space
     /// </summary>
     public static readonly Coding StructureOfSuprachoroidalSpace = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of dorsal surface of index finger
     /// </summary>
     public static readonly Coding StructureOfDorsalSurfaceOfIndexFinger = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of trabecula carnea of left ventricle
     /// </summary>
     public static readonly Coding StructureOfTrabeculaCarneaOfLeftVentricle = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pleural membrane structure
     /// </summary>
     public static readonly Coding PleuralMembraneStructure = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of head of fourth metatarsal bone
     /// </summary>
     public static readonly Coding StructureOfHeadOfFourthMetatarsalBone = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone tissue
     /// </summary>
     public static readonly Coding BoneTissue = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skin of umbilicus
     /// </summary>
     public static readonly Coding SkinOfUmbilicus = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of tractus olivocochlearis
     /// </summary>
     public static readonly Coding StructureOfTractusOlivocochlearis = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of obturator artery
     /// </summary>
     public static readonly Coding StructureOfObturatorArtery = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of costocervical trunk
     /// </summary>
     public static readonly Coding StructureOfCostocervicalTrunk = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spinal nerve structure
     /// </summary>
     public static readonly Coding SpinalNerveStructure = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of raphe of soft palate
     /// </summary>
     public static readonly Coding StructureOfRapheOfSoftPalate = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac impression of liver
     /// </summary>
     public static readonly Coding CardiacImpressionOfLiver = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endocardium of right atrium
     /// </summary>
     public static readonly Coding EndocardiumOfRightAtrium = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monostomatic sublingual gland
     /// </summary>
     public static readonly Coding MonostomaticSublingualGland = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue structure of nuchal region
     /// </summary>
     public static readonly Coding SubcutaneousTissueStructureOfNuchalRegion = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// All large arteries
     /// </summary>
     public static readonly Coding AllLargeArteries = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left coronary artery main stem
     /// </summary>
     public static readonly Coding LeftCoronaryArteryMainStem = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of posterior segment of right upper lobe of lung
     /// </summary>
     public static readonly Coding StructureOfPosteriorSegmentOfRightUpperLobeOfLung = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of parametrial lymph node
     /// </summary>
     public static readonly Coding StructureOfParametrialLymphNode = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Papillary area
     /// </summary>
     public static readonly Coding PapillaryArea = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of root canal of tooth
     /// </summary>
     public static readonly Coding StructureOfRootCanalOfTooth = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of pedicle of third cervical vertebra
     /// </summary>
     public static readonly Coding StructureOfPedicleOfThirdCervicalVertebra = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of ventral anterior nucleus of thalamus
     /// </summary>
     public static readonly Coding StructureOfVentralAnteriorNucleusOfThalamus = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tectopontine fibers
     /// </summary>
     public static readonly Coding TectopontineFibers = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Splenic branch of splenic artery
     /// </summary>
     public static readonly Coding SplenicBranchOfSplenicArtery = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of vestibulospinal tract
     /// </summary>
     public static readonly Coding StructureOfVestibulospinalTract = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occipitofrontal diameter of head
     /// </summary>
     public static readonly Coding OccipitofrontalDiameterOfHead = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Haversian canal
     /// </summary>
     public static readonly Coding HaversianCanal = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right lung structure
     /// </summary>
     public static readonly Coding RightLungStructure = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire right commissure of pulmonic valve
     /// </summary>
     public static readonly Coding EntireRightCommissureOfPulmonicValve = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intertragal incisure structure
     /// </summary>
     public static readonly Coding IntertragalIncisureStructure = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of anterior papillary muscle of left ventricle
     /// </summary>
     public static readonly Coding StructureOfAnteriorPapillaryMuscleOfLeftVentricle = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of supporting tissue of rectum
     /// </summary>
     public static readonly Coding StructureOfSupportingTissueOfRectum = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Secondary spermatocyte
     /// </summary>
     public static readonly Coding SecondarySpermatocyte = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of agger nasi
     /// </summary>
     public static readonly Coding StructureOfAggerNasi = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of rima oris
     /// </summary>
     public static readonly Coding StructureOfRimaOris = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nonsegmented basophil
     /// </summary>
     public static readonly Coding NonsegmentedBasophil = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suboccipitobregmatic diameter of head
     /// </summary>
     public static readonly Coding SuboccipitobregmaticDiameterOfHead = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of superior palpebral arch
     /// </summary>
     public static readonly Coding StructureOfSuperiorPalpebralArch = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of mesogastrium
     /// </summary>
     public static readonly Coding StructureOfMesogastrium = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cell of bone
     /// </summary>
     public static readonly Coding CellOfBone = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of lateral margin of forearm
     /// </summary>
     public static readonly Coding StructureOfLateralMarginOfForearm = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of rotator muscle
     /// </summary>
     public static readonly Coding StructureOfRotatorMuscle = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep lymphatic of upper extremity
     /// </summary>
     public static readonly Coding DeepLymphaticOfUpperExtremity = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ankle
     /// </summary>
     public static readonly Coding Ankle = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thalamostriate vein
     /// </summary>
     public static readonly Coding ThalamostriateVein = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Penetrated oocyte
     /// </summary>
     public static readonly Coding PenetratedOocyte = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Penetrating atrioventricular bundle
     /// </summary>
     public static readonly Coding PenetratingAtrioventricularBundle = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of anterodorsal nucleus of thalamus
     /// </summary>
     public static readonly Coding StructureOfAnterodorsalNucleusOfThalamus = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of commissure of tricuspid valve
     /// </summary>
     public static readonly Coding StructureOfCommissureOfTricuspidValve = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior midline of trunk
     /// </summary>
     public static readonly Coding PosteriorMidlineOfTrunk = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of vastus medialis muscle
     /// </summary>
     public static readonly Coding StructureOfVastusMedialisMuscle = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of embryonic testis
     /// </summary>
     public static readonly Coding StructureOfEmbryonicTestis = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Annulate lamella, cisternal lumen
     /// </summary>
     public static readonly Coding AnnulateLamellaCisternalLumen = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue structure of suboccipital region
     /// </summary>
     public static readonly Coding SubcutaneousTissueStructureOfSuboccipitalRegion = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of lateral wall of mastoid antrum
     /// </summary>
     public static readonly Coding StructureOfLateralWallOfMastoidAntrum = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of capsule of proximal tibiofibular joint
     /// </summary>
     public static readonly Coding StructureOfCapsuleOfProximalTibiofibularJoint = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of dorsal metatarsal artery
     /// </summary>
     public static readonly Coding StructureOfDorsalMetatarsalArtery = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of thyroid capsule
     /// </summary>
     public static readonly Coding StructureOfThyroidCapsule = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of dorsal nucleus of trapezoid body
     /// </summary>
     public static readonly Coding StructureOfDorsalNucleusOfTrapezoidBody = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reticular corium
     /// </summary>
     public static readonly Coding ReticularCorium = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muscularis of ureter
     /// </summary>
     public static readonly Coding MuscularisOfUreter = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vertebral body
     /// </summary>
     public static readonly Coding VertebralBody = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of body of gallbladder
     /// </summary>
     public static readonly Coding StructureOfBodyOfGallbladder = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of gastrophrenic ligament
     /// </summary>
     public static readonly Coding StructureOfGastrophrenicLigament = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// T10 dorsal arch
     /// </summary>
     public static readonly Coding T10DorsalArch = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of straight part of longus colli muscle
     /// </summary>
     public static readonly Coding StructureOfStraightPartOfLongusColliMuscle = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ischiococcygeus muscle
     /// </summary>
     public static readonly Coding IschiococcygeusMuscle = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of occipital branch of posterior auricular artery
     /// </summary>
     public static readonly Coding StructureOfOccipitalBranchOfPosteriorAuricularArtery = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lamellipodium
     /// </summary>
     public static readonly Coding Lamellipodium = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of tympanic ostium of Eustachian tube
     /// </summary>
     public static readonly Coding StructureOfTympanicOstiumOfEustachianTube = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pelvic wall structure
     /// </summary>
     public static readonly Coding PelvicWallStructure = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire subpyloric lymph node
     /// </summary>
     public static readonly Coding EntireSubpyloricLymphNode = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Great vessel
     /// </summary>
     public static readonly Coding GreatVessel = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of lateral thoracic artery
     /// </summary>
     public static readonly Coding StructureOfLateralThoracicArtery = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of nucleus pulposus of intervertebral disc of first thoracic vertebra
     /// </summary>
     public static readonly Coding StructureOfNucleusPulposusOfIntervertebralDiscOfFirstThoracicVertebra = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue structure of lower extremity
     /// </summary>
     public static readonly Coding SubcutaneousTissueStructureOfLowerExtremity = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire dorsal metacarpal ligament
     /// </summary>
     public static readonly Coding EntireDorsalMetacarpalLigament = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of apical segment of right lower lobe of lung
     /// </summary>
     public static readonly Coding StructureOfApicalSegmentOfRightLowerLobeOfLung = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enteroendocrine cell
     /// </summary>
     public static readonly Coding EnteroendocrineCell = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Septal cartilage structure
     /// </summary>
     public static readonly Coding SeptalCartilageStructure = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of apex of coccyx
     /// </summary>
     public static readonly Coding StructureOfApexOfCoccyx = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of transplanted liver
     /// </summary>
     public static readonly Coding StructureOfTransplantedLiver = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of interscapular region of back
     /// </summary>
     public static readonly Coding StructureOfInterscapularRegionOfBack = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of dorsal surface of great toe
     /// </summary>
     public static readonly Coding StructureOfDorsalSurfaceOfGreatToe = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue structure of femoral region
     /// </summary>
     public static readonly Coding SubcutaneousTissueStructureOfFemoralRegion = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of common carotid plexus
     /// </summary>
     public static readonly Coding StructureOfCommonCarotidPlexus = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue structure of lateral surface of fourth toe
     /// </summary>
     public static readonly Coding SubcutaneousTissueStructureOfLateralSurfaceOfFourthToe = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of occipital lymph node
     /// </summary>
     public static readonly Coding StructureOfOccipitalLymphNode = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of pericardiophrenic artery
     /// </summary>
     public static readonly Coding StructureOfPericardiophrenicArtery = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wall of urinary bladder
     /// </summary>
     public static readonly Coding WallOfUrinaryBladder = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// OW - Oval window
     /// </summary>
     public static readonly Coding OWOvalWindow = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Head of tenth rib structure
     /// </summary>
     public static readonly Coding HeadOfTenthRibStructure = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of entorhinal cortex
     /// </summary>
     public static readonly Coding StructureOfEntorhinalCortex = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lacrimal sac structure
     /// </summary>
     public static readonly Coding LacrimalSacStructure = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of fifth metatarsal articular facet of fourth metatarsal bone
     /// </summary>
     public static readonly Coding StructureOfFifthMetatarsalArticularFacetOfFourthMetatarsalBone = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of rectus capitis muscle
     /// </summary>
     public static readonly Coding StructureOfRectusCapitisMuscle = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Olfactory tract structure
     /// </summary>
     public static readonly Coding OlfactoryTractStructure = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of gyrus of brain
     /// </summary>
     public static readonly Coding StructureOfGyrusOfBrain = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire parietal branch of anterior cerebral artery
     /// </summary>
     public static readonly Coding EntireParietalBranchOfAnteriorCerebralArtery = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue structure of concha
     /// </summary>
     public static readonly Coding SubcutaneousTissueStructureOfConcha = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep vein of clitoris
     /// </summary>
     public static readonly Coding DeepVeinOfClitoris = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of medial globus pallidus
     /// </summary>
     public static readonly Coding StructureOfMedialGlobusPallidus = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chromosomes, group A
     /// </summary>
     public static readonly Coding ChromosomesGroupA = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior commissure of labium majorum
     /// </summary>
     public static readonly Coding PosteriorCommissureOfLabiumMajorum = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental branches of inferior alveolar artery
     /// </summary>
     public static readonly Coding DentalBranchesOfInferiorAlveolarArtery = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eosinophilic progranulocyte
     /// </summary>
     public static readonly Coding EosinophilicProgranulocyte = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior temporal diploic vein
     /// </summary>
     public static readonly Coding PosteriorTemporalDiploicVein = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral orbital wall
     /// </summary>
     public static readonly Coding LateralOrbitalWall = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of capsule of proximal interphalangeal joint of index finger
     /// </summary>
     public static readonly Coding StructureOfCapsuleOfProximalInterphalangealJointOfIndexFinger = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of fourth coccygeal vertebra
     /// </summary>
     public static readonly Coding StructureOfFourthCoccygealVertebra = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire dorsal lingual vein
     /// </summary>
     public static readonly Coding EntireDorsalLingualVein = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of vagus nerve bronchial branch
     /// </summary>
     public static readonly Coding StructureOfVagusNerveBronchialBranch = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macula of the saccule
     /// </summary>
     public static readonly Coding MaculaOfTheSaccule = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lumbosacral spinal cord central canal structure
     /// </summary>
     public static readonly Coding LumbosacralSpinalCordCentralCanalStructure = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of superior frontal sulcus
     /// </summary>
     public static readonly Coding StructureOfSuperiorFrontalSulcus = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastric fundus
     /// </summary>
     public static readonly Coding GastricFundus = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of artery of extremity
     /// </summary>
     public static readonly Coding StructureOfArteryOfExtremity = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of palmar surface of little finger
     /// </summary>
     public static readonly Coding StructureOfPalmarSurfaceOfLittleFinger = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Celiac nervous plexus structure
     /// </summary>
     public static readonly Coding CeliacNervousPlexusStructure = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abdominal aortic plexus structure
     /// </summary>
     public static readonly Coding AbdominalAorticPlexusStructure = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyparterial bronchus
     /// </summary>
     public static readonly Coding HyparterialBronchus = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Both lower extremities
     /// </summary>
     public static readonly Coding BothLowerExtremities = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire extensor tendon and tendon sheath of fifth toe
     /// </summary>
     public static readonly Coding EntireExtensorTendonAndTendonSheathOfFifthToe = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anastomosis, heterocladic
     /// </summary>
     public static readonly Coding AnastomosisHeterocladic = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Türk cell
     /// </summary>
     public static readonly Coding TurkCell = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epithelial cells
     /// </summary>
     public static readonly Coding EpithelialCells = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Head of second rib structure
     /// </summary>
     public static readonly Coding HeadOfSecondRibStructure = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inferior surface of tongue
     /// </summary>
     public static readonly Coding InferiorSurfaceOfTongue = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone structure of first metacarpal
     /// </summary>
     public static readonly Coding BoneStructureOfFirstMetacarpal = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior tibial vein
     /// </summary>
     public static readonly Coding PosteriorTibialVein = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral spinorubral tract
     /// </summary>
     public static readonly Coding LateralSpinorubralTract = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of inferior articular process of seventh cervical vertebra
     /// </summary>
     public static readonly Coding StructureOfInferiorArticularProcessOfSeventhCervicalVertebra = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of middle portion of ileum
     /// </summary>
     public static readonly Coding StructureOfMiddlePortionOfIleum = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of paracortical area of lymph node
     /// </summary>
     public static readonly Coding StructureOfParacorticalAreaOfLymphNode = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cartilage canal
     /// </summary>
     public static readonly Coding CartilageCanal = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior midline of abdomen
     /// </summary>
     public static readonly Coding AnteriorMidlineOfAbdomen = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of spinalis muscle
     /// </summary>
     public static readonly Coding StructureOfSpinalisMuscle = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protoplasmic astrocyte
     /// </summary>
     public static readonly Coding ProtoplasmicAstrocyte = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Upper jaw region
     /// </summary>
     public static readonly Coding UpperJawRegion = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of subchorionic space
     /// </summary>
     public static readonly Coding StructureOfSubchorionicSpace = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of lateral surface of little finger
     /// </summary>
     public static readonly Coding StructureOfLateralSurfaceOfLittleFinger = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stratum spinosum structure
     /// </summary>
     public static readonly Coding StratumSpinosumStructure = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Small intestine mucous membrane structure
     /// </summary>
     public static readonly Coding SmallIntestineMucousMembraneStructure = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of fourth metatarsal facet of lateral cuneiform bone
     /// </summary>
     public static readonly Coding StructureOfFourthMetatarsalFacetOfLateralCuneiformBone = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of incisure of cartilaginous portion of auditory canal
     /// </summary>
     public static readonly Coding StructureOfIncisureOfCartilaginousPortionOfAuditoryCanal = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of parafascicular nucleus of thalamus
     /// </summary>
     public static readonly Coding StructureOfParafascicularNucleusOfThalamus = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scala vestibuli structure
     /// </summary>
     public static readonly Coding ScalaVestibuliStructure = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of anterior articular surface for talus
     /// </summary>
     public static readonly Coding StructureOfAnteriorArticularSurfaceForTalus = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tracheal submucosa
     /// </summary>
     public static readonly Coding TrachealSubmucosa = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cellular structures
     /// </summary>
     public static readonly Coding CellularStructures = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of clivus ossis sphenoidalis
     /// </summary>
     public static readonly Coding StructureOfClivusOssisSphenoidalis = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of ductus arteriosus
     /// </summary>
     public static readonly Coding StructureOfDuctusArteriosus = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental arch structure
     /// </summary>
     public static readonly Coding DentalArchStructure = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trochanteric bursa
     /// </summary>
     public static readonly Coding TrochantericBursa = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of accessory sinus gland
     /// </summary>
     public static readonly Coding StructureOfAccessorySinusGland = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of subclavian plexus
     /// </summary>
     public static readonly Coding StructureOfSubclavianPlexus = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Joint structure of lower extremity
     /// </summary>
     public static readonly Coding JointStructureOfLowerExtremity = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of internal medullary lamina of thalamus
     /// </summary>
     public static readonly Coding StructureOfInternalMedullaryLaminaOfThalamus = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lamellated granule, as in surfactant-secreting cell
     /// </summary>
     public static readonly Coding LamellatedGranuleAsInSurfactantSecretingCell = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire vagus nerve parasympathetic fibers to liver, gallbladder, bile ducts and pancreas
     /// </summary>
     public static readonly Coding EntireVagusNerveParasympatheticFibersToLiverGallbladderBileDuctsAndPancreas = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of tentorium cerebelli
     /// </summary>
     public static readonly Coding StructureOfTentoriumCerebelli = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Collateral ligament
     /// </summary>
     public static readonly Coding CollateralLigament = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Desmosome
     /// </summary>
     public static readonly Coding Desmosome = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skin structure of posterior surface of thigh
     /// </summary>
     public static readonly Coding SkinStructureOfPosteriorSurfaceOfThigh = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of splenius muscle of trunk
     /// </summary>
     public static readonly Coding StructureOfSpleniusMuscleOfTrunk = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of middle trunk of brachial plexus
     /// </summary>
     public static readonly Coding StructureOfMiddleTrunkOfBrachialPlexus = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Larynx structure
     /// </summary>
     public static readonly Coding LarynxStructure = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of base of phalanx of foot
     /// </summary>
     public static readonly Coding StructureOfBaseOfPhalanxOfFoot = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tubercle of eighth rib structure
     /// </summary>
     public static readonly Coding TubercleOfEighthRibStructure = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral corticospinal tract
     /// </summary>
     public static readonly Coding LateralCorticospinalTract = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of lesser tuberosity of humerus
     /// </summary>
     public static readonly Coding StructureOfLesserTuberosityOfHumerus = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of lymphatic cord
     /// </summary>
     public static readonly Coding StructureOfLymphaticCord = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Basophilic normoblast
     /// </summary>
     public static readonly Coding BasophilicNormoblast = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lipid droplet, homogeneous
     /// </summary>
     public static readonly Coding LipidDropletHomogeneous = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ascending frontal gyrus
     /// </summary>
     public static readonly Coding AscendingFrontalGyrus = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of tunica albuginea of corpus spongiosum
     /// </summary>
     public static readonly Coding StructureOfTunicaAlbugineaOfCorpusSpongiosum = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skin structure of nuchal region
     /// </summary>
     public static readonly Coding SkinStructureOfNuchalRegion = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Basal lamina, inclusion in subepithelial location
     /// </summary>
     public static readonly Coding BasalLaminaInclusionInSubepithelialLocation = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardinal vein structure
     /// </summary>
     public static readonly Coding CardinalVeinStructure = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flexor hallucis longus in leg
     /// </summary>
     public static readonly Coding FlexorHallucisLongusInLeg = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neutrophilic myelocyte
     /// </summary>
     public static readonly Coding NeutrophilicMyelocyte = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire venous plexus of the foramen ovale basis cranii
     /// </summary>
     public static readonly Coding EntireVenousPlexusOfTheForamenOvaleBasisCranii = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of ventral sacrococcygeal ligament
     /// </summary>
     public static readonly Coding StructureOfVentralSacrococcygealLigament = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of medial surface of great toe
     /// </summary>
     public static readonly Coding StructureOfMedialSurfaceOfGreatToe = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of gemellus muscle
     /// </summary>
     public static readonly Coding StructureOfGemellusMuscle = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of supracardinal vein
     /// </summary>
     public static readonly Coding StructureOfSupracardinalVein = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of perineal nerve
     /// </summary>
     public static readonly Coding StructureOfPerinealNerve = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of phrenic nerve pericardial branch
     /// </summary>
     public static readonly Coding StructureOfPhrenicNervePericardialBranch = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of ventral posterior inferior nucleus
     /// </summary>
     public static readonly Coding StructureOfVentralPosteriorInferiorNucleus = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deiter cell
     /// </summary>
     public static readonly Coding DeiterCell = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiopulmonary circulatory system
     /// </summary>
     public static readonly Coding CardiopulmonaryCirculatorySystem = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of uterine venous plexus
     /// </summary>
     public static readonly Coding StructureOfUterineVenousPlexus = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior tibial compartment structure
     /// </summary>
     public static readonly Coding AnteriorTibialCompartmentStructure = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Femoral canal structure
     /// </summary>
     public static readonly Coding FemoralCanalStructure = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue structure of ring finger
     /// </summary>
     public static readonly Coding SubcutaneousTissueStructureOfRingFinger = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ampulla of semicircular duct
     /// </summary>
     public static readonly Coding AmpullaOfSemicircularDuct = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// TC - Transverse colon
     /// </summary>
     public static readonly Coding TCTransverseColon = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of tuberculum impar
     /// </summary>
     public static readonly Coding StructureOfTuberculumImpar = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Constrictor muscle of pharynx structure
     /// </summary>
     public static readonly Coding ConstrictorMuscleOfPharynxStructure = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of dorsal tegmental nuclei of midbrain
     /// </summary>
     public static readonly Coding StructureOfDorsalTegmentalNucleiOfMidbrain = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lamina of modiolus of cochlea
     /// </summary>
     public static readonly Coding LaminaOfModiolusOfCochlea = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire sublingual vein
     /// </summary>
     public static readonly Coding EntireSublingualVein = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire interlobular vein of kidney
     /// </summary>
     public static readonly Coding EntireInterlobularVeinOfKidney = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cell membrane, prokaryotic
     /// </summary>
     public static readonly Coding CellMembraneProkaryotic = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of uterovaginal plexus
     /// </summary>
     public static readonly Coding StructureOfUterovaginalPlexus = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mastoid antrum structure
     /// </summary>
     public static readonly Coding MastoidAntrumStructure = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebellar gracile lobule
     /// </summary>
     public static readonly Coding CerebellarGracileLobule = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lower limb lymph node structure
     /// </summary>
     public static readonly Coding LowerLimbLymphNodeStructure = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of radial notch of ulna
     /// </summary>
     public static readonly Coding StructureOfRadialNotchOfUlna = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue structure of back
     /// </summary>
     public static readonly Coding SubcutaneousTissueStructureOfBack = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amygdaloid structure
     /// </summary>
     public static readonly Coding AmygdaloidStructure = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of superior temporal sulcus
     /// </summary>
     public static readonly Coding StructureOfSuperiorTemporalSulcus = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of yellow bone marrow
     /// </summary>
     public static readonly Coding StructureOfYellowBoneMarrow = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of posterior surface of prostate
     /// </summary>
     public static readonly Coding StructureOfPosteriorSurfaceOfProstate = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of superficial dorsal veins of clitoris
     /// </summary>
     public static readonly Coding StructureOfSuperficialDorsalVeinsOfClitoris = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of obturator internus muscle ischial bursa
     /// </summary>
     public static readonly Coding StructureOfObturatorInternusMuscleIschialBursa = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of rugal column
     /// </summary>
     public static readonly Coding StructureOfRugalColumn = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of infrasternal angle
     /// </summary>
     public static readonly Coding StructureOfInfrasternalAngle = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of posterior auricular vein
     /// </summary>
     public static readonly Coding StructureOfPosteriorAuricularVein = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Entire angle of first rib
     /// </summary>
     public static readonly Coding EntireAngleOfFirstRib = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lens zonules
     /// </summary>
     public static readonly Coding LensZonules = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Permanent upper right 6 tooth
     /// </summary>
     public static readonly Coding PermanentUpperRight6Tooth = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of intervertebral foramen of twelfth thoracic vertebra
     /// </summary>
     public static readonly Coding StructureOfIntervertebralForamenOfTwelfthThoracicVertebra = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of epithelium of lens
     /// </summary>
     public static readonly Coding StructureOfEpitheliumOfLens = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of right external carotid artery
     /// </summary>
     public static readonly Coding StructureOfRightExternalCarotidArtery = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior ileocecal recess
     /// </summary>
     public static readonly Coding SuperiorIleocecalRecess = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frontal vein
     /// </summary>
     public static readonly Coding FrontalVein = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of uterine ostium of fallopian tube
     /// </summary>
     public static readonly Coding StructureOfUterineOstiumOfFallopianTube = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right cerebral hemisphere structure
     /// </summary>
     public static readonly Coding RightCerebralHemisphereStructure = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of mucosa of gallbladder
     /// </summary>
     public static readonly Coding StructureOfMucosaOfGallbladder = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of thoracic intervertebral disc
     /// </summary>
     public static readonly Coding StructureOfThoracicIntervertebralDisc = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skin structure of lateral portion of neck
     /// </summary>
     public static readonly Coding SkinStructureOfLateralPortionOfNeck = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of foramen singulare
     /// </summary>
     public static readonly Coding StructureOfForamenSingulare = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Costal surface of lung
     /// </summary>
     public static readonly Coding CostalSurfaceOfLung = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of anterior mediastinal lymph node
     /// </summary>
     public static readonly Coding StructureOfAnteriorMediastinalLymphNode = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of superior pole of kidney
     /// </summary>
     public static readonly Coding StructureOfSuperiorPoleOfKidney = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone structure of C4
     /// </summary>
     public static readonly Coding BoneStructureOfC4 = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of inferior frontal gyrus
     /// </summary>
     public static readonly Coding StructureOfInferiorFrontalGyrus = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Synaptic specialization, cytoplasmic
     /// </summary>
     public static readonly Coding SynapticSpecializationCytoplasmic = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of median arcuate ligament of diaphragm
     /// </summary>
     public static readonly Coding StructureOfMedianArcuateLigamentOfDiaphragm = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hippocampal structure
     /// </summary>
     public static readonly Coding HippocampalStructure = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Small intestine muscularis propria
     /// </summary>
     public static readonly Coding SmallIntestineMuscularisPropria = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior fascia of perineum
     /// </summary>
     public static readonly Coding SuperiorFasciaOfPerineum = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Uterine paracervical lymph node
     /// </summary>
     public static readonly Coding UterineParacervicalLymphNode = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Normal fat pad
     /// </summary>
     public static readonly Coding NormalFatPad = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Articular process of third lumbar vertebra
     /// </summary>
     public static readonly Coding ArticularProcessOfThirdLumbarVertebra = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sex chromosome Y
     /// </summary>
     public static readonly Coding SexChromosomeY = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apocrine intraepidermal duct
     /// </summary>
     public static readonly Coding ApocrineIntraepidermalDuct = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep artery of clitoris
     /// </summary>
     public static readonly Coding DeepArteryOfClitoris = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac incisure of stomach
     /// </summary>
     public static readonly Coding CardiacIncisureOfStomach = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lacrimal part of orbicularis oculi muscle
     /// </summary>
     public static readonly Coding LacrimalPartOfOrbicularisOculiMuscle = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metacarpophalangeal joint of little finger
     /// </summary>
     public static readonly Coding MetacarpophalangealJointOfLittleFinger = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior aberrant ductule of epididymis
     /// </summary>
     public static readonly Coding SuperiorAberrantDuctuleOfEpididymis = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyaloid artery
     /// </summary>
     public static readonly Coding HyaloidArtery = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue of chin
     /// </summary>
     public static readonly Coding SubcutaneousTissueOfChin = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vagus nerve parasympathetic fibers to cardiac plexus
     /// </summary>
     public static readonly Coding VagusNerveParasympatheticFibersToCardiacPlexus = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tegmental portion of pons
     /// </summary>
     public static readonly Coding TegmentalPortionOfPons = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crista marginalis of tooth
     /// </summary>
     public static readonly Coding CristaMarginalisOfTooth = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Longitudinal layer of duodenal muscularis propria
     /// </summary>
     public static readonly Coding LongitudinalLayerOfDuodenalMuscularisPropria = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alveolar ridge mucous membrane
     /// </summary>
     public static readonly Coding AlveolarRidgeMucousMembrane = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Singlet
     /// </summary>
     public static readonly Coding Singlet = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Seventh costal cartilage
     /// </summary>
     public static readonly Coding SeventhCostalCartilage = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tendon of supraspinatus muscle
     /// </summary>
     public static readonly Coding TendonOfSupraspinatusMuscle = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retina of right eye
     /// </summary>
     public static readonly Coding RetinaOfRightEye = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anulus fibrosus of intervertebral disc of fifth cervical vertebra
     /// </summary>
     public static readonly Coding AnulusFibrosusOfIntervertebralDiscOfFifthCervicalVertebra = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Navicular facet of intermediate cuneiform bone
     /// </summary>
     public static readonly Coding NavicularFacetOfIntermediateCuneiformBone = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right visceral pleura
     /// </summary>
     public static readonly Coding RightVisceralPleura = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muscular portion of interventricular septum
     /// </summary>
     public static readonly Coding MuscularPortionOfInterventricularSeptum = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canal of stomach
     /// </summary>
     public static readonly Coding CanalOfStomach = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fractured membrane P face
     /// </summary>
     public static readonly Coding FracturedMembranePFace = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intervertebral disc space of fifth lumbar vertebra
     /// </summary>
     public static readonly Coding IntervertebralDiscSpaceOfFifthLumbarVertebra = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inner surface of seventh rib
     /// </summary>
     public static readonly Coding InnerSurfaceOfSeventhRib = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retina
     /// </summary>
     public static readonly Coding Retina = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lower digestive tract
     /// </summary>
     public static readonly Coding LowerDigestiveTract = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lenticular fasciculus
     /// </summary>
     public static readonly Coding LenticularFasciculus = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue of upper extremity
     /// </summary>
     public static readonly Coding SubcutaneousTissueOfUpperExtremity = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Articular part of tubercle of ninth rib
     /// </summary>
     public static readonly Coding ArticularPartOfTubercleOfNinthRib = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skin of lateral surface of finger
     /// </summary>
     public static readonly Coding SkinOfLateralSurfaceOfFinger = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multifidus muscles
     /// </summary>
     public static readonly Coding MultifidusMuscles = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Submandibular triangle
     /// </summary>
     public static readonly Coding SubmandibularTriangle = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Temporal fossa
     /// </summary>
     public static readonly Coding TemporalFossa = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tendon and tendon sheath of leg and ankle
     /// </summary>
     public static readonly Coding TendonAndTendonSheathOfLegAndAnkle = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior cervical lymph node
     /// </summary>
     public static readonly Coding AnteriorCervicalLymphNode = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skin of forearm
     /// </summary>
     public static readonly Coding SkinOfForearm = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue of anterior portion of neck
     /// </summary>
     public static readonly Coding SubcutaneousTissueOfAnteriorPortionOfNeck = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endocervical epithelium
     /// </summary>
     public static readonly Coding EndocervicalEpithelium = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paradidymis
     /// </summary>
     public static readonly Coding Paradidymis = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diaphragm
     /// </summary>
     public static readonly Coding Diaphragm = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medium sized neuron
     /// </summary>
     public static readonly Coding MediumSizedNeuron = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angle of seventh rib
     /// </summary>
     public static readonly Coding AngleOfSeventhRib = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior rectus muscle
     /// </summary>
     public static readonly Coding SuperiorRectusMuscle = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Duodenal fold
     /// </summary>
     public static readonly Coding DuodenalFold = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Head of phalanx of great toe
     /// </summary>
     public static readonly Coding HeadOfPhalanxOfGreatToe = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Substantia propria of sclera
     /// </summary>
     public static readonly Coding SubstantiaPropriaOfSclera = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior cord of brachial plexus
     /// </summary>
     public static readonly Coding PosteriorCordOfBrachialPlexus = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior articular process of seventh cervical vertebra
     /// </summary>
     public static readonly Coding SuperiorArticularProcessOfSeventhCervicalVertebra = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orbital plate of ethmoid bone
     /// </summary>
     public static readonly Coding OrbitalPlateOfEthmoidBone = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serosa of urinary bladder
     /// </summary>
     public static readonly Coding SerosaOfUrinaryBladder = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Capsule of proximal interphalangeal joint of third toe
     /// </summary>
     public static readonly Coding CapsuleOfProximalInterphalangealJointOfThirdToe = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue of lateral border of sole of foot
     /// </summary>
     public static readonly Coding SubcutaneousTissueOfLateralBorderOfSoleOfFoot = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tuberosity of distal phalanx of hand
     /// </summary>
     public static readonly Coding TuberosityOfDistalPhalanxOfHand = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endothelial sieve plate
     /// </summary>
     public static readonly Coding EndothelialSievePlate = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Articular surface, third metacarpal, of fourth metacarpal bone
     /// </summary>
     public static readonly Coding ArticularSurfaceThirdMetacarpalOfFourthMetacarpalBone = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior cells of ethmoid sinus
     /// </summary>
     public static readonly Coding PosteriorCellsOfEthmoidSinus = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interventricular septum
     /// </summary>
     public static readonly Coding InterventricularSeptum = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior recess of tympanic membrane
     /// </summary>
     public static readonly Coding SuperiorRecessOfTympanicMembrane = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myotome
     /// </summary>
     public static readonly Coding Myotome = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Articular process of twelfth thoracic vertebra
     /// </summary>
     public static readonly Coding ArticularProcessOfTwelfthThoracicVertebra = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bronchial lumen
     /// </summary>
     public static readonly Coding BronchialLumen = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Great cardiac vein
     /// </summary>
     public static readonly Coding GreatCardiacVein = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tensor tympani muscle
     /// </summary>
     public static readonly Coding TensorTympaniMuscle = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vestibular vein
     /// </summary>
     public static readonly Coding VestibularVein = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior palatine arch
     /// </summary>
     public static readonly Coding PosteriorPalatineArch = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Capsule of distal interphalangeal joint of third toe
     /// </summary>
     public static readonly Coding CapsuleOfDistalInterphalangealJointOfThirdToe = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Palpebral fissure
     /// </summary>
     public static readonly Coding PalpebralFissure = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left wrist
     /// </summary>
     public static readonly Coding LeftWrist = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eighth rib
     /// </summary>
     public static readonly Coding EighthRib = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue of eyelid
     /// </summary>
     public static readonly Coding SubcutaneousTissueOfEyelid = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Episcleral artery
     /// </summary>
     public static readonly Coding EpiscleralArtery = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chromosomes, group D
     /// </summary>
     public static readonly Coding ChromosomesGroupD = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Quadratus lumborum muscle
     /// </summary>
     public static readonly Coding QuadratusLumborumMuscle = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intervertebral disc of second thoracic vertebra
     /// </summary>
     public static readonly Coding IntervertebralDiscOfSecondThoracicVertebra = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Circular layer of duodenal muscularis propria
     /// </summary>
     public static readonly Coding CircularLayerOfDuodenalMuscularisPropria = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mesentery of ascending colon
     /// </summary>
     public static readonly Coding MesenteryOfAscendingColon = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reticuloendothelial system
     /// </summary>
     public static readonly Coding ReticuloendothelialSystem = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Penicilliary arteries
     /// </summary>
     public static readonly Coding PenicilliaryArteries = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heterolysosome
     /// </summary>
     public static readonly Coding Heterolysosome = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Columnar epithelial cell
     /// </summary>
     public static readonly Coding ColumnarEpithelialCell = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Outer surface of third rib
     /// </summary>
     public static readonly Coding OuterSurfaceOfThirdRib = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lacrimal vein
     /// </summary>
     public static readonly Coding LacrimalVein = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metacarpophalangeal joint of middle finger
     /// </summary>
     public static readonly Coding MetacarpophalangealJointOfMiddleFinger = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deciduous mandibular right canine tooth
     /// </summary>
     public static readonly Coding DeciduousMandibularRightCanineTooth = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligament of left superior vena cava
     /// </summary>
     public static readonly Coding LigamentOfLeftSuperiorVenaCava = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Capsule of temporomandibular joint
     /// </summary>
     public static readonly Coding CapsuleOfTemporomandibularJoint = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastrointestinal subserosa
     /// </summary>
     public static readonly Coding GastrointestinalSubserosa = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue of philtrum
     /// </summary>
     public static readonly Coding SubcutaneousTissueOfPhiltrum = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subclavian nerve
     /// </summary>
     public static readonly Coding SubclavianNerve = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Body of fifth thoracic vertebra
     /// </summary>
     public static readonly Coding BodyOfFifthThoracicVertebra = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Facial nerve parasympathetic fibers
     /// </summary>
     public static readonly Coding FacialNerveParasympatheticFibers = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nail of fourth toe
     /// </summary>
     public static readonly Coding NailOfFourthToe = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multivesicular body, internal vesicles
     /// </summary>
     public static readonly Coding MultivesicularBodyInternalVesicles = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Postcapillary venule
     /// </summary>
     public static readonly Coding PostcapillaryVenule = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Piriform recess
     /// </summary>
     public static readonly Coding PiriformRecess = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Os lacrimale
     /// </summary>
     public static readonly Coding OsLacrimale = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sulcus terminalis cordis
     /// </summary>
     public static readonly Coding SulcusTerminalisCordis = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Accessory phrenic nerves
     /// </summary>
     public static readonly Coding AccessoryPhrenicNerves = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue of scalp
     /// </summary>
     public static readonly Coding SubcutaneousTissueOfScalp = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skin of dorsal surface of finger
     /// </summary>
     public static readonly Coding SkinOfDorsalSurfaceOfFinger = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior basal branch of left pulmonary artery
     /// </summary>
     public static readonly Coding PosteriorBasalBranchOfLeftPulmonaryArtery = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aryepiglottic muscle
     /// </summary>
     public static readonly Coding AryepiglotticMuscle = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fetal atloid articulation
     /// </summary>
     public static readonly Coding FetalAtloidArticulation = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphoid follicle of stomach
     /// </summary>
     public static readonly Coding LymphoidFollicleOfStomach = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tuberosity of distal phalanx of little toe
     /// </summary>
     public static readonly Coding TuberosityOfDistalPhalanxOfLittleToe = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hair medulla
     /// </summary>
     public static readonly Coding HairMedulla = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphatics of thyroid gland
     /// </summary>
     public static readonly Coding LymphaticsOfThyroidGland = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cavernous portion of urethra
     /// </summary>
     public static readonly Coding CavernousPortionOfUrethra = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coccygeal nerve
     /// </summary>
     public static readonly Coding CoccygealNerve = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligamentum nuchae
     /// </summary>
     public static readonly Coding LigamentumNuchae = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Presymphysial lymph node
     /// </summary>
     public static readonly Coding PresymphysialLymphNode = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medial malleolus
     /// </summary>
     public static readonly Coding MedialMalleolus = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Supraspinatus muscle
     /// </summary>
     public static readonly Coding SupraspinatusMuscle = new Coding
     {
@@ -5574,7 +5574,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of radiating portion of cortical lobule of kidney
     /// </summary>
     public static readonly Coding StructureOfRadiatingPortionOfCorticalLobuleOfKidney = new Coding
     {
@@ -5583,7 +5583,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mast cell
     /// </summary>
     public static readonly Coding MastCell = new Coding
     {
@@ -5592,7 +5592,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior vagal trunk
     /// </summary>
     public static readonly Coding PosteriorVagalTrunk = new Coding
     {
@@ -5601,7 +5601,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cytotrophoblast
     /// </summary>
     public static readonly Coding Cytotrophoblast = new Coding
     {
@@ -5610,7 +5610,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medial aspect of ovary
     /// </summary>
     public static readonly Coding MedialAspectOfOvary = new Coding
     {
@@ -5619,7 +5619,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior articular process of seventh thoracic vertebra
     /// </summary>
     public static readonly Coding SuperiorArticularProcessOfSeventhThoracicVertebra = new Coding
     {
@@ -5628,7 +5628,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glans clitoridis
     /// </summary>
     public static readonly Coding GlansClitoridis = new Coding
     {
@@ -5637,7 +5637,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Distal portion of circumflex branch of left coronary artery
     /// </summary>
     public static readonly Coding DistalPortionOfCircumflexBranchOfLeftCoronaryArtery = new Coding
     {
@@ -5646,7 +5646,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac valve leaflet
     /// </summary>
     public static readonly Coding CardiacValveLeaflet = new Coding
     {
@@ -5655,7 +5655,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Colonic haustra
     /// </summary>
     public static readonly Coding ColonicHaustra = new Coding
     {
@@ -5664,7 +5664,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thyrocervical trunk
     /// </summary>
     public static readonly Coding ThyrocervicalTrunk = new Coding
     {
@@ -5673,7 +5673,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior commissure of mitral valve
     /// </summary>
     public static readonly Coding AnteriorCommissureOfMitralValve = new Coding
     {
@@ -5682,7 +5682,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastrohepatic ligament
     /// </summary>
     public static readonly Coding GastrohepaticLigament = new Coding
     {
@@ -5691,7 +5691,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angular incisure of stomach
     /// </summary>
     public static readonly Coding AngularIncisureOfStomach = new Coding
     {
@@ -5700,7 +5700,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pollicis artery
     /// </summary>
     public static readonly Coding PollicisArtery = new Coding
     {
@@ -5709,7 +5709,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inferior nasal turbinate
     /// </summary>
     public static readonly Coding InferiorNasalTurbinate = new Coding
     {
@@ -5718,7 +5718,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medial border of sole
     /// </summary>
     public static readonly Coding MedialBorderOfSole = new Coding
     {
@@ -5727,7 +5727,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebellar hemisphere
     /// </summary>
     public static readonly Coding CerebellarHemisphere = new Coding
     {
@@ -5736,7 +5736,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Base of phalanx of middle finger
     /// </summary>
     public static readonly Coding BaseOfPhalanxOfMiddleFinger = new Coding
     {
@@ -5745,7 +5745,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lingual nerve
     /// </summary>
     public static readonly Coding LingualNerve = new Coding
     {
@@ -5754,7 +5754,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tracheal mucous membrane
     /// </summary>
     public static readonly Coding TrachealMucousMembrane = new Coding
     {
@@ -5763,7 +5763,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of dorsal intercuneiform ligaments
     /// </summary>
     public static readonly Coding StructureOfDorsalIntercuneiformLigaments = new Coding
     {
@@ -5772,7 +5772,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sphenoparietal sinus
     /// </summary>
     public static readonly Coding SphenoparietalSinus = new Coding
     {
@@ -5781,7 +5781,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jaw region
     /// </summary>
     public static readonly Coding JawRegion = new Coding
     {
@@ -5790,7 +5790,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cuticle of nail
     /// </summary>
     public static readonly Coding CuticleOfNail = new Coding
     {
@@ -5799,7 +5799,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sternal muscle
     /// </summary>
     public static readonly Coding SternalMuscle = new Coding
     {
@@ -5808,7 +5808,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right posterior cerebral artery
     /// </summary>
     public static readonly Coding RightPosteriorCerebralArtery = new Coding
     {
@@ -5817,7 +5817,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right anterior cerebral artery
     /// </summary>
     public static readonly Coding RightAnteriorCerebralArtery = new Coding
     {
@@ -5826,7 +5826,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior fossa of cranial cavity
     /// </summary>
     public static readonly Coding AnteriorFossaOfCranialCavity = new Coding
     {
@@ -5835,7 +5835,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Uterine subserosa
     /// </summary>
     public static readonly Coding UterineSubserosa = new Coding
     {
@@ -5844,7 +5844,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Central lobule of cerebellum
     /// </summary>
     public static readonly Coding CentralLobuleOfCerebellum = new Coding
     {
@@ -5853,7 +5853,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Embryological structure
     /// </summary>
     public static readonly Coding EmbryologicalStructure = new Coding
     {
@@ -5862,7 +5862,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Articular facet of head of fibula
     /// </summary>
     public static readonly Coding ArticularFacetOfHeadOfFibula = new Coding
     {
@@ -5871,7 +5871,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right ankle
     /// </summary>
     public static readonly Coding RightAnkle = new Coding
     {
@@ -5880,7 +5880,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arch of second lumbar vertebra
     /// </summary>
     public static readonly Coding ArchOfSecondLumbarVertebra = new Coding
     {
@@ -5889,7 +5889,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Femoral nerve lateral muscular branches
     /// </summary>
     public static readonly Coding FemoralNerveLateralMuscularBranches = new Coding
     {
@@ -5898,7 +5898,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pleural recess
     /// </summary>
     public static readonly Coding PleuralRecess = new Coding
     {
@@ -5907,7 +5907,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chorda tympani
     /// </summary>
     public static readonly Coding ChordaTympani = new Coding
     {
@@ -5916,7 +5916,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Callosomarginal branch of anterior cerebral artery
     /// </summary>
     public static readonly Coding CallosomarginalBranchOfAnteriorCerebralArtery = new Coding
     {
@@ -5925,7 +5925,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mitochondrial inclusion
     /// </summary>
     public static readonly Coding MitochondrialInclusion = new Coding
     {
@@ -5934,7 +5934,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right knee
     /// </summary>
     public static readonly Coding RightKnee = new Coding
     {
@@ -5943,7 +5943,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tendon and tendon sheath of hand
     /// </summary>
     public static readonly Coding TendonAndTendonSheathOfHand = new Coding
     {
@@ -5952,7 +5952,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa
     /// </summary>
     public static readonly Coding Spermatozoa = new Coding
     {
@@ -5961,7 +5961,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macula of utricle
     /// </summary>
     public static readonly Coding MaculaOfUtricle = new Coding
     {
@@ -5970,7 +5970,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interstitial tissue of spleen
     /// </summary>
     public static readonly Coding InterstitialTissueOfSpleen = new Coding
     {
@@ -5979,7 +5979,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obturator nerve anterior branch
     /// </summary>
     public static readonly Coding ObturatorNerveAnteriorBranch = new Coding
     {
@@ -5988,7 +5988,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligament of lumbosacral joint
     /// </summary>
     public static readonly Coding LigamentOfLumbosacralJoint = new Coding
     {
@@ -5997,7 +5997,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pars ciliaris of retina
     /// </summary>
     public static readonly Coding ParsCiliarisOfRetina = new Coding
     {
@@ -6006,7 +6006,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Axial skeleton
     /// </summary>
     public static readonly Coding AxialSkeleton = new Coding
     {
@@ -6015,7 +6015,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corticomedullary junction of kidney
     /// </summary>
     public static readonly Coding CorticomedullaryJunctionOfKidney = new Coding
     {
@@ -6024,7 +6024,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spore crystal
     /// </summary>
     public static readonly Coding SporeCrystal = new Coding
     {
@@ -6033,7 +6033,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Secondary foot process
     /// </summary>
     public static readonly Coding SecondaryFootProcess = new Coding
     {
@@ -6042,7 +6042,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leaf of epiglottis
     /// </summary>
     public static readonly Coding LeafOfEpiglottis = new Coding
     {
@@ -6051,7 +6051,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Habenular commissure
     /// </summary>
     public static readonly Coding HabenularCommissure = new Coding
     {
@@ -6060,7 +6060,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Visceral pericardium
     /// </summary>
     public static readonly Coding VisceralPericardium = new Coding
     {
@@ -6069,7 +6069,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fetal hyaloid artery
     /// </summary>
     public static readonly Coding FetalHyaloidArtery = new Coding
     {
@@ -6078,7 +6078,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medial surface of arm
     /// </summary>
     public static readonly Coding MedialSurfaceOfArm = new Coding
     {
@@ -6087,7 +6087,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Popliteal region
     /// </summary>
     public static readonly Coding PoplitealRegion = new Coding
     {
@@ -6096,7 +6096,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue of medial surface of third toe
     /// </summary>
     public static readonly Coding SubcutaneousTissueOfMedialSurfaceOfThirdToe = new Coding
     {
@@ -6105,7 +6105,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Small intestine submucosa
     /// </summary>
     public static readonly Coding SmallIntestineSubmucosa = new Coding
     {
@@ -6114,7 +6114,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lower alveolar ridge mucosa
     /// </summary>
     public static readonly Coding LowerAlveolarRidgeMucosa = new Coding
     {
@@ -6123,7 +6123,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Perivascular space
     /// </summary>
     public static readonly Coding PerivascularSpace = new Coding
     {
@@ -6132,7 +6132,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Body of ischium
     /// </summary>
     public static readonly Coding BodyOfIschium = new Coding
     {
@@ -6141,7 +6141,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right upper extremity
     /// </summary>
     public static readonly Coding RightUpperExtremity = new Coding
     {
@@ -6150,7 +6150,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jugular arch
     /// </summary>
     public static readonly Coding JugularArch = new Coding
     {
@@ -6159,7 +6159,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior labial veins
     /// </summary>
     public static readonly Coding AnteriorLabialVeins = new Coding
     {
@@ -6168,7 +6168,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphocytic tissue
     /// </summary>
     public static readonly Coding LymphocyticTissue = new Coding
     {
@@ -6177,7 +6177,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior myocardium
     /// </summary>
     public static readonly Coding AnteriorMyocardium = new Coding
     {
@@ -6186,7 +6186,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior hypothalamic nucleus
     /// </summary>
     public static readonly Coding PosteriorHypothalamicNucleus = new Coding
     {
@@ -6195,7 +6195,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Collateral sulcus
     /// </summary>
     public static readonly Coding CollateralSulcus = new Coding
     {
@@ -6204,7 +6204,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracolumbar region of back
     /// </summary>
     public static readonly Coding ThoracolumbarRegionOfBack = new Coding
     {
@@ -6213,7 +6213,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue of jaw
     /// </summary>
     public static readonly Coding SubcutaneousTissueOfJaw = new Coding
     {
@@ -6222,7 +6222,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bile duct mucous membrane
     /// </summary>
     public static readonly Coding BileDuctMucousMembrane = new Coding
     {
@@ -6231,7 +6231,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue of external genitalia
     /// </summary>
     public static readonly Coding SubcutaneousTissueOfExternalGenitalia = new Coding
     {
@@ -6240,7 +6240,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right colic artery
     /// </summary>
     public static readonly Coding RightColicArtery = new Coding
     {
@@ -6249,7 +6249,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interstitial tissue of myocardium
     /// </summary>
     public static readonly Coding InterstitialTissueOfMyocardium = new Coding
     {
@@ -6258,7 +6258,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Middle phalanx of index finger
     /// </summary>
     public static readonly Coding MiddlePhalanxOfIndexFinger = new Coding
     {
@@ -6267,7 +6267,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Supraaortic branches
     /// </summary>
     public static readonly Coding SupraaorticBranches = new Coding
     {
@@ -6276,7 +6276,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ventral posterolateral nucleus of thalamus
     /// </summary>
     public static readonly Coding VentralPosterolateralNucleusOfThalamus = new Coding
     {
@@ -6285,7 +6285,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Attachment plaque of desmosome or hemidesmosome
     /// </summary>
     public static readonly Coding AttachmentPlaqueOfDesmosomeOrHemidesmosome = new Coding
     {
@@ -6294,7 +6294,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fetal implantation site
     /// </summary>
     public static readonly Coding FetalImplantationSite = new Coding
     {
@@ -6303,7 +6303,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maxillary right second molar tooth
     /// </summary>
     public static readonly Coding MaxillaryRightSecondMolarTooth = new Coding
     {
@@ -6312,7 +6312,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anulus fibrosus of intervertebral disc of thoracic vertebra
     /// </summary>
     public static readonly Coding AnulusFibrosusOfIntervertebralDiscOfThoracicVertebra = new Coding
     {
@@ -6321,7 +6321,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// False rib
     /// </summary>
     public static readonly Coding FalseRib = new Coding
     {
@@ -6330,7 +6330,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trigeminal ganglion sensory root
     /// </summary>
     public static readonly Coding TrigeminalGanglionSensoryRoot = new Coding
     {
@@ -6339,7 +6339,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Base of metacarpal bone
     /// </summary>
     public static readonly Coding BaseOfMetacarpalBone = new Coding
     {
@@ -6348,7 +6348,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paraduodenal recess
     /// </summary>
     public static readonly Coding ParaduodenalRecess = new Coding
     {
@@ -6357,7 +6357,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cauda equina
     /// </summary>
     public static readonly Coding CaudaEquina = new Coding
     {
@@ -6366,7 +6366,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gustatory pore
     /// </summary>
     public static readonly Coding GustatoryPore = new Coding
     {
@@ -6375,7 +6375,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isthmus tympani posticus
     /// </summary>
     public static readonly Coding IsthmusTympaniPosticus = new Coding
     {
@@ -6384,7 +6384,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypoglossal nerve intrinsic tongue muscle branch
     /// </summary>
     public static readonly Coding HypoglossalNerveIntrinsicTongueMuscleBranch = new Coding
     {
@@ -6393,7 +6393,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dense intermediate filament bundles
     /// </summary>
     public static readonly Coding DenseIntermediateFilamentBundles = new Coding
     {
@@ -6402,7 +6402,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inferior choroid vein
     /// </summary>
     public static readonly Coding InferiorChoroidVein = new Coding
     {
@@ -6411,7 +6411,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Appendiceal muscularis propria
     /// </summary>
     public static readonly Coding AppendicealMuscularisPropria = new Coding
     {
@@ -6420,7 +6420,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphatics of appendix and large intestine
     /// </summary>
     public static readonly Coding LymphaticsOfAppendixAndLargeIntestine = new Coding
     {
@@ -6429,7 +6429,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muscle of perineum
     /// </summary>
     public static readonly Coding MuscleOfPerineum = new Coding
     {
@@ -6438,7 +6438,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep inguinal ring
     /// </summary>
     public static readonly Coding DeepInguinalRing = new Coding
     {
@@ -6447,7 +6447,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior surface of arm
     /// </summary>
     public static readonly Coding AnteriorSurfaceOfArm = new Coding
     {
@@ -6456,7 +6456,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lingual gyrus
     /// </summary>
     public static readonly Coding LingualGyrus = new Coding
     {
@@ -6465,7 +6465,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ciliary processes
     /// </summary>
     public static readonly Coding CiliaryProcesses = new Coding
     {
@@ -6474,7 +6474,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infratendinous olecranon bursa
     /// </summary>
     public static readonly Coding InfratendinousOlecranonBursa = new Coding
     {
@@ -6483,7 +6483,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphatic of head
     /// </summary>
     public static readonly Coding LymphaticOfHead = new Coding
     {
@@ -6492,7 +6492,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left margin of uterus
     /// </summary>
     public static readonly Coding LeftMarginOfUterus = new Coding
     {
@@ -6501,7 +6501,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paraventricular nucleus of thalamus
     /// </summary>
     public static readonly Coding ParaventricularNucleusOfThalamus = new Coding
     {
@@ -6510,7 +6510,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plantar calcaneocuboidal ligament
     /// </summary>
     public static readonly Coding PlantarCalcaneocuboidalLigament = new Coding
     {
@@ -6519,7 +6519,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior semicircular duct
     /// </summary>
     public static readonly Coding AnteriorSemicircularDuct = new Coding
     {
@@ -6528,7 +6528,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ovarian ligament
     /// </summary>
     public static readonly Coding OvarianLigament = new Coding
     {
@@ -6537,7 +6537,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral surface of sublingual gland
     /// </summary>
     public static readonly Coding LateralSurfaceOfSublingualGland = new Coding
     {
@@ -6546,7 +6546,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lipid, crystalline
     /// </summary>
     public static readonly Coding LipidCrystalline = new Coding
     {
@@ -6555,7 +6555,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iliotibial tract
     /// </summary>
     public static readonly Coding IliotibialTract = new Coding
     {
@@ -6564,7 +6564,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebellar lenticular nucleus
     /// </summary>
     public static readonly Coding CerebellarLenticularNucleus = new Coding
     {
@@ -6573,7 +6573,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plantar tarsal ligaments
     /// </summary>
     public static readonly Coding PlantarTarsalLigaments = new Coding
     {
@@ -6582,7 +6582,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior ligament of head of fibula
     /// </summary>
     public static readonly Coding AnteriorLigamentOfHeadOfFibula = new Coding
     {
@@ -6591,7 +6591,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vasa vasorum
     /// </summary>
     public static readonly Coding VasaVasorum = new Coding
     {
@@ -6600,7 +6600,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vagus nerve parasympathetic fibers
     /// </summary>
     public static readonly Coding VagusNerveParasympatheticFibers = new Coding
     {
@@ -6609,7 +6609,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep head of flexor pollicis brevis muscle
     /// </summary>
     public static readonly Coding DeepHeadOfFlexorPollicisBrevisMuscle = new Coding
     {
@@ -6618,7 +6618,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mitotic cell in anaphase
     /// </summary>
     public static readonly Coding MitoticCellInAnaphase = new Coding
     {
@@ -6627,7 +6627,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Finger
     /// </summary>
     public static readonly Coding Finger = new Coding
     {
@@ -6636,7 +6636,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intervertebral disc space of eleventh thoracic vertebra
     /// </summary>
     public static readonly Coding IntervertebralDiscSpaceOfEleventhThoracicVertebra = new Coding
     {
@@ -6645,7 +6645,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue of vertex
     /// </summary>
     public static readonly Coding SubcutaneousTissueOfVertex = new Coding
     {
@@ -6654,7 +6654,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Connexon
     /// </summary>
     public static readonly Coding Connexon = new Coding
     {
@@ -6663,7 +6663,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tenth thoracic vertebra
     /// </summary>
     public static readonly Coding TenthThoracicVertebra = new Coding
     {
@@ -6672,7 +6672,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thalamoolivary tract
     /// </summary>
     public static readonly Coding ThalamoolivaryTract = new Coding
     {
@@ -6681,7 +6681,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intervenous tubercle of right atrium
     /// </summary>
     public static readonly Coding IntervenousTubercleOfRightAtrium = new Coding
     {
@@ -6690,7 +6690,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frenulum labii
     /// </summary>
     public static readonly Coding FrenulumLabii = new Coding
     {
@@ -6699,7 +6699,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Femoral artery
     /// </summary>
     public static readonly Coding FemoralArtery = new Coding
     {
@@ -6708,7 +6708,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subtendinous bursa of triceps brachii muscle
     /// </summary>
     public static readonly Coding SubtendinousBursaOfTricepsBrachiiMuscle = new Coding
     {
@@ -6717,7 +6717,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pontine portion of medial longitudinal fasciculus
     /// </summary>
     public static readonly Coding PontinePortionOfMedialLongitudinalFasciculus = new Coding
     {
@@ -6726,7 +6726,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subdural space of spinal region
     /// </summary>
     public static readonly Coding SubduralSpaceOfSpinalRegion = new Coding
     {
@@ -6735,7 +6735,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skin of medial surface of fifth toe
     /// </summary>
     public static readonly Coding SkinOfMedialSurfaceOfFifthToe = new Coding
     {
@@ -6744,7 +6744,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior choroidal artery
     /// </summary>
     public static readonly Coding PosteriorChoroidalArtery = new Coding
     {
@@ -6753,7 +6753,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Head and neck
     /// </summary>
     public static readonly Coding HeadAndNeck = new Coding
     {
@@ -6762,7 +6762,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Palatine duct
     /// </summary>
     public static readonly Coding PalatineDuct = new Coding
     {
@@ -6771,7 +6771,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skin appendage
     /// </summary>
     public static readonly Coding SkinAppendage = new Coding
     {
@@ -6780,7 +6780,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mesovarian margin of ovary
     /// </summary>
     public static readonly Coding MesovarianMarginOfOvary = new Coding
     {
@@ -6789,7 +6789,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lamina of third thoracic vertebra
     /// </summary>
     public static readonly Coding LaminaOfThirdThoracicVertebra = new Coding
     {
@@ -6798,7 +6798,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Striate artery
     /// </summary>
     public static readonly Coding StriateArtery = new Coding
     {
@@ -6807,7 +6807,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right foot
     /// </summary>
     public static readonly Coding RightFoot = new Coding
     {
@@ -6816,7 +6816,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sympathetic trunk spinal nerve branch
     /// </summary>
     public static readonly Coding SympatheticTrunkSpinalNerveBranch = new Coding
     {
@@ -6825,7 +6825,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral posterior nucleus of thalamus
     /// </summary>
     public static readonly Coding LateralPosteriorNucleusOfThalamus = new Coding
     {
@@ -6834,7 +6834,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior surface of manubrium
     /// </summary>
     public static readonly Coding AnteriorSurfaceOfManubrium = new Coding
     {
@@ -6843,7 +6843,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abdominal aorta
     /// </summary>
     public static readonly Coding AbdominalAorta = new Coding
     {
@@ -6852,7 +6852,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior margin of nasal septum
     /// </summary>
     public static readonly Coding PosteriorMarginOfNasalSeptum = new Coding
     {
@@ -6861,7 +6861,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue of submental area
     /// </summary>
     public static readonly Coding SubcutaneousTissueOfSubmentalArea = new Coding
     {
@@ -6870,7 +6870,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macrocytic normochromic erythrocyte
     /// </summary>
     public static readonly Coding MacrocyticNormochromicErythrocyte = new Coding
     {
@@ -6879,7 +6879,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sternoclavicular joint
     /// </summary>
     public static readonly Coding SternoclavicularJoint = new Coding
     {
@@ -6888,7 +6888,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracranial subdural space
     /// </summary>
     public static readonly Coding IntracranialSubduralSpace = new Coding
     {
@@ -6897,7 +6897,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mandibular canal
     /// </summary>
     public static readonly Coding MandibularCanal = new Coding
     {
@@ -6906,7 +6906,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myocardium of ventricle
     /// </summary>
     public static readonly Coding MyocardiumOfVentricle = new Coding
     {
@@ -6915,7 +6915,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scapular region of back
     /// </summary>
     public static readonly Coding ScapularRegionOfBack = new Coding
     {
@@ -6924,7 +6924,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rhopheocytotic vesicle
     /// </summary>
     public static readonly Coding RhopheocytoticVesicle = new Coding
     {
@@ -6933,7 +6933,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corneal corpuscle
     /// </summary>
     public static readonly Coding CornealCorpuscle = new Coding
     {
@@ -6942,7 +6942,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rotator cuff including muscles and tendons
     /// </summary>
     public static readonly Coding RotatorCuffIncludingMusclesAndTendons = new Coding
     {
@@ -6951,7 +6951,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Submucosa of anal canal
     /// </summary>
     public static readonly Coding SubmucosaOfAnalCanal = new Coding
     {
@@ -6960,7 +6960,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occipital angle of parietal bone
     /// </summary>
     public static readonly Coding OccipitalAngleOfParietalBone = new Coding
     {
@@ -6969,7 +6969,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Visceral surface of liver
     /// </summary>
     public static readonly Coding VisceralSurfaceOfLiver = new Coding
     {
@@ -6978,7 +6978,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Olivocerebellar fibers
     /// </summary>
     public static readonly Coding OlivocerebellarFibers = new Coding
     {
@@ -6987,7 +6987,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Proximal phalanx of third toe
     /// </summary>
     public static readonly Coding ProximalPhalanxOfThirdToe = new Coding
     {
@@ -6996,7 +6996,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligament of diaphragm
     /// </summary>
     public static readonly Coding LigamentOfDiaphragm = new Coding
     {
@@ -7005,7 +7005,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Helper cell
     /// </summary>
     public static readonly Coding HelperCell = new Coding
     {
@@ -7014,7 +7014,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lamina propria of ethmoid sinus
     /// </summary>
     public static readonly Coding LaminaPropriaOfEthmoidSinus = new Coding
     {
@@ -7023,7 +7023,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// First left aortic arch
     /// </summary>
     public static readonly Coding FirstLeftAorticArch = new Coding
     {
@@ -7032,7 +7032,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep temporal veins
     /// </summary>
     public static readonly Coding DeepTemporalVeins = new Coding
     {
@@ -7041,7 +7041,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abdominopelvic portion of sympathetic nervous system
     /// </summary>
     public static readonly Coding AbdominopelvicPortionOfSympatheticNervousSystem = new Coding
     {
@@ -7050,7 +7050,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skin of glans penis
     /// </summary>
     public static readonly Coding SkinOfGlansPenis = new Coding
     {
@@ -7059,7 +7059,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Articulations of auditory ossicles
     /// </summary>
     public static readonly Coding ArticulationsOfAuditoryOssicles = new Coding
     {
@@ -7068,7 +7068,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mucous membrane of tongue
     /// </summary>
     public static readonly Coding MucousMembraneOfTongue = new Coding
     {
@@ -7077,7 +7077,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior communicating artery
     /// </summary>
     public static readonly Coding AnteriorCommunicatingArtery = new Coding
     {
@@ -7086,7 +7086,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inflow tract of right ventricle
     /// </summary>
     public static readonly Coding InflowTractOfRightVentricle = new Coding
     {
@@ -7095,7 +7095,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Limitans nucleus
     /// </summary>
     public static readonly Coding LimitansNucleus = new Coding
     {
@@ -7104,7 +7104,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous acromial bursa
     /// </summary>
     public static readonly Coding SubcutaneousAcromialBursa = new Coding
     {
@@ -7113,7 +7113,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superficial flexor tendon of little finger
     /// </summary>
     public static readonly Coding SuperficialFlexorTendonOfLittleFinger = new Coding
     {
@@ -7122,7 +7122,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Membrane-coating granule, amorphous
     /// </summary>
     public static readonly Coding MembraneCoatingGranuleAmorphous = new Coding
     {
@@ -7131,7 +7131,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral nuclei of globus pallidus
     /// </summary>
     public static readonly Coding LateralNucleiOfGlobusPallidus = new Coding
     {
@@ -7140,7 +7140,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pancreatic veins
     /// </summary>
     public static readonly Coding PancreaticVeins = new Coding
     {
@@ -7149,7 +7149,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superficial circumflex iliac vein
     /// </summary>
     public static readonly Coding SuperficialCircumflexIliacVein = new Coding
     {
@@ -7158,7 +7158,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stratum lemnisci of corpora quadrigemina
     /// </summary>
     public static readonly Coding StratumLemnisciOfCorporaQuadrigemina = new Coding
     {
@@ -7167,7 +7167,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radial nerve
     /// </summary>
     public static readonly Coding RadialNerve = new Coding
     {
@@ -7176,7 +7176,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior intercostal artery
     /// </summary>
     public static readonly Coding PosteriorIntercostalArtery = new Coding
     {
@@ -7185,7 +7185,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fetal chondrocranium
     /// </summary>
     public static readonly Coding FetalChondrocranium = new Coding
     {
@@ -7194,7 +7194,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intervertebral disc space of twelfth thoracic vertebra
     /// </summary>
     public static readonly Coding IntervertebralDiscSpaceOfTwelfthThoracicVertebra = new Coding
     {
@@ -7203,7 +7203,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infundibulum of Fallopian tube
     /// </summary>
     public static readonly Coding InfundibulumOfFallopianTube = new Coding
     {
@@ -7212,7 +7212,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intranuclear crystal
     /// </summary>
     public static readonly Coding IntranuclearCrystal = new Coding
     {
@@ -7221,7 +7221,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hindgut
     /// </summary>
     public static readonly Coding Hindgut = new Coding
     {
@@ -7230,7 +7230,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delphian lymph node
     /// </summary>
     public static readonly Coding DelphianLymphNode = new Coding
     {
@@ -7239,7 +7239,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Supraaortic valve area
     /// </summary>
     public static readonly Coding SupraaorticValveArea = new Coding
     {
@@ -7248,7 +7248,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior anastomotic vein
     /// </summary>
     public static readonly Coding SuperiorAnastomoticVein = new Coding
     {
@@ -7257,7 +7257,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vein of head
     /// </summary>
     public static readonly Coding VeinOfHead = new Coding
     {
@@ -7266,7 +7266,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interlobar duct of pancreas
     /// </summary>
     public static readonly Coding InterlobarDuctOfPancreas = new Coding
     {
@@ -7275,7 +7275,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior colliculus of corpora quadrigemina
     /// </summary>
     public static readonly Coding SuperiorColliculusOfCorporaQuadrigemina = new Coding
     {
@@ -7284,7 +7284,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral striate arteries
     /// </summary>
     public static readonly Coding LateralStriateArteries = new Coding
     {
@@ -7293,7 +7293,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infraorbital nerve
     /// </summary>
     public static readonly Coding InfraorbitalNerve = new Coding
     {
@@ -7302,7 +7302,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior articular process of fifth thoracic vertebra
     /// </summary>
     public static readonly Coding SuperiorArticularProcessOfFifthThoracicVertebra = new Coding
     {
@@ -7311,7 +7311,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wrist
     /// </summary>
     public static readonly Coding Wrist = new Coding
     {
@@ -7320,7 +7320,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Accessory atrioventricular bundle
     /// </summary>
     public static readonly Coding AccessoryAtrioventricularBundle = new Coding
     {
@@ -7329,7 +7329,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior cervical spinal cord nerve root
     /// </summary>
     public static readonly Coding PosteriorCervicalSpinalCordNerveRoot = new Coding
     {
@@ -7338,7 +7338,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apical branch of right pulmonary artery
     /// </summary>
     public static readonly Coding ApicalBranchOfRightPulmonaryArtery = new Coding
     {
@@ -7347,7 +7347,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osseous portion of Eustachian tube
     /// </summary>
     public static readonly Coding OsseousPortionOfEustachianTube = new Coding
     {
@@ -7356,7 +7356,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tunica interna of eyeball
     /// </summary>
     public static readonly Coding TunicaInternaOfEyeball = new Coding
     {
@@ -7365,7 +7365,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Articular surface, metacarpal, of phalanx of hand
     /// </summary>
     public static readonly Coding ArticularSurfaceMetacarpalOfPhalanxOfHand = new Coding
     {
@@ -7374,7 +7374,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Small intestine serosa
     /// </summary>
     public static readonly Coding SmallIntestineSerosa = new Coding
     {
@@ -7383,7 +7383,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pelvic viscus
     /// </summary>
     public static readonly Coding PelvicViscus = new Coding
     {
@@ -7392,7 +7392,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Below knee region
     /// </summary>
     public static readonly Coding BelowKneeRegion = new Coding
     {
@@ -7401,7 +7401,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interlobular arteries of liver
     /// </summary>
     public static readonly Coding InterlobularArteriesOfLiver = new Coding
     {
@@ -7410,7 +7410,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spinous process of fifth thoracic vertebra
     /// </summary>
     public static readonly Coding SpinousProcessOfFifthThoracicVertebra = new Coding
     {
@@ -7419,7 +7419,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mastoid fontanel of skull
     /// </summary>
     public static readonly Coding MastoidFontanelOfSkull = new Coding
     {
@@ -7428,7 +7428,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lumbar lymph node
     /// </summary>
     public static readonly Coding LumbarLymphNode = new Coding
     {
@@ -7437,7 +7437,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Colic lymph node
     /// </summary>
     public static readonly Coding ColicLymphNode = new Coding
     {
@@ -7446,7 +7446,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral region of face
     /// </summary>
     public static readonly Coding OralRegionOfFace = new Coding
     {
@@ -7455,7 +7455,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tunica intima
     /// </summary>
     public static readonly Coding TunicaIntima = new Coding
     {
@@ -7464,7 +7464,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sphincter pupillae muscle
     /// </summary>
     public static readonly Coding SphincterPupillaeMuscle = new Coding
     {
@@ -7473,7 +7473,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jugum of sphenoid bone
     /// </summary>
     public static readonly Coding JugumOfSphenoidBone = new Coding
     {
@@ -7482,7 +7482,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lamina of eighth thoracic vertebra
     /// </summary>
     public static readonly Coding LaminaOfEighthThoracicVertebra = new Coding
     {
@@ -7491,7 +7491,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Birth canal
     /// </summary>
     public static readonly Coding BirthCanal = new Coding
     {
@@ -7500,7 +7500,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iliac fossa
     /// </summary>
     public static readonly Coding IliacFossa = new Coding
     {
@@ -7509,7 +7509,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Renal surface of adrenal gland
     /// </summary>
     public static readonly Coding RenalSurfaceOfAdrenalGland = new Coding
     {
@@ -7518,7 +7518,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Joint of lumbar vertebra
     /// </summary>
     public static readonly Coding JointOfLumbarVertebra = new Coding
     {
@@ -7527,7 +7527,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligament of sacroiliac joint and pubic symphysis
     /// </summary>
     public static readonly Coding LigamentOfSacroiliacJointAndPubicSymphysis = new Coding
     {
@@ -7536,7 +7536,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sinoatrial node branch of right coronary artery
     /// </summary>
     public static readonly Coding SinoatrialNodeBranchOfRightCoronaryArtery = new Coding
     {
@@ -7545,7 +7545,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mesial surface of tooth
     /// </summary>
     public static readonly Coding MesialSurfaceOfTooth = new Coding
     {
@@ -7554,7 +7554,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obliquus capitis muscle
     /// </summary>
     public static readonly Coding ObliquusCapitisMuscle = new Coding
     {
@@ -7563,7 +7563,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inferior articular process of twelfth thoracic vertebra
     /// </summary>
     public static readonly Coding InferiorArticularProcessOfTwelfthThoracicVertebra = new Coding
     {
@@ -7572,7 +7572,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior intercavernous sinus
     /// </summary>
     public static readonly Coding PosteriorIntercavernousSinus = new Coding
     {
@@ -7581,7 +7581,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lipid droplet
     /// </summary>
     public static readonly Coding LipidDroplet = new Coding
     {
@@ -7590,7 +7590,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Juxtaintestinal lymph node
     /// </summary>
     public static readonly Coding JuxtaintestinalLymphNode = new Coding
     {
@@ -7599,7 +7599,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interclavicular ligament
     /// </summary>
     public static readonly Coding InterclavicularLigament = new Coding
     {
@@ -7608,7 +7608,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abdominal lymph nodes
     /// </summary>
     public static readonly Coding AbdominalLymphNodes = new Coding
     {
@@ -7617,7 +7617,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Both feet
     /// </summary>
     public static readonly Coding BothFeet = new Coding
     {
@@ -7626,7 +7626,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Meissner's plexus
     /// </summary>
     public static readonly Coding MeissnerQuoteSPlexus = new Coding
     {
@@ -7635,7 +7635,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acoustic nerve
     /// </summary>
     public static readonly Coding AcousticNerve = new Coding
     {
@@ -7644,7 +7644,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cricoid cartilage
     /// </summary>
     public static readonly Coding CricoidCartilage = new Coding
     {
@@ -7653,7 +7653,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adductor hallucis muscle
     /// </summary>
     public static readonly Coding AdductorHallucisMuscle = new Coding
     {
@@ -7662,7 +7662,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medulla oblongata fasciculus cuneatus
     /// </summary>
     public static readonly Coding MedullaOblongataFasciculusCuneatus = new Coding
     {
@@ -7671,7 +7671,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right margin of heart
     /// </summary>
     public static readonly Coding RightMarginOfHeart = new Coding
     {
@@ -7680,7 +7680,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zygomatic region of face
     /// </summary>
     public static readonly Coding ZygomaticRegionOfFace = new Coding
     {
@@ -7689,7 +7689,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transplanted ureter
     /// </summary>
     public static readonly Coding TransplantedUreter = new Coding
     {
@@ -7698,7 +7698,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior right pulmonary vein
     /// </summary>
     public static readonly Coding SuperiorRightPulmonaryVein = new Coding
     {
@@ -7707,7 +7707,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Choroidal branches of posterior spinal artery
     /// </summary>
     public static readonly Coding ChoroidalBranchesOfPosteriorSpinalArtery = new Coding
     {
@@ -7716,7 +7716,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glycogen vacuole
     /// </summary>
     public static readonly Coding GlycogenVacuole = new Coding
     {
@@ -7725,7 +7725,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// All toes
     /// </summary>
     public static readonly Coding AllToes = new Coding
     {
@@ -7734,7 +7734,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Body of right atrium
     /// </summary>
     public static readonly Coding BodyOfRightAtrium = new Coding
     {
@@ -7743,7 +7743,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral olfactory gyrus
     /// </summary>
     public static readonly Coding LateralOlfactoryGyrus = new Coding
     {
@@ -7752,7 +7752,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intervertebral foramen of second lumbar vertebra
     /// </summary>
     public static readonly Coding IntervertebralForamenOfSecondLumbarVertebra = new Coding
     {
@@ -7761,7 +7761,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Minor sublingual ducts
     /// </summary>
     public static readonly Coding MinorSublingualDucts = new Coding
     {
@@ -7770,7 +7770,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Periodontal tissues
     /// </summary>
     public static readonly Coding PeriodontalTissues = new Coding
     {
@@ -7779,7 +7779,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue of interdigital space of hand
     /// </summary>
     public static readonly Coding SubcutaneousTissueOfInterdigitalSpaceOfHand = new Coding
     {
@@ -7788,7 +7788,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cavernous portion of internal carotid artery
     /// </summary>
     public static readonly Coding CavernousPortionOfInternalCarotidArtery = new Coding
     {
@@ -7797,7 +7797,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nail of second toe
     /// </summary>
     public static readonly Coding NailOfSecondToe = new Coding
     {
@@ -7806,7 +7806,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tendinous arch
     /// </summary>
     public static readonly Coding TendinousArch = new Coding
     {
@@ -7815,7 +7815,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intranuclear body, granular with filamentous capsule
     /// </summary>
     public static readonly Coding IntranuclearBodyGranularWithFilamentousCapsule = new Coding
     {
@@ -7824,7 +7824,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corticomedullary junction of adrenal gland
     /// </summary>
     public static readonly Coding CorticomedullaryJunctionOfAdrenalGland = new Coding
     {
@@ -7833,7 +7833,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iliac tuberosity
     /// </summary>
     public static readonly Coding IliacTuberosity = new Coding
     {
@@ -7842,7 +7842,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thenar and hypothenar spaces
     /// </summary>
     public static readonly Coding ThenarAndHypothenarSpaces = new Coding
     {
@@ -7851,7 +7851,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pedicle of eleventh thoracic vertebra
     /// </summary>
     public static readonly Coding PedicleOfEleventhThoracicVertebra = new Coding
     {
@@ -7860,7 +7860,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peroneal artery
     /// </summary>
     public static readonly Coding PeronealArtery = new Coding
     {
@@ -7869,7 +7869,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shaft of phalanx of middle finger
     /// </summary>
     public static readonly Coding ShaftOfPhalanxOfMiddleFinger = new Coding
     {
@@ -7878,7 +7878,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Agranular endoplasmic reticulum, connection with other organelle
     /// </summary>
     public static readonly Coding AgranularEndoplasmicReticulumConnectionWithOtherOrganelle = new Coding
     {
@@ -7887,7 +7887,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subtendinous prepatellar bursa
     /// </summary>
     public static readonly Coding SubtendinousPrepatellarBursa = new Coding
     {
@@ -7896,7 +7896,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lamina muscularis of colonic mucous membrane
     /// </summary>
     public static readonly Coding LaminaMuscularisOfColonicMucousMembrane = new Coding
     {
@@ -7905,7 +7905,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Proper fasciculus
     /// </summary>
     public static readonly Coding ProperFasciculus = new Coding
     {
@@ -7914,7 +7914,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crista galli
     /// </summary>
     public static readonly Coding CristaGalli = new Coding
     {
@@ -7923,7 +7923,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Palmar surface of middle finger
     /// </summary>
     public static readonly Coding PalmarSurfaceOfMiddleFinger = new Coding
     {
@@ -7932,7 +7932,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mandibular right second premolar tooth
     /// </summary>
     public static readonly Coding MandibularRightSecondPremolarTooth = new Coding
     {
@@ -7941,7 +7941,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brachiocephalic vein
     /// </summary>
     public static readonly Coding BrachiocephalicVein = new Coding
     {
@@ -7950,7 +7950,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diaphragmatic surface of lung
     /// </summary>
     public static readonly Coding DiaphragmaticSurfaceOfLung = new Coding
     {
@@ -7959,7 +7959,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastric cardiac gland
     /// </summary>
     public static readonly Coding GastricCardiacGland = new Coding
     {
@@ -7968,7 +7968,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral glossoepiglottic fold
     /// </summary>
     public static readonly Coding LateralGlossoepiglotticFold = new Coding
     {
@@ -7977,7 +7977,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left ulnar artery
     /// </summary>
     public static readonly Coding LeftUlnarArtery = new Coding
     {
@@ -7986,7 +7986,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inferior transverse scapular ligament
     /// </summary>
     public static readonly Coding InferiorTransverseScapularLigament = new Coding
     {
@@ -7995,7 +7995,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endocardium of right ventricle
     /// </summary>
     public static readonly Coding EndocardiumOfRightVentricle = new Coding
     {
@@ -8004,7 +8004,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inguinal lymph node
     /// </summary>
     public static readonly Coding InguinalLymphNode = new Coding
     {
@@ -8013,7 +8013,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coracoid process of scapula
     /// </summary>
     public static readonly Coding CoracoidProcessOfScapula = new Coding
     {
@@ -8022,7 +8022,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebral meninges
     /// </summary>
     public static readonly Coding CerebralMeninges = new Coding
     {
@@ -8031,7 +8031,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trapezoid ligament
     /// </summary>
     public static readonly Coding TrapezoidLigament = new Coding
     {
@@ -8040,7 +8040,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior cruciate ligament of knee joint
     /// </summary>
     public static readonly Coding AnteriorCruciateLigamentOfKneeJoint = new Coding
     {
@@ -8049,7 +8049,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stratum zonale of corpora quadrigemina
     /// </summary>
     public static readonly Coding StratumZonaleOfCorporaQuadrigemina = new Coding
     {
@@ -8058,7 +8058,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left eye
     /// </summary>
     public static readonly Coding LeftEye = new Coding
     {
@@ -8067,7 +8067,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Joint structure of vertebral column
     /// </summary>
     public static readonly Coding JointStructureOfVertebralColumn = new Coding
     {
@@ -8076,7 +8076,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Marginal part of orbicularis oris muscle
     /// </summary>
     public static readonly Coding MarginalPartOfOrbicularisOrisMuscle = new Coding
     {
@@ -8085,7 +8085,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepatic vein
     /// </summary>
     public static readonly Coding HepaticVein = new Coding
     {
@@ -8094,7 +8094,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebellar peduncle
     /// </summary>
     public static readonly Coding CerebellarPeduncle = new Coding
     {
@@ -8103,7 +8103,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left parietal lobe
     /// </summary>
     public static readonly Coding LeftParietalLobe = new Coding
     {
@@ -8112,7 +8112,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Middle colic vein
     /// </summary>
     public static readonly Coding MiddleColicVein = new Coding
     {
@@ -8121,7 +8121,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ascending colon
     /// </summary>
     public static readonly Coding AscendingColon = new Coding
     {
@@ -8130,7 +8130,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Both forearms
     /// </summary>
     public static readonly Coding BothForearms = new Coding
     {
@@ -8139,7 +8139,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White matter of insula
     /// </summary>
     public static readonly Coding WhiteMatterOfInsula = new Coding
     {
@@ -8148,7 +8148,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Splenic sinusoids
     /// </summary>
     public static readonly Coding SplenicSinusoids = new Coding
     {
@@ -8157,7 +8157,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior laryngeal vein
     /// </summary>
     public static readonly Coding SuperiorLaryngealVein = new Coding
     {
@@ -8166,7 +8166,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arch of foot
     /// </summary>
     public static readonly Coding ArchOfFoot = new Coding
     {
@@ -8175,7 +8175,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vein of the scala tympani
     /// </summary>
     public static readonly Coding VeinOfTheScalaTympani = new Coding
     {
@@ -8184,7 +8184,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transverse folds of palate
     /// </summary>
     public static readonly Coding TransverseFoldsOfPalate = new Coding
     {
@@ -8193,7 +8193,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Embryo stage 1
     /// </summary>
     public static readonly Coding EmbryoStage1 = new Coding
     {
@@ -8202,7 +8202,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior laryngeal aperture
     /// </summary>
     public static readonly Coding SuperiorLaryngealAperture = new Coding
     {
@@ -8211,7 +8211,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Accessory carpal bone
     /// </summary>
     public static readonly Coding AccessoryCarpalBone = new Coding
     {
@@ -8220,7 +8220,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Capsule of metatarsophalangeal joint of fifth toe
     /// </summary>
     public static readonly Coding CapsuleOfMetatarsophalangealJointOfFifthToe = new Coding
     {
@@ -8229,7 +8229,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Filaments of contractile apparatus
     /// </summary>
     public static readonly Coding FilamentsOfContractileApparatus = new Coding
     {
@@ -8238,7 +8238,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intervertebral disc of eighth thoracic vertebra
     /// </summary>
     public static readonly Coding IntervertebralDiscOfEighthThoracicVertebra = new Coding
     {
@@ -8247,7 +8247,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Centriole
     /// </summary>
     public static readonly Coding Centriole = new Coding
     {
@@ -8256,7 +8256,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thyrohyoid branch of ansa cervicalis
     /// </summary>
     public static readonly Coding ThyrohyoidBranchOfAnsaCervicalis = new Coding
     {
@@ -8265,7 +8265,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shaft of fifth metatarsal bone
     /// </summary>
     public static readonly Coding ShaftOfFifthMetatarsalBone = new Coding
     {
@@ -8274,7 +8274,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rotatores lumborum muscles
     /// </summary>
     public static readonly Coding RotatoresLumborumMuscles = new Coding
     {
@@ -8283,7 +8283,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// External pudendal veins
     /// </summary>
     public static readonly Coding ExternalPudendalVeins = new Coding
     {
@@ -8292,7 +8292,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Niemann-Pick cell
     /// </summary>
     public static readonly Coding NiemannPickCell = new Coding
     {
@@ -8301,7 +8301,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior segment of right lobe of liver
     /// </summary>
     public static readonly Coding PosteriorSegmentOfRightLobeOfLiver = new Coding
     {
@@ -8310,7 +8310,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gravid uterus
     /// </summary>
     public static readonly Coding GravidUterus = new Coding
     {
@@ -8319,7 +8319,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tendon and tendon sheath of second toe
     /// </summary>
     public static readonly Coding TendonAndTendonSheathOfSecondToe = new Coding
     {
@@ -8328,7 +8328,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fascia of pelvis
     /// </summary>
     public static readonly Coding FasciaOfPelvis = new Coding
     {
@@ -8337,7 +8337,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corpus cavernosum of penis
     /// </summary>
     public static readonly Coding CorpusCavernosumOfPenis = new Coding
     {
@@ -8346,7 +8346,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior intraoccipital synchondrosis
     /// </summary>
     public static readonly Coding PosteriorIntraoccipitalSynchondrosis = new Coding
     {
@@ -8355,7 +8355,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Labial veins
     /// </summary>
     public static readonly Coding LabialVeins = new Coding
     {
@@ -8364,7 +8364,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Merkel's tactile disc
     /// </summary>
     public static readonly Coding MerkelQuoteSTactileDisc = new Coding
     {
@@ -8373,7 +8373,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subtendinous iliac bursa
     /// </summary>
     public static readonly Coding SubtendinousIliacBursa = new Coding
     {
@@ -8382,7 +8382,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tail of epididymis
     /// </summary>
     public static readonly Coding TailOfEpididymis = new Coding
     {
@@ -8391,7 +8391,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interdental papilla of gingiva
     /// </summary>
     public static readonly Coding InterdentalPapillaOfGingiva = new Coding
     {
@@ -8400,7 +8400,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral ligament of temporomandibular joint
     /// </summary>
     public static readonly Coding LateralLigamentOfTemporomandibularJoint = new Coding
     {
@@ -8409,7 +8409,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skin of medial surface of middle finger
     /// </summary>
     public static readonly Coding SkinOfMedialSurfaceOfMiddleFinger = new Coding
     {
@@ -8418,7 +8418,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Permanent teeth
     /// </summary>
     public static readonly Coding PermanentTeeth = new Coding
     {
@@ -8427,7 +8427,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pecten ani
     /// </summary>
     public static readonly Coding PectenAni = new Coding
     {
@@ -8436,7 +8436,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lumbar vein
     /// </summary>
     public static readonly Coding LumbarVein = new Coding
     {
@@ -8445,7 +8445,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphatics of stomach
     /// </summary>
     public static readonly Coding LymphaticsOfStomach = new Coding
     {
@@ -8454,7 +8454,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plantar surface of fourth toe
     /// </summary>
     public static readonly Coding PlantarSurfaceOfFourthToe = new Coding
     {
@@ -8463,7 +8463,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structure of deep cervical lymphatic vessel
     /// </summary>
     public static readonly Coding StructureOfDeepCervicalLymphaticVessel = new Coding
     {
@@ -8472,7 +8472,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subclavian vein
     /// </summary>
     public static readonly Coding SubclavianVein = new Coding
     {
@@ -8481,7 +8481,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medial cartilaginous lamina of Eustachian tube
     /// </summary>
     public static readonly Coding MedialCartilaginousLaminaOfEustachianTube = new Coding
     {
@@ -8490,7 +8490,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crus of diaphragm
     /// </summary>
     public static readonly Coding CrusOfDiaphragm = new Coding
     {
@@ -8499,7 +8499,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amacrine cells of retina
     /// </summary>
     public static readonly Coding AmacrineCellsOfRetina = new Coding
     {
@@ -8508,7 +8508,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Afferent glomerular arteriole
     /// </summary>
     public static readonly Coding AfferentGlomerularArteriole = new Coding
     {
@@ -8517,7 +8517,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary ligament
     /// </summary>
     public static readonly Coding PulmonaryLigament = new Coding
     {
@@ -8526,7 +8526,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Head of metacarpal bone
     /// </summary>
     public static readonly Coding HeadOfMetacarpalBone = new Coding
     {
@@ -8535,7 +8535,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coronal depression of tooth
     /// </summary>
     public static readonly Coding CoronalDepressionOfTooth = new Coding
     {
@@ -8544,7 +8544,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calcaneocuboidal ligament
     /// </summary>
     public static readonly Coding CalcaneocuboidalLigament = new Coding
     {
@@ -8553,7 +8553,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pyramid of medulla oblongata
     /// </summary>
     public static readonly Coding PyramidOfMedullaOblongata = new Coding
     {
@@ -8562,7 +8562,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bronchus
     /// </summary>
     public static readonly Coding Bronchus = new Coding
     {
@@ -8571,7 +8571,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Facet for fifth costal cartilage of sternum
     /// </summary>
     public static readonly Coding FacetForFifthCostalCartilageOfSternum = new Coding
     {
@@ -8580,7 +8580,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Duodenal lumen
     /// </summary>
     public static readonly Coding DuodenalLumen = new Coding
     {
@@ -8589,7 +8589,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue of areola
     /// </summary>
     public static readonly Coding SubcutaneousTissueOfAreola = new Coding
     {
@@ -8598,7 +8598,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep branch of ulnar nerve
     /// </summary>
     public static readonly Coding DeepBranchOfUlnarNerve = new Coding
     {
@@ -8607,7 +8607,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior process of nasal septal cartilage
     /// </summary>
     public static readonly Coding PosteriorProcessOfNasalSeptalCartilage = new Coding
     {
@@ -8616,7 +8616,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lanugo hair
     /// </summary>
     public static readonly Coding LanugoHair = new Coding
     {
@@ -8625,7 +8625,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left superior vena cava
     /// </summary>
     public static readonly Coding LeftSuperiorVenaCava = new Coding
     {
@@ -8634,7 +8634,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior transverse scapular ligament
     /// </summary>
     public static readonly Coding SuperiorTransverseScapularLigament = new Coding
     {
@@ -8643,7 +8643,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastric mucous gland
     /// </summary>
     public static readonly Coding GastricMucousGland = new Coding
     {
@@ -8652,7 +8652,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infraclavicular lymph nodes
     /// </summary>
     public static readonly Coding InfraclavicularLymphNodes = new Coding
     {
@@ -8661,7 +8661,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous tissue of lower margin of nasal septum
     /// </summary>
     public static readonly Coding SubcutaneousTissueOfLowerMarginOfNasalSeptum = new Coding
     {
@@ -8670,7 +8670,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ciliary muscle
     /// </summary>
     public static readonly Coding CiliaryMuscle = new Coding
     {
@@ -8679,7 +8679,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Head of second metatarsal bone
     /// </summary>
     public static readonly Coding HeadOfSecondMetatarsalBone = new Coding
     {
@@ -8688,7 +8688,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Melanocyte
     /// </summary>
     public static readonly Coding Melanocyte = new Coding
     {
@@ -8697,7 +8697,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior scrotal branches of internal pudendal artery
     /// </summary>
     public static readonly Coding PosteriorScrotalBranchesOfInternalPudendalArtery = new Coding
     {
@@ -8706,7 +8706,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iliac fascia
     /// </summary>
     public static readonly Coding IliacFascia = new Coding
     {
@@ -8715,7 +8715,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medial supraclavicular nerves
     /// </summary>
     public static readonly Coding MedialSupraclavicularNerves = new Coding
     {
@@ -8724,7 +8724,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right wrist
     /// </summary>
     public static readonly Coding RightWrist = new Coding
     {
@@ -8733,7 +8733,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tendon of index finger
     /// </summary>
     public static readonly Coding TendonOfIndexFinger = new Coding
     {
@@ -8742,7 +8742,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Submucosa of tonsil
     /// </summary>
     public static readonly Coding SubmucosaOfTonsil = new Coding
     {
@@ -8751,7 +8751,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ovarian vein
     /// </summary>
     public static readonly Coding OvarianVein = new Coding
     {
@@ -8760,7 +8760,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Genital tubercle
     /// </summary>
     public static readonly Coding GenitalTubercle = new Coding
     {
@@ -8769,7 +8769,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left carotid sinus
     /// </summary>
     public static readonly Coding LeftCarotidSinus = new Coding
     {
@@ -8778,7 +8778,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Distinctive shape of mitochondrial cristae
     /// </summary>
     public static readonly Coding DistinctiveShapeOfMitochondrialCristae = new Coding
     {
@@ -8787,7 +8787,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superficial lymphatics of thorax
     /// </summary>
     public static readonly Coding SuperficialLymphaticsOfThorax = new Coding
     {
@@ -8796,7 +8796,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep venous system of lower extremity
     /// </summary>
     public static readonly Coding DeepVenousSystemOfLowerExtremity = new Coding
     {
@@ -8805,7 +8805,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skeletal muscle fiber, type IIb
     /// </summary>
     public static readonly Coding SkeletalMuscleFiberTypeIIb = new Coding
     {
@@ -8814,7 +8814,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fascia of upper extremity
     /// </summary>
     public static readonly Coding FasciaOfUpperExtremity = new Coding
     {
@@ -8823,7 +8823,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Proximal phalanx of little toe
     /// </summary>
     public static readonly Coding ProximalPhalanxOfLittleToe = new Coding
     {
@@ -8832,7 +8832,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Perforating branches of internal thoracic artery
     /// </summary>
     public static readonly Coding PerforatingBranchesOfInternalThoracicArtery = new Coding
     {
@@ -8841,7 +8841,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biparietal diameter of head
     /// </summary>
     public static readonly Coding BiparietalDiameterOfHead = new Coding
     {
@@ -8850,7 +8850,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interspinalis thoracis muscles
     /// </summary>
     public static readonly Coding InterspinalisThoracisMuscles = new Coding
     {
@@ -8859,7 +8859,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right kidney
     /// </summary>
     public static readonly Coding RightKidney = new Coding
     {
@@ -8868,7 +8868,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hilum of adrenal gland
     /// </summary>
     public static readonly Coding HilumOfAdrenalGland = new Coding
     {
@@ -8877,7 +8877,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fornix of lacrimal sac
     /// </summary>
     public static readonly Coding FornixOfLacrimalSac = new Coding
     {
@@ -8886,7 +8886,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carunculae hymenales
     /// </summary>
     public static readonly Coding CarunculaeHymenales = new Coding
     {
@@ -8895,7 +8895,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thymus
     /// </summary>
     public static readonly Coding Thymus = new Coding
     {
@@ -8904,7 +8904,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Appendicular vein
     /// </summary>
     public static readonly Coding AppendicularVein = new Coding
     {
@@ -8913,7 +8913,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thyroid tubercle
     /// </summary>
     public static readonly Coding ThyroidTubercle = new Coding
     {
@@ -8922,7 +8922,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peripheral nerve myelinated nerve fiber
     /// </summary>
     public static readonly Coding PeripheralNerveMyelinatedNerveFiber = new Coding
     {
@@ -8931,7 +8931,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transverse arytenoid muscle
     /// </summary>
     public static readonly Coding TransverseArytenoidMuscle = new Coding
     {
@@ -8940,7 +8940,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paracentral lobule
     /// </summary>
     public static readonly Coding ParacentralLobule = new Coding
     {
@@ -8949,7 +8949,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior ethmoidal nerve
     /// </summary>
     public static readonly Coding PosteriorEthmoidalNerve = new Coding
     {
@@ -8958,7 +8958,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Meningeal branch of occipital artery
     /// </summary>
     public static readonly Coding MeningealBranchOfOccipitalArtery = new Coding
     {
@@ -8967,7 +8967,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Primary foot process
     /// </summary>
     public static readonly Coding PrimaryFootProcess = new Coding
     {
@@ -8976,7 +8976,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ileocecal ostium
     /// </summary>
     public static readonly Coding IleocecalOstium = new Coding
     {
@@ -8985,7 +8985,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rhomboideus cervicis muscle
     /// </summary>
     public static readonly Coding RhomboideusCervicisMuscle = new Coding
     {
@@ -8994,7 +8994,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior articular process of sixth thoracic vertebra
     /// </summary>
     public static readonly Coding SuperiorArticularProcessOfSixthThoracicVertebra = new Coding
     {
@@ -9003,7 +9003,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Duodenal ampulla
     /// </summary>
     public static readonly Coding DuodenalAmpulla = new Coding
     {
@@ -9018,9 +9018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLateralMeniscusOfKneeJoint = "10013000";
 
     /// <summary>
+    /// Literal for code: NONELateralMeniscusOfKneeJoint
+    /// </summary>
+    public const string LiteralNONELateralMeniscusOfKneeJoint = "http://snomed.info/sct#10013000";
+
+    /// <summary>
     /// Literal for code: BaseOfLung
     /// </summary>
     public const string LiteralBaseOfLung = "10024003";
+
+    /// <summary>
+    /// Literal for code: NONEBaseOfLung
+    /// </summary>
+    public const string LiteralNONEBaseOfLung = "http://snomed.info/sct#10024003";
 
     /// <summary>
     /// Literal for code: BaseOfPhalanxOfIndexFinger
@@ -9028,9 +9038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBaseOfPhalanxOfIndexFinger = "10025002";
 
     /// <summary>
+    /// Literal for code: NONEBaseOfPhalanxOfIndexFinger
+    /// </summary>
+    public const string LiteralNONEBaseOfPhalanxOfIndexFinger = "http://snomed.info/sct#10025002";
+
+    /// <summary>
     /// Literal for code: VentralSpinocerebellarTractOfPons
     /// </summary>
     public const string LiteralVentralSpinocerebellarTractOfPons = "10026001";
+
+    /// <summary>
+    /// Literal for code: NONEVentralSpinocerebellarTractOfPons
+    /// </summary>
+    public const string LiteralNONEVentralSpinocerebellarTractOfPons = "http://snomed.info/sct#10026001";
 
     /// <summary>
     /// Literal for code: NucleusPulposusOfIntervertebralDiscOfEighthThoracicVertebra
@@ -9038,9 +9058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNucleusPulposusOfIntervertebralDiscOfEighthThoracicVertebra = "10036009";
 
     /// <summary>
+    /// Literal for code: NONENucleusPulposusOfIntervertebralDiscOfEighthThoracicVertebra
+    /// </summary>
+    public const string LiteralNONENucleusPulposusOfIntervertebralDiscOfEighthThoracicVertebra = "http://snomed.info/sct#10036009";
+
+    /// <summary>
     /// Literal for code: IntervertebralForamenOfFifthThoracicVertebra
     /// </summary>
     public const string LiteralIntervertebralForamenOfFifthThoracicVertebra = "10042008";
+
+    /// <summary>
+    /// Literal for code: NONEIntervertebralForamenOfFifthThoracicVertebra
+    /// </summary>
+    public const string LiteralNONEIntervertebralForamenOfFifthThoracicVertebra = "http://snomed.info/sct#10042008";
 
     /// <summary>
     /// Literal for code: TransplantedLung
@@ -9048,9 +9078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransplantedLung = "10047002";
 
     /// <summary>
+    /// Literal for code: NONETransplantedLung
+    /// </summary>
+    public const string LiteralNONETransplantedLung = "http://snomed.info/sct#10047002";
+
+    /// <summary>
     /// Literal for code: EntireDiaphragmaticLymphNode
     /// </summary>
     public const string LiteralEntireDiaphragmaticLymphNode = "1005009";
+
+    /// <summary>
+    /// Literal for code: NONEEntireDiaphragmaticLymphNode
+    /// </summary>
+    public const string LiteralNONEEntireDiaphragmaticLymphNode = "http://snomed.info/sct#1005009";
 
     /// <summary>
     /// Literal for code: Male
@@ -9058,9 +9098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMale = "10052007";
 
     /// <summary>
+    /// Literal for code: NONEMale
+    /// </summary>
+    public const string LiteralNONEMale = "http://snomed.info/sct#10052007";
+
+    /// <summary>
     /// Literal for code: OphthalmicNerve
     /// </summary>
     public const string LiteralOphthalmicNerve = "10056005";
+
+    /// <summary>
+    /// Literal for code: NONEOphthalmicNerve
+    /// </summary>
+    public const string LiteralNONEOphthalmicNerve = "http://snomed.info/sct#10056005";
 
     /// <summary>
     /// Literal for code: LevatorLabiiSuperiorisMuscle
@@ -9068,9 +9118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLevatorLabiiSuperiorisMuscle = "10062000";
 
     /// <summary>
+    /// Literal for code: NONELevatorLabiiSuperiorisMuscle
+    /// </summary>
+    public const string LiteralNONELevatorLabiiSuperiorisMuscle = "http://snomed.info/sct#10062000";
+
+    /// <summary>
     /// Literal for code: DeepVolarArchOfRadialArtery
     /// </summary>
     public const string LiteralDeepVolarArchOfRadialArtery = "10119003";
+
+    /// <summary>
+    /// Literal for code: NONEDeepVolarArchOfRadialArtery
+    /// </summary>
+    public const string LiteralNONEDeepVolarArchOfRadialArtery = "http://snomed.info/sct#10119003";
 
     /// <summary>
     /// Literal for code: StructureOfFibrousPortionOfPericardium
@@ -9078,9 +9138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfFibrousPortionOfPericardium = "1012000";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfFibrousPortionOfPericardium
+    /// </summary>
+    public const string LiteralNONEStructureOfFibrousPortionOfPericardium = "http://snomed.info/sct#1012000";
+
+    /// <summary>
     /// Literal for code: DeepDorsalSacrococcygealLigament
     /// </summary>
     public const string LiteralDeepDorsalSacrococcygealLigament = "10124000";
+
+    /// <summary>
+    /// Literal for code: NONEDeepDorsalSacrococcygealLigament
+    /// </summary>
+    public const string LiteralNONEDeepDorsalSacrococcygealLigament = "http://snomed.info/sct#10124000";
 
     /// <summary>
     /// Literal for code: StructureOfPeritonsillarTissue
@@ -9088,9 +9158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfPeritonsillarTissue = "1015003";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfPeritonsillarTissue
+    /// </summary>
+    public const string LiteralNONEStructureOfPeritonsillarTissue = "http://snomed.info/sct#1015003";
+
+    /// <summary>
     /// Literal for code: SebaceousGlandStructure
     /// </summary>
     public const string LiteralSebaceousGlandStructure = "1028005";
+
+    /// <summary>
+    /// Literal for code: NONESebaceousGlandStructure
+    /// </summary>
+    public const string LiteralNONESebaceousGlandStructure = "http://snomed.info/sct#1028005";
 
     /// <summary>
     /// Literal for code: StructureOfVesicularBursaOfSternohyoidMuscle
@@ -9098,9 +9178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfVesicularBursaOfSternohyoidMuscle = "1030007";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfVesicularBursaOfSternohyoidMuscle
+    /// </summary>
+    public const string LiteralNONEStructureOfVesicularBursaOfSternohyoidMuscle = "http://snomed.info/sct#1030007";
+
+    /// <summary>
     /// Literal for code: PosteriorCarpalRegion
     /// </summary>
     public const string LiteralPosteriorCarpalRegion = "106004";
+
+    /// <summary>
+    /// Literal for code: NONEPosteriorCarpalRegion
+    /// </summary>
+    public const string LiteralNONEPosteriorCarpalRegion = "http://snomed.info/sct#106004";
 
     /// <summary>
     /// Literal for code: FrontozygomaticSutureOfSkull
@@ -9108,9 +9198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFrontozygomaticSutureOfSkull = "1063000";
 
     /// <summary>
+    /// Literal for code: NONEFrontozygomaticSutureOfSkull
+    /// </summary>
+    public const string LiteralNONEFrontozygomaticSutureOfSkull = "http://snomed.info/sct#1063000";
+
+    /// <summary>
     /// Literal for code: FetalPartOfPlacenta
     /// </summary>
     public const string LiteralFetalPartOfPlacenta = "107008";
+
+    /// <summary>
+    /// Literal for code: NONEFetalPartOfPlacenta
+    /// </summary>
+    public const string LiteralNONEFetalPartOfPlacenta = "http://snomed.info/sct#107008";
 
     /// <summary>
     /// Literal for code: Promonocyte
@@ -9118,9 +9218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPromonocyte = "1075005";
 
     /// <summary>
+    /// Literal for code: NONEPromonocyte
+    /// </summary>
+    public const string LiteralNONEPromonocyte = "http://snomed.info/sct#1075005";
+
+    /// <summary>
     /// Literal for code: SubcutaneousPrepatellarBursa
     /// </summary>
     public const string LiteralSubcutaneousPrepatellarBursa = "1076006";
+
+    /// <summary>
+    /// Literal for code: NONESubcutaneousPrepatellarBursa
+    /// </summary>
+    public const string LiteralNONESubcutaneousPrepatellarBursa = "http://snomed.info/sct#1076006";
 
     /// <summary>
     /// Literal for code: CondylarEmissaryVein
@@ -9128,9 +9238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCondylarEmissaryVein = "108003";
 
     /// <summary>
+    /// Literal for code: NONECondylarEmissaryVein
+    /// </summary>
+    public const string LiteralNONECondylarEmissaryVein = "http://snomed.info/sct#108003";
+
+    /// <summary>
     /// Literal for code: Female
     /// </summary>
     public const string LiteralFemale = "1086007";
+
+    /// <summary>
+    /// Literal for code: NONEFemale
+    /// </summary>
+    public const string LiteralNONEFemale = "http://snomed.info/sct#1086007";
 
     /// <summary>
     /// Literal for code: SternothyroidMuscle
@@ -9138,9 +9258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSternothyroidMuscle = "1087003";
 
     /// <summary>
+    /// Literal for code: NONESternothyroidMuscle
+    /// </summary>
+    public const string LiteralNONESternothyroidMuscle = "http://snomed.info/sct#1087003";
+
+    /// <summary>
     /// Literal for code: SuperiorOccipitalGyrus
     /// </summary>
     public const string LiteralSuperiorOccipitalGyrus = "1092001";
+
+    /// <summary>
+    /// Literal for code: NONESuperiorOccipitalGyrus
+    /// </summary>
+    public const string LiteralNONESuperiorOccipitalGyrus = "http://snomed.info/sct#1092001";
 
     /// <summary>
     /// Literal for code: ThymicCortex
@@ -9148,9 +9278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThymicCortex = "1099005";
 
     /// <summary>
+    /// Literal for code: NONEThymicCortex
+    /// </summary>
+    public const string LiteralNONEThymicCortex = "http://snomed.info/sct#1099005";
+
+    /// <summary>
     /// Literal for code: VisceralLayerOfBowmanQuoteSCapsule
     /// </summary>
     public const string LiteralVisceralLayerOfBowmanQuoteSCapsule = "110001";
+
+    /// <summary>
+    /// Literal for code: NONEVisceralLayerOfBowmanQuoteSCapsule
+    /// </summary>
+    public const string LiteralNONEVisceralLayerOfBowmanQuoteSCapsule = "http://snomed.info/sct#110001";
 
     /// <summary>
     /// Literal for code: CranialCavity
@@ -9158,9 +9298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCranialCavity = "1101003";
 
     /// <summary>
+    /// Literal for code: NONECranialCavity
+    /// </summary>
+    public const string LiteralNONECranialCavity = "http://snomed.info/sct#1101003";
+
+    /// <summary>
     /// Literal for code: MajorCalyx
     /// </summary>
     public const string LiteralMajorCalyx = "1106008";
+
+    /// <summary>
+    /// Literal for code: NONEMajorCalyx
+    /// </summary>
+    public const string LiteralNONEMajorCalyx = "http://snomed.info/sct#1106008";
 
     /// <summary>
     /// Literal for code: TarsalGland
@@ -9168,9 +9318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTarsalGland = "1110006";
 
     /// <summary>
+    /// Literal for code: NONETarsalGland
+    /// </summary>
+    public const string LiteralNONETarsalGland = "http://snomed.info/sct#1110006";
+
+    /// <summary>
     /// Literal for code: ParathyroidGland
     /// </summary>
     public const string LiteralParathyroidGland = "111002";
+
+    /// <summary>
+    /// Literal for code: NONEParathyroidGland
+    /// </summary>
+    public const string LiteralNONEParathyroidGland = "http://snomed.info/sct#111002";
 
     /// <summary>
     /// Literal for code: InferiorLongitudinalMuscleOfTongue
@@ -9178,9 +9338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInferiorLongitudinalMuscleOfTongue = "1122009";
 
     /// <summary>
+    /// Literal for code: NONEInferiorLongitudinalMuscleOfTongue
+    /// </summary>
+    public const string LiteralNONEInferiorLongitudinalMuscleOfTongue = "http://snomed.info/sct#1122009";
+
+    /// <summary>
     /// Literal for code: AortopulmonarySeptum
     /// </summary>
     public const string LiteralAortopulmonarySeptum = "1136004";
+
+    /// <summary>
+    /// Literal for code: NONEAortopulmonarySeptum
+    /// </summary>
+    public const string LiteralNONEAortopulmonarySeptum = "http://snomed.info/sct#1136004";
 
     /// <summary>
     /// Literal for code: FrenulumLinguae
@@ -9188,9 +9358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFrenulumLinguae = "1159005";
 
     /// <summary>
+    /// Literal for code: NONEFrenulumLinguae
+    /// </summary>
+    public const string LiteralNONEFrenulumLinguae = "http://snomed.info/sct#1159005";
+
+    /// <summary>
     /// Literal for code: SubcutaneousTissueOfMedialSurfaceOfIndexFinger
     /// </summary>
     public const string LiteralSubcutaneousTissueOfMedialSurfaceOfIndexFinger = "116007";
+
+    /// <summary>
+    /// Literal for code: NONESubcutaneousTissueOfMedialSurfaceOfIndexFinger
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueOfMedialSurfaceOfIndexFinger = "http://snomed.info/sct#116007";
 
     /// <summary>
     /// Literal for code: OdontoidProcessOfAxis
@@ -9198,9 +9378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOdontoidProcessOfAxis = "1172006";
 
     /// <summary>
+    /// Literal for code: NONEOdontoidProcessOfAxis
+    /// </summary>
+    public const string LiteralNONEOdontoidProcessOfAxis = "http://snomed.info/sct#1172006";
+
+    /// <summary>
     /// Literal for code: MandibularNerve
     /// </summary>
     public const string LiteralMandibularNerve = "1173001";
+
+    /// <summary>
+    /// Literal for code: NONEMandibularNerve
+    /// </summary>
+    public const string LiteralNONEMandibularNerve = "http://snomed.info/sct#1173001";
 
     /// <summary>
     /// Literal for code: ChromosomesGroupE
@@ -9208,9 +9398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChromosomesGroupE = "1174007";
 
     /// <summary>
+    /// Literal for code: NONEChromosomesGroupE
+    /// </summary>
+    public const string LiteralNONEChromosomesGroupE = "http://snomed.info/sct#1174007";
+
+    /// <summary>
     /// Literal for code: TeresMajorMuscle
     /// </summary>
     public const string LiteralTeresMajorMuscle = "1193009";
+
+    /// <summary>
+    /// Literal for code: NONETeresMajorMuscle
+    /// </summary>
+    public const string LiteralNONETeresMajorMuscle = "http://snomed.info/sct#1193009";
 
     /// <summary>
     /// Literal for code: Synostosis
@@ -9218,9 +9418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSynostosis = "1216008";
 
     /// <summary>
+    /// Literal for code: NONESynostosis
+    /// </summary>
+    public const string LiteralNONESynostosis = "http://snomed.info/sct#1216008";
+
+    /// <summary>
     /// Literal for code: CentralNervousSystemMeninges
     /// </summary>
     public const string LiteralCentralNervousSystemMeninges = "1231004";
+
+    /// <summary>
+    /// Literal for code: NONECentralNervousSystemMeninges
+    /// </summary>
+    public const string LiteralNONECentralNervousSystemMeninges = "http://snomed.info/sct#1231004";
 
     /// <summary>
     /// Literal for code: DuodenalSerosa
@@ -9228,9 +9438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDuodenalSerosa = "1236009";
 
     /// <summary>
+    /// Literal for code: NONEDuodenalSerosa
+    /// </summary>
+    public const string LiteralNONEDuodenalSerosa = "http://snomed.info/sct#1236009";
+
+    /// <summary>
     /// Literal for code: CoronoidProcessOfMandible
     /// </summary>
     public const string LiteralCoronoidProcessOfMandible = "124002";
+
+    /// <summary>
+    /// Literal for code: NONECoronoidProcessOfMandible
+    /// </summary>
+    public const string LiteralNONECoronoidProcessOfMandible = "http://snomed.info/sct#124002";
 
     /// <summary>
     /// Literal for code: InferiorArticularProcessOfSixthCervicalVertebra
@@ -9238,9 +9458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInferiorArticularProcessOfSixthCervicalVertebra = "1243003";
 
     /// <summary>
+    /// Literal for code: NONEInferiorArticularProcessOfSixthCervicalVertebra
+    /// </summary>
+    public const string LiteralNONEInferiorArticularProcessOfSixthCervicalVertebra = "http://snomed.info/sct#1243003";
+
+    /// <summary>
     /// Literal for code: DorsalDigitalNervesOfRadialNerve
     /// </summary>
     public const string LiteralDorsalDigitalNervesOfRadialNerve = "1246006";
+
+    /// <summary>
+    /// Literal for code: NONEDorsalDigitalNervesOfRadialNerve
+    /// </summary>
+    public const string LiteralNONEDorsalDigitalNervesOfRadialNerve = "http://snomed.info/sct#1246006";
 
     /// <summary>
     /// Literal for code: DistinctiveArrangementOfMicrotubules
@@ -9248,9 +9478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDistinctiveArrangementOfMicrotubules = "1263005";
 
     /// <summary>
+    /// Literal for code: NONEDistinctiveArrangementOfMicrotubules
+    /// </summary>
+    public const string LiteralNONEDistinctiveArrangementOfMicrotubules = "http://snomed.info/sct#1263005";
+
+    /// <summary>
     /// Literal for code: VertebralNerve
     /// </summary>
     public const string LiteralVertebralNerve = "1277008";
+
+    /// <summary>
+    /// Literal for code: NONEVertebralNerve
+    /// </summary>
+    public const string LiteralNONEVertebralNerve = "http://snomed.info/sct#1277008";
 
     /// <summary>
     /// Literal for code: Glottis
@@ -9258,9 +9498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGlottis = "1307006";
 
     /// <summary>
+    /// Literal for code: NONEGlottis
+    /// </summary>
+    public const string LiteralNONEGlottis = "http://snomed.info/sct#1307006";
+
+    /// <summary>
     /// Literal for code: TelogenHair
     /// </summary>
     public const string LiteralTelogenHair = "1311000";
+
+    /// <summary>
+    /// Literal for code: NONETelogenHair
+    /// </summary>
+    public const string LiteralNONETelogenHair = "http://snomed.info/sct#1311000";
 
     /// <summary>
     /// Literal for code: DeepFlexorTendonOfIndexFinger
@@ -9268,9 +9518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeepFlexorTendonOfIndexFinger = "1350001";
 
     /// <summary>
+    /// Literal for code: NONEDeepFlexorTendonOfIndexFinger
+    /// </summary>
+    public const string LiteralNONEDeepFlexorTendonOfIndexFinger = "http://snomed.info/sct#1350001";
+
+    /// <summary>
     /// Literal for code: GastricSerosa
     /// </summary>
     public const string LiteralGastricSerosa = "1353004";
+
+    /// <summary>
+    /// Literal for code: NONEGastricSerosa
+    /// </summary>
+    public const string LiteralNONEGastricSerosa = "http://snomed.info/sct#1353004";
 
     /// <summary>
     /// Literal for code: VastusLateralisMuscle
@@ -9278,9 +9538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVastusLateralisMuscle = "1403006";
 
     /// <summary>
+    /// Literal for code: NONEVastusLateralisMuscle
+    /// </summary>
+    public const string LiteralNONEVastusLateralisMuscle = "http://snomed.info/sct#1403006";
+
+    /// <summary>
     /// Literal for code: PosteriorLimbOfStapes
     /// </summary>
     public const string LiteralPosteriorLimbOfStapes = "1425000";
+
+    /// <summary>
+    /// Literal for code: NONEPosteriorLimbOfStapes
+    /// </summary>
+    public const string LiteralNONEPosteriorLimbOfStapes = "http://snomed.info/sct#1425000";
 
     /// <summary>
     /// Literal for code: ParavesicularLymphNode
@@ -9288,9 +9558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParavesicularLymphNode = "1439000";
 
     /// <summary>
+    /// Literal for code: NONEParavesicularLymphNode
+    /// </summary>
+    public const string LiteralNONEParavesicularLymphNode = "http://snomed.info/sct#1439000";
+
+    /// <summary>
     /// Literal for code: LaryngealSaccule
     /// </summary>
     public const string LiteralLaryngealSaccule = "1441004";
+
+    /// <summary>
+    /// Literal for code: NONELaryngealSaccule
+    /// </summary>
+    public const string LiteralNONELaryngealSaccule = "http://snomed.info/sct#1441004";
 
     /// <summary>
     /// Literal for code: YellowFibrocartilage
@@ -9298,9 +9578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralYellowFibrocartilage = "1456008";
 
     /// <summary>
+    /// Literal for code: NONEYellowFibrocartilage
+    /// </summary>
+    public const string LiteralNONEYellowFibrocartilage = "http://snomed.info/sct#1456008";
+
+    /// <summary>
     /// Literal for code: ParietalBranchOfSuperficialTemporalArtery
     /// </summary>
     public const string LiteralParietalBranchOfSuperficialTemporalArtery = "1467009";
+
+    /// <summary>
+    /// Literal for code: NONEParietalBranchOfSuperficialTemporalArtery
+    /// </summary>
+    public const string LiteralNONEParietalBranchOfSuperficialTemporalArtery = "http://snomed.info/sct#1467009";
 
     /// <summary>
     /// Literal for code: StructureOfMetatarsalRegionOfFoot
@@ -9308,9 +9598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfMetatarsalRegionOfFoot = "1484003";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfMetatarsalRegionOfFoot
+    /// </summary>
+    public const string LiteralNONEStructureOfMetatarsalRegionOfFoot = "http://snomed.info/sct#1484003";
+
+    /// <summary>
     /// Literal for code: SoftTissuesOfTrunk
     /// </summary>
     public const string LiteralSoftTissuesOfTrunk = "1490004";
+
+    /// <summary>
+    /// Literal for code: NONESoftTissuesOfTrunk
+    /// </summary>
+    public const string LiteralNONESoftTissuesOfTrunk = "http://snomed.info/sct#1490004";
 
     /// <summary>
     /// Literal for code: CentralPairOfMicrotubulesCiliumOrFlagellumNotBacterial
@@ -9318,9 +9618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCentralPairOfMicrotubulesCiliumOrFlagellumNotBacterial = "149003";
 
     /// <summary>
+    /// Literal for code: NONECentralPairOfMicrotubulesCiliumOrFlagellumNotBacterial
+    /// </summary>
+    public const string LiteralNONECentralPairOfMicrotubulesCiliumOrFlagellumNotBacterial = "http://snomed.info/sct#149003";
+
+    /// <summary>
     /// Literal for code: AnteriorCecalArtery
     /// </summary>
     public const string LiteralAnteriorCecalArtery = "1502004";
+
+    /// <summary>
+    /// Literal for code: NONEAnteriorCecalArtery
+    /// </summary>
+    public const string LiteralNONEAnteriorCecalArtery = "http://snomed.info/sct#1502004";
 
     /// <summary>
     /// Literal for code: EjaculatoryDuct
@@ -9328,9 +9638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEjaculatoryDuct = "1511004";
 
     /// <summary>
+    /// Literal for code: NONEEjaculatoryDuct
+    /// </summary>
+    public const string LiteralNONEEjaculatoryDuct = "http://snomed.info/sct#1511004";
+
+    /// <summary>
     /// Literal for code: FrontomentalDiameterOfHead
     /// </summary>
     public const string LiteralFrontomentalDiameterOfHead = "1516009";
+
+    /// <summary>
+    /// Literal for code: NONEFrontomentalDiameterOfHead
+    /// </summary>
+    public const string LiteralNONEFrontomentalDiameterOfHead = "http://snomed.info/sct#1516009";
 
     /// <summary>
     /// Literal for code: LaminaOfFourthThoracicVertebra
@@ -9338,9 +9658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLaminaOfFourthThoracicVertebra = "1527006";
 
     /// <summary>
+    /// Literal for code: NONELaminaOfFourthThoracicVertebra
+    /// </summary>
+    public const string LiteralNONELaminaOfFourthThoracicVertebra = "http://snomed.info/sct#1527006";
+
+    /// <summary>
     /// Literal for code: IntervertebralDiscOfEleventhThoracicVertebra
     /// </summary>
     public const string LiteralIntervertebralDiscOfEleventhThoracicVertebra = "1537001";
+
+    /// <summary>
+    /// Literal for code: NONEIntervertebralDiscOfEleventhThoracicVertebra
+    /// </summary>
+    public const string LiteralNONEIntervertebralDiscOfEleventhThoracicVertebra = "http://snomed.info/sct#1537001";
 
     /// <summary>
     /// Literal for code: CoccygealPlexus
@@ -9348,9 +9678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoccygealPlexus = "1541002";
 
     /// <summary>
+    /// Literal for code: NONECoccygealPlexus
+    /// </summary>
+    public const string LiteralNONECoccygealPlexus = "http://snomed.info/sct#1541002";
+
+    /// <summary>
     /// Literal for code: DeepCircumflexArteryOfIlium
     /// </summary>
     public const string LiteralDeepCircumflexArteryOfIlium = "155008";
+
+    /// <summary>
+    /// Literal for code: NONEDeepCircumflexArteryOfIlium
+    /// </summary>
+    public const string LiteralNONEDeepCircumflexArteryOfIlium = "http://snomed.info/sct#155008";
 
     /// <summary>
     /// Literal for code: NucleusPulposusOfIntervertebralDiscOfThirdLumbarVertebra
@@ -9358,9 +9698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNucleusPulposusOfIntervertebralDiscOfThirdLumbarVertebra = "1562001";
 
     /// <summary>
+    /// Literal for code: NONENucleusPulposusOfIntervertebralDiscOfThirdLumbarVertebra
+    /// </summary>
+    public const string LiteralNONENucleusPulposusOfIntervertebralDiscOfThirdLumbarVertebra = "http://snomed.info/sct#1562001";
+
+    /// <summary>
     /// Literal for code: NailOfThirdToe
     /// </summary>
     public const string LiteralNailOfThirdToe = "1569005";
+
+    /// <summary>
+    /// Literal for code: NONENailOfThirdToe
+    /// </summary>
+    public const string LiteralNONENailOfThirdToe = "http://snomed.info/sct#1569005";
 
     /// <summary>
     /// Literal for code: NucleusVentralisLateralis
@@ -9368,9 +9718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNucleusVentralisLateralis = "1580005";
 
     /// <summary>
+    /// Literal for code: NONENucleusVentralisLateralis
+    /// </summary>
+    public const string LiteralNONENucleusVentralisLateralis = "http://snomed.info/sct#1580005";
+
+    /// <summary>
     /// Literal for code: IlealArtery
     /// </summary>
     public const string LiteralIlealArtery = "1581009";
+
+    /// <summary>
+    /// Literal for code: NONEIlealArtery
+    /// </summary>
+    public const string LiteralNONEIlealArtery = "http://snomed.info/sct#1581009";
 
     /// <summary>
     /// Literal for code: Symphysis
@@ -9378,9 +9738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSymphysis = "1584001";
 
     /// <summary>
+    /// Literal for code: NONESymphysis
+    /// </summary>
+    public const string LiteralNONESymphysis = "http://snomed.info/sct#1584001";
+
+    /// <summary>
     /// Literal for code: SpleniusCapitisMuscle
     /// </summary>
     public const string LiteralSpleniusCapitisMuscle = "1600003";
+
+    /// <summary>
+    /// Literal for code: NONESpleniusCapitisMuscle
+    /// </summary>
+    public const string LiteralNONESpleniusCapitisMuscle = "http://snomed.info/sct#1600003";
 
     /// <summary>
     /// Literal for code: Histioblast
@@ -9388,9 +9758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistioblast = "1605008";
 
     /// <summary>
+    /// Literal for code: NONEHistioblast
+    /// </summary>
+    public const string LiteralNONEHistioblast = "http://snomed.info/sct#1605008";
+
+    /// <summary>
     /// Literal for code: Otoconia
     /// </summary>
     public const string LiteralOtoconia = "1610007";
+
+    /// <summary>
+    /// Literal for code: NONEOtoconia
+    /// </summary>
+    public const string LiteralNONEOtoconia = "http://snomed.info/sct#1610007";
 
     /// <summary>
     /// Literal for code: ParamammaryLymphNode
@@ -9398,9 +9778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParamammaryLymphNode = "1611006";
 
     /// <summary>
+    /// Literal for code: NONEParamammaryLymphNode
+    /// </summary>
+    public const string LiteralNONEParamammaryLymphNode = "http://snomed.info/sct#1611006";
+
+    /// <summary>
     /// Literal for code: IntrinsicLarynx
     /// </summary>
     public const string LiteralIntrinsicLarynx = "1617005";
+
+    /// <summary>
+    /// Literal for code: NONEIntrinsicLarynx
+    /// </summary>
+    public const string LiteralNONEIntrinsicLarynx = "http://snomed.info/sct#1617005";
 
     /// <summary>
     /// Literal for code: MetaphaseNucleus
@@ -9408,9 +9798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMetaphaseNucleus = "1620002";
 
     /// <summary>
+    /// Literal for code: NONEMetaphaseNucleus
+    /// </summary>
+    public const string LiteralNONEMetaphaseNucleus = "http://snomed.info/sct#1620002";
+
+    /// <summary>
     /// Literal for code: ThirdThoracicVertebra
     /// </summary>
     public const string LiteralThirdThoracicVertebra = "1626008";
+
+    /// <summary>
+    /// Literal for code: NONEThirdThoracicVertebra
+    /// </summary>
+    public const string LiteralNONEThirdThoracicVertebra = "http://snomed.info/sct#1626008";
 
     /// <summary>
     /// Literal for code: MedialCollateralLigamentOfKneeJoint
@@ -9418,9 +9818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedialCollateralLigamentOfKneeJoint = "1627004";
 
     /// <summary>
+    /// Literal for code: NONEMedialCollateralLigamentOfKneeJoint
+    /// </summary>
+    public const string LiteralNONEMedialCollateralLigamentOfKneeJoint = "http://snomed.info/sct#1627004";
+
+    /// <summary>
     /// Literal for code: SupraorbitalVein
     /// </summary>
     public const string LiteralSupraorbitalVein = "1630006";
+
+    /// <summary>
+    /// Literal for code: NONESupraorbitalVein
+    /// </summary>
+    public const string LiteralNONESupraorbitalVein = "http://snomed.info/sct#1630006";
 
     /// <summary>
     /// Literal for code: Foregut
@@ -9428,9 +9838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralForegut = "1631005";
 
     /// <summary>
+    /// Literal for code: NONEForegut
+    /// </summary>
+    public const string LiteralNONEForegut = "http://snomed.info/sct#1631005";
+
+    /// <summary>
     /// Literal for code: HilumOfLeftLung
     /// </summary>
     public const string LiteralHilumOfLeftLung = "1650005";
+
+    /// <summary>
+    /// Literal for code: NONEHilumOfLeftLung
+    /// </summary>
+    public const string LiteralNONEHilumOfLeftLung = "http://snomed.info/sct#1650005";
 
     /// <summary>
     /// Literal for code: TransversePeduncularTractNucleus
@@ -9438,9 +9858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransversePeduncularTractNucleus = "1655000";
 
     /// <summary>
+    /// Literal for code: NONETransversePeduncularTractNucleus
+    /// </summary>
+    public const string LiteralNONETransversePeduncularTractNucleus = "http://snomed.info/sct#1655000";
+
+    /// <summary>
     /// Literal for code: NucleusMedialisDorsalis
     /// </summary>
     public const string LiteralNucleusMedialisDorsalis = "1659006";
+
+    /// <summary>
+    /// Literal for code: NONENucleusMedialisDorsalis
+    /// </summary>
+    public const string LiteralNONENucleusMedialisDorsalis = "http://snomed.info/sct#1659006";
 
     /// <summary>
     /// Literal for code: SupraclavicularPartOfBrachialPlexus
@@ -9448,9 +9878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSupraclavicularPartOfBrachialPlexus = "167005";
 
     /// <summary>
+    /// Literal for code: NONESupraclavicularPartOfBrachialPlexus
+    /// </summary>
+    public const string LiteralNONESupraclavicularPartOfBrachialPlexus = "http://snomed.info/sct#167005";
+
+    /// <summary>
     /// Literal for code: LigamentumTeresOfLiver
     /// </summary>
     public const string LiteralLigamentumTeresOfLiver = "1684009";
+
+    /// <summary>
+    /// Literal for code: NONELigamentumTeresOfLiver
+    /// </summary>
+    public const string LiteralNONELigamentumTeresOfLiver = "http://snomed.info/sct#1684009";
 
     /// <summary>
     /// Literal for code: ThymicLobule
@@ -9458,9 +9898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThymicLobule = "1706004";
 
     /// <summary>
+    /// Literal for code: NONEThymicLobule
+    /// </summary>
+    public const string LiteralNONEThymicLobule = "http://snomed.info/sct#1706004";
+
+    /// <summary>
     /// Literal for code: VentralNuclearGroupOfThalamus
     /// </summary>
     public const string LiteralVentralNuclearGroupOfThalamus = "1707008";
+
+    /// <summary>
+    /// Literal for code: NONEVentralNuclearGroupOfThalamus
+    /// </summary>
+    public const string LiteralNONEVentralNuclearGroupOfThalamus = "http://snomed.info/sct#1707008";
 
     /// <summary>
     /// Literal for code: PeriorbitalRegion
@@ -9468,9 +9918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeriorbitalRegion = "1711002";
 
     /// <summary>
+    /// Literal for code: NONEPeriorbitalRegion
+    /// </summary>
+    public const string LiteralNONEPeriorbitalRegion = "http://snomed.info/sct#1711002";
+
+    /// <summary>
     /// Literal for code: CupulaAmpullaris
     /// </summary>
     public const string LiteralCupulaAmpullaris = "1716007";
+
+    /// <summary>
+    /// Literal for code: NONECupulaAmpullaris
+    /// </summary>
+    public const string LiteralNONECupulaAmpullaris = "http://snomed.info/sct#1716007";
 
     /// <summary>
     /// Literal for code: RightTonsil
@@ -9478,9 +9938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRightTonsil = "1721005";
 
     /// <summary>
+    /// Literal for code: NONERightTonsil
+    /// </summary>
+    public const string LiteralNONERightTonsil = "http://snomed.info/sct#1721005";
+
+    /// <summary>
     /// Literal for code: CentralTegmentalTract
     /// </summary>
     public const string LiteralCentralTegmentalTract = "1729007";
+
+    /// <summary>
+    /// Literal for code: NONECentralTegmentalTract
+    /// </summary>
+    public const string LiteralNONECentralTegmentalTract = "http://snomed.info/sct#1729007";
 
     /// <summary>
     /// Literal for code: TDThoracicDuct
@@ -9488,9 +9958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTDThoracicDuct = "1732005";
 
     /// <summary>
+    /// Literal for code: NONETDThoracicDuct
+    /// </summary>
+    public const string LiteralNONETDThoracicDuct = "http://snomed.info/sct#1732005";
+
+    /// <summary>
     /// Literal for code: StructureOfLymphaticVesselOfThorax
     /// </summary>
     public const string LiteralStructureOfLymphaticVesselOfThorax = "1765002";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfLymphaticVesselOfThorax
+    /// </summary>
+    public const string LiteralNONEStructureOfLymphaticVesselOfThorax = "http://snomed.info/sct#1765002";
 
     /// <summary>
     /// Literal for code: Premelanosome
@@ -9498,9 +9978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPremelanosome = "1780008";
 
     /// <summary>
+    /// Literal for code: NONEPremelanosome
+    /// </summary>
+    public const string LiteralNONEPremelanosome = "http://snomed.info/sct#1780008";
+
+    /// <summary>
     /// Literal for code: SacroiliacRegion
     /// </summary>
     public const string LiteralSacroiliacRegion = "1781007";
+
+    /// <summary>
+    /// Literal for code: NONESacroiliacRegion
+    /// </summary>
+    public const string LiteralNONESacroiliacRegion = "http://snomed.info/sct#1781007";
 
     /// <summary>
     /// Literal for code: Naris
@@ -9508,9 +9998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNaris = "1797002";
 
     /// <summary>
+    /// Literal for code: NONENaris
+    /// </summary>
+    public const string LiteralNONENaris = "http://snomed.info/sct#1797002";
+
+    /// <summary>
     /// Literal for code: GreaterCirculusArteriosusOfIris
     /// </summary>
     public const string LiteralGreaterCirculusArteriosusOfIris = "1818002";
+
+    /// <summary>
+    /// Literal for code: NONEGreaterCirculusArteriosusOfIris
+    /// </summary>
+    public const string LiteralNONEGreaterCirculusArteriosusOfIris = "http://snomed.info/sct#1818002";
 
     /// <summary>
     /// Literal for code: RootOfNose
@@ -9518,9 +10018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRootOfNose = "1825009";
 
     /// <summary>
+    /// Literal for code: NONERootOfNose
+    /// </summary>
+    public const string LiteralNONERootOfNose = "http://snomed.info/sct#1825009";
+
+    /// <summary>
     /// Literal for code: ScleralConjunctiva
     /// </summary>
     public const string LiteralScleralConjunctiva = "1832000";
+
+    /// <summary>
+    /// Literal for code: NONEScleralConjunctiva
+    /// </summary>
+    public const string LiteralNONEScleralConjunctiva = "http://snomed.info/sct#1832000";
 
     /// <summary>
     /// Literal for code: ArrectorPiliMuscle
@@ -9528,9 +10038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArrectorPiliMuscle = "1840006";
 
     /// <summary>
+    /// Literal for code: NONEArrectorPiliMuscle
+    /// </summary>
+    public const string LiteralNONEArrectorPiliMuscle = "http://snomed.info/sct#1840006";
+
+    /// <summary>
     /// Literal for code: PharyngealRecess
     /// </summary>
     public const string LiteralPharyngealRecess = "1849007";
+
+    /// <summary>
+    /// Literal for code: NONEPharyngealRecess
+    /// </summary>
+    public const string LiteralNONEPharyngealRecess = "http://snomed.info/sct#1849007";
 
     /// <summary>
     /// Literal for code: StructureOfSuprahyoidMuscle
@@ -9538,9 +10058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfSuprahyoidMuscle = "1853009";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfSuprahyoidMuscle
+    /// </summary>
+    public const string LiteralNONEStructureOfSuprahyoidMuscle = "http://snomed.info/sct#1853009";
+
+    /// <summary>
     /// Literal for code: PromontoryLymphNode
     /// </summary>
     public const string LiteralPromontoryLymphNode = "1874005";
+
+    /// <summary>
+    /// Literal for code: NONEPromontoryLymphNode
+    /// </summary>
+    public const string LiteralNONEPromontoryLymphNode = "http://snomed.info/sct#1874005";
 
     /// <summary>
     /// Literal for code: JointOfUpperExtremity
@@ -9548,9 +10078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJointOfUpperExtremity = "1893007";
 
     /// <summary>
+    /// Literal for code: NONEJointOfUpperExtremity
+    /// </summary>
+    public const string LiteralNONEJointOfUpperExtremity = "http://snomed.info/sct#1893007";
+
+    /// <summary>
     /// Literal for code: MusculophrenicVein
     /// </summary>
     public const string LiteralMusculophrenicVein = "1895000";
+
+    /// <summary>
+    /// Literal for code: NONEMusculophrenicVein
+    /// </summary>
+    public const string LiteralNONEMusculophrenicVein = "http://snomed.info/sct#1895000";
 
     /// <summary>
     /// Literal for code: SkinOfExternalEar
@@ -9558,9 +10098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSkinOfExternalEar = "1902009";
 
     /// <summary>
+    /// Literal for code: NONESkinOfExternalEar
+    /// </summary>
+    public const string LiteralNONESkinOfExternalEar = "http://snomed.info/sct#1902009";
+
+    /// <summary>
     /// Literal for code: Ear
     /// </summary>
     public const string LiteralEar = "1910005";
+
+    /// <summary>
+    /// Literal for code: NONEEar
+    /// </summary>
+    public const string LiteralNONEEar = "http://snomed.info/sct#1910005";
 
     /// <summary>
     /// Literal for code: SuprarenalAorta
@@ -9568,9 +10118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuprarenalAorta = "1918003";
 
     /// <summary>
+    /// Literal for code: NONESuprarenalAorta
+    /// </summary>
+    public const string LiteralNONESuprarenalAorta = "http://snomed.info/sct#1918003";
+
+    /// <summary>
     /// Literal for code: LeftElbow
     /// </summary>
     public const string LiteralLeftElbow = "1927002";
+
+    /// <summary>
+    /// Literal for code: NONELeftElbow
+    /// </summary>
+    public const string LiteralNONELeftElbow = "http://snomed.info/sct#1927002";
 
     /// <summary>
     /// Literal for code: PorusAcusticusInternus
@@ -9578,9 +10138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPorusAcusticusInternus = "1992003";
 
     /// <summary>
+    /// Literal for code: NONEPorusAcusticusInternus
+    /// </summary>
+    public const string LiteralNONEPorusAcusticusInternus = "http://snomed.info/sct#1992003";
+
+    /// <summary>
     /// Literal for code: CingulumDentis
     /// </summary>
     public const string LiteralCingulumDentis = "1997009";
+
+    /// <summary>
+    /// Literal for code: NONECingulumDentis
+    /// </summary>
+    public const string LiteralNONECingulumDentis = "http://snomed.info/sct#1997009";
 
     /// <summary>
     /// Literal for code: ClavicularFacetOfScapula
@@ -9588,9 +10158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClavicularFacetOfScapula = "2010005";
 
     /// <summary>
+    /// Literal for code: NONEClavicularFacetOfScapula
+    /// </summary>
+    public const string LiteralNONEClavicularFacetOfScapula = "http://snomed.info/sct#2010005";
+
+    /// <summary>
     /// Literal for code: SuperiorThoracicArtery
     /// </summary>
     public const string LiteralSuperiorThoracicArtery = "2020000";
+
+    /// <summary>
+    /// Literal for code: NONESuperiorThoracicArtery
+    /// </summary>
+    public const string LiteralNONESuperiorThoracicArtery = "http://snomed.info/sct#2020000";
 
     /// <summary>
     /// Literal for code: AnteriorDivisionOfRenalArtery
@@ -9598,9 +10178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnteriorDivisionOfRenalArtery = "202009";
 
     /// <summary>
+    /// Literal for code: NONEAnteriorDivisionOfRenalArtery
+    /// </summary>
+    public const string LiteralNONEAnteriorDivisionOfRenalArtery = "http://snomed.info/sct#202009";
+
+    /// <summary>
     /// Literal for code: StructureOfAnteriorMedianFissureOfSpinalCord
     /// </summary>
     public const string LiteralStructureOfAnteriorMedianFissureOfSpinalCord = "2031008";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfAnteriorMedianFissureOfSpinalCord
+    /// </summary>
+    public const string LiteralNONEStructureOfAnteriorMedianFissureOfSpinalCord = "http://snomed.info/sct#2031008";
 
     /// <summary>
     /// Literal for code: RightFallopianTube
@@ -9608,9 +10198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRightFallopianTube = "2033006";
 
     /// <summary>
+    /// Literal for code: NONERightFallopianTube
+    /// </summary>
+    public const string LiteralNONERightFallopianTube = "http://snomed.info/sct#2033006";
+
+    /// <summary>
     /// Literal for code: VaginalNerves
     /// </summary>
     public const string LiteralVaginalNerves = "2044003";
+
+    /// <summary>
+    /// Literal for code: NONEVaginalNerves
+    /// </summary>
+    public const string LiteralNONEVaginalNerves = "http://snomed.info/sct#2044003";
 
     /// <summary>
     /// Literal for code: LingualTonsil
@@ -9618,9 +10218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLingualTonsil = "2048000";
 
     /// <summary>
+    /// Literal for code: NONELingualTonsil
+    /// </summary>
+    public const string LiteralNONELingualTonsil = "http://snomed.info/sct#2048000";
+
+    /// <summary>
     /// Literal for code: ChorionicVilli
     /// </summary>
     public const string LiteralChorionicVilli = "2049008";
+
+    /// <summary>
+    /// Literal for code: NONEChorionicVilli
+    /// </summary>
+    public const string LiteralNONEChorionicVilli = "http://snomed.info/sct#2049008";
 
     /// <summary>
     /// Literal for code: LeftCommissureOfAorticValve
@@ -9628,9 +10238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeftCommissureOfAorticValve = "205006";
 
     /// <summary>
+    /// Literal for code: NONELeftCommissureOfAorticValve
+    /// </summary>
+    public const string LiteralNONELeftCommissureOfAorticValve = "http://snomed.info/sct#205006";
+
+    /// <summary>
     /// Literal for code: SkinOfEarLobule
     /// </summary>
     public const string LiteralSkinOfEarLobule = "2059009";
+
+    /// <summary>
+    /// Literal for code: NONESkinOfEarLobule
+    /// </summary>
+    public const string LiteralNONESkinOfEarLobule = "http://snomed.info/sct#2059009";
 
     /// <summary>
     /// Literal for code: GluteusMaximusMuscle
@@ -9638,9 +10258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGluteusMaximusMuscle = "206007";
 
     /// <summary>
+    /// Literal for code: NONEGluteusMaximusMuscle
+    /// </summary>
+    public const string LiteralNONEGluteusMaximusMuscle = "http://snomed.info/sct#206007";
+
+    /// <summary>
     /// Literal for code: ReticularFormationOfSpinalCord
     /// </summary>
     public const string LiteralReticularFormationOfSpinalCord = "2071003";
+
+    /// <summary>
+    /// Literal for code: NONEReticularFormationOfSpinalCord
+    /// </summary>
+    public const string LiteralNONEReticularFormationOfSpinalCord = "http://snomed.info/sct#2071003";
 
     /// <summary>
     /// Literal for code: HeadOfPhalanxOfHand
@@ -9648,9 +10278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHeadOfPhalanxOfHand = "2076008";
 
     /// <summary>
+    /// Literal for code: NONEHeadOfPhalanxOfHand
+    /// </summary>
+    public const string LiteralNONEHeadOfPhalanxOfHand = "http://snomed.info/sct#2076008";
+
+    /// <summary>
     /// Literal for code: NucleusAmbiguus
     /// </summary>
     public const string LiteralNucleusAmbiguus = "2083001";
+
+    /// <summary>
+    /// Literal for code: NONENucleusAmbiguus
+    /// </summary>
+    public const string LiteralNONENucleusAmbiguus = "http://snomed.info/sct#2083001";
 
     /// <summary>
     /// Literal for code: AccessorySinus
@@ -9658,9 +10298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAccessorySinus = "2095001";
 
     /// <summary>
+    /// Literal for code: NONEAccessorySinus
+    /// </summary>
+    public const string LiteralNONEAccessorySinus = "http://snomed.info/sct#2095001";
+
+    /// <summary>
     /// Literal for code: MammilloinfundibularNucleus
     /// </summary>
     public const string LiteralMammilloinfundibularNucleus = "2123001";
+
+    /// <summary>
+    /// Literal for code: NONEMammilloinfundibularNucleus
+    /// </summary>
+    public const string LiteralNONEMammilloinfundibularNucleus = "http://snomed.info/sct#2123001";
 
     /// <summary>
     /// Literal for code: UrinaryTractTransitionalEpithelialCell
@@ -9668,9 +10318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUrinaryTractTransitionalEpithelialCell = "2150006";
 
     /// <summary>
+    /// Literal for code: NONEUrinaryTractTransitionalEpithelialCell
+    /// </summary>
+    public const string LiteralNONEUrinaryTractTransitionalEpithelialCell = "http://snomed.info/sct#2150006";
+
+    /// <summary>
     /// Literal for code: GlialCell
     /// </summary>
     public const string LiteralGlialCell = "2156000";
+
+    /// <summary>
+    /// Literal for code: NONEGlialCell
+    /// </summary>
+    public const string LiteralNONEGlialCell = "http://snomed.info/sct#2156000";
 
     /// <summary>
     /// Literal for code: LigamentumArteriosum
@@ -9678,9 +10338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLigamentumArteriosum = "2160002";
 
     /// <summary>
+    /// Literal for code: NONELigamentumArteriosum
+    /// </summary>
+    public const string LiteralNONELigamentumArteriosum = "http://snomed.info/sct#2160002";
+
+    /// <summary>
     /// Literal for code: PharyngealCavity
     /// </summary>
     public const string LiteralPharyngealCavity = "2175005";
+
+    /// <summary>
+    /// Literal for code: NONEPharyngealCavity
+    /// </summary>
+    public const string LiteralNONEPharyngealCavity = "http://snomed.info/sct#2175005";
 
     /// <summary>
     /// Literal for code: EndometrialZonaBasalis
@@ -9688,9 +10358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndometrialZonaBasalis = "2182009";
 
     /// <summary>
+    /// Literal for code: NONEEndometrialZonaBasalis
+    /// </summary>
+    public const string LiteralNONEEndometrialZonaBasalis = "http://snomed.info/sct#2182009";
+
+    /// <summary>
     /// Literal for code: ClavicularPartOfPectoralisMajorMuscle
     /// </summary>
     public const string LiteralClavicularPartOfPectoralisMajorMuscle = "2192001";
+
+    /// <summary>
+    /// Literal for code: NONEClavicularPartOfPectoralisMajorMuscle
+    /// </summary>
+    public const string LiteralNONEClavicularPartOfPectoralisMajorMuscle = "http://snomed.info/sct#2192001";
 
     /// <summary>
     /// Literal for code: LaminaOfFifthThoracicVertebra
@@ -9698,9 +10378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLaminaOfFifthThoracicVertebra = "2205003";
 
     /// <summary>
+    /// Literal for code: NONELaminaOfFifthThoracicVertebra
+    /// </summary>
+    public const string LiteralNONELaminaOfFifthThoracicVertebra = "http://snomed.info/sct#2205003";
+
+    /// <summary>
     /// Literal for code: CerebralBasalSurface
     /// </summary>
     public const string LiteralCerebralBasalSurface = "2209009";
+
+    /// <summary>
+    /// Literal for code: NONECerebralBasalSurface
+    /// </summary>
+    public const string LiteralNONECerebralBasalSurface = "http://snomed.info/sct#2209009";
 
     /// <summary>
     /// Literal for code: ArticularSurfacePhalangesOfFourthMetacarpalBone
@@ -9708,9 +10398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArticularSurfacePhalangesOfFourthMetacarpalBone = "221001";
 
     /// <summary>
+    /// Literal for code: NONEArticularSurfacePhalangesOfFourthMetacarpalBone
+    /// </summary>
+    public const string LiteralNONEArticularSurfacePhalangesOfFourthMetacarpalBone = "http://snomed.info/sct#221001";
+
+    /// <summary>
     /// Literal for code: LesserOsseousPelvis
     /// </summary>
     public const string LiteralLesserOsseousPelvis = "2236006";
+
+    /// <summary>
+    /// Literal for code: NONELesserOsseousPelvis
+    /// </summary>
+    public const string LiteralNONELesserOsseousPelvis = "http://snomed.info/sct#2236006";
 
     /// <summary>
     /// Literal for code: TypeIHairCell
@@ -9718,9 +10418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTypeIHairCell = "2246008";
 
     /// <summary>
+    /// Literal for code: NONETypeIHairCell
+    /// </summary>
+    public const string LiteralNONETypeIHairCell = "http://snomed.info/sct#2246008";
+
+    /// <summary>
     /// Literal for code: Subserosa
     /// </summary>
     public const string LiteralSubserosa = "2255006";
+
+    /// <summary>
+    /// Literal for code: NONESubserosa
+    /// </summary>
+    public const string LiteralNONESubserosa = "http://snomed.info/sct#2255006";
 
     /// <summary>
     /// Literal for code: CanalOfHering
@@ -9728,9 +10438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCanalOfHering = "227002";
 
     /// <summary>
+    /// Literal for code: NONECanalOfHering
+    /// </summary>
+    public const string LiteralNONECanalOfHering = "http://snomed.info/sct#227002";
+
+    /// <summary>
     /// Literal for code: StructureOfTorcularHerophili
     /// </summary>
     public const string LiteralStructureOfTorcularHerophili = "2285001";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfTorcularHerophili
+    /// </summary>
+    public const string LiteralNONEStructureOfTorcularHerophili = "http://snomed.info/sct#2285001";
 
     /// <summary>
     /// Literal for code: StructureOfNasopharyngealGland
@@ -9738,9 +10458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfNasopharyngealGland = "2292006";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfNasopharyngealGland
+    /// </summary>
+    public const string LiteralNONEStructureOfNasopharyngealGland = "http://snomed.info/sct#2292006";
+
+    /// <summary>
     /// Literal for code: VeinOfTheKnee
     /// </summary>
     public const string LiteralVeinOfTheKnee = "2302002";
+
+    /// <summary>
+    /// Literal for code: NONEVeinOfTheKnee
+    /// </summary>
+    public const string LiteralNONEVeinOfTheKnee = "http://snomed.info/sct#2302002";
 
     /// <summary>
     /// Literal for code: StructureOfSpinousProcessOfCervicalVertebra
@@ -9748,9 +10478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfSpinousProcessOfCervicalVertebra = "2305000";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfSpinousProcessOfCervicalVertebra
+    /// </summary>
+    public const string LiteralNONEStructureOfSpinousProcessOfCervicalVertebra = "http://snomed.info/sct#2305000";
+
+    /// <summary>
     /// Literal for code: StructureOfBaseOfThirdMetacarpalBone
     /// </summary>
     public const string LiteralStructureOfBaseOfThirdMetacarpalBone = "2306004";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfBaseOfThirdMetacarpalBone
+    /// </summary>
+    public const string LiteralNONEStructureOfBaseOfThirdMetacarpalBone = "http://snomed.info/sct#2306004";
 
     /// <summary>
     /// Literal for code: SalivarySeromucousGland
@@ -9758,9 +10498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSalivarySeromucousGland = "2327009";
 
     /// <summary>
+    /// Literal for code: NONESalivarySeromucousGland
+    /// </summary>
+    public const string LiteralNONESalivarySeromucousGland = "http://snomed.info/sct#2327009";
+
+    /// <summary>
     /// Literal for code: StructureOfSegmentalBronchialBranches
     /// </summary>
     public const string LiteralStructureOfSegmentalBronchialBranches = "2330002";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfSegmentalBronchialBranches
+    /// </summary>
+    public const string LiteralNONEStructureOfSegmentalBronchialBranches = "http://snomed.info/sct#2330002";
 
     /// <summary>
     /// Literal for code: HepatocolicLigament
@@ -9768,9 +10518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHepatocolicLigament = "233006";
 
     /// <summary>
+    /// Literal for code: NONEHepatocolicLigament
+    /// </summary>
+    public const string LiteralNONEHepatocolicLigament = "http://snomed.info/sct#233006";
+
+    /// <summary>
     /// Literal for code: MetencephalonOfFoetus
     /// </summary>
     public const string LiteralMetencephalonOfFoetus = "2332005";
+
+    /// <summary>
+    /// Literal for code: NONEMetencephalonOfFoetus
+    /// </summary>
+    public const string LiteralNONEMetencephalonOfFoetus = "http://snomed.info/sct#2332005";
 
     /// <summary>
     /// Literal for code: RenalCalyx
@@ -9778,9 +10538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRenalCalyx = "2334006";
 
     /// <summary>
+    /// Literal for code: NONERenalCalyx
+    /// </summary>
+    public const string LiteralNONERenalCalyx = "http://snomed.info/sct#2334006";
+
+    /// <summary>
     /// Literal for code: StructureOfNasalSutureOfSkull
     /// </summary>
     public const string LiteralStructureOfNasalSutureOfSkull = "2349003";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfNasalSutureOfSkull
+    /// </summary>
+    public const string LiteralNONEStructureOfNasalSutureOfSkull = "http://snomed.info/sct#2349003";
 
     /// <summary>
     /// Literal for code: SuperiorLabialArtery
@@ -9788,9 +10558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuperiorLabialArtery = "235004";
 
     /// <summary>
+    /// Literal for code: NONESuperiorLabialArtery
+    /// </summary>
+    public const string LiteralNONESuperiorLabialArtery = "http://snomed.info/sct#235004";
+
+    /// <summary>
     /// Literal for code: StructureOfMedialSurfaceOfToe
     /// </summary>
     public const string LiteralStructureOfMedialSurfaceOfToe = "2372001";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfMedialSurfaceOfToe
+    /// </summary>
+    public const string LiteralNONEStructureOfMedialSurfaceOfToe = "http://snomed.info/sct#2372001";
 
     /// <summary>
     /// Literal for code: StructureOfPapillaryMusclesOfRightVentricle
@@ -9798,9 +10578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfPapillaryMusclesOfRightVentricle = "2383005";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfPapillaryMusclesOfRightVentricle
+    /// </summary>
+    public const string LiteralNONEStructureOfPapillaryMusclesOfRightVentricle = "http://snomed.info/sct#2383005";
+
+    /// <summary>
     /// Literal for code: StructureOfSuperiorMarginOfAdrenalGland
     /// </summary>
     public const string LiteralStructureOfSuperiorMarginOfAdrenalGland = "2389009";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfSuperiorMarginOfAdrenalGland
+    /// </summary>
+    public const string LiteralNONEStructureOfSuperiorMarginOfAdrenalGland = "http://snomed.info/sct#2389009";
 
     /// <summary>
     /// Literal for code: StructureOfTransverseFacialArtery
@@ -9808,9 +10598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfTransverseFacialArtery = "2395005";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfTransverseFacialArtery
+    /// </summary>
+    public const string LiteralNONEStructureOfTransverseFacialArtery = "http://snomed.info/sct#2395005";
+
+    /// <summary>
     /// Literal for code: StructureOfFirstMetatarsalFacetOfMedialCuneiformBone
     /// </summary>
     public const string LiteralStructureOfFirstMetatarsalFacetOfMedialCuneiformBone = "2397002";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfFirstMetatarsalFacetOfMedialCuneiformBone
+    /// </summary>
+    public const string LiteralNONEStructureOfFirstMetatarsalFacetOfMedialCuneiformBone = "http://snomed.info/sct#2397002";
 
     /// <summary>
     /// Literal for code: UniversalDesignation21
@@ -9818,9 +10618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUniversalDesignation21 = "2400006";
 
     /// <summary>
+    /// Literal for code: NONEUniversalDesignation21
+    /// </summary>
+    public const string LiteralNONEUniversalDesignation21 = "http://snomed.info/sct#2400006";
+
+    /// <summary>
     /// Literal for code: StructureOfDorsumOfFoot
     /// </summary>
     public const string LiteralStructureOfDorsumOfFoot = "2402003";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfDorsumOfFoot
+    /// </summary>
+    public const string LiteralNONEStructureOfDorsumOfFoot = "http://snomed.info/sct#2402003";
 
     /// <summary>
     /// Literal for code: StructureOfSubmaxillaryGanglion
@@ -9828,9 +10638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfSubmaxillaryGanglion = "2421006";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfSubmaxillaryGanglion
+    /// </summary>
+    public const string LiteralNONEStructureOfSubmaxillaryGanglion = "http://snomed.info/sct#2421006";
+
+    /// <summary>
     /// Literal for code: StructureOfDigitalTendonAndTendonSheathOfFoot
     /// </summary>
     public const string LiteralStructureOfDigitalTendonAndTendonSheathOfFoot = "2433001";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfDigitalTendonAndTendonSheathOfFoot
+    /// </summary>
+    public const string LiteralNONEStructureOfDigitalTendonAndTendonSheathOfFoot = "http://snomed.info/sct#2433001";
 
     /// <summary>
     /// Literal for code: TunicaIntimaOfVein
@@ -9838,9 +10658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTunicaIntimaOfVein = "2436009";
 
     /// <summary>
+    /// Literal for code: NONETunicaIntimaOfVein
+    /// </summary>
+    public const string LiteralNONETunicaIntimaOfVein = "http://snomed.info/sct#2436009";
+
+    /// <summary>
     /// Literal for code: SubcutaneousTissueStructureOfPosteriorSurfaceOfForearm
     /// </summary>
     public const string LiteralSubcutaneousTissueStructureOfPosteriorSurfaceOfForearm = "2453002";
+
+    /// <summary>
+    /// Literal for code: NONESubcutaneousTissueStructureOfPosteriorSurfaceOfForearm
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueStructureOfPosteriorSurfaceOfForearm = "http://snomed.info/sct#2453002";
 
     /// <summary>
     /// Literal for code: StructureOfArticularSurfaceThirdMetacarpalOfSecondMetacarpalBone
@@ -9848,9 +10678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfArticularSurfaceThirdMetacarpalOfSecondMetacarpalBone = "2454008";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfArticularSurfaceThirdMetacarpalOfSecondMetacarpalBone
+    /// </summary>
+    public const string LiteralNONEStructureOfArticularSurfaceThirdMetacarpalOfSecondMetacarpalBone = "http://snomed.info/sct#2454008";
+
+    /// <summary>
     /// Literal for code: LateralVestibularNucleus
     /// </summary>
     public const string LiteralLateralVestibularNucleus = "246001";
+
+    /// <summary>
+    /// Literal for code: NONELateralVestibularNucleus
+    /// </summary>
+    public const string LiteralNONELateralVestibularNucleus = "http://snomed.info/sct#246001";
 
     /// <summary>
     /// Literal for code: Mesotympanum
@@ -9858,9 +10698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMesotympanum = "247005";
 
     /// <summary>
+    /// Literal for code: NONEMesotympanum
+    /// </summary>
+    public const string LiteralNONEMesotympanum = "http://snomed.info/sct#247005";
+
+    /// <summary>
     /// Literal for code: SkinStructureOfFrenulumOfClitoris
     /// </summary>
     public const string LiteralSkinStructureOfFrenulumOfClitoris = "2484000";
+
+    /// <summary>
+    /// Literal for code: NONESkinStructureOfFrenulumOfClitoris
+    /// </summary>
+    public const string LiteralNONESkinStructureOfFrenulumOfClitoris = "http://snomed.info/sct#2484000";
 
     /// <summary>
     /// Literal for code: StructureOfMedialCheckLigamentOfEye
@@ -9868,9 +10718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfMedialCheckLigamentOfEye = "2489005";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfMedialCheckLigamentOfEye
+    /// </summary>
+    public const string LiteralNONEStructureOfMedialCheckLigamentOfEye = "http://snomed.info/sct#2489005";
+
+    /// <summary>
     /// Literal for code: EntireCisternaPontis
     /// </summary>
     public const string LiteralEntireCisternaPontis = "2499000";
+
+    /// <summary>
+    /// Literal for code: NONEEntireCisternaPontis
+    /// </summary>
+    public const string LiteralNONEEntireCisternaPontis = "http://snomed.info/sct#2499000";
 
     /// <summary>
     /// Literal for code: MembraneOfLysosome
@@ -9878,9 +10738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMembraneOfLysosome = "2502001";
 
     /// <summary>
+    /// Literal for code: NONEMembraneOfLysosome
+    /// </summary>
+    public const string LiteralNONEMembraneOfLysosome = "http://snomed.info/sct#2502001";
+
+    /// <summary>
     /// Literal for code: StructureOfPancreaticPlexus
     /// </summary>
     public const string LiteralStructureOfPancreaticPlexus = "2504000";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfPancreaticPlexus
+    /// </summary>
+    public const string LiteralNONEStructureOfPancreaticPlexus = "http://snomed.info/sct#2504000";
 
     /// <summary>
     /// Literal for code: FemoralTriangleStructure
@@ -9888,9 +10758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFemoralTriangleStructure = "2510000";
 
     /// <summary>
+    /// Literal for code: NONEFemoralTriangleStructure
+    /// </summary>
+    public const string LiteralNONEFemoralTriangleStructure = "http://snomed.info/sct#2510000";
+
+    /// <summary>
     /// Literal for code: PectoralRegion
     /// </summary>
     public const string LiteralPectoralRegion = "251007";
+
+    /// <summary>
+    /// Literal for code: NONEPectoralRegion
+    /// </summary>
+    public const string LiteralNONEPectoralRegion = "http://snomed.info/sct#251007";
 
     /// <summary>
     /// Literal for code: StructureOfSuperiorRectalArtery
@@ -9898,9 +10778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfSuperiorRectalArtery = "2539000";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfSuperiorRectalArtery
+    /// </summary>
+    public const string LiteralNONEStructureOfSuperiorRectalArtery = "http://snomed.info/sct#2539000";
+
+    /// <summary>
     /// Literal for code: StructureOfCuboidArticularFacetOfFourthMetatarsalBone
     /// </summary>
     public const string LiteralStructureOfCuboidArticularFacetOfFourthMetatarsalBone = "2543001";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfCuboidArticularFacetOfFourthMetatarsalBone
+    /// </summary>
+    public const string LiteralNONEStructureOfCuboidArticularFacetOfFourthMetatarsalBone = "http://snomed.info/sct#2543001";
 
     /// <summary>
     /// Literal for code: BoneStructureOfPhalanxOfThumb
@@ -9908,9 +10798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBoneStructureOfPhalanxOfThumb = "2550002";
 
     /// <summary>
+    /// Literal for code: NONEBoneStructureOfPhalanxOfThumb
+    /// </summary>
+    public const string LiteralNONEBoneStructureOfPhalanxOfThumb = "http://snomed.info/sct#2550002";
+
+    /// <summary>
     /// Literal for code: KupfferCell
     /// </summary>
     public const string LiteralKupfferCell = "256002";
+
+    /// <summary>
+    /// Literal for code: NONEKupfferCell
+    /// </summary>
+    public const string LiteralNONEKupfferCell = "http://snomed.info/sct#256002";
 
     /// <summary>
     /// Literal for code: StructureOfGracilisMuscle
@@ -9918,9 +10818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfGracilisMuscle = "2577006";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfGracilisMuscle
+    /// </summary>
+    public const string LiteralNONEStructureOfGracilisMuscle = "http://snomed.info/sct#2577006";
+
+    /// <summary>
     /// Literal for code: Plasmablast
     /// </summary>
     public const string LiteralPlasmablast = "2579009";
+
+    /// <summary>
+    /// Literal for code: NONEPlasmablast
+    /// </summary>
+    public const string LiteralNONEPlasmablast = "http://snomed.info/sct#2579009";
 
     /// <summary>
     /// Literal for code: AllExtremities
@@ -9928,9 +10838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAllExtremities = "2592007";
 
     /// <summary>
+    /// Literal for code: NONEAllExtremities
+    /// </summary>
+    public const string LiteralNONEAllExtremities = "http://snomed.info/sct#2592007";
+
+    /// <summary>
     /// Literal for code: StructureOfFlexorPollicisLongusMuscleTendon
     /// </summary>
     public const string LiteralStructureOfFlexorPollicisLongusMuscleTendon = "2600000";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfFlexorPollicisLongusMuscleTendon
+    /// </summary>
+    public const string LiteralNONEStructureOfFlexorPollicisLongusMuscleTendon = "http://snomed.info/sct#2600000";
 
     /// <summary>
     /// Literal for code: IntervertebralDiscStructureOfThirdThoracicVertebra
@@ -9938,9 +10858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntervertebralDiscStructureOfThirdThoracicVertebra = "2620004";
 
     /// <summary>
+    /// Literal for code: NONEIntervertebralDiscStructureOfThirdThoracicVertebra
+    /// </summary>
+    public const string LiteralNONEIntervertebralDiscStructureOfThirdThoracicVertebra = "http://snomed.info/sct#2620004";
+
+    /// <summary>
     /// Literal for code: ThoracicNerve
     /// </summary>
     public const string LiteralThoracicNerve = "263002";
+
+    /// <summary>
+    /// Literal for code: NONEThoracicNerve
+    /// </summary>
+    public const string LiteralNONEThoracicNerve = "http://snomed.info/sct#263002";
 
     /// <summary>
     /// Literal for code: NeuroendocrineTissue
@@ -9948,9 +10878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeuroendocrineTissue = "2639009";
 
     /// <summary>
+    /// Literal for code: NONENeuroendocrineTissue
+    /// </summary>
+    public const string LiteralNONENeuroendocrineTissue = "http://snomed.info/sct#2639009";
+
+    /// <summary>
     /// Literal for code: StructureOfPosteriorThalamicRadiationOfInternalCapsule
     /// </summary>
     public const string LiteralStructureOfPosteriorThalamicRadiationOfInternalCapsule = "2653009";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfPosteriorThalamicRadiationOfInternalCapsule
+    /// </summary>
+    public const string LiteralNONEStructureOfPosteriorThalamicRadiationOfInternalCapsule = "http://snomed.info/sct#2653009";
 
     /// <summary>
     /// Literal for code: RightLowerLobeOfLung
@@ -9958,9 +10898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRightLowerLobeOfLung = "266005";
 
     /// <summary>
+    /// Literal for code: NONERightLowerLobeOfLung
+    /// </summary>
+    public const string LiteralNONERightLowerLobeOfLung = "http://snomed.info/sct#266005";
+
+    /// <summary>
     /// Literal for code: StructureOfSemispinalisCapitisMuscle
     /// </summary>
     public const string LiteralStructureOfSemispinalisCapitisMuscle = "2666009";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfSemispinalisCapitisMuscle
+    /// </summary>
+    public const string LiteralNONEStructureOfSemispinalisCapitisMuscle = "http://snomed.info/sct#2666009";
 
     /// <summary>
     /// Literal for code: StructureOfAnteriorCutaneousBranchOfLumbosacralPlexus
@@ -9968,9 +10918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfAnteriorCutaneousBranchOfLumbosacralPlexus = "2672009";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfAnteriorCutaneousBranchOfLumbosacralPlexus
+    /// </summary>
+    public const string LiteralNONEStructureOfAnteriorCutaneousBranchOfLumbosacralPlexus = "http://snomed.info/sct#2672009";
+
+    /// <summary>
     /// Literal for code: StructureOfAnteriorEthmoidalArtery
     /// </summary>
     public const string LiteralStructureOfAnteriorEthmoidalArtery = "2675006";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfAnteriorEthmoidalArtery
+    /// </summary>
+    public const string LiteralNONEStructureOfAnteriorEthmoidalArtery = "http://snomed.info/sct#2675006";
 
     /// <summary>
     /// Literal for code: StructureOfDorsalNerveOfPenis
@@ -9978,9 +10938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfDorsalNerveOfPenis = "2681003";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfDorsalNerveOfPenis
+    /// </summary>
+    public const string LiteralNONEStructureOfDorsalNerveOfPenis = "http://snomed.info/sct#2681003";
+
+    /// <summary>
     /// Literal for code: BladderMucosa
     /// </summary>
     public const string LiteralBladderMucosa = "2682005";
+
+    /// <summary>
+    /// Literal for code: NONEBladderMucosa
+    /// </summary>
+    public const string LiteralNONEBladderMucosa = "http://snomed.info/sct#2682005";
 
     /// <summary>
     /// Literal for code: StructureOfMedialOlfactoryGyrus
@@ -9988,9 +10958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfMedialOlfactoryGyrus = "2686008";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfMedialOlfactoryGyrus
+    /// </summary>
+    public const string LiteralNONEStructureOfMedialOlfactoryGyrus = "http://snomed.info/sct#2686008";
+
+    /// <summary>
     /// Literal for code: StructureOfBowmanSpace
     /// </summary>
     public const string LiteralStructureOfBowmanSpace = "2687004";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfBowmanSpace
+    /// </summary>
+    public const string LiteralNONEStructureOfBowmanSpace = "http://snomed.info/sct#2687004";
 
     /// <summary>
     /// Literal for code: LeftMaxillarySinusStructure
@@ -9998,9 +10978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeftMaxillarySinusStructure = "2695000";
 
     /// <summary>
+    /// Literal for code: NONELeftMaxillarySinusStructure
+    /// </summary>
+    public const string LiteralNONELeftMaxillarySinusStructure = "http://snomed.info/sct#2695000";
+
+    /// <summary>
     /// Literal for code: EntireCalcarineArtery
     /// </summary>
     public const string LiteralEntireCalcarineArtery = "2703009";
+
+    /// <summary>
+    /// Literal for code: NONEEntireCalcarineArtery
+    /// </summary>
+    public const string LiteralNONEEntireCalcarineArtery = "http://snomed.info/sct#2703009";
 
     /// <summary>
     /// Literal for code: StructureOfCapsuleOfAnkleJoint
@@ -10008,9 +10998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfCapsuleOfAnkleJoint = "2712006";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfCapsuleOfAnkleJoint
+    /// </summary>
+    public const string LiteralNONEStructureOfCapsuleOfAnkleJoint = "http://snomed.info/sct#2712006";
+
+    /// <summary>
     /// Literal for code: StructureOfApicalForamenOfTooth
     /// </summary>
     public const string LiteralStructureOfApicalForamenOfTooth = "2718005";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfApicalForamenOfTooth
+    /// </summary>
+    public const string LiteralNONEStructureOfApicalForamenOfTooth = "http://snomed.info/sct#2718005";
 
     /// <summary>
     /// Literal for code: SuperiorArticularProcessOfLumbarVertebra
@@ -10018,9 +11018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuperiorArticularProcessOfLumbarVertebra = "272005";
 
     /// <summary>
+    /// Literal for code: NONESuperiorArticularProcessOfLumbarVertebra
+    /// </summary>
+    public const string LiteralNONESuperiorArticularProcessOfLumbarVertebra = "http://snomed.info/sct#272005";
+
+    /// <summary>
     /// Literal for code: StructureOfFoldForStapes
     /// </summary>
     public const string LiteralStructureOfFoldForStapes = "2726002";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfFoldForStapes
+    /// </summary>
+    public const string LiteralNONEStructureOfFoldForStapes = "http://snomed.info/sct#2726002";
 
     /// <summary>
     /// Literal for code: LateralMyocardium
@@ -10028,9 +11038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLateralMyocardium = "273000";
 
     /// <summary>
+    /// Literal for code: NONELateralMyocardium
+    /// </summary>
+    public const string LiteralNONELateralMyocardium = "http://snomed.info/sct#273000";
+
+    /// <summary>
     /// Literal for code: EntireVitellineVeinOfPlacenta
     /// </summary>
     public const string LiteralEntireVitellineVeinOfPlacenta = "2730004";
+
+    /// <summary>
+    /// Literal for code: NONEEntireVitellineVeinOfPlacenta
+    /// </summary>
+    public const string LiteralNONEEntireVitellineVeinOfPlacenta = "http://snomed.info/sct#2730004";
 
     /// <summary>
     /// Literal for code: EndometrialStructure
@@ -10038,9 +11058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndometrialStructure = "2739003";
 
     /// <summary>
+    /// Literal for code: NONEEndometrialStructure
+    /// </summary>
+    public const string LiteralNONEEndometrialStructure = "http://snomed.info/sct#2739003";
+
+    /// <summary>
     /// Literal for code: StructureOfMedialOccipitotemporalGyrus
     /// </summary>
     public const string LiteralStructureOfMedialOccipitotemporalGyrus = "2741002";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfMedialOccipitotemporalGyrus
+    /// </summary>
+    public const string LiteralNONEStructureOfMedialOccipitotemporalGyrus = "http://snomed.info/sct#2741002";
 
     /// <summary>
     /// Literal for code: CircularLayerOfGastricMuscularis
@@ -10048,9 +11078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCircularLayerOfGastricMuscularis = "2746007";
 
     /// <summary>
+    /// Literal for code: NONECircularLayerOfGastricMuscularis
+    /// </summary>
+    public const string LiteralNONECircularLayerOfGastricMuscularis = "http://snomed.info/sct#2746007";
+
+    /// <summary>
     /// Literal for code: SpinalCordStructure
     /// </summary>
     public const string LiteralSpinalCordStructure = "2748008";
+
+    /// <summary>
+    /// Literal for code: NONESpinalCordStructure
+    /// </summary>
+    public const string LiteralNONESpinalCordStructure = "http://snomed.info/sct#2748008";
 
     /// <summary>
     /// Literal for code: EccrineGlandStructure
@@ -10058,9 +11098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEccrineGlandStructure = "2759004";
 
     /// <summary>
+    /// Literal for code: NONEEccrineGlandStructure
+    /// </summary>
+    public const string LiteralNONEEccrineGlandStructure = "http://snomed.info/sct#2759004";
+
+    /// <summary>
     /// Literal for code: LaminaPropriaOfUreter
     /// </summary>
     public const string LiteralLaminaPropriaOfUreter = "2771005";
+
+    /// <summary>
+    /// Literal for code: NONELaminaPropriaOfUreter
+    /// </summary>
+    public const string LiteralNONELaminaPropriaOfUreter = "http://snomed.info/sct#2771005";
 
     /// <summary>
     /// Literal for code: ApocrineGlandStructure
@@ -10068,9 +11118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralApocrineGlandStructure = "2789006";
 
     /// <summary>
+    /// Literal for code: NONEApocrineGlandStructure
+    /// </summary>
+    public const string LiteralNONEApocrineGlandStructure = "http://snomed.info/sct#2789006";
+
+    /// <summary>
     /// Literal for code: StructureOfParsTensaOfTympanicMembrane
     /// </summary>
     public const string LiteralStructureOfParsTensaOfTympanicMembrane = "2792005";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfParsTensaOfTympanicMembrane
+    /// </summary>
+    public const string LiteralNONEStructureOfParsTensaOfTympanicMembrane = "http://snomed.info/sct#2792005";
 
     /// <summary>
     /// Literal for code: StructureOfTendonSheathOfPopliteusMuscle
@@ -10078,9 +11138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfTendonSheathOfPopliteusMuscle = "2803000";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfTendonSheathOfPopliteusMuscle
+    /// </summary>
+    public const string LiteralNONEStructureOfTendonSheathOfPopliteusMuscle = "http://snomed.info/sct#2803000";
+
+    /// <summary>
     /// Literal for code: StructureOfCremastericFascia
     /// </summary>
     public const string LiteralStructureOfCremastericFascia = "2810006";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfCremastericFascia
+    /// </summary>
+    public const string LiteralNONEStructureOfCremastericFascia = "http://snomed.info/sct#2810006";
 
     /// <summary>
     /// Literal for code: StructureOfHeadOfFemur
@@ -10088,9 +11158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfHeadOfFemur = "2812003";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfHeadOfFemur
+    /// </summary>
+    public const string LiteralNONEStructureOfHeadOfFemur = "http://snomed.info/sct#2812003";
+
+    /// <summary>
     /// Literal for code: StructureOfSpinousProcessOfFourthThoracicVertebra
     /// </summary>
     public const string LiteralStructureOfSpinousProcessOfFourthThoracicVertebra = "2824005";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfSpinousProcessOfFourthThoracicVertebra
+    /// </summary>
+    public const string LiteralNONEStructureOfSpinousProcessOfFourthThoracicVertebra = "http://snomed.info/sct#2824005";
 
     /// <summary>
     /// Literal for code: StructureOfLaminaOfFourthLumbarVertebra
@@ -10098,9 +11178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfLaminaOfFourthLumbarVertebra = "2826007";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfLaminaOfFourthLumbarVertebra
+    /// </summary>
+    public const string LiteralNONEStructureOfLaminaOfFourthLumbarVertebra = "http://snomed.info/sct#2826007";
+
+    /// <summary>
     /// Literal for code: StructureOfDorsalDigitalNervesOfLateralHalluxAndMedialSecondToe
     /// </summary>
     public const string LiteralStructureOfDorsalDigitalNervesOfLateralHalluxAndMedialSecondToe = "2830005";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfDorsalDigitalNervesOfLateralHalluxAndMedialSecondToe
+    /// </summary>
+    public const string LiteralNONEStructureOfDorsalDigitalNervesOfLateralHalluxAndMedialSecondToe = "http://snomed.info/sct#2830005";
 
     /// <summary>
     /// Literal for code: CentralAxillaryLymphNode
@@ -10108,9 +11198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCentralAxillaryLymphNode = "283001";
 
     /// <summary>
+    /// Literal for code: NONECentralAxillaryLymphNode
+    /// </summary>
+    public const string LiteralNONECentralAxillaryLymphNode = "http://snomed.info/sct#283001";
+
+    /// <summary>
     /// Literal for code: StructureOfPerivesicularTissuesOfSeminalVesicles
     /// </summary>
     public const string LiteralStructureOfPerivesicularTissuesOfSeminalVesicles = "2839006";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfPerivesicularTissuesOfSeminalVesicles
+    /// </summary>
+    public const string LiteralNONEStructureOfPerivesicularTissuesOfSeminalVesicles = "http://snomed.info/sct#2839006";
 
     /// <summary>
     /// Literal for code: FlexorTendonAndTendonSheathOfFourthToe
@@ -10118,9 +11218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFlexorTendonAndTendonSheathOfFourthToe = "284007";
 
     /// <summary>
+    /// Literal for code: NONEFlexorTendonAndTendonSheathOfFourthToe
+    /// </summary>
+    public const string LiteralNONEFlexorTendonAndTendonSheathOfFourthToe = "http://snomed.info/sct#284007";
+
+    /// <summary>
     /// Literal for code: RenalArteryStructure
     /// </summary>
     public const string LiteralRenalArteryStructure = "2841007";
+
+    /// <summary>
+    /// Literal for code: NONERenalArteryStructure
+    /// </summary>
+    public const string LiteralNONERenalArteryStructure = "http://snomed.info/sct#2841007";
 
     /// <summary>
     /// Literal for code: StructureOfRespiratoryEpithelium
@@ -10128,9 +11238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfRespiratoryEpithelium = "2845003";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfRespiratoryEpithelium
+    /// </summary>
+    public const string LiteralNONEStructureOfRespiratoryEpithelium = "http://snomed.info/sct#2845003";
+
+    /// <summary>
     /// Literal for code: StructureOfSuperficialEpigastricArtery
     /// </summary>
     public const string LiteralStructureOfSuperficialEpigastricArtery = "2848001";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfSuperficialEpigastricArtery
+    /// </summary>
+    public const string LiteralNONEStructureOfSuperficialEpigastricArtery = "http://snomed.info/sct#2848001";
 
     /// <summary>
     /// Literal for code: StructureOfAccessoryCephalicVein
@@ -10138,9 +11258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfAccessoryCephalicVein = "2855004";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfAccessoryCephalicVein
+    /// </summary>
+    public const string LiteralNONEStructureOfAccessoryCephalicVein = "http://snomed.info/sct#2855004";
+
+    /// <summary>
     /// Literal for code: EntireGlandOrgan
     /// </summary>
     public const string LiteralEntireGlandOrgan = "2861001";
+
+    /// <summary>
+    /// Literal for code: NONEEntireGlandOrgan
+    /// </summary>
+    public const string LiteralNONEEntireGlandOrgan = "http://snomed.info/sct#2861001";
 
     /// <summary>
     /// Literal for code: MetacarpophalangealJointOfIndexFinger
@@ -10148,9 +11278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMetacarpophalangealJointOfIndexFinger = "289002";
 
     /// <summary>
+    /// Literal for code: NONEMetacarpophalangealJointOfIndexFinger
+    /// </summary>
+    public const string LiteralNONEMetacarpophalangealJointOfIndexFinger = "http://snomed.info/sct#289002";
+
+    /// <summary>
     /// Literal for code: StructureOfPosteriorEpiglottis
     /// </summary>
     public const string LiteralStructureOfPosteriorEpiglottis = "2894003";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfPosteriorEpiglottis
+    /// </summary>
+    public const string LiteralNONEStructureOfPosteriorEpiglottis = "http://snomed.info/sct#2894003";
 
     /// <summary>
     /// Literal for code: StructureOfAnteriorLigamentOfUterus
@@ -10158,9 +11298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfAnteriorLigamentOfUterus = "2905008";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfAnteriorLigamentOfUterus
+    /// </summary>
+    public const string LiteralNONEStructureOfAnteriorLigamentOfUterus = "http://snomed.info/sct#2905008";
+
+    /// <summary>
     /// Literal for code: StructureOfPosteriorPortionOfDiaphragmaticAspectOfLiver
     /// </summary>
     public const string LiteralStructureOfPosteriorPortionOfDiaphragmaticAspectOfLiver = "2909002";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfPosteriorPortionOfDiaphragmaticAspectOfLiver
+    /// </summary>
+    public const string LiteralNONEStructureOfPosteriorPortionOfDiaphragmaticAspectOfLiver = "http://snomed.info/sct#2909002";
 
     /// <summary>
     /// Literal for code: StructureOfFacialNerveMotorBranch
@@ -10168,9 +11318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfFacialNerveMotorBranch = "2920002";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfFacialNerveMotorBranch
+    /// </summary>
+    public const string LiteralNONEStructureOfFacialNerveMotorBranch = "http://snomed.info/sct#2920002";
+
+    /// <summary>
     /// Literal for code: StructureOfPosteriorPapillaryMuscleOfLeftVentricle
     /// </summary>
     public const string LiteralStructureOfPosteriorPapillaryMuscleOfLeftVentricle = "2922005";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfPosteriorPapillaryMuscleOfLeftVentricle
+    /// </summary>
+    public const string LiteralNONEStructureOfPosteriorPapillaryMuscleOfLeftVentricle = "http://snomed.info/sct#2922005";
 
     /// <summary>
     /// Literal for code: SubcutaneousTissueStructureOfSupraorbitalArea
@@ -10178,9 +11338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubcutaneousTissueStructureOfSupraorbitalArea = "2923000";
 
     /// <summary>
+    /// Literal for code: NONESubcutaneousTissueStructureOfSupraorbitalArea
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueStructureOfSupraorbitalArea = "http://snomed.info/sct#2923000";
+
+    /// <summary>
     /// Literal for code: SupernumeraryDeciduousTooth
     /// </summary>
     public const string LiteralSupernumeraryDeciduousTooth = "2954001";
+
+    /// <summary>
+    /// Literal for code: NONESupernumeraryDeciduousTooth
+    /// </summary>
+    public const string LiteralNONESupernumeraryDeciduousTooth = "http://snomed.info/sct#2954001";
 
     /// <summary>
     /// Literal for code: AnatomicalSpaceStructure
@@ -10188,9 +11358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnatomicalSpaceStructure = "2969000";
 
     /// <summary>
+    /// Literal for code: NONEAnatomicalSpaceStructure
+    /// </summary>
+    public const string LiteralNONEAnatomicalSpaceStructure = "http://snomed.info/sct#2969000";
+
+    /// <summary>
     /// Literal for code: BoneStructureOfMedialCuneiform
     /// </summary>
     public const string LiteralBoneStructureOfMedialCuneiform = "2979003";
+
+    /// <summary>
+    /// Literal for code: NONEBoneStructureOfMedialCuneiform
+    /// </summary>
+    public const string LiteralNONEBoneStructureOfMedialCuneiform = "http://snomed.info/sct#2979003";
 
     /// <summary>
     /// Literal for code: StructureOfTalarFacetOfNavicularBoneOfFoot
@@ -10198,9 +11378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfTalarFacetOfNavicularBoneOfFoot = "2986006";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfTalarFacetOfNavicularBoneOfFoot
+    /// </summary>
+    public const string LiteralNONEStructureOfTalarFacetOfNavicularBoneOfFoot = "http://snomed.info/sct#2986006";
+
+    /// <summary>
     /// Literal for code: EntireRightMarginOfUterus
     /// </summary>
     public const string LiteralEntireRightMarginOfUterus = "2998001";
+
+    /// <summary>
+    /// Literal for code: NONEEntireRightMarginOfUterus
+    /// </summary>
+    public const string LiteralNONEEntireRightMarginOfUterus = "http://snomed.info/sct#2998001";
 
     /// <summary>
     /// Literal for code: InternalCapsuleAnteriorLimbStructure
@@ -10208,9 +11398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInternalCapsuleAnteriorLimbStructure = "3003007";
 
     /// <summary>
+    /// Literal for code: NONEInternalCapsuleAnteriorLimbStructure
+    /// </summary>
+    public const string LiteralNONEInternalCapsuleAnteriorLimbStructure = "http://snomed.info/sct#3003007";
+
+    /// <summary>
     /// Literal for code: WhiteFibrocartilage
     /// </summary>
     public const string LiteralWhiteFibrocartilage = "3008003";
+
+    /// <summary>
+    /// Literal for code: NONEWhiteFibrocartilage
+    /// </summary>
+    public const string LiteralNONEWhiteFibrocartilage = "http://snomed.info/sct#3008003";
 
     /// <summary>
     /// Literal for code: FifthMetatarsalBone
@@ -10218,9 +11418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFifthMetatarsalBone = "301000";
 
     /// <summary>
+    /// Literal for code: NONEFifthMetatarsalBone
+    /// </summary>
+    public const string LiteralNONEFifthMetatarsalBone = "http://snomed.info/sct#301000";
+
+    /// <summary>
     /// Literal for code: TransitionalEpithelialCell
     /// </summary>
     public const string LiteralTransitionalEpithelialCell = "3028004";
+
+    /// <summary>
+    /// Literal for code: NONETransitionalEpithelialCell
+    /// </summary>
+    public const string LiteralNONETransitionalEpithelialCell = "http://snomed.info/sct#3028004";
 
     /// <summary>
     /// Literal for code: SubcutaneousTissueStructureOfThigh
@@ -10228,9 +11438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubcutaneousTissueStructureOfThigh = "3039001";
 
     /// <summary>
+    /// Literal for code: NONESubcutaneousTissueStructureOfThigh
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueStructureOfThigh = "http://snomed.info/sct#3039001";
+
+    /// <summary>
     /// Literal for code: StructureOfGlomerularUrinaryPole
     /// </summary>
     public const string LiteralStructureOfGlomerularUrinaryPole = "3042007";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfGlomerularUrinaryPole
+    /// </summary>
+    public const string LiteralNONEStructureOfGlomerularUrinaryPole = "http://snomed.info/sct#3042007";
 
     /// <summary>
     /// Literal for code: StructureOfArticularSurfaceMetacarpalOfPhalanxOfThumb
@@ -10238,9 +11458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfArticularSurfaceMetacarpalOfPhalanxOfThumb = "3054007";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfArticularSurfaceMetacarpalOfPhalanxOfThumb
+    /// </summary>
+    public const string LiteralNONEStructureOfArticularSurfaceMetacarpalOfPhalanxOfThumb = "http://snomed.info/sct#3054007";
+
+    /// <summary>
     /// Literal for code: StructureOfBoneMarrowOfVertebralBody
     /// </summary>
     public const string LiteralStructureOfBoneMarrowOfVertebralBody = "3055008";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfBoneMarrowOfVertebralBody
+    /// </summary>
+    public const string LiteralNONEStructureOfBoneMarrowOfVertebralBody = "http://snomed.info/sct#3055008";
 
     /// <summary>
     /// Literal for code: StructureOfAnteroventralNucleusOfThalamus
@@ -10248,9 +11478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfAnteroventralNucleusOfThalamus = "3056009";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfAnteroventralNucleusOfThalamus
+    /// </summary>
+    public const string LiteralNONEStructureOfAnteroventralNucleusOfThalamus = "http://snomed.info/sct#3056009";
+
+    /// <summary>
     /// Literal for code: NerveStructure
     /// </summary>
     public const string LiteralNerveStructure = "3057000";
+
+    /// <summary>
+    /// Literal for code: NONENerveStructure
+    /// </summary>
+    public const string LiteralNONENerveStructure = "http://snomed.info/sct#3057000";
 
     /// <summary>
     /// Literal for code: PNSPeripheralNervousSystem
@@ -10258,9 +11498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPNSPeripheralNervousSystem = "3058005";
 
     /// <summary>
+    /// Literal for code: NONEPNSPeripheralNervousSystem
+    /// </summary>
+    public const string LiteralNONEPNSPeripheralNervousSystem = "http://snomed.info/sct#3058005";
+
+    /// <summary>
     /// Literal for code: SpinalArachnoid
     /// </summary>
     public const string LiteralSpinalArachnoid = "3062004";
+
+    /// <summary>
+    /// Literal for code: NONESpinalArachnoid
+    /// </summary>
+    public const string LiteralNONESpinalArachnoid = "http://snomed.info/sct#3062004";
 
     /// <summary>
     /// Literal for code: StructureOfSeminalVesicleLumen
@@ -10268,9 +11518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfSeminalVesicleLumen = "3068000";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfSeminalVesicleLumen
+    /// </summary>
+    public const string LiteralNONEStructureOfSeminalVesicleLumen = "http://snomed.info/sct#3068000";
+
+    /// <summary>
     /// Literal for code: MitochondrionInDivision
     /// </summary>
     public const string LiteralMitochondrionInDivision = "3081007";
+
+    /// <summary>
+    /// Literal for code: NONEMitochondrionInDivision
+    /// </summary>
+    public const string LiteralNONEMitochondrionInDivision = "http://snomed.info/sct#3081007";
 
     /// <summary>
     /// Literal for code: StructureOfTendinousArchOfPelvicFascia
@@ -10278,9 +11538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfTendinousArchOfPelvicFascia = "3093003";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfTendinousArchOfPelvicFascia
+    /// </summary>
+    public const string LiteralNONEStructureOfTendinousArchOfPelvicFascia = "http://snomed.info/sct#3093003";
+
+    /// <summary>
     /// Literal for code: ClinicalCrownOfTooth
     /// </summary>
     public const string LiteralClinicalCrownOfTooth = "3100007";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalCrownOfTooth
+    /// </summary>
+    public const string LiteralNONEClinicalCrownOfTooth = "http://snomed.info/sct#3100007";
 
     /// <summary>
     /// Literal for code: PlantarSurfaceOfGreatToe
@@ -10288,9 +11558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPlantarSurfaceOfGreatToe = "311007";
 
     /// <summary>
+    /// Literal for code: NONEPlantarSurfaceOfGreatToe
+    /// </summary>
+    public const string LiteralNONEPlantarSurfaceOfGreatToe = "http://snomed.info/sct#311007";
+
+    /// <summary>
     /// Literal for code: StructureOfSuprachoroidalSpace
     /// </summary>
     public const string LiteralStructureOfSuprachoroidalSpace = "3113001";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfSuprachoroidalSpace
+    /// </summary>
+    public const string LiteralNONEStructureOfSuprachoroidalSpace = "http://snomed.info/sct#3113001";
 
     /// <summary>
     /// Literal for code: StructureOfDorsalSurfaceOfIndexFinger
@@ -10298,9 +11578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfDorsalSurfaceOfIndexFinger = "3117000";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfDorsalSurfaceOfIndexFinger
+    /// </summary>
+    public const string LiteralNONEStructureOfDorsalSurfaceOfIndexFinger = "http://snomed.info/sct#3117000";
+
+    /// <summary>
     /// Literal for code: StructureOfTrabeculaCarneaOfLeftVentricle
     /// </summary>
     public const string LiteralStructureOfTrabeculaCarneaOfLeftVentricle = "3118005";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfTrabeculaCarneaOfLeftVentricle
+    /// </summary>
+    public const string LiteralNONEStructureOfTrabeculaCarneaOfLeftVentricle = "http://snomed.info/sct#3118005";
 
     /// <summary>
     /// Literal for code: PleuralMembraneStructure
@@ -10308,9 +11598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPleuralMembraneStructure = "3120008";
 
     /// <summary>
+    /// Literal for code: NONEPleuralMembraneStructure
+    /// </summary>
+    public const string LiteralNONEPleuralMembraneStructure = "http://snomed.info/sct#3120008";
+
+    /// <summary>
     /// Literal for code: StructureOfHeadOfFourthMetatarsalBone
     /// </summary>
     public const string LiteralStructureOfHeadOfFourthMetatarsalBone = "3134008";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfHeadOfFourthMetatarsalBone
+    /// </summary>
+    public const string LiteralNONEStructureOfHeadOfFourthMetatarsalBone = "http://snomed.info/sct#3134008";
 
     /// <summary>
     /// Literal for code: BoneTissue
@@ -10318,9 +11618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBoneTissue = "3138006";
 
     /// <summary>
+    /// Literal for code: NONEBoneTissue
+    /// </summary>
+    public const string LiteralNONEBoneTissue = "http://snomed.info/sct#3138006";
+
+    /// <summary>
     /// Literal for code: SkinOfUmbilicus
     /// </summary>
     public const string LiteralSkinOfUmbilicus = "315003";
+
+    /// <summary>
+    /// Literal for code: NONESkinOfUmbilicus
+    /// </summary>
+    public const string LiteralNONESkinOfUmbilicus = "http://snomed.info/sct#315003";
 
     /// <summary>
     /// Literal for code: StructureOfTractusOlivocochlearis
@@ -10328,9 +11638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfTractusOlivocochlearis = "3153003";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfTractusOlivocochlearis
+    /// </summary>
+    public const string LiteralNONEStructureOfTractusOlivocochlearis = "http://snomed.info/sct#3153003";
+
+    /// <summary>
     /// Literal for code: StructureOfObturatorArtery
     /// </summary>
     public const string LiteralStructureOfObturatorArtery = "3156006";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfObturatorArtery
+    /// </summary>
+    public const string LiteralNONEStructureOfObturatorArtery = "http://snomed.info/sct#3156006";
 
     /// <summary>
     /// Literal for code: StructureOfCostocervicalTrunk
@@ -10338,9 +11658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfCostocervicalTrunk = "3159004";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfCostocervicalTrunk
+    /// </summary>
+    public const string LiteralNONEStructureOfCostocervicalTrunk = "http://snomed.info/sct#3159004";
+
+    /// <summary>
     /// Literal for code: SpinalNerveStructure
     /// </summary>
     public const string LiteralSpinalNerveStructure = "3169005";
+
+    /// <summary>
+    /// Literal for code: NONESpinalNerveStructure
+    /// </summary>
+    public const string LiteralNONESpinalNerveStructure = "http://snomed.info/sct#3169005";
 
     /// <summary>
     /// Literal for code: StructureOfRapheOfSoftPalate
@@ -10348,9 +11678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfRapheOfSoftPalate = "3178004";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfRapheOfSoftPalate
+    /// </summary>
+    public const string LiteralNONEStructureOfRapheOfSoftPalate = "http://snomed.info/sct#3178004";
+
+    /// <summary>
     /// Literal for code: CardiacImpressionOfLiver
     /// </summary>
     public const string LiteralCardiacImpressionOfLiver = "318001";
+
+    /// <summary>
+    /// Literal for code: NONECardiacImpressionOfLiver
+    /// </summary>
+    public const string LiteralNONECardiacImpressionOfLiver = "http://snomed.info/sct#318001";
 
     /// <summary>
     /// Literal for code: EndocardiumOfRightAtrium
@@ -10358,9 +11698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndocardiumOfRightAtrium = "3194006";
 
     /// <summary>
+    /// Literal for code: NONEEndocardiumOfRightAtrium
+    /// </summary>
+    public const string LiteralNONEEndocardiumOfRightAtrium = "http://snomed.info/sct#3194006";
+
+    /// <summary>
     /// Literal for code: MonostomaticSublingualGland
     /// </summary>
     public const string LiteralMonostomaticSublingualGland = "3198009";
+
+    /// <summary>
+    /// Literal for code: NONEMonostomaticSublingualGland
+    /// </summary>
+    public const string LiteralNONEMonostomaticSublingualGland = "http://snomed.info/sct#3198009";
 
     /// <summary>
     /// Literal for code: SubcutaneousTissueStructureOfNuchalRegion
@@ -10368,9 +11718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubcutaneousTissueStructureOfNuchalRegion = "3215002";
 
     /// <summary>
+    /// Literal for code: NONESubcutaneousTissueStructureOfNuchalRegion
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueStructureOfNuchalRegion = "http://snomed.info/sct#3215002";
+
+    /// <summary>
     /// Literal for code: AllLargeArteries
     /// </summary>
     public const string LiteralAllLargeArteries = "3222005";
+
+    /// <summary>
+    /// Literal for code: NONEAllLargeArteries
+    /// </summary>
+    public const string LiteralNONEAllLargeArteries = "http://snomed.info/sct#3222005";
 
     /// <summary>
     /// Literal for code: LeftCoronaryArteryMainStem
@@ -10378,9 +11738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeftCoronaryArteryMainStem = "3227004";
 
     /// <summary>
+    /// Literal for code: NONELeftCoronaryArteryMainStem
+    /// </summary>
+    public const string LiteralNONELeftCoronaryArteryMainStem = "http://snomed.info/sct#3227004";
+
+    /// <summary>
     /// Literal for code: StructureOfPosteriorSegmentOfRightUpperLobeOfLung
     /// </summary>
     public const string LiteralStructureOfPosteriorSegmentOfRightUpperLobeOfLung = "3236000";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfPosteriorSegmentOfRightUpperLobeOfLung
+    /// </summary>
+    public const string LiteralNONEStructureOfPosteriorSegmentOfRightUpperLobeOfLung = "http://snomed.info/sct#3236000";
 
     /// <summary>
     /// Literal for code: StructureOfParametrialLymphNode
@@ -10388,9 +11758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfParametrialLymphNode = "3243006";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfParametrialLymphNode
+    /// </summary>
+    public const string LiteralNONEStructureOfParametrialLymphNode = "http://snomed.info/sct#3243006";
+
+    /// <summary>
     /// Literal for code: PapillaryArea
     /// </summary>
     public const string LiteralPapillaryArea = "3255000";
+
+    /// <summary>
+    /// Literal for code: NONEPapillaryArea
+    /// </summary>
+    public const string LiteralNONEPapillaryArea = "http://snomed.info/sct#3255000";
 
     /// <summary>
     /// Literal for code: StructureOfRootCanalOfTooth
@@ -10398,9 +11778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfRootCanalOfTooth = "3262009";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfRootCanalOfTooth
+    /// </summary>
+    public const string LiteralNONEStructureOfRootCanalOfTooth = "http://snomed.info/sct#3262009";
+
+    /// <summary>
     /// Literal for code: StructureOfPedicleOfThirdCervicalVertebra
     /// </summary>
     public const string LiteralStructureOfPedicleOfThirdCervicalVertebra = "3279003";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfPedicleOfThirdCervicalVertebra
+    /// </summary>
+    public const string LiteralNONEStructureOfPedicleOfThirdCervicalVertebra = "http://snomed.info/sct#3279003";
 
     /// <summary>
     /// Literal for code: StructureOfVentralAnteriorNucleusOfThalamus
@@ -10408,9 +11798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfVentralAnteriorNucleusOfThalamus = "3295003";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfVentralAnteriorNucleusOfThalamus
+    /// </summary>
+    public const string LiteralNONEStructureOfVentralAnteriorNucleusOfThalamus = "http://snomed.info/sct#3295003";
+
+    /// <summary>
     /// Literal for code: TectopontineFibers
     /// </summary>
     public const string LiteralTectopontineFibers = "3301002";
+
+    /// <summary>
+    /// Literal for code: NONETectopontineFibers
+    /// </summary>
+    public const string LiteralNONETectopontineFibers = "http://snomed.info/sct#3301002";
 
     /// <summary>
     /// Literal for code: SplenicBranchOfSplenicArtery
@@ -10418,9 +11818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSplenicBranchOfSplenicArtery = "3302009";
 
     /// <summary>
+    /// Literal for code: NONESplenicBranchOfSplenicArtery
+    /// </summary>
+    public const string LiteralNONESplenicBranchOfSplenicArtery = "http://snomed.info/sct#3302009";
+
+    /// <summary>
     /// Literal for code: StructureOfVestibulospinalTract
     /// </summary>
     public const string LiteralStructureOfVestibulospinalTract = "3315000";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfVestibulospinalTract
+    /// </summary>
+    public const string LiteralNONEStructureOfVestibulospinalTract = "http://snomed.info/sct#3315000";
 
     /// <summary>
     /// Literal for code: OccipitofrontalDiameterOfHead
@@ -10428,9 +11838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOccipitofrontalDiameterOfHead = "3332001";
 
     /// <summary>
+    /// Literal for code: NONEOccipitofrontalDiameterOfHead
+    /// </summary>
+    public const string LiteralNONEOccipitofrontalDiameterOfHead = "http://snomed.info/sct#3332001";
+
+    /// <summary>
     /// Literal for code: HaversianCanal
     /// </summary>
     public const string LiteralHaversianCanal = "3336003";
+
+    /// <summary>
+    /// Literal for code: NONEHaversianCanal
+    /// </summary>
+    public const string LiteralNONEHaversianCanal = "http://snomed.info/sct#3336003";
 
     /// <summary>
     /// Literal for code: RightLungStructure
@@ -10438,9 +11858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRightLungStructure = "3341006";
 
     /// <summary>
+    /// Literal for code: NONERightLungStructure
+    /// </summary>
+    public const string LiteralNONERightLungStructure = "http://snomed.info/sct#3341006";
+
+    /// <summary>
     /// Literal for code: EntireRightCommissureOfPulmonicValve
     /// </summary>
     public const string LiteralEntireRightCommissureOfPulmonicValve = "3350008";
+
+    /// <summary>
+    /// Literal for code: NONEEntireRightCommissureOfPulmonicValve
+    /// </summary>
+    public const string LiteralNONEEntireRightCommissureOfPulmonicValve = "http://snomed.info/sct#3350008";
 
     /// <summary>
     /// Literal for code: IntertragalIncisureStructure
@@ -10448,9 +11878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntertragalIncisureStructure = "3362007";
 
     /// <summary>
+    /// Literal for code: NONEIntertragalIncisureStructure
+    /// </summary>
+    public const string LiteralNONEIntertragalIncisureStructure = "http://snomed.info/sct#3362007";
+
+    /// <summary>
     /// Literal for code: StructureOfAnteriorPapillaryMuscleOfLeftVentricle
     /// </summary>
     public const string LiteralStructureOfAnteriorPapillaryMuscleOfLeftVentricle = "3366005";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfAnteriorPapillaryMuscleOfLeftVentricle
+    /// </summary>
+    public const string LiteralNONEStructureOfAnteriorPapillaryMuscleOfLeftVentricle = "http://snomed.info/sct#3366005";
 
     /// <summary>
     /// Literal for code: StructureOfSupportingTissueOfRectum
@@ -10458,9 +11898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfSupportingTissueOfRectum = "3370002";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfSupportingTissueOfRectum
+    /// </summary>
+    public const string LiteralNONEStructureOfSupportingTissueOfRectum = "http://snomed.info/sct#3370002";
+
+    /// <summary>
     /// Literal for code: SecondarySpermatocyte
     /// </summary>
     public const string LiteralSecondarySpermatocyte = "3374006";
+
+    /// <summary>
+    /// Literal for code: NONESecondarySpermatocyte
+    /// </summary>
+    public const string LiteralNONESecondarySpermatocyte = "http://snomed.info/sct#3374006";
 
     /// <summary>
     /// Literal for code: StructureOfAggerNasi
@@ -10468,9 +11918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfAggerNasi = "3377004";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfAggerNasi
+    /// </summary>
+    public const string LiteralNONEStructureOfAggerNasi = "http://snomed.info/sct#3377004";
+
+    /// <summary>
     /// Literal for code: StructureOfRimaOris
     /// </summary>
     public const string LiteralStructureOfRimaOris = "3382006";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfRimaOris
+    /// </summary>
+    public const string LiteralNONEStructureOfRimaOris = "http://snomed.info/sct#3382006";
 
     /// <summary>
     /// Literal for code: NonsegmentedBasophil
@@ -10478,9 +11938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonsegmentedBasophil = "3383001";
 
     /// <summary>
+    /// Literal for code: NONENonsegmentedBasophil
+    /// </summary>
+    public const string LiteralNONENonsegmentedBasophil = "http://snomed.info/sct#3383001";
+
+    /// <summary>
     /// Literal for code: SuboccipitobregmaticDiameterOfHead
     /// </summary>
     public const string LiteralSuboccipitobregmaticDiameterOfHead = "3394002";
+
+    /// <summary>
+    /// Literal for code: NONESuboccipitobregmaticDiameterOfHead
+    /// </summary>
+    public const string LiteralNONESuboccipitobregmaticDiameterOfHead = "http://snomed.info/sct#3394002";
 
     /// <summary>
     /// Literal for code: StructureOfSuperiorPalpebralArch
@@ -10488,9 +11958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfSuperiorPalpebralArch = "3395001";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfSuperiorPalpebralArch
+    /// </summary>
+    public const string LiteralNONEStructureOfSuperiorPalpebralArch = "http://snomed.info/sct#3395001";
+
+    /// <summary>
     /// Literal for code: StructureOfMesogastrium
     /// </summary>
     public const string LiteralStructureOfMesogastrium = "3396000";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfMesogastrium
+    /// </summary>
+    public const string LiteralNONEStructureOfMesogastrium = "http://snomed.info/sct#3396000";
 
     /// <summary>
     /// Literal for code: CellOfBone
@@ -10498,9 +11978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCellOfBone = "3400000";
 
     /// <summary>
+    /// Literal for code: NONECellOfBone
+    /// </summary>
+    public const string LiteralNONECellOfBone = "http://snomed.info/sct#3400000";
+
+    /// <summary>
     /// Literal for code: StructureOfLateralMarginOfForearm
     /// </summary>
     public const string LiteralStructureOfLateralMarginOfForearm = "3409004";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfLateralMarginOfForearm
+    /// </summary>
+    public const string LiteralNONEStructureOfLateralMarginOfForearm = "http://snomed.info/sct#3409004";
 
     /// <summary>
     /// Literal for code: StructureOfRotatorMuscle
@@ -10508,9 +11998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfRotatorMuscle = "3417007";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfRotatorMuscle
+    /// </summary>
+    public const string LiteralNONEStructureOfRotatorMuscle = "http://snomed.info/sct#3417007";
+
+    /// <summary>
     /// Literal for code: DeepLymphaticOfUpperExtremity
     /// </summary>
     public const string LiteralDeepLymphaticOfUpperExtremity = "3438001";
+
+    /// <summary>
+    /// Literal for code: NONEDeepLymphaticOfUpperExtremity
+    /// </summary>
+    public const string LiteralNONEDeepLymphaticOfUpperExtremity = "http://snomed.info/sct#3438001";
 
     /// <summary>
     /// Literal for code: Ankle
@@ -10518,9 +12018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnkle = "344001";
 
     /// <summary>
+    /// Literal for code: NONEAnkle
+    /// </summary>
+    public const string LiteralNONEAnkle = "http://snomed.info/sct#344001";
+
+    /// <summary>
     /// Literal for code: ThalamostriateVein
     /// </summary>
     public const string LiteralThalamostriateVein = "3444002";
+
+    /// <summary>
+    /// Literal for code: NONEThalamostriateVein
+    /// </summary>
+    public const string LiteralNONEThalamostriateVein = "http://snomed.info/sct#3444002";
 
     /// <summary>
     /// Literal for code: PenetratedOocyte
@@ -10528,9 +12038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPenetratedOocyte = "3447009";
 
     /// <summary>
+    /// Literal for code: NONEPenetratedOocyte
+    /// </summary>
+    public const string LiteralNONEPenetratedOocyte = "http://snomed.info/sct#3447009";
+
+    /// <summary>
     /// Literal for code: PenetratingAtrioventricularBundle
     /// </summary>
     public const string LiteralPenetratingAtrioventricularBundle = "345000";
+
+    /// <summary>
+    /// Literal for code: NONEPenetratingAtrioventricularBundle
+    /// </summary>
+    public const string LiteralNONEPenetratingAtrioventricularBundle = "http://snomed.info/sct#345000";
 
     /// <summary>
     /// Literal for code: StructureOfAnterodorsalNucleusOfThalamus
@@ -10538,9 +12058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfAnterodorsalNucleusOfThalamus = "3460003";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfAnterodorsalNucleusOfThalamus
+    /// </summary>
+    public const string LiteralNONEStructureOfAnterodorsalNucleusOfThalamus = "http://snomed.info/sct#3460003";
+
+    /// <summary>
     /// Literal for code: StructureOfCommissureOfTricuspidValve
     /// </summary>
     public const string LiteralStructureOfCommissureOfTricuspidValve = "3462006";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfCommissureOfTricuspidValve
+    /// </summary>
+    public const string LiteralNONEStructureOfCommissureOfTricuspidValve = "http://snomed.info/sct#3462006";
 
     /// <summary>
     /// Literal for code: PosteriorMidlineOfTrunk
@@ -10548,9 +12078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPosteriorMidlineOfTrunk = "3471002";
 
     /// <summary>
+    /// Literal for code: NONEPosteriorMidlineOfTrunk
+    /// </summary>
+    public const string LiteralNONEPosteriorMidlineOfTrunk = "http://snomed.info/sct#3471002";
+
+    /// <summary>
     /// Literal for code: StructureOfVastusMedialisMuscle
     /// </summary>
     public const string LiteralStructureOfVastusMedialisMuscle = "3478008";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfVastusMedialisMuscle
+    /// </summary>
+    public const string LiteralNONEStructureOfVastusMedialisMuscle = "http://snomed.info/sct#3478008";
 
     /// <summary>
     /// Literal for code: StructureOfEmbryonicTestis
@@ -10558,9 +12098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfEmbryonicTestis = "3481003";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfEmbryonicTestis
+    /// </summary>
+    public const string LiteralNONEStructureOfEmbryonicTestis = "http://snomed.info/sct#3481003";
+
+    /// <summary>
     /// Literal for code: AnnulateLamellaCisternalLumen
     /// </summary>
     public const string LiteralAnnulateLamellaCisternalLumen = "3488009";
+
+    /// <summary>
+    /// Literal for code: NONEAnnulateLamellaCisternalLumen
+    /// </summary>
+    public const string LiteralNONEAnnulateLamellaCisternalLumen = "http://snomed.info/sct#3488009";
 
     /// <summary>
     /// Literal for code: SubcutaneousTissueStructureOfSuboccipitalRegion
@@ -10568,9 +12118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubcutaneousTissueStructureOfSuboccipitalRegion = "3490005";
 
     /// <summary>
+    /// Literal for code: NONESubcutaneousTissueStructureOfSuboccipitalRegion
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueStructureOfSuboccipitalRegion = "http://snomed.info/sct#3490005";
+
+    /// <summary>
     /// Literal for code: StructureOfLateralWallOfMastoidAntrum
     /// </summary>
     public const string LiteralStructureOfLateralWallOfMastoidAntrum = "3524005";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfLateralWallOfMastoidAntrum
+    /// </summary>
+    public const string LiteralNONEStructureOfLateralWallOfMastoidAntrum = "http://snomed.info/sct#3524005";
 
     /// <summary>
     /// Literal for code: StructureOfCapsuleOfProximalTibiofibularJoint
@@ -10578,9 +12138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfCapsuleOfProximalTibiofibularJoint = "3538003";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfCapsuleOfProximalTibiofibularJoint
+    /// </summary>
+    public const string LiteralNONEStructureOfCapsuleOfProximalTibiofibularJoint = "http://snomed.info/sct#3538003";
+
+    /// <summary>
     /// Literal for code: StructureOfDorsalMetatarsalArtery
     /// </summary>
     public const string LiteralStructureOfDorsalMetatarsalArtery = "3541007";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfDorsalMetatarsalArtery
+    /// </summary>
+    public const string LiteralNONEStructureOfDorsalMetatarsalArtery = "http://snomed.info/sct#3541007";
 
     /// <summary>
     /// Literal for code: StructureOfThyroidCapsule
@@ -10588,9 +12158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfThyroidCapsule = "3553006";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfThyroidCapsule
+    /// </summary>
+    public const string LiteralNONEStructureOfThyroidCapsule = "http://snomed.info/sct#3553006";
+
+    /// <summary>
     /// Literal for code: StructureOfDorsalNucleusOfTrapezoidBody
     /// </summary>
     public const string LiteralStructureOfDorsalNucleusOfTrapezoidBody = "3556003";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfDorsalNucleusOfTrapezoidBody
+    /// </summary>
+    public const string LiteralNONEStructureOfDorsalNucleusOfTrapezoidBody = "http://snomed.info/sct#3556003";
 
     /// <summary>
     /// Literal for code: ReticularCorium
@@ -10598,9 +12178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReticularCorium = "356000";
 
     /// <summary>
+    /// Literal for code: NONEReticularCorium
+    /// </summary>
+    public const string LiteralNONEReticularCorium = "http://snomed.info/sct#356000";
+
+    /// <summary>
     /// Literal for code: MuscularisOfUreter
     /// </summary>
     public const string LiteralMuscularisOfUreter = "3563003";
+
+    /// <summary>
+    /// Literal for code: NONEMuscularisOfUreter
+    /// </summary>
+    public const string LiteralNONEMuscularisOfUreter = "http://snomed.info/sct#3563003";
 
     /// <summary>
     /// Literal for code: VertebralBody
@@ -10608,9 +12198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVertebralBody = "3572006";
 
     /// <summary>
+    /// Literal for code: NONEVertebralBody
+    /// </summary>
+    public const string LiteralNONEVertebralBody = "http://snomed.info/sct#3572006";
+
+    /// <summary>
     /// Literal for code: StructureOfBodyOfGallbladder
     /// </summary>
     public const string LiteralStructureOfBodyOfGallbladder = "3578005";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfBodyOfGallbladder
+    /// </summary>
+    public const string LiteralNONEStructureOfBodyOfGallbladder = "http://snomed.info/sct#3578005";
 
     /// <summary>
     /// Literal for code: StructureOfGastrophrenicLigament
@@ -10618,9 +12218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfGastrophrenicLigament = "3582007";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfGastrophrenicLigament
+    /// </summary>
+    public const string LiteralNONEStructureOfGastrophrenicLigament = "http://snomed.info/sct#3582007";
+
+    /// <summary>
     /// Literal for code: T10DorsalArch
     /// </summary>
     public const string LiteralT10DorsalArch = "3584008";
+
+    /// <summary>
+    /// Literal for code: NONET10DorsalArch
+    /// </summary>
+    public const string LiteralNONET10DorsalArch = "http://snomed.info/sct#3584008";
 
     /// <summary>
     /// Literal for code: StructureOfStraightPartOfLongusColliMuscle
@@ -10628,9 +12238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfStraightPartOfLongusColliMuscle = "3594003";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfStraightPartOfLongusColliMuscle
+    /// </summary>
+    public const string LiteralNONEStructureOfStraightPartOfLongusColliMuscle = "http://snomed.info/sct#3594003";
+
+    /// <summary>
     /// Literal for code: IschiococcygeusMuscle
     /// </summary>
     public const string LiteralIschiococcygeusMuscle = "3608004";
+
+    /// <summary>
+    /// Literal for code: NONEIschiococcygeusMuscle
+    /// </summary>
+    public const string LiteralNONEIschiococcygeusMuscle = "http://snomed.info/sct#3608004";
 
     /// <summary>
     /// Literal for code: StructureOfOccipitalBranchOfPosteriorAuricularArtery
@@ -10638,9 +12258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfOccipitalBranchOfPosteriorAuricularArtery = "3609007";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfOccipitalBranchOfPosteriorAuricularArtery
+    /// </summary>
+    public const string LiteralNONEStructureOfOccipitalBranchOfPosteriorAuricularArtery = "http://snomed.info/sct#3609007";
+
+    /// <summary>
     /// Literal for code: Lamellipodium
     /// </summary>
     public const string LiteralLamellipodium = "3646006";
+
+    /// <summary>
+    /// Literal for code: NONELamellipodium
+    /// </summary>
+    public const string LiteralNONELamellipodium = "http://snomed.info/sct#3646006";
 
     /// <summary>
     /// Literal for code: StructureOfTympanicOstiumOfEustachianTube
@@ -10648,9 +12278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfTympanicOstiumOfEustachianTube = "3663005";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfTympanicOstiumOfEustachianTube
+    /// </summary>
+    public const string LiteralNONEStructureOfTympanicOstiumOfEustachianTube = "http://snomed.info/sct#3663005";
+
+    /// <summary>
     /// Literal for code: PelvicWallStructure
     /// </summary>
     public const string LiteralPelvicWallStructure = "3665003";
+
+    /// <summary>
+    /// Literal for code: NONEPelvicWallStructure
+    /// </summary>
+    public const string LiteralNONEPelvicWallStructure = "http://snomed.info/sct#3665003";
 
     /// <summary>
     /// Literal for code: EntireSubpyloricLymphNode
@@ -10658,9 +12298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEntireSubpyloricLymphNode = "3670005";
 
     /// <summary>
+    /// Literal for code: NONEEntireSubpyloricLymphNode
+    /// </summary>
+    public const string LiteralNONEEntireSubpyloricLymphNode = "http://snomed.info/sct#3670005";
+
+    /// <summary>
     /// Literal for code: GreatVessel
     /// </summary>
     public const string LiteralGreatVessel = "3711007";
+
+    /// <summary>
+    /// Literal for code: NONEGreatVessel
+    /// </summary>
+    public const string LiteralNONEGreatVessel = "http://snomed.info/sct#3711007";
 
     /// <summary>
     /// Literal for code: StructureOfLateralThoracicArtery
@@ -10668,9 +12318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfLateralThoracicArtery = "3743007";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfLateralThoracicArtery
+    /// </summary>
+    public const string LiteralNONEStructureOfLateralThoracicArtery = "http://snomed.info/sct#3743007";
+
+    /// <summary>
     /// Literal for code: StructureOfNucleusPulposusOfIntervertebralDiscOfFirstThoracicVertebra
     /// </summary>
     public const string LiteralStructureOfNucleusPulposusOfIntervertebralDiscOfFirstThoracicVertebra = "3761003";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfNucleusPulposusOfIntervertebralDiscOfFirstThoracicVertebra
+    /// </summary>
+    public const string LiteralNONEStructureOfNucleusPulposusOfIntervertebralDiscOfFirstThoracicVertebra = "http://snomed.info/sct#3761003";
 
     /// <summary>
     /// Literal for code: SubcutaneousTissueStructureOfLowerExtremity
@@ -10678,9 +12338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubcutaneousTissueStructureOfLowerExtremity = "3766008";
 
     /// <summary>
+    /// Literal for code: NONESubcutaneousTissueStructureOfLowerExtremity
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueStructureOfLowerExtremity = "http://snomed.info/sct#3766008";
+
+    /// <summary>
     /// Literal for code: EntireDorsalMetacarpalLigament
     /// </summary>
     public const string LiteralEntireDorsalMetacarpalLigament = "3785006";
+
+    /// <summary>
+    /// Literal for code: NONEEntireDorsalMetacarpalLigament
+    /// </summary>
+    public const string LiteralNONEEntireDorsalMetacarpalLigament = "http://snomed.info/sct#3785006";
 
     /// <summary>
     /// Literal for code: StructureOfApicalSegmentOfRightLowerLobeOfLung
@@ -10688,9 +12358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfApicalSegmentOfRightLowerLobeOfLung = "3788008";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfApicalSegmentOfRightLowerLobeOfLung
+    /// </summary>
+    public const string LiteralNONEStructureOfApicalSegmentOfRightLowerLobeOfLung = "http://snomed.info/sct#3788008";
+
+    /// <summary>
     /// Literal for code: EnteroendocrineCell
     /// </summary>
     public const string LiteralEnteroendocrineCell = "3789000";
+
+    /// <summary>
+    /// Literal for code: NONEEnteroendocrineCell
+    /// </summary>
+    public const string LiteralNONEEnteroendocrineCell = "http://snomed.info/sct#3789000";
 
     /// <summary>
     /// Literal for code: SeptalCartilageStructure
@@ -10698,9 +12378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSeptalCartilageStructure = "3810000";
 
     /// <summary>
+    /// Literal for code: NONESeptalCartilageStructure
+    /// </summary>
+    public const string LiteralNONESeptalCartilageStructure = "http://snomed.info/sct#3810000";
+
+    /// <summary>
     /// Literal for code: StructureOfApexOfCoccyx
     /// </summary>
     public const string LiteralStructureOfApexOfCoccyx = "3838008";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfApexOfCoccyx
+    /// </summary>
+    public const string LiteralNONEStructureOfApexOfCoccyx = "http://snomed.info/sct#3838008";
 
     /// <summary>
     /// Literal for code: StructureOfTransplantedLiver
@@ -10708,9 +12398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfTransplantedLiver = "3860006";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfTransplantedLiver
+    /// </summary>
+    public const string LiteralNONEStructureOfTransplantedLiver = "http://snomed.info/sct#3860006";
+
+    /// <summary>
     /// Literal for code: StructureOfInterscapularRegionOfBack
     /// </summary>
     public const string LiteralStructureOfInterscapularRegionOfBack = "3865001";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfInterscapularRegionOfBack
+    /// </summary>
+    public const string LiteralNONEStructureOfInterscapularRegionOfBack = "http://snomed.info/sct#3865001";
 
     /// <summary>
     /// Literal for code: StructureOfDorsalSurfaceOfGreatToe
@@ -10718,9 +12418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfDorsalSurfaceOfGreatToe = "3867009";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfDorsalSurfaceOfGreatToe
+    /// </summary>
+    public const string LiteralNONEStructureOfDorsalSurfaceOfGreatToe = "http://snomed.info/sct#3867009";
+
+    /// <summary>
     /// Literal for code: SubcutaneousTissueStructureOfFemoralRegion
     /// </summary>
     public const string LiteralSubcutaneousTissueStructureOfFemoralRegion = "3876002";
+
+    /// <summary>
+    /// Literal for code: NONESubcutaneousTissueStructureOfFemoralRegion
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueStructureOfFemoralRegion = "http://snomed.info/sct#3876002";
 
     /// <summary>
     /// Literal for code: StructureOfCommonCarotidPlexus
@@ -10728,9 +12438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfCommonCarotidPlexus = "3877006";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfCommonCarotidPlexus
+    /// </summary>
+    public const string LiteralNONEStructureOfCommonCarotidPlexus = "http://snomed.info/sct#3877006";
+
+    /// <summary>
     /// Literal for code: SubcutaneousTissueStructureOfLateralSurfaceOfFourthToe
     /// </summary>
     public const string LiteralSubcutaneousTissueStructureOfLateralSurfaceOfFourthToe = "3910004";
+
+    /// <summary>
+    /// Literal for code: NONESubcutaneousTissueStructureOfLateralSurfaceOfFourthToe
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueStructureOfLateralSurfaceOfFourthToe = "http://snomed.info/sct#3910004";
 
     /// <summary>
     /// Literal for code: StructureOfOccipitalLymphNode
@@ -10738,9 +12458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfOccipitalLymphNode = "3916005";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfOccipitalLymphNode
+    /// </summary>
+    public const string LiteralNONEStructureOfOccipitalLymphNode = "http://snomed.info/sct#3916005";
+
+    /// <summary>
     /// Literal for code: StructureOfPericardiophrenicArtery
     /// </summary>
     public const string LiteralStructureOfPericardiophrenicArtery = "3924000";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfPericardiophrenicArtery
+    /// </summary>
+    public const string LiteralNONEStructureOfPericardiophrenicArtery = "http://snomed.info/sct#3924000";
 
     /// <summary>
     /// Literal for code: WallOfUrinaryBladder
@@ -10748,9 +12478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWallOfUrinaryBladder = "393006";
 
     /// <summary>
+    /// Literal for code: NONEWallOfUrinaryBladder
+    /// </summary>
+    public const string LiteralNONEWallOfUrinaryBladder = "http://snomed.info/sct#393006";
+
+    /// <summary>
     /// Literal for code: OWOvalWindow
     /// </summary>
     public const string LiteralOWOvalWindow = "3931001";
+
+    /// <summary>
+    /// Literal for code: NONEOWOvalWindow
+    /// </summary>
+    public const string LiteralNONEOWOvalWindow = "http://snomed.info/sct#3931001";
 
     /// <summary>
     /// Literal for code: HeadOfTenthRibStructure
@@ -10758,9 +12498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHeadOfTenthRibStructure = "3935005";
 
     /// <summary>
+    /// Literal for code: NONEHeadOfTenthRibStructure
+    /// </summary>
+    public const string LiteralNONEHeadOfTenthRibStructure = "http://snomed.info/sct#3935005";
+
+    /// <summary>
     /// Literal for code: StructureOfEntorhinalCortex
     /// </summary>
     public const string LiteralStructureOfEntorhinalCortex = "3937002";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfEntorhinalCortex
+    /// </summary>
+    public const string LiteralNONEStructureOfEntorhinalCortex = "http://snomed.info/sct#3937002";
 
     /// <summary>
     /// Literal for code: LacrimalSacStructure
@@ -10768,9 +12518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLacrimalSacStructure = "3954005";
 
     /// <summary>
+    /// Literal for code: NONELacrimalSacStructure
+    /// </summary>
+    public const string LiteralNONELacrimalSacStructure = "http://snomed.info/sct#3954005";
+
+    /// <summary>
     /// Literal for code: StructureOfFifthMetatarsalArticularFacetOfFourthMetatarsalBone
     /// </summary>
     public const string LiteralStructureOfFifthMetatarsalArticularFacetOfFourthMetatarsalBone = "3956007";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfFifthMetatarsalArticularFacetOfFourthMetatarsalBone
+    /// </summary>
+    public const string LiteralNONEStructureOfFifthMetatarsalArticularFacetOfFourthMetatarsalBone = "http://snomed.info/sct#3956007";
 
     /// <summary>
     /// Literal for code: StructureOfRectusCapitisMuscle
@@ -10778,9 +12538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfRectusCapitisMuscle = "3959000";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfRectusCapitisMuscle
+    /// </summary>
+    public const string LiteralNONEStructureOfRectusCapitisMuscle = "http://snomed.info/sct#3959000";
+
+    /// <summary>
     /// Literal for code: OlfactoryTractStructure
     /// </summary>
     public const string LiteralOlfactoryTractStructure = "3960005";
+
+    /// <summary>
+    /// Literal for code: NONEOlfactoryTractStructure
+    /// </summary>
+    public const string LiteralNONEOlfactoryTractStructure = "http://snomed.info/sct#3960005";
 
     /// <summary>
     /// Literal for code: StructureOfGyrusOfBrain
@@ -10788,9 +12558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfGyrusOfBrain = "3964001";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfGyrusOfBrain
+    /// </summary>
+    public const string LiteralNONEStructureOfGyrusOfBrain = "http://snomed.info/sct#3964001";
+
+    /// <summary>
     /// Literal for code: EntireParietalBranchOfAnteriorCerebralArtery
     /// </summary>
     public const string LiteralEntireParietalBranchOfAnteriorCerebralArtery = "3966004";
+
+    /// <summary>
+    /// Literal for code: NONEEntireParietalBranchOfAnteriorCerebralArtery
+    /// </summary>
+    public const string LiteralNONEEntireParietalBranchOfAnteriorCerebralArtery = "http://snomed.info/sct#3966004";
 
     /// <summary>
     /// Literal for code: SubcutaneousTissueStructureOfConcha
@@ -10798,9 +12578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubcutaneousTissueStructureOfConcha = "3977005";
 
     /// <summary>
+    /// Literal for code: NONESubcutaneousTissueStructureOfConcha
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueStructureOfConcha = "http://snomed.info/sct#3977005";
+
+    /// <summary>
     /// Literal for code: DeepVeinOfClitoris
     /// </summary>
     public const string LiteralDeepVeinOfClitoris = "3984002";
+
+    /// <summary>
+    /// Literal for code: NONEDeepVeinOfClitoris
+    /// </summary>
+    public const string LiteralNONEDeepVeinOfClitoris = "http://snomed.info/sct#3984002";
 
     /// <summary>
     /// Literal for code: StructureOfMedialGlobusPallidus
@@ -10808,9 +12598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfMedialGlobusPallidus = "3989007";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfMedialGlobusPallidus
+    /// </summary>
+    public const string LiteralNONEStructureOfMedialGlobusPallidus = "http://snomed.info/sct#3989007";
+
+    /// <summary>
     /// Literal for code: ChromosomesGroupA
     /// </summary>
     public const string LiteralChromosomesGroupA = "4015004";
+
+    /// <summary>
+    /// Literal for code: NONEChromosomesGroupA
+    /// </summary>
+    public const string LiteralNONEChromosomesGroupA = "http://snomed.info/sct#4015004";
 
     /// <summary>
     /// Literal for code: PosteriorCommissureOfLabiumMajorum
@@ -10818,9 +12618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPosteriorCommissureOfLabiumMajorum = "4019005";
 
     /// <summary>
+    /// Literal for code: NONEPosteriorCommissureOfLabiumMajorum
+    /// </summary>
+    public const string LiteralNONEPosteriorCommissureOfLabiumMajorum = "http://snomed.info/sct#4019005";
+
+    /// <summary>
     /// Literal for code: DentalBranchesOfInferiorAlveolarArtery
     /// </summary>
     public const string LiteralDentalBranchesOfInferiorAlveolarArtery = "402006";
+
+    /// <summary>
+    /// Literal for code: NONEDentalBranchesOfInferiorAlveolarArtery
+    /// </summary>
+    public const string LiteralNONEDentalBranchesOfInferiorAlveolarArtery = "http://snomed.info/sct#402006";
 
     /// <summary>
     /// Literal for code: EosinophilicProgranulocyte
@@ -10828,9 +12638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEosinophilicProgranulocyte = "4029003";
 
     /// <summary>
+    /// Literal for code: NONEEosinophilicProgranulocyte
+    /// </summary>
+    public const string LiteralNONEEosinophilicProgranulocyte = "http://snomed.info/sct#4029003";
+
+    /// <summary>
     /// Literal for code: PosteriorTemporalDiploicVein
     /// </summary>
     public const string LiteralPosteriorTemporalDiploicVein = "405008";
+
+    /// <summary>
+    /// Literal for code: NONEPosteriorTemporalDiploicVein
+    /// </summary>
+    public const string LiteralNONEPosteriorTemporalDiploicVein = "http://snomed.info/sct#405008";
 
     /// <summary>
     /// Literal for code: LateralOrbitalWall
@@ -10838,9 +12658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLateralOrbitalWall = "4061004";
 
     /// <summary>
+    /// Literal for code: NONELateralOrbitalWall
+    /// </summary>
+    public const string LiteralNONELateralOrbitalWall = "http://snomed.info/sct#4061004";
+
+    /// <summary>
     /// Literal for code: StructureOfCapsuleOfProximalInterphalangealJointOfIndexFinger
     /// </summary>
     public const string LiteralStructureOfCapsuleOfProximalInterphalangealJointOfIndexFinger = "4066009";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfCapsuleOfProximalInterphalangealJointOfIndexFinger
+    /// </summary>
+    public const string LiteralNONEStructureOfCapsuleOfProximalInterphalangealJointOfIndexFinger = "http://snomed.info/sct#4066009";
 
     /// <summary>
     /// Literal for code: StructureOfFourthCoccygealVertebra
@@ -10848,9 +12678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfFourthCoccygealVertebra = "4072009";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfFourthCoccygealVertebra
+    /// </summary>
+    public const string LiteralNONEStructureOfFourthCoccygealVertebra = "http://snomed.info/sct#4072009";
+
+    /// <summary>
     /// Literal for code: EntireDorsalLingualVein
     /// </summary>
     public const string LiteralEntireDorsalLingualVein = "4081003";
+
+    /// <summary>
+    /// Literal for code: NONEEntireDorsalLingualVein
+    /// </summary>
+    public const string LiteralNONEEntireDorsalLingualVein = "http://snomed.info/sct#4081003";
 
     /// <summary>
     /// Literal for code: StructureOfVagusNerveBronchialBranch
@@ -10858,9 +12698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfVagusNerveBronchialBranch = "4093007";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfVagusNerveBronchialBranch
+    /// </summary>
+    public const string LiteralNONEStructureOfVagusNerveBronchialBranch = "http://snomed.info/sct#4093007";
+
+    /// <summary>
     /// Literal for code: MaculaOfTheSaccule
     /// </summary>
     public const string LiteralMaculaOfTheSaccule = "4111006";
+
+    /// <summary>
+    /// Literal for code: NONEMaculaOfTheSaccule
+    /// </summary>
+    public const string LiteralNONEMaculaOfTheSaccule = "http://snomed.info/sct#4111006";
 
     /// <summary>
     /// Literal for code: LumbosacralSpinalCordCentralCanalStructure
@@ -10868,9 +12718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLumbosacralSpinalCordCentralCanalStructure = "4117005";
 
     /// <summary>
+    /// Literal for code: NONELumbosacralSpinalCordCentralCanalStructure
+    /// </summary>
+    public const string LiteralNONELumbosacralSpinalCordCentralCanalStructure = "http://snomed.info/sct#4117005";
+
+    /// <summary>
     /// Literal for code: StructureOfSuperiorFrontalSulcus
     /// </summary>
     public const string LiteralStructureOfSuperiorFrontalSulcus = "4121003";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfSuperiorFrontalSulcus
+    /// </summary>
+    public const string LiteralNONEStructureOfSuperiorFrontalSulcus = "http://snomed.info/sct#4121003";
 
     /// <summary>
     /// Literal for code: GastricFundus
@@ -10878,9 +12738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGastricFundus = "414003";
 
     /// <summary>
+    /// Literal for code: NONEGastricFundus
+    /// </summary>
+    public const string LiteralNONEGastricFundus = "http://snomed.info/sct#414003";
+
+    /// <summary>
     /// Literal for code: StructureOfArteryOfExtremity
     /// </summary>
     public const string LiteralStructureOfArteryOfExtremity = "4146003";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfArteryOfExtremity
+    /// </summary>
+    public const string LiteralNONEStructureOfArteryOfExtremity = "http://snomed.info/sct#4146003";
 
     /// <summary>
     /// Literal for code: StructureOfPalmarSurfaceOfLittleFinger
@@ -10888,9 +12758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfPalmarSurfaceOfLittleFinger = "4148002";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfPalmarSurfaceOfLittleFinger
+    /// </summary>
+    public const string LiteralNONEStructureOfPalmarSurfaceOfLittleFinger = "http://snomed.info/sct#4148002";
+
+    /// <summary>
     /// Literal for code: CeliacNervousPlexusStructure
     /// </summary>
     public const string LiteralCeliacNervousPlexusStructure = "4150005";
+
+    /// <summary>
+    /// Literal for code: NONECeliacNervousPlexusStructure
+    /// </summary>
+    public const string LiteralNONECeliacNervousPlexusStructure = "http://snomed.info/sct#4150005";
 
     /// <summary>
     /// Literal for code: AbdominalAorticPlexusStructure
@@ -10898,9 +12778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAbdominalAorticPlexusStructure = "4158003";
 
     /// <summary>
+    /// Literal for code: NONEAbdominalAorticPlexusStructure
+    /// </summary>
+    public const string LiteralNONEAbdominalAorticPlexusStructure = "http://snomed.info/sct#4158003";
+
+    /// <summary>
     /// Literal for code: HyparterialBronchus
     /// </summary>
     public const string LiteralHyparterialBronchus = "4159006";
+
+    /// <summary>
+    /// Literal for code: NONEHyparterialBronchus
+    /// </summary>
+    public const string LiteralNONEHyparterialBronchus = "http://snomed.info/sct#4159006";
 
     /// <summary>
     /// Literal for code: BothLowerExtremities
@@ -10908,9 +12798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBothLowerExtremities = "4180000";
 
     /// <summary>
+    /// Literal for code: NONEBothLowerExtremities
+    /// </summary>
+    public const string LiteralNONEBothLowerExtremities = "http://snomed.info/sct#4180000";
+
+    /// <summary>
     /// Literal for code: EntireExtensorTendonAndTendonSheathOfFifthToe
     /// </summary>
     public const string LiteralEntireExtensorTendonAndTendonSheathOfFifthToe = "4193005";
+
+    /// <summary>
+    /// Literal for code: NONEEntireExtensorTendonAndTendonSheathOfFifthToe
+    /// </summary>
+    public const string LiteralNONEEntireExtensorTendonAndTendonSheathOfFifthToe = "http://snomed.info/sct#4193005";
 
     /// <summary>
     /// Literal for code: AnastomosisHeterocladic
@@ -10918,9 +12818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnastomosisHeterocladic = "420002";
 
     /// <summary>
+    /// Literal for code: NONEAnastomosisHeterocladic
+    /// </summary>
+    public const string LiteralNONEAnastomosisHeterocladic = "http://snomed.info/sct#420002";
+
+    /// <summary>
     /// Literal for code: TurkCell
     /// </summary>
     public const string LiteralTurkCell = "4205002";
+
+    /// <summary>
+    /// Literal for code: NONETurkCell
+    /// </summary>
+    public const string LiteralNONETurkCell = "http://snomed.info/sct#4205002";
 
     /// <summary>
     /// Literal for code: EpithelialCells
@@ -10928,9 +12838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEpithelialCells = "4212006";
 
     /// <summary>
+    /// Literal for code: NONEEpithelialCells
+    /// </summary>
+    public const string LiteralNONEEpithelialCells = "http://snomed.info/sct#4212006";
+
+    /// <summary>
     /// Literal for code: HeadOfSecondRibStructure
     /// </summary>
     public const string LiteralHeadOfSecondRibStructure = "4215008";
+
+    /// <summary>
+    /// Literal for code: NONEHeadOfSecondRibStructure
+    /// </summary>
+    public const string LiteralNONEHeadOfSecondRibStructure = "http://snomed.info/sct#4215008";
 
     /// <summary>
     /// Literal for code: InferiorSurfaceOfTongue
@@ -10938,9 +12858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInferiorSurfaceOfTongue = "422005";
 
     /// <summary>
+    /// Literal for code: NONEInferiorSurfaceOfTongue
+    /// </summary>
+    public const string LiteralNONEInferiorSurfaceOfTongue = "http://snomed.info/sct#422005";
+
+    /// <summary>
     /// Literal for code: BoneStructureOfFirstMetacarpal
     /// </summary>
     public const string LiteralBoneStructureOfFirstMetacarpal = "4247003";
+
+    /// <summary>
+    /// Literal for code: NONEBoneStructureOfFirstMetacarpal
+    /// </summary>
+    public const string LiteralNONEBoneStructureOfFirstMetacarpal = "http://snomed.info/sct#4247003";
 
     /// <summary>
     /// Literal for code: PosteriorTibialVein
@@ -10948,9 +12878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPosteriorTibialVein = "4258007";
 
     /// <summary>
+    /// Literal for code: NONEPosteriorTibialVein
+    /// </summary>
+    public const string LiteralNONEPosteriorTibialVein = "http://snomed.info/sct#4258007";
+
+    /// <summary>
     /// Literal for code: LateralSpinorubralTract
     /// </summary>
     public const string LiteralLateralSpinorubralTract = "4268002";
+
+    /// <summary>
+    /// Literal for code: NONELateralSpinorubralTract
+    /// </summary>
+    public const string LiteralNONELateralSpinorubralTract = "http://snomed.info/sct#4268002";
 
     /// <summary>
     /// Literal for code: StructureOfInferiorArticularProcessOfSeventhCervicalVertebra
@@ -10958,9 +12898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfInferiorArticularProcessOfSeventhCervicalVertebra = "4276000";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfInferiorArticularProcessOfSeventhCervicalVertebra
+    /// </summary>
+    public const string LiteralNONEStructureOfInferiorArticularProcessOfSeventhCervicalVertebra = "http://snomed.info/sct#4276000";
+
+    /// <summary>
     /// Literal for code: StructureOfMiddlePortionOfIleum
     /// </summary>
     public const string LiteralStructureOfMiddlePortionOfIleum = "4281009";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfMiddlePortionOfIleum
+    /// </summary>
+    public const string LiteralNONEStructureOfMiddlePortionOfIleum = "http://snomed.info/sct#4281009";
 
     /// <summary>
     /// Literal for code: StructureOfParacorticalAreaOfLymphNode
@@ -10968,9 +12918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfParacorticalAreaOfLymphNode = "4295007";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfParacorticalAreaOfLymphNode
+    /// </summary>
+    public const string LiteralNONEStructureOfParacorticalAreaOfLymphNode = "http://snomed.info/sct#4295007";
+
+    /// <summary>
     /// Literal for code: CartilageCanal
     /// </summary>
     public const string LiteralCartilageCanal = "4303006";
+
+    /// <summary>
+    /// Literal for code: NONECartilageCanal
+    /// </summary>
+    public const string LiteralNONECartilageCanal = "http://snomed.info/sct#4303006";
 
     /// <summary>
     /// Literal for code: AnteriorMidlineOfAbdomen
@@ -10978,9 +12938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnteriorMidlineOfAbdomen = "4312008";
 
     /// <summary>
+    /// Literal for code: NONEAnteriorMidlineOfAbdomen
+    /// </summary>
+    public const string LiteralNONEAnteriorMidlineOfAbdomen = "http://snomed.info/sct#4312008";
+
+    /// <summary>
     /// Literal for code: StructureOfSpinalisMuscle
     /// </summary>
     public const string LiteralStructureOfSpinalisMuscle = "4317002";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfSpinalisMuscle
+    /// </summary>
+    public const string LiteralNONEStructureOfSpinalisMuscle = "http://snomed.info/sct#4317002";
 
     /// <summary>
     /// Literal for code: ProtoplasmicAstrocyte
@@ -10988,9 +12958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProtoplasmicAstrocyte = "4328003";
 
     /// <summary>
+    /// Literal for code: NONEProtoplasmicAstrocyte
+    /// </summary>
+    public const string LiteralNONEProtoplasmicAstrocyte = "http://snomed.info/sct#4328003";
+
+    /// <summary>
     /// Literal for code: UpperJawRegion
     /// </summary>
     public const string LiteralUpperJawRegion = "4335006";
+
+    /// <summary>
+    /// Literal for code: NONEUpperJawRegion
+    /// </summary>
+    public const string LiteralNONEUpperJawRegion = "http://snomed.info/sct#4335006";
 
     /// <summary>
     /// Literal for code: StructureOfSubchorionicSpace
@@ -10998,9 +12978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfSubchorionicSpace = "4352005";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfSubchorionicSpace
+    /// </summary>
+    public const string LiteralNONEStructureOfSubchorionicSpace = "http://snomed.info/sct#4352005";
+
+    /// <summary>
     /// Literal for code: StructureOfLateralSurfaceOfLittleFinger
     /// </summary>
     public const string LiteralStructureOfLateralSurfaceOfLittleFinger = "4358009";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfLateralSurfaceOfLittleFinger
+    /// </summary>
+    public const string LiteralNONEStructureOfLateralSurfaceOfLittleFinger = "http://snomed.info/sct#4358009";
 
     /// <summary>
     /// Literal for code: StratumSpinosumStructure
@@ -11008,9 +12998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStratumSpinosumStructure = "4360006";
 
     /// <summary>
+    /// Literal for code: NONEStratumSpinosumStructure
+    /// </summary>
+    public const string LiteralNONEStratumSpinosumStructure = "http://snomed.info/sct#4360006";
+
+    /// <summary>
     /// Literal for code: SmallIntestineMucousMembraneStructure
     /// </summary>
     public const string LiteralSmallIntestineMucousMembraneStructure = "4369007";
+
+    /// <summary>
+    /// Literal for code: NONESmallIntestineMucousMembraneStructure
+    /// </summary>
+    public const string LiteralNONESmallIntestineMucousMembraneStructure = "http://snomed.info/sct#4369007";
 
     /// <summary>
     /// Literal for code: StructureOfFourthMetatarsalFacetOfLateralCuneiformBone
@@ -11018,9 +13018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfFourthMetatarsalFacetOfLateralCuneiformBone = "4371007";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfFourthMetatarsalFacetOfLateralCuneiformBone
+    /// </summary>
+    public const string LiteralNONEStructureOfFourthMetatarsalFacetOfLateralCuneiformBone = "http://snomed.info/sct#4371007";
+
+    /// <summary>
     /// Literal for code: StructureOfIncisureOfCartilaginousPortionOfAuditoryCanal
     /// </summary>
     public const string LiteralStructureOfIncisureOfCartilaginousPortionOfAuditoryCanal = "4375003";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfIncisureOfCartilaginousPortionOfAuditoryCanal
+    /// </summary>
+    public const string LiteralNONEStructureOfIncisureOfCartilaginousPortionOfAuditoryCanal = "http://snomed.info/sct#4375003";
 
     /// <summary>
     /// Literal for code: StructureOfParafascicularNucleusOfThalamus
@@ -11028,9 +13038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfParafascicularNucleusOfThalamus = "4377006";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfParafascicularNucleusOfThalamus
+    /// </summary>
+    public const string LiteralNONEStructureOfParafascicularNucleusOfThalamus = "http://snomed.info/sct#4377006";
+
+    /// <summary>
     /// Literal for code: ScalaVestibuliStructure
     /// </summary>
     public const string LiteralScalaVestibuliStructure = "4394008";
+
+    /// <summary>
+    /// Literal for code: NONEScalaVestibuliStructure
+    /// </summary>
+    public const string LiteralNONEScalaVestibuliStructure = "http://snomed.info/sct#4394008";
 
     /// <summary>
     /// Literal for code: StructureOfAnteriorArticularSurfaceForTalus
@@ -11038,9 +13058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfAnteriorArticularSurfaceForTalus = "4402002";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfAnteriorArticularSurfaceForTalus
+    /// </summary>
+    public const string LiteralNONEStructureOfAnteriorArticularSurfaceForTalus = "http://snomed.info/sct#4402002";
+
+    /// <summary>
     /// Literal for code: TrachealSubmucosa
     /// </summary>
     public const string LiteralTrachealSubmucosa = "4419000";
+
+    /// <summary>
+    /// Literal for code: NONETrachealSubmucosa
+    /// </summary>
+    public const string LiteralNONETrachealSubmucosa = "http://snomed.info/sct#4419000";
 
     /// <summary>
     /// Literal for code: CellularStructures
@@ -11048,9 +13078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCellularStructures = "4421005";
 
     /// <summary>
+    /// Literal for code: NONECellularStructures
+    /// </summary>
+    public const string LiteralNONECellularStructures = "http://snomed.info/sct#4421005";
+
+    /// <summary>
     /// Literal for code: StructureOfClivusOssisSphenoidalis
     /// </summary>
     public const string LiteralStructureOfClivusOssisSphenoidalis = "4430002";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfClivusOssisSphenoidalis
+    /// </summary>
+    public const string LiteralNONEStructureOfClivusOssisSphenoidalis = "http://snomed.info/sct#4430002";
 
     /// <summary>
     /// Literal for code: StructureOfDuctusArteriosus
@@ -11058,9 +13098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfDuctusArteriosus = "4432005";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfDuctusArteriosus
+    /// </summary>
+    public const string LiteralNONEStructureOfDuctusArteriosus = "http://snomed.info/sct#4432005";
+
+    /// <summary>
     /// Literal for code: DentalArchStructure
     /// </summary>
     public const string LiteralDentalArchStructure = "4442007";
+
+    /// <summary>
+    /// Literal for code: NONEDentalArchStructure
+    /// </summary>
+    public const string LiteralNONEDentalArchStructure = "http://snomed.info/sct#4442007";
 
     /// <summary>
     /// Literal for code: TrochantericBursa
@@ -11068,9 +13118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrochantericBursa = "446003";
 
     /// <summary>
+    /// Literal for code: NONETrochantericBursa
+    /// </summary>
+    public const string LiteralNONETrochantericBursa = "http://snomed.info/sct#446003";
+
+    /// <summary>
     /// Literal for code: StructureOfAccessorySinusGland
     /// </summary>
     public const string LiteralStructureOfAccessorySinusGland = "4486002";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfAccessorySinusGland
+    /// </summary>
+    public const string LiteralNONEStructureOfAccessorySinusGland = "http://snomed.info/sct#4486002";
 
     /// <summary>
     /// Literal for code: StructureOfSubclavianPlexus
@@ -11078,9 +13138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfSubclavianPlexus = "4524000";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfSubclavianPlexus
+    /// </summary>
+    public const string LiteralNONEStructureOfSubclavianPlexus = "http://snomed.info/sct#4524000";
+
+    /// <summary>
     /// Literal for code: JointStructureOfLowerExtremity
     /// </summary>
     public const string LiteralJointStructureOfLowerExtremity = "4527007";
+
+    /// <summary>
+    /// Literal for code: NONEJointStructureOfLowerExtremity
+    /// </summary>
+    public const string LiteralNONEJointStructureOfLowerExtremity = "http://snomed.info/sct#4527007";
 
     /// <summary>
     /// Literal for code: StructureOfInternalMedullaryLaminaOfThalamus
@@ -11088,9 +13158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfInternalMedullaryLaminaOfThalamus = "4537002";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfInternalMedullaryLaminaOfThalamus
+    /// </summary>
+    public const string LiteralNONEStructureOfInternalMedullaryLaminaOfThalamus = "http://snomed.info/sct#4537002";
+
+    /// <summary>
     /// Literal for code: LamellatedGranuleAsInSurfactantSecretingCell
     /// </summary>
     public const string LiteralLamellatedGranuleAsInSurfactantSecretingCell = "4548009";
+
+    /// <summary>
+    /// Literal for code: NONELamellatedGranuleAsInSurfactantSecretingCell
+    /// </summary>
+    public const string LiteralNONELamellatedGranuleAsInSurfactantSecretingCell = "http://snomed.info/sct#4548009";
 
     /// <summary>
     /// Literal for code: EntireVagusNerveParasympatheticFibersToLiverGallbladderBileDuctsAndPancreas
@@ -11098,9 +13178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEntireVagusNerveParasympatheticFibersToLiverGallbladderBileDuctsAndPancreas = "4549001";
 
     /// <summary>
+    /// Literal for code: NONEEntireVagusNerveParasympatheticFibersToLiverGallbladderBileDuctsAndPancreas
+    /// </summary>
+    public const string LiteralNONEEntireVagusNerveParasympatheticFibersToLiverGallbladderBileDuctsAndPancreas = "http://snomed.info/sct#4549001";
+
+    /// <summary>
     /// Literal for code: StructureOfTentoriumCerebelli
     /// </summary>
     public const string LiteralStructureOfTentoriumCerebelli = "4566004";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfTentoriumCerebelli
+    /// </summary>
+    public const string LiteralNONEStructureOfTentoriumCerebelli = "http://snomed.info/sct#4566004";
 
     /// <summary>
     /// Literal for code: CollateralLigament
@@ -11108,9 +13198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCollateralLigament = "457008";
 
     /// <summary>
+    /// Literal for code: NONECollateralLigament
+    /// </summary>
+    public const string LiteralNONECollateralLigament = "http://snomed.info/sct#457008";
+
+    /// <summary>
     /// Literal for code: Desmosome
     /// </summary>
     public const string LiteralDesmosome = "4573009";
+
+    /// <summary>
+    /// Literal for code: NONEDesmosome
+    /// </summary>
+    public const string LiteralNONEDesmosome = "http://snomed.info/sct#4573009";
 
     /// <summary>
     /// Literal for code: SkinStructureOfPosteriorSurfaceOfThigh
@@ -11118,9 +13218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSkinStructureOfPosteriorSurfaceOfThigh = "4578000";
 
     /// <summary>
+    /// Literal for code: NONESkinStructureOfPosteriorSurfaceOfThigh
+    /// </summary>
+    public const string LiteralNONESkinStructureOfPosteriorSurfaceOfThigh = "http://snomed.info/sct#4578000";
+
+    /// <summary>
     /// Literal for code: StructureOfSpleniusMuscleOfTrunk
     /// </summary>
     public const string LiteralStructureOfSpleniusMuscleOfTrunk = "4583008";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfSpleniusMuscleOfTrunk
+    /// </summary>
+    public const string LiteralNONEStructureOfSpleniusMuscleOfTrunk = "http://snomed.info/sct#4583008";
 
     /// <summary>
     /// Literal for code: StructureOfMiddleTrunkOfBrachialPlexus
@@ -11128,9 +13238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfMiddleTrunkOfBrachialPlexus = "4588004";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfMiddleTrunkOfBrachialPlexus
+    /// </summary>
+    public const string LiteralNONEStructureOfMiddleTrunkOfBrachialPlexus = "http://snomed.info/sct#4588004";
+
+    /// <summary>
     /// Literal for code: LarynxStructure
     /// </summary>
     public const string LiteralLarynxStructure = "4596009";
+
+    /// <summary>
+    /// Literal for code: NONELarynxStructure
+    /// </summary>
+    public const string LiteralNONELarynxStructure = "http://snomed.info/sct#4596009";
 
     /// <summary>
     /// Literal for code: StructureOfBaseOfPhalanxOfFoot
@@ -11138,9 +13258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfBaseOfPhalanxOfFoot = "4603002";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfBaseOfPhalanxOfFoot
+    /// </summary>
+    public const string LiteralNONEStructureOfBaseOfPhalanxOfFoot = "http://snomed.info/sct#4603002";
+
+    /// <summary>
     /// Literal for code: TubercleOfEighthRibStructure
     /// </summary>
     public const string LiteralTubercleOfEighthRibStructure = "4606005";
+
+    /// <summary>
+    /// Literal for code: NONETubercleOfEighthRibStructure
+    /// </summary>
+    public const string LiteralNONETubercleOfEighthRibStructure = "http://snomed.info/sct#4606005";
 
     /// <summary>
     /// Literal for code: LateralCorticospinalTract
@@ -11148,9 +13278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLateralCorticospinalTract = "461002";
 
     /// <summary>
+    /// Literal for code: NONELateralCorticospinalTract
+    /// </summary>
+    public const string LiteralNONELateralCorticospinalTract = "http://snomed.info/sct#461002";
+
+    /// <summary>
     /// Literal for code: StructureOfLesserTuberosityOfHumerus
     /// </summary>
     public const string LiteralStructureOfLesserTuberosityOfHumerus = "4621004";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfLesserTuberosityOfHumerus
+    /// </summary>
+    public const string LiteralNONEStructureOfLesserTuberosityOfHumerus = "http://snomed.info/sct#4621004";
 
     /// <summary>
     /// Literal for code: StructureOfLymphaticCord
@@ -11158,9 +13298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfLymphaticCord = "4624007";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfLymphaticCord
+    /// </summary>
+    public const string LiteralNONEStructureOfLymphaticCord = "http://snomed.info/sct#4624007";
+
+    /// <summary>
     /// Literal for code: BasophilicNormoblast
     /// </summary>
     public const string LiteralBasophilicNormoblast = "464005";
+
+    /// <summary>
+    /// Literal for code: NONEBasophilicNormoblast
+    /// </summary>
+    public const string LiteralNONEBasophilicNormoblast = "http://snomed.info/sct#464005";
 
     /// <summary>
     /// Literal for code: LipidDropletHomogeneous
@@ -11168,9 +13318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLipidDropletHomogeneous = "4647008";
 
     /// <summary>
+    /// Literal for code: NONELipidDropletHomogeneous
+    /// </summary>
+    public const string LiteralNONELipidDropletHomogeneous = "http://snomed.info/sct#4647008";
+
+    /// <summary>
     /// Literal for code: AscendingFrontalGyrus
     /// </summary>
     public const string LiteralAscendingFrontalGyrus = "465006";
+
+    /// <summary>
+    /// Literal for code: NONEAscendingFrontalGyrus
+    /// </summary>
+    public const string LiteralNONEAscendingFrontalGyrus = "http://snomed.info/sct#465006";
 
     /// <summary>
     /// Literal for code: StructureOfTunicaAlbugineaOfCorpusSpongiosum
@@ -11178,9 +13338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfTunicaAlbugineaOfCorpusSpongiosum = "4651005";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfTunicaAlbugineaOfCorpusSpongiosum
+    /// </summary>
+    public const string LiteralNONEStructureOfTunicaAlbugineaOfCorpusSpongiosum = "http://snomed.info/sct#4651005";
+
+    /// <summary>
     /// Literal for code: SkinStructureOfNuchalRegion
     /// </summary>
     public const string LiteralSkinStructureOfNuchalRegion = "4658004";
+
+    /// <summary>
+    /// Literal for code: NONESkinStructureOfNuchalRegion
+    /// </summary>
+    public const string LiteralNONESkinStructureOfNuchalRegion = "http://snomed.info/sct#4658004";
 
     /// <summary>
     /// Literal for code: BasalLaminaInclusionInSubepithelialLocation
@@ -11188,9 +13358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBasalLaminaInclusionInSubepithelialLocation = "4677002";
 
     /// <summary>
+    /// Literal for code: NONEBasalLaminaInclusionInSubepithelialLocation
+    /// </summary>
+    public const string LiteralNONEBasalLaminaInclusionInSubepithelialLocation = "http://snomed.info/sct#4677002";
+
+    /// <summary>
     /// Literal for code: CardinalVeinStructure
     /// </summary>
     public const string LiteralCardinalVeinStructure = "4703008";
+
+    /// <summary>
+    /// Literal for code: NONECardinalVeinStructure
+    /// </summary>
+    public const string LiteralNONECardinalVeinStructure = "http://snomed.info/sct#4703008";
 
     /// <summary>
     /// Literal for code: FlexorHallucisLongusInLeg
@@ -11198,9 +13378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFlexorHallucisLongusInLeg = "471000";
 
     /// <summary>
+    /// Literal for code: NONEFlexorHallucisLongusInLeg
+    /// </summary>
+    public const string LiteralNONEFlexorHallucisLongusInLeg = "http://snomed.info/sct#471000";
+
+    /// <summary>
     /// Literal for code: NeutrophilicMyelocyte
     /// </summary>
     public const string LiteralNeutrophilicMyelocyte = "4717004";
+
+    /// <summary>
+    /// Literal for code: NONENeutrophilicMyelocyte
+    /// </summary>
+    public const string LiteralNONENeutrophilicMyelocyte = "http://snomed.info/sct#4717004";
 
     /// <summary>
     /// Literal for code: EntireVenousPlexusOfTheForamenOvaleBasisCranii
@@ -11208,9 +13398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEntireVenousPlexusOfTheForamenOvaleBasisCranii = "4718009";
 
     /// <summary>
+    /// Literal for code: NONEEntireVenousPlexusOfTheForamenOvaleBasisCranii
+    /// </summary>
+    public const string LiteralNONEEntireVenousPlexusOfTheForamenOvaleBasisCranii = "http://snomed.info/sct#4718009";
+
+    /// <summary>
     /// Literal for code: StructureOfVentralSacrococcygealLigament
     /// </summary>
     public const string LiteralStructureOfVentralSacrococcygealLigament = "4743003";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfVentralSacrococcygealLigament
+    /// </summary>
+    public const string LiteralNONEStructureOfVentralSacrococcygealLigament = "http://snomed.info/sct#4743003";
 
     /// <summary>
     /// Literal for code: StructureOfMedialSurfaceOfGreatToe
@@ -11218,9 +13418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfMedialSurfaceOfGreatToe = "4755009";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfMedialSurfaceOfGreatToe
+    /// </summary>
+    public const string LiteralNONEStructureOfMedialSurfaceOfGreatToe = "http://snomed.info/sct#4755009";
+
+    /// <summary>
     /// Literal for code: StructureOfGemellusMuscle
     /// </summary>
     public const string LiteralStructureOfGemellusMuscle = "4759003";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfGemellusMuscle
+    /// </summary>
+    public const string LiteralNONEStructureOfGemellusMuscle = "http://snomed.info/sct#4759003";
 
     /// <summary>
     /// Literal for code: StructureOfSupracardinalVein
@@ -11228,9 +13438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfSupracardinalVein = "4766002";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfSupracardinalVein
+    /// </summary>
+    public const string LiteralNONEStructureOfSupracardinalVein = "http://snomed.info/sct#4766002";
+
+    /// <summary>
     /// Literal for code: StructureOfPerinealNerve
     /// </summary>
     public const string LiteralStructureOfPerinealNerve = "4768001";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfPerinealNerve
+    /// </summary>
+    public const string LiteralNONEStructureOfPerinealNerve = "http://snomed.info/sct#4768001";
 
     /// <summary>
     /// Literal for code: StructureOfPhrenicNervePericardialBranch
@@ -11238,9 +13458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfPhrenicNervePericardialBranch = "4774001";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfPhrenicNervePericardialBranch
+    /// </summary>
+    public const string LiteralNONEStructureOfPhrenicNervePericardialBranch = "http://snomed.info/sct#4774001";
+
+    /// <summary>
     /// Literal for code: StructureOfVentralPosteriorInferiorNucleus
     /// </summary>
     public const string LiteralStructureOfVentralPosteriorInferiorNucleus = "4775000";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfVentralPosteriorInferiorNucleus
+    /// </summary>
+    public const string LiteralNONEStructureOfVentralPosteriorInferiorNucleus = "http://snomed.info/sct#4775000";
 
     /// <summary>
     /// Literal for code: DeiterCell
@@ -11248,9 +13478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeiterCell = "4799000";
 
     /// <summary>
+    /// Literal for code: NONEDeiterCell
+    /// </summary>
+    public const string LiteralNONEDeiterCell = "http://snomed.info/sct#4799000";
+
+    /// <summary>
     /// Literal for code: CardiopulmonaryCirculatorySystem
     /// </summary>
     public const string LiteralCardiopulmonaryCirculatorySystem = "480000";
+
+    /// <summary>
+    /// Literal for code: NONECardiopulmonaryCirculatorySystem
+    /// </summary>
+    public const string LiteralNONECardiopulmonaryCirculatorySystem = "http://snomed.info/sct#480000";
 
     /// <summary>
     /// Literal for code: StructureOfUterineVenousPlexus
@@ -11258,9 +13498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfUterineVenousPlexus = "4810005";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfUterineVenousPlexus
+    /// </summary>
+    public const string LiteralNONEStructureOfUterineVenousPlexus = "http://snomed.info/sct#4810005";
+
+    /// <summary>
     /// Literal for code: AnteriorTibialCompartmentStructure
     /// </summary>
     public const string LiteralAnteriorTibialCompartmentStructure = "4812002";
+
+    /// <summary>
+    /// Literal for code: NONEAnteriorTibialCompartmentStructure
+    /// </summary>
+    public const string LiteralNONEAnteriorTibialCompartmentStructure = "http://snomed.info/sct#4812002";
 
     /// <summary>
     /// Literal for code: FemoralCanalStructure
@@ -11268,9 +13518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFemoralCanalStructure = "4828007";
 
     /// <summary>
+    /// Literal for code: NONEFemoralCanalStructure
+    /// </summary>
+    public const string LiteralNONEFemoralCanalStructure = "http://snomed.info/sct#4828007";
+
+    /// <summary>
     /// Literal for code: SubcutaneousTissueStructureOfRingFinger
     /// </summary>
     public const string LiteralSubcutaneousTissueStructureOfRingFinger = "4840007";
+
+    /// <summary>
+    /// Literal for code: NONESubcutaneousTissueStructureOfRingFinger
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueStructureOfRingFinger = "http://snomed.info/sct#4840007";
 
     /// <summary>
     /// Literal for code: AmpullaOfSemicircularDuct
@@ -11278,9 +13538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAmpullaOfSemicircularDuct = "4843009";
 
     /// <summary>
+    /// Literal for code: NONEAmpullaOfSemicircularDuct
+    /// </summary>
+    public const string LiteralNONEAmpullaOfSemicircularDuct = "http://snomed.info/sct#4843009";
+
+    /// <summary>
     /// Literal for code: TCTransverseColon
     /// </summary>
     public const string LiteralTCTransverseColon = "485005";
+
+    /// <summary>
+    /// Literal for code: NONETCTransverseColon
+    /// </summary>
+    public const string LiteralNONETCTransverseColon = "http://snomed.info/sct#485005";
 
     /// <summary>
     /// Literal for code: StructureOfTuberculumImpar
@@ -11288,9 +13558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfTuberculumImpar = "4861000";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfTuberculumImpar
+    /// </summary>
+    public const string LiteralNONEStructureOfTuberculumImpar = "http://snomed.info/sct#4861000";
+
+    /// <summary>
     /// Literal for code: ConstrictorMuscleOfPharynxStructure
     /// </summary>
     public const string LiteralConstrictorMuscleOfPharynxStructure = "4866005";
+
+    /// <summary>
+    /// Literal for code: NONEConstrictorMuscleOfPharynxStructure
+    /// </summary>
+    public const string LiteralNONEConstrictorMuscleOfPharynxStructure = "http://snomed.info/sct#4866005";
 
     /// <summary>
     /// Literal for code: StructureOfDorsalTegmentalNucleiOfMidbrain
@@ -11298,9 +13578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfDorsalTegmentalNucleiOfMidbrain = "4870002";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfDorsalTegmentalNucleiOfMidbrain
+    /// </summary>
+    public const string LiteralNONEStructureOfDorsalTegmentalNucleiOfMidbrain = "http://snomed.info/sct#4870002";
+
+    /// <summary>
     /// Literal for code: LaminaOfModiolusOfCochlea
     /// </summary>
     public const string LiteralLaminaOfModiolusOfCochlea = "4871003";
+
+    /// <summary>
+    /// Literal for code: NONELaminaOfModiolusOfCochlea
+    /// </summary>
+    public const string LiteralNONELaminaOfModiolusOfCochlea = "http://snomed.info/sct#4871003";
 
     /// <summary>
     /// Literal for code: EntireSublingualVein
@@ -11308,9 +13598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEntireSublingualVein = "4881004";
 
     /// <summary>
+    /// Literal for code: NONEEntireSublingualVein
+    /// </summary>
+    public const string LiteralNONEEntireSublingualVein = "http://snomed.info/sct#4881004";
+
+    /// <summary>
     /// Literal for code: EntireInterlobularVeinOfKidney
     /// </summary>
     public const string LiteralEntireInterlobularVeinOfKidney = "4888005";
+
+    /// <summary>
+    /// Literal for code: NONEEntireInterlobularVeinOfKidney
+    /// </summary>
+    public const string LiteralNONEEntireInterlobularVeinOfKidney = "http://snomed.info/sct#4888005";
 
     /// <summary>
     /// Literal for code: CellMembraneProkaryotic
@@ -11318,9 +13618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCellMembraneProkaryotic = "4897009";
 
     /// <summary>
+    /// Literal for code: NONECellMembraneProkaryotic
+    /// </summary>
+    public const string LiteralNONECellMembraneProkaryotic = "http://snomed.info/sct#4897009";
+
+    /// <summary>
     /// Literal for code: StructureOfUterovaginalPlexus
     /// </summary>
     public const string LiteralStructureOfUterovaginalPlexus = "4905007";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfUterovaginalPlexus
+    /// </summary>
+    public const string LiteralNONEStructureOfUterovaginalPlexus = "http://snomed.info/sct#4905007";
 
     /// <summary>
     /// Literal for code: MastoidAntrumStructure
@@ -11328,9 +13638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMastoidAntrumStructure = "4906008";
 
     /// <summary>
+    /// Literal for code: NONEMastoidAntrumStructure
+    /// </summary>
+    public const string LiteralNONEMastoidAntrumStructure = "http://snomed.info/sct#4906008";
+
+    /// <summary>
     /// Literal for code: CerebellarGracileLobule
     /// </summary>
     public const string LiteralCerebellarGracileLobule = "4924005";
+
+    /// <summary>
+    /// Literal for code: NONECerebellarGracileLobule
+    /// </summary>
+    public const string LiteralNONECerebellarGracileLobule = "http://snomed.info/sct#4924005";
 
     /// <summary>
     /// Literal for code: LowerLimbLymphNodeStructure
@@ -11338,9 +13658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLowerLimbLymphNodeStructure = "4942000";
 
     /// <summary>
+    /// Literal for code: NONELowerLimbLymphNodeStructure
+    /// </summary>
+    public const string LiteralNONELowerLimbLymphNodeStructure = "http://snomed.info/sct#4942000";
+
+    /// <summary>
     /// Literal for code: StructureOfRadialNotchOfUlna
     /// </summary>
     public const string LiteralStructureOfRadialNotchOfUlna = "4954000";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfRadialNotchOfUlna
+    /// </summary>
+    public const string LiteralNONEStructureOfRadialNotchOfUlna = "http://snomed.info/sct#4954000";
 
     /// <summary>
     /// Literal for code: SubcutaneousTissueStructureOfBack
@@ -11348,9 +13678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubcutaneousTissueStructureOfBack = "4956003";
 
     /// <summary>
+    /// Literal for code: NONESubcutaneousTissueStructureOfBack
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueStructureOfBack = "http://snomed.info/sct#4956003";
+
+    /// <summary>
     /// Literal for code: AmygdaloidStructure
     /// </summary>
     public const string LiteralAmygdaloidStructure = "4958002";
+
+    /// <summary>
+    /// Literal for code: NONEAmygdaloidStructure
+    /// </summary>
+    public const string LiteralNONEAmygdaloidStructure = "http://snomed.info/sct#4958002";
 
     /// <summary>
     /// Literal for code: StructureOfSuperiorTemporalSulcus
@@ -11358,9 +13698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfSuperiorTemporalSulcus = "5001007";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfSuperiorTemporalSulcus
+    /// </summary>
+    public const string LiteralNONEStructureOfSuperiorTemporalSulcus = "http://snomed.info/sct#5001007";
+
+    /// <summary>
     /// Literal for code: StructureOfYellowBoneMarrow
     /// </summary>
     public const string LiteralStructureOfYellowBoneMarrow = "5023006";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfYellowBoneMarrow
+    /// </summary>
+    public const string LiteralNONEStructureOfYellowBoneMarrow = "http://snomed.info/sct#5023006";
 
     /// <summary>
     /// Literal for code: StructureOfPosteriorSurfaceOfProstate
@@ -11368,9 +13718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfPosteriorSurfaceOfProstate = "5026003";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfPosteriorSurfaceOfProstate
+    /// </summary>
+    public const string LiteralNONEStructureOfPosteriorSurfaceOfProstate = "http://snomed.info/sct#5026003";
+
+    /// <summary>
     /// Literal for code: StructureOfSuperficialDorsalVeinsOfClitoris
     /// </summary>
     public const string LiteralStructureOfSuperficialDorsalVeinsOfClitoris = "5046008";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfSuperficialDorsalVeinsOfClitoris
+    /// </summary>
+    public const string LiteralNONEStructureOfSuperficialDorsalVeinsOfClitoris = "http://snomed.info/sct#5046008";
 
     /// <summary>
     /// Literal for code: StructureOfObturatorInternusMuscleIschialBursa
@@ -11378,9 +13738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfObturatorInternusMuscleIschialBursa = "5068003";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfObturatorInternusMuscleIschialBursa
+    /// </summary>
+    public const string LiteralNONEStructureOfObturatorInternusMuscleIschialBursa = "http://snomed.info/sct#5068003";
+
+    /// <summary>
     /// Literal for code: StructureOfRugalColumn
     /// </summary>
     public const string LiteralStructureOfRugalColumn = "5069006";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfRugalColumn
+    /// </summary>
+    public const string LiteralNONEStructureOfRugalColumn = "http://snomed.info/sct#5069006";
 
     /// <summary>
     /// Literal for code: StructureOfInfrasternalAngle
@@ -11388,9 +13758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfInfrasternalAngle = "5076001";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfInfrasternalAngle
+    /// </summary>
+    public const string LiteralNONEStructureOfInfrasternalAngle = "http://snomed.info/sct#5076001";
+
+    /// <summary>
     /// Literal for code: StructureOfPosteriorAuricularVein
     /// </summary>
     public const string LiteralStructureOfPosteriorAuricularVein = "5115006";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfPosteriorAuricularVein
+    /// </summary>
+    public const string LiteralNONEStructureOfPosteriorAuricularVein = "http://snomed.info/sct#5115006";
 
     /// <summary>
     /// Literal for code: EntireAngleOfFirstRib
@@ -11398,9 +13778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEntireAngleOfFirstRib = "5122003";
 
     /// <summary>
+    /// Literal for code: NONEEntireAngleOfFirstRib
+    /// </summary>
+    public const string LiteralNONEEntireAngleOfFirstRib = "http://snomed.info/sct#5122003";
+
+    /// <summary>
     /// Literal for code: LensZonules
     /// </summary>
     public const string LiteralLensZonules = "5128004";
+
+    /// <summary>
+    /// Literal for code: NONELensZonules
+    /// </summary>
+    public const string LiteralNONELensZonules = "http://snomed.info/sct#5128004";
 
     /// <summary>
     /// Literal for code: PermanentUpperRight6Tooth
@@ -11408,9 +13798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPermanentUpperRight6Tooth = "5140004";
 
     /// <summary>
+    /// Literal for code: NONEPermanentUpperRight6Tooth
+    /// </summary>
+    public const string LiteralNONEPermanentUpperRight6Tooth = "http://snomed.info/sct#5140004";
+
+    /// <summary>
     /// Literal for code: StructureOfIntervertebralForamenOfTwelfthThoracicVertebra
     /// </summary>
     public const string LiteralStructureOfIntervertebralForamenOfTwelfthThoracicVertebra = "5192008";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfIntervertebralForamenOfTwelfthThoracicVertebra
+    /// </summary>
+    public const string LiteralNONEStructureOfIntervertebralForamenOfTwelfthThoracicVertebra = "http://snomed.info/sct#5192008";
 
     /// <summary>
     /// Literal for code: StructureOfEpitheliumOfLens
@@ -11418,9 +13818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfEpitheliumOfLens = "5194009";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfEpitheliumOfLens
+    /// </summary>
+    public const string LiteralNONEStructureOfEpitheliumOfLens = "http://snomed.info/sct#5194009";
+
+    /// <summary>
     /// Literal for code: StructureOfRightExternalCarotidArtery
     /// </summary>
     public const string LiteralStructureOfRightExternalCarotidArtery = "5195005";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfRightExternalCarotidArtery
+    /// </summary>
+    public const string LiteralNONEStructureOfRightExternalCarotidArtery = "http://snomed.info/sct#5195005";
 
     /// <summary>
     /// Literal for code: SuperiorIleocecalRecess
@@ -11428,9 +13838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuperiorIleocecalRecess = "5204005";
 
     /// <summary>
+    /// Literal for code: NONESuperiorIleocecalRecess
+    /// </summary>
+    public const string LiteralNONESuperiorIleocecalRecess = "http://snomed.info/sct#5204005";
+
+    /// <summary>
     /// Literal for code: FrontalVein
     /// </summary>
     public const string LiteralFrontalVein = "5213007";
+
+    /// <summary>
+    /// Literal for code: NONEFrontalVein
+    /// </summary>
+    public const string LiteralNONEFrontalVein = "http://snomed.info/sct#5213007";
 
     /// <summary>
     /// Literal for code: StructureOfUterineOstiumOfFallopianTube
@@ -11438,9 +13858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfUterineOstiumOfFallopianTube = "5225005";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfUterineOstiumOfFallopianTube
+    /// </summary>
+    public const string LiteralNONEStructureOfUterineOstiumOfFallopianTube = "http://snomed.info/sct#5225005";
+
+    /// <summary>
     /// Literal for code: RightCerebralHemisphereStructure
     /// </summary>
     public const string LiteralRightCerebralHemisphereStructure = "5228007";
+
+    /// <summary>
+    /// Literal for code: NONERightCerebralHemisphereStructure
+    /// </summary>
+    public const string LiteralNONERightCerebralHemisphereStructure = "http://snomed.info/sct#5228007";
 
     /// <summary>
     /// Literal for code: StructureOfMucosaOfGallbladder
@@ -11448,9 +13878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfMucosaOfGallbladder = "5229004";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfMucosaOfGallbladder
+    /// </summary>
+    public const string LiteralNONEStructureOfMucosaOfGallbladder = "http://snomed.info/sct#5229004";
+
+    /// <summary>
     /// Literal for code: StructureOfThoracicIntervertebralDisc
     /// </summary>
     public const string LiteralStructureOfThoracicIntervertebralDisc = "5261000";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfThoracicIntervertebralDisc
+    /// </summary>
+    public const string LiteralNONEStructureOfThoracicIntervertebralDisc = "http://snomed.info/sct#5261000";
 
     /// <summary>
     /// Literal for code: SkinStructureOfLateralPortionOfNeck
@@ -11458,9 +13898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSkinStructureOfLateralPortionOfNeck = "5272005";
 
     /// <summary>
+    /// Literal for code: NONESkinStructureOfLateralPortionOfNeck
+    /// </summary>
+    public const string LiteralNONESkinStructureOfLateralPortionOfNeck = "http://snomed.info/sct#5272005";
+
+    /// <summary>
     /// Literal for code: StructureOfForamenSingulare
     /// </summary>
     public const string LiteralStructureOfForamenSingulare = "5279001";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfForamenSingulare
+    /// </summary>
+    public const string LiteralNONEStructureOfForamenSingulare = "http://snomed.info/sct#5279001";
 
     /// <summary>
     /// Literal for code: CostalSurfaceOfLung
@@ -11468,9 +13918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCostalSurfaceOfLung = "528006";
 
     /// <summary>
+    /// Literal for code: NONECostalSurfaceOfLung
+    /// </summary>
+    public const string LiteralNONECostalSurfaceOfLung = "http://snomed.info/sct#528006";
+
+    /// <summary>
     /// Literal for code: StructureOfAnteriorMediastinalLymphNode
     /// </summary>
     public const string LiteralStructureOfAnteriorMediastinalLymphNode = "5296000";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfAnteriorMediastinalLymphNode
+    /// </summary>
+    public const string LiteralNONEStructureOfAnteriorMediastinalLymphNode = "http://snomed.info/sct#5296000";
 
     /// <summary>
     /// Literal for code: StructureOfSuperiorPoleOfKidney
@@ -11478,9 +13938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfSuperiorPoleOfKidney = "5324007";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfSuperiorPoleOfKidney
+    /// </summary>
+    public const string LiteralNONEStructureOfSuperiorPoleOfKidney = "http://snomed.info/sct#5324007";
+
+    /// <summary>
     /// Literal for code: BoneStructureOfC4
     /// </summary>
     public const string LiteralBoneStructureOfC4 = "5329002";
+
+    /// <summary>
+    /// Literal for code: NONEBoneStructureOfC4
+    /// </summary>
+    public const string LiteralNONEBoneStructureOfC4 = "http://snomed.info/sct#5329002";
 
     /// <summary>
     /// Literal for code: StructureOfInferiorFrontalGyrus
@@ -11488,9 +13958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfInferiorFrontalGyrus = "5336001";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfInferiorFrontalGyrus
+    /// </summary>
+    public const string LiteralNONEStructureOfInferiorFrontalGyrus = "http://snomed.info/sct#5336001";
+
+    /// <summary>
     /// Literal for code: SynapticSpecializationCytoplasmic
     /// </summary>
     public const string LiteralSynapticSpecializationCytoplasmic = "5347008";
+
+    /// <summary>
+    /// Literal for code: NONESynapticSpecializationCytoplasmic
+    /// </summary>
+    public const string LiteralNONESynapticSpecializationCytoplasmic = "http://snomed.info/sct#5347008";
 
     /// <summary>
     /// Literal for code: StructureOfMedianArcuateLigamentOfDiaphragm
@@ -11498,9 +13978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfMedianArcuateLigamentOfDiaphragm = "5362005";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfMedianArcuateLigamentOfDiaphragm
+    /// </summary>
+    public const string LiteralNONEStructureOfMedianArcuateLigamentOfDiaphragm = "http://snomed.info/sct#5362005";
+
+    /// <summary>
     /// Literal for code: HippocampalStructure
     /// </summary>
     public const string LiteralHippocampalStructure = "5366008";
+
+    /// <summary>
+    /// Literal for code: NONEHippocampalStructure
+    /// </summary>
+    public const string LiteralNONEHippocampalStructure = "http://snomed.info/sct#5366008";
 
     /// <summary>
     /// Literal for code: SmallIntestineMuscularisPropria
@@ -11508,9 +13998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSmallIntestineMuscularisPropria = "5379004";
 
     /// <summary>
+    /// Literal for code: NONESmallIntestineMuscularisPropria
+    /// </summary>
+    public const string LiteralNONESmallIntestineMuscularisPropria = "http://snomed.info/sct#5379004";
+
+    /// <summary>
     /// Literal for code: SuperiorFasciaOfPerineum
     /// </summary>
     public const string LiteralSuperiorFasciaOfPerineum = "5382009";
+
+    /// <summary>
+    /// Literal for code: NONESuperiorFasciaOfPerineum
+    /// </summary>
+    public const string LiteralNONESuperiorFasciaOfPerineum = "http://snomed.info/sct#5382009";
 
     /// <summary>
     /// Literal for code: UterineParacervicalLymphNode
@@ -11518,9 +14018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUterineParacervicalLymphNode = "5394000";
 
     /// <summary>
+    /// Literal for code: NONEUterineParacervicalLymphNode
+    /// </summary>
+    public const string LiteralNONEUterineParacervicalLymphNode = "http://snomed.info/sct#5394000";
+
+    /// <summary>
     /// Literal for code: NormalFatPad
     /// </summary>
     public const string LiteralNormalFatPad = "5398002";
+
+    /// <summary>
+    /// Literal for code: NONENormalFatPad
+    /// </summary>
+    public const string LiteralNONENormalFatPad = "http://snomed.info/sct#5398002";
 
     /// <summary>
     /// Literal for code: ArticularProcessOfThirdLumbarVertebra
@@ -11528,9 +14038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArticularProcessOfThirdLumbarVertebra = "5403001";
 
     /// <summary>
+    /// Literal for code: NONEArticularProcessOfThirdLumbarVertebra
+    /// </summary>
+    public const string LiteralNONEArticularProcessOfThirdLumbarVertebra = "http://snomed.info/sct#5403001";
+
+    /// <summary>
     /// Literal for code: SexChromosomeY
     /// </summary>
     public const string LiteralSexChromosomeY = "5421003";
+
+    /// <summary>
+    /// Literal for code: NONESexChromosomeY
+    /// </summary>
+    public const string LiteralNONESexChromosomeY = "http://snomed.info/sct#5421003";
 
     /// <summary>
     /// Literal for code: ApocrineIntraepidermalDuct
@@ -11538,9 +14058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralApocrineIntraepidermalDuct = "5427004";
 
     /// <summary>
+    /// Literal for code: NONEApocrineIntraepidermalDuct
+    /// </summary>
+    public const string LiteralNONEApocrineIntraepidermalDuct = "http://snomed.info/sct#5427004";
+
+    /// <summary>
     /// Literal for code: DeepArteryOfClitoris
     /// </summary>
     public const string LiteralDeepArteryOfClitoris = "5458003";
+
+    /// <summary>
+    /// Literal for code: NONEDeepArteryOfClitoris
+    /// </summary>
+    public const string LiteralNONEDeepArteryOfClitoris = "http://snomed.info/sct#5458003";
 
     /// <summary>
     /// Literal for code: CardiacIncisureOfStomach
@@ -11548,9 +14078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCardiacIncisureOfStomach = "5459006";
 
     /// <summary>
+    /// Literal for code: NONECardiacIncisureOfStomach
+    /// </summary>
+    public const string LiteralNONECardiacIncisureOfStomach = "http://snomed.info/sct#5459006";
+
+    /// <summary>
     /// Literal for code: LacrimalPartOfOrbicularisOculiMuscle
     /// </summary>
     public const string LiteralLacrimalPartOfOrbicularisOculiMuscle = "5491007";
+
+    /// <summary>
+    /// Literal for code: NONELacrimalPartOfOrbicularisOculiMuscle
+    /// </summary>
+    public const string LiteralNONELacrimalPartOfOrbicularisOculiMuscle = "http://snomed.info/sct#5491007";
 
     /// <summary>
     /// Literal for code: MetacarpophalangealJointOfLittleFinger
@@ -11558,9 +14098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMetacarpophalangealJointOfLittleFinger = "5493005";
 
     /// <summary>
+    /// Literal for code: NONEMetacarpophalangealJointOfLittleFinger
+    /// </summary>
+    public const string LiteralNONEMetacarpophalangealJointOfLittleFinger = "http://snomed.info/sct#5493005";
+
+    /// <summary>
     /// Literal for code: SuperiorAberrantDuctuleOfEpididymis
     /// </summary>
     public const string LiteralSuperiorAberrantDuctuleOfEpididymis = "5498001";
+
+    /// <summary>
+    /// Literal for code: NONESuperiorAberrantDuctuleOfEpididymis
+    /// </summary>
+    public const string LiteralNONESuperiorAberrantDuctuleOfEpididymis = "http://snomed.info/sct#5498001";
 
     /// <summary>
     /// Literal for code: HyaloidArtery
@@ -11568,9 +14118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHyaloidArtery = "5501001";
 
     /// <summary>
+    /// Literal for code: NONEHyaloidArtery
+    /// </summary>
+    public const string LiteralNONEHyaloidArtery = "http://snomed.info/sct#5501001";
+
+    /// <summary>
     /// Literal for code: SubcutaneousTissueOfChin
     /// </summary>
     public const string LiteralSubcutaneousTissueOfChin = "5520004";
+
+    /// <summary>
+    /// Literal for code: NONESubcutaneousTissueOfChin
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueOfChin = "http://snomed.info/sct#5520004";
 
     /// <summary>
     /// Literal for code: VagusNerveParasympatheticFibersToCardiacPlexus
@@ -11578,9 +14138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVagusNerveParasympatheticFibersToCardiacPlexus = "552004";
 
     /// <summary>
+    /// Literal for code: NONEVagusNerveParasympatheticFibersToCardiacPlexus
+    /// </summary>
+    public const string LiteralNONEVagusNerveParasympatheticFibersToCardiacPlexus = "http://snomed.info/sct#552004";
+
+    /// <summary>
     /// Literal for code: TegmentalPortionOfPons
     /// </summary>
     public const string LiteralTegmentalPortionOfPons = "5538001";
+
+    /// <summary>
+    /// Literal for code: NONETegmentalPortionOfPons
+    /// </summary>
+    public const string LiteralNONETegmentalPortionOfPons = "http://snomed.info/sct#5538001";
 
     /// <summary>
     /// Literal for code: CristaMarginalisOfTooth
@@ -11588,9 +14158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCristaMarginalisOfTooth = "5542003";
 
     /// <summary>
+    /// Literal for code: NONECristaMarginalisOfTooth
+    /// </summary>
+    public const string LiteralNONECristaMarginalisOfTooth = "http://snomed.info/sct#5542003";
+
+    /// <summary>
     /// Literal for code: LongitudinalLayerOfDuodenalMuscularisPropria
     /// </summary>
     public const string LiteralLongitudinalLayerOfDuodenalMuscularisPropria = "5544002";
+
+    /// <summary>
+    /// Literal for code: NONELongitudinalLayerOfDuodenalMuscularisPropria
+    /// </summary>
+    public const string LiteralNONELongitudinalLayerOfDuodenalMuscularisPropria = "http://snomed.info/sct#5544002";
 
     /// <summary>
     /// Literal for code: AlveolarRidgeMucousMembrane
@@ -11598,9 +14178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlveolarRidgeMucousMembrane = "5560003";
 
     /// <summary>
+    /// Literal for code: NONEAlveolarRidgeMucousMembrane
+    /// </summary>
+    public const string LiteralNONEAlveolarRidgeMucousMembrane = "http://snomed.info/sct#5560003";
+
+    /// <summary>
     /// Literal for code: Singlet
     /// </summary>
     public const string LiteralSinglet = "5564007";
+
+    /// <summary>
+    /// Literal for code: NONESinglet
+    /// </summary>
+    public const string LiteralNONESinglet = "http://snomed.info/sct#5564007";
 
     /// <summary>
     /// Literal for code: SeventhCostalCartilage
@@ -11608,9 +14198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSeventhCostalCartilage = "5574005";
 
     /// <summary>
+    /// Literal for code: NONESeventhCostalCartilage
+    /// </summary>
+    public const string LiteralNONESeventhCostalCartilage = "http://snomed.info/sct#5574005";
+
+    /// <summary>
     /// Literal for code: TendonOfSupraspinatusMuscle
     /// </summary>
     public const string LiteralTendonOfSupraspinatusMuscle = "5580002";
+
+    /// <summary>
+    /// Literal for code: NONETendonOfSupraspinatusMuscle
+    /// </summary>
+    public const string LiteralNONETendonOfSupraspinatusMuscle = "http://snomed.info/sct#5580002";
 
     /// <summary>
     /// Literal for code: RetinaOfRightEye
@@ -11618,9 +14218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRetinaOfRightEye = "5597008";
 
     /// <summary>
+    /// Literal for code: NONERetinaOfRightEye
+    /// </summary>
+    public const string LiteralNONERetinaOfRightEye = "http://snomed.info/sct#5597008";
+
+    /// <summary>
     /// Literal for code: AnulusFibrosusOfIntervertebralDiscOfFifthCervicalVertebra
     /// </summary>
     public const string LiteralAnulusFibrosusOfIntervertebralDiscOfFifthCervicalVertebra = "5611001";
+
+    /// <summary>
+    /// Literal for code: NONEAnulusFibrosusOfIntervertebralDiscOfFifthCervicalVertebra
+    /// </summary>
+    public const string LiteralNONEAnulusFibrosusOfIntervertebralDiscOfFifthCervicalVertebra = "http://snomed.info/sct#5611001";
 
     /// <summary>
     /// Literal for code: NavicularFacetOfIntermediateCuneiformBone
@@ -11628,9 +14238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNavicularFacetOfIntermediateCuneiformBone = "5625000";
 
     /// <summary>
+    /// Literal for code: NONENavicularFacetOfIntermediateCuneiformBone
+    /// </summary>
+    public const string LiteralNONENavicularFacetOfIntermediateCuneiformBone = "http://snomed.info/sct#5625000";
+
+    /// <summary>
     /// Literal for code: RightVisceralPleura
     /// </summary>
     public const string LiteralRightVisceralPleura = "5627008";
+
+    /// <summary>
+    /// Literal for code: NONERightVisceralPleura
+    /// </summary>
+    public const string LiteralNONERightVisceralPleura = "http://snomed.info/sct#5627008";
 
     /// <summary>
     /// Literal for code: MuscularPortionOfInterventricularSeptum
@@ -11638,9 +14258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMuscularPortionOfInterventricularSeptum = "5633004";
 
     /// <summary>
+    /// Literal for code: NONEMuscularPortionOfInterventricularSeptum
+    /// </summary>
+    public const string LiteralNONEMuscularPortionOfInterventricularSeptum = "http://snomed.info/sct#5633004";
+
+    /// <summary>
     /// Literal for code: CanalOfStomach
     /// </summary>
     public const string LiteralCanalOfStomach = "5643001";
+
+    /// <summary>
+    /// Literal for code: NONECanalOfStomach
+    /// </summary>
+    public const string LiteralNONECanalOfStomach = "http://snomed.info/sct#5643001";
 
     /// <summary>
     /// Literal for code: FracturedMembranePFace
@@ -11648,9 +14278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFracturedMembranePFace = "5644007";
 
     /// <summary>
+    /// Literal for code: NONEFracturedMembranePFace
+    /// </summary>
+    public const string LiteralNONEFracturedMembranePFace = "http://snomed.info/sct#5644007";
+
+    /// <summary>
     /// Literal for code: IntervertebralDiscSpaceOfFifthLumbarVertebra
     /// </summary>
     public const string LiteralIntervertebralDiscSpaceOfFifthLumbarVertebra = "565008";
+
+    /// <summary>
+    /// Literal for code: NONEIntervertebralDiscSpaceOfFifthLumbarVertebra
+    /// </summary>
+    public const string LiteralNONEIntervertebralDiscSpaceOfFifthLumbarVertebra = "http://snomed.info/sct#565008";
 
     /// <summary>
     /// Literal for code: InnerSurfaceOfSeventhRib
@@ -11658,9 +14298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInnerSurfaceOfSeventhRib = "5653000";
 
     /// <summary>
+    /// Literal for code: NONEInnerSurfaceOfSeventhRib
+    /// </summary>
+    public const string LiteralNONEInnerSurfaceOfSeventhRib = "http://snomed.info/sct#5653000";
+
+    /// <summary>
     /// Literal for code: Retina
     /// </summary>
     public const string LiteralRetina = "5665001";
+
+    /// <summary>
+    /// Literal for code: NONERetina
+    /// </summary>
+    public const string LiteralNONERetina = "http://snomed.info/sct#5665001";
 
     /// <summary>
     /// Literal for code: LowerDigestiveTract
@@ -11668,9 +14318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLowerDigestiveTract = "5668004";
 
     /// <summary>
+    /// Literal for code: NONELowerDigestiveTract
+    /// </summary>
+    public const string LiteralNONELowerDigestiveTract = "http://snomed.info/sct#5668004";
+
+    /// <summary>
     /// Literal for code: LenticularFasciculus
     /// </summary>
     public const string LiteralLenticularFasciculus = "5677006";
+
+    /// <summary>
+    /// Literal for code: NONELenticularFasciculus
+    /// </summary>
+    public const string LiteralNONELenticularFasciculus = "http://snomed.info/sct#5677006";
 
     /// <summary>
     /// Literal for code: SubcutaneousTissueOfUpperExtremity
@@ -11678,9 +14338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubcutaneousTissueOfUpperExtremity = "5682004";
 
     /// <summary>
+    /// Literal for code: NONESubcutaneousTissueOfUpperExtremity
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueOfUpperExtremity = "http://snomed.info/sct#5682004";
+
+    /// <summary>
     /// Literal for code: ArticularPartOfTubercleOfNinthRib
     /// </summary>
     public const string LiteralArticularPartOfTubercleOfNinthRib = "5696005";
+
+    /// <summary>
+    /// Literal for code: NONEArticularPartOfTubercleOfNinthRib
+    /// </summary>
+    public const string LiteralNONEArticularPartOfTubercleOfNinthRib = "http://snomed.info/sct#5696005";
 
     /// <summary>
     /// Literal for code: SkinOfLateralSurfaceOfFinger
@@ -11688,9 +14358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSkinOfLateralSurfaceOfFinger = "5697001";
 
     /// <summary>
+    /// Literal for code: NONESkinOfLateralSurfaceOfFinger
+    /// </summary>
+    public const string LiteralNONESkinOfLateralSurfaceOfFinger = "http://snomed.info/sct#5697001";
+
+    /// <summary>
     /// Literal for code: MultifidusMuscles
     /// </summary>
     public const string LiteralMultifidusMuscles = "5709001";
+
+    /// <summary>
+    /// Literal for code: NONEMultifidusMuscles
+    /// </summary>
+    public const string LiteralNONEMultifidusMuscles = "http://snomed.info/sct#5709001";
 
     /// <summary>
     /// Literal for code: SubmandibularTriangle
@@ -11698,9 +14378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubmandibularTriangle = "5713008";
 
     /// <summary>
+    /// Literal for code: NONESubmandibularTriangle
+    /// </summary>
+    public const string LiteralNONESubmandibularTriangle = "http://snomed.info/sct#5713008";
+
+    /// <summary>
     /// Literal for code: TemporalFossa
     /// </summary>
     public const string LiteralTemporalFossa = "5717009";
+
+    /// <summary>
+    /// Literal for code: NONETemporalFossa
+    /// </summary>
+    public const string LiteralNONETemporalFossa = "http://snomed.info/sct#5717009";
 
     /// <summary>
     /// Literal for code: TendonAndTendonSheathOfLegAndAnkle
@@ -11708,9 +14398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTendonAndTendonSheathOfLegAndAnkle = "5718004";
 
     /// <summary>
+    /// Literal for code: NONETendonAndTendonSheathOfLegAndAnkle
+    /// </summary>
+    public const string LiteralNONETendonAndTendonSheathOfLegAndAnkle = "http://snomed.info/sct#5718004";
+
+    /// <summary>
     /// Literal for code: AnteriorCervicalLymphNode
     /// </summary>
     public const string LiteralAnteriorCervicalLymphNode = "5727003";
+
+    /// <summary>
+    /// Literal for code: NONEAnteriorCervicalLymphNode
+    /// </summary>
+    public const string LiteralNONEAnteriorCervicalLymphNode = "http://snomed.info/sct#5727003";
 
     /// <summary>
     /// Literal for code: SkinOfForearm
@@ -11718,9 +14418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSkinOfForearm = "5742000";
 
     /// <summary>
+    /// Literal for code: NONESkinOfForearm
+    /// </summary>
+    public const string LiteralNONESkinOfForearm = "http://snomed.info/sct#5742000";
+
+    /// <summary>
     /// Literal for code: SubcutaneousTissueOfAnteriorPortionOfNeck
     /// </summary>
     public const string LiteralSubcutaneousTissueOfAnteriorPortionOfNeck = "5751008";
+
+    /// <summary>
+    /// Literal for code: NONESubcutaneousTissueOfAnteriorPortionOfNeck
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueOfAnteriorPortionOfNeck = "http://snomed.info/sct#5751008";
 
     /// <summary>
     /// Literal for code: EndocervicalEpithelium
@@ -11728,9 +14438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndocervicalEpithelium = "5769004";
 
     /// <summary>
+    /// Literal for code: NONEEndocervicalEpithelium
+    /// </summary>
+    public const string LiteralNONEEndocervicalEpithelium = "http://snomed.info/sct#5769004";
+
+    /// <summary>
     /// Literal for code: Paradidymis
     /// </summary>
     public const string LiteralParadidymis = "5780004";
+
+    /// <summary>
+    /// Literal for code: NONEParadidymis
+    /// </summary>
+    public const string LiteralNONEParadidymis = "http://snomed.info/sct#5780004";
 
     /// <summary>
     /// Literal for code: Diaphragm
@@ -11738,9 +14458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiaphragm = "5798000";
 
     /// <summary>
+    /// Literal for code: NONEDiaphragm
+    /// </summary>
+    public const string LiteralNONEDiaphragm = "http://snomed.info/sct#5798000";
+
+    /// <summary>
     /// Literal for code: MediumSizedNeuron
     /// </summary>
     public const string LiteralMediumSizedNeuron = "5802004";
+
+    /// <summary>
+    /// Literal for code: NONEMediumSizedNeuron
+    /// </summary>
+    public const string LiteralNONEMediumSizedNeuron = "http://snomed.info/sct#5802004";
 
     /// <summary>
     /// Literal for code: AngleOfSeventhRib
@@ -11748,9 +14478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAngleOfSeventhRib = "5814007";
 
     /// <summary>
+    /// Literal for code: NONEAngleOfSeventhRib
+    /// </summary>
+    public const string LiteralNONEAngleOfSeventhRib = "http://snomed.info/sct#5814007";
+
+    /// <summary>
     /// Literal for code: SuperiorRectusMuscle
     /// </summary>
     public const string LiteralSuperiorRectusMuscle = "5815008";
+
+    /// <summary>
+    /// Literal for code: NONESuperiorRectusMuscle
+    /// </summary>
+    public const string LiteralNONESuperiorRectusMuscle = "http://snomed.info/sct#5815008";
 
     /// <summary>
     /// Literal for code: DuodenalFold
@@ -11758,9 +14498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDuodenalFold = "5816009";
 
     /// <summary>
+    /// Literal for code: NONEDuodenalFold
+    /// </summary>
+    public const string LiteralNONEDuodenalFold = "http://snomed.info/sct#5816009";
+
+    /// <summary>
     /// Literal for code: HeadOfPhalanxOfGreatToe
     /// </summary>
     public const string LiteralHeadOfPhalanxOfGreatToe = "582005";
+
+    /// <summary>
+    /// Literal for code: NONEHeadOfPhalanxOfGreatToe
+    /// </summary>
+    public const string LiteralNONEHeadOfPhalanxOfGreatToe = "http://snomed.info/sct#582005";
 
     /// <summary>
     /// Literal for code: SubstantiaPropriaOfSclera
@@ -11768,9 +14518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubstantiaPropriaOfSclera = "5825003";
 
     /// <summary>
+    /// Literal for code: NONESubstantiaPropriaOfSclera
+    /// </summary>
+    public const string LiteralNONESubstantiaPropriaOfSclera = "http://snomed.info/sct#5825003";
+
+    /// <summary>
     /// Literal for code: PosteriorCordOfBrachialPlexus
     /// </summary>
     public const string LiteralPosteriorCordOfBrachialPlexus = "5828001";
+
+    /// <summary>
+    /// Literal for code: NONEPosteriorCordOfBrachialPlexus
+    /// </summary>
+    public const string LiteralNONEPosteriorCordOfBrachialPlexus = "http://snomed.info/sct#5828001";
 
     /// <summary>
     /// Literal for code: SuperiorArticularProcessOfSeventhCervicalVertebra
@@ -11778,9 +14538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuperiorArticularProcessOfSeventhCervicalVertebra = "5847003";
 
     /// <summary>
+    /// Literal for code: NONESuperiorArticularProcessOfSeventhCervicalVertebra
+    /// </summary>
+    public const string LiteralNONESuperiorArticularProcessOfSeventhCervicalVertebra = "http://snomed.info/sct#5847003";
+
+    /// <summary>
     /// Literal for code: OrbitalPlateOfEthmoidBone
     /// </summary>
     public const string LiteralOrbitalPlateOfEthmoidBone = "5854009";
+
+    /// <summary>
+    /// Literal for code: NONEOrbitalPlateOfEthmoidBone
+    /// </summary>
+    public const string LiteralNONEOrbitalPlateOfEthmoidBone = "http://snomed.info/sct#5854009";
 
     /// <summary>
     /// Literal for code: SerosaOfUrinaryBladder
@@ -11788,9 +14558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSerosaOfUrinaryBladder = "5868002";
 
     /// <summary>
+    /// Literal for code: NONESerosaOfUrinaryBladder
+    /// </summary>
+    public const string LiteralNONESerosaOfUrinaryBladder = "http://snomed.info/sct#5868002";
+
+    /// <summary>
     /// Literal for code: CapsuleOfProximalInterphalangealJointOfThirdToe
     /// </summary>
     public const string LiteralCapsuleOfProximalInterphalangealJointOfThirdToe = "587004";
+
+    /// <summary>
+    /// Literal for code: NONECapsuleOfProximalInterphalangealJointOfThirdToe
+    /// </summary>
+    public const string LiteralNONECapsuleOfProximalInterphalangealJointOfThirdToe = "http://snomed.info/sct#587004";
 
     /// <summary>
     /// Literal for code: SubcutaneousTissueOfLateralBorderOfSoleOfFoot
@@ -11798,9 +14578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubcutaneousTissueOfLateralBorderOfSoleOfFoot = "5872003";
 
     /// <summary>
+    /// Literal for code: NONESubcutaneousTissueOfLateralBorderOfSoleOfFoot
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueOfLateralBorderOfSoleOfFoot = "http://snomed.info/sct#5872003";
+
+    /// <summary>
     /// Literal for code: TuberosityOfDistalPhalanxOfHand
     /// </summary>
     public const string LiteralTuberosityOfDistalPhalanxOfHand = "5881009";
+
+    /// <summary>
+    /// Literal for code: NONETuberosityOfDistalPhalanxOfHand
+    /// </summary>
+    public const string LiteralNONETuberosityOfDistalPhalanxOfHand = "http://snomed.info/sct#5881009";
 
     /// <summary>
     /// Literal for code: EndothelialSievePlate
@@ -11808,9 +14598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndothelialSievePlate = "5882002";
 
     /// <summary>
+    /// Literal for code: NONEEndothelialSievePlate
+    /// </summary>
+    public const string LiteralNONEEndothelialSievePlate = "http://snomed.info/sct#5882002";
+
+    /// <summary>
     /// Literal for code: ArticularSurfaceThirdMetacarpalOfFourthMetacarpalBone
     /// </summary>
     public const string LiteralArticularSurfaceThirdMetacarpalOfFourthMetacarpalBone = "5889006";
+
+    /// <summary>
+    /// Literal for code: NONEArticularSurfaceThirdMetacarpalOfFourthMetacarpalBone
+    /// </summary>
+    public const string LiteralNONEArticularSurfaceThirdMetacarpalOfFourthMetacarpalBone = "http://snomed.info/sct#5889006";
 
     /// <summary>
     /// Literal for code: PosteriorCellsOfEthmoidSinus
@@ -11818,9 +14618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPosteriorCellsOfEthmoidSinus = "5890002";
 
     /// <summary>
+    /// Literal for code: NONEPosteriorCellsOfEthmoidSinus
+    /// </summary>
+    public const string LiteralNONEPosteriorCellsOfEthmoidSinus = "http://snomed.info/sct#5890002";
+
+    /// <summary>
     /// Literal for code: InterventricularSeptum
     /// </summary>
     public const string LiteralInterventricularSeptum = "589001";
+
+    /// <summary>
+    /// Literal for code: NONEInterventricularSeptum
+    /// </summary>
+    public const string LiteralNONEInterventricularSeptum = "http://snomed.info/sct#589001";
 
     /// <summary>
     /// Literal for code: SuperiorRecessOfTympanicMembrane
@@ -11828,9 +14638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuperiorRecessOfTympanicMembrane = "5893000";
 
     /// <summary>
+    /// Literal for code: NONESuperiorRecessOfTympanicMembrane
+    /// </summary>
+    public const string LiteralNONESuperiorRecessOfTympanicMembrane = "http://snomed.info/sct#5893000";
+
+    /// <summary>
     /// Literal for code: Myotome
     /// </summary>
     public const string LiteralMyotome = "5898009";
+
+    /// <summary>
+    /// Literal for code: NONEMyotome
+    /// </summary>
+    public const string LiteralNONEMyotome = "http://snomed.info/sct#5898009";
 
     /// <summary>
     /// Literal for code: ArticularProcessOfTwelfthThoracicVertebra
@@ -11838,9 +14658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArticularProcessOfTwelfthThoracicVertebra = "5923009";
 
     /// <summary>
+    /// Literal for code: NONEArticularProcessOfTwelfthThoracicVertebra
+    /// </summary>
+    public const string LiteralNONEArticularProcessOfTwelfthThoracicVertebra = "http://snomed.info/sct#5923009";
+
+    /// <summary>
     /// Literal for code: BronchialLumen
     /// </summary>
     public const string LiteralBronchialLumen = "5926001";
+
+    /// <summary>
+    /// Literal for code: NONEBronchialLumen
+    /// </summary>
+    public const string LiteralNONEBronchialLumen = "http://snomed.info/sct#5926001";
 
     /// <summary>
     /// Literal for code: GreatCardiacVein
@@ -11848,9 +14678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGreatCardiacVein = "5928000";
 
     /// <summary>
+    /// Literal for code: NONEGreatCardiacVein
+    /// </summary>
+    public const string LiteralNONEGreatCardiacVein = "http://snomed.info/sct#5928000";
+
+    /// <summary>
     /// Literal for code: TensorTympaniMuscle
     /// </summary>
     public const string LiteralTensorTympaniMuscle = "5942008";
+
+    /// <summary>
+    /// Literal for code: NONETensorTympaniMuscle
+    /// </summary>
+    public const string LiteralNONETensorTympaniMuscle = "http://snomed.info/sct#5942008";
 
     /// <summary>
     /// Literal for code: VestibularVein
@@ -11858,9 +14698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVestibularVein = "5943003";
 
     /// <summary>
+    /// Literal for code: NONEVestibularVein
+    /// </summary>
+    public const string LiteralNONEVestibularVein = "http://snomed.info/sct#5943003";
+
+    /// <summary>
     /// Literal for code: PosteriorPalatineArch
     /// </summary>
     public const string LiteralPosteriorPalatineArch = "5944009";
+
+    /// <summary>
+    /// Literal for code: NONEPosteriorPalatineArch
+    /// </summary>
+    public const string LiteralNONEPosteriorPalatineArch = "http://snomed.info/sct#5944009";
 
     /// <summary>
     /// Literal for code: CapsuleOfDistalInterphalangealJointOfThirdToe
@@ -11868,9 +14718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCapsuleOfDistalInterphalangealJointOfThirdToe = "5948007";
 
     /// <summary>
+    /// Literal for code: NONECapsuleOfDistalInterphalangealJointOfThirdToe
+    /// </summary>
+    public const string LiteralNONECapsuleOfDistalInterphalangealJointOfThirdToe = "http://snomed.info/sct#5948007";
+
+    /// <summary>
     /// Literal for code: PalpebralFissure
     /// </summary>
     public const string LiteralPalpebralFissure = "595000";
+
+    /// <summary>
+    /// Literal for code: NONEPalpebralFissure
+    /// </summary>
+    public const string LiteralNONEPalpebralFissure = "http://snomed.info/sct#595000";
 
     /// <summary>
     /// Literal for code: LeftWrist
@@ -11878,9 +14738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeftWrist = "5951000";
 
     /// <summary>
+    /// Literal for code: NONELeftWrist
+    /// </summary>
+    public const string LiteralNONELeftWrist = "http://snomed.info/sct#5951000";
+
+    /// <summary>
     /// Literal for code: EighthRib
     /// </summary>
     public const string LiteralEighthRib = "5953002";
+
+    /// <summary>
+    /// Literal for code: NONEEighthRib
+    /// </summary>
+    public const string LiteralNONEEighthRib = "http://snomed.info/sct#5953002";
 
     /// <summary>
     /// Literal for code: SubcutaneousTissueOfEyelid
@@ -11888,9 +14758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubcutaneousTissueOfEyelid = "5976004";
 
     /// <summary>
+    /// Literal for code: NONESubcutaneousTissueOfEyelid
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueOfEyelid = "http://snomed.info/sct#5976004";
+
+    /// <summary>
     /// Literal for code: EpiscleralArtery
     /// </summary>
     public const string LiteralEpiscleralArtery = "5979006";
+
+    /// <summary>
+    /// Literal for code: NONEEpiscleralArtery
+    /// </summary>
+    public const string LiteralNONEEpiscleralArtery = "http://snomed.info/sct#5979006";
 
     /// <summary>
     /// Literal for code: ChromosomesGroupD
@@ -11898,9 +14778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChromosomesGroupD = "5996007";
 
     /// <summary>
+    /// Literal for code: NONEChromosomesGroupD
+    /// </summary>
+    public const string LiteralNONEChromosomesGroupD = "http://snomed.info/sct#5996007";
+
+    /// <summary>
     /// Literal for code: QuadratusLumborumMuscle
     /// </summary>
     public const string LiteralQuadratusLumborumMuscle = "6001004";
+
+    /// <summary>
+    /// Literal for code: NONEQuadratusLumborumMuscle
+    /// </summary>
+    public const string LiteralNONEQuadratusLumborumMuscle = "http://snomed.info/sct#6001004";
 
     /// <summary>
     /// Literal for code: IntervertebralDiscOfSecondThoracicVertebra
@@ -11908,9 +14798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntervertebralDiscOfSecondThoracicVertebra = "6004007";
 
     /// <summary>
+    /// Literal for code: NONEIntervertebralDiscOfSecondThoracicVertebra
+    /// </summary>
+    public const string LiteralNONEIntervertebralDiscOfSecondThoracicVertebra = "http://snomed.info/sct#6004007";
+
+    /// <summary>
     /// Literal for code: CircularLayerOfDuodenalMuscularisPropria
     /// </summary>
     public const string LiteralCircularLayerOfDuodenalMuscularisPropria = "6006009";
+
+    /// <summary>
+    /// Literal for code: NONECircularLayerOfDuodenalMuscularisPropria
+    /// </summary>
+    public const string LiteralNONECircularLayerOfDuodenalMuscularisPropria = "http://snomed.info/sct#6006009";
 
     /// <summary>
     /// Literal for code: MesenteryOfAscendingColon
@@ -11918,9 +14818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMesenteryOfAscendingColon = "6009002";
 
     /// <summary>
+    /// Literal for code: NONEMesenteryOfAscendingColon
+    /// </summary>
+    public const string LiteralNONEMesenteryOfAscendingColon = "http://snomed.info/sct#6009002";
+
+    /// <summary>
     /// Literal for code: ReticuloendothelialSystem
     /// </summary>
     public const string LiteralReticuloendothelialSystem = "6013009";
+
+    /// <summary>
+    /// Literal for code: NONEReticuloendothelialSystem
+    /// </summary>
+    public const string LiteralNONEReticuloendothelialSystem = "http://snomed.info/sct#6013009";
 
     /// <summary>
     /// Literal for code: PenicilliaryArteries
@@ -11928,9 +14838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPenicilliaryArteries = "6014003";
 
     /// <summary>
+    /// Literal for code: NONEPenicilliaryArteries
+    /// </summary>
+    public const string LiteralNONEPenicilliaryArteries = "http://snomed.info/sct#6014003";
+
+    /// <summary>
     /// Literal for code: Heterolysosome
     /// </summary>
     public const string LiteralHeterolysosome = "6023000";
+
+    /// <summary>
+    /// Literal for code: NONEHeterolysosome
+    /// </summary>
+    public const string LiteralNONEHeterolysosome = "http://snomed.info/sct#6023000";
 
     /// <summary>
     /// Literal for code: ColumnarEpithelialCell
@@ -11938,9 +14858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralColumnarEpithelialCell = "6032003";
 
     /// <summary>
+    /// Literal for code: NONEColumnarEpithelialCell
+    /// </summary>
+    public const string LiteralNONEColumnarEpithelialCell = "http://snomed.info/sct#6032003";
+
+    /// <summary>
     /// Literal for code: OuterSurfaceOfThirdRib
     /// </summary>
     public const string LiteralOuterSurfaceOfThirdRib = "6046003";
+
+    /// <summary>
+    /// Literal for code: NONEOuterSurfaceOfThirdRib
+    /// </summary>
+    public const string LiteralNONEOuterSurfaceOfThirdRib = "http://snomed.info/sct#6046003";
 
     /// <summary>
     /// Literal for code: LacrimalVein
@@ -11948,9 +14878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLacrimalVein = "6050005";
 
     /// <summary>
+    /// Literal for code: NONELacrimalVein
+    /// </summary>
+    public const string LiteralNONELacrimalVein = "http://snomed.info/sct#6050005";
+
+    /// <summary>
     /// Literal for code: MetacarpophalangealJointOfMiddleFinger
     /// </summary>
     public const string LiteralMetacarpophalangealJointOfMiddleFinger = "6059006";
+
+    /// <summary>
+    /// Literal for code: NONEMetacarpophalangealJointOfMiddleFinger
+    /// </summary>
+    public const string LiteralNONEMetacarpophalangealJointOfMiddleFinger = "http://snomed.info/sct#6059006";
 
     /// <summary>
     /// Literal for code: DeciduousMandibularRightCanineTooth
@@ -11958,9 +14898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeciduousMandibularRightCanineTooth = "6062009";
 
     /// <summary>
+    /// Literal for code: NONEDeciduousMandibularRightCanineTooth
+    /// </summary>
+    public const string LiteralNONEDeciduousMandibularRightCanineTooth = "http://snomed.info/sct#6062009";
+
+    /// <summary>
     /// Literal for code: LigamentOfLeftSuperiorVenaCava
     /// </summary>
     public const string LiteralLigamentOfLeftSuperiorVenaCava = "6073002";
+
+    /// <summary>
+    /// Literal for code: NONELigamentOfLeftSuperiorVenaCava
+    /// </summary>
+    public const string LiteralNONELigamentOfLeftSuperiorVenaCava = "http://snomed.info/sct#6073002";
 
     /// <summary>
     /// Literal for code: CapsuleOfTemporomandibularJoint
@@ -11968,9 +14918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCapsuleOfTemporomandibularJoint = "6074008";
 
     /// <summary>
+    /// Literal for code: NONECapsuleOfTemporomandibularJoint
+    /// </summary>
+    public const string LiteralNONECapsuleOfTemporomandibularJoint = "http://snomed.info/sct#6074008";
+
+    /// <summary>
     /// Literal for code: GastrointestinalSubserosa
     /// </summary>
     public const string LiteralGastrointestinalSubserosa = "6076005";
+
+    /// <summary>
+    /// Literal for code: NONEGastrointestinalSubserosa
+    /// </summary>
+    public const string LiteralNONEGastrointestinalSubserosa = "http://snomed.info/sct#6076005";
 
     /// <summary>
     /// Literal for code: SubcutaneousTissueOfPhiltrum
@@ -11978,9 +14938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubcutaneousTissueOfPhiltrum = "608002";
 
     /// <summary>
+    /// Literal for code: NONESubcutaneousTissueOfPhiltrum
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueOfPhiltrum = "http://snomed.info/sct#608002";
+
+    /// <summary>
     /// Literal for code: SubclavianNerve
     /// </summary>
     public const string LiteralSubclavianNerve = "6104005";
+
+    /// <summary>
+    /// Literal for code: NONESubclavianNerve
+    /// </summary>
+    public const string LiteralNONESubclavianNerve = "http://snomed.info/sct#6104005";
 
     /// <summary>
     /// Literal for code: BodyOfFifthThoracicVertebra
@@ -11988,9 +14958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBodyOfFifthThoracicVertebra = "6105006";
 
     /// <summary>
+    /// Literal for code: NONEBodyOfFifthThoracicVertebra
+    /// </summary>
+    public const string LiteralNONEBodyOfFifthThoracicVertebra = "http://snomed.info/sct#6105006";
+
+    /// <summary>
     /// Literal for code: FacialNerveParasympatheticFibers
     /// </summary>
     public const string LiteralFacialNerveParasympatheticFibers = "6110005";
+
+    /// <summary>
+    /// Literal for code: NONEFacialNerveParasympatheticFibers
+    /// </summary>
+    public const string LiteralNONEFacialNerveParasympatheticFibers = "http://snomed.info/sct#6110005";
 
     /// <summary>
     /// Literal for code: NailOfFourthToe
@@ -11998,9 +14978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNailOfFourthToe = "6194002";
 
     /// <summary>
+    /// Literal for code: NONENailOfFourthToe
+    /// </summary>
+    public const string LiteralNONENailOfFourthToe = "http://snomed.info/sct#6194002";
+
+    /// <summary>
     /// Literal for code: MultivesicularBodyInternalVesicles
     /// </summary>
     public const string LiteralMultivesicularBodyInternalVesicles = "621009";
+
+    /// <summary>
+    /// Literal for code: NONEMultivesicularBodyInternalVesicles
+    /// </summary>
+    public const string LiteralNONEMultivesicularBodyInternalVesicles = "http://snomed.info/sct#621009";
 
     /// <summary>
     /// Literal for code: PostcapillaryVenule
@@ -12008,9 +14998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPostcapillaryVenule = "6216007";
 
     /// <summary>
+    /// Literal for code: NONEPostcapillaryVenule
+    /// </summary>
+    public const string LiteralNONEPostcapillaryVenule = "http://snomed.info/sct#6216007";
+
+    /// <summary>
     /// Literal for code: PiriformRecess
     /// </summary>
     public const string LiteralPiriformRecess = "6217003";
+
+    /// <summary>
+    /// Literal for code: NONEPiriformRecess
+    /// </summary>
+    public const string LiteralNONEPiriformRecess = "http://snomed.info/sct#6217003";
 
     /// <summary>
     /// Literal for code: OsLacrimale
@@ -12018,9 +15018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOsLacrimale = "6229007";
 
     /// <summary>
+    /// Literal for code: NONEOsLacrimale
+    /// </summary>
+    public const string LiteralNONEOsLacrimale = "http://snomed.info/sct#6229007";
+
+    /// <summary>
     /// Literal for code: SulcusTerminalisCordis
     /// </summary>
     public const string LiteralSulcusTerminalisCordis = "6253001";
+
+    /// <summary>
+    /// Literal for code: NONESulcusTerminalisCordis
+    /// </summary>
+    public const string LiteralNONESulcusTerminalisCordis = "http://snomed.info/sct#6253001";
 
     /// <summary>
     /// Literal for code: AccessoryPhrenicNerves
@@ -12028,9 +15038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAccessoryPhrenicNerves = "6268000";
 
     /// <summary>
+    /// Literal for code: NONEAccessoryPhrenicNerves
+    /// </summary>
+    public const string LiteralNONEAccessoryPhrenicNerves = "http://snomed.info/sct#6268000";
+
+    /// <summary>
     /// Literal for code: SubcutaneousTissueOfScalp
     /// </summary>
     public const string LiteralSubcutaneousTissueOfScalp = "6269008";
+
+    /// <summary>
+    /// Literal for code: NONESubcutaneousTissueOfScalp
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueOfScalp = "http://snomed.info/sct#6269008";
 
     /// <summary>
     /// Literal for code: SkinOfDorsalSurfaceOfFinger
@@ -12038,9 +15058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSkinOfDorsalSurfaceOfFinger = "6279005";
 
     /// <summary>
+    /// Literal for code: NONESkinOfDorsalSurfaceOfFinger
+    /// </summary>
+    public const string LiteralNONESkinOfDorsalSurfaceOfFinger = "http://snomed.info/sct#6279005";
+
+    /// <summary>
     /// Literal for code: PosteriorBasalBranchOfLeftPulmonaryArtery
     /// </summary>
     public const string LiteralPosteriorBasalBranchOfLeftPulmonaryArtery = "6317000";
+
+    /// <summary>
+    /// Literal for code: NONEPosteriorBasalBranchOfLeftPulmonaryArtery
+    /// </summary>
+    public const string LiteralNONEPosteriorBasalBranchOfLeftPulmonaryArtery = "http://snomed.info/sct#6317000";
 
     /// <summary>
     /// Literal for code: AryepiglotticMuscle
@@ -12048,9 +15078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAryepiglotticMuscle = "6325003";
 
     /// <summary>
+    /// Literal for code: NONEAryepiglotticMuscle
+    /// </summary>
+    public const string LiteralNONEAryepiglotticMuscle = "http://snomed.info/sct#6325003";
+
+    /// <summary>
     /// Literal for code: FetalAtloidArticulation
     /// </summary>
     public const string LiteralFetalAtloidArticulation = "6326002";
+
+    /// <summary>
+    /// Literal for code: NONEFetalAtloidArticulation
+    /// </summary>
+    public const string LiteralNONEFetalAtloidArticulation = "http://snomed.info/sct#6326002";
 
     /// <summary>
     /// Literal for code: LymphoidFollicleOfStomach
@@ -12058,9 +15098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLymphoidFollicleOfStomach = "6335009";
 
     /// <summary>
+    /// Literal for code: NONELymphoidFollicleOfStomach
+    /// </summary>
+    public const string LiteralNONELymphoidFollicleOfStomach = "http://snomed.info/sct#6335009";
+
+    /// <summary>
     /// Literal for code: TuberosityOfDistalPhalanxOfLittleToe
     /// </summary>
     public const string LiteralTuberosityOfDistalPhalanxOfLittleToe = "635006";
+
+    /// <summary>
+    /// Literal for code: NONETuberosityOfDistalPhalanxOfLittleToe
+    /// </summary>
+    public const string LiteralNONETuberosityOfDistalPhalanxOfLittleToe = "http://snomed.info/sct#635006";
 
     /// <summary>
     /// Literal for code: HairMedulla
@@ -12068,9 +15118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHairMedulla = "6359004";
 
     /// <summary>
+    /// Literal for code: NONEHairMedulla
+    /// </summary>
+    public const string LiteralNONEHairMedulla = "http://snomed.info/sct#6359004";
+
+    /// <summary>
     /// Literal for code: LymphaticsOfThyroidGland
     /// </summary>
     public const string LiteralLymphaticsOfThyroidGland = "6371005";
+
+    /// <summary>
+    /// Literal for code: NONELymphaticsOfThyroidGland
+    /// </summary>
+    public const string LiteralNONELymphaticsOfThyroidGland = "http://snomed.info/sct#6371005";
 
     /// <summary>
     /// Literal for code: CavernousPortionOfUrethra
@@ -12078,9 +15138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCavernousPortionOfUrethra = "6375001";
 
     /// <summary>
+    /// Literal for code: NONECavernousPortionOfUrethra
+    /// </summary>
+    public const string LiteralNONECavernousPortionOfUrethra = "http://snomed.info/sct#6375001";
+
+    /// <summary>
     /// Literal for code: CoccygealNerve
     /// </summary>
     public const string LiteralCoccygealNerve = "6392005";
+
+    /// <summary>
+    /// Literal for code: NONECoccygealNerve
+    /// </summary>
+    public const string LiteralNONECoccygealNerve = "http://snomed.info/sct#6392005";
 
     /// <summary>
     /// Literal for code: LigamentumNuchae
@@ -12088,9 +15158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLigamentumNuchae = "6404004";
 
     /// <summary>
+    /// Literal for code: NONELigamentumNuchae
+    /// </summary>
+    public const string LiteralNONELigamentumNuchae = "http://snomed.info/sct#6404004";
+
+    /// <summary>
     /// Literal for code: PresymphysialLymphNode
     /// </summary>
     public const string LiteralPresymphysialLymphNode = "6413002";
+
+    /// <summary>
+    /// Literal for code: NONEPresymphysialLymphNode
+    /// </summary>
+    public const string LiteralNONEPresymphysialLymphNode = "http://snomed.info/sct#6413002";
 
     /// <summary>
     /// Literal for code: MedialMalleolus
@@ -12098,9 +15178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedialMalleolus = "6417001";
 
     /// <summary>
+    /// Literal for code: NONEMedialMalleolus
+    /// </summary>
+    public const string LiteralNONEMedialMalleolus = "http://snomed.info/sct#6417001";
+
+    /// <summary>
     /// Literal for code: SupraspinatusMuscle
     /// </summary>
     public const string LiteralSupraspinatusMuscle = "6423006";
+
+    /// <summary>
+    /// Literal for code: NONESupraspinatusMuscle
+    /// </summary>
+    public const string LiteralNONESupraspinatusMuscle = "http://snomed.info/sct#6423006";
 
     /// <summary>
     /// Literal for code: StructureOfRadiatingPortionOfCorticalLobuleOfKidney
@@ -12108,9 +15198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureOfRadiatingPortionOfCorticalLobuleOfKidney = "6424000";
 
     /// <summary>
+    /// Literal for code: NONEStructureOfRadiatingPortionOfCorticalLobuleOfKidney
+    /// </summary>
+    public const string LiteralNONEStructureOfRadiatingPortionOfCorticalLobuleOfKidney = "http://snomed.info/sct#6424000";
+
+    /// <summary>
     /// Literal for code: MastCell
     /// </summary>
     public const string LiteralMastCell = "6445007";
+
+    /// <summary>
+    /// Literal for code: NONEMastCell
+    /// </summary>
+    public const string LiteralNONEMastCell = "http://snomed.info/sct#6445007";
 
     /// <summary>
     /// Literal for code: PosteriorVagalTrunk
@@ -12118,9 +15218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPosteriorVagalTrunk = "6448009";
 
     /// <summary>
+    /// Literal for code: NONEPosteriorVagalTrunk
+    /// </summary>
+    public const string LiteralNONEPosteriorVagalTrunk = "http://snomed.info/sct#6448009";
+
+    /// <summary>
     /// Literal for code: Cytotrophoblast
     /// </summary>
     public const string LiteralCytotrophoblast = "6450001";
+
+    /// <summary>
+    /// Literal for code: NONECytotrophoblast
+    /// </summary>
+    public const string LiteralNONECytotrophoblast = "http://snomed.info/sct#6450001";
 
     /// <summary>
     /// Literal for code: MedialAspectOfOvary
@@ -12128,9 +15238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedialAspectOfOvary = "6472004";
 
     /// <summary>
+    /// Literal for code: NONEMedialAspectOfOvary
+    /// </summary>
+    public const string LiteralNONEMedialAspectOfOvary = "http://snomed.info/sct#6472004";
+
+    /// <summary>
     /// Literal for code: SuperiorArticularProcessOfSeventhThoracicVertebra
     /// </summary>
     public const string LiteralSuperiorArticularProcessOfSeventhThoracicVertebra = "650002";
+
+    /// <summary>
+    /// Literal for code: NONESuperiorArticularProcessOfSeventhThoracicVertebra
+    /// </summary>
+    public const string LiteralNONESuperiorArticularProcessOfSeventhThoracicVertebra = "http://snomed.info/sct#650002";
 
     /// <summary>
     /// Literal for code: GlansClitoridis
@@ -12138,9 +15258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGlansClitoridis = "6504002";
 
     /// <summary>
+    /// Literal for code: NONEGlansClitoridis
+    /// </summary>
+    public const string LiteralNONEGlansClitoridis = "http://snomed.info/sct#6504002";
+
+    /// <summary>
     /// Literal for code: DistalPortionOfCircumflexBranchOfLeftCoronaryArtery
     /// </summary>
     public const string LiteralDistalPortionOfCircumflexBranchOfLeftCoronaryArtery = "6511003";
+
+    /// <summary>
+    /// Literal for code: NONEDistalPortionOfCircumflexBranchOfLeftCoronaryArtery
+    /// </summary>
+    public const string LiteralNONEDistalPortionOfCircumflexBranchOfLeftCoronaryArtery = "http://snomed.info/sct#6511003";
 
     /// <summary>
     /// Literal for code: CardiacValveLeaflet
@@ -12148,9 +15278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCardiacValveLeaflet = "6530003";
 
     /// <summary>
+    /// Literal for code: NONECardiacValveLeaflet
+    /// </summary>
+    public const string LiteralNONECardiacValveLeaflet = "http://snomed.info/sct#6530003";
+
+    /// <summary>
     /// Literal for code: ColonicHaustra
     /// </summary>
     public const string LiteralColonicHaustra = "6533001";
+
+    /// <summary>
+    /// Literal for code: NONEColonicHaustra
+    /// </summary>
+    public const string LiteralNONEColonicHaustra = "http://snomed.info/sct#6533001";
 
     /// <summary>
     /// Literal for code: ThyrocervicalTrunk
@@ -12158,9 +15298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThyrocervicalTrunk = "6538005";
 
     /// <summary>
+    /// Literal for code: NONEThyrocervicalTrunk
+    /// </summary>
+    public const string LiteralNONEThyrocervicalTrunk = "http://snomed.info/sct#6538005";
+
+    /// <summary>
     /// Literal for code: AnteriorCommissureOfMitralValve
     /// </summary>
     public const string LiteralAnteriorCommissureOfMitralValve = "6541001";
+
+    /// <summary>
+    /// Literal for code: NONEAnteriorCommissureOfMitralValve
+    /// </summary>
+    public const string LiteralNONEAnteriorCommissureOfMitralValve = "http://snomed.info/sct#6541001";
 
     /// <summary>
     /// Literal for code: GastrohepaticLigament
@@ -12168,9 +15318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGastrohepaticLigament = "6544009";
 
     /// <summary>
+    /// Literal for code: NONEGastrohepaticLigament
+    /// </summary>
+    public const string LiteralNONEGastrohepaticLigament = "http://snomed.info/sct#6544009";
+
+    /// <summary>
     /// Literal for code: AngularIncisureOfStomach
     /// </summary>
     public const string LiteralAngularIncisureOfStomach = "6550004";
+
+    /// <summary>
+    /// Literal for code: NONEAngularIncisureOfStomach
+    /// </summary>
+    public const string LiteralNONEAngularIncisureOfStomach = "http://snomed.info/sct#6550004";
 
     /// <summary>
     /// Literal for code: PollicisArtery
@@ -12178,9 +15338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPollicisArtery = "6551000";
 
     /// <summary>
+    /// Literal for code: NONEPollicisArtery
+    /// </summary>
+    public const string LiteralNONEPollicisArtery = "http://snomed.info/sct#6551000";
+
+    /// <summary>
     /// Literal for code: InferiorNasalTurbinate
     /// </summary>
     public const string LiteralInferiorNasalTurbinate = "6553002";
+
+    /// <summary>
+    /// Literal for code: NONEInferiorNasalTurbinate
+    /// </summary>
+    public const string LiteralNONEInferiorNasalTurbinate = "http://snomed.info/sct#6553002";
 
     /// <summary>
     /// Literal for code: MedialBorderOfSole
@@ -12188,9 +15358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedialBorderOfSole = "6564004";
 
     /// <summary>
+    /// Literal for code: NONEMedialBorderOfSole
+    /// </summary>
+    public const string LiteralNONEMedialBorderOfSole = "http://snomed.info/sct#6564004";
+
+    /// <summary>
     /// Literal for code: CerebellarHemisphere
     /// </summary>
     public const string LiteralCerebellarHemisphere = "6566002";
+
+    /// <summary>
+    /// Literal for code: NONECerebellarHemisphere
+    /// </summary>
+    public const string LiteralNONECerebellarHemisphere = "http://snomed.info/sct#6566002";
 
     /// <summary>
     /// Literal for code: BaseOfPhalanxOfMiddleFinger
@@ -12198,9 +15378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBaseOfPhalanxOfMiddleFinger = "6572002";
 
     /// <summary>
+    /// Literal for code: NONEBaseOfPhalanxOfMiddleFinger
+    /// </summary>
+    public const string LiteralNONEBaseOfPhalanxOfMiddleFinger = "http://snomed.info/sct#6572002";
+
+    /// <summary>
     /// Literal for code: LingualNerve
     /// </summary>
     public const string LiteralLingualNerve = "6598008";
+
+    /// <summary>
+    /// Literal for code: NONELingualNerve
+    /// </summary>
+    public const string LiteralNONELingualNerve = "http://snomed.info/sct#6598008";
 
     /// <summary>
     /// Literal for code: TrachealMucousMembrane
@@ -12208,9 +15398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrachealMucousMembrane = "660006";
 
     /// <summary>
+    /// Literal for code: NONETrachealMucousMembrane
+    /// </summary>
+    public const string LiteralNONETrachealMucousMembrane = "http://snomed.info/sct#660006";
+
+    /// <summary>
     /// Literal for code: StructureOfDorsalIntercuneiformLigaments
     /// </summary>
     public const string LiteralStructureOfDorsalIntercuneiformLigaments = "6606008";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfDorsalIntercuneiformLigaments
+    /// </summary>
+    public const string LiteralNONEStructureOfDorsalIntercuneiformLigaments = "http://snomed.info/sct#6606008";
 
     /// <summary>
     /// Literal for code: SphenoparietalSinus
@@ -12218,9 +15418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSphenoparietalSinus = "6608009";
 
     /// <summary>
+    /// Literal for code: NONESphenoparietalSinus
+    /// </summary>
+    public const string LiteralNONESphenoparietalSinus = "http://snomed.info/sct#6608009";
+
+    /// <summary>
     /// Literal for code: JawRegion
     /// </summary>
     public const string LiteralJawRegion = "661005";
+
+    /// <summary>
+    /// Literal for code: NONEJawRegion
+    /// </summary>
+    public const string LiteralNONEJawRegion = "http://snomed.info/sct#661005";
 
     /// <summary>
     /// Literal for code: CuticleOfNail
@@ -12228,9 +15438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCuticleOfNail = "6620001";
 
     /// <summary>
+    /// Literal for code: NONECuticleOfNail
+    /// </summary>
+    public const string LiteralNONECuticleOfNail = "http://snomed.info/sct#6620001";
+
+    /// <summary>
     /// Literal for code: SternalMuscle
     /// </summary>
     public const string LiteralSternalMuscle = "6623004";
+
+    /// <summary>
+    /// Literal for code: NONESternalMuscle
+    /// </summary>
+    public const string LiteralNONESternalMuscle = "http://snomed.info/sct#6623004";
 
     /// <summary>
     /// Literal for code: RightPosteriorCerebralArtery
@@ -12238,9 +15458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRightPosteriorCerebralArtery = "6633007";
 
     /// <summary>
+    /// Literal for code: NONERightPosteriorCerebralArtery
+    /// </summary>
+    public const string LiteralNONERightPosteriorCerebralArtery = "http://snomed.info/sct#6633007";
+
+    /// <summary>
     /// Literal for code: RightAnteriorCerebralArtery
     /// </summary>
     public const string LiteralRightAnteriorCerebralArtery = "6643005";
+
+    /// <summary>
+    /// Literal for code: NONERightAnteriorCerebralArtery
+    /// </summary>
+    public const string LiteralNONERightAnteriorCerebralArtery = "http://snomed.info/sct#6643005";
 
     /// <summary>
     /// Literal for code: AnteriorFossaOfCranialCavity
@@ -12248,9 +15478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnteriorFossaOfCranialCavity = "6646002";
 
     /// <summary>
+    /// Literal for code: NONEAnteriorFossaOfCranialCavity
+    /// </summary>
+    public const string LiteralNONEAnteriorFossaOfCranialCavity = "http://snomed.info/sct#6646002";
+
+    /// <summary>
     /// Literal for code: UterineSubserosa
     /// </summary>
     public const string LiteralUterineSubserosa = "6649009";
+
+    /// <summary>
+    /// Literal for code: NONEUterineSubserosa
+    /// </summary>
+    public const string LiteralNONEUterineSubserosa = "http://snomed.info/sct#6649009";
 
     /// <summary>
     /// Literal for code: CentralLobuleOfCerebellum
@@ -12258,9 +15498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCentralLobuleOfCerebellum = "6651008";
 
     /// <summary>
+    /// Literal for code: NONECentralLobuleOfCerebellum
+    /// </summary>
+    public const string LiteralNONECentralLobuleOfCerebellum = "http://snomed.info/sct#6651008";
+
+    /// <summary>
     /// Literal for code: EmbryologicalStructure
     /// </summary>
     public const string LiteralEmbryologicalStructure = "667009";
+
+    /// <summary>
+    /// Literal for code: NONEEmbryologicalStructure
+    /// </summary>
+    public const string LiteralNONEEmbryologicalStructure = "http://snomed.info/sct#667009";
 
     /// <summary>
     /// Literal for code: ArticularFacetOfHeadOfFibula
@@ -12268,9 +15518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArticularFacetOfHeadOfFibula = "6684008";
 
     /// <summary>
+    /// Literal for code: NONEArticularFacetOfHeadOfFibula
+    /// </summary>
+    public const string LiteralNONEArticularFacetOfHeadOfFibula = "http://snomed.info/sct#6684008";
+
+    /// <summary>
     /// Literal for code: RightAnkle
     /// </summary>
     public const string LiteralRightAnkle = "6685009";
+
+    /// <summary>
+    /// Literal for code: NONERightAnkle
+    /// </summary>
+    public const string LiteralNONERightAnkle = "http://snomed.info/sct#6685009";
 
     /// <summary>
     /// Literal for code: ArchOfSecondLumbarVertebra
@@ -12278,9 +15538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArchOfSecondLumbarVertebra = "6711001";
 
     /// <summary>
+    /// Literal for code: NONEArchOfSecondLumbarVertebra
+    /// </summary>
+    public const string LiteralNONEArchOfSecondLumbarVertebra = "http://snomed.info/sct#6711001";
+
+    /// <summary>
     /// Literal for code: FemoralNerveLateralMuscularBranches
     /// </summary>
     public const string LiteralFemoralNerveLateralMuscularBranches = "6720005";
+
+    /// <summary>
+    /// Literal for code: NONEFemoralNerveLateralMuscularBranches
+    /// </summary>
+    public const string LiteralNONEFemoralNerveLateralMuscularBranches = "http://snomed.info/sct#6720005";
 
     /// <summary>
     /// Literal for code: PleuralRecess
@@ -12288,9 +15558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPleuralRecess = "6731002";
 
     /// <summary>
+    /// Literal for code: NONEPleuralRecess
+    /// </summary>
+    public const string LiteralNONEPleuralRecess = "http://snomed.info/sct#6731002";
+
+    /// <summary>
     /// Literal for code: ChordaTympani
     /// </summary>
     public const string LiteralChordaTympani = "6739000";
+
+    /// <summary>
+    /// Literal for code: NONEChordaTympani
+    /// </summary>
+    public const string LiteralNONEChordaTympani = "http://snomed.info/sct#6739000";
 
     /// <summary>
     /// Literal for code: CallosomarginalBranchOfAnteriorCerebralArtery
@@ -12298,9 +15578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCallosomarginalBranchOfAnteriorCerebralArtery = "6742006";
 
     /// <summary>
+    /// Literal for code: NONECallosomarginalBranchOfAnteriorCerebralArtery
+    /// </summary>
+    public const string LiteralNONECallosomarginalBranchOfAnteriorCerebralArtery = "http://snomed.info/sct#6742006";
+
+    /// <summary>
     /// Literal for code: MitochondrialInclusion
     /// </summary>
     public const string LiteralMitochondrialInclusion = "6750002";
+
+    /// <summary>
+    /// Literal for code: NONEMitochondrialInclusion
+    /// </summary>
+    public const string LiteralNONEMitochondrialInclusion = "http://snomed.info/sct#6750002";
 
     /// <summary>
     /// Literal for code: RightKnee
@@ -12308,9 +15598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRightKnee = "6757004";
 
     /// <summary>
+    /// Literal for code: NONERightKnee
+    /// </summary>
+    public const string LiteralNONERightKnee = "http://snomed.info/sct#6757004";
+
+    /// <summary>
     /// Literal for code: TendonAndTendonSheathOfHand
     /// </summary>
     public const string LiteralTendonAndTendonSheathOfHand = "6787005";
+
+    /// <summary>
+    /// Literal for code: NONETendonAndTendonSheathOfHand
+    /// </summary>
+    public const string LiteralNONETendonAndTendonSheathOfHand = "http://snomed.info/sct#6787005";
 
     /// <summary>
     /// Literal for code: Spermatozoa
@@ -12318,9 +15618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoa = "6789008";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoa
+    /// </summary>
+    public const string LiteralNONESpermatozoa = "http://snomed.info/sct#6789008";
+
+    /// <summary>
     /// Literal for code: MaculaOfUtricle
     /// </summary>
     public const string LiteralMaculaOfUtricle = "6799003";
+
+    /// <summary>
+    /// Literal for code: NONEMaculaOfUtricle
+    /// </summary>
+    public const string LiteralNONEMaculaOfUtricle = "http://snomed.info/sct#6799003";
 
     /// <summary>
     /// Literal for code: InterstitialTissueOfSpleen
@@ -12328,9 +15638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInterstitialTissueOfSpleen = "6805009";
 
     /// <summary>
+    /// Literal for code: NONEInterstitialTissueOfSpleen
+    /// </summary>
+    public const string LiteralNONEInterstitialTissueOfSpleen = "http://snomed.info/sct#6805009";
+
+    /// <summary>
     /// Literal for code: ObturatorNerveAnteriorBranch
     /// </summary>
     public const string LiteralObturatorNerveAnteriorBranch = "6820003";
+
+    /// <summary>
+    /// Literal for code: NONEObturatorNerveAnteriorBranch
+    /// </summary>
+    public const string LiteralNONEObturatorNerveAnteriorBranch = "http://snomed.info/sct#6820003";
 
     /// <summary>
     /// Literal for code: LigamentOfLumbosacralJoint
@@ -12338,9 +15658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLigamentOfLumbosacralJoint = "6828005";
 
     /// <summary>
+    /// Literal for code: NONELigamentOfLumbosacralJoint
+    /// </summary>
+    public const string LiteralNONELigamentOfLumbosacralJoint = "http://snomed.info/sct#6828005";
+
+    /// <summary>
     /// Literal for code: ParsCiliarisOfRetina
     /// </summary>
     public const string LiteralParsCiliarisOfRetina = "6829002";
+
+    /// <summary>
+    /// Literal for code: NONEParsCiliarisOfRetina
+    /// </summary>
+    public const string LiteralNONEParsCiliarisOfRetina = "http://snomed.info/sct#6829002";
 
     /// <summary>
     /// Literal for code: AxialSkeleton
@@ -12348,9 +15678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAxialSkeleton = "6834003";
 
     /// <summary>
+    /// Literal for code: NONEAxialSkeleton
+    /// </summary>
+    public const string LiteralNONEAxialSkeleton = "http://snomed.info/sct#6834003";
+
+    /// <summary>
     /// Literal for code: CorticomedullaryJunctionOfKidney
     /// </summary>
     public const string LiteralCorticomedullaryJunctionOfKidney = "6841009";
+
+    /// <summary>
+    /// Literal for code: NONECorticomedullaryJunctionOfKidney
+    /// </summary>
+    public const string LiteralNONECorticomedullaryJunctionOfKidney = "http://snomed.info/sct#6841009";
 
     /// <summary>
     /// Literal for code: SporeCrystal
@@ -12358,9 +15698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSporeCrystal = "6844001";
 
     /// <summary>
+    /// Literal for code: NONESporeCrystal
+    /// </summary>
+    public const string LiteralNONESporeCrystal = "http://snomed.info/sct#6844001";
+
+    /// <summary>
     /// Literal for code: SecondaryFootProcess
     /// </summary>
     public const string LiteralSecondaryFootProcess = "6850006";
+
+    /// <summary>
+    /// Literal for code: NONESecondaryFootProcess
+    /// </summary>
+    public const string LiteralNONESecondaryFootProcess = "http://snomed.info/sct#6850006";
 
     /// <summary>
     /// Literal for code: LeafOfEpiglottis
@@ -12368,9 +15718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeafOfEpiglottis = "6864006";
 
     /// <summary>
+    /// Literal for code: NONELeafOfEpiglottis
+    /// </summary>
+    public const string LiteralNONELeafOfEpiglottis = "http://snomed.info/sct#6864006";
+
+    /// <summary>
     /// Literal for code: HabenularCommissure
     /// </summary>
     public const string LiteralHabenularCommissure = "6866008";
+
+    /// <summary>
+    /// Literal for code: NONEHabenularCommissure
+    /// </summary>
+    public const string LiteralNONEHabenularCommissure = "http://snomed.info/sct#6866008";
 
     /// <summary>
     /// Literal for code: VisceralPericardium
@@ -12378,9 +15738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVisceralPericardium = "6871001";
 
     /// <summary>
+    /// Literal for code: NONEVisceralPericardium
+    /// </summary>
+    public const string LiteralNONEVisceralPericardium = "http://snomed.info/sct#6871001";
+
+    /// <summary>
     /// Literal for code: FetalHyaloidArtery
     /// </summary>
     public const string LiteralFetalHyaloidArtery = "688000";
+
+    /// <summary>
+    /// Literal for code: NONEFetalHyaloidArtery
+    /// </summary>
+    public const string LiteralNONEFetalHyaloidArtery = "http://snomed.info/sct#688000";
 
     /// <summary>
     /// Literal for code: MedialSurfaceOfArm
@@ -12388,9 +15758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedialSurfaceOfArm = "6894000";
 
     /// <summary>
+    /// Literal for code: NONEMedialSurfaceOfArm
+    /// </summary>
+    public const string LiteralNONEMedialSurfaceOfArm = "http://snomed.info/sct#6894000";
+
+    /// <summary>
     /// Literal for code: PoplitealRegion
     /// </summary>
     public const string LiteralPoplitealRegion = "6902008";
+
+    /// <summary>
+    /// Literal for code: NONEPoplitealRegion
+    /// </summary>
+    public const string LiteralNONEPoplitealRegion = "http://snomed.info/sct#6902008";
 
     /// <summary>
     /// Literal for code: SubcutaneousTissueOfMedialSurfaceOfThirdToe
@@ -12398,9 +15778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubcutaneousTissueOfMedialSurfaceOfThirdToe = "6905005";
 
     /// <summary>
+    /// Literal for code: NONESubcutaneousTissueOfMedialSurfaceOfThirdToe
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueOfMedialSurfaceOfThirdToe = "http://snomed.info/sct#6905005";
+
+    /// <summary>
     /// Literal for code: SmallIntestineSubmucosa
     /// </summary>
     public const string LiteralSmallIntestineSubmucosa = "691000";
+
+    /// <summary>
+    /// Literal for code: NONESmallIntestineSubmucosa
+    /// </summary>
+    public const string LiteralNONESmallIntestineSubmucosa = "http://snomed.info/sct#691000";
 
     /// <summary>
     /// Literal for code: LowerAlveolarRidgeMucosa
@@ -12408,9 +15798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLowerAlveolarRidgeMucosa = "6912001";
 
     /// <summary>
+    /// Literal for code: NONELowerAlveolarRidgeMucosa
+    /// </summary>
+    public const string LiteralNONELowerAlveolarRidgeMucosa = "http://snomed.info/sct#6912001";
+
+    /// <summary>
     /// Literal for code: PerivascularSpace
     /// </summary>
     public const string LiteralPerivascularSpace = "6914000";
+
+    /// <summary>
+    /// Literal for code: NONEPerivascularSpace
+    /// </summary>
+    public const string LiteralNONEPerivascularSpace = "http://snomed.info/sct#6914000";
 
     /// <summary>
     /// Literal for code: BodyOfIschium
@@ -12418,9 +15818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBodyOfIschium = "692007";
 
     /// <summary>
+    /// Literal for code: NONEBodyOfIschium
+    /// </summary>
+    public const string LiteralNONEBodyOfIschium = "http://snomed.info/sct#692007";
+
+    /// <summary>
     /// Literal for code: RightUpperExtremity
     /// </summary>
     public const string LiteralRightUpperExtremity = "6921000";
+
+    /// <summary>
+    /// Literal for code: NONERightUpperExtremity
+    /// </summary>
+    public const string LiteralNONERightUpperExtremity = "http://snomed.info/sct#6921000";
 
     /// <summary>
     /// Literal for code: JugularArch
@@ -12428,9 +15838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJugularArch = "6930008";
 
     /// <summary>
+    /// Literal for code: NONEJugularArch
+    /// </summary>
+    public const string LiteralNONEJugularArch = "http://snomed.info/sct#6930008";
+
+    /// <summary>
     /// Literal for code: AnteriorLabialVeins
     /// </summary>
     public const string LiteralAnteriorLabialVeins = "6944002";
+
+    /// <summary>
+    /// Literal for code: NONEAnteriorLabialVeins
+    /// </summary>
+    public const string LiteralNONEAnteriorLabialVeins = "http://snomed.info/sct#6944002";
 
     /// <summary>
     /// Literal for code: LymphocyticTissue
@@ -12438,9 +15858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLymphocyticTissue = "6969002";
 
     /// <summary>
+    /// Literal for code: NONELymphocyticTissue
+    /// </summary>
+    public const string LiteralNONELymphocyticTissue = "http://snomed.info/sct#6969002";
+
+    /// <summary>
     /// Literal for code: AnteriorMyocardium
     /// </summary>
     public const string LiteralAnteriorMyocardium = "6975006";
+
+    /// <summary>
+    /// Literal for code: NONEAnteriorMyocardium
+    /// </summary>
+    public const string LiteralNONEAnteriorMyocardium = "http://snomed.info/sct#6975006";
 
     /// <summary>
     /// Literal for code: PosteriorHypothalamicNucleus
@@ -12448,9 +15878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPosteriorHypothalamicNucleus = "6981003";
 
     /// <summary>
+    /// Literal for code: NONEPosteriorHypothalamicNucleus
+    /// </summary>
+    public const string LiteralNONEPosteriorHypothalamicNucleus = "http://snomed.info/sct#6981003";
+
+    /// <summary>
     /// Literal for code: CollateralSulcus
     /// </summary>
     public const string LiteralCollateralSulcus = "6987004";
+
+    /// <summary>
+    /// Literal for code: NONECollateralSulcus
+    /// </summary>
+    public const string LiteralNONECollateralSulcus = "http://snomed.info/sct#6987004";
 
     /// <summary>
     /// Literal for code: ThoracolumbarRegionOfBack
@@ -12458,9 +15898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThoracolumbarRegionOfBack = "6989001";
 
     /// <summary>
+    /// Literal for code: NONEThoracolumbarRegionOfBack
+    /// </summary>
+    public const string LiteralNONEThoracolumbarRegionOfBack = "http://snomed.info/sct#6989001";
+
+    /// <summary>
     /// Literal for code: SubcutaneousTissueOfJaw
     /// </summary>
     public const string LiteralSubcutaneousTissueOfJaw = "6991009";
+
+    /// <summary>
+    /// Literal for code: NONESubcutaneousTissueOfJaw
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueOfJaw = "http://snomed.info/sct#6991009";
 
     /// <summary>
     /// Literal for code: BileDuctMucousMembrane
@@ -12468,9 +15918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBileDuctMucousMembrane = "7035006";
 
     /// <summary>
+    /// Literal for code: NONEBileDuctMucousMembrane
+    /// </summary>
+    public const string LiteralNONEBileDuctMucousMembrane = "http://snomed.info/sct#7035006";
+
+    /// <summary>
     /// Literal for code: SubcutaneousTissueOfExternalGenitalia
     /// </summary>
     public const string LiteralSubcutaneousTissueOfExternalGenitalia = "7050002";
+
+    /// <summary>
+    /// Literal for code: NONESubcutaneousTissueOfExternalGenitalia
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueOfExternalGenitalia = "http://snomed.info/sct#7050002";
 
     /// <summary>
     /// Literal for code: RightColicArtery
@@ -12478,9 +15938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRightColicArtery = "7067009";
 
     /// <summary>
+    /// Literal for code: NONERightColicArtery
+    /// </summary>
+    public const string LiteralNONERightColicArtery = "http://snomed.info/sct#7067009";
+
+    /// <summary>
     /// Literal for code: InterstitialTissueOfMyocardium
     /// </summary>
     public const string LiteralInterstitialTissueOfMyocardium = "7076002";
+
+    /// <summary>
+    /// Literal for code: NONEInterstitialTissueOfMyocardium
+    /// </summary>
+    public const string LiteralNONEInterstitialTissueOfMyocardium = "http://snomed.info/sct#7076002";
 
     /// <summary>
     /// Literal for code: MiddlePhalanxOfIndexFinger
@@ -12488,9 +15958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMiddlePhalanxOfIndexFinger = "7083009";
 
     /// <summary>
+    /// Literal for code: NONEMiddlePhalanxOfIndexFinger
+    /// </summary>
+    public const string LiteralNONEMiddlePhalanxOfIndexFinger = "http://snomed.info/sct#7083009";
+
+    /// <summary>
     /// Literal for code: SupraaorticBranches
     /// </summary>
     public const string LiteralSupraaorticBranches = "7090004";
+
+    /// <summary>
+    /// Literal for code: NONESupraaorticBranches
+    /// </summary>
+    public const string LiteralNONESupraaorticBranches = "http://snomed.info/sct#7090004";
 
     /// <summary>
     /// Literal for code: VentralPosterolateralNucleusOfThalamus
@@ -12498,9 +15978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVentralPosterolateralNucleusOfThalamus = "7091000";
 
     /// <summary>
+    /// Literal for code: NONEVentralPosterolateralNucleusOfThalamus
+    /// </summary>
+    public const string LiteralNONEVentralPosterolateralNucleusOfThalamus = "http://snomed.info/sct#7091000";
+
+    /// <summary>
     /// Literal for code: AttachmentPlaqueOfDesmosomeOrHemidesmosome
     /// </summary>
     public const string LiteralAttachmentPlaqueOfDesmosomeOrHemidesmosome = "7099003";
+
+    /// <summary>
+    /// Literal for code: NONEAttachmentPlaqueOfDesmosomeOrHemidesmosome
+    /// </summary>
+    public const string LiteralNONEAttachmentPlaqueOfDesmosomeOrHemidesmosome = "http://snomed.info/sct#7099003";
 
     /// <summary>
     /// Literal for code: FetalImplantationSite
@@ -12508,9 +15998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFetalImplantationSite = "7117004";
 
     /// <summary>
+    /// Literal for code: NONEFetalImplantationSite
+    /// </summary>
+    public const string LiteralNONEFetalImplantationSite = "http://snomed.info/sct#7117004";
+
+    /// <summary>
     /// Literal for code: MaxillaryRightSecondMolarTooth
     /// </summary>
     public const string LiteralMaxillaryRightSecondMolarTooth = "7121006";
+
+    /// <summary>
+    /// Literal for code: NONEMaxillaryRightSecondMolarTooth
+    /// </summary>
+    public const string LiteralNONEMaxillaryRightSecondMolarTooth = "http://snomed.info/sct#7121006";
 
     /// <summary>
     /// Literal for code: AnulusFibrosusOfIntervertebralDiscOfThoracicVertebra
@@ -12518,9 +16018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnulusFibrosusOfIntervertebralDiscOfThoracicVertebra = "7148007";
 
     /// <summary>
+    /// Literal for code: NONEAnulusFibrosusOfIntervertebralDiscOfThoracicVertebra
+    /// </summary>
+    public const string LiteralNONEAnulusFibrosusOfIntervertebralDiscOfThoracicVertebra = "http://snomed.info/sct#7148007";
+
+    /// <summary>
     /// Literal for code: FalseRib
     /// </summary>
     public const string LiteralFalseRib = "7149004";
+
+    /// <summary>
+    /// Literal for code: NONEFalseRib
+    /// </summary>
+    public const string LiteralNONEFalseRib = "http://snomed.info/sct#7149004";
 
     /// <summary>
     /// Literal for code: TrigeminalGanglionSensoryRoot
@@ -12528,9 +16038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrigeminalGanglionSensoryRoot = "7154008";
 
     /// <summary>
+    /// Literal for code: NONETrigeminalGanglionSensoryRoot
+    /// </summary>
+    public const string LiteralNONETrigeminalGanglionSensoryRoot = "http://snomed.info/sct#7154008";
+
+    /// <summary>
     /// Literal for code: BaseOfMetacarpalBone
     /// </summary>
     public const string LiteralBaseOfMetacarpalBone = "7160008";
+
+    /// <summary>
+    /// Literal for code: NONEBaseOfMetacarpalBone
+    /// </summary>
+    public const string LiteralNONEBaseOfMetacarpalBone = "http://snomed.info/sct#7160008";
 
     /// <summary>
     /// Literal for code: ParaduodenalRecess
@@ -12538,9 +16058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParaduodenalRecess = "7167006";
 
     /// <summary>
+    /// Literal for code: NONEParaduodenalRecess
+    /// </summary>
+    public const string LiteralNONEParaduodenalRecess = "http://snomed.info/sct#7167006";
+
+    /// <summary>
     /// Literal for code: CaudaEquina
     /// </summary>
     public const string LiteralCaudaEquina = "7173007";
+
+    /// <summary>
+    /// Literal for code: NONECaudaEquina
+    /// </summary>
+    public const string LiteralNONECaudaEquina = "http://snomed.info/sct#7173007";
 
     /// <summary>
     /// Literal for code: GustatoryPore
@@ -12548,9 +16078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGustatoryPore = "7188002";
 
     /// <summary>
+    /// Literal for code: NONEGustatoryPore
+    /// </summary>
+    public const string LiteralNONEGustatoryPore = "http://snomed.info/sct#7188002";
+
+    /// <summary>
     /// Literal for code: IsthmusTympaniPosticus
     /// </summary>
     public const string LiteralIsthmusTympaniPosticus = "7192009";
+
+    /// <summary>
+    /// Literal for code: NONEIsthmusTympaniPosticus
+    /// </summary>
+    public const string LiteralNONEIsthmusTympaniPosticus = "http://snomed.info/sct#7192009";
 
     /// <summary>
     /// Literal for code: HypoglossalNerveIntrinsicTongueMuscleBranch
@@ -12558,9 +16098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHypoglossalNerveIntrinsicTongueMuscleBranch = "7227003";
 
     /// <summary>
+    /// Literal for code: NONEHypoglossalNerveIntrinsicTongueMuscleBranch
+    /// </summary>
+    public const string LiteralNONEHypoglossalNerveIntrinsicTongueMuscleBranch = "http://snomed.info/sct#7227003";
+
+    /// <summary>
     /// Literal for code: DenseIntermediateFilamentBundles
     /// </summary>
     public const string LiteralDenseIntermediateFilamentBundles = "723004";
+
+    /// <summary>
+    /// Literal for code: NONEDenseIntermediateFilamentBundles
+    /// </summary>
+    public const string LiteralNONEDenseIntermediateFilamentBundles = "http://snomed.info/sct#723004";
 
     /// <summary>
     /// Literal for code: InferiorChoroidVein
@@ -12568,9 +16118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInferiorChoroidVein = "7234001";
 
     /// <summary>
+    /// Literal for code: NONEInferiorChoroidVein
+    /// </summary>
+    public const string LiteralNONEInferiorChoroidVein = "http://snomed.info/sct#7234001";
+
+    /// <summary>
     /// Literal for code: AppendicealMuscularisPropria
     /// </summary>
     public const string LiteralAppendicealMuscularisPropria = "7242000";
+
+    /// <summary>
+    /// Literal for code: NONEAppendicealMuscularisPropria
+    /// </summary>
+    public const string LiteralNONEAppendicealMuscularisPropria = "http://snomed.info/sct#7242000";
 
     /// <summary>
     /// Literal for code: LymphaticsOfAppendixAndLargeIntestine
@@ -12578,9 +16138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLymphaticsOfAppendixAndLargeIntestine = "7275008";
 
     /// <summary>
+    /// Literal for code: NONELymphaticsOfAppendixAndLargeIntestine
+    /// </summary>
+    public const string LiteralNONELymphaticsOfAppendixAndLargeIntestine = "http://snomed.info/sct#7275008";
+
+    /// <summary>
     /// Literal for code: MuscleOfPerineum
     /// </summary>
     public const string LiteralMuscleOfPerineum = "7295002";
+
+    /// <summary>
+    /// Literal for code: NONEMuscleOfPerineum
+    /// </summary>
+    public const string LiteralNONEMuscleOfPerineum = "http://snomed.info/sct#7295002";
 
     /// <summary>
     /// Literal for code: DeepInguinalRing
@@ -12588,9 +16158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeepInguinalRing = "7296001";
 
     /// <summary>
+    /// Literal for code: NONEDeepInguinalRing
+    /// </summary>
+    public const string LiteralNONEDeepInguinalRing = "http://snomed.info/sct#7296001";
+
+    /// <summary>
     /// Literal for code: AnteriorSurfaceOfArm
     /// </summary>
     public const string LiteralAnteriorSurfaceOfArm = "7311008";
+
+    /// <summary>
+    /// Literal for code: NONEAnteriorSurfaceOfArm
+    /// </summary>
+    public const string LiteralNONEAnteriorSurfaceOfArm = "http://snomed.info/sct#7311008";
 
     /// <summary>
     /// Literal for code: LingualGyrus
@@ -12598,9 +16178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLingualGyrus = "7344002";
 
     /// <summary>
+    /// Literal for code: NONELingualGyrus
+    /// </summary>
+    public const string LiteralNONELingualGyrus = "http://snomed.info/sct#7344002";
+
+    /// <summary>
     /// Literal for code: CiliaryProcesses
     /// </summary>
     public const string LiteralCiliaryProcesses = "7345001";
+
+    /// <summary>
+    /// Literal for code: NONECiliaryProcesses
+    /// </summary>
+    public const string LiteralNONECiliaryProcesses = "http://snomed.info/sct#7345001";
 
     /// <summary>
     /// Literal for code: InfratendinousOlecranonBursa
@@ -12608,9 +16198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfratendinousOlecranonBursa = "7347009";
 
     /// <summary>
+    /// Literal for code: NONEInfratendinousOlecranonBursa
+    /// </summary>
+    public const string LiteralNONEInfratendinousOlecranonBursa = "http://snomed.info/sct#7347009";
+
+    /// <summary>
     /// Literal for code: LymphaticOfHead
     /// </summary>
     public const string LiteralLymphaticOfHead = "7362006";
+
+    /// <summary>
+    /// Literal for code: NONELymphaticOfHead
+    /// </summary>
+    public const string LiteralNONELymphaticOfHead = "http://snomed.info/sct#7362006";
 
     /// <summary>
     /// Literal for code: LeftMarginOfUterus
@@ -12618,9 +16218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeftMarginOfUterus = "7376007";
 
     /// <summary>
+    /// Literal for code: NONELeftMarginOfUterus
+    /// </summary>
+    public const string LiteralNONELeftMarginOfUterus = "http://snomed.info/sct#7376007";
+
+    /// <summary>
     /// Literal for code: ParaventricularNucleusOfThalamus
     /// </summary>
     public const string LiteralParaventricularNucleusOfThalamus = "7378008";
+
+    /// <summary>
+    /// Literal for code: NONEParaventricularNucleusOfThalamus
+    /// </summary>
+    public const string LiteralNONEParaventricularNucleusOfThalamus = "http://snomed.info/sct#7378008";
 
     /// <summary>
     /// Literal for code: PlantarCalcaneocuboidalLigament
@@ -12628,9 +16238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPlantarCalcaneocuboidalLigament = "7384006";
 
     /// <summary>
+    /// Literal for code: NONEPlantarCalcaneocuboidalLigament
+    /// </summary>
+    public const string LiteralNONEPlantarCalcaneocuboidalLigament = "http://snomed.info/sct#7384006";
+
+    /// <summary>
     /// Literal for code: AnteriorSemicircularDuct
     /// </summary>
     public const string LiteralAnteriorSemicircularDuct = "7404008";
+
+    /// <summary>
+    /// Literal for code: NONEAnteriorSemicircularDuct
+    /// </summary>
+    public const string LiteralNONEAnteriorSemicircularDuct = "http://snomed.info/sct#7404008";
 
     /// <summary>
     /// Literal for code: OvarianLigament
@@ -12638,9 +16258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOvarianLigament = "7435002";
 
     /// <summary>
+    /// Literal for code: NONEOvarianLigament
+    /// </summary>
+    public const string LiteralNONEOvarianLigament = "http://snomed.info/sct#7435002";
+
+    /// <summary>
     /// Literal for code: LateralSurfaceOfSublingualGland
     /// </summary>
     public const string LiteralLateralSurfaceOfSublingualGland = "7471001";
+
+    /// <summary>
+    /// Literal for code: NONELateralSurfaceOfSublingualGland
+    /// </summary>
+    public const string LiteralNONELateralSurfaceOfSublingualGland = "http://snomed.info/sct#7471001";
 
     /// <summary>
     /// Literal for code: LipidCrystalline
@@ -12648,9 +16278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLipidCrystalline = "7477002";
 
     /// <summary>
+    /// Literal for code: NONELipidCrystalline
+    /// </summary>
+    public const string LiteralNONELipidCrystalline = "http://snomed.info/sct#7477002";
+
+    /// <summary>
     /// Literal for code: IliotibialTract
     /// </summary>
     public const string LiteralIliotibialTract = "7480001";
+
+    /// <summary>
+    /// Literal for code: NONEIliotibialTract
+    /// </summary>
+    public const string LiteralNONEIliotibialTract = "http://snomed.info/sct#7480001";
 
     /// <summary>
     /// Literal for code: CerebellarLenticularNucleus
@@ -12658,9 +16298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCerebellarLenticularNucleus = "7494000";
 
     /// <summary>
+    /// Literal for code: NONECerebellarLenticularNucleus
+    /// </summary>
+    public const string LiteralNONECerebellarLenticularNucleus = "http://snomed.info/sct#7494000";
+
+    /// <summary>
     /// Literal for code: PlantarTarsalLigaments
     /// </summary>
     public const string LiteralPlantarTarsalLigaments = "7498002";
+
+    /// <summary>
+    /// Literal for code: NONEPlantarTarsalLigaments
+    /// </summary>
+    public const string LiteralNONEPlantarTarsalLigaments = "http://snomed.info/sct#7498002";
 
     /// <summary>
     /// Literal for code: AnteriorLigamentOfHeadOfFibula
@@ -12668,9 +16318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnteriorLigamentOfHeadOfFibula = "7507003";
 
     /// <summary>
+    /// Literal for code: NONEAnteriorLigamentOfHeadOfFibula
+    /// </summary>
+    public const string LiteralNONEAnteriorLigamentOfHeadOfFibula = "http://snomed.info/sct#7507003";
+
+    /// <summary>
     /// Literal for code: VasaVasorum
     /// </summary>
     public const string LiteralVasaVasorum = "7524009";
+
+    /// <summary>
+    /// Literal for code: NONEVasaVasorum
+    /// </summary>
+    public const string LiteralNONEVasaVasorum = "http://snomed.info/sct#7524009";
 
     /// <summary>
     /// Literal for code: VagusNerveParasympatheticFibers
@@ -12678,9 +16338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVagusNerveParasympatheticFibers = "7532001";
 
     /// <summary>
+    /// Literal for code: NONEVagusNerveParasympatheticFibers
+    /// </summary>
+    public const string LiteralNONEVagusNerveParasympatheticFibers = "http://snomed.info/sct#7532001";
+
+    /// <summary>
     /// Literal for code: DeepHeadOfFlexorPollicisBrevisMuscle
     /// </summary>
     public const string LiteralDeepHeadOfFlexorPollicisBrevisMuscle = "7554004";
+
+    /// <summary>
+    /// Literal for code: NONEDeepHeadOfFlexorPollicisBrevisMuscle
+    /// </summary>
+    public const string LiteralNONEDeepHeadOfFlexorPollicisBrevisMuscle = "http://snomed.info/sct#7554004";
 
     /// <summary>
     /// Literal for code: MitoticCellInAnaphase
@@ -12688,9 +16358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMitoticCellInAnaphase = "7566005";
 
     /// <summary>
+    /// Literal for code: NONEMitoticCellInAnaphase
+    /// </summary>
+    public const string LiteralNONEMitoticCellInAnaphase = "http://snomed.info/sct#7566005";
+
+    /// <summary>
     /// Literal for code: Finger
     /// </summary>
     public const string LiteralFinger = "7569003";
+
+    /// <summary>
+    /// Literal for code: NONEFinger
+    /// </summary>
+    public const string LiteralNONEFinger = "http://snomed.info/sct#7569003";
 
     /// <summary>
     /// Literal for code: IntervertebralDiscSpaceOfEleventhThoracicVertebra
@@ -12698,9 +16378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntervertebralDiscSpaceOfEleventhThoracicVertebra = "7591005";
 
     /// <summary>
+    /// Literal for code: NONEIntervertebralDiscSpaceOfEleventhThoracicVertebra
+    /// </summary>
+    public const string LiteralNONEIntervertebralDiscSpaceOfEleventhThoracicVertebra = "http://snomed.info/sct#7591005";
+
+    /// <summary>
     /// Literal for code: SubcutaneousTissueOfVertex
     /// </summary>
     public const string LiteralSubcutaneousTissueOfVertex = "7597009";
+
+    /// <summary>
+    /// Literal for code: NONESubcutaneousTissueOfVertex
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueOfVertex = "http://snomed.info/sct#7597009";
 
     /// <summary>
     /// Literal for code: Connexon
@@ -12708,9 +16398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConnexon = "7605000";
 
     /// <summary>
+    /// Literal for code: NONEConnexon
+    /// </summary>
+    public const string LiteralNONEConnexon = "http://snomed.info/sct#7605000";
+
+    /// <summary>
     /// Literal for code: TenthThoracicVertebra
     /// </summary>
     public const string LiteralTenthThoracicVertebra = "7610001";
+
+    /// <summary>
+    /// Literal for code: NONETenthThoracicVertebra
+    /// </summary>
+    public const string LiteralNONETenthThoracicVertebra = "http://snomed.info/sct#7610001";
 
     /// <summary>
     /// Literal for code: ThalamoolivaryTract
@@ -12718,9 +16418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThalamoolivaryTract = "7629007";
 
     /// <summary>
+    /// Literal for code: NONEThalamoolivaryTract
+    /// </summary>
+    public const string LiteralNONEThalamoolivaryTract = "http://snomed.info/sct#7629007";
+
+    /// <summary>
     /// Literal for code: IntervenousTubercleOfRightAtrium
     /// </summary>
     public const string LiteralIntervenousTubercleOfRightAtrium = "7651004";
+
+    /// <summary>
+    /// Literal for code: NONEIntervenousTubercleOfRightAtrium
+    /// </summary>
+    public const string LiteralNONEIntervenousTubercleOfRightAtrium = "http://snomed.info/sct#7651004";
 
     /// <summary>
     /// Literal for code: FrenulumLabii
@@ -12728,9 +16438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFrenulumLabii = "7652006";
 
     /// <summary>
+    /// Literal for code: NONEFrenulumLabii
+    /// </summary>
+    public const string LiteralNONEFrenulumLabii = "http://snomed.info/sct#7652006";
+
+    /// <summary>
     /// Literal for code: FemoralArtery
     /// </summary>
     public const string LiteralFemoralArtery = "7657000";
+
+    /// <summary>
+    /// Literal for code: NONEFemoralArtery
+    /// </summary>
+    public const string LiteralNONEFemoralArtery = "http://snomed.info/sct#7657000";
 
     /// <summary>
     /// Literal for code: SubtendinousBursaOfTricepsBrachiiMuscle
@@ -12738,9 +16458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubtendinousBursaOfTricepsBrachiiMuscle = "7658005";
 
     /// <summary>
+    /// Literal for code: NONESubtendinousBursaOfTricepsBrachiiMuscle
+    /// </summary>
+    public const string LiteralNONESubtendinousBursaOfTricepsBrachiiMuscle = "http://snomed.info/sct#7658005";
+
+    /// <summary>
     /// Literal for code: PontinePortionOfMedialLongitudinalFasciculus
     /// </summary>
     public const string LiteralPontinePortionOfMedialLongitudinalFasciculus = "7697002";
+
+    /// <summary>
+    /// Literal for code: NONEPontinePortionOfMedialLongitudinalFasciculus
+    /// </summary>
+    public const string LiteralNONEPontinePortionOfMedialLongitudinalFasciculus = "http://snomed.info/sct#7697002";
 
     /// <summary>
     /// Literal for code: SubduralSpaceOfSpinalRegion
@@ -12748,9 +16478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubduralSpaceOfSpinalRegion = "7712004";
 
     /// <summary>
+    /// Literal for code: NONESubduralSpaceOfSpinalRegion
+    /// </summary>
+    public const string LiteralNONESubduralSpaceOfSpinalRegion = "http://snomed.info/sct#7712004";
+
+    /// <summary>
     /// Literal for code: SkinOfMedialSurfaceOfFifthToe
     /// </summary>
     public const string LiteralSkinOfMedialSurfaceOfFifthToe = "7726008";
+
+    /// <summary>
+    /// Literal for code: NONESkinOfMedialSurfaceOfFifthToe
+    /// </summary>
+    public const string LiteralNONESkinOfMedialSurfaceOfFifthToe = "http://snomed.info/sct#7726008";
 
     /// <summary>
     /// Literal for code: PosteriorChoroidalArtery
@@ -12758,9 +16498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPosteriorChoroidalArtery = "7736000";
 
     /// <summary>
+    /// Literal for code: NONEPosteriorChoroidalArtery
+    /// </summary>
+    public const string LiteralNONEPosteriorChoroidalArtery = "http://snomed.info/sct#7736000";
+
+    /// <summary>
     /// Literal for code: HeadAndNeck
     /// </summary>
     public const string LiteralHeadAndNeck = "774007";
+
+    /// <summary>
+    /// Literal for code: NONEHeadAndNeck
+    /// </summary>
+    public const string LiteralNONEHeadAndNeck = "http://snomed.info/sct#774007";
 
     /// <summary>
     /// Literal for code: PalatineDuct
@@ -12768,9 +16518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPalatineDuct = "7742001";
 
     /// <summary>
+    /// Literal for code: NONEPalatineDuct
+    /// </summary>
+    public const string LiteralNONEPalatineDuct = "http://snomed.info/sct#7742001";
+
+    /// <summary>
     /// Literal for code: SkinAppendage
     /// </summary>
     public const string LiteralSkinAppendage = "7748002";
+
+    /// <summary>
+    /// Literal for code: NONESkinAppendage
+    /// </summary>
+    public const string LiteralNONESkinAppendage = "http://snomed.info/sct#7748002";
 
     /// <summary>
     /// Literal for code: MesovarianMarginOfOvary
@@ -12778,9 +16538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMesovarianMarginOfOvary = "7755000";
 
     /// <summary>
+    /// Literal for code: NONEMesovarianMarginOfOvary
+    /// </summary>
+    public const string LiteralNONEMesovarianMarginOfOvary = "http://snomed.info/sct#7755000";
+
+    /// <summary>
     /// Literal for code: LaminaOfThirdThoracicVertebra
     /// </summary>
     public const string LiteralLaminaOfThirdThoracicVertebra = "7756004";
+
+    /// <summary>
+    /// Literal for code: NONELaminaOfThirdThoracicVertebra
+    /// </summary>
+    public const string LiteralNONELaminaOfThirdThoracicVertebra = "http://snomed.info/sct#7756004";
 
     /// <summary>
     /// Literal for code: StriateArtery
@@ -12788,9 +16558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStriateArtery = "7764005";
 
     /// <summary>
+    /// Literal for code: NONEStriateArtery
+    /// </summary>
+    public const string LiteralNONEStriateArtery = "http://snomed.info/sct#7764005";
+
+    /// <summary>
     /// Literal for code: RightFoot
     /// </summary>
     public const string LiteralRightFoot = "7769000";
+
+    /// <summary>
+    /// Literal for code: NONERightFoot
+    /// </summary>
+    public const string LiteralNONERightFoot = "http://snomed.info/sct#7769000";
 
     /// <summary>
     /// Literal for code: SympatheticTrunkSpinalNerveBranch
@@ -12798,9 +16578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSympatheticTrunkSpinalNerveBranch = "7783003";
 
     /// <summary>
+    /// Literal for code: NONESympatheticTrunkSpinalNerveBranch
+    /// </summary>
+    public const string LiteralNONESympatheticTrunkSpinalNerveBranch = "http://snomed.info/sct#7783003";
+
+    /// <summary>
     /// Literal for code: LateralPosteriorNucleusOfThalamus
     /// </summary>
     public const string LiteralLateralPosteriorNucleusOfThalamus = "7820009";
+
+    /// <summary>
+    /// Literal for code: NONELateralPosteriorNucleusOfThalamus
+    /// </summary>
+    public const string LiteralNONELateralPosteriorNucleusOfThalamus = "http://snomed.info/sct#7820009";
 
     /// <summary>
     /// Literal for code: AnteriorSurfaceOfManubrium
@@ -12808,9 +16598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnteriorSurfaceOfManubrium = "7829005";
 
     /// <summary>
+    /// Literal for code: NONEAnteriorSurfaceOfManubrium
+    /// </summary>
+    public const string LiteralNONEAnteriorSurfaceOfManubrium = "http://snomed.info/sct#7829005";
+
+    /// <summary>
     /// Literal for code: AbdominalAorta
     /// </summary>
     public const string LiteralAbdominalAorta = "7832008";
+
+    /// <summary>
+    /// Literal for code: NONEAbdominalAorta
+    /// </summary>
+    public const string LiteralNONEAbdominalAorta = "http://snomed.info/sct#7832008";
 
     /// <summary>
     /// Literal for code: PosteriorMarginOfNasalSeptum
@@ -12818,9 +16618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPosteriorMarginOfNasalSeptum = "7835005";
 
     /// <summary>
+    /// Literal for code: NONEPosteriorMarginOfNasalSeptum
+    /// </summary>
+    public const string LiteralNONEPosteriorMarginOfNasalSeptum = "http://snomed.info/sct#7835005";
+
+    /// <summary>
     /// Literal for code: SubcutaneousTissueOfSubmentalArea
     /// </summary>
     public const string LiteralSubcutaneousTissueOfSubmentalArea = "7840002";
+
+    /// <summary>
+    /// Literal for code: NONESubcutaneousTissueOfSubmentalArea
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueOfSubmentalArea = "http://snomed.info/sct#7840002";
 
     /// <summary>
     /// Literal for code: MacrocyticNormochromicErythrocyte
@@ -12828,9 +16638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMacrocyticNormochromicErythrocyte = "7841003";
 
     /// <summary>
+    /// Literal for code: NONEMacrocyticNormochromicErythrocyte
+    /// </summary>
+    public const string LiteralNONEMacrocyticNormochromicErythrocyte = "http://snomed.info/sct#7841003";
+
+    /// <summary>
     /// Literal for code: SternoclavicularJoint
     /// </summary>
     public const string LiteralSternoclavicularJoint = "7844006";
+
+    /// <summary>
+    /// Literal for code: NONESternoclavicularJoint
+    /// </summary>
+    public const string LiteralNONESternoclavicularJoint = "http://snomed.info/sct#7844006";
 
     /// <summary>
     /// Literal for code: IntracranialSubduralSpace
@@ -12838,9 +16658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntracranialSubduralSpace = "7851002";
 
     /// <summary>
+    /// Literal for code: NONEIntracranialSubduralSpace
+    /// </summary>
+    public const string LiteralNONEIntracranialSubduralSpace = "http://snomed.info/sct#7851002";
+
+    /// <summary>
     /// Literal for code: MandibularCanal
     /// </summary>
     public const string LiteralMandibularCanal = "7854005";
+
+    /// <summary>
+    /// Literal for code: NONEMandibularCanal
+    /// </summary>
+    public const string LiteralNONEMandibularCanal = "http://snomed.info/sct#7854005";
 
     /// <summary>
     /// Literal for code: MyocardiumOfVentricle
@@ -12848,9 +16678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMyocardiumOfVentricle = "7872004";
 
     /// <summary>
+    /// Literal for code: NONEMyocardiumOfVentricle
+    /// </summary>
+    public const string LiteralNONEMyocardiumOfVentricle = "http://snomed.info/sct#7872004";
+
+    /// <summary>
     /// Literal for code: ScapularRegionOfBack
     /// </summary>
     public const string LiteralScapularRegionOfBack = "7874003";
+
+    /// <summary>
+    /// Literal for code: NONEScapularRegionOfBack
+    /// </summary>
+    public const string LiteralNONEScapularRegionOfBack = "http://snomed.info/sct#7874003";
 
     /// <summary>
     /// Literal for code: RhopheocytoticVesicle
@@ -12858,9 +16698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRhopheocytoticVesicle = "7880006";
 
     /// <summary>
+    /// Literal for code: NONERhopheocytoticVesicle
+    /// </summary>
+    public const string LiteralNONERhopheocytoticVesicle = "http://snomed.info/sct#7880006";
+
+    /// <summary>
     /// Literal for code: CornealCorpuscle
     /// </summary>
     public const string LiteralCornealCorpuscle = "7884002";
+
+    /// <summary>
+    /// Literal for code: NONECornealCorpuscle
+    /// </summary>
+    public const string LiteralNONECornealCorpuscle = "http://snomed.info/sct#7884002";
 
     /// <summary>
     /// Literal for code: RotatorCuffIncludingMusclesAndTendons
@@ -12868,9 +16718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRotatorCuffIncludingMusclesAndTendons = "7885001";
 
     /// <summary>
+    /// Literal for code: NONERotatorCuffIncludingMusclesAndTendons
+    /// </summary>
+    public const string LiteralNONERotatorCuffIncludingMusclesAndTendons = "http://snomed.info/sct#7885001";
+
+    /// <summary>
     /// Literal for code: SubmucosaOfAnalCanal
     /// </summary>
     public const string LiteralSubmucosaOfAnalCanal = "7892006";
+
+    /// <summary>
+    /// Literal for code: NONESubmucosaOfAnalCanal
+    /// </summary>
+    public const string LiteralNONESubmucosaOfAnalCanal = "http://snomed.info/sct#7892006";
 
     /// <summary>
     /// Literal for code: OccipitalAngleOfParietalBone
@@ -12878,9 +16738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOccipitalAngleOfParietalBone = "7896009";
 
     /// <summary>
+    /// Literal for code: NONEOccipitalAngleOfParietalBone
+    /// </summary>
+    public const string LiteralNONEOccipitalAngleOfParietalBone = "http://snomed.info/sct#7896009";
+
+    /// <summary>
     /// Literal for code: VisceralSurfaceOfLiver
     /// </summary>
     public const string LiteralVisceralSurfaceOfLiver = "790007";
+
+    /// <summary>
+    /// Literal for code: NONEVisceralSurfaceOfLiver
+    /// </summary>
+    public const string LiteralNONEVisceralSurfaceOfLiver = "http://snomed.info/sct#790007";
 
     /// <summary>
     /// Literal for code: OlivocerebellarFibers
@@ -12888,9 +16758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOlivocerebellarFibers = "7911004";
 
     /// <summary>
+    /// Literal for code: NONEOlivocerebellarFibers
+    /// </summary>
+    public const string LiteralNONEOlivocerebellarFibers = "http://snomed.info/sct#7911004";
+
+    /// <summary>
     /// Literal for code: ProximalPhalanxOfThirdToe
     /// </summary>
     public const string LiteralProximalPhalanxOfThirdToe = "7925003";
+
+    /// <summary>
+    /// Literal for code: NONEProximalPhalanxOfThirdToe
+    /// </summary>
+    public const string LiteralNONEProximalPhalanxOfThirdToe = "http://snomed.info/sct#7925003";
 
     /// <summary>
     /// Literal for code: LigamentOfDiaphragm
@@ -12898,9 +16778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLigamentOfDiaphragm = "7936005";
 
     /// <summary>
+    /// Literal for code: NONELigamentOfDiaphragm
+    /// </summary>
+    public const string LiteralNONELigamentOfDiaphragm = "http://snomed.info/sct#7936005";
+
+    /// <summary>
     /// Literal for code: HelperCell
     /// </summary>
     public const string LiteralHelperCell = "7944005";
+
+    /// <summary>
+    /// Literal for code: NONEHelperCell
+    /// </summary>
+    public const string LiteralNONEHelperCell = "http://snomed.info/sct#7944005";
 
     /// <summary>
     /// Literal for code: LaminaPropriaOfEthmoidSinus
@@ -12908,9 +16798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLaminaPropriaOfEthmoidSinus = "7954009";
 
     /// <summary>
+    /// Literal for code: NONELaminaPropriaOfEthmoidSinus
+    /// </summary>
+    public const string LiteralNONELaminaPropriaOfEthmoidSinus = "http://snomed.info/sct#7954009";
+
+    /// <summary>
     /// Literal for code: FirstLeftAorticArch
     /// </summary>
     public const string LiteralFirstLeftAorticArch = "7967007";
+
+    /// <summary>
+    /// Literal for code: NONEFirstLeftAorticArch
+    /// </summary>
+    public const string LiteralNONEFirstLeftAorticArch = "http://snomed.info/sct#7967007";
 
     /// <summary>
     /// Literal for code: DeepTemporalVeins
@@ -12918,9 +16818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeepTemporalVeins = "798000";
 
     /// <summary>
+    /// Literal for code: NONEDeepTemporalVeins
+    /// </summary>
+    public const string LiteralNONEDeepTemporalVeins = "http://snomed.info/sct#798000";
+
+    /// <summary>
     /// Literal for code: AbdominopelvicPortionOfSympatheticNervousSystem
     /// </summary>
     public const string LiteralAbdominopelvicPortionOfSympatheticNervousSystem = "7986004";
+
+    /// <summary>
+    /// Literal for code: NONEAbdominopelvicPortionOfSympatheticNervousSystem
+    /// </summary>
+    public const string LiteralNONEAbdominopelvicPortionOfSympatheticNervousSystem = "http://snomed.info/sct#7986004";
 
     /// <summary>
     /// Literal for code: SkinOfGlansPenis
@@ -12928,9 +16838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSkinOfGlansPenis = "7991003";
 
     /// <summary>
+    /// Literal for code: NONESkinOfGlansPenis
+    /// </summary>
+    public const string LiteralNONESkinOfGlansPenis = "http://snomed.info/sct#7991003";
+
+    /// <summary>
     /// Literal for code: ArticulationsOfAuditoryOssicles
     /// </summary>
     public const string LiteralArticulationsOfAuditoryOssicles = "7999001";
+
+    /// <summary>
+    /// Literal for code: NONEArticulationsOfAuditoryOssicles
+    /// </summary>
+    public const string LiteralNONEArticulationsOfAuditoryOssicles = "http://snomed.info/sct#7999001";
 
     /// <summary>
     /// Literal for code: MucousMembraneOfTongue
@@ -12938,9 +16858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMucousMembraneOfTongue = "8001006";
 
     /// <summary>
+    /// Literal for code: NONEMucousMembraneOfTongue
+    /// </summary>
+    public const string LiteralNONEMucousMembraneOfTongue = "http://snomed.info/sct#8001006";
+
+    /// <summary>
     /// Literal for code: AnteriorCommunicatingArtery
     /// </summary>
     public const string LiteralAnteriorCommunicatingArtery = "8012006";
+
+    /// <summary>
+    /// Literal for code: NONEAnteriorCommunicatingArtery
+    /// </summary>
+    public const string LiteralNONEAnteriorCommunicatingArtery = "http://snomed.info/sct#8012006";
 
     /// <summary>
     /// Literal for code: InflowTractOfRightVentricle
@@ -12948,9 +16878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInflowTractOfRightVentricle = "8017000";
 
     /// <summary>
+    /// Literal for code: NONEInflowTractOfRightVentricle
+    /// </summary>
+    public const string LiteralNONEInflowTractOfRightVentricle = "http://snomed.info/sct#8017000";
+
+    /// <summary>
     /// Literal for code: LimitansNucleus
     /// </summary>
     public const string LiteralLimitansNucleus = "8024004";
+
+    /// <summary>
+    /// Literal for code: NONELimitansNucleus
+    /// </summary>
+    public const string LiteralNONELimitansNucleus = "http://snomed.info/sct#8024004";
 
     /// <summary>
     /// Literal for code: SubcutaneousAcromialBursa
@@ -12958,9 +16898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubcutaneousAcromialBursa = "8039003";
 
     /// <summary>
+    /// Literal for code: NONESubcutaneousAcromialBursa
+    /// </summary>
+    public const string LiteralNONESubcutaneousAcromialBursa = "http://snomed.info/sct#8039003";
+
+    /// <summary>
     /// Literal for code: SuperficialFlexorTendonOfLittleFinger
     /// </summary>
     public const string LiteralSuperficialFlexorTendonOfLittleFinger = "8040001";
+
+    /// <summary>
+    /// Literal for code: NONESuperficialFlexorTendonOfLittleFinger
+    /// </summary>
+    public const string LiteralNONESuperficialFlexorTendonOfLittleFinger = "http://snomed.info/sct#8040001";
 
     /// <summary>
     /// Literal for code: MembraneCoatingGranuleAmorphous
@@ -12968,9 +16918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMembraneCoatingGranuleAmorphous = "8045006";
 
     /// <summary>
+    /// Literal for code: NONEMembraneCoatingGranuleAmorphous
+    /// </summary>
+    public const string LiteralNONEMembraneCoatingGranuleAmorphous = "http://snomed.info/sct#8045006";
+
+    /// <summary>
     /// Literal for code: LateralNucleiOfGlobusPallidus
     /// </summary>
     public const string LiteralLateralNucleiOfGlobusPallidus = "8057002";
+
+    /// <summary>
+    /// Literal for code: NONELateralNucleiOfGlobusPallidus
+    /// </summary>
+    public const string LiteralNONELateralNucleiOfGlobusPallidus = "http://snomed.info/sct#8057002";
 
     /// <summary>
     /// Literal for code: PancreaticVeins
@@ -12978,9 +16938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPancreaticVeins = "8059004";
 
     /// <summary>
+    /// Literal for code: NONEPancreaticVeins
+    /// </summary>
+    public const string LiteralNONEPancreaticVeins = "http://snomed.info/sct#8059004";
+
+    /// <summary>
     /// Literal for code: SuperficialCircumflexIliacVein
     /// </summary>
     public const string LiteralSuperficialCircumflexIliacVein = "8067007";
+
+    /// <summary>
+    /// Literal for code: NONESuperficialCircumflexIliacVein
+    /// </summary>
+    public const string LiteralNONESuperficialCircumflexIliacVein = "http://snomed.info/sct#8067007";
 
     /// <summary>
     /// Literal for code: StratumLemnisciOfCorporaQuadrigemina
@@ -12988,9 +16958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStratumLemnisciOfCorporaQuadrigemina = "8068002";
 
     /// <summary>
+    /// Literal for code: NONEStratumLemnisciOfCorporaQuadrigemina
+    /// </summary>
+    public const string LiteralNONEStratumLemnisciOfCorporaQuadrigemina = "http://snomed.info/sct#8068002";
+
+    /// <summary>
     /// Literal for code: RadialNerve
     /// </summary>
     public const string LiteralRadialNerve = "8079007";
+
+    /// <summary>
+    /// Literal for code: NONERadialNerve
+    /// </summary>
+    public const string LiteralNONERadialNerve = "http://snomed.info/sct#8079007";
 
     /// <summary>
     /// Literal for code: PosteriorIntercostalArtery
@@ -12998,9 +16978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPosteriorIntercostalArtery = "808000";
 
     /// <summary>
+    /// Literal for code: NONEPosteriorIntercostalArtery
+    /// </summary>
+    public const string LiteralNONEPosteriorIntercostalArtery = "http://snomed.info/sct#808000";
+
+    /// <summary>
     /// Literal for code: FetalChondrocranium
     /// </summary>
     public const string LiteralFetalChondrocranium = "809008";
+
+    /// <summary>
+    /// Literal for code: NONEFetalChondrocranium
+    /// </summary>
+    public const string LiteralNONEFetalChondrocranium = "http://snomed.info/sct#809008";
 
     /// <summary>
     /// Literal for code: IntervertebralDiscSpaceOfTwelfthThoracicVertebra
@@ -13008,9 +16998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntervertebralDiscSpaceOfTwelfthThoracicVertebra = "8091003";
 
     /// <summary>
+    /// Literal for code: NONEIntervertebralDiscSpaceOfTwelfthThoracicVertebra
+    /// </summary>
+    public const string LiteralNONEIntervertebralDiscSpaceOfTwelfthThoracicVertebra = "http://snomed.info/sct#8091003";
+
+    /// <summary>
     /// Literal for code: InfundibulumOfFallopianTube
     /// </summary>
     public const string LiteralInfundibulumOfFallopianTube = "8100009";
+
+    /// <summary>
+    /// Literal for code: NONEInfundibulumOfFallopianTube
+    /// </summary>
+    public const string LiteralNONEInfundibulumOfFallopianTube = "http://snomed.info/sct#8100009";
 
     /// <summary>
     /// Literal for code: IntranuclearCrystal
@@ -13018,9 +17018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntranuclearCrystal = "8111001";
 
     /// <summary>
+    /// Literal for code: NONEIntranuclearCrystal
+    /// </summary>
+    public const string LiteralNONEIntranuclearCrystal = "http://snomed.info/sct#8111001";
+
+    /// <summary>
     /// Literal for code: Hindgut
     /// </summary>
     public const string LiteralHindgut = "8112008";
+
+    /// <summary>
+    /// Literal for code: NONEHindgut
+    /// </summary>
+    public const string LiteralNONEHindgut = "http://snomed.info/sct#8112008";
 
     /// <summary>
     /// Literal for code: DelphianLymphNode
@@ -13028,9 +17038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDelphianLymphNode = "8119004";
 
     /// <summary>
+    /// Literal for code: NONEDelphianLymphNode
+    /// </summary>
+    public const string LiteralNONEDelphianLymphNode = "http://snomed.info/sct#8119004";
+
+    /// <summary>
     /// Literal for code: SupraaorticValveArea
     /// </summary>
     public const string LiteralSupraaorticValveArea = "8128003";
+
+    /// <summary>
+    /// Literal for code: NONESupraaorticValveArea
+    /// </summary>
+    public const string LiteralNONESupraaorticValveArea = "http://snomed.info/sct#8128003";
 
     /// <summary>
     /// Literal for code: SuperiorAnastomoticVein
@@ -13038,9 +17058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuperiorAnastomoticVein = "8133004";
 
     /// <summary>
+    /// Literal for code: NONESuperiorAnastomoticVein
+    /// </summary>
+    public const string LiteralNONESuperiorAnastomoticVein = "http://snomed.info/sct#8133004";
+
+    /// <summary>
     /// Literal for code: VeinOfHead
     /// </summary>
     public const string LiteralVeinOfHead = "8157004";
+
+    /// <summary>
+    /// Literal for code: NONEVeinOfHead
+    /// </summary>
+    public const string LiteralNONEVeinOfHead = "http://snomed.info/sct#8157004";
 
     /// <summary>
     /// Literal for code: InterlobarDuctOfPancreas
@@ -13048,9 +17078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInterlobarDuctOfPancreas = "8158009";
 
     /// <summary>
+    /// Literal for code: NONEInterlobarDuctOfPancreas
+    /// </summary>
+    public const string LiteralNONEInterlobarDuctOfPancreas = "http://snomed.info/sct#8158009";
+
+    /// <summary>
     /// Literal for code: SuperiorColliculusOfCorporaQuadrigemina
     /// </summary>
     public const string LiteralSuperiorColliculusOfCorporaQuadrigemina = "8159001";
+
+    /// <summary>
+    /// Literal for code: NONESuperiorColliculusOfCorporaQuadrigemina
+    /// </summary>
+    public const string LiteralNONESuperiorColliculusOfCorporaQuadrigemina = "http://snomed.info/sct#8159001";
 
     /// <summary>
     /// Literal for code: LateralStriateArteries
@@ -13058,9 +17098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLateralStriateArteries = "8160006";
 
     /// <summary>
+    /// Literal for code: NONELateralStriateArteries
+    /// </summary>
+    public const string LiteralNONELateralStriateArteries = "http://snomed.info/sct#8160006";
+
+    /// <summary>
     /// Literal for code: InfraorbitalNerve
     /// </summary>
     public const string LiteralInfraorbitalNerve = "8161005";
+
+    /// <summary>
+    /// Literal for code: NONEInfraorbitalNerve
+    /// </summary>
+    public const string LiteralNONEInfraorbitalNerve = "http://snomed.info/sct#8161005";
 
     /// <summary>
     /// Literal for code: SuperiorArticularProcessOfFifthThoracicVertebra
@@ -13068,9 +17118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuperiorArticularProcessOfFifthThoracicVertebra = "8165001";
 
     /// <summary>
+    /// Literal for code: NONESuperiorArticularProcessOfFifthThoracicVertebra
+    /// </summary>
+    public const string LiteralNONESuperiorArticularProcessOfFifthThoracicVertebra = "http://snomed.info/sct#8165001";
+
+    /// <summary>
     /// Literal for code: Wrist
     /// </summary>
     public const string LiteralWrist = "8205005";
+
+    /// <summary>
+    /// Literal for code: NONEWrist
+    /// </summary>
+    public const string LiteralNONEWrist = "http://snomed.info/sct#8205005";
 
     /// <summary>
     /// Literal for code: AccessoryAtrioventricularBundle
@@ -13078,9 +17138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAccessoryAtrioventricularBundle = "8225009";
 
     /// <summary>
+    /// Literal for code: NONEAccessoryAtrioventricularBundle
+    /// </summary>
+    public const string LiteralNONEAccessoryAtrioventricularBundle = "http://snomed.info/sct#8225009";
+
+    /// <summary>
     /// Literal for code: PosteriorCervicalSpinalCordNerveRoot
     /// </summary>
     public const string LiteralPosteriorCervicalSpinalCordNerveRoot = "823005";
+
+    /// <summary>
+    /// Literal for code: NONEPosteriorCervicalSpinalCordNerveRoot
+    /// </summary>
+    public const string LiteralNONEPosteriorCervicalSpinalCordNerveRoot = "http://snomed.info/sct#823005";
 
     /// <summary>
     /// Literal for code: ApicalBranchOfRightPulmonaryArtery
@@ -13088,9 +17158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralApicalBranchOfRightPulmonaryArtery = "8242003";
 
     /// <summary>
+    /// Literal for code: NONEApicalBranchOfRightPulmonaryArtery
+    /// </summary>
+    public const string LiteralNONEApicalBranchOfRightPulmonaryArtery = "http://snomed.info/sct#8242003";
+
+    /// <summary>
     /// Literal for code: OsseousPortionOfEustachianTube
     /// </summary>
     public const string LiteralOsseousPortionOfEustachianTube = "8251006";
+
+    /// <summary>
+    /// Literal for code: NONEOsseousPortionOfEustachianTube
+    /// </summary>
+    public const string LiteralNONEOsseousPortionOfEustachianTube = "http://snomed.info/sct#8251006";
 
     /// <summary>
     /// Literal for code: TunicaInternaOfEyeball
@@ -13098,9 +17178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTunicaInternaOfEyeball = "8264007";
 
     /// <summary>
+    /// Literal for code: NONETunicaInternaOfEyeball
+    /// </summary>
+    public const string LiteralNONETunicaInternaOfEyeball = "http://snomed.info/sct#8264007";
+
+    /// <summary>
     /// Literal for code: ArticularSurfaceMetacarpalOfPhalanxOfHand
     /// </summary>
     public const string LiteralArticularSurfaceMetacarpalOfPhalanxOfHand = "8265008";
+
+    /// <summary>
+    /// Literal for code: NONEArticularSurfaceMetacarpalOfPhalanxOfHand
+    /// </summary>
+    public const string LiteralNONEArticularSurfaceMetacarpalOfPhalanxOfHand = "http://snomed.info/sct#8265008";
 
     /// <summary>
     /// Literal for code: SmallIntestineSerosa
@@ -13108,9 +17198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSmallIntestineSerosa = "8266009";
 
     /// <summary>
+    /// Literal for code: NONESmallIntestineSerosa
+    /// </summary>
+    public const string LiteralNONESmallIntestineSerosa = "http://snomed.info/sct#8266009";
+
+    /// <summary>
     /// Literal for code: PelvicViscus
     /// </summary>
     public const string LiteralPelvicViscus = "8279000";
+
+    /// <summary>
+    /// Literal for code: NONEPelvicViscus
+    /// </summary>
+    public const string LiteralNONEPelvicViscus = "http://snomed.info/sct#8279000";
 
     /// <summary>
     /// Literal for code: BelowKneeRegion
@@ -13118,9 +17218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBelowKneeRegion = "8289001";
 
     /// <summary>
+    /// Literal for code: NONEBelowKneeRegion
+    /// </summary>
+    public const string LiteralNONEBelowKneeRegion = "http://snomed.info/sct#8289001";
+
+    /// <summary>
     /// Literal for code: InterlobularArteriesOfLiver
     /// </summary>
     public const string LiteralInterlobularArteriesOfLiver = "8292002";
+
+    /// <summary>
+    /// Literal for code: NONEInterlobularArteriesOfLiver
+    /// </summary>
+    public const string LiteralNONEInterlobularArteriesOfLiver = "http://snomed.info/sct#8292002";
 
     /// <summary>
     /// Literal for code: SpinousProcessOfFifthThoracicVertebra
@@ -13128,9 +17238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpinousProcessOfFifthThoracicVertebra = "830004";
 
     /// <summary>
+    /// Literal for code: NONESpinousProcessOfFifthThoracicVertebra
+    /// </summary>
+    public const string LiteralNONESpinousProcessOfFifthThoracicVertebra = "http://snomed.info/sct#830004";
+
+    /// <summary>
     /// Literal for code: MastoidFontanelOfSkull
     /// </summary>
     public const string LiteralMastoidFontanelOfSkull = "8314003";
+
+    /// <summary>
+    /// Literal for code: NONEMastoidFontanelOfSkull
+    /// </summary>
+    public const string LiteralNONEMastoidFontanelOfSkull = "http://snomed.info/sct#8314003";
 
     /// <summary>
     /// Literal for code: LumbarLymphNode
@@ -13138,9 +17258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLumbarLymphNode = "8334002";
 
     /// <summary>
+    /// Literal for code: NONELumbarLymphNode
+    /// </summary>
+    public const string LiteralNONELumbarLymphNode = "http://snomed.info/sct#8334002";
+
+    /// <summary>
     /// Literal for code: ColicLymphNode
     /// </summary>
     public const string LiteralColicLymphNode = "8356004";
+
+    /// <summary>
+    /// Literal for code: NONEColicLymphNode
+    /// </summary>
+    public const string LiteralNONEColicLymphNode = "http://snomed.info/sct#8356004";
 
     /// <summary>
     /// Literal for code: OralRegionOfFace
@@ -13148,9 +17278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOralRegionOfFace = "836005";
 
     /// <summary>
+    /// Literal for code: NONEOralRegionOfFace
+    /// </summary>
+    public const string LiteralNONEOralRegionOfFace = "http://snomed.info/sct#836005";
+
+    /// <summary>
     /// Literal for code: TunicaIntima
     /// </summary>
     public const string LiteralTunicaIntima = "8361002";
+
+    /// <summary>
+    /// Literal for code: NONETunicaIntima
+    /// </summary>
+    public const string LiteralNONETunicaIntima = "http://snomed.info/sct#8361002";
 
     /// <summary>
     /// Literal for code: SphincterPupillaeMuscle
@@ -13158,9 +17298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSphincterPupillaeMuscle = "8369000";
 
     /// <summary>
+    /// Literal for code: NONESphincterPupillaeMuscle
+    /// </summary>
+    public const string LiteralNONESphincterPupillaeMuscle = "http://snomed.info/sct#8369000";
+
+    /// <summary>
     /// Literal for code: JugumOfSphenoidBone
     /// </summary>
     public const string LiteralJugumOfSphenoidBone = "8373002";
+
+    /// <summary>
+    /// Literal for code: NONEJugumOfSphenoidBone
+    /// </summary>
+    public const string LiteralNONEJugumOfSphenoidBone = "http://snomed.info/sct#8373002";
 
     /// <summary>
     /// Literal for code: LaminaOfEighthThoracicVertebra
@@ -13168,9 +17318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLaminaOfEighthThoracicVertebra = "8387002";
 
     /// <summary>
+    /// Literal for code: NONELaminaOfEighthThoracicVertebra
+    /// </summary>
+    public const string LiteralNONELaminaOfEighthThoracicVertebra = "http://snomed.info/sct#8387002";
+
+    /// <summary>
     /// Literal for code: BirthCanal
     /// </summary>
     public const string LiteralBirthCanal = "8389004";
+
+    /// <summary>
+    /// Literal for code: NONEBirthCanal
+    /// </summary>
+    public const string LiteralNONEBirthCanal = "http://snomed.info/sct#8389004";
 
     /// <summary>
     /// Literal for code: IliacFossa
@@ -13178,9 +17338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIliacFossa = "8412003";
 
     /// <summary>
+    /// Literal for code: NONEIliacFossa
+    /// </summary>
+    public const string LiteralNONEIliacFossa = "http://snomed.info/sct#8412003";
+
+    /// <summary>
     /// Literal for code: RenalSurfaceOfAdrenalGland
     /// </summary>
     public const string LiteralRenalSurfaceOfAdrenalGland = "8415001";
+
+    /// <summary>
+    /// Literal for code: NONERenalSurfaceOfAdrenalGland
+    /// </summary>
+    public const string LiteralNONERenalSurfaceOfAdrenalGland = "http://snomed.info/sct#8415001";
 
     /// <summary>
     /// Literal for code: JointOfLumbarVertebra
@@ -13188,9 +17358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJointOfLumbarVertebra = "8454000";
 
     /// <summary>
+    /// Literal for code: NONEJointOfLumbarVertebra
+    /// </summary>
+    public const string LiteralNONEJointOfLumbarVertebra = "http://snomed.info/sct#8454000";
+
+    /// <summary>
     /// Literal for code: LigamentOfSacroiliacJointAndPubicSymphysis
     /// </summary>
     public const string LiteralLigamentOfSacroiliacJointAndPubicSymphysis = "8464009";
+
+    /// <summary>
+    /// Literal for code: NONELigamentOfSacroiliacJointAndPubicSymphysis
+    /// </summary>
+    public const string LiteralNONELigamentOfSacroiliacJointAndPubicSymphysis = "http://snomed.info/sct#8464009";
 
     /// <summary>
     /// Literal for code: SinoatrialNodeBranchOfRightCoronaryArtery
@@ -13198,9 +17378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSinoatrialNodeBranchOfRightCoronaryArtery = "8482007";
 
     /// <summary>
+    /// Literal for code: NONESinoatrialNodeBranchOfRightCoronaryArtery
+    /// </summary>
+    public const string LiteralNONESinoatrialNodeBranchOfRightCoronaryArtery = "http://snomed.info/sct#8482007";
+
+    /// <summary>
     /// Literal for code: MesialSurfaceOfTooth
     /// </summary>
     public const string LiteralMesialSurfaceOfTooth = "8483002";
+
+    /// <summary>
+    /// Literal for code: NONEMesialSurfaceOfTooth
+    /// </summary>
+    public const string LiteralNONEMesialSurfaceOfTooth = "http://snomed.info/sct#8483002";
 
     /// <summary>
     /// Literal for code: ObliquusCapitisMuscle
@@ -13208,9 +17398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralObliquusCapitisMuscle = "8496001";
 
     /// <summary>
+    /// Literal for code: NONEObliquusCapitisMuscle
+    /// </summary>
+    public const string LiteralNONEObliquusCapitisMuscle = "http://snomed.info/sct#8496001";
+
+    /// <summary>
     /// Literal for code: InferiorArticularProcessOfTwelfthThoracicVertebra
     /// </summary>
     public const string LiteralInferiorArticularProcessOfTwelfthThoracicVertebra = "8523001";
+
+    /// <summary>
+    /// Literal for code: NONEInferiorArticularProcessOfTwelfthThoracicVertebra
+    /// </summary>
+    public const string LiteralNONEInferiorArticularProcessOfTwelfthThoracicVertebra = "http://snomed.info/sct#8523001";
 
     /// <summary>
     /// Literal for code: PosteriorIntercavernousSinus
@@ -13218,9 +17418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPosteriorIntercavernousSinus = "8546004";
 
     /// <summary>
+    /// Literal for code: NONEPosteriorIntercavernousSinus
+    /// </summary>
+    public const string LiteralNONEPosteriorIntercavernousSinus = "http://snomed.info/sct#8546004";
+
+    /// <summary>
     /// Literal for code: LipidDroplet
     /// </summary>
     public const string LiteralLipidDroplet = "8556000";
+
+    /// <summary>
+    /// Literal for code: NONELipidDroplet
+    /// </summary>
+    public const string LiteralNONELipidDroplet = "http://snomed.info/sct#8556000";
 
     /// <summary>
     /// Literal for code: JuxtaintestinalLymphNode
@@ -13228,9 +17438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJuxtaintestinalLymphNode = "8559007";
 
     /// <summary>
+    /// Literal for code: NONEJuxtaintestinalLymphNode
+    /// </summary>
+    public const string LiteralNONEJuxtaintestinalLymphNode = "http://snomed.info/sct#8559007";
+
+    /// <summary>
     /// Literal for code: InterclavicularLigament
     /// </summary>
     public const string LiteralInterclavicularLigament = "8560002";
+
+    /// <summary>
+    /// Literal for code: NONEInterclavicularLigament
+    /// </summary>
+    public const string LiteralNONEInterclavicularLigament = "http://snomed.info/sct#8560002";
 
     /// <summary>
     /// Literal for code: AbdominalLymphNodes
@@ -13238,9 +17458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAbdominalLymphNodes = "8568009";
 
     /// <summary>
+    /// Literal for code: NONEAbdominalLymphNodes
+    /// </summary>
+    public const string LiteralNONEAbdominalLymphNodes = "http://snomed.info/sct#8568009";
+
+    /// <summary>
     /// Literal for code: BothFeet
     /// </summary>
     public const string LiteralBothFeet = "8580001";
+
+    /// <summary>
+    /// Literal for code: NONEBothFeet
+    /// </summary>
+    public const string LiteralNONEBothFeet = "http://snomed.info/sct#8580001";
 
     /// <summary>
     /// Literal for code: MeissnerQuoteSPlexus
@@ -13248,9 +17478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeissnerQuoteSPlexus = "8595004";
 
     /// <summary>
+    /// Literal for code: NONEMeissnerQuoteSPlexus
+    /// </summary>
+    public const string LiteralNONEMeissnerQuoteSPlexus = "http://snomed.info/sct#8595004";
+
+    /// <summary>
     /// Literal for code: AcousticNerve
     /// </summary>
     public const string LiteralAcousticNerve = "8598002";
+
+    /// <summary>
+    /// Literal for code: NONEAcousticNerve
+    /// </summary>
+    public const string LiteralNONEAcousticNerve = "http://snomed.info/sct#8598002";
 
     /// <summary>
     /// Literal for code: CricoidCartilage
@@ -13258,9 +17498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCricoidCartilage = "8600008";
 
     /// <summary>
+    /// Literal for code: NONECricoidCartilage
+    /// </summary>
+    public const string LiteralNONECricoidCartilage = "http://snomed.info/sct#8600008";
+
+    /// <summary>
     /// Literal for code: AdductorHallucisMuscle
     /// </summary>
     public const string LiteralAdductorHallucisMuscle = "8603005";
+
+    /// <summary>
+    /// Literal for code: NONEAdductorHallucisMuscle
+    /// </summary>
+    public const string LiteralNONEAdductorHallucisMuscle = "http://snomed.info/sct#8603005";
 
     /// <summary>
     /// Literal for code: MedullaOblongataFasciculusCuneatus
@@ -13268,9 +17518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedullaOblongataFasciculusCuneatus = "8604004";
 
     /// <summary>
+    /// Literal for code: NONEMedullaOblongataFasciculusCuneatus
+    /// </summary>
+    public const string LiteralNONEMedullaOblongataFasciculusCuneatus = "http://snomed.info/sct#8604004";
+
+    /// <summary>
     /// Literal for code: RightMarginOfHeart
     /// </summary>
     public const string LiteralRightMarginOfHeart = "8608001";
+
+    /// <summary>
+    /// Literal for code: NONERightMarginOfHeart
+    /// </summary>
+    public const string LiteralNONERightMarginOfHeart = "http://snomed.info/sct#8608001";
 
     /// <summary>
     /// Literal for code: ZygomaticRegionOfFace
@@ -13278,9 +17538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralZygomaticRegionOfFace = "8617001";
 
     /// <summary>
+    /// Literal for code: NONEZygomaticRegionOfFace
+    /// </summary>
+    public const string LiteralNONEZygomaticRegionOfFace = "http://snomed.info/sct#8617001";
+
+    /// <summary>
     /// Literal for code: TransplantedUreter
     /// </summary>
     public const string LiteralTransplantedUreter = "8623006";
+
+    /// <summary>
+    /// Literal for code: NONETransplantedUreter
+    /// </summary>
+    public const string LiteralNONETransplantedUreter = "http://snomed.info/sct#8623006";
 
     /// <summary>
     /// Literal for code: SuperiorRightPulmonaryVein
@@ -13288,9 +17558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuperiorRightPulmonaryVein = "8629005";
 
     /// <summary>
+    /// Literal for code: NONESuperiorRightPulmonaryVein
+    /// </summary>
+    public const string LiteralNONESuperiorRightPulmonaryVein = "http://snomed.info/sct#8629005";
+
+    /// <summary>
     /// Literal for code: ChoroidalBranchesOfPosteriorSpinalArtery
     /// </summary>
     public const string LiteralChoroidalBranchesOfPosteriorSpinalArtery = "8640002";
+
+    /// <summary>
+    /// Literal for code: NONEChoroidalBranchesOfPosteriorSpinalArtery
+    /// </summary>
+    public const string LiteralNONEChoroidalBranchesOfPosteriorSpinalArtery = "http://snomed.info/sct#8640002";
 
     /// <summary>
     /// Literal for code: GlycogenVacuole
@@ -13298,9 +17578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGlycogenVacuole = "8668003";
 
     /// <summary>
+    /// Literal for code: NONEGlycogenVacuole
+    /// </summary>
+    public const string LiteralNONEGlycogenVacuole = "http://snomed.info/sct#8668003";
+
+    /// <summary>
     /// Literal for code: AllToes
     /// </summary>
     public const string LiteralAllToes = "8671006";
+
+    /// <summary>
+    /// Literal for code: NONEAllToes
+    /// </summary>
+    public const string LiteralNONEAllToes = "http://snomed.info/sct#8671006";
 
     /// <summary>
     /// Literal for code: BodyOfRightAtrium
@@ -13308,9 +17598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBodyOfRightAtrium = "8677005";
 
     /// <summary>
+    /// Literal for code: NONEBodyOfRightAtrium
+    /// </summary>
+    public const string LiteralNONEBodyOfRightAtrium = "http://snomed.info/sct#8677005";
+
+    /// <summary>
     /// Literal for code: LateralOlfactoryGyrus
     /// </summary>
     public const string LiteralLateralOlfactoryGyrus = "8688004";
+
+    /// <summary>
+    /// Literal for code: NONELateralOlfactoryGyrus
+    /// </summary>
+    public const string LiteralNONELateralOlfactoryGyrus = "http://snomed.info/sct#8688004";
 
     /// <summary>
     /// Literal for code: IntervertebralForamenOfSecondLumbarVertebra
@@ -13318,9 +17618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntervertebralForamenOfSecondLumbarVertebra = "8695008";
 
     /// <summary>
+    /// Literal for code: NONEIntervertebralForamenOfSecondLumbarVertebra
+    /// </summary>
+    public const string LiteralNONEIntervertebralForamenOfSecondLumbarVertebra = "http://snomed.info/sct#8695008";
+
+    /// <summary>
     /// Literal for code: MinorSublingualDucts
     /// </summary>
     public const string LiteralMinorSublingualDucts = "8710005";
+
+    /// <summary>
+    /// Literal for code: NONEMinorSublingualDucts
+    /// </summary>
+    public const string LiteralNONEMinorSublingualDucts = "http://snomed.info/sct#8710005";
 
     /// <summary>
     /// Literal for code: PeriodontalTissues
@@ -13328,9 +17638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeriodontalTissues = "8711009";
 
     /// <summary>
+    /// Literal for code: NONEPeriodontalTissues
+    /// </summary>
+    public const string LiteralNONEPeriodontalTissues = "http://snomed.info/sct#8711009";
+
+    /// <summary>
     /// Literal for code: SubcutaneousTissueOfInterdigitalSpaceOfHand
     /// </summary>
     public const string LiteralSubcutaneousTissueOfInterdigitalSpaceOfHand = "8714001";
+
+    /// <summary>
+    /// Literal for code: NONESubcutaneousTissueOfInterdigitalSpaceOfHand
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueOfInterdigitalSpaceOfHand = "http://snomed.info/sct#8714001";
 
     /// <summary>
     /// Literal for code: CavernousPortionOfInternalCarotidArtery
@@ -13338,9 +17658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCavernousPortionOfInternalCarotidArtery = "8752000";
 
     /// <summary>
+    /// Literal for code: NONECavernousPortionOfInternalCarotidArtery
+    /// </summary>
+    public const string LiteralNONECavernousPortionOfInternalCarotidArtery = "http://snomed.info/sct#8752000";
+
+    /// <summary>
     /// Literal for code: NailOfSecondToe
     /// </summary>
     public const string LiteralNailOfSecondToe = "8770002";
+
+    /// <summary>
+    /// Literal for code: NONENailOfSecondToe
+    /// </summary>
+    public const string LiteralNONENailOfSecondToe = "http://snomed.info/sct#8770002";
 
     /// <summary>
     /// Literal for code: TendinousArch
@@ -13348,9 +17678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTendinousArch = "8775007";
 
     /// <summary>
+    /// Literal for code: NONETendinousArch
+    /// </summary>
+    public const string LiteralNONETendinousArch = "http://snomed.info/sct#8775007";
+
+    /// <summary>
     /// Literal for code: IntranuclearBodyGranularWithFilamentousCapsule
     /// </summary>
     public const string LiteralIntranuclearBodyGranularWithFilamentousCapsule = "8784007";
+
+    /// <summary>
+    /// Literal for code: NONEIntranuclearBodyGranularWithFilamentousCapsule
+    /// </summary>
+    public const string LiteralNONEIntranuclearBodyGranularWithFilamentousCapsule = "http://snomed.info/sct#8784007";
 
     /// <summary>
     /// Literal for code: CorticomedullaryJunctionOfAdrenalGland
@@ -13358,9 +17698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCorticomedullaryJunctionOfAdrenalGland = "8810002";
 
     /// <summary>
+    /// Literal for code: NONECorticomedullaryJunctionOfAdrenalGland
+    /// </summary>
+    public const string LiteralNONECorticomedullaryJunctionOfAdrenalGland = "http://snomed.info/sct#8810002";
+
+    /// <summary>
     /// Literal for code: IliacTuberosity
     /// </summary>
     public const string LiteralIliacTuberosity = "8814006";
+
+    /// <summary>
+    /// Literal for code: NONEIliacTuberosity
+    /// </summary>
+    public const string LiteralNONEIliacTuberosity = "http://snomed.info/sct#8814006";
 
     /// <summary>
     /// Literal for code: ThenarAndHypothenarSpaces
@@ -13368,9 +17718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThenarAndHypothenarSpaces = "8815007";
 
     /// <summary>
+    /// Literal for code: NONEThenarAndHypothenarSpaces
+    /// </summary>
+    public const string LiteralNONEThenarAndHypothenarSpaces = "http://snomed.info/sct#8815007";
+
+    /// <summary>
     /// Literal for code: PedicleOfEleventhThoracicVertebra
     /// </summary>
     public const string LiteralPedicleOfEleventhThoracicVertebra = "8820007";
+
+    /// <summary>
+    /// Literal for code: NONEPedicleOfEleventhThoracicVertebra
+    /// </summary>
+    public const string LiteralNONEPedicleOfEleventhThoracicVertebra = "http://snomed.info/sct#8820007";
 
     /// <summary>
     /// Literal for code: PeronealArtery
@@ -13378,9 +17738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeronealArtery = "8821006";
 
     /// <summary>
+    /// Literal for code: NONEPeronealArtery
+    /// </summary>
+    public const string LiteralNONEPeronealArtery = "http://snomed.info/sct#8821006";
+
+    /// <summary>
     /// Literal for code: ShaftOfPhalanxOfMiddleFinger
     /// </summary>
     public const string LiteralShaftOfPhalanxOfMiddleFinger = "8827005";
+
+    /// <summary>
+    /// Literal for code: NONEShaftOfPhalanxOfMiddleFinger
+    /// </summary>
+    public const string LiteralNONEShaftOfPhalanxOfMiddleFinger = "http://snomed.info/sct#8827005";
 
     /// <summary>
     /// Literal for code: AgranularEndoplasmicReticulumConnectionWithOtherOrganelle
@@ -13388,9 +17758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAgranularEndoplasmicReticulumConnectionWithOtherOrganelle = "8839002";
 
     /// <summary>
+    /// Literal for code: NONEAgranularEndoplasmicReticulumConnectionWithOtherOrganelle
+    /// </summary>
+    public const string LiteralNONEAgranularEndoplasmicReticulumConnectionWithOtherOrganelle = "http://snomed.info/sct#8839002";
+
+    /// <summary>
     /// Literal for code: SubtendinousPrepatellarBursa
     /// </summary>
     public const string LiteralSubtendinousPrepatellarBursa = "8845005";
+
+    /// <summary>
+    /// Literal for code: NONESubtendinousPrepatellarBursa
+    /// </summary>
+    public const string LiteralNONESubtendinousPrepatellarBursa = "http://snomed.info/sct#8845005";
 
     /// <summary>
     /// Literal for code: LaminaMuscularisOfColonicMucousMembrane
@@ -13398,9 +17778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLaminaMuscularisOfColonicMucousMembrane = "885000";
 
     /// <summary>
+    /// Literal for code: NONELaminaMuscularisOfColonicMucousMembrane
+    /// </summary>
+    public const string LiteralNONELaminaMuscularisOfColonicMucousMembrane = "http://snomed.info/sct#885000";
+
+    /// <summary>
     /// Literal for code: ProperFasciculus
     /// </summary>
     public const string LiteralProperFasciculus = "8850004";
+
+    /// <summary>
+    /// Literal for code: NONEProperFasciculus
+    /// </summary>
+    public const string LiteralNONEProperFasciculus = "http://snomed.info/sct#8850004";
 
     /// <summary>
     /// Literal for code: CristaGalli
@@ -13408,9 +17798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCristaGalli = "8854008";
 
     /// <summary>
+    /// Literal for code: NONECristaGalli
+    /// </summary>
+    public const string LiteralNONECristaGalli = "http://snomed.info/sct#8854008";
+
+    /// <summary>
     /// Literal for code: PalmarSurfaceOfMiddleFinger
     /// </summary>
     public const string LiteralPalmarSurfaceOfMiddleFinger = "8862000";
+
+    /// <summary>
+    /// Literal for code: NONEPalmarSurfaceOfMiddleFinger
+    /// </summary>
+    public const string LiteralNONEPalmarSurfaceOfMiddleFinger = "http://snomed.info/sct#8862000";
 
     /// <summary>
     /// Literal for code: MandibularRightSecondPremolarTooth
@@ -13418,9 +17818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMandibularRightSecondPremolarTooth = "8873007";
 
     /// <summary>
+    /// Literal for code: NONEMandibularRightSecondPremolarTooth
+    /// </summary>
+    public const string LiteralNONEMandibularRightSecondPremolarTooth = "http://snomed.info/sct#8873007";
+
+    /// <summary>
     /// Literal for code: BrachiocephalicVein
     /// </summary>
     public const string LiteralBrachiocephalicVein = "8887007";
+
+    /// <summary>
+    /// Literal for code: NONEBrachiocephalicVein
+    /// </summary>
+    public const string LiteralNONEBrachiocephalicVein = "http://snomed.info/sct#8887007";
 
     /// <summary>
     /// Literal for code: DiaphragmaticSurfaceOfLung
@@ -13428,9 +17838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiaphragmaticSurfaceOfLung = "8892009";
 
     /// <summary>
+    /// Literal for code: NONEDiaphragmaticSurfaceOfLung
+    /// </summary>
+    public const string LiteralNONEDiaphragmaticSurfaceOfLung = "http://snomed.info/sct#8892009";
+
+    /// <summary>
     /// Literal for code: GastricCardiacGland
     /// </summary>
     public const string LiteralGastricCardiacGland = "8894005";
+
+    /// <summary>
+    /// Literal for code: NONEGastricCardiacGland
+    /// </summary>
+    public const string LiteralNONEGastricCardiacGland = "http://snomed.info/sct#8894005";
 
     /// <summary>
     /// Literal for code: LateralGlossoepiglotticFold
@@ -13438,9 +17858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLateralGlossoepiglotticFold = "8897003";
 
     /// <summary>
+    /// Literal for code: NONELateralGlossoepiglotticFold
+    /// </summary>
+    public const string LiteralNONELateralGlossoepiglotticFold = "http://snomed.info/sct#8897003";
+
+    /// <summary>
     /// Literal for code: LeftUlnarArtery
     /// </summary>
     public const string LiteralLeftUlnarArtery = "8907008";
+
+    /// <summary>
+    /// Literal for code: NONELeftUlnarArtery
+    /// </summary>
+    public const string LiteralNONELeftUlnarArtery = "http://snomed.info/sct#8907008";
 
     /// <summary>
     /// Literal for code: InferiorTransverseScapularLigament
@@ -13448,9 +17878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInferiorTransverseScapularLigament = "8910001";
 
     /// <summary>
+    /// Literal for code: NONEInferiorTransverseScapularLigament
+    /// </summary>
+    public const string LiteralNONEInferiorTransverseScapularLigament = "http://snomed.info/sct#8910001";
+
+    /// <summary>
     /// Literal for code: EndocardiumOfRightVentricle
     /// </summary>
     public const string LiteralEndocardiumOfRightVentricle = "8911002";
+
+    /// <summary>
+    /// Literal for code: NONEEndocardiumOfRightVentricle
+    /// </summary>
+    public const string LiteralNONEEndocardiumOfRightVentricle = "http://snomed.info/sct#8911002";
 
     /// <summary>
     /// Literal for code: InguinalLymphNode
@@ -13458,9 +17898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInguinalLymphNode = "8928004";
 
     /// <summary>
+    /// Literal for code: NONEInguinalLymphNode
+    /// </summary>
+    public const string LiteralNONEInguinalLymphNode = "http://snomed.info/sct#8928004";
+
+    /// <summary>
     /// Literal for code: CoracoidProcessOfScapula
     /// </summary>
     public const string LiteralCoracoidProcessOfScapula = "8931003";
+
+    /// <summary>
+    /// Literal for code: NONECoracoidProcessOfScapula
+    /// </summary>
+    public const string LiteralNONECoracoidProcessOfScapula = "http://snomed.info/sct#8931003";
 
     /// <summary>
     /// Literal for code: CerebralMeninges
@@ -13468,9 +17918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCerebralMeninges = "8935007";
 
     /// <summary>
+    /// Literal for code: NONECerebralMeninges
+    /// </summary>
+    public const string LiteralNONECerebralMeninges = "http://snomed.info/sct#8935007";
+
+    /// <summary>
     /// Literal for code: TrapezoidLigament
     /// </summary>
     public const string LiteralTrapezoidLigament = "8942007";
+
+    /// <summary>
+    /// Literal for code: NONETrapezoidLigament
+    /// </summary>
+    public const string LiteralNONETrapezoidLigament = "http://snomed.info/sct#8942007";
 
     /// <summary>
     /// Literal for code: AnteriorCruciateLigamentOfKneeJoint
@@ -13478,9 +17938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnteriorCruciateLigamentOfKneeJoint = "895007";
 
     /// <summary>
+    /// Literal for code: NONEAnteriorCruciateLigamentOfKneeJoint
+    /// </summary>
+    public const string LiteralNONEAnteriorCruciateLigamentOfKneeJoint = "http://snomed.info/sct#895007";
+
+    /// <summary>
     /// Literal for code: StratumZonaleOfCorporaQuadrigemina
     /// </summary>
     public const string LiteralStratumZonaleOfCorporaQuadrigemina = "8965002";
+
+    /// <summary>
+    /// Literal for code: NONEStratumZonaleOfCorporaQuadrigemina
+    /// </summary>
+    public const string LiteralNONEStratumZonaleOfCorporaQuadrigemina = "http://snomed.info/sct#8965002";
 
     /// <summary>
     /// Literal for code: LeftEye
@@ -13488,9 +17958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeftEye = "8966001";
 
     /// <summary>
+    /// Literal for code: NONELeftEye
+    /// </summary>
+    public const string LiteralNONELeftEye = "http://snomed.info/sct#8966001";
+
+    /// <summary>
     /// Literal for code: JointStructureOfVertebralColumn
     /// </summary>
     public const string LiteralJointStructureOfVertebralColumn = "8983005";
+
+    /// <summary>
+    /// Literal for code: NONEJointStructureOfVertebralColumn
+    /// </summary>
+    public const string LiteralNONEJointStructureOfVertebralColumn = "http://snomed.info/sct#8983005";
 
     /// <summary>
     /// Literal for code: MarginalPartOfOrbicularisOrisMuscle
@@ -13498,9 +17978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMarginalPartOfOrbicularisOrisMuscle = "8988001";
 
     /// <summary>
+    /// Literal for code: NONEMarginalPartOfOrbicularisOrisMuscle
+    /// </summary>
+    public const string LiteralNONEMarginalPartOfOrbicularisOrisMuscle = "http://snomed.info/sct#8988001";
+
+    /// <summary>
     /// Literal for code: HepaticVein
     /// </summary>
     public const string LiteralHepaticVein = "8993003";
+
+    /// <summary>
+    /// Literal for code: NONEHepaticVein
+    /// </summary>
+    public const string LiteralNONEHepaticVein = "http://snomed.info/sct#8993003";
 
     /// <summary>
     /// Literal for code: CerebellarPeduncle
@@ -13508,9 +17998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCerebellarPeduncle = "9000002";
 
     /// <summary>
+    /// Literal for code: NONECerebellarPeduncle
+    /// </summary>
+    public const string LiteralNONECerebellarPeduncle = "http://snomed.info/sct#9000002";
+
+    /// <summary>
     /// Literal for code: LeftParietalLobe
     /// </summary>
     public const string LiteralLeftParietalLobe = "9003000";
+
+    /// <summary>
+    /// Literal for code: NONELeftParietalLobe
+    /// </summary>
+    public const string LiteralNONELeftParietalLobe = "http://snomed.info/sct#9003000";
 
     /// <summary>
     /// Literal for code: MiddleColicVein
@@ -13518,9 +18018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMiddleColicVein = "9018004";
 
     /// <summary>
+    /// Literal for code: NONEMiddleColicVein
+    /// </summary>
+    public const string LiteralNONEMiddleColicVein = "http://snomed.info/sct#9018004";
+
+    /// <summary>
     /// Literal for code: AscendingColon
     /// </summary>
     public const string LiteralAscendingColon = "9040008";
+
+    /// <summary>
+    /// Literal for code: NONEAscendingColon
+    /// </summary>
+    public const string LiteralNONEAscendingColon = "http://snomed.info/sct#9040008";
 
     /// <summary>
     /// Literal for code: BothForearms
@@ -13528,9 +18038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBothForearms = "9055004";
 
     /// <summary>
+    /// Literal for code: NONEBothForearms
+    /// </summary>
+    public const string LiteralNONEBothForearms = "http://snomed.info/sct#9055004";
+
+    /// <summary>
     /// Literal for code: WhiteMatterOfInsula
     /// </summary>
     public const string LiteralWhiteMatterOfInsula = "9073001";
+
+    /// <summary>
+    /// Literal for code: NONEWhiteMatterOfInsula
+    /// </summary>
+    public const string LiteralNONEWhiteMatterOfInsula = "http://snomed.info/sct#9073001";
 
     /// <summary>
     /// Literal for code: SplenicSinusoids
@@ -13538,9 +18058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSplenicSinusoids = "9081000";
 
     /// <summary>
+    /// Literal for code: NONESplenicSinusoids
+    /// </summary>
+    public const string LiteralNONESplenicSinusoids = "http://snomed.info/sct#9081000";
+
+    /// <summary>
     /// Literal for code: SuperiorLaryngealVein
     /// </summary>
     public const string LiteralSuperiorLaryngealVein = "9086005";
+
+    /// <summary>
+    /// Literal for code: NONESuperiorLaryngealVein
+    /// </summary>
+    public const string LiteralNONESuperiorLaryngealVein = "http://snomed.info/sct#9086005";
 
     /// <summary>
     /// Literal for code: ArchOfFoot
@@ -13548,9 +18078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArchOfFoot = "9089003";
 
     /// <summary>
+    /// Literal for code: NONEArchOfFoot
+    /// </summary>
+    public const string LiteralNONEArchOfFoot = "http://snomed.info/sct#9089003";
+
+    /// <summary>
     /// Literal for code: VeinOfTheScalaTympani
     /// </summary>
     public const string LiteralVeinOfTheScalaTympani = "9108007";
+
+    /// <summary>
+    /// Literal for code: NONEVeinOfTheScalaTympani
+    /// </summary>
+    public const string LiteralNONEVeinOfTheScalaTympani = "http://snomed.info/sct#9108007";
 
     /// <summary>
     /// Literal for code: TransverseFoldsOfPalate
@@ -13558,9 +18098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransverseFoldsOfPalate = "9127001";
 
     /// <summary>
+    /// Literal for code: NONETransverseFoldsOfPalate
+    /// </summary>
+    public const string LiteralNONETransverseFoldsOfPalate = "http://snomed.info/sct#9127001";
+
+    /// <summary>
     /// Literal for code: EmbryoStage1
     /// </summary>
     public const string LiteralEmbryoStage1 = "9156001";
+
+    /// <summary>
+    /// Literal for code: NONEEmbryoStage1
+    /// </summary>
+    public const string LiteralNONEEmbryoStage1 = "http://snomed.info/sct#9156001";
 
     /// <summary>
     /// Literal for code: SuperiorLaryngealAperture
@@ -13568,9 +18118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuperiorLaryngealAperture = "917004";
 
     /// <summary>
+    /// Literal for code: NONESuperiorLaryngealAperture
+    /// </summary>
+    public const string LiteralNONESuperiorLaryngealAperture = "http://snomed.info/sct#917004";
+
+    /// <summary>
     /// Literal for code: AccessoryCarpalBone
     /// </summary>
     public const string LiteralAccessoryCarpalBone = "9181003";
+
+    /// <summary>
+    /// Literal for code: NONEAccessoryCarpalBone
+    /// </summary>
+    public const string LiteralNONEAccessoryCarpalBone = "http://snomed.info/sct#9181003";
 
     /// <summary>
     /// Literal for code: CapsuleOfMetatarsophalangealJointOfFifthToe
@@ -13578,9 +18138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCapsuleOfMetatarsophalangealJointOfFifthToe = "9185007";
 
     /// <summary>
+    /// Literal for code: NONECapsuleOfMetatarsophalangealJointOfFifthToe
+    /// </summary>
+    public const string LiteralNONECapsuleOfMetatarsophalangealJointOfFifthToe = "http://snomed.info/sct#9185007";
+
+    /// <summary>
     /// Literal for code: FilamentsOfContractileApparatus
     /// </summary>
     public const string LiteralFilamentsOfContractileApparatus = "9186008";
+
+    /// <summary>
+    /// Literal for code: NONEFilamentsOfContractileApparatus
+    /// </summary>
+    public const string LiteralNONEFilamentsOfContractileApparatus = "http://snomed.info/sct#9186008";
 
     /// <summary>
     /// Literal for code: IntervertebralDiscOfEighthThoracicVertebra
@@ -13588,9 +18158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntervertebralDiscOfEighthThoracicVertebra = "9188009";
 
     /// <summary>
+    /// Literal for code: NONEIntervertebralDiscOfEighthThoracicVertebra
+    /// </summary>
+    public const string LiteralNONEIntervertebralDiscOfEighthThoracicVertebra = "http://snomed.info/sct#9188009";
+
+    /// <summary>
     /// Literal for code: Centriole
     /// </summary>
     public const string LiteralCentriole = "9208002";
+
+    /// <summary>
+    /// Literal for code: NONECentriole
+    /// </summary>
+    public const string LiteralNONECentriole = "http://snomed.info/sct#9208002";
 
     /// <summary>
     /// Literal for code: ThyrohyoidBranchOfAnsaCervicalis
@@ -13598,9 +18178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThyrohyoidBranchOfAnsaCervicalis = "921006";
 
     /// <summary>
+    /// Literal for code: NONEThyrohyoidBranchOfAnsaCervicalis
+    /// </summary>
+    public const string LiteralNONEThyrohyoidBranchOfAnsaCervicalis = "http://snomed.info/sct#921006";
+
+    /// <summary>
     /// Literal for code: ShaftOfFifthMetatarsalBone
     /// </summary>
     public const string LiteralShaftOfFifthMetatarsalBone = "9212008";
+
+    /// <summary>
+    /// Literal for code: NONEShaftOfFifthMetatarsalBone
+    /// </summary>
+    public const string LiteralNONEShaftOfFifthMetatarsalBone = "http://snomed.info/sct#9212008";
 
     /// <summary>
     /// Literal for code: RotatoresLumborumMuscles
@@ -13608,9 +18198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRotatoresLumborumMuscles = "9229006";
 
     /// <summary>
+    /// Literal for code: NONERotatoresLumborumMuscles
+    /// </summary>
+    public const string LiteralNONERotatoresLumborumMuscles = "http://snomed.info/sct#9229006";
+
+    /// <summary>
     /// Literal for code: ExternalPudendalVeins
     /// </summary>
     public const string LiteralExternalPudendalVeins = "9231002";
+
+    /// <summary>
+    /// Literal for code: NONEExternalPudendalVeins
+    /// </summary>
+    public const string LiteralNONEExternalPudendalVeins = "http://snomed.info/sct#9231002";
 
     /// <summary>
     /// Literal for code: NiemannPickCell
@@ -13618,9 +18218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNiemannPickCell = "9240003";
 
     /// <summary>
+    /// Literal for code: NONENiemannPickCell
+    /// </summary>
+    public const string LiteralNONENiemannPickCell = "http://snomed.info/sct#9240003";
+
+    /// <summary>
     /// Literal for code: PosteriorSegmentOfRightLobeOfLiver
     /// </summary>
     public const string LiteralPosteriorSegmentOfRightLobeOfLiver = "9242006";
+
+    /// <summary>
+    /// Literal for code: NONEPosteriorSegmentOfRightLobeOfLiver
+    /// </summary>
+    public const string LiteralNONEPosteriorSegmentOfRightLobeOfLiver = "http://snomed.info/sct#9242006";
 
     /// <summary>
     /// Literal for code: GravidUterus
@@ -13628,9 +18238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGravidUterus = "9258009";
 
     /// <summary>
+    /// Literal for code: NONEGravidUterus
+    /// </summary>
+    public const string LiteralNONEGravidUterus = "http://snomed.info/sct#9258009";
+
+    /// <summary>
     /// Literal for code: TendonAndTendonSheathOfSecondToe
     /// </summary>
     public const string LiteralTendonAndTendonSheathOfSecondToe = "9261005";
+
+    /// <summary>
+    /// Literal for code: NONETendonAndTendonSheathOfSecondToe
+    /// </summary>
+    public const string LiteralNONETendonAndTendonSheathOfSecondToe = "http://snomed.info/sct#9261005";
 
     /// <summary>
     /// Literal for code: FasciaOfPelvis
@@ -13638,9 +18258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFasciaOfPelvis = "9262003";
 
     /// <summary>
+    /// Literal for code: NONEFasciaOfPelvis
+    /// </summary>
+    public const string LiteralNONEFasciaOfPelvis = "http://snomed.info/sct#9262003";
+
+    /// <summary>
     /// Literal for code: CorpusCavernosumOfPenis
     /// </summary>
     public const string LiteralCorpusCavernosumOfPenis = "9284003";
+
+    /// <summary>
+    /// Literal for code: NONECorpusCavernosumOfPenis
+    /// </summary>
+    public const string LiteralNONECorpusCavernosumOfPenis = "http://snomed.info/sct#9284003";
 
     /// <summary>
     /// Literal for code: PosteriorIntraoccipitalSynchondrosis
@@ -13648,9 +18278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPosteriorIntraoccipitalSynchondrosis = "9290004";
 
     /// <summary>
+    /// Literal for code: NONEPosteriorIntraoccipitalSynchondrosis
+    /// </summary>
+    public const string LiteralNONEPosteriorIntraoccipitalSynchondrosis = "http://snomed.info/sct#9290004";
+
+    /// <summary>
     /// Literal for code: LabialVeins
     /// </summary>
     public const string LiteralLabialVeins = "9305001";
+
+    /// <summary>
+    /// Literal for code: NONELabialVeins
+    /// </summary>
+    public const string LiteralNONELabialVeins = "http://snomed.info/sct#9305001";
 
     /// <summary>
     /// Literal for code: MerkelQuoteSTactileDisc
@@ -13658,9 +18298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMerkelQuoteSTactileDisc = "9317004";
 
     /// <summary>
+    /// Literal for code: NONEMerkelQuoteSTactileDisc
+    /// </summary>
+    public const string LiteralNONEMerkelQuoteSTactileDisc = "http://snomed.info/sct#9317004";
+
+    /// <summary>
     /// Literal for code: SubtendinousIliacBursa
     /// </summary>
     public const string LiteralSubtendinousIliacBursa = "9320007";
+
+    /// <summary>
+    /// Literal for code: NONESubtendinousIliacBursa
+    /// </summary>
+    public const string LiteralNONESubtendinousIliacBursa = "http://snomed.info/sct#9320007";
 
     /// <summary>
     /// Literal for code: TailOfEpididymis
@@ -13668,9 +18318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTailOfEpididymis = "9321006";
 
     /// <summary>
+    /// Literal for code: NONETailOfEpididymis
+    /// </summary>
+    public const string LiteralNONETailOfEpididymis = "http://snomed.info/sct#9321006";
+
+    /// <summary>
     /// Literal for code: InterdentalPapillaOfGingiva
     /// </summary>
     public const string LiteralInterdentalPapillaOfGingiva = "9325002";
+
+    /// <summary>
+    /// Literal for code: NONEInterdentalPapillaOfGingiva
+    /// </summary>
+    public const string LiteralNONEInterdentalPapillaOfGingiva = "http://snomed.info/sct#9325002";
 
     /// <summary>
     /// Literal for code: LateralLigamentOfTemporomandibularJoint
@@ -13678,9 +18338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLateralLigamentOfTemporomandibularJoint = "9332006";
 
     /// <summary>
+    /// Literal for code: NONELateralLigamentOfTemporomandibularJoint
+    /// </summary>
+    public const string LiteralNONELateralLigamentOfTemporomandibularJoint = "http://snomed.info/sct#9332006";
+
+    /// <summary>
     /// Literal for code: SkinOfMedialSurfaceOfMiddleFinger
     /// </summary>
     public const string LiteralSkinOfMedialSurfaceOfMiddleFinger = "9348007";
+
+    /// <summary>
+    /// Literal for code: NONESkinOfMedialSurfaceOfMiddleFinger
+    /// </summary>
+    public const string LiteralNONESkinOfMedialSurfaceOfMiddleFinger = "http://snomed.info/sct#9348007";
 
     /// <summary>
     /// Literal for code: PermanentTeeth
@@ -13688,9 +18358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPermanentTeeth = "9379006";
 
     /// <summary>
+    /// Literal for code: NONEPermanentTeeth
+    /// </summary>
+    public const string LiteralNONEPermanentTeeth = "http://snomed.info/sct#9379006";
+
+    /// <summary>
     /// Literal for code: PectenAni
     /// </summary>
     public const string LiteralPectenAni = "9380009";
+
+    /// <summary>
+    /// Literal for code: NONEPectenAni
+    /// </summary>
+    public const string LiteralNONEPectenAni = "http://snomed.info/sct#9380009";
 
     /// <summary>
     /// Literal for code: LumbarVein
@@ -13698,9 +18378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLumbarVein = "9384000";
 
     /// <summary>
+    /// Literal for code: NONELumbarVein
+    /// </summary>
+    public const string LiteralNONELumbarVein = "http://snomed.info/sct#9384000";
+
+    /// <summary>
     /// Literal for code: LymphaticsOfStomach
     /// </summary>
     public const string LiteralLymphaticsOfStomach = "9390001";
+
+    /// <summary>
+    /// Literal for code: NONELymphaticsOfStomach
+    /// </summary>
+    public const string LiteralNONELymphaticsOfStomach = "http://snomed.info/sct#9390001";
 
     /// <summary>
     /// Literal for code: PlantarSurfaceOfFourthToe
@@ -13708,9 +18398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPlantarSurfaceOfFourthToe = "9432007";
 
     /// <summary>
+    /// Literal for code: NONEPlantarSurfaceOfFourthToe
+    /// </summary>
+    public const string LiteralNONEPlantarSurfaceOfFourthToe = "http://snomed.info/sct#9432007";
+
+    /// <summary>
     /// Literal for code: StructureOfDeepCervicalLymphaticVessel
     /// </summary>
     public const string LiteralStructureOfDeepCervicalLymphaticVessel = "9438006";
+
+    /// <summary>
+    /// Literal for code: NONEStructureOfDeepCervicalLymphaticVessel
+    /// </summary>
+    public const string LiteralNONEStructureOfDeepCervicalLymphaticVessel = "http://snomed.info/sct#9438006";
 
     /// <summary>
     /// Literal for code: SubclavianVein
@@ -13718,9 +18418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubclavianVein = "9454009";
 
     /// <summary>
+    /// Literal for code: NONESubclavianVein
+    /// </summary>
+    public const string LiteralNONESubclavianVein = "http://snomed.info/sct#9454009";
+
+    /// <summary>
     /// Literal for code: MedialCartilaginousLaminaOfEustachianTube
     /// </summary>
     public const string LiteralMedialCartilaginousLaminaOfEustachianTube = "9455005";
+
+    /// <summary>
+    /// Literal for code: NONEMedialCartilaginousLaminaOfEustachianTube
+    /// </summary>
+    public const string LiteralNONEMedialCartilaginousLaminaOfEustachianTube = "http://snomed.info/sct#9455005";
 
     /// <summary>
     /// Literal for code: CrusOfDiaphragm
@@ -13728,9 +18438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCrusOfDiaphragm = "947002";
 
     /// <summary>
+    /// Literal for code: NONECrusOfDiaphragm
+    /// </summary>
+    public const string LiteralNONECrusOfDiaphragm = "http://snomed.info/sct#947002";
+
+    /// <summary>
     /// Literal for code: AmacrineCellsOfRetina
     /// </summary>
     public const string LiteralAmacrineCellsOfRetina = "9475001";
+
+    /// <summary>
+    /// Literal for code: NONEAmacrineCellsOfRetina
+    /// </summary>
+    public const string LiteralNONEAmacrineCellsOfRetina = "http://snomed.info/sct#9475001";
 
     /// <summary>
     /// Literal for code: AfferentGlomerularArteriole
@@ -13738,9 +18458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAfferentGlomerularArteriole = "9481009";
 
     /// <summary>
+    /// Literal for code: NONEAfferentGlomerularArteriole
+    /// </summary>
+    public const string LiteralNONEAfferentGlomerularArteriole = "http://snomed.info/sct#9481009";
+
+    /// <summary>
     /// Literal for code: PulmonaryLigament
     /// </summary>
     public const string LiteralPulmonaryLigament = "9490002";
+
+    /// <summary>
+    /// Literal for code: NONEPulmonaryLigament
+    /// </summary>
+    public const string LiteralNONEPulmonaryLigament = "http://snomed.info/sct#9490002";
 
     /// <summary>
     /// Literal for code: HeadOfMetacarpalBone
@@ -13748,9 +18478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHeadOfMetacarpalBone = "9498009";
 
     /// <summary>
+    /// Literal for code: NONEHeadOfMetacarpalBone
+    /// </summary>
+    public const string LiteralNONEHeadOfMetacarpalBone = "http://snomed.info/sct#9498009";
+
+    /// <summary>
     /// Literal for code: CoronalDepressionOfTooth
     /// </summary>
     public const string LiteralCoronalDepressionOfTooth = "9502002";
+
+    /// <summary>
+    /// Literal for code: NONECoronalDepressionOfTooth
+    /// </summary>
+    public const string LiteralNONECoronalDepressionOfTooth = "http://snomed.info/sct#9502002";
 
     /// <summary>
     /// Literal for code: CalcaneocuboidalLigament
@@ -13758,9 +18498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCalcaneocuboidalLigament = "9512009";
 
     /// <summary>
+    /// Literal for code: NONECalcaneocuboidalLigament
+    /// </summary>
+    public const string LiteralNONECalcaneocuboidalLigament = "http://snomed.info/sct#9512009";
+
+    /// <summary>
     /// Literal for code: PyramidOfMedullaOblongata
     /// </summary>
     public const string LiteralPyramidOfMedullaOblongata = "9535007";
+
+    /// <summary>
+    /// Literal for code: NONEPyramidOfMedullaOblongata
+    /// </summary>
+    public const string LiteralNONEPyramidOfMedullaOblongata = "http://snomed.info/sct#9535007";
 
     /// <summary>
     /// Literal for code: Bronchus
@@ -13768,9 +18518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBronchus = "955009";
 
     /// <summary>
+    /// Literal for code: NONEBronchus
+    /// </summary>
+    public const string LiteralNONEBronchus = "http://snomed.info/sct#955009";
+
+    /// <summary>
     /// Literal for code: FacetForFifthCostalCartilageOfSternum
     /// </summary>
     public const string LiteralFacetForFifthCostalCartilageOfSternum = "9558005";
+
+    /// <summary>
+    /// Literal for code: NONEFacetForFifthCostalCartilageOfSternum
+    /// </summary>
+    public const string LiteralNONEFacetForFifthCostalCartilageOfSternum = "http://snomed.info/sct#9558005";
 
     /// <summary>
     /// Literal for code: DuodenalLumen
@@ -13778,9 +18538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDuodenalLumen = "9566001";
 
     /// <summary>
+    /// Literal for code: NONEDuodenalLumen
+    /// </summary>
+    public const string LiteralNONEDuodenalLumen = "http://snomed.info/sct#9566001";
+
+    /// <summary>
     /// Literal for code: SubcutaneousTissueOfAreola
     /// </summary>
     public const string LiteralSubcutaneousTissueOfAreola = "9568000";
+
+    /// <summary>
+    /// Literal for code: NONESubcutaneousTissueOfAreola
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueOfAreola = "http://snomed.info/sct#9568000";
 
     /// <summary>
     /// Literal for code: DeepBranchOfUlnarNerve
@@ -13788,9 +18558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeepBranchOfUlnarNerve = "9596006";
 
     /// <summary>
+    /// Literal for code: NONEDeepBranchOfUlnarNerve
+    /// </summary>
+    public const string LiteralNONEDeepBranchOfUlnarNerve = "http://snomed.info/sct#9596006";
+
+    /// <summary>
     /// Literal for code: PosteriorProcessOfNasalSeptalCartilage
     /// </summary>
     public const string LiteralPosteriorProcessOfNasalSeptalCartilage = "9609000";
+
+    /// <summary>
+    /// Literal for code: NONEPosteriorProcessOfNasalSeptalCartilage
+    /// </summary>
+    public const string LiteralNONEPosteriorProcessOfNasalSeptalCartilage = "http://snomed.info/sct#9609000";
 
     /// <summary>
     /// Literal for code: LanugoHair
@@ -13798,9 +18578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLanugoHair = "9625005";
 
     /// <summary>
+    /// Literal for code: NONELanugoHair
+    /// </summary>
+    public const string LiteralNONELanugoHair = "http://snomed.info/sct#9625005";
+
+    /// <summary>
     /// Literal for code: LeftSuperiorVenaCava
     /// </summary>
     public const string LiteralLeftSuperiorVenaCava = "9642004";
+
+    /// <summary>
+    /// Literal for code: NONELeftSuperiorVenaCava
+    /// </summary>
+    public const string LiteralNONELeftSuperiorVenaCava = "http://snomed.info/sct#9642004";
 
     /// <summary>
     /// Literal for code: SuperiorTransverseScapularLigament
@@ -13808,9 +18598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuperiorTransverseScapularLigament = "9646001";
 
     /// <summary>
+    /// Literal for code: NONESuperiorTransverseScapularLigament
+    /// </summary>
+    public const string LiteralNONESuperiorTransverseScapularLigament = "http://snomed.info/sct#9646001";
+
+    /// <summary>
     /// Literal for code: GastricMucousGland
     /// </summary>
     public const string LiteralGastricMucousGland = "9654004";
+
+    /// <summary>
+    /// Literal for code: NONEGastricMucousGland
+    /// </summary>
+    public const string LiteralNONEGastricMucousGland = "http://snomed.info/sct#9654004";
 
     /// <summary>
     /// Literal for code: InfraclavicularLymphNodes
@@ -13818,9 +18618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfraclavicularLymphNodes = "9659009";
 
     /// <summary>
+    /// Literal for code: NONEInfraclavicularLymphNodes
+    /// </summary>
+    public const string LiteralNONEInfraclavicularLymphNodes = "http://snomed.info/sct#9659009";
+
+    /// <summary>
     /// Literal for code: SubcutaneousTissueOfLowerMarginOfNasalSeptum
     /// </summary>
     public const string LiteralSubcutaneousTissueOfLowerMarginOfNasalSeptum = "9662007";
+
+    /// <summary>
+    /// Literal for code: NONESubcutaneousTissueOfLowerMarginOfNasalSeptum
+    /// </summary>
+    public const string LiteralNONESubcutaneousTissueOfLowerMarginOfNasalSeptum = "http://snomed.info/sct#9662007";
 
     /// <summary>
     /// Literal for code: CiliaryMuscle
@@ -13828,9 +18638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCiliaryMuscle = "9668006";
 
     /// <summary>
+    /// Literal for code: NONECiliaryMuscle
+    /// </summary>
+    public const string LiteralNONECiliaryMuscle = "http://snomed.info/sct#9668006";
+
+    /// <summary>
     /// Literal for code: HeadOfSecondMetatarsalBone
     /// </summary>
     public const string LiteralHeadOfSecondMetatarsalBone = "9677004";
+
+    /// <summary>
+    /// Literal for code: NONEHeadOfSecondMetatarsalBone
+    /// </summary>
+    public const string LiteralNONEHeadOfSecondMetatarsalBone = "http://snomed.info/sct#9677004";
 
     /// <summary>
     /// Literal for code: Melanocyte
@@ -13838,9 +18658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMelanocyte = "9683001";
 
     /// <summary>
+    /// Literal for code: NONEMelanocyte
+    /// </summary>
+    public const string LiteralNONEMelanocyte = "http://snomed.info/sct#9683001";
+
+    /// <summary>
     /// Literal for code: PosteriorScrotalBranchesOfInternalPudendalArtery
     /// </summary>
     public const string LiteralPosteriorScrotalBranchesOfInternalPudendalArtery = "9684007";
+
+    /// <summary>
+    /// Literal for code: NONEPosteriorScrotalBranchesOfInternalPudendalArtery
+    /// </summary>
+    public const string LiteralNONEPosteriorScrotalBranchesOfInternalPudendalArtery = "http://snomed.info/sct#9684007";
 
     /// <summary>
     /// Literal for code: IliacFascia
@@ -13848,9 +18678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIliacFascia = "9708001";
 
     /// <summary>
+    /// Literal for code: NONEIliacFascia
+    /// </summary>
+    public const string LiteralNONEIliacFascia = "http://snomed.info/sct#9708001";
+
+    /// <summary>
     /// Literal for code: MedialSupraclavicularNerves
     /// </summary>
     public const string LiteralMedialSupraclavicularNerves = "9732008";
+
+    /// <summary>
+    /// Literal for code: NONEMedialSupraclavicularNerves
+    /// </summary>
+    public const string LiteralNONEMedialSupraclavicularNerves = "http://snomed.info/sct#9732008";
 
     /// <summary>
     /// Literal for code: RightWrist
@@ -13858,9 +18698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRightWrist = "9736006";
 
     /// <summary>
+    /// Literal for code: NONERightWrist
+    /// </summary>
+    public const string LiteralNONERightWrist = "http://snomed.info/sct#9736006";
+
+    /// <summary>
     /// Literal for code: TendonOfIndexFinger
     /// </summary>
     public const string LiteralTendonOfIndexFinger = "9743000";
+
+    /// <summary>
+    /// Literal for code: NONETendonOfIndexFinger
+    /// </summary>
+    public const string LiteralNONETendonOfIndexFinger = "http://snomed.info/sct#9743000";
 
     /// <summary>
     /// Literal for code: SubmucosaOfTonsil
@@ -13868,9 +18718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubmucosaOfTonsil = "9758008";
 
     /// <summary>
+    /// Literal for code: NONESubmucosaOfTonsil
+    /// </summary>
+    public const string LiteralNONESubmucosaOfTonsil = "http://snomed.info/sct#9758008";
+
+    /// <summary>
     /// Literal for code: OvarianVein
     /// </summary>
     public const string LiteralOvarianVein = "976004";
+
+    /// <summary>
+    /// Literal for code: NONEOvarianVein
+    /// </summary>
+    public const string LiteralNONEOvarianVein = "http://snomed.info/sct#976004";
 
     /// <summary>
     /// Literal for code: GenitalTubercle
@@ -13878,9 +18738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGenitalTubercle = "9770007";
 
     /// <summary>
+    /// Literal for code: NONEGenitalTubercle
+    /// </summary>
+    public const string LiteralNONEGenitalTubercle = "http://snomed.info/sct#9770007";
+
+    /// <summary>
     /// Literal for code: LeftCarotidSinus
     /// </summary>
     public const string LiteralLeftCarotidSinus = "9775002";
+
+    /// <summary>
+    /// Literal for code: NONELeftCarotidSinus
+    /// </summary>
+    public const string LiteralNONELeftCarotidSinus = "http://snomed.info/sct#9775002";
 
     /// <summary>
     /// Literal for code: DistinctiveShapeOfMitochondrialCristae
@@ -13888,9 +18758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDistinctiveShapeOfMitochondrialCristae = "9779008";
 
     /// <summary>
+    /// Literal for code: NONEDistinctiveShapeOfMitochondrialCristae
+    /// </summary>
+    public const string LiteralNONEDistinctiveShapeOfMitochondrialCristae = "http://snomed.info/sct#9779008";
+
+    /// <summary>
     /// Literal for code: SuperficialLymphaticsOfThorax
     /// </summary>
     public const string LiteralSuperficialLymphaticsOfThorax = "9783008";
+
+    /// <summary>
+    /// Literal for code: NONESuperficialLymphaticsOfThorax
+    /// </summary>
+    public const string LiteralNONESuperficialLymphaticsOfThorax = "http://snomed.info/sct#9783008";
 
     /// <summary>
     /// Literal for code: DeepVenousSystemOfLowerExtremity
@@ -13898,9 +18778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeepVenousSystemOfLowerExtremity = "9791004";
 
     /// <summary>
+    /// Literal for code: NONEDeepVenousSystemOfLowerExtremity
+    /// </summary>
+    public const string LiteralNONEDeepVenousSystemOfLowerExtremity = "http://snomed.info/sct#9791004";
+
+    /// <summary>
     /// Literal for code: SkeletalMuscleFiberTypeIIb
     /// </summary>
     public const string LiteralSkeletalMuscleFiberTypeIIb = "9796009";
+
+    /// <summary>
+    /// Literal for code: NONESkeletalMuscleFiberTypeIIb
+    /// </summary>
+    public const string LiteralNONESkeletalMuscleFiberTypeIIb = "http://snomed.info/sct#9796009";
 
     /// <summary>
     /// Literal for code: FasciaOfUpperExtremity
@@ -13908,9 +18798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFasciaOfUpperExtremity = "9813009";
 
     /// <summary>
+    /// Literal for code: NONEFasciaOfUpperExtremity
+    /// </summary>
+    public const string LiteralNONEFasciaOfUpperExtremity = "http://snomed.info/sct#9813009";
+
+    /// <summary>
     /// Literal for code: ProximalPhalanxOfLittleToe
     /// </summary>
     public const string LiteralProximalPhalanxOfLittleToe = "9825007";
+
+    /// <summary>
+    /// Literal for code: NONEProximalPhalanxOfLittleToe
+    /// </summary>
+    public const string LiteralNONEProximalPhalanxOfLittleToe = "http://snomed.info/sct#9825007";
 
     /// <summary>
     /// Literal for code: PerforatingBranchesOfInternalThoracicArtery
@@ -13918,9 +18818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPerforatingBranchesOfInternalThoracicArtery = "9837009";
 
     /// <summary>
+    /// Literal for code: NONEPerforatingBranchesOfInternalThoracicArtery
+    /// </summary>
+    public const string LiteralNONEPerforatingBranchesOfInternalThoracicArtery = "http://snomed.info/sct#9837009";
+
+    /// <summary>
     /// Literal for code: BiparietalDiameterOfHead
     /// </summary>
     public const string LiteralBiparietalDiameterOfHead = "9840009";
+
+    /// <summary>
+    /// Literal for code: NONEBiparietalDiameterOfHead
+    /// </summary>
+    public const string LiteralNONEBiparietalDiameterOfHead = "http://snomed.info/sct#9840009";
 
     /// <summary>
     /// Literal for code: InterspinalisThoracisMuscles
@@ -13928,9 +18838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInterspinalisThoracisMuscles = "9841008";
 
     /// <summary>
+    /// Literal for code: NONEInterspinalisThoracisMuscles
+    /// </summary>
+    public const string LiteralNONEInterspinalisThoracisMuscles = "http://snomed.info/sct#9841008";
+
+    /// <summary>
     /// Literal for code: RightKidney
     /// </summary>
     public const string LiteralRightKidney = "9846003";
+
+    /// <summary>
+    /// Literal for code: NONERightKidney
+    /// </summary>
+    public const string LiteralNONERightKidney = "http://snomed.info/sct#9846003";
 
     /// <summary>
     /// Literal for code: HilumOfAdrenalGland
@@ -13938,9 +18858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHilumOfAdrenalGland = "9847007";
 
     /// <summary>
+    /// Literal for code: NONEHilumOfAdrenalGland
+    /// </summary>
+    public const string LiteralNONEHilumOfAdrenalGland = "http://snomed.info/sct#9847007";
+
+    /// <summary>
     /// Literal for code: FornixOfLacrimalSac
     /// </summary>
     public const string LiteralFornixOfLacrimalSac = "9849005";
+
+    /// <summary>
+    /// Literal for code: NONEFornixOfLacrimalSac
+    /// </summary>
+    public const string LiteralNONEFornixOfLacrimalSac = "http://snomed.info/sct#9849005";
 
     /// <summary>
     /// Literal for code: CarunculaeHymenales
@@ -13948,9 +18878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCarunculaeHymenales = "9870004";
 
     /// <summary>
+    /// Literal for code: NONECarunculaeHymenales
+    /// </summary>
+    public const string LiteralNONECarunculaeHymenales = "http://snomed.info/sct#9870004";
+
+    /// <summary>
     /// Literal for code: Thymus
     /// </summary>
     public const string LiteralThymus = "9875009";
+
+    /// <summary>
+    /// Literal for code: NONEThymus
+    /// </summary>
+    public const string LiteralNONEThymus = "http://snomed.info/sct#9875009";
 
     /// <summary>
     /// Literal for code: AppendicularVein
@@ -13958,9 +18898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAppendicularVein = "9878006";
 
     /// <summary>
+    /// Literal for code: NONEAppendicularVein
+    /// </summary>
+    public const string LiteralNONEAppendicularVein = "http://snomed.info/sct#9878006";
+
+    /// <summary>
     /// Literal for code: ThyroidTubercle
     /// </summary>
     public const string LiteralThyroidTubercle = "9880000";
+
+    /// <summary>
+    /// Literal for code: NONEThyroidTubercle
+    /// </summary>
+    public const string LiteralNONEThyroidTubercle = "http://snomed.info/sct#9880000";
 
     /// <summary>
     /// Literal for code: PeripheralNerveMyelinatedNerveFiber
@@ -13968,9 +18918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeripheralNerveMyelinatedNerveFiber = "9881001";
 
     /// <summary>
+    /// Literal for code: NONEPeripheralNerveMyelinatedNerveFiber
+    /// </summary>
+    public const string LiteralNONEPeripheralNerveMyelinatedNerveFiber = "http://snomed.info/sct#9881001";
+
+    /// <summary>
     /// Literal for code: TransverseArytenoidMuscle
     /// </summary>
     public const string LiteralTransverseArytenoidMuscle = "9891007";
+
+    /// <summary>
+    /// Literal for code: NONETransverseArytenoidMuscle
+    /// </summary>
+    public const string LiteralNONETransverseArytenoidMuscle = "http://snomed.info/sct#9891007";
 
     /// <summary>
     /// Literal for code: ParacentralLobule
@@ -13978,9 +18938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParacentralLobule = "9898001";
 
     /// <summary>
+    /// Literal for code: NONEParacentralLobule
+    /// </summary>
+    public const string LiteralNONEParacentralLobule = "http://snomed.info/sct#9898001";
+
+    /// <summary>
     /// Literal for code: PosteriorEthmoidalNerve
     /// </summary>
     public const string LiteralPosteriorEthmoidalNerve = "9951005";
+
+    /// <summary>
+    /// Literal for code: NONEPosteriorEthmoidalNerve
+    /// </summary>
+    public const string LiteralNONEPosteriorEthmoidalNerve = "http://snomed.info/sct#9951005";
 
     /// <summary>
     /// Literal for code: MeningealBranchOfOccipitalArtery
@@ -13988,9 +18958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeningealBranchOfOccipitalArtery = "996007";
 
     /// <summary>
+    /// Literal for code: NONEMeningealBranchOfOccipitalArtery
+    /// </summary>
+    public const string LiteralNONEMeningealBranchOfOccipitalArtery = "http://snomed.info/sct#996007";
+
+    /// <summary>
     /// Literal for code: PrimaryFootProcess
     /// </summary>
     public const string LiteralPrimaryFootProcess = "9968009";
+
+    /// <summary>
+    /// Literal for code: NONEPrimaryFootProcess
+    /// </summary>
+    public const string LiteralNONEPrimaryFootProcess = "http://snomed.info/sct#9968009";
 
     /// <summary>
     /// Literal for code: IleocecalOstium
@@ -13998,9 +18978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIleocecalOstium = "9970000";
 
     /// <summary>
+    /// Literal for code: NONEIleocecalOstium
+    /// </summary>
+    public const string LiteralNONEIleocecalOstium = "http://snomed.info/sct#9970000";
+
+    /// <summary>
     /// Literal for code: RhomboideusCervicisMuscle
     /// </summary>
     public const string LiteralRhomboideusCervicisMuscle = "9976006";
+
+    /// <summary>
+    /// Literal for code: NONERhomboideusCervicisMuscle
+    /// </summary>
+    public const string LiteralNONERhomboideusCervicisMuscle = "http://snomed.info/sct#9976006";
 
     /// <summary>
     /// Literal for code: SuperiorArticularProcessOfSixthThoracicVertebra
@@ -14008,8 +18998,2024 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuperiorArticularProcessOfSixthThoracicVertebra = "9994000";
 
     /// <summary>
+    /// Literal for code: NONESuperiorArticularProcessOfSixthThoracicVertebra
+    /// </summary>
+    public const string LiteralNONESuperiorArticularProcessOfSixthThoracicVertebra = "http://snomed.info/sct#9994000";
+
+    /// <summary>
     /// Literal for code: DuodenalAmpulla
     /// </summary>
     public const string LiteralDuodenalAmpulla = "9999005";
+
+    /// <summary>
+    /// Literal for code: NONEDuodenalAmpulla
+    /// </summary>
+    public const string LiteralNONEDuodenalAmpulla = "http://snomed.info/sct#9999005";
+
+    /// <summary>
+    /// Dictionary for looking up BodySite Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "10013000", LateralMeniscusOfKneeJoint }, 
+      { "http://snomed.info/sct#10013000", LateralMeniscusOfKneeJoint }, 
+      { "10024003", BaseOfLung }, 
+      { "http://snomed.info/sct#10024003", BaseOfLung }, 
+      { "10025002", BaseOfPhalanxOfIndexFinger }, 
+      { "http://snomed.info/sct#10025002", BaseOfPhalanxOfIndexFinger }, 
+      { "10026001", VentralSpinocerebellarTractOfPons }, 
+      { "http://snomed.info/sct#10026001", VentralSpinocerebellarTractOfPons }, 
+      { "10036009", NucleusPulposusOfIntervertebralDiscOfEighthThoracicVertebra }, 
+      { "http://snomed.info/sct#10036009", NucleusPulposusOfIntervertebralDiscOfEighthThoracicVertebra }, 
+      { "10042008", IntervertebralForamenOfFifthThoracicVertebra }, 
+      { "http://snomed.info/sct#10042008", IntervertebralForamenOfFifthThoracicVertebra }, 
+      { "10047002", TransplantedLung }, 
+      { "http://snomed.info/sct#10047002", TransplantedLung }, 
+      { "1005009", EntireDiaphragmaticLymphNode }, 
+      { "http://snomed.info/sct#1005009", EntireDiaphragmaticLymphNode }, 
+      { "10052007", Male }, 
+      { "http://snomed.info/sct#10052007", Male }, 
+      { "10056005", OphthalmicNerve }, 
+      { "http://snomed.info/sct#10056005", OphthalmicNerve }, 
+      { "10062000", LevatorLabiiSuperiorisMuscle }, 
+      { "http://snomed.info/sct#10062000", LevatorLabiiSuperiorisMuscle }, 
+      { "10119003", DeepVolarArchOfRadialArtery }, 
+      { "http://snomed.info/sct#10119003", DeepVolarArchOfRadialArtery }, 
+      { "1012000", StructureOfFibrousPortionOfPericardium }, 
+      { "http://snomed.info/sct#1012000", StructureOfFibrousPortionOfPericardium }, 
+      { "10124000", DeepDorsalSacrococcygealLigament }, 
+      { "http://snomed.info/sct#10124000", DeepDorsalSacrococcygealLigament }, 
+      { "1015003", StructureOfPeritonsillarTissue }, 
+      { "http://snomed.info/sct#1015003", StructureOfPeritonsillarTissue }, 
+      { "1028005", SebaceousGlandStructure }, 
+      { "http://snomed.info/sct#1028005", SebaceousGlandStructure }, 
+      { "1030007", StructureOfVesicularBursaOfSternohyoidMuscle }, 
+      { "http://snomed.info/sct#1030007", StructureOfVesicularBursaOfSternohyoidMuscle }, 
+      { "106004", PosteriorCarpalRegion }, 
+      { "http://snomed.info/sct#106004", PosteriorCarpalRegion }, 
+      { "1063000", FrontozygomaticSutureOfSkull }, 
+      { "http://snomed.info/sct#1063000", FrontozygomaticSutureOfSkull }, 
+      { "107008", FetalPartOfPlacenta }, 
+      { "http://snomed.info/sct#107008", FetalPartOfPlacenta }, 
+      { "1075005", Promonocyte }, 
+      { "http://snomed.info/sct#1075005", Promonocyte }, 
+      { "1076006", SubcutaneousPrepatellarBursa }, 
+      { "http://snomed.info/sct#1076006", SubcutaneousPrepatellarBursa }, 
+      { "108003", CondylarEmissaryVein }, 
+      { "http://snomed.info/sct#108003", CondylarEmissaryVein }, 
+      { "1086007", Female }, 
+      { "http://snomed.info/sct#1086007", Female }, 
+      { "1087003", SternothyroidMuscle }, 
+      { "http://snomed.info/sct#1087003", SternothyroidMuscle }, 
+      { "1092001", SuperiorOccipitalGyrus }, 
+      { "http://snomed.info/sct#1092001", SuperiorOccipitalGyrus }, 
+      { "1099005", ThymicCortex }, 
+      { "http://snomed.info/sct#1099005", ThymicCortex }, 
+      { "110001", VisceralLayerOfBowmanQuoteSCapsule }, 
+      { "http://snomed.info/sct#110001", VisceralLayerOfBowmanQuoteSCapsule }, 
+      { "1101003", CranialCavity }, 
+      { "http://snomed.info/sct#1101003", CranialCavity }, 
+      { "1106008", MajorCalyx }, 
+      { "http://snomed.info/sct#1106008", MajorCalyx }, 
+      { "1110006", TarsalGland }, 
+      { "http://snomed.info/sct#1110006", TarsalGland }, 
+      { "111002", ParathyroidGland }, 
+      { "http://snomed.info/sct#111002", ParathyroidGland }, 
+      { "1122009", InferiorLongitudinalMuscleOfTongue }, 
+      { "http://snomed.info/sct#1122009", InferiorLongitudinalMuscleOfTongue }, 
+      { "1136004", AortopulmonarySeptum }, 
+      { "http://snomed.info/sct#1136004", AortopulmonarySeptum }, 
+      { "1159005", FrenulumLinguae }, 
+      { "http://snomed.info/sct#1159005", FrenulumLinguae }, 
+      { "116007", SubcutaneousTissueOfMedialSurfaceOfIndexFinger }, 
+      { "http://snomed.info/sct#116007", SubcutaneousTissueOfMedialSurfaceOfIndexFinger }, 
+      { "1172006", OdontoidProcessOfAxis }, 
+      { "http://snomed.info/sct#1172006", OdontoidProcessOfAxis }, 
+      { "1173001", MandibularNerve }, 
+      { "http://snomed.info/sct#1173001", MandibularNerve }, 
+      { "1174007", ChromosomesGroupE }, 
+      { "http://snomed.info/sct#1174007", ChromosomesGroupE }, 
+      { "1193009", TeresMajorMuscle }, 
+      { "http://snomed.info/sct#1193009", TeresMajorMuscle }, 
+      { "1216008", Synostosis }, 
+      { "http://snomed.info/sct#1216008", Synostosis }, 
+      { "1231004", CentralNervousSystemMeninges }, 
+      { "http://snomed.info/sct#1231004", CentralNervousSystemMeninges }, 
+      { "1236009", DuodenalSerosa }, 
+      { "http://snomed.info/sct#1236009", DuodenalSerosa }, 
+      { "124002", CoronoidProcessOfMandible }, 
+      { "http://snomed.info/sct#124002", CoronoidProcessOfMandible }, 
+      { "1243003", InferiorArticularProcessOfSixthCervicalVertebra }, 
+      { "http://snomed.info/sct#1243003", InferiorArticularProcessOfSixthCervicalVertebra }, 
+      { "1246006", DorsalDigitalNervesOfRadialNerve }, 
+      { "http://snomed.info/sct#1246006", DorsalDigitalNervesOfRadialNerve }, 
+      { "1263005", DistinctiveArrangementOfMicrotubules }, 
+      { "http://snomed.info/sct#1263005", DistinctiveArrangementOfMicrotubules }, 
+      { "1277008", VertebralNerve }, 
+      { "http://snomed.info/sct#1277008", VertebralNerve }, 
+      { "1307006", Glottis }, 
+      { "http://snomed.info/sct#1307006", Glottis }, 
+      { "1311000", TelogenHair }, 
+      { "http://snomed.info/sct#1311000", TelogenHair }, 
+      { "1350001", DeepFlexorTendonOfIndexFinger }, 
+      { "http://snomed.info/sct#1350001", DeepFlexorTendonOfIndexFinger }, 
+      { "1353004", GastricSerosa }, 
+      { "http://snomed.info/sct#1353004", GastricSerosa }, 
+      { "1403006", VastusLateralisMuscle }, 
+      { "http://snomed.info/sct#1403006", VastusLateralisMuscle }, 
+      { "1425000", PosteriorLimbOfStapes }, 
+      { "http://snomed.info/sct#1425000", PosteriorLimbOfStapes }, 
+      { "1439000", ParavesicularLymphNode }, 
+      { "http://snomed.info/sct#1439000", ParavesicularLymphNode }, 
+      { "1441004", LaryngealSaccule }, 
+      { "http://snomed.info/sct#1441004", LaryngealSaccule }, 
+      { "1456008", YellowFibrocartilage }, 
+      { "http://snomed.info/sct#1456008", YellowFibrocartilage }, 
+      { "1467009", ParietalBranchOfSuperficialTemporalArtery }, 
+      { "http://snomed.info/sct#1467009", ParietalBranchOfSuperficialTemporalArtery }, 
+      { "1484003", StructureOfMetatarsalRegionOfFoot }, 
+      { "http://snomed.info/sct#1484003", StructureOfMetatarsalRegionOfFoot }, 
+      { "1490004", SoftTissuesOfTrunk }, 
+      { "http://snomed.info/sct#1490004", SoftTissuesOfTrunk }, 
+      { "149003", CentralPairOfMicrotubulesCiliumOrFlagellumNotBacterial }, 
+      { "http://snomed.info/sct#149003", CentralPairOfMicrotubulesCiliumOrFlagellumNotBacterial }, 
+      { "1502004", AnteriorCecalArtery }, 
+      { "http://snomed.info/sct#1502004", AnteriorCecalArtery }, 
+      { "1511004", EjaculatoryDuct }, 
+      { "http://snomed.info/sct#1511004", EjaculatoryDuct }, 
+      { "1516009", FrontomentalDiameterOfHead }, 
+      { "http://snomed.info/sct#1516009", FrontomentalDiameterOfHead }, 
+      { "1527006", LaminaOfFourthThoracicVertebra }, 
+      { "http://snomed.info/sct#1527006", LaminaOfFourthThoracicVertebra }, 
+      { "1537001", IntervertebralDiscOfEleventhThoracicVertebra }, 
+      { "http://snomed.info/sct#1537001", IntervertebralDiscOfEleventhThoracicVertebra }, 
+      { "1541002", CoccygealPlexus }, 
+      { "http://snomed.info/sct#1541002", CoccygealPlexus }, 
+      { "155008", DeepCircumflexArteryOfIlium }, 
+      { "http://snomed.info/sct#155008", DeepCircumflexArteryOfIlium }, 
+      { "1562001", NucleusPulposusOfIntervertebralDiscOfThirdLumbarVertebra }, 
+      { "http://snomed.info/sct#1562001", NucleusPulposusOfIntervertebralDiscOfThirdLumbarVertebra }, 
+      { "1569005", NailOfThirdToe }, 
+      { "http://snomed.info/sct#1569005", NailOfThirdToe }, 
+      { "1580005", NucleusVentralisLateralis }, 
+      { "http://snomed.info/sct#1580005", NucleusVentralisLateralis }, 
+      { "1581009", IlealArtery }, 
+      { "http://snomed.info/sct#1581009", IlealArtery }, 
+      { "1584001", Symphysis }, 
+      { "http://snomed.info/sct#1584001", Symphysis }, 
+      { "1600003", SpleniusCapitisMuscle }, 
+      { "http://snomed.info/sct#1600003", SpleniusCapitisMuscle }, 
+      { "1605008", Histioblast }, 
+      { "http://snomed.info/sct#1605008", Histioblast }, 
+      { "1610007", Otoconia }, 
+      { "http://snomed.info/sct#1610007", Otoconia }, 
+      { "1611006", ParamammaryLymphNode }, 
+      { "http://snomed.info/sct#1611006", ParamammaryLymphNode }, 
+      { "1617005", IntrinsicLarynx }, 
+      { "http://snomed.info/sct#1617005", IntrinsicLarynx }, 
+      { "1620002", MetaphaseNucleus }, 
+      { "http://snomed.info/sct#1620002", MetaphaseNucleus }, 
+      { "1626008", ThirdThoracicVertebra }, 
+      { "http://snomed.info/sct#1626008", ThirdThoracicVertebra }, 
+      { "1627004", MedialCollateralLigamentOfKneeJoint }, 
+      { "http://snomed.info/sct#1627004", MedialCollateralLigamentOfKneeJoint }, 
+      { "1630006", SupraorbitalVein }, 
+      { "http://snomed.info/sct#1630006", SupraorbitalVein }, 
+      { "1631005", Foregut }, 
+      { "http://snomed.info/sct#1631005", Foregut }, 
+      { "1650005", HilumOfLeftLung }, 
+      { "http://snomed.info/sct#1650005", HilumOfLeftLung }, 
+      { "1655000", TransversePeduncularTractNucleus }, 
+      { "http://snomed.info/sct#1655000", TransversePeduncularTractNucleus }, 
+      { "1659006", NucleusMedialisDorsalis }, 
+      { "http://snomed.info/sct#1659006", NucleusMedialisDorsalis }, 
+      { "167005", SupraclavicularPartOfBrachialPlexus }, 
+      { "http://snomed.info/sct#167005", SupraclavicularPartOfBrachialPlexus }, 
+      { "1684009", LigamentumTeresOfLiver }, 
+      { "http://snomed.info/sct#1684009", LigamentumTeresOfLiver }, 
+      { "1706004", ThymicLobule }, 
+      { "http://snomed.info/sct#1706004", ThymicLobule }, 
+      { "1707008", VentralNuclearGroupOfThalamus }, 
+      { "http://snomed.info/sct#1707008", VentralNuclearGroupOfThalamus }, 
+      { "1711002", PeriorbitalRegion }, 
+      { "http://snomed.info/sct#1711002", PeriorbitalRegion }, 
+      { "1716007", CupulaAmpullaris }, 
+      { "http://snomed.info/sct#1716007", CupulaAmpullaris }, 
+      { "1721005", RightTonsil }, 
+      { "http://snomed.info/sct#1721005", RightTonsil }, 
+      { "1729007", CentralTegmentalTract }, 
+      { "http://snomed.info/sct#1729007", CentralTegmentalTract }, 
+      { "1732005", TDThoracicDuct }, 
+      { "http://snomed.info/sct#1732005", TDThoracicDuct }, 
+      { "1765002", StructureOfLymphaticVesselOfThorax }, 
+      { "http://snomed.info/sct#1765002", StructureOfLymphaticVesselOfThorax }, 
+      { "1780008", Premelanosome }, 
+      { "http://snomed.info/sct#1780008", Premelanosome }, 
+      { "1781007", SacroiliacRegion }, 
+      { "http://snomed.info/sct#1781007", SacroiliacRegion }, 
+      { "1797002", Naris }, 
+      { "http://snomed.info/sct#1797002", Naris }, 
+      { "1818002", GreaterCirculusArteriosusOfIris }, 
+      { "http://snomed.info/sct#1818002", GreaterCirculusArteriosusOfIris }, 
+      { "1825009", RootOfNose }, 
+      { "http://snomed.info/sct#1825009", RootOfNose }, 
+      { "1832000", ScleralConjunctiva }, 
+      { "http://snomed.info/sct#1832000", ScleralConjunctiva }, 
+      { "1840006", ArrectorPiliMuscle }, 
+      { "http://snomed.info/sct#1840006", ArrectorPiliMuscle }, 
+      { "1849007", PharyngealRecess }, 
+      { "http://snomed.info/sct#1849007", PharyngealRecess }, 
+      { "1853009", StructureOfSuprahyoidMuscle }, 
+      { "http://snomed.info/sct#1853009", StructureOfSuprahyoidMuscle }, 
+      { "1874005", PromontoryLymphNode }, 
+      { "http://snomed.info/sct#1874005", PromontoryLymphNode }, 
+      { "1893007", JointOfUpperExtremity }, 
+      { "http://snomed.info/sct#1893007", JointOfUpperExtremity }, 
+      { "1895000", MusculophrenicVein }, 
+      { "http://snomed.info/sct#1895000", MusculophrenicVein }, 
+      { "1902009", SkinOfExternalEar }, 
+      { "http://snomed.info/sct#1902009", SkinOfExternalEar }, 
+      { "1910005", Ear }, 
+      { "http://snomed.info/sct#1910005", Ear }, 
+      { "1918003", SuprarenalAorta }, 
+      { "http://snomed.info/sct#1918003", SuprarenalAorta }, 
+      { "1927002", LeftElbow }, 
+      { "http://snomed.info/sct#1927002", LeftElbow }, 
+      { "1992003", PorusAcusticusInternus }, 
+      { "http://snomed.info/sct#1992003", PorusAcusticusInternus }, 
+      { "1997009", CingulumDentis }, 
+      { "http://snomed.info/sct#1997009", CingulumDentis }, 
+      { "2010005", ClavicularFacetOfScapula }, 
+      { "http://snomed.info/sct#2010005", ClavicularFacetOfScapula }, 
+      { "2020000", SuperiorThoracicArtery }, 
+      { "http://snomed.info/sct#2020000", SuperiorThoracicArtery }, 
+      { "202009", AnteriorDivisionOfRenalArtery }, 
+      { "http://snomed.info/sct#202009", AnteriorDivisionOfRenalArtery }, 
+      { "2031008", StructureOfAnteriorMedianFissureOfSpinalCord }, 
+      { "http://snomed.info/sct#2031008", StructureOfAnteriorMedianFissureOfSpinalCord }, 
+      { "2033006", RightFallopianTube }, 
+      { "http://snomed.info/sct#2033006", RightFallopianTube }, 
+      { "2044003", VaginalNerves }, 
+      { "http://snomed.info/sct#2044003", VaginalNerves }, 
+      { "2048000", LingualTonsil }, 
+      { "http://snomed.info/sct#2048000", LingualTonsil }, 
+      { "2049008", ChorionicVilli }, 
+      { "http://snomed.info/sct#2049008", ChorionicVilli }, 
+      { "205006", LeftCommissureOfAorticValve }, 
+      { "http://snomed.info/sct#205006", LeftCommissureOfAorticValve }, 
+      { "2059009", SkinOfEarLobule }, 
+      { "http://snomed.info/sct#2059009", SkinOfEarLobule }, 
+      { "206007", GluteusMaximusMuscle }, 
+      { "http://snomed.info/sct#206007", GluteusMaximusMuscle }, 
+      { "2071003", ReticularFormationOfSpinalCord }, 
+      { "http://snomed.info/sct#2071003", ReticularFormationOfSpinalCord }, 
+      { "2076008", HeadOfPhalanxOfHand }, 
+      { "http://snomed.info/sct#2076008", HeadOfPhalanxOfHand }, 
+      { "2083001", NucleusAmbiguus }, 
+      { "http://snomed.info/sct#2083001", NucleusAmbiguus }, 
+      { "2095001", AccessorySinus }, 
+      { "http://snomed.info/sct#2095001", AccessorySinus }, 
+      { "2123001", MammilloinfundibularNucleus }, 
+      { "http://snomed.info/sct#2123001", MammilloinfundibularNucleus }, 
+      { "2150006", UrinaryTractTransitionalEpithelialCell }, 
+      { "http://snomed.info/sct#2150006", UrinaryTractTransitionalEpithelialCell }, 
+      { "2156000", GlialCell }, 
+      { "http://snomed.info/sct#2156000", GlialCell }, 
+      { "2160002", LigamentumArteriosum }, 
+      { "http://snomed.info/sct#2160002", LigamentumArteriosum }, 
+      { "2175005", PharyngealCavity }, 
+      { "http://snomed.info/sct#2175005", PharyngealCavity }, 
+      { "2182009", EndometrialZonaBasalis }, 
+      { "http://snomed.info/sct#2182009", EndometrialZonaBasalis }, 
+      { "2192001", ClavicularPartOfPectoralisMajorMuscle }, 
+      { "http://snomed.info/sct#2192001", ClavicularPartOfPectoralisMajorMuscle }, 
+      { "2205003", LaminaOfFifthThoracicVertebra }, 
+      { "http://snomed.info/sct#2205003", LaminaOfFifthThoracicVertebra }, 
+      { "2209009", CerebralBasalSurface }, 
+      { "http://snomed.info/sct#2209009", CerebralBasalSurface }, 
+      { "221001", ArticularSurfacePhalangesOfFourthMetacarpalBone }, 
+      { "http://snomed.info/sct#221001", ArticularSurfacePhalangesOfFourthMetacarpalBone }, 
+      { "2236006", LesserOsseousPelvis }, 
+      { "http://snomed.info/sct#2236006", LesserOsseousPelvis }, 
+      { "2246008", TypeIHairCell }, 
+      { "http://snomed.info/sct#2246008", TypeIHairCell }, 
+      { "2255006", Subserosa }, 
+      { "http://snomed.info/sct#2255006", Subserosa }, 
+      { "227002", CanalOfHering }, 
+      { "http://snomed.info/sct#227002", CanalOfHering }, 
+      { "2285001", StructureOfTorcularHerophili }, 
+      { "http://snomed.info/sct#2285001", StructureOfTorcularHerophili }, 
+      { "2292006", StructureOfNasopharyngealGland }, 
+      { "http://snomed.info/sct#2292006", StructureOfNasopharyngealGland }, 
+      { "2302002", VeinOfTheKnee }, 
+      { "http://snomed.info/sct#2302002", VeinOfTheKnee }, 
+      { "2305000", StructureOfSpinousProcessOfCervicalVertebra }, 
+      { "http://snomed.info/sct#2305000", StructureOfSpinousProcessOfCervicalVertebra }, 
+      { "2306004", StructureOfBaseOfThirdMetacarpalBone }, 
+      { "http://snomed.info/sct#2306004", StructureOfBaseOfThirdMetacarpalBone }, 
+      { "2327009", SalivarySeromucousGland }, 
+      { "http://snomed.info/sct#2327009", SalivarySeromucousGland }, 
+      { "2330002", StructureOfSegmentalBronchialBranches }, 
+      { "http://snomed.info/sct#2330002", StructureOfSegmentalBronchialBranches }, 
+      { "233006", HepatocolicLigament }, 
+      { "http://snomed.info/sct#233006", HepatocolicLigament }, 
+      { "2332005", MetencephalonOfFoetus }, 
+      { "http://snomed.info/sct#2332005", MetencephalonOfFoetus }, 
+      { "2334006", RenalCalyx }, 
+      { "http://snomed.info/sct#2334006", RenalCalyx }, 
+      { "2349003", StructureOfNasalSutureOfSkull }, 
+      { "http://snomed.info/sct#2349003", StructureOfNasalSutureOfSkull }, 
+      { "235004", SuperiorLabialArtery }, 
+      { "http://snomed.info/sct#235004", SuperiorLabialArtery }, 
+      { "2372001", StructureOfMedialSurfaceOfToe }, 
+      { "http://snomed.info/sct#2372001", StructureOfMedialSurfaceOfToe }, 
+      { "2383005", StructureOfPapillaryMusclesOfRightVentricle }, 
+      { "http://snomed.info/sct#2383005", StructureOfPapillaryMusclesOfRightVentricle }, 
+      { "2389009", StructureOfSuperiorMarginOfAdrenalGland }, 
+      { "http://snomed.info/sct#2389009", StructureOfSuperiorMarginOfAdrenalGland }, 
+      { "2395005", StructureOfTransverseFacialArtery }, 
+      { "http://snomed.info/sct#2395005", StructureOfTransverseFacialArtery }, 
+      { "2397002", StructureOfFirstMetatarsalFacetOfMedialCuneiformBone }, 
+      { "http://snomed.info/sct#2397002", StructureOfFirstMetatarsalFacetOfMedialCuneiformBone }, 
+      { "2400006", UniversalDesignation21 }, 
+      { "http://snomed.info/sct#2400006", UniversalDesignation21 }, 
+      { "2402003", StructureOfDorsumOfFoot }, 
+      { "http://snomed.info/sct#2402003", StructureOfDorsumOfFoot }, 
+      { "2421006", StructureOfSubmaxillaryGanglion }, 
+      { "http://snomed.info/sct#2421006", StructureOfSubmaxillaryGanglion }, 
+      { "2433001", StructureOfDigitalTendonAndTendonSheathOfFoot }, 
+      { "http://snomed.info/sct#2433001", StructureOfDigitalTendonAndTendonSheathOfFoot }, 
+      { "2436009", TunicaIntimaOfVein }, 
+      { "http://snomed.info/sct#2436009", TunicaIntimaOfVein }, 
+      { "2453002", SubcutaneousTissueStructureOfPosteriorSurfaceOfForearm }, 
+      { "http://snomed.info/sct#2453002", SubcutaneousTissueStructureOfPosteriorSurfaceOfForearm }, 
+      { "2454008", StructureOfArticularSurfaceThirdMetacarpalOfSecondMetacarpalBone }, 
+      { "http://snomed.info/sct#2454008", StructureOfArticularSurfaceThirdMetacarpalOfSecondMetacarpalBone }, 
+      { "246001", LateralVestibularNucleus }, 
+      { "http://snomed.info/sct#246001", LateralVestibularNucleus }, 
+      { "247005", Mesotympanum }, 
+      { "http://snomed.info/sct#247005", Mesotympanum }, 
+      { "2484000", SkinStructureOfFrenulumOfClitoris }, 
+      { "http://snomed.info/sct#2484000", SkinStructureOfFrenulumOfClitoris }, 
+      { "2489005", StructureOfMedialCheckLigamentOfEye }, 
+      { "http://snomed.info/sct#2489005", StructureOfMedialCheckLigamentOfEye }, 
+      { "2499000", EntireCisternaPontis }, 
+      { "http://snomed.info/sct#2499000", EntireCisternaPontis }, 
+      { "2502001", MembraneOfLysosome }, 
+      { "http://snomed.info/sct#2502001", MembraneOfLysosome }, 
+      { "2504000", StructureOfPancreaticPlexus }, 
+      { "http://snomed.info/sct#2504000", StructureOfPancreaticPlexus }, 
+      { "2510000", FemoralTriangleStructure }, 
+      { "http://snomed.info/sct#2510000", FemoralTriangleStructure }, 
+      { "251007", PectoralRegion }, 
+      { "http://snomed.info/sct#251007", PectoralRegion }, 
+      { "2539000", StructureOfSuperiorRectalArtery }, 
+      { "http://snomed.info/sct#2539000", StructureOfSuperiorRectalArtery }, 
+      { "2543001", StructureOfCuboidArticularFacetOfFourthMetatarsalBone }, 
+      { "http://snomed.info/sct#2543001", StructureOfCuboidArticularFacetOfFourthMetatarsalBone }, 
+      { "2550002", BoneStructureOfPhalanxOfThumb }, 
+      { "http://snomed.info/sct#2550002", BoneStructureOfPhalanxOfThumb }, 
+      { "256002", KupfferCell }, 
+      { "http://snomed.info/sct#256002", KupfferCell }, 
+      { "2577006", StructureOfGracilisMuscle }, 
+      { "http://snomed.info/sct#2577006", StructureOfGracilisMuscle }, 
+      { "2579009", Plasmablast }, 
+      { "http://snomed.info/sct#2579009", Plasmablast }, 
+      { "2592007", AllExtremities }, 
+      { "http://snomed.info/sct#2592007", AllExtremities }, 
+      { "2600000", StructureOfFlexorPollicisLongusMuscleTendon }, 
+      { "http://snomed.info/sct#2600000", StructureOfFlexorPollicisLongusMuscleTendon }, 
+      { "2620004", IntervertebralDiscStructureOfThirdThoracicVertebra }, 
+      { "http://snomed.info/sct#2620004", IntervertebralDiscStructureOfThirdThoracicVertebra }, 
+      { "263002", ThoracicNerve }, 
+      { "http://snomed.info/sct#263002", ThoracicNerve }, 
+      { "2639009", NeuroendocrineTissue }, 
+      { "http://snomed.info/sct#2639009", NeuroendocrineTissue }, 
+      { "2653009", StructureOfPosteriorThalamicRadiationOfInternalCapsule }, 
+      { "http://snomed.info/sct#2653009", StructureOfPosteriorThalamicRadiationOfInternalCapsule }, 
+      { "266005", RightLowerLobeOfLung }, 
+      { "http://snomed.info/sct#266005", RightLowerLobeOfLung }, 
+      { "2666009", StructureOfSemispinalisCapitisMuscle }, 
+      { "http://snomed.info/sct#2666009", StructureOfSemispinalisCapitisMuscle }, 
+      { "2672009", StructureOfAnteriorCutaneousBranchOfLumbosacralPlexus }, 
+      { "http://snomed.info/sct#2672009", StructureOfAnteriorCutaneousBranchOfLumbosacralPlexus }, 
+      { "2675006", StructureOfAnteriorEthmoidalArtery }, 
+      { "http://snomed.info/sct#2675006", StructureOfAnteriorEthmoidalArtery }, 
+      { "2681003", StructureOfDorsalNerveOfPenis }, 
+      { "http://snomed.info/sct#2681003", StructureOfDorsalNerveOfPenis }, 
+      { "2682005", BladderMucosa }, 
+      { "http://snomed.info/sct#2682005", BladderMucosa }, 
+      { "2686008", StructureOfMedialOlfactoryGyrus }, 
+      { "http://snomed.info/sct#2686008", StructureOfMedialOlfactoryGyrus }, 
+      { "2687004", StructureOfBowmanSpace }, 
+      { "http://snomed.info/sct#2687004", StructureOfBowmanSpace }, 
+      { "2695000", LeftMaxillarySinusStructure }, 
+      { "http://snomed.info/sct#2695000", LeftMaxillarySinusStructure }, 
+      { "2703009", EntireCalcarineArtery }, 
+      { "http://snomed.info/sct#2703009", EntireCalcarineArtery }, 
+      { "2712006", StructureOfCapsuleOfAnkleJoint }, 
+      { "http://snomed.info/sct#2712006", StructureOfCapsuleOfAnkleJoint }, 
+      { "2718005", StructureOfApicalForamenOfTooth }, 
+      { "http://snomed.info/sct#2718005", StructureOfApicalForamenOfTooth }, 
+      { "272005", SuperiorArticularProcessOfLumbarVertebra }, 
+      { "http://snomed.info/sct#272005", SuperiorArticularProcessOfLumbarVertebra }, 
+      { "2726002", StructureOfFoldForStapes }, 
+      { "http://snomed.info/sct#2726002", StructureOfFoldForStapes }, 
+      { "273000", LateralMyocardium }, 
+      { "http://snomed.info/sct#273000", LateralMyocardium }, 
+      { "2730004", EntireVitellineVeinOfPlacenta }, 
+      { "http://snomed.info/sct#2730004", EntireVitellineVeinOfPlacenta }, 
+      { "2739003", EndometrialStructure }, 
+      { "http://snomed.info/sct#2739003", EndometrialStructure }, 
+      { "2741002", StructureOfMedialOccipitotemporalGyrus }, 
+      { "http://snomed.info/sct#2741002", StructureOfMedialOccipitotemporalGyrus }, 
+      { "2746007", CircularLayerOfGastricMuscularis }, 
+      { "http://snomed.info/sct#2746007", CircularLayerOfGastricMuscularis }, 
+      { "2748008", SpinalCordStructure }, 
+      { "http://snomed.info/sct#2748008", SpinalCordStructure }, 
+      { "2759004", EccrineGlandStructure }, 
+      { "http://snomed.info/sct#2759004", EccrineGlandStructure }, 
+      { "2771005", LaminaPropriaOfUreter }, 
+      { "http://snomed.info/sct#2771005", LaminaPropriaOfUreter }, 
+      { "2789006", ApocrineGlandStructure }, 
+      { "http://snomed.info/sct#2789006", ApocrineGlandStructure }, 
+      { "2792005", StructureOfParsTensaOfTympanicMembrane }, 
+      { "http://snomed.info/sct#2792005", StructureOfParsTensaOfTympanicMembrane }, 
+      { "2803000", StructureOfTendonSheathOfPopliteusMuscle }, 
+      { "http://snomed.info/sct#2803000", StructureOfTendonSheathOfPopliteusMuscle }, 
+      { "2810006", StructureOfCremastericFascia }, 
+      { "http://snomed.info/sct#2810006", StructureOfCremastericFascia }, 
+      { "2812003", StructureOfHeadOfFemur }, 
+      { "http://snomed.info/sct#2812003", StructureOfHeadOfFemur }, 
+      { "2824005", StructureOfSpinousProcessOfFourthThoracicVertebra }, 
+      { "http://snomed.info/sct#2824005", StructureOfSpinousProcessOfFourthThoracicVertebra }, 
+      { "2826007", StructureOfLaminaOfFourthLumbarVertebra }, 
+      { "http://snomed.info/sct#2826007", StructureOfLaminaOfFourthLumbarVertebra }, 
+      { "2830005", StructureOfDorsalDigitalNervesOfLateralHalluxAndMedialSecondToe }, 
+      { "http://snomed.info/sct#2830005", StructureOfDorsalDigitalNervesOfLateralHalluxAndMedialSecondToe }, 
+      { "283001", CentralAxillaryLymphNode }, 
+      { "http://snomed.info/sct#283001", CentralAxillaryLymphNode }, 
+      { "2839006", StructureOfPerivesicularTissuesOfSeminalVesicles }, 
+      { "http://snomed.info/sct#2839006", StructureOfPerivesicularTissuesOfSeminalVesicles }, 
+      { "284007", FlexorTendonAndTendonSheathOfFourthToe }, 
+      { "http://snomed.info/sct#284007", FlexorTendonAndTendonSheathOfFourthToe }, 
+      { "2841007", RenalArteryStructure }, 
+      { "http://snomed.info/sct#2841007", RenalArteryStructure }, 
+      { "2845003", StructureOfRespiratoryEpithelium }, 
+      { "http://snomed.info/sct#2845003", StructureOfRespiratoryEpithelium }, 
+      { "2848001", StructureOfSuperficialEpigastricArtery }, 
+      { "http://snomed.info/sct#2848001", StructureOfSuperficialEpigastricArtery }, 
+      { "2855004", StructureOfAccessoryCephalicVein }, 
+      { "http://snomed.info/sct#2855004", StructureOfAccessoryCephalicVein }, 
+      { "2861001", EntireGlandOrgan }, 
+      { "http://snomed.info/sct#2861001", EntireGlandOrgan }, 
+      { "289002", MetacarpophalangealJointOfIndexFinger }, 
+      { "http://snomed.info/sct#289002", MetacarpophalangealJointOfIndexFinger }, 
+      { "2894003", StructureOfPosteriorEpiglottis }, 
+      { "http://snomed.info/sct#2894003", StructureOfPosteriorEpiglottis }, 
+      { "2905008", StructureOfAnteriorLigamentOfUterus }, 
+      { "http://snomed.info/sct#2905008", StructureOfAnteriorLigamentOfUterus }, 
+      { "2909002", StructureOfPosteriorPortionOfDiaphragmaticAspectOfLiver }, 
+      { "http://snomed.info/sct#2909002", StructureOfPosteriorPortionOfDiaphragmaticAspectOfLiver }, 
+      { "2920002", StructureOfFacialNerveMotorBranch }, 
+      { "http://snomed.info/sct#2920002", StructureOfFacialNerveMotorBranch }, 
+      { "2922005", StructureOfPosteriorPapillaryMuscleOfLeftVentricle }, 
+      { "http://snomed.info/sct#2922005", StructureOfPosteriorPapillaryMuscleOfLeftVentricle }, 
+      { "2923000", SubcutaneousTissueStructureOfSupraorbitalArea }, 
+      { "http://snomed.info/sct#2923000", SubcutaneousTissueStructureOfSupraorbitalArea }, 
+      { "2954001", SupernumeraryDeciduousTooth }, 
+      { "http://snomed.info/sct#2954001", SupernumeraryDeciduousTooth }, 
+      { "2969000", AnatomicalSpaceStructure }, 
+      { "http://snomed.info/sct#2969000", AnatomicalSpaceStructure }, 
+      { "2979003", BoneStructureOfMedialCuneiform }, 
+      { "http://snomed.info/sct#2979003", BoneStructureOfMedialCuneiform }, 
+      { "2986006", StructureOfTalarFacetOfNavicularBoneOfFoot }, 
+      { "http://snomed.info/sct#2986006", StructureOfTalarFacetOfNavicularBoneOfFoot }, 
+      { "2998001", EntireRightMarginOfUterus }, 
+      { "http://snomed.info/sct#2998001", EntireRightMarginOfUterus }, 
+      { "3003007", InternalCapsuleAnteriorLimbStructure }, 
+      { "http://snomed.info/sct#3003007", InternalCapsuleAnteriorLimbStructure }, 
+      { "3008003", WhiteFibrocartilage }, 
+      { "http://snomed.info/sct#3008003", WhiteFibrocartilage }, 
+      { "301000", FifthMetatarsalBone }, 
+      { "http://snomed.info/sct#301000", FifthMetatarsalBone }, 
+      { "3028004", TransitionalEpithelialCell }, 
+      { "http://snomed.info/sct#3028004", TransitionalEpithelialCell }, 
+      { "3039001", SubcutaneousTissueStructureOfThigh }, 
+      { "http://snomed.info/sct#3039001", SubcutaneousTissueStructureOfThigh }, 
+      { "3042007", StructureOfGlomerularUrinaryPole }, 
+      { "http://snomed.info/sct#3042007", StructureOfGlomerularUrinaryPole }, 
+      { "3054007", StructureOfArticularSurfaceMetacarpalOfPhalanxOfThumb }, 
+      { "http://snomed.info/sct#3054007", StructureOfArticularSurfaceMetacarpalOfPhalanxOfThumb }, 
+      { "3055008", StructureOfBoneMarrowOfVertebralBody }, 
+      { "http://snomed.info/sct#3055008", StructureOfBoneMarrowOfVertebralBody }, 
+      { "3056009", StructureOfAnteroventralNucleusOfThalamus }, 
+      { "http://snomed.info/sct#3056009", StructureOfAnteroventralNucleusOfThalamus }, 
+      { "3057000", NerveStructure }, 
+      { "http://snomed.info/sct#3057000", NerveStructure }, 
+      { "3058005", PNSPeripheralNervousSystem }, 
+      { "http://snomed.info/sct#3058005", PNSPeripheralNervousSystem }, 
+      { "3062004", SpinalArachnoid }, 
+      { "http://snomed.info/sct#3062004", SpinalArachnoid }, 
+      { "3068000", StructureOfSeminalVesicleLumen }, 
+      { "http://snomed.info/sct#3068000", StructureOfSeminalVesicleLumen }, 
+      { "3081007", MitochondrionInDivision }, 
+      { "http://snomed.info/sct#3081007", MitochondrionInDivision }, 
+      { "3093003", StructureOfTendinousArchOfPelvicFascia }, 
+      { "http://snomed.info/sct#3093003", StructureOfTendinousArchOfPelvicFascia }, 
+      { "3100007", ClinicalCrownOfTooth }, 
+      { "http://snomed.info/sct#3100007", ClinicalCrownOfTooth }, 
+      { "311007", PlantarSurfaceOfGreatToe }, 
+      { "http://snomed.info/sct#311007", PlantarSurfaceOfGreatToe }, 
+      { "3113001", StructureOfSuprachoroidalSpace }, 
+      { "http://snomed.info/sct#3113001", StructureOfSuprachoroidalSpace }, 
+      { "3117000", StructureOfDorsalSurfaceOfIndexFinger }, 
+      { "http://snomed.info/sct#3117000", StructureOfDorsalSurfaceOfIndexFinger }, 
+      { "3118005", StructureOfTrabeculaCarneaOfLeftVentricle }, 
+      { "http://snomed.info/sct#3118005", StructureOfTrabeculaCarneaOfLeftVentricle }, 
+      { "3120008", PleuralMembraneStructure }, 
+      { "http://snomed.info/sct#3120008", PleuralMembraneStructure }, 
+      { "3134008", StructureOfHeadOfFourthMetatarsalBone }, 
+      { "http://snomed.info/sct#3134008", StructureOfHeadOfFourthMetatarsalBone }, 
+      { "3138006", BoneTissue }, 
+      { "http://snomed.info/sct#3138006", BoneTissue }, 
+      { "315003", SkinOfUmbilicus }, 
+      { "http://snomed.info/sct#315003", SkinOfUmbilicus }, 
+      { "3153003", StructureOfTractusOlivocochlearis }, 
+      { "http://snomed.info/sct#3153003", StructureOfTractusOlivocochlearis }, 
+      { "3156006", StructureOfObturatorArtery }, 
+      { "http://snomed.info/sct#3156006", StructureOfObturatorArtery }, 
+      { "3159004", StructureOfCostocervicalTrunk }, 
+      { "http://snomed.info/sct#3159004", StructureOfCostocervicalTrunk }, 
+      { "3169005", SpinalNerveStructure }, 
+      { "http://snomed.info/sct#3169005", SpinalNerveStructure }, 
+      { "3178004", StructureOfRapheOfSoftPalate }, 
+      { "http://snomed.info/sct#3178004", StructureOfRapheOfSoftPalate }, 
+      { "318001", CardiacImpressionOfLiver }, 
+      { "http://snomed.info/sct#318001", CardiacImpressionOfLiver }, 
+      { "3194006", EndocardiumOfRightAtrium }, 
+      { "http://snomed.info/sct#3194006", EndocardiumOfRightAtrium }, 
+      { "3198009", MonostomaticSublingualGland }, 
+      { "http://snomed.info/sct#3198009", MonostomaticSublingualGland }, 
+      { "3215002", SubcutaneousTissueStructureOfNuchalRegion }, 
+      { "http://snomed.info/sct#3215002", SubcutaneousTissueStructureOfNuchalRegion }, 
+      { "3222005", AllLargeArteries }, 
+      { "http://snomed.info/sct#3222005", AllLargeArteries }, 
+      { "3227004", LeftCoronaryArteryMainStem }, 
+      { "http://snomed.info/sct#3227004", LeftCoronaryArteryMainStem }, 
+      { "3236000", StructureOfPosteriorSegmentOfRightUpperLobeOfLung }, 
+      { "http://snomed.info/sct#3236000", StructureOfPosteriorSegmentOfRightUpperLobeOfLung }, 
+      { "3243006", StructureOfParametrialLymphNode }, 
+      { "http://snomed.info/sct#3243006", StructureOfParametrialLymphNode }, 
+      { "3255000", PapillaryArea }, 
+      { "http://snomed.info/sct#3255000", PapillaryArea }, 
+      { "3262009", StructureOfRootCanalOfTooth }, 
+      { "http://snomed.info/sct#3262009", StructureOfRootCanalOfTooth }, 
+      { "3279003", StructureOfPedicleOfThirdCervicalVertebra }, 
+      { "http://snomed.info/sct#3279003", StructureOfPedicleOfThirdCervicalVertebra }, 
+      { "3295003", StructureOfVentralAnteriorNucleusOfThalamus }, 
+      { "http://snomed.info/sct#3295003", StructureOfVentralAnteriorNucleusOfThalamus }, 
+      { "3301002", TectopontineFibers }, 
+      { "http://snomed.info/sct#3301002", TectopontineFibers }, 
+      { "3302009", SplenicBranchOfSplenicArtery }, 
+      { "http://snomed.info/sct#3302009", SplenicBranchOfSplenicArtery }, 
+      { "3315000", StructureOfVestibulospinalTract }, 
+      { "http://snomed.info/sct#3315000", StructureOfVestibulospinalTract }, 
+      { "3332001", OccipitofrontalDiameterOfHead }, 
+      { "http://snomed.info/sct#3332001", OccipitofrontalDiameterOfHead }, 
+      { "3336003", HaversianCanal }, 
+      { "http://snomed.info/sct#3336003", HaversianCanal }, 
+      { "3341006", RightLungStructure }, 
+      { "http://snomed.info/sct#3341006", RightLungStructure }, 
+      { "3350008", EntireRightCommissureOfPulmonicValve }, 
+      { "http://snomed.info/sct#3350008", EntireRightCommissureOfPulmonicValve }, 
+      { "3362007", IntertragalIncisureStructure }, 
+      { "http://snomed.info/sct#3362007", IntertragalIncisureStructure }, 
+      { "3366005", StructureOfAnteriorPapillaryMuscleOfLeftVentricle }, 
+      { "http://snomed.info/sct#3366005", StructureOfAnteriorPapillaryMuscleOfLeftVentricle }, 
+      { "3370002", StructureOfSupportingTissueOfRectum }, 
+      { "http://snomed.info/sct#3370002", StructureOfSupportingTissueOfRectum }, 
+      { "3374006", SecondarySpermatocyte }, 
+      { "http://snomed.info/sct#3374006", SecondarySpermatocyte }, 
+      { "3377004", StructureOfAggerNasi }, 
+      { "http://snomed.info/sct#3377004", StructureOfAggerNasi }, 
+      { "3382006", StructureOfRimaOris }, 
+      { "http://snomed.info/sct#3382006", StructureOfRimaOris }, 
+      { "3383001", NonsegmentedBasophil }, 
+      { "http://snomed.info/sct#3383001", NonsegmentedBasophil }, 
+      { "3394002", SuboccipitobregmaticDiameterOfHead }, 
+      { "http://snomed.info/sct#3394002", SuboccipitobregmaticDiameterOfHead }, 
+      { "3395001", StructureOfSuperiorPalpebralArch }, 
+      { "http://snomed.info/sct#3395001", StructureOfSuperiorPalpebralArch }, 
+      { "3396000", StructureOfMesogastrium }, 
+      { "http://snomed.info/sct#3396000", StructureOfMesogastrium }, 
+      { "3400000", CellOfBone }, 
+      { "http://snomed.info/sct#3400000", CellOfBone }, 
+      { "3409004", StructureOfLateralMarginOfForearm }, 
+      { "http://snomed.info/sct#3409004", StructureOfLateralMarginOfForearm }, 
+      { "3417007", StructureOfRotatorMuscle }, 
+      { "http://snomed.info/sct#3417007", StructureOfRotatorMuscle }, 
+      { "3438001", DeepLymphaticOfUpperExtremity }, 
+      { "http://snomed.info/sct#3438001", DeepLymphaticOfUpperExtremity }, 
+      { "344001", Ankle }, 
+      { "http://snomed.info/sct#344001", Ankle }, 
+      { "3444002", ThalamostriateVein }, 
+      { "http://snomed.info/sct#3444002", ThalamostriateVein }, 
+      { "3447009", PenetratedOocyte }, 
+      { "http://snomed.info/sct#3447009", PenetratedOocyte }, 
+      { "345000", PenetratingAtrioventricularBundle }, 
+      { "http://snomed.info/sct#345000", PenetratingAtrioventricularBundle }, 
+      { "3460003", StructureOfAnterodorsalNucleusOfThalamus }, 
+      { "http://snomed.info/sct#3460003", StructureOfAnterodorsalNucleusOfThalamus }, 
+      { "3462006", StructureOfCommissureOfTricuspidValve }, 
+      { "http://snomed.info/sct#3462006", StructureOfCommissureOfTricuspidValve }, 
+      { "3471002", PosteriorMidlineOfTrunk }, 
+      { "http://snomed.info/sct#3471002", PosteriorMidlineOfTrunk }, 
+      { "3478008", StructureOfVastusMedialisMuscle }, 
+      { "http://snomed.info/sct#3478008", StructureOfVastusMedialisMuscle }, 
+      { "3481003", StructureOfEmbryonicTestis }, 
+      { "http://snomed.info/sct#3481003", StructureOfEmbryonicTestis }, 
+      { "3488009", AnnulateLamellaCisternalLumen }, 
+      { "http://snomed.info/sct#3488009", AnnulateLamellaCisternalLumen }, 
+      { "3490005", SubcutaneousTissueStructureOfSuboccipitalRegion }, 
+      { "http://snomed.info/sct#3490005", SubcutaneousTissueStructureOfSuboccipitalRegion }, 
+      { "3524005", StructureOfLateralWallOfMastoidAntrum }, 
+      { "http://snomed.info/sct#3524005", StructureOfLateralWallOfMastoidAntrum }, 
+      { "3538003", StructureOfCapsuleOfProximalTibiofibularJoint }, 
+      { "http://snomed.info/sct#3538003", StructureOfCapsuleOfProximalTibiofibularJoint }, 
+      { "3541007", StructureOfDorsalMetatarsalArtery }, 
+      { "http://snomed.info/sct#3541007", StructureOfDorsalMetatarsalArtery }, 
+      { "3553006", StructureOfThyroidCapsule }, 
+      { "http://snomed.info/sct#3553006", StructureOfThyroidCapsule }, 
+      { "3556003", StructureOfDorsalNucleusOfTrapezoidBody }, 
+      { "http://snomed.info/sct#3556003", StructureOfDorsalNucleusOfTrapezoidBody }, 
+      { "356000", ReticularCorium }, 
+      { "http://snomed.info/sct#356000", ReticularCorium }, 
+      { "3563003", MuscularisOfUreter }, 
+      { "http://snomed.info/sct#3563003", MuscularisOfUreter }, 
+      { "3572006", VertebralBody }, 
+      { "http://snomed.info/sct#3572006", VertebralBody }, 
+      { "3578005", StructureOfBodyOfGallbladder }, 
+      { "http://snomed.info/sct#3578005", StructureOfBodyOfGallbladder }, 
+      { "3582007", StructureOfGastrophrenicLigament }, 
+      { "http://snomed.info/sct#3582007", StructureOfGastrophrenicLigament }, 
+      { "3584008", T10DorsalArch }, 
+      { "http://snomed.info/sct#3584008", T10DorsalArch }, 
+      { "3594003", StructureOfStraightPartOfLongusColliMuscle }, 
+      { "http://snomed.info/sct#3594003", StructureOfStraightPartOfLongusColliMuscle }, 
+      { "3608004", IschiococcygeusMuscle }, 
+      { "http://snomed.info/sct#3608004", IschiococcygeusMuscle }, 
+      { "3609007", StructureOfOccipitalBranchOfPosteriorAuricularArtery }, 
+      { "http://snomed.info/sct#3609007", StructureOfOccipitalBranchOfPosteriorAuricularArtery }, 
+      { "3646006", Lamellipodium }, 
+      { "http://snomed.info/sct#3646006", Lamellipodium }, 
+      { "3663005", StructureOfTympanicOstiumOfEustachianTube }, 
+      { "http://snomed.info/sct#3663005", StructureOfTympanicOstiumOfEustachianTube }, 
+      { "3665003", PelvicWallStructure }, 
+      { "http://snomed.info/sct#3665003", PelvicWallStructure }, 
+      { "3670005", EntireSubpyloricLymphNode }, 
+      { "http://snomed.info/sct#3670005", EntireSubpyloricLymphNode }, 
+      { "3711007", GreatVessel }, 
+      { "http://snomed.info/sct#3711007", GreatVessel }, 
+      { "3743007", StructureOfLateralThoracicArtery }, 
+      { "http://snomed.info/sct#3743007", StructureOfLateralThoracicArtery }, 
+      { "3761003", StructureOfNucleusPulposusOfIntervertebralDiscOfFirstThoracicVertebra }, 
+      { "http://snomed.info/sct#3761003", StructureOfNucleusPulposusOfIntervertebralDiscOfFirstThoracicVertebra }, 
+      { "3766008", SubcutaneousTissueStructureOfLowerExtremity }, 
+      { "http://snomed.info/sct#3766008", SubcutaneousTissueStructureOfLowerExtremity }, 
+      { "3785006", EntireDorsalMetacarpalLigament }, 
+      { "http://snomed.info/sct#3785006", EntireDorsalMetacarpalLigament }, 
+      { "3788008", StructureOfApicalSegmentOfRightLowerLobeOfLung }, 
+      { "http://snomed.info/sct#3788008", StructureOfApicalSegmentOfRightLowerLobeOfLung }, 
+      { "3789000", EnteroendocrineCell }, 
+      { "http://snomed.info/sct#3789000", EnteroendocrineCell }, 
+      { "3810000", SeptalCartilageStructure }, 
+      { "http://snomed.info/sct#3810000", SeptalCartilageStructure }, 
+      { "3838008", StructureOfApexOfCoccyx }, 
+      { "http://snomed.info/sct#3838008", StructureOfApexOfCoccyx }, 
+      { "3860006", StructureOfTransplantedLiver }, 
+      { "http://snomed.info/sct#3860006", StructureOfTransplantedLiver }, 
+      { "3865001", StructureOfInterscapularRegionOfBack }, 
+      { "http://snomed.info/sct#3865001", StructureOfInterscapularRegionOfBack }, 
+      { "3867009", StructureOfDorsalSurfaceOfGreatToe }, 
+      { "http://snomed.info/sct#3867009", StructureOfDorsalSurfaceOfGreatToe }, 
+      { "3876002", SubcutaneousTissueStructureOfFemoralRegion }, 
+      { "http://snomed.info/sct#3876002", SubcutaneousTissueStructureOfFemoralRegion }, 
+      { "3877006", StructureOfCommonCarotidPlexus }, 
+      { "http://snomed.info/sct#3877006", StructureOfCommonCarotidPlexus }, 
+      { "3910004", SubcutaneousTissueStructureOfLateralSurfaceOfFourthToe }, 
+      { "http://snomed.info/sct#3910004", SubcutaneousTissueStructureOfLateralSurfaceOfFourthToe }, 
+      { "3916005", StructureOfOccipitalLymphNode }, 
+      { "http://snomed.info/sct#3916005", StructureOfOccipitalLymphNode }, 
+      { "3924000", StructureOfPericardiophrenicArtery }, 
+      { "http://snomed.info/sct#3924000", StructureOfPericardiophrenicArtery }, 
+      { "393006", WallOfUrinaryBladder }, 
+      { "http://snomed.info/sct#393006", WallOfUrinaryBladder }, 
+      { "3931001", OWOvalWindow }, 
+      { "http://snomed.info/sct#3931001", OWOvalWindow }, 
+      { "3935005", HeadOfTenthRibStructure }, 
+      { "http://snomed.info/sct#3935005", HeadOfTenthRibStructure }, 
+      { "3937002", StructureOfEntorhinalCortex }, 
+      { "http://snomed.info/sct#3937002", StructureOfEntorhinalCortex }, 
+      { "3954005", LacrimalSacStructure }, 
+      { "http://snomed.info/sct#3954005", LacrimalSacStructure }, 
+      { "3956007", StructureOfFifthMetatarsalArticularFacetOfFourthMetatarsalBone }, 
+      { "http://snomed.info/sct#3956007", StructureOfFifthMetatarsalArticularFacetOfFourthMetatarsalBone }, 
+      { "3959000", StructureOfRectusCapitisMuscle }, 
+      { "http://snomed.info/sct#3959000", StructureOfRectusCapitisMuscle }, 
+      { "3960005", OlfactoryTractStructure }, 
+      { "http://snomed.info/sct#3960005", OlfactoryTractStructure }, 
+      { "3964001", StructureOfGyrusOfBrain }, 
+      { "http://snomed.info/sct#3964001", StructureOfGyrusOfBrain }, 
+      { "3966004", EntireParietalBranchOfAnteriorCerebralArtery }, 
+      { "http://snomed.info/sct#3966004", EntireParietalBranchOfAnteriorCerebralArtery }, 
+      { "3977005", SubcutaneousTissueStructureOfConcha }, 
+      { "http://snomed.info/sct#3977005", SubcutaneousTissueStructureOfConcha }, 
+      { "3984002", DeepVeinOfClitoris }, 
+      { "http://snomed.info/sct#3984002", DeepVeinOfClitoris }, 
+      { "3989007", StructureOfMedialGlobusPallidus }, 
+      { "http://snomed.info/sct#3989007", StructureOfMedialGlobusPallidus }, 
+      { "4015004", ChromosomesGroupA }, 
+      { "http://snomed.info/sct#4015004", ChromosomesGroupA }, 
+      { "4019005", PosteriorCommissureOfLabiumMajorum }, 
+      { "http://snomed.info/sct#4019005", PosteriorCommissureOfLabiumMajorum }, 
+      { "402006", DentalBranchesOfInferiorAlveolarArtery }, 
+      { "http://snomed.info/sct#402006", DentalBranchesOfInferiorAlveolarArtery }, 
+      { "4029003", EosinophilicProgranulocyte }, 
+      { "http://snomed.info/sct#4029003", EosinophilicProgranulocyte }, 
+      { "405008", PosteriorTemporalDiploicVein }, 
+      { "http://snomed.info/sct#405008", PosteriorTemporalDiploicVein }, 
+      { "4061004", LateralOrbitalWall }, 
+      { "http://snomed.info/sct#4061004", LateralOrbitalWall }, 
+      { "4066009", StructureOfCapsuleOfProximalInterphalangealJointOfIndexFinger }, 
+      { "http://snomed.info/sct#4066009", StructureOfCapsuleOfProximalInterphalangealJointOfIndexFinger }, 
+      { "4072009", StructureOfFourthCoccygealVertebra }, 
+      { "http://snomed.info/sct#4072009", StructureOfFourthCoccygealVertebra }, 
+      { "4081003", EntireDorsalLingualVein }, 
+      { "http://snomed.info/sct#4081003", EntireDorsalLingualVein }, 
+      { "4093007", StructureOfVagusNerveBronchialBranch }, 
+      { "http://snomed.info/sct#4093007", StructureOfVagusNerveBronchialBranch }, 
+      { "4111006", MaculaOfTheSaccule }, 
+      { "http://snomed.info/sct#4111006", MaculaOfTheSaccule }, 
+      { "4117005", LumbosacralSpinalCordCentralCanalStructure }, 
+      { "http://snomed.info/sct#4117005", LumbosacralSpinalCordCentralCanalStructure }, 
+      { "4121003", StructureOfSuperiorFrontalSulcus }, 
+      { "http://snomed.info/sct#4121003", StructureOfSuperiorFrontalSulcus }, 
+      { "414003", GastricFundus }, 
+      { "http://snomed.info/sct#414003", GastricFundus }, 
+      { "4146003", StructureOfArteryOfExtremity }, 
+      { "http://snomed.info/sct#4146003", StructureOfArteryOfExtremity }, 
+      { "4148002", StructureOfPalmarSurfaceOfLittleFinger }, 
+      { "http://snomed.info/sct#4148002", StructureOfPalmarSurfaceOfLittleFinger }, 
+      { "4150005", CeliacNervousPlexusStructure }, 
+      { "http://snomed.info/sct#4150005", CeliacNervousPlexusStructure }, 
+      { "4158003", AbdominalAorticPlexusStructure }, 
+      { "http://snomed.info/sct#4158003", AbdominalAorticPlexusStructure }, 
+      { "4159006", HyparterialBronchus }, 
+      { "http://snomed.info/sct#4159006", HyparterialBronchus }, 
+      { "4180000", BothLowerExtremities }, 
+      { "http://snomed.info/sct#4180000", BothLowerExtremities }, 
+      { "4193005", EntireExtensorTendonAndTendonSheathOfFifthToe }, 
+      { "http://snomed.info/sct#4193005", EntireExtensorTendonAndTendonSheathOfFifthToe }, 
+      { "420002", AnastomosisHeterocladic }, 
+      { "http://snomed.info/sct#420002", AnastomosisHeterocladic }, 
+      { "4205002", TurkCell }, 
+      { "http://snomed.info/sct#4205002", TurkCell }, 
+      { "4212006", EpithelialCells }, 
+      { "http://snomed.info/sct#4212006", EpithelialCells }, 
+      { "4215008", HeadOfSecondRibStructure }, 
+      { "http://snomed.info/sct#4215008", HeadOfSecondRibStructure }, 
+      { "422005", InferiorSurfaceOfTongue }, 
+      { "http://snomed.info/sct#422005", InferiorSurfaceOfTongue }, 
+      { "4247003", BoneStructureOfFirstMetacarpal }, 
+      { "http://snomed.info/sct#4247003", BoneStructureOfFirstMetacarpal }, 
+      { "4258007", PosteriorTibialVein }, 
+      { "http://snomed.info/sct#4258007", PosteriorTibialVein }, 
+      { "4268002", LateralSpinorubralTract }, 
+      { "http://snomed.info/sct#4268002", LateralSpinorubralTract }, 
+      { "4276000", StructureOfInferiorArticularProcessOfSeventhCervicalVertebra }, 
+      { "http://snomed.info/sct#4276000", StructureOfInferiorArticularProcessOfSeventhCervicalVertebra }, 
+      { "4281009", StructureOfMiddlePortionOfIleum }, 
+      { "http://snomed.info/sct#4281009", StructureOfMiddlePortionOfIleum }, 
+      { "4295007", StructureOfParacorticalAreaOfLymphNode }, 
+      { "http://snomed.info/sct#4295007", StructureOfParacorticalAreaOfLymphNode }, 
+      { "4303006", CartilageCanal }, 
+      { "http://snomed.info/sct#4303006", CartilageCanal }, 
+      { "4312008", AnteriorMidlineOfAbdomen }, 
+      { "http://snomed.info/sct#4312008", AnteriorMidlineOfAbdomen }, 
+      { "4317002", StructureOfSpinalisMuscle }, 
+      { "http://snomed.info/sct#4317002", StructureOfSpinalisMuscle }, 
+      { "4328003", ProtoplasmicAstrocyte }, 
+      { "http://snomed.info/sct#4328003", ProtoplasmicAstrocyte }, 
+      { "4335006", UpperJawRegion }, 
+      { "http://snomed.info/sct#4335006", UpperJawRegion }, 
+      { "4352005", StructureOfSubchorionicSpace }, 
+      { "http://snomed.info/sct#4352005", StructureOfSubchorionicSpace }, 
+      { "4358009", StructureOfLateralSurfaceOfLittleFinger }, 
+      { "http://snomed.info/sct#4358009", StructureOfLateralSurfaceOfLittleFinger }, 
+      { "4360006", StratumSpinosumStructure }, 
+      { "http://snomed.info/sct#4360006", StratumSpinosumStructure }, 
+      { "4369007", SmallIntestineMucousMembraneStructure }, 
+      { "http://snomed.info/sct#4369007", SmallIntestineMucousMembraneStructure }, 
+      { "4371007", StructureOfFourthMetatarsalFacetOfLateralCuneiformBone }, 
+      { "http://snomed.info/sct#4371007", StructureOfFourthMetatarsalFacetOfLateralCuneiformBone }, 
+      { "4375003", StructureOfIncisureOfCartilaginousPortionOfAuditoryCanal }, 
+      { "http://snomed.info/sct#4375003", StructureOfIncisureOfCartilaginousPortionOfAuditoryCanal }, 
+      { "4377006", StructureOfParafascicularNucleusOfThalamus }, 
+      { "http://snomed.info/sct#4377006", StructureOfParafascicularNucleusOfThalamus }, 
+      { "4394008", ScalaVestibuliStructure }, 
+      { "http://snomed.info/sct#4394008", ScalaVestibuliStructure }, 
+      { "4402002", StructureOfAnteriorArticularSurfaceForTalus }, 
+      { "http://snomed.info/sct#4402002", StructureOfAnteriorArticularSurfaceForTalus }, 
+      { "4419000", TrachealSubmucosa }, 
+      { "http://snomed.info/sct#4419000", TrachealSubmucosa }, 
+      { "4421005", CellularStructures }, 
+      { "http://snomed.info/sct#4421005", CellularStructures }, 
+      { "4430002", StructureOfClivusOssisSphenoidalis }, 
+      { "http://snomed.info/sct#4430002", StructureOfClivusOssisSphenoidalis }, 
+      { "4432005", StructureOfDuctusArteriosus }, 
+      { "http://snomed.info/sct#4432005", StructureOfDuctusArteriosus }, 
+      { "4442007", DentalArchStructure }, 
+      { "http://snomed.info/sct#4442007", DentalArchStructure }, 
+      { "446003", TrochantericBursa }, 
+      { "http://snomed.info/sct#446003", TrochantericBursa }, 
+      { "4486002", StructureOfAccessorySinusGland }, 
+      { "http://snomed.info/sct#4486002", StructureOfAccessorySinusGland }, 
+      { "4524000", StructureOfSubclavianPlexus }, 
+      { "http://snomed.info/sct#4524000", StructureOfSubclavianPlexus }, 
+      { "4527007", JointStructureOfLowerExtremity }, 
+      { "http://snomed.info/sct#4527007", JointStructureOfLowerExtremity }, 
+      { "4537002", StructureOfInternalMedullaryLaminaOfThalamus }, 
+      { "http://snomed.info/sct#4537002", StructureOfInternalMedullaryLaminaOfThalamus }, 
+      { "4548009", LamellatedGranuleAsInSurfactantSecretingCell }, 
+      { "http://snomed.info/sct#4548009", LamellatedGranuleAsInSurfactantSecretingCell }, 
+      { "4549001", EntireVagusNerveParasympatheticFibersToLiverGallbladderBileDuctsAndPancreas }, 
+      { "http://snomed.info/sct#4549001", EntireVagusNerveParasympatheticFibersToLiverGallbladderBileDuctsAndPancreas }, 
+      { "4566004", StructureOfTentoriumCerebelli }, 
+      { "http://snomed.info/sct#4566004", StructureOfTentoriumCerebelli }, 
+      { "457008", CollateralLigament }, 
+      { "http://snomed.info/sct#457008", CollateralLigament }, 
+      { "4573009", Desmosome }, 
+      { "http://snomed.info/sct#4573009", Desmosome }, 
+      { "4578000", SkinStructureOfPosteriorSurfaceOfThigh }, 
+      { "http://snomed.info/sct#4578000", SkinStructureOfPosteriorSurfaceOfThigh }, 
+      { "4583008", StructureOfSpleniusMuscleOfTrunk }, 
+      { "http://snomed.info/sct#4583008", StructureOfSpleniusMuscleOfTrunk }, 
+      { "4588004", StructureOfMiddleTrunkOfBrachialPlexus }, 
+      { "http://snomed.info/sct#4588004", StructureOfMiddleTrunkOfBrachialPlexus }, 
+      { "4596009", LarynxStructure }, 
+      { "http://snomed.info/sct#4596009", LarynxStructure }, 
+      { "4603002", StructureOfBaseOfPhalanxOfFoot }, 
+      { "http://snomed.info/sct#4603002", StructureOfBaseOfPhalanxOfFoot }, 
+      { "4606005", TubercleOfEighthRibStructure }, 
+      { "http://snomed.info/sct#4606005", TubercleOfEighthRibStructure }, 
+      { "461002", LateralCorticospinalTract }, 
+      { "http://snomed.info/sct#461002", LateralCorticospinalTract }, 
+      { "4621004", StructureOfLesserTuberosityOfHumerus }, 
+      { "http://snomed.info/sct#4621004", StructureOfLesserTuberosityOfHumerus }, 
+      { "4624007", StructureOfLymphaticCord }, 
+      { "http://snomed.info/sct#4624007", StructureOfLymphaticCord }, 
+      { "464005", BasophilicNormoblast }, 
+      { "http://snomed.info/sct#464005", BasophilicNormoblast }, 
+      { "4647008", LipidDropletHomogeneous }, 
+      { "http://snomed.info/sct#4647008", LipidDropletHomogeneous }, 
+      { "465006", AscendingFrontalGyrus }, 
+      { "http://snomed.info/sct#465006", AscendingFrontalGyrus }, 
+      { "4651005", StructureOfTunicaAlbugineaOfCorpusSpongiosum }, 
+      { "http://snomed.info/sct#4651005", StructureOfTunicaAlbugineaOfCorpusSpongiosum }, 
+      { "4658004", SkinStructureOfNuchalRegion }, 
+      { "http://snomed.info/sct#4658004", SkinStructureOfNuchalRegion }, 
+      { "4677002", BasalLaminaInclusionInSubepithelialLocation }, 
+      { "http://snomed.info/sct#4677002", BasalLaminaInclusionInSubepithelialLocation }, 
+      { "4703008", CardinalVeinStructure }, 
+      { "http://snomed.info/sct#4703008", CardinalVeinStructure }, 
+      { "471000", FlexorHallucisLongusInLeg }, 
+      { "http://snomed.info/sct#471000", FlexorHallucisLongusInLeg }, 
+      { "4717004", NeutrophilicMyelocyte }, 
+      { "http://snomed.info/sct#4717004", NeutrophilicMyelocyte }, 
+      { "4718009", EntireVenousPlexusOfTheForamenOvaleBasisCranii }, 
+      { "http://snomed.info/sct#4718009", EntireVenousPlexusOfTheForamenOvaleBasisCranii }, 
+      { "4743003", StructureOfVentralSacrococcygealLigament }, 
+      { "http://snomed.info/sct#4743003", StructureOfVentralSacrococcygealLigament }, 
+      { "4755009", StructureOfMedialSurfaceOfGreatToe }, 
+      { "http://snomed.info/sct#4755009", StructureOfMedialSurfaceOfGreatToe }, 
+      { "4759003", StructureOfGemellusMuscle }, 
+      { "http://snomed.info/sct#4759003", StructureOfGemellusMuscle }, 
+      { "4766002", StructureOfSupracardinalVein }, 
+      { "http://snomed.info/sct#4766002", StructureOfSupracardinalVein }, 
+      { "4768001", StructureOfPerinealNerve }, 
+      { "http://snomed.info/sct#4768001", StructureOfPerinealNerve }, 
+      { "4774001", StructureOfPhrenicNervePericardialBranch }, 
+      { "http://snomed.info/sct#4774001", StructureOfPhrenicNervePericardialBranch }, 
+      { "4775000", StructureOfVentralPosteriorInferiorNucleus }, 
+      { "http://snomed.info/sct#4775000", StructureOfVentralPosteriorInferiorNucleus }, 
+      { "4799000", DeiterCell }, 
+      { "http://snomed.info/sct#4799000", DeiterCell }, 
+      { "480000", CardiopulmonaryCirculatorySystem }, 
+      { "http://snomed.info/sct#480000", CardiopulmonaryCirculatorySystem }, 
+      { "4810005", StructureOfUterineVenousPlexus }, 
+      { "http://snomed.info/sct#4810005", StructureOfUterineVenousPlexus }, 
+      { "4812002", AnteriorTibialCompartmentStructure }, 
+      { "http://snomed.info/sct#4812002", AnteriorTibialCompartmentStructure }, 
+      { "4828007", FemoralCanalStructure }, 
+      { "http://snomed.info/sct#4828007", FemoralCanalStructure }, 
+      { "4840007", SubcutaneousTissueStructureOfRingFinger }, 
+      { "http://snomed.info/sct#4840007", SubcutaneousTissueStructureOfRingFinger }, 
+      { "4843009", AmpullaOfSemicircularDuct }, 
+      { "http://snomed.info/sct#4843009", AmpullaOfSemicircularDuct }, 
+      { "485005", TCTransverseColon }, 
+      { "http://snomed.info/sct#485005", TCTransverseColon }, 
+      { "4861000", StructureOfTuberculumImpar }, 
+      { "http://snomed.info/sct#4861000", StructureOfTuberculumImpar }, 
+      { "4866005", ConstrictorMuscleOfPharynxStructure }, 
+      { "http://snomed.info/sct#4866005", ConstrictorMuscleOfPharynxStructure }, 
+      { "4870002", StructureOfDorsalTegmentalNucleiOfMidbrain }, 
+      { "http://snomed.info/sct#4870002", StructureOfDorsalTegmentalNucleiOfMidbrain }, 
+      { "4871003", LaminaOfModiolusOfCochlea }, 
+      { "http://snomed.info/sct#4871003", LaminaOfModiolusOfCochlea }, 
+      { "4881004", EntireSublingualVein }, 
+      { "http://snomed.info/sct#4881004", EntireSublingualVein }, 
+      { "4888005", EntireInterlobularVeinOfKidney }, 
+      { "http://snomed.info/sct#4888005", EntireInterlobularVeinOfKidney }, 
+      { "4897009", CellMembraneProkaryotic }, 
+      { "http://snomed.info/sct#4897009", CellMembraneProkaryotic }, 
+      { "4905007", StructureOfUterovaginalPlexus }, 
+      { "http://snomed.info/sct#4905007", StructureOfUterovaginalPlexus }, 
+      { "4906008", MastoidAntrumStructure }, 
+      { "http://snomed.info/sct#4906008", MastoidAntrumStructure }, 
+      { "4924005", CerebellarGracileLobule }, 
+      { "http://snomed.info/sct#4924005", CerebellarGracileLobule }, 
+      { "4942000", LowerLimbLymphNodeStructure }, 
+      { "http://snomed.info/sct#4942000", LowerLimbLymphNodeStructure }, 
+      { "4954000", StructureOfRadialNotchOfUlna }, 
+      { "http://snomed.info/sct#4954000", StructureOfRadialNotchOfUlna }, 
+      { "4956003", SubcutaneousTissueStructureOfBack }, 
+      { "http://snomed.info/sct#4956003", SubcutaneousTissueStructureOfBack }, 
+      { "4958002", AmygdaloidStructure }, 
+      { "http://snomed.info/sct#4958002", AmygdaloidStructure }, 
+      { "5001007", StructureOfSuperiorTemporalSulcus }, 
+      { "http://snomed.info/sct#5001007", StructureOfSuperiorTemporalSulcus }, 
+      { "5023006", StructureOfYellowBoneMarrow }, 
+      { "http://snomed.info/sct#5023006", StructureOfYellowBoneMarrow }, 
+      { "5026003", StructureOfPosteriorSurfaceOfProstate }, 
+      { "http://snomed.info/sct#5026003", StructureOfPosteriorSurfaceOfProstate }, 
+      { "5046008", StructureOfSuperficialDorsalVeinsOfClitoris }, 
+      { "http://snomed.info/sct#5046008", StructureOfSuperficialDorsalVeinsOfClitoris }, 
+      { "5068003", StructureOfObturatorInternusMuscleIschialBursa }, 
+      { "http://snomed.info/sct#5068003", StructureOfObturatorInternusMuscleIschialBursa }, 
+      { "5069006", StructureOfRugalColumn }, 
+      { "http://snomed.info/sct#5069006", StructureOfRugalColumn }, 
+      { "5076001", StructureOfInfrasternalAngle }, 
+      { "http://snomed.info/sct#5076001", StructureOfInfrasternalAngle }, 
+      { "5115006", StructureOfPosteriorAuricularVein }, 
+      { "http://snomed.info/sct#5115006", StructureOfPosteriorAuricularVein }, 
+      { "5122003", EntireAngleOfFirstRib }, 
+      { "http://snomed.info/sct#5122003", EntireAngleOfFirstRib }, 
+      { "5128004", LensZonules }, 
+      { "http://snomed.info/sct#5128004", LensZonules }, 
+      { "5140004", PermanentUpperRight6Tooth }, 
+      { "http://snomed.info/sct#5140004", PermanentUpperRight6Tooth }, 
+      { "5192008", StructureOfIntervertebralForamenOfTwelfthThoracicVertebra }, 
+      { "http://snomed.info/sct#5192008", StructureOfIntervertebralForamenOfTwelfthThoracicVertebra }, 
+      { "5194009", StructureOfEpitheliumOfLens }, 
+      { "http://snomed.info/sct#5194009", StructureOfEpitheliumOfLens }, 
+      { "5195005", StructureOfRightExternalCarotidArtery }, 
+      { "http://snomed.info/sct#5195005", StructureOfRightExternalCarotidArtery }, 
+      { "5204005", SuperiorIleocecalRecess }, 
+      { "http://snomed.info/sct#5204005", SuperiorIleocecalRecess }, 
+      { "5213007", FrontalVein }, 
+      { "http://snomed.info/sct#5213007", FrontalVein }, 
+      { "5225005", StructureOfUterineOstiumOfFallopianTube }, 
+      { "http://snomed.info/sct#5225005", StructureOfUterineOstiumOfFallopianTube }, 
+      { "5228007", RightCerebralHemisphereStructure }, 
+      { "http://snomed.info/sct#5228007", RightCerebralHemisphereStructure }, 
+      { "5229004", StructureOfMucosaOfGallbladder }, 
+      { "http://snomed.info/sct#5229004", StructureOfMucosaOfGallbladder }, 
+      { "5261000", StructureOfThoracicIntervertebralDisc }, 
+      { "http://snomed.info/sct#5261000", StructureOfThoracicIntervertebralDisc }, 
+      { "5272005", SkinStructureOfLateralPortionOfNeck }, 
+      { "http://snomed.info/sct#5272005", SkinStructureOfLateralPortionOfNeck }, 
+      { "5279001", StructureOfForamenSingulare }, 
+      { "http://snomed.info/sct#5279001", StructureOfForamenSingulare }, 
+      { "528006", CostalSurfaceOfLung }, 
+      { "http://snomed.info/sct#528006", CostalSurfaceOfLung }, 
+      { "5296000", StructureOfAnteriorMediastinalLymphNode }, 
+      { "http://snomed.info/sct#5296000", StructureOfAnteriorMediastinalLymphNode }, 
+      { "5324007", StructureOfSuperiorPoleOfKidney }, 
+      { "http://snomed.info/sct#5324007", StructureOfSuperiorPoleOfKidney }, 
+      { "5329002", BoneStructureOfC4 }, 
+      { "http://snomed.info/sct#5329002", BoneStructureOfC4 }, 
+      { "5336001", StructureOfInferiorFrontalGyrus }, 
+      { "http://snomed.info/sct#5336001", StructureOfInferiorFrontalGyrus }, 
+      { "5347008", SynapticSpecializationCytoplasmic }, 
+      { "http://snomed.info/sct#5347008", SynapticSpecializationCytoplasmic }, 
+      { "5362005", StructureOfMedianArcuateLigamentOfDiaphragm }, 
+      { "http://snomed.info/sct#5362005", StructureOfMedianArcuateLigamentOfDiaphragm }, 
+      { "5366008", HippocampalStructure }, 
+      { "http://snomed.info/sct#5366008", HippocampalStructure }, 
+      { "5379004", SmallIntestineMuscularisPropria }, 
+      { "http://snomed.info/sct#5379004", SmallIntestineMuscularisPropria }, 
+      { "5382009", SuperiorFasciaOfPerineum }, 
+      { "http://snomed.info/sct#5382009", SuperiorFasciaOfPerineum }, 
+      { "5394000", UterineParacervicalLymphNode }, 
+      { "http://snomed.info/sct#5394000", UterineParacervicalLymphNode }, 
+      { "5398002", NormalFatPad }, 
+      { "http://snomed.info/sct#5398002", NormalFatPad }, 
+      { "5403001", ArticularProcessOfThirdLumbarVertebra }, 
+      { "http://snomed.info/sct#5403001", ArticularProcessOfThirdLumbarVertebra }, 
+      { "5421003", SexChromosomeY }, 
+      { "http://snomed.info/sct#5421003", SexChromosomeY }, 
+      { "5427004", ApocrineIntraepidermalDuct }, 
+      { "http://snomed.info/sct#5427004", ApocrineIntraepidermalDuct }, 
+      { "5458003", DeepArteryOfClitoris }, 
+      { "http://snomed.info/sct#5458003", DeepArteryOfClitoris }, 
+      { "5459006", CardiacIncisureOfStomach }, 
+      { "http://snomed.info/sct#5459006", CardiacIncisureOfStomach }, 
+      { "5491007", LacrimalPartOfOrbicularisOculiMuscle }, 
+      { "http://snomed.info/sct#5491007", LacrimalPartOfOrbicularisOculiMuscle }, 
+      { "5493005", MetacarpophalangealJointOfLittleFinger }, 
+      { "http://snomed.info/sct#5493005", MetacarpophalangealJointOfLittleFinger }, 
+      { "5498001", SuperiorAberrantDuctuleOfEpididymis }, 
+      { "http://snomed.info/sct#5498001", SuperiorAberrantDuctuleOfEpididymis }, 
+      { "5501001", HyaloidArtery }, 
+      { "http://snomed.info/sct#5501001", HyaloidArtery }, 
+      { "5520004", SubcutaneousTissueOfChin }, 
+      { "http://snomed.info/sct#5520004", SubcutaneousTissueOfChin }, 
+      { "552004", VagusNerveParasympatheticFibersToCardiacPlexus }, 
+      { "http://snomed.info/sct#552004", VagusNerveParasympatheticFibersToCardiacPlexus }, 
+      { "5538001", TegmentalPortionOfPons }, 
+      { "http://snomed.info/sct#5538001", TegmentalPortionOfPons }, 
+      { "5542003", CristaMarginalisOfTooth }, 
+      { "http://snomed.info/sct#5542003", CristaMarginalisOfTooth }, 
+      { "5544002", LongitudinalLayerOfDuodenalMuscularisPropria }, 
+      { "http://snomed.info/sct#5544002", LongitudinalLayerOfDuodenalMuscularisPropria }, 
+      { "5560003", AlveolarRidgeMucousMembrane }, 
+      { "http://snomed.info/sct#5560003", AlveolarRidgeMucousMembrane }, 
+      { "5564007", Singlet }, 
+      { "http://snomed.info/sct#5564007", Singlet }, 
+      { "5574005", SeventhCostalCartilage }, 
+      { "http://snomed.info/sct#5574005", SeventhCostalCartilage }, 
+      { "5580002", TendonOfSupraspinatusMuscle }, 
+      { "http://snomed.info/sct#5580002", TendonOfSupraspinatusMuscle }, 
+      { "5597008", RetinaOfRightEye }, 
+      { "http://snomed.info/sct#5597008", RetinaOfRightEye }, 
+      { "5611001", AnulusFibrosusOfIntervertebralDiscOfFifthCervicalVertebra }, 
+      { "http://snomed.info/sct#5611001", AnulusFibrosusOfIntervertebralDiscOfFifthCervicalVertebra }, 
+      { "5625000", NavicularFacetOfIntermediateCuneiformBone }, 
+      { "http://snomed.info/sct#5625000", NavicularFacetOfIntermediateCuneiformBone }, 
+      { "5627008", RightVisceralPleura }, 
+      { "http://snomed.info/sct#5627008", RightVisceralPleura }, 
+      { "5633004", MuscularPortionOfInterventricularSeptum }, 
+      { "http://snomed.info/sct#5633004", MuscularPortionOfInterventricularSeptum }, 
+      { "5643001", CanalOfStomach }, 
+      { "http://snomed.info/sct#5643001", CanalOfStomach }, 
+      { "5644007", FracturedMembranePFace }, 
+      { "http://snomed.info/sct#5644007", FracturedMembranePFace }, 
+      { "565008", IntervertebralDiscSpaceOfFifthLumbarVertebra }, 
+      { "http://snomed.info/sct#565008", IntervertebralDiscSpaceOfFifthLumbarVertebra }, 
+      { "5653000", InnerSurfaceOfSeventhRib }, 
+      { "http://snomed.info/sct#5653000", InnerSurfaceOfSeventhRib }, 
+      { "5665001", Retina }, 
+      { "http://snomed.info/sct#5665001", Retina }, 
+      { "5668004", LowerDigestiveTract }, 
+      { "http://snomed.info/sct#5668004", LowerDigestiveTract }, 
+      { "5677006", LenticularFasciculus }, 
+      { "http://snomed.info/sct#5677006", LenticularFasciculus }, 
+      { "5682004", SubcutaneousTissueOfUpperExtremity }, 
+      { "http://snomed.info/sct#5682004", SubcutaneousTissueOfUpperExtremity }, 
+      { "5696005", ArticularPartOfTubercleOfNinthRib }, 
+      { "http://snomed.info/sct#5696005", ArticularPartOfTubercleOfNinthRib }, 
+      { "5697001", SkinOfLateralSurfaceOfFinger }, 
+      { "http://snomed.info/sct#5697001", SkinOfLateralSurfaceOfFinger }, 
+      { "5709001", MultifidusMuscles }, 
+      { "http://snomed.info/sct#5709001", MultifidusMuscles }, 
+      { "5713008", SubmandibularTriangle }, 
+      { "http://snomed.info/sct#5713008", SubmandibularTriangle }, 
+      { "5717009", TemporalFossa }, 
+      { "http://snomed.info/sct#5717009", TemporalFossa }, 
+      { "5718004", TendonAndTendonSheathOfLegAndAnkle }, 
+      { "http://snomed.info/sct#5718004", TendonAndTendonSheathOfLegAndAnkle }, 
+      { "5727003", AnteriorCervicalLymphNode }, 
+      { "http://snomed.info/sct#5727003", AnteriorCervicalLymphNode }, 
+      { "5742000", SkinOfForearm }, 
+      { "http://snomed.info/sct#5742000", SkinOfForearm }, 
+      { "5751008", SubcutaneousTissueOfAnteriorPortionOfNeck }, 
+      { "http://snomed.info/sct#5751008", SubcutaneousTissueOfAnteriorPortionOfNeck }, 
+      { "5769004", EndocervicalEpithelium }, 
+      { "http://snomed.info/sct#5769004", EndocervicalEpithelium }, 
+      { "5780004", Paradidymis }, 
+      { "http://snomed.info/sct#5780004", Paradidymis }, 
+      { "5798000", Diaphragm }, 
+      { "http://snomed.info/sct#5798000", Diaphragm }, 
+      { "5802004", MediumSizedNeuron }, 
+      { "http://snomed.info/sct#5802004", MediumSizedNeuron }, 
+      { "5814007", AngleOfSeventhRib }, 
+      { "http://snomed.info/sct#5814007", AngleOfSeventhRib }, 
+      { "5815008", SuperiorRectusMuscle }, 
+      { "http://snomed.info/sct#5815008", SuperiorRectusMuscle }, 
+      { "5816009", DuodenalFold }, 
+      { "http://snomed.info/sct#5816009", DuodenalFold }, 
+      { "582005", HeadOfPhalanxOfGreatToe }, 
+      { "http://snomed.info/sct#582005", HeadOfPhalanxOfGreatToe }, 
+      { "5825003", SubstantiaPropriaOfSclera }, 
+      { "http://snomed.info/sct#5825003", SubstantiaPropriaOfSclera }, 
+      { "5828001", PosteriorCordOfBrachialPlexus }, 
+      { "http://snomed.info/sct#5828001", PosteriorCordOfBrachialPlexus }, 
+      { "5847003", SuperiorArticularProcessOfSeventhCervicalVertebra }, 
+      { "http://snomed.info/sct#5847003", SuperiorArticularProcessOfSeventhCervicalVertebra }, 
+      { "5854009", OrbitalPlateOfEthmoidBone }, 
+      { "http://snomed.info/sct#5854009", OrbitalPlateOfEthmoidBone }, 
+      { "5868002", SerosaOfUrinaryBladder }, 
+      { "http://snomed.info/sct#5868002", SerosaOfUrinaryBladder }, 
+      { "587004", CapsuleOfProximalInterphalangealJointOfThirdToe }, 
+      { "http://snomed.info/sct#587004", CapsuleOfProximalInterphalangealJointOfThirdToe }, 
+      { "5872003", SubcutaneousTissueOfLateralBorderOfSoleOfFoot }, 
+      { "http://snomed.info/sct#5872003", SubcutaneousTissueOfLateralBorderOfSoleOfFoot }, 
+      { "5881009", TuberosityOfDistalPhalanxOfHand }, 
+      { "http://snomed.info/sct#5881009", TuberosityOfDistalPhalanxOfHand }, 
+      { "5882002", EndothelialSievePlate }, 
+      { "http://snomed.info/sct#5882002", EndothelialSievePlate }, 
+      { "5889006", ArticularSurfaceThirdMetacarpalOfFourthMetacarpalBone }, 
+      { "http://snomed.info/sct#5889006", ArticularSurfaceThirdMetacarpalOfFourthMetacarpalBone }, 
+      { "5890002", PosteriorCellsOfEthmoidSinus }, 
+      { "http://snomed.info/sct#5890002", PosteriorCellsOfEthmoidSinus }, 
+      { "589001", InterventricularSeptum }, 
+      { "http://snomed.info/sct#589001", InterventricularSeptum }, 
+      { "5893000", SuperiorRecessOfTympanicMembrane }, 
+      { "http://snomed.info/sct#5893000", SuperiorRecessOfTympanicMembrane }, 
+      { "5898009", Myotome }, 
+      { "http://snomed.info/sct#5898009", Myotome }, 
+      { "5923009", ArticularProcessOfTwelfthThoracicVertebra }, 
+      { "http://snomed.info/sct#5923009", ArticularProcessOfTwelfthThoracicVertebra }, 
+      { "5926001", BronchialLumen }, 
+      { "http://snomed.info/sct#5926001", BronchialLumen }, 
+      { "5928000", GreatCardiacVein }, 
+      { "http://snomed.info/sct#5928000", GreatCardiacVein }, 
+      { "5942008", TensorTympaniMuscle }, 
+      { "http://snomed.info/sct#5942008", TensorTympaniMuscle }, 
+      { "5943003", VestibularVein }, 
+      { "http://snomed.info/sct#5943003", VestibularVein }, 
+      { "5944009", PosteriorPalatineArch }, 
+      { "http://snomed.info/sct#5944009", PosteriorPalatineArch }, 
+      { "5948007", CapsuleOfDistalInterphalangealJointOfThirdToe }, 
+      { "http://snomed.info/sct#5948007", CapsuleOfDistalInterphalangealJointOfThirdToe }, 
+      { "595000", PalpebralFissure }, 
+      { "http://snomed.info/sct#595000", PalpebralFissure }, 
+      { "5951000", LeftWrist }, 
+      { "http://snomed.info/sct#5951000", LeftWrist }, 
+      { "5953002", EighthRib }, 
+      { "http://snomed.info/sct#5953002", EighthRib }, 
+      { "5976004", SubcutaneousTissueOfEyelid }, 
+      { "http://snomed.info/sct#5976004", SubcutaneousTissueOfEyelid }, 
+      { "5979006", EpiscleralArtery }, 
+      { "http://snomed.info/sct#5979006", EpiscleralArtery }, 
+      { "5996007", ChromosomesGroupD }, 
+      { "http://snomed.info/sct#5996007", ChromosomesGroupD }, 
+      { "6001004", QuadratusLumborumMuscle }, 
+      { "http://snomed.info/sct#6001004", QuadratusLumborumMuscle }, 
+      { "6004007", IntervertebralDiscOfSecondThoracicVertebra }, 
+      { "http://snomed.info/sct#6004007", IntervertebralDiscOfSecondThoracicVertebra }, 
+      { "6006009", CircularLayerOfDuodenalMuscularisPropria }, 
+      { "http://snomed.info/sct#6006009", CircularLayerOfDuodenalMuscularisPropria }, 
+      { "6009002", MesenteryOfAscendingColon }, 
+      { "http://snomed.info/sct#6009002", MesenteryOfAscendingColon }, 
+      { "6013009", ReticuloendothelialSystem }, 
+      { "http://snomed.info/sct#6013009", ReticuloendothelialSystem }, 
+      { "6014003", PenicilliaryArteries }, 
+      { "http://snomed.info/sct#6014003", PenicilliaryArteries }, 
+      { "6023000", Heterolysosome }, 
+      { "http://snomed.info/sct#6023000", Heterolysosome }, 
+      { "6032003", ColumnarEpithelialCell }, 
+      { "http://snomed.info/sct#6032003", ColumnarEpithelialCell }, 
+      { "6046003", OuterSurfaceOfThirdRib }, 
+      { "http://snomed.info/sct#6046003", OuterSurfaceOfThirdRib }, 
+      { "6050005", LacrimalVein }, 
+      { "http://snomed.info/sct#6050005", LacrimalVein }, 
+      { "6059006", MetacarpophalangealJointOfMiddleFinger }, 
+      { "http://snomed.info/sct#6059006", MetacarpophalangealJointOfMiddleFinger }, 
+      { "6062009", DeciduousMandibularRightCanineTooth }, 
+      { "http://snomed.info/sct#6062009", DeciduousMandibularRightCanineTooth }, 
+      { "6073002", LigamentOfLeftSuperiorVenaCava }, 
+      { "http://snomed.info/sct#6073002", LigamentOfLeftSuperiorVenaCava }, 
+      { "6074008", CapsuleOfTemporomandibularJoint }, 
+      { "http://snomed.info/sct#6074008", CapsuleOfTemporomandibularJoint }, 
+      { "6076005", GastrointestinalSubserosa }, 
+      { "http://snomed.info/sct#6076005", GastrointestinalSubserosa }, 
+      { "608002", SubcutaneousTissueOfPhiltrum }, 
+      { "http://snomed.info/sct#608002", SubcutaneousTissueOfPhiltrum }, 
+      { "6104005", SubclavianNerve }, 
+      { "http://snomed.info/sct#6104005", SubclavianNerve }, 
+      { "6105006", BodyOfFifthThoracicVertebra }, 
+      { "http://snomed.info/sct#6105006", BodyOfFifthThoracicVertebra }, 
+      { "6110005", FacialNerveParasympatheticFibers }, 
+      { "http://snomed.info/sct#6110005", FacialNerveParasympatheticFibers }, 
+      { "6194002", NailOfFourthToe }, 
+      { "http://snomed.info/sct#6194002", NailOfFourthToe }, 
+      { "621009", MultivesicularBodyInternalVesicles }, 
+      { "http://snomed.info/sct#621009", MultivesicularBodyInternalVesicles }, 
+      { "6216007", PostcapillaryVenule }, 
+      { "http://snomed.info/sct#6216007", PostcapillaryVenule }, 
+      { "6217003", PiriformRecess }, 
+      { "http://snomed.info/sct#6217003", PiriformRecess }, 
+      { "6229007", OsLacrimale }, 
+      { "http://snomed.info/sct#6229007", OsLacrimale }, 
+      { "6253001", SulcusTerminalisCordis }, 
+      { "http://snomed.info/sct#6253001", SulcusTerminalisCordis }, 
+      { "6268000", AccessoryPhrenicNerves }, 
+      { "http://snomed.info/sct#6268000", AccessoryPhrenicNerves }, 
+      { "6269008", SubcutaneousTissueOfScalp }, 
+      { "http://snomed.info/sct#6269008", SubcutaneousTissueOfScalp }, 
+      { "6279005", SkinOfDorsalSurfaceOfFinger }, 
+      { "http://snomed.info/sct#6279005", SkinOfDorsalSurfaceOfFinger }, 
+      { "6317000", PosteriorBasalBranchOfLeftPulmonaryArtery }, 
+      { "http://snomed.info/sct#6317000", PosteriorBasalBranchOfLeftPulmonaryArtery }, 
+      { "6325003", AryepiglotticMuscle }, 
+      { "http://snomed.info/sct#6325003", AryepiglotticMuscle }, 
+      { "6326002", FetalAtloidArticulation }, 
+      { "http://snomed.info/sct#6326002", FetalAtloidArticulation }, 
+      { "6335009", LymphoidFollicleOfStomach }, 
+      { "http://snomed.info/sct#6335009", LymphoidFollicleOfStomach }, 
+      { "635006", TuberosityOfDistalPhalanxOfLittleToe }, 
+      { "http://snomed.info/sct#635006", TuberosityOfDistalPhalanxOfLittleToe }, 
+      { "6359004", HairMedulla }, 
+      { "http://snomed.info/sct#6359004", HairMedulla }, 
+      { "6371005", LymphaticsOfThyroidGland }, 
+      { "http://snomed.info/sct#6371005", LymphaticsOfThyroidGland }, 
+      { "6375001", CavernousPortionOfUrethra }, 
+      { "http://snomed.info/sct#6375001", CavernousPortionOfUrethra }, 
+      { "6392005", CoccygealNerve }, 
+      { "http://snomed.info/sct#6392005", CoccygealNerve }, 
+      { "6404004", LigamentumNuchae }, 
+      { "http://snomed.info/sct#6404004", LigamentumNuchae }, 
+      { "6413002", PresymphysialLymphNode }, 
+      { "http://snomed.info/sct#6413002", PresymphysialLymphNode }, 
+      { "6417001", MedialMalleolus }, 
+      { "http://snomed.info/sct#6417001", MedialMalleolus }, 
+      { "6423006", SupraspinatusMuscle }, 
+      { "http://snomed.info/sct#6423006", SupraspinatusMuscle }, 
+      { "6424000", StructureOfRadiatingPortionOfCorticalLobuleOfKidney }, 
+      { "http://snomed.info/sct#6424000", StructureOfRadiatingPortionOfCorticalLobuleOfKidney }, 
+      { "6445007", MastCell }, 
+      { "http://snomed.info/sct#6445007", MastCell }, 
+      { "6448009", PosteriorVagalTrunk }, 
+      { "http://snomed.info/sct#6448009", PosteriorVagalTrunk }, 
+      { "6450001", Cytotrophoblast }, 
+      { "http://snomed.info/sct#6450001", Cytotrophoblast }, 
+      { "6472004", MedialAspectOfOvary }, 
+      { "http://snomed.info/sct#6472004", MedialAspectOfOvary }, 
+      { "650002", SuperiorArticularProcessOfSeventhThoracicVertebra }, 
+      { "http://snomed.info/sct#650002", SuperiorArticularProcessOfSeventhThoracicVertebra }, 
+      { "6504002", GlansClitoridis }, 
+      { "http://snomed.info/sct#6504002", GlansClitoridis }, 
+      { "6511003", DistalPortionOfCircumflexBranchOfLeftCoronaryArtery }, 
+      { "http://snomed.info/sct#6511003", DistalPortionOfCircumflexBranchOfLeftCoronaryArtery }, 
+      { "6530003", CardiacValveLeaflet }, 
+      { "http://snomed.info/sct#6530003", CardiacValveLeaflet }, 
+      { "6533001", ColonicHaustra }, 
+      { "http://snomed.info/sct#6533001", ColonicHaustra }, 
+      { "6538005", ThyrocervicalTrunk }, 
+      { "http://snomed.info/sct#6538005", ThyrocervicalTrunk }, 
+      { "6541001", AnteriorCommissureOfMitralValve }, 
+      { "http://snomed.info/sct#6541001", AnteriorCommissureOfMitralValve }, 
+      { "6544009", GastrohepaticLigament }, 
+      { "http://snomed.info/sct#6544009", GastrohepaticLigament }, 
+      { "6550004", AngularIncisureOfStomach }, 
+      { "http://snomed.info/sct#6550004", AngularIncisureOfStomach }, 
+      { "6551000", PollicisArtery }, 
+      { "http://snomed.info/sct#6551000", PollicisArtery }, 
+      { "6553002", InferiorNasalTurbinate }, 
+      { "http://snomed.info/sct#6553002", InferiorNasalTurbinate }, 
+      { "6564004", MedialBorderOfSole }, 
+      { "http://snomed.info/sct#6564004", MedialBorderOfSole }, 
+      { "6566002", CerebellarHemisphere }, 
+      { "http://snomed.info/sct#6566002", CerebellarHemisphere }, 
+      { "6572002", BaseOfPhalanxOfMiddleFinger }, 
+      { "http://snomed.info/sct#6572002", BaseOfPhalanxOfMiddleFinger }, 
+      { "6598008", LingualNerve }, 
+      { "http://snomed.info/sct#6598008", LingualNerve }, 
+      { "660006", TrachealMucousMembrane }, 
+      { "http://snomed.info/sct#660006", TrachealMucousMembrane }, 
+      { "6606008", StructureOfDorsalIntercuneiformLigaments }, 
+      { "http://snomed.info/sct#6606008", StructureOfDorsalIntercuneiformLigaments }, 
+      { "6608009", SphenoparietalSinus }, 
+      { "http://snomed.info/sct#6608009", SphenoparietalSinus }, 
+      { "661005", JawRegion }, 
+      { "http://snomed.info/sct#661005", JawRegion }, 
+      { "6620001", CuticleOfNail }, 
+      { "http://snomed.info/sct#6620001", CuticleOfNail }, 
+      { "6623004", SternalMuscle }, 
+      { "http://snomed.info/sct#6623004", SternalMuscle }, 
+      { "6633007", RightPosteriorCerebralArtery }, 
+      { "http://snomed.info/sct#6633007", RightPosteriorCerebralArtery }, 
+      { "6643005", RightAnteriorCerebralArtery }, 
+      { "http://snomed.info/sct#6643005", RightAnteriorCerebralArtery }, 
+      { "6646002", AnteriorFossaOfCranialCavity }, 
+      { "http://snomed.info/sct#6646002", AnteriorFossaOfCranialCavity }, 
+      { "6649009", UterineSubserosa }, 
+      { "http://snomed.info/sct#6649009", UterineSubserosa }, 
+      { "6651008", CentralLobuleOfCerebellum }, 
+      { "http://snomed.info/sct#6651008", CentralLobuleOfCerebellum }, 
+      { "667009", EmbryologicalStructure }, 
+      { "http://snomed.info/sct#667009", EmbryologicalStructure }, 
+      { "6684008", ArticularFacetOfHeadOfFibula }, 
+      { "http://snomed.info/sct#6684008", ArticularFacetOfHeadOfFibula }, 
+      { "6685009", RightAnkle }, 
+      { "http://snomed.info/sct#6685009", RightAnkle }, 
+      { "6711001", ArchOfSecondLumbarVertebra }, 
+      { "http://snomed.info/sct#6711001", ArchOfSecondLumbarVertebra }, 
+      { "6720005", FemoralNerveLateralMuscularBranches }, 
+      { "http://snomed.info/sct#6720005", FemoralNerveLateralMuscularBranches }, 
+      { "6731002", PleuralRecess }, 
+      { "http://snomed.info/sct#6731002", PleuralRecess }, 
+      { "6739000", ChordaTympani }, 
+      { "http://snomed.info/sct#6739000", ChordaTympani }, 
+      { "6742006", CallosomarginalBranchOfAnteriorCerebralArtery }, 
+      { "http://snomed.info/sct#6742006", CallosomarginalBranchOfAnteriorCerebralArtery }, 
+      { "6750002", MitochondrialInclusion }, 
+      { "http://snomed.info/sct#6750002", MitochondrialInclusion }, 
+      { "6757004", RightKnee }, 
+      { "http://snomed.info/sct#6757004", RightKnee }, 
+      { "6787005", TendonAndTendonSheathOfHand }, 
+      { "http://snomed.info/sct#6787005", TendonAndTendonSheathOfHand }, 
+      { "6789008", Spermatozoa }, 
+      { "http://snomed.info/sct#6789008", Spermatozoa }, 
+      { "6799003", MaculaOfUtricle }, 
+      { "http://snomed.info/sct#6799003", MaculaOfUtricle }, 
+      { "6805009", InterstitialTissueOfSpleen }, 
+      { "http://snomed.info/sct#6805009", InterstitialTissueOfSpleen }, 
+      { "6820003", ObturatorNerveAnteriorBranch }, 
+      { "http://snomed.info/sct#6820003", ObturatorNerveAnteriorBranch }, 
+      { "6828005", LigamentOfLumbosacralJoint }, 
+      { "http://snomed.info/sct#6828005", LigamentOfLumbosacralJoint }, 
+      { "6829002", ParsCiliarisOfRetina }, 
+      { "http://snomed.info/sct#6829002", ParsCiliarisOfRetina }, 
+      { "6834003", AxialSkeleton }, 
+      { "http://snomed.info/sct#6834003", AxialSkeleton }, 
+      { "6841009", CorticomedullaryJunctionOfKidney }, 
+      { "http://snomed.info/sct#6841009", CorticomedullaryJunctionOfKidney }, 
+      { "6844001", SporeCrystal }, 
+      { "http://snomed.info/sct#6844001", SporeCrystal }, 
+      { "6850006", SecondaryFootProcess }, 
+      { "http://snomed.info/sct#6850006", SecondaryFootProcess }, 
+      { "6864006", LeafOfEpiglottis }, 
+      { "http://snomed.info/sct#6864006", LeafOfEpiglottis }, 
+      { "6866008", HabenularCommissure }, 
+      { "http://snomed.info/sct#6866008", HabenularCommissure }, 
+      { "6871001", VisceralPericardium }, 
+      { "http://snomed.info/sct#6871001", VisceralPericardium }, 
+      { "688000", FetalHyaloidArtery }, 
+      { "http://snomed.info/sct#688000", FetalHyaloidArtery }, 
+      { "6894000", MedialSurfaceOfArm }, 
+      { "http://snomed.info/sct#6894000", MedialSurfaceOfArm }, 
+      { "6902008", PoplitealRegion }, 
+      { "http://snomed.info/sct#6902008", PoplitealRegion }, 
+      { "6905005", SubcutaneousTissueOfMedialSurfaceOfThirdToe }, 
+      { "http://snomed.info/sct#6905005", SubcutaneousTissueOfMedialSurfaceOfThirdToe }, 
+      { "691000", SmallIntestineSubmucosa }, 
+      { "http://snomed.info/sct#691000", SmallIntestineSubmucosa }, 
+      { "6912001", LowerAlveolarRidgeMucosa }, 
+      { "http://snomed.info/sct#6912001", LowerAlveolarRidgeMucosa }, 
+      { "6914000", PerivascularSpace }, 
+      { "http://snomed.info/sct#6914000", PerivascularSpace }, 
+      { "692007", BodyOfIschium }, 
+      { "http://snomed.info/sct#692007", BodyOfIschium }, 
+      { "6921000", RightUpperExtremity }, 
+      { "http://snomed.info/sct#6921000", RightUpperExtremity }, 
+      { "6930008", JugularArch }, 
+      { "http://snomed.info/sct#6930008", JugularArch }, 
+      { "6944002", AnteriorLabialVeins }, 
+      { "http://snomed.info/sct#6944002", AnteriorLabialVeins }, 
+      { "6969002", LymphocyticTissue }, 
+      { "http://snomed.info/sct#6969002", LymphocyticTissue }, 
+      { "6975006", AnteriorMyocardium }, 
+      { "http://snomed.info/sct#6975006", AnteriorMyocardium }, 
+      { "6981003", PosteriorHypothalamicNucleus }, 
+      { "http://snomed.info/sct#6981003", PosteriorHypothalamicNucleus }, 
+      { "6987004", CollateralSulcus }, 
+      { "http://snomed.info/sct#6987004", CollateralSulcus }, 
+      { "6989001", ThoracolumbarRegionOfBack }, 
+      { "http://snomed.info/sct#6989001", ThoracolumbarRegionOfBack }, 
+      { "6991009", SubcutaneousTissueOfJaw }, 
+      { "http://snomed.info/sct#6991009", SubcutaneousTissueOfJaw }, 
+      { "7035006", BileDuctMucousMembrane }, 
+      { "http://snomed.info/sct#7035006", BileDuctMucousMembrane }, 
+      { "7050002", SubcutaneousTissueOfExternalGenitalia }, 
+      { "http://snomed.info/sct#7050002", SubcutaneousTissueOfExternalGenitalia }, 
+      { "7067009", RightColicArtery }, 
+      { "http://snomed.info/sct#7067009", RightColicArtery }, 
+      { "7076002", InterstitialTissueOfMyocardium }, 
+      { "http://snomed.info/sct#7076002", InterstitialTissueOfMyocardium }, 
+      { "7083009", MiddlePhalanxOfIndexFinger }, 
+      { "http://snomed.info/sct#7083009", MiddlePhalanxOfIndexFinger }, 
+      { "7090004", SupraaorticBranches }, 
+      { "http://snomed.info/sct#7090004", SupraaorticBranches }, 
+      { "7091000", VentralPosterolateralNucleusOfThalamus }, 
+      { "http://snomed.info/sct#7091000", VentralPosterolateralNucleusOfThalamus }, 
+      { "7099003", AttachmentPlaqueOfDesmosomeOrHemidesmosome }, 
+      { "http://snomed.info/sct#7099003", AttachmentPlaqueOfDesmosomeOrHemidesmosome }, 
+      { "7117004", FetalImplantationSite }, 
+      { "http://snomed.info/sct#7117004", FetalImplantationSite }, 
+      { "7121006", MaxillaryRightSecondMolarTooth }, 
+      { "http://snomed.info/sct#7121006", MaxillaryRightSecondMolarTooth }, 
+      { "7148007", AnulusFibrosusOfIntervertebralDiscOfThoracicVertebra }, 
+      { "http://snomed.info/sct#7148007", AnulusFibrosusOfIntervertebralDiscOfThoracicVertebra }, 
+      { "7149004", FalseRib }, 
+      { "http://snomed.info/sct#7149004", FalseRib }, 
+      { "7154008", TrigeminalGanglionSensoryRoot }, 
+      { "http://snomed.info/sct#7154008", TrigeminalGanglionSensoryRoot }, 
+      { "7160008", BaseOfMetacarpalBone }, 
+      { "http://snomed.info/sct#7160008", BaseOfMetacarpalBone }, 
+      { "7167006", ParaduodenalRecess }, 
+      { "http://snomed.info/sct#7167006", ParaduodenalRecess }, 
+      { "7173007", CaudaEquina }, 
+      { "http://snomed.info/sct#7173007", CaudaEquina }, 
+      { "7188002", GustatoryPore }, 
+      { "http://snomed.info/sct#7188002", GustatoryPore }, 
+      { "7192009", IsthmusTympaniPosticus }, 
+      { "http://snomed.info/sct#7192009", IsthmusTympaniPosticus }, 
+      { "7227003", HypoglossalNerveIntrinsicTongueMuscleBranch }, 
+      { "http://snomed.info/sct#7227003", HypoglossalNerveIntrinsicTongueMuscleBranch }, 
+      { "723004", DenseIntermediateFilamentBundles }, 
+      { "http://snomed.info/sct#723004", DenseIntermediateFilamentBundles }, 
+      { "7234001", InferiorChoroidVein }, 
+      { "http://snomed.info/sct#7234001", InferiorChoroidVein }, 
+      { "7242000", AppendicealMuscularisPropria }, 
+      { "http://snomed.info/sct#7242000", AppendicealMuscularisPropria }, 
+      { "7275008", LymphaticsOfAppendixAndLargeIntestine }, 
+      { "http://snomed.info/sct#7275008", LymphaticsOfAppendixAndLargeIntestine }, 
+      { "7295002", MuscleOfPerineum }, 
+      { "http://snomed.info/sct#7295002", MuscleOfPerineum }, 
+      { "7296001", DeepInguinalRing }, 
+      { "http://snomed.info/sct#7296001", DeepInguinalRing }, 
+      { "7311008", AnteriorSurfaceOfArm }, 
+      { "http://snomed.info/sct#7311008", AnteriorSurfaceOfArm }, 
+      { "7344002", LingualGyrus }, 
+      { "http://snomed.info/sct#7344002", LingualGyrus }, 
+      { "7345001", CiliaryProcesses }, 
+      { "http://snomed.info/sct#7345001", CiliaryProcesses }, 
+      { "7347009", InfratendinousOlecranonBursa }, 
+      { "http://snomed.info/sct#7347009", InfratendinousOlecranonBursa }, 
+      { "7362006", LymphaticOfHead }, 
+      { "http://snomed.info/sct#7362006", LymphaticOfHead }, 
+      { "7376007", LeftMarginOfUterus }, 
+      { "http://snomed.info/sct#7376007", LeftMarginOfUterus }, 
+      { "7378008", ParaventricularNucleusOfThalamus }, 
+      { "http://snomed.info/sct#7378008", ParaventricularNucleusOfThalamus }, 
+      { "7384006", PlantarCalcaneocuboidalLigament }, 
+      { "http://snomed.info/sct#7384006", PlantarCalcaneocuboidalLigament }, 
+      { "7404008", AnteriorSemicircularDuct }, 
+      { "http://snomed.info/sct#7404008", AnteriorSemicircularDuct }, 
+      { "7435002", OvarianLigament }, 
+      { "http://snomed.info/sct#7435002", OvarianLigament }, 
+      { "7471001", LateralSurfaceOfSublingualGland }, 
+      { "http://snomed.info/sct#7471001", LateralSurfaceOfSublingualGland }, 
+      { "7477002", LipidCrystalline }, 
+      { "http://snomed.info/sct#7477002", LipidCrystalline }, 
+      { "7480001", IliotibialTract }, 
+      { "http://snomed.info/sct#7480001", IliotibialTract }, 
+      { "7494000", CerebellarLenticularNucleus }, 
+      { "http://snomed.info/sct#7494000", CerebellarLenticularNucleus }, 
+      { "7498002", PlantarTarsalLigaments }, 
+      { "http://snomed.info/sct#7498002", PlantarTarsalLigaments }, 
+      { "7507003", AnteriorLigamentOfHeadOfFibula }, 
+      { "http://snomed.info/sct#7507003", AnteriorLigamentOfHeadOfFibula }, 
+      { "7524009", VasaVasorum }, 
+      { "http://snomed.info/sct#7524009", VasaVasorum }, 
+      { "7532001", VagusNerveParasympatheticFibers }, 
+      { "http://snomed.info/sct#7532001", VagusNerveParasympatheticFibers }, 
+      { "7554004", DeepHeadOfFlexorPollicisBrevisMuscle }, 
+      { "http://snomed.info/sct#7554004", DeepHeadOfFlexorPollicisBrevisMuscle }, 
+      { "7566005", MitoticCellInAnaphase }, 
+      { "http://snomed.info/sct#7566005", MitoticCellInAnaphase }, 
+      { "7569003", Finger }, 
+      { "http://snomed.info/sct#7569003", Finger }, 
+      { "7591005", IntervertebralDiscSpaceOfEleventhThoracicVertebra }, 
+      { "http://snomed.info/sct#7591005", IntervertebralDiscSpaceOfEleventhThoracicVertebra }, 
+      { "7597009", SubcutaneousTissueOfVertex }, 
+      { "http://snomed.info/sct#7597009", SubcutaneousTissueOfVertex }, 
+      { "7605000", Connexon }, 
+      { "http://snomed.info/sct#7605000", Connexon }, 
+      { "7610001", TenthThoracicVertebra }, 
+      { "http://snomed.info/sct#7610001", TenthThoracicVertebra }, 
+      { "7629007", ThalamoolivaryTract }, 
+      { "http://snomed.info/sct#7629007", ThalamoolivaryTract }, 
+      { "7651004", IntervenousTubercleOfRightAtrium }, 
+      { "http://snomed.info/sct#7651004", IntervenousTubercleOfRightAtrium }, 
+      { "7652006", FrenulumLabii }, 
+      { "http://snomed.info/sct#7652006", FrenulumLabii }, 
+      { "7657000", FemoralArtery }, 
+      { "http://snomed.info/sct#7657000", FemoralArtery }, 
+      { "7658005", SubtendinousBursaOfTricepsBrachiiMuscle }, 
+      { "http://snomed.info/sct#7658005", SubtendinousBursaOfTricepsBrachiiMuscle }, 
+      { "7697002", PontinePortionOfMedialLongitudinalFasciculus }, 
+      { "http://snomed.info/sct#7697002", PontinePortionOfMedialLongitudinalFasciculus }, 
+      { "7712004", SubduralSpaceOfSpinalRegion }, 
+      { "http://snomed.info/sct#7712004", SubduralSpaceOfSpinalRegion }, 
+      { "7726008", SkinOfMedialSurfaceOfFifthToe }, 
+      { "http://snomed.info/sct#7726008", SkinOfMedialSurfaceOfFifthToe }, 
+      { "7736000", PosteriorChoroidalArtery }, 
+      { "http://snomed.info/sct#7736000", PosteriorChoroidalArtery }, 
+      { "774007", HeadAndNeck }, 
+      { "http://snomed.info/sct#774007", HeadAndNeck }, 
+      { "7742001", PalatineDuct }, 
+      { "http://snomed.info/sct#7742001", PalatineDuct }, 
+      { "7748002", SkinAppendage }, 
+      { "http://snomed.info/sct#7748002", SkinAppendage }, 
+      { "7755000", MesovarianMarginOfOvary }, 
+      { "http://snomed.info/sct#7755000", MesovarianMarginOfOvary }, 
+      { "7756004", LaminaOfThirdThoracicVertebra }, 
+      { "http://snomed.info/sct#7756004", LaminaOfThirdThoracicVertebra }, 
+      { "7764005", StriateArtery }, 
+      { "http://snomed.info/sct#7764005", StriateArtery }, 
+      { "7769000", RightFoot }, 
+      { "http://snomed.info/sct#7769000", RightFoot }, 
+      { "7783003", SympatheticTrunkSpinalNerveBranch }, 
+      { "http://snomed.info/sct#7783003", SympatheticTrunkSpinalNerveBranch }, 
+      { "7820009", LateralPosteriorNucleusOfThalamus }, 
+      { "http://snomed.info/sct#7820009", LateralPosteriorNucleusOfThalamus }, 
+      { "7829005", AnteriorSurfaceOfManubrium }, 
+      { "http://snomed.info/sct#7829005", AnteriorSurfaceOfManubrium }, 
+      { "7832008", AbdominalAorta }, 
+      { "http://snomed.info/sct#7832008", AbdominalAorta }, 
+      { "7835005", PosteriorMarginOfNasalSeptum }, 
+      { "http://snomed.info/sct#7835005", PosteriorMarginOfNasalSeptum }, 
+      { "7840002", SubcutaneousTissueOfSubmentalArea }, 
+      { "http://snomed.info/sct#7840002", SubcutaneousTissueOfSubmentalArea }, 
+      { "7841003", MacrocyticNormochromicErythrocyte }, 
+      { "http://snomed.info/sct#7841003", MacrocyticNormochromicErythrocyte }, 
+      { "7844006", SternoclavicularJoint }, 
+      { "http://snomed.info/sct#7844006", SternoclavicularJoint }, 
+      { "7851002", IntracranialSubduralSpace }, 
+      { "http://snomed.info/sct#7851002", IntracranialSubduralSpace }, 
+      { "7854005", MandibularCanal }, 
+      { "http://snomed.info/sct#7854005", MandibularCanal }, 
+      { "7872004", MyocardiumOfVentricle }, 
+      { "http://snomed.info/sct#7872004", MyocardiumOfVentricle }, 
+      { "7874003", ScapularRegionOfBack }, 
+      { "http://snomed.info/sct#7874003", ScapularRegionOfBack }, 
+      { "7880006", RhopheocytoticVesicle }, 
+      { "http://snomed.info/sct#7880006", RhopheocytoticVesicle }, 
+      { "7884002", CornealCorpuscle }, 
+      { "http://snomed.info/sct#7884002", CornealCorpuscle }, 
+      { "7885001", RotatorCuffIncludingMusclesAndTendons }, 
+      { "http://snomed.info/sct#7885001", RotatorCuffIncludingMusclesAndTendons }, 
+      { "7892006", SubmucosaOfAnalCanal }, 
+      { "http://snomed.info/sct#7892006", SubmucosaOfAnalCanal }, 
+      { "7896009", OccipitalAngleOfParietalBone }, 
+      { "http://snomed.info/sct#7896009", OccipitalAngleOfParietalBone }, 
+      { "790007", VisceralSurfaceOfLiver }, 
+      { "http://snomed.info/sct#790007", VisceralSurfaceOfLiver }, 
+      { "7911004", OlivocerebellarFibers }, 
+      { "http://snomed.info/sct#7911004", OlivocerebellarFibers }, 
+      { "7925003", ProximalPhalanxOfThirdToe }, 
+      { "http://snomed.info/sct#7925003", ProximalPhalanxOfThirdToe }, 
+      { "7936005", LigamentOfDiaphragm }, 
+      { "http://snomed.info/sct#7936005", LigamentOfDiaphragm }, 
+      { "7944005", HelperCell }, 
+      { "http://snomed.info/sct#7944005", HelperCell }, 
+      { "7954009", LaminaPropriaOfEthmoidSinus }, 
+      { "http://snomed.info/sct#7954009", LaminaPropriaOfEthmoidSinus }, 
+      { "7967007", FirstLeftAorticArch }, 
+      { "http://snomed.info/sct#7967007", FirstLeftAorticArch }, 
+      { "798000", DeepTemporalVeins }, 
+      { "http://snomed.info/sct#798000", DeepTemporalVeins }, 
+      { "7986004", AbdominopelvicPortionOfSympatheticNervousSystem }, 
+      { "http://snomed.info/sct#7986004", AbdominopelvicPortionOfSympatheticNervousSystem }, 
+      { "7991003", SkinOfGlansPenis }, 
+      { "http://snomed.info/sct#7991003", SkinOfGlansPenis }, 
+      { "7999001", ArticulationsOfAuditoryOssicles }, 
+      { "http://snomed.info/sct#7999001", ArticulationsOfAuditoryOssicles }, 
+      { "8001006", MucousMembraneOfTongue }, 
+      { "http://snomed.info/sct#8001006", MucousMembraneOfTongue }, 
+      { "8012006", AnteriorCommunicatingArtery }, 
+      { "http://snomed.info/sct#8012006", AnteriorCommunicatingArtery }, 
+      { "8017000", InflowTractOfRightVentricle }, 
+      { "http://snomed.info/sct#8017000", InflowTractOfRightVentricle }, 
+      { "8024004", LimitansNucleus }, 
+      { "http://snomed.info/sct#8024004", LimitansNucleus }, 
+      { "8039003", SubcutaneousAcromialBursa }, 
+      { "http://snomed.info/sct#8039003", SubcutaneousAcromialBursa }, 
+      { "8040001", SuperficialFlexorTendonOfLittleFinger }, 
+      { "http://snomed.info/sct#8040001", SuperficialFlexorTendonOfLittleFinger }, 
+      { "8045006", MembraneCoatingGranuleAmorphous }, 
+      { "http://snomed.info/sct#8045006", MembraneCoatingGranuleAmorphous }, 
+      { "8057002", LateralNucleiOfGlobusPallidus }, 
+      { "http://snomed.info/sct#8057002", LateralNucleiOfGlobusPallidus }, 
+      { "8059004", PancreaticVeins }, 
+      { "http://snomed.info/sct#8059004", PancreaticVeins }, 
+      { "8067007", SuperficialCircumflexIliacVein }, 
+      { "http://snomed.info/sct#8067007", SuperficialCircumflexIliacVein }, 
+      { "8068002", StratumLemnisciOfCorporaQuadrigemina }, 
+      { "http://snomed.info/sct#8068002", StratumLemnisciOfCorporaQuadrigemina }, 
+      { "8079007", RadialNerve }, 
+      { "http://snomed.info/sct#8079007", RadialNerve }, 
+      { "808000", PosteriorIntercostalArtery }, 
+      { "http://snomed.info/sct#808000", PosteriorIntercostalArtery }, 
+      { "809008", FetalChondrocranium }, 
+      { "http://snomed.info/sct#809008", FetalChondrocranium }, 
+      { "8091003", IntervertebralDiscSpaceOfTwelfthThoracicVertebra }, 
+      { "http://snomed.info/sct#8091003", IntervertebralDiscSpaceOfTwelfthThoracicVertebra }, 
+      { "8100009", InfundibulumOfFallopianTube }, 
+      { "http://snomed.info/sct#8100009", InfundibulumOfFallopianTube }, 
+      { "8111001", IntranuclearCrystal }, 
+      { "http://snomed.info/sct#8111001", IntranuclearCrystal }, 
+      { "8112008", Hindgut }, 
+      { "http://snomed.info/sct#8112008", Hindgut }, 
+      { "8119004", DelphianLymphNode }, 
+      { "http://snomed.info/sct#8119004", DelphianLymphNode }, 
+      { "8128003", SupraaorticValveArea }, 
+      { "http://snomed.info/sct#8128003", SupraaorticValveArea }, 
+      { "8133004", SuperiorAnastomoticVein }, 
+      { "http://snomed.info/sct#8133004", SuperiorAnastomoticVein }, 
+      { "8157004", VeinOfHead }, 
+      { "http://snomed.info/sct#8157004", VeinOfHead }, 
+      { "8158009", InterlobarDuctOfPancreas }, 
+      { "http://snomed.info/sct#8158009", InterlobarDuctOfPancreas }, 
+      { "8159001", SuperiorColliculusOfCorporaQuadrigemina }, 
+      { "http://snomed.info/sct#8159001", SuperiorColliculusOfCorporaQuadrigemina }, 
+      { "8160006", LateralStriateArteries }, 
+      { "http://snomed.info/sct#8160006", LateralStriateArteries }, 
+      { "8161005", InfraorbitalNerve }, 
+      { "http://snomed.info/sct#8161005", InfraorbitalNerve }, 
+      { "8165001", SuperiorArticularProcessOfFifthThoracicVertebra }, 
+      { "http://snomed.info/sct#8165001", SuperiorArticularProcessOfFifthThoracicVertebra }, 
+      { "8205005", Wrist }, 
+      { "http://snomed.info/sct#8205005", Wrist }, 
+      { "8225009", AccessoryAtrioventricularBundle }, 
+      { "http://snomed.info/sct#8225009", AccessoryAtrioventricularBundle }, 
+      { "823005", PosteriorCervicalSpinalCordNerveRoot }, 
+      { "http://snomed.info/sct#823005", PosteriorCervicalSpinalCordNerveRoot }, 
+      { "8242003", ApicalBranchOfRightPulmonaryArtery }, 
+      { "http://snomed.info/sct#8242003", ApicalBranchOfRightPulmonaryArtery }, 
+      { "8251006", OsseousPortionOfEustachianTube }, 
+      { "http://snomed.info/sct#8251006", OsseousPortionOfEustachianTube }, 
+      { "8264007", TunicaInternaOfEyeball }, 
+      { "http://snomed.info/sct#8264007", TunicaInternaOfEyeball }, 
+      { "8265008", ArticularSurfaceMetacarpalOfPhalanxOfHand }, 
+      { "http://snomed.info/sct#8265008", ArticularSurfaceMetacarpalOfPhalanxOfHand }, 
+      { "8266009", SmallIntestineSerosa }, 
+      { "http://snomed.info/sct#8266009", SmallIntestineSerosa }, 
+      { "8279000", PelvicViscus }, 
+      { "http://snomed.info/sct#8279000", PelvicViscus }, 
+      { "8289001", BelowKneeRegion }, 
+      { "http://snomed.info/sct#8289001", BelowKneeRegion }, 
+      { "8292002", InterlobularArteriesOfLiver }, 
+      { "http://snomed.info/sct#8292002", InterlobularArteriesOfLiver }, 
+      { "830004", SpinousProcessOfFifthThoracicVertebra }, 
+      { "http://snomed.info/sct#830004", SpinousProcessOfFifthThoracicVertebra }, 
+      { "8314003", MastoidFontanelOfSkull }, 
+      { "http://snomed.info/sct#8314003", MastoidFontanelOfSkull }, 
+      { "8334002", LumbarLymphNode }, 
+      { "http://snomed.info/sct#8334002", LumbarLymphNode }, 
+      { "8356004", ColicLymphNode }, 
+      { "http://snomed.info/sct#8356004", ColicLymphNode }, 
+      { "836005", OralRegionOfFace }, 
+      { "http://snomed.info/sct#836005", OralRegionOfFace }, 
+      { "8361002", TunicaIntima }, 
+      { "http://snomed.info/sct#8361002", TunicaIntima }, 
+      { "8369000", SphincterPupillaeMuscle }, 
+      { "http://snomed.info/sct#8369000", SphincterPupillaeMuscle }, 
+      { "8373002", JugumOfSphenoidBone }, 
+      { "http://snomed.info/sct#8373002", JugumOfSphenoidBone }, 
+      { "8387002", LaminaOfEighthThoracicVertebra }, 
+      { "http://snomed.info/sct#8387002", LaminaOfEighthThoracicVertebra }, 
+      { "8389004", BirthCanal }, 
+      { "http://snomed.info/sct#8389004", BirthCanal }, 
+      { "8412003", IliacFossa }, 
+      { "http://snomed.info/sct#8412003", IliacFossa }, 
+      { "8415001", RenalSurfaceOfAdrenalGland }, 
+      { "http://snomed.info/sct#8415001", RenalSurfaceOfAdrenalGland }, 
+      { "8454000", JointOfLumbarVertebra }, 
+      { "http://snomed.info/sct#8454000", JointOfLumbarVertebra }, 
+      { "8464009", LigamentOfSacroiliacJointAndPubicSymphysis }, 
+      { "http://snomed.info/sct#8464009", LigamentOfSacroiliacJointAndPubicSymphysis }, 
+      { "8482007", SinoatrialNodeBranchOfRightCoronaryArtery }, 
+      { "http://snomed.info/sct#8482007", SinoatrialNodeBranchOfRightCoronaryArtery }, 
+      { "8483002", MesialSurfaceOfTooth }, 
+      { "http://snomed.info/sct#8483002", MesialSurfaceOfTooth }, 
+      { "8496001", ObliquusCapitisMuscle }, 
+      { "http://snomed.info/sct#8496001", ObliquusCapitisMuscle }, 
+      { "8523001", InferiorArticularProcessOfTwelfthThoracicVertebra }, 
+      { "http://snomed.info/sct#8523001", InferiorArticularProcessOfTwelfthThoracicVertebra }, 
+      { "8546004", PosteriorIntercavernousSinus }, 
+      { "http://snomed.info/sct#8546004", PosteriorIntercavernousSinus }, 
+      { "8556000", LipidDroplet }, 
+      { "http://snomed.info/sct#8556000", LipidDroplet }, 
+      { "8559007", JuxtaintestinalLymphNode }, 
+      { "http://snomed.info/sct#8559007", JuxtaintestinalLymphNode }, 
+      { "8560002", InterclavicularLigament }, 
+      { "http://snomed.info/sct#8560002", InterclavicularLigament }, 
+      { "8568009", AbdominalLymphNodes }, 
+      { "http://snomed.info/sct#8568009", AbdominalLymphNodes }, 
+      { "8580001", BothFeet }, 
+      { "http://snomed.info/sct#8580001", BothFeet }, 
+      { "8595004", MeissnerQuoteSPlexus }, 
+      { "http://snomed.info/sct#8595004", MeissnerQuoteSPlexus }, 
+      { "8598002", AcousticNerve }, 
+      { "http://snomed.info/sct#8598002", AcousticNerve }, 
+      { "8600008", CricoidCartilage }, 
+      { "http://snomed.info/sct#8600008", CricoidCartilage }, 
+      { "8603005", AdductorHallucisMuscle }, 
+      { "http://snomed.info/sct#8603005", AdductorHallucisMuscle }, 
+      { "8604004", MedullaOblongataFasciculusCuneatus }, 
+      { "http://snomed.info/sct#8604004", MedullaOblongataFasciculusCuneatus }, 
+      { "8608001", RightMarginOfHeart }, 
+      { "http://snomed.info/sct#8608001", RightMarginOfHeart }, 
+      { "8617001", ZygomaticRegionOfFace }, 
+      { "http://snomed.info/sct#8617001", ZygomaticRegionOfFace }, 
+      { "8623006", TransplantedUreter }, 
+      { "http://snomed.info/sct#8623006", TransplantedUreter }, 
+      { "8629005", SuperiorRightPulmonaryVein }, 
+      { "http://snomed.info/sct#8629005", SuperiorRightPulmonaryVein }, 
+      { "8640002", ChoroidalBranchesOfPosteriorSpinalArtery }, 
+      { "http://snomed.info/sct#8640002", ChoroidalBranchesOfPosteriorSpinalArtery }, 
+      { "8668003", GlycogenVacuole }, 
+      { "http://snomed.info/sct#8668003", GlycogenVacuole }, 
+      { "8671006", AllToes }, 
+      { "http://snomed.info/sct#8671006", AllToes }, 
+      { "8677005", BodyOfRightAtrium }, 
+      { "http://snomed.info/sct#8677005", BodyOfRightAtrium }, 
+      { "8688004", LateralOlfactoryGyrus }, 
+      { "http://snomed.info/sct#8688004", LateralOlfactoryGyrus }, 
+      { "8695008", IntervertebralForamenOfSecondLumbarVertebra }, 
+      { "http://snomed.info/sct#8695008", IntervertebralForamenOfSecondLumbarVertebra }, 
+      { "8710005", MinorSublingualDucts }, 
+      { "http://snomed.info/sct#8710005", MinorSublingualDucts }, 
+      { "8711009", PeriodontalTissues }, 
+      { "http://snomed.info/sct#8711009", PeriodontalTissues }, 
+      { "8714001", SubcutaneousTissueOfInterdigitalSpaceOfHand }, 
+      { "http://snomed.info/sct#8714001", SubcutaneousTissueOfInterdigitalSpaceOfHand }, 
+      { "8752000", CavernousPortionOfInternalCarotidArtery }, 
+      { "http://snomed.info/sct#8752000", CavernousPortionOfInternalCarotidArtery }, 
+      { "8770002", NailOfSecondToe }, 
+      { "http://snomed.info/sct#8770002", NailOfSecondToe }, 
+      { "8775007", TendinousArch }, 
+      { "http://snomed.info/sct#8775007", TendinousArch }, 
+      { "8784007", IntranuclearBodyGranularWithFilamentousCapsule }, 
+      { "http://snomed.info/sct#8784007", IntranuclearBodyGranularWithFilamentousCapsule }, 
+      { "8810002", CorticomedullaryJunctionOfAdrenalGland }, 
+      { "http://snomed.info/sct#8810002", CorticomedullaryJunctionOfAdrenalGland }, 
+      { "8814006", IliacTuberosity }, 
+      { "http://snomed.info/sct#8814006", IliacTuberosity }, 
+      { "8815007", ThenarAndHypothenarSpaces }, 
+      { "http://snomed.info/sct#8815007", ThenarAndHypothenarSpaces }, 
+      { "8820007", PedicleOfEleventhThoracicVertebra }, 
+      { "http://snomed.info/sct#8820007", PedicleOfEleventhThoracicVertebra }, 
+      { "8821006", PeronealArtery }, 
+      { "http://snomed.info/sct#8821006", PeronealArtery }, 
+      { "8827005", ShaftOfPhalanxOfMiddleFinger }, 
+      { "http://snomed.info/sct#8827005", ShaftOfPhalanxOfMiddleFinger }, 
+      { "8839002", AgranularEndoplasmicReticulumConnectionWithOtherOrganelle }, 
+      { "http://snomed.info/sct#8839002", AgranularEndoplasmicReticulumConnectionWithOtherOrganelle }, 
+      { "8845005", SubtendinousPrepatellarBursa }, 
+      { "http://snomed.info/sct#8845005", SubtendinousPrepatellarBursa }, 
+      { "885000", LaminaMuscularisOfColonicMucousMembrane }, 
+      { "http://snomed.info/sct#885000", LaminaMuscularisOfColonicMucousMembrane }, 
+      { "8850004", ProperFasciculus }, 
+      { "http://snomed.info/sct#8850004", ProperFasciculus }, 
+      { "8854008", CristaGalli }, 
+      { "http://snomed.info/sct#8854008", CristaGalli }, 
+      { "8862000", PalmarSurfaceOfMiddleFinger }, 
+      { "http://snomed.info/sct#8862000", PalmarSurfaceOfMiddleFinger }, 
+      { "8873007", MandibularRightSecondPremolarTooth }, 
+      { "http://snomed.info/sct#8873007", MandibularRightSecondPremolarTooth }, 
+      { "8887007", BrachiocephalicVein }, 
+      { "http://snomed.info/sct#8887007", BrachiocephalicVein }, 
+      { "8892009", DiaphragmaticSurfaceOfLung }, 
+      { "http://snomed.info/sct#8892009", DiaphragmaticSurfaceOfLung }, 
+      { "8894005", GastricCardiacGland }, 
+      { "http://snomed.info/sct#8894005", GastricCardiacGland }, 
+      { "8897003", LateralGlossoepiglotticFold }, 
+      { "http://snomed.info/sct#8897003", LateralGlossoepiglotticFold }, 
+      { "8907008", LeftUlnarArtery }, 
+      { "http://snomed.info/sct#8907008", LeftUlnarArtery }, 
+      { "8910001", InferiorTransverseScapularLigament }, 
+      { "http://snomed.info/sct#8910001", InferiorTransverseScapularLigament }, 
+      { "8911002", EndocardiumOfRightVentricle }, 
+      { "http://snomed.info/sct#8911002", EndocardiumOfRightVentricle }, 
+      { "8928004", InguinalLymphNode }, 
+      { "http://snomed.info/sct#8928004", InguinalLymphNode }, 
+      { "8931003", CoracoidProcessOfScapula }, 
+      { "http://snomed.info/sct#8931003", CoracoidProcessOfScapula }, 
+      { "8935007", CerebralMeninges }, 
+      { "http://snomed.info/sct#8935007", CerebralMeninges }, 
+      { "8942007", TrapezoidLigament }, 
+      { "http://snomed.info/sct#8942007", TrapezoidLigament }, 
+      { "895007", AnteriorCruciateLigamentOfKneeJoint }, 
+      { "http://snomed.info/sct#895007", AnteriorCruciateLigamentOfKneeJoint }, 
+      { "8965002", StratumZonaleOfCorporaQuadrigemina }, 
+      { "http://snomed.info/sct#8965002", StratumZonaleOfCorporaQuadrigemina }, 
+      { "8966001", LeftEye }, 
+      { "http://snomed.info/sct#8966001", LeftEye }, 
+      { "8983005", JointStructureOfVertebralColumn }, 
+      { "http://snomed.info/sct#8983005", JointStructureOfVertebralColumn }, 
+      { "8988001", MarginalPartOfOrbicularisOrisMuscle }, 
+      { "http://snomed.info/sct#8988001", MarginalPartOfOrbicularisOrisMuscle }, 
+      { "8993003", HepaticVein }, 
+      { "http://snomed.info/sct#8993003", HepaticVein }, 
+      { "9000002", CerebellarPeduncle }, 
+      { "http://snomed.info/sct#9000002", CerebellarPeduncle }, 
+      { "9003000", LeftParietalLobe }, 
+      { "http://snomed.info/sct#9003000", LeftParietalLobe }, 
+      { "9018004", MiddleColicVein }, 
+      { "http://snomed.info/sct#9018004", MiddleColicVein }, 
+      { "9040008", AscendingColon }, 
+      { "http://snomed.info/sct#9040008", AscendingColon }, 
+      { "9055004", BothForearms }, 
+      { "http://snomed.info/sct#9055004", BothForearms }, 
+      { "9073001", WhiteMatterOfInsula }, 
+      { "http://snomed.info/sct#9073001", WhiteMatterOfInsula }, 
+      { "9081000", SplenicSinusoids }, 
+      { "http://snomed.info/sct#9081000", SplenicSinusoids }, 
+      { "9086005", SuperiorLaryngealVein }, 
+      { "http://snomed.info/sct#9086005", SuperiorLaryngealVein }, 
+      { "9089003", ArchOfFoot }, 
+      { "http://snomed.info/sct#9089003", ArchOfFoot }, 
+      { "9108007", VeinOfTheScalaTympani }, 
+      { "http://snomed.info/sct#9108007", VeinOfTheScalaTympani }, 
+      { "9127001", TransverseFoldsOfPalate }, 
+      { "http://snomed.info/sct#9127001", TransverseFoldsOfPalate }, 
+      { "9156001", EmbryoStage1 }, 
+      { "http://snomed.info/sct#9156001", EmbryoStage1 }, 
+      { "917004", SuperiorLaryngealAperture }, 
+      { "http://snomed.info/sct#917004", SuperiorLaryngealAperture }, 
+      { "9181003", AccessoryCarpalBone }, 
+      { "http://snomed.info/sct#9181003", AccessoryCarpalBone }, 
+      { "9185007", CapsuleOfMetatarsophalangealJointOfFifthToe }, 
+      { "http://snomed.info/sct#9185007", CapsuleOfMetatarsophalangealJointOfFifthToe }, 
+      { "9186008", FilamentsOfContractileApparatus }, 
+      { "http://snomed.info/sct#9186008", FilamentsOfContractileApparatus }, 
+      { "9188009", IntervertebralDiscOfEighthThoracicVertebra }, 
+      { "http://snomed.info/sct#9188009", IntervertebralDiscOfEighthThoracicVertebra }, 
+      { "9208002", Centriole }, 
+      { "http://snomed.info/sct#9208002", Centriole }, 
+      { "921006", ThyrohyoidBranchOfAnsaCervicalis }, 
+      { "http://snomed.info/sct#921006", ThyrohyoidBranchOfAnsaCervicalis }, 
+      { "9212008", ShaftOfFifthMetatarsalBone }, 
+      { "http://snomed.info/sct#9212008", ShaftOfFifthMetatarsalBone }, 
+      { "9229006", RotatoresLumborumMuscles }, 
+      { "http://snomed.info/sct#9229006", RotatoresLumborumMuscles }, 
+      { "9231002", ExternalPudendalVeins }, 
+      { "http://snomed.info/sct#9231002", ExternalPudendalVeins }, 
+      { "9240003", NiemannPickCell }, 
+      { "http://snomed.info/sct#9240003", NiemannPickCell }, 
+      { "9242006", PosteriorSegmentOfRightLobeOfLiver }, 
+      { "http://snomed.info/sct#9242006", PosteriorSegmentOfRightLobeOfLiver }, 
+      { "9258009", GravidUterus }, 
+      { "http://snomed.info/sct#9258009", GravidUterus }, 
+      { "9261005", TendonAndTendonSheathOfSecondToe }, 
+      { "http://snomed.info/sct#9261005", TendonAndTendonSheathOfSecondToe }, 
+      { "9262003", FasciaOfPelvis }, 
+      { "http://snomed.info/sct#9262003", FasciaOfPelvis }, 
+      { "9284003", CorpusCavernosumOfPenis }, 
+      { "http://snomed.info/sct#9284003", CorpusCavernosumOfPenis }, 
+      { "9290004", PosteriorIntraoccipitalSynchondrosis }, 
+      { "http://snomed.info/sct#9290004", PosteriorIntraoccipitalSynchondrosis }, 
+      { "9305001", LabialVeins }, 
+      { "http://snomed.info/sct#9305001", LabialVeins }, 
+      { "9317004", MerkelQuoteSTactileDisc }, 
+      { "http://snomed.info/sct#9317004", MerkelQuoteSTactileDisc }, 
+      { "9320007", SubtendinousIliacBursa }, 
+      { "http://snomed.info/sct#9320007", SubtendinousIliacBursa }, 
+      { "9321006", TailOfEpididymis }, 
+      { "http://snomed.info/sct#9321006", TailOfEpididymis }, 
+      { "9325002", InterdentalPapillaOfGingiva }, 
+      { "http://snomed.info/sct#9325002", InterdentalPapillaOfGingiva }, 
+      { "9332006", LateralLigamentOfTemporomandibularJoint }, 
+      { "http://snomed.info/sct#9332006", LateralLigamentOfTemporomandibularJoint }, 
+      { "9348007", SkinOfMedialSurfaceOfMiddleFinger }, 
+      { "http://snomed.info/sct#9348007", SkinOfMedialSurfaceOfMiddleFinger }, 
+      { "9379006", PermanentTeeth }, 
+      { "http://snomed.info/sct#9379006", PermanentTeeth }, 
+      { "9380009", PectenAni }, 
+      { "http://snomed.info/sct#9380009", PectenAni }, 
+      { "9384000", LumbarVein }, 
+      { "http://snomed.info/sct#9384000", LumbarVein }, 
+      { "9390001", LymphaticsOfStomach }, 
+      { "http://snomed.info/sct#9390001", LymphaticsOfStomach }, 
+      { "9432007", PlantarSurfaceOfFourthToe }, 
+      { "http://snomed.info/sct#9432007", PlantarSurfaceOfFourthToe }, 
+      { "9438006", StructureOfDeepCervicalLymphaticVessel }, 
+      { "http://snomed.info/sct#9438006", StructureOfDeepCervicalLymphaticVessel }, 
+      { "9454009", SubclavianVein }, 
+      { "http://snomed.info/sct#9454009", SubclavianVein }, 
+      { "9455005", MedialCartilaginousLaminaOfEustachianTube }, 
+      { "http://snomed.info/sct#9455005", MedialCartilaginousLaminaOfEustachianTube }, 
+      { "947002", CrusOfDiaphragm }, 
+      { "http://snomed.info/sct#947002", CrusOfDiaphragm }, 
+      { "9475001", AmacrineCellsOfRetina }, 
+      { "http://snomed.info/sct#9475001", AmacrineCellsOfRetina }, 
+      { "9481009", AfferentGlomerularArteriole }, 
+      { "http://snomed.info/sct#9481009", AfferentGlomerularArteriole }, 
+      { "9490002", PulmonaryLigament }, 
+      { "http://snomed.info/sct#9490002", PulmonaryLigament }, 
+      { "9498009", HeadOfMetacarpalBone }, 
+      { "http://snomed.info/sct#9498009", HeadOfMetacarpalBone }, 
+      { "9502002", CoronalDepressionOfTooth }, 
+      { "http://snomed.info/sct#9502002", CoronalDepressionOfTooth }, 
+      { "9512009", CalcaneocuboidalLigament }, 
+      { "http://snomed.info/sct#9512009", CalcaneocuboidalLigament }, 
+      { "9535007", PyramidOfMedullaOblongata }, 
+      { "http://snomed.info/sct#9535007", PyramidOfMedullaOblongata }, 
+      { "955009", Bronchus }, 
+      { "http://snomed.info/sct#955009", Bronchus }, 
+      { "9558005", FacetForFifthCostalCartilageOfSternum }, 
+      { "http://snomed.info/sct#9558005", FacetForFifthCostalCartilageOfSternum }, 
+      { "9566001", DuodenalLumen }, 
+      { "http://snomed.info/sct#9566001", DuodenalLumen }, 
+      { "9568000", SubcutaneousTissueOfAreola }, 
+      { "http://snomed.info/sct#9568000", SubcutaneousTissueOfAreola }, 
+      { "9596006", DeepBranchOfUlnarNerve }, 
+      { "http://snomed.info/sct#9596006", DeepBranchOfUlnarNerve }, 
+      { "9609000", PosteriorProcessOfNasalSeptalCartilage }, 
+      { "http://snomed.info/sct#9609000", PosteriorProcessOfNasalSeptalCartilage }, 
+      { "9625005", LanugoHair }, 
+      { "http://snomed.info/sct#9625005", LanugoHair }, 
+      { "9642004", LeftSuperiorVenaCava }, 
+      { "http://snomed.info/sct#9642004", LeftSuperiorVenaCava }, 
+      { "9646001", SuperiorTransverseScapularLigament }, 
+      { "http://snomed.info/sct#9646001", SuperiorTransverseScapularLigament }, 
+      { "9654004", GastricMucousGland }, 
+      { "http://snomed.info/sct#9654004", GastricMucousGland }, 
+      { "9659009", InfraclavicularLymphNodes }, 
+      { "http://snomed.info/sct#9659009", InfraclavicularLymphNodes }, 
+      { "9662007", SubcutaneousTissueOfLowerMarginOfNasalSeptum }, 
+      { "http://snomed.info/sct#9662007", SubcutaneousTissueOfLowerMarginOfNasalSeptum }, 
+      { "9668006", CiliaryMuscle }, 
+      { "http://snomed.info/sct#9668006", CiliaryMuscle }, 
+      { "9677004", HeadOfSecondMetatarsalBone }, 
+      { "http://snomed.info/sct#9677004", HeadOfSecondMetatarsalBone }, 
+      { "9683001", Melanocyte }, 
+      { "http://snomed.info/sct#9683001", Melanocyte }, 
+      { "9684007", PosteriorScrotalBranchesOfInternalPudendalArtery }, 
+      { "http://snomed.info/sct#9684007", PosteriorScrotalBranchesOfInternalPudendalArtery }, 
+      { "9708001", IliacFascia }, 
+      { "http://snomed.info/sct#9708001", IliacFascia }, 
+      { "9732008", MedialSupraclavicularNerves }, 
+      { "http://snomed.info/sct#9732008", MedialSupraclavicularNerves }, 
+      { "9736006", RightWrist }, 
+      { "http://snomed.info/sct#9736006", RightWrist }, 
+      { "9743000", TendonOfIndexFinger }, 
+      { "http://snomed.info/sct#9743000", TendonOfIndexFinger }, 
+      { "9758008", SubmucosaOfTonsil }, 
+      { "http://snomed.info/sct#9758008", SubmucosaOfTonsil }, 
+      { "976004", OvarianVein }, 
+      { "http://snomed.info/sct#976004", OvarianVein }, 
+      { "9770007", GenitalTubercle }, 
+      { "http://snomed.info/sct#9770007", GenitalTubercle }, 
+      { "9775002", LeftCarotidSinus }, 
+      { "http://snomed.info/sct#9775002", LeftCarotidSinus }, 
+      { "9779008", DistinctiveShapeOfMitochondrialCristae }, 
+      { "http://snomed.info/sct#9779008", DistinctiveShapeOfMitochondrialCristae }, 
+      { "9783008", SuperficialLymphaticsOfThorax }, 
+      { "http://snomed.info/sct#9783008", SuperficialLymphaticsOfThorax }, 
+      { "9791004", DeepVenousSystemOfLowerExtremity }, 
+      { "http://snomed.info/sct#9791004", DeepVenousSystemOfLowerExtremity }, 
+      { "9796009", SkeletalMuscleFiberTypeIIb }, 
+      { "http://snomed.info/sct#9796009", SkeletalMuscleFiberTypeIIb }, 
+      { "9813009", FasciaOfUpperExtremity }, 
+      { "http://snomed.info/sct#9813009", FasciaOfUpperExtremity }, 
+      { "9825007", ProximalPhalanxOfLittleToe }, 
+      { "http://snomed.info/sct#9825007", ProximalPhalanxOfLittleToe }, 
+      { "9837009", PerforatingBranchesOfInternalThoracicArtery }, 
+      { "http://snomed.info/sct#9837009", PerforatingBranchesOfInternalThoracicArtery }, 
+      { "9840009", BiparietalDiameterOfHead }, 
+      { "http://snomed.info/sct#9840009", BiparietalDiameterOfHead }, 
+      { "9841008", InterspinalisThoracisMuscles }, 
+      { "http://snomed.info/sct#9841008", InterspinalisThoracisMuscles }, 
+      { "9846003", RightKidney }, 
+      { "http://snomed.info/sct#9846003", RightKidney }, 
+      { "9847007", HilumOfAdrenalGland }, 
+      { "http://snomed.info/sct#9847007", HilumOfAdrenalGland }, 
+      { "9849005", FornixOfLacrimalSac }, 
+      { "http://snomed.info/sct#9849005", FornixOfLacrimalSac }, 
+      { "9870004", CarunculaeHymenales }, 
+      { "http://snomed.info/sct#9870004", CarunculaeHymenales }, 
+      { "9875009", Thymus }, 
+      { "http://snomed.info/sct#9875009", Thymus }, 
+      { "9878006", AppendicularVein }, 
+      { "http://snomed.info/sct#9878006", AppendicularVein }, 
+      { "9880000", ThyroidTubercle }, 
+      { "http://snomed.info/sct#9880000", ThyroidTubercle }, 
+      { "9881001", PeripheralNerveMyelinatedNerveFiber }, 
+      { "http://snomed.info/sct#9881001", PeripheralNerveMyelinatedNerveFiber }, 
+      { "9891007", TransverseArytenoidMuscle }, 
+      { "http://snomed.info/sct#9891007", TransverseArytenoidMuscle }, 
+      { "9898001", ParacentralLobule }, 
+      { "http://snomed.info/sct#9898001", ParacentralLobule }, 
+      { "9951005", PosteriorEthmoidalNerve }, 
+      { "http://snomed.info/sct#9951005", PosteriorEthmoidalNerve }, 
+      { "996007", MeningealBranchOfOccipitalArtery }, 
+      { "http://snomed.info/sct#996007", MeningealBranchOfOccipitalArtery }, 
+      { "9968009", PrimaryFootProcess }, 
+      { "http://snomed.info/sct#9968009", PrimaryFootProcess }, 
+      { "9970000", IleocecalOstium }, 
+      { "http://snomed.info/sct#9970000", IleocecalOstium }, 
+      { "9976006", RhomboideusCervicisMuscle }, 
+      { "http://snomed.info/sct#9976006", RhomboideusCervicisMuscle }, 
+      { "9994000", SuperiorArticularProcessOfSixthThoracicVertebra }, 
+      { "http://snomed.info/sct#9994000", SuperiorArticularProcessOfSixthThoracicVertebra }, 
+      { "9999005", DuodenalAmpulla }, 
+      { "http://snomed.info/sct#9999005", DuodenalAmpulla }, 
+    };
   };
 }

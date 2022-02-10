@@ -36,6 +36,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? DoNotPerform { get; set; }
     /// <summary>
+    /// Extension container element for DoNotPerform
+    /// </summary>
+    public Element _DoNotPerform { get; set; }
+    /// <summary>
     /// Internal reference that identifies the goals that this activity is intended to contribute towards meeting.
     /// </summary>
     public List<Reference> Goal { get; set; }
@@ -91,6 +95,10 @@ namespace fhirCsR5.Models
     /// Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.
     /// </summary>
     public bool? ReportedBoolean { get; set; }
+    /// <summary>
+    /// Extension container element for ReportedBoolean
+    /// </summary>
+    public Element _ReportedBoolean { get; set; }
     /// <summary>
     /// Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.
     /// </summary>
@@ -252,6 +260,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("doNotPerform", (bool)DoNotPerform!);
       }
 
+      if (_DoNotPerform != null)
+      {
+        writer.WritePropertyName("_doNotPerform");
+        _DoNotPerform.SerializeJson(writer, options);
+      }
+
       if (ScheduledTiming != null)
       {
         writer.WritePropertyName("scheduledTiming");
@@ -284,6 +298,12 @@ namespace fhirCsR5.Models
       if (ReportedBoolean != null)
       {
         writer.WriteBoolean("reportedBoolean", (bool)ReportedBoolean!);
+      }
+
+      if (_ReportedBoolean != null)
+      {
+        writer.WritePropertyName("_reportedBoolean");
+        _ReportedBoolean.SerializeJson(writer, options);
       }
 
       if (ReportedReference != null)
@@ -373,6 +393,11 @@ namespace fhirCsR5.Models
 
         case "doNotPerform":
           DoNotPerform = reader.GetBoolean();
+          break;
+
+        case "_doNotPerform":
+          _DoNotPerform = new fhirCsR5.Models.Element();
+          _DoNotPerform.DeserializeJson(ref reader, options);
           break;
 
         case "goal":
@@ -593,6 +618,11 @@ namespace fhirCsR5.Models
           ReportedBoolean = reader.GetBoolean();
           break;
 
+        case "_reportedBoolean":
+          _ReportedBoolean = new fhirCsR5.Models.Element();
+          _ReportedBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "reportedReference":
           ReportedReference = new fhirCsR5.Models.Reference();
           ReportedReference.DeserializeJson(ref reader, options);
@@ -674,6 +704,16 @@ namespace fhirCsR5.Models
     public const string TASK = "Task";
     public const string SERVICEREQUEST = "ServiceRequest";
     public const string VISIONPRESCRIPTION = "VisionPrescription";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "Appointment",
+      "CommunicationRequest",
+      "DeviceRequest",
+      "MedicationRequest",
+      "NutritionOrder",
+      "Task",
+      "ServiceRequest",
+      "VisionPrescription",
+    };
   }
   /// <summary>
   /// Code Values for the CarePlan.activity.plannedActivityDetail.status field
@@ -688,6 +728,17 @@ namespace fhirCsR5.Models
     public const string STOPPED = "stopped";
     public const string UNKNOWN = "unknown";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "not-started",
+      "scheduled",
+      "in-progress",
+      "on-hold",
+      "completed",
+      "cancelled",
+      "stopped",
+      "unknown",
+      "entered-in-error",
+    };
   }
   /// <summary>
   /// Identifies an action that has occurred or is a planned action to occur as part of the plan. For example, a medication to be used, lab tests to perform, self-monitoring that has occurred, education etc.
@@ -1847,6 +1898,13 @@ namespace fhirCsR5.Models
     public const string ORDER = "order";
     public const string OPTION = "option";
     public const string DIRECTIVE = "directive";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposal",
+      "plan",
+      "order",
+      "option",
+      "directive",
+    };
   }
   /// <summary>
   /// Code Values for the CarePlan.status field
@@ -1859,5 +1917,14 @@ namespace fhirCsR5.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "on-hold",
+      "revoked",
+      "completed",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

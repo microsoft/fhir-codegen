@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class NutrientCodeCodes
   {
     /// <summary>
-    /// 
+    /// Gliadin
     /// </summary>
     public static readonly Coding Gliadin = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 4-pyridoxic acid (substance)
     /// </summary>
     public static readonly Coding VAL4PyridoxicAcidSubstance = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Galactose-1-phosphate
     /// </summary>
     public static readonly Coding Galactose1Phosphate = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Triosephosphate
     /// </summary>
     public static readonly Coding Triosephosphate = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Homocitrulline
     /// </summary>
     public static readonly Coding Homocitrulline = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Homocysteine
     /// </summary>
     public static readonly Coding Homocysteine = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anserine
     /// </summary>
     public static readonly Coding Anserine = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phosphoserine
     /// </summary>
     public static readonly Coding Phosphoserine = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sulfur-bearing amino acid
     /// </summary>
     public static readonly Coding SulfurBearingAminoAcid = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retinaldehyde
     /// </summary>
     public static readonly Coding Retinaldehyde = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Provitamin A
     /// </summary>
     public static readonly Coding ProvitaminA = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin B and vitamin B derivative
     /// </summary>
     public static readonly Coding VitaminBAndVitaminBDerivative = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pyridoxine congeners
     /// </summary>
     public static readonly Coding PyridoxineCongeners = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ethylnicotinamide
     /// </summary>
     public static readonly Coding Ethylnicotinamide = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// N^1^-methyl-3-carboxamide-6-pyridone
     /// </summary>
     public static readonly Coding NPower1PowerMethyl3Carboxamide6Pyridone = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glucose-6-phosphate
     /// </summary>
     public static readonly Coding Glucose6Phosphate = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ketorolac tromethamine
     /// </summary>
     public static readonly Coding KetorolacTromethamine = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bromfenac
     /// </summary>
     public static readonly Coding Bromfenac = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bromfenac sodium
     /// </summary>
     public static readonly Coding BromfenacSodium = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fosinopril sodium
     /// </summary>
     public static readonly Coding FosinoprilSodium = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paricalcitol
     /// </summary>
     public static readonly Coding Paricalcitol = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cysteine hydrochloride
     /// </summary>
     public static readonly Coding CysteineHydrochloride = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Absorbable gelatin film
     /// </summary>
     public static readonly Coding AbsorbableGelatinFilm = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Absorbable gelatin powder
     /// </summary>
     public static readonly Coding AbsorbableGelatinPowder = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dextran 1
     /// </summary>
     public static readonly Coding Dextran1 = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tiopronin
     /// </summary>
     public static readonly Coding Tiopronin = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pentosan polysulfate sodium
     /// </summary>
     public static readonly Coding PentosanPolysulfateSodium = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Benzylpenicilloyl polylysine
     /// </summary>
     public static readonly Coding BenzylpenicilloylPolylysine = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carrageenan
     /// </summary>
     public static readonly Coding Carrageenan = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Taurine
     /// </summary>
     public static readonly Coding Taurine = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Essential amino acid
     /// </summary>
     public static readonly Coding EssentialAminoAcid = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aromatic amino acid
     /// </summary>
     public static readonly Coding AromaticAminoAcid = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin U
     /// </summary>
     public static readonly Coding VitaminU = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sucrose
     /// </summary>
     public static readonly Coding Sucrose = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alpha aminobutyrate
     /// </summary>
     public static readonly Coding AlphaAminobutyrate = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 3-aminoisobutyrate (substance)
     /// </summary>
     public static readonly Coding VAL3AminoisobutyrateSubstance = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doxercalciferol
     /// </summary>
     public static readonly Coding Doxercalciferol = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnesium amino acids chelate
     /// </summary>
     public static readonly Coding MagnesiumAminoAcidsChelate = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monosaccharide
     /// </summary>
     public static readonly Coding Monosaccharide = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aldose
     /// </summary>
     public static readonly Coding Aldose = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hexose
     /// </summary>
     public static readonly Coding Hexose = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ketose
     /// </summary>
     public static readonly Coding Ketose = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tetrose
     /// </summary>
     public static readonly Coding Tetrose = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Triose
     /// </summary>
     public static readonly Coding Triose = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heptose
     /// </summary>
     public static readonly Coding Heptose = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trisaccharide
     /// </summary>
     public static readonly Coding Trisaccharide = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Raffinose
     /// </summary>
     public static readonly Coding Raffinose = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sugar phosphate
     /// </summary>
     public static readonly Coding SugarPhosphate = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sugar alcohol
     /// </summary>
     public static readonly Coding SugarAlcohol = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Galactitol
     /// </summary>
     public static readonly Coding Galactitol = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maltitol
     /// </summary>
     public static readonly Coding Maltitol = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ribitol
     /// </summary>
     public static readonly Coding Ribitol = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// D-alpha-tocopherol
     /// </summary>
     public static readonly Coding DAlphaTocopherol = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beta tocopherol
     /// </summary>
     public static readonly Coding BetaTocopherol = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gamma tocopherol
     /// </summary>
     public static readonly Coding GammaTocopherol = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ergosterol
     /// </summary>
     public static readonly Coding Ergosterol = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alfacalcidol
     /// </summary>
     public static readonly Coding Alfacalcidol = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dextran 70
     /// </summary>
     public static readonly Coding Dextran70 = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fish liver oil
     /// </summary>
     public static readonly Coding FishLiverOil = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Burbot liver oil
     /// </summary>
     public static readonly Coding BurbotLiverOil = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percomorph liver oil
     /// </summary>
     public static readonly Coding PercomorphLiverOil = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percoid liver oil
     /// </summary>
     public static readonly Coding PercoidLiverOil = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shark liver oil
     /// </summary>
     public static readonly Coding SharkLiverOil = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Halibut liver oil
     /// </summary>
     public static readonly Coding HalibutLiverOil = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cod liver oil
     /// </summary>
     public static readonly Coding CodLiverOil = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calcium leucovorin
     /// </summary>
     public static readonly Coding CalciumLeucovorin = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sodium folate
     /// </summary>
     public static readonly Coding SodiumFolate = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calcium pantothenate
     /// </summary>
     public static readonly Coding CalciumPantothenate = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dexpanthenol
     /// </summary>
     public static readonly Coding Dexpanthenol = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pyridoxine hydrochloride
     /// </summary>
     public static readonly Coding PyridoxineHydrochloride = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thiamine hydrochloride
     /// </summary>
     public static readonly Coding ThiamineHydrochloride = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thiamine mononitrate
     /// </summary>
     public static readonly Coding ThiamineMononitrate = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dihydrotachysterol
     /// </summary>
     public static readonly Coding Dihydrotachysterol = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delta tocopherol
     /// </summary>
     public static readonly Coding DeltaTocopherol = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin K5 (substance)
     /// </summary>
     public static readonly Coding VitaminK5Substance = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Menadiol sodium diphosphate
     /// </summary>
     public static readonly Coding MenadiolSodiumDiphosphate = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inositol hexanitrate
     /// </summary>
     public static readonly Coding InositolHexanitrate = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Riboflavin
     /// </summary>
     public static readonly Coding Riboflavin = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alpha amino isobutyric acid
     /// </summary>
     public static readonly Coding AlphaAminoIsobutyricAcid = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arabinose
     /// </summary>
     public static readonly Coding Arabinose = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serine
     /// </summary>
     public static readonly Coding Serine = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arginine glutamate
     /// </summary>
     public static readonly Coding ArginineGlutamate = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin L&gt;2&lt;
     /// </summary>
     public static readonly Coding VitaminLGreaterThan2LessThan = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amylopectin
     /// </summary>
     public static readonly Coding Amylopectin = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dextran 75
     /// </summary>
     public static readonly Coding Dextran75 = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isoleucine
     /// </summary>
     public static readonly Coding Isoleucine = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glycine
     /// </summary>
     public static readonly Coding Glycine = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disaccharide
     /// </summary>
     public static readonly Coding Disaccharide = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ribose
     /// </summary>
     public static readonly Coding Ribose = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nicotinamide (substance)
     /// </summary>
     public static readonly Coding NicotinamideSubstance = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin D&gt;3&lt;
     /// </summary>
     public static readonly Coding VitaminDGreaterThan3LessThan = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Xylose
     /// </summary>
     public static readonly Coding Xylose = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sorbitol
     /// </summary>
     public static readonly Coding Sorbitol = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beta-D-fructopyranose (substance)
     /// </summary>
     public static readonly Coding BetaDFructopyranoseSubstance = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tetrahydrofolic acid
     /// </summary>
     public static readonly Coding TetrahydrofolicAcid = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orotic acid
     /// </summary>
     public static readonly Coding OroticAcid = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sorbose
     /// </summary>
     public static readonly Coding Sorbose = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glycoasparagine
     /// </summary>
     public static readonly Coding Glycoasparagine = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin K2
     /// </summary>
     public static readonly Coding VitaminK2 = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nutrients
     /// </summary>
     public static readonly Coding Nutrients = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eicosapentaenoic acid
     /// </summary>
     public static readonly Coding EicosapentaenoicAcid = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// DHA - Docosahexaenoic acid
     /// </summary>
     public static readonly Coding DHADocosahexaenoicAcid = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tetrasaccharide
     /// </summary>
     public static readonly Coding Tetrasaccharide = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stachyose
     /// </summary>
     public static readonly Coding Stachyose = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pentasaccharide
     /// </summary>
     public static readonly Coding Pentasaccharide = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Verbascose
     /// </summary>
     public static readonly Coding Verbascose = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amylose
     /// </summary>
     public static readonly Coding Amylose = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complex carbohydrate
     /// </summary>
     public static readonly Coding ComplexCarbohydrate = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refined carbohydrate
     /// </summary>
     public static readonly Coding RefinedCarbohydrate = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dried soya milk
     /// </summary>
     public static readonly Coding DriedSoyaMilk = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soya milk
     /// </summary>
     public static readonly Coding SoyaMilk = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soya cheese
     /// </summary>
     public static readonly Coding SoyaCheese = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soya milk yogurt
     /// </summary>
     public static readonly Coding SoyaMilkYogurt = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fat and oil
     /// </summary>
     public static readonly Coding FatAndOil = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Butter
     /// </summary>
     public static readonly Coding Butter = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blended spread
     /// </summary>
     public static readonly Coding BlendedSpread = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Margarine
     /// </summary>
     public static readonly Coding Margarine = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hard vegetable fat margarine
     /// </summary>
     public static readonly Coding HardVegetableFatMargarine = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hard animal and vegetable fat margarine
     /// </summary>
     public static readonly Coding HardAnimalAndVegetableFatMargarine = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft polyunsaturated fat margarine
     /// </summary>
     public static readonly Coding SoftPolyunsaturatedFatMargarine = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Olive oil margarine
     /// </summary>
     public static readonly Coding OliveOilMargarine = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low fat spread
     /// </summary>
     public static readonly Coding LowFatSpread = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// VLF - Very low fat spread
     /// </summary>
     public static readonly Coding VLFVeryLowFatSpread = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dripping
     /// </summary>
     public static readonly Coding Dripping = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lard
     /// </summary>
     public static readonly Coding Lard = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suet
     /// </summary>
     public static readonly Coding Suet = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ghee
     /// </summary>
     public static readonly Coding Ghee = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Butter ghee
     /// </summary>
     public static readonly Coding ButterGhee = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Palm oil ghee
     /// </summary>
     public static readonly Coding PalmOilGhee = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vegetable oil ghee
     /// </summary>
     public static readonly Coding VegetableOilGhee = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Palm oil
     /// </summary>
     public static readonly Coding PalmOil = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rapeseed oil
     /// </summary>
     public static readonly Coding RapeseedOil = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rapeseed oil high erucic acid
     /// </summary>
     public static readonly Coding RapeseedOilHighErucicAcid = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rapeseed oil low erucic acid
     /// </summary>
     public static readonly Coding RapeseedOilLowErucicAcid = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soya oil
     /// </summary>
     public static readonly Coding SoyaOil = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sunflowerseed oil
     /// </summary>
     public static readonly Coding SunflowerseedOil = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blended vegetable oil
     /// </summary>
     public static readonly Coding BlendedVegetableOil = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polyunsaturated vegetable oil
     /// </summary>
     public static readonly Coding PolyunsaturatedVegetableOil = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tofu
     /// </summary>
     public static readonly Coding Tofu = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Steamed tofu
     /// </summary>
     public static readonly Coding SteamedTofu = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Steamed fried tofu
     /// </summary>
     public static readonly Coding SteamedFriedTofu = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fu-juk tofu
     /// </summary>
     public static readonly Coding FuJukTofu = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soy sauce
     /// </summary>
     public static readonly Coding SoySauce = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soya mince granules
     /// </summary>
     public static readonly Coding SoyaMinceGranules = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carbohydrate food
     /// </summary>
     public static readonly Coding CarbohydrateFood = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// High carbohydrate food
     /// </summary>
     public static readonly Coding HighCarbohydrateFood = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low carbohydrate food
     /// </summary>
     public static readonly Coding LowCarbohydrateFood = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complex carbohydrate food
     /// </summary>
     public static readonly Coding ComplexCarbohydrateFood = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refined carbohydrate food
     /// </summary>
     public static readonly Coding RefinedCarbohydrateFood = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Simple carbohydrate food
     /// </summary>
     public static readonly Coding SimpleCarbohydrateFood = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blended spread - 70-80% fat
     /// </summary>
     public static readonly Coding BlendedSpread7080PercentFat = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blended spread - 40% fat
     /// </summary>
     public static readonly Coding BlendedSpread40PercentFat = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Butteroil
     /// </summary>
     public static readonly Coding Butteroil = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spreadable butter
     /// </summary>
     public static readonly Coding SpreadableButter = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beef dripping
     /// </summary>
     public static readonly Coding BeefDripping = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pork dripping
     /// </summary>
     public static readonly Coding PorkDripping = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Compound cooking fat
     /// </summary>
     public static readonly Coding CompoundCookingFat = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polyunsat compound cooking fat
     /// </summary>
     public static readonly Coding PolyunsatCompoundCookingFat = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shredded suet
     /// </summary>
     public static readonly Coding ShreddedSuet = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vegetable suet
     /// </summary>
     public static readonly Coding VegetableSuet = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dairy spread
     /// </summary>
     public static readonly Coding DairySpread = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wheatgerm oil
     /// </summary>
     public static readonly Coding WheatgermOil = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Walnut oil
     /// </summary>
     public static readonly Coding WalnutOil = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hazelnut oil
     /// </summary>
     public static readonly Coding HazelnutOil = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grapeseed oil
     /// </summary>
     public static readonly Coding GrapeseedOil = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soya flour
     /// </summary>
     public static readonly Coding SoyaFlour = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low fat soya flour
     /// </summary>
     public static readonly Coding LowFatSoyaFlour = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft margarine not polyunsaturated
     /// </summary>
     public static readonly Coding SoftMargarineNotPolyunsaturated = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-polyunsaturated low fat spread 40% fat
     /// </summary>
     public static readonly Coding NonPolyunsaturatedLowFatSpread40PercentFat = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-polyunsaturated low fat spread 70-80% fat
     /// </summary>
     public static readonly Coding NonPolyunsaturatedLowFatSpread7080PercentFat = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polyunsaturated low fat spread 70% fat
     /// </summary>
     public static readonly Coding PolyunsaturatedLowFatSpread70PercentFat = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polyunsaturated low fat spread 60% fat
     /// </summary>
     public static readonly Coding PolyunsaturatedLowFatSpread60PercentFat = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polyunsaturated low fat spread 35-40% fat
     /// </summary>
     public static readonly Coding PolyunsaturatedLowFatSpread3540PercentFat = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carbohydrate
     /// </summary>
     public static readonly Coding Carbohydrate = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ergocalciferol
     /// </summary>
     public static readonly Coding Ergocalciferol = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tryparsamide
     /// </summary>
     public static readonly Coding Tryparsamide = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Agarose
     /// </summary>
     public static readonly Coding Agarose = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glutamine
     /// </summary>
     public static readonly Coding Glutamine = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aminoisobutyric acid
     /// </summary>
     public static readonly Coding AminoisobutyricAcid = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gamma-aminobutyric acid
     /// </summary>
     public static readonly Coding GammaAminobutyricAcid = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calcitriol
     /// </summary>
     public static readonly Coding Calcitriol = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 24,25-DHCC - 24,25-Dihydroxycholecalciferol
     /// </summary>
     public static readonly Coding VAL2425DHCC2425Dihydroxycholecalciferol = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calcifediol
     /// </summary>
     public static readonly Coding Calcifediol = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amylopectin glycogen
     /// </summary>
     public static readonly Coding AmylopectinGlycogen = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fuco-oligosaccharide
     /// </summary>
     public static readonly Coding FucoOligosaccharide = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manno-oligosaccharide
     /// </summary>
     public static readonly Coding MannoOligosaccharide = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sialyloligosaccharide
     /// </summary>
     public static readonly Coding Sialyloligosaccharide = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adenosylcobalamin
     /// </summary>
     public static readonly Coding Adenosylcobalamin = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Methylcobalamin
     /// </summary>
     public static readonly Coding Methylcobalamin = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free L-carnitine
     /// </summary>
     public static readonly Coding FreeLCarnitine = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cellobiose
     /// </summary>
     public static readonly Coding Cellobiose = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rhamnose
     /// </summary>
     public static readonly Coding Rhamnose = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin B1
     /// </summary>
     public static readonly Coding VitaminB1 = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thiamine phosphate
     /// </summary>
     public static readonly Coding ThiaminePhosphate = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thiamine pyrophosphate
     /// </summary>
     public static readonly Coding ThiaminePyrophosphate = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alpha-tocopherol
     /// </summary>
     public static readonly Coding AlphaTocopherol = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Homocystine
     /// </summary>
     public static readonly Coding Homocystine = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Starch glycerite
     /// </summary>
     public static readonly Coding StarchGlycerite = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tyrosine
     /// </summary>
     public static readonly Coding Tyrosine = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antipellagra factor
     /// </summary>
     public static readonly Coding AntipellagraFactor = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lactulose
     /// </summary>
     public static readonly Coding Lactulose = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soya-based baby milk
     /// </summary>
     public static readonly Coding SoyaBasedBabyMilk = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coconut oil
     /// </summary>
     public static readonly Coding CoconutOil = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carbon (14-C) xylose (substance)
     /// </summary>
     public static readonly Coding Carbon14CXyloseSubstance = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Citrulline
     /// </summary>
     public static readonly Coding Citrulline = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Riboflavin dinucleotide
     /// </summary>
     public static readonly Coding RiboflavinDinucleotide = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calciotropic hormone
     /// </summary>
     public static readonly Coding CalciotropicHormone = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free glycerol
     /// </summary>
     public static readonly Coding FreeGlycerol = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vigabatrin
     /// </summary>
     public static readonly Coding Vigabatrin = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gamma aminoisobutyric acid (substance)
     /// </summary>
     public static readonly Coding GammaAminoisobutyricAcidSubstance = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// L-methionine (substance)
     /// </summary>
     public static readonly Coding LMethionineSubstance = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 3-methyl histidine
     /// </summary>
     public static readonly Coding VAL3MethylHistidine = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// D-xylulose
     /// </summary>
     public static readonly Coding DXylulose = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lipopolysaccharide
     /// </summary>
     public static readonly Coding Lipopolysaccharide = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluid
     /// </summary>
     public static readonly Coding Fluid = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin L
     /// </summary>
     public static readonly Coding VitaminL = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plant asparagine
     /// </summary>
     public static readonly Coding PlantAsparagine = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ribulose
     /// </summary>
     public static readonly Coding Ribulose = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fat-soluble vitamin
     /// </summary>
     public static readonly Coding FatSolubleVitamin = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muramic acid
     /// </summary>
     public static readonly Coding MuramicAcid = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 1-methyl histidine
     /// </summary>
     public static readonly Coding VAL1MethylHistidine = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glucose-1-phosphate
     /// </summary>
     public static readonly Coding Glucose1Phosphate = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glycogen
     /// </summary>
     public static readonly Coding Glycogen = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tocopherol
     /// </summary>
     public static readonly Coding Tocopherol = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ketorolac (substance)
     /// </summary>
     public static readonly Coding KetorolacSubstance = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fosinopril (substance)
     /// </summary>
     public static readonly Coding FosinoprilSubstance = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Irinotecan (substance)
     /// </summary>
     public static readonly Coding IrinotecanSubstance = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pentosan polysulfate (substance)
     /// </summary>
     public static readonly Coding PentosanPolysulfateSubstance = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Levocarnitine
     /// </summary>
     public static readonly Coding Levocarnitine = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dextran (substance)
     /// </summary>
     public static readonly Coding DextranSubstance = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Para-aminobenzoic acid (substance)
     /// </summary>
     public static readonly Coding ParaAminobenzoicAcidSubstance = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gelatin (substance)
     /// </summary>
     public static readonly Coding GelatinSubstance = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bambermycins
     /// </summary>
     public static readonly Coding Bambermycins = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cystine
     /// </summary>
     public static readonly Coding Cystine = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Galactose
     /// </summary>
     public static readonly Coding Galactose = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fondaparinux sodium (substance)
     /// </summary>
     public static readonly Coding FondaparinuxSodiumSubstance = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gabapentin (substance)
     /// </summary>
     public static readonly Coding GabapentinSubstance = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Irinotecan hydrochloride (substance)
     /// </summary>
     public static readonly Coding IrinotecanHydrochlorideSubstance = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydroxypropyl cellulose (substance)
     /// </summary>
     public static readonly Coding HydroxypropylCelluloseSubstance = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydroxyethylcellose
     /// </summary>
     public static readonly Coding Hydroxyethylcellose = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amino acid derivative (substance)
     /// </summary>
     public static readonly Coding AminoAcidDerivativeSubstance = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acarbose (substance)
     /// </summary>
     public static readonly Coding AcarboseSubstance = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Choline bitartrate (substance)
     /// </summary>
     public static readonly Coding CholineBitartrateSubstance = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pentastarch (substance)
     /// </summary>
     public static readonly Coding PentastarchSubstance = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iron dextran (substance)
     /// </summary>
     public static readonly Coding IronDextranSubstance = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Methylcellulose (substance)
     /// </summary>
     public static readonly Coding MethylcelluloseSubstance = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mannitol (substance)
     /// </summary>
     public static readonly Coding MannitolSubstance = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Penicillamine (substance)
     /// </summary>
     public static readonly Coding PenicillamineSubstance = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hetastarch (substance)
     /// </summary>
     public static readonly Coding HetastarchSubstance = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Benzocaine (substance)
     /// </summary>
     public static readonly Coding BenzocaineSubstance = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acetylcysteine (substance)
     /// </summary>
     public static readonly Coding AcetylcysteineSubstance = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metyrosine
     /// </summary>
     public static readonly Coding Metyrosine = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mesalamine
     /// </summary>
     public static readonly Coding Mesalamine = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glycerol teichoic acid
     /// </summary>
     public static readonly Coding GlycerolTeichoicAcid = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glutamic acid hydrochloride
     /// </summary>
     public static readonly Coding GlutamicAcidHydrochloride = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acamprosate (substance)
     /// </summary>
     public static readonly Coding AcamprosateSubstance = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acamprosate calcium
     /// </summary>
     public static readonly Coding AcamprosateCalcium = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alginic acid
     /// </summary>
     public static readonly Coding AlginicAcid = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Almond oil (substance)
     /// </summary>
     public static readonly Coding AlmondOilSubstance = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Starch
     /// </summary>
     public static readonly Coding Starch = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hexastarch (substance)
     /// </summary>
     public static readonly Coding HexastarchSubstance = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calcipotriol (substance)
     /// </summary>
     public static readonly Coding CalcipotriolSubstance = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Levofolinic acid (substance)
     /// </summary>
     public static readonly Coding LevofolinicAcidSubstance = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Methylcellulose-450 (substance)
     /// </summary>
     public static readonly Coding Methylcellulose450Substance = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oxerutins (substance)
     /// </summary>
     public static readonly Coding OxerutinsSubstance = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alpha tocopherol acetate (substance)
     /// </summary>
     public static readonly Coding AlphaTocopherolAcetateSubstance = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polygeline (substance)
     /// </summary>
     public static readonly Coding PolygelineSubstance = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potassium aminobenzoate (substance)
     /// </summary>
     public static readonly Coding PotassiumAminobenzoateSubstance = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potassium ascorbate (substance)
     /// </summary>
     public static readonly Coding PotassiumAscorbateSubstance = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carbocisteine (substance)
     /// </summary>
     public static readonly Coding CarbocisteineSubstance = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tolfenamic acid (substance)
     /// </summary>
     public static readonly Coding TolfenamicAcidSubstance = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Xylitol (substance)
     /// </summary>
     public static readonly Coding XylitolSubstance = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Folinic acid (substance)
     /// </summary>
     public static readonly Coding FolinicAcidSubstance = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kynurenic acid
     /// </summary>
     public static readonly Coding KynurenicAcid = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Imino acid
     /// </summary>
     public static readonly Coding IminoAcid = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sodium
     /// </summary>
     public static readonly Coding Sodium = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fructose-1-phosphate
     /// </summary>
     public static readonly Coding Fructose1Phosphate = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fish derived omega 3 fatty acid (substance)
     /// </summary>
     public static readonly Coding FishDerivedOmega3FattyAcidSubstance = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Water-soluble vitamin
     /// </summary>
     public static readonly Coding WaterSolubleVitamin = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin B&gt;12a&lt;
     /// </summary>
     public static readonly Coding VitaminBGreaterThan12aLessThan = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin B&gt;12b&lt;
     /// </summary>
     public static readonly Coding VitaminBGreaterThan12bLessThan = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 1,3-beta-D-glucan
     /// </summary>
     public static readonly Coding VAL13BetaDGlucan = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dicarboxylic amino acid (substance)
     /// </summary>
     public static readonly Coding DicarboxylicAminoAcidSubstance = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diaminopimelic acid (substance)
     /// </summary>
     public static readonly Coding DiaminopimelicAcidSubstance = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Icodextrin (substance)
     /// </summary>
     public static readonly Coding IcodextrinSubstance = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hesperidin (substance)
     /// </summary>
     public static readonly Coding HesperidinSubstance = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Menadione (substance)
     /// </summary>
     public static readonly Coding MenadioneSubstance = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multivitamin agent (substance)
     /// </summary>
     public static readonly Coding MultivitaminAgentSubstance = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carglumic acid (substance)
     /// </summary>
     public static readonly Coding CarglumicAcidSubstance = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypromellose (substance)
     /// </summary>
     public static readonly Coding HypromelloseSubstance = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vegetable oil (substance)
     /// </summary>
     public static readonly Coding VegetableOilSubstance = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alloisoleucine (substance)
     /// </summary>
     public static readonly Coding AlloisoleucineSubstance = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alpha-carotene
     /// </summary>
     public static readonly Coding AlphaCarotene = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Erythrose
     /// </summary>
     public static readonly Coding Erythrose = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inositol niacinate
     /// </summary>
     public static readonly Coding InositolNiacinate = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pregabalin (substance)
     /// </summary>
     public static readonly Coding PregabalinSubstance = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sodium glycerophosphate (substance)
     /// </summary>
     public static readonly Coding SodiumGlycerophosphateSubstance = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soy bean product (substance)
     /// </summary>
     public static readonly Coding SoyBeanProductSubstance = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arachis oil (substance)
     /// </summary>
     public static readonly Coding ArachisOilSubstance = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beta aminoisobutyric acid (substance)
     /// </summary>
     public static readonly Coding BetaAminoisobutyricAcidSubstance = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Olive oil
     /// </summary>
     public static readonly Coding OliveOil = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cellulose-derived viscosity modifier (substance)
     /// </summary>
     public static readonly Coding CelluloseDerivedViscosityModifierSubstance = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lactitol (substance)
     /// </summary>
     public static readonly Coding LactitolSubstance = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydroxyethyl starch (substance)
     /// </summary>
     public static readonly Coding HydroxyethylStarchSubstance = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cyanocobalamin (substance)
     /// </summary>
     public static readonly Coding CyanocobalaminSubstance = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carboxymethylcellulose
     /// </summary>
     public static readonly Coding Carboxymethylcellulose = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nicofuranose (substance)
     /// </summary>
     public static readonly Coding NicofuranoseSubstance = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Starflower oil (substance)
     /// </summary>
     public static readonly Coding StarflowerOilSubstance = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monosodium L-aspartate (substance)
     /// </summary>
     public static readonly Coding MonosodiumLAspartateSubstance = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Menadiol (substance)
     /// </summary>
     public static readonly Coding MenadiolSubstance = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retinol acetate (substance)
     /// </summary>
     public static readonly Coding RetinolAcetateSubstance = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin D&gt;2&lt;, phosphate ester
     /// </summary>
     public static readonly Coding VitaminDGreaterThan2LessThanPhosphateEster = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Menadiol diacetate
     /// </summary>
     public static readonly Coding MenadiolDiacetate = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin A palmitate
     /// </summary>
     public static readonly Coding VitaminAPalmitate = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lumiracoxib (substance)
     /// </summary>
     public static readonly Coding LumiracoxibSubstance = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tetrastarch (substance)
     /// </summary>
     public static readonly Coding TetrastarchSubstance = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sodium pantothenate (substance)
     /// </summary>
     public static readonly Coding SodiumPantothenateSubstance = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Droxidopa (substance)
     /// </summary>
     public static readonly Coding DroxidopaSubstance = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydroxyamino acid (substance)
     /// </summary>
     public static readonly Coding HydroxyaminoAcidSubstance = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gluconolactone (substance)
     /// </summary>
     public static readonly Coding GluconolactoneSubstance = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hexyl nicotinate (substance)
     /// </summary>
     public static readonly Coding HexylNicotinateSubstance = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polydextrose (substance)
     /// </summary>
     public static readonly Coding PolydextroseSubstance = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Levoleucovorin calcium (substance)
     /// </summary>
     public static readonly Coding LevoleucovorinCalciumSubstance = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pyridoxine (substance)
     /// </summary>
     public static readonly Coding PyridoxineSubstance = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pyridoxamine (substance)
     /// </summary>
     public static readonly Coding PyridoxamineSubstance = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pyridoxine 5'-phosphate (substance)
     /// </summary>
     public static readonly Coding Pyridoxine5QuotePhosphateSubstance = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pyridoxamine 5'-phosphate (substance)
     /// </summary>
     public static readonly Coding Pyridoxamine5QuotePhosphateSubstance = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carbamic acid (substance)
     /// </summary>
     public static readonly Coding CarbamicAcidSubstance = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pyridoxal (substance)
     /// </summary>
     public static readonly Coding PyridoxalSubstance = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// L-methyl folic acid
     /// </summary>
     public static readonly Coding LMethylFolicAcid = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dihydrofolic acid
     /// </summary>
     public static readonly Coding DihydrofolicAcid = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Levoleucovorin calcium pentahydrate (substance)
     /// </summary>
     public static readonly Coding LevoleucovorinCalciumPentahydrateSubstance = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maltose
     /// </summary>
     public static readonly Coding Maltose = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Unsaturated fat (substance)
     /// </summary>
     public static readonly Coding UnsaturatedFatSubstance = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monounsaturated fat (substance)
     /// </summary>
     public static readonly Coding MonounsaturatedFatSubstance = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polyunsaturated fat (substance)
     /// </summary>
     public static readonly Coding PolyunsaturatedFatSubstance = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trans fat (substance)
     /// </summary>
     public static readonly Coding TransFatSubstance = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Saturated fat (substance)
     /// </summary>
     public static readonly Coding SaturatedFatSubstance = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ascorbic acid
     /// </summary>
     public static readonly Coding AscorbicAcid = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beta-D-fructofuranose
     /// </summary>
     public static readonly Coding BetaDFructofuranose = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zinc gelatin
     /// </summary>
     public static readonly Coding ZincGelatin = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sugar acid (substance)
     /// </summary>
     public static readonly Coding SugarAcidSubstance = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thiamine triphosphate
     /// </summary>
     public static readonly Coding ThiamineTriphosphate = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alpha amino acid
     /// </summary>
     public static readonly Coding AlphaAminoAcid = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lacosamide
     /// </summary>
     public static readonly Coding Lacosamide = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ademetionine
     /// </summary>
     public static readonly Coding Ademetionine = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cyclic oligosaccharide
     /// </summary>
     public static readonly Coding CyclicOligosaccharide = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sugammadex
     /// </summary>
     public static readonly Coding Sugammadex = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Riboflavin sodium phosphate
     /// </summary>
     public static readonly Coding RiboflavinSodiumPhosphate = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oxidized cellulose
     /// </summary>
     public static readonly Coding OxidizedCellulose = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Omega-5 gliadin (substance)
     /// </summary>
     public static readonly Coding Omega5GliadinSubstance = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Levomefolate calcium (substance)
     /// </summary>
     public static readonly Coding LevomefolateCalciumSubstance = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aspartic acid
     /// </summary>
     public static readonly Coding AsparticAcid = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dextranomer
     /// </summary>
     public static readonly Coding Dextranomer = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Collodion
     /// </summary>
     public static readonly Coding Collodion = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Omega amino acid
     /// </summary>
     public static readonly Coding OmegaAminoAcid = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oligosaccharide
     /// </summary>
     public static readonly Coding Oligosaccharide = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Menthyl anthranilate
     /// </summary>
     public static readonly Coding MenthylAnthranilate = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Basic amino acid
     /// </summary>
     public static readonly Coding BasicAminoAcid = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lactose
     /// </summary>
     public static readonly Coding Lactose = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ribitol teichoic acid
     /// </summary>
     public static readonly Coding RibitolTeichoicAcid = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gluconic acid
     /// </summary>
     public static readonly Coding GluconicAcid = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neutral amino acid
     /// </summary>
     public static readonly Coding NeutralAminoAcid = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Levulinic acid
     /// </summary>
     public static readonly Coding LevulinicAcid = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soy protein-iron complex
     /// </summary>
     public static readonly Coding SoyProteinIronComplex = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carboxymethylcellulose sodium
     /// </summary>
     public static readonly Coding CarboxymethylcelluloseSodium = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Quercetin
     /// </summary>
     public static readonly Coding Quercetin = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amino acid
     /// </summary>
     public static readonly Coding AminoAcid = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Proline
     /// </summary>
     public static readonly Coding Proline = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Norleucine
     /// </summary>
     public static readonly Coding Norleucine = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arginine
     /// </summary>
     public static readonly Coding Arginine = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Threonine
     /// </summary>
     public static readonly Coding Threonine = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Riboflavin mononucleotide
     /// </summary>
     public static readonly Coding RiboflavinMononucleotide = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fructose-6-phosphate
     /// </summary>
     public static readonly Coding Fructose6Phosphate = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemicellulose
     /// </summary>
     public static readonly Coding Hemicellulose = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Safflower oil
     /// </summary>
     public static readonly Coding SafflowerOil = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glyceraldehyde
     /// </summary>
     public static readonly Coding Glyceraldehyde = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tryptophan
     /// </summary>
     public static readonly Coding Tryptophan = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pectin
     /// </summary>
     public static readonly Coding Pectin = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leucocyanidin
     /// </summary>
     public static readonly Coding Leucocyanidin = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Triiodotyrosine
     /// </summary>
     public static readonly Coding Triiodotyrosine = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Absorbable gelatin sponge
     /// </summary>
     public static readonly Coding AbsorbableGelatinSponge = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fructose
     /// </summary>
     public static readonly Coding Fructose = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alanine
     /// </summary>
     public static readonly Coding Alanine = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cysteine
     /// </summary>
     public static readonly Coding Cysteine = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aminocaproic acid
     /// </summary>
     public static readonly Coding AminocaproicAcid = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carnitine
     /// </summary>
     public static readonly Coding Carnitine = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 3-dehydroretinol
     /// </summary>
     public static readonly Coding VAL3Dehydroretinol = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Histidine
     /// </summary>
     public static readonly Coding Histidine = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neovitamin A
     /// </summary>
     public static readonly Coding NeovitaminA = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydroxylysine
     /// </summary>
     public static readonly Coding Hydroxylysine = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sedoheptulose
     /// </summary>
     public static readonly Coding Sedoheptulose = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fructose-1-6-phosphate
     /// </summary>
     public static readonly Coding Fructose16Phosphate = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Teichoic acid
     /// </summary>
     public static readonly Coding TeichoicAcid = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phenylalanine
     /// </summary>
     public static readonly Coding Phenylalanine = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mannose
     /// </summary>
     public static readonly Coding Mannose = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nonessential amino acid
     /// </summary>
     public static readonly Coding NonessentialAminoAcid = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arginine hydrochloride
     /// </summary>
     public static readonly Coding ArginineHydrochloride = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Folic acid
     /// </summary>
     public static readonly Coding FolicAcid = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin K and vitamin K derivative
     /// </summary>
     public static readonly Coding VitaminKAndVitaminKDerivative = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dextran 40
     /// </summary>
     public static readonly Coding Dextran40 = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin K&gt;1&lt;
     /// </summary>
     public static readonly Coding VitaminKGreaterThan1LessThan = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wheat dextrin
     /// </summary>
     public static readonly Coding WheatDextrin = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin D&gt;3&lt;, phosphate ester
     /// </summary>
     public static readonly Coding VitaminDGreaterThan3LessThanPhosphateEster = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glucose
     /// </summary>
     public static readonly Coding Glucose = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pangamic acid
     /// </summary>
     public static readonly Coding PangamicAcid = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 25-hydroxy ergocalciferol
     /// </summary>
     public static readonly Coding VAL25HydroxyErgocalciferol = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cellulose acetate
     /// </summary>
     public static readonly Coding CelluloseAcetate = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Quercetin-3-rutinoside
     /// </summary>
     public static readonly Coding Quercetin3Rutinoside = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cellulose
     /// </summary>
     public static readonly Coding Cellulose = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sulbutiamine
     /// </summary>
     public static readonly Coding Sulbutiamine = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Branched-chain amino acid
     /// </summary>
     public static readonly Coding BranchedChainAminoAcid = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adenine
     /// </summary>
     public static readonly Coding Adenine = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hidrosmin (substance)
     /// </summary>
     public static readonly Coding HidrosminSubstance = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Methionine
     /// </summary>
     public static readonly Coding Methionine = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gabapentin enacarbil
     /// </summary>
     public static readonly Coding GabapentinEnacarbil = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zofenopril (substance)
     /// </summary>
     public static readonly Coding ZofenoprilSubstance = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zofenopril calcium
     /// </summary>
     public static readonly Coding ZofenoprilCalcium = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zofenoprilat
     /// </summary>
     public static readonly Coding Zofenoprilat = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zofenoprilat arginine
     /// </summary>
     public static readonly Coding ZofenoprilatArginine = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ascorbyl palmitate
     /// </summary>
     public static readonly Coding AscorbylPalmitate = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bisbentiamine
     /// </summary>
     public static readonly Coding Bisbentiamine = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Panthenol
     /// </summary>
     public static readonly Coding Panthenol = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beta alanine
     /// </summary>
     public static readonly Coding BetaAlanine = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free tryptophan (substance)
     /// </summary>
     public static readonly Coding FreeTryptophanSubstance = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free thiamine
     /// </summary>
     public static readonly Coding FreeThiamine = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free retinol (substance)
     /// </summary>
     public static readonly Coding FreeRetinolSubstance = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free inositol (substance)
     /// </summary>
     public static readonly Coding FreeInositolSubstance = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free hydroxyproline
     /// </summary>
     public static readonly Coding FreeHydroxyproline = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free hydroxylysine
     /// </summary>
     public static readonly Coding FreeHydroxylysine = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free homocystine (substance)
     /// </summary>
     public static readonly Coding FreeHomocystineSubstance = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free homocysteine (substance)
     /// </summary>
     public static readonly Coding FreeHomocysteineSubstance = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free gamma-aminobutyric acid (substance)
     /// </summary>
     public static readonly Coding FreeGammaAminobutyricAcidSubstance = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free cystine
     /// </summary>
     public static readonly Coding FreeCystine = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arabitol
     /// </summary>
     public static readonly Coding Arabitol = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Xylulose (substance)
     /// </summary>
     public static readonly Coding XyluloseSubstance = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Xanthurenate
     /// </summary>
     public static readonly Coding Xanthurenate = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 1,25-dihydroxyvitamin D
     /// </summary>
     public static readonly Coding VAL125DihydroxyvitaminD = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 1,25-dihydroxyvitamin D2 (substance)
     /// </summary>
     public static readonly Coding VAL125DihydroxyvitaminD2Substance = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 25-hydroxyvitamin D
     /// </summary>
     public static readonly Coding VAL25HydroxyvitaminD = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Troxerutin
     /// </summary>
     public static readonly Coding Troxerutin = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 3-epi-25-Hydroxyvitamin D2 (substance)
     /// </summary>
     public static readonly Coding VAL3Epi25HydroxyvitaminD2Substance = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 3-epi-25-Hydroxyvitamin D3 (substance)
     /// </summary>
     public static readonly Coding VAL3Epi25HydroxyvitaminD3Substance = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 2-methylbutyrylglycine (substance)
     /// </summary>
     public static readonly Coding VAL2MethylbutyrylglycineSubstance = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 5-methyltetrahydrofolate
     /// </summary>
     public static readonly Coding VAL5Methyltetrahydrofolate = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// N-butyrylglycine
     /// </summary>
     public static readonly Coding NButyrylglycine = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gamma aminoadipate
     /// </summary>
     public static readonly Coding GammaAminoadipate = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isobutyrylglycine
     /// </summary>
     public static readonly Coding Isobutyrylglycine = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kynurenin
     /// </summary>
     public static readonly Coding Kynurenin = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Methionine sulfoxide (substance)
     /// </summary>
     public static readonly Coding MethionineSulfoxideSubstance = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// N-methyl valine (substance)
     /// </summary>
     public static readonly Coding NMethylValineSubstance = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// N-octanoylglycine (substance)
     /// </summary>
     public static readonly Coding NOctanoylglycineSubstance = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Valerylglycine (substance)
     /// </summary>
     public static readonly Coding ValerylglycineSubstance = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trans-cinnamoylglycine
     /// </summary>
     public static readonly Coding TransCinnamoylglycine = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sulfated monosaccharide (substance)
     /// </summary>
     public static readonly Coding SulfatedMonosaccharideSubstance = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glycoamino acid (substance)
     /// </summary>
     public static readonly Coding GlycoaminoAcidSubstance = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Succinyladenosine
     /// </summary>
     public static readonly Coding Succinyladenosine = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fondaparinux (substance)
     /// </summary>
     public static readonly Coding FondaparinuxSubstance = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Xantinol nicotinate
     /// </summary>
     public static readonly Coding XantinolNicotinate = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Menadione sodium bisulfite (substance)
     /// </summary>
     public static readonly Coding MenadioneSodiumBisulfiteSubstance = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zinc amino acid chelate (substance)
     /// </summary>
     public static readonly Coding ZincAminoAcidChelateSubstance = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tocotrienol
     /// </summary>
     public static readonly Coding Tocotrienol = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Threitol (substance)
     /// </summary>
     public static readonly Coding ThreitolSubstance = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 1,5-anhydroglucitol
     /// </summary>
     public static readonly Coding VAL15Anhydroglucitol = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// N-2-hydroxyethyl valine
     /// </summary>
     public static readonly Coding N2HydroxyethylValine = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anthranilate (substance)
     /// </summary>
     public static readonly Coding AnthranilateSubstance = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Succinylaminoimidazole carboxamide riboside
     /// </summary>
     public static readonly Coding SuccinylaminoimidazoleCarboxamideRiboside = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 3-hydroxyanthranilate
     /// </summary>
     public static readonly Coding VAL3Hydroxyanthranilate = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Guanidinoacetic acid (substance)
     /// </summary>
     public static readonly Coding GuanidinoaceticAcidSubstance = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free carnitine (substance)
     /// </summary>
     public static readonly Coding FreeCarnitineSubstance = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cysteic acid
     /// </summary>
     public static readonly Coding CysteicAcid = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protein-bound glucose (substance)
     /// </summary>
     public static readonly Coding ProteinBoundGlucoseSubstance = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// N-carbamoyl-beta-alanine
     /// </summary>
     public static readonly Coding NCarbamoylBetaAlanine = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Selenomethionine
     /// </summary>
     public static readonly Coding Selenomethionine = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Quinolinic acid
     /// </summary>
     public static readonly Coding QuinolinicAcid = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delta alanine (substance)
     /// </summary>
     public static readonly Coding DeltaAlanineSubstance = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calcium amino acid chelate
     /// </summary>
     public static readonly Coding CalciumAminoAcidChelate = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carbocisteine lysine (substance)
     /// </summary>
     public static readonly Coding CarbocisteineLysineSubstance = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lysine acetate
     /// </summary>
     public static readonly Coding LysineAcetate = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Histadinyl-isoleucine (substance)
     /// </summary>
     public static readonly Coding HistadinylIsoleucineSubstance = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Betiatide (substance)
     /// </summary>
     public static readonly Coding BetiatideSubstance = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Menatetrenone
     /// </summary>
     public static readonly Coding Menatetrenone = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fursultiamine
     /// </summary>
     public static readonly Coding Fursultiamine = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fructooligosaccharide
     /// </summary>
     public static readonly Coding Fructooligosaccharide = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glycyl-tyrosine
     /// </summary>
     public static readonly Coding GlycylTyrosine = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flavin adenine dinucleotide sodium
     /// </summary>
     public static readonly Coding FlavinAdenineDinucleotideSodium = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soybean oil refined (substance)
     /// </summary>
     public static readonly Coding SoybeanOilRefinedSubstance = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Olive oil refined (substance)
     /// </summary>
     public static readonly Coding OliveOilRefinedSubstance = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Methiosulfonium chloride
     /// </summary>
     public static readonly Coding MethiosulfoniumChloride = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydroxyethyl starch 130/0.4 (substance)
     /// </summary>
     public static readonly Coding HydroxyethylStarch13004Substance = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gelatin hydrolysate (substance)
     /// </summary>
     public static readonly Coding GelatinHydrolysateSubstance = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oxaceprol
     /// </summary>
     public static readonly Coding Oxaceprol = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canola oil (substance)
     /// </summary>
     public static readonly Coding CanolaOilSubstance = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acylglycine
     /// </summary>
     public static readonly Coding Acylglycine = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Irinotecan liposome (substance)
     /// </summary>
     public static readonly Coding IrinotecanLiposomeSubstance = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polysaccharide
     /// </summary>
     public static readonly Coding Polysaccharide = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eluxadoline (substance)
     /// </summary>
     public static readonly Coding EluxadolineSubstance = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Safinamide (substance)
     /// </summary>
     public static readonly Coding SafinamideSubstance = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alpha tocopherol succinate (substance)
     /// </summary>
     public static readonly Coding AlphaTocopherolSuccinateSubstance = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lifitegrast (substance)
     /// </summary>
     public static readonly Coding LifitegrastSubstance = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lifitegrast sodium (substance)
     /// </summary>
     public static readonly Coding LifitegrastSodiumSubstance = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inositol
     /// </summary>
     public static readonly Coding Inositol = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin P complex
     /// </summary>
     public static readonly Coding VitaminPComplex = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Para-aminobenzoic acid esters in alcohol
     /// </summary>
     public static readonly Coding ParaAminobenzoicAcidEstersInAlcohol = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Allo-cystathionine (substance)
     /// </summary>
     public static readonly Coding AlloCystathionineSubstance = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alpha-aminoadipic semialdehyde (substance)
     /// </summary>
     public static readonly Coding AlphaAminoadipicSemialdehydeSubstance = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Saccharopine (substance)
     /// </summary>
     public static readonly Coding SaccharopineSubstance = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 3-hydroxykynurenine
     /// </summary>
     public static readonly Coding VAL3Hydroxykynurenine = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// L-homoarginine (substance)
     /// </summary>
     public static readonly Coding LHomoarginineSubstance = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nicotinurate (substance)
     /// </summary>
     public static readonly Coding NicotinurateSubstance = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// S-beta aminoisobutyrate (substance)
     /// </summary>
     public static readonly Coding SBetaAminoisobutyrateSubstance = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trimethyllysine (substance)
     /// </summary>
     public static readonly Coding TrimethyllysineSubstance = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tulathromycin (substance)
     /// </summary>
     public static readonly Coding TulathromycinSubstance = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 3-ureidopropionate
     /// </summary>
     public static readonly Coding VAL3Ureidopropionate = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phytate (substance)
     /// </summary>
     public static readonly Coding PhytateSubstance = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pimelate (substance)
     /// </summary>
     public static readonly Coding PimelateSubstance = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bromfenac sodium sesquihydrate (substance)
     /// </summary>
     public static readonly Coding BromfenacSodiumSesquihydrateSubstance = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glucose monohydrate (substance)
     /// </summary>
     public static readonly Coding GlucoseMonohydrateSubstance = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Irinotecan hydrochloride trihydrate (substance)
     /// </summary>
     public static readonly Coding IrinotecanHydrochlorideTrihydrateSubstance = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// L-abrine (substance)
     /// </summary>
     public static readonly Coding LAbrineSubstance = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glycyl-tyrosine dihydrate (substance)
     /// </summary>
     public static readonly Coding GlycylTyrosineDihydrateSubstance = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cocarboxylase tetrahydrate (substance)
     /// </summary>
     public static readonly Coding CocarboxylaseTetrahydrateSubstance = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calcipotriol monohydrate (substance)
     /// </summary>
     public static readonly Coding CalcipotriolMonohydrateSubstance = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Krill oil (substance)
     /// </summary>
     public static readonly Coding KrillOilSubstance = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Valine
     /// </summary>
     public static readonly Coding Valine = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carotene
     /// </summary>
     public static readonly Coding Carotene = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monosodium aspartate monohydrate (substance)
     /// </summary>
     public static readonly Coding MonosodiumAspartateMonohydrateSubstance = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sodium glycerophosphate hydrate (substance)
     /// </summary>
     public static readonly Coding SodiumGlycerophosphateHydrateSubstance = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sodium glycerophosphate pentahydrate (substance)
     /// </summary>
     public static readonly Coding SodiumGlycerophosphatePentahydrateSubstance = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Citrulline malate (substance)
     /// </summary>
     public static readonly Coding CitrullineMalateSubstance = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arginine aspartate (substance)
     /// </summary>
     public static readonly Coding ArginineAspartateSubstance = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lactitol monohydrate (substance)
     /// </summary>
     public static readonly Coding LactitolMonohydrateSubstance = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydroxocobalamin acetate (substance)
     /// </summary>
     public static readonly Coding HydroxocobalaminAcetateSubstance = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lysine aspartate (substance)
     /// </summary>
     public static readonly Coding LysineAspartateSubstance = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lysine glutamate (substance)
     /// </summary>
     public static readonly Coding LysineGlutamateSubstance = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lysine hydrochloride (substance)
     /// </summary>
     public static readonly Coding LysineHydrochlorideSubstance = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lysine monohydrate (substance)
     /// </summary>
     public static readonly Coding LysineMonohydrateSubstance = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Histidine monohydrochloride (substance)
     /// </summary>
     public static readonly Coding HistidineMonohydrochlorideSubstance = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Histidine monohydrochloride monohydrate (substance)
     /// </summary>
     public static readonly Coding HistidineMonohydrochlorideMonohydrateSubstance = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tidiacic arginine (substance)
     /// </summary>
     public static readonly Coding TidiacicArginineSubstance = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dapabutan (substance)
     /// </summary>
     public static readonly Coding DapabutanSubstance = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hesperidin methylchalcone (substance)
     /// </summary>
     public static readonly Coding HesperidinMethylchalconeSubstance = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acetylleucine (substance)
     /// </summary>
     public static readonly Coding AcetylleucineSubstance = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corn oil (substance)
     /// </summary>
     public static readonly Coding CornOilSubstance = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protein and protein derivative (substance)
     /// </summary>
     public static readonly Coding ProteinAndProteinDerivativeSubstance = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fish oil (substance)
     /// </summary>
     public static readonly Coding FishOilSubstance = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oxitriptan
     /// </summary>
     public static readonly Coding Oxitriptan = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydroxyproline
     /// </summary>
     public static readonly Coding Hydroxyproline = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sugar
     /// </summary>
     public static readonly Coding Sugar = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mannitol hexanitrate
     /// </summary>
     public static readonly Coding MannitolHexanitrate = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lysine
     /// </summary>
     public static readonly Coding Lysine = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Argininosuccinic acid
     /// </summary>
     public static readonly Coding ArgininosuccinicAcid = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sodium alginate
     /// </summary>
     public static readonly Coding SodiumAlginate = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ornithine hydrochloride
     /// </summary>
     public static readonly Coding OrnithineHydrochloride = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ornithine oxoglurate (substance)
     /// </summary>
     public static readonly Coding OrnithineOxoglurateSubstance = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diornithine oxoglurate dihydrate
     /// </summary>
     public static readonly Coding DiornithineOxoglurateDihydrate = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spaglumate sodium (substance)
     /// </summary>
     public static readonly Coding SpaglumateSodiumSubstance = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leucovorin calcium pentahydrate (substance)
     /// </summary>
     public static readonly Coding LeucovorinCalciumPentahydrateSubstance = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Migalastat (substance)
     /// </summary>
     public static readonly Coding MigalastatSubstance = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Migalastat hydrochloride (substance)
     /// </summary>
     public static readonly Coding MigalastatHydrochlorideSubstance = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soybean unsaponifiables (substance)
     /// </summary>
     public static readonly Coding SoybeanUnsaponifiablesSubstance = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluciclovine
     /// </summary>
     public static readonly Coding Fluciclovine = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluorethyltyrosine (substance)
     /// </summary>
     public static readonly Coding FluorethyltyrosineSubstance = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin D analog
     /// </summary>
     public static readonly Coding VitaminDAnalog = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retinyl oleate
     /// </summary>
     public static readonly Coding RetinylOleate = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anhydrous glucose
     /// </summary>
     public static readonly Coding AnhydrousGlucose = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sodium folinate
     /// </summary>
     public static readonly Coding SodiumFolinate = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Galactan polysulfate (substance)
     /// </summary>
     public static readonly Coding GalactanPolysulfateSubstance = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dehydroascorbic acid (substance)
     /// </summary>
     public static readonly Coding DehydroascorbicAcidSubstance = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Morniflumate (substance)
     /// </summary>
     public static readonly Coding MorniflumateSubstance = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Homoserine
     /// </summary>
     public static readonly Coding Homoserine = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mannoheptulose
     /// </summary>
     public static readonly Coding Mannoheptulose = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neo-b-vitamin A1 (substance)
     /// </summary>
     public static readonly Coding NeoBVitaminA1Substance = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soy protein
     /// </summary>
     public static readonly Coding SoyProtein = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macimorelin (substance)
     /// </summary>
     public static readonly Coding MacimorelinSubstance = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macimorelin acetate (substance)
     /// </summary>
     public static readonly Coding MacimorelinAcetateSubstance = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Netarsudil (substance)
     /// </summary>
     public static readonly Coding NetarsudilSubstance = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin B12 and vitamin B12 derivative (substance)
     /// </summary>
     public static readonly Coding VitaminB12AndVitaminB12DerivativeSubstance = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioisotope labeled vitamin B12 (substance)
     /// </summary>
     public static readonly Coding RadioisotopeLabeledVitaminB12Substance = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Succinylated gelatin
     /// </summary>
     public static readonly Coding SuccinylatedGelatin = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fucose
     /// </summary>
     public static readonly Coding Fucose = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin B2 and vitamin B2 derivative (substance)
     /// </summary>
     public static readonly Coding VitaminB2AndVitaminB2DerivativeSubstance = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin K3 and vitamin K3 derivative
     /// </summary>
     public static readonly Coding VitaminK3AndVitaminK3Derivative = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin A and vitamin A derivative
     /// </summary>
     public static readonly Coding VitaminAAndVitaminADerivative = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin C and vitamin C derivative
     /// </summary>
     public static readonly Coding VitaminCAndVitaminCDerivative = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin B6 and vitamin B6 derivative
     /// </summary>
     public static readonly Coding VitaminB6AndVitaminB6Derivative = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Galactose-alpha-1,3 galactose
     /// </summary>
     public static readonly Coding GalactoseAlpha13Galactose = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Folate and folate derivative (substance)
     /// </summary>
     public static readonly Coding FolateAndFolateDerivativeSubstance = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aminobenzoic acid derivative
     /// </summary>
     public static readonly Coding AminobenzoicAcidDerivative = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diiodotyrosine
     /// </summary>
     public static readonly Coding Diiodotyrosine = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glycerol
     /// </summary>
     public static readonly Coding Glycerol = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pentose
     /// </summary>
     public static readonly Coding Pentose = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diosmin
     /// </summary>
     public static readonly Coding Diosmin = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Homoproline
     /// </summary>
     public static readonly Coding Homoproline = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cottonseed oil
     /// </summary>
     public static readonly Coding CottonseedOil = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin A
     /// </summary>
     public static readonly Coding VitaminA = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leucine
     /// </summary>
     public static readonly Coding Leucine = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cystathionine
     /// </summary>
     public static readonly Coding Cystathionine = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ornithine
     /// </summary>
     public static readonly Coding Ornithine = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glutamic acid
     /// </summary>
     public static readonly Coding GlutamicAcid = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Starch powder
     /// </summary>
     public static readonly Coding StarchPowder = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pantothenic acid
     /// </summary>
     public static readonly Coding PantothenicAcid = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 5,25-dihydroxy cholecalciferol (substance)
     /// </summary>
     public static readonly Coding VAL525DihydroxyCholecalciferolSubstance = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Asparagine
     /// </summary>
     public static readonly Coding Asparagine = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phosphoribosyl pyrophosphate
     /// </summary>
     public static readonly Coding PhosphoribosylPyrophosphate = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin
     /// </summary>
     public static readonly Coding Vitamin = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potassium
     /// </summary>
     public static readonly Coding Potassium = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sarcosine
     /// </summary>
     public static readonly Coding Sarcosine = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biotin
     /// </summary>
     public static readonly Coding Biotin = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sesame oil
     /// </summary>
     public static readonly Coding SesameOil = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monoiodotyrosine
     /// </summary>
     public static readonly Coding Monoiodotyrosine = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 2-aminoadipic acid
     /// </summary>
     public static readonly Coding VAL2AminoadipicAcid = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ethopabate
     /// </summary>
     public static readonly Coding Ethopabate = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Moenomycin A
     /// </summary>
     public static readonly Coding MoenomycinA = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Moenomycin B&gt;1&lt;
     /// </summary>
     public static readonly Coding MoenomycinBGreaterThan1LessThan = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Moenomycin B&gt;2&lt;
     /// </summary>
     public static readonly Coding MoenomycinBGreaterThan2LessThan = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Moenomycin C
     /// </summary>
     public static readonly Coding MoenomycinC = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Meclofenamic acid
     /// </summary>
     public static readonly Coding MeclofenamicAcid = new Coding
     {
@@ -5580,9 +5580,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGliadin = "102258003";
 
     /// <summary>
+    /// Literal for code: NONEGliadin
+    /// </summary>
+    public const string LiteralNONEGliadin = "http://snomed.info/sct#102258003";
+
+    /// <summary>
     /// Literal for code: VAL4PyridoxicAcidSubstance
     /// </summary>
     public const string LiteralVAL4PyridoxicAcidSubstance = "102658006";
+
+    /// <summary>
+    /// Literal for code: NONEVAL4PyridoxicAcidSubstance
+    /// </summary>
+    public const string LiteralNONEVAL4PyridoxicAcidSubstance = "http://snomed.info/sct#102658006";
 
     /// <summary>
     /// Literal for code: Galactose1Phosphate
@@ -5590,9 +5600,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGalactose1Phosphate = "102661007";
 
     /// <summary>
+    /// Literal for code: NONEGalactose1Phosphate
+    /// </summary>
+    public const string LiteralNONEGalactose1Phosphate = "http://snomed.info/sct#102661007";
+
+    /// <summary>
     /// Literal for code: Triosephosphate
     /// </summary>
     public const string LiteralTriosephosphate = "102663005";
+
+    /// <summary>
+    /// Literal for code: NONETriosephosphate
+    /// </summary>
+    public const string LiteralNONETriosephosphate = "http://snomed.info/sct#102663005";
 
     /// <summary>
     /// Literal for code: Homocitrulline
@@ -5600,9 +5620,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHomocitrulline = "102746004";
 
     /// <summary>
+    /// Literal for code: NONEHomocitrulline
+    /// </summary>
+    public const string LiteralNONEHomocitrulline = "http://snomed.info/sct#102746004";
+
+    /// <summary>
     /// Literal for code: Homocysteine
     /// </summary>
     public const string LiteralHomocysteine = "102747008";
+
+    /// <summary>
+    /// Literal for code: NONEHomocysteine
+    /// </summary>
+    public const string LiteralNONEHomocysteine = "http://snomed.info/sct#102747008";
 
     /// <summary>
     /// Literal for code: Anserine
@@ -5610,9 +5640,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAnserine = "102748003";
 
     /// <summary>
+    /// Literal for code: NONEAnserine
+    /// </summary>
+    public const string LiteralNONEAnserine = "http://snomed.info/sct#102748003";
+
+    /// <summary>
     /// Literal for code: Phosphoserine
     /// </summary>
     public const string LiteralPhosphoserine = "102750006";
+
+    /// <summary>
+    /// Literal for code: NONEPhosphoserine
+    /// </summary>
+    public const string LiteralNONEPhosphoserine = "http://snomed.info/sct#102750006";
 
     /// <summary>
     /// Literal for code: SulfurBearingAminoAcid
@@ -5620,9 +5660,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSulfurBearingAminoAcid = "102751005";
 
     /// <summary>
+    /// Literal for code: NONESulfurBearingAminoAcid
+    /// </summary>
+    public const string LiteralNONESulfurBearingAminoAcid = "http://snomed.info/sct#102751005";
+
+    /// <summary>
     /// Literal for code: Retinaldehyde
     /// </summary>
     public const string LiteralRetinaldehyde = "103067001";
+
+    /// <summary>
+    /// Literal for code: NONERetinaldehyde
+    /// </summary>
+    public const string LiteralNONERetinaldehyde = "http://snomed.info/sct#103067001";
 
     /// <summary>
     /// Literal for code: ProvitaminA
@@ -5630,9 +5680,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProvitaminA = "103068006";
 
     /// <summary>
+    /// Literal for code: NONEProvitaminA
+    /// </summary>
+    public const string LiteralNONEProvitaminA = "http://snomed.info/sct#103068006";
+
+    /// <summary>
     /// Literal for code: VitaminBAndVitaminBDerivative
     /// </summary>
     public const string LiteralVitaminBAndVitaminBDerivative = "103069003";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminBAndVitaminBDerivative
+    /// </summary>
+    public const string LiteralNONEVitaminBAndVitaminBDerivative = "http://snomed.info/sct#103069003";
 
     /// <summary>
     /// Literal for code: PyridoxineCongeners
@@ -5640,9 +5700,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPyridoxineCongeners = "103070002";
 
     /// <summary>
+    /// Literal for code: NONEPyridoxineCongeners
+    /// </summary>
+    public const string LiteralNONEPyridoxineCongeners = "http://snomed.info/sct#103070002";
+
+    /// <summary>
     /// Literal for code: Ethylnicotinamide
     /// </summary>
     public const string LiteralEthylnicotinamide = "103072005";
+
+    /// <summary>
+    /// Literal for code: NONEEthylnicotinamide
+    /// </summary>
+    public const string LiteralNONEEthylnicotinamide = "http://snomed.info/sct#103072005";
 
     /// <summary>
     /// Literal for code: NPower1PowerMethyl3Carboxamide6Pyridone
@@ -5650,9 +5720,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNPower1PowerMethyl3Carboxamide6Pyridone = "103074006";
 
     /// <summary>
+    /// Literal for code: NONENPower1PowerMethyl3Carboxamide6Pyridone
+    /// </summary>
+    public const string LiteralNONENPower1PowerMethyl3Carboxamide6Pyridone = "http://snomed.info/sct#103074006";
+
+    /// <summary>
     /// Literal for code: Glucose6Phosphate
     /// </summary>
     public const string LiteralGlucose6Phosphate = "10796004";
+
+    /// <summary>
+    /// Literal for code: NONEGlucose6Phosphate
+    /// </summary>
+    public const string LiteralNONEGlucose6Phosphate = "http://snomed.info/sct#10796004";
 
     /// <summary>
     /// Literal for code: KetorolacTromethamine
@@ -5660,9 +5740,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralKetorolacTromethamine = "108513001";
 
     /// <summary>
+    /// Literal for code: NONEKetorolacTromethamine
+    /// </summary>
+    public const string LiteralNONEKetorolacTromethamine = "http://snomed.info/sct#108513001";
+
+    /// <summary>
     /// Literal for code: Bromfenac
     /// </summary>
     public const string LiteralBromfenac = "108520008";
+
+    /// <summary>
+    /// Literal for code: NONEBromfenac
+    /// </summary>
+    public const string LiteralNONEBromfenac = "http://snomed.info/sct#108520008";
 
     /// <summary>
     /// Literal for code: BromfenacSodium
@@ -5670,9 +5760,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBromfenacSodium = "108521007";
 
     /// <summary>
+    /// Literal for code: NONEBromfenacSodium
+    /// </summary>
+    public const string LiteralNONEBromfenacSodium = "http://snomed.info/sct#108521007";
+
+    /// <summary>
     /// Literal for code: FosinoprilSodium
     /// </summary>
     public const string LiteralFosinoprilSodium = "108570006";
+
+    /// <summary>
+    /// Literal for code: NONEFosinoprilSodium
+    /// </summary>
+    public const string LiteralNONEFosinoprilSodium = "http://snomed.info/sct#108570006";
 
     /// <summary>
     /// Literal for code: Paricalcitol
@@ -5680,9 +5780,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralParicalcitol = "108946001";
 
     /// <summary>
+    /// Literal for code: NONEParicalcitol
+    /// </summary>
+    public const string LiteralNONEParicalcitol = "http://snomed.info/sct#108946001";
+
+    /// <summary>
     /// Literal for code: CysteineHydrochloride
     /// </summary>
     public const string LiteralCysteineHydrochloride = "108950008";
+
+    /// <summary>
+    /// Literal for code: NONECysteineHydrochloride
+    /// </summary>
+    public const string LiteralNONECysteineHydrochloride = "http://snomed.info/sct#108950008";
 
     /// <summary>
     /// Literal for code: AbsorbableGelatinFilm
@@ -5690,9 +5800,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAbsorbableGelatinFilm = "109015005";
 
     /// <summary>
+    /// Literal for code: NONEAbsorbableGelatinFilm
+    /// </summary>
+    public const string LiteralNONEAbsorbableGelatinFilm = "http://snomed.info/sct#109015005";
+
+    /// <summary>
     /// Literal for code: AbsorbableGelatinPowder
     /// </summary>
     public const string LiteralAbsorbableGelatinPowder = "109017002";
+
+    /// <summary>
+    /// Literal for code: NONEAbsorbableGelatinPowder
+    /// </summary>
+    public const string LiteralNONEAbsorbableGelatinPowder = "http://snomed.info/sct#109017002";
 
     /// <summary>
     /// Literal for code: Dextran1
@@ -5700,9 +5820,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDextran1 = "109024001";
 
     /// <summary>
+    /// Literal for code: NONEDextran1
+    /// </summary>
+    public const string LiteralNONEDextran1 = "http://snomed.info/sct#109024001";
+
+    /// <summary>
     /// Literal for code: Tiopronin
     /// </summary>
     public const string LiteralTiopronin = "109106000";
+
+    /// <summary>
+    /// Literal for code: NONETiopronin
+    /// </summary>
+    public const string LiteralNONETiopronin = "http://snomed.info/sct#109106000";
 
     /// <summary>
     /// Literal for code: PentosanPolysulfateSodium
@@ -5710,9 +5840,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPentosanPolysulfateSodium = "109117004";
 
     /// <summary>
+    /// Literal for code: NONEPentosanPolysulfateSodium
+    /// </summary>
+    public const string LiteralNONEPentosanPolysulfateSodium = "http://snomed.info/sct#109117004";
+
+    /// <summary>
     /// Literal for code: BenzylpenicilloylPolylysine
     /// </summary>
     public const string LiteralBenzylpenicilloylPolylysine = "109202005";
+
+    /// <summary>
+    /// Literal for code: NONEBenzylpenicilloylPolylysine
+    /// </summary>
+    public const string LiteralNONEBenzylpenicilloylPolylysine = "http://snomed.info/sct#109202005";
 
     /// <summary>
     /// Literal for code: Carrageenan
@@ -5720,9 +5860,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCarrageenan = "109240008";
 
     /// <summary>
+    /// Literal for code: NONECarrageenan
+    /// </summary>
+    public const string LiteralNONECarrageenan = "http://snomed.info/sct#109240008";
+
+    /// <summary>
     /// Literal for code: Taurine
     /// </summary>
     public const string LiteralTaurine = "10944007";
+
+    /// <summary>
+    /// Literal for code: NONETaurine
+    /// </summary>
+    public const string LiteralNONETaurine = "http://snomed.info/sct#10944007";
 
     /// <summary>
     /// Literal for code: EssentialAminoAcid
@@ -5730,9 +5880,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEssentialAminoAcid = "112000000";
 
     /// <summary>
+    /// Literal for code: NONEEssentialAminoAcid
+    /// </summary>
+    public const string LiteralNONEEssentialAminoAcid = "http://snomed.info/sct#112000000";
+
+    /// <summary>
     /// Literal for code: AromaticAminoAcid
     /// </summary>
     public const string LiteralAromaticAminoAcid = "112001001";
+
+    /// <summary>
+    /// Literal for code: NONEAromaticAminoAcid
+    /// </summary>
+    public const string LiteralNONEAromaticAminoAcid = "http://snomed.info/sct#112001001";
 
     /// <summary>
     /// Literal for code: VitaminU
@@ -5740,9 +5900,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVitaminU = "112121003";
 
     /// <summary>
+    /// Literal for code: NONEVitaminU
+    /// </summary>
+    public const string LiteralNONEVitaminU = "http://snomed.info/sct#112121003";
+
+    /// <summary>
     /// Literal for code: Sucrose
     /// </summary>
     public const string LiteralSucrose = "11320009";
+
+    /// <summary>
+    /// Literal for code: NONESucrose
+    /// </summary>
+    public const string LiteralNONESucrose = "http://snomed.info/sct#11320009";
 
     /// <summary>
     /// Literal for code: AlphaAminobutyrate
@@ -5750,9 +5920,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAlphaAminobutyrate = "115343006";
 
     /// <summary>
+    /// Literal for code: NONEAlphaAminobutyrate
+    /// </summary>
+    public const string LiteralNONEAlphaAminobutyrate = "http://snomed.info/sct#115343006";
+
+    /// <summary>
     /// Literal for code: VAL3AminoisobutyrateSubstance
     /// </summary>
     public const string LiteralVAL3AminoisobutyrateSubstance = "115358003";
+
+    /// <summary>
+    /// Literal for code: NONEVAL3AminoisobutyrateSubstance
+    /// </summary>
+    public const string LiteralNONEVAL3AminoisobutyrateSubstance = "http://snomed.info/sct#115358003";
 
     /// <summary>
     /// Literal for code: Doxercalciferol
@@ -5760,9 +5940,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDoxercalciferol = "116094003";
 
     /// <summary>
+    /// Literal for code: NONEDoxercalciferol
+    /// </summary>
+    public const string LiteralNONEDoxercalciferol = "http://snomed.info/sct#116094003";
+
+    /// <summary>
     /// Literal for code: MagnesiumAminoAcidsChelate
     /// </summary>
     public const string LiteralMagnesiumAminoAcidsChelate = "116127001";
+
+    /// <summary>
+    /// Literal for code: NONEMagnesiumAminoAcidsChelate
+    /// </summary>
+    public const string LiteralNONEMagnesiumAminoAcidsChelate = "http://snomed.info/sct#116127001";
 
     /// <summary>
     /// Literal for code: Monosaccharide
@@ -5770,9 +5960,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMonosaccharide = "116257004";
 
     /// <summary>
+    /// Literal for code: NONEMonosaccharide
+    /// </summary>
+    public const string LiteralNONEMonosaccharide = "http://snomed.info/sct#116257004";
+
+    /// <summary>
     /// Literal for code: Aldose
     /// </summary>
     public const string LiteralAldose = "116258009";
+
+    /// <summary>
+    /// Literal for code: NONEAldose
+    /// </summary>
+    public const string LiteralNONEAldose = "http://snomed.info/sct#116258009";
 
     /// <summary>
     /// Literal for code: Hexose
@@ -5780,9 +5980,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHexose = "116259001";
 
     /// <summary>
+    /// Literal for code: NONEHexose
+    /// </summary>
+    public const string LiteralNONEHexose = "http://snomed.info/sct#116259001";
+
+    /// <summary>
     /// Literal for code: Ketose
     /// </summary>
     public const string LiteralKetose = "116260006";
+
+    /// <summary>
+    /// Literal for code: NONEKetose
+    /// </summary>
+    public const string LiteralNONEKetose = "http://snomed.info/sct#116260006";
 
     /// <summary>
     /// Literal for code: Tetrose
@@ -5790,9 +6000,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTetrose = "116261005";
 
     /// <summary>
+    /// Literal for code: NONETetrose
+    /// </summary>
+    public const string LiteralNONETetrose = "http://snomed.info/sct#116261005";
+
+    /// <summary>
     /// Literal for code: Triose
     /// </summary>
     public const string LiteralTriose = "116262003";
+
+    /// <summary>
+    /// Literal for code: NONETriose
+    /// </summary>
+    public const string LiteralNONETriose = "http://snomed.info/sct#116262003";
 
     /// <summary>
     /// Literal for code: Heptose
@@ -5800,9 +6020,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHeptose = "116263008";
 
     /// <summary>
+    /// Literal for code: NONEHeptose
+    /// </summary>
+    public const string LiteralNONEHeptose = "http://snomed.info/sct#116263008";
+
+    /// <summary>
     /// Literal for code: Trisaccharide
     /// </summary>
     public const string LiteralTrisaccharide = "116264002";
+
+    /// <summary>
+    /// Literal for code: NONETrisaccharide
+    /// </summary>
+    public const string LiteralNONETrisaccharide = "http://snomed.info/sct#116264002";
 
     /// <summary>
     /// Literal for code: Raffinose
@@ -5810,9 +6040,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRaffinose = "116265001";
 
     /// <summary>
+    /// Literal for code: NONERaffinose
+    /// </summary>
+    public const string LiteralNONERaffinose = "http://snomed.info/sct#116265001";
+
+    /// <summary>
     /// Literal for code: SugarPhosphate
     /// </summary>
     public const string LiteralSugarPhosphate = "116266000";
+
+    /// <summary>
+    /// Literal for code: NONESugarPhosphate
+    /// </summary>
+    public const string LiteralNONESugarPhosphate = "http://snomed.info/sct#116266000";
 
     /// <summary>
     /// Literal for code: SugarAlcohol
@@ -5820,9 +6060,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSugarAlcohol = "116267009";
 
     /// <summary>
+    /// Literal for code: NONESugarAlcohol
+    /// </summary>
+    public const string LiteralNONESugarAlcohol = "http://snomed.info/sct#116267009";
+
+    /// <summary>
     /// Literal for code: Galactitol
     /// </summary>
     public const string LiteralGalactitol = "116268004";
+
+    /// <summary>
+    /// Literal for code: NONEGalactitol
+    /// </summary>
+    public const string LiteralNONEGalactitol = "http://snomed.info/sct#116268004";
 
     /// <summary>
     /// Literal for code: Maltitol
@@ -5830,9 +6080,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMaltitol = "116269007";
 
     /// <summary>
+    /// Literal for code: NONEMaltitol
+    /// </summary>
+    public const string LiteralNONEMaltitol = "http://snomed.info/sct#116269007";
+
+    /// <summary>
     /// Literal for code: Ribitol
     /// </summary>
     public const string LiteralRibitol = "116271007";
+
+    /// <summary>
+    /// Literal for code: NONERibitol
+    /// </summary>
+    public const string LiteralNONERibitol = "http://snomed.info/sct#116271007";
 
     /// <summary>
     /// Literal for code: DAlphaTocopherol
@@ -5840,9 +6100,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDAlphaTocopherol = "116776001";
 
     /// <summary>
+    /// Literal for code: NONEDAlphaTocopherol
+    /// </summary>
+    public const string LiteralNONEDAlphaTocopherol = "http://snomed.info/sct#116776001";
+
+    /// <summary>
     /// Literal for code: BetaTocopherol
     /// </summary>
     public const string LiteralBetaTocopherol = "116777005";
+
+    /// <summary>
+    /// Literal for code: NONEBetaTocopherol
+    /// </summary>
+    public const string LiteralNONEBetaTocopherol = "http://snomed.info/sct#116777005";
 
     /// <summary>
     /// Literal for code: GammaTocopherol
@@ -5850,9 +6120,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGammaTocopherol = "116778000";
 
     /// <summary>
+    /// Literal for code: NONEGammaTocopherol
+    /// </summary>
+    public const string LiteralNONEGammaTocopherol = "http://snomed.info/sct#116778000";
+
+    /// <summary>
     /// Literal for code: Ergosterol
     /// </summary>
     public const string LiteralErgosterol = "116934003";
+
+    /// <summary>
+    /// Literal for code: NONEErgosterol
+    /// </summary>
+    public const string LiteralNONEErgosterol = "http://snomed.info/sct#116934003";
 
     /// <summary>
     /// Literal for code: Alfacalcidol
@@ -5860,9 +6140,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAlfacalcidol = "11984007";
 
     /// <summary>
+    /// Literal for code: NONEAlfacalcidol
+    /// </summary>
+    public const string LiteralNONEAlfacalcidol = "http://snomed.info/sct#11984007";
+
+    /// <summary>
     /// Literal for code: Dextran70
     /// </summary>
     public const string LiteralDextran70 = "12391001";
+
+    /// <summary>
+    /// Literal for code: NONEDextran70
+    /// </summary>
+    public const string LiteralNONEDextran70 = "http://snomed.info/sct#12391001";
 
     /// <summary>
     /// Literal for code: FishLiverOil
@@ -5870,9 +6160,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFishLiverOil = "126076005";
 
     /// <summary>
+    /// Literal for code: NONEFishLiverOil
+    /// </summary>
+    public const string LiteralNONEFishLiverOil = "http://snomed.info/sct#126076005";
+
+    /// <summary>
     /// Literal for code: BurbotLiverOil
     /// </summary>
     public const string LiteralBurbotLiverOil = "126077001";
+
+    /// <summary>
+    /// Literal for code: NONEBurbotLiverOil
+    /// </summary>
+    public const string LiteralNONEBurbotLiverOil = "http://snomed.info/sct#126077001";
 
     /// <summary>
     /// Literal for code: PercomorphLiverOil
@@ -5880,9 +6180,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPercomorphLiverOil = "126078006";
 
     /// <summary>
+    /// Literal for code: NONEPercomorphLiverOil
+    /// </summary>
+    public const string LiteralNONEPercomorphLiverOil = "http://snomed.info/sct#126078006";
+
+    /// <summary>
     /// Literal for code: PercoidLiverOil
     /// </summary>
     public const string LiteralPercoidLiverOil = "126079003";
+
+    /// <summary>
+    /// Literal for code: NONEPercoidLiverOil
+    /// </summary>
+    public const string LiteralNONEPercoidLiverOil = "http://snomed.info/sct#126079003";
 
     /// <summary>
     /// Literal for code: SharkLiverOil
@@ -5890,9 +6200,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSharkLiverOil = "126080000";
 
     /// <summary>
+    /// Literal for code: NONESharkLiverOil
+    /// </summary>
+    public const string LiteralNONESharkLiverOil = "http://snomed.info/sct#126080000";
+
+    /// <summary>
     /// Literal for code: HalibutLiverOil
     /// </summary>
     public const string LiteralHalibutLiverOil = "126081001";
+
+    /// <summary>
+    /// Literal for code: NONEHalibutLiverOil
+    /// </summary>
+    public const string LiteralNONEHalibutLiverOil = "http://snomed.info/sct#126081001";
 
     /// <summary>
     /// Literal for code: CodLiverOil
@@ -5900,9 +6220,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCodLiverOil = "126082008";
 
     /// <summary>
+    /// Literal for code: NONECodLiverOil
+    /// </summary>
+    public const string LiteralNONECodLiverOil = "http://snomed.info/sct#126082008";
+
+    /// <summary>
     /// Literal for code: CalciumLeucovorin
     /// </summary>
     public const string LiteralCalciumLeucovorin = "126223008";
+
+    /// <summary>
+    /// Literal for code: NONECalciumLeucovorin
+    /// </summary>
+    public const string LiteralNONECalciumLeucovorin = "http://snomed.info/sct#126223008";
 
     /// <summary>
     /// Literal for code: SodiumFolate
@@ -5910,9 +6240,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSodiumFolate = "126224002";
 
     /// <summary>
+    /// Literal for code: NONESodiumFolate
+    /// </summary>
+    public const string LiteralNONESodiumFolate = "http://snomed.info/sct#126224002";
+
+    /// <summary>
     /// Literal for code: CalciumPantothenate
     /// </summary>
     public const string LiteralCalciumPantothenate = "126225001";
+
+    /// <summary>
+    /// Literal for code: NONECalciumPantothenate
+    /// </summary>
+    public const string LiteralNONECalciumPantothenate = "http://snomed.info/sct#126225001";
 
     /// <summary>
     /// Literal for code: Dexpanthenol
@@ -5920,9 +6260,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDexpanthenol = "126226000";
 
     /// <summary>
+    /// Literal for code: NONEDexpanthenol
+    /// </summary>
+    public const string LiteralNONEDexpanthenol = "http://snomed.info/sct#126226000";
+
+    /// <summary>
     /// Literal for code: PyridoxineHydrochloride
     /// </summary>
     public const string LiteralPyridoxineHydrochloride = "126227009";
+
+    /// <summary>
+    /// Literal for code: NONEPyridoxineHydrochloride
+    /// </summary>
+    public const string LiteralNONEPyridoxineHydrochloride = "http://snomed.info/sct#126227009";
 
     /// <summary>
     /// Literal for code: ThiamineHydrochloride
@@ -5930,9 +6280,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralThiamineHydrochloride = "126228004";
 
     /// <summary>
+    /// Literal for code: NONEThiamineHydrochloride
+    /// </summary>
+    public const string LiteralNONEThiamineHydrochloride = "http://snomed.info/sct#126228004";
+
+    /// <summary>
     /// Literal for code: ThiamineMononitrate
     /// </summary>
     public const string LiteralThiamineMononitrate = "126229007";
+
+    /// <summary>
+    /// Literal for code: NONEThiamineMononitrate
+    /// </summary>
+    public const string LiteralNONEThiamineMononitrate = "http://snomed.info/sct#126229007";
 
     /// <summary>
     /// Literal for code: Dihydrotachysterol
@@ -5940,9 +6300,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDihydrotachysterol = "126235007";
 
     /// <summary>
+    /// Literal for code: NONEDihydrotachysterol
+    /// </summary>
+    public const string LiteralNONEDihydrotachysterol = "http://snomed.info/sct#126235007";
+
+    /// <summary>
     /// Literal for code: DeltaTocopherol
     /// </summary>
     public const string LiteralDeltaTocopherol = "126237004";
+
+    /// <summary>
+    /// Literal for code: NONEDeltaTocopherol
+    /// </summary>
+    public const string LiteralNONEDeltaTocopherol = "http://snomed.info/sct#126237004";
 
     /// <summary>
     /// Literal for code: VitaminK5Substance
@@ -5950,9 +6320,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVitaminK5Substance = "126238009";
 
     /// <summary>
+    /// Literal for code: NONEVitaminK5Substance
+    /// </summary>
+    public const string LiteralNONEVitaminK5Substance = "http://snomed.info/sct#126238009";
+
+    /// <summary>
     /// Literal for code: MenadiolSodiumDiphosphate
     /// </summary>
     public const string LiteralMenadiolSodiumDiphosphate = "126239001";
+
+    /// <summary>
+    /// Literal for code: NONEMenadiolSodiumDiphosphate
+    /// </summary>
+    public const string LiteralNONEMenadiolSodiumDiphosphate = "http://snomed.info/sct#126239001";
 
     /// <summary>
     /// Literal for code: InositolHexanitrate
@@ -5960,9 +6340,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInositolHexanitrate = "12970004";
 
     /// <summary>
+    /// Literal for code: NONEInositolHexanitrate
+    /// </summary>
+    public const string LiteralNONEInositolHexanitrate = "http://snomed.info/sct#12970004";
+
+    /// <summary>
     /// Literal for code: Riboflavin
     /// </summary>
     public const string LiteralRiboflavin = "13235001";
+
+    /// <summary>
+    /// Literal for code: NONERiboflavin
+    /// </summary>
+    public const string LiteralNONERiboflavin = "http://snomed.info/sct#13235001";
 
     /// <summary>
     /// Literal for code: AlphaAminoIsobutyricAcid
@@ -5970,9 +6360,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAlphaAminoIsobutyricAcid = "13781002";
 
     /// <summary>
+    /// Literal for code: NONEAlphaAminoIsobutyricAcid
+    /// </summary>
+    public const string LiteralNONEAlphaAminoIsobutyricAcid = "http://snomed.info/sct#13781002";
+
+    /// <summary>
     /// Literal for code: Arabinose
     /// </summary>
     public const string LiteralArabinose = "13863008";
+
+    /// <summary>
+    /// Literal for code: NONEArabinose
+    /// </summary>
+    public const string LiteralNONEArabinose = "http://snomed.info/sct#13863008";
 
     /// <summary>
     /// Literal for code: Serine
@@ -5980,9 +6380,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSerine = "14125007";
 
     /// <summary>
+    /// Literal for code: NONESerine
+    /// </summary>
+    public const string LiteralNONESerine = "http://snomed.info/sct#14125007";
+
+    /// <summary>
     /// Literal for code: ArginineGlutamate
     /// </summary>
     public const string LiteralArginineGlutamate = "14139007";
+
+    /// <summary>
+    /// Literal for code: NONEArginineGlutamate
+    /// </summary>
+    public const string LiteralNONEArginineGlutamate = "http://snomed.info/sct#14139007";
 
     /// <summary>
     /// Literal for code: VitaminLGreaterThan2LessThan
@@ -5990,9 +6400,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVitaminLGreaterThan2LessThan = "14312008";
 
     /// <summary>
+    /// Literal for code: NONEVitaminLGreaterThan2LessThan
+    /// </summary>
+    public const string LiteralNONEVitaminLGreaterThan2LessThan = "http://snomed.info/sct#14312008";
+
+    /// <summary>
     /// Literal for code: Amylopectin
     /// </summary>
     public const string LiteralAmylopectin = "14564001";
+
+    /// <summary>
+    /// Literal for code: NONEAmylopectin
+    /// </summary>
+    public const string LiteralNONEAmylopectin = "http://snomed.info/sct#14564001";
 
     /// <summary>
     /// Literal for code: Dextran75
@@ -6000,9 +6420,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDextran75 = "14715007";
 
     /// <summary>
+    /// Literal for code: NONEDextran75
+    /// </summary>
+    public const string LiteralNONEDextran75 = "http://snomed.info/sct#14715007";
+
+    /// <summary>
     /// Literal for code: Isoleucine
     /// </summary>
     public const string LiteralIsoleucine = "14971004";
+
+    /// <summary>
+    /// Literal for code: NONEIsoleucine
+    /// </summary>
+    public const string LiteralNONEIsoleucine = "http://snomed.info/sct#14971004";
 
     /// <summary>
     /// Literal for code: Glycine
@@ -6010,9 +6440,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGlycine = "15331006";
 
     /// <summary>
+    /// Literal for code: NONEGlycine
+    /// </summary>
+    public const string LiteralNONEGlycine = "http://snomed.info/sct#15331006";
+
+    /// <summary>
     /// Literal for code: Disaccharide
     /// </summary>
     public const string LiteralDisaccharide = "15472007";
+
+    /// <summary>
+    /// Literal for code: NONEDisaccharide
+    /// </summary>
+    public const string LiteralNONEDisaccharide = "http://snomed.info/sct#15472007";
 
     /// <summary>
     /// Literal for code: Ribose
@@ -6020,9 +6460,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRibose = "16850006";
 
     /// <summary>
+    /// Literal for code: NONERibose
+    /// </summary>
+    public const string LiteralNONERibose = "http://snomed.info/sct#16850006";
+
+    /// <summary>
     /// Literal for code: NicotinamideSubstance
     /// </summary>
     public const string LiteralNicotinamideSubstance = "173196005";
+
+    /// <summary>
+    /// Literal for code: NONENicotinamideSubstance
+    /// </summary>
+    public const string LiteralNONENicotinamideSubstance = "http://snomed.info/sct#173196005";
 
     /// <summary>
     /// Literal for code: VitaminDGreaterThan3LessThan
@@ -6030,9 +6480,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVitaminDGreaterThan3LessThan = "18414002";
 
     /// <summary>
+    /// Literal for code: NONEVitaminDGreaterThan3LessThan
+    /// </summary>
+    public const string LiteralNONEVitaminDGreaterThan3LessThan = "http://snomed.info/sct#18414002";
+
+    /// <summary>
     /// Literal for code: Xylose
     /// </summary>
     public const string LiteralXylose = "19160003";
+
+    /// <summary>
+    /// Literal for code: NONEXylose
+    /// </summary>
+    public const string LiteralNONEXylose = "http://snomed.info/sct#19160003";
 
     /// <summary>
     /// Literal for code: Sorbitol
@@ -6040,9 +6500,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSorbitol = "19839007";
 
     /// <summary>
+    /// Literal for code: NONESorbitol
+    /// </summary>
+    public const string LiteralNONESorbitol = "http://snomed.info/sct#19839007";
+
+    /// <summary>
     /// Literal for code: BetaDFructopyranoseSubstance
     /// </summary>
     public const string LiteralBetaDFructopyranoseSubstance = "21239003";
+
+    /// <summary>
+    /// Literal for code: NONEBetaDFructopyranoseSubstance
+    /// </summary>
+    public const string LiteralNONEBetaDFructopyranoseSubstance = "http://snomed.info/sct#21239003";
 
     /// <summary>
     /// Literal for code: TetrahydrofolicAcid
@@ -6050,9 +6520,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTetrahydrofolicAcid = "21706000";
 
     /// <summary>
+    /// Literal for code: NONETetrahydrofolicAcid
+    /// </summary>
+    public const string LiteralNONETetrahydrofolicAcid = "http://snomed.info/sct#21706000";
+
+    /// <summary>
     /// Literal for code: OroticAcid
     /// </summary>
     public const string LiteralOroticAcid = "2254005";
+
+    /// <summary>
+    /// Literal for code: NONEOroticAcid
+    /// </summary>
+    public const string LiteralNONEOroticAcid = "http://snomed.info/sct#2254005";
 
     /// <summary>
     /// Literal for code: Sorbose
@@ -6060,9 +6540,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSorbose = "22555008";
 
     /// <summary>
+    /// Literal for code: NONESorbose
+    /// </summary>
+    public const string LiteralNONESorbose = "http://snomed.info/sct#22555008";
+
+    /// <summary>
     /// Literal for code: Glycoasparagine
     /// </summary>
     public const string LiteralGlycoasparagine = "22559002";
+
+    /// <summary>
+    /// Literal for code: NONEGlycoasparagine
+    /// </summary>
+    public const string LiteralNONEGlycoasparagine = "http://snomed.info/sct#22559002";
 
     /// <summary>
     /// Literal for code: VitaminK2
@@ -6070,9 +6560,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVitaminK2 = "22606007";
 
     /// <summary>
+    /// Literal for code: NONEVitaminK2
+    /// </summary>
+    public const string LiteralNONEVitaminK2 = "http://snomed.info/sct#22606007";
+
+    /// <summary>
     /// Literal for code: Nutrients
     /// </summary>
     public const string LiteralNutrients = "226355009";
+
+    /// <summary>
+    /// Literal for code: NONENutrients
+    /// </summary>
+    public const string LiteralNONENutrients = "http://snomed.info/sct#226355009";
 
     /// <summary>
     /// Literal for code: EicosapentaenoicAcid
@@ -6080,9 +6580,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEicosapentaenoicAcid = "226367006";
 
     /// <summary>
+    /// Literal for code: NONEEicosapentaenoicAcid
+    /// </summary>
+    public const string LiteralNONEEicosapentaenoicAcid = "http://snomed.info/sct#226367006";
+
+    /// <summary>
     /// Literal for code: DHADocosahexaenoicAcid
     /// </summary>
     public const string LiteralDHADocosahexaenoicAcid = "226368001";
+
+    /// <summary>
+    /// Literal for code: NONEDHADocosahexaenoicAcid
+    /// </summary>
+    public const string LiteralNONEDHADocosahexaenoicAcid = "http://snomed.info/sct#226368001";
 
     /// <summary>
     /// Literal for code: Tetrasaccharide
@@ -6090,9 +6600,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTetrasaccharide = "226369009";
 
     /// <summary>
+    /// Literal for code: NONETetrasaccharide
+    /// </summary>
+    public const string LiteralNONETetrasaccharide = "http://snomed.info/sct#226369009";
+
+    /// <summary>
     /// Literal for code: Stachyose
     /// </summary>
     public const string LiteralStachyose = "226370005";
+
+    /// <summary>
+    /// Literal for code: NONEStachyose
+    /// </summary>
+    public const string LiteralNONEStachyose = "http://snomed.info/sct#226370005";
 
     /// <summary>
     /// Literal for code: Pentasaccharide
@@ -6100,9 +6620,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPentasaccharide = "226371009";
 
     /// <summary>
+    /// Literal for code: NONEPentasaccharide
+    /// </summary>
+    public const string LiteralNONEPentasaccharide = "http://snomed.info/sct#226371009";
+
+    /// <summary>
     /// Literal for code: Verbascose
     /// </summary>
     public const string LiteralVerbascose = "226372002";
+
+    /// <summary>
+    /// Literal for code: NONEVerbascose
+    /// </summary>
+    public const string LiteralNONEVerbascose = "http://snomed.info/sct#226372002";
 
     /// <summary>
     /// Literal for code: Amylose
@@ -6110,9 +6640,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAmylose = "226373007";
 
     /// <summary>
+    /// Literal for code: NONEAmylose
+    /// </summary>
+    public const string LiteralNONEAmylose = "http://snomed.info/sct#226373007";
+
+    /// <summary>
     /// Literal for code: ComplexCarbohydrate
     /// </summary>
     public const string LiteralComplexCarbohydrate = "226374001";
+
+    /// <summary>
+    /// Literal for code: NONEComplexCarbohydrate
+    /// </summary>
+    public const string LiteralNONEComplexCarbohydrate = "http://snomed.info/sct#226374001";
 
     /// <summary>
     /// Literal for code: RefinedCarbohydrate
@@ -6120,9 +6660,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRefinedCarbohydrate = "226375000";
 
     /// <summary>
+    /// Literal for code: NONERefinedCarbohydrate
+    /// </summary>
+    public const string LiteralNONERefinedCarbohydrate = "http://snomed.info/sct#226375000";
+
+    /// <summary>
     /// Literal for code: DriedSoyaMilk
     /// </summary>
     public const string LiteralDriedSoyaMilk = "226781005";
+
+    /// <summary>
+    /// Literal for code: NONEDriedSoyaMilk
+    /// </summary>
+    public const string LiteralNONEDriedSoyaMilk = "http://snomed.info/sct#226781005";
 
     /// <summary>
     /// Literal for code: SoyaMilk
@@ -6130,9 +6680,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSoyaMilk = "226793001";
 
     /// <summary>
+    /// Literal for code: NONESoyaMilk
+    /// </summary>
+    public const string LiteralNONESoyaMilk = "http://snomed.info/sct#226793001";
+
+    /// <summary>
     /// Literal for code: SoyaCheese
     /// </summary>
     public const string LiteralSoyaCheese = "226842001";
+
+    /// <summary>
+    /// Literal for code: NONESoyaCheese
+    /// </summary>
+    public const string LiteralNONESoyaCheese = "http://snomed.info/sct#226842001";
 
     /// <summary>
     /// Literal for code: SoyaMilkYogurt
@@ -6140,9 +6700,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSoyaMilkYogurt = "226880000";
 
     /// <summary>
+    /// Literal for code: NONESoyaMilkYogurt
+    /// </summary>
+    public const string LiteralNONESoyaMilkYogurt = "http://snomed.info/sct#226880000";
+
+    /// <summary>
     /// Literal for code: FatAndOil
     /// </summary>
     public const string LiteralFatAndOil = "226887002";
+
+    /// <summary>
+    /// Literal for code: NONEFatAndOil
+    /// </summary>
+    public const string LiteralNONEFatAndOil = "http://snomed.info/sct#226887002";
 
     /// <summary>
     /// Literal for code: Butter
@@ -6150,9 +6720,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralButter = "226888007";
 
     /// <summary>
+    /// Literal for code: NONEButter
+    /// </summary>
+    public const string LiteralNONEButter = "http://snomed.info/sct#226888007";
+
+    /// <summary>
     /// Literal for code: BlendedSpread
     /// </summary>
     public const string LiteralBlendedSpread = "226889004";
+
+    /// <summary>
+    /// Literal for code: NONEBlendedSpread
+    /// </summary>
+    public const string LiteralNONEBlendedSpread = "http://snomed.info/sct#226889004";
 
     /// <summary>
     /// Literal for code: Margarine
@@ -6160,9 +6740,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMargarine = "226890008";
 
     /// <summary>
+    /// Literal for code: NONEMargarine
+    /// </summary>
+    public const string LiteralNONEMargarine = "http://snomed.info/sct#226890008";
+
+    /// <summary>
     /// Literal for code: HardVegetableFatMargarine
     /// </summary>
     public const string LiteralHardVegetableFatMargarine = "226891007";
+
+    /// <summary>
+    /// Literal for code: NONEHardVegetableFatMargarine
+    /// </summary>
+    public const string LiteralNONEHardVegetableFatMargarine = "http://snomed.info/sct#226891007";
 
     /// <summary>
     /// Literal for code: HardAnimalAndVegetableFatMargarine
@@ -6170,9 +6760,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHardAnimalAndVegetableFatMargarine = "226892000";
 
     /// <summary>
+    /// Literal for code: NONEHardAnimalAndVegetableFatMargarine
+    /// </summary>
+    public const string LiteralNONEHardAnimalAndVegetableFatMargarine = "http://snomed.info/sct#226892000";
+
+    /// <summary>
     /// Literal for code: SoftPolyunsaturatedFatMargarine
     /// </summary>
     public const string LiteralSoftPolyunsaturatedFatMargarine = "226894004";
+
+    /// <summary>
+    /// Literal for code: NONESoftPolyunsaturatedFatMargarine
+    /// </summary>
+    public const string LiteralNONESoftPolyunsaturatedFatMargarine = "http://snomed.info/sct#226894004";
 
     /// <summary>
     /// Literal for code: OliveOilMargarine
@@ -6180,9 +6780,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOliveOilMargarine = "226895003";
 
     /// <summary>
+    /// Literal for code: NONEOliveOilMargarine
+    /// </summary>
+    public const string LiteralNONEOliveOilMargarine = "http://snomed.info/sct#226895003";
+
+    /// <summary>
     /// Literal for code: LowFatSpread
     /// </summary>
     public const string LiteralLowFatSpread = "226896002";
+
+    /// <summary>
+    /// Literal for code: NONELowFatSpread
+    /// </summary>
+    public const string LiteralNONELowFatSpread = "http://snomed.info/sct#226896002";
 
     /// <summary>
     /// Literal for code: VLFVeryLowFatSpread
@@ -6190,9 +6800,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVLFVeryLowFatSpread = "226897006";
 
     /// <summary>
+    /// Literal for code: NONEVLFVeryLowFatSpread
+    /// </summary>
+    public const string LiteralNONEVLFVeryLowFatSpread = "http://snomed.info/sct#226897006";
+
+    /// <summary>
     /// Literal for code: Dripping
     /// </summary>
     public const string LiteralDripping = "226898001";
+
+    /// <summary>
+    /// Literal for code: NONEDripping
+    /// </summary>
+    public const string LiteralNONEDripping = "http://snomed.info/sct#226898001";
 
     /// <summary>
     /// Literal for code: Lard
@@ -6200,9 +6820,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLard = "226899009";
 
     /// <summary>
+    /// Literal for code: NONELard
+    /// </summary>
+    public const string LiteralNONELard = "http://snomed.info/sct#226899009";
+
+    /// <summary>
     /// Literal for code: Suet
     /// </summary>
     public const string LiteralSuet = "226900004";
+
+    /// <summary>
+    /// Literal for code: NONESuet
+    /// </summary>
+    public const string LiteralNONESuet = "http://snomed.info/sct#226900004";
 
     /// <summary>
     /// Literal for code: Ghee
@@ -6210,9 +6840,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGhee = "226901000";
 
     /// <summary>
+    /// Literal for code: NONEGhee
+    /// </summary>
+    public const string LiteralNONEGhee = "http://snomed.info/sct#226901000";
+
+    /// <summary>
     /// Literal for code: ButterGhee
     /// </summary>
     public const string LiteralButterGhee = "226902007";
+
+    /// <summary>
+    /// Literal for code: NONEButterGhee
+    /// </summary>
+    public const string LiteralNONEButterGhee = "http://snomed.info/sct#226902007";
 
     /// <summary>
     /// Literal for code: PalmOilGhee
@@ -6220,9 +6860,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPalmOilGhee = "226903002";
 
     /// <summary>
+    /// Literal for code: NONEPalmOilGhee
+    /// </summary>
+    public const string LiteralNONEPalmOilGhee = "http://snomed.info/sct#226903002";
+
+    /// <summary>
     /// Literal for code: VegetableOilGhee
     /// </summary>
     public const string LiteralVegetableOilGhee = "226904008";
+
+    /// <summary>
+    /// Literal for code: NONEVegetableOilGhee
+    /// </summary>
+    public const string LiteralNONEVegetableOilGhee = "http://snomed.info/sct#226904008";
 
     /// <summary>
     /// Literal for code: PalmOil
@@ -6230,9 +6880,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPalmOil = "226907001";
 
     /// <summary>
+    /// Literal for code: NONEPalmOil
+    /// </summary>
+    public const string LiteralNONEPalmOil = "http://snomed.info/sct#226907001";
+
+    /// <summary>
     /// Literal for code: RapeseedOil
     /// </summary>
     public const string LiteralRapeseedOil = "226908006";
+
+    /// <summary>
+    /// Literal for code: NONERapeseedOil
+    /// </summary>
+    public const string LiteralNONERapeseedOil = "http://snomed.info/sct#226908006";
 
     /// <summary>
     /// Literal for code: RapeseedOilHighErucicAcid
@@ -6240,9 +6900,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRapeseedOilHighErucicAcid = "226909003";
 
     /// <summary>
+    /// Literal for code: NONERapeseedOilHighErucicAcid
+    /// </summary>
+    public const string LiteralNONERapeseedOilHighErucicAcid = "http://snomed.info/sct#226909003";
+
+    /// <summary>
     /// Literal for code: RapeseedOilLowErucicAcid
     /// </summary>
     public const string LiteralRapeseedOilLowErucicAcid = "226910008";
+
+    /// <summary>
+    /// Literal for code: NONERapeseedOilLowErucicAcid
+    /// </summary>
+    public const string LiteralNONERapeseedOilLowErucicAcid = "http://snomed.info/sct#226910008";
 
     /// <summary>
     /// Literal for code: SoyaOil
@@ -6250,9 +6920,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSoyaOil = "226911007";
 
     /// <summary>
+    /// Literal for code: NONESoyaOil
+    /// </summary>
+    public const string LiteralNONESoyaOil = "http://snomed.info/sct#226911007";
+
+    /// <summary>
     /// Literal for code: SunflowerseedOil
     /// </summary>
     public const string LiteralSunflowerseedOil = "226912000";
+
+    /// <summary>
+    /// Literal for code: NONESunflowerseedOil
+    /// </summary>
+    public const string LiteralNONESunflowerseedOil = "http://snomed.info/sct#226912000";
 
     /// <summary>
     /// Literal for code: BlendedVegetableOil
@@ -6260,9 +6940,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBlendedVegetableOil = "226913005";
 
     /// <summary>
+    /// Literal for code: NONEBlendedVegetableOil
+    /// </summary>
+    public const string LiteralNONEBlendedVegetableOil = "http://snomed.info/sct#226913005";
+
+    /// <summary>
     /// Literal for code: PolyunsaturatedVegetableOil
     /// </summary>
     public const string LiteralPolyunsaturatedVegetableOil = "226914004";
+
+    /// <summary>
+    /// Literal for code: NONEPolyunsaturatedVegetableOil
+    /// </summary>
+    public const string LiteralNONEPolyunsaturatedVegetableOil = "http://snomed.info/sct#226914004";
 
     /// <summary>
     /// Literal for code: Tofu
@@ -6270,9 +6960,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTofu = "227365007";
 
     /// <summary>
+    /// Literal for code: NONETofu
+    /// </summary>
+    public const string LiteralNONETofu = "http://snomed.info/sct#227365007";
+
+    /// <summary>
     /// Literal for code: SteamedTofu
     /// </summary>
     public const string LiteralSteamedTofu = "227366008";
+
+    /// <summary>
+    /// Literal for code: NONESteamedTofu
+    /// </summary>
+    public const string LiteralNONESteamedTofu = "http://snomed.info/sct#227366008";
 
     /// <summary>
     /// Literal for code: SteamedFriedTofu
@@ -6280,9 +6980,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSteamedFriedTofu = "227367004";
 
     /// <summary>
+    /// Literal for code: NONESteamedFriedTofu
+    /// </summary>
+    public const string LiteralNONESteamedFriedTofu = "http://snomed.info/sct#227367004";
+
+    /// <summary>
     /// Literal for code: FuJukTofu
     /// </summary>
     public const string LiteralFuJukTofu = "227368009";
+
+    /// <summary>
+    /// Literal for code: NONEFuJukTofu
+    /// </summary>
+    public const string LiteralNONEFuJukTofu = "http://snomed.info/sct#227368009";
 
     /// <summary>
     /// Literal for code: SoySauce
@@ -6290,9 +7000,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSoySauce = "227537006";
 
     /// <summary>
+    /// Literal for code: NONESoySauce
+    /// </summary>
+    public const string LiteralNONESoySauce = "http://snomed.info/sct#227537006";
+
+    /// <summary>
     /// Literal for code: SoyaMinceGranules
     /// </summary>
     public const string LiteralSoyaMinceGranules = "227948007";
+
+    /// <summary>
+    /// Literal for code: NONESoyaMinceGranules
+    /// </summary>
+    public const string LiteralNONESoyaMinceGranules = "http://snomed.info/sct#227948007";
 
     /// <summary>
     /// Literal for code: CarbohydrateFood
@@ -6300,9 +7020,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCarbohydrateFood = "227991002";
 
     /// <summary>
+    /// Literal for code: NONECarbohydrateFood
+    /// </summary>
+    public const string LiteralNONECarbohydrateFood = "http://snomed.info/sct#227991002";
+
+    /// <summary>
     /// Literal for code: HighCarbohydrateFood
     /// </summary>
     public const string LiteralHighCarbohydrateFood = "227992009";
+
+    /// <summary>
+    /// Literal for code: NONEHighCarbohydrateFood
+    /// </summary>
+    public const string LiteralNONEHighCarbohydrateFood = "http://snomed.info/sct#227992009";
 
     /// <summary>
     /// Literal for code: LowCarbohydrateFood
@@ -6310,9 +7040,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLowCarbohydrateFood = "227993004";
 
     /// <summary>
+    /// Literal for code: NONELowCarbohydrateFood
+    /// </summary>
+    public const string LiteralNONELowCarbohydrateFood = "http://snomed.info/sct#227993004";
+
+    /// <summary>
     /// Literal for code: ComplexCarbohydrateFood
     /// </summary>
     public const string LiteralComplexCarbohydrateFood = "227994005";
+
+    /// <summary>
+    /// Literal for code: NONEComplexCarbohydrateFood
+    /// </summary>
+    public const string LiteralNONEComplexCarbohydrateFood = "http://snomed.info/sct#227994005";
 
     /// <summary>
     /// Literal for code: RefinedCarbohydrateFood
@@ -6320,9 +7060,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRefinedCarbohydrateFood = "227995006";
 
     /// <summary>
+    /// Literal for code: NONERefinedCarbohydrateFood
+    /// </summary>
+    public const string LiteralNONERefinedCarbohydrateFood = "http://snomed.info/sct#227995006";
+
+    /// <summary>
     /// Literal for code: SimpleCarbohydrateFood
     /// </summary>
     public const string LiteralSimpleCarbohydrateFood = "227996007";
+
+    /// <summary>
+    /// Literal for code: NONESimpleCarbohydrateFood
+    /// </summary>
+    public const string LiteralNONESimpleCarbohydrateFood = "http://snomed.info/sct#227996007";
 
     /// <summary>
     /// Literal for code: BlendedSpread7080PercentFat
@@ -6330,9 +7080,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBlendedSpread7080PercentFat = "229848001";
 
     /// <summary>
+    /// Literal for code: NONEBlendedSpread7080PercentFat
+    /// </summary>
+    public const string LiteralNONEBlendedSpread7080PercentFat = "http://snomed.info/sct#229848001";
+
+    /// <summary>
     /// Literal for code: BlendedSpread40PercentFat
     /// </summary>
     public const string LiteralBlendedSpread40PercentFat = "229849009";
+
+    /// <summary>
+    /// Literal for code: NONEBlendedSpread40PercentFat
+    /// </summary>
+    public const string LiteralNONEBlendedSpread40PercentFat = "http://snomed.info/sct#229849009";
 
     /// <summary>
     /// Literal for code: Butteroil
@@ -6340,9 +7100,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralButteroil = "229850009";
 
     /// <summary>
+    /// Literal for code: NONEButteroil
+    /// </summary>
+    public const string LiteralNONEButteroil = "http://snomed.info/sct#229850009";
+
+    /// <summary>
     /// Literal for code: SpreadableButter
     /// </summary>
     public const string LiteralSpreadableButter = "229851008";
+
+    /// <summary>
+    /// Literal for code: NONESpreadableButter
+    /// </summary>
+    public const string LiteralNONESpreadableButter = "http://snomed.info/sct#229851008";
 
     /// <summary>
     /// Literal for code: BeefDripping
@@ -6350,9 +7120,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBeefDripping = "229852001";
 
     /// <summary>
+    /// Literal for code: NONEBeefDripping
+    /// </summary>
+    public const string LiteralNONEBeefDripping = "http://snomed.info/sct#229852001";
+
+    /// <summary>
     /// Literal for code: PorkDripping
     /// </summary>
     public const string LiteralPorkDripping = "229853006";
+
+    /// <summary>
+    /// Literal for code: NONEPorkDripping
+    /// </summary>
+    public const string LiteralNONEPorkDripping = "http://snomed.info/sct#229853006";
 
     /// <summary>
     /// Literal for code: CompoundCookingFat
@@ -6360,9 +7140,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCompoundCookingFat = "229854000";
 
     /// <summary>
+    /// Literal for code: NONECompoundCookingFat
+    /// </summary>
+    public const string LiteralNONECompoundCookingFat = "http://snomed.info/sct#229854000";
+
+    /// <summary>
     /// Literal for code: PolyunsatCompoundCookingFat
     /// </summary>
     public const string LiteralPolyunsatCompoundCookingFat = "229855004";
+
+    /// <summary>
+    /// Literal for code: NONEPolyunsatCompoundCookingFat
+    /// </summary>
+    public const string LiteralNONEPolyunsatCompoundCookingFat = "http://snomed.info/sct#229855004";
 
     /// <summary>
     /// Literal for code: ShreddedSuet
@@ -6370,9 +7160,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralShreddedSuet = "229857007";
 
     /// <summary>
+    /// Literal for code: NONEShreddedSuet
+    /// </summary>
+    public const string LiteralNONEShreddedSuet = "http://snomed.info/sct#229857007";
+
+    /// <summary>
     /// Literal for code: VegetableSuet
     /// </summary>
     public const string LiteralVegetableSuet = "229858002";
+
+    /// <summary>
+    /// Literal for code: NONEVegetableSuet
+    /// </summary>
+    public const string LiteralNONEVegetableSuet = "http://snomed.info/sct#229858002";
 
     /// <summary>
     /// Literal for code: DairySpread
@@ -6380,9 +7180,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDairySpread = "229859005";
 
     /// <summary>
+    /// Literal for code: NONEDairySpread
+    /// </summary>
+    public const string LiteralNONEDairySpread = "http://snomed.info/sct#229859005";
+
+    /// <summary>
     /// Literal for code: WheatgermOil
     /// </summary>
     public const string LiteralWheatgermOil = "229928009";
+
+    /// <summary>
+    /// Literal for code: NONEWheatgermOil
+    /// </summary>
+    public const string LiteralNONEWheatgermOil = "http://snomed.info/sct#229928009";
 
     /// <summary>
     /// Literal for code: WalnutOil
@@ -6390,9 +7200,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWalnutOil = "229929001";
 
     /// <summary>
+    /// Literal for code: NONEWalnutOil
+    /// </summary>
+    public const string LiteralNONEWalnutOil = "http://snomed.info/sct#229929001";
+
+    /// <summary>
     /// Literal for code: HazelnutOil
     /// </summary>
     public const string LiteralHazelnutOil = "229930006";
+
+    /// <summary>
+    /// Literal for code: NONEHazelnutOil
+    /// </summary>
+    public const string LiteralNONEHazelnutOil = "http://snomed.info/sct#229930006";
 
     /// <summary>
     /// Literal for code: GrapeseedOil
@@ -6400,9 +7220,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGrapeseedOil = "229932003";
 
     /// <summary>
+    /// Literal for code: NONEGrapeseedOil
+    /// </summary>
+    public const string LiteralNONEGrapeseedOil = "http://snomed.info/sct#229932003";
+
+    /// <summary>
     /// Literal for code: SoyaFlour
     /// </summary>
     public const string LiteralSoyaFlour = "229941008";
+
+    /// <summary>
+    /// Literal for code: NONESoyaFlour
+    /// </summary>
+    public const string LiteralNONESoyaFlour = "http://snomed.info/sct#229941008";
 
     /// <summary>
     /// Literal for code: LowFatSoyaFlour
@@ -6410,9 +7240,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLowFatSoyaFlour = "229949005";
 
     /// <summary>
+    /// Literal for code: NONELowFatSoyaFlour
+    /// </summary>
+    public const string LiteralNONELowFatSoyaFlour = "http://snomed.info/sct#229949005";
+
+    /// <summary>
     /// Literal for code: SoftMargarineNotPolyunsaturated
     /// </summary>
     public const string LiteralSoftMargarineNotPolyunsaturated = "230045004";
+
+    /// <summary>
+    /// Literal for code: NONESoftMargarineNotPolyunsaturated
+    /// </summary>
+    public const string LiteralNONESoftMargarineNotPolyunsaturated = "http://snomed.info/sct#230045004";
 
     /// <summary>
     /// Literal for code: NonPolyunsaturatedLowFatSpread40PercentFat
@@ -6420,9 +7260,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNonPolyunsaturatedLowFatSpread40PercentFat = "230046003";
 
     /// <summary>
+    /// Literal for code: NONENonPolyunsaturatedLowFatSpread40PercentFat
+    /// </summary>
+    public const string LiteralNONENonPolyunsaturatedLowFatSpread40PercentFat = "http://snomed.info/sct#230046003";
+
+    /// <summary>
     /// Literal for code: NonPolyunsaturatedLowFatSpread7080PercentFat
     /// </summary>
     public const string LiteralNonPolyunsaturatedLowFatSpread7080PercentFat = "230047007";
+
+    /// <summary>
+    /// Literal for code: NONENonPolyunsaturatedLowFatSpread7080PercentFat
+    /// </summary>
+    public const string LiteralNONENonPolyunsaturatedLowFatSpread7080PercentFat = "http://snomed.info/sct#230047007";
 
     /// <summary>
     /// Literal for code: PolyunsaturatedLowFatSpread70PercentFat
@@ -6430,9 +7280,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPolyunsaturatedLowFatSpread70PercentFat = "230048002";
 
     /// <summary>
+    /// Literal for code: NONEPolyunsaturatedLowFatSpread70PercentFat
+    /// </summary>
+    public const string LiteralNONEPolyunsaturatedLowFatSpread70PercentFat = "http://snomed.info/sct#230048002";
+
+    /// <summary>
     /// Literal for code: PolyunsaturatedLowFatSpread60PercentFat
     /// </summary>
     public const string LiteralPolyunsaturatedLowFatSpread60PercentFat = "230049005";
+
+    /// <summary>
+    /// Literal for code: NONEPolyunsaturatedLowFatSpread60PercentFat
+    /// </summary>
+    public const string LiteralNONEPolyunsaturatedLowFatSpread60PercentFat = "http://snomed.info/sct#230049005";
 
     /// <summary>
     /// Literal for code: PolyunsaturatedLowFatSpread3540PercentFat
@@ -6440,9 +7300,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPolyunsaturatedLowFatSpread3540PercentFat = "230050005";
 
     /// <summary>
+    /// Literal for code: NONEPolyunsaturatedLowFatSpread3540PercentFat
+    /// </summary>
+    public const string LiteralNONEPolyunsaturatedLowFatSpread3540PercentFat = "http://snomed.info/sct#230050005";
+
+    /// <summary>
     /// Literal for code: Carbohydrate
     /// </summary>
     public const string LiteralCarbohydrate = "2331003";
+
+    /// <summary>
+    /// Literal for code: NONECarbohydrate
+    /// </summary>
+    public const string LiteralNONECarbohydrate = "http://snomed.info/sct#2331003";
 
     /// <summary>
     /// Literal for code: Ergocalciferol
@@ -6450,9 +7320,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralErgocalciferol = "23433006";
 
     /// <summary>
+    /// Literal for code: NONEErgocalciferol
+    /// </summary>
+    public const string LiteralNONEErgocalciferol = "http://snomed.info/sct#23433006";
+
+    /// <summary>
     /// Literal for code: Tryparsamide
     /// </summary>
     public const string LiteralTryparsamide = "23969007";
+
+    /// <summary>
+    /// Literal for code: NONETryparsamide
+    /// </summary>
+    public const string LiteralNONETryparsamide = "http://snomed.info/sct#23969007";
 
     /// <summary>
     /// Literal for code: Agarose
@@ -6460,9 +7340,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAgarose = "256227006";
 
     /// <summary>
+    /// Literal for code: NONEAgarose
+    /// </summary>
+    public const string LiteralNONEAgarose = "http://snomed.info/sct#256227006";
+
+    /// <summary>
     /// Literal for code: Glutamine
     /// </summary>
     public const string LiteralGlutamine = "25761002";
+
+    /// <summary>
+    /// Literal for code: NONEGlutamine
+    /// </summary>
+    public const string LiteralNONEGlutamine = "http://snomed.info/sct#25761002";
 
     /// <summary>
     /// Literal for code: AminoisobutyricAcid
@@ -6470,9 +7360,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAminoisobutyricAcid = "259098002";
 
     /// <summary>
+    /// Literal for code: NONEAminoisobutyricAcid
+    /// </summary>
+    public const string LiteralNONEAminoisobutyricAcid = "http://snomed.info/sct#259098002";
+
+    /// <summary>
     /// Literal for code: GammaAminobutyricAcid
     /// </summary>
     public const string LiteralGammaAminobutyricAcid = "259100002";
+
+    /// <summary>
+    /// Literal for code: NONEGammaAminobutyricAcid
+    /// </summary>
+    public const string LiteralNONEGammaAminobutyricAcid = "http://snomed.info/sct#259100002";
 
     /// <summary>
     /// Literal for code: Calcitriol
@@ -6480,9 +7380,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCalcitriol = "259333003";
 
     /// <summary>
+    /// Literal for code: NONECalcitriol
+    /// </summary>
+    public const string LiteralNONECalcitriol = "http://snomed.info/sct#259333003";
+
+    /// <summary>
     /// Literal for code: VAL2425DHCC2425Dihydroxycholecalciferol
     /// </summary>
     public const string LiteralVAL2425DHCC2425Dihydroxycholecalciferol = "259336006";
+
+    /// <summary>
+    /// Literal for code: NONEVAL2425DHCC2425Dihydroxycholecalciferol
+    /// </summary>
+    public const string LiteralNONEVAL2425DHCC2425Dihydroxycholecalciferol = "http://snomed.info/sct#259336006";
 
     /// <summary>
     /// Literal for code: Calcifediol
@@ -6490,9 +7400,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCalcifediol = "259337002";
 
     /// <summary>
+    /// Literal for code: NONECalcifediol
+    /// </summary>
+    public const string LiteralNONECalcifediol = "http://snomed.info/sct#259337002";
+
+    /// <summary>
     /// Literal for code: AmylopectinGlycogen
     /// </summary>
     public const string LiteralAmylopectinGlycogen = "259382003";
+
+    /// <summary>
+    /// Literal for code: NONEAmylopectinGlycogen
+    /// </summary>
+    public const string LiteralNONEAmylopectinGlycogen = "http://snomed.info/sct#259382003";
 
     /// <summary>
     /// Literal for code: FucoOligosaccharide
@@ -6500,9 +7420,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFucoOligosaccharide = "259403006";
 
     /// <summary>
+    /// Literal for code: NONEFucoOligosaccharide
+    /// </summary>
+    public const string LiteralNONEFucoOligosaccharide = "http://snomed.info/sct#259403006";
+
+    /// <summary>
     /// Literal for code: MannoOligosaccharide
     /// </summary>
     public const string LiteralMannoOligosaccharide = "259406003";
+
+    /// <summary>
+    /// Literal for code: NONEMannoOligosaccharide
+    /// </summary>
+    public const string LiteralNONEMannoOligosaccharide = "http://snomed.info/sct#259406003";
 
     /// <summary>
     /// Literal for code: Sialyloligosaccharide
@@ -6510,9 +7440,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSialyloligosaccharide = "259411001";
 
     /// <summary>
+    /// Literal for code: NONESialyloligosaccharide
+    /// </summary>
+    public const string LiteralNONESialyloligosaccharide = "http://snomed.info/sct#259411001";
+
+    /// <summary>
     /// Literal for code: Adenosylcobalamin
     /// </summary>
     public const string LiteralAdenosylcobalamin = "259509008";
+
+    /// <summary>
+    /// Literal for code: NONEAdenosylcobalamin
+    /// </summary>
+    public const string LiteralNONEAdenosylcobalamin = "http://snomed.info/sct#259509008";
 
     /// <summary>
     /// Literal for code: Methylcobalamin
@@ -6520,9 +7460,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMethylcobalamin = "259512006";
 
     /// <summary>
+    /// Literal for code: NONEMethylcobalamin
+    /// </summary>
+    public const string LiteralNONEMethylcobalamin = "http://snomed.info/sct#259512006";
+
+    /// <summary>
     /// Literal for code: FreeLCarnitine
     /// </summary>
     public const string LiteralFreeLCarnitine = "259547003";
+
+    /// <summary>
+    /// Literal for code: NONEFreeLCarnitine
+    /// </summary>
+    public const string LiteralNONEFreeLCarnitine = "http://snomed.info/sct#259547003";
 
     /// <summary>
     /// Literal for code: Cellobiose
@@ -6530,9 +7480,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCellobiose = "259651009";
 
     /// <summary>
+    /// Literal for code: NONECellobiose
+    /// </summary>
+    public const string LiteralNONECellobiose = "http://snomed.info/sct#259651009";
+
+    /// <summary>
     /// Literal for code: Rhamnose
     /// </summary>
     public const string LiteralRhamnose = "259655000";
+
+    /// <summary>
+    /// Literal for code: NONERhamnose
+    /// </summary>
+    public const string LiteralNONERhamnose = "http://snomed.info/sct#259655000";
 
     /// <summary>
     /// Literal for code: VitaminB1
@@ -6540,9 +7500,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVitaminB1 = "259659006";
 
     /// <summary>
+    /// Literal for code: NONEVitaminB1
+    /// </summary>
+    public const string LiteralNONEVitaminB1 = "http://snomed.info/sct#259659006";
+
+    /// <summary>
     /// Literal for code: ThiaminePhosphate
     /// </summary>
     public const string LiteralThiaminePhosphate = "259660001";
+
+    /// <summary>
+    /// Literal for code: NONEThiaminePhosphate
+    /// </summary>
+    public const string LiteralNONEThiaminePhosphate = "http://snomed.info/sct#259660001";
 
     /// <summary>
     /// Literal for code: ThiaminePyrophosphate
@@ -6550,9 +7520,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralThiaminePyrophosphate = "259661002";
 
     /// <summary>
+    /// Literal for code: NONEThiaminePyrophosphate
+    /// </summary>
+    public const string LiteralNONEThiaminePyrophosphate = "http://snomed.info/sct#259661002";
+
+    /// <summary>
     /// Literal for code: AlphaTocopherol
     /// </summary>
     public const string LiteralAlphaTocopherol = "259666007";
+
+    /// <summary>
+    /// Literal for code: NONEAlphaTocopherol
+    /// </summary>
+    public const string LiteralNONEAlphaTocopherol = "http://snomed.info/sct#259666007";
 
     /// <summary>
     /// Literal for code: Homocystine
@@ -6560,9 +7540,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHomocystine = "26645004";
 
     /// <summary>
+    /// Literal for code: NONEHomocystine
+    /// </summary>
+    public const string LiteralNONEHomocystine = "http://snomed.info/sct#26645004";
+
+    /// <summary>
     /// Literal for code: StarchGlycerite
     /// </summary>
     public const string LiteralStarchGlycerite = "26766001";
+
+    /// <summary>
+    /// Literal for code: NONEStarchGlycerite
+    /// </summary>
+    public const string LiteralNONEStarchGlycerite = "http://snomed.info/sct#26766001";
 
     /// <summary>
     /// Literal for code: Tyrosine
@@ -6570,9 +7560,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTyrosine = "27378009";
 
     /// <summary>
+    /// Literal for code: NONETyrosine
+    /// </summary>
+    public const string LiteralNONETyrosine = "http://snomed.info/sct#27378009";
+
+    /// <summary>
     /// Literal for code: AntipellagraFactor
     /// </summary>
     public const string LiteralAntipellagraFactor = "273943001";
+
+    /// <summary>
+    /// Literal for code: NONEAntipellagraFactor
+    /// </summary>
+    public const string LiteralNONEAntipellagraFactor = "http://snomed.info/sct#273943001";
 
     /// <summary>
     /// Literal for code: Lactulose
@@ -6580,9 +7580,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLactulose = "273945008";
 
     /// <summary>
+    /// Literal for code: NONELactulose
+    /// </summary>
+    public const string LiteralNONELactulose = "http://snomed.info/sct#273945008";
+
+    /// <summary>
     /// Literal for code: SoyaBasedBabyMilk
     /// </summary>
     public const string LiteralSoyaBasedBabyMilk = "284460001";
+
+    /// <summary>
+    /// Literal for code: NONESoyaBasedBabyMilk
+    /// </summary>
+    public const string LiteralNONESoyaBasedBabyMilk = "http://snomed.info/sct#284460001";
 
     /// <summary>
     /// Literal for code: CoconutOil
@@ -6590,9 +7600,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCoconutOil = "28942008";
 
     /// <summary>
+    /// Literal for code: NONECoconutOil
+    /// </summary>
+    public const string LiteralNONECoconutOil = "http://snomed.info/sct#28942008";
+
+    /// <summary>
     /// Literal for code: Carbon14CXyloseSubstance
     /// </summary>
     public const string LiteralCarbon14CXyloseSubstance = "2942001";
+
+    /// <summary>
+    /// Literal for code: NONECarbon14CXyloseSubstance
+    /// </summary>
+    public const string LiteralNONECarbon14CXyloseSubstance = "http://snomed.info/sct#2942001";
 
     /// <summary>
     /// Literal for code: Citrulline
@@ -6600,9 +7620,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCitrulline = "30022007";
 
     /// <summary>
+    /// Literal for code: NONECitrulline
+    /// </summary>
+    public const string LiteralNONECitrulline = "http://snomed.info/sct#30022007";
+
+    /// <summary>
     /// Literal for code: RiboflavinDinucleotide
     /// </summary>
     public const string LiteralRiboflavinDinucleotide = "30094001";
+
+    /// <summary>
+    /// Literal for code: NONERiboflavinDinucleotide
+    /// </summary>
+    public const string LiteralNONERiboflavinDinucleotide = "http://snomed.info/sct#30094001";
 
     /// <summary>
     /// Literal for code: CalciotropicHormone
@@ -6610,9 +7640,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCalciotropicHormone = "30178006";
 
     /// <summary>
+    /// Literal for code: NONECalciotropicHormone
+    /// </summary>
+    public const string LiteralNONECalciotropicHormone = "http://snomed.info/sct#30178006";
+
+    /// <summary>
     /// Literal for code: FreeGlycerol
     /// </summary>
     public const string LiteralFreeGlycerol = "301862003";
+
+    /// <summary>
+    /// Literal for code: NONEFreeGlycerol
+    /// </summary>
+    public const string LiteralNONEFreeGlycerol = "http://snomed.info/sct#301862003";
 
     /// <summary>
     /// Literal for code: Vigabatrin
@@ -6620,9 +7660,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVigabatrin = "310283001";
 
     /// <summary>
+    /// Literal for code: NONEVigabatrin
+    /// </summary>
+    public const string LiteralNONEVigabatrin = "http://snomed.info/sct#310283001";
+
+    /// <summary>
     /// Literal for code: GammaAminoisobutyricAcidSubstance
     /// </summary>
     public const string LiteralGammaAminoisobutyricAcidSubstance = "31121009";
+
+    /// <summary>
+    /// Literal for code: NONEGammaAminoisobutyricAcidSubstance
+    /// </summary>
+    public const string LiteralNONEGammaAminoisobutyricAcidSubstance = "http://snomed.info/sct#31121009";
 
     /// <summary>
     /// Literal for code: LMethionineSubstance
@@ -6630,9 +7680,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLMethionineSubstance = "312184007";
 
     /// <summary>
+    /// Literal for code: NONELMethionineSubstance
+    /// </summary>
+    public const string LiteralNONELMethionineSubstance = "http://snomed.info/sct#312184007";
+
+    /// <summary>
     /// Literal for code: VAL3MethylHistidine
     /// </summary>
     public const string LiteralVAL3MethylHistidine = "3161008";
+
+    /// <summary>
+    /// Literal for code: NONEVAL3MethylHistidine
+    /// </summary>
+    public const string LiteralNONEVAL3MethylHistidine = "http://snomed.info/sct#3161008";
 
     /// <summary>
     /// Literal for code: DXylulose
@@ -6640,9 +7700,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDXylulose = "32741009";
 
     /// <summary>
+    /// Literal for code: NONEDXylulose
+    /// </summary>
+    public const string LiteralNONEDXylulose = "http://snomed.info/sct#32741009";
+
+    /// <summary>
     /// Literal for code: Lipopolysaccharide
     /// </summary>
     public const string LiteralLipopolysaccharide = "3325005";
+
+    /// <summary>
+    /// Literal for code: NONELipopolysaccharide
+    /// </summary>
+    public const string LiteralNONELipopolysaccharide = "http://snomed.info/sct#3325005";
 
     /// <summary>
     /// Literal for code: Fluid
@@ -6650,9 +7720,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFluid = "33463005";
 
     /// <summary>
+    /// Literal for code: NONEFluid
+    /// </summary>
+    public const string LiteralNONEFluid = "http://snomed.info/sct#33463005";
+
+    /// <summary>
     /// Literal for code: VitaminL
     /// </summary>
     public const string LiteralVitaminL = "33922005";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminL
+    /// </summary>
+    public const string LiteralNONEVitaminL = "http://snomed.info/sct#33922005";
 
     /// <summary>
     /// Literal for code: PlantAsparagine
@@ -6660,9 +7740,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlantAsparagine = "34744002";
 
     /// <summary>
+    /// Literal for code: NONEPlantAsparagine
+    /// </summary>
+    public const string LiteralNONEPlantAsparagine = "http://snomed.info/sct#34744002";
+
+    /// <summary>
     /// Literal for code: Ribulose
     /// </summary>
     public const string LiteralRibulose = "35344005";
+
+    /// <summary>
+    /// Literal for code: NONERibulose
+    /// </summary>
+    public const string LiteralNONERibulose = "http://snomed.info/sct#35344005";
 
     /// <summary>
     /// Literal for code: FatSolubleVitamin
@@ -6670,9 +7760,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFatSolubleVitamin = "35733004";
 
     /// <summary>
+    /// Literal for code: NONEFatSolubleVitamin
+    /// </summary>
+    public const string LiteralNONEFatSolubleVitamin = "http://snomed.info/sct#35733004";
+
+    /// <summary>
     /// Literal for code: MuramicAcid
     /// </summary>
     public const string LiteralMuramicAcid = "36397007";
+
+    /// <summary>
+    /// Literal for code: NONEMuramicAcid
+    /// </summary>
+    public const string LiteralNONEMuramicAcid = "http://snomed.info/sct#36397007";
 
     /// <summary>
     /// Literal for code: VAL1MethylHistidine
@@ -6680,9 +7780,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVAL1MethylHistidine = "36434002";
 
     /// <summary>
+    /// Literal for code: NONEVAL1MethylHistidine
+    /// </summary>
+    public const string LiteralNONEVAL1MethylHistidine = "http://snomed.info/sct#36434002";
+
+    /// <summary>
     /// Literal for code: Glucose1Phosphate
     /// </summary>
     public const string LiteralGlucose1Phosphate = "36816009";
+
+    /// <summary>
+    /// Literal for code: NONEGlucose1Phosphate
+    /// </summary>
+    public const string LiteralNONEGlucose1Phosphate = "http://snomed.info/sct#36816009";
 
     /// <summary>
     /// Literal for code: Glycogen
@@ -6690,9 +7800,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGlycogen = "36998008";
 
     /// <summary>
+    /// Literal for code: NONEGlycogen
+    /// </summary>
+    public const string LiteralNONEGlycogen = "http://snomed.info/sct#36998008";
+
+    /// <summary>
     /// Literal for code: Tocopherol
     /// </summary>
     public const string LiteralTocopherol = "37237003";
+
+    /// <summary>
+    /// Literal for code: NONETocopherol
+    /// </summary>
+    public const string LiteralNONETocopherol = "http://snomed.info/sct#37237003";
 
     /// <summary>
     /// Literal for code: KetorolacSubstance
@@ -6700,9 +7820,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralKetorolacSubstance = "372501008";
 
     /// <summary>
+    /// Literal for code: NONEKetorolacSubstance
+    /// </summary>
+    public const string LiteralNONEKetorolacSubstance = "http://snomed.info/sct#372501008";
+
+    /// <summary>
     /// Literal for code: FosinoprilSubstance
     /// </summary>
     public const string LiteralFosinoprilSubstance = "372510000";
+
+    /// <summary>
+    /// Literal for code: NONEFosinoprilSubstance
+    /// </summary>
+    public const string LiteralNONEFosinoprilSubstance = "http://snomed.info/sct#372510000";
 
     /// <summary>
     /// Literal for code: IrinotecanSubstance
@@ -6710,9 +7840,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIrinotecanSubstance = "372538008";
 
     /// <summary>
+    /// Literal for code: NONEIrinotecanSubstance
+    /// </summary>
+    public const string LiteralNONEIrinotecanSubstance = "http://snomed.info/sct#372538008";
+
+    /// <summary>
     /// Literal for code: PentosanPolysulfateSubstance
     /// </summary>
     public const string LiteralPentosanPolysulfateSubstance = "372571007";
+
+    /// <summary>
+    /// Literal for code: NONEPentosanPolysulfateSubstance
+    /// </summary>
+    public const string LiteralNONEPentosanPolysulfateSubstance = "http://snomed.info/sct#372571007";
 
     /// <summary>
     /// Literal for code: Levocarnitine
@@ -6720,9 +7860,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLevocarnitine = "372601001";
 
     /// <summary>
+    /// Literal for code: NONELevocarnitine
+    /// </summary>
+    public const string LiteralNONELevocarnitine = "http://snomed.info/sct#372601001";
+
+    /// <summary>
     /// Literal for code: DextranSubstance
     /// </summary>
     public const string LiteralDextranSubstance = "372650007";
+
+    /// <summary>
+    /// Literal for code: NONEDextranSubstance
+    /// </summary>
+    public const string LiteralNONEDextranSubstance = "http://snomed.info/sct#372650007";
 
     /// <summary>
     /// Literal for code: ParaAminobenzoicAcidSubstance
@@ -6730,9 +7880,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralParaAminobenzoicAcidSubstance = "373489001";
 
     /// <summary>
+    /// Literal for code: NONEParaAminobenzoicAcidSubstance
+    /// </summary>
+    public const string LiteralNONEParaAminobenzoicAcidSubstance = "http://snomed.info/sct#373489001";
+
+    /// <summary>
     /// Literal for code: GelatinSubstance
     /// </summary>
     public const string LiteralGelatinSubstance = "373531009";
+
+    /// <summary>
+    /// Literal for code: NONEGelatinSubstance
+    /// </summary>
+    public const string LiteralNONEGelatinSubstance = "http://snomed.info/sct#373531009";
 
     /// <summary>
     /// Literal for code: Bambermycins
@@ -6740,9 +7900,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBambermycins = "373560000";
 
     /// <summary>
+    /// Literal for code: NONEBambermycins
+    /// </summary>
+    public const string LiteralNONEBambermycins = "http://snomed.info/sct#373560000";
+
+    /// <summary>
     /// Literal for code: Cystine
     /// </summary>
     public const string LiteralCystine = "37927000";
+
+    /// <summary>
+    /// Literal for code: NONECystine
+    /// </summary>
+    public const string LiteralNONECystine = "http://snomed.info/sct#37927000";
 
     /// <summary>
     /// Literal for code: Galactose
@@ -6750,9 +7920,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGalactose = "38182007";
 
     /// <summary>
+    /// Literal for code: NONEGalactose
+    /// </summary>
+    public const string LiteralNONEGalactose = "http://snomed.info/sct#38182007";
+
+    /// <summary>
     /// Literal for code: FondaparinuxSodiumSubstance
     /// </summary>
     public const string LiteralFondaparinuxSodiumSubstance = "385517000";
+
+    /// <summary>
+    /// Literal for code: NONEFondaparinuxSodiumSubstance
+    /// </summary>
+    public const string LiteralNONEFondaparinuxSodiumSubstance = "http://snomed.info/sct#385517000";
 
     /// <summary>
     /// Literal for code: GabapentinSubstance
@@ -6760,9 +7940,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGabapentinSubstance = "386845007";
 
     /// <summary>
+    /// Literal for code: NONEGabapentinSubstance
+    /// </summary>
+    public const string LiteralNONEGabapentinSubstance = "http://snomed.info/sct#386845007";
+
+    /// <summary>
     /// Literal for code: IrinotecanHydrochlorideSubstance
     /// </summary>
     public const string LiteralIrinotecanHydrochlorideSubstance = "386912006";
+
+    /// <summary>
+    /// Literal for code: NONEIrinotecanHydrochlorideSubstance
+    /// </summary>
+    public const string LiteralNONEIrinotecanHydrochlorideSubstance = "http://snomed.info/sct#386912006";
 
     /// <summary>
     /// Literal for code: HydroxypropylCelluloseSubstance
@@ -6770,9 +7960,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHydroxypropylCelluloseSubstance = "386927006";
 
     /// <summary>
+    /// Literal for code: NONEHydroxypropylCelluloseSubstance
+    /// </summary>
+    public const string LiteralNONEHydroxypropylCelluloseSubstance = "http://snomed.info/sct#386927006";
+
+    /// <summary>
     /// Literal for code: Hydroxyethylcellose
     /// </summary>
     public const string LiteralHydroxyethylcellose = "386932007";
+
+    /// <summary>
+    /// Literal for code: NONEHydroxyethylcellose
+    /// </summary>
+    public const string LiteralNONEHydroxyethylcellose = "http://snomed.info/sct#386932007";
 
     /// <summary>
     /// Literal for code: AminoAcidDerivativeSubstance
@@ -6780,9 +7980,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAminoAcidDerivativeSubstance = "386945006";
 
     /// <summary>
+    /// Literal for code: NONEAminoAcidDerivativeSubstance
+    /// </summary>
+    public const string LiteralNONEAminoAcidDerivativeSubstance = "http://snomed.info/sct#386945006";
+
+    /// <summary>
     /// Literal for code: AcarboseSubstance
     /// </summary>
     public const string LiteralAcarboseSubstance = "386965004";
+
+    /// <summary>
+    /// Literal for code: NONEAcarboseSubstance
+    /// </summary>
+    public const string LiteralNONEAcarboseSubstance = "http://snomed.info/sct#386965004";
 
     /// <summary>
     /// Literal for code: CholineBitartrateSubstance
@@ -6790,9 +8000,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCholineBitartrateSubstance = "387030006";
 
     /// <summary>
+    /// Literal for code: NONECholineBitartrateSubstance
+    /// </summary>
+    public const string LiteralNONECholineBitartrateSubstance = "http://snomed.info/sct#387030006";
+
+    /// <summary>
     /// Literal for code: PentastarchSubstance
     /// </summary>
     public const string LiteralPentastarchSubstance = "387041008";
+
+    /// <summary>
+    /// Literal for code: NONEPentastarchSubstance
+    /// </summary>
+    public const string LiteralNONEPentastarchSubstance = "http://snomed.info/sct#387041008";
 
     /// <summary>
     /// Literal for code: IronDextranSubstance
@@ -6800,9 +8020,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIronDextranSubstance = "387118003";
 
     /// <summary>
+    /// Literal for code: NONEIronDextranSubstance
+    /// </summary>
+    public const string LiteralNONEIronDextranSubstance = "http://snomed.info/sct#387118003";
+
+    /// <summary>
     /// Literal for code: MethylcelluloseSubstance
     /// </summary>
     public const string LiteralMethylcelluloseSubstance = "387131008";
+
+    /// <summary>
+    /// Literal for code: NONEMethylcelluloseSubstance
+    /// </summary>
+    public const string LiteralNONEMethylcelluloseSubstance = "http://snomed.info/sct#387131008";
 
     /// <summary>
     /// Literal for code: MannitolSubstance
@@ -6810,9 +8040,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMannitolSubstance = "387168006";
 
     /// <summary>
+    /// Literal for code: NONEMannitolSubstance
+    /// </summary>
+    public const string LiteralNONEMannitolSubstance = "http://snomed.info/sct#387168006";
+
+    /// <summary>
     /// Literal for code: PenicillamineSubstance
     /// </summary>
     public const string LiteralPenicillamineSubstance = "387235007";
+
+    /// <summary>
+    /// Literal for code: NONEPenicillamineSubstance
+    /// </summary>
+    public const string LiteralNONEPenicillamineSubstance = "http://snomed.info/sct#387235007";
 
     /// <summary>
     /// Literal for code: HetastarchSubstance
@@ -6820,9 +8060,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHetastarchSubstance = "387274000";
 
     /// <summary>
+    /// Literal for code: NONEHetastarchSubstance
+    /// </summary>
+    public const string LiteralNONEHetastarchSubstance = "http://snomed.info/sct#387274000";
+
+    /// <summary>
     /// Literal for code: BenzocaineSubstance
     /// </summary>
     public const string LiteralBenzocaineSubstance = "387357002";
+
+    /// <summary>
+    /// Literal for code: NONEBenzocaineSubstance
+    /// </summary>
+    public const string LiteralNONEBenzocaineSubstance = "http://snomed.info/sct#387357002";
 
     /// <summary>
     /// Literal for code: AcetylcysteineSubstance
@@ -6830,9 +8080,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcetylcysteineSubstance = "387440002";
 
     /// <summary>
+    /// Literal for code: NONEAcetylcysteineSubstance
+    /// </summary>
+    public const string LiteralNONEAcetylcysteineSubstance = "http://snomed.info/sct#387440002";
+
+    /// <summary>
     /// Literal for code: Metyrosine
     /// </summary>
     public const string LiteralMetyrosine = "387495008";
+
+    /// <summary>
+    /// Literal for code: NONEMetyrosine
+    /// </summary>
+    public const string LiteralNONEMetyrosine = "http://snomed.info/sct#387495008";
 
     /// <summary>
     /// Literal for code: Mesalamine
@@ -6840,9 +8100,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMesalamine = "387501005";
 
     /// <summary>
+    /// Literal for code: NONEMesalamine
+    /// </summary>
+    public const string LiteralNONEMesalamine = "http://snomed.info/sct#387501005";
+
+    /// <summary>
     /// Literal for code: GlycerolTeichoicAcid
     /// </summary>
     public const string LiteralGlycerolTeichoicAcid = "38839009";
+
+    /// <summary>
+    /// Literal for code: NONEGlycerolTeichoicAcid
+    /// </summary>
+    public const string LiteralNONEGlycerolTeichoicAcid = "http://snomed.info/sct#38839009";
 
     /// <summary>
     /// Literal for code: GlutamicAcidHydrochloride
@@ -6850,9 +8120,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGlutamicAcidHydrochloride = "38909000";
 
     /// <summary>
+    /// Literal for code: NONEGlutamicAcidHydrochloride
+    /// </summary>
+    public const string LiteralNONEGlutamicAcidHydrochloride = "http://snomed.info/sct#38909000";
+
+    /// <summary>
     /// Literal for code: AcamprosateSubstance
     /// </summary>
     public const string LiteralAcamprosateSubstance = "391698009";
+
+    /// <summary>
+    /// Literal for code: NONEAcamprosateSubstance
+    /// </summary>
+    public const string LiteralNONEAcamprosateSubstance = "http://snomed.info/sct#391698009";
 
     /// <summary>
     /// Literal for code: AcamprosateCalcium
@@ -6860,9 +8140,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcamprosateCalcium = "391699001";
 
     /// <summary>
+    /// Literal for code: NONEAcamprosateCalcium
+    /// </summary>
+    public const string LiteralNONEAcamprosateCalcium = "http://snomed.info/sct#391699001";
+
+    /// <summary>
     /// Literal for code: AlginicAcid
     /// </summary>
     public const string LiteralAlginicAcid = "391734004";
+
+    /// <summary>
+    /// Literal for code: NONEAlginicAcid
+    /// </summary>
+    public const string LiteralNONEAlginicAcid = "http://snomed.info/sct#391734004";
 
     /// <summary>
     /// Literal for code: AlmondOilSubstance
@@ -6870,9 +8160,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAlmondOilSubstance = "391737006";
 
     /// <summary>
+    /// Literal for code: NONEAlmondOilSubstance
+    /// </summary>
+    public const string LiteralNONEAlmondOilSubstance = "http://snomed.info/sct#391737006";
+
+    /// <summary>
     /// Literal for code: Starch
     /// </summary>
     public const string LiteralStarch = "39360003";
+
+    /// <summary>
+    /// Literal for code: NONEStarch
+    /// </summary>
+    public const string LiteralNONEStarch = "http://snomed.info/sct#39360003";
 
     /// <summary>
     /// Literal for code: HexastarchSubstance
@@ -6880,9 +8180,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHexastarchSubstance = "395737002";
 
     /// <summary>
+    /// Literal for code: NONEHexastarchSubstance
+    /// </summary>
+    public const string LiteralNONEHexastarchSubstance = "http://snomed.info/sct#395737002";
+
+    /// <summary>
     /// Literal for code: CalcipotriolSubstance
     /// </summary>
     public const string LiteralCalcipotriolSubstance = "395766004";
+
+    /// <summary>
+    /// Literal for code: NONECalcipotriolSubstance
+    /// </summary>
+    public const string LiteralNONECalcipotriolSubstance = "http://snomed.info/sct#395766004";
 
     /// <summary>
     /// Literal for code: LevofolinicAcidSubstance
@@ -6890,9 +8200,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLevofolinicAcidSubstance = "395769006";
 
     /// <summary>
+    /// Literal for code: NONELevofolinicAcidSubstance
+    /// </summary>
+    public const string LiteralNONELevofolinicAcidSubstance = "http://snomed.info/sct#395769006";
+
+    /// <summary>
     /// Literal for code: Methylcellulose450Substance
     /// </summary>
     public const string LiteralMethylcellulose450Substance = "395791004";
+
+    /// <summary>
+    /// Literal for code: NONEMethylcellulose450Substance
+    /// </summary>
+    public const string LiteralNONEMethylcellulose450Substance = "http://snomed.info/sct#395791004";
 
     /// <summary>
     /// Literal for code: OxerutinsSubstance
@@ -6900,9 +8220,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOxerutinsSubstance = "395815002";
 
     /// <summary>
+    /// Literal for code: NONEOxerutinsSubstance
+    /// </summary>
+    public const string LiteralNONEOxerutinsSubstance = "http://snomed.info/sct#395815002";
+
+    /// <summary>
     /// Literal for code: AlphaTocopherolAcetateSubstance
     /// </summary>
     public const string LiteralAlphaTocopherolAcetateSubstance = "395830006";
+
+    /// <summary>
+    /// Literal for code: NONEAlphaTocopherolAcetateSubstance
+    /// </summary>
+    public const string LiteralNONEAlphaTocopherolAcetateSubstance = "http://snomed.info/sct#395830006";
 
     /// <summary>
     /// Literal for code: PolygelineSubstance
@@ -6910,9 +8240,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPolygelineSubstance = "395836000";
 
     /// <summary>
+    /// Literal for code: NONEPolygelineSubstance
+    /// </summary>
+    public const string LiteralNONEPolygelineSubstance = "http://snomed.info/sct#395836000";
+
+    /// <summary>
     /// Literal for code: PotassiumAminobenzoateSubstance
     /// </summary>
     public const string LiteralPotassiumAminobenzoateSubstance = "395838004";
+
+    /// <summary>
+    /// Literal for code: NONEPotassiumAminobenzoateSubstance
+    /// </summary>
+    public const string LiteralNONEPotassiumAminobenzoateSubstance = "http://snomed.info/sct#395838004";
 
     /// <summary>
     /// Literal for code: PotassiumAscorbateSubstance
@@ -6920,9 +8260,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPotassiumAscorbateSubstance = "395839007";
 
     /// <summary>
+    /// Literal for code: NONEPotassiumAscorbateSubstance
+    /// </summary>
+    public const string LiteralNONEPotassiumAscorbateSubstance = "http://snomed.info/sct#395839007";
+
+    /// <summary>
     /// Literal for code: CarbocisteineSubstance
     /// </summary>
     public const string LiteralCarbocisteineSubstance = "395842001";
+
+    /// <summary>
+    /// Literal for code: NONECarbocisteineSubstance
+    /// </summary>
+    public const string LiteralNONECarbocisteineSubstance = "http://snomed.info/sct#395842001";
 
     /// <summary>
     /// Literal for code: TolfenamicAcidSubstance
@@ -6930,9 +8280,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTolfenamicAcidSubstance = "395910008";
 
     /// <summary>
+    /// Literal for code: NONETolfenamicAcidSubstance
+    /// </summary>
+    public const string LiteralNONETolfenamicAcidSubstance = "http://snomed.info/sct#395910008";
+
+    /// <summary>
     /// Literal for code: XylitolSubstance
     /// </summary>
     public const string LiteralXylitolSubstance = "395951005";
+
+    /// <summary>
+    /// Literal for code: NONEXylitolSubstance
+    /// </summary>
+    public const string LiteralNONEXylitolSubstance = "http://snomed.info/sct#395951005";
 
     /// <summary>
     /// Literal for code: FolinicAcidSubstance
@@ -6940,9 +8300,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFolinicAcidSubstance = "396065004";
 
     /// <summary>
+    /// Literal for code: NONEFolinicAcidSubstance
+    /// </summary>
+    public const string LiteralNONEFolinicAcidSubstance = "http://snomed.info/sct#396065004";
+
+    /// <summary>
     /// Literal for code: KynurenicAcid
     /// </summary>
     public const string LiteralKynurenicAcid = "39694009";
+
+    /// <summary>
+    /// Literal for code: NONEKynurenicAcid
+    /// </summary>
+    public const string LiteralNONEKynurenicAcid = "http://snomed.info/sct#39694009";
 
     /// <summary>
     /// Literal for code: IminoAcid
@@ -6950,9 +8320,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIminoAcid = "39862002";
 
     /// <summary>
+    /// Literal for code: NONEIminoAcid
+    /// </summary>
+    public const string LiteralNONEIminoAcid = "http://snomed.info/sct#39862002";
+
+    /// <summary>
     /// Literal for code: Sodium
     /// </summary>
     public const string LiteralSodium = "39972003";
+
+    /// <summary>
+    /// Literal for code: NONESodium
+    /// </summary>
+    public const string LiteralNONESodium = "http://snomed.info/sct#39972003";
 
     /// <summary>
     /// Literal for code: Fructose1Phosphate
@@ -6960,9 +8340,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFructose1Phosphate = "40479008";
 
     /// <summary>
+    /// Literal for code: NONEFructose1Phosphate
+    /// </summary>
+    public const string LiteralNONEFructose1Phosphate = "http://snomed.info/sct#40479008";
+
+    /// <summary>
     /// Literal for code: FishDerivedOmega3FattyAcidSubstance
     /// </summary>
     public const string LiteralFishDerivedOmega3FattyAcidSubstance = "406774009";
+
+    /// <summary>
+    /// Literal for code: NONEFishDerivedOmega3FattyAcidSubstance
+    /// </summary>
+    public const string LiteralNONEFishDerivedOmega3FattyAcidSubstance = "http://snomed.info/sct#406774009";
 
     /// <summary>
     /// Literal for code: WaterSolubleVitamin
@@ -6970,9 +8360,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWaterSolubleVitamin = "40924008";
 
     /// <summary>
+    /// Literal for code: NONEWaterSolubleVitamin
+    /// </summary>
+    public const string LiteralNONEWaterSolubleVitamin = "http://snomed.info/sct#40924008";
+
+    /// <summary>
     /// Literal for code: VitaminBGreaterThan12aLessThan
     /// </summary>
     public const string LiteralVitaminBGreaterThan12aLessThan = "409257009";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminBGreaterThan12aLessThan
+    /// </summary>
+    public const string LiteralNONEVitaminBGreaterThan12aLessThan = "http://snomed.info/sct#409257009";
 
     /// <summary>
     /// Literal for code: VitaminBGreaterThan12bLessThan
@@ -6980,9 +8380,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVitaminBGreaterThan12bLessThan = "409258004";
 
     /// <summary>
+    /// Literal for code: NONEVitaminBGreaterThan12bLessThan
+    /// </summary>
+    public const string LiteralNONEVitaminBGreaterThan12bLessThan = "http://snomed.info/sct#409258004";
+
+    /// <summary>
     /// Literal for code: VAL13BetaDGlucan
     /// </summary>
     public const string LiteralVAL13BetaDGlucan = "409871008";
+
+    /// <summary>
+    /// Literal for code: NONEVAL13BetaDGlucan
+    /// </summary>
+    public const string LiteralNONEVAL13BetaDGlucan = "http://snomed.info/sct#409871008";
 
     /// <summary>
     /// Literal for code: DicarboxylicAminoAcidSubstance
@@ -6990,9 +8400,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDicarboxylicAminoAcidSubstance = "410982000";
 
     /// <summary>
+    /// Literal for code: NONEDicarboxylicAminoAcidSubstance
+    /// </summary>
+    public const string LiteralNONEDicarboxylicAminoAcidSubstance = "http://snomed.info/sct#410982000";
+
+    /// <summary>
     /// Literal for code: DiaminopimelicAcidSubstance
     /// </summary>
     public const string LiteralDiaminopimelicAcidSubstance = "410983005";
+
+    /// <summary>
+    /// Literal for code: NONEDiaminopimelicAcidSubstance
+    /// </summary>
+    public const string LiteralNONEDiaminopimelicAcidSubstance = "http://snomed.info/sct#410983005";
 
     /// <summary>
     /// Literal for code: IcodextrinSubstance
@@ -7000,9 +8420,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIcodextrinSubstance = "412135003";
 
     /// <summary>
+    /// Literal for code: NONEIcodextrinSubstance
+    /// </summary>
+    public const string LiteralNONEIcodextrinSubstance = "http://snomed.info/sct#412135003";
+
+    /// <summary>
     /// Literal for code: HesperidinSubstance
     /// </summary>
     public const string LiteralHesperidinSubstance = "412203006";
+
+    /// <summary>
+    /// Literal for code: NONEHesperidinSubstance
+    /// </summary>
+    public const string LiteralNONEHesperidinSubstance = "http://snomed.info/sct#412203006";
 
     /// <summary>
     /// Literal for code: MenadioneSubstance
@@ -7010,9 +8440,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMenadioneSubstance = "412244007";
 
     /// <summary>
+    /// Literal for code: NONEMenadioneSubstance
+    /// </summary>
+    public const string LiteralNONEMenadioneSubstance = "http://snomed.info/sct#412244007";
+
+    /// <summary>
     /// Literal for code: MultivitaminAgentSubstance
     /// </summary>
     public const string LiteralMultivitaminAgentSubstance = "412250002";
+
+    /// <summary>
+    /// Literal for code: NONEMultivitaminAgentSubstance
+    /// </summary>
+    public const string LiteralNONEMultivitaminAgentSubstance = "http://snomed.info/sct#412250002";
 
     /// <summary>
     /// Literal for code: CarglumicAcidSubstance
@@ -7020,9 +8460,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCarglumicAcidSubstance = "412295009";
 
     /// <summary>
+    /// Literal for code: NONECarglumicAcidSubstance
+    /// </summary>
+    public const string LiteralNONECarglumicAcidSubstance = "http://snomed.info/sct#412295009";
+
+    /// <summary>
     /// Literal for code: HypromelloseSubstance
     /// </summary>
     public const string LiteralHypromelloseSubstance = "412410003";
+
+    /// <summary>
+    /// Literal for code: NONEHypromelloseSubstance
+    /// </summary>
+    public const string LiteralNONEHypromelloseSubstance = "http://snomed.info/sct#412410003";
 
     /// <summary>
     /// Literal for code: VegetableOilSubstance
@@ -7030,9 +8480,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVegetableOilSubstance = "412552006";
 
     /// <summary>
+    /// Literal for code: NONEVegetableOilSubstance
+    /// </summary>
+    public const string LiteralNONEVegetableOilSubstance = "http://snomed.info/sct#412552006";
+
+    /// <summary>
     /// Literal for code: AlloisoleucineSubstance
     /// </summary>
     public const string LiteralAlloisoleucineSubstance = "412632001";
+
+    /// <summary>
+    /// Literal for code: NONEAlloisoleucineSubstance
+    /// </summary>
+    public const string LiteralNONEAlloisoleucineSubstance = "http://snomed.info/sct#412632001";
 
     /// <summary>
     /// Literal for code: AlphaCarotene
@@ -7040,9 +8500,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAlphaCarotene = "413483001";
 
     /// <summary>
+    /// Literal for code: NONEAlphaCarotene
+    /// </summary>
+    public const string LiteralNONEAlphaCarotene = "http://snomed.info/sct#413483001";
+
+    /// <summary>
     /// Literal for code: Erythrose
     /// </summary>
     public const string LiteralErythrose = "41441005";
+
+    /// <summary>
+    /// Literal for code: NONEErythrose
+    /// </summary>
+    public const string LiteralNONEErythrose = "http://snomed.info/sct#41441005";
 
     /// <summary>
     /// Literal for code: InositolNiacinate
@@ -7050,9 +8520,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInositolNiacinate = "414506003";
 
     /// <summary>
+    /// Literal for code: NONEInositolNiacinate
+    /// </summary>
+    public const string LiteralNONEInositolNiacinate = "http://snomed.info/sct#414506003";
+
+    /// <summary>
     /// Literal for code: PregabalinSubstance
     /// </summary>
     public const string LiteralPregabalinSubstance = "415160008";
+
+    /// <summary>
+    /// Literal for code: NONEPregabalinSubstance
+    /// </summary>
+    public const string LiteralNONEPregabalinSubstance = "http://snomed.info/sct#415160008";
 
     /// <summary>
     /// Literal for code: SodiumGlycerophosphateSubstance
@@ -7060,9 +8540,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSodiumGlycerophosphateSubstance = "415543009";
 
     /// <summary>
+    /// Literal for code: NONESodiumGlycerophosphateSubstance
+    /// </summary>
+    public const string LiteralNONESodiumGlycerophosphateSubstance = "http://snomed.info/sct#415543009";
+
+    /// <summary>
     /// Literal for code: SoyBeanProductSubstance
     /// </summary>
     public const string LiteralSoyBeanProductSubstance = "415562007";
+
+    /// <summary>
+    /// Literal for code: NONESoyBeanProductSubstance
+    /// </summary>
+    public const string LiteralNONESoyBeanProductSubstance = "http://snomed.info/sct#415562007";
 
     /// <summary>
     /// Literal for code: ArachisOilSubstance
@@ -7070,9 +8560,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralArachisOilSubstance = "417889008";
 
     /// <summary>
+    /// Literal for code: NONEArachisOilSubstance
+    /// </summary>
+    public const string LiteralNONEArachisOilSubstance = "http://snomed.info/sct#417889008";
+
+    /// <summary>
     /// Literal for code: BetaAminoisobutyricAcidSubstance
     /// </summary>
     public const string LiteralBetaAminoisobutyricAcidSubstance = "41810000";
+
+    /// <summary>
+    /// Literal for code: NONEBetaAminoisobutyricAcidSubstance
+    /// </summary>
+    public const string LiteralNONEBetaAminoisobutyricAcidSubstance = "http://snomed.info/sct#41810000";
 
     /// <summary>
     /// Literal for code: OliveOil
@@ -7080,9 +8580,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOliveOil = "41834005";
 
     /// <summary>
+    /// Literal for code: NONEOliveOil
+    /// </summary>
+    public const string LiteralNONEOliveOil = "http://snomed.info/sct#41834005";
+
+    /// <summary>
     /// Literal for code: CelluloseDerivedViscosityModifierSubstance
     /// </summary>
     public const string LiteralCelluloseDerivedViscosityModifierSubstance = "418407000";
+
+    /// <summary>
+    /// Literal for code: NONECelluloseDerivedViscosityModifierSubstance
+    /// </summary>
+    public const string LiteralNONECelluloseDerivedViscosityModifierSubstance = "http://snomed.info/sct#418407000";
 
     /// <summary>
     /// Literal for code: LactitolSubstance
@@ -7090,9 +8600,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLactitolSubstance = "418929008";
 
     /// <summary>
+    /// Literal for code: NONELactitolSubstance
+    /// </summary>
+    public const string LiteralNONELactitolSubstance = "http://snomed.info/sct#418929008";
+
+    /// <summary>
     /// Literal for code: HydroxyethylStarchSubstance
     /// </summary>
     public const string LiteralHydroxyethylStarchSubstance = "418938005";
+
+    /// <summary>
+    /// Literal for code: NONEHydroxyethylStarchSubstance
+    /// </summary>
+    public const string LiteralNONEHydroxyethylStarchSubstance = "http://snomed.info/sct#418938005";
 
     /// <summary>
     /// Literal for code: CyanocobalaminSubstance
@@ -7100,9 +8620,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCyanocobalaminSubstance = "419382002";
 
     /// <summary>
+    /// Literal for code: NONECyanocobalaminSubstance
+    /// </summary>
+    public const string LiteralNONECyanocobalaminSubstance = "http://snomed.info/sct#419382002";
+
+    /// <summary>
     /// Literal for code: Carboxymethylcellulose
     /// </summary>
     public const string LiteralCarboxymethylcellulose = "419432008";
+
+    /// <summary>
+    /// Literal for code: NONECarboxymethylcellulose
+    /// </summary>
+    public const string LiteralNONECarboxymethylcellulose = "http://snomed.info/sct#419432008";
 
     /// <summary>
     /// Literal for code: NicofuranoseSubstance
@@ -7110,9 +8640,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNicofuranoseSubstance = "419843007";
 
     /// <summary>
+    /// Literal for code: NONENicofuranoseSubstance
+    /// </summary>
+    public const string LiteralNONENicofuranoseSubstance = "http://snomed.info/sct#419843007";
+
+    /// <summary>
     /// Literal for code: StarflowerOilSubstance
     /// </summary>
     public const string LiteralStarflowerOilSubstance = "420053004";
+
+    /// <summary>
+    /// Literal for code: NONEStarflowerOilSubstance
+    /// </summary>
+    public const string LiteralNONEStarflowerOilSubstance = "http://snomed.info/sct#420053004";
 
     /// <summary>
     /// Literal for code: MonosodiumLAspartateSubstance
@@ -7120,9 +8660,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMonosodiumLAspartateSubstance = "420075002";
 
     /// <summary>
+    /// Literal for code: NONEMonosodiumLAspartateSubstance
+    /// </summary>
+    public const string LiteralNONEMonosodiumLAspartateSubstance = "http://snomed.info/sct#420075002";
+
+    /// <summary>
     /// Literal for code: MenadiolSubstance
     /// </summary>
     public const string LiteralMenadiolSubstance = "421289007";
+
+    /// <summary>
+    /// Literal for code: NONEMenadiolSubstance
+    /// </summary>
+    public const string LiteralNONEMenadiolSubstance = "http://snomed.info/sct#421289007";
 
     /// <summary>
     /// Literal for code: RetinolAcetateSubstance
@@ -7130,9 +8680,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRetinolAcetateSubstance = "421621000";
 
     /// <summary>
+    /// Literal for code: NONERetinolAcetateSubstance
+    /// </summary>
+    public const string LiteralNONERetinolAcetateSubstance = "http://snomed.info/sct#421621000";
+
+    /// <summary>
     /// Literal for code: VitaminDGreaterThan2LessThanPhosphateEster
     /// </summary>
     public const string LiteralVitaminDGreaterThan2LessThanPhosphateEster = "42180008";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminDGreaterThan2LessThanPhosphateEster
+    /// </summary>
+    public const string LiteralNONEVitaminDGreaterThan2LessThanPhosphateEster = "http://snomed.info/sct#42180008";
 
     /// <summary>
     /// Literal for code: MenadiolDiacetate
@@ -7140,9 +8700,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMenadiolDiacetate = "422073002";
 
     /// <summary>
+    /// Literal for code: NONEMenadiolDiacetate
+    /// </summary>
+    public const string LiteralNONEMenadiolDiacetate = "http://snomed.info/sct#422073002";
+
+    /// <summary>
     /// Literal for code: VitaminAPalmitate
     /// </summary>
     public const string LiteralVitaminAPalmitate = "422160004";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminAPalmitate
+    /// </summary>
+    public const string LiteralNONEVitaminAPalmitate = "http://snomed.info/sct#422160004";
 
     /// <summary>
     /// Literal for code: LumiracoxibSubstance
@@ -7150,9 +8720,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLumiracoxibSubstance = "424967004";
 
     /// <summary>
+    /// Literal for code: NONELumiracoxibSubstance
+    /// </summary>
+    public const string LiteralNONELumiracoxibSubstance = "http://snomed.info/sct#424967004";
+
+    /// <summary>
     /// Literal for code: TetrastarchSubstance
     /// </summary>
     public const string LiteralTetrastarchSubstance = "425645005";
+
+    /// <summary>
+    /// Literal for code: NONETetrastarchSubstance
+    /// </summary>
+    public const string LiteralNONETetrastarchSubstance = "http://snomed.info/sct#425645005";
 
     /// <summary>
     /// Literal for code: SodiumPantothenateSubstance
@@ -7160,9 +8740,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSodiumPantothenateSubstance = "425867009";
 
     /// <summary>
+    /// Literal for code: NONESodiumPantothenateSubstance
+    /// </summary>
+    public const string LiteralNONESodiumPantothenateSubstance = "http://snomed.info/sct#425867009";
+
+    /// <summary>
     /// Literal for code: DroxidopaSubstance
     /// </summary>
     public const string LiteralDroxidopaSubstance = "426390004";
+
+    /// <summary>
+    /// Literal for code: NONEDroxidopaSubstance
+    /// </summary>
+    public const string LiteralNONEDroxidopaSubstance = "http://snomed.info/sct#426390004";
 
     /// <summary>
     /// Literal for code: HydroxyaminoAcidSubstance
@@ -7170,9 +8760,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHydroxyaminoAcidSubstance = "427330005";
 
     /// <summary>
+    /// Literal for code: NONEHydroxyaminoAcidSubstance
+    /// </summary>
+    public const string LiteralNONEHydroxyaminoAcidSubstance = "http://snomed.info/sct#427330005";
+
+    /// <summary>
     /// Literal for code: GluconolactoneSubstance
     /// </summary>
     public const string LiteralGluconolactoneSubstance = "427638006";
+
+    /// <summary>
+    /// Literal for code: NONEGluconolactoneSubstance
+    /// </summary>
+    public const string LiteralNONEGluconolactoneSubstance = "http://snomed.info/sct#427638006";
 
     /// <summary>
     /// Literal for code: HexylNicotinateSubstance
@@ -7180,9 +8780,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHexylNicotinateSubstance = "428732003";
 
     /// <summary>
+    /// Literal for code: NONEHexylNicotinateSubstance
+    /// </summary>
+    public const string LiteralNONEHexylNicotinateSubstance = "http://snomed.info/sct#428732003";
+
+    /// <summary>
     /// Literal for code: PolydextroseSubstance
     /// </summary>
     public const string LiteralPolydextroseSubstance = "429592005";
+
+    /// <summary>
+    /// Literal for code: NONEPolydextroseSubstance
+    /// </summary>
+    public const string LiteralNONEPolydextroseSubstance = "http://snomed.info/sct#429592005";
 
     /// <summary>
     /// Literal for code: LevoleucovorinCalciumSubstance
@@ -7190,9 +8800,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLevoleucovorinCalciumSubstance = "429990006";
 
     /// <summary>
+    /// Literal for code: NONELevoleucovorinCalciumSubstance
+    /// </summary>
+    public const string LiteralNONELevoleucovorinCalciumSubstance = "http://snomed.info/sct#429990006";
+
+    /// <summary>
     /// Literal for code: PyridoxineSubstance
     /// </summary>
     public const string LiteralPyridoxineSubstance = "430469009";
+
+    /// <summary>
+    /// Literal for code: NONEPyridoxineSubstance
+    /// </summary>
+    public const string LiteralNONEPyridoxineSubstance = "http://snomed.info/sct#430469009";
 
     /// <summary>
     /// Literal for code: PyridoxamineSubstance
@@ -7200,9 +8820,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPyridoxamineSubstance = "430632000";
 
     /// <summary>
+    /// Literal for code: NONEPyridoxamineSubstance
+    /// </summary>
+    public const string LiteralNONEPyridoxamineSubstance = "http://snomed.info/sct#430632000";
+
+    /// <summary>
     /// Literal for code: Pyridoxine5QuotePhosphateSubstance
     /// </summary>
     public const string LiteralPyridoxine5QuotePhosphateSubstance = "430633005";
+
+    /// <summary>
+    /// Literal for code: NONEPyridoxine5QuotePhosphateSubstance
+    /// </summary>
+    public const string LiteralNONEPyridoxine5QuotePhosphateSubstance = "http://snomed.info/sct#430633005";
 
     /// <summary>
     /// Literal for code: Pyridoxamine5QuotePhosphateSubstance
@@ -7210,9 +8840,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPyridoxamine5QuotePhosphateSubstance = "430634004";
 
     /// <summary>
+    /// Literal for code: NONEPyridoxamine5QuotePhosphateSubstance
+    /// </summary>
+    public const string LiteralNONEPyridoxamine5QuotePhosphateSubstance = "http://snomed.info/sct#430634004";
+
+    /// <summary>
     /// Literal for code: CarbamicAcidSubstance
     /// </summary>
     public const string LiteralCarbamicAcidSubstance = "430745006";
+
+    /// <summary>
+    /// Literal for code: NONECarbamicAcidSubstance
+    /// </summary>
+    public const string LiteralNONECarbamicAcidSubstance = "http://snomed.info/sct#430745006";
 
     /// <summary>
     /// Literal for code: PyridoxalSubstance
@@ -7220,9 +8860,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPyridoxalSubstance = "430926008";
 
     /// <summary>
+    /// Literal for code: NONEPyridoxalSubstance
+    /// </summary>
+    public const string LiteralNONEPyridoxalSubstance = "http://snomed.info/sct#430926008";
+
+    /// <summary>
     /// Literal for code: LMethylFolicAcid
     /// </summary>
     public const string LiteralLMethylFolicAcid = "432165000";
+
+    /// <summary>
+    /// Literal for code: NONELMethylFolicAcid
+    /// </summary>
+    public const string LiteralNONELMethylFolicAcid = "http://snomed.info/sct#432165000";
 
     /// <summary>
     /// Literal for code: DihydrofolicAcid
@@ -7230,9 +8880,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDihydrofolicAcid = "43289005";
 
     /// <summary>
+    /// Literal for code: NONEDihydrofolicAcid
+    /// </summary>
+    public const string LiteralNONEDihydrofolicAcid = "http://snomed.info/sct#43289005";
+
+    /// <summary>
     /// Literal for code: LevoleucovorinCalciumPentahydrateSubstance
     /// </summary>
     public const string LiteralLevoleucovorinCalciumPentahydrateSubstance = "433468002";
+
+    /// <summary>
+    /// Literal for code: NONELevoleucovorinCalciumPentahydrateSubstance
+    /// </summary>
+    public const string LiteralNONELevoleucovorinCalciumPentahydrateSubstance = "http://snomed.info/sct#433468002";
 
     /// <summary>
     /// Literal for code: Maltose
@@ -7240,9 +8900,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMaltose = "43431002";
 
     /// <summary>
+    /// Literal for code: NONEMaltose
+    /// </summary>
+    public const string LiteralNONEMaltose = "http://snomed.info/sct#43431002";
+
+    /// <summary>
     /// Literal for code: UnsaturatedFatSubstance
     /// </summary>
     public const string LiteralUnsaturatedFatSubstance = "436801000124100";
+
+    /// <summary>
+    /// Literal for code: NONEUnsaturatedFatSubstance
+    /// </summary>
+    public const string LiteralNONEUnsaturatedFatSubstance = "http://snomed.info/sct#436801000124100";
 
     /// <summary>
     /// Literal for code: MonounsaturatedFatSubstance
@@ -7250,9 +8920,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMonounsaturatedFatSubstance = "436811000124102";
 
     /// <summary>
+    /// Literal for code: NONEMonounsaturatedFatSubstance
+    /// </summary>
+    public const string LiteralNONEMonounsaturatedFatSubstance = "http://snomed.info/sct#436811000124102";
+
+    /// <summary>
     /// Literal for code: PolyunsaturatedFatSubstance
     /// </summary>
     public const string LiteralPolyunsaturatedFatSubstance = "436821000124105";
+
+    /// <summary>
+    /// Literal for code: NONEPolyunsaturatedFatSubstance
+    /// </summary>
+    public const string LiteralNONEPolyunsaturatedFatSubstance = "http://snomed.info/sct#436821000124105";
 
     /// <summary>
     /// Literal for code: TransFatSubstance
@@ -7260,9 +8940,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTransFatSubstance = "436831000124108";
 
     /// <summary>
+    /// Literal for code: NONETransFatSubstance
+    /// </summary>
+    public const string LiteralNONETransFatSubstance = "http://snomed.info/sct#436831000124108";
+
+    /// <summary>
     /// Literal for code: SaturatedFatSubstance
     /// </summary>
     public const string LiteralSaturatedFatSubstance = "436841000124103";
+
+    /// <summary>
+    /// Literal for code: NONESaturatedFatSubstance
+    /// </summary>
+    public const string LiteralNONESaturatedFatSubstance = "http://snomed.info/sct#436841000124103";
 
     /// <summary>
     /// Literal for code: AscorbicAcid
@@ -7270,9 +8960,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAscorbicAcid = "43706004";
 
     /// <summary>
+    /// Literal for code: NONEAscorbicAcid
+    /// </summary>
+    public const string LiteralNONEAscorbicAcid = "http://snomed.info/sct#43706004";
+
+    /// <summary>
     /// Literal for code: BetaDFructofuranose
     /// </summary>
     public const string LiteralBetaDFructofuranose = "43728004";
+
+    /// <summary>
+    /// Literal for code: NONEBetaDFructofuranose
+    /// </summary>
+    public const string LiteralNONEBetaDFructofuranose = "http://snomed.info/sct#43728004";
 
     /// <summary>
     /// Literal for code: ZincGelatin
@@ -7280,9 +8980,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralZincGelatin = "43835003";
 
     /// <summary>
+    /// Literal for code: NONEZincGelatin
+    /// </summary>
+    public const string LiteralNONEZincGelatin = "http://snomed.info/sct#43835003";
+
+    /// <summary>
     /// Literal for code: SugarAcidSubstance
     /// </summary>
     public const string LiteralSugarAcidSubstance = "438901003";
+
+    /// <summary>
+    /// Literal for code: NONESugarAcidSubstance
+    /// </summary>
+    public const string LiteralNONESugarAcidSubstance = "http://snomed.info/sct#438901003";
 
     /// <summary>
     /// Literal for code: ThiamineTriphosphate
@@ -7290,9 +9000,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralThiamineTriphosphate = "43909000";
 
     /// <summary>
+    /// Literal for code: NONEThiamineTriphosphate
+    /// </summary>
+    public const string LiteralNONEThiamineTriphosphate = "http://snomed.info/sct#43909000";
+
+    /// <summary>
     /// Literal for code: AlphaAminoAcid
     /// </summary>
     public const string LiteralAlphaAminoAcid = "43984007";
+
+    /// <summary>
+    /// Literal for code: NONEAlphaAminoAcid
+    /// </summary>
+    public const string LiteralNONEAlphaAminoAcid = "http://snomed.info/sct#43984007";
 
     /// <summary>
     /// Literal for code: Lacosamide
@@ -7300,9 +9020,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLacosamide = "441647003";
 
     /// <summary>
+    /// Literal for code: NONELacosamide
+    /// </summary>
+    public const string LiteralNONELacosamide = "http://snomed.info/sct#441647003";
+
+    /// <summary>
     /// Literal for code: Ademetionine
     /// </summary>
     public const string LiteralAdemetionine = "441816007";
+
+    /// <summary>
+    /// Literal for code: NONEAdemetionine
+    /// </summary>
+    public const string LiteralNONEAdemetionine = "http://snomed.info/sct#441816007";
 
     /// <summary>
     /// Literal for code: CyclicOligosaccharide
@@ -7310,9 +9040,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCyclicOligosaccharide = "442247006";
 
     /// <summary>
+    /// Literal for code: NONECyclicOligosaccharide
+    /// </summary>
+    public const string LiteralNONECyclicOligosaccharide = "http://snomed.info/sct#442247006";
+
+    /// <summary>
     /// Literal for code: Sugammadex
     /// </summary>
     public const string LiteralSugammadex = "442340006";
+
+    /// <summary>
+    /// Literal for code: NONESugammadex
+    /// </summary>
+    public const string LiteralNONESugammadex = "http://snomed.info/sct#442340006";
 
     /// <summary>
     /// Literal for code: RiboflavinSodiumPhosphate
@@ -7320,9 +9060,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRiboflavinSodiumPhosphate = "442346000";
 
     /// <summary>
+    /// Literal for code: NONERiboflavinSodiumPhosphate
+    /// </summary>
+    public const string LiteralNONERiboflavinSodiumPhosphate = "http://snomed.info/sct#442346000";
+
+    /// <summary>
     /// Literal for code: OxidizedCellulose
     /// </summary>
     public const string LiteralOxidizedCellulose = "44262008";
+
+    /// <summary>
+    /// Literal for code: NONEOxidizedCellulose
+    /// </summary>
+    public const string LiteralNONEOxidizedCellulose = "http://snomed.info/sct#44262008";
 
     /// <summary>
     /// Literal for code: Omega5GliadinSubstance
@@ -7330,9 +9080,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOmega5GliadinSubstance = "443148002";
 
     /// <summary>
+    /// Literal for code: NONEOmega5GliadinSubstance
+    /// </summary>
+    public const string LiteralNONEOmega5GliadinSubstance = "http://snomed.info/sct#443148002";
+
+    /// <summary>
     /// Literal for code: LevomefolateCalciumSubstance
     /// </summary>
     public const string LiteralLevomefolateCalciumSubstance = "449236003";
+
+    /// <summary>
+    /// Literal for code: NONELevomefolateCalciumSubstance
+    /// </summary>
+    public const string LiteralNONELevomefolateCalciumSubstance = "http://snomed.info/sct#449236003";
 
     /// <summary>
     /// Literal for code: AsparticAcid
@@ -7340,9 +9100,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAsparticAcid = "44970006";
 
     /// <summary>
+    /// Literal for code: NONEAsparticAcid
+    /// </summary>
+    public const string LiteralNONEAsparticAcid = "http://snomed.info/sct#44970006";
+
+    /// <summary>
     /// Literal for code: Dextranomer
     /// </summary>
     public const string LiteralDextranomer = "45524001";
+
+    /// <summary>
+    /// Literal for code: NONEDextranomer
+    /// </summary>
+    public const string LiteralNONEDextranomer = "http://snomed.info/sct#45524001";
 
     /// <summary>
     /// Literal for code: Collodion
@@ -7350,9 +9120,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCollodion = "45962009";
 
     /// <summary>
+    /// Literal for code: NONECollodion
+    /// </summary>
+    public const string LiteralNONECollodion = "http://snomed.info/sct#45962009";
+
+    /// <summary>
     /// Literal for code: OmegaAminoAcid
     /// </summary>
     public const string LiteralOmegaAminoAcid = "45997006";
+
+    /// <summary>
+    /// Literal for code: NONEOmegaAminoAcid
+    /// </summary>
+    public const string LiteralNONEOmegaAminoAcid = "http://snomed.info/sct#45997006";
 
     /// <summary>
     /// Literal for code: Oligosaccharide
@@ -7360,9 +9140,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOligosaccharide = "46075000";
 
     /// <summary>
+    /// Literal for code: NONEOligosaccharide
+    /// </summary>
+    public const string LiteralNONEOligosaccharide = "http://snomed.info/sct#46075000";
+
+    /// <summary>
     /// Literal for code: MenthylAnthranilate
     /// </summary>
     public const string LiteralMenthylAnthranilate = "46491005";
+
+    /// <summary>
+    /// Literal for code: NONEMenthylAnthranilate
+    /// </summary>
+    public const string LiteralNONEMenthylAnthranilate = "http://snomed.info/sct#46491005";
 
     /// <summary>
     /// Literal for code: BasicAminoAcid
@@ -7370,9 +9160,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBasicAminoAcid = "47617006";
 
     /// <summary>
+    /// Literal for code: NONEBasicAminoAcid
+    /// </summary>
+    public const string LiteralNONEBasicAminoAcid = "http://snomed.info/sct#47617006";
+
+    /// <summary>
     /// Literal for code: Lactose
     /// </summary>
     public const string LiteralLactose = "47703008";
+
+    /// <summary>
+    /// Literal for code: NONELactose
+    /// </summary>
+    public const string LiteralNONELactose = "http://snomed.info/sct#47703008";
 
     /// <summary>
     /// Literal for code: RibitolTeichoicAcid
@@ -7380,9 +9180,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRibitolTeichoicAcid = "48736006";
 
     /// <summary>
+    /// Literal for code: NONERibitolTeichoicAcid
+    /// </summary>
+    public const string LiteralNONERibitolTeichoicAcid = "http://snomed.info/sct#48736006";
+
+    /// <summary>
     /// Literal for code: GluconicAcid
     /// </summary>
     public const string LiteralGluconicAcid = "49506005";
+
+    /// <summary>
+    /// Literal for code: NONEGluconicAcid
+    /// </summary>
+    public const string LiteralNONEGluconicAcid = "http://snomed.info/sct#49506005";
 
     /// <summary>
     /// Literal for code: NeutralAminoAcid
@@ -7390,9 +9200,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNeutralAminoAcid = "4963003";
 
     /// <summary>
+    /// Literal for code: NONENeutralAminoAcid
+    /// </summary>
+    public const string LiteralNONENeutralAminoAcid = "http://snomed.info/sct#4963003";
+
+    /// <summary>
     /// Literal for code: LevulinicAcid
     /// </summary>
     public const string LiteralLevulinicAcid = "50233008";
+
+    /// <summary>
+    /// Literal for code: NONELevulinicAcid
+    /// </summary>
+    public const string LiteralNONELevulinicAcid = "http://snomed.info/sct#50233008";
 
     /// <summary>
     /// Literal for code: SoyProteinIronComplex
@@ -7400,9 +9220,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSoyProteinIronComplex = "50479000";
 
     /// <summary>
+    /// Literal for code: NONESoyProteinIronComplex
+    /// </summary>
+    public const string LiteralNONESoyProteinIronComplex = "http://snomed.info/sct#50479000";
+
+    /// <summary>
     /// Literal for code: CarboxymethylcelluloseSodium
     /// </summary>
     public const string LiteralCarboxymethylcelluloseSodium = "51224002";
+
+    /// <summary>
+    /// Literal for code: NONECarboxymethylcelluloseSodium
+    /// </summary>
+    public const string LiteralNONECarboxymethylcelluloseSodium = "http://snomed.info/sct#51224002";
 
     /// <summary>
     /// Literal for code: Quercetin
@@ -7410,9 +9240,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQuercetin = "52130006";
 
     /// <summary>
+    /// Literal for code: NONEQuercetin
+    /// </summary>
+    public const string LiteralNONEQuercetin = "http://snomed.info/sct#52130006";
+
+    /// <summary>
     /// Literal for code: AminoAcid
     /// </summary>
     public const string LiteralAminoAcid = "52518006";
+
+    /// <summary>
+    /// Literal for code: NONEAminoAcid
+    /// </summary>
+    public const string LiteralNONEAminoAcid = "http://snomed.info/sct#52518006";
 
     /// <summary>
     /// Literal for code: Proline
@@ -7420,9 +9260,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProline = "52541003";
 
     /// <summary>
+    /// Literal for code: NONEProline
+    /// </summary>
+    public const string LiteralNONEProline = "http://snomed.info/sct#52541003";
+
+    /// <summary>
     /// Literal for code: Norleucine
     /// </summary>
     public const string LiteralNorleucine = "52560005";
+
+    /// <summary>
+    /// Literal for code: NONENorleucine
+    /// </summary>
+    public const string LiteralNONENorleucine = "http://snomed.info/sct#52560005";
 
     /// <summary>
     /// Literal for code: Arginine
@@ -7430,9 +9280,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralArginine = "52625008";
 
     /// <summary>
+    /// Literal for code: NONEArginine
+    /// </summary>
+    public const string LiteralNONEArginine = "http://snomed.info/sct#52625008";
+
+    /// <summary>
     /// Literal for code: Threonine
     /// </summary>
     public const string LiteralThreonine = "52736009";
+
+    /// <summary>
+    /// Literal for code: NONEThreonine
+    /// </summary>
+    public const string LiteralNONEThreonine = "http://snomed.info/sct#52736009";
 
     /// <summary>
     /// Literal for code: RiboflavinMononucleotide
@@ -7440,9 +9300,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRiboflavinMononucleotide = "53499005";
 
     /// <summary>
+    /// Literal for code: NONERiboflavinMononucleotide
+    /// </summary>
+    public const string LiteralNONERiboflavinMononucleotide = "http://snomed.info/sct#53499005";
+
+    /// <summary>
     /// Literal for code: Fructose6Phosphate
     /// </summary>
     public const string LiteralFructose6Phosphate = "53646005";
+
+    /// <summary>
+    /// Literal for code: NONEFructose6Phosphate
+    /// </summary>
+    public const string LiteralNONEFructose6Phosphate = "http://snomed.info/sct#53646005";
 
     /// <summary>
     /// Literal for code: Hemicellulose
@@ -7450,9 +9320,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHemicellulose = "53834009";
 
     /// <summary>
+    /// Literal for code: NONEHemicellulose
+    /// </summary>
+    public const string LiteralNONEHemicellulose = "http://snomed.info/sct#53834009";
+
+    /// <summary>
     /// Literal for code: SafflowerOil
     /// </summary>
     public const string LiteralSafflowerOil = "54041009";
+
+    /// <summary>
+    /// Literal for code: NONESafflowerOil
+    /// </summary>
+    public const string LiteralNONESafflowerOil = "http://snomed.info/sct#54041009";
 
     /// <summary>
     /// Literal for code: Glyceraldehyde
@@ -7460,9 +9340,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGlyceraldehyde = "54045000";
 
     /// <summary>
+    /// Literal for code: NONEGlyceraldehyde
+    /// </summary>
+    public const string LiteralNONEGlyceraldehyde = "http://snomed.info/sct#54045000";
+
+    /// <summary>
     /// Literal for code: Tryptophan
     /// </summary>
     public const string LiteralTryptophan = "54821000";
+
+    /// <summary>
+    /// Literal for code: NONETryptophan
+    /// </summary>
+    public const string LiteralNONETryptophan = "http://snomed.info/sct#54821000";
 
     /// <summary>
     /// Literal for code: Pectin
@@ -7470,9 +9360,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPectin = "55946005";
 
     /// <summary>
+    /// Literal for code: NONEPectin
+    /// </summary>
+    public const string LiteralNONEPectin = "http://snomed.info/sct#55946005";
+
+    /// <summary>
     /// Literal for code: Leucocyanidin
     /// </summary>
     public const string LiteralLeucocyanidin = "56383006";
+
+    /// <summary>
+    /// Literal for code: NONELeucocyanidin
+    /// </summary>
+    public const string LiteralNONELeucocyanidin = "http://snomed.info/sct#56383006";
 
     /// <summary>
     /// Literal for code: Triiodotyrosine
@@ -7480,9 +9380,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTriiodotyrosine = "56740002";
 
     /// <summary>
+    /// Literal for code: NONETriiodotyrosine
+    /// </summary>
+    public const string LiteralNONETriiodotyrosine = "http://snomed.info/sct#56740002";
+
+    /// <summary>
     /// Literal for code: AbsorbableGelatinSponge
     /// </summary>
     public const string LiteralAbsorbableGelatinSponge = "5691000";
+
+    /// <summary>
+    /// Literal for code: NONEAbsorbableGelatinSponge
+    /// </summary>
+    public const string LiteralNONEAbsorbableGelatinSponge = "http://snomed.info/sct#5691000";
 
     /// <summary>
     /// Literal for code: Fructose
@@ -7490,9 +9400,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFructose = "58202007";
 
     /// <summary>
+    /// Literal for code: NONEFructose
+    /// </summary>
+    public const string LiteralNONEFructose = "http://snomed.info/sct#58202007";
+
+    /// <summary>
     /// Literal for code: Alanine
     /// </summary>
     public const string LiteralAlanine = "58753009";
+
+    /// <summary>
+    /// Literal for code: NONEAlanine
+    /// </summary>
+    public const string LiteralNONEAlanine = "http://snomed.info/sct#58753009";
 
     /// <summary>
     /// Literal for code: Cysteine
@@ -7500,9 +9420,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCysteine = "5932006";
 
     /// <summary>
+    /// Literal for code: NONECysteine
+    /// </summary>
+    public const string LiteralNONECysteine = "http://snomed.info/sct#5932006";
+
+    /// <summary>
     /// Literal for code: AminocaproicAcid
     /// </summary>
     public const string LiteralAminocaproicAcid = "59882007";
+
+    /// <summary>
+    /// Literal for code: NONEAminocaproicAcid
+    /// </summary>
+    public const string LiteralNONEAminocaproicAcid = "http://snomed.info/sct#59882007";
 
     /// <summary>
     /// Literal for code: Carnitine
@@ -7510,9 +9440,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCarnitine = "59888006";
 
     /// <summary>
+    /// Literal for code: NONECarnitine
+    /// </summary>
+    public const string LiteralNONECarnitine = "http://snomed.info/sct#59888006";
+
+    /// <summary>
     /// Literal for code: VAL3Dehydroretinol
     /// </summary>
     public const string LiteralVAL3Dehydroretinol = "60244003";
+
+    /// <summary>
+    /// Literal for code: NONEVAL3Dehydroretinol
+    /// </summary>
+    public const string LiteralNONEVAL3Dehydroretinol = "http://snomed.info/sct#60244003";
 
     /// <summary>
     /// Literal for code: Histidine
@@ -7520,9 +9460,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHistidine = "60260004";
 
     /// <summary>
+    /// Literal for code: NONEHistidine
+    /// </summary>
+    public const string LiteralNONEHistidine = "http://snomed.info/sct#60260004";
+
+    /// <summary>
     /// Literal for code: NeovitaminA
     /// </summary>
     public const string LiteralNeovitaminA = "60764009";
+
+    /// <summary>
+    /// Literal for code: NONENeovitaminA
+    /// </summary>
+    public const string LiteralNONENeovitaminA = "http://snomed.info/sct#60764009";
 
     /// <summary>
     /// Literal for code: Hydroxylysine
@@ -7530,9 +9480,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHydroxylysine = "6083003";
 
     /// <summary>
+    /// Literal for code: NONEHydroxylysine
+    /// </summary>
+    public const string LiteralNONEHydroxylysine = "http://snomed.info/sct#6083003";
+
+    /// <summary>
     /// Literal for code: Sedoheptulose
     /// </summary>
     public const string LiteralSedoheptulose = "61045002";
+
+    /// <summary>
+    /// Literal for code: NONESedoheptulose
+    /// </summary>
+    public const string LiteralNONESedoheptulose = "http://snomed.info/sct#61045002";
 
     /// <summary>
     /// Literal for code: Fructose16Phosphate
@@ -7540,9 +9500,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFructose16Phosphate = "62174006";
 
     /// <summary>
+    /// Literal for code: NONEFructose16Phosphate
+    /// </summary>
+    public const string LiteralNONEFructose16Phosphate = "http://snomed.info/sct#62174006";
+
+    /// <summary>
     /// Literal for code: TeichoicAcid
     /// </summary>
     public const string LiteralTeichoicAcid = "62763008";
+
+    /// <summary>
+    /// Literal for code: NONETeichoicAcid
+    /// </summary>
+    public const string LiteralNONETeichoicAcid = "http://snomed.info/sct#62763008";
 
     /// <summary>
     /// Literal for code: Phenylalanine
@@ -7550,9 +9520,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPhenylalanine = "63004003";
 
     /// <summary>
+    /// Literal for code: NONEPhenylalanine
+    /// </summary>
+    public const string LiteralNONEPhenylalanine = "http://snomed.info/sct#63004003";
+
+    /// <summary>
     /// Literal for code: Mannose
     /// </summary>
     public const string LiteralMannose = "63089006";
+
+    /// <summary>
+    /// Literal for code: NONEMannose
+    /// </summary>
+    public const string LiteralNONEMannose = "http://snomed.info/sct#63089006";
 
     /// <summary>
     /// Literal for code: NonessentialAminoAcid
@@ -7560,9 +9540,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNonessentialAminoAcid = "63330006";
 
     /// <summary>
+    /// Literal for code: NONENonessentialAminoAcid
+    /// </summary>
+    public const string LiteralNONENonessentialAminoAcid = "http://snomed.info/sct#63330006";
+
+    /// <summary>
     /// Literal for code: ArginineHydrochloride
     /// </summary>
     public const string LiteralArginineHydrochloride = "63676001";
+
+    /// <summary>
+    /// Literal for code: NONEArginineHydrochloride
+    /// </summary>
+    public const string LiteralNONEArginineHydrochloride = "http://snomed.info/sct#63676001";
 
     /// <summary>
     /// Literal for code: FolicAcid
@@ -7570,9 +9560,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFolicAcid = "63718003";
 
     /// <summary>
+    /// Literal for code: NONEFolicAcid
+    /// </summary>
+    public const string LiteralNONEFolicAcid = "http://snomed.info/sct#63718003";
+
+    /// <summary>
     /// Literal for code: VitaminKAndVitaminKDerivative
     /// </summary>
     public const string LiteralVitaminKAndVitaminKDerivative = "65183007";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminKAndVitaminKDerivative
+    /// </summary>
+    public const string LiteralNONEVitaminKAndVitaminKDerivative = "http://snomed.info/sct#65183007";
 
     /// <summary>
     /// Literal for code: Dextran40
@@ -7580,9 +9580,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDextran40 = "66322002";
 
     /// <summary>
+    /// Literal for code: NONEDextran40
+    /// </summary>
+    public const string LiteralNONEDextran40 = "http://snomed.info/sct#66322002";
+
+    /// <summary>
     /// Literal for code: VitaminKGreaterThan1LessThan
     /// </summary>
     public const string LiteralVitaminKGreaterThan1LessThan = "66656000";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminKGreaterThan1LessThan
+    /// </summary>
+    public const string LiteralNONEVitaminKGreaterThan1LessThan = "http://snomed.info/sct#66656000";
 
     /// <summary>
     /// Literal for code: WheatDextrin
@@ -7590,9 +9600,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWheatDextrin = "669361000168106";
 
     /// <summary>
+    /// Literal for code: NONEWheatDextrin
+    /// </summary>
+    public const string LiteralNONEWheatDextrin = "http://snomed.info/sct#669361000168106";
+
+    /// <summary>
     /// Literal for code: VitaminDGreaterThan3LessThanPhosphateEster
     /// </summary>
     public const string LiteralVitaminDGreaterThan3LessThanPhosphateEster = "67060008";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminDGreaterThan3LessThanPhosphateEster
+    /// </summary>
+    public const string LiteralNONEVitaminDGreaterThan3LessThanPhosphateEster = "http://snomed.info/sct#67060008";
 
     /// <summary>
     /// Literal for code: Glucose
@@ -7600,9 +9620,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGlucose = "67079006";
 
     /// <summary>
+    /// Literal for code: NONEGlucose
+    /// </summary>
+    public const string LiteralNONEGlucose = "http://snomed.info/sct#67079006";
+
+    /// <summary>
     /// Literal for code: PangamicAcid
     /// </summary>
     public const string LiteralPangamicAcid = "67377000";
+
+    /// <summary>
+    /// Literal for code: NONEPangamicAcid
+    /// </summary>
+    public const string LiteralNONEPangamicAcid = "http://snomed.info/sct#67377000";
 
     /// <summary>
     /// Literal for code: VAL25HydroxyErgocalciferol
@@ -7610,9 +9640,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVAL25HydroxyErgocalciferol = "67517005";
 
     /// <summary>
+    /// Literal for code: NONEVAL25HydroxyErgocalciferol
+    /// </summary>
+    public const string LiteralNONEVAL25HydroxyErgocalciferol = "http://snomed.info/sct#67517005";
+
+    /// <summary>
     /// Literal for code: CelluloseAcetate
     /// </summary>
     public const string LiteralCelluloseAcetate = "68024001";
+
+    /// <summary>
+    /// Literal for code: NONECelluloseAcetate
+    /// </summary>
+    public const string LiteralNONECelluloseAcetate = "http://snomed.info/sct#68024001";
 
     /// <summary>
     /// Literal for code: Quercetin3Rutinoside
@@ -7620,9 +9660,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQuercetin3Rutinoside = "68077006";
 
     /// <summary>
+    /// Literal for code: NONEQuercetin3Rutinoside
+    /// </summary>
+    public const string LiteralNONEQuercetin3Rutinoside = "http://snomed.info/sct#68077006";
+
+    /// <summary>
     /// Literal for code: Cellulose
     /// </summary>
     public const string LiteralCellulose = "68992005";
+
+    /// <summary>
+    /// Literal for code: NONECellulose
+    /// </summary>
+    public const string LiteralNONECellulose = "http://snomed.info/sct#68992005";
 
     /// <summary>
     /// Literal for code: Sulbutiamine
@@ -7630,9 +9680,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSulbutiamine = "699182008";
 
     /// <summary>
+    /// Literal for code: NONESulbutiamine
+    /// </summary>
+    public const string LiteralNONESulbutiamine = "http://snomed.info/sct#699182008";
+
+    /// <summary>
     /// Literal for code: BranchedChainAminoAcid
     /// </summary>
     public const string LiteralBranchedChainAminoAcid = "70113000";
+
+    /// <summary>
+    /// Literal for code: NONEBranchedChainAminoAcid
+    /// </summary>
+    public const string LiteralNONEBranchedChainAminoAcid = "http://snomed.info/sct#70113000";
 
     /// <summary>
     /// Literal for code: Adenine
@@ -7640,9 +9700,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdenine = "70203000";
 
     /// <summary>
+    /// Literal for code: NONEAdenine
+    /// </summary>
+    public const string LiteralNONEAdenine = "http://snomed.info/sct#70203000";
+
+    /// <summary>
     /// Literal for code: HidrosminSubstance
     /// </summary>
     public const string LiteralHidrosminSubstance = "702796008";
+
+    /// <summary>
+    /// Literal for code: NONEHidrosminSubstance
+    /// </summary>
+    public const string LiteralNONEHidrosminSubstance = "http://snomed.info/sct#702796008";
 
     /// <summary>
     /// Literal for code: Methionine
@@ -7650,9 +9720,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMethionine = "70288006";
 
     /// <summary>
+    /// Literal for code: NONEMethionine
+    /// </summary>
+    public const string LiteralNONEMethionine = "http://snomed.info/sct#70288006";
+
+    /// <summary>
     /// Literal for code: GabapentinEnacarbil
     /// </summary>
     public const string LiteralGabapentinEnacarbil = "703122000";
+
+    /// <summary>
+    /// Literal for code: NONEGabapentinEnacarbil
+    /// </summary>
+    public const string LiteralNONEGabapentinEnacarbil = "http://snomed.info/sct#703122000";
 
     /// <summary>
     /// Literal for code: ZofenoprilSubstance
@@ -7660,9 +9740,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralZofenoprilSubstance = "703340007";
 
     /// <summary>
+    /// Literal for code: NONEZofenoprilSubstance
+    /// </summary>
+    public const string LiteralNONEZofenoprilSubstance = "http://snomed.info/sct#703340007";
+
+    /// <summary>
     /// Literal for code: ZofenoprilCalcium
     /// </summary>
     public const string LiteralZofenoprilCalcium = "703341006";
+
+    /// <summary>
+    /// Literal for code: NONEZofenoprilCalcium
+    /// </summary>
+    public const string LiteralNONEZofenoprilCalcium = "http://snomed.info/sct#703341006";
 
     /// <summary>
     /// Literal for code: Zofenoprilat
@@ -7670,9 +9760,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralZofenoprilat = "703342004";
 
     /// <summary>
+    /// Literal for code: NONEZofenoprilat
+    /// </summary>
+    public const string LiteralNONEZofenoprilat = "http://snomed.info/sct#703342004";
+
+    /// <summary>
     /// Literal for code: ZofenoprilatArginine
     /// </summary>
     public const string LiteralZofenoprilatArginine = "703343009";
+
+    /// <summary>
+    /// Literal for code: NONEZofenoprilatArginine
+    /// </summary>
+    public const string LiteralNONEZofenoprilatArginine = "http://snomed.info/sct#703343009";
 
     /// <summary>
     /// Literal for code: AscorbylPalmitate
@@ -7680,9 +9780,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAscorbylPalmitate = "703395001";
 
     /// <summary>
+    /// Literal for code: NONEAscorbylPalmitate
+    /// </summary>
+    public const string LiteralNONEAscorbylPalmitate = "http://snomed.info/sct#703395001";
+
+    /// <summary>
     /// Literal for code: Bisbentiamine
     /// </summary>
     public const string LiteralBisbentiamine = "703402008";
+
+    /// <summary>
+    /// Literal for code: NONEBisbentiamine
+    /// </summary>
+    public const string LiteralNONEBisbentiamine = "http://snomed.info/sct#703402008";
 
     /// <summary>
     /// Literal for code: Panthenol
@@ -7690,9 +9800,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPanthenol = "704430002";
 
     /// <summary>
+    /// Literal for code: NONEPanthenol
+    /// </summary>
+    public const string LiteralNONEPanthenol = "http://snomed.info/sct#704430002";
+
+    /// <summary>
     /// Literal for code: BetaAlanine
     /// </summary>
     public const string LiteralBetaAlanine = "70587000";
+
+    /// <summary>
+    /// Literal for code: NONEBetaAlanine
+    /// </summary>
+    public const string LiteralNONEBetaAlanine = "http://snomed.info/sct#70587000";
 
     /// <summary>
     /// Literal for code: FreeTryptophanSubstance
@@ -7700,9 +9820,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFreeTryptophanSubstance = "706927001";
 
     /// <summary>
+    /// Literal for code: NONEFreeTryptophanSubstance
+    /// </summary>
+    public const string LiteralNONEFreeTryptophanSubstance = "http://snomed.info/sct#706927001";
+
+    /// <summary>
     /// Literal for code: FreeThiamine
     /// </summary>
     public const string LiteralFreeThiamine = "706929003";
+
+    /// <summary>
+    /// Literal for code: NONEFreeThiamine
+    /// </summary>
+    public const string LiteralNONEFreeThiamine = "http://snomed.info/sct#706929003";
 
     /// <summary>
     /// Literal for code: FreeRetinolSubstance
@@ -7710,9 +9840,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFreeRetinolSubstance = "706930008";
 
     /// <summary>
+    /// Literal for code: NONEFreeRetinolSubstance
+    /// </summary>
+    public const string LiteralNONEFreeRetinolSubstance = "http://snomed.info/sct#706930008";
+
+    /// <summary>
     /// Literal for code: FreeInositolSubstance
     /// </summary>
     public const string LiteralFreeInositolSubstance = "706938001";
+
+    /// <summary>
+    /// Literal for code: NONEFreeInositolSubstance
+    /// </summary>
+    public const string LiteralNONEFreeInositolSubstance = "http://snomed.info/sct#706938001";
 
     /// <summary>
     /// Literal for code: FreeHydroxyproline
@@ -7720,9 +9860,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFreeHydroxyproline = "706940006";
 
     /// <summary>
+    /// Literal for code: NONEFreeHydroxyproline
+    /// </summary>
+    public const string LiteralNONEFreeHydroxyproline = "http://snomed.info/sct#706940006";
+
+    /// <summary>
     /// Literal for code: FreeHydroxylysine
     /// </summary>
     public const string LiteralFreeHydroxylysine = "706941005";
+
+    /// <summary>
+    /// Literal for code: NONEFreeHydroxylysine
+    /// </summary>
+    public const string LiteralNONEFreeHydroxylysine = "http://snomed.info/sct#706941005";
 
     /// <summary>
     /// Literal for code: FreeHomocystineSubstance
@@ -7730,9 +9880,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFreeHomocystineSubstance = "706942003";
 
     /// <summary>
+    /// Literal for code: NONEFreeHomocystineSubstance
+    /// </summary>
+    public const string LiteralNONEFreeHomocystineSubstance = "http://snomed.info/sct#706942003";
+
+    /// <summary>
     /// Literal for code: FreeHomocysteineSubstance
     /// </summary>
     public const string LiteralFreeHomocysteineSubstance = "706943008";
+
+    /// <summary>
+    /// Literal for code: NONEFreeHomocysteineSubstance
+    /// </summary>
+    public const string LiteralNONEFreeHomocysteineSubstance = "http://snomed.info/sct#706943008";
 
     /// <summary>
     /// Literal for code: FreeGammaAminobutyricAcidSubstance
@@ -7740,9 +9900,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFreeGammaAminobutyricAcidSubstance = "706946000";
 
     /// <summary>
+    /// Literal for code: NONEFreeGammaAminobutyricAcidSubstance
+    /// </summary>
+    public const string LiteralNONEFreeGammaAminobutyricAcidSubstance = "http://snomed.info/sct#706946000";
+
+    /// <summary>
     /// Literal for code: FreeCystine
     /// </summary>
     public const string LiteralFreeCystine = "706948004";
+
+    /// <summary>
+    /// Literal for code: NONEFreeCystine
+    /// </summary>
+    public const string LiteralNONEFreeCystine = "http://snomed.info/sct#706948004";
 
     /// <summary>
     /// Literal for code: Arabitol
@@ -7750,9 +9920,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralArabitol = "706978008";
 
     /// <summary>
+    /// Literal for code: NONEArabitol
+    /// </summary>
+    public const string LiteralNONEArabitol = "http://snomed.info/sct#706978008";
+
+    /// <summary>
     /// Literal for code: XyluloseSubstance
     /// </summary>
     public const string LiteralXyluloseSubstance = "706980002";
+
+    /// <summary>
+    /// Literal for code: NONEXyluloseSubstance
+    /// </summary>
+    public const string LiteralNONEXyluloseSubstance = "http://snomed.info/sct#706980002";
 
     /// <summary>
     /// Literal for code: Xanthurenate
@@ -7760,9 +9940,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralXanthurenate = "706982005";
 
     /// <summary>
+    /// Literal for code: NONEXanthurenate
+    /// </summary>
+    public const string LiteralNONEXanthurenate = "http://snomed.info/sct#706982005";
+
+    /// <summary>
     /// Literal for code: VAL125DihydroxyvitaminD
     /// </summary>
     public const string LiteralVAL125DihydroxyvitaminD = "707019004";
+
+    /// <summary>
+    /// Literal for code: NONEVAL125DihydroxyvitaminD
+    /// </summary>
+    public const string LiteralNONEVAL125DihydroxyvitaminD = "http://snomed.info/sct#707019004";
 
     /// <summary>
     /// Literal for code: VAL125DihydroxyvitaminD2Substance
@@ -7770,9 +9960,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVAL125DihydroxyvitaminD2Substance = "707020005";
 
     /// <summary>
+    /// Literal for code: NONEVAL125DihydroxyvitaminD2Substance
+    /// </summary>
+    public const string LiteralNONEVAL125DihydroxyvitaminD2Substance = "http://snomed.info/sct#707020005";
+
+    /// <summary>
     /// Literal for code: VAL25HydroxyvitaminD
     /// </summary>
     public const string LiteralVAL25HydroxyvitaminD = "707053000";
+
+    /// <summary>
+    /// Literal for code: NONEVAL25HydroxyvitaminD
+    /// </summary>
+    public const string LiteralNONEVAL25HydroxyvitaminD = "http://snomed.info/sct#707053000";
 
     /// <summary>
     /// Literal for code: Troxerutin
@@ -7780,9 +9980,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTroxerutin = "70706009";
 
     /// <summary>
+    /// Literal for code: NONETroxerutin
+    /// </summary>
+    public const string LiteralNONETroxerutin = "http://snomed.info/sct#70706009";
+
+    /// <summary>
     /// Literal for code: VAL3Epi25HydroxyvitaminD2Substance
     /// </summary>
     public const string LiteralVAL3Epi25HydroxyvitaminD2Substance = "707070008";
+
+    /// <summary>
+    /// Literal for code: NONEVAL3Epi25HydroxyvitaminD2Substance
+    /// </summary>
+    public const string LiteralNONEVAL3Epi25HydroxyvitaminD2Substance = "http://snomed.info/sct#707070008";
 
     /// <summary>
     /// Literal for code: VAL3Epi25HydroxyvitaminD3Substance
@@ -7790,9 +10000,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVAL3Epi25HydroxyvitaminD3Substance = "707071007";
 
     /// <summary>
+    /// Literal for code: NONEVAL3Epi25HydroxyvitaminD3Substance
+    /// </summary>
+    public const string LiteralNONEVAL3Epi25HydroxyvitaminD3Substance = "http://snomed.info/sct#707071007";
+
+    /// <summary>
     /// Literal for code: VAL2MethylbutyrylglycineSubstance
     /// </summary>
     public const string LiteralVAL2MethylbutyrylglycineSubstance = "707163005";
+
+    /// <summary>
+    /// Literal for code: NONEVAL2MethylbutyrylglycineSubstance
+    /// </summary>
+    public const string LiteralNONEVAL2MethylbutyrylglycineSubstance = "http://snomed.info/sct#707163005";
 
     /// <summary>
     /// Literal for code: VAL5Methyltetrahydrofolate
@@ -7800,9 +10020,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVAL5Methyltetrahydrofolate = "707184000";
 
     /// <summary>
+    /// Literal for code: NONEVAL5Methyltetrahydrofolate
+    /// </summary>
+    public const string LiteralNONEVAL5Methyltetrahydrofolate = "http://snomed.info/sct#707184000";
+
+    /// <summary>
     /// Literal for code: NButyrylglycine
     /// </summary>
     public const string LiteralNButyrylglycine = "707230005";
+
+    /// <summary>
+    /// Literal for code: NONENButyrylglycine
+    /// </summary>
+    public const string LiteralNONENButyrylglycine = "http://snomed.info/sct#707230005";
 
     /// <summary>
     /// Literal for code: GammaAminoadipate
@@ -7810,9 +10040,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGammaAminoadipate = "707599007";
 
     /// <summary>
+    /// Literal for code: NONEGammaAminoadipate
+    /// </summary>
+    public const string LiteralNONEGammaAminoadipate = "http://snomed.info/sct#707599007";
+
+    /// <summary>
     /// Literal for code: Isobutyrylglycine
     /// </summary>
     public const string LiteralIsobutyrylglycine = "707615006";
+
+    /// <summary>
+    /// Literal for code: NONEIsobutyrylglycine
+    /// </summary>
+    public const string LiteralNONEIsobutyrylglycine = "http://snomed.info/sct#707615006";
 
     /// <summary>
     /// Literal for code: Kynurenin
@@ -7820,9 +10060,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralKynurenin = "707616007";
 
     /// <summary>
+    /// Literal for code: NONEKynurenin
+    /// </summary>
+    public const string LiteralNONEKynurenin = "http://snomed.info/sct#707616007";
+
+    /// <summary>
     /// Literal for code: MethionineSulfoxideSubstance
     /// </summary>
     public const string LiteralMethionineSulfoxideSubstance = "707661006";
+
+    /// <summary>
+    /// Literal for code: NONEMethionineSulfoxideSubstance
+    /// </summary>
+    public const string LiteralNONEMethionineSulfoxideSubstance = "http://snomed.info/sct#707661006";
 
     /// <summary>
     /// Literal for code: NMethylValineSubstance
@@ -7830,9 +10080,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNMethylValineSubstance = "707677007";
 
     /// <summary>
+    /// Literal for code: NONENMethylValineSubstance
+    /// </summary>
+    public const string LiteralNONENMethylValineSubstance = "http://snomed.info/sct#707677007";
+
+    /// <summary>
     /// Literal for code: NOctanoylglycineSubstance
     /// </summary>
     public const string LiteralNOctanoylglycineSubstance = "707678002";
+
+    /// <summary>
+    /// Literal for code: NONENOctanoylglycineSubstance
+    /// </summary>
+    public const string LiteralNONENOctanoylglycineSubstance = "http://snomed.info/sct#707678002";
 
     /// <summary>
     /// Literal for code: ValerylglycineSubstance
@@ -7840,9 +10100,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralValerylglycineSubstance = "707968002";
 
     /// <summary>
+    /// Literal for code: NONEValerylglycineSubstance
+    /// </summary>
+    public const string LiteralNONEValerylglycineSubstance = "http://snomed.info/sct#707968002";
+
+    /// <summary>
     /// Literal for code: TransCinnamoylglycine
     /// </summary>
     public const string LiteralTransCinnamoylglycine = "707976000";
+
+    /// <summary>
+    /// Literal for code: NONETransCinnamoylglycine
+    /// </summary>
+    public const string LiteralNONETransCinnamoylglycine = "http://snomed.info/sct#707976000";
 
     /// <summary>
     /// Literal for code: SulfatedMonosaccharideSubstance
@@ -7850,9 +10120,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSulfatedMonosaccharideSubstance = "708047003";
 
     /// <summary>
+    /// Literal for code: NONESulfatedMonosaccharideSubstance
+    /// </summary>
+    public const string LiteralNONESulfatedMonosaccharideSubstance = "http://snomed.info/sct#708047003";
+
+    /// <summary>
     /// Literal for code: GlycoaminoAcidSubstance
     /// </summary>
     public const string LiteralGlycoaminoAcidSubstance = "708052008";
+
+    /// <summary>
+    /// Literal for code: NONEGlycoaminoAcidSubstance
+    /// </summary>
+    public const string LiteralNONEGlycoaminoAcidSubstance = "http://snomed.info/sct#708052008";
 
     /// <summary>
     /// Literal for code: Succinyladenosine
@@ -7860,9 +10140,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSuccinyladenosine = "708053003";
 
     /// <summary>
+    /// Literal for code: NONESuccinyladenosine
+    /// </summary>
+    public const string LiteralNONESuccinyladenosine = "http://snomed.info/sct#708053003";
+
+    /// <summary>
     /// Literal for code: FondaparinuxSubstance
     /// </summary>
     public const string LiteralFondaparinuxSubstance = "708189008";
+
+    /// <summary>
+    /// Literal for code: NONEFondaparinuxSubstance
+    /// </summary>
+    public const string LiteralNONEFondaparinuxSubstance = "http://snomed.info/sct#708189008";
 
     /// <summary>
     /// Literal for code: XantinolNicotinate
@@ -7870,9 +10160,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralXantinolNicotinate = "708562005";
 
     /// <summary>
+    /// Literal for code: NONEXantinolNicotinate
+    /// </summary>
+    public const string LiteralNONEXantinolNicotinate = "http://snomed.info/sct#708562005";
+
+    /// <summary>
     /// Literal for code: MenadioneSodiumBisulfiteSubstance
     /// </summary>
     public const string LiteralMenadioneSodiumBisulfiteSubstance = "708600008";
+
+    /// <summary>
+    /// Literal for code: NONEMenadioneSodiumBisulfiteSubstance
+    /// </summary>
+    public const string LiteralNONEMenadioneSodiumBisulfiteSubstance = "http://snomed.info/sct#708600008";
 
     /// <summary>
     /// Literal for code: ZincAminoAcidChelateSubstance
@@ -7880,9 +10180,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralZincAminoAcidChelateSubstance = "708658008";
 
     /// <summary>
+    /// Literal for code: NONEZincAminoAcidChelateSubstance
+    /// </summary>
+    public const string LiteralNONEZincAminoAcidChelateSubstance = "http://snomed.info/sct#708658008";
+
+    /// <summary>
     /// Literal for code: Tocotrienol
     /// </summary>
     public const string LiteralTocotrienol = "708703004";
+
+    /// <summary>
+    /// Literal for code: NONETocotrienol
+    /// </summary>
+    public const string LiteralNONETocotrienol = "http://snomed.info/sct#708703004";
 
     /// <summary>
     /// Literal for code: ThreitolSubstance
@@ -7890,9 +10200,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralThreitolSubstance = "708704005";
 
     /// <summary>
+    /// Literal for code: NONEThreitolSubstance
+    /// </summary>
+    public const string LiteralNONEThreitolSubstance = "http://snomed.info/sct#708704005";
+
+    /// <summary>
     /// Literal for code: VAL15Anhydroglucitol
     /// </summary>
     public const string LiteralVAL15Anhydroglucitol = "708715000";
+
+    /// <summary>
+    /// Literal for code: NONEVAL15Anhydroglucitol
+    /// </summary>
+    public const string LiteralNONEVAL15Anhydroglucitol = "http://snomed.info/sct#708715000";
 
     /// <summary>
     /// Literal for code: N2HydroxyethylValine
@@ -7900,9 +10220,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralN2HydroxyethylValine = "708850004";
 
     /// <summary>
+    /// Literal for code: NONEN2HydroxyethylValine
+    /// </summary>
+    public const string LiteralNONEN2HydroxyethylValine = "http://snomed.info/sct#708850004";
+
+    /// <summary>
     /// Literal for code: AnthranilateSubstance
     /// </summary>
     public const string LiteralAnthranilateSubstance = "709060000";
+
+    /// <summary>
+    /// Literal for code: NONEAnthranilateSubstance
+    /// </summary>
+    public const string LiteralNONEAnthranilateSubstance = "http://snomed.info/sct#709060000";
 
     /// <summary>
     /// Literal for code: SuccinylaminoimidazoleCarboxamideRiboside
@@ -7910,9 +10240,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSuccinylaminoimidazoleCarboxamideRiboside = "709071004";
 
     /// <summary>
+    /// Literal for code: NONESuccinylaminoimidazoleCarboxamideRiboside
+    /// </summary>
+    public const string LiteralNONESuccinylaminoimidazoleCarboxamideRiboside = "http://snomed.info/sct#709071004";
+
+    /// <summary>
     /// Literal for code: VAL3Hydroxyanthranilate
     /// </summary>
     public const string LiteralVAL3Hydroxyanthranilate = "709125009";
+
+    /// <summary>
+    /// Literal for code: NONEVAL3Hydroxyanthranilate
+    /// </summary>
+    public const string LiteralNONEVAL3Hydroxyanthranilate = "http://snomed.info/sct#709125009";
 
     /// <summary>
     /// Literal for code: GuanidinoaceticAcidSubstance
@@ -7920,9 +10260,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGuanidinoaceticAcidSubstance = "709131007";
 
     /// <summary>
+    /// Literal for code: NONEGuanidinoaceticAcidSubstance
+    /// </summary>
+    public const string LiteralNONEGuanidinoaceticAcidSubstance = "http://snomed.info/sct#709131007";
+
+    /// <summary>
     /// Literal for code: FreeCarnitineSubstance
     /// </summary>
     public const string LiteralFreeCarnitineSubstance = "709152004";
+
+    /// <summary>
+    /// Literal for code: NONEFreeCarnitineSubstance
+    /// </summary>
+    public const string LiteralNONEFreeCarnitineSubstance = "http://snomed.info/sct#709152004";
 
     /// <summary>
     /// Literal for code: CysteicAcid
@@ -7930,9 +10280,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCysteicAcid = "709592008";
 
     /// <summary>
+    /// Literal for code: NONECysteicAcid
+    /// </summary>
+    public const string LiteralNONECysteicAcid = "http://snomed.info/sct#709592008";
+
+    /// <summary>
     /// Literal for code: ProteinBoundGlucoseSubstance
     /// </summary>
     public const string LiteralProteinBoundGlucoseSubstance = "709610005";
+
+    /// <summary>
+    /// Literal for code: NONEProteinBoundGlucoseSubstance
+    /// </summary>
+    public const string LiteralNONEProteinBoundGlucoseSubstance = "http://snomed.info/sct#709610005";
 
     /// <summary>
     /// Literal for code: NCarbamoylBetaAlanine
@@ -7940,9 +10300,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNCarbamoylBetaAlanine = "709844000";
 
     /// <summary>
+    /// Literal for code: NONENCarbamoylBetaAlanine
+    /// </summary>
+    public const string LiteralNONENCarbamoylBetaAlanine = "http://snomed.info/sct#709844000";
+
+    /// <summary>
     /// Literal for code: Selenomethionine
     /// </summary>
     public const string LiteralSelenomethionine = "710051007";
+
+    /// <summary>
+    /// Literal for code: NONESelenomethionine
+    /// </summary>
+    public const string LiteralNONESelenomethionine = "http://snomed.info/sct#710051007";
 
     /// <summary>
     /// Literal for code: QuinolinicAcid
@@ -7950,9 +10320,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQuinolinicAcid = "710174009";
 
     /// <summary>
+    /// Literal for code: NONEQuinolinicAcid
+    /// </summary>
+    public const string LiteralNONEQuinolinicAcid = "http://snomed.info/sct#710174009";
+
+    /// <summary>
     /// Literal for code: DeltaAlanineSubstance
     /// </summary>
     public const string LiteralDeltaAlanineSubstance = "710238007";
+
+    /// <summary>
+    /// Literal for code: NONEDeltaAlanineSubstance
+    /// </summary>
+    public const string LiteralNONEDeltaAlanineSubstance = "http://snomed.info/sct#710238007";
 
     /// <summary>
     /// Literal for code: CalciumAminoAcidChelate
@@ -7960,9 +10340,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCalciumAminoAcidChelate = "710949005";
 
     /// <summary>
+    /// Literal for code: NONECalciumAminoAcidChelate
+    /// </summary>
+    public const string LiteralNONECalciumAminoAcidChelate = "http://snomed.info/sct#710949005";
+
+    /// <summary>
     /// Literal for code: CarbocisteineLysineSubstance
     /// </summary>
     public const string LiteralCarbocisteineLysineSubstance = "711335002";
+
+    /// <summary>
+    /// Literal for code: NONECarbocisteineLysineSubstance
+    /// </summary>
+    public const string LiteralNONECarbocisteineLysineSubstance = "http://snomed.info/sct#711335002";
 
     /// <summary>
     /// Literal for code: LysineAcetate
@@ -7970,9 +10360,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLysineAcetate = "712565006";
 
     /// <summary>
+    /// Literal for code: NONELysineAcetate
+    /// </summary>
+    public const string LiteralNONELysineAcetate = "http://snomed.info/sct#712565006";
+
+    /// <summary>
     /// Literal for code: HistadinylIsoleucineSubstance
     /// </summary>
     public const string LiteralHistadinylIsoleucineSubstance = "712594004";
+
+    /// <summary>
+    /// Literal for code: NONEHistadinylIsoleucineSubstance
+    /// </summary>
+    public const string LiteralNONEHistadinylIsoleucineSubstance = "http://snomed.info/sct#712594004";
 
     /// <summary>
     /// Literal for code: BetiatideSubstance
@@ -7980,9 +10380,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBetiatideSubstance = "712599009";
 
     /// <summary>
+    /// Literal for code: NONEBetiatideSubstance
+    /// </summary>
+    public const string LiteralNONEBetiatideSubstance = "http://snomed.info/sct#712599009";
+
+    /// <summary>
     /// Literal for code: Menatetrenone
     /// </summary>
     public const string LiteralMenatetrenone = "712684001";
+
+    /// <summary>
+    /// Literal for code: NONEMenatetrenone
+    /// </summary>
+    public const string LiteralNONEMenatetrenone = "http://snomed.info/sct#712684001";
 
     /// <summary>
     /// Literal for code: Fursultiamine
@@ -7990,9 +10400,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFursultiamine = "712686004";
 
     /// <summary>
+    /// Literal for code: NONEFursultiamine
+    /// </summary>
+    public const string LiteralNONEFursultiamine = "http://snomed.info/sct#712686004";
+
+    /// <summary>
     /// Literal for code: Fructooligosaccharide
     /// </summary>
     public const string LiteralFructooligosaccharide = "712713006";
+
+    /// <summary>
+    /// Literal for code: NONEFructooligosaccharide
+    /// </summary>
+    public const string LiteralNONEFructooligosaccharide = "http://snomed.info/sct#712713006";
 
     /// <summary>
     /// Literal for code: GlycylTyrosine
@@ -8000,9 +10420,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGlycylTyrosine = "712800005";
 
     /// <summary>
+    /// Literal for code: NONEGlycylTyrosine
+    /// </summary>
+    public const string LiteralNONEGlycylTyrosine = "http://snomed.info/sct#712800005";
+
+    /// <summary>
     /// Literal for code: FlavinAdenineDinucleotideSodium
     /// </summary>
     public const string LiteralFlavinAdenineDinucleotideSodium = "712808003";
+
+    /// <summary>
+    /// Literal for code: NONEFlavinAdenineDinucleotideSodium
+    /// </summary>
+    public const string LiteralNONEFlavinAdenineDinucleotideSodium = "http://snomed.info/sct#712808003";
 
     /// <summary>
     /// Literal for code: SoybeanOilRefinedSubstance
@@ -8010,9 +10440,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSoybeanOilRefinedSubstance = "713311003";
 
     /// <summary>
+    /// Literal for code: NONESoybeanOilRefinedSubstance
+    /// </summary>
+    public const string LiteralNONESoybeanOilRefinedSubstance = "http://snomed.info/sct#713311003";
+
+    /// <summary>
     /// Literal for code: OliveOilRefinedSubstance
     /// </summary>
     public const string LiteralOliveOilRefinedSubstance = "713336009";
+
+    /// <summary>
+    /// Literal for code: NONEOliveOilRefinedSubstance
+    /// </summary>
+    public const string LiteralNONEOliveOilRefinedSubstance = "http://snomed.info/sct#713336009";
 
     /// <summary>
     /// Literal for code: MethiosulfoniumChloride
@@ -8020,9 +10460,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMethiosulfoniumChloride = "713357001";
 
     /// <summary>
+    /// Literal for code: NONEMethiosulfoniumChloride
+    /// </summary>
+    public const string LiteralNONEMethiosulfoniumChloride = "http://snomed.info/sct#713357001";
+
+    /// <summary>
     /// Literal for code: HydroxyethylStarch13004Substance
     /// </summary>
     public const string LiteralHydroxyethylStarch13004Substance = "713371009";
+
+    /// <summary>
+    /// Literal for code: NONEHydroxyethylStarch13004Substance
+    /// </summary>
+    public const string LiteralNONEHydroxyethylStarch13004Substance = "http://snomed.info/sct#713371009";
 
     /// <summary>
     /// Literal for code: GelatinHydrolysateSubstance
@@ -8030,9 +10480,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGelatinHydrolysateSubstance = "713372002";
 
     /// <summary>
+    /// Literal for code: NONEGelatinHydrolysateSubstance
+    /// </summary>
+    public const string LiteralNONEGelatinHydrolysateSubstance = "http://snomed.info/sct#713372002";
+
+    /// <summary>
     /// Literal for code: Oxaceprol
     /// </summary>
     public const string LiteralOxaceprol = "713480005";
+
+    /// <summary>
+    /// Literal for code: NONEOxaceprol
+    /// </summary>
+    public const string LiteralNONEOxaceprol = "http://snomed.info/sct#713480005";
 
     /// <summary>
     /// Literal for code: CanolaOilSubstance
@@ -8040,9 +10500,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCanolaOilSubstance = "713648000";
 
     /// <summary>
+    /// Literal for code: NONECanolaOilSubstance
+    /// </summary>
+    public const string LiteralNONECanolaOilSubstance = "http://snomed.info/sct#713648000";
+
+    /// <summary>
     /// Literal for code: Acylglycine
     /// </summary>
     public const string LiteralAcylglycine = "713664008";
+
+    /// <summary>
+    /// Literal for code: NONEAcylglycine
+    /// </summary>
+    public const string LiteralNONEAcylglycine = "http://snomed.info/sct#713664008";
 
     /// <summary>
     /// Literal for code: IrinotecanLiposomeSubstance
@@ -8050,9 +10520,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIrinotecanLiposomeSubstance = "715213000";
 
     /// <summary>
+    /// Literal for code: NONEIrinotecanLiposomeSubstance
+    /// </summary>
+    public const string LiteralNONEIrinotecanLiposomeSubstance = "http://snomed.info/sct#715213000";
+
+    /// <summary>
     /// Literal for code: Polysaccharide
     /// </summary>
     public const string LiteralPolysaccharide = "71544008";
+
+    /// <summary>
+    /// Literal for code: NONEPolysaccharide
+    /// </summary>
+    public const string LiteralNONEPolysaccharide = "http://snomed.info/sct#71544008";
 
     /// <summary>
     /// Literal for code: EluxadolineSubstance
@@ -8060,9 +10540,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEluxadolineSubstance = "716119001";
 
     /// <summary>
+    /// Literal for code: NONEEluxadolineSubstance
+    /// </summary>
+    public const string LiteralNONEEluxadolineSubstance = "http://snomed.info/sct#716119001";
+
+    /// <summary>
     /// Literal for code: SafinamideSubstance
     /// </summary>
     public const string LiteralSafinamideSubstance = "718852000";
+
+    /// <summary>
+    /// Literal for code: NONESafinamideSubstance
+    /// </summary>
+    public const string LiteralNONESafinamideSubstance = "http://snomed.info/sct#718852000";
 
     /// <summary>
     /// Literal for code: AlphaTocopherolSuccinateSubstance
@@ -8070,9 +10560,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAlphaTocopherolSuccinateSubstance = "719899003";
 
     /// <summary>
+    /// Literal for code: NONEAlphaTocopherolSuccinateSubstance
+    /// </summary>
+    public const string LiteralNONEAlphaTocopherolSuccinateSubstance = "http://snomed.info/sct#719899003";
+
+    /// <summary>
     /// Literal for code: LifitegrastSubstance
     /// </summary>
     public const string LiteralLifitegrastSubstance = "720489009";
+
+    /// <summary>
+    /// Literal for code: NONELifitegrastSubstance
+    /// </summary>
+    public const string LiteralNONELifitegrastSubstance = "http://snomed.info/sct#720489009";
 
     /// <summary>
     /// Literal for code: LifitegrastSodiumSubstance
@@ -8080,9 +10580,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLifitegrastSodiumSubstance = "720490000";
 
     /// <summary>
+    /// Literal for code: NONELifitegrastSodiumSubstance
+    /// </summary>
+    public const string LiteralNONELifitegrastSodiumSubstance = "http://snomed.info/sct#720490000";
+
+    /// <summary>
     /// Literal for code: Inositol
     /// </summary>
     public const string LiteralInositol = "72164009";
+
+    /// <summary>
+    /// Literal for code: NONEInositol
+    /// </summary>
+    public const string LiteralNONEInositol = "http://snomed.info/sct#72164009";
 
     /// <summary>
     /// Literal for code: VitaminPComplex
@@ -8090,9 +10600,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVitaminPComplex = "72309009";
 
     /// <summary>
+    /// Literal for code: NONEVitaminPComplex
+    /// </summary>
+    public const string LiteralNONEVitaminPComplex = "http://snomed.info/sct#72309009";
+
+    /// <summary>
     /// Literal for code: ParaAminobenzoicAcidEstersInAlcohol
     /// </summary>
     public const string LiteralParaAminobenzoicAcidEstersInAlcohol = "72322001";
+
+    /// <summary>
+    /// Literal for code: NONEParaAminobenzoicAcidEstersInAlcohol
+    /// </summary>
+    public const string LiteralNONEParaAminobenzoicAcidEstersInAlcohol = "http://snomed.info/sct#72322001";
 
     /// <summary>
     /// Literal for code: AlloCystathionineSubstance
@@ -8100,9 +10620,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAlloCystathionineSubstance = "724234003";
 
     /// <summary>
+    /// Literal for code: NONEAlloCystathionineSubstance
+    /// </summary>
+    public const string LiteralNONEAlloCystathionineSubstance = "http://snomed.info/sct#724234003";
+
+    /// <summary>
     /// Literal for code: AlphaAminoadipicSemialdehydeSubstance
     /// </summary>
     public const string LiteralAlphaAminoadipicSemialdehydeSubstance = "724239008";
+
+    /// <summary>
+    /// Literal for code: NONEAlphaAminoadipicSemialdehydeSubstance
+    /// </summary>
+    public const string LiteralNONEAlphaAminoadipicSemialdehydeSubstance = "http://snomed.info/sct#724239008";
 
     /// <summary>
     /// Literal for code: SaccharopineSubstance
@@ -8110,9 +10640,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSaccharopineSubstance = "725193008";
 
     /// <summary>
+    /// Literal for code: NONESaccharopineSubstance
+    /// </summary>
+    public const string LiteralNONESaccharopineSubstance = "http://snomed.info/sct#725193008";
+
+    /// <summary>
     /// Literal for code: VAL3Hydroxykynurenine
     /// </summary>
     public const string LiteralVAL3Hydroxykynurenine = "725553002";
+
+    /// <summary>
+    /// Literal for code: NONEVAL3Hydroxykynurenine
+    /// </summary>
+    public const string LiteralNONEVAL3Hydroxykynurenine = "http://snomed.info/sct#725553002";
 
     /// <summary>
     /// Literal for code: LHomoarginineSubstance
@@ -8120,9 +10660,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLHomoarginineSubstance = "725582001";
 
     /// <summary>
+    /// Literal for code: NONELHomoarginineSubstance
+    /// </summary>
+    public const string LiteralNONELHomoarginineSubstance = "http://snomed.info/sct#725582001";
+
+    /// <summary>
     /// Literal for code: NicotinurateSubstance
     /// </summary>
     public const string LiteralNicotinurateSubstance = "725622009";
+
+    /// <summary>
+    /// Literal for code: NONENicotinurateSubstance
+    /// </summary>
+    public const string LiteralNONENicotinurateSubstance = "http://snomed.info/sct#725622009";
 
     /// <summary>
     /// Literal for code: SBetaAminoisobutyrateSubstance
@@ -8130,9 +10680,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSBetaAminoisobutyrateSubstance = "725629000";
 
     /// <summary>
+    /// Literal for code: NONESBetaAminoisobutyrateSubstance
+    /// </summary>
+    public const string LiteralNONESBetaAminoisobutyrateSubstance = "http://snomed.info/sct#725629000";
+
+    /// <summary>
     /// Literal for code: TrimethyllysineSubstance
     /// </summary>
     public const string LiteralTrimethyllysineSubstance = "725634001";
+
+    /// <summary>
+    /// Literal for code: NONETrimethyllysineSubstance
+    /// </summary>
+    public const string LiteralNONETrimethyllysineSubstance = "http://snomed.info/sct#725634001";
 
     /// <summary>
     /// Literal for code: TulathromycinSubstance
@@ -8140,9 +10700,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTulathromycinSubstance = "725635000";
 
     /// <summary>
+    /// Literal for code: NONETulathromycinSubstance
+    /// </summary>
+    public const string LiteralNONETulathromycinSubstance = "http://snomed.info/sct#725635000";
+
+    /// <summary>
     /// Literal for code: VAL3Ureidopropionate
     /// </summary>
     public const string LiteralVAL3Ureidopropionate = "725636004";
+
+    /// <summary>
+    /// Literal for code: NONEVAL3Ureidopropionate
+    /// </summary>
+    public const string LiteralNONEVAL3Ureidopropionate = "http://snomed.info/sct#725636004";
 
     /// <summary>
     /// Literal for code: PhytateSubstance
@@ -8150,9 +10720,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPhytateSubstance = "725699008";
 
     /// <summary>
+    /// Literal for code: NONEPhytateSubstance
+    /// </summary>
+    public const string LiteralNONEPhytateSubstance = "http://snomed.info/sct#725699008";
+
+    /// <summary>
     /// Literal for code: PimelateSubstance
     /// </summary>
     public const string LiteralPimelateSubstance = "725729006";
+
+    /// <summary>
+    /// Literal for code: NONEPimelateSubstance
+    /// </summary>
+    public const string LiteralNONEPimelateSubstance = "http://snomed.info/sct#725729006";
 
     /// <summary>
     /// Literal for code: BromfenacSodiumSesquihydrateSubstance
@@ -8160,9 +10740,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBromfenacSodiumSesquihydrateSubstance = "725788000";
 
     /// <summary>
+    /// Literal for code: NONEBromfenacSodiumSesquihydrateSubstance
+    /// </summary>
+    public const string LiteralNONEBromfenacSodiumSesquihydrateSubstance = "http://snomed.info/sct#725788000";
+
+    /// <summary>
     /// Literal for code: GlucoseMonohydrateSubstance
     /// </summary>
     public const string LiteralGlucoseMonohydrateSubstance = "725859007";
+
+    /// <summary>
+    /// Literal for code: NONEGlucoseMonohydrateSubstance
+    /// </summary>
+    public const string LiteralNONEGlucoseMonohydrateSubstance = "http://snomed.info/sct#725859007";
 
     /// <summary>
     /// Literal for code: IrinotecanHydrochlorideTrihydrateSubstance
@@ -8170,9 +10760,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIrinotecanHydrochlorideTrihydrateSubstance = "725861003";
 
     /// <summary>
+    /// Literal for code: NONEIrinotecanHydrochlorideTrihydrateSubstance
+    /// </summary>
+    public const string LiteralNONEIrinotecanHydrochlorideTrihydrateSubstance = "http://snomed.info/sct#725861003";
+
+    /// <summary>
     /// Literal for code: LAbrineSubstance
     /// </summary>
     public const string LiteralLAbrineSubstance = "725893006";
+
+    /// <summary>
+    /// Literal for code: NONELAbrineSubstance
+    /// </summary>
+    public const string LiteralNONELAbrineSubstance = "http://snomed.info/sct#725893006";
 
     /// <summary>
     /// Literal for code: GlycylTyrosineDihydrateSubstance
@@ -8180,9 +10780,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGlycylTyrosineDihydrateSubstance = "725963001";
 
     /// <summary>
+    /// Literal for code: NONEGlycylTyrosineDihydrateSubstance
+    /// </summary>
+    public const string LiteralNONEGlycylTyrosineDihydrateSubstance = "http://snomed.info/sct#725963001";
+
+    /// <summary>
     /// Literal for code: CocarboxylaseTetrahydrateSubstance
     /// </summary>
     public const string LiteralCocarboxylaseTetrahydrateSubstance = "726013002";
+
+    /// <summary>
+    /// Literal for code: NONECocarboxylaseTetrahydrateSubstance
+    /// </summary>
+    public const string LiteralNONECocarboxylaseTetrahydrateSubstance = "http://snomed.info/sct#726013002";
 
     /// <summary>
     /// Literal for code: CalcipotriolMonohydrateSubstance
@@ -8190,9 +10800,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCalcipotriolMonohydrateSubstance = "726717009";
 
     /// <summary>
+    /// Literal for code: NONECalcipotriolMonohydrateSubstance
+    /// </summary>
+    public const string LiteralNONECalcipotriolMonohydrateSubstance = "http://snomed.info/sct#726717009";
+
+    /// <summary>
     /// Literal for code: KrillOilSubstance
     /// </summary>
     public const string LiteralKrillOilSubstance = "726756003";
+
+    /// <summary>
+    /// Literal for code: NONEKrillOilSubstance
+    /// </summary>
+    public const string LiteralNONEKrillOilSubstance = "http://snomed.info/sct#726756003";
 
     /// <summary>
     /// Literal for code: Valine
@@ -8200,9 +10820,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralValine = "72840006";
 
     /// <summary>
+    /// Literal for code: NONEValine
+    /// </summary>
+    public const string LiteralNONEValine = "http://snomed.info/sct#72840006";
+
+    /// <summary>
     /// Literal for code: Carotene
     /// </summary>
     public const string LiteralCarotene = "73131003";
+
+    /// <summary>
+    /// Literal for code: NONECarotene
+    /// </summary>
+    public const string LiteralNONECarotene = "http://snomed.info/sct#73131003";
 
     /// <summary>
     /// Literal for code: MonosodiumAspartateMonohydrateSubstance
@@ -8210,9 +10840,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMonosodiumAspartateMonohydrateSubstance = "733764007";
 
     /// <summary>
+    /// Literal for code: NONEMonosodiumAspartateMonohydrateSubstance
+    /// </summary>
+    public const string LiteralNONEMonosodiumAspartateMonohydrateSubstance = "http://snomed.info/sct#733764007";
+
+    /// <summary>
     /// Literal for code: SodiumGlycerophosphateHydrateSubstance
     /// </summary>
     public const string LiteralSodiumGlycerophosphateHydrateSubstance = "733765008";
+
+    /// <summary>
+    /// Literal for code: NONESodiumGlycerophosphateHydrateSubstance
+    /// </summary>
+    public const string LiteralNONESodiumGlycerophosphateHydrateSubstance = "http://snomed.info/sct#733765008";
 
     /// <summary>
     /// Literal for code: SodiumGlycerophosphatePentahydrateSubstance
@@ -8220,9 +10860,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSodiumGlycerophosphatePentahydrateSubstance = "733766009";
 
     /// <summary>
+    /// Literal for code: NONESodiumGlycerophosphatePentahydrateSubstance
+    /// </summary>
+    public const string LiteralNONESodiumGlycerophosphatePentahydrateSubstance = "http://snomed.info/sct#733766009";
+
+    /// <summary>
     /// Literal for code: CitrullineMalateSubstance
     /// </summary>
     public const string LiteralCitrullineMalateSubstance = "734466002";
+
+    /// <summary>
+    /// Literal for code: NONECitrullineMalateSubstance
+    /// </summary>
+    public const string LiteralNONECitrullineMalateSubstance = "http://snomed.info/sct#734466002";
 
     /// <summary>
     /// Literal for code: ArginineAspartateSubstance
@@ -8230,9 +10880,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralArginineAspartateSubstance = "734646000";
 
     /// <summary>
+    /// Literal for code: NONEArginineAspartateSubstance
+    /// </summary>
+    public const string LiteralNONEArginineAspartateSubstance = "http://snomed.info/sct#734646000";
+
+    /// <summary>
     /// Literal for code: LactitolMonohydrateSubstance
     /// </summary>
     public const string LiteralLactitolMonohydrateSubstance = "734650007";
+
+    /// <summary>
+    /// Literal for code: NONELactitolMonohydrateSubstance
+    /// </summary>
+    public const string LiteralNONELactitolMonohydrateSubstance = "http://snomed.info/sct#734650007";
 
     /// <summary>
     /// Literal for code: HydroxocobalaminAcetateSubstance
@@ -8240,9 +10900,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHydroxocobalaminAcetateSubstance = "734651006";
 
     /// <summary>
+    /// Literal for code: NONEHydroxocobalaminAcetateSubstance
+    /// </summary>
+    public const string LiteralNONEHydroxocobalaminAcetateSubstance = "http://snomed.info/sct#734651006";
+
+    /// <summary>
     /// Literal for code: LysineAspartateSubstance
     /// </summary>
     public const string LiteralLysineAspartateSubstance = "734656001";
+
+    /// <summary>
+    /// Literal for code: NONELysineAspartateSubstance
+    /// </summary>
+    public const string LiteralNONELysineAspartateSubstance = "http://snomed.info/sct#734656001";
 
     /// <summary>
     /// Literal for code: LysineGlutamateSubstance
@@ -8250,9 +10920,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLysineGlutamateSubstance = "734657005";
 
     /// <summary>
+    /// Literal for code: NONELysineGlutamateSubstance
+    /// </summary>
+    public const string LiteralNONELysineGlutamateSubstance = "http://snomed.info/sct#734657005";
+
+    /// <summary>
     /// Literal for code: LysineHydrochlorideSubstance
     /// </summary>
     public const string LiteralLysineHydrochlorideSubstance = "734658000";
+
+    /// <summary>
+    /// Literal for code: NONELysineHydrochlorideSubstance
+    /// </summary>
+    public const string LiteralNONELysineHydrochlorideSubstance = "http://snomed.info/sct#734658000";
 
     /// <summary>
     /// Literal for code: LysineMonohydrateSubstance
@@ -8260,9 +10940,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLysineMonohydrateSubstance = "734659008";
 
     /// <summary>
+    /// Literal for code: NONELysineMonohydrateSubstance
+    /// </summary>
+    public const string LiteralNONELysineMonohydrateSubstance = "http://snomed.info/sct#734659008";
+
+    /// <summary>
     /// Literal for code: HistidineMonohydrochlorideSubstance
     /// </summary>
     public const string LiteralHistidineMonohydrochlorideSubstance = "734977001";
+
+    /// <summary>
+    /// Literal for code: NONEHistidineMonohydrochlorideSubstance
+    /// </summary>
+    public const string LiteralNONEHistidineMonohydrochlorideSubstance = "http://snomed.info/sct#734977001";
 
     /// <summary>
     /// Literal for code: HistidineMonohydrochlorideMonohydrateSubstance
@@ -8270,9 +10960,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHistidineMonohydrochlorideMonohydrateSubstance = "734978006";
 
     /// <summary>
+    /// Literal for code: NONEHistidineMonohydrochlorideMonohydrateSubstance
+    /// </summary>
+    public const string LiteralNONEHistidineMonohydrochlorideMonohydrateSubstance = "http://snomed.info/sct#734978006";
+
+    /// <summary>
     /// Literal for code: TidiacicArginineSubstance
     /// </summary>
     public const string LiteralTidiacicArginineSubstance = "735062003";
+
+    /// <summary>
+    /// Literal for code: NONETidiacicArginineSubstance
+    /// </summary>
+    public const string LiteralNONETidiacicArginineSubstance = "http://snomed.info/sct#735062003";
 
     /// <summary>
     /// Literal for code: DapabutanSubstance
@@ -8280,9 +10980,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDapabutanSubstance = "735066000";
 
     /// <summary>
+    /// Literal for code: NONEDapabutanSubstance
+    /// </summary>
+    public const string LiteralNONEDapabutanSubstance = "http://snomed.info/sct#735066000";
+
+    /// <summary>
     /// Literal for code: HesperidinMethylchalconeSubstance
     /// </summary>
     public const string LiteralHesperidinMethylchalconeSubstance = "735069007";
+
+    /// <summary>
+    /// Literal for code: NONEHesperidinMethylchalconeSubstance
+    /// </summary>
+    public const string LiteralNONEHesperidinMethylchalconeSubstance = "http://snomed.info/sct#735069007";
 
     /// <summary>
     /// Literal for code: AcetylleucineSubstance
@@ -8290,9 +11000,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcetylleucineSubstance = "735136009";
 
     /// <summary>
+    /// Literal for code: NONEAcetylleucineSubstance
+    /// </summary>
+    public const string LiteralNONEAcetylleucineSubstance = "http://snomed.info/sct#735136009";
+
+    /// <summary>
     /// Literal for code: CornOilSubstance
     /// </summary>
     public const string LiteralCornOilSubstance = "735247006";
+
+    /// <summary>
+    /// Literal for code: NONECornOilSubstance
+    /// </summary>
+    public const string LiteralNONECornOilSubstance = "http://snomed.info/sct#735247006";
 
     /// <summary>
     /// Literal for code: ProteinAndProteinDerivativeSubstance
@@ -8300,9 +11020,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProteinAndProteinDerivativeSubstance = "735252001";
 
     /// <summary>
+    /// Literal for code: NONEProteinAndProteinDerivativeSubstance
+    /// </summary>
+    public const string LiteralNONEProteinAndProteinDerivativeSubstance = "http://snomed.info/sct#735252001";
+
+    /// <summary>
     /// Literal for code: FishOilSubstance
     /// </summary>
     public const string LiteralFishOilSubstance = "735341005";
+
+    /// <summary>
+    /// Literal for code: NONEFishOilSubstance
+    /// </summary>
+    public const string LiteralNONEFishOilSubstance = "http://snomed.info/sct#735341005";
 
     /// <summary>
     /// Literal for code: Oxitriptan
@@ -8310,9 +11040,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOxitriptan = "73916008";
 
     /// <summary>
+    /// Literal for code: NONEOxitriptan
+    /// </summary>
+    public const string LiteralNONEOxitriptan = "http://snomed.info/sct#73916008";
+
+    /// <summary>
     /// Literal for code: Hydroxyproline
     /// </summary>
     public const string LiteralHydroxyproline = "74727008";
+
+    /// <summary>
+    /// Literal for code: NONEHydroxyproline
+    /// </summary>
+    public const string LiteralNONEHydroxyproline = "http://snomed.info/sct#74727008";
 
     /// <summary>
     /// Literal for code: Sugar
@@ -8320,9 +11060,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSugar = "74801000";
 
     /// <summary>
+    /// Literal for code: NONESugar
+    /// </summary>
+    public const string LiteralNONESugar = "http://snomed.info/sct#74801000";
+
+    /// <summary>
     /// Literal for code: MannitolHexanitrate
     /// </summary>
     public const string LiteralMannitolHexanitrate = "7509000";
+
+    /// <summary>
+    /// Literal for code: NONEMannitolHexanitrate
+    /// </summary>
+    public const string LiteralNONEMannitolHexanitrate = "http://snomed.info/sct#7509000";
 
     /// <summary>
     /// Literal for code: Lysine
@@ -8330,9 +11080,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLysine = "75799006";
 
     /// <summary>
+    /// Literal for code: NONELysine
+    /// </summary>
+    public const string LiteralNONELysine = "http://snomed.info/sct#75799006";
+
+    /// <summary>
     /// Literal for code: ArgininosuccinicAcid
     /// </summary>
     public const string LiteralArgininosuccinicAcid = "75871008";
+
+    /// <summary>
+    /// Literal for code: NONEArgininosuccinicAcid
+    /// </summary>
+    public const string LiteralNONEArgininosuccinicAcid = "http://snomed.info/sct#75871008";
 
     /// <summary>
     /// Literal for code: SodiumAlginate
@@ -8340,9 +11100,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSodiumAlginate = "75876003";
 
     /// <summary>
+    /// Literal for code: NONESodiumAlginate
+    /// </summary>
+    public const string LiteralNONESodiumAlginate = "http://snomed.info/sct#75876003";
+
+    /// <summary>
     /// Literal for code: OrnithineHydrochloride
     /// </summary>
     public const string LiteralOrnithineHydrochloride = "763052004";
+
+    /// <summary>
+    /// Literal for code: NONEOrnithineHydrochloride
+    /// </summary>
+    public const string LiteralNONEOrnithineHydrochloride = "http://snomed.info/sct#763052004";
 
     /// <summary>
     /// Literal for code: OrnithineOxoglurateSubstance
@@ -8350,9 +11120,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOrnithineOxoglurateSubstance = "763053009";
 
     /// <summary>
+    /// Literal for code: NONEOrnithineOxoglurateSubstance
+    /// </summary>
+    public const string LiteralNONEOrnithineOxoglurateSubstance = "http://snomed.info/sct#763053009";
+
+    /// <summary>
     /// Literal for code: DiornithineOxoglurateDihydrate
     /// </summary>
     public const string LiteralDiornithineOxoglurateDihydrate = "763201006";
+
+    /// <summary>
+    /// Literal for code: NONEDiornithineOxoglurateDihydrate
+    /// </summary>
+    public const string LiteralNONEDiornithineOxoglurateDihydrate = "http://snomed.info/sct#763201006";
 
     /// <summary>
     /// Literal for code: SpaglumateSodiumSubstance
@@ -8360,9 +11140,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpaglumateSodiumSubstance = "763371007";
 
     /// <summary>
+    /// Literal for code: NONESpaglumateSodiumSubstance
+    /// </summary>
+    public const string LiteralNONESpaglumateSodiumSubstance = "http://snomed.info/sct#763371007";
+
+    /// <summary>
     /// Literal for code: LeucovorinCalciumPentahydrateSubstance
     /// </summary>
     public const string LiteralLeucovorinCalciumPentahydrateSubstance = "763378001";
+
+    /// <summary>
+    /// Literal for code: NONELeucovorinCalciumPentahydrateSubstance
+    /// </summary>
+    public const string LiteralNONELeucovorinCalciumPentahydrateSubstance = "http://snomed.info/sct#763378001";
 
     /// <summary>
     /// Literal for code: MigalastatSubstance
@@ -8370,9 +11160,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMigalastatSubstance = "765340000";
 
     /// <summary>
+    /// Literal for code: NONEMigalastatSubstance
+    /// </summary>
+    public const string LiteralNONEMigalastatSubstance = "http://snomed.info/sct#765340000";
+
+    /// <summary>
     /// Literal for code: MigalastatHydrochlorideSubstance
     /// </summary>
     public const string LiteralMigalastatHydrochlorideSubstance = "765341001";
+
+    /// <summary>
+    /// Literal for code: NONEMigalastatHydrochlorideSubstance
+    /// </summary>
+    public const string LiteralNONEMigalastatHydrochlorideSubstance = "http://snomed.info/sct#765341001";
 
     /// <summary>
     /// Literal for code: SoybeanUnsaponifiablesSubstance
@@ -8380,9 +11180,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSoybeanUnsaponifiablesSubstance = "765355009";
 
     /// <summary>
+    /// Literal for code: NONESoybeanUnsaponifiablesSubstance
+    /// </summary>
+    public const string LiteralNONESoybeanUnsaponifiablesSubstance = "http://snomed.info/sct#765355009";
+
+    /// <summary>
     /// Literal for code: Fluciclovine
     /// </summary>
     public const string LiteralFluciclovine = "765849005";
+
+    /// <summary>
+    /// Literal for code: NONEFluciclovine
+    /// </summary>
+    public const string LiteralNONEFluciclovine = "http://snomed.info/sct#765849005";
 
     /// <summary>
     /// Literal for code: FluorethyltyrosineSubstance
@@ -8390,9 +11200,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFluorethyltyrosineSubstance = "766042009";
 
     /// <summary>
+    /// Literal for code: NONEFluorethyltyrosineSubstance
+    /// </summary>
+    public const string LiteralNONEFluorethyltyrosineSubstance = "http://snomed.info/sct#766042009";
+
+    /// <summary>
     /// Literal for code: VitaminDAnalog
     /// </summary>
     public const string LiteralVitaminDAnalog = "767613006";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminDAnalog
+    /// </summary>
+    public const string LiteralNONEVitaminDAnalog = "http://snomed.info/sct#767613006";
 
     /// <summary>
     /// Literal for code: RetinylOleate
@@ -8400,9 +11220,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRetinylOleate = "768369005";
 
     /// <summary>
+    /// Literal for code: NONERetinylOleate
+    /// </summary>
+    public const string LiteralNONERetinylOleate = "http://snomed.info/sct#768369005";
+
+    /// <summary>
     /// Literal for code: AnhydrousGlucose
     /// </summary>
     public const string LiteralAnhydrousGlucose = "768547002";
+
+    /// <summary>
+    /// Literal for code: NONEAnhydrousGlucose
+    /// </summary>
+    public const string LiteralNONEAnhydrousGlucose = "http://snomed.info/sct#768547002";
 
     /// <summary>
     /// Literal for code: SodiumFolinate
@@ -8410,9 +11240,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSodiumFolinate = "768550004";
 
     /// <summary>
+    /// Literal for code: NONESodiumFolinate
+    /// </summary>
+    public const string LiteralNONESodiumFolinate = "http://snomed.info/sct#768550004";
+
+    /// <summary>
     /// Literal for code: GalactanPolysulfateSubstance
     /// </summary>
     public const string LiteralGalactanPolysulfateSubstance = "769101009";
+
+    /// <summary>
+    /// Literal for code: NONEGalactanPolysulfateSubstance
+    /// </summary>
+    public const string LiteralNONEGalactanPolysulfateSubstance = "http://snomed.info/sct#769101009";
 
     /// <summary>
     /// Literal for code: DehydroascorbicAcidSubstance
@@ -8420,9 +11260,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDehydroascorbicAcidSubstance = "769208008";
 
     /// <summary>
+    /// Literal for code: NONEDehydroascorbicAcidSubstance
+    /// </summary>
+    public const string LiteralNONEDehydroascorbicAcidSubstance = "http://snomed.info/sct#769208008";
+
+    /// <summary>
     /// Literal for code: MorniflumateSubstance
     /// </summary>
     public const string LiteralMorniflumateSubstance = "773471007";
+
+    /// <summary>
+    /// Literal for code: NONEMorniflumateSubstance
+    /// </summary>
+    public const string LiteralNONEMorniflumateSubstance = "http://snomed.info/sct#773471007";
 
     /// <summary>
     /// Literal for code: Homoserine
@@ -8430,9 +11280,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHomoserine = "77404006";
 
     /// <summary>
+    /// Literal for code: NONEHomoserine
+    /// </summary>
+    public const string LiteralNONEHomoserine = "http://snomed.info/sct#77404006";
+
+    /// <summary>
     /// Literal for code: Mannoheptulose
     /// </summary>
     public const string LiteralMannoheptulose = "77454000";
+
+    /// <summary>
+    /// Literal for code: NONEMannoheptulose
+    /// </summary>
+    public const string LiteralNONEMannoheptulose = "http://snomed.info/sct#77454000";
 
     /// <summary>
     /// Literal for code: NeoBVitaminA1Substance
@@ -8440,9 +11300,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNeoBVitaminA1Substance = "7774008";
 
     /// <summary>
+    /// Literal for code: NONENeoBVitaminA1Substance
+    /// </summary>
+    public const string LiteralNONENeoBVitaminA1Substance = "http://snomed.info/sct#7774008";
+
+    /// <summary>
     /// Literal for code: SoyProtein
     /// </summary>
     public const string LiteralSoyProtein = "7791007";
+
+    /// <summary>
+    /// Literal for code: NONESoyProtein
+    /// </summary>
+    public const string LiteralNONESoyProtein = "http://snomed.info/sct#7791007";
 
     /// <summary>
     /// Literal for code: MacimorelinSubstance
@@ -8450,9 +11320,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMacimorelinSubstance = "781246008";
 
     /// <summary>
+    /// Literal for code: NONEMacimorelinSubstance
+    /// </summary>
+    public const string LiteralNONEMacimorelinSubstance = "http://snomed.info/sct#781246008";
+
+    /// <summary>
     /// Literal for code: MacimorelinAcetateSubstance
     /// </summary>
     public const string LiteralMacimorelinAcetateSubstance = "781247004";
+
+    /// <summary>
+    /// Literal for code: NONEMacimorelinAcetateSubstance
+    /// </summary>
+    public const string LiteralNONEMacimorelinAcetateSubstance = "http://snomed.info/sct#781247004";
 
     /// <summary>
     /// Literal for code: NetarsudilSubstance
@@ -8460,9 +11340,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNetarsudilSubstance = "781253004";
 
     /// <summary>
+    /// Literal for code: NONENetarsudilSubstance
+    /// </summary>
+    public const string LiteralNONENetarsudilSubstance = "http://snomed.info/sct#781253004";
+
+    /// <summary>
     /// Literal for code: VitaminB12AndVitaminB12DerivativeSubstance
     /// </summary>
     public const string LiteralVitaminB12AndVitaminB12DerivativeSubstance = "781584003";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminB12AndVitaminB12DerivativeSubstance
+    /// </summary>
+    public const string LiteralNONEVitaminB12AndVitaminB12DerivativeSubstance = "http://snomed.info/sct#781584003";
 
     /// <summary>
     /// Literal for code: RadioisotopeLabeledVitaminB12Substance
@@ -8470,9 +11360,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRadioisotopeLabeledVitaminB12Substance = "781628006";
 
     /// <summary>
+    /// Literal for code: NONERadioisotopeLabeledVitaminB12Substance
+    /// </summary>
+    public const string LiteralNONERadioisotopeLabeledVitaminB12Substance = "http://snomed.info/sct#781628006";
+
+    /// <summary>
     /// Literal for code: SuccinylatedGelatin
     /// </summary>
     public const string LiteralSuccinylatedGelatin = "784335008";
+
+    /// <summary>
+    /// Literal for code: NONESuccinylatedGelatin
+    /// </summary>
+    public const string LiteralNONESuccinylatedGelatin = "http://snomed.info/sct#784335008";
 
     /// <summary>
     /// Literal for code: Fucose
@@ -8480,9 +11380,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFucose = "78527003";
 
     /// <summary>
+    /// Literal for code: NONEFucose
+    /// </summary>
+    public const string LiteralNONEFucose = "http://snomed.info/sct#78527003";
+
+    /// <summary>
     /// Literal for code: VitaminB2AndVitaminB2DerivativeSubstance
     /// </summary>
     public const string LiteralVitaminB2AndVitaminB2DerivativeSubstance = "787920005";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminB2AndVitaminB2DerivativeSubstance
+    /// </summary>
+    public const string LiteralNONEVitaminB2AndVitaminB2DerivativeSubstance = "http://snomed.info/sct#787920005";
 
     /// <summary>
     /// Literal for code: VitaminK3AndVitaminK3Derivative
@@ -8490,9 +11400,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVitaminK3AndVitaminK3Derivative = "787921009";
 
     /// <summary>
+    /// Literal for code: NONEVitaminK3AndVitaminK3Derivative
+    /// </summary>
+    public const string LiteralNONEVitaminK3AndVitaminK3Derivative = "http://snomed.info/sct#787921009";
+
+    /// <summary>
     /// Literal for code: VitaminAAndVitaminADerivative
     /// </summary>
     public const string LiteralVitaminAAndVitaminADerivative = "787948005";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminAAndVitaminADerivative
+    /// </summary>
+    public const string LiteralNONEVitaminAAndVitaminADerivative = "http://snomed.info/sct#787948005";
 
     /// <summary>
     /// Literal for code: VitaminCAndVitaminCDerivative
@@ -8500,9 +11420,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVitaminCAndVitaminCDerivative = "787952005";
 
     /// <summary>
+    /// Literal for code: NONEVitaminCAndVitaminCDerivative
+    /// </summary>
+    public const string LiteralNONEVitaminCAndVitaminCDerivative = "http://snomed.info/sct#787952005";
+
+    /// <summary>
     /// Literal for code: VitaminB6AndVitaminB6Derivative
     /// </summary>
     public const string LiteralVitaminB6AndVitaminB6Derivative = "787967009";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminB6AndVitaminB6Derivative
+    /// </summary>
+    public const string LiteralNONEVitaminB6AndVitaminB6Derivative = "http://snomed.info/sct#787967009";
 
     /// <summary>
     /// Literal for code: GalactoseAlpha13Galactose
@@ -8510,9 +11440,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGalactoseAlpha13Galactose = "788778006";
 
     /// <summary>
+    /// Literal for code: NONEGalactoseAlpha13Galactose
+    /// </summary>
+    public const string LiteralNONEGalactoseAlpha13Galactose = "http://snomed.info/sct#788778006";
+
+    /// <summary>
     /// Literal for code: FolateAndFolateDerivativeSubstance
     /// </summary>
     public const string LiteralFolateAndFolateDerivativeSubstance = "792796007";
+
+    /// <summary>
+    /// Literal for code: NONEFolateAndFolateDerivativeSubstance
+    /// </summary>
+    public const string LiteralNONEFolateAndFolateDerivativeSubstance = "http://snomed.info/sct#792796007";
 
     /// <summary>
     /// Literal for code: AminobenzoicAcidDerivative
@@ -8520,9 +11460,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAminobenzoicAcidDerivative = "79907004";
 
     /// <summary>
+    /// Literal for code: NONEAminobenzoicAcidDerivative
+    /// </summary>
+    public const string LiteralNONEAminobenzoicAcidDerivative = "http://snomed.info/sct#79907004";
+
+    /// <summary>
     /// Literal for code: Diiodotyrosine
     /// </summary>
     public const string LiteralDiiodotyrosine = "80393001";
+
+    /// <summary>
+    /// Literal for code: NONEDiiodotyrosine
+    /// </summary>
+    public const string LiteralNONEDiiodotyrosine = "http://snomed.info/sct#80393001";
 
     /// <summary>
     /// Literal for code: Glycerol
@@ -8530,9 +11480,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGlycerol = "80582002";
 
     /// <summary>
+    /// Literal for code: NONEGlycerol
+    /// </summary>
+    public const string LiteralNONEGlycerol = "http://snomed.info/sct#80582002";
+
+    /// <summary>
     /// Literal for code: Pentose
     /// </summary>
     public const string LiteralPentose = "81100008";
+
+    /// <summary>
+    /// Literal for code: NONEPentose
+    /// </summary>
+    public const string LiteralNONEPentose = "http://snomed.info/sct#81100008";
 
     /// <summary>
     /// Literal for code: Diosmin
@@ -8540,9 +11500,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDiosmin = "8143001";
 
     /// <summary>
+    /// Literal for code: NONEDiosmin
+    /// </summary>
+    public const string LiteralNONEDiosmin = "http://snomed.info/sct#8143001";
+
+    /// <summary>
     /// Literal for code: Homoproline
     /// </summary>
     public const string LiteralHomoproline = "8153000";
+
+    /// <summary>
+    /// Literal for code: NONEHomoproline
+    /// </summary>
+    public const string LiteralNONEHomoproline = "http://snomed.info/sct#8153000";
 
     /// <summary>
     /// Literal for code: CottonseedOil
@@ -8550,9 +11520,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCottonseedOil = "82450006";
 
     /// <summary>
+    /// Literal for code: NONECottonseedOil
+    /// </summary>
+    public const string LiteralNONECottonseedOil = "http://snomed.info/sct#82450006";
+
+    /// <summary>
     /// Literal for code: VitaminA
     /// </summary>
     public const string LiteralVitaminA = "82622003";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminA
+    /// </summary>
+    public const string LiteralNONEVitaminA = "http://snomed.info/sct#82622003";
 
     /// <summary>
     /// Literal for code: Leucine
@@ -8560,9 +11540,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLeucine = "83797003";
 
     /// <summary>
+    /// Literal for code: NONELeucine
+    /// </summary>
+    public const string LiteralNONELeucine = "http://snomed.info/sct#83797003";
+
+    /// <summary>
     /// Literal for code: Cystathionine
     /// </summary>
     public const string LiteralCystathionine = "84035007";
+
+    /// <summary>
+    /// Literal for code: NONECystathionine
+    /// </summary>
+    public const string LiteralNONECystathionine = "http://snomed.info/sct#84035007";
 
     /// <summary>
     /// Literal for code: Ornithine
@@ -8570,9 +11560,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOrnithine = "8514004";
 
     /// <summary>
+    /// Literal for code: NONEOrnithine
+    /// </summary>
+    public const string LiteralNONEOrnithine = "http://snomed.info/sct#8514004";
+
+    /// <summary>
     /// Literal for code: GlutamicAcid
     /// </summary>
     public const string LiteralGlutamicAcid = "85214009";
+
+    /// <summary>
+    /// Literal for code: NONEGlutamicAcid
+    /// </summary>
+    public const string LiteralNONEGlutamicAcid = "http://snomed.info/sct#85214009";
 
     /// <summary>
     /// Literal for code: StarchPowder
@@ -8580,9 +11580,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStarchPowder = "85668006";
 
     /// <summary>
+    /// Literal for code: NONEStarchPowder
+    /// </summary>
+    public const string LiteralNONEStarchPowder = "http://snomed.info/sct#85668006";
+
+    /// <summary>
     /// Literal for code: PantothenicAcid
     /// </summary>
     public const string LiteralPantothenicAcid = "86431009";
+
+    /// <summary>
+    /// Literal for code: NONEPantothenicAcid
+    /// </summary>
+    public const string LiteralNONEPantothenicAcid = "http://snomed.info/sct#86431009";
 
     /// <summary>
     /// Literal for code: VAL525DihydroxyCholecalciferolSubstance
@@ -8590,9 +11600,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVAL525DihydroxyCholecalciferolSubstance = "87116002";
 
     /// <summary>
+    /// Literal for code: NONEVAL525DihydroxyCholecalciferolSubstance
+    /// </summary>
+    public const string LiteralNONEVAL525DihydroxyCholecalciferolSubstance = "http://snomed.info/sct#87116002";
+
+    /// <summary>
     /// Literal for code: Asparagine
     /// </summary>
     public const string LiteralAsparagine = "87136001";
+
+    /// <summary>
+    /// Literal for code: NONEAsparagine
+    /// </summary>
+    public const string LiteralNONEAsparagine = "http://snomed.info/sct#87136001";
 
     /// <summary>
     /// Literal for code: PhosphoribosylPyrophosphate
@@ -8600,9 +11620,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPhosphoribosylPyrophosphate = "87371008";
 
     /// <summary>
+    /// Literal for code: NONEPhosphoribosylPyrophosphate
+    /// </summary>
+    public const string LiteralNONEPhosphoribosylPyrophosphate = "http://snomed.info/sct#87371008";
+
+    /// <summary>
     /// Literal for code: Vitamin
     /// </summary>
     public const string LiteralVitamin = "87708000";
+
+    /// <summary>
+    /// Literal for code: NONEVitamin
+    /// </summary>
+    public const string LiteralNONEVitamin = "http://snomed.info/sct#87708000";
 
     /// <summary>
     /// Literal for code: Potassium
@@ -8610,9 +11640,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPotassium = "88480006";
 
     /// <summary>
+    /// Literal for code: NONEPotassium
+    /// </summary>
+    public const string LiteralNONEPotassium = "http://snomed.info/sct#88480006";
+
+    /// <summary>
     /// Literal for code: Sarcosine
     /// </summary>
     public const string LiteralSarcosine = "88546006";
+
+    /// <summary>
+    /// Literal for code: NONESarcosine
+    /// </summary>
+    public const string LiteralNONESarcosine = "http://snomed.info/sct#88546006";
 
     /// <summary>
     /// Literal for code: Biotin
@@ -8620,9 +11660,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBiotin = "8919000";
 
     /// <summary>
+    /// Literal for code: NONEBiotin
+    /// </summary>
+    public const string LiteralNONEBiotin = "http://snomed.info/sct#8919000";
+
+    /// <summary>
     /// Literal for code: SesameOil
     /// </summary>
     public const string LiteralSesameOil = "89707004";
+
+    /// <summary>
+    /// Literal for code: NONESesameOil
+    /// </summary>
+    public const string LiteralNONESesameOil = "http://snomed.info/sct#89707004";
 
     /// <summary>
     /// Literal for code: Monoiodotyrosine
@@ -8630,9 +11680,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMonoiodotyrosine = "91166002";
 
     /// <summary>
+    /// Literal for code: NONEMonoiodotyrosine
+    /// </summary>
+    public const string LiteralNONEMonoiodotyrosine = "http://snomed.info/sct#91166002";
+
+    /// <summary>
     /// Literal for code: VAL2AminoadipicAcid
     /// </summary>
     public const string LiteralVAL2AminoadipicAcid = "95984008";
+
+    /// <summary>
+    /// Literal for code: NONEVAL2AminoadipicAcid
+    /// </summary>
+    public const string LiteralNONEVAL2AminoadipicAcid = "http://snomed.info/sct#95984008";
 
     /// <summary>
     /// Literal for code: Ethopabate
@@ -8640,9 +11700,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEthopabate = "96147003";
 
     /// <summary>
+    /// Literal for code: NONEEthopabate
+    /// </summary>
+    public const string LiteralNONEEthopabate = "http://snomed.info/sct#96147003";
+
+    /// <summary>
     /// Literal for code: MoenomycinA
     /// </summary>
     public const string LiteralMoenomycinA = "96150000";
+
+    /// <summary>
+    /// Literal for code: NONEMoenomycinA
+    /// </summary>
+    public const string LiteralNONEMoenomycinA = "http://snomed.info/sct#96150000";
 
     /// <summary>
     /// Literal for code: MoenomycinBGreaterThan1LessThan
@@ -8650,9 +11720,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMoenomycinBGreaterThan1LessThan = "96151001";
 
     /// <summary>
+    /// Literal for code: NONEMoenomycinBGreaterThan1LessThan
+    /// </summary>
+    public const string LiteralNONEMoenomycinBGreaterThan1LessThan = "http://snomed.info/sct#96151001";
+
+    /// <summary>
     /// Literal for code: MoenomycinBGreaterThan2LessThan
     /// </summary>
     public const string LiteralMoenomycinBGreaterThan2LessThan = "96152008";
+
+    /// <summary>
+    /// Literal for code: NONEMoenomycinBGreaterThan2LessThan
+    /// </summary>
+    public const string LiteralNONEMoenomycinBGreaterThan2LessThan = "http://snomed.info/sct#96152008";
 
     /// <summary>
     /// Literal for code: MoenomycinC
@@ -8660,8 +11740,1260 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMoenomycinC = "96153003";
 
     /// <summary>
+    /// Literal for code: NONEMoenomycinC
+    /// </summary>
+    public const string LiteralNONEMoenomycinC = "http://snomed.info/sct#96153003";
+
+    /// <summary>
     /// Literal for code: MeclofenamicAcid
     /// </summary>
     public const string LiteralMeclofenamicAcid = "96172003";
+
+    /// <summary>
+    /// Literal for code: NONEMeclofenamicAcid
+    /// </summary>
+    public const string LiteralNONEMeclofenamicAcid = "http://snomed.info/sct#96172003";
+
+    /// <summary>
+    /// Dictionary for looking up NutrientCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "102258003", Gliadin }, 
+      { "http://snomed.info/sct#102258003", Gliadin }, 
+      { "102658006", VAL4PyridoxicAcidSubstance }, 
+      { "http://snomed.info/sct#102658006", VAL4PyridoxicAcidSubstance }, 
+      { "102661007", Galactose1Phosphate }, 
+      { "http://snomed.info/sct#102661007", Galactose1Phosphate }, 
+      { "102663005", Triosephosphate }, 
+      { "http://snomed.info/sct#102663005", Triosephosphate }, 
+      { "102746004", Homocitrulline }, 
+      { "http://snomed.info/sct#102746004", Homocitrulline }, 
+      { "102747008", Homocysteine }, 
+      { "http://snomed.info/sct#102747008", Homocysteine }, 
+      { "102748003", Anserine }, 
+      { "http://snomed.info/sct#102748003", Anserine }, 
+      { "102750006", Phosphoserine }, 
+      { "http://snomed.info/sct#102750006", Phosphoserine }, 
+      { "102751005", SulfurBearingAminoAcid }, 
+      { "http://snomed.info/sct#102751005", SulfurBearingAminoAcid }, 
+      { "103067001", Retinaldehyde }, 
+      { "http://snomed.info/sct#103067001", Retinaldehyde }, 
+      { "103068006", ProvitaminA }, 
+      { "http://snomed.info/sct#103068006", ProvitaminA }, 
+      { "103069003", VitaminBAndVitaminBDerivative }, 
+      { "http://snomed.info/sct#103069003", VitaminBAndVitaminBDerivative }, 
+      { "103070002", PyridoxineCongeners }, 
+      { "http://snomed.info/sct#103070002", PyridoxineCongeners }, 
+      { "103072005", Ethylnicotinamide }, 
+      { "http://snomed.info/sct#103072005", Ethylnicotinamide }, 
+      { "103074006", NPower1PowerMethyl3Carboxamide6Pyridone }, 
+      { "http://snomed.info/sct#103074006", NPower1PowerMethyl3Carboxamide6Pyridone }, 
+      { "10796004", Glucose6Phosphate }, 
+      { "http://snomed.info/sct#10796004", Glucose6Phosphate }, 
+      { "108513001", KetorolacTromethamine }, 
+      { "http://snomed.info/sct#108513001", KetorolacTromethamine }, 
+      { "108520008", Bromfenac }, 
+      { "http://snomed.info/sct#108520008", Bromfenac }, 
+      { "108521007", BromfenacSodium }, 
+      { "http://snomed.info/sct#108521007", BromfenacSodium }, 
+      { "108570006", FosinoprilSodium }, 
+      { "http://snomed.info/sct#108570006", FosinoprilSodium }, 
+      { "108946001", Paricalcitol }, 
+      { "http://snomed.info/sct#108946001", Paricalcitol }, 
+      { "108950008", CysteineHydrochloride }, 
+      { "http://snomed.info/sct#108950008", CysteineHydrochloride }, 
+      { "109015005", AbsorbableGelatinFilm }, 
+      { "http://snomed.info/sct#109015005", AbsorbableGelatinFilm }, 
+      { "109017002", AbsorbableGelatinPowder }, 
+      { "http://snomed.info/sct#109017002", AbsorbableGelatinPowder }, 
+      { "109024001", Dextran1 }, 
+      { "http://snomed.info/sct#109024001", Dextran1 }, 
+      { "109106000", Tiopronin }, 
+      { "http://snomed.info/sct#109106000", Tiopronin }, 
+      { "109117004", PentosanPolysulfateSodium }, 
+      { "http://snomed.info/sct#109117004", PentosanPolysulfateSodium }, 
+      { "109202005", BenzylpenicilloylPolylysine }, 
+      { "http://snomed.info/sct#109202005", BenzylpenicilloylPolylysine }, 
+      { "109240008", Carrageenan }, 
+      { "http://snomed.info/sct#109240008", Carrageenan }, 
+      { "10944007", Taurine }, 
+      { "http://snomed.info/sct#10944007", Taurine }, 
+      { "112000000", EssentialAminoAcid }, 
+      { "http://snomed.info/sct#112000000", EssentialAminoAcid }, 
+      { "112001001", AromaticAminoAcid }, 
+      { "http://snomed.info/sct#112001001", AromaticAminoAcid }, 
+      { "112121003", VitaminU }, 
+      { "http://snomed.info/sct#112121003", VitaminU }, 
+      { "11320009", Sucrose }, 
+      { "http://snomed.info/sct#11320009", Sucrose }, 
+      { "115343006", AlphaAminobutyrate }, 
+      { "http://snomed.info/sct#115343006", AlphaAminobutyrate }, 
+      { "115358003", VAL3AminoisobutyrateSubstance }, 
+      { "http://snomed.info/sct#115358003", VAL3AminoisobutyrateSubstance }, 
+      { "116094003", Doxercalciferol }, 
+      { "http://snomed.info/sct#116094003", Doxercalciferol }, 
+      { "116127001", MagnesiumAminoAcidsChelate }, 
+      { "http://snomed.info/sct#116127001", MagnesiumAminoAcidsChelate }, 
+      { "116257004", Monosaccharide }, 
+      { "http://snomed.info/sct#116257004", Monosaccharide }, 
+      { "116258009", Aldose }, 
+      { "http://snomed.info/sct#116258009", Aldose }, 
+      { "116259001", Hexose }, 
+      { "http://snomed.info/sct#116259001", Hexose }, 
+      { "116260006", Ketose }, 
+      { "http://snomed.info/sct#116260006", Ketose }, 
+      { "116261005", Tetrose }, 
+      { "http://snomed.info/sct#116261005", Tetrose }, 
+      { "116262003", Triose }, 
+      { "http://snomed.info/sct#116262003", Triose }, 
+      { "116263008", Heptose }, 
+      { "http://snomed.info/sct#116263008", Heptose }, 
+      { "116264002", Trisaccharide }, 
+      { "http://snomed.info/sct#116264002", Trisaccharide }, 
+      { "116265001", Raffinose }, 
+      { "http://snomed.info/sct#116265001", Raffinose }, 
+      { "116266000", SugarPhosphate }, 
+      { "http://snomed.info/sct#116266000", SugarPhosphate }, 
+      { "116267009", SugarAlcohol }, 
+      { "http://snomed.info/sct#116267009", SugarAlcohol }, 
+      { "116268004", Galactitol }, 
+      { "http://snomed.info/sct#116268004", Galactitol }, 
+      { "116269007", Maltitol }, 
+      { "http://snomed.info/sct#116269007", Maltitol }, 
+      { "116271007", Ribitol }, 
+      { "http://snomed.info/sct#116271007", Ribitol }, 
+      { "116776001", DAlphaTocopherol }, 
+      { "http://snomed.info/sct#116776001", DAlphaTocopherol }, 
+      { "116777005", BetaTocopherol }, 
+      { "http://snomed.info/sct#116777005", BetaTocopherol }, 
+      { "116778000", GammaTocopherol }, 
+      { "http://snomed.info/sct#116778000", GammaTocopherol }, 
+      { "116934003", Ergosterol }, 
+      { "http://snomed.info/sct#116934003", Ergosterol }, 
+      { "11984007", Alfacalcidol }, 
+      { "http://snomed.info/sct#11984007", Alfacalcidol }, 
+      { "12391001", Dextran70 }, 
+      { "http://snomed.info/sct#12391001", Dextran70 }, 
+      { "126076005", FishLiverOil }, 
+      { "http://snomed.info/sct#126076005", FishLiverOil }, 
+      { "126077001", BurbotLiverOil }, 
+      { "http://snomed.info/sct#126077001", BurbotLiverOil }, 
+      { "126078006", PercomorphLiverOil }, 
+      { "http://snomed.info/sct#126078006", PercomorphLiverOil }, 
+      { "126079003", PercoidLiverOil }, 
+      { "http://snomed.info/sct#126079003", PercoidLiverOil }, 
+      { "126080000", SharkLiverOil }, 
+      { "http://snomed.info/sct#126080000", SharkLiverOil }, 
+      { "126081001", HalibutLiverOil }, 
+      { "http://snomed.info/sct#126081001", HalibutLiverOil }, 
+      { "126082008", CodLiverOil }, 
+      { "http://snomed.info/sct#126082008", CodLiverOil }, 
+      { "126223008", CalciumLeucovorin }, 
+      { "http://snomed.info/sct#126223008", CalciumLeucovorin }, 
+      { "126224002", SodiumFolate }, 
+      { "http://snomed.info/sct#126224002", SodiumFolate }, 
+      { "126225001", CalciumPantothenate }, 
+      { "http://snomed.info/sct#126225001", CalciumPantothenate }, 
+      { "126226000", Dexpanthenol }, 
+      { "http://snomed.info/sct#126226000", Dexpanthenol }, 
+      { "126227009", PyridoxineHydrochloride }, 
+      { "http://snomed.info/sct#126227009", PyridoxineHydrochloride }, 
+      { "126228004", ThiamineHydrochloride }, 
+      { "http://snomed.info/sct#126228004", ThiamineHydrochloride }, 
+      { "126229007", ThiamineMononitrate }, 
+      { "http://snomed.info/sct#126229007", ThiamineMononitrate }, 
+      { "126235007", Dihydrotachysterol }, 
+      { "http://snomed.info/sct#126235007", Dihydrotachysterol }, 
+      { "126237004", DeltaTocopherol }, 
+      { "http://snomed.info/sct#126237004", DeltaTocopherol }, 
+      { "126238009", VitaminK5Substance }, 
+      { "http://snomed.info/sct#126238009", VitaminK5Substance }, 
+      { "126239001", MenadiolSodiumDiphosphate }, 
+      { "http://snomed.info/sct#126239001", MenadiolSodiumDiphosphate }, 
+      { "12970004", InositolHexanitrate }, 
+      { "http://snomed.info/sct#12970004", InositolHexanitrate }, 
+      { "13235001", Riboflavin }, 
+      { "http://snomed.info/sct#13235001", Riboflavin }, 
+      { "13781002", AlphaAminoIsobutyricAcid }, 
+      { "http://snomed.info/sct#13781002", AlphaAminoIsobutyricAcid }, 
+      { "13863008", Arabinose }, 
+      { "http://snomed.info/sct#13863008", Arabinose }, 
+      { "14125007", Serine }, 
+      { "http://snomed.info/sct#14125007", Serine }, 
+      { "14139007", ArginineGlutamate }, 
+      { "http://snomed.info/sct#14139007", ArginineGlutamate }, 
+      { "14312008", VitaminLGreaterThan2LessThan }, 
+      { "http://snomed.info/sct#14312008", VitaminLGreaterThan2LessThan }, 
+      { "14564001", Amylopectin }, 
+      { "http://snomed.info/sct#14564001", Amylopectin }, 
+      { "14715007", Dextran75 }, 
+      { "http://snomed.info/sct#14715007", Dextran75 }, 
+      { "14971004", Isoleucine }, 
+      { "http://snomed.info/sct#14971004", Isoleucine }, 
+      { "15331006", Glycine }, 
+      { "http://snomed.info/sct#15331006", Glycine }, 
+      { "15472007", Disaccharide }, 
+      { "http://snomed.info/sct#15472007", Disaccharide }, 
+      { "16850006", Ribose }, 
+      { "http://snomed.info/sct#16850006", Ribose }, 
+      { "173196005", NicotinamideSubstance }, 
+      { "http://snomed.info/sct#173196005", NicotinamideSubstance }, 
+      { "18414002", VitaminDGreaterThan3LessThan }, 
+      { "http://snomed.info/sct#18414002", VitaminDGreaterThan3LessThan }, 
+      { "19160003", Xylose }, 
+      { "http://snomed.info/sct#19160003", Xylose }, 
+      { "19839007", Sorbitol }, 
+      { "http://snomed.info/sct#19839007", Sorbitol }, 
+      { "21239003", BetaDFructopyranoseSubstance }, 
+      { "http://snomed.info/sct#21239003", BetaDFructopyranoseSubstance }, 
+      { "21706000", TetrahydrofolicAcid }, 
+      { "http://snomed.info/sct#21706000", TetrahydrofolicAcid }, 
+      { "2254005", OroticAcid }, 
+      { "http://snomed.info/sct#2254005", OroticAcid }, 
+      { "22555008", Sorbose }, 
+      { "http://snomed.info/sct#22555008", Sorbose }, 
+      { "22559002", Glycoasparagine }, 
+      { "http://snomed.info/sct#22559002", Glycoasparagine }, 
+      { "22606007", VitaminK2 }, 
+      { "http://snomed.info/sct#22606007", VitaminK2 }, 
+      { "226355009", Nutrients }, 
+      { "http://snomed.info/sct#226355009", Nutrients }, 
+      { "226367006", EicosapentaenoicAcid }, 
+      { "http://snomed.info/sct#226367006", EicosapentaenoicAcid }, 
+      { "226368001", DHADocosahexaenoicAcid }, 
+      { "http://snomed.info/sct#226368001", DHADocosahexaenoicAcid }, 
+      { "226369009", Tetrasaccharide }, 
+      { "http://snomed.info/sct#226369009", Tetrasaccharide }, 
+      { "226370005", Stachyose }, 
+      { "http://snomed.info/sct#226370005", Stachyose }, 
+      { "226371009", Pentasaccharide }, 
+      { "http://snomed.info/sct#226371009", Pentasaccharide }, 
+      { "226372002", Verbascose }, 
+      { "http://snomed.info/sct#226372002", Verbascose }, 
+      { "226373007", Amylose }, 
+      { "http://snomed.info/sct#226373007", Amylose }, 
+      { "226374001", ComplexCarbohydrate }, 
+      { "http://snomed.info/sct#226374001", ComplexCarbohydrate }, 
+      { "226375000", RefinedCarbohydrate }, 
+      { "http://snomed.info/sct#226375000", RefinedCarbohydrate }, 
+      { "226781005", DriedSoyaMilk }, 
+      { "http://snomed.info/sct#226781005", DriedSoyaMilk }, 
+      { "226793001", SoyaMilk }, 
+      { "http://snomed.info/sct#226793001", SoyaMilk }, 
+      { "226842001", SoyaCheese }, 
+      { "http://snomed.info/sct#226842001", SoyaCheese }, 
+      { "226880000", SoyaMilkYogurt }, 
+      { "http://snomed.info/sct#226880000", SoyaMilkYogurt }, 
+      { "226887002", FatAndOil }, 
+      { "http://snomed.info/sct#226887002", FatAndOil }, 
+      { "226888007", Butter }, 
+      { "http://snomed.info/sct#226888007", Butter }, 
+      { "226889004", BlendedSpread }, 
+      { "http://snomed.info/sct#226889004", BlendedSpread }, 
+      { "226890008", Margarine }, 
+      { "http://snomed.info/sct#226890008", Margarine }, 
+      { "226891007", HardVegetableFatMargarine }, 
+      { "http://snomed.info/sct#226891007", HardVegetableFatMargarine }, 
+      { "226892000", HardAnimalAndVegetableFatMargarine }, 
+      { "http://snomed.info/sct#226892000", HardAnimalAndVegetableFatMargarine }, 
+      { "226894004", SoftPolyunsaturatedFatMargarine }, 
+      { "http://snomed.info/sct#226894004", SoftPolyunsaturatedFatMargarine }, 
+      { "226895003", OliveOilMargarine }, 
+      { "http://snomed.info/sct#226895003", OliveOilMargarine }, 
+      { "226896002", LowFatSpread }, 
+      { "http://snomed.info/sct#226896002", LowFatSpread }, 
+      { "226897006", VLFVeryLowFatSpread }, 
+      { "http://snomed.info/sct#226897006", VLFVeryLowFatSpread }, 
+      { "226898001", Dripping }, 
+      { "http://snomed.info/sct#226898001", Dripping }, 
+      { "226899009", Lard }, 
+      { "http://snomed.info/sct#226899009", Lard }, 
+      { "226900004", Suet }, 
+      { "http://snomed.info/sct#226900004", Suet }, 
+      { "226901000", Ghee }, 
+      { "http://snomed.info/sct#226901000", Ghee }, 
+      { "226902007", ButterGhee }, 
+      { "http://snomed.info/sct#226902007", ButterGhee }, 
+      { "226903002", PalmOilGhee }, 
+      { "http://snomed.info/sct#226903002", PalmOilGhee }, 
+      { "226904008", VegetableOilGhee }, 
+      { "http://snomed.info/sct#226904008", VegetableOilGhee }, 
+      { "226907001", PalmOil }, 
+      { "http://snomed.info/sct#226907001", PalmOil }, 
+      { "226908006", RapeseedOil }, 
+      { "http://snomed.info/sct#226908006", RapeseedOil }, 
+      { "226909003", RapeseedOilHighErucicAcid }, 
+      { "http://snomed.info/sct#226909003", RapeseedOilHighErucicAcid }, 
+      { "226910008", RapeseedOilLowErucicAcid }, 
+      { "http://snomed.info/sct#226910008", RapeseedOilLowErucicAcid }, 
+      { "226911007", SoyaOil }, 
+      { "http://snomed.info/sct#226911007", SoyaOil }, 
+      { "226912000", SunflowerseedOil }, 
+      { "http://snomed.info/sct#226912000", SunflowerseedOil }, 
+      { "226913005", BlendedVegetableOil }, 
+      { "http://snomed.info/sct#226913005", BlendedVegetableOil }, 
+      { "226914004", PolyunsaturatedVegetableOil }, 
+      { "http://snomed.info/sct#226914004", PolyunsaturatedVegetableOil }, 
+      { "227365007", Tofu }, 
+      { "http://snomed.info/sct#227365007", Tofu }, 
+      { "227366008", SteamedTofu }, 
+      { "http://snomed.info/sct#227366008", SteamedTofu }, 
+      { "227367004", SteamedFriedTofu }, 
+      { "http://snomed.info/sct#227367004", SteamedFriedTofu }, 
+      { "227368009", FuJukTofu }, 
+      { "http://snomed.info/sct#227368009", FuJukTofu }, 
+      { "227537006", SoySauce }, 
+      { "http://snomed.info/sct#227537006", SoySauce }, 
+      { "227948007", SoyaMinceGranules }, 
+      { "http://snomed.info/sct#227948007", SoyaMinceGranules }, 
+      { "227991002", CarbohydrateFood }, 
+      { "http://snomed.info/sct#227991002", CarbohydrateFood }, 
+      { "227992009", HighCarbohydrateFood }, 
+      { "http://snomed.info/sct#227992009", HighCarbohydrateFood }, 
+      { "227993004", LowCarbohydrateFood }, 
+      { "http://snomed.info/sct#227993004", LowCarbohydrateFood }, 
+      { "227994005", ComplexCarbohydrateFood }, 
+      { "http://snomed.info/sct#227994005", ComplexCarbohydrateFood }, 
+      { "227995006", RefinedCarbohydrateFood }, 
+      { "http://snomed.info/sct#227995006", RefinedCarbohydrateFood }, 
+      { "227996007", SimpleCarbohydrateFood }, 
+      { "http://snomed.info/sct#227996007", SimpleCarbohydrateFood }, 
+      { "229848001", BlendedSpread7080PercentFat }, 
+      { "http://snomed.info/sct#229848001", BlendedSpread7080PercentFat }, 
+      { "229849009", BlendedSpread40PercentFat }, 
+      { "http://snomed.info/sct#229849009", BlendedSpread40PercentFat }, 
+      { "229850009", Butteroil }, 
+      { "http://snomed.info/sct#229850009", Butteroil }, 
+      { "229851008", SpreadableButter }, 
+      { "http://snomed.info/sct#229851008", SpreadableButter }, 
+      { "229852001", BeefDripping }, 
+      { "http://snomed.info/sct#229852001", BeefDripping }, 
+      { "229853006", PorkDripping }, 
+      { "http://snomed.info/sct#229853006", PorkDripping }, 
+      { "229854000", CompoundCookingFat }, 
+      { "http://snomed.info/sct#229854000", CompoundCookingFat }, 
+      { "229855004", PolyunsatCompoundCookingFat }, 
+      { "http://snomed.info/sct#229855004", PolyunsatCompoundCookingFat }, 
+      { "229857007", ShreddedSuet }, 
+      { "http://snomed.info/sct#229857007", ShreddedSuet }, 
+      { "229858002", VegetableSuet }, 
+      { "http://snomed.info/sct#229858002", VegetableSuet }, 
+      { "229859005", DairySpread }, 
+      { "http://snomed.info/sct#229859005", DairySpread }, 
+      { "229928009", WheatgermOil }, 
+      { "http://snomed.info/sct#229928009", WheatgermOil }, 
+      { "229929001", WalnutOil }, 
+      { "http://snomed.info/sct#229929001", WalnutOil }, 
+      { "229930006", HazelnutOil }, 
+      { "http://snomed.info/sct#229930006", HazelnutOil }, 
+      { "229932003", GrapeseedOil }, 
+      { "http://snomed.info/sct#229932003", GrapeseedOil }, 
+      { "229941008", SoyaFlour }, 
+      { "http://snomed.info/sct#229941008", SoyaFlour }, 
+      { "229949005", LowFatSoyaFlour }, 
+      { "http://snomed.info/sct#229949005", LowFatSoyaFlour }, 
+      { "230045004", SoftMargarineNotPolyunsaturated }, 
+      { "http://snomed.info/sct#230045004", SoftMargarineNotPolyunsaturated }, 
+      { "230046003", NonPolyunsaturatedLowFatSpread40PercentFat }, 
+      { "http://snomed.info/sct#230046003", NonPolyunsaturatedLowFatSpread40PercentFat }, 
+      { "230047007", NonPolyunsaturatedLowFatSpread7080PercentFat }, 
+      { "http://snomed.info/sct#230047007", NonPolyunsaturatedLowFatSpread7080PercentFat }, 
+      { "230048002", PolyunsaturatedLowFatSpread70PercentFat }, 
+      { "http://snomed.info/sct#230048002", PolyunsaturatedLowFatSpread70PercentFat }, 
+      { "230049005", PolyunsaturatedLowFatSpread60PercentFat }, 
+      { "http://snomed.info/sct#230049005", PolyunsaturatedLowFatSpread60PercentFat }, 
+      { "230050005", PolyunsaturatedLowFatSpread3540PercentFat }, 
+      { "http://snomed.info/sct#230050005", PolyunsaturatedLowFatSpread3540PercentFat }, 
+      { "2331003", Carbohydrate }, 
+      { "http://snomed.info/sct#2331003", Carbohydrate }, 
+      { "23433006", Ergocalciferol }, 
+      { "http://snomed.info/sct#23433006", Ergocalciferol }, 
+      { "23969007", Tryparsamide }, 
+      { "http://snomed.info/sct#23969007", Tryparsamide }, 
+      { "256227006", Agarose }, 
+      { "http://snomed.info/sct#256227006", Agarose }, 
+      { "25761002", Glutamine }, 
+      { "http://snomed.info/sct#25761002", Glutamine }, 
+      { "259098002", AminoisobutyricAcid }, 
+      { "http://snomed.info/sct#259098002", AminoisobutyricAcid }, 
+      { "259100002", GammaAminobutyricAcid }, 
+      { "http://snomed.info/sct#259100002", GammaAminobutyricAcid }, 
+      { "259333003", Calcitriol }, 
+      { "http://snomed.info/sct#259333003", Calcitriol }, 
+      { "259336006", VAL2425DHCC2425Dihydroxycholecalciferol }, 
+      { "http://snomed.info/sct#259336006", VAL2425DHCC2425Dihydroxycholecalciferol }, 
+      { "259337002", Calcifediol }, 
+      { "http://snomed.info/sct#259337002", Calcifediol }, 
+      { "259382003", AmylopectinGlycogen }, 
+      { "http://snomed.info/sct#259382003", AmylopectinGlycogen }, 
+      { "259403006", FucoOligosaccharide }, 
+      { "http://snomed.info/sct#259403006", FucoOligosaccharide }, 
+      { "259406003", MannoOligosaccharide }, 
+      { "http://snomed.info/sct#259406003", MannoOligosaccharide }, 
+      { "259411001", Sialyloligosaccharide }, 
+      { "http://snomed.info/sct#259411001", Sialyloligosaccharide }, 
+      { "259509008", Adenosylcobalamin }, 
+      { "http://snomed.info/sct#259509008", Adenosylcobalamin }, 
+      { "259512006", Methylcobalamin }, 
+      { "http://snomed.info/sct#259512006", Methylcobalamin }, 
+      { "259547003", FreeLCarnitine }, 
+      { "http://snomed.info/sct#259547003", FreeLCarnitine }, 
+      { "259651009", Cellobiose }, 
+      { "http://snomed.info/sct#259651009", Cellobiose }, 
+      { "259655000", Rhamnose }, 
+      { "http://snomed.info/sct#259655000", Rhamnose }, 
+      { "259659006", VitaminB1 }, 
+      { "http://snomed.info/sct#259659006", VitaminB1 }, 
+      { "259660001", ThiaminePhosphate }, 
+      { "http://snomed.info/sct#259660001", ThiaminePhosphate }, 
+      { "259661002", ThiaminePyrophosphate }, 
+      { "http://snomed.info/sct#259661002", ThiaminePyrophosphate }, 
+      { "259666007", AlphaTocopherol }, 
+      { "http://snomed.info/sct#259666007", AlphaTocopherol }, 
+      { "26645004", Homocystine }, 
+      { "http://snomed.info/sct#26645004", Homocystine }, 
+      { "26766001", StarchGlycerite }, 
+      { "http://snomed.info/sct#26766001", StarchGlycerite }, 
+      { "27378009", Tyrosine }, 
+      { "http://snomed.info/sct#27378009", Tyrosine }, 
+      { "273943001", AntipellagraFactor }, 
+      { "http://snomed.info/sct#273943001", AntipellagraFactor }, 
+      { "273945008", Lactulose }, 
+      { "http://snomed.info/sct#273945008", Lactulose }, 
+      { "284460001", SoyaBasedBabyMilk }, 
+      { "http://snomed.info/sct#284460001", SoyaBasedBabyMilk }, 
+      { "28942008", CoconutOil }, 
+      { "http://snomed.info/sct#28942008", CoconutOil }, 
+      { "2942001", Carbon14CXyloseSubstance }, 
+      { "http://snomed.info/sct#2942001", Carbon14CXyloseSubstance }, 
+      { "30022007", Citrulline }, 
+      { "http://snomed.info/sct#30022007", Citrulline }, 
+      { "30094001", RiboflavinDinucleotide }, 
+      { "http://snomed.info/sct#30094001", RiboflavinDinucleotide }, 
+      { "30178006", CalciotropicHormone }, 
+      { "http://snomed.info/sct#30178006", CalciotropicHormone }, 
+      { "301862003", FreeGlycerol }, 
+      { "http://snomed.info/sct#301862003", FreeGlycerol }, 
+      { "310283001", Vigabatrin }, 
+      { "http://snomed.info/sct#310283001", Vigabatrin }, 
+      { "31121009", GammaAminoisobutyricAcidSubstance }, 
+      { "http://snomed.info/sct#31121009", GammaAminoisobutyricAcidSubstance }, 
+      { "312184007", LMethionineSubstance }, 
+      { "http://snomed.info/sct#312184007", LMethionineSubstance }, 
+      { "3161008", VAL3MethylHistidine }, 
+      { "http://snomed.info/sct#3161008", VAL3MethylHistidine }, 
+      { "32741009", DXylulose }, 
+      { "http://snomed.info/sct#32741009", DXylulose }, 
+      { "3325005", Lipopolysaccharide }, 
+      { "http://snomed.info/sct#3325005", Lipopolysaccharide }, 
+      { "33463005", Fluid }, 
+      { "http://snomed.info/sct#33463005", Fluid }, 
+      { "33922005", VitaminL }, 
+      { "http://snomed.info/sct#33922005", VitaminL }, 
+      { "34744002", PlantAsparagine }, 
+      { "http://snomed.info/sct#34744002", PlantAsparagine }, 
+      { "35344005", Ribulose }, 
+      { "http://snomed.info/sct#35344005", Ribulose }, 
+      { "35733004", FatSolubleVitamin }, 
+      { "http://snomed.info/sct#35733004", FatSolubleVitamin }, 
+      { "36397007", MuramicAcid }, 
+      { "http://snomed.info/sct#36397007", MuramicAcid }, 
+      { "36434002", VAL1MethylHistidine }, 
+      { "http://snomed.info/sct#36434002", VAL1MethylHistidine }, 
+      { "36816009", Glucose1Phosphate }, 
+      { "http://snomed.info/sct#36816009", Glucose1Phosphate }, 
+      { "36998008", Glycogen }, 
+      { "http://snomed.info/sct#36998008", Glycogen }, 
+      { "37237003", Tocopherol }, 
+      { "http://snomed.info/sct#37237003", Tocopherol }, 
+      { "372501008", KetorolacSubstance }, 
+      { "http://snomed.info/sct#372501008", KetorolacSubstance }, 
+      { "372510000", FosinoprilSubstance }, 
+      { "http://snomed.info/sct#372510000", FosinoprilSubstance }, 
+      { "372538008", IrinotecanSubstance }, 
+      { "http://snomed.info/sct#372538008", IrinotecanSubstance }, 
+      { "372571007", PentosanPolysulfateSubstance }, 
+      { "http://snomed.info/sct#372571007", PentosanPolysulfateSubstance }, 
+      { "372601001", Levocarnitine }, 
+      { "http://snomed.info/sct#372601001", Levocarnitine }, 
+      { "372650007", DextranSubstance }, 
+      { "http://snomed.info/sct#372650007", DextranSubstance }, 
+      { "373489001", ParaAminobenzoicAcidSubstance }, 
+      { "http://snomed.info/sct#373489001", ParaAminobenzoicAcidSubstance }, 
+      { "373531009", GelatinSubstance }, 
+      { "http://snomed.info/sct#373531009", GelatinSubstance }, 
+      { "373560000", Bambermycins }, 
+      { "http://snomed.info/sct#373560000", Bambermycins }, 
+      { "37927000", Cystine }, 
+      { "http://snomed.info/sct#37927000", Cystine }, 
+      { "38182007", Galactose }, 
+      { "http://snomed.info/sct#38182007", Galactose }, 
+      { "385517000", FondaparinuxSodiumSubstance }, 
+      { "http://snomed.info/sct#385517000", FondaparinuxSodiumSubstance }, 
+      { "386845007", GabapentinSubstance }, 
+      { "http://snomed.info/sct#386845007", GabapentinSubstance }, 
+      { "386912006", IrinotecanHydrochlorideSubstance }, 
+      { "http://snomed.info/sct#386912006", IrinotecanHydrochlorideSubstance }, 
+      { "386927006", HydroxypropylCelluloseSubstance }, 
+      { "http://snomed.info/sct#386927006", HydroxypropylCelluloseSubstance }, 
+      { "386932007", Hydroxyethylcellose }, 
+      { "http://snomed.info/sct#386932007", Hydroxyethylcellose }, 
+      { "386945006", AminoAcidDerivativeSubstance }, 
+      { "http://snomed.info/sct#386945006", AminoAcidDerivativeSubstance }, 
+      { "386965004", AcarboseSubstance }, 
+      { "http://snomed.info/sct#386965004", AcarboseSubstance }, 
+      { "387030006", CholineBitartrateSubstance }, 
+      { "http://snomed.info/sct#387030006", CholineBitartrateSubstance }, 
+      { "387041008", PentastarchSubstance }, 
+      { "http://snomed.info/sct#387041008", PentastarchSubstance }, 
+      { "387118003", IronDextranSubstance }, 
+      { "http://snomed.info/sct#387118003", IronDextranSubstance }, 
+      { "387131008", MethylcelluloseSubstance }, 
+      { "http://snomed.info/sct#387131008", MethylcelluloseSubstance }, 
+      { "387168006", MannitolSubstance }, 
+      { "http://snomed.info/sct#387168006", MannitolSubstance }, 
+      { "387235007", PenicillamineSubstance }, 
+      { "http://snomed.info/sct#387235007", PenicillamineSubstance }, 
+      { "387274000", HetastarchSubstance }, 
+      { "http://snomed.info/sct#387274000", HetastarchSubstance }, 
+      { "387357002", BenzocaineSubstance }, 
+      { "http://snomed.info/sct#387357002", BenzocaineSubstance }, 
+      { "387440002", AcetylcysteineSubstance }, 
+      { "http://snomed.info/sct#387440002", AcetylcysteineSubstance }, 
+      { "387495008", Metyrosine }, 
+      { "http://snomed.info/sct#387495008", Metyrosine }, 
+      { "387501005", Mesalamine }, 
+      { "http://snomed.info/sct#387501005", Mesalamine }, 
+      { "38839009", GlycerolTeichoicAcid }, 
+      { "http://snomed.info/sct#38839009", GlycerolTeichoicAcid }, 
+      { "38909000", GlutamicAcidHydrochloride }, 
+      { "http://snomed.info/sct#38909000", GlutamicAcidHydrochloride }, 
+      { "391698009", AcamprosateSubstance }, 
+      { "http://snomed.info/sct#391698009", AcamprosateSubstance }, 
+      { "391699001", AcamprosateCalcium }, 
+      { "http://snomed.info/sct#391699001", AcamprosateCalcium }, 
+      { "391734004", AlginicAcid }, 
+      { "http://snomed.info/sct#391734004", AlginicAcid }, 
+      { "391737006", AlmondOilSubstance }, 
+      { "http://snomed.info/sct#391737006", AlmondOilSubstance }, 
+      { "39360003", Starch }, 
+      { "http://snomed.info/sct#39360003", Starch }, 
+      { "395737002", HexastarchSubstance }, 
+      { "http://snomed.info/sct#395737002", HexastarchSubstance }, 
+      { "395766004", CalcipotriolSubstance }, 
+      { "http://snomed.info/sct#395766004", CalcipotriolSubstance }, 
+      { "395769006", LevofolinicAcidSubstance }, 
+      { "http://snomed.info/sct#395769006", LevofolinicAcidSubstance }, 
+      { "395791004", Methylcellulose450Substance }, 
+      { "http://snomed.info/sct#395791004", Methylcellulose450Substance }, 
+      { "395815002", OxerutinsSubstance }, 
+      { "http://snomed.info/sct#395815002", OxerutinsSubstance }, 
+      { "395830006", AlphaTocopherolAcetateSubstance }, 
+      { "http://snomed.info/sct#395830006", AlphaTocopherolAcetateSubstance }, 
+      { "395836000", PolygelineSubstance }, 
+      { "http://snomed.info/sct#395836000", PolygelineSubstance }, 
+      { "395838004", PotassiumAminobenzoateSubstance }, 
+      { "http://snomed.info/sct#395838004", PotassiumAminobenzoateSubstance }, 
+      { "395839007", PotassiumAscorbateSubstance }, 
+      { "http://snomed.info/sct#395839007", PotassiumAscorbateSubstance }, 
+      { "395842001", CarbocisteineSubstance }, 
+      { "http://snomed.info/sct#395842001", CarbocisteineSubstance }, 
+      { "395910008", TolfenamicAcidSubstance }, 
+      { "http://snomed.info/sct#395910008", TolfenamicAcidSubstance }, 
+      { "395951005", XylitolSubstance }, 
+      { "http://snomed.info/sct#395951005", XylitolSubstance }, 
+      { "396065004", FolinicAcidSubstance }, 
+      { "http://snomed.info/sct#396065004", FolinicAcidSubstance }, 
+      { "39694009", KynurenicAcid }, 
+      { "http://snomed.info/sct#39694009", KynurenicAcid }, 
+      { "39862002", IminoAcid }, 
+      { "http://snomed.info/sct#39862002", IminoAcid }, 
+      { "39972003", Sodium }, 
+      { "http://snomed.info/sct#39972003", Sodium }, 
+      { "40479008", Fructose1Phosphate }, 
+      { "http://snomed.info/sct#40479008", Fructose1Phosphate }, 
+      { "406774009", FishDerivedOmega3FattyAcidSubstance }, 
+      { "http://snomed.info/sct#406774009", FishDerivedOmega3FattyAcidSubstance }, 
+      { "40924008", WaterSolubleVitamin }, 
+      { "http://snomed.info/sct#40924008", WaterSolubleVitamin }, 
+      { "409257009", VitaminBGreaterThan12aLessThan }, 
+      { "http://snomed.info/sct#409257009", VitaminBGreaterThan12aLessThan }, 
+      { "409258004", VitaminBGreaterThan12bLessThan }, 
+      { "http://snomed.info/sct#409258004", VitaminBGreaterThan12bLessThan }, 
+      { "409871008", VAL13BetaDGlucan }, 
+      { "http://snomed.info/sct#409871008", VAL13BetaDGlucan }, 
+      { "410982000", DicarboxylicAminoAcidSubstance }, 
+      { "http://snomed.info/sct#410982000", DicarboxylicAminoAcidSubstance }, 
+      { "410983005", DiaminopimelicAcidSubstance }, 
+      { "http://snomed.info/sct#410983005", DiaminopimelicAcidSubstance }, 
+      { "412135003", IcodextrinSubstance }, 
+      { "http://snomed.info/sct#412135003", IcodextrinSubstance }, 
+      { "412203006", HesperidinSubstance }, 
+      { "http://snomed.info/sct#412203006", HesperidinSubstance }, 
+      { "412244007", MenadioneSubstance }, 
+      { "http://snomed.info/sct#412244007", MenadioneSubstance }, 
+      { "412250002", MultivitaminAgentSubstance }, 
+      { "http://snomed.info/sct#412250002", MultivitaminAgentSubstance }, 
+      { "412295009", CarglumicAcidSubstance }, 
+      { "http://snomed.info/sct#412295009", CarglumicAcidSubstance }, 
+      { "412410003", HypromelloseSubstance }, 
+      { "http://snomed.info/sct#412410003", HypromelloseSubstance }, 
+      { "412552006", VegetableOilSubstance }, 
+      { "http://snomed.info/sct#412552006", VegetableOilSubstance }, 
+      { "412632001", AlloisoleucineSubstance }, 
+      { "http://snomed.info/sct#412632001", AlloisoleucineSubstance }, 
+      { "413483001", AlphaCarotene }, 
+      { "http://snomed.info/sct#413483001", AlphaCarotene }, 
+      { "41441005", Erythrose }, 
+      { "http://snomed.info/sct#41441005", Erythrose }, 
+      { "414506003", InositolNiacinate }, 
+      { "http://snomed.info/sct#414506003", InositolNiacinate }, 
+      { "415160008", PregabalinSubstance }, 
+      { "http://snomed.info/sct#415160008", PregabalinSubstance }, 
+      { "415543009", SodiumGlycerophosphateSubstance }, 
+      { "http://snomed.info/sct#415543009", SodiumGlycerophosphateSubstance }, 
+      { "415562007", SoyBeanProductSubstance }, 
+      { "http://snomed.info/sct#415562007", SoyBeanProductSubstance }, 
+      { "417889008", ArachisOilSubstance }, 
+      { "http://snomed.info/sct#417889008", ArachisOilSubstance }, 
+      { "41810000", BetaAminoisobutyricAcidSubstance }, 
+      { "http://snomed.info/sct#41810000", BetaAminoisobutyricAcidSubstance }, 
+      { "41834005", OliveOil }, 
+      { "http://snomed.info/sct#41834005", OliveOil }, 
+      { "418407000", CelluloseDerivedViscosityModifierSubstance }, 
+      { "http://snomed.info/sct#418407000", CelluloseDerivedViscosityModifierSubstance }, 
+      { "418929008", LactitolSubstance }, 
+      { "http://snomed.info/sct#418929008", LactitolSubstance }, 
+      { "418938005", HydroxyethylStarchSubstance }, 
+      { "http://snomed.info/sct#418938005", HydroxyethylStarchSubstance }, 
+      { "419382002", CyanocobalaminSubstance }, 
+      { "http://snomed.info/sct#419382002", CyanocobalaminSubstance }, 
+      { "419432008", Carboxymethylcellulose }, 
+      { "http://snomed.info/sct#419432008", Carboxymethylcellulose }, 
+      { "419843007", NicofuranoseSubstance }, 
+      { "http://snomed.info/sct#419843007", NicofuranoseSubstance }, 
+      { "420053004", StarflowerOilSubstance }, 
+      { "http://snomed.info/sct#420053004", StarflowerOilSubstance }, 
+      { "420075002", MonosodiumLAspartateSubstance }, 
+      { "http://snomed.info/sct#420075002", MonosodiumLAspartateSubstance }, 
+      { "421289007", MenadiolSubstance }, 
+      { "http://snomed.info/sct#421289007", MenadiolSubstance }, 
+      { "421621000", RetinolAcetateSubstance }, 
+      { "http://snomed.info/sct#421621000", RetinolAcetateSubstance }, 
+      { "42180008", VitaminDGreaterThan2LessThanPhosphateEster }, 
+      { "http://snomed.info/sct#42180008", VitaminDGreaterThan2LessThanPhosphateEster }, 
+      { "422073002", MenadiolDiacetate }, 
+      { "http://snomed.info/sct#422073002", MenadiolDiacetate }, 
+      { "422160004", VitaminAPalmitate }, 
+      { "http://snomed.info/sct#422160004", VitaminAPalmitate }, 
+      { "424967004", LumiracoxibSubstance }, 
+      { "http://snomed.info/sct#424967004", LumiracoxibSubstance }, 
+      { "425645005", TetrastarchSubstance }, 
+      { "http://snomed.info/sct#425645005", TetrastarchSubstance }, 
+      { "425867009", SodiumPantothenateSubstance }, 
+      { "http://snomed.info/sct#425867009", SodiumPantothenateSubstance }, 
+      { "426390004", DroxidopaSubstance }, 
+      { "http://snomed.info/sct#426390004", DroxidopaSubstance }, 
+      { "427330005", HydroxyaminoAcidSubstance }, 
+      { "http://snomed.info/sct#427330005", HydroxyaminoAcidSubstance }, 
+      { "427638006", GluconolactoneSubstance }, 
+      { "http://snomed.info/sct#427638006", GluconolactoneSubstance }, 
+      { "428732003", HexylNicotinateSubstance }, 
+      { "http://snomed.info/sct#428732003", HexylNicotinateSubstance }, 
+      { "429592005", PolydextroseSubstance }, 
+      { "http://snomed.info/sct#429592005", PolydextroseSubstance }, 
+      { "429990006", LevoleucovorinCalciumSubstance }, 
+      { "http://snomed.info/sct#429990006", LevoleucovorinCalciumSubstance }, 
+      { "430469009", PyridoxineSubstance }, 
+      { "http://snomed.info/sct#430469009", PyridoxineSubstance }, 
+      { "430632000", PyridoxamineSubstance }, 
+      { "http://snomed.info/sct#430632000", PyridoxamineSubstance }, 
+      { "430633005", Pyridoxine5QuotePhosphateSubstance }, 
+      { "http://snomed.info/sct#430633005", Pyridoxine5QuotePhosphateSubstance }, 
+      { "430634004", Pyridoxamine5QuotePhosphateSubstance }, 
+      { "http://snomed.info/sct#430634004", Pyridoxamine5QuotePhosphateSubstance }, 
+      { "430745006", CarbamicAcidSubstance }, 
+      { "http://snomed.info/sct#430745006", CarbamicAcidSubstance }, 
+      { "430926008", PyridoxalSubstance }, 
+      { "http://snomed.info/sct#430926008", PyridoxalSubstance }, 
+      { "432165000", LMethylFolicAcid }, 
+      { "http://snomed.info/sct#432165000", LMethylFolicAcid }, 
+      { "43289005", DihydrofolicAcid }, 
+      { "http://snomed.info/sct#43289005", DihydrofolicAcid }, 
+      { "433468002", LevoleucovorinCalciumPentahydrateSubstance }, 
+      { "http://snomed.info/sct#433468002", LevoleucovorinCalciumPentahydrateSubstance }, 
+      { "43431002", Maltose }, 
+      { "http://snomed.info/sct#43431002", Maltose }, 
+      { "436801000124100", UnsaturatedFatSubstance }, 
+      { "http://snomed.info/sct#436801000124100", UnsaturatedFatSubstance }, 
+      { "436811000124102", MonounsaturatedFatSubstance }, 
+      { "http://snomed.info/sct#436811000124102", MonounsaturatedFatSubstance }, 
+      { "436821000124105", PolyunsaturatedFatSubstance }, 
+      { "http://snomed.info/sct#436821000124105", PolyunsaturatedFatSubstance }, 
+      { "436831000124108", TransFatSubstance }, 
+      { "http://snomed.info/sct#436831000124108", TransFatSubstance }, 
+      { "436841000124103", SaturatedFatSubstance }, 
+      { "http://snomed.info/sct#436841000124103", SaturatedFatSubstance }, 
+      { "43706004", AscorbicAcid }, 
+      { "http://snomed.info/sct#43706004", AscorbicAcid }, 
+      { "43728004", BetaDFructofuranose }, 
+      { "http://snomed.info/sct#43728004", BetaDFructofuranose }, 
+      { "43835003", ZincGelatin }, 
+      { "http://snomed.info/sct#43835003", ZincGelatin }, 
+      { "438901003", SugarAcidSubstance }, 
+      { "http://snomed.info/sct#438901003", SugarAcidSubstance }, 
+      { "43909000", ThiamineTriphosphate }, 
+      { "http://snomed.info/sct#43909000", ThiamineTriphosphate }, 
+      { "43984007", AlphaAminoAcid }, 
+      { "http://snomed.info/sct#43984007", AlphaAminoAcid }, 
+      { "441647003", Lacosamide }, 
+      { "http://snomed.info/sct#441647003", Lacosamide }, 
+      { "441816007", Ademetionine }, 
+      { "http://snomed.info/sct#441816007", Ademetionine }, 
+      { "442247006", CyclicOligosaccharide }, 
+      { "http://snomed.info/sct#442247006", CyclicOligosaccharide }, 
+      { "442340006", Sugammadex }, 
+      { "http://snomed.info/sct#442340006", Sugammadex }, 
+      { "442346000", RiboflavinSodiumPhosphate }, 
+      { "http://snomed.info/sct#442346000", RiboflavinSodiumPhosphate }, 
+      { "44262008", OxidizedCellulose }, 
+      { "http://snomed.info/sct#44262008", OxidizedCellulose }, 
+      { "443148002", Omega5GliadinSubstance }, 
+      { "http://snomed.info/sct#443148002", Omega5GliadinSubstance }, 
+      { "449236003", LevomefolateCalciumSubstance }, 
+      { "http://snomed.info/sct#449236003", LevomefolateCalciumSubstance }, 
+      { "44970006", AsparticAcid }, 
+      { "http://snomed.info/sct#44970006", AsparticAcid }, 
+      { "45524001", Dextranomer }, 
+      { "http://snomed.info/sct#45524001", Dextranomer }, 
+      { "45962009", Collodion }, 
+      { "http://snomed.info/sct#45962009", Collodion }, 
+      { "45997006", OmegaAminoAcid }, 
+      { "http://snomed.info/sct#45997006", OmegaAminoAcid }, 
+      { "46075000", Oligosaccharide }, 
+      { "http://snomed.info/sct#46075000", Oligosaccharide }, 
+      { "46491005", MenthylAnthranilate }, 
+      { "http://snomed.info/sct#46491005", MenthylAnthranilate }, 
+      { "47617006", BasicAminoAcid }, 
+      { "http://snomed.info/sct#47617006", BasicAminoAcid }, 
+      { "47703008", Lactose }, 
+      { "http://snomed.info/sct#47703008", Lactose }, 
+      { "48736006", RibitolTeichoicAcid }, 
+      { "http://snomed.info/sct#48736006", RibitolTeichoicAcid }, 
+      { "49506005", GluconicAcid }, 
+      { "http://snomed.info/sct#49506005", GluconicAcid }, 
+      { "4963003", NeutralAminoAcid }, 
+      { "http://snomed.info/sct#4963003", NeutralAminoAcid }, 
+      { "50233008", LevulinicAcid }, 
+      { "http://snomed.info/sct#50233008", LevulinicAcid }, 
+      { "50479000", SoyProteinIronComplex }, 
+      { "http://snomed.info/sct#50479000", SoyProteinIronComplex }, 
+      { "51224002", CarboxymethylcelluloseSodium }, 
+      { "http://snomed.info/sct#51224002", CarboxymethylcelluloseSodium }, 
+      { "52130006", Quercetin }, 
+      { "http://snomed.info/sct#52130006", Quercetin }, 
+      { "52518006", AminoAcid }, 
+      { "http://snomed.info/sct#52518006", AminoAcid }, 
+      { "52541003", Proline }, 
+      { "http://snomed.info/sct#52541003", Proline }, 
+      { "52560005", Norleucine }, 
+      { "http://snomed.info/sct#52560005", Norleucine }, 
+      { "52625008", Arginine }, 
+      { "http://snomed.info/sct#52625008", Arginine }, 
+      { "52736009", Threonine }, 
+      { "http://snomed.info/sct#52736009", Threonine }, 
+      { "53499005", RiboflavinMononucleotide }, 
+      { "http://snomed.info/sct#53499005", RiboflavinMononucleotide }, 
+      { "53646005", Fructose6Phosphate }, 
+      { "http://snomed.info/sct#53646005", Fructose6Phosphate }, 
+      { "53834009", Hemicellulose }, 
+      { "http://snomed.info/sct#53834009", Hemicellulose }, 
+      { "54041009", SafflowerOil }, 
+      { "http://snomed.info/sct#54041009", SafflowerOil }, 
+      { "54045000", Glyceraldehyde }, 
+      { "http://snomed.info/sct#54045000", Glyceraldehyde }, 
+      { "54821000", Tryptophan }, 
+      { "http://snomed.info/sct#54821000", Tryptophan }, 
+      { "55946005", Pectin }, 
+      { "http://snomed.info/sct#55946005", Pectin }, 
+      { "56383006", Leucocyanidin }, 
+      { "http://snomed.info/sct#56383006", Leucocyanidin }, 
+      { "56740002", Triiodotyrosine }, 
+      { "http://snomed.info/sct#56740002", Triiodotyrosine }, 
+      { "5691000", AbsorbableGelatinSponge }, 
+      { "http://snomed.info/sct#5691000", AbsorbableGelatinSponge }, 
+      { "58202007", Fructose }, 
+      { "http://snomed.info/sct#58202007", Fructose }, 
+      { "58753009", Alanine }, 
+      { "http://snomed.info/sct#58753009", Alanine }, 
+      { "5932006", Cysteine }, 
+      { "http://snomed.info/sct#5932006", Cysteine }, 
+      { "59882007", AminocaproicAcid }, 
+      { "http://snomed.info/sct#59882007", AminocaproicAcid }, 
+      { "59888006", Carnitine }, 
+      { "http://snomed.info/sct#59888006", Carnitine }, 
+      { "60244003", VAL3Dehydroretinol }, 
+      { "http://snomed.info/sct#60244003", VAL3Dehydroretinol }, 
+      { "60260004", Histidine }, 
+      { "http://snomed.info/sct#60260004", Histidine }, 
+      { "60764009", NeovitaminA }, 
+      { "http://snomed.info/sct#60764009", NeovitaminA }, 
+      { "6083003", Hydroxylysine }, 
+      { "http://snomed.info/sct#6083003", Hydroxylysine }, 
+      { "61045002", Sedoheptulose }, 
+      { "http://snomed.info/sct#61045002", Sedoheptulose }, 
+      { "62174006", Fructose16Phosphate }, 
+      { "http://snomed.info/sct#62174006", Fructose16Phosphate }, 
+      { "62763008", TeichoicAcid }, 
+      { "http://snomed.info/sct#62763008", TeichoicAcid }, 
+      { "63004003", Phenylalanine }, 
+      { "http://snomed.info/sct#63004003", Phenylalanine }, 
+      { "63089006", Mannose }, 
+      { "http://snomed.info/sct#63089006", Mannose }, 
+      { "63330006", NonessentialAminoAcid }, 
+      { "http://snomed.info/sct#63330006", NonessentialAminoAcid }, 
+      { "63676001", ArginineHydrochloride }, 
+      { "http://snomed.info/sct#63676001", ArginineHydrochloride }, 
+      { "63718003", FolicAcid }, 
+      { "http://snomed.info/sct#63718003", FolicAcid }, 
+      { "65183007", VitaminKAndVitaminKDerivative }, 
+      { "http://snomed.info/sct#65183007", VitaminKAndVitaminKDerivative }, 
+      { "66322002", Dextran40 }, 
+      { "http://snomed.info/sct#66322002", Dextran40 }, 
+      { "66656000", VitaminKGreaterThan1LessThan }, 
+      { "http://snomed.info/sct#66656000", VitaminKGreaterThan1LessThan }, 
+      { "669361000168106", WheatDextrin }, 
+      { "http://snomed.info/sct#669361000168106", WheatDextrin }, 
+      { "67060008", VitaminDGreaterThan3LessThanPhosphateEster }, 
+      { "http://snomed.info/sct#67060008", VitaminDGreaterThan3LessThanPhosphateEster }, 
+      { "67079006", Glucose }, 
+      { "http://snomed.info/sct#67079006", Glucose }, 
+      { "67377000", PangamicAcid }, 
+      { "http://snomed.info/sct#67377000", PangamicAcid }, 
+      { "67517005", VAL25HydroxyErgocalciferol }, 
+      { "http://snomed.info/sct#67517005", VAL25HydroxyErgocalciferol }, 
+      { "68024001", CelluloseAcetate }, 
+      { "http://snomed.info/sct#68024001", CelluloseAcetate }, 
+      { "68077006", Quercetin3Rutinoside }, 
+      { "http://snomed.info/sct#68077006", Quercetin3Rutinoside }, 
+      { "68992005", Cellulose }, 
+      { "http://snomed.info/sct#68992005", Cellulose }, 
+      { "699182008", Sulbutiamine }, 
+      { "http://snomed.info/sct#699182008", Sulbutiamine }, 
+      { "70113000", BranchedChainAminoAcid }, 
+      { "http://snomed.info/sct#70113000", BranchedChainAminoAcid }, 
+      { "70203000", Adenine }, 
+      { "http://snomed.info/sct#70203000", Adenine }, 
+      { "702796008", HidrosminSubstance }, 
+      { "http://snomed.info/sct#702796008", HidrosminSubstance }, 
+      { "70288006", Methionine }, 
+      { "http://snomed.info/sct#70288006", Methionine }, 
+      { "703122000", GabapentinEnacarbil }, 
+      { "http://snomed.info/sct#703122000", GabapentinEnacarbil }, 
+      { "703340007", ZofenoprilSubstance }, 
+      { "http://snomed.info/sct#703340007", ZofenoprilSubstance }, 
+      { "703341006", ZofenoprilCalcium }, 
+      { "http://snomed.info/sct#703341006", ZofenoprilCalcium }, 
+      { "703342004", Zofenoprilat }, 
+      { "http://snomed.info/sct#703342004", Zofenoprilat }, 
+      { "703343009", ZofenoprilatArginine }, 
+      { "http://snomed.info/sct#703343009", ZofenoprilatArginine }, 
+      { "703395001", AscorbylPalmitate }, 
+      { "http://snomed.info/sct#703395001", AscorbylPalmitate }, 
+      { "703402008", Bisbentiamine }, 
+      { "http://snomed.info/sct#703402008", Bisbentiamine }, 
+      { "704430002", Panthenol }, 
+      { "http://snomed.info/sct#704430002", Panthenol }, 
+      { "70587000", BetaAlanine }, 
+      { "http://snomed.info/sct#70587000", BetaAlanine }, 
+      { "706927001", FreeTryptophanSubstance }, 
+      { "http://snomed.info/sct#706927001", FreeTryptophanSubstance }, 
+      { "706929003", FreeThiamine }, 
+      { "http://snomed.info/sct#706929003", FreeThiamine }, 
+      { "706930008", FreeRetinolSubstance }, 
+      { "http://snomed.info/sct#706930008", FreeRetinolSubstance }, 
+      { "706938001", FreeInositolSubstance }, 
+      { "http://snomed.info/sct#706938001", FreeInositolSubstance }, 
+      { "706940006", FreeHydroxyproline }, 
+      { "http://snomed.info/sct#706940006", FreeHydroxyproline }, 
+      { "706941005", FreeHydroxylysine }, 
+      { "http://snomed.info/sct#706941005", FreeHydroxylysine }, 
+      { "706942003", FreeHomocystineSubstance }, 
+      { "http://snomed.info/sct#706942003", FreeHomocystineSubstance }, 
+      { "706943008", FreeHomocysteineSubstance }, 
+      { "http://snomed.info/sct#706943008", FreeHomocysteineSubstance }, 
+      { "706946000", FreeGammaAminobutyricAcidSubstance }, 
+      { "http://snomed.info/sct#706946000", FreeGammaAminobutyricAcidSubstance }, 
+      { "706948004", FreeCystine }, 
+      { "http://snomed.info/sct#706948004", FreeCystine }, 
+      { "706978008", Arabitol }, 
+      { "http://snomed.info/sct#706978008", Arabitol }, 
+      { "706980002", XyluloseSubstance }, 
+      { "http://snomed.info/sct#706980002", XyluloseSubstance }, 
+      { "706982005", Xanthurenate }, 
+      { "http://snomed.info/sct#706982005", Xanthurenate }, 
+      { "707019004", VAL125DihydroxyvitaminD }, 
+      { "http://snomed.info/sct#707019004", VAL125DihydroxyvitaminD }, 
+      { "707020005", VAL125DihydroxyvitaminD2Substance }, 
+      { "http://snomed.info/sct#707020005", VAL125DihydroxyvitaminD2Substance }, 
+      { "707053000", VAL25HydroxyvitaminD }, 
+      { "http://snomed.info/sct#707053000", VAL25HydroxyvitaminD }, 
+      { "70706009", Troxerutin }, 
+      { "http://snomed.info/sct#70706009", Troxerutin }, 
+      { "707070008", VAL3Epi25HydroxyvitaminD2Substance }, 
+      { "http://snomed.info/sct#707070008", VAL3Epi25HydroxyvitaminD2Substance }, 
+      { "707071007", VAL3Epi25HydroxyvitaminD3Substance }, 
+      { "http://snomed.info/sct#707071007", VAL3Epi25HydroxyvitaminD3Substance }, 
+      { "707163005", VAL2MethylbutyrylglycineSubstance }, 
+      { "http://snomed.info/sct#707163005", VAL2MethylbutyrylglycineSubstance }, 
+      { "707184000", VAL5Methyltetrahydrofolate }, 
+      { "http://snomed.info/sct#707184000", VAL5Methyltetrahydrofolate }, 
+      { "707230005", NButyrylglycine }, 
+      { "http://snomed.info/sct#707230005", NButyrylglycine }, 
+      { "707599007", GammaAminoadipate }, 
+      { "http://snomed.info/sct#707599007", GammaAminoadipate }, 
+      { "707615006", Isobutyrylglycine }, 
+      { "http://snomed.info/sct#707615006", Isobutyrylglycine }, 
+      { "707616007", Kynurenin }, 
+      { "http://snomed.info/sct#707616007", Kynurenin }, 
+      { "707661006", MethionineSulfoxideSubstance }, 
+      { "http://snomed.info/sct#707661006", MethionineSulfoxideSubstance }, 
+      { "707677007", NMethylValineSubstance }, 
+      { "http://snomed.info/sct#707677007", NMethylValineSubstance }, 
+      { "707678002", NOctanoylglycineSubstance }, 
+      { "http://snomed.info/sct#707678002", NOctanoylglycineSubstance }, 
+      { "707968002", ValerylglycineSubstance }, 
+      { "http://snomed.info/sct#707968002", ValerylglycineSubstance }, 
+      { "707976000", TransCinnamoylglycine }, 
+      { "http://snomed.info/sct#707976000", TransCinnamoylglycine }, 
+      { "708047003", SulfatedMonosaccharideSubstance }, 
+      { "http://snomed.info/sct#708047003", SulfatedMonosaccharideSubstance }, 
+      { "708052008", GlycoaminoAcidSubstance }, 
+      { "http://snomed.info/sct#708052008", GlycoaminoAcidSubstance }, 
+      { "708053003", Succinyladenosine }, 
+      { "http://snomed.info/sct#708053003", Succinyladenosine }, 
+      { "708189008", FondaparinuxSubstance }, 
+      { "http://snomed.info/sct#708189008", FondaparinuxSubstance }, 
+      { "708562005", XantinolNicotinate }, 
+      { "http://snomed.info/sct#708562005", XantinolNicotinate }, 
+      { "708600008", MenadioneSodiumBisulfiteSubstance }, 
+      { "http://snomed.info/sct#708600008", MenadioneSodiumBisulfiteSubstance }, 
+      { "708658008", ZincAminoAcidChelateSubstance }, 
+      { "http://snomed.info/sct#708658008", ZincAminoAcidChelateSubstance }, 
+      { "708703004", Tocotrienol }, 
+      { "http://snomed.info/sct#708703004", Tocotrienol }, 
+      { "708704005", ThreitolSubstance }, 
+      { "http://snomed.info/sct#708704005", ThreitolSubstance }, 
+      { "708715000", VAL15Anhydroglucitol }, 
+      { "http://snomed.info/sct#708715000", VAL15Anhydroglucitol }, 
+      { "708850004", N2HydroxyethylValine }, 
+      { "http://snomed.info/sct#708850004", N2HydroxyethylValine }, 
+      { "709060000", AnthranilateSubstance }, 
+      { "http://snomed.info/sct#709060000", AnthranilateSubstance }, 
+      { "709071004", SuccinylaminoimidazoleCarboxamideRiboside }, 
+      { "http://snomed.info/sct#709071004", SuccinylaminoimidazoleCarboxamideRiboside }, 
+      { "709125009", VAL3Hydroxyanthranilate }, 
+      { "http://snomed.info/sct#709125009", VAL3Hydroxyanthranilate }, 
+      { "709131007", GuanidinoaceticAcidSubstance }, 
+      { "http://snomed.info/sct#709131007", GuanidinoaceticAcidSubstance }, 
+      { "709152004", FreeCarnitineSubstance }, 
+      { "http://snomed.info/sct#709152004", FreeCarnitineSubstance }, 
+      { "709592008", CysteicAcid }, 
+      { "http://snomed.info/sct#709592008", CysteicAcid }, 
+      { "709610005", ProteinBoundGlucoseSubstance }, 
+      { "http://snomed.info/sct#709610005", ProteinBoundGlucoseSubstance }, 
+      { "709844000", NCarbamoylBetaAlanine }, 
+      { "http://snomed.info/sct#709844000", NCarbamoylBetaAlanine }, 
+      { "710051007", Selenomethionine }, 
+      { "http://snomed.info/sct#710051007", Selenomethionine }, 
+      { "710174009", QuinolinicAcid }, 
+      { "http://snomed.info/sct#710174009", QuinolinicAcid }, 
+      { "710238007", DeltaAlanineSubstance }, 
+      { "http://snomed.info/sct#710238007", DeltaAlanineSubstance }, 
+      { "710949005", CalciumAminoAcidChelate }, 
+      { "http://snomed.info/sct#710949005", CalciumAminoAcidChelate }, 
+      { "711335002", CarbocisteineLysineSubstance }, 
+      { "http://snomed.info/sct#711335002", CarbocisteineLysineSubstance }, 
+      { "712565006", LysineAcetate }, 
+      { "http://snomed.info/sct#712565006", LysineAcetate }, 
+      { "712594004", HistadinylIsoleucineSubstance }, 
+      { "http://snomed.info/sct#712594004", HistadinylIsoleucineSubstance }, 
+      { "712599009", BetiatideSubstance }, 
+      { "http://snomed.info/sct#712599009", BetiatideSubstance }, 
+      { "712684001", Menatetrenone }, 
+      { "http://snomed.info/sct#712684001", Menatetrenone }, 
+      { "712686004", Fursultiamine }, 
+      { "http://snomed.info/sct#712686004", Fursultiamine }, 
+      { "712713006", Fructooligosaccharide }, 
+      { "http://snomed.info/sct#712713006", Fructooligosaccharide }, 
+      { "712800005", GlycylTyrosine }, 
+      { "http://snomed.info/sct#712800005", GlycylTyrosine }, 
+      { "712808003", FlavinAdenineDinucleotideSodium }, 
+      { "http://snomed.info/sct#712808003", FlavinAdenineDinucleotideSodium }, 
+      { "713311003", SoybeanOilRefinedSubstance }, 
+      { "http://snomed.info/sct#713311003", SoybeanOilRefinedSubstance }, 
+      { "713336009", OliveOilRefinedSubstance }, 
+      { "http://snomed.info/sct#713336009", OliveOilRefinedSubstance }, 
+      { "713357001", MethiosulfoniumChloride }, 
+      { "http://snomed.info/sct#713357001", MethiosulfoniumChloride }, 
+      { "713371009", HydroxyethylStarch13004Substance }, 
+      { "http://snomed.info/sct#713371009", HydroxyethylStarch13004Substance }, 
+      { "713372002", GelatinHydrolysateSubstance }, 
+      { "http://snomed.info/sct#713372002", GelatinHydrolysateSubstance }, 
+      { "713480005", Oxaceprol }, 
+      { "http://snomed.info/sct#713480005", Oxaceprol }, 
+      { "713648000", CanolaOilSubstance }, 
+      { "http://snomed.info/sct#713648000", CanolaOilSubstance }, 
+      { "713664008", Acylglycine }, 
+      { "http://snomed.info/sct#713664008", Acylglycine }, 
+      { "715213000", IrinotecanLiposomeSubstance }, 
+      { "http://snomed.info/sct#715213000", IrinotecanLiposomeSubstance }, 
+      { "71544008", Polysaccharide }, 
+      { "http://snomed.info/sct#71544008", Polysaccharide }, 
+      { "716119001", EluxadolineSubstance }, 
+      { "http://snomed.info/sct#716119001", EluxadolineSubstance }, 
+      { "718852000", SafinamideSubstance }, 
+      { "http://snomed.info/sct#718852000", SafinamideSubstance }, 
+      { "719899003", AlphaTocopherolSuccinateSubstance }, 
+      { "http://snomed.info/sct#719899003", AlphaTocopherolSuccinateSubstance }, 
+      { "720489009", LifitegrastSubstance }, 
+      { "http://snomed.info/sct#720489009", LifitegrastSubstance }, 
+      { "720490000", LifitegrastSodiumSubstance }, 
+      { "http://snomed.info/sct#720490000", LifitegrastSodiumSubstance }, 
+      { "72164009", Inositol }, 
+      { "http://snomed.info/sct#72164009", Inositol }, 
+      { "72309009", VitaminPComplex }, 
+      { "http://snomed.info/sct#72309009", VitaminPComplex }, 
+      { "72322001", ParaAminobenzoicAcidEstersInAlcohol }, 
+      { "http://snomed.info/sct#72322001", ParaAminobenzoicAcidEstersInAlcohol }, 
+      { "724234003", AlloCystathionineSubstance }, 
+      { "http://snomed.info/sct#724234003", AlloCystathionineSubstance }, 
+      { "724239008", AlphaAminoadipicSemialdehydeSubstance }, 
+      { "http://snomed.info/sct#724239008", AlphaAminoadipicSemialdehydeSubstance }, 
+      { "725193008", SaccharopineSubstance }, 
+      { "http://snomed.info/sct#725193008", SaccharopineSubstance }, 
+      { "725553002", VAL3Hydroxykynurenine }, 
+      { "http://snomed.info/sct#725553002", VAL3Hydroxykynurenine }, 
+      { "725582001", LHomoarginineSubstance }, 
+      { "http://snomed.info/sct#725582001", LHomoarginineSubstance }, 
+      { "725622009", NicotinurateSubstance }, 
+      { "http://snomed.info/sct#725622009", NicotinurateSubstance }, 
+      { "725629000", SBetaAminoisobutyrateSubstance }, 
+      { "http://snomed.info/sct#725629000", SBetaAminoisobutyrateSubstance }, 
+      { "725634001", TrimethyllysineSubstance }, 
+      { "http://snomed.info/sct#725634001", TrimethyllysineSubstance }, 
+      { "725635000", TulathromycinSubstance }, 
+      { "http://snomed.info/sct#725635000", TulathromycinSubstance }, 
+      { "725636004", VAL3Ureidopropionate }, 
+      { "http://snomed.info/sct#725636004", VAL3Ureidopropionate }, 
+      { "725699008", PhytateSubstance }, 
+      { "http://snomed.info/sct#725699008", PhytateSubstance }, 
+      { "725729006", PimelateSubstance }, 
+      { "http://snomed.info/sct#725729006", PimelateSubstance }, 
+      { "725788000", BromfenacSodiumSesquihydrateSubstance }, 
+      { "http://snomed.info/sct#725788000", BromfenacSodiumSesquihydrateSubstance }, 
+      { "725859007", GlucoseMonohydrateSubstance }, 
+      { "http://snomed.info/sct#725859007", GlucoseMonohydrateSubstance }, 
+      { "725861003", IrinotecanHydrochlorideTrihydrateSubstance }, 
+      { "http://snomed.info/sct#725861003", IrinotecanHydrochlorideTrihydrateSubstance }, 
+      { "725893006", LAbrineSubstance }, 
+      { "http://snomed.info/sct#725893006", LAbrineSubstance }, 
+      { "725963001", GlycylTyrosineDihydrateSubstance }, 
+      { "http://snomed.info/sct#725963001", GlycylTyrosineDihydrateSubstance }, 
+      { "726013002", CocarboxylaseTetrahydrateSubstance }, 
+      { "http://snomed.info/sct#726013002", CocarboxylaseTetrahydrateSubstance }, 
+      { "726717009", CalcipotriolMonohydrateSubstance }, 
+      { "http://snomed.info/sct#726717009", CalcipotriolMonohydrateSubstance }, 
+      { "726756003", KrillOilSubstance }, 
+      { "http://snomed.info/sct#726756003", KrillOilSubstance }, 
+      { "72840006", Valine }, 
+      { "http://snomed.info/sct#72840006", Valine }, 
+      { "73131003", Carotene }, 
+      { "http://snomed.info/sct#73131003", Carotene }, 
+      { "733764007", MonosodiumAspartateMonohydrateSubstance }, 
+      { "http://snomed.info/sct#733764007", MonosodiumAspartateMonohydrateSubstance }, 
+      { "733765008", SodiumGlycerophosphateHydrateSubstance }, 
+      { "http://snomed.info/sct#733765008", SodiumGlycerophosphateHydrateSubstance }, 
+      { "733766009", SodiumGlycerophosphatePentahydrateSubstance }, 
+      { "http://snomed.info/sct#733766009", SodiumGlycerophosphatePentahydrateSubstance }, 
+      { "734466002", CitrullineMalateSubstance }, 
+      { "http://snomed.info/sct#734466002", CitrullineMalateSubstance }, 
+      { "734646000", ArginineAspartateSubstance }, 
+      { "http://snomed.info/sct#734646000", ArginineAspartateSubstance }, 
+      { "734650007", LactitolMonohydrateSubstance }, 
+      { "http://snomed.info/sct#734650007", LactitolMonohydrateSubstance }, 
+      { "734651006", HydroxocobalaminAcetateSubstance }, 
+      { "http://snomed.info/sct#734651006", HydroxocobalaminAcetateSubstance }, 
+      { "734656001", LysineAspartateSubstance }, 
+      { "http://snomed.info/sct#734656001", LysineAspartateSubstance }, 
+      { "734657005", LysineGlutamateSubstance }, 
+      { "http://snomed.info/sct#734657005", LysineGlutamateSubstance }, 
+      { "734658000", LysineHydrochlorideSubstance }, 
+      { "http://snomed.info/sct#734658000", LysineHydrochlorideSubstance }, 
+      { "734659008", LysineMonohydrateSubstance }, 
+      { "http://snomed.info/sct#734659008", LysineMonohydrateSubstance }, 
+      { "734977001", HistidineMonohydrochlorideSubstance }, 
+      { "http://snomed.info/sct#734977001", HistidineMonohydrochlorideSubstance }, 
+      { "734978006", HistidineMonohydrochlorideMonohydrateSubstance }, 
+      { "http://snomed.info/sct#734978006", HistidineMonohydrochlorideMonohydrateSubstance }, 
+      { "735062003", TidiacicArginineSubstance }, 
+      { "http://snomed.info/sct#735062003", TidiacicArginineSubstance }, 
+      { "735066000", DapabutanSubstance }, 
+      { "http://snomed.info/sct#735066000", DapabutanSubstance }, 
+      { "735069007", HesperidinMethylchalconeSubstance }, 
+      { "http://snomed.info/sct#735069007", HesperidinMethylchalconeSubstance }, 
+      { "735136009", AcetylleucineSubstance }, 
+      { "http://snomed.info/sct#735136009", AcetylleucineSubstance }, 
+      { "735247006", CornOilSubstance }, 
+      { "http://snomed.info/sct#735247006", CornOilSubstance }, 
+      { "735252001", ProteinAndProteinDerivativeSubstance }, 
+      { "http://snomed.info/sct#735252001", ProteinAndProteinDerivativeSubstance }, 
+      { "735341005", FishOilSubstance }, 
+      { "http://snomed.info/sct#735341005", FishOilSubstance }, 
+      { "73916008", Oxitriptan }, 
+      { "http://snomed.info/sct#73916008", Oxitriptan }, 
+      { "74727008", Hydroxyproline }, 
+      { "http://snomed.info/sct#74727008", Hydroxyproline }, 
+      { "74801000", Sugar }, 
+      { "http://snomed.info/sct#74801000", Sugar }, 
+      { "7509000", MannitolHexanitrate }, 
+      { "http://snomed.info/sct#7509000", MannitolHexanitrate }, 
+      { "75799006", Lysine }, 
+      { "http://snomed.info/sct#75799006", Lysine }, 
+      { "75871008", ArgininosuccinicAcid }, 
+      { "http://snomed.info/sct#75871008", ArgininosuccinicAcid }, 
+      { "75876003", SodiumAlginate }, 
+      { "http://snomed.info/sct#75876003", SodiumAlginate }, 
+      { "763052004", OrnithineHydrochloride }, 
+      { "http://snomed.info/sct#763052004", OrnithineHydrochloride }, 
+      { "763053009", OrnithineOxoglurateSubstance }, 
+      { "http://snomed.info/sct#763053009", OrnithineOxoglurateSubstance }, 
+      { "763201006", DiornithineOxoglurateDihydrate }, 
+      { "http://snomed.info/sct#763201006", DiornithineOxoglurateDihydrate }, 
+      { "763371007", SpaglumateSodiumSubstance }, 
+      { "http://snomed.info/sct#763371007", SpaglumateSodiumSubstance }, 
+      { "763378001", LeucovorinCalciumPentahydrateSubstance }, 
+      { "http://snomed.info/sct#763378001", LeucovorinCalciumPentahydrateSubstance }, 
+      { "765340000", MigalastatSubstance }, 
+      { "http://snomed.info/sct#765340000", MigalastatSubstance }, 
+      { "765341001", MigalastatHydrochlorideSubstance }, 
+      { "http://snomed.info/sct#765341001", MigalastatHydrochlorideSubstance }, 
+      { "765355009", SoybeanUnsaponifiablesSubstance }, 
+      { "http://snomed.info/sct#765355009", SoybeanUnsaponifiablesSubstance }, 
+      { "765849005", Fluciclovine }, 
+      { "http://snomed.info/sct#765849005", Fluciclovine }, 
+      { "766042009", FluorethyltyrosineSubstance }, 
+      { "http://snomed.info/sct#766042009", FluorethyltyrosineSubstance }, 
+      { "767613006", VitaminDAnalog }, 
+      { "http://snomed.info/sct#767613006", VitaminDAnalog }, 
+      { "768369005", RetinylOleate }, 
+      { "http://snomed.info/sct#768369005", RetinylOleate }, 
+      { "768547002", AnhydrousGlucose }, 
+      { "http://snomed.info/sct#768547002", AnhydrousGlucose }, 
+      { "768550004", SodiumFolinate }, 
+      { "http://snomed.info/sct#768550004", SodiumFolinate }, 
+      { "769101009", GalactanPolysulfateSubstance }, 
+      { "http://snomed.info/sct#769101009", GalactanPolysulfateSubstance }, 
+      { "769208008", DehydroascorbicAcidSubstance }, 
+      { "http://snomed.info/sct#769208008", DehydroascorbicAcidSubstance }, 
+      { "773471007", MorniflumateSubstance }, 
+      { "http://snomed.info/sct#773471007", MorniflumateSubstance }, 
+      { "77404006", Homoserine }, 
+      { "http://snomed.info/sct#77404006", Homoserine }, 
+      { "77454000", Mannoheptulose }, 
+      { "http://snomed.info/sct#77454000", Mannoheptulose }, 
+      { "7774008", NeoBVitaminA1Substance }, 
+      { "http://snomed.info/sct#7774008", NeoBVitaminA1Substance }, 
+      { "7791007", SoyProtein }, 
+      { "http://snomed.info/sct#7791007", SoyProtein }, 
+      { "781246008", MacimorelinSubstance }, 
+      { "http://snomed.info/sct#781246008", MacimorelinSubstance }, 
+      { "781247004", MacimorelinAcetateSubstance }, 
+      { "http://snomed.info/sct#781247004", MacimorelinAcetateSubstance }, 
+      { "781253004", NetarsudilSubstance }, 
+      { "http://snomed.info/sct#781253004", NetarsudilSubstance }, 
+      { "781584003", VitaminB12AndVitaminB12DerivativeSubstance }, 
+      { "http://snomed.info/sct#781584003", VitaminB12AndVitaminB12DerivativeSubstance }, 
+      { "781628006", RadioisotopeLabeledVitaminB12Substance }, 
+      { "http://snomed.info/sct#781628006", RadioisotopeLabeledVitaminB12Substance }, 
+      { "784335008", SuccinylatedGelatin }, 
+      { "http://snomed.info/sct#784335008", SuccinylatedGelatin }, 
+      { "78527003", Fucose }, 
+      { "http://snomed.info/sct#78527003", Fucose }, 
+      { "787920005", VitaminB2AndVitaminB2DerivativeSubstance }, 
+      { "http://snomed.info/sct#787920005", VitaminB2AndVitaminB2DerivativeSubstance }, 
+      { "787921009", VitaminK3AndVitaminK3Derivative }, 
+      { "http://snomed.info/sct#787921009", VitaminK3AndVitaminK3Derivative }, 
+      { "787948005", VitaminAAndVitaminADerivative }, 
+      { "http://snomed.info/sct#787948005", VitaminAAndVitaminADerivative }, 
+      { "787952005", VitaminCAndVitaminCDerivative }, 
+      { "http://snomed.info/sct#787952005", VitaminCAndVitaminCDerivative }, 
+      { "787967009", VitaminB6AndVitaminB6Derivative }, 
+      { "http://snomed.info/sct#787967009", VitaminB6AndVitaminB6Derivative }, 
+      { "788778006", GalactoseAlpha13Galactose }, 
+      { "http://snomed.info/sct#788778006", GalactoseAlpha13Galactose }, 
+      { "792796007", FolateAndFolateDerivativeSubstance }, 
+      { "http://snomed.info/sct#792796007", FolateAndFolateDerivativeSubstance }, 
+      { "79907004", AminobenzoicAcidDerivative }, 
+      { "http://snomed.info/sct#79907004", AminobenzoicAcidDerivative }, 
+      { "80393001", Diiodotyrosine }, 
+      { "http://snomed.info/sct#80393001", Diiodotyrosine }, 
+      { "80582002", Glycerol }, 
+      { "http://snomed.info/sct#80582002", Glycerol }, 
+      { "81100008", Pentose }, 
+      { "http://snomed.info/sct#81100008", Pentose }, 
+      { "8143001", Diosmin }, 
+      { "http://snomed.info/sct#8143001", Diosmin }, 
+      { "8153000", Homoproline }, 
+      { "http://snomed.info/sct#8153000", Homoproline }, 
+      { "82450006", CottonseedOil }, 
+      { "http://snomed.info/sct#82450006", CottonseedOil }, 
+      { "82622003", VitaminA }, 
+      { "http://snomed.info/sct#82622003", VitaminA }, 
+      { "83797003", Leucine }, 
+      { "http://snomed.info/sct#83797003", Leucine }, 
+      { "84035007", Cystathionine }, 
+      { "http://snomed.info/sct#84035007", Cystathionine }, 
+      { "8514004", Ornithine }, 
+      { "http://snomed.info/sct#8514004", Ornithine }, 
+      { "85214009", GlutamicAcid }, 
+      { "http://snomed.info/sct#85214009", GlutamicAcid }, 
+      { "85668006", StarchPowder }, 
+      { "http://snomed.info/sct#85668006", StarchPowder }, 
+      { "86431009", PantothenicAcid }, 
+      { "http://snomed.info/sct#86431009", PantothenicAcid }, 
+      { "87116002", VAL525DihydroxyCholecalciferolSubstance }, 
+      { "http://snomed.info/sct#87116002", VAL525DihydroxyCholecalciferolSubstance }, 
+      { "87136001", Asparagine }, 
+      { "http://snomed.info/sct#87136001", Asparagine }, 
+      { "87371008", PhosphoribosylPyrophosphate }, 
+      { "http://snomed.info/sct#87371008", PhosphoribosylPyrophosphate }, 
+      { "87708000", Vitamin }, 
+      { "http://snomed.info/sct#87708000", Vitamin }, 
+      { "88480006", Potassium }, 
+      { "http://snomed.info/sct#88480006", Potassium }, 
+      { "88546006", Sarcosine }, 
+      { "http://snomed.info/sct#88546006", Sarcosine }, 
+      { "8919000", Biotin }, 
+      { "http://snomed.info/sct#8919000", Biotin }, 
+      { "89707004", SesameOil }, 
+      { "http://snomed.info/sct#89707004", SesameOil }, 
+      { "91166002", Monoiodotyrosine }, 
+      { "http://snomed.info/sct#91166002", Monoiodotyrosine }, 
+      { "95984008", VAL2AminoadipicAcid }, 
+      { "http://snomed.info/sct#95984008", VAL2AminoadipicAcid }, 
+      { "96147003", Ethopabate }, 
+      { "http://snomed.info/sct#96147003", Ethopabate }, 
+      { "96150000", MoenomycinA }, 
+      { "http://snomed.info/sct#96150000", MoenomycinA }, 
+      { "96151001", MoenomycinBGreaterThan1LessThan }, 
+      { "http://snomed.info/sct#96151001", MoenomycinBGreaterThan1LessThan }, 
+      { "96152008", MoenomycinBGreaterThan2LessThan }, 
+      { "http://snomed.info/sct#96152008", MoenomycinBGreaterThan2LessThan }, 
+      { "96153003", MoenomycinC }, 
+      { "http://snomed.info/sct#96153003", MoenomycinC }, 
+      { "96172003", MeclofenamicAcid }, 
+      { "http://snomed.info/sct#96172003", MeclofenamicAcid }, 
+    };
   };
 }

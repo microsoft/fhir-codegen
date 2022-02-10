@@ -81,9 +81,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotEquals = "!=";
 
     /// <summary>
+    /// Literal for code: QuestionnaireEnableOperatorNotEquals
+    /// </summary>
+    public const string LiteralQuestionnaireEnableOperatorNotEquals = "http://hl7.org/fhir/questionnaire-enable-operator#!=";
+
+    /// <summary>
     /// Literal for code: LessThan
     /// </summary>
     public const string LiteralLessThan = "<";
+
+    /// <summary>
+    /// Literal for code: QuestionnaireEnableOperatorLessThan
+    /// </summary>
+    public const string LiteralQuestionnaireEnableOperatorLessThan = "http://hl7.org/fhir/questionnaire-enable-operator#<";
 
     /// <summary>
     /// Literal for code: LessOrEquals
@@ -91,9 +101,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLessOrEquals = "<=";
 
     /// <summary>
+    /// Literal for code: QuestionnaireEnableOperatorLessOrEquals
+    /// </summary>
+    public const string LiteralQuestionnaireEnableOperatorLessOrEquals = "http://hl7.org/fhir/questionnaire-enable-operator#<=";
+
+    /// <summary>
     /// Literal for code: Equals
     /// </summary>
     public const string LiteralEquals = "=";
+
+    /// <summary>
+    /// Literal for code: QuestionnaireEnableOperatorEquals
+    /// </summary>
+    public const string LiteralQuestionnaireEnableOperatorEquals = "http://hl7.org/fhir/questionnaire-enable-operator#=";
 
     /// <summary>
     /// Literal for code: GreaterThan
@@ -101,13 +121,48 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGreaterThan = ">";
 
     /// <summary>
+    /// Literal for code: QuestionnaireEnableOperatorGreaterThan
+    /// </summary>
+    public const string LiteralQuestionnaireEnableOperatorGreaterThan = "http://hl7.org/fhir/questionnaire-enable-operator#>";
+
+    /// <summary>
     /// Literal for code: GreaterOrEquals
     /// </summary>
     public const string LiteralGreaterOrEquals = ">=";
 
     /// <summary>
+    /// Literal for code: QuestionnaireEnableOperatorGreaterOrEquals
+    /// </summary>
+    public const string LiteralQuestionnaireEnableOperatorGreaterOrEquals = "http://hl7.org/fhir/questionnaire-enable-operator#>=";
+
+    /// <summary>
     /// Literal for code: Exists
     /// </summary>
     public const string LiteralExists = "exists";
+
+    /// <summary>
+    /// Literal for code: QuestionnaireEnableOperatorExists
+    /// </summary>
+    public const string LiteralQuestionnaireEnableOperatorExists = "http://hl7.org/fhir/questionnaire-enable-operator#exists";
+
+    /// <summary>
+    /// Dictionary for looking up QuestionnaireEnableOperator Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "!=", NotEquals }, 
+      { "http://hl7.org/fhir/questionnaire-enable-operator#!=", NotEquals }, 
+      { "<", LessThan }, 
+      { "http://hl7.org/fhir/questionnaire-enable-operator#<", LessThan }, 
+      { "<=", LessOrEquals }, 
+      { "http://hl7.org/fhir/questionnaire-enable-operator#<=", LessOrEquals }, 
+      { "=", Equals }, 
+      { "http://hl7.org/fhir/questionnaire-enable-operator#=", Equals }, 
+      { ">", GreaterThan }, 
+      { "http://hl7.org/fhir/questionnaire-enable-operator#>", GreaterThan }, 
+      { ">=", GreaterOrEquals }, 
+      { "http://hl7.org/fhir/questionnaire-enable-operator#>=", GreaterOrEquals }, 
+      { "exists", Exists }, 
+      { "http://hl7.org/fhir/questionnaire-enable-operator#exists", Exists }, 
+    };
   };
 }

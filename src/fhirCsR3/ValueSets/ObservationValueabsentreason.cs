@@ -108,9 +108,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAsked = "asked";
 
     /// <summary>
+    /// Literal for code: DataAbsentReasonAsked
+    /// </summary>
+    public const string LiteralDataAbsentReasonAsked = "http://hl7.org/fhir/data-absent-reason#asked";
+
+    /// <summary>
     /// Literal for code: AsText
     /// </summary>
     public const string LiteralAsText = "astext";
+
+    /// <summary>
+    /// Literal for code: DataAbsentReasonAsText
+    /// </summary>
+    public const string LiteralDataAbsentReasonAsText = "http://hl7.org/fhir/data-absent-reason#astext";
 
     /// <summary>
     /// Literal for code: Error
@@ -118,9 +128,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralError = "error";
 
     /// <summary>
+    /// Literal for code: DataAbsentReasonError
+    /// </summary>
+    public const string LiteralDataAbsentReasonError = "http://hl7.org/fhir/data-absent-reason#error";
+
+    /// <summary>
     /// Literal for code: Masked
     /// </summary>
     public const string LiteralMasked = "masked";
+
+    /// <summary>
+    /// Literal for code: DataAbsentReasonMasked
+    /// </summary>
+    public const string LiteralDataAbsentReasonMasked = "http://hl7.org/fhir/data-absent-reason#masked";
 
     /// <summary>
     /// Literal for code: NotANumber
@@ -128,9 +148,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNotANumber = "NaN";
 
     /// <summary>
+    /// Literal for code: DataAbsentReasonNotANumber
+    /// </summary>
+    public const string LiteralDataAbsentReasonNotANumber = "http://hl7.org/fhir/data-absent-reason#NaN";
+
+    /// <summary>
     /// Literal for code: NotAsked
     /// </summary>
     public const string LiteralNotAsked = "not-asked";
+
+    /// <summary>
+    /// Literal for code: DataAbsentReasonNotAsked
+    /// </summary>
+    public const string LiteralDataAbsentReasonNotAsked = "http://hl7.org/fhir/data-absent-reason#not-asked";
 
     /// <summary>
     /// Literal for code: NotPerformed
@@ -138,9 +168,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNotPerformed = "not-performed";
 
     /// <summary>
+    /// Literal for code: DataAbsentReasonNotPerformed
+    /// </summary>
+    public const string LiteralDataAbsentReasonNotPerformed = "http://hl7.org/fhir/data-absent-reason#not-performed";
+
+    /// <summary>
     /// Literal for code: Temp
     /// </summary>
     public const string LiteralTemp = "temp";
+
+    /// <summary>
+    /// Literal for code: DataAbsentReasonTemp
+    /// </summary>
+    public const string LiteralDataAbsentReasonTemp = "http://hl7.org/fhir/data-absent-reason#temp";
 
     /// <summary>
     /// Literal for code: Unknown
@@ -148,8 +188,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnknown = "unknown";
 
     /// <summary>
+    /// Literal for code: DataAbsentReasonUnknown
+    /// </summary>
+    public const string LiteralDataAbsentReasonUnknown = "http://hl7.org/fhir/data-absent-reason#unknown";
+
+    /// <summary>
     /// Literal for code: Unsupported
     /// </summary>
     public const string LiteralUnsupported = "unsupported";
+
+    /// <summary>
+    /// Literal for code: DataAbsentReasonUnsupported
+    /// </summary>
+    public const string LiteralDataAbsentReasonUnsupported = "http://hl7.org/fhir/data-absent-reason#unsupported";
+
+    /// <summary>
+    /// Dictionary for looking up ObservationValueabsentreason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "asked", Asked }, 
+      { "http://hl7.org/fhir/data-absent-reason#asked", Asked }, 
+      { "astext", AsText }, 
+      { "http://hl7.org/fhir/data-absent-reason#astext", AsText }, 
+      { "error", Error }, 
+      { "http://hl7.org/fhir/data-absent-reason#error", Error }, 
+      { "masked", Masked }, 
+      { "http://hl7.org/fhir/data-absent-reason#masked", Masked }, 
+      { "NaN", NotANumber }, 
+      { "http://hl7.org/fhir/data-absent-reason#NaN", NotANumber }, 
+      { "not-asked", NotAsked }, 
+      { "http://hl7.org/fhir/data-absent-reason#not-asked", NotAsked }, 
+      { "not-performed", NotPerformed }, 
+      { "http://hl7.org/fhir/data-absent-reason#not-performed", NotPerformed }, 
+      { "temp", Temp }, 
+      { "http://hl7.org/fhir/data-absent-reason#temp", Temp }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/data-absent-reason#unknown", Unknown }, 
+      { "unsupported", Unsupported }, 
+      { "http://hl7.org/fhir/data-absent-reason#unsupported", Unsupported }, 
+    };
   };
 }

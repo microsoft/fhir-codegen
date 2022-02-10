@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDELETE = "DELETE";
 
     /// <summary>
+    /// Literal for code: HttpVerbDELETE
+    /// </summary>
+    public const string LiteralHttpVerbDELETE = "http://hl7.org/fhir/http-verb#DELETE";
+
+    /// <summary>
     /// Literal for code: GET
     /// </summary>
     public const string LiteralGET = "GET";
+
+    /// <summary>
+    /// Literal for code: HttpVerbGET
+    /// </summary>
+    public const string LiteralHttpVerbGET = "http://hl7.org/fhir/http-verb#GET";
 
     /// <summary>
     /// Literal for code: POST
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPOST = "POST";
 
     /// <summary>
+    /// Literal for code: HttpVerbPOST
+    /// </summary>
+    public const string LiteralHttpVerbPOST = "http://hl7.org/fhir/http-verb#POST";
+
+    /// <summary>
     /// Literal for code: PUT
     /// </summary>
     public const string LiteralPUT = "PUT";
+
+    /// <summary>
+    /// Literal for code: HttpVerbPUT
+    /// </summary>
+    public const string LiteralHttpVerbPUT = "http://hl7.org/fhir/http-verb#PUT";
+
+    /// <summary>
+    /// Dictionary for looking up HttpVerb Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "DELETE", DELETE }, 
+      { "http://hl7.org/fhir/http-verb#DELETE", DELETE }, 
+      { "GET", GET }, 
+      { "http://hl7.org/fhir/http-verb#GET", GET }, 
+      { "POST", POST }, 
+      { "http://hl7.org/fhir/http-verb#POST", POST }, 
+      { "PUT", PUT }, 
+      { "http://hl7.org/fhir/http-verb#PUT", PUT }, 
+    };
   };
 }

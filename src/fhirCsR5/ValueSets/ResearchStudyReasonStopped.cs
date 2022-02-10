@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAccrualGoalMet = "accrual-goal-met";
 
     /// <summary>
+    /// Literal for code: ResearchStudyReasonStoppedAccrualGoalMet
+    /// </summary>
+    public const string LiteralResearchStudyReasonStoppedAccrualGoalMet = "http://terminology.hl7.org/CodeSystem/research-study-reason-stopped#accrual-goal-met";
+
+    /// <summary>
     /// Literal for code: ClosedDueToLackOfStudyProgress
     /// </summary>
     public const string LiteralClosedDueToLackOfStudyProgress = "closed-due-to-lack-of-study-progress";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyReasonStoppedClosedDueToLackOfStudyProgress
+    /// </summary>
+    public const string LiteralResearchStudyReasonStoppedClosedDueToLackOfStudyProgress = "http://terminology.hl7.org/CodeSystem/research-study-reason-stopped#closed-due-to-lack-of-study-progress";
 
     /// <summary>
     /// Literal for code: ClosedDueToToxicity
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClosedDueToToxicity = "closed-due-to-toxicity";
 
     /// <summary>
+    /// Literal for code: ResearchStudyReasonStoppedClosedDueToToxicity
+    /// </summary>
+    public const string LiteralResearchStudyReasonStoppedClosedDueToToxicity = "http://terminology.hl7.org/CodeSystem/research-study-reason-stopped#closed-due-to-toxicity";
+
+    /// <summary>
     /// Literal for code: TemporarilyClosedPerStudyDesign
     /// </summary>
     public const string LiteralTemporarilyClosedPerStudyDesign = "temporarily-closed-per-study-design";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyReasonStoppedTemporarilyClosedPerStudyDesign
+    /// </summary>
+    public const string LiteralResearchStudyReasonStoppedTemporarilyClosedPerStudyDesign = "http://terminology.hl7.org/CodeSystem/research-study-reason-stopped#temporarily-closed-per-study-design";
+
+    /// <summary>
+    /// Dictionary for looking up ResearchStudyReasonStopped Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "accrual-goal-met", AccrualGoalMet }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-reason-stopped#accrual-goal-met", AccrualGoalMet }, 
+      { "closed-due-to-lack-of-study-progress", ClosedDueToLackOfStudyProgress }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-reason-stopped#closed-due-to-lack-of-study-progress", ClosedDueToLackOfStudyProgress }, 
+      { "closed-due-to-toxicity", ClosedDueToToxicity }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-reason-stopped#closed-due-to-toxicity", ClosedDueToToxicity }, 
+      { "temporarily-closed-per-study-design", TemporarilyClosedPerStudyDesign }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-reason-stopped#temporarily-closed-per-study-design", TemporarilyClosedPerStudyDesign }, 
+    };
   };
 }

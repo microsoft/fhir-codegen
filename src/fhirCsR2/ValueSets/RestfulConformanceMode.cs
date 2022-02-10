@@ -36,8 +36,28 @@ namespace fhirCsR2.ValueSets
     public const string LiteralClient = "client";
 
     /// <summary>
+    /// Literal for code: RestfulConformanceModeClient
+    /// </summary>
+    public const string LiteralRestfulConformanceModeClient = "http://hl7.org/fhir/restful-conformance-mode#client";
+
+    /// <summary>
     /// Literal for code: Server
     /// </summary>
     public const string LiteralServer = "server";
+
+    /// <summary>
+    /// Literal for code: RestfulConformanceModeServer
+    /// </summary>
+    public const string LiteralRestfulConformanceModeServer = "http://hl7.org/fhir/restful-conformance-mode#server";
+
+    /// <summary>
+    /// Dictionary for looking up RestfulConformanceMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "client", Client }, 
+      { "http://hl7.org/fhir/restful-conformance-mode#client", Client }, 
+      { "server", Server }, 
+      { "http://hl7.org/fhir/restful-conformance-mode#server", Server }, 
+    };
   };
 }

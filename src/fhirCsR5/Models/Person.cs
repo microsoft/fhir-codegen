@@ -25,6 +25,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Preferred { get; set; }
     /// <summary>
+    /// Extension container element for Preferred
+    /// </summary>
+    public Element _Preferred { get; set; }
+    /// <summary>
     /// Serialize to a JSON object
     /// </summary>
     public new void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
@@ -46,6 +50,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("preferred", (bool)Preferred!);
       }
 
+      if (_Preferred != null)
+      {
+        writer.WritePropertyName("_preferred");
+        _Preferred.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -65,6 +75,11 @@ namespace fhirCsR5.Models
 
         case "preferred":
           Preferred = reader.GetBoolean();
+          break;
+
+        case "_preferred":
+          _Preferred = new fhirCsR5.Models.Element();
+          _Preferred.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -208,6 +223,12 @@ namespace fhirCsR5.Models
     public const string LEVEL2 = "level2";
     public const string LEVEL3 = "level3";
     public const string LEVEL4 = "level4";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "level1",
+      "level2",
+      "level3",
+      "level4",
+    };
   }
   /// <summary>
   /// Demographics and administrative information about a person independent of a specific health-related context.
@@ -222,6 +243,10 @@ namespace fhirCsR5.Models
     /// Whether this person's record is in active use.
     /// </summary>
     public bool? Active { get; set; }
+    /// <summary>
+    /// Extension container element for Active
+    /// </summary>
+    public Element _Active { get; set; }
     /// <summary>
     /// Person may have multiple addresses with different uses or applicable periods.
     /// </summary>
@@ -243,6 +268,10 @@ namespace fhirCsR5.Models
     /// If there's no value in the instance, it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
     /// </summary>
     public bool? DeceasedBoolean { get; set; }
+    /// <summary>
+    /// Extension container element for DeceasedBoolean
+    /// </summary>
+    public Element _DeceasedBoolean { get; set; }
     /// <summary>
     /// If there's no value in the instance, it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
     /// </summary>
@@ -322,6 +351,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("active", (bool)Active!);
       }
 
+      if (_Active != null)
+      {
+        writer.WritePropertyName("_active");
+        _Active.SerializeJson(writer, options);
+      }
+
       if ((Name != null) && (Name.Count != 0))
       {
         writer.WritePropertyName("name");
@@ -373,6 +408,12 @@ namespace fhirCsR5.Models
       if (DeceasedBoolean != null)
       {
         writer.WriteBoolean("deceasedBoolean", (bool)DeceasedBoolean!);
+      }
+
+      if (_DeceasedBoolean != null)
+      {
+        writer.WritePropertyName("_deceasedBoolean");
+        _DeceasedBoolean.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(DeceasedDateTime))
@@ -466,6 +507,11 @@ namespace fhirCsR5.Models
           Active = reader.GetBoolean();
           break;
 
+        case "_active":
+          _Active = new fhirCsR5.Models.Element();
+          _Active.DeserializeJson(ref reader, options);
+          break;
+
         case "address":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -531,6 +577,11 @@ namespace fhirCsR5.Models
 
         case "deceasedBoolean":
           DeceasedBoolean = reader.GetBoolean();
+          break;
+
+        case "_deceasedBoolean":
+          _DeceasedBoolean = new fhirCsR5.Models.Element();
+          _DeceasedBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "deceasedDateTime":
@@ -735,5 +786,11 @@ namespace fhirCsR5.Models
     public const string FEMALE = "female";
     public const string OTHER = "other";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "male",
+      "female",
+      "other",
+      "unknown",
+    };
   }
 }

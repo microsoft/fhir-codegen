@@ -126,9 +126,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNonHealthcareBusinessOrCorporation = "bus";
 
     /// <summary>
+    /// Literal for code: OrganizationTypeNonHealthcareBusinessOrCorporation
+    /// </summary>
+    public const string LiteralOrganizationTypeNonHealthcareBusinessOrCorporation = "http://terminology.hl7.org/CodeSystem/organization-type#bus";
+
+    /// <summary>
     /// Literal for code: CommunityGroup
     /// </summary>
     public const string LiteralCommunityGroup = "cg";
+
+    /// <summary>
+    /// Literal for code: OrganizationTypeCommunityGroup
+    /// </summary>
+    public const string LiteralOrganizationTypeCommunityGroup = "http://terminology.hl7.org/CodeSystem/organization-type#cg";
 
     /// <summary>
     /// Literal for code: ClinicalResearchSponsor
@@ -136,9 +146,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralClinicalResearchSponsor = "crs";
 
     /// <summary>
+    /// Literal for code: OrganizationTypeClinicalResearchSponsor
+    /// </summary>
+    public const string LiteralOrganizationTypeClinicalResearchSponsor = "http://terminology.hl7.org/CodeSystem/organization-type#crs";
+
+    /// <summary>
     /// Literal for code: HospitalDepartment
     /// </summary>
     public const string LiteralHospitalDepartment = "dept";
+
+    /// <summary>
+    /// Literal for code: OrganizationTypeHospitalDepartment
+    /// </summary>
+    public const string LiteralOrganizationTypeHospitalDepartment = "http://terminology.hl7.org/CodeSystem/organization-type#dept";
 
     /// <summary>
     /// Literal for code: EducationalInstitute
@@ -146,9 +166,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEducationalInstitute = "edu";
 
     /// <summary>
+    /// Literal for code: OrganizationTypeEducationalInstitute
+    /// </summary>
+    public const string LiteralOrganizationTypeEducationalInstitute = "http://terminology.hl7.org/CodeSystem/organization-type#edu";
+
+    /// <summary>
     /// Literal for code: Government
     /// </summary>
     public const string LiteralGovernment = "govt";
+
+    /// <summary>
+    /// Literal for code: OrganizationTypeGovernment
+    /// </summary>
+    public const string LiteralOrganizationTypeGovernment = "http://terminology.hl7.org/CodeSystem/organization-type#govt";
 
     /// <summary>
     /// Literal for code: InsuranceCompany
@@ -156,9 +186,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInsuranceCompany = "ins";
 
     /// <summary>
+    /// Literal for code: OrganizationTypeInsuranceCompany
+    /// </summary>
+    public const string LiteralOrganizationTypeInsuranceCompany = "http://terminology.hl7.org/CodeSystem/organization-type#ins";
+
+    /// <summary>
     /// Literal for code: Other
     /// </summary>
     public const string LiteralOther = "other";
+
+    /// <summary>
+    /// Literal for code: OrganizationTypeOther
+    /// </summary>
+    public const string LiteralOrganizationTypeOther = "http://terminology.hl7.org/CodeSystem/organization-type#other";
 
     /// <summary>
     /// Literal for code: Payer
@@ -166,9 +206,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPayer = "pay";
 
     /// <summary>
+    /// Literal for code: OrganizationTypePayer
+    /// </summary>
+    public const string LiteralOrganizationTypePayer = "http://terminology.hl7.org/CodeSystem/organization-type#pay";
+
+    /// <summary>
     /// Literal for code: HealthcareProvider
     /// </summary>
     public const string LiteralHealthcareProvider = "prov";
+
+    /// <summary>
+    /// Literal for code: OrganizationTypeHealthcareProvider
+    /// </summary>
+    public const string LiteralOrganizationTypeHealthcareProvider = "http://terminology.hl7.org/CodeSystem/organization-type#prov";
 
     /// <summary>
     /// Literal for code: ReligiousInstitution
@@ -176,8 +226,48 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralReligiousInstitution = "reli";
 
     /// <summary>
+    /// Literal for code: OrganizationTypeReligiousInstitution
+    /// </summary>
+    public const string LiteralOrganizationTypeReligiousInstitution = "http://terminology.hl7.org/CodeSystem/organization-type#reli";
+
+    /// <summary>
     /// Literal for code: OrganizationalTeam
     /// </summary>
     public const string LiteralOrganizationalTeam = "team";
+
+    /// <summary>
+    /// Literal for code: OrganizationTypeOrganizationalTeam
+    /// </summary>
+    public const string LiteralOrganizationTypeOrganizationalTeam = "http://terminology.hl7.org/CodeSystem/organization-type#team";
+
+    /// <summary>
+    /// Dictionary for looking up OrganizationType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "bus", NonHealthcareBusinessOrCorporation }, 
+      { "http://terminology.hl7.org/CodeSystem/organization-type#bus", NonHealthcareBusinessOrCorporation }, 
+      { "cg", CommunityGroup }, 
+      { "http://terminology.hl7.org/CodeSystem/organization-type#cg", CommunityGroup }, 
+      { "crs", ClinicalResearchSponsor }, 
+      { "http://terminology.hl7.org/CodeSystem/organization-type#crs", ClinicalResearchSponsor }, 
+      { "dept", HospitalDepartment }, 
+      { "http://terminology.hl7.org/CodeSystem/organization-type#dept", HospitalDepartment }, 
+      { "edu", EducationalInstitute }, 
+      { "http://terminology.hl7.org/CodeSystem/organization-type#edu", EducationalInstitute }, 
+      { "govt", Government }, 
+      { "http://terminology.hl7.org/CodeSystem/organization-type#govt", Government }, 
+      { "ins", InsuranceCompany }, 
+      { "http://terminology.hl7.org/CodeSystem/organization-type#ins", InsuranceCompany }, 
+      { "other", Other }, 
+      { "http://terminology.hl7.org/CodeSystem/organization-type#other", Other }, 
+      { "pay", Payer }, 
+      { "http://terminology.hl7.org/CodeSystem/organization-type#pay", Payer }, 
+      { "prov", HealthcareProvider }, 
+      { "http://terminology.hl7.org/CodeSystem/organization-type#prov", HealthcareProvider }, 
+      { "reli", ReligiousInstitution }, 
+      { "http://terminology.hl7.org/CodeSystem/organization-type#reli", ReligiousInstitution }, 
+      { "team", OrganizationalTeam }, 
+      { "http://terminology.hl7.org/CodeSystem/organization-type#team", OrganizationalTeam }, 
+    };
   };
 }

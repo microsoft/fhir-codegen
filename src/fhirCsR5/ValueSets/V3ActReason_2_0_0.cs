@@ -13,7 +13,7 @@ namespace fhirCsR5.ValueSets
   public static class V3ActReasonCodes
   {
     /// <summary>
-    /// 
+    /// ActAccommodationReason
     /// </summary>
     public static readonly Coding ActAccommodationReason = new Coding
     {
@@ -22,7 +22,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActAdjudicationReason
     /// </summary>
     public static readonly Coding ActAdjudicationReason = new Coding
     {
@@ -31,7 +31,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActBillableClinicalServiceReason
     /// </summary>
     public static readonly Coding ActBillableClinicalServiceReason = new Coding
     {
@@ -40,7 +40,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActBillableServiceReason
     /// </summary>
     public static readonly Coding ActBillableServiceReason = new Coding
     {
@@ -49,7 +49,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActConsentInformationAccessOverrideReason
     /// </summary>
     public static readonly Coding ActConsentInformationAccessOverrideReason = new Coding
     {
@@ -58,7 +58,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActCoverageLevelRasonCode
     /// </summary>
     public static readonly Coding ActCoverageLevelRasonCode = new Coding
     {
@@ -67,7 +67,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActCoverageProviderReason
     /// </summary>
     public static readonly Coding ActCoverageProviderReason = new Coding
     {
@@ -76,7 +76,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActCoverageReason
     /// </summary>
     public static readonly Coding ActCoverageReason = new Coding
     {
@@ -85,7 +85,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActCoverageServiceReason
     /// </summary>
     public static readonly Coding ActCoverageServiceReason = new Coding
     {
@@ -94,7 +94,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActHealthInformationManagementReason
     /// </summary>
     public static readonly Coding ActHealthInformationManagementReason = new Coding
     {
@@ -103,7 +103,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActHealthInformationPrivacyReason
     /// </summary>
     public static readonly Coding ActHealthInformationPrivacyReason = new Coding
     {
@@ -112,7 +112,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActImmunizationReason
     /// </summary>
     public static readonly Coding ActImmunizationReason = new Coding
     {
@@ -121,7 +121,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActIneligibilityReason
     /// </summary>
     public static readonly Coding ActIneligibilityReason = new Coding
     {
@@ -130,7 +130,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActInformationManagementReason
     /// </summary>
     public static readonly Coding ActInformationManagementReason = new Coding
     {
@@ -139,7 +139,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActInformationPrivacyReason
     /// </summary>
     public static readonly Coding ActInformationPrivacyReason = new Coding
     {
@@ -148,7 +148,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActInvalidReason
     /// </summary>
     public static readonly Coding ActInvalidReason = new Coding
     {
@@ -157,7 +157,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActInvoiceCancelReason
     /// </summary>
     public static readonly Coding ActInvoiceCancelReason = new Coding
     {
@@ -166,7 +166,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActNoImmunizationReason
     /// </summary>
     public static readonly Coding ActNoImmunizationReason = new Coding
     {
@@ -175,7 +175,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ActSupplyFulfillmentRefusalReason
     /// </summary>
     public static readonly Coding ActSupplyFulfillmentRefusalReason = new Coding
     {
@@ -184,7 +184,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ClinicalResearchEventReason
     /// </summary>
     public static readonly Coding ClinicalResearchEventReason = new Coding
     {
@@ -193,7 +193,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ClinicalResearchObservationReason
     /// </summary>
     public static readonly Coding ClinicalResearchObservationReason = new Coding
     {
@@ -202,7 +202,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// CombinedPharmacyOrderSuspendReasonCode
     /// </summary>
     public static readonly Coding CombinedPharmacyOrderSuspendReasonCode = new Coding
     {
@@ -211,7 +211,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ConrolActNullificationReasonCode
     /// </summary>
     public static readonly Coding ConrolActNullificationReasonCode = new Coding
     {
@@ -220,7 +220,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ControlActNullificationReasonCode
     /// </summary>
     public static readonly Coding ControlActNullificationReasonCode = new Coding
     {
@@ -229,7 +229,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ControlActNullificationRefusalReasonType
     /// </summary>
     public static readonly Coding ControlActNullificationRefusalReasonType = new Coding
     {
@@ -238,7 +238,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ControlActReason
     /// </summary>
     public static readonly Coding ControlActReason = new Coding
     {
@@ -247,7 +247,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ControlActReasonConditionNullify
     /// </summary>
     public static readonly Coding ControlActReasonConditionNullify = new Coding
     {
@@ -256,7 +256,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// CoverageEligibilityReason
     /// </summary>
     public static readonly Coding CoverageEligibilityReason = new Coding
     {
@@ -265,7 +265,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// CoverageExclusionReason
     /// </summary>
     public static readonly Coding CoverageExclusionReason = new Coding
     {
@@ -274,7 +274,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// CoverageFinancialParticipationReason
     /// </summary>
     public static readonly Coding CoverageFinancialParticipationReason = new Coding
     {
@@ -283,7 +283,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// CoverageLimitationReason
     /// </summary>
     public static readonly Coding CoverageLimitationReason = new Coding
     {
@@ -292,7 +292,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// EligibilityActReasonCode
     /// </summary>
     public static readonly Coding EligibilityActReasonCode = new Coding
     {
@@ -301,7 +301,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// GenericUpdateReasonCode
     /// </summary>
     public static readonly Coding GenericUpdateReasonCode = new Coding
     {
@@ -310,7 +310,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// MedicallyNecessaryDuplicateProcedureReason
     /// </summary>
     public static readonly Coding MedicallyNecessaryDuplicateProcedureReason = new Coding
     {
@@ -319,7 +319,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// medication order abort reason
     /// </summary>
     public static readonly Coding MedicationOrderAbortReason = new Coding
     {
@@ -328,7 +328,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// medication order release reason
     /// </summary>
     public static readonly Coding MedicationOrderReleaseReason = new Coding
     {
@@ -337,7 +337,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ModifyPrescriptionReasonType
     /// </summary>
     public static readonly Coding ModifyPrescriptionReasonType = new Coding
     {
@@ -346,7 +346,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// NonPerformanceReasonCode
     /// </summary>
     public static readonly Coding NonPerformanceReasonCode = new Coding
     {
@@ -355,7 +355,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// patient profile query reason
     /// </summary>
     public static readonly Coding PatientProfileQueryReason = new Coding
     {
@@ -364,7 +364,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// PharmacySupplyEventAbortReason
     /// </summary>
     public static readonly Coding PharmacySupplyEventAbortReason = new Coding
     {
@@ -373,7 +373,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// pharmacy supply event stock reason
     /// </summary>
     public static readonly Coding PharmacySupplyEventStockReason = new Coding
     {
@@ -382,7 +382,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// PharmacySupplyRequestFulfillerRevisionRefusalReasonCode
     /// </summary>
     public static readonly Coding PharmacySupplyRequestFulfillerRevisionRefusalReasonCode = new Coding
     {
@@ -391,7 +391,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// pharmacy supply request renewal refusal reason
     /// </summary>
     public static readonly Coding PharmacySupplyRequestRenewalRefusalReason = new Coding
     {
@@ -400,7 +400,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ReasonForNotEvaluatingDevice
     /// </summary>
     public static readonly Coding ReasonForNotEvaluatingDevice = new Coding
     {
@@ -409,7 +409,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ReferralReasonCode
     /// </summary>
     public static readonly Coding ReferralReasonCode = new Coding
     {
@@ -418,7 +418,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// RefusalReasonCode
     /// </summary>
     public static readonly Coding RefusalReasonCode = new Coding
     {
@@ -427,7 +427,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// SchedulingActReason
     /// </summary>
     public static readonly Coding SchedulingActReason = new Coding
     {
@@ -436,7 +436,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// StatusRevisionRefusalReasonCode
     /// </summary>
     public static readonly Coding StatusRevisionRefusalReasonCode = new Coding
     {
@@ -445,7 +445,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// SubstanceAdministrationPermissionRefusalReasonCode
     /// </summary>
     public static readonly Coding SubstanceAdministrationPermissionRefusalReasonCode = new Coding
     {
@@ -454,7 +454,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// SubstanceAdminSubstitutionNotAllowedReason
     /// </summary>
     public static readonly Coding SubstanceAdminSubstitutionNotAllowedReason = new Coding
     {
@@ -463,7 +463,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// SubstanceAdminSubstitutionReason
     /// </summary>
     public static readonly Coding SubstanceAdminSubstitutionReason = new Coding
     {
@@ -472,7 +472,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// supply order abort reason
     /// </summary>
     public static readonly Coding SupplyOrderAbortReason = new Coding
     {
@@ -481,7 +481,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// TransferActReason
     /// </summary>
     public static readonly Coding TransferActReason = new Coding
     {
@@ -490,7 +490,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// accreditation
     /// </summary>
     public static readonly Coding Accreditation = new Coding
     {
@@ -499,7 +499,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Accommodation Requested Not Available
     /// </summary>
     public static readonly Coding AccommodationRequestedNotAvailable = new Coding
     {
@@ -508,7 +508,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// administrative error in order
     /// </summary>
     public static readonly Coding AdministrativeErrorInOrder = new Coding
     {
@@ -517,7 +517,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// administrative review
     /// </summary>
     public static readonly Coding AdministrativeReview = new Coding
     {
@@ -526,7 +526,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// adverse storage condition
     /// </summary>
     public static readonly Coding AdverseStorageCondition = new Coding
     {
@@ -535,7 +535,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// age eligibility
     /// </summary>
     public static readonly Coding AgeEligibility = new Coding
     {
@@ -544,7 +544,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// allergy intolerance
     /// </summary>
     public static readonly Coding AllergyIntolerance = new Coding
     {
@@ -553,7 +553,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// new prescription exists
     /// </summary>
     public static readonly Coding NewPrescriptionExists = new Coding
     {
@@ -562,7 +562,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// try another treatment first
     /// </summary>
     public static readonly Coding TryAnotherTreatmentFirst = new Coding
     {
@@ -571,7 +571,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// altered decision
     /// </summary>
     public static readonly Coding AlteredDecision = new Coding
     {
@@ -580,7 +580,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// biomedical research
     /// </summary>
     public static readonly Coding BiomedicalResearch = new Coding
     {
@@ -589,7 +589,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Unexpected Block (of Schedule)
     /// </summary>
     public static readonly Coding UnexpectedBlockOfSchedule = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// break the glass
     /// </summary>
     public static readonly Coding BreakTheGlass = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// care management
     /// </summary>
     public static readonly Coding CareManagement = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Children only
     /// </summary>
     public static readonly Coding ChildrenOnly = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// information change
     /// </summary>
     public static readonly Coding InformationChange = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// prescription requires clarification
     /// </summary>
     public static readonly Coding PrescriptionRequiresClarification = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// clinical modification
     /// </summary>
     public static readonly Coding ClinicalModification = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// clinical trial research
     /// </summary>
     public static readonly Coding ClinicalTrialResearch = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// clinical trial research without patient care
     /// </summary>
     public static readonly Coding ClinicalTrialResearchWithoutPatientCare = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// clinical trial research with patient care
     /// </summary>
     public static readonly Coding ClinicalTrialResearchWithPatientCare = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// clinical trial
     /// </summary>
     public static readonly Coding ClinicalTrial = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// claim attachment
     /// </summary>
     public static readonly Coding ClaimAttachment = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// coordination of care
     /// </summary>
     public static readonly Coding CoordinationOfCare = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// cold chain break
     /// </summary>
     public static readonly Coding ColdChainBreak = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// compliance concern
     /// </summary>
     public static readonly Coding ComplianceConcern = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// compliance
     /// </summary>
     public static readonly Coding Compliance = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// contraindication
     /// </summary>
     public static readonly Coding Contraindication = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// coverage authorization
     /// </summary>
     public static readonly Coding CoverageAuthorization = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// coverage under policy or program
     /// </summary>
     public static readonly Coding CoverageUnderPolicyOrProgram = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// coverage suspended
     /// </summary>
     public static readonly Coding CoverageSuspended = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// crime victim
     /// </summary>
     public static readonly Coding CrimeVictim = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// continuing therapy
     /// </summary>
     public static readonly Coding ContinuingTherapy = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Patient Deceased
     /// </summary>
     public static readonly Coding PatientDeceased = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// deceased
     /// </summary>
     public static readonly Coding Deceased = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Dependents only
     /// </summary>
     public static readonly Coding DependentsOnly = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// disability
     /// </summary>
     public static readonly Coding Disability = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// disaster
     /// </summary>
     public static readonly Coding Disaster = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// product discontinued
     /// </summary>
     public static readonly Coding ProductDiscontinued = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// donation
     /// </summary>
     public static readonly Coding Donation = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// change in medication/dose
     /// </summary>
     public static readonly Coding ChangeInMedicationDose = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// drug level too high
     /// </summary>
     public static readonly Coding DrugLevelTooHigh = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// disease specific healthcare research
     /// </summary>
     public static readonly Coding DiseaseSpecificHealthcareResearch = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Employee and children
     /// </summary>
     public static readonly Coding EmployeeAndChildren = new Coding
     {
@@ -902,7 +902,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// entered in error
     /// </summary>
     public static readonly Coding EnteredInError = new Coding
     {
@@ -911,7 +911,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// eligibility determination
     /// </summary>
     public static readonly Coding EligibilityDetermination = new Coding
     {
@@ -920,7 +920,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// eligibility verification
     /// </summary>
     public static readonly Coding EligibilityVerification = new Coding
     {
@@ -929,7 +929,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Employee only
     /// </summary>
     public static readonly Coding EmployeeOnly = new Coding
     {
@@ -938,7 +938,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// employment benefit
     /// </summary>
     public static readonly Coding EmploymentBenefit = new Coding
     {
@@ -947,7 +947,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// entity administration
     /// </summary>
     public static readonly Coding EntityAdministration = new Coding
     {
@@ -956,7 +956,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// enrollment
     /// </summary>
     public static readonly Coding Enrollment = new Coding
     {
@@ -965,7 +965,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Error
     /// </summary>
     public static readonly Coding Error = new Coding
     {
@@ -974,7 +974,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// emergency room treatment
     /// </summary>
     public static readonly Coding EmergencyRoomTreatment = new Coding
     {
@@ -983,7 +983,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Employee and spouse
     /// </summary>
     public static readonly Coding EmployeeAndSpouse = new Coding
     {
@@ -992,7 +992,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Emergency Treatment
     /// </summary>
     public static readonly Coding EmergencyTreatment = new Coding
     {
@@ -1001,7 +1001,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// expired lot
     /// </summary>
     public static readonly Coding ExpiredLot = new Coding
     {
@@ -1010,7 +1010,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Family
     /// </summary>
     public static readonly Coding Family = new Coding
     {
@@ -1019,7 +1019,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// family physician must authorize further fills
     /// </summary>
     public static readonly Coding FamilyPhysicianMustAuthorizeFurtherFills = new Coding
     {
@@ -1028,7 +1028,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// family requested
     /// </summary>
     public static readonly Coding FamilyRequested = new Coding
     {
@@ -1037,7 +1037,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// fully filled
     /// </summary>
     public static readonly Coding FullyFilled = new Coding
     {
@@ -1046,7 +1046,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// No Financial Backing
     /// </summary>
     public static readonly Coding NoFinancialBacking = new Coding
     {
@@ -1055,7 +1055,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// financial eligibility
     /// </summary>
     public static readonly Coding FinancialEligibility = new Coding
     {
@@ -1064,7 +1064,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// error correction
     /// </summary>
     public static readonly Coding ErrorCorrection = new Coding
     {
@@ -1073,7 +1073,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Floor Convenience
     /// </summary>
     public static readonly Coding FloorConvenience = new Coding
     {
@@ -1082,7 +1082,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// floor stock
     /// </summary>
     public static readonly Coding FloorStock = new Coding
     {
@@ -1091,7 +1091,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// order aborted
     /// </summary>
     public static readonly Coding OrderAborted = new Coding
     {
@@ -1100,7 +1100,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// order suspended
     /// </summary>
     public static readonly Coding OrderSuspended = new Coding
     {
@@ -1109,7 +1109,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// formulary policy
     /// </summary>
     public static readonly Coding FormularyPolicy = new Coding
     {
@@ -1118,7 +1118,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// fraud
     /// </summary>
     public static readonly Coding Fraud = new Coding
     {
@@ -1127,7 +1127,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// order stopped
     /// </summary>
     public static readonly Coding OrderStopped = new Coding
     {
@@ -1136,7 +1136,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// stale-dated order
     /// </summary>
     public static readonly Coding StaleDatedOrder = new Coding
     {
@@ -1145,7 +1145,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// incomplete data
     /// </summary>
     public static readonly Coding IncompleteData = new Coding
     {
@@ -1154,7 +1154,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// product unavailable
     /// </summary>
     public static readonly Coding ProductUnavailable = new Coding
     {
@@ -1163,7 +1163,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ethical/religious
     /// </summary>
     public static readonly Coding EthicalReligious = new Coding
     {
@@ -1172,7 +1172,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// unable to provide care
     /// </summary>
     public static readonly Coding UnableToProvideCare = new Coding
     {
@@ -1181,7 +1181,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// government
     /// </summary>
     public static readonly Coding Government = new Coding
     {
@@ -1190,7 +1190,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// health accreditation
     /// </summary>
     public static readonly Coding HealthAccreditation = new Coding
     {
@@ -1199,7 +1199,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// health compliance
     /// </summary>
     public static readonly Coding HealthCompliance = new Coding
     {
@@ -1208,7 +1208,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// decedent
     /// </summary>
     public static readonly Coding Decedent = new Coding
     {
@@ -1217,7 +1217,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// directory
     /// </summary>
     public static readonly Coding Directory = new Coding
     {
@@ -1226,7 +1226,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// healthcare delivery management
     /// </summary>
     public static readonly Coding HealthcareDeliveryManagement = new Coding
     {
@@ -1235,7 +1235,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// health status
     /// </summary>
     public static readonly Coding HealthStatus = new Coding
     {
@@ -1244,7 +1244,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// legal
     /// </summary>
     public static readonly Coding Legal = new Coding
     {
@@ -1253,7 +1253,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// healthcare marketing
     /// </summary>
     public static readonly Coding HealthcareMarketing = new Coding
     {
@@ -1262,7 +1262,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// suspend reason no longer applies
     /// </summary>
     public static readonly Coding SuspendReasonNoLongerApplies = new Coding
     {
@@ -1271,7 +1271,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// suspend reason inappropriate
     /// </summary>
     public static readonly Coding SuspendReasonInappropriate = new Coding
     {
@@ -1280,7 +1280,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// healthcare operations
     /// </summary>
     public static readonly Coding HealthcareOperations = new Coding
     {
@@ -1289,7 +1289,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// admission to hospital
     /// </summary>
     public static readonly Coding AdmissionToHospital = new Coding
     {
@@ -1298,7 +1298,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// health outcome measure
     /// </summary>
     public static readonly Coding HealthOutcomeMeasure = new Coding
     {
@@ -1307,7 +1307,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// healthcare payment
     /// </summary>
     public static readonly Coding HealthcarePayment = new Coding
     {
@@ -1316,7 +1316,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// health program reporting
     /// </summary>
     public static readonly Coding HealthProgramReporting = new Coding
     {
@@ -1325,7 +1325,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// health quality improvement
     /// </summary>
     public static readonly Coding HealthQualityImprovement = new Coding
     {
@@ -1334,7 +1334,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// healthcare research
     /// </summary>
     public static readonly Coding HealthcareResearch = new Coding
     {
@@ -1343,7 +1343,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// health system administration
     /// </summary>
     public static readonly Coding HealthSystemAdministration = new Coding
     {
@@ -1352,7 +1352,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// test health data
     /// </summary>
     public static readonly Coding TestHealthData = new Coding
     {
@@ -1361,7 +1361,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// immunity
     /// </summary>
     public static readonly Coding Immunity = new Coding
     {
@@ -1370,7 +1370,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// condition improved
     /// </summary>
     public static readonly Coding ConditionImproved = new Coding
     {
@@ -1379,7 +1379,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// incorrect covered party as patient
     /// </summary>
     public static readonly Coding IncorrectCoveredPartyAsPatient = new Coding
     {
@@ -1388,7 +1388,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// incorrect billing
     /// </summary>
     public static readonly Coding IncorrectBilling = new Coding
     {
@@ -1397,7 +1397,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// incorrect policy
     /// </summary>
     public static readonly Coding IncorrectPolicy = new Coding
     {
@@ -1406,7 +1406,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// incorrect provider
     /// </summary>
     public static readonly Coding IncorrectProvider = new Coding
     {
@@ -1415,7 +1415,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Individual
     /// </summary>
     public static readonly Coding Individual = new Coding
     {
@@ -1424,7 +1424,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// ineffective
     /// </summary>
     public static readonly Coding Ineffective = new Coding
     {
@@ -1433,7 +1433,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// in requested state
     /// </summary>
     public static readonly Coding InRequestedState = new Coding
     {
@@ -1442,7 +1442,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// intolerance
     /// </summary>
     public static readonly Coding Intolerance = new Coding
     {
@@ -1459,7 +1459,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// labeling
     /// </summary>
     public static readonly Coding Labeling = new Coding
     {
@@ -1468,7 +1468,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// lab interference issues
     /// </summary>
     public static readonly Coding LabInterferenceIssues = new Coding
     {
@@ -1477,7 +1477,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// subpoena
     /// </summary>
     public static readonly Coding Subpoena = new Coding
     {
@@ -1486,7 +1486,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// locked
     /// </summary>
     public static readonly Coding Locked = new Coding
     {
@@ -1495,7 +1495,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// long term care use
     /// </summary>
     public static readonly Coding LongTermCareUse = new Coding
     {
@@ -1504,7 +1504,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// marketing
     /// </summary>
     public static readonly Coding Marketing = new Coding
     {
@@ -1513,7 +1513,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// merge data
     /// </summary>
     public static readonly Coding MergeData = new Coding
     {
@@ -1522,7 +1522,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Medical Status Altered
     /// </summary>
     public static readonly Coding MedicalStatusAltered = new Coding
     {
@@ -1531,7 +1531,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Medical Necessity
     /// </summary>
     public static readonly Coding MedicalNecessity = new Coding
     {
@@ -1540,7 +1540,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// medical precaution
     /// </summary>
     public static readonly Coding MedicalPrecaution = new Coding
     {
@@ -1549,7 +1549,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// member administration
     /// </summary>
     public static readonly Coding MemberAdministration = new Coding
     {
@@ -1558,7 +1558,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// metadata management
     /// </summary>
     public static readonly Coding MetadataManagement = new Coding
     {
@@ -1567,7 +1567,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// military command
     /// </summary>
     public static readonly Coding MilitaryCommand = new Coding
     {
@@ -1576,7 +1576,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// military discharge
     /// </summary>
     public static readonly Coding MilitaryDischarge = new Coding
     {
@@ -1585,7 +1585,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// modified prescription exists
     /// </summary>
     public static readonly Coding ModifiedPrescriptionExists = new Coding
     {
@@ -1594,7 +1594,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// response to monitoring
     /// </summary>
     public static readonly Coding ResponseToMonitoring = new Coding
     {
@@ -1603,7 +1603,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// In an outside meeting
     /// </summary>
     public static readonly Coding InAnOutsideMeeting = new Coding
     {
@@ -1612,7 +1612,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// multiple criteria eligibility
     /// </summary>
     public static readonly Coding MultipleCriteriaEligibility = new Coding
     {
@@ -1621,7 +1621,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// patient must make appointment
     /// </summary>
     public static readonly Coding PatientMustMakeAppointment = new Coding
     {
@@ -1630,7 +1630,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// new information
     /// </summary>
     public static readonly Coding NewInformation = new Coding
     {
@@ -1639,7 +1639,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// new strength
     /// </summary>
     public static readonly Coding NewStrength = new Coding
     {
@@ -1648,7 +1648,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// new therapy
     /// </summary>
     public static readonly Coding NewTherapy = new Coding
     {
@@ -1657,7 +1657,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// no agent permission
     /// </summary>
     public static readonly Coding NoAgentPermission = new Coding
     {
@@ -1666,7 +1666,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// no match
     /// </summary>
     public static readonly Coding NoMatch = new Coding
     {
@@ -1675,7 +1675,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// patient not-available
     /// </summary>
     public static readonly Coding PatientNotAvailable = new Coding
     {
@@ -1684,7 +1684,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// no permission
     /// </summary>
     public static readonly Coding NoPermission = new Coding
     {
@@ -1693,7 +1693,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// not picked up
     /// </summary>
     public static readonly Coding NotPickedUp = new Coding
     {
@@ -1702,7 +1702,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// no product match
     /// </summary>
     public static readonly Coding NoProductMatch = new Coding
     {
@@ -1711,7 +1711,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// no record match
     /// </summary>
     public static readonly Coding NoRecordMatch = new Coding
     {
@@ -1720,7 +1720,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// no longer required for treatment
     /// </summary>
     public static readonly Coding NoLongerRequiredForTreatment = new Coding
     {
@@ -1729,7 +1729,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// no service match
     /// </summary>
     public static readonly Coding NoServiceMatch = new Coding
     {
@@ -1738,7 +1738,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// prescriber not available
     /// </summary>
     public static readonly Coding PrescriberNotAvailable = new Coding
     {
@@ -1747,7 +1747,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// not covered
     /// </summary>
     public static readonly Coding NotCovered = new Coding
     {
@@ -1756,7 +1756,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// patient no longer in this practice
     /// </summary>
     public static readonly Coding PatientNoLongerInThisPractice = new Coding
     {
@@ -1765,7 +1765,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// no user permission
     /// </summary>
     public static readonly Coding NoUserPermission = new Coding
     {
@@ -1774,7 +1774,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// no user permission
     /// </summary>
     public static readonly Coding NoUserPermission_2 = new Coding
     {
@@ -1783,7 +1783,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// no version match
     /// </summary>
     public static readonly Coding NoVersionMatch = new Coding
     {
@@ -1792,7 +1792,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// non-protocol
     /// </summary>
     public static readonly Coding NonProtocol = new Coding
     {
@@ -1801,7 +1801,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// office use
     /// </summary>
     public static readonly Coding OfficeUse = new Coding
     {
@@ -1810,7 +1810,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// medication on hold
     /// </summary>
     public static readonly Coding MedicationOnHold = new Coding
     {
@@ -1819,7 +1819,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// operations
     /// </summary>
     public static readonly Coding Operations = new Coding
     {
@@ -1828,7 +1828,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// out of stock
     /// </summary>
     public static readonly Coding OutOfStock = new Coding
     {
@@ -1837,7 +1837,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// product out of stock
     /// </summary>
     public static readonly Coding ProductOutOfStock = new Coding
     {
@@ -1846,7 +1846,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// outcome measure
     /// </summary>
     public static readonly Coding OutcomeMeasure = new Coding
     {
@@ -1855,7 +1855,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// administered outside recommended schedule or practice
     /// </summary>
     public static readonly Coding AdministeredOutsideRecommendedScheduleOrPractice = new Coding
     {
@@ -1864,7 +1864,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// emergency treatment override
     /// </summary>
     public static readonly Coding EmergencyTreatmentOverride = new Coding
     {
@@ -1873,7 +1873,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// incompetency override
     /// </summary>
     public static readonly Coding IncompetencyOverride = new Coding
     {
@@ -1882,7 +1882,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// professional judgment override
     /// </summary>
     public static readonly Coding ProfessionalJudgmentOverride = new Coding
     {
@@ -1891,7 +1891,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// public safety override
     /// </summary>
     public static readonly Coding PublicSafetyOverride = new Coding
     {
@@ -1900,7 +1900,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// third party safety override
     /// </summary>
     public static readonly Coding ThirdPartySafetyOverride = new Coding
     {
@@ -1909,7 +1909,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Patient request
     /// </summary>
     public static readonly Coding PatientRequest = new Coding
     {
@@ -1918,7 +1918,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// patient administration
     /// </summary>
     public static readonly Coding PatientAdministration = new Coding
     {
@@ -1927,7 +1927,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// patient care
     /// </summary>
     public static readonly Coding PatientCare = new Coding
     {
@@ -1936,7 +1936,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// patient changed mind
     /// </summary>
     public static readonly Coding PatientChangedMind = new Coding
     {
@@ -1945,7 +1945,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// patient not eligible
     /// </summary>
     public static readonly Coding PatientNotEligible = new Coding
     {
@@ -1954,7 +1954,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// patient objection
     /// </summary>
     public static readonly Coding PatientObjection = new Coding
     {
@@ -1963,7 +1963,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// patient request query
     /// </summary>
     public static readonly Coding PatientRequestQuery = new Coding
     {
@@ -1972,7 +1972,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// patient requested
     /// </summary>
     public static readonly Coding PatientRequested = new Coding
     {
@@ -1981,7 +1981,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// patient safety
     /// </summary>
     public static readonly Coding PatientSafety = new Coding
     {
@@ -1990,7 +1990,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// payment
     /// </summary>
     public static readonly Coding Payment = new Coding
     {
@@ -1999,7 +1999,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// performance measure
     /// </summary>
     public static readonly Coding PerformanceMeasure = new Coding
     {
@@ -2008,7 +2008,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// pharmacy transfer
     /// </summary>
     public static readonly Coding PharmacyTransfer = new Coding
     {
@@ -2017,7 +2017,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// philosophical objection
     /// </summary>
     public static readonly Coding PhilosophicalObjection = new Coding
     {
@@ -2026,7 +2026,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Physician request
     /// </summary>
     public static readonly Coding PhysicianRequest = new Coding
     {
@@ -2035,7 +2035,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// property and casualty condition
     /// </summary>
     public static readonly Coding PropertyAndCasualtyCondition = new Coding
     {
@@ -2044,7 +2044,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// population origins or ancestry healthcare research
     /// </summary>
     public static readonly Coding PopulationOriginsOrAncestryHealthcareResearch = new Coding
     {
@@ -2053,7 +2053,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// population health
     /// </summary>
     public static readonly Coding PopulationHealth = new Coding
     {
@@ -2062,7 +2062,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// per protocol
     /// </summary>
     public static readonly Coding PerProtocol = new Coding
     {
@@ -2071,7 +2071,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// practice review
     /// </summary>
     public static readonly Coding PracticeReview = new Coding
     {
@@ -2080,7 +2080,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// preclinical trial research
     /// </summary>
     public static readonly Coding PreclinicalTrialResearch = new Coding
     {
@@ -2089,7 +2089,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// patient refuse
     /// </summary>
     public static readonly Coding PatientRefuse = new Coding
     {
@@ -2098,7 +2098,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// parent is pregnant/breast feeding
     /// </summary>
     public static readonly Coding ParentIsPregnantBreastFeeding = new Coding
     {
@@ -2107,7 +2107,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// program reporting
     /// </summary>
     public static readonly Coding ProgramReporting = new Coding
     {
@@ -2116,7 +2116,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// product not available
     /// </summary>
     public static readonly Coding ProductNotAvailable = new Coding
     {
@@ -2133,7 +2133,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// product recall
     /// </summary>
     public static readonly Coding ProductRecall = new Coding
     {
@@ -2142,7 +2142,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// program use
     /// </summary>
     public static readonly Coding ProgramUse = new Coding
     {
@@ -2151,7 +2151,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// protocol not met
     /// </summary>
     public static readonly Coding ProtocolNotMet = new Coding
     {
@@ -2160,7 +2160,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// provider not authorized
     /// </summary>
     public static readonly Coding ProviderNotAuthorized = new Coding
     {
@@ -2169,7 +2169,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// public health
     /// </summary>
     public static readonly Coding PublicHealth = new Coding
     {
@@ -2178,7 +2178,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// purpose of use
     /// </summary>
     public static readonly Coding PurposeOfUse = new Coding
     {
@@ -2187,7 +2187,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// power of attorney
     /// </summary>
     public static readonly Coding PowerOfAttorney = new Coding
     {
@@ -2196,7 +2196,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// quality improvement
     /// </summary>
     public static readonly Coding QualityImprovement = new Coding
     {
@@ -2205,7 +2205,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// change supply quantity
     /// </summary>
     public static readonly Coding ChangeSupplyQuantity = new Coding
     {
@@ -2214,7 +2214,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// product recalled
     /// </summary>
     public static readonly Coding ProductRecalled = new Coding
     {
@@ -2223,7 +2223,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// records management
     /// </summary>
     public static readonly Coding RecordsManagement = new Coding
     {
@@ -2240,7 +2240,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// registered in error
     /// </summary>
     public static readonly Coding RegisteredInError = new Coding
     {
@@ -2249,7 +2249,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// regulatory review
     /// </summary>
     public static readonly Coding RegulatoryReview = new Coding
     {
@@ -2258,7 +2258,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// religious objection
     /// </summary>
     public static readonly Coding ReligiousObjection = new Coding
     {
@@ -2267,7 +2267,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// remittance advice
     /// </summary>
     public static readonly Coding RemittanceAdvice = new Coding
     {
@@ -2276,7 +2276,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// change in order
     /// </summary>
     public static readonly Coding ChangeInOrder = new Coding
     {
@@ -2285,7 +2285,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// error in order
     /// </summary>
     public static readonly Coding ErrorInOrder = new Coding
     {
@@ -2294,7 +2294,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// research
     /// </summary>
     public static readonly Coding Research = new Coding
     {
@@ -2303,7 +2303,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// retest
     /// </summary>
     public static readonly Coding Retest = new Coding
     {
@@ -2320,7 +2320,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Request
     /// </summary>
     public static readonly Coding Request = new Coding
     {
@@ -2329,7 +2329,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// regulatory requirement
     /// </summary>
     public static readonly Coding RegulatoryRequirement = new Coding
     {
@@ -2338,7 +2338,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// research
     /// </summary>
     public static readonly Coding Research_2 = new Coding
     {
@@ -2347,7 +2347,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// allergy
     /// </summary>
     public static readonly Coding Allergy = new Coding
     {
@@ -2356,7 +2356,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// scheduled
     /// </summary>
     public static readonly Coding Scheduled = new Coding
     {
@@ -2365,7 +2365,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// drug interacts with another drug
     /// </summary>
     public static readonly Coding DrugInteractsWithAnotherDrug = new Coding
     {
@@ -2374,7 +2374,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// duplicate therapy
     /// </summary>
     public static readonly Coding DuplicateTherapy = new Coding
     {
@@ -2383,7 +2383,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// suspected intolerance
     /// </summary>
     public static readonly Coding SuspectedIntolerance = new Coding
     {
@@ -2392,7 +2392,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Spouse and children
     /// </summary>
     public static readonly Coding SpouseAndChildren = new Coding
     {
@@ -2401,7 +2401,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Spouse only
     /// </summary>
     public static readonly Coding SpouseOnly = new Coding
     {
@@ -2410,7 +2410,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// service
     /// </summary>
     public static readonly Coding Service = new Coding
     {
@@ -2419,7 +2419,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// statutory eligibility
     /// </summary>
     public static readonly Coding StatutoryEligibility = new Coding
     {
@@ -2428,7 +2428,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// prescriber stopped medication for patient
     /// </summary>
     public static readonly Coding PrescriberStoppedMedicationForPatient = new Coding
     {
@@ -2437,7 +2437,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// support network
     /// </summary>
     public static readonly Coding SupportNetwork = new Coding
     {
@@ -2446,7 +2446,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// patient scheduled for surgery
     /// </summary>
     public static readonly Coding PatientScheduledForSurgery = new Coding
     {
@@ -2455,7 +2455,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// system administration
     /// </summary>
     public static readonly Coding SystemAdministration = new Coding
     {
@@ -2464,7 +2464,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// system development
     /// </summary>
     public static readonly Coding SystemDevelopment = new Coding
     {
@@ -2473,7 +2473,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// therapeutic characteristics
     /// </summary>
     public static readonly Coding TherapeuticCharacteristics = new Coding
     {
@@ -2482,7 +2482,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// threat
     /// </summary>
     public static readonly Coding Threat = new Coding
     {
@@ -2491,7 +2491,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// too early
     /// </summary>
     public static readonly Coding TooEarly = new Coding
     {
@@ -2500,7 +2500,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// training
     /// </summary>
     public static readonly Coding Training = new Coding
     {
@@ -2517,7 +2517,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// translational healthcare research
     /// </summary>
     public static readonly Coding TranslationalHealthcareResearch = new Coding
     {
@@ -2526,7 +2526,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// treatment
     /// </summary>
     public static readonly Coding Treatment = new Coding
     {
@@ -2535,7 +2535,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// clinical trial drug
     /// </summary>
     public static readonly Coding ClinicalTrialDrug = new Coding
     {
@@ -2544,7 +2544,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// termination
     /// </summary>
     public static readonly Coding Termination = new Coding
     {
@@ -2553,7 +2553,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// unmerge data
     /// </summary>
     public static readonly Coding UnmergeData = new Coding
     {
@@ -2562,7 +2562,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// unable to use
     /// </summary>
     public static readonly Coding UnableToUse = new Coding
     {
@@ -2571,7 +2571,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// unknown target
     /// </summary>
     public static readonly Coding UnknownTarget = new Coding
     {
@@ -2580,7 +2580,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// unscheduled
     /// </summary>
     public static readonly Coding Unscheduled = new Coding
     {
@@ -2589,7 +2589,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// per definition
     /// </summary>
     public static readonly Coding PerDefinition = new Coding
     {
@@ -2598,7 +2598,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// vaccine efficacy concerns
     /// </summary>
     public static readonly Coding VaccineEfficacyConcerns = new Coding
     {
@@ -2607,7 +2607,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// vaccine safety concerns
     /// </summary>
     public static readonly Coding VaccineSafetyConcerns = new Coding
     {
@@ -2616,7 +2616,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// validation review
     /// </summary>
     public static readonly Coding ValidationReview = new Coding
     {
@@ -2625,7 +2625,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// motor vehicle accident victim
     /// </summary>
     public static readonly Coding MotorVehicleAccidentVictim = new Coding
     {
@@ -2634,7 +2634,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// waiting for old drug to wash out
     /// </summary>
     public static readonly Coding WaitingForOldDrugToWashOut = new Coding
     {
@@ -2643,7 +2643,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// work related
     /// </summary>
     public static readonly Coding WorkRelated = new Coding
     {
@@ -2652,7 +2652,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// wrong version
     /// </summary>
     public static readonly Coding WrongVersion = new Coding
     {
@@ -2667,9 +2667,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActAccommodationReason = "_ActAccommodationReason";
 
     /// <summary>
+    /// Literal for code: V3ActReasonActAccommodationReason
+    /// </summary>
+    public const string LiteralV3ActReasonActAccommodationReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActAccommodationReason";
+
+    /// <summary>
     /// Literal for code: ActAdjudicationReason
     /// </summary>
     public const string LiteralActAdjudicationReason = "_ActAdjudicationReason";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonActAdjudicationReason
+    /// </summary>
+    public const string LiteralV3ActReasonActAdjudicationReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActAdjudicationReason";
 
     /// <summary>
     /// Literal for code: ActBillableClinicalServiceReason
@@ -2677,9 +2687,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActBillableClinicalServiceReason = "_ActBillableClinicalServiceReason";
 
     /// <summary>
+    /// Literal for code: V3ActReasonActBillableClinicalServiceReason
+    /// </summary>
+    public const string LiteralV3ActReasonActBillableClinicalServiceReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActBillableClinicalServiceReason";
+
+    /// <summary>
     /// Literal for code: ActBillableServiceReason
     /// </summary>
     public const string LiteralActBillableServiceReason = "_ActBillableServiceReason";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonActBillableServiceReason
+    /// </summary>
+    public const string LiteralV3ActReasonActBillableServiceReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActBillableServiceReason";
 
     /// <summary>
     /// Literal for code: ActConsentInformationAccessOverrideReason
@@ -2687,9 +2707,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActConsentInformationAccessOverrideReason = "_ActConsentInformationAccessOverrideReason";
 
     /// <summary>
+    /// Literal for code: V3ActReasonActConsentInformationAccessOverrideReason
+    /// </summary>
+    public const string LiteralV3ActReasonActConsentInformationAccessOverrideReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActConsentInformationAccessOverrideReason";
+
+    /// <summary>
     /// Literal for code: ActCoverageLevelRasonCode
     /// </summary>
     public const string LiteralActCoverageLevelRasonCode = "_ActCoverageLevelRasonCode";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonActCoverageLevelRasonCode
+    /// </summary>
+    public const string LiteralV3ActReasonActCoverageLevelRasonCode = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActCoverageLevelRasonCode";
 
     /// <summary>
     /// Literal for code: ActCoverageProviderReason
@@ -2697,9 +2727,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActCoverageProviderReason = "_ActCoverageProviderReason";
 
     /// <summary>
+    /// Literal for code: V3ActReasonActCoverageProviderReason
+    /// </summary>
+    public const string LiteralV3ActReasonActCoverageProviderReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActCoverageProviderReason";
+
+    /// <summary>
     /// Literal for code: ActCoverageReason
     /// </summary>
     public const string LiteralActCoverageReason = "_ActCoverageReason";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonActCoverageReason
+    /// </summary>
+    public const string LiteralV3ActReasonActCoverageReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActCoverageReason";
 
     /// <summary>
     /// Literal for code: ActCoverageServiceReason
@@ -2707,9 +2747,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActCoverageServiceReason = "_ActCoverageServiceReason";
 
     /// <summary>
+    /// Literal for code: V3ActReasonActCoverageServiceReason
+    /// </summary>
+    public const string LiteralV3ActReasonActCoverageServiceReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActCoverageServiceReason";
+
+    /// <summary>
     /// Literal for code: ActHealthInformationManagementReason
     /// </summary>
     public const string LiteralActHealthInformationManagementReason = "_ActHealthInformationManagementReason";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonActHealthInformationManagementReason
+    /// </summary>
+    public const string LiteralV3ActReasonActHealthInformationManagementReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActHealthInformationManagementReason";
 
     /// <summary>
     /// Literal for code: ActHealthInformationPrivacyReason
@@ -2717,9 +2767,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActHealthInformationPrivacyReason = "_ActHealthInformationPrivacyReason";
 
     /// <summary>
+    /// Literal for code: V3ActReasonActHealthInformationPrivacyReason
+    /// </summary>
+    public const string LiteralV3ActReasonActHealthInformationPrivacyReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActHealthInformationPrivacyReason";
+
+    /// <summary>
     /// Literal for code: ActImmunizationReason
     /// </summary>
     public const string LiteralActImmunizationReason = "_ActImmunizationReason";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonActImmunizationReason
+    /// </summary>
+    public const string LiteralV3ActReasonActImmunizationReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActImmunizationReason";
 
     /// <summary>
     /// Literal for code: ActIneligibilityReason
@@ -2727,9 +2787,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActIneligibilityReason = "_ActIneligibilityReason";
 
     /// <summary>
+    /// Literal for code: V3ActReasonActIneligibilityReason
+    /// </summary>
+    public const string LiteralV3ActReasonActIneligibilityReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActIneligibilityReason";
+
+    /// <summary>
     /// Literal for code: ActInformationManagementReason
     /// </summary>
     public const string LiteralActInformationManagementReason = "_ActInformationManagementReason";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonActInformationManagementReason
+    /// </summary>
+    public const string LiteralV3ActReasonActInformationManagementReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActInformationManagementReason";
 
     /// <summary>
     /// Literal for code: ActInformationPrivacyReason
@@ -2737,9 +2807,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActInformationPrivacyReason = "_ActInformationPrivacyReason";
 
     /// <summary>
+    /// Literal for code: V3ActReasonActInformationPrivacyReason
+    /// </summary>
+    public const string LiteralV3ActReasonActInformationPrivacyReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActInformationPrivacyReason";
+
+    /// <summary>
     /// Literal for code: ActInvalidReason
     /// </summary>
     public const string LiteralActInvalidReason = "_ActInvalidReason";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonActInvalidReason
+    /// </summary>
+    public const string LiteralV3ActReasonActInvalidReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActInvalidReason";
 
     /// <summary>
     /// Literal for code: ActInvoiceCancelReason
@@ -2747,9 +2827,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActInvoiceCancelReason = "_ActInvoiceCancelReason";
 
     /// <summary>
+    /// Literal for code: V3ActReasonActInvoiceCancelReason
+    /// </summary>
+    public const string LiteralV3ActReasonActInvoiceCancelReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActInvoiceCancelReason";
+
+    /// <summary>
     /// Literal for code: ActNoImmunizationReason
     /// </summary>
     public const string LiteralActNoImmunizationReason = "_ActNoImmunizationReason";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonActNoImmunizationReason
+    /// </summary>
+    public const string LiteralV3ActReasonActNoImmunizationReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActNoImmunizationReason";
 
     /// <summary>
     /// Literal for code: ActSupplyFulfillmentRefusalReason
@@ -2757,9 +2847,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActSupplyFulfillmentRefusalReason = "_ActSupplyFulfillmentRefusalReason";
 
     /// <summary>
+    /// Literal for code: V3ActReasonActSupplyFulfillmentRefusalReason
+    /// </summary>
+    public const string LiteralV3ActReasonActSupplyFulfillmentRefusalReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActSupplyFulfillmentRefusalReason";
+
+    /// <summary>
     /// Literal for code: ClinicalResearchEventReason
     /// </summary>
     public const string LiteralClinicalResearchEventReason = "_ClinicalResearchEventReason";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonClinicalResearchEventReason
+    /// </summary>
+    public const string LiteralV3ActReasonClinicalResearchEventReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ClinicalResearchEventReason";
 
     /// <summary>
     /// Literal for code: ClinicalResearchObservationReason
@@ -2767,9 +2867,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClinicalResearchObservationReason = "_ClinicalResearchObservationReason";
 
     /// <summary>
+    /// Literal for code: V3ActReasonClinicalResearchObservationReason
+    /// </summary>
+    public const string LiteralV3ActReasonClinicalResearchObservationReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ClinicalResearchObservationReason";
+
+    /// <summary>
     /// Literal for code: CombinedPharmacyOrderSuspendReasonCode
     /// </summary>
     public const string LiteralCombinedPharmacyOrderSuspendReasonCode = "_CombinedPharmacyOrderSuspendReasonCode";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonCombinedPharmacyOrderSuspendReasonCode
+    /// </summary>
+    public const string LiteralV3ActReasonCombinedPharmacyOrderSuspendReasonCode = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_CombinedPharmacyOrderSuspendReasonCode";
 
     /// <summary>
     /// Literal for code: ConrolActNullificationReasonCode
@@ -2777,9 +2887,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralConrolActNullificationReasonCode = "_ConrolActNullificationReasonCode";
 
     /// <summary>
+    /// Literal for code: V3ActReasonConrolActNullificationReasonCode
+    /// </summary>
+    public const string LiteralV3ActReasonConrolActNullificationReasonCode = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ConrolActNullificationReasonCode";
+
+    /// <summary>
     /// Literal for code: ControlActNullificationReasonCode
     /// </summary>
     public const string LiteralControlActNullificationReasonCode = "_ControlActNullificationReasonCode";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonControlActNullificationReasonCode
+    /// </summary>
+    public const string LiteralV3ActReasonControlActNullificationReasonCode = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ControlActNullificationReasonCode";
 
     /// <summary>
     /// Literal for code: ControlActNullificationRefusalReasonType
@@ -2787,9 +2907,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralControlActNullificationRefusalReasonType = "_ControlActNullificationRefusalReasonType";
 
     /// <summary>
+    /// Literal for code: V3ActReasonControlActNullificationRefusalReasonType
+    /// </summary>
+    public const string LiteralV3ActReasonControlActNullificationRefusalReasonType = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ControlActNullificationRefusalReasonType";
+
+    /// <summary>
     /// Literal for code: ControlActReason
     /// </summary>
     public const string LiteralControlActReason = "_ControlActReason";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonControlActReason
+    /// </summary>
+    public const string LiteralV3ActReasonControlActReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ControlActReason";
 
     /// <summary>
     /// Literal for code: ControlActReasonConditionNullify
@@ -2797,9 +2927,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralControlActReasonConditionNullify = "_ControlActReasonConditionNullify";
 
     /// <summary>
+    /// Literal for code: V3ActReasonControlActReasonConditionNullify
+    /// </summary>
+    public const string LiteralV3ActReasonControlActReasonConditionNullify = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ControlActReasonConditionNullify";
+
+    /// <summary>
     /// Literal for code: CoverageEligibilityReason
     /// </summary>
     public const string LiteralCoverageEligibilityReason = "_CoverageEligibilityReason";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonCoverageEligibilityReason
+    /// </summary>
+    public const string LiteralV3ActReasonCoverageEligibilityReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_CoverageEligibilityReason";
 
     /// <summary>
     /// Literal for code: CoverageExclusionReason
@@ -2807,9 +2947,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCoverageExclusionReason = "_CoverageExclusionReason";
 
     /// <summary>
+    /// Literal for code: V3ActReasonCoverageExclusionReason
+    /// </summary>
+    public const string LiteralV3ActReasonCoverageExclusionReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_CoverageExclusionReason";
+
+    /// <summary>
     /// Literal for code: CoverageFinancialParticipationReason
     /// </summary>
     public const string LiteralCoverageFinancialParticipationReason = "_CoverageFinancialParticipationReason";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonCoverageFinancialParticipationReason
+    /// </summary>
+    public const string LiteralV3ActReasonCoverageFinancialParticipationReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_CoverageFinancialParticipationReason";
 
     /// <summary>
     /// Literal for code: CoverageLimitationReason
@@ -2817,9 +2967,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCoverageLimitationReason = "_CoverageLimitationReason";
 
     /// <summary>
+    /// Literal for code: V3ActReasonCoverageLimitationReason
+    /// </summary>
+    public const string LiteralV3ActReasonCoverageLimitationReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_CoverageLimitationReason";
+
+    /// <summary>
     /// Literal for code: EligibilityActReasonCode
     /// </summary>
     public const string LiteralEligibilityActReasonCode = "_EligibilityActReasonCode";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonEligibilityActReasonCode
+    /// </summary>
+    public const string LiteralV3ActReasonEligibilityActReasonCode = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_EligibilityActReasonCode";
 
     /// <summary>
     /// Literal for code: GenericUpdateReasonCode
@@ -2827,9 +2987,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGenericUpdateReasonCode = "_GenericUpdateReasonCode";
 
     /// <summary>
+    /// Literal for code: V3ActReasonGenericUpdateReasonCode
+    /// </summary>
+    public const string LiteralV3ActReasonGenericUpdateReasonCode = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_GenericUpdateReasonCode";
+
+    /// <summary>
     /// Literal for code: MedicallyNecessaryDuplicateProcedureReason
     /// </summary>
     public const string LiteralMedicallyNecessaryDuplicateProcedureReason = "_MedicallyNecessaryDuplicateProcedureReason";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonMedicallyNecessaryDuplicateProcedureReason
+    /// </summary>
+    public const string LiteralV3ActReasonMedicallyNecessaryDuplicateProcedureReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_MedicallyNecessaryDuplicateProcedureReason";
 
     /// <summary>
     /// Literal for code: MedicationOrderAbortReason
@@ -2837,9 +3007,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicationOrderAbortReason = "_MedicationOrderAbortReasonCode";
 
     /// <summary>
+    /// Literal for code: V3ActReasonMedicationOrderAbortReason
+    /// </summary>
+    public const string LiteralV3ActReasonMedicationOrderAbortReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_MedicationOrderAbortReasonCode";
+
+    /// <summary>
     /// Literal for code: MedicationOrderReleaseReason
     /// </summary>
     public const string LiteralMedicationOrderReleaseReason = "_MedicationOrderReleaseReasonCode";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonMedicationOrderReleaseReason
+    /// </summary>
+    public const string LiteralV3ActReasonMedicationOrderReleaseReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_MedicationOrderReleaseReasonCode";
 
     /// <summary>
     /// Literal for code: ModifyPrescriptionReasonType
@@ -2847,9 +3027,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralModifyPrescriptionReasonType = "_ModifyPrescriptionReasonType";
 
     /// <summary>
+    /// Literal for code: V3ActReasonModifyPrescriptionReasonType
+    /// </summary>
+    public const string LiteralV3ActReasonModifyPrescriptionReasonType = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ModifyPrescriptionReasonType";
+
+    /// <summary>
     /// Literal for code: NonPerformanceReasonCode
     /// </summary>
     public const string LiteralNonPerformanceReasonCode = "_NonPerformanceReasonCode";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonNonPerformanceReasonCode
+    /// </summary>
+    public const string LiteralV3ActReasonNonPerformanceReasonCode = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_NonPerformanceReasonCode";
 
     /// <summary>
     /// Literal for code: PatientProfileQueryReason
@@ -2857,9 +3047,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatientProfileQueryReason = "_PatientProfileQueryReasonCode";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPatientProfileQueryReason
+    /// </summary>
+    public const string LiteralV3ActReasonPatientProfileQueryReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_PatientProfileQueryReasonCode";
+
+    /// <summary>
     /// Literal for code: PharmacySupplyEventAbortReason
     /// </summary>
     public const string LiteralPharmacySupplyEventAbortReason = "_PharmacySupplyEventAbortReason";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPharmacySupplyEventAbortReason
+    /// </summary>
+    public const string LiteralV3ActReasonPharmacySupplyEventAbortReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_PharmacySupplyEventAbortReason";
 
     /// <summary>
     /// Literal for code: PharmacySupplyEventStockReason
@@ -2867,9 +3067,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPharmacySupplyEventStockReason = "_PharmacySupplyEventStockReasonCode";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPharmacySupplyEventStockReason
+    /// </summary>
+    public const string LiteralV3ActReasonPharmacySupplyEventStockReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_PharmacySupplyEventStockReasonCode";
+
+    /// <summary>
     /// Literal for code: PharmacySupplyRequestFulfillerRevisionRefusalReasonCode
     /// </summary>
     public const string LiteralPharmacySupplyRequestFulfillerRevisionRefusalReasonCode = "_PharmacySupplyRequestFulfillerRevisionRefusalReasonCode";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPharmacySupplyRequestFulfillerRevisionRefusalReasonCode
+    /// </summary>
+    public const string LiteralV3ActReasonPharmacySupplyRequestFulfillerRevisionRefusalReasonCode = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_PharmacySupplyRequestFulfillerRevisionRefusalReasonCode";
 
     /// <summary>
     /// Literal for code: PharmacySupplyRequestRenewalRefusalReason
@@ -2877,9 +3087,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPharmacySupplyRequestRenewalRefusalReason = "_PharmacySupplyRequestRenewalRefusalReasonCode";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPharmacySupplyRequestRenewalRefusalReason
+    /// </summary>
+    public const string LiteralV3ActReasonPharmacySupplyRequestRenewalRefusalReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_PharmacySupplyRequestRenewalRefusalReasonCode";
+
+    /// <summary>
     /// Literal for code: ReasonForNotEvaluatingDevice
     /// </summary>
     public const string LiteralReasonForNotEvaluatingDevice = "_ReasonForNotEvaluatingDevice";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonReasonForNotEvaluatingDevice
+    /// </summary>
+    public const string LiteralV3ActReasonReasonForNotEvaluatingDevice = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ReasonForNotEvaluatingDevice";
 
     /// <summary>
     /// Literal for code: ReferralReasonCode
@@ -2887,9 +3107,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralReferralReasonCode = "_ReferralReasonCode";
 
     /// <summary>
+    /// Literal for code: V3ActReasonReferralReasonCode
+    /// </summary>
+    public const string LiteralV3ActReasonReferralReasonCode = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ReferralReasonCode";
+
+    /// <summary>
     /// Literal for code: RefusalReasonCode
     /// </summary>
     public const string LiteralRefusalReasonCode = "_RefusalReasonCode";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonRefusalReasonCode
+    /// </summary>
+    public const string LiteralV3ActReasonRefusalReasonCode = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_RefusalReasonCode";
 
     /// <summary>
     /// Literal for code: SchedulingActReason
@@ -2897,9 +3127,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSchedulingActReason = "_SchedulingActReason";
 
     /// <summary>
+    /// Literal for code: V3ActReasonSchedulingActReason
+    /// </summary>
+    public const string LiteralV3ActReasonSchedulingActReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_SchedulingActReason";
+
+    /// <summary>
     /// Literal for code: StatusRevisionRefusalReasonCode
     /// </summary>
     public const string LiteralStatusRevisionRefusalReasonCode = "_StatusRevisionRefusalReasonCode";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonStatusRevisionRefusalReasonCode
+    /// </summary>
+    public const string LiteralV3ActReasonStatusRevisionRefusalReasonCode = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_StatusRevisionRefusalReasonCode";
 
     /// <summary>
     /// Literal for code: SubstanceAdministrationPermissionRefusalReasonCode
@@ -2907,9 +3147,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSubstanceAdministrationPermissionRefusalReasonCode = "_SubstanceAdministrationPermissionRefusalReasonCode";
 
     /// <summary>
+    /// Literal for code: V3ActReasonSubstanceAdministrationPermissionRefusalReasonCode
+    /// </summary>
+    public const string LiteralV3ActReasonSubstanceAdministrationPermissionRefusalReasonCode = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_SubstanceAdministrationPermissionRefusalReasonCode";
+
+    /// <summary>
     /// Literal for code: SubstanceAdminSubstitutionNotAllowedReason
     /// </summary>
     public const string LiteralSubstanceAdminSubstitutionNotAllowedReason = "_SubstanceAdminSubstitutionNotAllowedReason";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonSubstanceAdminSubstitutionNotAllowedReason
+    /// </summary>
+    public const string LiteralV3ActReasonSubstanceAdminSubstitutionNotAllowedReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_SubstanceAdminSubstitutionNotAllowedReason";
 
     /// <summary>
     /// Literal for code: SubstanceAdminSubstitutionReason
@@ -2917,9 +3167,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSubstanceAdminSubstitutionReason = "_SubstanceAdminSubstitutionReason";
 
     /// <summary>
+    /// Literal for code: V3ActReasonSubstanceAdminSubstitutionReason
+    /// </summary>
+    public const string LiteralV3ActReasonSubstanceAdminSubstitutionReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_SubstanceAdminSubstitutionReason";
+
+    /// <summary>
     /// Literal for code: SupplyOrderAbortReason
     /// </summary>
     public const string LiteralSupplyOrderAbortReason = "_SupplyOrderAbortReasonCode";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonSupplyOrderAbortReason
+    /// </summary>
+    public const string LiteralV3ActReasonSupplyOrderAbortReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_SupplyOrderAbortReasonCode";
 
     /// <summary>
     /// Literal for code: TransferActReason
@@ -2927,9 +3187,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTransferActReason = "_TransferActReason";
 
     /// <summary>
+    /// Literal for code: V3ActReasonTransferActReason
+    /// </summary>
+    public const string LiteralV3ActReasonTransferActReason = "http://terminology.hl7.org/CodeSystem/v3-ActReason#_TransferActReason";
+
+    /// <summary>
     /// Literal for code: Accreditation
     /// </summary>
     public const string LiteralAccreditation = "ACCRED";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonAccreditation
+    /// </summary>
+    public const string LiteralV3ActReasonAccreditation = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ACCRED";
 
     /// <summary>
     /// Literal for code: AccommodationRequestedNotAvailable
@@ -2937,9 +3207,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAccommodationRequestedNotAvailable = "ACCREQNA";
 
     /// <summary>
+    /// Literal for code: V3ActReasonAccommodationRequestedNotAvailable
+    /// </summary>
+    public const string LiteralV3ActReasonAccommodationRequestedNotAvailable = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ACCREQNA";
+
+    /// <summary>
     /// Literal for code: AdministrativeErrorInOrder
     /// </summary>
     public const string LiteralAdministrativeErrorInOrder = "ADMINERROR";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonAdministrativeErrorInOrder
+    /// </summary>
+    public const string LiteralV3ActReasonAdministrativeErrorInOrder = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ADMINERROR";
 
     /// <summary>
     /// Literal for code: AdministrativeReview
@@ -2947,9 +3227,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAdministrativeReview = "ADMREV";
 
     /// <summary>
+    /// Literal for code: V3ActReasonAdministrativeReview
+    /// </summary>
+    public const string LiteralV3ActReasonAdministrativeReview = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ADMREV";
+
+    /// <summary>
     /// Literal for code: AdverseStorageCondition
     /// </summary>
     public const string LiteralAdverseStorageCondition = "ADVSTORAGE";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonAdverseStorageCondition
+    /// </summary>
+    public const string LiteralV3ActReasonAdverseStorageCondition = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ADVSTORAGE";
 
     /// <summary>
     /// Literal for code: AgeEligibility
@@ -2957,9 +3247,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAgeEligibility = "AGE";
 
     /// <summary>
+    /// Literal for code: V3ActReasonAgeEligibility
+    /// </summary>
+    public const string LiteralV3ActReasonAgeEligibility = "http://terminology.hl7.org/CodeSystem/v3-ActReason#AGE";
+
+    /// <summary>
     /// Literal for code: AllergyIntolerance
     /// </summary>
     public const string LiteralAllergyIntolerance = "ALGINT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonAllergyIntolerance
+    /// </summary>
+    public const string LiteralV3ActReasonAllergyIntolerance = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ALGINT";
 
     /// <summary>
     /// Literal for code: NewPrescriptionExists
@@ -2967,9 +3267,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNewPrescriptionExists = "ALREADYRX";
 
     /// <summary>
+    /// Literal for code: V3ActReasonNewPrescriptionExists
+    /// </summary>
+    public const string LiteralV3ActReasonNewPrescriptionExists = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ALREADYRX";
+
+    /// <summary>
     /// Literal for code: TryAnotherTreatmentFirst
     /// </summary>
     public const string LiteralTryAnotherTreatmentFirst = "ALTCHOICE";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonTryAnotherTreatmentFirst
+    /// </summary>
+    public const string LiteralV3ActReasonTryAnotherTreatmentFirst = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ALTCHOICE";
 
     /// <summary>
     /// Literal for code: AlteredDecision
@@ -2977,9 +3287,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAlteredDecision = "ALTD";
 
     /// <summary>
+    /// Literal for code: V3ActReasonAlteredDecision
+    /// </summary>
+    public const string LiteralV3ActReasonAlteredDecision = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ALTD";
+
+    /// <summary>
     /// Literal for code: BiomedicalResearch
     /// </summary>
     public const string LiteralBiomedicalResearch = "BIORCH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonBiomedicalResearch
+    /// </summary>
+    public const string LiteralV3ActReasonBiomedicalResearch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#BIORCH";
 
     /// <summary>
     /// Literal for code: UnexpectedBlockOfSchedule
@@ -2987,9 +3307,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUnexpectedBlockOfSchedule = "BLK";
 
     /// <summary>
+    /// Literal for code: V3ActReasonUnexpectedBlockOfSchedule
+    /// </summary>
+    public const string LiteralV3ActReasonUnexpectedBlockOfSchedule = "http://terminology.hl7.org/CodeSystem/v3-ActReason#BLK";
+
+    /// <summary>
     /// Literal for code: BONUS
     /// </summary>
     public const string LiteralBONUS = "BONUS";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonBONUS
+    /// </summary>
+    public const string LiteralV3ActReasonBONUS = "http://terminology.hl7.org/CodeSystem/v3-ActReason#BONUS";
 
     /// <summary>
     /// Literal for code: BreakTheGlass
@@ -2997,9 +3327,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBreakTheGlass = "BTG";
 
     /// <summary>
+    /// Literal for code: V3ActReasonBreakTheGlass
+    /// </summary>
+    public const string LiteralV3ActReasonBreakTheGlass = "http://terminology.hl7.org/CodeSystem/v3-ActReason#BTG";
+
+    /// <summary>
     /// Literal for code: CareManagement
     /// </summary>
     public const string LiteralCareManagement = "CAREMGT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonCareManagement
+    /// </summary>
+    public const string LiteralV3ActReasonCareManagement = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CAREMGT";
 
     /// <summary>
     /// Literal for code: ChildrenOnly
@@ -3007,9 +3347,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChildrenOnly = "CHD";
 
     /// <summary>
+    /// Literal for code: V3ActReasonChildrenOnly
+    /// </summary>
+    public const string LiteralV3ActReasonChildrenOnly = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CHD";
+
+    /// <summary>
     /// Literal for code: InformationChange
     /// </summary>
     public const string LiteralInformationChange = "CHGDATA";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonInformationChange
+    /// </summary>
+    public const string LiteralV3ActReasonInformationChange = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CHGDATA";
 
     /// <summary>
     /// Literal for code: PrescriptionRequiresClarification
@@ -3017,9 +3367,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPrescriptionRequiresClarification = "CLARIF";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPrescriptionRequiresClarification
+    /// </summary>
+    public const string LiteralV3ActReasonPrescriptionRequiresClarification = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLARIF";
+
+    /// <summary>
     /// Literal for code: ClinicalModification
     /// </summary>
     public const string LiteralClinicalModification = "CLINMOD";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonClinicalModification
+    /// </summary>
+    public const string LiteralV3ActReasonClinicalModification = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINMOD";
 
     /// <summary>
     /// Literal for code: ClinicalTrialResearch
@@ -3027,9 +3387,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClinicalTrialResearch = "CLINTRCH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonClinicalTrialResearch
+    /// </summary>
+    public const string LiteralV3ActReasonClinicalTrialResearch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINTRCH";
+
+    /// <summary>
     /// Literal for code: ClinicalTrialResearchWithoutPatientCare
     /// </summary>
     public const string LiteralClinicalTrialResearchWithoutPatientCare = "CLINTRCHNPC";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonClinicalTrialResearchWithoutPatientCare
+    /// </summary>
+    public const string LiteralV3ActReasonClinicalTrialResearchWithoutPatientCare = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINTRCHNPC";
 
     /// <summary>
     /// Literal for code: ClinicalTrialResearchWithPatientCare
@@ -3037,9 +3407,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClinicalTrialResearchWithPatientCare = "CLINTRCHPC";
 
     /// <summary>
+    /// Literal for code: V3ActReasonClinicalTrialResearchWithPatientCare
+    /// </summary>
+    public const string LiteralV3ActReasonClinicalTrialResearchWithPatientCare = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINTRCHPC";
+
+    /// <summary>
     /// Literal for code: ClinicalTrial
     /// </summary>
     public const string LiteralClinicalTrial = "CLINTRL";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonClinicalTrial
+    /// </summary>
+    public const string LiteralV3ActReasonClinicalTrial = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINTRL";
 
     /// <summary>
     /// Literal for code: ClaimAttachment
@@ -3047,9 +3427,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClaimAttachment = "CLMATTCH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonClaimAttachment
+    /// </summary>
+    public const string LiteralV3ActReasonClaimAttachment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLMATTCH";
+
+    /// <summary>
     /// Literal for code: CoordinationOfCare
     /// </summary>
     public const string LiteralCoordinationOfCare = "COC";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonCoordinationOfCare
+    /// </summary>
+    public const string LiteralV3ActReasonCoordinationOfCare = "http://terminology.hl7.org/CodeSystem/v3-ActReason#COC";
 
     /// <summary>
     /// Literal for code: ColdChainBreak
@@ -3057,9 +3447,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralColdChainBreak = "COLDCHNBRK";
 
     /// <summary>
+    /// Literal for code: V3ActReasonColdChainBreak
+    /// </summary>
+    public const string LiteralV3ActReasonColdChainBreak = "http://terminology.hl7.org/CodeSystem/v3-ActReason#COLDCHNBRK";
+
+    /// <summary>
     /// Literal for code: ComplianceConcern
     /// </summary>
     public const string LiteralComplianceConcern = "COMPCON";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonComplianceConcern
+    /// </summary>
+    public const string LiteralV3ActReasonComplianceConcern = "http://terminology.hl7.org/CodeSystem/v3-ActReason#COMPCON";
 
     /// <summary>
     /// Literal for code: Compliance
@@ -3067,9 +3467,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCompliance = "COMPL";
 
     /// <summary>
+    /// Literal for code: V3ActReasonCompliance
+    /// </summary>
+    public const string LiteralV3ActReasonCompliance = "http://terminology.hl7.org/CodeSystem/v3-ActReason#COMPL";
+
+    /// <summary>
     /// Literal for code: Contraindication
     /// </summary>
     public const string LiteralContraindication = "CONTRA";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonContraindication
+    /// </summary>
+    public const string LiteralV3ActReasonContraindication = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CONTRA";
 
     /// <summary>
     /// Literal for code: CoverageAuthorization
@@ -3077,9 +3487,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCoverageAuthorization = "COVAUTH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonCoverageAuthorization
+    /// </summary>
+    public const string LiteralV3ActReasonCoverageAuthorization = "http://terminology.hl7.org/CodeSystem/v3-ActReason#COVAUTH";
+
+    /// <summary>
     /// Literal for code: CoverageUnderPolicyOrProgram
     /// </summary>
     public const string LiteralCoverageUnderPolicyOrProgram = "COVERAGE";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonCoverageUnderPolicyOrProgram
+    /// </summary>
+    public const string LiteralV3ActReasonCoverageUnderPolicyOrProgram = "http://terminology.hl7.org/CodeSystem/v3-ActReason#COVERAGE";
 
     /// <summary>
     /// Literal for code: CoverageSuspended
@@ -3087,9 +3507,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCoverageSuspended = "COVSUS";
 
     /// <summary>
+    /// Literal for code: V3ActReasonCoverageSuspended
+    /// </summary>
+    public const string LiteralV3ActReasonCoverageSuspended = "http://terminology.hl7.org/CodeSystem/v3-ActReason#COVSUS";
+
+    /// <summary>
     /// Literal for code: CrimeVictim
     /// </summary>
     public const string LiteralCrimeVictim = "CRIME";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonCrimeVictim
+    /// </summary>
+    public const string LiteralV3ActReasonCrimeVictim = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CRIME";
 
     /// <summary>
     /// Literal for code: ContinuingTherapy
@@ -3097,9 +3527,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralContinuingTherapy = "CT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonContinuingTherapy
+    /// </summary>
+    public const string LiteralV3ActReasonContinuingTherapy = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CT";
+
+    /// <summary>
     /// Literal for code: PatientDeceased
     /// </summary>
     public const string LiteralPatientDeceased = "DEC";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPatientDeceased
+    /// </summary>
+    public const string LiteralV3ActReasonPatientDeceased = "http://terminology.hl7.org/CodeSystem/v3-ActReason#DEC";
 
     /// <summary>
     /// Literal for code: Deceased
@@ -3107,9 +3547,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDeceased = "DECSD";
 
     /// <summary>
+    /// Literal for code: V3ActReasonDeceased
+    /// </summary>
+    public const string LiteralV3ActReasonDeceased = "http://terminology.hl7.org/CodeSystem/v3-ActReason#DECSD";
+
+    /// <summary>
     /// Literal for code: DependentsOnly
     /// </summary>
     public const string LiteralDependentsOnly = "DEP";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonDependentsOnly
+    /// </summary>
+    public const string LiteralV3ActReasonDependentsOnly = "http://terminology.hl7.org/CodeSystem/v3-ActReason#DEP";
 
     /// <summary>
     /// Literal for code: Disability
@@ -3117,9 +3567,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDisability = "DIS";
 
     /// <summary>
+    /// Literal for code: V3ActReasonDisability
+    /// </summary>
+    public const string LiteralV3ActReasonDisability = "http://terminology.hl7.org/CodeSystem/v3-ActReason#DIS";
+
+    /// <summary>
     /// Literal for code: Disaster
     /// </summary>
     public const string LiteralDisaster = "DISASTER";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonDisaster
+    /// </summary>
+    public const string LiteralV3ActReasonDisaster = "http://terminology.hl7.org/CodeSystem/v3-ActReason#DISASTER";
 
     /// <summary>
     /// Literal for code: ProductDiscontinued
@@ -3127,9 +3587,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductDiscontinued = "DISCONT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonProductDiscontinued
+    /// </summary>
+    public const string LiteralV3ActReasonProductDiscontinued = "http://terminology.hl7.org/CodeSystem/v3-ActReason#DISCONT";
+
+    /// <summary>
     /// Literal for code: Donation
     /// </summary>
     public const string LiteralDonation = "DONAT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonDonation
+    /// </summary>
+    public const string LiteralV3ActReasonDonation = "http://terminology.hl7.org/CodeSystem/v3-ActReason#DONAT";
 
     /// <summary>
     /// Literal for code: ChangeInMedicationDose
@@ -3137,9 +3607,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChangeInMedicationDose = "DOSECHG";
 
     /// <summary>
+    /// Literal for code: V3ActReasonChangeInMedicationDose
+    /// </summary>
+    public const string LiteralV3ActReasonChangeInMedicationDose = "http://terminology.hl7.org/CodeSystem/v3-ActReason#DOSECHG";
+
+    /// <summary>
     /// Literal for code: DrugLevelTooHigh
     /// </summary>
     public const string LiteralDrugLevelTooHigh = "DRUGHIGH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonDrugLevelTooHigh
+    /// </summary>
+    public const string LiteralV3ActReasonDrugLevelTooHigh = "http://terminology.hl7.org/CodeSystem/v3-ActReason#DRUGHIGH";
 
     /// <summary>
     /// Literal for code: DiseaseSpecificHealthcareResearch
@@ -3147,9 +3627,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDiseaseSpecificHealthcareResearch = "DSRCH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonDiseaseSpecificHealthcareResearch
+    /// </summary>
+    public const string LiteralV3ActReasonDiseaseSpecificHealthcareResearch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#DSRCH";
+
+    /// <summary>
     /// Literal for code: EmployeeAndChildren
     /// </summary>
     public const string LiteralEmployeeAndChildren = "ECH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonEmployeeAndChildren
+    /// </summary>
+    public const string LiteralV3ActReasonEmployeeAndChildren = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ECH";
 
     /// <summary>
     /// Literal for code: EDU
@@ -3157,9 +3647,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEDU = "EDU";
 
     /// <summary>
+    /// Literal for code: V3ActReasonEDU
+    /// </summary>
+    public const string LiteralV3ActReasonEDU = "http://terminology.hl7.org/CodeSystem/v3-ActReason#EDU";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "EIE";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonEnteredInError
+    /// </summary>
+    public const string LiteralV3ActReasonEnteredInError = "http://terminology.hl7.org/CodeSystem/v3-ActReason#EIE";
 
     /// <summary>
     /// Literal for code: EligibilityDetermination
@@ -3167,9 +3667,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEligibilityDetermination = "ELIGDTRM";
 
     /// <summary>
+    /// Literal for code: V3ActReasonEligibilityDetermination
+    /// </summary>
+    public const string LiteralV3ActReasonEligibilityDetermination = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ELIGDTRM";
+
+    /// <summary>
     /// Literal for code: EligibilityVerification
     /// </summary>
     public const string LiteralEligibilityVerification = "ELIGVER";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonEligibilityVerification
+    /// </summary>
+    public const string LiteralV3ActReasonEligibilityVerification = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ELIGVER";
 
     /// <summary>
     /// Literal for code: EmployeeOnly
@@ -3177,9 +3687,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmployeeOnly = "EMP";
 
     /// <summary>
+    /// Literal for code: V3ActReasonEmployeeOnly
+    /// </summary>
+    public const string LiteralV3ActReasonEmployeeOnly = "http://terminology.hl7.org/CodeSystem/v3-ActReason#EMP";
+
+    /// <summary>
     /// Literal for code: EmploymentBenefit
     /// </summary>
     public const string LiteralEmploymentBenefit = "EMPLOY";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonEmploymentBenefit
+    /// </summary>
+    public const string LiteralV3ActReasonEmploymentBenefit = "http://terminology.hl7.org/CodeSystem/v3-ActReason#EMPLOY";
 
     /// <summary>
     /// Literal for code: EntityAdministration
@@ -3187,9 +3707,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEntityAdministration = "ENADMIN";
 
     /// <summary>
+    /// Literal for code: V3ActReasonEntityAdministration
+    /// </summary>
+    public const string LiteralV3ActReasonEntityAdministration = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ENADMIN";
+
+    /// <summary>
     /// Literal for code: Enrollment
     /// </summary>
     public const string LiteralEnrollment = "ENROLLM";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonEnrollment
+    /// </summary>
+    public const string LiteralV3ActReasonEnrollment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ENROLLM";
 
     /// <summary>
     /// Literal for code: Error
@@ -3197,9 +3727,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralError = "ER";
 
     /// <summary>
+    /// Literal for code: V3ActReasonError
+    /// </summary>
+    public const string LiteralV3ActReasonError = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ER";
+
+    /// <summary>
     /// Literal for code: EmergencyRoomTreatment
     /// </summary>
     public const string LiteralEmergencyRoomTreatment = "ERTREAT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonEmergencyRoomTreatment
+    /// </summary>
+    public const string LiteralV3ActReasonEmergencyRoomTreatment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ERTREAT";
 
     /// <summary>
     /// Literal for code: EmployeeAndSpouse
@@ -3207,9 +3747,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmployeeAndSpouse = "ESP";
 
     /// <summary>
+    /// Literal for code: V3ActReasonEmployeeAndSpouse
+    /// </summary>
+    public const string LiteralV3ActReasonEmployeeAndSpouse = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ESP";
+
+    /// <summary>
     /// Literal for code: EmergencyTreatment
     /// </summary>
     public const string LiteralEmergencyTreatment = "ETREAT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonEmergencyTreatment
+    /// </summary>
+    public const string LiteralV3ActReasonEmergencyTreatment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ETREAT";
 
     /// <summary>
     /// Literal for code: ExpiredLot
@@ -3217,9 +3767,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralExpiredLot = "EXPLOT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonExpiredLot
+    /// </summary>
+    public const string LiteralV3ActReasonExpiredLot = "http://terminology.hl7.org/CodeSystem/v3-ActReason#EXPLOT";
+
+    /// <summary>
     /// Literal for code: Family
     /// </summary>
     public const string LiteralFamily = "FAM";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonFamily
+    /// </summary>
+    public const string LiteralV3ActReasonFamily = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FAM";
 
     /// <summary>
     /// Literal for code: FamilyPhysicianMustAuthorizeFurtherFills
@@ -3227,9 +3787,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFamilyPhysicianMustAuthorizeFurtherFills = "FAMPHYS";
 
     /// <summary>
+    /// Literal for code: V3ActReasonFamilyPhysicianMustAuthorizeFurtherFills
+    /// </summary>
+    public const string LiteralV3ActReasonFamilyPhysicianMustAuthorizeFurtherFills = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FAMPHYS";
+
+    /// <summary>
     /// Literal for code: FamilyRequested
     /// </summary>
     public const string LiteralFamilyRequested = "FAMRQT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonFamilyRequested
+    /// </summary>
+    public const string LiteralV3ActReasonFamilyRequested = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FAMRQT";
 
     /// <summary>
     /// Literal for code: FullyFilled
@@ -3237,9 +3807,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFullyFilled = "FILLED";
 
     /// <summary>
+    /// Literal for code: V3ActReasonFullyFilled
+    /// </summary>
+    public const string LiteralV3ActReasonFullyFilled = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FILLED";
+
+    /// <summary>
     /// Literal for code: NoFinancialBacking
     /// </summary>
     public const string LiteralNoFinancialBacking = "FIN";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonNoFinancialBacking
+    /// </summary>
+    public const string LiteralV3ActReasonNoFinancialBacking = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FIN";
 
     /// <summary>
     /// Literal for code: FinancialEligibility
@@ -3247,9 +3827,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFinancialEligibility = "FINAN";
 
     /// <summary>
+    /// Literal for code: V3ActReasonFinancialEligibility
+    /// </summary>
+    public const string LiteralV3ActReasonFinancialEligibility = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FINAN";
+
+    /// <summary>
     /// Literal for code: ErrorCorrection
     /// </summary>
     public const string LiteralErrorCorrection = "FIXDATA";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonErrorCorrection
+    /// </summary>
+    public const string LiteralV3ActReasonErrorCorrection = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FIXDATA";
 
     /// <summary>
     /// Literal for code: FloorConvenience
@@ -3257,9 +3847,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFloorConvenience = "FLRCNV";
 
     /// <summary>
+    /// Literal for code: V3ActReasonFloorConvenience
+    /// </summary>
+    public const string LiteralV3ActReasonFloorConvenience = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FLRCNV";
+
+    /// <summary>
     /// Literal for code: FloorStock
     /// </summary>
     public const string LiteralFloorStock = "FLRSTCK";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonFloorStock
+    /// </summary>
+    public const string LiteralV3ActReasonFloorStock = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FLRSTCK";
 
     /// <summary>
     /// Literal for code: OrderAborted
@@ -3267,9 +3867,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOrderAborted = "FOABORT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonOrderAborted
+    /// </summary>
+    public const string LiteralV3ActReasonOrderAborted = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FOABORT";
+
+    /// <summary>
     /// Literal for code: OrderSuspended
     /// </summary>
     public const string LiteralOrderSuspended = "FOSUSP";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonOrderSuspended
+    /// </summary>
+    public const string LiteralV3ActReasonOrderSuspended = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FOSUSP";
 
     /// <summary>
     /// Literal for code: FormularyPolicy
@@ -3277,9 +3887,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFormularyPolicy = "FP";
 
     /// <summary>
+    /// Literal for code: V3ActReasonFormularyPolicy
+    /// </summary>
+    public const string LiteralV3ActReasonFormularyPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FP";
+
+    /// <summary>
     /// Literal for code: Fraud
     /// </summary>
     public const string LiteralFraud = "FRAUD";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonFraud
+    /// </summary>
+    public const string LiteralV3ActReasonFraud = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FRAUD";
 
     /// <summary>
     /// Literal for code: OrderStopped
@@ -3287,9 +3907,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOrderStopped = "FRR01";
 
     /// <summary>
+    /// Literal for code: V3ActReasonOrderStopped
+    /// </summary>
+    public const string LiteralV3ActReasonOrderStopped = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FRR01";
+
+    /// <summary>
     /// Literal for code: StaleDatedOrder
     /// </summary>
     public const string LiteralStaleDatedOrder = "FRR02";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonStaleDatedOrder
+    /// </summary>
+    public const string LiteralV3ActReasonStaleDatedOrder = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FRR02";
 
     /// <summary>
     /// Literal for code: IncompleteData
@@ -3297,9 +3927,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncompleteData = "FRR03";
 
     /// <summary>
+    /// Literal for code: V3ActReasonIncompleteData
+    /// </summary>
+    public const string LiteralV3ActReasonIncompleteData = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FRR03";
+
+    /// <summary>
     /// Literal for code: ProductUnavailable
     /// </summary>
     public const string LiteralProductUnavailable = "FRR04";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonProductUnavailable
+    /// </summary>
+    public const string LiteralV3ActReasonProductUnavailable = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FRR04";
 
     /// <summary>
     /// Literal for code: EthicalReligious
@@ -3307,9 +3947,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEthicalReligious = "FRR05";
 
     /// <summary>
+    /// Literal for code: V3ActReasonEthicalReligious
+    /// </summary>
+    public const string LiteralV3ActReasonEthicalReligious = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FRR05";
+
+    /// <summary>
     /// Literal for code: UnableToProvideCare
     /// </summary>
     public const string LiteralUnableToProvideCare = "FRR06";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonUnableToProvideCare
+    /// </summary>
+    public const string LiteralV3ActReasonUnableToProvideCare = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FRR06";
 
     /// <summary>
     /// Literal for code: Government
@@ -3317,9 +3967,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGovernment = "GOV";
 
     /// <summary>
+    /// Literal for code: V3ActReasonGovernment
+    /// </summary>
+    public const string LiteralV3ActReasonGovernment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#GOV";
+
+    /// <summary>
     /// Literal for code: HealthAccreditation
     /// </summary>
     public const string LiteralHealthAccreditation = "HACCRED";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonHealthAccreditation
+    /// </summary>
+    public const string LiteralV3ActReasonHealthAccreditation = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HACCRED";
 
     /// <summary>
     /// Literal for code: HealthCompliance
@@ -3327,9 +3987,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHealthCompliance = "HCOMPL";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthCompliance
+    /// </summary>
+    public const string LiteralV3ActReasonHealthCompliance = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HCOMPL";
+
+    /// <summary>
     /// Literal for code: Decedent
     /// </summary>
     public const string LiteralDecedent = "HDECD";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonDecedent
+    /// </summary>
+    public const string LiteralV3ActReasonDecedent = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HDECD";
 
     /// <summary>
     /// Literal for code: Directory
@@ -3337,9 +4007,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDirectory = "HDIRECT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonDirectory
+    /// </summary>
+    public const string LiteralV3ActReasonDirectory = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HDIRECT";
+
+    /// <summary>
     /// Literal for code: HealthcareDeliveryManagement
     /// </summary>
     public const string LiteralHealthcareDeliveryManagement = "HDM";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonHealthcareDeliveryManagement
+    /// </summary>
+    public const string LiteralV3ActReasonHealthcareDeliveryManagement = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HDM";
 
     /// <summary>
     /// Literal for code: HealthStatus
@@ -3347,9 +4027,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHealthStatus = "HEALTH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthStatus
+    /// </summary>
+    public const string LiteralV3ActReasonHealthStatus = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HEALTH";
+
+    /// <summary>
     /// Literal for code: Legal
     /// </summary>
     public const string LiteralLegal = "HLEGAL";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonLegal
+    /// </summary>
+    public const string LiteralV3ActReasonLegal = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HLEGAL";
 
     /// <summary>
     /// Literal for code: HealthcareMarketing
@@ -3357,9 +4047,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHealthcareMarketing = "HMARKT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthcareMarketing
+    /// </summary>
+    public const string LiteralV3ActReasonHealthcareMarketing = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HMARKT";
+
+    /// <summary>
     /// Literal for code: SuspendReasonNoLongerApplies
     /// </summary>
     public const string LiteralSuspendReasonNoLongerApplies = "HOLDDONE";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonSuspendReasonNoLongerApplies
+    /// </summary>
+    public const string LiteralV3ActReasonSuspendReasonNoLongerApplies = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HOLDDONE";
 
     /// <summary>
     /// Literal for code: SuspendReasonInappropriate
@@ -3367,9 +4067,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSuspendReasonInappropriate = "HOLDINAP";
 
     /// <summary>
+    /// Literal for code: V3ActReasonSuspendReasonInappropriate
+    /// </summary>
+    public const string LiteralV3ActReasonSuspendReasonInappropriate = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HOLDINAP";
+
+    /// <summary>
     /// Literal for code: HealthcareOperations
     /// </summary>
     public const string LiteralHealthcareOperations = "HOPERAT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonHealthcareOperations
+    /// </summary>
+    public const string LiteralV3ActReasonHealthcareOperations = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT";
 
     /// <summary>
     /// Literal for code: AdmissionToHospital
@@ -3377,9 +4087,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAdmissionToHospital = "HOSPADM";
 
     /// <summary>
+    /// Literal for code: V3ActReasonAdmissionToHospital
+    /// </summary>
+    public const string LiteralV3ActReasonAdmissionToHospital = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HOSPADM";
+
+    /// <summary>
     /// Literal for code: HealthOutcomeMeasure
     /// </summary>
     public const string LiteralHealthOutcomeMeasure = "HOUTCOMS";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonHealthOutcomeMeasure
+    /// </summary>
+    public const string LiteralV3ActReasonHealthOutcomeMeasure = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HOUTCOMS";
 
     /// <summary>
     /// Literal for code: HealthcarePayment
@@ -3387,9 +4107,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHealthcarePayment = "HPAYMT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthcarePayment
+    /// </summary>
+    public const string LiteralV3ActReasonHealthcarePayment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT";
+
+    /// <summary>
     /// Literal for code: HealthProgramReporting
     /// </summary>
     public const string LiteralHealthProgramReporting = "HPRGRP";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonHealthProgramReporting
+    /// </summary>
+    public const string LiteralV3ActReasonHealthProgramReporting = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HPRGRP";
 
     /// <summary>
     /// Literal for code: HealthQualityImprovement
@@ -3397,9 +4127,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHealthQualityImprovement = "HQUALIMP";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthQualityImprovement
+    /// </summary>
+    public const string LiteralV3ActReasonHealthQualityImprovement = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HQUALIMP";
+
+    /// <summary>
     /// Literal for code: HealthcareResearch
     /// </summary>
     public const string LiteralHealthcareResearch = "HRESCH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonHealthcareResearch
+    /// </summary>
+    public const string LiteralV3ActReasonHealthcareResearch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HRESCH";
 
     /// <summary>
     /// Literal for code: HealthSystemAdministration
@@ -3407,9 +4147,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHealthSystemAdministration = "HSYSADMIN";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthSystemAdministration
+    /// </summary>
+    public const string LiteralV3ActReasonHealthSystemAdministration = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HSYSADMIN";
+
+    /// <summary>
     /// Literal for code: TestHealthData
     /// </summary>
     public const string LiteralTestHealthData = "HTEST";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonTestHealthData
+    /// </summary>
+    public const string LiteralV3ActReasonTestHealthData = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST";
 
     /// <summary>
     /// Literal for code: Immunity
@@ -3417,9 +4167,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralImmunity = "IMMUNE";
 
     /// <summary>
+    /// Literal for code: V3ActReasonImmunity
+    /// </summary>
+    public const string LiteralV3ActReasonImmunity = "http://terminology.hl7.org/CodeSystem/v3-ActReason#IMMUNE";
+
+    /// <summary>
     /// Literal for code: ConditionImproved
     /// </summary>
     public const string LiteralConditionImproved = "IMPROV";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonConditionImproved
+    /// </summary>
+    public const string LiteralV3ActReasonConditionImproved = "http://terminology.hl7.org/CodeSystem/v3-ActReason#IMPROV";
 
     /// <summary>
     /// Literal for code: IncorrectCoveredPartyAsPatient
@@ -3427,9 +4187,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncorrectCoveredPartyAsPatient = "INCCOVPTY";
 
     /// <summary>
+    /// Literal for code: V3ActReasonIncorrectCoveredPartyAsPatient
+    /// </summary>
+    public const string LiteralV3ActReasonIncorrectCoveredPartyAsPatient = "http://terminology.hl7.org/CodeSystem/v3-ActReason#INCCOVPTY";
+
+    /// <summary>
     /// Literal for code: IncorrectBilling
     /// </summary>
     public const string LiteralIncorrectBilling = "INCINVOICE";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonIncorrectBilling
+    /// </summary>
+    public const string LiteralV3ActReasonIncorrectBilling = "http://terminology.hl7.org/CodeSystem/v3-ActReason#INCINVOICE";
 
     /// <summary>
     /// Literal for code: IncorrectPolicy
@@ -3437,9 +4207,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncorrectPolicy = "INCPOLICY";
 
     /// <summary>
+    /// Literal for code: V3ActReasonIncorrectPolicy
+    /// </summary>
+    public const string LiteralV3ActReasonIncorrectPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActReason#INCPOLICY";
+
+    /// <summary>
     /// Literal for code: IncorrectProvider
     /// </summary>
     public const string LiteralIncorrectProvider = "INCPROV";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonIncorrectProvider
+    /// </summary>
+    public const string LiteralV3ActReasonIncorrectProvider = "http://terminology.hl7.org/CodeSystem/v3-ActReason#INCPROV";
 
     /// <summary>
     /// Literal for code: Individual
@@ -3447,9 +4227,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIndividual = "IND";
 
     /// <summary>
+    /// Literal for code: V3ActReasonIndividual
+    /// </summary>
+    public const string LiteralV3ActReasonIndividual = "http://terminology.hl7.org/CodeSystem/v3-ActReason#IND";
+
+    /// <summary>
     /// Literal for code: Ineffective
     /// </summary>
     public const string LiteralIneffective = "INEFFECT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonIneffective
+    /// </summary>
+    public const string LiteralV3ActReasonIneffective = "http://terminology.hl7.org/CodeSystem/v3-ActReason#INEFFECT";
 
     /// <summary>
     /// Literal for code: InRequestedState
@@ -3457,9 +4247,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInRequestedState = "INRQSTATE";
 
     /// <summary>
+    /// Literal for code: V3ActReasonInRequestedState
+    /// </summary>
+    public const string LiteralV3ActReasonInRequestedState = "http://terminology.hl7.org/CodeSystem/v3-ActReason#INRQSTATE";
+
+    /// <summary>
     /// Literal for code: Intolerance
     /// </summary>
     public const string LiteralIntolerance = "INTOL";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonIntolerance
+    /// </summary>
+    public const string LiteralV3ActReasonIntolerance = "http://terminology.hl7.org/CodeSystem/v3-ActReason#INTOL";
 
     /// <summary>
     /// Literal for code: INVOICE
@@ -3467,9 +4267,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralINVOICE = "INVOICE";
 
     /// <summary>
+    /// Literal for code: V3ActReasonINVOICE
+    /// </summary>
+    public const string LiteralV3ActReasonINVOICE = "http://terminology.hl7.org/CodeSystem/v3-ActReason#INVOICE";
+
+    /// <summary>
     /// Literal for code: Labeling
     /// </summary>
     public const string LiteralLabeling = "LABELING";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonLabeling
+    /// </summary>
+    public const string LiteralV3ActReasonLabeling = "http://terminology.hl7.org/CodeSystem/v3-ActReason#LABELING";
 
     /// <summary>
     /// Literal for code: LabInterferenceIssues
@@ -3477,9 +4287,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLabInterferenceIssues = "LABINT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonLabInterferenceIssues
+    /// </summary>
+    public const string LiteralV3ActReasonLabInterferenceIssues = "http://terminology.hl7.org/CodeSystem/v3-ActReason#LABINT";
+
+    /// <summary>
     /// Literal for code: Subpoena
     /// </summary>
     public const string LiteralSubpoena = "LEGAL";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonSubpoena
+    /// </summary>
+    public const string LiteralV3ActReasonSubpoena = "http://terminology.hl7.org/CodeSystem/v3-ActReason#LEGAL";
 
     /// <summary>
     /// Literal for code: Locked
@@ -3487,9 +4307,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLocked = "LOCKED";
 
     /// <summary>
+    /// Literal for code: V3ActReasonLocked
+    /// </summary>
+    public const string LiteralV3ActReasonLocked = "http://terminology.hl7.org/CodeSystem/v3-ActReason#LOCKED";
+
+    /// <summary>
     /// Literal for code: LongTermCareUse
     /// </summary>
     public const string LiteralLongTermCareUse = "LTC";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonLongTermCareUse
+    /// </summary>
+    public const string LiteralV3ActReasonLongTermCareUse = "http://terminology.hl7.org/CodeSystem/v3-ActReason#LTC";
 
     /// <summary>
     /// Literal for code: Marketing
@@ -3497,9 +4327,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMarketing = "MARKT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonMarketing
+    /// </summary>
+    public const string LiteralV3ActReasonMarketing = "http://terminology.hl7.org/CodeSystem/v3-ActReason#MARKT";
+
+    /// <summary>
     /// Literal for code: MergeData
     /// </summary>
     public const string LiteralMergeData = "MDATA";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonMergeData
+    /// </summary>
+    public const string LiteralV3ActReasonMergeData = "http://terminology.hl7.org/CodeSystem/v3-ActReason#MDATA";
 
     /// <summary>
     /// Literal for code: MedicalStatusAltered
@@ -3507,9 +4347,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicalStatusAltered = "MED";
 
     /// <summary>
+    /// Literal for code: V3ActReasonMedicalStatusAltered
+    /// </summary>
+    public const string LiteralV3ActReasonMedicalStatusAltered = "http://terminology.hl7.org/CodeSystem/v3-ActReason#MED";
+
+    /// <summary>
     /// Literal for code: MedicalNecessity
     /// </summary>
     public const string LiteralMedicalNecessity = "MEDNEC";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonMedicalNecessity
+    /// </summary>
+    public const string LiteralV3ActReasonMedicalNecessity = "http://terminology.hl7.org/CodeSystem/v3-ActReason#MEDNEC";
 
     /// <summary>
     /// Literal for code: MedicalPrecaution
@@ -3517,9 +4367,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicalPrecaution = "MEDPREC";
 
     /// <summary>
+    /// Literal for code: V3ActReasonMedicalPrecaution
+    /// </summary>
+    public const string LiteralV3ActReasonMedicalPrecaution = "http://terminology.hl7.org/CodeSystem/v3-ActReason#MEDPREC";
+
+    /// <summary>
     /// Literal for code: MemberAdministration
     /// </summary>
     public const string LiteralMemberAdministration = "MEMADMIN";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonMemberAdministration
+    /// </summary>
+    public const string LiteralV3ActReasonMemberAdministration = "http://terminology.hl7.org/CodeSystem/v3-ActReason#MEMADMIN";
 
     /// <summary>
     /// Literal for code: MetadataManagement
@@ -3527,9 +4387,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMetadataManagement = "METAMGT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonMetadataManagement
+    /// </summary>
+    public const string LiteralV3ActReasonMetadataManagement = "http://terminology.hl7.org/CodeSystem/v3-ActReason#METAMGT";
+
+    /// <summary>
     /// Literal for code: MilitaryCommand
     /// </summary>
     public const string LiteralMilitaryCommand = "MILCDM";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonMilitaryCommand
+    /// </summary>
+    public const string LiteralV3ActReasonMilitaryCommand = "http://terminology.hl7.org/CodeSystem/v3-ActReason#MILCDM";
 
     /// <summary>
     /// Literal for code: MilitaryDischarge
@@ -3537,9 +4407,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMilitaryDischarge = "MILDCRG";
 
     /// <summary>
+    /// Literal for code: V3ActReasonMilitaryDischarge
+    /// </summary>
+    public const string LiteralV3ActReasonMilitaryDischarge = "http://terminology.hl7.org/CodeSystem/v3-ActReason#MILDCRG";
+
+    /// <summary>
     /// Literal for code: ModifiedPrescriptionExists
     /// </summary>
     public const string LiteralModifiedPrescriptionExists = "MODIFY";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonModifiedPrescriptionExists
+    /// </summary>
+    public const string LiteralV3ActReasonModifiedPrescriptionExists = "http://terminology.hl7.org/CodeSystem/v3-ActReason#MODIFY";
 
     /// <summary>
     /// Literal for code: ResponseToMonitoring
@@ -3547,9 +4427,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralResponseToMonitoring = "MONIT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonResponseToMonitoring
+    /// </summary>
+    public const string LiteralV3ActReasonResponseToMonitoring = "http://terminology.hl7.org/CodeSystem/v3-ActReason#MONIT";
+
+    /// <summary>
     /// Literal for code: InAnOutsideMeeting
     /// </summary>
     public const string LiteralInAnOutsideMeeting = "MTG";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonInAnOutsideMeeting
+    /// </summary>
+    public const string LiteralV3ActReasonInAnOutsideMeeting = "http://terminology.hl7.org/CodeSystem/v3-ActReason#MTG";
 
     /// <summary>
     /// Literal for code: MultipleCriteriaEligibility
@@ -3557,9 +4447,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMultipleCriteriaEligibility = "MULTI";
 
     /// <summary>
+    /// Literal for code: V3ActReasonMultipleCriteriaEligibility
+    /// </summary>
+    public const string LiteralV3ActReasonMultipleCriteriaEligibility = "http://terminology.hl7.org/CodeSystem/v3-ActReason#MULTI";
+
+    /// <summary>
     /// Literal for code: PatientMustMakeAppointment
     /// </summary>
     public const string LiteralPatientMustMakeAppointment = "NEEDAPMT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPatientMustMakeAppointment
+    /// </summary>
+    public const string LiteralV3ActReasonPatientMustMakeAppointment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NEEDAPMT";
 
     /// <summary>
     /// Literal for code: NewInformation
@@ -3567,9 +4467,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNewInformation = "NEWDATA";
 
     /// <summary>
+    /// Literal for code: V3ActReasonNewInformation
+    /// </summary>
+    public const string LiteralV3ActReasonNewInformation = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NEWDATA";
+
+    /// <summary>
     /// Literal for code: NewStrength
     /// </summary>
     public const string LiteralNewStrength = "NEWSTR";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonNewStrength
+    /// </summary>
+    public const string LiteralV3ActReasonNewStrength = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NEWSTR";
 
     /// <summary>
     /// Literal for code: NewTherapy
@@ -3577,9 +4487,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNewTherapy = "NEWTHER";
 
     /// <summary>
+    /// Literal for code: V3ActReasonNewTherapy
+    /// </summary>
+    public const string LiteralV3ActReasonNewTherapy = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NEWTHER";
+
+    /// <summary>
     /// Literal for code: NoAgentPermission
     /// </summary>
     public const string LiteralNoAgentPermission = "NOAGNTPERM";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonNoAgentPermission
+    /// </summary>
+    public const string LiteralV3ActReasonNoAgentPermission = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOAGNTPERM";
 
     /// <summary>
     /// Literal for code: NoMatch
@@ -3587,9 +4507,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoMatch = "NOMATCH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonNoMatch
+    /// </summary>
+    public const string LiteralV3ActReasonNoMatch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOMATCH";
+
+    /// <summary>
     /// Literal for code: PatientNotAvailable
     /// </summary>
     public const string LiteralPatientNotAvailable = "NON-AVAIL";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPatientNotAvailable
+    /// </summary>
+    public const string LiteralV3ActReasonPatientNotAvailable = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NON-AVAIL";
 
     /// <summary>
     /// Literal for code: NoPermission
@@ -3597,9 +4527,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoPermission = "NOPERM";
 
     /// <summary>
+    /// Literal for code: V3ActReasonNoPermission
+    /// </summary>
+    public const string LiteralV3ActReasonNoPermission = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOPERM";
+
+    /// <summary>
     /// Literal for code: NotPickedUp
     /// </summary>
     public const string LiteralNotPickedUp = "NOPICK";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonNotPickedUp
+    /// </summary>
+    public const string LiteralV3ActReasonNotPickedUp = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOPICK";
 
     /// <summary>
     /// Literal for code: NoProductMatch
@@ -3607,9 +4547,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoProductMatch = "NOPRODMTCH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonNoProductMatch
+    /// </summary>
+    public const string LiteralV3ActReasonNoProductMatch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOPRODMTCH";
+
+    /// <summary>
     /// Literal for code: NoRecordMatch
     /// </summary>
     public const string LiteralNoRecordMatch = "NORECMTCH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonNoRecordMatch
+    /// </summary>
+    public const string LiteralV3ActReasonNoRecordMatch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NORECMTCH";
 
     /// <summary>
     /// Literal for code: NoLongerRequiredForTreatment
@@ -3617,9 +4567,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoLongerRequiredForTreatment = "NOREQ";
 
     /// <summary>
+    /// Literal for code: V3ActReasonNoLongerRequiredForTreatment
+    /// </summary>
+    public const string LiteralV3ActReasonNoLongerRequiredForTreatment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOREQ";
+
+    /// <summary>
     /// Literal for code: NoServiceMatch
     /// </summary>
     public const string LiteralNoServiceMatch = "NOSERMTCH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonNoServiceMatch
+    /// </summary>
+    public const string LiteralV3ActReasonNoServiceMatch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOSERMTCH";
 
     /// <summary>
     /// Literal for code: PrescriberNotAvailable
@@ -3627,9 +4587,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPrescriberNotAvailable = "NOTAVAIL";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPrescriberNotAvailable
+    /// </summary>
+    public const string LiteralV3ActReasonPrescriberNotAvailable = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOTAVAIL";
+
+    /// <summary>
     /// Literal for code: NotCovered
     /// </summary>
     public const string LiteralNotCovered = "NOTCOVER";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonNotCovered
+    /// </summary>
+    public const string LiteralV3ActReasonNotCovered = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOTCOVER";
 
     /// <summary>
     /// Literal for code: PatientNoLongerInThisPractice
@@ -3637,9 +4607,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatientNoLongerInThisPractice = "NOTPAT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPatientNoLongerInThisPractice
+    /// </summary>
+    public const string LiteralV3ActReasonPatientNoLongerInThisPractice = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOTPAT";
+
+    /// <summary>
     /// Literal for code: NoUserPermission
     /// </summary>
     public const string LiteralNoUserPermission = "NOUSERPERM";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonNoUserPermission
+    /// </summary>
+    public const string LiteralV3ActReasonNoUserPermission = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOUSERPERM";
 
     /// <summary>
     /// Literal for code: NoUserPermission_2
@@ -3647,9 +4627,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoUserPermission_2 = "NOUSRPERM";
 
     /// <summary>
+    /// Literal for code: V3ActReasonNoUserPermission_2
+    /// </summary>
+    public const string LiteralV3ActReasonNoUserPermission_2 = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOUSRPERM";
+
+    /// <summary>
     /// Literal for code: NoVersionMatch
     /// </summary>
     public const string LiteralNoVersionMatch = "NOVERMTCH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonNoVersionMatch
+    /// </summary>
+    public const string LiteralV3ActReasonNoVersionMatch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOVERMTCH";
 
     /// <summary>
     /// Literal for code: NonProtocol
@@ -3657,9 +4647,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNonProtocol = "NPT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonNonProtocol
+    /// </summary>
+    public const string LiteralV3ActReasonNonProtocol = "http://terminology.hl7.org/CodeSystem/v3-ActReason#NPT";
+
+    /// <summary>
     /// Literal for code: OfficeUse
     /// </summary>
     public const string LiteralOfficeUse = "OFFICE";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonOfficeUse
+    /// </summary>
+    public const string LiteralV3ActReasonOfficeUse = "http://terminology.hl7.org/CodeSystem/v3-ActReason#OFFICE";
 
     /// <summary>
     /// Literal for code: MedicationOnHold
@@ -3667,9 +4667,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicationOnHold = "ONHOLD";
 
     /// <summary>
+    /// Literal for code: V3ActReasonMedicationOnHold
+    /// </summary>
+    public const string LiteralV3ActReasonMedicationOnHold = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ONHOLD";
+
+    /// <summary>
     /// Literal for code: Operations
     /// </summary>
     public const string LiteralOperations = "OPERAT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonOperations
+    /// </summary>
+    public const string LiteralV3ActReasonOperations = "http://terminology.hl7.org/CodeSystem/v3-ActReason#OPERAT";
 
     /// <summary>
     /// Literal for code: OutOfStock
@@ -3677,9 +4687,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOutOfStock = "OS";
 
     /// <summary>
+    /// Literal for code: V3ActReasonOutOfStock
+    /// </summary>
+    public const string LiteralV3ActReasonOutOfStock = "http://terminology.hl7.org/CodeSystem/v3-ActReason#OS";
+
+    /// <summary>
     /// Literal for code: ProductOutOfStock
     /// </summary>
     public const string LiteralProductOutOfStock = "OSTOCK";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonProductOutOfStock
+    /// </summary>
+    public const string LiteralV3ActReasonProductOutOfStock = "http://terminology.hl7.org/CodeSystem/v3-ActReason#OSTOCK";
 
     /// <summary>
     /// Literal for code: OutcomeMeasure
@@ -3687,9 +4707,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOutcomeMeasure = "OUTCOMS";
 
     /// <summary>
+    /// Literal for code: V3ActReasonOutcomeMeasure
+    /// </summary>
+    public const string LiteralV3ActReasonOutcomeMeasure = "http://terminology.hl7.org/CodeSystem/v3-ActReason#OUTCOMS";
+
+    /// <summary>
     /// Literal for code: AdministeredOutsideRecommendedScheduleOrPractice
     /// </summary>
     public const string LiteralAdministeredOutsideRecommendedScheduleOrPractice = "OUTSIDESCHED";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonAdministeredOutsideRecommendedScheduleOrPractice
+    /// </summary>
+    public const string LiteralV3ActReasonAdministeredOutsideRecommendedScheduleOrPractice = "http://terminology.hl7.org/CodeSystem/v3-ActReason#OUTSIDESCHED";
 
     /// <summary>
     /// Literal for code: EmergencyTreatmentOverride
@@ -3697,9 +4727,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmergencyTreatmentOverride = "OVRER";
 
     /// <summary>
+    /// Literal for code: V3ActReasonEmergencyTreatmentOverride
+    /// </summary>
+    public const string LiteralV3ActReasonEmergencyTreatmentOverride = "http://terminology.hl7.org/CodeSystem/v3-ActReason#OVRER";
+
+    /// <summary>
     /// Literal for code: IncompetencyOverride
     /// </summary>
     public const string LiteralIncompetencyOverride = "OVRINCOMP";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonIncompetencyOverride
+    /// </summary>
+    public const string LiteralV3ActReasonIncompetencyOverride = "http://terminology.hl7.org/CodeSystem/v3-ActReason#OVRINCOMP";
 
     /// <summary>
     /// Literal for code: ProfessionalJudgmentOverride
@@ -3707,9 +4747,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProfessionalJudgmentOverride = "OVRPJ";
 
     /// <summary>
+    /// Literal for code: V3ActReasonProfessionalJudgmentOverride
+    /// </summary>
+    public const string LiteralV3ActReasonProfessionalJudgmentOverride = "http://terminology.hl7.org/CodeSystem/v3-ActReason#OVRPJ";
+
+    /// <summary>
     /// Literal for code: PublicSafetyOverride
     /// </summary>
     public const string LiteralPublicSafetyOverride = "OVRPS";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPublicSafetyOverride
+    /// </summary>
+    public const string LiteralV3ActReasonPublicSafetyOverride = "http://terminology.hl7.org/CodeSystem/v3-ActReason#OVRPS";
 
     /// <summary>
     /// Literal for code: ThirdPartySafetyOverride
@@ -3717,9 +4767,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralThirdPartySafetyOverride = "OVRTPS";
 
     /// <summary>
+    /// Literal for code: V3ActReasonThirdPartySafetyOverride
+    /// </summary>
+    public const string LiteralV3ActReasonThirdPartySafetyOverride = "http://terminology.hl7.org/CodeSystem/v3-ActReason#OVRTPS";
+
+    /// <summary>
     /// Literal for code: PatientRequest
     /// </summary>
     public const string LiteralPatientRequest = "PAT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPatientRequest
+    /// </summary>
+    public const string LiteralV3ActReasonPatientRequest = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PAT";
 
     /// <summary>
     /// Literal for code: PatientAdministration
@@ -3727,9 +4787,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatientAdministration = "PATADMIN";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPatientAdministration
+    /// </summary>
+    public const string LiteralV3ActReasonPatientAdministration = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATADMIN";
+
+    /// <summary>
     /// Literal for code: PatientCare
     /// </summary>
     public const string LiteralPatientCare = "PATCAR";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPatientCare
+    /// </summary>
+    public const string LiteralV3ActReasonPatientCare = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATCAR";
 
     /// <summary>
     /// Literal for code: PatientChangedMind
@@ -3737,9 +4807,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatientChangedMind = "PATDEC";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPatientChangedMind
+    /// </summary>
+    public const string LiteralV3ActReasonPatientChangedMind = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATDEC";
+
+    /// <summary>
     /// Literal for code: PatientNotEligible
     /// </summary>
     public const string LiteralPatientNotEligible = "PATINELIG";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPatientNotEligible
+    /// </summary>
+    public const string LiteralV3ActReasonPatientNotEligible = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATINELIG";
 
     /// <summary>
     /// Literal for code: PatientObjection
@@ -3747,9 +4827,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatientObjection = "PATOBJ";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPatientObjection
+    /// </summary>
+    public const string LiteralV3ActReasonPatientObjection = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATOBJ";
+
+    /// <summary>
     /// Literal for code: PatientRequestQuery
     /// </summary>
     public const string LiteralPatientRequestQuery = "PATREQ";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPatientRequestQuery
+    /// </summary>
+    public const string LiteralV3ActReasonPatientRequestQuery = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATREQ";
 
     /// <summary>
     /// Literal for code: PatientRequested
@@ -3757,9 +4847,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatientRequested = "PATRQT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPatientRequested
+    /// </summary>
+    public const string LiteralV3ActReasonPatientRequested = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATRQT";
+
+    /// <summary>
     /// Literal for code: PatientSafety
     /// </summary>
     public const string LiteralPatientSafety = "PATSFTY";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPatientSafety
+    /// </summary>
+    public const string LiteralV3ActReasonPatientSafety = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATSFTY";
 
     /// <summary>
     /// Literal for code: Payment
@@ -3767,9 +4867,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPayment = "PAYMT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPayment
+    /// </summary>
+    public const string LiteralV3ActReasonPayment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PAYMT";
+
+    /// <summary>
     /// Literal for code: PerformanceMeasure
     /// </summary>
     public const string LiteralPerformanceMeasure = "PERFMSR";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPerformanceMeasure
+    /// </summary>
+    public const string LiteralV3ActReasonPerformanceMeasure = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PERFMSR";
 
     /// <summary>
     /// Literal for code: PharmacyTransfer
@@ -3777,9 +4887,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPharmacyTransfer = "PHARM";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPharmacyTransfer
+    /// </summary>
+    public const string LiteralV3ActReasonPharmacyTransfer = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PHARM";
+
+    /// <summary>
     /// Literal for code: PhilosophicalObjection
     /// </summary>
     public const string LiteralPhilosophicalObjection = "PHILISOP";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPhilosophicalObjection
+    /// </summary>
+    public const string LiteralV3ActReasonPhilosophicalObjection = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PHILISOP";
 
     /// <summary>
     /// Literal for code: PhysicianRequest
@@ -3787,9 +4907,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPhysicianRequest = "PHY";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPhysicianRequest
+    /// </summary>
+    public const string LiteralV3ActReasonPhysicianRequest = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PHY";
+
+    /// <summary>
     /// Literal for code: PropertyAndCasualtyCondition
     /// </summary>
     public const string LiteralPropertyAndCasualtyCondition = "PNC";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPropertyAndCasualtyCondition
+    /// </summary>
+    public const string LiteralV3ActReasonPropertyAndCasualtyCondition = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PNC";
 
     /// <summary>
     /// Literal for code: PopulationOriginsOrAncestryHealthcareResearch
@@ -3797,9 +4927,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPopulationOriginsOrAncestryHealthcareResearch = "POARCH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPopulationOriginsOrAncestryHealthcareResearch
+    /// </summary>
+    public const string LiteralV3ActReasonPopulationOriginsOrAncestryHealthcareResearch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#POARCH";
+
+    /// <summary>
     /// Literal for code: PopulationHealth
     /// </summary>
     public const string LiteralPopulationHealth = "POPHLTH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPopulationHealth
+    /// </summary>
+    public const string LiteralV3ActReasonPopulationHealth = "http://terminology.hl7.org/CodeSystem/v3-ActReason#POPHLTH";
 
     /// <summary>
     /// Literal for code: PerProtocol
@@ -3807,9 +4947,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPerProtocol = "PPT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPerProtocol
+    /// </summary>
+    public const string LiteralV3ActReasonPerProtocol = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PPT";
+
+    /// <summary>
     /// Literal for code: PracticeReview
     /// </summary>
     public const string LiteralPracticeReview = "PRCREV";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPracticeReview
+    /// </summary>
+    public const string LiteralV3ActReasonPracticeReview = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PRCREV";
 
     /// <summary>
     /// Literal for code: PreclinicalTrialResearch
@@ -3817,9 +4967,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPreclinicalTrialResearch = "PRECLINTRCH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPreclinicalTrialResearch
+    /// </summary>
+    public const string LiteralV3ActReasonPreclinicalTrialResearch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PRECLINTRCH";
+
+    /// <summary>
     /// Literal for code: PatientRefuse
     /// </summary>
     public const string LiteralPatientRefuse = "PREFUS";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPatientRefuse
+    /// </summary>
+    public const string LiteralV3ActReasonPatientRefuse = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PREFUS";
 
     /// <summary>
     /// Literal for code: ParentIsPregnantBreastFeeding
@@ -3827,9 +4987,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralParentIsPregnantBreastFeeding = "PREG";
 
     /// <summary>
+    /// Literal for code: V3ActReasonParentIsPregnantBreastFeeding
+    /// </summary>
+    public const string LiteralV3ActReasonParentIsPregnantBreastFeeding = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PREG";
+
+    /// <summary>
     /// Literal for code: ProgramReporting
     /// </summary>
     public const string LiteralProgramReporting = "PRGRPT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonProgramReporting
+    /// </summary>
+    public const string LiteralV3ActReasonProgramReporting = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PRGRPT";
 
     /// <summary>
     /// Literal for code: ProductNotAvailable
@@ -3837,9 +5007,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductNotAvailable = "PRNA";
 
     /// <summary>
+    /// Literal for code: V3ActReasonProductNotAvailable
+    /// </summary>
+    public const string LiteralV3ActReasonProductNotAvailable = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PRNA";
+
+    /// <summary>
     /// Literal for code: PROA
     /// </summary>
     public const string LiteralPROA = "PROA";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPROA
+    /// </summary>
+    public const string LiteralV3ActReasonPROA = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PROA";
 
     /// <summary>
     /// Literal for code: ProductRecall
@@ -3847,9 +5027,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductRecall = "PRODRECALL";
 
     /// <summary>
+    /// Literal for code: V3ActReasonProductRecall
+    /// </summary>
+    public const string LiteralV3ActReasonProductRecall = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PRODRECALL";
+
+    /// <summary>
     /// Literal for code: ProgramUse
     /// </summary>
     public const string LiteralProgramUse = "PROG";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonProgramUse
+    /// </summary>
+    public const string LiteralV3ActReasonProgramUse = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PROG";
 
     /// <summary>
     /// Literal for code: ProtocolNotMet
@@ -3857,9 +5047,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProtocolNotMet = "PROTUNMET";
 
     /// <summary>
+    /// Literal for code: V3ActReasonProtocolNotMet
+    /// </summary>
+    public const string LiteralV3ActReasonProtocolNotMet = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PROTUNMET";
+
+    /// <summary>
     /// Literal for code: ProviderNotAuthorized
     /// </summary>
     public const string LiteralProviderNotAuthorized = "PROVUNAUTH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonProviderNotAuthorized
+    /// </summary>
+    public const string LiteralV3ActReasonProviderNotAuthorized = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PROVUNAUTH";
 
     /// <summary>
     /// Literal for code: PublicHealth
@@ -3867,9 +5067,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPublicHealth = "PUBHLTH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPublicHealth
+    /// </summary>
+    public const string LiteralV3ActReasonPublicHealth = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PUBHLTH";
+
+    /// <summary>
     /// Literal for code: PurposeOfUse
     /// </summary>
     public const string LiteralPurposeOfUse = "PurposeOfUse";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPurposeOfUse
+    /// </summary>
+    public const string LiteralV3ActReasonPurposeOfUse = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PurposeOfUse";
 
     /// <summary>
     /// Literal for code: PowerOfAttorney
@@ -3877,9 +5087,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowerOfAttorney = "PWATRNY";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPowerOfAttorney
+    /// </summary>
+    public const string LiteralV3ActReasonPowerOfAttorney = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PWATRNY";
+
+    /// <summary>
     /// Literal for code: QualityImprovement
     /// </summary>
     public const string LiteralQualityImprovement = "QUALIMP";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonQualityImprovement
+    /// </summary>
+    public const string LiteralV3ActReasonQualityImprovement = "http://terminology.hl7.org/CodeSystem/v3-ActReason#QUALIMP";
 
     /// <summary>
     /// Literal for code: ChangeSupplyQuantity
@@ -3887,9 +5107,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChangeSupplyQuantity = "QUANTCHG";
 
     /// <summary>
+    /// Literal for code: V3ActReasonChangeSupplyQuantity
+    /// </summary>
+    public const string LiteralV3ActReasonChangeSupplyQuantity = "http://terminology.hl7.org/CodeSystem/v3-ActReason#QUANTCHG";
+
+    /// <summary>
     /// Literal for code: ProductRecalled
     /// </summary>
     public const string LiteralProductRecalled = "RECALL";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonProductRecalled
+    /// </summary>
+    public const string LiteralV3ActReasonProductRecalled = "http://terminology.hl7.org/CodeSystem/v3-ActReason#RECALL";
 
     /// <summary>
     /// Literal for code: RecordsManagement
@@ -3897,9 +5127,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRecordsManagement = "RECORDMGT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonRecordsManagement
+    /// </summary>
+    public const string LiteralV3ActReasonRecordsManagement = "http://terminology.hl7.org/CodeSystem/v3-ActReason#RECORDMGT";
+
+    /// <summary>
     /// Literal for code: RECOV
     /// </summary>
     public const string LiteralRECOV = "RECOV";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonRECOV
+    /// </summary>
+    public const string LiteralV3ActReasonRECOV = "http://terminology.hl7.org/CodeSystem/v3-ActReason#RECOV";
 
     /// <summary>
     /// Literal for code: RegisteredInError
@@ -3907,9 +5147,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRegisteredInError = "REGERR";
 
     /// <summary>
+    /// Literal for code: V3ActReasonRegisteredInError
+    /// </summary>
+    public const string LiteralV3ActReasonRegisteredInError = "http://terminology.hl7.org/CodeSystem/v3-ActReason#REGERR";
+
+    /// <summary>
     /// Literal for code: RegulatoryReview
     /// </summary>
     public const string LiteralRegulatoryReview = "REGUL";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonRegulatoryReview
+    /// </summary>
+    public const string LiteralV3ActReasonRegulatoryReview = "http://terminology.hl7.org/CodeSystem/v3-ActReason#REGUL";
 
     /// <summary>
     /// Literal for code: ReligiousObjection
@@ -3917,9 +5167,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralReligiousObjection = "RELIG";
 
     /// <summary>
+    /// Literal for code: V3ActReasonReligiousObjection
+    /// </summary>
+    public const string LiteralV3ActReasonReligiousObjection = "http://terminology.hl7.org/CodeSystem/v3-ActReason#RELIG";
+
+    /// <summary>
     /// Literal for code: RemittanceAdvice
     /// </summary>
     public const string LiteralRemittanceAdvice = "REMITADV";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonRemittanceAdvice
+    /// </summary>
+    public const string LiteralV3ActReasonRemittanceAdvice = "http://terminology.hl7.org/CodeSystem/v3-ActReason#REMITADV";
 
     /// <summary>
     /// Literal for code: ChangeInOrder
@@ -3927,9 +5187,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChangeInOrder = "REPLACE";
 
     /// <summary>
+    /// Literal for code: V3ActReasonChangeInOrder
+    /// </summary>
+    public const string LiteralV3ActReasonChangeInOrder = "http://terminology.hl7.org/CodeSystem/v3-ActReason#REPLACE";
+
+    /// <summary>
     /// Literal for code: ErrorInOrder
     /// </summary>
     public const string LiteralErrorInOrder = "REPLACEFIX";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonErrorInOrder
+    /// </summary>
+    public const string LiteralV3ActReasonErrorInOrder = "http://terminology.hl7.org/CodeSystem/v3-ActReason#REPLACEFIX";
 
     /// <summary>
     /// Literal for code: Research
@@ -3937,9 +5207,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralResearch = "RESCH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonResearch
+    /// </summary>
+    public const string LiteralV3ActReasonResearch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#RESCH";
+
+    /// <summary>
     /// Literal for code: Retest
     /// </summary>
     public const string LiteralRetest = "RET";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonRetest
+    /// </summary>
+    public const string LiteralV3ActReasonRetest = "http://terminology.hl7.org/CodeSystem/v3-ActReason#RET";
 
     /// <summary>
     /// Literal for code: RETRO
@@ -3947,9 +5227,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRETRO = "RETRO";
 
     /// <summary>
+    /// Literal for code: V3ActReasonRETRO
+    /// </summary>
+    public const string LiteralV3ActReasonRETRO = "http://terminology.hl7.org/CodeSystem/v3-ActReason#RETRO";
+
+    /// <summary>
     /// Literal for code: Request
     /// </summary>
     public const string LiteralRequest = "RQ";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonRequest
+    /// </summary>
+    public const string LiteralV3ActReasonRequest = "http://terminology.hl7.org/CodeSystem/v3-ActReason#RQ";
 
     /// <summary>
     /// Literal for code: RegulatoryRequirement
@@ -3957,9 +5247,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRegulatoryRequirement = "RR";
 
     /// <summary>
+    /// Literal for code: V3ActReasonRegulatoryRequirement
+    /// </summary>
+    public const string LiteralV3ActReasonRegulatoryRequirement = "http://terminology.hl7.org/CodeSystem/v3-ActReason#RR";
+
+    /// <summary>
     /// Literal for code: Research_2
     /// </summary>
     public const string LiteralResearch_2 = "RSRCH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonResearch_2
+    /// </summary>
+    public const string LiteralV3ActReasonResearch_2 = "http://terminology.hl7.org/CodeSystem/v3-ActReason#RSRCH";
 
     /// <summary>
     /// Literal for code: Allergy
@@ -3967,9 +5267,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAllergy = "SALG";
 
     /// <summary>
+    /// Literal for code: V3ActReasonAllergy
+    /// </summary>
+    public const string LiteralV3ActReasonAllergy = "http://terminology.hl7.org/CodeSystem/v3-ActReason#SALG";
+
+    /// <summary>
     /// Literal for code: Scheduled
     /// </summary>
     public const string LiteralScheduled = "SCH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonScheduled
+    /// </summary>
+    public const string LiteralV3ActReasonScheduled = "http://terminology.hl7.org/CodeSystem/v3-ActReason#SCH";
 
     /// <summary>
     /// Literal for code: DrugInteractsWithAnotherDrug
@@ -3977,9 +5287,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDrugInteractsWithAnotherDrug = "SDDI";
 
     /// <summary>
+    /// Literal for code: V3ActReasonDrugInteractsWithAnotherDrug
+    /// </summary>
+    public const string LiteralV3ActReasonDrugInteractsWithAnotherDrug = "http://terminology.hl7.org/CodeSystem/v3-ActReason#SDDI";
+
+    /// <summary>
     /// Literal for code: DuplicateTherapy
     /// </summary>
     public const string LiteralDuplicateTherapy = "SDUPTHER";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonDuplicateTherapy
+    /// </summary>
+    public const string LiteralV3ActReasonDuplicateTherapy = "http://terminology.hl7.org/CodeSystem/v3-ActReason#SDUPTHER";
 
     /// <summary>
     /// Literal for code: SuspectedIntolerance
@@ -3987,9 +5307,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSuspectedIntolerance = "SINTOL";
 
     /// <summary>
+    /// Literal for code: V3ActReasonSuspectedIntolerance
+    /// </summary>
+    public const string LiteralV3ActReasonSuspectedIntolerance = "http://terminology.hl7.org/CodeSystem/v3-ActReason#SINTOL";
+
+    /// <summary>
     /// Literal for code: SpouseAndChildren
     /// </summary>
     public const string LiteralSpouseAndChildren = "SPC";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonSpouseAndChildren
+    /// </summary>
+    public const string LiteralV3ActReasonSpouseAndChildren = "http://terminology.hl7.org/CodeSystem/v3-ActReason#SPC";
 
     /// <summary>
     /// Literal for code: SpouseOnly
@@ -3997,9 +5327,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSpouseOnly = "SPO";
 
     /// <summary>
+    /// Literal for code: V3ActReasonSpouseOnly
+    /// </summary>
+    public const string LiteralV3ActReasonSpouseOnly = "http://terminology.hl7.org/CodeSystem/v3-ActReason#SPO";
+
+    /// <summary>
     /// Literal for code: Service
     /// </summary>
     public const string LiteralService = "SRVC";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonService
+    /// </summary>
+    public const string LiteralV3ActReasonService = "http://terminology.hl7.org/CodeSystem/v3-ActReason#SRVC";
 
     /// <summary>
     /// Literal for code: StatutoryEligibility
@@ -4007,9 +5347,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStatutoryEligibility = "STATUTORY";
 
     /// <summary>
+    /// Literal for code: V3ActReasonStatutoryEligibility
+    /// </summary>
+    public const string LiteralV3ActReasonStatutoryEligibility = "http://terminology.hl7.org/CodeSystem/v3-ActReason#STATUTORY";
+
+    /// <summary>
     /// Literal for code: PrescriberStoppedMedicationForPatient
     /// </summary>
     public const string LiteralPrescriberStoppedMedicationForPatient = "STOPMED";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPrescriberStoppedMedicationForPatient
+    /// </summary>
+    public const string LiteralV3ActReasonPrescriberStoppedMedicationForPatient = "http://terminology.hl7.org/CodeSystem/v3-ActReason#STOPMED";
 
     /// <summary>
     /// Literal for code: SupportNetwork
@@ -4017,9 +5367,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSupportNetwork = "SUPNWK";
 
     /// <summary>
+    /// Literal for code: V3ActReasonSupportNetwork
+    /// </summary>
+    public const string LiteralV3ActReasonSupportNetwork = "http://terminology.hl7.org/CodeSystem/v3-ActReason#SUPNWK";
+
+    /// <summary>
     /// Literal for code: PatientScheduledForSurgery
     /// </summary>
     public const string LiteralPatientScheduledForSurgery = "SURG";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPatientScheduledForSurgery
+    /// </summary>
+    public const string LiteralV3ActReasonPatientScheduledForSurgery = "http://terminology.hl7.org/CodeSystem/v3-ActReason#SURG";
 
     /// <summary>
     /// Literal for code: SystemAdministration
@@ -4027,9 +5387,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSystemAdministration = "SYSADMN";
 
     /// <summary>
+    /// Literal for code: V3ActReasonSystemAdministration
+    /// </summary>
+    public const string LiteralV3ActReasonSystemAdministration = "http://terminology.hl7.org/CodeSystem/v3-ActReason#SYSADMN";
+
+    /// <summary>
     /// Literal for code: SystemDevelopment
     /// </summary>
     public const string LiteralSystemDevelopment = "SYSDEV";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonSystemDevelopment
+    /// </summary>
+    public const string LiteralV3ActReasonSystemDevelopment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#SYSDEV";
 
     /// <summary>
     /// Literal for code: TherapeuticCharacteristics
@@ -4037,9 +5407,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTherapeuticCharacteristics = "THERCHAR";
 
     /// <summary>
+    /// Literal for code: V3ActReasonTherapeuticCharacteristics
+    /// </summary>
+    public const string LiteralV3ActReasonTherapeuticCharacteristics = "http://terminology.hl7.org/CodeSystem/v3-ActReason#THERCHAR";
+
+    /// <summary>
     /// Literal for code: Threat
     /// </summary>
     public const string LiteralThreat = "THREAT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonThreat
+    /// </summary>
+    public const string LiteralV3ActReasonThreat = "http://terminology.hl7.org/CodeSystem/v3-ActReason#THREAT";
 
     /// <summary>
     /// Literal for code: TooEarly
@@ -4047,9 +5427,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTooEarly = "TOOEARLY";
 
     /// <summary>
+    /// Literal for code: V3ActReasonTooEarly
+    /// </summary>
+    public const string LiteralV3ActReasonTooEarly = "http://terminology.hl7.org/CodeSystem/v3-ActReason#TOOEARLY";
+
+    /// <summary>
     /// Literal for code: Training
     /// </summary>
     public const string LiteralTraining = "TRAIN";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonTraining
+    /// </summary>
+    public const string LiteralV3ActReasonTraining = "http://terminology.hl7.org/CodeSystem/v3-ActReason#TRAIN";
 
     /// <summary>
     /// Literal for code: TRAN
@@ -4057,9 +5447,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTRAN = "TRAN";
 
     /// <summary>
+    /// Literal for code: V3ActReasonTRAN
+    /// </summary>
+    public const string LiteralV3ActReasonTRAN = "http://terminology.hl7.org/CodeSystem/v3-ActReason#TRAN";
+
+    /// <summary>
     /// Literal for code: TranslationalHealthcareResearch
     /// </summary>
     public const string LiteralTranslationalHealthcareResearch = "TRANSRCH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonTranslationalHealthcareResearch
+    /// </summary>
+    public const string LiteralV3ActReasonTranslationalHealthcareResearch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#TRANSRCH";
 
     /// <summary>
     /// Literal for code: Treatment
@@ -4067,9 +5467,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTreatment = "TREAT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonTreatment
+    /// </summary>
+    public const string LiteralV3ActReasonTreatment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT";
+
+    /// <summary>
     /// Literal for code: ClinicalTrialDrug
     /// </summary>
     public const string LiteralClinicalTrialDrug = "TRIAL";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonClinicalTrialDrug
+    /// </summary>
+    public const string LiteralV3ActReasonClinicalTrialDrug = "http://terminology.hl7.org/CodeSystem/v3-ActReason#TRIAL";
 
     /// <summary>
     /// Literal for code: Termination
@@ -4077,9 +5487,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTermination = "TRM";
 
     /// <summary>
+    /// Literal for code: V3ActReasonTermination
+    /// </summary>
+    public const string LiteralV3ActReasonTermination = "http://terminology.hl7.org/CodeSystem/v3-ActReason#TRM";
+
+    /// <summary>
     /// Literal for code: UnmergeData
     /// </summary>
     public const string LiteralUnmergeData = "UMDATA";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonUnmergeData
+    /// </summary>
+    public const string LiteralV3ActReasonUnmergeData = "http://terminology.hl7.org/CodeSystem/v3-ActReason#UMDATA";
 
     /// <summary>
     /// Literal for code: UnableToUse
@@ -4087,9 +5507,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUnableToUse = "UNABLE";
 
     /// <summary>
+    /// Literal for code: V3ActReasonUnableToUse
+    /// </summary>
+    public const string LiteralV3ActReasonUnableToUse = "http://terminology.hl7.org/CodeSystem/v3-ActReason#UNABLE";
+
+    /// <summary>
     /// Literal for code: UnknownTarget
     /// </summary>
     public const string LiteralUnknownTarget = "UNKWNTARGET";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonUnknownTarget
+    /// </summary>
+    public const string LiteralV3ActReasonUnknownTarget = "http://terminology.hl7.org/CodeSystem/v3-ActReason#UNKWNTARGET";
 
     /// <summary>
     /// Literal for code: Unscheduled
@@ -4097,9 +5527,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUnscheduled = "UNS";
 
     /// <summary>
+    /// Literal for code: V3ActReasonUnscheduled
+    /// </summary>
+    public const string LiteralV3ActReasonUnscheduled = "http://terminology.hl7.org/CodeSystem/v3-ActReason#UNS";
+
+    /// <summary>
     /// Literal for code: PerDefinition
     /// </summary>
     public const string LiteralPerDefinition = "UPT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPerDefinition
+    /// </summary>
+    public const string LiteralV3ActReasonPerDefinition = "http://terminology.hl7.org/CodeSystem/v3-ActReason#UPT";
 
     /// <summary>
     /// Literal for code: VaccineEfficacyConcerns
@@ -4107,9 +5547,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVaccineEfficacyConcerns = "VACEFF";
 
     /// <summary>
+    /// Literal for code: V3ActReasonVaccineEfficacyConcerns
+    /// </summary>
+    public const string LiteralV3ActReasonVaccineEfficacyConcerns = "http://terminology.hl7.org/CodeSystem/v3-ActReason#VACEFF";
+
+    /// <summary>
     /// Literal for code: VaccineSafetyConcerns
     /// </summary>
     public const string LiteralVaccineSafetyConcerns = "VACSAF";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonVaccineSafetyConcerns
+    /// </summary>
+    public const string LiteralV3ActReasonVaccineSafetyConcerns = "http://terminology.hl7.org/CodeSystem/v3-ActReason#VACSAF";
 
     /// <summary>
     /// Literal for code: ValidationReview
@@ -4117,9 +5567,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralValidationReview = "VALIDATION";
 
     /// <summary>
+    /// Literal for code: V3ActReasonValidationReview
+    /// </summary>
+    public const string LiteralV3ActReasonValidationReview = "http://terminology.hl7.org/CodeSystem/v3-ActReason#VALIDATION";
+
+    /// <summary>
     /// Literal for code: MotorVehicleAccidentVictim
     /// </summary>
     public const string LiteralMotorVehicleAccidentVictim = "VEHIC";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonMotorVehicleAccidentVictim
+    /// </summary>
+    public const string LiteralV3ActReasonMotorVehicleAccidentVictim = "http://terminology.hl7.org/CodeSystem/v3-ActReason#VEHIC";
 
     /// <summary>
     /// Literal for code: WaitingForOldDrugToWashOut
@@ -4127,13 +5587,624 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWaitingForOldDrugToWashOut = "WASHOUT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonWaitingForOldDrugToWashOut
+    /// </summary>
+    public const string LiteralV3ActReasonWaitingForOldDrugToWashOut = "http://terminology.hl7.org/CodeSystem/v3-ActReason#WASHOUT";
+
+    /// <summary>
     /// Literal for code: WorkRelated
     /// </summary>
     public const string LiteralWorkRelated = "WORK";
 
     /// <summary>
+    /// Literal for code: V3ActReasonWorkRelated
+    /// </summary>
+    public const string LiteralV3ActReasonWorkRelated = "http://terminology.hl7.org/CodeSystem/v3-ActReason#WORK";
+
+    /// <summary>
     /// Literal for code: WrongVersion
     /// </summary>
     public const string LiteralWrongVersion = "WRNGVER";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonWrongVersion
+    /// </summary>
+    public const string LiteralV3ActReasonWrongVersion = "http://terminology.hl7.org/CodeSystem/v3-ActReason#WRNGVER";
+
+    /// <summary>
+    /// Dictionary for looking up V3ActReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "_ActAccommodationReason", ActAccommodationReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActAccommodationReason", ActAccommodationReason }, 
+      { "_ActAdjudicationReason", ActAdjudicationReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActAdjudicationReason", ActAdjudicationReason }, 
+      { "_ActBillableClinicalServiceReason", ActBillableClinicalServiceReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActBillableClinicalServiceReason", ActBillableClinicalServiceReason }, 
+      { "_ActBillableServiceReason", ActBillableServiceReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActBillableServiceReason", ActBillableServiceReason }, 
+      { "_ActConsentInformationAccessOverrideReason", ActConsentInformationAccessOverrideReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActConsentInformationAccessOverrideReason", ActConsentInformationAccessOverrideReason }, 
+      { "_ActCoverageLevelRasonCode", ActCoverageLevelRasonCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActCoverageLevelRasonCode", ActCoverageLevelRasonCode }, 
+      { "_ActCoverageProviderReason", ActCoverageProviderReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActCoverageProviderReason", ActCoverageProviderReason }, 
+      { "_ActCoverageReason", ActCoverageReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActCoverageReason", ActCoverageReason }, 
+      { "_ActCoverageServiceReason", ActCoverageServiceReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActCoverageServiceReason", ActCoverageServiceReason }, 
+      { "_ActHealthInformationManagementReason", ActHealthInformationManagementReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActHealthInformationManagementReason", ActHealthInformationManagementReason }, 
+      { "_ActHealthInformationPrivacyReason", ActHealthInformationPrivacyReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActHealthInformationPrivacyReason", ActHealthInformationPrivacyReason }, 
+      { "_ActImmunizationReason", ActImmunizationReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActImmunizationReason", ActImmunizationReason }, 
+      { "_ActIneligibilityReason", ActIneligibilityReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActIneligibilityReason", ActIneligibilityReason }, 
+      { "_ActInformationManagementReason", ActInformationManagementReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActInformationManagementReason", ActInformationManagementReason }, 
+      { "_ActInformationPrivacyReason", ActInformationPrivacyReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActInformationPrivacyReason", ActInformationPrivacyReason }, 
+      { "_ActInvalidReason", ActInvalidReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActInvalidReason", ActInvalidReason }, 
+      { "_ActInvoiceCancelReason", ActInvoiceCancelReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActInvoiceCancelReason", ActInvoiceCancelReason }, 
+      { "_ActNoImmunizationReason", ActNoImmunizationReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActNoImmunizationReason", ActNoImmunizationReason }, 
+      { "_ActSupplyFulfillmentRefusalReason", ActSupplyFulfillmentRefusalReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ActSupplyFulfillmentRefusalReason", ActSupplyFulfillmentRefusalReason }, 
+      { "_ClinicalResearchEventReason", ClinicalResearchEventReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ClinicalResearchEventReason", ClinicalResearchEventReason }, 
+      { "_ClinicalResearchObservationReason", ClinicalResearchObservationReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ClinicalResearchObservationReason", ClinicalResearchObservationReason }, 
+      { "_CombinedPharmacyOrderSuspendReasonCode", CombinedPharmacyOrderSuspendReasonCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_CombinedPharmacyOrderSuspendReasonCode", CombinedPharmacyOrderSuspendReasonCode }, 
+      { "_ConrolActNullificationReasonCode", ConrolActNullificationReasonCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ConrolActNullificationReasonCode", ConrolActNullificationReasonCode }, 
+      { "_ControlActNullificationReasonCode", ControlActNullificationReasonCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ControlActNullificationReasonCode", ControlActNullificationReasonCode }, 
+      { "_ControlActNullificationRefusalReasonType", ControlActNullificationRefusalReasonType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ControlActNullificationRefusalReasonType", ControlActNullificationRefusalReasonType }, 
+      { "_ControlActReason", ControlActReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ControlActReason", ControlActReason }, 
+      { "_ControlActReasonConditionNullify", ControlActReasonConditionNullify }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ControlActReasonConditionNullify", ControlActReasonConditionNullify }, 
+      { "_CoverageEligibilityReason", CoverageEligibilityReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_CoverageEligibilityReason", CoverageEligibilityReason }, 
+      { "_CoverageExclusionReason", CoverageExclusionReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_CoverageExclusionReason", CoverageExclusionReason }, 
+      { "_CoverageFinancialParticipationReason", CoverageFinancialParticipationReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_CoverageFinancialParticipationReason", CoverageFinancialParticipationReason }, 
+      { "_CoverageLimitationReason", CoverageLimitationReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_CoverageLimitationReason", CoverageLimitationReason }, 
+      { "_EligibilityActReasonCode", EligibilityActReasonCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_EligibilityActReasonCode", EligibilityActReasonCode }, 
+      { "_GenericUpdateReasonCode", GenericUpdateReasonCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_GenericUpdateReasonCode", GenericUpdateReasonCode }, 
+      { "_MedicallyNecessaryDuplicateProcedureReason", MedicallyNecessaryDuplicateProcedureReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_MedicallyNecessaryDuplicateProcedureReason", MedicallyNecessaryDuplicateProcedureReason }, 
+      { "_MedicationOrderAbortReasonCode", MedicationOrderAbortReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_MedicationOrderAbortReasonCode", MedicationOrderAbortReason }, 
+      { "_MedicationOrderReleaseReasonCode", MedicationOrderReleaseReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_MedicationOrderReleaseReasonCode", MedicationOrderReleaseReason }, 
+      { "_ModifyPrescriptionReasonType", ModifyPrescriptionReasonType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ModifyPrescriptionReasonType", ModifyPrescriptionReasonType }, 
+      { "_NonPerformanceReasonCode", NonPerformanceReasonCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_NonPerformanceReasonCode", NonPerformanceReasonCode }, 
+      { "_PatientProfileQueryReasonCode", PatientProfileQueryReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_PatientProfileQueryReasonCode", PatientProfileQueryReason }, 
+      { "_PharmacySupplyEventAbortReason", PharmacySupplyEventAbortReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_PharmacySupplyEventAbortReason", PharmacySupplyEventAbortReason }, 
+      { "_PharmacySupplyEventStockReasonCode", PharmacySupplyEventStockReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_PharmacySupplyEventStockReasonCode", PharmacySupplyEventStockReason }, 
+      { "_PharmacySupplyRequestFulfillerRevisionRefusalReasonCode", PharmacySupplyRequestFulfillerRevisionRefusalReasonCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_PharmacySupplyRequestFulfillerRevisionRefusalReasonCode", PharmacySupplyRequestFulfillerRevisionRefusalReasonCode }, 
+      { "_PharmacySupplyRequestRenewalRefusalReasonCode", PharmacySupplyRequestRenewalRefusalReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_PharmacySupplyRequestRenewalRefusalReasonCode", PharmacySupplyRequestRenewalRefusalReason }, 
+      { "_ReasonForNotEvaluatingDevice", ReasonForNotEvaluatingDevice }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ReasonForNotEvaluatingDevice", ReasonForNotEvaluatingDevice }, 
+      { "_ReferralReasonCode", ReferralReasonCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_ReferralReasonCode", ReferralReasonCode }, 
+      { "_RefusalReasonCode", RefusalReasonCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_RefusalReasonCode", RefusalReasonCode }, 
+      { "_SchedulingActReason", SchedulingActReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_SchedulingActReason", SchedulingActReason }, 
+      { "_StatusRevisionRefusalReasonCode", StatusRevisionRefusalReasonCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_StatusRevisionRefusalReasonCode", StatusRevisionRefusalReasonCode }, 
+      { "_SubstanceAdministrationPermissionRefusalReasonCode", SubstanceAdministrationPermissionRefusalReasonCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_SubstanceAdministrationPermissionRefusalReasonCode", SubstanceAdministrationPermissionRefusalReasonCode }, 
+      { "_SubstanceAdminSubstitutionNotAllowedReason", SubstanceAdminSubstitutionNotAllowedReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_SubstanceAdminSubstitutionNotAllowedReason", SubstanceAdminSubstitutionNotAllowedReason }, 
+      { "_SubstanceAdminSubstitutionReason", SubstanceAdminSubstitutionReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_SubstanceAdminSubstitutionReason", SubstanceAdminSubstitutionReason }, 
+      { "_SupplyOrderAbortReasonCode", SupplyOrderAbortReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_SupplyOrderAbortReasonCode", SupplyOrderAbortReason }, 
+      { "_TransferActReason", TransferActReason }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#_TransferActReason", TransferActReason }, 
+      { "ACCRED", Accreditation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ACCRED", Accreditation }, 
+      { "ACCREQNA", AccommodationRequestedNotAvailable }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ACCREQNA", AccommodationRequestedNotAvailable }, 
+      { "ADMINERROR", AdministrativeErrorInOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ADMINERROR", AdministrativeErrorInOrder }, 
+      { "ADMREV", AdministrativeReview }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ADMREV", AdministrativeReview }, 
+      { "ADVSTORAGE", AdverseStorageCondition }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ADVSTORAGE", AdverseStorageCondition }, 
+      { "AGE", AgeEligibility }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#AGE", AgeEligibility }, 
+      { "ALGINT", AllergyIntolerance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ALGINT", AllergyIntolerance }, 
+      { "ALREADYRX", NewPrescriptionExists }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ALREADYRX", NewPrescriptionExists }, 
+      { "ALTCHOICE", TryAnotherTreatmentFirst }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ALTCHOICE", TryAnotherTreatmentFirst }, 
+      { "ALTD", AlteredDecision }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ALTD", AlteredDecision }, 
+      { "BIORCH", BiomedicalResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#BIORCH", BiomedicalResearch }, 
+      { "BLK", UnexpectedBlockOfSchedule }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#BLK", UnexpectedBlockOfSchedule }, 
+      { "BONUS", BONUS }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#BONUS", BONUS }, 
+      { "BTG", BreakTheGlass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#BTG", BreakTheGlass }, 
+      { "CAREMGT", CareManagement }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CAREMGT", CareManagement }, 
+      { "CHD", ChildrenOnly }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CHD", ChildrenOnly }, 
+      { "CHGDATA", InformationChange }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CHGDATA", InformationChange }, 
+      { "CLARIF", PrescriptionRequiresClarification }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLARIF", PrescriptionRequiresClarification }, 
+      { "CLINMOD", ClinicalModification }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINMOD", ClinicalModification }, 
+      { "CLINTRCH", ClinicalTrialResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINTRCH", ClinicalTrialResearch }, 
+      { "CLINTRCHNPC", ClinicalTrialResearchWithoutPatientCare }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINTRCHNPC", ClinicalTrialResearchWithoutPatientCare }, 
+      { "CLINTRCHPC", ClinicalTrialResearchWithPatientCare }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINTRCHPC", ClinicalTrialResearchWithPatientCare }, 
+      { "CLINTRL", ClinicalTrial }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINTRL", ClinicalTrial }, 
+      { "CLMATTCH", ClaimAttachment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLMATTCH", ClaimAttachment }, 
+      { "COC", CoordinationOfCare }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#COC", CoordinationOfCare }, 
+      { "COLDCHNBRK", ColdChainBreak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#COLDCHNBRK", ColdChainBreak }, 
+      { "COMPCON", ComplianceConcern }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#COMPCON", ComplianceConcern }, 
+      { "COMPL", Compliance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#COMPL", Compliance }, 
+      { "CONTRA", Contraindication }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CONTRA", Contraindication }, 
+      { "COVAUTH", CoverageAuthorization }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#COVAUTH", CoverageAuthorization }, 
+      { "COVERAGE", CoverageUnderPolicyOrProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#COVERAGE", CoverageUnderPolicyOrProgram }, 
+      { "COVSUS", CoverageSuspended }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#COVSUS", CoverageSuspended }, 
+      { "CRIME", CrimeVictim }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CRIME", CrimeVictim }, 
+      { "CT", ContinuingTherapy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CT", ContinuingTherapy }, 
+      { "DEC", PatientDeceased }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#DEC", PatientDeceased }, 
+      { "DECSD", Deceased }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#DECSD", Deceased }, 
+      { "DEP", DependentsOnly }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#DEP", DependentsOnly }, 
+      { "DIS", Disability }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#DIS", Disability }, 
+      { "DISASTER", Disaster }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#DISASTER", Disaster }, 
+      { "DISCONT", ProductDiscontinued }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#DISCONT", ProductDiscontinued }, 
+      { "DONAT", Donation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#DONAT", Donation }, 
+      { "DOSECHG", ChangeInMedicationDose }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#DOSECHG", ChangeInMedicationDose }, 
+      { "DRUGHIGH", DrugLevelTooHigh }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#DRUGHIGH", DrugLevelTooHigh }, 
+      { "DSRCH", DiseaseSpecificHealthcareResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#DSRCH", DiseaseSpecificHealthcareResearch }, 
+      { "ECH", EmployeeAndChildren }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ECH", EmployeeAndChildren }, 
+      { "EDU", EDU }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#EDU", EDU }, 
+      { "EIE", EnteredInError }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#EIE", EnteredInError }, 
+      { "ELIGDTRM", EligibilityDetermination }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ELIGDTRM", EligibilityDetermination }, 
+      { "ELIGVER", EligibilityVerification }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ELIGVER", EligibilityVerification }, 
+      { "EMP", EmployeeOnly }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#EMP", EmployeeOnly }, 
+      { "EMPLOY", EmploymentBenefit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#EMPLOY", EmploymentBenefit }, 
+      { "ENADMIN", EntityAdministration }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ENADMIN", EntityAdministration }, 
+      { "ENROLLM", Enrollment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ENROLLM", Enrollment }, 
+      { "ER", Error }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ER", Error }, 
+      { "ERTREAT", EmergencyRoomTreatment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ERTREAT", EmergencyRoomTreatment }, 
+      { "ESP", EmployeeAndSpouse }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ESP", EmployeeAndSpouse }, 
+      { "ETREAT", EmergencyTreatment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ETREAT", EmergencyTreatment }, 
+      { "EXPLOT", ExpiredLot }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#EXPLOT", ExpiredLot }, 
+      { "FAM", Family }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FAM", Family }, 
+      { "FAMPHYS", FamilyPhysicianMustAuthorizeFurtherFills }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FAMPHYS", FamilyPhysicianMustAuthorizeFurtherFills }, 
+      { "FAMRQT", FamilyRequested }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FAMRQT", FamilyRequested }, 
+      { "FILLED", FullyFilled }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FILLED", FullyFilled }, 
+      { "FIN", NoFinancialBacking }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FIN", NoFinancialBacking }, 
+      { "FINAN", FinancialEligibility }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FINAN", FinancialEligibility }, 
+      { "FIXDATA", ErrorCorrection }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FIXDATA", ErrorCorrection }, 
+      { "FLRCNV", FloorConvenience }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FLRCNV", FloorConvenience }, 
+      { "FLRSTCK", FloorStock }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FLRSTCK", FloorStock }, 
+      { "FOABORT", OrderAborted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FOABORT", OrderAborted }, 
+      { "FOSUSP", OrderSuspended }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FOSUSP", OrderSuspended }, 
+      { "FP", FormularyPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FP", FormularyPolicy }, 
+      { "FRAUD", Fraud }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FRAUD", Fraud }, 
+      { "FRR01", OrderStopped }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FRR01", OrderStopped }, 
+      { "FRR02", StaleDatedOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FRR02", StaleDatedOrder }, 
+      { "FRR03", IncompleteData }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FRR03", IncompleteData }, 
+      { "FRR04", ProductUnavailable }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FRR04", ProductUnavailable }, 
+      { "FRR05", EthicalReligious }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FRR05", EthicalReligious }, 
+      { "FRR06", UnableToProvideCare }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FRR06", UnableToProvideCare }, 
+      { "GOV", Government }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#GOV", Government }, 
+      { "HACCRED", HealthAccreditation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HACCRED", HealthAccreditation }, 
+      { "HCOMPL", HealthCompliance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HCOMPL", HealthCompliance }, 
+      { "HDECD", Decedent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HDECD", Decedent }, 
+      { "HDIRECT", Directory }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HDIRECT", Directory }, 
+      { "HDM", HealthcareDeliveryManagement }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HDM", HealthcareDeliveryManagement }, 
+      { "HEALTH", HealthStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HEALTH", HealthStatus }, 
+      { "HLEGAL", Legal }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HLEGAL", Legal }, 
+      { "HMARKT", HealthcareMarketing }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HMARKT", HealthcareMarketing }, 
+      { "HOLDDONE", SuspendReasonNoLongerApplies }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HOLDDONE", SuspendReasonNoLongerApplies }, 
+      { "HOLDINAP", SuspendReasonInappropriate }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HOLDINAP", SuspendReasonInappropriate }, 
+      { "HOPERAT", HealthcareOperations }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT", HealthcareOperations }, 
+      { "HOSPADM", AdmissionToHospital }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HOSPADM", AdmissionToHospital }, 
+      { "HOUTCOMS", HealthOutcomeMeasure }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HOUTCOMS", HealthOutcomeMeasure }, 
+      { "HPAYMT", HealthcarePayment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT", HealthcarePayment }, 
+      { "HPRGRP", HealthProgramReporting }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HPRGRP", HealthProgramReporting }, 
+      { "HQUALIMP", HealthQualityImprovement }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HQUALIMP", HealthQualityImprovement }, 
+      { "HRESCH", HealthcareResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HRESCH", HealthcareResearch }, 
+      { "HSYSADMIN", HealthSystemAdministration }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HSYSADMIN", HealthSystemAdministration }, 
+      { "HTEST", TestHealthData }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST", TestHealthData }, 
+      { "IMMUNE", Immunity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#IMMUNE", Immunity }, 
+      { "IMPROV", ConditionImproved }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#IMPROV", ConditionImproved }, 
+      { "INCCOVPTY", IncorrectCoveredPartyAsPatient }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#INCCOVPTY", IncorrectCoveredPartyAsPatient }, 
+      { "INCINVOICE", IncorrectBilling }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#INCINVOICE", IncorrectBilling }, 
+      { "INCPOLICY", IncorrectPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#INCPOLICY", IncorrectPolicy }, 
+      { "INCPROV", IncorrectProvider }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#INCPROV", IncorrectProvider }, 
+      { "IND", Individual }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#IND", Individual }, 
+      { "INEFFECT", Ineffective }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#INEFFECT", Ineffective }, 
+      { "INRQSTATE", InRequestedState }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#INRQSTATE", InRequestedState }, 
+      { "INTOL", Intolerance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#INTOL", Intolerance }, 
+      { "INVOICE", INVOICE }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#INVOICE", INVOICE }, 
+      { "LABELING", Labeling }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#LABELING", Labeling }, 
+      { "LABINT", LabInterferenceIssues }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#LABINT", LabInterferenceIssues }, 
+      { "LEGAL", Subpoena }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#LEGAL", Subpoena }, 
+      { "LOCKED", Locked }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#LOCKED", Locked }, 
+      { "LTC", LongTermCareUse }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#LTC", LongTermCareUse }, 
+      { "MARKT", Marketing }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#MARKT", Marketing }, 
+      { "MDATA", MergeData }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#MDATA", MergeData }, 
+      { "MED", MedicalStatusAltered }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#MED", MedicalStatusAltered }, 
+      { "MEDNEC", MedicalNecessity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#MEDNEC", MedicalNecessity }, 
+      { "MEDPREC", MedicalPrecaution }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#MEDPREC", MedicalPrecaution }, 
+      { "MEMADMIN", MemberAdministration }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#MEMADMIN", MemberAdministration }, 
+      { "METAMGT", MetadataManagement }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#METAMGT", MetadataManagement }, 
+      { "MILCDM", MilitaryCommand }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#MILCDM", MilitaryCommand }, 
+      { "MILDCRG", MilitaryDischarge }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#MILDCRG", MilitaryDischarge }, 
+      { "MODIFY", ModifiedPrescriptionExists }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#MODIFY", ModifiedPrescriptionExists }, 
+      { "MONIT", ResponseToMonitoring }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#MONIT", ResponseToMonitoring }, 
+      { "MTG", InAnOutsideMeeting }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#MTG", InAnOutsideMeeting }, 
+      { "MULTI", MultipleCriteriaEligibility }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#MULTI", MultipleCriteriaEligibility }, 
+      { "NEEDAPMT", PatientMustMakeAppointment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NEEDAPMT", PatientMustMakeAppointment }, 
+      { "NEWDATA", NewInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NEWDATA", NewInformation }, 
+      { "NEWSTR", NewStrength }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NEWSTR", NewStrength }, 
+      { "NEWTHER", NewTherapy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NEWTHER", NewTherapy }, 
+      { "NOAGNTPERM", NoAgentPermission }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOAGNTPERM", NoAgentPermission }, 
+      { "NOMATCH", NoMatch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOMATCH", NoMatch }, 
+      { "NON-AVAIL", PatientNotAvailable }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NON-AVAIL", PatientNotAvailable }, 
+      { "NOPERM", NoPermission }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOPERM", NoPermission }, 
+      { "NOPICK", NotPickedUp }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOPICK", NotPickedUp }, 
+      { "NOPRODMTCH", NoProductMatch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOPRODMTCH", NoProductMatch }, 
+      { "NORECMTCH", NoRecordMatch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NORECMTCH", NoRecordMatch }, 
+      { "NOREQ", NoLongerRequiredForTreatment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOREQ", NoLongerRequiredForTreatment }, 
+      { "NOSERMTCH", NoServiceMatch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOSERMTCH", NoServiceMatch }, 
+      { "NOTAVAIL", PrescriberNotAvailable }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOTAVAIL", PrescriberNotAvailable }, 
+      { "NOTCOVER", NotCovered }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOTCOVER", NotCovered }, 
+      { "NOTPAT", PatientNoLongerInThisPractice }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOTPAT", PatientNoLongerInThisPractice }, 
+      { "NOUSERPERM", NoUserPermission }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOUSERPERM", NoUserPermission }, 
+      { "NOUSRPERM", NoUserPermission_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOUSRPERM", NoUserPermission_2 }, 
+      { "NOVERMTCH", NoVersionMatch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NOVERMTCH", NoVersionMatch }, 
+      { "NPT", NonProtocol }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#NPT", NonProtocol }, 
+      { "OFFICE", OfficeUse }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#OFFICE", OfficeUse }, 
+      { "ONHOLD", MedicationOnHold }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ONHOLD", MedicationOnHold }, 
+      { "OPERAT", Operations }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#OPERAT", Operations }, 
+      { "OS", OutOfStock }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#OS", OutOfStock }, 
+      { "OSTOCK", ProductOutOfStock }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#OSTOCK", ProductOutOfStock }, 
+      { "OUTCOMS", OutcomeMeasure }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#OUTCOMS", OutcomeMeasure }, 
+      { "OUTSIDESCHED", AdministeredOutsideRecommendedScheduleOrPractice }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#OUTSIDESCHED", AdministeredOutsideRecommendedScheduleOrPractice }, 
+      { "OVRER", EmergencyTreatmentOverride }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#OVRER", EmergencyTreatmentOverride }, 
+      { "OVRINCOMP", IncompetencyOverride }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#OVRINCOMP", IncompetencyOverride }, 
+      { "OVRPJ", ProfessionalJudgmentOverride }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#OVRPJ", ProfessionalJudgmentOverride }, 
+      { "OVRPS", PublicSafetyOverride }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#OVRPS", PublicSafetyOverride }, 
+      { "OVRTPS", ThirdPartySafetyOverride }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#OVRTPS", ThirdPartySafetyOverride }, 
+      { "PAT", PatientRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PAT", PatientRequest }, 
+      { "PATADMIN", PatientAdministration }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATADMIN", PatientAdministration }, 
+      { "PATCAR", PatientCare }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATCAR", PatientCare }, 
+      { "PATDEC", PatientChangedMind }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATDEC", PatientChangedMind }, 
+      { "PATINELIG", PatientNotEligible }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATINELIG", PatientNotEligible }, 
+      { "PATOBJ", PatientObjection }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATOBJ", PatientObjection }, 
+      { "PATREQ", PatientRequestQuery }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATREQ", PatientRequestQuery }, 
+      { "PATRQT", PatientRequested }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATRQT", PatientRequested }, 
+      { "PATSFTY", PatientSafety }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATSFTY", PatientSafety }, 
+      { "PAYMT", Payment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PAYMT", Payment }, 
+      { "PERFMSR", PerformanceMeasure }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PERFMSR", PerformanceMeasure }, 
+      { "PHARM", PharmacyTransfer }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PHARM", PharmacyTransfer }, 
+      { "PHILISOP", PhilosophicalObjection }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PHILISOP", PhilosophicalObjection }, 
+      { "PHY", PhysicianRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PHY", PhysicianRequest }, 
+      { "PNC", PropertyAndCasualtyCondition }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PNC", PropertyAndCasualtyCondition }, 
+      { "POARCH", PopulationOriginsOrAncestryHealthcareResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#POARCH", PopulationOriginsOrAncestryHealthcareResearch }, 
+      { "POPHLTH", PopulationHealth }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#POPHLTH", PopulationHealth }, 
+      { "PPT", PerProtocol }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PPT", PerProtocol }, 
+      { "PRCREV", PracticeReview }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PRCREV", PracticeReview }, 
+      { "PRECLINTRCH", PreclinicalTrialResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PRECLINTRCH", PreclinicalTrialResearch }, 
+      { "PREFUS", PatientRefuse }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PREFUS", PatientRefuse }, 
+      { "PREG", ParentIsPregnantBreastFeeding }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PREG", ParentIsPregnantBreastFeeding }, 
+      { "PRGRPT", ProgramReporting }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PRGRPT", ProgramReporting }, 
+      { "PRNA", ProductNotAvailable }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PRNA", ProductNotAvailable }, 
+      { "PROA", PROA }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PROA", PROA }, 
+      { "PRODRECALL", ProductRecall }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PRODRECALL", ProductRecall }, 
+      { "PROG", ProgramUse }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PROG", ProgramUse }, 
+      { "PROTUNMET", ProtocolNotMet }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PROTUNMET", ProtocolNotMet }, 
+      { "PROVUNAUTH", ProviderNotAuthorized }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PROVUNAUTH", ProviderNotAuthorized }, 
+      { "PUBHLTH", PublicHealth }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PUBHLTH", PublicHealth }, 
+      { "PurposeOfUse", PurposeOfUse }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PurposeOfUse", PurposeOfUse }, 
+      { "PWATRNY", PowerOfAttorney }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PWATRNY", PowerOfAttorney }, 
+      { "QUALIMP", QualityImprovement }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#QUALIMP", QualityImprovement }, 
+      { "QUANTCHG", ChangeSupplyQuantity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#QUANTCHG", ChangeSupplyQuantity }, 
+      { "RECALL", ProductRecalled }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#RECALL", ProductRecalled }, 
+      { "RECORDMGT", RecordsManagement }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#RECORDMGT", RecordsManagement }, 
+      { "RECOV", RECOV }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#RECOV", RECOV }, 
+      { "REGERR", RegisteredInError }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#REGERR", RegisteredInError }, 
+      { "REGUL", RegulatoryReview }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#REGUL", RegulatoryReview }, 
+      { "RELIG", ReligiousObjection }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#RELIG", ReligiousObjection }, 
+      { "REMITADV", RemittanceAdvice }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#REMITADV", RemittanceAdvice }, 
+      { "REPLACE", ChangeInOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#REPLACE", ChangeInOrder }, 
+      { "REPLACEFIX", ErrorInOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#REPLACEFIX", ErrorInOrder }, 
+      { "RESCH", Research }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#RESCH", Research }, 
+      { "RET", Retest }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#RET", Retest }, 
+      { "RETRO", RETRO }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#RETRO", RETRO }, 
+      { "RQ", Request }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#RQ", Request }, 
+      { "RR", RegulatoryRequirement }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#RR", RegulatoryRequirement }, 
+      { "RSRCH", Research_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#RSRCH", Research_2 }, 
+      { "SALG", Allergy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#SALG", Allergy }, 
+      { "SCH", Scheduled }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#SCH", Scheduled }, 
+      { "SDDI", DrugInteractsWithAnotherDrug }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#SDDI", DrugInteractsWithAnotherDrug }, 
+      { "SDUPTHER", DuplicateTherapy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#SDUPTHER", DuplicateTherapy }, 
+      { "SINTOL", SuspectedIntolerance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#SINTOL", SuspectedIntolerance }, 
+      { "SPC", SpouseAndChildren }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#SPC", SpouseAndChildren }, 
+      { "SPO", SpouseOnly }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#SPO", SpouseOnly }, 
+      { "SRVC", Service }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#SRVC", Service }, 
+      { "STATUTORY", StatutoryEligibility }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#STATUTORY", StatutoryEligibility }, 
+      { "STOPMED", PrescriberStoppedMedicationForPatient }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#STOPMED", PrescriberStoppedMedicationForPatient }, 
+      { "SUPNWK", SupportNetwork }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#SUPNWK", SupportNetwork }, 
+      { "SURG", PatientScheduledForSurgery }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#SURG", PatientScheduledForSurgery }, 
+      { "SYSADMN", SystemAdministration }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#SYSADMN", SystemAdministration }, 
+      { "SYSDEV", SystemDevelopment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#SYSDEV", SystemDevelopment }, 
+      { "THERCHAR", TherapeuticCharacteristics }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#THERCHAR", TherapeuticCharacteristics }, 
+      { "THREAT", Threat }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#THREAT", Threat }, 
+      { "TOOEARLY", TooEarly }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#TOOEARLY", TooEarly }, 
+      { "TRAIN", Training }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#TRAIN", Training }, 
+      { "TRAN", TRAN }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#TRAN", TRAN }, 
+      { "TRANSRCH", TranslationalHealthcareResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#TRANSRCH", TranslationalHealthcareResearch }, 
+      { "TREAT", Treatment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT", Treatment }, 
+      { "TRIAL", ClinicalTrialDrug }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#TRIAL", ClinicalTrialDrug }, 
+      { "TRM", Termination }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#TRM", Termination }, 
+      { "UMDATA", UnmergeData }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#UMDATA", UnmergeData }, 
+      { "UNABLE", UnableToUse }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#UNABLE", UnableToUse }, 
+      { "UNKWNTARGET", UnknownTarget }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#UNKWNTARGET", UnknownTarget }, 
+      { "UNS", Unscheduled }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#UNS", Unscheduled }, 
+      { "UPT", PerDefinition }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#UPT", PerDefinition }, 
+      { "VACEFF", VaccineEfficacyConcerns }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#VACEFF", VaccineEfficacyConcerns }, 
+      { "VACSAF", VaccineSafetyConcerns }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#VACSAF", VaccineSafetyConcerns }, 
+      { "VALIDATION", ValidationReview }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#VALIDATION", ValidationReview }, 
+      { "VEHIC", MotorVehicleAccidentVictim }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#VEHIC", MotorVehicleAccidentVictim }, 
+      { "WASHOUT", WaitingForOldDrugToWashOut }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#WASHOUT", WaitingForOldDrugToWashOut }, 
+      { "WORK", WorkRelated }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#WORK", WorkRelated }, 
+      { "WRNGVER", WrongVersion }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#WRNGVER", WrongVersion }, 
+    };
   };
 }

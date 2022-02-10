@@ -99,9 +99,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInstillationEnteralFeedingTube = "EFT";
 
     /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInstillationEnteralFeedingTube
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInstillationEnteralFeedingTube = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#EFT";
+
+    /// <summary>
     /// Literal for code: InstillationEnteral
     /// </summary>
     public const string LiteralInstillationEnteral = "ENTINSTL";
+
+    /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInstillationEnteral
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInstillationEnteral = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#ENTINSTL";
 
     /// <summary>
     /// Literal for code: InstillationGastroJejunostomyTube
@@ -109,9 +119,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInstillationGastroJejunostomyTube = "GJT";
 
     /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInstillationGastroJejunostomyTube
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInstillationGastroJejunostomyTube = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#GJT";
+
+    /// <summary>
     /// Literal for code: InstillationGastrostomyTube
     /// </summary>
     public const string LiteralInstillationGastrostomyTube = "GT";
+
+    /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInstillationGastrostomyTube
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInstillationGastrostomyTube = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#GT";
 
     /// <summary>
     /// Literal for code: InstillationJejunostomyTube
@@ -119,9 +139,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInstillationJejunostomyTube = "JJTINSTL";
 
     /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInstillationJejunostomyTube
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInstillationJejunostomyTube = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#JJTINSTL";
+
+    /// <summary>
     /// Literal for code: InstillationNasogastricTube
     /// </summary>
     public const string LiteralInstillationNasogastricTube = "NGT";
+
+    /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInstillationNasogastricTube
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInstillationNasogastricTube = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#NGT";
 
     /// <summary>
     /// Literal for code: InstillationOrogastricTube
@@ -129,13 +159,52 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInstillationOrogastricTube = "OGT";
 
     /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInstillationOrogastricTube
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInstillationOrogastricTube = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#OGT";
+
+    /// <summary>
     /// Literal for code: InstillationOrojejunumTube
     /// </summary>
     public const string LiteralInstillationOrojejunumTube = "OJJ";
 
     /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInstillationOrojejunumTube
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInstillationOrojejunumTube = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#OJJ";
+
+    /// <summary>
     /// Literal for code: SwallowOral
     /// </summary>
     public const string LiteralSwallowOral = "PO";
+
+    /// <summary>
+    /// Literal for code: V3RouteOfAdministrationSwallowOral
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationSwallowOral = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#PO";
+
+    /// <summary>
+    /// Dictionary for looking up EnteralRoute Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "EFT", InstillationEnteralFeedingTube }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#EFT", InstillationEnteralFeedingTube }, 
+      { "ENTINSTL", InstillationEnteral }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#ENTINSTL", InstillationEnteral }, 
+      { "GJT", InstillationGastroJejunostomyTube }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#GJT", InstillationGastroJejunostomyTube }, 
+      { "GT", InstillationGastrostomyTube }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#GT", InstillationGastrostomyTube }, 
+      { "JJTINSTL", InstillationJejunostomyTube }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#JJTINSTL", InstillationJejunostomyTube }, 
+      { "NGT", InstillationNasogastricTube }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#NGT", InstillationNasogastricTube }, 
+      { "OGT", InstillationOrogastricTube }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#OGT", InstillationOrogastricTube }, 
+      { "OJJ", InstillationOrojejunumTube }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#OJJ", InstillationOrojejunumTube }, 
+      { "PO", SwallowOral }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#PO", SwallowOral }, 
+    };
   };
 }

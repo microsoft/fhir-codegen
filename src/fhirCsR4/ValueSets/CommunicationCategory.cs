@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlert = "alert";
 
     /// <summary>
+    /// Literal for code: CommunicationCategoryAlert
+    /// </summary>
+    public const string LiteralCommunicationCategoryAlert = "http://terminology.hl7.org/CodeSystem/communication-category#alert";
+
+    /// <summary>
     /// Literal for code: Instruction
     /// </summary>
     public const string LiteralInstruction = "instruction";
+
+    /// <summary>
+    /// Literal for code: CommunicationCategoryInstruction
+    /// </summary>
+    public const string LiteralCommunicationCategoryInstruction = "http://terminology.hl7.org/CodeSystem/communication-category#instruction";
 
     /// <summary>
     /// Literal for code: Notification
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNotification = "notification";
 
     /// <summary>
+    /// Literal for code: CommunicationCategoryNotification
+    /// </summary>
+    public const string LiteralCommunicationCategoryNotification = "http://terminology.hl7.org/CodeSystem/communication-category#notification";
+
+    /// <summary>
     /// Literal for code: Reminder
     /// </summary>
     public const string LiteralReminder = "reminder";
+
+    /// <summary>
+    /// Literal for code: CommunicationCategoryReminder
+    /// </summary>
+    public const string LiteralCommunicationCategoryReminder = "http://terminology.hl7.org/CodeSystem/communication-category#reminder";
+
+    /// <summary>
+    /// Dictionary for looking up CommunicationCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "alert", Alert }, 
+      { "http://terminology.hl7.org/CodeSystem/communication-category#alert", Alert }, 
+      { "instruction", Instruction }, 
+      { "http://terminology.hl7.org/CodeSystem/communication-category#instruction", Instruction }, 
+      { "notification", Notification }, 
+      { "http://terminology.hl7.org/CodeSystem/communication-category#notification", Notification }, 
+      { "reminder", Reminder }, 
+      { "http://terminology.hl7.org/CodeSystem/communication-category#reminder", Reminder }, 
+    };
   };
 }

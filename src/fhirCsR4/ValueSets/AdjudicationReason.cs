@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNotCovered = "ar001";
 
     /// <summary>
+    /// Literal for code: AdjudicationReasonNotCovered
+    /// </summary>
+    public const string LiteralAdjudicationReasonNotCovered = "http://terminology.hl7.org/CodeSystem/adjudication-reason#ar001";
+
+    /// <summary>
     /// Literal for code: PlanLimitReached
     /// </summary>
     public const string LiteralPlanLimitReached = "ar002";
+
+    /// <summary>
+    /// Literal for code: AdjudicationReasonPlanLimitReached
+    /// </summary>
+    public const string LiteralAdjudicationReasonPlanLimitReached = "http://terminology.hl7.org/CodeSystem/adjudication-reason#ar002";
+
+    /// <summary>
+    /// Dictionary for looking up AdjudicationReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ar001", NotCovered }, 
+      { "http://terminology.hl7.org/CodeSystem/adjudication-reason#ar001", NotCovered }, 
+      { "ar002", PlanLimitReached }, 
+      { "http://terminology.hl7.org/CodeSystem/adjudication-reason#ar002", PlanLimitReached }, 
+    };
   };
 }

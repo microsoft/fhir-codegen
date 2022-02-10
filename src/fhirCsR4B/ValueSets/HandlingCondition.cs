@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFrozen = "frozen";
 
     /// <summary>
+    /// Literal for code: HandlingConditionFrozen
+    /// </summary>
+    public const string LiteralHandlingConditionFrozen = "http://terminology.hl7.org/CodeSystem/handling-condition#frozen";
+
+    /// <summary>
     /// Literal for code: Refrigerated
     /// </summary>
     public const string LiteralRefrigerated = "refrigerated";
 
     /// <summary>
+    /// Literal for code: HandlingConditionRefrigerated
+    /// </summary>
+    public const string LiteralHandlingConditionRefrigerated = "http://terminology.hl7.org/CodeSystem/handling-condition#refrigerated";
+
+    /// <summary>
     /// Literal for code: RoomTemperature
     /// </summary>
     public const string LiteralRoomTemperature = "room";
+
+    /// <summary>
+    /// Literal for code: HandlingConditionRoomTemperature
+    /// </summary>
+    public const string LiteralHandlingConditionRoomTemperature = "http://terminology.hl7.org/CodeSystem/handling-condition#room";
+
+    /// <summary>
+    /// Dictionary for looking up HandlingCondition Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "frozen", Frozen }, 
+      { "http://terminology.hl7.org/CodeSystem/handling-condition#frozen", Frozen }, 
+      { "refrigerated", Refrigerated }, 
+      { "http://terminology.hl7.org/CodeSystem/handling-condition#refrigerated", Refrigerated }, 
+      { "room", RoomTemperature }, 
+      { "http://terminology.hl7.org/CodeSystem/handling-condition#room", RoomTemperature }, 
+    };
   };
 }

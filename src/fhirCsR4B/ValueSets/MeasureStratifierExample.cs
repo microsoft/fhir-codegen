@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAge = "age";
 
     /// <summary>
+    /// Literal for code: MeasureStratifierExampleAge
+    /// </summary>
+    public const string LiteralMeasureStratifierExampleAge = "http://terminology.hl7.org/CodeSystem/measure-stratifier-example#age";
+
+    /// <summary>
     /// Literal for code: Gender
     /// </summary>
     public const string LiteralGender = "gender";
 
     /// <summary>
+    /// Literal for code: MeasureStratifierExampleGender
+    /// </summary>
+    public const string LiteralMeasureStratifierExampleGender = "http://terminology.hl7.org/CodeSystem/measure-stratifier-example#gender";
+
+    /// <summary>
     /// Literal for code: Region
     /// </summary>
     public const string LiteralRegion = "region";
+
+    /// <summary>
+    /// Literal for code: MeasureStratifierExampleRegion
+    /// </summary>
+    public const string LiteralMeasureStratifierExampleRegion = "http://terminology.hl7.org/CodeSystem/measure-stratifier-example#region";
+
+    /// <summary>
+    /// Dictionary for looking up MeasureStratifierExample Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "age", Age }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-stratifier-example#age", Age }, 
+      { "gender", Gender }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-stratifier-example#gender", Gender }, 
+      { "region", Region }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-stratifier-example#region", Region }, 
+    };
   };
 }

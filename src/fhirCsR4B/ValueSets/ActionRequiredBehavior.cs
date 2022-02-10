@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCould = "could";
 
     /// <summary>
+    /// Literal for code: ActionRequiredBehaviorCould
+    /// </summary>
+    public const string LiteralActionRequiredBehaviorCould = "http://hl7.org/fhir/action-required-behavior#could";
+
+    /// <summary>
     /// Literal for code: Must
     /// </summary>
     public const string LiteralMust = "must";
 
     /// <summary>
+    /// Literal for code: ActionRequiredBehaviorMust
+    /// </summary>
+    public const string LiteralActionRequiredBehaviorMust = "http://hl7.org/fhir/action-required-behavior#must";
+
+    /// <summary>
     /// Literal for code: MustUnlessDocumented
     /// </summary>
     public const string LiteralMustUnlessDocumented = "must-unless-documented";
+
+    /// <summary>
+    /// Literal for code: ActionRequiredBehaviorMustUnlessDocumented
+    /// </summary>
+    public const string LiteralActionRequiredBehaviorMustUnlessDocumented = "http://hl7.org/fhir/action-required-behavior#must-unless-documented";
+
+    /// <summary>
+    /// Dictionary for looking up ActionRequiredBehavior Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "could", Could }, 
+      { "http://hl7.org/fhir/action-required-behavior#could", Could }, 
+      { "must", Must }, 
+      { "http://hl7.org/fhir/action-required-behavior#must", Must }, 
+      { "must-unless-documented", MustUnlessDocumented }, 
+      { "http://hl7.org/fhir/action-required-behavior#must-unless-documented", MustUnlessDocumented }, 
+    };
   };
 }

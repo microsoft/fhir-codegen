@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class GoalStartEventCodes
   {
     /// <summary>
-    /// 
+    /// Discharge from hospital
     /// </summary>
     public static readonly Coding DischargeFromHospital = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Admission to hospital
     /// </summary>
     public static readonly Coding AdmissionToHospital = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Childbirth
     /// </summary>
     public static readonly Coding Childbirth = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Completion time of procedure
     /// </summary>
     public static readonly Coding CompletionTimeOfProcedure = new Coding
     {
@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDischargeFromHospital = "308283009";
 
     /// <summary>
+    /// Literal for code: NONEDischargeFromHospital
+    /// </summary>
+    public const string LiteralNONEDischargeFromHospital = "http://snomed.info/sct#308283009";
+
+    /// <summary>
     /// Literal for code: AdmissionToHospital
     /// </summary>
     public const string LiteralAdmissionToHospital = "32485007";
+
+    /// <summary>
+    /// Literal for code: NONEAdmissionToHospital
+    /// </summary>
+    public const string LiteralNONEAdmissionToHospital = "http://snomed.info/sct#32485007";
 
     /// <summary>
     /// Literal for code: Childbirth
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChildbirth = "386216000";
 
     /// <summary>
+    /// Literal for code: NONEChildbirth
+    /// </summary>
+    public const string LiteralNONEChildbirth = "http://snomed.info/sct#386216000";
+
+    /// <summary>
     /// Literal for code: CompletionTimeOfProcedure
     /// </summary>
     public const string LiteralCompletionTimeOfProcedure = "442137000";
+
+    /// <summary>
+    /// Literal for code: NONECompletionTimeOfProcedure
+    /// </summary>
+    public const string LiteralNONECompletionTimeOfProcedure = "http://snomed.info/sct#442137000";
+
+    /// <summary>
+    /// Dictionary for looking up GoalStartEvent Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "308283009", DischargeFromHospital }, 
+      { "http://snomed.info/sct#308283009", DischargeFromHospital }, 
+      { "32485007", AdmissionToHospital }, 
+      { "http://snomed.info/sct#32485007", AdmissionToHospital }, 
+      { "386216000", Childbirth }, 
+      { "http://snomed.info/sct#386216000", Childbirth }, 
+      { "442137000", CompletionTimeOfProcedure }, 
+      { "http://snomed.info/sct#442137000", CompletionTimeOfProcedure }, 
+    };
   };
 }

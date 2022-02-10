@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFHIRQuery = "application/x-fhir-query";
 
     /// <summary>
+    /// Literal for code: ExpressionLanguageFHIRQuery
+    /// </summary>
+    public const string LiteralExpressionLanguageFHIRQuery = "http://hl7.org/fhir/expression-language#application/x-fhir-query";
+
+    /// <summary>
     /// Literal for code: CQL
     /// </summary>
     public const string LiteralCQL = "text/cql";
 
     /// <summary>
+    /// Literal for code: ExpressionLanguageCQL
+    /// </summary>
+    public const string LiteralExpressionLanguageCQL = "http://hl7.org/fhir/expression-language#text/cql";
+
+    /// <summary>
     /// Literal for code: FHIRPath
     /// </summary>
     public const string LiteralFHIRPath = "text/fhirpath";
+
+    /// <summary>
+    /// Literal for code: ExpressionLanguageFHIRPath
+    /// </summary>
+    public const string LiteralExpressionLanguageFHIRPath = "http://hl7.org/fhir/expression-language#text/fhirpath";
+
+    /// <summary>
+    /// Dictionary for looking up ExpressionLanguage Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "application/x-fhir-query", FHIRQuery }, 
+      { "http://hl7.org/fhir/expression-language#application/x-fhir-query", FHIRQuery }, 
+      { "text/cql", CQL }, 
+      { "http://hl7.org/fhir/expression-language#text/cql", CQL }, 
+      { "text/fhirpath", FHIRPath }, 
+      { "http://hl7.org/fhir/expression-language#text/fhirpath", FHIRPath }, 
+    };
   };
 }

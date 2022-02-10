@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInvestigationalMedicinalProduct = "InvestigationalProduct";
 
     /// <summary>
+    /// Literal for code: MedicinalProductTypeInvestigationalMedicinalProduct
+    /// </summary>
+    public const string LiteralMedicinalProductTypeInvestigationalMedicinalProduct = "http://hl7.org/fhir/medicinal-product-type#InvestigationalProduct";
+
+    /// <summary>
     /// Literal for code: MedicinalProduct
     /// </summary>
     public const string LiteralMedicinalProduct = "MedicinalProduct";
+
+    /// <summary>
+    /// Literal for code: MedicinalProductTypeMedicinalProduct
+    /// </summary>
+    public const string LiteralMedicinalProductTypeMedicinalProduct = "http://hl7.org/fhir/medicinal-product-type#MedicinalProduct";
+
+    /// <summary>
+    /// Dictionary for looking up MedicinalProductType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "InvestigationalProduct", InvestigationalMedicinalProduct }, 
+      { "http://hl7.org/fhir/medicinal-product-type#InvestigationalProduct", InvestigationalMedicinalProduct }, 
+      { "MedicinalProduct", MedicinalProduct }, 
+      { "http://hl7.org/fhir/medicinal-product-type#MedicinalProduct", MedicinalProduct }, 
+    };
   };
 }

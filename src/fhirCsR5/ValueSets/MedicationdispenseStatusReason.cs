@@ -207,9 +207,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTryAnotherTreatmentFirst = "altchoice";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonTryAnotherTreatmentFirst
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonTryAnotherTreatmentFirst = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#altchoice";
+
+    /// <summary>
     /// Literal for code: PrescriptionRequestRequiresClarification
     /// </summary>
     public const string LiteralPrescriptionRequestRequiresClarification = "clarif";
+
+    /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonPrescriptionRequestRequiresClarification
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonPrescriptionRequestRequiresClarification = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#clarif";
 
     /// <summary>
     /// Literal for code: DrugLevelTooHigh
@@ -217,9 +227,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDrugLevelTooHigh = "drughigh";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonDrugLevelTooHigh
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonDrugLevelTooHigh = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#drughigh";
+
+    /// <summary>
     /// Literal for code: OrderStopped
     /// </summary>
     public const string LiteralOrderStopped = "frr01";
+
+    /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonOrderStopped
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonOrderStopped = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#frr01";
 
     /// <summary>
     /// Literal for code: StaleDatedOrder
@@ -227,9 +247,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStaleDatedOrder = "frr02";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonStaleDatedOrder
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonStaleDatedOrder = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#frr02";
+
+    /// <summary>
     /// Literal for code: IncompleteData
     /// </summary>
     public const string LiteralIncompleteData = "frr03";
+
+    /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonIncompleteData
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonIncompleteData = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#frr03";
 
     /// <summary>
     /// Literal for code: ProductUnavailable
@@ -237,9 +267,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductUnavailable = "frr04";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonProductUnavailable
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonProductUnavailable = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#frr04";
+
+    /// <summary>
     /// Literal for code: EthicalReligious
     /// </summary>
     public const string LiteralEthicalReligious = "frr05";
+
+    /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonEthicalReligious
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonEthicalReligious = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#frr05";
 
     /// <summary>
     /// Literal for code: UnableToProvideCare
@@ -247,9 +287,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUnableToProvideCare = "frr06";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonUnableToProvideCare
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonUnableToProvideCare = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#frr06";
+
+    /// <summary>
     /// Literal for code: AdmissionToHospital
     /// </summary>
     public const string LiteralAdmissionToHospital = "hospadm";
+
+    /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonAdmissionToHospital
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonAdmissionToHospital = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#hospadm";
 
     /// <summary>
     /// Literal for code: LabInterferenceIssues
@@ -257,9 +307,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLabInterferenceIssues = "labint";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonLabInterferenceIssues
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonLabInterferenceIssues = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#labint";
+
+    /// <summary>
     /// Literal for code: PatientNotAvailable
     /// </summary>
     public const string LiteralPatientNotAvailable = "non-avail";
+
+    /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonPatientNotAvailable
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonPatientNotAvailable = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#non-avail";
 
     /// <summary>
     /// Literal for code: DrugNotAvailableOffMarket
@@ -267,9 +327,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDrugNotAvailableOffMarket = "offmarket";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonDrugNotAvailableOffMarket
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonDrugNotAvailableOffMarket = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#offmarket";
+
+    /// <summary>
     /// Literal for code: DrugNotAvailableOutOfStock
     /// </summary>
     public const string LiteralDrugNotAvailableOutOfStock = "outofstock";
+
+    /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonDrugNotAvailableOutOfStock
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonDrugNotAvailableOutOfStock = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#outofstock";
 
     /// <summary>
     /// Literal for code: PatientIsPregnantOrBreastfeeding
@@ -277,9 +347,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatientIsPregnantOrBreastfeeding = "preg";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonPatientIsPregnantOrBreastfeeding
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonPatientIsPregnantOrBreastfeeding = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#preg";
+
+    /// <summary>
     /// Literal for code: Allergy
     /// </summary>
     public const string LiteralAllergy = "saig";
+
+    /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonAllergy
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonAllergy = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#saig";
 
     /// <summary>
     /// Literal for code: DrugInteractsWithAnotherDrug
@@ -287,9 +367,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDrugInteractsWithAnotherDrug = "sddi";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonDrugInteractsWithAnotherDrug
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonDrugInteractsWithAnotherDrug = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#sddi";
+
+    /// <summary>
     /// Literal for code: DuplicateTherapy
     /// </summary>
     public const string LiteralDuplicateTherapy = "sdupther";
+
+    /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonDuplicateTherapy
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonDuplicateTherapy = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#sdupther";
 
     /// <summary>
     /// Literal for code: SuspectedIntolerance
@@ -297,13 +387,76 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSuspectedIntolerance = "sintol";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonSuspectedIntolerance
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonSuspectedIntolerance = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#sintol";
+
+    /// <summary>
     /// Literal for code: PatientScheduledForSurgery
     /// </summary>
     public const string LiteralPatientScheduledForSurgery = "surg";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonPatientScheduledForSurgery
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonPatientScheduledForSurgery = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#surg";
+
+    /// <summary>
     /// Literal for code: Washout
     /// </summary>
     public const string LiteralWashout = "washout";
+
+    /// <summary>
+    /// Literal for code: MedicationdispenseStatusReasonWashout
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusReasonWashout = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#washout";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationdispenseStatusReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "altchoice", TryAnotherTreatmentFirst }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#altchoice", TryAnotherTreatmentFirst }, 
+      { "clarif", PrescriptionRequestRequiresClarification }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#clarif", PrescriptionRequestRequiresClarification }, 
+      { "drughigh", DrugLevelTooHigh }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#drughigh", DrugLevelTooHigh }, 
+      { "frr01", OrderStopped }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#frr01", OrderStopped }, 
+      { "frr02", StaleDatedOrder }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#frr02", StaleDatedOrder }, 
+      { "frr03", IncompleteData }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#frr03", IncompleteData }, 
+      { "frr04", ProductUnavailable }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#frr04", ProductUnavailable }, 
+      { "frr05", EthicalReligious }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#frr05", EthicalReligious }, 
+      { "frr06", UnableToProvideCare }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#frr06", UnableToProvideCare }, 
+      { "hospadm", AdmissionToHospital }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#hospadm", AdmissionToHospital }, 
+      { "labint", LabInterferenceIssues }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#labint", LabInterferenceIssues }, 
+      { "non-avail", PatientNotAvailable }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#non-avail", PatientNotAvailable }, 
+      { "offmarket", DrugNotAvailableOffMarket }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#offmarket", DrugNotAvailableOffMarket }, 
+      { "outofstock", DrugNotAvailableOutOfStock }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#outofstock", DrugNotAvailableOutOfStock }, 
+      { "preg", PatientIsPregnantOrBreastfeeding }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#preg", PatientIsPregnantOrBreastfeeding }, 
+      { "saig", Allergy }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#saig", Allergy }, 
+      { "sddi", DrugInteractsWithAnotherDrug }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#sddi", DrugInteractsWithAnotherDrug }, 
+      { "sdupther", DuplicateTherapy }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#sdupther", DuplicateTherapy }, 
+      { "sintol", SuspectedIntolerance }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#sintol", SuspectedIntolerance }, 
+      { "surg", PatientScheduledForSurgery }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#surg", PatientScheduledForSurgery }, 
+      { "washout", Washout }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason#washout", Washout }, 
+    };
   };
 }

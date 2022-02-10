@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAvailable = "available";
 
     /// <summary>
+    /// Literal for code: BiologicalProductStatusAvailable
+    /// </summary>
+    public const string LiteralBiologicalProductStatusAvailable = "http://hl7.org/fhir/biological-product-status#available";
+
+    /// <summary>
     /// Literal for code: Unavailable
     /// </summary>
     public const string LiteralUnavailable = "unavailable";
+
+    /// <summary>
+    /// Literal for code: BiologicalProductStatusUnavailable
+    /// </summary>
+    public const string LiteralBiologicalProductStatusUnavailable = "http://hl7.org/fhir/biological-product-status#unavailable";
+
+    /// <summary>
+    /// Dictionary for looking up BiologicalProductStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "available", Available }, 
+      { "http://hl7.org/fhir/biological-product-status#available", Available }, 
+      { "unavailable", Unavailable }, 
+      { "http://hl7.org/fhir/biological-product-status#unavailable", Unavailable }, 
+    };
   };
 }

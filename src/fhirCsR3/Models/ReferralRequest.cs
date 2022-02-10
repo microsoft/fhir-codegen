@@ -937,6 +937,16 @@ namespace fhirCsR3.Models
     public const string FILLER_ORDER = "filler-order";
     public const string INSTANCE_ORDER = "instance-order";
     public const string OPTION = "option";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposal",
+      "plan",
+      "order",
+      "original-order",
+      "reflex-order",
+      "filler-order",
+      "instance-order",
+      "option",
+    };
   }
   /// <summary>
   /// Code Values for the ReferralRequest.status field
@@ -949,5 +959,14 @@ namespace fhirCsR3.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "suspended",
+      "cancelled",
+      "completed",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

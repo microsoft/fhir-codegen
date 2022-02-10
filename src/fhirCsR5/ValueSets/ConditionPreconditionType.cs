@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSensitive = "sensitive";
 
     /// <summary>
+    /// Literal for code: ConditionPreconditionTypeSensitive
+    /// </summary>
+    public const string LiteralConditionPreconditionTypeSensitive = "http://hl7.org/fhir/condition-precondition-type#sensitive";
+
+    /// <summary>
     /// Literal for code: Specific
     /// </summary>
     public const string LiteralSpecific = "specific";
+
+    /// <summary>
+    /// Literal for code: ConditionPreconditionTypeSpecific
+    /// </summary>
+    public const string LiteralConditionPreconditionTypeSpecific = "http://hl7.org/fhir/condition-precondition-type#specific";
+
+    /// <summary>
+    /// Dictionary for looking up ConditionPreconditionType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "sensitive", Sensitive }, 
+      { "http://hl7.org/fhir/condition-precondition-type#sensitive", Sensitive }, 
+      { "specific", Specific }, 
+      { "http://hl7.org/fhir/condition-precondition-type#specific", Specific }, 
+    };
   };
 }

@@ -32,6 +32,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
     /// </summary>
     public string ValueCanonical { get; set; }
@@ -91,6 +95,10 @@ namespace fhirCsR4B.Models
     /// Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
     /// </summary>
     public int? ValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
     /// <summary>
     /// Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
     /// </summary>
@@ -315,6 +323,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(ValueCanonical))
       {
         writer.WriteString("valueCanonical", (string)ValueCanonical!);
@@ -395,6 +409,12 @@ namespace fhirCsR4B.Models
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(ValueMarkdown))
@@ -705,6 +725,11 @@ namespace fhirCsR4B.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR4B.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueCanonical":
           ValueCanonical = reader.GetString();
           break;
@@ -770,6 +795,11 @@ namespace fhirCsR4B.Models
 
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR4B.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueMarkdown":

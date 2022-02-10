@@ -120,6 +120,12 @@ namespace fhirCsR2.Models
     public const string LEVEL2 = "level2";
     public const string LEVEL3 = "level3";
     public const string LEVEL4 = "level4";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "level1",
+      "level2",
+      "level3",
+      "level4",
+    };
   }
   /// <summary>
   /// Demographics and administrative information about a person independent of a specific health-related context.
@@ -532,5 +538,11 @@ namespace fhirCsR2.Models
     public const string FEMALE = "female";
     public const string OTHER = "other";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "male",
+      "female",
+      "other",
+      "unknown",
+    };
   }
 }

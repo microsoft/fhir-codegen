@@ -297,9 +297,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBusinessRuleViolation = "business-rule";
 
     /// <summary>
+    /// Literal for code: IssueTypeBusinessRuleViolation
+    /// </summary>
+    public const string LiteralIssueTypeBusinessRuleViolation = "http://hl7.org/fhir/issue-type#business-rule";
+
+    /// <summary>
     /// Literal for code: InvalidCode
     /// </summary>
     public const string LiteralInvalidCode = "code-invalid";
+
+    /// <summary>
+    /// Literal for code: IssueTypeInvalidCode
+    /// </summary>
+    public const string LiteralIssueTypeInvalidCode = "http://hl7.org/fhir/issue-type#code-invalid";
 
     /// <summary>
     /// Literal for code: EditVersionConflict
@@ -307,9 +317,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEditVersionConflict = "conflict";
 
     /// <summary>
+    /// Literal for code: IssueTypeEditVersionConflict
+    /// </summary>
+    public const string LiteralIssueTypeEditVersionConflict = "http://hl7.org/fhir/issue-type#conflict";
+
+    /// <summary>
     /// Literal for code: Deleted
     /// </summary>
     public const string LiteralDeleted = "deleted";
+
+    /// <summary>
+    /// Literal for code: IssueTypeDeleted
+    /// </summary>
+    public const string LiteralIssueTypeDeleted = "http://hl7.org/fhir/issue-type#deleted";
 
     /// <summary>
     /// Literal for code: Duplicate
@@ -317,9 +337,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDuplicate = "duplicate";
 
     /// <summary>
+    /// Literal for code: IssueTypeDuplicate
+    /// </summary>
+    public const string LiteralIssueTypeDuplicate = "http://hl7.org/fhir/issue-type#duplicate";
+
+    /// <summary>
     /// Literal for code: Exception
     /// </summary>
     public const string LiteralException = "exception";
+
+    /// <summary>
+    /// Literal for code: IssueTypeException
+    /// </summary>
+    public const string LiteralIssueTypeException = "http://hl7.org/fhir/issue-type#exception";
 
     /// <summary>
     /// Literal for code: SessionExpired
@@ -327,9 +357,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSessionExpired = "expired";
 
     /// <summary>
+    /// Literal for code: IssueTypeSessionExpired
+    /// </summary>
+    public const string LiteralIssueTypeSessionExpired = "http://hl7.org/fhir/issue-type#expired";
+
+    /// <summary>
     /// Literal for code: UnacceptableExtension
     /// </summary>
     public const string LiteralUnacceptableExtension = "extension";
+
+    /// <summary>
+    /// Literal for code: IssueTypeUnacceptableExtension
+    /// </summary>
+    public const string LiteralIssueTypeUnacceptableExtension = "http://hl7.org/fhir/issue-type#extension";
 
     /// <summary>
     /// Literal for code: Forbidden
@@ -337,9 +377,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralForbidden = "forbidden";
 
     /// <summary>
+    /// Literal for code: IssueTypeForbidden
+    /// </summary>
+    public const string LiteralIssueTypeForbidden = "http://hl7.org/fhir/issue-type#forbidden";
+
+    /// <summary>
     /// Literal for code: IncompleteResults
     /// </summary>
     public const string LiteralIncompleteResults = "incomplete";
+
+    /// <summary>
+    /// Literal for code: IssueTypeIncompleteResults
+    /// </summary>
+    public const string LiteralIssueTypeIncompleteResults = "http://hl7.org/fhir/issue-type#incomplete";
 
     /// <summary>
     /// Literal for code: InformationalNote
@@ -347,9 +397,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInformationalNote = "informational";
 
     /// <summary>
+    /// Literal for code: IssueTypeInformationalNote
+    /// </summary>
+    public const string LiteralIssueTypeInformationalNote = "http://hl7.org/fhir/issue-type#informational";
+
+    /// <summary>
     /// Literal for code: InvalidContent
     /// </summary>
     public const string LiteralInvalidContent = "invalid";
+
+    /// <summary>
+    /// Literal for code: IssueTypeInvalidContent
+    /// </summary>
+    public const string LiteralIssueTypeInvalidContent = "http://hl7.org/fhir/issue-type#invalid";
 
     /// <summary>
     /// Literal for code: ValidationRuleFailed
@@ -357,9 +417,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralValidationRuleFailed = "invariant";
 
     /// <summary>
+    /// Literal for code: IssueTypeValidationRuleFailed
+    /// </summary>
+    public const string LiteralIssueTypeValidationRuleFailed = "http://hl7.org/fhir/issue-type#invariant";
+
+    /// <summary>
     /// Literal for code: LockError
     /// </summary>
     public const string LiteralLockError = "lock-error";
+
+    /// <summary>
+    /// Literal for code: IssueTypeLockError
+    /// </summary>
+    public const string LiteralIssueTypeLockError = "http://hl7.org/fhir/issue-type#lock-error";
 
     /// <summary>
     /// Literal for code: LoginRequired
@@ -367,9 +437,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLoginRequired = "login";
 
     /// <summary>
+    /// Literal for code: IssueTypeLoginRequired
+    /// </summary>
+    public const string LiteralIssueTypeLoginRequired = "http://hl7.org/fhir/issue-type#login";
+
+    /// <summary>
     /// Literal for code: MultipleMatches
     /// </summary>
     public const string LiteralMultipleMatches = "multiple-matches";
+
+    /// <summary>
+    /// Literal for code: IssueTypeMultipleMatches
+    /// </summary>
+    public const string LiteralIssueTypeMultipleMatches = "http://hl7.org/fhir/issue-type#multiple-matches";
 
     /// <summary>
     /// Literal for code: NoStoreAvailable
@@ -377,9 +457,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNoStoreAvailable = "no-store";
 
     /// <summary>
+    /// Literal for code: IssueTypeNoStoreAvailable
+    /// </summary>
+    public const string LiteralIssueTypeNoStoreAvailable = "http://hl7.org/fhir/issue-type#no-store";
+
+    /// <summary>
     /// Literal for code: NotFound
     /// </summary>
     public const string LiteralNotFound = "not-found";
+
+    /// <summary>
+    /// Literal for code: IssueTypeNotFound
+    /// </summary>
+    public const string LiteralIssueTypeNotFound = "http://hl7.org/fhir/issue-type#not-found";
 
     /// <summary>
     /// Literal for code: ContentNotSupported
@@ -387,9 +477,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralContentNotSupported = "not-supported";
 
     /// <summary>
+    /// Literal for code: IssueTypeContentNotSupported
+    /// </summary>
+    public const string LiteralIssueTypeContentNotSupported = "http://hl7.org/fhir/issue-type#not-supported";
+
+    /// <summary>
     /// Literal for code: ProcessingFailure
     /// </summary>
     public const string LiteralProcessingFailure = "processing";
+
+    /// <summary>
+    /// Literal for code: IssueTypeProcessingFailure
+    /// </summary>
+    public const string LiteralIssueTypeProcessingFailure = "http://hl7.org/fhir/issue-type#processing";
 
     /// <summary>
     /// Literal for code: RequiredElementMissing
@@ -397,9 +497,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRequiredElementMissing = "required";
 
     /// <summary>
+    /// Literal for code: IssueTypeRequiredElementMissing
+    /// </summary>
+    public const string LiteralIssueTypeRequiredElementMissing = "http://hl7.org/fhir/issue-type#required";
+
+    /// <summary>
     /// Literal for code: SecurityProblem
     /// </summary>
     public const string LiteralSecurityProblem = "security";
+
+    /// <summary>
+    /// Literal for code: IssueTypeSecurityProblem
+    /// </summary>
+    public const string LiteralIssueTypeSecurityProblem = "http://hl7.org/fhir/issue-type#security";
 
     /// <summary>
     /// Literal for code: StructuralIssue
@@ -407,9 +517,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStructuralIssue = "structure";
 
     /// <summary>
+    /// Literal for code: IssueTypeStructuralIssue
+    /// </summary>
+    public const string LiteralIssueTypeStructuralIssue = "http://hl7.org/fhir/issue-type#structure";
+
+    /// <summary>
     /// Literal for code: InformationSuppressed
     /// </summary>
     public const string LiteralInformationSuppressed = "suppressed";
+
+    /// <summary>
+    /// Literal for code: IssueTypeInformationSuppressed
+    /// </summary>
+    public const string LiteralIssueTypeInformationSuppressed = "http://hl7.org/fhir/issue-type#suppressed";
 
     /// <summary>
     /// Literal for code: Throttled
@@ -417,9 +537,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralThrottled = "throttled";
 
     /// <summary>
+    /// Literal for code: IssueTypeThrottled
+    /// </summary>
+    public const string LiteralIssueTypeThrottled = "http://hl7.org/fhir/issue-type#throttled";
+
+    /// <summary>
     /// Literal for code: Timeout
     /// </summary>
     public const string LiteralTimeout = "timeout";
+
+    /// <summary>
+    /// Literal for code: IssueTypeTimeout
+    /// </summary>
+    public const string LiteralIssueTypeTimeout = "http://hl7.org/fhir/issue-type#timeout";
 
     /// <summary>
     /// Literal for code: OperationTooCostly
@@ -427,9 +557,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOperationTooCostly = "too-costly";
 
     /// <summary>
+    /// Literal for code: IssueTypeOperationTooCostly
+    /// </summary>
+    public const string LiteralIssueTypeOperationTooCostly = "http://hl7.org/fhir/issue-type#too-costly";
+
+    /// <summary>
     /// Literal for code: ContentTooLong
     /// </summary>
     public const string LiteralContentTooLong = "too-long";
+
+    /// <summary>
+    /// Literal for code: IssueTypeContentTooLong
+    /// </summary>
+    public const string LiteralIssueTypeContentTooLong = "http://hl7.org/fhir/issue-type#too-long";
 
     /// <summary>
     /// Literal for code: TransientIssue
@@ -437,13 +577,96 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTransientIssue = "transient";
 
     /// <summary>
+    /// Literal for code: IssueTypeTransientIssue
+    /// </summary>
+    public const string LiteralIssueTypeTransientIssue = "http://hl7.org/fhir/issue-type#transient";
+
+    /// <summary>
     /// Literal for code: UnknownUser
     /// </summary>
     public const string LiteralUnknownUser = "unknown";
 
     /// <summary>
+    /// Literal for code: IssueTypeUnknownUser
+    /// </summary>
+    public const string LiteralIssueTypeUnknownUser = "http://hl7.org/fhir/issue-type#unknown";
+
+    /// <summary>
     /// Literal for code: ElementValueInvalid
     /// </summary>
     public const string LiteralElementValueInvalid = "value";
+
+    /// <summary>
+    /// Literal for code: IssueTypeElementValueInvalid
+    /// </summary>
+    public const string LiteralIssueTypeElementValueInvalid = "http://hl7.org/fhir/issue-type#value";
+
+    /// <summary>
+    /// Dictionary for looking up IssueType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "business-rule", BusinessRuleViolation }, 
+      { "http://hl7.org/fhir/issue-type#business-rule", BusinessRuleViolation }, 
+      { "code-invalid", InvalidCode }, 
+      { "http://hl7.org/fhir/issue-type#code-invalid", InvalidCode }, 
+      { "conflict", EditVersionConflict }, 
+      { "http://hl7.org/fhir/issue-type#conflict", EditVersionConflict }, 
+      { "deleted", Deleted }, 
+      { "http://hl7.org/fhir/issue-type#deleted", Deleted }, 
+      { "duplicate", Duplicate }, 
+      { "http://hl7.org/fhir/issue-type#duplicate", Duplicate }, 
+      { "exception", Exception }, 
+      { "http://hl7.org/fhir/issue-type#exception", Exception }, 
+      { "expired", SessionExpired }, 
+      { "http://hl7.org/fhir/issue-type#expired", SessionExpired }, 
+      { "extension", UnacceptableExtension }, 
+      { "http://hl7.org/fhir/issue-type#extension", UnacceptableExtension }, 
+      { "forbidden", Forbidden }, 
+      { "http://hl7.org/fhir/issue-type#forbidden", Forbidden }, 
+      { "incomplete", IncompleteResults }, 
+      { "http://hl7.org/fhir/issue-type#incomplete", IncompleteResults }, 
+      { "informational", InformationalNote }, 
+      { "http://hl7.org/fhir/issue-type#informational", InformationalNote }, 
+      { "invalid", InvalidContent }, 
+      { "http://hl7.org/fhir/issue-type#invalid", InvalidContent }, 
+      { "invariant", ValidationRuleFailed }, 
+      { "http://hl7.org/fhir/issue-type#invariant", ValidationRuleFailed }, 
+      { "lock-error", LockError }, 
+      { "http://hl7.org/fhir/issue-type#lock-error", LockError }, 
+      { "login", LoginRequired }, 
+      { "http://hl7.org/fhir/issue-type#login", LoginRequired }, 
+      { "multiple-matches", MultipleMatches }, 
+      { "http://hl7.org/fhir/issue-type#multiple-matches", MultipleMatches }, 
+      { "no-store", NoStoreAvailable }, 
+      { "http://hl7.org/fhir/issue-type#no-store", NoStoreAvailable }, 
+      { "not-found", NotFound }, 
+      { "http://hl7.org/fhir/issue-type#not-found", NotFound }, 
+      { "not-supported", ContentNotSupported }, 
+      { "http://hl7.org/fhir/issue-type#not-supported", ContentNotSupported }, 
+      { "processing", ProcessingFailure }, 
+      { "http://hl7.org/fhir/issue-type#processing", ProcessingFailure }, 
+      { "required", RequiredElementMissing }, 
+      { "http://hl7.org/fhir/issue-type#required", RequiredElementMissing }, 
+      { "security", SecurityProblem }, 
+      { "http://hl7.org/fhir/issue-type#security", SecurityProblem }, 
+      { "structure", StructuralIssue }, 
+      { "http://hl7.org/fhir/issue-type#structure", StructuralIssue }, 
+      { "suppressed", InformationSuppressed }, 
+      { "http://hl7.org/fhir/issue-type#suppressed", InformationSuppressed }, 
+      { "throttled", Throttled }, 
+      { "http://hl7.org/fhir/issue-type#throttled", Throttled }, 
+      { "timeout", Timeout }, 
+      { "http://hl7.org/fhir/issue-type#timeout", Timeout }, 
+      { "too-costly", OperationTooCostly }, 
+      { "http://hl7.org/fhir/issue-type#too-costly", OperationTooCostly }, 
+      { "too-long", ContentTooLong }, 
+      { "http://hl7.org/fhir/issue-type#too-long", ContentTooLong }, 
+      { "transient", TransientIssue }, 
+      { "http://hl7.org/fhir/issue-type#transient", TransientIssue }, 
+      { "unknown", UnknownUser }, 
+      { "http://hl7.org/fhir/issue-type#unknown", UnknownUser }, 
+      { "value", ElementValueInvalid }, 
+      { "http://hl7.org/fhir/issue-type#value", ElementValueInvalid }, 
+    };
   };
 }

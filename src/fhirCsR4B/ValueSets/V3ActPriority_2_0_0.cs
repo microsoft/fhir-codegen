@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActPriority"
     };
     /// <summary>
-    /// 
+    /// callback for scheduling
     /// </summary>
     public static readonly Coding CallbackForScheduling = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActPriority"
     };
     /// <summary>
-    /// 
+    /// callback placer for scheduling
     /// </summary>
     public static readonly Coding CallbackPlacerForScheduling = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActPriority"
     };
     /// <summary>
-    /// 
+    /// contact recipient for scheduling
     /// </summary>
     public static readonly Coding ContactRecipientForScheduling = new Coding
     {
@@ -143,9 +143,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralA = "A";
 
     /// <summary>
+    /// Literal for code: V3ActPriorityA
+    /// </summary>
+    public const string LiteralV3ActPriorityA = "http://terminology.hl7.org/CodeSystem/v3-ActPriority#A";
+
+    /// <summary>
     /// Literal for code: CR
     /// </summary>
     public const string LiteralCR = "CR";
+
+    /// <summary>
+    /// Literal for code: V3ActPriorityCR
+    /// </summary>
+    public const string LiteralV3ActPriorityCR = "http://terminology.hl7.org/CodeSystem/v3-ActPriority#CR";
 
     /// <summary>
     /// Literal for code: CallbackForScheduling
@@ -153,9 +163,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCallbackForScheduling = "CS";
 
     /// <summary>
+    /// Literal for code: V3ActPriorityCallbackForScheduling
+    /// </summary>
+    public const string LiteralV3ActPriorityCallbackForScheduling = "http://terminology.hl7.org/CodeSystem/v3-ActPriority#CS";
+
+    /// <summary>
     /// Literal for code: CallbackPlacerForScheduling
     /// </summary>
     public const string LiteralCallbackPlacerForScheduling = "CSP";
+
+    /// <summary>
+    /// Literal for code: V3ActPriorityCallbackPlacerForScheduling
+    /// </summary>
+    public const string LiteralV3ActPriorityCallbackPlacerForScheduling = "http://terminology.hl7.org/CodeSystem/v3-ActPriority#CSP";
 
     /// <summary>
     /// Literal for code: ContactRecipientForScheduling
@@ -163,9 +183,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralContactRecipientForScheduling = "CSR";
 
     /// <summary>
+    /// Literal for code: V3ActPriorityContactRecipientForScheduling
+    /// </summary>
+    public const string LiteralV3ActPriorityContactRecipientForScheduling = "http://terminology.hl7.org/CodeSystem/v3-ActPriority#CSR";
+
+    /// <summary>
     /// Literal for code: EL
     /// </summary>
     public const string LiteralEL = "EL";
+
+    /// <summary>
+    /// Literal for code: V3ActPriorityEL
+    /// </summary>
+    public const string LiteralV3ActPriorityEL = "http://terminology.hl7.org/CodeSystem/v3-ActPriority#EL";
 
     /// <summary>
     /// Literal for code: EM
@@ -173,9 +203,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEM = "EM";
 
     /// <summary>
+    /// Literal for code: V3ActPriorityEM
+    /// </summary>
+    public const string LiteralV3ActPriorityEM = "http://terminology.hl7.org/CodeSystem/v3-ActPriority#EM";
+
+    /// <summary>
     /// Literal for code: P
     /// </summary>
     public const string LiteralP = "P";
+
+    /// <summary>
+    /// Literal for code: V3ActPriorityP
+    /// </summary>
+    public const string LiteralV3ActPriorityP = "http://terminology.hl7.org/CodeSystem/v3-ActPriority#P";
 
     /// <summary>
     /// Literal for code: PRN
@@ -183,9 +223,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPRN = "PRN";
 
     /// <summary>
+    /// Literal for code: V3ActPriorityPRN
+    /// </summary>
+    public const string LiteralV3ActPriorityPRN = "http://terminology.hl7.org/CodeSystem/v3-ActPriority#PRN";
+
+    /// <summary>
     /// Literal for code: R
     /// </summary>
     public const string LiteralR = "R";
+
+    /// <summary>
+    /// Literal for code: V3ActPriorityR
+    /// </summary>
+    public const string LiteralV3ActPriorityR = "http://terminology.hl7.org/CodeSystem/v3-ActPriority#R";
 
     /// <summary>
     /// Literal for code: RR
@@ -193,9 +243,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRR = "RR";
 
     /// <summary>
+    /// Literal for code: V3ActPriorityRR
+    /// </summary>
+    public const string LiteralV3ActPriorityRR = "http://terminology.hl7.org/CodeSystem/v3-ActPriority#RR";
+
+    /// <summary>
     /// Literal for code: S
     /// </summary>
     public const string LiteralS = "S";
+
+    /// <summary>
+    /// Literal for code: V3ActPriorityS
+    /// </summary>
+    public const string LiteralV3ActPriorityS = "http://terminology.hl7.org/CodeSystem/v3-ActPriority#S";
 
     /// <summary>
     /// Literal for code: T
@@ -203,13 +263,64 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralT = "T";
 
     /// <summary>
+    /// Literal for code: V3ActPriorityT
+    /// </summary>
+    public const string LiteralV3ActPriorityT = "http://terminology.hl7.org/CodeSystem/v3-ActPriority#T";
+
+    /// <summary>
     /// Literal for code: UD
     /// </summary>
     public const string LiteralUD = "UD";
 
     /// <summary>
+    /// Literal for code: V3ActPriorityUD
+    /// </summary>
+    public const string LiteralV3ActPriorityUD = "http://terminology.hl7.org/CodeSystem/v3-ActPriority#UD";
+
+    /// <summary>
     /// Literal for code: UR
     /// </summary>
     public const string LiteralUR = "UR";
+
+    /// <summary>
+    /// Literal for code: V3ActPriorityUR
+    /// </summary>
+    public const string LiteralV3ActPriorityUR = "http://terminology.hl7.org/CodeSystem/v3-ActPriority#UR";
+
+    /// <summary>
+    /// Dictionary for looking up V3ActPriority Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "A", A }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActPriority#A", A }, 
+      { "CR", CR }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActPriority#CR", CR }, 
+      { "CS", CallbackForScheduling }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActPriority#CS", CallbackForScheduling }, 
+      { "CSP", CallbackPlacerForScheduling }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActPriority#CSP", CallbackPlacerForScheduling }, 
+      { "CSR", ContactRecipientForScheduling }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActPriority#CSR", ContactRecipientForScheduling }, 
+      { "EL", EL }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActPriority#EL", EL }, 
+      { "EM", EM }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActPriority#EM", EM }, 
+      { "P", P }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActPriority#P", P }, 
+      { "PRN", PRN }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActPriority#PRN", PRN }, 
+      { "R", R }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActPriority#R", R }, 
+      { "RR", RR }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActPriority#RR", RR }, 
+      { "S", S }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActPriority#S", S }, 
+      { "T", T }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActPriority#T", T }, 
+      { "UD", UD }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActPriority#UD", UD }, 
+      { "UR", UR }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActPriority#UR", UR }, 
+    };
   };
 }

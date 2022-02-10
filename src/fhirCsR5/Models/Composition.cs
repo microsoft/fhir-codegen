@@ -619,6 +619,11 @@ namespace fhirCsR5.Models
     public const string WORKING = "working";
     public const string SNAPSHOT = "snapshot";
     public const string CHANGES = "changes";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "working",
+      "snapshot",
+      "changes",
+    };
   }
   /// <summary>
   /// A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type=document, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).
@@ -1150,5 +1155,12 @@ namespace fhirCsR5.Models
     public const string AMENDED = "amended";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string DEPRECATED = "deprecated";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "preliminary",
+      "final",
+      "amended",
+      "entered-in-error",
+      "deprecated",
+    };
   }
 }

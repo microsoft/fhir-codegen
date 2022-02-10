@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralClassification = "classification";
 
     /// <summary>
+    /// Literal for code: EvidenceReportTypeClassification
+    /// </summary>
+    public const string LiteralEvidenceReportTypeClassification = "http://terminology.hl7.org/CodeSystem/evidence-report-type#classification";
+
+    /// <summary>
     /// Literal for code: ResourceCompilation
     /// </summary>
     public const string LiteralResourceCompilation = "resources-compiled";
+
+    /// <summary>
+    /// Literal for code: EvidenceReportTypeResourceCompilation
+    /// </summary>
+    public const string LiteralEvidenceReportTypeResourceCompilation = "http://terminology.hl7.org/CodeSystem/evidence-report-type#resources-compiled";
 
     /// <summary>
     /// Literal for code: SearchResults
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSearchResults = "search-results";
 
     /// <summary>
+    /// Literal for code: EvidenceReportTypeSearchResults
+    /// </summary>
+    public const string LiteralEvidenceReportTypeSearchResults = "http://terminology.hl7.org/CodeSystem/evidence-report-type#search-results";
+
+    /// <summary>
     /// Literal for code: StructuredText
     /// </summary>
     public const string LiteralStructuredText = "text-structured";
+
+    /// <summary>
+    /// Literal for code: EvidenceReportTypeStructuredText
+    /// </summary>
+    public const string LiteralEvidenceReportTypeStructuredText = "http://terminology.hl7.org/CodeSystem/evidence-report-type#text-structured";
+
+    /// <summary>
+    /// Dictionary for looking up EvidenceReportType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "classification", Classification }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-type#classification", Classification }, 
+      { "resources-compiled", ResourceCompilation }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-type#resources-compiled", ResourceCompilation }, 
+      { "search-results", SearchResults }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-type#search-results", SearchResults }, 
+      { "text-structured", StructuredText }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-report-type#text-structured", StructuredText }, 
+    };
   };
 }

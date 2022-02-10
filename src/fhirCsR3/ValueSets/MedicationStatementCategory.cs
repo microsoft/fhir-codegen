@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCommunity = "community";
 
     /// <summary>
+    /// Literal for code: MedicationStatementCategoryCommunity
+    /// </summary>
+    public const string LiteralMedicationStatementCategoryCommunity = "http://hl7.org/fhir/medication-statement-category#community";
+
+    /// <summary>
     /// Literal for code: Inpatient
     /// </summary>
     public const string LiteralInpatient = "inpatient";
+
+    /// <summary>
+    /// Literal for code: MedicationStatementCategoryInpatient
+    /// </summary>
+    public const string LiteralMedicationStatementCategoryInpatient = "http://hl7.org/fhir/medication-statement-category#inpatient";
 
     /// <summary>
     /// Literal for code: Outpatient
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOutpatient = "outpatient";
 
     /// <summary>
+    /// Literal for code: MedicationStatementCategoryOutpatient
+    /// </summary>
+    public const string LiteralMedicationStatementCategoryOutpatient = "http://hl7.org/fhir/medication-statement-category#outpatient";
+
+    /// <summary>
     /// Literal for code: PatientSpecified
     /// </summary>
     public const string LiteralPatientSpecified = "patientspecified";
+
+    /// <summary>
+    /// Literal for code: MedicationStatementCategoryPatientSpecified
+    /// </summary>
+    public const string LiteralMedicationStatementCategoryPatientSpecified = "http://hl7.org/fhir/medication-statement-category#patientspecified";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationStatementCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "community", Community }, 
+      { "http://hl7.org/fhir/medication-statement-category#community", Community }, 
+      { "inpatient", Inpatient }, 
+      { "http://hl7.org/fhir/medication-statement-category#inpatient", Inpatient }, 
+      { "outpatient", Outpatient }, 
+      { "http://hl7.org/fhir/medication-statement-category#outpatient", Outpatient }, 
+      { "patientspecified", PatientSpecified }, 
+      { "http://hl7.org/fhir/medication-statement-category#patientspecified", PatientSpecified }, 
+    };
   };
 }

@@ -72,9 +72,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralManufacturerName = "manufacturer-name";
 
     /// <summary>
+    /// Literal for code: DeviceNametypeManufacturerName
+    /// </summary>
+    public const string LiteralDeviceNametypeManufacturerName = "http://hl7.org/fhir/device-nametype#manufacturer-name";
+
+    /// <summary>
     /// Literal for code: ModelName
     /// </summary>
     public const string LiteralModelName = "model-name";
+
+    /// <summary>
+    /// Literal for code: DeviceNametypeModelName
+    /// </summary>
+    public const string LiteralDeviceNametypeModelName = "http://hl7.org/fhir/device-nametype#model-name";
 
     /// <summary>
     /// Literal for code: Other
@@ -82,9 +92,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOther = "other";
 
     /// <summary>
+    /// Literal for code: DeviceNametypeOther
+    /// </summary>
+    public const string LiteralDeviceNametypeOther = "http://hl7.org/fhir/device-nametype#other";
+
+    /// <summary>
     /// Literal for code: PatientReportedName
     /// </summary>
     public const string LiteralPatientReportedName = "patient-reported-name";
+
+    /// <summary>
+    /// Literal for code: DeviceNametypePatientReportedName
+    /// </summary>
+    public const string LiteralDeviceNametypePatientReportedName = "http://hl7.org/fhir/device-nametype#patient-reported-name";
 
     /// <summary>
     /// Literal for code: UDILabelName
@@ -92,8 +112,36 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUDILabelName = "udi-label-name";
 
     /// <summary>
+    /// Literal for code: DeviceNametypeUDILabelName
+    /// </summary>
+    public const string LiteralDeviceNametypeUDILabelName = "http://hl7.org/fhir/device-nametype#udi-label-name";
+
+    /// <summary>
     /// Literal for code: UserFriendlyName
     /// </summary>
     public const string LiteralUserFriendlyName = "user-friendly-name";
+
+    /// <summary>
+    /// Literal for code: DeviceNametypeUserFriendlyName
+    /// </summary>
+    public const string LiteralDeviceNametypeUserFriendlyName = "http://hl7.org/fhir/device-nametype#user-friendly-name";
+
+    /// <summary>
+    /// Dictionary for looking up DeviceNametype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "manufacturer-name", ManufacturerName }, 
+      { "http://hl7.org/fhir/device-nametype#manufacturer-name", ManufacturerName }, 
+      { "model-name", ModelName }, 
+      { "http://hl7.org/fhir/device-nametype#model-name", ModelName }, 
+      { "other", Other }, 
+      { "http://hl7.org/fhir/device-nametype#other", Other }, 
+      { "patient-reported-name", PatientReportedName }, 
+      { "http://hl7.org/fhir/device-nametype#patient-reported-name", PatientReportedName }, 
+      { "udi-label-name", UDILabelName }, 
+      { "http://hl7.org/fhir/device-nametype#udi-label-name", UDILabelName }, 
+      { "user-friendly-name", UserFriendlyName }, 
+      { "http://hl7.org/fhir/device-nametype#user-friendly-name", UserFriendlyName }, 
+    };
   };
 }

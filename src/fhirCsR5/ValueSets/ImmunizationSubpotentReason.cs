@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ImmunizationSubpotentReasonCodes
   {
     /// <summary>
-    /// 
+    /// Adverse Storage
     /// </summary>
     public static readonly Coding AdverseStorage = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason"
     };
     /// <summary>
-    /// 
+    /// Cold Chain Break
     /// </summary>
     public static readonly Coding ColdChainBreak = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason"
     };
     /// <summary>
-    /// 
+    /// Expired Product
     /// </summary>
     public static readonly Coding ExpiredProduct = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason"
     };
     /// <summary>
-    /// 
+    /// Partial Dose
     /// </summary>
     public static readonly Coding PartialDose = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason"
     };
     /// <summary>
-    /// 
+    /// Manufacturer Recall
     /// </summary>
     public static readonly Coding ManufacturerRecall = new Coding
     {
@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAdverseStorage = "adversestorage";
 
     /// <summary>
+    /// Literal for code: ImmunizationSubpotentReasonAdverseStorage
+    /// </summary>
+    public const string LiteralImmunizationSubpotentReasonAdverseStorage = "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason#adversestorage";
+
+    /// <summary>
     /// Literal for code: ColdChainBreak
     /// </summary>
     public const string LiteralColdChainBreak = "coldchainbreak";
+
+    /// <summary>
+    /// Literal for code: ImmunizationSubpotentReasonColdChainBreak
+    /// </summary>
+    public const string LiteralImmunizationSubpotentReasonColdChainBreak = "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason#coldchainbreak";
 
     /// <summary>
     /// Literal for code: ExpiredProduct
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralExpiredProduct = "expired";
 
     /// <summary>
+    /// Literal for code: ImmunizationSubpotentReasonExpiredProduct
+    /// </summary>
+    public const string LiteralImmunizationSubpotentReasonExpiredProduct = "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason#expired";
+
+    /// <summary>
     /// Literal for code: PartialDose
     /// </summary>
     public const string LiteralPartialDose = "partialdose";
 
     /// <summary>
+    /// Literal for code: ImmunizationSubpotentReasonPartialDose
+    /// </summary>
+    public const string LiteralImmunizationSubpotentReasonPartialDose = "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason#partialdose";
+
+    /// <summary>
     /// Literal for code: ManufacturerRecall
     /// </summary>
     public const string LiteralManufacturerRecall = "recall";
+
+    /// <summary>
+    /// Literal for code: ImmunizationSubpotentReasonManufacturerRecall
+    /// </summary>
+    public const string LiteralImmunizationSubpotentReasonManufacturerRecall = "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason#recall";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationSubpotentReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "adversestorage", AdverseStorage }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason#adversestorage", AdverseStorage }, 
+      { "coldchainbreak", ColdChainBreak }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason#coldchainbreak", ColdChainBreak }, 
+      { "expired", ExpiredProduct }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason#expired", ExpiredProduct }, 
+      { "partialdose", PartialDose }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason#partialdose", PartialDose }, 
+      { "recall", ManufacturerRecall }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason#recall", ManufacturerRecall }, 
+    };
   };
 }

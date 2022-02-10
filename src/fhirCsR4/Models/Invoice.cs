@@ -254,6 +254,14 @@ namespace fhirCsR4.Models
     public const string DISCOUNT = "discount";
     public const string TAX = "tax";
     public const string INFORMATIONAL = "informational";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "base",
+      "surcharge",
+      "deduction",
+      "discount",
+      "tax",
+      "informational",
+    };
   }
   /// <summary>
   /// Each line item represents one charge for goods and services rendered. Details such as date, code and amount are found in the referenced ChargeItem resource.
@@ -916,5 +924,12 @@ namespace fhirCsR4.Models
     public const string BALANCED = "balanced";
     public const string CANCELLED = "cancelled";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "issued",
+      "balanced",
+      "cancelled",
+      "entered-in-error",
+    };
   }
 }

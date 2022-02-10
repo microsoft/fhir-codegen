@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHigh = "high";
 
     /// <summary>
+    /// Literal for code: DetectedissueSeverityHigh
+    /// </summary>
+    public const string LiteralDetectedissueSeverityHigh = "http://hl7.org/fhir/detectedissue-severity#high";
+
+    /// <summary>
     /// Literal for code: Low
     /// </summary>
     public const string LiteralLow = "low";
 
     /// <summary>
+    /// Literal for code: DetectedissueSeverityLow
+    /// </summary>
+    public const string LiteralDetectedissueSeverityLow = "http://hl7.org/fhir/detectedissue-severity#low";
+
+    /// <summary>
     /// Literal for code: Moderate
     /// </summary>
     public const string LiteralModerate = "moderate";
+
+    /// <summary>
+    /// Literal for code: DetectedissueSeverityModerate
+    /// </summary>
+    public const string LiteralDetectedissueSeverityModerate = "http://hl7.org/fhir/detectedissue-severity#moderate";
+
+    /// <summary>
+    /// Dictionary for looking up DetectedissueSeverity Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "high", High }, 
+      { "http://hl7.org/fhir/detectedissue-severity#high", High }, 
+      { "low", Low }, 
+      { "http://hl7.org/fhir/detectedissue-severity#low", Low }, 
+      { "moderate", Moderate }, 
+      { "http://hl7.org/fhir/detectedissue-severity#moderate", Moderate }, 
+    };
   };
 }

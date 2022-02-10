@@ -266,6 +266,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? NotDone { get; set; }
     /// <summary>
+    /// Extension container element for NotDone
+    /// </summary>
+    public Element _NotDone { get; set; }
+    /// <summary>
     /// A code indicating why the procedure was not performed.
     /// </summary>
     public CodeableConcept NotDoneReason { get; set; }
@@ -413,6 +417,12 @@ namespace fhirCsR3.Models
       if (NotDone != null)
       {
         writer.WriteBoolean("notDone", (bool)NotDone!);
+      }
+
+      if (_NotDone != null)
+      {
+        writer.WritePropertyName("_notDone");
+        _NotDone.SerializeJson(writer, options);
       }
 
       if (NotDoneReason != null)
@@ -882,6 +892,11 @@ namespace fhirCsR3.Models
           NotDone = reader.GetBoolean();
           break;
 
+        case "_notDone":
+          _NotDone = new fhirCsR3.Models.Element();
+          _NotDone.DeserializeJson(ref reader, options);
+          break;
+
         case "notDoneReason":
           NotDoneReason = new fhirCsR3.Models.CodeableConcept();
           NotDoneReason.DeserializeJson(ref reader, options);
@@ -1178,5 +1193,14 @@ namespace fhirCsR3.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "preparation",
+      "in-progress",
+      "suspended",
+      "aborted",
+      "completed",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

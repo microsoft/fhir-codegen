@@ -278,6 +278,11 @@ namespace fhirCsR3.Models
     public const string MILD = "mild";
     public const string MODERATE = "moderate";
     public const string SEVERE = "severe";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "mild",
+      "moderate",
+      "severe",
+    };
   }
   /// <summary>
   /// Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.
@@ -906,6 +911,12 @@ namespace fhirCsR3.Models
     public const string MEDICATION = "medication";
     public const string ENVIRONMENT = "environment";
     public const string BIOLOGIC = "biologic";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "food",
+      "medication",
+      "environment",
+      "biologic",
+    };
   }
   /// <summary>
   /// Code Values for the AllergyIntolerance.clinicalStatus field
@@ -914,6 +925,11 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string INACTIVE = "inactive";
     public const string RESOLVED = "resolved";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "inactive",
+      "resolved",
+    };
   }
   /// <summary>
   /// Code Values for the AllergyIntolerance.criticality field
@@ -922,6 +938,11 @@ namespace fhirCsR3.Models
     public const string LOW = "low";
     public const string HIGH = "high";
     public const string UNABLE_TO_ASSESS = "unable-to-assess";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "low",
+      "high",
+      "unable-to-assess",
+    };
   }
   /// <summary>
   /// Code Values for the AllergyIntolerance.type field
@@ -929,6 +950,10 @@ namespace fhirCsR3.Models
   public static class AllergyIntoleranceTypeCodes {
     public const string ALLERGY = "allergy";
     public const string INTOLERANCE = "intolerance";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "allergy",
+      "intolerance",
+    };
   }
   /// <summary>
   /// Code Values for the AllergyIntolerance.verificationStatus field
@@ -938,5 +963,11 @@ namespace fhirCsR3.Models
     public const string CONFIRMED = "confirmed";
     public const string REFUTED = "refuted";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "unconfirmed",
+      "confirmed",
+      "refuted",
+      "entered-in-error",
+    };
   }
 }

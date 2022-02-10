@@ -25,5 +25,18 @@ namespace fhirCsR5.ValueSets
     /// Literal for code: Participation
     /// </summary>
     public const string LiteralParticipation = "participation";
+
+    /// <summary>
+    /// Literal for code: ContractAssettypeParticipation
+    /// </summary>
+    public const string LiteralContractAssettypeParticipation = "http://hl7.org/fhir/contract-asset-type#participation";
+
+    /// <summary>
+    /// Dictionary for looking up ContractAssettype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "participation", Participation }, 
+      { "http://hl7.org/fhir/contract-asset-type#participation", Participation }, 
+    };
   };
 }

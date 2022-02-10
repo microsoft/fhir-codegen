@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDentist = "311405";
 
     /// <summary>
+    /// Literal for code: ProviderQualificationDentist
+    /// </summary>
+    public const string LiteralProviderQualificationDentist = "http://hl7.org/fhir/ex-providerqualification#311405";
+
+    /// <summary>
     /// Literal for code: Optometrist
     /// </summary>
     public const string LiteralOptometrist = "604210";
 
     /// <summary>
+    /// Literal for code: ProviderQualificationOptometrist
+    /// </summary>
+    public const string LiteralProviderQualificationOptometrist = "http://hl7.org/fhir/ex-providerqualification#604210";
+
+    /// <summary>
     /// Literal for code: Ophthalmologist
     /// </summary>
     public const string LiteralOphthalmologist = "604215";
+
+    /// <summary>
+    /// Literal for code: ProviderQualificationOphthalmologist
+    /// </summary>
+    public const string LiteralProviderQualificationOphthalmologist = "http://hl7.org/fhir/ex-providerqualification#604215";
+
+    /// <summary>
+    /// Dictionary for looking up ProviderQualification Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "311405", Dentist }, 
+      { "http://hl7.org/fhir/ex-providerqualification#311405", Dentist }, 
+      { "604210", Optometrist }, 
+      { "http://hl7.org/fhir/ex-providerqualification#604210", Optometrist }, 
+      { "604215", Ophthalmologist }, 
+      { "http://hl7.org/fhir/ex-providerqualification#604215", Ophthalmologist }, 
+    };
   };
 }

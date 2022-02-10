@@ -81,9 +81,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBarcode = "barcode";
 
     /// <summary>
+    /// Literal for code: UdiEntryTypeBarcode
+    /// </summary>
+    public const string LiteralUdiEntryTypeBarcode = "http://hl7.org/fhir/udi-entry-type#barcode";
+
+    /// <summary>
     /// Literal for code: Card
     /// </summary>
     public const string LiteralCard = "card";
+
+    /// <summary>
+    /// Literal for code: UdiEntryTypeCard
+    /// </summary>
+    public const string LiteralUdiEntryTypeCard = "http://hl7.org/fhir/udi-entry-type#card";
 
     /// <summary>
     /// Literal for code: ElectronicTransmission
@@ -91,9 +101,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralElectronicTransmission = "electronic-transmission";
 
     /// <summary>
+    /// Literal for code: UdiEntryTypeElectronicTransmission
+    /// </summary>
+    public const string LiteralUdiEntryTypeElectronicTransmission = "http://hl7.org/fhir/udi-entry-type#electronic-transmission";
+
+    /// <summary>
     /// Literal for code: Manual
     /// </summary>
     public const string LiteralManual = "manual";
+
+    /// <summary>
+    /// Literal for code: UdiEntryTypeManual
+    /// </summary>
+    public const string LiteralUdiEntryTypeManual = "http://hl7.org/fhir/udi-entry-type#manual";
 
     /// <summary>
     /// Literal for code: RFID
@@ -101,13 +121,48 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRFID = "rfid";
 
     /// <summary>
+    /// Literal for code: UdiEntryTypeRFID
+    /// </summary>
+    public const string LiteralUdiEntryTypeRFID = "http://hl7.org/fhir/udi-entry-type#rfid";
+
+    /// <summary>
     /// Literal for code: SelfReported
     /// </summary>
     public const string LiteralSelfReported = "self-reported";
 
     /// <summary>
+    /// Literal for code: UdiEntryTypeSelfReported
+    /// </summary>
+    public const string LiteralUdiEntryTypeSelfReported = "http://hl7.org/fhir/udi-entry-type#self-reported";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: UdiEntryTypeUnknown
+    /// </summary>
+    public const string LiteralUdiEntryTypeUnknown = "http://hl7.org/fhir/udi-entry-type#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up UdiEntryType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "barcode", Barcode }, 
+      { "http://hl7.org/fhir/udi-entry-type#barcode", Barcode }, 
+      { "card", Card }, 
+      { "http://hl7.org/fhir/udi-entry-type#card", Card }, 
+      { "electronic-transmission", ElectronicTransmission }, 
+      { "http://hl7.org/fhir/udi-entry-type#electronic-transmission", ElectronicTransmission }, 
+      { "manual", Manual }, 
+      { "http://hl7.org/fhir/udi-entry-type#manual", Manual }, 
+      { "rfid", RFID }, 
+      { "http://hl7.org/fhir/udi-entry-type#rfid", RFID }, 
+      { "self-reported", SelfReported }, 
+      { "http://hl7.org/fhir/udi-entry-type#self-reported", SelfReported }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/udi-entry-type#unknown", Unknown }, 
+    };
   };
 }

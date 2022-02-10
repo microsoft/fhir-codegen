@@ -126,9 +126,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAccepted = "accepted";
 
     /// <summary>
+    /// Literal for code: TaskStatusAccepted
+    /// </summary>
+    public const string LiteralTaskStatusAccepted = "http://hl7.org/fhir/task-status#accepted";
+
+    /// <summary>
     /// Literal for code: Cancelled
     /// </summary>
     public const string LiteralCancelled = "cancelled";
+
+    /// <summary>
+    /// Literal for code: TaskStatusCancelled
+    /// </summary>
+    public const string LiteralTaskStatusCancelled = "http://hl7.org/fhir/task-status#cancelled";
 
     /// <summary>
     /// Literal for code: Completed
@@ -136,9 +146,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: TaskStatusCompleted
+    /// </summary>
+    public const string LiteralTaskStatusCompleted = "http://hl7.org/fhir/task-status#completed";
+
+    /// <summary>
     /// Literal for code: Draft
     /// </summary>
     public const string LiteralDraft = "draft";
+
+    /// <summary>
+    /// Literal for code: TaskStatusDraft
+    /// </summary>
+    public const string LiteralTaskStatusDraft = "http://hl7.org/fhir/task-status#draft";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -146,9 +166,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: TaskStatusEnteredInError
+    /// </summary>
+    public const string LiteralTaskStatusEnteredInError = "http://hl7.org/fhir/task-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Failed
     /// </summary>
     public const string LiteralFailed = "failed";
+
+    /// <summary>
+    /// Literal for code: TaskStatusFailed
+    /// </summary>
+    public const string LiteralTaskStatusFailed = "http://hl7.org/fhir/task-status#failed";
 
     /// <summary>
     /// Literal for code: InProgress
@@ -156,9 +186,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInProgress = "in-progress";
 
     /// <summary>
+    /// Literal for code: TaskStatusInProgress
+    /// </summary>
+    public const string LiteralTaskStatusInProgress = "http://hl7.org/fhir/task-status#in-progress";
+
+    /// <summary>
     /// Literal for code: OnHold
     /// </summary>
     public const string LiteralOnHold = "on-hold";
+
+    /// <summary>
+    /// Literal for code: TaskStatusOnHold
+    /// </summary>
+    public const string LiteralTaskStatusOnHold = "http://hl7.org/fhir/task-status#on-hold";
 
     /// <summary>
     /// Literal for code: Ready
@@ -166,9 +206,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralReady = "ready";
 
     /// <summary>
+    /// Literal for code: TaskStatusReady
+    /// </summary>
+    public const string LiteralTaskStatusReady = "http://hl7.org/fhir/task-status#ready";
+
+    /// <summary>
     /// Literal for code: Received
     /// </summary>
     public const string LiteralReceived = "received";
+
+    /// <summary>
+    /// Literal for code: TaskStatusReceived
+    /// </summary>
+    public const string LiteralTaskStatusReceived = "http://hl7.org/fhir/task-status#received";
 
     /// <summary>
     /// Literal for code: Rejected
@@ -176,8 +226,48 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRejected = "rejected";
 
     /// <summary>
+    /// Literal for code: TaskStatusRejected
+    /// </summary>
+    public const string LiteralTaskStatusRejected = "http://hl7.org/fhir/task-status#rejected";
+
+    /// <summary>
     /// Literal for code: Requested
     /// </summary>
     public const string LiteralRequested = "requested";
+
+    /// <summary>
+    /// Literal for code: TaskStatusRequested
+    /// </summary>
+    public const string LiteralTaskStatusRequested = "http://hl7.org/fhir/task-status#requested";
+
+    /// <summary>
+    /// Dictionary for looking up TaskStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "accepted", Accepted }, 
+      { "http://hl7.org/fhir/task-status#accepted", Accepted }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/task-status#cancelled", Cancelled }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/task-status#completed", Completed }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/task-status#draft", Draft }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/task-status#entered-in-error", EnteredInError }, 
+      { "failed", Failed }, 
+      { "http://hl7.org/fhir/task-status#failed", Failed }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/task-status#in-progress", InProgress }, 
+      { "on-hold", OnHold }, 
+      { "http://hl7.org/fhir/task-status#on-hold", OnHold }, 
+      { "ready", Ready }, 
+      { "http://hl7.org/fhir/task-status#ready", Ready }, 
+      { "received", Received }, 
+      { "http://hl7.org/fhir/task-status#received", Received }, 
+      { "rejected", Rejected }, 
+      { "http://hl7.org/fhir/task-status#rejected", Rejected }, 
+      { "requested", Requested }, 
+      { "http://hl7.org/fhir/task-status#requested", Requested }, 
+    };
   };
 }

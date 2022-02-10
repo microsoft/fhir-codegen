@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     };
     /// <summary>
-    /// 
+    /// Emergency Contact
     /// </summary>
     public static readonly Coding EmergencyContact_v2_0131 = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     };
     /// <summary>
-    /// 
+    /// Employer
     /// </summary>
     public static readonly Coding Employer_v2_0131 = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     };
     /// <summary>
-    /// 
+    /// Federal Agency
     /// </summary>
     public static readonly Coding FederalAgency_v2_0131 = new Coding
     {
@@ -422,7 +422,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     };
     /// <summary>
-    /// 
+    /// Insurance Company
     /// </summary>
     public static readonly Coding InsuranceCompany_v2_0131 = new Coding
     {
@@ -577,7 +577,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     };
     /// <summary>
-    /// 
+    /// Next-of-Kin
     /// </summary>
     public static readonly Coding NextOfKin_v2_0131 = new Coding
     {
@@ -703,7 +703,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     };
     /// <summary>
-    /// 
+    /// Other
     /// </summary>
     public static readonly Coding Other_v2_0131 = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     };
     /// <summary>
-    /// 
+    /// State Agency
     /// </summary>
     public static readonly Coding StateAgency_v2_0131 = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
     };
     /// <summary>
-    /// 
+    /// Unknown
     /// </summary>
     public static readonly Coding Unknown_v2_0131 = new Coding
     {
@@ -1089,9 +1089,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPersonalRelationshipRoleType_v3_RoleCode = "_PersonalRelationshipRoleType";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePersonalRelationshipRoleType_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodePersonalRelationshipRoleType_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#_PersonalRelationshipRoleType";
+
+    /// <summary>
     /// Literal for code: AdoptiveFather_v3_RoleCode
     /// </summary>
     public const string LiteralAdoptiveFather_v3_RoleCode = "ADOPTF";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeAdoptiveFather_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeAdoptiveFather_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ADOPTF";
 
     /// <summary>
     /// Literal for code: AdoptiveMother_v3_RoleCode
@@ -1099,9 +1109,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdoptiveMother_v3_RoleCode = "ADOPTM";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeAdoptiveMother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeAdoptiveMother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ADOPTM";
+
+    /// <summary>
     /// Literal for code: AdoptiveParent_v3_RoleCode
     /// </summary>
     public const string LiteralAdoptiveParent_v3_RoleCode = "ADOPTP";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeAdoptiveParent_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeAdoptiveParent_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ADOPTP";
 
     /// <summary>
     /// Literal for code: Aunt_v3_RoleCode
@@ -1109,9 +1129,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAunt_v3_RoleCode = "AUNT";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeAunt_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeAunt_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#AUNT";
+
+    /// <summary>
     /// Literal for code: Brother_v3_RoleCode
     /// </summary>
     public const string LiteralBrother_v3_RoleCode = "BRO";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeBrother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeBrother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#BRO";
 
     /// <summary>
     /// Literal for code: BrotherInLaw_v3_RoleCode
@@ -1119,9 +1149,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBrotherInLaw_v3_RoleCode = "BROINLAW";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeBrotherInLaw_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeBrotherInLaw_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#BROINLAW";
+
+    /// <summary>
     /// Literal for code: EmergencyContact_v2_0131
     /// </summary>
     public const string LiteralEmergencyContact_v2_0131 = "C";
+
+    /// <summary>
+    /// Literal for code: V20131EmergencyContact_v2_0131
+    /// </summary>
+    public const string LiteralV20131EmergencyContact_v2_0131 = "http://terminology.hl7.org/CodeSystem/v2-0131#C";
 
     /// <summary>
     /// Literal for code: Child_v3_RoleCode
@@ -1129,9 +1169,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChild_v3_RoleCode = "CHILD";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeChild_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeChild_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CHILD";
+
+    /// <summary>
     /// Literal for code: AdoptedChild_v3_RoleCode
     /// </summary>
     public const string LiteralAdoptedChild_v3_RoleCode = "CHLDADOPT";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeAdoptedChild_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeAdoptedChild_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CHLDADOPT";
 
     /// <summary>
     /// Literal for code: FosterChild_v3_RoleCode
@@ -1139,9 +1189,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFosterChild_v3_RoleCode = "CHLDFOST";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeFosterChild_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeFosterChild_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CHLDFOST";
+
+    /// <summary>
     /// Literal for code: ChildInLaw_v3_RoleCode
     /// </summary>
     public const string LiteralChildInLaw_v3_RoleCode = "CHLDINLAW";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeChildInLaw_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeChildInLaw_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CHLDINLAW";
 
     /// <summary>
     /// Literal for code: Cousin_v3_RoleCode
@@ -1149,9 +1209,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCousin_v3_RoleCode = "COUSN";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeCousin_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeCousin_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#COUSN";
+
+    /// <summary>
     /// Literal for code: NaturalDaughter_v3_RoleCode
     /// </summary>
     public const string LiteralNaturalDaughter_v3_RoleCode = "DAU";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeNaturalDaughter_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNaturalDaughter_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DAU";
 
     /// <summary>
     /// Literal for code: AdoptedDaughter_v3_RoleCode
@@ -1159,9 +1229,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdoptedDaughter_v3_RoleCode = "DAUADOPT";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeAdoptedDaughter_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeAdoptedDaughter_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DAUADOPT";
+
+    /// <summary>
     /// Literal for code: Daughter_v3_RoleCode
     /// </summary>
     public const string LiteralDaughter_v3_RoleCode = "DAUC";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeDaughter_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeDaughter_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DAUC";
 
     /// <summary>
     /// Literal for code: FosterDaughter_v3_RoleCode
@@ -1169,9 +1249,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFosterDaughter_v3_RoleCode = "DAUFOST";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeFosterDaughter_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeFosterDaughter_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DAUFOST";
+
+    /// <summary>
     /// Literal for code: DaughterInLaw_v3_RoleCode
     /// </summary>
     public const string LiteralDaughterInLaw_v3_RoleCode = "DAUINLAW";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeDaughterInLaw_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeDaughterInLaw_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DAUINLAW";
 
     /// <summary>
     /// Literal for code: DomesticPartner_v3_RoleCode
@@ -1179,9 +1269,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDomesticPartner_v3_RoleCode = "DOMPART";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeDomesticPartner_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeDomesticPartner_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DOMPART";
+
+    /// <summary>
     /// Literal for code: Employer_v2_0131
     /// </summary>
     public const string LiteralEmployer_v2_0131 = "E";
+
+    /// <summary>
+    /// Literal for code: V20131Employer_v2_0131
+    /// </summary>
+    public const string LiteralV20131Employer_v2_0131 = "http://terminology.hl7.org/CodeSystem/v2-0131#E";
 
     /// <summary>
     /// Literal for code: ExtendedFamilyMember_v3_RoleCode
@@ -1189,9 +1289,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExtendedFamilyMember_v3_RoleCode = "EXT";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeExtendedFamilyMember_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeExtendedFamilyMember_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#EXT";
+
+    /// <summary>
     /// Literal for code: FederalAgency_v2_0131
     /// </summary>
     public const string LiteralFederalAgency_v2_0131 = "F";
+
+    /// <summary>
+    /// Literal for code: V20131FederalAgency_v2_0131
+    /// </summary>
+    public const string LiteralV20131FederalAgency_v2_0131 = "http://terminology.hl7.org/CodeSystem/v2-0131#F";
 
     /// <summary>
     /// Literal for code: FamilyMember_v3_RoleCode
@@ -1199,9 +1309,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFamilyMember_v3_RoleCode = "FAMMEMB";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeFamilyMember_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeFamilyMember_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FAMMEMB";
+
+    /// <summary>
     /// Literal for code: FormerSpouse_v3_RoleCode
     /// </summary>
     public const string LiteralFormerSpouse_v3_RoleCode = "FMRSPS";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeFormerSpouse_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeFormerSpouse_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FMRSPS";
 
     /// <summary>
     /// Literal for code: UnrelatedFriend_v3_RoleCode
@@ -1209,9 +1329,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnrelatedFriend_v3_RoleCode = "FRND";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeUnrelatedFriend_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeUnrelatedFriend_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FRND";
+
+    /// <summary>
     /// Literal for code: Father_v3_RoleCode
     /// </summary>
     public const string LiteralFather_v3_RoleCode = "FTH";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeFather_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeFather_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FTH";
 
     /// <summary>
     /// Literal for code: FosterFather_v3_RoleCode
@@ -1219,9 +1349,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFosterFather_v3_RoleCode = "FTHFOST";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeFosterFather_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeFosterFather_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FTHFOST";
+
+    /// <summary>
     /// Literal for code: FatherInLaw_v3_RoleCode
     /// </summary>
     public const string LiteralFatherInLaw_v3_RoleCode = "FTHINLAW";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeFatherInLaw_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeFatherInLaw_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FTHINLAW";
 
     /// <summary>
     /// Literal for code: FraternalTwin_v3_RoleCode
@@ -1229,9 +1369,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFraternalTwin_v3_RoleCode = "FTWIN";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeFraternalTwin_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeFraternalTwin_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FTWIN";
+
+    /// <summary>
     /// Literal for code: FraternalTwinBrother_v3_RoleCode
     /// </summary>
     public const string LiteralFraternalTwinBrother_v3_RoleCode = "FTWINBRO";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeFraternalTwinBrother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeFraternalTwinBrother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FTWINBRO";
 
     /// <summary>
     /// Literal for code: FraternalTwinSister_v3_RoleCode
@@ -1239,9 +1389,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFraternalTwinSister_v3_RoleCode = "FTWINSIS";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeFraternalTwinSister_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeFraternalTwinSister_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FTWINSIS";
+
+    /// <summary>
     /// Literal for code: GestationalMother_v3_RoleCode
     /// </summary>
     public const string LiteralGestationalMother_v3_RoleCode = "GESTM";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeGestationalMother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeGestationalMother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GESTM";
 
     /// <summary>
     /// Literal for code: GreatGrandfather_v3_RoleCode
@@ -1249,9 +1409,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGreatGrandfather_v3_RoleCode = "GGRFTH";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeGreatGrandfather_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeGreatGrandfather_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GGRFTH";
+
+    /// <summary>
     /// Literal for code: GreatGrandmother_v3_RoleCode
     /// </summary>
     public const string LiteralGreatGrandmother_v3_RoleCode = "GGRMTH";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeGreatGrandmother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeGreatGrandmother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GGRMTH";
 
     /// <summary>
     /// Literal for code: GreatGrandparent_v3_RoleCode
@@ -1259,9 +1429,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGreatGrandparent_v3_RoleCode = "GGRPRN";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeGreatGrandparent_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeGreatGrandparent_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GGRPRN";
+
+    /// <summary>
     /// Literal for code: Grandfather_v3_RoleCode
     /// </summary>
     public const string LiteralGrandfather_v3_RoleCode = "GRFTH";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeGrandfather_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeGrandfather_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GRFTH";
 
     /// <summary>
     /// Literal for code: Grandmother_v3_RoleCode
@@ -1269,9 +1449,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGrandmother_v3_RoleCode = "GRMTH";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeGrandmother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeGrandmother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GRMTH";
+
+    /// <summary>
     /// Literal for code: Grandchild_v3_RoleCode
     /// </summary>
     public const string LiteralGrandchild_v3_RoleCode = "GRNDCHILD";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeGrandchild_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeGrandchild_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GRNDCHILD";
 
     /// <summary>
     /// Literal for code: Granddaughter_v3_RoleCode
@@ -1279,9 +1469,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGranddaughter_v3_RoleCode = "GRNDDAU";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeGranddaughter_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeGranddaughter_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GRNDDAU";
+
+    /// <summary>
     /// Literal for code: Grandson_v3_RoleCode
     /// </summary>
     public const string LiteralGrandson_v3_RoleCode = "GRNDSON";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeGrandson_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeGrandson_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GRNDSON";
 
     /// <summary>
     /// Literal for code: Grandparent_v3_RoleCode
@@ -1289,9 +1489,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGrandparent_v3_RoleCode = "GRPRN";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeGrandparent_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeGrandparent_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GRPRN";
+
+    /// <summary>
     /// Literal for code: HalfBrother_v3_RoleCode
     /// </summary>
     public const string LiteralHalfBrother_v3_RoleCode = "HBRO";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeHalfBrother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeHalfBrother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HBRO";
 
     /// <summary>
     /// Literal for code: HalfSibling_v3_RoleCode
@@ -1299,9 +1509,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHalfSibling_v3_RoleCode = "HSIB";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeHalfSibling_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeHalfSibling_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HSIB";
+
+    /// <summary>
     /// Literal for code: HalfSister_v3_RoleCode
     /// </summary>
     public const string LiteralHalfSister_v3_RoleCode = "HSIS";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeHalfSister_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeHalfSister_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HSIS";
 
     /// <summary>
     /// Literal for code: Husband_v3_RoleCode
@@ -1309,9 +1529,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHusband_v3_RoleCode = "HUSB";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeHusband_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeHusband_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HUSB";
+
+    /// <summary>
     /// Literal for code: InsuranceCompany_v2_0131
     /// </summary>
     public const string LiteralInsuranceCompany_v2_0131 = "I";
+
+    /// <summary>
+    /// Literal for code: V20131InsuranceCompany_v2_0131
+    /// </summary>
+    public const string LiteralV20131InsuranceCompany_v2_0131 = "http://terminology.hl7.org/CodeSystem/v2-0131#I";
 
     /// <summary>
     /// Literal for code: Inlaw_v3_RoleCode
@@ -1319,9 +1549,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInlaw_v3_RoleCode = "INLAW";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeInlaw_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeInlaw_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#INLAW";
+
+    /// <summary>
     /// Literal for code: IdenticalTwin_v3_RoleCode
     /// </summary>
     public const string LiteralIdenticalTwin_v3_RoleCode = "ITWIN";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeIdenticalTwin_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeIdenticalTwin_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ITWIN";
 
     /// <summary>
     /// Literal for code: IdenticalTwinBrother_v3_RoleCode
@@ -1329,9 +1569,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIdenticalTwinBrother_v3_RoleCode = "ITWINBRO";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeIdenticalTwinBrother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeIdenticalTwinBrother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ITWINBRO";
+
+    /// <summary>
     /// Literal for code: IdenticalTwinSister_v3_RoleCode
     /// </summary>
     public const string LiteralIdenticalTwinSister_v3_RoleCode = "ITWINSIS";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeIdenticalTwinSister_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeIdenticalTwinSister_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ITWINSIS";
 
     /// <summary>
     /// Literal for code: MaternalAunt_v3_RoleCode
@@ -1339,9 +1589,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaternalAunt_v3_RoleCode = "MAUNT";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeMaternalAunt_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeMaternalAunt_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MAUNT";
+
+    /// <summary>
     /// Literal for code: MaternalCousin_v3_RoleCode
     /// </summary>
     public const string LiteralMaternalCousin_v3_RoleCode = "MCOUSN";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeMaternalCousin_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeMaternalCousin_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MCOUSN";
 
     /// <summary>
     /// Literal for code: MaternalGreatGrandfather_v3_RoleCode
@@ -1349,9 +1609,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaternalGreatGrandfather_v3_RoleCode = "MGGRFTH";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeMaternalGreatGrandfather_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeMaternalGreatGrandfather_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MGGRFTH";
+
+    /// <summary>
     /// Literal for code: MaternalGreatGrandmother_v3_RoleCode
     /// </summary>
     public const string LiteralMaternalGreatGrandmother_v3_RoleCode = "MGGRMTH";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeMaternalGreatGrandmother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeMaternalGreatGrandmother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MGGRMTH";
 
     /// <summary>
     /// Literal for code: MaternalGreatGrandparent_v3_RoleCode
@@ -1359,9 +1629,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaternalGreatGrandparent_v3_RoleCode = "MGGRPRN";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeMaternalGreatGrandparent_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeMaternalGreatGrandparent_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MGGRPRN";
+
+    /// <summary>
     /// Literal for code: MaternalGrandfather_v3_RoleCode
     /// </summary>
     public const string LiteralMaternalGrandfather_v3_RoleCode = "MGRFTH";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeMaternalGrandfather_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeMaternalGrandfather_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MGRFTH";
 
     /// <summary>
     /// Literal for code: MaternalGrandmother_v3_RoleCode
@@ -1369,9 +1649,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaternalGrandmother_v3_RoleCode = "MGRMTH";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeMaternalGrandmother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeMaternalGrandmother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MGRMTH";
+
+    /// <summary>
     /// Literal for code: MaternalGrandparent_v3_RoleCode
     /// </summary>
     public const string LiteralMaternalGrandparent_v3_RoleCode = "MGRPRN";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeMaternalGrandparent_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeMaternalGrandparent_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MGRPRN";
 
     /// <summary>
     /// Literal for code: Mother_v3_RoleCode
@@ -1379,9 +1669,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMother_v3_RoleCode = "MTH";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeMother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeMother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MTH";
+
+    /// <summary>
     /// Literal for code: FosterMother_v3_RoleCode
     /// </summary>
     public const string LiteralFosterMother_v3_RoleCode = "MTHFOST";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeFosterMother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeFosterMother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MTHFOST";
 
     /// <summary>
     /// Literal for code: MotherInLaw_v3_RoleCode
@@ -1389,9 +1689,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMotherInLaw_v3_RoleCode = "MTHINLAW";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeMotherInLaw_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeMotherInLaw_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MTHINLAW";
+
+    /// <summary>
     /// Literal for code: MaternalUncle_v3_RoleCode
     /// </summary>
     public const string LiteralMaternalUncle_v3_RoleCode = "MUNCLE";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeMaternalUncle_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeMaternalUncle_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MUNCLE";
 
     /// <summary>
     /// Literal for code: NextOfKin_v2_0131
@@ -1399,9 +1709,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNextOfKin_v2_0131 = "N";
 
     /// <summary>
+    /// Literal for code: V20131NextOfKin_v2_0131
+    /// </summary>
+    public const string LiteralV20131NextOfKin_v2_0131 = "http://terminology.hl7.org/CodeSystem/v2-0131#N";
+
+    /// <summary>
     /// Literal for code: Neighbor_v3_RoleCode
     /// </summary>
     public const string LiteralNeighbor_v3_RoleCode = "NBOR";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeNeighbor_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNeighbor_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NBOR";
 
     /// <summary>
     /// Literal for code: NaturalBrother_v3_RoleCode
@@ -1409,9 +1729,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNaturalBrother_v3_RoleCode = "NBRO";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeNaturalBrother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNaturalBrother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NBRO";
+
+    /// <summary>
     /// Literal for code: NaturalChild_v3_RoleCode
     /// </summary>
     public const string LiteralNaturalChild_v3_RoleCode = "NCHILD";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeNaturalChild_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNaturalChild_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NCHILD";
 
     /// <summary>
     /// Literal for code: Nephew_v3_RoleCode
@@ -1419,9 +1749,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNephew_v3_RoleCode = "NEPHEW";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeNephew_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNephew_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NEPHEW";
+
+    /// <summary>
     /// Literal for code: NaturalFather_v3_RoleCode
     /// </summary>
     public const string LiteralNaturalFather_v3_RoleCode = "NFTH";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeNaturalFather_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNaturalFather_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NFTH";
 
     /// <summary>
     /// Literal for code: NaturalFatherOfFetus_v3_RoleCode
@@ -1429,9 +1769,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNaturalFatherOfFetus_v3_RoleCode = "NFTHF";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeNaturalFatherOfFetus_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNaturalFatherOfFetus_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NFTHF";
+
+    /// <summary>
     /// Literal for code: Niece_v3_RoleCode
     /// </summary>
     public const string LiteralNiece_v3_RoleCode = "NIECE";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeNiece_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNiece_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NIECE";
 
     /// <summary>
     /// Literal for code: NieceNephew_v3_RoleCode
@@ -1439,9 +1789,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNieceNephew_v3_RoleCode = "NIENEPH";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeNieceNephew_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNieceNephew_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NIENEPH";
+
+    /// <summary>
     /// Literal for code: NaturalMother_v3_RoleCode
     /// </summary>
     public const string LiteralNaturalMother_v3_RoleCode = "NMTH";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeNaturalMother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNaturalMother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NMTH";
 
     /// <summary>
     /// Literal for code: NaturalMotherOfFetus_v3_RoleCode
@@ -1449,9 +1809,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNaturalMotherOfFetus_v3_RoleCode = "NMTHF";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeNaturalMotherOfFetus_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNaturalMotherOfFetus_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NMTHF";
+
+    /// <summary>
     /// Literal for code: NaturalParent_v3_RoleCode
     /// </summary>
     public const string LiteralNaturalParent_v3_RoleCode = "NPRN";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeNaturalParent_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNaturalParent_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NPRN";
 
     /// <summary>
     /// Literal for code: NaturalSibling_v3_RoleCode
@@ -1459,9 +1829,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNaturalSibling_v3_RoleCode = "NSIB";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeNaturalSibling_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNaturalSibling_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NSIB";
+
+    /// <summary>
     /// Literal for code: NaturalSister_v3_RoleCode
     /// </summary>
     public const string LiteralNaturalSister_v3_RoleCode = "NSIS";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeNaturalSister_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNaturalSister_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NSIS";
 
     /// <summary>
     /// Literal for code: Other_v2_0131
@@ -1469,9 +1849,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOther_v2_0131 = "O";
 
     /// <summary>
+    /// Literal for code: V20131Other_v2_0131
+    /// </summary>
+    public const string LiteralV20131Other_v2_0131 = "http://terminology.hl7.org/CodeSystem/v2-0131#O";
+
+    /// <summary>
     /// Literal for code: Self_v3_RoleCode
     /// </summary>
     public const string LiteralSelf_v3_RoleCode = "ONESELF";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeSelf_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeSelf_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ONESELF";
 
     /// <summary>
     /// Literal for code: PaternalAunt_v3_RoleCode
@@ -1479,9 +1869,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPaternalAunt_v3_RoleCode = "PAUNT";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePaternalAunt_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodePaternalAunt_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PAUNT";
+
+    /// <summary>
     /// Literal for code: PaternalCousin_v3_RoleCode
     /// </summary>
     public const string LiteralPaternalCousin_v3_RoleCode = "PCOUSN";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePaternalCousin_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodePaternalCousin_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PCOUSN";
 
     /// <summary>
     /// Literal for code: PaternalGreatGrandfather_v3_RoleCode
@@ -1489,9 +1889,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPaternalGreatGrandfather_v3_RoleCode = "PGGRFTH";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePaternalGreatGrandfather_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodePaternalGreatGrandfather_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PGGRFTH";
+
+    /// <summary>
     /// Literal for code: PaternalGreatGrandmother_v3_RoleCode
     /// </summary>
     public const string LiteralPaternalGreatGrandmother_v3_RoleCode = "PGGRMTH";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePaternalGreatGrandmother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodePaternalGreatGrandmother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PGGRMTH";
 
     /// <summary>
     /// Literal for code: PaternalGreatGrandparent_v3_RoleCode
@@ -1499,9 +1909,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPaternalGreatGrandparent_v3_RoleCode = "PGGRPRN";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePaternalGreatGrandparent_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodePaternalGreatGrandparent_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PGGRPRN";
+
+    /// <summary>
     /// Literal for code: PaternalGrandfather_v3_RoleCode
     /// </summary>
     public const string LiteralPaternalGrandfather_v3_RoleCode = "PGRFTH";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePaternalGrandfather_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodePaternalGrandfather_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PGRFTH";
 
     /// <summary>
     /// Literal for code: PaternalGrandmother_v3_RoleCode
@@ -1509,9 +1929,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPaternalGrandmother_v3_RoleCode = "PGRMTH";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePaternalGrandmother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodePaternalGrandmother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PGRMTH";
+
+    /// <summary>
     /// Literal for code: PaternalGrandparent_v3_RoleCode
     /// </summary>
     public const string LiteralPaternalGrandparent_v3_RoleCode = "PGRPRN";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePaternalGrandparent_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodePaternalGrandparent_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PGRPRN";
 
     /// <summary>
     /// Literal for code: Parent_v3_RoleCode
@@ -1519,9 +1949,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParent_v3_RoleCode = "PRN";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeParent_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeParent_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PRN";
+
+    /// <summary>
     /// Literal for code: FosterParent_v3_RoleCode
     /// </summary>
     public const string LiteralFosterParent_v3_RoleCode = "PRNFOST";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeFosterParent_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeFosterParent_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PRNFOST";
 
     /// <summary>
     /// Literal for code: ParentInLaw_v3_RoleCode
@@ -1529,9 +1969,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParentInLaw_v3_RoleCode = "PRNINLAW";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeParentInLaw_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeParentInLaw_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PRNINLAW";
+
+    /// <summary>
     /// Literal for code: PaternalUncle_v3_RoleCode
     /// </summary>
     public const string LiteralPaternalUncle_v3_RoleCode = "PUNCLE";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePaternalUncle_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodePaternalUncle_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PUNCLE";
 
     /// <summary>
     /// Literal for code: Roommate_v3_RoleCode
@@ -1539,9 +1989,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRoommate_v3_RoleCode = "ROOM";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeRoommate_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeRoommate_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ROOM";
+
+    /// <summary>
     /// Literal for code: StateAgency_v2_0131
     /// </summary>
     public const string LiteralStateAgency_v2_0131 = "S";
+
+    /// <summary>
+    /// Literal for code: V20131StateAgency_v2_0131
+    /// </summary>
+    public const string LiteralV20131StateAgency_v2_0131 = "http://terminology.hl7.org/CodeSystem/v2-0131#S";
 
     /// <summary>
     /// Literal for code: Sibling_v3_RoleCode
@@ -1549,9 +2009,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSibling_v3_RoleCode = "SIB";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeSibling_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeSibling_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SIB";
+
+    /// <summary>
     /// Literal for code: SiblingInLaw_v3_RoleCode
     /// </summary>
     public const string LiteralSiblingInLaw_v3_RoleCode = "SIBINLAW";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeSiblingInLaw_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeSiblingInLaw_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SIBINLAW";
 
     /// <summary>
     /// Literal for code: SignificantOther_v3_RoleCode
@@ -1559,9 +2029,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSignificantOther_v3_RoleCode = "SIGOTHR";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeSignificantOther_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeSignificantOther_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SIGOTHR";
+
+    /// <summary>
     /// Literal for code: Sister_v3_RoleCode
     /// </summary>
     public const string LiteralSister_v3_RoleCode = "SIS";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeSister_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeSister_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SIS";
 
     /// <summary>
     /// Literal for code: SisterInLaw_v3_RoleCode
@@ -1569,9 +2049,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSisterInLaw_v3_RoleCode = "SISINLAW";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeSisterInLaw_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeSisterInLaw_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SISINLAW";
+
+    /// <summary>
     /// Literal for code: NaturalSon_v3_RoleCode
     /// </summary>
     public const string LiteralNaturalSon_v3_RoleCode = "SON";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeNaturalSon_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeNaturalSon_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SON";
 
     /// <summary>
     /// Literal for code: AdoptedSon_v3_RoleCode
@@ -1579,9 +2069,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdoptedSon_v3_RoleCode = "SONADOPT";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeAdoptedSon_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeAdoptedSon_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SONADOPT";
+
+    /// <summary>
     /// Literal for code: Son_v3_RoleCode
     /// </summary>
     public const string LiteralSon_v3_RoleCode = "SONC";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeSon_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeSon_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SONC";
 
     /// <summary>
     /// Literal for code: FosterSon_v3_RoleCode
@@ -1589,9 +2089,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFosterSon_v3_RoleCode = "SONFOST";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeFosterSon_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeFosterSon_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SONFOST";
+
+    /// <summary>
     /// Literal for code: SonInLaw_v3_RoleCode
     /// </summary>
     public const string LiteralSonInLaw_v3_RoleCode = "SONINLAW";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeSonInLaw_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeSonInLaw_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SONINLAW";
 
     /// <summary>
     /// Literal for code: Spouse_v3_RoleCode
@@ -1599,9 +2109,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpouse_v3_RoleCode = "SPS";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeSpouse_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeSpouse_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SPS";
+
+    /// <summary>
     /// Literal for code: Stepbrother_v3_RoleCode
     /// </summary>
     public const string LiteralStepbrother_v3_RoleCode = "STPBRO";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeStepbrother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeStepbrother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPBRO";
 
     /// <summary>
     /// Literal for code: StepChild_v3_RoleCode
@@ -1609,9 +2129,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStepChild_v3_RoleCode = "STPCHLD";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeStepChild_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeStepChild_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPCHLD";
+
+    /// <summary>
     /// Literal for code: Stepdaughter_v3_RoleCode
     /// </summary>
     public const string LiteralStepdaughter_v3_RoleCode = "STPDAU";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeStepdaughter_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeStepdaughter_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPDAU";
 
     /// <summary>
     /// Literal for code: Stepfather_v3_RoleCode
@@ -1619,9 +2149,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStepfather_v3_RoleCode = "STPFTH";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeStepfather_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeStepfather_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPFTH";
+
+    /// <summary>
     /// Literal for code: Stepmother_v3_RoleCode
     /// </summary>
     public const string LiteralStepmother_v3_RoleCode = "STPMTH";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeStepmother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeStepmother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPMTH";
 
     /// <summary>
     /// Literal for code: StepParent_v3_RoleCode
@@ -1629,9 +2169,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStepParent_v3_RoleCode = "STPPRN";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeStepParent_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeStepParent_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPPRN";
+
+    /// <summary>
     /// Literal for code: StepSibling_v3_RoleCode
     /// </summary>
     public const string LiteralStepSibling_v3_RoleCode = "STPSIB";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeStepSibling_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeStepSibling_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPSIB";
 
     /// <summary>
     /// Literal for code: Stepsister_v3_RoleCode
@@ -1639,9 +2189,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStepsister_v3_RoleCode = "STPSIS";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeStepsister_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeStepsister_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPSIS";
+
+    /// <summary>
     /// Literal for code: Stepson_v3_RoleCode
     /// </summary>
     public const string LiteralStepson_v3_RoleCode = "STPSON";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeStepson_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeStepson_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPSON";
 
     /// <summary>
     /// Literal for code: Twin_v3_RoleCode
@@ -1649,9 +2209,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTwin_v3_RoleCode = "TWIN";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeTwin_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeTwin_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#TWIN";
+
+    /// <summary>
     /// Literal for code: TwinBrother_v3_RoleCode
     /// </summary>
     public const string LiteralTwinBrother_v3_RoleCode = "TWINBRO";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeTwinBrother_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeTwinBrother_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#TWINBRO";
 
     /// <summary>
     /// Literal for code: TwinSister_v3_RoleCode
@@ -1659,9 +2229,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTwinSister_v3_RoleCode = "TWINSIS";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeTwinSister_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeTwinSister_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#TWINSIS";
+
+    /// <summary>
     /// Literal for code: Unknown_v2_0131
     /// </summary>
     public const string LiteralUnknown_v2_0131 = "U";
+
+    /// <summary>
+    /// Literal for code: V20131Unknown_v2_0131
+    /// </summary>
+    public const string LiteralV20131Unknown_v2_0131 = "http://terminology.hl7.org/CodeSystem/v2-0131#U";
 
     /// <summary>
     /// Literal for code: Uncle_v3_RoleCode
@@ -1669,8 +2249,260 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUncle_v3_RoleCode = "UNCLE";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeUncle_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeUncle_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#UNCLE";
+
+    /// <summary>
     /// Literal for code: Wife_v3_RoleCode
     /// </summary>
     public const string LiteralWife_v3_RoleCode = "WIFE";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeWife_v3_RoleCode
+    /// </summary>
+    public const string LiteralV3RoleCodeWife_v3_RoleCode = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#WIFE";
+
+    /// <summary>
+    /// Dictionary for looking up RelatedpersonRelationshiptype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "_PersonalRelationshipRoleType", PersonalRelationshipRoleType_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#_PersonalRelationshipRoleType", PersonalRelationshipRoleType_v3_RoleCode }, 
+      { "ADOPTF", AdoptiveFather_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ADOPTF", AdoptiveFather_v3_RoleCode }, 
+      { "ADOPTM", AdoptiveMother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ADOPTM", AdoptiveMother_v3_RoleCode }, 
+      { "ADOPTP", AdoptiveParent_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ADOPTP", AdoptiveParent_v3_RoleCode }, 
+      { "AUNT", Aunt_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#AUNT", Aunt_v3_RoleCode }, 
+      { "BRO", Brother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#BRO", Brother_v3_RoleCode }, 
+      { "BROINLAW", BrotherInLaw_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#BROINLAW", BrotherInLaw_v3_RoleCode }, 
+      { "C", EmergencyContact_v2_0131 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0131#C", EmergencyContact_v2_0131 }, 
+      { "CHILD", Child_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CHILD", Child_v3_RoleCode }, 
+      { "CHLDADOPT", AdoptedChild_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CHLDADOPT", AdoptedChild_v3_RoleCode }, 
+      { "CHLDFOST", FosterChild_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CHLDFOST", FosterChild_v3_RoleCode }, 
+      { "CHLDINLAW", ChildInLaw_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CHLDINLAW", ChildInLaw_v3_RoleCode }, 
+      { "COUSN", Cousin_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#COUSN", Cousin_v3_RoleCode }, 
+      { "DAU", NaturalDaughter_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DAU", NaturalDaughter_v3_RoleCode }, 
+      { "DAUADOPT", AdoptedDaughter_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DAUADOPT", AdoptedDaughter_v3_RoleCode }, 
+      { "DAUC", Daughter_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DAUC", Daughter_v3_RoleCode }, 
+      { "DAUFOST", FosterDaughter_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DAUFOST", FosterDaughter_v3_RoleCode }, 
+      { "DAUINLAW", DaughterInLaw_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DAUINLAW", DaughterInLaw_v3_RoleCode }, 
+      { "DOMPART", DomesticPartner_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DOMPART", DomesticPartner_v3_RoleCode }, 
+      { "E", Employer_v2_0131 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0131#E", Employer_v2_0131 }, 
+      { "EXT", ExtendedFamilyMember_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#EXT", ExtendedFamilyMember_v3_RoleCode }, 
+      { "F", FederalAgency_v2_0131 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0131#F", FederalAgency_v2_0131 }, 
+      { "FAMMEMB", FamilyMember_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FAMMEMB", FamilyMember_v3_RoleCode }, 
+      { "FMRSPS", FormerSpouse_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FMRSPS", FormerSpouse_v3_RoleCode }, 
+      { "FRND", UnrelatedFriend_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FRND", UnrelatedFriend_v3_RoleCode }, 
+      { "FTH", Father_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FTH", Father_v3_RoleCode }, 
+      { "FTHFOST", FosterFather_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FTHFOST", FosterFather_v3_RoleCode }, 
+      { "FTHINLAW", FatherInLaw_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FTHINLAW", FatherInLaw_v3_RoleCode }, 
+      { "FTWIN", FraternalTwin_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FTWIN", FraternalTwin_v3_RoleCode }, 
+      { "FTWINBRO", FraternalTwinBrother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FTWINBRO", FraternalTwinBrother_v3_RoleCode }, 
+      { "FTWINSIS", FraternalTwinSister_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FTWINSIS", FraternalTwinSister_v3_RoleCode }, 
+      { "GESTM", GestationalMother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GESTM", GestationalMother_v3_RoleCode }, 
+      { "GGRFTH", GreatGrandfather_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GGRFTH", GreatGrandfather_v3_RoleCode }, 
+      { "GGRMTH", GreatGrandmother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GGRMTH", GreatGrandmother_v3_RoleCode }, 
+      { "GGRPRN", GreatGrandparent_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GGRPRN", GreatGrandparent_v3_RoleCode }, 
+      { "GRFTH", Grandfather_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GRFTH", Grandfather_v3_RoleCode }, 
+      { "GRMTH", Grandmother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GRMTH", Grandmother_v3_RoleCode }, 
+      { "GRNDCHILD", Grandchild_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GRNDCHILD", Grandchild_v3_RoleCode }, 
+      { "GRNDDAU", Granddaughter_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GRNDDAU", Granddaughter_v3_RoleCode }, 
+      { "GRNDSON", Grandson_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GRNDSON", Grandson_v3_RoleCode }, 
+      { "GRPRN", Grandparent_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GRPRN", Grandparent_v3_RoleCode }, 
+      { "HBRO", HalfBrother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HBRO", HalfBrother_v3_RoleCode }, 
+      { "HSIB", HalfSibling_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HSIB", HalfSibling_v3_RoleCode }, 
+      { "HSIS", HalfSister_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HSIS", HalfSister_v3_RoleCode }, 
+      { "HUSB", Husband_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HUSB", Husband_v3_RoleCode }, 
+      { "I", InsuranceCompany_v2_0131 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0131#I", InsuranceCompany_v2_0131 }, 
+      { "INLAW", Inlaw_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#INLAW", Inlaw_v3_RoleCode }, 
+      { "ITWIN", IdenticalTwin_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ITWIN", IdenticalTwin_v3_RoleCode }, 
+      { "ITWINBRO", IdenticalTwinBrother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ITWINBRO", IdenticalTwinBrother_v3_RoleCode }, 
+      { "ITWINSIS", IdenticalTwinSister_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ITWINSIS", IdenticalTwinSister_v3_RoleCode }, 
+      { "MAUNT", MaternalAunt_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MAUNT", MaternalAunt_v3_RoleCode }, 
+      { "MCOUSN", MaternalCousin_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MCOUSN", MaternalCousin_v3_RoleCode }, 
+      { "MGGRFTH", MaternalGreatGrandfather_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MGGRFTH", MaternalGreatGrandfather_v3_RoleCode }, 
+      { "MGGRMTH", MaternalGreatGrandmother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MGGRMTH", MaternalGreatGrandmother_v3_RoleCode }, 
+      { "MGGRPRN", MaternalGreatGrandparent_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MGGRPRN", MaternalGreatGrandparent_v3_RoleCode }, 
+      { "MGRFTH", MaternalGrandfather_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MGRFTH", MaternalGrandfather_v3_RoleCode }, 
+      { "MGRMTH", MaternalGrandmother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MGRMTH", MaternalGrandmother_v3_RoleCode }, 
+      { "MGRPRN", MaternalGrandparent_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MGRPRN", MaternalGrandparent_v3_RoleCode }, 
+      { "MTH", Mother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MTH", Mother_v3_RoleCode }, 
+      { "MTHFOST", FosterMother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MTHFOST", FosterMother_v3_RoleCode }, 
+      { "MTHINLAW", MotherInLaw_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MTHINLAW", MotherInLaw_v3_RoleCode }, 
+      { "MUNCLE", MaternalUncle_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MUNCLE", MaternalUncle_v3_RoleCode }, 
+      { "N", NextOfKin_v2_0131 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0131#N", NextOfKin_v2_0131 }, 
+      { "NBOR", Neighbor_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NBOR", Neighbor_v3_RoleCode }, 
+      { "NBRO", NaturalBrother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NBRO", NaturalBrother_v3_RoleCode }, 
+      { "NCHILD", NaturalChild_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NCHILD", NaturalChild_v3_RoleCode }, 
+      { "NEPHEW", Nephew_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NEPHEW", Nephew_v3_RoleCode }, 
+      { "NFTH", NaturalFather_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NFTH", NaturalFather_v3_RoleCode }, 
+      { "NFTHF", NaturalFatherOfFetus_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NFTHF", NaturalFatherOfFetus_v3_RoleCode }, 
+      { "NIECE", Niece_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NIECE", Niece_v3_RoleCode }, 
+      { "NIENEPH", NieceNephew_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NIENEPH", NieceNephew_v3_RoleCode }, 
+      { "NMTH", NaturalMother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NMTH", NaturalMother_v3_RoleCode }, 
+      { "NMTHF", NaturalMotherOfFetus_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NMTHF", NaturalMotherOfFetus_v3_RoleCode }, 
+      { "NPRN", NaturalParent_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NPRN", NaturalParent_v3_RoleCode }, 
+      { "NSIB", NaturalSibling_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NSIB", NaturalSibling_v3_RoleCode }, 
+      { "NSIS", NaturalSister_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NSIS", NaturalSister_v3_RoleCode }, 
+      { "O", Other_v2_0131 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0131#O", Other_v2_0131 }, 
+      { "ONESELF", Self_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ONESELF", Self_v3_RoleCode }, 
+      { "PAUNT", PaternalAunt_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PAUNT", PaternalAunt_v3_RoleCode }, 
+      { "PCOUSN", PaternalCousin_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PCOUSN", PaternalCousin_v3_RoleCode }, 
+      { "PGGRFTH", PaternalGreatGrandfather_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PGGRFTH", PaternalGreatGrandfather_v3_RoleCode }, 
+      { "PGGRMTH", PaternalGreatGrandmother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PGGRMTH", PaternalGreatGrandmother_v3_RoleCode }, 
+      { "PGGRPRN", PaternalGreatGrandparent_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PGGRPRN", PaternalGreatGrandparent_v3_RoleCode }, 
+      { "PGRFTH", PaternalGrandfather_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PGRFTH", PaternalGrandfather_v3_RoleCode }, 
+      { "PGRMTH", PaternalGrandmother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PGRMTH", PaternalGrandmother_v3_RoleCode }, 
+      { "PGRPRN", PaternalGrandparent_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PGRPRN", PaternalGrandparent_v3_RoleCode }, 
+      { "PRN", Parent_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PRN", Parent_v3_RoleCode }, 
+      { "PRNFOST", FosterParent_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PRNFOST", FosterParent_v3_RoleCode }, 
+      { "PRNINLAW", ParentInLaw_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PRNINLAW", ParentInLaw_v3_RoleCode }, 
+      { "PUNCLE", PaternalUncle_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PUNCLE", PaternalUncle_v3_RoleCode }, 
+      { "ROOM", Roommate_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ROOM", Roommate_v3_RoleCode }, 
+      { "S", StateAgency_v2_0131 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0131#S", StateAgency_v2_0131 }, 
+      { "SIB", Sibling_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SIB", Sibling_v3_RoleCode }, 
+      { "SIBINLAW", SiblingInLaw_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SIBINLAW", SiblingInLaw_v3_RoleCode }, 
+      { "SIGOTHR", SignificantOther_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SIGOTHR", SignificantOther_v3_RoleCode }, 
+      { "SIS", Sister_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SIS", Sister_v3_RoleCode }, 
+      { "SISINLAW", SisterInLaw_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SISINLAW", SisterInLaw_v3_RoleCode }, 
+      { "SON", NaturalSon_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SON", NaturalSon_v3_RoleCode }, 
+      { "SONADOPT", AdoptedSon_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SONADOPT", AdoptedSon_v3_RoleCode }, 
+      { "SONC", Son_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SONC", Son_v3_RoleCode }, 
+      { "SONFOST", FosterSon_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SONFOST", FosterSon_v3_RoleCode }, 
+      { "SONINLAW", SonInLaw_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SONINLAW", SonInLaw_v3_RoleCode }, 
+      { "SPS", Spouse_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SPS", Spouse_v3_RoleCode }, 
+      { "STPBRO", Stepbrother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPBRO", Stepbrother_v3_RoleCode }, 
+      { "STPCHLD", StepChild_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPCHLD", StepChild_v3_RoleCode }, 
+      { "STPDAU", Stepdaughter_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPDAU", Stepdaughter_v3_RoleCode }, 
+      { "STPFTH", Stepfather_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPFTH", Stepfather_v3_RoleCode }, 
+      { "STPMTH", Stepmother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPMTH", Stepmother_v3_RoleCode }, 
+      { "STPPRN", StepParent_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPPRN", StepParent_v3_RoleCode }, 
+      { "STPSIB", StepSibling_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPSIB", StepSibling_v3_RoleCode }, 
+      { "STPSIS", Stepsister_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPSIS", Stepsister_v3_RoleCode }, 
+      { "STPSON", Stepson_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#STPSON", Stepson_v3_RoleCode }, 
+      { "TWIN", Twin_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#TWIN", Twin_v3_RoleCode }, 
+      { "TWINBRO", TwinBrother_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#TWINBRO", TwinBrother_v3_RoleCode }, 
+      { "TWINSIS", TwinSister_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#TWINSIS", TwinSister_v3_RoleCode }, 
+      { "U", Unknown_v2_0131 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0131#U", Unknown_v2_0131 }, 
+      { "UNCLE", Uncle_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#UNCLE", Uncle_v3_RoleCode }, 
+      { "WIFE", Wife_v3_RoleCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#WIFE", Wife_v3_RoleCode }, 
+    };
   };
 }

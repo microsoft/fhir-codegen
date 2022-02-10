@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ExDiagnosisrelatedgroupCodes
   {
     /// <summary>
-    /// 
+    /// Normal Vaginal Delivery
     /// </summary>
     public static readonly Coding NormalVaginalDelivery = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-diagnosisrelatedgroup"
     };
     /// <summary>
-    /// 
+    /// Appendectomy - uncomplicated
     /// </summary>
     public static readonly Coding AppendectomyUncomplicated = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-diagnosisrelatedgroup"
     };
     /// <summary>
-    /// 
+    /// Tooth abscess
     /// </summary>
     public static readonly Coding ToothAbscess = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-diagnosisrelatedgroup"
     };
     /// <summary>
-    /// 
+    /// Head trauma - concussion
     /// </summary>
     public static readonly Coding HeadTraumaConcussion = new Coding
     {
@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNormalVaginalDelivery = "100";
 
     /// <summary>
+    /// Literal for code: ExDiagnosisrelatedgroupNormalVaginalDelivery
+    /// </summary>
+    public const string LiteralExDiagnosisrelatedgroupNormalVaginalDelivery = "http://terminology.hl7.org/CodeSystem/ex-diagnosisrelatedgroup#100";
+
+    /// <summary>
     /// Literal for code: AppendectomyUncomplicated
     /// </summary>
     public const string LiteralAppendectomyUncomplicated = "101";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosisrelatedgroupAppendectomyUncomplicated
+    /// </summary>
+    public const string LiteralExDiagnosisrelatedgroupAppendectomyUncomplicated = "http://terminology.hl7.org/CodeSystem/ex-diagnosisrelatedgroup#101";
 
     /// <summary>
     /// Literal for code: ToothAbscess
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralToothAbscess = "300";
 
     /// <summary>
+    /// Literal for code: ExDiagnosisrelatedgroupToothAbscess
+    /// </summary>
+    public const string LiteralExDiagnosisrelatedgroupToothAbscess = "http://terminology.hl7.org/CodeSystem/ex-diagnosisrelatedgroup#300";
+
+    /// <summary>
     /// Literal for code: HeadTraumaConcussion
     /// </summary>
     public const string LiteralHeadTraumaConcussion = "400";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosisrelatedgroupHeadTraumaConcussion
+    /// </summary>
+    public const string LiteralExDiagnosisrelatedgroupHeadTraumaConcussion = "http://terminology.hl7.org/CodeSystem/ex-diagnosisrelatedgroup#400";
+
+    /// <summary>
+    /// Dictionary for looking up ExDiagnosisrelatedgroup Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "100", NormalVaginalDelivery }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosisrelatedgroup#100", NormalVaginalDelivery }, 
+      { "101", AppendectomyUncomplicated }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosisrelatedgroup#101", AppendectomyUncomplicated }, 
+      { "300", ToothAbscess }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosisrelatedgroup#300", ToothAbscess }, 
+      { "400", HeadTraumaConcussion }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosisrelatedgroup#400", HeadTraumaConcussion }, 
+    };
   };
 }

@@ -72,9 +72,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInternet = "internet";
 
     /// <summary>
+    /// Literal for code: CitedMediumInternet
+    /// </summary>
+    public const string LiteralCitedMediumInternet = "http://terminology.hl7.org/CodeSystem/cited-medium#internet";
+
+    /// <summary>
     /// Literal for code: InternetWithoutIssue
     /// </summary>
     public const string LiteralInternetWithoutIssue = "internet-without-issue";
+
+    /// <summary>
+    /// Literal for code: CitedMediumInternetWithoutIssue
+    /// </summary>
+    public const string LiteralCitedMediumInternetWithoutIssue = "http://terminology.hl7.org/CodeSystem/cited-medium#internet-without-issue";
 
     /// <summary>
     /// Literal for code: OfflineDigitalStorage
@@ -82,9 +92,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOfflineDigitalStorage = "offline-digital-storage";
 
     /// <summary>
+    /// Literal for code: CitedMediumOfflineDigitalStorage
+    /// </summary>
+    public const string LiteralCitedMediumOfflineDigitalStorage = "http://terminology.hl7.org/CodeSystem/cited-medium#offline-digital-storage";
+
+    /// <summary>
     /// Literal for code: OfflineDigitalStorageWithoutIssue
     /// </summary>
     public const string LiteralOfflineDigitalStorageWithoutIssue = "offline-digital-storage-without-issue";
+
+    /// <summary>
+    /// Literal for code: CitedMediumOfflineDigitalStorageWithoutIssue
+    /// </summary>
+    public const string LiteralCitedMediumOfflineDigitalStorageWithoutIssue = "http://terminology.hl7.org/CodeSystem/cited-medium#offline-digital-storage-without-issue";
 
     /// <summary>
     /// Literal for code: Print
@@ -92,8 +112,36 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrint = "print";
 
     /// <summary>
+    /// Literal for code: CitedMediumPrint
+    /// </summary>
+    public const string LiteralCitedMediumPrint = "http://terminology.hl7.org/CodeSystem/cited-medium#print";
+
+    /// <summary>
     /// Literal for code: PrintWithoutIssue
     /// </summary>
     public const string LiteralPrintWithoutIssue = "print-without-issue";
+
+    /// <summary>
+    /// Literal for code: CitedMediumPrintWithoutIssue
+    /// </summary>
+    public const string LiteralCitedMediumPrintWithoutIssue = "http://terminology.hl7.org/CodeSystem/cited-medium#print-without-issue";
+
+    /// <summary>
+    /// Dictionary for looking up CitedMedium Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "internet", Internet }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-medium#internet", Internet }, 
+      { "internet-without-issue", InternetWithoutIssue }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-medium#internet-without-issue", InternetWithoutIssue }, 
+      { "offline-digital-storage", OfflineDigitalStorage }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-medium#offline-digital-storage", OfflineDigitalStorage }, 
+      { "offline-digital-storage-without-issue", OfflineDigitalStorageWithoutIssue }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-medium#offline-digital-storage-without-issue", OfflineDigitalStorageWithoutIssue }, 
+      { "print", Print }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-medium#print", Print }, 
+      { "print-without-issue", PrintWithoutIssue }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-medium#print-without-issue", PrintWithoutIssue }, 
+    };
   };
 }

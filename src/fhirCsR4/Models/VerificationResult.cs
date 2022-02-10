@@ -1137,5 +1137,13 @@ namespace fhirCsR4.Models
     public const string REQ_REVALID = "req-revalid";
     public const string VAL_FAIL = "val-fail";
     public const string REVAL_FAIL = "reval-fail";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "attested",
+      "validated",
+      "in-process",
+      "req-revalid",
+      "val-fail",
+      "reval-fail",
+    };
   }
 }

@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class DietTypeCodes
   {
     /// <summary>
-    /// 
+    /// Dietary Approaches to Stop Hypertension diet
     /// </summary>
     public static readonly Coding DietaryApproachesToStopHypertensionDiet = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dietary prophylaxis
     /// </summary>
     public static readonly Coding DietaryProphylaxis = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low carbohydrate diet - prophylaxis
     /// </summary>
     public static readonly Coding LowCarbohydrateDietProphylaxis = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low calorie diet - prophylaxis
     /// </summary>
     public static readonly Coding LowCalorieDietProphylaxis = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low salt diet - prophylaxis
     /// </summary>
     public static readonly Coding LowSaltDietProphylaxis = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salt free diet - prophylaxis
     /// </summary>
     public static readonly Coding SaltFreeDietProphylaxis = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low protein diet - prophylaxis
     /// </summary>
     public static readonly Coding LowProteinDietProphylaxis = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Unsaturated fat diet - prophylaxis
     /// </summary>
     public static readonly Coding UnsaturatedFatDietProphylaxis = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal tube feeding
     /// </summary>
     public static readonly Coding NasalTubeFeeding = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Provision of a special diet
     /// </summary>
     public static readonly Coding ProvisionOfASpecialDiet = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PEG - Percutaneous endoscopic gastrostomy feeding
     /// </summary>
     public static readonly Coding PEGPercutaneousEndoscopicGastrostomyFeeding = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jejunostomy feeding
     /// </summary>
     public static readonly Coding JejunostomyFeeding = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enteral feeding
     /// </summary>
     public static readonly Coding EnteralFeeding = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral tube feeding
     /// </summary>
     public static readonly Coding OralTubeFeeding = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasogastric feeding
     /// </summary>
     public static readonly Coding NasogastricFeeding = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasoduodenal feeding
     /// </summary>
     public static readonly Coding NasoduodenalFeeding = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Esophagostomy feeding
     /// </summary>
     public static readonly Coding EsophagostomyFeeding = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastrostomy feeding
     /// </summary>
     public static readonly Coding GastrostomyFeeding = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dietary treatment for disorder
     /// </summary>
     public static readonly Coding DietaryTreatmentForDisorder = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Button gastrostomy feeding
     /// </summary>
     public static readonly Coding ButtonGastrostomyFeeding = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasojejunal feeding
     /// </summary>
     public static readonly Coding NasojejunalFeeding = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prescribed dietary intake
     /// </summary>
     public static readonly Coding PrescribedDietaryIntake = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diet staging
     /// </summary>
     public static readonly Coding DietStaging = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tube feeding by syringe method
     /// </summary>
     public static readonly Coding TubeFeedingBySyringeMethod = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wheat-free diet
     /// </summary>
     public static readonly Coding WheatFreeDiet = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Advance diet as tolerated
     /// </summary>
     public static readonly Coding AdvanceDietAsTolerated = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lactose-free diet
     /// </summary>
     public static readonly Coding LactoseFreeDiet = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tube feeding by Barron pump
     /// </summary>
     public static readonly Coding TubeFeedingByBarronPump = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tube feeding by drip method
     /// </summary>
     public static readonly Coding TubeFeedingByDripMethod = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tube feeding of patient
     /// </summary>
     public static readonly Coding TubeFeedingOfPatient = new Coding
     {
@@ -288,9 +288,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDietaryApproachesToStopHypertensionDiet = "1151000175103";
 
     /// <summary>
+    /// Literal for code: NONEDietaryApproachesToStopHypertensionDiet
+    /// </summary>
+    public const string LiteralNONEDietaryApproachesToStopHypertensionDiet = "http://snomed.info/sct#1151000175103";
+
+    /// <summary>
     /// Literal for code: DietaryProphylaxis
     /// </summary>
     public const string LiteralDietaryProphylaxis = "182954008";
+
+    /// <summary>
+    /// Literal for code: NONEDietaryProphylaxis
+    /// </summary>
+    public const string LiteralNONEDietaryProphylaxis = "http://snomed.info/sct#182954008";
 
     /// <summary>
     /// Literal for code: LowCarbohydrateDietProphylaxis
@@ -298,9 +308,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLowCarbohydrateDietProphylaxis = "182955009";
 
     /// <summary>
+    /// Literal for code: NONELowCarbohydrateDietProphylaxis
+    /// </summary>
+    public const string LiteralNONELowCarbohydrateDietProphylaxis = "http://snomed.info/sct#182955009";
+
+    /// <summary>
     /// Literal for code: LowCalorieDietProphylaxis
     /// </summary>
     public const string LiteralLowCalorieDietProphylaxis = "182956005";
+
+    /// <summary>
+    /// Literal for code: NONELowCalorieDietProphylaxis
+    /// </summary>
+    public const string LiteralNONELowCalorieDietProphylaxis = "http://snomed.info/sct#182956005";
 
     /// <summary>
     /// Literal for code: LowSaltDietProphylaxis
@@ -308,9 +328,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLowSaltDietProphylaxis = "182957001";
 
     /// <summary>
+    /// Literal for code: NONELowSaltDietProphylaxis
+    /// </summary>
+    public const string LiteralNONELowSaltDietProphylaxis = "http://snomed.info/sct#182957001";
+
+    /// <summary>
     /// Literal for code: SaltFreeDietProphylaxis
     /// </summary>
     public const string LiteralSaltFreeDietProphylaxis = "182958006";
+
+    /// <summary>
+    /// Literal for code: NONESaltFreeDietProphylaxis
+    /// </summary>
+    public const string LiteralNONESaltFreeDietProphylaxis = "http://snomed.info/sct#182958006";
 
     /// <summary>
     /// Literal for code: LowProteinDietProphylaxis
@@ -318,9 +348,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLowProteinDietProphylaxis = "182959003";
 
     /// <summary>
+    /// Literal for code: NONELowProteinDietProphylaxis
+    /// </summary>
+    public const string LiteralNONELowProteinDietProphylaxis = "http://snomed.info/sct#182959003";
+
+    /// <summary>
     /// Literal for code: UnsaturatedFatDietProphylaxis
     /// </summary>
     public const string LiteralUnsaturatedFatDietProphylaxis = "182960008";
+
+    /// <summary>
+    /// Literal for code: NONEUnsaturatedFatDietProphylaxis
+    /// </summary>
+    public const string LiteralNONEUnsaturatedFatDietProphylaxis = "http://snomed.info/sct#182960008";
 
     /// <summary>
     /// Literal for code: NasalTubeFeeding
@@ -328,9 +368,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNasalTubeFeeding = "183028005";
 
     /// <summary>
+    /// Literal for code: NONENasalTubeFeeding
+    /// </summary>
+    public const string LiteralNONENasalTubeFeeding = "http://snomed.info/sct#183028005";
+
+    /// <summary>
     /// Literal for code: ProvisionOfASpecialDiet
     /// </summary>
     public const string LiteralProvisionOfASpecialDiet = "223456000";
+
+    /// <summary>
+    /// Literal for code: NONEProvisionOfASpecialDiet
+    /// </summary>
+    public const string LiteralNONEProvisionOfASpecialDiet = "http://snomed.info/sct#223456000";
 
     /// <summary>
     /// Literal for code: PEGPercutaneousEndoscopicGastrostomyFeeding
@@ -338,9 +388,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPEGPercutaneousEndoscopicGastrostomyFeeding = "225373002";
 
     /// <summary>
+    /// Literal for code: NONEPEGPercutaneousEndoscopicGastrostomyFeeding
+    /// </summary>
+    public const string LiteralNONEPEGPercutaneousEndoscopicGastrostomyFeeding = "http://snomed.info/sct#225373002";
+
+    /// <summary>
     /// Literal for code: JejunostomyFeeding
     /// </summary>
     public const string LiteralJejunostomyFeeding = "225374008";
+
+    /// <summary>
+    /// Literal for code: NONEJejunostomyFeeding
+    /// </summary>
+    public const string LiteralNONEJejunostomyFeeding = "http://snomed.info/sct#225374008";
 
     /// <summary>
     /// Literal for code: EnteralFeeding
@@ -348,9 +408,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnteralFeeding = "229912004";
 
     /// <summary>
+    /// Literal for code: NONEEnteralFeeding
+    /// </summary>
+    public const string LiteralNONEEnteralFeeding = "http://snomed.info/sct#229912004";
+
+    /// <summary>
     /// Literal for code: OralTubeFeeding
     /// </summary>
     public const string LiteralOralTubeFeeding = "229913009";
+
+    /// <summary>
+    /// Literal for code: NONEOralTubeFeeding
+    /// </summary>
+    public const string LiteralNONEOralTubeFeeding = "http://snomed.info/sct#229913009";
 
     /// <summary>
     /// Literal for code: NasogastricFeeding
@@ -358,9 +428,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNasogastricFeeding = "229914003";
 
     /// <summary>
+    /// Literal for code: NONENasogastricFeeding
+    /// </summary>
+    public const string LiteralNONENasogastricFeeding = "http://snomed.info/sct#229914003";
+
+    /// <summary>
     /// Literal for code: NasoduodenalFeeding
     /// </summary>
     public const string LiteralNasoduodenalFeeding = "229915002";
+
+    /// <summary>
+    /// Literal for code: NONENasoduodenalFeeding
+    /// </summary>
+    public const string LiteralNONENasoduodenalFeeding = "http://snomed.info/sct#229915002";
 
     /// <summary>
     /// Literal for code: EsophagostomyFeeding
@@ -368,9 +448,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEsophagostomyFeeding = "229916001";
 
     /// <summary>
+    /// Literal for code: NONEEsophagostomyFeeding
+    /// </summary>
+    public const string LiteralNONEEsophagostomyFeeding = "http://snomed.info/sct#229916001";
+
+    /// <summary>
     /// Literal for code: GastrostomyFeeding
     /// </summary>
     public const string LiteralGastrostomyFeeding = "229917005";
+
+    /// <summary>
+    /// Literal for code: NONEGastrostomyFeeding
+    /// </summary>
+    public const string LiteralNONEGastrostomyFeeding = "http://snomed.info/sct#229917005";
 
     /// <summary>
     /// Literal for code: DietaryTreatmentForDisorder
@@ -378,9 +468,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDietaryTreatmentForDisorder = "284071006";
 
     /// <summary>
+    /// Literal for code: NONEDietaryTreatmentForDisorder
+    /// </summary>
+    public const string LiteralNONEDietaryTreatmentForDisorder = "http://snomed.info/sct#284071006";
+
+    /// <summary>
     /// Literal for code: ButtonGastrostomyFeeding
     /// </summary>
     public const string LiteralButtonGastrostomyFeeding = "289133003";
+
+    /// <summary>
+    /// Literal for code: NONEButtonGastrostomyFeeding
+    /// </summary>
+    public const string LiteralNONEButtonGastrostomyFeeding = "http://snomed.info/sct#289133003";
 
     /// <summary>
     /// Literal for code: NasojejunalFeeding
@@ -388,9 +488,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNasojejunalFeeding = "310244003";
 
     /// <summary>
+    /// Literal for code: NONENasojejunalFeeding
+    /// </summary>
+    public const string LiteralNONENasojejunalFeeding = "http://snomed.info/sct#310244003";
+
+    /// <summary>
     /// Literal for code: PrescribedDietaryIntake
     /// </summary>
     public const string LiteralPrescribedDietaryIntake = "361231003";
+
+    /// <summary>
+    /// Literal for code: NONEPrescribedDietaryIntake
+    /// </summary>
+    public const string LiteralNONEPrescribedDietaryIntake = "http://snomed.info/sct#361231003";
 
     /// <summary>
     /// Literal for code: DietStaging
@@ -398,9 +508,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDietStaging = "386261001";
 
     /// <summary>
+    /// Literal for code: NONEDietStaging
+    /// </summary>
+    public const string LiteralNONEDietStaging = "http://snomed.info/sct#386261001";
+
+    /// <summary>
     /// Literal for code: TubeFeedingBySyringeMethod
     /// </summary>
     public const string LiteralTubeFeedingBySyringeMethod = "38903004";
+
+    /// <summary>
+    /// Literal for code: NONETubeFeedingBySyringeMethod
+    /// </summary>
+    public const string LiteralNONETubeFeedingBySyringeMethod = "http://snomed.info/sct#38903004";
 
     /// <summary>
     /// Literal for code: WheatFreeDiet
@@ -408,9 +528,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWheatFreeDiet = "404919001";
 
     /// <summary>
+    /// Literal for code: NONEWheatFreeDiet
+    /// </summary>
+    public const string LiteralNONEWheatFreeDiet = "http://snomed.info/sct#404919001";
+
+    /// <summary>
     /// Literal for code: AdvanceDietAsTolerated
     /// </summary>
     public const string LiteralAdvanceDietAsTolerated = "422972009";
+
+    /// <summary>
+    /// Literal for code: NONEAdvanceDietAsTolerated
+    /// </summary>
+    public const string LiteralNONEAdvanceDietAsTolerated = "http://snomed.info/sct#422972009";
 
     /// <summary>
     /// Literal for code: LactoseFreeDiet
@@ -418,9 +548,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLactoseFreeDiet = "425458000";
 
     /// <summary>
+    /// Literal for code: NONELactoseFreeDiet
+    /// </summary>
+    public const string LiteralNONELactoseFreeDiet = "http://snomed.info/sct#425458000";
+
+    /// <summary>
     /// Literal for code: TubeFeedingByBarronPump
     /// </summary>
     public const string LiteralTubeFeedingByBarronPump = "50712000";
+
+    /// <summary>
+    /// Literal for code: NONETubeFeedingByBarronPump
+    /// </summary>
+    public const string LiteralNONETubeFeedingByBarronPump = "http://snomed.info/sct#50712000";
 
     /// <summary>
     /// Literal for code: TubeFeedingByDripMethod
@@ -428,8 +568,84 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTubeFeedingByDripMethod = "56948003";
 
     /// <summary>
+    /// Literal for code: NONETubeFeedingByDripMethod
+    /// </summary>
+    public const string LiteralNONETubeFeedingByDripMethod = "http://snomed.info/sct#56948003";
+
+    /// <summary>
     /// Literal for code: TubeFeedingOfPatient
     /// </summary>
     public const string LiteralTubeFeedingOfPatient = "61420007";
+
+    /// <summary>
+    /// Literal for code: NONETubeFeedingOfPatient
+    /// </summary>
+    public const string LiteralNONETubeFeedingOfPatient = "http://snomed.info/sct#61420007";
+
+    /// <summary>
+    /// Dictionary for looking up DietType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1151000175103", DietaryApproachesToStopHypertensionDiet }, 
+      { "http://snomed.info/sct#1151000175103", DietaryApproachesToStopHypertensionDiet }, 
+      { "182954008", DietaryProphylaxis }, 
+      { "http://snomed.info/sct#182954008", DietaryProphylaxis }, 
+      { "182955009", LowCarbohydrateDietProphylaxis }, 
+      { "http://snomed.info/sct#182955009", LowCarbohydrateDietProphylaxis }, 
+      { "182956005", LowCalorieDietProphylaxis }, 
+      { "http://snomed.info/sct#182956005", LowCalorieDietProphylaxis }, 
+      { "182957001", LowSaltDietProphylaxis }, 
+      { "http://snomed.info/sct#182957001", LowSaltDietProphylaxis }, 
+      { "182958006", SaltFreeDietProphylaxis }, 
+      { "http://snomed.info/sct#182958006", SaltFreeDietProphylaxis }, 
+      { "182959003", LowProteinDietProphylaxis }, 
+      { "http://snomed.info/sct#182959003", LowProteinDietProphylaxis }, 
+      { "182960008", UnsaturatedFatDietProphylaxis }, 
+      { "http://snomed.info/sct#182960008", UnsaturatedFatDietProphylaxis }, 
+      { "183028005", NasalTubeFeeding }, 
+      { "http://snomed.info/sct#183028005", NasalTubeFeeding }, 
+      { "223456000", ProvisionOfASpecialDiet }, 
+      { "http://snomed.info/sct#223456000", ProvisionOfASpecialDiet }, 
+      { "225373002", PEGPercutaneousEndoscopicGastrostomyFeeding }, 
+      { "http://snomed.info/sct#225373002", PEGPercutaneousEndoscopicGastrostomyFeeding }, 
+      { "225374008", JejunostomyFeeding }, 
+      { "http://snomed.info/sct#225374008", JejunostomyFeeding }, 
+      { "229912004", EnteralFeeding }, 
+      { "http://snomed.info/sct#229912004", EnteralFeeding }, 
+      { "229913009", OralTubeFeeding }, 
+      { "http://snomed.info/sct#229913009", OralTubeFeeding }, 
+      { "229914003", NasogastricFeeding }, 
+      { "http://snomed.info/sct#229914003", NasogastricFeeding }, 
+      { "229915002", NasoduodenalFeeding }, 
+      { "http://snomed.info/sct#229915002", NasoduodenalFeeding }, 
+      { "229916001", EsophagostomyFeeding }, 
+      { "http://snomed.info/sct#229916001", EsophagostomyFeeding }, 
+      { "229917005", GastrostomyFeeding }, 
+      { "http://snomed.info/sct#229917005", GastrostomyFeeding }, 
+      { "284071006", DietaryTreatmentForDisorder }, 
+      { "http://snomed.info/sct#284071006", DietaryTreatmentForDisorder }, 
+      { "289133003", ButtonGastrostomyFeeding }, 
+      { "http://snomed.info/sct#289133003", ButtonGastrostomyFeeding }, 
+      { "310244003", NasojejunalFeeding }, 
+      { "http://snomed.info/sct#310244003", NasojejunalFeeding }, 
+      { "361231003", PrescribedDietaryIntake }, 
+      { "http://snomed.info/sct#361231003", PrescribedDietaryIntake }, 
+      { "386261001", DietStaging }, 
+      { "http://snomed.info/sct#386261001", DietStaging }, 
+      { "38903004", TubeFeedingBySyringeMethod }, 
+      { "http://snomed.info/sct#38903004", TubeFeedingBySyringeMethod }, 
+      { "404919001", WheatFreeDiet }, 
+      { "http://snomed.info/sct#404919001", WheatFreeDiet }, 
+      { "422972009", AdvanceDietAsTolerated }, 
+      { "http://snomed.info/sct#422972009", AdvanceDietAsTolerated }, 
+      { "425458000", LactoseFreeDiet }, 
+      { "http://snomed.info/sct#425458000", LactoseFreeDiet }, 
+      { "50712000", TubeFeedingByBarronPump }, 
+      { "http://snomed.info/sct#50712000", TubeFeedingByBarronPump }, 
+      { "56948003", TubeFeedingByDripMethod }, 
+      { "http://snomed.info/sct#56948003", TubeFeedingByDripMethod }, 
+      { "61420007", TubeFeedingOfPatient }, 
+      { "http://snomed.info/sct#61420007", TubeFeedingOfPatient }, 
+    };
   };
 }

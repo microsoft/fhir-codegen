@@ -92,9 +92,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIsBackupFor = "BACKUP";
 
     /// <summary>
+    /// Literal for code: V3RoleLinkTypeIsBackupFor
+    /// </summary>
+    public const string LiteralV3RoleLinkTypeIsBackupFor = "http://hl7.org/fhir/v3/RoleLinkType#BACKUP";
+
+    /// <summary>
     /// Literal for code: HasContact
     /// </summary>
     public const string LiteralHasContact = "CONT";
+
+    /// <summary>
+    /// Literal for code: V3RoleLinkTypeHasContact
+    /// </summary>
+    public const string LiteralV3RoleLinkTypeHasContact = "http://hl7.org/fhir/v3/RoleLinkType#CONT";
 
     /// <summary>
     /// Literal for code: HasDirectAuthorityOver
@@ -102,9 +112,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHasDirectAuthorityOver = "DIRAUTH";
 
     /// <summary>
+    /// Literal for code: V3RoleLinkTypeHasDirectAuthorityOver
+    /// </summary>
+    public const string LiteralV3RoleLinkTypeHasDirectAuthorityOver = "http://hl7.org/fhir/v3/RoleLinkType#DIRAUTH";
+
+    /// <summary>
     /// Literal for code: Identification
     /// </summary>
     public const string LiteralIdentification = "IDENT";
+
+    /// <summary>
+    /// Literal for code: V3RoleLinkTypeIdentification
+    /// </summary>
+    public const string LiteralV3RoleLinkTypeIdentification = "http://hl7.org/fhir/v3/RoleLinkType#IDENT";
 
     /// <summary>
     /// Literal for code: HasIndirectAuthorityOver
@@ -112,9 +132,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHasIndirectAuthorityOver = "INDAUTH";
 
     /// <summary>
+    /// Literal for code: V3RoleLinkTypeHasIndirectAuthorityOver
+    /// </summary>
+    public const string LiteralV3RoleLinkTypeHasIndirectAuthorityOver = "http://hl7.org/fhir/v3/RoleLinkType#INDAUTH";
+
+    /// <summary>
     /// Literal for code: HasPart
     /// </summary>
     public const string LiteralHasPart = "PART";
+
+    /// <summary>
+    /// Literal for code: V3RoleLinkTypeHasPart
+    /// </summary>
+    public const string LiteralV3RoleLinkTypeHasPart = "http://hl7.org/fhir/v3/RoleLinkType#PART";
 
     /// <summary>
     /// Literal for code: Related
@@ -122,8 +152,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRelated = "REL";
 
     /// <summary>
+    /// Literal for code: V3RoleLinkTypeRelated
+    /// </summary>
+    public const string LiteralV3RoleLinkTypeRelated = "http://hl7.org/fhir/v3/RoleLinkType#REL";
+
+    /// <summary>
     /// Literal for code: Replaces
     /// </summary>
     public const string LiteralReplaces = "REPL";
+
+    /// <summary>
+    /// Literal for code: V3RoleLinkTypeReplaces
+    /// </summary>
+    public const string LiteralV3RoleLinkTypeReplaces = "http://hl7.org/fhir/v3/RoleLinkType#REPL";
+
+    /// <summary>
+    /// Dictionary for looking up V3RoleLinkType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "BACKUP", IsBackupFor }, 
+      { "http://hl7.org/fhir/v3/RoleLinkType#BACKUP", IsBackupFor }, 
+      { "CONT", HasContact }, 
+      { "http://hl7.org/fhir/v3/RoleLinkType#CONT", HasContact }, 
+      { "DIRAUTH", HasDirectAuthorityOver }, 
+      { "http://hl7.org/fhir/v3/RoleLinkType#DIRAUTH", HasDirectAuthorityOver }, 
+      { "IDENT", Identification }, 
+      { "http://hl7.org/fhir/v3/RoleLinkType#IDENT", Identification }, 
+      { "INDAUTH", HasIndirectAuthorityOver }, 
+      { "http://hl7.org/fhir/v3/RoleLinkType#INDAUTH", HasIndirectAuthorityOver }, 
+      { "PART", HasPart }, 
+      { "http://hl7.org/fhir/v3/RoleLinkType#PART", HasPart }, 
+      { "REL", Related }, 
+      { "http://hl7.org/fhir/v3/RoleLinkType#REL", Related }, 
+      { "REPL", Replaces }, 
+      { "http://hl7.org/fhir/v3/RoleLinkType#REPL", Replaces }, 
+    };
   };
 }

@@ -261,9 +261,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralActAdministrativeDetectedIssueManagementCode = "_ActAdministrativeDetectedIssueManagementCode";
 
     /// <summary>
+    /// Literal for code: V3ActCodeActAdministrativeDetectedIssueManagementCode
+    /// </summary>
+    public const string LiteralV3ActCodeActAdministrativeDetectedIssueManagementCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActAdministrativeDetectedIssueManagementCode";
+
+    /// <summary>
     /// Literal for code: ActDetectedIssueManagementCode
     /// </summary>
     public const string LiteralActDetectedIssueManagementCode = "_ActDetectedIssueManagementCode";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeActDetectedIssueManagementCode
+    /// </summary>
+    public const string LiteralV3ActCodeActDetectedIssueManagementCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActDetectedIssueManagementCode";
 
     /// <summary>
     /// Literal for code: AuthorizationIssueManagementCode
@@ -271,9 +281,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAuthorizationIssueManagementCode = "_AuthorizationIssueManagementCode";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAuthorizationIssueManagementCode
+    /// </summary>
+    public const string LiteralV3ActCodeAuthorizationIssueManagementCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_AuthorizationIssueManagementCode";
+
+    /// <summary>
     /// Literal for code: TherapyAppropriate
     /// </summary>
     public const string LiteralTherapyAppropriate = "1";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeTherapyAppropriate
+    /// </summary>
+    public const string LiteralV3ActCodeTherapyAppropriate = "http://terminology.hl7.org/CodeSystem/v3-ActCode#1";
 
     /// <summary>
     /// Literal for code: ProvidedPatientEducation
@@ -281,9 +301,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProvidedPatientEducation = "10";
 
     /// <summary>
+    /// Literal for code: V3ActCodeProvidedPatientEducation
+    /// </summary>
+    public const string LiteralV3ActCodeProvidedPatientEducation = "http://terminology.hl7.org/CodeSystem/v3-ActCode#10";
+
+    /// <summary>
     /// Literal for code: AddedConcurrentTherapy
     /// </summary>
     public const string LiteralAddedConcurrentTherapy = "11";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAddedConcurrentTherapy
+    /// </summary>
+    public const string LiteralV3ActCodeAddedConcurrentTherapy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#11";
 
     /// <summary>
     /// Literal for code: TemporarilySuspendedConcurrentTherapy
@@ -291,9 +321,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTemporarilySuspendedConcurrentTherapy = "12";
 
     /// <summary>
+    /// Literal for code: V3ActCodeTemporarilySuspendedConcurrentTherapy
+    /// </summary>
+    public const string LiteralV3ActCodeTemporarilySuspendedConcurrentTherapy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#12";
+
+    /// <summary>
     /// Literal for code: StoppedConcurrentTherapy
     /// </summary>
     public const string LiteralStoppedConcurrentTherapy = "13";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeStoppedConcurrentTherapy
+    /// </summary>
+    public const string LiteralV3ActCodeStoppedConcurrentTherapy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#13";
 
     /// <summary>
     /// Literal for code: SupplyAppropriate
@@ -301,9 +341,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSupplyAppropriate = "14";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSupplyAppropriate
+    /// </summary>
+    public const string LiteralV3ActCodeSupplyAppropriate = "http://terminology.hl7.org/CodeSystem/v3-ActCode#14";
+
+    /// <summary>
     /// Literal for code: Replacement
     /// </summary>
     public const string LiteralReplacement = "15";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeReplacement
+    /// </summary>
+    public const string LiteralV3ActCodeReplacement = "http://terminology.hl7.org/CodeSystem/v3-ActCode#15";
 
     /// <summary>
     /// Literal for code: VacationSupply
@@ -311,9 +361,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVacationSupply = "16";
 
     /// <summary>
+    /// Literal for code: V3ActCodeVacationSupply
+    /// </summary>
+    public const string LiteralV3ActCodeVacationSupply = "http://terminology.hl7.org/CodeSystem/v3-ActCode#16";
+
+    /// <summary>
     /// Literal for code: WeekendSupply
     /// </summary>
     public const string LiteralWeekendSupply = "17";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeWeekendSupply
+    /// </summary>
+    public const string LiteralV3ActCodeWeekendSupply = "http://terminology.hl7.org/CodeSystem/v3-ActCode#17";
 
     /// <summary>
     /// Literal for code: LeaveOfAbsence
@@ -321,9 +381,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeaveOfAbsence = "18";
 
     /// <summary>
+    /// Literal for code: V3ActCodeLeaveOfAbsence
+    /// </summary>
+    public const string LiteralV3ActCodeLeaveOfAbsence = "http://terminology.hl7.org/CodeSystem/v3-ActCode#18";
+
+    /// <summary>
     /// Literal for code: ConsultedSupplier
     /// </summary>
     public const string LiteralConsultedSupplier = "19";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeConsultedSupplier
+    /// </summary>
+    public const string LiteralV3ActCodeConsultedSupplier = "http://terminology.hl7.org/CodeSystem/v3-ActCode#19";
 
     /// <summary>
     /// Literal for code: AssessedPatient
@@ -331,9 +401,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAssessedPatient = "2";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAssessedPatient
+    /// </summary>
+    public const string LiteralV3ActCodeAssessedPatient = "http://terminology.hl7.org/CodeSystem/v3-ActCode#2";
+
+    /// <summary>
     /// Literal for code: AdditionalQuantityOnSeparateDispense
     /// </summary>
     public const string LiteralAdditionalQuantityOnSeparateDispense = "20";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAdditionalQuantityOnSeparateDispense
+    /// </summary>
+    public const string LiteralV3ActCodeAdditionalQuantityOnSeparateDispense = "http://terminology.hl7.org/CodeSystem/v3-ActCode#20";
 
     /// <summary>
     /// Literal for code: AuthorizationConfirmed
@@ -341,9 +421,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAuthorizationConfirmed = "21";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAuthorizationConfirmed
+    /// </summary>
+    public const string LiteralV3ActCodeAuthorizationConfirmed = "http://terminology.hl7.org/CodeSystem/v3-ActCode#21";
+
+    /// <summary>
     /// Literal for code: AppropriateIndicationOrDiagnosis
     /// </summary>
     public const string LiteralAppropriateIndicationOrDiagnosis = "22";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAppropriateIndicationOrDiagnosis
+    /// </summary>
+    public const string LiteralV3ActCodeAppropriateIndicationOrDiagnosis = "http://terminology.hl7.org/CodeSystem/v3-ActCode#22";
 
     /// <summary>
     /// Literal for code: PriorTherapyDocumented
@@ -351,9 +441,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPriorTherapyDocumented = "23";
 
     /// <summary>
+    /// Literal for code: V3ActCodePriorTherapyDocumented
+    /// </summary>
+    public const string LiteralV3ActCodePriorTherapyDocumented = "http://terminology.hl7.org/CodeSystem/v3-ActCode#23";
+
+    /// <summary>
     /// Literal for code: PatientExplanation
     /// </summary>
     public const string LiteralPatientExplanation = "3";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePatientExplanation
+    /// </summary>
+    public const string LiteralV3ActCodePatientExplanation = "http://terminology.hl7.org/CodeSystem/v3-ActCode#3";
 
     /// <summary>
     /// Literal for code: ConsultedOtherSource
@@ -361,9 +461,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConsultedOtherSource = "4";
 
     /// <summary>
+    /// Literal for code: V3ActCodeConsultedOtherSource
+    /// </summary>
+    public const string LiteralV3ActCodeConsultedOtherSource = "http://terminology.hl7.org/CodeSystem/v3-ActCode#4";
+
+    /// <summary>
     /// Literal for code: ConsultedPrescriber
     /// </summary>
     public const string LiteralConsultedPrescriber = "5";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeConsultedPrescriber
+    /// </summary>
+    public const string LiteralV3ActCodeConsultedPrescriber = "http://terminology.hl7.org/CodeSystem/v3-ActCode#5";
 
     /// <summary>
     /// Literal for code: PrescriberDeclinedChange
@@ -371,9 +481,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrescriberDeclinedChange = "6";
 
     /// <summary>
+    /// Literal for code: V3ActCodePrescriberDeclinedChange
+    /// </summary>
+    public const string LiteralV3ActCodePrescriberDeclinedChange = "http://terminology.hl7.org/CodeSystem/v3-ActCode#6";
+
+    /// <summary>
     /// Literal for code: InteractingTherapyNoLongerActivePlanned
     /// </summary>
     public const string LiteralInteractingTherapyNoLongerActivePlanned = "7";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeInteractingTherapyNoLongerActivePlanned
+    /// </summary>
+    public const string LiteralV3ActCodeInteractingTherapyNoLongerActivePlanned = "http://terminology.hl7.org/CodeSystem/v3-ActCode#7";
 
     /// <summary>
     /// Literal for code: OtherActionTaken
@@ -381,13 +501,88 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOtherActionTaken = "8";
 
     /// <summary>
+    /// Literal for code: V3ActCodeOtherActionTaken
+    /// </summary>
+    public const string LiteralV3ActCodeOtherActionTaken = "http://terminology.hl7.org/CodeSystem/v3-ActCode#8";
+
+    /// <summary>
     /// Literal for code: InstitutedOngoingMonitoringProgram
     /// </summary>
     public const string LiteralInstitutedOngoingMonitoringProgram = "9";
 
     /// <summary>
+    /// Literal for code: V3ActCodeInstitutedOngoingMonitoringProgram
+    /// </summary>
+    public const string LiteralV3ActCodeInstitutedOngoingMonitoringProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#9";
+
+    /// <summary>
     /// Literal for code: EmergencyAuthorizationOverride
     /// </summary>
     public const string LiteralEmergencyAuthorizationOverride = "EMAUTH";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEmergencyAuthorizationOverride
+    /// </summary>
+    public const string LiteralV3ActCodeEmergencyAuthorizationOverride = "http://terminology.hl7.org/CodeSystem/v3-ActCode#EMAUTH";
+
+    /// <summary>
+    /// Dictionary for looking up DetectedissueMitigationAction Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "_ActAdministrativeDetectedIssueManagementCode", ActAdministrativeDetectedIssueManagementCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActAdministrativeDetectedIssueManagementCode", ActAdministrativeDetectedIssueManagementCode }, 
+      { "_ActDetectedIssueManagementCode", ActDetectedIssueManagementCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActDetectedIssueManagementCode", ActDetectedIssueManagementCode }, 
+      { "_AuthorizationIssueManagementCode", AuthorizationIssueManagementCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_AuthorizationIssueManagementCode", AuthorizationIssueManagementCode }, 
+      { "1", TherapyAppropriate }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#1", TherapyAppropriate }, 
+      { "10", ProvidedPatientEducation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#10", ProvidedPatientEducation }, 
+      { "11", AddedConcurrentTherapy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#11", AddedConcurrentTherapy }, 
+      { "12", TemporarilySuspendedConcurrentTherapy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#12", TemporarilySuspendedConcurrentTherapy }, 
+      { "13", StoppedConcurrentTherapy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#13", StoppedConcurrentTherapy }, 
+      { "14", SupplyAppropriate }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#14", SupplyAppropriate }, 
+      { "15", Replacement }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#15", Replacement }, 
+      { "16", VacationSupply }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#16", VacationSupply }, 
+      { "17", WeekendSupply }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#17", WeekendSupply }, 
+      { "18", LeaveOfAbsence }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#18", LeaveOfAbsence }, 
+      { "19", ConsultedSupplier }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#19", ConsultedSupplier }, 
+      { "2", AssessedPatient }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#2", AssessedPatient }, 
+      { "20", AdditionalQuantityOnSeparateDispense }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#20", AdditionalQuantityOnSeparateDispense }, 
+      { "21", AuthorizationConfirmed }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#21", AuthorizationConfirmed }, 
+      { "22", AppropriateIndicationOrDiagnosis }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#22", AppropriateIndicationOrDiagnosis }, 
+      { "23", PriorTherapyDocumented }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#23", PriorTherapyDocumented }, 
+      { "3", PatientExplanation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#3", PatientExplanation }, 
+      { "4", ConsultedOtherSource }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#4", ConsultedOtherSource }, 
+      { "5", ConsultedPrescriber }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#5", ConsultedPrescriber }, 
+      { "6", PrescriberDeclinedChange }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#6", PrescriberDeclinedChange }, 
+      { "7", InteractingTherapyNoLongerActivePlanned }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#7", InteractingTherapyNoLongerActivePlanned }, 
+      { "8", OtherActionTaken }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#8", OtherActionTaken }, 
+      { "9", InstitutedOngoingMonitoringProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#9", InstitutedOngoingMonitoringProgram }, 
+      { "EMAUTH", EmergencyAuthorizationOverride }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#EMAUTH", EmergencyAuthorizationOverride }, 
+    };
   };
 }

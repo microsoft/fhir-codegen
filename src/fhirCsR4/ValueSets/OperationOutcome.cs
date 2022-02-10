@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class OperationOutcomeCodes
   {
     /// <summary>
-    /// 
+    /// Error: Multiple matches exist for the conditional delete
     /// </summary>
     public static readonly Coding DELETEMULTIPLEMATCHES = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// You must authenticate before you can use this service
     /// </summary>
     public static readonly Coding MSGAUTHREQUIRED = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Bad Syntax: "%s" must be a %s'
     /// </summary>
     public static readonly Coding MSGBADFORMAT = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Bad Syntax in %s
     /// </summary>
     public static readonly Coding MSGBADSYNTAX = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Unable to parse feed (entry content type = "%s")
     /// </summary>
     public static readonly Coding MSGCANTPARSECONTENT = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Unable to parse feed (root element name = "%s")
     /// </summary>
     public static readonly Coding MSGCANTPARSEROOT = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// New resource created
     /// </summary>
     public static readonly Coding MSGCREATED = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// The Date value %s is not in the correct format (Xml Date Format required)
     /// </summary>
     public static readonly Coding MSGDATEFORMAT = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// This resource has been deleted
     /// </summary>
     public static readonly Coding MSGDELETED = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Resource deleted
     /// </summary>
     public static readonly Coding MSGDELETEDDONE = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// The resource "%s" has been deleted
     /// </summary>
     public static readonly Coding MSGDELETEDID = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Duplicate Id %s for resource type %s
     /// </summary>
     public static readonly Coding MSGDUPLICATEID = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Error parsing resource Xml (%s)
     /// </summary>
     public static readonly Coding MSGERRORPARSING = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Id "%s" has an invalid character "%s"
     /// </summary>
     public static readonly Coding MSGIDINVALID = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Id "%s" too long (length limit 36)
     /// </summary>
     public static readonly Coding MSGIDTOOLONG = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Id not accepted
     /// </summary>
     public static readonly Coding MSGINVALIDID = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Json Source for a resource should start with an object
     /// </summary>
     public static readonly Coding MSGJSONOBJECT = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Unable to resolve local reference to resource %s
     /// </summary>
     public static readonly Coding MSGLOCALFAIL = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Resource Id "%s" does not exist
     /// </summary>
     public static readonly Coding MSGNOEXIST = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// No Resource found matching the query "%s"
     /// </summary>
     public static readonly Coding MSGNOMATCH = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// No module could be found to handle the request "%s"
     /// </summary>
     public static readonly Coding MSGNOMODULE = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// No Summary for this resource
     /// </summary>
     public static readonly Coding MSGNOSUMMARY = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Operation %s not allowed for resource %s (due to local configuration)
     /// </summary>
     public static readonly Coding MSGOPNOTALLOWED = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Unknown chained parameter name "%s"
     /// </summary>
     public static readonly Coding MSGPARAMCHAINED = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Parameter "%s" content is invalid
     /// </summary>
     public static readonly Coding MSGPARAMINVALID = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Parameter "%s" modifier is invalid
     /// </summary>
     public static readonly Coding MSGPARAMMODIFIERINVALID = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Parameter "%s" is not allowed to repeat
     /// </summary>
     public static readonly Coding MSGPARAMNOREPEAT = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Parameter "%s" not understood
     /// </summary>
     public static readonly Coding MSGPARAMUNKNOWN = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Resources with identity "example" cannot be deleted (for testing/training purposes)
     /// </summary>
     public static readonly Coding MSGRESOURCEEXAMPLEPROTECTED = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// unable to allocate resource id
     /// </summary>
     public static readonly Coding MSGRESOURCEIDFAIL = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Resource Id Mismatch
     /// </summary>
     public static readonly Coding MSGRESOURCEIDMISMATCH = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Resource Id Missing
     /// </summary>
     public static readonly Coding MSGRESOURCEIDMISSING = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Not allowed to submit a resource for this operation
     /// </summary>
     public static readonly Coding MSGRESOURCENOTALLOWED = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// A resource is required
     /// </summary>
     public static readonly Coding MSGRESOURCEREQUIRED = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Resource Type Mismatch
     /// </summary>
     public static readonly Coding MSGRESOURCETYPEMISMATCH = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Unknown sort parameter name "%s"
     /// </summary>
     public static readonly Coding MSGSORTUNKNOWN = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Duplicate Identifier in transaction: %s
     /// </summary>
     public static readonly Coding MSGTRANSACTIONDUPLICATEID = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Missing Identifier in transaction - an entry.id must be provided
     /// </summary>
     public static readonly Coding MSGTRANSACTIONMISSINGID = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Unhandled xml node type "%s"
     /// </summary>
     public static readonly Coding MSGUNHANDLEDNODETYPE = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Unknown Content (%s) at %s
     /// </summary>
     public static readonly Coding MSGUNKNOWNCONTENT = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// unknown FHIR http operation
     /// </summary>
     public static readonly Coding MSGUNKNOWNOPERATION = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Resource Type "%s" not recognised
     /// </summary>
     public static readonly Coding MSGUNKNOWNTYPE = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// existing resource updated
     /// </summary>
     public static readonly Coding MSGUPDATED = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Version aware updates are required for this resource
     /// </summary>
     public static readonly Coding MSGVERSIONAWARE = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Update Conflict (server current version = "%s", client version referenced = "%s")
     /// </summary>
     public static readonly Coding MSGVERSIONAWARECONFLICT = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Version specific URL not recognised
     /// </summary>
     public static readonly Coding MSGVERSIONAWAREURL = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// This does not appear to be a FHIR element or resource (wrong namespace "%s")
     /// </summary>
     public static readonly Coding MSGWRONGNS = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Error: Multiple matches exist for %s search parameters "%s"
     /// </summary>
     public static readonly Coding SEARCHMULTIPLE = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Error: no processable search found for %s search parameters "%s"
     /// </summary>
     public static readonly Coding SEARCHNONE = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Error: Multiple matches exist for the conditional update
     /// </summary>
     public static readonly Coding UPDATEMULTIPLEMATCHES = new Coding
     {
@@ -468,9 +468,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDELETEMULTIPLEMATCHES = "DELETE_MULTIPLE_MATCHES";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeDELETEMULTIPLEMATCHES
+    /// </summary>
+    public const string LiteralOperationOutcomeDELETEMULTIPLEMATCHES = "http://terminology.hl7.org/CodeSystem/operation-outcome#DELETE_MULTIPLE_MATCHES";
+
+    /// <summary>
     /// Literal for code: MSGAUTHREQUIRED
     /// </summary>
     public const string LiteralMSGAUTHREQUIRED = "MSG_AUTH_REQUIRED";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGAUTHREQUIRED
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGAUTHREQUIRED = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_AUTH_REQUIRED";
 
     /// <summary>
     /// Literal for code: MSGBADFORMAT
@@ -478,9 +488,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGBADFORMAT = "MSG_BAD_FORMAT";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGBADFORMAT
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGBADFORMAT = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_BAD_FORMAT";
+
+    /// <summary>
     /// Literal for code: MSGBADSYNTAX
     /// </summary>
     public const string LiteralMSGBADSYNTAX = "MSG_BAD_SYNTAX";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGBADSYNTAX
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGBADSYNTAX = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_BAD_SYNTAX";
 
     /// <summary>
     /// Literal for code: MSGCANTPARSECONTENT
@@ -488,9 +508,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGCANTPARSECONTENT = "MSG_CANT_PARSE_CONTENT";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGCANTPARSECONTENT
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGCANTPARSECONTENT = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_CANT_PARSE_CONTENT";
+
+    /// <summary>
     /// Literal for code: MSGCANTPARSEROOT
     /// </summary>
     public const string LiteralMSGCANTPARSEROOT = "MSG_CANT_PARSE_ROOT";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGCANTPARSEROOT
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGCANTPARSEROOT = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_CANT_PARSE_ROOT";
 
     /// <summary>
     /// Literal for code: MSGCREATED
@@ -498,9 +528,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGCREATED = "MSG_CREATED";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGCREATED
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGCREATED = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_CREATED";
+
+    /// <summary>
     /// Literal for code: MSGDATEFORMAT
     /// </summary>
     public const string LiteralMSGDATEFORMAT = "MSG_DATE_FORMAT";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGDATEFORMAT
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGDATEFORMAT = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_DATE_FORMAT";
 
     /// <summary>
     /// Literal for code: MSGDELETED
@@ -508,9 +548,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGDELETED = "MSG_DELETED";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGDELETED
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGDELETED = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_DELETED";
+
+    /// <summary>
     /// Literal for code: MSGDELETEDDONE
     /// </summary>
     public const string LiteralMSGDELETEDDONE = "MSG_DELETED_DONE";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGDELETEDDONE
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGDELETEDDONE = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_DELETED_DONE";
 
     /// <summary>
     /// Literal for code: MSGDELETEDID
@@ -518,9 +568,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGDELETEDID = "MSG_DELETED_ID";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGDELETEDID
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGDELETEDID = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_DELETED_ID";
+
+    /// <summary>
     /// Literal for code: MSGDUPLICATEID
     /// </summary>
     public const string LiteralMSGDUPLICATEID = "MSG_DUPLICATE_ID";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGDUPLICATEID
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGDUPLICATEID = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_DUPLICATE_ID";
 
     /// <summary>
     /// Literal for code: MSGERRORPARSING
@@ -528,9 +588,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGERRORPARSING = "MSG_ERROR_PARSING";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGERRORPARSING
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGERRORPARSING = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_ERROR_PARSING";
+
+    /// <summary>
     /// Literal for code: MSGIDINVALID
     /// </summary>
     public const string LiteralMSGIDINVALID = "MSG_ID_INVALID";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGIDINVALID
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGIDINVALID = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_ID_INVALID";
 
     /// <summary>
     /// Literal for code: MSGIDTOOLONG
@@ -538,9 +608,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGIDTOOLONG = "MSG_ID_TOO_LONG";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGIDTOOLONG
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGIDTOOLONG = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_ID_TOO_LONG";
+
+    /// <summary>
     /// Literal for code: MSGINVALIDID
     /// </summary>
     public const string LiteralMSGINVALIDID = "MSG_INVALID_ID";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGINVALIDID
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGINVALIDID = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_INVALID_ID";
 
     /// <summary>
     /// Literal for code: MSGJSONOBJECT
@@ -548,9 +628,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGJSONOBJECT = "MSG_JSON_OBJECT";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGJSONOBJECT
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGJSONOBJECT = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_JSON_OBJECT";
+
+    /// <summary>
     /// Literal for code: MSGLOCALFAIL
     /// </summary>
     public const string LiteralMSGLOCALFAIL = "MSG_LOCAL_FAIL";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGLOCALFAIL
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGLOCALFAIL = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_LOCAL_FAIL";
 
     /// <summary>
     /// Literal for code: MSGNOEXIST
@@ -558,9 +648,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGNOEXIST = "MSG_NO_EXIST";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGNOEXIST
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGNOEXIST = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_NO_EXIST";
+
+    /// <summary>
     /// Literal for code: MSGNOMATCH
     /// </summary>
     public const string LiteralMSGNOMATCH = "MSG_NO_MATCH";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGNOMATCH
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGNOMATCH = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_NO_MATCH";
 
     /// <summary>
     /// Literal for code: MSGNOMODULE
@@ -568,9 +668,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGNOMODULE = "MSG_NO_MODULE";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGNOMODULE
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGNOMODULE = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_NO_MODULE";
+
+    /// <summary>
     /// Literal for code: MSGNOSUMMARY
     /// </summary>
     public const string LiteralMSGNOSUMMARY = "MSG_NO_SUMMARY";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGNOSUMMARY
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGNOSUMMARY = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_NO_SUMMARY";
 
     /// <summary>
     /// Literal for code: MSGOPNOTALLOWED
@@ -578,9 +688,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGOPNOTALLOWED = "MSG_OP_NOT_ALLOWED";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGOPNOTALLOWED
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGOPNOTALLOWED = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_OP_NOT_ALLOWED";
+
+    /// <summary>
     /// Literal for code: MSGPARAMCHAINED
     /// </summary>
     public const string LiteralMSGPARAMCHAINED = "MSG_PARAM_CHAINED";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGPARAMCHAINED
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGPARAMCHAINED = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_PARAM_CHAINED";
 
     /// <summary>
     /// Literal for code: MSGPARAMINVALID
@@ -588,9 +708,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGPARAMINVALID = "MSG_PARAM_INVALID";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGPARAMINVALID
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGPARAMINVALID = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_PARAM_INVALID";
+
+    /// <summary>
     /// Literal for code: MSGPARAMMODIFIERINVALID
     /// </summary>
     public const string LiteralMSGPARAMMODIFIERINVALID = "MSG_PARAM_MODIFIER_INVALID";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGPARAMMODIFIERINVALID
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGPARAMMODIFIERINVALID = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_PARAM_MODIFIER_INVALID";
 
     /// <summary>
     /// Literal for code: MSGPARAMNOREPEAT
@@ -598,9 +728,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGPARAMNOREPEAT = "MSG_PARAM_NO_REPEAT";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGPARAMNOREPEAT
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGPARAMNOREPEAT = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_PARAM_NO_REPEAT";
+
+    /// <summary>
     /// Literal for code: MSGPARAMUNKNOWN
     /// </summary>
     public const string LiteralMSGPARAMUNKNOWN = "MSG_PARAM_UNKNOWN";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGPARAMUNKNOWN
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGPARAMUNKNOWN = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_PARAM_UNKNOWN";
 
     /// <summary>
     /// Literal for code: MSGRESOURCEEXAMPLEPROTECTED
@@ -608,9 +748,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGRESOURCEEXAMPLEPROTECTED = "MSG_RESOURCE_EXAMPLE_PROTECTED";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGRESOURCEEXAMPLEPROTECTED
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGRESOURCEEXAMPLEPROTECTED = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_RESOURCE_EXAMPLE_PROTECTED";
+
+    /// <summary>
     /// Literal for code: MSGRESOURCEIDFAIL
     /// </summary>
     public const string LiteralMSGRESOURCEIDFAIL = "MSG_RESOURCE_ID_FAIL";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGRESOURCEIDFAIL
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGRESOURCEIDFAIL = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_RESOURCE_ID_FAIL";
 
     /// <summary>
     /// Literal for code: MSGRESOURCEIDMISMATCH
@@ -618,9 +768,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGRESOURCEIDMISMATCH = "MSG_RESOURCE_ID_MISMATCH";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGRESOURCEIDMISMATCH
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGRESOURCEIDMISMATCH = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_RESOURCE_ID_MISMATCH";
+
+    /// <summary>
     /// Literal for code: MSGRESOURCEIDMISSING
     /// </summary>
     public const string LiteralMSGRESOURCEIDMISSING = "MSG_RESOURCE_ID_MISSING";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGRESOURCEIDMISSING
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGRESOURCEIDMISSING = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_RESOURCE_ID_MISSING";
 
     /// <summary>
     /// Literal for code: MSGRESOURCENOTALLOWED
@@ -628,9 +788,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGRESOURCENOTALLOWED = "MSG_RESOURCE_NOT_ALLOWED";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGRESOURCENOTALLOWED
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGRESOURCENOTALLOWED = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_RESOURCE_NOT_ALLOWED";
+
+    /// <summary>
     /// Literal for code: MSGRESOURCEREQUIRED
     /// </summary>
     public const string LiteralMSGRESOURCEREQUIRED = "MSG_RESOURCE_REQUIRED";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGRESOURCEREQUIRED
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGRESOURCEREQUIRED = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_RESOURCE_REQUIRED";
 
     /// <summary>
     /// Literal for code: MSGRESOURCETYPEMISMATCH
@@ -638,9 +808,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGRESOURCETYPEMISMATCH = "MSG_RESOURCE_TYPE_MISMATCH";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGRESOURCETYPEMISMATCH
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGRESOURCETYPEMISMATCH = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_RESOURCE_TYPE_MISMATCH";
+
+    /// <summary>
     /// Literal for code: MSGSORTUNKNOWN
     /// </summary>
     public const string LiteralMSGSORTUNKNOWN = "MSG_SORT_UNKNOWN";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGSORTUNKNOWN
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGSORTUNKNOWN = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_SORT_UNKNOWN";
 
     /// <summary>
     /// Literal for code: MSGTRANSACTIONDUPLICATEID
@@ -648,9 +828,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGTRANSACTIONDUPLICATEID = "MSG_TRANSACTION_DUPLICATE_ID";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGTRANSACTIONDUPLICATEID
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGTRANSACTIONDUPLICATEID = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_TRANSACTION_DUPLICATE_ID";
+
+    /// <summary>
     /// Literal for code: MSGTRANSACTIONMISSINGID
     /// </summary>
     public const string LiteralMSGTRANSACTIONMISSINGID = "MSG_TRANSACTION_MISSING_ID";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGTRANSACTIONMISSINGID
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGTRANSACTIONMISSINGID = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_TRANSACTION_MISSING_ID";
 
     /// <summary>
     /// Literal for code: MSGUNHANDLEDNODETYPE
@@ -658,9 +848,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGUNHANDLEDNODETYPE = "MSG_UNHANDLED_NODE_TYPE";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGUNHANDLEDNODETYPE
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGUNHANDLEDNODETYPE = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_UNHANDLED_NODE_TYPE";
+
+    /// <summary>
     /// Literal for code: MSGUNKNOWNCONTENT
     /// </summary>
     public const string LiteralMSGUNKNOWNCONTENT = "MSG_UNKNOWN_CONTENT";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGUNKNOWNCONTENT
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGUNKNOWNCONTENT = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_UNKNOWN_CONTENT";
 
     /// <summary>
     /// Literal for code: MSGUNKNOWNOPERATION
@@ -668,9 +868,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGUNKNOWNOPERATION = "MSG_UNKNOWN_OPERATION";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGUNKNOWNOPERATION
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGUNKNOWNOPERATION = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_UNKNOWN_OPERATION";
+
+    /// <summary>
     /// Literal for code: MSGUNKNOWNTYPE
     /// </summary>
     public const string LiteralMSGUNKNOWNTYPE = "MSG_UNKNOWN_TYPE";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGUNKNOWNTYPE
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGUNKNOWNTYPE = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_UNKNOWN_TYPE";
 
     /// <summary>
     /// Literal for code: MSGUPDATED
@@ -678,9 +888,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGUPDATED = "MSG_UPDATED";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGUPDATED
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGUPDATED = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_UPDATED";
+
+    /// <summary>
     /// Literal for code: MSGVERSIONAWARE
     /// </summary>
     public const string LiteralMSGVERSIONAWARE = "MSG_VERSION_AWARE";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGVERSIONAWARE
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGVERSIONAWARE = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_VERSION_AWARE";
 
     /// <summary>
     /// Literal for code: MSGVERSIONAWARECONFLICT
@@ -688,9 +908,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGVERSIONAWARECONFLICT = "MSG_VERSION_AWARE_CONFLICT";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGVERSIONAWARECONFLICT
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGVERSIONAWARECONFLICT = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_VERSION_AWARE_CONFLICT";
+
+    /// <summary>
     /// Literal for code: MSGVERSIONAWAREURL
     /// </summary>
     public const string LiteralMSGVERSIONAWAREURL = "MSG_VERSION_AWARE_URL";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMSGVERSIONAWAREURL
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGVERSIONAWAREURL = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_VERSION_AWARE_URL";
 
     /// <summary>
     /// Literal for code: MSGWRONGNS
@@ -698,9 +928,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMSGWRONGNS = "MSG_WRONG_NS";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeMSGWRONGNS
+    /// </summary>
+    public const string LiteralOperationOutcomeMSGWRONGNS = "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_WRONG_NS";
+
+    /// <summary>
     /// Literal for code: SEARCHMULTIPLE
     /// </summary>
     public const string LiteralSEARCHMULTIPLE = "SEARCH_MULTIPLE";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeSEARCHMULTIPLE
+    /// </summary>
+    public const string LiteralOperationOutcomeSEARCHMULTIPLE = "http://terminology.hl7.org/CodeSystem/operation-outcome#SEARCH_MULTIPLE";
 
     /// <summary>
     /// Literal for code: SEARCHNONE
@@ -708,8 +948,124 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSEARCHNONE = "SEARCH_NONE";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeSEARCHNONE
+    /// </summary>
+    public const string LiteralOperationOutcomeSEARCHNONE = "http://terminology.hl7.org/CodeSystem/operation-outcome#SEARCH_NONE";
+
+    /// <summary>
     /// Literal for code: UPDATEMULTIPLEMATCHES
     /// </summary>
     public const string LiteralUPDATEMULTIPLEMATCHES = "UPDATE_MULTIPLE_MATCHES";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeUPDATEMULTIPLEMATCHES
+    /// </summary>
+    public const string LiteralOperationOutcomeUPDATEMULTIPLEMATCHES = "http://terminology.hl7.org/CodeSystem/operation-outcome#UPDATE_MULTIPLE_MATCHES";
+
+    /// <summary>
+    /// Dictionary for looking up OperationOutcome Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "DELETE_MULTIPLE_MATCHES", DELETEMULTIPLEMATCHES }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#DELETE_MULTIPLE_MATCHES", DELETEMULTIPLEMATCHES }, 
+      { "MSG_AUTH_REQUIRED", MSGAUTHREQUIRED }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_AUTH_REQUIRED", MSGAUTHREQUIRED }, 
+      { "MSG_BAD_FORMAT", MSGBADFORMAT }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_BAD_FORMAT", MSGBADFORMAT }, 
+      { "MSG_BAD_SYNTAX", MSGBADSYNTAX }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_BAD_SYNTAX", MSGBADSYNTAX }, 
+      { "MSG_CANT_PARSE_CONTENT", MSGCANTPARSECONTENT }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_CANT_PARSE_CONTENT", MSGCANTPARSECONTENT }, 
+      { "MSG_CANT_PARSE_ROOT", MSGCANTPARSEROOT }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_CANT_PARSE_ROOT", MSGCANTPARSEROOT }, 
+      { "MSG_CREATED", MSGCREATED }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_CREATED", MSGCREATED }, 
+      { "MSG_DATE_FORMAT", MSGDATEFORMAT }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_DATE_FORMAT", MSGDATEFORMAT }, 
+      { "MSG_DELETED", MSGDELETED }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_DELETED", MSGDELETED }, 
+      { "MSG_DELETED_DONE", MSGDELETEDDONE }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_DELETED_DONE", MSGDELETEDDONE }, 
+      { "MSG_DELETED_ID", MSGDELETEDID }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_DELETED_ID", MSGDELETEDID }, 
+      { "MSG_DUPLICATE_ID", MSGDUPLICATEID }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_DUPLICATE_ID", MSGDUPLICATEID }, 
+      { "MSG_ERROR_PARSING", MSGERRORPARSING }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_ERROR_PARSING", MSGERRORPARSING }, 
+      { "MSG_ID_INVALID", MSGIDINVALID }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_ID_INVALID", MSGIDINVALID }, 
+      { "MSG_ID_TOO_LONG", MSGIDTOOLONG }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_ID_TOO_LONG", MSGIDTOOLONG }, 
+      { "MSG_INVALID_ID", MSGINVALIDID }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_INVALID_ID", MSGINVALIDID }, 
+      { "MSG_JSON_OBJECT", MSGJSONOBJECT }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_JSON_OBJECT", MSGJSONOBJECT }, 
+      { "MSG_LOCAL_FAIL", MSGLOCALFAIL }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_LOCAL_FAIL", MSGLOCALFAIL }, 
+      { "MSG_NO_EXIST", MSGNOEXIST }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_NO_EXIST", MSGNOEXIST }, 
+      { "MSG_NO_MATCH", MSGNOMATCH }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_NO_MATCH", MSGNOMATCH }, 
+      { "MSG_NO_MODULE", MSGNOMODULE }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_NO_MODULE", MSGNOMODULE }, 
+      { "MSG_NO_SUMMARY", MSGNOSUMMARY }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_NO_SUMMARY", MSGNOSUMMARY }, 
+      { "MSG_OP_NOT_ALLOWED", MSGOPNOTALLOWED }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_OP_NOT_ALLOWED", MSGOPNOTALLOWED }, 
+      { "MSG_PARAM_CHAINED", MSGPARAMCHAINED }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_PARAM_CHAINED", MSGPARAMCHAINED }, 
+      { "MSG_PARAM_INVALID", MSGPARAMINVALID }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_PARAM_INVALID", MSGPARAMINVALID }, 
+      { "MSG_PARAM_MODIFIER_INVALID", MSGPARAMMODIFIERINVALID }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_PARAM_MODIFIER_INVALID", MSGPARAMMODIFIERINVALID }, 
+      { "MSG_PARAM_NO_REPEAT", MSGPARAMNOREPEAT }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_PARAM_NO_REPEAT", MSGPARAMNOREPEAT }, 
+      { "MSG_PARAM_UNKNOWN", MSGPARAMUNKNOWN }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_PARAM_UNKNOWN", MSGPARAMUNKNOWN }, 
+      { "MSG_RESOURCE_EXAMPLE_PROTECTED", MSGRESOURCEEXAMPLEPROTECTED }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_RESOURCE_EXAMPLE_PROTECTED", MSGRESOURCEEXAMPLEPROTECTED }, 
+      { "MSG_RESOURCE_ID_FAIL", MSGRESOURCEIDFAIL }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_RESOURCE_ID_FAIL", MSGRESOURCEIDFAIL }, 
+      { "MSG_RESOURCE_ID_MISMATCH", MSGRESOURCEIDMISMATCH }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_RESOURCE_ID_MISMATCH", MSGRESOURCEIDMISMATCH }, 
+      { "MSG_RESOURCE_ID_MISSING", MSGRESOURCEIDMISSING }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_RESOURCE_ID_MISSING", MSGRESOURCEIDMISSING }, 
+      { "MSG_RESOURCE_NOT_ALLOWED", MSGRESOURCENOTALLOWED }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_RESOURCE_NOT_ALLOWED", MSGRESOURCENOTALLOWED }, 
+      { "MSG_RESOURCE_REQUIRED", MSGRESOURCEREQUIRED }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_RESOURCE_REQUIRED", MSGRESOURCEREQUIRED }, 
+      { "MSG_RESOURCE_TYPE_MISMATCH", MSGRESOURCETYPEMISMATCH }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_RESOURCE_TYPE_MISMATCH", MSGRESOURCETYPEMISMATCH }, 
+      { "MSG_SORT_UNKNOWN", MSGSORTUNKNOWN }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_SORT_UNKNOWN", MSGSORTUNKNOWN }, 
+      { "MSG_TRANSACTION_DUPLICATE_ID", MSGTRANSACTIONDUPLICATEID }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_TRANSACTION_DUPLICATE_ID", MSGTRANSACTIONDUPLICATEID }, 
+      { "MSG_TRANSACTION_MISSING_ID", MSGTRANSACTIONMISSINGID }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_TRANSACTION_MISSING_ID", MSGTRANSACTIONMISSINGID }, 
+      { "MSG_UNHANDLED_NODE_TYPE", MSGUNHANDLEDNODETYPE }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_UNHANDLED_NODE_TYPE", MSGUNHANDLEDNODETYPE }, 
+      { "MSG_UNKNOWN_CONTENT", MSGUNKNOWNCONTENT }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_UNKNOWN_CONTENT", MSGUNKNOWNCONTENT }, 
+      { "MSG_UNKNOWN_OPERATION", MSGUNKNOWNOPERATION }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_UNKNOWN_OPERATION", MSGUNKNOWNOPERATION }, 
+      { "MSG_UNKNOWN_TYPE", MSGUNKNOWNTYPE }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_UNKNOWN_TYPE", MSGUNKNOWNTYPE }, 
+      { "MSG_UPDATED", MSGUPDATED }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_UPDATED", MSGUPDATED }, 
+      { "MSG_VERSION_AWARE", MSGVERSIONAWARE }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_VERSION_AWARE", MSGVERSIONAWARE }, 
+      { "MSG_VERSION_AWARE_CONFLICT", MSGVERSIONAWARECONFLICT }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_VERSION_AWARE_CONFLICT", MSGVERSIONAWARECONFLICT }, 
+      { "MSG_VERSION_AWARE_URL", MSGVERSIONAWAREURL }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_VERSION_AWARE_URL", MSGVERSIONAWAREURL }, 
+      { "MSG_WRONG_NS", MSGWRONGNS }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#MSG_WRONG_NS", MSGWRONGNS }, 
+      { "SEARCH_MULTIPLE", SEARCHMULTIPLE }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#SEARCH_MULTIPLE", SEARCHMULTIPLE }, 
+      { "SEARCH_NONE", SEARCHNONE }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#SEARCH_NONE", SEARCHNONE }, 
+      { "UPDATE_MULTIPLE_MATCHES", UPDATEMULTIPLEMATCHES }, 
+      { "http://terminology.hl7.org/CodeSystem/operation-outcome#UPDATE_MULTIPLE_MATCHES", UPDATEMULTIPLEMATCHES }, 
+    };
   };
 }

@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class AdverseEventCausalityAssessCodes
   {
     /// <summary>
-    /// 
+    /// assess1 placeholder
     /// </summary>
     public static readonly Coding Assess1Placeholder = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/adverse-event-causality-assess"
     };
     /// <summary>
-    /// 
+    /// assess2 placeholder
     /// </summary>
     public static readonly Coding Assess2Placeholder = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAssess1Placeholder = "assess1";
 
     /// <summary>
+    /// Literal for code: AdverseEventCausalityAssessAssess1Placeholder
+    /// </summary>
+    public const string LiteralAdverseEventCausalityAssessAssess1Placeholder = "http://hl7.org/fhir/adverse-event-causality-assess#assess1";
+
+    /// <summary>
     /// Literal for code: Assess2Placeholder
     /// </summary>
     public const string LiteralAssess2Placeholder = "assess2";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCausalityAssessAssess2Placeholder
+    /// </summary>
+    public const string LiteralAdverseEventCausalityAssessAssess2Placeholder = "http://hl7.org/fhir/adverse-event-causality-assess#assess2";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventCausalityAssess Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "assess1", Assess1Placeholder }, 
+      { "http://hl7.org/fhir/adverse-event-causality-assess#assess1", Assess1Placeholder }, 
+      { "assess2", Assess2Placeholder }, 
+      { "http://hl7.org/fhir/adverse-event-causality-assess#assess2", Assess2Placeholder }, 
+    };
   };
 }

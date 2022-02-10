@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralContinuousVariable = "continuous";
 
     /// <summary>
+    /// Literal for code: VariableHandlingContinuousVariable
+    /// </summary>
+    public const string LiteralVariableHandlingContinuousVariable = "http://hl7.org/fhir/variable-handling#continuous";
+
+    /// <summary>
     /// Literal for code: DichotomousVariable
     /// </summary>
     public const string LiteralDichotomousVariable = "dichotomous";
+
+    /// <summary>
+    /// Literal for code: VariableHandlingDichotomousVariable
+    /// </summary>
+    public const string LiteralVariableHandlingDichotomousVariable = "http://hl7.org/fhir/variable-handling#dichotomous";
 
     /// <summary>
     /// Literal for code: OrdinalVariable
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOrdinalVariable = "ordinal";
 
     /// <summary>
+    /// Literal for code: VariableHandlingOrdinalVariable
+    /// </summary>
+    public const string LiteralVariableHandlingOrdinalVariable = "http://hl7.org/fhir/variable-handling#ordinal";
+
+    /// <summary>
     /// Literal for code: PolychotomousVariable
     /// </summary>
     public const string LiteralPolychotomousVariable = "polychotomous";
+
+    /// <summary>
+    /// Literal for code: VariableHandlingPolychotomousVariable
+    /// </summary>
+    public const string LiteralVariableHandlingPolychotomousVariable = "http://hl7.org/fhir/variable-handling#polychotomous";
+
+    /// <summary>
+    /// Dictionary for looking up VariableHandling Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "continuous", ContinuousVariable }, 
+      { "http://hl7.org/fhir/variable-handling#continuous", ContinuousVariable }, 
+      { "dichotomous", DichotomousVariable }, 
+      { "http://hl7.org/fhir/variable-handling#dichotomous", DichotomousVariable }, 
+      { "ordinal", OrdinalVariable }, 
+      { "http://hl7.org/fhir/variable-handling#ordinal", OrdinalVariable }, 
+      { "polychotomous", PolychotomousVariable }, 
+      { "http://hl7.org/fhir/variable-handling#polychotomous", PolychotomousVariable }, 
+    };
   };
 }

@@ -45,13 +45,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralOff = "off";
 
     /// <summary>
+    /// Literal for code: MetricOperationalStatusOff
+    /// </summary>
+    public const string LiteralMetricOperationalStatusOff = "http://hl7.org/fhir/metric-operational-status#off";
+
+    /// <summary>
     /// Literal for code: On
     /// </summary>
     public const string LiteralOn = "on";
 
     /// <summary>
+    /// Literal for code: MetricOperationalStatusOn
+    /// </summary>
+    public const string LiteralMetricOperationalStatusOn = "http://hl7.org/fhir/metric-operational-status#on";
+
+    /// <summary>
     /// Literal for code: Standby
     /// </summary>
     public const string LiteralStandby = "standby";
+
+    /// <summary>
+    /// Literal for code: MetricOperationalStatusStandby
+    /// </summary>
+    public const string LiteralMetricOperationalStatusStandby = "http://hl7.org/fhir/metric-operational-status#standby";
+
+    /// <summary>
+    /// Dictionary for looking up MetricOperationalStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "off", Off }, 
+      { "http://hl7.org/fhir/metric-operational-status#off", Off }, 
+      { "on", On }, 
+      { "http://hl7.org/fhir/metric-operational-status#on", On }, 
+      { "standby", Standby }, 
+      { "http://hl7.org/fhir/metric-operational-status#standby", Standby }, 
+    };
   };
 }

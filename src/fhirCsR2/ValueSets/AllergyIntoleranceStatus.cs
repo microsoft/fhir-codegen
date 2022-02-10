@@ -81,9 +81,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: AllergyIntoleranceStatusActive
+    /// </summary>
+    public const string LiteralAllergyIntoleranceStatusActive = "http://hl7.org/fhir/allergy-intolerance-status#active";
+
+    /// <summary>
     /// Literal for code: Confirmed
     /// </summary>
     public const string LiteralConfirmed = "confirmed";
+
+    /// <summary>
+    /// Literal for code: AllergyIntoleranceStatusConfirmed
+    /// </summary>
+    public const string LiteralAllergyIntoleranceStatusConfirmed = "http://hl7.org/fhir/allergy-intolerance-status#confirmed";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -91,9 +101,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: AllergyIntoleranceStatusEnteredInError
+    /// </summary>
+    public const string LiteralAllergyIntoleranceStatusEnteredInError = "http://hl7.org/fhir/allergy-intolerance-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Inactive
     /// </summary>
     public const string LiteralInactive = "inactive";
+
+    /// <summary>
+    /// Literal for code: AllergyIntoleranceStatusInactive
+    /// </summary>
+    public const string LiteralAllergyIntoleranceStatusInactive = "http://hl7.org/fhir/allergy-intolerance-status#inactive";
 
     /// <summary>
     /// Literal for code: Refuted
@@ -101,13 +121,48 @@ namespace fhirCsR2.ValueSets
     public const string LiteralRefuted = "refuted";
 
     /// <summary>
+    /// Literal for code: AllergyIntoleranceStatusRefuted
+    /// </summary>
+    public const string LiteralAllergyIntoleranceStatusRefuted = "http://hl7.org/fhir/allergy-intolerance-status#refuted";
+
+    /// <summary>
     /// Literal for code: Resolved
     /// </summary>
     public const string LiteralResolved = "resolved";
 
     /// <summary>
+    /// Literal for code: AllergyIntoleranceStatusResolved
+    /// </summary>
+    public const string LiteralAllergyIntoleranceStatusResolved = "http://hl7.org/fhir/allergy-intolerance-status#resolved";
+
+    /// <summary>
     /// Literal for code: Unconfirmed
     /// </summary>
     public const string LiteralUnconfirmed = "unconfirmed";
+
+    /// <summary>
+    /// Literal for code: AllergyIntoleranceStatusUnconfirmed
+    /// </summary>
+    public const string LiteralAllergyIntoleranceStatusUnconfirmed = "http://hl7.org/fhir/allergy-intolerance-status#unconfirmed";
+
+    /// <summary>
+    /// Dictionary for looking up AllergyIntoleranceStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/allergy-intolerance-status#active", Active }, 
+      { "confirmed", Confirmed }, 
+      { "http://hl7.org/fhir/allergy-intolerance-status#confirmed", Confirmed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/allergy-intolerance-status#entered-in-error", EnteredInError }, 
+      { "inactive", Inactive }, 
+      { "http://hl7.org/fhir/allergy-intolerance-status#inactive", Inactive }, 
+      { "refuted", Refuted }, 
+      { "http://hl7.org/fhir/allergy-intolerance-status#refuted", Refuted }, 
+      { "resolved", Resolved }, 
+      { "http://hl7.org/fhir/allergy-intolerance-status#resolved", Resolved }, 
+      { "unconfirmed", Unconfirmed }, 
+      { "http://hl7.org/fhir/allergy-intolerance-status#unconfirmed", Unconfirmed }, 
+    };
   };
 }

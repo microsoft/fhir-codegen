@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class DetectedissueCategoryCodes
   {
     /// <summary>
-    /// 
+    /// ActSuppliedItemDetectedIssueCode
     /// </summary>
     public static readonly Coding ActSuppliedItemDetectedIssueCode = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// AdministrationDetectedIssueCode
     /// </summary>
     public static readonly Coding AdministrationDetectedIssueCode = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// AppropriatenessDetectedIssueCode
     /// </summary>
     public static readonly Coding AppropriatenessDetectedIssueCode = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// DrugActionDetectedIssueCode
     /// </summary>
     public static readonly Coding DrugActionDetectedIssueCode = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// InteractionDetectedIssueCode
     /// </summary>
     public static readonly Coding InteractionDetectedIssueCode = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// SupplyDetectedIssueCode
     /// </summary>
     public static readonly Coding SupplyDetectedIssueCode = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// TimingDetectedIssueCode
     /// </summary>
     public static readonly Coding TimingDetectedIssueCode = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// commonly abused/misused alert
     /// </summary>
     public static readonly Coding CommonlyAbusedMisusedAlert = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// adult alert
     /// </summary>
     public static readonly Coding AdultAlert = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Age Alert
     /// </summary>
     public static readonly Coding AgeAlert = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Allergy Alert
     /// </summary>
     public static readonly Coding AllergyAlert = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// already performed
     /// </summary>
     public static readonly Coding AlreadyPerformed = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// end too late alert
     /// </summary>
     public static readonly Coding EndTooLateAlert = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// start too late alert
     /// </summary>
     public static readonly Coding StartTooLateAlert = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Compliance Alert
     /// </summary>
     public static readonly Coding ComplianceAlert = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Condition Alert
     /// </summary>
     public static readonly Coding ConditionAlert = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// common reaction alert
     /// </summary>
     public static readonly Coding CommonReactionAlert = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// drug action detected issue
     /// </summary>
     public static readonly Coding DrugActionDetectedIssue = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Dosage problem
     /// </summary>
     public static readonly Coding DosageProblem = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// dosage-condition alert
     /// </summary>
     public static readonly Coding DosageConditionAlert = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Dose-Duration Alert
     /// </summary>
     public static readonly Coding DoseDurationAlert = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Dose-Duration High Alert
     /// </summary>
     public static readonly Coding DoseDurationHighAlert = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Dose-Duration High for Indication Alert
     /// </summary>
     public static readonly Coding DoseDurationHighForIndicationAlert = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Dose-Duration Low Alert
     /// </summary>
     public static readonly Coding DoseDurationLowAlert = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Dose-Duration Low for Indication Alert
     /// </summary>
     public static readonly Coding DoseDurationLowForIndicationAlert = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// High Dose Alert
     /// </summary>
     public static readonly Coding HighDoseAlert = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// High Dose for Indication Alert
     /// </summary>
     public static readonly Coding HighDoseForIndicationAlert = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// High Dose for Age Alert
     /// </summary>
     public static readonly Coding HighDoseForAgeAlert = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// High Dose for Height/Surface Area Alert
     /// </summary>
     public static readonly Coding HighDoseForHeightSurfaceAreaAlert = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// High Dose for Weight Alert
     /// </summary>
     public static readonly Coding HighDoseForWeightAlert = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Dose-Interval Alert
     /// </summary>
     public static readonly Coding DoseIntervalAlert = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Dose-Interval for Indication Alert
     /// </summary>
     public static readonly Coding DoseIntervalForIndicationAlert = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Low Dose Alert
     /// </summary>
     public static readonly Coding LowDoseAlert = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Low Dose for Indication Alert
     /// </summary>
     public static readonly Coding LowDoseForIndicationAlert = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Low Dose for Age Alert
     /// </summary>
     public static readonly Coding LowDoseForAgeAlert = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Low Dose for Height/Surface Area Alert
     /// </summary>
     public static readonly Coding LowDoseForHeightSurfaceAreaAlert = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Low Dose for Weight Alert
     /// </summary>
     public static readonly Coding LowDoseForWeightAlert = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Drug Interaction Alert
     /// </summary>
     public static readonly Coding DrugInteractionAlert = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// duplicate therapeutic alass alert
     /// </summary>
     public static readonly Coding DuplicateTherapeuticAlassAlert = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// duplicate generic alert
     /// </summary>
     public static readonly Coding DuplicateGenericAlert = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Duplicate Therapy Alert
     /// </summary>
     public static readonly Coding DuplicateTherapyAlert = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// End Too Late Alert
     /// </summary>
     public static readonly Coding EndTooLateAlert_2 = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Food Interaction Alert
     /// </summary>
     public static readonly Coding FoodInteractionAlert = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// potential fraud
     /// </summary>
     public static readonly Coding PotentialFraud = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// fulfillment alert
     /// </summary>
     public static readonly Coding FulfillmentAlert = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// geriatric alert
     /// </summary>
     public static readonly Coding GeriatricAlert = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Genetic Alert
     /// </summary>
     public static readonly Coding GeneticAlert = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Gender Alert
     /// </summary>
     public static readonly Coding GenderAlert = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// held/suspended alert
     /// </summary>
     public static readonly Coding HeldSuspendedAlert = new Coding
     {
@@ -461,7 +461,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// record recorded as historical
     /// </summary>
     public static readonly Coding RecordRecordedAsHistorical = new Coding
     {
@@ -470,7 +470,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Intolerance Alert
     /// </summary>
     public static readonly Coding IntoleranceAlert = new Coding
     {
@@ -479,7 +479,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// outside requested time
     /// </summary>
     public static readonly Coding OutsideRequestedTime = new Coding
     {
@@ -488,7 +488,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Lab Alert
     /// </summary>
     public static readonly Coding LabAlert = new Coding
     {
@@ -497,7 +497,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Lactation Alert
     /// </summary>
     public static readonly Coding LactationAlert = new Coding
     {
@@ -506,7 +506,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// maximum dosage reached
     /// </summary>
     public static readonly Coding MaximumDosageReached = new Coding
     {
@@ -515,7 +515,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// too soon within frequency based on the usage
     /// </summary>
     public static readonly Coding TooSoonWithinFrequencyBasedOnTheUsage = new Coding
     {
@@ -524,7 +524,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Natural Health Product Alert
     /// </summary>
     public static readonly Coding NaturalHealthProductAlert = new Coding
     {
@@ -533,7 +533,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Non-Prescription Interaction Alert
     /// </summary>
     public static readonly Coding NonPrescriptionInteractionAlert = new Coding
     {
@@ -542,7 +542,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// no longer actionable
     /// </summary>
     public static readonly Coding NoLongerActionable = new Coding
     {
@@ -551,7 +551,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// not equivalent alert
     /// </summary>
     public static readonly Coding NotEquivalentAlert = new Coding
     {
@@ -560,7 +560,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// not generically equivalent alert
     /// </summary>
     public static readonly Coding NotGenericallyEquivalentAlert = new Coding
     {
@@ -569,7 +569,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// not therapeutically equivalent alert
     /// </summary>
     public static readonly Coding NotTherapeuticallyEquivalentAlert = new Coding
     {
@@ -578,7 +578,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Observation Alert
     /// </summary>
     public static readonly Coding ObservationAlert = new Coding
     {
@@ -587,7 +587,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// violates stated preferences
     /// </summary>
     public static readonly Coding ViolatesStatedPreferences = new Coding
     {
@@ -596,7 +596,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// violates stated preferences, alternate available
     /// </summary>
     public static readonly Coding ViolatesStatedPreferencesAlternateAvailable = new Coding
     {
@@ -605,7 +605,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// pediatric alert
     /// </summary>
     public static readonly Coding PediatricAlert = new Coding
     {
@@ -614,7 +614,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Poly-orderer Alert
     /// </summary>
     public static readonly Coding PolyOrdererAlert = new Coding
     {
@@ -623,7 +623,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Poly-supplier Alert
     /// </summary>
     public static readonly Coding PolySupplierAlert = new Coding
     {
@@ -632,7 +632,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Pregnancy Alert
     /// </summary>
     public static readonly Coding PregnancyAlert = new Coding
     {
@@ -641,7 +641,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// previously ineffective
     /// </summary>
     public static readonly Coding PreviouslyIneffective = new Coding
     {
@@ -650,7 +650,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Related Allergy Alert
     /// </summary>
     public static readonly Coding RelatedAllergyAlert = new Coding
     {
@@ -659,7 +659,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Related Prior Reaction Alert
     /// </summary>
     public static readonly Coding RelatedPriorReactionAlert = new Coding
     {
@@ -668,7 +668,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Reaction Alert
     /// </summary>
     public static readonly Coding ReactionAlert = new Coding
     {
@@ -677,7 +677,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Related Intolerance Alert
     /// </summary>
     public static readonly Coding RelatedIntoleranceAlert = new Coding
     {
@@ -686,7 +686,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Related Reaction Alert
     /// </summary>
     public static readonly Coding RelatedReactionAlert = new Coding
     {
@@ -695,7 +695,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Start Too Late Alert
     /// </summary>
     public static readonly Coding StartTooLateAlert_2 = new Coding
     {
@@ -704,7 +704,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// timing detected issue
     /// </summary>
     public static readonly Coding TimingDetectedIssue = new Coding
     {
@@ -713,7 +713,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// event timing incorrect alert
     /// </summary>
     public static readonly Coding EventTimingIncorrectAlert = new Coding
     {
@@ -722,7 +722,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Refill Too Late Alert
     /// </summary>
     public static readonly Coding RefillTooLateAlert = new Coding
     {
@@ -731,7 +731,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Refill Too Soon Alert
     /// </summary>
     public static readonly Coding RefillTooSoonAlert = new Coding
     {
@@ -740,7 +740,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Therapeutic Product Alert
     /// </summary>
     public static readonly Coding TherapeuticProductAlert = new Coding
     {
@@ -763,9 +763,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActSuppliedItemDetectedIssueCode = "_ActSuppliedItemDetectedIssueCode";
 
     /// <summary>
+    /// Literal for code: V3ActCodeActSuppliedItemDetectedIssueCode
+    /// </summary>
+    public const string LiteralV3ActCodeActSuppliedItemDetectedIssueCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActSuppliedItemDetectedIssueCode";
+
+    /// <summary>
     /// Literal for code: AdministrationDetectedIssueCode
     /// </summary>
     public const string LiteralAdministrationDetectedIssueCode = "_AdministrationDetectedIssueCode";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAdministrationDetectedIssueCode
+    /// </summary>
+    public const string LiteralV3ActCodeAdministrationDetectedIssueCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_AdministrationDetectedIssueCode";
 
     /// <summary>
     /// Literal for code: AppropriatenessDetectedIssueCode
@@ -773,9 +783,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAppropriatenessDetectedIssueCode = "_AppropriatenessDetectedIssueCode";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAppropriatenessDetectedIssueCode
+    /// </summary>
+    public const string LiteralV3ActCodeAppropriatenessDetectedIssueCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_AppropriatenessDetectedIssueCode";
+
+    /// <summary>
     /// Literal for code: DrugActionDetectedIssueCode
     /// </summary>
     public const string LiteralDrugActionDetectedIssueCode = "_DrugActionDetectedIssueCode";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDrugActionDetectedIssueCode
+    /// </summary>
+    public const string LiteralV3ActCodeDrugActionDetectedIssueCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_DrugActionDetectedIssueCode";
 
     /// <summary>
     /// Literal for code: InteractionDetectedIssueCode
@@ -783,9 +803,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInteractionDetectedIssueCode = "_InteractionDetectedIssueCode";
 
     /// <summary>
+    /// Literal for code: V3ActCodeInteractionDetectedIssueCode
+    /// </summary>
+    public const string LiteralV3ActCodeInteractionDetectedIssueCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_InteractionDetectedIssueCode";
+
+    /// <summary>
     /// Literal for code: SupplyDetectedIssueCode
     /// </summary>
     public const string LiteralSupplyDetectedIssueCode = "_SupplyDetectedIssueCode";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSupplyDetectedIssueCode
+    /// </summary>
+    public const string LiteralV3ActCodeSupplyDetectedIssueCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_SupplyDetectedIssueCode";
 
     /// <summary>
     /// Literal for code: TimingDetectedIssueCode
@@ -793,9 +823,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTimingDetectedIssueCode = "_TimingDetectedIssueCode";
 
     /// <summary>
+    /// Literal for code: V3ActCodeTimingDetectedIssueCode
+    /// </summary>
+    public const string LiteralV3ActCodeTimingDetectedIssueCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_TimingDetectedIssueCode";
+
+    /// <summary>
     /// Literal for code: CommonlyAbusedMisusedAlert
     /// </summary>
     public const string LiteralCommonlyAbusedMisusedAlert = "ABUSE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCommonlyAbusedMisusedAlert
+    /// </summary>
+    public const string LiteralV3ActCodeCommonlyAbusedMisusedAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ABUSE";
 
     /// <summary>
     /// Literal for code: AdultAlert
@@ -803,9 +843,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAdultAlert = "ADALRT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAdultAlert
+    /// </summary>
+    public const string LiteralV3ActCodeAdultAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ADALRT";
+
+    /// <summary>
     /// Literal for code: AgeAlert
     /// </summary>
     public const string LiteralAgeAlert = "AGE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAgeAlert
+    /// </summary>
+    public const string LiteralV3ActCodeAgeAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#AGE";
 
     /// <summary>
     /// Literal for code: AllergyAlert
@@ -813,9 +863,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAllergyAlert = "ALGY";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAllergyAlert
+    /// </summary>
+    public const string LiteralV3ActCodeAllergyAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ALGY";
+
+    /// <summary>
     /// Literal for code: AlreadyPerformed
     /// </summary>
     public const string LiteralAlreadyPerformed = "ALLDONE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAlreadyPerformed
+    /// </summary>
+    public const string LiteralV3ActCodeAlreadyPerformed = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ALLDONE";
 
     /// <summary>
     /// Literal for code: EndTooLateAlert
@@ -823,9 +883,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEndTooLateAlert = "ALRTENDLATE";
 
     /// <summary>
+    /// Literal for code: V3ActCodeEndTooLateAlert
+    /// </summary>
+    public const string LiteralV3ActCodeEndTooLateAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ALRTENDLATE";
+
+    /// <summary>
     /// Literal for code: StartTooLateAlert
     /// </summary>
     public const string LiteralStartTooLateAlert = "ALRTSTRTLATE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeStartTooLateAlert
+    /// </summary>
+    public const string LiteralV3ActCodeStartTooLateAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ALRTSTRTLATE";
 
     /// <summary>
     /// Literal for code: ComplianceAlert
@@ -833,9 +903,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralComplianceAlert = "COMPLY";
 
     /// <summary>
+    /// Literal for code: V3ActCodeComplianceAlert
+    /// </summary>
+    public const string LiteralV3ActCodeComplianceAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#COMPLY";
+
+    /// <summary>
     /// Literal for code: ConditionAlert
     /// </summary>
     public const string LiteralConditionAlert = "COND";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeConditionAlert
+    /// </summary>
+    public const string LiteralV3ActCodeConditionAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#COND";
 
     /// <summary>
     /// Literal for code: CommonReactionAlert
@@ -843,9 +923,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCommonReactionAlert = "CREACT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeCommonReactionAlert
+    /// </summary>
+    public const string LiteralV3ActCodeCommonReactionAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CREACT";
+
+    /// <summary>
     /// Literal for code: DrugActionDetectedIssue
     /// </summary>
     public const string LiteralDrugActionDetectedIssue = "DACT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDrugActionDetectedIssue
+    /// </summary>
+    public const string LiteralV3ActCodeDrugActionDetectedIssue = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DACT";
 
     /// <summary>
     /// Literal for code: DosageProblem
@@ -853,9 +943,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDosageProblem = "DOSE";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDosageProblem
+    /// </summary>
+    public const string LiteralV3ActCodeDosageProblem = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSE";
+
+    /// <summary>
     /// Literal for code: DosageConditionAlert
     /// </summary>
     public const string LiteralDosageConditionAlert = "DOSECOND";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDosageConditionAlert
+    /// </summary>
+    public const string LiteralV3ActCodeDosageConditionAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSECOND";
 
     /// <summary>
     /// Literal for code: DoseDurationAlert
@@ -863,9 +963,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDoseDurationAlert = "DOSEDUR";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDoseDurationAlert
+    /// </summary>
+    public const string LiteralV3ActCodeDoseDurationAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEDUR";
+
+    /// <summary>
     /// Literal for code: DoseDurationHighAlert
     /// </summary>
     public const string LiteralDoseDurationHighAlert = "DOSEDURH";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDoseDurationHighAlert
+    /// </summary>
+    public const string LiteralV3ActCodeDoseDurationHighAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEDURH";
 
     /// <summary>
     /// Literal for code: DoseDurationHighForIndicationAlert
@@ -873,9 +983,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDoseDurationHighForIndicationAlert = "DOSEDURHIND";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDoseDurationHighForIndicationAlert
+    /// </summary>
+    public const string LiteralV3ActCodeDoseDurationHighForIndicationAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEDURHIND";
+
+    /// <summary>
     /// Literal for code: DoseDurationLowAlert
     /// </summary>
     public const string LiteralDoseDurationLowAlert = "DOSEDURL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDoseDurationLowAlert
+    /// </summary>
+    public const string LiteralV3ActCodeDoseDurationLowAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEDURL";
 
     /// <summary>
     /// Literal for code: DoseDurationLowForIndicationAlert
@@ -883,9 +1003,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDoseDurationLowForIndicationAlert = "DOSEDURLIND";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDoseDurationLowForIndicationAlert
+    /// </summary>
+    public const string LiteralV3ActCodeDoseDurationLowForIndicationAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEDURLIND";
+
+    /// <summary>
     /// Literal for code: HighDoseAlert
     /// </summary>
     public const string LiteralHighDoseAlert = "DOSEH";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeHighDoseAlert
+    /// </summary>
+    public const string LiteralV3ActCodeHighDoseAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEH";
 
     /// <summary>
     /// Literal for code: HighDoseForIndicationAlert
@@ -893,9 +1023,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHighDoseForIndicationAlert = "DOSEHIND";
 
     /// <summary>
+    /// Literal for code: V3ActCodeHighDoseForIndicationAlert
+    /// </summary>
+    public const string LiteralV3ActCodeHighDoseForIndicationAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEHIND";
+
+    /// <summary>
     /// Literal for code: HighDoseForAgeAlert
     /// </summary>
     public const string LiteralHighDoseForAgeAlert = "DOSEHINDA";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeHighDoseForAgeAlert
+    /// </summary>
+    public const string LiteralV3ActCodeHighDoseForAgeAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEHINDA";
 
     /// <summary>
     /// Literal for code: HighDoseForHeightSurfaceAreaAlert
@@ -903,9 +1043,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHighDoseForHeightSurfaceAreaAlert = "DOSEHINDSA";
 
     /// <summary>
+    /// Literal for code: V3ActCodeHighDoseForHeightSurfaceAreaAlert
+    /// </summary>
+    public const string LiteralV3ActCodeHighDoseForHeightSurfaceAreaAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEHINDSA";
+
+    /// <summary>
     /// Literal for code: HighDoseForWeightAlert
     /// </summary>
     public const string LiteralHighDoseForWeightAlert = "DOSEHINDW";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeHighDoseForWeightAlert
+    /// </summary>
+    public const string LiteralV3ActCodeHighDoseForWeightAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEHINDW";
 
     /// <summary>
     /// Literal for code: DoseIntervalAlert
@@ -913,9 +1063,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDoseIntervalAlert = "DOSEIVL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDoseIntervalAlert
+    /// </summary>
+    public const string LiteralV3ActCodeDoseIntervalAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEIVL";
+
+    /// <summary>
     /// Literal for code: DoseIntervalForIndicationAlert
     /// </summary>
     public const string LiteralDoseIntervalForIndicationAlert = "DOSEIVLIND";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDoseIntervalForIndicationAlert
+    /// </summary>
+    public const string LiteralV3ActCodeDoseIntervalForIndicationAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEIVLIND";
 
     /// <summary>
     /// Literal for code: LowDoseAlert
@@ -923,9 +1083,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLowDoseAlert = "DOSEL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeLowDoseAlert
+    /// </summary>
+    public const string LiteralV3ActCodeLowDoseAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEL";
+
+    /// <summary>
     /// Literal for code: LowDoseForIndicationAlert
     /// </summary>
     public const string LiteralLowDoseForIndicationAlert = "DOSELIND";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeLowDoseForIndicationAlert
+    /// </summary>
+    public const string LiteralV3ActCodeLowDoseForIndicationAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSELIND";
 
     /// <summary>
     /// Literal for code: LowDoseForAgeAlert
@@ -933,9 +1103,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLowDoseForAgeAlert = "DOSELINDA";
 
     /// <summary>
+    /// Literal for code: V3ActCodeLowDoseForAgeAlert
+    /// </summary>
+    public const string LiteralV3ActCodeLowDoseForAgeAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSELINDA";
+
+    /// <summary>
     /// Literal for code: LowDoseForHeightSurfaceAreaAlert
     /// </summary>
     public const string LiteralLowDoseForHeightSurfaceAreaAlert = "DOSELINDSA";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeLowDoseForHeightSurfaceAreaAlert
+    /// </summary>
+    public const string LiteralV3ActCodeLowDoseForHeightSurfaceAreaAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSELINDSA";
 
     /// <summary>
     /// Literal for code: LowDoseForWeightAlert
@@ -943,9 +1123,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLowDoseForWeightAlert = "DOSELINDW";
 
     /// <summary>
+    /// Literal for code: V3ActCodeLowDoseForWeightAlert
+    /// </summary>
+    public const string LiteralV3ActCodeLowDoseForWeightAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSELINDW";
+
+    /// <summary>
     /// Literal for code: DrugInteractionAlert
     /// </summary>
     public const string LiteralDrugInteractionAlert = "DRG";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDrugInteractionAlert
+    /// </summary>
+    public const string LiteralV3ActCodeDrugInteractionAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DRG";
 
     /// <summary>
     /// Literal for code: DuplicateTherapeuticAlassAlert
@@ -953,9 +1143,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDuplicateTherapeuticAlassAlert = "DUPTHPCLS";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDuplicateTherapeuticAlassAlert
+    /// </summary>
+    public const string LiteralV3ActCodeDuplicateTherapeuticAlassAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DUPTHPCLS";
+
+    /// <summary>
     /// Literal for code: DuplicateGenericAlert
     /// </summary>
     public const string LiteralDuplicateGenericAlert = "DUPTHPGEN";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDuplicateGenericAlert
+    /// </summary>
+    public const string LiteralV3ActCodeDuplicateGenericAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DUPTHPGEN";
 
     /// <summary>
     /// Literal for code: DuplicateTherapyAlert
@@ -963,9 +1163,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDuplicateTherapyAlert = "DUPTHPY";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDuplicateTherapyAlert
+    /// </summary>
+    public const string LiteralV3ActCodeDuplicateTherapyAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DUPTHPY";
+
+    /// <summary>
     /// Literal for code: EndTooLateAlert_2
     /// </summary>
     public const string LiteralEndTooLateAlert_2 = "ENDLATE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEndTooLateAlert_2
+    /// </summary>
+    public const string LiteralV3ActCodeEndTooLateAlert_2 = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ENDLATE";
 
     /// <summary>
     /// Literal for code: FoodInteractionAlert
@@ -973,9 +1183,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFoodInteractionAlert = "FOOD";
 
     /// <summary>
+    /// Literal for code: V3ActCodeFoodInteractionAlert
+    /// </summary>
+    public const string LiteralV3ActCodeFoodInteractionAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#FOOD";
+
+    /// <summary>
     /// Literal for code: PotentialFraud
     /// </summary>
     public const string LiteralPotentialFraud = "FRAUD";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePotentialFraud
+    /// </summary>
+    public const string LiteralV3ActCodePotentialFraud = "http://terminology.hl7.org/CodeSystem/v3-ActCode#FRAUD";
 
     /// <summary>
     /// Literal for code: FulfillmentAlert
@@ -983,9 +1203,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFulfillmentAlert = "FULFIL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeFulfillmentAlert
+    /// </summary>
+    public const string LiteralV3ActCodeFulfillmentAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#FULFIL";
+
+    /// <summary>
     /// Literal for code: GeriatricAlert
     /// </summary>
     public const string LiteralGeriatricAlert = "GEALRT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeGeriatricAlert
+    /// </summary>
+    public const string LiteralV3ActCodeGeriatricAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#GEALRT";
 
     /// <summary>
     /// Literal for code: GeneticAlert
@@ -993,9 +1223,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGeneticAlert = "GEN";
 
     /// <summary>
+    /// Literal for code: V3ActCodeGeneticAlert
+    /// </summary>
+    public const string LiteralV3ActCodeGeneticAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#GEN";
+
+    /// <summary>
     /// Literal for code: GenderAlert
     /// </summary>
     public const string LiteralGenderAlert = "GEND";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeGenderAlert
+    /// </summary>
+    public const string LiteralV3ActCodeGenderAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#GEND";
 
     /// <summary>
     /// Literal for code: HeldSuspendedAlert
@@ -1003,9 +1243,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHeldSuspendedAlert = "HELD";
 
     /// <summary>
+    /// Literal for code: V3ActCodeHeldSuspendedAlert
+    /// </summary>
+    public const string LiteralV3ActCodeHeldSuspendedAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#HELD";
+
+    /// <summary>
     /// Literal for code: HGHT
     /// </summary>
     public const string LiteralHGHT = "HGHT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeHGHT
+    /// </summary>
+    public const string LiteralV3ActCodeHGHT = "http://terminology.hl7.org/CodeSystem/v3-ActCode#HGHT";
 
     /// <summary>
     /// Literal for code: RecordRecordedAsHistorical
@@ -1013,9 +1263,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRecordRecordedAsHistorical = "HISTORIC";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRecordRecordedAsHistorical
+    /// </summary>
+    public const string LiteralV3ActCodeRecordRecordedAsHistorical = "http://terminology.hl7.org/CodeSystem/v3-ActCode#HISTORIC";
+
+    /// <summary>
     /// Literal for code: IntoleranceAlert
     /// </summary>
     public const string LiteralIntoleranceAlert = "INT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeIntoleranceAlert
+    /// </summary>
+    public const string LiteralV3ActCodeIntoleranceAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#INT";
 
     /// <summary>
     /// Literal for code: OutsideRequestedTime
@@ -1023,9 +1283,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOutsideRequestedTime = "INTERVAL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeOutsideRequestedTime
+    /// </summary>
+    public const string LiteralV3ActCodeOutsideRequestedTime = "http://terminology.hl7.org/CodeSystem/v3-ActCode#INTERVAL";
+
+    /// <summary>
     /// Literal for code: LabAlert
     /// </summary>
     public const string LiteralLabAlert = "LAB";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeLabAlert
+    /// </summary>
+    public const string LiteralV3ActCodeLabAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#LAB";
 
     /// <summary>
     /// Literal for code: LactationAlert
@@ -1033,9 +1303,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLactationAlert = "LACT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeLactationAlert
+    /// </summary>
+    public const string LiteralV3ActCodeLactationAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#LACT";
+
+    /// <summary>
     /// Literal for code: MaximumDosageReached
     /// </summary>
     public const string LiteralMaximumDosageReached = "MDOSE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeMaximumDosageReached
+    /// </summary>
+    public const string LiteralV3ActCodeMaximumDosageReached = "http://terminology.hl7.org/CodeSystem/v3-ActCode#MDOSE";
 
     /// <summary>
     /// Literal for code: TooSoonWithinFrequencyBasedOnTheUsage
@@ -1043,9 +1323,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTooSoonWithinFrequencyBasedOnTheUsage = "MINFREQ";
 
     /// <summary>
+    /// Literal for code: V3ActCodeTooSoonWithinFrequencyBasedOnTheUsage
+    /// </summary>
+    public const string LiteralV3ActCodeTooSoonWithinFrequencyBasedOnTheUsage = "http://terminology.hl7.org/CodeSystem/v3-ActCode#MINFREQ";
+
+    /// <summary>
     /// Literal for code: NaturalHealthProductAlert
     /// </summary>
     public const string LiteralNaturalHealthProductAlert = "NHP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNaturalHealthProductAlert
+    /// </summary>
+    public const string LiteralV3ActCodeNaturalHealthProductAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NHP";
 
     /// <summary>
     /// Literal for code: NonPrescriptionInteractionAlert
@@ -1053,9 +1343,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNonPrescriptionInteractionAlert = "NONRX";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNonPrescriptionInteractionAlert
+    /// </summary>
+    public const string LiteralV3ActCodeNonPrescriptionInteractionAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NONRX";
+
+    /// <summary>
     /// Literal for code: NoLongerActionable
     /// </summary>
     public const string LiteralNoLongerActionable = "NOTACTN";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoLongerActionable
+    /// </summary>
+    public const string LiteralV3ActCodeNoLongerActionable = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOTACTN";
 
     /// <summary>
     /// Literal for code: NotEquivalentAlert
@@ -1063,9 +1363,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotEquivalentAlert = "NOTEQUIV";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNotEquivalentAlert
+    /// </summary>
+    public const string LiteralV3ActCodeNotEquivalentAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOTEQUIV";
+
+    /// <summary>
     /// Literal for code: NotGenericallyEquivalentAlert
     /// </summary>
     public const string LiteralNotGenericallyEquivalentAlert = "NOTEQUIVGEN";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNotGenericallyEquivalentAlert
+    /// </summary>
+    public const string LiteralV3ActCodeNotGenericallyEquivalentAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOTEQUIVGEN";
 
     /// <summary>
     /// Literal for code: NotTherapeuticallyEquivalentAlert
@@ -1073,9 +1383,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotTherapeuticallyEquivalentAlert = "NOTEQUIVTHER";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNotTherapeuticallyEquivalentAlert
+    /// </summary>
+    public const string LiteralV3ActCodeNotTherapeuticallyEquivalentAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOTEQUIVTHER";
+
+    /// <summary>
     /// Literal for code: ObservationAlert
     /// </summary>
     public const string LiteralObservationAlert = "OBSA";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeObservationAlert
+    /// </summary>
+    public const string LiteralV3ActCodeObservationAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#OBSA";
 
     /// <summary>
     /// Literal for code: ViolatesStatedPreferences
@@ -1083,9 +1403,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralViolatesStatedPreferences = "PATPREF";
 
     /// <summary>
+    /// Literal for code: V3ActCodeViolatesStatedPreferences
+    /// </summary>
+    public const string LiteralV3ActCodeViolatesStatedPreferences = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PATPREF";
+
+    /// <summary>
     /// Literal for code: ViolatesStatedPreferencesAlternateAvailable
     /// </summary>
     public const string LiteralViolatesStatedPreferencesAlternateAvailable = "PATPREFALT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeViolatesStatedPreferencesAlternateAvailable
+    /// </summary>
+    public const string LiteralV3ActCodeViolatesStatedPreferencesAlternateAvailable = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PATPREFALT";
 
     /// <summary>
     /// Literal for code: PediatricAlert
@@ -1093,9 +1423,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPediatricAlert = "PEALRT";
 
     /// <summary>
+    /// Literal for code: V3ActCodePediatricAlert
+    /// </summary>
+    public const string LiteralV3ActCodePediatricAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PEALRT";
+
+    /// <summary>
     /// Literal for code: PolyOrdererAlert
     /// </summary>
     public const string LiteralPolyOrdererAlert = "PLYDOC";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePolyOrdererAlert
+    /// </summary>
+    public const string LiteralV3ActCodePolyOrdererAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PLYDOC";
 
     /// <summary>
     /// Literal for code: PolySupplierAlert
@@ -1103,9 +1443,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPolySupplierAlert = "PLYPHRM";
 
     /// <summary>
+    /// Literal for code: V3ActCodePolySupplierAlert
+    /// </summary>
+    public const string LiteralV3ActCodePolySupplierAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PLYPHRM";
+
+    /// <summary>
     /// Literal for code: PregnancyAlert
     /// </summary>
     public const string LiteralPregnancyAlert = "PREG";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePregnancyAlert
+    /// </summary>
+    public const string LiteralV3ActCodePregnancyAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PREG";
 
     /// <summary>
     /// Literal for code: PreviouslyIneffective
@@ -1113,9 +1463,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPreviouslyIneffective = "PREVINEF";
 
     /// <summary>
+    /// Literal for code: V3ActCodePreviouslyIneffective
+    /// </summary>
+    public const string LiteralV3ActCodePreviouslyIneffective = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PREVINEF";
+
+    /// <summary>
     /// Literal for code: RelatedAllergyAlert
     /// </summary>
     public const string LiteralRelatedAllergyAlert = "RALG";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeRelatedAllergyAlert
+    /// </summary>
+    public const string LiteralV3ActCodeRelatedAllergyAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RALG";
 
     /// <summary>
     /// Literal for code: RelatedPriorReactionAlert
@@ -1123,9 +1483,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRelatedPriorReactionAlert = "RAR";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRelatedPriorReactionAlert
+    /// </summary>
+    public const string LiteralV3ActCodeRelatedPriorReactionAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RAR";
+
+    /// <summary>
     /// Literal for code: ReactionAlert
     /// </summary>
     public const string LiteralReactionAlert = "REACT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeReactionAlert
+    /// </summary>
+    public const string LiteralV3ActCodeReactionAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#REACT";
 
     /// <summary>
     /// Literal for code: RelatedIntoleranceAlert
@@ -1133,9 +1503,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRelatedIntoleranceAlert = "RINT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRelatedIntoleranceAlert
+    /// </summary>
+    public const string LiteralV3ActCodeRelatedIntoleranceAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RINT";
+
+    /// <summary>
     /// Literal for code: RelatedReactionAlert
     /// </summary>
     public const string LiteralRelatedReactionAlert = "RREACT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeRelatedReactionAlert
+    /// </summary>
+    public const string LiteralV3ActCodeRelatedReactionAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RREACT";
 
     /// <summary>
     /// Literal for code: StartTooLateAlert_2
@@ -1143,9 +1523,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStartTooLateAlert_2 = "STRTLATE";
 
     /// <summary>
+    /// Literal for code: V3ActCodeStartTooLateAlert_2
+    /// </summary>
+    public const string LiteralV3ActCodeStartTooLateAlert_2 = "http://terminology.hl7.org/CodeSystem/v3-ActCode#STRTLATE";
+
+    /// <summary>
     /// Literal for code: TimingDetectedIssue
     /// </summary>
     public const string LiteralTimingDetectedIssue = "TIME";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeTimingDetectedIssue
+    /// </summary>
+    public const string LiteralV3ActCodeTimingDetectedIssue = "http://terminology.hl7.org/CodeSystem/v3-ActCode#TIME";
 
     /// <summary>
     /// Literal for code: EventTimingIncorrectAlert
@@ -1153,9 +1543,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEventTimingIncorrectAlert = "TIMING";
 
     /// <summary>
+    /// Literal for code: V3ActCodeEventTimingIncorrectAlert
+    /// </summary>
+    public const string LiteralV3ActCodeEventTimingIncorrectAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#TIMING";
+
+    /// <summary>
     /// Literal for code: RefillTooLateAlert
     /// </summary>
     public const string LiteralRefillTooLateAlert = "TOOLATE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeRefillTooLateAlert
+    /// </summary>
+    public const string LiteralV3ActCodeRefillTooLateAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#TOOLATE";
 
     /// <summary>
     /// Literal for code: RefillTooSoonAlert
@@ -1163,13 +1563,200 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRefillTooSoonAlert = "TOOSOON";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRefillTooSoonAlert
+    /// </summary>
+    public const string LiteralV3ActCodeRefillTooSoonAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#TOOSOON";
+
+    /// <summary>
     /// Literal for code: TherapeuticProductAlert
     /// </summary>
     public const string LiteralTherapeuticProductAlert = "TPROD";
 
     /// <summary>
+    /// Literal for code: V3ActCodeTherapeuticProductAlert
+    /// </summary>
+    public const string LiteralV3ActCodeTherapeuticProductAlert = "http://terminology.hl7.org/CodeSystem/v3-ActCode#TPROD";
+
+    /// <summary>
     /// Literal for code: WGHT
     /// </summary>
     public const string LiteralWGHT = "WGHT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeWGHT
+    /// </summary>
+    public const string LiteralV3ActCodeWGHT = "http://terminology.hl7.org/CodeSystem/v3-ActCode#WGHT";
+
+    /// <summary>
+    /// Dictionary for looking up DetectedissueCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "_ActSuppliedItemDetectedIssueCode", ActSuppliedItemDetectedIssueCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActSuppliedItemDetectedIssueCode", ActSuppliedItemDetectedIssueCode }, 
+      { "_AdministrationDetectedIssueCode", AdministrationDetectedIssueCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_AdministrationDetectedIssueCode", AdministrationDetectedIssueCode }, 
+      { "_AppropriatenessDetectedIssueCode", AppropriatenessDetectedIssueCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_AppropriatenessDetectedIssueCode", AppropriatenessDetectedIssueCode }, 
+      { "_DrugActionDetectedIssueCode", DrugActionDetectedIssueCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_DrugActionDetectedIssueCode", DrugActionDetectedIssueCode }, 
+      { "_InteractionDetectedIssueCode", InteractionDetectedIssueCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_InteractionDetectedIssueCode", InteractionDetectedIssueCode }, 
+      { "_SupplyDetectedIssueCode", SupplyDetectedIssueCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_SupplyDetectedIssueCode", SupplyDetectedIssueCode }, 
+      { "_TimingDetectedIssueCode", TimingDetectedIssueCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_TimingDetectedIssueCode", TimingDetectedIssueCode }, 
+      { "ABUSE", CommonlyAbusedMisusedAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ABUSE", CommonlyAbusedMisusedAlert }, 
+      { "ADALRT", AdultAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ADALRT", AdultAlert }, 
+      { "AGE", AgeAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#AGE", AgeAlert }, 
+      { "ALGY", AllergyAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ALGY", AllergyAlert }, 
+      { "ALLDONE", AlreadyPerformed }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ALLDONE", AlreadyPerformed }, 
+      { "ALRTENDLATE", EndTooLateAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ALRTENDLATE", EndTooLateAlert }, 
+      { "ALRTSTRTLATE", StartTooLateAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ALRTSTRTLATE", StartTooLateAlert }, 
+      { "COMPLY", ComplianceAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#COMPLY", ComplianceAlert }, 
+      { "COND", ConditionAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#COND", ConditionAlert }, 
+      { "CREACT", CommonReactionAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CREACT", CommonReactionAlert }, 
+      { "DACT", DrugActionDetectedIssue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DACT", DrugActionDetectedIssue }, 
+      { "DOSE", DosageProblem }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSE", DosageProblem }, 
+      { "DOSECOND", DosageConditionAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSECOND", DosageConditionAlert }, 
+      { "DOSEDUR", DoseDurationAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEDUR", DoseDurationAlert }, 
+      { "DOSEDURH", DoseDurationHighAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEDURH", DoseDurationHighAlert }, 
+      { "DOSEDURHIND", DoseDurationHighForIndicationAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEDURHIND", DoseDurationHighForIndicationAlert }, 
+      { "DOSEDURL", DoseDurationLowAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEDURL", DoseDurationLowAlert }, 
+      { "DOSEDURLIND", DoseDurationLowForIndicationAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEDURLIND", DoseDurationLowForIndicationAlert }, 
+      { "DOSEH", HighDoseAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEH", HighDoseAlert }, 
+      { "DOSEHIND", HighDoseForIndicationAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEHIND", HighDoseForIndicationAlert }, 
+      { "DOSEHINDA", HighDoseForAgeAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEHINDA", HighDoseForAgeAlert }, 
+      { "DOSEHINDSA", HighDoseForHeightSurfaceAreaAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEHINDSA", HighDoseForHeightSurfaceAreaAlert }, 
+      { "DOSEHINDW", HighDoseForWeightAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEHINDW", HighDoseForWeightAlert }, 
+      { "DOSEIVL", DoseIntervalAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEIVL", DoseIntervalAlert }, 
+      { "DOSEIVLIND", DoseIntervalForIndicationAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEIVLIND", DoseIntervalForIndicationAlert }, 
+      { "DOSEL", LowDoseAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSEL", LowDoseAlert }, 
+      { "DOSELIND", LowDoseForIndicationAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSELIND", LowDoseForIndicationAlert }, 
+      { "DOSELINDA", LowDoseForAgeAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSELINDA", LowDoseForAgeAlert }, 
+      { "DOSELINDSA", LowDoseForHeightSurfaceAreaAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSELINDSA", LowDoseForHeightSurfaceAreaAlert }, 
+      { "DOSELINDW", LowDoseForWeightAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOSELINDW", LowDoseForWeightAlert }, 
+      { "DRG", DrugInteractionAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DRG", DrugInteractionAlert }, 
+      { "DUPTHPCLS", DuplicateTherapeuticAlassAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DUPTHPCLS", DuplicateTherapeuticAlassAlert }, 
+      { "DUPTHPGEN", DuplicateGenericAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DUPTHPGEN", DuplicateGenericAlert }, 
+      { "DUPTHPY", DuplicateTherapyAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DUPTHPY", DuplicateTherapyAlert }, 
+      { "ENDLATE", EndTooLateAlert_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ENDLATE", EndTooLateAlert_2 }, 
+      { "FOOD", FoodInteractionAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#FOOD", FoodInteractionAlert }, 
+      { "FRAUD", PotentialFraud }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#FRAUD", PotentialFraud }, 
+      { "FULFIL", FulfillmentAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#FULFIL", FulfillmentAlert }, 
+      { "GEALRT", GeriatricAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#GEALRT", GeriatricAlert }, 
+      { "GEN", GeneticAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#GEN", GeneticAlert }, 
+      { "GEND", GenderAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#GEND", GenderAlert }, 
+      { "HELD", HeldSuspendedAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#HELD", HeldSuspendedAlert }, 
+      { "HGHT", HGHT }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#HGHT", HGHT }, 
+      { "HISTORIC", RecordRecordedAsHistorical }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#HISTORIC", RecordRecordedAsHistorical }, 
+      { "INT", IntoleranceAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#INT", IntoleranceAlert }, 
+      { "INTERVAL", OutsideRequestedTime }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#INTERVAL", OutsideRequestedTime }, 
+      { "LAB", LabAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#LAB", LabAlert }, 
+      { "LACT", LactationAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#LACT", LactationAlert }, 
+      { "MDOSE", MaximumDosageReached }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#MDOSE", MaximumDosageReached }, 
+      { "MINFREQ", TooSoonWithinFrequencyBasedOnTheUsage }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#MINFREQ", TooSoonWithinFrequencyBasedOnTheUsage }, 
+      { "NHP", NaturalHealthProductAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NHP", NaturalHealthProductAlert }, 
+      { "NONRX", NonPrescriptionInteractionAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NONRX", NonPrescriptionInteractionAlert }, 
+      { "NOTACTN", NoLongerActionable }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOTACTN", NoLongerActionable }, 
+      { "NOTEQUIV", NotEquivalentAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOTEQUIV", NotEquivalentAlert }, 
+      { "NOTEQUIVGEN", NotGenericallyEquivalentAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOTEQUIVGEN", NotGenericallyEquivalentAlert }, 
+      { "NOTEQUIVTHER", NotTherapeuticallyEquivalentAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOTEQUIVTHER", NotTherapeuticallyEquivalentAlert }, 
+      { "OBSA", ObservationAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#OBSA", ObservationAlert }, 
+      { "PATPREF", ViolatesStatedPreferences }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PATPREF", ViolatesStatedPreferences }, 
+      { "PATPREFALT", ViolatesStatedPreferencesAlternateAvailable }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PATPREFALT", ViolatesStatedPreferencesAlternateAvailable }, 
+      { "PEALRT", PediatricAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PEALRT", PediatricAlert }, 
+      { "PLYDOC", PolyOrdererAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PLYDOC", PolyOrdererAlert }, 
+      { "PLYPHRM", PolySupplierAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PLYPHRM", PolySupplierAlert }, 
+      { "PREG", PregnancyAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PREG", PregnancyAlert }, 
+      { "PREVINEF", PreviouslyIneffective }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PREVINEF", PreviouslyIneffective }, 
+      { "RALG", RelatedAllergyAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RALG", RelatedAllergyAlert }, 
+      { "RAR", RelatedPriorReactionAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RAR", RelatedPriorReactionAlert }, 
+      { "REACT", ReactionAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#REACT", ReactionAlert }, 
+      { "RINT", RelatedIntoleranceAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RINT", RelatedIntoleranceAlert }, 
+      { "RREACT", RelatedReactionAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RREACT", RelatedReactionAlert }, 
+      { "STRTLATE", StartTooLateAlert_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#STRTLATE", StartTooLateAlert_2 }, 
+      { "TIME", TimingDetectedIssue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#TIME", TimingDetectedIssue }, 
+      { "TIMING", EventTimingIncorrectAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#TIMING", EventTimingIncorrectAlert }, 
+      { "TOOLATE", RefillTooLateAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#TOOLATE", RefillTooLateAlert }, 
+      { "TOOSOON", RefillTooSoonAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#TOOSOON", RefillTooSoonAlert }, 
+      { "TPROD", TherapeuticProductAlert }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#TPROD", TherapeuticProductAlert }, 
+      { "WGHT", WGHT }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#WGHT", WGHT }, 
+    };
   };
 }

@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class VerificationresultCommunicationMethodCodes
   {
     /// <summary>
-    /// 
+    /// Manual
     /// </summary>
     public static readonly Coding Manual = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/verificationresult-communication-method"
     };
     /// <summary>
-    /// 
+    /// Portal
     /// </summary>
     public static readonly Coding Portal = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/verificationresult-communication-method"
     };
     /// <summary>
-    /// 
+    /// Pull
     /// </summary>
     public static readonly Coding Pull = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/verificationresult-communication-method"
     };
     /// <summary>
-    /// 
+    /// Push
     /// </summary>
     public static readonly Coding Push = new Coding
     {
@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralManual = "manual";
 
     /// <summary>
+    /// Literal for code: VerificationresultCommunicationMethodManual
+    /// </summary>
+    public const string LiteralVerificationresultCommunicationMethodManual = "http://terminology.hl7.org/CodeSystem/verificationresult-communication-method#manual";
+
+    /// <summary>
     /// Literal for code: Portal
     /// </summary>
     public const string LiteralPortal = "portal";
+
+    /// <summary>
+    /// Literal for code: VerificationresultCommunicationMethodPortal
+    /// </summary>
+    public const string LiteralVerificationresultCommunicationMethodPortal = "http://terminology.hl7.org/CodeSystem/verificationresult-communication-method#portal";
 
     /// <summary>
     /// Literal for code: Pull
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPull = "pull";
 
     /// <summary>
+    /// Literal for code: VerificationresultCommunicationMethodPull
+    /// </summary>
+    public const string LiteralVerificationresultCommunicationMethodPull = "http://terminology.hl7.org/CodeSystem/verificationresult-communication-method#pull";
+
+    /// <summary>
     /// Literal for code: Push
     /// </summary>
     public const string LiteralPush = "push";
+
+    /// <summary>
+    /// Literal for code: VerificationresultCommunicationMethodPush
+    /// </summary>
+    public const string LiteralVerificationresultCommunicationMethodPush = "http://terminology.hl7.org/CodeSystem/verificationresult-communication-method#push";
+
+    /// <summary>
+    /// Dictionary for looking up VerificationresultCommunicationMethod Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "manual", Manual }, 
+      { "http://terminology.hl7.org/CodeSystem/verificationresult-communication-method#manual", Manual }, 
+      { "portal", Portal }, 
+      { "http://terminology.hl7.org/CodeSystem/verificationresult-communication-method#portal", Portal }, 
+      { "pull", Pull }, 
+      { "http://terminology.hl7.org/CodeSystem/verificationresult-communication-method#pull", Pull }, 
+      { "push", Push }, 
+      { "http://terminology.hl7.org/CodeSystem/verificationresult-communication-method#push", Push }, 
+    };
   };
 }

@@ -126,9 +126,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdmitter_v3_ParticipationType = "ADM";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeAdmitter_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypeAdmitter_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ADM";
+
+    /// <summary>
     /// Literal for code: Attender_v3_ParticipationType
     /// </summary>
     public const string LiteralAttender_v3_ParticipationType = "ATND";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeAttender_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypeAttender_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ATND";
 
     /// <summary>
     /// Literal for code: CallbackContact_v3_ParticipationType
@@ -136,9 +146,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCallbackContact_v3_ParticipationType = "CALLBCK";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeCallbackContact_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypeCallbackContact_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CALLBCK";
+
+    /// <summary>
     /// Literal for code: Consultant_v3_ParticipationType
     /// </summary>
     public const string LiteralConsultant_v3_ParticipationType = "CON";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeConsultant_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypeConsultant_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CON";
 
     /// <summary>
     /// Literal for code: Discharger_v3_ParticipationType
@@ -146,9 +166,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDischarger_v3_ParticipationType = "DIS";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeDischarger_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypeDischarger_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DIS";
+
+    /// <summary>
     /// Literal for code: Emergency_encounter_participant_type
     /// </summary>
     public const string LiteralEmergency_encounter_participant_type = "emergency";
+
+    /// <summary>
+    /// Literal for code: EncounterParticipantTypeEmergency_encounter_participant_type
+    /// </summary>
+    public const string LiteralEncounterParticipantTypeEmergency_encounter_participant_type = "http://terminology.hl7.org/CodeSystem/participant-type#emergency";
 
     /// <summary>
     /// Literal for code: Escort_v3_ParticipationType
@@ -156,9 +186,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEscort_v3_ParticipationType = "ESC";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeEscort_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypeEscort_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ESC";
+
+    /// <summary>
     /// Literal for code: Participation_v3_ParticipationType
     /// </summary>
     public const string LiteralParticipation_v3_ParticipationType = "PART";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeParticipation_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypeParticipation_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PART";
 
     /// <summary>
     /// Literal for code: PrimaryPerformer_v3_ParticipationType
@@ -166,9 +206,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrimaryPerformer_v3_ParticipationType = "PPRF";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypePrimaryPerformer_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypePrimaryPerformer_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PPRF";
+
+    /// <summary>
     /// Literal for code: Referrer_v3_ParticipationType
     /// </summary>
     public const string LiteralReferrer_v3_ParticipationType = "REF";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeReferrer_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypeReferrer_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#REF";
 
     /// <summary>
     /// Literal for code: SecondaryPerformer_v3_ParticipationType
@@ -176,8 +226,48 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSecondaryPerformer_v3_ParticipationType = "SPRF";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeSecondaryPerformer_v3_ParticipationType
+    /// </summary>
+    public const string LiteralV3ParticipationTypeSecondaryPerformer_v3_ParticipationType = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF";
+
+    /// <summary>
     /// Literal for code: Translator_encounter_participant_type
     /// </summary>
     public const string LiteralTranslator_encounter_participant_type = "translator";
+
+    /// <summary>
+    /// Literal for code: EncounterParticipantTypeTranslator_encounter_participant_type
+    /// </summary>
+    public const string LiteralEncounterParticipantTypeTranslator_encounter_participant_type = "http://terminology.hl7.org/CodeSystem/participant-type#translator";
+
+    /// <summary>
+    /// Dictionary for looking up EncounterParticipantType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ADM", Admitter_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ADM", Admitter_v3_ParticipationType }, 
+      { "ATND", Attender_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ATND", Attender_v3_ParticipationType }, 
+      { "CALLBCK", CallbackContact_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CALLBCK", CallbackContact_v3_ParticipationType }, 
+      { "CON", Consultant_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CON", Consultant_v3_ParticipationType }, 
+      { "DIS", Discharger_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DIS", Discharger_v3_ParticipationType }, 
+      { "emergency", Emergency_encounter_participant_type }, 
+      { "http://terminology.hl7.org/CodeSystem/participant-type#emergency", Emergency_encounter_participant_type }, 
+      { "ESC", Escort_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ESC", Escort_v3_ParticipationType }, 
+      { "PART", Participation_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PART", Participation_v3_ParticipationType }, 
+      { "PPRF", PrimaryPerformer_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PPRF", PrimaryPerformer_v3_ParticipationType }, 
+      { "REF", Referrer_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#REF", Referrer_v3_ParticipationType }, 
+      { "SPRF", SecondaryPerformer_v3_ParticipationType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF", SecondaryPerformer_v3_ParticipationType }, 
+      { "translator", Translator_encounter_participant_type }, 
+      { "http://terminology.hl7.org/CodeSystem/participant-type#translator", Translator_encounter_participant_type }, 
+    };
   };
 }

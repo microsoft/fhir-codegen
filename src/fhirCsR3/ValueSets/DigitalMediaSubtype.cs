@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class DigitalMediaSubtypeCodes
   {
     /// <summary>
-    /// 
+    /// Diagnostic radiography of sacrococcygeal joint
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfSacrococcygealJoint_ = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// External camera medical photography
     /// </summary>
     public static readonly Coding ExternalCameraMedicalPhotography_ = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, contact B-scan
     /// </summary>
     public static readonly Coding EchographyContactBScan_ = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intra-oral photography
     /// </summary>
     public static readonly Coding IntraOralPhotography_ = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic guidance for dilation of ureters
     /// </summary>
     public static readonly Coding RadiologicGuidanceForDilationOfUreters_ = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doppler color flow velocity mapping
     /// </summary>
     public static readonly Coding DopplerColorFlowVelocityMapping_ = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic ultrasound of abdomen and retroperitoneum
     /// </summary>
     public static readonly Coding DiagnosticUltrasoundOfAbdomenAndRetroperitoneum_ = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intra-arterial digital subtraction angiography
     /// </summary>
     public static readonly Coding IntraArterialDigitalSubtractionAngiography_ = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravenous digital subtraction angiography
     /// </summary>
     public static readonly Coding IntravenousDigitalSubtractionAngiography_ = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Single photon emission computerized tomography
     /// </summary>
     public static readonly Coding SinglePhotonEmissionComputerizedTomography_ = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transcatheter deployment of detachable balloon
     /// </summary>
     public static readonly Coding TranscatheterDeploymentOfDetachableBalloon_ = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hand-held-transducer ultrasonography
     /// </summary>
     public static readonly Coding HandHeldTransducerUltrasonography_ = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transesophageal echocardiography
     /// </summary>
     public static readonly Coding TransesophagealEchocardiography_ = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography of liver
     /// </summary>
     public static readonly Coding UltrasonographyOfLiver_ = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thallium scan
     /// </summary>
     public static readonly Coding ThalliumScan_ = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Topography specific radiographic procedure
     /// </summary>
     public static readonly Coding TopographySpecificRadiographicProcedure_ = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic procedure on face, head AND/OR neck
     /// </summary>
     public static readonly Coding RadiologicProcedureOnFaceHeadANDORNeck_ = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic procedure on chest AND/OR abdomen
     /// </summary>
     public static readonly Coding RadiologicProcedureOnChestANDORAbdomen_ = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic procedure on cardiovascular system
     /// </summary>
     public static readonly Coding RadiologicProcedureOnCardiovascularSystem_ = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic procedure on genitourinary system
     /// </summary>
     public static readonly Coding RadiologicProcedureOnGenitourinarySystem_ = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic procedure on spine AND/OR pelvis
     /// </summary>
     public static readonly Coding RadiologicProcedureOnSpineANDORPelvis_ = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic procedure on lower extremity AND/OR hip
     /// </summary>
     public static readonly Coding RadiologicProcedureOnLowerExtremityANDORHip_ = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound procedure on cardiovascular system
     /// </summary>
     public static readonly Coding UltrasoundProcedureOnCardiovascularSystem_ = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound procedure on endocrine system
     /// </summary>
     public static readonly Coding UltrasoundProcedureOnEndocrineSystem_ = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound procedure on urinary AND/OR male genital system
     /// </summary>
     public static readonly Coding UltrasoundProcedureOnUrinaryANDORMaleGenitalSystem_ = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound procedure on female genital system AND/OR pregnancy related structure
     /// </summary>
     public static readonly Coding UltrasoundProcedureOnFemaleGenitalSystemANDORPregnancyRelatedStructure_ = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound procedure on nervous system AND/OR special sense organ
     /// </summary>
     public static readonly Coding UltrasoundProcedureOnNervousSystemANDORSpecialSenseOrgan_ = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound procedure on topographic region
     /// </summary>
     public static readonly Coding UltrasoundProcedureOnTopographicRegion_ = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nuclear medicine diagnostic procedure on cardiovascular system
     /// </summary>
     public static readonly Coding NuclearMedicineDiagnosticProcedureOnCardiovascularSystem_ = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nuclear medicine diagnostic procedure on endocrine AND/OR hematopoietic system
     /// </summary>
     public static readonly Coding NuclearMedicineDiagnosticProcedureOnEndocrineANDORHematopoieticSystem_ = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nuclear medicine diagnostic procedure on nervous system
     /// </summary>
     public static readonly Coding NuclearMedicineDiagnosticProcedureOnNervousSystem_ = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isotope study for plasma volume
     /// </summary>
     public static readonly Coding IsotopeStudyForPlasmaVolume_ = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kidney imaging with vascular flow and function study
     /// </summary>
     public static readonly Coding KidneyImagingWithVascularFlowAndFunctionStudy_ = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of brachial artery
     /// </summary>
     public static readonly Coding AngiographyOfBrachialArtery_ = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Somnocinematography
     /// </summary>
     public static readonly Coding Somnocinematography_ = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized tomography with IV contrast
     /// </summary>
     public static readonly Coding ComputerizedTomographyWithIVContrast_ = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging
     /// </summary>
     public static readonly Coding MagneticResonanceImaging_ = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of chest, lateral
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfChestLateral_ = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Translumbar aortogram
     /// </summary>
     public static readonly Coding TranslumbarAortogram_ = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phlebography of veins of head and neck
     /// </summary>
     public static readonly Coding PhlebographyOfVeinsOfHeadAndNeck_ = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pelvic lymphangiogram
     /// </summary>
     public static readonly Coding PelvicLymphangiogram_ = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of urinary system
     /// </summary>
     public static readonly Coding RadiographyOfUrinarySystem_ = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retrograde cystourethrogram
     /// </summary>
     public static readonly Coding RetrogradeCystourethrogram_ = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized axial tomography of thoracic spine with contrast
     /// </summary>
     public static readonly Coding ComputerizedAxialTomographyOfThoracicSpineWithContrast_ = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of soft tissue of shoulder
     /// </summary>
     public static readonly Coding RadiographyOfSoftTissueOfShoulder_ = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of lower extremity
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfLowerExtremity_ = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography for deep vein thrombosis
     /// </summary>
     public static readonly Coding UltrasonographyForDeepVeinThrombosis_ = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmic echography, A-mode
     /// </summary>
     public static readonly Coding OphthalmicEchographyAMode_ = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioiodinated rose bengal study of liver
     /// </summary>
     public static readonly Coding RadioiodinatedRoseBengalStudyOfLiver_ = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retroperitoneal echography, B-scan, limited
     /// </summary>
     public static readonly Coding RetroperitonealEchographyBScanLimited_ = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraoperative echography
     /// </summary>
     public static readonly Coding IntraoperativeEchography_ = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spiral computed tomography scan
     /// </summary>
     public static readonly Coding SpiralComputedTomographyScan_ = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, supine and erect studies
     /// </summary>
     public static readonly Coding DiagnosticRadiographySupineAndErectStudies_ = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy during operation
     /// </summary>
     public static readonly Coding FluoroscopyDuringOperation_ = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ocular thermography
     /// </summary>
     public static readonly Coding OcularThermography_ = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized tomography, sagittal
     /// </summary>
     public static readonly Coding ComputerizedTomographySagittal_ = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tracer study of eye
     /// </summary>
     public static readonly Coding TracerStudyOfEye_ = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary ventilation-perfusion study by radioactive krypton
     /// </summary>
     public static readonly Coding PulmonaryVentilationPerfusionStudyByRadioactiveKrypton_ = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phlebography of portal system
     /// </summary>
     public static readonly Coding PhlebographyOfPortalSystem_ = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioisotope scan of pancreas
     /// </summary>
     public static readonly Coding RadioisotopeScanOfPancreas_ = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of humerus
     /// </summary>
     public static readonly Coding RadiographyOfHumerus_ = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isotope study for glomerular filtration rate
     /// </summary>
     public static readonly Coding IsotopeStudyForGlomerularFiltrationRate_ = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, stereotactic localization in head
     /// </summary>
     public static readonly Coding DiagnosticRadiographyStereotacticLocalizationInHead_ = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of renal cyst, translumbar approach
     /// </summary>
     public static readonly Coding RadiologicExaminationOfRenalCystTranslumbarApproach_ = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Xeromammography
     /// </summary>
     public static readonly Coding Xeromammography_ = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of hip, bilateral
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfHipBilateral_ = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic guidance for percutaneous placement of enteroclysis tube
     /// </summary>
     public static readonly Coding RadiologicGuidanceForPercutaneousPlacementOfEnteroclysisTube_ = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phlebography
     /// </summary>
     public static readonly Coding Phlebography_ = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arteriography
     /// </summary>
     public static readonly Coding Arteriography_ = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound phlebography of vena cava
     /// </summary>
     public static readonly Coding UltrasoundPhlebographyOfVenaCava_ = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound phlebography of hepatic vein
     /// </summary>
     public static readonly Coding UltrasoundPhlebographyOfHepaticVein_ = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of urinary bladder
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfUrinaryBladder_ = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corpora cavernosography
     /// </summary>
     public static readonly Coding CorporaCavernosography_ = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiocardiography by cineradiography
     /// </summary>
     public static readonly Coding AngiocardiographyByCineradiography_ = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transvaginal echography
     /// </summary>
     public static readonly Coding TransvaginalEchography_ = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dynamic function study, blood clearance
     /// </summary>
     public static readonly Coding DynamicFunctionStudyBloodClearance_ = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thyroid uptake with discharge
     /// </summary>
     public static readonly Coding ThyroidUptakeWithDischarge_ = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computer assisted image analysis
     /// </summary>
     public static readonly Coding ComputerAssistedImageAnalysis_ = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spatial collocation analysis
     /// </summary>
     public static readonly Coding SpatialCollocationAnalysis_ = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spatial proximity analysis
     /// </summary>
     public static readonly Coding SpatialProximityAnalysis_ = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Temporal correlation analysis
     /// </summary>
     public static readonly Coding TemporalCorrelationAnalysis_ = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Image quality analysis
     /// </summary>
     public static readonly Coding ImageQualityAnalysis_ = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Focal asymmetric density analysis
     /// </summary>
     public static readonly Coding FocalAsymmetricDensityAnalysis_ = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Asymmetric breast tissue analysis
     /// </summary>
     public static readonly Coding AsymmetricBreastTissueAnalysis_ = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breast composition analysis
     /// </summary>
     public static readonly Coding BreastCompositionAnalysis_ = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mammary ductogram of multiple ducts
     /// </summary>
     public static readonly Coding MammaryDuctogramOfMultipleDucts_ = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized tomography without IV contrast followed by IV contrast and more sections
     /// </summary>
     public static readonly Coding ComputerizedTomographyWithoutIVContrastFollowedByIVContrastAndMoreSections_ = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, combined AP and lateral
     /// </summary>
     public static readonly Coding DiagnosticRadiographyCombinedAPAndLateral_ = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastrointestinal aspirate for localization of blood loss
     /// </summary>
     public static readonly Coding GastrointestinalAspirateForLocalizationOfBloodLoss_ = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, scan B-mode for fetal age determination
     /// </summary>
     public static readonly Coding EchographyScanBModeForFetalAgeDetermination_ = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of arteriovenous shunt
     /// </summary>
     public static readonly Coding AngiographyOfArteriovenousShunt_ = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CT guidance for needle biopsy
     /// </summary>
     public static readonly Coding CTGuidanceForNeedleBiopsy_ = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vasography
     /// </summary>
     public static readonly Coding Vasography_ = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fetal echocardiography, real time with image documentation (2D) with M-mode recording
     /// </summary>
     public static readonly Coding FetalEchocardiographyRealTimeWithImageDocumentation2DWithMModeRecording_ = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiocalcium absorption study
     /// </summary>
     public static readonly Coding RadiocalciumAbsorptionStudy_ = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scanning or imaging, perfusion study, particulate
     /// </summary>
     public static readonly Coding ScanningOrImagingPerfusionStudyParticulate_ = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebral ventriculography, air contrast
     /// </summary>
     public static readonly Coding CerebralVentriculographyAirContrast_ = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serialography, single plane
     /// </summary>
     public static readonly Coding SerialographySinglePlane_ = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skeletal X-ray of ankle and foot
     /// </summary>
     public static readonly Coding SkeletalXRayOfAnkleAndFoot_ = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of renal arteries, bilateral
     /// </summary>
     public static readonly Coding AngiographyOfRenalArteriesBilateral_ = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic supervision and interpretation of procedure
     /// </summary>
     public static readonly Coding RadiologicSupervisionAndInterpretationOfProcedure_ = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ocular photography for medical evaluation and documentation, slit lamp photography
     /// </summary>
     public static readonly Coding OcularPhotographyForMedicalEvaluationAndDocumentationSlitLampPhotography_ = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography
     /// </summary>
     public static readonly Coding Ultrasonography_ = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Placental localization
     /// </summary>
     public static readonly Coding PlacentalLocalization_ = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thermography of skin
     /// </summary>
     public static readonly Coding ThermographyOfSkin_ = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous transhepatic cholangiogram
     /// </summary>
     public static readonly Coding PercutaneousTranshepaticCholangiogram_ = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain film
     /// </summary>
     public static readonly Coding PlainFilm_ = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ethmoid sinuses X-ray
     /// </summary>
     public static readonly Coding EthmoidSinusesXRay_ = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frontal sinuses X-ray
     /// </summary>
     public static readonly Coding FrontalSinusesXRay_ = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maxillary sinuses X-ray
     /// </summary>
     public static readonly Coding MaxillarySinusesXRay_ = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mastoid processes X-ray
     /// </summary>
     public static readonly Coding MastoidProcessesXRay_ = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain X-ray base of skull
     /// </summary>
     public static readonly Coding PlainXRayBaseOfSkull_ = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain X-ray facial sinuses
     /// </summary>
     public static readonly Coding PlainXRayFacialSinuses_ = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atlantoaxial X-ray
     /// </summary>
     public static readonly Coding AtlantoaxialXRay_ = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Instability views spine
     /// </summary>
     public static readonly Coding InstabilityViewsSpine_ = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clavicle X-ray
     /// </summary>
     public static readonly Coding ClavicleXRay_ = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sternoclavicular joint X-ray
     /// </summary>
     public static readonly Coding SternoclavicularJointXRay_ = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracic inlet X-ray
     /// </summary>
     public static readonly Coding ThoracicInletXRay_ = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Symphysis pubis X-ray
     /// </summary>
     public static readonly Coding SymphysisPubisXRay_ = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain X-ray head of humerus
     /// </summary>
     public static readonly Coding PlainXRayHeadOfHumerus_ = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain X-ray shaft of humerus
     /// </summary>
     public static readonly Coding PlainXRayShaftOfHumerus_ = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// X-ray shaft of radius/ulna
     /// </summary>
     public static readonly Coding XRayShaftOfRadiusUlna_ = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stress X-ray shoulder joint
     /// </summary>
     public static readonly Coding StressXRayShoulderJoint_ = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acromioclavicular joint X-ray
     /// </summary>
     public static readonly Coding AcromioclavicularJointXRay_ = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain X-ray radius
     /// </summary>
     public static readonly Coding PlainXRayRadius_ = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stress X-ray thumb
     /// </summary>
     public static readonly Coding StressXRayThumb_ = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Instability views carpus
     /// </summary>
     public static readonly Coding InstabilityViewsCarpus_ = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain X-ray head of femur
     /// </summary>
     public static readonly Coding PlainXRayHeadOfFemur_ = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Femoral neck X-ray
     /// </summary>
     public static readonly Coding FemoralNeckXRay_ = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain X-ray shaft of femur
     /// </summary>
     public static readonly Coding PlainXRayShaftOfFemur_ = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patella X-ray
     /// </summary>
     public static readonly Coding PatellaXRay_ = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stress X-ray knee
     /// </summary>
     public static readonly Coding StressXRayKnee_ = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stress X-ray ankle joint
     /// </summary>
     public static readonly Coding StressXRayAnkleJoint_ = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain X-ray abdomen
     /// </summary>
     public static readonly Coding PlainXRayAbdomen_ = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray face
     /// </summary>
     public static readonly Coding SoftTissueXRayFace_ = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear soft tissue X-ray
     /// </summary>
     public static readonly Coding EarSoftTissueXRay_ = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray nose
     /// </summary>
     public static readonly Coding SoftTissueXRayNose_ = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neck soft tissue X-ray
     /// </summary>
     public static readonly Coding NeckSoftTissueXRay_ = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// X-ray cervical lymph nodes
     /// </summary>
     public static readonly Coding XRayCervicalLymphNodes_ = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray thyroid
     /// </summary>
     public static readonly Coding SoftTissueXRayThyroid_ = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray mouth
     /// </summary>
     public static readonly Coding SoftTissueXRayMouth_ = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray tongue
     /// </summary>
     public static readonly Coding SoftTissueXRayTongue_ = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Standard chest X-ray
     /// </summary>
     public static readonly Coding StandardChestXRay_ = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray chest
     /// </summary>
     public static readonly Coding SoftTissueXRayChest_ = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray pleura
     /// </summary>
     public static readonly Coding SoftTissueXRayPleura_ = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray heart
     /// </summary>
     public static readonly Coding SoftTissueXRayHeart_ = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray thoracic aorta
     /// </summary>
     public static readonly Coding SoftTissueXRayThoracicAorta_ = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray diaphragm
     /// </summary>
     public static readonly Coding SoftTissueXRayDiaphragm_ = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abdominal obstetric X-ray
     /// </summary>
     public static readonly Coding AbdominalObstetricXRay_ = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obstetric X-ray - fetus
     /// </summary>
     public static readonly Coding ObstetricXRayFetus_ = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Upper abdomen soft tissue X-ray
     /// </summary>
     public static readonly Coding UpperAbdomenSoftTissueXRay_ = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardio-esophageal X-ray
     /// </summary>
     public static readonly Coding CardioEsophagealXRay_ = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liver soft tissue X-ray
     /// </summary>
     public static readonly Coding LiverSoftTissueXRay_ = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spleen soft tissue X-ray
     /// </summary>
     public static readonly Coding SpleenSoftTissueXRay_ = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray kidney
     /// </summary>
     public static readonly Coding SoftTissueXRayKidney_ = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// X-ray male external genitalia
     /// </summary>
     public static readonly Coding XRayMaleExternalGenitalia_ = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// X-ray female external genitalia
     /// </summary>
     public static readonly Coding XRayFemaleExternalGenitalia_ = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray limbs
     /// </summary>
     public static readonly Coding SoftTissueXRayLimbs_ = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray lymph nodes
     /// </summary>
     public static readonly Coding SoftTissueXRayLymphNodes_ = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray veins
     /// </summary>
     public static readonly Coding SoftTissueXRayVeins_ = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray arteries
     /// </summary>
     public static readonly Coding SoftTissueXRayArteries_ = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contrast radiography excluding cardiovascular system
     /// </summary>
     public static readonly Coding ContrastRadiographyExcludingCardiovascularSystem_ = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contrast radiography orbit
     /// </summary>
     public static readonly Coding ContrastRadiographyOrbit_ = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contrast radiography of oropharynx
     /// </summary>
     public static readonly Coding ContrastRadiographyOfOropharynx_ = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral transglottic bronchography
     /// </summary>
     public static readonly Coding BilateralTransglotticBronchography_ = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral transcricoid bronchography
     /// </summary>
     public static readonly Coding BilateralTranscricoidBronchography_ = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Selective bronchography
     /// </summary>
     public static readonly Coding SelectiveBronchography_ = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic pneumomediastinum
     /// </summary>
     public static readonly Coding DiagnosticPneumomediastinum_ = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contrast radiography of abdominal cavity
     /// </summary>
     public static readonly Coding ContrastRadiographyOfAbdominalCavity_ = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contrast radiography of peritoneal cavity
     /// </summary>
     public static readonly Coding ContrastRadiographyOfPeritonealCavity_ = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pelvic contrast radiography
     /// </summary>
     public static readonly Coding PelvicContrastRadiography_ = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Barium swallow
     /// </summary>
     public static readonly Coding BariumSwallow_ = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Barium follow through
     /// </summary>
     public static readonly Coding BariumFollowThrough_ = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Barium enema
     /// </summary>
     public static readonly Coding BariumEnema_ = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// BA - Barium enema via colostomy
     /// </summary>
     public static readonly Coding BABariumEnemaViaColostomy_ = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Double contrast barium meal
     /// </summary>
     public static readonly Coding DoubleContrastBariumMeal_ = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Duodenum double contrast examination
     /// </summary>
     public static readonly Coding DuodenumDoubleContrastExamination_ = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rectum double contrast examination
     /// </summary>
     public static readonly Coding RectumDoubleContrastExamination_ = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Colon double contrast examination
     /// </summary>
     public static readonly Coding ColonDoubleContrastExamination_ = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cystography
     /// </summary>
     public static readonly Coding Cystography_ = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retrograde cystography
     /// </summary>
     public static readonly Coding RetrogradeCystography_ = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous cystography
     /// </summary>
     public static readonly Coding PercutaneousCystography_ = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Negative/double contrast cystography
     /// </summary>
     public static readonly Coding NegativeDoubleContrastCystography_ = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravenous cystography
     /// </summary>
     public static readonly Coding IntravenousCystography_ = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urethrogram
     /// </summary>
     public static readonly Coding Urethrogram_ = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peroral cholangiography
     /// </summary>
     public static readonly Coding PeroralCholangiography_ = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Splenography
     /// </summary>
     public static readonly Coding Splenography_ = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contrast amniography
     /// </summary>
     public static readonly Coding ContrastAmniography_ = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Placental vasography
     /// </summary>
     public static readonly Coding PlacentalVasography_ = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hysterosalpingography
     /// </summary>
     public static readonly Coding Hysterosalpingography_ = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Female genital system contrast procedure
     /// </summary>
     public static readonly Coding FemaleGenitalSystemContrastProcedure_ = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Male genital system contrast procedure
     /// </summary>
     public static readonly Coding MaleGenitalSystemContrastProcedure_ = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contrast radiography of glands
     /// </summary>
     public static readonly Coding ContrastRadiographyOfGlands_ = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sialography
     /// </summary>
     public static readonly Coding Sialography_ = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breast contrast procedure
     /// </summary>
     public static readonly Coding BreastContrastProcedure_ = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contrast radiography - ducts
     /// </summary>
     public static readonly Coding ContrastRadiographyDucts_ = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Omphalomesenteric duct contrast radiography
     /// </summary>
     public static readonly Coding OmphalomesentericDuctContrastRadiography_ = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Head fistulography
     /// </summary>
     public static readonly Coding HeadFistulography_ = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neck fistulography
     /// </summary>
     public static readonly Coding NeckFistulography_ = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chest wall fistulography
     /// </summary>
     public static readonly Coding ChestWallFistulography_ = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abdominal fistulography
     /// </summary>
     public static readonly Coding AbdominalFistulography_ = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retroperitoneal fistulography
     /// </summary>
     public static readonly Coding RetroperitonealFistulography_ = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Knee arthrogram
     /// </summary>
     public static readonly Coding KneeArthrogram_ = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sacroiliac joint arthrogram
     /// </summary>
     public static readonly Coding SacroiliacJointArthrogram_ = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hip arthrogram
     /// </summary>
     public static readonly Coding HipArthrogram_ = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Double contrast arthrography
     /// </summary>
     public static readonly Coding DoubleContrastArthrography_ = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pneumoarthrography
     /// </summary>
     public static readonly Coding Pneumoarthrography_ = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interstitial contrast radiology
     /// </summary>
     public static readonly Coding InterstitialContrastRadiology_ = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abdominal aortogram
     /// </summary>
     public static readonly Coding AbdominalAortogram_ = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography: head/neck/thorax
     /// </summary>
     public static readonly Coding VenographyHeadNeckThorax_ = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebral sinus venography
     /// </summary>
     public static readonly Coding CerebralSinusVenography_ = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior vena cavogram
     /// </summary>
     public static readonly Coding SuperiorVenaCavogram_ = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transsternal thoracic venogram
     /// </summary>
     public static readonly Coding TranssternalThoracicVenogram_ = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography: trunk
     /// </summary>
     public static readonly Coding VenographyTrunk_ = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operative abdominal venogram
     /// </summary>
     public static readonly Coding OperativeAbdominalVenogram_ = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inferior vena cavogram
     /// </summary>
     public static readonly Coding InferiorVenaCavogram_ = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venogram - portal vein
     /// </summary>
     public static readonly Coding VenogramPortalVein_ = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Renal venogram
     /// </summary>
     public static readonly Coding RenalVenogram_ = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Female genital venogram
     /// </summary>
     public static readonly Coding FemaleGenitalVenogram_ = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Male genital venogram
     /// </summary>
     public static readonly Coding MaleGenitalVenogram_ = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography: peripheral
     /// </summary>
     public static readonly Coding VenographyPeripheral_ = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venogram - pertrochanteric
     /// </summary>
     public static readonly Coding VenogramPertrochanteric_ = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Head lymphangiogram
     /// </summary>
     public static readonly Coding HeadLymphangiogram_ = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphangiography neck
     /// </summary>
     public static readonly Coding LymphangiographyNeck_ = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracic lymphangiogram
     /// </summary>
     public static readonly Coding ThoracicLymphangiogram_ = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Miscellaneous imaging procedures
     /// </summary>
     public static readonly Coding MiscellaneousImagingProcedures_ = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy - brain
     /// </summary>
     public static readonly Coding FluoroscopyBrain_ = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy - skull
     /// </summary>
     public static readonly Coding FluoroscopySkull_ = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy - cervical column
     /// </summary>
     public static readonly Coding FluoroscopyCervicalColumn_ = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy - skeleton/limbs
     /// </summary>
     public static readonly Coding FluoroscopySkeletonLimbs_ = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy -heart/mediastinum
     /// </summary>
     public static readonly Coding FluoroscopyHeartMediastinum_ = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy of diaphragm
     /// </summary>
     public static readonly Coding FluoroscopyOfDiaphragm_ = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy - lungs
     /// </summary>
     public static readonly Coding FluoroscopyLungs_ = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy - chest wall
     /// </summary>
     public static readonly Coding FluoroscopyChestWall_ = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy - esophagus
     /// </summary>
     public static readonly Coding FluoroscopyEsophagus_ = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy - intestine -small
     /// </summary>
     public static readonly Coding FluoroscopyIntestineSmall_ = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy - intestine -large
     /// </summary>
     public static readonly Coding FluoroscopyIntestineLarge_ = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy - stomach
     /// </summary>
     public static readonly Coding FluoroscopyStomach_ = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy - rectum
     /// </summary>
     public static readonly Coding FluoroscopyRectum_ = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy - gallbladder
     /// </summary>
     public static readonly Coding FluoroscopyGallbladder_ = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy - urinary tract
     /// </summary>
     public static readonly Coding FluoroscopyUrinaryTract_ = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy - female genital
     /// </summary>
     public static readonly Coding FluoroscopyFemaleGenital_ = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy and radiography
     /// </summary>
     public static readonly Coding FluoroscopyAndRadiography_ = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy and radiography - brain
     /// </summary>
     public static readonly Coding FluoroscopyAndRadiographyBrain_ = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy and radiography - skull
     /// </summary>
     public static readonly Coding FluoroscopyAndRadiographySkull_ = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy and radiography - cervical column
     /// </summary>
     public static readonly Coding FluoroscopyAndRadiographyCervicalColumn_ = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy and radiography - skeleton
     /// </summary>
     public static readonly Coding FluoroscopyAndRadiographySkeleton_ = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy and radiography - heart
     /// </summary>
     public static readonly Coding FluoroscopyAndRadiographyHeart_ = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy and radiography - mediastinum
     /// </summary>
     public static readonly Coding FluoroscopyAndRadiographyMediastinum_ = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy and radiography - lungs
     /// </summary>
     public static readonly Coding FluoroscopyAndRadiographyLungs_ = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy and radiography - chest wall
     /// </summary>
     public static readonly Coding FluoroscopyAndRadiographyChestWall_ = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy and radiography - digestive
     /// </summary>
     public static readonly Coding FluoroscopyAndRadiographyDigestive_ = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy and radiography - urinary
     /// </summary>
     public static readonly Coding FluoroscopyAndRadiographyUrinary_ = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy and radiography - female genital
     /// </summary>
     public static readonly Coding FluoroscopyAndRadiographyFemaleGenital_ = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tomography - head/neck
     /// </summary>
     public static readonly Coding TomographyHeadNeck_ = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tomography - skeleton/limbs
     /// </summary>
     public static readonly Coding TomographySkeletonLimbs_ = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tomography - larynx/trachea
     /// </summary>
     public static readonly Coding TomographyLarynxTrachea_ = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tomography - lungs
     /// </summary>
     public static readonly Coding TomographyLungs_ = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tomography - gallbladder
     /// </summary>
     public static readonly Coding TomographyGallbladder_ = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tomography - chest
     /// </summary>
     public static readonly Coding TomographyChest_ = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cineradiography - brain
     /// </summary>
     public static readonly Coding CineradiographyBrain_ = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cineradiography - heart
     /// </summary>
     public static readonly Coding CineradiographyHeart_ = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cineradiography -great vessels
     /// </summary>
     public static readonly Coding CineradiographyGreatVessels_ = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cineradiography - respiratory tract
     /// </summary>
     public static readonly Coding CineradiographyRespiratoryTract_ = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cineradiography - gastrointestinal tract
     /// </summary>
     public static readonly Coding CineradiographyGastrointestinalTract_ = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cineradiography - GUT
     /// </summary>
     public static readonly Coding CineradiographyGUT_ = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cineradiography - joints
     /// </summary>
     public static readonly Coding CineradiographyJoints_ = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kymography - heart
     /// </summary>
     public static readonly Coding KymographyHeart_ = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kymography - great vessels
     /// </summary>
     public static readonly Coding KymographyGreatVessels_ = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kymography - lungs
     /// </summary>
     public static readonly Coding KymographyLungs_ = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kymography - diaphragm
     /// </summary>
     public static readonly Coding KymographyDiaphragm_ = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serial radiography of lungs
     /// </summary>
     public static readonly Coding SerialRadiographyOfLungs_ = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CT of skull
     /// </summary>
     public static readonly Coding CTOfSkull_ = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CT of face
     /// </summary>
     public static readonly Coding CTOfFace_ = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CT of neck
     /// </summary>
     public static readonly Coding CTOfNeck_ = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CT of chest
     /// </summary>
     public static readonly Coding CTOfChest_ = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CT of abdomen
     /// </summary>
     public static readonly Coding CTOfAbdomen_ = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CT of pelvis
     /// </summary>
     public static readonly Coding CTOfPelvis_ = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CAT scan - whole body
     /// </summary>
     public static readonly Coding CATScanWholeBody_ = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized diagnostic radiology
     /// </summary>
     public static readonly Coding ComputerizedDiagnosticRadiology_ = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized cineangiography
     /// </summary>
     public static readonly Coding ComputerizedCineangiography_ = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stereotactic/stereoscopic test - brain
     /// </summary>
     public static readonly Coding StereotacticStereoscopicTestBrain_ = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stereotactic/stereoscopic test - skull
     /// </summary>
     public static readonly Coding StereotacticStereoscopicTestSkull_ = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stereotactic/stereoscopic test - face
     /// </summary>
     public static readonly Coding StereotacticStereoscopicTestFace_ = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stereotactic/stereoscopic test - heart
     /// </summary>
     public static readonly Coding StereotacticStereoscopicTestHeart_ = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stereotactic/stereoscopic test - mediastinum
     /// </summary>
     public static readonly Coding StereotacticStereoscopicTestMediastinum_ = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stereotactic/stereoscopic test - lungs
     /// </summary>
     public static readonly Coding StereotacticStereoscopicTestLungs_ = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stereotactic/stereoscopic test - abdomen
     /// </summary>
     public static readonly Coding StereotacticStereoscopicTestAbdomen_ = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stereotactic/stereoscopic test - skeleton
     /// </summary>
     public static readonly Coding StereotacticStereoscopicTestSkeleton_ = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stereotactic/stereoscopic test - soft tissue
     /// </summary>
     public static readonly Coding StereotacticStereoscopicTestSoftTissue_ = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specific imaging methods
     /// </summary>
     public static readonly Coding SpecificImagingMethods_ = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specific mammary gland imaging
     /// </summary>
     public static readonly Coding SpecificMammaryGlandImaging_ = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specific blood vessel imaging
     /// </summary>
     public static readonly Coding SpecificBloodVesselImaging_ = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specific skeletal imaging
     /// </summary>
     public static readonly Coding SpecificSkeletalImaging_ = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specific soft tissue imaging
     /// </summary>
     public static readonly Coding SpecificSoftTissueImaging_ = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral contrast cholecystography
     /// </summary>
     public static readonly Coding OralContrastCholecystography_ = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide tissue clearance study
     /// </summary>
     public static readonly Coding RadionuclideTissueClearanceStudy_ = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonic guidance for renal pelvis aspiration
     /// </summary>
     public static readonly Coding UltrasonicGuidanceForRenalPelvisAspiration_ = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Splenoportography, positive contrast
     /// </summary>
     public static readonly Coding SplenoportographyPositiveContrast_ = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, combined PA and lateral
     /// </summary>
     public static readonly Coding DiagnosticRadiographyCombinedPAAndLateral_ = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Continuous wave Doppler analog wave form analysis of upper extremity arteries
     /// </summary>
     public static readonly Coding ContinuousWaveDopplerAnalogWaveFormAnalysisOfUpperExtremityArteries_ = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of male genital organs
     /// </summary>
     public static readonly Coding RadiographyOfMaleGenitalOrgans_ = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrography of elbow
     /// </summary>
     public static readonly Coding ArthrographyOfElbow_ = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonic guidance for pericardiocentesis
     /// </summary>
     public static readonly Coding UltrasonicGuidanceForPericardiocentesis_ = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute gastrointestinal blood loss imaging
     /// </summary>
     public static readonly Coding AcuteGastrointestinalBloodLossImaging_ = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mammary ductogram
     /// </summary>
     public static readonly Coding MammaryDuctogram_ = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of upper gastrointestinal tract with KUB
     /// </summary>
     public static readonly Coding RadiologicExaminationOfUpperGastrointestinalTractWithKUB_ = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Testicular imaging with vascular flow
     /// </summary>
     public static readonly Coding TesticularImagingWithVascularFlow_ = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide study, protein kinetics
     /// </summary>
     public static readonly Coding RadionuclideStudyProteinKinetics_ = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of pelvis, stereo views
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfPelvisStereoViews_ = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, M-mode
     /// </summary>
     public static readonly Coding EchographyMMode_ = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of elbow, anteroposterior and lateral views
     /// </summary>
     public static readonly Coding RadiologicExaminationOfElbowAnteroposteriorAndLateralViews_ = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of chest, B-scan with image documentation
     /// </summary>
     public static readonly Coding EchographyOfChestBScanWithImageDocumentation_ = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of soft tissue of elbow
     /// </summary>
     public static readonly Coding RadiographyOfSoftTissueOfElbow_ = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioisotope study of respiratory system
     /// </summary>
     public static readonly Coding RadioisotopeStudyOfRespiratorySystem_ = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isotope study for gastrointestinal blood loss
     /// </summary>
     public static readonly Coding IsotopeStudyForGastrointestinalBloodLoss_ = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of ankle
     /// </summary>
     public static readonly Coding RadiographyOfAnkle_ = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of mandible
     /// </summary>
     public static readonly Coding RadiographyOfMandible_ = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone thermography
     /// </summary>
     public static readonly Coding BoneThermography_ = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound study of eye
     /// </summary>
     public static readonly Coding UltrasoundStudyOfEye_ = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthodontic cephalogram
     /// </summary>
     public static readonly Coding OrthodonticCephalogram_ = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ocular fundus photography
     /// </summary>
     public static readonly Coding OcularFundusPhotography_ = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amniography
     /// </summary>
     public static readonly Coding Amniography_ = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioisotope scan of pituitary
     /// </summary>
     public static readonly Coding RadioisotopeScanOfPituitary_ = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Special echography procedure
     /// </summary>
     public static readonly Coding SpecialEchographyProcedure_ = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laparoscopic cholecystectomy with cholangiography
     /// </summary>
     public static readonly Coding LaparoscopicCholecystectomyWithCholangiography_ = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pelvic echography, B-scan, complete
     /// </summary>
     public static readonly Coding PelvicEchographyBScanComplete_ = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of foot, anteroposterior and lateral views
     /// </summary>
     public static readonly Coding RadiologicExaminationOfFootAnteroposteriorAndLateralViews_ = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized axial tomography of posterior fossa with contrast
     /// </summary>
     public static readonly Coding ComputerizedAxialTomographyOfPosteriorFossaWithContrast_ = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepatobiliary ductal system imaging including gallbladder
     /// </summary>
     public static readonly Coding HepatobiliaryDuctalSystemImagingIncludingGallbladder_ = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of intestine
     /// </summary>
     public static readonly Coding RadiographyOfIntestine_ = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of cervical spine, anteroposterior and lateral
     /// </summary>
     public static readonly Coding RadiologicExaminationOfCervicalSpineAnteroposteriorAndLateral_ = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fetal biophysical profile
     /// </summary>
     public static readonly Coding FetalBiophysicalProfile_ = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ocular photography for medical evaluation and documentation, stereophotography
     /// </summary>
     public static readonly Coding OcularPhotographyForMedicalEvaluationAndDocumentationStereophotography_ = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of ribs
     /// </summary>
     public static readonly Coding RadiographyOfRibs_ = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of prostate, transrectal approach
     /// </summary>
     public static readonly Coding EchographyOfProstateTransrectalApproach_ = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized tomography, bone density study
     /// </summary>
     public static readonly Coding ComputerizedTomographyBoneDensityStudy_ = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary ventilation-perfusion study by radioactive oxygen
     /// </summary>
     public static readonly Coding PulmonaryVentilationPerfusionStudyByRadioactiveOxygen_ = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of symphysis menti
     /// </summary>
     public static readonly Coding RadiographyOfSymphysisMenti_ = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized tomography, 3 dimensional reconstruction
     /// </summary>
     public static readonly Coding ComputerizedTomography3DimensionalReconstruction_ = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of chest, minifilm
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfChestMinifilm_ = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epidural venography
     /// </summary>
     public static readonly Coding EpiduralVenography_ = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrography of hip with positive contrast
     /// </summary>
     public static readonly Coding ArthrographyOfHipWithPositiveContrast_ = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography of adrenal, bilateral
     /// </summary>
     public static readonly Coding VenographyOfAdrenalBilateral_ = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Xeroradiography
     /// </summary>
     public static readonly Coding Xeroradiography_ = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Perineogram
     /// </summary>
     public static readonly Coding Perineogram_ = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// X-ray of lumbosacral spine
     /// </summary>
     public static readonly Coding XRayOfLumbosacralSpine_ = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary phlebography
     /// </summary>
     public static readonly Coding PulmonaryPhlebography_ = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of teeth
     /// </summary>
     public static readonly Coding RadiographyOfTeeth_ = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, survey
     /// </summary>
     public static readonly Coding DiagnosticRadiographySurvey_ = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of wrist, anteroposterior and lateral views
     /// </summary>
     public static readonly Coding RadiologicExaminationOfWristAnteroposteriorAndLateralViews_ = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastrointestinal protein loss study
     /// </summary>
     public static readonly Coding GastrointestinalProteinLossStudy_ = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of sternum
     /// </summary>
     public static readonly Coding RadiographyOfSternum_ = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, posteroanterior (PA)
     /// </summary>
     public static readonly Coding DiagnosticRadiographyPosteroanteriorPA_ = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transmission bone density study
     /// </summary>
     public static readonly Coding TransmissionBoneDensityStudy_ = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography of digestive system
     /// </summary>
     public static readonly Coding UltrasonographyOfDigestiveSystem_ = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scanning or imaging, perfusion study, gaseous
     /// </summary>
     public static readonly Coding ScanningOrImagingPerfusionStudyGaseous_ = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of soft tissue of thigh
     /// </summary>
     public static readonly Coding RadiographyOfSoftTissueOfThigh_ = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography of head and neck
     /// </summary>
     public static readonly Coding UltrasonographyOfHeadAndNeck_ = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echocardiography for determining posterior left ventricular wall thickness
     /// </summary>
     public static readonly Coding EchocardiographyForDeterminingPosteriorLeftVentricularWallThickness_ = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography of total body
     /// </summary>
     public static readonly Coding UltrasonographyOfTotalBody_ = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of upper limb soft tissue
     /// </summary>
     public static readonly Coding RadiographyOfUpperLimbSoftTissue_ = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Screening mammography
     /// </summary>
     public static readonly Coding ScreeningMammography_ = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abdominal aortography, translumbar with serialography
     /// </summary>
     public static readonly Coding AbdominalAortographyTranslumbarWithSerialography_ = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CT guidance for treatment planning, teletherapy
     /// </summary>
     public static readonly Coding CTGuidanceForTreatmentPlanningTeletherapy_ = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Splenoportogram by splenic arteriography
     /// </summary>
     public static readonly Coding SplenoportogramBySplenicArteriography_ = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of scrotum and contents
     /// </summary>
     public static readonly Coding EchographyOfScrotumAndContents_ = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pelvic echography
     /// </summary>
     public static readonly Coding PelvicEchography_ = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of coccyx
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfCoccyx_ = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retrograde urography with KUB
     /// </summary>
     public static readonly Coding RetrogradeUrographyWithKUB_ = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep vein thermography
     /// </summary>
     public static readonly Coding DeepVeinThermography_ = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography of lower extremity, bilateral
     /// </summary>
     public static readonly Coding VenographyOfLowerExtremityBilateral_ = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hysterogram
     /// </summary>
     public static readonly Coding Hysterogram_ = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Testicular imaging
     /// </summary>
     public static readonly Coding TesticularImaging_ = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide scanning for hot spot
     /// </summary>
     public static readonly Coding RadionuclideScanningForHotSpot_ = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of cervicocerebral arteries
     /// </summary>
     public static readonly Coding AngiographyOfCervicocerebralArteries_ = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography of thorax
     /// </summary>
     public static readonly Coding UltrasonographyOfThorax_ = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phlebography of head
     /// </summary>
     public static readonly Coding PhlebographyOfHead_ = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep fine needle aspiration biopsy under radiologic guidance
     /// </summary>
     public static readonly Coding DeepFineNeedleAspirationBiopsyUnderRadiologicGuidance_ = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of lumbar spine, combined AP and lateral
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfLumbarSpineCombinedAPAndLateral_ = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, special views
     /// </summary>
     public static readonly Coding DiagnosticRadiographySpecialViews_ = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of pelvis
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfPelvis_ = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized axial tomography of upper extremity with contrast
     /// </summary>
     public static readonly Coding ComputerizedAxialTomographyOfUpperExtremityWithContrast_ = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepatic venography with hemodynamic evaluation
     /// </summary>
     public static readonly Coding HepaticVenographyWithHemodynamicEvaluation_ = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Molegraphy
     /// </summary>
     public static readonly Coding Molegraphy_ = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous transhepatic portography with hemodynamic evaluation
     /// </summary>
     public static readonly Coding PercutaneousTranshepaticPortographyWithHemodynamicEvaluation_ = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography with contrast media
     /// </summary>
     public static readonly Coding DiagnosticRadiographyWithContrastMedia_ = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Positive contrast bronchography, bilateral
     /// </summary>
     public static readonly Coding PositiveContrastBronchographyBilateral_ = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography of jugular vein
     /// </summary>
     public static readonly Coding VenographyOfJugularVein_ = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myelography of entire spinal canal
     /// </summary>
     public static readonly Coding MyelographyOfEntireSpinalCanal_ = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic localization for needle biopsy in chest
     /// </summary>
     public static readonly Coding FluoroscopicLocalizationForNeedleBiopsyInChest_ = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cineradiography of pharynx
     /// </summary>
     public static readonly Coding CineradiographyOfPharynx_ = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pelvic lymphangiography, bilateral
     /// </summary>
     public static readonly Coding PelvicLymphangiographyBilateral_ = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide biliary patency study
     /// </summary>
     public static readonly Coding RadionuclideBiliaryPatencyStudy_ = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Red cell survival study with splenic sequestration
     /// </summary>
     public static readonly Coding RedCellSurvivalStudyWithSplenicSequestration_ = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracic myelography
     /// </summary>
     public static readonly Coding ThoracicMyelography_ = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cholangiogram
     /// </summary>
     public static readonly Coding Cholangiogram_ = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cervical myelography
     /// </summary>
     public static readonly Coding CervicalMyelography_ = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral nephrotomography
     /// </summary>
     public static readonly Coding BilateralNephrotomography_ = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, M-mode, complete
     /// </summary>
     public static readonly Coding EchographyMModeComplete_ = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nephrotomogram
     /// </summary>
     public static readonly Coding Nephrotomogram_ = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transcatheter therapy by infusion with angiography
     /// </summary>
     public static readonly Coding TranscatheterTherapyByInfusionWithAngiography_ = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiocardiography by serialography, multi-plane
     /// </summary>
     public static readonly Coding AngiocardiographyBySerialographyMultiPlane_ = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic localization for transbronchial biopsy and brushing
     /// </summary>
     public static readonly Coding FluoroscopicLocalizationForTransbronchialBiopsyAndBrushing_ = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiocardiography, positive contrast
     /// </summary>
     public static readonly Coding AngiocardiographyPositiveContrast_ = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of upper gastrointestinal tract and small bowel with serial films
     /// </summary>
     public static readonly Coding RadiologicExaminationOfUpperGastrointestinalTractAndSmallBowelWithSerialFilms_ = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pneumogynecography
     /// </summary>
     public static readonly Coding Pneumogynecography_ = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of face, head AND/OR neck
     /// </summary>
     public static readonly Coding RadiographyOfFaceHeadANDORNeck_ = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of female genital organs
     /// </summary>
     public static readonly Coding RadiographyOfFemaleGenitalOrgans_ = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioiodohippurate sodium renogram, multiple probes
     /// </summary>
     public static readonly Coding RadioiodohippurateSodiumRenogramMultipleProbes_ = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of brain and brain stem
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfBrainAndBrainStem_ = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of shoulder
     /// </summary>
     public static readonly Coding RadiographyOfShoulder_ = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Xenon flow scan of cardiovascular system
     /// </summary>
     public static readonly Coding XenonFlowScanOfCardiovascularSystem_ = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, scan B-mode for placement of radiation fields
     /// </summary>
     public static readonly Coding EchographyScanBModeForPlacementOfRadiationFields_ = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography of aortic arch
     /// </summary>
     public static readonly Coding UltrasonographyOfAorticArch_ = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography of inferior vena cava with serialography
     /// </summary>
     public static readonly Coding VenographyOfInferiorVenaCavaWithSerialography_ = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of breast, B-scan
     /// </summary>
     public static readonly Coding EchographyOfBreastBScan_ = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kowa fundus photography
     /// </summary>
     public static readonly Coding KowaFundusPhotography_ = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of knee, anteroposterior and lateral views
     /// </summary>
     public static readonly Coding RadiologicExaminationOfKneeAnteroposteriorAndLateralViews_ = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of kidney
     /// </summary>
     public static readonly Coding EchographyOfKidney_ = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonic guidance for thoracentesis
     /// </summary>
     public static readonly Coding UltrasonicGuidanceForThoracentesis_ = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography with measurements
     /// </summary>
     public static readonly Coding DiagnosticRadiographyWithMeasurements_ = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmoscopy with medical evaluation, extended, with fundus photography
     /// </summary>
     public static readonly Coding OphthalmoscopyWithMedicalEvaluationExtendedWithFundusPhotography_ = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide venous thrombosis study
     /// </summary>
     public static readonly Coding RadionuclideVenousThrombosisStudy_ = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of orbit
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfOrbit_ = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peripheral thermogram
     /// </summary>
     public static readonly Coding PeripheralThermogram_ = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of upper extremity arteries with serialography
     /// </summary>
     public static readonly Coding AngiographyOfUpperExtremityArteriesWithSerialography_ = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retroperitoneal echography, B-scan, complete
     /// </summary>
     public static readonly Coding RetroperitonealEchographyBScanComplete_ = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Selective angiocardiography
     /// </summary>
     public static readonly Coding SelectiveAngiocardiography_ = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of kidney-ureter-bladder
     /// </summary>
     public static readonly Coding RadiographyOfKidneyUreterBladder_ = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of supraorbital area
     /// </summary>
     public static readonly Coding RadiographyOfSupraorbitalArea_ = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary perfusion imaging, particulate
     /// </summary>
     public static readonly Coding PulmonaryPerfusionImagingParticulate_ = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, scan B-mode for fetal growth rate
     /// </summary>
     public static readonly Coding EchographyScanBModeForFetalGrowthRate_ = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioisotope scan of head
     /// </summary>
     public static readonly Coding RadioisotopeScanOfHead_ = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravenous pyelogram
     /// </summary>
     public static readonly Coding IntravenousPyelogram_ = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brain imaging with vascular flow
     /// </summary>
     public static readonly Coding BrainImagingWithVascularFlow_ = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography during operative procedure
     /// </summary>
     public static readonly Coding DiagnosticRadiographyDuringOperativeProcedure_ = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastrointestinal isotope fat absorption study
     /// </summary>
     public static readonly Coding GastrointestinalIsotopeFatAbsorptionStudy_ = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, stereo
     /// </summary>
     public static readonly Coding DiagnosticRadiographyStereo_ = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, anteroposterior (AP)
     /// </summary>
     public static readonly Coding DiagnosticRadiographyAnteroposteriorAP_ = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cervical lymphangiogram
     /// </summary>
     public static readonly Coding CervicalLymphangiogram_ = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arteriography of cerebral arteries
     /// </summary>
     public static readonly Coding ArteriographyOfCerebralArteries_ = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thyroid uptake with thyroid suppression
     /// </summary>
     public static readonly Coding ThyroidUptakeWithThyroidSuppression_ = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized tomography of abdomen with contrast
     /// </summary>
     public static readonly Coding ComputerizedTomographyOfAbdomenWithContrast_ = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orbital venography
     /// </summary>
     public static readonly Coding OrbitalVenography_ = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrography
     /// </summary>
     public static readonly Coding Arthrography_ = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// X-ray of ribs, sternum and clavicle
     /// </summary>
     public static readonly Coding XRayOfRibsSternumAndClavicle_ = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roentgenography, negative contrast
     /// </summary>
     public static readonly Coding RoentgenographyNegativeContrast_ = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coronary angiography
     /// </summary>
     public static readonly Coding CoronaryAngiography_ = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Panorex examination of mandible
     /// </summary>
     public static readonly Coding PanorexExaminationOfMandible_ = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography with special study
     /// </summary>
     public static readonly Coding DiagnosticRadiographyWithSpecialStudy_ = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide scanning for cold spot
     /// </summary>
     public static readonly Coding RadionuclideScanningForColdSpot_ = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonic guidance for aspiration of cyst
     /// </summary>
     public static readonly Coding UltrasonicGuidanceForAspirationOfCyst_ = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isotope study of blood volume
     /// </summary>
     public static readonly Coding IsotopeStudyOfBloodVolume_ = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized axial tomography of brain
     /// </summary>
     public static readonly Coding ComputerizedAxialTomographyOfBrain_ = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epididymography
     /// </summary>
     public static readonly Coding Epididymography_ = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of esophagus
     /// </summary>
     public static readonly Coding RadiographyOfEsophagus_ = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiocardiography
     /// </summary>
     public static readonly Coding Angiocardiography_ = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of arteries of extremity
     /// </summary>
     public static readonly Coding AngiographyOfArteriesOfExtremity_ = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peritoneal venous shunt patency test for Leveen shunt
     /// </summary>
     public static readonly Coding PeritonealVenousShuntPatencyTestForLeveenShunt_ = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scanning or imaging with vascular flow
     /// </summary>
     public static readonly Coding ScanningOrImagingWithVascularFlow_ = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of face
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfFace_ = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of thoracolumbar spine, supine and erect for scoliosis
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfThoracolumbarSpineSupineAndErectForScoliosis_ = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic dental photography
     /// </summary>
     public static readonly Coding DiagnosticDentalPhotography_ = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac blood pool imaging
     /// </summary>
     public static readonly Coding CardiacBloodPoolImaging_ = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echocardiography for determining ventricular contraction
     /// </summary>
     public static readonly Coding EchocardiographyForDeterminingVentricularContraction_ = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic tomography
     /// </summary>
     public static readonly Coding DiagnosticTomography_ = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Red cell survival study with hepatic sequestration
     /// </summary>
     public static readonly Coding RedCellSurvivalStudyWithHepaticSequestration_ = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastrointestinal blood loss study by stool counting
     /// </summary>
     public static readonly Coding GastrointestinalBloodLossStudyByStoolCounting_ = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echoencephalography, A-mode
     /// </summary>
     public static readonly Coding EchoencephalographyAMode_ = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intra-abdominal phlebography
     /// </summary>
     public static readonly Coding IntraAbdominalPhlebography_ = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Placentography
     /// </summary>
     public static readonly Coding Placentography_ = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of nasopharynx
     /// </summary>
     public static readonly Coding RadiographyOfNasopharynx_ = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// External ocular photography for medical evaluation and documentation
     /// </summary>
     public static readonly Coding ExternalOcularPhotographyForMedicalEvaluationAndDocumentation_ = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography with contrast media by injection, positive contrast
     /// </summary>
     public static readonly Coding DiagnosticRadiographyWithContrastMediaByInjectionPositiveContrast_ = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of upper gastrointestinal tract with serial films
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfUpperGastrointestinalTractWithSerialFilms_ = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sphincterotomy of sphincter of Oddi by ERCP
     /// </summary>
     public static readonly Coding SphincterotomyOfSphincterOfOddiByERCP_ = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liver and spleen imaging
     /// </summary>
     public static readonly Coding LiverAndSpleenImaging_ = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of retroperitoneum
     /// </summary>
     public static readonly Coding RadiographyOfRetroperitoneum_ = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of root canal
     /// </summary>
     public static readonly Coding RadiographyOfRootCanal_ = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide study of coronary blood flow
     /// </summary>
     public static readonly Coding RadionuclideStudyOfCoronaryBloodFlow_ = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of calcaneus
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfCalcaneus_ = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary ventilation perfusion study
     /// </summary>
     public static readonly Coding PulmonaryVentilationPerfusionStudy_ = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonic guidance for needle biopsy
     /// </summary>
     public static readonly Coding UltrasonicGuidanceForNeedleBiopsy_ = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of adenoids
     /// </summary>
     public static readonly Coding RadiographyOfAdenoids_ = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cervical discography
     /// </summary>
     public static readonly Coding CervicalDiscography_ = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray of chest wall
     /// </summary>
     public static readonly Coding SoftTissueXRayOfChestWall_ = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography of upper extremity
     /// </summary>
     public static readonly Coding VenographyOfUpperExtremity_ = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of soft tissue of knee
     /// </summary>
     public static readonly Coding RadiographyOfSoftTissueOfKnee_ = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of thyroid, A-mode
     /// </summary>
     public static readonly Coding EchographyOfThyroidAMode_ = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kidney imaging, SPECT technique
     /// </summary>
     public static readonly Coding KidneyImagingSPECTTechnique_ = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, flexion and/or extension studies
     /// </summary>
     public static readonly Coding DiagnosticRadiographyFlexionAndOrExtensionStudies_ = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy of chest
     /// </summary>
     public static readonly Coding FluoroscopyOfChest_ = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral contrast cholangiography
     /// </summary>
     public static readonly Coding OralContrastCholangiography_ = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thyroid imaging
     /// </summary>
     public static readonly Coding ThyroidImaging_ = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skeletal X-ray of wrist and hand
     /// </summary>
     public static readonly Coding SkeletalXRayOfWristAndHand_ = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Imaging of arteries of lower extremities
     /// </summary>
     public static readonly Coding ImagingOfArteriesOfLowerExtremities_ = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of pelvis, prostate and bladder
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfPelvisProstateAndBladder_ = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone imaging of limited area
     /// </summary>
     public static readonly Coding BoneImagingOfLimitedArea_ = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plethysmometry
     /// </summary>
     public static readonly Coding Plethysmometry_ = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray of face, head AND neck
     /// </summary>
     public static readonly Coding SoftTissueXRayOfFaceHeadANDNeck_ = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phlebography of neck
     /// </summary>
     public static readonly Coding PhlebographyOfNeck_ = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bowel imaging for volvulus
     /// </summary>
     public static readonly Coding BowelImagingForVolvulus_ = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skeletal X-ray of pelvis and hip
     /// </summary>
     public static readonly Coding SkeletalXRayOfPelvisAndHip_ = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echocardiography for determining mitral and tricuspid valve motion
     /// </summary>
     public static readonly Coding EchocardiographyForDeterminingMitralAndTricuspidValveMotion_ = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography for midline shift of brain
     /// </summary>
     public static readonly Coding UltrasonographyForMidlineShiftOfBrain_ = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of temporomandibular joint
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfTemporomandibularJoint_ = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of fistula or sinus tract, positive contrast
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfFistulaOrSinusTractPositiveContrast_ = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thermography
     /// </summary>
     public static readonly Coding Thermography_ = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echocardiography
     /// </summary>
     public static readonly Coding Echocardiography_ = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Special ultrasonic display or imaging technique
     /// </summary>
     public static readonly Coding SpecialUltrasonicDisplayOrImagingTechnique_ = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, A-mode with amplitude quantitation
     /// </summary>
     public static readonly Coding EchographyAModeWithAmplitudeQuantitation_ = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transcatheter therapy for embolization with angiography
     /// </summary>
     public static readonly Coding TranscatheterTherapyForEmbolizationWithAngiography_ = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic Doppler ultrasonography of pelvic area
     /// </summary>
     public static readonly Coding DiagnosticDopplerUltrasonographyOfPelvicArea_ = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of lumbar spine with contrast
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfLumbarSpineWithContrast_ = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioisotope scan for myocardial infarction
     /// </summary>
     public static readonly Coding RadioisotopeScanForMyocardialInfarction_ = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of clavicle, complete
     /// </summary>
     public static readonly Coding RadiologicExaminationOfClavicleComplete_ = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebral scan
     /// </summary>
     public static readonly Coding CerebralScan_ = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myocardial imaging for infarct with ejection fraction, first pass technique
     /// </summary>
     public static readonly Coding MyocardialImagingForInfarctWithEjectionFractionFirstPassTechnique_ = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmic echography with amplitude quantitation, A-mode
     /// </summary>
     public static readonly Coding OphthalmicEchographyWithAmplitudeQuantitationAMode_ = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Small bowel series
     /// </summary>
     public static readonly Coding SmallBowelSeries_ = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioisotope scan of bone
     /// </summary>
     public static readonly Coding RadioisotopeScanOfBone_ = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of pharynx
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfPharynx_ = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thyroid imaging with vascular flow
     /// </summary>
     public static readonly Coding ThyroidImagingWithVascularFlow_ = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioisotope study of hematopoietic system
     /// </summary>
     public static readonly Coding RadioisotopeStudyOfHematopoieticSystem_ = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound of inner ear
     /// </summary>
     public static readonly Coding UltrasoundOfInnerEar_ = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arteriography of superior mesenteric artery
     /// </summary>
     public static readonly Coding ArteriographyOfSuperiorMesentericArtery_ = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of skull
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfSkull_ = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Imaging of arteries of extremities
     /// </summary>
     public static readonly Coding ImagingOfArteriesOfExtremities_ = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphangiogram
     /// </summary>
     public static readonly Coding Lymphangiogram_ = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pneumography of retroperitoneum
     /// </summary>
     public static readonly Coding PneumographyOfRetroperitoneum_ = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of chest, combined PA and lateral
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfChestCombinedPAAndLateral_ = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebrospinal fluid flow imaging for CSF leakage detection and localization
     /// </summary>
     public static readonly Coding CerebrospinalFluidFlowImagingForCSFLeakageDetectionAndLocalization_ = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doppler flow mapping of thorax
     /// </summary>
     public static readonly Coding DopplerFlowMappingOfThorax_ = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide dynamic function study with multiple probes
     /// </summary>
     public static readonly Coding RadionuclideDynamicFunctionStudyWithMultipleProbes_ = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abdominal aortography, positive contrast
     /// </summary>
     public static readonly Coding AbdominalAortographyPositiveContrast_ = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral mammography
     /// </summary>
     public static readonly Coding BilateralMammography_ = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of lower extremity arteries, bilateral
     /// </summary>
     public static readonly Coding AngiographyOfLowerExtremityArteriesBilateral_ = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of optic foramina
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfOpticForamina_ = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, M-mode, limited
     /// </summary>
     public static readonly Coding EchographyMModeLimited_ = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Impedance phlebography
     /// </summary>
     public static readonly Coding ImpedancePhlebography_ = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary inhalation study
     /// </summary>
     public static readonly Coding PulmonaryInhalationStudy_ = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of breast, A-mode
     /// </summary>
     public static readonly Coding EchographyOfBreastAMode_ = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioiodinated triolein study
     /// </summary>
     public static readonly Coding RadioiodinatedTrioleinStudy_ = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of soft tissue of forearm
     /// </summary>
     public static readonly Coding RadiographyOfSoftTissueOfForearm_ = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography of biliary tract
     /// </summary>
     public static readonly Coding UltrasonographyOfBiliaryTract_ = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stereotactic excisional biopsy of intracranial lesion with computerized axial tomography
     /// </summary>
     public static readonly Coding StereotacticExcisionalBiopsyOfIntracranialLesionWithComputerizedAxialTomography_ = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography of vena cava
     /// </summary>
     public static readonly Coding VenographyOfVenaCava_ = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy
     /// </summary>
     public static readonly Coding Fluoroscopy_ = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of sella turcica
     /// </summary>
     public static readonly Coding RadiologicExaminationOfSellaTurcica_ = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of mastoids
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfMastoids_ = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Azygography
     /// </summary>
     public static readonly Coding Azygography_ = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography of abdomen
     /// </summary>
     public static readonly Coding UltrasonographyOfAbdomen_ = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteoarticular thermography
     /// </summary>
     public static readonly Coding OsteoarticularThermography_ = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide localization of tumor
     /// </summary>
     public static readonly Coding RadionuclideLocalizationOfTumor_ = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of thoracic spine
     /// </summary>
     public static readonly Coding RadiographyOfThoracicSpine_ = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liver function study with serial images
     /// </summary>
     public static readonly Coding LiverFunctionStudyWithSerialImages_ = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Femoral phlebography
     /// </summary>
     public static readonly Coding FemoralPhlebography_ = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination, osseous survey, complete
     /// </summary>
     public static readonly Coding RadiologicExaminationOsseousSurveyComplete_ = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multi-plane radionuclide tomography
     /// </summary>
     public static readonly Coding MultiPlaneRadionuclideTomography_ = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Determination of ventricular ejection fraction with probe technique
     /// </summary>
     public static readonly Coding DeterminationOfVentricularEjectionFractionWithProbeTechnique_ = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography with contrast media by injection, positive contrast, bilateral
     /// </summary>
     public static readonly Coding DiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastBilateral_ = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac tomography
     /// </summary>
     public static readonly Coding CardiacTomography_ = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebral ventriculography, positive contrast
     /// </summary>
     public static readonly Coding CerebralVentriculographyPositiveContrast_ = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic localization for fine needle aspiration
     /// </summary>
     public static readonly Coding FluoroscopicLocalizationForFineNeedleAspiration_ = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isotope study for urinary recovery
     /// </summary>
     public static readonly Coding IsotopeStudyForUrinaryRecovery_ = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Celiac angiography
     /// </summary>
     public static readonly Coding CeliacAngiography_ = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salivary gland imaging with serial views
     /// </summary>
     public static readonly Coding SalivaryGlandImagingWithSerialViews_ = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of lumbosacral spine, anteroposterior and lateral
     /// </summary>
     public static readonly Coding RadiologicExaminationOfLumbosacralSpineAnteroposteriorAndLateral_ = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Special radionuclide imaging technique
     /// </summary>
     public static readonly Coding SpecialRadionuclideImagingTechnique_ = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrography of wrist
     /// </summary>
     public static readonly Coding ArthrographyOfWrist_ = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide localization of abscess of whole body
     /// </summary>
     public static readonly Coding RadionuclideLocalizationOfAbscessOfWholeBody_ = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// P32 tracer study of eye
     /// </summary>
     public static readonly Coding P32TracerStudyOfEye_ = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography of breast
     /// </summary>
     public static readonly Coding UltrasonographyOfBreast_ = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of uvula
     /// </summary>
     public static readonly Coding RadiographyOfUvula_ = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic procedure on lower extremity and pelvis
     /// </summary>
     public static readonly Coding RadiologicProcedureOnLowerExtremityAndPelvis_ = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thyroid uptake with thyroid stimulation
     /// </summary>
     public static readonly Coding ThyroidUptakeWithThyroidStimulation_ = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White blood cell localization, whole body
     /// </summary>
     public static readonly Coding WhiteBloodCellLocalizationWholeBody_ = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiologic examination with fluoroscopy
     /// </summary>
     public static readonly Coding DiagnosticRadiologicExaminationWithFluoroscopy_ = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, oblique, special
     /// </summary>
     public static readonly Coding DiagnosticRadiographyObliqueSpecial_ = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of sacral spine, combined AP and lateral
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfSacralSpineCombinedAPAndLateral_ = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Splenogram
     /// </summary>
     public static readonly Coding Splenogram_ = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide volume dilution study
     /// </summary>
     public static readonly Coding RadionuclideVolumeDilutionStudy_ = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography of renal vein, bilateral
     /// </summary>
     public static readonly Coding VenographyOfRenalVeinBilateral_ = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of head
     /// </summary>
     public static readonly Coding RadiographyOfHead_ = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound peripheral vascular flow study
     /// </summary>
     public static readonly Coding UltrasoundPeripheralVascularFlowStudy_ = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic monitoring and radiography for cardiac pacemaker insertion
     /// </summary>
     public static readonly Coding FluoroscopicMonitoringAndRadiographyForCardiacPacemakerInsertion_ = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lumbar discography
     /// </summary>
     public static readonly Coding LumbarDiscography_ = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracic aortography, positive contrast
     /// </summary>
     public static readonly Coding ThoracicAortographyPositiveContrast_ = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of lumbosacral spine, complete, with bending views
     /// </summary>
     public static readonly Coding RadiologicExaminationOfLumbosacralSpineCompleteWithBendingViews_ = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Imaging of arteries of upper extremity
     /// </summary>
     public static readonly Coding ImagingOfArteriesOfUpperExtremity_ = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphangiography of lower extremity
     /// </summary>
     public static readonly Coding LymphangiographyOfLowerExtremity_ = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skeletal X-ray of shoulder and upper limb
     /// </summary>
     public static readonly Coding SkeletalXRayOfShoulderAndUpperLimb_ = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cholecystocholangiogram
     /// </summary>
     public static readonly Coding Cholecystocholangiogram_ = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy, post-operative
     /// </summary>
     public static readonly Coding FluoroscopyPostOperative_ = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of abdomen, B-scan, limited
     /// </summary>
     public static readonly Coding EchographyOfAbdomenBScanLimited_ = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of penis
     /// </summary>
     public static readonly Coding RadiographyOfPenis_ = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echocardiography for determining interventricular septal thickness
     /// </summary>
     public static readonly Coding EchocardiographyForDeterminingInterventricularSeptalThickness_ = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salpingography
     /// </summary>
     public static readonly Coding Salpingography_ = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of hand
     /// </summary>
     public static readonly Coding RadiographyOfHand_ = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of chest, stereo
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfChestStereo_ = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of scapula
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfScapula_ = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coronary arteriography using two catheters
     /// </summary>
     public static readonly Coding CoronaryArteriographyUsingTwoCatheters_ = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography
     /// </summary>
     public static readonly Coding Venography_ = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravenous pyelogram with KUB
     /// </summary>
     public static readonly Coding IntravenousPyelogramWithKUB_ = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray of lower limb
     /// </summary>
     public static readonly Coding SoftTissueXRayOfLowerLimb_ = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography with oral contrast
     /// </summary>
     public static readonly Coding DiagnosticRadiographyWithOralContrast_ = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiographic dental examination for personal identification
     /// </summary>
     public static readonly Coding RadiographicDentalExaminationForPersonalIdentification_ = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isotope study for renal clearance
     /// </summary>
     public static readonly Coding IsotopeStudyForRenalClearance_ = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kidney imaging with vascular flow
     /// </summary>
     public static readonly Coding KidneyImagingWithVascularFlow_ = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary ventilation-perfusion study by radioactive xenon
     /// </summary>
     public static readonly Coding PulmonaryVentilationPerfusionStudyByRadioactiveXenon_ = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mammary ductogram of single duct
     /// </summary>
     public static readonly Coding MammaryDuctogramOfSingleDuct_ = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abdominal aortography with bilateral iliofemoral arteries with serialography
     /// </summary>
     public static readonly Coding AbdominalAortographyWithBilateralIliofemoralArteriesWithSerialography_ = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echoencephalography
     /// </summary>
     public static readonly Coding Echoencephalography_ = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound peripheral imaging, real time scan
     /// </summary>
     public static readonly Coding UltrasoundPeripheralImagingRealTimeScan_ = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of chest wall
     /// </summary>
     public static readonly Coding RadiographyOfChestWall_ = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Four dimensional ultrasound imaging of heart
     /// </summary>
     public static readonly Coding FourDimensionalUltrasoundImagingOfHeart_ = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging with contrast
     /// </summary>
     public static readonly Coding MagneticResonanceImagingWithContrast_ = new Coding
     {
@@ -5574,7 +5574,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrography of ankle with positive contrast
     /// </summary>
     public static readonly Coding ArthrographyOfAnkleWithPositiveContrast_ = new Coding
     {
@@ -5583,7 +5583,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Three dimensional ultrasound imaging of heart
     /// </summary>
     public static readonly Coding ThreeDimensionalUltrasoundImagingOfHeart_ = new Coding
     {
@@ -5592,7 +5592,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of foot
     /// </summary>
     public static readonly Coding RadiographyOfFoot_ = new Coding
     {
@@ -5601,7 +5601,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of pulmonary arteries, bilateral
     /// </summary>
     public static readonly Coding AngiographyOfPulmonaryArteriesBilateral_ = new Coding
     {
@@ -5610,7 +5610,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Photography of gross organ
     /// </summary>
     public static readonly Coding PhotographyOfGrossOrgan_ = new Coding
     {
@@ -5619,7 +5619,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of maxilla
     /// </summary>
     public static readonly Coding RadiographyOfMaxilla_ = new Coding
     {
@@ -5628,7 +5628,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clivogram
     /// </summary>
     public static readonly Coding Clivogram_ = new Coding
     {
@@ -5637,7 +5637,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound cephalometrics
     /// </summary>
     public static readonly Coding UltrasoundCephalometrics_ = new Coding
     {
@@ -5646,7 +5646,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of ankle, anteroposterior and lateral views
     /// </summary>
     public static readonly Coding RadiologicExaminationOfAnkleAnteroposteriorAndLateralViews_ = new Coding
     {
@@ -5655,7 +5655,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide volume dilution of body spaces
     /// </summary>
     public static readonly Coding RadionuclideVolumeDilutionOfBodySpaces_ = new Coding
     {
@@ -5664,7 +5664,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laparoscopy with guided transhepatic cholangiography
     /// </summary>
     public static readonly Coding LaparoscopyWithGuidedTranshepaticCholangiography_ = new Coding
     {
@@ -5673,7 +5673,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic guidance for ileal conduitogram
     /// </summary>
     public static readonly Coding RadiologicGuidanceForIlealConduitogram_ = new Coding
     {
@@ -5682,7 +5682,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echocardiography for determining prosthetic valve motion
     /// </summary>
     public static readonly Coding EchocardiographyForDeterminingProstheticValveMotion_ = new Coding
     {
@@ -5691,7 +5691,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography of superior sagittal sinus
     /// </summary>
     public static readonly Coding VenographyOfSuperiorSagittalSinus_ = new Coding
     {
@@ -5700,7 +5700,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of upper extremity arteries, bilateral
     /// </summary>
     public static readonly Coding AngiographyOfUpperExtremityArteriesBilateral_ = new Coding
     {
@@ -5709,7 +5709,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioisotope study of gastrointestinal system
     /// </summary>
     public static readonly Coding RadioisotopeStudyOfGastrointestinalSystem_ = new Coding
     {
@@ -5718,7 +5718,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiocardiography of left heart
     /// </summary>
     public static readonly Coding AngiocardiographyOfLeftHeart_ = new Coding
     {
@@ -5727,7 +5727,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Placental scan
     /// </summary>
     public static readonly Coding PlacentalScan_ = new Coding
     {
@@ -5736,7 +5736,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contrast radiography of nasolacrimal ducts
     /// </summary>
     public static readonly Coding ContrastRadiographyOfNasolacrimalDucts_ = new Coding
     {
@@ -5745,7 +5745,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of cervical vertebral arteries, bilateral
     /// </summary>
     public static readonly Coding AngiographyOfCervicalVertebralArteriesBilateral_ = new Coding
     {
@@ -5754,7 +5754,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac flow imaging
     /// </summary>
     public static readonly Coding CardiacFlowImaging_ = new Coding
     {
@@ -5763,7 +5763,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skeletal X-ray of lower limb
     /// </summary>
     public static readonly Coding SkeletalXRayOfLowerLimb_ = new Coding
     {
@@ -5772,7 +5772,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, oblique, standard
     /// </summary>
     public static readonly Coding DiagnosticRadiographyObliqueStandard_ = new Coding
     {
@@ -5781,7 +5781,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aortography
     /// </summary>
     public static readonly Coding Aortography_ = new Coding
     {
@@ -5790,7 +5790,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Real time scan
     /// </summary>
     public static readonly Coding RealTimeScan_ = new Coding
     {
@@ -5799,7 +5799,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liver imaging with vascular flow
     /// </summary>
     public static readonly Coding LiverImagingWithVascularFlow_ = new Coding
     {
@@ -5808,7 +5808,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Voiding urethrocystography
     /// </summary>
     public static readonly Coding VoidingUrethrocystography_ = new Coding
     {
@@ -5817,7 +5817,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic ultrasound of gravid uterus
     /// </summary>
     public static readonly Coding DiagnosticUltrasoundOfGravidUterus_ = new Coding
     {
@@ -5826,7 +5826,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of tibia, combined AP and lateral
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfTibiaCombinedAPAndLateral_ = new Coding
     {
@@ -5835,7 +5835,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous hysterogram
     /// </summary>
     public static readonly Coding PercutaneousHysterogram_ = new Coding
     {
@@ -5844,7 +5844,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endotracheal bronchography
     /// </summary>
     public static readonly Coding EndotrachealBronchography_ = new Coding
     {
@@ -5853,7 +5853,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized axial tomography of kidney
     /// </summary>
     public static readonly Coding ComputerizedAxialTomographyOfKidney_ = new Coding
     {
@@ -5862,7 +5862,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioisotope study of central nervous system
     /// </summary>
     public static readonly Coding RadioisotopeStudyOfCentralNervousSystem_ = new Coding
     {
@@ -5871,7 +5871,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antegrade urography
     /// </summary>
     public static readonly Coding AntegradeUrography_ = new Coding
     {
@@ -5880,7 +5880,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepatic venography
     /// </summary>
     public static readonly Coding HepaticVenography_ = new Coding
     {
@@ -5889,7 +5889,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echogynography
     /// </summary>
     public static readonly Coding Echogynography_ = new Coding
     {
@@ -5898,7 +5898,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// X-ray of skull
     /// </summary>
     public static readonly Coding XRayOfSkull_ = new Coding
     {
@@ -5907,7 +5907,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy to assist endoscopic maneuver
     /// </summary>
     public static readonly Coding FluoroscopyToAssistEndoscopicManeuver_ = new Coding
     {
@@ -5916,7 +5916,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dacryocystography
     /// </summary>
     public static readonly Coding Dacryocystography_ = new Coding
     {
@@ -5925,7 +5925,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide localization of tumor, whole body
     /// </summary>
     public static readonly Coding RadionuclideLocalizationOfTumorWholeBody_ = new Coding
     {
@@ -5934,7 +5934,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized tomography, multi-plane
     /// </summary>
     public static readonly Coding ComputerizedTomographyMultiPlane_ = new Coding
     {
@@ -5943,7 +5943,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echocardiography, real-time with image documentation with M-mode recording, complete
     /// </summary>
     public static readonly Coding EchocardiographyRealTimeWithImageDocumentationWithMModeRecordingComplete_ = new Coding
     {
@@ -5952,7 +5952,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary ventilation study
     /// </summary>
     public static readonly Coding PulmonaryVentilationStudy_ = new Coding
     {
@@ -5961,7 +5961,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of sacrum
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfSacrum_ = new Coding
     {
@@ -5970,7 +5970,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Denver shunt patency test
     /// </summary>
     public static readonly Coding DenverShuntPatencyTest_ = new Coding
     {
@@ -5979,7 +5979,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bowel imaging for Meckel's diverticulum
     /// </summary>
     public static readonly Coding BowelImagingForMeckelQuoteSDiverticulum_ = new Coding
     {
@@ -5988,7 +5988,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioiodohippurate sodium renogram, serial imaging
     /// </summary>
     public static readonly Coding RadioiodohippurateSodiumRenogramSerialImaging_ = new Coding
     {
@@ -5997,7 +5997,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of temporomandibular joint
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfTemporomandibularJoint_ = new Coding
     {
@@ -6006,7 +6006,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of larynx
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfLarynx_ = new Coding
     {
@@ -6015,7 +6015,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Air contrast orbitography
     /// </summary>
     public static readonly Coding AirContrastOrbitography_ = new Coding
     {
@@ -6024,7 +6024,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, left
     /// </summary>
     public static readonly Coding DiagnosticRadiographyLeft_ = new Coding
     {
@@ -6033,7 +6033,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of pelvic soft tissue
     /// </summary>
     public static readonly Coding RadiographyOfPelvicSoftTissue_ = new Coding
     {
@@ -6042,7 +6042,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of arteries of extremity with serialography
     /// </summary>
     public static readonly Coding AngiographyOfArteriesOfExtremityWithSerialography_ = new Coding
     {
@@ -6051,7 +6051,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of toes
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfToes_ = new Coding
     {
@@ -6060,7 +6060,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone imaging, vascular flow study
     /// </summary>
     public static readonly Coding BoneImagingVascularFlowStudy_ = new Coding
     {
@@ -6069,7 +6069,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of musculoskeletal structures
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfMusculoskeletalStructures_ = new Coding
     {
@@ -6078,7 +6078,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioisotope scan of uterus
     /// </summary>
     public static readonly Coding RadioisotopeScanOfUterus_ = new Coding
     {
@@ -6087,7 +6087,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrogram of temporomandibular joint
     /// </summary>
     public static readonly Coding ArthrogramOfTemporomandibularJoint_ = new Coding
     {
@@ -6096,7 +6096,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Imaging of carotid arteries
     /// </summary>
     public static readonly Coding ImagingOfCarotidArteries_ = new Coding
     {
@@ -6105,7 +6105,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pelvic echography, B-scan, limited
     /// </summary>
     public static readonly Coding PelvicEchographyBScanLimited_ = new Coding
     {
@@ -6114,7 +6114,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bowel imaging for ectopic gastric mucosa
     /// </summary>
     public static readonly Coding BowelImagingForEctopicGastricMucosa_ = new Coding
     {
@@ -6123,7 +6123,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic guidance for dilation of urethra
     /// </summary>
     public static readonly Coding RadiologicGuidanceForDilationOfUrethra_ = new Coding
     {
@@ -6132,7 +6132,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioiron body distribution study
     /// </summary>
     public static readonly Coding RadioironBodyDistributionStudy_ = new Coding
     {
@@ -6141,7 +6141,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiologic examination with fluoroscopy of chest
     /// </summary>
     public static readonly Coding DiagnosticRadiologicExaminationWithFluoroscopyOfChest_ = new Coding
     {
@@ -6150,7 +6150,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Positive contrast laryngography
     /// </summary>
     public static readonly Coding PositiveContrastLaryngography_ = new Coding
     {
@@ -6159,7 +6159,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography with contrast media by injection, bilateral
     /// </summary>
     public static readonly Coding DiagnosticRadiographyWithContrastMediaByInjectionBilateral_ = new Coding
     {
@@ -6168,7 +6168,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebrospinal fluid flow imaging, shunt evaluation
     /// </summary>
     public static readonly Coding CerebrospinalFluidFlowImagingShuntEvaluation_ = new Coding
     {
@@ -6177,7 +6177,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrathoracic phlebography
     /// </summary>
     public static readonly Coding IntrathoracicPhlebography_ = new Coding
     {
@@ -6186,7 +6186,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of wrist
     /// </summary>
     public static readonly Coding RadiographyOfWrist_ = new Coding
     {
@@ -6195,7 +6195,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of chest
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfChest_ = new Coding
     {
@@ -6204,7 +6204,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cholecystectomy with exploration of common duct with cholangiography
     /// </summary>
     public static readonly Coding CholecystectomyWithExplorationOfCommonDuctWithCholangiography_ = new Coding
     {
@@ -6213,7 +6213,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Photography, microscopic
     /// </summary>
     public static readonly Coding PhotographyMicroscopic_ = new Coding
     {
@@ -6222,7 +6222,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of cervical spine with contrast
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfCervicalSpineWithContrast_ = new Coding
     {
@@ -6231,7 +6231,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of thyroid, B-scan
     /// </summary>
     public static readonly Coding EchographyOfThyroidBScan_ = new Coding
     {
@@ -6240,7 +6240,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of finger
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfFinger_ = new Coding
     {
@@ -6249,7 +6249,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of abdomen
     /// </summary>
     public static readonly Coding RadiologicExaminationOfAbdomen_ = new Coding
     {
@@ -6258,7 +6258,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue X-ray of abdominal wall
     /// </summary>
     public static readonly Coding SoftTissueXRayOfAbdominalWall_ = new Coding
     {
@@ -6267,7 +6267,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of soft tissue of hip
     /// </summary>
     public static readonly Coding RadiographyOfSoftTissueOfHip_ = new Coding
     {
@@ -6276,7 +6276,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of abdomen, oblique standard
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfAbdomenObliqueStandard_ = new Coding
     {
@@ -6285,7 +6285,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Red cell survival study for splenic and hepatic sequestration
     /// </summary>
     public static readonly Coding RedCellSurvivalStudyForSplenicAndHepaticSequestration_ = new Coding
     {
@@ -6294,7 +6294,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of spine with flexion and extension studies
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfSpineWithFlexionAndExtensionStudies_ = new Coding
     {
@@ -6303,7 +6303,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, A-mode
     /// </summary>
     public static readonly Coding EchographyAMode_ = new Coding
     {
@@ -6312,7 +6312,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmic biometry by ultrasound echography, A-mode
     /// </summary>
     public static readonly Coding OphthalmicBiometryByUltrasoundEchographyAMode_ = new Coding
     {
@@ -6321,7 +6321,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endoscopic retrograde cholangiopancreatography with biopsy
     /// </summary>
     public static readonly Coding EndoscopicRetrogradeCholangiopancreatographyWithBiopsy_ = new Coding
     {
@@ -6330,7 +6330,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonic guidance procedure
     /// </summary>
     public static readonly Coding UltrasonicGuidanceProcedure_ = new Coding
     {
@@ -6339,7 +6339,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echocardiography for determining mitral, aortic and tricuspid valve motion
     /// </summary>
     public static readonly Coding EchocardiographyForDeterminingMitralAorticAndTricuspidValveMotion_ = new Coding
     {
@@ -6348,7 +6348,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echocardiography for determining pericardial effusion
     /// </summary>
     public static readonly Coding EchocardiographyForDeterminingPericardialEffusion_ = new Coding
     {
@@ -6357,7 +6357,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of abdomen, decubitus and erect
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfAbdomenDecubitusAndErect_ = new Coding
     {
@@ -6366,7 +6366,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of sacroiliac joints
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfSacroiliacJoints_ = new Coding
     {
@@ -6375,7 +6375,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breast thermography
     /// </summary>
     public static readonly Coding BreastThermography_ = new Coding
     {
@@ -6384,7 +6384,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echocardiography, real time with image documentation with M-mode, follow-up
     /// </summary>
     public static readonly Coding EchocardiographyRealTimeWithImageDocumentationWithMModeFollowUp_ = new Coding
     {
@@ -6393,7 +6393,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of myocardium
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfMyocardium_ = new Coding
     {
@@ -6402,7 +6402,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of chest and myocardium
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfChestAndMyocardium_ = new Coding
     {
@@ -6411,7 +6411,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, immersion B-scan
     /// </summary>
     public static readonly Coding EchographyImmersionBScan_ = new Coding
     {
@@ -6420,7 +6420,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of pharynx and cervical esophagus
     /// </summary>
     public static readonly Coding RadiologicExaminationOfPharynxAndCervicalEsophagus_ = new Coding
     {
@@ -6429,7 +6429,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraoperative cholangiogram
     /// </summary>
     public static readonly Coding IntraoperativeCholangiogram_ = new Coding
     {
@@ -6438,7 +6438,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obstetric cephalometry
     /// </summary>
     public static readonly Coding ObstetricCephalometry_ = new Coding
     {
@@ -6447,7 +6447,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myocardial imaging for infarct, planar technique
     /// </summary>
     public static readonly Coding MyocardialImagingForInfarctPlanarTechnique_ = new Coding
     {
@@ -6456,7 +6456,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebral blood flow radionuclide study
     /// </summary>
     public static readonly Coding CerebralBloodFlowRadionuclideStudy_ = new Coding
     {
@@ -6465,7 +6465,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Postoperative pancreatography
     /// </summary>
     public static readonly Coding PostoperativePancreatography_ = new Coding
     {
@@ -6474,7 +6474,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cinephotography of patient
     /// </summary>
     public static readonly Coding CinephotographyOfPatient_ = new Coding
     {
@@ -6483,7 +6483,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doppler flow mapping of aortic arch
     /// </summary>
     public static readonly Coding DopplerFlowMappingOfAorticArch_ = new Coding
     {
@@ -6492,7 +6492,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebral thermography
     /// </summary>
     public static readonly Coding CerebralThermography_ = new Coding
     {
@@ -6501,7 +6501,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, stereotactic localization
     /// </summary>
     public static readonly Coding DiagnosticRadiographyStereotacticLocalization_ = new Coding
     {
@@ -6510,7 +6510,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myelogram of posterior fossa
     /// </summary>
     public static readonly Coding MyelogramOfPosteriorFossa_ = new Coding
     {
@@ -6519,7 +6519,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myocardial imaging
     /// </summary>
     public static readonly Coding MyocardialImaging_ = new Coding
     {
@@ -6528,7 +6528,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary perfusion imaging, gaseous
     /// </summary>
     public static readonly Coding PulmonaryPerfusionImagingGaseous_ = new Coding
     {
@@ -6537,7 +6537,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography of superior vena cava with serialography
     /// </summary>
     public static readonly Coding VenographyOfSuperiorVenaCavaWithSerialography_ = new Coding
     {
@@ -6546,7 +6546,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urinary bladder residual urine study
     /// </summary>
     public static readonly Coding UrinaryBladderResidualUrineStudy_ = new Coding
     {
@@ -6555,7 +6555,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography with contrast media by injection, positive contrast, operative
     /// </summary>
     public static readonly Coding DiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastOperative_ = new Coding
     {
@@ -6564,7 +6564,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arteriography of head and neck
     /// </summary>
     public static readonly Coding ArteriographyOfHeadAndNeck_ = new Coding
     {
@@ -6573,7 +6573,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polytomography
     /// </summary>
     public static readonly Coding Polytomography_ = new Coding
     {
@@ -6582,7 +6582,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonic guidance for amniocentesis
     /// </summary>
     public static readonly Coding UltrasonicGuidanceForAmniocentesis_ = new Coding
     {
@@ -6591,7 +6591,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, lateral
     /// </summary>
     public static readonly Coding DiagnosticRadiographyLateral_ = new Coding
     {
@@ -6600,7 +6600,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography with contrast media by injection, positive contrast, post-operative
     /// </summary>
     public static readonly Coding DiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastPostOperative_ = new Coding
     {
@@ -6609,7 +6609,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastroesophageal reflux study
     /// </summary>
     public static readonly Coding GastroesophagealRefluxStudy_ = new Coding
     {
@@ -6618,7 +6618,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of neck
     /// </summary>
     public static readonly Coding AngiographyOfNeck_ = new Coding
     {
@@ -6627,7 +6627,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmic ultrasonic foreign body localization
     /// </summary>
     public static readonly Coding OphthalmicUltrasonicForeignBodyLocalization_ = new Coding
     {
@@ -6636,7 +6636,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of mediastinum
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfMediastinum_ = new Coding
     {
@@ -6645,7 +6645,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary perfusion study
     /// </summary>
     public static readonly Coding PulmonaryPerfusionStudy_ = new Coding
     {
@@ -6654,7 +6654,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide localization of tumor, limited area
     /// </summary>
     public static readonly Coding RadionuclideLocalizationOfTumorLimitedArea_ = new Coding
     {
@@ -6663,7 +6663,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide lacrimal flow study
     /// </summary>
     public static readonly Coding RadionuclideLacrimalFlowStudy_ = new Coding
     {
@@ -6672,7 +6672,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography for foreign body detection and localization
     /// </summary>
     public static readonly Coding DiagnosticRadiographyForForeignBodyDetectionAndLocalization_ = new Coding
     {
@@ -6681,7 +6681,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of orbit, face and neck
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfOrbitFaceAndNeck_ = new Coding
     {
@@ -6690,7 +6690,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of cervical spine
     /// </summary>
     public static readonly Coding RadiographyOfCervicalSpine_ = new Coding
     {
@@ -6699,7 +6699,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Renal function study with serial imaging
     /// </summary>
     public static readonly Coding RenalFunctionStudyWithSerialImaging_ = new Coding
     {
@@ -6708,7 +6708,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymph gland thermography
     /// </summary>
     public static readonly Coding LymphGlandThermography_ = new Coding
     {
@@ -6717,7 +6717,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abdominal lymphangiography, bilateral
     /// </summary>
     public static readonly Coding AbdominalLymphangiographyBilateral_ = new Coding
     {
@@ -6726,7 +6726,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of chest, oblique, standard
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfChestObliqueStandard_ = new Coding
     {
@@ -6735,7 +6735,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging without IV contrast followed by contrast and more sections
     /// </summary>
     public static readonly Coding MagneticResonanceImagingWithoutIVContrastFollowedByContrastAndMoreSections_ = new Coding
     {
@@ -6744,7 +6744,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of complete spine, anteroposterior and lateral
     /// </summary>
     public static readonly Coding RadiologicExaminationOfCompleteSpineAnteroposteriorAndLateral_ = new Coding
     {
@@ -6753,7 +6753,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Esophageal motility study with acid perfusion studies
     /// </summary>
     public static readonly Coding EsophagealMotilityStudyWithAcidPerfusionStudies_ = new Coding
     {
@@ -6762,7 +6762,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary ventilation-perfusion study by radioactive nitrogen
     /// </summary>
     public static readonly Coding PulmonaryVentilationPerfusionStudyByRadioactiveNitrogen_ = new Coding
     {
@@ -6771,7 +6771,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of knee, standing anteroposterior
     /// </summary>
     public static readonly Coding RadiologicExaminationOfKneeStandingAnteroposterior_ = new Coding
     {
@@ -6780,7 +6780,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide study of cardiac output
     /// </summary>
     public static readonly Coding RadionuclideStudyOfCardiacOutput_ = new Coding
     {
@@ -6789,7 +6789,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of chest, PA
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfChestPA_ = new Coding
     {
@@ -6798,7 +6798,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral contrast duodenography
     /// </summary>
     public static readonly Coding OralContrastDuodenography_ = new Coding
     {
@@ -6807,7 +6807,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracic discography
     /// </summary>
     public static readonly Coding ThoracicDiscography_ = new Coding
     {
@@ -6816,7 +6816,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Replacement of percutaneous drainage catheter with contrast monitoring
     /// </summary>
     public static readonly Coding ReplacementOfPercutaneousDrainageCatheterWithContrastMonitoring_ = new Coding
     {
@@ -6825,7 +6825,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of facial bones
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfFacialBones_ = new Coding
     {
@@ -6834,7 +6834,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebrospinal fluid flow imaging, cisternography
     /// </summary>
     public static readonly Coding CerebrospinalFluidFlowImagingCisternography_ = new Coding
     {
@@ -6843,7 +6843,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioisotope study of musculoskeletal system
     /// </summary>
     public static readonly Coding RadioisotopeStudyOfMusculoskeletalSystem_ = new Coding
     {
@@ -6852,7 +6852,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of thoracolumbar spine, standing
     /// </summary>
     public static readonly Coding RadiologicExaminationOfThoracolumbarSpineStanding_ = new Coding
     {
@@ -6861,7 +6861,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pelvimetry with placental localization
     /// </summary>
     public static readonly Coding PelvimetryWithPlacentalLocalization_ = new Coding
     {
@@ -6870,7 +6870,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of cervical esophagus
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfCervicalEsophagus_ = new Coding
     {
@@ -6879,7 +6879,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of heart
     /// </summary>
     public static readonly Coding RadiographyOfHeart_ = new Coding
     {
@@ -6888,7 +6888,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ocular photography, close up
     /// </summary>
     public static readonly Coding OcularPhotographyCloseUp_ = new Coding
     {
@@ -6897,7 +6897,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmic echography, contact B-scan
     /// </summary>
     public static readonly Coding OphthalmicEchographyContactBScan_ = new Coding
     {
@@ -6906,7 +6906,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound for foreign body localization
     /// </summary>
     public static readonly Coding UltrasoundForForeignBodyLocalization_ = new Coding
     {
@@ -6915,7 +6915,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized tomography, additional views
     /// </summary>
     public static readonly Coding ComputerizedTomographyAdditionalViews_ = new Coding
     {
@@ -6924,7 +6924,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide special dynamic function study
     /// </summary>
     public static readonly Coding RadionuclideSpecialDynamicFunctionStudy_ = new Coding
     {
@@ -6933,7 +6933,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, B-scan, limited
     /// </summary>
     public static readonly Coding EchographyBScanLimited_ = new Coding
     {
@@ -6942,7 +6942,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic guidance for percutaneous drainage of abscess
     /// </summary>
     public static readonly Coding RadiologicGuidanceForPercutaneousDrainageOfAbscess_ = new Coding
     {
@@ -6951,7 +6951,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Platelet survival study
     /// </summary>
     public static readonly Coding PlateletSurvivalStudy_ = new Coding
     {
@@ -6960,7 +6960,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound peripheral imaging
     /// </summary>
     public static readonly Coding UltrasoundPeripheralImaging_ = new Coding
     {
@@ -6969,7 +6969,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skeletal X-ray of elbow and forearm
     /// </summary>
     public static readonly Coding SkeletalXRayOfElbowAndForearm_ = new Coding
     {
@@ -6978,7 +6978,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized tomography, follow-up
     /// </summary>
     public static readonly Coding ComputerizedTomographyFollowUp_ = new Coding
     {
@@ -6987,7 +6987,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pancreatography during surgery
     /// </summary>
     public static readonly Coding PancreatographyDuringSurgery_ = new Coding
     {
@@ -6996,7 +6996,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of abdomen, B-scan, complete
     /// </summary>
     public static readonly Coding EchographyOfAbdomenBScanComplete_ = new Coding
     {
@@ -7005,7 +7005,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioiodine plasma clearance study
     /// </summary>
     public static readonly Coding RadioiodinePlasmaClearanceStudy_ = new Coding
     {
@@ -7014,7 +7014,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography of adrenal
     /// </summary>
     public static readonly Coding VenographyOfAdrenal_ = new Coding
     {
@@ -7023,7 +7023,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of joint of upper extremity
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfJointOfUpperExtremity_ = new Coding
     {
@@ -7032,7 +7032,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gas contrast radiography of pelvis
     /// </summary>
     public static readonly Coding GasContrastRadiographyOfPelvis_ = new Coding
     {
@@ -7041,7 +7041,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mammography
     /// </summary>
     public static readonly Coding Mammography_ = new Coding
     {
@@ -7050,7 +7050,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound peripheral imaging, B-scan
     /// </summary>
     public static readonly Coding UltrasoundPeripheralImagingBScan_ = new Coding
     {
@@ -7059,7 +7059,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of breast, B-scan and real time with image documentation
     /// </summary>
     public static readonly Coding EchographyOfBreastBScanAndRealTimeWithImageDocumentation_ = new Coding
     {
@@ -7068,7 +7068,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic guidance for percutaneous specimen collection
     /// </summary>
     public static readonly Coding RadiologicGuidanceForPercutaneousSpecimenCollection_ = new Coding
     {
@@ -7077,7 +7077,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastric mucosa imaging
     /// </summary>
     public static readonly Coding GastricMucosaImaging_ = new Coding
     {
@@ -7086,7 +7086,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide uptake study
     /// </summary>
     public static readonly Coding RadionuclideUptakeStudy_ = new Coding
     {
@@ -7095,7 +7095,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of neck
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfNeck_ = new Coding
     {
@@ -7104,7 +7104,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of coronary arteries, bilateral
     /// </summary>
     public static readonly Coding AngiographyOfCoronaryArteriesBilateral_ = new Coding
     {
@@ -7113,7 +7113,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of thoracic spine, anteroposterior and lateral
     /// </summary>
     public static readonly Coding RadiologicExaminationOfThoracicSpineAnteroposteriorAndLateral_ = new Coding
     {
@@ -7122,7 +7122,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized tomography for guidance-localization
     /// </summary>
     public static readonly Coding ComputerizedTomographyForGuidanceLocalization_ = new Coding
     {
@@ -7131,7 +7131,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skeletal X-ray of upper limb
     /// </summary>
     public static readonly Coding SkeletalXRayOfUpperLimb_ = new Coding
     {
@@ -7140,7 +7140,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of soft tissue of hand
     /// </summary>
     public static readonly Coding RadiographyOfSoftTissueOfHand_ = new Coding
     {
@@ -7149,7 +7149,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, right
     /// </summary>
     public static readonly Coding DiagnosticRadiographyRight_ = new Coding
     {
@@ -7158,7 +7158,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, serial films
     /// </summary>
     public static readonly Coding DiagnosticRadiographySerialFilms_ = new Coding
     {
@@ -7167,7 +7167,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of soft tissue of ankle
     /// </summary>
     public static readonly Coding RadiographyOfSoftTissueOfAnkle_ = new Coding
     {
@@ -7176,7 +7176,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of knee
     /// </summary>
     public static readonly Coding RadiologicExaminationOfKnee_ = new Coding
     {
@@ -7185,7 +7185,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraoperative transhepatic cholangiogram
     /// </summary>
     public static readonly Coding IntraoperativeTranshepaticCholangiogram_ = new Coding
     {
@@ -7194,7 +7194,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of upper limb
     /// </summary>
     public static readonly Coding RadiographyOfUpperLimb_ = new Coding
     {
@@ -7203,7 +7203,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echocardiography for determining size of ventricular chambers
     /// </summary>
     public static readonly Coding EchocardiographyForDeterminingSizeOfVentricularChambers_ = new Coding
     {
@@ -7212,7 +7212,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone marrow imaging, limited area
     /// </summary>
     public static readonly Coding BoneMarrowImagingLimitedArea_ = new Coding
     {
@@ -7221,7 +7221,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary perfusion imaging, gaseous, with ventilation, rebreathing and washout
     /// </summary>
     public static readonly Coding PulmonaryPerfusionImagingGaseousWithVentilationRebreathingAndWashout_ = new Coding
     {
@@ -7230,7 +7230,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy for foreign body localization
     /// </summary>
     public static readonly Coding FluoroscopyForForeignBodyLocalization_ = new Coding
     {
@@ -7239,7 +7239,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kidney imaging with dynamic function study
     /// </summary>
     public static readonly Coding KidneyImagingWithDynamicFunctionStudy_ = new Coding
     {
@@ -7248,7 +7248,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized axial tomography of pelvis with contrast
     /// </summary>
     public static readonly Coding ComputerizedAxialTomographyOfPelvisWithContrast_ = new Coding
     {
@@ -7257,7 +7257,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of forearm
     /// </summary>
     public static readonly Coding RadiographyOfForearm_ = new Coding
     {
@@ -7266,7 +7266,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiocardiography by serialography, single plane
     /// </summary>
     public static readonly Coding AngiocardiographyBySerialographySinglePlane_ = new Coding
     {
@@ -7275,7 +7275,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of chest, real time with image documentation
     /// </summary>
     public static readonly Coding EchographyOfChestRealTimeWithImageDocumentation_ = new Coding
     {
@@ -7284,7 +7284,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pelvimetry
     /// </summary>
     public static readonly Coding Pelvimetry_ = new Coding
     {
@@ -7293,7 +7293,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraosseous venography
     /// </summary>
     public static readonly Coding IntraosseousVenography_ = new Coding
     {
@@ -7302,7 +7302,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized axial tomography of thorax with contrast
     /// </summary>
     public static readonly Coding ComputerizedAxialTomographyOfThoraxWithContrast_ = new Coding
     {
@@ -7311,7 +7311,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laparoscopy with guided transhepatic cholangiography and biopsy
     /// </summary>
     public static readonly Coding LaparoscopyWithGuidedTranshepaticCholangiographyAndBiopsy_ = new Coding
     {
@@ -7320,7 +7320,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of orbits
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfOrbits_ = new Coding
     {
@@ -7329,7 +7329,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastrointestinal tract x-ray
     /// </summary>
     public static readonly Coding GastrointestinalTractXRay_ = new Coding
     {
@@ -7338,7 +7338,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of prostate
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfProstate_ = new Coding
     {
@@ -7347,7 +7347,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spinal angiography, selective
     /// </summary>
     public static readonly Coding SpinalAngiographySelective_ = new Coding
     {
@@ -7356,7 +7356,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary ventilation study, gaseous
     /// </summary>
     public static readonly Coding PulmonaryVentilationStudyGaseous_ = new Coding
     {
@@ -7365,7 +7365,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized axial tomography of cervical spine with contrast
     /// </summary>
     public static readonly Coding ComputerizedAxialTomographyOfCervicalSpineWithContrast_ = new Coding
     {
@@ -7374,7 +7374,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Upper gastrointestinal tract examination with air contrast with KUB
     /// </summary>
     public static readonly Coding UpperGastrointestinalTractExaminationWithAirContrastWithKUB_ = new Coding
     {
@@ -7383,7 +7383,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isotope study for renal plasma flow
     /// </summary>
     public static readonly Coding IsotopeStudyForRenalPlasmaFlow_ = new Coding
     {
@@ -7392,7 +7392,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muscle thermography
     /// </summary>
     public static readonly Coding MuscleThermography_ = new Coding
     {
@@ -7401,7 +7401,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of soft tissue of upper arm
     /// </summary>
     public static readonly Coding RadiographyOfSoftTissueOfUpperArm_ = new Coding
     {
@@ -7410,7 +7410,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CT guidance for cyst aspiration
     /// </summary>
     public static readonly Coding CTGuidanceForCystAspiration_ = new Coding
     {
@@ -7419,7 +7419,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of elbow
     /// </summary>
     public static readonly Coding RadiographyOfElbow_ = new Coding
     {
@@ -7428,7 +7428,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioisotope study of genitourinary system
     /// </summary>
     public static readonly Coding RadioisotopeStudyOfGenitourinarySystem_ = new Coding
     {
@@ -7437,7 +7437,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmic echography, immersion B-scan
     /// </summary>
     public static readonly Coding OphthalmicEchographyImmersionBScan_ = new Coding
     {
@@ -7446,7 +7446,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Discogram
     /// </summary>
     public static readonly Coding Discogram_ = new Coding
     {
@@ -7455,7 +7455,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography
     /// </summary>
     public static readonly Coding Angiography_ = new Coding
     {
@@ -7464,7 +7464,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized axial tomography
     /// </summary>
     public static readonly Coding ComputerizedAxialTomography_ = new Coding
     {
@@ -7473,7 +7473,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of ribs, bilateral
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfRibsBilateral_ = new Coding
     {
@@ -7482,7 +7482,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography of urinary system
     /// </summary>
     public static readonly Coding UltrasonographyOfUrinarySystem_ = new Coding
     {
@@ -7491,7 +7491,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of adrenal arteries, bilateral
     /// </summary>
     public static readonly Coding AngiographyOfAdrenalArteriesBilateral_ = new Coding
     {
@@ -7500,7 +7500,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of cervical vertebral and intracranial arteries
     /// </summary>
     public static readonly Coding AngiographyOfCervicalVertebralAndIntracranialArteries_ = new Coding
     {
@@ -7509,7 +7509,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doppler flow mapping of head and neck
     /// </summary>
     public static readonly Coding DopplerFlowMappingOfHeadAndNeck_ = new Coding
     {
@@ -7518,7 +7518,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contrast dacryocystogram
     /// </summary>
     public static readonly Coding ContrastDacryocystogram_ = new Coding
     {
@@ -7527,7 +7527,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, B-scan
     /// </summary>
     public static readonly Coding EchographyBScan_ = new Coding
     {
@@ -7536,7 +7536,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of thoracolumbar spine, anteroposterior and lateral
     /// </summary>
     public static readonly Coding RadiologicExaminationOfThoracolumbarSpineAnteroposteriorAndLateral_ = new Coding
     {
@@ -7545,7 +7545,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of spinal canal and contents
     /// </summary>
     public static readonly Coding EchographyOfSpinalCanalAndContents_ = new Coding
     {
@@ -7554,7 +7554,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, B-scan, complete
     /// </summary>
     public static readonly Coding EchographyBScanComplete_ = new Coding
     {
@@ -7563,7 +7563,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography of retroperitoneum
     /// </summary>
     public static readonly Coding UltrasonographyOfRetroperitoneum_ = new Coding
     {
@@ -7572,7 +7572,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopy, serial films
     /// </summary>
     public static readonly Coding FluoroscopySerialFilms_ = new Coding
     {
@@ -7581,7 +7581,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of all fingers
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfAllFingers_ = new Coding
     {
@@ -7590,7 +7590,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doppler flow mapping of heart
     /// </summary>
     public static readonly Coding DopplerFlowMappingOfHeart_ = new Coding
     {
@@ -7599,7 +7599,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography of multiple sites
     /// </summary>
     public static readonly Coding UltrasonographyOfMultipleSites_ = new Coding
     {
@@ -7608,7 +7608,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography of lower extremity
     /// </summary>
     public static readonly Coding VenographyOfLowerExtremity_ = new Coding
     {
@@ -7617,7 +7617,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of fibula, combined AP and lateral
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfFibulaCombinedAPAndLateral_ = new Coding
     {
@@ -7626,7 +7626,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrography of shoulder
     /// </summary>
     public static readonly Coding ArthrographyOfShoulder_ = new Coding
     {
@@ -7635,7 +7635,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of thyroid region
     /// </summary>
     public static readonly Coding RadiographyOfThyroidRegion_ = new Coding
     {
@@ -7644,7 +7644,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebral ventriculography
     /// </summary>
     public static readonly Coding CerebralVentriculography_ = new Coding
     {
@@ -7653,7 +7653,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Renal arteriography
     /// </summary>
     public static readonly Coding RenalArteriography_ = new Coding
     {
@@ -7662,7 +7662,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of joint of lower extremity
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfJointOfLowerExtremity_ = new Coding
     {
@@ -7671,7 +7671,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of spine
     /// </summary>
     public static readonly Coding RadiographyOfSpine_ = new Coding
     {
@@ -7680,7 +7680,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of tonsils and adenoids
     /// </summary>
     public static readonly Coding RadiographyOfTonsilsAndAdenoids_ = new Coding
     {
@@ -7689,7 +7689,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone marrow imaging, whole body
     /// </summary>
     public static readonly Coding BoneMarrowImagingWholeBody_ = new Coding
     {
@@ -7698,7 +7698,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of lower extremity arteries with serialography
     /// </summary>
     public static readonly Coding AngiographyOfLowerExtremityArteriesWithSerialography_ = new Coding
     {
@@ -7707,7 +7707,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography of uterus
     /// </summary>
     public static readonly Coding UltrasonographyOfUterus_ = new Coding
     {
@@ -7716,7 +7716,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphangiography of upper extremities, bilateral
     /// </summary>
     public static readonly Coding LymphangiographyOfUpperExtremitiesBilateral_ = new Coding
     {
@@ -7725,7 +7725,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiocardiography of right heart
     /// </summary>
     public static readonly Coding AngiocardiographyOfRightHeart_ = new Coding
     {
@@ -7734,7 +7734,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thyroid imaging for metastatic carcinoma, whole body
     /// </summary>
     public static readonly Coding ThyroidImagingForMetastaticCarcinomaWholeBody_ = new Coding
     {
@@ -7743,7 +7743,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary ventilation-perfusion study by radioactive carbon
     /// </summary>
     public static readonly Coding PulmonaryVentilationPerfusionStudyByRadioactiveCarbon_ = new Coding
     {
@@ -7752,7 +7752,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginogram
     /// </summary>
     public static readonly Coding Vaginogram_ = new Coding
     {
@@ -7761,7 +7761,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, lateral decubitus studies
     /// </summary>
     public static readonly Coding DiagnosticRadiographyLateralDecubitusStudies_ = new Coding
     {
@@ -7770,7 +7770,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of zygomaticomaxillary complex
     /// </summary>
     public static readonly Coding RadiographyOfZygomaticomaxillaryComplex_ = new Coding
     {
@@ -7779,7 +7779,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retrograde angiography of brachial artery
     /// </summary>
     public static readonly Coding RetrogradeAngiographyOfBrachialArtery_ = new Coding
     {
@@ -7788,7 +7788,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonic guidance for aspiration of ova
     /// </summary>
     public static readonly Coding UltrasonicGuidanceForAspirationOfOva_ = new Coding
     {
@@ -7797,7 +7797,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmic echography, B-scan, limited
     /// </summary>
     public static readonly Coding OphthalmicEchographyBScanLimited_ = new Coding
     {
@@ -7806,7 +7806,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specimen mammography
     /// </summary>
     public static readonly Coding SpecimenMammography_ = new Coding
     {
@@ -7815,7 +7815,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liver and spleen imaging with vascular flow
     /// </summary>
     public static readonly Coding LiverAndSpleenImagingWithVascularFlow_ = new Coding
     {
@@ -7824,7 +7824,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Donaldson stereophotography
     /// </summary>
     public static readonly Coding DonaldsonStereophotography_ = new Coding
     {
@@ -7833,7 +7833,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echocardiography for detecting cardiac output
     /// </summary>
     public static readonly Coding EchocardiographyForDetectingCardiacOutput_ = new Coding
     {
@@ -7842,7 +7842,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, scan C-mode
     /// </summary>
     public static readonly Coding EchographyScanCMode_ = new Coding
     {
@@ -7851,7 +7851,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravenous cholangiogram
     /// </summary>
     public static readonly Coding IntravenousCholangiogram_ = new Coding
     {
@@ -7860,7 +7860,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Red cell survival study
     /// </summary>
     public static readonly Coding RedCellSurvivalStudy_ = new Coding
     {
@@ -7869,7 +7869,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrogram of tarsal joint
     /// </summary>
     public static readonly Coding ArthrogramOfTarsalJoint_ = new Coding
     {
@@ -7878,7 +7878,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography with contrast media by injection, positive and negative contrast, bilateral
     /// </summary>
     public static readonly Coding DiagnosticRadiographyWithContrastMediaByInjectionPositiveAndNegativeContrastBilateral_ = new Coding
     {
@@ -7887,7 +7887,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone density study, dual photon absorptiometry
     /// </summary>
     public static readonly Coding BoneDensityStudyDualPhotonAbsorptiometry_ = new Coding
     {
@@ -7896,7 +7896,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac fluoroscopy
     /// </summary>
     public static readonly Coding CardiacFluoroscopy_ = new Coding
     {
@@ -7905,7 +7905,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of forearm, anteroposterior and lateral views
     /// </summary>
     public static readonly Coding RadiologicExaminationOfForearmAnteroposteriorAndLateralViews_ = new Coding
     {
@@ -7914,7 +7914,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of nasolacrimal duct
     /// </summary>
     public static readonly Coding RadiographyOfNasolacrimalDuct_ = new Coding
     {
@@ -7923,7 +7923,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ureteral reflux study
     /// </summary>
     public static readonly Coding UreteralRefluxStudy_ = new Coding
     {
@@ -7932,7 +7932,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized tomography, coronal
     /// </summary>
     public static readonly Coding ComputerizedTomographyCoronal_ = new Coding
     {
@@ -7941,7 +7941,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebrospinal fluid flow imaging, ventriculography
     /// </summary>
     public static readonly Coding CerebrospinalFluidFlowImagingVentriculography_ = new Coding
     {
@@ -7950,7 +7950,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neck imaging for metastatic carcinoma of thyroid
     /// </summary>
     public static readonly Coding NeckImagingForMetastaticCarcinomaOfThyroid_ = new Coding
     {
@@ -7959,7 +7959,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography with contrast media by injection, negative contrast
     /// </summary>
     public static readonly Coding DiagnosticRadiographyWithContrastMediaByInjectionNegativeContrast_ = new Coding
     {
@@ -7968,7 +7968,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Positron emission tomography
     /// </summary>
     public static readonly Coding PositronEmissionTomography_ = new Coding
     {
@@ -7977,7 +7977,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide localization of abscess of limited area
     /// </summary>
     public static readonly Coding RadionuclideLocalizationOfAbscessOfLimitedArea_ = new Coding
     {
@@ -7986,7 +7986,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic Doppler ultrasonography
     /// </summary>
     public static readonly Coding DiagnosticDopplerUltrasonography_ = new Coding
     {
@@ -7995,7 +7995,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echocardiography for determining mitral valve motion
     /// </summary>
     public static readonly Coding EchocardiographyForDeterminingMitralValveMotion_ = new Coding
     {
@@ -8004,7 +8004,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide joint study
     /// </summary>
     public static readonly Coding RadionuclideJointStudy_ = new Coding
     {
@@ -8013,7 +8013,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebrospinal fluid flow imaging
     /// </summary>
     public static readonly Coding CerebrospinalFluidFlowImaging_ = new Coding
     {
@@ -8022,7 +8022,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serialography, multi-plane
     /// </summary>
     public static readonly Coding SerialographyMultiPlane_ = new Coding
     {
@@ -8031,7 +8031,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, bilateral
     /// </summary>
     public static readonly Coding DiagnosticRadiographyBilateral_ = new Coding
     {
@@ -8040,7 +8040,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic guidance for dilation of nephrostomy
     /// </summary>
     public static readonly Coding RadiologicGuidanceForDilationOfNephrostomy_ = new Coding
     {
@@ -8049,7 +8049,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// X-ray of epididymis and vas deferens
     /// </summary>
     public static readonly Coding XRayOfEpididymisAndVasDeferens_ = new Coding
     {
@@ -8058,7 +8058,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insertion of biliary stent by ERCP
     /// </summary>
     public static readonly Coding InsertionOfBiliaryStentByERCP_ = new Coding
     {
@@ -8067,7 +8067,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized axial tomography of maxillofacial area with contrast
     /// </summary>
     public static readonly Coding ComputerizedAxialTomographyOfMaxillofacialAreaWithContrast_ = new Coding
     {
@@ -8076,7 +8076,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of prostate
     /// </summary>
     public static readonly Coding RadiographyOfProstate_ = new Coding
     {
@@ -8085,7 +8085,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chiropractic ultrasound
     /// </summary>
     public static readonly Coding ChiropracticUltrasound_ = new Coding
     {
@@ -8094,7 +8094,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arteriography of pulmonary arteries
     /// </summary>
     public static readonly Coding ArteriographyOfPulmonaryArteries_ = new Coding
     {
@@ -8103,7 +8103,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of internal mammary artery
     /// </summary>
     public static readonly Coding AngiographyOfInternalMammaryArtery_ = new Coding
     {
@@ -8112,7 +8112,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of sacrococcygeal spine
     /// </summary>
     public static readonly Coding RadiographyOfSacrococcygealSpine_ = new Coding
     {
@@ -8121,7 +8121,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of nasal sinuses
     /// </summary>
     public static readonly Coding RadiographyOfNasalSinuses_ = new Coding
     {
@@ -8130,7 +8130,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chest imaging for metastatic carcinoma of thyroid
     /// </summary>
     public static readonly Coding ChestImagingForMetastaticCarcinomaOfThyroid_ = new Coding
     {
@@ -8139,7 +8139,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography with contrast media, bilateral
     /// </summary>
     public static readonly Coding DiagnosticRadiographyWithContrastMediaBilateral_ = new Coding
     {
@@ -8148,7 +8148,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mediastinal pneumogram
     /// </summary>
     public static readonly Coding MediastinalPneumogram_ = new Coding
     {
@@ -8157,7 +8157,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hysterosalpingography with gas contrast
     /// </summary>
     public static readonly Coding HysterosalpingographyWithGasContrast_ = new Coding
     {
@@ -8166,7 +8166,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide cardiac ventriculography
     /// </summary>
     public static readonly Coding RadionuclideCardiacVentriculography_ = new Coding
     {
@@ -8175,7 +8175,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypotonic duodenography
     /// </summary>
     public static readonly Coding HypotonicDuodenography_ = new Coding
     {
@@ -8184,7 +8184,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contrast bronchogram
     /// </summary>
     public static readonly Coding ContrastBronchogram_ = new Coding
     {
@@ -8193,7 +8193,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebrospinal fluid flow imaging, tomographic
     /// </summary>
     public static readonly Coding CerebrospinalFluidFlowImagingTomographic_ = new Coding
     {
@@ -8202,7 +8202,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphangiogram of upper extremity
     /// </summary>
     public static readonly Coding LymphangiogramOfUpperExtremity_ = new Coding
     {
@@ -8211,7 +8211,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contrast radiography of nasopharynx
     /// </summary>
     public static readonly Coding ContrastRadiographyOfNasopharynx_ = new Coding
     {
@@ -8220,7 +8220,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologic examination of lumbosacral spine, complete, with oblique views
     /// </summary>
     public static readonly Coding RadiologicExaminationOfLumbosacralSpineCompleteWithObliqueViews_ = new Coding
     {
@@ -8229,7 +8229,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Imaging of carotid arteries by duplex scan with spectrum analysis
     /// </summary>
     public static readonly Coding ImagingOfCarotidArteriesByDuplexScanWithSpectrumAnalysis_ = new Coding
     {
@@ -8238,7 +8238,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of chest, B-scan
     /// </summary>
     public static readonly Coding EchographyOfChestBScan_ = new Coding
     {
@@ -8247,7 +8247,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Esophageal motility study
     /// </summary>
     public static readonly Coding EsophagealMotilityStudy_ = new Coding
     {
@@ -8256,7 +8256,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, scan B-mode for placental localization
     /// </summary>
     public static readonly Coding EchographyScanBModeForPlacentalLocalization_ = new Coding
     {
@@ -8265,7 +8265,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary ventilation study, aerosol
     /// </summary>
     public static readonly Coding PulmonaryVentilationStudyAerosol_ = new Coding
     {
@@ -8274,7 +8274,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gallium scan
     /// </summary>
     public static readonly Coding GalliumScan_ = new Coding
     {
@@ -8283,7 +8283,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide identification of eye tumor
     /// </summary>
     public static readonly Coding RadionuclideIdentificationOfEyeTumor_ = new Coding
     {
@@ -8292,7 +8292,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fetography
     /// </summary>
     public static readonly Coding Fetography_ = new Coding
     {
@@ -8301,7 +8301,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tracheography
     /// </summary>
     public static readonly Coding Tracheography_ = new Coding
     {
@@ -8310,7 +8310,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of nasal bones
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfNasalBones_ = new Coding
     {
@@ -8319,7 +8319,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary ventilation study, total
     /// </summary>
     public static readonly Coding PulmonaryVentilationStudyTotal_ = new Coding
     {
@@ -8328,7 +8328,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cineradiography
     /// </summary>
     public static readonly Coding Cineradiography_ = new Coding
     {
@@ -8337,7 +8337,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral retrograde pyelography
     /// </summary>
     public static readonly Coding BilateralRetrogradePyelography_ = new Coding
     {
@@ -8346,7 +8346,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound peripheral vascular flow study, arterial and venous
     /// </summary>
     public static readonly Coding UltrasoundPeripheralVascularFlowStudyArterialAndVenous_ = new Coding
     {
@@ -8355,7 +8355,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vesiculography
     /// </summary>
     public static readonly Coding Vesiculography_ = new Coding
     {
@@ -8364,7 +8364,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lumbosacral myelography
     /// </summary>
     public static readonly Coding LumbosacralMyelography_ = new Coding
     {
@@ -8373,7 +8373,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography for bone age studies
     /// </summary>
     public static readonly Coding RadiographyForBoneAgeStudies_ = new Coding
     {
@@ -8382,7 +8382,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonography of lung
     /// </summary>
     public static readonly Coding UltrasonographyOfLung_ = new Coding
     {
@@ -8391,7 +8391,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracic aortography with serialography
     /// </summary>
     public static readonly Coding ThoracicAortographyWithSerialography_ = new Coding
     {
@@ -8400,7 +8400,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of uterus for fetal age, fetal position and/or placental localization
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfUterusForFetalAgeFetalPositionAndOrPlacentalLocalization_ = new Coding
     {
@@ -8409,7 +8409,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of pelvic bones
     /// </summary>
     public static readonly Coding RadiographyOfPelvicBones_ = new Coding
     {
@@ -8418,7 +8418,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spleen imaging with vascular flow
     /// </summary>
     public static readonly Coding SpleenImagingWithVascularFlow_ = new Coding
     {
@@ -8427,7 +8427,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic localization for transbronchial biopsy
     /// </summary>
     public static readonly Coding FluoroscopicLocalizationForTransbronchialBiopsy_ = new Coding
     {
@@ -8436,7 +8436,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood vessel thermography
     /// </summary>
     public static readonly Coding BloodVesselThermography_ = new Coding
     {
@@ -8445,7 +8445,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound study follow-up
     /// </summary>
     public static readonly Coding UltrasoundStudyFollowUp_ = new Coding
     {
@@ -8454,7 +8454,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthopantogram
     /// </summary>
     public static readonly Coding Orthopantogram_ = new Coding
     {
@@ -8463,7 +8463,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioiron oral absorption study
     /// </summary>
     public static readonly Coding RadioironOralAbsorptionStudy_ = new Coding
     {
@@ -8472,7 +8472,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging without contrast
     /// </summary>
     public static readonly Coding MagneticResonanceImagingWithoutContrast_ = new Coding
     {
@@ -8481,7 +8481,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of soft tissues
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfSoftTissues_ = new Coding
     {
@@ -8490,7 +8490,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized axial tomography of lumbar spine with contrast
     /// </summary>
     public static readonly Coding ComputerizedAxialTomographyOfLumbarSpineWithContrast_ = new Coding
     {
@@ -8499,7 +8499,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of arteries of extremities, bilateral
     /// </summary>
     public static readonly Coding AngiographyOfArteriesOfExtremitiesBilateral_ = new Coding
     {
@@ -8508,7 +8508,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Imaging of adrenal cortex
     /// </summary>
     public static readonly Coding ImagingOfAdrenalCortex_ = new Coding
     {
@@ -8517,7 +8517,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of uterus
     /// </summary>
     public static readonly Coding RadiographyOfUterus_ = new Coding
     {
@@ -8526,7 +8526,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of lumbar spine
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfLumbarSpine_ = new Coding
     {
@@ -8535,7 +8535,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venous thrombosis study with radioactive fibrinogen
     /// </summary>
     public static readonly Coding VenousThrombosisStudyWithRadioactiveFibrinogen_ = new Coding
     {
@@ -8544,7 +8544,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone imaging, tomographic
     /// </summary>
     public static readonly Coding BoneImagingTomographic_ = new Coding
     {
@@ -8553,7 +8553,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abdominal lymphangiogram
     /// </summary>
     public static readonly Coding AbdominalLymphangiogram_ = new Coding
     {
@@ -8562,7 +8562,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transcricoid bronchography
     /// </summary>
     public static readonly Coding TranscricoidBronchography_ = new Coding
     {
@@ -8571,7 +8571,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography for bone length studies
     /// </summary>
     public static readonly Coding RadiographyForBoneLengthStudies_ = new Coding
     {
@@ -8580,7 +8580,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of thoracic spine with contrast
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfThoracicSpineWithContrast_ = new Coding
     {
@@ -8589,7 +8589,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrography of knee with positive contrast
     /// </summary>
     public static readonly Coding ArthrographyOfKneeWithPositiveContrast_ = new Coding
     {
@@ -8598,7 +8598,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of chest, A-mode
     /// </summary>
     public static readonly Coding EchographyOfChestAMode_ = new Coding
     {
@@ -8607,7 +8607,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of spine, survey study
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfSpineSurveyStudy_ = new Coding
     {
@@ -8616,7 +8616,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography with gas-air, negative contrast
     /// </summary>
     public static readonly Coding DiagnosticRadiographyWithGasAirNegativeContrast_ = new Coding
     {
@@ -8625,7 +8625,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound examination of joint
     /// </summary>
     public static readonly Coding UltrasoundExaminationOfJoint_ = new Coding
     {
@@ -8634,7 +8634,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, minifilm
     /// </summary>
     public static readonly Coding DiagnosticRadiographyMinifilm_ = new Coding
     {
@@ -8643,7 +8643,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonic guidance for endomyocardial biopsy
     /// </summary>
     public static readonly Coding UltrasonicGuidanceForEndomyocardialBiopsy_ = new Coding
     {
@@ -8652,7 +8652,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fistulogram of abdominal wall
     /// </summary>
     public static readonly Coding FistulogramOfAbdominalWall_ = new Coding
     {
@@ -8661,7 +8661,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized tomography, limited studies
     /// </summary>
     public static readonly Coding ComputerizedTomographyLimitedStudies_ = new Coding
     {
@@ -8670,7 +8670,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized tomography, oblique
     /// </summary>
     public static readonly Coding ComputerizedTomographyOblique_ = new Coding
     {
@@ -9090,9 +9090,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfSacrococcygealJoint_ = "10181005";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfSacrococcygealJoint_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfSacrococcygealJoint_ = "http://snomed.info/sct#10181005";
+
+    /// <summary>
     /// Literal for code: ExternalCameraMedicalPhotography_
     /// </summary>
     public const string LiteralExternalCameraMedicalPhotography_ = "103734008";
+
+    /// <summary>
+    /// Literal for code: NONEExternalCameraMedicalPhotography_
+    /// </summary>
+    public const string LiteralNONEExternalCameraMedicalPhotography_ = "http://snomed.info/sct#103734008";
 
     /// <summary>
     /// Literal for code: EchographyContactBScan_
@@ -9100,9 +9110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchographyContactBScan_ = "10374007";
 
     /// <summary>
+    /// Literal for code: NONEEchographyContactBScan_
+    /// </summary>
+    public const string LiteralNONEEchographyContactBScan_ = "http://snomed.info/sct#10374007";
+
+    /// <summary>
     /// Literal for code: IntraOralPhotography_
     /// </summary>
     public const string LiteralIntraOralPhotography_ = "103745006";
+
+    /// <summary>
+    /// Literal for code: NONEIntraOralPhotography_
+    /// </summary>
+    public const string LiteralNONEIntraOralPhotography_ = "http://snomed.info/sct#103745006";
 
     /// <summary>
     /// Literal for code: RadiologicGuidanceForDilationOfUreters_
@@ -9110,9 +9130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicGuidanceForDilationOfUreters_ = "10428007";
 
     /// <summary>
+    /// Literal for code: NONERadiologicGuidanceForDilationOfUreters_
+    /// </summary>
+    public const string LiteralNONERadiologicGuidanceForDilationOfUreters_ = "http://snomed.info/sct#10428007";
+
+    /// <summary>
     /// Literal for code: DopplerColorFlowVelocityMapping_
     /// </summary>
     public const string LiteralDopplerColorFlowVelocityMapping_ = "1043007";
+
+    /// <summary>
+    /// Literal for code: NONEDopplerColorFlowVelocityMapping_
+    /// </summary>
+    public const string LiteralNONEDopplerColorFlowVelocityMapping_ = "http://snomed.info/sct#1043007";
 
     /// <summary>
     /// Literal for code: DiagnosticUltrasoundOfAbdomenAndRetroperitoneum_
@@ -9120,9 +9150,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticUltrasoundOfAbdomenAndRetroperitoneum_ = "1044001";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticUltrasoundOfAbdomenAndRetroperitoneum_
+    /// </summary>
+    public const string LiteralNONEDiagnosticUltrasoundOfAbdomenAndRetroperitoneum_ = "http://snomed.info/sct#1044001";
+
+    /// <summary>
     /// Literal for code: IntraArterialDigitalSubtractionAngiography_
     /// </summary>
     public const string LiteralIntraArterialDigitalSubtractionAngiography_ = "105368002";
+
+    /// <summary>
+    /// Literal for code: NONEIntraArterialDigitalSubtractionAngiography_
+    /// </summary>
+    public const string LiteralNONEIntraArterialDigitalSubtractionAngiography_ = "http://snomed.info/sct#105368002";
 
     /// <summary>
     /// Literal for code: IntravenousDigitalSubtractionAngiography_
@@ -9130,9 +9170,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntravenousDigitalSubtractionAngiography_ = "105369005";
 
     /// <summary>
+    /// Literal for code: NONEIntravenousDigitalSubtractionAngiography_
+    /// </summary>
+    public const string LiteralNONEIntravenousDigitalSubtractionAngiography_ = "http://snomed.info/sct#105369005";
+
+    /// <summary>
     /// Literal for code: SinglePhotonEmissionComputerizedTomography_
     /// </summary>
     public const string LiteralSinglePhotonEmissionComputerizedTomography_ = "105371005";
+
+    /// <summary>
+    /// Literal for code: NONESinglePhotonEmissionComputerizedTomography_
+    /// </summary>
+    public const string LiteralNONESinglePhotonEmissionComputerizedTomography_ = "http://snomed.info/sct#105371005";
 
     /// <summary>
     /// Literal for code: TranscatheterDeploymentOfDetachableBalloon_
@@ -9140,9 +9190,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTranscatheterDeploymentOfDetachableBalloon_ = "105372003";
 
     /// <summary>
+    /// Literal for code: NONETranscatheterDeploymentOfDetachableBalloon_
+    /// </summary>
+    public const string LiteralNONETranscatheterDeploymentOfDetachableBalloon_ = "http://snomed.info/sct#105372003";
+
+    /// <summary>
     /// Literal for code: HandHeldTransducerUltrasonography_
     /// </summary>
     public const string LiteralHandHeldTransducerUltrasonography_ = "105375001";
+
+    /// <summary>
+    /// Literal for code: NONEHandHeldTransducerUltrasonography_
+    /// </summary>
+    public const string LiteralNONEHandHeldTransducerUltrasonography_ = "http://snomed.info/sct#105375001";
 
     /// <summary>
     /// Literal for code: TransesophagealEchocardiography_
@@ -9150,9 +9210,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTransesophagealEchocardiography_ = "105376000";
 
     /// <summary>
+    /// Literal for code: NONETransesophagealEchocardiography_
+    /// </summary>
+    public const string LiteralNONETransesophagealEchocardiography_ = "http://snomed.info/sct#105376000";
+
+    /// <summary>
     /// Literal for code: UltrasonographyOfLiver_
     /// </summary>
     public const string LiteralUltrasonographyOfLiver_ = "105377009";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasonographyOfLiver_
+    /// </summary>
+    public const string LiteralNONEUltrasonographyOfLiver_ = "http://snomed.info/sct#105377009";
 
     /// <summary>
     /// Literal for code: ThalliumScan_
@@ -9160,9 +9230,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThalliumScan_ = "105378004";
 
     /// <summary>
+    /// Literal for code: NONEThalliumScan_
+    /// </summary>
+    public const string LiteralNONEThalliumScan_ = "http://snomed.info/sct#105378004";
+
+    /// <summary>
     /// Literal for code: TopographySpecificRadiographicProcedure_
     /// </summary>
     public const string LiteralTopographySpecificRadiographicProcedure_ = "108273007";
+
+    /// <summary>
+    /// Literal for code: NONETopographySpecificRadiographicProcedure_
+    /// </summary>
+    public const string LiteralNONETopographySpecificRadiographicProcedure_ = "http://snomed.info/sct#108273007";
 
     /// <summary>
     /// Literal for code: RadiologicProcedureOnFaceHeadANDORNeck_
@@ -9170,9 +9250,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicProcedureOnFaceHeadANDORNeck_ = "108274001";
 
     /// <summary>
+    /// Literal for code: NONERadiologicProcedureOnFaceHeadANDORNeck_
+    /// </summary>
+    public const string LiteralNONERadiologicProcedureOnFaceHeadANDORNeck_ = "http://snomed.info/sct#108274001";
+
+    /// <summary>
     /// Literal for code: RadiologicProcedureOnChestANDORAbdomen_
     /// </summary>
     public const string LiteralRadiologicProcedureOnChestANDORAbdomen_ = "108275000";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicProcedureOnChestANDORAbdomen_
+    /// </summary>
+    public const string LiteralNONERadiologicProcedureOnChestANDORAbdomen_ = "http://snomed.info/sct#108275000";
 
     /// <summary>
     /// Literal for code: RadiologicProcedureOnCardiovascularSystem_
@@ -9180,9 +9270,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicProcedureOnCardiovascularSystem_ = "108276004";
 
     /// <summary>
+    /// Literal for code: NONERadiologicProcedureOnCardiovascularSystem_
+    /// </summary>
+    public const string LiteralNONERadiologicProcedureOnCardiovascularSystem_ = "http://snomed.info/sct#108276004";
+
+    /// <summary>
     /// Literal for code: RadiologicProcedureOnGenitourinarySystem_
     /// </summary>
     public const string LiteralRadiologicProcedureOnGenitourinarySystem_ = "108279006";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicProcedureOnGenitourinarySystem_
+    /// </summary>
+    public const string LiteralNONERadiologicProcedureOnGenitourinarySystem_ = "http://snomed.info/sct#108279006";
 
     /// <summary>
     /// Literal for code: RadiologicProcedureOnSpineANDORPelvis_
@@ -9190,9 +9290,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicProcedureOnSpineANDORPelvis_ = "108280009";
 
     /// <summary>
+    /// Literal for code: NONERadiologicProcedureOnSpineANDORPelvis_
+    /// </summary>
+    public const string LiteralNONERadiologicProcedureOnSpineANDORPelvis_ = "http://snomed.info/sct#108280009";
+
+    /// <summary>
     /// Literal for code: RadiologicProcedureOnLowerExtremityANDORHip_
     /// </summary>
     public const string LiteralRadiologicProcedureOnLowerExtremityANDORHip_ = "108282001";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicProcedureOnLowerExtremityANDORHip_
+    /// </summary>
+    public const string LiteralNONERadiologicProcedureOnLowerExtremityANDORHip_ = "http://snomed.info/sct#108282001";
 
     /// <summary>
     /// Literal for code: UltrasoundProcedureOnCardiovascularSystem_
@@ -9200,9 +9310,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasoundProcedureOnCardiovascularSystem_ = "108283006";
 
     /// <summary>
+    /// Literal for code: NONEUltrasoundProcedureOnCardiovascularSystem_
+    /// </summary>
+    public const string LiteralNONEUltrasoundProcedureOnCardiovascularSystem_ = "http://snomed.info/sct#108283006";
+
+    /// <summary>
     /// Literal for code: UltrasoundProcedureOnEndocrineSystem_
     /// </summary>
     public const string LiteralUltrasoundProcedureOnEndocrineSystem_ = "108284000";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasoundProcedureOnEndocrineSystem_
+    /// </summary>
+    public const string LiteralNONEUltrasoundProcedureOnEndocrineSystem_ = "http://snomed.info/sct#108284000";
 
     /// <summary>
     /// Literal for code: UltrasoundProcedureOnUrinaryANDORMaleGenitalSystem_
@@ -9210,9 +9330,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasoundProcedureOnUrinaryANDORMaleGenitalSystem_ = "108285004";
 
     /// <summary>
+    /// Literal for code: NONEUltrasoundProcedureOnUrinaryANDORMaleGenitalSystem_
+    /// </summary>
+    public const string LiteralNONEUltrasoundProcedureOnUrinaryANDORMaleGenitalSystem_ = "http://snomed.info/sct#108285004";
+
+    /// <summary>
     /// Literal for code: UltrasoundProcedureOnFemaleGenitalSystemANDORPregnancyRelatedStructure_
     /// </summary>
     public const string LiteralUltrasoundProcedureOnFemaleGenitalSystemANDORPregnancyRelatedStructure_ = "108286003";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasoundProcedureOnFemaleGenitalSystemANDORPregnancyRelatedStructure_
+    /// </summary>
+    public const string LiteralNONEUltrasoundProcedureOnFemaleGenitalSystemANDORPregnancyRelatedStructure_ = "http://snomed.info/sct#108286003";
 
     /// <summary>
     /// Literal for code: UltrasoundProcedureOnNervousSystemANDORSpecialSenseOrgan_
@@ -9220,9 +9350,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasoundProcedureOnNervousSystemANDORSpecialSenseOrgan_ = "108287007";
 
     /// <summary>
+    /// Literal for code: NONEUltrasoundProcedureOnNervousSystemANDORSpecialSenseOrgan_
+    /// </summary>
+    public const string LiteralNONEUltrasoundProcedureOnNervousSystemANDORSpecialSenseOrgan_ = "http://snomed.info/sct#108287007";
+
+    /// <summary>
     /// Literal for code: UltrasoundProcedureOnTopographicRegion_
     /// </summary>
     public const string LiteralUltrasoundProcedureOnTopographicRegion_ = "108288002";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasoundProcedureOnTopographicRegion_
+    /// </summary>
+    public const string LiteralNONEUltrasoundProcedureOnTopographicRegion_ = "http://snomed.info/sct#108288002";
 
     /// <summary>
     /// Literal for code: NuclearMedicineDiagnosticProcedureOnCardiovascularSystem_
@@ -9230,9 +9370,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNuclearMedicineDiagnosticProcedureOnCardiovascularSystem_ = "108294005";
 
     /// <summary>
+    /// Literal for code: NONENuclearMedicineDiagnosticProcedureOnCardiovascularSystem_
+    /// </summary>
+    public const string LiteralNONENuclearMedicineDiagnosticProcedureOnCardiovascularSystem_ = "http://snomed.info/sct#108294005";
+
+    /// <summary>
     /// Literal for code: NuclearMedicineDiagnosticProcedureOnEndocrineANDORHematopoieticSystem_
     /// </summary>
     public const string LiteralNuclearMedicineDiagnosticProcedureOnEndocrineANDORHematopoieticSystem_ = "108296007";
+
+    /// <summary>
+    /// Literal for code: NONENuclearMedicineDiagnosticProcedureOnEndocrineANDORHematopoieticSystem_
+    /// </summary>
+    public const string LiteralNONENuclearMedicineDiagnosticProcedureOnEndocrineANDORHematopoieticSystem_ = "http://snomed.info/sct#108296007";
 
     /// <summary>
     /// Literal for code: NuclearMedicineDiagnosticProcedureOnNervousSystem_
@@ -9240,9 +9390,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNuclearMedicineDiagnosticProcedureOnNervousSystem_ = "108300008";
 
     /// <summary>
+    /// Literal for code: NONENuclearMedicineDiagnosticProcedureOnNervousSystem_
+    /// </summary>
+    public const string LiteralNONENuclearMedicineDiagnosticProcedureOnNervousSystem_ = "http://snomed.info/sct#108300008";
+
+    /// <summary>
     /// Literal for code: IsotopeStudyForPlasmaVolume_
     /// </summary>
     public const string LiteralIsotopeStudyForPlasmaVolume_ = "11269009";
+
+    /// <summary>
+    /// Literal for code: NONEIsotopeStudyForPlasmaVolume_
+    /// </summary>
+    public const string LiteralNONEIsotopeStudyForPlasmaVolume_ = "http://snomed.info/sct#11269009";
 
     /// <summary>
     /// Literal for code: KidneyImagingWithVascularFlowAndFunctionStudy_
@@ -9250,9 +9410,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKidneyImagingWithVascularFlowAndFunctionStudy_ = "11278003";
 
     /// <summary>
+    /// Literal for code: NONEKidneyImagingWithVascularFlowAndFunctionStudy_
+    /// </summary>
+    public const string LiteralNONEKidneyImagingWithVascularFlowAndFunctionStudy_ = "http://snomed.info/sct#11278003";
+
+    /// <summary>
     /// Literal for code: AngiographyOfBrachialArtery_
     /// </summary>
     public const string LiteralAngiographyOfBrachialArtery_ = "11295006";
+
+    /// <summary>
+    /// Literal for code: NONEAngiographyOfBrachialArtery_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfBrachialArtery_ = "http://snomed.info/sct#11295006";
 
     /// <summary>
     /// Literal for code: Somnocinematography_
@@ -9260,9 +9430,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSomnocinematography_ = "113025000";
 
     /// <summary>
+    /// Literal for code: NONESomnocinematography_
+    /// </summary>
+    public const string LiteralNONESomnocinematography_ = "http://snomed.info/sct#113025000";
+
+    /// <summary>
     /// Literal for code: ComputerizedTomographyWithIVContrast_
     /// </summary>
     public const string LiteralComputerizedTomographyWithIVContrast_ = "113090004";
+
+    /// <summary>
+    /// Literal for code: NONEComputerizedTomographyWithIVContrast_
+    /// </summary>
+    public const string LiteralNONEComputerizedTomographyWithIVContrast_ = "http://snomed.info/sct#113090004";
 
     /// <summary>
     /// Literal for code: MagneticResonanceImaging_
@@ -9270,9 +9450,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMagneticResonanceImaging_ = "113091000";
 
     /// <summary>
+    /// Literal for code: NONEMagneticResonanceImaging_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImaging_ = "http://snomed.info/sct#113091000";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfChestLateral_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfChestLateral_ = "113094008";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfChestLateral_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfChestLateral_ = "http://snomed.info/sct#113094008";
 
     /// <summary>
     /// Literal for code: TranslumbarAortogram_
@@ -9280,9 +9470,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTranslumbarAortogram_ = "113096005";
 
     /// <summary>
+    /// Literal for code: NONETranslumbarAortogram_
+    /// </summary>
+    public const string LiteralNONETranslumbarAortogram_ = "http://snomed.info/sct#113096005";
+
+    /// <summary>
     /// Literal for code: PhlebographyOfVeinsOfHeadAndNeck_
     /// </summary>
     public const string LiteralPhlebographyOfVeinsOfHeadAndNeck_ = "113099003";
+
+    /// <summary>
+    /// Literal for code: NONEPhlebographyOfVeinsOfHeadAndNeck_
+    /// </summary>
+    public const string LiteralNONEPhlebographyOfVeinsOfHeadAndNeck_ = "http://snomed.info/sct#113099003";
 
     /// <summary>
     /// Literal for code: PelvicLymphangiogram_
@@ -9290,9 +9490,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPelvicLymphangiogram_ = "113100006";
 
     /// <summary>
+    /// Literal for code: NONEPelvicLymphangiogram_
+    /// </summary>
+    public const string LiteralNONEPelvicLymphangiogram_ = "http://snomed.info/sct#113100006";
+
+    /// <summary>
     /// Literal for code: RadiographyOfUrinarySystem_
     /// </summary>
     public const string LiteralRadiographyOfUrinarySystem_ = "113103008";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfUrinarySystem_
+    /// </summary>
+    public const string LiteralNONERadiographyOfUrinarySystem_ = "http://snomed.info/sct#113103008";
 
     /// <summary>
     /// Literal for code: RetrogradeCystourethrogram_
@@ -9300,9 +9510,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRetrogradeCystourethrogram_ = "113104002";
 
     /// <summary>
+    /// Literal for code: NONERetrogradeCystourethrogram_
+    /// </summary>
+    public const string LiteralNONERetrogradeCystourethrogram_ = "http://snomed.info/sct#113104002";
+
+    /// <summary>
     /// Literal for code: ComputerizedAxialTomographyOfThoracicSpineWithContrast_
     /// </summary>
     public const string LiteralComputerizedAxialTomographyOfThoracicSpineWithContrast_ = "113105001";
+
+    /// <summary>
+    /// Literal for code: NONEComputerizedAxialTomographyOfThoracicSpineWithContrast_
+    /// </summary>
+    public const string LiteralNONEComputerizedAxialTomographyOfThoracicSpineWithContrast_ = "http://snomed.info/sct#113105001";
 
     /// <summary>
     /// Literal for code: RadiographyOfSoftTissueOfShoulder_
@@ -9310,9 +9530,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfSoftTissueOfShoulder_ = "113107009";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfSoftTissueOfShoulder_
+    /// </summary>
+    public const string LiteralNONERadiographyOfSoftTissueOfShoulder_ = "http://snomed.info/sct#113107009";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingOfLowerExtremity_
     /// </summary>
     public const string LiteralMagneticResonanceImagingOfLowerExtremity_ = "113109007";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfLowerExtremity_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfLowerExtremity_ = "http://snomed.info/sct#113109007";
 
     /// <summary>
     /// Literal for code: UltrasonographyForDeepVeinThrombosis_
@@ -9320,9 +9550,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonographyForDeepVeinThrombosis_ = "113110002";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonographyForDeepVeinThrombosis_
+    /// </summary>
+    public const string LiteralNONEUltrasonographyForDeepVeinThrombosis_ = "http://snomed.info/sct#113110002";
+
+    /// <summary>
     /// Literal for code: OphthalmicEchographyAMode_
     /// </summary>
     public const string LiteralOphthalmicEchographyAMode_ = "113113000";
+
+    /// <summary>
+    /// Literal for code: NONEOphthalmicEchographyAMode_
+    /// </summary>
+    public const string LiteralNONEOphthalmicEchographyAMode_ = "http://snomed.info/sct#113113000";
 
     /// <summary>
     /// Literal for code: RadioiodinatedRoseBengalStudyOfLiver_
@@ -9330,9 +9570,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadioiodinatedRoseBengalStudyOfLiver_ = "113125002";
 
     /// <summary>
+    /// Literal for code: NONERadioiodinatedRoseBengalStudyOfLiver_
+    /// </summary>
+    public const string LiteralNONERadioiodinatedRoseBengalStudyOfLiver_ = "http://snomed.info/sct#113125002";
+
+    /// <summary>
     /// Literal for code: RetroperitonealEchographyBScanLimited_
     /// </summary>
     public const string LiteralRetroperitonealEchographyBScanLimited_ = "11390003";
+
+    /// <summary>
+    /// Literal for code: NONERetroperitonealEchographyBScanLimited_
+    /// </summary>
+    public const string LiteralNONERetroperitonealEchographyBScanLimited_ = "http://snomed.info/sct#11390003";
 
     /// <summary>
     /// Literal for code: IntraoperativeEchography_
@@ -9340,9 +9590,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntraoperativeEchography_ = "11582002";
 
     /// <summary>
+    /// Literal for code: NONEIntraoperativeEchography_
+    /// </summary>
+    public const string LiteralNONEIntraoperativeEchography_ = "http://snomed.info/sct#11582002";
+
+    /// <summary>
     /// Literal for code: SpiralComputedTomographyScan_
     /// </summary>
     public const string LiteralSpiralComputedTomographyScan_ = "116152004";
+
+    /// <summary>
+    /// Literal for code: NONESpiralComputedTomographyScan_
+    /// </summary>
+    public const string LiteralNONESpiralComputedTomographyScan_ = "http://snomed.info/sct#116152004";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographySupineAndErectStudies_
@@ -9350,9 +9610,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographySupineAndErectStudies_ = "11634002";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographySupineAndErectStudies_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographySupineAndErectStudies_ = "http://snomed.info/sct#11634002";
+
+    /// <summary>
     /// Literal for code: FluoroscopyDuringOperation_
     /// </summary>
     public const string LiteralFluoroscopyDuringOperation_ = "11760007";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyDuringOperation_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyDuringOperation_ = "http://snomed.info/sct#11760007";
 
     /// <summary>
     /// Literal for code: OcularThermography_
@@ -9360,9 +9630,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOcularThermography_ = "11819005";
 
     /// <summary>
+    /// Literal for code: NONEOcularThermography_
+    /// </summary>
+    public const string LiteralNONEOcularThermography_ = "http://snomed.info/sct#11819005";
+
+    /// <summary>
     /// Literal for code: ComputerizedTomographySagittal_
     /// </summary>
     public const string LiteralComputerizedTomographySagittal_ = "11892002";
+
+    /// <summary>
+    /// Literal for code: NONEComputerizedTomographySagittal_
+    /// </summary>
+    public const string LiteralNONEComputerizedTomographySagittal_ = "http://snomed.info/sct#11892002";
 
     /// <summary>
     /// Literal for code: TracerStudyOfEye_
@@ -9370,9 +9650,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTracerStudyOfEye_ = "11895000";
 
     /// <summary>
+    /// Literal for code: NONETracerStudyOfEye_
+    /// </summary>
+    public const string LiteralNONETracerStudyOfEye_ = "http://snomed.info/sct#11895000";
+
+    /// <summary>
     /// Literal for code: PulmonaryVentilationPerfusionStudyByRadioactiveKrypton_
     /// </summary>
     public const string LiteralPulmonaryVentilationPerfusionStudyByRadioactiveKrypton_ = "11971003";
+
+    /// <summary>
+    /// Literal for code: NONEPulmonaryVentilationPerfusionStudyByRadioactiveKrypton_
+    /// </summary>
+    public const string LiteralNONEPulmonaryVentilationPerfusionStudyByRadioactiveKrypton_ = "http://snomed.info/sct#11971003";
 
     /// <summary>
     /// Literal for code: PhlebographyOfPortalSystem_
@@ -9380,9 +9670,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhlebographyOfPortalSystem_ = "12118001";
 
     /// <summary>
+    /// Literal for code: NONEPhlebographyOfPortalSystem_
+    /// </summary>
+    public const string LiteralNONEPhlebographyOfPortalSystem_ = "http://snomed.info/sct#12118001";
+
+    /// <summary>
     /// Literal for code: RadioisotopeScanOfPancreas_
     /// </summary>
     public const string LiteralRadioisotopeScanOfPancreas_ = "12124007";
+
+    /// <summary>
+    /// Literal for code: NONERadioisotopeScanOfPancreas_
+    /// </summary>
+    public const string LiteralNONERadioisotopeScanOfPancreas_ = "http://snomed.info/sct#12124007";
 
     /// <summary>
     /// Literal for code: RadiographyOfHumerus_
@@ -9390,9 +9690,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfHumerus_ = "1225002";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfHumerus_
+    /// </summary>
+    public const string LiteralNONERadiographyOfHumerus_ = "http://snomed.info/sct#1225002";
+
+    /// <summary>
     /// Literal for code: IsotopeStudyForGlomerularFiltrationRate_
     /// </summary>
     public const string LiteralIsotopeStudyForGlomerularFiltrationRate_ = "12341000";
+
+    /// <summary>
+    /// Literal for code: NONEIsotopeStudyForGlomerularFiltrationRate_
+    /// </summary>
+    public const string LiteralNONEIsotopeStudyForGlomerularFiltrationRate_ = "http://snomed.info/sct#12341000";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyStereotacticLocalizationInHead_
@@ -9400,9 +9710,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyStereotacticLocalizationInHead_ = "12356009";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyStereotacticLocalizationInHead_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyStereotacticLocalizationInHead_ = "http://snomed.info/sct#12356009";
+
+    /// <summary>
     /// Literal for code: RadiologicExaminationOfRenalCystTranslumbarApproach_
     /// </summary>
     public const string LiteralRadiologicExaminationOfRenalCystTranslumbarApproach_ = "12357000";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfRenalCystTranslumbarApproach_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfRenalCystTranslumbarApproach_ = "http://snomed.info/sct#12357000";
 
     /// <summary>
     /// Literal for code: Xeromammography_
@@ -9410,9 +9730,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralXeromammography_ = "12389009";
 
     /// <summary>
+    /// Literal for code: NONEXeromammography_
+    /// </summary>
+    public const string LiteralNONEXeromammography_ = "http://snomed.info/sct#12389009";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfHipBilateral_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfHipBilateral_ = "12513003";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfHipBilateral_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfHipBilateral_ = "http://snomed.info/sct#12513003";
 
     /// <summary>
     /// Literal for code: RadiologicGuidanceForPercutaneousPlacementOfEnteroclysisTube_
@@ -9420,9 +9750,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicGuidanceForPercutaneousPlacementOfEnteroclysisTube_ = "12749000";
 
     /// <summary>
+    /// Literal for code: NONERadiologicGuidanceForPercutaneousPlacementOfEnteroclysisTube_
+    /// </summary>
+    public const string LiteralNONERadiologicGuidanceForPercutaneousPlacementOfEnteroclysisTube_ = "http://snomed.info/sct#12749000";
+
+    /// <summary>
     /// Literal for code: Phlebography_
     /// </summary>
     public const string LiteralPhlebography_ = "129108007";
+
+    /// <summary>
+    /// Literal for code: NONEPhlebography_
+    /// </summary>
+    public const string LiteralNONEPhlebography_ = "http://snomed.info/sct#129108007";
 
     /// <summary>
     /// Literal for code: Arteriography_
@@ -9430,9 +9770,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArteriography_ = "129118002";
 
     /// <summary>
+    /// Literal for code: NONEArteriography_
+    /// </summary>
+    public const string LiteralNONEArteriography_ = "http://snomed.info/sct#129118002";
+
+    /// <summary>
     /// Literal for code: UltrasoundPhlebographyOfVenaCava_
     /// </summary>
     public const string LiteralUltrasoundPhlebographyOfVenaCava_ = "129119005";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasoundPhlebographyOfVenaCava_
+    /// </summary>
+    public const string LiteralNONEUltrasoundPhlebographyOfVenaCava_ = "http://snomed.info/sct#129119005";
 
     /// <summary>
     /// Literal for code: UltrasoundPhlebographyOfHepaticVein_
@@ -9440,9 +9790,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasoundPhlebographyOfHepaticVein_ = "129120004";
 
     /// <summary>
+    /// Literal for code: NONEUltrasoundPhlebographyOfHepaticVein_
+    /// </summary>
+    public const string LiteralNONEUltrasoundPhlebographyOfHepaticVein_ = "http://snomed.info/sct#129120004";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingOfUrinaryBladder_
     /// </summary>
     public const string LiteralMagneticResonanceImagingOfUrinaryBladder_ = "1292009";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfUrinaryBladder_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfUrinaryBladder_ = "http://snomed.info/sct#1292009";
 
     /// <summary>
     /// Literal for code: CorporaCavernosography_
@@ -9450,9 +9810,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCorporaCavernosography_ = "13088001";
 
     /// <summary>
+    /// Literal for code: NONECorporaCavernosography_
+    /// </summary>
+    public const string LiteralNONECorporaCavernosography_ = "http://snomed.info/sct#13088001";
+
+    /// <summary>
     /// Literal for code: AngiocardiographyByCineradiography_
     /// </summary>
     public const string LiteralAngiocardiographyByCineradiography_ = "13167007";
+
+    /// <summary>
+    /// Literal for code: NONEAngiocardiographyByCineradiography_
+    /// </summary>
+    public const string LiteralNONEAngiocardiographyByCineradiography_ = "http://snomed.info/sct#13167007";
 
     /// <summary>
     /// Literal for code: TransvaginalEchography_
@@ -9460,9 +9830,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTransvaginalEchography_ = "13205008";
 
     /// <summary>
+    /// Literal for code: NONETransvaginalEchography_
+    /// </summary>
+    public const string LiteralNONETransvaginalEchography_ = "http://snomed.info/sct#13205008";
+
+    /// <summary>
     /// Literal for code: DynamicFunctionStudyBloodClearance_
     /// </summary>
     public const string LiteralDynamicFunctionStudyBloodClearance_ = "13256004";
+
+    /// <summary>
+    /// Literal for code: NONEDynamicFunctionStudyBloodClearance_
+    /// </summary>
+    public const string LiteralNONEDynamicFunctionStudyBloodClearance_ = "http://snomed.info/sct#13256004";
 
     /// <summary>
     /// Literal for code: ThyroidUptakeWithDischarge_
@@ -9470,9 +9850,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThyroidUptakeWithDischarge_ = "13378009";
 
     /// <summary>
+    /// Literal for code: NONEThyroidUptakeWithDischarge_
+    /// </summary>
+    public const string LiteralNONEThyroidUptakeWithDischarge_ = "http://snomed.info/sct#13378009";
+
+    /// <summary>
     /// Literal for code: ComputerAssistedImageAnalysis_
     /// </summary>
     public const string LiteralComputerAssistedImageAnalysis_ = "133883001";
+
+    /// <summary>
+    /// Literal for code: NONEComputerAssistedImageAnalysis_
+    /// </summary>
+    public const string LiteralNONEComputerAssistedImageAnalysis_ = "http://snomed.info/sct#133883001";
 
     /// <summary>
     /// Literal for code: SpatialCollocationAnalysis_
@@ -9480,9 +9870,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpatialCollocationAnalysis_ = "133884007";
 
     /// <summary>
+    /// Literal for code: NONESpatialCollocationAnalysis_
+    /// </summary>
+    public const string LiteralNONESpatialCollocationAnalysis_ = "http://snomed.info/sct#133884007";
+
+    /// <summary>
     /// Literal for code: SpatialProximityAnalysis_
     /// </summary>
     public const string LiteralSpatialProximityAnalysis_ = "133885008";
+
+    /// <summary>
+    /// Literal for code: NONESpatialProximityAnalysis_
+    /// </summary>
+    public const string LiteralNONESpatialProximityAnalysis_ = "http://snomed.info/sct#133885008";
 
     /// <summary>
     /// Literal for code: TemporalCorrelationAnalysis_
@@ -9490,9 +9890,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTemporalCorrelationAnalysis_ = "133886009";
 
     /// <summary>
+    /// Literal for code: NONETemporalCorrelationAnalysis_
+    /// </summary>
+    public const string LiteralNONETemporalCorrelationAnalysis_ = "http://snomed.info/sct#133886009";
+
+    /// <summary>
     /// Literal for code: ImageQualityAnalysis_
     /// </summary>
     public const string LiteralImageQualityAnalysis_ = "133887000";
+
+    /// <summary>
+    /// Literal for code: NONEImageQualityAnalysis_
+    /// </summary>
+    public const string LiteralNONEImageQualityAnalysis_ = "http://snomed.info/sct#133887000";
 
     /// <summary>
     /// Literal for code: FocalAsymmetricDensityAnalysis_
@@ -9500,9 +9910,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFocalAsymmetricDensityAnalysis_ = "133888005";
 
     /// <summary>
+    /// Literal for code: NONEFocalAsymmetricDensityAnalysis_
+    /// </summary>
+    public const string LiteralNONEFocalAsymmetricDensityAnalysis_ = "http://snomed.info/sct#133888005";
+
+    /// <summary>
     /// Literal for code: AsymmetricBreastTissueAnalysis_
     /// </summary>
     public const string LiteralAsymmetricBreastTissueAnalysis_ = "133889002";
+
+    /// <summary>
+    /// Literal for code: NONEAsymmetricBreastTissueAnalysis_
+    /// </summary>
+    public const string LiteralNONEAsymmetricBreastTissueAnalysis_ = "http://snomed.info/sct#133889002";
 
     /// <summary>
     /// Literal for code: BreastCompositionAnalysis_
@@ -9510,9 +9930,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBreastCompositionAnalysis_ = "133890006";
 
     /// <summary>
+    /// Literal for code: NONEBreastCompositionAnalysis_
+    /// </summary>
+    public const string LiteralNONEBreastCompositionAnalysis_ = "http://snomed.info/sct#133890006";
+
+    /// <summary>
     /// Literal for code: MammaryDuctogramOfMultipleDucts_
     /// </summary>
     public const string LiteralMammaryDuctogramOfMultipleDucts_ = "13450007";
+
+    /// <summary>
+    /// Literal for code: NONEMammaryDuctogramOfMultipleDucts_
+    /// </summary>
+    public const string LiteralNONEMammaryDuctogramOfMultipleDucts_ = "http://snomed.info/sct#13450007";
 
     /// <summary>
     /// Literal for code: ComputerizedTomographyWithoutIVContrastFollowedByIVContrastAndMoreSections_
@@ -9520,9 +9950,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedTomographyWithoutIVContrastFollowedByIVContrastAndMoreSections_ = "13518004";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedTomographyWithoutIVContrastFollowedByIVContrastAndMoreSections_
+    /// </summary>
+    public const string LiteralNONEComputerizedTomographyWithoutIVContrastFollowedByIVContrastAndMoreSections_ = "http://snomed.info/sct#13518004";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyCombinedAPAndLateral_
     /// </summary>
     public const string LiteralDiagnosticRadiographyCombinedAPAndLateral_ = "13578005";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyCombinedAPAndLateral_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyCombinedAPAndLateral_ = "http://snomed.info/sct#13578005";
 
     /// <summary>
     /// Literal for code: GastrointestinalAspirateForLocalizationOfBloodLoss_
@@ -9530,9 +9970,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGastrointestinalAspirateForLocalizationOfBloodLoss_ = "13845008";
 
     /// <summary>
+    /// Literal for code: NONEGastrointestinalAspirateForLocalizationOfBloodLoss_
+    /// </summary>
+    public const string LiteralNONEGastrointestinalAspirateForLocalizationOfBloodLoss_ = "http://snomed.info/sct#13845008";
+
+    /// <summary>
     /// Literal for code: EchographyScanBModeForFetalAgeDetermination_
     /// </summary>
     public const string LiteralEchographyScanBModeForFetalAgeDetermination_ = "1385001";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyScanBModeForFetalAgeDetermination_
+    /// </summary>
+    public const string LiteralNONEEchographyScanBModeForFetalAgeDetermination_ = "http://snomed.info/sct#1385001";
 
     /// <summary>
     /// Literal for code: AngiographyOfArteriovenousShunt_
@@ -9540,9 +9990,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngiographyOfArteriovenousShunt_ = "1414009";
 
     /// <summary>
+    /// Literal for code: NONEAngiographyOfArteriovenousShunt_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfArteriovenousShunt_ = "http://snomed.info/sct#1414009";
+
+    /// <summary>
     /// Literal for code: CTGuidanceForNeedleBiopsy_
     /// </summary>
     public const string LiteralCTGuidanceForNeedleBiopsy_ = "14211004";
+
+    /// <summary>
+    /// Literal for code: NONECTGuidanceForNeedleBiopsy_
+    /// </summary>
+    public const string LiteralNONECTGuidanceForNeedleBiopsy_ = "http://snomed.info/sct#14211004";
 
     /// <summary>
     /// Literal for code: Vasography_
@@ -9550,9 +10010,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVasography_ = "14305004";
 
     /// <summary>
+    /// Literal for code: NONEVasography_
+    /// </summary>
+    public const string LiteralNONEVasography_ = "http://snomed.info/sct#14305004";
+
+    /// <summary>
     /// Literal for code: FetalEchocardiographyRealTimeWithImageDocumentation2DWithMModeRecording_
     /// </summary>
     public const string LiteralFetalEchocardiographyRealTimeWithImageDocumentation2DWithMModeRecording_ = "15282006";
+
+    /// <summary>
+    /// Literal for code: NONEFetalEchocardiographyRealTimeWithImageDocumentation2DWithMModeRecording_
+    /// </summary>
+    public const string LiteralNONEFetalEchocardiographyRealTimeWithImageDocumentation2DWithMModeRecording_ = "http://snomed.info/sct#15282006";
 
     /// <summary>
     /// Literal for code: RadiocalciumAbsorptionStudy_
@@ -9560,9 +10030,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiocalciumAbsorptionStudy_ = "15351005";
 
     /// <summary>
+    /// Literal for code: NONERadiocalciumAbsorptionStudy_
+    /// </summary>
+    public const string LiteralNONERadiocalciumAbsorptionStudy_ = "http://snomed.info/sct#15351005";
+
+    /// <summary>
     /// Literal for code: ScanningOrImagingPerfusionStudyParticulate_
     /// </summary>
     public const string LiteralScanningOrImagingPerfusionStudyParticulate_ = "15364006";
+
+    /// <summary>
+    /// Literal for code: NONEScanningOrImagingPerfusionStudyParticulate_
+    /// </summary>
+    public const string LiteralNONEScanningOrImagingPerfusionStudyParticulate_ = "http://snomed.info/sct#15364006";
 
     /// <summary>
     /// Literal for code: CerebralVentriculographyAirContrast_
@@ -9570,9 +10050,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCerebralVentriculographyAirContrast_ = "15749009";
 
     /// <summary>
+    /// Literal for code: NONECerebralVentriculographyAirContrast_
+    /// </summary>
+    public const string LiteralNONECerebralVentriculographyAirContrast_ = "http://snomed.info/sct#15749009";
+
+    /// <summary>
     /// Literal for code: SerialographySinglePlane_
     /// </summary>
     public const string LiteralSerialographySinglePlane_ = "15757007";
+
+    /// <summary>
+    /// Literal for code: NONESerialographySinglePlane_
+    /// </summary>
+    public const string LiteralNONESerialographySinglePlane_ = "http://snomed.info/sct#15757007";
 
     /// <summary>
     /// Literal for code: SkeletalXRayOfAnkleAndFoot_
@@ -9580,9 +10070,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSkeletalXRayOfAnkleAndFoot_ = "1597004";
 
     /// <summary>
+    /// Literal for code: NONESkeletalXRayOfAnkleAndFoot_
+    /// </summary>
+    public const string LiteralNONESkeletalXRayOfAnkleAndFoot_ = "http://snomed.info/sct#1597004";
+
+    /// <summary>
     /// Literal for code: AngiographyOfRenalArteriesBilateral_
     /// </summary>
     public const string LiteralAngiographyOfRenalArteriesBilateral_ = "16245009";
+
+    /// <summary>
+    /// Literal for code: NONEAngiographyOfRenalArteriesBilateral_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfRenalArteriesBilateral_ = "http://snomed.info/sct#16245009";
 
     /// <summary>
     /// Literal for code: RadiologicSupervisionAndInterpretationOfProcedure_
@@ -9590,9 +10090,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicSupervisionAndInterpretationOfProcedure_ = "16278002";
 
     /// <summary>
+    /// Literal for code: NONERadiologicSupervisionAndInterpretationOfProcedure_
+    /// </summary>
+    public const string LiteralNONERadiologicSupervisionAndInterpretationOfProcedure_ = "http://snomed.info/sct#16278002";
+
+    /// <summary>
     /// Literal for code: OcularPhotographyForMedicalEvaluationAndDocumentationSlitLampPhotography_
     /// </summary>
     public const string LiteralOcularPhotographyForMedicalEvaluationAndDocumentationSlitLampPhotography_ = "16306001";
+
+    /// <summary>
+    /// Literal for code: NONEOcularPhotographyForMedicalEvaluationAndDocumentationSlitLampPhotography_
+    /// </summary>
+    public const string LiteralNONEOcularPhotographyForMedicalEvaluationAndDocumentationSlitLampPhotography_ = "http://snomed.info/sct#16306001";
 
     /// <summary>
     /// Literal for code: Ultrasonography_
@@ -9600,9 +10110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonography_ = "16310003";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonography_
+    /// </summary>
+    public const string LiteralNONEUltrasonography_ = "http://snomed.info/sct#16310003";
+
+    /// <summary>
     /// Literal for code: PlacentalLocalization_
     /// </summary>
     public const string LiteralPlacentalLocalization_ = "164817009";
+
+    /// <summary>
+    /// Literal for code: NONEPlacentalLocalization_
+    /// </summary>
+    public const string LiteralNONEPlacentalLocalization_ = "http://snomed.info/sct#164817009";
 
     /// <summary>
     /// Literal for code: ThermographyOfSkin_
@@ -9610,9 +10130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThermographyOfSkin_ = "165095009";
 
     /// <summary>
+    /// Literal for code: NONEThermographyOfSkin_
+    /// </summary>
+    public const string LiteralNONEThermographyOfSkin_ = "http://snomed.info/sct#165095009";
+
+    /// <summary>
     /// Literal for code: PercutaneousTranshepaticCholangiogram_
     /// </summary>
     public const string LiteralPercutaneousTranshepaticCholangiogram_ = "16747000";
+
+    /// <summary>
+    /// Literal for code: NONEPercutaneousTranshepaticCholangiogram_
+    /// </summary>
+    public const string LiteralNONEPercutaneousTranshepaticCholangiogram_ = "http://snomed.info/sct#16747000";
 
     /// <summary>
     /// Literal for code: PlainFilm_
@@ -9620,9 +10150,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlainFilm_ = "168537006";
 
     /// <summary>
+    /// Literal for code: NONEPlainFilm_
+    /// </summary>
+    public const string LiteralNONEPlainFilm_ = "http://snomed.info/sct#168537006";
+
+    /// <summary>
     /// Literal for code: EthmoidSinusesXRay_
     /// </summary>
     public const string LiteralEthmoidSinusesXRay_ = "168558000";
+
+    /// <summary>
+    /// Literal for code: NONEEthmoidSinusesXRay_
+    /// </summary>
+    public const string LiteralNONEEthmoidSinusesXRay_ = "http://snomed.info/sct#168558000";
 
     /// <summary>
     /// Literal for code: FrontalSinusesXRay_
@@ -9630,9 +10170,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFrontalSinusesXRay_ = "168559008";
 
     /// <summary>
+    /// Literal for code: NONEFrontalSinusesXRay_
+    /// </summary>
+    public const string LiteralNONEFrontalSinusesXRay_ = "http://snomed.info/sct#168559008";
+
+    /// <summary>
     /// Literal for code: MaxillarySinusesXRay_
     /// </summary>
     public const string LiteralMaxillarySinusesXRay_ = "168560003";
+
+    /// <summary>
+    /// Literal for code: NONEMaxillarySinusesXRay_
+    /// </summary>
+    public const string LiteralNONEMaxillarySinusesXRay_ = "http://snomed.info/sct#168560003";
 
     /// <summary>
     /// Literal for code: MastoidProcessesXRay_
@@ -9640,9 +10190,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMastoidProcessesXRay_ = "168564007";
 
     /// <summary>
+    /// Literal for code: NONEMastoidProcessesXRay_
+    /// </summary>
+    public const string LiteralNONEMastoidProcessesXRay_ = "http://snomed.info/sct#168564007";
+
+    /// <summary>
     /// Literal for code: PlainXRayBaseOfSkull_
     /// </summary>
     public const string LiteralPlainXRayBaseOfSkull_ = "168565008";
+
+    /// <summary>
+    /// Literal for code: NONEPlainXRayBaseOfSkull_
+    /// </summary>
+    public const string LiteralNONEPlainXRayBaseOfSkull_ = "http://snomed.info/sct#168565008";
 
     /// <summary>
     /// Literal for code: PlainXRayFacialSinuses_
@@ -9650,9 +10210,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlainXRayFacialSinuses_ = "168566009";
 
     /// <summary>
+    /// Literal for code: NONEPlainXRayFacialSinuses_
+    /// </summary>
+    public const string LiteralNONEPlainXRayFacialSinuses_ = "http://snomed.info/sct#168566009";
+
+    /// <summary>
     /// Literal for code: AtlantoaxialXRay_
     /// </summary>
     public const string LiteralAtlantoaxialXRay_ = "168573004";
+
+    /// <summary>
+    /// Literal for code: NONEAtlantoaxialXRay_
+    /// </summary>
+    public const string LiteralNONEAtlantoaxialXRay_ = "http://snomed.info/sct#168573004";
 
     /// <summary>
     /// Literal for code: InstabilityViewsSpine_
@@ -9660,9 +10230,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInstabilityViewsSpine_ = "168588009";
 
     /// <summary>
+    /// Literal for code: NONEInstabilityViewsSpine_
+    /// </summary>
+    public const string LiteralNONEInstabilityViewsSpine_ = "http://snomed.info/sct#168588009";
+
+    /// <summary>
     /// Literal for code: ClavicleXRay_
     /// </summary>
     public const string LiteralClavicleXRay_ = "168594001";
+
+    /// <summary>
+    /// Literal for code: NONEClavicleXRay_
+    /// </summary>
+    public const string LiteralNONEClavicleXRay_ = "http://snomed.info/sct#168594001";
 
     /// <summary>
     /// Literal for code: SternoclavicularJointXRay_
@@ -9670,9 +10250,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSternoclavicularJointXRay_ = "168599006";
 
     /// <summary>
+    /// Literal for code: NONESternoclavicularJointXRay_
+    /// </summary>
+    public const string LiteralNONESternoclavicularJointXRay_ = "http://snomed.info/sct#168599006";
+
+    /// <summary>
     /// Literal for code: ThoracicInletXRay_
     /// </summary>
     public const string LiteralThoracicInletXRay_ = "168600009";
+
+    /// <summary>
+    /// Literal for code: NONEThoracicInletXRay_
+    /// </summary>
+    public const string LiteralNONEThoracicInletXRay_ = "http://snomed.info/sct#168600009";
 
     /// <summary>
     /// Literal for code: SymphysisPubisXRay_
@@ -9680,9 +10270,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSymphysisPubisXRay_ = "168609005";
 
     /// <summary>
+    /// Literal for code: NONESymphysisPubisXRay_
+    /// </summary>
+    public const string LiteralNONESymphysisPubisXRay_ = "http://snomed.info/sct#168609005";
+
+    /// <summary>
     /// Literal for code: PlainXRayHeadOfHumerus_
     /// </summary>
     public const string LiteralPlainXRayHeadOfHumerus_ = "168619004";
+
+    /// <summary>
+    /// Literal for code: NONEPlainXRayHeadOfHumerus_
+    /// </summary>
+    public const string LiteralNONEPlainXRayHeadOfHumerus_ = "http://snomed.info/sct#168619004";
 
     /// <summary>
     /// Literal for code: PlainXRayShaftOfHumerus_
@@ -9690,9 +10290,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlainXRayShaftOfHumerus_ = "168620005";
 
     /// <summary>
+    /// Literal for code: NONEPlainXRayShaftOfHumerus_
+    /// </summary>
+    public const string LiteralNONEPlainXRayShaftOfHumerus_ = "http://snomed.info/sct#168620005";
+
+    /// <summary>
     /// Literal for code: XRayShaftOfRadiusUlna_
     /// </summary>
     public const string LiteralXRayShaftOfRadiusUlna_ = "168623007";
+
+    /// <summary>
+    /// Literal for code: NONEXRayShaftOfRadiusUlna_
+    /// </summary>
+    public const string LiteralNONEXRayShaftOfRadiusUlna_ = "http://snomed.info/sct#168623007";
 
     /// <summary>
     /// Literal for code: StressXRayShoulderJoint_
@@ -9700,9 +10310,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStressXRayShoulderJoint_ = "168632009";
 
     /// <summary>
+    /// Literal for code: NONEStressXRayShoulderJoint_
+    /// </summary>
+    public const string LiteralNONEStressXRayShoulderJoint_ = "http://snomed.info/sct#168632009";
+
+    /// <summary>
     /// Literal for code: AcromioclavicularJointXRay_
     /// </summary>
     public const string LiteralAcromioclavicularJointXRay_ = "168633004";
+
+    /// <summary>
+    /// Literal for code: NONEAcromioclavicularJointXRay_
+    /// </summary>
+    public const string LiteralNONEAcromioclavicularJointXRay_ = "http://snomed.info/sct#168633004";
 
     /// <summary>
     /// Literal for code: PlainXRayRadius_
@@ -9710,9 +10330,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlainXRayRadius_ = "168637003";
 
     /// <summary>
+    /// Literal for code: NONEPlainXRayRadius_
+    /// </summary>
+    public const string LiteralNONEPlainXRayRadius_ = "http://snomed.info/sct#168637003";
+
+    /// <summary>
     /// Literal for code: StressXRayThumb_
     /// </summary>
     public const string LiteralStressXRayThumb_ = "168654006";
+
+    /// <summary>
+    /// Literal for code: NONEStressXRayThumb_
+    /// </summary>
+    public const string LiteralNONEStressXRayThumb_ = "http://snomed.info/sct#168654006";
 
     /// <summary>
     /// Literal for code: InstabilityViewsCarpus_
@@ -9720,9 +10350,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInstabilityViewsCarpus_ = "168655007";
 
     /// <summary>
+    /// Literal for code: NONEInstabilityViewsCarpus_
+    /// </summary>
+    public const string LiteralNONEInstabilityViewsCarpus_ = "http://snomed.info/sct#168655007";
+
+    /// <summary>
     /// Literal for code: PlainXRayHeadOfFemur_
     /// </summary>
     public const string LiteralPlainXRayHeadOfFemur_ = "168663008";
+
+    /// <summary>
+    /// Literal for code: NONEPlainXRayHeadOfFemur_
+    /// </summary>
+    public const string LiteralNONEPlainXRayHeadOfFemur_ = "http://snomed.info/sct#168663008";
 
     /// <summary>
     /// Literal for code: FemoralNeckXRay_
@@ -9730,9 +10370,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFemoralNeckXRay_ = "168664002";
 
     /// <summary>
+    /// Literal for code: NONEFemoralNeckXRay_
+    /// </summary>
+    public const string LiteralNONEFemoralNeckXRay_ = "http://snomed.info/sct#168664002";
+
+    /// <summary>
     /// Literal for code: PlainXRayShaftOfFemur_
     /// </summary>
     public const string LiteralPlainXRayShaftOfFemur_ = "168665001";
+
+    /// <summary>
+    /// Literal for code: NONEPlainXRayShaftOfFemur_
+    /// </summary>
+    public const string LiteralNONEPlainXRayShaftOfFemur_ = "http://snomed.info/sct#168665001";
 
     /// <summary>
     /// Literal for code: PatellaXRay_
@@ -9740,9 +10390,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatellaXRay_ = "168669007";
 
     /// <summary>
+    /// Literal for code: NONEPatellaXRay_
+    /// </summary>
+    public const string LiteralNONEPatellaXRay_ = "http://snomed.info/sct#168669007";
+
+    /// <summary>
     /// Literal for code: StressXRayKnee_
     /// </summary>
     public const string LiteralStressXRayKnee_ = "168681006";
+
+    /// <summary>
+    /// Literal for code: NONEStressXRayKnee_
+    /// </summary>
+    public const string LiteralNONEStressXRayKnee_ = "http://snomed.info/sct#168681006";
 
     /// <summary>
     /// Literal for code: StressXRayAnkleJoint_
@@ -9750,9 +10410,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStressXRayAnkleJoint_ = "168682004";
 
     /// <summary>
+    /// Literal for code: NONEStressXRayAnkleJoint_
+    /// </summary>
+    public const string LiteralNONEStressXRayAnkleJoint_ = "http://snomed.info/sct#168682004";
+
+    /// <summary>
     /// Literal for code: PlainXRayAbdomen_
     /// </summary>
     public const string LiteralPlainXRayAbdomen_ = "168702005";
+
+    /// <summary>
+    /// Literal for code: NONEPlainXRayAbdomen_
+    /// </summary>
+    public const string LiteralNONEPlainXRayAbdomen_ = "http://snomed.info/sct#168702005";
 
     /// <summary>
     /// Literal for code: SoftTissueXRayFace_
@@ -9760,9 +10430,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSoftTissueXRayFace_ = "168713008";
 
     /// <summary>
+    /// Literal for code: NONESoftTissueXRayFace_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayFace_ = "http://snomed.info/sct#168713008";
+
+    /// <summary>
     /// Literal for code: EarSoftTissueXRay_
     /// </summary>
     public const string LiteralEarSoftTissueXRay_ = "168716000";
+
+    /// <summary>
+    /// Literal for code: NONEEarSoftTissueXRay_
+    /// </summary>
+    public const string LiteralNONEEarSoftTissueXRay_ = "http://snomed.info/sct#168716000";
 
     /// <summary>
     /// Literal for code: SoftTissueXRayNose_
@@ -9770,9 +10450,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSoftTissueXRayNose_ = "168717009";
 
     /// <summary>
+    /// Literal for code: NONESoftTissueXRayNose_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayNose_ = "http://snomed.info/sct#168717009";
+
+    /// <summary>
     /// Literal for code: NeckSoftTissueXRay_
     /// </summary>
     public const string LiteralNeckSoftTissueXRay_ = "168719007";
+
+    /// <summary>
+    /// Literal for code: NONENeckSoftTissueXRay_
+    /// </summary>
+    public const string LiteralNONENeckSoftTissueXRay_ = "http://snomed.info/sct#168719007";
 
     /// <summary>
     /// Literal for code: XRayCervicalLymphNodes_
@@ -9780,9 +10470,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralXRayCervicalLymphNodes_ = "168722009";
 
     /// <summary>
+    /// Literal for code: NONEXRayCervicalLymphNodes_
+    /// </summary>
+    public const string LiteralNONEXRayCervicalLymphNodes_ = "http://snomed.info/sct#168722009";
+
+    /// <summary>
     /// Literal for code: SoftTissueXRayThyroid_
     /// </summary>
     public const string LiteralSoftTissueXRayThyroid_ = "168723004";
+
+    /// <summary>
+    /// Literal for code: NONESoftTissueXRayThyroid_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayThyroid_ = "http://snomed.info/sct#168723004";
 
     /// <summary>
     /// Literal for code: SoftTissueXRayMouth_
@@ -9790,9 +10490,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSoftTissueXRayMouth_ = "168725006";
 
     /// <summary>
+    /// Literal for code: NONESoftTissueXRayMouth_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayMouth_ = "http://snomed.info/sct#168725006";
+
+    /// <summary>
     /// Literal for code: SoftTissueXRayTongue_
     /// </summary>
     public const string LiteralSoftTissueXRayTongue_ = "168729000";
+
+    /// <summary>
+    /// Literal for code: NONESoftTissueXRayTongue_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayTongue_ = "http://snomed.info/sct#168729000";
 
     /// <summary>
     /// Literal for code: StandardChestXRay_
@@ -9800,9 +10510,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStandardChestXRay_ = "168731009";
 
     /// <summary>
+    /// Literal for code: NONEStandardChestXRay_
+    /// </summary>
+    public const string LiteralNONEStandardChestXRay_ = "http://snomed.info/sct#168731009";
+
+    /// <summary>
     /// Literal for code: SoftTissueXRayChest_
     /// </summary>
     public const string LiteralSoftTissueXRayChest_ = "168736004";
+
+    /// <summary>
+    /// Literal for code: NONESoftTissueXRayChest_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayChest_ = "http://snomed.info/sct#168736004";
 
     /// <summary>
     /// Literal for code: SoftTissueXRayPleura_
@@ -9810,9 +10530,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSoftTissueXRayPleura_ = "168743005";
 
     /// <summary>
+    /// Literal for code: NONESoftTissueXRayPleura_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayPleura_ = "http://snomed.info/sct#168743005";
+
+    /// <summary>
     /// Literal for code: SoftTissueXRayHeart_
     /// </summary>
     public const string LiteralSoftTissueXRayHeart_ = "168744004";
+
+    /// <summary>
+    /// Literal for code: NONESoftTissueXRayHeart_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayHeart_ = "http://snomed.info/sct#168744004";
 
     /// <summary>
     /// Literal for code: SoftTissueXRayThoracicAorta_
@@ -9820,9 +10550,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSoftTissueXRayThoracicAorta_ = "168745003";
 
     /// <summary>
+    /// Literal for code: NONESoftTissueXRayThoracicAorta_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayThoracicAorta_ = "http://snomed.info/sct#168745003";
+
+    /// <summary>
     /// Literal for code: SoftTissueXRayDiaphragm_
     /// </summary>
     public const string LiteralSoftTissueXRayDiaphragm_ = "168746002";
+
+    /// <summary>
+    /// Literal for code: NONESoftTissueXRayDiaphragm_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayDiaphragm_ = "http://snomed.info/sct#168746002";
 
     /// <summary>
     /// Literal for code: AbdominalObstetricXRay_
@@ -9830,9 +10570,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbdominalObstetricXRay_ = "168759005";
 
     /// <summary>
+    /// Literal for code: NONEAbdominalObstetricXRay_
+    /// </summary>
+    public const string LiteralNONEAbdominalObstetricXRay_ = "http://snomed.info/sct#168759005";
+
+    /// <summary>
     /// Literal for code: ObstetricXRayFetus_
     /// </summary>
     public const string LiteralObstetricXRayFetus_ = "168760000";
+
+    /// <summary>
+    /// Literal for code: NONEObstetricXRayFetus_
+    /// </summary>
+    public const string LiteralNONEObstetricXRayFetus_ = "http://snomed.info/sct#168760000";
 
     /// <summary>
     /// Literal for code: UpperAbdomenSoftTissueXRay_
@@ -9840,9 +10590,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUpperAbdomenSoftTissueXRay_ = "168763003";
 
     /// <summary>
+    /// Literal for code: NONEUpperAbdomenSoftTissueXRay_
+    /// </summary>
+    public const string LiteralNONEUpperAbdomenSoftTissueXRay_ = "http://snomed.info/sct#168763003";
+
+    /// <summary>
     /// Literal for code: CardioEsophagealXRay_
     /// </summary>
     public const string LiteralCardioEsophagealXRay_ = "168764009";
+
+    /// <summary>
+    /// Literal for code: NONECardioEsophagealXRay_
+    /// </summary>
+    public const string LiteralNONECardioEsophagealXRay_ = "http://snomed.info/sct#168764009";
 
     /// <summary>
     /// Literal for code: LiverSoftTissueXRay_
@@ -9850,9 +10610,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLiverSoftTissueXRay_ = "168766006";
 
     /// <summary>
+    /// Literal for code: NONELiverSoftTissueXRay_
+    /// </summary>
+    public const string LiteralNONELiverSoftTissueXRay_ = "http://snomed.info/sct#168766006";
+
+    /// <summary>
     /// Literal for code: SpleenSoftTissueXRay_
     /// </summary>
     public const string LiteralSpleenSoftTissueXRay_ = "168767002";
+
+    /// <summary>
+    /// Literal for code: NONESpleenSoftTissueXRay_
+    /// </summary>
+    public const string LiteralNONESpleenSoftTissueXRay_ = "http://snomed.info/sct#168767002";
 
     /// <summary>
     /// Literal for code: SoftTissueXRayKidney_
@@ -9860,9 +10630,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSoftTissueXRayKidney_ = "168770003";
 
     /// <summary>
+    /// Literal for code: NONESoftTissueXRayKidney_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayKidney_ = "http://snomed.info/sct#168770003";
+
+    /// <summary>
     /// Literal for code: XRayMaleExternalGenitalia_
     /// </summary>
     public const string LiteralXRayMaleExternalGenitalia_ = "168772006";
+
+    /// <summary>
+    /// Literal for code: NONEXRayMaleExternalGenitalia_
+    /// </summary>
+    public const string LiteralNONEXRayMaleExternalGenitalia_ = "http://snomed.info/sct#168772006";
 
     /// <summary>
     /// Literal for code: XRayFemaleExternalGenitalia_
@@ -9870,9 +10650,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralXRayFemaleExternalGenitalia_ = "168773001";
 
     /// <summary>
+    /// Literal for code: NONEXRayFemaleExternalGenitalia_
+    /// </summary>
+    public const string LiteralNONEXRayFemaleExternalGenitalia_ = "http://snomed.info/sct#168773001";
+
+    /// <summary>
     /// Literal for code: SoftTissueXRayLimbs_
     /// </summary>
     public const string LiteralSoftTissueXRayLimbs_ = "168775008";
+
+    /// <summary>
+    /// Literal for code: NONESoftTissueXRayLimbs_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayLimbs_ = "http://snomed.info/sct#168775008";
 
     /// <summary>
     /// Literal for code: SoftTissueXRayLymphNodes_
@@ -9880,9 +10670,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSoftTissueXRayLymphNodes_ = "168779002";
 
     /// <summary>
+    /// Literal for code: NONESoftTissueXRayLymphNodes_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayLymphNodes_ = "http://snomed.info/sct#168779002";
+
+    /// <summary>
     /// Literal for code: SoftTissueXRayVeins_
     /// </summary>
     public const string LiteralSoftTissueXRayVeins_ = "168780004";
+
+    /// <summary>
+    /// Literal for code: NONESoftTissueXRayVeins_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayVeins_ = "http://snomed.info/sct#168780004";
 
     /// <summary>
     /// Literal for code: SoftTissueXRayArteries_
@@ -9890,9 +10690,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSoftTissueXRayArteries_ = "168781000";
 
     /// <summary>
+    /// Literal for code: NONESoftTissueXRayArteries_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayArteries_ = "http://snomed.info/sct#168781000";
+
+    /// <summary>
     /// Literal for code: ContrastRadiographyExcludingCardiovascularSystem_
     /// </summary>
     public const string LiteralContrastRadiographyExcludingCardiovascularSystem_ = "168783002";
+
+    /// <summary>
+    /// Literal for code: NONEContrastRadiographyExcludingCardiovascularSystem_
+    /// </summary>
+    public const string LiteralNONEContrastRadiographyExcludingCardiovascularSystem_ = "http://snomed.info/sct#168783002";
 
     /// <summary>
     /// Literal for code: ContrastRadiographyOrbit_
@@ -9900,9 +10710,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralContrastRadiographyOrbit_ = "168800007";
 
     /// <summary>
+    /// Literal for code: NONEContrastRadiographyOrbit_
+    /// </summary>
+    public const string LiteralNONEContrastRadiographyOrbit_ = "http://snomed.info/sct#168800007";
+
+    /// <summary>
     /// Literal for code: ContrastRadiographyOfOropharynx_
     /// </summary>
     public const string LiteralContrastRadiographyOfOropharynx_ = "168803009";
+
+    /// <summary>
+    /// Literal for code: NONEContrastRadiographyOfOropharynx_
+    /// </summary>
+    public const string LiteralNONEContrastRadiographyOfOropharynx_ = "http://snomed.info/sct#168803009";
 
     /// <summary>
     /// Literal for code: BilateralTransglotticBronchography_
@@ -9910,9 +10730,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBilateralTransglotticBronchography_ = "168810003";
 
     /// <summary>
+    /// Literal for code: NONEBilateralTransglotticBronchography_
+    /// </summary>
+    public const string LiteralNONEBilateralTransglotticBronchography_ = "http://snomed.info/sct#168810003";
+
+    /// <summary>
     /// Literal for code: BilateralTranscricoidBronchography_
     /// </summary>
     public const string LiteralBilateralTranscricoidBronchography_ = "168811004";
+
+    /// <summary>
+    /// Literal for code: NONEBilateralTranscricoidBronchography_
+    /// </summary>
+    public const string LiteralNONEBilateralTranscricoidBronchography_ = "http://snomed.info/sct#168811004";
 
     /// <summary>
     /// Literal for code: SelectiveBronchography_
@@ -9920,9 +10750,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSelectiveBronchography_ = "168812006";
 
     /// <summary>
+    /// Literal for code: NONESelectiveBronchography_
+    /// </summary>
+    public const string LiteralNONESelectiveBronchography_ = "http://snomed.info/sct#168812006";
+
+    /// <summary>
     /// Literal for code: DiagnosticPneumomediastinum_
     /// </summary>
     public const string LiteralDiagnosticPneumomediastinum_ = "168814007";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticPneumomediastinum_
+    /// </summary>
+    public const string LiteralNONEDiagnosticPneumomediastinum_ = "http://snomed.info/sct#168814007";
 
     /// <summary>
     /// Literal for code: ContrastRadiographyOfAbdominalCavity_
@@ -9930,9 +10770,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralContrastRadiographyOfAbdominalCavity_ = "168816009";
 
     /// <summary>
+    /// Literal for code: NONEContrastRadiographyOfAbdominalCavity_
+    /// </summary>
+    public const string LiteralNONEContrastRadiographyOfAbdominalCavity_ = "http://snomed.info/sct#168816009";
+
+    /// <summary>
     /// Literal for code: ContrastRadiographyOfPeritonealCavity_
     /// </summary>
     public const string LiteralContrastRadiographyOfPeritonealCavity_ = "168817000";
+
+    /// <summary>
+    /// Literal for code: NONEContrastRadiographyOfPeritonealCavity_
+    /// </summary>
+    public const string LiteralNONEContrastRadiographyOfPeritonealCavity_ = "http://snomed.info/sct#168817000";
 
     /// <summary>
     /// Literal for code: PelvicContrastRadiography_
@@ -9940,9 +10790,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPelvicContrastRadiography_ = "168818005";
 
     /// <summary>
+    /// Literal for code: NONEPelvicContrastRadiography_
+    /// </summary>
+    public const string LiteralNONEPelvicContrastRadiography_ = "http://snomed.info/sct#168818005";
+
+    /// <summary>
     /// Literal for code: BariumSwallow_
     /// </summary>
     public const string LiteralBariumSwallow_ = "168821007";
+
+    /// <summary>
+    /// Literal for code: NONEBariumSwallow_
+    /// </summary>
+    public const string LiteralNONEBariumSwallow_ = "http://snomed.info/sct#168821007";
 
     /// <summary>
     /// Literal for code: BariumFollowThrough_
@@ -9950,9 +10810,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBariumFollowThrough_ = "168831000";
 
     /// <summary>
+    /// Literal for code: NONEBariumFollowThrough_
+    /// </summary>
+    public const string LiteralNONEBariumFollowThrough_ = "http://snomed.info/sct#168831000";
+
+    /// <summary>
     /// Literal for code: BariumEnema_
     /// </summary>
     public const string LiteralBariumEnema_ = "168836005";
+
+    /// <summary>
+    /// Literal for code: NONEBariumEnema_
+    /// </summary>
+    public const string LiteralNONEBariumEnema_ = "http://snomed.info/sct#168836005";
 
     /// <summary>
     /// Literal for code: BABariumEnemaViaColostomy_
@@ -9960,9 +10830,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBABariumEnemaViaColostomy_ = "168843004";
 
     /// <summary>
+    /// Literal for code: NONEBABariumEnemaViaColostomy_
+    /// </summary>
+    public const string LiteralNONEBABariumEnemaViaColostomy_ = "http://snomed.info/sct#168843004";
+
+    /// <summary>
     /// Literal for code: DoubleContrastBariumMeal_
     /// </summary>
     public const string LiteralDoubleContrastBariumMeal_ = "168844005";
+
+    /// <summary>
+    /// Literal for code: NONEDoubleContrastBariumMeal_
+    /// </summary>
+    public const string LiteralNONEDoubleContrastBariumMeal_ = "http://snomed.info/sct#168844005";
 
     /// <summary>
     /// Literal for code: DuodenumDoubleContrastExamination_
@@ -9970,9 +10850,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDuodenumDoubleContrastExamination_ = "168845006";
 
     /// <summary>
+    /// Literal for code: NONEDuodenumDoubleContrastExamination_
+    /// </summary>
+    public const string LiteralNONEDuodenumDoubleContrastExamination_ = "http://snomed.info/sct#168845006";
+
+    /// <summary>
     /// Literal for code: RectumDoubleContrastExamination_
     /// </summary>
     public const string LiteralRectumDoubleContrastExamination_ = "168846007";
+
+    /// <summary>
+    /// Literal for code: NONERectumDoubleContrastExamination_
+    /// </summary>
+    public const string LiteralNONERectumDoubleContrastExamination_ = "http://snomed.info/sct#168846007";
 
     /// <summary>
     /// Literal for code: ColonDoubleContrastExamination_
@@ -9980,9 +10870,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralColonDoubleContrastExamination_ = "168847003";
 
     /// <summary>
+    /// Literal for code: NONEColonDoubleContrastExamination_
+    /// </summary>
+    public const string LiteralNONEColonDoubleContrastExamination_ = "http://snomed.info/sct#168847003";
+
+    /// <summary>
     /// Literal for code: Cystography_
     /// </summary>
     public const string LiteralCystography_ = "168854009";
+
+    /// <summary>
+    /// Literal for code: NONECystography_
+    /// </summary>
+    public const string LiteralNONECystography_ = "http://snomed.info/sct#168854009";
 
     /// <summary>
     /// Literal for code: RetrogradeCystography_
@@ -9990,9 +10890,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRetrogradeCystography_ = "168858007";
 
     /// <summary>
+    /// Literal for code: NONERetrogradeCystography_
+    /// </summary>
+    public const string LiteralNONERetrogradeCystography_ = "http://snomed.info/sct#168858007";
+
+    /// <summary>
     /// Literal for code: PercutaneousCystography_
     /// </summary>
     public const string LiteralPercutaneousCystography_ = "168859004";
+
+    /// <summary>
+    /// Literal for code: NONEPercutaneousCystography_
+    /// </summary>
+    public const string LiteralNONEPercutaneousCystography_ = "http://snomed.info/sct#168859004";
 
     /// <summary>
     /// Literal for code: NegativeDoubleContrastCystography_
@@ -10000,9 +10910,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNegativeDoubleContrastCystography_ = "168860009";
 
     /// <summary>
+    /// Literal for code: NONENegativeDoubleContrastCystography_
+    /// </summary>
+    public const string LiteralNONENegativeDoubleContrastCystography_ = "http://snomed.info/sct#168860009";
+
+    /// <summary>
     /// Literal for code: IntravenousCystography_
     /// </summary>
     public const string LiteralIntravenousCystography_ = "168861008";
+
+    /// <summary>
+    /// Literal for code: NONEIntravenousCystography_
+    /// </summary>
+    public const string LiteralNONEIntravenousCystography_ = "http://snomed.info/sct#168861008";
 
     /// <summary>
     /// Literal for code: Urethrogram_
@@ -10010,9 +10930,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUrethrogram_ = "168864000";
 
     /// <summary>
+    /// Literal for code: NONEUrethrogram_
+    /// </summary>
+    public const string LiteralNONEUrethrogram_ = "http://snomed.info/sct#168864000";
+
+    /// <summary>
     /// Literal for code: PeroralCholangiography_
     /// </summary>
     public const string LiteralPeroralCholangiography_ = "168870006";
+
+    /// <summary>
+    /// Literal for code: NONEPeroralCholangiography_
+    /// </summary>
+    public const string LiteralNONEPeroralCholangiography_ = "http://snomed.info/sct#168870006";
 
     /// <summary>
     /// Literal for code: Splenography_
@@ -10020,9 +10950,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSplenography_ = "168875001";
 
     /// <summary>
+    /// Literal for code: NONESplenography_
+    /// </summary>
+    public const string LiteralNONESplenography_ = "http://snomed.info/sct#168875001";
+
+    /// <summary>
     /// Literal for code: ContrastAmniography_
     /// </summary>
     public const string LiteralContrastAmniography_ = "168881009";
+
+    /// <summary>
+    /// Literal for code: NONEContrastAmniography_
+    /// </summary>
+    public const string LiteralNONEContrastAmniography_ = "http://snomed.info/sct#168881009";
 
     /// <summary>
     /// Literal for code: PlacentalVasography_
@@ -10030,9 +10970,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlacentalVasography_ = "168882002";
 
     /// <summary>
+    /// Literal for code: NONEPlacentalVasography_
+    /// </summary>
+    public const string LiteralNONEPlacentalVasography_ = "http://snomed.info/sct#168882002";
+
+    /// <summary>
     /// Literal for code: Hysterosalpingography_
     /// </summary>
     public const string LiteralHysterosalpingography_ = "168884001";
+
+    /// <summary>
+    /// Literal for code: NONEHysterosalpingography_
+    /// </summary>
+    public const string LiteralNONEHysterosalpingography_ = "http://snomed.info/sct#168884001";
 
     /// <summary>
     /// Literal for code: FemaleGenitalSystemContrastProcedure_
@@ -10040,9 +10990,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFemaleGenitalSystemContrastProcedure_ = "168890002";
 
     /// <summary>
+    /// Literal for code: NONEFemaleGenitalSystemContrastProcedure_
+    /// </summary>
+    public const string LiteralNONEFemaleGenitalSystemContrastProcedure_ = "http://snomed.info/sct#168890002";
+
+    /// <summary>
     /// Literal for code: MaleGenitalSystemContrastProcedure_
     /// </summary>
     public const string LiteralMaleGenitalSystemContrastProcedure_ = "168892005";
+
+    /// <summary>
+    /// Literal for code: NONEMaleGenitalSystemContrastProcedure_
+    /// </summary>
+    public const string LiteralNONEMaleGenitalSystemContrastProcedure_ = "http://snomed.info/sct#168892005";
 
     /// <summary>
     /// Literal for code: ContrastRadiographyOfGlands_
@@ -10050,9 +11010,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralContrastRadiographyOfGlands_ = "168894006";
 
     /// <summary>
+    /// Literal for code: NONEContrastRadiographyOfGlands_
+    /// </summary>
+    public const string LiteralNONEContrastRadiographyOfGlands_ = "http://snomed.info/sct#168894006";
+
+    /// <summary>
     /// Literal for code: Sialography_
     /// </summary>
     public const string LiteralSialography_ = "168896008";
+
+    /// <summary>
+    /// Literal for code: NONESialography_
+    /// </summary>
+    public const string LiteralNONESialography_ = "http://snomed.info/sct#168896008";
 
     /// <summary>
     /// Literal for code: BreastContrastProcedure_
@@ -10060,9 +11030,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBreastContrastProcedure_ = "168897004";
 
     /// <summary>
+    /// Literal for code: NONEBreastContrastProcedure_
+    /// </summary>
+    public const string LiteralNONEBreastContrastProcedure_ = "http://snomed.info/sct#168897004";
+
+    /// <summary>
     /// Literal for code: ContrastRadiographyDucts_
     /// </summary>
     public const string LiteralContrastRadiographyDucts_ = "168899001";
+
+    /// <summary>
+    /// Literal for code: NONEContrastRadiographyDucts_
+    /// </summary>
+    public const string LiteralNONEContrastRadiographyDucts_ = "http://snomed.info/sct#168899001";
 
     /// <summary>
     /// Literal for code: OmphalomesentericDuctContrastRadiography_
@@ -10070,9 +11050,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOmphalomesentericDuctContrastRadiography_ = "168900006";
 
     /// <summary>
+    /// Literal for code: NONEOmphalomesentericDuctContrastRadiography_
+    /// </summary>
+    public const string LiteralNONEOmphalomesentericDuctContrastRadiography_ = "http://snomed.info/sct#168900006";
+
+    /// <summary>
     /// Literal for code: HeadFistulography_
     /// </summary>
     public const string LiteralHeadFistulography_ = "168902003";
+
+    /// <summary>
+    /// Literal for code: NONEHeadFistulography_
+    /// </summary>
+    public const string LiteralNONEHeadFistulography_ = "http://snomed.info/sct#168902003";
 
     /// <summary>
     /// Literal for code: NeckFistulography_
@@ -10080,9 +11070,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNeckFistulography_ = "168903008";
 
     /// <summary>
+    /// Literal for code: NONENeckFistulography_
+    /// </summary>
+    public const string LiteralNONENeckFistulography_ = "http://snomed.info/sct#168903008";
+
+    /// <summary>
     /// Literal for code: ChestWallFistulography_
     /// </summary>
     public const string LiteralChestWallFistulography_ = "168904002";
+
+    /// <summary>
+    /// Literal for code: NONEChestWallFistulography_
+    /// </summary>
+    public const string LiteralNONEChestWallFistulography_ = "http://snomed.info/sct#168904002";
 
     /// <summary>
     /// Literal for code: AbdominalFistulography_
@@ -10090,9 +11090,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbdominalFistulography_ = "168905001";
 
     /// <summary>
+    /// Literal for code: NONEAbdominalFistulography_
+    /// </summary>
+    public const string LiteralNONEAbdominalFistulography_ = "http://snomed.info/sct#168905001";
+
+    /// <summary>
     /// Literal for code: RetroperitonealFistulography_
     /// </summary>
     public const string LiteralRetroperitonealFistulography_ = "168906000";
+
+    /// <summary>
+    /// Literal for code: NONERetroperitonealFistulography_
+    /// </summary>
+    public const string LiteralNONERetroperitonealFistulography_ = "http://snomed.info/sct#168906000";
 
     /// <summary>
     /// Literal for code: KneeArthrogram_
@@ -10100,9 +11110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKneeArthrogram_ = "168908004";
 
     /// <summary>
+    /// Literal for code: NONEKneeArthrogram_
+    /// </summary>
+    public const string LiteralNONEKneeArthrogram_ = "http://snomed.info/sct#168908004";
+
+    /// <summary>
     /// Literal for code: SacroiliacJointArthrogram_
     /// </summary>
     public const string LiteralSacroiliacJointArthrogram_ = "168917004";
+
+    /// <summary>
+    /// Literal for code: NONESacroiliacJointArthrogram_
+    /// </summary>
+    public const string LiteralNONESacroiliacJointArthrogram_ = "http://snomed.info/sct#168917004";
 
     /// <summary>
     /// Literal for code: HipArthrogram_
@@ -10110,9 +11130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHipArthrogram_ = "168918009";
 
     /// <summary>
+    /// Literal for code: NONEHipArthrogram_
+    /// </summary>
+    public const string LiteralNONEHipArthrogram_ = "http://snomed.info/sct#168918009";
+
+    /// <summary>
     /// Literal for code: DoubleContrastArthrography_
     /// </summary>
     public const string LiteralDoubleContrastArthrography_ = "168919001";
+
+    /// <summary>
+    /// Literal for code: NONEDoubleContrastArthrography_
+    /// </summary>
+    public const string LiteralNONEDoubleContrastArthrography_ = "http://snomed.info/sct#168919001";
 
     /// <summary>
     /// Literal for code: Pneumoarthrography_
@@ -10120,9 +11150,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPneumoarthrography_ = "168920007";
 
     /// <summary>
+    /// Literal for code: NONEPneumoarthrography_
+    /// </summary>
+    public const string LiteralNONEPneumoarthrography_ = "http://snomed.info/sct#168920007";
+
+    /// <summary>
     /// Literal for code: InterstitialContrastRadiology_
     /// </summary>
     public const string LiteralInterstitialContrastRadiology_ = "168922004";
+
+    /// <summary>
+    /// Literal for code: NONEInterstitialContrastRadiology_
+    /// </summary>
+    public const string LiteralNONEInterstitialContrastRadiology_ = "http://snomed.info/sct#168922004";
 
     /// <summary>
     /// Literal for code: AbdominalAortogram_
@@ -10130,9 +11170,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbdominalAortogram_ = "168941001";
 
     /// <summary>
+    /// Literal for code: NONEAbdominalAortogram_
+    /// </summary>
+    public const string LiteralNONEAbdominalAortogram_ = "http://snomed.info/sct#168941001";
+
+    /// <summary>
     /// Literal for code: VenographyHeadNeckThorax_
     /// </summary>
     public const string LiteralVenographyHeadNeckThorax_ = "168968001";
+
+    /// <summary>
+    /// Literal for code: NONEVenographyHeadNeckThorax_
+    /// </summary>
+    public const string LiteralNONEVenographyHeadNeckThorax_ = "http://snomed.info/sct#168968001";
 
     /// <summary>
     /// Literal for code: CerebralSinusVenography_
@@ -10140,9 +11190,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCerebralSinusVenography_ = "168969009";
 
     /// <summary>
+    /// Literal for code: NONECerebralSinusVenography_
+    /// </summary>
+    public const string LiteralNONECerebralSinusVenography_ = "http://snomed.info/sct#168969009";
+
+    /// <summary>
     /// Literal for code: SuperiorVenaCavogram_
     /// </summary>
     public const string LiteralSuperiorVenaCavogram_ = "168970005";
+
+    /// <summary>
+    /// Literal for code: NONESuperiorVenaCavogram_
+    /// </summary>
+    public const string LiteralNONESuperiorVenaCavogram_ = "http://snomed.info/sct#168970005";
 
     /// <summary>
     /// Literal for code: TranssternalThoracicVenogram_
@@ -10150,9 +11210,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTranssternalThoracicVenogram_ = "168971009";
 
     /// <summary>
+    /// Literal for code: NONETranssternalThoracicVenogram_
+    /// </summary>
+    public const string LiteralNONETranssternalThoracicVenogram_ = "http://snomed.info/sct#168971009";
+
+    /// <summary>
     /// Literal for code: VenographyTrunk_
     /// </summary>
     public const string LiteralVenographyTrunk_ = "168973007";
+
+    /// <summary>
+    /// Literal for code: NONEVenographyTrunk_
+    /// </summary>
+    public const string LiteralNONEVenographyTrunk_ = "http://snomed.info/sct#168973007";
 
     /// <summary>
     /// Literal for code: OperativeAbdominalVenogram_
@@ -10160,9 +11230,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOperativeAbdominalVenogram_ = "168974001";
 
     /// <summary>
+    /// Literal for code: NONEOperativeAbdominalVenogram_
+    /// </summary>
+    public const string LiteralNONEOperativeAbdominalVenogram_ = "http://snomed.info/sct#168974001";
+
+    /// <summary>
     /// Literal for code: InferiorVenaCavogram_
     /// </summary>
     public const string LiteralInferiorVenaCavogram_ = "168975000";
+
+    /// <summary>
+    /// Literal for code: NONEInferiorVenaCavogram_
+    /// </summary>
+    public const string LiteralNONEInferiorVenaCavogram_ = "http://snomed.info/sct#168975000";
 
     /// <summary>
     /// Literal for code: VenogramPortalVein_
@@ -10170,9 +11250,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVenogramPortalVein_ = "168976004";
 
     /// <summary>
+    /// Literal for code: NONEVenogramPortalVein_
+    /// </summary>
+    public const string LiteralNONEVenogramPortalVein_ = "http://snomed.info/sct#168976004";
+
+    /// <summary>
     /// Literal for code: RenalVenogram_
     /// </summary>
     public const string LiteralRenalVenogram_ = "168977008";
+
+    /// <summary>
+    /// Literal for code: NONERenalVenogram_
+    /// </summary>
+    public const string LiteralNONERenalVenogram_ = "http://snomed.info/sct#168977008";
 
     /// <summary>
     /// Literal for code: FemaleGenitalVenogram_
@@ -10180,9 +11270,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFemaleGenitalVenogram_ = "168978003";
 
     /// <summary>
+    /// Literal for code: NONEFemaleGenitalVenogram_
+    /// </summary>
+    public const string LiteralNONEFemaleGenitalVenogram_ = "http://snomed.info/sct#168978003";
+
+    /// <summary>
     /// Literal for code: MaleGenitalVenogram_
     /// </summary>
     public const string LiteralMaleGenitalVenogram_ = "168979006";
+
+    /// <summary>
+    /// Literal for code: NONEMaleGenitalVenogram_
+    /// </summary>
+    public const string LiteralNONEMaleGenitalVenogram_ = "http://snomed.info/sct#168979006";
 
     /// <summary>
     /// Literal for code: VenographyPeripheral_
@@ -10190,9 +11290,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVenographyPeripheral_ = "168981008";
 
     /// <summary>
+    /// Literal for code: NONEVenographyPeripheral_
+    /// </summary>
+    public const string LiteralNONEVenographyPeripheral_ = "http://snomed.info/sct#168981008";
+
+    /// <summary>
     /// Literal for code: VenogramPertrochanteric_
     /// </summary>
     public const string LiteralVenogramPertrochanteric_ = "168982001";
+
+    /// <summary>
+    /// Literal for code: NONEVenogramPertrochanteric_
+    /// </summary>
+    public const string LiteralNONEVenogramPertrochanteric_ = "http://snomed.info/sct#168982001";
 
     /// <summary>
     /// Literal for code: HeadLymphangiogram_
@@ -10200,9 +11310,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeadLymphangiogram_ = "168988002";
 
     /// <summary>
+    /// Literal for code: NONEHeadLymphangiogram_
+    /// </summary>
+    public const string LiteralNONEHeadLymphangiogram_ = "http://snomed.info/sct#168988002";
+
+    /// <summary>
     /// Literal for code: LymphangiographyNeck_
     /// </summary>
     public const string LiteralLymphangiographyNeck_ = "168989005";
+
+    /// <summary>
+    /// Literal for code: NONELymphangiographyNeck_
+    /// </summary>
+    public const string LiteralNONELymphangiographyNeck_ = "http://snomed.info/sct#168989005";
 
     /// <summary>
     /// Literal for code: ThoracicLymphangiogram_
@@ -10210,9 +11330,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThoracicLymphangiogram_ = "168990001";
 
     /// <summary>
+    /// Literal for code: NONEThoracicLymphangiogram_
+    /// </summary>
+    public const string LiteralNONEThoracicLymphangiogram_ = "http://snomed.info/sct#168990001";
+
+    /// <summary>
     /// Literal for code: MiscellaneousImagingProcedures_
     /// </summary>
     public const string LiteralMiscellaneousImagingProcedures_ = "168996007";
+
+    /// <summary>
+    /// Literal for code: NONEMiscellaneousImagingProcedures_
+    /// </summary>
+    public const string LiteralNONEMiscellaneousImagingProcedures_ = "http://snomed.info/sct#168996007";
 
     /// <summary>
     /// Literal for code: FluoroscopyBrain_
@@ -10220,9 +11350,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyBrain_ = "168997003";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyBrain_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyBrain_ = "http://snomed.info/sct#168997003";
+
+    /// <summary>
     /// Literal for code: FluoroscopySkull_
     /// </summary>
     public const string LiteralFluoroscopySkull_ = "168998008";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopySkull_
+    /// </summary>
+    public const string LiteralNONEFluoroscopySkull_ = "http://snomed.info/sct#168998008";
 
     /// <summary>
     /// Literal for code: FluoroscopyCervicalColumn_
@@ -10230,9 +11370,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyCervicalColumn_ = "168999000";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyCervicalColumn_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyCervicalColumn_ = "http://snomed.info/sct#168999000";
+
+    /// <summary>
     /// Literal for code: FluoroscopySkeletonLimbs_
     /// </summary>
     public const string LiteralFluoroscopySkeletonLimbs_ = "169000003";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopySkeletonLimbs_
+    /// </summary>
+    public const string LiteralNONEFluoroscopySkeletonLimbs_ = "http://snomed.info/sct#169000003";
 
     /// <summary>
     /// Literal for code: FluoroscopyHeartMediastinum_
@@ -10240,9 +11390,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyHeartMediastinum_ = "169001004";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyHeartMediastinum_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyHeartMediastinum_ = "http://snomed.info/sct#169001004";
+
+    /// <summary>
     /// Literal for code: FluoroscopyOfDiaphragm_
     /// </summary>
     public const string LiteralFluoroscopyOfDiaphragm_ = "169002006";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyOfDiaphragm_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyOfDiaphragm_ = "http://snomed.info/sct#169002006";
 
     /// <summary>
     /// Literal for code: FluoroscopyLungs_
@@ -10250,9 +11410,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyLungs_ = "169003001";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyLungs_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyLungs_ = "http://snomed.info/sct#169003001";
+
+    /// <summary>
     /// Literal for code: FluoroscopyChestWall_
     /// </summary>
     public const string LiteralFluoroscopyChestWall_ = "169004007";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyChestWall_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyChestWall_ = "http://snomed.info/sct#169004007";
 
     /// <summary>
     /// Literal for code: FluoroscopyEsophagus_
@@ -10260,9 +11430,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyEsophagus_ = "169005008";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyEsophagus_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyEsophagus_ = "http://snomed.info/sct#169005008";
+
+    /// <summary>
     /// Literal for code: FluoroscopyIntestineSmall_
     /// </summary>
     public const string LiteralFluoroscopyIntestineSmall_ = "169006009";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyIntestineSmall_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyIntestineSmall_ = "http://snomed.info/sct#169006009";
 
     /// <summary>
     /// Literal for code: FluoroscopyIntestineLarge_
@@ -10270,9 +11450,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyIntestineLarge_ = "169007000";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyIntestineLarge_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyIntestineLarge_ = "http://snomed.info/sct#169007000";
+
+    /// <summary>
     /// Literal for code: FluoroscopyStomach_
     /// </summary>
     public const string LiteralFluoroscopyStomach_ = "169008005";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyStomach_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyStomach_ = "http://snomed.info/sct#169008005";
 
     /// <summary>
     /// Literal for code: FluoroscopyRectum_
@@ -10280,9 +11470,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyRectum_ = "169009002";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyRectum_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyRectum_ = "http://snomed.info/sct#169009002";
+
+    /// <summary>
     /// Literal for code: FluoroscopyGallbladder_
     /// </summary>
     public const string LiteralFluoroscopyGallbladder_ = "169010007";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyGallbladder_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyGallbladder_ = "http://snomed.info/sct#169010007";
 
     /// <summary>
     /// Literal for code: FluoroscopyUrinaryTract_
@@ -10290,9 +11490,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyUrinaryTract_ = "169011006";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyUrinaryTract_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyUrinaryTract_ = "http://snomed.info/sct#169011006";
+
+    /// <summary>
     /// Literal for code: FluoroscopyFemaleGenital_
     /// </summary>
     public const string LiteralFluoroscopyFemaleGenital_ = "169012004";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyFemaleGenital_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyFemaleGenital_ = "http://snomed.info/sct#169012004";
 
     /// <summary>
     /// Literal for code: FluoroscopyAndRadiography_
@@ -10300,9 +11510,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyAndRadiography_ = "169014003";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyAndRadiography_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyAndRadiography_ = "http://snomed.info/sct#169014003";
+
+    /// <summary>
     /// Literal for code: FluoroscopyAndRadiographyBrain_
     /// </summary>
     public const string LiteralFluoroscopyAndRadiographyBrain_ = "169015002";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyAndRadiographyBrain_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyAndRadiographyBrain_ = "http://snomed.info/sct#169015002";
 
     /// <summary>
     /// Literal for code: FluoroscopyAndRadiographySkull_
@@ -10310,9 +11530,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyAndRadiographySkull_ = "169016001";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyAndRadiographySkull_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyAndRadiographySkull_ = "http://snomed.info/sct#169016001";
+
+    /// <summary>
     /// Literal for code: FluoroscopyAndRadiographyCervicalColumn_
     /// </summary>
     public const string LiteralFluoroscopyAndRadiographyCervicalColumn_ = "169017005";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyAndRadiographyCervicalColumn_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyAndRadiographyCervicalColumn_ = "http://snomed.info/sct#169017005";
 
     /// <summary>
     /// Literal for code: FluoroscopyAndRadiographySkeleton_
@@ -10320,9 +11550,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyAndRadiographySkeleton_ = "169018000";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyAndRadiographySkeleton_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyAndRadiographySkeleton_ = "http://snomed.info/sct#169018000";
+
+    /// <summary>
     /// Literal for code: FluoroscopyAndRadiographyHeart_
     /// </summary>
     public const string LiteralFluoroscopyAndRadiographyHeart_ = "169019008";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyAndRadiographyHeart_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyAndRadiographyHeart_ = "http://snomed.info/sct#169019008";
 
     /// <summary>
     /// Literal for code: FluoroscopyAndRadiographyMediastinum_
@@ -10330,9 +11570,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyAndRadiographyMediastinum_ = "169020002";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyAndRadiographyMediastinum_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyAndRadiographyMediastinum_ = "http://snomed.info/sct#169020002";
+
+    /// <summary>
     /// Literal for code: FluoroscopyAndRadiographyLungs_
     /// </summary>
     public const string LiteralFluoroscopyAndRadiographyLungs_ = "169021003";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyAndRadiographyLungs_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyAndRadiographyLungs_ = "http://snomed.info/sct#169021003";
 
     /// <summary>
     /// Literal for code: FluoroscopyAndRadiographyChestWall_
@@ -10340,9 +11590,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyAndRadiographyChestWall_ = "169022005";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyAndRadiographyChestWall_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyAndRadiographyChestWall_ = "http://snomed.info/sct#169022005";
+
+    /// <summary>
     /// Literal for code: FluoroscopyAndRadiographyDigestive_
     /// </summary>
     public const string LiteralFluoroscopyAndRadiographyDigestive_ = "169023000";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyAndRadiographyDigestive_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyAndRadiographyDigestive_ = "http://snomed.info/sct#169023000";
 
     /// <summary>
     /// Literal for code: FluoroscopyAndRadiographyUrinary_
@@ -10350,9 +11610,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyAndRadiographyUrinary_ = "169025007";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyAndRadiographyUrinary_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyAndRadiographyUrinary_ = "http://snomed.info/sct#169025007";
+
+    /// <summary>
     /// Literal for code: FluoroscopyAndRadiographyFemaleGenital_
     /// </summary>
     public const string LiteralFluoroscopyAndRadiographyFemaleGenital_ = "169026008";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyAndRadiographyFemaleGenital_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyAndRadiographyFemaleGenital_ = "http://snomed.info/sct#169026008";
 
     /// <summary>
     /// Literal for code: TomographyHeadNeck_
@@ -10360,9 +11630,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTomographyHeadNeck_ = "169031005";
 
     /// <summary>
+    /// Literal for code: NONETomographyHeadNeck_
+    /// </summary>
+    public const string LiteralNONETomographyHeadNeck_ = "http://snomed.info/sct#169031005";
+
+    /// <summary>
     /// Literal for code: TomographySkeletonLimbs_
     /// </summary>
     public const string LiteralTomographySkeletonLimbs_ = "169032003";
+
+    /// <summary>
+    /// Literal for code: NONETomographySkeletonLimbs_
+    /// </summary>
+    public const string LiteralNONETomographySkeletonLimbs_ = "http://snomed.info/sct#169032003";
 
     /// <summary>
     /// Literal for code: TomographyLarynxTrachea_
@@ -10370,9 +11650,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTomographyLarynxTrachea_ = "169033008";
 
     /// <summary>
+    /// Literal for code: NONETomographyLarynxTrachea_
+    /// </summary>
+    public const string LiteralNONETomographyLarynxTrachea_ = "http://snomed.info/sct#169033008";
+
+    /// <summary>
     /// Literal for code: TomographyLungs_
     /// </summary>
     public const string LiteralTomographyLungs_ = "169034002";
+
+    /// <summary>
+    /// Literal for code: NONETomographyLungs_
+    /// </summary>
+    public const string LiteralNONETomographyLungs_ = "http://snomed.info/sct#169034002";
 
     /// <summary>
     /// Literal for code: TomographyGallbladder_
@@ -10380,9 +11670,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTomographyGallbladder_ = "169035001";
 
     /// <summary>
+    /// Literal for code: NONETomographyGallbladder_
+    /// </summary>
+    public const string LiteralNONETomographyGallbladder_ = "http://snomed.info/sct#169035001";
+
+    /// <summary>
     /// Literal for code: TomographyChest_
     /// </summary>
     public const string LiteralTomographyChest_ = "169037009";
+
+    /// <summary>
+    /// Literal for code: NONETomographyChest_
+    /// </summary>
+    public const string LiteralNONETomographyChest_ = "http://snomed.info/sct#169037009";
 
     /// <summary>
     /// Literal for code: CineradiographyBrain_
@@ -10390,9 +11690,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCineradiographyBrain_ = "169044000";
 
     /// <summary>
+    /// Literal for code: NONECineradiographyBrain_
+    /// </summary>
+    public const string LiteralNONECineradiographyBrain_ = "http://snomed.info/sct#169044000";
+
+    /// <summary>
     /// Literal for code: CineradiographyHeart_
     /// </summary>
     public const string LiteralCineradiographyHeart_ = "169045004";
+
+    /// <summary>
+    /// Literal for code: NONECineradiographyHeart_
+    /// </summary>
+    public const string LiteralNONECineradiographyHeart_ = "http://snomed.info/sct#169045004";
 
     /// <summary>
     /// Literal for code: CineradiographyGreatVessels_
@@ -10400,9 +11710,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCineradiographyGreatVessels_ = "169046003";
 
     /// <summary>
+    /// Literal for code: NONECineradiographyGreatVessels_
+    /// </summary>
+    public const string LiteralNONECineradiographyGreatVessels_ = "http://snomed.info/sct#169046003";
+
+    /// <summary>
     /// Literal for code: CineradiographyRespiratoryTract_
     /// </summary>
     public const string LiteralCineradiographyRespiratoryTract_ = "169047007";
+
+    /// <summary>
+    /// Literal for code: NONECineradiographyRespiratoryTract_
+    /// </summary>
+    public const string LiteralNONECineradiographyRespiratoryTract_ = "http://snomed.info/sct#169047007";
 
     /// <summary>
     /// Literal for code: CineradiographyGastrointestinalTract_
@@ -10410,9 +11730,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCineradiographyGastrointestinalTract_ = "169048002";
 
     /// <summary>
+    /// Literal for code: NONECineradiographyGastrointestinalTract_
+    /// </summary>
+    public const string LiteralNONECineradiographyGastrointestinalTract_ = "http://snomed.info/sct#169048002";
+
+    /// <summary>
     /// Literal for code: CineradiographyGUT_
     /// </summary>
     public const string LiteralCineradiographyGUT_ = "169049005";
+
+    /// <summary>
+    /// Literal for code: NONECineradiographyGUT_
+    /// </summary>
+    public const string LiteralNONECineradiographyGUT_ = "http://snomed.info/sct#169049005";
 
     /// <summary>
     /// Literal for code: CineradiographyJoints_
@@ -10420,9 +11750,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCineradiographyJoints_ = "169050005";
 
     /// <summary>
+    /// Literal for code: NONECineradiographyJoints_
+    /// </summary>
+    public const string LiteralNONECineradiographyJoints_ = "http://snomed.info/sct#169050005";
+
+    /// <summary>
     /// Literal for code: KymographyHeart_
     /// </summary>
     public const string LiteralKymographyHeart_ = "169055000";
+
+    /// <summary>
+    /// Literal for code: NONEKymographyHeart_
+    /// </summary>
+    public const string LiteralNONEKymographyHeart_ = "http://snomed.info/sct#169055000";
 
     /// <summary>
     /// Literal for code: KymographyGreatVessels_
@@ -10430,9 +11770,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKymographyGreatVessels_ = "169056004";
 
     /// <summary>
+    /// Literal for code: NONEKymographyGreatVessels_
+    /// </summary>
+    public const string LiteralNONEKymographyGreatVessels_ = "http://snomed.info/sct#169056004";
+
+    /// <summary>
     /// Literal for code: KymographyLungs_
     /// </summary>
     public const string LiteralKymographyLungs_ = "169057008";
+
+    /// <summary>
+    /// Literal for code: NONEKymographyLungs_
+    /// </summary>
+    public const string LiteralNONEKymographyLungs_ = "http://snomed.info/sct#169057008";
 
     /// <summary>
     /// Literal for code: KymographyDiaphragm_
@@ -10440,9 +11790,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKymographyDiaphragm_ = "169058003";
 
     /// <summary>
+    /// Literal for code: NONEKymographyDiaphragm_
+    /// </summary>
+    public const string LiteralNONEKymographyDiaphragm_ = "http://snomed.info/sct#169058003";
+
+    /// <summary>
     /// Literal for code: SerialRadiographyOfLungs_
     /// </summary>
     public const string LiteralSerialRadiographyOfLungs_ = "169061002";
+
+    /// <summary>
+    /// Literal for code: NONESerialRadiographyOfLungs_
+    /// </summary>
+    public const string LiteralNONESerialRadiographyOfLungs_ = "http://snomed.info/sct#169061002";
 
     /// <summary>
     /// Literal for code: CTOfSkull_
@@ -10450,9 +11810,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTOfSkull_ = "169066007";
 
     /// <summary>
+    /// Literal for code: NONECTOfSkull_
+    /// </summary>
+    public const string LiteralNONECTOfSkull_ = "http://snomed.info/sct#169066007";
+
+    /// <summary>
     /// Literal for code: CTOfFace_
     /// </summary>
     public const string LiteralCTOfFace_ = "169067003";
+
+    /// <summary>
+    /// Literal for code: NONECTOfFace_
+    /// </summary>
+    public const string LiteralNONECTOfFace_ = "http://snomed.info/sct#169067003";
 
     /// <summary>
     /// Literal for code: CTOfNeck_
@@ -10460,9 +11830,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTOfNeck_ = "169068008";
 
     /// <summary>
+    /// Literal for code: NONECTOfNeck_
+    /// </summary>
+    public const string LiteralNONECTOfNeck_ = "http://snomed.info/sct#169068008";
+
+    /// <summary>
     /// Literal for code: CTOfChest_
     /// </summary>
     public const string LiteralCTOfChest_ = "169069000";
+
+    /// <summary>
+    /// Literal for code: NONECTOfChest_
+    /// </summary>
+    public const string LiteralNONECTOfChest_ = "http://snomed.info/sct#169069000";
 
     /// <summary>
     /// Literal for code: CTOfAbdomen_
@@ -10470,9 +11850,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTOfAbdomen_ = "169070004";
 
     /// <summary>
+    /// Literal for code: NONECTOfAbdomen_
+    /// </summary>
+    public const string LiteralNONECTOfAbdomen_ = "http://snomed.info/sct#169070004";
+
+    /// <summary>
     /// Literal for code: CTOfPelvis_
     /// </summary>
     public const string LiteralCTOfPelvis_ = "169071000";
+
+    /// <summary>
+    /// Literal for code: NONECTOfPelvis_
+    /// </summary>
+    public const string LiteralNONECTOfPelvis_ = "http://snomed.info/sct#169071000";
 
     /// <summary>
     /// Literal for code: CATScanWholeBody_
@@ -10480,9 +11870,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCATScanWholeBody_ = "169072007";
 
     /// <summary>
+    /// Literal for code: NONECATScanWholeBody_
+    /// </summary>
+    public const string LiteralNONECATScanWholeBody_ = "http://snomed.info/sct#169072007";
+
+    /// <summary>
     /// Literal for code: ComputerizedDiagnosticRadiology_
     /// </summary>
     public const string LiteralComputerizedDiagnosticRadiology_ = "169074008";
+
+    /// <summary>
+    /// Literal for code: NONEComputerizedDiagnosticRadiology_
+    /// </summary>
+    public const string LiteralNONEComputerizedDiagnosticRadiology_ = "http://snomed.info/sct#169074008";
 
     /// <summary>
     /// Literal for code: ComputerizedCineangiography_
@@ -10490,9 +11890,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedCineangiography_ = "169078006";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedCineangiography_
+    /// </summary>
+    public const string LiteralNONEComputerizedCineangiography_ = "http://snomed.info/sct#169078006";
+
+    /// <summary>
     /// Literal for code: StereotacticStereoscopicTestBrain_
     /// </summary>
     public const string LiteralStereotacticStereoscopicTestBrain_ = "169086006";
+
+    /// <summary>
+    /// Literal for code: NONEStereotacticStereoscopicTestBrain_
+    /// </summary>
+    public const string LiteralNONEStereotacticStereoscopicTestBrain_ = "http://snomed.info/sct#169086006";
 
     /// <summary>
     /// Literal for code: StereotacticStereoscopicTestSkull_
@@ -10500,9 +11910,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStereotacticStereoscopicTestSkull_ = "169087002";
 
     /// <summary>
+    /// Literal for code: NONEStereotacticStereoscopicTestSkull_
+    /// </summary>
+    public const string LiteralNONEStereotacticStereoscopicTestSkull_ = "http://snomed.info/sct#169087002";
+
+    /// <summary>
     /// Literal for code: StereotacticStereoscopicTestFace_
     /// </summary>
     public const string LiteralStereotacticStereoscopicTestFace_ = "169088007";
+
+    /// <summary>
+    /// Literal for code: NONEStereotacticStereoscopicTestFace_
+    /// </summary>
+    public const string LiteralNONEStereotacticStereoscopicTestFace_ = "http://snomed.info/sct#169088007";
 
     /// <summary>
     /// Literal for code: StereotacticStereoscopicTestHeart_
@@ -10510,9 +11930,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStereotacticStereoscopicTestHeart_ = "169089004";
 
     /// <summary>
+    /// Literal for code: NONEStereotacticStereoscopicTestHeart_
+    /// </summary>
+    public const string LiteralNONEStereotacticStereoscopicTestHeart_ = "http://snomed.info/sct#169089004";
+
+    /// <summary>
     /// Literal for code: StereotacticStereoscopicTestMediastinum_
     /// </summary>
     public const string LiteralStereotacticStereoscopicTestMediastinum_ = "169090008";
+
+    /// <summary>
+    /// Literal for code: NONEStereotacticStereoscopicTestMediastinum_
+    /// </summary>
+    public const string LiteralNONEStereotacticStereoscopicTestMediastinum_ = "http://snomed.info/sct#169090008";
 
     /// <summary>
     /// Literal for code: StereotacticStereoscopicTestLungs_
@@ -10520,9 +11950,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStereotacticStereoscopicTestLungs_ = "169091007";
 
     /// <summary>
+    /// Literal for code: NONEStereotacticStereoscopicTestLungs_
+    /// </summary>
+    public const string LiteralNONEStereotacticStereoscopicTestLungs_ = "http://snomed.info/sct#169091007";
+
+    /// <summary>
     /// Literal for code: StereotacticStereoscopicTestAbdomen_
     /// </summary>
     public const string LiteralStereotacticStereoscopicTestAbdomen_ = "169092000";
+
+    /// <summary>
+    /// Literal for code: NONEStereotacticStereoscopicTestAbdomen_
+    /// </summary>
+    public const string LiteralNONEStereotacticStereoscopicTestAbdomen_ = "http://snomed.info/sct#169092000";
 
     /// <summary>
     /// Literal for code: StereotacticStereoscopicTestSkeleton_
@@ -10530,9 +11970,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStereotacticStereoscopicTestSkeleton_ = "169093005";
 
     /// <summary>
+    /// Literal for code: NONEStereotacticStereoscopicTestSkeleton_
+    /// </summary>
+    public const string LiteralNONEStereotacticStereoscopicTestSkeleton_ = "http://snomed.info/sct#169093005";
+
+    /// <summary>
     /// Literal for code: StereotacticStereoscopicTestSoftTissue_
     /// </summary>
     public const string LiteralStereotacticStereoscopicTestSoftTissue_ = "169094004";
+
+    /// <summary>
+    /// Literal for code: NONEStereotacticStereoscopicTestSoftTissue_
+    /// </summary>
+    public const string LiteralNONEStereotacticStereoscopicTestSoftTissue_ = "http://snomed.info/sct#169094004";
 
     /// <summary>
     /// Literal for code: SpecificImagingMethods_
@@ -10540,9 +11990,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpecificImagingMethods_ = "169096002";
 
     /// <summary>
+    /// Literal for code: NONESpecificImagingMethods_
+    /// </summary>
+    public const string LiteralNONESpecificImagingMethods_ = "http://snomed.info/sct#169096002";
+
+    /// <summary>
     /// Literal for code: SpecificMammaryGlandImaging_
     /// </summary>
     public const string LiteralSpecificMammaryGlandImaging_ = "169097006";
+
+    /// <summary>
+    /// Literal for code: NONESpecificMammaryGlandImaging_
+    /// </summary>
+    public const string LiteralNONESpecificMammaryGlandImaging_ = "http://snomed.info/sct#169097006";
 
     /// <summary>
     /// Literal for code: SpecificBloodVesselImaging_
@@ -10550,9 +12010,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpecificBloodVesselImaging_ = "169098001";
 
     /// <summary>
+    /// Literal for code: NONESpecificBloodVesselImaging_
+    /// </summary>
+    public const string LiteralNONESpecificBloodVesselImaging_ = "http://snomed.info/sct#169098001";
+
+    /// <summary>
     /// Literal for code: SpecificSkeletalImaging_
     /// </summary>
     public const string LiteralSpecificSkeletalImaging_ = "169099009";
+
+    /// <summary>
+    /// Literal for code: NONESpecificSkeletalImaging_
+    /// </summary>
+    public const string LiteralNONESpecificSkeletalImaging_ = "http://snomed.info/sct#169099009";
 
     /// <summary>
     /// Literal for code: SpecificSoftTissueImaging_
@@ -10560,9 +12030,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpecificSoftTissueImaging_ = "169100001";
 
     /// <summary>
+    /// Literal for code: NONESpecificSoftTissueImaging_
+    /// </summary>
+    public const string LiteralNONESpecificSoftTissueImaging_ = "http://snomed.info/sct#169100001";
+
+    /// <summary>
     /// Literal for code: OralContrastCholecystography_
     /// </summary>
     public const string LiteralOralContrastCholecystography_ = "16910009";
+
+    /// <summary>
+    /// Literal for code: NONEOralContrastCholecystography_
+    /// </summary>
+    public const string LiteralNONEOralContrastCholecystography_ = "http://snomed.info/sct#16910009";
 
     /// <summary>
     /// Literal for code: RadionuclideTissueClearanceStudy_
@@ -10570,9 +12050,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadionuclideTissueClearanceStudy_ = "17026004";
 
     /// <summary>
+    /// Literal for code: NONERadionuclideTissueClearanceStudy_
+    /// </summary>
+    public const string LiteralNONERadionuclideTissueClearanceStudy_ = "http://snomed.info/sct#17026004";
+
+    /// <summary>
     /// Literal for code: UltrasonicGuidanceForRenalPelvisAspiration_
     /// </summary>
     public const string LiteralUltrasonicGuidanceForRenalPelvisAspiration_ = "17375006";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasonicGuidanceForRenalPelvisAspiration_
+    /// </summary>
+    public const string LiteralNONEUltrasonicGuidanceForRenalPelvisAspiration_ = "http://snomed.info/sct#17375006";
 
     /// <summary>
     /// Literal for code: SplenoportographyPositiveContrast_
@@ -10580,9 +12070,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSplenoportographyPositiveContrast_ = "17624002";
 
     /// <summary>
+    /// Literal for code: NONESplenoportographyPositiveContrast_
+    /// </summary>
+    public const string LiteralNONESplenoportographyPositiveContrast_ = "http://snomed.info/sct#17624002";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyCombinedPAAndLateral_
     /// </summary>
     public const string LiteralDiagnosticRadiographyCombinedPAAndLateral_ = "17711006";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyCombinedPAAndLateral_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyCombinedPAAndLateral_ = "http://snomed.info/sct#17711006";
 
     /// <summary>
     /// Literal for code: ContinuousWaveDopplerAnalogWaveFormAnalysisOfUpperExtremityArteries_
@@ -10590,9 +12090,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralContinuousWaveDopplerAnalogWaveFormAnalysisOfUpperExtremityArteries_ = "17724006";
 
     /// <summary>
+    /// Literal for code: NONEContinuousWaveDopplerAnalogWaveFormAnalysisOfUpperExtremityArteries_
+    /// </summary>
+    public const string LiteralNONEContinuousWaveDopplerAnalogWaveFormAnalysisOfUpperExtremityArteries_ = "http://snomed.info/sct#17724006";
+
+    /// <summary>
     /// Literal for code: RadiographyOfMaleGenitalOrgans_
     /// </summary>
     public const string LiteralRadiographyOfMaleGenitalOrgans_ = "17745004";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfMaleGenitalOrgans_
+    /// </summary>
+    public const string LiteralNONERadiographyOfMaleGenitalOrgans_ = "http://snomed.info/sct#17745004";
 
     /// <summary>
     /// Literal for code: ArthrographyOfElbow_
@@ -10600,9 +12110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArthrographyOfElbow_ = "17776005";
 
     /// <summary>
+    /// Literal for code: NONEArthrographyOfElbow_
+    /// </summary>
+    public const string LiteralNONEArthrographyOfElbow_ = "http://snomed.info/sct#17776005";
+
+    /// <summary>
     /// Literal for code: UltrasonicGuidanceForPericardiocentesis_
     /// </summary>
     public const string LiteralUltrasonicGuidanceForPericardiocentesis_ = "1787006";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasonicGuidanceForPericardiocentesis_
+    /// </summary>
+    public const string LiteralNONEUltrasonicGuidanceForPericardiocentesis_ = "http://snomed.info/sct#1787006";
 
     /// <summary>
     /// Literal for code: AcuteGastrointestinalBloodLossImaging_
@@ -10610,9 +12130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAcuteGastrointestinalBloodLossImaging_ = "17984001";
 
     /// <summary>
+    /// Literal for code: NONEAcuteGastrointestinalBloodLossImaging_
+    /// </summary>
+    public const string LiteralNONEAcuteGastrointestinalBloodLossImaging_ = "http://snomed.info/sct#17984001";
+
+    /// <summary>
     /// Literal for code: MammaryDuctogram_
     /// </summary>
     public const string LiteralMammaryDuctogram_ = "18102001";
+
+    /// <summary>
+    /// Literal for code: NONEMammaryDuctogram_
+    /// </summary>
+    public const string LiteralNONEMammaryDuctogram_ = "http://snomed.info/sct#18102001";
 
     /// <summary>
     /// Literal for code: RadiologicExaminationOfUpperGastrointestinalTractWithKUB_
@@ -10620,9 +12150,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicExaminationOfUpperGastrointestinalTractWithKUB_ = "18370004";
 
     /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfUpperGastrointestinalTractWithKUB_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfUpperGastrointestinalTractWithKUB_ = "http://snomed.info/sct#18370004";
+
+    /// <summary>
     /// Literal for code: TesticularImagingWithVascularFlow_
     /// </summary>
     public const string LiteralTesticularImagingWithVascularFlow_ = "18479002";
+
+    /// <summary>
+    /// Literal for code: NONETesticularImagingWithVascularFlow_
+    /// </summary>
+    public const string LiteralNONETesticularImagingWithVascularFlow_ = "http://snomed.info/sct#18479002";
 
     /// <summary>
     /// Literal for code: RadionuclideStudyProteinKinetics_
@@ -10630,9 +12170,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadionuclideStudyProteinKinetics_ = "18499008";
 
     /// <summary>
+    /// Literal for code: NONERadionuclideStudyProteinKinetics_
+    /// </summary>
+    public const string LiteralNONERadionuclideStudyProteinKinetics_ = "http://snomed.info/sct#18499008";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfPelvisStereoViews_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfPelvisStereoViews_ = "18529002";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfPelvisStereoViews_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfPelvisStereoViews_ = "http://snomed.info/sct#18529002";
 
     /// <summary>
     /// Literal for code: EchographyMMode_
@@ -10640,9 +12190,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchographyMMode_ = "18640002";
 
     /// <summary>
+    /// Literal for code: NONEEchographyMMode_
+    /// </summary>
+    public const string LiteralNONEEchographyMMode_ = "http://snomed.info/sct#18640002";
+
+    /// <summary>
     /// Literal for code: RadiologicExaminationOfElbowAnteroposteriorAndLateralViews_
     /// </summary>
     public const string LiteralRadiologicExaminationOfElbowAnteroposteriorAndLateralViews_ = "18747005";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfElbowAnteroposteriorAndLateralViews_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfElbowAnteroposteriorAndLateralViews_ = "http://snomed.info/sct#18747005";
 
     /// <summary>
     /// Literal for code: EchographyOfChestBScanWithImageDocumentation_
@@ -10650,9 +12210,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchographyOfChestBScanWithImageDocumentation_ = "18848007";
 
     /// <summary>
+    /// Literal for code: NONEEchographyOfChestBScanWithImageDocumentation_
+    /// </summary>
+    public const string LiteralNONEEchographyOfChestBScanWithImageDocumentation_ = "http://snomed.info/sct#18848007";
+
+    /// <summary>
     /// Literal for code: RadiographyOfSoftTissueOfElbow_
     /// </summary>
     public const string LiteralRadiographyOfSoftTissueOfElbow_ = "18912009";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfSoftTissueOfElbow_
+    /// </summary>
+    public const string LiteralNONERadiographyOfSoftTissueOfElbow_ = "http://snomed.info/sct#18912009";
 
     /// <summary>
     /// Literal for code: RadioisotopeStudyOfRespiratorySystem_
@@ -10660,9 +12230,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadioisotopeStudyOfRespiratorySystem_ = "19086005";
 
     /// <summary>
+    /// Literal for code: NONERadioisotopeStudyOfRespiratorySystem_
+    /// </summary>
+    public const string LiteralNONERadioisotopeStudyOfRespiratorySystem_ = "http://snomed.info/sct#19086005";
+
+    /// <summary>
     /// Literal for code: IsotopeStudyForGastrointestinalBloodLoss_
     /// </summary>
     public const string LiteralIsotopeStudyForGastrointestinalBloodLoss_ = "19252005";
+
+    /// <summary>
+    /// Literal for code: NONEIsotopeStudyForGastrointestinalBloodLoss_
+    /// </summary>
+    public const string LiteralNONEIsotopeStudyForGastrointestinalBloodLoss_ = "http://snomed.info/sct#19252005";
 
     /// <summary>
     /// Literal for code: RadiographyOfAnkle_
@@ -10670,9 +12250,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfAnkle_ = "19490002";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfAnkle_
+    /// </summary>
+    public const string LiteralNONERadiographyOfAnkle_ = "http://snomed.info/sct#19490002";
+
+    /// <summary>
     /// Literal for code: RadiographyOfMandible_
     /// </summary>
     public const string LiteralRadiographyOfMandible_ = "19589009";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfMandible_
+    /// </summary>
+    public const string LiteralNONERadiographyOfMandible_ = "http://snomed.info/sct#19589009";
 
     /// <summary>
     /// Literal for code: BoneThermography_
@@ -10680,9 +12270,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBoneThermography_ = "19671003";
 
     /// <summary>
+    /// Literal for code: NONEBoneThermography_
+    /// </summary>
+    public const string LiteralNONEBoneThermography_ = "http://snomed.info/sct#19671003";
+
+    /// <summary>
     /// Literal for code: UltrasoundStudyOfEye_
     /// </summary>
     public const string LiteralUltrasoundStudyOfEye_ = "19731001";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasoundStudyOfEye_
+    /// </summary>
+    public const string LiteralNONEUltrasoundStudyOfEye_ = "http://snomed.info/sct#19731001";
 
     /// <summary>
     /// Literal for code: OrthodonticCephalogram_
@@ -10690,9 +12290,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOrthodonticCephalogram_ = "19961003";
 
     /// <summary>
+    /// Literal for code: NONEOrthodonticCephalogram_
+    /// </summary>
+    public const string LiteralNONEOrthodonticCephalogram_ = "http://snomed.info/sct#19961003";
+
+    /// <summary>
     /// Literal for code: OcularFundusPhotography_
     /// </summary>
     public const string LiteralOcularFundusPhotography_ = "20067007";
+
+    /// <summary>
+    /// Literal for code: NONEOcularFundusPhotography_
+    /// </summary>
+    public const string LiteralNONEOcularFundusPhotography_ = "http://snomed.info/sct#20067007";
 
     /// <summary>
     /// Literal for code: Amniography_
@@ -10700,9 +12310,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAmniography_ = "20350005";
 
     /// <summary>
+    /// Literal for code: NONEAmniography_
+    /// </summary>
+    public const string LiteralNONEAmniography_ = "http://snomed.info/sct#20350005";
+
+    /// <summary>
     /// Literal for code: RadioisotopeScanOfPituitary_
     /// </summary>
     public const string LiteralRadioisotopeScanOfPituitary_ = "20384009";
+
+    /// <summary>
+    /// Literal for code: NONERadioisotopeScanOfPituitary_
+    /// </summary>
+    public const string LiteralNONERadioisotopeScanOfPituitary_ = "http://snomed.info/sct#20384009";
 
     /// <summary>
     /// Literal for code: SpecialEchographyProcedure_
@@ -10710,9 +12330,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpecialEchographyProcedure_ = "20603005";
 
     /// <summary>
+    /// Literal for code: NONESpecialEchographyProcedure_
+    /// </summary>
+    public const string LiteralNONESpecialEchographyProcedure_ = "http://snomed.info/sct#20603005";
+
+    /// <summary>
     /// Literal for code: LaparoscopicCholecystectomyWithCholangiography_
     /// </summary>
     public const string LiteralLaparoscopicCholecystectomyWithCholangiography_ = "20630000";
+
+    /// <summary>
+    /// Literal for code: NONELaparoscopicCholecystectomyWithCholangiography_
+    /// </summary>
+    public const string LiteralNONELaparoscopicCholecystectomyWithCholangiography_ = "http://snomed.info/sct#20630000";
 
     /// <summary>
     /// Literal for code: PelvicEchographyBScanComplete_
@@ -10720,9 +12350,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPelvicEchographyBScanComplete_ = "20740007";
 
     /// <summary>
+    /// Literal for code: NONEPelvicEchographyBScanComplete_
+    /// </summary>
+    public const string LiteralNONEPelvicEchographyBScanComplete_ = "http://snomed.info/sct#20740007";
+
+    /// <summary>
     /// Literal for code: RadiologicExaminationOfFootAnteroposteriorAndLateralViews_
     /// </summary>
     public const string LiteralRadiologicExaminationOfFootAnteroposteriorAndLateralViews_ = "20798004";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfFootAnteroposteriorAndLateralViews_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfFootAnteroposteriorAndLateralViews_ = "http://snomed.info/sct#20798004";
 
     /// <summary>
     /// Literal for code: ComputerizedAxialTomographyOfPosteriorFossaWithContrast_
@@ -10730,9 +12370,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedAxialTomographyOfPosteriorFossaWithContrast_ = "20836009";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedAxialTomographyOfPosteriorFossaWithContrast_
+    /// </summary>
+    public const string LiteralNONEComputerizedAxialTomographyOfPosteriorFossaWithContrast_ = "http://snomed.info/sct#20836009";
+
+    /// <summary>
     /// Literal for code: HepatobiliaryDuctalSystemImagingIncludingGallbladder_
     /// </summary>
     public const string LiteralHepatobiliaryDuctalSystemImagingIncludingGallbladder_ = "21126008";
+
+    /// <summary>
+    /// Literal for code: NONEHepatobiliaryDuctalSystemImagingIncludingGallbladder_
+    /// </summary>
+    public const string LiteralNONEHepatobiliaryDuctalSystemImagingIncludingGallbladder_ = "http://snomed.info/sct#21126008";
 
     /// <summary>
     /// Literal for code: RadiographyOfIntestine_
@@ -10740,9 +12390,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfIntestine_ = "21339000";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfIntestine_
+    /// </summary>
+    public const string LiteralNONERadiographyOfIntestine_ = "http://snomed.info/sct#21339000";
+
+    /// <summary>
     /// Literal for code: RadiologicExaminationOfCervicalSpineAnteroposteriorAndLateral_
     /// </summary>
     public const string LiteralRadiologicExaminationOfCervicalSpineAnteroposteriorAndLateral_ = "21613005";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfCervicalSpineAnteroposteriorAndLateral_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfCervicalSpineAnteroposteriorAndLateral_ = "http://snomed.info/sct#21613005";
 
     /// <summary>
     /// Literal for code: FetalBiophysicalProfile_
@@ -10750,9 +12410,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFetalBiophysicalProfile_ = "21623001";
 
     /// <summary>
+    /// Literal for code: NONEFetalBiophysicalProfile_
+    /// </summary>
+    public const string LiteralNONEFetalBiophysicalProfile_ = "http://snomed.info/sct#21623001";
+
+    /// <summary>
     /// Literal for code: OcularPhotographyForMedicalEvaluationAndDocumentationStereophotography_
     /// </summary>
     public const string LiteralOcularPhotographyForMedicalEvaluationAndDocumentationStereophotography_ = "21685006";
+
+    /// <summary>
+    /// Literal for code: NONEOcularPhotographyForMedicalEvaluationAndDocumentationStereophotography_
+    /// </summary>
+    public const string LiteralNONEOcularPhotographyForMedicalEvaluationAndDocumentationStereophotography_ = "http://snomed.info/sct#21685006";
 
     /// <summary>
     /// Literal for code: RadiographyOfRibs_
@@ -10760,9 +12430,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfRibs_ = "21970003";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfRibs_
+    /// </summary>
+    public const string LiteralNONERadiographyOfRibs_ = "http://snomed.info/sct#21970003";
+
+    /// <summary>
     /// Literal for code: EchographyOfProstateTransrectalApproach_
     /// </summary>
     public const string LiteralEchographyOfProstateTransrectalApproach_ = "22034001";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyOfProstateTransrectalApproach_
+    /// </summary>
+    public const string LiteralNONEEchographyOfProstateTransrectalApproach_ = "http://snomed.info/sct#22034001";
 
     /// <summary>
     /// Literal for code: ComputerizedTomographyBoneDensityStudy_
@@ -10770,9 +12450,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedTomographyBoneDensityStudy_ = "22059005";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedTomographyBoneDensityStudy_
+    /// </summary>
+    public const string LiteralNONEComputerizedTomographyBoneDensityStudy_ = "http://snomed.info/sct#22059005";
+
+    /// <summary>
     /// Literal for code: PulmonaryVentilationPerfusionStudyByRadioactiveOxygen_
     /// </summary>
     public const string LiteralPulmonaryVentilationPerfusionStudyByRadioactiveOxygen_ = "22089003";
+
+    /// <summary>
+    /// Literal for code: NONEPulmonaryVentilationPerfusionStudyByRadioactiveOxygen_
+    /// </summary>
+    public const string LiteralNONEPulmonaryVentilationPerfusionStudyByRadioactiveOxygen_ = "http://snomed.info/sct#22089003";
 
     /// <summary>
     /// Literal for code: RadiographyOfSymphysisMenti_
@@ -10780,9 +12470,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfSymphysisMenti_ = "22289008";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfSymphysisMenti_
+    /// </summary>
+    public const string LiteralNONERadiographyOfSymphysisMenti_ = "http://snomed.info/sct#22289008";
+
+    /// <summary>
     /// Literal for code: ComputerizedTomography3DimensionalReconstruction_
     /// </summary>
     public const string LiteralComputerizedTomography3DimensionalReconstruction_ = "22400007";
+
+    /// <summary>
+    /// Literal for code: NONEComputerizedTomography3DimensionalReconstruction_
+    /// </summary>
+    public const string LiteralNONEComputerizedTomography3DimensionalReconstruction_ = "http://snomed.info/sct#22400007";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfChestMinifilm_
@@ -10790,9 +12490,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfChestMinifilm_ = "22446007";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfChestMinifilm_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfChestMinifilm_ = "http://snomed.info/sct#22446007";
+
+    /// <summary>
     /// Literal for code: EpiduralVenography_
     /// </summary>
     public const string LiteralEpiduralVenography_ = "22458007";
+
+    /// <summary>
+    /// Literal for code: NONEEpiduralVenography_
+    /// </summary>
+    public const string LiteralNONEEpiduralVenography_ = "http://snomed.info/sct#22458007";
 
     /// <summary>
     /// Literal for code: ArthrographyOfHipWithPositiveContrast_
@@ -10800,9 +12510,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArthrographyOfHipWithPositiveContrast_ = "22530002";
 
     /// <summary>
+    /// Literal for code: NONEArthrographyOfHipWithPositiveContrast_
+    /// </summary>
+    public const string LiteralNONEArthrographyOfHipWithPositiveContrast_ = "http://snomed.info/sct#22530002";
+
+    /// <summary>
     /// Literal for code: VenographyOfAdrenalBilateral_
     /// </summary>
     public const string LiteralVenographyOfAdrenalBilateral_ = "2266004";
+
+    /// <summary>
+    /// Literal for code: NONEVenographyOfAdrenalBilateral_
+    /// </summary>
+    public const string LiteralNONEVenographyOfAdrenalBilateral_ = "http://snomed.info/sct#2266004";
 
     /// <summary>
     /// Literal for code: Xeroradiography_
@@ -10810,9 +12530,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralXeroradiography_ = "22760005";
 
     /// <summary>
+    /// Literal for code: NONEXeroradiography_
+    /// </summary>
+    public const string LiteralNONEXeroradiography_ = "http://snomed.info/sct#22760005";
+
+    /// <summary>
     /// Literal for code: Perineogram_
     /// </summary>
     public const string LiteralPerineogram_ = "22761009";
+
+    /// <summary>
+    /// Literal for code: NONEPerineogram_
+    /// </summary>
+    public const string LiteralNONEPerineogram_ = "http://snomed.info/sct#22761009";
 
     /// <summary>
     /// Literal for code: XRayOfLumbosacralSpine_
@@ -10820,9 +12550,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralXRayOfLumbosacralSpine_ = "22791004";
 
     /// <summary>
+    /// Literal for code: NONEXRayOfLumbosacralSpine_
+    /// </summary>
+    public const string LiteralNONEXRayOfLumbosacralSpine_ = "http://snomed.info/sct#22791004";
+
+    /// <summary>
     /// Literal for code: PulmonaryPhlebography_
     /// </summary>
     public const string LiteralPulmonaryPhlebography_ = "22873002";
+
+    /// <summary>
+    /// Literal for code: NONEPulmonaryPhlebography_
+    /// </summary>
+    public const string LiteralNONEPulmonaryPhlebography_ = "http://snomed.info/sct#22873002";
 
     /// <summary>
     /// Literal for code: RadiographyOfTeeth_
@@ -10830,9 +12570,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfTeeth_ = "22891007";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfTeeth_
+    /// </summary>
+    public const string LiteralNONERadiographyOfTeeth_ = "http://snomed.info/sct#22891007";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographySurvey_
     /// </summary>
     public const string LiteralDiagnosticRadiographySurvey_ = "22901000";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographySurvey_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographySurvey_ = "http://snomed.info/sct#22901000";
 
     /// <summary>
     /// Literal for code: RadiologicExaminationOfWristAnteroposteriorAndLateralViews_
@@ -10840,9 +12590,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicExaminationOfWristAnteroposteriorAndLateralViews_ = "22948003";
 
     /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfWristAnteroposteriorAndLateralViews_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfWristAnteroposteriorAndLateralViews_ = "http://snomed.info/sct#22948003";
+
+    /// <summary>
     /// Literal for code: GastrointestinalProteinLossStudy_
     /// </summary>
     public const string LiteralGastrointestinalProteinLossStudy_ = "23225008";
+
+    /// <summary>
+    /// Literal for code: NONEGastrointestinalProteinLossStudy_
+    /// </summary>
+    public const string LiteralNONEGastrointestinalProteinLossStudy_ = "http://snomed.info/sct#23225008";
 
     /// <summary>
     /// Literal for code: RadiographyOfSternum_
@@ -10850,9 +12610,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfSternum_ = "23394003";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfSternum_
+    /// </summary>
+    public const string LiteralNONERadiographyOfSternum_ = "http://snomed.info/sct#23394003";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyPosteroanteriorPA_
     /// </summary>
     public const string LiteralDiagnosticRadiographyPosteroanteriorPA_ = "23461000";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyPosteroanteriorPA_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyPosteroanteriorPA_ = "http://snomed.info/sct#23461000";
 
     /// <summary>
     /// Literal for code: TransmissionBoneDensityStudy_
@@ -10860,9 +12630,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTransmissionBoneDensityStudy_ = "23572007";
 
     /// <summary>
+    /// Literal for code: NONETransmissionBoneDensityStudy_
+    /// </summary>
+    public const string LiteralNONETransmissionBoneDensityStudy_ = "http://snomed.info/sct#23572007";
+
+    /// <summary>
     /// Literal for code: UltrasonographyOfDigestiveSystem_
     /// </summary>
     public const string LiteralUltrasonographyOfDigestiveSystem_ = "23738001";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasonographyOfDigestiveSystem_
+    /// </summary>
+    public const string LiteralNONEUltrasonographyOfDigestiveSystem_ = "http://snomed.info/sct#23738001";
 
     /// <summary>
     /// Literal for code: ScanningOrImagingPerfusionStudyGaseous_
@@ -10870,9 +12650,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralScanningOrImagingPerfusionStudyGaseous_ = "23818008";
 
     /// <summary>
+    /// Literal for code: NONEScanningOrImagingPerfusionStudyGaseous_
+    /// </summary>
+    public const string LiteralNONEScanningOrImagingPerfusionStudyGaseous_ = "http://snomed.info/sct#23818008";
+
+    /// <summary>
     /// Literal for code: RadiographyOfSoftTissueOfThigh_
     /// </summary>
     public const string LiteralRadiographyOfSoftTissueOfThigh_ = "23846005";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfSoftTissueOfThigh_
+    /// </summary>
+    public const string LiteralNONERadiographyOfSoftTissueOfThigh_ = "http://snomed.info/sct#23846005";
 
     /// <summary>
     /// Literal for code: UltrasonographyOfHeadAndNeck_
@@ -10880,9 +12670,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonographyOfHeadAndNeck_ = "23931002";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonographyOfHeadAndNeck_
+    /// </summary>
+    public const string LiteralNONEUltrasonographyOfHeadAndNeck_ = "http://snomed.info/sct#23931002";
+
+    /// <summary>
     /// Literal for code: EchocardiographyForDeterminingPosteriorLeftVentricularWallThickness_
     /// </summary>
     public const string LiteralEchocardiographyForDeterminingPosteriorLeftVentricularWallThickness_ = "24058001";
+
+    /// <summary>
+    /// Literal for code: NONEEchocardiographyForDeterminingPosteriorLeftVentricularWallThickness_
+    /// </summary>
+    public const string LiteralNONEEchocardiographyForDeterminingPosteriorLeftVentricularWallThickness_ = "http://snomed.info/sct#24058001";
 
     /// <summary>
     /// Literal for code: UltrasonographyOfTotalBody_
@@ -10890,9 +12690,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonographyOfTotalBody_ = "24135002";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonographyOfTotalBody_
+    /// </summary>
+    public const string LiteralNONEUltrasonographyOfTotalBody_ = "http://snomed.info/sct#24135002";
+
+    /// <summary>
     /// Literal for code: RadiographyOfUpperLimbSoftTissue_
     /// </summary>
     public const string LiteralRadiographyOfUpperLimbSoftTissue_ = "24267008";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfUpperLimbSoftTissue_
+    /// </summary>
+    public const string LiteralNONERadiographyOfUpperLimbSoftTissue_ = "http://snomed.info/sct#24267008";
 
     /// <summary>
     /// Literal for code: ScreeningMammography_
@@ -10900,9 +12710,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralScreeningMammography_ = "24623002";
 
     /// <summary>
+    /// Literal for code: NONEScreeningMammography_
+    /// </summary>
+    public const string LiteralNONEScreeningMammography_ = "http://snomed.info/sct#24623002";
+
+    /// <summary>
     /// Literal for code: AbdominalAortographyTranslumbarWithSerialography_
     /// </summary>
     public const string LiteralAbdominalAortographyTranslumbarWithSerialography_ = "24646000";
+
+    /// <summary>
+    /// Literal for code: NONEAbdominalAortographyTranslumbarWithSerialography_
+    /// </summary>
+    public const string LiteralNONEAbdominalAortographyTranslumbarWithSerialography_ = "http://snomed.info/sct#24646000";
 
     /// <summary>
     /// Literal for code: CTGuidanceForTreatmentPlanningTeletherapy_
@@ -10910,9 +12730,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForTreatmentPlanningTeletherapy_ = "24689001";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForTreatmentPlanningTeletherapy_
+    /// </summary>
+    public const string LiteralNONECTGuidanceForTreatmentPlanningTeletherapy_ = "http://snomed.info/sct#24689001";
+
+    /// <summary>
     /// Literal for code: SplenoportogramBySplenicArteriography_
     /// </summary>
     public const string LiteralSplenoportogramBySplenicArteriography_ = "24715008";
+
+    /// <summary>
+    /// Literal for code: NONESplenoportogramBySplenicArteriography_
+    /// </summary>
+    public const string LiteralNONESplenoportogramBySplenicArteriography_ = "http://snomed.info/sct#24715008";
 
     /// <summary>
     /// Literal for code: EchographyOfScrotumAndContents_
@@ -10920,9 +12750,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchographyOfScrotumAndContents_ = "24737001";
 
     /// <summary>
+    /// Literal for code: NONEEchographyOfScrotumAndContents_
+    /// </summary>
+    public const string LiteralNONEEchographyOfScrotumAndContents_ = "http://snomed.info/sct#24737001";
+
+    /// <summary>
     /// Literal for code: PelvicEchography_
     /// </summary>
     public const string LiteralPelvicEchography_ = "24848001";
+
+    /// <summary>
+    /// Literal for code: NONEPelvicEchography_
+    /// </summary>
+    public const string LiteralNONEPelvicEchography_ = "http://snomed.info/sct#24848001";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfCoccyx_
@@ -10930,9 +12770,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfCoccyx_ = "24856003";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfCoccyx_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfCoccyx_ = "http://snomed.info/sct#24856003";
+
+    /// <summary>
     /// Literal for code: RetrogradeUrographyWithKUB_
     /// </summary>
     public const string LiteralRetrogradeUrographyWithKUB_ = "2508002";
+
+    /// <summary>
+    /// Literal for code: NONERetrogradeUrographyWithKUB_
+    /// </summary>
+    public const string LiteralNONERetrogradeUrographyWithKUB_ = "http://snomed.info/sct#2508002";
 
     /// <summary>
     /// Literal for code: DeepVeinThermography_
@@ -10940,9 +12790,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeepVeinThermography_ = "25306006";
 
     /// <summary>
+    /// Literal for code: NONEDeepVeinThermography_
+    /// </summary>
+    public const string LiteralNONEDeepVeinThermography_ = "http://snomed.info/sct#25306006";
+
+    /// <summary>
     /// Literal for code: VenographyOfLowerExtremityBilateral_
     /// </summary>
     public const string LiteralVenographyOfLowerExtremityBilateral_ = "25347009";
+
+    /// <summary>
+    /// Literal for code: NONEVenographyOfLowerExtremityBilateral_
+    /// </summary>
+    public const string LiteralNONEVenographyOfLowerExtremityBilateral_ = "http://snomed.info/sct#25347009";
 
     /// <summary>
     /// Literal for code: Hysterogram_
@@ -10950,9 +12810,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHysterogram_ = "25411007";
 
     /// <summary>
+    /// Literal for code: NONEHysterogram_
+    /// </summary>
+    public const string LiteralNONEHysterogram_ = "http://snomed.info/sct#25411007";
+
+    /// <summary>
     /// Literal for code: TesticularImaging_
     /// </summary>
     public const string LiteralTesticularImaging_ = "25630002";
+
+    /// <summary>
+    /// Literal for code: NONETesticularImaging_
+    /// </summary>
+    public const string LiteralNONETesticularImaging_ = "http://snomed.info/sct#25630002";
 
     /// <summary>
     /// Literal for code: RadionuclideScanningForHotSpot_
@@ -10960,9 +12830,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadionuclideScanningForHotSpot_ = "25759006";
 
     /// <summary>
+    /// Literal for code: NONERadionuclideScanningForHotSpot_
+    /// </summary>
+    public const string LiteralNONERadionuclideScanningForHotSpot_ = "http://snomed.info/sct#25759006";
+
+    /// <summary>
     /// Literal for code: AngiographyOfCervicocerebralArteries_
     /// </summary>
     public const string LiteralAngiographyOfCervicocerebralArteries_ = "25760001";
+
+    /// <summary>
+    /// Literal for code: NONEAngiographyOfCervicocerebralArteries_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfCervicocerebralArteries_ = "http://snomed.info/sct#25760001";
 
     /// <summary>
     /// Literal for code: UltrasonographyOfThorax_
@@ -10970,9 +12850,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonographyOfThorax_ = "25850001";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonographyOfThorax_
+    /// </summary>
+    public const string LiteralNONEUltrasonographyOfThorax_ = "http://snomed.info/sct#25850001";
+
+    /// <summary>
     /// Literal for code: PhlebographyOfHead_
     /// </summary>
     public const string LiteralPhlebographyOfHead_ = "26262000";
+
+    /// <summary>
+    /// Literal for code: NONEPhlebographyOfHead_
+    /// </summary>
+    public const string LiteralNONEPhlebographyOfHead_ = "http://snomed.info/sct#26262000";
 
     /// <summary>
     /// Literal for code: DeepFineNeedleAspirationBiopsyUnderRadiologicGuidance_
@@ -10980,9 +12870,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeepFineNeedleAspirationBiopsyUnderRadiologicGuidance_ = "26308001";
 
     /// <summary>
+    /// Literal for code: NONEDeepFineNeedleAspirationBiopsyUnderRadiologicGuidance_
+    /// </summary>
+    public const string LiteralNONEDeepFineNeedleAspirationBiopsyUnderRadiologicGuidance_ = "http://snomed.info/sct#26308001";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfLumbarSpineCombinedAPAndLateral_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfLumbarSpineCombinedAPAndLateral_ = "26537001";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfLumbarSpineCombinedAPAndLateral_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfLumbarSpineCombinedAPAndLateral_ = "http://snomed.info/sct#26537001";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographySpecialViews_
@@ -10990,9 +12890,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographySpecialViews_ = "26648002";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographySpecialViews_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographySpecialViews_ = "http://snomed.info/sct#26648002";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingOfPelvis_
     /// </summary>
     public const string LiteralMagneticResonanceImagingOfPelvis_ = "2690005";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfPelvis_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfPelvis_ = "http://snomed.info/sct#2690005";
 
     /// <summary>
     /// Literal for code: ComputerizedAxialTomographyOfUpperExtremityWithContrast_
@@ -11000,9 +12910,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedAxialTomographyOfUpperExtremityWithContrast_ = "26946001";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedAxialTomographyOfUpperExtremityWithContrast_
+    /// </summary>
+    public const string LiteralNONEComputerizedAxialTomographyOfUpperExtremityWithContrast_ = "http://snomed.info/sct#26946001";
+
+    /// <summary>
     /// Literal for code: HepaticVenographyWithHemodynamicEvaluation_
     /// </summary>
     public const string LiteralHepaticVenographyWithHemodynamicEvaluation_ = "2696004";
+
+    /// <summary>
+    /// Literal for code: NONEHepaticVenographyWithHemodynamicEvaluation_
+    /// </summary>
+    public const string LiteralNONEHepaticVenographyWithHemodynamicEvaluation_ = "http://snomed.info/sct#2696004";
 
     /// <summary>
     /// Literal for code: Molegraphy_
@@ -11010,9 +12930,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMolegraphy_ = "27300001";
 
     /// <summary>
+    /// Literal for code: NONEMolegraphy_
+    /// </summary>
+    public const string LiteralNONEMolegraphy_ = "http://snomed.info/sct#27300001";
+
+    /// <summary>
     /// Literal for code: PercutaneousTranshepaticPortographyWithHemodynamicEvaluation_
     /// </summary>
     public const string LiteralPercutaneousTranshepaticPortographyWithHemodynamicEvaluation_ = "27469002";
+
+    /// <summary>
+    /// Literal for code: NONEPercutaneousTranshepaticPortographyWithHemodynamicEvaluation_
+    /// </summary>
+    public const string LiteralNONEPercutaneousTranshepaticPortographyWithHemodynamicEvaluation_ = "http://snomed.info/sct#27469002";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyWithContrastMedia_
@@ -11020,9 +12950,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyWithContrastMedia_ = "27483000";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyWithContrastMedia_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyWithContrastMedia_ = "http://snomed.info/sct#27483000";
+
+    /// <summary>
     /// Literal for code: PositiveContrastBronchographyBilateral_
     /// </summary>
     public const string LiteralPositiveContrastBronchographyBilateral_ = "27498003";
+
+    /// <summary>
+    /// Literal for code: NONEPositiveContrastBronchographyBilateral_
+    /// </summary>
+    public const string LiteralNONEPositiveContrastBronchographyBilateral_ = "http://snomed.info/sct#27498003";
 
     /// <summary>
     /// Literal for code: VenographyOfJugularVein_
@@ -11030,9 +12970,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVenographyOfJugularVein_ = "27821009";
 
     /// <summary>
+    /// Literal for code: NONEVenographyOfJugularVein_
+    /// </summary>
+    public const string LiteralNONEVenographyOfJugularVein_ = "http://snomed.info/sct#27821009";
+
+    /// <summary>
     /// Literal for code: MyelographyOfEntireSpinalCanal_
     /// </summary>
     public const string LiteralMyelographyOfEntireSpinalCanal_ = "27851003";
+
+    /// <summary>
+    /// Literal for code: NONEMyelographyOfEntireSpinalCanal_
+    /// </summary>
+    public const string LiteralNONEMyelographyOfEntireSpinalCanal_ = "http://snomed.info/sct#27851003";
 
     /// <summary>
     /// Literal for code: FluoroscopicLocalizationForNeedleBiopsyInChest_
@@ -11040,9 +12990,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicLocalizationForNeedleBiopsyInChest_ = "28033003";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicLocalizationForNeedleBiopsyInChest_
+    /// </summary>
+    public const string LiteralNONEFluoroscopicLocalizationForNeedleBiopsyInChest_ = "http://snomed.info/sct#28033003";
+
+    /// <summary>
     /// Literal for code: CineradiographyOfPharynx_
     /// </summary>
     public const string LiteralCineradiographyOfPharynx_ = "2811005";
+
+    /// <summary>
+    /// Literal for code: NONECineradiographyOfPharynx_
+    /// </summary>
+    public const string LiteralNONECineradiographyOfPharynx_ = "http://snomed.info/sct#2811005";
 
     /// <summary>
     /// Literal for code: PelvicLymphangiographyBilateral_
@@ -11050,9 +13010,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPelvicLymphangiographyBilateral_ = "28160007";
 
     /// <summary>
+    /// Literal for code: NONEPelvicLymphangiographyBilateral_
+    /// </summary>
+    public const string LiteralNONEPelvicLymphangiographyBilateral_ = "http://snomed.info/sct#28160007";
+
+    /// <summary>
     /// Literal for code: RadionuclideBiliaryPatencyStudy_
     /// </summary>
     public const string LiteralRadionuclideBiliaryPatencyStudy_ = "28303002";
+
+    /// <summary>
+    /// Literal for code: NONERadionuclideBiliaryPatencyStudy_
+    /// </summary>
+    public const string LiteralNONERadionuclideBiliaryPatencyStudy_ = "http://snomed.info/sct#28303002";
 
     /// <summary>
     /// Literal for code: RedCellSurvivalStudyWithSplenicSequestration_
@@ -11060,9 +13030,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRedCellSurvivalStudyWithSplenicSequestration_ = "28337005";
 
     /// <summary>
+    /// Literal for code: NONERedCellSurvivalStudyWithSplenicSequestration_
+    /// </summary>
+    public const string LiteralNONERedCellSurvivalStudyWithSplenicSequestration_ = "http://snomed.info/sct#28337005";
+
+    /// <summary>
     /// Literal for code: ThoracicMyelography_
     /// </summary>
     public const string LiteralThoracicMyelography_ = "28339008";
+
+    /// <summary>
+    /// Literal for code: NONEThoracicMyelography_
+    /// </summary>
+    public const string LiteralNONEThoracicMyelography_ = "http://snomed.info/sct#28339008";
 
     /// <summary>
     /// Literal for code: Cholangiogram_
@@ -11070,9 +13050,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCholangiogram_ = "28367004";
 
     /// <summary>
+    /// Literal for code: NONECholangiogram_
+    /// </summary>
+    public const string LiteralNONECholangiogram_ = "http://snomed.info/sct#28367004";
+
+    /// <summary>
     /// Literal for code: CervicalMyelography_
     /// </summary>
     public const string LiteralCervicalMyelography_ = "2847006";
+
+    /// <summary>
+    /// Literal for code: NONECervicalMyelography_
+    /// </summary>
+    public const string LiteralNONECervicalMyelography_ = "http://snomed.info/sct#2847006";
 
     /// <summary>
     /// Literal for code: BilateralNephrotomography_
@@ -11080,9 +13070,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBilateralNephrotomography_ = "28514000";
 
     /// <summary>
+    /// Literal for code: NONEBilateralNephrotomography_
+    /// </summary>
+    public const string LiteralNONEBilateralNephrotomography_ = "http://snomed.info/sct#28514000";
+
+    /// <summary>
     /// Literal for code: EchographyMModeComplete_
     /// </summary>
     public const string LiteralEchographyMModeComplete_ = "28566009";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyMModeComplete_
+    /// </summary>
+    public const string LiteralNONEEchographyMModeComplete_ = "http://snomed.info/sct#28566009";
 
     /// <summary>
     /// Literal for code: Nephrotomogram_
@@ -11090,9 +13090,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNephrotomogram_ = "28686001";
 
     /// <summary>
+    /// Literal for code: NONENephrotomogram_
+    /// </summary>
+    public const string LiteralNONENephrotomogram_ = "http://snomed.info/sct#28686001";
+
+    /// <summary>
     /// Literal for code: TranscatheterTherapyByInfusionWithAngiography_
     /// </summary>
     public const string LiteralTranscatheterTherapyByInfusionWithAngiography_ = "28687005";
+
+    /// <summary>
+    /// Literal for code: NONETranscatheterTherapyByInfusionWithAngiography_
+    /// </summary>
+    public const string LiteralNONETranscatheterTherapyByInfusionWithAngiography_ = "http://snomed.info/sct#28687005";
 
     /// <summary>
     /// Literal for code: AngiocardiographyBySerialographyMultiPlane_
@@ -11100,9 +13110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngiocardiographyBySerialographyMultiPlane_ = "28806001";
 
     /// <summary>
+    /// Literal for code: NONEAngiocardiographyBySerialographyMultiPlane_
+    /// </summary>
+    public const string LiteralNONEAngiocardiographyBySerialographyMultiPlane_ = "http://snomed.info/sct#28806001";
+
+    /// <summary>
     /// Literal for code: FluoroscopicLocalizationForTransbronchialBiopsyAndBrushing_
     /// </summary>
     public const string LiteralFluoroscopicLocalizationForTransbronchialBiopsyAndBrushing_ = "28894006";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicLocalizationForTransbronchialBiopsyAndBrushing_
+    /// </summary>
+    public const string LiteralNONEFluoroscopicLocalizationForTransbronchialBiopsyAndBrushing_ = "http://snomed.info/sct#28894006";
 
     /// <summary>
     /// Literal for code: AngiocardiographyPositiveContrast_
@@ -11110,9 +13130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngiocardiographyPositiveContrast_ = "29117008";
 
     /// <summary>
+    /// Literal for code: NONEAngiocardiographyPositiveContrast_
+    /// </summary>
+    public const string LiteralNONEAngiocardiographyPositiveContrast_ = "http://snomed.info/sct#29117008";
+
+    /// <summary>
     /// Literal for code: RadiologicExaminationOfUpperGastrointestinalTractAndSmallBowelWithSerialFilms_
     /// </summary>
     public const string LiteralRadiologicExaminationOfUpperGastrointestinalTractAndSmallBowelWithSerialFilms_ = "29166005";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfUpperGastrointestinalTractAndSmallBowelWithSerialFilms_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfUpperGastrointestinalTractAndSmallBowelWithSerialFilms_ = "http://snomed.info/sct#29166005";
 
     /// <summary>
     /// Literal for code: Pneumogynecography_
@@ -11120,9 +13150,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPneumogynecography_ = "2933008";
 
     /// <summary>
+    /// Literal for code: NONEPneumogynecography_
+    /// </summary>
+    public const string LiteralNONEPneumogynecography_ = "http://snomed.info/sct#2933008";
+
+    /// <summary>
     /// Literal for code: RadiographyOfFaceHeadANDORNeck_
     /// </summary>
     public const string LiteralRadiographyOfFaceHeadANDORNeck_ = "29357002";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfFaceHeadANDORNeck_
+    /// </summary>
+    public const string LiteralNONERadiographyOfFaceHeadANDORNeck_ = "http://snomed.info/sct#29357002";
 
     /// <summary>
     /// Literal for code: RadiographyOfFemaleGenitalOrgans_
@@ -11130,9 +13170,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfFemaleGenitalOrgans_ = "29433003";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfFemaleGenitalOrgans_
+    /// </summary>
+    public const string LiteralNONERadiographyOfFemaleGenitalOrgans_ = "http://snomed.info/sct#29433003";
+
+    /// <summary>
     /// Literal for code: RadioiodohippurateSodiumRenogramMultipleProbes_
     /// </summary>
     public const string LiteralRadioiodohippurateSodiumRenogramMultipleProbes_ = "29559003";
+
+    /// <summary>
+    /// Literal for code: NONERadioiodohippurateSodiumRenogramMultipleProbes_
+    /// </summary>
+    public const string LiteralNONERadioiodohippurateSodiumRenogramMultipleProbes_ = "http://snomed.info/sct#29559003";
 
     /// <summary>
     /// Literal for code: MagneticResonanceImagingOfBrainAndBrainStem_
@@ -11140,9 +13190,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMagneticResonanceImagingOfBrainAndBrainStem_ = "29567006";
 
     /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfBrainAndBrainStem_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfBrainAndBrainStem_ = "http://snomed.info/sct#29567006";
+
+    /// <summary>
     /// Literal for code: RadiographyOfShoulder_
     /// </summary>
     public const string LiteralRadiographyOfShoulder_ = "29592009";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfShoulder_
+    /// </summary>
+    public const string LiteralNONERadiographyOfShoulder_ = "http://snomed.info/sct#29592009";
 
     /// <summary>
     /// Literal for code: XenonFlowScanOfCardiovascularSystem_
@@ -11150,9 +13210,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralXenonFlowScanOfCardiovascularSystem_ = "29845000";
 
     /// <summary>
+    /// Literal for code: NONEXenonFlowScanOfCardiovascularSystem_
+    /// </summary>
+    public const string LiteralNONEXenonFlowScanOfCardiovascularSystem_ = "http://snomed.info/sct#29845000";
+
+    /// <summary>
     /// Literal for code: EchographyScanBModeForPlacementOfRadiationFields_
     /// </summary>
     public const string LiteralEchographyScanBModeForPlacementOfRadiationFields_ = "29967000";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyScanBModeForPlacementOfRadiationFields_
+    /// </summary>
+    public const string LiteralNONEEchographyScanBModeForPlacementOfRadiationFields_ = "http://snomed.info/sct#29967000";
 
     /// <summary>
     /// Literal for code: UltrasonographyOfAorticArch_
@@ -11160,9 +13230,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonographyOfAorticArch_ = "30353000";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonographyOfAorticArch_
+    /// </summary>
+    public const string LiteralNONEUltrasonographyOfAorticArch_ = "http://snomed.info/sct#30353000";
+
+    /// <summary>
     /// Literal for code: VenographyOfInferiorVenaCavaWithSerialography_
     /// </summary>
     public const string LiteralVenographyOfInferiorVenaCavaWithSerialography_ = "30439001";
+
+    /// <summary>
+    /// Literal for code: NONEVenographyOfInferiorVenaCavaWithSerialography_
+    /// </summary>
+    public const string LiteralNONEVenographyOfInferiorVenaCavaWithSerialography_ = "http://snomed.info/sct#30439001";
 
     /// <summary>
     /// Literal for code: EchographyOfBreastBScan_
@@ -11170,9 +13250,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchographyOfBreastBScan_ = "30462004";
 
     /// <summary>
+    /// Literal for code: NONEEchographyOfBreastBScan_
+    /// </summary>
+    public const string LiteralNONEEchographyOfBreastBScan_ = "http://snomed.info/sct#30462004";
+
+    /// <summary>
     /// Literal for code: KowaFundusPhotography_
     /// </summary>
     public const string LiteralKowaFundusPhotography_ = "3047001";
+
+    /// <summary>
+    /// Literal for code: NONEKowaFundusPhotography_
+    /// </summary>
+    public const string LiteralNONEKowaFundusPhotography_ = "http://snomed.info/sct#3047001";
 
     /// <summary>
     /// Literal for code: RadiologicExaminationOfKneeAnteroposteriorAndLateralViews_
@@ -11180,9 +13270,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicExaminationOfKneeAnteroposteriorAndLateralViews_ = "30536006";
 
     /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfKneeAnteroposteriorAndLateralViews_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfKneeAnteroposteriorAndLateralViews_ = "http://snomed.info/sct#30536006";
+
+    /// <summary>
     /// Literal for code: EchographyOfKidney_
     /// </summary>
     public const string LiteralEchographyOfKidney_ = "306005";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyOfKidney_
+    /// </summary>
+    public const string LiteralNONEEchographyOfKidney_ = "http://snomed.info/sct#306005";
 
     /// <summary>
     /// Literal for code: UltrasonicGuidanceForThoracentesis_
@@ -11190,9 +13290,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonicGuidanceForThoracentesis_ = "30726001";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonicGuidanceForThoracentesis_
+    /// </summary>
+    public const string LiteralNONEUltrasonicGuidanceForThoracentesis_ = "http://snomed.info/sct#30726001";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyWithMeasurements_
     /// </summary>
     public const string LiteralDiagnosticRadiographyWithMeasurements_ = "30788002";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyWithMeasurements_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyWithMeasurements_ = "http://snomed.info/sct#30788002";
 
     /// <summary>
     /// Literal for code: OphthalmoscopyWithMedicalEvaluationExtendedWithFundusPhotography_
@@ -11200,9 +13310,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOphthalmoscopyWithMedicalEvaluationExtendedWithFundusPhotography_ = "30842004";
 
     /// <summary>
+    /// Literal for code: NONEOphthalmoscopyWithMedicalEvaluationExtendedWithFundusPhotography_
+    /// </summary>
+    public const string LiteralNONEOphthalmoscopyWithMedicalEvaluationExtendedWithFundusPhotography_ = "http://snomed.info/sct#30842004";
+
+    /// <summary>
     /// Literal for code: RadionuclideVenousThrombosisStudy_
     /// </summary>
     public const string LiteralRadionuclideVenousThrombosisStudy_ = "30918004";
+
+    /// <summary>
+    /// Literal for code: NONERadionuclideVenousThrombosisStudy_
+    /// </summary>
+    public const string LiteralNONERadionuclideVenousThrombosisStudy_ = "http://snomed.info/sct#30918004";
 
     /// <summary>
     /// Literal for code: MagneticResonanceImagingOfOrbit_
@@ -11210,9 +13330,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMagneticResonanceImagingOfOrbit_ = "30957007";
 
     /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfOrbit_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfOrbit_ = "http://snomed.info/sct#30957007";
+
+    /// <summary>
     /// Literal for code: PeripheralThermogram_
     /// </summary>
     public const string LiteralPeripheralThermogram_ = "31157004";
+
+    /// <summary>
+    /// Literal for code: NONEPeripheralThermogram_
+    /// </summary>
+    public const string LiteralNONEPeripheralThermogram_ = "http://snomed.info/sct#31157004";
 
     /// <summary>
     /// Literal for code: AngiographyOfUpperExtremityArteriesWithSerialography_
@@ -11220,9 +13350,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngiographyOfUpperExtremityArteriesWithSerialography_ = "31643000";
 
     /// <summary>
+    /// Literal for code: NONEAngiographyOfUpperExtremityArteriesWithSerialography_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfUpperExtremityArteriesWithSerialography_ = "http://snomed.info/sct#31643000";
+
+    /// <summary>
     /// Literal for code: RetroperitonealEchographyBScanComplete_
     /// </summary>
     public const string LiteralRetroperitonealEchographyBScanComplete_ = "31683008";
+
+    /// <summary>
+    /// Literal for code: NONERetroperitonealEchographyBScanComplete_
+    /// </summary>
+    public const string LiteralNONERetroperitonealEchographyBScanComplete_ = "http://snomed.info/sct#31683008";
 
     /// <summary>
     /// Literal for code: SelectiveAngiocardiography_
@@ -11230,9 +13370,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSelectiveAngiocardiography_ = "31800006";
 
     /// <summary>
+    /// Literal for code: NONESelectiveAngiocardiography_
+    /// </summary>
+    public const string LiteralNONESelectiveAngiocardiography_ = "http://snomed.info/sct#31800006";
+
+    /// <summary>
     /// Literal for code: RadiographyOfKidneyUreterBladder_
     /// </summary>
     public const string LiteralRadiographyOfKidneyUreterBladder_ = "31911002";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfKidneyUreterBladder_
+    /// </summary>
+    public const string LiteralNONERadiographyOfKidneyUreterBladder_ = "http://snomed.info/sct#31911002";
 
     /// <summary>
     /// Literal for code: RadiographyOfSupraorbitalArea_
@@ -11240,9 +13390,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfSupraorbitalArea_ = "31931003";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfSupraorbitalArea_
+    /// </summary>
+    public const string LiteralNONERadiographyOfSupraorbitalArea_ = "http://snomed.info/sct#31931003";
+
+    /// <summary>
     /// Literal for code: PulmonaryPerfusionImagingParticulate_
     /// </summary>
     public const string LiteralPulmonaryPerfusionImagingParticulate_ = "31962004";
+
+    /// <summary>
+    /// Literal for code: NONEPulmonaryPerfusionImagingParticulate_
+    /// </summary>
+    public const string LiteralNONEPulmonaryPerfusionImagingParticulate_ = "http://snomed.info/sct#31962004";
 
     /// <summary>
     /// Literal for code: EchographyScanBModeForFetalGrowthRate_
@@ -11250,9 +13410,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchographyScanBModeForFetalGrowthRate_ = "31998007";
 
     /// <summary>
+    /// Literal for code: NONEEchographyScanBModeForFetalGrowthRate_
+    /// </summary>
+    public const string LiteralNONEEchographyScanBModeForFetalGrowthRate_ = "http://snomed.info/sct#31998007";
+
+    /// <summary>
     /// Literal for code: RadioisotopeScanOfHead_
     /// </summary>
     public const string LiteralRadioisotopeScanOfHead_ = "32012009";
+
+    /// <summary>
+    /// Literal for code: NONERadioisotopeScanOfHead_
+    /// </summary>
+    public const string LiteralNONERadioisotopeScanOfHead_ = "http://snomed.info/sct#32012009";
 
     /// <summary>
     /// Literal for code: IntravenousPyelogram_
@@ -11260,9 +13430,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntravenousPyelogram_ = "32265006";
 
     /// <summary>
+    /// Literal for code: NONEIntravenousPyelogram_
+    /// </summary>
+    public const string LiteralNONEIntravenousPyelogram_ = "http://snomed.info/sct#32265006";
+
+    /// <summary>
     /// Literal for code: BrainImagingWithVascularFlow_
     /// </summary>
     public const string LiteralBrainImagingWithVascularFlow_ = "32289004";
+
+    /// <summary>
+    /// Literal for code: NONEBrainImagingWithVascularFlow_
+    /// </summary>
+    public const string LiteralNONEBrainImagingWithVascularFlow_ = "http://snomed.info/sct#32289004";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyDuringOperativeProcedure_
@@ -11270,9 +13450,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyDuringOperativeProcedure_ = "32328007";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyDuringOperativeProcedure_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyDuringOperativeProcedure_ = "http://snomed.info/sct#32328007";
+
+    /// <summary>
     /// Literal for code: GastrointestinalIsotopeFatAbsorptionStudy_
     /// </summary>
     public const string LiteralGastrointestinalIsotopeFatAbsorptionStudy_ = "32345002";
+
+    /// <summary>
+    /// Literal for code: NONEGastrointestinalIsotopeFatAbsorptionStudy_
+    /// </summary>
+    public const string LiteralNONEGastrointestinalIsotopeFatAbsorptionStudy_ = "http://snomed.info/sct#32345002";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyStereo_
@@ -11280,9 +13470,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyStereo_ = "32366005";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyStereo_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyStereo_ = "http://snomed.info/sct#32366005";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyAnteroposteriorAP_
     /// </summary>
     public const string LiteralDiagnosticRadiographyAnteroposteriorAP_ = "32535000";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyAnteroposteriorAP_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyAnteroposteriorAP_ = "http://snomed.info/sct#32535000";
 
     /// <summary>
     /// Literal for code: CervicalLymphangiogram_
@@ -11290,9 +13490,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCervicalLymphangiogram_ = "3256004";
 
     /// <summary>
+    /// Literal for code: NONECervicalLymphangiogram_
+    /// </summary>
+    public const string LiteralNONECervicalLymphangiogram_ = "http://snomed.info/sct#3256004";
+
+    /// <summary>
     /// Literal for code: ArteriographyOfCerebralArteries_
     /// </summary>
     public const string LiteralArteriographyOfCerebralArteries_ = "3258003";
+
+    /// <summary>
+    /// Literal for code: NONEArteriographyOfCerebralArteries_
+    /// </summary>
+    public const string LiteralNONEArteriographyOfCerebralArteries_ = "http://snomed.info/sct#3258003";
 
     /// <summary>
     /// Literal for code: ThyroidUptakeWithThyroidSuppression_
@@ -11300,9 +13510,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThyroidUptakeWithThyroidSuppression_ = "32729002";
 
     /// <summary>
+    /// Literal for code: NONEThyroidUptakeWithThyroidSuppression_
+    /// </summary>
+    public const string LiteralNONEThyroidUptakeWithThyroidSuppression_ = "http://snomed.info/sct#32729002";
+
+    /// <summary>
     /// Literal for code: ComputerizedTomographyOfAbdomenWithContrast_
     /// </summary>
     public const string LiteralComputerizedTomographyOfAbdomenWithContrast_ = "32962002";
+
+    /// <summary>
+    /// Literal for code: NONEComputerizedTomographyOfAbdomenWithContrast_
+    /// </summary>
+    public const string LiteralNONEComputerizedTomographyOfAbdomenWithContrast_ = "http://snomed.info/sct#32962002";
 
     /// <summary>
     /// Literal for code: OrbitalVenography_
@@ -11310,9 +13530,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOrbitalVenography_ = "33085008";
 
     /// <summary>
+    /// Literal for code: NONEOrbitalVenography_
+    /// </summary>
+    public const string LiteralNONEOrbitalVenography_ = "http://snomed.info/sct#33085008";
+
+    /// <summary>
     /// Literal for code: Arthrography_
     /// </summary>
     public const string LiteralArthrography_ = "33148003";
+
+    /// <summary>
+    /// Literal for code: NONEArthrography_
+    /// </summary>
+    public const string LiteralNONEArthrography_ = "http://snomed.info/sct#33148003";
 
     /// <summary>
     /// Literal for code: XRayOfRibsSternumAndClavicle_
@@ -11320,9 +13550,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralXRayOfRibsSternumAndClavicle_ = "33202000";
 
     /// <summary>
+    /// Literal for code: NONEXRayOfRibsSternumAndClavicle_
+    /// </summary>
+    public const string LiteralNONEXRayOfRibsSternumAndClavicle_ = "http://snomed.info/sct#33202000";
+
+    /// <summary>
     /// Literal for code: RoentgenographyNegativeContrast_
     /// </summary>
     public const string LiteralRoentgenographyNegativeContrast_ = "33357000";
+
+    /// <summary>
+    /// Literal for code: NONERoentgenographyNegativeContrast_
+    /// </summary>
+    public const string LiteralNONERoentgenographyNegativeContrast_ = "http://snomed.info/sct#33357000";
 
     /// <summary>
     /// Literal for code: CoronaryAngiography_
@@ -11330,9 +13570,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCoronaryAngiography_ = "33367005";
 
     /// <summary>
+    /// Literal for code: NONECoronaryAngiography_
+    /// </summary>
+    public const string LiteralNONECoronaryAngiography_ = "http://snomed.info/sct#33367005";
+
+    /// <summary>
     /// Literal for code: PanorexExaminationOfMandible_
     /// </summary>
     public const string LiteralPanorexExaminationOfMandible_ = "334003";
+
+    /// <summary>
+    /// Literal for code: NONEPanorexExaminationOfMandible_
+    /// </summary>
+    public const string LiteralNONEPanorexExaminationOfMandible_ = "http://snomed.info/sct#334003";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyWithSpecialStudy_
@@ -11340,9 +13590,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyWithSpecialStudy_ = "33450004";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyWithSpecialStudy_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyWithSpecialStudy_ = "http://snomed.info/sct#33450004";
+
+    /// <summary>
     /// Literal for code: RadionuclideScanningForColdSpot_
     /// </summary>
     public const string LiteralRadionuclideScanningForColdSpot_ = "33460008";
+
+    /// <summary>
+    /// Literal for code: NONERadionuclideScanningForColdSpot_
+    /// </summary>
+    public const string LiteralNONERadionuclideScanningForColdSpot_ = "http://snomed.info/sct#33460008";
 
     /// <summary>
     /// Literal for code: UltrasonicGuidanceForAspirationOfCyst_
@@ -11350,9 +13610,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonicGuidanceForAspirationOfCyst_ = "33527008";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonicGuidanceForAspirationOfCyst_
+    /// </summary>
+    public const string LiteralNONEUltrasonicGuidanceForAspirationOfCyst_ = "http://snomed.info/sct#33527008";
+
+    /// <summary>
     /// Literal for code: IsotopeStudyOfBloodVolume_
     /// </summary>
     public const string LiteralIsotopeStudyOfBloodVolume_ = "33677003";
+
+    /// <summary>
+    /// Literal for code: NONEIsotopeStudyOfBloodVolume_
+    /// </summary>
+    public const string LiteralNONEIsotopeStudyOfBloodVolume_ = "http://snomed.info/sct#33677003";
 
     /// <summary>
     /// Literal for code: ComputerizedAxialTomographyOfBrain_
@@ -11360,9 +13630,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedAxialTomographyOfBrain_ = "34227000";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedAxialTomographyOfBrain_
+    /// </summary>
+    public const string LiteralNONEComputerizedAxialTomographyOfBrain_ = "http://snomed.info/sct#34227000";
+
+    /// <summary>
     /// Literal for code: Epididymography_
     /// </summary>
     public const string LiteralEpididymography_ = "34616009";
+
+    /// <summary>
+    /// Literal for code: NONEEpididymography_
+    /// </summary>
+    public const string LiteralNONEEpididymography_ = "http://snomed.info/sct#34616009";
 
     /// <summary>
     /// Literal for code: RadiographyOfEsophagus_
@@ -11370,9 +13650,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfEsophagus_ = "34885003";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfEsophagus_
+    /// </summary>
+    public const string LiteralNONERadiographyOfEsophagus_ = "http://snomed.info/sct#34885003";
+
+    /// <summary>
     /// Literal for code: Angiocardiography_
     /// </summary>
     public const string LiteralAngiocardiography_ = "34945008";
+
+    /// <summary>
+    /// Literal for code: NONEAngiocardiography_
+    /// </summary>
+    public const string LiteralNONEAngiocardiography_ = "http://snomed.info/sct#34945008";
 
     /// <summary>
     /// Literal for code: AngiographyOfArteriesOfExtremity_
@@ -11380,9 +13670,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngiographyOfArteriesOfExtremity_ = "3512003";
 
     /// <summary>
+    /// Literal for code: NONEAngiographyOfArteriesOfExtremity_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfArteriesOfExtremity_ = "http://snomed.info/sct#3512003";
+
+    /// <summary>
     /// Literal for code: PeritonealVenousShuntPatencyTestForLeveenShunt_
     /// </summary>
     public const string LiteralPeritonealVenousShuntPatencyTestForLeveenShunt_ = "35198004";
+
+    /// <summary>
+    /// Literal for code: NONEPeritonealVenousShuntPatencyTestForLeveenShunt_
+    /// </summary>
+    public const string LiteralNONEPeritonealVenousShuntPatencyTestForLeveenShunt_ = "http://snomed.info/sct#35198004";
 
     /// <summary>
     /// Literal for code: ScanningOrImagingWithVascularFlow_
@@ -11390,9 +13690,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralScanningOrImagingWithVascularFlow_ = "35202002";
 
     /// <summary>
+    /// Literal for code: NONEScanningOrImagingWithVascularFlow_
+    /// </summary>
+    public const string LiteralNONEScanningOrImagingWithVascularFlow_ = "http://snomed.info/sct#35202002";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingOfFace_
     /// </summary>
     public const string LiteralMagneticResonanceImagingOfFace_ = "35249003";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfFace_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfFace_ = "http://snomed.info/sct#35249003";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfThoracolumbarSpineSupineAndErectForScoliosis_
@@ -11400,9 +13710,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfThoracolumbarSpineSupineAndErectForScoliosis_ = "35443000";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfThoracolumbarSpineSupineAndErectForScoliosis_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfThoracolumbarSpineSupineAndErectForScoliosis_ = "http://snomed.info/sct#35443000";
+
+    /// <summary>
     /// Literal for code: DiagnosticDentalPhotography_
     /// </summary>
     public const string LiteralDiagnosticDentalPhotography_ = "35492006";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticDentalPhotography_
+    /// </summary>
+    public const string LiteralNONEDiagnosticDentalPhotography_ = "http://snomed.info/sct#35492006";
 
     /// <summary>
     /// Literal for code: CardiacBloodPoolImaging_
@@ -11410,9 +13730,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCardiacBloodPoolImaging_ = "35621002";
 
     /// <summary>
+    /// Literal for code: NONECardiacBloodPoolImaging_
+    /// </summary>
+    public const string LiteralNONECardiacBloodPoolImaging_ = "http://snomed.info/sct#35621002";
+
+    /// <summary>
     /// Literal for code: EchocardiographyForDeterminingVentricularContraction_
     /// </summary>
     public const string LiteralEchocardiographyForDeterminingVentricularContraction_ = "35757004";
+
+    /// <summary>
+    /// Literal for code: NONEEchocardiographyForDeterminingVentricularContraction_
+    /// </summary>
+    public const string LiteralNONEEchocardiographyForDeterminingVentricularContraction_ = "http://snomed.info/sct#35757004";
 
     /// <summary>
     /// Literal for code: DiagnosticTomography_
@@ -11420,9 +13750,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticTomography_ = "36004004";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticTomography_
+    /// </summary>
+    public const string LiteralNONEDiagnosticTomography_ = "http://snomed.info/sct#36004004";
+
+    /// <summary>
     /// Literal for code: RedCellSurvivalStudyWithHepaticSequestration_
     /// </summary>
     public const string LiteralRedCellSurvivalStudyWithHepaticSequestration_ = "3620007";
+
+    /// <summary>
+    /// Literal for code: NONERedCellSurvivalStudyWithHepaticSequestration_
+    /// </summary>
+    public const string LiteralNONERedCellSurvivalStudyWithHepaticSequestration_ = "http://snomed.info/sct#3620007";
 
     /// <summary>
     /// Literal for code: GastrointestinalBloodLossStudyByStoolCounting_
@@ -11430,9 +13770,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGastrointestinalBloodLossStudyByStoolCounting_ = "36624001";
 
     /// <summary>
+    /// Literal for code: NONEGastrointestinalBloodLossStudyByStoolCounting_
+    /// </summary>
+    public const string LiteralNONEGastrointestinalBloodLossStudyByStoolCounting_ = "http://snomed.info/sct#36624001";
+
+    /// <summary>
     /// Literal for code: EchoencephalographyAMode_
     /// </summary>
     public const string LiteralEchoencephalographyAMode_ = "36870006";
+
+    /// <summary>
+    /// Literal for code: NONEEchoencephalographyAMode_
+    /// </summary>
+    public const string LiteralNONEEchoencephalographyAMode_ = "http://snomed.info/sct#36870006";
 
     /// <summary>
     /// Literal for code: IntraAbdominalPhlebography_
@@ -11440,9 +13790,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntraAbdominalPhlebography_ = "36960008";
 
     /// <summary>
+    /// Literal for code: NONEIntraAbdominalPhlebography_
+    /// </summary>
+    public const string LiteralNONEIntraAbdominalPhlebography_ = "http://snomed.info/sct#36960008";
+
+    /// <summary>
     /// Literal for code: Placentography_
     /// </summary>
     public const string LiteralPlacentography_ = "37090007";
+
+    /// <summary>
+    /// Literal for code: NONEPlacentography_
+    /// </summary>
+    public const string LiteralNONEPlacentography_ = "http://snomed.info/sct#37090007";
 
     /// <summary>
     /// Literal for code: RadiographyOfNasopharynx_
@@ -11450,9 +13810,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfNasopharynx_ = "37307009";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfNasopharynx_
+    /// </summary>
+    public const string LiteralNONERadiographyOfNasopharynx_ = "http://snomed.info/sct#37307009";
+
+    /// <summary>
     /// Literal for code: ExternalOcularPhotographyForMedicalEvaluationAndDocumentation_
     /// </summary>
     public const string LiteralExternalOcularPhotographyForMedicalEvaluationAndDocumentation_ = "37312005";
+
+    /// <summary>
+    /// Literal for code: NONEExternalOcularPhotographyForMedicalEvaluationAndDocumentation_
+    /// </summary>
+    public const string LiteralNONEExternalOcularPhotographyForMedicalEvaluationAndDocumentation_ = "http://snomed.info/sct#37312005";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyWithContrastMediaByInjectionPositiveContrast_
@@ -11460,9 +13830,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyWithContrastMediaByInjectionPositiveContrast_ = "37348007";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyWithContrastMediaByInjectionPositiveContrast_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyWithContrastMediaByInjectionPositiveContrast_ = "http://snomed.info/sct#37348007";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfUpperGastrointestinalTractWithSerialFilms_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfUpperGastrointestinalTractWithSerialFilms_ = "37385004";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfUpperGastrointestinalTractWithSerialFilms_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfUpperGastrointestinalTractWithSerialFilms_ = "http://snomed.info/sct#37385004";
 
     /// <summary>
     /// Literal for code: SphincterotomyOfSphincterOfOddiByERCP_
@@ -11470,9 +13850,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSphincterotomyOfSphincterOfOddiByERCP_ = "37403009";
 
     /// <summary>
+    /// Literal for code: NONESphincterotomyOfSphincterOfOddiByERCP_
+    /// </summary>
+    public const string LiteralNONESphincterotomyOfSphincterOfOddiByERCP_ = "http://snomed.info/sct#37403009";
+
+    /// <summary>
     /// Literal for code: LiverAndSpleenImaging_
     /// </summary>
     public const string LiteralLiverAndSpleenImaging_ = "37537004";
+
+    /// <summary>
+    /// Literal for code: NONELiverAndSpleenImaging_
+    /// </summary>
+    public const string LiteralNONELiverAndSpleenImaging_ = "http://snomed.info/sct#37537004";
 
     /// <summary>
     /// Literal for code: RadiographyOfRetroperitoneum_
@@ -11480,9 +13870,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfRetroperitoneum_ = "37541000";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfRetroperitoneum_
+    /// </summary>
+    public const string LiteralNONERadiographyOfRetroperitoneum_ = "http://snomed.info/sct#37541000";
+
+    /// <summary>
     /// Literal for code: RadiographyOfRootCanal_
     /// </summary>
     public const string LiteralRadiographyOfRootCanal_ = "37603004";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfRootCanal_
+    /// </summary>
+    public const string LiteralNONERadiographyOfRootCanal_ = "http://snomed.info/sct#37603004";
 
     /// <summary>
     /// Literal for code: RadionuclideStudyOfCoronaryBloodFlow_
@@ -11490,9 +13890,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadionuclideStudyOfCoronaryBloodFlow_ = "37707006";
 
     /// <summary>
+    /// Literal for code: NONERadionuclideStudyOfCoronaryBloodFlow_
+    /// </summary>
+    public const string LiteralNONERadionuclideStudyOfCoronaryBloodFlow_ = "http://snomed.info/sct#37707006";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfCalcaneus_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfCalcaneus_ = "37815002";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfCalcaneus_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfCalcaneus_ = "http://snomed.info/sct#37815002";
 
     /// <summary>
     /// Literal for code: PulmonaryVentilationPerfusionStudy_
@@ -11500,9 +13910,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPulmonaryVentilationPerfusionStudy_ = "37859006";
 
     /// <summary>
+    /// Literal for code: NONEPulmonaryVentilationPerfusionStudy_
+    /// </summary>
+    public const string LiteralNONEPulmonaryVentilationPerfusionStudy_ = "http://snomed.info/sct#37859006";
+
+    /// <summary>
     /// Literal for code: UltrasonicGuidanceForNeedleBiopsy_
     /// </summary>
     public const string LiteralUltrasonicGuidanceForNeedleBiopsy_ = "3787003";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasonicGuidanceForNeedleBiopsy_
+    /// </summary>
+    public const string LiteralNONEUltrasonicGuidanceForNeedleBiopsy_ = "http://snomed.info/sct#3787003";
 
     /// <summary>
     /// Literal for code: RadiographyOfAdenoids_
@@ -11510,9 +13930,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfAdenoids_ = "3799005";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfAdenoids_
+    /// </summary>
+    public const string LiteralNONERadiographyOfAdenoids_ = "http://snomed.info/sct#3799005";
+
+    /// <summary>
     /// Literal for code: CervicalDiscography_
     /// </summary>
     public const string LiteralCervicalDiscography_ = "38172006";
+
+    /// <summary>
+    /// Literal for code: NONECervicalDiscography_
+    /// </summary>
+    public const string LiteralNONECervicalDiscography_ = "http://snomed.info/sct#38172006";
 
     /// <summary>
     /// Literal for code: SoftTissueXRayOfChestWall_
@@ -11520,9 +13950,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSoftTissueXRayOfChestWall_ = "38336006";
 
     /// <summary>
+    /// Literal for code: NONESoftTissueXRayOfChestWall_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayOfChestWall_ = "http://snomed.info/sct#38336006";
+
+    /// <summary>
     /// Literal for code: VenographyOfUpperExtremity_
     /// </summary>
     public const string LiteralVenographyOfUpperExtremity_ = "38356007";
+
+    /// <summary>
+    /// Literal for code: NONEVenographyOfUpperExtremity_
+    /// </summary>
+    public const string LiteralNONEVenographyOfUpperExtremity_ = "http://snomed.info/sct#38356007";
 
     /// <summary>
     /// Literal for code: RadiographyOfSoftTissueOfKnee_
@@ -11530,9 +13970,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfSoftTissueOfKnee_ = "38366004";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfSoftTissueOfKnee_
+    /// </summary>
+    public const string LiteralNONERadiographyOfSoftTissueOfKnee_ = "http://snomed.info/sct#38366004";
+
+    /// <summary>
     /// Literal for code: EchographyOfThyroidAMode_
     /// </summary>
     public const string LiteralEchographyOfThyroidAMode_ = "3858009";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyOfThyroidAMode_
+    /// </summary>
+    public const string LiteralNONEEchographyOfThyroidAMode_ = "http://snomed.info/sct#3858009";
 
     /// <summary>
     /// Literal for code: KidneyImagingSPECTTechnique_
@@ -11540,9 +13990,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKidneyImagingSPECTTechnique_ = "38644000";
 
     /// <summary>
+    /// Literal for code: NONEKidneyImagingSPECTTechnique_
+    /// </summary>
+    public const string LiteralNONEKidneyImagingSPECTTechnique_ = "http://snomed.info/sct#38644000";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyFlexionAndOrExtensionStudies_
     /// </summary>
     public const string LiteralDiagnosticRadiographyFlexionAndOrExtensionStudies_ = "38769008";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyFlexionAndOrExtensionStudies_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyFlexionAndOrExtensionStudies_ = "http://snomed.info/sct#38769008";
 
     /// <summary>
     /// Literal for code: FluoroscopyOfChest_
@@ -11550,9 +14010,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyOfChest_ = "38930009";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyOfChest_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyOfChest_ = "http://snomed.info/sct#38930009";
+
+    /// <summary>
     /// Literal for code: OralContrastCholangiography_
     /// </summary>
     public const string LiteralOralContrastCholangiography_ = "39305005";
+
+    /// <summary>
+    /// Literal for code: NONEOralContrastCholangiography_
+    /// </summary>
+    public const string LiteralNONEOralContrastCholangiography_ = "http://snomed.info/sct#39305005";
 
     /// <summary>
     /// Literal for code: ThyroidImaging_
@@ -11560,9 +14030,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThyroidImaging_ = "39500001";
 
     /// <summary>
+    /// Literal for code: NONEThyroidImaging_
+    /// </summary>
+    public const string LiteralNONEThyroidImaging_ = "http://snomed.info/sct#39500001";
+
+    /// <summary>
     /// Literal for code: SkeletalXRayOfWristAndHand_
     /// </summary>
     public const string LiteralSkeletalXRayOfWristAndHand_ = "39714003";
+
+    /// <summary>
+    /// Literal for code: NONESkeletalXRayOfWristAndHand_
+    /// </summary>
+    public const string LiteralNONESkeletalXRayOfWristAndHand_ = "http://snomed.info/sct#39714003";
 
     /// <summary>
     /// Literal for code: ImagingOfArteriesOfLowerExtremities_
@@ -11570,9 +14050,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImagingOfArteriesOfLowerExtremities_ = "39856007";
 
     /// <summary>
+    /// Literal for code: NONEImagingOfArteriesOfLowerExtremities_
+    /// </summary>
+    public const string LiteralNONEImagingOfArteriesOfLowerExtremities_ = "http://snomed.info/sct#39856007";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingOfPelvisProstateAndBladder_
     /// </summary>
     public const string LiteralMagneticResonanceImagingOfPelvisProstateAndBladder_ = "3991004";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfPelvisProstateAndBladder_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfPelvisProstateAndBladder_ = "http://snomed.info/sct#3991004";
 
     /// <summary>
     /// Literal for code: BoneImagingOfLimitedArea_
@@ -11580,9 +14070,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBoneImagingOfLimitedArea_ = "3998005";
 
     /// <summary>
+    /// Literal for code: NONEBoneImagingOfLimitedArea_
+    /// </summary>
+    public const string LiteralNONEBoneImagingOfLimitedArea_ = "http://snomed.info/sct#3998005";
+
+    /// <summary>
     /// Literal for code: Plethysmometry_
     /// </summary>
     public const string LiteralPlethysmometry_ = "40008005";
+
+    /// <summary>
+    /// Literal for code: NONEPlethysmometry_
+    /// </summary>
+    public const string LiteralNONEPlethysmometry_ = "http://snomed.info/sct#40008005";
 
     /// <summary>
     /// Literal for code: SoftTissueXRayOfFaceHeadANDNeck_
@@ -11590,9 +14090,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSoftTissueXRayOfFaceHeadANDNeck_ = "40064005";
 
     /// <summary>
+    /// Literal for code: NONESoftTissueXRayOfFaceHeadANDNeck_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayOfFaceHeadANDNeck_ = "http://snomed.info/sct#40064005";
+
+    /// <summary>
     /// Literal for code: PhlebographyOfNeck_
     /// </summary>
     public const string LiteralPhlebographyOfNeck_ = "4008007";
+
+    /// <summary>
+    /// Literal for code: NONEPhlebographyOfNeck_
+    /// </summary>
+    public const string LiteralNONEPhlebographyOfNeck_ = "http://snomed.info/sct#4008007";
 
     /// <summary>
     /// Literal for code: BowelImagingForVolvulus_
@@ -11600,9 +14110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBowelImagingForVolvulus_ = "40228004";
 
     /// <summary>
+    /// Literal for code: NONEBowelImagingForVolvulus_
+    /// </summary>
+    public const string LiteralNONEBowelImagingForVolvulus_ = "http://snomed.info/sct#40228004";
+
+    /// <summary>
     /// Literal for code: SkeletalXRayOfPelvisAndHip_
     /// </summary>
     public const string LiteralSkeletalXRayOfPelvisAndHip_ = "40348008";
+
+    /// <summary>
+    /// Literal for code: NONESkeletalXRayOfPelvisAndHip_
+    /// </summary>
+    public const string LiteralNONESkeletalXRayOfPelvisAndHip_ = "http://snomed.info/sct#40348008";
 
     /// <summary>
     /// Literal for code: EchocardiographyForDeterminingMitralAndTricuspidValveMotion_
@@ -11610,9 +14130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchocardiographyForDeterminingMitralAndTricuspidValveMotion_ = "40357002";
 
     /// <summary>
+    /// Literal for code: NONEEchocardiographyForDeterminingMitralAndTricuspidValveMotion_
+    /// </summary>
+    public const string LiteralNONEEchocardiographyForDeterminingMitralAndTricuspidValveMotion_ = "http://snomed.info/sct#40357002";
+
+    /// <summary>
     /// Literal for code: UltrasonographyForMidlineShiftOfBrain_
     /// </summary>
     public const string LiteralUltrasonographyForMidlineShiftOfBrain_ = "40371005";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasonographyForMidlineShiftOfBrain_
+    /// </summary>
+    public const string LiteralNONEUltrasonographyForMidlineShiftOfBrain_ = "http://snomed.info/sct#40371005";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfTemporomandibularJoint_
@@ -11620,9 +14150,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfTemporomandibularJoint_ = "40372003";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfTemporomandibularJoint_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfTemporomandibularJoint_ = "http://snomed.info/sct#40372003";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfFistulaOrSinusTractPositiveContrast_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfFistulaOrSinusTractPositiveContrast_ = "40502003";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfFistulaOrSinusTractPositiveContrast_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfFistulaOrSinusTractPositiveContrast_ = "http://snomed.info/sct#40502003";
 
     /// <summary>
     /// Literal for code: Thermography_
@@ -11630,9 +14170,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThermography_ = "40538005";
 
     /// <summary>
+    /// Literal for code: NONEThermography_
+    /// </summary>
+    public const string LiteralNONEThermography_ = "http://snomed.info/sct#40538005";
+
+    /// <summary>
     /// Literal for code: Echocardiography_
     /// </summary>
     public const string LiteralEchocardiography_ = "40701008";
+
+    /// <summary>
+    /// Literal for code: NONEEchocardiography_
+    /// </summary>
+    public const string LiteralNONEEchocardiography_ = "http://snomed.info/sct#40701008";
 
     /// <summary>
     /// Literal for code: SpecialUltrasonicDisplayOrImagingTechnique_
@@ -11640,9 +14190,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpecialUltrasonicDisplayOrImagingTechnique_ = "40892001";
 
     /// <summary>
+    /// Literal for code: NONESpecialUltrasonicDisplayOrImagingTechnique_
+    /// </summary>
+    public const string LiteralNONESpecialUltrasonicDisplayOrImagingTechnique_ = "http://snomed.info/sct#40892001";
+
+    /// <summary>
     /// Literal for code: EchographyAModeWithAmplitudeQuantitation_
     /// </summary>
     public const string LiteralEchographyAModeWithAmplitudeQuantitation_ = "41051004";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyAModeWithAmplitudeQuantitation_
+    /// </summary>
+    public const string LiteralNONEEchographyAModeWithAmplitudeQuantitation_ = "http://snomed.info/sct#41051004";
 
     /// <summary>
     /// Literal for code: TranscatheterTherapyForEmbolizationWithAngiography_
@@ -11650,9 +14210,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTranscatheterTherapyForEmbolizationWithAngiography_ = "41209002";
 
     /// <summary>
+    /// Literal for code: NONETranscatheterTherapyForEmbolizationWithAngiography_
+    /// </summary>
+    public const string LiteralNONETranscatheterTherapyForEmbolizationWithAngiography_ = "http://snomed.info/sct#41209002";
+
+    /// <summary>
     /// Literal for code: DiagnosticDopplerUltrasonographyOfPelvicArea_
     /// </summary>
     public const string LiteralDiagnosticDopplerUltrasonographyOfPelvicArea_ = "41260001";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticDopplerUltrasonographyOfPelvicArea_
+    /// </summary>
+    public const string LiteralNONEDiagnosticDopplerUltrasonographyOfPelvicArea_ = "http://snomed.info/sct#41260001";
 
     /// <summary>
     /// Literal for code: MagneticResonanceImagingOfLumbarSpineWithContrast_
@@ -11660,9 +14230,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMagneticResonanceImagingOfLumbarSpineWithContrast_ = "41333006";
 
     /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfLumbarSpineWithContrast_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfLumbarSpineWithContrast_ = "http://snomed.info/sct#41333006";
+
+    /// <summary>
     /// Literal for code: RadioisotopeScanForMyocardialInfarction_
     /// </summary>
     public const string LiteralRadioisotopeScanForMyocardialInfarction_ = "41380003";
+
+    /// <summary>
+    /// Literal for code: NONERadioisotopeScanForMyocardialInfarction_
+    /// </summary>
+    public const string LiteralNONERadioisotopeScanForMyocardialInfarction_ = "http://snomed.info/sct#41380003";
 
     /// <summary>
     /// Literal for code: RadiologicExaminationOfClavicleComplete_
@@ -11670,9 +14250,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicExaminationOfClavicleComplete_ = "41385008";
 
     /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfClavicleComplete_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfClavicleComplete_ = "http://snomed.info/sct#41385008";
+
+    /// <summary>
     /// Literal for code: CerebralScan_
     /// </summary>
     public const string LiteralCerebralScan_ = "41440006";
+
+    /// <summary>
+    /// Literal for code: NONECerebralScan_
+    /// </summary>
+    public const string LiteralNONECerebralScan_ = "http://snomed.info/sct#41440006";
 
     /// <summary>
     /// Literal for code: MyocardialImagingForInfarctWithEjectionFractionFirstPassTechnique_
@@ -11680,9 +14270,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMyocardialImagingForInfarctWithEjectionFractionFirstPassTechnique_ = "41466009";
 
     /// <summary>
+    /// Literal for code: NONEMyocardialImagingForInfarctWithEjectionFractionFirstPassTechnique_
+    /// </summary>
+    public const string LiteralNONEMyocardialImagingForInfarctWithEjectionFractionFirstPassTechnique_ = "http://snomed.info/sct#41466009";
+
+    /// <summary>
     /// Literal for code: OphthalmicEchographyWithAmplitudeQuantitationAMode_
     /// </summary>
     public const string LiteralOphthalmicEchographyWithAmplitudeQuantitationAMode_ = "41496004";
+
+    /// <summary>
+    /// Literal for code: NONEOphthalmicEchographyWithAmplitudeQuantitationAMode_
+    /// </summary>
+    public const string LiteralNONEOphthalmicEchographyWithAmplitudeQuantitationAMode_ = "http://snomed.info/sct#41496004";
 
     /// <summary>
     /// Literal for code: SmallBowelSeries_
@@ -11690,9 +14290,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSmallBowelSeries_ = "41500002";
 
     /// <summary>
+    /// Literal for code: NONESmallBowelSeries_
+    /// </summary>
+    public const string LiteralNONESmallBowelSeries_ = "http://snomed.info/sct#41500002";
+
+    /// <summary>
     /// Literal for code: RadioisotopeScanOfBone_
     /// </summary>
     public const string LiteralRadioisotopeScanOfBone_ = "41747008";
+
+    /// <summary>
+    /// Literal for code: NONERadioisotopeScanOfBone_
+    /// </summary>
+    public const string LiteralNONERadioisotopeScanOfBone_ = "http://snomed.info/sct#41747008";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfPharynx_
@@ -11700,9 +14310,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfPharynx_ = "41785006";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfPharynx_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfPharynx_ = "http://snomed.info/sct#41785006";
+
+    /// <summary>
     /// Literal for code: ThyroidImagingWithVascularFlow_
     /// </summary>
     public const string LiteralThyroidImagingWithVascularFlow_ = "41823007";
+
+    /// <summary>
+    /// Literal for code: NONEThyroidImagingWithVascularFlow_
+    /// </summary>
+    public const string LiteralNONEThyroidImagingWithVascularFlow_ = "http://snomed.info/sct#41823007";
 
     /// <summary>
     /// Literal for code: RadioisotopeStudyOfHematopoieticSystem_
@@ -11710,9 +14330,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadioisotopeStudyOfHematopoieticSystem_ = "41842006";
 
     /// <summary>
+    /// Literal for code: NONERadioisotopeStudyOfHematopoieticSystem_
+    /// </summary>
+    public const string LiteralNONERadioisotopeStudyOfHematopoieticSystem_ = "http://snomed.info/sct#41842006";
+
+    /// <summary>
     /// Literal for code: UltrasoundOfInnerEar_
     /// </summary>
     public const string LiteralUltrasoundOfInnerEar_ = "41913002";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasoundOfInnerEar_
+    /// </summary>
+    public const string LiteralNONEUltrasoundOfInnerEar_ = "http://snomed.info/sct#41913002";
 
     /// <summary>
     /// Literal for code: ArteriographyOfSuperiorMesentericArtery_
@@ -11720,9 +14350,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArteriographyOfSuperiorMesentericArtery_ = "42003005";
 
     /// <summary>
+    /// Literal for code: NONEArteriographyOfSuperiorMesentericArtery_
+    /// </summary>
+    public const string LiteralNONEArteriographyOfSuperiorMesentericArtery_ = "http://snomed.info/sct#42003005";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfSkull_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfSkull_ = "42075002";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfSkull_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfSkull_ = "http://snomed.info/sct#42075002";
 
     /// <summary>
     /// Literal for code: ImagingOfArteriesOfExtremities_
@@ -11730,9 +14370,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImagingOfArteriesOfExtremities_ = "42539009";
 
     /// <summary>
+    /// Literal for code: NONEImagingOfArteriesOfExtremities_
+    /// </summary>
+    public const string LiteralNONEImagingOfArteriesOfExtremities_ = "http://snomed.info/sct#42539009";
+
+    /// <summary>
     /// Literal for code: Lymphangiogram_
     /// </summary>
     public const string LiteralLymphangiogram_ = "42687005";
+
+    /// <summary>
+    /// Literal for code: NONELymphangiogram_
+    /// </summary>
+    public const string LiteralNONELymphangiogram_ = "http://snomed.info/sct#42687005";
 
     /// <summary>
     /// Literal for code: PneumographyOfRetroperitoneum_
@@ -11740,9 +14390,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPneumographyOfRetroperitoneum_ = "42705007";
 
     /// <summary>
+    /// Literal for code: NONEPneumographyOfRetroperitoneum_
+    /// </summary>
+    public const string LiteralNONEPneumographyOfRetroperitoneum_ = "http://snomed.info/sct#42705007";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfChestCombinedPAAndLateral_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfChestCombinedPAAndLateral_ = "42869005";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfChestCombinedPAAndLateral_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfChestCombinedPAAndLateral_ = "http://snomed.info/sct#42869005";
 
     /// <summary>
     /// Literal for code: CerebrospinalFluidFlowImagingForCSFLeakageDetectionAndLocalization_
@@ -11750,9 +14410,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCerebrospinalFluidFlowImagingForCSFLeakageDetectionAndLocalization_ = "42957001";
 
     /// <summary>
+    /// Literal for code: NONECerebrospinalFluidFlowImagingForCSFLeakageDetectionAndLocalization_
+    /// </summary>
+    public const string LiteralNONECerebrospinalFluidFlowImagingForCSFLeakageDetectionAndLocalization_ = "http://snomed.info/sct#42957001";
+
+    /// <summary>
     /// Literal for code: DopplerFlowMappingOfThorax_
     /// </summary>
     public const string LiteralDopplerFlowMappingOfThorax_ = "42976004";
+
+    /// <summary>
+    /// Literal for code: NONEDopplerFlowMappingOfThorax_
+    /// </summary>
+    public const string LiteralNONEDopplerFlowMappingOfThorax_ = "http://snomed.info/sct#42976004";
 
     /// <summary>
     /// Literal for code: RadionuclideDynamicFunctionStudyWithMultipleProbes_
@@ -11760,9 +14430,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadionuclideDynamicFunctionStudyWithMultipleProbes_ = "43129000";
 
     /// <summary>
+    /// Literal for code: NONERadionuclideDynamicFunctionStudyWithMultipleProbes_
+    /// </summary>
+    public const string LiteralNONERadionuclideDynamicFunctionStudyWithMultipleProbes_ = "http://snomed.info/sct#43129000";
+
+    /// <summary>
     /// Literal for code: AbdominalAortographyPositiveContrast_
     /// </summary>
     public const string LiteralAbdominalAortographyPositiveContrast_ = "43145003";
+
+    /// <summary>
+    /// Literal for code: NONEAbdominalAortographyPositiveContrast_
+    /// </summary>
+    public const string LiteralNONEAbdominalAortographyPositiveContrast_ = "http://snomed.info/sct#43145003";
 
     /// <summary>
     /// Literal for code: BilateralMammography_
@@ -11770,9 +14450,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBilateralMammography_ = "43204002";
 
     /// <summary>
+    /// Literal for code: NONEBilateralMammography_
+    /// </summary>
+    public const string LiteralNONEBilateralMammography_ = "http://snomed.info/sct#43204002";
+
+    /// <summary>
     /// Literal for code: AngiographyOfLowerExtremityArteriesBilateral_
     /// </summary>
     public const string LiteralAngiographyOfLowerExtremityArteriesBilateral_ = "4321009";
+
+    /// <summary>
+    /// Literal for code: NONEAngiographyOfLowerExtremityArteriesBilateral_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfLowerExtremityArteriesBilateral_ = "http://snomed.info/sct#4321009";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfOpticForamina_
@@ -11780,9 +14470,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfOpticForamina_ = "43255009";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfOpticForamina_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfOpticForamina_ = "http://snomed.info/sct#43255009";
+
+    /// <summary>
     /// Literal for code: EchographyMModeLimited_
     /// </summary>
     public const string LiteralEchographyMModeLimited_ = "43294005";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyMModeLimited_
+    /// </summary>
+    public const string LiteralNONEEchographyMModeLimited_ = "http://snomed.info/sct#43294005";
 
     /// <summary>
     /// Literal for code: ImpedancePhlebography_
@@ -11790,9 +14490,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImpedancePhlebography_ = "43370007";
 
     /// <summary>
+    /// Literal for code: NONEImpedancePhlebography_
+    /// </summary>
+    public const string LiteralNONEImpedancePhlebography_ = "http://snomed.info/sct#43370007";
+
+    /// <summary>
     /// Literal for code: PulmonaryInhalationStudy_
     /// </summary>
     public const string LiteralPulmonaryInhalationStudy_ = "435001";
+
+    /// <summary>
+    /// Literal for code: NONEPulmonaryInhalationStudy_
+    /// </summary>
+    public const string LiteralNONEPulmonaryInhalationStudy_ = "http://snomed.info/sct#435001";
 
     /// <summary>
     /// Literal for code: EchographyOfBreastAMode_
@@ -11800,9 +14510,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchographyOfBreastAMode_ = "43704001";
 
     /// <summary>
+    /// Literal for code: NONEEchographyOfBreastAMode_
+    /// </summary>
+    public const string LiteralNONEEchographyOfBreastAMode_ = "http://snomed.info/sct#43704001";
+
+    /// <summary>
     /// Literal for code: RadioiodinatedTrioleinStudy_
     /// </summary>
     public const string LiteralRadioiodinatedTrioleinStudy_ = "43837006";
+
+    /// <summary>
+    /// Literal for code: NONERadioiodinatedTrioleinStudy_
+    /// </summary>
+    public const string LiteralNONERadioiodinatedTrioleinStudy_ = "http://snomed.info/sct#43837006";
 
     /// <summary>
     /// Literal for code: RadiographyOfSoftTissueOfForearm_
@@ -11810,9 +14530,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfSoftTissueOfForearm_ = "43947005";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfSoftTissueOfForearm_
+    /// </summary>
+    public const string LiteralNONERadiographyOfSoftTissueOfForearm_ = "http://snomed.info/sct#43947005";
+
+    /// <summary>
     /// Literal for code: UltrasonographyOfBiliaryTract_
     /// </summary>
     public const string LiteralUltrasonographyOfBiliaryTract_ = "44052005";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasonographyOfBiliaryTract_
+    /// </summary>
+    public const string LiteralNONEUltrasonographyOfBiliaryTract_ = "http://snomed.info/sct#44052005";
 
     /// <summary>
     /// Literal for code: StereotacticExcisionalBiopsyOfIntracranialLesionWithComputerizedAxialTomography_
@@ -11820,9 +14550,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStereotacticExcisionalBiopsyOfIntracranialLesionWithComputerizedAxialTomography_ = "44260000";
 
     /// <summary>
+    /// Literal for code: NONEStereotacticExcisionalBiopsyOfIntracranialLesionWithComputerizedAxialTomography_
+    /// </summary>
+    public const string LiteralNONEStereotacticExcisionalBiopsyOfIntracranialLesionWithComputerizedAxialTomography_ = "http://snomed.info/sct#44260000";
+
+    /// <summary>
     /// Literal for code: VenographyOfVenaCava_
     /// </summary>
     public const string LiteralVenographyOfVenaCava_ = "4438009";
+
+    /// <summary>
+    /// Literal for code: NONEVenographyOfVenaCava_
+    /// </summary>
+    public const string LiteralNONEVenographyOfVenaCava_ = "http://snomed.info/sct#4438009";
 
     /// <summary>
     /// Literal for code: Fluoroscopy_
@@ -11830,9 +14570,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopy_ = "44491008";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopy_
+    /// </summary>
+    public const string LiteralNONEFluoroscopy_ = "http://snomed.info/sct#44491008";
+
+    /// <summary>
     /// Literal for code: RadiologicExaminationOfSellaTurcica_
     /// </summary>
     public const string LiteralRadiologicExaminationOfSellaTurcica_ = "44545002";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfSellaTurcica_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfSellaTurcica_ = "http://snomed.info/sct#44545002";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfMastoids_
@@ -11840,9 +14590,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfMastoids_ = "44691001";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfMastoids_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfMastoids_ = "http://snomed.info/sct#44691001";
+
+    /// <summary>
     /// Literal for code: Azygography_
     /// </summary>
     public const string LiteralAzygography_ = "44884002";
+
+    /// <summary>
+    /// Literal for code: NONEAzygography_
+    /// </summary>
+    public const string LiteralNONEAzygography_ = "http://snomed.info/sct#44884002";
 
     /// <summary>
     /// Literal for code: UltrasonographyOfAbdomen_
@@ -11850,9 +14610,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonographyOfAbdomen_ = "45036003";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonographyOfAbdomen_
+    /// </summary>
+    public const string LiteralNONEUltrasonographyOfAbdomen_ = "http://snomed.info/sct#45036003";
+
+    /// <summary>
     /// Literal for code: OsteoarticularThermography_
     /// </summary>
     public const string LiteralOsteoarticularThermography_ = "45315006";
+
+    /// <summary>
+    /// Literal for code: NONEOsteoarticularThermography_
+    /// </summary>
+    public const string LiteralNONEOsteoarticularThermography_ = "http://snomed.info/sct#45315006";
 
     /// <summary>
     /// Literal for code: RadionuclideLocalizationOfTumor_
@@ -11860,9 +14630,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadionuclideLocalizationOfTumor_ = "45316007";
 
     /// <summary>
+    /// Literal for code: NONERadionuclideLocalizationOfTumor_
+    /// </summary>
+    public const string LiteralNONERadionuclideLocalizationOfTumor_ = "http://snomed.info/sct#45316007";
+
+    /// <summary>
     /// Literal for code: RadiographyOfThoracicSpine_
     /// </summary>
     public const string LiteralRadiographyOfThoracicSpine_ = "45554006";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfThoracicSpine_
+    /// </summary>
+    public const string LiteralNONERadiographyOfThoracicSpine_ = "http://snomed.info/sct#45554006";
 
     /// <summary>
     /// Literal for code: LiverFunctionStudyWithSerialImages_
@@ -11870,9 +14650,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLiverFunctionStudyWithSerialImages_ = "45588000";
 
     /// <summary>
+    /// Literal for code: NONELiverFunctionStudyWithSerialImages_
+    /// </summary>
+    public const string LiteralNONELiverFunctionStudyWithSerialImages_ = "http://snomed.info/sct#45588000";
+
+    /// <summary>
     /// Literal for code: FemoralPhlebography_
     /// </summary>
     public const string LiteralFemoralPhlebography_ = "45689001";
+
+    /// <summary>
+    /// Literal for code: NONEFemoralPhlebography_
+    /// </summary>
+    public const string LiteralNONEFemoralPhlebography_ = "http://snomed.info/sct#45689001";
 
     /// <summary>
     /// Literal for code: RadiologicExaminationOsseousSurveyComplete_
@@ -11880,9 +14670,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicExaminationOsseousSurveyComplete_ = "45732007";
 
     /// <summary>
+    /// Literal for code: NONERadiologicExaminationOsseousSurveyComplete_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOsseousSurveyComplete_ = "http://snomed.info/sct#45732007";
+
+    /// <summary>
     /// Literal for code: MultiPlaneRadionuclideTomography_
     /// </summary>
     public const string LiteralMultiPlaneRadionuclideTomography_ = "46108001";
+
+    /// <summary>
+    /// Literal for code: NONEMultiPlaneRadionuclideTomography_
+    /// </summary>
+    public const string LiteralNONEMultiPlaneRadionuclideTomography_ = "http://snomed.info/sct#46108001";
 
     /// <summary>
     /// Literal for code: DeterminationOfVentricularEjectionFractionWithProbeTechnique_
@@ -11890,9 +14690,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeterminationOfVentricularEjectionFractionWithProbeTechnique_ = "46258004";
 
     /// <summary>
+    /// Literal for code: NONEDeterminationOfVentricularEjectionFractionWithProbeTechnique_
+    /// </summary>
+    public const string LiteralNONEDeterminationOfVentricularEjectionFractionWithProbeTechnique_ = "http://snomed.info/sct#46258004";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastBilateral_
     /// </summary>
     public const string LiteralDiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastBilateral_ = "46291008";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastBilateral_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastBilateral_ = "http://snomed.info/sct#46291008";
 
     /// <summary>
     /// Literal for code: CardiacTomography_
@@ -11900,9 +14710,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCardiacTomography_ = "46377000";
 
     /// <summary>
+    /// Literal for code: NONECardiacTomography_
+    /// </summary>
+    public const string LiteralNONECardiacTomography_ = "http://snomed.info/sct#46377000";
+
+    /// <summary>
     /// Literal for code: CerebralVentriculographyPositiveContrast_
     /// </summary>
     public const string LiteralCerebralVentriculographyPositiveContrast_ = "46424009";
+
+    /// <summary>
+    /// Literal for code: NONECerebralVentriculographyPositiveContrast_
+    /// </summary>
+    public const string LiteralNONECerebralVentriculographyPositiveContrast_ = "http://snomed.info/sct#46424009";
 
     /// <summary>
     /// Literal for code: FluoroscopicLocalizationForFineNeedleAspiration_
@@ -11910,9 +14730,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicLocalizationForFineNeedleAspiration_ = "46453005";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicLocalizationForFineNeedleAspiration_
+    /// </summary>
+    public const string LiteralNONEFluoroscopicLocalizationForFineNeedleAspiration_ = "http://snomed.info/sct#46453005";
+
+    /// <summary>
     /// Literal for code: IsotopeStudyForUrinaryRecovery_
     /// </summary>
     public const string LiteralIsotopeStudyForUrinaryRecovery_ = "46471003";
+
+    /// <summary>
+    /// Literal for code: NONEIsotopeStudyForUrinaryRecovery_
+    /// </summary>
+    public const string LiteralNONEIsotopeStudyForUrinaryRecovery_ = "http://snomed.info/sct#46471003";
 
     /// <summary>
     /// Literal for code: CeliacAngiography_
@@ -11920,9 +14750,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCeliacAngiography_ = "46480003";
 
     /// <summary>
+    /// Literal for code: NONECeliacAngiography_
+    /// </summary>
+    public const string LiteralNONECeliacAngiography_ = "http://snomed.info/sct#46480003";
+
+    /// <summary>
     /// Literal for code: SalivaryGlandImagingWithSerialViews_
     /// </summary>
     public const string LiteralSalivaryGlandImagingWithSerialViews_ = "46597006";
+
+    /// <summary>
+    /// Literal for code: NONESalivaryGlandImagingWithSerialViews_
+    /// </summary>
+    public const string LiteralNONESalivaryGlandImagingWithSerialViews_ = "http://snomed.info/sct#46597006";
 
     /// <summary>
     /// Literal for code: RadiologicExaminationOfLumbosacralSpineAnteroposteriorAndLateral_
@@ -11930,9 +14770,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicExaminationOfLumbosacralSpineAnteroposteriorAndLateral_ = "46700000";
 
     /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfLumbosacralSpineAnteroposteriorAndLateral_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfLumbosacralSpineAnteroposteriorAndLateral_ = "http://snomed.info/sct#46700000";
+
+    /// <summary>
     /// Literal for code: SpecialRadionuclideImagingTechnique_
     /// </summary>
     public const string LiteralSpecialRadionuclideImagingTechnique_ = "46798003";
+
+    /// <summary>
+    /// Literal for code: NONESpecialRadionuclideImagingTechnique_
+    /// </summary>
+    public const string LiteralNONESpecialRadionuclideImagingTechnique_ = "http://snomed.info/sct#46798003";
 
     /// <summary>
     /// Literal for code: ArthrographyOfWrist_
@@ -11940,9 +14790,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArthrographyOfWrist_ = "46822003";
 
     /// <summary>
+    /// Literal for code: NONEArthrographyOfWrist_
+    /// </summary>
+    public const string LiteralNONEArthrographyOfWrist_ = "http://snomed.info/sct#46822003";
+
+    /// <summary>
     /// Literal for code: RadionuclideLocalizationOfAbscessOfWholeBody_
     /// </summary>
     public const string LiteralRadionuclideLocalizationOfAbscessOfWholeBody_ = "46854007";
+
+    /// <summary>
+    /// Literal for code: NONERadionuclideLocalizationOfAbscessOfWholeBody_
+    /// </summary>
+    public const string LiteralNONERadionuclideLocalizationOfAbscessOfWholeBody_ = "http://snomed.info/sct#46854007";
 
     /// <summary>
     /// Literal for code: P32TracerStudyOfEye_
@@ -11950,9 +14810,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralP32TracerStudyOfEye_ = "46870009";
 
     /// <summary>
+    /// Literal for code: NONEP32TracerStudyOfEye_
+    /// </summary>
+    public const string LiteralNONEP32TracerStudyOfEye_ = "http://snomed.info/sct#46870009";
+
+    /// <summary>
     /// Literal for code: UltrasonographyOfBreast_
     /// </summary>
     public const string LiteralUltrasonographyOfBreast_ = "47079000";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasonographyOfBreast_
+    /// </summary>
+    public const string LiteralNONEUltrasonographyOfBreast_ = "http://snomed.info/sct#47079000";
 
     /// <summary>
     /// Literal for code: RadiographyOfUvula_
@@ -11960,9 +14830,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfUvula_ = "47187002";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfUvula_
+    /// </summary>
+    public const string LiteralNONERadiographyOfUvula_ = "http://snomed.info/sct#47187002";
+
+    /// <summary>
     /// Literal for code: RadiologicProcedureOnLowerExtremityAndPelvis_
     /// </summary>
     public const string LiteralRadiologicProcedureOnLowerExtremityAndPelvis_ = "47293000";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicProcedureOnLowerExtremityAndPelvis_
+    /// </summary>
+    public const string LiteralNONERadiologicProcedureOnLowerExtremityAndPelvis_ = "http://snomed.info/sct#47293000";
 
     /// <summary>
     /// Literal for code: ThyroidUptakeWithThyroidStimulation_
@@ -11970,9 +14850,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThyroidUptakeWithThyroidStimulation_ = "47324001";
 
     /// <summary>
+    /// Literal for code: NONEThyroidUptakeWithThyroidStimulation_
+    /// </summary>
+    public const string LiteralNONEThyroidUptakeWithThyroidStimulation_ = "http://snomed.info/sct#47324001";
+
+    /// <summary>
     /// Literal for code: WhiteBloodCellLocalizationWholeBody_
     /// </summary>
     public const string LiteralWhiteBloodCellLocalizationWholeBody_ = "47616002";
+
+    /// <summary>
+    /// Literal for code: NONEWhiteBloodCellLocalizationWholeBody_
+    /// </summary>
+    public const string LiteralNONEWhiteBloodCellLocalizationWholeBody_ = "http://snomed.info/sct#47616002";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiologicExaminationWithFluoroscopy_
@@ -11980,9 +14870,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiologicExaminationWithFluoroscopy_ = "47621004";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiologicExaminationWithFluoroscopy_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiologicExaminationWithFluoroscopy_ = "http://snomed.info/sct#47621004";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyObliqueSpecial_
     /// </summary>
     public const string LiteralDiagnosticRadiographyObliqueSpecial_ = "47859009";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyObliqueSpecial_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyObliqueSpecial_ = "http://snomed.info/sct#47859009";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfSacralSpineCombinedAPAndLateral_
@@ -11990,9 +14890,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfSacralSpineCombinedAPAndLateral_ = "47987001";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfSacralSpineCombinedAPAndLateral_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfSacralSpineCombinedAPAndLateral_ = "http://snomed.info/sct#47987001";
+
+    /// <summary>
     /// Literal for code: Splenogram_
     /// </summary>
     public const string LiteralSplenogram_ = "48138001";
+
+    /// <summary>
+    /// Literal for code: NONESplenogram_
+    /// </summary>
+    public const string LiteralNONESplenogram_ = "http://snomed.info/sct#48138001";
 
     /// <summary>
     /// Literal for code: RadionuclideVolumeDilutionStudy_
@@ -12000,9 +14910,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadionuclideVolumeDilutionStudy_ = "48290004";
 
     /// <summary>
+    /// Literal for code: NONERadionuclideVolumeDilutionStudy_
+    /// </summary>
+    public const string LiteralNONERadionuclideVolumeDilutionStudy_ = "http://snomed.info/sct#48290004";
+
+    /// <summary>
     /// Literal for code: VenographyOfRenalVeinBilateral_
     /// </summary>
     public const string LiteralVenographyOfRenalVeinBilateral_ = "48380009";
+
+    /// <summary>
+    /// Literal for code: NONEVenographyOfRenalVeinBilateral_
+    /// </summary>
+    public const string LiteralNONEVenographyOfRenalVeinBilateral_ = "http://snomed.info/sct#48380009";
 
     /// <summary>
     /// Literal for code: RadiographyOfHead_
@@ -12010,9 +14930,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfHead_ = "48450000";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfHead_
+    /// </summary>
+    public const string LiteralNONERadiographyOfHead_ = "http://snomed.info/sct#48450000";
+
+    /// <summary>
     /// Literal for code: UltrasoundPeripheralVascularFlowStudy_
     /// </summary>
     public const string LiteralUltrasoundPeripheralVascularFlowStudy_ = "48526000";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasoundPeripheralVascularFlowStudy_
+    /// </summary>
+    public const string LiteralNONEUltrasoundPeripheralVascularFlowStudy_ = "http://snomed.info/sct#48526000";
 
     /// <summary>
     /// Literal for code: FluoroscopicMonitoringAndRadiographyForCardiacPacemakerInsertion_
@@ -12020,9 +14950,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicMonitoringAndRadiographyForCardiacPacemakerInsertion_ = "48564003";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicMonitoringAndRadiographyForCardiacPacemakerInsertion_
+    /// </summary>
+    public const string LiteralNONEFluoroscopicMonitoringAndRadiographyForCardiacPacemakerInsertion_ = "http://snomed.info/sct#48564003";
+
+    /// <summary>
     /// Literal for code: LumbarDiscography_
     /// </summary>
     public const string LiteralLumbarDiscography_ = "48633006";
+
+    /// <summary>
+    /// Literal for code: NONELumbarDiscography_
+    /// </summary>
+    public const string LiteralNONELumbarDiscography_ = "http://snomed.info/sct#48633006";
 
     /// <summary>
     /// Literal for code: ThoracicAortographyPositiveContrast_
@@ -12030,9 +14970,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThoracicAortographyPositiveContrast_ = "48735005";
 
     /// <summary>
+    /// Literal for code: NONEThoracicAortographyPositiveContrast_
+    /// </summary>
+    public const string LiteralNONEThoracicAortographyPositiveContrast_ = "http://snomed.info/sct#48735005";
+
+    /// <summary>
     /// Literal for code: RadiologicExaminationOfLumbosacralSpineCompleteWithBendingViews_
     /// </summary>
     public const string LiteralRadiologicExaminationOfLumbosacralSpineCompleteWithBendingViews_ = "48816001";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfLumbosacralSpineCompleteWithBendingViews_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfLumbosacralSpineCompleteWithBendingViews_ = "http://snomed.info/sct#48816001";
 
     /// <summary>
     /// Literal for code: ImagingOfArteriesOfUpperExtremity_
@@ -12040,9 +14990,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImagingOfArteriesOfUpperExtremity_ = "48849005";
 
     /// <summary>
+    /// Literal for code: NONEImagingOfArteriesOfUpperExtremity_
+    /// </summary>
+    public const string LiteralNONEImagingOfArteriesOfUpperExtremity_ = "http://snomed.info/sct#48849005";
+
+    /// <summary>
     /// Literal for code: LymphangiographyOfLowerExtremity_
     /// </summary>
     public const string LiteralLymphangiographyOfLowerExtremity_ = "48858003";
+
+    /// <summary>
+    /// Literal for code: NONELymphangiographyOfLowerExtremity_
+    /// </summary>
+    public const string LiteralNONELymphangiographyOfLowerExtremity_ = "http://snomed.info/sct#48858003";
 
     /// <summary>
     /// Literal for code: SkeletalXRayOfShoulderAndUpperLimb_
@@ -12050,9 +15010,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSkeletalXRayOfShoulderAndUpperLimb_ = "48966008";
 
     /// <summary>
+    /// Literal for code: NONESkeletalXRayOfShoulderAndUpperLimb_
+    /// </summary>
+    public const string LiteralNONESkeletalXRayOfShoulderAndUpperLimb_ = "http://snomed.info/sct#48966008";
+
+    /// <summary>
     /// Literal for code: Cholecystocholangiogram_
     /// </summary>
     public const string LiteralCholecystocholangiogram_ = "48986007";
+
+    /// <summary>
+    /// Literal for code: NONECholecystocholangiogram_
+    /// </summary>
+    public const string LiteralNONECholecystocholangiogram_ = "http://snomed.info/sct#48986007";
 
     /// <summary>
     /// Literal for code: FluoroscopyPostOperative_
@@ -12060,9 +15030,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyPostOperative_ = "48995004";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyPostOperative_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyPostOperative_ = "http://snomed.info/sct#48995004";
+
+    /// <summary>
     /// Literal for code: EchographyOfAbdomenBScanLimited_
     /// </summary>
     public const string LiteralEchographyOfAbdomenBScanLimited_ = "48996003";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyOfAbdomenBScanLimited_
+    /// </summary>
+    public const string LiteralNONEEchographyOfAbdomenBScanLimited_ = "http://snomed.info/sct#48996003";
 
     /// <summary>
     /// Literal for code: RadiographyOfPenis_
@@ -12070,9 +15050,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfPenis_ = "49140003";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfPenis_
+    /// </summary>
+    public const string LiteralNONERadiographyOfPenis_ = "http://snomed.info/sct#49140003";
+
+    /// <summary>
     /// Literal for code: EchocardiographyForDeterminingInterventricularSeptalThickness_
     /// </summary>
     public const string LiteralEchocardiographyForDeterminingInterventricularSeptalThickness_ = "49276007";
+
+    /// <summary>
+    /// Literal for code: NONEEchocardiographyForDeterminingInterventricularSeptalThickness_
+    /// </summary>
+    public const string LiteralNONEEchocardiographyForDeterminingInterventricularSeptalThickness_ = "http://snomed.info/sct#49276007";
 
     /// <summary>
     /// Literal for code: Salpingography_
@@ -12080,9 +15070,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSalpingography_ = "4934001";
 
     /// <summary>
+    /// Literal for code: NONESalpingography_
+    /// </summary>
+    public const string LiteralNONESalpingography_ = "http://snomed.info/sct#4934001";
+
+    /// <summary>
     /// Literal for code: RadiographyOfHand_
     /// </summary>
     public const string LiteralRadiographyOfHand_ = "49345004";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfHand_
+    /// </summary>
+    public const string LiteralNONERadiographyOfHand_ = "http://snomed.info/sct#49345004";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfChestStereo_
@@ -12090,9 +15090,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfChestStereo_ = "49459005";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfChestStereo_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfChestStereo_ = "http://snomed.info/sct#49459005";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfScapula_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfScapula_ = "49626003";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfScapula_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfScapula_ = "http://snomed.info/sct#49626003";
 
     /// <summary>
     /// Literal for code: CoronaryArteriographyUsingTwoCatheters_
@@ -12100,9 +15110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCoronaryArteriographyUsingTwoCatheters_ = "49673009";
 
     /// <summary>
+    /// Literal for code: NONECoronaryArteriographyUsingTwoCatheters_
+    /// </summary>
+    public const string LiteralNONECoronaryArteriographyUsingTwoCatheters_ = "http://snomed.info/sct#49673009";
+
+    /// <summary>
     /// Literal for code: Venography_
     /// </summary>
     public const string LiteralVenography_ = "4970003";
+
+    /// <summary>
+    /// Literal for code: NONEVenography_
+    /// </summary>
+    public const string LiteralNONEVenography_ = "http://snomed.info/sct#4970003";
 
     /// <summary>
     /// Literal for code: IntravenousPyelogramWithKUB_
@@ -12110,9 +15130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntravenousPyelogramWithKUB_ = "49752000";
 
     /// <summary>
+    /// Literal for code: NONEIntravenousPyelogramWithKUB_
+    /// </summary>
+    public const string LiteralNONEIntravenousPyelogramWithKUB_ = "http://snomed.info/sct#49752000";
+
+    /// <summary>
     /// Literal for code: SoftTissueXRayOfLowerLimb_
     /// </summary>
     public const string LiteralSoftTissueXRayOfLowerLimb_ = "49856005";
+
+    /// <summary>
+    /// Literal for code: NONESoftTissueXRayOfLowerLimb_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayOfLowerLimb_ = "http://snomed.info/sct#49856005";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyWithOralContrast_
@@ -12120,9 +15150,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyWithOralContrast_ = "50025001";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyWithOralContrast_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyWithOralContrast_ = "http://snomed.info/sct#50025001";
+
+    /// <summary>
     /// Literal for code: RadiographicDentalExaminationForPersonalIdentification_
     /// </summary>
     public const string LiteralRadiographicDentalExaminationForPersonalIdentification_ = "50251009";
+
+    /// <summary>
+    /// Literal for code: NONERadiographicDentalExaminationForPersonalIdentification_
+    /// </summary>
+    public const string LiteralNONERadiographicDentalExaminationForPersonalIdentification_ = "http://snomed.info/sct#50251009";
 
     /// <summary>
     /// Literal for code: IsotopeStudyForRenalClearance_
@@ -12130,9 +15170,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIsotopeStudyForRenalClearance_ = "50621006";
 
     /// <summary>
+    /// Literal for code: NONEIsotopeStudyForRenalClearance_
+    /// </summary>
+    public const string LiteralNONEIsotopeStudyForRenalClearance_ = "http://snomed.info/sct#50621006";
+
+    /// <summary>
     /// Literal for code: KidneyImagingWithVascularFlow_
     /// </summary>
     public const string LiteralKidneyImagingWithVascularFlow_ = "50759007";
+
+    /// <summary>
+    /// Literal for code: NONEKidneyImagingWithVascularFlow_
+    /// </summary>
+    public const string LiteralNONEKidneyImagingWithVascularFlow_ = "http://snomed.info/sct#50759007";
 
     /// <summary>
     /// Literal for code: PulmonaryVentilationPerfusionStudyByRadioactiveXenon_
@@ -12140,9 +15190,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPulmonaryVentilationPerfusionStudyByRadioactiveXenon_ = "50788008";
 
     /// <summary>
+    /// Literal for code: NONEPulmonaryVentilationPerfusionStudyByRadioactiveXenon_
+    /// </summary>
+    public const string LiteralNONEPulmonaryVentilationPerfusionStudyByRadioactiveXenon_ = "http://snomed.info/sct#50788008";
+
+    /// <summary>
     /// Literal for code: MammaryDuctogramOfSingleDuct_
     /// </summary>
     public const string LiteralMammaryDuctogramOfSingleDuct_ = "50867009";
+
+    /// <summary>
+    /// Literal for code: NONEMammaryDuctogramOfSingleDuct_
+    /// </summary>
+    public const string LiteralNONEMammaryDuctogramOfSingleDuct_ = "http://snomed.info/sct#50867009";
 
     /// <summary>
     /// Literal for code: AbdominalAortographyWithBilateralIliofemoralArteriesWithSerialography_
@@ -12150,9 +15210,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbdominalAortographyWithBilateralIliofemoralArteriesWithSerialography_ = "50964001";
 
     /// <summary>
+    /// Literal for code: NONEAbdominalAortographyWithBilateralIliofemoralArteriesWithSerialography_
+    /// </summary>
+    public const string LiteralNONEAbdominalAortographyWithBilateralIliofemoralArteriesWithSerialography_ = "http://snomed.info/sct#50964001";
+
+    /// <summary>
     /// Literal for code: Echoencephalography_
     /// </summary>
     public const string LiteralEchoencephalography_ = "51006009";
+
+    /// <summary>
+    /// Literal for code: NONEEchoencephalography_
+    /// </summary>
+    public const string LiteralNONEEchoencephalography_ = "http://snomed.info/sct#51006009";
 
     /// <summary>
     /// Literal for code: UltrasoundPeripheralImagingRealTimeScan_
@@ -12160,9 +15230,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasoundPeripheralImagingRealTimeScan_ = "5110001";
 
     /// <summary>
+    /// Literal for code: NONEUltrasoundPeripheralImagingRealTimeScan_
+    /// </summary>
+    public const string LiteralNONEUltrasoundPeripheralImagingRealTimeScan_ = "http://snomed.info/sct#5110001";
+
+    /// <summary>
     /// Literal for code: RadiographyOfChestWall_
     /// </summary>
     public const string LiteralRadiographyOfChestWall_ = "5131003";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfChestWall_
+    /// </summary>
+    public const string LiteralNONERadiographyOfChestWall_ = "http://snomed.info/sct#5131003";
 
     /// <summary>
     /// Literal for code: FourDimensionalUltrasoundImagingOfHeart_
@@ -12170,9 +15250,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFourDimensionalUltrasoundImagingOfHeart_ = "51469006";
 
     /// <summary>
+    /// Literal for code: NONEFourDimensionalUltrasoundImagingOfHeart_
+    /// </summary>
+    public const string LiteralNONEFourDimensionalUltrasoundImagingOfHeart_ = "http://snomed.info/sct#51469006";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingWithContrast_
     /// </summary>
     public const string LiteralMagneticResonanceImagingWithContrast_ = "51619007";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingWithContrast_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingWithContrast_ = "http://snomed.info/sct#51619007";
 
     /// <summary>
     /// Literal for code: ArthrographyOfAnkleWithPositiveContrast_
@@ -12180,9 +15270,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArthrographyOfAnkleWithPositiveContrast_ = "51808006";
 
     /// <summary>
+    /// Literal for code: NONEArthrographyOfAnkleWithPositiveContrast_
+    /// </summary>
+    public const string LiteralNONEArthrographyOfAnkleWithPositiveContrast_ = "http://snomed.info/sct#51808006";
+
+    /// <summary>
     /// Literal for code: ThreeDimensionalUltrasoundImagingOfHeart_
     /// </summary>
     public const string LiteralThreeDimensionalUltrasoundImagingOfHeart_ = "5216004";
+
+    /// <summary>
+    /// Literal for code: NONEThreeDimensionalUltrasoundImagingOfHeart_
+    /// </summary>
+    public const string LiteralNONEThreeDimensionalUltrasoundImagingOfHeart_ = "http://snomed.info/sct#5216004";
 
     /// <summary>
     /// Literal for code: RadiographyOfFoot_
@@ -12190,9 +15290,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfFoot_ = "52221007";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfFoot_
+    /// </summary>
+    public const string LiteralNONERadiographyOfFoot_ = "http://snomed.info/sct#52221007";
+
+    /// <summary>
     /// Literal for code: AngiographyOfPulmonaryArteriesBilateral_
     /// </summary>
     public const string LiteralAngiographyOfPulmonaryArteriesBilateral_ = "52340003";
+
+    /// <summary>
+    /// Literal for code: NONEAngiographyOfPulmonaryArteriesBilateral_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfPulmonaryArteriesBilateral_ = "http://snomed.info/sct#52340003";
 
     /// <summary>
     /// Literal for code: PhotographyOfGrossOrgan_
@@ -12200,9 +15310,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhotographyOfGrossOrgan_ = "52432005";
 
     /// <summary>
+    /// Literal for code: NONEPhotographyOfGrossOrgan_
+    /// </summary>
+    public const string LiteralNONEPhotographyOfGrossOrgan_ = "http://snomed.info/sct#52432005";
+
+    /// <summary>
     /// Literal for code: RadiographyOfMaxilla_
     /// </summary>
     public const string LiteralRadiographyOfMaxilla_ = "52514008";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfMaxilla_
+    /// </summary>
+    public const string LiteralNONERadiographyOfMaxilla_ = "http://snomed.info/sct#52514008";
 
     /// <summary>
     /// Literal for code: Clivogram_
@@ -12210,9 +15330,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClivogram_ = "52566004";
 
     /// <summary>
+    /// Literal for code: NONEClivogram_
+    /// </summary>
+    public const string LiteralNONEClivogram_ = "http://snomed.info/sct#52566004";
+
+    /// <summary>
     /// Literal for code: UltrasoundCephalometrics_
     /// </summary>
     public const string LiteralUltrasoundCephalometrics_ = "52792009";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasoundCephalometrics_
+    /// </summary>
+    public const string LiteralNONEUltrasoundCephalometrics_ = "http://snomed.info/sct#52792009";
 
     /// <summary>
     /// Literal for code: RadiologicExaminationOfAnkleAnteroposteriorAndLateralViews_
@@ -12220,9 +15350,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicExaminationOfAnkleAnteroposteriorAndLateralViews_ = "52823003";
 
     /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfAnkleAnteroposteriorAndLateralViews_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfAnkleAnteroposteriorAndLateralViews_ = "http://snomed.info/sct#52823003";
+
+    /// <summary>
     /// Literal for code: RadionuclideVolumeDilutionOfBodySpaces_
     /// </summary>
     public const string LiteralRadionuclideVolumeDilutionOfBodySpaces_ = "52960000";
+
+    /// <summary>
+    /// Literal for code: NONERadionuclideVolumeDilutionOfBodySpaces_
+    /// </summary>
+    public const string LiteralNONERadionuclideVolumeDilutionOfBodySpaces_ = "http://snomed.info/sct#52960000";
 
     /// <summary>
     /// Literal for code: LaparoscopyWithGuidedTranshepaticCholangiography_
@@ -12230,9 +15370,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLaparoscopyWithGuidedTranshepaticCholangiography_ = "53054006";
 
     /// <summary>
+    /// Literal for code: NONELaparoscopyWithGuidedTranshepaticCholangiography_
+    /// </summary>
+    public const string LiteralNONELaparoscopyWithGuidedTranshepaticCholangiography_ = "http://snomed.info/sct#53054006";
+
+    /// <summary>
     /// Literal for code: RadiologicGuidanceForIlealConduitogram_
     /// </summary>
     public const string LiteralRadiologicGuidanceForIlealConduitogram_ = "53161007";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicGuidanceForIlealConduitogram_
+    /// </summary>
+    public const string LiteralNONERadiologicGuidanceForIlealConduitogram_ = "http://snomed.info/sct#53161007";
 
     /// <summary>
     /// Literal for code: EchocardiographyForDeterminingProstheticValveMotion_
@@ -12240,9 +15390,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchocardiographyForDeterminingProstheticValveMotion_ = "53457009";
 
     /// <summary>
+    /// Literal for code: NONEEchocardiographyForDeterminingProstheticValveMotion_
+    /// </summary>
+    public const string LiteralNONEEchocardiographyForDeterminingProstheticValveMotion_ = "http://snomed.info/sct#53457009";
+
+    /// <summary>
     /// Literal for code: VenographyOfSuperiorSagittalSinus_
     /// </summary>
     public const string LiteralVenographyOfSuperiorSagittalSinus_ = "53484005";
+
+    /// <summary>
+    /// Literal for code: NONEVenographyOfSuperiorSagittalSinus_
+    /// </summary>
+    public const string LiteralNONEVenographyOfSuperiorSagittalSinus_ = "http://snomed.info/sct#53484005";
 
     /// <summary>
     /// Literal for code: AngiographyOfUpperExtremityArteriesBilateral_
@@ -12250,9 +15410,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngiographyOfUpperExtremityArteriesBilateral_ = "53495004";
 
     /// <summary>
+    /// Literal for code: NONEAngiographyOfUpperExtremityArteriesBilateral_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfUpperExtremityArteriesBilateral_ = "http://snomed.info/sct#53495004";
+
+    /// <summary>
     /// Literal for code: RadioisotopeStudyOfGastrointestinalSystem_
     /// </summary>
     public const string LiteralRadioisotopeStudyOfGastrointestinalSystem_ = "53585008";
+
+    /// <summary>
+    /// Literal for code: NONERadioisotopeStudyOfGastrointestinalSystem_
+    /// </summary>
+    public const string LiteralNONERadioisotopeStudyOfGastrointestinalSystem_ = "http://snomed.info/sct#53585008";
 
     /// <summary>
     /// Literal for code: AngiocardiographyOfLeftHeart_
@@ -12260,9 +15430,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngiocardiographyOfLeftHeart_ = "53683005";
 
     /// <summary>
+    /// Literal for code: NONEAngiocardiographyOfLeftHeart_
+    /// </summary>
+    public const string LiteralNONEAngiocardiographyOfLeftHeart_ = "http://snomed.info/sct#53683005";
+
+    /// <summary>
     /// Literal for code: PlacentalScan_
     /// </summary>
     public const string LiteralPlacentalScan_ = "53835005";
+
+    /// <summary>
+    /// Literal for code: NONEPlacentalScan_
+    /// </summary>
+    public const string LiteralNONEPlacentalScan_ = "http://snomed.info/sct#53835005";
 
     /// <summary>
     /// Literal for code: ContrastRadiographyOfNasolacrimalDucts_
@@ -12270,9 +15450,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralContrastRadiographyOfNasolacrimalDucts_ = "54042002";
 
     /// <summary>
+    /// Literal for code: NONEContrastRadiographyOfNasolacrimalDucts_
+    /// </summary>
+    public const string LiteralNONEContrastRadiographyOfNasolacrimalDucts_ = "http://snomed.info/sct#54042002";
+
+    /// <summary>
     /// Literal for code: AngiographyOfCervicalVertebralArteriesBilateral_
     /// </summary>
     public const string LiteralAngiographyOfCervicalVertebralArteriesBilateral_ = "54149009";
+
+    /// <summary>
+    /// Literal for code: NONEAngiographyOfCervicalVertebralArteriesBilateral_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfCervicalVertebralArteriesBilateral_ = "http://snomed.info/sct#54149009";
 
     /// <summary>
     /// Literal for code: CardiacFlowImaging_
@@ -12280,9 +15470,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCardiacFlowImaging_ = "54321008";
 
     /// <summary>
+    /// Literal for code: NONECardiacFlowImaging_
+    /// </summary>
+    public const string LiteralNONECardiacFlowImaging_ = "http://snomed.info/sct#54321008";
+
+    /// <summary>
     /// Literal for code: SkeletalXRayOfLowerLimb_
     /// </summary>
     public const string LiteralSkeletalXRayOfLowerLimb_ = "5433008";
+
+    /// <summary>
+    /// Literal for code: NONESkeletalXRayOfLowerLimb_
+    /// </summary>
+    public const string LiteralNONESkeletalXRayOfLowerLimb_ = "http://snomed.info/sct#5433008";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyObliqueStandard_
@@ -12290,9 +15490,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyObliqueStandard_ = "54438008";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyObliqueStandard_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyObliqueStandard_ = "http://snomed.info/sct#54438008";
+
+    /// <summary>
     /// Literal for code: Aortography_
     /// </summary>
     public const string LiteralAortography_ = "54640009";
+
+    /// <summary>
+    /// Literal for code: NONEAortography_
+    /// </summary>
+    public const string LiteralNONEAortography_ = "http://snomed.info/sct#54640009";
 
     /// <summary>
     /// Literal for code: RealTimeScan_
@@ -12300,9 +15510,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRealTimeScan_ = "54689004";
 
     /// <summary>
+    /// Literal for code: NONERealTimeScan_
+    /// </summary>
+    public const string LiteralNONERealTimeScan_ = "http://snomed.info/sct#54689004";
+
+    /// <summary>
     /// Literal for code: LiverImagingWithVascularFlow_
     /// </summary>
     public const string LiteralLiverImagingWithVascularFlow_ = "54780008";
+
+    /// <summary>
+    /// Literal for code: NONELiverImagingWithVascularFlow_
+    /// </summary>
+    public const string LiteralNONELiverImagingWithVascularFlow_ = "http://snomed.info/sct#54780008";
 
     /// <summary>
     /// Literal for code: VoidingUrethrocystography_
@@ -12310,9 +15530,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVoidingUrethrocystography_ = "54810009";
 
     /// <summary>
+    /// Literal for code: NONEVoidingUrethrocystography_
+    /// </summary>
+    public const string LiteralNONEVoidingUrethrocystography_ = "http://snomed.info/sct#54810009";
+
+    /// <summary>
     /// Literal for code: DiagnosticUltrasoundOfGravidUterus_
     /// </summary>
     public const string LiteralDiagnosticUltrasoundOfGravidUterus_ = "55052008";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticUltrasoundOfGravidUterus_
+    /// </summary>
+    public const string LiteralNONEDiagnosticUltrasoundOfGravidUterus_ = "http://snomed.info/sct#55052008";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfTibiaCombinedAPAndLateral_
@@ -12320,9 +15550,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfTibiaCombinedAPAndLateral_ = "55357008";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfTibiaCombinedAPAndLateral_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfTibiaCombinedAPAndLateral_ = "http://snomed.info/sct#55357008";
+
+    /// <summary>
     /// Literal for code: PercutaneousHysterogram_
     /// </summary>
     public const string LiteralPercutaneousHysterogram_ = "55447006";
+
+    /// <summary>
+    /// Literal for code: NONEPercutaneousHysterogram_
+    /// </summary>
+    public const string LiteralNONEPercutaneousHysterogram_ = "http://snomed.info/sct#55447006";
 
     /// <summary>
     /// Literal for code: EndotrachealBronchography_
@@ -12330,9 +15570,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEndotrachealBronchography_ = "55498000";
 
     /// <summary>
+    /// Literal for code: NONEEndotrachealBronchography_
+    /// </summary>
+    public const string LiteralNONEEndotrachealBronchography_ = "http://snomed.info/sct#55498000";
+
+    /// <summary>
     /// Literal for code: ComputerizedAxialTomographyOfKidney_
     /// </summary>
     public const string LiteralComputerizedAxialTomographyOfKidney_ = "55501000";
+
+    /// <summary>
+    /// Literal for code: NONEComputerizedAxialTomographyOfKidney_
+    /// </summary>
+    public const string LiteralNONEComputerizedAxialTomographyOfKidney_ = "http://snomed.info/sct#55501000";
 
     /// <summary>
     /// Literal for code: RadioisotopeStudyOfCentralNervousSystem_
@@ -12340,9 +15590,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadioisotopeStudyOfCentralNervousSystem_ = "55550006";
 
     /// <summary>
+    /// Literal for code: NONERadioisotopeStudyOfCentralNervousSystem_
+    /// </summary>
+    public const string LiteralNONERadioisotopeStudyOfCentralNervousSystem_ = "http://snomed.info/sct#55550006";
+
+    /// <summary>
     /// Literal for code: AntegradeUrography_
     /// </summary>
     public const string LiteralAntegradeUrography_ = "55596003";
+
+    /// <summary>
+    /// Literal for code: NONEAntegradeUrography_
+    /// </summary>
+    public const string LiteralNONEAntegradeUrography_ = "http://snomed.info/sct#55596003";
 
     /// <summary>
     /// Literal for code: HepaticVenography_
@@ -12350,9 +15610,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHepaticVenography_ = "55612007";
 
     /// <summary>
+    /// Literal for code: NONEHepaticVenography_
+    /// </summary>
+    public const string LiteralNONEHepaticVenography_ = "http://snomed.info/sct#55612007";
+
+    /// <summary>
     /// Literal for code: Echogynography_
     /// </summary>
     public const string LiteralEchogynography_ = "55761000";
+
+    /// <summary>
+    /// Literal for code: NONEEchogynography_
+    /// </summary>
+    public const string LiteralNONEEchogynography_ = "http://snomed.info/sct#55761000";
 
     /// <summary>
     /// Literal for code: XRayOfSkull_
@@ -12360,9 +15630,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralXRayOfSkull_ = "55965002";
 
     /// <summary>
+    /// Literal for code: NONEXRayOfSkull_
+    /// </summary>
+    public const string LiteralNONEXRayOfSkull_ = "http://snomed.info/sct#55965002";
+
+    /// <summary>
     /// Literal for code: FluoroscopyToAssistEndoscopicManeuver_
     /// </summary>
     public const string LiteralFluoroscopyToAssistEndoscopicManeuver_ = "56058002";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopyToAssistEndoscopicManeuver_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyToAssistEndoscopicManeuver_ = "http://snomed.info/sct#56058002";
 
     /// <summary>
     /// Literal for code: Dacryocystography_
@@ -12370,9 +15650,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDacryocystography_ = "56087001";
 
     /// <summary>
+    /// Literal for code: NONEDacryocystography_
+    /// </summary>
+    public const string LiteralNONEDacryocystography_ = "http://snomed.info/sct#56087001";
+
+    /// <summary>
     /// Literal for code: RadionuclideLocalizationOfTumorWholeBody_
     /// </summary>
     public const string LiteralRadionuclideLocalizationOfTumorWholeBody_ = "56216006";
+
+    /// <summary>
+    /// Literal for code: NONERadionuclideLocalizationOfTumorWholeBody_
+    /// </summary>
+    public const string LiteralNONERadionuclideLocalizationOfTumorWholeBody_ = "http://snomed.info/sct#56216006";
 
     /// <summary>
     /// Literal for code: ComputerizedTomographyMultiPlane_
@@ -12380,9 +15670,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedTomographyMultiPlane_ = "56712007";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedTomographyMultiPlane_
+    /// </summary>
+    public const string LiteralNONEComputerizedTomographyMultiPlane_ = "http://snomed.info/sct#56712007";
+
+    /// <summary>
     /// Literal for code: EchocardiographyRealTimeWithImageDocumentationWithMModeRecordingComplete_
     /// </summary>
     public const string LiteralEchocardiographyRealTimeWithImageDocumentationWithMModeRecordingComplete_ = "57093001";
+
+    /// <summary>
+    /// Literal for code: NONEEchocardiographyRealTimeWithImageDocumentationWithMModeRecordingComplete_
+    /// </summary>
+    public const string LiteralNONEEchocardiographyRealTimeWithImageDocumentationWithMModeRecordingComplete_ = "http://snomed.info/sct#57093001";
 
     /// <summary>
     /// Literal for code: PulmonaryVentilationStudy_
@@ -12390,9 +15690,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPulmonaryVentilationStudy_ = "57113004";
 
     /// <summary>
+    /// Literal for code: NONEPulmonaryVentilationStudy_
+    /// </summary>
+    public const string LiteralNONEPulmonaryVentilationStudy_ = "http://snomed.info/sct#57113004";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfSacrum_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfSacrum_ = "57235004";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfSacrum_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfSacrum_ = "http://snomed.info/sct#57235004";
 
     /// <summary>
     /// Literal for code: DenverShuntPatencyTest_
@@ -12400,9 +15710,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDenverShuntPatencyTest_ = "57354002";
 
     /// <summary>
+    /// Literal for code: NONEDenverShuntPatencyTest_
+    /// </summary>
+    public const string LiteralNONEDenverShuntPatencyTest_ = "http://snomed.info/sct#57354002";
+
+    /// <summary>
     /// Literal for code: BowelImagingForMeckelQuoteSDiverticulum_
     /// </summary>
     public const string LiteralBowelImagingForMeckelQuoteSDiverticulum_ = "57417005";
+
+    /// <summary>
+    /// Literal for code: NONEBowelImagingForMeckelQuoteSDiverticulum_
+    /// </summary>
+    public const string LiteralNONEBowelImagingForMeckelQuoteSDiverticulum_ = "http://snomed.info/sct#57417005";
 
     /// <summary>
     /// Literal for code: RadioiodohippurateSodiumRenogramSerialImaging_
@@ -12410,9 +15730,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadioiodohippurateSodiumRenogramSerialImaging_ = "57780004";
 
     /// <summary>
+    /// Literal for code: NONERadioiodohippurateSodiumRenogramSerialImaging_
+    /// </summary>
+    public const string LiteralNONERadioiodohippurateSodiumRenogramSerialImaging_ = "http://snomed.info/sct#57780004";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingOfTemporomandibularJoint_
     /// </summary>
     public const string LiteralMagneticResonanceImagingOfTemporomandibularJoint_ = "57902003";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfTemporomandibularJoint_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfTemporomandibularJoint_ = "http://snomed.info/sct#57902003";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfLarynx_
@@ -12420,9 +15750,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfLarynx_ = "58011003";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfLarynx_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfLarynx_ = "http://snomed.info/sct#58011003";
+
+    /// <summary>
     /// Literal for code: AirContrastOrbitography_
     /// </summary>
     public const string LiteralAirContrastOrbitography_ = "58082001";
+
+    /// <summary>
+    /// Literal for code: NONEAirContrastOrbitography_
+    /// </summary>
+    public const string LiteralNONEAirContrastOrbitography_ = "http://snomed.info/sct#58082001";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyLeft_
@@ -12430,9 +15770,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyLeft_ = "5823005";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyLeft_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyLeft_ = "http://snomed.info/sct#5823005";
+
+    /// <summary>
     /// Literal for code: RadiographyOfPelvicSoftTissue_
     /// </summary>
     public const string LiteralRadiographyOfPelvicSoftTissue_ = "58259007";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfPelvicSoftTissue_
+    /// </summary>
+    public const string LiteralNONERadiographyOfPelvicSoftTissue_ = "http://snomed.info/sct#58259007";
 
     /// <summary>
     /// Literal for code: AngiographyOfArteriesOfExtremityWithSerialography_
@@ -12440,9 +15790,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngiographyOfArteriesOfExtremityWithSerialography_ = "58316000";
 
     /// <summary>
+    /// Literal for code: NONEAngiographyOfArteriesOfExtremityWithSerialography_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfArteriesOfExtremityWithSerialography_ = "http://snomed.info/sct#58316000";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfToes_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfToes_ = "5846007";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfToes_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfToes_ = "http://snomed.info/sct#5846007";
 
     /// <summary>
     /// Literal for code: BoneImagingVascularFlowStudy_
@@ -12450,9 +15810,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBoneImagingVascularFlowStudy_ = "58518000";
 
     /// <summary>
+    /// Literal for code: NONEBoneImagingVascularFlowStudy_
+    /// </summary>
+    public const string LiteralNONEBoneImagingVascularFlowStudy_ = "http://snomed.info/sct#58518000";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingOfMusculoskeletalStructures_
     /// </summary>
     public const string LiteralMagneticResonanceImagingOfMusculoskeletalStructures_ = "58713006";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfMusculoskeletalStructures_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfMusculoskeletalStructures_ = "http://snomed.info/sct#58713006";
 
     /// <summary>
     /// Literal for code: RadioisotopeScanOfUterus_
@@ -12460,9 +15830,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadioisotopeScanOfUterus_ = "58719005";
 
     /// <summary>
+    /// Literal for code: NONERadioisotopeScanOfUterus_
+    /// </summary>
+    public const string LiteralNONERadioisotopeScanOfUterus_ = "http://snomed.info/sct#58719005";
+
+    /// <summary>
     /// Literal for code: ArthrogramOfTemporomandibularJoint_
     /// </summary>
     public const string LiteralArthrogramOfTemporomandibularJoint_ = "58746000";
+
+    /// <summary>
+    /// Literal for code: NONEArthrogramOfTemporomandibularJoint_
+    /// </summary>
+    public const string LiteralNONEArthrogramOfTemporomandibularJoint_ = "http://snomed.info/sct#58746000";
 
     /// <summary>
     /// Literal for code: ImagingOfCarotidArteries_
@@ -12470,9 +15850,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImagingOfCarotidArteries_ = "58920005";
 
     /// <summary>
+    /// Literal for code: NONEImagingOfCarotidArteries_
+    /// </summary>
+    public const string LiteralNONEImagingOfCarotidArteries_ = "http://snomed.info/sct#58920005";
+
+    /// <summary>
     /// Literal for code: PelvicEchographyBScanLimited_
     /// </summary>
     public const string LiteralPelvicEchographyBScanLimited_ = "58951003";
+
+    /// <summary>
+    /// Literal for code: NONEPelvicEchographyBScanLimited_
+    /// </summary>
+    public const string LiteralNONEPelvicEchographyBScanLimited_ = "http://snomed.info/sct#58951003";
 
     /// <summary>
     /// Literal for code: BowelImagingForEctopicGastricMucosa_
@@ -12480,9 +15870,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBowelImagingForEctopicGastricMucosa_ = "59105009";
 
     /// <summary>
+    /// Literal for code: NONEBowelImagingForEctopicGastricMucosa_
+    /// </summary>
+    public const string LiteralNONEBowelImagingForEctopicGastricMucosa_ = "http://snomed.info/sct#59105009";
+
+    /// <summary>
     /// Literal for code: RadiologicGuidanceForDilationOfUrethra_
     /// </summary>
     public const string LiteralRadiologicGuidanceForDilationOfUrethra_ = "59413000";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicGuidanceForDilationOfUrethra_
+    /// </summary>
+    public const string LiteralNONERadiologicGuidanceForDilationOfUrethra_ = "http://snomed.info/sct#59413000";
 
     /// <summary>
     /// Literal for code: RadioironBodyDistributionStudy_
@@ -12490,9 +15890,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadioironBodyDistributionStudy_ = "59517002";
 
     /// <summary>
+    /// Literal for code: NONERadioironBodyDistributionStudy_
+    /// </summary>
+    public const string LiteralNONERadioironBodyDistributionStudy_ = "http://snomed.info/sct#59517002";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiologicExaminationWithFluoroscopyOfChest_
     /// </summary>
     public const string LiteralDiagnosticRadiologicExaminationWithFluoroscopyOfChest_ = "59608007";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiologicExaminationWithFluoroscopyOfChest_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiologicExaminationWithFluoroscopyOfChest_ = "http://snomed.info/sct#59608007";
 
     /// <summary>
     /// Literal for code: PositiveContrastLaryngography_
@@ -12500,9 +15910,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPositiveContrastLaryngography_ = "59778004";
 
     /// <summary>
+    /// Literal for code: NONEPositiveContrastLaryngography_
+    /// </summary>
+    public const string LiteralNONEPositiveContrastLaryngography_ = "http://snomed.info/sct#59778004";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyWithContrastMediaByInjectionBilateral_
     /// </summary>
     public const string LiteralDiagnosticRadiographyWithContrastMediaByInjectionBilateral_ = "59800002";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyWithContrastMediaByInjectionBilateral_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyWithContrastMediaByInjectionBilateral_ = "http://snomed.info/sct#59800002";
 
     /// <summary>
     /// Literal for code: CerebrospinalFluidFlowImagingShuntEvaluation_
@@ -12510,9 +15930,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCerebrospinalFluidFlowImagingShuntEvaluation_ = "59916001";
 
     /// <summary>
+    /// Literal for code: NONECerebrospinalFluidFlowImagingShuntEvaluation_
+    /// </summary>
+    public const string LiteralNONECerebrospinalFluidFlowImagingShuntEvaluation_ = "http://snomed.info/sct#59916001";
+
+    /// <summary>
     /// Literal for code: IntrathoracicPhlebography_
     /// </summary>
     public const string LiteralIntrathoracicPhlebography_ = "60006002";
+
+    /// <summary>
+    /// Literal for code: NONEIntrathoracicPhlebography_
+    /// </summary>
+    public const string LiteralNONEIntrathoracicPhlebography_ = "http://snomed.info/sct#60006002";
 
     /// <summary>
     /// Literal for code: RadiographyOfWrist_
@@ -12520,9 +15950,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfWrist_ = "60027007";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfWrist_
+    /// </summary>
+    public const string LiteralNONERadiographyOfWrist_ = "http://snomed.info/sct#60027007";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingOfChest_
     /// </summary>
     public const string LiteralMagneticResonanceImagingOfChest_ = "6007000";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfChest_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfChest_ = "http://snomed.info/sct#6007000";
 
     /// <summary>
     /// Literal for code: CholecystectomyWithExplorationOfCommonDuctWithCholangiography_
@@ -12530,9 +15970,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCholecystectomyWithExplorationOfCommonDuctWithCholangiography_ = "60228007";
 
     /// <summary>
+    /// Literal for code: NONECholecystectomyWithExplorationOfCommonDuctWithCholangiography_
+    /// </summary>
+    public const string LiteralNONECholecystectomyWithExplorationOfCommonDuctWithCholangiography_ = "http://snomed.info/sct#60228007";
+
+    /// <summary>
     /// Literal for code: PhotographyMicroscopic_
     /// </summary>
     public const string LiteralPhotographyMicroscopic_ = "60287000";
+
+    /// <summary>
+    /// Literal for code: NONEPhotographyMicroscopic_
+    /// </summary>
+    public const string LiteralNONEPhotographyMicroscopic_ = "http://snomed.info/sct#60287000";
 
     /// <summary>
     /// Literal for code: MagneticResonanceImagingOfCervicalSpineWithContrast_
@@ -12540,9 +15990,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMagneticResonanceImagingOfCervicalSpineWithContrast_ = "60443006";
 
     /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfCervicalSpineWithContrast_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfCervicalSpineWithContrast_ = "http://snomed.info/sct#60443006";
+
+    /// <summary>
     /// Literal for code: EchographyOfThyroidBScan_
     /// </summary>
     public const string LiteralEchographyOfThyroidBScan_ = "60539009";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyOfThyroidBScan_
+    /// </summary>
+    public const string LiteralNONEEchographyOfThyroidBScan_ = "http://snomed.info/sct#60539009";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfFinger_
@@ -12550,9 +16010,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfFinger_ = "60619004";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfFinger_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfFinger_ = "http://snomed.info/sct#60619004";
+
+    /// <summary>
     /// Literal for code: RadiologicExaminationOfAbdomen_
     /// </summary>
     public const string LiteralRadiologicExaminationOfAbdomen_ = "60654006";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfAbdomen_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfAbdomen_ = "http://snomed.info/sct#60654006";
 
     /// <summary>
     /// Literal for code: SoftTissueXRayOfAbdominalWall_
@@ -12560,9 +16030,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSoftTissueXRayOfAbdominalWall_ = "60668004";
 
     /// <summary>
+    /// Literal for code: NONESoftTissueXRayOfAbdominalWall_
+    /// </summary>
+    public const string LiteralNONESoftTissueXRayOfAbdominalWall_ = "http://snomed.info/sct#60668004";
+
+    /// <summary>
     /// Literal for code: RadiographyOfSoftTissueOfHip_
     /// </summary>
     public const string LiteralRadiographyOfSoftTissueOfHip_ = "61147008";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfSoftTissueOfHip_
+    /// </summary>
+    public const string LiteralNONERadiographyOfSoftTissueOfHip_ = "http://snomed.info/sct#61147008";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfAbdomenObliqueStandard_
@@ -12570,9 +16050,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfAbdomenObliqueStandard_ = "6127002";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfAbdomenObliqueStandard_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfAbdomenObliqueStandard_ = "http://snomed.info/sct#6127002";
+
+    /// <summary>
     /// Literal for code: RedCellSurvivalStudyForSplenicAndHepaticSequestration_
     /// </summary>
     public const string LiteralRedCellSurvivalStudyForSplenicAndHepaticSequestration_ = "61361006";
+
+    /// <summary>
+    /// Literal for code: NONERedCellSurvivalStudyForSplenicAndHepaticSequestration_
+    /// </summary>
+    public const string LiteralNONERedCellSurvivalStudyForSplenicAndHepaticSequestration_ = "http://snomed.info/sct#61361006";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfSpineWithFlexionAndExtensionStudies_
@@ -12580,9 +16070,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfSpineWithFlexionAndExtensionStudies_ = "61368000";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfSpineWithFlexionAndExtensionStudies_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfSpineWithFlexionAndExtensionStudies_ = "http://snomed.info/sct#61368000";
+
+    /// <summary>
     /// Literal for code: EchographyAMode_
     /// </summary>
     public const string LiteralEchographyAMode_ = "61518007";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyAMode_
+    /// </summary>
+    public const string LiteralNONEEchographyAMode_ = "http://snomed.info/sct#61518007";
 
     /// <summary>
     /// Literal for code: OphthalmicBiometryByUltrasoundEchographyAMode_
@@ -12590,9 +16090,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOphthalmicBiometryByUltrasoundEchographyAMode_ = "61553000";
 
     /// <summary>
+    /// Literal for code: NONEOphthalmicBiometryByUltrasoundEchographyAMode_
+    /// </summary>
+    public const string LiteralNONEOphthalmicBiometryByUltrasoundEchographyAMode_ = "http://snomed.info/sct#61553000";
+
+    /// <summary>
     /// Literal for code: EndoscopicRetrogradeCholangiopancreatographyWithBiopsy_
     /// </summary>
     public const string LiteralEndoscopicRetrogradeCholangiopancreatographyWithBiopsy_ = "6157006";
+
+    /// <summary>
+    /// Literal for code: NONEEndoscopicRetrogradeCholangiopancreatographyWithBiopsy_
+    /// </summary>
+    public const string LiteralNONEEndoscopicRetrogradeCholangiopancreatographyWithBiopsy_ = "http://snomed.info/sct#6157006";
 
     /// <summary>
     /// Literal for code: UltrasonicGuidanceProcedure_
@@ -12600,9 +16110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonicGuidanceProcedure_ = "61593002";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonicGuidanceProcedure_
+    /// </summary>
+    public const string LiteralNONEUltrasonicGuidanceProcedure_ = "http://snomed.info/sct#61593002";
+
+    /// <summary>
     /// Literal for code: EchocardiographyForDeterminingMitralAorticAndTricuspidValveMotion_
     /// </summary>
     public const string LiteralEchocardiographyForDeterminingMitralAorticAndTricuspidValveMotion_ = "61832002";
+
+    /// <summary>
+    /// Literal for code: NONEEchocardiographyForDeterminingMitralAorticAndTricuspidValveMotion_
+    /// </summary>
+    public const string LiteralNONEEchocardiographyForDeterminingMitralAorticAndTricuspidValveMotion_ = "http://snomed.info/sct#61832002";
 
     /// <summary>
     /// Literal for code: EchocardiographyForDeterminingPericardialEffusion_
@@ -12610,9 +16130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchocardiographyForDeterminingPericardialEffusion_ = "61982008";
 
     /// <summary>
+    /// Literal for code: NONEEchocardiographyForDeterminingPericardialEffusion_
+    /// </summary>
+    public const string LiteralNONEEchocardiographyForDeterminingPericardialEffusion_ = "http://snomed.info/sct#61982008";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfAbdomenDecubitusAndErect_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfAbdomenDecubitusAndErect_ = "62295005";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfAbdomenDecubitusAndErect_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfAbdomenDecubitusAndErect_ = "http://snomed.info/sct#62295005";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfSacroiliacJoints_
@@ -12620,9 +16150,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfSacroiliacJoints_ = "6238009";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfSacroiliacJoints_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfSacroiliacJoints_ = "http://snomed.info/sct#6238009";
+
+    /// <summary>
     /// Literal for code: BreastThermography_
     /// </summary>
     public const string LiteralBreastThermography_ = "62434009";
+
+    /// <summary>
+    /// Literal for code: NONEBreastThermography_
+    /// </summary>
+    public const string LiteralNONEBreastThermography_ = "http://snomed.info/sct#62434009";
 
     /// <summary>
     /// Literal for code: EchocardiographyRealTimeWithImageDocumentationWithMModeFollowUp_
@@ -12630,9 +16170,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchocardiographyRealTimeWithImageDocumentationWithMModeFollowUp_ = "62559003";
 
     /// <summary>
+    /// Literal for code: NONEEchocardiographyRealTimeWithImageDocumentationWithMModeFollowUp_
+    /// </summary>
+    public const string LiteralNONEEchocardiographyRealTimeWithImageDocumentationWithMModeFollowUp_ = "http://snomed.info/sct#62559003";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingOfMyocardium_
     /// </summary>
     public const string LiteralMagneticResonanceImagingOfMyocardium_ = "62581008";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfMyocardium_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfMyocardium_ = "http://snomed.info/sct#62581008";
 
     /// <summary>
     /// Literal for code: MagneticResonanceImagingOfChestAndMyocardium_
@@ -12640,9 +16190,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMagneticResonanceImagingOfChestAndMyocardium_ = "62658002";
 
     /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfChestAndMyocardium_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfChestAndMyocardium_ = "http://snomed.info/sct#62658002";
+
+    /// <summary>
     /// Literal for code: EchographyImmersionBScan_
     /// </summary>
     public const string LiteralEchographyImmersionBScan_ = "6271008";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyImmersionBScan_
+    /// </summary>
+    public const string LiteralNONEEchographyImmersionBScan_ = "http://snomed.info/sct#6271008";
 
     /// <summary>
     /// Literal for code: RadiologicExaminationOfPharynxAndCervicalEsophagus_
@@ -12650,9 +16210,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicExaminationOfPharynxAndCervicalEsophagus_ = "62756008";
 
     /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfPharynxAndCervicalEsophagus_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfPharynxAndCervicalEsophagus_ = "http://snomed.info/sct#62756008";
+
+    /// <summary>
     /// Literal for code: IntraoperativeCholangiogram_
     /// </summary>
     public const string LiteralIntraoperativeCholangiogram_ = "63243008";
+
+    /// <summary>
+    /// Literal for code: NONEIntraoperativeCholangiogram_
+    /// </summary>
+    public const string LiteralNONEIntraoperativeCholangiogram_ = "http://snomed.info/sct#63243008";
 
     /// <summary>
     /// Literal for code: ObstetricCephalometry_
@@ -12660,9 +16230,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralObstetricCephalometry_ = "63469004";
 
     /// <summary>
+    /// Literal for code: NONEObstetricCephalometry_
+    /// </summary>
+    public const string LiteralNONEObstetricCephalometry_ = "http://snomed.info/sct#63469004";
+
+    /// <summary>
     /// Literal for code: MyocardialImagingForInfarctPlanarTechnique_
     /// </summary>
     public const string LiteralMyocardialImagingForInfarctPlanarTechnique_ = "63670007";
+
+    /// <summary>
+    /// Literal for code: NONEMyocardialImagingForInfarctPlanarTechnique_
+    /// </summary>
+    public const string LiteralNONEMyocardialImagingForInfarctPlanarTechnique_ = "http://snomed.info/sct#63670007";
 
     /// <summary>
     /// Literal for code: CerebralBloodFlowRadionuclideStudy_
@@ -12670,9 +16250,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCerebralBloodFlowRadionuclideStudy_ = "63713007";
 
     /// <summary>
+    /// Literal for code: NONECerebralBloodFlowRadionuclideStudy_
+    /// </summary>
+    public const string LiteralNONECerebralBloodFlowRadionuclideStudy_ = "http://snomed.info/sct#63713007";
+
+    /// <summary>
     /// Literal for code: PostoperativePancreatography_
     /// </summary>
     public const string LiteralPostoperativePancreatography_ = "64021002";
+
+    /// <summary>
+    /// Literal for code: NONEPostoperativePancreatography_
+    /// </summary>
+    public const string LiteralNONEPostoperativePancreatography_ = "http://snomed.info/sct#64021002";
 
     /// <summary>
     /// Literal for code: CinephotographyOfPatient_
@@ -12680,9 +16270,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCinephotographyOfPatient_ = "64152004";
 
     /// <summary>
+    /// Literal for code: NONECinephotographyOfPatient_
+    /// </summary>
+    public const string LiteralNONECinephotographyOfPatient_ = "http://snomed.info/sct#64152004";
+
+    /// <summary>
     /// Literal for code: DopplerFlowMappingOfAorticArch_
     /// </summary>
     public const string LiteralDopplerFlowMappingOfAorticArch_ = "64167000";
+
+    /// <summary>
+    /// Literal for code: NONEDopplerFlowMappingOfAorticArch_
+    /// </summary>
+    public const string LiteralNONEDopplerFlowMappingOfAorticArch_ = "http://snomed.info/sct#64167000";
 
     /// <summary>
     /// Literal for code: CerebralThermography_
@@ -12690,9 +16290,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCerebralThermography_ = "642006";
 
     /// <summary>
+    /// Literal for code: NONECerebralThermography_
+    /// </summary>
+    public const string LiteralNONECerebralThermography_ = "http://snomed.info/sct#642006";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyStereotacticLocalization_
     /// </summary>
     public const string LiteralDiagnosticRadiographyStereotacticLocalization_ = "64318009";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyStereotacticLocalization_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyStereotacticLocalization_ = "http://snomed.info/sct#64318009";
 
     /// <summary>
     /// Literal for code: MyelogramOfPosteriorFossa_
@@ -12700,9 +16310,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMyelogramOfPosteriorFossa_ = "64387007";
 
     /// <summary>
+    /// Literal for code: NONEMyelogramOfPosteriorFossa_
+    /// </summary>
+    public const string LiteralNONEMyelogramOfPosteriorFossa_ = "http://snomed.info/sct#64387007";
+
+    /// <summary>
     /// Literal for code: MyocardialImaging_
     /// </summary>
     public const string LiteralMyocardialImaging_ = "64432007";
+
+    /// <summary>
+    /// Literal for code: NONEMyocardialImaging_
+    /// </summary>
+    public const string LiteralNONEMyocardialImaging_ = "http://snomed.info/sct#64432007";
 
     /// <summary>
     /// Literal for code: PulmonaryPerfusionImagingGaseous_
@@ -12710,9 +16330,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPulmonaryPerfusionImagingGaseous_ = "64682006";
 
     /// <summary>
+    /// Literal for code: NONEPulmonaryPerfusionImagingGaseous_
+    /// </summary>
+    public const string LiteralNONEPulmonaryPerfusionImagingGaseous_ = "http://snomed.info/sct#64682006";
+
+    /// <summary>
     /// Literal for code: VenographyOfSuperiorVenaCavaWithSerialography_
     /// </summary>
     public const string LiteralVenographyOfSuperiorVenaCavaWithSerialography_ = "64707006";
+
+    /// <summary>
+    /// Literal for code: NONEVenographyOfSuperiorVenaCavaWithSerialography_
+    /// </summary>
+    public const string LiteralNONEVenographyOfSuperiorVenaCavaWithSerialography_ = "http://snomed.info/sct#64707006";
 
     /// <summary>
     /// Literal for code: UrinaryBladderResidualUrineStudy_
@@ -12720,9 +16350,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUrinaryBladderResidualUrineStudy_ = "6480006";
 
     /// <summary>
+    /// Literal for code: NONEUrinaryBladderResidualUrineStudy_
+    /// </summary>
+    public const string LiteralNONEUrinaryBladderResidualUrineStudy_ = "http://snomed.info/sct#6480006";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastOperative_
     /// </summary>
     public const string LiteralDiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastOperative_ = "65066001";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastOperative_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastOperative_ = "http://snomed.info/sct#65066001";
 
     /// <summary>
     /// Literal for code: ArteriographyOfHeadAndNeck_
@@ -12730,9 +16370,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArteriographyOfHeadAndNeck_ = "65083005";
 
     /// <summary>
+    /// Literal for code: NONEArteriographyOfHeadAndNeck_
+    /// </summary>
+    public const string LiteralNONEArteriographyOfHeadAndNeck_ = "http://snomed.info/sct#65083005";
+
+    /// <summary>
     /// Literal for code: Polytomography_
     /// </summary>
     public const string LiteralPolytomography_ = "6521006";
+
+    /// <summary>
+    /// Literal for code: NONEPolytomography_
+    /// </summary>
+    public const string LiteralNONEPolytomography_ = "http://snomed.info/sct#6521006";
 
     /// <summary>
     /// Literal for code: UltrasonicGuidanceForAmniocentesis_
@@ -12740,9 +16390,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonicGuidanceForAmniocentesis_ = "65388005";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonicGuidanceForAmniocentesis_
+    /// </summary>
+    public const string LiteralNONEUltrasonicGuidanceForAmniocentesis_ = "http://snomed.info/sct#65388005";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyLateral_
     /// </summary>
     public const string LiteralDiagnosticRadiographyLateral_ = "65416003";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyLateral_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyLateral_ = "http://snomed.info/sct#65416003";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastPostOperative_
@@ -12750,9 +16410,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastPostOperative_ = "65590007";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastPostOperative_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastPostOperative_ = "http://snomed.info/sct#65590007";
+
+    /// <summary>
     /// Literal for code: GastroesophagealRefluxStudy_
     /// </summary>
     public const string LiteralGastroesophagealRefluxStudy_ = "65749006";
+
+    /// <summary>
+    /// Literal for code: NONEGastroesophagealRefluxStudy_
+    /// </summary>
+    public const string LiteralNONEGastroesophagealRefluxStudy_ = "http://snomed.info/sct#65749006";
 
     /// <summary>
     /// Literal for code: AngiographyOfNeck_
@@ -12760,9 +16430,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngiographyOfNeck_ = "65837003";
 
     /// <summary>
+    /// Literal for code: NONEAngiographyOfNeck_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfNeck_ = "http://snomed.info/sct#65837003";
+
+    /// <summary>
     /// Literal for code: OphthalmicUltrasonicForeignBodyLocalization_
     /// </summary>
     public const string LiteralOphthalmicUltrasonicForeignBodyLocalization_ = "65839000";
+
+    /// <summary>
+    /// Literal for code: NONEOphthalmicUltrasonicForeignBodyLocalization_
+    /// </summary>
+    public const string LiteralNONEOphthalmicUltrasonicForeignBodyLocalization_ = "http://snomed.info/sct#65839000";
 
     /// <summary>
     /// Literal for code: MagneticResonanceImagingOfMediastinum_
@@ -12770,9 +16450,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMagneticResonanceImagingOfMediastinum_ = "65867009";
 
     /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfMediastinum_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfMediastinum_ = "http://snomed.info/sct#65867009";
+
+    /// <summary>
     /// Literal for code: PulmonaryPerfusionStudy_
     /// </summary>
     public const string LiteralPulmonaryPerfusionStudy_ = "66088009";
+
+    /// <summary>
+    /// Literal for code: NONEPulmonaryPerfusionStudy_
+    /// </summary>
+    public const string LiteralNONEPulmonaryPerfusionStudy_ = "http://snomed.info/sct#66088009";
 
     /// <summary>
     /// Literal for code: RadionuclideLocalizationOfTumorLimitedArea_
@@ -12780,9 +16470,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadionuclideLocalizationOfTumorLimitedArea_ = "66377006";
 
     /// <summary>
+    /// Literal for code: NONERadionuclideLocalizationOfTumorLimitedArea_
+    /// </summary>
+    public const string LiteralNONERadionuclideLocalizationOfTumorLimitedArea_ = "http://snomed.info/sct#66377006";
+
+    /// <summary>
     /// Literal for code: RadionuclideLacrimalFlowStudy_
     /// </summary>
     public const string LiteralRadionuclideLacrimalFlowStudy_ = "6650009";
+
+    /// <summary>
+    /// Literal for code: NONERadionuclideLacrimalFlowStudy_
+    /// </summary>
+    public const string LiteralNONERadionuclideLacrimalFlowStudy_ = "http://snomed.info/sct#6650009";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyForForeignBodyDetectionAndLocalization_
@@ -12790,9 +16490,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyForForeignBodyDetectionAndLocalization_ = "66596009";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyForForeignBodyDetectionAndLocalization_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyForForeignBodyDetectionAndLocalization_ = "http://snomed.info/sct#66596009";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingOfOrbitFaceAndNeck_
     /// </summary>
     public const string LiteralMagneticResonanceImagingOfOrbitFaceAndNeck_ = "66675005";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfOrbitFaceAndNeck_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfOrbitFaceAndNeck_ = "http://snomed.info/sct#66675005";
 
     /// <summary>
     /// Literal for code: RadiographyOfCervicalSpine_
@@ -12800,9 +16510,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfCervicalSpine_ = "66769009";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfCervicalSpine_
+    /// </summary>
+    public const string LiteralNONERadiographyOfCervicalSpine_ = "http://snomed.info/sct#66769009";
+
+    /// <summary>
     /// Literal for code: RenalFunctionStudyWithSerialImaging_
     /// </summary>
     public const string LiteralRenalFunctionStudyWithSerialImaging_ = "66995002";
+
+    /// <summary>
+    /// Literal for code: NONERenalFunctionStudyWithSerialImaging_
+    /// </summary>
+    public const string LiteralNONERenalFunctionStudyWithSerialImaging_ = "http://snomed.info/sct#66995002";
 
     /// <summary>
     /// Literal for code: LymphGlandThermography_
@@ -12810,9 +16530,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLymphGlandThermography_ = "67022004";
 
     /// <summary>
+    /// Literal for code: NONELymphGlandThermography_
+    /// </summary>
+    public const string LiteralNONELymphGlandThermography_ = "http://snomed.info/sct#67022004";
+
+    /// <summary>
     /// Literal for code: AbdominalLymphangiographyBilateral_
     /// </summary>
     public const string LiteralAbdominalLymphangiographyBilateral_ = "67051000";
+
+    /// <summary>
+    /// Literal for code: NONEAbdominalLymphangiographyBilateral_
+    /// </summary>
+    public const string LiteralNONEAbdominalLymphangiographyBilateral_ = "http://snomed.info/sct#67051000";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfChestObliqueStandard_
@@ -12820,9 +16550,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfChestObliqueStandard_ = "67071009";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfChestObliqueStandard_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfChestObliqueStandard_ = "http://snomed.info/sct#67071009";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingWithoutIVContrastFollowedByContrastAndMoreSections_
     /// </summary>
     public const string LiteralMagneticResonanceImagingWithoutIVContrastFollowedByContrastAndMoreSections_ = "67255001";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingWithoutIVContrastFollowedByContrastAndMoreSections_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingWithoutIVContrastFollowedByContrastAndMoreSections_ = "http://snomed.info/sct#67255001";
 
     /// <summary>
     /// Literal for code: RadiologicExaminationOfCompleteSpineAnteroposteriorAndLateral_
@@ -12830,9 +16570,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicExaminationOfCompleteSpineAnteroposteriorAndLateral_ = "6728003";
 
     /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfCompleteSpineAnteroposteriorAndLateral_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfCompleteSpineAnteroposteriorAndLateral_ = "http://snomed.info/sct#6728003";
+
+    /// <summary>
     /// Literal for code: EsophagealMotilityStudyWithAcidPerfusionStudies_
     /// </summary>
     public const string LiteralEsophagealMotilityStudyWithAcidPerfusionStudies_ = "67357007";
+
+    /// <summary>
+    /// Literal for code: NONEEsophagealMotilityStudyWithAcidPerfusionStudies_
+    /// </summary>
+    public const string LiteralNONEEsophagealMotilityStudyWithAcidPerfusionStudies_ = "http://snomed.info/sct#67357007";
 
     /// <summary>
     /// Literal for code: PulmonaryVentilationPerfusionStudyByRadioactiveNitrogen_
@@ -12840,9 +16590,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPulmonaryVentilationPerfusionStudyByRadioactiveNitrogen_ = "67361001";
 
     /// <summary>
+    /// Literal for code: NONEPulmonaryVentilationPerfusionStudyByRadioactiveNitrogen_
+    /// </summary>
+    public const string LiteralNONEPulmonaryVentilationPerfusionStudyByRadioactiveNitrogen_ = "http://snomed.info/sct#67361001";
+
+    /// <summary>
     /// Literal for code: RadiologicExaminationOfKneeStandingAnteroposterior_
     /// </summary>
     public const string LiteralRadiologicExaminationOfKneeStandingAnteroposterior_ = "67499007";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfKneeStandingAnteroposterior_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfKneeStandingAnteroposterior_ = "http://snomed.info/sct#67499007";
 
     /// <summary>
     /// Literal for code: RadionuclideStudyOfCardiacOutput_
@@ -12850,9 +16610,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadionuclideStudyOfCardiacOutput_ = "67595003";
 
     /// <summary>
+    /// Literal for code: NONERadionuclideStudyOfCardiacOutput_
+    /// </summary>
+    public const string LiteralNONERadionuclideStudyOfCardiacOutput_ = "http://snomed.info/sct#67595003";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfChestPA_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfChestPA_ = "67632007";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfChestPA_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfChestPA_ = "http://snomed.info/sct#67632007";
 
     /// <summary>
     /// Literal for code: OralContrastDuodenography_
@@ -12860,9 +16630,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOralContrastDuodenography_ = "67715004";
 
     /// <summary>
+    /// Literal for code: NONEOralContrastDuodenography_
+    /// </summary>
+    public const string LiteralNONEOralContrastDuodenography_ = "http://snomed.info/sct#67715004";
+
+    /// <summary>
     /// Literal for code: ThoracicDiscography_
     /// </summary>
     public const string LiteralThoracicDiscography_ = "68083009";
+
+    /// <summary>
+    /// Literal for code: NONEThoracicDiscography_
+    /// </summary>
+    public const string LiteralNONEThoracicDiscography_ = "http://snomed.info/sct#68083009";
 
     /// <summary>
     /// Literal for code: ReplacementOfPercutaneousDrainageCatheterWithContrastMonitoring_
@@ -12870,9 +16650,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReplacementOfPercutaneousDrainageCatheterWithContrastMonitoring_ = "68280004";
 
     /// <summary>
+    /// Literal for code: NONEReplacementOfPercutaneousDrainageCatheterWithContrastMonitoring_
+    /// </summary>
+    public const string LiteralNONEReplacementOfPercutaneousDrainageCatheterWithContrastMonitoring_ = "http://snomed.info/sct#68280004";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfFacialBones_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfFacialBones_ = "68306006";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfFacialBones_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfFacialBones_ = "http://snomed.info/sct#68306006";
 
     /// <summary>
     /// Literal for code: CerebrospinalFluidFlowImagingCisternography_
@@ -12880,9 +16670,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCerebrospinalFluidFlowImagingCisternography_ = "68558001";
 
     /// <summary>
+    /// Literal for code: NONECerebrospinalFluidFlowImagingCisternography_
+    /// </summary>
+    public const string LiteralNONECerebrospinalFluidFlowImagingCisternography_ = "http://snomed.info/sct#68558001";
+
+    /// <summary>
     /// Literal for code: RadioisotopeStudyOfMusculoskeletalSystem_
     /// </summary>
     public const string LiteralRadioisotopeStudyOfMusculoskeletalSystem_ = "68796002";
+
+    /// <summary>
+    /// Literal for code: NONERadioisotopeStudyOfMusculoskeletalSystem_
+    /// </summary>
+    public const string LiteralNONERadioisotopeStudyOfMusculoskeletalSystem_ = "http://snomed.info/sct#68796002";
 
     /// <summary>
     /// Literal for code: RadiologicExaminationOfThoracolumbarSpineStanding_
@@ -12890,9 +16690,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicExaminationOfThoracolumbarSpineStanding_ = "68862002";
 
     /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfThoracolumbarSpineStanding_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfThoracolumbarSpineStanding_ = "http://snomed.info/sct#68862002";
+
+    /// <summary>
     /// Literal for code: PelvimetryWithPlacentalLocalization_
     /// </summary>
     public const string LiteralPelvimetryWithPlacentalLocalization_ = "68965004";
+
+    /// <summary>
+    /// Literal for code: NONEPelvimetryWithPlacentalLocalization_
+    /// </summary>
+    public const string LiteralNONEPelvimetryWithPlacentalLocalization_ = "http://snomed.info/sct#68965004";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfCervicalEsophagus_
@@ -12900,9 +16710,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfCervicalEsophagus_ = "69064006";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfCervicalEsophagus_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfCervicalEsophagus_ = "http://snomed.info/sct#69064006";
+
+    /// <summary>
     /// Literal for code: RadiographyOfHeart_
     /// </summary>
     public const string LiteralRadiographyOfHeart_ = "69143005";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfHeart_
+    /// </summary>
+    public const string LiteralNONERadiographyOfHeart_ = "http://snomed.info/sct#69143005";
 
     /// <summary>
     /// Literal for code: OcularPhotographyCloseUp_
@@ -12910,9 +16730,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOcularPhotographyCloseUp_ = "69167002";
 
     /// <summary>
+    /// Literal for code: NONEOcularPhotographyCloseUp_
+    /// </summary>
+    public const string LiteralNONEOcularPhotographyCloseUp_ = "http://snomed.info/sct#69167002";
+
+    /// <summary>
     /// Literal for code: OphthalmicEchographyContactBScan_
     /// </summary>
     public const string LiteralOphthalmicEchographyContactBScan_ = "69477006";
+
+    /// <summary>
+    /// Literal for code: NONEOphthalmicEchographyContactBScan_
+    /// </summary>
+    public const string LiteralNONEOphthalmicEchographyContactBScan_ = "http://snomed.info/sct#69477006";
 
     /// <summary>
     /// Literal for code: UltrasoundForForeignBodyLocalization_
@@ -12920,9 +16750,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasoundForForeignBodyLocalization_ = "69610007";
 
     /// <summary>
+    /// Literal for code: NONEUltrasoundForForeignBodyLocalization_
+    /// </summary>
+    public const string LiteralNONEUltrasoundForForeignBodyLocalization_ = "http://snomed.info/sct#69610007";
+
+    /// <summary>
     /// Literal for code: ComputerizedTomographyAdditionalViews_
     /// </summary>
     public const string LiteralComputerizedTomographyAdditionalViews_ = "69657008";
+
+    /// <summary>
+    /// Literal for code: NONEComputerizedTomographyAdditionalViews_
+    /// </summary>
+    public const string LiteralNONEComputerizedTomographyAdditionalViews_ = "http://snomed.info/sct#69657008";
 
     /// <summary>
     /// Literal for code: RadionuclideSpecialDynamicFunctionStudy_
@@ -12930,9 +16770,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadionuclideSpecialDynamicFunctionStudy_ = "69720006";
 
     /// <summary>
+    /// Literal for code: NONERadionuclideSpecialDynamicFunctionStudy_
+    /// </summary>
+    public const string LiteralNONERadionuclideSpecialDynamicFunctionStudy_ = "http://snomed.info/sct#69720006";
+
+    /// <summary>
     /// Literal for code: EchographyBScanLimited_
     /// </summary>
     public const string LiteralEchographyBScanLimited_ = "69772001";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyBScanLimited_
+    /// </summary>
+    public const string LiteralNONEEchographyBScanLimited_ = "http://snomed.info/sct#69772001";
 
     /// <summary>
     /// Literal for code: RadiologicGuidanceForPercutaneousDrainageOfAbscess_
@@ -12940,9 +16790,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicGuidanceForPercutaneousDrainageOfAbscess_ = "70157001";
 
     /// <summary>
+    /// Literal for code: NONERadiologicGuidanceForPercutaneousDrainageOfAbscess_
+    /// </summary>
+    public const string LiteralNONERadiologicGuidanceForPercutaneousDrainageOfAbscess_ = "http://snomed.info/sct#70157001";
+
+    /// <summary>
     /// Literal for code: PlateletSurvivalStudy_
     /// </summary>
     public const string LiteralPlateletSurvivalStudy_ = "70268007";
+
+    /// <summary>
+    /// Literal for code: NONEPlateletSurvivalStudy_
+    /// </summary>
+    public const string LiteralNONEPlateletSurvivalStudy_ = "http://snomed.info/sct#70268007";
 
     /// <summary>
     /// Literal for code: UltrasoundPeripheralImaging_
@@ -12950,9 +16810,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasoundPeripheralImaging_ = "70435002";
 
     /// <summary>
+    /// Literal for code: NONEUltrasoundPeripheralImaging_
+    /// </summary>
+    public const string LiteralNONEUltrasoundPeripheralImaging_ = "http://snomed.info/sct#70435002";
+
+    /// <summary>
     /// Literal for code: SkeletalXRayOfElbowAndForearm_
     /// </summary>
     public const string LiteralSkeletalXRayOfElbowAndForearm_ = "70780000";
+
+    /// <summary>
+    /// Literal for code: NONESkeletalXRayOfElbowAndForearm_
+    /// </summary>
+    public const string LiteralNONESkeletalXRayOfElbowAndForearm_ = "http://snomed.info/sct#70780000";
 
     /// <summary>
     /// Literal for code: ComputerizedTomographyFollowUp_
@@ -12960,9 +16830,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedTomographyFollowUp_ = "71040008";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedTomographyFollowUp_
+    /// </summary>
+    public const string LiteralNONEComputerizedTomographyFollowUp_ = "http://snomed.info/sct#71040008";
+
+    /// <summary>
     /// Literal for code: PancreatographyDuringSurgery_
     /// </summary>
     public const string LiteralPancreatographyDuringSurgery_ = "71093009";
+
+    /// <summary>
+    /// Literal for code: NONEPancreatographyDuringSurgery_
+    /// </summary>
+    public const string LiteralNONEPancreatographyDuringSurgery_ = "http://snomed.info/sct#71093009";
 
     /// <summary>
     /// Literal for code: EchographyOfAbdomenBScanComplete_
@@ -12970,9 +16850,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchographyOfAbdomenBScanComplete_ = "71163001";
 
     /// <summary>
+    /// Literal for code: NONEEchographyOfAbdomenBScanComplete_
+    /// </summary>
+    public const string LiteralNONEEchographyOfAbdomenBScanComplete_ = "http://snomed.info/sct#71163001";
+
+    /// <summary>
     /// Literal for code: RadioiodinePlasmaClearanceStudy_
     /// </summary>
     public const string LiteralRadioiodinePlasmaClearanceStudy_ = "71233004";
+
+    /// <summary>
+    /// Literal for code: NONERadioiodinePlasmaClearanceStudy_
+    /// </summary>
+    public const string LiteralNONERadioiodinePlasmaClearanceStudy_ = "http://snomed.info/sct#71233004";
 
     /// <summary>
     /// Literal for code: VenographyOfAdrenal_
@@ -12980,9 +16870,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVenographyOfAdrenal_ = "71254006";
 
     /// <summary>
+    /// Literal for code: NONEVenographyOfAdrenal_
+    /// </summary>
+    public const string LiteralNONEVenographyOfAdrenal_ = "http://snomed.info/sct#71254006";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingOfJointOfUpperExtremity_
     /// </summary>
     public const string LiteralMagneticResonanceImagingOfJointOfUpperExtremity_ = "71503007";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfJointOfUpperExtremity_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfJointOfUpperExtremity_ = "http://snomed.info/sct#71503007";
 
     /// <summary>
     /// Literal for code: GasContrastRadiographyOfPelvis_
@@ -12990,9 +16890,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGasContrastRadiographyOfPelvis_ = "71599004";
 
     /// <summary>
+    /// Literal for code: NONEGasContrastRadiographyOfPelvis_
+    /// </summary>
+    public const string LiteralNONEGasContrastRadiographyOfPelvis_ = "http://snomed.info/sct#71599004";
+
+    /// <summary>
     /// Literal for code: Mammography_
     /// </summary>
     public const string LiteralMammography_ = "71651007";
+
+    /// <summary>
+    /// Literal for code: NONEMammography_
+    /// </summary>
+    public const string LiteralNONEMammography_ = "http://snomed.info/sct#71651007";
 
     /// <summary>
     /// Literal for code: UltrasoundPeripheralImagingBScan_
@@ -13000,9 +16910,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasoundPeripheralImagingBScan_ = "7174001";
 
     /// <summary>
+    /// Literal for code: NONEUltrasoundPeripheralImagingBScan_
+    /// </summary>
+    public const string LiteralNONEUltrasoundPeripheralImagingBScan_ = "http://snomed.info/sct#7174001";
+
+    /// <summary>
     /// Literal for code: EchographyOfBreastBScanAndRealTimeWithImageDocumentation_
     /// </summary>
     public const string LiteralEchographyOfBreastBScanAndRealTimeWithImageDocumentation_ = "71867003";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyOfBreastBScanAndRealTimeWithImageDocumentation_
+    /// </summary>
+    public const string LiteralNONEEchographyOfBreastBScanAndRealTimeWithImageDocumentation_ = "http://snomed.info/sct#71867003";
 
     /// <summary>
     /// Literal for code: RadiologicGuidanceForPercutaneousSpecimenCollection_
@@ -13010,9 +16930,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicGuidanceForPercutaneousSpecimenCollection_ = "71894004";
 
     /// <summary>
+    /// Literal for code: NONERadiologicGuidanceForPercutaneousSpecimenCollection_
+    /// </summary>
+    public const string LiteralNONERadiologicGuidanceForPercutaneousSpecimenCollection_ = "http://snomed.info/sct#71894004";
+
+    /// <summary>
     /// Literal for code: GastricMucosaImaging_
     /// </summary>
     public const string LiteralGastricMucosaImaging_ = "71954002";
+
+    /// <summary>
+    /// Literal for code: NONEGastricMucosaImaging_
+    /// </summary>
+    public const string LiteralNONEGastricMucosaImaging_ = "http://snomed.info/sct#71954002";
 
     /// <summary>
     /// Literal for code: RadionuclideUptakeStudy_
@@ -13020,9 +16950,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadionuclideUptakeStudy_ = "71977002";
 
     /// <summary>
+    /// Literal for code: NONERadionuclideUptakeStudy_
+    /// </summary>
+    public const string LiteralNONERadionuclideUptakeStudy_ = "http://snomed.info/sct#71977002";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingOfNeck_
     /// </summary>
     public const string LiteralMagneticResonanceImagingOfNeck_ = "72221006";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfNeck_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfNeck_ = "http://snomed.info/sct#72221006";
 
     /// <summary>
     /// Literal for code: AngiographyOfCoronaryArteriesBilateral_
@@ -13030,9 +16970,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngiographyOfCoronaryArteriesBilateral_ = "72383008";
 
     /// <summary>
+    /// Literal for code: NONEAngiographyOfCoronaryArteriesBilateral_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfCoronaryArteriesBilateral_ = "http://snomed.info/sct#72383008";
+
+    /// <summary>
     /// Literal for code: RadiologicExaminationOfThoracicSpineAnteroposteriorAndLateral_
     /// </summary>
     public const string LiteralRadiologicExaminationOfThoracicSpineAnteroposteriorAndLateral_ = "72508000";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfThoracicSpineAnteroposteriorAndLateral_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfThoracicSpineAnteroposteriorAndLateral_ = "http://snomed.info/sct#72508000";
 
     /// <summary>
     /// Literal for code: ComputerizedTomographyForGuidanceLocalization_
@@ -13040,9 +16990,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedTomographyForGuidanceLocalization_ = "72716007";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedTomographyForGuidanceLocalization_
+    /// </summary>
+    public const string LiteralNONEComputerizedTomographyForGuidanceLocalization_ = "http://snomed.info/sct#72716007";
+
+    /// <summary>
     /// Literal for code: SkeletalXRayOfUpperLimb_
     /// </summary>
     public const string LiteralSkeletalXRayOfUpperLimb_ = "72872009";
+
+    /// <summary>
+    /// Literal for code: NONESkeletalXRayOfUpperLimb_
+    /// </summary>
+    public const string LiteralNONESkeletalXRayOfUpperLimb_ = "http://snomed.info/sct#72872009";
 
     /// <summary>
     /// Literal for code: RadiographyOfSoftTissueOfHand_
@@ -13050,9 +17010,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfSoftTissueOfHand_ = "72911009";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfSoftTissueOfHand_
+    /// </summary>
+    public const string LiteralNONERadiographyOfSoftTissueOfHand_ = "http://snomed.info/sct#72911009";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyRight_
     /// </summary>
     public const string LiteralDiagnosticRadiographyRight_ = "73523002";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyRight_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyRight_ = "http://snomed.info/sct#73523002";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographySerialFilms_
@@ -13060,9 +17030,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographySerialFilms_ = "7370001";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographySerialFilms_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographySerialFilms_ = "http://snomed.info/sct#7370001";
+
+    /// <summary>
     /// Literal for code: RadiographyOfSoftTissueOfAnkle_
     /// </summary>
     public const string LiteralRadiographyOfSoftTissueOfAnkle_ = "73771004";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfSoftTissueOfAnkle_
+    /// </summary>
+    public const string LiteralNONERadiographyOfSoftTissueOfAnkle_ = "http://snomed.info/sct#73771004";
 
     /// <summary>
     /// Literal for code: RadiologicExaminationOfKnee_
@@ -13070,9 +17050,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicExaminationOfKnee_ = "74016001";
 
     /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfKnee_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfKnee_ = "http://snomed.info/sct#74016001";
+
+    /// <summary>
     /// Literal for code: IntraoperativeTranshepaticCholangiogram_
     /// </summary>
     public const string LiteralIntraoperativeTranshepaticCholangiogram_ = "74017005";
+
+    /// <summary>
+    /// Literal for code: NONEIntraoperativeTranshepaticCholangiogram_
+    /// </summary>
+    public const string LiteralNONEIntraoperativeTranshepaticCholangiogram_ = "http://snomed.info/sct#74017005";
 
     /// <summary>
     /// Literal for code: RadiographyOfUpperLimb_
@@ -13080,9 +17070,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfUpperLimb_ = "74170002";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfUpperLimb_
+    /// </summary>
+    public const string LiteralNONERadiographyOfUpperLimb_ = "http://snomed.info/sct#74170002";
+
+    /// <summary>
     /// Literal for code: EchocardiographyForDeterminingSizeOfVentricularChambers_
     /// </summary>
     public const string LiteralEchocardiographyForDeterminingSizeOfVentricularChambers_ = "74193008";
+
+    /// <summary>
+    /// Literal for code: NONEEchocardiographyForDeterminingSizeOfVentricularChambers_
+    /// </summary>
+    public const string LiteralNONEEchocardiographyForDeterminingSizeOfVentricularChambers_ = "http://snomed.info/sct#74193008";
 
     /// <summary>
     /// Literal for code: BoneMarrowImagingLimitedArea_
@@ -13090,9 +17090,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBoneMarrowImagingLimitedArea_ = "7421004";
 
     /// <summary>
+    /// Literal for code: NONEBoneMarrowImagingLimitedArea_
+    /// </summary>
+    public const string LiteralNONEBoneMarrowImagingLimitedArea_ = "http://snomed.info/sct#7421004";
+
+    /// <summary>
     /// Literal for code: PulmonaryPerfusionImagingGaseousWithVentilationRebreathingAndWashout_
     /// </summary>
     public const string LiteralPulmonaryPerfusionImagingGaseousWithVentilationRebreathingAndWashout_ = "74219000";
+
+    /// <summary>
+    /// Literal for code: NONEPulmonaryPerfusionImagingGaseousWithVentilationRebreathingAndWashout_
+    /// </summary>
+    public const string LiteralNONEPulmonaryPerfusionImagingGaseousWithVentilationRebreathingAndWashout_ = "http://snomed.info/sct#74219000";
 
     /// <summary>
     /// Literal for code: FluoroscopyForForeignBodyLocalization_
@@ -13100,9 +17110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopyForForeignBodyLocalization_ = "74546006";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopyForForeignBodyLocalization_
+    /// </summary>
+    public const string LiteralNONEFluoroscopyForForeignBodyLocalization_ = "http://snomed.info/sct#74546006";
+
+    /// <summary>
     /// Literal for code: KidneyImagingWithDynamicFunctionStudy_
     /// </summary>
     public const string LiteralKidneyImagingWithDynamicFunctionStudy_ = "74590001";
+
+    /// <summary>
+    /// Literal for code: NONEKidneyImagingWithDynamicFunctionStudy_
+    /// </summary>
+    public const string LiteralNONEKidneyImagingWithDynamicFunctionStudy_ = "http://snomed.info/sct#74590001";
 
     /// <summary>
     /// Literal for code: ComputerizedAxialTomographyOfPelvisWithContrast_
@@ -13110,9 +17130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedAxialTomographyOfPelvisWithContrast_ = "74710000";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedAxialTomographyOfPelvisWithContrast_
+    /// </summary>
+    public const string LiteralNONEComputerizedAxialTomographyOfPelvisWithContrast_ = "http://snomed.info/sct#74710000";
+
+    /// <summary>
     /// Literal for code: RadiographyOfForearm_
     /// </summary>
     public const string LiteralRadiographyOfForearm_ = "74809003";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfForearm_
+    /// </summary>
+    public const string LiteralNONERadiographyOfForearm_ = "http://snomed.info/sct#74809003";
 
     /// <summary>
     /// Literal for code: AngiocardiographyBySerialographySinglePlane_
@@ -13120,9 +17150,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngiocardiographyBySerialographySinglePlane_ = "74834003";
 
     /// <summary>
+    /// Literal for code: NONEAngiocardiographyBySerialographySinglePlane_
+    /// </summary>
+    public const string LiteralNONEAngiocardiographyBySerialographySinglePlane_ = "http://snomed.info/sct#74834003";
+
+    /// <summary>
     /// Literal for code: EchographyOfChestRealTimeWithImageDocumentation_
     /// </summary>
     public const string LiteralEchographyOfChestRealTimeWithImageDocumentation_ = "74874009";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyOfChestRealTimeWithImageDocumentation_
+    /// </summary>
+    public const string LiteralNONEEchographyOfChestRealTimeWithImageDocumentation_ = "http://snomed.info/sct#74874009";
 
     /// <summary>
     /// Literal for code: Pelvimetry_
@@ -13130,9 +17170,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPelvimetry_ = "75014006";
 
     /// <summary>
+    /// Literal for code: NONEPelvimetry_
+    /// </summary>
+    public const string LiteralNONEPelvimetry_ = "http://snomed.info/sct#75014006";
+
+    /// <summary>
     /// Literal for code: IntraosseousVenography_
     /// </summary>
     public const string LiteralIntraosseousVenography_ = "75233009";
+
+    /// <summary>
+    /// Literal for code: NONEIntraosseousVenography_
+    /// </summary>
+    public const string LiteralNONEIntraosseousVenography_ = "http://snomed.info/sct#75233009";
 
     /// <summary>
     /// Literal for code: ComputerizedAxialTomographyOfThoraxWithContrast_
@@ -13140,9 +17190,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedAxialTomographyOfThoraxWithContrast_ = "75385009";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedAxialTomographyOfThoraxWithContrast_
+    /// </summary>
+    public const string LiteralNONEComputerizedAxialTomographyOfThoraxWithContrast_ = "http://snomed.info/sct#75385009";
+
+    /// <summary>
     /// Literal for code: LaparoscopyWithGuidedTranshepaticCholangiographyAndBiopsy_
     /// </summary>
     public const string LiteralLaparoscopyWithGuidedTranshepaticCholangiographyAndBiopsy_ = "75593005";
+
+    /// <summary>
+    /// Literal for code: NONELaparoscopyWithGuidedTranshepaticCholangiographyAndBiopsy_
+    /// </summary>
+    public const string LiteralNONELaparoscopyWithGuidedTranshepaticCholangiographyAndBiopsy_ = "http://snomed.info/sct#75593005";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfOrbits_
@@ -13150,9 +17210,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfOrbits_ = "75675001";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfOrbits_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfOrbits_ = "http://snomed.info/sct#75675001";
+
+    /// <summary>
     /// Literal for code: GastrointestinalTractXRay_
     /// </summary>
     public const string LiteralGastrointestinalTractXRay_ = "75679007";
+
+    /// <summary>
+    /// Literal for code: NONEGastrointestinalTractXRay_
+    /// </summary>
+    public const string LiteralNONEGastrointestinalTractXRay_ = "http://snomed.info/sct#75679007";
 
     /// <summary>
     /// Literal for code: MagneticResonanceImagingOfProstate_
@@ -13160,9 +17230,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMagneticResonanceImagingOfProstate_ = "75691003";
 
     /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfProstate_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfProstate_ = "http://snomed.info/sct#75691003";
+
+    /// <summary>
     /// Literal for code: SpinalAngiographySelective_
     /// </summary>
     public const string LiteralSpinalAngiographySelective_ = "7576008";
+
+    /// <summary>
+    /// Literal for code: NONESpinalAngiographySelective_
+    /// </summary>
+    public const string LiteralNONESpinalAngiographySelective_ = "http://snomed.info/sct#7576008";
 
     /// <summary>
     /// Literal for code: PulmonaryVentilationStudyGaseous_
@@ -13170,9 +17250,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPulmonaryVentilationStudyGaseous_ = "75766009";
 
     /// <summary>
+    /// Literal for code: NONEPulmonaryVentilationStudyGaseous_
+    /// </summary>
+    public const string LiteralNONEPulmonaryVentilationStudyGaseous_ = "http://snomed.info/sct#75766009";
+
+    /// <summary>
     /// Literal for code: ComputerizedAxialTomographyOfCervicalSpineWithContrast_
     /// </summary>
     public const string LiteralComputerizedAxialTomographyOfCervicalSpineWithContrast_ = "762008";
+
+    /// <summary>
+    /// Literal for code: NONEComputerizedAxialTomographyOfCervicalSpineWithContrast_
+    /// </summary>
+    public const string LiteralNONEComputerizedAxialTomographyOfCervicalSpineWithContrast_ = "http://snomed.info/sct#762008";
 
     /// <summary>
     /// Literal for code: UpperGastrointestinalTractExaminationWithAirContrastWithKUB_
@@ -13180,9 +17270,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUpperGastrointestinalTractExaminationWithAirContrastWithKUB_ = "76285001";
 
     /// <summary>
+    /// Literal for code: NONEUpperGastrointestinalTractExaminationWithAirContrastWithKUB_
+    /// </summary>
+    public const string LiteralNONEUpperGastrointestinalTractExaminationWithAirContrastWithKUB_ = "http://snomed.info/sct#76285001";
+
+    /// <summary>
     /// Literal for code: IsotopeStudyForRenalPlasmaFlow_
     /// </summary>
     public const string LiteralIsotopeStudyForRenalPlasmaFlow_ = "7656009";
+
+    /// <summary>
+    /// Literal for code: NONEIsotopeStudyForRenalPlasmaFlow_
+    /// </summary>
+    public const string LiteralNONEIsotopeStudyForRenalPlasmaFlow_ = "http://snomed.info/sct#7656009";
 
     /// <summary>
     /// Literal for code: MuscleThermography_
@@ -13190,9 +17290,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMuscleThermography_ = "76565001";
 
     /// <summary>
+    /// Literal for code: NONEMuscleThermography_
+    /// </summary>
+    public const string LiteralNONEMuscleThermography_ = "http://snomed.info/sct#76565001";
+
+    /// <summary>
     /// Literal for code: RadiographyOfSoftTissueOfUpperArm_
     /// </summary>
     public const string LiteralRadiographyOfSoftTissueOfUpperArm_ = "76573005";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfSoftTissueOfUpperArm_
+    /// </summary>
+    public const string LiteralNONERadiographyOfSoftTissueOfUpperArm_ = "http://snomed.info/sct#76573005";
 
     /// <summary>
     /// Literal for code: CTGuidanceForCystAspiration_
@@ -13200,9 +17310,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCTGuidanceForCystAspiration_ = "76718005";
 
     /// <summary>
+    /// Literal for code: NONECTGuidanceForCystAspiration_
+    /// </summary>
+    public const string LiteralNONECTGuidanceForCystAspiration_ = "http://snomed.info/sct#76718005";
+
+    /// <summary>
     /// Literal for code: RadiographyOfElbow_
     /// </summary>
     public const string LiteralRadiographyOfElbow_ = "76913009";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfElbow_
+    /// </summary>
+    public const string LiteralNONERadiographyOfElbow_ = "http://snomed.info/sct#76913009";
 
     /// <summary>
     /// Literal for code: RadioisotopeStudyOfGenitourinarySystem_
@@ -13210,9 +17330,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadioisotopeStudyOfGenitourinarySystem_ = "76927004";
 
     /// <summary>
+    /// Literal for code: NONERadioisotopeStudyOfGenitourinarySystem_
+    /// </summary>
+    public const string LiteralNONERadioisotopeStudyOfGenitourinarySystem_ = "http://snomed.info/sct#76927004";
+
+    /// <summary>
     /// Literal for code: OphthalmicEchographyImmersionBScan_
     /// </summary>
     public const string LiteralOphthalmicEchographyImmersionBScan_ = "76930006";
+
+    /// <summary>
+    /// Literal for code: NONEOphthalmicEchographyImmersionBScan_
+    /// </summary>
+    public const string LiteralNONEOphthalmicEchographyImmersionBScan_ = "http://snomed.info/sct#76930006";
 
     /// <summary>
     /// Literal for code: Discogram_
@@ -13220,9 +17350,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiscogram_ = "76981001";
 
     /// <summary>
+    /// Literal for code: NONEDiscogram_
+    /// </summary>
+    public const string LiteralNONEDiscogram_ = "http://snomed.info/sct#76981001";
+
+    /// <summary>
     /// Literal for code: Angiography_
     /// </summary>
     public const string LiteralAngiography_ = "77343006";
+
+    /// <summary>
+    /// Literal for code: NONEAngiography_
+    /// </summary>
+    public const string LiteralNONEAngiography_ = "http://snomed.info/sct#77343006";
 
     /// <summary>
     /// Literal for code: ComputerizedAxialTomography_
@@ -13230,9 +17370,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedAxialTomography_ = "77477000";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedAxialTomography_
+    /// </summary>
+    public const string LiteralNONEComputerizedAxialTomography_ = "http://snomed.info/sct#77477000";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfRibsBilateral_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfRibsBilateral_ = "77532004";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfRibsBilateral_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfRibsBilateral_ = "http://snomed.info/sct#77532004";
 
     /// <summary>
     /// Literal for code: UltrasonographyOfUrinarySystem_
@@ -13240,9 +17390,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonographyOfUrinarySystem_ = "77658008";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonographyOfUrinarySystem_
+    /// </summary>
+    public const string LiteralNONEUltrasonographyOfUrinarySystem_ = "http://snomed.info/sct#77658008";
+
+    /// <summary>
     /// Literal for code: AngiographyOfAdrenalArteriesBilateral_
     /// </summary>
     public const string LiteralAngiographyOfAdrenalArteriesBilateral_ = "77660005";
+
+    /// <summary>
+    /// Literal for code: NONEAngiographyOfAdrenalArteriesBilateral_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfAdrenalArteriesBilateral_ = "http://snomed.info/sct#77660005";
 
     /// <summary>
     /// Literal for code: AngiographyOfCervicalVertebralAndIntracranialArteries_
@@ -13250,9 +17410,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngiographyOfCervicalVertebralAndIntracranialArteries_ = "77717008";
 
     /// <summary>
+    /// Literal for code: NONEAngiographyOfCervicalVertebralAndIntracranialArteries_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfCervicalVertebralAndIntracranialArteries_ = "http://snomed.info/sct#77717008";
+
+    /// <summary>
     /// Literal for code: DopplerFlowMappingOfHeadAndNeck_
     /// </summary>
     public const string LiteralDopplerFlowMappingOfHeadAndNeck_ = "77973006";
+
+    /// <summary>
+    /// Literal for code: NONEDopplerFlowMappingOfHeadAndNeck_
+    /// </summary>
+    public const string LiteralNONEDopplerFlowMappingOfHeadAndNeck_ = "http://snomed.info/sct#77973006";
 
     /// <summary>
     /// Literal for code: ContrastDacryocystogram_
@@ -13260,9 +17430,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralContrastDacryocystogram_ = "78002002";
 
     /// <summary>
+    /// Literal for code: NONEContrastDacryocystogram_
+    /// </summary>
+    public const string LiteralNONEContrastDacryocystogram_ = "http://snomed.info/sct#78002002";
+
+    /// <summary>
     /// Literal for code: EchographyBScan_
     /// </summary>
     public const string LiteralEchographyBScan_ = "78013004";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyBScan_
+    /// </summary>
+    public const string LiteralNONEEchographyBScan_ = "http://snomed.info/sct#78013004";
 
     /// <summary>
     /// Literal for code: RadiologicExaminationOfThoracolumbarSpineAnteroposteriorAndLateral_
@@ -13270,9 +17450,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicExaminationOfThoracolumbarSpineAnteroposteriorAndLateral_ = "7812007";
 
     /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfThoracolumbarSpineAnteroposteriorAndLateral_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfThoracolumbarSpineAnteroposteriorAndLateral_ = "http://snomed.info/sct#7812007";
+
+    /// <summary>
     /// Literal for code: EchographyOfSpinalCanalAndContents_
     /// </summary>
     public const string LiteralEchographyOfSpinalCanalAndContents_ = "78138006";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyOfSpinalCanalAndContents_
+    /// </summary>
+    public const string LiteralNONEEchographyOfSpinalCanalAndContents_ = "http://snomed.info/sct#78138006";
 
     /// <summary>
     /// Literal for code: EchographyBScanComplete_
@@ -13280,9 +17470,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchographyBScanComplete_ = "78176000";
 
     /// <summary>
+    /// Literal for code: NONEEchographyBScanComplete_
+    /// </summary>
+    public const string LiteralNONEEchographyBScanComplete_ = "http://snomed.info/sct#78176000";
+
+    /// <summary>
     /// Literal for code: UltrasonographyOfRetroperitoneum_
     /// </summary>
     public const string LiteralUltrasonographyOfRetroperitoneum_ = "78579002";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasonographyOfRetroperitoneum_
+    /// </summary>
+    public const string LiteralNONEUltrasonographyOfRetroperitoneum_ = "http://snomed.info/sct#78579002";
 
     /// <summary>
     /// Literal for code: FluoroscopySerialFilms_
@@ -13290,9 +17490,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopySerialFilms_ = "78669009";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopySerialFilms_
+    /// </summary>
+    public const string LiteralNONEFluoroscopySerialFilms_ = "http://snomed.info/sct#78669009";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfAllFingers_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfAllFingers_ = "78670005";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfAllFingers_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfAllFingers_ = "http://snomed.info/sct#78670005";
 
     /// <summary>
     /// Literal for code: DopplerFlowMappingOfHeart_
@@ -13300,9 +17510,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDopplerFlowMappingOfHeart_ = "78711007";
 
     /// <summary>
+    /// Literal for code: NONEDopplerFlowMappingOfHeart_
+    /// </summary>
+    public const string LiteralNONEDopplerFlowMappingOfHeart_ = "http://snomed.info/sct#78711007";
+
+    /// <summary>
     /// Literal for code: UltrasonographyOfMultipleSites_
     /// </summary>
     public const string LiteralUltrasonographyOfMultipleSites_ = "78938007";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasonographyOfMultipleSites_
+    /// </summary>
+    public const string LiteralNONEUltrasonographyOfMultipleSites_ = "http://snomed.info/sct#78938007";
 
     /// <summary>
     /// Literal for code: VenographyOfLowerExtremity_
@@ -13310,9 +17530,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVenographyOfLowerExtremity_ = "79073004";
 
     /// <summary>
+    /// Literal for code: NONEVenographyOfLowerExtremity_
+    /// </summary>
+    public const string LiteralNONEVenographyOfLowerExtremity_ = "http://snomed.info/sct#79073004";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfFibulaCombinedAPAndLateral_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfFibulaCombinedAPAndLateral_ = "79082005";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfFibulaCombinedAPAndLateral_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfFibulaCombinedAPAndLateral_ = "http://snomed.info/sct#79082005";
 
     /// <summary>
     /// Literal for code: ArthrographyOfShoulder_
@@ -13320,9 +17550,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArthrographyOfShoulder_ = "79092002";
 
     /// <summary>
+    /// Literal for code: NONEArthrographyOfShoulder_
+    /// </summary>
+    public const string LiteralNONEArthrographyOfShoulder_ = "http://snomed.info/sct#79092002";
+
+    /// <summary>
     /// Literal for code: RadiographyOfThyroidRegion_
     /// </summary>
     public const string LiteralRadiographyOfThyroidRegion_ = "79190008";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfThyroidRegion_
+    /// </summary>
+    public const string LiteralNONERadiographyOfThyroidRegion_ = "http://snomed.info/sct#79190008";
 
     /// <summary>
     /// Literal for code: CerebralVentriculography_
@@ -13330,9 +17570,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCerebralVentriculography_ = "79237001";
 
     /// <summary>
+    /// Literal for code: NONECerebralVentriculography_
+    /// </summary>
+    public const string LiteralNONECerebralVentriculography_ = "http://snomed.info/sct#79237001";
+
+    /// <summary>
     /// Literal for code: RenalArteriography_
     /// </summary>
     public const string LiteralRenalArteriography_ = "79516005";
+
+    /// <summary>
+    /// Literal for code: NONERenalArteriography_
+    /// </summary>
+    public const string LiteralNONERenalArteriography_ = "http://snomed.info/sct#79516005";
 
     /// <summary>
     /// Literal for code: MagneticResonanceImagingOfJointOfLowerExtremity_
@@ -13340,9 +17590,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMagneticResonanceImagingOfJointOfLowerExtremity_ = "79563007";
 
     /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfJointOfLowerExtremity_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfJointOfLowerExtremity_ = "http://snomed.info/sct#79563007";
+
+    /// <summary>
     /// Literal for code: RadiographyOfSpine_
     /// </summary>
     public const string LiteralRadiographyOfSpine_ = "79760008";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfSpine_
+    /// </summary>
+    public const string LiteralNONERadiographyOfSpine_ = "http://snomed.info/sct#79760008";
 
     /// <summary>
     /// Literal for code: RadiographyOfTonsilsAndAdenoids_
@@ -13350,9 +17610,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfTonsilsAndAdenoids_ = "79777008";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfTonsilsAndAdenoids_
+    /// </summary>
+    public const string LiteralNONERadiographyOfTonsilsAndAdenoids_ = "http://snomed.info/sct#79777008";
+
+    /// <summary>
     /// Literal for code: BoneMarrowImagingWholeBody_
     /// </summary>
     public const string LiteralBoneMarrowImagingWholeBody_ = "7993000";
+
+    /// <summary>
+    /// Literal for code: NONEBoneMarrowImagingWholeBody_
+    /// </summary>
+    public const string LiteralNONEBoneMarrowImagingWholeBody_ = "http://snomed.info/sct#7993000";
 
     /// <summary>
     /// Literal for code: AngiographyOfLowerExtremityArteriesWithSerialography_
@@ -13360,9 +17630,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngiographyOfLowerExtremityArteriesWithSerialography_ = "7995007";
 
     /// <summary>
+    /// Literal for code: NONEAngiographyOfLowerExtremityArteriesWithSerialography_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfLowerExtremityArteriesWithSerialography_ = "http://snomed.info/sct#7995007";
+
+    /// <summary>
     /// Literal for code: UltrasonographyOfUterus_
     /// </summary>
     public const string LiteralUltrasonographyOfUterus_ = "79966006";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasonographyOfUterus_
+    /// </summary>
+    public const string LiteralNONEUltrasonographyOfUterus_ = "http://snomed.info/sct#79966006";
 
     /// <summary>
     /// Literal for code: LymphangiographyOfUpperExtremitiesBilateral_
@@ -13370,9 +17650,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLymphangiographyOfUpperExtremitiesBilateral_ = "80218009";
 
     /// <summary>
+    /// Literal for code: NONELymphangiographyOfUpperExtremitiesBilateral_
+    /// </summary>
+    public const string LiteralNONELymphangiographyOfUpperExtremitiesBilateral_ = "http://snomed.info/sct#80218009";
+
+    /// <summary>
     /// Literal for code: AngiocardiographyOfRightHeart_
     /// </summary>
     public const string LiteralAngiocardiographyOfRightHeart_ = "80254008";
+
+    /// <summary>
+    /// Literal for code: NONEAngiocardiographyOfRightHeart_
+    /// </summary>
+    public const string LiteralNONEAngiocardiographyOfRightHeart_ = "http://snomed.info/sct#80254008";
 
     /// <summary>
     /// Literal for code: ThyroidImagingForMetastaticCarcinomaWholeBody_
@@ -13380,9 +17670,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThyroidImagingForMetastaticCarcinomaWholeBody_ = "80302000";
 
     /// <summary>
+    /// Literal for code: NONEThyroidImagingForMetastaticCarcinomaWholeBody_
+    /// </summary>
+    public const string LiteralNONEThyroidImagingForMetastaticCarcinomaWholeBody_ = "http://snomed.info/sct#80302000";
+
+    /// <summary>
     /// Literal for code: PulmonaryVentilationPerfusionStudyByRadioactiveCarbon_
     /// </summary>
     public const string LiteralPulmonaryVentilationPerfusionStudyByRadioactiveCarbon_ = "80308001";
+
+    /// <summary>
+    /// Literal for code: NONEPulmonaryVentilationPerfusionStudyByRadioactiveCarbon_
+    /// </summary>
+    public const string LiteralNONEPulmonaryVentilationPerfusionStudyByRadioactiveCarbon_ = "http://snomed.info/sct#80308001";
 
     /// <summary>
     /// Literal for code: Vaginogram_
@@ -13390,9 +17690,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVaginogram_ = "8031000";
 
     /// <summary>
+    /// Literal for code: NONEVaginogram_
+    /// </summary>
+    public const string LiteralNONEVaginogram_ = "http://snomed.info/sct#8031000";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyLateralDecubitusStudies_
     /// </summary>
     public const string LiteralDiagnosticRadiographyLateralDecubitusStudies_ = "80372004";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyLateralDecubitusStudies_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyLateralDecubitusStudies_ = "http://snomed.info/sct#80372004";
 
     /// <summary>
     /// Literal for code: RadiographyOfZygomaticomaxillaryComplex_
@@ -13400,9 +17710,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfZygomaticomaxillaryComplex_ = "80501006";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfZygomaticomaxillaryComplex_
+    /// </summary>
+    public const string LiteralNONERadiographyOfZygomaticomaxillaryComplex_ = "http://snomed.info/sct#80501006";
+
+    /// <summary>
     /// Literal for code: RetrogradeAngiographyOfBrachialArtery_
     /// </summary>
     public const string LiteralRetrogradeAngiographyOfBrachialArtery_ = "80648002";
+
+    /// <summary>
+    /// Literal for code: NONERetrogradeAngiographyOfBrachialArtery_
+    /// </summary>
+    public const string LiteralNONERetrogradeAngiographyOfBrachialArtery_ = "http://snomed.info/sct#80648002";
 
     /// <summary>
     /// Literal for code: UltrasonicGuidanceForAspirationOfOva_
@@ -13410,9 +17730,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonicGuidanceForAspirationOfOva_ = "8073008";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonicGuidanceForAspirationOfOva_
+    /// </summary>
+    public const string LiteralNONEUltrasonicGuidanceForAspirationOfOva_ = "http://snomed.info/sct#8073008";
+
+    /// <summary>
     /// Literal for code: OphthalmicEchographyBScanLimited_
     /// </summary>
     public const string LiteralOphthalmicEchographyBScanLimited_ = "80823002";
+
+    /// <summary>
+    /// Literal for code: NONEOphthalmicEchographyBScanLimited_
+    /// </summary>
+    public const string LiteralNONEOphthalmicEchographyBScanLimited_ = "http://snomed.info/sct#80823002";
 
     /// <summary>
     /// Literal for code: SpecimenMammography_
@@ -13420,9 +17750,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpecimenMammography_ = "80865008";
 
     /// <summary>
+    /// Literal for code: NONESpecimenMammography_
+    /// </summary>
+    public const string LiteralNONESpecimenMammography_ = "http://snomed.info/sct#80865008";
+
+    /// <summary>
     /// Literal for code: LiverAndSpleenImagingWithVascularFlow_
     /// </summary>
     public const string LiteralLiverAndSpleenImagingWithVascularFlow_ = "81391006";
+
+    /// <summary>
+    /// Literal for code: NONELiverAndSpleenImagingWithVascularFlow_
+    /// </summary>
+    public const string LiteralNONELiverAndSpleenImagingWithVascularFlow_ = "http://snomed.info/sct#81391006";
 
     /// <summary>
     /// Literal for code: DonaldsonStereophotography_
@@ -13430,9 +17770,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDonaldsonStereophotography_ = "81451007";
 
     /// <summary>
+    /// Literal for code: NONEDonaldsonStereophotography_
+    /// </summary>
+    public const string LiteralNONEDonaldsonStereophotography_ = "http://snomed.info/sct#81451007";
+
+    /// <summary>
     /// Literal for code: EchocardiographyForDetectingCardiacOutput_
     /// </summary>
     public const string LiteralEchocardiographyForDetectingCardiacOutput_ = "8151003";
+
+    /// <summary>
+    /// Literal for code: NONEEchocardiographyForDetectingCardiacOutput_
+    /// </summary>
+    public const string LiteralNONEEchocardiographyForDetectingCardiacOutput_ = "http://snomed.info/sct#8151003";
 
     /// <summary>
     /// Literal for code: EchographyScanCMode_
@@ -13440,9 +17790,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchographyScanCMode_ = "81523000";
 
     /// <summary>
+    /// Literal for code: NONEEchographyScanCMode_
+    /// </summary>
+    public const string LiteralNONEEchographyScanCMode_ = "http://snomed.info/sct#81523000";
+
+    /// <summary>
     /// Literal for code: IntravenousCholangiogram_
     /// </summary>
     public const string LiteralIntravenousCholangiogram_ = "81618005";
+
+    /// <summary>
+    /// Literal for code: NONEIntravenousCholangiogram_
+    /// </summary>
+    public const string LiteralNONEIntravenousCholangiogram_ = "http://snomed.info/sct#81618005";
 
     /// <summary>
     /// Literal for code: RedCellSurvivalStudy_
@@ -13450,9 +17810,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRedCellSurvivalStudy_ = "81937003";
 
     /// <summary>
+    /// Literal for code: NONERedCellSurvivalStudy_
+    /// </summary>
+    public const string LiteralNONERedCellSurvivalStudy_ = "http://snomed.info/sct#81937003";
+
+    /// <summary>
     /// Literal for code: ArthrogramOfTarsalJoint_
     /// </summary>
     public const string LiteralArthrogramOfTarsalJoint_ = "81941004";
+
+    /// <summary>
+    /// Literal for code: NONEArthrogramOfTarsalJoint_
+    /// </summary>
+    public const string LiteralNONEArthrogramOfTarsalJoint_ = "http://snomed.info/sct#81941004";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyWithContrastMediaByInjectionPositiveAndNegativeContrastBilateral_
@@ -13460,9 +17830,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyWithContrastMediaByInjectionPositiveAndNegativeContrastBilateral_ = "82006003";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyWithContrastMediaByInjectionPositiveAndNegativeContrastBilateral_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyWithContrastMediaByInjectionPositiveAndNegativeContrastBilateral_ = "http://snomed.info/sct#82006003";
+
+    /// <summary>
     /// Literal for code: BoneDensityStudyDualPhotonAbsorptiometry_
     /// </summary>
     public const string LiteralBoneDensityStudyDualPhotonAbsorptiometry_ = "82066000";
+
+    /// <summary>
+    /// Literal for code: NONEBoneDensityStudyDualPhotonAbsorptiometry_
+    /// </summary>
+    public const string LiteralNONEBoneDensityStudyDualPhotonAbsorptiometry_ = "http://snomed.info/sct#82066000";
 
     /// <summary>
     /// Literal for code: CardiacFluoroscopy_
@@ -13470,9 +17850,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCardiacFluoroscopy_ = "82327001";
 
     /// <summary>
+    /// Literal for code: NONECardiacFluoroscopy_
+    /// </summary>
+    public const string LiteralNONECardiacFluoroscopy_ = "http://snomed.info/sct#82327001";
+
+    /// <summary>
     /// Literal for code: RadiologicExaminationOfForearmAnteroposteriorAndLateralViews_
     /// </summary>
     public const string LiteralRadiologicExaminationOfForearmAnteroposteriorAndLateralViews_ = "82420003";
+
+    /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfForearmAnteroposteriorAndLateralViews_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfForearmAnteroposteriorAndLateralViews_ = "http://snomed.info/sct#82420003";
 
     /// <summary>
     /// Literal for code: RadiographyOfNasolacrimalDuct_
@@ -13480,9 +17870,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfNasolacrimalDuct_ = "82499005";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfNasolacrimalDuct_
+    /// </summary>
+    public const string LiteralNONERadiographyOfNasolacrimalDuct_ = "http://snomed.info/sct#82499005";
+
+    /// <summary>
     /// Literal for code: UreteralRefluxStudy_
     /// </summary>
     public const string LiteralUreteralRefluxStudy_ = "82588005";
+
+    /// <summary>
+    /// Literal for code: NONEUreteralRefluxStudy_
+    /// </summary>
+    public const string LiteralNONEUreteralRefluxStudy_ = "http://snomed.info/sct#82588005";
 
     /// <summary>
     /// Literal for code: ComputerizedTomographyCoronal_
@@ -13490,9 +17890,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedTomographyCoronal_ = "82641000";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedTomographyCoronal_
+    /// </summary>
+    public const string LiteralNONEComputerizedTomographyCoronal_ = "http://snomed.info/sct#82641000";
+
+    /// <summary>
     /// Literal for code: CerebrospinalFluidFlowImagingVentriculography_
     /// </summary>
     public const string LiteralCerebrospinalFluidFlowImagingVentriculography_ = "82831001";
+
+    /// <summary>
+    /// Literal for code: NONECerebrospinalFluidFlowImagingVentriculography_
+    /// </summary>
+    public const string LiteralNONECerebrospinalFluidFlowImagingVentriculography_ = "http://snomed.info/sct#82831001";
 
     /// <summary>
     /// Literal for code: NeckImagingForMetastaticCarcinomaOfThyroid_
@@ -13500,9 +17910,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNeckImagingForMetastaticCarcinomaOfThyroid_ = "82891004";
 
     /// <summary>
+    /// Literal for code: NONENeckImagingForMetastaticCarcinomaOfThyroid_
+    /// </summary>
+    public const string LiteralNONENeckImagingForMetastaticCarcinomaOfThyroid_ = "http://snomed.info/sct#82891004";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyWithContrastMediaByInjectionNegativeContrast_
     /// </summary>
     public const string LiteralDiagnosticRadiographyWithContrastMediaByInjectionNegativeContrast_ = "82899002";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyWithContrastMediaByInjectionNegativeContrast_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyWithContrastMediaByInjectionNegativeContrast_ = "http://snomed.info/sct#82899002";
 
     /// <summary>
     /// Literal for code: PositronEmissionTomography_
@@ -13510,9 +17930,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPositronEmissionTomography_ = "82918005";
 
     /// <summary>
+    /// Literal for code: NONEPositronEmissionTomography_
+    /// </summary>
+    public const string LiteralNONEPositronEmissionTomography_ = "http://snomed.info/sct#82918005";
+
+    /// <summary>
     /// Literal for code: RadionuclideLocalizationOfAbscessOfLimitedArea_
     /// </summary>
     public const string LiteralRadionuclideLocalizationOfAbscessOfLimitedArea_ = "82921007";
+
+    /// <summary>
+    /// Literal for code: NONERadionuclideLocalizationOfAbscessOfLimitedArea_
+    /// </summary>
+    public const string LiteralNONERadionuclideLocalizationOfAbscessOfLimitedArea_ = "http://snomed.info/sct#82921007";
 
     /// <summary>
     /// Literal for code: DiagnosticDopplerUltrasonography_
@@ -13520,9 +17950,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticDopplerUltrasonography_ = "8306009";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticDopplerUltrasonography_
+    /// </summary>
+    public const string LiteralNONEDiagnosticDopplerUltrasonography_ = "http://snomed.info/sct#8306009";
+
+    /// <summary>
     /// Literal for code: EchocardiographyForDeterminingMitralValveMotion_
     /// </summary>
     public const string LiteralEchocardiographyForDeterminingMitralValveMotion_ = "83061004";
+
+    /// <summary>
+    /// Literal for code: NONEEchocardiographyForDeterminingMitralValveMotion_
+    /// </summary>
+    public const string LiteralNONEEchocardiographyForDeterminingMitralValveMotion_ = "http://snomed.info/sct#83061004";
 
     /// <summary>
     /// Literal for code: RadionuclideJointStudy_
@@ -13530,9 +17970,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadionuclideJointStudy_ = "83093007";
 
     /// <summary>
+    /// Literal for code: NONERadionuclideJointStudy_
+    /// </summary>
+    public const string LiteralNONERadionuclideJointStudy_ = "http://snomed.info/sct#83093007";
+
+    /// <summary>
     /// Literal for code: CerebrospinalFluidFlowImaging_
     /// </summary>
     public const string LiteralCerebrospinalFluidFlowImaging_ = "83262001";
+
+    /// <summary>
+    /// Literal for code: NONECerebrospinalFluidFlowImaging_
+    /// </summary>
+    public const string LiteralNONECerebrospinalFluidFlowImaging_ = "http://snomed.info/sct#83262001";
 
     /// <summary>
     /// Literal for code: SerialographyMultiPlane_
@@ -13540,9 +17990,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSerialographyMultiPlane_ = "83429007";
 
     /// <summary>
+    /// Literal for code: NONESerialographyMultiPlane_
+    /// </summary>
+    public const string LiteralNONESerialographyMultiPlane_ = "http://snomed.info/sct#83429007";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyBilateral_
     /// </summary>
     public const string LiteralDiagnosticRadiographyBilateral_ = "8358003";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyBilateral_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyBilateral_ = "http://snomed.info/sct#8358003";
 
     /// <summary>
     /// Literal for code: RadiologicGuidanceForDilationOfNephrostomy_
@@ -13550,9 +18010,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicGuidanceForDilationOfNephrostomy_ = "83611007";
 
     /// <summary>
+    /// Literal for code: NONERadiologicGuidanceForDilationOfNephrostomy_
+    /// </summary>
+    public const string LiteralNONERadiologicGuidanceForDilationOfNephrostomy_ = "http://snomed.info/sct#83611007";
+
+    /// <summary>
     /// Literal for code: XRayOfEpididymisAndVasDeferens_
     /// </summary>
     public const string LiteralXRayOfEpididymisAndVasDeferens_ = "83641009";
+
+    /// <summary>
+    /// Literal for code: NONEXRayOfEpididymisAndVasDeferens_
+    /// </summary>
+    public const string LiteralNONEXRayOfEpididymisAndVasDeferens_ = "http://snomed.info/sct#83641009";
 
     /// <summary>
     /// Literal for code: InsertionOfBiliaryStentByERCP_
@@ -13560,9 +18030,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInsertionOfBiliaryStentByERCP_ = "83735008";
 
     /// <summary>
+    /// Literal for code: NONEInsertionOfBiliaryStentByERCP_
+    /// </summary>
+    public const string LiteralNONEInsertionOfBiliaryStentByERCP_ = "http://snomed.info/sct#83735008";
+
+    /// <summary>
     /// Literal for code: ComputerizedAxialTomographyOfMaxillofacialAreaWithContrast_
     /// </summary>
     public const string LiteralComputerizedAxialTomographyOfMaxillofacialAreaWithContrast_ = "83788002";
+
+    /// <summary>
+    /// Literal for code: NONEComputerizedAxialTomographyOfMaxillofacialAreaWithContrast_
+    /// </summary>
+    public const string LiteralNONEComputerizedAxialTomographyOfMaxillofacialAreaWithContrast_ = "http://snomed.info/sct#83788002";
 
     /// <summary>
     /// Literal for code: RadiographyOfProstate_
@@ -13570,9 +18050,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfProstate_ = "83932002";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfProstate_
+    /// </summary>
+    public const string LiteralNONERadiographyOfProstate_ = "http://snomed.info/sct#83932002";
+
+    /// <summary>
     /// Literal for code: ChiropracticUltrasound_
     /// </summary>
     public const string LiteralChiropracticUltrasound_ = "83949009";
+
+    /// <summary>
+    /// Literal for code: NONEChiropracticUltrasound_
+    /// </summary>
+    public const string LiteralNONEChiropracticUltrasound_ = "http://snomed.info/sct#83949009";
 
     /// <summary>
     /// Literal for code: ArteriographyOfPulmonaryArteries_
@@ -13580,9 +18070,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArteriographyOfPulmonaryArteries_ = "84200003";
 
     /// <summary>
+    /// Literal for code: NONEArteriographyOfPulmonaryArteries_
+    /// </summary>
+    public const string LiteralNONEArteriographyOfPulmonaryArteries_ = "http://snomed.info/sct#84200003";
+
+    /// <summary>
     /// Literal for code: AngiographyOfInternalMammaryArtery_
     /// </summary>
     public const string LiteralAngiographyOfInternalMammaryArtery_ = "84311009";
+
+    /// <summary>
+    /// Literal for code: NONEAngiographyOfInternalMammaryArtery_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfInternalMammaryArtery_ = "http://snomed.info/sct#84311009";
 
     /// <summary>
     /// Literal for code: RadiographyOfSacrococcygealSpine_
@@ -13590,9 +18090,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfSacrococcygealSpine_ = "8449009";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfSacrococcygealSpine_
+    /// </summary>
+    public const string LiteralNONERadiographyOfSacrococcygealSpine_ = "http://snomed.info/sct#8449009";
+
+    /// <summary>
     /// Literal for code: RadiographyOfNasalSinuses_
     /// </summary>
     public const string LiteralRadiographyOfNasalSinuses_ = "84492002";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfNasalSinuses_
+    /// </summary>
+    public const string LiteralNONERadiographyOfNasalSinuses_ = "http://snomed.info/sct#84492002";
 
     /// <summary>
     /// Literal for code: ChestImagingForMetastaticCarcinomaOfThyroid_
@@ -13600,9 +18110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChestImagingForMetastaticCarcinomaOfThyroid_ = "84881006";
 
     /// <summary>
+    /// Literal for code: NONEChestImagingForMetastaticCarcinomaOfThyroid_
+    /// </summary>
+    public const string LiteralNONEChestImagingForMetastaticCarcinomaOfThyroid_ = "http://snomed.info/sct#84881006";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyWithContrastMediaBilateral_
     /// </summary>
     public const string LiteralDiagnosticRadiographyWithContrastMediaBilateral_ = "8503002";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyWithContrastMediaBilateral_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyWithContrastMediaBilateral_ = "http://snomed.info/sct#8503002";
 
     /// <summary>
     /// Literal for code: MediastinalPneumogram_
@@ -13610,9 +18130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMediastinalPneumogram_ = "85199006";
 
     /// <summary>
+    /// Literal for code: NONEMediastinalPneumogram_
+    /// </summary>
+    public const string LiteralNONEMediastinalPneumogram_ = "http://snomed.info/sct#85199006";
+
+    /// <summary>
     /// Literal for code: HysterosalpingographyWithGasContrast_
     /// </summary>
     public const string LiteralHysterosalpingographyWithGasContrast_ = "85339002";
+
+    /// <summary>
+    /// Literal for code: NONEHysterosalpingographyWithGasContrast_
+    /// </summary>
+    public const string LiteralNONEHysterosalpingographyWithGasContrast_ = "http://snomed.info/sct#85339002";
 
     /// <summary>
     /// Literal for code: RadionuclideCardiacVentriculography_
@@ -13620,9 +18150,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadionuclideCardiacVentriculography_ = "85606007";
 
     /// <summary>
+    /// Literal for code: NONERadionuclideCardiacVentriculography_
+    /// </summary>
+    public const string LiteralNONERadionuclideCardiacVentriculography_ = "http://snomed.info/sct#85606007";
+
+    /// <summary>
     /// Literal for code: HypotonicDuodenography_
     /// </summary>
     public const string LiteralHypotonicDuodenography_ = "85815002";
+
+    /// <summary>
+    /// Literal for code: NONEHypotonicDuodenography_
+    /// </summary>
+    public const string LiteralNONEHypotonicDuodenography_ = "http://snomed.info/sct#85815002";
 
     /// <summary>
     /// Literal for code: ContrastBronchogram_
@@ -13630,9 +18170,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralContrastBronchogram_ = "85895003";
 
     /// <summary>
+    /// Literal for code: NONEContrastBronchogram_
+    /// </summary>
+    public const string LiteralNONEContrastBronchogram_ = "http://snomed.info/sct#85895003";
+
+    /// <summary>
     /// Literal for code: CerebrospinalFluidFlowImagingTomographic_
     /// </summary>
     public const string LiteralCerebrospinalFluidFlowImagingTomographic_ = "86086004";
+
+    /// <summary>
+    /// Literal for code: NONECerebrospinalFluidFlowImagingTomographic_
+    /// </summary>
+    public const string LiteralNONECerebrospinalFluidFlowImagingTomographic_ = "http://snomed.info/sct#86086004";
 
     /// <summary>
     /// Literal for code: LymphangiogramOfUpperExtremity_
@@ -13640,9 +18190,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLymphangiogramOfUpperExtremity_ = "86307000";
 
     /// <summary>
+    /// Literal for code: NONELymphangiogramOfUpperExtremity_
+    /// </summary>
+    public const string LiteralNONELymphangiogramOfUpperExtremity_ = "http://snomed.info/sct#86307000";
+
+    /// <summary>
     /// Literal for code: ContrastRadiographyOfNasopharynx_
     /// </summary>
     public const string LiteralContrastRadiographyOfNasopharynx_ = "86354001";
+
+    /// <summary>
+    /// Literal for code: NONEContrastRadiographyOfNasopharynx_
+    /// </summary>
+    public const string LiteralNONEContrastRadiographyOfNasopharynx_ = "http://snomed.info/sct#86354001";
 
     /// <summary>
     /// Literal for code: RadiologicExaminationOfLumbosacralSpineCompleteWithObliqueViews_
@@ -13650,9 +18210,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologicExaminationOfLumbosacralSpineCompleteWithObliqueViews_ = "86392000";
 
     /// <summary>
+    /// Literal for code: NONERadiologicExaminationOfLumbosacralSpineCompleteWithObliqueViews_
+    /// </summary>
+    public const string LiteralNONERadiologicExaminationOfLumbosacralSpineCompleteWithObliqueViews_ = "http://snomed.info/sct#86392000";
+
+    /// <summary>
     /// Literal for code: ImagingOfCarotidArteriesByDuplexScanWithSpectrumAnalysis_
     /// </summary>
     public const string LiteralImagingOfCarotidArteriesByDuplexScanWithSpectrumAnalysis_ = "86410006";
+
+    /// <summary>
+    /// Literal for code: NONEImagingOfCarotidArteriesByDuplexScanWithSpectrumAnalysis_
+    /// </summary>
+    public const string LiteralNONEImagingOfCarotidArteriesByDuplexScanWithSpectrumAnalysis_ = "http://snomed.info/sct#86410006";
 
     /// <summary>
     /// Literal for code: EchographyOfChestBScan_
@@ -13660,9 +18230,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchographyOfChestBScan_ = "86434001";
 
     /// <summary>
+    /// Literal for code: NONEEchographyOfChestBScan_
+    /// </summary>
+    public const string LiteralNONEEchographyOfChestBScan_ = "http://snomed.info/sct#86434001";
+
+    /// <summary>
     /// Literal for code: EsophagealMotilityStudy_
     /// </summary>
     public const string LiteralEsophagealMotilityStudy_ = "86543007";
+
+    /// <summary>
+    /// Literal for code: NONEEsophagealMotilityStudy_
+    /// </summary>
+    public const string LiteralNONEEsophagealMotilityStudy_ = "http://snomed.info/sct#86543007";
 
     /// <summary>
     /// Literal for code: EchographyScanBModeForPlacentalLocalization_
@@ -13670,9 +18250,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchographyScanBModeForPlacentalLocalization_ = "86599005";
 
     /// <summary>
+    /// Literal for code: NONEEchographyScanBModeForPlacentalLocalization_
+    /// </summary>
+    public const string LiteralNONEEchographyScanBModeForPlacentalLocalization_ = "http://snomed.info/sct#86599005";
+
+    /// <summary>
     /// Literal for code: PulmonaryVentilationStudyAerosol_
     /// </summary>
     public const string LiteralPulmonaryVentilationStudyAerosol_ = "86811003";
+
+    /// <summary>
+    /// Literal for code: NONEPulmonaryVentilationStudyAerosol_
+    /// </summary>
+    public const string LiteralNONEPulmonaryVentilationStudyAerosol_ = "http://snomed.info/sct#86811003";
 
     /// <summary>
     /// Literal for code: GalliumScan_
@@ -13680,9 +18270,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGalliumScan_ = "86924002";
 
     /// <summary>
+    /// Literal for code: NONEGalliumScan_
+    /// </summary>
+    public const string LiteralNONEGalliumScan_ = "http://snomed.info/sct#86924002";
+
+    /// <summary>
     /// Literal for code: RadionuclideIdentificationOfEyeTumor_
     /// </summary>
     public const string LiteralRadionuclideIdentificationOfEyeTumor_ = "8693001";
+
+    /// <summary>
+    /// Literal for code: NONERadionuclideIdentificationOfEyeTumor_
+    /// </summary>
+    public const string LiteralNONERadionuclideIdentificationOfEyeTumor_ = "http://snomed.info/sct#8693001";
 
     /// <summary>
     /// Literal for code: Fetography_
@@ -13690,9 +18290,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFetography_ = "86950003";
 
     /// <summary>
+    /// Literal for code: NONEFetography_
+    /// </summary>
+    public const string LiteralNONEFetography_ = "http://snomed.info/sct#86950003";
+
+    /// <summary>
     /// Literal for code: Tracheography_
     /// </summary>
     public const string LiteralTracheography_ = "87338009";
+
+    /// <summary>
+    /// Literal for code: NONETracheography_
+    /// </summary>
+    public const string LiteralNONETracheography_ = "http://snomed.info/sct#87338009";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfNasalBones_
@@ -13700,9 +18310,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfNasalBones_ = "87411003";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfNasalBones_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfNasalBones_ = "http://snomed.info/sct#87411003";
+
+    /// <summary>
     /// Literal for code: PulmonaryVentilationStudyTotal_
     /// </summary>
     public const string LiteralPulmonaryVentilationStudyTotal_ = "87674005";
+
+    /// <summary>
+    /// Literal for code: NONEPulmonaryVentilationStudyTotal_
+    /// </summary>
+    public const string LiteralNONEPulmonaryVentilationStudyTotal_ = "http://snomed.info/sct#87674005";
 
     /// <summary>
     /// Literal for code: Cineradiography_
@@ -13710,9 +18330,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCineradiography_ = "87751001";
 
     /// <summary>
+    /// Literal for code: NONECineradiography_
+    /// </summary>
+    public const string LiteralNONECineradiography_ = "http://snomed.info/sct#87751001";
+
+    /// <summary>
     /// Literal for code: BilateralRetrogradePyelography_
     /// </summary>
     public const string LiteralBilateralRetrogradePyelography_ = "87785000";
+
+    /// <summary>
+    /// Literal for code: NONEBilateralRetrogradePyelography_
+    /// </summary>
+    public const string LiteralNONEBilateralRetrogradePyelography_ = "http://snomed.info/sct#87785000";
 
     /// <summary>
     /// Literal for code: UltrasoundPeripheralVascularFlowStudyArterialAndVenous_
@@ -13720,9 +18350,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasoundPeripheralVascularFlowStudyArterialAndVenous_ = "87932003";
 
     /// <summary>
+    /// Literal for code: NONEUltrasoundPeripheralVascularFlowStudyArterialAndVenous_
+    /// </summary>
+    public const string LiteralNONEUltrasoundPeripheralVascularFlowStudyArterialAndVenous_ = "http://snomed.info/sct#87932003";
+
+    /// <summary>
     /// Literal for code: Vesiculography_
     /// </summary>
     public const string LiteralVesiculography_ = "88061002";
+
+    /// <summary>
+    /// Literal for code: NONEVesiculography_
+    /// </summary>
+    public const string LiteralNONEVesiculography_ = "http://snomed.info/sct#88061002";
 
     /// <summary>
     /// Literal for code: LumbosacralMyelography_
@@ -13730,9 +18370,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLumbosacralMyelography_ = "88365004";
 
     /// <summary>
+    /// Literal for code: NONELumbosacralMyelography_
+    /// </summary>
+    public const string LiteralNONELumbosacralMyelography_ = "http://snomed.info/sct#88365004";
+
+    /// <summary>
     /// Literal for code: RadiographyForBoneAgeStudies_
     /// </summary>
     public const string LiteralRadiographyForBoneAgeStudies_ = "88504002";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyForBoneAgeStudies_
+    /// </summary>
+    public const string LiteralNONERadiographyForBoneAgeStudies_ = "http://snomed.info/sct#88504002";
 
     /// <summary>
     /// Literal for code: UltrasonographyOfLung_
@@ -13740,9 +18390,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonographyOfLung_ = "88628008";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonographyOfLung_
+    /// </summary>
+    public const string LiteralNONEUltrasonographyOfLung_ = "http://snomed.info/sct#88628008";
+
+    /// <summary>
     /// Literal for code: ThoracicAortographyWithSerialography_
     /// </summary>
     public const string LiteralThoracicAortographyWithSerialography_ = "88663003";
+
+    /// <summary>
+    /// Literal for code: NONEThoracicAortographyWithSerialography_
+    /// </summary>
+    public const string LiteralNONEThoracicAortographyWithSerialography_ = "http://snomed.info/sct#88663003";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfUterusForFetalAgeFetalPositionAndOrPlacentalLocalization_
@@ -13750,9 +18410,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfUterusForFetalAgeFetalPositionAndOrPlacentalLocalization_ = "88745008";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfUterusForFetalAgeFetalPositionAndOrPlacentalLocalization_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfUterusForFetalAgeFetalPositionAndOrPlacentalLocalization_ = "http://snomed.info/sct#88745008";
+
+    /// <summary>
     /// Literal for code: RadiographyOfPelvicBones_
     /// </summary>
     public const string LiteralRadiographyOfPelvicBones_ = "88914000";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfPelvicBones_
+    /// </summary>
+    public const string LiteralNONERadiographyOfPelvicBones_ = "http://snomed.info/sct#88914000";
 
     /// <summary>
     /// Literal for code: SpleenImagingWithVascularFlow_
@@ -13760,9 +18430,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpleenImagingWithVascularFlow_ = "88935003";
 
     /// <summary>
+    /// Literal for code: NONESpleenImagingWithVascularFlow_
+    /// </summary>
+    public const string LiteralNONESpleenImagingWithVascularFlow_ = "http://snomed.info/sct#88935003";
+
+    /// <summary>
     /// Literal for code: FluoroscopicLocalizationForTransbronchialBiopsy_
     /// </summary>
     public const string LiteralFluoroscopicLocalizationForTransbronchialBiopsy_ = "89118008";
+
+    /// <summary>
+    /// Literal for code: NONEFluoroscopicLocalizationForTransbronchialBiopsy_
+    /// </summary>
+    public const string LiteralNONEFluoroscopicLocalizationForTransbronchialBiopsy_ = "http://snomed.info/sct#89118008";
 
     /// <summary>
     /// Literal for code: BloodVesselThermography_
@@ -13770,9 +18450,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBloodVesselThermography_ = "89240007";
 
     /// <summary>
+    /// Literal for code: NONEBloodVesselThermography_
+    /// </summary>
+    public const string LiteralNONEBloodVesselThermography_ = "http://snomed.info/sct#89240007";
+
+    /// <summary>
     /// Literal for code: UltrasoundStudyFollowUp_
     /// </summary>
     public const string LiteralUltrasoundStudyFollowUp_ = "89343007";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasoundStudyFollowUp_
+    /// </summary>
+    public const string LiteralNONEUltrasoundStudyFollowUp_ = "http://snomed.info/sct#89343007";
 
     /// <summary>
     /// Literal for code: Orthopantogram_
@@ -13780,9 +18470,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOrthopantogram_ = "89846007";
 
     /// <summary>
+    /// Literal for code: NONEOrthopantogram_
+    /// </summary>
+    public const string LiteralNONEOrthopantogram_ = "http://snomed.info/sct#89846007";
+
+    /// <summary>
     /// Literal for code: RadioironOralAbsorptionStudy_
     /// </summary>
     public const string LiteralRadioironOralAbsorptionStudy_ = "8994009";
+
+    /// <summary>
+    /// Literal for code: NONERadioironOralAbsorptionStudy_
+    /// </summary>
+    public const string LiteralNONERadioironOralAbsorptionStudy_ = "http://snomed.info/sct#8994009";
 
     /// <summary>
     /// Literal for code: MagneticResonanceImagingWithoutContrast_
@@ -13790,9 +18490,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMagneticResonanceImagingWithoutContrast_ = "90084008";
 
     /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingWithoutContrast_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingWithoutContrast_ = "http://snomed.info/sct#90084008";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfSoftTissues_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfSoftTissues_ = "90223007";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfSoftTissues_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfSoftTissues_ = "http://snomed.info/sct#90223007";
 
     /// <summary>
     /// Literal for code: ComputerizedAxialTomographyOfLumbarSpineWithContrast_
@@ -13800,9 +18510,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedAxialTomographyOfLumbarSpineWithContrast_ = "90523008";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedAxialTomographyOfLumbarSpineWithContrast_
+    /// </summary>
+    public const string LiteralNONEComputerizedAxialTomographyOfLumbarSpineWithContrast_ = "http://snomed.info/sct#90523008";
+
+    /// <summary>
     /// Literal for code: AngiographyOfArteriesOfExtremitiesBilateral_
     /// </summary>
     public const string LiteralAngiographyOfArteriesOfExtremitiesBilateral_ = "90686009";
+
+    /// <summary>
+    /// Literal for code: NONEAngiographyOfArteriesOfExtremitiesBilateral_
+    /// </summary>
+    public const string LiteralNONEAngiographyOfArteriesOfExtremitiesBilateral_ = "http://snomed.info/sct#90686009";
 
     /// <summary>
     /// Literal for code: ImagingOfAdrenalCortex_
@@ -13810,9 +18530,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImagingOfAdrenalCortex_ = "90697009";
 
     /// <summary>
+    /// Literal for code: NONEImagingOfAdrenalCortex_
+    /// </summary>
+    public const string LiteralNONEImagingOfAdrenalCortex_ = "http://snomed.info/sct#90697009";
+
+    /// <summary>
     /// Literal for code: RadiographyOfUterus_
     /// </summary>
     public const string LiteralRadiographyOfUterus_ = "90711000";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfUterus_
+    /// </summary>
+    public const string LiteralNONERadiographyOfUterus_ = "http://snomed.info/sct#90711000";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyOfLumbarSpine_
@@ -13820,9 +18550,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyOfLumbarSpine_ = "90805008";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfLumbarSpine_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfLumbarSpine_ = "http://snomed.info/sct#90805008";
+
+    /// <summary>
     /// Literal for code: VenousThrombosisStudyWithRadioactiveFibrinogen_
     /// </summary>
     public const string LiteralVenousThrombosisStudyWithRadioactiveFibrinogen_ = "90992001";
+
+    /// <summary>
+    /// Literal for code: NONEVenousThrombosisStudyWithRadioactiveFibrinogen_
+    /// </summary>
+    public const string LiteralNONEVenousThrombosisStudyWithRadioactiveFibrinogen_ = "http://snomed.info/sct#90992001";
 
     /// <summary>
     /// Literal for code: BoneImagingTomographic_
@@ -13830,9 +18570,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBoneImagingTomographic_ = "91008002";
 
     /// <summary>
+    /// Literal for code: NONEBoneImagingTomographic_
+    /// </summary>
+    public const string LiteralNONEBoneImagingTomographic_ = "http://snomed.info/sct#91008002";
+
+    /// <summary>
     /// Literal for code: AbdominalLymphangiogram_
     /// </summary>
     public const string LiteralAbdominalLymphangiogram_ = "91119001";
+
+    /// <summary>
+    /// Literal for code: NONEAbdominalLymphangiogram_
+    /// </summary>
+    public const string LiteralNONEAbdominalLymphangiogram_ = "http://snomed.info/sct#91119001";
 
     /// <summary>
     /// Literal for code: TranscricoidBronchography_
@@ -13840,9 +18590,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTranscricoidBronchography_ = "91160008";
 
     /// <summary>
+    /// Literal for code: NONETranscricoidBronchography_
+    /// </summary>
+    public const string LiteralNONETranscricoidBronchography_ = "http://snomed.info/sct#91160008";
+
+    /// <summary>
     /// Literal for code: RadiographyForBoneLengthStudies_
     /// </summary>
     public const string LiteralRadiographyForBoneLengthStudies_ = "91186003";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyForBoneLengthStudies_
+    /// </summary>
+    public const string LiteralNONERadiographyForBoneLengthStudies_ = "http://snomed.info/sct#91186003";
 
     /// <summary>
     /// Literal for code: MagneticResonanceImagingOfThoracicSpineWithContrast_
@@ -13850,9 +18610,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMagneticResonanceImagingOfThoracicSpineWithContrast_ = "91333005";
 
     /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfThoracicSpineWithContrast_
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfThoracicSpineWithContrast_ = "http://snomed.info/sct#91333005";
+
+    /// <summary>
     /// Literal for code: ArthrographyOfKneeWithPositiveContrast_
     /// </summary>
     public const string LiteralArthrographyOfKneeWithPositiveContrast_ = "91360003";
+
+    /// <summary>
+    /// Literal for code: NONEArthrographyOfKneeWithPositiveContrast_
+    /// </summary>
+    public const string LiteralNONEArthrographyOfKneeWithPositiveContrast_ = "http://snomed.info/sct#91360003";
 
     /// <summary>
     /// Literal for code: EchographyOfChestAMode_
@@ -13860,9 +18630,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchographyOfChestAMode_ = "91453008";
 
     /// <summary>
+    /// Literal for code: NONEEchographyOfChestAMode_
+    /// </summary>
+    public const string LiteralNONEEchographyOfChestAMode_ = "http://snomed.info/sct#91453008";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfSpineSurveyStudy_
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfSpineSurveyStudy_ = "91583001";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfSpineSurveyStudy_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfSpineSurveyStudy_ = "http://snomed.info/sct#91583001";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyWithGasAirNegativeContrast_
@@ -13870,9 +18650,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyWithGasAirNegativeContrast_ = "91649003";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyWithGasAirNegativeContrast_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyWithGasAirNegativeContrast_ = "http://snomed.info/sct#91649003";
+
+    /// <summary>
     /// Literal for code: UltrasoundExaminationOfJoint_
     /// </summary>
     public const string LiteralUltrasoundExaminationOfJoint_ = "91672001";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasoundExaminationOfJoint_
+    /// </summary>
+    public const string LiteralNONEUltrasoundExaminationOfJoint_ = "http://snomed.info/sct#91672001";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyMinifilm_
@@ -13880,9 +18670,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyMinifilm_ = "9403009";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyMinifilm_
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyMinifilm_ = "http://snomed.info/sct#9403009";
+
+    /// <summary>
     /// Literal for code: UltrasonicGuidanceForEndomyocardialBiopsy_
     /// </summary>
     public const string LiteralUltrasonicGuidanceForEndomyocardialBiopsy_ = "951000";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasonicGuidanceForEndomyocardialBiopsy_
+    /// </summary>
+    public const string LiteralNONEUltrasonicGuidanceForEndomyocardialBiopsy_ = "http://snomed.info/sct#951000";
 
     /// <summary>
     /// Literal for code: FistulogramOfAbdominalWall_
@@ -13890,9 +18690,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFistulogramOfAbdominalWall_ = "9518008";
 
     /// <summary>
+    /// Literal for code: NONEFistulogramOfAbdominalWall_
+    /// </summary>
+    public const string LiteralNONEFistulogramOfAbdominalWall_ = "http://snomed.info/sct#9518008";
+
+    /// <summary>
     /// Literal for code: ComputerizedTomographyLimitedStudies_
     /// </summary>
     public const string LiteralComputerizedTomographyLimitedStudies_ = "9704004";
+
+    /// <summary>
+    /// Literal for code: NONEComputerizedTomographyLimitedStudies_
+    /// </summary>
+    public const string LiteralNONEComputerizedTomographyLimitedStudies_ = "http://snomed.info/sct#9704004";
 
     /// <summary>
     /// Literal for code: ComputerizedTomographyOblique_
@@ -13900,9 +18710,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedTomographyOblique_ = "9988008";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedTomographyOblique_
+    /// </summary>
+    public const string LiteralNONEComputerizedTomographyOblique_ = "http://snomed.info/sct#9988008";
+
+    /// <summary>
     /// Literal for code: Autorefraction_dicom_dcim
     /// </summary>
     public const string LiteralAutorefraction_dicom_dcim = "AR";
+
+    /// <summary>
+    /// Literal for code: DicomDcimAutorefraction_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimAutorefraction_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#AR";
 
     /// <summary>
     /// Literal for code: UltrasoundBoneDensitometry_dicom_dcim
@@ -13910,9 +18730,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasoundBoneDensitometry_dicom_dcim = "BDUS";
 
     /// <summary>
+    /// Literal for code: DicomDcimUltrasoundBoneDensitometry_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimUltrasoundBoneDensitometry_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#BDUS";
+
+    /// <summary>
     /// Literal for code: BoneMineralDensitometry_dicom_dcim
     /// </summary>
     public const string LiteralBoneMineralDensitometry_dicom_dcim = "BMD";
+
+    /// <summary>
+    /// Literal for code: DicomDcimBoneMineralDensitometry_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimBoneMineralDensitometry_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#BMD";
 
     /// <summary>
     /// Literal for code: ComputedRadiography_dicom_dcim
@@ -13920,9 +18750,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputedRadiography_dicom_dcim = "CR";
 
     /// <summary>
+    /// Literal for code: DicomDcimComputedRadiography_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimComputedRadiography_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#CR";
+
+    /// <summary>
     /// Literal for code: ComputedTomography_dicom_dcim
     /// </summary>
     public const string LiteralComputedTomography_dicom_dcim = "CT";
+
+    /// <summary>
+    /// Literal for code: DicomDcimComputedTomography_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimComputedTomography_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#CT";
 
     /// <summary>
     /// Literal for code: Diagram_digital_media_subtype
@@ -13930,9 +18770,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagram_digital_media_subtype = "diagram";
 
     /// <summary>
+    /// Literal for code: DigitalMediaSubtypeDiagram_digital_media_subtype
+    /// </summary>
+    public const string LiteralDigitalMediaSubtypeDiagram_digital_media_subtype = "http://hl7.org/fhir/media-subtype#diagram";
+
+    /// <summary>
     /// Literal for code: DigitalRadiography_dicom_dcim
     /// </summary>
     public const string LiteralDigitalRadiography_dicom_dcim = "DX";
+
+    /// <summary>
+    /// Literal for code: DicomDcimDigitalRadiography_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimDigitalRadiography_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#DX";
 
     /// <summary>
     /// Literal for code: Electrocardiography_dicom_dcim
@@ -13940,9 +18790,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElectrocardiography_dicom_dcim = "ECG";
 
     /// <summary>
+    /// Literal for code: DicomDcimElectrocardiography_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimElectrocardiography_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#ECG";
+
+    /// <summary>
     /// Literal for code: CardiacElectrophysiology_dicom_dcim
     /// </summary>
     public const string LiteralCardiacElectrophysiology_dicom_dcim = "EPS";
+
+    /// <summary>
+    /// Literal for code: DicomDcimCardiacElectrophysiology_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimCardiacElectrophysiology_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#EPS";
 
     /// <summary>
     /// Literal for code: Endoscopy_dicom_dcim
@@ -13950,9 +18810,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEndoscopy_dicom_dcim = "ES";
 
     /// <summary>
+    /// Literal for code: DicomDcimEndoscopy_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimEndoscopy_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#ES";
+
+    /// <summary>
     /// Literal for code: Face_digital_media_subtype
     /// </summary>
     public const string LiteralFace_digital_media_subtype = "face";
+
+    /// <summary>
+    /// Literal for code: DigitalMediaSubtypeFace_digital_media_subtype
+    /// </summary>
+    public const string LiteralDigitalMediaSubtypeFace_digital_media_subtype = "http://hl7.org/fhir/media-subtype#face";
 
     /// <summary>
     /// Literal for code: Fax_digital_media_subtype
@@ -13960,9 +18830,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFax_digital_media_subtype = "fax";
 
     /// <summary>
+    /// Literal for code: DigitalMediaSubtypeFax_digital_media_subtype
+    /// </summary>
+    public const string LiteralDigitalMediaSubtypeFax_digital_media_subtype = "http://hl7.org/fhir/media-subtype#fax";
+
+    /// <summary>
     /// Literal for code: Fingerprint_digital_media_subtype
     /// </summary>
     public const string LiteralFingerprint_digital_media_subtype = "fingerprint";
+
+    /// <summary>
+    /// Literal for code: DigitalMediaSubtypeFingerprint_digital_media_subtype
+    /// </summary>
+    public const string LiteralDigitalMediaSubtypeFingerprint_digital_media_subtype = "http://hl7.org/fhir/media-subtype#fingerprint";
 
     /// <summary>
     /// Literal for code: GeneralMicroscopy_dicom_dcim
@@ -13970,9 +18850,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGeneralMicroscopy_dicom_dcim = "GM";
 
     /// <summary>
+    /// Literal for code: DicomDcimGeneralMicroscopy_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimGeneralMicroscopy_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#GM";
+
+    /// <summary>
     /// Literal for code: HemodynamicWaveform_dicom_dcim
     /// </summary>
     public const string LiteralHemodynamicWaveform_dicom_dcim = "HD";
+
+    /// <summary>
+    /// Literal for code: DicomDcimHemodynamicWaveform_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimHemodynamicWaveform_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#HD";
 
     /// <summary>
     /// Literal for code: IntraOralRadiography_dicom_dcim
@@ -13980,9 +18870,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntraOralRadiography_dicom_dcim = "IO";
 
     /// <summary>
+    /// Literal for code: DicomDcimIntraOralRadiography_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimIntraOralRadiography_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#IO";
+
+    /// <summary>
     /// Literal for code: Iris_digital_media_subtype
     /// </summary>
     public const string LiteralIris_digital_media_subtype = "iris";
+
+    /// <summary>
+    /// Literal for code: DigitalMediaSubtypeIris_digital_media_subtype
+    /// </summary>
+    public const string LiteralDigitalMediaSubtypeIris_digital_media_subtype = "http://hl7.org/fhir/media-subtype#iris";
 
     /// <summary>
     /// Literal for code: IntravascularOpticalCoherenceTomography_dicom_dcim
@@ -13990,9 +18890,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntravascularOpticalCoherenceTomography_dicom_dcim = "IVOCT";
 
     /// <summary>
+    /// Literal for code: DicomDcimIntravascularOpticalCoherenceTomography_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimIntravascularOpticalCoherenceTomography_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#IVOCT";
+
+    /// <summary>
     /// Literal for code: IntravascularUltrasound_dicom_dcim
     /// </summary>
     public const string LiteralIntravascularUltrasound_dicom_dcim = "IVUS";
+
+    /// <summary>
+    /// Literal for code: DicomDcimIntravascularUltrasound_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimIntravascularUltrasound_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#IVUS";
 
     /// <summary>
     /// Literal for code: Keratometry_dicom_dcim
@@ -14000,9 +18910,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKeratometry_dicom_dcim = "KER";
 
     /// <summary>
+    /// Literal for code: DicomDcimKeratometry_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimKeratometry_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#KER";
+
+    /// <summary>
     /// Literal for code: Lensometry_dicom_dcim
     /// </summary>
     public const string LiteralLensometry_dicom_dcim = "LEN";
+
+    /// <summary>
+    /// Literal for code: DicomDcimLensometry_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimLensometry_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#LEN";
 
     /// <summary>
     /// Literal for code: Mammography_dicom_dcim
@@ -14010,9 +18930,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMammography_dicom_dcim = "MG";
 
     /// <summary>
+    /// Literal for code: DicomDcimMammography_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimMammography_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#MG";
+
+    /// <summary>
     /// Literal for code: MagneticResonance_dicom_dcim
     /// </summary>
     public const string LiteralMagneticResonance_dicom_dcim = "MR";
+
+    /// <summary>
+    /// Literal for code: DicomDcimMagneticResonance_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimMagneticResonance_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#MR";
 
     /// <summary>
     /// Literal for code: NuclearMedicine_dicom_dcim
@@ -14020,9 +18950,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNuclearMedicine_dicom_dcim = "NM";
 
     /// <summary>
+    /// Literal for code: DicomDcimNuclearMedicine_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimNuclearMedicine_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#NM";
+
+    /// <summary>
     /// Literal for code: OphthalmicAxialMeasurements_dicom_dcim
     /// </summary>
     public const string LiteralOphthalmicAxialMeasurements_dicom_dcim = "OAM";
+
+    /// <summary>
+    /// Literal for code: DicomDcimOphthalmicAxialMeasurements_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimOphthalmicAxialMeasurements_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#OAM";
 
     /// <summary>
     /// Literal for code: OpticalCoherenceTomography_dicom_dcim
@@ -14030,9 +18970,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOpticalCoherenceTomography_dicom_dcim = "OCT";
 
     /// <summary>
+    /// Literal for code: DicomDcimOpticalCoherenceTomography_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimOpticalCoherenceTomography_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#OCT";
+
+    /// <summary>
     /// Literal for code: OphthalmicPhotography_dicom_dcim
     /// </summary>
     public const string LiteralOphthalmicPhotography_dicom_dcim = "OP";
+
+    /// <summary>
+    /// Literal for code: DicomDcimOphthalmicPhotography_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimOphthalmicPhotography_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#OP";
 
     /// <summary>
     /// Literal for code: OphthalmicMapping_dicom_dcim
@@ -14040,9 +18990,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOphthalmicMapping_dicom_dcim = "OPM";
 
     /// <summary>
+    /// Literal for code: DicomDcimOphthalmicMapping_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimOphthalmicMapping_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#OPM";
+
+    /// <summary>
     /// Literal for code: OphthalmicRefraction_dicom_dcim
     /// </summary>
     public const string LiteralOphthalmicRefraction_dicom_dcim = "OPR";
+
+    /// <summary>
+    /// Literal for code: DicomDcimOphthalmicRefraction_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimOphthalmicRefraction_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#OPR";
 
     /// <summary>
     /// Literal for code: OphthalmicTomography_dicom_dcim
@@ -14050,9 +19010,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOphthalmicTomography_dicom_dcim = "OPT";
 
     /// <summary>
+    /// Literal for code: DicomDcimOphthalmicTomography_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimOphthalmicTomography_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#OPT";
+
+    /// <summary>
     /// Literal for code: OphthalmicVisualField_dicom_dcim
     /// </summary>
     public const string LiteralOphthalmicVisualField_dicom_dcim = "OPV";
+
+    /// <summary>
+    /// Literal for code: DicomDcimOphthalmicVisualField_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimOphthalmicVisualField_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#OPV";
 
     /// <summary>
     /// Literal for code: OpticalSurvaceScanner_dicom_dcim
@@ -14060,9 +19030,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOpticalSurvaceScanner_dicom_dcim = "OSS";
 
     /// <summary>
+    /// Literal for code: DicomDcimOpticalSurvaceScanner_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimOpticalSurvaceScanner_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#OSS";
+
+    /// <summary>
     /// Literal for code: Palm_digital_media_subtype
     /// </summary>
     public const string LiteralPalm_digital_media_subtype = "palm";
+
+    /// <summary>
+    /// Literal for code: DigitalMediaSubtypePalm_digital_media_subtype
+    /// </summary>
+    public const string LiteralDigitalMediaSubtypePalm_digital_media_subtype = "http://hl7.org/fhir/media-subtype#palm";
 
     /// <summary>
     /// Literal for code: PositronEmissionTomography_dicom_dcim
@@ -14070,9 +19050,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPositronEmissionTomography_dicom_dcim = "PT";
 
     /// <summary>
+    /// Literal for code: DicomDcimPositronEmissionTomography_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimPositronEmissionTomography_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#PT";
+
+    /// <summary>
     /// Literal for code: PanoramicXRay_dicom_dcim
     /// </summary>
     public const string LiteralPanoramicXRay_dicom_dcim = "PX";
+
+    /// <summary>
+    /// Literal for code: DicomDcimPanoramicXRay_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimPanoramicXRay_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#PX";
 
     /// <summary>
     /// Literal for code: RetinaScan_digital_media_subtype
@@ -14080,9 +19070,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRetinaScan_digital_media_subtype = "retina";
 
     /// <summary>
+    /// Literal for code: DigitalMediaSubtypeRetinaScan_digital_media_subtype
+    /// </summary>
+    public const string LiteralDigitalMediaSubtypeRetinaScan_digital_media_subtype = "http://hl7.org/fhir/media-subtype#retina";
+
+    /// <summary>
     /// Literal for code: Radiofluoroscopy_dicom_dcim
     /// </summary>
     public const string LiteralRadiofluoroscopy_dicom_dcim = "RF";
+
+    /// <summary>
+    /// Literal for code: DicomDcimRadiofluoroscopy_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimRadiofluoroscopy_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#RF";
 
     /// <summary>
     /// Literal for code: RadiographicImaging_dicom_dcim
@@ -14090,9 +19090,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographicImaging_dicom_dcim = "RG";
 
     /// <summary>
+    /// Literal for code: DicomDcimRadiographicImaging_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimRadiographicImaging_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#RG";
+
+    /// <summary>
     /// Literal for code: ScannedDocument_digital_media_subtype
     /// </summary>
     public const string LiteralScannedDocument_digital_media_subtype = "scan";
+
+    /// <summary>
+    /// Literal for code: DigitalMediaSubtypeScannedDocument_digital_media_subtype
+    /// </summary>
+    public const string LiteralDigitalMediaSubtypeScannedDocument_digital_media_subtype = "http://hl7.org/fhir/media-subtype#scan";
 
     /// <summary>
     /// Literal for code: SlideMicroscopy_dicom_dcim
@@ -14100,9 +19110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSlideMicroscopy_dicom_dcim = "SM";
 
     /// <summary>
+    /// Literal for code: DicomDcimSlideMicroscopy_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimSlideMicroscopy_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#SM";
+
+    /// <summary>
     /// Literal for code: SubjectiveRefraction_dicom_dcim
     /// </summary>
     public const string LiteralSubjectiveRefraction_dicom_dcim = "SRF";
+
+    /// <summary>
+    /// Literal for code: DicomDcimSubjectiveRefraction_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimSubjectiveRefraction_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#SRF";
 
     /// <summary>
     /// Literal for code: Ultrasound_dicom_dcim
@@ -14110,9 +19130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasound_dicom_dcim = "US";
 
     /// <summary>
+    /// Literal for code: DicomDcimUltrasound_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimUltrasound_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#US";
+
+    /// <summary>
     /// Literal for code: VisualAcuity_dicom_dcim
     /// </summary>
     public const string LiteralVisualAcuity_dicom_dcim = "VA";
+
+    /// <summary>
+    /// Literal for code: DicomDcimVisualAcuity_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimVisualAcuity_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#VA";
 
     /// <summary>
     /// Literal for code: XRayAngiography_dicom_dcim
@@ -14120,8 +19150,2040 @@ namespace fhirCsR3.ValueSets
     public const string LiteralXRayAngiography_dicom_dcim = "XA";
 
     /// <summary>
+    /// Literal for code: DicomDcimXRayAngiography_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimXRayAngiography_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#XA";
+
+    /// <summary>
     /// Literal for code: ExternalCameraPhotography_dicom_dcim
     /// </summary>
     public const string LiteralExternalCameraPhotography_dicom_dcim = "XC";
+
+    /// <summary>
+    /// Literal for code: DicomDcimExternalCameraPhotography_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimExternalCameraPhotography_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#XC";
+
+    /// <summary>
+    /// Dictionary for looking up DigitalMediaSubtype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "10181005", DiagnosticRadiographyOfSacrococcygealJoint_ }, 
+      { "http://snomed.info/sct#10181005", DiagnosticRadiographyOfSacrococcygealJoint_ }, 
+      { "103734008", ExternalCameraMedicalPhotography_ }, 
+      { "http://snomed.info/sct#103734008", ExternalCameraMedicalPhotography_ }, 
+      { "10374007", EchographyContactBScan_ }, 
+      { "http://snomed.info/sct#10374007", EchographyContactBScan_ }, 
+      { "103745006", IntraOralPhotography_ }, 
+      { "http://snomed.info/sct#103745006", IntraOralPhotography_ }, 
+      { "10428007", RadiologicGuidanceForDilationOfUreters_ }, 
+      { "http://snomed.info/sct#10428007", RadiologicGuidanceForDilationOfUreters_ }, 
+      { "1043007", DopplerColorFlowVelocityMapping_ }, 
+      { "http://snomed.info/sct#1043007", DopplerColorFlowVelocityMapping_ }, 
+      { "1044001", DiagnosticUltrasoundOfAbdomenAndRetroperitoneum_ }, 
+      { "http://snomed.info/sct#1044001", DiagnosticUltrasoundOfAbdomenAndRetroperitoneum_ }, 
+      { "105368002", IntraArterialDigitalSubtractionAngiography_ }, 
+      { "http://snomed.info/sct#105368002", IntraArterialDigitalSubtractionAngiography_ }, 
+      { "105369005", IntravenousDigitalSubtractionAngiography_ }, 
+      { "http://snomed.info/sct#105369005", IntravenousDigitalSubtractionAngiography_ }, 
+      { "105371005", SinglePhotonEmissionComputerizedTomography_ }, 
+      { "http://snomed.info/sct#105371005", SinglePhotonEmissionComputerizedTomography_ }, 
+      { "105372003", TranscatheterDeploymentOfDetachableBalloon_ }, 
+      { "http://snomed.info/sct#105372003", TranscatheterDeploymentOfDetachableBalloon_ }, 
+      { "105375001", HandHeldTransducerUltrasonography_ }, 
+      { "http://snomed.info/sct#105375001", HandHeldTransducerUltrasonography_ }, 
+      { "105376000", TransesophagealEchocardiography_ }, 
+      { "http://snomed.info/sct#105376000", TransesophagealEchocardiography_ }, 
+      { "105377009", UltrasonographyOfLiver_ }, 
+      { "http://snomed.info/sct#105377009", UltrasonographyOfLiver_ }, 
+      { "105378004", ThalliumScan_ }, 
+      { "http://snomed.info/sct#105378004", ThalliumScan_ }, 
+      { "108273007", TopographySpecificRadiographicProcedure_ }, 
+      { "http://snomed.info/sct#108273007", TopographySpecificRadiographicProcedure_ }, 
+      { "108274001", RadiologicProcedureOnFaceHeadANDORNeck_ }, 
+      { "http://snomed.info/sct#108274001", RadiologicProcedureOnFaceHeadANDORNeck_ }, 
+      { "108275000", RadiologicProcedureOnChestANDORAbdomen_ }, 
+      { "http://snomed.info/sct#108275000", RadiologicProcedureOnChestANDORAbdomen_ }, 
+      { "108276004", RadiologicProcedureOnCardiovascularSystem_ }, 
+      { "http://snomed.info/sct#108276004", RadiologicProcedureOnCardiovascularSystem_ }, 
+      { "108279006", RadiologicProcedureOnGenitourinarySystem_ }, 
+      { "http://snomed.info/sct#108279006", RadiologicProcedureOnGenitourinarySystem_ }, 
+      { "108280009", RadiologicProcedureOnSpineANDORPelvis_ }, 
+      { "http://snomed.info/sct#108280009", RadiologicProcedureOnSpineANDORPelvis_ }, 
+      { "108282001", RadiologicProcedureOnLowerExtremityANDORHip_ }, 
+      { "http://snomed.info/sct#108282001", RadiologicProcedureOnLowerExtremityANDORHip_ }, 
+      { "108283006", UltrasoundProcedureOnCardiovascularSystem_ }, 
+      { "http://snomed.info/sct#108283006", UltrasoundProcedureOnCardiovascularSystem_ }, 
+      { "108284000", UltrasoundProcedureOnEndocrineSystem_ }, 
+      { "http://snomed.info/sct#108284000", UltrasoundProcedureOnEndocrineSystem_ }, 
+      { "108285004", UltrasoundProcedureOnUrinaryANDORMaleGenitalSystem_ }, 
+      { "http://snomed.info/sct#108285004", UltrasoundProcedureOnUrinaryANDORMaleGenitalSystem_ }, 
+      { "108286003", UltrasoundProcedureOnFemaleGenitalSystemANDORPregnancyRelatedStructure_ }, 
+      { "http://snomed.info/sct#108286003", UltrasoundProcedureOnFemaleGenitalSystemANDORPregnancyRelatedStructure_ }, 
+      { "108287007", UltrasoundProcedureOnNervousSystemANDORSpecialSenseOrgan_ }, 
+      { "http://snomed.info/sct#108287007", UltrasoundProcedureOnNervousSystemANDORSpecialSenseOrgan_ }, 
+      { "108288002", UltrasoundProcedureOnTopographicRegion_ }, 
+      { "http://snomed.info/sct#108288002", UltrasoundProcedureOnTopographicRegion_ }, 
+      { "108294005", NuclearMedicineDiagnosticProcedureOnCardiovascularSystem_ }, 
+      { "http://snomed.info/sct#108294005", NuclearMedicineDiagnosticProcedureOnCardiovascularSystem_ }, 
+      { "108296007", NuclearMedicineDiagnosticProcedureOnEndocrineANDORHematopoieticSystem_ }, 
+      { "http://snomed.info/sct#108296007", NuclearMedicineDiagnosticProcedureOnEndocrineANDORHematopoieticSystem_ }, 
+      { "108300008", NuclearMedicineDiagnosticProcedureOnNervousSystem_ }, 
+      { "http://snomed.info/sct#108300008", NuclearMedicineDiagnosticProcedureOnNervousSystem_ }, 
+      { "11269009", IsotopeStudyForPlasmaVolume_ }, 
+      { "http://snomed.info/sct#11269009", IsotopeStudyForPlasmaVolume_ }, 
+      { "11278003", KidneyImagingWithVascularFlowAndFunctionStudy_ }, 
+      { "http://snomed.info/sct#11278003", KidneyImagingWithVascularFlowAndFunctionStudy_ }, 
+      { "11295006", AngiographyOfBrachialArtery_ }, 
+      { "http://snomed.info/sct#11295006", AngiographyOfBrachialArtery_ }, 
+      { "113025000", Somnocinematography_ }, 
+      { "http://snomed.info/sct#113025000", Somnocinematography_ }, 
+      { "113090004", ComputerizedTomographyWithIVContrast_ }, 
+      { "http://snomed.info/sct#113090004", ComputerizedTomographyWithIVContrast_ }, 
+      { "113091000", MagneticResonanceImaging_ }, 
+      { "http://snomed.info/sct#113091000", MagneticResonanceImaging_ }, 
+      { "113094008", DiagnosticRadiographyOfChestLateral_ }, 
+      { "http://snomed.info/sct#113094008", DiagnosticRadiographyOfChestLateral_ }, 
+      { "113096005", TranslumbarAortogram_ }, 
+      { "http://snomed.info/sct#113096005", TranslumbarAortogram_ }, 
+      { "113099003", PhlebographyOfVeinsOfHeadAndNeck_ }, 
+      { "http://snomed.info/sct#113099003", PhlebographyOfVeinsOfHeadAndNeck_ }, 
+      { "113100006", PelvicLymphangiogram_ }, 
+      { "http://snomed.info/sct#113100006", PelvicLymphangiogram_ }, 
+      { "113103008", RadiographyOfUrinarySystem_ }, 
+      { "http://snomed.info/sct#113103008", RadiographyOfUrinarySystem_ }, 
+      { "113104002", RetrogradeCystourethrogram_ }, 
+      { "http://snomed.info/sct#113104002", RetrogradeCystourethrogram_ }, 
+      { "113105001", ComputerizedAxialTomographyOfThoracicSpineWithContrast_ }, 
+      { "http://snomed.info/sct#113105001", ComputerizedAxialTomographyOfThoracicSpineWithContrast_ }, 
+      { "113107009", RadiographyOfSoftTissueOfShoulder_ }, 
+      { "http://snomed.info/sct#113107009", RadiographyOfSoftTissueOfShoulder_ }, 
+      { "113109007", MagneticResonanceImagingOfLowerExtremity_ }, 
+      { "http://snomed.info/sct#113109007", MagneticResonanceImagingOfLowerExtremity_ }, 
+      { "113110002", UltrasonographyForDeepVeinThrombosis_ }, 
+      { "http://snomed.info/sct#113110002", UltrasonographyForDeepVeinThrombosis_ }, 
+      { "113113000", OphthalmicEchographyAMode_ }, 
+      { "http://snomed.info/sct#113113000", OphthalmicEchographyAMode_ }, 
+      { "113125002", RadioiodinatedRoseBengalStudyOfLiver_ }, 
+      { "http://snomed.info/sct#113125002", RadioiodinatedRoseBengalStudyOfLiver_ }, 
+      { "11390003", RetroperitonealEchographyBScanLimited_ }, 
+      { "http://snomed.info/sct#11390003", RetroperitonealEchographyBScanLimited_ }, 
+      { "11582002", IntraoperativeEchography_ }, 
+      { "http://snomed.info/sct#11582002", IntraoperativeEchography_ }, 
+      { "116152004", SpiralComputedTomographyScan_ }, 
+      { "http://snomed.info/sct#116152004", SpiralComputedTomographyScan_ }, 
+      { "11634002", DiagnosticRadiographySupineAndErectStudies_ }, 
+      { "http://snomed.info/sct#11634002", DiagnosticRadiographySupineAndErectStudies_ }, 
+      { "11760007", FluoroscopyDuringOperation_ }, 
+      { "http://snomed.info/sct#11760007", FluoroscopyDuringOperation_ }, 
+      { "11819005", OcularThermography_ }, 
+      { "http://snomed.info/sct#11819005", OcularThermography_ }, 
+      { "11892002", ComputerizedTomographySagittal_ }, 
+      { "http://snomed.info/sct#11892002", ComputerizedTomographySagittal_ }, 
+      { "11895000", TracerStudyOfEye_ }, 
+      { "http://snomed.info/sct#11895000", TracerStudyOfEye_ }, 
+      { "11971003", PulmonaryVentilationPerfusionStudyByRadioactiveKrypton_ }, 
+      { "http://snomed.info/sct#11971003", PulmonaryVentilationPerfusionStudyByRadioactiveKrypton_ }, 
+      { "12118001", PhlebographyOfPortalSystem_ }, 
+      { "http://snomed.info/sct#12118001", PhlebographyOfPortalSystem_ }, 
+      { "12124007", RadioisotopeScanOfPancreas_ }, 
+      { "http://snomed.info/sct#12124007", RadioisotopeScanOfPancreas_ }, 
+      { "1225002", RadiographyOfHumerus_ }, 
+      { "http://snomed.info/sct#1225002", RadiographyOfHumerus_ }, 
+      { "12341000", IsotopeStudyForGlomerularFiltrationRate_ }, 
+      { "http://snomed.info/sct#12341000", IsotopeStudyForGlomerularFiltrationRate_ }, 
+      { "12356009", DiagnosticRadiographyStereotacticLocalizationInHead_ }, 
+      { "http://snomed.info/sct#12356009", DiagnosticRadiographyStereotacticLocalizationInHead_ }, 
+      { "12357000", RadiologicExaminationOfRenalCystTranslumbarApproach_ }, 
+      { "http://snomed.info/sct#12357000", RadiologicExaminationOfRenalCystTranslumbarApproach_ }, 
+      { "12389009", Xeromammography_ }, 
+      { "http://snomed.info/sct#12389009", Xeromammography_ }, 
+      { "12513003", DiagnosticRadiographyOfHipBilateral_ }, 
+      { "http://snomed.info/sct#12513003", DiagnosticRadiographyOfHipBilateral_ }, 
+      { "12749000", RadiologicGuidanceForPercutaneousPlacementOfEnteroclysisTube_ }, 
+      { "http://snomed.info/sct#12749000", RadiologicGuidanceForPercutaneousPlacementOfEnteroclysisTube_ }, 
+      { "129108007", Phlebography_ }, 
+      { "http://snomed.info/sct#129108007", Phlebography_ }, 
+      { "129118002", Arteriography_ }, 
+      { "http://snomed.info/sct#129118002", Arteriography_ }, 
+      { "129119005", UltrasoundPhlebographyOfVenaCava_ }, 
+      { "http://snomed.info/sct#129119005", UltrasoundPhlebographyOfVenaCava_ }, 
+      { "129120004", UltrasoundPhlebographyOfHepaticVein_ }, 
+      { "http://snomed.info/sct#129120004", UltrasoundPhlebographyOfHepaticVein_ }, 
+      { "1292009", MagneticResonanceImagingOfUrinaryBladder_ }, 
+      { "http://snomed.info/sct#1292009", MagneticResonanceImagingOfUrinaryBladder_ }, 
+      { "13088001", CorporaCavernosography_ }, 
+      { "http://snomed.info/sct#13088001", CorporaCavernosography_ }, 
+      { "13167007", AngiocardiographyByCineradiography_ }, 
+      { "http://snomed.info/sct#13167007", AngiocardiographyByCineradiography_ }, 
+      { "13205008", TransvaginalEchography_ }, 
+      { "http://snomed.info/sct#13205008", TransvaginalEchography_ }, 
+      { "13256004", DynamicFunctionStudyBloodClearance_ }, 
+      { "http://snomed.info/sct#13256004", DynamicFunctionStudyBloodClearance_ }, 
+      { "13378009", ThyroidUptakeWithDischarge_ }, 
+      { "http://snomed.info/sct#13378009", ThyroidUptakeWithDischarge_ }, 
+      { "133883001", ComputerAssistedImageAnalysis_ }, 
+      { "http://snomed.info/sct#133883001", ComputerAssistedImageAnalysis_ }, 
+      { "133884007", SpatialCollocationAnalysis_ }, 
+      { "http://snomed.info/sct#133884007", SpatialCollocationAnalysis_ }, 
+      { "133885008", SpatialProximityAnalysis_ }, 
+      { "http://snomed.info/sct#133885008", SpatialProximityAnalysis_ }, 
+      { "133886009", TemporalCorrelationAnalysis_ }, 
+      { "http://snomed.info/sct#133886009", TemporalCorrelationAnalysis_ }, 
+      { "133887000", ImageQualityAnalysis_ }, 
+      { "http://snomed.info/sct#133887000", ImageQualityAnalysis_ }, 
+      { "133888005", FocalAsymmetricDensityAnalysis_ }, 
+      { "http://snomed.info/sct#133888005", FocalAsymmetricDensityAnalysis_ }, 
+      { "133889002", AsymmetricBreastTissueAnalysis_ }, 
+      { "http://snomed.info/sct#133889002", AsymmetricBreastTissueAnalysis_ }, 
+      { "133890006", BreastCompositionAnalysis_ }, 
+      { "http://snomed.info/sct#133890006", BreastCompositionAnalysis_ }, 
+      { "13450007", MammaryDuctogramOfMultipleDucts_ }, 
+      { "http://snomed.info/sct#13450007", MammaryDuctogramOfMultipleDucts_ }, 
+      { "13518004", ComputerizedTomographyWithoutIVContrastFollowedByIVContrastAndMoreSections_ }, 
+      { "http://snomed.info/sct#13518004", ComputerizedTomographyWithoutIVContrastFollowedByIVContrastAndMoreSections_ }, 
+      { "13578005", DiagnosticRadiographyCombinedAPAndLateral_ }, 
+      { "http://snomed.info/sct#13578005", DiagnosticRadiographyCombinedAPAndLateral_ }, 
+      { "13845008", GastrointestinalAspirateForLocalizationOfBloodLoss_ }, 
+      { "http://snomed.info/sct#13845008", GastrointestinalAspirateForLocalizationOfBloodLoss_ }, 
+      { "1385001", EchographyScanBModeForFetalAgeDetermination_ }, 
+      { "http://snomed.info/sct#1385001", EchographyScanBModeForFetalAgeDetermination_ }, 
+      { "1414009", AngiographyOfArteriovenousShunt_ }, 
+      { "http://snomed.info/sct#1414009", AngiographyOfArteriovenousShunt_ }, 
+      { "14211004", CTGuidanceForNeedleBiopsy_ }, 
+      { "http://snomed.info/sct#14211004", CTGuidanceForNeedleBiopsy_ }, 
+      { "14305004", Vasography_ }, 
+      { "http://snomed.info/sct#14305004", Vasography_ }, 
+      { "15282006", FetalEchocardiographyRealTimeWithImageDocumentation2DWithMModeRecording_ }, 
+      { "http://snomed.info/sct#15282006", FetalEchocardiographyRealTimeWithImageDocumentation2DWithMModeRecording_ }, 
+      { "15351005", RadiocalciumAbsorptionStudy_ }, 
+      { "http://snomed.info/sct#15351005", RadiocalciumAbsorptionStudy_ }, 
+      { "15364006", ScanningOrImagingPerfusionStudyParticulate_ }, 
+      { "http://snomed.info/sct#15364006", ScanningOrImagingPerfusionStudyParticulate_ }, 
+      { "15749009", CerebralVentriculographyAirContrast_ }, 
+      { "http://snomed.info/sct#15749009", CerebralVentriculographyAirContrast_ }, 
+      { "15757007", SerialographySinglePlane_ }, 
+      { "http://snomed.info/sct#15757007", SerialographySinglePlane_ }, 
+      { "1597004", SkeletalXRayOfAnkleAndFoot_ }, 
+      { "http://snomed.info/sct#1597004", SkeletalXRayOfAnkleAndFoot_ }, 
+      { "16245009", AngiographyOfRenalArteriesBilateral_ }, 
+      { "http://snomed.info/sct#16245009", AngiographyOfRenalArteriesBilateral_ }, 
+      { "16278002", RadiologicSupervisionAndInterpretationOfProcedure_ }, 
+      { "http://snomed.info/sct#16278002", RadiologicSupervisionAndInterpretationOfProcedure_ }, 
+      { "16306001", OcularPhotographyForMedicalEvaluationAndDocumentationSlitLampPhotography_ }, 
+      { "http://snomed.info/sct#16306001", OcularPhotographyForMedicalEvaluationAndDocumentationSlitLampPhotography_ }, 
+      { "16310003", Ultrasonography_ }, 
+      { "http://snomed.info/sct#16310003", Ultrasonography_ }, 
+      { "164817009", PlacentalLocalization_ }, 
+      { "http://snomed.info/sct#164817009", PlacentalLocalization_ }, 
+      { "165095009", ThermographyOfSkin_ }, 
+      { "http://snomed.info/sct#165095009", ThermographyOfSkin_ }, 
+      { "16747000", PercutaneousTranshepaticCholangiogram_ }, 
+      { "http://snomed.info/sct#16747000", PercutaneousTranshepaticCholangiogram_ }, 
+      { "168537006", PlainFilm_ }, 
+      { "http://snomed.info/sct#168537006", PlainFilm_ }, 
+      { "168558000", EthmoidSinusesXRay_ }, 
+      { "http://snomed.info/sct#168558000", EthmoidSinusesXRay_ }, 
+      { "168559008", FrontalSinusesXRay_ }, 
+      { "http://snomed.info/sct#168559008", FrontalSinusesXRay_ }, 
+      { "168560003", MaxillarySinusesXRay_ }, 
+      { "http://snomed.info/sct#168560003", MaxillarySinusesXRay_ }, 
+      { "168564007", MastoidProcessesXRay_ }, 
+      { "http://snomed.info/sct#168564007", MastoidProcessesXRay_ }, 
+      { "168565008", PlainXRayBaseOfSkull_ }, 
+      { "http://snomed.info/sct#168565008", PlainXRayBaseOfSkull_ }, 
+      { "168566009", PlainXRayFacialSinuses_ }, 
+      { "http://snomed.info/sct#168566009", PlainXRayFacialSinuses_ }, 
+      { "168573004", AtlantoaxialXRay_ }, 
+      { "http://snomed.info/sct#168573004", AtlantoaxialXRay_ }, 
+      { "168588009", InstabilityViewsSpine_ }, 
+      { "http://snomed.info/sct#168588009", InstabilityViewsSpine_ }, 
+      { "168594001", ClavicleXRay_ }, 
+      { "http://snomed.info/sct#168594001", ClavicleXRay_ }, 
+      { "168599006", SternoclavicularJointXRay_ }, 
+      { "http://snomed.info/sct#168599006", SternoclavicularJointXRay_ }, 
+      { "168600009", ThoracicInletXRay_ }, 
+      { "http://snomed.info/sct#168600009", ThoracicInletXRay_ }, 
+      { "168609005", SymphysisPubisXRay_ }, 
+      { "http://snomed.info/sct#168609005", SymphysisPubisXRay_ }, 
+      { "168619004", PlainXRayHeadOfHumerus_ }, 
+      { "http://snomed.info/sct#168619004", PlainXRayHeadOfHumerus_ }, 
+      { "168620005", PlainXRayShaftOfHumerus_ }, 
+      { "http://snomed.info/sct#168620005", PlainXRayShaftOfHumerus_ }, 
+      { "168623007", XRayShaftOfRadiusUlna_ }, 
+      { "http://snomed.info/sct#168623007", XRayShaftOfRadiusUlna_ }, 
+      { "168632009", StressXRayShoulderJoint_ }, 
+      { "http://snomed.info/sct#168632009", StressXRayShoulderJoint_ }, 
+      { "168633004", AcromioclavicularJointXRay_ }, 
+      { "http://snomed.info/sct#168633004", AcromioclavicularJointXRay_ }, 
+      { "168637003", PlainXRayRadius_ }, 
+      { "http://snomed.info/sct#168637003", PlainXRayRadius_ }, 
+      { "168654006", StressXRayThumb_ }, 
+      { "http://snomed.info/sct#168654006", StressXRayThumb_ }, 
+      { "168655007", InstabilityViewsCarpus_ }, 
+      { "http://snomed.info/sct#168655007", InstabilityViewsCarpus_ }, 
+      { "168663008", PlainXRayHeadOfFemur_ }, 
+      { "http://snomed.info/sct#168663008", PlainXRayHeadOfFemur_ }, 
+      { "168664002", FemoralNeckXRay_ }, 
+      { "http://snomed.info/sct#168664002", FemoralNeckXRay_ }, 
+      { "168665001", PlainXRayShaftOfFemur_ }, 
+      { "http://snomed.info/sct#168665001", PlainXRayShaftOfFemur_ }, 
+      { "168669007", PatellaXRay_ }, 
+      { "http://snomed.info/sct#168669007", PatellaXRay_ }, 
+      { "168681006", StressXRayKnee_ }, 
+      { "http://snomed.info/sct#168681006", StressXRayKnee_ }, 
+      { "168682004", StressXRayAnkleJoint_ }, 
+      { "http://snomed.info/sct#168682004", StressXRayAnkleJoint_ }, 
+      { "168702005", PlainXRayAbdomen_ }, 
+      { "http://snomed.info/sct#168702005", PlainXRayAbdomen_ }, 
+      { "168713008", SoftTissueXRayFace_ }, 
+      { "http://snomed.info/sct#168713008", SoftTissueXRayFace_ }, 
+      { "168716000", EarSoftTissueXRay_ }, 
+      { "http://snomed.info/sct#168716000", EarSoftTissueXRay_ }, 
+      { "168717009", SoftTissueXRayNose_ }, 
+      { "http://snomed.info/sct#168717009", SoftTissueXRayNose_ }, 
+      { "168719007", NeckSoftTissueXRay_ }, 
+      { "http://snomed.info/sct#168719007", NeckSoftTissueXRay_ }, 
+      { "168722009", XRayCervicalLymphNodes_ }, 
+      { "http://snomed.info/sct#168722009", XRayCervicalLymphNodes_ }, 
+      { "168723004", SoftTissueXRayThyroid_ }, 
+      { "http://snomed.info/sct#168723004", SoftTissueXRayThyroid_ }, 
+      { "168725006", SoftTissueXRayMouth_ }, 
+      { "http://snomed.info/sct#168725006", SoftTissueXRayMouth_ }, 
+      { "168729000", SoftTissueXRayTongue_ }, 
+      { "http://snomed.info/sct#168729000", SoftTissueXRayTongue_ }, 
+      { "168731009", StandardChestXRay_ }, 
+      { "http://snomed.info/sct#168731009", StandardChestXRay_ }, 
+      { "168736004", SoftTissueXRayChest_ }, 
+      { "http://snomed.info/sct#168736004", SoftTissueXRayChest_ }, 
+      { "168743005", SoftTissueXRayPleura_ }, 
+      { "http://snomed.info/sct#168743005", SoftTissueXRayPleura_ }, 
+      { "168744004", SoftTissueXRayHeart_ }, 
+      { "http://snomed.info/sct#168744004", SoftTissueXRayHeart_ }, 
+      { "168745003", SoftTissueXRayThoracicAorta_ }, 
+      { "http://snomed.info/sct#168745003", SoftTissueXRayThoracicAorta_ }, 
+      { "168746002", SoftTissueXRayDiaphragm_ }, 
+      { "http://snomed.info/sct#168746002", SoftTissueXRayDiaphragm_ }, 
+      { "168759005", AbdominalObstetricXRay_ }, 
+      { "http://snomed.info/sct#168759005", AbdominalObstetricXRay_ }, 
+      { "168760000", ObstetricXRayFetus_ }, 
+      { "http://snomed.info/sct#168760000", ObstetricXRayFetus_ }, 
+      { "168763003", UpperAbdomenSoftTissueXRay_ }, 
+      { "http://snomed.info/sct#168763003", UpperAbdomenSoftTissueXRay_ }, 
+      { "168764009", CardioEsophagealXRay_ }, 
+      { "http://snomed.info/sct#168764009", CardioEsophagealXRay_ }, 
+      { "168766006", LiverSoftTissueXRay_ }, 
+      { "http://snomed.info/sct#168766006", LiverSoftTissueXRay_ }, 
+      { "168767002", SpleenSoftTissueXRay_ }, 
+      { "http://snomed.info/sct#168767002", SpleenSoftTissueXRay_ }, 
+      { "168770003", SoftTissueXRayKidney_ }, 
+      { "http://snomed.info/sct#168770003", SoftTissueXRayKidney_ }, 
+      { "168772006", XRayMaleExternalGenitalia_ }, 
+      { "http://snomed.info/sct#168772006", XRayMaleExternalGenitalia_ }, 
+      { "168773001", XRayFemaleExternalGenitalia_ }, 
+      { "http://snomed.info/sct#168773001", XRayFemaleExternalGenitalia_ }, 
+      { "168775008", SoftTissueXRayLimbs_ }, 
+      { "http://snomed.info/sct#168775008", SoftTissueXRayLimbs_ }, 
+      { "168779002", SoftTissueXRayLymphNodes_ }, 
+      { "http://snomed.info/sct#168779002", SoftTissueXRayLymphNodes_ }, 
+      { "168780004", SoftTissueXRayVeins_ }, 
+      { "http://snomed.info/sct#168780004", SoftTissueXRayVeins_ }, 
+      { "168781000", SoftTissueXRayArteries_ }, 
+      { "http://snomed.info/sct#168781000", SoftTissueXRayArteries_ }, 
+      { "168783002", ContrastRadiographyExcludingCardiovascularSystem_ }, 
+      { "http://snomed.info/sct#168783002", ContrastRadiographyExcludingCardiovascularSystem_ }, 
+      { "168800007", ContrastRadiographyOrbit_ }, 
+      { "http://snomed.info/sct#168800007", ContrastRadiographyOrbit_ }, 
+      { "168803009", ContrastRadiographyOfOropharynx_ }, 
+      { "http://snomed.info/sct#168803009", ContrastRadiographyOfOropharynx_ }, 
+      { "168810003", BilateralTransglotticBronchography_ }, 
+      { "http://snomed.info/sct#168810003", BilateralTransglotticBronchography_ }, 
+      { "168811004", BilateralTranscricoidBronchography_ }, 
+      { "http://snomed.info/sct#168811004", BilateralTranscricoidBronchography_ }, 
+      { "168812006", SelectiveBronchography_ }, 
+      { "http://snomed.info/sct#168812006", SelectiveBronchography_ }, 
+      { "168814007", DiagnosticPneumomediastinum_ }, 
+      { "http://snomed.info/sct#168814007", DiagnosticPneumomediastinum_ }, 
+      { "168816009", ContrastRadiographyOfAbdominalCavity_ }, 
+      { "http://snomed.info/sct#168816009", ContrastRadiographyOfAbdominalCavity_ }, 
+      { "168817000", ContrastRadiographyOfPeritonealCavity_ }, 
+      { "http://snomed.info/sct#168817000", ContrastRadiographyOfPeritonealCavity_ }, 
+      { "168818005", PelvicContrastRadiography_ }, 
+      { "http://snomed.info/sct#168818005", PelvicContrastRadiography_ }, 
+      { "168821007", BariumSwallow_ }, 
+      { "http://snomed.info/sct#168821007", BariumSwallow_ }, 
+      { "168831000", BariumFollowThrough_ }, 
+      { "http://snomed.info/sct#168831000", BariumFollowThrough_ }, 
+      { "168836005", BariumEnema_ }, 
+      { "http://snomed.info/sct#168836005", BariumEnema_ }, 
+      { "168843004", BABariumEnemaViaColostomy_ }, 
+      { "http://snomed.info/sct#168843004", BABariumEnemaViaColostomy_ }, 
+      { "168844005", DoubleContrastBariumMeal_ }, 
+      { "http://snomed.info/sct#168844005", DoubleContrastBariumMeal_ }, 
+      { "168845006", DuodenumDoubleContrastExamination_ }, 
+      { "http://snomed.info/sct#168845006", DuodenumDoubleContrastExamination_ }, 
+      { "168846007", RectumDoubleContrastExamination_ }, 
+      { "http://snomed.info/sct#168846007", RectumDoubleContrastExamination_ }, 
+      { "168847003", ColonDoubleContrastExamination_ }, 
+      { "http://snomed.info/sct#168847003", ColonDoubleContrastExamination_ }, 
+      { "168854009", Cystography_ }, 
+      { "http://snomed.info/sct#168854009", Cystography_ }, 
+      { "168858007", RetrogradeCystography_ }, 
+      { "http://snomed.info/sct#168858007", RetrogradeCystography_ }, 
+      { "168859004", PercutaneousCystography_ }, 
+      { "http://snomed.info/sct#168859004", PercutaneousCystography_ }, 
+      { "168860009", NegativeDoubleContrastCystography_ }, 
+      { "http://snomed.info/sct#168860009", NegativeDoubleContrastCystography_ }, 
+      { "168861008", IntravenousCystography_ }, 
+      { "http://snomed.info/sct#168861008", IntravenousCystography_ }, 
+      { "168864000", Urethrogram_ }, 
+      { "http://snomed.info/sct#168864000", Urethrogram_ }, 
+      { "168870006", PeroralCholangiography_ }, 
+      { "http://snomed.info/sct#168870006", PeroralCholangiography_ }, 
+      { "168875001", Splenography_ }, 
+      { "http://snomed.info/sct#168875001", Splenography_ }, 
+      { "168881009", ContrastAmniography_ }, 
+      { "http://snomed.info/sct#168881009", ContrastAmniography_ }, 
+      { "168882002", PlacentalVasography_ }, 
+      { "http://snomed.info/sct#168882002", PlacentalVasography_ }, 
+      { "168884001", Hysterosalpingography_ }, 
+      { "http://snomed.info/sct#168884001", Hysterosalpingography_ }, 
+      { "168890002", FemaleGenitalSystemContrastProcedure_ }, 
+      { "http://snomed.info/sct#168890002", FemaleGenitalSystemContrastProcedure_ }, 
+      { "168892005", MaleGenitalSystemContrastProcedure_ }, 
+      { "http://snomed.info/sct#168892005", MaleGenitalSystemContrastProcedure_ }, 
+      { "168894006", ContrastRadiographyOfGlands_ }, 
+      { "http://snomed.info/sct#168894006", ContrastRadiographyOfGlands_ }, 
+      { "168896008", Sialography_ }, 
+      { "http://snomed.info/sct#168896008", Sialography_ }, 
+      { "168897004", BreastContrastProcedure_ }, 
+      { "http://snomed.info/sct#168897004", BreastContrastProcedure_ }, 
+      { "168899001", ContrastRadiographyDucts_ }, 
+      { "http://snomed.info/sct#168899001", ContrastRadiographyDucts_ }, 
+      { "168900006", OmphalomesentericDuctContrastRadiography_ }, 
+      { "http://snomed.info/sct#168900006", OmphalomesentericDuctContrastRadiography_ }, 
+      { "168902003", HeadFistulography_ }, 
+      { "http://snomed.info/sct#168902003", HeadFistulography_ }, 
+      { "168903008", NeckFistulography_ }, 
+      { "http://snomed.info/sct#168903008", NeckFistulography_ }, 
+      { "168904002", ChestWallFistulography_ }, 
+      { "http://snomed.info/sct#168904002", ChestWallFistulography_ }, 
+      { "168905001", AbdominalFistulography_ }, 
+      { "http://snomed.info/sct#168905001", AbdominalFistulography_ }, 
+      { "168906000", RetroperitonealFistulography_ }, 
+      { "http://snomed.info/sct#168906000", RetroperitonealFistulography_ }, 
+      { "168908004", KneeArthrogram_ }, 
+      { "http://snomed.info/sct#168908004", KneeArthrogram_ }, 
+      { "168917004", SacroiliacJointArthrogram_ }, 
+      { "http://snomed.info/sct#168917004", SacroiliacJointArthrogram_ }, 
+      { "168918009", HipArthrogram_ }, 
+      { "http://snomed.info/sct#168918009", HipArthrogram_ }, 
+      { "168919001", DoubleContrastArthrography_ }, 
+      { "http://snomed.info/sct#168919001", DoubleContrastArthrography_ }, 
+      { "168920007", Pneumoarthrography_ }, 
+      { "http://snomed.info/sct#168920007", Pneumoarthrography_ }, 
+      { "168922004", InterstitialContrastRadiology_ }, 
+      { "http://snomed.info/sct#168922004", InterstitialContrastRadiology_ }, 
+      { "168941001", AbdominalAortogram_ }, 
+      { "http://snomed.info/sct#168941001", AbdominalAortogram_ }, 
+      { "168968001", VenographyHeadNeckThorax_ }, 
+      { "http://snomed.info/sct#168968001", VenographyHeadNeckThorax_ }, 
+      { "168969009", CerebralSinusVenography_ }, 
+      { "http://snomed.info/sct#168969009", CerebralSinusVenography_ }, 
+      { "168970005", SuperiorVenaCavogram_ }, 
+      { "http://snomed.info/sct#168970005", SuperiorVenaCavogram_ }, 
+      { "168971009", TranssternalThoracicVenogram_ }, 
+      { "http://snomed.info/sct#168971009", TranssternalThoracicVenogram_ }, 
+      { "168973007", VenographyTrunk_ }, 
+      { "http://snomed.info/sct#168973007", VenographyTrunk_ }, 
+      { "168974001", OperativeAbdominalVenogram_ }, 
+      { "http://snomed.info/sct#168974001", OperativeAbdominalVenogram_ }, 
+      { "168975000", InferiorVenaCavogram_ }, 
+      { "http://snomed.info/sct#168975000", InferiorVenaCavogram_ }, 
+      { "168976004", VenogramPortalVein_ }, 
+      { "http://snomed.info/sct#168976004", VenogramPortalVein_ }, 
+      { "168977008", RenalVenogram_ }, 
+      { "http://snomed.info/sct#168977008", RenalVenogram_ }, 
+      { "168978003", FemaleGenitalVenogram_ }, 
+      { "http://snomed.info/sct#168978003", FemaleGenitalVenogram_ }, 
+      { "168979006", MaleGenitalVenogram_ }, 
+      { "http://snomed.info/sct#168979006", MaleGenitalVenogram_ }, 
+      { "168981008", VenographyPeripheral_ }, 
+      { "http://snomed.info/sct#168981008", VenographyPeripheral_ }, 
+      { "168982001", VenogramPertrochanteric_ }, 
+      { "http://snomed.info/sct#168982001", VenogramPertrochanteric_ }, 
+      { "168988002", HeadLymphangiogram_ }, 
+      { "http://snomed.info/sct#168988002", HeadLymphangiogram_ }, 
+      { "168989005", LymphangiographyNeck_ }, 
+      { "http://snomed.info/sct#168989005", LymphangiographyNeck_ }, 
+      { "168990001", ThoracicLymphangiogram_ }, 
+      { "http://snomed.info/sct#168990001", ThoracicLymphangiogram_ }, 
+      { "168996007", MiscellaneousImagingProcedures_ }, 
+      { "http://snomed.info/sct#168996007", MiscellaneousImagingProcedures_ }, 
+      { "168997003", FluoroscopyBrain_ }, 
+      { "http://snomed.info/sct#168997003", FluoroscopyBrain_ }, 
+      { "168998008", FluoroscopySkull_ }, 
+      { "http://snomed.info/sct#168998008", FluoroscopySkull_ }, 
+      { "168999000", FluoroscopyCervicalColumn_ }, 
+      { "http://snomed.info/sct#168999000", FluoroscopyCervicalColumn_ }, 
+      { "169000003", FluoroscopySkeletonLimbs_ }, 
+      { "http://snomed.info/sct#169000003", FluoroscopySkeletonLimbs_ }, 
+      { "169001004", FluoroscopyHeartMediastinum_ }, 
+      { "http://snomed.info/sct#169001004", FluoroscopyHeartMediastinum_ }, 
+      { "169002006", FluoroscopyOfDiaphragm_ }, 
+      { "http://snomed.info/sct#169002006", FluoroscopyOfDiaphragm_ }, 
+      { "169003001", FluoroscopyLungs_ }, 
+      { "http://snomed.info/sct#169003001", FluoroscopyLungs_ }, 
+      { "169004007", FluoroscopyChestWall_ }, 
+      { "http://snomed.info/sct#169004007", FluoroscopyChestWall_ }, 
+      { "169005008", FluoroscopyEsophagus_ }, 
+      { "http://snomed.info/sct#169005008", FluoroscopyEsophagus_ }, 
+      { "169006009", FluoroscopyIntestineSmall_ }, 
+      { "http://snomed.info/sct#169006009", FluoroscopyIntestineSmall_ }, 
+      { "169007000", FluoroscopyIntestineLarge_ }, 
+      { "http://snomed.info/sct#169007000", FluoroscopyIntestineLarge_ }, 
+      { "169008005", FluoroscopyStomach_ }, 
+      { "http://snomed.info/sct#169008005", FluoroscopyStomach_ }, 
+      { "169009002", FluoroscopyRectum_ }, 
+      { "http://snomed.info/sct#169009002", FluoroscopyRectum_ }, 
+      { "169010007", FluoroscopyGallbladder_ }, 
+      { "http://snomed.info/sct#169010007", FluoroscopyGallbladder_ }, 
+      { "169011006", FluoroscopyUrinaryTract_ }, 
+      { "http://snomed.info/sct#169011006", FluoroscopyUrinaryTract_ }, 
+      { "169012004", FluoroscopyFemaleGenital_ }, 
+      { "http://snomed.info/sct#169012004", FluoroscopyFemaleGenital_ }, 
+      { "169014003", FluoroscopyAndRadiography_ }, 
+      { "http://snomed.info/sct#169014003", FluoroscopyAndRadiography_ }, 
+      { "169015002", FluoroscopyAndRadiographyBrain_ }, 
+      { "http://snomed.info/sct#169015002", FluoroscopyAndRadiographyBrain_ }, 
+      { "169016001", FluoroscopyAndRadiographySkull_ }, 
+      { "http://snomed.info/sct#169016001", FluoroscopyAndRadiographySkull_ }, 
+      { "169017005", FluoroscopyAndRadiographyCervicalColumn_ }, 
+      { "http://snomed.info/sct#169017005", FluoroscopyAndRadiographyCervicalColumn_ }, 
+      { "169018000", FluoroscopyAndRadiographySkeleton_ }, 
+      { "http://snomed.info/sct#169018000", FluoroscopyAndRadiographySkeleton_ }, 
+      { "169019008", FluoroscopyAndRadiographyHeart_ }, 
+      { "http://snomed.info/sct#169019008", FluoroscopyAndRadiographyHeart_ }, 
+      { "169020002", FluoroscopyAndRadiographyMediastinum_ }, 
+      { "http://snomed.info/sct#169020002", FluoroscopyAndRadiographyMediastinum_ }, 
+      { "169021003", FluoroscopyAndRadiographyLungs_ }, 
+      { "http://snomed.info/sct#169021003", FluoroscopyAndRadiographyLungs_ }, 
+      { "169022005", FluoroscopyAndRadiographyChestWall_ }, 
+      { "http://snomed.info/sct#169022005", FluoroscopyAndRadiographyChestWall_ }, 
+      { "169023000", FluoroscopyAndRadiographyDigestive_ }, 
+      { "http://snomed.info/sct#169023000", FluoroscopyAndRadiographyDigestive_ }, 
+      { "169025007", FluoroscopyAndRadiographyUrinary_ }, 
+      { "http://snomed.info/sct#169025007", FluoroscopyAndRadiographyUrinary_ }, 
+      { "169026008", FluoroscopyAndRadiographyFemaleGenital_ }, 
+      { "http://snomed.info/sct#169026008", FluoroscopyAndRadiographyFemaleGenital_ }, 
+      { "169031005", TomographyHeadNeck_ }, 
+      { "http://snomed.info/sct#169031005", TomographyHeadNeck_ }, 
+      { "169032003", TomographySkeletonLimbs_ }, 
+      { "http://snomed.info/sct#169032003", TomographySkeletonLimbs_ }, 
+      { "169033008", TomographyLarynxTrachea_ }, 
+      { "http://snomed.info/sct#169033008", TomographyLarynxTrachea_ }, 
+      { "169034002", TomographyLungs_ }, 
+      { "http://snomed.info/sct#169034002", TomographyLungs_ }, 
+      { "169035001", TomographyGallbladder_ }, 
+      { "http://snomed.info/sct#169035001", TomographyGallbladder_ }, 
+      { "169037009", TomographyChest_ }, 
+      { "http://snomed.info/sct#169037009", TomographyChest_ }, 
+      { "169044000", CineradiographyBrain_ }, 
+      { "http://snomed.info/sct#169044000", CineradiographyBrain_ }, 
+      { "169045004", CineradiographyHeart_ }, 
+      { "http://snomed.info/sct#169045004", CineradiographyHeart_ }, 
+      { "169046003", CineradiographyGreatVessels_ }, 
+      { "http://snomed.info/sct#169046003", CineradiographyGreatVessels_ }, 
+      { "169047007", CineradiographyRespiratoryTract_ }, 
+      { "http://snomed.info/sct#169047007", CineradiographyRespiratoryTract_ }, 
+      { "169048002", CineradiographyGastrointestinalTract_ }, 
+      { "http://snomed.info/sct#169048002", CineradiographyGastrointestinalTract_ }, 
+      { "169049005", CineradiographyGUT_ }, 
+      { "http://snomed.info/sct#169049005", CineradiographyGUT_ }, 
+      { "169050005", CineradiographyJoints_ }, 
+      { "http://snomed.info/sct#169050005", CineradiographyJoints_ }, 
+      { "169055000", KymographyHeart_ }, 
+      { "http://snomed.info/sct#169055000", KymographyHeart_ }, 
+      { "169056004", KymographyGreatVessels_ }, 
+      { "http://snomed.info/sct#169056004", KymographyGreatVessels_ }, 
+      { "169057008", KymographyLungs_ }, 
+      { "http://snomed.info/sct#169057008", KymographyLungs_ }, 
+      { "169058003", KymographyDiaphragm_ }, 
+      { "http://snomed.info/sct#169058003", KymographyDiaphragm_ }, 
+      { "169061002", SerialRadiographyOfLungs_ }, 
+      { "http://snomed.info/sct#169061002", SerialRadiographyOfLungs_ }, 
+      { "169066007", CTOfSkull_ }, 
+      { "http://snomed.info/sct#169066007", CTOfSkull_ }, 
+      { "169067003", CTOfFace_ }, 
+      { "http://snomed.info/sct#169067003", CTOfFace_ }, 
+      { "169068008", CTOfNeck_ }, 
+      { "http://snomed.info/sct#169068008", CTOfNeck_ }, 
+      { "169069000", CTOfChest_ }, 
+      { "http://snomed.info/sct#169069000", CTOfChest_ }, 
+      { "169070004", CTOfAbdomen_ }, 
+      { "http://snomed.info/sct#169070004", CTOfAbdomen_ }, 
+      { "169071000", CTOfPelvis_ }, 
+      { "http://snomed.info/sct#169071000", CTOfPelvis_ }, 
+      { "169072007", CATScanWholeBody_ }, 
+      { "http://snomed.info/sct#169072007", CATScanWholeBody_ }, 
+      { "169074008", ComputerizedDiagnosticRadiology_ }, 
+      { "http://snomed.info/sct#169074008", ComputerizedDiagnosticRadiology_ }, 
+      { "169078006", ComputerizedCineangiography_ }, 
+      { "http://snomed.info/sct#169078006", ComputerizedCineangiography_ }, 
+      { "169086006", StereotacticStereoscopicTestBrain_ }, 
+      { "http://snomed.info/sct#169086006", StereotacticStereoscopicTestBrain_ }, 
+      { "169087002", StereotacticStereoscopicTestSkull_ }, 
+      { "http://snomed.info/sct#169087002", StereotacticStereoscopicTestSkull_ }, 
+      { "169088007", StereotacticStereoscopicTestFace_ }, 
+      { "http://snomed.info/sct#169088007", StereotacticStereoscopicTestFace_ }, 
+      { "169089004", StereotacticStereoscopicTestHeart_ }, 
+      { "http://snomed.info/sct#169089004", StereotacticStereoscopicTestHeart_ }, 
+      { "169090008", StereotacticStereoscopicTestMediastinum_ }, 
+      { "http://snomed.info/sct#169090008", StereotacticStereoscopicTestMediastinum_ }, 
+      { "169091007", StereotacticStereoscopicTestLungs_ }, 
+      { "http://snomed.info/sct#169091007", StereotacticStereoscopicTestLungs_ }, 
+      { "169092000", StereotacticStereoscopicTestAbdomen_ }, 
+      { "http://snomed.info/sct#169092000", StereotacticStereoscopicTestAbdomen_ }, 
+      { "169093005", StereotacticStereoscopicTestSkeleton_ }, 
+      { "http://snomed.info/sct#169093005", StereotacticStereoscopicTestSkeleton_ }, 
+      { "169094004", StereotacticStereoscopicTestSoftTissue_ }, 
+      { "http://snomed.info/sct#169094004", StereotacticStereoscopicTestSoftTissue_ }, 
+      { "169096002", SpecificImagingMethods_ }, 
+      { "http://snomed.info/sct#169096002", SpecificImagingMethods_ }, 
+      { "169097006", SpecificMammaryGlandImaging_ }, 
+      { "http://snomed.info/sct#169097006", SpecificMammaryGlandImaging_ }, 
+      { "169098001", SpecificBloodVesselImaging_ }, 
+      { "http://snomed.info/sct#169098001", SpecificBloodVesselImaging_ }, 
+      { "169099009", SpecificSkeletalImaging_ }, 
+      { "http://snomed.info/sct#169099009", SpecificSkeletalImaging_ }, 
+      { "169100001", SpecificSoftTissueImaging_ }, 
+      { "http://snomed.info/sct#169100001", SpecificSoftTissueImaging_ }, 
+      { "16910009", OralContrastCholecystography_ }, 
+      { "http://snomed.info/sct#16910009", OralContrastCholecystography_ }, 
+      { "17026004", RadionuclideTissueClearanceStudy_ }, 
+      { "http://snomed.info/sct#17026004", RadionuclideTissueClearanceStudy_ }, 
+      { "17375006", UltrasonicGuidanceForRenalPelvisAspiration_ }, 
+      { "http://snomed.info/sct#17375006", UltrasonicGuidanceForRenalPelvisAspiration_ }, 
+      { "17624002", SplenoportographyPositiveContrast_ }, 
+      { "http://snomed.info/sct#17624002", SplenoportographyPositiveContrast_ }, 
+      { "17711006", DiagnosticRadiographyCombinedPAAndLateral_ }, 
+      { "http://snomed.info/sct#17711006", DiagnosticRadiographyCombinedPAAndLateral_ }, 
+      { "17724006", ContinuousWaveDopplerAnalogWaveFormAnalysisOfUpperExtremityArteries_ }, 
+      { "http://snomed.info/sct#17724006", ContinuousWaveDopplerAnalogWaveFormAnalysisOfUpperExtremityArteries_ }, 
+      { "17745004", RadiographyOfMaleGenitalOrgans_ }, 
+      { "http://snomed.info/sct#17745004", RadiographyOfMaleGenitalOrgans_ }, 
+      { "17776005", ArthrographyOfElbow_ }, 
+      { "http://snomed.info/sct#17776005", ArthrographyOfElbow_ }, 
+      { "1787006", UltrasonicGuidanceForPericardiocentesis_ }, 
+      { "http://snomed.info/sct#1787006", UltrasonicGuidanceForPericardiocentesis_ }, 
+      { "17984001", AcuteGastrointestinalBloodLossImaging_ }, 
+      { "http://snomed.info/sct#17984001", AcuteGastrointestinalBloodLossImaging_ }, 
+      { "18102001", MammaryDuctogram_ }, 
+      { "http://snomed.info/sct#18102001", MammaryDuctogram_ }, 
+      { "18370004", RadiologicExaminationOfUpperGastrointestinalTractWithKUB_ }, 
+      { "http://snomed.info/sct#18370004", RadiologicExaminationOfUpperGastrointestinalTractWithKUB_ }, 
+      { "18479002", TesticularImagingWithVascularFlow_ }, 
+      { "http://snomed.info/sct#18479002", TesticularImagingWithVascularFlow_ }, 
+      { "18499008", RadionuclideStudyProteinKinetics_ }, 
+      { "http://snomed.info/sct#18499008", RadionuclideStudyProteinKinetics_ }, 
+      { "18529002", DiagnosticRadiographyOfPelvisStereoViews_ }, 
+      { "http://snomed.info/sct#18529002", DiagnosticRadiographyOfPelvisStereoViews_ }, 
+      { "18640002", EchographyMMode_ }, 
+      { "http://snomed.info/sct#18640002", EchographyMMode_ }, 
+      { "18747005", RadiologicExaminationOfElbowAnteroposteriorAndLateralViews_ }, 
+      { "http://snomed.info/sct#18747005", RadiologicExaminationOfElbowAnteroposteriorAndLateralViews_ }, 
+      { "18848007", EchographyOfChestBScanWithImageDocumentation_ }, 
+      { "http://snomed.info/sct#18848007", EchographyOfChestBScanWithImageDocumentation_ }, 
+      { "18912009", RadiographyOfSoftTissueOfElbow_ }, 
+      { "http://snomed.info/sct#18912009", RadiographyOfSoftTissueOfElbow_ }, 
+      { "19086005", RadioisotopeStudyOfRespiratorySystem_ }, 
+      { "http://snomed.info/sct#19086005", RadioisotopeStudyOfRespiratorySystem_ }, 
+      { "19252005", IsotopeStudyForGastrointestinalBloodLoss_ }, 
+      { "http://snomed.info/sct#19252005", IsotopeStudyForGastrointestinalBloodLoss_ }, 
+      { "19490002", RadiographyOfAnkle_ }, 
+      { "http://snomed.info/sct#19490002", RadiographyOfAnkle_ }, 
+      { "19589009", RadiographyOfMandible_ }, 
+      { "http://snomed.info/sct#19589009", RadiographyOfMandible_ }, 
+      { "19671003", BoneThermography_ }, 
+      { "http://snomed.info/sct#19671003", BoneThermography_ }, 
+      { "19731001", UltrasoundStudyOfEye_ }, 
+      { "http://snomed.info/sct#19731001", UltrasoundStudyOfEye_ }, 
+      { "19961003", OrthodonticCephalogram_ }, 
+      { "http://snomed.info/sct#19961003", OrthodonticCephalogram_ }, 
+      { "20067007", OcularFundusPhotography_ }, 
+      { "http://snomed.info/sct#20067007", OcularFundusPhotography_ }, 
+      { "20350005", Amniography_ }, 
+      { "http://snomed.info/sct#20350005", Amniography_ }, 
+      { "20384009", RadioisotopeScanOfPituitary_ }, 
+      { "http://snomed.info/sct#20384009", RadioisotopeScanOfPituitary_ }, 
+      { "20603005", SpecialEchographyProcedure_ }, 
+      { "http://snomed.info/sct#20603005", SpecialEchographyProcedure_ }, 
+      { "20630000", LaparoscopicCholecystectomyWithCholangiography_ }, 
+      { "http://snomed.info/sct#20630000", LaparoscopicCholecystectomyWithCholangiography_ }, 
+      { "20740007", PelvicEchographyBScanComplete_ }, 
+      { "http://snomed.info/sct#20740007", PelvicEchographyBScanComplete_ }, 
+      { "20798004", RadiologicExaminationOfFootAnteroposteriorAndLateralViews_ }, 
+      { "http://snomed.info/sct#20798004", RadiologicExaminationOfFootAnteroposteriorAndLateralViews_ }, 
+      { "20836009", ComputerizedAxialTomographyOfPosteriorFossaWithContrast_ }, 
+      { "http://snomed.info/sct#20836009", ComputerizedAxialTomographyOfPosteriorFossaWithContrast_ }, 
+      { "21126008", HepatobiliaryDuctalSystemImagingIncludingGallbladder_ }, 
+      { "http://snomed.info/sct#21126008", HepatobiliaryDuctalSystemImagingIncludingGallbladder_ }, 
+      { "21339000", RadiographyOfIntestine_ }, 
+      { "http://snomed.info/sct#21339000", RadiographyOfIntestine_ }, 
+      { "21613005", RadiologicExaminationOfCervicalSpineAnteroposteriorAndLateral_ }, 
+      { "http://snomed.info/sct#21613005", RadiologicExaminationOfCervicalSpineAnteroposteriorAndLateral_ }, 
+      { "21623001", FetalBiophysicalProfile_ }, 
+      { "http://snomed.info/sct#21623001", FetalBiophysicalProfile_ }, 
+      { "21685006", OcularPhotographyForMedicalEvaluationAndDocumentationStereophotography_ }, 
+      { "http://snomed.info/sct#21685006", OcularPhotographyForMedicalEvaluationAndDocumentationStereophotography_ }, 
+      { "21970003", RadiographyOfRibs_ }, 
+      { "http://snomed.info/sct#21970003", RadiographyOfRibs_ }, 
+      { "22034001", EchographyOfProstateTransrectalApproach_ }, 
+      { "http://snomed.info/sct#22034001", EchographyOfProstateTransrectalApproach_ }, 
+      { "22059005", ComputerizedTomographyBoneDensityStudy_ }, 
+      { "http://snomed.info/sct#22059005", ComputerizedTomographyBoneDensityStudy_ }, 
+      { "22089003", PulmonaryVentilationPerfusionStudyByRadioactiveOxygen_ }, 
+      { "http://snomed.info/sct#22089003", PulmonaryVentilationPerfusionStudyByRadioactiveOxygen_ }, 
+      { "22289008", RadiographyOfSymphysisMenti_ }, 
+      { "http://snomed.info/sct#22289008", RadiographyOfSymphysisMenti_ }, 
+      { "22400007", ComputerizedTomography3DimensionalReconstruction_ }, 
+      { "http://snomed.info/sct#22400007", ComputerizedTomography3DimensionalReconstruction_ }, 
+      { "22446007", DiagnosticRadiographyOfChestMinifilm_ }, 
+      { "http://snomed.info/sct#22446007", DiagnosticRadiographyOfChestMinifilm_ }, 
+      { "22458007", EpiduralVenography_ }, 
+      { "http://snomed.info/sct#22458007", EpiduralVenography_ }, 
+      { "22530002", ArthrographyOfHipWithPositiveContrast_ }, 
+      { "http://snomed.info/sct#22530002", ArthrographyOfHipWithPositiveContrast_ }, 
+      { "2266004", VenographyOfAdrenalBilateral_ }, 
+      { "http://snomed.info/sct#2266004", VenographyOfAdrenalBilateral_ }, 
+      { "22760005", Xeroradiography_ }, 
+      { "http://snomed.info/sct#22760005", Xeroradiography_ }, 
+      { "22761009", Perineogram_ }, 
+      { "http://snomed.info/sct#22761009", Perineogram_ }, 
+      { "22791004", XRayOfLumbosacralSpine_ }, 
+      { "http://snomed.info/sct#22791004", XRayOfLumbosacralSpine_ }, 
+      { "22873002", PulmonaryPhlebography_ }, 
+      { "http://snomed.info/sct#22873002", PulmonaryPhlebography_ }, 
+      { "22891007", RadiographyOfTeeth_ }, 
+      { "http://snomed.info/sct#22891007", RadiographyOfTeeth_ }, 
+      { "22901000", DiagnosticRadiographySurvey_ }, 
+      { "http://snomed.info/sct#22901000", DiagnosticRadiographySurvey_ }, 
+      { "22948003", RadiologicExaminationOfWristAnteroposteriorAndLateralViews_ }, 
+      { "http://snomed.info/sct#22948003", RadiologicExaminationOfWristAnteroposteriorAndLateralViews_ }, 
+      { "23225008", GastrointestinalProteinLossStudy_ }, 
+      { "http://snomed.info/sct#23225008", GastrointestinalProteinLossStudy_ }, 
+      { "23394003", RadiographyOfSternum_ }, 
+      { "http://snomed.info/sct#23394003", RadiographyOfSternum_ }, 
+      { "23461000", DiagnosticRadiographyPosteroanteriorPA_ }, 
+      { "http://snomed.info/sct#23461000", DiagnosticRadiographyPosteroanteriorPA_ }, 
+      { "23572007", TransmissionBoneDensityStudy_ }, 
+      { "http://snomed.info/sct#23572007", TransmissionBoneDensityStudy_ }, 
+      { "23738001", UltrasonographyOfDigestiveSystem_ }, 
+      { "http://snomed.info/sct#23738001", UltrasonographyOfDigestiveSystem_ }, 
+      { "23818008", ScanningOrImagingPerfusionStudyGaseous_ }, 
+      { "http://snomed.info/sct#23818008", ScanningOrImagingPerfusionStudyGaseous_ }, 
+      { "23846005", RadiographyOfSoftTissueOfThigh_ }, 
+      { "http://snomed.info/sct#23846005", RadiographyOfSoftTissueOfThigh_ }, 
+      { "23931002", UltrasonographyOfHeadAndNeck_ }, 
+      { "http://snomed.info/sct#23931002", UltrasonographyOfHeadAndNeck_ }, 
+      { "24058001", EchocardiographyForDeterminingPosteriorLeftVentricularWallThickness_ }, 
+      { "http://snomed.info/sct#24058001", EchocardiographyForDeterminingPosteriorLeftVentricularWallThickness_ }, 
+      { "24135002", UltrasonographyOfTotalBody_ }, 
+      { "http://snomed.info/sct#24135002", UltrasonographyOfTotalBody_ }, 
+      { "24267008", RadiographyOfUpperLimbSoftTissue_ }, 
+      { "http://snomed.info/sct#24267008", RadiographyOfUpperLimbSoftTissue_ }, 
+      { "24623002", ScreeningMammography_ }, 
+      { "http://snomed.info/sct#24623002", ScreeningMammography_ }, 
+      { "24646000", AbdominalAortographyTranslumbarWithSerialography_ }, 
+      { "http://snomed.info/sct#24646000", AbdominalAortographyTranslumbarWithSerialography_ }, 
+      { "24689001", CTGuidanceForTreatmentPlanningTeletherapy_ }, 
+      { "http://snomed.info/sct#24689001", CTGuidanceForTreatmentPlanningTeletherapy_ }, 
+      { "24715008", SplenoportogramBySplenicArteriography_ }, 
+      { "http://snomed.info/sct#24715008", SplenoportogramBySplenicArteriography_ }, 
+      { "24737001", EchographyOfScrotumAndContents_ }, 
+      { "http://snomed.info/sct#24737001", EchographyOfScrotumAndContents_ }, 
+      { "24848001", PelvicEchography_ }, 
+      { "http://snomed.info/sct#24848001", PelvicEchography_ }, 
+      { "24856003", DiagnosticRadiographyOfCoccyx_ }, 
+      { "http://snomed.info/sct#24856003", DiagnosticRadiographyOfCoccyx_ }, 
+      { "2508002", RetrogradeUrographyWithKUB_ }, 
+      { "http://snomed.info/sct#2508002", RetrogradeUrographyWithKUB_ }, 
+      { "25306006", DeepVeinThermography_ }, 
+      { "http://snomed.info/sct#25306006", DeepVeinThermography_ }, 
+      { "25347009", VenographyOfLowerExtremityBilateral_ }, 
+      { "http://snomed.info/sct#25347009", VenographyOfLowerExtremityBilateral_ }, 
+      { "25411007", Hysterogram_ }, 
+      { "http://snomed.info/sct#25411007", Hysterogram_ }, 
+      { "25630002", TesticularImaging_ }, 
+      { "http://snomed.info/sct#25630002", TesticularImaging_ }, 
+      { "25759006", RadionuclideScanningForHotSpot_ }, 
+      { "http://snomed.info/sct#25759006", RadionuclideScanningForHotSpot_ }, 
+      { "25760001", AngiographyOfCervicocerebralArteries_ }, 
+      { "http://snomed.info/sct#25760001", AngiographyOfCervicocerebralArteries_ }, 
+      { "25850001", UltrasonographyOfThorax_ }, 
+      { "http://snomed.info/sct#25850001", UltrasonographyOfThorax_ }, 
+      { "26262000", PhlebographyOfHead_ }, 
+      { "http://snomed.info/sct#26262000", PhlebographyOfHead_ }, 
+      { "26308001", DeepFineNeedleAspirationBiopsyUnderRadiologicGuidance_ }, 
+      { "http://snomed.info/sct#26308001", DeepFineNeedleAspirationBiopsyUnderRadiologicGuidance_ }, 
+      { "26537001", DiagnosticRadiographyOfLumbarSpineCombinedAPAndLateral_ }, 
+      { "http://snomed.info/sct#26537001", DiagnosticRadiographyOfLumbarSpineCombinedAPAndLateral_ }, 
+      { "26648002", DiagnosticRadiographySpecialViews_ }, 
+      { "http://snomed.info/sct#26648002", DiagnosticRadiographySpecialViews_ }, 
+      { "2690005", MagneticResonanceImagingOfPelvis_ }, 
+      { "http://snomed.info/sct#2690005", MagneticResonanceImagingOfPelvis_ }, 
+      { "26946001", ComputerizedAxialTomographyOfUpperExtremityWithContrast_ }, 
+      { "http://snomed.info/sct#26946001", ComputerizedAxialTomographyOfUpperExtremityWithContrast_ }, 
+      { "2696004", HepaticVenographyWithHemodynamicEvaluation_ }, 
+      { "http://snomed.info/sct#2696004", HepaticVenographyWithHemodynamicEvaluation_ }, 
+      { "27300001", Molegraphy_ }, 
+      { "http://snomed.info/sct#27300001", Molegraphy_ }, 
+      { "27469002", PercutaneousTranshepaticPortographyWithHemodynamicEvaluation_ }, 
+      { "http://snomed.info/sct#27469002", PercutaneousTranshepaticPortographyWithHemodynamicEvaluation_ }, 
+      { "27483000", DiagnosticRadiographyWithContrastMedia_ }, 
+      { "http://snomed.info/sct#27483000", DiagnosticRadiographyWithContrastMedia_ }, 
+      { "27498003", PositiveContrastBronchographyBilateral_ }, 
+      { "http://snomed.info/sct#27498003", PositiveContrastBronchographyBilateral_ }, 
+      { "27821009", VenographyOfJugularVein_ }, 
+      { "http://snomed.info/sct#27821009", VenographyOfJugularVein_ }, 
+      { "27851003", MyelographyOfEntireSpinalCanal_ }, 
+      { "http://snomed.info/sct#27851003", MyelographyOfEntireSpinalCanal_ }, 
+      { "28033003", FluoroscopicLocalizationForNeedleBiopsyInChest_ }, 
+      { "http://snomed.info/sct#28033003", FluoroscopicLocalizationForNeedleBiopsyInChest_ }, 
+      { "2811005", CineradiographyOfPharynx_ }, 
+      { "http://snomed.info/sct#2811005", CineradiographyOfPharynx_ }, 
+      { "28160007", PelvicLymphangiographyBilateral_ }, 
+      { "http://snomed.info/sct#28160007", PelvicLymphangiographyBilateral_ }, 
+      { "28303002", RadionuclideBiliaryPatencyStudy_ }, 
+      { "http://snomed.info/sct#28303002", RadionuclideBiliaryPatencyStudy_ }, 
+      { "28337005", RedCellSurvivalStudyWithSplenicSequestration_ }, 
+      { "http://snomed.info/sct#28337005", RedCellSurvivalStudyWithSplenicSequestration_ }, 
+      { "28339008", ThoracicMyelography_ }, 
+      { "http://snomed.info/sct#28339008", ThoracicMyelography_ }, 
+      { "28367004", Cholangiogram_ }, 
+      { "http://snomed.info/sct#28367004", Cholangiogram_ }, 
+      { "2847006", CervicalMyelography_ }, 
+      { "http://snomed.info/sct#2847006", CervicalMyelography_ }, 
+      { "28514000", BilateralNephrotomography_ }, 
+      { "http://snomed.info/sct#28514000", BilateralNephrotomography_ }, 
+      { "28566009", EchographyMModeComplete_ }, 
+      { "http://snomed.info/sct#28566009", EchographyMModeComplete_ }, 
+      { "28686001", Nephrotomogram_ }, 
+      { "http://snomed.info/sct#28686001", Nephrotomogram_ }, 
+      { "28687005", TranscatheterTherapyByInfusionWithAngiography_ }, 
+      { "http://snomed.info/sct#28687005", TranscatheterTherapyByInfusionWithAngiography_ }, 
+      { "28806001", AngiocardiographyBySerialographyMultiPlane_ }, 
+      { "http://snomed.info/sct#28806001", AngiocardiographyBySerialographyMultiPlane_ }, 
+      { "28894006", FluoroscopicLocalizationForTransbronchialBiopsyAndBrushing_ }, 
+      { "http://snomed.info/sct#28894006", FluoroscopicLocalizationForTransbronchialBiopsyAndBrushing_ }, 
+      { "29117008", AngiocardiographyPositiveContrast_ }, 
+      { "http://snomed.info/sct#29117008", AngiocardiographyPositiveContrast_ }, 
+      { "29166005", RadiologicExaminationOfUpperGastrointestinalTractAndSmallBowelWithSerialFilms_ }, 
+      { "http://snomed.info/sct#29166005", RadiologicExaminationOfUpperGastrointestinalTractAndSmallBowelWithSerialFilms_ }, 
+      { "2933008", Pneumogynecography_ }, 
+      { "http://snomed.info/sct#2933008", Pneumogynecography_ }, 
+      { "29357002", RadiographyOfFaceHeadANDORNeck_ }, 
+      { "http://snomed.info/sct#29357002", RadiographyOfFaceHeadANDORNeck_ }, 
+      { "29433003", RadiographyOfFemaleGenitalOrgans_ }, 
+      { "http://snomed.info/sct#29433003", RadiographyOfFemaleGenitalOrgans_ }, 
+      { "29559003", RadioiodohippurateSodiumRenogramMultipleProbes_ }, 
+      { "http://snomed.info/sct#29559003", RadioiodohippurateSodiumRenogramMultipleProbes_ }, 
+      { "29567006", MagneticResonanceImagingOfBrainAndBrainStem_ }, 
+      { "http://snomed.info/sct#29567006", MagneticResonanceImagingOfBrainAndBrainStem_ }, 
+      { "29592009", RadiographyOfShoulder_ }, 
+      { "http://snomed.info/sct#29592009", RadiographyOfShoulder_ }, 
+      { "29845000", XenonFlowScanOfCardiovascularSystem_ }, 
+      { "http://snomed.info/sct#29845000", XenonFlowScanOfCardiovascularSystem_ }, 
+      { "29967000", EchographyScanBModeForPlacementOfRadiationFields_ }, 
+      { "http://snomed.info/sct#29967000", EchographyScanBModeForPlacementOfRadiationFields_ }, 
+      { "30353000", UltrasonographyOfAorticArch_ }, 
+      { "http://snomed.info/sct#30353000", UltrasonographyOfAorticArch_ }, 
+      { "30439001", VenographyOfInferiorVenaCavaWithSerialography_ }, 
+      { "http://snomed.info/sct#30439001", VenographyOfInferiorVenaCavaWithSerialography_ }, 
+      { "30462004", EchographyOfBreastBScan_ }, 
+      { "http://snomed.info/sct#30462004", EchographyOfBreastBScan_ }, 
+      { "3047001", KowaFundusPhotography_ }, 
+      { "http://snomed.info/sct#3047001", KowaFundusPhotography_ }, 
+      { "30536006", RadiologicExaminationOfKneeAnteroposteriorAndLateralViews_ }, 
+      { "http://snomed.info/sct#30536006", RadiologicExaminationOfKneeAnteroposteriorAndLateralViews_ }, 
+      { "306005", EchographyOfKidney_ }, 
+      { "http://snomed.info/sct#306005", EchographyOfKidney_ }, 
+      { "30726001", UltrasonicGuidanceForThoracentesis_ }, 
+      { "http://snomed.info/sct#30726001", UltrasonicGuidanceForThoracentesis_ }, 
+      { "30788002", DiagnosticRadiographyWithMeasurements_ }, 
+      { "http://snomed.info/sct#30788002", DiagnosticRadiographyWithMeasurements_ }, 
+      { "30842004", OphthalmoscopyWithMedicalEvaluationExtendedWithFundusPhotography_ }, 
+      { "http://snomed.info/sct#30842004", OphthalmoscopyWithMedicalEvaluationExtendedWithFundusPhotography_ }, 
+      { "30918004", RadionuclideVenousThrombosisStudy_ }, 
+      { "http://snomed.info/sct#30918004", RadionuclideVenousThrombosisStudy_ }, 
+      { "30957007", MagneticResonanceImagingOfOrbit_ }, 
+      { "http://snomed.info/sct#30957007", MagneticResonanceImagingOfOrbit_ }, 
+      { "31157004", PeripheralThermogram_ }, 
+      { "http://snomed.info/sct#31157004", PeripheralThermogram_ }, 
+      { "31643000", AngiographyOfUpperExtremityArteriesWithSerialography_ }, 
+      { "http://snomed.info/sct#31643000", AngiographyOfUpperExtremityArteriesWithSerialography_ }, 
+      { "31683008", RetroperitonealEchographyBScanComplete_ }, 
+      { "http://snomed.info/sct#31683008", RetroperitonealEchographyBScanComplete_ }, 
+      { "31800006", SelectiveAngiocardiography_ }, 
+      { "http://snomed.info/sct#31800006", SelectiveAngiocardiography_ }, 
+      { "31911002", RadiographyOfKidneyUreterBladder_ }, 
+      { "http://snomed.info/sct#31911002", RadiographyOfKidneyUreterBladder_ }, 
+      { "31931003", RadiographyOfSupraorbitalArea_ }, 
+      { "http://snomed.info/sct#31931003", RadiographyOfSupraorbitalArea_ }, 
+      { "31962004", PulmonaryPerfusionImagingParticulate_ }, 
+      { "http://snomed.info/sct#31962004", PulmonaryPerfusionImagingParticulate_ }, 
+      { "31998007", EchographyScanBModeForFetalGrowthRate_ }, 
+      { "http://snomed.info/sct#31998007", EchographyScanBModeForFetalGrowthRate_ }, 
+      { "32012009", RadioisotopeScanOfHead_ }, 
+      { "http://snomed.info/sct#32012009", RadioisotopeScanOfHead_ }, 
+      { "32265006", IntravenousPyelogram_ }, 
+      { "http://snomed.info/sct#32265006", IntravenousPyelogram_ }, 
+      { "32289004", BrainImagingWithVascularFlow_ }, 
+      { "http://snomed.info/sct#32289004", BrainImagingWithVascularFlow_ }, 
+      { "32328007", DiagnosticRadiographyDuringOperativeProcedure_ }, 
+      { "http://snomed.info/sct#32328007", DiagnosticRadiographyDuringOperativeProcedure_ }, 
+      { "32345002", GastrointestinalIsotopeFatAbsorptionStudy_ }, 
+      { "http://snomed.info/sct#32345002", GastrointestinalIsotopeFatAbsorptionStudy_ }, 
+      { "32366005", DiagnosticRadiographyStereo_ }, 
+      { "http://snomed.info/sct#32366005", DiagnosticRadiographyStereo_ }, 
+      { "32535000", DiagnosticRadiographyAnteroposteriorAP_ }, 
+      { "http://snomed.info/sct#32535000", DiagnosticRadiographyAnteroposteriorAP_ }, 
+      { "3256004", CervicalLymphangiogram_ }, 
+      { "http://snomed.info/sct#3256004", CervicalLymphangiogram_ }, 
+      { "3258003", ArteriographyOfCerebralArteries_ }, 
+      { "http://snomed.info/sct#3258003", ArteriographyOfCerebralArteries_ }, 
+      { "32729002", ThyroidUptakeWithThyroidSuppression_ }, 
+      { "http://snomed.info/sct#32729002", ThyroidUptakeWithThyroidSuppression_ }, 
+      { "32962002", ComputerizedTomographyOfAbdomenWithContrast_ }, 
+      { "http://snomed.info/sct#32962002", ComputerizedTomographyOfAbdomenWithContrast_ }, 
+      { "33085008", OrbitalVenography_ }, 
+      { "http://snomed.info/sct#33085008", OrbitalVenography_ }, 
+      { "33148003", Arthrography_ }, 
+      { "http://snomed.info/sct#33148003", Arthrography_ }, 
+      { "33202000", XRayOfRibsSternumAndClavicle_ }, 
+      { "http://snomed.info/sct#33202000", XRayOfRibsSternumAndClavicle_ }, 
+      { "33357000", RoentgenographyNegativeContrast_ }, 
+      { "http://snomed.info/sct#33357000", RoentgenographyNegativeContrast_ }, 
+      { "33367005", CoronaryAngiography_ }, 
+      { "http://snomed.info/sct#33367005", CoronaryAngiography_ }, 
+      { "334003", PanorexExaminationOfMandible_ }, 
+      { "http://snomed.info/sct#334003", PanorexExaminationOfMandible_ }, 
+      { "33450004", DiagnosticRadiographyWithSpecialStudy_ }, 
+      { "http://snomed.info/sct#33450004", DiagnosticRadiographyWithSpecialStudy_ }, 
+      { "33460008", RadionuclideScanningForColdSpot_ }, 
+      { "http://snomed.info/sct#33460008", RadionuclideScanningForColdSpot_ }, 
+      { "33527008", UltrasonicGuidanceForAspirationOfCyst_ }, 
+      { "http://snomed.info/sct#33527008", UltrasonicGuidanceForAspirationOfCyst_ }, 
+      { "33677003", IsotopeStudyOfBloodVolume_ }, 
+      { "http://snomed.info/sct#33677003", IsotopeStudyOfBloodVolume_ }, 
+      { "34227000", ComputerizedAxialTomographyOfBrain_ }, 
+      { "http://snomed.info/sct#34227000", ComputerizedAxialTomographyOfBrain_ }, 
+      { "34616009", Epididymography_ }, 
+      { "http://snomed.info/sct#34616009", Epididymography_ }, 
+      { "34885003", RadiographyOfEsophagus_ }, 
+      { "http://snomed.info/sct#34885003", RadiographyOfEsophagus_ }, 
+      { "34945008", Angiocardiography_ }, 
+      { "http://snomed.info/sct#34945008", Angiocardiography_ }, 
+      { "3512003", AngiographyOfArteriesOfExtremity_ }, 
+      { "http://snomed.info/sct#3512003", AngiographyOfArteriesOfExtremity_ }, 
+      { "35198004", PeritonealVenousShuntPatencyTestForLeveenShunt_ }, 
+      { "http://snomed.info/sct#35198004", PeritonealVenousShuntPatencyTestForLeveenShunt_ }, 
+      { "35202002", ScanningOrImagingWithVascularFlow_ }, 
+      { "http://snomed.info/sct#35202002", ScanningOrImagingWithVascularFlow_ }, 
+      { "35249003", MagneticResonanceImagingOfFace_ }, 
+      { "http://snomed.info/sct#35249003", MagneticResonanceImagingOfFace_ }, 
+      { "35443000", DiagnosticRadiographyOfThoracolumbarSpineSupineAndErectForScoliosis_ }, 
+      { "http://snomed.info/sct#35443000", DiagnosticRadiographyOfThoracolumbarSpineSupineAndErectForScoliosis_ }, 
+      { "35492006", DiagnosticDentalPhotography_ }, 
+      { "http://snomed.info/sct#35492006", DiagnosticDentalPhotography_ }, 
+      { "35621002", CardiacBloodPoolImaging_ }, 
+      { "http://snomed.info/sct#35621002", CardiacBloodPoolImaging_ }, 
+      { "35757004", EchocardiographyForDeterminingVentricularContraction_ }, 
+      { "http://snomed.info/sct#35757004", EchocardiographyForDeterminingVentricularContraction_ }, 
+      { "36004004", DiagnosticTomography_ }, 
+      { "http://snomed.info/sct#36004004", DiagnosticTomography_ }, 
+      { "3620007", RedCellSurvivalStudyWithHepaticSequestration_ }, 
+      { "http://snomed.info/sct#3620007", RedCellSurvivalStudyWithHepaticSequestration_ }, 
+      { "36624001", GastrointestinalBloodLossStudyByStoolCounting_ }, 
+      { "http://snomed.info/sct#36624001", GastrointestinalBloodLossStudyByStoolCounting_ }, 
+      { "36870006", EchoencephalographyAMode_ }, 
+      { "http://snomed.info/sct#36870006", EchoencephalographyAMode_ }, 
+      { "36960008", IntraAbdominalPhlebography_ }, 
+      { "http://snomed.info/sct#36960008", IntraAbdominalPhlebography_ }, 
+      { "37090007", Placentography_ }, 
+      { "http://snomed.info/sct#37090007", Placentography_ }, 
+      { "37307009", RadiographyOfNasopharynx_ }, 
+      { "http://snomed.info/sct#37307009", RadiographyOfNasopharynx_ }, 
+      { "37312005", ExternalOcularPhotographyForMedicalEvaluationAndDocumentation_ }, 
+      { "http://snomed.info/sct#37312005", ExternalOcularPhotographyForMedicalEvaluationAndDocumentation_ }, 
+      { "37348007", DiagnosticRadiographyWithContrastMediaByInjectionPositiveContrast_ }, 
+      { "http://snomed.info/sct#37348007", DiagnosticRadiographyWithContrastMediaByInjectionPositiveContrast_ }, 
+      { "37385004", DiagnosticRadiographyOfUpperGastrointestinalTractWithSerialFilms_ }, 
+      { "http://snomed.info/sct#37385004", DiagnosticRadiographyOfUpperGastrointestinalTractWithSerialFilms_ }, 
+      { "37403009", SphincterotomyOfSphincterOfOddiByERCP_ }, 
+      { "http://snomed.info/sct#37403009", SphincterotomyOfSphincterOfOddiByERCP_ }, 
+      { "37537004", LiverAndSpleenImaging_ }, 
+      { "http://snomed.info/sct#37537004", LiverAndSpleenImaging_ }, 
+      { "37541000", RadiographyOfRetroperitoneum_ }, 
+      { "http://snomed.info/sct#37541000", RadiographyOfRetroperitoneum_ }, 
+      { "37603004", RadiographyOfRootCanal_ }, 
+      { "http://snomed.info/sct#37603004", RadiographyOfRootCanal_ }, 
+      { "37707006", RadionuclideStudyOfCoronaryBloodFlow_ }, 
+      { "http://snomed.info/sct#37707006", RadionuclideStudyOfCoronaryBloodFlow_ }, 
+      { "37815002", DiagnosticRadiographyOfCalcaneus_ }, 
+      { "http://snomed.info/sct#37815002", DiagnosticRadiographyOfCalcaneus_ }, 
+      { "37859006", PulmonaryVentilationPerfusionStudy_ }, 
+      { "http://snomed.info/sct#37859006", PulmonaryVentilationPerfusionStudy_ }, 
+      { "3787003", UltrasonicGuidanceForNeedleBiopsy_ }, 
+      { "http://snomed.info/sct#3787003", UltrasonicGuidanceForNeedleBiopsy_ }, 
+      { "3799005", RadiographyOfAdenoids_ }, 
+      { "http://snomed.info/sct#3799005", RadiographyOfAdenoids_ }, 
+      { "38172006", CervicalDiscography_ }, 
+      { "http://snomed.info/sct#38172006", CervicalDiscography_ }, 
+      { "38336006", SoftTissueXRayOfChestWall_ }, 
+      { "http://snomed.info/sct#38336006", SoftTissueXRayOfChestWall_ }, 
+      { "38356007", VenographyOfUpperExtremity_ }, 
+      { "http://snomed.info/sct#38356007", VenographyOfUpperExtremity_ }, 
+      { "38366004", RadiographyOfSoftTissueOfKnee_ }, 
+      { "http://snomed.info/sct#38366004", RadiographyOfSoftTissueOfKnee_ }, 
+      { "3858009", EchographyOfThyroidAMode_ }, 
+      { "http://snomed.info/sct#3858009", EchographyOfThyroidAMode_ }, 
+      { "38644000", KidneyImagingSPECTTechnique_ }, 
+      { "http://snomed.info/sct#38644000", KidneyImagingSPECTTechnique_ }, 
+      { "38769008", DiagnosticRadiographyFlexionAndOrExtensionStudies_ }, 
+      { "http://snomed.info/sct#38769008", DiagnosticRadiographyFlexionAndOrExtensionStudies_ }, 
+      { "38930009", FluoroscopyOfChest_ }, 
+      { "http://snomed.info/sct#38930009", FluoroscopyOfChest_ }, 
+      { "39305005", OralContrastCholangiography_ }, 
+      { "http://snomed.info/sct#39305005", OralContrastCholangiography_ }, 
+      { "39500001", ThyroidImaging_ }, 
+      { "http://snomed.info/sct#39500001", ThyroidImaging_ }, 
+      { "39714003", SkeletalXRayOfWristAndHand_ }, 
+      { "http://snomed.info/sct#39714003", SkeletalXRayOfWristAndHand_ }, 
+      { "39856007", ImagingOfArteriesOfLowerExtremities_ }, 
+      { "http://snomed.info/sct#39856007", ImagingOfArteriesOfLowerExtremities_ }, 
+      { "3991004", MagneticResonanceImagingOfPelvisProstateAndBladder_ }, 
+      { "http://snomed.info/sct#3991004", MagneticResonanceImagingOfPelvisProstateAndBladder_ }, 
+      { "3998005", BoneImagingOfLimitedArea_ }, 
+      { "http://snomed.info/sct#3998005", BoneImagingOfLimitedArea_ }, 
+      { "40008005", Plethysmometry_ }, 
+      { "http://snomed.info/sct#40008005", Plethysmometry_ }, 
+      { "40064005", SoftTissueXRayOfFaceHeadANDNeck_ }, 
+      { "http://snomed.info/sct#40064005", SoftTissueXRayOfFaceHeadANDNeck_ }, 
+      { "4008007", PhlebographyOfNeck_ }, 
+      { "http://snomed.info/sct#4008007", PhlebographyOfNeck_ }, 
+      { "40228004", BowelImagingForVolvulus_ }, 
+      { "http://snomed.info/sct#40228004", BowelImagingForVolvulus_ }, 
+      { "40348008", SkeletalXRayOfPelvisAndHip_ }, 
+      { "http://snomed.info/sct#40348008", SkeletalXRayOfPelvisAndHip_ }, 
+      { "40357002", EchocardiographyForDeterminingMitralAndTricuspidValveMotion_ }, 
+      { "http://snomed.info/sct#40357002", EchocardiographyForDeterminingMitralAndTricuspidValveMotion_ }, 
+      { "40371005", UltrasonographyForMidlineShiftOfBrain_ }, 
+      { "http://snomed.info/sct#40371005", UltrasonographyForMidlineShiftOfBrain_ }, 
+      { "40372003", DiagnosticRadiographyOfTemporomandibularJoint_ }, 
+      { "http://snomed.info/sct#40372003", DiagnosticRadiographyOfTemporomandibularJoint_ }, 
+      { "40502003", DiagnosticRadiographyOfFistulaOrSinusTractPositiveContrast_ }, 
+      { "http://snomed.info/sct#40502003", DiagnosticRadiographyOfFistulaOrSinusTractPositiveContrast_ }, 
+      { "40538005", Thermography_ }, 
+      { "http://snomed.info/sct#40538005", Thermography_ }, 
+      { "40701008", Echocardiography_ }, 
+      { "http://snomed.info/sct#40701008", Echocardiography_ }, 
+      { "40892001", SpecialUltrasonicDisplayOrImagingTechnique_ }, 
+      { "http://snomed.info/sct#40892001", SpecialUltrasonicDisplayOrImagingTechnique_ }, 
+      { "41051004", EchographyAModeWithAmplitudeQuantitation_ }, 
+      { "http://snomed.info/sct#41051004", EchographyAModeWithAmplitudeQuantitation_ }, 
+      { "41209002", TranscatheterTherapyForEmbolizationWithAngiography_ }, 
+      { "http://snomed.info/sct#41209002", TranscatheterTherapyForEmbolizationWithAngiography_ }, 
+      { "41260001", DiagnosticDopplerUltrasonographyOfPelvicArea_ }, 
+      { "http://snomed.info/sct#41260001", DiagnosticDopplerUltrasonographyOfPelvicArea_ }, 
+      { "41333006", MagneticResonanceImagingOfLumbarSpineWithContrast_ }, 
+      { "http://snomed.info/sct#41333006", MagneticResonanceImagingOfLumbarSpineWithContrast_ }, 
+      { "41380003", RadioisotopeScanForMyocardialInfarction_ }, 
+      { "http://snomed.info/sct#41380003", RadioisotopeScanForMyocardialInfarction_ }, 
+      { "41385008", RadiologicExaminationOfClavicleComplete_ }, 
+      { "http://snomed.info/sct#41385008", RadiologicExaminationOfClavicleComplete_ }, 
+      { "41440006", CerebralScan_ }, 
+      { "http://snomed.info/sct#41440006", CerebralScan_ }, 
+      { "41466009", MyocardialImagingForInfarctWithEjectionFractionFirstPassTechnique_ }, 
+      { "http://snomed.info/sct#41466009", MyocardialImagingForInfarctWithEjectionFractionFirstPassTechnique_ }, 
+      { "41496004", OphthalmicEchographyWithAmplitudeQuantitationAMode_ }, 
+      { "http://snomed.info/sct#41496004", OphthalmicEchographyWithAmplitudeQuantitationAMode_ }, 
+      { "41500002", SmallBowelSeries_ }, 
+      { "http://snomed.info/sct#41500002", SmallBowelSeries_ }, 
+      { "41747008", RadioisotopeScanOfBone_ }, 
+      { "http://snomed.info/sct#41747008", RadioisotopeScanOfBone_ }, 
+      { "41785006", DiagnosticRadiographyOfPharynx_ }, 
+      { "http://snomed.info/sct#41785006", DiagnosticRadiographyOfPharynx_ }, 
+      { "41823007", ThyroidImagingWithVascularFlow_ }, 
+      { "http://snomed.info/sct#41823007", ThyroidImagingWithVascularFlow_ }, 
+      { "41842006", RadioisotopeStudyOfHematopoieticSystem_ }, 
+      { "http://snomed.info/sct#41842006", RadioisotopeStudyOfHematopoieticSystem_ }, 
+      { "41913002", UltrasoundOfInnerEar_ }, 
+      { "http://snomed.info/sct#41913002", UltrasoundOfInnerEar_ }, 
+      { "42003005", ArteriographyOfSuperiorMesentericArtery_ }, 
+      { "http://snomed.info/sct#42003005", ArteriographyOfSuperiorMesentericArtery_ }, 
+      { "42075002", DiagnosticRadiographyOfSkull_ }, 
+      { "http://snomed.info/sct#42075002", DiagnosticRadiographyOfSkull_ }, 
+      { "42539009", ImagingOfArteriesOfExtremities_ }, 
+      { "http://snomed.info/sct#42539009", ImagingOfArteriesOfExtremities_ }, 
+      { "42687005", Lymphangiogram_ }, 
+      { "http://snomed.info/sct#42687005", Lymphangiogram_ }, 
+      { "42705007", PneumographyOfRetroperitoneum_ }, 
+      { "http://snomed.info/sct#42705007", PneumographyOfRetroperitoneum_ }, 
+      { "42869005", DiagnosticRadiographyOfChestCombinedPAAndLateral_ }, 
+      { "http://snomed.info/sct#42869005", DiagnosticRadiographyOfChestCombinedPAAndLateral_ }, 
+      { "42957001", CerebrospinalFluidFlowImagingForCSFLeakageDetectionAndLocalization_ }, 
+      { "http://snomed.info/sct#42957001", CerebrospinalFluidFlowImagingForCSFLeakageDetectionAndLocalization_ }, 
+      { "42976004", DopplerFlowMappingOfThorax_ }, 
+      { "http://snomed.info/sct#42976004", DopplerFlowMappingOfThorax_ }, 
+      { "43129000", RadionuclideDynamicFunctionStudyWithMultipleProbes_ }, 
+      { "http://snomed.info/sct#43129000", RadionuclideDynamicFunctionStudyWithMultipleProbes_ }, 
+      { "43145003", AbdominalAortographyPositiveContrast_ }, 
+      { "http://snomed.info/sct#43145003", AbdominalAortographyPositiveContrast_ }, 
+      { "43204002", BilateralMammography_ }, 
+      { "http://snomed.info/sct#43204002", BilateralMammography_ }, 
+      { "4321009", AngiographyOfLowerExtremityArteriesBilateral_ }, 
+      { "http://snomed.info/sct#4321009", AngiographyOfLowerExtremityArteriesBilateral_ }, 
+      { "43255009", DiagnosticRadiographyOfOpticForamina_ }, 
+      { "http://snomed.info/sct#43255009", DiagnosticRadiographyOfOpticForamina_ }, 
+      { "43294005", EchographyMModeLimited_ }, 
+      { "http://snomed.info/sct#43294005", EchographyMModeLimited_ }, 
+      { "43370007", ImpedancePhlebography_ }, 
+      { "http://snomed.info/sct#43370007", ImpedancePhlebography_ }, 
+      { "435001", PulmonaryInhalationStudy_ }, 
+      { "http://snomed.info/sct#435001", PulmonaryInhalationStudy_ }, 
+      { "43704001", EchographyOfBreastAMode_ }, 
+      { "http://snomed.info/sct#43704001", EchographyOfBreastAMode_ }, 
+      { "43837006", RadioiodinatedTrioleinStudy_ }, 
+      { "http://snomed.info/sct#43837006", RadioiodinatedTrioleinStudy_ }, 
+      { "43947005", RadiographyOfSoftTissueOfForearm_ }, 
+      { "http://snomed.info/sct#43947005", RadiographyOfSoftTissueOfForearm_ }, 
+      { "44052005", UltrasonographyOfBiliaryTract_ }, 
+      { "http://snomed.info/sct#44052005", UltrasonographyOfBiliaryTract_ }, 
+      { "44260000", StereotacticExcisionalBiopsyOfIntracranialLesionWithComputerizedAxialTomography_ }, 
+      { "http://snomed.info/sct#44260000", StereotacticExcisionalBiopsyOfIntracranialLesionWithComputerizedAxialTomography_ }, 
+      { "4438009", VenographyOfVenaCava_ }, 
+      { "http://snomed.info/sct#4438009", VenographyOfVenaCava_ }, 
+      { "44491008", Fluoroscopy_ }, 
+      { "http://snomed.info/sct#44491008", Fluoroscopy_ }, 
+      { "44545002", RadiologicExaminationOfSellaTurcica_ }, 
+      { "http://snomed.info/sct#44545002", RadiologicExaminationOfSellaTurcica_ }, 
+      { "44691001", DiagnosticRadiographyOfMastoids_ }, 
+      { "http://snomed.info/sct#44691001", DiagnosticRadiographyOfMastoids_ }, 
+      { "44884002", Azygography_ }, 
+      { "http://snomed.info/sct#44884002", Azygography_ }, 
+      { "45036003", UltrasonographyOfAbdomen_ }, 
+      { "http://snomed.info/sct#45036003", UltrasonographyOfAbdomen_ }, 
+      { "45315006", OsteoarticularThermography_ }, 
+      { "http://snomed.info/sct#45315006", OsteoarticularThermography_ }, 
+      { "45316007", RadionuclideLocalizationOfTumor_ }, 
+      { "http://snomed.info/sct#45316007", RadionuclideLocalizationOfTumor_ }, 
+      { "45554006", RadiographyOfThoracicSpine_ }, 
+      { "http://snomed.info/sct#45554006", RadiographyOfThoracicSpine_ }, 
+      { "45588000", LiverFunctionStudyWithSerialImages_ }, 
+      { "http://snomed.info/sct#45588000", LiverFunctionStudyWithSerialImages_ }, 
+      { "45689001", FemoralPhlebography_ }, 
+      { "http://snomed.info/sct#45689001", FemoralPhlebography_ }, 
+      { "45732007", RadiologicExaminationOsseousSurveyComplete_ }, 
+      { "http://snomed.info/sct#45732007", RadiologicExaminationOsseousSurveyComplete_ }, 
+      { "46108001", MultiPlaneRadionuclideTomography_ }, 
+      { "http://snomed.info/sct#46108001", MultiPlaneRadionuclideTomography_ }, 
+      { "46258004", DeterminationOfVentricularEjectionFractionWithProbeTechnique_ }, 
+      { "http://snomed.info/sct#46258004", DeterminationOfVentricularEjectionFractionWithProbeTechnique_ }, 
+      { "46291008", DiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastBilateral_ }, 
+      { "http://snomed.info/sct#46291008", DiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastBilateral_ }, 
+      { "46377000", CardiacTomography_ }, 
+      { "http://snomed.info/sct#46377000", CardiacTomography_ }, 
+      { "46424009", CerebralVentriculographyPositiveContrast_ }, 
+      { "http://snomed.info/sct#46424009", CerebralVentriculographyPositiveContrast_ }, 
+      { "46453005", FluoroscopicLocalizationForFineNeedleAspiration_ }, 
+      { "http://snomed.info/sct#46453005", FluoroscopicLocalizationForFineNeedleAspiration_ }, 
+      { "46471003", IsotopeStudyForUrinaryRecovery_ }, 
+      { "http://snomed.info/sct#46471003", IsotopeStudyForUrinaryRecovery_ }, 
+      { "46480003", CeliacAngiography_ }, 
+      { "http://snomed.info/sct#46480003", CeliacAngiography_ }, 
+      { "46597006", SalivaryGlandImagingWithSerialViews_ }, 
+      { "http://snomed.info/sct#46597006", SalivaryGlandImagingWithSerialViews_ }, 
+      { "46700000", RadiologicExaminationOfLumbosacralSpineAnteroposteriorAndLateral_ }, 
+      { "http://snomed.info/sct#46700000", RadiologicExaminationOfLumbosacralSpineAnteroposteriorAndLateral_ }, 
+      { "46798003", SpecialRadionuclideImagingTechnique_ }, 
+      { "http://snomed.info/sct#46798003", SpecialRadionuclideImagingTechnique_ }, 
+      { "46822003", ArthrographyOfWrist_ }, 
+      { "http://snomed.info/sct#46822003", ArthrographyOfWrist_ }, 
+      { "46854007", RadionuclideLocalizationOfAbscessOfWholeBody_ }, 
+      { "http://snomed.info/sct#46854007", RadionuclideLocalizationOfAbscessOfWholeBody_ }, 
+      { "46870009", P32TracerStudyOfEye_ }, 
+      { "http://snomed.info/sct#46870009", P32TracerStudyOfEye_ }, 
+      { "47079000", UltrasonographyOfBreast_ }, 
+      { "http://snomed.info/sct#47079000", UltrasonographyOfBreast_ }, 
+      { "47187002", RadiographyOfUvula_ }, 
+      { "http://snomed.info/sct#47187002", RadiographyOfUvula_ }, 
+      { "47293000", RadiologicProcedureOnLowerExtremityAndPelvis_ }, 
+      { "http://snomed.info/sct#47293000", RadiologicProcedureOnLowerExtremityAndPelvis_ }, 
+      { "47324001", ThyroidUptakeWithThyroidStimulation_ }, 
+      { "http://snomed.info/sct#47324001", ThyroidUptakeWithThyroidStimulation_ }, 
+      { "47616002", WhiteBloodCellLocalizationWholeBody_ }, 
+      { "http://snomed.info/sct#47616002", WhiteBloodCellLocalizationWholeBody_ }, 
+      { "47621004", DiagnosticRadiologicExaminationWithFluoroscopy_ }, 
+      { "http://snomed.info/sct#47621004", DiagnosticRadiologicExaminationWithFluoroscopy_ }, 
+      { "47859009", DiagnosticRadiographyObliqueSpecial_ }, 
+      { "http://snomed.info/sct#47859009", DiagnosticRadiographyObliqueSpecial_ }, 
+      { "47987001", DiagnosticRadiographyOfSacralSpineCombinedAPAndLateral_ }, 
+      { "http://snomed.info/sct#47987001", DiagnosticRadiographyOfSacralSpineCombinedAPAndLateral_ }, 
+      { "48138001", Splenogram_ }, 
+      { "http://snomed.info/sct#48138001", Splenogram_ }, 
+      { "48290004", RadionuclideVolumeDilutionStudy_ }, 
+      { "http://snomed.info/sct#48290004", RadionuclideVolumeDilutionStudy_ }, 
+      { "48380009", VenographyOfRenalVeinBilateral_ }, 
+      { "http://snomed.info/sct#48380009", VenographyOfRenalVeinBilateral_ }, 
+      { "48450000", RadiographyOfHead_ }, 
+      { "http://snomed.info/sct#48450000", RadiographyOfHead_ }, 
+      { "48526000", UltrasoundPeripheralVascularFlowStudy_ }, 
+      { "http://snomed.info/sct#48526000", UltrasoundPeripheralVascularFlowStudy_ }, 
+      { "48564003", FluoroscopicMonitoringAndRadiographyForCardiacPacemakerInsertion_ }, 
+      { "http://snomed.info/sct#48564003", FluoroscopicMonitoringAndRadiographyForCardiacPacemakerInsertion_ }, 
+      { "48633006", LumbarDiscography_ }, 
+      { "http://snomed.info/sct#48633006", LumbarDiscography_ }, 
+      { "48735005", ThoracicAortographyPositiveContrast_ }, 
+      { "http://snomed.info/sct#48735005", ThoracicAortographyPositiveContrast_ }, 
+      { "48816001", RadiologicExaminationOfLumbosacralSpineCompleteWithBendingViews_ }, 
+      { "http://snomed.info/sct#48816001", RadiologicExaminationOfLumbosacralSpineCompleteWithBendingViews_ }, 
+      { "48849005", ImagingOfArteriesOfUpperExtremity_ }, 
+      { "http://snomed.info/sct#48849005", ImagingOfArteriesOfUpperExtremity_ }, 
+      { "48858003", LymphangiographyOfLowerExtremity_ }, 
+      { "http://snomed.info/sct#48858003", LymphangiographyOfLowerExtremity_ }, 
+      { "48966008", SkeletalXRayOfShoulderAndUpperLimb_ }, 
+      { "http://snomed.info/sct#48966008", SkeletalXRayOfShoulderAndUpperLimb_ }, 
+      { "48986007", Cholecystocholangiogram_ }, 
+      { "http://snomed.info/sct#48986007", Cholecystocholangiogram_ }, 
+      { "48995004", FluoroscopyPostOperative_ }, 
+      { "http://snomed.info/sct#48995004", FluoroscopyPostOperative_ }, 
+      { "48996003", EchographyOfAbdomenBScanLimited_ }, 
+      { "http://snomed.info/sct#48996003", EchographyOfAbdomenBScanLimited_ }, 
+      { "49140003", RadiographyOfPenis_ }, 
+      { "http://snomed.info/sct#49140003", RadiographyOfPenis_ }, 
+      { "49276007", EchocardiographyForDeterminingInterventricularSeptalThickness_ }, 
+      { "http://snomed.info/sct#49276007", EchocardiographyForDeterminingInterventricularSeptalThickness_ }, 
+      { "4934001", Salpingography_ }, 
+      { "http://snomed.info/sct#4934001", Salpingography_ }, 
+      { "49345004", RadiographyOfHand_ }, 
+      { "http://snomed.info/sct#49345004", RadiographyOfHand_ }, 
+      { "49459005", DiagnosticRadiographyOfChestStereo_ }, 
+      { "http://snomed.info/sct#49459005", DiagnosticRadiographyOfChestStereo_ }, 
+      { "49626003", DiagnosticRadiographyOfScapula_ }, 
+      { "http://snomed.info/sct#49626003", DiagnosticRadiographyOfScapula_ }, 
+      { "49673009", CoronaryArteriographyUsingTwoCatheters_ }, 
+      { "http://snomed.info/sct#49673009", CoronaryArteriographyUsingTwoCatheters_ }, 
+      { "4970003", Venography_ }, 
+      { "http://snomed.info/sct#4970003", Venography_ }, 
+      { "49752000", IntravenousPyelogramWithKUB_ }, 
+      { "http://snomed.info/sct#49752000", IntravenousPyelogramWithKUB_ }, 
+      { "49856005", SoftTissueXRayOfLowerLimb_ }, 
+      { "http://snomed.info/sct#49856005", SoftTissueXRayOfLowerLimb_ }, 
+      { "50025001", DiagnosticRadiographyWithOralContrast_ }, 
+      { "http://snomed.info/sct#50025001", DiagnosticRadiographyWithOralContrast_ }, 
+      { "50251009", RadiographicDentalExaminationForPersonalIdentification_ }, 
+      { "http://snomed.info/sct#50251009", RadiographicDentalExaminationForPersonalIdentification_ }, 
+      { "50621006", IsotopeStudyForRenalClearance_ }, 
+      { "http://snomed.info/sct#50621006", IsotopeStudyForRenalClearance_ }, 
+      { "50759007", KidneyImagingWithVascularFlow_ }, 
+      { "http://snomed.info/sct#50759007", KidneyImagingWithVascularFlow_ }, 
+      { "50788008", PulmonaryVentilationPerfusionStudyByRadioactiveXenon_ }, 
+      { "http://snomed.info/sct#50788008", PulmonaryVentilationPerfusionStudyByRadioactiveXenon_ }, 
+      { "50867009", MammaryDuctogramOfSingleDuct_ }, 
+      { "http://snomed.info/sct#50867009", MammaryDuctogramOfSingleDuct_ }, 
+      { "50964001", AbdominalAortographyWithBilateralIliofemoralArteriesWithSerialography_ }, 
+      { "http://snomed.info/sct#50964001", AbdominalAortographyWithBilateralIliofemoralArteriesWithSerialography_ }, 
+      { "51006009", Echoencephalography_ }, 
+      { "http://snomed.info/sct#51006009", Echoencephalography_ }, 
+      { "5110001", UltrasoundPeripheralImagingRealTimeScan_ }, 
+      { "http://snomed.info/sct#5110001", UltrasoundPeripheralImagingRealTimeScan_ }, 
+      { "5131003", RadiographyOfChestWall_ }, 
+      { "http://snomed.info/sct#5131003", RadiographyOfChestWall_ }, 
+      { "51469006", FourDimensionalUltrasoundImagingOfHeart_ }, 
+      { "http://snomed.info/sct#51469006", FourDimensionalUltrasoundImagingOfHeart_ }, 
+      { "51619007", MagneticResonanceImagingWithContrast_ }, 
+      { "http://snomed.info/sct#51619007", MagneticResonanceImagingWithContrast_ }, 
+      { "51808006", ArthrographyOfAnkleWithPositiveContrast_ }, 
+      { "http://snomed.info/sct#51808006", ArthrographyOfAnkleWithPositiveContrast_ }, 
+      { "5216004", ThreeDimensionalUltrasoundImagingOfHeart_ }, 
+      { "http://snomed.info/sct#5216004", ThreeDimensionalUltrasoundImagingOfHeart_ }, 
+      { "52221007", RadiographyOfFoot_ }, 
+      { "http://snomed.info/sct#52221007", RadiographyOfFoot_ }, 
+      { "52340003", AngiographyOfPulmonaryArteriesBilateral_ }, 
+      { "http://snomed.info/sct#52340003", AngiographyOfPulmonaryArteriesBilateral_ }, 
+      { "52432005", PhotographyOfGrossOrgan_ }, 
+      { "http://snomed.info/sct#52432005", PhotographyOfGrossOrgan_ }, 
+      { "52514008", RadiographyOfMaxilla_ }, 
+      { "http://snomed.info/sct#52514008", RadiographyOfMaxilla_ }, 
+      { "52566004", Clivogram_ }, 
+      { "http://snomed.info/sct#52566004", Clivogram_ }, 
+      { "52792009", UltrasoundCephalometrics_ }, 
+      { "http://snomed.info/sct#52792009", UltrasoundCephalometrics_ }, 
+      { "52823003", RadiologicExaminationOfAnkleAnteroposteriorAndLateralViews_ }, 
+      { "http://snomed.info/sct#52823003", RadiologicExaminationOfAnkleAnteroposteriorAndLateralViews_ }, 
+      { "52960000", RadionuclideVolumeDilutionOfBodySpaces_ }, 
+      { "http://snomed.info/sct#52960000", RadionuclideVolumeDilutionOfBodySpaces_ }, 
+      { "53054006", LaparoscopyWithGuidedTranshepaticCholangiography_ }, 
+      { "http://snomed.info/sct#53054006", LaparoscopyWithGuidedTranshepaticCholangiography_ }, 
+      { "53161007", RadiologicGuidanceForIlealConduitogram_ }, 
+      { "http://snomed.info/sct#53161007", RadiologicGuidanceForIlealConduitogram_ }, 
+      { "53457009", EchocardiographyForDeterminingProstheticValveMotion_ }, 
+      { "http://snomed.info/sct#53457009", EchocardiographyForDeterminingProstheticValveMotion_ }, 
+      { "53484005", VenographyOfSuperiorSagittalSinus_ }, 
+      { "http://snomed.info/sct#53484005", VenographyOfSuperiorSagittalSinus_ }, 
+      { "53495004", AngiographyOfUpperExtremityArteriesBilateral_ }, 
+      { "http://snomed.info/sct#53495004", AngiographyOfUpperExtremityArteriesBilateral_ }, 
+      { "53585008", RadioisotopeStudyOfGastrointestinalSystem_ }, 
+      { "http://snomed.info/sct#53585008", RadioisotopeStudyOfGastrointestinalSystem_ }, 
+      { "53683005", AngiocardiographyOfLeftHeart_ }, 
+      { "http://snomed.info/sct#53683005", AngiocardiographyOfLeftHeart_ }, 
+      { "53835005", PlacentalScan_ }, 
+      { "http://snomed.info/sct#53835005", PlacentalScan_ }, 
+      { "54042002", ContrastRadiographyOfNasolacrimalDucts_ }, 
+      { "http://snomed.info/sct#54042002", ContrastRadiographyOfNasolacrimalDucts_ }, 
+      { "54149009", AngiographyOfCervicalVertebralArteriesBilateral_ }, 
+      { "http://snomed.info/sct#54149009", AngiographyOfCervicalVertebralArteriesBilateral_ }, 
+      { "54321008", CardiacFlowImaging_ }, 
+      { "http://snomed.info/sct#54321008", CardiacFlowImaging_ }, 
+      { "5433008", SkeletalXRayOfLowerLimb_ }, 
+      { "http://snomed.info/sct#5433008", SkeletalXRayOfLowerLimb_ }, 
+      { "54438008", DiagnosticRadiographyObliqueStandard_ }, 
+      { "http://snomed.info/sct#54438008", DiagnosticRadiographyObliqueStandard_ }, 
+      { "54640009", Aortography_ }, 
+      { "http://snomed.info/sct#54640009", Aortography_ }, 
+      { "54689004", RealTimeScan_ }, 
+      { "http://snomed.info/sct#54689004", RealTimeScan_ }, 
+      { "54780008", LiverImagingWithVascularFlow_ }, 
+      { "http://snomed.info/sct#54780008", LiverImagingWithVascularFlow_ }, 
+      { "54810009", VoidingUrethrocystography_ }, 
+      { "http://snomed.info/sct#54810009", VoidingUrethrocystography_ }, 
+      { "55052008", DiagnosticUltrasoundOfGravidUterus_ }, 
+      { "http://snomed.info/sct#55052008", DiagnosticUltrasoundOfGravidUterus_ }, 
+      { "55357008", DiagnosticRadiographyOfTibiaCombinedAPAndLateral_ }, 
+      { "http://snomed.info/sct#55357008", DiagnosticRadiographyOfTibiaCombinedAPAndLateral_ }, 
+      { "55447006", PercutaneousHysterogram_ }, 
+      { "http://snomed.info/sct#55447006", PercutaneousHysterogram_ }, 
+      { "55498000", EndotrachealBronchography_ }, 
+      { "http://snomed.info/sct#55498000", EndotrachealBronchography_ }, 
+      { "55501000", ComputerizedAxialTomographyOfKidney_ }, 
+      { "http://snomed.info/sct#55501000", ComputerizedAxialTomographyOfKidney_ }, 
+      { "55550006", RadioisotopeStudyOfCentralNervousSystem_ }, 
+      { "http://snomed.info/sct#55550006", RadioisotopeStudyOfCentralNervousSystem_ }, 
+      { "55596003", AntegradeUrography_ }, 
+      { "http://snomed.info/sct#55596003", AntegradeUrography_ }, 
+      { "55612007", HepaticVenography_ }, 
+      { "http://snomed.info/sct#55612007", HepaticVenography_ }, 
+      { "55761000", Echogynography_ }, 
+      { "http://snomed.info/sct#55761000", Echogynography_ }, 
+      { "55965002", XRayOfSkull_ }, 
+      { "http://snomed.info/sct#55965002", XRayOfSkull_ }, 
+      { "56058002", FluoroscopyToAssistEndoscopicManeuver_ }, 
+      { "http://snomed.info/sct#56058002", FluoroscopyToAssistEndoscopicManeuver_ }, 
+      { "56087001", Dacryocystography_ }, 
+      { "http://snomed.info/sct#56087001", Dacryocystography_ }, 
+      { "56216006", RadionuclideLocalizationOfTumorWholeBody_ }, 
+      { "http://snomed.info/sct#56216006", RadionuclideLocalizationOfTumorWholeBody_ }, 
+      { "56712007", ComputerizedTomographyMultiPlane_ }, 
+      { "http://snomed.info/sct#56712007", ComputerizedTomographyMultiPlane_ }, 
+      { "57093001", EchocardiographyRealTimeWithImageDocumentationWithMModeRecordingComplete_ }, 
+      { "http://snomed.info/sct#57093001", EchocardiographyRealTimeWithImageDocumentationWithMModeRecordingComplete_ }, 
+      { "57113004", PulmonaryVentilationStudy_ }, 
+      { "http://snomed.info/sct#57113004", PulmonaryVentilationStudy_ }, 
+      { "57235004", DiagnosticRadiographyOfSacrum_ }, 
+      { "http://snomed.info/sct#57235004", DiagnosticRadiographyOfSacrum_ }, 
+      { "57354002", DenverShuntPatencyTest_ }, 
+      { "http://snomed.info/sct#57354002", DenverShuntPatencyTest_ }, 
+      { "57417005", BowelImagingForMeckelQuoteSDiverticulum_ }, 
+      { "http://snomed.info/sct#57417005", BowelImagingForMeckelQuoteSDiverticulum_ }, 
+      { "57780004", RadioiodohippurateSodiumRenogramSerialImaging_ }, 
+      { "http://snomed.info/sct#57780004", RadioiodohippurateSodiumRenogramSerialImaging_ }, 
+      { "57902003", MagneticResonanceImagingOfTemporomandibularJoint_ }, 
+      { "http://snomed.info/sct#57902003", MagneticResonanceImagingOfTemporomandibularJoint_ }, 
+      { "58011003", DiagnosticRadiographyOfLarynx_ }, 
+      { "http://snomed.info/sct#58011003", DiagnosticRadiographyOfLarynx_ }, 
+      { "58082001", AirContrastOrbitography_ }, 
+      { "http://snomed.info/sct#58082001", AirContrastOrbitography_ }, 
+      { "5823005", DiagnosticRadiographyLeft_ }, 
+      { "http://snomed.info/sct#5823005", DiagnosticRadiographyLeft_ }, 
+      { "58259007", RadiographyOfPelvicSoftTissue_ }, 
+      { "http://snomed.info/sct#58259007", RadiographyOfPelvicSoftTissue_ }, 
+      { "58316000", AngiographyOfArteriesOfExtremityWithSerialography_ }, 
+      { "http://snomed.info/sct#58316000", AngiographyOfArteriesOfExtremityWithSerialography_ }, 
+      { "5846007", DiagnosticRadiographyOfToes_ }, 
+      { "http://snomed.info/sct#5846007", DiagnosticRadiographyOfToes_ }, 
+      { "58518000", BoneImagingVascularFlowStudy_ }, 
+      { "http://snomed.info/sct#58518000", BoneImagingVascularFlowStudy_ }, 
+      { "58713006", MagneticResonanceImagingOfMusculoskeletalStructures_ }, 
+      { "http://snomed.info/sct#58713006", MagneticResonanceImagingOfMusculoskeletalStructures_ }, 
+      { "58719005", RadioisotopeScanOfUterus_ }, 
+      { "http://snomed.info/sct#58719005", RadioisotopeScanOfUterus_ }, 
+      { "58746000", ArthrogramOfTemporomandibularJoint_ }, 
+      { "http://snomed.info/sct#58746000", ArthrogramOfTemporomandibularJoint_ }, 
+      { "58920005", ImagingOfCarotidArteries_ }, 
+      { "http://snomed.info/sct#58920005", ImagingOfCarotidArteries_ }, 
+      { "58951003", PelvicEchographyBScanLimited_ }, 
+      { "http://snomed.info/sct#58951003", PelvicEchographyBScanLimited_ }, 
+      { "59105009", BowelImagingForEctopicGastricMucosa_ }, 
+      { "http://snomed.info/sct#59105009", BowelImagingForEctopicGastricMucosa_ }, 
+      { "59413000", RadiologicGuidanceForDilationOfUrethra_ }, 
+      { "http://snomed.info/sct#59413000", RadiologicGuidanceForDilationOfUrethra_ }, 
+      { "59517002", RadioironBodyDistributionStudy_ }, 
+      { "http://snomed.info/sct#59517002", RadioironBodyDistributionStudy_ }, 
+      { "59608007", DiagnosticRadiologicExaminationWithFluoroscopyOfChest_ }, 
+      { "http://snomed.info/sct#59608007", DiagnosticRadiologicExaminationWithFluoroscopyOfChest_ }, 
+      { "59778004", PositiveContrastLaryngography_ }, 
+      { "http://snomed.info/sct#59778004", PositiveContrastLaryngography_ }, 
+      { "59800002", DiagnosticRadiographyWithContrastMediaByInjectionBilateral_ }, 
+      { "http://snomed.info/sct#59800002", DiagnosticRadiographyWithContrastMediaByInjectionBilateral_ }, 
+      { "59916001", CerebrospinalFluidFlowImagingShuntEvaluation_ }, 
+      { "http://snomed.info/sct#59916001", CerebrospinalFluidFlowImagingShuntEvaluation_ }, 
+      { "60006002", IntrathoracicPhlebography_ }, 
+      { "http://snomed.info/sct#60006002", IntrathoracicPhlebography_ }, 
+      { "60027007", RadiographyOfWrist_ }, 
+      { "http://snomed.info/sct#60027007", RadiographyOfWrist_ }, 
+      { "6007000", MagneticResonanceImagingOfChest_ }, 
+      { "http://snomed.info/sct#6007000", MagneticResonanceImagingOfChest_ }, 
+      { "60228007", CholecystectomyWithExplorationOfCommonDuctWithCholangiography_ }, 
+      { "http://snomed.info/sct#60228007", CholecystectomyWithExplorationOfCommonDuctWithCholangiography_ }, 
+      { "60287000", PhotographyMicroscopic_ }, 
+      { "http://snomed.info/sct#60287000", PhotographyMicroscopic_ }, 
+      { "60443006", MagneticResonanceImagingOfCervicalSpineWithContrast_ }, 
+      { "http://snomed.info/sct#60443006", MagneticResonanceImagingOfCervicalSpineWithContrast_ }, 
+      { "60539009", EchographyOfThyroidBScan_ }, 
+      { "http://snomed.info/sct#60539009", EchographyOfThyroidBScan_ }, 
+      { "60619004", DiagnosticRadiographyOfFinger_ }, 
+      { "http://snomed.info/sct#60619004", DiagnosticRadiographyOfFinger_ }, 
+      { "60654006", RadiologicExaminationOfAbdomen_ }, 
+      { "http://snomed.info/sct#60654006", RadiologicExaminationOfAbdomen_ }, 
+      { "60668004", SoftTissueXRayOfAbdominalWall_ }, 
+      { "http://snomed.info/sct#60668004", SoftTissueXRayOfAbdominalWall_ }, 
+      { "61147008", RadiographyOfSoftTissueOfHip_ }, 
+      { "http://snomed.info/sct#61147008", RadiographyOfSoftTissueOfHip_ }, 
+      { "6127002", DiagnosticRadiographyOfAbdomenObliqueStandard_ }, 
+      { "http://snomed.info/sct#6127002", DiagnosticRadiographyOfAbdomenObliqueStandard_ }, 
+      { "61361006", RedCellSurvivalStudyForSplenicAndHepaticSequestration_ }, 
+      { "http://snomed.info/sct#61361006", RedCellSurvivalStudyForSplenicAndHepaticSequestration_ }, 
+      { "61368000", DiagnosticRadiographyOfSpineWithFlexionAndExtensionStudies_ }, 
+      { "http://snomed.info/sct#61368000", DiagnosticRadiographyOfSpineWithFlexionAndExtensionStudies_ }, 
+      { "61518007", EchographyAMode_ }, 
+      { "http://snomed.info/sct#61518007", EchographyAMode_ }, 
+      { "61553000", OphthalmicBiometryByUltrasoundEchographyAMode_ }, 
+      { "http://snomed.info/sct#61553000", OphthalmicBiometryByUltrasoundEchographyAMode_ }, 
+      { "6157006", EndoscopicRetrogradeCholangiopancreatographyWithBiopsy_ }, 
+      { "http://snomed.info/sct#6157006", EndoscopicRetrogradeCholangiopancreatographyWithBiopsy_ }, 
+      { "61593002", UltrasonicGuidanceProcedure_ }, 
+      { "http://snomed.info/sct#61593002", UltrasonicGuidanceProcedure_ }, 
+      { "61832002", EchocardiographyForDeterminingMitralAorticAndTricuspidValveMotion_ }, 
+      { "http://snomed.info/sct#61832002", EchocardiographyForDeterminingMitralAorticAndTricuspidValveMotion_ }, 
+      { "61982008", EchocardiographyForDeterminingPericardialEffusion_ }, 
+      { "http://snomed.info/sct#61982008", EchocardiographyForDeterminingPericardialEffusion_ }, 
+      { "62295005", DiagnosticRadiographyOfAbdomenDecubitusAndErect_ }, 
+      { "http://snomed.info/sct#62295005", DiagnosticRadiographyOfAbdomenDecubitusAndErect_ }, 
+      { "6238009", DiagnosticRadiographyOfSacroiliacJoints_ }, 
+      { "http://snomed.info/sct#6238009", DiagnosticRadiographyOfSacroiliacJoints_ }, 
+      { "62434009", BreastThermography_ }, 
+      { "http://snomed.info/sct#62434009", BreastThermography_ }, 
+      { "62559003", EchocardiographyRealTimeWithImageDocumentationWithMModeFollowUp_ }, 
+      { "http://snomed.info/sct#62559003", EchocardiographyRealTimeWithImageDocumentationWithMModeFollowUp_ }, 
+      { "62581008", MagneticResonanceImagingOfMyocardium_ }, 
+      { "http://snomed.info/sct#62581008", MagneticResonanceImagingOfMyocardium_ }, 
+      { "62658002", MagneticResonanceImagingOfChestAndMyocardium_ }, 
+      { "http://snomed.info/sct#62658002", MagneticResonanceImagingOfChestAndMyocardium_ }, 
+      { "6271008", EchographyImmersionBScan_ }, 
+      { "http://snomed.info/sct#6271008", EchographyImmersionBScan_ }, 
+      { "62756008", RadiologicExaminationOfPharynxAndCervicalEsophagus_ }, 
+      { "http://snomed.info/sct#62756008", RadiologicExaminationOfPharynxAndCervicalEsophagus_ }, 
+      { "63243008", IntraoperativeCholangiogram_ }, 
+      { "http://snomed.info/sct#63243008", IntraoperativeCholangiogram_ }, 
+      { "63469004", ObstetricCephalometry_ }, 
+      { "http://snomed.info/sct#63469004", ObstetricCephalometry_ }, 
+      { "63670007", MyocardialImagingForInfarctPlanarTechnique_ }, 
+      { "http://snomed.info/sct#63670007", MyocardialImagingForInfarctPlanarTechnique_ }, 
+      { "63713007", CerebralBloodFlowRadionuclideStudy_ }, 
+      { "http://snomed.info/sct#63713007", CerebralBloodFlowRadionuclideStudy_ }, 
+      { "64021002", PostoperativePancreatography_ }, 
+      { "http://snomed.info/sct#64021002", PostoperativePancreatography_ }, 
+      { "64152004", CinephotographyOfPatient_ }, 
+      { "http://snomed.info/sct#64152004", CinephotographyOfPatient_ }, 
+      { "64167000", DopplerFlowMappingOfAorticArch_ }, 
+      { "http://snomed.info/sct#64167000", DopplerFlowMappingOfAorticArch_ }, 
+      { "642006", CerebralThermography_ }, 
+      { "http://snomed.info/sct#642006", CerebralThermography_ }, 
+      { "64318009", DiagnosticRadiographyStereotacticLocalization_ }, 
+      { "http://snomed.info/sct#64318009", DiagnosticRadiographyStereotacticLocalization_ }, 
+      { "64387007", MyelogramOfPosteriorFossa_ }, 
+      { "http://snomed.info/sct#64387007", MyelogramOfPosteriorFossa_ }, 
+      { "64432007", MyocardialImaging_ }, 
+      { "http://snomed.info/sct#64432007", MyocardialImaging_ }, 
+      { "64682006", PulmonaryPerfusionImagingGaseous_ }, 
+      { "http://snomed.info/sct#64682006", PulmonaryPerfusionImagingGaseous_ }, 
+      { "64707006", VenographyOfSuperiorVenaCavaWithSerialography_ }, 
+      { "http://snomed.info/sct#64707006", VenographyOfSuperiorVenaCavaWithSerialography_ }, 
+      { "6480006", UrinaryBladderResidualUrineStudy_ }, 
+      { "http://snomed.info/sct#6480006", UrinaryBladderResidualUrineStudy_ }, 
+      { "65066001", DiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastOperative_ }, 
+      { "http://snomed.info/sct#65066001", DiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastOperative_ }, 
+      { "65083005", ArteriographyOfHeadAndNeck_ }, 
+      { "http://snomed.info/sct#65083005", ArteriographyOfHeadAndNeck_ }, 
+      { "6521006", Polytomography_ }, 
+      { "http://snomed.info/sct#6521006", Polytomography_ }, 
+      { "65388005", UltrasonicGuidanceForAmniocentesis_ }, 
+      { "http://snomed.info/sct#65388005", UltrasonicGuidanceForAmniocentesis_ }, 
+      { "65416003", DiagnosticRadiographyLateral_ }, 
+      { "http://snomed.info/sct#65416003", DiagnosticRadiographyLateral_ }, 
+      { "65590007", DiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastPostOperative_ }, 
+      { "http://snomed.info/sct#65590007", DiagnosticRadiographyWithContrastMediaByInjectionPositiveContrastPostOperative_ }, 
+      { "65749006", GastroesophagealRefluxStudy_ }, 
+      { "http://snomed.info/sct#65749006", GastroesophagealRefluxStudy_ }, 
+      { "65837003", AngiographyOfNeck_ }, 
+      { "http://snomed.info/sct#65837003", AngiographyOfNeck_ }, 
+      { "65839000", OphthalmicUltrasonicForeignBodyLocalization_ }, 
+      { "http://snomed.info/sct#65839000", OphthalmicUltrasonicForeignBodyLocalization_ }, 
+      { "65867009", MagneticResonanceImagingOfMediastinum_ }, 
+      { "http://snomed.info/sct#65867009", MagneticResonanceImagingOfMediastinum_ }, 
+      { "66088009", PulmonaryPerfusionStudy_ }, 
+      { "http://snomed.info/sct#66088009", PulmonaryPerfusionStudy_ }, 
+      { "66377006", RadionuclideLocalizationOfTumorLimitedArea_ }, 
+      { "http://snomed.info/sct#66377006", RadionuclideLocalizationOfTumorLimitedArea_ }, 
+      { "6650009", RadionuclideLacrimalFlowStudy_ }, 
+      { "http://snomed.info/sct#6650009", RadionuclideLacrimalFlowStudy_ }, 
+      { "66596009", DiagnosticRadiographyForForeignBodyDetectionAndLocalization_ }, 
+      { "http://snomed.info/sct#66596009", DiagnosticRadiographyForForeignBodyDetectionAndLocalization_ }, 
+      { "66675005", MagneticResonanceImagingOfOrbitFaceAndNeck_ }, 
+      { "http://snomed.info/sct#66675005", MagneticResonanceImagingOfOrbitFaceAndNeck_ }, 
+      { "66769009", RadiographyOfCervicalSpine_ }, 
+      { "http://snomed.info/sct#66769009", RadiographyOfCervicalSpine_ }, 
+      { "66995002", RenalFunctionStudyWithSerialImaging_ }, 
+      { "http://snomed.info/sct#66995002", RenalFunctionStudyWithSerialImaging_ }, 
+      { "67022004", LymphGlandThermography_ }, 
+      { "http://snomed.info/sct#67022004", LymphGlandThermography_ }, 
+      { "67051000", AbdominalLymphangiographyBilateral_ }, 
+      { "http://snomed.info/sct#67051000", AbdominalLymphangiographyBilateral_ }, 
+      { "67071009", DiagnosticRadiographyOfChestObliqueStandard_ }, 
+      { "http://snomed.info/sct#67071009", DiagnosticRadiographyOfChestObliqueStandard_ }, 
+      { "67255001", MagneticResonanceImagingWithoutIVContrastFollowedByContrastAndMoreSections_ }, 
+      { "http://snomed.info/sct#67255001", MagneticResonanceImagingWithoutIVContrastFollowedByContrastAndMoreSections_ }, 
+      { "6728003", RadiologicExaminationOfCompleteSpineAnteroposteriorAndLateral_ }, 
+      { "http://snomed.info/sct#6728003", RadiologicExaminationOfCompleteSpineAnteroposteriorAndLateral_ }, 
+      { "67357007", EsophagealMotilityStudyWithAcidPerfusionStudies_ }, 
+      { "http://snomed.info/sct#67357007", EsophagealMotilityStudyWithAcidPerfusionStudies_ }, 
+      { "67361001", PulmonaryVentilationPerfusionStudyByRadioactiveNitrogen_ }, 
+      { "http://snomed.info/sct#67361001", PulmonaryVentilationPerfusionStudyByRadioactiveNitrogen_ }, 
+      { "67499007", RadiologicExaminationOfKneeStandingAnteroposterior_ }, 
+      { "http://snomed.info/sct#67499007", RadiologicExaminationOfKneeStandingAnteroposterior_ }, 
+      { "67595003", RadionuclideStudyOfCardiacOutput_ }, 
+      { "http://snomed.info/sct#67595003", RadionuclideStudyOfCardiacOutput_ }, 
+      { "67632007", DiagnosticRadiographyOfChestPA_ }, 
+      { "http://snomed.info/sct#67632007", DiagnosticRadiographyOfChestPA_ }, 
+      { "67715004", OralContrastDuodenography_ }, 
+      { "http://snomed.info/sct#67715004", OralContrastDuodenography_ }, 
+      { "68083009", ThoracicDiscography_ }, 
+      { "http://snomed.info/sct#68083009", ThoracicDiscography_ }, 
+      { "68280004", ReplacementOfPercutaneousDrainageCatheterWithContrastMonitoring_ }, 
+      { "http://snomed.info/sct#68280004", ReplacementOfPercutaneousDrainageCatheterWithContrastMonitoring_ }, 
+      { "68306006", DiagnosticRadiographyOfFacialBones_ }, 
+      { "http://snomed.info/sct#68306006", DiagnosticRadiographyOfFacialBones_ }, 
+      { "68558001", CerebrospinalFluidFlowImagingCisternography_ }, 
+      { "http://snomed.info/sct#68558001", CerebrospinalFluidFlowImagingCisternography_ }, 
+      { "68796002", RadioisotopeStudyOfMusculoskeletalSystem_ }, 
+      { "http://snomed.info/sct#68796002", RadioisotopeStudyOfMusculoskeletalSystem_ }, 
+      { "68862002", RadiologicExaminationOfThoracolumbarSpineStanding_ }, 
+      { "http://snomed.info/sct#68862002", RadiologicExaminationOfThoracolumbarSpineStanding_ }, 
+      { "68965004", PelvimetryWithPlacentalLocalization_ }, 
+      { "http://snomed.info/sct#68965004", PelvimetryWithPlacentalLocalization_ }, 
+      { "69064006", DiagnosticRadiographyOfCervicalEsophagus_ }, 
+      { "http://snomed.info/sct#69064006", DiagnosticRadiographyOfCervicalEsophagus_ }, 
+      { "69143005", RadiographyOfHeart_ }, 
+      { "http://snomed.info/sct#69143005", RadiographyOfHeart_ }, 
+      { "69167002", OcularPhotographyCloseUp_ }, 
+      { "http://snomed.info/sct#69167002", OcularPhotographyCloseUp_ }, 
+      { "69477006", OphthalmicEchographyContactBScan_ }, 
+      { "http://snomed.info/sct#69477006", OphthalmicEchographyContactBScan_ }, 
+      { "69610007", UltrasoundForForeignBodyLocalization_ }, 
+      { "http://snomed.info/sct#69610007", UltrasoundForForeignBodyLocalization_ }, 
+      { "69657008", ComputerizedTomographyAdditionalViews_ }, 
+      { "http://snomed.info/sct#69657008", ComputerizedTomographyAdditionalViews_ }, 
+      { "69720006", RadionuclideSpecialDynamicFunctionStudy_ }, 
+      { "http://snomed.info/sct#69720006", RadionuclideSpecialDynamicFunctionStudy_ }, 
+      { "69772001", EchographyBScanLimited_ }, 
+      { "http://snomed.info/sct#69772001", EchographyBScanLimited_ }, 
+      { "70157001", RadiologicGuidanceForPercutaneousDrainageOfAbscess_ }, 
+      { "http://snomed.info/sct#70157001", RadiologicGuidanceForPercutaneousDrainageOfAbscess_ }, 
+      { "70268007", PlateletSurvivalStudy_ }, 
+      { "http://snomed.info/sct#70268007", PlateletSurvivalStudy_ }, 
+      { "70435002", UltrasoundPeripheralImaging_ }, 
+      { "http://snomed.info/sct#70435002", UltrasoundPeripheralImaging_ }, 
+      { "70780000", SkeletalXRayOfElbowAndForearm_ }, 
+      { "http://snomed.info/sct#70780000", SkeletalXRayOfElbowAndForearm_ }, 
+      { "71040008", ComputerizedTomographyFollowUp_ }, 
+      { "http://snomed.info/sct#71040008", ComputerizedTomographyFollowUp_ }, 
+      { "71093009", PancreatographyDuringSurgery_ }, 
+      { "http://snomed.info/sct#71093009", PancreatographyDuringSurgery_ }, 
+      { "71163001", EchographyOfAbdomenBScanComplete_ }, 
+      { "http://snomed.info/sct#71163001", EchographyOfAbdomenBScanComplete_ }, 
+      { "71233004", RadioiodinePlasmaClearanceStudy_ }, 
+      { "http://snomed.info/sct#71233004", RadioiodinePlasmaClearanceStudy_ }, 
+      { "71254006", VenographyOfAdrenal_ }, 
+      { "http://snomed.info/sct#71254006", VenographyOfAdrenal_ }, 
+      { "71503007", MagneticResonanceImagingOfJointOfUpperExtremity_ }, 
+      { "http://snomed.info/sct#71503007", MagneticResonanceImagingOfJointOfUpperExtremity_ }, 
+      { "71599004", GasContrastRadiographyOfPelvis_ }, 
+      { "http://snomed.info/sct#71599004", GasContrastRadiographyOfPelvis_ }, 
+      { "71651007", Mammography_ }, 
+      { "http://snomed.info/sct#71651007", Mammography_ }, 
+      { "7174001", UltrasoundPeripheralImagingBScan_ }, 
+      { "http://snomed.info/sct#7174001", UltrasoundPeripheralImagingBScan_ }, 
+      { "71867003", EchographyOfBreastBScanAndRealTimeWithImageDocumentation_ }, 
+      { "http://snomed.info/sct#71867003", EchographyOfBreastBScanAndRealTimeWithImageDocumentation_ }, 
+      { "71894004", RadiologicGuidanceForPercutaneousSpecimenCollection_ }, 
+      { "http://snomed.info/sct#71894004", RadiologicGuidanceForPercutaneousSpecimenCollection_ }, 
+      { "71954002", GastricMucosaImaging_ }, 
+      { "http://snomed.info/sct#71954002", GastricMucosaImaging_ }, 
+      { "71977002", RadionuclideUptakeStudy_ }, 
+      { "http://snomed.info/sct#71977002", RadionuclideUptakeStudy_ }, 
+      { "72221006", MagneticResonanceImagingOfNeck_ }, 
+      { "http://snomed.info/sct#72221006", MagneticResonanceImagingOfNeck_ }, 
+      { "72383008", AngiographyOfCoronaryArteriesBilateral_ }, 
+      { "http://snomed.info/sct#72383008", AngiographyOfCoronaryArteriesBilateral_ }, 
+      { "72508000", RadiologicExaminationOfThoracicSpineAnteroposteriorAndLateral_ }, 
+      { "http://snomed.info/sct#72508000", RadiologicExaminationOfThoracicSpineAnteroposteriorAndLateral_ }, 
+      { "72716007", ComputerizedTomographyForGuidanceLocalization_ }, 
+      { "http://snomed.info/sct#72716007", ComputerizedTomographyForGuidanceLocalization_ }, 
+      { "72872009", SkeletalXRayOfUpperLimb_ }, 
+      { "http://snomed.info/sct#72872009", SkeletalXRayOfUpperLimb_ }, 
+      { "72911009", RadiographyOfSoftTissueOfHand_ }, 
+      { "http://snomed.info/sct#72911009", RadiographyOfSoftTissueOfHand_ }, 
+      { "73523002", DiagnosticRadiographyRight_ }, 
+      { "http://snomed.info/sct#73523002", DiagnosticRadiographyRight_ }, 
+      { "7370001", DiagnosticRadiographySerialFilms_ }, 
+      { "http://snomed.info/sct#7370001", DiagnosticRadiographySerialFilms_ }, 
+      { "73771004", RadiographyOfSoftTissueOfAnkle_ }, 
+      { "http://snomed.info/sct#73771004", RadiographyOfSoftTissueOfAnkle_ }, 
+      { "74016001", RadiologicExaminationOfKnee_ }, 
+      { "http://snomed.info/sct#74016001", RadiologicExaminationOfKnee_ }, 
+      { "74017005", IntraoperativeTranshepaticCholangiogram_ }, 
+      { "http://snomed.info/sct#74017005", IntraoperativeTranshepaticCholangiogram_ }, 
+      { "74170002", RadiographyOfUpperLimb_ }, 
+      { "http://snomed.info/sct#74170002", RadiographyOfUpperLimb_ }, 
+      { "74193008", EchocardiographyForDeterminingSizeOfVentricularChambers_ }, 
+      { "http://snomed.info/sct#74193008", EchocardiographyForDeterminingSizeOfVentricularChambers_ }, 
+      { "7421004", BoneMarrowImagingLimitedArea_ }, 
+      { "http://snomed.info/sct#7421004", BoneMarrowImagingLimitedArea_ }, 
+      { "74219000", PulmonaryPerfusionImagingGaseousWithVentilationRebreathingAndWashout_ }, 
+      { "http://snomed.info/sct#74219000", PulmonaryPerfusionImagingGaseousWithVentilationRebreathingAndWashout_ }, 
+      { "74546006", FluoroscopyForForeignBodyLocalization_ }, 
+      { "http://snomed.info/sct#74546006", FluoroscopyForForeignBodyLocalization_ }, 
+      { "74590001", KidneyImagingWithDynamicFunctionStudy_ }, 
+      { "http://snomed.info/sct#74590001", KidneyImagingWithDynamicFunctionStudy_ }, 
+      { "74710000", ComputerizedAxialTomographyOfPelvisWithContrast_ }, 
+      { "http://snomed.info/sct#74710000", ComputerizedAxialTomographyOfPelvisWithContrast_ }, 
+      { "74809003", RadiographyOfForearm_ }, 
+      { "http://snomed.info/sct#74809003", RadiographyOfForearm_ }, 
+      { "74834003", AngiocardiographyBySerialographySinglePlane_ }, 
+      { "http://snomed.info/sct#74834003", AngiocardiographyBySerialographySinglePlane_ }, 
+      { "74874009", EchographyOfChestRealTimeWithImageDocumentation_ }, 
+      { "http://snomed.info/sct#74874009", EchographyOfChestRealTimeWithImageDocumentation_ }, 
+      { "75014006", Pelvimetry_ }, 
+      { "http://snomed.info/sct#75014006", Pelvimetry_ }, 
+      { "75233009", IntraosseousVenography_ }, 
+      { "http://snomed.info/sct#75233009", IntraosseousVenography_ }, 
+      { "75385009", ComputerizedAxialTomographyOfThoraxWithContrast_ }, 
+      { "http://snomed.info/sct#75385009", ComputerizedAxialTomographyOfThoraxWithContrast_ }, 
+      { "75593005", LaparoscopyWithGuidedTranshepaticCholangiographyAndBiopsy_ }, 
+      { "http://snomed.info/sct#75593005", LaparoscopyWithGuidedTranshepaticCholangiographyAndBiopsy_ }, 
+      { "75675001", DiagnosticRadiographyOfOrbits_ }, 
+      { "http://snomed.info/sct#75675001", DiagnosticRadiographyOfOrbits_ }, 
+      { "75679007", GastrointestinalTractXRay_ }, 
+      { "http://snomed.info/sct#75679007", GastrointestinalTractXRay_ }, 
+      { "75691003", MagneticResonanceImagingOfProstate_ }, 
+      { "http://snomed.info/sct#75691003", MagneticResonanceImagingOfProstate_ }, 
+      { "7576008", SpinalAngiographySelective_ }, 
+      { "http://snomed.info/sct#7576008", SpinalAngiographySelective_ }, 
+      { "75766009", PulmonaryVentilationStudyGaseous_ }, 
+      { "http://snomed.info/sct#75766009", PulmonaryVentilationStudyGaseous_ }, 
+      { "762008", ComputerizedAxialTomographyOfCervicalSpineWithContrast_ }, 
+      { "http://snomed.info/sct#762008", ComputerizedAxialTomographyOfCervicalSpineWithContrast_ }, 
+      { "76285001", UpperGastrointestinalTractExaminationWithAirContrastWithKUB_ }, 
+      { "http://snomed.info/sct#76285001", UpperGastrointestinalTractExaminationWithAirContrastWithKUB_ }, 
+      { "7656009", IsotopeStudyForRenalPlasmaFlow_ }, 
+      { "http://snomed.info/sct#7656009", IsotopeStudyForRenalPlasmaFlow_ }, 
+      { "76565001", MuscleThermography_ }, 
+      { "http://snomed.info/sct#76565001", MuscleThermography_ }, 
+      { "76573005", RadiographyOfSoftTissueOfUpperArm_ }, 
+      { "http://snomed.info/sct#76573005", RadiographyOfSoftTissueOfUpperArm_ }, 
+      { "76718005", CTGuidanceForCystAspiration_ }, 
+      { "http://snomed.info/sct#76718005", CTGuidanceForCystAspiration_ }, 
+      { "76913009", RadiographyOfElbow_ }, 
+      { "http://snomed.info/sct#76913009", RadiographyOfElbow_ }, 
+      { "76927004", RadioisotopeStudyOfGenitourinarySystem_ }, 
+      { "http://snomed.info/sct#76927004", RadioisotopeStudyOfGenitourinarySystem_ }, 
+      { "76930006", OphthalmicEchographyImmersionBScan_ }, 
+      { "http://snomed.info/sct#76930006", OphthalmicEchographyImmersionBScan_ }, 
+      { "76981001", Discogram_ }, 
+      { "http://snomed.info/sct#76981001", Discogram_ }, 
+      { "77343006", Angiography_ }, 
+      { "http://snomed.info/sct#77343006", Angiography_ }, 
+      { "77477000", ComputerizedAxialTomography_ }, 
+      { "http://snomed.info/sct#77477000", ComputerizedAxialTomography_ }, 
+      { "77532004", DiagnosticRadiographyOfRibsBilateral_ }, 
+      { "http://snomed.info/sct#77532004", DiagnosticRadiographyOfRibsBilateral_ }, 
+      { "77658008", UltrasonographyOfUrinarySystem_ }, 
+      { "http://snomed.info/sct#77658008", UltrasonographyOfUrinarySystem_ }, 
+      { "77660005", AngiographyOfAdrenalArteriesBilateral_ }, 
+      { "http://snomed.info/sct#77660005", AngiographyOfAdrenalArteriesBilateral_ }, 
+      { "77717008", AngiographyOfCervicalVertebralAndIntracranialArteries_ }, 
+      { "http://snomed.info/sct#77717008", AngiographyOfCervicalVertebralAndIntracranialArteries_ }, 
+      { "77973006", DopplerFlowMappingOfHeadAndNeck_ }, 
+      { "http://snomed.info/sct#77973006", DopplerFlowMappingOfHeadAndNeck_ }, 
+      { "78002002", ContrastDacryocystogram_ }, 
+      { "http://snomed.info/sct#78002002", ContrastDacryocystogram_ }, 
+      { "78013004", EchographyBScan_ }, 
+      { "http://snomed.info/sct#78013004", EchographyBScan_ }, 
+      { "7812007", RadiologicExaminationOfThoracolumbarSpineAnteroposteriorAndLateral_ }, 
+      { "http://snomed.info/sct#7812007", RadiologicExaminationOfThoracolumbarSpineAnteroposteriorAndLateral_ }, 
+      { "78138006", EchographyOfSpinalCanalAndContents_ }, 
+      { "http://snomed.info/sct#78138006", EchographyOfSpinalCanalAndContents_ }, 
+      { "78176000", EchographyBScanComplete_ }, 
+      { "http://snomed.info/sct#78176000", EchographyBScanComplete_ }, 
+      { "78579002", UltrasonographyOfRetroperitoneum_ }, 
+      { "http://snomed.info/sct#78579002", UltrasonographyOfRetroperitoneum_ }, 
+      { "78669009", FluoroscopySerialFilms_ }, 
+      { "http://snomed.info/sct#78669009", FluoroscopySerialFilms_ }, 
+      { "78670005", DiagnosticRadiographyOfAllFingers_ }, 
+      { "http://snomed.info/sct#78670005", DiagnosticRadiographyOfAllFingers_ }, 
+      { "78711007", DopplerFlowMappingOfHeart_ }, 
+      { "http://snomed.info/sct#78711007", DopplerFlowMappingOfHeart_ }, 
+      { "78938007", UltrasonographyOfMultipleSites_ }, 
+      { "http://snomed.info/sct#78938007", UltrasonographyOfMultipleSites_ }, 
+      { "79073004", VenographyOfLowerExtremity_ }, 
+      { "http://snomed.info/sct#79073004", VenographyOfLowerExtremity_ }, 
+      { "79082005", DiagnosticRadiographyOfFibulaCombinedAPAndLateral_ }, 
+      { "http://snomed.info/sct#79082005", DiagnosticRadiographyOfFibulaCombinedAPAndLateral_ }, 
+      { "79092002", ArthrographyOfShoulder_ }, 
+      { "http://snomed.info/sct#79092002", ArthrographyOfShoulder_ }, 
+      { "79190008", RadiographyOfThyroidRegion_ }, 
+      { "http://snomed.info/sct#79190008", RadiographyOfThyroidRegion_ }, 
+      { "79237001", CerebralVentriculography_ }, 
+      { "http://snomed.info/sct#79237001", CerebralVentriculography_ }, 
+      { "79516005", RenalArteriography_ }, 
+      { "http://snomed.info/sct#79516005", RenalArteriography_ }, 
+      { "79563007", MagneticResonanceImagingOfJointOfLowerExtremity_ }, 
+      { "http://snomed.info/sct#79563007", MagneticResonanceImagingOfJointOfLowerExtremity_ }, 
+      { "79760008", RadiographyOfSpine_ }, 
+      { "http://snomed.info/sct#79760008", RadiographyOfSpine_ }, 
+      { "79777008", RadiographyOfTonsilsAndAdenoids_ }, 
+      { "http://snomed.info/sct#79777008", RadiographyOfTonsilsAndAdenoids_ }, 
+      { "7993000", BoneMarrowImagingWholeBody_ }, 
+      { "http://snomed.info/sct#7993000", BoneMarrowImagingWholeBody_ }, 
+      { "7995007", AngiographyOfLowerExtremityArteriesWithSerialography_ }, 
+      { "http://snomed.info/sct#7995007", AngiographyOfLowerExtremityArteriesWithSerialography_ }, 
+      { "79966006", UltrasonographyOfUterus_ }, 
+      { "http://snomed.info/sct#79966006", UltrasonographyOfUterus_ }, 
+      { "80218009", LymphangiographyOfUpperExtremitiesBilateral_ }, 
+      { "http://snomed.info/sct#80218009", LymphangiographyOfUpperExtremitiesBilateral_ }, 
+      { "80254008", AngiocardiographyOfRightHeart_ }, 
+      { "http://snomed.info/sct#80254008", AngiocardiographyOfRightHeart_ }, 
+      { "80302000", ThyroidImagingForMetastaticCarcinomaWholeBody_ }, 
+      { "http://snomed.info/sct#80302000", ThyroidImagingForMetastaticCarcinomaWholeBody_ }, 
+      { "80308001", PulmonaryVentilationPerfusionStudyByRadioactiveCarbon_ }, 
+      { "http://snomed.info/sct#80308001", PulmonaryVentilationPerfusionStudyByRadioactiveCarbon_ }, 
+      { "8031000", Vaginogram_ }, 
+      { "http://snomed.info/sct#8031000", Vaginogram_ }, 
+      { "80372004", DiagnosticRadiographyLateralDecubitusStudies_ }, 
+      { "http://snomed.info/sct#80372004", DiagnosticRadiographyLateralDecubitusStudies_ }, 
+      { "80501006", RadiographyOfZygomaticomaxillaryComplex_ }, 
+      { "http://snomed.info/sct#80501006", RadiographyOfZygomaticomaxillaryComplex_ }, 
+      { "80648002", RetrogradeAngiographyOfBrachialArtery_ }, 
+      { "http://snomed.info/sct#80648002", RetrogradeAngiographyOfBrachialArtery_ }, 
+      { "8073008", UltrasonicGuidanceForAspirationOfOva_ }, 
+      { "http://snomed.info/sct#8073008", UltrasonicGuidanceForAspirationOfOva_ }, 
+      { "80823002", OphthalmicEchographyBScanLimited_ }, 
+      { "http://snomed.info/sct#80823002", OphthalmicEchographyBScanLimited_ }, 
+      { "80865008", SpecimenMammography_ }, 
+      { "http://snomed.info/sct#80865008", SpecimenMammography_ }, 
+      { "81391006", LiverAndSpleenImagingWithVascularFlow_ }, 
+      { "http://snomed.info/sct#81391006", LiverAndSpleenImagingWithVascularFlow_ }, 
+      { "81451007", DonaldsonStereophotography_ }, 
+      { "http://snomed.info/sct#81451007", DonaldsonStereophotography_ }, 
+      { "8151003", EchocardiographyForDetectingCardiacOutput_ }, 
+      { "http://snomed.info/sct#8151003", EchocardiographyForDetectingCardiacOutput_ }, 
+      { "81523000", EchographyScanCMode_ }, 
+      { "http://snomed.info/sct#81523000", EchographyScanCMode_ }, 
+      { "81618005", IntravenousCholangiogram_ }, 
+      { "http://snomed.info/sct#81618005", IntravenousCholangiogram_ }, 
+      { "81937003", RedCellSurvivalStudy_ }, 
+      { "http://snomed.info/sct#81937003", RedCellSurvivalStudy_ }, 
+      { "81941004", ArthrogramOfTarsalJoint_ }, 
+      { "http://snomed.info/sct#81941004", ArthrogramOfTarsalJoint_ }, 
+      { "82006003", DiagnosticRadiographyWithContrastMediaByInjectionPositiveAndNegativeContrastBilateral_ }, 
+      { "http://snomed.info/sct#82006003", DiagnosticRadiographyWithContrastMediaByInjectionPositiveAndNegativeContrastBilateral_ }, 
+      { "82066000", BoneDensityStudyDualPhotonAbsorptiometry_ }, 
+      { "http://snomed.info/sct#82066000", BoneDensityStudyDualPhotonAbsorptiometry_ }, 
+      { "82327001", CardiacFluoroscopy_ }, 
+      { "http://snomed.info/sct#82327001", CardiacFluoroscopy_ }, 
+      { "82420003", RadiologicExaminationOfForearmAnteroposteriorAndLateralViews_ }, 
+      { "http://snomed.info/sct#82420003", RadiologicExaminationOfForearmAnteroposteriorAndLateralViews_ }, 
+      { "82499005", RadiographyOfNasolacrimalDuct_ }, 
+      { "http://snomed.info/sct#82499005", RadiographyOfNasolacrimalDuct_ }, 
+      { "82588005", UreteralRefluxStudy_ }, 
+      { "http://snomed.info/sct#82588005", UreteralRefluxStudy_ }, 
+      { "82641000", ComputerizedTomographyCoronal_ }, 
+      { "http://snomed.info/sct#82641000", ComputerizedTomographyCoronal_ }, 
+      { "82831001", CerebrospinalFluidFlowImagingVentriculography_ }, 
+      { "http://snomed.info/sct#82831001", CerebrospinalFluidFlowImagingVentriculography_ }, 
+      { "82891004", NeckImagingForMetastaticCarcinomaOfThyroid_ }, 
+      { "http://snomed.info/sct#82891004", NeckImagingForMetastaticCarcinomaOfThyroid_ }, 
+      { "82899002", DiagnosticRadiographyWithContrastMediaByInjectionNegativeContrast_ }, 
+      { "http://snomed.info/sct#82899002", DiagnosticRadiographyWithContrastMediaByInjectionNegativeContrast_ }, 
+      { "82918005", PositronEmissionTomography_ }, 
+      { "http://snomed.info/sct#82918005", PositronEmissionTomography_ }, 
+      { "82921007", RadionuclideLocalizationOfAbscessOfLimitedArea_ }, 
+      { "http://snomed.info/sct#82921007", RadionuclideLocalizationOfAbscessOfLimitedArea_ }, 
+      { "8306009", DiagnosticDopplerUltrasonography_ }, 
+      { "http://snomed.info/sct#8306009", DiagnosticDopplerUltrasonography_ }, 
+      { "83061004", EchocardiographyForDeterminingMitralValveMotion_ }, 
+      { "http://snomed.info/sct#83061004", EchocardiographyForDeterminingMitralValveMotion_ }, 
+      { "83093007", RadionuclideJointStudy_ }, 
+      { "http://snomed.info/sct#83093007", RadionuclideJointStudy_ }, 
+      { "83262001", CerebrospinalFluidFlowImaging_ }, 
+      { "http://snomed.info/sct#83262001", CerebrospinalFluidFlowImaging_ }, 
+      { "83429007", SerialographyMultiPlane_ }, 
+      { "http://snomed.info/sct#83429007", SerialographyMultiPlane_ }, 
+      { "8358003", DiagnosticRadiographyBilateral_ }, 
+      { "http://snomed.info/sct#8358003", DiagnosticRadiographyBilateral_ }, 
+      { "83611007", RadiologicGuidanceForDilationOfNephrostomy_ }, 
+      { "http://snomed.info/sct#83611007", RadiologicGuidanceForDilationOfNephrostomy_ }, 
+      { "83641009", XRayOfEpididymisAndVasDeferens_ }, 
+      { "http://snomed.info/sct#83641009", XRayOfEpididymisAndVasDeferens_ }, 
+      { "83735008", InsertionOfBiliaryStentByERCP_ }, 
+      { "http://snomed.info/sct#83735008", InsertionOfBiliaryStentByERCP_ }, 
+      { "83788002", ComputerizedAxialTomographyOfMaxillofacialAreaWithContrast_ }, 
+      { "http://snomed.info/sct#83788002", ComputerizedAxialTomographyOfMaxillofacialAreaWithContrast_ }, 
+      { "83932002", RadiographyOfProstate_ }, 
+      { "http://snomed.info/sct#83932002", RadiographyOfProstate_ }, 
+      { "83949009", ChiropracticUltrasound_ }, 
+      { "http://snomed.info/sct#83949009", ChiropracticUltrasound_ }, 
+      { "84200003", ArteriographyOfPulmonaryArteries_ }, 
+      { "http://snomed.info/sct#84200003", ArteriographyOfPulmonaryArteries_ }, 
+      { "84311009", AngiographyOfInternalMammaryArtery_ }, 
+      { "http://snomed.info/sct#84311009", AngiographyOfInternalMammaryArtery_ }, 
+      { "8449009", RadiographyOfSacrococcygealSpine_ }, 
+      { "http://snomed.info/sct#8449009", RadiographyOfSacrococcygealSpine_ }, 
+      { "84492002", RadiographyOfNasalSinuses_ }, 
+      { "http://snomed.info/sct#84492002", RadiographyOfNasalSinuses_ }, 
+      { "84881006", ChestImagingForMetastaticCarcinomaOfThyroid_ }, 
+      { "http://snomed.info/sct#84881006", ChestImagingForMetastaticCarcinomaOfThyroid_ }, 
+      { "8503002", DiagnosticRadiographyWithContrastMediaBilateral_ }, 
+      { "http://snomed.info/sct#8503002", DiagnosticRadiographyWithContrastMediaBilateral_ }, 
+      { "85199006", MediastinalPneumogram_ }, 
+      { "http://snomed.info/sct#85199006", MediastinalPneumogram_ }, 
+      { "85339002", HysterosalpingographyWithGasContrast_ }, 
+      { "http://snomed.info/sct#85339002", HysterosalpingographyWithGasContrast_ }, 
+      { "85606007", RadionuclideCardiacVentriculography_ }, 
+      { "http://snomed.info/sct#85606007", RadionuclideCardiacVentriculography_ }, 
+      { "85815002", HypotonicDuodenography_ }, 
+      { "http://snomed.info/sct#85815002", HypotonicDuodenography_ }, 
+      { "85895003", ContrastBronchogram_ }, 
+      { "http://snomed.info/sct#85895003", ContrastBronchogram_ }, 
+      { "86086004", CerebrospinalFluidFlowImagingTomographic_ }, 
+      { "http://snomed.info/sct#86086004", CerebrospinalFluidFlowImagingTomographic_ }, 
+      { "86307000", LymphangiogramOfUpperExtremity_ }, 
+      { "http://snomed.info/sct#86307000", LymphangiogramOfUpperExtremity_ }, 
+      { "86354001", ContrastRadiographyOfNasopharynx_ }, 
+      { "http://snomed.info/sct#86354001", ContrastRadiographyOfNasopharynx_ }, 
+      { "86392000", RadiologicExaminationOfLumbosacralSpineCompleteWithObliqueViews_ }, 
+      { "http://snomed.info/sct#86392000", RadiologicExaminationOfLumbosacralSpineCompleteWithObliqueViews_ }, 
+      { "86410006", ImagingOfCarotidArteriesByDuplexScanWithSpectrumAnalysis_ }, 
+      { "http://snomed.info/sct#86410006", ImagingOfCarotidArteriesByDuplexScanWithSpectrumAnalysis_ }, 
+      { "86434001", EchographyOfChestBScan_ }, 
+      { "http://snomed.info/sct#86434001", EchographyOfChestBScan_ }, 
+      { "86543007", EsophagealMotilityStudy_ }, 
+      { "http://snomed.info/sct#86543007", EsophagealMotilityStudy_ }, 
+      { "86599005", EchographyScanBModeForPlacentalLocalization_ }, 
+      { "http://snomed.info/sct#86599005", EchographyScanBModeForPlacentalLocalization_ }, 
+      { "86811003", PulmonaryVentilationStudyAerosol_ }, 
+      { "http://snomed.info/sct#86811003", PulmonaryVentilationStudyAerosol_ }, 
+      { "86924002", GalliumScan_ }, 
+      { "http://snomed.info/sct#86924002", GalliumScan_ }, 
+      { "8693001", RadionuclideIdentificationOfEyeTumor_ }, 
+      { "http://snomed.info/sct#8693001", RadionuclideIdentificationOfEyeTumor_ }, 
+      { "86950003", Fetography_ }, 
+      { "http://snomed.info/sct#86950003", Fetography_ }, 
+      { "87338009", Tracheography_ }, 
+      { "http://snomed.info/sct#87338009", Tracheography_ }, 
+      { "87411003", DiagnosticRadiographyOfNasalBones_ }, 
+      { "http://snomed.info/sct#87411003", DiagnosticRadiographyOfNasalBones_ }, 
+      { "87674005", PulmonaryVentilationStudyTotal_ }, 
+      { "http://snomed.info/sct#87674005", PulmonaryVentilationStudyTotal_ }, 
+      { "87751001", Cineradiography_ }, 
+      { "http://snomed.info/sct#87751001", Cineradiography_ }, 
+      { "87785000", BilateralRetrogradePyelography_ }, 
+      { "http://snomed.info/sct#87785000", BilateralRetrogradePyelography_ }, 
+      { "87932003", UltrasoundPeripheralVascularFlowStudyArterialAndVenous_ }, 
+      { "http://snomed.info/sct#87932003", UltrasoundPeripheralVascularFlowStudyArterialAndVenous_ }, 
+      { "88061002", Vesiculography_ }, 
+      { "http://snomed.info/sct#88061002", Vesiculography_ }, 
+      { "88365004", LumbosacralMyelography_ }, 
+      { "http://snomed.info/sct#88365004", LumbosacralMyelography_ }, 
+      { "88504002", RadiographyForBoneAgeStudies_ }, 
+      { "http://snomed.info/sct#88504002", RadiographyForBoneAgeStudies_ }, 
+      { "88628008", UltrasonographyOfLung_ }, 
+      { "http://snomed.info/sct#88628008", UltrasonographyOfLung_ }, 
+      { "88663003", ThoracicAortographyWithSerialography_ }, 
+      { "http://snomed.info/sct#88663003", ThoracicAortographyWithSerialography_ }, 
+      { "88745008", DiagnosticRadiographyOfUterusForFetalAgeFetalPositionAndOrPlacentalLocalization_ }, 
+      { "http://snomed.info/sct#88745008", DiagnosticRadiographyOfUterusForFetalAgeFetalPositionAndOrPlacentalLocalization_ }, 
+      { "88914000", RadiographyOfPelvicBones_ }, 
+      { "http://snomed.info/sct#88914000", RadiographyOfPelvicBones_ }, 
+      { "88935003", SpleenImagingWithVascularFlow_ }, 
+      { "http://snomed.info/sct#88935003", SpleenImagingWithVascularFlow_ }, 
+      { "89118008", FluoroscopicLocalizationForTransbronchialBiopsy_ }, 
+      { "http://snomed.info/sct#89118008", FluoroscopicLocalizationForTransbronchialBiopsy_ }, 
+      { "89240007", BloodVesselThermography_ }, 
+      { "http://snomed.info/sct#89240007", BloodVesselThermography_ }, 
+      { "89343007", UltrasoundStudyFollowUp_ }, 
+      { "http://snomed.info/sct#89343007", UltrasoundStudyFollowUp_ }, 
+      { "89846007", Orthopantogram_ }, 
+      { "http://snomed.info/sct#89846007", Orthopantogram_ }, 
+      { "8994009", RadioironOralAbsorptionStudy_ }, 
+      { "http://snomed.info/sct#8994009", RadioironOralAbsorptionStudy_ }, 
+      { "90084008", MagneticResonanceImagingWithoutContrast_ }, 
+      { "http://snomed.info/sct#90084008", MagneticResonanceImagingWithoutContrast_ }, 
+      { "90223007", DiagnosticRadiographyOfSoftTissues_ }, 
+      { "http://snomed.info/sct#90223007", DiagnosticRadiographyOfSoftTissues_ }, 
+      { "90523008", ComputerizedAxialTomographyOfLumbarSpineWithContrast_ }, 
+      { "http://snomed.info/sct#90523008", ComputerizedAxialTomographyOfLumbarSpineWithContrast_ }, 
+      { "90686009", AngiographyOfArteriesOfExtremitiesBilateral_ }, 
+      { "http://snomed.info/sct#90686009", AngiographyOfArteriesOfExtremitiesBilateral_ }, 
+      { "90697009", ImagingOfAdrenalCortex_ }, 
+      { "http://snomed.info/sct#90697009", ImagingOfAdrenalCortex_ }, 
+      { "90711000", RadiographyOfUterus_ }, 
+      { "http://snomed.info/sct#90711000", RadiographyOfUterus_ }, 
+      { "90805008", DiagnosticRadiographyOfLumbarSpine_ }, 
+      { "http://snomed.info/sct#90805008", DiagnosticRadiographyOfLumbarSpine_ }, 
+      { "90992001", VenousThrombosisStudyWithRadioactiveFibrinogen_ }, 
+      { "http://snomed.info/sct#90992001", VenousThrombosisStudyWithRadioactiveFibrinogen_ }, 
+      { "91008002", BoneImagingTomographic_ }, 
+      { "http://snomed.info/sct#91008002", BoneImagingTomographic_ }, 
+      { "91119001", AbdominalLymphangiogram_ }, 
+      { "http://snomed.info/sct#91119001", AbdominalLymphangiogram_ }, 
+      { "91160008", TranscricoidBronchography_ }, 
+      { "http://snomed.info/sct#91160008", TranscricoidBronchography_ }, 
+      { "91186003", RadiographyForBoneLengthStudies_ }, 
+      { "http://snomed.info/sct#91186003", RadiographyForBoneLengthStudies_ }, 
+      { "91333005", MagneticResonanceImagingOfThoracicSpineWithContrast_ }, 
+      { "http://snomed.info/sct#91333005", MagneticResonanceImagingOfThoracicSpineWithContrast_ }, 
+      { "91360003", ArthrographyOfKneeWithPositiveContrast_ }, 
+      { "http://snomed.info/sct#91360003", ArthrographyOfKneeWithPositiveContrast_ }, 
+      { "91453008", EchographyOfChestAMode_ }, 
+      { "http://snomed.info/sct#91453008", EchographyOfChestAMode_ }, 
+      { "91583001", DiagnosticRadiographyOfSpineSurveyStudy_ }, 
+      { "http://snomed.info/sct#91583001", DiagnosticRadiographyOfSpineSurveyStudy_ }, 
+      { "91649003", DiagnosticRadiographyWithGasAirNegativeContrast_ }, 
+      { "http://snomed.info/sct#91649003", DiagnosticRadiographyWithGasAirNegativeContrast_ }, 
+      { "91672001", UltrasoundExaminationOfJoint_ }, 
+      { "http://snomed.info/sct#91672001", UltrasoundExaminationOfJoint_ }, 
+      { "9403009", DiagnosticRadiographyMinifilm_ }, 
+      { "http://snomed.info/sct#9403009", DiagnosticRadiographyMinifilm_ }, 
+      { "951000", UltrasonicGuidanceForEndomyocardialBiopsy_ }, 
+      { "http://snomed.info/sct#951000", UltrasonicGuidanceForEndomyocardialBiopsy_ }, 
+      { "9518008", FistulogramOfAbdominalWall_ }, 
+      { "http://snomed.info/sct#9518008", FistulogramOfAbdominalWall_ }, 
+      { "9704004", ComputerizedTomographyLimitedStudies_ }, 
+      { "http://snomed.info/sct#9704004", ComputerizedTomographyLimitedStudies_ }, 
+      { "9988008", ComputerizedTomographyOblique_ }, 
+      { "http://snomed.info/sct#9988008", ComputerizedTomographyOblique_ }, 
+      { "AR", Autorefraction_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#AR", Autorefraction_dicom_dcim }, 
+      { "BDUS", UltrasoundBoneDensitometry_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#BDUS", UltrasoundBoneDensitometry_dicom_dcim }, 
+      { "BMD", BoneMineralDensitometry_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#BMD", BoneMineralDensitometry_dicom_dcim }, 
+      { "CR", ComputedRadiography_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#CR", ComputedRadiography_dicom_dcim }, 
+      { "CT", ComputedTomography_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#CT", ComputedTomography_dicom_dcim }, 
+      { "diagram", Diagram_digital_media_subtype }, 
+      { "http://hl7.org/fhir/media-subtype#diagram", Diagram_digital_media_subtype }, 
+      { "DX", DigitalRadiography_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#DX", DigitalRadiography_dicom_dcim }, 
+      { "ECG", Electrocardiography_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#ECG", Electrocardiography_dicom_dcim }, 
+      { "EPS", CardiacElectrophysiology_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#EPS", CardiacElectrophysiology_dicom_dcim }, 
+      { "ES", Endoscopy_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#ES", Endoscopy_dicom_dcim }, 
+      { "face", Face_digital_media_subtype }, 
+      { "http://hl7.org/fhir/media-subtype#face", Face_digital_media_subtype }, 
+      { "fax", Fax_digital_media_subtype }, 
+      { "http://hl7.org/fhir/media-subtype#fax", Fax_digital_media_subtype }, 
+      { "fingerprint", Fingerprint_digital_media_subtype }, 
+      { "http://hl7.org/fhir/media-subtype#fingerprint", Fingerprint_digital_media_subtype }, 
+      { "GM", GeneralMicroscopy_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#GM", GeneralMicroscopy_dicom_dcim }, 
+      { "HD", HemodynamicWaveform_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#HD", HemodynamicWaveform_dicom_dcim }, 
+      { "IO", IntraOralRadiography_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#IO", IntraOralRadiography_dicom_dcim }, 
+      { "iris", Iris_digital_media_subtype }, 
+      { "http://hl7.org/fhir/media-subtype#iris", Iris_digital_media_subtype }, 
+      { "IVOCT", IntravascularOpticalCoherenceTomography_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#IVOCT", IntravascularOpticalCoherenceTomography_dicom_dcim }, 
+      { "IVUS", IntravascularUltrasound_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#IVUS", IntravascularUltrasound_dicom_dcim }, 
+      { "KER", Keratometry_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#KER", Keratometry_dicom_dcim }, 
+      { "LEN", Lensometry_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#LEN", Lensometry_dicom_dcim }, 
+      { "MG", Mammography_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#MG", Mammography_dicom_dcim }, 
+      { "MR", MagneticResonance_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#MR", MagneticResonance_dicom_dcim }, 
+      { "NM", NuclearMedicine_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#NM", NuclearMedicine_dicom_dcim }, 
+      { "OAM", OphthalmicAxialMeasurements_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#OAM", OphthalmicAxialMeasurements_dicom_dcim }, 
+      { "OCT", OpticalCoherenceTomography_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#OCT", OpticalCoherenceTomography_dicom_dcim }, 
+      { "OP", OphthalmicPhotography_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#OP", OphthalmicPhotography_dicom_dcim }, 
+      { "OPM", OphthalmicMapping_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#OPM", OphthalmicMapping_dicom_dcim }, 
+      { "OPR", OphthalmicRefraction_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#OPR", OphthalmicRefraction_dicom_dcim }, 
+      { "OPT", OphthalmicTomography_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#OPT", OphthalmicTomography_dicom_dcim }, 
+      { "OPV", OphthalmicVisualField_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#OPV", OphthalmicVisualField_dicom_dcim }, 
+      { "OSS", OpticalSurvaceScanner_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#OSS", OpticalSurvaceScanner_dicom_dcim }, 
+      { "palm", Palm_digital_media_subtype }, 
+      { "http://hl7.org/fhir/media-subtype#palm", Palm_digital_media_subtype }, 
+      { "PT", PositronEmissionTomography_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#PT", PositronEmissionTomography_dicom_dcim }, 
+      { "PX", PanoramicXRay_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#PX", PanoramicXRay_dicom_dcim }, 
+      { "retina", RetinaScan_digital_media_subtype }, 
+      { "http://hl7.org/fhir/media-subtype#retina", RetinaScan_digital_media_subtype }, 
+      { "RF", Radiofluoroscopy_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#RF", Radiofluoroscopy_dicom_dcim }, 
+      { "RG", RadiographicImaging_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#RG", RadiographicImaging_dicom_dcim }, 
+      { "scan", ScannedDocument_digital_media_subtype }, 
+      { "http://hl7.org/fhir/media-subtype#scan", ScannedDocument_digital_media_subtype }, 
+      { "SM", SlideMicroscopy_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#SM", SlideMicroscopy_dicom_dcim }, 
+      { "SRF", SubjectiveRefraction_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#SRF", SubjectiveRefraction_dicom_dcim }, 
+      { "US", Ultrasound_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#US", Ultrasound_dicom_dcim }, 
+      { "VA", VisualAcuity_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#VA", VisualAcuity_dicom_dcim }, 
+      { "XA", XRayAngiography_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#XA", XRayAngiography_dicom_dcim }, 
+      { "XC", ExternalCameraPhotography_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#XC", ExternalCameraPhotography_dicom_dcim }, 
+    };
   };
 }

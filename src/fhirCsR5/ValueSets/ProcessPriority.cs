@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ProcessPriorityCodes
   {
     /// <summary>
-    /// 
+    /// Deferred
     /// </summary>
     public static readonly Coding Deferred = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/processpriority"
     };
     /// <summary>
-    /// 
+    /// Normal
     /// </summary>
     public static readonly Coding Normal = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/processpriority"
     };
     /// <summary>
-    /// 
+    /// Immediate
     /// </summary>
     public static readonly Coding Immediate = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDeferred = "deferred";
 
     /// <summary>
+    /// Literal for code: ProcesspriorityDeferred
+    /// </summary>
+    public const string LiteralProcesspriorityDeferred = "http://terminology.hl7.org/CodeSystem/processpriority#deferred";
+
+    /// <summary>
     /// Literal for code: Normal
     /// </summary>
     public const string LiteralNormal = "normal";
 
     /// <summary>
+    /// Literal for code: ProcesspriorityNormal
+    /// </summary>
+    public const string LiteralProcesspriorityNormal = "http://terminology.hl7.org/CodeSystem/processpriority#normal";
+
+    /// <summary>
     /// Literal for code: Immediate
     /// </summary>
     public const string LiteralImmediate = "stat";
+
+    /// <summary>
+    /// Literal for code: ProcesspriorityImmediate
+    /// </summary>
+    public const string LiteralProcesspriorityImmediate = "http://terminology.hl7.org/CodeSystem/processpriority#stat";
+
+    /// <summary>
+    /// Dictionary for looking up ProcessPriority Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "deferred", Deferred }, 
+      { "http://terminology.hl7.org/CodeSystem/processpriority#deferred", Deferred }, 
+      { "normal", Normal }, 
+      { "http://terminology.hl7.org/CodeSystem/processpriority#normal", Normal }, 
+      { "stat", Immediate }, 
+      { "http://terminology.hl7.org/CodeSystem/processpriority#stat", Immediate }, 
+    };
   };
 }

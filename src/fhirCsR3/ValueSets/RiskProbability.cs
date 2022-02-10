@@ -63,9 +63,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCertain = "certain";
 
     /// <summary>
+    /// Literal for code: RiskProbabilityCertain
+    /// </summary>
+    public const string LiteralRiskProbabilityCertain = "http://hl7.org/fhir/risk-probability#certain";
+
+    /// <summary>
     /// Literal for code: HighLikelihood
     /// </summary>
     public const string LiteralHighLikelihood = "high";
+
+    /// <summary>
+    /// Literal for code: RiskProbabilityHighLikelihood
+    /// </summary>
+    public const string LiteralRiskProbabilityHighLikelihood = "http://hl7.org/fhir/risk-probability#high";
 
     /// <summary>
     /// Literal for code: LowLikelihood
@@ -73,13 +83,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLowLikelihood = "low";
 
     /// <summary>
+    /// Literal for code: RiskProbabilityLowLikelihood
+    /// </summary>
+    public const string LiteralRiskProbabilityLowLikelihood = "http://hl7.org/fhir/risk-probability#low";
+
+    /// <summary>
     /// Literal for code: ModerateLikelihood
     /// </summary>
     public const string LiteralModerateLikelihood = "moderate";
 
     /// <summary>
+    /// Literal for code: RiskProbabilityModerateLikelihood
+    /// </summary>
+    public const string LiteralRiskProbabilityModerateLikelihood = "http://hl7.org/fhir/risk-probability#moderate";
+
+    /// <summary>
     /// Literal for code: NegligibleLikelihood
     /// </summary>
     public const string LiteralNegligibleLikelihood = "negligible";
+
+    /// <summary>
+    /// Literal for code: RiskProbabilityNegligibleLikelihood
+    /// </summary>
+    public const string LiteralRiskProbabilityNegligibleLikelihood = "http://hl7.org/fhir/risk-probability#negligible";
+
+    /// <summary>
+    /// Dictionary for looking up RiskProbability Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "certain", Certain }, 
+      { "http://hl7.org/fhir/risk-probability#certain", Certain }, 
+      { "high", HighLikelihood }, 
+      { "http://hl7.org/fhir/risk-probability#high", HighLikelihood }, 
+      { "low", LowLikelihood }, 
+      { "http://hl7.org/fhir/risk-probability#low", LowLikelihood }, 
+      { "moderate", ModerateLikelihood }, 
+      { "http://hl7.org/fhir/risk-probability#moderate", ModerateLikelihood }, 
+      { "negligible", NegligibleLikelihood }, 
+      { "http://hl7.org/fhir/risk-probability#negligible", NegligibleLikelihood }, 
+    };
   };
 }

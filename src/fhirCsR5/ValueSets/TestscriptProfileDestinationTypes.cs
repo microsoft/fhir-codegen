@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class TestscriptProfileDestinationTypesCodes
   {
     /// <summary>
-    /// 
+    /// FHIR SDC FormManager
     /// </summary>
     public static readonly Coding FHIRSDCFormManager = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types"
     };
     /// <summary>
-    /// 
+    /// FHIR SDC FormProcessor
     /// </summary>
     public static readonly Coding FHIRSDCFormProcessor = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types"
     };
     /// <summary>
-    /// 
+    /// FHIR SDC FormReceiver
     /// </summary>
     public static readonly Coding FHIRSDCFormReceiver = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types"
     };
     /// <summary>
-    /// 
+    /// FHIR Server
     /// </summary>
     public static readonly Coding FHIRServer = new Coding
     {
@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFHIRSDCFormManager = "FHIR-SDC-FormManager";
 
     /// <summary>
+    /// Literal for code: TestscriptProfileDestinationTypesFHIRSDCFormManager
+    /// </summary>
+    public const string LiteralTestscriptProfileDestinationTypesFHIRSDCFormManager = "http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types#FHIR-SDC-FormManager";
+
+    /// <summary>
     /// Literal for code: FHIRSDCFormProcessor
     /// </summary>
     public const string LiteralFHIRSDCFormProcessor = "FHIR-SDC-FormProcessor";
+
+    /// <summary>
+    /// Literal for code: TestscriptProfileDestinationTypesFHIRSDCFormProcessor
+    /// </summary>
+    public const string LiteralTestscriptProfileDestinationTypesFHIRSDCFormProcessor = "http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types#FHIR-SDC-FormProcessor";
 
     /// <summary>
     /// Literal for code: FHIRSDCFormReceiver
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFHIRSDCFormReceiver = "FHIR-SDC-FormReceiver";
 
     /// <summary>
+    /// Literal for code: TestscriptProfileDestinationTypesFHIRSDCFormReceiver
+    /// </summary>
+    public const string LiteralTestscriptProfileDestinationTypesFHIRSDCFormReceiver = "http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types#FHIR-SDC-FormReceiver";
+
+    /// <summary>
     /// Literal for code: FHIRServer
     /// </summary>
     public const string LiteralFHIRServer = "FHIR-Server";
+
+    /// <summary>
+    /// Literal for code: TestscriptProfileDestinationTypesFHIRServer
+    /// </summary>
+    public const string LiteralTestscriptProfileDestinationTypesFHIRServer = "http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types#FHIR-Server";
+
+    /// <summary>
+    /// Dictionary for looking up TestscriptProfileDestinationTypes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "FHIR-SDC-FormManager", FHIRSDCFormManager }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types#FHIR-SDC-FormManager", FHIRSDCFormManager }, 
+      { "FHIR-SDC-FormProcessor", FHIRSDCFormProcessor }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types#FHIR-SDC-FormProcessor", FHIRSDCFormProcessor }, 
+      { "FHIR-SDC-FormReceiver", FHIRSDCFormReceiver }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types#FHIR-SDC-FormReceiver", FHIRSDCFormReceiver }, 
+      { "FHIR-Server", FHIRServer }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types#FHIR-Server", FHIRServer }, 
+    };
   };
 }

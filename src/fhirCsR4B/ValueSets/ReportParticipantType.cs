@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralClient = "client";
 
     /// <summary>
+    /// Literal for code: ReportParticipantTypeClient
+    /// </summary>
+    public const string LiteralReportParticipantTypeClient = "http://hl7.org/fhir/report-participant-type#client";
+
+    /// <summary>
     /// Literal for code: Server
     /// </summary>
     public const string LiteralServer = "server";
 
     /// <summary>
+    /// Literal for code: ReportParticipantTypeServer
+    /// </summary>
+    public const string LiteralReportParticipantTypeServer = "http://hl7.org/fhir/report-participant-type#server";
+
+    /// <summary>
     /// Literal for code: TestEngine
     /// </summary>
     public const string LiteralTestEngine = "test-engine";
+
+    /// <summary>
+    /// Literal for code: ReportParticipantTypeTestEngine
+    /// </summary>
+    public const string LiteralReportParticipantTypeTestEngine = "http://hl7.org/fhir/report-participant-type#test-engine";
+
+    /// <summary>
+    /// Dictionary for looking up ReportParticipantType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "client", Client }, 
+      { "http://hl7.org/fhir/report-participant-type#client", Client }, 
+      { "server", Server }, 
+      { "http://hl7.org/fhir/report-participant-type#server", Server }, 
+      { "test-engine", TestEngine }, 
+      { "http://hl7.org/fhir/report-participant-type#test-engine", TestEngine }, 
+    };
   };
 }

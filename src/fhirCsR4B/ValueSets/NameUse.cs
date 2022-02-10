@@ -81,9 +81,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAnonymous = "anonymous";
 
     /// <summary>
+    /// Literal for code: NameUseAnonymous
+    /// </summary>
+    public const string LiteralNameUseAnonymous = "http://hl7.org/fhir/name-use#anonymous";
+
+    /// <summary>
     /// Literal for code: NameChangedForMarriage
     /// </summary>
     public const string LiteralNameChangedForMarriage = "maiden";
+
+    /// <summary>
+    /// Literal for code: NameUseNameChangedForMarriage
+    /// </summary>
+    public const string LiteralNameUseNameChangedForMarriage = "http://hl7.org/fhir/name-use#maiden";
 
     /// <summary>
     /// Literal for code: Nickname
@@ -91,9 +101,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNickname = "nickname";
 
     /// <summary>
+    /// Literal for code: NameUseNickname
+    /// </summary>
+    public const string LiteralNameUseNickname = "http://hl7.org/fhir/name-use#nickname";
+
+    /// <summary>
     /// Literal for code: Official
     /// </summary>
     public const string LiteralOfficial = "official";
+
+    /// <summary>
+    /// Literal for code: NameUseOfficial
+    /// </summary>
+    public const string LiteralNameUseOfficial = "http://hl7.org/fhir/name-use#official";
 
     /// <summary>
     /// Literal for code: Old
@@ -101,13 +121,48 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOld = "old";
 
     /// <summary>
+    /// Literal for code: NameUseOld
+    /// </summary>
+    public const string LiteralNameUseOld = "http://hl7.org/fhir/name-use#old";
+
+    /// <summary>
     /// Literal for code: Temp
     /// </summary>
     public const string LiteralTemp = "temp";
 
     /// <summary>
+    /// Literal for code: NameUseTemp
+    /// </summary>
+    public const string LiteralNameUseTemp = "http://hl7.org/fhir/name-use#temp";
+
+    /// <summary>
     /// Literal for code: Usual
     /// </summary>
     public const string LiteralUsual = "usual";
+
+    /// <summary>
+    /// Literal for code: NameUseUsual
+    /// </summary>
+    public const string LiteralNameUseUsual = "http://hl7.org/fhir/name-use#usual";
+
+    /// <summary>
+    /// Dictionary for looking up NameUse Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "anonymous", Anonymous }, 
+      { "http://hl7.org/fhir/name-use#anonymous", Anonymous }, 
+      { "maiden", NameChangedForMarriage }, 
+      { "http://hl7.org/fhir/name-use#maiden", NameChangedForMarriage }, 
+      { "nickname", Nickname }, 
+      { "http://hl7.org/fhir/name-use#nickname", Nickname }, 
+      { "official", Official }, 
+      { "http://hl7.org/fhir/name-use#official", Official }, 
+      { "old", Old }, 
+      { "http://hl7.org/fhir/name-use#old", Old }, 
+      { "temp", Temp }, 
+      { "http://hl7.org/fhir/name-use#temp", Temp }, 
+      { "usual", Usual }, 
+      { "http://hl7.org/fhir/name-use#usual", Usual }, 
+    };
   };
 }

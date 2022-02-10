@@ -99,9 +99,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActivityDefinition = "ActivityDefinition";
 
     /// <summary>
+    /// Literal for code: KnowledgeResourceTypesActivityDefinition
+    /// </summary>
+    public const string LiteralKnowledgeResourceTypesActivityDefinition = "http://hl7.org/fhir/knowledge-resource-types#ActivityDefinition";
+
+    /// <summary>
     /// Literal for code: CodeSystem
     /// </summary>
     public const string LiteralCodeSystem = "CodeSystem";
+
+    /// <summary>
+    /// Literal for code: KnowledgeResourceTypesCodeSystem
+    /// </summary>
+    public const string LiteralKnowledgeResourceTypesCodeSystem = "http://hl7.org/fhir/knowledge-resource-types#CodeSystem";
 
     /// <summary>
     /// Literal for code: ConceptMap
@@ -109,9 +119,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralConceptMap = "ConceptMap";
 
     /// <summary>
+    /// Literal for code: KnowledgeResourceTypesConceptMap
+    /// </summary>
+    public const string LiteralKnowledgeResourceTypesConceptMap = "http://hl7.org/fhir/knowledge-resource-types#ConceptMap";
+
+    /// <summary>
     /// Literal for code: Library
     /// </summary>
     public const string LiteralLibrary = "Library";
+
+    /// <summary>
+    /// Literal for code: KnowledgeResourceTypesLibrary
+    /// </summary>
+    public const string LiteralKnowledgeResourceTypesLibrary = "http://hl7.org/fhir/knowledge-resource-types#Library";
 
     /// <summary>
     /// Literal for code: Measure
@@ -119,9 +139,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMeasure = "Measure";
 
     /// <summary>
+    /// Literal for code: KnowledgeResourceTypesMeasure
+    /// </summary>
+    public const string LiteralKnowledgeResourceTypesMeasure = "http://hl7.org/fhir/knowledge-resource-types#Measure";
+
+    /// <summary>
     /// Literal for code: PlanDefinition
     /// </summary>
     public const string LiteralPlanDefinition = "PlanDefinition";
+
+    /// <summary>
+    /// Literal for code: KnowledgeResourceTypesPlanDefinition
+    /// </summary>
+    public const string LiteralKnowledgeResourceTypesPlanDefinition = "http://hl7.org/fhir/knowledge-resource-types#PlanDefinition";
 
     /// <summary>
     /// Literal for code: StructureDefinition
@@ -129,13 +159,52 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStructureDefinition = "StructureDefinition";
 
     /// <summary>
+    /// Literal for code: KnowledgeResourceTypesStructureDefinition
+    /// </summary>
+    public const string LiteralKnowledgeResourceTypesStructureDefinition = "http://hl7.org/fhir/knowledge-resource-types#StructureDefinition";
+
+    /// <summary>
     /// Literal for code: StructureMap
     /// </summary>
     public const string LiteralStructureMap = "StructureMap";
 
     /// <summary>
+    /// Literal for code: KnowledgeResourceTypesStructureMap
+    /// </summary>
+    public const string LiteralKnowledgeResourceTypesStructureMap = "http://hl7.org/fhir/knowledge-resource-types#StructureMap";
+
+    /// <summary>
     /// Literal for code: ValueSet
     /// </summary>
     public const string LiteralValueSet = "ValueSet";
+
+    /// <summary>
+    /// Literal for code: KnowledgeResourceTypesValueSet
+    /// </summary>
+    public const string LiteralKnowledgeResourceTypesValueSet = "http://hl7.org/fhir/knowledge-resource-types#ValueSet";
+
+    /// <summary>
+    /// Dictionary for looking up KnowledgeResourceTypes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ActivityDefinition", ActivityDefinition }, 
+      { "http://hl7.org/fhir/knowledge-resource-types#ActivityDefinition", ActivityDefinition }, 
+      { "CodeSystem", CodeSystem }, 
+      { "http://hl7.org/fhir/knowledge-resource-types#CodeSystem", CodeSystem }, 
+      { "ConceptMap", ConceptMap }, 
+      { "http://hl7.org/fhir/knowledge-resource-types#ConceptMap", ConceptMap }, 
+      { "Library", Library }, 
+      { "http://hl7.org/fhir/knowledge-resource-types#Library", Library }, 
+      { "Measure", Measure }, 
+      { "http://hl7.org/fhir/knowledge-resource-types#Measure", Measure }, 
+      { "PlanDefinition", PlanDefinition }, 
+      { "http://hl7.org/fhir/knowledge-resource-types#PlanDefinition", PlanDefinition }, 
+      { "StructureDefinition", StructureDefinition }, 
+      { "http://hl7.org/fhir/knowledge-resource-types#StructureDefinition", StructureDefinition }, 
+      { "StructureMap", StructureMap }, 
+      { "http://hl7.org/fhir/knowledge-resource-types#StructureMap", StructureMap }, 
+      { "ValueSet", ValueSet }, 
+      { "http://hl7.org/fhir/knowledge-resource-types#ValueSet", ValueSet }, 
+    };
   };
 }

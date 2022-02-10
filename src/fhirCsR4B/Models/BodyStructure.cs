@@ -24,6 +24,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? Active { get; set; }
     /// <summary>
+    /// Extension container element for Active
+    /// </summary>
+    public Element _Active { get; set; }
+    /// <summary>
     /// This description could include any visual markings used to orientate the viewer e.g. external reference points, special sutures, ink markings.
     /// </summary>
     public string Description { get; set; }
@@ -88,6 +92,12 @@ namespace fhirCsR4B.Models
       if (Active != null)
       {
         writer.WriteBoolean("active", (bool)Active!);
+      }
+
+      if (_Active != null)
+      {
+        writer.WritePropertyName("_active");
+        _Active.SerializeJson(writer, options);
       }
 
       if (Morphology != null)
@@ -159,6 +169,11 @@ namespace fhirCsR4B.Models
       {
         case "active":
           Active = reader.GetBoolean();
+          break;
+
+        case "_active":
+          _Active = new fhirCsR4B.Models.Element();
+          _Active.DeserializeJson(ref reader, options);
           break;
 
         case "description":

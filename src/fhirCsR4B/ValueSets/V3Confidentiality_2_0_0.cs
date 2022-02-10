@@ -66,9 +66,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralL = "L";
 
     /// <summary>
+    /// Literal for code: V3ConfidentialityL
+    /// </summary>
+    public const string LiteralV3ConfidentialityL = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#L";
+
+    /// <summary>
     /// Literal for code: M
     /// </summary>
     public const string LiteralM = "M";
+
+    /// <summary>
+    /// Literal for code: V3ConfidentialityM
+    /// </summary>
+    public const string LiteralV3ConfidentialityM = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#M";
 
     /// <summary>
     /// Literal for code: N
@@ -76,9 +86,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralN = "N";
 
     /// <summary>
+    /// Literal for code: V3ConfidentialityN
+    /// </summary>
+    public const string LiteralV3ConfidentialityN = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#N";
+
+    /// <summary>
     /// Literal for code: R
     /// </summary>
     public const string LiteralR = "R";
+
+    /// <summary>
+    /// Literal for code: V3ConfidentialityR
+    /// </summary>
+    public const string LiteralV3ConfidentialityR = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#R";
 
     /// <summary>
     /// Literal for code: U
@@ -86,8 +106,36 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralU = "U";
 
     /// <summary>
+    /// Literal for code: V3ConfidentialityU
+    /// </summary>
+    public const string LiteralV3ConfidentialityU = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#U";
+
+    /// <summary>
     /// Literal for code: V
     /// </summary>
     public const string LiteralV = "V";
+
+    /// <summary>
+    /// Literal for code: V3ConfidentialityV
+    /// </summary>
+    public const string LiteralV3ConfidentialityV = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#V";
+
+    /// <summary>
+    /// Dictionary for looking up V3Confidentiality Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "L", L }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#L", L }, 
+      { "M", M }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#M", M }, 
+      { "N", N }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#N", N }, 
+      { "R", R }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#R", R }, 
+      { "U", U }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#U", U }, 
+      { "V", V }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#V", V }, 
+    };
   };
 }

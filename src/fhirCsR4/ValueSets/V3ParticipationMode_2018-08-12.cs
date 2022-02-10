@@ -156,9 +156,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDictated = "DICTATE";
 
     /// <summary>
+    /// Literal for code: V3ParticipationModeDictated
+    /// </summary>
+    public const string LiteralV3ParticipationModeDictated = "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#DICTATE";
+
+    /// <summary>
     /// Literal for code: ElectronicData
     /// </summary>
     public const string LiteralElectronicData = "ELECTRONIC";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationModeElectronicData
+    /// </summary>
+    public const string LiteralV3ParticipationModeElectronicData = "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#ELECTRONIC";
 
     /// <summary>
     /// Literal for code: Email
@@ -166,9 +176,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmail = "EMAILWRIT";
 
     /// <summary>
+    /// Literal for code: V3ParticipationModeEmail
+    /// </summary>
+    public const string LiteralV3ParticipationModeEmail = "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#EMAILWRIT";
+
+    /// <summary>
     /// Literal for code: FaceToFace
     /// </summary>
     public const string LiteralFaceToFace = "FACE";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationModeFaceToFace
+    /// </summary>
+    public const string LiteralV3ParticipationModeFaceToFace = "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#FACE";
 
     /// <summary>
     /// Literal for code: Telefax
@@ -176,9 +196,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTelefax = "FAXWRIT";
 
     /// <summary>
+    /// Literal for code: V3ParticipationModeTelefax
+    /// </summary>
+    public const string LiteralV3ParticipationModeTelefax = "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#FAXWRIT";
+
+    /// <summary>
     /// Literal for code: Handwritten
     /// </summary>
     public const string LiteralHandwritten = "HANDWRIT";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationModeHandwritten
+    /// </summary>
+    public const string LiteralV3ParticipationModeHandwritten = "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#HANDWRIT";
 
     /// <summary>
     /// Literal for code: Mail
@@ -186,9 +216,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMail = "MAILWRIT";
 
     /// <summary>
+    /// Literal for code: V3ParticipationModeMail
+    /// </summary>
+    public const string LiteralV3ParticipationModeMail = "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#MAILWRIT";
+
+    /// <summary>
     /// Literal for code: OnlineWritten
     /// </summary>
     public const string LiteralOnlineWritten = "ONLINEWRIT";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationModeOnlineWritten
+    /// </summary>
+    public const string LiteralV3ParticipationModeOnlineWritten = "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#ONLINEWRIT";
 
     /// <summary>
     /// Literal for code: Telephone
@@ -196,9 +236,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTelephone = "PHONE";
 
     /// <summary>
+    /// Literal for code: V3ParticipationModeTelephone
+    /// </summary>
+    public const string LiteralV3ParticipationModeTelephone = "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#PHONE";
+
+    /// <summary>
     /// Literal for code: PhysicalPresence
     /// </summary>
     public const string LiteralPhysicalPresence = "PHYSICAL";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationModePhysicalPresence
+    /// </summary>
+    public const string LiteralV3ParticipationModePhysicalPresence = "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#PHYSICAL";
 
     /// <summary>
     /// Literal for code: RemotePresence
@@ -206,9 +256,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRemotePresence = "REMOTE";
 
     /// <summary>
+    /// Literal for code: V3ParticipationModeRemotePresence
+    /// </summary>
+    public const string LiteralV3ParticipationModeRemotePresence = "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#REMOTE";
+
+    /// <summary>
     /// Literal for code: Typewritten
     /// </summary>
     public const string LiteralTypewritten = "TYPEWRIT";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationModeTypewritten
+    /// </summary>
+    public const string LiteralV3ParticipationModeTypewritten = "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#TYPEWRIT";
 
     /// <summary>
     /// Literal for code: Verbal
@@ -216,13 +276,64 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVerbal = "VERBAL";
 
     /// <summary>
+    /// Literal for code: V3ParticipationModeVerbal
+    /// </summary>
+    public const string LiteralV3ParticipationModeVerbal = "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#VERBAL";
+
+    /// <summary>
     /// Literal for code: Videoconferencing
     /// </summary>
     public const string LiteralVideoconferencing = "VIDEOCONF";
 
     /// <summary>
+    /// Literal for code: V3ParticipationModeVideoconferencing
+    /// </summary>
+    public const string LiteralV3ParticipationModeVideoconferencing = "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#VIDEOCONF";
+
+    /// <summary>
     /// Literal for code: Written
     /// </summary>
     public const string LiteralWritten = "WRITTEN";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationModeWritten
+    /// </summary>
+    public const string LiteralV3ParticipationModeWritten = "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#WRITTEN";
+
+    /// <summary>
+    /// Dictionary for looking up V3ParticipationMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "DICTATE", Dictated }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#DICTATE", Dictated }, 
+      { "ELECTRONIC", ElectronicData }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#ELECTRONIC", ElectronicData }, 
+      { "EMAILWRIT", Email }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#EMAILWRIT", Email }, 
+      { "FACE", FaceToFace }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#FACE", FaceToFace }, 
+      { "FAXWRIT", Telefax }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#FAXWRIT", Telefax }, 
+      { "HANDWRIT", Handwritten }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#HANDWRIT", Handwritten }, 
+      { "MAILWRIT", Mail }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#MAILWRIT", Mail }, 
+      { "ONLINEWRIT", OnlineWritten }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#ONLINEWRIT", OnlineWritten }, 
+      { "PHONE", Telephone }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#PHONE", Telephone }, 
+      { "PHYSICAL", PhysicalPresence }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#PHYSICAL", PhysicalPresence }, 
+      { "REMOTE", RemotePresence }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#REMOTE", RemotePresence }, 
+      { "TYPEWRIT", Typewritten }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#TYPEWRIT", Typewritten }, 
+      { "VERBAL", Verbal }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#VERBAL", Verbal }, 
+      { "VIDEOCONF", Videoconferencing }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#VIDEOCONF", Videoconferencing }, 
+      { "WRITTEN", Written }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode#WRITTEN", Written }, 
+    };
   };
 }

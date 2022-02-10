@@ -122,7 +122,7 @@ public abstract class FhirSpecificationLoader
         }
 
         // load package info
-        FhirPackageInfo expansionPackageInfo = FhirPackageInfo.Load(expansionDir);
+        FhirPackage expansionPackageInfo = FhirPackage.Load(expansionDir);
 
         // tell the user what's going on
         Console.WriteLine($"LoadLocalBuild <<< Found: {expansionPackageInfo.Name} version: {expansionPackageInfo.Version}");
@@ -147,7 +147,7 @@ public abstract class FhirSpecificationLoader
         }
 
         // load package info
-        FhirPackageInfo packageInfo = FhirPackageInfo.Load(packageDir);
+        FhirPackage packageInfo = FhirPackage.Load(packageDir);
 
         // tell the user what's going on
         Console.WriteLine($"LoadLocalBuild <<< Found: {packageInfo.Name} version: {packageInfo.Version}");
@@ -299,7 +299,7 @@ public abstract class FhirSpecificationLoader
         }
 
         // load package info
-        FhirPackageInfo expansionPackageInfo = FhirPackageInfo.Load(expansionDir);
+        FhirPackage expansionPackageInfo = FhirPackage.Load(expansionDir);
 
         // tell the user what's going on
         Console.WriteLine($"LoadPackage <<< Found: {expansionPackageInfo.Name} version: {expansionPackageInfo.Version}");
@@ -317,7 +317,7 @@ public abstract class FhirSpecificationLoader
         }
 
         // load package info
-        FhirPackageInfo packageInfo = FhirPackageInfo.Load(packageDir);
+        FhirPackage packageInfo = FhirPackage.Load(packageDir);
 
         // tell the user what's going on
         Console.WriteLine($"LoadPackage <<< Found: {packageInfo.Name} version: {packageInfo.Version}");

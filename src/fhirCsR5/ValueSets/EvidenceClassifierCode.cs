@@ -237,7 +237,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code"
     };
     /// <summary>
-    /// 
+    /// Rated as yes, affirmative, positive, present, or include
     /// </summary>
     public static readonly Coding RatedAsYesAffirmativePositivePresentOrInclude = new Coding
     {
@@ -297,9 +297,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAllocationConcealmentNotStated = "AllocConcealNotStated";
 
     /// <summary>
+    /// Literal for code: EvidenceClassifierCodeAllocationConcealmentNotStated
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeAllocationConcealmentNotStated = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#AllocConcealNotStated";
+
+    /// <summary>
     /// Literal for code: BaselineImbalances
     /// </summary>
     public const string LiteralBaselineImbalances = "BaselineImbalance";
+
+    /// <summary>
+    /// Literal for code: EvidenceClassifierCodeBaselineImbalances
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeBaselineImbalances = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#BaselineImbalance";
 
     /// <summary>
     /// Literal for code: COVID19HumanDataInPopulationExposureOrOutcome
@@ -307,9 +317,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCOVID19HumanDataInPopulationExposureOrOutcome = "COVID19HumanResearch";
 
     /// <summary>
+    /// Literal for code: EvidenceClassifierCodeCOVID19HumanDataInPopulationExposureOrOutcome
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeCOVID19HumanDataInPopulationExposureOrOutcome = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#COVID19HumanResearch";
+
+    /// <summary>
     /// Literal for code: COVID19RelevantButNotSpecificArticle
     /// </summary>
     public const string LiteralCOVID19RelevantButNotSpecificArticle = "COVID19Relevant";
+
+    /// <summary>
+    /// Literal for code: EvidenceClassifierCodeCOVID19RelevantButNotSpecificArticle
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeCOVID19RelevantButNotSpecificArticle = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#COVID19Relevant";
 
     /// <summary>
     /// Literal for code: COVID19SpecificArticle
@@ -317,9 +337,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCOVID19SpecificArticle = "COVID19Specific";
 
     /// <summary>
+    /// Literal for code: EvidenceClassifierCodeCOVID19SpecificArticle
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeCOVID19SpecificArticle = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#COVID19Specific";
+
+    /// <summary>
     /// Literal for code: ArticleAboutDiagnosis
     /// </summary>
     public const string LiteralArticleAboutDiagnosis = "Diagnosis";
+
+    /// <summary>
+    /// Literal for code: EvidenceClassifierCodeArticleAboutDiagnosis
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeArticleAboutDiagnosis = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#Diagnosis";
 
     /// <summary>
     /// Literal for code: EarlyTrialTermination
@@ -327,9 +357,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEarlyTrialTermination = "EarlyTrialTermination";
 
     /// <summary>
+    /// Literal for code: EvidenceClassifierCodeEarlyTrialTermination
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeEarlyTrialTermination = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#EarlyTrialTermination";
+
+    /// <summary>
     /// Literal for code: ArticleIncludesGuideline
     /// </summary>
     public const string LiteralArticleIncludesGuideline = "Guideline";
+
+    /// <summary>
+    /// Literal for code: EvidenceClassifierCodeArticleIncludesGuideline
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeArticleIncludesGuideline = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#Guideline";
 
     /// <summary>
     /// Literal for code: NoBlinding
@@ -337,9 +377,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoBlinding = "NoBlinding";
 
     /// <summary>
+    /// Literal for code: EvidenceClassifierCodeNoBlinding
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeNoBlinding = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#NoBlinding";
+
+    /// <summary>
     /// Literal for code: NoIntentionToTreatAnalysis
     /// </summary>
     public const string LiteralNoIntentionToTreatAnalysis = "NoITT";
+
+    /// <summary>
+    /// Literal for code: EvidenceClassifierCodeNoIntentionToTreatAnalysis
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeNoIntentionToTreatAnalysis = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#NoITT";
 
     /// <summary>
     /// Literal for code: NotRatedNotAssessed
@@ -347,9 +397,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotRatedNotAssessed = "NotAssessed";
 
     /// <summary>
+    /// Literal for code: EvidenceClassifierCodeNotRatedNotAssessed
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeNotRatedNotAssessed = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#NotAssessed";
+
+    /// <summary>
     /// Literal for code: ArticleIsNeitherResearchNorGuideline
     /// </summary>
     public const string LiteralArticleIsNeitherResearchNorGuideline = "NotResearchNotGuideline";
+
+    /// <summary>
+    /// Literal for code: EvidenceClassifierCodeArticleIsNeitherResearchNorGuideline
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeArticleIsNeitherResearchNorGuideline = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#NotResearchNotGuideline";
 
     /// <summary>
     /// Literal for code: ArticleIncludesOriginalResearch
@@ -357,9 +417,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralArticleIncludesOriginalResearch = "OriginalResearch";
 
     /// <summary>
+    /// Literal for code: EvidenceClassifierCodeArticleIncludesOriginalResearch
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeArticleIncludesOriginalResearch = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#OriginalResearch";
+
+    /// <summary>
     /// Literal for code: PreliminaryAnalysis
     /// </summary>
     public const string LiteralPreliminaryAnalysis = "PreliminaryAnalysis";
+
+    /// <summary>
+    /// Literal for code: EvidenceClassifierCodePreliminaryAnalysis
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodePreliminaryAnalysis = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#PreliminaryAnalysis";
 
     /// <summary>
     /// Literal for code: PreprintNotFinalPublication
@@ -367,9 +437,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPreprintNotFinalPublication = "Preprint";
 
     /// <summary>
+    /// Literal for code: EvidenceClassifierCodePreprintNotFinalPublication
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodePreprintNotFinalPublication = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#Preprint";
+
+    /// <summary>
     /// Literal for code: ArticleAboutPreventionAndControl
     /// </summary>
     public const string LiteralArticleAboutPreventionAndControl = "PreventionAndControl";
+
+    /// <summary>
+    /// Literal for code: EvidenceClassifierCodeArticleAboutPreventionAndControl
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeArticleAboutPreventionAndControl = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#PreventionAndControl";
 
     /// <summary>
     /// Literal for code: ArticleAboutPrognosisOrPrediction
@@ -377,9 +457,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralArticleAboutPrognosisOrPrediction = "PrognosisPrediction";
 
     /// <summary>
+    /// Literal for code: EvidenceClassifierCodeArticleAboutPrognosisOrPrediction
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeArticleAboutPrognosisOrPrediction = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#PrognosisPrediction";
+
+    /// <summary>
     /// Literal for code: ClassifiedAsCaseControlStudy
     /// </summary>
     public const string LiteralClassifiedAsCaseControlStudy = "RatedAsCaseControl";
+
+    /// <summary>
+    /// Literal for code: EvidenceClassifierCodeClassifiedAsCaseControlStudy
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeClassifiedAsCaseControlStudy = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsCaseControl";
 
     /// <summary>
     /// Literal for code: ClassifiedAsComparativeCohortStudyObservational
@@ -387,9 +477,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClassifiedAsComparativeCohortStudyObservational = "RatedAsComparativeCohort";
 
     /// <summary>
+    /// Literal for code: EvidenceClassifierCodeClassifiedAsComparativeCohortStudyObservational
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeClassifiedAsComparativeCohortStudyObservational = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsComparativeCohort";
+
+    /// <summary>
     /// Literal for code: ClassifiedAsNonrandomizedControlledTrialExperimental
     /// </summary>
     public const string LiteralClassifiedAsNonrandomizedControlledTrialExperimental = "RatedAsControlledTrial";
+
+    /// <summary>
+    /// Literal for code: EvidenceClassifierCodeClassifiedAsNonrandomizedControlledTrialExperimental
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeClassifiedAsNonrandomizedControlledTrialExperimental = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsControlledTrial";
 
     /// <summary>
     /// Literal for code: ClassifiedAsMixedMethodsStudy
@@ -397,9 +497,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClassifiedAsMixedMethodsStudy = "RatedAsMixedMethods";
 
     /// <summary>
+    /// Literal for code: EvidenceClassifierCodeClassifiedAsMixedMethodsStudy
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeClassifiedAsMixedMethodsStudy = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsMixedMethods";
+
+    /// <summary>
     /// Literal for code: RatedAsNoNegativeAbsentOrExclude
     /// </summary>
     public const string LiteralRatedAsNoNegativeAbsentOrExclude = "RatedAsNo";
+
+    /// <summary>
+    /// Literal for code: EvidenceClassifierCodeRatedAsNoNegativeAbsentOrExclude
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeRatedAsNoNegativeAbsentOrExclude = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsNo";
 
     /// <summary>
     /// Literal for code: ClassifiedAsOtherConceptNotElsewhereClassified
@@ -407,9 +517,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClassifiedAsOtherConceptNotElsewhereClassified = "RatedAsOther";
 
     /// <summary>
+    /// Literal for code: EvidenceClassifierCodeClassifiedAsOtherConceptNotElsewhereClassified
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeClassifiedAsOtherConceptNotElsewhereClassified = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsOther";
+
+    /// <summary>
     /// Literal for code: ClassifiedAsRandomizedControlledTrial
     /// </summary>
     public const string LiteralClassifiedAsRandomizedControlledTrial = "RatedAsRCT";
+
+    /// <summary>
+    /// Literal for code: EvidenceClassifierCodeClassifiedAsRandomizedControlledTrial
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeClassifiedAsRandomizedControlledTrial = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsRCT";
 
     /// <summary>
     /// Literal for code: ClassifiedAsUncontrolledCohortCaseSeries
@@ -417,9 +537,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClassifiedAsUncontrolledCohortCaseSeries = "RatedAsUncontrolledSeries";
 
     /// <summary>
+    /// Literal for code: EvidenceClassifierCodeClassifiedAsUncontrolledCohortCaseSeries
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeClassifiedAsUncontrolledCohortCaseSeries = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsUncontrolledSeries";
+
+    /// <summary>
     /// Literal for code: RatedAsYesAffirmativePositivePresentOrInclude
     /// </summary>
     public const string LiteralRatedAsYesAffirmativePositivePresentOrInclude = "RatedAsYes";
+
+    /// <summary>
+    /// Literal for code: EvidenceClassifierCodeRatedAsYesAffirmativePositivePresentOrInclude
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeRatedAsYesAffirmativePositivePresentOrInclude = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsYes";
 
     /// <summary>
     /// Literal for code: ArticleProvidesProtocolWithoutResults
@@ -427,9 +557,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralArticleProvidesProtocolWithoutResults = "ResearchProtocol";
 
     /// <summary>
+    /// Literal for code: EvidenceClassifierCodeArticleProvidesProtocolWithoutResults
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeArticleProvidesProtocolWithoutResults = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#ResearchProtocol";
+
+    /// <summary>
     /// Literal for code: ArticleIncludesSynthesisOfResearch
     /// </summary>
     public const string LiteralArticleIncludesSynthesisOfResearch = "ResearchSynthesis";
+
+    /// <summary>
+    /// Literal for code: EvidenceClassifierCodeArticleIncludesSynthesisOfResearch
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeArticleIncludesSynthesisOfResearch = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#ResearchSynthesis";
 
     /// <summary>
     /// Literal for code: RiskOfBiasAssessment
@@ -437,13 +577,96 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRiskOfBiasAssessment = "RiskOfBias";
 
     /// <summary>
+    /// Literal for code: EvidenceClassifierCodeRiskOfBiasAssessment
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeRiskOfBiasAssessment = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RiskOfBias";
+
+    /// <summary>
     /// Literal for code: SubgroupAnalysis
     /// </summary>
     public const string LiteralSubgroupAnalysis = "SubgroupAnalysis";
 
     /// <summary>
+    /// Literal for code: EvidenceClassifierCodeSubgroupAnalysis
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeSubgroupAnalysis = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#SubgroupAnalysis";
+
+    /// <summary>
     /// Literal for code: ArticleAboutTreatment
     /// </summary>
     public const string LiteralArticleAboutTreatment = "Treatment";
+
+    /// <summary>
+    /// Literal for code: EvidenceClassifierCodeArticleAboutTreatment
+    /// </summary>
+    public const string LiteralEvidenceClassifierCodeArticleAboutTreatment = "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#Treatment";
+
+    /// <summary>
+    /// Dictionary for looking up EvidenceClassifierCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "AllocConcealNotStated", AllocationConcealmentNotStated }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#AllocConcealNotStated", AllocationConcealmentNotStated }, 
+      { "BaselineImbalance", BaselineImbalances }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#BaselineImbalance", BaselineImbalances }, 
+      { "COVID19HumanResearch", COVID19HumanDataInPopulationExposureOrOutcome }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#COVID19HumanResearch", COVID19HumanDataInPopulationExposureOrOutcome }, 
+      { "COVID19Relevant", COVID19RelevantButNotSpecificArticle }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#COVID19Relevant", COVID19RelevantButNotSpecificArticle }, 
+      { "COVID19Specific", COVID19SpecificArticle }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#COVID19Specific", COVID19SpecificArticle }, 
+      { "Diagnosis", ArticleAboutDiagnosis }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#Diagnosis", ArticleAboutDiagnosis }, 
+      { "EarlyTrialTermination", EarlyTrialTermination }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#EarlyTrialTermination", EarlyTrialTermination }, 
+      { "Guideline", ArticleIncludesGuideline }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#Guideline", ArticleIncludesGuideline }, 
+      { "NoBlinding", NoBlinding }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#NoBlinding", NoBlinding }, 
+      { "NoITT", NoIntentionToTreatAnalysis }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#NoITT", NoIntentionToTreatAnalysis }, 
+      { "NotAssessed", NotRatedNotAssessed }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#NotAssessed", NotRatedNotAssessed }, 
+      { "NotResearchNotGuideline", ArticleIsNeitherResearchNorGuideline }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#NotResearchNotGuideline", ArticleIsNeitherResearchNorGuideline }, 
+      { "OriginalResearch", ArticleIncludesOriginalResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#OriginalResearch", ArticleIncludesOriginalResearch }, 
+      { "PreliminaryAnalysis", PreliminaryAnalysis }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#PreliminaryAnalysis", PreliminaryAnalysis }, 
+      { "Preprint", PreprintNotFinalPublication }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#Preprint", PreprintNotFinalPublication }, 
+      { "PreventionAndControl", ArticleAboutPreventionAndControl }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#PreventionAndControl", ArticleAboutPreventionAndControl }, 
+      { "PrognosisPrediction", ArticleAboutPrognosisOrPrediction }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#PrognosisPrediction", ArticleAboutPrognosisOrPrediction }, 
+      { "RatedAsCaseControl", ClassifiedAsCaseControlStudy }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsCaseControl", ClassifiedAsCaseControlStudy }, 
+      { "RatedAsComparativeCohort", ClassifiedAsComparativeCohortStudyObservational }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsComparativeCohort", ClassifiedAsComparativeCohortStudyObservational }, 
+      { "RatedAsControlledTrial", ClassifiedAsNonrandomizedControlledTrialExperimental }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsControlledTrial", ClassifiedAsNonrandomizedControlledTrialExperimental }, 
+      { "RatedAsMixedMethods", ClassifiedAsMixedMethodsStudy }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsMixedMethods", ClassifiedAsMixedMethodsStudy }, 
+      { "RatedAsNo", RatedAsNoNegativeAbsentOrExclude }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsNo", RatedAsNoNegativeAbsentOrExclude }, 
+      { "RatedAsOther", ClassifiedAsOtherConceptNotElsewhereClassified }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsOther", ClassifiedAsOtherConceptNotElsewhereClassified }, 
+      { "RatedAsRCT", ClassifiedAsRandomizedControlledTrial }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsRCT", ClassifiedAsRandomizedControlledTrial }, 
+      { "RatedAsUncontrolledSeries", ClassifiedAsUncontrolledCohortCaseSeries }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsUncontrolledSeries", ClassifiedAsUncontrolledCohortCaseSeries }, 
+      { "RatedAsYes", RatedAsYesAffirmativePositivePresentOrInclude }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RatedAsYes", RatedAsYesAffirmativePositivePresentOrInclude }, 
+      { "ResearchProtocol", ArticleProvidesProtocolWithoutResults }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#ResearchProtocol", ArticleProvidesProtocolWithoutResults }, 
+      { "ResearchSynthesis", ArticleIncludesSynthesisOfResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#ResearchSynthesis", ArticleIncludesSynthesisOfResearch }, 
+      { "RiskOfBias", RiskOfBiasAssessment }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#RiskOfBias", RiskOfBiasAssessment }, 
+      { "SubgroupAnalysis", SubgroupAnalysis }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#SubgroupAnalysis", SubgroupAnalysis }, 
+      { "Treatment", ArticleAboutTreatment }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-classifier-code#Treatment", ArticleAboutTreatment }, 
+    };
   };
 }

@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInstanceOrder = "instance-order";
 
     /// <summary>
+    /// Literal for code: MedicationRequestIntentInstanceOrder
+    /// </summary>
+    public const string LiteralMedicationRequestIntentInstanceOrder = "http://hl7.org/fhir/medication-request-intent#instance-order";
+
+    /// <summary>
     /// Literal for code: Order
     /// </summary>
     public const string LiteralOrder = "order";
+
+    /// <summary>
+    /// Literal for code: MedicationRequestIntentOrder
+    /// </summary>
+    public const string LiteralMedicationRequestIntentOrder = "http://hl7.org/fhir/medication-request-intent#order";
 
     /// <summary>
     /// Literal for code: Plan
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlan = "plan";
 
     /// <summary>
+    /// Literal for code: MedicationRequestIntentPlan
+    /// </summary>
+    public const string LiteralMedicationRequestIntentPlan = "http://hl7.org/fhir/medication-request-intent#plan";
+
+    /// <summary>
     /// Literal for code: Proposal
     /// </summary>
     public const string LiteralProposal = "proposal";
+
+    /// <summary>
+    /// Literal for code: MedicationRequestIntentProposal
+    /// </summary>
+    public const string LiteralMedicationRequestIntentProposal = "http://hl7.org/fhir/medication-request-intent#proposal";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationRequestIntent Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "instance-order", InstanceOrder }, 
+      { "http://hl7.org/fhir/medication-request-intent#instance-order", InstanceOrder }, 
+      { "order", Order }, 
+      { "http://hl7.org/fhir/medication-request-intent#order", Order }, 
+      { "plan", Plan }, 
+      { "http://hl7.org/fhir/medication-request-intent#plan", Plan }, 
+      { "proposal", Proposal }, 
+      { "http://hl7.org/fhir/medication-request-intent#proposal", Proposal }, 
+    };
   };
 }

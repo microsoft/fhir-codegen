@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAbsoluteRange = "absolute";
 
     /// <summary>
+    /// Literal for code: ObservationRangeCategoryAbsoluteRange
+    /// </summary>
+    public const string LiteralObservationRangeCategoryAbsoluteRange = "http://hl7.org/fhir/observation-range-category#absolute";
+
+    /// <summary>
     /// Literal for code: CriticalRange
     /// </summary>
     public const string LiteralCriticalRange = "critical";
 
     /// <summary>
+    /// Literal for code: ObservationRangeCategoryCriticalRange
+    /// </summary>
+    public const string LiteralObservationRangeCategoryCriticalRange = "http://hl7.org/fhir/observation-range-category#critical";
+
+    /// <summary>
     /// Literal for code: ReferenceRange
     /// </summary>
     public const string LiteralReferenceRange = "reference";
+
+    /// <summary>
+    /// Literal for code: ObservationRangeCategoryReferenceRange
+    /// </summary>
+    public const string LiteralObservationRangeCategoryReferenceRange = "http://hl7.org/fhir/observation-range-category#reference";
+
+    /// <summary>
+    /// Dictionary for looking up ObservationRangeCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "absolute", AbsoluteRange }, 
+      { "http://hl7.org/fhir/observation-range-category#absolute", AbsoluteRange }, 
+      { "critical", CriticalRange }, 
+      { "http://hl7.org/fhir/observation-range-category#critical", CriticalRange }, 
+      { "reference", ReferenceRange }, 
+      { "http://hl7.org/fhir/observation-range-category#reference", ReferenceRange }, 
+    };
   };
 }

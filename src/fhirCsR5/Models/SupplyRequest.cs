@@ -36,6 +36,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// Serialize to a JSON object
     /// </summary>
     public new void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
@@ -75,6 +79,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -109,6 +119,11 @@ namespace fhirCsR5.Models
 
         case "valueBoolean":
           ValueBoolean = reader.GetBoolean();
+          break;
+
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR5.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -671,6 +686,12 @@ namespace fhirCsR5.Models
     public const string URGENT = "urgent";
     public const string ASAP = "asap";
     public const string STAT = "stat";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "routine",
+      "urgent",
+      "asap",
+      "stat",
+    };
   }
   /// <summary>
   /// Code Values for the SupplyRequest.status field
@@ -683,5 +704,14 @@ namespace fhirCsR5.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "suspended",
+      "cancelled",
+      "completed",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

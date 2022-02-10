@@ -221,6 +221,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? Responsible { get; set; }
     /// <summary>
+    /// Extension container element for Responsible
+    /// </summary>
+    public Element _Responsible { get; set; }
+    /// <summary>
     /// Role might not be required when there is only a single provider listed.
     /// </summary>
     public CodeableConcept Role { get; set; }
@@ -250,6 +254,12 @@ namespace fhirCsR4.Models
       if (Responsible != null)
       {
         writer.WriteBoolean("responsible", (bool)Responsible!);
+      }
+
+      if (_Responsible != null)
+      {
+        writer.WritePropertyName("_responsible");
+        _Responsible.SerializeJson(writer, options);
       }
 
       if (Role != null)
@@ -288,6 +298,11 @@ namespace fhirCsR4.Models
 
         case "responsible":
           Responsible = reader.GetBoolean();
+          break;
+
+        case "_responsible":
+          _Responsible = new fhirCsR4.Models.Element();
+          _Responsible.DeserializeJson(ref reader, options);
           break;
 
         case "role":
@@ -368,6 +383,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// Could be used to provide references to other resources, document. For example could contain a PDF in an Attachment of the Police Report for an Accident.
     /// </summary>
     public string ValueString { get; set; }
@@ -432,6 +451,12 @@ namespace fhirCsR4.Models
       if (ValueBoolean != null)
       {
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
+
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(ValueString))
@@ -516,6 +541,11 @@ namespace fhirCsR4.Models
 
         case "valueBoolean":
           ValueBoolean = reader.GetBoolean();
+          break;
+
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR4.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "valueString":
@@ -987,6 +1017,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool Focal { get; set; }
     /// <summary>
+    /// Extension container element for Focal
+    /// </summary>
+    public Element _Focal { get; set; }
+    /// <summary>
     /// Only required in jurisdictions where insurers, rather than the provider, are required to send claims to  insurers that appear after them in the list. This element is not required when 'subrogation=true'.
     /// </summary>
     public Identifier Identifier { get; set; }
@@ -1016,6 +1050,12 @@ namespace fhirCsR4.Models
       writer.WriteNumber("sequence", Sequence);
 
       writer.WriteBoolean("focal", Focal);
+
+      if (_Focal != null)
+      {
+        writer.WritePropertyName("_focal");
+        _Focal.SerializeJson(writer, options);
+      }
 
       if (Identifier != null)
       {
@@ -1105,6 +1145,11 @@ namespace fhirCsR4.Models
 
         case "focal":
           Focal = reader.GetBoolean();
+          break;
+
+        case "_focal":
+          _Focal = new fhirCsR4.Models.Element();
+          _Focal.DeserializeJson(ref reader, options);
           break;
 
         case "identifier":
@@ -3488,6 +3533,12 @@ namespace fhirCsR4.Models
     public const string CANCELLED = "cancelled";
     public const string DRAFT = "draft";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "cancelled",
+      "draft",
+      "entered-in-error",
+    };
   }
   /// <summary>
   /// Code Values for the Claim.use field
@@ -3496,5 +3547,10 @@ namespace fhirCsR4.Models
     public const string CLAIM = "claim";
     public const string PREAUTHORIZATION = "preauthorization";
     public const string PREDETERMINATION = "predetermination";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "claim",
+      "preauthorization",
+      "predetermination",
+    };
   }
 }

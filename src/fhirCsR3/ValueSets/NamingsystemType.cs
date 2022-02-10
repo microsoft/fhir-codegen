@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCodeSystem = "codesystem";
 
     /// <summary>
+    /// Literal for code: NamingsystemTypeCodeSystem
+    /// </summary>
+    public const string LiteralNamingsystemTypeCodeSystem = "http://hl7.org/fhir/namingsystem-type#codesystem";
+
+    /// <summary>
     /// Literal for code: Identifier
     /// </summary>
     public const string LiteralIdentifier = "identifier";
 
     /// <summary>
+    /// Literal for code: NamingsystemTypeIdentifier
+    /// </summary>
+    public const string LiteralNamingsystemTypeIdentifier = "http://hl7.org/fhir/namingsystem-type#identifier";
+
+    /// <summary>
     /// Literal for code: Root
     /// </summary>
     public const string LiteralRoot = "root";
+
+    /// <summary>
+    /// Literal for code: NamingsystemTypeRoot
+    /// </summary>
+    public const string LiteralNamingsystemTypeRoot = "http://hl7.org/fhir/namingsystem-type#root";
+
+    /// <summary>
+    /// Dictionary for looking up NamingsystemType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "codesystem", CodeSystem }, 
+      { "http://hl7.org/fhir/namingsystem-type#codesystem", CodeSystem }, 
+      { "identifier", Identifier }, 
+      { "http://hl7.org/fhir/namingsystem-type#identifier", Identifier }, 
+      { "root", Root }, 
+      { "http://hl7.org/fhir/namingsystem-type#root", Root }, 
+    };
   };
 }

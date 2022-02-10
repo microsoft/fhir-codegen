@@ -24,6 +24,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public int? Count { get; set; }
     /// <summary>
+    /// Extension container element for Count
+    /// </summary>
+    public Element _Count { get; set; }
+    /// <summary>
     /// This element refers to a List of subject level MeasureReport resources, one for each subject in this population.
     /// </summary>
     public Reference SubjectResults { get; set; }
@@ -47,6 +51,12 @@ namespace fhirCsR5.Models
       if (Count != null)
       {
         writer.WriteNumber("count", (int)Count!);
+      }
+
+      if (_Count != null)
+      {
+        writer.WritePropertyName("_count");
+        _Count.SerializeJson(writer, options);
       }
 
       if (SubjectResults != null)
@@ -74,6 +84,11 @@ namespace fhirCsR5.Models
 
         case "count":
           Count = reader.GetInt32();
+          break;
+
+        case "_count":
+          _Count = new fhirCsR5.Models.Element();
+          _Count.DeserializeJson(ref reader, options);
           break;
 
         case "subjectResults":
@@ -130,6 +145,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// The stratum component value.
     /// </summary>
     public Quantity ValueQuantity { get; set; }
@@ -167,6 +186,12 @@ namespace fhirCsR5.Models
       if (ValueBoolean != null)
       {
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
+
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
       }
 
       if (ValueQuantity != null)
@@ -211,6 +236,11 @@ namespace fhirCsR5.Models
 
         case "valueBoolean":
           ValueBoolean = reader.GetBoolean();
+          break;
+
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR5.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "valueQuantity":
@@ -273,6 +303,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public int? Count { get; set; }
     /// <summary>
+    /// Extension container element for Count
+    /// </summary>
+    public Element _Count { get; set; }
+    /// <summary>
     /// This element refers to a List of subject level MeasureReport resources, one for each subject in this population in this stratum.
     /// </summary>
     public Reference SubjectResults { get; set; }
@@ -296,6 +330,12 @@ namespace fhirCsR5.Models
       if (Count != null)
       {
         writer.WriteNumber("count", (int)Count!);
+      }
+
+      if (_Count != null)
+      {
+        writer.WritePropertyName("_count");
+        _Count.SerializeJson(writer, options);
       }
 
       if (SubjectResults != null)
@@ -323,6 +363,11 @@ namespace fhirCsR5.Models
 
         case "count":
           Count = reader.GetInt32();
+          break;
+
+        case "_count":
+          _Count = new fhirCsR5.Models.Element();
+          _Count.DeserializeJson(ref reader, options);
           break;
 
         case "subjectResults":
@@ -411,6 +456,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// The value for this stratum, expressed as a CodeableConcept. When defining stratifiers on complex values, the value must be rendered such that the value for each stratum within the stratifier is unique.
     /// </summary>
     public Quantity ValueQuantity { get; set; }
@@ -442,6 +491,12 @@ namespace fhirCsR5.Models
       if (ValueBoolean != null)
       {
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
+
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
       }
 
       if (ValueQuantity != null)
@@ -636,6 +691,11 @@ namespace fhirCsR5.Models
 
         case "valueBoolean":
           ValueBoolean = reader.GetBoolean();
+          break;
+
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR5.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "valueQuantity":
@@ -1533,6 +1593,10 @@ namespace fhirCsR5.Models
   public static class MeasureReportDataUpdateTypeCodes {
     public const string INCREMENTAL = "incremental";
     public const string SNAPSHOT = "snapshot";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "incremental",
+      "snapshot",
+    };
   }
   /// <summary>
   /// Code Values for the MeasureReport.status field
@@ -1541,6 +1605,11 @@ namespace fhirCsR5.Models
     public const string COMPLETE = "complete";
     public const string PENDING = "pending";
     public const string ERROR = "error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "complete",
+      "pending",
+      "error",
+    };
   }
   /// <summary>
   /// Code Values for the MeasureReport.type field
@@ -1550,5 +1619,11 @@ namespace fhirCsR5.Models
     public const string SUBJECT_LIST = "subject-list";
     public const string SUMMARY = "summary";
     public const string DATA_COLLECTION = "data-collection";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "individual",
+      "subject-list",
+      "summary",
+      "data-collection",
+    };
   }
 }

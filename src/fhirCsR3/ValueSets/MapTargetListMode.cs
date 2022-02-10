@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCollate = "collate";
 
     /// <summary>
+    /// Literal for code: MapTargetListModeCollate
+    /// </summary>
+    public const string LiteralMapTargetListModeCollate = "http://hl7.org/fhir/map-target-list-mode#collate";
+
+    /// <summary>
     /// Literal for code: First
     /// </summary>
     public const string LiteralFirst = "first";
+
+    /// <summary>
+    /// Literal for code: MapTargetListModeFirst
+    /// </summary>
+    public const string LiteralMapTargetListModeFirst = "http://hl7.org/fhir/map-target-list-mode#first";
 
     /// <summary>
     /// Literal for code: Last
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLast = "last";
 
     /// <summary>
+    /// Literal for code: MapTargetListModeLast
+    /// </summary>
+    public const string LiteralMapTargetListModeLast = "http://hl7.org/fhir/map-target-list-mode#last";
+
+    /// <summary>
     /// Literal for code: Share
     /// </summary>
     public const string LiteralShare = "share";
+
+    /// <summary>
+    /// Literal for code: MapTargetListModeShare
+    /// </summary>
+    public const string LiteralMapTargetListModeShare = "http://hl7.org/fhir/map-target-list-mode#share";
+
+    /// <summary>
+    /// Dictionary for looking up MapTargetListMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "collate", Collate }, 
+      { "http://hl7.org/fhir/map-target-list-mode#collate", Collate }, 
+      { "first", First }, 
+      { "http://hl7.org/fhir/map-target-list-mode#first", First }, 
+      { "last", Last }, 
+      { "http://hl7.org/fhir/map-target-list-mode#last", Last }, 
+      { "share", Share }, 
+      { "http://hl7.org/fhir/map-target-list-mode#share", Share }, 
+    };
   };
 }

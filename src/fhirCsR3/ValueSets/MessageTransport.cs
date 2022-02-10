@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFTP = "ftp";
 
     /// <summary>
+    /// Literal for code: MessageTransportFTP
+    /// </summary>
+    public const string LiteralMessageTransportFTP = "http://hl7.org/fhir/message-transport#ftp";
+
+    /// <summary>
     /// Literal for code: HTTP
     /// </summary>
     public const string LiteralHTTP = "http";
 
     /// <summary>
+    /// Literal for code: MessageTransportHTTP
+    /// </summary>
+    public const string LiteralMessageTransportHTTP = "http://hl7.org/fhir/message-transport#http";
+
+    /// <summary>
     /// Literal for code: MLLP
     /// </summary>
     public const string LiteralMLLP = "mllp";
+
+    /// <summary>
+    /// Literal for code: MessageTransportMLLP
+    /// </summary>
+    public const string LiteralMessageTransportMLLP = "http://hl7.org/fhir/message-transport#mllp";
+
+    /// <summary>
+    /// Dictionary for looking up MessageTransport Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ftp", FTP }, 
+      { "http://hl7.org/fhir/message-transport#ftp", FTP }, 
+      { "http", HTTP }, 
+      { "http://hl7.org/fhir/message-transport#http", HTTP }, 
+      { "mllp", MLLP }, 
+      { "http://hl7.org/fhir/message-transport#mllp", MLLP }, 
+    };
   };
 }

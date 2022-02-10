@@ -36,8 +36,28 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCentralSupply = "central";
 
     /// <summary>
+    /// Literal for code: SupplyrequestKindCentralSupply
+    /// </summary>
+    public const string LiteralSupplyrequestKindCentralSupply = "http://terminology.hl7.org/CodeSystem/supply-kind#central";
+
+    /// <summary>
     /// Literal for code: NonStock
     /// </summary>
     public const string LiteralNonStock = "nonstock";
+
+    /// <summary>
+    /// Literal for code: SupplyrequestKindNonStock
+    /// </summary>
+    public const string LiteralSupplyrequestKindNonStock = "http://terminology.hl7.org/CodeSystem/supply-kind#nonstock";
+
+    /// <summary>
+    /// Dictionary for looking up SupplyrequestKind Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "central", CentralSupply }, 
+      { "http://terminology.hl7.org/CodeSystem/supply-kind#central", CentralSupply }, 
+      { "nonstock", NonStock }, 
+      { "http://terminology.hl7.org/CodeSystem/supply-kind#nonstock", NonStock }, 
+    };
   };
 }

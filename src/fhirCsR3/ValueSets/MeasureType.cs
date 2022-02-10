@@ -63,9 +63,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComposite = "composite";
 
     /// <summary>
+    /// Literal for code: MeasureTypeComposite
+    /// </summary>
+    public const string LiteralMeasureTypeComposite = "http://hl7.org/fhir/measure-type#composite";
+
+    /// <summary>
     /// Literal for code: Outcome
     /// </summary>
     public const string LiteralOutcome = "outcome";
+
+    /// <summary>
+    /// Literal for code: MeasureTypeOutcome
+    /// </summary>
+    public const string LiteralMeasureTypeOutcome = "http://hl7.org/fhir/measure-type#outcome";
 
     /// <summary>
     /// Literal for code: PatientReportedOutcome
@@ -73,13 +83,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientReportedOutcome = "patient-reported-outcome";
 
     /// <summary>
+    /// Literal for code: MeasureTypePatientReportedOutcome
+    /// </summary>
+    public const string LiteralMeasureTypePatientReportedOutcome = "http://hl7.org/fhir/measure-type#patient-reported-outcome";
+
+    /// <summary>
     /// Literal for code: Process
     /// </summary>
     public const string LiteralProcess = "process";
 
     /// <summary>
+    /// Literal for code: MeasureTypeProcess
+    /// </summary>
+    public const string LiteralMeasureTypeProcess = "http://hl7.org/fhir/measure-type#process";
+
+    /// <summary>
     /// Literal for code: Structure
     /// </summary>
     public const string LiteralStructure = "structure";
+
+    /// <summary>
+    /// Literal for code: MeasureTypeStructure
+    /// </summary>
+    public const string LiteralMeasureTypeStructure = "http://hl7.org/fhir/measure-type#structure";
+
+    /// <summary>
+    /// Dictionary for looking up MeasureType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "composite", Composite }, 
+      { "http://hl7.org/fhir/measure-type#composite", Composite }, 
+      { "outcome", Outcome }, 
+      { "http://hl7.org/fhir/measure-type#outcome", Outcome }, 
+      { "patient-reported-outcome", PatientReportedOutcome }, 
+      { "http://hl7.org/fhir/measure-type#patient-reported-outcome", PatientReportedOutcome }, 
+      { "process", Process }, 
+      { "http://hl7.org/fhir/measure-type#process", Process }, 
+      { "structure", Structure }, 
+      { "http://hl7.org/fhir/measure-type#structure", Structure }, 
+    };
   };
 }

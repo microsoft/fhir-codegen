@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTestFails = "test-fails";
 
     /// <summary>
+    /// Literal for code: SubscriptiontopicCrBehaviorTestFails
+    /// </summary>
+    public const string LiteralSubscriptiontopicCrBehaviorTestFails = "http://hl7.org/fhir/subscriptiontopic-cr-behavior#test-fails";
+
+    /// <summary>
     /// Literal for code: TestPasses
     /// </summary>
     public const string LiteralTestPasses = "test-passes";
+
+    /// <summary>
+    /// Literal for code: SubscriptiontopicCrBehaviorTestPasses
+    /// </summary>
+    public const string LiteralSubscriptiontopicCrBehaviorTestPasses = "http://hl7.org/fhir/subscriptiontopic-cr-behavior#test-passes";
+
+    /// <summary>
+    /// Dictionary for looking up SubscriptiontopicCrBehavior Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "test-fails", TestFails }, 
+      { "http://hl7.org/fhir/subscriptiontopic-cr-behavior#test-fails", TestFails }, 
+      { "test-passes", TestPasses }, 
+      { "http://hl7.org/fhir/subscriptiontopic-cr-behavior#test-passes", TestPasses }, 
+    };
   };
 }

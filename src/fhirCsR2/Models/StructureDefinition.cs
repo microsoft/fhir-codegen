@@ -1404,6 +1404,12 @@ namespace fhirCsR2.Models
     public const string DATATYPE = "datatype";
     public const string MAPPING = "mapping";
     public const string EXTENSION = "extension";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "resource",
+      "datatype",
+      "mapping",
+      "extension",
+    };
   }
   /// <summary>
   /// Code Values for the StructureDefinition.kind field
@@ -1412,6 +1418,11 @@ namespace fhirCsR2.Models
     public const string DATATYPE = "datatype";
     public const string RESOURCE = "resource";
     public const string LOGICAL = "logical";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "datatype",
+      "resource",
+      "logical",
+    };
   }
   /// <summary>
   /// Code Values for the StructureDefinition.status field
@@ -1420,5 +1431,10 @@ namespace fhirCsR2.Models
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+    };
   }
 }

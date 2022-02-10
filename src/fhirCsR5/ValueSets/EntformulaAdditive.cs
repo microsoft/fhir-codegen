@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class EntformulaAdditiveCodes
   {
     /// <summary>
-    /// 
+    /// Carbohydrate
     /// </summary>
     public static readonly Coding Carbohydrate = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/entformula-additive"
     };
     /// <summary>
-    /// 
+    /// Fiber
     /// </summary>
     public static readonly Coding Fiber = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/entformula-additive"
     };
     /// <summary>
-    /// 
+    /// Lipid
     /// </summary>
     public static readonly Coding Lipid = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/entformula-additive"
     };
     /// <summary>
-    /// 
+    /// Protein
     /// </summary>
     public static readonly Coding Protein = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/entformula-additive"
     };
     /// <summary>
-    /// 
+    /// Water
     /// </summary>
     public static readonly Coding Water = new Coding
     {
@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCarbohydrate = "carbohydrate";
 
     /// <summary>
+    /// Literal for code: EntformulaAdditiveCarbohydrate
+    /// </summary>
+    public const string LiteralEntformulaAdditiveCarbohydrate = "http://terminology.hl7.org/CodeSystem/entformula-additive#carbohydrate";
+
+    /// <summary>
     /// Literal for code: Fiber
     /// </summary>
     public const string LiteralFiber = "fiber";
+
+    /// <summary>
+    /// Literal for code: EntformulaAdditiveFiber
+    /// </summary>
+    public const string LiteralEntformulaAdditiveFiber = "http://terminology.hl7.org/CodeSystem/entformula-additive#fiber";
 
     /// <summary>
     /// Literal for code: Lipid
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLipid = "lipid";
 
     /// <summary>
+    /// Literal for code: EntformulaAdditiveLipid
+    /// </summary>
+    public const string LiteralEntformulaAdditiveLipid = "http://terminology.hl7.org/CodeSystem/entformula-additive#lipid";
+
+    /// <summary>
     /// Literal for code: Protein
     /// </summary>
     public const string LiteralProtein = "protein";
 
     /// <summary>
+    /// Literal for code: EntformulaAdditiveProtein
+    /// </summary>
+    public const string LiteralEntformulaAdditiveProtein = "http://terminology.hl7.org/CodeSystem/entformula-additive#protein";
+
+    /// <summary>
     /// Literal for code: Water
     /// </summary>
     public const string LiteralWater = "water";
+
+    /// <summary>
+    /// Literal for code: EntformulaAdditiveWater
+    /// </summary>
+    public const string LiteralEntformulaAdditiveWater = "http://terminology.hl7.org/CodeSystem/entformula-additive#water";
+
+    /// <summary>
+    /// Dictionary for looking up EntformulaAdditive Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "carbohydrate", Carbohydrate }, 
+      { "http://terminology.hl7.org/CodeSystem/entformula-additive#carbohydrate", Carbohydrate }, 
+      { "fiber", Fiber }, 
+      { "http://terminology.hl7.org/CodeSystem/entformula-additive#fiber", Fiber }, 
+      { "lipid", Lipid }, 
+      { "http://terminology.hl7.org/CodeSystem/entformula-additive#lipid", Lipid }, 
+      { "protein", Protein }, 
+      { "http://terminology.hl7.org/CodeSystem/entformula-additive#protein", Protein }, 
+      { "water", Water }, 
+      { "http://terminology.hl7.org/CodeSystem/entformula-additive#water", Water }, 
+    };
   };
 }

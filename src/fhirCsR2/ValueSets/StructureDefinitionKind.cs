@@ -45,13 +45,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralDataType = "datatype";
 
     /// <summary>
+    /// Literal for code: StructureDefinitionKindDataType
+    /// </summary>
+    public const string LiteralStructureDefinitionKindDataType = "http://hl7.org/fhir/structure-definition-kind#datatype";
+
+    /// <summary>
     /// Literal for code: LogicalModel
     /// </summary>
     public const string LiteralLogicalModel = "logical";
 
     /// <summary>
+    /// Literal for code: StructureDefinitionKindLogicalModel
+    /// </summary>
+    public const string LiteralStructureDefinitionKindLogicalModel = "http://hl7.org/fhir/structure-definition-kind#logical";
+
+    /// <summary>
     /// Literal for code: Resource
     /// </summary>
     public const string LiteralResource = "resource";
+
+    /// <summary>
+    /// Literal for code: StructureDefinitionKindResource
+    /// </summary>
+    public const string LiteralStructureDefinitionKindResource = "http://hl7.org/fhir/structure-definition-kind#resource";
+
+    /// <summary>
+    /// Dictionary for looking up StructureDefinitionKind Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "datatype", DataType }, 
+      { "http://hl7.org/fhir/structure-definition-kind#datatype", DataType }, 
+      { "logical", LogicalModel }, 
+      { "http://hl7.org/fhir/structure-definition-kind#logical", LogicalModel }, 
+      { "resource", Resource }, 
+      { "http://hl7.org/fhir/structure-definition-kind#resource", Resource }, 
+    };
   };
 }

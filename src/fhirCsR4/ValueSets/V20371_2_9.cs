@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class V20371Codes
   {
     /// <summary>
-    /// 
+    /// ACD Solution A
     /// </summary>
     public static readonly Coding ACDSolutionA = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// ACD Solution B
     /// </summary>
     public static readonly Coding ACDSolutionB = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Acetic Acid
     /// </summary>
     public static readonly Coding AceticAcid = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Amies transport medium
     /// </summary>
     public static readonly Coding AmiesTransportMedium = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Bacterial Transport medium
     /// </summary>
     public static readonly Coding BacterialTransportMedium = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Buffered 10% formalin
     /// </summary>
     public static readonly Coding Buffered10PercentFormalin = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Borate Boric Acid
     /// </summary>
     public static readonly Coding BorateBoricAcid = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Bouin's solution
     /// </summary>
     public static readonly Coding BouinQuoteSSolution = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Buffered skim milk
     /// </summary>
     public static readonly Coding BufferedSkimMilk = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// 3.2%  Citrate
     /// </summary>
     public static readonly Coding VAL32PercentCitrate = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// 3.8% Citrate
     /// </summary>
     public static readonly Coding VAL38PercentCitrate = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Carson's Modified 10% formalin
     /// </summary>
     public static readonly Coding CarsonQuoteSModified10PercentFormalin = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Cary Blair Medium
     /// </summary>
     public static readonly Coding CaryBlairMedium = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Chlamydia transport medium
     /// </summary>
     public static readonly Coding ChlamydiaTransportMedium = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// CTAD (this should be spelled out if not universally understood)
     /// </summary>
     public static readonly Coding CTADThisShouldBeSpelledOutIfNotUniversallyUnderstood = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Potassium/K EDTA
     /// </summary>
     public static readonly Coding PotassiumKEDTA = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Potassium/K EDTA 15%
     /// </summary>
     public static readonly Coding PotassiumKEDTA15Percent = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Potassium/K EDTA 7.5%
     /// </summary>
     public static readonly Coding PotassiumKEDTA75Percent = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Sodium/Na EDTA
     /// </summary>
     public static readonly Coding SodiumNaEDTA = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Enteric bacteria transport medium
     /// </summary>
     public static readonly Coding EntericBacteriaTransportMedium = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Enteric plus
     /// </summary>
     public static readonly Coding EntericPlus = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// 10% Formalin
     /// </summary>
     public static readonly Coding VAL10PercentFormalin = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Thrombin NIH; soybean trypsin inhibitor (Fibrin Degradation Products)
     /// </summary>
     public static readonly Coding ThrombinNIHSoybeanTrypsinInhibitorFibrinDegradationProducts = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Sodium Fluoride, 10mg
     /// </summary>
     public static readonly Coding SodiumFluoride10mg = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Sodium Fluoride, 100mg
     /// </summary>
     public static readonly Coding SodiumFluoride100mg = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// 6N HCL
     /// </summary>
     public static readonly Coding VAL6NHCL = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Ammonium heparin
     /// </summary>
     public static readonly Coding AmmoniumHeparin = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Lithium/Li  Heparin
     /// </summary>
     public static readonly Coding LithiumLiHeparin = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Sodium/Na  Heparin
     /// </summary>
     public static readonly Coding SodiumNaHeparin = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Nitric Acid
     /// </summary>
     public static readonly Coding NitricAcid = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Jones Kendrick Medium
     /// </summary>
     public static readonly Coding JonesKendrickMedium = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Karnovsky's fixative
     /// </summary>
     public static readonly Coding KarnovskyQuoteSFixative = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Potassium Oxalate
     /// </summary>
     public static readonly Coding PotassiumOxalate = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Lithium iodoacetate
     /// </summary>
     public static readonly Coding LithiumIodoacetate = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// M4
     /// </summary>
     public static readonly Coding M4 = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// M4-RT
     /// </summary>
     public static readonly Coding M4RT = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// M5
     /// </summary>
     public static readonly Coding M5 = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Michel's transport medium
     /// </summary>
     public static readonly Coding MichelQuoteSTransportMedium = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// MMD transport medium
     /// </summary>
     public static readonly Coding MMDTransportMedium = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Sodium Fluoride
     /// </summary>
     public static readonly Coding SodiumFluoride = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Sodium polyanethol sulfonate 0.35% in 0.85% sodium chloride
     /// </summary>
     public static readonly Coding SodiumPolyanetholSulfonate035PercentIn085PercentSodiumChloride = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// None
     /// </summary>
     public static readonly Coding None = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Pages's Saline
     /// </summary>
     public static readonly Coding PagesQuoteSSaline = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Phenol
     /// </summary>
     public static readonly Coding Phenol = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// PVA (polyvinylalcohol)
     /// </summary>
     public static readonly Coding PVAPolyvinylalcohol = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Reagan Lowe Medium
     /// </summary>
     public static readonly Coding ReaganLoweMedium = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Siliceous earth, 12 mg
     /// </summary>
     public static readonly Coding SiliceousEarth12Mg = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// SPS(this should be spelled out if not universally understood)
     /// </summary>
     public static readonly Coding SPSThisShouldBeSpelledOutIfNotUniversallyUnderstood = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Serum Separator Tube (Polymer Gel)
     /// </summary>
     public static readonly Coding SerumSeparatorTubePolymerGel = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Stuart transport medium
     /// </summary>
     public static readonly Coding StuartTransportMedium = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Thrombin
     /// </summary>
     public static readonly Coding Thrombin = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Thymol
     /// </summary>
     public static readonly Coding Thymol = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Thyoglycollate broth
     /// </summary>
     public static readonly Coding ThyoglycollateBroth = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Toluene
     /// </summary>
     public static readonly Coding Toluene = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Ureaplasma transport medium
     /// </summary>
     public static readonly Coding UreaplasmaTransportMedium = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Viral Transport medium
     /// </summary>
     public static readonly Coding ViralTransportMedium = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0371"
     };
     /// <summary>
-    /// 
+    /// Buffered Citrate (Westergren Sedimentation Rate)
     /// </summary>
     public static readonly Coding BufferedCitrateWestergrenSedimentationRate = new Coding
     {
@@ -531,9 +531,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralACDSolutionA = "ACDA";
 
     /// <summary>
+    /// Literal for code: V20371ACDSolutionA
+    /// </summary>
+    public const string LiteralV20371ACDSolutionA = "http://terminology.hl7.org/CodeSystem/v2-0371#ACDA";
+
+    /// <summary>
     /// Literal for code: ACDSolutionB
     /// </summary>
     public const string LiteralACDSolutionB = "ACDB";
+
+    /// <summary>
+    /// Literal for code: V20371ACDSolutionB
+    /// </summary>
+    public const string LiteralV20371ACDSolutionB = "http://terminology.hl7.org/CodeSystem/v2-0371#ACDB";
 
     /// <summary>
     /// Literal for code: AceticAcid
@@ -541,9 +551,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAceticAcid = "ACET";
 
     /// <summary>
+    /// Literal for code: V20371AceticAcid
+    /// </summary>
+    public const string LiteralV20371AceticAcid = "http://terminology.hl7.org/CodeSystem/v2-0371#ACET";
+
+    /// <summary>
     /// Literal for code: AmiesTransportMedium
     /// </summary>
     public const string LiteralAmiesTransportMedium = "AMIES";
+
+    /// <summary>
+    /// Literal for code: V20371AmiesTransportMedium
+    /// </summary>
+    public const string LiteralV20371AmiesTransportMedium = "http://terminology.hl7.org/CodeSystem/v2-0371#AMIES";
 
     /// <summary>
     /// Literal for code: BacterialTransportMedium
@@ -551,9 +571,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBacterialTransportMedium = "BACTM";
 
     /// <summary>
+    /// Literal for code: V20371BacterialTransportMedium
+    /// </summary>
+    public const string LiteralV20371BacterialTransportMedium = "http://terminology.hl7.org/CodeSystem/v2-0371#BACTM";
+
+    /// <summary>
     /// Literal for code: Buffered10PercentFormalin
     /// </summary>
     public const string LiteralBuffered10PercentFormalin = "BF10";
+
+    /// <summary>
+    /// Literal for code: V20371Buffered10PercentFormalin
+    /// </summary>
+    public const string LiteralV20371Buffered10PercentFormalin = "http://terminology.hl7.org/CodeSystem/v2-0371#BF10";
 
     /// <summary>
     /// Literal for code: BorateBoricAcid
@@ -561,9 +591,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBorateBoricAcid = "BOR";
 
     /// <summary>
+    /// Literal for code: V20371BorateBoricAcid
+    /// </summary>
+    public const string LiteralV20371BorateBoricAcid = "http://terminology.hl7.org/CodeSystem/v2-0371#BOR";
+
+    /// <summary>
     /// Literal for code: BouinQuoteSSolution
     /// </summary>
     public const string LiteralBouinQuoteSSolution = "BOUIN";
+
+    /// <summary>
+    /// Literal for code: V20371BouinQuoteSSolution
+    /// </summary>
+    public const string LiteralV20371BouinQuoteSSolution = "http://terminology.hl7.org/CodeSystem/v2-0371#BOUIN";
 
     /// <summary>
     /// Literal for code: BufferedSkimMilk
@@ -571,9 +611,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBufferedSkimMilk = "BSKM";
 
     /// <summary>
+    /// Literal for code: V20371BufferedSkimMilk
+    /// </summary>
+    public const string LiteralV20371BufferedSkimMilk = "http://terminology.hl7.org/CodeSystem/v2-0371#BSKM";
+
+    /// <summary>
     /// Literal for code: VAL32PercentCitrate
     /// </summary>
     public const string LiteralVAL32PercentCitrate = "C32";
+
+    /// <summary>
+    /// Literal for code: V20371VAL32PercentCitrate
+    /// </summary>
+    public const string LiteralV20371VAL32PercentCitrate = "http://terminology.hl7.org/CodeSystem/v2-0371#C32";
 
     /// <summary>
     /// Literal for code: VAL38PercentCitrate
@@ -581,9 +631,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL38PercentCitrate = "C38";
 
     /// <summary>
+    /// Literal for code: V20371VAL38PercentCitrate
+    /// </summary>
+    public const string LiteralV20371VAL38PercentCitrate = "http://terminology.hl7.org/CodeSystem/v2-0371#C38";
+
+    /// <summary>
     /// Literal for code: CarsonQuoteSModified10PercentFormalin
     /// </summary>
     public const string LiteralCarsonQuoteSModified10PercentFormalin = "CARS";
+
+    /// <summary>
+    /// Literal for code: V20371CarsonQuoteSModified10PercentFormalin
+    /// </summary>
+    public const string LiteralV20371CarsonQuoteSModified10PercentFormalin = "http://terminology.hl7.org/CodeSystem/v2-0371#CARS";
 
     /// <summary>
     /// Literal for code: CaryBlairMedium
@@ -591,9 +651,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCaryBlairMedium = "CARY";
 
     /// <summary>
+    /// Literal for code: V20371CaryBlairMedium
+    /// </summary>
+    public const string LiteralV20371CaryBlairMedium = "http://terminology.hl7.org/CodeSystem/v2-0371#CARY";
+
+    /// <summary>
     /// Literal for code: ChlamydiaTransportMedium
     /// </summary>
     public const string LiteralChlamydiaTransportMedium = "CHLTM";
+
+    /// <summary>
+    /// Literal for code: V20371ChlamydiaTransportMedium
+    /// </summary>
+    public const string LiteralV20371ChlamydiaTransportMedium = "http://terminology.hl7.org/CodeSystem/v2-0371#CHLTM";
 
     /// <summary>
     /// Literal for code: CTADThisShouldBeSpelledOutIfNotUniversallyUnderstood
@@ -601,9 +671,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCTADThisShouldBeSpelledOutIfNotUniversallyUnderstood = "CTAD";
 
     /// <summary>
+    /// Literal for code: V20371CTADThisShouldBeSpelledOutIfNotUniversallyUnderstood
+    /// </summary>
+    public const string LiteralV20371CTADThisShouldBeSpelledOutIfNotUniversallyUnderstood = "http://terminology.hl7.org/CodeSystem/v2-0371#CTAD";
+
+    /// <summary>
     /// Literal for code: PotassiumKEDTA
     /// </summary>
     public const string LiteralPotassiumKEDTA = "EDTK";
+
+    /// <summary>
+    /// Literal for code: V20371PotassiumKEDTA
+    /// </summary>
+    public const string LiteralV20371PotassiumKEDTA = "http://terminology.hl7.org/CodeSystem/v2-0371#EDTK";
 
     /// <summary>
     /// Literal for code: PotassiumKEDTA15Percent
@@ -611,9 +691,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPotassiumKEDTA15Percent = "EDTK15";
 
     /// <summary>
+    /// Literal for code: V20371PotassiumKEDTA15Percent
+    /// </summary>
+    public const string LiteralV20371PotassiumKEDTA15Percent = "http://terminology.hl7.org/CodeSystem/v2-0371#EDTK15";
+
+    /// <summary>
     /// Literal for code: PotassiumKEDTA75Percent
     /// </summary>
     public const string LiteralPotassiumKEDTA75Percent = "EDTK75";
+
+    /// <summary>
+    /// Literal for code: V20371PotassiumKEDTA75Percent
+    /// </summary>
+    public const string LiteralV20371PotassiumKEDTA75Percent = "http://terminology.hl7.org/CodeSystem/v2-0371#EDTK75";
 
     /// <summary>
     /// Literal for code: SodiumNaEDTA
@@ -621,9 +711,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSodiumNaEDTA = "EDTN";
 
     /// <summary>
+    /// Literal for code: V20371SodiumNaEDTA
+    /// </summary>
+    public const string LiteralV20371SodiumNaEDTA = "http://terminology.hl7.org/CodeSystem/v2-0371#EDTN";
+
+    /// <summary>
     /// Literal for code: EntericBacteriaTransportMedium
     /// </summary>
     public const string LiteralEntericBacteriaTransportMedium = "ENT";
+
+    /// <summary>
+    /// Literal for code: V20371EntericBacteriaTransportMedium
+    /// </summary>
+    public const string LiteralV20371EntericBacteriaTransportMedium = "http://terminology.hl7.org/CodeSystem/v2-0371#ENT";
 
     /// <summary>
     /// Literal for code: EntericPlus
@@ -631,9 +731,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEntericPlus = "ENT+";
 
     /// <summary>
+    /// Literal for code: V20371EntericPlus
+    /// </summary>
+    public const string LiteralV20371EntericPlus = "http://terminology.hl7.org/CodeSystem/v2-0371#ENT+";
+
+    /// <summary>
     /// Literal for code: VAL10PercentFormalin
     /// </summary>
     public const string LiteralVAL10PercentFormalin = "F10";
+
+    /// <summary>
+    /// Literal for code: V20371VAL10PercentFormalin
+    /// </summary>
+    public const string LiteralV20371VAL10PercentFormalin = "http://terminology.hl7.org/CodeSystem/v2-0371#F10";
 
     /// <summary>
     /// Literal for code: ThrombinNIHSoybeanTrypsinInhibitorFibrinDegradationProducts
@@ -641,9 +751,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThrombinNIHSoybeanTrypsinInhibitorFibrinDegradationProducts = "FDP";
 
     /// <summary>
+    /// Literal for code: V20371ThrombinNIHSoybeanTrypsinInhibitorFibrinDegradationProducts
+    /// </summary>
+    public const string LiteralV20371ThrombinNIHSoybeanTrypsinInhibitorFibrinDegradationProducts = "http://terminology.hl7.org/CodeSystem/v2-0371#FDP";
+
+    /// <summary>
     /// Literal for code: SodiumFluoride10mg
     /// </summary>
     public const string LiteralSodiumFluoride10mg = "FL10";
+
+    /// <summary>
+    /// Literal for code: V20371SodiumFluoride10mg
+    /// </summary>
+    public const string LiteralV20371SodiumFluoride10mg = "http://terminology.hl7.org/CodeSystem/v2-0371#FL10";
 
     /// <summary>
     /// Literal for code: SodiumFluoride100mg
@@ -651,9 +771,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSodiumFluoride100mg = "FL100";
 
     /// <summary>
+    /// Literal for code: V20371SodiumFluoride100mg
+    /// </summary>
+    public const string LiteralV20371SodiumFluoride100mg = "http://terminology.hl7.org/CodeSystem/v2-0371#FL100";
+
+    /// <summary>
     /// Literal for code: VAL6NHCL
     /// </summary>
     public const string LiteralVAL6NHCL = "HCL6";
+
+    /// <summary>
+    /// Literal for code: V20371VAL6NHCL
+    /// </summary>
+    public const string LiteralV20371VAL6NHCL = "http://terminology.hl7.org/CodeSystem/v2-0371#HCL6";
 
     /// <summary>
     /// Literal for code: AmmoniumHeparin
@@ -661,9 +791,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAmmoniumHeparin = "HEPA";
 
     /// <summary>
+    /// Literal for code: V20371AmmoniumHeparin
+    /// </summary>
+    public const string LiteralV20371AmmoniumHeparin = "http://terminology.hl7.org/CodeSystem/v2-0371#HEPA";
+
+    /// <summary>
     /// Literal for code: LithiumLiHeparin
     /// </summary>
     public const string LiteralLithiumLiHeparin = "HEPL";
+
+    /// <summary>
+    /// Literal for code: V20371LithiumLiHeparin
+    /// </summary>
+    public const string LiteralV20371LithiumLiHeparin = "http://terminology.hl7.org/CodeSystem/v2-0371#HEPL";
 
     /// <summary>
     /// Literal for code: SodiumNaHeparin
@@ -671,9 +811,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSodiumNaHeparin = "HEPN";
 
     /// <summary>
+    /// Literal for code: V20371SodiumNaHeparin
+    /// </summary>
+    public const string LiteralV20371SodiumNaHeparin = "http://terminology.hl7.org/CodeSystem/v2-0371#HEPN";
+
+    /// <summary>
     /// Literal for code: NitricAcid
     /// </summary>
     public const string LiteralNitricAcid = "HNO3";
+
+    /// <summary>
+    /// Literal for code: V20371NitricAcid
+    /// </summary>
+    public const string LiteralV20371NitricAcid = "http://terminology.hl7.org/CodeSystem/v2-0371#HNO3";
 
     /// <summary>
     /// Literal for code: JonesKendrickMedium
@@ -681,9 +831,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJonesKendrickMedium = "JKM";
 
     /// <summary>
+    /// Literal for code: V20371JonesKendrickMedium
+    /// </summary>
+    public const string LiteralV20371JonesKendrickMedium = "http://terminology.hl7.org/CodeSystem/v2-0371#JKM";
+
+    /// <summary>
     /// Literal for code: KarnovskyQuoteSFixative
     /// </summary>
     public const string LiteralKarnovskyQuoteSFixative = "KARN";
+
+    /// <summary>
+    /// Literal for code: V20371KarnovskyQuoteSFixative
+    /// </summary>
+    public const string LiteralV20371KarnovskyQuoteSFixative = "http://terminology.hl7.org/CodeSystem/v2-0371#KARN";
 
     /// <summary>
     /// Literal for code: PotassiumOxalate
@@ -691,9 +851,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPotassiumOxalate = "KOX";
 
     /// <summary>
+    /// Literal for code: V20371PotassiumOxalate
+    /// </summary>
+    public const string LiteralV20371PotassiumOxalate = "http://terminology.hl7.org/CodeSystem/v2-0371#KOX";
+
+    /// <summary>
     /// Literal for code: LithiumIodoacetate
     /// </summary>
     public const string LiteralLithiumIodoacetate = "LIA";
+
+    /// <summary>
+    /// Literal for code: V20371LithiumIodoacetate
+    /// </summary>
+    public const string LiteralV20371LithiumIodoacetate = "http://terminology.hl7.org/CodeSystem/v2-0371#LIA";
 
     /// <summary>
     /// Literal for code: M4
@@ -701,9 +871,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralM4 = "M4";
 
     /// <summary>
+    /// Literal for code: V20371M4
+    /// </summary>
+    public const string LiteralV20371M4 = "http://terminology.hl7.org/CodeSystem/v2-0371#M4";
+
+    /// <summary>
     /// Literal for code: M4RT
     /// </summary>
     public const string LiteralM4RT = "M4RT";
+
+    /// <summary>
+    /// Literal for code: V20371M4RT
+    /// </summary>
+    public const string LiteralV20371M4RT = "http://terminology.hl7.org/CodeSystem/v2-0371#M4RT";
 
     /// <summary>
     /// Literal for code: M5
@@ -711,9 +891,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralM5 = "M5";
 
     /// <summary>
+    /// Literal for code: V20371M5
+    /// </summary>
+    public const string LiteralV20371M5 = "http://terminology.hl7.org/CodeSystem/v2-0371#M5";
+
+    /// <summary>
     /// Literal for code: MichelQuoteSTransportMedium
     /// </summary>
     public const string LiteralMichelQuoteSTransportMedium = "MICHTM";
+
+    /// <summary>
+    /// Literal for code: V20371MichelQuoteSTransportMedium
+    /// </summary>
+    public const string LiteralV20371MichelQuoteSTransportMedium = "http://terminology.hl7.org/CodeSystem/v2-0371#MICHTM";
 
     /// <summary>
     /// Literal for code: MMDTransportMedium
@@ -721,9 +911,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMMDTransportMedium = "MMDTM";
 
     /// <summary>
+    /// Literal for code: V20371MMDTransportMedium
+    /// </summary>
+    public const string LiteralV20371MMDTransportMedium = "http://terminology.hl7.org/CodeSystem/v2-0371#MMDTM";
+
+    /// <summary>
     /// Literal for code: SodiumFluoride
     /// </summary>
     public const string LiteralSodiumFluoride = "NAF";
+
+    /// <summary>
+    /// Literal for code: V20371SodiumFluoride
+    /// </summary>
+    public const string LiteralV20371SodiumFluoride = "http://terminology.hl7.org/CodeSystem/v2-0371#NAF";
 
     /// <summary>
     /// Literal for code: SodiumPolyanetholSulfonate035PercentIn085PercentSodiumChloride
@@ -731,9 +931,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSodiumPolyanetholSulfonate035PercentIn085PercentSodiumChloride = "NAPS";
 
     /// <summary>
+    /// Literal for code: V20371SodiumPolyanetholSulfonate035PercentIn085PercentSodiumChloride
+    /// </summary>
+    public const string LiteralV20371SodiumPolyanetholSulfonate035PercentIn085PercentSodiumChloride = "http://terminology.hl7.org/CodeSystem/v2-0371#NAPS";
+
+    /// <summary>
     /// Literal for code: None
     /// </summary>
     public const string LiteralNone = "NONE";
+
+    /// <summary>
+    /// Literal for code: V20371None
+    /// </summary>
+    public const string LiteralV20371None = "http://terminology.hl7.org/CodeSystem/v2-0371#NONE";
 
     /// <summary>
     /// Literal for code: PagesQuoteSSaline
@@ -741,9 +951,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPagesQuoteSSaline = "PAGE";
 
     /// <summary>
+    /// Literal for code: V20371PagesQuoteSSaline
+    /// </summary>
+    public const string LiteralV20371PagesQuoteSSaline = "http://terminology.hl7.org/CodeSystem/v2-0371#PAGE";
+
+    /// <summary>
     /// Literal for code: Phenol
     /// </summary>
     public const string LiteralPhenol = "PHENOL";
+
+    /// <summary>
+    /// Literal for code: V20371Phenol
+    /// </summary>
+    public const string LiteralV20371Phenol = "http://terminology.hl7.org/CodeSystem/v2-0371#PHENOL";
 
     /// <summary>
     /// Literal for code: PVAPolyvinylalcohol
@@ -751,9 +971,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPVAPolyvinylalcohol = "PVA";
 
     /// <summary>
+    /// Literal for code: V20371PVAPolyvinylalcohol
+    /// </summary>
+    public const string LiteralV20371PVAPolyvinylalcohol = "http://terminology.hl7.org/CodeSystem/v2-0371#PVA";
+
+    /// <summary>
     /// Literal for code: ReaganLoweMedium
     /// </summary>
     public const string LiteralReaganLoweMedium = "RLM";
+
+    /// <summary>
+    /// Literal for code: V20371ReaganLoweMedium
+    /// </summary>
+    public const string LiteralV20371ReaganLoweMedium = "http://terminology.hl7.org/CodeSystem/v2-0371#RLM";
 
     /// <summary>
     /// Literal for code: SiliceousEarth12Mg
@@ -761,9 +991,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSiliceousEarth12Mg = "SILICA";
 
     /// <summary>
+    /// Literal for code: V20371SiliceousEarth12Mg
+    /// </summary>
+    public const string LiteralV20371SiliceousEarth12Mg = "http://terminology.hl7.org/CodeSystem/v2-0371#SILICA";
+
+    /// <summary>
     /// Literal for code: SPSThisShouldBeSpelledOutIfNotUniversallyUnderstood
     /// </summary>
     public const string LiteralSPSThisShouldBeSpelledOutIfNotUniversallyUnderstood = "SPS";
+
+    /// <summary>
+    /// Literal for code: V20371SPSThisShouldBeSpelledOutIfNotUniversallyUnderstood
+    /// </summary>
+    public const string LiteralV20371SPSThisShouldBeSpelledOutIfNotUniversallyUnderstood = "http://terminology.hl7.org/CodeSystem/v2-0371#SPS";
 
     /// <summary>
     /// Literal for code: SerumSeparatorTubePolymerGel
@@ -771,9 +1011,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSerumSeparatorTubePolymerGel = "SST";
 
     /// <summary>
+    /// Literal for code: V20371SerumSeparatorTubePolymerGel
+    /// </summary>
+    public const string LiteralV20371SerumSeparatorTubePolymerGel = "http://terminology.hl7.org/CodeSystem/v2-0371#SST";
+
+    /// <summary>
     /// Literal for code: StuartTransportMedium
     /// </summary>
     public const string LiteralStuartTransportMedium = "STUTM";
+
+    /// <summary>
+    /// Literal for code: V20371StuartTransportMedium
+    /// </summary>
+    public const string LiteralV20371StuartTransportMedium = "http://terminology.hl7.org/CodeSystem/v2-0371#STUTM";
 
     /// <summary>
     /// Literal for code: Thrombin
@@ -781,9 +1031,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThrombin = "THROM";
 
     /// <summary>
+    /// Literal for code: V20371Thrombin
+    /// </summary>
+    public const string LiteralV20371Thrombin = "http://terminology.hl7.org/CodeSystem/v2-0371#THROM";
+
+    /// <summary>
     /// Literal for code: Thymol
     /// </summary>
     public const string LiteralThymol = "THYMOL";
+
+    /// <summary>
+    /// Literal for code: V20371Thymol
+    /// </summary>
+    public const string LiteralV20371Thymol = "http://terminology.hl7.org/CodeSystem/v2-0371#THYMOL";
 
     /// <summary>
     /// Literal for code: ThyoglycollateBroth
@@ -791,9 +1051,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThyoglycollateBroth = "THYO";
 
     /// <summary>
+    /// Literal for code: V20371ThyoglycollateBroth
+    /// </summary>
+    public const string LiteralV20371ThyoglycollateBroth = "http://terminology.hl7.org/CodeSystem/v2-0371#THYO";
+
+    /// <summary>
     /// Literal for code: Toluene
     /// </summary>
     public const string LiteralToluene = "TOLU";
+
+    /// <summary>
+    /// Literal for code: V20371Toluene
+    /// </summary>
+    public const string LiteralV20371Toluene = "http://terminology.hl7.org/CodeSystem/v2-0371#TOLU";
 
     /// <summary>
     /// Literal for code: UreaplasmaTransportMedium
@@ -801,13 +1071,148 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUreaplasmaTransportMedium = "URETM";
 
     /// <summary>
+    /// Literal for code: V20371UreaplasmaTransportMedium
+    /// </summary>
+    public const string LiteralV20371UreaplasmaTransportMedium = "http://terminology.hl7.org/CodeSystem/v2-0371#URETM";
+
+    /// <summary>
     /// Literal for code: ViralTransportMedium
     /// </summary>
     public const string LiteralViralTransportMedium = "VIRTM";
 
     /// <summary>
+    /// Literal for code: V20371ViralTransportMedium
+    /// </summary>
+    public const string LiteralV20371ViralTransportMedium = "http://terminology.hl7.org/CodeSystem/v2-0371#VIRTM";
+
+    /// <summary>
     /// Literal for code: BufferedCitrateWestergrenSedimentationRate
     /// </summary>
     public const string LiteralBufferedCitrateWestergrenSedimentationRate = "WEST";
+
+    /// <summary>
+    /// Literal for code: V20371BufferedCitrateWestergrenSedimentationRate
+    /// </summary>
+    public const string LiteralV20371BufferedCitrateWestergrenSedimentationRate = "http://terminology.hl7.org/CodeSystem/v2-0371#WEST";
+
+    /// <summary>
+    /// Dictionary for looking up V20371 Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ACDA", ACDSolutionA }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#ACDA", ACDSolutionA }, 
+      { "ACDB", ACDSolutionB }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#ACDB", ACDSolutionB }, 
+      { "ACET", AceticAcid }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#ACET", AceticAcid }, 
+      { "AMIES", AmiesTransportMedium }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#AMIES", AmiesTransportMedium }, 
+      { "BACTM", BacterialTransportMedium }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#BACTM", BacterialTransportMedium }, 
+      { "BF10", Buffered10PercentFormalin }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#BF10", Buffered10PercentFormalin }, 
+      { "BOR", BorateBoricAcid }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#BOR", BorateBoricAcid }, 
+      { "BOUIN", BouinQuoteSSolution }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#BOUIN", BouinQuoteSSolution }, 
+      { "BSKM", BufferedSkimMilk }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#BSKM", BufferedSkimMilk }, 
+      { "C32", VAL32PercentCitrate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#C32", VAL32PercentCitrate }, 
+      { "C38", VAL38PercentCitrate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#C38", VAL38PercentCitrate }, 
+      { "CARS", CarsonQuoteSModified10PercentFormalin }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#CARS", CarsonQuoteSModified10PercentFormalin }, 
+      { "CARY", CaryBlairMedium }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#CARY", CaryBlairMedium }, 
+      { "CHLTM", ChlamydiaTransportMedium }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#CHLTM", ChlamydiaTransportMedium }, 
+      { "CTAD", CTADThisShouldBeSpelledOutIfNotUniversallyUnderstood }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#CTAD", CTADThisShouldBeSpelledOutIfNotUniversallyUnderstood }, 
+      { "EDTK", PotassiumKEDTA }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#EDTK", PotassiumKEDTA }, 
+      { "EDTK15", PotassiumKEDTA15Percent }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#EDTK15", PotassiumKEDTA15Percent }, 
+      { "EDTK75", PotassiumKEDTA75Percent }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#EDTK75", PotassiumKEDTA75Percent }, 
+      { "EDTN", SodiumNaEDTA }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#EDTN", SodiumNaEDTA }, 
+      { "ENT", EntericBacteriaTransportMedium }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#ENT", EntericBacteriaTransportMedium }, 
+      { "ENT+", EntericPlus }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#ENT+", EntericPlus }, 
+      { "F10", VAL10PercentFormalin }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#F10", VAL10PercentFormalin }, 
+      { "FDP", ThrombinNIHSoybeanTrypsinInhibitorFibrinDegradationProducts }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#FDP", ThrombinNIHSoybeanTrypsinInhibitorFibrinDegradationProducts }, 
+      { "FL10", SodiumFluoride10mg }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#FL10", SodiumFluoride10mg }, 
+      { "FL100", SodiumFluoride100mg }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#FL100", SodiumFluoride100mg }, 
+      { "HCL6", VAL6NHCL }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#HCL6", VAL6NHCL }, 
+      { "HEPA", AmmoniumHeparin }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#HEPA", AmmoniumHeparin }, 
+      { "HEPL", LithiumLiHeparin }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#HEPL", LithiumLiHeparin }, 
+      { "HEPN", SodiumNaHeparin }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#HEPN", SodiumNaHeparin }, 
+      { "HNO3", NitricAcid }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#HNO3", NitricAcid }, 
+      { "JKM", JonesKendrickMedium }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#JKM", JonesKendrickMedium }, 
+      { "KARN", KarnovskyQuoteSFixative }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#KARN", KarnovskyQuoteSFixative }, 
+      { "KOX", PotassiumOxalate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#KOX", PotassiumOxalate }, 
+      { "LIA", LithiumIodoacetate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#LIA", LithiumIodoacetate }, 
+      { "M4", M4 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#M4", M4 }, 
+      { "M4RT", M4RT }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#M4RT", M4RT }, 
+      { "M5", M5 }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#M5", M5 }, 
+      { "MICHTM", MichelQuoteSTransportMedium }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#MICHTM", MichelQuoteSTransportMedium }, 
+      { "MMDTM", MMDTransportMedium }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#MMDTM", MMDTransportMedium }, 
+      { "NAF", SodiumFluoride }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#NAF", SodiumFluoride }, 
+      { "NAPS", SodiumPolyanetholSulfonate035PercentIn085PercentSodiumChloride }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#NAPS", SodiumPolyanetholSulfonate035PercentIn085PercentSodiumChloride }, 
+      { "NONE", None }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#NONE", None }, 
+      { "PAGE", PagesQuoteSSaline }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#PAGE", PagesQuoteSSaline }, 
+      { "PHENOL", Phenol }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#PHENOL", Phenol }, 
+      { "PVA", PVAPolyvinylalcohol }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#PVA", PVAPolyvinylalcohol }, 
+      { "RLM", ReaganLoweMedium }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#RLM", ReaganLoweMedium }, 
+      { "SILICA", SiliceousEarth12Mg }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#SILICA", SiliceousEarth12Mg }, 
+      { "SPS", SPSThisShouldBeSpelledOutIfNotUniversallyUnderstood }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#SPS", SPSThisShouldBeSpelledOutIfNotUniversallyUnderstood }, 
+      { "SST", SerumSeparatorTubePolymerGel }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#SST", SerumSeparatorTubePolymerGel }, 
+      { "STUTM", StuartTransportMedium }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#STUTM", StuartTransportMedium }, 
+      { "THROM", Thrombin }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#THROM", Thrombin }, 
+      { "THYMOL", Thymol }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#THYMOL", Thymol }, 
+      { "THYO", ThyoglycollateBroth }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#THYO", ThyoglycollateBroth }, 
+      { "TOLU", Toluene }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#TOLU", Toluene }, 
+      { "URETM", UreaplasmaTransportMedium }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#URETM", UreaplasmaTransportMedium }, 
+      { "VIRTM", ViralTransportMedium }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#VIRTM", ViralTransportMedium }, 
+      { "WEST", BufferedCitrateWestergrenSedimentationRate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0371#WEST", BufferedCitrateWestergrenSedimentationRate }, 
+    };
   };
 }

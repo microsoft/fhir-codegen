@@ -63,9 +63,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAccess = "access";
 
     /// <summary>
+    /// Literal for code: ConsentActionAccess
+    /// </summary>
+    public const string LiteralConsentActionAccess = "http://hl7.org/fhir/consentaction#access";
+
+    /// <summary>
     /// Literal for code: Collect
     /// </summary>
     public const string LiteralCollect = "collect";
+
+    /// <summary>
+    /// Literal for code: ConsentActionCollect
+    /// </summary>
+    public const string LiteralConsentActionCollect = "http://hl7.org/fhir/consentaction#collect";
 
     /// <summary>
     /// Literal for code: AccessAndCorrect
@@ -73,13 +83,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAccessAndCorrect = "correct";
 
     /// <summary>
+    /// Literal for code: ConsentActionAccessAndCorrect
+    /// </summary>
+    public const string LiteralConsentActionAccessAndCorrect = "http://hl7.org/fhir/consentaction#correct";
+
+    /// <summary>
     /// Literal for code: Disclose
     /// </summary>
     public const string LiteralDisclose = "disclose";
 
     /// <summary>
+    /// Literal for code: ConsentActionDisclose
+    /// </summary>
+    public const string LiteralConsentActionDisclose = "http://hl7.org/fhir/consentaction#disclose";
+
+    /// <summary>
     /// Literal for code: Use
     /// </summary>
     public const string LiteralUse = "use";
+
+    /// <summary>
+    /// Literal for code: ConsentActionUse
+    /// </summary>
+    public const string LiteralConsentActionUse = "http://hl7.org/fhir/consentaction#use";
+
+    /// <summary>
+    /// Dictionary for looking up ConsentAction Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "access", Access }, 
+      { "http://hl7.org/fhir/consentaction#access", Access }, 
+      { "collect", Collect }, 
+      { "http://hl7.org/fhir/consentaction#collect", Collect }, 
+      { "correct", AccessAndCorrect }, 
+      { "http://hl7.org/fhir/consentaction#correct", AccessAndCorrect }, 
+      { "disclose", Disclose }, 
+      { "http://hl7.org/fhir/consentaction#disclose", Disclose }, 
+      { "use", Use }, 
+      { "http://hl7.org/fhir/consentaction#use", Use }, 
+    };
   };
 }

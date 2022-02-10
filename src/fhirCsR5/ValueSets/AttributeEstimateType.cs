@@ -117,9 +117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStandardErrorOfTheMean = "0000037";
 
     /// <summary>
+    /// Literal for code: AttributeEstimateTypeStandardErrorOfTheMean
+    /// </summary>
+    public const string LiteralAttributeEstimateTypeStandardErrorOfTheMean = "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#0000037";
+
+    /// <summary>
     /// Literal for code: CochranQuoteSQStatistic
     /// </summary>
     public const string LiteralCochranQuoteSQStatistic = "0000419";
+
+    /// <summary>
+    /// Literal for code: AttributeEstimateTypeCochranQuoteSQStatistic
+    /// </summary>
+    public const string LiteralAttributeEstimateTypeCochranQuoteSQStatistic = "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#0000419";
 
     /// <summary>
     /// Literal for code: ISquared
@@ -127,9 +137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralISquared = "0000420";
 
     /// <summary>
+    /// Literal for code: AttributeEstimateTypeISquared
+    /// </summary>
+    public const string LiteralAttributeEstimateTypeISquared = "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#0000420";
+
+    /// <summary>
     /// Literal for code: TauSquared
     /// </summary>
     public const string LiteralTauSquared = "0000421";
+
+    /// <summary>
+    /// Literal for code: AttributeEstimateTypeTauSquared
+    /// </summary>
+    public const string LiteralAttributeEstimateTypeTauSquared = "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#0000421";
 
     /// <summary>
     /// Literal for code: CredibleInterval
@@ -137,9 +157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCredibleInterval = "0000455";
 
     /// <summary>
+    /// Literal for code: AttributeEstimateTypeCredibleInterval
+    /// </summary>
+    public const string LiteralAttributeEstimateTypeCredibleInterval = "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#0000455";
+
+    /// <summary>
     /// Literal for code: Range
     /// </summary>
     public const string LiteralRange = "C38013";
+
+    /// <summary>
+    /// Literal for code: AttributeEstimateTypeRange
+    /// </summary>
+    public const string LiteralAttributeEstimateTypeRange = "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#C38013";
 
     /// <summary>
     /// Literal for code: PValue
@@ -147,9 +177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPValue = "C44185";
 
     /// <summary>
+    /// Literal for code: AttributeEstimateTypePValue
+    /// </summary>
+    public const string LiteralAttributeEstimateTypePValue = "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#C44185";
+
+    /// <summary>
     /// Literal for code: Variance
     /// </summary>
     public const string LiteralVariance = "C48918";
+
+    /// <summary>
+    /// Literal for code: AttributeEstimateTypeVariance
+    /// </summary>
+    public const string LiteralAttributeEstimateTypeVariance = "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#C48918";
 
     /// <summary>
     /// Literal for code: InterquartileRange
@@ -157,13 +197,56 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInterquartileRange = "C53245";
 
     /// <summary>
+    /// Literal for code: AttributeEstimateTypeInterquartileRange
+    /// </summary>
+    public const string LiteralAttributeEstimateTypeInterquartileRange = "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#C53245";
+
+    /// <summary>
     /// Literal for code: StandardDeviation
     /// </summary>
     public const string LiteralStandardDeviation = "C53322";
 
     /// <summary>
+    /// Literal for code: AttributeEstimateTypeStandardDeviation
+    /// </summary>
+    public const string LiteralAttributeEstimateTypeStandardDeviation = "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#C53322";
+
+    /// <summary>
     /// Literal for code: ConfidenceInterval
     /// </summary>
     public const string LiteralConfidenceInterval = "C53324";
+
+    /// <summary>
+    /// Literal for code: AttributeEstimateTypeConfidenceInterval
+    /// </summary>
+    public const string LiteralAttributeEstimateTypeConfidenceInterval = "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#C53324";
+
+    /// <summary>
+    /// Dictionary for looking up AttributeEstimateType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "0000037", StandardErrorOfTheMean }, 
+      { "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#0000037", StandardErrorOfTheMean }, 
+      { "0000419", CochranQuoteSQStatistic }, 
+      { "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#0000419", CochranQuoteSQStatistic }, 
+      { "0000420", ISquared }, 
+      { "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#0000420", ISquared }, 
+      { "0000421", TauSquared }, 
+      { "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#0000421", TauSquared }, 
+      { "0000455", CredibleInterval }, 
+      { "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#0000455", CredibleInterval }, 
+      { "C38013", Range }, 
+      { "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#C38013", Range }, 
+      { "C44185", PValue }, 
+      { "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#C44185", PValue }, 
+      { "C48918", Variance }, 
+      { "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#C48918", Variance }, 
+      { "C53245", InterquartileRange }, 
+      { "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#C53245", InterquartileRange }, 
+      { "C53322", StandardDeviation }, 
+      { "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#C53322", StandardDeviation }, 
+      { "C53324", ConfidenceInterval }, 
+      { "http://terminology.hl7.org/CodeSystem/attribute-estimate-type#C53324", ConfidenceInterval }, 
+    };
   };
 }

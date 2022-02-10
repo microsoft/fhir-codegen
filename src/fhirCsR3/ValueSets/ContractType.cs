@@ -63,9 +63,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConsent = "consent";
 
     /// <summary>
+    /// Literal for code: ContractTypeConsent
+    /// </summary>
+    public const string LiteralContractTypeConsent = "http://hl7.org/fhir/contracttypecodes#consent";
+
+    /// <summary>
     /// Literal for code: Disclosure
     /// </summary>
     public const string LiteralDisclosure = "disclosure";
+
+    /// <summary>
+    /// Literal for code: ContractTypeDisclosure
+    /// </summary>
+    public const string LiteralContractTypeDisclosure = "http://hl7.org/fhir/contracttypecodes#disclosure";
 
     /// <summary>
     /// Literal for code: HealthInsurance
@@ -73,13 +83,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHealthInsurance = "healthinsurance";
 
     /// <summary>
+    /// Literal for code: ContractTypeHealthInsurance
+    /// </summary>
+    public const string LiteralContractTypeHealthInsurance = "http://hl7.org/fhir/contracttypecodes#healthinsurance";
+
+    /// <summary>
     /// Literal for code: Privacy
     /// </summary>
     public const string LiteralPrivacy = "privacy";
 
     /// <summary>
+    /// Literal for code: ContractTypePrivacy
+    /// </summary>
+    public const string LiteralContractTypePrivacy = "http://hl7.org/fhir/contracttypecodes#privacy";
+
+    /// <summary>
     /// Literal for code: SupplyContract
     /// </summary>
     public const string LiteralSupplyContract = "supply";
+
+    /// <summary>
+    /// Literal for code: ContractTypeSupplyContract
+    /// </summary>
+    public const string LiteralContractTypeSupplyContract = "http://hl7.org/fhir/contracttypecodes#supply";
+
+    /// <summary>
+    /// Dictionary for looking up ContractType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "consent", Consent }, 
+      { "http://hl7.org/fhir/contracttypecodes#consent", Consent }, 
+      { "disclosure", Disclosure }, 
+      { "http://hl7.org/fhir/contracttypecodes#disclosure", Disclosure }, 
+      { "healthinsurance", HealthInsurance }, 
+      { "http://hl7.org/fhir/contracttypecodes#healthinsurance", HealthInsurance }, 
+      { "privacy", Privacy }, 
+      { "http://hl7.org/fhir/contracttypecodes#privacy", Privacy }, 
+      { "supply", SupplyContract }, 
+      { "http://hl7.org/fhir/contracttypecodes#supply", SupplyContract }, 
+    };
   };
 }

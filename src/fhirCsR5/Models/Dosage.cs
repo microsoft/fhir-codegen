@@ -176,6 +176,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? AsNeededBoolean { get; set; }
     /// <summary>
+    /// Extension container element for AsNeededBoolean
+    /// </summary>
+    public Element _AsNeededBoolean { get; set; }
+    /// <summary>
     /// Can express "as needed" without a reason by setting the Boolean = True.  In this case the CodeableConcept is not populated.  Or you can express "as needed" with a reason by including the CodeableConcept.  In this case the Boolean is assumed to be True.  If you set the Boolean to False, then the dose is given according to the schedule and is not "prn" or "as needed".
     /// </summary>
     public CodeableConcept AsNeededCodeableConcept { get; set; }
@@ -216,6 +220,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public int? Sequence { get; set; }
     /// <summary>
+    /// Extension container element for Sequence
+    /// </summary>
+    public Element _Sequence { get; set; }
+    /// <summary>
     /// If the use case requires attributes from the BodySite resource (e.g. to identify and track separately) then use the standard extension [bodySite](extension-bodysite.html).  May be a summary code, or a reference to a very precise definition of the location, or both.
     /// </summary>
     public CodeableConcept Site { get; set; }
@@ -245,6 +253,12 @@ namespace fhirCsR5.Models
       if (Sequence != null)
       {
         writer.WriteNumber("sequence", (int)Sequence!);
+      }
+
+      if (_Sequence != null)
+      {
+        writer.WritePropertyName("_sequence");
+        _Sequence.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Text))
@@ -291,6 +305,12 @@ namespace fhirCsR5.Models
       if (AsNeededBoolean != null)
       {
         writer.WriteBoolean("asNeededBoolean", (bool)AsNeededBoolean!);
+      }
+
+      if (_AsNeededBoolean != null)
+      {
+        writer.WritePropertyName("_asNeededBoolean");
+        _AsNeededBoolean.SerializeJson(writer, options);
       }
 
       if (AsNeededCodeableConcept != null)
@@ -391,6 +411,11 @@ namespace fhirCsR5.Models
           AsNeededBoolean = reader.GetBoolean();
           break;
 
+        case "_asNeededBoolean":
+          _AsNeededBoolean = new fhirCsR5.Models.Element();
+          _AsNeededBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "asNeededCodeableConcept":
           AsNeededCodeableConcept = new fhirCsR5.Models.CodeableConcept();
           AsNeededCodeableConcept.DeserializeJson(ref reader, options);
@@ -459,6 +484,11 @@ namespace fhirCsR5.Models
 
         case "sequence":
           Sequence = reader.GetInt32();
+          break;
+
+        case "_sequence":
+          _Sequence = new fhirCsR5.Models.Element();
+          _Sequence.DeserializeJson(ref reader, options);
           break;
 
         case "site":

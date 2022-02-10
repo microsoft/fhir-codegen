@@ -63,9 +63,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBehavioral = "behavioral";
 
     /// <summary>
+    /// Literal for code: GoalCategoryBehavioral
+    /// </summary>
+    public const string LiteralGoalCategoryBehavioral = "http://terminology.hl7.org/CodeSystem/goal-category#behavioral";
+
+    /// <summary>
     /// Literal for code: Dietary
     /// </summary>
     public const string LiteralDietary = "dietary";
+
+    /// <summary>
+    /// Literal for code: GoalCategoryDietary
+    /// </summary>
+    public const string LiteralGoalCategoryDietary = "http://terminology.hl7.org/CodeSystem/goal-category#dietary";
 
     /// <summary>
     /// Literal for code: Nursing
@@ -73,13 +83,44 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNursing = "nursing";
 
     /// <summary>
+    /// Literal for code: GoalCategoryNursing
+    /// </summary>
+    public const string LiteralGoalCategoryNursing = "http://terminology.hl7.org/CodeSystem/goal-category#nursing";
+
+    /// <summary>
     /// Literal for code: Physiotherapy
     /// </summary>
     public const string LiteralPhysiotherapy = "physiotherapy";
 
     /// <summary>
+    /// Literal for code: GoalCategoryPhysiotherapy
+    /// </summary>
+    public const string LiteralGoalCategoryPhysiotherapy = "http://terminology.hl7.org/CodeSystem/goal-category#physiotherapy";
+
+    /// <summary>
     /// Literal for code: Safety
     /// </summary>
     public const string LiteralSafety = "safety";
+
+    /// <summary>
+    /// Literal for code: GoalCategorySafety
+    /// </summary>
+    public const string LiteralGoalCategorySafety = "http://terminology.hl7.org/CodeSystem/goal-category#safety";
+
+    /// <summary>
+    /// Dictionary for looking up GoalCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "behavioral", Behavioral }, 
+      { "http://terminology.hl7.org/CodeSystem/goal-category#behavioral", Behavioral }, 
+      { "dietary", Dietary }, 
+      { "http://terminology.hl7.org/CodeSystem/goal-category#dietary", Dietary }, 
+      { "nursing", Nursing }, 
+      { "http://terminology.hl7.org/CodeSystem/goal-category#nursing", Nursing }, 
+      { "physiotherapy", Physiotherapy }, 
+      { "http://terminology.hl7.org/CodeSystem/goal-category#physiotherapy", Physiotherapy }, 
+      { "safety", Safety }, 
+      { "http://terminology.hl7.org/CodeSystem/goal-category#safety", Safety }, 
+    };
   };
 }

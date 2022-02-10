@@ -454,6 +454,18 @@ namespace fhirCsR3.Models
     public const string INEXACT = "inexact";
     public const string UNMATCHED = "unmatched";
     public const string DISJOINT = "disjoint";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "relatedto",
+      "equivalent",
+      "equal",
+      "wider",
+      "subsumes",
+      "narrower",
+      "specializes",
+      "inexact",
+      "unmatched",
+      "disjoint",
+    };
   }
   /// <summary>
   /// Generally, the ideal is that there would only be one mapping for each concept in the source value set, but a given concept may be mapped multiple times with different comments or dependencies.
@@ -792,6 +804,11 @@ namespace fhirCsR3.Models
     public const string PROVIDED = "provided";
     public const string VAL_FIXED = "fixed";
     public const string OTHER_MAP = "other-map";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "provided",
+      "fixed",
+      "other-map",
+    };
   }
   /// <summary>
   /// A group of mappings that all have the same source and target system.
@@ -1065,6 +1082,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// A group of mappings that all have the same source and target system.
     /// </summary>
     public List<ConceptMapGroup> Group { get; set; }
@@ -1242,6 +1263,12 @@ namespace fhirCsR3.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -1453,6 +1480,11 @@ namespace fhirCsR3.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR3.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "group":
@@ -1671,5 +1703,11 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

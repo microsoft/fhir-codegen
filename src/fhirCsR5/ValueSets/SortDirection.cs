@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAscending = "ascending";
 
     /// <summary>
+    /// Literal for code: SortDirectionAscending
+    /// </summary>
+    public const string LiteralSortDirectionAscending = "http://hl7.org/fhir/sort-direction#ascending";
+
+    /// <summary>
     /// Literal for code: Descending
     /// </summary>
     public const string LiteralDescending = "descending";
+
+    /// <summary>
+    /// Literal for code: SortDirectionDescending
+    /// </summary>
+    public const string LiteralSortDirectionDescending = "http://hl7.org/fhir/sort-direction#descending";
+
+    /// <summary>
+    /// Dictionary for looking up SortDirection Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ascending", Ascending }, 
+      { "http://hl7.org/fhir/sort-direction#ascending", Ascending }, 
+      { "descending", Descending }, 
+      { "http://hl7.org/fhir/sort-direction#descending", Descending }, 
+    };
   };
 }

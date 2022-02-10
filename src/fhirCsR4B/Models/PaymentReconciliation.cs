@@ -354,6 +354,11 @@ namespace fhirCsR4B.Models
     public const string DISPLAY = "display";
     public const string PRINT = "print";
     public const string PRINTOPER = "printoper";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "display",
+      "print",
+      "printoper",
+    };
   }
   /// <summary>
   /// This resource provides the details including amount of a payment and allocates the payment items being paid.
@@ -809,6 +814,12 @@ namespace fhirCsR4B.Models
     public const string COMPLETE = "complete";
     public const string ERROR = "error";
     public const string PARTIAL = "partial";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "queued",
+      "complete",
+      "error",
+      "partial",
+    };
   }
   /// <summary>
   /// Code Values for the PaymentReconciliation.status field
@@ -818,5 +829,11 @@ namespace fhirCsR4B.Models
     public const string CANCELLED = "cancelled";
     public const string DRAFT = "draft";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "cancelled",
+      "draft",
+      "entered-in-error",
+    };
   }
 }

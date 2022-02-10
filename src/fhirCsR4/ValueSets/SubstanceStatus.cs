@@ -45,13 +45,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: SubstanceStatusActive
+    /// </summary>
+    public const string LiteralSubstanceStatusActive = "http://hl7.org/fhir/substance-status#active";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: SubstanceStatusEnteredInError
+    /// </summary>
+    public const string LiteralSubstanceStatusEnteredInError = "http://hl7.org/fhir/substance-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Inactive
     /// </summary>
     public const string LiteralInactive = "inactive";
+
+    /// <summary>
+    /// Literal for code: SubstanceStatusInactive
+    /// </summary>
+    public const string LiteralSubstanceStatusInactive = "http://hl7.org/fhir/substance-status#inactive";
+
+    /// <summary>
+    /// Dictionary for looking up SubstanceStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/substance-status#active", Active }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/substance-status#entered-in-error", EnteredInError }, 
+      { "inactive", Inactive }, 
+      { "http://hl7.org/fhir/substance-status#inactive", Inactive }, 
+    };
   };
 }

@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ContractSignerTypeCodes
   {
     /// <summary>
-    /// 
+    /// Affiliate
     /// </summary>
     public static readonly Coding Affiliate = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Agent
     /// </summary>
     public static readonly Coding Agent = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Amender
     /// </summary>
     public static readonly Coding Amender = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Assigned Entity
     /// </summary>
     public static readonly Coding AssignedEntity = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Author
     /// </summary>
     public static readonly Coding Author = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Authenticator
     /// </summary>
     public static readonly Coding Authenticator = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Citizen
     /// </summary>
     public static readonly Coding Citizen = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Claimant
     /// </summary>
     public static readonly Coding Claimant = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Co-Author
     /// </summary>
     public static readonly Coding CoAuthor = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Consenter
     /// </summary>
     public static readonly Coding Consenter = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Consent Witness
     /// </summary>
     public static readonly Coding ConsentWitness = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Contact
     /// </summary>
     public static readonly Coding Contact = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Co-Participant
     /// </summary>
     public static readonly Coding CoParticipant = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Covered Party
     /// </summary>
     public static readonly Coding CoveredParty = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Delegatee
     /// </summary>
     public static readonly Coding Delegatee = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Delegator
     /// </summary>
     public static readonly Coding Delegator = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Dependent
     /// </summary>
     public static readonly Coding Dependent = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Durable Power of Attorney
     /// </summary>
     public static readonly Coding DurablePowerOfAttorney = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Emergency Contact
     /// </summary>
     public static readonly Coding EmergencyContact = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Event Witness
     /// </summary>
     public static readonly Coding EventWitness = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Executor of Estate
     /// </summary>
     public static readonly Coding ExecutorOfEstate = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Grantee
     /// </summary>
     public static readonly Coding Grantee = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Grantor
     /// </summary>
     public static readonly Coding Grantor = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Guardian ad lidem
     /// </summary>
     public static readonly Coding GuardianAdLidem = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Guarantor
     /// </summary>
     public static readonly Coding Guarantor = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Guardian
     /// </summary>
     public static readonly Coding Guardian = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Healthcare Power of Attorney
     /// </summary>
     public static readonly Coding HealthcarePowerOfAttorney = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Healthcare Provider
     /// </summary>
     public static readonly Coding HealthcareProvider = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Informant
     /// </summary>
     public static readonly Coding Informant = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Investigation Subject
     /// </summary>
     public static readonly Coding InvestigationSubject = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Interpreter
     /// </summary>
     public static readonly Coding Interpreter = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Legal Authenticator
     /// </summary>
     public static readonly Coding LegalAuthenticator = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Named Insured
     /// </summary>
     public static readonly Coding NamedInsured = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Next of Kin
     /// </summary>
     public static readonly Coding NextOfKin = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Notary
     /// </summary>
     public static readonly Coding Notary = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Patient
     /// </summary>
     public static readonly Coding Patient = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Power of Attorney
     /// </summary>
     public static readonly Coding PowerOfAttorney = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Primary Author
     /// </summary>
     public static readonly Coding PrimaryAuthor = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Primary Responsible Party
     /// </summary>
     public static readonly Coding PrimaryResponsibleParty = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Recipient
     /// </summary>
     public static readonly Coding Recipient = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Responsible Party
     /// </summary>
     public static readonly Coding ResponsibleParty = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Reviewer
     /// </summary>
     public static readonly Coding Reviewer = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Source
     /// </summary>
     public static readonly Coding Source = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Special Power of Attorney
     /// </summary>
     public static readonly Coding SpecialPowerOfAttorney = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Transcriber
     /// </summary>
     public static readonly Coding Transcriber = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Validator
     /// </summary>
     public static readonly Coding Validator = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Verifier
     /// </summary>
     public static readonly Coding Verifier = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes"
     };
     /// <summary>
-    /// 
+    /// Witness
     /// </summary>
     public static readonly Coding Witness = new Coding
     {
@@ -450,9 +450,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAffiliate = "AFFL";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesAffiliate
+    /// </summary>
+    public const string LiteralContractsignertypecodesAffiliate = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#AFFL";
+
+    /// <summary>
     /// Literal for code: Agent
     /// </summary>
     public const string LiteralAgent = "AGNT";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesAgent
+    /// </summary>
+    public const string LiteralContractsignertypecodesAgent = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#AGNT";
 
     /// <summary>
     /// Literal for code: Amender
@@ -460,9 +470,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAmender = "AMENDER";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesAmender
+    /// </summary>
+    public const string LiteralContractsignertypecodesAmender = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#AMENDER";
+
+    /// <summary>
     /// Literal for code: AssignedEntity
     /// </summary>
     public const string LiteralAssignedEntity = "ASSIGNED";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesAssignedEntity
+    /// </summary>
+    public const string LiteralContractsignertypecodesAssignedEntity = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#ASSIGNED";
 
     /// <summary>
     /// Literal for code: Author
@@ -470,9 +490,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAuthor = "AUT";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesAuthor
+    /// </summary>
+    public const string LiteralContractsignertypecodesAuthor = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#AUT";
+
+    /// <summary>
     /// Literal for code: Authenticator
     /// </summary>
     public const string LiteralAuthenticator = "AUTHN";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesAuthenticator
+    /// </summary>
+    public const string LiteralContractsignertypecodesAuthenticator = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#AUTHN";
 
     /// <summary>
     /// Literal for code: Citizen
@@ -480,9 +510,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCitizen = "CIT";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesCitizen
+    /// </summary>
+    public const string LiteralContractsignertypecodesCitizen = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#CIT";
+
+    /// <summary>
     /// Literal for code: Claimant
     /// </summary>
     public const string LiteralClaimant = "CLAIMANT";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesClaimant
+    /// </summary>
+    public const string LiteralContractsignertypecodesClaimant = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#CLAIMANT";
 
     /// <summary>
     /// Literal for code: CoAuthor
@@ -490,9 +530,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCoAuthor = "COAUTH";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesCoAuthor
+    /// </summary>
+    public const string LiteralContractsignertypecodesCoAuthor = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#COAUTH";
+
+    /// <summary>
     /// Literal for code: Consenter
     /// </summary>
     public const string LiteralConsenter = "CONSENTER";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesConsenter
+    /// </summary>
+    public const string LiteralContractsignertypecodesConsenter = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#CONSENTER";
 
     /// <summary>
     /// Literal for code: ConsentWitness
@@ -500,9 +550,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralConsentWitness = "CONSWIT";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesConsentWitness
+    /// </summary>
+    public const string LiteralContractsignertypecodesConsentWitness = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#CONSWIT";
+
+    /// <summary>
     /// Literal for code: Contact
     /// </summary>
     public const string LiteralContact = "CONT";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesContact
+    /// </summary>
+    public const string LiteralContractsignertypecodesContact = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#CONT";
 
     /// <summary>
     /// Literal for code: CoParticipant
@@ -510,9 +570,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCoParticipant = "COPART";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesCoParticipant
+    /// </summary>
+    public const string LiteralContractsignertypecodesCoParticipant = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#COPART";
+
+    /// <summary>
     /// Literal for code: CoveredParty
     /// </summary>
     public const string LiteralCoveredParty = "COVPTY";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesCoveredParty
+    /// </summary>
+    public const string LiteralContractsignertypecodesCoveredParty = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#COVPTY";
 
     /// <summary>
     /// Literal for code: Delegatee
@@ -520,9 +590,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDelegatee = "DELEGATEE";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesDelegatee
+    /// </summary>
+    public const string LiteralContractsignertypecodesDelegatee = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#DELEGATEE";
+
+    /// <summary>
     /// Literal for code: Delegator
     /// </summary>
     public const string LiteralDelegator = "delegator";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesDelegator
+    /// </summary>
+    public const string LiteralContractsignertypecodesDelegator = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#delegator";
 
     /// <summary>
     /// Literal for code: Dependent
@@ -530,9 +610,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDependent = "DEPEND";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesDependent
+    /// </summary>
+    public const string LiteralContractsignertypecodesDependent = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#DEPEND";
+
+    /// <summary>
     /// Literal for code: DurablePowerOfAttorney
     /// </summary>
     public const string LiteralDurablePowerOfAttorney = "DPOWATT";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesDurablePowerOfAttorney
+    /// </summary>
+    public const string LiteralContractsignertypecodesDurablePowerOfAttorney = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#DPOWATT";
 
     /// <summary>
     /// Literal for code: EmergencyContact
@@ -540,9 +630,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmergencyContact = "EMGCON";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesEmergencyContact
+    /// </summary>
+    public const string LiteralContractsignertypecodesEmergencyContact = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#EMGCON";
+
+    /// <summary>
     /// Literal for code: EventWitness
     /// </summary>
     public const string LiteralEventWitness = "EVTWIT";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesEventWitness
+    /// </summary>
+    public const string LiteralContractsignertypecodesEventWitness = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#EVTWIT";
 
     /// <summary>
     /// Literal for code: ExecutorOfEstate
@@ -550,9 +650,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralExecutorOfEstate = "EXCEST";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesExecutorOfEstate
+    /// </summary>
+    public const string LiteralContractsignertypecodesExecutorOfEstate = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#EXCEST";
+
+    /// <summary>
     /// Literal for code: Grantee
     /// </summary>
     public const string LiteralGrantee = "GRANTEE";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesGrantee
+    /// </summary>
+    public const string LiteralContractsignertypecodesGrantee = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#GRANTEE";
 
     /// <summary>
     /// Literal for code: Grantor
@@ -560,9 +670,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGrantor = "GRANTOR";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesGrantor
+    /// </summary>
+    public const string LiteralContractsignertypecodesGrantor = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#GRANTOR";
+
+    /// <summary>
     /// Literal for code: GuardianAdLidem
     /// </summary>
     public const string LiteralGuardianAdLidem = "GUADLTM";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesGuardianAdLidem
+    /// </summary>
+    public const string LiteralContractsignertypecodesGuardianAdLidem = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#GUADLTM";
 
     /// <summary>
     /// Literal for code: Guarantor
@@ -570,9 +690,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGuarantor = "GUAR";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesGuarantor
+    /// </summary>
+    public const string LiteralContractsignertypecodesGuarantor = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#GUAR";
+
+    /// <summary>
     /// Literal for code: Guardian
     /// </summary>
     public const string LiteralGuardian = "GUARD";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesGuardian
+    /// </summary>
+    public const string LiteralContractsignertypecodesGuardian = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#GUARD";
 
     /// <summary>
     /// Literal for code: HealthcarePowerOfAttorney
@@ -580,9 +710,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHealthcarePowerOfAttorney = "HPOWATT";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesHealthcarePowerOfAttorney
+    /// </summary>
+    public const string LiteralContractsignertypecodesHealthcarePowerOfAttorney = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#HPOWATT";
+
+    /// <summary>
     /// Literal for code: HealthcareProvider
     /// </summary>
     public const string LiteralHealthcareProvider = "HPROV";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesHealthcareProvider
+    /// </summary>
+    public const string LiteralContractsignertypecodesHealthcareProvider = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#HPROV";
 
     /// <summary>
     /// Literal for code: Informant
@@ -590,9 +730,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInformant = "INF";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesInformant
+    /// </summary>
+    public const string LiteralContractsignertypecodesInformant = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#INF";
+
+    /// <summary>
     /// Literal for code: InvestigationSubject
     /// </summary>
     public const string LiteralInvestigationSubject = "INSBJ";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesInvestigationSubject
+    /// </summary>
+    public const string LiteralContractsignertypecodesInvestigationSubject = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#INSBJ";
 
     /// <summary>
     /// Literal for code: Interpreter
@@ -600,9 +750,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInterpreter = "INTPRT";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesInterpreter
+    /// </summary>
+    public const string LiteralContractsignertypecodesInterpreter = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#INTPRT";
+
+    /// <summary>
     /// Literal for code: LegalAuthenticator
     /// </summary>
     public const string LiteralLegalAuthenticator = "LEGAUTHN";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesLegalAuthenticator
+    /// </summary>
+    public const string LiteralContractsignertypecodesLegalAuthenticator = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#LEGAUTHN";
 
     /// <summary>
     /// Literal for code: NamedInsured
@@ -610,9 +770,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNamedInsured = "NMDINS";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesNamedInsured
+    /// </summary>
+    public const string LiteralContractsignertypecodesNamedInsured = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#NMDINS";
+
+    /// <summary>
     /// Literal for code: NextOfKin
     /// </summary>
     public const string LiteralNextOfKin = "NOK";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesNextOfKin
+    /// </summary>
+    public const string LiteralContractsignertypecodesNextOfKin = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#NOK";
 
     /// <summary>
     /// Literal for code: Notary
@@ -620,9 +790,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotary = "NOTARY";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesNotary
+    /// </summary>
+    public const string LiteralContractsignertypecodesNotary = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#NOTARY";
+
+    /// <summary>
     /// Literal for code: Patient
     /// </summary>
     public const string LiteralPatient = "PAT";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesPatient
+    /// </summary>
+    public const string LiteralContractsignertypecodesPatient = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#PAT";
 
     /// <summary>
     /// Literal for code: PowerOfAttorney
@@ -630,9 +810,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowerOfAttorney = "POWATT";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesPowerOfAttorney
+    /// </summary>
+    public const string LiteralContractsignertypecodesPowerOfAttorney = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#POWATT";
+
+    /// <summary>
     /// Literal for code: PrimaryAuthor
     /// </summary>
     public const string LiteralPrimaryAuthor = "PRIMAUTH";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesPrimaryAuthor
+    /// </summary>
+    public const string LiteralContractsignertypecodesPrimaryAuthor = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#PRIMAUTH";
 
     /// <summary>
     /// Literal for code: PrimaryResponsibleParty
@@ -640,9 +830,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPrimaryResponsibleParty = "PRIRECIP";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesPrimaryResponsibleParty
+    /// </summary>
+    public const string LiteralContractsignertypecodesPrimaryResponsibleParty = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#PRIRECIP";
+
+    /// <summary>
     /// Literal for code: Recipient
     /// </summary>
     public const string LiteralRecipient = "RECIP";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesRecipient
+    /// </summary>
+    public const string LiteralContractsignertypecodesRecipient = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#RECIP";
 
     /// <summary>
     /// Literal for code: ResponsibleParty
@@ -650,9 +850,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralResponsibleParty = "RESPRSN";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesResponsibleParty
+    /// </summary>
+    public const string LiteralContractsignertypecodesResponsibleParty = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#RESPRSN";
+
+    /// <summary>
     /// Literal for code: Reviewer
     /// </summary>
     public const string LiteralReviewer = "REVIEWER";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesReviewer
+    /// </summary>
+    public const string LiteralContractsignertypecodesReviewer = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#REVIEWER";
 
     /// <summary>
     /// Literal for code: Source
@@ -660,9 +870,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSource = "SOURCE";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesSource
+    /// </summary>
+    public const string LiteralContractsignertypecodesSource = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#SOURCE";
+
+    /// <summary>
     /// Literal for code: SpecialPowerOfAttorney
     /// </summary>
     public const string LiteralSpecialPowerOfAttorney = "SPOWATT";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesSpecialPowerOfAttorney
+    /// </summary>
+    public const string LiteralContractsignertypecodesSpecialPowerOfAttorney = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#SPOWATT";
 
     /// <summary>
     /// Literal for code: Transcriber
@@ -670,9 +890,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTranscriber = "TRANS";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesTranscriber
+    /// </summary>
+    public const string LiteralContractsignertypecodesTranscriber = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#TRANS";
+
+    /// <summary>
     /// Literal for code: Validator
     /// </summary>
     public const string LiteralValidator = "VALID";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesValidator
+    /// </summary>
+    public const string LiteralContractsignertypecodesValidator = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#VALID";
 
     /// <summary>
     /// Literal for code: Verifier
@@ -680,8 +910,120 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVerifier = "VERF";
 
     /// <summary>
+    /// Literal for code: ContractsignertypecodesVerifier
+    /// </summary>
+    public const string LiteralContractsignertypecodesVerifier = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#VERF";
+
+    /// <summary>
     /// Literal for code: Witness
     /// </summary>
     public const string LiteralWitness = "WIT";
+
+    /// <summary>
+    /// Literal for code: ContractsignertypecodesWitness
+    /// </summary>
+    public const string LiteralContractsignertypecodesWitness = "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#WIT";
+
+    /// <summary>
+    /// Dictionary for looking up ContractSignerType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "AFFL", Affiliate }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#AFFL", Affiliate }, 
+      { "AGNT", Agent }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#AGNT", Agent }, 
+      { "AMENDER", Amender }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#AMENDER", Amender }, 
+      { "ASSIGNED", AssignedEntity }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#ASSIGNED", AssignedEntity }, 
+      { "AUT", Author }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#AUT", Author }, 
+      { "AUTHN", Authenticator }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#AUTHN", Authenticator }, 
+      { "CIT", Citizen }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#CIT", Citizen }, 
+      { "CLAIMANT", Claimant }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#CLAIMANT", Claimant }, 
+      { "COAUTH", CoAuthor }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#COAUTH", CoAuthor }, 
+      { "CONSENTER", Consenter }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#CONSENTER", Consenter }, 
+      { "CONSWIT", ConsentWitness }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#CONSWIT", ConsentWitness }, 
+      { "CONT", Contact }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#CONT", Contact }, 
+      { "COPART", CoParticipant }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#COPART", CoParticipant }, 
+      { "COVPTY", CoveredParty }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#COVPTY", CoveredParty }, 
+      { "DELEGATEE", Delegatee }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#DELEGATEE", Delegatee }, 
+      { "delegator", Delegator }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#delegator", Delegator }, 
+      { "DEPEND", Dependent }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#DEPEND", Dependent }, 
+      { "DPOWATT", DurablePowerOfAttorney }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#DPOWATT", DurablePowerOfAttorney }, 
+      { "EMGCON", EmergencyContact }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#EMGCON", EmergencyContact }, 
+      { "EVTWIT", EventWitness }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#EVTWIT", EventWitness }, 
+      { "EXCEST", ExecutorOfEstate }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#EXCEST", ExecutorOfEstate }, 
+      { "GRANTEE", Grantee }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#GRANTEE", Grantee }, 
+      { "GRANTOR", Grantor }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#GRANTOR", Grantor }, 
+      { "GUADLTM", GuardianAdLidem }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#GUADLTM", GuardianAdLidem }, 
+      { "GUAR", Guarantor }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#GUAR", Guarantor }, 
+      { "GUARD", Guardian }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#GUARD", Guardian }, 
+      { "HPOWATT", HealthcarePowerOfAttorney }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#HPOWATT", HealthcarePowerOfAttorney }, 
+      { "HPROV", HealthcareProvider }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#HPROV", HealthcareProvider }, 
+      { "INF", Informant }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#INF", Informant }, 
+      { "INSBJ", InvestigationSubject }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#INSBJ", InvestigationSubject }, 
+      { "INTPRT", Interpreter }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#INTPRT", Interpreter }, 
+      { "LEGAUTHN", LegalAuthenticator }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#LEGAUTHN", LegalAuthenticator }, 
+      { "NMDINS", NamedInsured }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#NMDINS", NamedInsured }, 
+      { "NOK", NextOfKin }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#NOK", NextOfKin }, 
+      { "NOTARY", Notary }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#NOTARY", Notary }, 
+      { "PAT", Patient }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#PAT", Patient }, 
+      { "POWATT", PowerOfAttorney }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#POWATT", PowerOfAttorney }, 
+      { "PRIMAUTH", PrimaryAuthor }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#PRIMAUTH", PrimaryAuthor }, 
+      { "PRIRECIP", PrimaryResponsibleParty }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#PRIRECIP", PrimaryResponsibleParty }, 
+      { "RECIP", Recipient }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#RECIP", Recipient }, 
+      { "RESPRSN", ResponsibleParty }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#RESPRSN", ResponsibleParty }, 
+      { "REVIEWER", Reviewer }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#REVIEWER", Reviewer }, 
+      { "SOURCE", Source }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#SOURCE", Source }, 
+      { "SPOWATT", SpecialPowerOfAttorney }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#SPOWATT", SpecialPowerOfAttorney }, 
+      { "TRANS", Transcriber }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#TRANS", Transcriber }, 
+      { "VALID", Validator }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#VALID", Validator }, 
+      { "VERF", Verifier }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#VERF", Verifier }, 
+      { "WIT", Witness }, 
+      { "http://terminology.hl7.org/CodeSystem/contractsignertypecodes#WIT", Witness }, 
+    };
   };
 }

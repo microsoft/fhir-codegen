@@ -72,9 +72,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralAccepted = "accepted";
 
     /// <summary>
+    /// Literal for code: ParticipantstatusAccepted
+    /// </summary>
+    public const string LiteralParticipantstatusAccepted = "http://hl7.org/fhir/participantstatus#accepted";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: ParticipantstatusCompleted
+    /// </summary>
+    public const string LiteralParticipantstatusCompleted = "http://hl7.org/fhir/participantstatus#completed";
 
     /// <summary>
     /// Literal for code: Declined
@@ -82,9 +92,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralDeclined = "declined";
 
     /// <summary>
+    /// Literal for code: ParticipantstatusDeclined
+    /// </summary>
+    public const string LiteralParticipantstatusDeclined = "http://hl7.org/fhir/participantstatus#declined";
+
+    /// <summary>
     /// Literal for code: InProcess
     /// </summary>
     public const string LiteralInProcess = "in-process";
+
+    /// <summary>
+    /// Literal for code: ParticipantstatusInProcess
+    /// </summary>
+    public const string LiteralParticipantstatusInProcess = "http://hl7.org/fhir/participantstatus#in-process";
 
     /// <summary>
     /// Literal for code: NeedsAction
@@ -92,8 +112,36 @@ namespace fhirCsR2.ValueSets
     public const string LiteralNeedsAction = "needs-action";
 
     /// <summary>
+    /// Literal for code: ParticipantstatusNeedsAction
+    /// </summary>
+    public const string LiteralParticipantstatusNeedsAction = "http://hl7.org/fhir/participantstatus#needs-action";
+
+    /// <summary>
     /// Literal for code: Tentative
     /// </summary>
     public const string LiteralTentative = "tentative";
+
+    /// <summary>
+    /// Literal for code: ParticipantstatusTentative
+    /// </summary>
+    public const string LiteralParticipantstatusTentative = "http://hl7.org/fhir/participantstatus#tentative";
+
+    /// <summary>
+    /// Dictionary for looking up Participantstatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "accepted", Accepted }, 
+      { "http://hl7.org/fhir/participantstatus#accepted", Accepted }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/participantstatus#completed", Completed }, 
+      { "declined", Declined }, 
+      { "http://hl7.org/fhir/participantstatus#declined", Declined }, 
+      { "in-process", InProcess }, 
+      { "http://hl7.org/fhir/participantstatus#in-process", InProcess }, 
+      { "needs-action", NeedsAction }, 
+      { "http://hl7.org/fhir/participantstatus#needs-action", NeedsAction }, 
+      { "tentative", Tentative }, 
+      { "http://hl7.org/fhir/participantstatus#tentative", Tentative }, 
+    };
   };
 }

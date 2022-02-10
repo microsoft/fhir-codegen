@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class PayeetypeCodes
   {
     /// <summary>
-    /// 
+    /// Provider
     /// </summary>
     public static readonly Coding Provider = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/payeetype"
     };
     /// <summary>
-    /// 
+    /// Provider
     /// </summary>
     public static readonly Coding Provider_2 = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/payeetype"
     };
     /// <summary>
-    /// 
+    /// Subscriber
     /// </summary>
     public static readonly Coding Subscriber = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProvider = "other";
 
     /// <summary>
+    /// Literal for code: PayeetypeProvider
+    /// </summary>
+    public const string LiteralPayeetypeProvider = "http://terminology.hl7.org/CodeSystem/payeetype#other";
+
+    /// <summary>
     /// Literal for code: Provider_2
     /// </summary>
     public const string LiteralProvider_2 = "provider";
 
     /// <summary>
+    /// Literal for code: PayeetypeProvider_2
+    /// </summary>
+    public const string LiteralPayeetypeProvider_2 = "http://terminology.hl7.org/CodeSystem/payeetype#provider";
+
+    /// <summary>
     /// Literal for code: Subscriber
     /// </summary>
     public const string LiteralSubscriber = "subscriber";
+
+    /// <summary>
+    /// Literal for code: PayeetypeSubscriber
+    /// </summary>
+    public const string LiteralPayeetypeSubscriber = "http://terminology.hl7.org/CodeSystem/payeetype#subscriber";
+
+    /// <summary>
+    /// Dictionary for looking up Payeetype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "other", Provider }, 
+      { "http://terminology.hl7.org/CodeSystem/payeetype#other", Provider }, 
+      { "provider", Provider_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/payeetype#provider", Provider_2 }, 
+      { "subscriber", Subscriber }, 
+      { "http://terminology.hl7.org/CodeSystem/payeetype#subscriber", Subscriber }, 
+    };
   };
 }

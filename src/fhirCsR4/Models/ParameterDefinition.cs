@@ -36,6 +36,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public int? Min { get; set; }
     /// <summary>
+    /// Extension container element for Min
+    /// </summary>
+    public Element _Min { get; set; }
+    /// <summary>
     /// The name of the parameter used to allow access to the value of the parameter in evaluation contexts.
     /// </summary>
     public string Name { get; set; }
@@ -103,6 +107,12 @@ namespace fhirCsR4.Models
       if (Min != null)
       {
         writer.WriteNumber("min", (int)Min!);
+      }
+
+      if (_Min != null)
+      {
+        writer.WritePropertyName("_min");
+        _Min.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Max))
@@ -183,6 +193,11 @@ namespace fhirCsR4.Models
           Min = reader.GetInt32();
           break;
 
+        case "_min":
+          _Min = new fhirCsR4.Models.Element();
+          _Min.DeserializeJson(ref reader, options);
+          break;
+
         case "name":
           Name = reader.GetString();
           break;
@@ -256,5 +271,9 @@ namespace fhirCsR4.Models
   public static class ParameterDefinitionUseCodes {
     public const string VAL_IN = "in";
     public const string VAL_OUT = "out";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "in",
+      "out",
+    };
   }
 }

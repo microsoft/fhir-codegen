@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLogicalGroup = "logical-group";
 
     /// <summary>
+    /// Literal for code: ActionGroupingBehaviorLogicalGroup
+    /// </summary>
+    public const string LiteralActionGroupingBehaviorLogicalGroup = "http://hl7.org/fhir/action-grouping-behavior#logical-group";
+
+    /// <summary>
     /// Literal for code: SentenceGroup
     /// </summary>
     public const string LiteralSentenceGroup = "sentence-group";
 
     /// <summary>
+    /// Literal for code: ActionGroupingBehaviorSentenceGroup
+    /// </summary>
+    public const string LiteralActionGroupingBehaviorSentenceGroup = "http://hl7.org/fhir/action-grouping-behavior#sentence-group";
+
+    /// <summary>
     /// Literal for code: VisualGroup
     /// </summary>
     public const string LiteralVisualGroup = "visual-group";
+
+    /// <summary>
+    /// Literal for code: ActionGroupingBehaviorVisualGroup
+    /// </summary>
+    public const string LiteralActionGroupingBehaviorVisualGroup = "http://hl7.org/fhir/action-grouping-behavior#visual-group";
+
+    /// <summary>
+    /// Dictionary for looking up ActionGroupingBehavior Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "logical-group", LogicalGroup }, 
+      { "http://hl7.org/fhir/action-grouping-behavior#logical-group", LogicalGroup }, 
+      { "sentence-group", SentenceGroup }, 
+      { "http://hl7.org/fhir/action-grouping-behavior#sentence-group", SentenceGroup }, 
+      { "visual-group", VisualGroup }, 
+      { "http://hl7.org/fhir/action-grouping-behavior#visual-group", VisualGroup }, 
+    };
   };
 }

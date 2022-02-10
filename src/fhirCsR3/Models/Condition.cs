@@ -301,6 +301,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? AbatementBoolean { get; set; }
     /// <summary>
+    /// Extension container element for AbatementBoolean
+    /// </summary>
+    public Element _AbatementBoolean { get; set; }
+    /// <summary>
     /// There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.  If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid.  When abatementString exists, it implies the condition is abated.
     /// </summary>
     public Period AbatementPeriod { get; set; }
@@ -577,6 +581,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("abatementBoolean", (bool)AbatementBoolean!);
       }
 
+      if (_AbatementBoolean != null)
+      {
+        writer.WritePropertyName("_abatementBoolean");
+        _AbatementBoolean.SerializeJson(writer, options);
+      }
+
       if (AbatementPeriod != null)
       {
         writer.WritePropertyName("abatementPeriod");
@@ -677,6 +687,11 @@ namespace fhirCsR3.Models
 
         case "abatementBoolean":
           AbatementBoolean = reader.GetBoolean();
+          break;
+
+        case "_abatementBoolean":
+          _AbatementBoolean = new fhirCsR3.Models.Element();
+          _AbatementBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "abatementPeriod":
@@ -963,6 +978,13 @@ namespace fhirCsR3.Models
     public const string INACTIVE = "inactive";
     public const string REMISSION = "remission";
     public const string RESOLVED = "resolved";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "recurrence",
+      "inactive",
+      "remission",
+      "resolved",
+    };
   }
   /// <summary>
   /// Code Values for the Condition.verificationStatus field
@@ -974,5 +996,13 @@ namespace fhirCsR3.Models
     public const string REFUTED = "refuted";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "provisional",
+      "differential",
+      "confirmed",
+      "refuted",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

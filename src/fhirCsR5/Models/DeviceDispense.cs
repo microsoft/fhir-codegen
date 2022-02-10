@@ -765,5 +765,16 @@ namespace fhirCsR5.Models
     public const string STOPPED = "stopped";
     public const string DECLINED = "declined";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "preparation",
+      "in-progress",
+      "cancelled",
+      "on-hold",
+      "completed",
+      "entered-in-error",
+      "stopped",
+      "declined",
+      "unknown",
+    };
   }
 }

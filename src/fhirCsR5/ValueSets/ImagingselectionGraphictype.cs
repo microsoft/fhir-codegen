@@ -72,9 +72,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralELLIPSE = "ELLIPSE";
 
     /// <summary>
+    /// Literal for code: ImagingselectionGraphictypeELLIPSE
+    /// </summary>
+    public const string LiteralImagingselectionGraphictypeELLIPSE = "http://hl7.org/fhir/imagingselection-graphictype#ELLIPSE";
+
+    /// <summary>
     /// Literal for code: ELLIPSOID
     /// </summary>
     public const string LiteralELLIPSOID = "ELLIPSOID";
+
+    /// <summary>
+    /// Literal for code: ImagingselectionGraphictypeELLIPSOID
+    /// </summary>
+    public const string LiteralImagingselectionGraphictypeELLIPSOID = "http://hl7.org/fhir/imagingselection-graphictype#ELLIPSOID";
 
     /// <summary>
     /// Literal for code: MULTIPOINT
@@ -82,9 +92,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMULTIPOINT = "MULTIPOINT";
 
     /// <summary>
+    /// Literal for code: ImagingselectionGraphictypeMULTIPOINT
+    /// </summary>
+    public const string LiteralImagingselectionGraphictypeMULTIPOINT = "http://hl7.org/fhir/imagingselection-graphictype#MULTIPOINT";
+
+    /// <summary>
     /// Literal for code: POINT
     /// </summary>
     public const string LiteralPOINT = "POINT";
+
+    /// <summary>
+    /// Literal for code: ImagingselectionGraphictypePOINT
+    /// </summary>
+    public const string LiteralImagingselectionGraphictypePOINT = "http://hl7.org/fhir/imagingselection-graphictype#POINT";
 
     /// <summary>
     /// Literal for code: POLYGON
@@ -92,8 +112,36 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPOLYGON = "POLYGON";
 
     /// <summary>
+    /// Literal for code: ImagingselectionGraphictypePOLYGON
+    /// </summary>
+    public const string LiteralImagingselectionGraphictypePOLYGON = "http://hl7.org/fhir/imagingselection-graphictype#POLYGON";
+
+    /// <summary>
     /// Literal for code: POLYLINE
     /// </summary>
     public const string LiteralPOLYLINE = "POLYLINE";
+
+    /// <summary>
+    /// Literal for code: ImagingselectionGraphictypePOLYLINE
+    /// </summary>
+    public const string LiteralImagingselectionGraphictypePOLYLINE = "http://hl7.org/fhir/imagingselection-graphictype#POLYLINE";
+
+    /// <summary>
+    /// Dictionary for looking up ImagingselectionGraphictype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ELLIPSE", ELLIPSE }, 
+      { "http://hl7.org/fhir/imagingselection-graphictype#ELLIPSE", ELLIPSE }, 
+      { "ELLIPSOID", ELLIPSOID }, 
+      { "http://hl7.org/fhir/imagingselection-graphictype#ELLIPSOID", ELLIPSOID }, 
+      { "MULTIPOINT", MULTIPOINT }, 
+      { "http://hl7.org/fhir/imagingselection-graphictype#MULTIPOINT", MULTIPOINT }, 
+      { "POINT", POINT }, 
+      { "http://hl7.org/fhir/imagingselection-graphictype#POINT", POINT }, 
+      { "POLYGON", POLYGON }, 
+      { "http://hl7.org/fhir/imagingselection-graphictype#POLYGON", POLYGON }, 
+      { "POLYLINE", POLYLINE }, 
+      { "http://hl7.org/fhir/imagingselection-graphictype#POLYLINE", POLYLINE }, 
+    };
   };
 }

@@ -309,6 +309,14 @@ namespace fhirCsR4B.Models
     public const string DISCOUNT = "discount";
     public const string TAX = "tax";
     public const string INFORMATIONAL = "informational";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "base",
+      "surcharge",
+      "deduction",
+      "discount",
+      "tax",
+      "informational",
+    };
   }
   /// <summary>
   /// Group of properties which are applicable under the same conditions. If no applicability rules are established for the group, then all properties always apply.
@@ -526,6 +534,10 @@ namespace fhirCsR4B.Models
     /// Allows filtering of charge item definitions that are appropriate for use versus not.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// Typically, this is used for identifiers that can go in an HL7 V3 II (instance identifier) data type, and can then identify this charge item definition outside of FHIR, where it is not possible to use the logical URI.
     /// </summary>
@@ -767,6 +779,12 @@ namespace fhirCsR4B.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -1091,6 +1109,11 @@ namespace fhirCsR4B.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR4B.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "identifier":
@@ -1425,5 +1448,11 @@ namespace fhirCsR4B.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

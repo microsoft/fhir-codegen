@@ -118,6 +118,10 @@ namespace fhirCsR4.Models
   public static class CatalogEntryRelatedEntryRelationtypeCodes {
     public const string TRIGGERS = "triggers";
     public const string IS_REPLACED_BY = "is-replaced-by";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "triggers",
+      "is-replaced-by",
+    };
   }
   /// <summary>
   /// Catalog entries are wrappers that contextualize items included in a catalog.
@@ -160,6 +164,10 @@ namespace fhirCsR4.Models
     /// Whether the entry represents an orderable item.
     /// </summary>
     public bool Orderable { get; set; }
+    /// <summary>
+    /// Extension container element for Orderable
+    /// </summary>
+    public Element _Orderable { get; set; }
     /// <summary>
     /// The item in a catalog or definition.
     /// </summary>
@@ -229,6 +237,12 @@ namespace fhirCsR4.Models
       }
 
       writer.WriteBoolean("orderable", Orderable);
+
+      if (_Orderable != null)
+      {
+        writer.WritePropertyName("_orderable");
+        _Orderable.SerializeJson(writer, options);
+      }
 
       if (ReferencedItem != null)
       {
@@ -500,6 +514,11 @@ namespace fhirCsR4.Models
           Orderable = reader.GetBoolean();
           break;
 
+        case "_orderable":
+          _Orderable = new fhirCsR4.Models.Element();
+          _Orderable.DeserializeJson(ref reader, options);
+          break;
+
         case "referencedItem":
           ReferencedItem = new fhirCsR4.Models.Reference();
           ReferencedItem.DeserializeJson(ref reader, options);
@@ -599,5 +618,11 @@ namespace fhirCsR4.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

@@ -120,6 +120,12 @@ namespace fhirCsR3.Models
     public const string LEVEL2 = "level2";
     public const string LEVEL3 = "level3";
     public const string LEVEL4 = "level4";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "level1",
+      "level2",
+      "level3",
+      "level4",
+    };
   }
   /// <summary>
   /// Demographics and administrative information about a person independent of a specific health-related context.
@@ -134,6 +140,10 @@ namespace fhirCsR3.Models
     /// Whether this person's record is in active use.
     /// </summary>
     public bool? Active { get; set; }
+    /// <summary>
+    /// Extension container element for Active
+    /// </summary>
+    public Element _Active { get; set; }
     /// <summary>
     /// Person may have multiple addresses with different uses or applicable periods.
     /// </summary>
@@ -286,6 +296,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("active", (bool)Active!);
       }
 
+      if (_Active != null)
+      {
+        writer.WritePropertyName("_active");
+        _Active.SerializeJson(writer, options);
+      }
+
       if ((Link != null) && (Link.Count != 0))
       {
         writer.WritePropertyName("link");
@@ -313,6 +329,11 @@ namespace fhirCsR3.Models
       {
         case "active":
           Active = reader.GetBoolean();
+          break;
+
+        case "_active":
+          _Active = new fhirCsR3.Models.Element();
+          _Active.DeserializeJson(ref reader, options);
           break;
 
         case "address":
@@ -517,5 +538,11 @@ namespace fhirCsR3.Models
     public const string FEMALE = "female";
     public const string OTHER = "other";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "male",
+      "female",
+      "other",
+      "unknown",
+    };
   }
 }

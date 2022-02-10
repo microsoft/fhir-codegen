@@ -25,5 +25,18 @@ namespace fhirCsR4B.ValueSets
     /// Literal for code: TemporaryValue
     /// </summary>
     public const string LiteralTemporaryValue = "temp";
+
+    /// <summary>
+    /// Literal for code: ContractDefinitionTypeTemporaryValue
+    /// </summary>
+    public const string LiteralContractDefinitionTypeTemporaryValue = "http://hl7.org/fhir/contract-definition-type#temp";
+
+    /// <summary>
+    /// Dictionary for looking up ContractDefinitionType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "temp", TemporaryValue }, 
+      { "http://hl7.org/fhir/contract-definition-type#temp", TemporaryValue }, 
+    };
   };
 }

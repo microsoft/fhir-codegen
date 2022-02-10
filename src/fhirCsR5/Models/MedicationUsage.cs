@@ -644,5 +644,10 @@ namespace fhirCsR5.Models
     public const string RECORDED = "recorded";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string DRAFT = "draft";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "recorded",
+      "entered-in-error",
+      "draft",
+    };
   }
 }

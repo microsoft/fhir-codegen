@@ -36,8 +36,28 @@ namespace fhirCsR2.ValueSets
     public const string LiteralError = "error";
 
     /// <summary>
+    /// Literal for code: ConstraintSeverityError
+    /// </summary>
+    public const string LiteralConstraintSeverityError = "http://hl7.org/fhir/constraint-severity#error";
+
+    /// <summary>
     /// Literal for code: Warning
     /// </summary>
     public const string LiteralWarning = "warning";
+
+    /// <summary>
+    /// Literal for code: ConstraintSeverityWarning
+    /// </summary>
+    public const string LiteralConstraintSeverityWarning = "http://hl7.org/fhir/constraint-severity#warning";
+
+    /// <summary>
+    /// Dictionary for looking up ConstraintSeverity Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "error", Error }, 
+      { "http://hl7.org/fhir/constraint-severity#error", Error }, 
+      { "warning", Warning }, 
+      { "http://hl7.org/fhir/constraint-severity#warning", Warning }, 
+    };
   };
 }

@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOID = "oid";
 
     /// <summary>
+    /// Literal for code: NamingsystemIdentifierTypeOID
+    /// </summary>
+    public const string LiteralNamingsystemIdentifierTypeOID = "http://hl7.org/fhir/namingsystem-identifier-type#oid";
+
+    /// <summary>
     /// Literal for code: Other
     /// </summary>
     public const string LiteralOther = "other";
+
+    /// <summary>
+    /// Literal for code: NamingsystemIdentifierTypeOther
+    /// </summary>
+    public const string LiteralNamingsystemIdentifierTypeOther = "http://hl7.org/fhir/namingsystem-identifier-type#other";
 
     /// <summary>
     /// Literal for code: URI
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralURI = "uri";
 
     /// <summary>
+    /// Literal for code: NamingsystemIdentifierTypeURI
+    /// </summary>
+    public const string LiteralNamingsystemIdentifierTypeURI = "http://hl7.org/fhir/namingsystem-identifier-type#uri";
+
+    /// <summary>
     /// Literal for code: UUID
     /// </summary>
     public const string LiteralUUID = "uuid";
 
     /// <summary>
+    /// Literal for code: NamingsystemIdentifierTypeUUID
+    /// </summary>
+    public const string LiteralNamingsystemIdentifierTypeUUID = "http://hl7.org/fhir/namingsystem-identifier-type#uuid";
+
+    /// <summary>
     /// Literal for code: V2CSMNemonic
     /// </summary>
     public const string LiteralV2CSMNemonic = "v2csmnemonic";
+
+    /// <summary>
+    /// Literal for code: NamingsystemIdentifierTypeV2CSMNemonic
+    /// </summary>
+    public const string LiteralNamingsystemIdentifierTypeV2CSMNemonic = "http://hl7.org/fhir/namingsystem-identifier-type#v2csmnemonic";
+
+    /// <summary>
+    /// Dictionary for looking up NamingsystemIdentifierType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "oid", OID }, 
+      { "http://hl7.org/fhir/namingsystem-identifier-type#oid", OID }, 
+      { "other", Other }, 
+      { "http://hl7.org/fhir/namingsystem-identifier-type#other", Other }, 
+      { "uri", URI }, 
+      { "http://hl7.org/fhir/namingsystem-identifier-type#uri", URI }, 
+      { "uuid", UUID }, 
+      { "http://hl7.org/fhir/namingsystem-identifier-type#uuid", UUID }, 
+      { "v2csmnemonic", V2CSMNemonic }, 
+      { "http://hl7.org/fhir/namingsystem-identifier-type#v2csmnemonic", V2CSMNemonic }, 
+    };
   };
 }

@@ -890,5 +890,9 @@ namespace fhirCsR4.Models
   public static class AdverseEventActualityCodes {
     public const string ACTUAL = "actual";
     public const string POTENTIAL = "potential";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "actual",
+      "potential",
+    };
   }
 }

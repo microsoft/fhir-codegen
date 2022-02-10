@@ -40,9 +40,17 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? DetailBoolean { get; set; }
     /// <summary>
+    /// Extension container element for DetailBoolean
+    /// </summary>
+    public Element _DetailBoolean { get; set; }
+    /// <summary>
     /// A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the goal.target.measure defines a coded value.
     /// </summary>
     public int? DetailInteger { get; set; }
+    /// <summary>
+    /// Extension container element for DetailInteger
+    /// </summary>
+    public Element _DetailInteger { get; set; }
     /// <summary>
     /// A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the goal.target.measure defines a coded value.
     /// </summary>
@@ -106,9 +114,21 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("detailBoolean", (bool)DetailBoolean!);
       }
 
+      if (_DetailBoolean != null)
+      {
+        writer.WritePropertyName("_detailBoolean");
+        _DetailBoolean.SerializeJson(writer, options);
+      }
+
       if (DetailInteger != null)
       {
         writer.WriteNumber("detailInteger", (int)DetailInteger!);
+      }
+
+      if (_DetailInteger != null)
+      {
+        writer.WritePropertyName("_detailInteger");
+        _DetailInteger.SerializeJson(writer, options);
       }
 
       if (DetailRatio != null)
@@ -163,8 +183,18 @@ namespace fhirCsR5.Models
           DetailBoolean = reader.GetBoolean();
           break;
 
+        case "_detailBoolean":
+          _DetailBoolean = new fhirCsR5.Models.Element();
+          _DetailBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "detailInteger":
           DetailInteger = reader.GetInt32();
+          break;
+
+        case "_detailInteger":
+          _DetailInteger = new fhirCsR5.Models.Element();
+          _DetailInteger.DeserializeJson(ref reader, options);
           break;
 
         case "detailRatio":
@@ -595,6 +625,18 @@ namespace fhirCsR5.Models
     public const string PRACTITIONER = "practitioner";
     public const string PRACTITIONERROLE = "practitionerrole";
     public const string RELATEDPERSON = "relatedperson";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "careteam",
+      "device",
+      "group",
+      "healthcareservice",
+      "location",
+      "organization",
+      "patient",
+      "practitioner",
+      "practitionerrole",
+      "relatedperson",
+    };
   }
   /// <summary>
   /// Actors represent the individuals or groups involved in the execution of the defined set of activities.
@@ -864,6 +906,11 @@ namespace fhirCsR5.Models
     public const string APPLICABILITY = "applicability";
     public const string START = "start";
     public const string STOP = "stop";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "applicability",
+      "start",
+      "stop",
+    };
   }
   /// <summary>
   /// Defines input data requirements for the action.
@@ -1283,6 +1330,17 @@ namespace fhirCsR5.Models
     public const string AFTER_START = "after-start";
     public const string AFTER = "after";
     public const string AFTER_END = "after-end";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "before-start",
+      "before",
+      "before-end",
+      "concurrent-with-start",
+      "concurrent",
+      "concurrent-with-end",
+      "after-start",
+      "after",
+      "after-end",
+    };
   }
   /// <summary>
   /// Indicates who should participate in performing the action described.
@@ -1458,6 +1516,18 @@ namespace fhirCsR5.Models
     public const string PRACTITIONER = "practitioner";
     public const string PRACTITIONERROLE = "practitionerrole";
     public const string RELATEDPERSON = "relatedperson";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "careteam",
+      "device",
+      "group",
+      "healthcareservice",
+      "location",
+      "organization",
+      "patient",
+      "practitioner",
+      "practitionerrole",
+      "relatedperson",
+    };
   }
   /// <summary>
   /// Dynamic values are applied in the order in which they are defined in the PlanDefinition resource. Note that when dynamic values are also specified by a referenced ActivityDefinition, the dynamicValues from the ActivityDefinition are applied first, followed by the dynamicValues specified here. In addition, if both a transform and dynamic values are specific, the dynamic values are applied to the result of the transform.
@@ -2710,6 +2780,10 @@ namespace fhirCsR5.Models
   public static class PlanDefinitionActionCardinalityBehaviorCodes {
     public const string SINGLE = "single";
     public const string MULTIPLE = "multiple";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "single",
+      "multiple",
+    };
   }
   /// <summary>
   /// Code Values for the PlanDefinition.action.groupingBehavior field
@@ -2718,6 +2792,11 @@ namespace fhirCsR5.Models
     public const string VISUAL_GROUP = "visual-group";
     public const string LOGICAL_GROUP = "logical-group";
     public const string SENTENCE_GROUP = "sentence-group";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "visual-group",
+      "logical-group",
+      "sentence-group",
+    };
   }
   /// <summary>
   /// Code Values for the PlanDefinition.action.precheckBehavior field
@@ -2725,6 +2804,10 @@ namespace fhirCsR5.Models
   public static class PlanDefinitionActionPrecheckBehaviorCodes {
     public const string YES = "yes";
     public const string NO = "no";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "yes",
+      "no",
+    };
   }
   /// <summary>
   /// Code Values for the PlanDefinition.action.priority field
@@ -2734,6 +2817,12 @@ namespace fhirCsR5.Models
     public const string URGENT = "urgent";
     public const string ASAP = "asap";
     public const string STAT = "stat";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "routine",
+      "urgent",
+      "asap",
+      "stat",
+    };
   }
   /// <summary>
   /// Code Values for the PlanDefinition.action.requiredBehavior field
@@ -2742,6 +2831,11 @@ namespace fhirCsR5.Models
     public const string MUST = "must";
     public const string COULD = "could";
     public const string MUST_UNLESS_DOCUMENTED = "must-unless-documented";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "must",
+      "could",
+      "must-unless-documented",
+    };
   }
   /// <summary>
   /// Code Values for the PlanDefinition.action.selectionBehavior field
@@ -2753,6 +2847,14 @@ namespace fhirCsR5.Models
     public const string EXACTLY_ONE = "exactly-one";
     public const string AT_MOST_ONE = "at-most-one";
     public const string ONE_OR_MORE = "one-or-more";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "any",
+      "all",
+      "all-or-none",
+      "exactly-one",
+      "at-most-one",
+      "one-or-more",
+    };
   }
   /// <summary>
   /// This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical and non-clinical artifacts such as clinical decision support rules, order sets, protocols, and drug quality specifications.
@@ -2827,6 +2929,10 @@ namespace fhirCsR5.Models
     /// Allows filtering of plan definitions that are appropriate for use versus not.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// A goal describes an expected outcome that activities within the plan are intended to achieve. For example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, meeting the acceptance criteria for a test as specified by a quality specification, etc.
     /// </summary>
@@ -3070,6 +3176,12 @@ namespace fhirCsR5.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (SubjectCodeableConcept != null)
@@ -3590,6 +3702,11 @@ namespace fhirCsR5.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR5.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "goal":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -3984,5 +4101,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

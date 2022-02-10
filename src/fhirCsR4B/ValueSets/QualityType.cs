@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralINDELComparison = "indel";
 
     /// <summary>
+    /// Literal for code: QualityTypeINDELComparison
+    /// </summary>
+    public const string LiteralQualityTypeINDELComparison = "http://hl7.org/fhir/quality-type#indel";
+
+    /// <summary>
     /// Literal for code: SNPComparison
     /// </summary>
     public const string LiteralSNPComparison = "snp";
 
     /// <summary>
+    /// Literal for code: QualityTypeSNPComparison
+    /// </summary>
+    public const string LiteralQualityTypeSNPComparison = "http://hl7.org/fhir/quality-type#snp";
+
+    /// <summary>
     /// Literal for code: UNKNOWNComparison
     /// </summary>
     public const string LiteralUNKNOWNComparison = "unknown";
+
+    /// <summary>
+    /// Literal for code: QualityTypeUNKNOWNComparison
+    /// </summary>
+    public const string LiteralQualityTypeUNKNOWNComparison = "http://hl7.org/fhir/quality-type#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up QualityType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "indel", INDELComparison }, 
+      { "http://hl7.org/fhir/quality-type#indel", INDELComparison }, 
+      { "snp", SNPComparison }, 
+      { "http://hl7.org/fhir/quality-type#snp", SNPComparison }, 
+      { "unknown", UNKNOWNComparison }, 
+      { "http://hl7.org/fhir/quality-type#unknown", UNKNOWNComparison }, 
+    };
   };
 }

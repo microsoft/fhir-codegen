@@ -45,13 +45,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralFatalError = "fatal-error";
 
     /// <summary>
+    /// Literal for code: ResponseCodeFatalError
+    /// </summary>
+    public const string LiteralResponseCodeFatalError = "http://hl7.org/fhir/response-code#fatal-error";
+
+    /// <summary>
     /// Literal for code: OK
     /// </summary>
     public const string LiteralOK = "ok";
 
     /// <summary>
+    /// Literal for code: ResponseCodeOK
+    /// </summary>
+    public const string LiteralResponseCodeOK = "http://hl7.org/fhir/response-code#ok";
+
+    /// <summary>
     /// Literal for code: TransientError
     /// </summary>
     public const string LiteralTransientError = "transient-error";
+
+    /// <summary>
+    /// Literal for code: ResponseCodeTransientError
+    /// </summary>
+    public const string LiteralResponseCodeTransientError = "http://hl7.org/fhir/response-code#transient-error";
+
+    /// <summary>
+    /// Dictionary for looking up ResponseCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "fatal-error", FatalError }, 
+      { "http://hl7.org/fhir/response-code#fatal-error", FatalError }, 
+      { "ok", OK }, 
+      { "http://hl7.org/fhir/response-code#ok", OK }, 
+      { "transient-error", TransientError }, 
+      { "http://hl7.org/fhir/response-code#transient-error", TransientError }, 
+    };
   };
 }

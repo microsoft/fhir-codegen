@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class ConsentContentCodeCodes
   {
     /// <summary>
-    /// 
+    /// Acyclovir [Susceptibility]
     /// </summary>
     public static readonly Coding AcyclovirSusceptibility = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Amdinocillin [Susceptibility] by Serum bactericidal titer
     /// </summary>
     public static readonly Coding AmdinocillinSusceptibilityBySerumBactericidalTiter = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cefoperazone [Susceptibility] by Minimum inhibitory concentration (MIC)
     /// </summary>
     public static readonly Coding CefoperazoneSusceptibilityByMinimumInhibitoryConcentrationMIC = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// DBG Ab [Presence] in Serum or Plasma from Blood product unit
     /// </summary>
     public static readonly Coding DBGAbPresenceInSerumOrPlasmaFromBloodProductUnit = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R wave duration in lead AVR
     /// </summary>
     public static readonly Coding RWaveDurationInLeadAVR = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R wave duration in lead I
     /// </summary>
     public static readonly Coding RWaveDurationInLeadI = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R wave duration in lead II
     /// </summary>
     public static readonly Coding RWaveDurationInLeadII = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R wave duration in lead III
     /// </summary>
     public static readonly Coding RWaveDurationInLeadIII = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R wave duration in lead V1
     /// </summary>
     public static readonly Coding RWaveDurationInLeadV1 = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R wave duration in lead V2
     /// </summary>
     public static readonly Coding RWaveDurationInLeadV2 = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R wave duration in lead V3
     /// </summary>
     public static readonly Coding RWaveDurationInLeadV3 = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R wave duration in lead V4
     /// </summary>
     public static readonly Coding RWaveDurationInLeadV4 = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R wave duration in lead V5
     /// </summary>
     public static readonly Coding RWaveDurationInLeadV5 = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R wave duration in lead V6
     /// </summary>
     public static readonly Coding RWaveDurationInLeadV6 = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// DBG Ab [Presence] in Serum or Plasma from Donor
     /// </summary>
     public static readonly Coding DBGAbPresenceInSerumOrPlasmaFromDonor = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave amplitude in lead AVF
     /// </summary>
     public static readonly Coding RQuoteWaveAmplitudeInLeadAVF = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave amplitude in lead AVL
     /// </summary>
     public static readonly Coding RQuoteWaveAmplitudeInLeadAVL = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave amplitude in lead AVR
     /// </summary>
     public static readonly Coding RQuoteWaveAmplitudeInLeadAVR = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave amplitude in lead I
     /// </summary>
     public static readonly Coding RQuoteWaveAmplitudeInLeadI = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave amplitude in lead II
     /// </summary>
     public static readonly Coding RQuoteWaveAmplitudeInLeadII = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave amplitude in lead III
     /// </summary>
     public static readonly Coding RQuoteWaveAmplitudeInLeadIII = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave amplitude in lead V1
     /// </summary>
     public static readonly Coding RQuoteWaveAmplitudeInLeadV1 = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave amplitude in lead V2
     /// </summary>
     public static readonly Coding RQuoteWaveAmplitudeInLeadV2 = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave amplitude in lead V3
     /// </summary>
     public static readonly Coding RQuoteWaveAmplitudeInLeadV3 = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave amplitude in lead V4
     /// </summary>
     public static readonly Coding RQuoteWaveAmplitudeInLeadV4 = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// DBG Ab [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding DBGAbPresenceInSerumOrPlasma = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave amplitude in lead V5
     /// </summary>
     public static readonly Coding RQuoteWaveAmplitudeInLeadV5 = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave amplitude in lead V6
     /// </summary>
     public static readonly Coding RQuoteWaveAmplitudeInLeadV6 = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave duration in lead AVF
     /// </summary>
     public static readonly Coding RQuoteWaveDurationInLeadAVF = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave duration in lead AVL
     /// </summary>
     public static readonly Coding RQuoteWaveDurationInLeadAVL = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave duration in lead AVR
     /// </summary>
     public static readonly Coding RQuoteWaveDurationInLeadAVR = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave duration in lead I
     /// </summary>
     public static readonly Coding RQuoteWaveDurationInLeadI = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave duration in lead II
     /// </summary>
     public static readonly Coding RQuoteWaveDurationInLeadII = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave duration in lead III
     /// </summary>
     public static readonly Coding RQuoteWaveDurationInLeadIII = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave duration in lead V1
     /// </summary>
     public static readonly Coding RQuoteWaveDurationInLeadV1 = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave duration in lead V2
     /// </summary>
     public static readonly Coding RQuoteWaveDurationInLeadV2 = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Indirect antiglobulin test.complement specific reagent [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding IndirectAntiglobulinTestComplementSpecificReagentPresenceInSerumOrPlasma = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave duration in lead V3
     /// </summary>
     public static readonly Coding RQuoteWaveDurationInLeadV3 = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave duration in lead V4
     /// </summary>
     public static readonly Coding RQuoteWaveDurationInLeadV4 = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave duration in lead V5
     /// </summary>
     public static readonly Coding RQuoteWaveDurationInLeadV5 = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// R' wave duration in lead V6
     /// </summary>
     public static readonly Coding RQuoteWaveDurationInLeadV6 = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave amplitude in lead AVF
     /// </summary>
     public static readonly Coding SWaveAmplitudeInLeadAVF = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave amplitude in lead AVL
     /// </summary>
     public static readonly Coding SWaveAmplitudeInLeadAVL = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave amplitude in lead AVR
     /// </summary>
     public static readonly Coding SWaveAmplitudeInLeadAVR = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave amplitude in lead I
     /// </summary>
     public static readonly Coding SWaveAmplitudeInLeadI = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave amplitude in lead II
     /// </summary>
     public static readonly Coding SWaveAmplitudeInLeadII = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave amplitude in lead III
     /// </summary>
     public static readonly Coding SWaveAmplitudeInLeadIII = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Direct antiglobulin test.complement specific reagent [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding DirectAntiglobulinTestComplementSpecificReagentPresenceOnRedBloodCells = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave amplitude in lead V1
     /// </summary>
     public static readonly Coding SWaveAmplitudeInLeadV1 = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave amplitude in lead V2
     /// </summary>
     public static readonly Coding SWaveAmplitudeInLeadV2 = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave amplitude in lead V3
     /// </summary>
     public static readonly Coding SWaveAmplitudeInLeadV3 = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave amplitude in lead V4
     /// </summary>
     public static readonly Coding SWaveAmplitudeInLeadV4 = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave amplitude in lead V5
     /// </summary>
     public static readonly Coding SWaveAmplitudeInLeadV5 = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave amplitude in lead V6
     /// </summary>
     public static readonly Coding SWaveAmplitudeInLeadV6 = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave duration in lead AVF
     /// </summary>
     public static readonly Coding SWaveDurationInLeadAVF = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave duration in lead AVL
     /// </summary>
     public static readonly Coding SWaveDurationInLeadAVL = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave duration in lead AVR
     /// </summary>
     public static readonly Coding SWaveDurationInLeadAVR = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave duration in lead I
     /// </summary>
     public static readonly Coding SWaveDurationInLeadI = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Indirect antiglobulin test.IgG specific reagent [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding IndirectAntiglobulinTestIgGSpecificReagentPresenceInSerumOrPlasma = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave duration in lead II
     /// </summary>
     public static readonly Coding SWaveDurationInLeadII = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave duration in lead III
     /// </summary>
     public static readonly Coding SWaveDurationInLeadIII = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave duration in lead V1
     /// </summary>
     public static readonly Coding SWaveDurationInLeadV1 = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave duration in lead V2
     /// </summary>
     public static readonly Coding SWaveDurationInLeadV2 = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave duration in lead V3
     /// </summary>
     public static readonly Coding SWaveDurationInLeadV3 = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave duration in lead V4
     /// </summary>
     public static readonly Coding SWaveDurationInLeadV4 = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave duration in lead V5
     /// </summary>
     public static readonly Coding SWaveDurationInLeadV5 = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S wave duration in lead V6
     /// </summary>
     public static readonly Coding SWaveDurationInLeadV6 = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave amplitude in lead AVF
     /// </summary>
     public static readonly Coding SQuoteWaveAmplitudeInLeadAVF = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave amplitude in lead AVL
     /// </summary>
     public static readonly Coding SQuoteWaveAmplitudeInLeadAVL = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Direct antiglobulin test.IgG specific reagent [Interpretation] on Red Blood Cells
     /// </summary>
     public static readonly Coding DirectAntiglobulinTestIgGSpecificReagentInterpretationOnRedBloodCells = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave amplitude in lead AVR
     /// </summary>
     public static readonly Coding SQuoteWaveAmplitudeInLeadAVR = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave amplitude in lead I
     /// </summary>
     public static readonly Coding SQuoteWaveAmplitudeInLeadI = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave amplitude in lead II
     /// </summary>
     public static readonly Coding SQuoteWaveAmplitudeInLeadII = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave amplitude in lead III
     /// </summary>
     public static readonly Coding SQuoteWaveAmplitudeInLeadIII = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave amplitude in lead V1
     /// </summary>
     public static readonly Coding SQuoteWaveAmplitudeInLeadV1 = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave amplitude in lead V2
     /// </summary>
     public static readonly Coding SQuoteWaveAmplitudeInLeadV2 = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave amplitude in lead V3
     /// </summary>
     public static readonly Coding SQuoteWaveAmplitudeInLeadV3 = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave amplitude in lead V4
     /// </summary>
     public static readonly Coding SQuoteWaveAmplitudeInLeadV4 = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave amplitude in lead V5
     /// </summary>
     public static readonly Coding SQuoteWaveAmplitudeInLeadV5 = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave amplitude in lead V6
     /// </summary>
     public static readonly Coding SQuoteWaveAmplitudeInLeadV6 = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Direct antiglobulin test.poly specific reagent [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding DirectAntiglobulinTestPolySpecificReagentPresenceOnRedBloodCells = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave duration in lead AVF
     /// </summary>
     public static readonly Coding SQuoteWaveDurationInLeadAVF = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave duration in lead AVL
     /// </summary>
     public static readonly Coding SQuoteWaveDurationInLeadAVL = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave duration in lead AVR
     /// </summary>
     public static readonly Coding SQuoteWaveDurationInLeadAVR = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave duration in lead I
     /// </summary>
     public static readonly Coding SQuoteWaveDurationInLeadI = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave duration in lead II
     /// </summary>
     public static readonly Coding SQuoteWaveDurationInLeadII = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave duration in lead III
     /// </summary>
     public static readonly Coding SQuoteWaveDurationInLeadIII = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave duration in lead V1
     /// </summary>
     public static readonly Coding SQuoteWaveDurationInLeadV1 = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave duration in lead V2
     /// </summary>
     public static readonly Coding SQuoteWaveDurationInLeadV2 = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave duration in lead V3
     /// </summary>
     public static readonly Coding SQuoteWaveDurationInLeadV3 = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave duration in lead V4
     /// </summary>
     public static readonly Coding SQuoteWaveDurationInLeadV4 = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Indirect antiglobulin test.poly specific reagent [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding IndirectAntiglobulinTestPolySpecificReagentPresenceInSerumOrPlasma = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave duration in lead V5
     /// </summary>
     public static readonly Coding SQuoteWaveDurationInLeadV5 = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S' wave duration in lead V6
     /// </summary>
     public static readonly Coding SQuoteWaveDurationInLeadV6 = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST initial amplitude 6 ms in lead AVF
     /// </summary>
     public static readonly Coding STInitialAmplitude6MsInLeadAVF = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST initial amplitude 6 ms in lead AVL
     /// </summary>
     public static readonly Coding STInitialAmplitude6MsInLeadAVL = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST initial amplitude 6 ms in lead AVR
     /// </summary>
     public static readonly Coding STInitialAmplitude6MsInLeadAVR = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST initial amplitude 6 ms in lead I
     /// </summary>
     public static readonly Coding STInitialAmplitude6MsInLeadI = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST initial amplitude 6 ms in lead II
     /// </summary>
     public static readonly Coding STInitialAmplitude6MsInLeadII = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST initial amplitude 6 ms in lead III
     /// </summary>
     public static readonly Coding STInitialAmplitude6MsInLeadIII = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST initial amplitude 6 ms in lead V1
     /// </summary>
     public static readonly Coding STInitialAmplitude6MsInLeadV1 = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST initial amplitude 6 ms in lead V2
     /// </summary>
     public static readonly Coding STInitialAmplitude6MsInLeadV2 = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Direct antiglobulin test.poly specific reagent [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding DeprecatedDirectAntiglobulinTestPolySpecificReagentPresenceOnRedBloodCells = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST initial amplitude 6 ms in lead V3
     /// </summary>
     public static readonly Coding STInitialAmplitude6MsInLeadV3 = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST initial amplitude 6 ms in lead V4
     /// </summary>
     public static readonly Coding STInitialAmplitude6MsInLeadV4 = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST initial amplitude 6 ms in lead V5
     /// </summary>
     public static readonly Coding STInitialAmplitude6MsInLeadV5 = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST initial amplitude 6 ms in lead V6
     /// </summary>
     public static readonly Coding STInitialAmplitude6MsInLeadV6 = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST slope in lead AVF
     /// </summary>
     public static readonly Coding STSlopeInLeadAVF = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST slope in lead AVL
     /// </summary>
     public static readonly Coding STSlopeInLeadAVL = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST slope in lead AVR
     /// </summary>
     public static readonly Coding STSlopeInLeadAVR = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST slope in lead I
     /// </summary>
     public static readonly Coding STSlopeInLeadI = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST slope in lead II
     /// </summary>
     public static readonly Coding STSlopeInLeadII = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST slope in lead III
     /// </summary>
     public static readonly Coding STSlopeInLeadIII = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cefoperazone [Susceptibility] by Disk diffusion (KB)
     /// </summary>
     public static readonly Coding CefoperazoneSusceptibilityByDiskDiffusionKB = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// E sup(w) Ab [Presence] in Serum or Plasma from Blood product unit
     /// </summary>
     public static readonly Coding ESupWAbPresenceInSerumOrPlasmaFromBloodProductUnit = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST slope in lead V1
     /// </summary>
     public static readonly Coding STSlopeInLeadV1 = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST slope in lead V2
     /// </summary>
     public static readonly Coding STSlopeInLeadV2 = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST slope in lead V3
     /// </summary>
     public static readonly Coding STSlopeInLeadV3 = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST slope in lead V4
     /// </summary>
     public static readonly Coding STSlopeInLeadV4 = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST slope in lead V5
     /// </summary>
     public static readonly Coding STSlopeInLeadV5 = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST slope in lead V6
     /// </summary>
     public static readonly Coding STSlopeInLeadV6 = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave end displacement in lead AVF
     /// </summary>
     public static readonly Coding STWaveEndDisplacementInLeadAVF = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave end displacement in lead AVL
     /// </summary>
     public static readonly Coding STWaveEndDisplacementInLeadAVL = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave end displacement in lead AVR
     /// </summary>
     public static readonly Coding STWaveEndDisplacementInLeadAVR = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave end displacement in lead I
     /// </summary>
     public static readonly Coding STWaveEndDisplacementInLeadI = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// E sup(w) Ab [Presence] in Serum or Plasma from Donor
     /// </summary>
     public static readonly Coding ESupWAbPresenceInSerumOrPlasmaFromDonor = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave end displacement in lead II
     /// </summary>
     public static readonly Coding STWaveEndDisplacementInLeadII = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave end displacement in lead III
     /// </summary>
     public static readonly Coding STWaveEndDisplacementInLeadIII = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave end displacement in lead V1
     /// </summary>
     public static readonly Coding STWaveEndDisplacementInLeadV1 = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave end displacement in lead V2
     /// </summary>
     public static readonly Coding STWaveEndDisplacementInLeadV2 = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave end displacement in lead V3
     /// </summary>
     public static readonly Coding STWaveEndDisplacementInLeadV3 = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave end displacement in lead V4
     /// </summary>
     public static readonly Coding STWaveEndDisplacementInLeadV4 = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave end displacement in lead V5
     /// </summary>
     public static readonly Coding STWaveEndDisplacementInLeadV5 = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave end displacement in lead V6
     /// </summary>
     public static readonly Coding STWaveEndDisplacementInLeadV6 = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave mid displacement in lead AVF
     /// </summary>
     public static readonly Coding STWaveMidDisplacementInLeadAVF = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave mid displacement in lead AVL
     /// </summary>
     public static readonly Coding STWaveMidDisplacementInLeadAVL = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// E sup(w) Ab [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding ESupWAbPresenceInSerumOrPlasma = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave mid displacement in lead AVR
     /// </summary>
     public static readonly Coding STWaveMidDisplacementInLeadAVR = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave mid displacement in lead I
     /// </summary>
     public static readonly Coding STWaveMidDisplacementInLeadI = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave mid displacement in lead II
     /// </summary>
     public static readonly Coding STWaveMidDisplacementInLeadII = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave mid displacement in lead III
     /// </summary>
     public static readonly Coding STWaveMidDisplacementInLeadIII = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave mid displacement in lead V1
     /// </summary>
     public static readonly Coding STWaveMidDisplacementInLeadV1 = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave mid displacement in lead V2
     /// </summary>
     public static readonly Coding STWaveMidDisplacementInLeadV2 = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave mid displacement in lead V3
     /// </summary>
     public static readonly Coding STWaveMidDisplacementInLeadV3 = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave mid displacement in lead V4
     /// </summary>
     public static readonly Coding STWaveMidDisplacementInLeadV4 = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave mid displacement in lead V5
     /// </summary>
     public static readonly Coding STWaveMidDisplacementInLeadV5 = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// ST wave mid displacement in lead V6
     /// </summary>
     public static readonly Coding STWaveMidDisplacementInLeadV6 = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// E sup(w) Ag [Presence] on Red Blood Cells from Blood product unit
     /// </summary>
     public static readonly Coding ESupWAgPresenceOnRedBloodCellsFromBloodProductUnit = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T' wave amplitude in lead AVF
     /// </summary>
     public static readonly Coding TQuoteWaveAmplitudeInLeadAVF = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T' wave amplitude in lead AVL
     /// </summary>
     public static readonly Coding TQuoteWaveAmplitudeInLeadAVL = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T' wave amplitude in lead AVR
     /// </summary>
     public static readonly Coding TQuoteWaveAmplitudeInLeadAVR = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T' wave amplitude in lead I
     /// </summary>
     public static readonly Coding TQuoteWaveAmplitudeInLeadI = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T' wave amplitude in lead II
     /// </summary>
     public static readonly Coding TQuoteWaveAmplitudeInLeadII = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T' wave amplitude in lead III
     /// </summary>
     public static readonly Coding TQuoteWaveAmplitudeInLeadIII = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T' wave amplitude in lead V1
     /// </summary>
     public static readonly Coding TQuoteWaveAmplitudeInLeadV1 = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T' wave amplitude in lead V2
     /// </summary>
     public static readonly Coding TQuoteWaveAmplitudeInLeadV2 = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T' wave amplitude in lead V3
     /// </summary>
     public static readonly Coding TQuoteWaveAmplitudeInLeadV3 = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T' wave amplitude in lead V4
     /// </summary>
     public static readonly Coding TQuoteWaveAmplitudeInLeadV4 = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// E sup(w) Ag [Presence] on Red Blood Cells from Donor
     /// </summary>
     public static readonly Coding ESupWAgPresenceOnRedBloodCellsFromDonor = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T' wave amplitude in lead V5
     /// </summary>
     public static readonly Coding TQuoteWaveAmplitudeInLeadV5 = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T' wave amplitude in lead V6
     /// </summary>
     public static readonly Coding TQuoteWaveAmplitudeInLeadV6 = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T wave amplitude in lead AVF
     /// </summary>
     public static readonly Coding TWaveAmplitudeInLeadAVF = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T wave amplitude in lead AVL
     /// </summary>
     public static readonly Coding TWaveAmplitudeInLeadAVL = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T wave amplitude in lead AVR
     /// </summary>
     public static readonly Coding TWaveAmplitudeInLeadAVR = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T wave amplitude in lead I
     /// </summary>
     public static readonly Coding TWaveAmplitudeInLeadI = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T wave amplitude in lead II
     /// </summary>
     public static readonly Coding TWaveAmplitudeInLeadII = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T wave amplitude in lead III
     /// </summary>
     public static readonly Coding TWaveAmplitudeInLeadIII = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T wave amplitude in lead V1
     /// </summary>
     public static readonly Coding TWaveAmplitudeInLeadV1 = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T wave amplitude in lead V2
     /// </summary>
     public static readonly Coding TWaveAmplitudeInLeadV2 = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// E sup(w) Ag [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding ESupWAgPresenceOnRedBloodCells = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T wave amplitude in lead V3
     /// </summary>
     public static readonly Coding TWaveAmplitudeInLeadV3 = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T wave amplitude in lead V4
     /// </summary>
     public static readonly Coding TWaveAmplitudeInLeadV4 = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T wave amplitude in lead V5
     /// </summary>
     public static readonly Coding TWaveAmplitudeInLeadV5 = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T wave amplitude in lead V6
     /// </summary>
     public static readonly Coding TWaveAmplitudeInLeadV6 = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chief complaint Narrative - Reported
     /// </summary>
     public static readonly Coding ChiefComplaintNarrativeReported = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of allergies, reported
     /// </summary>
     public static readonly Coding HistoryOfAllergiesReported = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Childhood diseases Narrative
     /// </summary>
     public static readonly Coding HistoryOfChildhoodDiseasesNarrative = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of family member diseases Narrative
     /// </summary>
     public static readonly Coding HistoryOfFamilyMemberDiseasesNarrative = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Functional status Narrative
     /// </summary>
     public static readonly Coding HistoryOfFunctionalStatusNarrative = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Industrial exposure Narrative
     /// </summary>
     public static readonly Coding HistoryOfIndustrialExposureNarrative = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// E Ab [Presence] in Serum or Plasma from Blood product unit
     /// </summary>
     public static readonly Coding EAbPresenceInSerumOrPlasmaFromBloodProductUnit = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Medication use Narrative
     /// </summary>
     public static readonly Coding HistoryOfMedicationUseNarrative = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Occupational exposure Narrative
     /// </summary>
     public static readonly Coding HistoryOfOccupationalExposureNarrative = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of pregnancies Narrative
     /// </summary>
     public static readonly Coding HistoryOfPregnanciesNarrative = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of pregnancies
     /// </summary>
     public static readonly Coding HistoryOfPregnancies = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Present illness Narrative
     /// </summary>
     public static readonly Coding HistoryOfPresentIllnessNarrative = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated History of psychiatric symptoms and diseases Narrative
     /// </summary>
     public static readonly Coding DeprecatedHistoryOfPsychiatricSymptomsAndDiseasesNarrative = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Social function Narrative
     /// </summary>
     public static readonly Coding HistoryOfSocialFunctionNarrative = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Surgical procedures Narrative
     /// </summary>
     public static readonly Coding HistoryOfSurgicalProceduresNarrative = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Cardiovascular system disorders Narrative
     /// </summary>
     public static readonly Coding HistoryOfCardiovascularSystemDisordersNarrative = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Ear disorders Narrative
     /// </summary>
     public static readonly Coding HistoryOfEarDisordersNarrative = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// E Ab [Presence] in Serum or Plasma from Donor
     /// </summary>
     public static readonly Coding EAbPresenceInSerumOrPlasmaFromDonor = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Endocrine system disorders Narrative
     /// </summary>
     public static readonly Coding HistoryOfEndocrineSystemDisordersNarrative = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Eyes disorders Narrative
     /// </summary>
     public static readonly Coding HistoryOfEyesDisordersNarrative = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Hematologic system disorders Narrative
     /// </summary>
     public static readonly Coding HistoryOfHematologicSystemDisordersNarrative = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Musculoskeletal system disorders Narrative
     /// </summary>
     public static readonly Coding HistoryOfMusculoskeletalSystemDisordersNarrative = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Nose disorders Narrative
     /// </summary>
     public static readonly Coding HistoryOfNoseDisordersNarrative = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Oral cavity disorders Narrative
     /// </summary>
     public static readonly Coding HistoryOfOralCavityDisordersNarrative = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Reproductive system disorders Narrative
     /// </summary>
     public static readonly Coding HistoryOfReproductiveSystemDisordersNarrative = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Respiratory system disorders Narrative
     /// </summary>
     public static readonly Coding HistoryOfRespiratorySystemDisordersNarrative = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Skin disorders Narrative
     /// </summary>
     public static readonly Coding HistoryOfSkinDisordersNarrative = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Throat and Neck disorders Narrative
     /// </summary>
     public static readonly Coding HistoryOfThroatAndNeckDisordersNarrative = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// E Ab [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding EAbPresenceInSerumOrPlasma = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Throat and Neck disorders
     /// </summary>
     public static readonly Coding HistoryOfThroatAndNeckDisorders = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Urinary tract disorders Narrative
     /// </summary>
     public static readonly Coding HistoryOfUrinaryTractDisordersNarrative = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// History of Travel Narrative
     /// </summary>
     public static readonly Coding HistoryOfTravelNarrative = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hospital discharge medications Narrative
     /// </summary>
     public static readonly Coding HospitalDischargeMedicationsNarrative = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hospital discharge physical findings Narrative
     /// </summary>
     public static readonly Coding HospitalDischargePhysicalFindingsNarrative = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hospital discharge procedures Narrative
     /// </summary>
     public static readonly Coding HospitalDischargeProceduresNarrative = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Identifying information Narrative Observed
     /// </summary>
     public static readonly Coding IdentifyingInformationNarrativeObserved = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Review of systems Narrative - Reported
     /// </summary>
     public static readonly Coding ReviewOfSystemsNarrativeReported = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Review of systems overview Narrative - Reported
     /// </summary>
     public static readonly Coding ReviewOfSystemsOverviewNarrativeReported = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Review of systems overview - Reported
     /// </summary>
     public static readonly Coding ReviewOfSystemsOverviewReported = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// E Ag [Presence] on Red Blood Cells from Blood product unit
     /// </summary>
     public static readonly Coding EAgPresenceOnRedBloodCellsFromBloodProductUnit = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mental status Narrative
     /// </summary>
     public static readonly Coding MentalStatusNarrative = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Abdomen Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfAbdomenNarrative = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Back Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfBackNarrative = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Breasts Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfBreastsNarrative = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Neurologic deep tendon reflexes Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfNeurologicDeepTendonReflexesNarrative = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Ear Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfEarNarrative = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Extremities Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfExtremitiesNarrative = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Eye Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfEyeNarrative = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Genitourinary tract Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfGenitourinaryTractNarrative = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Head Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfHeadNarrative = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cefoperazone [Susceptibility] by Serum bactericidal titer
     /// </summary>
     public static readonly Coding CefoperazoneSusceptibilityBySerumBactericidalTiter = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// E Ag [Presence] on Red Blood Cells from Donor
     /// </summary>
     public static readonly Coding EAgPresenceOnRedBloodCellsFromDonor = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Heart Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfHeartNarrative = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Mouth and Throat and Teeth Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfMouthAndThroatAndTeethNarrative = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Nervous system Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfNervousSystemNarrative = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Nose Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfNoseNarrative = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Pelvis Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfPelvisNarrative = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Rectum Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfRectumNarrative = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Skin Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfSkinNarrative = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Thorax and Lungs Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfThoraxAndLungsNarrative = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Vessels Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfVesselsNarrative = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Neurologic balance and Coordination Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfNeurologicBalanceAndCoordinationNarrative = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// E Ag [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding EAgPresenceOnRedBloodCells = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of General status Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfGeneralStatusNarrative = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Sense of touch Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfSenseOfTouchNarrative = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Physical findings of Strength Narrative
     /// </summary>
     public static readonly Coding PhysicalFindingsOfStrengthNarrative = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Surgical operation note anesthesia Narrative
     /// </summary>
     public static readonly Coding SurgicalOperationNoteAnesthesiaNarrative = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Surgical operation note anesthesia duration
     /// </summary>
     public static readonly Coding SurgicalOperationNoteAnesthesiaDuration = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Surgical operation note findings Narrative
     /// </summary>
     public static readonly Coding SurgicalOperationNoteFindingsNarrative = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Surgical operation note fluids Narrative
     /// </summary>
     public static readonly Coding SurgicalOperationNoteFluidsNarrative = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Surgical operation note indications [Interpretation] Narrative
     /// </summary>
     public static readonly Coding SurgicalOperationNoteIndicationsInterpretationNarrative = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Surgical operation note postoperative diagnosis Narrative
     /// </summary>
     public static readonly Coding SurgicalOperationNotePostoperativeDiagnosisNarrative = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Surgical operation note preoperative diagnosis Narrative
     /// </summary>
     public static readonly Coding SurgicalOperationNotePreoperativeDiagnosisNarrative = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fy sup(a) Ab [Presence] in Serum or Plasma from Blood product unit
     /// </summary>
     public static readonly Coding FySupAAbPresenceInSerumOrPlasmaFromBloodProductUnit = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Surgical operation note prep time duration
     /// </summary>
     public static readonly Coding SurgicalOperationNotePrepTimeDuration = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Surgical operation note specimens taken Narrative
     /// </summary>
     public static readonly Coding SurgicalOperationNoteSpecimensTakenNarrative = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Surgical operation note surgical complications [Interpretation] Narrative
     /// </summary>
     public static readonly Coding SurgicalOperationNoteSurgicalComplicationsInterpretationNarrative = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Surgical operation note surgical procedure Narrative
     /// </summary>
     public static readonly Coding SurgicalOperationNoteSurgicalProcedureNarrative = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hemodynamic method special circumstances
     /// </summary>
     public static readonly Coding HemodynamicMethodSpecialCircumstances = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cardiac measurement device Institution inventory number
     /// </summary>
     public static readonly Coding CardiacMeasurementDeviceInstitutionInventoryNumber = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Intravascular space
     /// </summary>
     public static readonly Coding OxygenContentInIntravascularSpace = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cardiac measurement device Vendor model number
     /// </summary>
     public static readonly Coding CardiacMeasurementDeviceVendorModelNumber = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cardiac measurement device Vendor serial number
     /// </summary>
     public static readonly Coding CardiacMeasurementDeviceVendorSerialNumber = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hemodynamic method Type of
     /// </summary>
     public static readonly Coding HemodynamicMethodTypeOf = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fy sup(a) Ab [Presence] in Serum or Plasma from Donor
     /// </summary>
     public static readonly Coding FySupAAbPresenceInSerumOrPlasmaFromDonor = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Left ventricular Ejection fraction
     /// </summary>
     public static readonly Coding LeftVentricularEjectionFraction = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Right ventricular Ejection fraction
     /// </summary>
     public static readonly Coding RightVentricularEjectionFraction = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Aorta root
     /// </summary>
     public static readonly Coding OxygenContentInAortaRoot = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Left atrium
     /// </summary>
     public static readonly Coding OxygenContentInLeftAtrium = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Right atrium
     /// </summary>
     public static readonly Coding OxygenContentInRightAtrium = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in High right atrium
     /// </summary>
     public static readonly Coding OxygenContentInHighRightAtrium = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Low right atrium
     /// </summary>
     public static readonly Coding OxygenContentInLowRightAtrium = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Mid right atrium
     /// </summary>
     public static readonly Coding OxygenContentInMidRightAtrium = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Left ventricle
     /// </summary>
     public static readonly Coding OxygenContentInLeftVentricle = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Right ventricular outflow tract
     /// </summary>
     public static readonly Coding OxygenContentInRightVentricularOutflowTract = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fy sup(a) Ab [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding FySupAAbPresenceInSerumOrPlasma = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Right ventricle
     /// </summary>
     public static readonly Coding OxygenContentInRightVentricle = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Coronary sinus
     /// </summary>
     public static readonly Coding OxygenContentInCoronarySinus = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Ductus arteriosus
     /// </summary>
     public static readonly Coding OxygenContentInDuctusArteriosus = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Inferior vena cava
     /// </summary>
     public static readonly Coding OxygenContentInInferiorVenaCava = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Left pulmonary artery
     /// </summary>
     public static readonly Coding OxygenContentInLeftPulmonaryArtery = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Main pulmonary artery
     /// </summary>
     public static readonly Coding OxygenContentInMainPulmonaryArtery = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Right pulmonary artery
     /// </summary>
     public static readonly Coding OxygenContentInRightPulmonaryArtery = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Pulmonary wedge
     /// </summary>
     public static readonly Coding OxygenContentInPulmonaryWedge = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxygen content in Superior vena cava
     /// </summary>
     public static readonly Coding OxygenContentInSuperiorVenaCava = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Heart rate device Institution inventory number
     /// </summary>
     public static readonly Coding HeartRateDeviceInstitutionInventoryNumber = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fy sup(a) Ag [Presence] on Red Blood Cells from Blood product unit
     /// </summary>
     public static readonly Coding FySupAAgPresenceOnRedBloodCellsFromBloodProductUnit = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Heart rate device Vendor model number
     /// </summary>
     public static readonly Coding HeartRateDeviceVendorModelNumber = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Heart rate device Vendor serial number
     /// </summary>
     public static readonly Coding HeartRateDeviceVendorSerialNumber = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Biliary drain site
     /// </summary>
     public static readonly Coding BiliaryDrainSite = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Type of Biliary drain
     /// </summary>
     public static readonly Coding TypeOfBiliaryDrain = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Type of Peritoneal drain
     /// </summary>
     public static readonly Coding TypeOfPeritonealDrain = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Type of Subarachnoid drain
     /// </summary>
     public static readonly Coding TypeOfSubarachnoidDrain = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Biliary drain Institution inventory number
     /// </summary>
     public static readonly Coding BiliaryDrainInstitutionInventoryNumber = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest tube Institution inventory number
     /// </summary>
     public static readonly Coding ChestTubeInstitutionInventoryNumber = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Enteral tube Institution inventory number
     /// </summary>
     public static readonly Coding EnteralTubeInstitutionInventoryNumber = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Gastrostomy tube Institution inventory number
     /// </summary>
     public static readonly Coding GastrostomyTubeInstitutionInventoryNumber = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fy sup(a) Ag [Presence] on Red Blood Cells from Donor
     /// </summary>
     public static readonly Coding FySupAAgPresenceOnRedBloodCellsFromDonor = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// GI tube Institution inventory number
     /// </summary>
     public static readonly Coding GITubeInstitutionInventoryNumber = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Intravascular tube Institution inventory number
     /// </summary>
     public static readonly Coding IntravascularTubeInstitutionInventoryNumber = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// IO tube Institution inventory number
     /// </summary>
     public static readonly Coding IOTubeInstitutionInventoryNumber = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nasogastric tube Institution inventory number
     /// </summary>
     public static readonly Coding NasogastricTubeInstitutionInventoryNumber = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oral tube Institution inventory number
     /// </summary>
     public static readonly Coding OralTubeInstitutionInventoryNumber = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Peritoneal drain Institution inventory number
     /// </summary>
     public static readonly Coding PeritonealDrainInstitutionInventoryNumber = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Peritoneal tube Institution inventory number
     /// </summary>
     public static readonly Coding PeritonealTubeInstitutionInventoryNumber = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Rate control device Institution inventory number
     /// </summary>
     public static readonly Coding RateControlDeviceInstitutionInventoryNumber = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Stool collection device Institution inventory number
     /// </summary>
     public static readonly Coding StoolCollectionDeviceInstitutionInventoryNumber = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Subarachnoid drain Institution inventory number
     /// </summary>
     public static readonly Coding SubarachnoidDrainInstitutionInventoryNumber = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fy sup(a) Ag [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding FySupAAgPresenceOnRedBloodCells = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Synovial drain Institution inventory number
     /// </summary>
     public static readonly Coding SynovialDrainInstitutionInventoryNumber = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Tube or drain Institution inventory number
     /// </summary>
     public static readonly Coding TubeOrDrainInstitutionInventoryNumber = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Upper GI tube Institution inventory number
     /// </summary>
     public static readonly Coding UpperGITubeInstitutionInventoryNumber = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bladder irrigation tube Institution inventory number
     /// </summary>
     public static readonly Coding BladderIrrigationTubeInstitutionInventoryNumber = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Urine tube Institution inventory number
     /// </summary>
     public static readonly Coding UrineTubeInstitutionInventoryNumber = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wound drain device Institution inventory number
     /// </summary>
     public static readonly Coding WoundDrainDeviceInstitutionInventoryNumber = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Peritoneal drain site
     /// </summary>
     public static readonly Coding PeritonealDrainSite = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Stool collection site
     /// </summary>
     public static readonly Coding StoolCollectionSite = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Subarachnoid drain site
     /// </summary>
     public static readonly Coding SubarachnoidDrainSite = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Biliary drain Vendor model number
     /// </summary>
     public static readonly Coding BiliaryDrainVendorModelNumber = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fy sup(b) Ab [Presence] in Serum or Plasma from Blood product unit
     /// </summary>
     public static readonly Coding FySupBAbPresenceInSerumOrPlasmaFromBloodProductUnit = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest tube Vendor model number
     /// </summary>
     public static readonly Coding ChestTubeVendorModelNumber = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Enteral tube Vendor model number
     /// </summary>
     public static readonly Coding EnteralTubeVendorModelNumber = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Gastrostomy tube Vendor model number
     /// </summary>
     public static readonly Coding GastrostomyTubeVendorModelNumber = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// GI tube Vendor model number
     /// </summary>
     public static readonly Coding GITubeVendorModelNumber = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Intravascular tube Vendor model number
     /// </summary>
     public static readonly Coding IntravascularTubeVendorModelNumber = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// IO tube Vendor model number
     /// </summary>
     public static readonly Coding IOTubeVendorModelNumber = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nasogastric tube Vendor model number
     /// </summary>
     public static readonly Coding NasogastricTubeVendorModelNumber = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oral tube Vendor model number
     /// </summary>
     public static readonly Coding OralTubeVendorModelNumber = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Peritoneal drain Vendor model number
     /// </summary>
     public static readonly Coding PeritonealDrainVendorModelNumber = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Peritoneal tube Vendor model number
     /// </summary>
     public static readonly Coding PeritonealTubeVendorModelNumber = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fy sup(b) Ab [Presence] in Serum or Plasma from Donor
     /// </summary>
     public static readonly Coding FySupBAbPresenceInSerumOrPlasmaFromDonor = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Rate control device Vendor model number
     /// </summary>
     public static readonly Coding RateControlDeviceVendorModelNumber = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Stool collection device Vendor model number
     /// </summary>
     public static readonly Coding StoolCollectionDeviceVendorModelNumber = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Subarachnoid drain Vendor model number
     /// </summary>
     public static readonly Coding SubarachnoidDrainVendorModelNumber = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Synovial drain Vendor model number
     /// </summary>
     public static readonly Coding SynovialDrainVendorModelNumber = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Tube or drain Vendor model number
     /// </summary>
     public static readonly Coding TubeOrDrainVendorModelNumber = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Upper GI tube Vendor model number
     /// </summary>
     public static readonly Coding UpperGITubeVendorModelNumber = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bladder irrigation tube Vendor model number
     /// </summary>
     public static readonly Coding BladderIrrigationTubeVendorModelNumber = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Urine tube Vendor model number
     /// </summary>
     public static readonly Coding UrineTubeVendorModelNumber = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wound drain device Vendor model number
     /// </summary>
     public static readonly Coding WoundDrainDeviceVendorModelNumber = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Biliary drain Vendor serial number
     /// </summary>
     public static readonly Coding BiliaryDrainVendorSerialNumber = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ceforanide [Susceptibility] by Minimum lethal concentration (MLC)
     /// </summary>
     public static readonly Coding CeforanideSusceptibilityByMinimumLethalConcentrationMLC = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fy sup(b) Ab [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding FySupBAbPresenceInSerumOrPlasma = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chest tube Vendor serial number
     /// </summary>
     public static readonly Coding ChestTubeVendorSerialNumber = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Enteral tube Vendor serial number
     /// </summary>
     public static readonly Coding EnteralTubeVendorSerialNumber = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Gastrostomy tube Vendor serial number
     /// </summary>
     public static readonly Coding GastrostomyTubeVendorSerialNumber = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// GI tube Vendor serial number
     /// </summary>
     public static readonly Coding GITubeVendorSerialNumber = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Intravascular tube Vendor serial number
     /// </summary>
     public static readonly Coding IntravascularTubeVendorSerialNumber = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// IO tube Vendor serial number
     /// </summary>
     public static readonly Coding IOTubeVendorSerialNumber = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nasogastric tube Vendor serial number
     /// </summary>
     public static readonly Coding NasogastricTubeVendorSerialNumber = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oral tube Vendor serial number
     /// </summary>
     public static readonly Coding OralTubeVendorSerialNumber = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Peritoneal drain Vendor serial number
     /// </summary>
     public static readonly Coding PeritonealDrainVendorSerialNumber = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Peritoneal tube Vendor serial number
     /// </summary>
     public static readonly Coding PeritonealTubeVendorSerialNumber = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fy sup(b) Ag [Presence] on Red Blood Cells from Blood product unit
     /// </summary>
     public static readonly Coding FySupBAgPresenceOnRedBloodCellsFromBloodProductUnit = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Rate control device Vendor serial number
     /// </summary>
     public static readonly Coding RateControlDeviceVendorSerialNumber = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Stool collection device Vendor serial number
     /// </summary>
     public static readonly Coding StoolCollectionDeviceVendorSerialNumber = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Subarachnoid drain Vendor serial number
     /// </summary>
     public static readonly Coding SubarachnoidDrainVendorSerialNumber = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Synovial drain Vendor serial number
     /// </summary>
     public static readonly Coding SynovialDrainVendorSerialNumber = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Tube or drain Vendor serial number
     /// </summary>
     public static readonly Coding TubeOrDrainVendorSerialNumber = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Upper GI tube Vendor serial number
     /// </summary>
     public static readonly Coding UpperGITubeVendorSerialNumber = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bladder irrigation tube Vendor serial number
     /// </summary>
     public static readonly Coding BladderIrrigationTubeVendorSerialNumber = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Urine tube Vendor serial number
     /// </summary>
     public static readonly Coding UrineTubeVendorSerialNumber = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wound drain device Vendor serial number
     /// </summary>
     public static readonly Coding WoundDrainDeviceVendorSerialNumber = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Enema device Institution inventory number
     /// </summary>
     public static readonly Coding EnemaDeviceInstitutionInventoryNumber = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fy sup(b) Ag [Presence] on Red Blood Cells from Donor
     /// </summary>
     public static readonly Coding FySupBAgPresenceOnRedBloodCellsFromDonor = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Enema device Vendor model number
     /// </summary>
     public static readonly Coding EnemaDeviceVendorModelNumber = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Enema device Vendor serial number
     /// </summary>
     public static readonly Coding EnemaDeviceVendorSerialNumber = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Potassium intake 24 hour
     /// </summary>
     public static readonly Coding PotassiumIntake24Hour = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Wound drain fluid [Appearance] Lower GI tract
     /// </summary>
     public static readonly Coding WoundDrainFluidAppearanceLowerGITract = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breath rate device Institution inventory number
     /// </summary>
     public static readonly Coding BreathRateDeviceInstitutionInventoryNumber = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breath rate device Vendor model number
     /// </summary>
     public static readonly Coding BreathRateDeviceVendorModelNumber = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Breath rate device Vendor serial number
     /// </summary>
     public static readonly Coding BreathRateDeviceVendorSerialNumber = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Eosinophils/100 leukocytes in Sputum by Manual count
     /// </summary>
     public static readonly Coding Eosinophils100LeukocytesInSputumByManualCount = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lymphocytes/100 leukocytes in Cerebral spinal fluid by Manual count
     /// </summary>
     public static readonly Coding Lymphocytes100LeukocytesInCerebralSpinalFluidByManualCount = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Monocytes/100 leukocytes in Cerebral spinal fluid by Manual count
     /// </summary>
     public static readonly Coding Monocytes100LeukocytesInCerebralSpinalFluidByManualCount = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fy sup(b) Ag [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding FySupBAgPresenceOnRedBloodCells = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Monocytes/100 leukocytes in Body fluid by Manual count
     /// </summary>
     public static readonly Coding Monocytes100LeukocytesInBodyFluidByManualCount = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Rh [Type] in Blood
     /// </summary>
     public static readonly Coding RhTypeInBlood = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cortisol [Mass/volume] in Serum or Plasma --pre 250 ug corticotropin IM
     /// </summary>
     public static readonly Coding CortisolMassVolumeInSerumOrPlasmaPre250UgCorticotropinIM = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Appearance of Cerebral spinal fluid
     /// </summary>
     public static readonly Coding AppearanceOfCerebralSpinalFluid = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cancer Ag 125 [Units/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding CancerAg125UnitsVolumeInSerumOrPlasma = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Color of Cerebral spinal fluid
     /// </summary>
     public static readonly Coding ColorOfCerebralSpinalFluid = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Gonadotropin peptide [Mass/volume] in Urine
     /// </summary>
     public static readonly Coding GonadotropinPeptideMassVolumeInUrine = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Procollagen type I [Mass/volume] in Serum
     /// </summary>
     public static readonly Coding ProcollagenTypeIMassVolumeInSerum = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Barbiturates [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding BarbituratesMassVolumeInSerumOrPlasma = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fluoxetine+Norfluoxetine [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding FluoxetinePlusNorfluoxetineMassVolumeInSerumOrPlasma = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fetal cell screen [Interpretation] in Blood
     /// </summary>
     public static readonly Coding FetalCellScreenInterpretationInBlood = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Molindone [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding MolindoneMassVolumeInSerumOrPlasma = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Norpropoxyphene [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding NorpropoxypheneMassVolumeInSerumOrPlasma = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Sulfamethoxazole [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding SulfamethoxazoleMassVolumeInSerumOrPlasma = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Temazepam [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding TemazepamMassVolumeInSerumOrPlasma = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Tranylcypromine [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding TranylcypromineMassVolumeInSerumOrPlasma = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Trihexyphenidyl [Mass/volume] in Urine
     /// </summary>
     public static readonly Coding TrihexyphenidylMassVolumeInUrine = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hemoglobin A [Units/volume] in Blood by Electrophoresis
     /// </summary>
     public static readonly Coding HemoglobinAUnitsVolumeInBloodByElectrophoresis = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Babesia microti identified in Blood by Light microscopy
     /// </summary>
     public static readonly Coding BabesiaMicrotiIdentifiedInBloodByLightMicroscopy = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bordetella parapertussis Ab [Presence] in Serum
     /// </summary>
     public static readonly Coding BordetellaParapertussisAbPresenceInSerum = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Brucella sp Ab [Units/volume] in Serum
     /// </summary>
     public static readonly Coding BrucellaSpAbUnitsVolumeInSerum = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fresh frozen plasma given [Volume]
     /// </summary>
     public static readonly Coding FreshFrozenPlasmaGivenVolume = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Herpes simplex virus IgM Ab [Titer] in Serum by Immunoassay
     /// </summary>
     public static readonly Coding HerpesSimplexVirusIgMAbTiterInSerumByImmunoassay = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// HIV 1 RNA [Units/volume] (viral load) in Serum or Plasma by Probe with amplification
     /// </summary>
     public static readonly Coding HIV1RNAUnitsVolumeViralLoadInSerumOrPlasmaByProbeWithAmplification = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bacteria identified in Genital specimen by Aerobe culture
     /// </summary>
     public static readonly Coding BacteriaIdentifiedInGenitalSpecimenByAerobeCulture = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bacteria identified in Nose by Aerobe culture
     /// </summary>
     public static readonly Coding BacteriaIdentifiedInNoseByAerobeCulture = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bacteria identified in Urethra by Culture
     /// </summary>
     public static readonly Coding BacteriaIdentifiedInUrethraByCulture = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Bone marrow by Wright Giemsa stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInBoneMarrowByWrightGiemsaStain = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Microscopic observation [Identifier] in Stool by Trichrome stain
     /// </summary>
     public static readonly Coding DeprecatedMicroscopicObservationIdentifierInStoolByTrichromeStain = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Wound by Gram stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInWoundByGramStain = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Teichoate Ab [Titer] in Serum by Immune diffusion (ID)
     /// </summary>
     public static readonly Coding TeichoateAbTiterInSerumByImmuneDiffusionID = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Asialoganglioside GM1 IgM Ab [Titer] in Serum
     /// </summary>
     public static readonly Coding AsialogangliosideGM1IgMAbTiterInSerum = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// G Ab [Presence] in Serum or Plasma from Blood product unit
     /// </summary>
     public static readonly Coding GAbPresenceInSerumOrPlasmaFromBloodProductUnit = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// DNA single strand IgG Ab [Units/volume] in Serum
     /// </summary>
     public static readonly Coding DNASingleStrandIgGAbUnitsVolumeInSerum = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// DNA single strand IgM Ab [Units/volume] in Serum
     /// </summary>
     public static readonly Coding DNASingleStrandIgMAbUnitsVolumeInSerum = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Endomysium IgA Ab [Presence] in Serum
     /// </summary>
     public static readonly Coding EndomysiumIgAAbPresenceInSerum = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Barbiturates [Presence] in Unspecified specimen
     /// </summary>
     public static readonly Coding BarbituratesPresenceInUnspecifiedSpecimen = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cotinine [Mass/mass] in Hair
     /// </summary>
     public static readonly Coding CotinineMassMassInHair = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cotinine [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding CotinineMassVolumeInSerumOrPlasma = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cotinine [Mass/volume] in Urine
     /// </summary>
     public static readonly Coding CotinineMassVolumeInUrine = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ethanol [Mass/volume] in Gastric fluid
     /// </summary>
     public static readonly Coding EthanolMassVolumeInGastricFluid = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lead [Mass/volume] in Capillary blood
     /// </summary>
     public static readonly Coding LeadMassVolumeInCapillaryBlood = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Opiates [Mass/mass] in Hair
     /// </summary>
     public static readonly Coding OpiatesMassMassInHair = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// G Ab [Presence] in Serum or Plasma from Donor
     /// </summary>
     public static readonly Coding GAbPresenceInSerumOrPlasmaFromDonor = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Phencyclidine [Mass/mass] in Hair
     /// </summary>
     public static readonly Coding PhencyclidineMassMassInHair = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bite cells [Presence] in Blood by Light microscopy
     /// </summary>
     public static readonly Coding BiteCellsPresenceInBloodByLightMicroscopy = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Blister cells [Presence] in Blood by Light microscopy
     /// </summary>
     public static readonly Coding BlisterCellsPresenceInBloodByLightMicroscopy = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fragments [Presence] in Blood by Light microscopy
     /// </summary>
     public static readonly Coding FragmentsPresenceInBloodByLightMicroscopy = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Helmet cells [Presence] in Blood by Light microscopy
     /// </summary>
     public static readonly Coding HelmetCellsPresenceInBloodByLightMicroscopy = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Irregularly contracted cells [Presence] in Blood by Light microscopy
     /// </summary>
     public static readonly Coding IrregularlyContractedCellsPresenceInBloodByLightMicroscopy = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oval macrocytes [Presence] in Blood by Light microscopy
     /// </summary>
     public static readonly Coding OvalMacrocytesPresenceInBloodByLightMicroscopy = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pencil cells [Presence] in Blood by Light microscopy
     /// </summary>
     public static readonly Coding PencilCellsPresenceInBloodByLightMicroscopy = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Polychromasia [Presence] in Blood by Light microscopy
     /// </summary>
     public static readonly Coding PolychromasiaPresenceInBloodByLightMicroscopy = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Erythrocytes.dual population [Presence] in Blood by Light microscopy
     /// </summary>
     public static readonly Coding ErythrocytesDualPopulationPresenceInBloodByLightMicroscopy = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// G Ab [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding GAbPresenceInSerumOrPlasma = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Stomatocytes [Presence] in Blood by Light microscopy
     /// </summary>
     public static readonly Coding StomatocytesPresenceInBloodByLightMicroscopy = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Target cells [Presence] in Blood by Light microscopy
     /// </summary>
     public static readonly Coding TargetCellsPresenceInBloodByLightMicroscopy = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// A,B variant NOS Ag [Presence] on Red Blood Cells from Blood product unit
     /// </summary>
     public static readonly Coding ABVariantNOSAgPresenceOnRedBloodCellsFromBloodProductUnit = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// A,B variant NOS Ag [Presence] on Red Blood Cells from Donor
     /// </summary>
     public static readonly Coding ABVariantNOSAgPresenceOnRedBloodCellsFromDonor = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// A,B variant NOS Ag [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding ABVariantNOSAgPresenceOnRedBloodCells = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Albumin concentration given
     /// </summary>
     public static readonly Coding AlbuminConcentrationGiven = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Albumin given [Volume]
     /// </summary>
     public static readonly Coding AlbuminGivenVolume = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Autologous erythrocytes given [Volume]
     /// </summary>
     public static readonly Coding AutologousErythrocytesGivenVolume = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Autologous whole blood given [Volume]
     /// </summary>
     public static readonly Coding AutologousWholeBloodGivenVolume = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Blood product.other [Type]
     /// </summary>
     public static readonly Coding BloodProductOtherType = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// G Ag [Presence] on Red Blood Cells from Blood product unit
     /// </summary>
     public static readonly Coding GAgPresenceOnRedBloodCellsFromBloodProductUnit = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Blood product special preparation [Type]
     /// </summary>
     public static readonly Coding BloodProductSpecialPreparationType = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cytomegalovirus immune globulin given [Volume]
     /// </summary>
     public static readonly Coding CytomegalovirusImmuneGlobulinGivenVolume = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cryoprecipitate given [Volume]
     /// </summary>
     public static readonly Coding CryoprecipitateGivenVolume = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Factor IX given [Type]
     /// </summary>
     public static readonly Coding FactorIXGivenType = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Factor IX given [Volume]
     /// </summary>
     public static readonly Coding FactorIXGivenVolume = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Factor VIII given [Type]
     /// </summary>
     public static readonly Coding FactorVIIIGivenType = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Factor VIII given [Volume]
     /// </summary>
     public static readonly Coding FactorVIIIGivenVolume = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hepatitis B immune globulin given [Volume]
     /// </summary>
     public static readonly Coding HepatitisBImmuneGlobulinGivenVolume = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// I Ag [Presence] on Red Blood Cells from Blood product unit
     /// </summary>
     public static readonly Coding IAgPresenceOnRedBloodCellsFromBloodProductUnit = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// I Ag [Presence] on Red Blood Cells from Donor
     /// </summary>
     public static readonly Coding IAgPresenceOnRedBloodCellsFromDonor = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ceforanide [Susceptibility] by Minimum inhibitory concentration (MIC)
     /// </summary>
     public static readonly Coding CeforanideSusceptibilityByMinimumInhibitoryConcentrationMIC = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// G Ag [Presence] on Red Blood Cells from Donor
     /// </summary>
     public static readonly Coding GAgPresenceOnRedBloodCellsFromDonor = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// I Ag [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding IAgPresenceOnRedBloodCells = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Immune serum globulin given [Type]
     /// </summary>
     public static readonly Coding ImmuneSerumGlobulinGivenType = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Immune serum globulin given [Volume]
     /// </summary>
     public static readonly Coding ImmuneSerumGlobulinGivenVolume = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Inject immune serum globulin [Volume]
     /// </summary>
     public static readonly Coding InjectImmuneSerumGlobulinVolume = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Inject Rh immune globulin [Volume]
     /// </summary>
     public static readonly Coding InjectRhImmuneGlobulinVolume = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Inject varicella zoster virus immune globulin [Volume]
     /// </summary>
     public static readonly Coding InjectVaricellaZosterVirusImmuneGlobulinVolume = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// little i Ag [Presence] on Red Blood Cells from Blood product unit
     /// </summary>
     public static readonly Coding LittleIAgPresenceOnRedBloodCellsFromBloodProductUnit = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// little i Ag [Presence] on Red Blood Cells from Donor
     /// </summary>
     public static readonly Coding LittleIAgPresenceOnRedBloodCellsFromDonor = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// little i Ag [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding LittleIAgPresenceOnRedBloodCells = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pentaspan given [Volume]
     /// </summary>
     public static readonly Coding PentaspanGivenVolume = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// G Ag [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding GAgPresenceOnRedBloodCells = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Plasma given [Type]
     /// </summary>
     public static readonly Coding PlasmaGivenType = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Plasma given [Volume]
     /// </summary>
     public static readonly Coding PlasmaGivenVolume = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Platelets given [Type]
     /// </summary>
     public static readonly Coding PlateletsGivenType = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Rh immune globulin given [Volume]
     /// </summary>
     public static readonly Coding RhImmuneGlobulinGivenVolume = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Transfuse albumin [Volume]
     /// </summary>
     public static readonly Coding TransfuseAlbuminVolume = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Transfuse blood exchange transfusion [Volume]
     /// </summary>
     public static readonly Coding TransfuseBloodExchangeTransfusionVolume = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Transfuse blood product other [Volume]
     /// </summary>
     public static readonly Coding TransfuseBloodProductOtherVolume = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Transfuse cryoprecipitate [Volume]
     /// </summary>
     public static readonly Coding TransfuseCryoprecipitateVolume = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Transfuse factor IX [Volume]
     /// </summary>
     public static readonly Coding TransfuseFactorIXVolume = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Transfuse factor VIII [Volume]
     /// </summary>
     public static readonly Coding TransfuseFactorVIIIVolume = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// H Ab [Presence] in Serum or Plasma from Blood product unit
     /// </summary>
     public static readonly Coding HAbPresenceInSerumOrPlasmaFromBloodProductUnit = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Transfuse immune serum globulin [Volume]
     /// </summary>
     public static readonly Coding TransfuseImmuneSerumGlobulinVolume = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Transfuse Pentaspan [Volume]
     /// </summary>
     public static readonly Coding TransfusePentaspanVolume = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Transfuse plasma [Volume]
     /// </summary>
     public static readonly Coding TransfusePlasmaVolume = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Transfuse platelets [Volume]
     /// </summary>
     public static readonly Coding TransfusePlateletsVolume = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Transfuse erythrocytes [Volume]
     /// </summary>
     public static readonly Coding TransfuseErythrocytesVolume = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Transfuse Rh immune globulin [Volume]
     /// </summary>
     public static readonly Coding TransfuseRhImmuneGlobulinVolume = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Transfuse whole blood [Volume]
     /// </summary>
     public static readonly Coding TransfuseWholeBloodVolume = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Transfuse whole blood autologous [Volume]
     /// </summary>
     public static readonly Coding TransfuseWholeBloodAutologousVolume = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Varicella zoster virus immune globulin given [Volume]
     /// </summary>
     public static readonly Coding VaricellaZosterVirusImmuneGlobulinGivenVolume = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// AE 1 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding AE1AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// H Ab [Presence] in Serum or Plasma from Donor
     /// </summary>
     public static readonly Coding HAbPresenceInSerumOrPlasmaFromDonor = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// AE 3 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding AE3AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// B-cell Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding BCellAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CD30 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CD30AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// BR-2 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding BR2AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Complement C3 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding ComplementC3AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// C5B-9 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding C5B9AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CD15 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CD15AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CD16 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CD16AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CD20 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CD20AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CD3 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CD3AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// H Ab [Presence] in Serum
     /// </summary>
     public static readonly Coding HAbPresenceInSerum = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated CD30 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding DeprecatedCD30AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CD34 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CD34AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CD56 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CD56AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CD43 T-cell monocyte+myeloid cell Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CD43TCellMonocytePlusMyeloidCellAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CD57 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CD57AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CD11c Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CD11cAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Leukocyte common Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding LeukocyteCommonAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// M-5 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding M5AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// T-cell Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding TCellAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Glucose [Mass/volume] in Serum or Plasma --1 hour post meal
     /// </summary>
     public static readonly Coding GlucoseMassVolumeInSerumOrPlasma1HourPostMeal = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// H NOS Ab [Presence] in Serum or Plasma from Blood product unit
     /// </summary>
     public static readonly Coding HNOSAbPresenceInSerumOrPlasmaFromBloodProductUnit = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Glucose [Mass/volume] in Serum or Plasma --10 hours fasting
     /// </summary>
     public static readonly Coding GlucoseMassVolumeInSerumOrPlasma10HoursFasting = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Proinsulin [Moles/volume] in Serum or Plasma --12 hours fasting
     /// </summary>
     public static readonly Coding ProinsulinMolesVolumeInSerumOrPlasma12HoursFasting = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Xylose [Mass/volume] in Serum or Plasma --1 hour post 25 g xylose PO
     /// </summary>
     public static readonly Coding XyloseMassVolumeInSerumOrPlasma1HourPost25GXylosePO = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Xylose [Mass/volume] in Serum or Plasma --1 hour post dose xylose PO
     /// </summary>
     public static readonly Coding XyloseMassVolumeInSerumOrPlasma1HourPostDoseXylosePO = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Xylose [Mass/volume] in Serum or Plasma --2 hours post 25 g xylose PO
     /// </summary>
     public static readonly Coding XyloseMassVolumeInSerumOrPlasma2HoursPost25GXylosePO = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Xylose [Mass/volume] in Serum or Plasma --30 minutes post 25 g xylose PO
     /// </summary>
     public static readonly Coding XyloseMassVolumeInSerumOrPlasma30MinutesPost25GXylosePO = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Xylose [Mass/volume] in Serum or Plasma --6 hours fasting
     /// </summary>
     public static readonly Coding XyloseMassVolumeInSerumOrPlasma6HoursFasting = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Actin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding ActinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Alkaline phosphatase.placental Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding AlkalinePhosphatasePlacentalAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Alpha-1-Fetoprotein Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding Alpha1FetoproteinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// H NOS Ab [Presence] in Serum or Plasma from Donor
     /// </summary>
     public static readonly Coding HNOSAbPresenceInSerumOrPlasmaFromDonor = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lactalbumin alpha Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding LactalbuminAlphaAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Alpha-1-Antichymotrypsin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding Alpha1AntichymotrypsinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Alpha 1 antitrypsin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding Alpha1AntitrypsinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Amyloid A component Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding AmyloidAComponentAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Amyloid P component Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding AmyloidPComponentAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Amyloid.prealbumin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding AmyloidPrealbuminAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Anion gap 3 in Serum or Plasma
     /// </summary>
     public static readonly Coding AnionGap3InSerumOrPlasma = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Beta-2-Microglobulin amyloid Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding Beta2MicroglobulinAmyloidAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Calcitonin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CalcitoninAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carcinoembryonic Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CarcinoembryonicAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// H NOS Ab [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding HNOSAbPresenceInSerumOrPlasma = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Choriogonadotropin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding ChoriogonadotropinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chromogranin A Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding ChromograninAAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chromogranin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding ChromograninAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chymotrypsin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding ChymotrypsinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Collagen type 4 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CollagenType4AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Corticotropin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CorticotropinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Desmin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding DesminAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Enolase.neuron specific Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding EnolaseNeuronSpecificAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Eosinophil major basic protein Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding EosinophilMajorBasicProteinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// CD227 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CD227AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// H NOS Ag [Presence] on Red Blood Cells from Blood product unit
     /// </summary>
     public static readonly Coding HNOSAgPresenceOnRedBloodCellsFromBloodProductUnit = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Estrogen+Progesterone receptor Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding EstrogenPlusProgesteroneReceptorAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Follitropin.alpha subunit Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding FollitropinAlphaSubunitAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Follitropin.beta subunit Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding FollitropinBetaSubunitAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Gastrin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding GastrinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Glial fibrillary acidic protein Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding GlialFibrillaryAcidicProteinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Glucagon Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding GlucagonAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hemoglobin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding HemoglobinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// HMB-45 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding HMB45AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// IgA Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding IgAAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// IgA.heavy chain Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding IgAHeavyChainAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// H NOS Ag [Presence] on Red Blood Cells from Donor
     /// </summary>
     public static readonly Coding HNOSAgPresenceOnRedBloodCellsFromDonor = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// IgE Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding IgEAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// IgG Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding IgGAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// IgG.heavy chain Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding IgGHeavyChainAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// IgM Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding IgMAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// IgM.heavy chain Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding IgMHeavyChainAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Insulin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding InsulinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Kappa light chains Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding KappaLightChainsAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Immunoglobulin light chains.kappa amyloid Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding ImmunoglobulinLightChainsKappaAmyloidAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Keratin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding KeratinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lambda light chains Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding LambdaLightChainsAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ceforanide [Susceptibility] by Disk diffusion (KB)
     /// </summary>
     public static readonly Coding CeforanideSusceptibilityByDiskDiffusionKB = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// H NOS Ag [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding HNOSAgPresenceOnRedBloodCells = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Immunoglobulin light chains.lambda amyloid Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding ImmunoglobulinLightChainsLambdaAmyloidAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lutropin [Units/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding LutropinUnitsVolumeInSerumOrPlasma = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lutropin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding LutropinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lysozyme Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding LysozymeAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Myelin basic protein Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding MyelinBasicProteinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Myoglobin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding MyoglobinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Peanut agglutinin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding PeanutAgglutininAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Prolactin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding ProlactinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Prostate specific Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding ProstateSpecificAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Prostatic acid phosphatase Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding ProstaticAcidPhosphataseAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hemolytic disease of newborn screen [Interpretation] in Blood
     /// </summary>
     public static readonly Coding HemolyticDiseaseOfNewbornScreenInterpretationInBlood = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// S-100 Ag Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding S100AgAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Serotonin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding SerotoninAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Somatostatin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding SomatostatinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Somatotropin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding SomatotropinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Synaptophysin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding SynaptophysinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thyroglobulin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding ThyroglobulinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thyrotropin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding ThyrotropinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Trypsin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding TrypsinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ulex europaeus I lectin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding UlexEuropaeusILectinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Vimentin Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding VimentinAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated I (intermediate) subtype [Presence] in Serum or Plasma from Blood product unit
     /// </summary>
     public static readonly Coding DeprecatedIIntermediateSubtypePresenceInSerumOrPlasmaFromBloodProductUnit = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Coagulation factor VI Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CoagulationFactorVIAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Coagulation factor VIII Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CoagulationFactorVIIIAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Coagulation factor XIII Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CoagulationFactorXIIIAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fibrinogen Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding FibrinogenAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Cervix by Cyto stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInCervixByCytoStain = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Unspecified specimen by Cyto stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInUnspecifiedSpecimenByCytoStain = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Sputum by Cyto stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInSputumByCytoStain = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Cyto stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByCytoStain = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Acetophenazine [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding AcetophenazineMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Amoxapine metabolite [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding AmoxapineMetaboliteMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated I (intermediate) subtype [Presence] in serum or plasma from donor
     /// </summary>
     public static readonly Coding DeprecatedIIntermediateSubtypePresenceInSerumOrPlasmaFromDonor = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Aprobarbital [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding AprobarbitalMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bretylium [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding BretyliumMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Desethylamiodarone [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding DeprecatedDesethylamiodaroneMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Propoxyphene+Acetaminophen [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding PropoxyphenePlusAcetaminophenMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Diazoxide [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding DiazoxideMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Digoxin [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding DigoxinMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Dipyridamole [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding DipyridamoleMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Doxepin+Nordoxepin [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding DeprecatedDoxepinPlusNordoxepinMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Fluoxetine+Norfluoxetine [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding DeprecatedFluoxetinePlusNorfluoxetineMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Glipizide [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding GlipizideMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated I (intermediate) subtype [Presence] in srum
     /// </summary>
     public static readonly Coding DeprecatedIIntermediateSubtypePresenceInSrum = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Glyburide [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding GlyburideMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mepivacaine [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding MepivacaineMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Metharbital [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding MetharbitalMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Methsuximide+Normethsuximide [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding MethsuximidePlusNormethsuximideMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Normeperidine [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding NormeperidinePresenceInSerumOrPlasma = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Normephenytoin [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding NormephenytoinMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Normethsuximide [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding NormethsuximideMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Primidone+Phenobarbital [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding PrimidonePlusPhenobarbitalMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Phenytoin Free/Phenytoin.total in Serum or Plasma
     /// </summary>
     public static readonly Coding PhenytoinFreePhenytoinTotalInSerumOrPlasma = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pirmenol [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding PirmenolMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated I (intermediate) subtype [Presence] on Red Blood Cells from Blood product unit
     /// </summary>
     public static readonly Coding DeprecatedIIntermediateSubtypePresenceOnRedBloodCellsFromBloodProductUnit = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Temazepam [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding DeprecatedTemazepamMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Triamterene [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding TriamtereneMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Tricyclic antidepressants [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding TricyclicAntidepressantsMassVolumeInSerumOrPlasma = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Prostatic acid phosphatase [Enzymatic activity/volume] in Genital fluid
     /// </summary>
     public static readonly Coding ProstaticAcidPhosphataseEnzymaticActivityVolumeInGenitalFluid = new Coding
     {
@@ -5574,7 +5574,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Prostatic acid phosphatase [Enzymatic activity/volume] in Seminal plasma
     /// </summary>
     public static readonly Coding DeprecatedProstaticAcidPhosphataseEnzymaticActivityVolumeInSeminalPlasma = new Coding
     {
@@ -5583,7 +5583,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Acrosin [Entitic Catalytic Activity] in Spermatozoa
     /// </summary>
     public static readonly Coding AcrosinEntiticCatalyticActivityInSpermatozoa = new Coding
     {
@@ -5592,7 +5592,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Adenosine triphosphatase [Enzymatic activity/volume] in Seminal plasma
     /// </summary>
     public static readonly Coding DeprecatedAdenosineTriphosphataseEnzymaticActivityVolumeInSeminalPlasma = new Coding
     {
@@ -5601,7 +5601,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Adenosine triphosphate [Moles/volume] in Semen
     /// </summary>
     public static readonly Coding AdenosineTriphosphateMolesVolumeInSemen = new Coding
     {
@@ -5610,7 +5610,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Albumin [Moles/volume] in Semen
     /// </summary>
     public static readonly Coding AlbuminMolesVolumeInSemen = new Coding
     {
@@ -5619,7 +5619,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Calcium [Molecules/volume] in Semen
     /// </summary>
     public static readonly Coding DeprecatedCalciumMoleculesVolumeInSemen = new Coding
     {
@@ -5628,7 +5628,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated I (intermediate) subtype [Presence] on Red Blood Cells from donor
     /// </summary>
     public static readonly Coding DeprecatedIIntermediateSubtypePresenceOnRedBloodCellsFromDonor = new Coding
     {
@@ -5637,7 +5637,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carcinoembryonic Ag [Units/volume] in Semen
     /// </summary>
     public static readonly Coding CarcinoembryonicAgUnitsVolumeInSemen = new Coding
     {
@@ -5646,7 +5646,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carnitine [Moles/volume] in Semen
     /// </summary>
     public static readonly Coding CarnitineMolesVolumeInSemen = new Coding
     {
@@ -5655,7 +5655,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cells [#/volume] in Cervical mucus
     /// </summary>
     public static readonly Coding CellsNumberVolumeInCervicalMucus = new Coding
     {
@@ -5664,7 +5664,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cells other than spermatozoa [#/volume] in Semen
     /// </summary>
     public static readonly Coding CellsOtherThanSpermatozoaNumberVolumeInSemen = new Coding
     {
@@ -5673,7 +5673,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cervical mucus [Volume]
     /// </summary>
     public static readonly Coding CervicalMucusVolume = new Coding
     {
@@ -5682,7 +5682,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Choriogonadotropin [Units/volume] in Semen
     /// </summary>
     public static readonly Coding ChoriogonadotropinUnitsVolumeInSemen = new Coding
     {
@@ -5691,7 +5691,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Choriogonadotropin [Molecules/volume] in Semen
     /// </summary>
     public static readonly Coding DeprecatedChoriogonadotropinMoleculesVolumeInSemen = new Coding
     {
@@ -5700,7 +5700,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Citrate [Moles/volume] in Semen
     /// </summary>
     public static readonly Coding CitrateMolesVolumeInSemen = new Coding
     {
@@ -5709,7 +5709,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Clarity of Semen
     /// </summary>
     public static readonly Coding ClarityOfSemen = new Coding
     {
@@ -5718,7 +5718,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Color of Semen
     /// </summary>
     public static readonly Coding ColorOfSemen = new Coding
     {
@@ -5727,7 +5727,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated I (intermediate) subtype [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding DeprecatedIIntermediateSubtypePresenceOnRedBloodCells = new Coding
     {
@@ -5736,7 +5736,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Consistency of Cervical mucus
     /// </summary>
     public static readonly Coding ConsistencyOfCervicalMucus = new Coding
     {
@@ -5745,7 +5745,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Consistency of Semen
     /// </summary>
     public static readonly Coding DeprecatedConsistencyOfSemen = new Coding
     {
@@ -5754,7 +5754,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Duration^post ejaculation
     /// </summary>
     public static readonly Coding DeprecatedDurationPowerPostEjaculation = new Coding
     {
@@ -5763,7 +5763,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ferning [Type] in Cervical mucus
     /// </summary>
     public static readonly Coding FerningTypeInCervicalMucus = new Coding
     {
@@ -5772,7 +5772,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fructose [Moles/volume] in Semen
     /// </summary>
     public static readonly Coding FructoseMolesVolumeInSemen = new Coding
     {
@@ -5781,7 +5781,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Gamma glutamyl transferase [Enzymatic activity/volume] in Semen
     /// </summary>
     public static readonly Coding DeprecatedGammaGlutamylTransferaseEnzymaticActivityVolumeInSemen = new Coding
     {
@@ -5790,7 +5790,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Germ cells.immature [#/volume] in Semen
     /// </summary>
     public static readonly Coding GermCellsImmatureNumberVolumeInSemen = new Coding
     {
@@ -5799,7 +5799,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Glucosidase [Enzymatic activity/volume] in Seminal plasma
     /// </summary>
     public static readonly Coding GlucosidaseEnzymaticActivityVolumeInSeminalPlasma = new Coding
     {
@@ -5808,7 +5808,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Glycerophosphocholine [Moles/volume] in Seminal plasma
     /// </summary>
     public static readonly Coding GlycerophosphocholineMolesVolumeInSeminalPlasma = new Coding
     {
@@ -5817,7 +5817,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Leukocytes [#/volume] in Semen
     /// </summary>
     public static readonly Coding LeukocytesNumberVolumeInSemen = new Coding
     {
@@ -5826,7 +5826,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// I Ab [Presence] in Serum or Plasma from Blood product unit
     /// </summary>
     public static readonly Coding IAbPresenceInSerumOrPlasmaFromBloodProductUnit = new Coding
     {
@@ -5835,7 +5835,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Liquefaction [Time] in Semen
     /// </summary>
     public static readonly Coding LiquefactionTimeInSemen = new Coding
     {
@@ -5844,7 +5844,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Number of entities [#] in Spermatozoa
     /// </summary>
     public static readonly Coding DeprecatedNumberOfEntitiesNumberInSpermatozoa = new Coding
     {
@@ -5853,7 +5853,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// pH of Cervical mucus
     /// </summary>
     public static readonly Coding PHOfCervicalMucus = new Coding
     {
@@ -5862,7 +5862,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Prostaglandin F1 alpha [Moles/volume] in Semen
     /// </summary>
     public static readonly Coding ProstaglandinF1AlphaMolesVolumeInSemen = new Coding
     {
@@ -5871,7 +5871,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Protein [Mass/volume] in Semen
     /// </summary>
     public static readonly Coding DeprecatedProteinMassVolumeInSemen = new Coding
     {
@@ -5880,7 +5880,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Round cells [#/volume] in Semen
     /// </summary>
     public static readonly Coding RoundCellsNumberVolumeInSemen = new Coding
     {
@@ -5889,7 +5889,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Volume of Semen
     /// </summary>
     public static readonly Coding DeprecatedVolumeOfSemen = new Coding
     {
@@ -5898,7 +5898,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Sexual abstinence duration
     /// </summary>
     public static readonly Coding SexualAbstinenceDuration = new Coding
     {
@@ -5907,7 +5907,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatogonia [#/volume] in Semen
     /// </summary>
     public static readonly Coding SpermatogoniaNumberVolumeInSemen = new Coding
     {
@@ -5916,7 +5916,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatids [#/volume] in Semen by Streptoavidin-biotin method (SAB)
     /// </summary>
     public static readonly Coding SpermatidsNumberVolumeInSemenByStreptoavidinBiotinMethodSAB = new Coding
     {
@@ -5925,7 +5925,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// I Ab [Presence] in Serum or Plasma from Donor
     /// </summary>
     public static readonly Coding IAbPresenceInSerumOrPlasmaFromDonor = new Coding
     {
@@ -5934,7 +5934,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatids [#/volume] in Semen by Sertoli cell barrier method (SCB)
     /// </summary>
     public static readonly Coding SpermatidsNumberVolumeInSemenBySertoliCellBarrierMethodSCB = new Coding
     {
@@ -5943,7 +5943,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Primary Spermatocytes [#/volume] in Semen
     /// </summary>
     public static readonly Coding PrimarySpermatocytesNumberVolumeInSemen = new Coding
     {
@@ -5952,7 +5952,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Secondary Spermatocytes [#/volume] in Semen
     /// </summary>
     public static readonly Coding SecondarySpermatocytesNumberVolumeInSemen = new Coding
     {
@@ -5961,7 +5961,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Pyriform Head/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaPyriformHead100SpermatozoaInSemen = new Coding
     {
@@ -5970,7 +5970,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Tapering Head/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaTaperingHead100SpermatozoaInSemen = new Coding
     {
@@ -5979,7 +5979,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Spermatozoa [#/volume] in Semen
     /// </summary>
     public static readonly Coding DeprecatedSpermatozoaNumberVolumeInSemen = new Coding
     {
@@ -5988,7 +5988,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Spermatozoa Ab in cervical mucosa
     /// </summary>
     public static readonly Coding DeprecatedSpermatozoaAbInCervicalMucosa = new Coding
     {
@@ -5997,7 +5997,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Spermatozoa Ab in semen
     /// </summary>
     public static readonly Coding DeprecatedSpermatozoaAbInSemen = new Coding
     {
@@ -6006,7 +6006,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Spermatozoa Ab in serum
     /// </summary>
     public static readonly Coding DeprecatedSpermatozoaAbInSerum = new Coding
     {
@@ -6015,7 +6015,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa penetration [Presence] in Seminal fluid and Cervical mucosa by Kremer test
     /// </summary>
     public static readonly Coding SpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosaByKremerTest = new Coding
     {
@@ -6024,7 +6024,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ceforanide [Susceptibility] by Serum bactericidal titer
     /// </summary>
     public static readonly Coding CeforanideSusceptibilityBySerumBactericidalTiter = new Coding
     {
@@ -6033,7 +6033,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// I Ab [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding IAbPresenceInSerumOrPlasma = new Coding
     {
@@ -6042,7 +6042,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa penetration [Presence] in Seminal fluid and Cervical mucosa
     /// </summary>
     public static readonly Coding SpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosa = new Coding
     {
@@ -6051,7 +6051,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa penetration [Presence] in Seminal fluid and Cervical mucosa --post coitus
     /// </summary>
     public static readonly Coding SpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosaPostCoitus = new Coding
     {
@@ -6060,7 +6060,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Abnormal Head/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaAbnormalHead100SpermatozoaInSemen = new Coding
     {
@@ -6069,7 +6069,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Abnormal Midpiece/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaAbnormalMidpiece100SpermatozoaInSemen = new Coding
     {
@@ -6078,7 +6078,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Abnormal Tail/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaAbnormalTail100SpermatozoaInSemen = new Coding
     {
@@ -6087,7 +6087,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Agglutinated/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaAgglutinated100SpermatozoaInSemen = new Coding
     {
@@ -6096,7 +6096,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Amorphous Head/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaAmorphousHead100SpermatozoaInSemen = new Coding
     {
@@ -6105,7 +6105,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Coiled Tail/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaCoiledTail100SpermatozoaInSemen = new Coding
     {
@@ -6114,7 +6114,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Cytoplasmic Droplet/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaCytoplasmicDroplet100SpermatozoaInSemen = new Coding
     {
@@ -6123,7 +6123,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Duplicate Head/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaDuplicateHead100SpermatozoaInSemen = new Coding
     {
@@ -6132,7 +6132,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// I NOS Ab [Presence] in Serum or Plasma from Blood product unit
     /// </summary>
     public static readonly Coding INOSAbPresenceInSerumOrPlasmaFromBloodProductUnit = new Coding
     {
@@ -6141,7 +6141,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Duplicate Tail/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaDuplicateTail100SpermatozoaInSemen = new Coding
     {
@@ -6150,7 +6150,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Immotile/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaImmotile100SpermatozoaInSemen = new Coding
     {
@@ -6159,7 +6159,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Large Oval Head/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaLargeOvalHead100SpermatozoaInSemen = new Coding
     {
@@ -6168,7 +6168,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Viable/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaViable100SpermatozoaInSemen = new Coding
     {
@@ -6177,7 +6177,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Motile w IgA/100 spermatozoa in Semen by Immunobead
     /// </summary>
     public static readonly Coding SpermatozoaMotileWIgA100SpermatozoaInSemenByImmunobead = new Coding
     {
@@ -6186,7 +6186,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Motile w IgA/100 spermatozoa in Semen by Mixed antiglobulin reaction
     /// </summary>
     public static readonly Coding SpermatozoaMotileWIgA100SpermatozoaInSemenByMixedAntiglobulinReaction = new Coding
     {
@@ -6195,7 +6195,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Motile w IgG/100 spermatozoa in Semen by Immunobead
     /// </summary>
     public static readonly Coding SpermatozoaMotileWIgG100SpermatozoaInSemenByImmunobead = new Coding
     {
@@ -6204,7 +6204,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Motile w IgG/100 spermatozoa in Semen by Mixed antiglobulin reaction
     /// </summary>
     public static readonly Coding SpermatozoaMotileWIgG100SpermatozoaInSemenByMixedAntiglobulinReaction = new Coding
     {
@@ -6213,7 +6213,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Motile w IgM/100 spermatozoa in Semen by Immunobead
     /// </summary>
     public static readonly Coding SpermatozoaMotileWIgM100SpermatozoaInSemenByImmunobead = new Coding
     {
@@ -6222,7 +6222,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Motile w IgM/100 spermatozoa in Semen by Mixed antiglobulin reaction
     /// </summary>
     public static readonly Coding SpermatozoaMotileWIgM100SpermatozoaInSemenByMixedAntiglobulinReaction = new Coding
     {
@@ -6231,7 +6231,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// I NOS Ab [Presence] in Serum or Plasma from Donor
     /// </summary>
     public static readonly Coding INOSAbPresenceInSerumOrPlasmaFromDonor = new Coding
     {
@@ -6240,7 +6240,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Nonprogressive/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaNonprogressive100SpermatozoaInSemen = new Coding
     {
@@ -6249,7 +6249,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Normal Head/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaNormalHead100SpermatozoaInSemen = new Coding
     {
@@ -6258,7 +6258,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Normal/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaNormal100SpermatozoaInSemen = new Coding
     {
@@ -6267,7 +6267,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Pin Head/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaPinHead100SpermatozoaInSemen = new Coding
     {
@@ -6276,7 +6276,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Rapid/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaRapid100SpermatozoaInSemen = new Coding
     {
@@ -6285,7 +6285,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Round Head/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaRoundHead100SpermatozoaInSemen = new Coding
     {
@@ -6294,7 +6294,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Slow/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaSlow100SpermatozoaInSemen = new Coding
     {
@@ -6303,7 +6303,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Small Oval Head/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaSmallOvalHead100SpermatozoaInSemen = new Coding
     {
@@ -6312,7 +6312,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Tail Swelling/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaTailSwelling100SpermatozoaInSemen = new Coding
     {
@@ -6321,7 +6321,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa Vacuolated Head/100 spermatozoa in Semen
     /// </summary>
     public static readonly Coding SpermatozoaVacuolatedHead100SpermatozoaInSemen = new Coding
     {
@@ -6330,7 +6330,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// I NOS Ab [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding INOSAbPresenceInSerumOrPlasma = new Coding
     {
@@ -6339,7 +6339,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Spinnbarkeit [Length] in Cervical mucus
     /// </summary>
     public static readonly Coding SpinnbarkeitLengthInCervicalMucus = new Coding
     {
@@ -6348,7 +6348,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Testosterone [Moles/volume] in Semen
     /// </summary>
     public static readonly Coding TestosteroneMolesVolumeInSemen = new Coding
     {
@@ -6357,7 +6357,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Time until next menstrual period
     /// </summary>
     public static readonly Coding TimeUntilNextMenstrualPeriod = new Coding
     {
@@ -6366,7 +6366,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Zinc [Moles/volume] in Semen
     /// </summary>
     public static readonly Coding ZincMolesVolumeInSemen = new Coding
     {
@@ -6375,7 +6375,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Complement C1 esterase inhibitor.functional/Complement C1 esterase inhibitor.total in Serum or Plasma
     /// </summary>
     public static readonly Coding ComplementC1EsteraseInhibitorFunctionalComplementC1EsteraseInhibitorTotalInSerumOrPlasma = new Coding
     {
@@ -6384,7 +6384,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Acanthamoeba sp identified in Eye by Organism specific culture
     /// </summary>
     public static readonly Coding AcanthamoebaSpIdentifiedInEyeByOrganismSpecificCulture = new Coding
     {
@@ -6393,7 +6393,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Acanthamoeba sp identified in Eye by Wet preparation
     /// </summary>
     public static readonly Coding AcanthamoebaSpIdentifiedInEyeByWetPreparation = new Coding
     {
@@ -6402,7 +6402,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Night blue stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByNightBlueStain = new Coding
     {
@@ -6411,7 +6411,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thermophilic Actinomycetes colony count [#/volume] in Unspecified specimen by Organism specific culture
     /// </summary>
     public static readonly Coding ThermophilicActinomycetesColonyCountNumberVolumeInUnspecifiedSpecimenByOrganismSpecificCulture = new Coding
     {
@@ -6420,7 +6420,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Thermophilic Actinomycetes identified in Unspecified specimen by Organism specific culture
     /// </summary>
     public static readonly Coding ThermophilicActinomycetesIdentifiedInUnspecifiedSpecimenByOrganismSpecificCulture = new Coding
     {
@@ -6429,7 +6429,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// I NOS Ag [Presence] on Red Blood Cells from Blood product unit
     /// </summary>
     public static readonly Coding INOSAgPresenceOnRedBloodCellsFromBloodProductUnit = new Coding
     {
@@ -6438,7 +6438,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Adenovirus 40+41 [Identifier] in Stool by Electron microscopy
     /// </summary>
     public static readonly Coding DeprecatedAdenovirus40Plus41IdentifierInStoolByElectronMicroscopy = new Coding
     {
@@ -6447,7 +6447,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Amoeba identified in Aspirate by Immune stain
     /// </summary>
     public static readonly Coding AmoebaIdentifiedInAspirateByImmuneStain = new Coding
     {
@@ -6456,7 +6456,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Amoeba identified in Aspirate by Wet preparation
     /// </summary>
     public static readonly Coding AmoebaIdentifiedInAspirateByWetPreparation = new Coding
     {
@@ -6465,7 +6465,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Amoeba identified in Stool by Organism specific culture
     /// </summary>
     public static readonly Coding AmoebaIdentifiedInStoolByOrganismSpecificCulture = new Coding
     {
@@ -6474,7 +6474,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Arthropod identified in Unspecified specimen
     /// </summary>
     public static readonly Coding ArthropodIdentifiedInUnspecifiedSpecimen = new Coding
     {
@@ -6483,7 +6483,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Aspergillus fumigatus Ag [Presence] in Tissue by Immunofluorescence
     /// </summary>
     public static readonly Coding AspergillusFumigatusAgPresenceInTissueByImmunofluorescence = new Coding
     {
@@ -6492,7 +6492,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Astrovirus [Identifier] in Stool by Electron microscopy
     /// </summary>
     public static readonly Coding AstrovirusIdentifierInStoolByElectronMicroscopy = new Coding
     {
@@ -6501,7 +6501,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Babesia sp identified in Blood by Thick film
     /// </summary>
     public static readonly Coding BabesiaSpIdentifiedInBloodByThickFilm = new Coding
     {
@@ -6510,7 +6510,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Babesia sp identified in Blood by Thin film
     /// </summary>
     public static readonly Coding BabesiaSpIdentifiedInBloodByThinFilm = new Coding
     {
@@ -6519,7 +6519,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Calicivirus [Identifier] in Stool by Electron microscopy
     /// </summary>
     public static readonly Coding CalicivirusIdentifierInStoolByElectronMicroscopy = new Coding
     {
@@ -6528,7 +6528,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// I NOS Ag [Presence] on Red Blood Cells from Donor
     /// </summary>
     public static readonly Coding INOSAgPresenceOnRedBloodCellsFromDonor = new Coding
     {
@@ -6537,7 +6537,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Candida sp DNA [Presence] in Blood by Probe with amplification
     /// </summary>
     public static readonly Coding CandidaSpDNAPresenceInBloodByProbeWithAmplification = new Coding
     {
@@ -6546,7 +6546,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chlamydophila pneumoniae Ag [Presence] in Sputum or Bronchial
     /// </summary>
     public static readonly Coding ChlamydophilaPneumoniaeAgPresenceInSputumOrBronchial = new Coding
     {
@@ -6555,7 +6555,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chlamydophila pneumoniae DNA [Presence] in Sputum or Bronchial by Probe with amplification
     /// </summary>
     public static readonly Coding ChlamydophilaPneumoniaeDNAPresenceInSputumOrBronchialByProbeWithAmplification = new Coding
     {
@@ -6564,7 +6564,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Clotrimazole [Susceptibility] by Minimum inhibitory concentration (MIC)
     /// </summary>
     public static readonly Coding ClotrimazoleSusceptibilityByMinimumInhibitoryConcentrationMIC = new Coding
     {
@@ -6573,7 +6573,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Clotrimazole [Susceptibility] by Minimum lethal concentration (MLC)
     /// </summary>
     public static readonly Coding ClotrimazoleSusceptibilityByMinimumLethalConcentrationMLC = new Coding
     {
@@ -6582,7 +6582,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Coccidia identified in Duodenal fluid by Acid fast stain
     /// </summary>
     public static readonly Coding CoccidiaIdentifiedInDuodenalFluidByAcidFastStain = new Coding
     {
@@ -6591,7 +6591,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Coccidia identified in Stool by Acid fast stain
     /// </summary>
     public static readonly Coding CoccidiaIdentifiedInStoolByAcidFastStain = new Coding
     {
@@ -6600,7 +6600,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Cryptococcus neoformans Ag [Presence] in Tissue by Immunofluorescence
     /// </summary>
     public static readonly Coding DeprecatedCryptococcusNeoformansAgPresenceInTissueByImmunofluorescence = new Coding
     {
@@ -6609,7 +6609,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cyanobacterium identified in Water by Light microscopy
     /// </summary>
     public static readonly Coding CyanobacteriumIdentifiedInWaterByLightMicroscopy = new Coding
     {
@@ -6618,7 +6618,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cyclospora sp identified in Stool by Acid fast stain
     /// </summary>
     public static readonly Coding CyclosporaSpIdentifiedInStoolByAcidFastStain = new Coding
     {
@@ -6627,7 +6627,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// I NOS Ag [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding INOSAgPresenceOnRedBloodCells = new Coding
     {
@@ -6636,7 +6636,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cytomegalovirus Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding CytomegalovirusAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -6645,7 +6645,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Dinoflagellate identified in Water by Light microscopy
     /// </summary>
     public static readonly Coding DinoflagellateIdentifiedInWaterByLightMicroscopy = new Coding
     {
@@ -6654,7 +6654,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Filaria identified in Blood by Concentration
     /// </summary>
     public static readonly Coding FilariaIdentifiedInBloodByConcentration = new Coding
     {
@@ -6663,7 +6663,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Filaria identified in Blood by Thick film
     /// </summary>
     public static readonly Coding FilariaIdentifiedInBloodByThickFilm = new Coding
     {
@@ -6672,7 +6672,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Filaria identified in Blood by Thin film
     /// </summary>
     public static readonly Coding FilariaIdentifiedInBloodByThinFilm = new Coding
     {
@@ -6681,7 +6681,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fungus colony count [#/volume] in Unspecified specimen by Environmental culture
     /// </summary>
     public static readonly Coding FungusColonyCountNumberVolumeInUnspecifiedSpecimenByEnvironmentalCulture = new Coding
     {
@@ -6690,7 +6690,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fungus identified in Tissue by Fontana-Masson stain
     /// </summary>
     public static readonly Coding FungusIdentifiedInTissueByFontanaMassonStain = new Coding
     {
@@ -6699,7 +6699,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fungus identified in Unspecified specimen by Animal inoculation
     /// </summary>
     public static readonly Coding FungusIdentifiedInUnspecifiedSpecimenByAnimalInoculation = new Coding
     {
@@ -6708,7 +6708,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fungus identified in Unspecified specimen by Environmental culture
     /// </summary>
     public static readonly Coding FungusIdentifiedInUnspecifiedSpecimenByEnvironmentalCulture = new Coding
     {
@@ -6717,7 +6717,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fungus identified in Unspecified specimen by Sticky tape for environmental fungus
     /// </summary>
     public static readonly Coding FungusIdentifiedInUnspecifiedSpecimenByStickyTapeForEnvironmentalFungus = new Coding
     {
@@ -6726,7 +6726,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Jk sup(a) Ab [Presence] in Serum or Plasma from Blood product unit
     /// </summary>
     public static readonly Coding JkSupAAbPresenceInSerumOrPlasmaFromBloodProductUnit = new Coding
     {
@@ -6735,7 +6735,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Giardia lamblia [Presence] in Stool by Organism specific culture
     /// </summary>
     public static readonly Coding GiardiaLambliaPresenceInStoolByOrganismSpecificCulture = new Coding
     {
@@ -6744,7 +6744,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Helminth identified in Unspecified specimen
     /// </summary>
     public static readonly Coding HelminthIdentifiedInUnspecifiedSpecimen = new Coding
     {
@@ -6753,7 +6753,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Helminth+Arthropod identified in Unspecified specimen
     /// </summary>
     public static readonly Coding HelminthPlusArthropodIdentifiedInUnspecifiedSpecimen = new Coding
     {
@@ -6762,7 +6762,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hepatitis B virus core Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding HepatitisBVirusCoreAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -6771,7 +6771,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hepatitis B virus surface Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding HepatitisBVirusSurfaceAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -6780,7 +6780,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hepatitis B virus surface Ag [Presence] in Tissue by Orcein stain
     /// </summary>
     public static readonly Coding HepatitisBVirusSurfaceAgPresenceInTissueByOrceinStain = new Coding
     {
@@ -6789,7 +6789,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hepatitis C virus RNA [Units/volume] (viral load) in Serum or Plasma by Probe with amplification
     /// </summary>
     public static readonly Coding HepatitisCVirusRNAUnitsVolumeViralLoadInSerumOrPlasmaByProbeWithAmplification = new Coding
     {
@@ -6798,7 +6798,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Herpes simplex virus 1 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding HerpesSimplexVirus1AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -6807,7 +6807,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Herpes simplex virus 1+2 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding HerpesSimplexVirus1Plus2AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -6816,7 +6816,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Herpes simplex virus 2 Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding HerpesSimplexVirus2AgPresenceInTissueByImmuneStain = new Coding
     {
@@ -6825,7 +6825,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Jk sup(a) Ab [Presence] in Serum or Plasma from Donor
     /// </summary>
     public static readonly Coding JkSupAAbPresenceInSerumOrPlasmaFromDonor = new Coding
     {
@@ -6834,7 +6834,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Herpes simplex virus identified in Cerebral spinal fluid by Electron microscopy
     /// </summary>
     public static readonly Coding HerpesSimplexVirusIdentifiedInCerebralSpinalFluidByElectronMicroscopy = new Coding
     {
@@ -6843,7 +6843,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Herpes simplex virus identified in Tissue by Electron microscopy
     /// </summary>
     public static readonly Coding HerpesSimplexVirusIdentifiedInTissueByElectronMicroscopy = new Coding
     {
@@ -6852,7 +6852,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated HIV 1 RNA [Units/volume] in Serum or Plasma by Probe with amplification
     /// </summary>
     public static readonly Coding DeprecatedHIV1RNAUnitsVolumeInSerumOrPlasmaByProbeWithAmplification = new Coding
     {
@@ -6861,7 +6861,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hydatid cyst identified in Aspirate by Immune stain
     /// </summary>
     public static readonly Coding HydatidCystIdentifiedInAspirateByImmuneStain = new Coding
     {
@@ -6870,7 +6870,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hydatid cyst identified in Liver by Wet preparation
     /// </summary>
     public static readonly Coding HydatidCystIdentifiedInLiverByWetPreparation = new Coding
     {
@@ -6879,7 +6879,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hydatid cyst identified in Lung tissue by Wet preparation
     /// </summary>
     public static readonly Coding HydatidCystIdentifiedInLungTissueByWetPreparation = new Coding
     {
@@ -6888,7 +6888,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Leishmania sp identified in Tissue by Giemsa stain
     /// </summary>
     public static readonly Coding LeishmaniaSpIdentifiedInTissueByGiemsaStain = new Coding
     {
@@ -6897,7 +6897,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Leishmania sp identified in Tissue by Organism specific culture
     /// </summary>
     public static readonly Coding LeishmaniaSpIdentifiedInTissueByOrganismSpecificCulture = new Coding
     {
@@ -6906,7 +6906,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Hair by KOH preparation
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInHairByKOHPreparation = new Coding
     {
@@ -6915,7 +6915,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Nail by KOH preparation
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInNailByKOHPreparation = new Coding
     {
@@ -6924,7 +6924,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Jk sup(a) Ab [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding JkSupAAbPresenceInSerumOrPlasma = new Coding
     {
@@ -6933,7 +6933,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microsporidia identified in Duodenal fluid by Trichrome stain modified
     /// </summary>
     public static readonly Coding MicrosporidiaIdentifiedInDuodenalFluidByTrichromeStainModified = new Coding
     {
@@ -6942,7 +6942,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mushroom.toxic identified by Inspection
     /// </summary>
     public static readonly Coding MushroomToxicIdentifiedByInspection = new Coding
     {
@@ -6951,7 +6951,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mushroom.toxic identified in Food by Light microscopy
     /// </summary>
     public static readonly Coding MushroomToxicIdentifiedInFoodByLightMicroscopy = new Coding
     {
@@ -6960,7 +6960,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mushroom.toxic identified in Vomitus by Light microscopy
     /// </summary>
     public static readonly Coding MushroomToxicIdentifiedInVomitusByLightMicroscopy = new Coding
     {
@@ -6969,7 +6969,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Naegleria sp identified in Tissue by Organism specific culture
     /// </summary>
     public static readonly Coding NaegleriaSpIdentifiedInTissueByOrganismSpecificCulture = new Coding
     {
@@ -6978,7 +6978,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Naegleria sp identified in Tissue by Wet preparation
     /// </summary>
     public static readonly Coding NaegleriaSpIdentifiedInTissueByWetPreparation = new Coding
     {
@@ -6987,7 +6987,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Norovirus [Identifier] in Stool by Electron microscopy
     /// </summary>
     public static readonly Coding NorovirusIdentifierInStoolByElectronMicroscopy = new Coding
     {
@@ -6996,7 +6996,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nystatin [Susceptibility] by Minimum inhibitory concentration (MIC)
     /// </summary>
     public static readonly Coding NystatinSusceptibilityByMinimumInhibitoryConcentrationMIC = new Coding
     {
@@ -7005,7 +7005,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nystatin [Susceptibility] by Minimum lethal concentration (MLC)
     /// </summary>
     public static readonly Coding NystatinSusceptibilityByMinimumLethalConcentrationMLC = new Coding
     {
@@ -7014,7 +7014,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Onchocerca sp identified in Tissue by Wet preparation
     /// </summary>
     public static readonly Coding OnchocercaSpIdentifiedInTissueByWetPreparation = new Coding
     {
@@ -7023,7 +7023,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cefotaxime [Susceptibility] by Minimum lethal concentration (MLC)
     /// </summary>
     public static readonly Coding CefotaximeSusceptibilityByMinimumLethalConcentrationMLC = new Coding
     {
@@ -7032,7 +7032,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Jk sup(a) Ag [Presence] on Red Blood Cells from Blood product unit
     /// </summary>
     public static readonly Coding JkSupAAgPresenceOnRedBloodCellsFromBloodProductUnit = new Coding
     {
@@ -7041,7 +7041,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Orthopoxvirus [Identifier] in Skin by Electron microscopy
     /// </summary>
     public static readonly Coding OrthopoxvirusIdentifierInSkinByElectronMicroscopy = new Coding
     {
@@ -7050,7 +7050,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ova and parasites identified in Stool by Concentration
     /// </summary>
     public static readonly Coding OvaAndParasitesIdentifiedInStoolByConcentration = new Coding
     {
@@ -7059,7 +7059,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ova and parasites identified in Stool by Immune stain
     /// </summary>
     public static readonly Coding OvaAndParasitesIdentifiedInStoolByImmuneStain = new Coding
     {
@@ -7068,7 +7068,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ova and parasites identified in Stool by Kinyoun iron hematoxylin stain
     /// </summary>
     public static readonly Coding OvaAndParasitesIdentifiedInStoolByKinyounIronHematoxylinStain = new Coding
     {
@@ -7077,7 +7077,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ova and parasites identified in Stool by Light microscopy
     /// </summary>
     public static readonly Coding OvaAndParasitesIdentifiedInStoolByLightMicroscopy = new Coding
     {
@@ -7086,7 +7086,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Human papilloma virus Ag [Presence] in Tissue by Immune stain
     /// </summary>
     public static readonly Coding HumanPapillomaVirusAgPresenceInTissueByImmuneStain = new Coding
     {
@@ -7095,7 +7095,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Picornavirus [Identifier] in Stool by Electron microscopy
     /// </summary>
     public static readonly Coding PicornavirusIdentifierInStoolByElectronMicroscopy = new Coding
     {
@@ -7104,7 +7104,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Toxic Plant identified in Plant specimen by Inspection
     /// </summary>
     public static readonly Coding ToxicPlantIdentifiedInPlantSpecimenByInspection = new Coding
     {
@@ -7113,7 +7113,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Toxic Plant identified in Vomitus by Light microscopy
     /// </summary>
     public static readonly Coding ToxicPlantIdentifiedInVomitusByLightMicroscopy = new Coding
     {
@@ -7122,7 +7122,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Plasmodium falciparum Ag [Units/volume] in Blood by Immunofluorescence
     /// </summary>
     public static readonly Coding PlasmodiumFalciparumAgUnitsVolumeInBloodByImmunofluorescence = new Coding
     {
@@ -7131,7 +7131,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Jk sup(a) Ag [Presence] on Red Blood Cells from Donor
     /// </summary>
     public static readonly Coding JkSupAAgPresenceOnRedBloodCellsFromDonor = new Coding
     {
@@ -7140,7 +7140,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Plasmodium sp identified in Blood by Thin film
     /// </summary>
     public static readonly Coding PlasmodiumSpIdentifiedInBloodByThinFilm = new Coding
     {
@@ -7149,7 +7149,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Plasmodium vivax Ag [Units/volume] in Blood by Immunofluorescence
     /// </summary>
     public static readonly Coding PlasmodiumVivaxAgUnitsVolumeInBloodByImmunofluorescence = new Coding
     {
@@ -7158,7 +7158,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pneumocystis sp identified in Lung tissue
     /// </summary>
     public static readonly Coding PneumocystisSpIdentifiedInLungTissue = new Coding
     {
@@ -7167,7 +7167,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Prototheca identified in Unspecified specimen by Culture
     /// </summary>
     public static readonly Coding ProtothecaIdentifiedInUnspecifiedSpecimenByCulture = new Coding
     {
@@ -7176,7 +7176,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Rotavirus [Identifier] in Stool by Electron microscopy
     /// </summary>
     public static readonly Coding DeprecatedRotavirusIdentifierInStoolByElectronMicroscopy = new Coding
     {
@@ -7185,7 +7185,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Schistosoma sp identified in Urine sediment by Light microscopy
     /// </summary>
     public static readonly Coding SchistosomaSpIdentifiedInUrineSedimentByLightMicroscopy = new Coding
     {
@@ -7194,7 +7194,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Schistosoma sp identified in Unspecified specimen by Organism specific culture
     /// </summary>
     public static readonly Coding SchistosomaSpIdentifiedInUnspecifiedSpecimenByOrganismSpecificCulture = new Coding
     {
@@ -7203,7 +7203,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Streptococcus pneumoniae Ab [Units/volume] in Serum by Latex agglutination
     /// </summary>
     public static readonly Coding StreptococcusPneumoniaeAbUnitsVolumeInSerumByLatexAgglutination = new Coding
     {
@@ -7212,7 +7212,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Strongyloides sp Ab [Units/volume] in Serum by Immunoassay
     /// </summary>
     public static readonly Coding StrongyloidesSpAbUnitsVolumeInSerumByImmunoassay = new Coding
     {
@@ -7221,7 +7221,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Taenia solium adult Ab [Units/volume] in Serum by Immunoblot
     /// </summary>
     public static readonly Coding TaeniaSoliumAdultAbUnitsVolumeInSerumByImmunoblot = new Coding
     {
@@ -7230,7 +7230,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Jk sup(a) Ag [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding JkSupAAgPresenceOnRedBloodCells = new Coding
     {
@@ -7239,7 +7239,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Terbinafine [Susceptibility] by Minimum inhibitory concentration (MIC)
     /// </summary>
     public static readonly Coding TerbinafineSusceptibilityByMinimumInhibitoryConcentrationMIC = new Coding
     {
@@ -7248,7 +7248,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Terbinafine [Susceptibility] by Minimum lethal concentration (MLC)
     /// </summary>
     public static readonly Coding TerbinafineSusceptibilityByMinimumLethalConcentrationMLC = new Coding
     {
@@ -7257,7 +7257,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Torovirus [Identifier] in Stool by Electron microscopy
     /// </summary>
     public static readonly Coding TorovirusIdentifierInStoolByElectronMicroscopy = new Coding
     {
@@ -7266,7 +7266,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Toxoplasma gondii IgA Ab [Units/volume] in Serum by Immunoassay
     /// </summary>
     public static readonly Coding ToxoplasmaGondiiIgAAbUnitsVolumeInSerumByImmunoassay = new Coding
     {
@@ -7275,7 +7275,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Toxoplasma gondii IgE Ab [Units/volume] in Serum by Immunoassay
     /// </summary>
     public static readonly Coding ToxoplasmaGondiiIgEAbUnitsVolumeInSerumByImmunoassay = new Coding
     {
@@ -7284,7 +7284,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Toxoplasma gondii DNA [Units/volume] in Body fluid by Probe with amplification
     /// </summary>
     public static readonly Coding ToxoplasmaGondiiDNAUnitsVolumeInBodyFluidByProbeWithAmplification = new Coding
     {
@@ -7293,7 +7293,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Toxoplasma gondii [Presence] in Tissue by Giemsa stain
     /// </summary>
     public static readonly Coding ToxoplasmaGondiiPresenceInTissueByGiemsaStain = new Coding
     {
@@ -7302,7 +7302,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Toxoplasma gondii identified in Tissue
     /// </summary>
     public static readonly Coding ToxoplasmaGondiiIdentifiedInTissue = new Coding
     {
@@ -7311,7 +7311,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Trichomonas sp identified in Genital specimen by Organism specific culture
     /// </summary>
     public static readonly Coding TrichomonasSpIdentifiedInGenitalSpecimenByOrganismSpecificCulture = new Coding
     {
@@ -7320,7 +7320,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Trypanosoma sp identified in Blood by Light microscopy
     /// </summary>
     public static readonly Coding TrypanosomaSpIdentifiedInBloodByLightMicroscopy = new Coding
     {
@@ -7329,7 +7329,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Jk sup(b) Ab [Presence] in Serum or Plasma from Blood product unit
     /// </summary>
     public static readonly Coding JkSupBAbPresenceInSerumOrPlasmaFromBloodProductUnit = new Coding
     {
@@ -7338,7 +7338,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Trypanosoma sp identified in Blood by Organism specific culture
     /// </summary>
     public static readonly Coding TrypanosomaSpIdentifiedInBloodByOrganismSpecificCulture = new Coding
     {
@@ -7347,7 +7347,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Trypanosoma sp identified in Blood by Thick film
     /// </summary>
     public static readonly Coding TrypanosomaSpIdentifiedInBloodByThickFilm = new Coding
     {
@@ -7356,7 +7356,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Trypanosoma sp identified in Blood by Thin film
     /// </summary>
     public static readonly Coding TrypanosomaSpIdentifiedInBloodByThinFilm = new Coding
     {
@@ -7365,7 +7365,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Trypanosoma sp identified in Blood by Wet preparation
     /// </summary>
     public static readonly Coding TrypanosomaSpIdentifiedInBloodByWetPreparation = new Coding
     {
@@ -7374,7 +7374,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Varicella zoster virus identified in Skin by Electron microscopy
     /// </summary>
     public static readonly Coding VaricellaZosterVirusIdentifiedInSkinByElectronMicroscopy = new Coding
     {
@@ -7383,7 +7383,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Viral sequencing [Identifier] in Serum by Sequencing
     /// </summary>
     public static readonly Coding ViralSequencingIdentifierInSerumBySequencing = new Coding
     {
@@ -7392,7 +7392,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Virus identified in Cerebral spinal fluid by Electron microscopy
     /// </summary>
     public static readonly Coding VirusIdentifiedInCerebralSpinalFluidByElectronMicroscopy = new Coding
     {
@@ -7401,7 +7401,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Virus identified in Stool by Electron microscopy
     /// </summary>
     public static readonly Coding VirusIdentifiedInStoolByElectronMicroscopy = new Coding
     {
@@ -7410,7 +7410,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Virus identified in Tissue by Electron microscopy
     /// </summary>
     public static readonly Coding VirusIdentifiedInTissueByElectronMicroscopy = new Coding
     {
@@ -7419,7 +7419,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Virus identified in Unspecified specimen by Electron microscopy
     /// </summary>
     public static readonly Coding VirusIdentifiedInUnspecifiedSpecimenByElectronMicroscopy = new Coding
     {
@@ -7428,7 +7428,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Jk sup(b) Ab [Presence] in Serum or Plasma from Donor
     /// </summary>
     public static readonly Coding JkSupBAbPresenceInSerumOrPlasmaFromDonor = new Coding
     {
@@ -7437,7 +7437,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Aluminum.microscopic observation [Identifier] in Bone by Histomorphometry stain
     /// </summary>
     public static readonly Coding AluminumMicroscopicObservationIdentifierInBoneByHistomorphometryStain = new Coding
     {
@@ -7446,7 +7446,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Amyloid.microscopic observation [Identifier] in Brain by Thioflavine-S stain
     /// </summary>
     public static readonly Coding AmyloidMicroscopicObservationIdentifierInBrainByThioflavineSStain = new Coding
     {
@@ -7455,7 +7455,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Amyloid.microscopic observation [Identifier] in Tissue by Bennhold stain.Putchler modified
     /// </summary>
     public static readonly Coding AmyloidMicroscopicObservationIdentifierInTissueByBennholdStainPutchlerModified = new Coding
     {
@@ -7464,7 +7464,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Amyloid.microscopic observation [Identifier] in Tissue by Highman stain
     /// </summary>
     public static readonly Coding AmyloidMicroscopicObservationIdentifierInTissueByHighmanStain = new Coding
     {
@@ -7473,7 +7473,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Amyloid.microscopic observation [Identifier] in Tissue by Vassar-culling stain
     /// </summary>
     public static readonly Coding AmyloidMicroscopicObservationIdentifierInTissueByVassarCullingStain = new Coding
     {
@@ -7482,7 +7482,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bile.microscopic observation [Identifier] in Tissue by Fouchet stain
     /// </summary>
     public static readonly Coding BileMicroscopicObservationIdentifierInTissueByFouchetStain = new Coding
     {
@@ -7491,7 +7491,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Calcium.microscopic observation [Identifier] in Tissue by Von Kossa stain
     /// </summary>
     public static readonly Coding CalciumMicroscopicObservationIdentifierInTissueByVonKossaStain = new Coding
     {
@@ -7500,7 +7500,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Collagen fibers+Elastic fibers.microscopic observation [Identifier] in Tissue by Lawson-Van Gieson stain
     /// </summary>
     public static readonly Coding CollagenFibersPlusElasticFibersMicroscopicObservationIdentifierInTissueByLawsonVanGiesonStain = new Coding
     {
@@ -7509,7 +7509,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Collagen fibers+Elastic fibers.microscopic observation [Identifier] in Tissue by Verhoeff-Van Gieson stain
     /// </summary>
     public static readonly Coding CollagenFibersPlusElasticFibersMicroscopicObservationIdentifierInTissueByVerhoeffVanGiesonStain = new Coding
     {
@@ -7518,7 +7518,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Collagen fibers.microscopic observation [Identifier] in Tissue by Van Gieson stain
     /// </summary>
     public static readonly Coding CollagenFibersMicroscopicObservationIdentifierInTissueByVanGiesonStain = new Coding
     {
@@ -7527,7 +7527,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Jk sup(b) Ab [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding JkSupBAbPresenceInSerumOrPlasma = new Coding
     {
@@ -7536,7 +7536,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Connective tissue.microscopic observation [Identifier] in Tissue by Trichrome stain.Masson
     /// </summary>
     public static readonly Coding ConnectiveTissueMicroscopicObservationIdentifierInTissueByTrichromeStainMasson = new Coding
     {
@@ -7545,7 +7545,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Copper.microscopic observation [Identifier] in Tissue by Rhodamine stain
     /// </summary>
     public static readonly Coding CopperMicroscopicObservationIdentifierInTissueByRhodamineStain = new Coding
     {
@@ -7554,7 +7554,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fat.microscopic observation [Identifier] in Milk by Sudan IV stain
     /// </summary>
     public static readonly Coding FatMicroscopicObservationIdentifierInMilkBySudanIVStain = new Coding
     {
@@ -7563,7 +7563,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fat.microscopic observation [Identifier] in Stool by Sudan IV stain
     /// </summary>
     public static readonly Coding FatMicroscopicObservationIdentifierInStoolBySudanIVStain = new Coding
     {
@@ -7572,7 +7572,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fat.microscopic observation [Identifier] in Tissue by Sudan IV stain
     /// </summary>
     public static readonly Coding FatMicroscopicObservationIdentifierInTissueBySudanIVStain = new Coding
     {
@@ -7581,7 +7581,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Fungus.microscopic observation [Identifier] in Tissue by Methenamine silver stain.Grocott
     /// </summary>
     public static readonly Coding FungusMicroscopicObservationIdentifierInTissueByMethenamineSilverStainGrocott = new Coding
     {
@@ -7590,7 +7590,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Glial fibers.microscopic observation [Identifier] in Tissue by Holzer stain
     /// </summary>
     public static readonly Coding GlialFibersMicroscopicObservationIdentifierInTissueByHolzerStain = new Coding
     {
@@ -7599,7 +7599,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Hematologic+Nuclear elements.microscopic observation [Identifier] in Tissue by Giemsa stain.May-Grunwald
     /// </summary>
     public static readonly Coding HematologicPlusNuclearElementsMicroscopicObservationIdentifierInTissueByGiemsaStainMayGrunwald = new Coding
     {
@@ -7608,7 +7608,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Iron.microscopic observation [Identifier] in Bone by Histomorphometry stain
     /// </summary>
     public static readonly Coding IronMicroscopicObservationIdentifierInBoneByHistomorphometryStain = new Coding
     {
@@ -7617,7 +7617,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Iron.microscopic observation [Identifier] in Sputum by Gomori stain
     /// </summary>
     public static readonly Coding IronMicroscopicObservationIdentifierInSputumByGomoriStain = new Coding
     {
@@ -7626,7 +7626,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Jk sup(b) Ag [Presence] on Red Blood Cells from Blood product unit
     /// </summary>
     public static readonly Coding JkSupBAgPresenceOnRedBloodCellsFromBloodProductUnit = new Coding
     {
@@ -7635,7 +7635,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Iron.microscopic observation [Identifier] in Tissue by Gomori stain
     /// </summary>
     public static readonly Coding IronMicroscopicObservationIdentifierInTissueByGomoriStain = new Coding
     {
@@ -7644,7 +7644,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Iron.microscopic observation [Identifier] in Tissue by Other stain
     /// </summary>
     public static readonly Coding IronMicroscopicObservationIdentifierInTissueByOtherStain = new Coding
     {
@@ -7653,7 +7653,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Blood by Hemosiderin stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInBloodByHemosiderinStain = new Coding
     {
@@ -7662,7 +7662,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Body fluid by Sudan black stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInBodyFluidBySudanBlackStain = new Coding
     {
@@ -7671,7 +7671,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Sputum by Silver stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInSputumBySilverStain = new Coding
     {
@@ -7680,7 +7680,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Acetate esterase stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByAcetateEsteraseStain = new Coding
     {
@@ -7689,7 +7689,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Alcian blue stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByAlcianBlueStain = new Coding
     {
@@ -7698,7 +7698,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Alcian blue stain.sulfated
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByAlcianBlueStainSulfated = new Coding
     {
@@ -7707,7 +7707,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Alcian blue stain.with periodic acid-Schiff
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByAlcianBlueStainWithPeriodicAcidSchiff = new Coding
     {
@@ -7716,7 +7716,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Alizarin red S stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByAlizarinRedSStain = new Coding
     {
@@ -7725,7 +7725,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Jk sup(b) Ag [Presence] on Red Blood Cells from Donor
     /// </summary>
     public static readonly Coding JkSupBAgPresenceOnRedBloodCellsFromDonor = new Coding
     {
@@ -7734,7 +7734,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Argentaffin stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByArgentaffinStain = new Coding
     {
@@ -7743,7 +7743,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Microscopic observation [Identifier] in Tissue by Rhodamine-auramine fluorochrome stain
     /// </summary>
     public static readonly Coding DeprecatedMicroscopicObservationIdentifierInTissueByRhodamineAuramineFluorochromeStain = new Coding
     {
@@ -7752,7 +7752,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Azure-eosin stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByAzureEosinStain = new Coding
     {
@@ -7761,7 +7761,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Basic fuchsin stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByBasicFuchsinStain = new Coding
     {
@@ -7770,7 +7770,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Bielschowsky stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByBielschowskyStain = new Coding
     {
@@ -7779,7 +7779,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Bleach stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByBleachStain = new Coding
     {
@@ -7788,7 +7788,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Bodian stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByBodianStain = new Coding
     {
@@ -7797,7 +7797,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Brown and Brenn stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByBrownAndBrennStain = new Coding
     {
@@ -7806,7 +7806,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Butyrate esterase stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByButyrateEsteraseStain = new Coding
     {
@@ -7815,7 +7815,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Carmine stain.Best
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByCarmineStainBest = new Coding
     {
@@ -7824,7 +7824,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Jk sup(b) Ag [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding JkSupBAgPresenceOnRedBloodCells = new Coding
     {
@@ -7833,7 +7833,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Chloracetate esterase stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByChloracetateEsteraseStain = new Coding
     {
@@ -7842,7 +7842,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Churukian-Schenk stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByChurukianSchenkStain = new Coding
     {
@@ -7851,7 +7851,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Congo red stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByCongoRedStain = new Coding
     {
@@ -7860,7 +7860,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Crystal violet stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByCrystalVioletStain = new Coding
     {
@@ -7869,7 +7869,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Esterase stain.non-specific
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByEsteraseStainNonSpecific = new Coding
     {
@@ -7878,7 +7878,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Fite-Faraco stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByFiteFaracoStain = new Coding
     {
@@ -7887,7 +7887,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Microscopic observation [Identifier] in Tissue by Giemsa stain.3 micron
     /// </summary>
     public static readonly Coding DeprecatedMicroscopicObservationIdentifierInTissueByGiemsaStain3Micron = new Coding
     {
@@ -7896,7 +7896,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Gridley stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByGridleyStain = new Coding
     {
@@ -7905,7 +7905,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Hansel stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByHanselStain = new Coding
     {
@@ -7914,7 +7914,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Hematoxylin-eosin-Harris regressive stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByHematoxylinEosinHarrisRegressiveStain = new Coding
     {
@@ -7923,7 +7923,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Js sup(a) Ab [Presence] in Serum or Plasma from Blood product unit
     /// </summary>
     public static readonly Coding JsSupAAbPresenceInSerumOrPlasmaFromBloodProductUnit = new Coding
     {
@@ -7932,7 +7932,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Hematoxylin-eosin-Mayers progressive stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByHematoxylinEosinMayersProgressiveStain = new Coding
     {
@@ -7941,7 +7941,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Mallory-Heidenhain stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByMalloryHeidenhainStain = new Coding
     {
@@ -7950,7 +7950,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Methenamine silver stain.Jones
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByMethenamineSilverStainJones = new Coding
     {
@@ -7959,7 +7959,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Methyl green stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByMethylGreenStain = new Coding
     {
@@ -7968,7 +7968,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Methyl green-pyronine Y stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByMethylGreenPyronineYStain = new Coding
     {
@@ -7977,7 +7977,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Methyl violet stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByMethylVioletStain = new Coding
     {
@@ -7986,7 +7986,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Mucicarmine stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByMucicarmineStain = new Coding
     {
@@ -7995,7 +7995,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Neutral red stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByNeutralRedStain = new Coding
     {
@@ -8004,7 +8004,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Oil red O stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByOilRedOStain = new Coding
     {
@@ -8013,7 +8013,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Pentachrome stain.Movat
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByPentachromeStainMovat = new Coding
     {
@@ -8022,7 +8022,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cefotaxime [Susceptibility] by Minimum inhibitory concentration (MIC)
     /// </summary>
     public static readonly Coding CefotaximeSusceptibilityByMinimumInhibitoryConcentrationMIC = new Coding
     {
@@ -8031,7 +8031,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Js sup(a) Ab [Presence] in Serum or Plasma from Donor
     /// </summary>
     public static readonly Coding JsSupAAbPresenceInSerumOrPlasmaFromDonor = new Coding
     {
@@ -8040,7 +8040,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Periodic acid-Schiff stain with diatase digestion
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByPeriodicAcidSchiffStainWithDiataseDigestion = new Coding
     {
@@ -8049,7 +8049,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Phosphotungstic acid Hematoxylin (PTAH) Stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByPhosphotungsticAcidHematoxylinPTAHStain = new Coding
     {
@@ -8058,7 +8058,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Prussian blue stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByPrussianBlueStain = new Coding
     {
@@ -8067,7 +8067,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Quinacrine fluorescent stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByQuinacrineFluorescentStain = new Coding
     {
@@ -8076,7 +8076,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Reticulin stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByReticulinStain = new Coding
     {
@@ -8085,7 +8085,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Safranin stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueBySafraninStain = new Coding
     {
@@ -8094,7 +8094,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Schmorl stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueBySchmorlStain = new Coding
     {
@@ -8103,7 +8103,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Sevier-Munger stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueBySevierMungerStain = new Coding
     {
@@ -8112,7 +8112,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Silver impregnation stain.Dieterle
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueBySilverImpregnationStainDieterle = new Coding
     {
@@ -8121,7 +8121,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Silver nitrate stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueBySilverNitrateStain = new Coding
     {
@@ -8130,7 +8130,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Js sup(a) Ab [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding JsSupAAbPresenceInSerumOrPlasma = new Coding
     {
@@ -8139,7 +8139,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Silver stain.Fontana-Masson
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueBySilverStainFontanaMasson = new Coding
     {
@@ -8148,7 +8148,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Silver stain.Grimelius
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueBySilverStainGrimelius = new Coding
     {
@@ -8157,7 +8157,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Steiner stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueBySteinerStain = new Coding
     {
@@ -8166,7 +8166,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Sudan black stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueBySudanBlackStain = new Coding
     {
@@ -8175,7 +8175,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Supravital stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueBySupravitalStain = new Coding
     {
@@ -8184,7 +8184,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Tetrachrome stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByTetrachromeStain = new Coding
     {
@@ -8193,7 +8193,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Microscopic observation [Identifier] in Tissue by Toluidine blue O stain
     /// </summary>
     public static readonly Coding DeprecatedMicroscopicObservationIdentifierInTissueByToluidineBlueOStain = new Coding
     {
@@ -8202,7 +8202,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Trichrome stain.Gomori-Wheatley
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByTrichromeStainGomoriWheatley = new Coding
     {
@@ -8211,7 +8211,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Trichrome stain.Masson modified
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByTrichromeStainMassonModified = new Coding
     {
@@ -8220,7 +8220,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Tissue by Wade stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInTissueByWadeStain = new Coding
     {
@@ -8229,7 +8229,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Js sup(a) Ag [Presence] on Red Blood Cells from Blood product unit
     /// </summary>
     public static readonly Coding JsSupAAgPresenceOnRedBloodCellsFromBloodProductUnit = new Coding
     {
@@ -8238,7 +8238,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Microscopic observation [Identifier] in Tissue by Warthin-Starry stain
     /// </summary>
     public static readonly Coding DeprecatedMicroscopicObservationIdentifierInTissueByWarthinStarryStain = new Coding
     {
@@ -8247,7 +8247,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Microscopic observation [Identifier] in Tissue by Wright Giemsa stain
     /// </summary>
     public static readonly Coding DeprecatedMicroscopicObservationIdentifierInTissueByWrightGiemsaStain = new Coding
     {
@@ -8256,7 +8256,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mucin.microscopic observation [Identifier] in Tissue by Mucicarmine stain.Mayer
     /// </summary>
     public static readonly Coding MucinMicroscopicObservationIdentifierInTissueByMucicarmineStainMayer = new Coding
     {
@@ -8265,7 +8265,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Mucopolysaccharides.microscopic observation [Identifier] in Tissue by Colloidal ferric oxide stain.Hale
     /// </summary>
     public static readonly Coding MucopolysaccharidesMicroscopicObservationIdentifierInTissueByColloidalFerricOxideStainHale = new Coding
     {
@@ -8274,7 +8274,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Myelin+Myelin breakdown products.microscopic observation [Identifier] in Tissue by Luxol fast blue/Periodic acid-Schiff stain
     /// </summary>
     public static readonly Coding MyelinPlusMyelinBreakdownProductsMicroscopicObservationIdentifierInTissueByLuxolFastBluePeriodicAcidSchiffStain = new Coding
     {
@@ -8283,7 +8283,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Myelin+Nerve cells.microscopic observation [Identifier] in Tissue by Luxol fast blue/Cresyl violet stain
     /// </summary>
     public static readonly Coding MyelinPlusNerveCellsMicroscopicObservationIdentifierInTissueByLuxolFastBlueCresylVioletStain = new Coding
     {
@@ -8292,7 +8292,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Nissel.microscopic observation [Identifier] in Tissue by Cresyl echt violet stain
     /// </summary>
     public static readonly Coding NisselMicroscopicObservationIdentifierInTissueByCresylEchtVioletStain = new Coding
     {
@@ -8301,7 +8301,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Reticulum.microscopic observation [Identifier] in Tissue by Gomori stain
     /// </summary>
     public static readonly Coding ReticulumMicroscopicObservationIdentifierInTissueByGomoriStain = new Coding
     {
@@ -8310,7 +8310,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Urate crystals.microscopic observation [type] in Tissue by De Galantha stain
     /// </summary>
     public static readonly Coding UrateCrystalsMicroscopicObservationTypeInTissueByDeGalanthaStain = new Coding
     {
@@ -8319,7 +8319,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Silicon [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding SiliconMassVolumeInSerumOrPlasma = new Coding
     {
@@ -8328,7 +8328,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Js sup(a) Ag [Presence] on Red Blood Cells from Donor
     /// </summary>
     public static readonly Coding JsSupAAgPresenceOnRedBloodCellsFromDonor = new Coding
     {
@@ -8337,7 +8337,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Surgical operation note complications
     /// </summary>
     public static readonly Coding DeprecatedSurgicalOperationNoteComplications = new Coding
     {
@@ -8346,7 +8346,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Surgical operation note complications [Interpretation]
     /// </summary>
     public static readonly Coding SurgicalOperationNoteComplicationsInterpretation = new Coding
     {
@@ -8355,7 +8355,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Glucose [Mass/volume] in Serum or Plasma --15 minutes post 50 g lactose PO
     /// </summary>
     public static readonly Coding GlucoseMassVolumeInSerumOrPlasma15MinutesPost50GLactosePO = new Coding
     {
@@ -8364,7 +8364,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Insulin [Mass/volume] in Serum or Plasma --7 hours post 75 g glucose PO
     /// </summary>
     public static readonly Coding InsulinMassVolumeInSerumOrPlasma7HoursPost75GGlucosePO = new Coding
     {
@@ -8373,7 +8373,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Globulin [Mass/volume] in Serum by calculation
     /// </summary>
     public static readonly Coding GlobulinMassVolumeInSerumByCalculation = new Coding
     {
@@ -8382,7 +8382,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lipoprotein a [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding LipoproteinAMassVolumeInSerumOrPlasma = new Coding
     {
@@ -8391,7 +8391,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Niacin [Mass/volume] in Blood
     /// </summary>
     public static readonly Coding NiacinMassVolumeInBlood = new Coding
     {
@@ -8400,7 +8400,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Organic acids [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding OrganicAcidsPresenceInSerumOrPlasma = new Coding
     {
@@ -8409,7 +8409,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Phosphoserine [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding PhosphoserineMassVolumeInSerumOrPlasma = new Coding
     {
@@ -8418,7 +8418,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Troponin I.cardiac [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding TroponinICardiacMassVolumeInSerumOrPlasma = new Coding
     {
@@ -8427,7 +8427,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Js sup(a) Ag [Presence] on Red Blood Cells
     /// </summary>
     public static readonly Coding JsSupAAgPresenceOnRedBloodCells = new Coding
     {
@@ -8436,7 +8436,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Atropine [Mass/volume] in Urine
     /// </summary>
     public static readonly Coding AtropineMassVolumeInUrine = new Coding
     {
@@ -8445,7 +8445,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Methazolamide [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding MethazolamideMassVolumeInSerumOrPlasma = new Coding
     {
@@ -8454,7 +8454,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated HLA-DQ1 [Presence]
     /// </summary>
     public static readonly Coding DeprecatedHLADQ1Presence = new Coding
     {
@@ -8463,7 +8463,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated HLA-DQ2 [Presence]
     /// </summary>
     public static readonly Coding DeprecatedHLADQ2Presence = new Coding
     {
@@ -8472,7 +8472,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated HLA-DQ3 [Presence]
     /// </summary>
     public static readonly Coding DeprecatedHLADQ3Presence = new Coding
     {
@@ -8481,7 +8481,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated HLA-DQ4 [Presence]
     /// </summary>
     public static readonly Coding DeprecatedHLADQ4Presence = new Coding
     {
@@ -8490,7 +8490,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Borrelia burgdorferi DNA [Presence] in Blood by Probe with amplification
     /// </summary>
     public static readonly Coding BorreliaBurgdorferiDNAPresenceInBloodByProbeWithAmplification = new Coding
     {
@@ -8499,7 +8499,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Borrelia burgdorferi DNA [Presence] in Body fluid by Probe with amplification
     /// </summary>
     public static readonly Coding BorreliaBurgdorferiDNAPresenceInBodyFluidByProbeWithAmplification = new Coding
     {
@@ -8508,7 +8508,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chlamydia sp IgG Ab [Titer] in Serum by Immunofluorescence
     /// </summary>
     public static readonly Coding ChlamydiaSpIgGAbTiterInSerumByImmunofluorescence = new Coding
     {
@@ -8517,7 +8517,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Chlamydia sp IgM Ab [Titer] in Serum by Immunofluorescence
     /// </summary>
     public static readonly Coding ChlamydiaSpIgMAbTiterInSerumByImmunofluorescence = new Coding
     {
@@ -8526,7 +8526,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Js sup(b) Ab [Presence] in Serum or Plasma from Blood product unit
     /// </summary>
     public static readonly Coding JsSupBAbPresenceInSerumOrPlasmaFromBloodProductUnit = new Coding
     {
@@ -8535,7 +8535,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Cyclospora cayetanensis [Presence] in Unspecified specimen
     /// </summary>
     public static readonly Coding CyclosporaCayetanensisPresenceInUnspecifiedSpecimen = new Coding
     {
@@ -8544,7 +8544,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Escherichia coli O157:H7 [Presence] in Stool by Organism specific culture
     /// </summary>
     public static readonly Coding EscherichiaColiO157H7PresenceInStoolByOrganismSpecificCulture = new Coding
     {
@@ -8553,7 +8553,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Fungus identified in Blood by Culture
     /// </summary>
     public static readonly Coding DeprecatedFungusIdentifiedInBloodByCulture = new Coding
     {
@@ -8562,7 +8562,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Isospora belli [Presence] in Unspecified specimen by Acid fast stain.Kinyoun modified
     /// </summary>
     public static readonly Coding IsosporaBelliPresenceInUnspecifiedSpecimenByAcidFastStainKinyounModified = new Coding
     {
@@ -8571,7 +8571,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Midrofilaria identified in Blood by Concentration
     /// </summary>
     public static readonly Coding DeprecatedMidrofilariaIdentifiedInBloodByConcentration = new Coding
     {
@@ -8580,7 +8580,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Ova and parasites identified in Duodenal fluid or Gastric fluid by Light microscopy
     /// </summary>
     public static readonly Coding OvaAndParasitesIdentifiedInDuodenalFluidOrGastricFluidByLightMicroscopy = new Coding
     {
@@ -8589,7 +8589,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microscopic observation [Identifier] in Genital mucus by Gram stain
     /// </summary>
     public static readonly Coding MicroscopicObservationIdentifierInGenitalMucusByGramStain = new Coding
     {
@@ -8598,7 +8598,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Microsporidia identified in Unspecified specimen by Light microscopy
     /// </summary>
     public static readonly Coding MicrosporidiaIdentifiedInUnspecifiedSpecimenByLightMicroscopy = new Coding
     {
@@ -8607,7 +8607,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Teichoate Ab [Presence] in Serum
     /// </summary>
     public static readonly Coding TeichoateAbPresenceInSerum = new Coding
     {
@@ -8616,7 +8616,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Trypanosoma sp [Identifier] in Blood by Acridine Orange + Giemsa Stain
     /// </summary>
     public static readonly Coding TrypanosomaSpIdentifierInBloodByAcridineOrangePlusGiemsaStain = new Coding
     {
@@ -8625,7 +8625,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Js sup(b) Ab [Presence] in Serum or Plasma from Donor
     /// </summary>
     public static readonly Coding JsSupBAbPresenceInSerumOrPlasmaFromDonor = new Coding
     {
@@ -8634,7 +8634,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Varicella zoster virus [Presence] in Unspecified specimen by Organism specific culture
     /// </summary>
     public static readonly Coding VaricellaZosterVirusPresenceInUnspecifiedSpecimenByOrganismSpecificCulture = new Coding
     {
@@ -8643,7 +8643,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Progesterone receptor [Mass/mass] in Tissue
     /// </summary>
     public static readonly Coding ProgesteroneReceptorMassMassInTissue = new Coding
     {
@@ -8652,7 +8652,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Basement membrane Ab [Titer] in Serum
     /// </summary>
     public static readonly Coding BasementMembraneAbTiterInSerum = new Coding
     {
@@ -8661,7 +8661,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Endomysium IgA Ab [Titer] in Serum
     /// </summary>
     public static readonly Coding EndomysiumIgAAbTiterInSerum = new Coding
     {
@@ -8670,7 +8670,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Immune complex [Units/volume] in Serum or Plasma by Raji cell assay
     /// </summary>
     public static readonly Coding ImmuneComplexUnitsVolumeInSerumOrPlasmaByRajiCellAssay = new Coding
     {
@@ -8679,7 +8679,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Intercellular substance Ab [Presence] in Serum
     /// </summary>
     public static readonly Coding IntercellularSubstanceAbPresenceInSerum = new Coding
     {
@@ -8688,7 +8688,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Sulfatide IgG Ab [Titer] in Serum
     /// </summary>
     public static readonly Coding SulfatideIgGAbTiterInSerum = new Coding
     {
@@ -8697,7 +8697,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Sulfatide IgM Ab [Titer] in Serum
     /// </summary>
     public static readonly Coding SulfatideIgMAbTiterInSerum = new Coding
     {
@@ -8706,7 +8706,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bacitracin [Susceptibility] by Disk diffusion (KB)
     /// </summary>
     public static readonly Coding BacitracinSusceptibilityByDiskDiffusionKB = new Coding
     {
@@ -8715,7 +8715,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Xylose [Mass/volume] in Blood --3 hours post 25 g xylose PO
     /// </summary>
     public static readonly Coding XyloseMassVolumeInBlood3HoursPost25GXylosePO = new Coding
     {
@@ -8724,7 +8724,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Js sup(b) Ab [Presence] in Serum or Plasma
     /// </summary>
     public static readonly Coding JsSupBAbPresenceInSerumOrPlasma = new Coding
     {
@@ -8733,7 +8733,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Xylose [Mass/volume] in Blood --4 hours post 25 g xylose PO
     /// </summary>
     public static readonly Coding XyloseMassVolumeInBlood4HoursPost25GXylosePO = new Coding
     {
@@ -8742,7 +8742,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Xylose [Mass/volume] in Blood --5 hours post 25 g xylose PO
     /// </summary>
     public static readonly Coding XyloseMassVolumeInBlood5HoursPost25GXylosePO = new Coding
     {
@@ -8751,7 +8751,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Xylose [Mass/volume] in Blood --baseline
     /// </summary>
     public static readonly Coding XyloseMassVolumeInBloodBaseline = new Coding
     {
@@ -8760,7 +8760,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Beta-2-Microglobulin [Mass/time] in 24 hour Urine
     /// </summary>
     public static readonly Coding Beta2MicroglobulinMassTimeIn24HourUrine = new Coding
     {
@@ -8769,7 +8769,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bombesin [Mass/volume] in Plasma
     /// </summary>
     public static readonly Coding BombesinMassVolumeInPlasma = new Coding
     {
@@ -8778,7 +8778,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carnitine esters [Mass/volume] in Urine
     /// </summary>
     public static readonly Coding CarnitineEstersMassVolumeInUrine = new Coding
     {
@@ -8787,7 +8787,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carnitine esters [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding CarnitineEstersMassVolumeInSerumOrPlasma = new Coding
     {
@@ -8796,7 +8796,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Carnitine free (C0) [Mass/volume] in Urine
     /// </summary>
     public static readonly Coding CarnitineFreeC0MassVolumeInUrine = new Coding
     {
@@ -8805,7 +8805,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Iodine.protein bound [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding IodineProteinBoundMassVolumeInSerumOrPlasma = new Coding
     {
@@ -8814,7 +8814,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Isovalerylglycine [Mass/volume] in Urine
     /// </summary>
     public static readonly Coding IsovalerylglycineMassVolumeInUrine = new Coding
     {
@@ -8823,7 +8823,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Js sup(b) Ag [Presence] on Red Blood Cells from Blood product unit
     /// </summary>
     public static readonly Coding JsSupBAgPresenceOnRedBloodCellsFromBloodProductUnit = new Coding
     {
@@ -8832,7 +8832,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Magnesium [Mass/mass] in Stool
     /// </summary>
     public static readonly Coding MagnesiumMassMassInStool = new Coding
     {
@@ -8841,7 +8841,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pentacarboxylporphyrins [Mass/volume] in Red Blood Cells
     /// </summary>
     public static readonly Coding PentacarboxylporphyrinsMassVolumeInRedBloodCells = new Coding
     {
@@ -8850,7 +8850,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pentacarboxylporphyrins [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding PentacarboxylporphyrinsMassVolumeInSerumOrPlasma = new Coding
     {
@@ -8859,7 +8859,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Phenolphthalein [Mass/mass] in Stool
     /// </summary>
     public static readonly Coding PhenolphthaleinMassMassInStool = new Coding
     {
@@ -8868,7 +8868,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Phosphate [Mass/mass] in Stool
     /// </summary>
     public static readonly Coding PhosphateMassMassInStool = new Coding
     {
@@ -8877,7 +8877,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Porphyrins [Mass/time] in 24 hour Urine
     /// </summary>
     public static readonly Coding PorphyrinsMassTimeIn24HourUrine = new Coding
     {
@@ -8886,7 +8886,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Prostate Specific Ag Free [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding ProstateSpecificAgFreeMassVolumeInSerumOrPlasma = new Coding
     {
@@ -8895,7 +8895,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pyridinoline [Mass/time] in 24 hour Urine
     /// </summary>
     public static readonly Coding PyridinolineMassTimeIn24HourUrine = new Coding
     {
@@ -8904,7 +8904,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Lipase [Enzymatic activity/volume] in Urine
     /// </summary>
     public static readonly Coding LipaseEnzymaticActivityVolumeInUrine = new Coding
     {
@@ -8913,7 +8913,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Bisacodyl [Mass/mass] in Stool
     /// </summary>
     public static readonly Coding BisacodylMassMassInStool = new Coding
     {
@@ -8922,7 +8922,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Js sup(b) Ag [Presence] on Red Blood Cells from Donor
     /// </summary>
     public static readonly Coding JsSupBAgPresenceOnRedBloodCellsFromDonor = new Coding
     {
@@ -8931,7 +8931,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Deprecated Normethsuximide [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding DeprecatedNormethsuximideMassVolumeInSerumOrPlasma = new Coding
     {
@@ -8940,7 +8940,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Oxyphenisatin [Mass/mass] in Stool
     /// </summary>
     public static readonly Coding OxyphenisatinMassMassInStool = new Coding
     {
@@ -8949,7 +8949,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Pentoxifylline [Mass/volume] in Serum or Plasma
     /// </summary>
     public static readonly Coding PentoxifyllineMassVolumeInSerumOrPlasma = new Coding
     {
@@ -8958,7 +8958,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Trenbolone [Mass/volume] in Urine
     /// </summary>
     public static readonly Coding TrenboloneMassVolumeInUrine = new Coding
     {
@@ -8967,7 +8967,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Aspergillus niger Ab [Presence] in Serum by Immune diffusion (ID)
     /// </summary>
     public static readonly Coding AspergillusNigerAbPresenceInSerumByImmuneDiffusionID = new Coding
     {
@@ -8976,7 +8976,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Clostridium difficile toxin B [Presence] in Stool
     /// </summary>
     public static readonly Coding ClostridiumDifficileToxinBPresenceInStool = new Coding
     {
@@ -8985,7 +8985,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Eastern equine encephalitis virus IgG Ab [Titer] in Serum by Immunofluorescence
     /// </summary>
     public static readonly Coding EasternEquineEncephalitisVirusIgGAbTiterInSerumByImmunofluorescence = new Coding
     {
@@ -8994,7 +8994,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Eastern equine encephalitis virus IgG Ab [Titer] in Cerebral spinal fluid by Immunofluorescence
     /// </summary>
     public static readonly Coding EasternEquineEncephalitisVirusIgGAbTiterInCerebralSpinalFluidByImmunofluorescence = new Coding
     {
@@ -9003,7 +9003,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Eastern equine encephalitis virus IgM Ab [Titer] in Serum by Immunofluorescence
     /// </summary>
     public static readonly Coding EasternEquineEncephalitisVirusIgMAbTiterInSerumByImmunofluorescence = new Coding
     {
@@ -9018,9 +9018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcyclovirSusceptibility = "1-8";
 
     /// <summary>
+    /// Literal for code: NONEAcyclovirSusceptibility
+    /// </summary>
+    public const string LiteralNONEAcyclovirSusceptibility = "http://loinc.org#1-8";
+
+    /// <summary>
     /// Literal for code: AmdinocillinSusceptibilityBySerumBactericidalTiter
     /// </summary>
     public const string LiteralAmdinocillinSusceptibilityBySerumBactericidalTiter = "10-9";
+
+    /// <summary>
+    /// Literal for code: NONEAmdinocillinSusceptibilityBySerumBactericidalTiter
+    /// </summary>
+    public const string LiteralNONEAmdinocillinSusceptibilityBySerumBactericidalTiter = "http://loinc.org#10-9";
 
     /// <summary>
     /// Literal for code: CefoperazoneSusceptibilityByMinimumInhibitoryConcentrationMIC
@@ -9028,9 +9038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCefoperazoneSusceptibilityByMinimumInhibitoryConcentrationMIC = "100-8";
 
     /// <summary>
+    /// Literal for code: NONECefoperazoneSusceptibilityByMinimumInhibitoryConcentrationMIC
+    /// </summary>
+    public const string LiteralNONECefoperazoneSusceptibilityByMinimumInhibitoryConcentrationMIC = "http://loinc.org#100-8";
+
+    /// <summary>
     /// Literal for code: DBGAbPresenceInSerumOrPlasmaFromBloodProductUnit
     /// </summary>
     public const string LiteralDBGAbPresenceInSerumOrPlasmaFromBloodProductUnit = "1000-9";
+
+    /// <summary>
+    /// Literal for code: NONEDBGAbPresenceInSerumOrPlasmaFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEDBGAbPresenceInSerumOrPlasmaFromBloodProductUnit = "http://loinc.org#1000-9";
 
     /// <summary>
     /// Literal for code: RWaveDurationInLeadAVR
@@ -9038,9 +9058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRWaveDurationInLeadAVR = "10000-8";
 
     /// <summary>
+    /// Literal for code: NONERWaveDurationInLeadAVR
+    /// </summary>
+    public const string LiteralNONERWaveDurationInLeadAVR = "http://loinc.org#10000-8";
+
+    /// <summary>
     /// Literal for code: RWaveDurationInLeadI
     /// </summary>
     public const string LiteralRWaveDurationInLeadI = "10001-6";
+
+    /// <summary>
+    /// Literal for code: NONERWaveDurationInLeadI
+    /// </summary>
+    public const string LiteralNONERWaveDurationInLeadI = "http://loinc.org#10001-6";
 
     /// <summary>
     /// Literal for code: RWaveDurationInLeadII
@@ -9048,9 +9078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRWaveDurationInLeadII = "10002-4";
 
     /// <summary>
+    /// Literal for code: NONERWaveDurationInLeadII
+    /// </summary>
+    public const string LiteralNONERWaveDurationInLeadII = "http://loinc.org#10002-4";
+
+    /// <summary>
     /// Literal for code: RWaveDurationInLeadIII
     /// </summary>
     public const string LiteralRWaveDurationInLeadIII = "10003-2";
+
+    /// <summary>
+    /// Literal for code: NONERWaveDurationInLeadIII
+    /// </summary>
+    public const string LiteralNONERWaveDurationInLeadIII = "http://loinc.org#10003-2";
 
     /// <summary>
     /// Literal for code: RWaveDurationInLeadV1
@@ -9058,9 +9098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRWaveDurationInLeadV1 = "10004-0";
 
     /// <summary>
+    /// Literal for code: NONERWaveDurationInLeadV1
+    /// </summary>
+    public const string LiteralNONERWaveDurationInLeadV1 = "http://loinc.org#10004-0";
+
+    /// <summary>
     /// Literal for code: RWaveDurationInLeadV2
     /// </summary>
     public const string LiteralRWaveDurationInLeadV2 = "10005-7";
+
+    /// <summary>
+    /// Literal for code: NONERWaveDurationInLeadV2
+    /// </summary>
+    public const string LiteralNONERWaveDurationInLeadV2 = "http://loinc.org#10005-7";
 
     /// <summary>
     /// Literal for code: RWaveDurationInLeadV3
@@ -9068,9 +9118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRWaveDurationInLeadV3 = "10006-5";
 
     /// <summary>
+    /// Literal for code: NONERWaveDurationInLeadV3
+    /// </summary>
+    public const string LiteralNONERWaveDurationInLeadV3 = "http://loinc.org#10006-5";
+
+    /// <summary>
     /// Literal for code: RWaveDurationInLeadV4
     /// </summary>
     public const string LiteralRWaveDurationInLeadV4 = "10007-3";
+
+    /// <summary>
+    /// Literal for code: NONERWaveDurationInLeadV4
+    /// </summary>
+    public const string LiteralNONERWaveDurationInLeadV4 = "http://loinc.org#10007-3";
 
     /// <summary>
     /// Literal for code: RWaveDurationInLeadV5
@@ -9078,9 +9138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRWaveDurationInLeadV5 = "10008-1";
 
     /// <summary>
+    /// Literal for code: NONERWaveDurationInLeadV5
+    /// </summary>
+    public const string LiteralNONERWaveDurationInLeadV5 = "http://loinc.org#10008-1";
+
+    /// <summary>
     /// Literal for code: RWaveDurationInLeadV6
     /// </summary>
     public const string LiteralRWaveDurationInLeadV6 = "10009-9";
+
+    /// <summary>
+    /// Literal for code: NONERWaveDurationInLeadV6
+    /// </summary>
+    public const string LiteralNONERWaveDurationInLeadV6 = "http://loinc.org#10009-9";
 
     /// <summary>
     /// Literal for code: DBGAbPresenceInSerumOrPlasmaFromDonor
@@ -9088,9 +9158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDBGAbPresenceInSerumOrPlasmaFromDonor = "1001-7";
 
     /// <summary>
+    /// Literal for code: NONEDBGAbPresenceInSerumOrPlasmaFromDonor
+    /// </summary>
+    public const string LiteralNONEDBGAbPresenceInSerumOrPlasmaFromDonor = "http://loinc.org#1001-7";
+
+    /// <summary>
     /// Literal for code: RQuoteWaveAmplitudeInLeadAVF
     /// </summary>
     public const string LiteralRQuoteWaveAmplitudeInLeadAVF = "10010-7";
+
+    /// <summary>
+    /// Literal for code: NONERQuoteWaveAmplitudeInLeadAVF
+    /// </summary>
+    public const string LiteralNONERQuoteWaveAmplitudeInLeadAVF = "http://loinc.org#10010-7";
 
     /// <summary>
     /// Literal for code: RQuoteWaveAmplitudeInLeadAVL
@@ -9098,9 +9178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRQuoteWaveAmplitudeInLeadAVL = "10011-5";
 
     /// <summary>
+    /// Literal for code: NONERQuoteWaveAmplitudeInLeadAVL
+    /// </summary>
+    public const string LiteralNONERQuoteWaveAmplitudeInLeadAVL = "http://loinc.org#10011-5";
+
+    /// <summary>
     /// Literal for code: RQuoteWaveAmplitudeInLeadAVR
     /// </summary>
     public const string LiteralRQuoteWaveAmplitudeInLeadAVR = "10012-3";
+
+    /// <summary>
+    /// Literal for code: NONERQuoteWaveAmplitudeInLeadAVR
+    /// </summary>
+    public const string LiteralNONERQuoteWaveAmplitudeInLeadAVR = "http://loinc.org#10012-3";
 
     /// <summary>
     /// Literal for code: RQuoteWaveAmplitudeInLeadI
@@ -9108,9 +9198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRQuoteWaveAmplitudeInLeadI = "10013-1";
 
     /// <summary>
+    /// Literal for code: NONERQuoteWaveAmplitudeInLeadI
+    /// </summary>
+    public const string LiteralNONERQuoteWaveAmplitudeInLeadI = "http://loinc.org#10013-1";
+
+    /// <summary>
     /// Literal for code: RQuoteWaveAmplitudeInLeadII
     /// </summary>
     public const string LiteralRQuoteWaveAmplitudeInLeadII = "10014-9";
+
+    /// <summary>
+    /// Literal for code: NONERQuoteWaveAmplitudeInLeadII
+    /// </summary>
+    public const string LiteralNONERQuoteWaveAmplitudeInLeadII = "http://loinc.org#10014-9";
 
     /// <summary>
     /// Literal for code: RQuoteWaveAmplitudeInLeadIII
@@ -9118,9 +9218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRQuoteWaveAmplitudeInLeadIII = "10015-6";
 
     /// <summary>
+    /// Literal for code: NONERQuoteWaveAmplitudeInLeadIII
+    /// </summary>
+    public const string LiteralNONERQuoteWaveAmplitudeInLeadIII = "http://loinc.org#10015-6";
+
+    /// <summary>
     /// Literal for code: RQuoteWaveAmplitudeInLeadV1
     /// </summary>
     public const string LiteralRQuoteWaveAmplitudeInLeadV1 = "10016-4";
+
+    /// <summary>
+    /// Literal for code: NONERQuoteWaveAmplitudeInLeadV1
+    /// </summary>
+    public const string LiteralNONERQuoteWaveAmplitudeInLeadV1 = "http://loinc.org#10016-4";
 
     /// <summary>
     /// Literal for code: RQuoteWaveAmplitudeInLeadV2
@@ -9128,9 +9238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRQuoteWaveAmplitudeInLeadV2 = "10017-2";
 
     /// <summary>
+    /// Literal for code: NONERQuoteWaveAmplitudeInLeadV2
+    /// </summary>
+    public const string LiteralNONERQuoteWaveAmplitudeInLeadV2 = "http://loinc.org#10017-2";
+
+    /// <summary>
     /// Literal for code: RQuoteWaveAmplitudeInLeadV3
     /// </summary>
     public const string LiteralRQuoteWaveAmplitudeInLeadV3 = "10018-0";
+
+    /// <summary>
+    /// Literal for code: NONERQuoteWaveAmplitudeInLeadV3
+    /// </summary>
+    public const string LiteralNONERQuoteWaveAmplitudeInLeadV3 = "http://loinc.org#10018-0";
 
     /// <summary>
     /// Literal for code: RQuoteWaveAmplitudeInLeadV4
@@ -9138,9 +9258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRQuoteWaveAmplitudeInLeadV4 = "10019-8";
 
     /// <summary>
+    /// Literal for code: NONERQuoteWaveAmplitudeInLeadV4
+    /// </summary>
+    public const string LiteralNONERQuoteWaveAmplitudeInLeadV4 = "http://loinc.org#10019-8";
+
+    /// <summary>
     /// Literal for code: DBGAbPresenceInSerumOrPlasma
     /// </summary>
     public const string LiteralDBGAbPresenceInSerumOrPlasma = "1002-5";
+
+    /// <summary>
+    /// Literal for code: NONEDBGAbPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEDBGAbPresenceInSerumOrPlasma = "http://loinc.org#1002-5";
 
     /// <summary>
     /// Literal for code: RQuoteWaveAmplitudeInLeadV5
@@ -9148,9 +9278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRQuoteWaveAmplitudeInLeadV5 = "10020-6";
 
     /// <summary>
+    /// Literal for code: NONERQuoteWaveAmplitudeInLeadV5
+    /// </summary>
+    public const string LiteralNONERQuoteWaveAmplitudeInLeadV5 = "http://loinc.org#10020-6";
+
+    /// <summary>
     /// Literal for code: RQuoteWaveAmplitudeInLeadV6
     /// </summary>
     public const string LiteralRQuoteWaveAmplitudeInLeadV6 = "10021-4";
+
+    /// <summary>
+    /// Literal for code: NONERQuoteWaveAmplitudeInLeadV6
+    /// </summary>
+    public const string LiteralNONERQuoteWaveAmplitudeInLeadV6 = "http://loinc.org#10021-4";
 
     /// <summary>
     /// Literal for code: RQuoteWaveDurationInLeadAVF
@@ -9158,9 +9298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRQuoteWaveDurationInLeadAVF = "10022-2";
 
     /// <summary>
+    /// Literal for code: NONERQuoteWaveDurationInLeadAVF
+    /// </summary>
+    public const string LiteralNONERQuoteWaveDurationInLeadAVF = "http://loinc.org#10022-2";
+
+    /// <summary>
     /// Literal for code: RQuoteWaveDurationInLeadAVL
     /// </summary>
     public const string LiteralRQuoteWaveDurationInLeadAVL = "10023-0";
+
+    /// <summary>
+    /// Literal for code: NONERQuoteWaveDurationInLeadAVL
+    /// </summary>
+    public const string LiteralNONERQuoteWaveDurationInLeadAVL = "http://loinc.org#10023-0";
 
     /// <summary>
     /// Literal for code: RQuoteWaveDurationInLeadAVR
@@ -9168,9 +9318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRQuoteWaveDurationInLeadAVR = "10024-8";
 
     /// <summary>
+    /// Literal for code: NONERQuoteWaveDurationInLeadAVR
+    /// </summary>
+    public const string LiteralNONERQuoteWaveDurationInLeadAVR = "http://loinc.org#10024-8";
+
+    /// <summary>
     /// Literal for code: RQuoteWaveDurationInLeadI
     /// </summary>
     public const string LiteralRQuoteWaveDurationInLeadI = "10025-5";
+
+    /// <summary>
+    /// Literal for code: NONERQuoteWaveDurationInLeadI
+    /// </summary>
+    public const string LiteralNONERQuoteWaveDurationInLeadI = "http://loinc.org#10025-5";
 
     /// <summary>
     /// Literal for code: RQuoteWaveDurationInLeadII
@@ -9178,9 +9338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRQuoteWaveDurationInLeadII = "10026-3";
 
     /// <summary>
+    /// Literal for code: NONERQuoteWaveDurationInLeadII
+    /// </summary>
+    public const string LiteralNONERQuoteWaveDurationInLeadII = "http://loinc.org#10026-3";
+
+    /// <summary>
     /// Literal for code: RQuoteWaveDurationInLeadIII
     /// </summary>
     public const string LiteralRQuoteWaveDurationInLeadIII = "10027-1";
+
+    /// <summary>
+    /// Literal for code: NONERQuoteWaveDurationInLeadIII
+    /// </summary>
+    public const string LiteralNONERQuoteWaveDurationInLeadIII = "http://loinc.org#10027-1";
 
     /// <summary>
     /// Literal for code: RQuoteWaveDurationInLeadV1
@@ -9188,9 +9358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRQuoteWaveDurationInLeadV1 = "10028-9";
 
     /// <summary>
+    /// Literal for code: NONERQuoteWaveDurationInLeadV1
+    /// </summary>
+    public const string LiteralNONERQuoteWaveDurationInLeadV1 = "http://loinc.org#10028-9";
+
+    /// <summary>
     /// Literal for code: RQuoteWaveDurationInLeadV2
     /// </summary>
     public const string LiteralRQuoteWaveDurationInLeadV2 = "10029-7";
+
+    /// <summary>
+    /// Literal for code: NONERQuoteWaveDurationInLeadV2
+    /// </summary>
+    public const string LiteralNONERQuoteWaveDurationInLeadV2 = "http://loinc.org#10029-7";
 
     /// <summary>
     /// Literal for code: IndirectAntiglobulinTestComplementSpecificReagentPresenceInSerumOrPlasma
@@ -9198,9 +9378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIndirectAntiglobulinTestComplementSpecificReagentPresenceInSerumOrPlasma = "1003-3";
 
     /// <summary>
+    /// Literal for code: NONEIndirectAntiglobulinTestComplementSpecificReagentPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEIndirectAntiglobulinTestComplementSpecificReagentPresenceInSerumOrPlasma = "http://loinc.org#1003-3";
+
+    /// <summary>
     /// Literal for code: RQuoteWaveDurationInLeadV3
     /// </summary>
     public const string LiteralRQuoteWaveDurationInLeadV3 = "10030-5";
+
+    /// <summary>
+    /// Literal for code: NONERQuoteWaveDurationInLeadV3
+    /// </summary>
+    public const string LiteralNONERQuoteWaveDurationInLeadV3 = "http://loinc.org#10030-5";
 
     /// <summary>
     /// Literal for code: RQuoteWaveDurationInLeadV4
@@ -9208,9 +9398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRQuoteWaveDurationInLeadV4 = "10031-3";
 
     /// <summary>
+    /// Literal for code: NONERQuoteWaveDurationInLeadV4
+    /// </summary>
+    public const string LiteralNONERQuoteWaveDurationInLeadV4 = "http://loinc.org#10031-3";
+
+    /// <summary>
     /// Literal for code: RQuoteWaveDurationInLeadV5
     /// </summary>
     public const string LiteralRQuoteWaveDurationInLeadV5 = "10032-1";
+
+    /// <summary>
+    /// Literal for code: NONERQuoteWaveDurationInLeadV5
+    /// </summary>
+    public const string LiteralNONERQuoteWaveDurationInLeadV5 = "http://loinc.org#10032-1";
 
     /// <summary>
     /// Literal for code: RQuoteWaveDurationInLeadV6
@@ -9218,9 +9418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRQuoteWaveDurationInLeadV6 = "10033-9";
 
     /// <summary>
+    /// Literal for code: NONERQuoteWaveDurationInLeadV6
+    /// </summary>
+    public const string LiteralNONERQuoteWaveDurationInLeadV6 = "http://loinc.org#10033-9";
+
+    /// <summary>
     /// Literal for code: SWaveAmplitudeInLeadAVF
     /// </summary>
     public const string LiteralSWaveAmplitudeInLeadAVF = "10034-7";
+
+    /// <summary>
+    /// Literal for code: NONESWaveAmplitudeInLeadAVF
+    /// </summary>
+    public const string LiteralNONESWaveAmplitudeInLeadAVF = "http://loinc.org#10034-7";
 
     /// <summary>
     /// Literal for code: SWaveAmplitudeInLeadAVL
@@ -9228,9 +9438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSWaveAmplitudeInLeadAVL = "10035-4";
 
     /// <summary>
+    /// Literal for code: NONESWaveAmplitudeInLeadAVL
+    /// </summary>
+    public const string LiteralNONESWaveAmplitudeInLeadAVL = "http://loinc.org#10035-4";
+
+    /// <summary>
     /// Literal for code: SWaveAmplitudeInLeadAVR
     /// </summary>
     public const string LiteralSWaveAmplitudeInLeadAVR = "10036-2";
+
+    /// <summary>
+    /// Literal for code: NONESWaveAmplitudeInLeadAVR
+    /// </summary>
+    public const string LiteralNONESWaveAmplitudeInLeadAVR = "http://loinc.org#10036-2";
 
     /// <summary>
     /// Literal for code: SWaveAmplitudeInLeadI
@@ -9238,9 +9458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSWaveAmplitudeInLeadI = "10037-0";
 
     /// <summary>
+    /// Literal for code: NONESWaveAmplitudeInLeadI
+    /// </summary>
+    public const string LiteralNONESWaveAmplitudeInLeadI = "http://loinc.org#10037-0";
+
+    /// <summary>
     /// Literal for code: SWaveAmplitudeInLeadII
     /// </summary>
     public const string LiteralSWaveAmplitudeInLeadII = "10038-8";
+
+    /// <summary>
+    /// Literal for code: NONESWaveAmplitudeInLeadII
+    /// </summary>
+    public const string LiteralNONESWaveAmplitudeInLeadII = "http://loinc.org#10038-8";
 
     /// <summary>
     /// Literal for code: SWaveAmplitudeInLeadIII
@@ -9248,9 +9478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSWaveAmplitudeInLeadIII = "10039-6";
 
     /// <summary>
+    /// Literal for code: NONESWaveAmplitudeInLeadIII
+    /// </summary>
+    public const string LiteralNONESWaveAmplitudeInLeadIII = "http://loinc.org#10039-6";
+
+    /// <summary>
     /// Literal for code: DirectAntiglobulinTestComplementSpecificReagentPresenceOnRedBloodCells
     /// </summary>
     public const string LiteralDirectAntiglobulinTestComplementSpecificReagentPresenceOnRedBloodCells = "1004-1";
+
+    /// <summary>
+    /// Literal for code: NONEDirectAntiglobulinTestComplementSpecificReagentPresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEDirectAntiglobulinTestComplementSpecificReagentPresenceOnRedBloodCells = "http://loinc.org#1004-1";
 
     /// <summary>
     /// Literal for code: SWaveAmplitudeInLeadV1
@@ -9258,9 +9498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSWaveAmplitudeInLeadV1 = "10040-4";
 
     /// <summary>
+    /// Literal for code: NONESWaveAmplitudeInLeadV1
+    /// </summary>
+    public const string LiteralNONESWaveAmplitudeInLeadV1 = "http://loinc.org#10040-4";
+
+    /// <summary>
     /// Literal for code: SWaveAmplitudeInLeadV2
     /// </summary>
     public const string LiteralSWaveAmplitudeInLeadV2 = "10041-2";
+
+    /// <summary>
+    /// Literal for code: NONESWaveAmplitudeInLeadV2
+    /// </summary>
+    public const string LiteralNONESWaveAmplitudeInLeadV2 = "http://loinc.org#10041-2";
 
     /// <summary>
     /// Literal for code: SWaveAmplitudeInLeadV3
@@ -9268,9 +9518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSWaveAmplitudeInLeadV3 = "10042-0";
 
     /// <summary>
+    /// Literal for code: NONESWaveAmplitudeInLeadV3
+    /// </summary>
+    public const string LiteralNONESWaveAmplitudeInLeadV3 = "http://loinc.org#10042-0";
+
+    /// <summary>
     /// Literal for code: SWaveAmplitudeInLeadV4
     /// </summary>
     public const string LiteralSWaveAmplitudeInLeadV4 = "10043-8";
+
+    /// <summary>
+    /// Literal for code: NONESWaveAmplitudeInLeadV4
+    /// </summary>
+    public const string LiteralNONESWaveAmplitudeInLeadV4 = "http://loinc.org#10043-8";
 
     /// <summary>
     /// Literal for code: SWaveAmplitudeInLeadV5
@@ -9278,9 +9538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSWaveAmplitudeInLeadV5 = "10044-6";
 
     /// <summary>
+    /// Literal for code: NONESWaveAmplitudeInLeadV5
+    /// </summary>
+    public const string LiteralNONESWaveAmplitudeInLeadV5 = "http://loinc.org#10044-6";
+
+    /// <summary>
     /// Literal for code: SWaveAmplitudeInLeadV6
     /// </summary>
     public const string LiteralSWaveAmplitudeInLeadV6 = "10045-3";
+
+    /// <summary>
+    /// Literal for code: NONESWaveAmplitudeInLeadV6
+    /// </summary>
+    public const string LiteralNONESWaveAmplitudeInLeadV6 = "http://loinc.org#10045-3";
 
     /// <summary>
     /// Literal for code: SWaveDurationInLeadAVF
@@ -9288,9 +9558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSWaveDurationInLeadAVF = "10046-1";
 
     /// <summary>
+    /// Literal for code: NONESWaveDurationInLeadAVF
+    /// </summary>
+    public const string LiteralNONESWaveDurationInLeadAVF = "http://loinc.org#10046-1";
+
+    /// <summary>
     /// Literal for code: SWaveDurationInLeadAVL
     /// </summary>
     public const string LiteralSWaveDurationInLeadAVL = "10047-9";
+
+    /// <summary>
+    /// Literal for code: NONESWaveDurationInLeadAVL
+    /// </summary>
+    public const string LiteralNONESWaveDurationInLeadAVL = "http://loinc.org#10047-9";
 
     /// <summary>
     /// Literal for code: SWaveDurationInLeadAVR
@@ -9298,9 +9578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSWaveDurationInLeadAVR = "10048-7";
 
     /// <summary>
+    /// Literal for code: NONESWaveDurationInLeadAVR
+    /// </summary>
+    public const string LiteralNONESWaveDurationInLeadAVR = "http://loinc.org#10048-7";
+
+    /// <summary>
     /// Literal for code: SWaveDurationInLeadI
     /// </summary>
     public const string LiteralSWaveDurationInLeadI = "10049-5";
+
+    /// <summary>
+    /// Literal for code: NONESWaveDurationInLeadI
+    /// </summary>
+    public const string LiteralNONESWaveDurationInLeadI = "http://loinc.org#10049-5";
 
     /// <summary>
     /// Literal for code: IndirectAntiglobulinTestIgGSpecificReagentPresenceInSerumOrPlasma
@@ -9308,9 +9598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIndirectAntiglobulinTestIgGSpecificReagentPresenceInSerumOrPlasma = "1005-8";
 
     /// <summary>
+    /// Literal for code: NONEIndirectAntiglobulinTestIgGSpecificReagentPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEIndirectAntiglobulinTestIgGSpecificReagentPresenceInSerumOrPlasma = "http://loinc.org#1005-8";
+
+    /// <summary>
     /// Literal for code: SWaveDurationInLeadII
     /// </summary>
     public const string LiteralSWaveDurationInLeadII = "10050-3";
+
+    /// <summary>
+    /// Literal for code: NONESWaveDurationInLeadII
+    /// </summary>
+    public const string LiteralNONESWaveDurationInLeadII = "http://loinc.org#10050-3";
 
     /// <summary>
     /// Literal for code: SWaveDurationInLeadIII
@@ -9318,9 +9618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSWaveDurationInLeadIII = "10051-1";
 
     /// <summary>
+    /// Literal for code: NONESWaveDurationInLeadIII
+    /// </summary>
+    public const string LiteralNONESWaveDurationInLeadIII = "http://loinc.org#10051-1";
+
+    /// <summary>
     /// Literal for code: SWaveDurationInLeadV1
     /// </summary>
     public const string LiteralSWaveDurationInLeadV1 = "10052-9";
+
+    /// <summary>
+    /// Literal for code: NONESWaveDurationInLeadV1
+    /// </summary>
+    public const string LiteralNONESWaveDurationInLeadV1 = "http://loinc.org#10052-9";
 
     /// <summary>
     /// Literal for code: SWaveDurationInLeadV2
@@ -9328,9 +9638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSWaveDurationInLeadV2 = "10053-7";
 
     /// <summary>
+    /// Literal for code: NONESWaveDurationInLeadV2
+    /// </summary>
+    public const string LiteralNONESWaveDurationInLeadV2 = "http://loinc.org#10053-7";
+
+    /// <summary>
     /// Literal for code: SWaveDurationInLeadV3
     /// </summary>
     public const string LiteralSWaveDurationInLeadV3 = "10054-5";
+
+    /// <summary>
+    /// Literal for code: NONESWaveDurationInLeadV3
+    /// </summary>
+    public const string LiteralNONESWaveDurationInLeadV3 = "http://loinc.org#10054-5";
 
     /// <summary>
     /// Literal for code: SWaveDurationInLeadV4
@@ -9338,9 +9658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSWaveDurationInLeadV4 = "10055-2";
 
     /// <summary>
+    /// Literal for code: NONESWaveDurationInLeadV4
+    /// </summary>
+    public const string LiteralNONESWaveDurationInLeadV4 = "http://loinc.org#10055-2";
+
+    /// <summary>
     /// Literal for code: SWaveDurationInLeadV5
     /// </summary>
     public const string LiteralSWaveDurationInLeadV5 = "10056-0";
+
+    /// <summary>
+    /// Literal for code: NONESWaveDurationInLeadV5
+    /// </summary>
+    public const string LiteralNONESWaveDurationInLeadV5 = "http://loinc.org#10056-0";
 
     /// <summary>
     /// Literal for code: SWaveDurationInLeadV6
@@ -9348,9 +9678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSWaveDurationInLeadV6 = "10057-8";
 
     /// <summary>
+    /// Literal for code: NONESWaveDurationInLeadV6
+    /// </summary>
+    public const string LiteralNONESWaveDurationInLeadV6 = "http://loinc.org#10057-8";
+
+    /// <summary>
     /// Literal for code: SQuoteWaveAmplitudeInLeadAVF
     /// </summary>
     public const string LiteralSQuoteWaveAmplitudeInLeadAVF = "10058-6";
+
+    /// <summary>
+    /// Literal for code: NONESQuoteWaveAmplitudeInLeadAVF
+    /// </summary>
+    public const string LiteralNONESQuoteWaveAmplitudeInLeadAVF = "http://loinc.org#10058-6";
 
     /// <summary>
     /// Literal for code: SQuoteWaveAmplitudeInLeadAVL
@@ -9358,9 +9698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSQuoteWaveAmplitudeInLeadAVL = "10059-4";
 
     /// <summary>
+    /// Literal for code: NONESQuoteWaveAmplitudeInLeadAVL
+    /// </summary>
+    public const string LiteralNONESQuoteWaveAmplitudeInLeadAVL = "http://loinc.org#10059-4";
+
+    /// <summary>
     /// Literal for code: DirectAntiglobulinTestIgGSpecificReagentInterpretationOnRedBloodCells
     /// </summary>
     public const string LiteralDirectAntiglobulinTestIgGSpecificReagentInterpretationOnRedBloodCells = "1006-6";
+
+    /// <summary>
+    /// Literal for code: NONEDirectAntiglobulinTestIgGSpecificReagentInterpretationOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEDirectAntiglobulinTestIgGSpecificReagentInterpretationOnRedBloodCells = "http://loinc.org#1006-6";
 
     /// <summary>
     /// Literal for code: SQuoteWaveAmplitudeInLeadAVR
@@ -9368,9 +9718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSQuoteWaveAmplitudeInLeadAVR = "10060-2";
 
     /// <summary>
+    /// Literal for code: NONESQuoteWaveAmplitudeInLeadAVR
+    /// </summary>
+    public const string LiteralNONESQuoteWaveAmplitudeInLeadAVR = "http://loinc.org#10060-2";
+
+    /// <summary>
     /// Literal for code: SQuoteWaveAmplitudeInLeadI
     /// </summary>
     public const string LiteralSQuoteWaveAmplitudeInLeadI = "10061-0";
+
+    /// <summary>
+    /// Literal for code: NONESQuoteWaveAmplitudeInLeadI
+    /// </summary>
+    public const string LiteralNONESQuoteWaveAmplitudeInLeadI = "http://loinc.org#10061-0";
 
     /// <summary>
     /// Literal for code: SQuoteWaveAmplitudeInLeadII
@@ -9378,9 +9738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSQuoteWaveAmplitudeInLeadII = "10062-8";
 
     /// <summary>
+    /// Literal for code: NONESQuoteWaveAmplitudeInLeadII
+    /// </summary>
+    public const string LiteralNONESQuoteWaveAmplitudeInLeadII = "http://loinc.org#10062-8";
+
+    /// <summary>
     /// Literal for code: SQuoteWaveAmplitudeInLeadIII
     /// </summary>
     public const string LiteralSQuoteWaveAmplitudeInLeadIII = "10063-6";
+
+    /// <summary>
+    /// Literal for code: NONESQuoteWaveAmplitudeInLeadIII
+    /// </summary>
+    public const string LiteralNONESQuoteWaveAmplitudeInLeadIII = "http://loinc.org#10063-6";
 
     /// <summary>
     /// Literal for code: SQuoteWaveAmplitudeInLeadV1
@@ -9388,9 +9758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSQuoteWaveAmplitudeInLeadV1 = "10064-4";
 
     /// <summary>
+    /// Literal for code: NONESQuoteWaveAmplitudeInLeadV1
+    /// </summary>
+    public const string LiteralNONESQuoteWaveAmplitudeInLeadV1 = "http://loinc.org#10064-4";
+
+    /// <summary>
     /// Literal for code: SQuoteWaveAmplitudeInLeadV2
     /// </summary>
     public const string LiteralSQuoteWaveAmplitudeInLeadV2 = "10065-1";
+
+    /// <summary>
+    /// Literal for code: NONESQuoteWaveAmplitudeInLeadV2
+    /// </summary>
+    public const string LiteralNONESQuoteWaveAmplitudeInLeadV2 = "http://loinc.org#10065-1";
 
     /// <summary>
     /// Literal for code: SQuoteWaveAmplitudeInLeadV3
@@ -9398,9 +9778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSQuoteWaveAmplitudeInLeadV3 = "10066-9";
 
     /// <summary>
+    /// Literal for code: NONESQuoteWaveAmplitudeInLeadV3
+    /// </summary>
+    public const string LiteralNONESQuoteWaveAmplitudeInLeadV3 = "http://loinc.org#10066-9";
+
+    /// <summary>
     /// Literal for code: SQuoteWaveAmplitudeInLeadV4
     /// </summary>
     public const string LiteralSQuoteWaveAmplitudeInLeadV4 = "10067-7";
+
+    /// <summary>
+    /// Literal for code: NONESQuoteWaveAmplitudeInLeadV4
+    /// </summary>
+    public const string LiteralNONESQuoteWaveAmplitudeInLeadV4 = "http://loinc.org#10067-7";
 
     /// <summary>
     /// Literal for code: SQuoteWaveAmplitudeInLeadV5
@@ -9408,9 +9798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSQuoteWaveAmplitudeInLeadV5 = "10068-5";
 
     /// <summary>
+    /// Literal for code: NONESQuoteWaveAmplitudeInLeadV5
+    /// </summary>
+    public const string LiteralNONESQuoteWaveAmplitudeInLeadV5 = "http://loinc.org#10068-5";
+
+    /// <summary>
     /// Literal for code: SQuoteWaveAmplitudeInLeadV6
     /// </summary>
     public const string LiteralSQuoteWaveAmplitudeInLeadV6 = "10069-3";
+
+    /// <summary>
+    /// Literal for code: NONESQuoteWaveAmplitudeInLeadV6
+    /// </summary>
+    public const string LiteralNONESQuoteWaveAmplitudeInLeadV6 = "http://loinc.org#10069-3";
 
     /// <summary>
     /// Literal for code: DirectAntiglobulinTestPolySpecificReagentPresenceOnRedBloodCells
@@ -9418,9 +9818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDirectAntiglobulinTestPolySpecificReagentPresenceOnRedBloodCells = "1007-4";
 
     /// <summary>
+    /// Literal for code: NONEDirectAntiglobulinTestPolySpecificReagentPresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEDirectAntiglobulinTestPolySpecificReagentPresenceOnRedBloodCells = "http://loinc.org#1007-4";
+
+    /// <summary>
     /// Literal for code: SQuoteWaveDurationInLeadAVF
     /// </summary>
     public const string LiteralSQuoteWaveDurationInLeadAVF = "10070-1";
+
+    /// <summary>
+    /// Literal for code: NONESQuoteWaveDurationInLeadAVF
+    /// </summary>
+    public const string LiteralNONESQuoteWaveDurationInLeadAVF = "http://loinc.org#10070-1";
 
     /// <summary>
     /// Literal for code: SQuoteWaveDurationInLeadAVL
@@ -9428,9 +9838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSQuoteWaveDurationInLeadAVL = "10071-9";
 
     /// <summary>
+    /// Literal for code: NONESQuoteWaveDurationInLeadAVL
+    /// </summary>
+    public const string LiteralNONESQuoteWaveDurationInLeadAVL = "http://loinc.org#10071-9";
+
+    /// <summary>
     /// Literal for code: SQuoteWaveDurationInLeadAVR
     /// </summary>
     public const string LiteralSQuoteWaveDurationInLeadAVR = "10072-7";
+
+    /// <summary>
+    /// Literal for code: NONESQuoteWaveDurationInLeadAVR
+    /// </summary>
+    public const string LiteralNONESQuoteWaveDurationInLeadAVR = "http://loinc.org#10072-7";
 
     /// <summary>
     /// Literal for code: SQuoteWaveDurationInLeadI
@@ -9438,9 +9858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSQuoteWaveDurationInLeadI = "10073-5";
 
     /// <summary>
+    /// Literal for code: NONESQuoteWaveDurationInLeadI
+    /// </summary>
+    public const string LiteralNONESQuoteWaveDurationInLeadI = "http://loinc.org#10073-5";
+
+    /// <summary>
     /// Literal for code: SQuoteWaveDurationInLeadII
     /// </summary>
     public const string LiteralSQuoteWaveDurationInLeadII = "10074-3";
+
+    /// <summary>
+    /// Literal for code: NONESQuoteWaveDurationInLeadII
+    /// </summary>
+    public const string LiteralNONESQuoteWaveDurationInLeadII = "http://loinc.org#10074-3";
 
     /// <summary>
     /// Literal for code: SQuoteWaveDurationInLeadIII
@@ -9448,9 +9878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSQuoteWaveDurationInLeadIII = "10075-0";
 
     /// <summary>
+    /// Literal for code: NONESQuoteWaveDurationInLeadIII
+    /// </summary>
+    public const string LiteralNONESQuoteWaveDurationInLeadIII = "http://loinc.org#10075-0";
+
+    /// <summary>
     /// Literal for code: SQuoteWaveDurationInLeadV1
     /// </summary>
     public const string LiteralSQuoteWaveDurationInLeadV1 = "10076-8";
+
+    /// <summary>
+    /// Literal for code: NONESQuoteWaveDurationInLeadV1
+    /// </summary>
+    public const string LiteralNONESQuoteWaveDurationInLeadV1 = "http://loinc.org#10076-8";
 
     /// <summary>
     /// Literal for code: SQuoteWaveDurationInLeadV2
@@ -9458,9 +9898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSQuoteWaveDurationInLeadV2 = "10077-6";
 
     /// <summary>
+    /// Literal for code: NONESQuoteWaveDurationInLeadV2
+    /// </summary>
+    public const string LiteralNONESQuoteWaveDurationInLeadV2 = "http://loinc.org#10077-6";
+
+    /// <summary>
     /// Literal for code: SQuoteWaveDurationInLeadV3
     /// </summary>
     public const string LiteralSQuoteWaveDurationInLeadV3 = "10078-4";
+
+    /// <summary>
+    /// Literal for code: NONESQuoteWaveDurationInLeadV3
+    /// </summary>
+    public const string LiteralNONESQuoteWaveDurationInLeadV3 = "http://loinc.org#10078-4";
 
     /// <summary>
     /// Literal for code: SQuoteWaveDurationInLeadV4
@@ -9468,9 +9918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSQuoteWaveDurationInLeadV4 = "10079-2";
 
     /// <summary>
+    /// Literal for code: NONESQuoteWaveDurationInLeadV4
+    /// </summary>
+    public const string LiteralNONESQuoteWaveDurationInLeadV4 = "http://loinc.org#10079-2";
+
+    /// <summary>
     /// Literal for code: IndirectAntiglobulinTestPolySpecificReagentPresenceInSerumOrPlasma
     /// </summary>
     public const string LiteralIndirectAntiglobulinTestPolySpecificReagentPresenceInSerumOrPlasma = "1008-2";
+
+    /// <summary>
+    /// Literal for code: NONEIndirectAntiglobulinTestPolySpecificReagentPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEIndirectAntiglobulinTestPolySpecificReagentPresenceInSerumOrPlasma = "http://loinc.org#1008-2";
 
     /// <summary>
     /// Literal for code: SQuoteWaveDurationInLeadV5
@@ -9478,9 +9938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSQuoteWaveDurationInLeadV5 = "10080-0";
 
     /// <summary>
+    /// Literal for code: NONESQuoteWaveDurationInLeadV5
+    /// </summary>
+    public const string LiteralNONESQuoteWaveDurationInLeadV5 = "http://loinc.org#10080-0";
+
+    /// <summary>
     /// Literal for code: SQuoteWaveDurationInLeadV6
     /// </summary>
     public const string LiteralSQuoteWaveDurationInLeadV6 = "10081-8";
+
+    /// <summary>
+    /// Literal for code: NONESQuoteWaveDurationInLeadV6
+    /// </summary>
+    public const string LiteralNONESQuoteWaveDurationInLeadV6 = "http://loinc.org#10081-8";
 
     /// <summary>
     /// Literal for code: STInitialAmplitude6MsInLeadAVF
@@ -9488,9 +9958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTInitialAmplitude6MsInLeadAVF = "10082-6";
 
     /// <summary>
+    /// Literal for code: NONESTInitialAmplitude6MsInLeadAVF
+    /// </summary>
+    public const string LiteralNONESTInitialAmplitude6MsInLeadAVF = "http://loinc.org#10082-6";
+
+    /// <summary>
     /// Literal for code: STInitialAmplitude6MsInLeadAVL
     /// </summary>
     public const string LiteralSTInitialAmplitude6MsInLeadAVL = "10083-4";
+
+    /// <summary>
+    /// Literal for code: NONESTInitialAmplitude6MsInLeadAVL
+    /// </summary>
+    public const string LiteralNONESTInitialAmplitude6MsInLeadAVL = "http://loinc.org#10083-4";
 
     /// <summary>
     /// Literal for code: STInitialAmplitude6MsInLeadAVR
@@ -9498,9 +9978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTInitialAmplitude6MsInLeadAVR = "10084-2";
 
     /// <summary>
+    /// Literal for code: NONESTInitialAmplitude6MsInLeadAVR
+    /// </summary>
+    public const string LiteralNONESTInitialAmplitude6MsInLeadAVR = "http://loinc.org#10084-2";
+
+    /// <summary>
     /// Literal for code: STInitialAmplitude6MsInLeadI
     /// </summary>
     public const string LiteralSTInitialAmplitude6MsInLeadI = "10085-9";
+
+    /// <summary>
+    /// Literal for code: NONESTInitialAmplitude6MsInLeadI
+    /// </summary>
+    public const string LiteralNONESTInitialAmplitude6MsInLeadI = "http://loinc.org#10085-9";
 
     /// <summary>
     /// Literal for code: STInitialAmplitude6MsInLeadII
@@ -9508,9 +9998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTInitialAmplitude6MsInLeadII = "10086-7";
 
     /// <summary>
+    /// Literal for code: NONESTInitialAmplitude6MsInLeadII
+    /// </summary>
+    public const string LiteralNONESTInitialAmplitude6MsInLeadII = "http://loinc.org#10086-7";
+
+    /// <summary>
     /// Literal for code: STInitialAmplitude6MsInLeadIII
     /// </summary>
     public const string LiteralSTInitialAmplitude6MsInLeadIII = "10087-5";
+
+    /// <summary>
+    /// Literal for code: NONESTInitialAmplitude6MsInLeadIII
+    /// </summary>
+    public const string LiteralNONESTInitialAmplitude6MsInLeadIII = "http://loinc.org#10087-5";
 
     /// <summary>
     /// Literal for code: STInitialAmplitude6MsInLeadV1
@@ -9518,9 +10018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTInitialAmplitude6MsInLeadV1 = "10088-3";
 
     /// <summary>
+    /// Literal for code: NONESTInitialAmplitude6MsInLeadV1
+    /// </summary>
+    public const string LiteralNONESTInitialAmplitude6MsInLeadV1 = "http://loinc.org#10088-3";
+
+    /// <summary>
     /// Literal for code: STInitialAmplitude6MsInLeadV2
     /// </summary>
     public const string LiteralSTInitialAmplitude6MsInLeadV2 = "10089-1";
+
+    /// <summary>
+    /// Literal for code: NONESTInitialAmplitude6MsInLeadV2
+    /// </summary>
+    public const string LiteralNONESTInitialAmplitude6MsInLeadV2 = "http://loinc.org#10089-1";
 
     /// <summary>
     /// Literal for code: DeprecatedDirectAntiglobulinTestPolySpecificReagentPresenceOnRedBloodCells
@@ -9528,9 +10038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedDirectAntiglobulinTestPolySpecificReagentPresenceOnRedBloodCells = "1009-0";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedDirectAntiglobulinTestPolySpecificReagentPresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEDeprecatedDirectAntiglobulinTestPolySpecificReagentPresenceOnRedBloodCells = "http://loinc.org#1009-0";
+
+    /// <summary>
     /// Literal for code: STInitialAmplitude6MsInLeadV3
     /// </summary>
     public const string LiteralSTInitialAmplitude6MsInLeadV3 = "10090-9";
+
+    /// <summary>
+    /// Literal for code: NONESTInitialAmplitude6MsInLeadV3
+    /// </summary>
+    public const string LiteralNONESTInitialAmplitude6MsInLeadV3 = "http://loinc.org#10090-9";
 
     /// <summary>
     /// Literal for code: STInitialAmplitude6MsInLeadV4
@@ -9538,9 +10058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTInitialAmplitude6MsInLeadV4 = "10091-7";
 
     /// <summary>
+    /// Literal for code: NONESTInitialAmplitude6MsInLeadV4
+    /// </summary>
+    public const string LiteralNONESTInitialAmplitude6MsInLeadV4 = "http://loinc.org#10091-7";
+
+    /// <summary>
     /// Literal for code: STInitialAmplitude6MsInLeadV5
     /// </summary>
     public const string LiteralSTInitialAmplitude6MsInLeadV5 = "10092-5";
+
+    /// <summary>
+    /// Literal for code: NONESTInitialAmplitude6MsInLeadV5
+    /// </summary>
+    public const string LiteralNONESTInitialAmplitude6MsInLeadV5 = "http://loinc.org#10092-5";
 
     /// <summary>
     /// Literal for code: STInitialAmplitude6MsInLeadV6
@@ -9548,9 +10078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTInitialAmplitude6MsInLeadV6 = "10093-3";
 
     /// <summary>
+    /// Literal for code: NONESTInitialAmplitude6MsInLeadV6
+    /// </summary>
+    public const string LiteralNONESTInitialAmplitude6MsInLeadV6 = "http://loinc.org#10093-3";
+
+    /// <summary>
     /// Literal for code: STSlopeInLeadAVF
     /// </summary>
     public const string LiteralSTSlopeInLeadAVF = "10094-1";
+
+    /// <summary>
+    /// Literal for code: NONESTSlopeInLeadAVF
+    /// </summary>
+    public const string LiteralNONESTSlopeInLeadAVF = "http://loinc.org#10094-1";
 
     /// <summary>
     /// Literal for code: STSlopeInLeadAVL
@@ -9558,9 +10098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTSlopeInLeadAVL = "10095-8";
 
     /// <summary>
+    /// Literal for code: NONESTSlopeInLeadAVL
+    /// </summary>
+    public const string LiteralNONESTSlopeInLeadAVL = "http://loinc.org#10095-8";
+
+    /// <summary>
     /// Literal for code: STSlopeInLeadAVR
     /// </summary>
     public const string LiteralSTSlopeInLeadAVR = "10096-6";
+
+    /// <summary>
+    /// Literal for code: NONESTSlopeInLeadAVR
+    /// </summary>
+    public const string LiteralNONESTSlopeInLeadAVR = "http://loinc.org#10096-6";
 
     /// <summary>
     /// Literal for code: STSlopeInLeadI
@@ -9568,9 +10118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTSlopeInLeadI = "10097-4";
 
     /// <summary>
+    /// Literal for code: NONESTSlopeInLeadI
+    /// </summary>
+    public const string LiteralNONESTSlopeInLeadI = "http://loinc.org#10097-4";
+
+    /// <summary>
     /// Literal for code: STSlopeInLeadII
     /// </summary>
     public const string LiteralSTSlopeInLeadII = "10098-2";
+
+    /// <summary>
+    /// Literal for code: NONESTSlopeInLeadII
+    /// </summary>
+    public const string LiteralNONESTSlopeInLeadII = "http://loinc.org#10098-2";
 
     /// <summary>
     /// Literal for code: STSlopeInLeadIII
@@ -9578,9 +10138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTSlopeInLeadIII = "10099-0";
 
     /// <summary>
+    /// Literal for code: NONESTSlopeInLeadIII
+    /// </summary>
+    public const string LiteralNONESTSlopeInLeadIII = "http://loinc.org#10099-0";
+
+    /// <summary>
     /// Literal for code: CefoperazoneSusceptibilityByDiskDiffusionKB
     /// </summary>
     public const string LiteralCefoperazoneSusceptibilityByDiskDiffusionKB = "101-6";
+
+    /// <summary>
+    /// Literal for code: NONECefoperazoneSusceptibilityByDiskDiffusionKB
+    /// </summary>
+    public const string LiteralNONECefoperazoneSusceptibilityByDiskDiffusionKB = "http://loinc.org#101-6";
 
     /// <summary>
     /// Literal for code: ESupWAbPresenceInSerumOrPlasmaFromBloodProductUnit
@@ -9588,9 +10158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralESupWAbPresenceInSerumOrPlasmaFromBloodProductUnit = "1010-8";
 
     /// <summary>
+    /// Literal for code: NONEESupWAbPresenceInSerumOrPlasmaFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEESupWAbPresenceInSerumOrPlasmaFromBloodProductUnit = "http://loinc.org#1010-8";
+
+    /// <summary>
     /// Literal for code: STSlopeInLeadV1
     /// </summary>
     public const string LiteralSTSlopeInLeadV1 = "10100-6";
+
+    /// <summary>
+    /// Literal for code: NONESTSlopeInLeadV1
+    /// </summary>
+    public const string LiteralNONESTSlopeInLeadV1 = "http://loinc.org#10100-6";
 
     /// <summary>
     /// Literal for code: STSlopeInLeadV2
@@ -9598,9 +10178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTSlopeInLeadV2 = "10101-4";
 
     /// <summary>
+    /// Literal for code: NONESTSlopeInLeadV2
+    /// </summary>
+    public const string LiteralNONESTSlopeInLeadV2 = "http://loinc.org#10101-4";
+
+    /// <summary>
     /// Literal for code: STSlopeInLeadV3
     /// </summary>
     public const string LiteralSTSlopeInLeadV3 = "10102-2";
+
+    /// <summary>
+    /// Literal for code: NONESTSlopeInLeadV3
+    /// </summary>
+    public const string LiteralNONESTSlopeInLeadV3 = "http://loinc.org#10102-2";
 
     /// <summary>
     /// Literal for code: STSlopeInLeadV4
@@ -9608,9 +10198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTSlopeInLeadV4 = "10103-0";
 
     /// <summary>
+    /// Literal for code: NONESTSlopeInLeadV4
+    /// </summary>
+    public const string LiteralNONESTSlopeInLeadV4 = "http://loinc.org#10103-0";
+
+    /// <summary>
     /// Literal for code: STSlopeInLeadV5
     /// </summary>
     public const string LiteralSTSlopeInLeadV5 = "10104-8";
+
+    /// <summary>
+    /// Literal for code: NONESTSlopeInLeadV5
+    /// </summary>
+    public const string LiteralNONESTSlopeInLeadV5 = "http://loinc.org#10104-8";
 
     /// <summary>
     /// Literal for code: STSlopeInLeadV6
@@ -9618,9 +10218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTSlopeInLeadV6 = "10105-5";
 
     /// <summary>
+    /// Literal for code: NONESTSlopeInLeadV6
+    /// </summary>
+    public const string LiteralNONESTSlopeInLeadV6 = "http://loinc.org#10105-5";
+
+    /// <summary>
     /// Literal for code: STWaveEndDisplacementInLeadAVF
     /// </summary>
     public const string LiteralSTWaveEndDisplacementInLeadAVF = "10106-3";
+
+    /// <summary>
+    /// Literal for code: NONESTWaveEndDisplacementInLeadAVF
+    /// </summary>
+    public const string LiteralNONESTWaveEndDisplacementInLeadAVF = "http://loinc.org#10106-3";
 
     /// <summary>
     /// Literal for code: STWaveEndDisplacementInLeadAVL
@@ -9628,9 +10238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTWaveEndDisplacementInLeadAVL = "10107-1";
 
     /// <summary>
+    /// Literal for code: NONESTWaveEndDisplacementInLeadAVL
+    /// </summary>
+    public const string LiteralNONESTWaveEndDisplacementInLeadAVL = "http://loinc.org#10107-1";
+
+    /// <summary>
     /// Literal for code: STWaveEndDisplacementInLeadAVR
     /// </summary>
     public const string LiteralSTWaveEndDisplacementInLeadAVR = "10108-9";
+
+    /// <summary>
+    /// Literal for code: NONESTWaveEndDisplacementInLeadAVR
+    /// </summary>
+    public const string LiteralNONESTWaveEndDisplacementInLeadAVR = "http://loinc.org#10108-9";
 
     /// <summary>
     /// Literal for code: STWaveEndDisplacementInLeadI
@@ -9638,9 +10258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTWaveEndDisplacementInLeadI = "10109-7";
 
     /// <summary>
+    /// Literal for code: NONESTWaveEndDisplacementInLeadI
+    /// </summary>
+    public const string LiteralNONESTWaveEndDisplacementInLeadI = "http://loinc.org#10109-7";
+
+    /// <summary>
     /// Literal for code: ESupWAbPresenceInSerumOrPlasmaFromDonor
     /// </summary>
     public const string LiteralESupWAbPresenceInSerumOrPlasmaFromDonor = "1011-6";
+
+    /// <summary>
+    /// Literal for code: NONEESupWAbPresenceInSerumOrPlasmaFromDonor
+    /// </summary>
+    public const string LiteralNONEESupWAbPresenceInSerumOrPlasmaFromDonor = "http://loinc.org#1011-6";
 
     /// <summary>
     /// Literal for code: STWaveEndDisplacementInLeadII
@@ -9648,9 +10278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTWaveEndDisplacementInLeadII = "10110-5";
 
     /// <summary>
+    /// Literal for code: NONESTWaveEndDisplacementInLeadII
+    /// </summary>
+    public const string LiteralNONESTWaveEndDisplacementInLeadII = "http://loinc.org#10110-5";
+
+    /// <summary>
     /// Literal for code: STWaveEndDisplacementInLeadIII
     /// </summary>
     public const string LiteralSTWaveEndDisplacementInLeadIII = "10111-3";
+
+    /// <summary>
+    /// Literal for code: NONESTWaveEndDisplacementInLeadIII
+    /// </summary>
+    public const string LiteralNONESTWaveEndDisplacementInLeadIII = "http://loinc.org#10111-3";
 
     /// <summary>
     /// Literal for code: STWaveEndDisplacementInLeadV1
@@ -9658,9 +10298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTWaveEndDisplacementInLeadV1 = "10112-1";
 
     /// <summary>
+    /// Literal for code: NONESTWaveEndDisplacementInLeadV1
+    /// </summary>
+    public const string LiteralNONESTWaveEndDisplacementInLeadV1 = "http://loinc.org#10112-1";
+
+    /// <summary>
     /// Literal for code: STWaveEndDisplacementInLeadV2
     /// </summary>
     public const string LiteralSTWaveEndDisplacementInLeadV2 = "10113-9";
+
+    /// <summary>
+    /// Literal for code: NONESTWaveEndDisplacementInLeadV2
+    /// </summary>
+    public const string LiteralNONESTWaveEndDisplacementInLeadV2 = "http://loinc.org#10113-9";
 
     /// <summary>
     /// Literal for code: STWaveEndDisplacementInLeadV3
@@ -9668,9 +10318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTWaveEndDisplacementInLeadV3 = "10114-7";
 
     /// <summary>
+    /// Literal for code: NONESTWaveEndDisplacementInLeadV3
+    /// </summary>
+    public const string LiteralNONESTWaveEndDisplacementInLeadV3 = "http://loinc.org#10114-7";
+
+    /// <summary>
     /// Literal for code: STWaveEndDisplacementInLeadV4
     /// </summary>
     public const string LiteralSTWaveEndDisplacementInLeadV4 = "10115-4";
+
+    /// <summary>
+    /// Literal for code: NONESTWaveEndDisplacementInLeadV4
+    /// </summary>
+    public const string LiteralNONESTWaveEndDisplacementInLeadV4 = "http://loinc.org#10115-4";
 
     /// <summary>
     /// Literal for code: STWaveEndDisplacementInLeadV5
@@ -9678,9 +10338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTWaveEndDisplacementInLeadV5 = "10116-2";
 
     /// <summary>
+    /// Literal for code: NONESTWaveEndDisplacementInLeadV5
+    /// </summary>
+    public const string LiteralNONESTWaveEndDisplacementInLeadV5 = "http://loinc.org#10116-2";
+
+    /// <summary>
     /// Literal for code: STWaveEndDisplacementInLeadV6
     /// </summary>
     public const string LiteralSTWaveEndDisplacementInLeadV6 = "10117-0";
+
+    /// <summary>
+    /// Literal for code: NONESTWaveEndDisplacementInLeadV6
+    /// </summary>
+    public const string LiteralNONESTWaveEndDisplacementInLeadV6 = "http://loinc.org#10117-0";
 
     /// <summary>
     /// Literal for code: STWaveMidDisplacementInLeadAVF
@@ -9688,9 +10358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTWaveMidDisplacementInLeadAVF = "10118-8";
 
     /// <summary>
+    /// Literal for code: NONESTWaveMidDisplacementInLeadAVF
+    /// </summary>
+    public const string LiteralNONESTWaveMidDisplacementInLeadAVF = "http://loinc.org#10118-8";
+
+    /// <summary>
     /// Literal for code: STWaveMidDisplacementInLeadAVL
     /// </summary>
     public const string LiteralSTWaveMidDisplacementInLeadAVL = "10119-6";
+
+    /// <summary>
+    /// Literal for code: NONESTWaveMidDisplacementInLeadAVL
+    /// </summary>
+    public const string LiteralNONESTWaveMidDisplacementInLeadAVL = "http://loinc.org#10119-6";
 
     /// <summary>
     /// Literal for code: ESupWAbPresenceInSerumOrPlasma
@@ -9698,9 +10378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralESupWAbPresenceInSerumOrPlasma = "1012-4";
 
     /// <summary>
+    /// Literal for code: NONEESupWAbPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEESupWAbPresenceInSerumOrPlasma = "http://loinc.org#1012-4";
+
+    /// <summary>
     /// Literal for code: STWaveMidDisplacementInLeadAVR
     /// </summary>
     public const string LiteralSTWaveMidDisplacementInLeadAVR = "10120-4";
+
+    /// <summary>
+    /// Literal for code: NONESTWaveMidDisplacementInLeadAVR
+    /// </summary>
+    public const string LiteralNONESTWaveMidDisplacementInLeadAVR = "http://loinc.org#10120-4";
 
     /// <summary>
     /// Literal for code: STWaveMidDisplacementInLeadI
@@ -9708,9 +10398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTWaveMidDisplacementInLeadI = "10121-2";
 
     /// <summary>
+    /// Literal for code: NONESTWaveMidDisplacementInLeadI
+    /// </summary>
+    public const string LiteralNONESTWaveMidDisplacementInLeadI = "http://loinc.org#10121-2";
+
+    /// <summary>
     /// Literal for code: STWaveMidDisplacementInLeadII
     /// </summary>
     public const string LiteralSTWaveMidDisplacementInLeadII = "10122-0";
+
+    /// <summary>
+    /// Literal for code: NONESTWaveMidDisplacementInLeadII
+    /// </summary>
+    public const string LiteralNONESTWaveMidDisplacementInLeadII = "http://loinc.org#10122-0";
 
     /// <summary>
     /// Literal for code: STWaveMidDisplacementInLeadIII
@@ -9718,9 +10418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTWaveMidDisplacementInLeadIII = "10123-8";
 
     /// <summary>
+    /// Literal for code: NONESTWaveMidDisplacementInLeadIII
+    /// </summary>
+    public const string LiteralNONESTWaveMidDisplacementInLeadIII = "http://loinc.org#10123-8";
+
+    /// <summary>
     /// Literal for code: STWaveMidDisplacementInLeadV1
     /// </summary>
     public const string LiteralSTWaveMidDisplacementInLeadV1 = "10124-6";
+
+    /// <summary>
+    /// Literal for code: NONESTWaveMidDisplacementInLeadV1
+    /// </summary>
+    public const string LiteralNONESTWaveMidDisplacementInLeadV1 = "http://loinc.org#10124-6";
 
     /// <summary>
     /// Literal for code: STWaveMidDisplacementInLeadV2
@@ -9728,9 +10438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTWaveMidDisplacementInLeadV2 = "10125-3";
 
     /// <summary>
+    /// Literal for code: NONESTWaveMidDisplacementInLeadV2
+    /// </summary>
+    public const string LiteralNONESTWaveMidDisplacementInLeadV2 = "http://loinc.org#10125-3";
+
+    /// <summary>
     /// Literal for code: STWaveMidDisplacementInLeadV3
     /// </summary>
     public const string LiteralSTWaveMidDisplacementInLeadV3 = "10126-1";
+
+    /// <summary>
+    /// Literal for code: NONESTWaveMidDisplacementInLeadV3
+    /// </summary>
+    public const string LiteralNONESTWaveMidDisplacementInLeadV3 = "http://loinc.org#10126-1";
 
     /// <summary>
     /// Literal for code: STWaveMidDisplacementInLeadV4
@@ -9738,9 +10458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTWaveMidDisplacementInLeadV4 = "10127-9";
 
     /// <summary>
+    /// Literal for code: NONESTWaveMidDisplacementInLeadV4
+    /// </summary>
+    public const string LiteralNONESTWaveMidDisplacementInLeadV4 = "http://loinc.org#10127-9";
+
+    /// <summary>
     /// Literal for code: STWaveMidDisplacementInLeadV5
     /// </summary>
     public const string LiteralSTWaveMidDisplacementInLeadV5 = "10128-7";
+
+    /// <summary>
+    /// Literal for code: NONESTWaveMidDisplacementInLeadV5
+    /// </summary>
+    public const string LiteralNONESTWaveMidDisplacementInLeadV5 = "http://loinc.org#10128-7";
 
     /// <summary>
     /// Literal for code: STWaveMidDisplacementInLeadV6
@@ -9748,9 +10478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSTWaveMidDisplacementInLeadV6 = "10129-5";
 
     /// <summary>
+    /// Literal for code: NONESTWaveMidDisplacementInLeadV6
+    /// </summary>
+    public const string LiteralNONESTWaveMidDisplacementInLeadV6 = "http://loinc.org#10129-5";
+
+    /// <summary>
     /// Literal for code: ESupWAgPresenceOnRedBloodCellsFromBloodProductUnit
     /// </summary>
     public const string LiteralESupWAgPresenceOnRedBloodCellsFromBloodProductUnit = "1013-2";
+
+    /// <summary>
+    /// Literal for code: NONEESupWAgPresenceOnRedBloodCellsFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEESupWAgPresenceOnRedBloodCellsFromBloodProductUnit = "http://loinc.org#1013-2";
 
     /// <summary>
     /// Literal for code: TQuoteWaveAmplitudeInLeadAVF
@@ -9758,9 +10498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTQuoteWaveAmplitudeInLeadAVF = "10130-3";
 
     /// <summary>
+    /// Literal for code: NONETQuoteWaveAmplitudeInLeadAVF
+    /// </summary>
+    public const string LiteralNONETQuoteWaveAmplitudeInLeadAVF = "http://loinc.org#10130-3";
+
+    /// <summary>
     /// Literal for code: TQuoteWaveAmplitudeInLeadAVL
     /// </summary>
     public const string LiteralTQuoteWaveAmplitudeInLeadAVL = "10131-1";
+
+    /// <summary>
+    /// Literal for code: NONETQuoteWaveAmplitudeInLeadAVL
+    /// </summary>
+    public const string LiteralNONETQuoteWaveAmplitudeInLeadAVL = "http://loinc.org#10131-1";
 
     /// <summary>
     /// Literal for code: TQuoteWaveAmplitudeInLeadAVR
@@ -9768,9 +10518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTQuoteWaveAmplitudeInLeadAVR = "10132-9";
 
     /// <summary>
+    /// Literal for code: NONETQuoteWaveAmplitudeInLeadAVR
+    /// </summary>
+    public const string LiteralNONETQuoteWaveAmplitudeInLeadAVR = "http://loinc.org#10132-9";
+
+    /// <summary>
     /// Literal for code: TQuoteWaveAmplitudeInLeadI
     /// </summary>
     public const string LiteralTQuoteWaveAmplitudeInLeadI = "10133-7";
+
+    /// <summary>
+    /// Literal for code: NONETQuoteWaveAmplitudeInLeadI
+    /// </summary>
+    public const string LiteralNONETQuoteWaveAmplitudeInLeadI = "http://loinc.org#10133-7";
 
     /// <summary>
     /// Literal for code: TQuoteWaveAmplitudeInLeadII
@@ -9778,9 +10538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTQuoteWaveAmplitudeInLeadII = "10134-5";
 
     /// <summary>
+    /// Literal for code: NONETQuoteWaveAmplitudeInLeadII
+    /// </summary>
+    public const string LiteralNONETQuoteWaveAmplitudeInLeadII = "http://loinc.org#10134-5";
+
+    /// <summary>
     /// Literal for code: TQuoteWaveAmplitudeInLeadIII
     /// </summary>
     public const string LiteralTQuoteWaveAmplitudeInLeadIII = "10135-2";
+
+    /// <summary>
+    /// Literal for code: NONETQuoteWaveAmplitudeInLeadIII
+    /// </summary>
+    public const string LiteralNONETQuoteWaveAmplitudeInLeadIII = "http://loinc.org#10135-2";
 
     /// <summary>
     /// Literal for code: TQuoteWaveAmplitudeInLeadV1
@@ -9788,9 +10558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTQuoteWaveAmplitudeInLeadV1 = "10136-0";
 
     /// <summary>
+    /// Literal for code: NONETQuoteWaveAmplitudeInLeadV1
+    /// </summary>
+    public const string LiteralNONETQuoteWaveAmplitudeInLeadV1 = "http://loinc.org#10136-0";
+
+    /// <summary>
     /// Literal for code: TQuoteWaveAmplitudeInLeadV2
     /// </summary>
     public const string LiteralTQuoteWaveAmplitudeInLeadV2 = "10137-8";
+
+    /// <summary>
+    /// Literal for code: NONETQuoteWaveAmplitudeInLeadV2
+    /// </summary>
+    public const string LiteralNONETQuoteWaveAmplitudeInLeadV2 = "http://loinc.org#10137-8";
 
     /// <summary>
     /// Literal for code: TQuoteWaveAmplitudeInLeadV3
@@ -9798,9 +10578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTQuoteWaveAmplitudeInLeadV3 = "10138-6";
 
     /// <summary>
+    /// Literal for code: NONETQuoteWaveAmplitudeInLeadV3
+    /// </summary>
+    public const string LiteralNONETQuoteWaveAmplitudeInLeadV3 = "http://loinc.org#10138-6";
+
+    /// <summary>
     /// Literal for code: TQuoteWaveAmplitudeInLeadV4
     /// </summary>
     public const string LiteralTQuoteWaveAmplitudeInLeadV4 = "10139-4";
+
+    /// <summary>
+    /// Literal for code: NONETQuoteWaveAmplitudeInLeadV4
+    /// </summary>
+    public const string LiteralNONETQuoteWaveAmplitudeInLeadV4 = "http://loinc.org#10139-4";
 
     /// <summary>
     /// Literal for code: ESupWAgPresenceOnRedBloodCellsFromDonor
@@ -9808,9 +10598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralESupWAgPresenceOnRedBloodCellsFromDonor = "1014-0";
 
     /// <summary>
+    /// Literal for code: NONEESupWAgPresenceOnRedBloodCellsFromDonor
+    /// </summary>
+    public const string LiteralNONEESupWAgPresenceOnRedBloodCellsFromDonor = "http://loinc.org#1014-0";
+
+    /// <summary>
     /// Literal for code: TQuoteWaveAmplitudeInLeadV5
     /// </summary>
     public const string LiteralTQuoteWaveAmplitudeInLeadV5 = "10140-2";
+
+    /// <summary>
+    /// Literal for code: NONETQuoteWaveAmplitudeInLeadV5
+    /// </summary>
+    public const string LiteralNONETQuoteWaveAmplitudeInLeadV5 = "http://loinc.org#10140-2";
 
     /// <summary>
     /// Literal for code: TQuoteWaveAmplitudeInLeadV6
@@ -9818,9 +10618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTQuoteWaveAmplitudeInLeadV6 = "10141-0";
 
     /// <summary>
+    /// Literal for code: NONETQuoteWaveAmplitudeInLeadV6
+    /// </summary>
+    public const string LiteralNONETQuoteWaveAmplitudeInLeadV6 = "http://loinc.org#10141-0";
+
+    /// <summary>
     /// Literal for code: TWaveAmplitudeInLeadAVF
     /// </summary>
     public const string LiteralTWaveAmplitudeInLeadAVF = "10142-8";
+
+    /// <summary>
+    /// Literal for code: NONETWaveAmplitudeInLeadAVF
+    /// </summary>
+    public const string LiteralNONETWaveAmplitudeInLeadAVF = "http://loinc.org#10142-8";
 
     /// <summary>
     /// Literal for code: TWaveAmplitudeInLeadAVL
@@ -9828,9 +10638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTWaveAmplitudeInLeadAVL = "10143-6";
 
     /// <summary>
+    /// Literal for code: NONETWaveAmplitudeInLeadAVL
+    /// </summary>
+    public const string LiteralNONETWaveAmplitudeInLeadAVL = "http://loinc.org#10143-6";
+
+    /// <summary>
     /// Literal for code: TWaveAmplitudeInLeadAVR
     /// </summary>
     public const string LiteralTWaveAmplitudeInLeadAVR = "10144-4";
+
+    /// <summary>
+    /// Literal for code: NONETWaveAmplitudeInLeadAVR
+    /// </summary>
+    public const string LiteralNONETWaveAmplitudeInLeadAVR = "http://loinc.org#10144-4";
 
     /// <summary>
     /// Literal for code: TWaveAmplitudeInLeadI
@@ -9838,9 +10658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTWaveAmplitudeInLeadI = "10145-1";
 
     /// <summary>
+    /// Literal for code: NONETWaveAmplitudeInLeadI
+    /// </summary>
+    public const string LiteralNONETWaveAmplitudeInLeadI = "http://loinc.org#10145-1";
+
+    /// <summary>
     /// Literal for code: TWaveAmplitudeInLeadII
     /// </summary>
     public const string LiteralTWaveAmplitudeInLeadII = "10146-9";
+
+    /// <summary>
+    /// Literal for code: NONETWaveAmplitudeInLeadII
+    /// </summary>
+    public const string LiteralNONETWaveAmplitudeInLeadII = "http://loinc.org#10146-9";
 
     /// <summary>
     /// Literal for code: TWaveAmplitudeInLeadIII
@@ -9848,9 +10678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTWaveAmplitudeInLeadIII = "10147-7";
 
     /// <summary>
+    /// Literal for code: NONETWaveAmplitudeInLeadIII
+    /// </summary>
+    public const string LiteralNONETWaveAmplitudeInLeadIII = "http://loinc.org#10147-7";
+
+    /// <summary>
     /// Literal for code: TWaveAmplitudeInLeadV1
     /// </summary>
     public const string LiteralTWaveAmplitudeInLeadV1 = "10148-5";
+
+    /// <summary>
+    /// Literal for code: NONETWaveAmplitudeInLeadV1
+    /// </summary>
+    public const string LiteralNONETWaveAmplitudeInLeadV1 = "http://loinc.org#10148-5";
 
     /// <summary>
     /// Literal for code: TWaveAmplitudeInLeadV2
@@ -9858,9 +10698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTWaveAmplitudeInLeadV2 = "10149-3";
 
     /// <summary>
+    /// Literal for code: NONETWaveAmplitudeInLeadV2
+    /// </summary>
+    public const string LiteralNONETWaveAmplitudeInLeadV2 = "http://loinc.org#10149-3";
+
+    /// <summary>
     /// Literal for code: ESupWAgPresenceOnRedBloodCells
     /// </summary>
     public const string LiteralESupWAgPresenceOnRedBloodCells = "1015-7";
+
+    /// <summary>
+    /// Literal for code: NONEESupWAgPresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEESupWAgPresenceOnRedBloodCells = "http://loinc.org#1015-7";
 
     /// <summary>
     /// Literal for code: TWaveAmplitudeInLeadV3
@@ -9868,9 +10718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTWaveAmplitudeInLeadV3 = "10150-1";
 
     /// <summary>
+    /// Literal for code: NONETWaveAmplitudeInLeadV3
+    /// </summary>
+    public const string LiteralNONETWaveAmplitudeInLeadV3 = "http://loinc.org#10150-1";
+
+    /// <summary>
     /// Literal for code: TWaveAmplitudeInLeadV4
     /// </summary>
     public const string LiteralTWaveAmplitudeInLeadV4 = "10151-9";
+
+    /// <summary>
+    /// Literal for code: NONETWaveAmplitudeInLeadV4
+    /// </summary>
+    public const string LiteralNONETWaveAmplitudeInLeadV4 = "http://loinc.org#10151-9";
 
     /// <summary>
     /// Literal for code: TWaveAmplitudeInLeadV5
@@ -9878,9 +10738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTWaveAmplitudeInLeadV5 = "10152-7";
 
     /// <summary>
+    /// Literal for code: NONETWaveAmplitudeInLeadV5
+    /// </summary>
+    public const string LiteralNONETWaveAmplitudeInLeadV5 = "http://loinc.org#10152-7";
+
+    /// <summary>
     /// Literal for code: TWaveAmplitudeInLeadV6
     /// </summary>
     public const string LiteralTWaveAmplitudeInLeadV6 = "10153-5";
+
+    /// <summary>
+    /// Literal for code: NONETWaveAmplitudeInLeadV6
+    /// </summary>
+    public const string LiteralNONETWaveAmplitudeInLeadV6 = "http://loinc.org#10153-5";
 
     /// <summary>
     /// Literal for code: ChiefComplaintNarrativeReported
@@ -9888,9 +10758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChiefComplaintNarrativeReported = "10154-3";
 
     /// <summary>
+    /// Literal for code: NONEChiefComplaintNarrativeReported
+    /// </summary>
+    public const string LiteralNONEChiefComplaintNarrativeReported = "http://loinc.org#10154-3";
+
+    /// <summary>
     /// Literal for code: HistoryOfAllergiesReported
     /// </summary>
     public const string LiteralHistoryOfAllergiesReported = "10155-0";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfAllergiesReported
+    /// </summary>
+    public const string LiteralNONEHistoryOfAllergiesReported = "http://loinc.org#10155-0";
 
     /// <summary>
     /// Literal for code: HistoryOfChildhoodDiseasesNarrative
@@ -9898,9 +10778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistoryOfChildhoodDiseasesNarrative = "10156-8";
 
     /// <summary>
+    /// Literal for code: NONEHistoryOfChildhoodDiseasesNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfChildhoodDiseasesNarrative = "http://loinc.org#10156-8";
+
+    /// <summary>
     /// Literal for code: HistoryOfFamilyMemberDiseasesNarrative
     /// </summary>
     public const string LiteralHistoryOfFamilyMemberDiseasesNarrative = "10157-6";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfFamilyMemberDiseasesNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfFamilyMemberDiseasesNarrative = "http://loinc.org#10157-6";
 
     /// <summary>
     /// Literal for code: HistoryOfFunctionalStatusNarrative
@@ -9908,9 +10798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistoryOfFunctionalStatusNarrative = "10158-4";
 
     /// <summary>
+    /// Literal for code: NONEHistoryOfFunctionalStatusNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfFunctionalStatusNarrative = "http://loinc.org#10158-4";
+
+    /// <summary>
     /// Literal for code: HistoryOfIndustrialExposureNarrative
     /// </summary>
     public const string LiteralHistoryOfIndustrialExposureNarrative = "10159-2";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfIndustrialExposureNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfIndustrialExposureNarrative = "http://loinc.org#10159-2";
 
     /// <summary>
     /// Literal for code: EAbPresenceInSerumOrPlasmaFromBloodProductUnit
@@ -9918,9 +10818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEAbPresenceInSerumOrPlasmaFromBloodProductUnit = "1016-5";
 
     /// <summary>
+    /// Literal for code: NONEEAbPresenceInSerumOrPlasmaFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEEAbPresenceInSerumOrPlasmaFromBloodProductUnit = "http://loinc.org#1016-5";
+
+    /// <summary>
     /// Literal for code: HistoryOfMedicationUseNarrative
     /// </summary>
     public const string LiteralHistoryOfMedicationUseNarrative = "10160-0";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfMedicationUseNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfMedicationUseNarrative = "http://loinc.org#10160-0";
 
     /// <summary>
     /// Literal for code: HistoryOfOccupationalExposureNarrative
@@ -9928,9 +10838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistoryOfOccupationalExposureNarrative = "10161-8";
 
     /// <summary>
+    /// Literal for code: NONEHistoryOfOccupationalExposureNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfOccupationalExposureNarrative = "http://loinc.org#10161-8";
+
+    /// <summary>
     /// Literal for code: HistoryOfPregnanciesNarrative
     /// </summary>
     public const string LiteralHistoryOfPregnanciesNarrative = "10162-6";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfPregnanciesNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfPregnanciesNarrative = "http://loinc.org#10162-6";
 
     /// <summary>
     /// Literal for code: HistoryOfPregnancies
@@ -9938,9 +10858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistoryOfPregnancies = "10163-4";
 
     /// <summary>
+    /// Literal for code: NONEHistoryOfPregnancies
+    /// </summary>
+    public const string LiteralNONEHistoryOfPregnancies = "http://loinc.org#10163-4";
+
+    /// <summary>
     /// Literal for code: HistoryOfPresentIllnessNarrative
     /// </summary>
     public const string LiteralHistoryOfPresentIllnessNarrative = "10164-2";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfPresentIllnessNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfPresentIllnessNarrative = "http://loinc.org#10164-2";
 
     /// <summary>
     /// Literal for code: DeprecatedHistoryOfPsychiatricSymptomsAndDiseasesNarrative
@@ -9948,9 +10878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedHistoryOfPsychiatricSymptomsAndDiseasesNarrative = "10165-9";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedHistoryOfPsychiatricSymptomsAndDiseasesNarrative
+    /// </summary>
+    public const string LiteralNONEDeprecatedHistoryOfPsychiatricSymptomsAndDiseasesNarrative = "http://loinc.org#10165-9";
+
+    /// <summary>
     /// Literal for code: HistoryOfSocialFunctionNarrative
     /// </summary>
     public const string LiteralHistoryOfSocialFunctionNarrative = "10166-7";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfSocialFunctionNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfSocialFunctionNarrative = "http://loinc.org#10166-7";
 
     /// <summary>
     /// Literal for code: HistoryOfSurgicalProceduresNarrative
@@ -9958,9 +10898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistoryOfSurgicalProceduresNarrative = "10167-5";
 
     /// <summary>
+    /// Literal for code: NONEHistoryOfSurgicalProceduresNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfSurgicalProceduresNarrative = "http://loinc.org#10167-5";
+
+    /// <summary>
     /// Literal for code: HistoryOfCardiovascularSystemDisordersNarrative
     /// </summary>
     public const string LiteralHistoryOfCardiovascularSystemDisordersNarrative = "10168-3";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfCardiovascularSystemDisordersNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfCardiovascularSystemDisordersNarrative = "http://loinc.org#10168-3";
 
     /// <summary>
     /// Literal for code: HistoryOfEarDisordersNarrative
@@ -9968,9 +10918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistoryOfEarDisordersNarrative = "10169-1";
 
     /// <summary>
+    /// Literal for code: NONEHistoryOfEarDisordersNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfEarDisordersNarrative = "http://loinc.org#10169-1";
+
+    /// <summary>
     /// Literal for code: EAbPresenceInSerumOrPlasmaFromDonor
     /// </summary>
     public const string LiteralEAbPresenceInSerumOrPlasmaFromDonor = "1017-3";
+
+    /// <summary>
+    /// Literal for code: NONEEAbPresenceInSerumOrPlasmaFromDonor
+    /// </summary>
+    public const string LiteralNONEEAbPresenceInSerumOrPlasmaFromDonor = "http://loinc.org#1017-3";
 
     /// <summary>
     /// Literal for code: HistoryOfEndocrineSystemDisordersNarrative
@@ -9978,9 +10938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistoryOfEndocrineSystemDisordersNarrative = "10170-9";
 
     /// <summary>
+    /// Literal for code: NONEHistoryOfEndocrineSystemDisordersNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfEndocrineSystemDisordersNarrative = "http://loinc.org#10170-9";
+
+    /// <summary>
     /// Literal for code: HistoryOfEyesDisordersNarrative
     /// </summary>
     public const string LiteralHistoryOfEyesDisordersNarrative = "10171-7";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfEyesDisordersNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfEyesDisordersNarrative = "http://loinc.org#10171-7";
 
     /// <summary>
     /// Literal for code: HistoryOfHematologicSystemDisordersNarrative
@@ -9988,9 +10958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistoryOfHematologicSystemDisordersNarrative = "10172-5";
 
     /// <summary>
+    /// Literal for code: NONEHistoryOfHematologicSystemDisordersNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfHematologicSystemDisordersNarrative = "http://loinc.org#10172-5";
+
+    /// <summary>
     /// Literal for code: HistoryOfMusculoskeletalSystemDisordersNarrative
     /// </summary>
     public const string LiteralHistoryOfMusculoskeletalSystemDisordersNarrative = "10173-3";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfMusculoskeletalSystemDisordersNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfMusculoskeletalSystemDisordersNarrative = "http://loinc.org#10173-3";
 
     /// <summary>
     /// Literal for code: HistoryOfNoseDisordersNarrative
@@ -9998,9 +10978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistoryOfNoseDisordersNarrative = "10174-1";
 
     /// <summary>
+    /// Literal for code: NONEHistoryOfNoseDisordersNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfNoseDisordersNarrative = "http://loinc.org#10174-1";
+
+    /// <summary>
     /// Literal for code: HistoryOfOralCavityDisordersNarrative
     /// </summary>
     public const string LiteralHistoryOfOralCavityDisordersNarrative = "10175-8";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfOralCavityDisordersNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfOralCavityDisordersNarrative = "http://loinc.org#10175-8";
 
     /// <summary>
     /// Literal for code: HistoryOfReproductiveSystemDisordersNarrative
@@ -10008,9 +10998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistoryOfReproductiveSystemDisordersNarrative = "10176-6";
 
     /// <summary>
+    /// Literal for code: NONEHistoryOfReproductiveSystemDisordersNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfReproductiveSystemDisordersNarrative = "http://loinc.org#10176-6";
+
+    /// <summary>
     /// Literal for code: HistoryOfRespiratorySystemDisordersNarrative
     /// </summary>
     public const string LiteralHistoryOfRespiratorySystemDisordersNarrative = "10177-4";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfRespiratorySystemDisordersNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfRespiratorySystemDisordersNarrative = "http://loinc.org#10177-4";
 
     /// <summary>
     /// Literal for code: HistoryOfSkinDisordersNarrative
@@ -10018,9 +11018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistoryOfSkinDisordersNarrative = "10178-2";
 
     /// <summary>
+    /// Literal for code: NONEHistoryOfSkinDisordersNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfSkinDisordersNarrative = "http://loinc.org#10178-2";
+
+    /// <summary>
     /// Literal for code: HistoryOfThroatAndNeckDisordersNarrative
     /// </summary>
     public const string LiteralHistoryOfThroatAndNeckDisordersNarrative = "10179-0";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfThroatAndNeckDisordersNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfThroatAndNeckDisordersNarrative = "http://loinc.org#10179-0";
 
     /// <summary>
     /// Literal for code: EAbPresenceInSerumOrPlasma
@@ -10028,9 +11038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEAbPresenceInSerumOrPlasma = "1018-1";
 
     /// <summary>
+    /// Literal for code: NONEEAbPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEEAbPresenceInSerumOrPlasma = "http://loinc.org#1018-1";
+
+    /// <summary>
     /// Literal for code: HistoryOfThroatAndNeckDisorders
     /// </summary>
     public const string LiteralHistoryOfThroatAndNeckDisorders = "10180-8";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfThroatAndNeckDisorders
+    /// </summary>
+    public const string LiteralNONEHistoryOfThroatAndNeckDisorders = "http://loinc.org#10180-8";
 
     /// <summary>
     /// Literal for code: HistoryOfUrinaryTractDisordersNarrative
@@ -10038,9 +11058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistoryOfUrinaryTractDisordersNarrative = "10181-6";
 
     /// <summary>
+    /// Literal for code: NONEHistoryOfUrinaryTractDisordersNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfUrinaryTractDisordersNarrative = "http://loinc.org#10181-6";
+
+    /// <summary>
     /// Literal for code: HistoryOfTravelNarrative
     /// </summary>
     public const string LiteralHistoryOfTravelNarrative = "10182-4";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfTravelNarrative
+    /// </summary>
+    public const string LiteralNONEHistoryOfTravelNarrative = "http://loinc.org#10182-4";
 
     /// <summary>
     /// Literal for code: HospitalDischargeMedicationsNarrative
@@ -10048,9 +11078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospitalDischargeMedicationsNarrative = "10183-2";
 
     /// <summary>
+    /// Literal for code: NONEHospitalDischargeMedicationsNarrative
+    /// </summary>
+    public const string LiteralNONEHospitalDischargeMedicationsNarrative = "http://loinc.org#10183-2";
+
+    /// <summary>
     /// Literal for code: HospitalDischargePhysicalFindingsNarrative
     /// </summary>
     public const string LiteralHospitalDischargePhysicalFindingsNarrative = "10184-0";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalDischargePhysicalFindingsNarrative
+    /// </summary>
+    public const string LiteralNONEHospitalDischargePhysicalFindingsNarrative = "http://loinc.org#10184-0";
 
     /// <summary>
     /// Literal for code: HospitalDischargeProceduresNarrative
@@ -10058,9 +11098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospitalDischargeProceduresNarrative = "10185-7";
 
     /// <summary>
+    /// Literal for code: NONEHospitalDischargeProceduresNarrative
+    /// </summary>
+    public const string LiteralNONEHospitalDischargeProceduresNarrative = "http://loinc.org#10185-7";
+
+    /// <summary>
     /// Literal for code: IdentifyingInformationNarrativeObserved
     /// </summary>
     public const string LiteralIdentifyingInformationNarrativeObserved = "10186-5";
+
+    /// <summary>
+    /// Literal for code: NONEIdentifyingInformationNarrativeObserved
+    /// </summary>
+    public const string LiteralNONEIdentifyingInformationNarrativeObserved = "http://loinc.org#10186-5";
 
     /// <summary>
     /// Literal for code: ReviewOfSystemsNarrativeReported
@@ -10068,9 +11118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReviewOfSystemsNarrativeReported = "10187-3";
 
     /// <summary>
+    /// Literal for code: NONEReviewOfSystemsNarrativeReported
+    /// </summary>
+    public const string LiteralNONEReviewOfSystemsNarrativeReported = "http://loinc.org#10187-3";
+
+    /// <summary>
     /// Literal for code: ReviewOfSystemsOverviewNarrativeReported
     /// </summary>
     public const string LiteralReviewOfSystemsOverviewNarrativeReported = "10188-1";
+
+    /// <summary>
+    /// Literal for code: NONEReviewOfSystemsOverviewNarrativeReported
+    /// </summary>
+    public const string LiteralNONEReviewOfSystemsOverviewNarrativeReported = "http://loinc.org#10188-1";
 
     /// <summary>
     /// Literal for code: ReviewOfSystemsOverviewReported
@@ -10078,9 +11138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReviewOfSystemsOverviewReported = "10189-9";
 
     /// <summary>
+    /// Literal for code: NONEReviewOfSystemsOverviewReported
+    /// </summary>
+    public const string LiteralNONEReviewOfSystemsOverviewReported = "http://loinc.org#10189-9";
+
+    /// <summary>
     /// Literal for code: EAgPresenceOnRedBloodCellsFromBloodProductUnit
     /// </summary>
     public const string LiteralEAgPresenceOnRedBloodCellsFromBloodProductUnit = "1019-9";
+
+    /// <summary>
+    /// Literal for code: NONEEAgPresenceOnRedBloodCellsFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEEAgPresenceOnRedBloodCellsFromBloodProductUnit = "http://loinc.org#1019-9";
 
     /// <summary>
     /// Literal for code: MentalStatusNarrative
@@ -10088,9 +11158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMentalStatusNarrative = "10190-7";
 
     /// <summary>
+    /// Literal for code: NONEMentalStatusNarrative
+    /// </summary>
+    public const string LiteralNONEMentalStatusNarrative = "http://loinc.org#10190-7";
+
+    /// <summary>
     /// Literal for code: PhysicalFindingsOfAbdomenNarrative
     /// </summary>
     public const string LiteralPhysicalFindingsOfAbdomenNarrative = "10191-5";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfAbdomenNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfAbdomenNarrative = "http://loinc.org#10191-5";
 
     /// <summary>
     /// Literal for code: PhysicalFindingsOfBackNarrative
@@ -10098,9 +11178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysicalFindingsOfBackNarrative = "10192-3";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfBackNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfBackNarrative = "http://loinc.org#10192-3";
+
+    /// <summary>
     /// Literal for code: PhysicalFindingsOfBreastsNarrative
     /// </summary>
     public const string LiteralPhysicalFindingsOfBreastsNarrative = "10193-1";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfBreastsNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfBreastsNarrative = "http://loinc.org#10193-1";
 
     /// <summary>
     /// Literal for code: PhysicalFindingsOfNeurologicDeepTendonReflexesNarrative
@@ -10108,9 +11198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysicalFindingsOfNeurologicDeepTendonReflexesNarrative = "10194-9";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfNeurologicDeepTendonReflexesNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfNeurologicDeepTendonReflexesNarrative = "http://loinc.org#10194-9";
+
+    /// <summary>
     /// Literal for code: PhysicalFindingsOfEarNarrative
     /// </summary>
     public const string LiteralPhysicalFindingsOfEarNarrative = "10195-6";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfEarNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfEarNarrative = "http://loinc.org#10195-6";
 
     /// <summary>
     /// Literal for code: PhysicalFindingsOfExtremitiesNarrative
@@ -10118,9 +11218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysicalFindingsOfExtremitiesNarrative = "10196-4";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfExtremitiesNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfExtremitiesNarrative = "http://loinc.org#10196-4";
+
+    /// <summary>
     /// Literal for code: PhysicalFindingsOfEyeNarrative
     /// </summary>
     public const string LiteralPhysicalFindingsOfEyeNarrative = "10197-2";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfEyeNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfEyeNarrative = "http://loinc.org#10197-2";
 
     /// <summary>
     /// Literal for code: PhysicalFindingsOfGenitourinaryTractNarrative
@@ -10128,9 +11238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysicalFindingsOfGenitourinaryTractNarrative = "10198-0";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfGenitourinaryTractNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfGenitourinaryTractNarrative = "http://loinc.org#10198-0";
+
+    /// <summary>
     /// Literal for code: PhysicalFindingsOfHeadNarrative
     /// </summary>
     public const string LiteralPhysicalFindingsOfHeadNarrative = "10199-8";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfHeadNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfHeadNarrative = "http://loinc.org#10199-8";
 
     /// <summary>
     /// Literal for code: CefoperazoneSusceptibilityBySerumBactericidalTiter
@@ -10138,9 +11258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCefoperazoneSusceptibilityBySerumBactericidalTiter = "102-4";
 
     /// <summary>
+    /// Literal for code: NONECefoperazoneSusceptibilityBySerumBactericidalTiter
+    /// </summary>
+    public const string LiteralNONECefoperazoneSusceptibilityBySerumBactericidalTiter = "http://loinc.org#102-4";
+
+    /// <summary>
     /// Literal for code: EAgPresenceOnRedBloodCellsFromDonor
     /// </summary>
     public const string LiteralEAgPresenceOnRedBloodCellsFromDonor = "1020-7";
+
+    /// <summary>
+    /// Literal for code: NONEEAgPresenceOnRedBloodCellsFromDonor
+    /// </summary>
+    public const string LiteralNONEEAgPresenceOnRedBloodCellsFromDonor = "http://loinc.org#1020-7";
 
     /// <summary>
     /// Literal for code: PhysicalFindingsOfHeartNarrative
@@ -10148,9 +11278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysicalFindingsOfHeartNarrative = "10200-4";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfHeartNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfHeartNarrative = "http://loinc.org#10200-4";
+
+    /// <summary>
     /// Literal for code: PhysicalFindingsOfMouthAndThroatAndTeethNarrative
     /// </summary>
     public const string LiteralPhysicalFindingsOfMouthAndThroatAndTeethNarrative = "10201-2";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfMouthAndThroatAndTeethNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfMouthAndThroatAndTeethNarrative = "http://loinc.org#10201-2";
 
     /// <summary>
     /// Literal for code: PhysicalFindingsOfNervousSystemNarrative
@@ -10158,9 +11298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysicalFindingsOfNervousSystemNarrative = "10202-0";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfNervousSystemNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfNervousSystemNarrative = "http://loinc.org#10202-0";
+
+    /// <summary>
     /// Literal for code: PhysicalFindingsOfNoseNarrative
     /// </summary>
     public const string LiteralPhysicalFindingsOfNoseNarrative = "10203-8";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfNoseNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfNoseNarrative = "http://loinc.org#10203-8";
 
     /// <summary>
     /// Literal for code: PhysicalFindingsOfPelvisNarrative
@@ -10168,9 +11318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysicalFindingsOfPelvisNarrative = "10204-6";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfPelvisNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfPelvisNarrative = "http://loinc.org#10204-6";
+
+    /// <summary>
     /// Literal for code: PhysicalFindingsOfRectumNarrative
     /// </summary>
     public const string LiteralPhysicalFindingsOfRectumNarrative = "10205-3";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfRectumNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfRectumNarrative = "http://loinc.org#10205-3";
 
     /// <summary>
     /// Literal for code: PhysicalFindingsOfSkinNarrative
@@ -10178,9 +11338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysicalFindingsOfSkinNarrative = "10206-1";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfSkinNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfSkinNarrative = "http://loinc.org#10206-1";
+
+    /// <summary>
     /// Literal for code: PhysicalFindingsOfThoraxAndLungsNarrative
     /// </summary>
     public const string LiteralPhysicalFindingsOfThoraxAndLungsNarrative = "10207-9";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfThoraxAndLungsNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfThoraxAndLungsNarrative = "http://loinc.org#10207-9";
 
     /// <summary>
     /// Literal for code: PhysicalFindingsOfVesselsNarrative
@@ -10188,9 +11358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysicalFindingsOfVesselsNarrative = "10208-7";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfVesselsNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfVesselsNarrative = "http://loinc.org#10208-7";
+
+    /// <summary>
     /// Literal for code: PhysicalFindingsOfNeurologicBalanceAndCoordinationNarrative
     /// </summary>
     public const string LiteralPhysicalFindingsOfNeurologicBalanceAndCoordinationNarrative = "10209-5";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfNeurologicBalanceAndCoordinationNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfNeurologicBalanceAndCoordinationNarrative = "http://loinc.org#10209-5";
 
     /// <summary>
     /// Literal for code: EAgPresenceOnRedBloodCells
@@ -10198,9 +11378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEAgPresenceOnRedBloodCells = "1021-5";
 
     /// <summary>
+    /// Literal for code: NONEEAgPresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEEAgPresenceOnRedBloodCells = "http://loinc.org#1021-5";
+
+    /// <summary>
     /// Literal for code: PhysicalFindingsOfGeneralStatusNarrative
     /// </summary>
     public const string LiteralPhysicalFindingsOfGeneralStatusNarrative = "10210-3";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfGeneralStatusNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfGeneralStatusNarrative = "http://loinc.org#10210-3";
 
     /// <summary>
     /// Literal for code: PhysicalFindingsOfSenseOfTouchNarrative
@@ -10208,9 +11398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysicalFindingsOfSenseOfTouchNarrative = "10211-1";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfSenseOfTouchNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfSenseOfTouchNarrative = "http://loinc.org#10211-1";
+
+    /// <summary>
     /// Literal for code: PhysicalFindingsOfStrengthNarrative
     /// </summary>
     public const string LiteralPhysicalFindingsOfStrengthNarrative = "10212-9";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalFindingsOfStrengthNarrative
+    /// </summary>
+    public const string LiteralNONEPhysicalFindingsOfStrengthNarrative = "http://loinc.org#10212-9";
 
     /// <summary>
     /// Literal for code: SurgicalOperationNoteAnesthesiaNarrative
@@ -10218,9 +11418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgicalOperationNoteAnesthesiaNarrative = "10213-7";
 
     /// <summary>
+    /// Literal for code: NONESurgicalOperationNoteAnesthesiaNarrative
+    /// </summary>
+    public const string LiteralNONESurgicalOperationNoteAnesthesiaNarrative = "http://loinc.org#10213-7";
+
+    /// <summary>
     /// Literal for code: SurgicalOperationNoteAnesthesiaDuration
     /// </summary>
     public const string LiteralSurgicalOperationNoteAnesthesiaDuration = "10214-5";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalOperationNoteAnesthesiaDuration
+    /// </summary>
+    public const string LiteralNONESurgicalOperationNoteAnesthesiaDuration = "http://loinc.org#10214-5";
 
     /// <summary>
     /// Literal for code: SurgicalOperationNoteFindingsNarrative
@@ -10228,9 +11438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgicalOperationNoteFindingsNarrative = "10215-2";
 
     /// <summary>
+    /// Literal for code: NONESurgicalOperationNoteFindingsNarrative
+    /// </summary>
+    public const string LiteralNONESurgicalOperationNoteFindingsNarrative = "http://loinc.org#10215-2";
+
+    /// <summary>
     /// Literal for code: SurgicalOperationNoteFluidsNarrative
     /// </summary>
     public const string LiteralSurgicalOperationNoteFluidsNarrative = "10216-0";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalOperationNoteFluidsNarrative
+    /// </summary>
+    public const string LiteralNONESurgicalOperationNoteFluidsNarrative = "http://loinc.org#10216-0";
 
     /// <summary>
     /// Literal for code: SurgicalOperationNoteIndicationsInterpretationNarrative
@@ -10238,9 +11458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgicalOperationNoteIndicationsInterpretationNarrative = "10217-8";
 
     /// <summary>
+    /// Literal for code: NONESurgicalOperationNoteIndicationsInterpretationNarrative
+    /// </summary>
+    public const string LiteralNONESurgicalOperationNoteIndicationsInterpretationNarrative = "http://loinc.org#10217-8";
+
+    /// <summary>
     /// Literal for code: SurgicalOperationNotePostoperativeDiagnosisNarrative
     /// </summary>
     public const string LiteralSurgicalOperationNotePostoperativeDiagnosisNarrative = "10218-6";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalOperationNotePostoperativeDiagnosisNarrative
+    /// </summary>
+    public const string LiteralNONESurgicalOperationNotePostoperativeDiagnosisNarrative = "http://loinc.org#10218-6";
 
     /// <summary>
     /// Literal for code: SurgicalOperationNotePreoperativeDiagnosisNarrative
@@ -10248,9 +11478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgicalOperationNotePreoperativeDiagnosisNarrative = "10219-4";
 
     /// <summary>
+    /// Literal for code: NONESurgicalOperationNotePreoperativeDiagnosisNarrative
+    /// </summary>
+    public const string LiteralNONESurgicalOperationNotePreoperativeDiagnosisNarrative = "http://loinc.org#10219-4";
+
+    /// <summary>
     /// Literal for code: FySupAAbPresenceInSerumOrPlasmaFromBloodProductUnit
     /// </summary>
     public const string LiteralFySupAAbPresenceInSerumOrPlasmaFromBloodProductUnit = "1022-3";
+
+    /// <summary>
+    /// Literal for code: NONEFySupAAbPresenceInSerumOrPlasmaFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEFySupAAbPresenceInSerumOrPlasmaFromBloodProductUnit = "http://loinc.org#1022-3";
 
     /// <summary>
     /// Literal for code: SurgicalOperationNotePrepTimeDuration
@@ -10258,9 +11498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgicalOperationNotePrepTimeDuration = "10220-2";
 
     /// <summary>
+    /// Literal for code: NONESurgicalOperationNotePrepTimeDuration
+    /// </summary>
+    public const string LiteralNONESurgicalOperationNotePrepTimeDuration = "http://loinc.org#10220-2";
+
+    /// <summary>
     /// Literal for code: SurgicalOperationNoteSpecimensTakenNarrative
     /// </summary>
     public const string LiteralSurgicalOperationNoteSpecimensTakenNarrative = "10221-0";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalOperationNoteSpecimensTakenNarrative
+    /// </summary>
+    public const string LiteralNONESurgicalOperationNoteSpecimensTakenNarrative = "http://loinc.org#10221-0";
 
     /// <summary>
     /// Literal for code: SurgicalOperationNoteSurgicalComplicationsInterpretationNarrative
@@ -10268,9 +11518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgicalOperationNoteSurgicalComplicationsInterpretationNarrative = "10222-8";
 
     /// <summary>
+    /// Literal for code: NONESurgicalOperationNoteSurgicalComplicationsInterpretationNarrative
+    /// </summary>
+    public const string LiteralNONESurgicalOperationNoteSurgicalComplicationsInterpretationNarrative = "http://loinc.org#10222-8";
+
+    /// <summary>
     /// Literal for code: SurgicalOperationNoteSurgicalProcedureNarrative
     /// </summary>
     public const string LiteralSurgicalOperationNoteSurgicalProcedureNarrative = "10223-6";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalOperationNoteSurgicalProcedureNarrative
+    /// </summary>
+    public const string LiteralNONESurgicalOperationNoteSurgicalProcedureNarrative = "http://loinc.org#10223-6";
 
     /// <summary>
     /// Literal for code: HemodynamicMethodSpecialCircumstances
@@ -10278,9 +11538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHemodynamicMethodSpecialCircumstances = "10224-4";
 
     /// <summary>
+    /// Literal for code: NONEHemodynamicMethodSpecialCircumstances
+    /// </summary>
+    public const string LiteralNONEHemodynamicMethodSpecialCircumstances = "http://loinc.org#10224-4";
+
+    /// <summary>
     /// Literal for code: CardiacMeasurementDeviceInstitutionInventoryNumber
     /// </summary>
     public const string LiteralCardiacMeasurementDeviceInstitutionInventoryNumber = "10225-1";
+
+    /// <summary>
+    /// Literal for code: NONECardiacMeasurementDeviceInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONECardiacMeasurementDeviceInstitutionInventoryNumber = "http://loinc.org#10225-1";
 
     /// <summary>
     /// Literal for code: OxygenContentInIntravascularSpace
@@ -10288,9 +11558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOxygenContentInIntravascularSpace = "10226-9";
 
     /// <summary>
+    /// Literal for code: NONEOxygenContentInIntravascularSpace
+    /// </summary>
+    public const string LiteralNONEOxygenContentInIntravascularSpace = "http://loinc.org#10226-9";
+
+    /// <summary>
     /// Literal for code: CardiacMeasurementDeviceVendorModelNumber
     /// </summary>
     public const string LiteralCardiacMeasurementDeviceVendorModelNumber = "10227-7";
+
+    /// <summary>
+    /// Literal for code: NONECardiacMeasurementDeviceVendorModelNumber
+    /// </summary>
+    public const string LiteralNONECardiacMeasurementDeviceVendorModelNumber = "http://loinc.org#10227-7";
 
     /// <summary>
     /// Literal for code: CardiacMeasurementDeviceVendorSerialNumber
@@ -10298,9 +11578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCardiacMeasurementDeviceVendorSerialNumber = "10228-5";
 
     /// <summary>
+    /// Literal for code: NONECardiacMeasurementDeviceVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONECardiacMeasurementDeviceVendorSerialNumber = "http://loinc.org#10228-5";
+
+    /// <summary>
     /// Literal for code: HemodynamicMethodTypeOf
     /// </summary>
     public const string LiteralHemodynamicMethodTypeOf = "10229-3";
+
+    /// <summary>
+    /// Literal for code: NONEHemodynamicMethodTypeOf
+    /// </summary>
+    public const string LiteralNONEHemodynamicMethodTypeOf = "http://loinc.org#10229-3";
 
     /// <summary>
     /// Literal for code: FySupAAbPresenceInSerumOrPlasmaFromDonor
@@ -10308,9 +11598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFySupAAbPresenceInSerumOrPlasmaFromDonor = "1023-1";
 
     /// <summary>
+    /// Literal for code: NONEFySupAAbPresenceInSerumOrPlasmaFromDonor
+    /// </summary>
+    public const string LiteralNONEFySupAAbPresenceInSerumOrPlasmaFromDonor = "http://loinc.org#1023-1";
+
+    /// <summary>
     /// Literal for code: LeftVentricularEjectionFraction
     /// </summary>
     public const string LiteralLeftVentricularEjectionFraction = "10230-1";
+
+    /// <summary>
+    /// Literal for code: NONELeftVentricularEjectionFraction
+    /// </summary>
+    public const string LiteralNONELeftVentricularEjectionFraction = "http://loinc.org#10230-1";
 
     /// <summary>
     /// Literal for code: RightVentricularEjectionFraction
@@ -10318,9 +11618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRightVentricularEjectionFraction = "10231-9";
 
     /// <summary>
+    /// Literal for code: NONERightVentricularEjectionFraction
+    /// </summary>
+    public const string LiteralNONERightVentricularEjectionFraction = "http://loinc.org#10231-9";
+
+    /// <summary>
     /// Literal for code: OxygenContentInAortaRoot
     /// </summary>
     public const string LiteralOxygenContentInAortaRoot = "10232-7";
+
+    /// <summary>
+    /// Literal for code: NONEOxygenContentInAortaRoot
+    /// </summary>
+    public const string LiteralNONEOxygenContentInAortaRoot = "http://loinc.org#10232-7";
 
     /// <summary>
     /// Literal for code: OxygenContentInLeftAtrium
@@ -10328,9 +11638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOxygenContentInLeftAtrium = "10233-5";
 
     /// <summary>
+    /// Literal for code: NONEOxygenContentInLeftAtrium
+    /// </summary>
+    public const string LiteralNONEOxygenContentInLeftAtrium = "http://loinc.org#10233-5";
+
+    /// <summary>
     /// Literal for code: OxygenContentInRightAtrium
     /// </summary>
     public const string LiteralOxygenContentInRightAtrium = "10234-3";
+
+    /// <summary>
+    /// Literal for code: NONEOxygenContentInRightAtrium
+    /// </summary>
+    public const string LiteralNONEOxygenContentInRightAtrium = "http://loinc.org#10234-3";
 
     /// <summary>
     /// Literal for code: OxygenContentInHighRightAtrium
@@ -10338,9 +11658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOxygenContentInHighRightAtrium = "10235-0";
 
     /// <summary>
+    /// Literal for code: NONEOxygenContentInHighRightAtrium
+    /// </summary>
+    public const string LiteralNONEOxygenContentInHighRightAtrium = "http://loinc.org#10235-0";
+
+    /// <summary>
     /// Literal for code: OxygenContentInLowRightAtrium
     /// </summary>
     public const string LiteralOxygenContentInLowRightAtrium = "10236-8";
+
+    /// <summary>
+    /// Literal for code: NONEOxygenContentInLowRightAtrium
+    /// </summary>
+    public const string LiteralNONEOxygenContentInLowRightAtrium = "http://loinc.org#10236-8";
 
     /// <summary>
     /// Literal for code: OxygenContentInMidRightAtrium
@@ -10348,9 +11678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOxygenContentInMidRightAtrium = "10237-6";
 
     /// <summary>
+    /// Literal for code: NONEOxygenContentInMidRightAtrium
+    /// </summary>
+    public const string LiteralNONEOxygenContentInMidRightAtrium = "http://loinc.org#10237-6";
+
+    /// <summary>
     /// Literal for code: OxygenContentInLeftVentricle
     /// </summary>
     public const string LiteralOxygenContentInLeftVentricle = "10238-4";
+
+    /// <summary>
+    /// Literal for code: NONEOxygenContentInLeftVentricle
+    /// </summary>
+    public const string LiteralNONEOxygenContentInLeftVentricle = "http://loinc.org#10238-4";
 
     /// <summary>
     /// Literal for code: OxygenContentInRightVentricularOutflowTract
@@ -10358,9 +11698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOxygenContentInRightVentricularOutflowTract = "10239-2";
 
     /// <summary>
+    /// Literal for code: NONEOxygenContentInRightVentricularOutflowTract
+    /// </summary>
+    public const string LiteralNONEOxygenContentInRightVentricularOutflowTract = "http://loinc.org#10239-2";
+
+    /// <summary>
     /// Literal for code: FySupAAbPresenceInSerumOrPlasma
     /// </summary>
     public const string LiteralFySupAAbPresenceInSerumOrPlasma = "1024-9";
+
+    /// <summary>
+    /// Literal for code: NONEFySupAAbPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEFySupAAbPresenceInSerumOrPlasma = "http://loinc.org#1024-9";
 
     /// <summary>
     /// Literal for code: OxygenContentInRightVentricle
@@ -10368,9 +11718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOxygenContentInRightVentricle = "10240-0";
 
     /// <summary>
+    /// Literal for code: NONEOxygenContentInRightVentricle
+    /// </summary>
+    public const string LiteralNONEOxygenContentInRightVentricle = "http://loinc.org#10240-0";
+
+    /// <summary>
     /// Literal for code: OxygenContentInCoronarySinus
     /// </summary>
     public const string LiteralOxygenContentInCoronarySinus = "10241-8";
+
+    /// <summary>
+    /// Literal for code: NONEOxygenContentInCoronarySinus
+    /// </summary>
+    public const string LiteralNONEOxygenContentInCoronarySinus = "http://loinc.org#10241-8";
 
     /// <summary>
     /// Literal for code: OxygenContentInDuctusArteriosus
@@ -10378,9 +11738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOxygenContentInDuctusArteriosus = "10242-6";
 
     /// <summary>
+    /// Literal for code: NONEOxygenContentInDuctusArteriosus
+    /// </summary>
+    public const string LiteralNONEOxygenContentInDuctusArteriosus = "http://loinc.org#10242-6";
+
+    /// <summary>
     /// Literal for code: OxygenContentInInferiorVenaCava
     /// </summary>
     public const string LiteralOxygenContentInInferiorVenaCava = "10243-4";
+
+    /// <summary>
+    /// Literal for code: NONEOxygenContentInInferiorVenaCava
+    /// </summary>
+    public const string LiteralNONEOxygenContentInInferiorVenaCava = "http://loinc.org#10243-4";
 
     /// <summary>
     /// Literal for code: OxygenContentInLeftPulmonaryArtery
@@ -10388,9 +11758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOxygenContentInLeftPulmonaryArtery = "10244-2";
 
     /// <summary>
+    /// Literal for code: NONEOxygenContentInLeftPulmonaryArtery
+    /// </summary>
+    public const string LiteralNONEOxygenContentInLeftPulmonaryArtery = "http://loinc.org#10244-2";
+
+    /// <summary>
     /// Literal for code: OxygenContentInMainPulmonaryArtery
     /// </summary>
     public const string LiteralOxygenContentInMainPulmonaryArtery = "10245-9";
+
+    /// <summary>
+    /// Literal for code: NONEOxygenContentInMainPulmonaryArtery
+    /// </summary>
+    public const string LiteralNONEOxygenContentInMainPulmonaryArtery = "http://loinc.org#10245-9";
 
     /// <summary>
     /// Literal for code: OxygenContentInRightPulmonaryArtery
@@ -10398,9 +11778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOxygenContentInRightPulmonaryArtery = "10246-7";
 
     /// <summary>
+    /// Literal for code: NONEOxygenContentInRightPulmonaryArtery
+    /// </summary>
+    public const string LiteralNONEOxygenContentInRightPulmonaryArtery = "http://loinc.org#10246-7";
+
+    /// <summary>
     /// Literal for code: OxygenContentInPulmonaryWedge
     /// </summary>
     public const string LiteralOxygenContentInPulmonaryWedge = "10247-5";
+
+    /// <summary>
+    /// Literal for code: NONEOxygenContentInPulmonaryWedge
+    /// </summary>
+    public const string LiteralNONEOxygenContentInPulmonaryWedge = "http://loinc.org#10247-5";
 
     /// <summary>
     /// Literal for code: OxygenContentInSuperiorVenaCava
@@ -10408,9 +11798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOxygenContentInSuperiorVenaCava = "10248-3";
 
     /// <summary>
+    /// Literal for code: NONEOxygenContentInSuperiorVenaCava
+    /// </summary>
+    public const string LiteralNONEOxygenContentInSuperiorVenaCava = "http://loinc.org#10248-3";
+
+    /// <summary>
     /// Literal for code: HeartRateDeviceInstitutionInventoryNumber
     /// </summary>
     public const string LiteralHeartRateDeviceInstitutionInventoryNumber = "10249-1";
+
+    /// <summary>
+    /// Literal for code: NONEHeartRateDeviceInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEHeartRateDeviceInstitutionInventoryNumber = "http://loinc.org#10249-1";
 
     /// <summary>
     /// Literal for code: FySupAAgPresenceOnRedBloodCellsFromBloodProductUnit
@@ -10418,9 +11818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFySupAAgPresenceOnRedBloodCellsFromBloodProductUnit = "1025-6";
 
     /// <summary>
+    /// Literal for code: NONEFySupAAgPresenceOnRedBloodCellsFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEFySupAAgPresenceOnRedBloodCellsFromBloodProductUnit = "http://loinc.org#1025-6";
+
+    /// <summary>
     /// Literal for code: HeartRateDeviceVendorModelNumber
     /// </summary>
     public const string LiteralHeartRateDeviceVendorModelNumber = "10250-9";
+
+    /// <summary>
+    /// Literal for code: NONEHeartRateDeviceVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEHeartRateDeviceVendorModelNumber = "http://loinc.org#10250-9";
 
     /// <summary>
     /// Literal for code: HeartRateDeviceVendorSerialNumber
@@ -10428,9 +11838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHeartRateDeviceVendorSerialNumber = "10251-7";
 
     /// <summary>
+    /// Literal for code: NONEHeartRateDeviceVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEHeartRateDeviceVendorSerialNumber = "http://loinc.org#10251-7";
+
+    /// <summary>
     /// Literal for code: BiliaryDrainSite
     /// </summary>
     public const string LiteralBiliaryDrainSite = "10252-5";
+
+    /// <summary>
+    /// Literal for code: NONEBiliaryDrainSite
+    /// </summary>
+    public const string LiteralNONEBiliaryDrainSite = "http://loinc.org#10252-5";
 
     /// <summary>
     /// Literal for code: TypeOfBiliaryDrain
@@ -10438,9 +11858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTypeOfBiliaryDrain = "10253-3";
 
     /// <summary>
+    /// Literal for code: NONETypeOfBiliaryDrain
+    /// </summary>
+    public const string LiteralNONETypeOfBiliaryDrain = "http://loinc.org#10253-3";
+
+    /// <summary>
     /// Literal for code: TypeOfPeritonealDrain
     /// </summary>
     public const string LiteralTypeOfPeritonealDrain = "10254-1";
+
+    /// <summary>
+    /// Literal for code: NONETypeOfPeritonealDrain
+    /// </summary>
+    public const string LiteralNONETypeOfPeritonealDrain = "http://loinc.org#10254-1";
 
     /// <summary>
     /// Literal for code: TypeOfSubarachnoidDrain
@@ -10448,9 +11878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTypeOfSubarachnoidDrain = "10255-8";
 
     /// <summary>
+    /// Literal for code: NONETypeOfSubarachnoidDrain
+    /// </summary>
+    public const string LiteralNONETypeOfSubarachnoidDrain = "http://loinc.org#10255-8";
+
+    /// <summary>
     /// Literal for code: BiliaryDrainInstitutionInventoryNumber
     /// </summary>
     public const string LiteralBiliaryDrainInstitutionInventoryNumber = "10256-6";
+
+    /// <summary>
+    /// Literal for code: NONEBiliaryDrainInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEBiliaryDrainInstitutionInventoryNumber = "http://loinc.org#10256-6";
 
     /// <summary>
     /// Literal for code: ChestTubeInstitutionInventoryNumber
@@ -10458,9 +11898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChestTubeInstitutionInventoryNumber = "10257-4";
 
     /// <summary>
+    /// Literal for code: NONEChestTubeInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEChestTubeInstitutionInventoryNumber = "http://loinc.org#10257-4";
+
+    /// <summary>
     /// Literal for code: EnteralTubeInstitutionInventoryNumber
     /// </summary>
     public const string LiteralEnteralTubeInstitutionInventoryNumber = "10258-2";
+
+    /// <summary>
+    /// Literal for code: NONEEnteralTubeInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEEnteralTubeInstitutionInventoryNumber = "http://loinc.org#10258-2";
 
     /// <summary>
     /// Literal for code: GastrostomyTubeInstitutionInventoryNumber
@@ -10468,9 +11918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGastrostomyTubeInstitutionInventoryNumber = "10259-0";
 
     /// <summary>
+    /// Literal for code: NONEGastrostomyTubeInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEGastrostomyTubeInstitutionInventoryNumber = "http://loinc.org#10259-0";
+
+    /// <summary>
     /// Literal for code: FySupAAgPresenceOnRedBloodCellsFromDonor
     /// </summary>
     public const string LiteralFySupAAgPresenceOnRedBloodCellsFromDonor = "1026-4";
+
+    /// <summary>
+    /// Literal for code: NONEFySupAAgPresenceOnRedBloodCellsFromDonor
+    /// </summary>
+    public const string LiteralNONEFySupAAgPresenceOnRedBloodCellsFromDonor = "http://loinc.org#1026-4";
 
     /// <summary>
     /// Literal for code: GITubeInstitutionInventoryNumber
@@ -10478,9 +11938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGITubeInstitutionInventoryNumber = "10260-8";
 
     /// <summary>
+    /// Literal for code: NONEGITubeInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEGITubeInstitutionInventoryNumber = "http://loinc.org#10260-8";
+
+    /// <summary>
     /// Literal for code: IntravascularTubeInstitutionInventoryNumber
     /// </summary>
     public const string LiteralIntravascularTubeInstitutionInventoryNumber = "10261-6";
+
+    /// <summary>
+    /// Literal for code: NONEIntravascularTubeInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEIntravascularTubeInstitutionInventoryNumber = "http://loinc.org#10261-6";
 
     /// <summary>
     /// Literal for code: IOTubeInstitutionInventoryNumber
@@ -10488,9 +11958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIOTubeInstitutionInventoryNumber = "10262-4";
 
     /// <summary>
+    /// Literal for code: NONEIOTubeInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEIOTubeInstitutionInventoryNumber = "http://loinc.org#10262-4";
+
+    /// <summary>
     /// Literal for code: NasogastricTubeInstitutionInventoryNumber
     /// </summary>
     public const string LiteralNasogastricTubeInstitutionInventoryNumber = "10263-2";
+
+    /// <summary>
+    /// Literal for code: NONENasogastricTubeInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONENasogastricTubeInstitutionInventoryNumber = "http://loinc.org#10263-2";
 
     /// <summary>
     /// Literal for code: OralTubeInstitutionInventoryNumber
@@ -10498,9 +11978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOralTubeInstitutionInventoryNumber = "10264-0";
 
     /// <summary>
+    /// Literal for code: NONEOralTubeInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEOralTubeInstitutionInventoryNumber = "http://loinc.org#10264-0";
+
+    /// <summary>
     /// Literal for code: PeritonealDrainInstitutionInventoryNumber
     /// </summary>
     public const string LiteralPeritonealDrainInstitutionInventoryNumber = "10265-7";
+
+    /// <summary>
+    /// Literal for code: NONEPeritonealDrainInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEPeritonealDrainInstitutionInventoryNumber = "http://loinc.org#10265-7";
 
     /// <summary>
     /// Literal for code: PeritonealTubeInstitutionInventoryNumber
@@ -10508,9 +11998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeritonealTubeInstitutionInventoryNumber = "10266-5";
 
     /// <summary>
+    /// Literal for code: NONEPeritonealTubeInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEPeritonealTubeInstitutionInventoryNumber = "http://loinc.org#10266-5";
+
+    /// <summary>
     /// Literal for code: RateControlDeviceInstitutionInventoryNumber
     /// </summary>
     public const string LiteralRateControlDeviceInstitutionInventoryNumber = "10267-3";
+
+    /// <summary>
+    /// Literal for code: NONERateControlDeviceInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONERateControlDeviceInstitutionInventoryNumber = "http://loinc.org#10267-3";
 
     /// <summary>
     /// Literal for code: StoolCollectionDeviceInstitutionInventoryNumber
@@ -10518,9 +12018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStoolCollectionDeviceInstitutionInventoryNumber = "10268-1";
 
     /// <summary>
+    /// Literal for code: NONEStoolCollectionDeviceInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEStoolCollectionDeviceInstitutionInventoryNumber = "http://loinc.org#10268-1";
+
+    /// <summary>
     /// Literal for code: SubarachnoidDrainInstitutionInventoryNumber
     /// </summary>
     public const string LiteralSubarachnoidDrainInstitutionInventoryNumber = "10269-9";
+
+    /// <summary>
+    /// Literal for code: NONESubarachnoidDrainInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONESubarachnoidDrainInstitutionInventoryNumber = "http://loinc.org#10269-9";
 
     /// <summary>
     /// Literal for code: FySupAAgPresenceOnRedBloodCells
@@ -10528,9 +12038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFySupAAgPresenceOnRedBloodCells = "1027-2";
 
     /// <summary>
+    /// Literal for code: NONEFySupAAgPresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEFySupAAgPresenceOnRedBloodCells = "http://loinc.org#1027-2";
+
+    /// <summary>
     /// Literal for code: SynovialDrainInstitutionInventoryNumber
     /// </summary>
     public const string LiteralSynovialDrainInstitutionInventoryNumber = "10270-7";
+
+    /// <summary>
+    /// Literal for code: NONESynovialDrainInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONESynovialDrainInstitutionInventoryNumber = "http://loinc.org#10270-7";
 
     /// <summary>
     /// Literal for code: TubeOrDrainInstitutionInventoryNumber
@@ -10538,9 +12058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTubeOrDrainInstitutionInventoryNumber = "10271-5";
 
     /// <summary>
+    /// Literal for code: NONETubeOrDrainInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONETubeOrDrainInstitutionInventoryNumber = "http://loinc.org#10271-5";
+
+    /// <summary>
     /// Literal for code: UpperGITubeInstitutionInventoryNumber
     /// </summary>
     public const string LiteralUpperGITubeInstitutionInventoryNumber = "10272-3";
+
+    /// <summary>
+    /// Literal for code: NONEUpperGITubeInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEUpperGITubeInstitutionInventoryNumber = "http://loinc.org#10272-3";
 
     /// <summary>
     /// Literal for code: BladderIrrigationTubeInstitutionInventoryNumber
@@ -10548,9 +12078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBladderIrrigationTubeInstitutionInventoryNumber = "10273-1";
 
     /// <summary>
+    /// Literal for code: NONEBladderIrrigationTubeInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEBladderIrrigationTubeInstitutionInventoryNumber = "http://loinc.org#10273-1";
+
+    /// <summary>
     /// Literal for code: UrineTubeInstitutionInventoryNumber
     /// </summary>
     public const string LiteralUrineTubeInstitutionInventoryNumber = "10274-9";
+
+    /// <summary>
+    /// Literal for code: NONEUrineTubeInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEUrineTubeInstitutionInventoryNumber = "http://loinc.org#10274-9";
 
     /// <summary>
     /// Literal for code: WoundDrainDeviceInstitutionInventoryNumber
@@ -10558,9 +12098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWoundDrainDeviceInstitutionInventoryNumber = "10275-6";
 
     /// <summary>
+    /// Literal for code: NONEWoundDrainDeviceInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEWoundDrainDeviceInstitutionInventoryNumber = "http://loinc.org#10275-6";
+
+    /// <summary>
     /// Literal for code: PeritonealDrainSite
     /// </summary>
     public const string LiteralPeritonealDrainSite = "10276-4";
+
+    /// <summary>
+    /// Literal for code: NONEPeritonealDrainSite
+    /// </summary>
+    public const string LiteralNONEPeritonealDrainSite = "http://loinc.org#10276-4";
 
     /// <summary>
     /// Literal for code: StoolCollectionSite
@@ -10568,9 +12118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStoolCollectionSite = "10277-2";
 
     /// <summary>
+    /// Literal for code: NONEStoolCollectionSite
+    /// </summary>
+    public const string LiteralNONEStoolCollectionSite = "http://loinc.org#10277-2";
+
+    /// <summary>
     /// Literal for code: SubarachnoidDrainSite
     /// </summary>
     public const string LiteralSubarachnoidDrainSite = "10278-0";
+
+    /// <summary>
+    /// Literal for code: NONESubarachnoidDrainSite
+    /// </summary>
+    public const string LiteralNONESubarachnoidDrainSite = "http://loinc.org#10278-0";
 
     /// <summary>
     /// Literal for code: BiliaryDrainVendorModelNumber
@@ -10578,9 +12138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBiliaryDrainVendorModelNumber = "10279-8";
 
     /// <summary>
+    /// Literal for code: NONEBiliaryDrainVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEBiliaryDrainVendorModelNumber = "http://loinc.org#10279-8";
+
+    /// <summary>
     /// Literal for code: FySupBAbPresenceInSerumOrPlasmaFromBloodProductUnit
     /// </summary>
     public const string LiteralFySupBAbPresenceInSerumOrPlasmaFromBloodProductUnit = "1028-0";
+
+    /// <summary>
+    /// Literal for code: NONEFySupBAbPresenceInSerumOrPlasmaFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEFySupBAbPresenceInSerumOrPlasmaFromBloodProductUnit = "http://loinc.org#1028-0";
 
     /// <summary>
     /// Literal for code: ChestTubeVendorModelNumber
@@ -10588,9 +12158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChestTubeVendorModelNumber = "10280-6";
 
     /// <summary>
+    /// Literal for code: NONEChestTubeVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEChestTubeVendorModelNumber = "http://loinc.org#10280-6";
+
+    /// <summary>
     /// Literal for code: EnteralTubeVendorModelNumber
     /// </summary>
     public const string LiteralEnteralTubeVendorModelNumber = "10281-4";
+
+    /// <summary>
+    /// Literal for code: NONEEnteralTubeVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEEnteralTubeVendorModelNumber = "http://loinc.org#10281-4";
 
     /// <summary>
     /// Literal for code: GastrostomyTubeVendorModelNumber
@@ -10598,9 +12178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGastrostomyTubeVendorModelNumber = "10282-2";
 
     /// <summary>
+    /// Literal for code: NONEGastrostomyTubeVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEGastrostomyTubeVendorModelNumber = "http://loinc.org#10282-2";
+
+    /// <summary>
     /// Literal for code: GITubeVendorModelNumber
     /// </summary>
     public const string LiteralGITubeVendorModelNumber = "10283-0";
+
+    /// <summary>
+    /// Literal for code: NONEGITubeVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEGITubeVendorModelNumber = "http://loinc.org#10283-0";
 
     /// <summary>
     /// Literal for code: IntravascularTubeVendorModelNumber
@@ -10608,9 +12198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntravascularTubeVendorModelNumber = "10284-8";
 
     /// <summary>
+    /// Literal for code: NONEIntravascularTubeVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEIntravascularTubeVendorModelNumber = "http://loinc.org#10284-8";
+
+    /// <summary>
     /// Literal for code: IOTubeVendorModelNumber
     /// </summary>
     public const string LiteralIOTubeVendorModelNumber = "10285-5";
+
+    /// <summary>
+    /// Literal for code: NONEIOTubeVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEIOTubeVendorModelNumber = "http://loinc.org#10285-5";
 
     /// <summary>
     /// Literal for code: NasogastricTubeVendorModelNumber
@@ -10618,9 +12218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNasogastricTubeVendorModelNumber = "10286-3";
 
     /// <summary>
+    /// Literal for code: NONENasogastricTubeVendorModelNumber
+    /// </summary>
+    public const string LiteralNONENasogastricTubeVendorModelNumber = "http://loinc.org#10286-3";
+
+    /// <summary>
     /// Literal for code: OralTubeVendorModelNumber
     /// </summary>
     public const string LiteralOralTubeVendorModelNumber = "10287-1";
+
+    /// <summary>
+    /// Literal for code: NONEOralTubeVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEOralTubeVendorModelNumber = "http://loinc.org#10287-1";
 
     /// <summary>
     /// Literal for code: PeritonealDrainVendorModelNumber
@@ -10628,9 +12238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeritonealDrainVendorModelNumber = "10288-9";
 
     /// <summary>
+    /// Literal for code: NONEPeritonealDrainVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEPeritonealDrainVendorModelNumber = "http://loinc.org#10288-9";
+
+    /// <summary>
     /// Literal for code: PeritonealTubeVendorModelNumber
     /// </summary>
     public const string LiteralPeritonealTubeVendorModelNumber = "10289-7";
+
+    /// <summary>
+    /// Literal for code: NONEPeritonealTubeVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEPeritonealTubeVendorModelNumber = "http://loinc.org#10289-7";
 
     /// <summary>
     /// Literal for code: FySupBAbPresenceInSerumOrPlasmaFromDonor
@@ -10638,9 +12258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFySupBAbPresenceInSerumOrPlasmaFromDonor = "1029-8";
 
     /// <summary>
+    /// Literal for code: NONEFySupBAbPresenceInSerumOrPlasmaFromDonor
+    /// </summary>
+    public const string LiteralNONEFySupBAbPresenceInSerumOrPlasmaFromDonor = "http://loinc.org#1029-8";
+
+    /// <summary>
     /// Literal for code: RateControlDeviceVendorModelNumber
     /// </summary>
     public const string LiteralRateControlDeviceVendorModelNumber = "10290-5";
+
+    /// <summary>
+    /// Literal for code: NONERateControlDeviceVendorModelNumber
+    /// </summary>
+    public const string LiteralNONERateControlDeviceVendorModelNumber = "http://loinc.org#10290-5";
 
     /// <summary>
     /// Literal for code: StoolCollectionDeviceVendorModelNumber
@@ -10648,9 +12278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStoolCollectionDeviceVendorModelNumber = "10291-3";
 
     /// <summary>
+    /// Literal for code: NONEStoolCollectionDeviceVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEStoolCollectionDeviceVendorModelNumber = "http://loinc.org#10291-3";
+
+    /// <summary>
     /// Literal for code: SubarachnoidDrainVendorModelNumber
     /// </summary>
     public const string LiteralSubarachnoidDrainVendorModelNumber = "10292-1";
+
+    /// <summary>
+    /// Literal for code: NONESubarachnoidDrainVendorModelNumber
+    /// </summary>
+    public const string LiteralNONESubarachnoidDrainVendorModelNumber = "http://loinc.org#10292-1";
 
     /// <summary>
     /// Literal for code: SynovialDrainVendorModelNumber
@@ -10658,9 +12298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSynovialDrainVendorModelNumber = "10293-9";
 
     /// <summary>
+    /// Literal for code: NONESynovialDrainVendorModelNumber
+    /// </summary>
+    public const string LiteralNONESynovialDrainVendorModelNumber = "http://loinc.org#10293-9";
+
+    /// <summary>
     /// Literal for code: TubeOrDrainVendorModelNumber
     /// </summary>
     public const string LiteralTubeOrDrainVendorModelNumber = "10294-7";
+
+    /// <summary>
+    /// Literal for code: NONETubeOrDrainVendorModelNumber
+    /// </summary>
+    public const string LiteralNONETubeOrDrainVendorModelNumber = "http://loinc.org#10294-7";
 
     /// <summary>
     /// Literal for code: UpperGITubeVendorModelNumber
@@ -10668,9 +12318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUpperGITubeVendorModelNumber = "10295-4";
 
     /// <summary>
+    /// Literal for code: NONEUpperGITubeVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEUpperGITubeVendorModelNumber = "http://loinc.org#10295-4";
+
+    /// <summary>
     /// Literal for code: BladderIrrigationTubeVendorModelNumber
     /// </summary>
     public const string LiteralBladderIrrigationTubeVendorModelNumber = "10296-2";
+
+    /// <summary>
+    /// Literal for code: NONEBladderIrrigationTubeVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEBladderIrrigationTubeVendorModelNumber = "http://loinc.org#10296-2";
 
     /// <summary>
     /// Literal for code: UrineTubeVendorModelNumber
@@ -10678,9 +12338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUrineTubeVendorModelNumber = "10297-0";
 
     /// <summary>
+    /// Literal for code: NONEUrineTubeVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEUrineTubeVendorModelNumber = "http://loinc.org#10297-0";
+
+    /// <summary>
     /// Literal for code: WoundDrainDeviceVendorModelNumber
     /// </summary>
     public const string LiteralWoundDrainDeviceVendorModelNumber = "10298-8";
+
+    /// <summary>
+    /// Literal for code: NONEWoundDrainDeviceVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEWoundDrainDeviceVendorModelNumber = "http://loinc.org#10298-8";
 
     /// <summary>
     /// Literal for code: BiliaryDrainVendorSerialNumber
@@ -10688,9 +12358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBiliaryDrainVendorSerialNumber = "10299-6";
 
     /// <summary>
+    /// Literal for code: NONEBiliaryDrainVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEBiliaryDrainVendorSerialNumber = "http://loinc.org#10299-6";
+
+    /// <summary>
     /// Literal for code: CeforanideSusceptibilityByMinimumLethalConcentrationMLC
     /// </summary>
     public const string LiteralCeforanideSusceptibilityByMinimumLethalConcentrationMLC = "103-2";
+
+    /// <summary>
+    /// Literal for code: NONECeforanideSusceptibilityByMinimumLethalConcentrationMLC
+    /// </summary>
+    public const string LiteralNONECeforanideSusceptibilityByMinimumLethalConcentrationMLC = "http://loinc.org#103-2";
 
     /// <summary>
     /// Literal for code: FySupBAbPresenceInSerumOrPlasma
@@ -10698,9 +12378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFySupBAbPresenceInSerumOrPlasma = "1030-6";
 
     /// <summary>
+    /// Literal for code: NONEFySupBAbPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEFySupBAbPresenceInSerumOrPlasma = "http://loinc.org#1030-6";
+
+    /// <summary>
     /// Literal for code: ChestTubeVendorSerialNumber
     /// </summary>
     public const string LiteralChestTubeVendorSerialNumber = "10300-2";
+
+    /// <summary>
+    /// Literal for code: NONEChestTubeVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEChestTubeVendorSerialNumber = "http://loinc.org#10300-2";
 
     /// <summary>
     /// Literal for code: EnteralTubeVendorSerialNumber
@@ -10708,9 +12398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEnteralTubeVendorSerialNumber = "10301-0";
 
     /// <summary>
+    /// Literal for code: NONEEnteralTubeVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEEnteralTubeVendorSerialNumber = "http://loinc.org#10301-0";
+
+    /// <summary>
     /// Literal for code: GastrostomyTubeVendorSerialNumber
     /// </summary>
     public const string LiteralGastrostomyTubeVendorSerialNumber = "10302-8";
+
+    /// <summary>
+    /// Literal for code: NONEGastrostomyTubeVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEGastrostomyTubeVendorSerialNumber = "http://loinc.org#10302-8";
 
     /// <summary>
     /// Literal for code: GITubeVendorSerialNumber
@@ -10718,9 +12418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGITubeVendorSerialNumber = "10303-6";
 
     /// <summary>
+    /// Literal for code: NONEGITubeVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEGITubeVendorSerialNumber = "http://loinc.org#10303-6";
+
+    /// <summary>
     /// Literal for code: IntravascularTubeVendorSerialNumber
     /// </summary>
     public const string LiteralIntravascularTubeVendorSerialNumber = "10304-4";
+
+    /// <summary>
+    /// Literal for code: NONEIntravascularTubeVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEIntravascularTubeVendorSerialNumber = "http://loinc.org#10304-4";
 
     /// <summary>
     /// Literal for code: IOTubeVendorSerialNumber
@@ -10728,9 +12438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIOTubeVendorSerialNumber = "10305-1";
 
     /// <summary>
+    /// Literal for code: NONEIOTubeVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEIOTubeVendorSerialNumber = "http://loinc.org#10305-1";
+
+    /// <summary>
     /// Literal for code: NasogastricTubeVendorSerialNumber
     /// </summary>
     public const string LiteralNasogastricTubeVendorSerialNumber = "10306-9";
+
+    /// <summary>
+    /// Literal for code: NONENasogastricTubeVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONENasogastricTubeVendorSerialNumber = "http://loinc.org#10306-9";
 
     /// <summary>
     /// Literal for code: OralTubeVendorSerialNumber
@@ -10738,9 +12458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOralTubeVendorSerialNumber = "10307-7";
 
     /// <summary>
+    /// Literal for code: NONEOralTubeVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEOralTubeVendorSerialNumber = "http://loinc.org#10307-7";
+
+    /// <summary>
     /// Literal for code: PeritonealDrainVendorSerialNumber
     /// </summary>
     public const string LiteralPeritonealDrainVendorSerialNumber = "10308-5";
+
+    /// <summary>
+    /// Literal for code: NONEPeritonealDrainVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEPeritonealDrainVendorSerialNumber = "http://loinc.org#10308-5";
 
     /// <summary>
     /// Literal for code: PeritonealTubeVendorSerialNumber
@@ -10748,9 +12478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeritonealTubeVendorSerialNumber = "10309-3";
 
     /// <summary>
+    /// Literal for code: NONEPeritonealTubeVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEPeritonealTubeVendorSerialNumber = "http://loinc.org#10309-3";
+
+    /// <summary>
     /// Literal for code: FySupBAgPresenceOnRedBloodCellsFromBloodProductUnit
     /// </summary>
     public const string LiteralFySupBAgPresenceOnRedBloodCellsFromBloodProductUnit = "1031-4";
+
+    /// <summary>
+    /// Literal for code: NONEFySupBAgPresenceOnRedBloodCellsFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEFySupBAgPresenceOnRedBloodCellsFromBloodProductUnit = "http://loinc.org#1031-4";
 
     /// <summary>
     /// Literal for code: RateControlDeviceVendorSerialNumber
@@ -10758,9 +12498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRateControlDeviceVendorSerialNumber = "10310-1";
 
     /// <summary>
+    /// Literal for code: NONERateControlDeviceVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONERateControlDeviceVendorSerialNumber = "http://loinc.org#10310-1";
+
+    /// <summary>
     /// Literal for code: StoolCollectionDeviceVendorSerialNumber
     /// </summary>
     public const string LiteralStoolCollectionDeviceVendorSerialNumber = "10311-9";
+
+    /// <summary>
+    /// Literal for code: NONEStoolCollectionDeviceVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEStoolCollectionDeviceVendorSerialNumber = "http://loinc.org#10311-9";
 
     /// <summary>
     /// Literal for code: SubarachnoidDrainVendorSerialNumber
@@ -10768,9 +12518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubarachnoidDrainVendorSerialNumber = "10312-7";
 
     /// <summary>
+    /// Literal for code: NONESubarachnoidDrainVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONESubarachnoidDrainVendorSerialNumber = "http://loinc.org#10312-7";
+
+    /// <summary>
     /// Literal for code: SynovialDrainVendorSerialNumber
     /// </summary>
     public const string LiteralSynovialDrainVendorSerialNumber = "10313-5";
+
+    /// <summary>
+    /// Literal for code: NONESynovialDrainVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONESynovialDrainVendorSerialNumber = "http://loinc.org#10313-5";
 
     /// <summary>
     /// Literal for code: TubeOrDrainVendorSerialNumber
@@ -10778,9 +12538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTubeOrDrainVendorSerialNumber = "10314-3";
 
     /// <summary>
+    /// Literal for code: NONETubeOrDrainVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONETubeOrDrainVendorSerialNumber = "http://loinc.org#10314-3";
+
+    /// <summary>
     /// Literal for code: UpperGITubeVendorSerialNumber
     /// </summary>
     public const string LiteralUpperGITubeVendorSerialNumber = "10315-0";
+
+    /// <summary>
+    /// Literal for code: NONEUpperGITubeVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEUpperGITubeVendorSerialNumber = "http://loinc.org#10315-0";
 
     /// <summary>
     /// Literal for code: BladderIrrigationTubeVendorSerialNumber
@@ -10788,9 +12558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBladderIrrigationTubeVendorSerialNumber = "10316-8";
 
     /// <summary>
+    /// Literal for code: NONEBladderIrrigationTubeVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEBladderIrrigationTubeVendorSerialNumber = "http://loinc.org#10316-8";
+
+    /// <summary>
     /// Literal for code: UrineTubeVendorSerialNumber
     /// </summary>
     public const string LiteralUrineTubeVendorSerialNumber = "10317-6";
+
+    /// <summary>
+    /// Literal for code: NONEUrineTubeVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEUrineTubeVendorSerialNumber = "http://loinc.org#10317-6";
 
     /// <summary>
     /// Literal for code: WoundDrainDeviceVendorSerialNumber
@@ -10798,9 +12578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWoundDrainDeviceVendorSerialNumber = "10318-4";
 
     /// <summary>
+    /// Literal for code: NONEWoundDrainDeviceVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEWoundDrainDeviceVendorSerialNumber = "http://loinc.org#10318-4";
+
+    /// <summary>
     /// Literal for code: EnemaDeviceInstitutionInventoryNumber
     /// </summary>
     public const string LiteralEnemaDeviceInstitutionInventoryNumber = "10319-2";
+
+    /// <summary>
+    /// Literal for code: NONEEnemaDeviceInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEEnemaDeviceInstitutionInventoryNumber = "http://loinc.org#10319-2";
 
     /// <summary>
     /// Literal for code: FySupBAgPresenceOnRedBloodCellsFromDonor
@@ -10808,9 +12598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFySupBAgPresenceOnRedBloodCellsFromDonor = "1032-2";
 
     /// <summary>
+    /// Literal for code: NONEFySupBAgPresenceOnRedBloodCellsFromDonor
+    /// </summary>
+    public const string LiteralNONEFySupBAgPresenceOnRedBloodCellsFromDonor = "http://loinc.org#1032-2";
+
+    /// <summary>
     /// Literal for code: EnemaDeviceVendorModelNumber
     /// </summary>
     public const string LiteralEnemaDeviceVendorModelNumber = "10320-0";
+
+    /// <summary>
+    /// Literal for code: NONEEnemaDeviceVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEEnemaDeviceVendorModelNumber = "http://loinc.org#10320-0";
 
     /// <summary>
     /// Literal for code: EnemaDeviceVendorSerialNumber
@@ -10818,9 +12618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEnemaDeviceVendorSerialNumber = "10321-8";
 
     /// <summary>
+    /// Literal for code: NONEEnemaDeviceVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEEnemaDeviceVendorSerialNumber = "http://loinc.org#10321-8";
+
+    /// <summary>
     /// Literal for code: PotassiumIntake24Hour
     /// </summary>
     public const string LiteralPotassiumIntake24Hour = "10322-6";
+
+    /// <summary>
+    /// Literal for code: NONEPotassiumIntake24Hour
+    /// </summary>
+    public const string LiteralNONEPotassiumIntake24Hour = "http://loinc.org#10322-6";
 
     /// <summary>
     /// Literal for code: WoundDrainFluidAppearanceLowerGITract
@@ -10828,9 +12638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWoundDrainFluidAppearanceLowerGITract = "10323-4";
 
     /// <summary>
+    /// Literal for code: NONEWoundDrainFluidAppearanceLowerGITract
+    /// </summary>
+    public const string LiteralNONEWoundDrainFluidAppearanceLowerGITract = "http://loinc.org#10323-4";
+
+    /// <summary>
     /// Literal for code: BreathRateDeviceInstitutionInventoryNumber
     /// </summary>
     public const string LiteralBreathRateDeviceInstitutionInventoryNumber = "10324-2";
+
+    /// <summary>
+    /// Literal for code: NONEBreathRateDeviceInstitutionInventoryNumber
+    /// </summary>
+    public const string LiteralNONEBreathRateDeviceInstitutionInventoryNumber = "http://loinc.org#10324-2";
 
     /// <summary>
     /// Literal for code: BreathRateDeviceVendorModelNumber
@@ -10838,9 +12658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBreathRateDeviceVendorModelNumber = "10325-9";
 
     /// <summary>
+    /// Literal for code: NONEBreathRateDeviceVendorModelNumber
+    /// </summary>
+    public const string LiteralNONEBreathRateDeviceVendorModelNumber = "http://loinc.org#10325-9";
+
+    /// <summary>
     /// Literal for code: BreathRateDeviceVendorSerialNumber
     /// </summary>
     public const string LiteralBreathRateDeviceVendorSerialNumber = "10326-7";
+
+    /// <summary>
+    /// Literal for code: NONEBreathRateDeviceVendorSerialNumber
+    /// </summary>
+    public const string LiteralNONEBreathRateDeviceVendorSerialNumber = "http://loinc.org#10326-7";
 
     /// <summary>
     /// Literal for code: Eosinophils100LeukocytesInSputumByManualCount
@@ -10848,9 +12678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEosinophils100LeukocytesInSputumByManualCount = "10327-5";
 
     /// <summary>
+    /// Literal for code: NONEEosinophils100LeukocytesInSputumByManualCount
+    /// </summary>
+    public const string LiteralNONEEosinophils100LeukocytesInSputumByManualCount = "http://loinc.org#10327-5";
+
+    /// <summary>
     /// Literal for code: Lymphocytes100LeukocytesInCerebralSpinalFluidByManualCount
     /// </summary>
     public const string LiteralLymphocytes100LeukocytesInCerebralSpinalFluidByManualCount = "10328-3";
+
+    /// <summary>
+    /// Literal for code: NONELymphocytes100LeukocytesInCerebralSpinalFluidByManualCount
+    /// </summary>
+    public const string LiteralNONELymphocytes100LeukocytesInCerebralSpinalFluidByManualCount = "http://loinc.org#10328-3";
 
     /// <summary>
     /// Literal for code: Monocytes100LeukocytesInCerebralSpinalFluidByManualCount
@@ -10858,9 +12698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMonocytes100LeukocytesInCerebralSpinalFluidByManualCount = "10329-1";
 
     /// <summary>
+    /// Literal for code: NONEMonocytes100LeukocytesInCerebralSpinalFluidByManualCount
+    /// </summary>
+    public const string LiteralNONEMonocytes100LeukocytesInCerebralSpinalFluidByManualCount = "http://loinc.org#10329-1";
+
+    /// <summary>
     /// Literal for code: FySupBAgPresenceOnRedBloodCells
     /// </summary>
     public const string LiteralFySupBAgPresenceOnRedBloodCells = "1033-0";
+
+    /// <summary>
+    /// Literal for code: NONEFySupBAgPresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEFySupBAgPresenceOnRedBloodCells = "http://loinc.org#1033-0";
 
     /// <summary>
     /// Literal for code: Monocytes100LeukocytesInBodyFluidByManualCount
@@ -10868,9 +12718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMonocytes100LeukocytesInBodyFluidByManualCount = "10330-9";
 
     /// <summary>
+    /// Literal for code: NONEMonocytes100LeukocytesInBodyFluidByManualCount
+    /// </summary>
+    public const string LiteralNONEMonocytes100LeukocytesInBodyFluidByManualCount = "http://loinc.org#10330-9";
+
+    /// <summary>
     /// Literal for code: RhTypeInBlood
     /// </summary>
     public const string LiteralRhTypeInBlood = "10331-7";
+
+    /// <summary>
+    /// Literal for code: NONERhTypeInBlood
+    /// </summary>
+    public const string LiteralNONERhTypeInBlood = "http://loinc.org#10331-7";
 
     /// <summary>
     /// Literal for code: CortisolMassVolumeInSerumOrPlasmaPre250UgCorticotropinIM
@@ -10878,9 +12738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCortisolMassVolumeInSerumOrPlasmaPre250UgCorticotropinIM = "10332-5";
 
     /// <summary>
+    /// Literal for code: NONECortisolMassVolumeInSerumOrPlasmaPre250UgCorticotropinIM
+    /// </summary>
+    public const string LiteralNONECortisolMassVolumeInSerumOrPlasmaPre250UgCorticotropinIM = "http://loinc.org#10332-5";
+
+    /// <summary>
     /// Literal for code: AppearanceOfCerebralSpinalFluid
     /// </summary>
     public const string LiteralAppearanceOfCerebralSpinalFluid = "10333-3";
+
+    /// <summary>
+    /// Literal for code: NONEAppearanceOfCerebralSpinalFluid
+    /// </summary>
+    public const string LiteralNONEAppearanceOfCerebralSpinalFluid = "http://loinc.org#10333-3";
 
     /// <summary>
     /// Literal for code: CancerAg125UnitsVolumeInSerumOrPlasma
@@ -10888,9 +12758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCancerAg125UnitsVolumeInSerumOrPlasma = "10334-1";
 
     /// <summary>
+    /// Literal for code: NONECancerAg125UnitsVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONECancerAg125UnitsVolumeInSerumOrPlasma = "http://loinc.org#10334-1";
+
+    /// <summary>
     /// Literal for code: ColorOfCerebralSpinalFluid
     /// </summary>
     public const string LiteralColorOfCerebralSpinalFluid = "10335-8";
+
+    /// <summary>
+    /// Literal for code: NONEColorOfCerebralSpinalFluid
+    /// </summary>
+    public const string LiteralNONEColorOfCerebralSpinalFluid = "http://loinc.org#10335-8";
 
     /// <summary>
     /// Literal for code: GonadotropinPeptideMassVolumeInUrine
@@ -10898,9 +12778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGonadotropinPeptideMassVolumeInUrine = "10336-6";
 
     /// <summary>
+    /// Literal for code: NONEGonadotropinPeptideMassVolumeInUrine
+    /// </summary>
+    public const string LiteralNONEGonadotropinPeptideMassVolumeInUrine = "http://loinc.org#10336-6";
+
+    /// <summary>
     /// Literal for code: ProcollagenTypeIMassVolumeInSerum
     /// </summary>
     public const string LiteralProcollagenTypeIMassVolumeInSerum = "10337-4";
+
+    /// <summary>
+    /// Literal for code: NONEProcollagenTypeIMassVolumeInSerum
+    /// </summary>
+    public const string LiteralNONEProcollagenTypeIMassVolumeInSerum = "http://loinc.org#10337-4";
 
     /// <summary>
     /// Literal for code: BarbituratesMassVolumeInSerumOrPlasma
@@ -10908,9 +12798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBarbituratesMassVolumeInSerumOrPlasma = "10338-2";
 
     /// <summary>
+    /// Literal for code: NONEBarbituratesMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEBarbituratesMassVolumeInSerumOrPlasma = "http://loinc.org#10338-2";
+
+    /// <summary>
     /// Literal for code: FluoxetinePlusNorfluoxetineMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralFluoxetinePlusNorfluoxetineMassVolumeInSerumOrPlasma = "10339-0";
+
+    /// <summary>
+    /// Literal for code: NONEFluoxetinePlusNorfluoxetineMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEFluoxetinePlusNorfluoxetineMassVolumeInSerumOrPlasma = "http://loinc.org#10339-0";
 
     /// <summary>
     /// Literal for code: FetalCellScreenInterpretationInBlood
@@ -10918,9 +12818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFetalCellScreenInterpretationInBlood = "1034-8";
 
     /// <summary>
+    /// Literal for code: NONEFetalCellScreenInterpretationInBlood
+    /// </summary>
+    public const string LiteralNONEFetalCellScreenInterpretationInBlood = "http://loinc.org#1034-8";
+
+    /// <summary>
     /// Literal for code: MolindoneMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralMolindoneMassVolumeInSerumOrPlasma = "10340-8";
+
+    /// <summary>
+    /// Literal for code: NONEMolindoneMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEMolindoneMassVolumeInSerumOrPlasma = "http://loinc.org#10340-8";
 
     /// <summary>
     /// Literal for code: NorpropoxypheneMassVolumeInSerumOrPlasma
@@ -10928,9 +12838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNorpropoxypheneMassVolumeInSerumOrPlasma = "10341-6";
 
     /// <summary>
+    /// Literal for code: NONENorpropoxypheneMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONENorpropoxypheneMassVolumeInSerumOrPlasma = "http://loinc.org#10341-6";
+
+    /// <summary>
     /// Literal for code: SulfamethoxazoleMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralSulfamethoxazoleMassVolumeInSerumOrPlasma = "10342-4";
+
+    /// <summary>
+    /// Literal for code: NONESulfamethoxazoleMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONESulfamethoxazoleMassVolumeInSerumOrPlasma = "http://loinc.org#10342-4";
 
     /// <summary>
     /// Literal for code: TemazepamMassVolumeInSerumOrPlasma
@@ -10938,9 +12858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTemazepamMassVolumeInSerumOrPlasma = "10343-2";
 
     /// <summary>
+    /// Literal for code: NONETemazepamMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONETemazepamMassVolumeInSerumOrPlasma = "http://loinc.org#10343-2";
+
+    /// <summary>
     /// Literal for code: TranylcypromineMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralTranylcypromineMassVolumeInSerumOrPlasma = "10344-0";
+
+    /// <summary>
+    /// Literal for code: NONETranylcypromineMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONETranylcypromineMassVolumeInSerumOrPlasma = "http://loinc.org#10344-0";
 
     /// <summary>
     /// Literal for code: TrihexyphenidylMassVolumeInUrine
@@ -10948,9 +12878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrihexyphenidylMassVolumeInUrine = "10345-7";
 
     /// <summary>
+    /// Literal for code: NONETrihexyphenidylMassVolumeInUrine
+    /// </summary>
+    public const string LiteralNONETrihexyphenidylMassVolumeInUrine = "http://loinc.org#10345-7";
+
+    /// <summary>
     /// Literal for code: HemoglobinAUnitsVolumeInBloodByElectrophoresis
     /// </summary>
     public const string LiteralHemoglobinAUnitsVolumeInBloodByElectrophoresis = "10346-5";
+
+    /// <summary>
+    /// Literal for code: NONEHemoglobinAUnitsVolumeInBloodByElectrophoresis
+    /// </summary>
+    public const string LiteralNONEHemoglobinAUnitsVolumeInBloodByElectrophoresis = "http://loinc.org#10346-5";
 
     /// <summary>
     /// Literal for code: BabesiaMicrotiIdentifiedInBloodByLightMicroscopy
@@ -10958,9 +12898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBabesiaMicrotiIdentifiedInBloodByLightMicroscopy = "10347-3";
 
     /// <summary>
+    /// Literal for code: NONEBabesiaMicrotiIdentifiedInBloodByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEBabesiaMicrotiIdentifiedInBloodByLightMicroscopy = "http://loinc.org#10347-3";
+
+    /// <summary>
     /// Literal for code: BordetellaParapertussisAbPresenceInSerum
     /// </summary>
     public const string LiteralBordetellaParapertussisAbPresenceInSerum = "10348-1";
+
+    /// <summary>
+    /// Literal for code: NONEBordetellaParapertussisAbPresenceInSerum
+    /// </summary>
+    public const string LiteralNONEBordetellaParapertussisAbPresenceInSerum = "http://loinc.org#10348-1";
 
     /// <summary>
     /// Literal for code: BrucellaSpAbUnitsVolumeInSerum
@@ -10968,9 +12918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBrucellaSpAbUnitsVolumeInSerum = "10349-9";
 
     /// <summary>
+    /// Literal for code: NONEBrucellaSpAbUnitsVolumeInSerum
+    /// </summary>
+    public const string LiteralNONEBrucellaSpAbUnitsVolumeInSerum = "http://loinc.org#10349-9";
+
+    /// <summary>
     /// Literal for code: FreshFrozenPlasmaGivenVolume
     /// </summary>
     public const string LiteralFreshFrozenPlasmaGivenVolume = "1035-5";
+
+    /// <summary>
+    /// Literal for code: NONEFreshFrozenPlasmaGivenVolume
+    /// </summary>
+    public const string LiteralNONEFreshFrozenPlasmaGivenVolume = "http://loinc.org#1035-5";
 
     /// <summary>
     /// Literal for code: HerpesSimplexVirusIgMAbTiterInSerumByImmunoassay
@@ -10978,9 +12938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHerpesSimplexVirusIgMAbTiterInSerumByImmunoassay = "10350-7";
 
     /// <summary>
+    /// Literal for code: NONEHerpesSimplexVirusIgMAbTiterInSerumByImmunoassay
+    /// </summary>
+    public const string LiteralNONEHerpesSimplexVirusIgMAbTiterInSerumByImmunoassay = "http://loinc.org#10350-7";
+
+    /// <summary>
     /// Literal for code: HIV1RNAUnitsVolumeViralLoadInSerumOrPlasmaByProbeWithAmplification
     /// </summary>
     public const string LiteralHIV1RNAUnitsVolumeViralLoadInSerumOrPlasmaByProbeWithAmplification = "10351-5";
+
+    /// <summary>
+    /// Literal for code: NONEHIV1RNAUnitsVolumeViralLoadInSerumOrPlasmaByProbeWithAmplification
+    /// </summary>
+    public const string LiteralNONEHIV1RNAUnitsVolumeViralLoadInSerumOrPlasmaByProbeWithAmplification = "http://loinc.org#10351-5";
 
     /// <summary>
     /// Literal for code: BacteriaIdentifiedInGenitalSpecimenByAerobeCulture
@@ -10988,9 +12958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBacteriaIdentifiedInGenitalSpecimenByAerobeCulture = "10352-3";
 
     /// <summary>
+    /// Literal for code: NONEBacteriaIdentifiedInGenitalSpecimenByAerobeCulture
+    /// </summary>
+    public const string LiteralNONEBacteriaIdentifiedInGenitalSpecimenByAerobeCulture = "http://loinc.org#10352-3";
+
+    /// <summary>
     /// Literal for code: BacteriaIdentifiedInNoseByAerobeCulture
     /// </summary>
     public const string LiteralBacteriaIdentifiedInNoseByAerobeCulture = "10353-1";
+
+    /// <summary>
+    /// Literal for code: NONEBacteriaIdentifiedInNoseByAerobeCulture
+    /// </summary>
+    public const string LiteralNONEBacteriaIdentifiedInNoseByAerobeCulture = "http://loinc.org#10353-1";
 
     /// <summary>
     /// Literal for code: BacteriaIdentifiedInUrethraByCulture
@@ -10998,9 +12978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBacteriaIdentifiedInUrethraByCulture = "10354-9";
 
     /// <summary>
+    /// Literal for code: NONEBacteriaIdentifiedInUrethraByCulture
+    /// </summary>
+    public const string LiteralNONEBacteriaIdentifiedInUrethraByCulture = "http://loinc.org#10354-9";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInBoneMarrowByWrightGiemsaStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInBoneMarrowByWrightGiemsaStain = "10355-6";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInBoneMarrowByWrightGiemsaStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInBoneMarrowByWrightGiemsaStain = "http://loinc.org#10355-6";
 
     /// <summary>
     /// Literal for code: DeprecatedMicroscopicObservationIdentifierInStoolByTrichromeStain
@@ -11008,9 +12998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedMicroscopicObservationIdentifierInStoolByTrichromeStain = "10356-4";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedMicroscopicObservationIdentifierInStoolByTrichromeStain
+    /// </summary>
+    public const string LiteralNONEDeprecatedMicroscopicObservationIdentifierInStoolByTrichromeStain = "http://loinc.org#10356-4";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInWoundByGramStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInWoundByGramStain = "10357-2";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInWoundByGramStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInWoundByGramStain = "http://loinc.org#10357-2";
 
     /// <summary>
     /// Literal for code: TeichoateAbTiterInSerumByImmuneDiffusionID
@@ -11018,9 +13018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTeichoateAbTiterInSerumByImmuneDiffusionID = "10358-0";
 
     /// <summary>
+    /// Literal for code: NONETeichoateAbTiterInSerumByImmuneDiffusionID
+    /// </summary>
+    public const string LiteralNONETeichoateAbTiterInSerumByImmuneDiffusionID = "http://loinc.org#10358-0";
+
+    /// <summary>
     /// Literal for code: AsialogangliosideGM1IgMAbTiterInSerum
     /// </summary>
     public const string LiteralAsialogangliosideGM1IgMAbTiterInSerum = "10359-8";
+
+    /// <summary>
+    /// Literal for code: NONEAsialogangliosideGM1IgMAbTiterInSerum
+    /// </summary>
+    public const string LiteralNONEAsialogangliosideGM1IgMAbTiterInSerum = "http://loinc.org#10359-8";
 
     /// <summary>
     /// Literal for code: GAbPresenceInSerumOrPlasmaFromBloodProductUnit
@@ -11028,9 +13038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGAbPresenceInSerumOrPlasmaFromBloodProductUnit = "1036-3";
 
     /// <summary>
+    /// Literal for code: NONEGAbPresenceInSerumOrPlasmaFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEGAbPresenceInSerumOrPlasmaFromBloodProductUnit = "http://loinc.org#1036-3";
+
+    /// <summary>
     /// Literal for code: DNASingleStrandIgGAbUnitsVolumeInSerum
     /// </summary>
     public const string LiteralDNASingleStrandIgGAbUnitsVolumeInSerum = "10360-6";
+
+    /// <summary>
+    /// Literal for code: NONEDNASingleStrandIgGAbUnitsVolumeInSerum
+    /// </summary>
+    public const string LiteralNONEDNASingleStrandIgGAbUnitsVolumeInSerum = "http://loinc.org#10360-6";
 
     /// <summary>
     /// Literal for code: DNASingleStrandIgMAbUnitsVolumeInSerum
@@ -11038,9 +13058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDNASingleStrandIgMAbUnitsVolumeInSerum = "10361-4";
 
     /// <summary>
+    /// Literal for code: NONEDNASingleStrandIgMAbUnitsVolumeInSerum
+    /// </summary>
+    public const string LiteralNONEDNASingleStrandIgMAbUnitsVolumeInSerum = "http://loinc.org#10361-4";
+
+    /// <summary>
     /// Literal for code: EndomysiumIgAAbPresenceInSerum
     /// </summary>
     public const string LiteralEndomysiumIgAAbPresenceInSerum = "10362-2";
+
+    /// <summary>
+    /// Literal for code: NONEEndomysiumIgAAbPresenceInSerum
+    /// </summary>
+    public const string LiteralNONEEndomysiumIgAAbPresenceInSerum = "http://loinc.org#10362-2";
 
     /// <summary>
     /// Literal for code: BarbituratesPresenceInUnspecifiedSpecimen
@@ -11048,9 +13078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBarbituratesPresenceInUnspecifiedSpecimen = "10363-0";
 
     /// <summary>
+    /// Literal for code: NONEBarbituratesPresenceInUnspecifiedSpecimen
+    /// </summary>
+    public const string LiteralNONEBarbituratesPresenceInUnspecifiedSpecimen = "http://loinc.org#10363-0";
+
+    /// <summary>
     /// Literal for code: CotinineMassMassInHair
     /// </summary>
     public const string LiteralCotinineMassMassInHair = "10364-8";
+
+    /// <summary>
+    /// Literal for code: NONECotinineMassMassInHair
+    /// </summary>
+    public const string LiteralNONECotinineMassMassInHair = "http://loinc.org#10364-8";
 
     /// <summary>
     /// Literal for code: CotinineMassVolumeInSerumOrPlasma
@@ -11058,9 +13098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCotinineMassVolumeInSerumOrPlasma = "10365-5";
 
     /// <summary>
+    /// Literal for code: NONECotinineMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONECotinineMassVolumeInSerumOrPlasma = "http://loinc.org#10365-5";
+
+    /// <summary>
     /// Literal for code: CotinineMassVolumeInUrine
     /// </summary>
     public const string LiteralCotinineMassVolumeInUrine = "10366-3";
+
+    /// <summary>
+    /// Literal for code: NONECotinineMassVolumeInUrine
+    /// </summary>
+    public const string LiteralNONECotinineMassVolumeInUrine = "http://loinc.org#10366-3";
 
     /// <summary>
     /// Literal for code: EthanolMassVolumeInGastricFluid
@@ -11068,9 +13118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEthanolMassVolumeInGastricFluid = "10367-1";
 
     /// <summary>
+    /// Literal for code: NONEEthanolMassVolumeInGastricFluid
+    /// </summary>
+    public const string LiteralNONEEthanolMassVolumeInGastricFluid = "http://loinc.org#10367-1";
+
+    /// <summary>
     /// Literal for code: LeadMassVolumeInCapillaryBlood
     /// </summary>
     public const string LiteralLeadMassVolumeInCapillaryBlood = "10368-9";
+
+    /// <summary>
+    /// Literal for code: NONELeadMassVolumeInCapillaryBlood
+    /// </summary>
+    public const string LiteralNONELeadMassVolumeInCapillaryBlood = "http://loinc.org#10368-9";
 
     /// <summary>
     /// Literal for code: OpiatesMassMassInHair
@@ -11078,9 +13138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpiatesMassMassInHair = "10369-7";
 
     /// <summary>
+    /// Literal for code: NONEOpiatesMassMassInHair
+    /// </summary>
+    public const string LiteralNONEOpiatesMassMassInHair = "http://loinc.org#10369-7";
+
+    /// <summary>
     /// Literal for code: GAbPresenceInSerumOrPlasmaFromDonor
     /// </summary>
     public const string LiteralGAbPresenceInSerumOrPlasmaFromDonor = "1037-1";
+
+    /// <summary>
+    /// Literal for code: NONEGAbPresenceInSerumOrPlasmaFromDonor
+    /// </summary>
+    public const string LiteralNONEGAbPresenceInSerumOrPlasmaFromDonor = "http://loinc.org#1037-1";
 
     /// <summary>
     /// Literal for code: PhencyclidineMassMassInHair
@@ -11088,9 +13158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhencyclidineMassMassInHair = "10370-5";
 
     /// <summary>
+    /// Literal for code: NONEPhencyclidineMassMassInHair
+    /// </summary>
+    public const string LiteralNONEPhencyclidineMassMassInHair = "http://loinc.org#10370-5";
+
+    /// <summary>
     /// Literal for code: BiteCellsPresenceInBloodByLightMicroscopy
     /// </summary>
     public const string LiteralBiteCellsPresenceInBloodByLightMicroscopy = "10371-3";
+
+    /// <summary>
+    /// Literal for code: NONEBiteCellsPresenceInBloodByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEBiteCellsPresenceInBloodByLightMicroscopy = "http://loinc.org#10371-3";
 
     /// <summary>
     /// Literal for code: BlisterCellsPresenceInBloodByLightMicroscopy
@@ -11098,9 +13178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBlisterCellsPresenceInBloodByLightMicroscopy = "10372-1";
 
     /// <summary>
+    /// Literal for code: NONEBlisterCellsPresenceInBloodByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEBlisterCellsPresenceInBloodByLightMicroscopy = "http://loinc.org#10372-1";
+
+    /// <summary>
     /// Literal for code: FragmentsPresenceInBloodByLightMicroscopy
     /// </summary>
     public const string LiteralFragmentsPresenceInBloodByLightMicroscopy = "10373-9";
+
+    /// <summary>
+    /// Literal for code: NONEFragmentsPresenceInBloodByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEFragmentsPresenceInBloodByLightMicroscopy = "http://loinc.org#10373-9";
 
     /// <summary>
     /// Literal for code: HelmetCellsPresenceInBloodByLightMicroscopy
@@ -11108,9 +13198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHelmetCellsPresenceInBloodByLightMicroscopy = "10374-7";
 
     /// <summary>
+    /// Literal for code: NONEHelmetCellsPresenceInBloodByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEHelmetCellsPresenceInBloodByLightMicroscopy = "http://loinc.org#10374-7";
+
+    /// <summary>
     /// Literal for code: IrregularlyContractedCellsPresenceInBloodByLightMicroscopy
     /// </summary>
     public const string LiteralIrregularlyContractedCellsPresenceInBloodByLightMicroscopy = "10375-4";
+
+    /// <summary>
+    /// Literal for code: NONEIrregularlyContractedCellsPresenceInBloodByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEIrregularlyContractedCellsPresenceInBloodByLightMicroscopy = "http://loinc.org#10375-4";
 
     /// <summary>
     /// Literal for code: OvalMacrocytesPresenceInBloodByLightMicroscopy
@@ -11118,9 +13218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOvalMacrocytesPresenceInBloodByLightMicroscopy = "10376-2";
 
     /// <summary>
+    /// Literal for code: NONEOvalMacrocytesPresenceInBloodByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEOvalMacrocytesPresenceInBloodByLightMicroscopy = "http://loinc.org#10376-2";
+
+    /// <summary>
     /// Literal for code: PencilCellsPresenceInBloodByLightMicroscopy
     /// </summary>
     public const string LiteralPencilCellsPresenceInBloodByLightMicroscopy = "10377-0";
+
+    /// <summary>
+    /// Literal for code: NONEPencilCellsPresenceInBloodByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEPencilCellsPresenceInBloodByLightMicroscopy = "http://loinc.org#10377-0";
 
     /// <summary>
     /// Literal for code: PolychromasiaPresenceInBloodByLightMicroscopy
@@ -11128,9 +13238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPolychromasiaPresenceInBloodByLightMicroscopy = "10378-8";
 
     /// <summary>
+    /// Literal for code: NONEPolychromasiaPresenceInBloodByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEPolychromasiaPresenceInBloodByLightMicroscopy = "http://loinc.org#10378-8";
+
+    /// <summary>
     /// Literal for code: ErythrocytesDualPopulationPresenceInBloodByLightMicroscopy
     /// </summary>
     public const string LiteralErythrocytesDualPopulationPresenceInBloodByLightMicroscopy = "10379-6";
+
+    /// <summary>
+    /// Literal for code: NONEErythrocytesDualPopulationPresenceInBloodByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEErythrocytesDualPopulationPresenceInBloodByLightMicroscopy = "http://loinc.org#10379-6";
 
     /// <summary>
     /// Literal for code: GAbPresenceInSerumOrPlasma
@@ -11138,9 +13258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGAbPresenceInSerumOrPlasma = "1038-9";
 
     /// <summary>
+    /// Literal for code: NONEGAbPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEGAbPresenceInSerumOrPlasma = "http://loinc.org#1038-9";
+
+    /// <summary>
     /// Literal for code: StomatocytesPresenceInBloodByLightMicroscopy
     /// </summary>
     public const string LiteralStomatocytesPresenceInBloodByLightMicroscopy = "10380-4";
+
+    /// <summary>
+    /// Literal for code: NONEStomatocytesPresenceInBloodByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEStomatocytesPresenceInBloodByLightMicroscopy = "http://loinc.org#10380-4";
 
     /// <summary>
     /// Literal for code: TargetCellsPresenceInBloodByLightMicroscopy
@@ -11148,9 +13278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTargetCellsPresenceInBloodByLightMicroscopy = "10381-2";
 
     /// <summary>
+    /// Literal for code: NONETargetCellsPresenceInBloodByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONETargetCellsPresenceInBloodByLightMicroscopy = "http://loinc.org#10381-2";
+
+    /// <summary>
     /// Literal for code: ABVariantNOSAgPresenceOnRedBloodCellsFromBloodProductUnit
     /// </summary>
     public const string LiteralABVariantNOSAgPresenceOnRedBloodCellsFromBloodProductUnit = "10382-0";
+
+    /// <summary>
+    /// Literal for code: NONEABVariantNOSAgPresenceOnRedBloodCellsFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEABVariantNOSAgPresenceOnRedBloodCellsFromBloodProductUnit = "http://loinc.org#10382-0";
 
     /// <summary>
     /// Literal for code: ABVariantNOSAgPresenceOnRedBloodCellsFromDonor
@@ -11158,9 +13298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralABVariantNOSAgPresenceOnRedBloodCellsFromDonor = "10383-8";
 
     /// <summary>
+    /// Literal for code: NONEABVariantNOSAgPresenceOnRedBloodCellsFromDonor
+    /// </summary>
+    public const string LiteralNONEABVariantNOSAgPresenceOnRedBloodCellsFromDonor = "http://loinc.org#10383-8";
+
+    /// <summary>
     /// Literal for code: ABVariantNOSAgPresenceOnRedBloodCells
     /// </summary>
     public const string LiteralABVariantNOSAgPresenceOnRedBloodCells = "10384-6";
+
+    /// <summary>
+    /// Literal for code: NONEABVariantNOSAgPresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEABVariantNOSAgPresenceOnRedBloodCells = "http://loinc.org#10384-6";
 
     /// <summary>
     /// Literal for code: AlbuminConcentrationGiven
@@ -11168,9 +13318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlbuminConcentrationGiven = "10385-3";
 
     /// <summary>
+    /// Literal for code: NONEAlbuminConcentrationGiven
+    /// </summary>
+    public const string LiteralNONEAlbuminConcentrationGiven = "http://loinc.org#10385-3";
+
+    /// <summary>
     /// Literal for code: AlbuminGivenVolume
     /// </summary>
     public const string LiteralAlbuminGivenVolume = "10386-1";
+
+    /// <summary>
+    /// Literal for code: NONEAlbuminGivenVolume
+    /// </summary>
+    public const string LiteralNONEAlbuminGivenVolume = "http://loinc.org#10386-1";
 
     /// <summary>
     /// Literal for code: AutologousErythrocytesGivenVolume
@@ -11178,9 +13338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAutologousErythrocytesGivenVolume = "10387-9";
 
     /// <summary>
+    /// Literal for code: NONEAutologousErythrocytesGivenVolume
+    /// </summary>
+    public const string LiteralNONEAutologousErythrocytesGivenVolume = "http://loinc.org#10387-9";
+
+    /// <summary>
     /// Literal for code: AutologousWholeBloodGivenVolume
     /// </summary>
     public const string LiteralAutologousWholeBloodGivenVolume = "10388-7";
+
+    /// <summary>
+    /// Literal for code: NONEAutologousWholeBloodGivenVolume
+    /// </summary>
+    public const string LiteralNONEAutologousWholeBloodGivenVolume = "http://loinc.org#10388-7";
 
     /// <summary>
     /// Literal for code: BloodProductOtherType
@@ -11188,9 +13358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBloodProductOtherType = "10389-5";
 
     /// <summary>
+    /// Literal for code: NONEBloodProductOtherType
+    /// </summary>
+    public const string LiteralNONEBloodProductOtherType = "http://loinc.org#10389-5";
+
+    /// <summary>
     /// Literal for code: GAgPresenceOnRedBloodCellsFromBloodProductUnit
     /// </summary>
     public const string LiteralGAgPresenceOnRedBloodCellsFromBloodProductUnit = "1039-7";
+
+    /// <summary>
+    /// Literal for code: NONEGAgPresenceOnRedBloodCellsFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEGAgPresenceOnRedBloodCellsFromBloodProductUnit = "http://loinc.org#1039-7";
 
     /// <summary>
     /// Literal for code: BloodProductSpecialPreparationType
@@ -11198,9 +13378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBloodProductSpecialPreparationType = "10390-3";
 
     /// <summary>
+    /// Literal for code: NONEBloodProductSpecialPreparationType
+    /// </summary>
+    public const string LiteralNONEBloodProductSpecialPreparationType = "http://loinc.org#10390-3";
+
+    /// <summary>
     /// Literal for code: CytomegalovirusImmuneGlobulinGivenVolume
     /// </summary>
     public const string LiteralCytomegalovirusImmuneGlobulinGivenVolume = "10391-1";
+
+    /// <summary>
+    /// Literal for code: NONECytomegalovirusImmuneGlobulinGivenVolume
+    /// </summary>
+    public const string LiteralNONECytomegalovirusImmuneGlobulinGivenVolume = "http://loinc.org#10391-1";
 
     /// <summary>
     /// Literal for code: CryoprecipitateGivenVolume
@@ -11208,9 +13398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCryoprecipitateGivenVolume = "10392-9";
 
     /// <summary>
+    /// Literal for code: NONECryoprecipitateGivenVolume
+    /// </summary>
+    public const string LiteralNONECryoprecipitateGivenVolume = "http://loinc.org#10392-9";
+
+    /// <summary>
     /// Literal for code: FactorIXGivenType
     /// </summary>
     public const string LiteralFactorIXGivenType = "10393-7";
+
+    /// <summary>
+    /// Literal for code: NONEFactorIXGivenType
+    /// </summary>
+    public const string LiteralNONEFactorIXGivenType = "http://loinc.org#10393-7";
 
     /// <summary>
     /// Literal for code: FactorIXGivenVolume
@@ -11218,9 +13418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFactorIXGivenVolume = "10394-5";
 
     /// <summary>
+    /// Literal for code: NONEFactorIXGivenVolume
+    /// </summary>
+    public const string LiteralNONEFactorIXGivenVolume = "http://loinc.org#10394-5";
+
+    /// <summary>
     /// Literal for code: FactorVIIIGivenType
     /// </summary>
     public const string LiteralFactorVIIIGivenType = "10395-2";
+
+    /// <summary>
+    /// Literal for code: NONEFactorVIIIGivenType
+    /// </summary>
+    public const string LiteralNONEFactorVIIIGivenType = "http://loinc.org#10395-2";
 
     /// <summary>
     /// Literal for code: FactorVIIIGivenVolume
@@ -11228,9 +13438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFactorVIIIGivenVolume = "10396-0";
 
     /// <summary>
+    /// Literal for code: NONEFactorVIIIGivenVolume
+    /// </summary>
+    public const string LiteralNONEFactorVIIIGivenVolume = "http://loinc.org#10396-0";
+
+    /// <summary>
     /// Literal for code: HepatitisBImmuneGlobulinGivenVolume
     /// </summary>
     public const string LiteralHepatitisBImmuneGlobulinGivenVolume = "10397-8";
+
+    /// <summary>
+    /// Literal for code: NONEHepatitisBImmuneGlobulinGivenVolume
+    /// </summary>
+    public const string LiteralNONEHepatitisBImmuneGlobulinGivenVolume = "http://loinc.org#10397-8";
 
     /// <summary>
     /// Literal for code: IAgPresenceOnRedBloodCellsFromBloodProductUnit
@@ -11238,9 +13458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIAgPresenceOnRedBloodCellsFromBloodProductUnit = "10398-6";
 
     /// <summary>
+    /// Literal for code: NONEIAgPresenceOnRedBloodCellsFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEIAgPresenceOnRedBloodCellsFromBloodProductUnit = "http://loinc.org#10398-6";
+
+    /// <summary>
     /// Literal for code: IAgPresenceOnRedBloodCellsFromDonor
     /// </summary>
     public const string LiteralIAgPresenceOnRedBloodCellsFromDonor = "10399-4";
+
+    /// <summary>
+    /// Literal for code: NONEIAgPresenceOnRedBloodCellsFromDonor
+    /// </summary>
+    public const string LiteralNONEIAgPresenceOnRedBloodCellsFromDonor = "http://loinc.org#10399-4";
 
     /// <summary>
     /// Literal for code: CeforanideSusceptibilityByMinimumInhibitoryConcentrationMIC
@@ -11248,9 +13478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCeforanideSusceptibilityByMinimumInhibitoryConcentrationMIC = "104-0";
 
     /// <summary>
+    /// Literal for code: NONECeforanideSusceptibilityByMinimumInhibitoryConcentrationMIC
+    /// </summary>
+    public const string LiteralNONECeforanideSusceptibilityByMinimumInhibitoryConcentrationMIC = "http://loinc.org#104-0";
+
+    /// <summary>
     /// Literal for code: GAgPresenceOnRedBloodCellsFromDonor
     /// </summary>
     public const string LiteralGAgPresenceOnRedBloodCellsFromDonor = "1040-5";
+
+    /// <summary>
+    /// Literal for code: NONEGAgPresenceOnRedBloodCellsFromDonor
+    /// </summary>
+    public const string LiteralNONEGAgPresenceOnRedBloodCellsFromDonor = "http://loinc.org#1040-5";
 
     /// <summary>
     /// Literal for code: IAgPresenceOnRedBloodCells
@@ -11258,9 +13498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIAgPresenceOnRedBloodCells = "10400-0";
 
     /// <summary>
+    /// Literal for code: NONEIAgPresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEIAgPresenceOnRedBloodCells = "http://loinc.org#10400-0";
+
+    /// <summary>
     /// Literal for code: ImmuneSerumGlobulinGivenType
     /// </summary>
     public const string LiteralImmuneSerumGlobulinGivenType = "10401-8";
+
+    /// <summary>
+    /// Literal for code: NONEImmuneSerumGlobulinGivenType
+    /// </summary>
+    public const string LiteralNONEImmuneSerumGlobulinGivenType = "http://loinc.org#10401-8";
 
     /// <summary>
     /// Literal for code: ImmuneSerumGlobulinGivenVolume
@@ -11268,9 +13518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImmuneSerumGlobulinGivenVolume = "10402-6";
 
     /// <summary>
+    /// Literal for code: NONEImmuneSerumGlobulinGivenVolume
+    /// </summary>
+    public const string LiteralNONEImmuneSerumGlobulinGivenVolume = "http://loinc.org#10402-6";
+
+    /// <summary>
     /// Literal for code: InjectImmuneSerumGlobulinVolume
     /// </summary>
     public const string LiteralInjectImmuneSerumGlobulinVolume = "10403-4";
+
+    /// <summary>
+    /// Literal for code: NONEInjectImmuneSerumGlobulinVolume
+    /// </summary>
+    public const string LiteralNONEInjectImmuneSerumGlobulinVolume = "http://loinc.org#10403-4";
 
     /// <summary>
     /// Literal for code: InjectRhImmuneGlobulinVolume
@@ -11278,9 +13538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInjectRhImmuneGlobulinVolume = "10404-2";
 
     /// <summary>
+    /// Literal for code: NONEInjectRhImmuneGlobulinVolume
+    /// </summary>
+    public const string LiteralNONEInjectRhImmuneGlobulinVolume = "http://loinc.org#10404-2";
+
+    /// <summary>
     /// Literal for code: InjectVaricellaZosterVirusImmuneGlobulinVolume
     /// </summary>
     public const string LiteralInjectVaricellaZosterVirusImmuneGlobulinVolume = "10405-9";
+
+    /// <summary>
+    /// Literal for code: NONEInjectVaricellaZosterVirusImmuneGlobulinVolume
+    /// </summary>
+    public const string LiteralNONEInjectVaricellaZosterVirusImmuneGlobulinVolume = "http://loinc.org#10405-9";
 
     /// <summary>
     /// Literal for code: LittleIAgPresenceOnRedBloodCellsFromBloodProductUnit
@@ -11288,9 +13558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLittleIAgPresenceOnRedBloodCellsFromBloodProductUnit = "10406-7";
 
     /// <summary>
+    /// Literal for code: NONELittleIAgPresenceOnRedBloodCellsFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONELittleIAgPresenceOnRedBloodCellsFromBloodProductUnit = "http://loinc.org#10406-7";
+
+    /// <summary>
     /// Literal for code: LittleIAgPresenceOnRedBloodCellsFromDonor
     /// </summary>
     public const string LiteralLittleIAgPresenceOnRedBloodCellsFromDonor = "10407-5";
+
+    /// <summary>
+    /// Literal for code: NONELittleIAgPresenceOnRedBloodCellsFromDonor
+    /// </summary>
+    public const string LiteralNONELittleIAgPresenceOnRedBloodCellsFromDonor = "http://loinc.org#10407-5";
 
     /// <summary>
     /// Literal for code: LittleIAgPresenceOnRedBloodCells
@@ -11298,9 +13578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLittleIAgPresenceOnRedBloodCells = "10408-3";
 
     /// <summary>
+    /// Literal for code: NONELittleIAgPresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONELittleIAgPresenceOnRedBloodCells = "http://loinc.org#10408-3";
+
+    /// <summary>
     /// Literal for code: PentaspanGivenVolume
     /// </summary>
     public const string LiteralPentaspanGivenVolume = "10409-1";
+
+    /// <summary>
+    /// Literal for code: NONEPentaspanGivenVolume
+    /// </summary>
+    public const string LiteralNONEPentaspanGivenVolume = "http://loinc.org#10409-1";
 
     /// <summary>
     /// Literal for code: GAgPresenceOnRedBloodCells
@@ -11308,9 +13598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGAgPresenceOnRedBloodCells = "1041-3";
 
     /// <summary>
+    /// Literal for code: NONEGAgPresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEGAgPresenceOnRedBloodCells = "http://loinc.org#1041-3";
+
+    /// <summary>
     /// Literal for code: PlasmaGivenType
     /// </summary>
     public const string LiteralPlasmaGivenType = "10410-9";
+
+    /// <summary>
+    /// Literal for code: NONEPlasmaGivenType
+    /// </summary>
+    public const string LiteralNONEPlasmaGivenType = "http://loinc.org#10410-9";
 
     /// <summary>
     /// Literal for code: PlasmaGivenVolume
@@ -11318,9 +13618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPlasmaGivenVolume = "10411-7";
 
     /// <summary>
+    /// Literal for code: NONEPlasmaGivenVolume
+    /// </summary>
+    public const string LiteralNONEPlasmaGivenVolume = "http://loinc.org#10411-7";
+
+    /// <summary>
     /// Literal for code: PlateletsGivenType
     /// </summary>
     public const string LiteralPlateletsGivenType = "10412-5";
+
+    /// <summary>
+    /// Literal for code: NONEPlateletsGivenType
+    /// </summary>
+    public const string LiteralNONEPlateletsGivenType = "http://loinc.org#10412-5";
 
     /// <summary>
     /// Literal for code: RhImmuneGlobulinGivenVolume
@@ -11328,9 +13638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRhImmuneGlobulinGivenVolume = "10413-3";
 
     /// <summary>
+    /// Literal for code: NONERhImmuneGlobulinGivenVolume
+    /// </summary>
+    public const string LiteralNONERhImmuneGlobulinGivenVolume = "http://loinc.org#10413-3";
+
+    /// <summary>
     /// Literal for code: TransfuseAlbuminVolume
     /// </summary>
     public const string LiteralTransfuseAlbuminVolume = "10414-1";
+
+    /// <summary>
+    /// Literal for code: NONETransfuseAlbuminVolume
+    /// </summary>
+    public const string LiteralNONETransfuseAlbuminVolume = "http://loinc.org#10414-1";
 
     /// <summary>
     /// Literal for code: TransfuseBloodExchangeTransfusionVolume
@@ -11338,9 +13658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransfuseBloodExchangeTransfusionVolume = "10415-8";
 
     /// <summary>
+    /// Literal for code: NONETransfuseBloodExchangeTransfusionVolume
+    /// </summary>
+    public const string LiteralNONETransfuseBloodExchangeTransfusionVolume = "http://loinc.org#10415-8";
+
+    /// <summary>
     /// Literal for code: TransfuseBloodProductOtherVolume
     /// </summary>
     public const string LiteralTransfuseBloodProductOtherVolume = "10416-6";
+
+    /// <summary>
+    /// Literal for code: NONETransfuseBloodProductOtherVolume
+    /// </summary>
+    public const string LiteralNONETransfuseBloodProductOtherVolume = "http://loinc.org#10416-6";
 
     /// <summary>
     /// Literal for code: TransfuseCryoprecipitateVolume
@@ -11348,9 +13678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransfuseCryoprecipitateVolume = "10417-4";
 
     /// <summary>
+    /// Literal for code: NONETransfuseCryoprecipitateVolume
+    /// </summary>
+    public const string LiteralNONETransfuseCryoprecipitateVolume = "http://loinc.org#10417-4";
+
+    /// <summary>
     /// Literal for code: TransfuseFactorIXVolume
     /// </summary>
     public const string LiteralTransfuseFactorIXVolume = "10418-2";
+
+    /// <summary>
+    /// Literal for code: NONETransfuseFactorIXVolume
+    /// </summary>
+    public const string LiteralNONETransfuseFactorIXVolume = "http://loinc.org#10418-2";
 
     /// <summary>
     /// Literal for code: TransfuseFactorVIIIVolume
@@ -11358,9 +13698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransfuseFactorVIIIVolume = "10419-0";
 
     /// <summary>
+    /// Literal for code: NONETransfuseFactorVIIIVolume
+    /// </summary>
+    public const string LiteralNONETransfuseFactorVIIIVolume = "http://loinc.org#10419-0";
+
+    /// <summary>
     /// Literal for code: HAbPresenceInSerumOrPlasmaFromBloodProductUnit
     /// </summary>
     public const string LiteralHAbPresenceInSerumOrPlasmaFromBloodProductUnit = "1042-1";
+
+    /// <summary>
+    /// Literal for code: NONEHAbPresenceInSerumOrPlasmaFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEHAbPresenceInSerumOrPlasmaFromBloodProductUnit = "http://loinc.org#1042-1";
 
     /// <summary>
     /// Literal for code: TransfuseImmuneSerumGlobulinVolume
@@ -11368,9 +13718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransfuseImmuneSerumGlobulinVolume = "10420-8";
 
     /// <summary>
+    /// Literal for code: NONETransfuseImmuneSerumGlobulinVolume
+    /// </summary>
+    public const string LiteralNONETransfuseImmuneSerumGlobulinVolume = "http://loinc.org#10420-8";
+
+    /// <summary>
     /// Literal for code: TransfusePentaspanVolume
     /// </summary>
     public const string LiteralTransfusePentaspanVolume = "10421-6";
+
+    /// <summary>
+    /// Literal for code: NONETransfusePentaspanVolume
+    /// </summary>
+    public const string LiteralNONETransfusePentaspanVolume = "http://loinc.org#10421-6";
 
     /// <summary>
     /// Literal for code: TransfusePlasmaVolume
@@ -11378,9 +13738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransfusePlasmaVolume = "10422-4";
 
     /// <summary>
+    /// Literal for code: NONETransfusePlasmaVolume
+    /// </summary>
+    public const string LiteralNONETransfusePlasmaVolume = "http://loinc.org#10422-4";
+
+    /// <summary>
     /// Literal for code: TransfusePlateletsVolume
     /// </summary>
     public const string LiteralTransfusePlateletsVolume = "10423-2";
+
+    /// <summary>
+    /// Literal for code: NONETransfusePlateletsVolume
+    /// </summary>
+    public const string LiteralNONETransfusePlateletsVolume = "http://loinc.org#10423-2";
 
     /// <summary>
     /// Literal for code: TransfuseErythrocytesVolume
@@ -11388,9 +13758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransfuseErythrocytesVolume = "10424-0";
 
     /// <summary>
+    /// Literal for code: NONETransfuseErythrocytesVolume
+    /// </summary>
+    public const string LiteralNONETransfuseErythrocytesVolume = "http://loinc.org#10424-0";
+
+    /// <summary>
     /// Literal for code: TransfuseRhImmuneGlobulinVolume
     /// </summary>
     public const string LiteralTransfuseRhImmuneGlobulinVolume = "10425-7";
+
+    /// <summary>
+    /// Literal for code: NONETransfuseRhImmuneGlobulinVolume
+    /// </summary>
+    public const string LiteralNONETransfuseRhImmuneGlobulinVolume = "http://loinc.org#10425-7";
 
     /// <summary>
     /// Literal for code: TransfuseWholeBloodVolume
@@ -11398,9 +13778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransfuseWholeBloodVolume = "10426-5";
 
     /// <summary>
+    /// Literal for code: NONETransfuseWholeBloodVolume
+    /// </summary>
+    public const string LiteralNONETransfuseWholeBloodVolume = "http://loinc.org#10426-5";
+
+    /// <summary>
     /// Literal for code: TransfuseWholeBloodAutologousVolume
     /// </summary>
     public const string LiteralTransfuseWholeBloodAutologousVolume = "10427-3";
+
+    /// <summary>
+    /// Literal for code: NONETransfuseWholeBloodAutologousVolume
+    /// </summary>
+    public const string LiteralNONETransfuseWholeBloodAutologousVolume = "http://loinc.org#10427-3";
 
     /// <summary>
     /// Literal for code: VaricellaZosterVirusImmuneGlobulinGivenVolume
@@ -11408,9 +13798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVaricellaZosterVirusImmuneGlobulinGivenVolume = "10428-1";
 
     /// <summary>
+    /// Literal for code: NONEVaricellaZosterVirusImmuneGlobulinGivenVolume
+    /// </summary>
+    public const string LiteralNONEVaricellaZosterVirusImmuneGlobulinGivenVolume = "http://loinc.org#10428-1";
+
+    /// <summary>
     /// Literal for code: AE1AgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralAE1AgPresenceInTissueByImmuneStain = "10429-9";
+
+    /// <summary>
+    /// Literal for code: NONEAE1AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEAE1AgPresenceInTissueByImmuneStain = "http://loinc.org#10429-9";
 
     /// <summary>
     /// Literal for code: HAbPresenceInSerumOrPlasmaFromDonor
@@ -11418,9 +13818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHAbPresenceInSerumOrPlasmaFromDonor = "1043-9";
 
     /// <summary>
+    /// Literal for code: NONEHAbPresenceInSerumOrPlasmaFromDonor
+    /// </summary>
+    public const string LiteralNONEHAbPresenceInSerumOrPlasmaFromDonor = "http://loinc.org#1043-9";
+
+    /// <summary>
     /// Literal for code: AE3AgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralAE3AgPresenceInTissueByImmuneStain = "10430-7";
+
+    /// <summary>
+    /// Literal for code: NONEAE3AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEAE3AgPresenceInTissueByImmuneStain = "http://loinc.org#10430-7";
 
     /// <summary>
     /// Literal for code: BCellAgPresenceInTissueByImmuneStain
@@ -11428,9 +13838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBCellAgPresenceInTissueByImmuneStain = "10431-5";
 
     /// <summary>
+    /// Literal for code: NONEBCellAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEBCellAgPresenceInTissueByImmuneStain = "http://loinc.org#10431-5";
+
+    /// <summary>
     /// Literal for code: CD30AgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralCD30AgPresenceInTissueByImmuneStain = "10432-3";
+
+    /// <summary>
+    /// Literal for code: NONECD30AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECD30AgPresenceInTissueByImmuneStain = "http://loinc.org#10432-3";
 
     /// <summary>
     /// Literal for code: BR2AgPresenceInTissueByImmuneStain
@@ -11438,9 +13858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBR2AgPresenceInTissueByImmuneStain = "10433-1";
 
     /// <summary>
+    /// Literal for code: NONEBR2AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEBR2AgPresenceInTissueByImmuneStain = "http://loinc.org#10433-1";
+
+    /// <summary>
     /// Literal for code: ComplementC3AgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralComplementC3AgPresenceInTissueByImmuneStain = "10434-9";
+
+    /// <summary>
+    /// Literal for code: NONEComplementC3AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEComplementC3AgPresenceInTissueByImmuneStain = "http://loinc.org#10434-9";
 
     /// <summary>
     /// Literal for code: C5B9AgPresenceInTissueByImmuneStain
@@ -11448,9 +13878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralC5B9AgPresenceInTissueByImmuneStain = "10435-6";
 
     /// <summary>
+    /// Literal for code: NONEC5B9AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEC5B9AgPresenceInTissueByImmuneStain = "http://loinc.org#10435-6";
+
+    /// <summary>
     /// Literal for code: CD15AgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralCD15AgPresenceInTissueByImmuneStain = "10436-4";
+
+    /// <summary>
+    /// Literal for code: NONECD15AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECD15AgPresenceInTissueByImmuneStain = "http://loinc.org#10436-4";
 
     /// <summary>
     /// Literal for code: CD16AgPresenceInTissueByImmuneStain
@@ -11458,9 +13898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCD16AgPresenceInTissueByImmuneStain = "10437-2";
 
     /// <summary>
+    /// Literal for code: NONECD16AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECD16AgPresenceInTissueByImmuneStain = "http://loinc.org#10437-2";
+
+    /// <summary>
     /// Literal for code: CD20AgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralCD20AgPresenceInTissueByImmuneStain = "10438-0";
+
+    /// <summary>
+    /// Literal for code: NONECD20AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECD20AgPresenceInTissueByImmuneStain = "http://loinc.org#10438-0";
 
     /// <summary>
     /// Literal for code: CD3AgPresenceInTissueByImmuneStain
@@ -11468,9 +13918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCD3AgPresenceInTissueByImmuneStain = "10439-8";
 
     /// <summary>
+    /// Literal for code: NONECD3AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECD3AgPresenceInTissueByImmuneStain = "http://loinc.org#10439-8";
+
+    /// <summary>
     /// Literal for code: HAbPresenceInSerum
     /// </summary>
     public const string LiteralHAbPresenceInSerum = "1044-7";
+
+    /// <summary>
+    /// Literal for code: NONEHAbPresenceInSerum
+    /// </summary>
+    public const string LiteralNONEHAbPresenceInSerum = "http://loinc.org#1044-7";
 
     /// <summary>
     /// Literal for code: DeprecatedCD30AgPresenceInTissueByImmuneStain
@@ -11478,9 +13938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedCD30AgPresenceInTissueByImmuneStain = "10440-6";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedCD30AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEDeprecatedCD30AgPresenceInTissueByImmuneStain = "http://loinc.org#10440-6";
+
+    /// <summary>
     /// Literal for code: CD34AgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralCD34AgPresenceInTissueByImmuneStain = "10441-4";
+
+    /// <summary>
+    /// Literal for code: NONECD34AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECD34AgPresenceInTissueByImmuneStain = "http://loinc.org#10441-4";
 
     /// <summary>
     /// Literal for code: CD56AgPresenceInTissueByImmuneStain
@@ -11488,9 +13958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCD56AgPresenceInTissueByImmuneStain = "10442-2";
 
     /// <summary>
+    /// Literal for code: NONECD56AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECD56AgPresenceInTissueByImmuneStain = "http://loinc.org#10442-2";
+
+    /// <summary>
     /// Literal for code: CD43TCellMonocytePlusMyeloidCellAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralCD43TCellMonocytePlusMyeloidCellAgPresenceInTissueByImmuneStain = "10443-0";
+
+    /// <summary>
+    /// Literal for code: NONECD43TCellMonocytePlusMyeloidCellAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECD43TCellMonocytePlusMyeloidCellAgPresenceInTissueByImmuneStain = "http://loinc.org#10443-0";
 
     /// <summary>
     /// Literal for code: CD57AgPresenceInTissueByImmuneStain
@@ -11498,9 +13978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCD57AgPresenceInTissueByImmuneStain = "10444-8";
 
     /// <summary>
+    /// Literal for code: NONECD57AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECD57AgPresenceInTissueByImmuneStain = "http://loinc.org#10444-8";
+
+    /// <summary>
     /// Literal for code: CD11cAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralCD11cAgPresenceInTissueByImmuneStain = "10445-5";
+
+    /// <summary>
+    /// Literal for code: NONECD11cAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECD11cAgPresenceInTissueByImmuneStain = "http://loinc.org#10445-5";
 
     /// <summary>
     /// Literal for code: LeukocyteCommonAgPresenceInTissueByImmuneStain
@@ -11508,9 +13998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeukocyteCommonAgPresenceInTissueByImmuneStain = "10446-3";
 
     /// <summary>
+    /// Literal for code: NONELeukocyteCommonAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONELeukocyteCommonAgPresenceInTissueByImmuneStain = "http://loinc.org#10446-3";
+
+    /// <summary>
     /// Literal for code: M5AgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralM5AgPresenceInTissueByImmuneStain = "10447-1";
+
+    /// <summary>
+    /// Literal for code: NONEM5AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEM5AgPresenceInTissueByImmuneStain = "http://loinc.org#10447-1";
 
     /// <summary>
     /// Literal for code: TCellAgPresenceInTissueByImmuneStain
@@ -11518,9 +14018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTCellAgPresenceInTissueByImmuneStain = "10448-9";
 
     /// <summary>
+    /// Literal for code: NONETCellAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONETCellAgPresenceInTissueByImmuneStain = "http://loinc.org#10448-9";
+
+    /// <summary>
     /// Literal for code: GlucoseMassVolumeInSerumOrPlasma1HourPostMeal
     /// </summary>
     public const string LiteralGlucoseMassVolumeInSerumOrPlasma1HourPostMeal = "10449-7";
+
+    /// <summary>
+    /// Literal for code: NONEGlucoseMassVolumeInSerumOrPlasma1HourPostMeal
+    /// </summary>
+    public const string LiteralNONEGlucoseMassVolumeInSerumOrPlasma1HourPostMeal = "http://loinc.org#10449-7";
 
     /// <summary>
     /// Literal for code: HNOSAbPresenceInSerumOrPlasmaFromBloodProductUnit
@@ -11528,9 +14038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHNOSAbPresenceInSerumOrPlasmaFromBloodProductUnit = "1045-4";
 
     /// <summary>
+    /// Literal for code: NONEHNOSAbPresenceInSerumOrPlasmaFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEHNOSAbPresenceInSerumOrPlasmaFromBloodProductUnit = "http://loinc.org#1045-4";
+
+    /// <summary>
     /// Literal for code: GlucoseMassVolumeInSerumOrPlasma10HoursFasting
     /// </summary>
     public const string LiteralGlucoseMassVolumeInSerumOrPlasma10HoursFasting = "10450-5";
+
+    /// <summary>
+    /// Literal for code: NONEGlucoseMassVolumeInSerumOrPlasma10HoursFasting
+    /// </summary>
+    public const string LiteralNONEGlucoseMassVolumeInSerumOrPlasma10HoursFasting = "http://loinc.org#10450-5";
 
     /// <summary>
     /// Literal for code: ProinsulinMolesVolumeInSerumOrPlasma12HoursFasting
@@ -11538,9 +14058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProinsulinMolesVolumeInSerumOrPlasma12HoursFasting = "10451-3";
 
     /// <summary>
+    /// Literal for code: NONEProinsulinMolesVolumeInSerumOrPlasma12HoursFasting
+    /// </summary>
+    public const string LiteralNONEProinsulinMolesVolumeInSerumOrPlasma12HoursFasting = "http://loinc.org#10451-3";
+
+    /// <summary>
     /// Literal for code: XyloseMassVolumeInSerumOrPlasma1HourPost25GXylosePO
     /// </summary>
     public const string LiteralXyloseMassVolumeInSerumOrPlasma1HourPost25GXylosePO = "10452-1";
+
+    /// <summary>
+    /// Literal for code: NONEXyloseMassVolumeInSerumOrPlasma1HourPost25GXylosePO
+    /// </summary>
+    public const string LiteralNONEXyloseMassVolumeInSerumOrPlasma1HourPost25GXylosePO = "http://loinc.org#10452-1";
 
     /// <summary>
     /// Literal for code: XyloseMassVolumeInSerumOrPlasma1HourPostDoseXylosePO
@@ -11548,9 +14078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralXyloseMassVolumeInSerumOrPlasma1HourPostDoseXylosePO = "10453-9";
 
     /// <summary>
+    /// Literal for code: NONEXyloseMassVolumeInSerumOrPlasma1HourPostDoseXylosePO
+    /// </summary>
+    public const string LiteralNONEXyloseMassVolumeInSerumOrPlasma1HourPostDoseXylosePO = "http://loinc.org#10453-9";
+
+    /// <summary>
     /// Literal for code: XyloseMassVolumeInSerumOrPlasma2HoursPost25GXylosePO
     /// </summary>
     public const string LiteralXyloseMassVolumeInSerumOrPlasma2HoursPost25GXylosePO = "10454-7";
+
+    /// <summary>
+    /// Literal for code: NONEXyloseMassVolumeInSerumOrPlasma2HoursPost25GXylosePO
+    /// </summary>
+    public const string LiteralNONEXyloseMassVolumeInSerumOrPlasma2HoursPost25GXylosePO = "http://loinc.org#10454-7";
 
     /// <summary>
     /// Literal for code: XyloseMassVolumeInSerumOrPlasma30MinutesPost25GXylosePO
@@ -11558,9 +14098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralXyloseMassVolumeInSerumOrPlasma30MinutesPost25GXylosePO = "10455-4";
 
     /// <summary>
+    /// Literal for code: NONEXyloseMassVolumeInSerumOrPlasma30MinutesPost25GXylosePO
+    /// </summary>
+    public const string LiteralNONEXyloseMassVolumeInSerumOrPlasma30MinutesPost25GXylosePO = "http://loinc.org#10455-4";
+
+    /// <summary>
     /// Literal for code: XyloseMassVolumeInSerumOrPlasma6HoursFasting
     /// </summary>
     public const string LiteralXyloseMassVolumeInSerumOrPlasma6HoursFasting = "10456-2";
+
+    /// <summary>
+    /// Literal for code: NONEXyloseMassVolumeInSerumOrPlasma6HoursFasting
+    /// </summary>
+    public const string LiteralNONEXyloseMassVolumeInSerumOrPlasma6HoursFasting = "http://loinc.org#10456-2";
 
     /// <summary>
     /// Literal for code: ActinAgPresenceInTissueByImmuneStain
@@ -11568,9 +14118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralActinAgPresenceInTissueByImmuneStain = "10457-0";
 
     /// <summary>
+    /// Literal for code: NONEActinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEActinAgPresenceInTissueByImmuneStain = "http://loinc.org#10457-0";
+
+    /// <summary>
     /// Literal for code: AlkalinePhosphatasePlacentalAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralAlkalinePhosphatasePlacentalAgPresenceInTissueByImmuneStain = "10458-8";
+
+    /// <summary>
+    /// Literal for code: NONEAlkalinePhosphatasePlacentalAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEAlkalinePhosphatasePlacentalAgPresenceInTissueByImmuneStain = "http://loinc.org#10458-8";
 
     /// <summary>
     /// Literal for code: Alpha1FetoproteinAgPresenceInTissueByImmuneStain
@@ -11578,9 +14138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlpha1FetoproteinAgPresenceInTissueByImmuneStain = "10459-6";
 
     /// <summary>
+    /// Literal for code: NONEAlpha1FetoproteinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEAlpha1FetoproteinAgPresenceInTissueByImmuneStain = "http://loinc.org#10459-6";
+
+    /// <summary>
     /// Literal for code: HNOSAbPresenceInSerumOrPlasmaFromDonor
     /// </summary>
     public const string LiteralHNOSAbPresenceInSerumOrPlasmaFromDonor = "1046-2";
+
+    /// <summary>
+    /// Literal for code: NONEHNOSAbPresenceInSerumOrPlasmaFromDonor
+    /// </summary>
+    public const string LiteralNONEHNOSAbPresenceInSerumOrPlasmaFromDonor = "http://loinc.org#1046-2";
 
     /// <summary>
     /// Literal for code: LactalbuminAlphaAgPresenceInTissueByImmuneStain
@@ -11588,9 +14158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLactalbuminAlphaAgPresenceInTissueByImmuneStain = "10460-4";
 
     /// <summary>
+    /// Literal for code: NONELactalbuminAlphaAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONELactalbuminAlphaAgPresenceInTissueByImmuneStain = "http://loinc.org#10460-4";
+
+    /// <summary>
     /// Literal for code: Alpha1AntichymotrypsinAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralAlpha1AntichymotrypsinAgPresenceInTissueByImmuneStain = "10461-2";
+
+    /// <summary>
+    /// Literal for code: NONEAlpha1AntichymotrypsinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEAlpha1AntichymotrypsinAgPresenceInTissueByImmuneStain = "http://loinc.org#10461-2";
 
     /// <summary>
     /// Literal for code: Alpha1AntitrypsinAgPresenceInTissueByImmuneStain
@@ -11598,9 +14178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlpha1AntitrypsinAgPresenceInTissueByImmuneStain = "10462-0";
 
     /// <summary>
+    /// Literal for code: NONEAlpha1AntitrypsinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEAlpha1AntitrypsinAgPresenceInTissueByImmuneStain = "http://loinc.org#10462-0";
+
+    /// <summary>
     /// Literal for code: AmyloidAComponentAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralAmyloidAComponentAgPresenceInTissueByImmuneStain = "10463-8";
+
+    /// <summary>
+    /// Literal for code: NONEAmyloidAComponentAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEAmyloidAComponentAgPresenceInTissueByImmuneStain = "http://loinc.org#10463-8";
 
     /// <summary>
     /// Literal for code: AmyloidPComponentAgPresenceInTissueByImmuneStain
@@ -11608,9 +14198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAmyloidPComponentAgPresenceInTissueByImmuneStain = "10464-6";
 
     /// <summary>
+    /// Literal for code: NONEAmyloidPComponentAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEAmyloidPComponentAgPresenceInTissueByImmuneStain = "http://loinc.org#10464-6";
+
+    /// <summary>
     /// Literal for code: AmyloidPrealbuminAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralAmyloidPrealbuminAgPresenceInTissueByImmuneStain = "10465-3";
+
+    /// <summary>
+    /// Literal for code: NONEAmyloidPrealbuminAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEAmyloidPrealbuminAgPresenceInTissueByImmuneStain = "http://loinc.org#10465-3";
 
     /// <summary>
     /// Literal for code: AnionGap3InSerumOrPlasma
@@ -11618,9 +14218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnionGap3InSerumOrPlasma = "10466-1";
 
     /// <summary>
+    /// Literal for code: NONEAnionGap3InSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEAnionGap3InSerumOrPlasma = "http://loinc.org#10466-1";
+
+    /// <summary>
     /// Literal for code: Beta2MicroglobulinAmyloidAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralBeta2MicroglobulinAmyloidAgPresenceInTissueByImmuneStain = "10467-9";
+
+    /// <summary>
+    /// Literal for code: NONEBeta2MicroglobulinAmyloidAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEBeta2MicroglobulinAmyloidAgPresenceInTissueByImmuneStain = "http://loinc.org#10467-9";
 
     /// <summary>
     /// Literal for code: CalcitoninAgPresenceInTissueByImmuneStain
@@ -11628,9 +14238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCalcitoninAgPresenceInTissueByImmuneStain = "10468-7";
 
     /// <summary>
+    /// Literal for code: NONECalcitoninAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECalcitoninAgPresenceInTissueByImmuneStain = "http://loinc.org#10468-7";
+
+    /// <summary>
     /// Literal for code: CarcinoembryonicAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralCarcinoembryonicAgPresenceInTissueByImmuneStain = "10469-5";
+
+    /// <summary>
+    /// Literal for code: NONECarcinoembryonicAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECarcinoembryonicAgPresenceInTissueByImmuneStain = "http://loinc.org#10469-5";
 
     /// <summary>
     /// Literal for code: HNOSAbPresenceInSerumOrPlasma
@@ -11638,9 +14258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHNOSAbPresenceInSerumOrPlasma = "1047-0";
 
     /// <summary>
+    /// Literal for code: NONEHNOSAbPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEHNOSAbPresenceInSerumOrPlasma = "http://loinc.org#1047-0";
+
+    /// <summary>
     /// Literal for code: ChoriogonadotropinAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralChoriogonadotropinAgPresenceInTissueByImmuneStain = "10470-3";
+
+    /// <summary>
+    /// Literal for code: NONEChoriogonadotropinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEChoriogonadotropinAgPresenceInTissueByImmuneStain = "http://loinc.org#10470-3";
 
     /// <summary>
     /// Literal for code: ChromograninAAgPresenceInTissueByImmuneStain
@@ -11648,9 +14278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChromograninAAgPresenceInTissueByImmuneStain = "10471-1";
 
     /// <summary>
+    /// Literal for code: NONEChromograninAAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEChromograninAAgPresenceInTissueByImmuneStain = "http://loinc.org#10471-1";
+
+    /// <summary>
     /// Literal for code: ChromograninAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralChromograninAgPresenceInTissueByImmuneStain = "10472-9";
+
+    /// <summary>
+    /// Literal for code: NONEChromograninAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEChromograninAgPresenceInTissueByImmuneStain = "http://loinc.org#10472-9";
 
     /// <summary>
     /// Literal for code: ChymotrypsinAgPresenceInTissueByImmuneStain
@@ -11658,9 +14298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChymotrypsinAgPresenceInTissueByImmuneStain = "10473-7";
 
     /// <summary>
+    /// Literal for code: NONEChymotrypsinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEChymotrypsinAgPresenceInTissueByImmuneStain = "http://loinc.org#10473-7";
+
+    /// <summary>
     /// Literal for code: CollagenType4AgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralCollagenType4AgPresenceInTissueByImmuneStain = "10474-5";
+
+    /// <summary>
+    /// Literal for code: NONECollagenType4AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECollagenType4AgPresenceInTissueByImmuneStain = "http://loinc.org#10474-5";
 
     /// <summary>
     /// Literal for code: CorticotropinAgPresenceInTissueByImmuneStain
@@ -11668,9 +14318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCorticotropinAgPresenceInTissueByImmuneStain = "10475-2";
 
     /// <summary>
+    /// Literal for code: NONECorticotropinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECorticotropinAgPresenceInTissueByImmuneStain = "http://loinc.org#10475-2";
+
+    /// <summary>
     /// Literal for code: DesminAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralDesminAgPresenceInTissueByImmuneStain = "10476-0";
+
+    /// <summary>
+    /// Literal for code: NONEDesminAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEDesminAgPresenceInTissueByImmuneStain = "http://loinc.org#10476-0";
 
     /// <summary>
     /// Literal for code: EnolaseNeuronSpecificAgPresenceInTissueByImmuneStain
@@ -11678,9 +14338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEnolaseNeuronSpecificAgPresenceInTissueByImmuneStain = "10477-8";
 
     /// <summary>
+    /// Literal for code: NONEEnolaseNeuronSpecificAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEEnolaseNeuronSpecificAgPresenceInTissueByImmuneStain = "http://loinc.org#10477-8";
+
+    /// <summary>
     /// Literal for code: EosinophilMajorBasicProteinAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralEosinophilMajorBasicProteinAgPresenceInTissueByImmuneStain = "10478-6";
+
+    /// <summary>
+    /// Literal for code: NONEEosinophilMajorBasicProteinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEEosinophilMajorBasicProteinAgPresenceInTissueByImmuneStain = "http://loinc.org#10478-6";
 
     /// <summary>
     /// Literal for code: CD227AgPresenceInTissueByImmuneStain
@@ -11688,9 +14358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCD227AgPresenceInTissueByImmuneStain = "10479-4";
 
     /// <summary>
+    /// Literal for code: NONECD227AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECD227AgPresenceInTissueByImmuneStain = "http://loinc.org#10479-4";
+
+    /// <summary>
     /// Literal for code: HNOSAgPresenceOnRedBloodCellsFromBloodProductUnit
     /// </summary>
     public const string LiteralHNOSAgPresenceOnRedBloodCellsFromBloodProductUnit = "1048-8";
+
+    /// <summary>
+    /// Literal for code: NONEHNOSAgPresenceOnRedBloodCellsFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEHNOSAgPresenceOnRedBloodCellsFromBloodProductUnit = "http://loinc.org#1048-8";
 
     /// <summary>
     /// Literal for code: EstrogenPlusProgesteroneReceptorAgPresenceInTissueByImmuneStain
@@ -11698,9 +14378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEstrogenPlusProgesteroneReceptorAgPresenceInTissueByImmuneStain = "10480-2";
 
     /// <summary>
+    /// Literal for code: NONEEstrogenPlusProgesteroneReceptorAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEEstrogenPlusProgesteroneReceptorAgPresenceInTissueByImmuneStain = "http://loinc.org#10480-2";
+
+    /// <summary>
     /// Literal for code: FollitropinAlphaSubunitAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralFollitropinAlphaSubunitAgPresenceInTissueByImmuneStain = "10481-0";
+
+    /// <summary>
+    /// Literal for code: NONEFollitropinAlphaSubunitAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEFollitropinAlphaSubunitAgPresenceInTissueByImmuneStain = "http://loinc.org#10481-0";
 
     /// <summary>
     /// Literal for code: FollitropinBetaSubunitAgPresenceInTissueByImmuneStain
@@ -11708,9 +14398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFollitropinBetaSubunitAgPresenceInTissueByImmuneStain = "10482-8";
 
     /// <summary>
+    /// Literal for code: NONEFollitropinBetaSubunitAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEFollitropinBetaSubunitAgPresenceInTissueByImmuneStain = "http://loinc.org#10482-8";
+
+    /// <summary>
     /// Literal for code: GastrinAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralGastrinAgPresenceInTissueByImmuneStain = "10483-6";
+
+    /// <summary>
+    /// Literal for code: NONEGastrinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEGastrinAgPresenceInTissueByImmuneStain = "http://loinc.org#10483-6";
 
     /// <summary>
     /// Literal for code: GlialFibrillaryAcidicProteinAgPresenceInTissueByImmuneStain
@@ -11718,9 +14418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGlialFibrillaryAcidicProteinAgPresenceInTissueByImmuneStain = "10484-4";
 
     /// <summary>
+    /// Literal for code: NONEGlialFibrillaryAcidicProteinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEGlialFibrillaryAcidicProteinAgPresenceInTissueByImmuneStain = "http://loinc.org#10484-4";
+
+    /// <summary>
     /// Literal for code: GlucagonAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralGlucagonAgPresenceInTissueByImmuneStain = "10485-1";
+
+    /// <summary>
+    /// Literal for code: NONEGlucagonAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEGlucagonAgPresenceInTissueByImmuneStain = "http://loinc.org#10485-1";
 
     /// <summary>
     /// Literal for code: HemoglobinAgPresenceInTissueByImmuneStain
@@ -11728,9 +14438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHemoglobinAgPresenceInTissueByImmuneStain = "10486-9";
 
     /// <summary>
+    /// Literal for code: NONEHemoglobinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEHemoglobinAgPresenceInTissueByImmuneStain = "http://loinc.org#10486-9";
+
+    /// <summary>
     /// Literal for code: HMB45AgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralHMB45AgPresenceInTissueByImmuneStain = "10487-7";
+
+    /// <summary>
+    /// Literal for code: NONEHMB45AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEHMB45AgPresenceInTissueByImmuneStain = "http://loinc.org#10487-7";
 
     /// <summary>
     /// Literal for code: IgAAgPresenceInTissueByImmuneStain
@@ -11738,9 +14458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIgAAgPresenceInTissueByImmuneStain = "10488-5";
 
     /// <summary>
+    /// Literal for code: NONEIgAAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEIgAAgPresenceInTissueByImmuneStain = "http://loinc.org#10488-5";
+
+    /// <summary>
     /// Literal for code: IgAHeavyChainAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralIgAHeavyChainAgPresenceInTissueByImmuneStain = "10489-3";
+
+    /// <summary>
+    /// Literal for code: NONEIgAHeavyChainAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEIgAHeavyChainAgPresenceInTissueByImmuneStain = "http://loinc.org#10489-3";
 
     /// <summary>
     /// Literal for code: HNOSAgPresenceOnRedBloodCellsFromDonor
@@ -11748,9 +14478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHNOSAgPresenceOnRedBloodCellsFromDonor = "1049-6";
 
     /// <summary>
+    /// Literal for code: NONEHNOSAgPresenceOnRedBloodCellsFromDonor
+    /// </summary>
+    public const string LiteralNONEHNOSAgPresenceOnRedBloodCellsFromDonor = "http://loinc.org#1049-6";
+
+    /// <summary>
     /// Literal for code: IgEAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralIgEAgPresenceInTissueByImmuneStain = "10490-1";
+
+    /// <summary>
+    /// Literal for code: NONEIgEAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEIgEAgPresenceInTissueByImmuneStain = "http://loinc.org#10490-1";
 
     /// <summary>
     /// Literal for code: IgGAgPresenceInTissueByImmuneStain
@@ -11758,9 +14498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIgGAgPresenceInTissueByImmuneStain = "10491-9";
 
     /// <summary>
+    /// Literal for code: NONEIgGAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEIgGAgPresenceInTissueByImmuneStain = "http://loinc.org#10491-9";
+
+    /// <summary>
     /// Literal for code: IgGHeavyChainAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralIgGHeavyChainAgPresenceInTissueByImmuneStain = "10492-7";
+
+    /// <summary>
+    /// Literal for code: NONEIgGHeavyChainAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEIgGHeavyChainAgPresenceInTissueByImmuneStain = "http://loinc.org#10492-7";
 
     /// <summary>
     /// Literal for code: IgMAgPresenceInTissueByImmuneStain
@@ -11768,9 +14518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIgMAgPresenceInTissueByImmuneStain = "10493-5";
 
     /// <summary>
+    /// Literal for code: NONEIgMAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEIgMAgPresenceInTissueByImmuneStain = "http://loinc.org#10493-5";
+
+    /// <summary>
     /// Literal for code: IgMHeavyChainAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralIgMHeavyChainAgPresenceInTissueByImmuneStain = "10494-3";
+
+    /// <summary>
+    /// Literal for code: NONEIgMHeavyChainAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEIgMHeavyChainAgPresenceInTissueByImmuneStain = "http://loinc.org#10494-3";
 
     /// <summary>
     /// Literal for code: InsulinAgPresenceInTissueByImmuneStain
@@ -11778,9 +14538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInsulinAgPresenceInTissueByImmuneStain = "10495-0";
 
     /// <summary>
+    /// Literal for code: NONEInsulinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEInsulinAgPresenceInTissueByImmuneStain = "http://loinc.org#10495-0";
+
+    /// <summary>
     /// Literal for code: KappaLightChainsAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralKappaLightChainsAgPresenceInTissueByImmuneStain = "10496-8";
+
+    /// <summary>
+    /// Literal for code: NONEKappaLightChainsAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEKappaLightChainsAgPresenceInTissueByImmuneStain = "http://loinc.org#10496-8";
 
     /// <summary>
     /// Literal for code: ImmunoglobulinLightChainsKappaAmyloidAgPresenceInTissueByImmuneStain
@@ -11788,9 +14558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImmunoglobulinLightChainsKappaAmyloidAgPresenceInTissueByImmuneStain = "10497-6";
 
     /// <summary>
+    /// Literal for code: NONEImmunoglobulinLightChainsKappaAmyloidAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEImmunoglobulinLightChainsKappaAmyloidAgPresenceInTissueByImmuneStain = "http://loinc.org#10497-6";
+
+    /// <summary>
     /// Literal for code: KeratinAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralKeratinAgPresenceInTissueByImmuneStain = "10498-4";
+
+    /// <summary>
+    /// Literal for code: NONEKeratinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEKeratinAgPresenceInTissueByImmuneStain = "http://loinc.org#10498-4";
 
     /// <summary>
     /// Literal for code: LambdaLightChainsAgPresenceInTissueByImmuneStain
@@ -11798,9 +14578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLambdaLightChainsAgPresenceInTissueByImmuneStain = "10499-2";
 
     /// <summary>
+    /// Literal for code: NONELambdaLightChainsAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONELambdaLightChainsAgPresenceInTissueByImmuneStain = "http://loinc.org#10499-2";
+
+    /// <summary>
     /// Literal for code: CeforanideSusceptibilityByDiskDiffusionKB
     /// </summary>
     public const string LiteralCeforanideSusceptibilityByDiskDiffusionKB = "105-7";
+
+    /// <summary>
+    /// Literal for code: NONECeforanideSusceptibilityByDiskDiffusionKB
+    /// </summary>
+    public const string LiteralNONECeforanideSusceptibilityByDiskDiffusionKB = "http://loinc.org#105-7";
 
     /// <summary>
     /// Literal for code: HNOSAgPresenceOnRedBloodCells
@@ -11808,9 +14598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHNOSAgPresenceOnRedBloodCells = "1050-4";
 
     /// <summary>
+    /// Literal for code: NONEHNOSAgPresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEHNOSAgPresenceOnRedBloodCells = "http://loinc.org#1050-4";
+
+    /// <summary>
     /// Literal for code: ImmunoglobulinLightChainsLambdaAmyloidAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralImmunoglobulinLightChainsLambdaAmyloidAgPresenceInTissueByImmuneStain = "10500-7";
+
+    /// <summary>
+    /// Literal for code: NONEImmunoglobulinLightChainsLambdaAmyloidAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEImmunoglobulinLightChainsLambdaAmyloidAgPresenceInTissueByImmuneStain = "http://loinc.org#10500-7";
 
     /// <summary>
     /// Literal for code: LutropinUnitsVolumeInSerumOrPlasma
@@ -11818,9 +14618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLutropinUnitsVolumeInSerumOrPlasma = "10501-5";
 
     /// <summary>
+    /// Literal for code: NONELutropinUnitsVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONELutropinUnitsVolumeInSerumOrPlasma = "http://loinc.org#10501-5";
+
+    /// <summary>
     /// Literal for code: LutropinAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralLutropinAgPresenceInTissueByImmuneStain = "10502-3";
+
+    /// <summary>
+    /// Literal for code: NONELutropinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONELutropinAgPresenceInTissueByImmuneStain = "http://loinc.org#10502-3";
 
     /// <summary>
     /// Literal for code: LysozymeAgPresenceInTissueByImmuneStain
@@ -11828,9 +14638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLysozymeAgPresenceInTissueByImmuneStain = "10503-1";
 
     /// <summary>
+    /// Literal for code: NONELysozymeAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONELysozymeAgPresenceInTissueByImmuneStain = "http://loinc.org#10503-1";
+
+    /// <summary>
     /// Literal for code: MyelinBasicProteinAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralMyelinBasicProteinAgPresenceInTissueByImmuneStain = "10504-9";
+
+    /// <summary>
+    /// Literal for code: NONEMyelinBasicProteinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEMyelinBasicProteinAgPresenceInTissueByImmuneStain = "http://loinc.org#10504-9";
 
     /// <summary>
     /// Literal for code: MyoglobinAgPresenceInTissueByImmuneStain
@@ -11838,9 +14658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMyoglobinAgPresenceInTissueByImmuneStain = "10505-6";
 
     /// <summary>
+    /// Literal for code: NONEMyoglobinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEMyoglobinAgPresenceInTissueByImmuneStain = "http://loinc.org#10505-6";
+
+    /// <summary>
     /// Literal for code: PeanutAgglutininAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralPeanutAgglutininAgPresenceInTissueByImmuneStain = "10506-4";
+
+    /// <summary>
+    /// Literal for code: NONEPeanutAgglutininAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEPeanutAgglutininAgPresenceInTissueByImmuneStain = "http://loinc.org#10506-4";
 
     /// <summary>
     /// Literal for code: ProlactinAgPresenceInTissueByImmuneStain
@@ -11848,9 +14678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProlactinAgPresenceInTissueByImmuneStain = "10507-2";
 
     /// <summary>
+    /// Literal for code: NONEProlactinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEProlactinAgPresenceInTissueByImmuneStain = "http://loinc.org#10507-2";
+
+    /// <summary>
     /// Literal for code: ProstateSpecificAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralProstateSpecificAgPresenceInTissueByImmuneStain = "10508-0";
+
+    /// <summary>
+    /// Literal for code: NONEProstateSpecificAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEProstateSpecificAgPresenceInTissueByImmuneStain = "http://loinc.org#10508-0";
 
     /// <summary>
     /// Literal for code: ProstaticAcidPhosphataseAgPresenceInTissueByImmuneStain
@@ -11858,9 +14698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProstaticAcidPhosphataseAgPresenceInTissueByImmuneStain = "10509-8";
 
     /// <summary>
+    /// Literal for code: NONEProstaticAcidPhosphataseAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEProstaticAcidPhosphataseAgPresenceInTissueByImmuneStain = "http://loinc.org#10509-8";
+
+    /// <summary>
     /// Literal for code: HemolyticDiseaseOfNewbornScreenInterpretationInBlood
     /// </summary>
     public const string LiteralHemolyticDiseaseOfNewbornScreenInterpretationInBlood = "1051-2";
+
+    /// <summary>
+    /// Literal for code: NONEHemolyticDiseaseOfNewbornScreenInterpretationInBlood
+    /// </summary>
+    public const string LiteralNONEHemolyticDiseaseOfNewbornScreenInterpretationInBlood = "http://loinc.org#1051-2";
 
     /// <summary>
     /// Literal for code: S100AgAgPresenceInTissueByImmuneStain
@@ -11868,9 +14718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralS100AgAgPresenceInTissueByImmuneStain = "10510-6";
 
     /// <summary>
+    /// Literal for code: NONES100AgAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONES100AgAgPresenceInTissueByImmuneStain = "http://loinc.org#10510-6";
+
+    /// <summary>
     /// Literal for code: SerotoninAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralSerotoninAgPresenceInTissueByImmuneStain = "10511-4";
+
+    /// <summary>
+    /// Literal for code: NONESerotoninAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONESerotoninAgPresenceInTissueByImmuneStain = "http://loinc.org#10511-4";
 
     /// <summary>
     /// Literal for code: SomatostatinAgPresenceInTissueByImmuneStain
@@ -11878,9 +14738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSomatostatinAgPresenceInTissueByImmuneStain = "10512-2";
 
     /// <summary>
+    /// Literal for code: NONESomatostatinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONESomatostatinAgPresenceInTissueByImmuneStain = "http://loinc.org#10512-2";
+
+    /// <summary>
     /// Literal for code: SomatotropinAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralSomatotropinAgPresenceInTissueByImmuneStain = "10513-0";
+
+    /// <summary>
+    /// Literal for code: NONESomatotropinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONESomatotropinAgPresenceInTissueByImmuneStain = "http://loinc.org#10513-0";
 
     /// <summary>
     /// Literal for code: SynaptophysinAgPresenceInTissueByImmuneStain
@@ -11888,9 +14758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSynaptophysinAgPresenceInTissueByImmuneStain = "10514-8";
 
     /// <summary>
+    /// Literal for code: NONESynaptophysinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONESynaptophysinAgPresenceInTissueByImmuneStain = "http://loinc.org#10514-8";
+
+    /// <summary>
     /// Literal for code: ThyroglobulinAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralThyroglobulinAgPresenceInTissueByImmuneStain = "10515-5";
+
+    /// <summary>
+    /// Literal for code: NONEThyroglobulinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEThyroglobulinAgPresenceInTissueByImmuneStain = "http://loinc.org#10515-5";
 
     /// <summary>
     /// Literal for code: ThyrotropinAgPresenceInTissueByImmuneStain
@@ -11898,9 +14778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThyrotropinAgPresenceInTissueByImmuneStain = "10516-3";
 
     /// <summary>
+    /// Literal for code: NONEThyrotropinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEThyrotropinAgPresenceInTissueByImmuneStain = "http://loinc.org#10516-3";
+
+    /// <summary>
     /// Literal for code: TrypsinAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralTrypsinAgPresenceInTissueByImmuneStain = "10517-1";
+
+    /// <summary>
+    /// Literal for code: NONETrypsinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONETrypsinAgPresenceInTissueByImmuneStain = "http://loinc.org#10517-1";
 
     /// <summary>
     /// Literal for code: UlexEuropaeusILectinAgPresenceInTissueByImmuneStain
@@ -11908,9 +14798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUlexEuropaeusILectinAgPresenceInTissueByImmuneStain = "10518-9";
 
     /// <summary>
+    /// Literal for code: NONEUlexEuropaeusILectinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEUlexEuropaeusILectinAgPresenceInTissueByImmuneStain = "http://loinc.org#10518-9";
+
+    /// <summary>
     /// Literal for code: VimentinAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralVimentinAgPresenceInTissueByImmuneStain = "10519-7";
+
+    /// <summary>
+    /// Literal for code: NONEVimentinAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEVimentinAgPresenceInTissueByImmuneStain = "http://loinc.org#10519-7";
 
     /// <summary>
     /// Literal for code: DeprecatedIIntermediateSubtypePresenceInSerumOrPlasmaFromBloodProductUnit
@@ -11918,9 +14818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedIIntermediateSubtypePresenceInSerumOrPlasmaFromBloodProductUnit = "1052-0";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedIIntermediateSubtypePresenceInSerumOrPlasmaFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEDeprecatedIIntermediateSubtypePresenceInSerumOrPlasmaFromBloodProductUnit = "http://loinc.org#1052-0";
+
+    /// <summary>
     /// Literal for code: CoagulationFactorVIAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralCoagulationFactorVIAgPresenceInTissueByImmuneStain = "10520-5";
+
+    /// <summary>
+    /// Literal for code: NONECoagulationFactorVIAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECoagulationFactorVIAgPresenceInTissueByImmuneStain = "http://loinc.org#10520-5";
 
     /// <summary>
     /// Literal for code: CoagulationFactorVIIIAgPresenceInTissueByImmuneStain
@@ -11928,9 +14838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoagulationFactorVIIIAgPresenceInTissueByImmuneStain = "10521-3";
 
     /// <summary>
+    /// Literal for code: NONECoagulationFactorVIIIAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECoagulationFactorVIIIAgPresenceInTissueByImmuneStain = "http://loinc.org#10521-3";
+
+    /// <summary>
     /// Literal for code: CoagulationFactorXIIIAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralCoagulationFactorXIIIAgPresenceInTissueByImmuneStain = "10522-1";
+
+    /// <summary>
+    /// Literal for code: NONECoagulationFactorXIIIAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECoagulationFactorXIIIAgPresenceInTissueByImmuneStain = "http://loinc.org#10522-1";
 
     /// <summary>
     /// Literal for code: FibrinogenAgPresenceInTissueByImmuneStain
@@ -11938,9 +14858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFibrinogenAgPresenceInTissueByImmuneStain = "10523-9";
 
     /// <summary>
+    /// Literal for code: NONEFibrinogenAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEFibrinogenAgPresenceInTissueByImmuneStain = "http://loinc.org#10523-9";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInCervixByCytoStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInCervixByCytoStain = "10524-7";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInCervixByCytoStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInCervixByCytoStain = "http://loinc.org#10524-7";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInUnspecifiedSpecimenByCytoStain
@@ -11948,9 +14878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInUnspecifiedSpecimenByCytoStain = "10525-4";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInUnspecifiedSpecimenByCytoStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInUnspecifiedSpecimenByCytoStain = "http://loinc.org#10525-4";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInSputumByCytoStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInSputumByCytoStain = "10526-2";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInSputumByCytoStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInSputumByCytoStain = "http://loinc.org#10526-2";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByCytoStain
@@ -11958,9 +14898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByCytoStain = "10527-0";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByCytoStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByCytoStain = "http://loinc.org#10527-0";
+
+    /// <summary>
     /// Literal for code: AcetophenazineMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralAcetophenazineMassVolumeInSerumOrPlasma = "10528-8";
+
+    /// <summary>
+    /// Literal for code: NONEAcetophenazineMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEAcetophenazineMassVolumeInSerumOrPlasma = "http://loinc.org#10528-8";
 
     /// <summary>
     /// Literal for code: AmoxapineMetaboliteMassVolumeInSerumOrPlasma
@@ -11968,9 +14918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAmoxapineMetaboliteMassVolumeInSerumOrPlasma = "10529-6";
 
     /// <summary>
+    /// Literal for code: NONEAmoxapineMetaboliteMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEAmoxapineMetaboliteMassVolumeInSerumOrPlasma = "http://loinc.org#10529-6";
+
+    /// <summary>
     /// Literal for code: DeprecatedIIntermediateSubtypePresenceInSerumOrPlasmaFromDonor
     /// </summary>
     public const string LiteralDeprecatedIIntermediateSubtypePresenceInSerumOrPlasmaFromDonor = "1053-8";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedIIntermediateSubtypePresenceInSerumOrPlasmaFromDonor
+    /// </summary>
+    public const string LiteralNONEDeprecatedIIntermediateSubtypePresenceInSerumOrPlasmaFromDonor = "http://loinc.org#1053-8";
 
     /// <summary>
     /// Literal for code: AprobarbitalMassVolumeInSerumOrPlasma
@@ -11978,9 +14938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAprobarbitalMassVolumeInSerumOrPlasma = "10530-4";
 
     /// <summary>
+    /// Literal for code: NONEAprobarbitalMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEAprobarbitalMassVolumeInSerumOrPlasma = "http://loinc.org#10530-4";
+
+    /// <summary>
     /// Literal for code: BretyliumMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralBretyliumMassVolumeInSerumOrPlasma = "10531-2";
+
+    /// <summary>
+    /// Literal for code: NONEBretyliumMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEBretyliumMassVolumeInSerumOrPlasma = "http://loinc.org#10531-2";
 
     /// <summary>
     /// Literal for code: DeprecatedDesethylamiodaroneMassVolumeInSerumOrPlasma
@@ -11988,9 +14958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedDesethylamiodaroneMassVolumeInSerumOrPlasma = "10532-0";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedDesethylamiodaroneMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEDeprecatedDesethylamiodaroneMassVolumeInSerumOrPlasma = "http://loinc.org#10532-0";
+
+    /// <summary>
     /// Literal for code: PropoxyphenePlusAcetaminophenMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralPropoxyphenePlusAcetaminophenMassVolumeInSerumOrPlasma = "10533-8";
+
+    /// <summary>
+    /// Literal for code: NONEPropoxyphenePlusAcetaminophenMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEPropoxyphenePlusAcetaminophenMassVolumeInSerumOrPlasma = "http://loinc.org#10533-8";
 
     /// <summary>
     /// Literal for code: DiazoxideMassVolumeInSerumOrPlasma
@@ -11998,9 +14978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiazoxideMassVolumeInSerumOrPlasma = "10534-6";
 
     /// <summary>
+    /// Literal for code: NONEDiazoxideMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEDiazoxideMassVolumeInSerumOrPlasma = "http://loinc.org#10534-6";
+
+    /// <summary>
     /// Literal for code: DigoxinMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralDigoxinMassVolumeInSerumOrPlasma = "10535-3";
+
+    /// <summary>
+    /// Literal for code: NONEDigoxinMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEDigoxinMassVolumeInSerumOrPlasma = "http://loinc.org#10535-3";
 
     /// <summary>
     /// Literal for code: DipyridamoleMassVolumeInSerumOrPlasma
@@ -12008,9 +14998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDipyridamoleMassVolumeInSerumOrPlasma = "10536-1";
 
     /// <summary>
+    /// Literal for code: NONEDipyridamoleMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEDipyridamoleMassVolumeInSerumOrPlasma = "http://loinc.org#10536-1";
+
+    /// <summary>
     /// Literal for code: DeprecatedDoxepinPlusNordoxepinMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralDeprecatedDoxepinPlusNordoxepinMassVolumeInSerumOrPlasma = "10537-9";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedDoxepinPlusNordoxepinMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEDeprecatedDoxepinPlusNordoxepinMassVolumeInSerumOrPlasma = "http://loinc.org#10537-9";
 
     /// <summary>
     /// Literal for code: DeprecatedFluoxetinePlusNorfluoxetineMassVolumeInSerumOrPlasma
@@ -12018,9 +15018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedFluoxetinePlusNorfluoxetineMassVolumeInSerumOrPlasma = "10538-7";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedFluoxetinePlusNorfluoxetineMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEDeprecatedFluoxetinePlusNorfluoxetineMassVolumeInSerumOrPlasma = "http://loinc.org#10538-7";
+
+    /// <summary>
     /// Literal for code: GlipizideMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralGlipizideMassVolumeInSerumOrPlasma = "10539-5";
+
+    /// <summary>
+    /// Literal for code: NONEGlipizideMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEGlipizideMassVolumeInSerumOrPlasma = "http://loinc.org#10539-5";
 
     /// <summary>
     /// Literal for code: DeprecatedIIntermediateSubtypePresenceInSrum
@@ -12028,9 +15038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedIIntermediateSubtypePresenceInSrum = "1054-6";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedIIntermediateSubtypePresenceInSrum
+    /// </summary>
+    public const string LiteralNONEDeprecatedIIntermediateSubtypePresenceInSrum = "http://loinc.org#1054-6";
+
+    /// <summary>
     /// Literal for code: GlyburideMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralGlyburideMassVolumeInSerumOrPlasma = "10540-3";
+
+    /// <summary>
+    /// Literal for code: NONEGlyburideMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEGlyburideMassVolumeInSerumOrPlasma = "http://loinc.org#10540-3";
 
     /// <summary>
     /// Literal for code: MepivacaineMassVolumeInSerumOrPlasma
@@ -12038,9 +15058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMepivacaineMassVolumeInSerumOrPlasma = "10541-1";
 
     /// <summary>
+    /// Literal for code: NONEMepivacaineMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEMepivacaineMassVolumeInSerumOrPlasma = "http://loinc.org#10541-1";
+
+    /// <summary>
     /// Literal for code: MetharbitalMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralMetharbitalMassVolumeInSerumOrPlasma = "10542-9";
+
+    /// <summary>
+    /// Literal for code: NONEMetharbitalMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEMetharbitalMassVolumeInSerumOrPlasma = "http://loinc.org#10542-9";
 
     /// <summary>
     /// Literal for code: MethsuximidePlusNormethsuximideMassVolumeInSerumOrPlasma
@@ -12048,9 +15078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMethsuximidePlusNormethsuximideMassVolumeInSerumOrPlasma = "10543-7";
 
     /// <summary>
+    /// Literal for code: NONEMethsuximidePlusNormethsuximideMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEMethsuximidePlusNormethsuximideMassVolumeInSerumOrPlasma = "http://loinc.org#10543-7";
+
+    /// <summary>
     /// Literal for code: NormeperidinePresenceInSerumOrPlasma
     /// </summary>
     public const string LiteralNormeperidinePresenceInSerumOrPlasma = "10544-5";
+
+    /// <summary>
+    /// Literal for code: NONENormeperidinePresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONENormeperidinePresenceInSerumOrPlasma = "http://loinc.org#10544-5";
 
     /// <summary>
     /// Literal for code: NormephenytoinMassVolumeInSerumOrPlasma
@@ -12058,9 +15098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNormephenytoinMassVolumeInSerumOrPlasma = "10545-2";
 
     /// <summary>
+    /// Literal for code: NONENormephenytoinMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONENormephenytoinMassVolumeInSerumOrPlasma = "http://loinc.org#10545-2";
+
+    /// <summary>
     /// Literal for code: NormethsuximideMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralNormethsuximideMassVolumeInSerumOrPlasma = "10546-0";
+
+    /// <summary>
+    /// Literal for code: NONENormethsuximideMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONENormethsuximideMassVolumeInSerumOrPlasma = "http://loinc.org#10546-0";
 
     /// <summary>
     /// Literal for code: PrimidonePlusPhenobarbitalMassVolumeInSerumOrPlasma
@@ -12068,9 +15118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrimidonePlusPhenobarbitalMassVolumeInSerumOrPlasma = "10547-8";
 
     /// <summary>
+    /// Literal for code: NONEPrimidonePlusPhenobarbitalMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEPrimidonePlusPhenobarbitalMassVolumeInSerumOrPlasma = "http://loinc.org#10547-8";
+
+    /// <summary>
     /// Literal for code: PhenytoinFreePhenytoinTotalInSerumOrPlasma
     /// </summary>
     public const string LiteralPhenytoinFreePhenytoinTotalInSerumOrPlasma = "10548-6";
+
+    /// <summary>
+    /// Literal for code: NONEPhenytoinFreePhenytoinTotalInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEPhenytoinFreePhenytoinTotalInSerumOrPlasma = "http://loinc.org#10548-6";
 
     /// <summary>
     /// Literal for code: PirmenolMassVolumeInSerumOrPlasma
@@ -12078,9 +15138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPirmenolMassVolumeInSerumOrPlasma = "10549-4";
 
     /// <summary>
+    /// Literal for code: NONEPirmenolMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEPirmenolMassVolumeInSerumOrPlasma = "http://loinc.org#10549-4";
+
+    /// <summary>
     /// Literal for code: DeprecatedIIntermediateSubtypePresenceOnRedBloodCellsFromBloodProductUnit
     /// </summary>
     public const string LiteralDeprecatedIIntermediateSubtypePresenceOnRedBloodCellsFromBloodProductUnit = "1055-3";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedIIntermediateSubtypePresenceOnRedBloodCellsFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEDeprecatedIIntermediateSubtypePresenceOnRedBloodCellsFromBloodProductUnit = "http://loinc.org#1055-3";
 
     /// <summary>
     /// Literal for code: DeprecatedTemazepamMassVolumeInSerumOrPlasma
@@ -12088,9 +15158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedTemazepamMassVolumeInSerumOrPlasma = "10550-2";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedTemazepamMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEDeprecatedTemazepamMassVolumeInSerumOrPlasma = "http://loinc.org#10550-2";
+
+    /// <summary>
     /// Literal for code: TriamtereneMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralTriamtereneMassVolumeInSerumOrPlasma = "10551-0";
+
+    /// <summary>
+    /// Literal for code: NONETriamtereneMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONETriamtereneMassVolumeInSerumOrPlasma = "http://loinc.org#10551-0";
 
     /// <summary>
     /// Literal for code: TricyclicAntidepressantsMassVolumeInSerumOrPlasma
@@ -12098,9 +15178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTricyclicAntidepressantsMassVolumeInSerumOrPlasma = "10552-8";
 
     /// <summary>
+    /// Literal for code: NONETricyclicAntidepressantsMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONETricyclicAntidepressantsMassVolumeInSerumOrPlasma = "http://loinc.org#10552-8";
+
+    /// <summary>
     /// Literal for code: ProstaticAcidPhosphataseEnzymaticActivityVolumeInGenitalFluid
     /// </summary>
     public const string LiteralProstaticAcidPhosphataseEnzymaticActivityVolumeInGenitalFluid = "10553-6";
+
+    /// <summary>
+    /// Literal for code: NONEProstaticAcidPhosphataseEnzymaticActivityVolumeInGenitalFluid
+    /// </summary>
+    public const string LiteralNONEProstaticAcidPhosphataseEnzymaticActivityVolumeInGenitalFluid = "http://loinc.org#10553-6";
 
     /// <summary>
     /// Literal for code: DeprecatedProstaticAcidPhosphataseEnzymaticActivityVolumeInSeminalPlasma
@@ -12108,9 +15198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedProstaticAcidPhosphataseEnzymaticActivityVolumeInSeminalPlasma = "10554-4";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedProstaticAcidPhosphataseEnzymaticActivityVolumeInSeminalPlasma
+    /// </summary>
+    public const string LiteralNONEDeprecatedProstaticAcidPhosphataseEnzymaticActivityVolumeInSeminalPlasma = "http://loinc.org#10554-4";
+
+    /// <summary>
     /// Literal for code: AcrosinEntiticCatalyticActivityInSpermatozoa
     /// </summary>
     public const string LiteralAcrosinEntiticCatalyticActivityInSpermatozoa = "10555-1";
+
+    /// <summary>
+    /// Literal for code: NONEAcrosinEntiticCatalyticActivityInSpermatozoa
+    /// </summary>
+    public const string LiteralNONEAcrosinEntiticCatalyticActivityInSpermatozoa = "http://loinc.org#10555-1";
 
     /// <summary>
     /// Literal for code: DeprecatedAdenosineTriphosphataseEnzymaticActivityVolumeInSeminalPlasma
@@ -12118,9 +15218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedAdenosineTriphosphataseEnzymaticActivityVolumeInSeminalPlasma = "10556-9";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedAdenosineTriphosphataseEnzymaticActivityVolumeInSeminalPlasma
+    /// </summary>
+    public const string LiteralNONEDeprecatedAdenosineTriphosphataseEnzymaticActivityVolumeInSeminalPlasma = "http://loinc.org#10556-9";
+
+    /// <summary>
     /// Literal for code: AdenosineTriphosphateMolesVolumeInSemen
     /// </summary>
     public const string LiteralAdenosineTriphosphateMolesVolumeInSemen = "10557-7";
+
+    /// <summary>
+    /// Literal for code: NONEAdenosineTriphosphateMolesVolumeInSemen
+    /// </summary>
+    public const string LiteralNONEAdenosineTriphosphateMolesVolumeInSemen = "http://loinc.org#10557-7";
 
     /// <summary>
     /// Literal for code: AlbuminMolesVolumeInSemen
@@ -12128,9 +15238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlbuminMolesVolumeInSemen = "10558-5";
 
     /// <summary>
+    /// Literal for code: NONEAlbuminMolesVolumeInSemen
+    /// </summary>
+    public const string LiteralNONEAlbuminMolesVolumeInSemen = "http://loinc.org#10558-5";
+
+    /// <summary>
     /// Literal for code: DeprecatedCalciumMoleculesVolumeInSemen
     /// </summary>
     public const string LiteralDeprecatedCalciumMoleculesVolumeInSemen = "10559-3";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedCalciumMoleculesVolumeInSemen
+    /// </summary>
+    public const string LiteralNONEDeprecatedCalciumMoleculesVolumeInSemen = "http://loinc.org#10559-3";
 
     /// <summary>
     /// Literal for code: DeprecatedIIntermediateSubtypePresenceOnRedBloodCellsFromDonor
@@ -12138,9 +15258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedIIntermediateSubtypePresenceOnRedBloodCellsFromDonor = "1056-1";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedIIntermediateSubtypePresenceOnRedBloodCellsFromDonor
+    /// </summary>
+    public const string LiteralNONEDeprecatedIIntermediateSubtypePresenceOnRedBloodCellsFromDonor = "http://loinc.org#1056-1";
+
+    /// <summary>
     /// Literal for code: CarcinoembryonicAgUnitsVolumeInSemen
     /// </summary>
     public const string LiteralCarcinoembryonicAgUnitsVolumeInSemen = "10560-1";
+
+    /// <summary>
+    /// Literal for code: NONECarcinoembryonicAgUnitsVolumeInSemen
+    /// </summary>
+    public const string LiteralNONECarcinoembryonicAgUnitsVolumeInSemen = "http://loinc.org#10560-1";
 
     /// <summary>
     /// Literal for code: CarnitineMolesVolumeInSemen
@@ -12148,9 +15278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCarnitineMolesVolumeInSemen = "10561-9";
 
     /// <summary>
+    /// Literal for code: NONECarnitineMolesVolumeInSemen
+    /// </summary>
+    public const string LiteralNONECarnitineMolesVolumeInSemen = "http://loinc.org#10561-9";
+
+    /// <summary>
     /// Literal for code: CellsNumberVolumeInCervicalMucus
     /// </summary>
     public const string LiteralCellsNumberVolumeInCervicalMucus = "10562-7";
+
+    /// <summary>
+    /// Literal for code: NONECellsNumberVolumeInCervicalMucus
+    /// </summary>
+    public const string LiteralNONECellsNumberVolumeInCervicalMucus = "http://loinc.org#10562-7";
 
     /// <summary>
     /// Literal for code: CellsOtherThanSpermatozoaNumberVolumeInSemen
@@ -12158,9 +15298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCellsOtherThanSpermatozoaNumberVolumeInSemen = "10563-5";
 
     /// <summary>
+    /// Literal for code: NONECellsOtherThanSpermatozoaNumberVolumeInSemen
+    /// </summary>
+    public const string LiteralNONECellsOtherThanSpermatozoaNumberVolumeInSemen = "http://loinc.org#10563-5";
+
+    /// <summary>
     /// Literal for code: CervicalMucusVolume
     /// </summary>
     public const string LiteralCervicalMucusVolume = "10564-3";
+
+    /// <summary>
+    /// Literal for code: NONECervicalMucusVolume
+    /// </summary>
+    public const string LiteralNONECervicalMucusVolume = "http://loinc.org#10564-3";
 
     /// <summary>
     /// Literal for code: ChoriogonadotropinUnitsVolumeInSemen
@@ -12168,9 +15318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChoriogonadotropinUnitsVolumeInSemen = "10565-0";
 
     /// <summary>
+    /// Literal for code: NONEChoriogonadotropinUnitsVolumeInSemen
+    /// </summary>
+    public const string LiteralNONEChoriogonadotropinUnitsVolumeInSemen = "http://loinc.org#10565-0";
+
+    /// <summary>
     /// Literal for code: DeprecatedChoriogonadotropinMoleculesVolumeInSemen
     /// </summary>
     public const string LiteralDeprecatedChoriogonadotropinMoleculesVolumeInSemen = "10566-8";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedChoriogonadotropinMoleculesVolumeInSemen
+    /// </summary>
+    public const string LiteralNONEDeprecatedChoriogonadotropinMoleculesVolumeInSemen = "http://loinc.org#10566-8";
 
     /// <summary>
     /// Literal for code: CitrateMolesVolumeInSemen
@@ -12178,9 +15338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCitrateMolesVolumeInSemen = "10567-6";
 
     /// <summary>
+    /// Literal for code: NONECitrateMolesVolumeInSemen
+    /// </summary>
+    public const string LiteralNONECitrateMolesVolumeInSemen = "http://loinc.org#10567-6";
+
+    /// <summary>
     /// Literal for code: ClarityOfSemen
     /// </summary>
     public const string LiteralClarityOfSemen = "10568-4";
+
+    /// <summary>
+    /// Literal for code: NONEClarityOfSemen
+    /// </summary>
+    public const string LiteralNONEClarityOfSemen = "http://loinc.org#10568-4";
 
     /// <summary>
     /// Literal for code: ColorOfSemen
@@ -12188,9 +15358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralColorOfSemen = "10569-2";
 
     /// <summary>
+    /// Literal for code: NONEColorOfSemen
+    /// </summary>
+    public const string LiteralNONEColorOfSemen = "http://loinc.org#10569-2";
+
+    /// <summary>
     /// Literal for code: DeprecatedIIntermediateSubtypePresenceOnRedBloodCells
     /// </summary>
     public const string LiteralDeprecatedIIntermediateSubtypePresenceOnRedBloodCells = "1057-9";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedIIntermediateSubtypePresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEDeprecatedIIntermediateSubtypePresenceOnRedBloodCells = "http://loinc.org#1057-9";
 
     /// <summary>
     /// Literal for code: ConsistencyOfCervicalMucus
@@ -12198,9 +15378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConsistencyOfCervicalMucus = "10570-0";
 
     /// <summary>
+    /// Literal for code: NONEConsistencyOfCervicalMucus
+    /// </summary>
+    public const string LiteralNONEConsistencyOfCervicalMucus = "http://loinc.org#10570-0";
+
+    /// <summary>
     /// Literal for code: DeprecatedConsistencyOfSemen
     /// </summary>
     public const string LiteralDeprecatedConsistencyOfSemen = "10571-8";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedConsistencyOfSemen
+    /// </summary>
+    public const string LiteralNONEDeprecatedConsistencyOfSemen = "http://loinc.org#10571-8";
 
     /// <summary>
     /// Literal for code: DeprecatedDurationPowerPostEjaculation
@@ -12208,9 +15398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedDurationPowerPostEjaculation = "10572-6";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedDurationPowerPostEjaculation
+    /// </summary>
+    public const string LiteralNONEDeprecatedDurationPowerPostEjaculation = "http://loinc.org#10572-6";
+
+    /// <summary>
     /// Literal for code: FerningTypeInCervicalMucus
     /// </summary>
     public const string LiteralFerningTypeInCervicalMucus = "10573-4";
+
+    /// <summary>
+    /// Literal for code: NONEFerningTypeInCervicalMucus
+    /// </summary>
+    public const string LiteralNONEFerningTypeInCervicalMucus = "http://loinc.org#10573-4";
 
     /// <summary>
     /// Literal for code: FructoseMolesVolumeInSemen
@@ -12218,9 +15418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFructoseMolesVolumeInSemen = "10574-2";
 
     /// <summary>
+    /// Literal for code: NONEFructoseMolesVolumeInSemen
+    /// </summary>
+    public const string LiteralNONEFructoseMolesVolumeInSemen = "http://loinc.org#10574-2";
+
+    /// <summary>
     /// Literal for code: DeprecatedGammaGlutamylTransferaseEnzymaticActivityVolumeInSemen
     /// </summary>
     public const string LiteralDeprecatedGammaGlutamylTransferaseEnzymaticActivityVolumeInSemen = "10575-9";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedGammaGlutamylTransferaseEnzymaticActivityVolumeInSemen
+    /// </summary>
+    public const string LiteralNONEDeprecatedGammaGlutamylTransferaseEnzymaticActivityVolumeInSemen = "http://loinc.org#10575-9";
 
     /// <summary>
     /// Literal for code: GermCellsImmatureNumberVolumeInSemen
@@ -12228,9 +15438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGermCellsImmatureNumberVolumeInSemen = "10576-7";
 
     /// <summary>
+    /// Literal for code: NONEGermCellsImmatureNumberVolumeInSemen
+    /// </summary>
+    public const string LiteralNONEGermCellsImmatureNumberVolumeInSemen = "http://loinc.org#10576-7";
+
+    /// <summary>
     /// Literal for code: GlucosidaseEnzymaticActivityVolumeInSeminalPlasma
     /// </summary>
     public const string LiteralGlucosidaseEnzymaticActivityVolumeInSeminalPlasma = "10577-5";
+
+    /// <summary>
+    /// Literal for code: NONEGlucosidaseEnzymaticActivityVolumeInSeminalPlasma
+    /// </summary>
+    public const string LiteralNONEGlucosidaseEnzymaticActivityVolumeInSeminalPlasma = "http://loinc.org#10577-5";
 
     /// <summary>
     /// Literal for code: GlycerophosphocholineMolesVolumeInSeminalPlasma
@@ -12238,9 +15458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGlycerophosphocholineMolesVolumeInSeminalPlasma = "10578-3";
 
     /// <summary>
+    /// Literal for code: NONEGlycerophosphocholineMolesVolumeInSeminalPlasma
+    /// </summary>
+    public const string LiteralNONEGlycerophosphocholineMolesVolumeInSeminalPlasma = "http://loinc.org#10578-3";
+
+    /// <summary>
     /// Literal for code: LeukocytesNumberVolumeInSemen
     /// </summary>
     public const string LiteralLeukocytesNumberVolumeInSemen = "10579-1";
+
+    /// <summary>
+    /// Literal for code: NONELeukocytesNumberVolumeInSemen
+    /// </summary>
+    public const string LiteralNONELeukocytesNumberVolumeInSemen = "http://loinc.org#10579-1";
 
     /// <summary>
     /// Literal for code: IAbPresenceInSerumOrPlasmaFromBloodProductUnit
@@ -12248,9 +15478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIAbPresenceInSerumOrPlasmaFromBloodProductUnit = "1058-7";
 
     /// <summary>
+    /// Literal for code: NONEIAbPresenceInSerumOrPlasmaFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEIAbPresenceInSerumOrPlasmaFromBloodProductUnit = "http://loinc.org#1058-7";
+
+    /// <summary>
     /// Literal for code: LiquefactionTimeInSemen
     /// </summary>
     public const string LiteralLiquefactionTimeInSemen = "10580-9";
+
+    /// <summary>
+    /// Literal for code: NONELiquefactionTimeInSemen
+    /// </summary>
+    public const string LiteralNONELiquefactionTimeInSemen = "http://loinc.org#10580-9";
 
     /// <summary>
     /// Literal for code: DeprecatedNumberOfEntitiesNumberInSpermatozoa
@@ -12258,9 +15498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedNumberOfEntitiesNumberInSpermatozoa = "10581-7";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedNumberOfEntitiesNumberInSpermatozoa
+    /// </summary>
+    public const string LiteralNONEDeprecatedNumberOfEntitiesNumberInSpermatozoa = "http://loinc.org#10581-7";
+
+    /// <summary>
     /// Literal for code: PHOfCervicalMucus
     /// </summary>
     public const string LiteralPHOfCervicalMucus = "10582-5";
+
+    /// <summary>
+    /// Literal for code: NONEPHOfCervicalMucus
+    /// </summary>
+    public const string LiteralNONEPHOfCervicalMucus = "http://loinc.org#10582-5";
 
     /// <summary>
     /// Literal for code: ProstaglandinF1AlphaMolesVolumeInSemen
@@ -12268,9 +15518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProstaglandinF1AlphaMolesVolumeInSemen = "10583-3";
 
     /// <summary>
+    /// Literal for code: NONEProstaglandinF1AlphaMolesVolumeInSemen
+    /// </summary>
+    public const string LiteralNONEProstaglandinF1AlphaMolesVolumeInSemen = "http://loinc.org#10583-3";
+
+    /// <summary>
     /// Literal for code: DeprecatedProteinMassVolumeInSemen
     /// </summary>
     public const string LiteralDeprecatedProteinMassVolumeInSemen = "10584-1";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedProteinMassVolumeInSemen
+    /// </summary>
+    public const string LiteralNONEDeprecatedProteinMassVolumeInSemen = "http://loinc.org#10584-1";
 
     /// <summary>
     /// Literal for code: RoundCellsNumberVolumeInSemen
@@ -12278,9 +15538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRoundCellsNumberVolumeInSemen = "10585-8";
 
     /// <summary>
+    /// Literal for code: NONERoundCellsNumberVolumeInSemen
+    /// </summary>
+    public const string LiteralNONERoundCellsNumberVolumeInSemen = "http://loinc.org#10585-8";
+
+    /// <summary>
     /// Literal for code: DeprecatedVolumeOfSemen
     /// </summary>
     public const string LiteralDeprecatedVolumeOfSemen = "10586-6";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedVolumeOfSemen
+    /// </summary>
+    public const string LiteralNONEDeprecatedVolumeOfSemen = "http://loinc.org#10586-6";
 
     /// <summary>
     /// Literal for code: SexualAbstinenceDuration
@@ -12288,9 +15558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSexualAbstinenceDuration = "10587-4";
 
     /// <summary>
+    /// Literal for code: NONESexualAbstinenceDuration
+    /// </summary>
+    public const string LiteralNONESexualAbstinenceDuration = "http://loinc.org#10587-4";
+
+    /// <summary>
     /// Literal for code: SpermatogoniaNumberVolumeInSemen
     /// </summary>
     public const string LiteralSpermatogoniaNumberVolumeInSemen = "10588-2";
+
+    /// <summary>
+    /// Literal for code: NONESpermatogoniaNumberVolumeInSemen
+    /// </summary>
+    public const string LiteralNONESpermatogoniaNumberVolumeInSemen = "http://loinc.org#10588-2";
 
     /// <summary>
     /// Literal for code: SpermatidsNumberVolumeInSemenByStreptoavidinBiotinMethodSAB
@@ -12298,9 +15578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatidsNumberVolumeInSemenByStreptoavidinBiotinMethodSAB = "10589-0";
 
     /// <summary>
+    /// Literal for code: NONESpermatidsNumberVolumeInSemenByStreptoavidinBiotinMethodSAB
+    /// </summary>
+    public const string LiteralNONESpermatidsNumberVolumeInSemenByStreptoavidinBiotinMethodSAB = "http://loinc.org#10589-0";
+
+    /// <summary>
     /// Literal for code: IAbPresenceInSerumOrPlasmaFromDonor
     /// </summary>
     public const string LiteralIAbPresenceInSerumOrPlasmaFromDonor = "1059-5";
+
+    /// <summary>
+    /// Literal for code: NONEIAbPresenceInSerumOrPlasmaFromDonor
+    /// </summary>
+    public const string LiteralNONEIAbPresenceInSerumOrPlasmaFromDonor = "http://loinc.org#1059-5";
 
     /// <summary>
     /// Literal for code: SpermatidsNumberVolumeInSemenBySertoliCellBarrierMethodSCB
@@ -12308,9 +15598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatidsNumberVolumeInSemenBySertoliCellBarrierMethodSCB = "10590-8";
 
     /// <summary>
+    /// Literal for code: NONESpermatidsNumberVolumeInSemenBySertoliCellBarrierMethodSCB
+    /// </summary>
+    public const string LiteralNONESpermatidsNumberVolumeInSemenBySertoliCellBarrierMethodSCB = "http://loinc.org#10590-8";
+
+    /// <summary>
     /// Literal for code: PrimarySpermatocytesNumberVolumeInSemen
     /// </summary>
     public const string LiteralPrimarySpermatocytesNumberVolumeInSemen = "10591-6";
+
+    /// <summary>
+    /// Literal for code: NONEPrimarySpermatocytesNumberVolumeInSemen
+    /// </summary>
+    public const string LiteralNONEPrimarySpermatocytesNumberVolumeInSemen = "http://loinc.org#10591-6";
 
     /// <summary>
     /// Literal for code: SecondarySpermatocytesNumberVolumeInSemen
@@ -12318,9 +15618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSecondarySpermatocytesNumberVolumeInSemen = "10592-4";
 
     /// <summary>
+    /// Literal for code: NONESecondarySpermatocytesNumberVolumeInSemen
+    /// </summary>
+    public const string LiteralNONESecondarySpermatocytesNumberVolumeInSemen = "http://loinc.org#10592-4";
+
+    /// <summary>
     /// Literal for code: SpermatozoaPyriformHead100SpermatozoaInSemen
     /// </summary>
     public const string LiteralSpermatozoaPyriformHead100SpermatozoaInSemen = "10593-2";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaPyriformHead100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaPyriformHead100SpermatozoaInSemen = "http://loinc.org#10593-2";
 
     /// <summary>
     /// Literal for code: SpermatozoaTaperingHead100SpermatozoaInSemen
@@ -12328,9 +15638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoaTaperingHead100SpermatozoaInSemen = "10594-0";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoaTaperingHead100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaTaperingHead100SpermatozoaInSemen = "http://loinc.org#10594-0";
+
+    /// <summary>
     /// Literal for code: DeprecatedSpermatozoaNumberVolumeInSemen
     /// </summary>
     public const string LiteralDeprecatedSpermatozoaNumberVolumeInSemen = "10595-7";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedSpermatozoaNumberVolumeInSemen
+    /// </summary>
+    public const string LiteralNONEDeprecatedSpermatozoaNumberVolumeInSemen = "http://loinc.org#10595-7";
 
     /// <summary>
     /// Literal for code: DeprecatedSpermatozoaAbInCervicalMucosa
@@ -12338,9 +15658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedSpermatozoaAbInCervicalMucosa = "10596-5";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedSpermatozoaAbInCervicalMucosa
+    /// </summary>
+    public const string LiteralNONEDeprecatedSpermatozoaAbInCervicalMucosa = "http://loinc.org#10596-5";
+
+    /// <summary>
     /// Literal for code: DeprecatedSpermatozoaAbInSemen
     /// </summary>
     public const string LiteralDeprecatedSpermatozoaAbInSemen = "10597-3";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedSpermatozoaAbInSemen
+    /// </summary>
+    public const string LiteralNONEDeprecatedSpermatozoaAbInSemen = "http://loinc.org#10597-3";
 
     /// <summary>
     /// Literal for code: DeprecatedSpermatozoaAbInSerum
@@ -12348,9 +15678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedSpermatozoaAbInSerum = "10598-1";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedSpermatozoaAbInSerum
+    /// </summary>
+    public const string LiteralNONEDeprecatedSpermatozoaAbInSerum = "http://loinc.org#10598-1";
+
+    /// <summary>
     /// Literal for code: SpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosaByKremerTest
     /// </summary>
     public const string LiteralSpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosaByKremerTest = "10599-9";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosaByKremerTest
+    /// </summary>
+    public const string LiteralNONESpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosaByKremerTest = "http://loinc.org#10599-9";
 
     /// <summary>
     /// Literal for code: CeforanideSusceptibilityBySerumBactericidalTiter
@@ -12358,9 +15698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCeforanideSusceptibilityBySerumBactericidalTiter = "106-5";
 
     /// <summary>
+    /// Literal for code: NONECeforanideSusceptibilityBySerumBactericidalTiter
+    /// </summary>
+    public const string LiteralNONECeforanideSusceptibilityBySerumBactericidalTiter = "http://loinc.org#106-5";
+
+    /// <summary>
     /// Literal for code: IAbPresenceInSerumOrPlasma
     /// </summary>
     public const string LiteralIAbPresenceInSerumOrPlasma = "1060-3";
+
+    /// <summary>
+    /// Literal for code: NONEIAbPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEIAbPresenceInSerumOrPlasma = "http://loinc.org#1060-3";
 
     /// <summary>
     /// Literal for code: SpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosa
@@ -12368,9 +15718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosa = "10600-5";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosa
+    /// </summary>
+    public const string LiteralNONESpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosa = "http://loinc.org#10600-5";
+
+    /// <summary>
     /// Literal for code: SpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosaPostCoitus
     /// </summary>
     public const string LiteralSpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosaPostCoitus = "10601-3";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosaPostCoitus
+    /// </summary>
+    public const string LiteralNONESpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosaPostCoitus = "http://loinc.org#10601-3";
 
     /// <summary>
     /// Literal for code: SpermatozoaAbnormalHead100SpermatozoaInSemen
@@ -12378,9 +15738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoaAbnormalHead100SpermatozoaInSemen = "10602-1";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoaAbnormalHead100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaAbnormalHead100SpermatozoaInSemen = "http://loinc.org#10602-1";
+
+    /// <summary>
     /// Literal for code: SpermatozoaAbnormalMidpiece100SpermatozoaInSemen
     /// </summary>
     public const string LiteralSpermatozoaAbnormalMidpiece100SpermatozoaInSemen = "10603-9";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaAbnormalMidpiece100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaAbnormalMidpiece100SpermatozoaInSemen = "http://loinc.org#10603-9";
 
     /// <summary>
     /// Literal for code: SpermatozoaAbnormalTail100SpermatozoaInSemen
@@ -12388,9 +15758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoaAbnormalTail100SpermatozoaInSemen = "10604-7";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoaAbnormalTail100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaAbnormalTail100SpermatozoaInSemen = "http://loinc.org#10604-7";
+
+    /// <summary>
     /// Literal for code: SpermatozoaAgglutinated100SpermatozoaInSemen
     /// </summary>
     public const string LiteralSpermatozoaAgglutinated100SpermatozoaInSemen = "10605-4";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaAgglutinated100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaAgglutinated100SpermatozoaInSemen = "http://loinc.org#10605-4";
 
     /// <summary>
     /// Literal for code: SpermatozoaAmorphousHead100SpermatozoaInSemen
@@ -12398,9 +15778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoaAmorphousHead100SpermatozoaInSemen = "10606-2";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoaAmorphousHead100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaAmorphousHead100SpermatozoaInSemen = "http://loinc.org#10606-2";
+
+    /// <summary>
     /// Literal for code: SpermatozoaCoiledTail100SpermatozoaInSemen
     /// </summary>
     public const string LiteralSpermatozoaCoiledTail100SpermatozoaInSemen = "10607-0";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaCoiledTail100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaCoiledTail100SpermatozoaInSemen = "http://loinc.org#10607-0";
 
     /// <summary>
     /// Literal for code: SpermatozoaCytoplasmicDroplet100SpermatozoaInSemen
@@ -12408,9 +15798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoaCytoplasmicDroplet100SpermatozoaInSemen = "10608-8";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoaCytoplasmicDroplet100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaCytoplasmicDroplet100SpermatozoaInSemen = "http://loinc.org#10608-8";
+
+    /// <summary>
     /// Literal for code: SpermatozoaDuplicateHead100SpermatozoaInSemen
     /// </summary>
     public const string LiteralSpermatozoaDuplicateHead100SpermatozoaInSemen = "10609-6";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaDuplicateHead100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaDuplicateHead100SpermatozoaInSemen = "http://loinc.org#10609-6";
 
     /// <summary>
     /// Literal for code: INOSAbPresenceInSerumOrPlasmaFromBloodProductUnit
@@ -12418,9 +15818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralINOSAbPresenceInSerumOrPlasmaFromBloodProductUnit = "1061-1";
 
     /// <summary>
+    /// Literal for code: NONEINOSAbPresenceInSerumOrPlasmaFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEINOSAbPresenceInSerumOrPlasmaFromBloodProductUnit = "http://loinc.org#1061-1";
+
+    /// <summary>
     /// Literal for code: SpermatozoaDuplicateTail100SpermatozoaInSemen
     /// </summary>
     public const string LiteralSpermatozoaDuplicateTail100SpermatozoaInSemen = "10610-4";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaDuplicateTail100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaDuplicateTail100SpermatozoaInSemen = "http://loinc.org#10610-4";
 
     /// <summary>
     /// Literal for code: SpermatozoaImmotile100SpermatozoaInSemen
@@ -12428,9 +15838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoaImmotile100SpermatozoaInSemen = "10611-2";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoaImmotile100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaImmotile100SpermatozoaInSemen = "http://loinc.org#10611-2";
+
+    /// <summary>
     /// Literal for code: SpermatozoaLargeOvalHead100SpermatozoaInSemen
     /// </summary>
     public const string LiteralSpermatozoaLargeOvalHead100SpermatozoaInSemen = "10612-0";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaLargeOvalHead100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaLargeOvalHead100SpermatozoaInSemen = "http://loinc.org#10612-0";
 
     /// <summary>
     /// Literal for code: SpermatozoaViable100SpermatozoaInSemen
@@ -12438,9 +15858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoaViable100SpermatozoaInSemen = "10613-8";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoaViable100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaViable100SpermatozoaInSemen = "http://loinc.org#10613-8";
+
+    /// <summary>
     /// Literal for code: SpermatozoaMotileWIgA100SpermatozoaInSemenByImmunobead
     /// </summary>
     public const string LiteralSpermatozoaMotileWIgA100SpermatozoaInSemenByImmunobead = "10614-6";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaMotileWIgA100SpermatozoaInSemenByImmunobead
+    /// </summary>
+    public const string LiteralNONESpermatozoaMotileWIgA100SpermatozoaInSemenByImmunobead = "http://loinc.org#10614-6";
 
     /// <summary>
     /// Literal for code: SpermatozoaMotileWIgA100SpermatozoaInSemenByMixedAntiglobulinReaction
@@ -12448,9 +15878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoaMotileWIgA100SpermatozoaInSemenByMixedAntiglobulinReaction = "10615-3";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoaMotileWIgA100SpermatozoaInSemenByMixedAntiglobulinReaction
+    /// </summary>
+    public const string LiteralNONESpermatozoaMotileWIgA100SpermatozoaInSemenByMixedAntiglobulinReaction = "http://loinc.org#10615-3";
+
+    /// <summary>
     /// Literal for code: SpermatozoaMotileWIgG100SpermatozoaInSemenByImmunobead
     /// </summary>
     public const string LiteralSpermatozoaMotileWIgG100SpermatozoaInSemenByImmunobead = "10616-1";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaMotileWIgG100SpermatozoaInSemenByImmunobead
+    /// </summary>
+    public const string LiteralNONESpermatozoaMotileWIgG100SpermatozoaInSemenByImmunobead = "http://loinc.org#10616-1";
 
     /// <summary>
     /// Literal for code: SpermatozoaMotileWIgG100SpermatozoaInSemenByMixedAntiglobulinReaction
@@ -12458,9 +15898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoaMotileWIgG100SpermatozoaInSemenByMixedAntiglobulinReaction = "10617-9";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoaMotileWIgG100SpermatozoaInSemenByMixedAntiglobulinReaction
+    /// </summary>
+    public const string LiteralNONESpermatozoaMotileWIgG100SpermatozoaInSemenByMixedAntiglobulinReaction = "http://loinc.org#10617-9";
+
+    /// <summary>
     /// Literal for code: SpermatozoaMotileWIgM100SpermatozoaInSemenByImmunobead
     /// </summary>
     public const string LiteralSpermatozoaMotileWIgM100SpermatozoaInSemenByImmunobead = "10618-7";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaMotileWIgM100SpermatozoaInSemenByImmunobead
+    /// </summary>
+    public const string LiteralNONESpermatozoaMotileWIgM100SpermatozoaInSemenByImmunobead = "http://loinc.org#10618-7";
 
     /// <summary>
     /// Literal for code: SpermatozoaMotileWIgM100SpermatozoaInSemenByMixedAntiglobulinReaction
@@ -12468,9 +15918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoaMotileWIgM100SpermatozoaInSemenByMixedAntiglobulinReaction = "10619-5";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoaMotileWIgM100SpermatozoaInSemenByMixedAntiglobulinReaction
+    /// </summary>
+    public const string LiteralNONESpermatozoaMotileWIgM100SpermatozoaInSemenByMixedAntiglobulinReaction = "http://loinc.org#10619-5";
+
+    /// <summary>
     /// Literal for code: INOSAbPresenceInSerumOrPlasmaFromDonor
     /// </summary>
     public const string LiteralINOSAbPresenceInSerumOrPlasmaFromDonor = "1062-9";
+
+    /// <summary>
+    /// Literal for code: NONEINOSAbPresenceInSerumOrPlasmaFromDonor
+    /// </summary>
+    public const string LiteralNONEINOSAbPresenceInSerumOrPlasmaFromDonor = "http://loinc.org#1062-9";
 
     /// <summary>
     /// Literal for code: SpermatozoaNonprogressive100SpermatozoaInSemen
@@ -12478,9 +15938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoaNonprogressive100SpermatozoaInSemen = "10620-3";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoaNonprogressive100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaNonprogressive100SpermatozoaInSemen = "http://loinc.org#10620-3";
+
+    /// <summary>
     /// Literal for code: SpermatozoaNormalHead100SpermatozoaInSemen
     /// </summary>
     public const string LiteralSpermatozoaNormalHead100SpermatozoaInSemen = "10621-1";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaNormalHead100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaNormalHead100SpermatozoaInSemen = "http://loinc.org#10621-1";
 
     /// <summary>
     /// Literal for code: SpermatozoaNormal100SpermatozoaInSemen
@@ -12488,9 +15958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoaNormal100SpermatozoaInSemen = "10622-9";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoaNormal100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaNormal100SpermatozoaInSemen = "http://loinc.org#10622-9";
+
+    /// <summary>
     /// Literal for code: SpermatozoaPinHead100SpermatozoaInSemen
     /// </summary>
     public const string LiteralSpermatozoaPinHead100SpermatozoaInSemen = "10623-7";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaPinHead100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaPinHead100SpermatozoaInSemen = "http://loinc.org#10623-7";
 
     /// <summary>
     /// Literal for code: SpermatozoaRapid100SpermatozoaInSemen
@@ -12498,9 +15978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoaRapid100SpermatozoaInSemen = "10624-5";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoaRapid100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaRapid100SpermatozoaInSemen = "http://loinc.org#10624-5";
+
+    /// <summary>
     /// Literal for code: SpermatozoaRoundHead100SpermatozoaInSemen
     /// </summary>
     public const string LiteralSpermatozoaRoundHead100SpermatozoaInSemen = "10625-2";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaRoundHead100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaRoundHead100SpermatozoaInSemen = "http://loinc.org#10625-2";
 
     /// <summary>
     /// Literal for code: SpermatozoaSlow100SpermatozoaInSemen
@@ -12508,9 +15998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoaSlow100SpermatozoaInSemen = "10626-0";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoaSlow100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaSlow100SpermatozoaInSemen = "http://loinc.org#10626-0";
+
+    /// <summary>
     /// Literal for code: SpermatozoaSmallOvalHead100SpermatozoaInSemen
     /// </summary>
     public const string LiteralSpermatozoaSmallOvalHead100SpermatozoaInSemen = "10627-8";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaSmallOvalHead100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaSmallOvalHead100SpermatozoaInSemen = "http://loinc.org#10627-8";
 
     /// <summary>
     /// Literal for code: SpermatozoaTailSwelling100SpermatozoaInSemen
@@ -12518,9 +16018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermatozoaTailSwelling100SpermatozoaInSemen = "10628-6";
 
     /// <summary>
+    /// Literal for code: NONESpermatozoaTailSwelling100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaTailSwelling100SpermatozoaInSemen = "http://loinc.org#10628-6";
+
+    /// <summary>
     /// Literal for code: SpermatozoaVacuolatedHead100SpermatozoaInSemen
     /// </summary>
     public const string LiteralSpermatozoaVacuolatedHead100SpermatozoaInSemen = "10629-4";
+
+    /// <summary>
+    /// Literal for code: NONESpermatozoaVacuolatedHead100SpermatozoaInSemen
+    /// </summary>
+    public const string LiteralNONESpermatozoaVacuolatedHead100SpermatozoaInSemen = "http://loinc.org#10629-4";
 
     /// <summary>
     /// Literal for code: INOSAbPresenceInSerumOrPlasma
@@ -12528,9 +16038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralINOSAbPresenceInSerumOrPlasma = "1063-7";
 
     /// <summary>
+    /// Literal for code: NONEINOSAbPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEINOSAbPresenceInSerumOrPlasma = "http://loinc.org#1063-7";
+
+    /// <summary>
     /// Literal for code: SpinnbarkeitLengthInCervicalMucus
     /// </summary>
     public const string LiteralSpinnbarkeitLengthInCervicalMucus = "10630-2";
+
+    /// <summary>
+    /// Literal for code: NONESpinnbarkeitLengthInCervicalMucus
+    /// </summary>
+    public const string LiteralNONESpinnbarkeitLengthInCervicalMucus = "http://loinc.org#10630-2";
 
     /// <summary>
     /// Literal for code: TestosteroneMolesVolumeInSemen
@@ -12538,9 +16058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTestosteroneMolesVolumeInSemen = "10631-0";
 
     /// <summary>
+    /// Literal for code: NONETestosteroneMolesVolumeInSemen
+    /// </summary>
+    public const string LiteralNONETestosteroneMolesVolumeInSemen = "http://loinc.org#10631-0";
+
+    /// <summary>
     /// Literal for code: TimeUntilNextMenstrualPeriod
     /// </summary>
     public const string LiteralTimeUntilNextMenstrualPeriod = "10632-8";
+
+    /// <summary>
+    /// Literal for code: NONETimeUntilNextMenstrualPeriod
+    /// </summary>
+    public const string LiteralNONETimeUntilNextMenstrualPeriod = "http://loinc.org#10632-8";
 
     /// <summary>
     /// Literal for code: ZincMolesVolumeInSemen
@@ -12548,9 +16078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralZincMolesVolumeInSemen = "10633-6";
 
     /// <summary>
+    /// Literal for code: NONEZincMolesVolumeInSemen
+    /// </summary>
+    public const string LiteralNONEZincMolesVolumeInSemen = "http://loinc.org#10633-6";
+
+    /// <summary>
     /// Literal for code: ComplementC1EsteraseInhibitorFunctionalComplementC1EsteraseInhibitorTotalInSerumOrPlasma
     /// </summary>
     public const string LiteralComplementC1EsteraseInhibitorFunctionalComplementC1EsteraseInhibitorTotalInSerumOrPlasma = "10634-4";
+
+    /// <summary>
+    /// Literal for code: NONEComplementC1EsteraseInhibitorFunctionalComplementC1EsteraseInhibitorTotalInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEComplementC1EsteraseInhibitorFunctionalComplementC1EsteraseInhibitorTotalInSerumOrPlasma = "http://loinc.org#10634-4";
 
     /// <summary>
     /// Literal for code: AcanthamoebaSpIdentifiedInEyeByOrganismSpecificCulture
@@ -12558,9 +16098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcanthamoebaSpIdentifiedInEyeByOrganismSpecificCulture = "10635-1";
 
     /// <summary>
+    /// Literal for code: NONEAcanthamoebaSpIdentifiedInEyeByOrganismSpecificCulture
+    /// </summary>
+    public const string LiteralNONEAcanthamoebaSpIdentifiedInEyeByOrganismSpecificCulture = "http://loinc.org#10635-1";
+
+    /// <summary>
     /// Literal for code: AcanthamoebaSpIdentifiedInEyeByWetPreparation
     /// </summary>
     public const string LiteralAcanthamoebaSpIdentifiedInEyeByWetPreparation = "10636-9";
+
+    /// <summary>
+    /// Literal for code: NONEAcanthamoebaSpIdentifiedInEyeByWetPreparation
+    /// </summary>
+    public const string LiteralNONEAcanthamoebaSpIdentifiedInEyeByWetPreparation = "http://loinc.org#10636-9";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByNightBlueStain
@@ -12568,9 +16118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByNightBlueStain = "10637-7";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByNightBlueStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByNightBlueStain = "http://loinc.org#10637-7";
+
+    /// <summary>
     /// Literal for code: ThermophilicActinomycetesColonyCountNumberVolumeInUnspecifiedSpecimenByOrganismSpecificCulture
     /// </summary>
     public const string LiteralThermophilicActinomycetesColonyCountNumberVolumeInUnspecifiedSpecimenByOrganismSpecificCulture = "10638-5";
+
+    /// <summary>
+    /// Literal for code: NONEThermophilicActinomycetesColonyCountNumberVolumeInUnspecifiedSpecimenByOrganismSpecificCulture
+    /// </summary>
+    public const string LiteralNONEThermophilicActinomycetesColonyCountNumberVolumeInUnspecifiedSpecimenByOrganismSpecificCulture = "http://loinc.org#10638-5";
 
     /// <summary>
     /// Literal for code: ThermophilicActinomycetesIdentifiedInUnspecifiedSpecimenByOrganismSpecificCulture
@@ -12578,9 +16138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThermophilicActinomycetesIdentifiedInUnspecifiedSpecimenByOrganismSpecificCulture = "10639-3";
 
     /// <summary>
+    /// Literal for code: NONEThermophilicActinomycetesIdentifiedInUnspecifiedSpecimenByOrganismSpecificCulture
+    /// </summary>
+    public const string LiteralNONEThermophilicActinomycetesIdentifiedInUnspecifiedSpecimenByOrganismSpecificCulture = "http://loinc.org#10639-3";
+
+    /// <summary>
     /// Literal for code: INOSAgPresenceOnRedBloodCellsFromBloodProductUnit
     /// </summary>
     public const string LiteralINOSAgPresenceOnRedBloodCellsFromBloodProductUnit = "1064-5";
+
+    /// <summary>
+    /// Literal for code: NONEINOSAgPresenceOnRedBloodCellsFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEINOSAgPresenceOnRedBloodCellsFromBloodProductUnit = "http://loinc.org#1064-5";
 
     /// <summary>
     /// Literal for code: DeprecatedAdenovirus40Plus41IdentifierInStoolByElectronMicroscopy
@@ -12588,9 +16158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedAdenovirus40Plus41IdentifierInStoolByElectronMicroscopy = "10640-1";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedAdenovirus40Plus41IdentifierInStoolByElectronMicroscopy
+    /// </summary>
+    public const string LiteralNONEDeprecatedAdenovirus40Plus41IdentifierInStoolByElectronMicroscopy = "http://loinc.org#10640-1";
+
+    /// <summary>
     /// Literal for code: AmoebaIdentifiedInAspirateByImmuneStain
     /// </summary>
     public const string LiteralAmoebaIdentifiedInAspirateByImmuneStain = "10641-9";
+
+    /// <summary>
+    /// Literal for code: NONEAmoebaIdentifiedInAspirateByImmuneStain
+    /// </summary>
+    public const string LiteralNONEAmoebaIdentifiedInAspirateByImmuneStain = "http://loinc.org#10641-9";
 
     /// <summary>
     /// Literal for code: AmoebaIdentifiedInAspirateByWetPreparation
@@ -12598,9 +16178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAmoebaIdentifiedInAspirateByWetPreparation = "10642-7";
 
     /// <summary>
+    /// Literal for code: NONEAmoebaIdentifiedInAspirateByWetPreparation
+    /// </summary>
+    public const string LiteralNONEAmoebaIdentifiedInAspirateByWetPreparation = "http://loinc.org#10642-7";
+
+    /// <summary>
     /// Literal for code: AmoebaIdentifiedInStoolByOrganismSpecificCulture
     /// </summary>
     public const string LiteralAmoebaIdentifiedInStoolByOrganismSpecificCulture = "10643-5";
+
+    /// <summary>
+    /// Literal for code: NONEAmoebaIdentifiedInStoolByOrganismSpecificCulture
+    /// </summary>
+    public const string LiteralNONEAmoebaIdentifiedInStoolByOrganismSpecificCulture = "http://loinc.org#10643-5";
 
     /// <summary>
     /// Literal for code: ArthropodIdentifiedInUnspecifiedSpecimen
@@ -12608,9 +16198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArthropodIdentifiedInUnspecifiedSpecimen = "10644-3";
 
     /// <summary>
+    /// Literal for code: NONEArthropodIdentifiedInUnspecifiedSpecimen
+    /// </summary>
+    public const string LiteralNONEArthropodIdentifiedInUnspecifiedSpecimen = "http://loinc.org#10644-3";
+
+    /// <summary>
     /// Literal for code: AspergillusFumigatusAgPresenceInTissueByImmunofluorescence
     /// </summary>
     public const string LiteralAspergillusFumigatusAgPresenceInTissueByImmunofluorescence = "10645-0";
+
+    /// <summary>
+    /// Literal for code: NONEAspergillusFumigatusAgPresenceInTissueByImmunofluorescence
+    /// </summary>
+    public const string LiteralNONEAspergillusFumigatusAgPresenceInTissueByImmunofluorescence = "http://loinc.org#10645-0";
 
     /// <summary>
     /// Literal for code: AstrovirusIdentifierInStoolByElectronMicroscopy
@@ -12618,9 +16218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAstrovirusIdentifierInStoolByElectronMicroscopy = "10646-8";
 
     /// <summary>
+    /// Literal for code: NONEAstrovirusIdentifierInStoolByElectronMicroscopy
+    /// </summary>
+    public const string LiteralNONEAstrovirusIdentifierInStoolByElectronMicroscopy = "http://loinc.org#10646-8";
+
+    /// <summary>
     /// Literal for code: BabesiaSpIdentifiedInBloodByThickFilm
     /// </summary>
     public const string LiteralBabesiaSpIdentifiedInBloodByThickFilm = "10647-6";
+
+    /// <summary>
+    /// Literal for code: NONEBabesiaSpIdentifiedInBloodByThickFilm
+    /// </summary>
+    public const string LiteralNONEBabesiaSpIdentifiedInBloodByThickFilm = "http://loinc.org#10647-6";
 
     /// <summary>
     /// Literal for code: BabesiaSpIdentifiedInBloodByThinFilm
@@ -12628,9 +16238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBabesiaSpIdentifiedInBloodByThinFilm = "10648-4";
 
     /// <summary>
+    /// Literal for code: NONEBabesiaSpIdentifiedInBloodByThinFilm
+    /// </summary>
+    public const string LiteralNONEBabesiaSpIdentifiedInBloodByThinFilm = "http://loinc.org#10648-4";
+
+    /// <summary>
     /// Literal for code: CalicivirusIdentifierInStoolByElectronMicroscopy
     /// </summary>
     public const string LiteralCalicivirusIdentifierInStoolByElectronMicroscopy = "10649-2";
+
+    /// <summary>
+    /// Literal for code: NONECalicivirusIdentifierInStoolByElectronMicroscopy
+    /// </summary>
+    public const string LiteralNONECalicivirusIdentifierInStoolByElectronMicroscopy = "http://loinc.org#10649-2";
 
     /// <summary>
     /// Literal for code: INOSAgPresenceOnRedBloodCellsFromDonor
@@ -12638,9 +16258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralINOSAgPresenceOnRedBloodCellsFromDonor = "1065-2";
 
     /// <summary>
+    /// Literal for code: NONEINOSAgPresenceOnRedBloodCellsFromDonor
+    /// </summary>
+    public const string LiteralNONEINOSAgPresenceOnRedBloodCellsFromDonor = "http://loinc.org#1065-2";
+
+    /// <summary>
     /// Literal for code: CandidaSpDNAPresenceInBloodByProbeWithAmplification
     /// </summary>
     public const string LiteralCandidaSpDNAPresenceInBloodByProbeWithAmplification = "10650-0";
+
+    /// <summary>
+    /// Literal for code: NONECandidaSpDNAPresenceInBloodByProbeWithAmplification
+    /// </summary>
+    public const string LiteralNONECandidaSpDNAPresenceInBloodByProbeWithAmplification = "http://loinc.org#10650-0";
 
     /// <summary>
     /// Literal for code: ChlamydophilaPneumoniaeAgPresenceInSputumOrBronchial
@@ -12648,9 +16278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChlamydophilaPneumoniaeAgPresenceInSputumOrBronchial = "10651-8";
 
     /// <summary>
+    /// Literal for code: NONEChlamydophilaPneumoniaeAgPresenceInSputumOrBronchial
+    /// </summary>
+    public const string LiteralNONEChlamydophilaPneumoniaeAgPresenceInSputumOrBronchial = "http://loinc.org#10651-8";
+
+    /// <summary>
     /// Literal for code: ChlamydophilaPneumoniaeDNAPresenceInSputumOrBronchialByProbeWithAmplification
     /// </summary>
     public const string LiteralChlamydophilaPneumoniaeDNAPresenceInSputumOrBronchialByProbeWithAmplification = "10652-6";
+
+    /// <summary>
+    /// Literal for code: NONEChlamydophilaPneumoniaeDNAPresenceInSputumOrBronchialByProbeWithAmplification
+    /// </summary>
+    public const string LiteralNONEChlamydophilaPneumoniaeDNAPresenceInSputumOrBronchialByProbeWithAmplification = "http://loinc.org#10652-6";
 
     /// <summary>
     /// Literal for code: ClotrimazoleSusceptibilityByMinimumInhibitoryConcentrationMIC
@@ -12658,9 +16298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClotrimazoleSusceptibilityByMinimumInhibitoryConcentrationMIC = "10653-4";
 
     /// <summary>
+    /// Literal for code: NONEClotrimazoleSusceptibilityByMinimumInhibitoryConcentrationMIC
+    /// </summary>
+    public const string LiteralNONEClotrimazoleSusceptibilityByMinimumInhibitoryConcentrationMIC = "http://loinc.org#10653-4";
+
+    /// <summary>
     /// Literal for code: ClotrimazoleSusceptibilityByMinimumLethalConcentrationMLC
     /// </summary>
     public const string LiteralClotrimazoleSusceptibilityByMinimumLethalConcentrationMLC = "10654-2";
+
+    /// <summary>
+    /// Literal for code: NONEClotrimazoleSusceptibilityByMinimumLethalConcentrationMLC
+    /// </summary>
+    public const string LiteralNONEClotrimazoleSusceptibilityByMinimumLethalConcentrationMLC = "http://loinc.org#10654-2";
 
     /// <summary>
     /// Literal for code: CoccidiaIdentifiedInDuodenalFluidByAcidFastStain
@@ -12668,9 +16318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoccidiaIdentifiedInDuodenalFluidByAcidFastStain = "10655-9";
 
     /// <summary>
+    /// Literal for code: NONECoccidiaIdentifiedInDuodenalFluidByAcidFastStain
+    /// </summary>
+    public const string LiteralNONECoccidiaIdentifiedInDuodenalFluidByAcidFastStain = "http://loinc.org#10655-9";
+
+    /// <summary>
     /// Literal for code: CoccidiaIdentifiedInStoolByAcidFastStain
     /// </summary>
     public const string LiteralCoccidiaIdentifiedInStoolByAcidFastStain = "10656-7";
+
+    /// <summary>
+    /// Literal for code: NONECoccidiaIdentifiedInStoolByAcidFastStain
+    /// </summary>
+    public const string LiteralNONECoccidiaIdentifiedInStoolByAcidFastStain = "http://loinc.org#10656-7";
 
     /// <summary>
     /// Literal for code: DeprecatedCryptococcusNeoformansAgPresenceInTissueByImmunofluorescence
@@ -12678,9 +16338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedCryptococcusNeoformansAgPresenceInTissueByImmunofluorescence = "10657-5";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedCryptococcusNeoformansAgPresenceInTissueByImmunofluorescence
+    /// </summary>
+    public const string LiteralNONEDeprecatedCryptococcusNeoformansAgPresenceInTissueByImmunofluorescence = "http://loinc.org#10657-5";
+
+    /// <summary>
     /// Literal for code: CyanobacteriumIdentifiedInWaterByLightMicroscopy
     /// </summary>
     public const string LiteralCyanobacteriumIdentifiedInWaterByLightMicroscopy = "10658-3";
+
+    /// <summary>
+    /// Literal for code: NONECyanobacteriumIdentifiedInWaterByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONECyanobacteriumIdentifiedInWaterByLightMicroscopy = "http://loinc.org#10658-3";
 
     /// <summary>
     /// Literal for code: CyclosporaSpIdentifiedInStoolByAcidFastStain
@@ -12688,9 +16358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCyclosporaSpIdentifiedInStoolByAcidFastStain = "10659-1";
 
     /// <summary>
+    /// Literal for code: NONECyclosporaSpIdentifiedInStoolByAcidFastStain
+    /// </summary>
+    public const string LiteralNONECyclosporaSpIdentifiedInStoolByAcidFastStain = "http://loinc.org#10659-1";
+
+    /// <summary>
     /// Literal for code: INOSAgPresenceOnRedBloodCells
     /// </summary>
     public const string LiteralINOSAgPresenceOnRedBloodCells = "1066-0";
+
+    /// <summary>
+    /// Literal for code: NONEINOSAgPresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEINOSAgPresenceOnRedBloodCells = "http://loinc.org#1066-0";
 
     /// <summary>
     /// Literal for code: CytomegalovirusAgPresenceInTissueByImmuneStain
@@ -12698,9 +16378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCytomegalovirusAgPresenceInTissueByImmuneStain = "10660-9";
 
     /// <summary>
+    /// Literal for code: NONECytomegalovirusAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONECytomegalovirusAgPresenceInTissueByImmuneStain = "http://loinc.org#10660-9";
+
+    /// <summary>
     /// Literal for code: DinoflagellateIdentifiedInWaterByLightMicroscopy
     /// </summary>
     public const string LiteralDinoflagellateIdentifiedInWaterByLightMicroscopy = "10661-7";
+
+    /// <summary>
+    /// Literal for code: NONEDinoflagellateIdentifiedInWaterByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEDinoflagellateIdentifiedInWaterByLightMicroscopy = "http://loinc.org#10661-7";
 
     /// <summary>
     /// Literal for code: FilariaIdentifiedInBloodByConcentration
@@ -12708,9 +16398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFilariaIdentifiedInBloodByConcentration = "10662-5";
 
     /// <summary>
+    /// Literal for code: NONEFilariaIdentifiedInBloodByConcentration
+    /// </summary>
+    public const string LiteralNONEFilariaIdentifiedInBloodByConcentration = "http://loinc.org#10662-5";
+
+    /// <summary>
     /// Literal for code: FilariaIdentifiedInBloodByThickFilm
     /// </summary>
     public const string LiteralFilariaIdentifiedInBloodByThickFilm = "10663-3";
+
+    /// <summary>
+    /// Literal for code: NONEFilariaIdentifiedInBloodByThickFilm
+    /// </summary>
+    public const string LiteralNONEFilariaIdentifiedInBloodByThickFilm = "http://loinc.org#10663-3";
 
     /// <summary>
     /// Literal for code: FilariaIdentifiedInBloodByThinFilm
@@ -12718,9 +16418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFilariaIdentifiedInBloodByThinFilm = "10664-1";
 
     /// <summary>
+    /// Literal for code: NONEFilariaIdentifiedInBloodByThinFilm
+    /// </summary>
+    public const string LiteralNONEFilariaIdentifiedInBloodByThinFilm = "http://loinc.org#10664-1";
+
+    /// <summary>
     /// Literal for code: FungusColonyCountNumberVolumeInUnspecifiedSpecimenByEnvironmentalCulture
     /// </summary>
     public const string LiteralFungusColonyCountNumberVolumeInUnspecifiedSpecimenByEnvironmentalCulture = "10665-8";
+
+    /// <summary>
+    /// Literal for code: NONEFungusColonyCountNumberVolumeInUnspecifiedSpecimenByEnvironmentalCulture
+    /// </summary>
+    public const string LiteralNONEFungusColonyCountNumberVolumeInUnspecifiedSpecimenByEnvironmentalCulture = "http://loinc.org#10665-8";
 
     /// <summary>
     /// Literal for code: FungusIdentifiedInTissueByFontanaMassonStain
@@ -12728,9 +16438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFungusIdentifiedInTissueByFontanaMassonStain = "10666-6";
 
     /// <summary>
+    /// Literal for code: NONEFungusIdentifiedInTissueByFontanaMassonStain
+    /// </summary>
+    public const string LiteralNONEFungusIdentifiedInTissueByFontanaMassonStain = "http://loinc.org#10666-6";
+
+    /// <summary>
     /// Literal for code: FungusIdentifiedInUnspecifiedSpecimenByAnimalInoculation
     /// </summary>
     public const string LiteralFungusIdentifiedInUnspecifiedSpecimenByAnimalInoculation = "10667-4";
+
+    /// <summary>
+    /// Literal for code: NONEFungusIdentifiedInUnspecifiedSpecimenByAnimalInoculation
+    /// </summary>
+    public const string LiteralNONEFungusIdentifiedInUnspecifiedSpecimenByAnimalInoculation = "http://loinc.org#10667-4";
 
     /// <summary>
     /// Literal for code: FungusIdentifiedInUnspecifiedSpecimenByEnvironmentalCulture
@@ -12738,9 +16458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFungusIdentifiedInUnspecifiedSpecimenByEnvironmentalCulture = "10668-2";
 
     /// <summary>
+    /// Literal for code: NONEFungusIdentifiedInUnspecifiedSpecimenByEnvironmentalCulture
+    /// </summary>
+    public const string LiteralNONEFungusIdentifiedInUnspecifiedSpecimenByEnvironmentalCulture = "http://loinc.org#10668-2";
+
+    /// <summary>
     /// Literal for code: FungusIdentifiedInUnspecifiedSpecimenByStickyTapeForEnvironmentalFungus
     /// </summary>
     public const string LiteralFungusIdentifiedInUnspecifiedSpecimenByStickyTapeForEnvironmentalFungus = "10669-0";
+
+    /// <summary>
+    /// Literal for code: NONEFungusIdentifiedInUnspecifiedSpecimenByStickyTapeForEnvironmentalFungus
+    /// </summary>
+    public const string LiteralNONEFungusIdentifiedInUnspecifiedSpecimenByStickyTapeForEnvironmentalFungus = "http://loinc.org#10669-0";
 
     /// <summary>
     /// Literal for code: JkSupAAbPresenceInSerumOrPlasmaFromBloodProductUnit
@@ -12748,9 +16478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJkSupAAbPresenceInSerumOrPlasmaFromBloodProductUnit = "1067-8";
 
     /// <summary>
+    /// Literal for code: NONEJkSupAAbPresenceInSerumOrPlasmaFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEJkSupAAbPresenceInSerumOrPlasmaFromBloodProductUnit = "http://loinc.org#1067-8";
+
+    /// <summary>
     /// Literal for code: GiardiaLambliaPresenceInStoolByOrganismSpecificCulture
     /// </summary>
     public const string LiteralGiardiaLambliaPresenceInStoolByOrganismSpecificCulture = "10670-8";
+
+    /// <summary>
+    /// Literal for code: NONEGiardiaLambliaPresenceInStoolByOrganismSpecificCulture
+    /// </summary>
+    public const string LiteralNONEGiardiaLambliaPresenceInStoolByOrganismSpecificCulture = "http://loinc.org#10670-8";
 
     /// <summary>
     /// Literal for code: HelminthIdentifiedInUnspecifiedSpecimen
@@ -12758,9 +16498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHelminthIdentifiedInUnspecifiedSpecimen = "10671-6";
 
     /// <summary>
+    /// Literal for code: NONEHelminthIdentifiedInUnspecifiedSpecimen
+    /// </summary>
+    public const string LiteralNONEHelminthIdentifiedInUnspecifiedSpecimen = "http://loinc.org#10671-6";
+
+    /// <summary>
     /// Literal for code: HelminthPlusArthropodIdentifiedInUnspecifiedSpecimen
     /// </summary>
     public const string LiteralHelminthPlusArthropodIdentifiedInUnspecifiedSpecimen = "10672-4";
+
+    /// <summary>
+    /// Literal for code: NONEHelminthPlusArthropodIdentifiedInUnspecifiedSpecimen
+    /// </summary>
+    public const string LiteralNONEHelminthPlusArthropodIdentifiedInUnspecifiedSpecimen = "http://loinc.org#10672-4";
 
     /// <summary>
     /// Literal for code: HepatitisBVirusCoreAgPresenceInTissueByImmuneStain
@@ -12768,9 +16518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHepatitisBVirusCoreAgPresenceInTissueByImmuneStain = "10673-2";
 
     /// <summary>
+    /// Literal for code: NONEHepatitisBVirusCoreAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEHepatitisBVirusCoreAgPresenceInTissueByImmuneStain = "http://loinc.org#10673-2";
+
+    /// <summary>
     /// Literal for code: HepatitisBVirusSurfaceAgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralHepatitisBVirusSurfaceAgPresenceInTissueByImmuneStain = "10674-0";
+
+    /// <summary>
+    /// Literal for code: NONEHepatitisBVirusSurfaceAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEHepatitisBVirusSurfaceAgPresenceInTissueByImmuneStain = "http://loinc.org#10674-0";
 
     /// <summary>
     /// Literal for code: HepatitisBVirusSurfaceAgPresenceInTissueByOrceinStain
@@ -12778,9 +16538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHepatitisBVirusSurfaceAgPresenceInTissueByOrceinStain = "10675-7";
 
     /// <summary>
+    /// Literal for code: NONEHepatitisBVirusSurfaceAgPresenceInTissueByOrceinStain
+    /// </summary>
+    public const string LiteralNONEHepatitisBVirusSurfaceAgPresenceInTissueByOrceinStain = "http://loinc.org#10675-7";
+
+    /// <summary>
     /// Literal for code: HepatitisCVirusRNAUnitsVolumeViralLoadInSerumOrPlasmaByProbeWithAmplification
     /// </summary>
     public const string LiteralHepatitisCVirusRNAUnitsVolumeViralLoadInSerumOrPlasmaByProbeWithAmplification = "10676-5";
+
+    /// <summary>
+    /// Literal for code: NONEHepatitisCVirusRNAUnitsVolumeViralLoadInSerumOrPlasmaByProbeWithAmplification
+    /// </summary>
+    public const string LiteralNONEHepatitisCVirusRNAUnitsVolumeViralLoadInSerumOrPlasmaByProbeWithAmplification = "http://loinc.org#10676-5";
 
     /// <summary>
     /// Literal for code: HerpesSimplexVirus1AgPresenceInTissueByImmuneStain
@@ -12788,9 +16558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHerpesSimplexVirus1AgPresenceInTissueByImmuneStain = "10677-3";
 
     /// <summary>
+    /// Literal for code: NONEHerpesSimplexVirus1AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEHerpesSimplexVirus1AgPresenceInTissueByImmuneStain = "http://loinc.org#10677-3";
+
+    /// <summary>
     /// Literal for code: HerpesSimplexVirus1Plus2AgPresenceInTissueByImmuneStain
     /// </summary>
     public const string LiteralHerpesSimplexVirus1Plus2AgPresenceInTissueByImmuneStain = "10678-1";
+
+    /// <summary>
+    /// Literal for code: NONEHerpesSimplexVirus1Plus2AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEHerpesSimplexVirus1Plus2AgPresenceInTissueByImmuneStain = "http://loinc.org#10678-1";
 
     /// <summary>
     /// Literal for code: HerpesSimplexVirus2AgPresenceInTissueByImmuneStain
@@ -12798,9 +16578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHerpesSimplexVirus2AgPresenceInTissueByImmuneStain = "10679-9";
 
     /// <summary>
+    /// Literal for code: NONEHerpesSimplexVirus2AgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEHerpesSimplexVirus2AgPresenceInTissueByImmuneStain = "http://loinc.org#10679-9";
+
+    /// <summary>
     /// Literal for code: JkSupAAbPresenceInSerumOrPlasmaFromDonor
     /// </summary>
     public const string LiteralJkSupAAbPresenceInSerumOrPlasmaFromDonor = "1068-6";
+
+    /// <summary>
+    /// Literal for code: NONEJkSupAAbPresenceInSerumOrPlasmaFromDonor
+    /// </summary>
+    public const string LiteralNONEJkSupAAbPresenceInSerumOrPlasmaFromDonor = "http://loinc.org#1068-6";
 
     /// <summary>
     /// Literal for code: HerpesSimplexVirusIdentifiedInCerebralSpinalFluidByElectronMicroscopy
@@ -12808,9 +16598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHerpesSimplexVirusIdentifiedInCerebralSpinalFluidByElectronMicroscopy = "10680-7";
 
     /// <summary>
+    /// Literal for code: NONEHerpesSimplexVirusIdentifiedInCerebralSpinalFluidByElectronMicroscopy
+    /// </summary>
+    public const string LiteralNONEHerpesSimplexVirusIdentifiedInCerebralSpinalFluidByElectronMicroscopy = "http://loinc.org#10680-7";
+
+    /// <summary>
     /// Literal for code: HerpesSimplexVirusIdentifiedInTissueByElectronMicroscopy
     /// </summary>
     public const string LiteralHerpesSimplexVirusIdentifiedInTissueByElectronMicroscopy = "10681-5";
+
+    /// <summary>
+    /// Literal for code: NONEHerpesSimplexVirusIdentifiedInTissueByElectronMicroscopy
+    /// </summary>
+    public const string LiteralNONEHerpesSimplexVirusIdentifiedInTissueByElectronMicroscopy = "http://loinc.org#10681-5";
 
     /// <summary>
     /// Literal for code: DeprecatedHIV1RNAUnitsVolumeInSerumOrPlasmaByProbeWithAmplification
@@ -12818,9 +16618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedHIV1RNAUnitsVolumeInSerumOrPlasmaByProbeWithAmplification = "10682-3";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedHIV1RNAUnitsVolumeInSerumOrPlasmaByProbeWithAmplification
+    /// </summary>
+    public const string LiteralNONEDeprecatedHIV1RNAUnitsVolumeInSerumOrPlasmaByProbeWithAmplification = "http://loinc.org#10682-3";
+
+    /// <summary>
     /// Literal for code: HydatidCystIdentifiedInAspirateByImmuneStain
     /// </summary>
     public const string LiteralHydatidCystIdentifiedInAspirateByImmuneStain = "10683-1";
+
+    /// <summary>
+    /// Literal for code: NONEHydatidCystIdentifiedInAspirateByImmuneStain
+    /// </summary>
+    public const string LiteralNONEHydatidCystIdentifiedInAspirateByImmuneStain = "http://loinc.org#10683-1";
 
     /// <summary>
     /// Literal for code: HydatidCystIdentifiedInLiverByWetPreparation
@@ -12828,9 +16638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHydatidCystIdentifiedInLiverByWetPreparation = "10684-9";
 
     /// <summary>
+    /// Literal for code: NONEHydatidCystIdentifiedInLiverByWetPreparation
+    /// </summary>
+    public const string LiteralNONEHydatidCystIdentifiedInLiverByWetPreparation = "http://loinc.org#10684-9";
+
+    /// <summary>
     /// Literal for code: HydatidCystIdentifiedInLungTissueByWetPreparation
     /// </summary>
     public const string LiteralHydatidCystIdentifiedInLungTissueByWetPreparation = "10685-6";
+
+    /// <summary>
+    /// Literal for code: NONEHydatidCystIdentifiedInLungTissueByWetPreparation
+    /// </summary>
+    public const string LiteralNONEHydatidCystIdentifiedInLungTissueByWetPreparation = "http://loinc.org#10685-6";
 
     /// <summary>
     /// Literal for code: LeishmaniaSpIdentifiedInTissueByGiemsaStain
@@ -12838,9 +16658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeishmaniaSpIdentifiedInTissueByGiemsaStain = "10686-4";
 
     /// <summary>
+    /// Literal for code: NONELeishmaniaSpIdentifiedInTissueByGiemsaStain
+    /// </summary>
+    public const string LiteralNONELeishmaniaSpIdentifiedInTissueByGiemsaStain = "http://loinc.org#10686-4";
+
+    /// <summary>
     /// Literal for code: LeishmaniaSpIdentifiedInTissueByOrganismSpecificCulture
     /// </summary>
     public const string LiteralLeishmaniaSpIdentifiedInTissueByOrganismSpecificCulture = "10687-2";
+
+    /// <summary>
+    /// Literal for code: NONELeishmaniaSpIdentifiedInTissueByOrganismSpecificCulture
+    /// </summary>
+    public const string LiteralNONELeishmaniaSpIdentifiedInTissueByOrganismSpecificCulture = "http://loinc.org#10687-2";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInHairByKOHPreparation
@@ -12848,9 +16678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInHairByKOHPreparation = "10688-0";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInHairByKOHPreparation
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInHairByKOHPreparation = "http://loinc.org#10688-0";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInNailByKOHPreparation
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInNailByKOHPreparation = "10689-8";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInNailByKOHPreparation
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInNailByKOHPreparation = "http://loinc.org#10689-8";
 
     /// <summary>
     /// Literal for code: JkSupAAbPresenceInSerumOrPlasma
@@ -12858,9 +16698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJkSupAAbPresenceInSerumOrPlasma = "1069-4";
 
     /// <summary>
+    /// Literal for code: NONEJkSupAAbPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEJkSupAAbPresenceInSerumOrPlasma = "http://loinc.org#1069-4";
+
+    /// <summary>
     /// Literal for code: MicrosporidiaIdentifiedInDuodenalFluidByTrichromeStainModified
     /// </summary>
     public const string LiteralMicrosporidiaIdentifiedInDuodenalFluidByTrichromeStainModified = "10690-6";
+
+    /// <summary>
+    /// Literal for code: NONEMicrosporidiaIdentifiedInDuodenalFluidByTrichromeStainModified
+    /// </summary>
+    public const string LiteralNONEMicrosporidiaIdentifiedInDuodenalFluidByTrichromeStainModified = "http://loinc.org#10690-6";
 
     /// <summary>
     /// Literal for code: MushroomToxicIdentifiedByInspection
@@ -12868,9 +16718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMushroomToxicIdentifiedByInspection = "10691-4";
 
     /// <summary>
+    /// Literal for code: NONEMushroomToxicIdentifiedByInspection
+    /// </summary>
+    public const string LiteralNONEMushroomToxicIdentifiedByInspection = "http://loinc.org#10691-4";
+
+    /// <summary>
     /// Literal for code: MushroomToxicIdentifiedInFoodByLightMicroscopy
     /// </summary>
     public const string LiteralMushroomToxicIdentifiedInFoodByLightMicroscopy = "10692-2";
+
+    /// <summary>
+    /// Literal for code: NONEMushroomToxicIdentifiedInFoodByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEMushroomToxicIdentifiedInFoodByLightMicroscopy = "http://loinc.org#10692-2";
 
     /// <summary>
     /// Literal for code: MushroomToxicIdentifiedInVomitusByLightMicroscopy
@@ -12878,9 +16738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMushroomToxicIdentifiedInVomitusByLightMicroscopy = "10693-0";
 
     /// <summary>
+    /// Literal for code: NONEMushroomToxicIdentifiedInVomitusByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEMushroomToxicIdentifiedInVomitusByLightMicroscopy = "http://loinc.org#10693-0";
+
+    /// <summary>
     /// Literal for code: NaegleriaSpIdentifiedInTissueByOrganismSpecificCulture
     /// </summary>
     public const string LiteralNaegleriaSpIdentifiedInTissueByOrganismSpecificCulture = "10694-8";
+
+    /// <summary>
+    /// Literal for code: NONENaegleriaSpIdentifiedInTissueByOrganismSpecificCulture
+    /// </summary>
+    public const string LiteralNONENaegleriaSpIdentifiedInTissueByOrganismSpecificCulture = "http://loinc.org#10694-8";
 
     /// <summary>
     /// Literal for code: NaegleriaSpIdentifiedInTissueByWetPreparation
@@ -12888,9 +16758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNaegleriaSpIdentifiedInTissueByWetPreparation = "10695-5";
 
     /// <summary>
+    /// Literal for code: NONENaegleriaSpIdentifiedInTissueByWetPreparation
+    /// </summary>
+    public const string LiteralNONENaegleriaSpIdentifiedInTissueByWetPreparation = "http://loinc.org#10695-5";
+
+    /// <summary>
     /// Literal for code: NorovirusIdentifierInStoolByElectronMicroscopy
     /// </summary>
     public const string LiteralNorovirusIdentifierInStoolByElectronMicroscopy = "10696-3";
+
+    /// <summary>
+    /// Literal for code: NONENorovirusIdentifierInStoolByElectronMicroscopy
+    /// </summary>
+    public const string LiteralNONENorovirusIdentifierInStoolByElectronMicroscopy = "http://loinc.org#10696-3";
 
     /// <summary>
     /// Literal for code: NystatinSusceptibilityByMinimumInhibitoryConcentrationMIC
@@ -12898,9 +16778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNystatinSusceptibilityByMinimumInhibitoryConcentrationMIC = "10697-1";
 
     /// <summary>
+    /// Literal for code: NONENystatinSusceptibilityByMinimumInhibitoryConcentrationMIC
+    /// </summary>
+    public const string LiteralNONENystatinSusceptibilityByMinimumInhibitoryConcentrationMIC = "http://loinc.org#10697-1";
+
+    /// <summary>
     /// Literal for code: NystatinSusceptibilityByMinimumLethalConcentrationMLC
     /// </summary>
     public const string LiteralNystatinSusceptibilityByMinimumLethalConcentrationMLC = "10698-9";
+
+    /// <summary>
+    /// Literal for code: NONENystatinSusceptibilityByMinimumLethalConcentrationMLC
+    /// </summary>
+    public const string LiteralNONENystatinSusceptibilityByMinimumLethalConcentrationMLC = "http://loinc.org#10698-9";
 
     /// <summary>
     /// Literal for code: OnchocercaSpIdentifiedInTissueByWetPreparation
@@ -12908,9 +16798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOnchocercaSpIdentifiedInTissueByWetPreparation = "10699-7";
 
     /// <summary>
+    /// Literal for code: NONEOnchocercaSpIdentifiedInTissueByWetPreparation
+    /// </summary>
+    public const string LiteralNONEOnchocercaSpIdentifiedInTissueByWetPreparation = "http://loinc.org#10699-7";
+
+    /// <summary>
     /// Literal for code: CefotaximeSusceptibilityByMinimumLethalConcentrationMLC
     /// </summary>
     public const string LiteralCefotaximeSusceptibilityByMinimumLethalConcentrationMLC = "107-3";
+
+    /// <summary>
+    /// Literal for code: NONECefotaximeSusceptibilityByMinimumLethalConcentrationMLC
+    /// </summary>
+    public const string LiteralNONECefotaximeSusceptibilityByMinimumLethalConcentrationMLC = "http://loinc.org#107-3";
 
     /// <summary>
     /// Literal for code: JkSupAAgPresenceOnRedBloodCellsFromBloodProductUnit
@@ -12918,9 +16818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJkSupAAgPresenceOnRedBloodCellsFromBloodProductUnit = "1070-2";
 
     /// <summary>
+    /// Literal for code: NONEJkSupAAgPresenceOnRedBloodCellsFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEJkSupAAgPresenceOnRedBloodCellsFromBloodProductUnit = "http://loinc.org#1070-2";
+
+    /// <summary>
     /// Literal for code: OrthopoxvirusIdentifierInSkinByElectronMicroscopy
     /// </summary>
     public const string LiteralOrthopoxvirusIdentifierInSkinByElectronMicroscopy = "10700-3";
+
+    /// <summary>
+    /// Literal for code: NONEOrthopoxvirusIdentifierInSkinByElectronMicroscopy
+    /// </summary>
+    public const string LiteralNONEOrthopoxvirusIdentifierInSkinByElectronMicroscopy = "http://loinc.org#10700-3";
 
     /// <summary>
     /// Literal for code: OvaAndParasitesIdentifiedInStoolByConcentration
@@ -12928,9 +16838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOvaAndParasitesIdentifiedInStoolByConcentration = "10701-1";
 
     /// <summary>
+    /// Literal for code: NONEOvaAndParasitesIdentifiedInStoolByConcentration
+    /// </summary>
+    public const string LiteralNONEOvaAndParasitesIdentifiedInStoolByConcentration = "http://loinc.org#10701-1";
+
+    /// <summary>
     /// Literal for code: OvaAndParasitesIdentifiedInStoolByImmuneStain
     /// </summary>
     public const string LiteralOvaAndParasitesIdentifiedInStoolByImmuneStain = "10702-9";
+
+    /// <summary>
+    /// Literal for code: NONEOvaAndParasitesIdentifiedInStoolByImmuneStain
+    /// </summary>
+    public const string LiteralNONEOvaAndParasitesIdentifiedInStoolByImmuneStain = "http://loinc.org#10702-9";
 
     /// <summary>
     /// Literal for code: OvaAndParasitesIdentifiedInStoolByKinyounIronHematoxylinStain
@@ -12938,9 +16858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOvaAndParasitesIdentifiedInStoolByKinyounIronHematoxylinStain = "10703-7";
 
     /// <summary>
+    /// Literal for code: NONEOvaAndParasitesIdentifiedInStoolByKinyounIronHematoxylinStain
+    /// </summary>
+    public const string LiteralNONEOvaAndParasitesIdentifiedInStoolByKinyounIronHematoxylinStain = "http://loinc.org#10703-7";
+
+    /// <summary>
     /// Literal for code: OvaAndParasitesIdentifiedInStoolByLightMicroscopy
     /// </summary>
     public const string LiteralOvaAndParasitesIdentifiedInStoolByLightMicroscopy = "10704-5";
+
+    /// <summary>
+    /// Literal for code: NONEOvaAndParasitesIdentifiedInStoolByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEOvaAndParasitesIdentifiedInStoolByLightMicroscopy = "http://loinc.org#10704-5";
 
     /// <summary>
     /// Literal for code: HumanPapillomaVirusAgPresenceInTissueByImmuneStain
@@ -12948,9 +16878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHumanPapillomaVirusAgPresenceInTissueByImmuneStain = "10705-2";
 
     /// <summary>
+    /// Literal for code: NONEHumanPapillomaVirusAgPresenceInTissueByImmuneStain
+    /// </summary>
+    public const string LiteralNONEHumanPapillomaVirusAgPresenceInTissueByImmuneStain = "http://loinc.org#10705-2";
+
+    /// <summary>
     /// Literal for code: PicornavirusIdentifierInStoolByElectronMicroscopy
     /// </summary>
     public const string LiteralPicornavirusIdentifierInStoolByElectronMicroscopy = "10706-0";
+
+    /// <summary>
+    /// Literal for code: NONEPicornavirusIdentifierInStoolByElectronMicroscopy
+    /// </summary>
+    public const string LiteralNONEPicornavirusIdentifierInStoolByElectronMicroscopy = "http://loinc.org#10706-0";
 
     /// <summary>
     /// Literal for code: ToxicPlantIdentifiedInPlantSpecimenByInspection
@@ -12958,9 +16898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralToxicPlantIdentifiedInPlantSpecimenByInspection = "10707-8";
 
     /// <summary>
+    /// Literal for code: NONEToxicPlantIdentifiedInPlantSpecimenByInspection
+    /// </summary>
+    public const string LiteralNONEToxicPlantIdentifiedInPlantSpecimenByInspection = "http://loinc.org#10707-8";
+
+    /// <summary>
     /// Literal for code: ToxicPlantIdentifiedInVomitusByLightMicroscopy
     /// </summary>
     public const string LiteralToxicPlantIdentifiedInVomitusByLightMicroscopy = "10708-6";
+
+    /// <summary>
+    /// Literal for code: NONEToxicPlantIdentifiedInVomitusByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEToxicPlantIdentifiedInVomitusByLightMicroscopy = "http://loinc.org#10708-6";
 
     /// <summary>
     /// Literal for code: PlasmodiumFalciparumAgUnitsVolumeInBloodByImmunofluorescence
@@ -12968,9 +16918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPlasmodiumFalciparumAgUnitsVolumeInBloodByImmunofluorescence = "10709-4";
 
     /// <summary>
+    /// Literal for code: NONEPlasmodiumFalciparumAgUnitsVolumeInBloodByImmunofluorescence
+    /// </summary>
+    public const string LiteralNONEPlasmodiumFalciparumAgUnitsVolumeInBloodByImmunofluorescence = "http://loinc.org#10709-4";
+
+    /// <summary>
     /// Literal for code: JkSupAAgPresenceOnRedBloodCellsFromDonor
     /// </summary>
     public const string LiteralJkSupAAgPresenceOnRedBloodCellsFromDonor = "1071-0";
+
+    /// <summary>
+    /// Literal for code: NONEJkSupAAgPresenceOnRedBloodCellsFromDonor
+    /// </summary>
+    public const string LiteralNONEJkSupAAgPresenceOnRedBloodCellsFromDonor = "http://loinc.org#1071-0";
 
     /// <summary>
     /// Literal for code: PlasmodiumSpIdentifiedInBloodByThinFilm
@@ -12978,9 +16938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPlasmodiumSpIdentifiedInBloodByThinFilm = "10710-2";
 
     /// <summary>
+    /// Literal for code: NONEPlasmodiumSpIdentifiedInBloodByThinFilm
+    /// </summary>
+    public const string LiteralNONEPlasmodiumSpIdentifiedInBloodByThinFilm = "http://loinc.org#10710-2";
+
+    /// <summary>
     /// Literal for code: PlasmodiumVivaxAgUnitsVolumeInBloodByImmunofluorescence
     /// </summary>
     public const string LiteralPlasmodiumVivaxAgUnitsVolumeInBloodByImmunofluorescence = "10711-0";
+
+    /// <summary>
+    /// Literal for code: NONEPlasmodiumVivaxAgUnitsVolumeInBloodByImmunofluorescence
+    /// </summary>
+    public const string LiteralNONEPlasmodiumVivaxAgUnitsVolumeInBloodByImmunofluorescence = "http://loinc.org#10711-0";
 
     /// <summary>
     /// Literal for code: PneumocystisSpIdentifiedInLungTissue
@@ -12988,9 +16958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPneumocystisSpIdentifiedInLungTissue = "10712-8";
 
     /// <summary>
+    /// Literal for code: NONEPneumocystisSpIdentifiedInLungTissue
+    /// </summary>
+    public const string LiteralNONEPneumocystisSpIdentifiedInLungTissue = "http://loinc.org#10712-8";
+
+    /// <summary>
     /// Literal for code: ProtothecaIdentifiedInUnspecifiedSpecimenByCulture
     /// </summary>
     public const string LiteralProtothecaIdentifiedInUnspecifiedSpecimenByCulture = "10713-6";
+
+    /// <summary>
+    /// Literal for code: NONEProtothecaIdentifiedInUnspecifiedSpecimenByCulture
+    /// </summary>
+    public const string LiteralNONEProtothecaIdentifiedInUnspecifiedSpecimenByCulture = "http://loinc.org#10713-6";
 
     /// <summary>
     /// Literal for code: DeprecatedRotavirusIdentifierInStoolByElectronMicroscopy
@@ -12998,9 +16978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedRotavirusIdentifierInStoolByElectronMicroscopy = "10714-4";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedRotavirusIdentifierInStoolByElectronMicroscopy
+    /// </summary>
+    public const string LiteralNONEDeprecatedRotavirusIdentifierInStoolByElectronMicroscopy = "http://loinc.org#10714-4";
+
+    /// <summary>
     /// Literal for code: SchistosomaSpIdentifiedInUrineSedimentByLightMicroscopy
     /// </summary>
     public const string LiteralSchistosomaSpIdentifiedInUrineSedimentByLightMicroscopy = "10715-1";
+
+    /// <summary>
+    /// Literal for code: NONESchistosomaSpIdentifiedInUrineSedimentByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONESchistosomaSpIdentifiedInUrineSedimentByLightMicroscopy = "http://loinc.org#10715-1";
 
     /// <summary>
     /// Literal for code: SchistosomaSpIdentifiedInUnspecifiedSpecimenByOrganismSpecificCulture
@@ -13008,9 +16998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSchistosomaSpIdentifiedInUnspecifiedSpecimenByOrganismSpecificCulture = "10716-9";
 
     /// <summary>
+    /// Literal for code: NONESchistosomaSpIdentifiedInUnspecifiedSpecimenByOrganismSpecificCulture
+    /// </summary>
+    public const string LiteralNONESchistosomaSpIdentifiedInUnspecifiedSpecimenByOrganismSpecificCulture = "http://loinc.org#10716-9";
+
+    /// <summary>
     /// Literal for code: StreptococcusPneumoniaeAbUnitsVolumeInSerumByLatexAgglutination
     /// </summary>
     public const string LiteralStreptococcusPneumoniaeAbUnitsVolumeInSerumByLatexAgglutination = "10717-7";
+
+    /// <summary>
+    /// Literal for code: NONEStreptococcusPneumoniaeAbUnitsVolumeInSerumByLatexAgglutination
+    /// </summary>
+    public const string LiteralNONEStreptococcusPneumoniaeAbUnitsVolumeInSerumByLatexAgglutination = "http://loinc.org#10717-7";
 
     /// <summary>
     /// Literal for code: StrongyloidesSpAbUnitsVolumeInSerumByImmunoassay
@@ -13018,9 +17018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStrongyloidesSpAbUnitsVolumeInSerumByImmunoassay = "10718-5";
 
     /// <summary>
+    /// Literal for code: NONEStrongyloidesSpAbUnitsVolumeInSerumByImmunoassay
+    /// </summary>
+    public const string LiteralNONEStrongyloidesSpAbUnitsVolumeInSerumByImmunoassay = "http://loinc.org#10718-5";
+
+    /// <summary>
     /// Literal for code: TaeniaSoliumAdultAbUnitsVolumeInSerumByImmunoblot
     /// </summary>
     public const string LiteralTaeniaSoliumAdultAbUnitsVolumeInSerumByImmunoblot = "10719-3";
+
+    /// <summary>
+    /// Literal for code: NONETaeniaSoliumAdultAbUnitsVolumeInSerumByImmunoblot
+    /// </summary>
+    public const string LiteralNONETaeniaSoliumAdultAbUnitsVolumeInSerumByImmunoblot = "http://loinc.org#10719-3";
 
     /// <summary>
     /// Literal for code: JkSupAAgPresenceOnRedBloodCells
@@ -13028,9 +17038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJkSupAAgPresenceOnRedBloodCells = "1072-8";
 
     /// <summary>
+    /// Literal for code: NONEJkSupAAgPresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEJkSupAAgPresenceOnRedBloodCells = "http://loinc.org#1072-8";
+
+    /// <summary>
     /// Literal for code: TerbinafineSusceptibilityByMinimumInhibitoryConcentrationMIC
     /// </summary>
     public const string LiteralTerbinafineSusceptibilityByMinimumInhibitoryConcentrationMIC = "10720-1";
+
+    /// <summary>
+    /// Literal for code: NONETerbinafineSusceptibilityByMinimumInhibitoryConcentrationMIC
+    /// </summary>
+    public const string LiteralNONETerbinafineSusceptibilityByMinimumInhibitoryConcentrationMIC = "http://loinc.org#10720-1";
 
     /// <summary>
     /// Literal for code: TerbinafineSusceptibilityByMinimumLethalConcentrationMLC
@@ -13038,9 +17058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTerbinafineSusceptibilityByMinimumLethalConcentrationMLC = "10721-9";
 
     /// <summary>
+    /// Literal for code: NONETerbinafineSusceptibilityByMinimumLethalConcentrationMLC
+    /// </summary>
+    public const string LiteralNONETerbinafineSusceptibilityByMinimumLethalConcentrationMLC = "http://loinc.org#10721-9";
+
+    /// <summary>
     /// Literal for code: TorovirusIdentifierInStoolByElectronMicroscopy
     /// </summary>
     public const string LiteralTorovirusIdentifierInStoolByElectronMicroscopy = "10722-7";
+
+    /// <summary>
+    /// Literal for code: NONETorovirusIdentifierInStoolByElectronMicroscopy
+    /// </summary>
+    public const string LiteralNONETorovirusIdentifierInStoolByElectronMicroscopy = "http://loinc.org#10722-7";
 
     /// <summary>
     /// Literal for code: ToxoplasmaGondiiIgAAbUnitsVolumeInSerumByImmunoassay
@@ -13048,9 +17078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralToxoplasmaGondiiIgAAbUnitsVolumeInSerumByImmunoassay = "10723-5";
 
     /// <summary>
+    /// Literal for code: NONEToxoplasmaGondiiIgAAbUnitsVolumeInSerumByImmunoassay
+    /// </summary>
+    public const string LiteralNONEToxoplasmaGondiiIgAAbUnitsVolumeInSerumByImmunoassay = "http://loinc.org#10723-5";
+
+    /// <summary>
     /// Literal for code: ToxoplasmaGondiiIgEAbUnitsVolumeInSerumByImmunoassay
     /// </summary>
     public const string LiteralToxoplasmaGondiiIgEAbUnitsVolumeInSerumByImmunoassay = "10724-3";
+
+    /// <summary>
+    /// Literal for code: NONEToxoplasmaGondiiIgEAbUnitsVolumeInSerumByImmunoassay
+    /// </summary>
+    public const string LiteralNONEToxoplasmaGondiiIgEAbUnitsVolumeInSerumByImmunoassay = "http://loinc.org#10724-3";
 
     /// <summary>
     /// Literal for code: ToxoplasmaGondiiDNAUnitsVolumeInBodyFluidByProbeWithAmplification
@@ -13058,9 +17098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralToxoplasmaGondiiDNAUnitsVolumeInBodyFluidByProbeWithAmplification = "10725-0";
 
     /// <summary>
+    /// Literal for code: NONEToxoplasmaGondiiDNAUnitsVolumeInBodyFluidByProbeWithAmplification
+    /// </summary>
+    public const string LiteralNONEToxoplasmaGondiiDNAUnitsVolumeInBodyFluidByProbeWithAmplification = "http://loinc.org#10725-0";
+
+    /// <summary>
     /// Literal for code: ToxoplasmaGondiiPresenceInTissueByGiemsaStain
     /// </summary>
     public const string LiteralToxoplasmaGondiiPresenceInTissueByGiemsaStain = "10726-8";
+
+    /// <summary>
+    /// Literal for code: NONEToxoplasmaGondiiPresenceInTissueByGiemsaStain
+    /// </summary>
+    public const string LiteralNONEToxoplasmaGondiiPresenceInTissueByGiemsaStain = "http://loinc.org#10726-8";
 
     /// <summary>
     /// Literal for code: ToxoplasmaGondiiIdentifiedInTissue
@@ -13068,9 +17118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralToxoplasmaGondiiIdentifiedInTissue = "10727-6";
 
     /// <summary>
+    /// Literal for code: NONEToxoplasmaGondiiIdentifiedInTissue
+    /// </summary>
+    public const string LiteralNONEToxoplasmaGondiiIdentifiedInTissue = "http://loinc.org#10727-6";
+
+    /// <summary>
     /// Literal for code: TrichomonasSpIdentifiedInGenitalSpecimenByOrganismSpecificCulture
     /// </summary>
     public const string LiteralTrichomonasSpIdentifiedInGenitalSpecimenByOrganismSpecificCulture = "10728-4";
+
+    /// <summary>
+    /// Literal for code: NONETrichomonasSpIdentifiedInGenitalSpecimenByOrganismSpecificCulture
+    /// </summary>
+    public const string LiteralNONETrichomonasSpIdentifiedInGenitalSpecimenByOrganismSpecificCulture = "http://loinc.org#10728-4";
 
     /// <summary>
     /// Literal for code: TrypanosomaSpIdentifiedInBloodByLightMicroscopy
@@ -13078,9 +17138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrypanosomaSpIdentifiedInBloodByLightMicroscopy = "10729-2";
 
     /// <summary>
+    /// Literal for code: NONETrypanosomaSpIdentifiedInBloodByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONETrypanosomaSpIdentifiedInBloodByLightMicroscopy = "http://loinc.org#10729-2";
+
+    /// <summary>
     /// Literal for code: JkSupBAbPresenceInSerumOrPlasmaFromBloodProductUnit
     /// </summary>
     public const string LiteralJkSupBAbPresenceInSerumOrPlasmaFromBloodProductUnit = "1073-6";
+
+    /// <summary>
+    /// Literal for code: NONEJkSupBAbPresenceInSerumOrPlasmaFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEJkSupBAbPresenceInSerumOrPlasmaFromBloodProductUnit = "http://loinc.org#1073-6";
 
     /// <summary>
     /// Literal for code: TrypanosomaSpIdentifiedInBloodByOrganismSpecificCulture
@@ -13088,9 +17158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrypanosomaSpIdentifiedInBloodByOrganismSpecificCulture = "10730-0";
 
     /// <summary>
+    /// Literal for code: NONETrypanosomaSpIdentifiedInBloodByOrganismSpecificCulture
+    /// </summary>
+    public const string LiteralNONETrypanosomaSpIdentifiedInBloodByOrganismSpecificCulture = "http://loinc.org#10730-0";
+
+    /// <summary>
     /// Literal for code: TrypanosomaSpIdentifiedInBloodByThickFilm
     /// </summary>
     public const string LiteralTrypanosomaSpIdentifiedInBloodByThickFilm = "10731-8";
+
+    /// <summary>
+    /// Literal for code: NONETrypanosomaSpIdentifiedInBloodByThickFilm
+    /// </summary>
+    public const string LiteralNONETrypanosomaSpIdentifiedInBloodByThickFilm = "http://loinc.org#10731-8";
 
     /// <summary>
     /// Literal for code: TrypanosomaSpIdentifiedInBloodByThinFilm
@@ -13098,9 +17178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrypanosomaSpIdentifiedInBloodByThinFilm = "10732-6";
 
     /// <summary>
+    /// Literal for code: NONETrypanosomaSpIdentifiedInBloodByThinFilm
+    /// </summary>
+    public const string LiteralNONETrypanosomaSpIdentifiedInBloodByThinFilm = "http://loinc.org#10732-6";
+
+    /// <summary>
     /// Literal for code: TrypanosomaSpIdentifiedInBloodByWetPreparation
     /// </summary>
     public const string LiteralTrypanosomaSpIdentifiedInBloodByWetPreparation = "10733-4";
+
+    /// <summary>
+    /// Literal for code: NONETrypanosomaSpIdentifiedInBloodByWetPreparation
+    /// </summary>
+    public const string LiteralNONETrypanosomaSpIdentifiedInBloodByWetPreparation = "http://loinc.org#10733-4";
 
     /// <summary>
     /// Literal for code: VaricellaZosterVirusIdentifiedInSkinByElectronMicroscopy
@@ -13108,9 +17198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVaricellaZosterVirusIdentifiedInSkinByElectronMicroscopy = "10734-2";
 
     /// <summary>
+    /// Literal for code: NONEVaricellaZosterVirusIdentifiedInSkinByElectronMicroscopy
+    /// </summary>
+    public const string LiteralNONEVaricellaZosterVirusIdentifiedInSkinByElectronMicroscopy = "http://loinc.org#10734-2";
+
+    /// <summary>
     /// Literal for code: ViralSequencingIdentifierInSerumBySequencing
     /// </summary>
     public const string LiteralViralSequencingIdentifierInSerumBySequencing = "10735-9";
+
+    /// <summary>
+    /// Literal for code: NONEViralSequencingIdentifierInSerumBySequencing
+    /// </summary>
+    public const string LiteralNONEViralSequencingIdentifierInSerumBySequencing = "http://loinc.org#10735-9";
 
     /// <summary>
     /// Literal for code: VirusIdentifiedInCerebralSpinalFluidByElectronMicroscopy
@@ -13118,9 +17218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVirusIdentifiedInCerebralSpinalFluidByElectronMicroscopy = "10736-7";
 
     /// <summary>
+    /// Literal for code: NONEVirusIdentifiedInCerebralSpinalFluidByElectronMicroscopy
+    /// </summary>
+    public const string LiteralNONEVirusIdentifiedInCerebralSpinalFluidByElectronMicroscopy = "http://loinc.org#10736-7";
+
+    /// <summary>
     /// Literal for code: VirusIdentifiedInStoolByElectronMicroscopy
     /// </summary>
     public const string LiteralVirusIdentifiedInStoolByElectronMicroscopy = "10737-5";
+
+    /// <summary>
+    /// Literal for code: NONEVirusIdentifiedInStoolByElectronMicroscopy
+    /// </summary>
+    public const string LiteralNONEVirusIdentifiedInStoolByElectronMicroscopy = "http://loinc.org#10737-5";
 
     /// <summary>
     /// Literal for code: VirusIdentifiedInTissueByElectronMicroscopy
@@ -13128,9 +17238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVirusIdentifiedInTissueByElectronMicroscopy = "10738-3";
 
     /// <summary>
+    /// Literal for code: NONEVirusIdentifiedInTissueByElectronMicroscopy
+    /// </summary>
+    public const string LiteralNONEVirusIdentifiedInTissueByElectronMicroscopy = "http://loinc.org#10738-3";
+
+    /// <summary>
     /// Literal for code: VirusIdentifiedInUnspecifiedSpecimenByElectronMicroscopy
     /// </summary>
     public const string LiteralVirusIdentifiedInUnspecifiedSpecimenByElectronMicroscopy = "10739-1";
+
+    /// <summary>
+    /// Literal for code: NONEVirusIdentifiedInUnspecifiedSpecimenByElectronMicroscopy
+    /// </summary>
+    public const string LiteralNONEVirusIdentifiedInUnspecifiedSpecimenByElectronMicroscopy = "http://loinc.org#10739-1";
 
     /// <summary>
     /// Literal for code: JkSupBAbPresenceInSerumOrPlasmaFromDonor
@@ -13138,9 +17258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJkSupBAbPresenceInSerumOrPlasmaFromDonor = "1074-4";
 
     /// <summary>
+    /// Literal for code: NONEJkSupBAbPresenceInSerumOrPlasmaFromDonor
+    /// </summary>
+    public const string LiteralNONEJkSupBAbPresenceInSerumOrPlasmaFromDonor = "http://loinc.org#1074-4";
+
+    /// <summary>
     /// Literal for code: AluminumMicroscopicObservationIdentifierInBoneByHistomorphometryStain
     /// </summary>
     public const string LiteralAluminumMicroscopicObservationIdentifierInBoneByHistomorphometryStain = "10740-9";
+
+    /// <summary>
+    /// Literal for code: NONEAluminumMicroscopicObservationIdentifierInBoneByHistomorphometryStain
+    /// </summary>
+    public const string LiteralNONEAluminumMicroscopicObservationIdentifierInBoneByHistomorphometryStain = "http://loinc.org#10740-9";
 
     /// <summary>
     /// Literal for code: AmyloidMicroscopicObservationIdentifierInBrainByThioflavineSStain
@@ -13148,9 +17278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAmyloidMicroscopicObservationIdentifierInBrainByThioflavineSStain = "10741-7";
 
     /// <summary>
+    /// Literal for code: NONEAmyloidMicroscopicObservationIdentifierInBrainByThioflavineSStain
+    /// </summary>
+    public const string LiteralNONEAmyloidMicroscopicObservationIdentifierInBrainByThioflavineSStain = "http://loinc.org#10741-7";
+
+    /// <summary>
     /// Literal for code: AmyloidMicroscopicObservationIdentifierInTissueByBennholdStainPutchlerModified
     /// </summary>
     public const string LiteralAmyloidMicroscopicObservationIdentifierInTissueByBennholdStainPutchlerModified = "10742-5";
+
+    /// <summary>
+    /// Literal for code: NONEAmyloidMicroscopicObservationIdentifierInTissueByBennholdStainPutchlerModified
+    /// </summary>
+    public const string LiteralNONEAmyloidMicroscopicObservationIdentifierInTissueByBennholdStainPutchlerModified = "http://loinc.org#10742-5";
 
     /// <summary>
     /// Literal for code: AmyloidMicroscopicObservationIdentifierInTissueByHighmanStain
@@ -13158,9 +17298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAmyloidMicroscopicObservationIdentifierInTissueByHighmanStain = "10743-3";
 
     /// <summary>
+    /// Literal for code: NONEAmyloidMicroscopicObservationIdentifierInTissueByHighmanStain
+    /// </summary>
+    public const string LiteralNONEAmyloidMicroscopicObservationIdentifierInTissueByHighmanStain = "http://loinc.org#10743-3";
+
+    /// <summary>
     /// Literal for code: AmyloidMicroscopicObservationIdentifierInTissueByVassarCullingStain
     /// </summary>
     public const string LiteralAmyloidMicroscopicObservationIdentifierInTissueByVassarCullingStain = "10744-1";
+
+    /// <summary>
+    /// Literal for code: NONEAmyloidMicroscopicObservationIdentifierInTissueByVassarCullingStain
+    /// </summary>
+    public const string LiteralNONEAmyloidMicroscopicObservationIdentifierInTissueByVassarCullingStain = "http://loinc.org#10744-1";
 
     /// <summary>
     /// Literal for code: BileMicroscopicObservationIdentifierInTissueByFouchetStain
@@ -13168,9 +17318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBileMicroscopicObservationIdentifierInTissueByFouchetStain = "10745-8";
 
     /// <summary>
+    /// Literal for code: NONEBileMicroscopicObservationIdentifierInTissueByFouchetStain
+    /// </summary>
+    public const string LiteralNONEBileMicroscopicObservationIdentifierInTissueByFouchetStain = "http://loinc.org#10745-8";
+
+    /// <summary>
     /// Literal for code: CalciumMicroscopicObservationIdentifierInTissueByVonKossaStain
     /// </summary>
     public const string LiteralCalciumMicroscopicObservationIdentifierInTissueByVonKossaStain = "10746-6";
+
+    /// <summary>
+    /// Literal for code: NONECalciumMicroscopicObservationIdentifierInTissueByVonKossaStain
+    /// </summary>
+    public const string LiteralNONECalciumMicroscopicObservationIdentifierInTissueByVonKossaStain = "http://loinc.org#10746-6";
 
     /// <summary>
     /// Literal for code: CollagenFibersPlusElasticFibersMicroscopicObservationIdentifierInTissueByLawsonVanGiesonStain
@@ -13178,9 +17338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCollagenFibersPlusElasticFibersMicroscopicObservationIdentifierInTissueByLawsonVanGiesonStain = "10747-4";
 
     /// <summary>
+    /// Literal for code: NONECollagenFibersPlusElasticFibersMicroscopicObservationIdentifierInTissueByLawsonVanGiesonStain
+    /// </summary>
+    public const string LiteralNONECollagenFibersPlusElasticFibersMicroscopicObservationIdentifierInTissueByLawsonVanGiesonStain = "http://loinc.org#10747-4";
+
+    /// <summary>
     /// Literal for code: CollagenFibersPlusElasticFibersMicroscopicObservationIdentifierInTissueByVerhoeffVanGiesonStain
     /// </summary>
     public const string LiteralCollagenFibersPlusElasticFibersMicroscopicObservationIdentifierInTissueByVerhoeffVanGiesonStain = "10748-2";
+
+    /// <summary>
+    /// Literal for code: NONECollagenFibersPlusElasticFibersMicroscopicObservationIdentifierInTissueByVerhoeffVanGiesonStain
+    /// </summary>
+    public const string LiteralNONECollagenFibersPlusElasticFibersMicroscopicObservationIdentifierInTissueByVerhoeffVanGiesonStain = "http://loinc.org#10748-2";
 
     /// <summary>
     /// Literal for code: CollagenFibersMicroscopicObservationIdentifierInTissueByVanGiesonStain
@@ -13188,9 +17358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCollagenFibersMicroscopicObservationIdentifierInTissueByVanGiesonStain = "10749-0";
 
     /// <summary>
+    /// Literal for code: NONECollagenFibersMicroscopicObservationIdentifierInTissueByVanGiesonStain
+    /// </summary>
+    public const string LiteralNONECollagenFibersMicroscopicObservationIdentifierInTissueByVanGiesonStain = "http://loinc.org#10749-0";
+
+    /// <summary>
     /// Literal for code: JkSupBAbPresenceInSerumOrPlasma
     /// </summary>
     public const string LiteralJkSupBAbPresenceInSerumOrPlasma = "1075-1";
+
+    /// <summary>
+    /// Literal for code: NONEJkSupBAbPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEJkSupBAbPresenceInSerumOrPlasma = "http://loinc.org#1075-1";
 
     /// <summary>
     /// Literal for code: ConnectiveTissueMicroscopicObservationIdentifierInTissueByTrichromeStainMasson
@@ -13198,9 +17378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConnectiveTissueMicroscopicObservationIdentifierInTissueByTrichromeStainMasson = "10750-8";
 
     /// <summary>
+    /// Literal for code: NONEConnectiveTissueMicroscopicObservationIdentifierInTissueByTrichromeStainMasson
+    /// </summary>
+    public const string LiteralNONEConnectiveTissueMicroscopicObservationIdentifierInTissueByTrichromeStainMasson = "http://loinc.org#10750-8";
+
+    /// <summary>
     /// Literal for code: CopperMicroscopicObservationIdentifierInTissueByRhodamineStain
     /// </summary>
     public const string LiteralCopperMicroscopicObservationIdentifierInTissueByRhodamineStain = "10751-6";
+
+    /// <summary>
+    /// Literal for code: NONECopperMicroscopicObservationIdentifierInTissueByRhodamineStain
+    /// </summary>
+    public const string LiteralNONECopperMicroscopicObservationIdentifierInTissueByRhodamineStain = "http://loinc.org#10751-6";
 
     /// <summary>
     /// Literal for code: FatMicroscopicObservationIdentifierInMilkBySudanIVStain
@@ -13208,9 +17398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFatMicroscopicObservationIdentifierInMilkBySudanIVStain = "10752-4";
 
     /// <summary>
+    /// Literal for code: NONEFatMicroscopicObservationIdentifierInMilkBySudanIVStain
+    /// </summary>
+    public const string LiteralNONEFatMicroscopicObservationIdentifierInMilkBySudanIVStain = "http://loinc.org#10752-4";
+
+    /// <summary>
     /// Literal for code: FatMicroscopicObservationIdentifierInStoolBySudanIVStain
     /// </summary>
     public const string LiteralFatMicroscopicObservationIdentifierInStoolBySudanIVStain = "10753-2";
+
+    /// <summary>
+    /// Literal for code: NONEFatMicroscopicObservationIdentifierInStoolBySudanIVStain
+    /// </summary>
+    public const string LiteralNONEFatMicroscopicObservationIdentifierInStoolBySudanIVStain = "http://loinc.org#10753-2";
 
     /// <summary>
     /// Literal for code: FatMicroscopicObservationIdentifierInTissueBySudanIVStain
@@ -13218,9 +17418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFatMicroscopicObservationIdentifierInTissueBySudanIVStain = "10754-0";
 
     /// <summary>
+    /// Literal for code: NONEFatMicroscopicObservationIdentifierInTissueBySudanIVStain
+    /// </summary>
+    public const string LiteralNONEFatMicroscopicObservationIdentifierInTissueBySudanIVStain = "http://loinc.org#10754-0";
+
+    /// <summary>
     /// Literal for code: FungusMicroscopicObservationIdentifierInTissueByMethenamineSilverStainGrocott
     /// </summary>
     public const string LiteralFungusMicroscopicObservationIdentifierInTissueByMethenamineSilverStainGrocott = "10755-7";
+
+    /// <summary>
+    /// Literal for code: NONEFungusMicroscopicObservationIdentifierInTissueByMethenamineSilverStainGrocott
+    /// </summary>
+    public const string LiteralNONEFungusMicroscopicObservationIdentifierInTissueByMethenamineSilverStainGrocott = "http://loinc.org#10755-7";
 
     /// <summary>
     /// Literal for code: GlialFibersMicroscopicObservationIdentifierInTissueByHolzerStain
@@ -13228,9 +17438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGlialFibersMicroscopicObservationIdentifierInTissueByHolzerStain = "10756-5";
 
     /// <summary>
+    /// Literal for code: NONEGlialFibersMicroscopicObservationIdentifierInTissueByHolzerStain
+    /// </summary>
+    public const string LiteralNONEGlialFibersMicroscopicObservationIdentifierInTissueByHolzerStain = "http://loinc.org#10756-5";
+
+    /// <summary>
     /// Literal for code: HematologicPlusNuclearElementsMicroscopicObservationIdentifierInTissueByGiemsaStainMayGrunwald
     /// </summary>
     public const string LiteralHematologicPlusNuclearElementsMicroscopicObservationIdentifierInTissueByGiemsaStainMayGrunwald = "10757-3";
+
+    /// <summary>
+    /// Literal for code: NONEHematologicPlusNuclearElementsMicroscopicObservationIdentifierInTissueByGiemsaStainMayGrunwald
+    /// </summary>
+    public const string LiteralNONEHematologicPlusNuclearElementsMicroscopicObservationIdentifierInTissueByGiemsaStainMayGrunwald = "http://loinc.org#10757-3";
 
     /// <summary>
     /// Literal for code: IronMicroscopicObservationIdentifierInBoneByHistomorphometryStain
@@ -13238,9 +17458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIronMicroscopicObservationIdentifierInBoneByHistomorphometryStain = "10758-1";
 
     /// <summary>
+    /// Literal for code: NONEIronMicroscopicObservationIdentifierInBoneByHistomorphometryStain
+    /// </summary>
+    public const string LiteralNONEIronMicroscopicObservationIdentifierInBoneByHistomorphometryStain = "http://loinc.org#10758-1";
+
+    /// <summary>
     /// Literal for code: IronMicroscopicObservationIdentifierInSputumByGomoriStain
     /// </summary>
     public const string LiteralIronMicroscopicObservationIdentifierInSputumByGomoriStain = "10759-9";
+
+    /// <summary>
+    /// Literal for code: NONEIronMicroscopicObservationIdentifierInSputumByGomoriStain
+    /// </summary>
+    public const string LiteralNONEIronMicroscopicObservationIdentifierInSputumByGomoriStain = "http://loinc.org#10759-9";
 
     /// <summary>
     /// Literal for code: JkSupBAgPresenceOnRedBloodCellsFromBloodProductUnit
@@ -13248,9 +17478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJkSupBAgPresenceOnRedBloodCellsFromBloodProductUnit = "1076-9";
 
     /// <summary>
+    /// Literal for code: NONEJkSupBAgPresenceOnRedBloodCellsFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEJkSupBAgPresenceOnRedBloodCellsFromBloodProductUnit = "http://loinc.org#1076-9";
+
+    /// <summary>
     /// Literal for code: IronMicroscopicObservationIdentifierInTissueByGomoriStain
     /// </summary>
     public const string LiteralIronMicroscopicObservationIdentifierInTissueByGomoriStain = "10760-7";
+
+    /// <summary>
+    /// Literal for code: NONEIronMicroscopicObservationIdentifierInTissueByGomoriStain
+    /// </summary>
+    public const string LiteralNONEIronMicroscopicObservationIdentifierInTissueByGomoriStain = "http://loinc.org#10760-7";
 
     /// <summary>
     /// Literal for code: IronMicroscopicObservationIdentifierInTissueByOtherStain
@@ -13258,9 +17498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIronMicroscopicObservationIdentifierInTissueByOtherStain = "10761-5";
 
     /// <summary>
+    /// Literal for code: NONEIronMicroscopicObservationIdentifierInTissueByOtherStain
+    /// </summary>
+    public const string LiteralNONEIronMicroscopicObservationIdentifierInTissueByOtherStain = "http://loinc.org#10761-5";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInBloodByHemosiderinStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInBloodByHemosiderinStain = "10762-3";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInBloodByHemosiderinStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInBloodByHemosiderinStain = "http://loinc.org#10762-3";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInBodyFluidBySudanBlackStain
@@ -13268,9 +17518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInBodyFluidBySudanBlackStain = "10763-1";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInBodyFluidBySudanBlackStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInBodyFluidBySudanBlackStain = "http://loinc.org#10763-1";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInSputumBySilverStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInSputumBySilverStain = "10764-9";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInSputumBySilverStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInSputumBySilverStain = "http://loinc.org#10764-9";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByAcetateEsteraseStain
@@ -13278,9 +17538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByAcetateEsteraseStain = "10765-6";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByAcetateEsteraseStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByAcetateEsteraseStain = "http://loinc.org#10765-6";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByAlcianBlueStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByAlcianBlueStain = "10766-4";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByAlcianBlueStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByAlcianBlueStain = "http://loinc.org#10766-4";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByAlcianBlueStainSulfated
@@ -13288,9 +17558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByAlcianBlueStainSulfated = "10767-2";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByAlcianBlueStainSulfated
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByAlcianBlueStainSulfated = "http://loinc.org#10767-2";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByAlcianBlueStainWithPeriodicAcidSchiff
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByAlcianBlueStainWithPeriodicAcidSchiff = "10768-0";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByAlcianBlueStainWithPeriodicAcidSchiff
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByAlcianBlueStainWithPeriodicAcidSchiff = "http://loinc.org#10768-0";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByAlizarinRedSStain
@@ -13298,9 +17578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByAlizarinRedSStain = "10769-8";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByAlizarinRedSStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByAlizarinRedSStain = "http://loinc.org#10769-8";
+
+    /// <summary>
     /// Literal for code: JkSupBAgPresenceOnRedBloodCellsFromDonor
     /// </summary>
     public const string LiteralJkSupBAgPresenceOnRedBloodCellsFromDonor = "1077-7";
+
+    /// <summary>
+    /// Literal for code: NONEJkSupBAgPresenceOnRedBloodCellsFromDonor
+    /// </summary>
+    public const string LiteralNONEJkSupBAgPresenceOnRedBloodCellsFromDonor = "http://loinc.org#1077-7";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByArgentaffinStain
@@ -13308,9 +17598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByArgentaffinStain = "10770-6";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByArgentaffinStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByArgentaffinStain = "http://loinc.org#10770-6";
+
+    /// <summary>
     /// Literal for code: DeprecatedMicroscopicObservationIdentifierInTissueByRhodamineAuramineFluorochromeStain
     /// </summary>
     public const string LiteralDeprecatedMicroscopicObservationIdentifierInTissueByRhodamineAuramineFluorochromeStain = "10771-4";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedMicroscopicObservationIdentifierInTissueByRhodamineAuramineFluorochromeStain
+    /// </summary>
+    public const string LiteralNONEDeprecatedMicroscopicObservationIdentifierInTissueByRhodamineAuramineFluorochromeStain = "http://loinc.org#10771-4";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByAzureEosinStain
@@ -13318,9 +17618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByAzureEosinStain = "10772-2";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByAzureEosinStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByAzureEosinStain = "http://loinc.org#10772-2";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByBasicFuchsinStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByBasicFuchsinStain = "10773-0";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByBasicFuchsinStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByBasicFuchsinStain = "http://loinc.org#10773-0";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByBielschowskyStain
@@ -13328,9 +17638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByBielschowskyStain = "10774-8";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByBielschowskyStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByBielschowskyStain = "http://loinc.org#10774-8";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByBleachStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByBleachStain = "10775-5";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByBleachStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByBleachStain = "http://loinc.org#10775-5";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByBodianStain
@@ -13338,9 +17658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByBodianStain = "10776-3";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByBodianStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByBodianStain = "http://loinc.org#10776-3";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByBrownAndBrennStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByBrownAndBrennStain = "10777-1";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByBrownAndBrennStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByBrownAndBrennStain = "http://loinc.org#10777-1";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByButyrateEsteraseStain
@@ -13348,9 +17678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByButyrateEsteraseStain = "10778-9";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByButyrateEsteraseStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByButyrateEsteraseStain = "http://loinc.org#10778-9";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByCarmineStainBest
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByCarmineStainBest = "10779-7";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByCarmineStainBest
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByCarmineStainBest = "http://loinc.org#10779-7";
 
     /// <summary>
     /// Literal for code: JkSupBAgPresenceOnRedBloodCells
@@ -13358,9 +17698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJkSupBAgPresenceOnRedBloodCells = "1078-5";
 
     /// <summary>
+    /// Literal for code: NONEJkSupBAgPresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEJkSupBAgPresenceOnRedBloodCells = "http://loinc.org#1078-5";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByChloracetateEsteraseStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByChloracetateEsteraseStain = "10780-5";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByChloracetateEsteraseStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByChloracetateEsteraseStain = "http://loinc.org#10780-5";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByChurukianSchenkStain
@@ -13368,9 +17718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByChurukianSchenkStain = "10781-3";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByChurukianSchenkStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByChurukianSchenkStain = "http://loinc.org#10781-3";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByCongoRedStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByCongoRedStain = "10782-1";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByCongoRedStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByCongoRedStain = "http://loinc.org#10782-1";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByCrystalVioletStain
@@ -13378,9 +17738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByCrystalVioletStain = "10783-9";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByCrystalVioletStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByCrystalVioletStain = "http://loinc.org#10783-9";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByEsteraseStainNonSpecific
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByEsteraseStainNonSpecific = "10784-7";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByEsteraseStainNonSpecific
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByEsteraseStainNonSpecific = "http://loinc.org#10784-7";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByFiteFaracoStain
@@ -13388,9 +17758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByFiteFaracoStain = "10785-4";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByFiteFaracoStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByFiteFaracoStain = "http://loinc.org#10785-4";
+
+    /// <summary>
     /// Literal for code: DeprecatedMicroscopicObservationIdentifierInTissueByGiemsaStain3Micron
     /// </summary>
     public const string LiteralDeprecatedMicroscopicObservationIdentifierInTissueByGiemsaStain3Micron = "10786-2";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedMicroscopicObservationIdentifierInTissueByGiemsaStain3Micron
+    /// </summary>
+    public const string LiteralNONEDeprecatedMicroscopicObservationIdentifierInTissueByGiemsaStain3Micron = "http://loinc.org#10786-2";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByGridleyStain
@@ -13398,9 +17778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByGridleyStain = "10787-0";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByGridleyStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByGridleyStain = "http://loinc.org#10787-0";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByHanselStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByHanselStain = "10788-8";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByHanselStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByHanselStain = "http://loinc.org#10788-8";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByHematoxylinEosinHarrisRegressiveStain
@@ -13408,9 +17798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByHematoxylinEosinHarrisRegressiveStain = "10789-6";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByHematoxylinEosinHarrisRegressiveStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByHematoxylinEosinHarrisRegressiveStain = "http://loinc.org#10789-6";
+
+    /// <summary>
     /// Literal for code: JsSupAAbPresenceInSerumOrPlasmaFromBloodProductUnit
     /// </summary>
     public const string LiteralJsSupAAbPresenceInSerumOrPlasmaFromBloodProductUnit = "1079-3";
+
+    /// <summary>
+    /// Literal for code: NONEJsSupAAbPresenceInSerumOrPlasmaFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEJsSupAAbPresenceInSerumOrPlasmaFromBloodProductUnit = "http://loinc.org#1079-3";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByHematoxylinEosinMayersProgressiveStain
@@ -13418,9 +17818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByHematoxylinEosinMayersProgressiveStain = "10790-4";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByHematoxylinEosinMayersProgressiveStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByHematoxylinEosinMayersProgressiveStain = "http://loinc.org#10790-4";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByMalloryHeidenhainStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByMalloryHeidenhainStain = "10791-2";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByMalloryHeidenhainStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByMalloryHeidenhainStain = "http://loinc.org#10791-2";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByMethenamineSilverStainJones
@@ -13428,9 +17838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByMethenamineSilverStainJones = "10792-0";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByMethenamineSilverStainJones
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByMethenamineSilverStainJones = "http://loinc.org#10792-0";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByMethylGreenStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByMethylGreenStain = "10793-8";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByMethylGreenStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByMethylGreenStain = "http://loinc.org#10793-8";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByMethylGreenPyronineYStain
@@ -13438,9 +17858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByMethylGreenPyronineYStain = "10794-6";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByMethylGreenPyronineYStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByMethylGreenPyronineYStain = "http://loinc.org#10794-6";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByMethylVioletStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByMethylVioletStain = "10795-3";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByMethylVioletStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByMethylVioletStain = "http://loinc.org#10795-3";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByMucicarmineStain
@@ -13448,9 +17878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByMucicarmineStain = "10796-1";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByMucicarmineStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByMucicarmineStain = "http://loinc.org#10796-1";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByNeutralRedStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByNeutralRedStain = "10797-9";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByNeutralRedStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByNeutralRedStain = "http://loinc.org#10797-9";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByOilRedOStain
@@ -13458,9 +17898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByOilRedOStain = "10798-7";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByOilRedOStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByOilRedOStain = "http://loinc.org#10798-7";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByPentachromeStainMovat
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByPentachromeStainMovat = "10799-5";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByPentachromeStainMovat
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByPentachromeStainMovat = "http://loinc.org#10799-5";
 
     /// <summary>
     /// Literal for code: CefotaximeSusceptibilityByMinimumInhibitoryConcentrationMIC
@@ -13468,9 +17918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCefotaximeSusceptibilityByMinimumInhibitoryConcentrationMIC = "108-1";
 
     /// <summary>
+    /// Literal for code: NONECefotaximeSusceptibilityByMinimumInhibitoryConcentrationMIC
+    /// </summary>
+    public const string LiteralNONECefotaximeSusceptibilityByMinimumInhibitoryConcentrationMIC = "http://loinc.org#108-1";
+
+    /// <summary>
     /// Literal for code: JsSupAAbPresenceInSerumOrPlasmaFromDonor
     /// </summary>
     public const string LiteralJsSupAAbPresenceInSerumOrPlasmaFromDonor = "1080-1";
+
+    /// <summary>
+    /// Literal for code: NONEJsSupAAbPresenceInSerumOrPlasmaFromDonor
+    /// </summary>
+    public const string LiteralNONEJsSupAAbPresenceInSerumOrPlasmaFromDonor = "http://loinc.org#1080-1";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByPeriodicAcidSchiffStainWithDiataseDigestion
@@ -13478,9 +17938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByPeriodicAcidSchiffStainWithDiataseDigestion = "10800-1";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByPeriodicAcidSchiffStainWithDiataseDigestion
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByPeriodicAcidSchiffStainWithDiataseDigestion = "http://loinc.org#10800-1";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByPhosphotungsticAcidHematoxylinPTAHStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByPhosphotungsticAcidHematoxylinPTAHStain = "10801-9";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByPhosphotungsticAcidHematoxylinPTAHStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByPhosphotungsticAcidHematoxylinPTAHStain = "http://loinc.org#10801-9";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByPrussianBlueStain
@@ -13488,9 +17958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByPrussianBlueStain = "10802-7";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByPrussianBlueStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByPrussianBlueStain = "http://loinc.org#10802-7";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByQuinacrineFluorescentStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByQuinacrineFluorescentStain = "10803-5";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByQuinacrineFluorescentStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByQuinacrineFluorescentStain = "http://loinc.org#10803-5";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByReticulinStain
@@ -13498,9 +17978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByReticulinStain = "10804-3";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByReticulinStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByReticulinStain = "http://loinc.org#10804-3";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueBySafraninStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueBySafraninStain = "10805-0";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueBySafraninStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueBySafraninStain = "http://loinc.org#10805-0";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueBySchmorlStain
@@ -13508,9 +17998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueBySchmorlStain = "10806-8";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueBySchmorlStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueBySchmorlStain = "http://loinc.org#10806-8";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueBySevierMungerStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueBySevierMungerStain = "10807-6";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueBySevierMungerStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueBySevierMungerStain = "http://loinc.org#10807-6";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueBySilverImpregnationStainDieterle
@@ -13518,9 +18018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueBySilverImpregnationStainDieterle = "10808-4";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueBySilverImpregnationStainDieterle
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueBySilverImpregnationStainDieterle = "http://loinc.org#10808-4";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueBySilverNitrateStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueBySilverNitrateStain = "10809-2";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueBySilverNitrateStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueBySilverNitrateStain = "http://loinc.org#10809-2";
 
     /// <summary>
     /// Literal for code: JsSupAAbPresenceInSerumOrPlasma
@@ -13528,9 +18038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJsSupAAbPresenceInSerumOrPlasma = "1081-9";
 
     /// <summary>
+    /// Literal for code: NONEJsSupAAbPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEJsSupAAbPresenceInSerumOrPlasma = "http://loinc.org#1081-9";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueBySilverStainFontanaMasson
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueBySilverStainFontanaMasson = "10810-0";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueBySilverStainFontanaMasson
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueBySilverStainFontanaMasson = "http://loinc.org#10810-0";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueBySilverStainGrimelius
@@ -13538,9 +18058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueBySilverStainGrimelius = "10811-8";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueBySilverStainGrimelius
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueBySilverStainGrimelius = "http://loinc.org#10811-8";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueBySteinerStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueBySteinerStain = "10812-6";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueBySteinerStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueBySteinerStain = "http://loinc.org#10812-6";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueBySudanBlackStain
@@ -13548,9 +18078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueBySudanBlackStain = "10813-4";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueBySudanBlackStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueBySudanBlackStain = "http://loinc.org#10813-4";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueBySupravitalStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueBySupravitalStain = "10814-2";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueBySupravitalStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueBySupravitalStain = "http://loinc.org#10814-2";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByTetrachromeStain
@@ -13558,9 +18098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByTetrachromeStain = "10815-9";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByTetrachromeStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByTetrachromeStain = "http://loinc.org#10815-9";
+
+    /// <summary>
     /// Literal for code: DeprecatedMicroscopicObservationIdentifierInTissueByToluidineBlueOStain
     /// </summary>
     public const string LiteralDeprecatedMicroscopicObservationIdentifierInTissueByToluidineBlueOStain = "10816-7";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedMicroscopicObservationIdentifierInTissueByToluidineBlueOStain
+    /// </summary>
+    public const string LiteralNONEDeprecatedMicroscopicObservationIdentifierInTissueByToluidineBlueOStain = "http://loinc.org#10816-7";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByTrichromeStainGomoriWheatley
@@ -13568,9 +18118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByTrichromeStainGomoriWheatley = "10817-5";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByTrichromeStainGomoriWheatley
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByTrichromeStainGomoriWheatley = "http://loinc.org#10817-5";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByTrichromeStainMassonModified
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInTissueByTrichromeStainMassonModified = "10818-3";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByTrichromeStainMassonModified
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByTrichromeStainMassonModified = "http://loinc.org#10818-3";
 
     /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInTissueByWadeStain
@@ -13578,9 +18138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicroscopicObservationIdentifierInTissueByWadeStain = "10819-1";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInTissueByWadeStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInTissueByWadeStain = "http://loinc.org#10819-1";
+
+    /// <summary>
     /// Literal for code: JsSupAAgPresenceOnRedBloodCellsFromBloodProductUnit
     /// </summary>
     public const string LiteralJsSupAAgPresenceOnRedBloodCellsFromBloodProductUnit = "1082-7";
+
+    /// <summary>
+    /// Literal for code: NONEJsSupAAgPresenceOnRedBloodCellsFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEJsSupAAgPresenceOnRedBloodCellsFromBloodProductUnit = "http://loinc.org#1082-7";
 
     /// <summary>
     /// Literal for code: DeprecatedMicroscopicObservationIdentifierInTissueByWarthinStarryStain
@@ -13588,9 +18158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedMicroscopicObservationIdentifierInTissueByWarthinStarryStain = "10820-9";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedMicroscopicObservationIdentifierInTissueByWarthinStarryStain
+    /// </summary>
+    public const string LiteralNONEDeprecatedMicroscopicObservationIdentifierInTissueByWarthinStarryStain = "http://loinc.org#10820-9";
+
+    /// <summary>
     /// Literal for code: DeprecatedMicroscopicObservationIdentifierInTissueByWrightGiemsaStain
     /// </summary>
     public const string LiteralDeprecatedMicroscopicObservationIdentifierInTissueByWrightGiemsaStain = "10821-7";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedMicroscopicObservationIdentifierInTissueByWrightGiemsaStain
+    /// </summary>
+    public const string LiteralNONEDeprecatedMicroscopicObservationIdentifierInTissueByWrightGiemsaStain = "http://loinc.org#10821-7";
 
     /// <summary>
     /// Literal for code: MucinMicroscopicObservationIdentifierInTissueByMucicarmineStainMayer
@@ -13598,9 +18178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMucinMicroscopicObservationIdentifierInTissueByMucicarmineStainMayer = "10822-5";
 
     /// <summary>
+    /// Literal for code: NONEMucinMicroscopicObservationIdentifierInTissueByMucicarmineStainMayer
+    /// </summary>
+    public const string LiteralNONEMucinMicroscopicObservationIdentifierInTissueByMucicarmineStainMayer = "http://loinc.org#10822-5";
+
+    /// <summary>
     /// Literal for code: MucopolysaccharidesMicroscopicObservationIdentifierInTissueByColloidalFerricOxideStainHale
     /// </summary>
     public const string LiteralMucopolysaccharidesMicroscopicObservationIdentifierInTissueByColloidalFerricOxideStainHale = "10823-3";
+
+    /// <summary>
+    /// Literal for code: NONEMucopolysaccharidesMicroscopicObservationIdentifierInTissueByColloidalFerricOxideStainHale
+    /// </summary>
+    public const string LiteralNONEMucopolysaccharidesMicroscopicObservationIdentifierInTissueByColloidalFerricOxideStainHale = "http://loinc.org#10823-3";
 
     /// <summary>
     /// Literal for code: MyelinPlusMyelinBreakdownProductsMicroscopicObservationIdentifierInTissueByLuxolFastBluePeriodicAcidSchiffStain
@@ -13608,9 +18198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMyelinPlusMyelinBreakdownProductsMicroscopicObservationIdentifierInTissueByLuxolFastBluePeriodicAcidSchiffStain = "10824-1";
 
     /// <summary>
+    /// Literal for code: NONEMyelinPlusMyelinBreakdownProductsMicroscopicObservationIdentifierInTissueByLuxolFastBluePeriodicAcidSchiffStain
+    /// </summary>
+    public const string LiteralNONEMyelinPlusMyelinBreakdownProductsMicroscopicObservationIdentifierInTissueByLuxolFastBluePeriodicAcidSchiffStain = "http://loinc.org#10824-1";
+
+    /// <summary>
     /// Literal for code: MyelinPlusNerveCellsMicroscopicObservationIdentifierInTissueByLuxolFastBlueCresylVioletStain
     /// </summary>
     public const string LiteralMyelinPlusNerveCellsMicroscopicObservationIdentifierInTissueByLuxolFastBlueCresylVioletStain = "10825-8";
+
+    /// <summary>
+    /// Literal for code: NONEMyelinPlusNerveCellsMicroscopicObservationIdentifierInTissueByLuxolFastBlueCresylVioletStain
+    /// </summary>
+    public const string LiteralNONEMyelinPlusNerveCellsMicroscopicObservationIdentifierInTissueByLuxolFastBlueCresylVioletStain = "http://loinc.org#10825-8";
 
     /// <summary>
     /// Literal for code: NisselMicroscopicObservationIdentifierInTissueByCresylEchtVioletStain
@@ -13618,9 +18218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNisselMicroscopicObservationIdentifierInTissueByCresylEchtVioletStain = "10826-6";
 
     /// <summary>
+    /// Literal for code: NONENisselMicroscopicObservationIdentifierInTissueByCresylEchtVioletStain
+    /// </summary>
+    public const string LiteralNONENisselMicroscopicObservationIdentifierInTissueByCresylEchtVioletStain = "http://loinc.org#10826-6";
+
+    /// <summary>
     /// Literal for code: ReticulumMicroscopicObservationIdentifierInTissueByGomoriStain
     /// </summary>
     public const string LiteralReticulumMicroscopicObservationIdentifierInTissueByGomoriStain = "10827-4";
+
+    /// <summary>
+    /// Literal for code: NONEReticulumMicroscopicObservationIdentifierInTissueByGomoriStain
+    /// </summary>
+    public const string LiteralNONEReticulumMicroscopicObservationIdentifierInTissueByGomoriStain = "http://loinc.org#10827-4";
 
     /// <summary>
     /// Literal for code: UrateCrystalsMicroscopicObservationTypeInTissueByDeGalanthaStain
@@ -13628,9 +18238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUrateCrystalsMicroscopicObservationTypeInTissueByDeGalanthaStain = "10828-2";
 
     /// <summary>
+    /// Literal for code: NONEUrateCrystalsMicroscopicObservationTypeInTissueByDeGalanthaStain
+    /// </summary>
+    public const string LiteralNONEUrateCrystalsMicroscopicObservationTypeInTissueByDeGalanthaStain = "http://loinc.org#10828-2";
+
+    /// <summary>
     /// Literal for code: SiliconMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralSiliconMassVolumeInSerumOrPlasma = "10829-0";
+
+    /// <summary>
+    /// Literal for code: NONESiliconMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONESiliconMassVolumeInSerumOrPlasma = "http://loinc.org#10829-0";
 
     /// <summary>
     /// Literal for code: JsSupAAgPresenceOnRedBloodCellsFromDonor
@@ -13638,9 +18258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJsSupAAgPresenceOnRedBloodCellsFromDonor = "1083-5";
 
     /// <summary>
+    /// Literal for code: NONEJsSupAAgPresenceOnRedBloodCellsFromDonor
+    /// </summary>
+    public const string LiteralNONEJsSupAAgPresenceOnRedBloodCellsFromDonor = "http://loinc.org#1083-5";
+
+    /// <summary>
     /// Literal for code: DeprecatedSurgicalOperationNoteComplications
     /// </summary>
     public const string LiteralDeprecatedSurgicalOperationNoteComplications = "10830-8";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedSurgicalOperationNoteComplications
+    /// </summary>
+    public const string LiteralNONEDeprecatedSurgicalOperationNoteComplications = "http://loinc.org#10830-8";
 
     /// <summary>
     /// Literal for code: SurgicalOperationNoteComplicationsInterpretation
@@ -13648,9 +18278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgicalOperationNoteComplicationsInterpretation = "10831-6";
 
     /// <summary>
+    /// Literal for code: NONESurgicalOperationNoteComplicationsInterpretation
+    /// </summary>
+    public const string LiteralNONESurgicalOperationNoteComplicationsInterpretation = "http://loinc.org#10831-6";
+
+    /// <summary>
     /// Literal for code: GlucoseMassVolumeInSerumOrPlasma15MinutesPost50GLactosePO
     /// </summary>
     public const string LiteralGlucoseMassVolumeInSerumOrPlasma15MinutesPost50GLactosePO = "10832-4";
+
+    /// <summary>
+    /// Literal for code: NONEGlucoseMassVolumeInSerumOrPlasma15MinutesPost50GLactosePO
+    /// </summary>
+    public const string LiteralNONEGlucoseMassVolumeInSerumOrPlasma15MinutesPost50GLactosePO = "http://loinc.org#10832-4";
 
     /// <summary>
     /// Literal for code: InsulinMassVolumeInSerumOrPlasma7HoursPost75GGlucosePO
@@ -13658,9 +18298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInsulinMassVolumeInSerumOrPlasma7HoursPost75GGlucosePO = "10833-2";
 
     /// <summary>
+    /// Literal for code: NONEInsulinMassVolumeInSerumOrPlasma7HoursPost75GGlucosePO
+    /// </summary>
+    public const string LiteralNONEInsulinMassVolumeInSerumOrPlasma7HoursPost75GGlucosePO = "http://loinc.org#10833-2";
+
+    /// <summary>
     /// Literal for code: GlobulinMassVolumeInSerumByCalculation
     /// </summary>
     public const string LiteralGlobulinMassVolumeInSerumByCalculation = "10834-0";
+
+    /// <summary>
+    /// Literal for code: NONEGlobulinMassVolumeInSerumByCalculation
+    /// </summary>
+    public const string LiteralNONEGlobulinMassVolumeInSerumByCalculation = "http://loinc.org#10834-0";
 
     /// <summary>
     /// Literal for code: LipoproteinAMassVolumeInSerumOrPlasma
@@ -13668,9 +18318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLipoproteinAMassVolumeInSerumOrPlasma = "10835-7";
 
     /// <summary>
+    /// Literal for code: NONELipoproteinAMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONELipoproteinAMassVolumeInSerumOrPlasma = "http://loinc.org#10835-7";
+
+    /// <summary>
     /// Literal for code: NiacinMassVolumeInBlood
     /// </summary>
     public const string LiteralNiacinMassVolumeInBlood = "10836-5";
+
+    /// <summary>
+    /// Literal for code: NONENiacinMassVolumeInBlood
+    /// </summary>
+    public const string LiteralNONENiacinMassVolumeInBlood = "http://loinc.org#10836-5";
 
     /// <summary>
     /// Literal for code: OrganicAcidsPresenceInSerumOrPlasma
@@ -13678,9 +18338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOrganicAcidsPresenceInSerumOrPlasma = "10837-3";
 
     /// <summary>
+    /// Literal for code: NONEOrganicAcidsPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEOrganicAcidsPresenceInSerumOrPlasma = "http://loinc.org#10837-3";
+
+    /// <summary>
     /// Literal for code: PhosphoserineMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralPhosphoserineMassVolumeInSerumOrPlasma = "10838-1";
+
+    /// <summary>
+    /// Literal for code: NONEPhosphoserineMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEPhosphoserineMassVolumeInSerumOrPlasma = "http://loinc.org#10838-1";
 
     /// <summary>
     /// Literal for code: TroponinICardiacMassVolumeInSerumOrPlasma
@@ -13688,9 +18358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTroponinICardiacMassVolumeInSerumOrPlasma = "10839-9";
 
     /// <summary>
+    /// Literal for code: NONETroponinICardiacMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONETroponinICardiacMassVolumeInSerumOrPlasma = "http://loinc.org#10839-9";
+
+    /// <summary>
     /// Literal for code: JsSupAAgPresenceOnRedBloodCells
     /// </summary>
     public const string LiteralJsSupAAgPresenceOnRedBloodCells = "1084-3";
+
+    /// <summary>
+    /// Literal for code: NONEJsSupAAgPresenceOnRedBloodCells
+    /// </summary>
+    public const string LiteralNONEJsSupAAgPresenceOnRedBloodCells = "http://loinc.org#1084-3";
 
     /// <summary>
     /// Literal for code: AtropineMassVolumeInUrine
@@ -13698,9 +18378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAtropineMassVolumeInUrine = "10840-7";
 
     /// <summary>
+    /// Literal for code: NONEAtropineMassVolumeInUrine
+    /// </summary>
+    public const string LiteralNONEAtropineMassVolumeInUrine = "http://loinc.org#10840-7";
+
+    /// <summary>
     /// Literal for code: MethazolamideMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralMethazolamideMassVolumeInSerumOrPlasma = "10841-5";
+
+    /// <summary>
+    /// Literal for code: NONEMethazolamideMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEMethazolamideMassVolumeInSerumOrPlasma = "http://loinc.org#10841-5";
 
     /// <summary>
     /// Literal for code: DeprecatedHLADQ1Presence
@@ -13708,9 +18398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedHLADQ1Presence = "10842-3";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedHLADQ1Presence
+    /// </summary>
+    public const string LiteralNONEDeprecatedHLADQ1Presence = "http://loinc.org#10842-3";
+
+    /// <summary>
     /// Literal for code: DeprecatedHLADQ2Presence
     /// </summary>
     public const string LiteralDeprecatedHLADQ2Presence = "10843-1";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedHLADQ2Presence
+    /// </summary>
+    public const string LiteralNONEDeprecatedHLADQ2Presence = "http://loinc.org#10843-1";
 
     /// <summary>
     /// Literal for code: DeprecatedHLADQ3Presence
@@ -13718,9 +18418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeprecatedHLADQ3Presence = "10844-9";
 
     /// <summary>
+    /// Literal for code: NONEDeprecatedHLADQ3Presence
+    /// </summary>
+    public const string LiteralNONEDeprecatedHLADQ3Presence = "http://loinc.org#10844-9";
+
+    /// <summary>
     /// Literal for code: DeprecatedHLADQ4Presence
     /// </summary>
     public const string LiteralDeprecatedHLADQ4Presence = "10845-6";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedHLADQ4Presence
+    /// </summary>
+    public const string LiteralNONEDeprecatedHLADQ4Presence = "http://loinc.org#10845-6";
 
     /// <summary>
     /// Literal for code: BorreliaBurgdorferiDNAPresenceInBloodByProbeWithAmplification
@@ -13728,9 +18438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBorreliaBurgdorferiDNAPresenceInBloodByProbeWithAmplification = "10846-4";
 
     /// <summary>
+    /// Literal for code: NONEBorreliaBurgdorferiDNAPresenceInBloodByProbeWithAmplification
+    /// </summary>
+    public const string LiteralNONEBorreliaBurgdorferiDNAPresenceInBloodByProbeWithAmplification = "http://loinc.org#10846-4";
+
+    /// <summary>
     /// Literal for code: BorreliaBurgdorferiDNAPresenceInBodyFluidByProbeWithAmplification
     /// </summary>
     public const string LiteralBorreliaBurgdorferiDNAPresenceInBodyFluidByProbeWithAmplification = "10847-2";
+
+    /// <summary>
+    /// Literal for code: NONEBorreliaBurgdorferiDNAPresenceInBodyFluidByProbeWithAmplification
+    /// </summary>
+    public const string LiteralNONEBorreliaBurgdorferiDNAPresenceInBodyFluidByProbeWithAmplification = "http://loinc.org#10847-2";
 
     /// <summary>
     /// Literal for code: ChlamydiaSpIgGAbTiterInSerumByImmunofluorescence
@@ -13738,9 +18458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChlamydiaSpIgGAbTiterInSerumByImmunofluorescence = "10848-0";
 
     /// <summary>
+    /// Literal for code: NONEChlamydiaSpIgGAbTiterInSerumByImmunofluorescence
+    /// </summary>
+    public const string LiteralNONEChlamydiaSpIgGAbTiterInSerumByImmunofluorescence = "http://loinc.org#10848-0";
+
+    /// <summary>
     /// Literal for code: ChlamydiaSpIgMAbTiterInSerumByImmunofluorescence
     /// </summary>
     public const string LiteralChlamydiaSpIgMAbTiterInSerumByImmunofluorescence = "10849-8";
+
+    /// <summary>
+    /// Literal for code: NONEChlamydiaSpIgMAbTiterInSerumByImmunofluorescence
+    /// </summary>
+    public const string LiteralNONEChlamydiaSpIgMAbTiterInSerumByImmunofluorescence = "http://loinc.org#10849-8";
 
     /// <summary>
     /// Literal for code: JsSupBAbPresenceInSerumOrPlasmaFromBloodProductUnit
@@ -13748,9 +18478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJsSupBAbPresenceInSerumOrPlasmaFromBloodProductUnit = "1085-0";
 
     /// <summary>
+    /// Literal for code: NONEJsSupBAbPresenceInSerumOrPlasmaFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEJsSupBAbPresenceInSerumOrPlasmaFromBloodProductUnit = "http://loinc.org#1085-0";
+
+    /// <summary>
     /// Literal for code: CyclosporaCayetanensisPresenceInUnspecifiedSpecimen
     /// </summary>
     public const string LiteralCyclosporaCayetanensisPresenceInUnspecifiedSpecimen = "10850-6";
+
+    /// <summary>
+    /// Literal for code: NONECyclosporaCayetanensisPresenceInUnspecifiedSpecimen
+    /// </summary>
+    public const string LiteralNONECyclosporaCayetanensisPresenceInUnspecifiedSpecimen = "http://loinc.org#10850-6";
 
     /// <summary>
     /// Literal for code: EscherichiaColiO157H7PresenceInStoolByOrganismSpecificCulture
@@ -13758,9 +18498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEscherichiaColiO157H7PresenceInStoolByOrganismSpecificCulture = "10851-4";
 
     /// <summary>
+    /// Literal for code: NONEEscherichiaColiO157H7PresenceInStoolByOrganismSpecificCulture
+    /// </summary>
+    public const string LiteralNONEEscherichiaColiO157H7PresenceInStoolByOrganismSpecificCulture = "http://loinc.org#10851-4";
+
+    /// <summary>
     /// Literal for code: DeprecatedFungusIdentifiedInBloodByCulture
     /// </summary>
     public const string LiteralDeprecatedFungusIdentifiedInBloodByCulture = "10852-2";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedFungusIdentifiedInBloodByCulture
+    /// </summary>
+    public const string LiteralNONEDeprecatedFungusIdentifiedInBloodByCulture = "http://loinc.org#10852-2";
 
     /// <summary>
     /// Literal for code: IsosporaBelliPresenceInUnspecifiedSpecimenByAcidFastStainKinyounModified
@@ -13768,9 +18518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIsosporaBelliPresenceInUnspecifiedSpecimenByAcidFastStainKinyounModified = "10853-0";
 
     /// <summary>
+    /// Literal for code: NONEIsosporaBelliPresenceInUnspecifiedSpecimenByAcidFastStainKinyounModified
+    /// </summary>
+    public const string LiteralNONEIsosporaBelliPresenceInUnspecifiedSpecimenByAcidFastStainKinyounModified = "http://loinc.org#10853-0";
+
+    /// <summary>
     /// Literal for code: DeprecatedMidrofilariaIdentifiedInBloodByConcentration
     /// </summary>
     public const string LiteralDeprecatedMidrofilariaIdentifiedInBloodByConcentration = "10854-8";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedMidrofilariaIdentifiedInBloodByConcentration
+    /// </summary>
+    public const string LiteralNONEDeprecatedMidrofilariaIdentifiedInBloodByConcentration = "http://loinc.org#10854-8";
 
     /// <summary>
     /// Literal for code: OvaAndParasitesIdentifiedInDuodenalFluidOrGastricFluidByLightMicroscopy
@@ -13778,9 +18538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOvaAndParasitesIdentifiedInDuodenalFluidOrGastricFluidByLightMicroscopy = "10855-5";
 
     /// <summary>
+    /// Literal for code: NONEOvaAndParasitesIdentifiedInDuodenalFluidOrGastricFluidByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEOvaAndParasitesIdentifiedInDuodenalFluidOrGastricFluidByLightMicroscopy = "http://loinc.org#10855-5";
+
+    /// <summary>
     /// Literal for code: MicroscopicObservationIdentifierInGenitalMucusByGramStain
     /// </summary>
     public const string LiteralMicroscopicObservationIdentifierInGenitalMucusByGramStain = "10856-3";
+
+    /// <summary>
+    /// Literal for code: NONEMicroscopicObservationIdentifierInGenitalMucusByGramStain
+    /// </summary>
+    public const string LiteralNONEMicroscopicObservationIdentifierInGenitalMucusByGramStain = "http://loinc.org#10856-3";
 
     /// <summary>
     /// Literal for code: MicrosporidiaIdentifiedInUnspecifiedSpecimenByLightMicroscopy
@@ -13788,9 +18558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicrosporidiaIdentifiedInUnspecifiedSpecimenByLightMicroscopy = "10857-1";
 
     /// <summary>
+    /// Literal for code: NONEMicrosporidiaIdentifiedInUnspecifiedSpecimenByLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEMicrosporidiaIdentifiedInUnspecifiedSpecimenByLightMicroscopy = "http://loinc.org#10857-1";
+
+    /// <summary>
     /// Literal for code: TeichoateAbPresenceInSerum
     /// </summary>
     public const string LiteralTeichoateAbPresenceInSerum = "10858-9";
+
+    /// <summary>
+    /// Literal for code: NONETeichoateAbPresenceInSerum
+    /// </summary>
+    public const string LiteralNONETeichoateAbPresenceInSerum = "http://loinc.org#10858-9";
 
     /// <summary>
     /// Literal for code: TrypanosomaSpIdentifierInBloodByAcridineOrangePlusGiemsaStain
@@ -13798,9 +18578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrypanosomaSpIdentifierInBloodByAcridineOrangePlusGiemsaStain = "10859-7";
 
     /// <summary>
+    /// Literal for code: NONETrypanosomaSpIdentifierInBloodByAcridineOrangePlusGiemsaStain
+    /// </summary>
+    public const string LiteralNONETrypanosomaSpIdentifierInBloodByAcridineOrangePlusGiemsaStain = "http://loinc.org#10859-7";
+
+    /// <summary>
     /// Literal for code: JsSupBAbPresenceInSerumOrPlasmaFromDonor
     /// </summary>
     public const string LiteralJsSupBAbPresenceInSerumOrPlasmaFromDonor = "1086-8";
+
+    /// <summary>
+    /// Literal for code: NONEJsSupBAbPresenceInSerumOrPlasmaFromDonor
+    /// </summary>
+    public const string LiteralNONEJsSupBAbPresenceInSerumOrPlasmaFromDonor = "http://loinc.org#1086-8";
 
     /// <summary>
     /// Literal for code: VaricellaZosterVirusPresenceInUnspecifiedSpecimenByOrganismSpecificCulture
@@ -13808,9 +18598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVaricellaZosterVirusPresenceInUnspecifiedSpecimenByOrganismSpecificCulture = "10860-5";
 
     /// <summary>
+    /// Literal for code: NONEVaricellaZosterVirusPresenceInUnspecifiedSpecimenByOrganismSpecificCulture
+    /// </summary>
+    public const string LiteralNONEVaricellaZosterVirusPresenceInUnspecifiedSpecimenByOrganismSpecificCulture = "http://loinc.org#10860-5";
+
+    /// <summary>
     /// Literal for code: ProgesteroneReceptorMassMassInTissue
     /// </summary>
     public const string LiteralProgesteroneReceptorMassMassInTissue = "10861-3";
+
+    /// <summary>
+    /// Literal for code: NONEProgesteroneReceptorMassMassInTissue
+    /// </summary>
+    public const string LiteralNONEProgesteroneReceptorMassMassInTissue = "http://loinc.org#10861-3";
 
     /// <summary>
     /// Literal for code: BasementMembraneAbTiterInSerum
@@ -13818,9 +18618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBasementMembraneAbTiterInSerum = "10862-1";
 
     /// <summary>
+    /// Literal for code: NONEBasementMembraneAbTiterInSerum
+    /// </summary>
+    public const string LiteralNONEBasementMembraneAbTiterInSerum = "http://loinc.org#10862-1";
+
+    /// <summary>
     /// Literal for code: EndomysiumIgAAbTiterInSerum
     /// </summary>
     public const string LiteralEndomysiumIgAAbTiterInSerum = "10863-9";
+
+    /// <summary>
+    /// Literal for code: NONEEndomysiumIgAAbTiterInSerum
+    /// </summary>
+    public const string LiteralNONEEndomysiumIgAAbTiterInSerum = "http://loinc.org#10863-9";
 
     /// <summary>
     /// Literal for code: ImmuneComplexUnitsVolumeInSerumOrPlasmaByRajiCellAssay
@@ -13828,9 +18638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImmuneComplexUnitsVolumeInSerumOrPlasmaByRajiCellAssay = "10864-7";
 
     /// <summary>
+    /// Literal for code: NONEImmuneComplexUnitsVolumeInSerumOrPlasmaByRajiCellAssay
+    /// </summary>
+    public const string LiteralNONEImmuneComplexUnitsVolumeInSerumOrPlasmaByRajiCellAssay = "http://loinc.org#10864-7";
+
+    /// <summary>
     /// Literal for code: IntercellularSubstanceAbPresenceInSerum
     /// </summary>
     public const string LiteralIntercellularSubstanceAbPresenceInSerum = "10865-4";
+
+    /// <summary>
+    /// Literal for code: NONEIntercellularSubstanceAbPresenceInSerum
+    /// </summary>
+    public const string LiteralNONEIntercellularSubstanceAbPresenceInSerum = "http://loinc.org#10865-4";
 
     /// <summary>
     /// Literal for code: SulfatideIgGAbTiterInSerum
@@ -13838,9 +18658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSulfatideIgGAbTiterInSerum = "10866-2";
 
     /// <summary>
+    /// Literal for code: NONESulfatideIgGAbTiterInSerum
+    /// </summary>
+    public const string LiteralNONESulfatideIgGAbTiterInSerum = "http://loinc.org#10866-2";
+
+    /// <summary>
     /// Literal for code: SulfatideIgMAbTiterInSerum
     /// </summary>
     public const string LiteralSulfatideIgMAbTiterInSerum = "10867-0";
+
+    /// <summary>
+    /// Literal for code: NONESulfatideIgMAbTiterInSerum
+    /// </summary>
+    public const string LiteralNONESulfatideIgMAbTiterInSerum = "http://loinc.org#10867-0";
 
     /// <summary>
     /// Literal for code: BacitracinSusceptibilityByDiskDiffusionKB
@@ -13848,9 +18678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBacitracinSusceptibilityByDiskDiffusionKB = "10868-8";
 
     /// <summary>
+    /// Literal for code: NONEBacitracinSusceptibilityByDiskDiffusionKB
+    /// </summary>
+    public const string LiteralNONEBacitracinSusceptibilityByDiskDiffusionKB = "http://loinc.org#10868-8";
+
+    /// <summary>
     /// Literal for code: XyloseMassVolumeInBlood3HoursPost25GXylosePO
     /// </summary>
     public const string LiteralXyloseMassVolumeInBlood3HoursPost25GXylosePO = "10869-6";
+
+    /// <summary>
+    /// Literal for code: NONEXyloseMassVolumeInBlood3HoursPost25GXylosePO
+    /// </summary>
+    public const string LiteralNONEXyloseMassVolumeInBlood3HoursPost25GXylosePO = "http://loinc.org#10869-6";
 
     /// <summary>
     /// Literal for code: JsSupBAbPresenceInSerumOrPlasma
@@ -13858,9 +18698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJsSupBAbPresenceInSerumOrPlasma = "1087-6";
 
     /// <summary>
+    /// Literal for code: NONEJsSupBAbPresenceInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEJsSupBAbPresenceInSerumOrPlasma = "http://loinc.org#1087-6";
+
+    /// <summary>
     /// Literal for code: XyloseMassVolumeInBlood4HoursPost25GXylosePO
     /// </summary>
     public const string LiteralXyloseMassVolumeInBlood4HoursPost25GXylosePO = "10870-4";
+
+    /// <summary>
+    /// Literal for code: NONEXyloseMassVolumeInBlood4HoursPost25GXylosePO
+    /// </summary>
+    public const string LiteralNONEXyloseMassVolumeInBlood4HoursPost25GXylosePO = "http://loinc.org#10870-4";
 
     /// <summary>
     /// Literal for code: XyloseMassVolumeInBlood5HoursPost25GXylosePO
@@ -13868,9 +18718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralXyloseMassVolumeInBlood5HoursPost25GXylosePO = "10871-2";
 
     /// <summary>
+    /// Literal for code: NONEXyloseMassVolumeInBlood5HoursPost25GXylosePO
+    /// </summary>
+    public const string LiteralNONEXyloseMassVolumeInBlood5HoursPost25GXylosePO = "http://loinc.org#10871-2";
+
+    /// <summary>
     /// Literal for code: XyloseMassVolumeInBloodBaseline
     /// </summary>
     public const string LiteralXyloseMassVolumeInBloodBaseline = "10872-0";
+
+    /// <summary>
+    /// Literal for code: NONEXyloseMassVolumeInBloodBaseline
+    /// </summary>
+    public const string LiteralNONEXyloseMassVolumeInBloodBaseline = "http://loinc.org#10872-0";
 
     /// <summary>
     /// Literal for code: Beta2MicroglobulinMassTimeIn24HourUrine
@@ -13878,9 +18738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBeta2MicroglobulinMassTimeIn24HourUrine = "10873-8";
 
     /// <summary>
+    /// Literal for code: NONEBeta2MicroglobulinMassTimeIn24HourUrine
+    /// </summary>
+    public const string LiteralNONEBeta2MicroglobulinMassTimeIn24HourUrine = "http://loinc.org#10873-8";
+
+    /// <summary>
     /// Literal for code: BombesinMassVolumeInPlasma
     /// </summary>
     public const string LiteralBombesinMassVolumeInPlasma = "10874-6";
+
+    /// <summary>
+    /// Literal for code: NONEBombesinMassVolumeInPlasma
+    /// </summary>
+    public const string LiteralNONEBombesinMassVolumeInPlasma = "http://loinc.org#10874-6";
 
     /// <summary>
     /// Literal for code: CarnitineEstersMassVolumeInUrine
@@ -13888,9 +18758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCarnitineEstersMassVolumeInUrine = "10875-3";
 
     /// <summary>
+    /// Literal for code: NONECarnitineEstersMassVolumeInUrine
+    /// </summary>
+    public const string LiteralNONECarnitineEstersMassVolumeInUrine = "http://loinc.org#10875-3";
+
+    /// <summary>
     /// Literal for code: CarnitineEstersMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralCarnitineEstersMassVolumeInSerumOrPlasma = "10876-1";
+
+    /// <summary>
+    /// Literal for code: NONECarnitineEstersMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONECarnitineEstersMassVolumeInSerumOrPlasma = "http://loinc.org#10876-1";
 
     /// <summary>
     /// Literal for code: CarnitineFreeC0MassVolumeInUrine
@@ -13898,9 +18778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCarnitineFreeC0MassVolumeInUrine = "10877-9";
 
     /// <summary>
+    /// Literal for code: NONECarnitineFreeC0MassVolumeInUrine
+    /// </summary>
+    public const string LiteralNONECarnitineFreeC0MassVolumeInUrine = "http://loinc.org#10877-9";
+
+    /// <summary>
     /// Literal for code: IodineProteinBoundMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralIodineProteinBoundMassVolumeInSerumOrPlasma = "10878-7";
+
+    /// <summary>
+    /// Literal for code: NONEIodineProteinBoundMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEIodineProteinBoundMassVolumeInSerumOrPlasma = "http://loinc.org#10878-7";
 
     /// <summary>
     /// Literal for code: IsovalerylglycineMassVolumeInUrine
@@ -13908,9 +18798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIsovalerylglycineMassVolumeInUrine = "10879-5";
 
     /// <summary>
+    /// Literal for code: NONEIsovalerylglycineMassVolumeInUrine
+    /// </summary>
+    public const string LiteralNONEIsovalerylglycineMassVolumeInUrine = "http://loinc.org#10879-5";
+
+    /// <summary>
     /// Literal for code: JsSupBAgPresenceOnRedBloodCellsFromBloodProductUnit
     /// </summary>
     public const string LiteralJsSupBAgPresenceOnRedBloodCellsFromBloodProductUnit = "1088-4";
+
+    /// <summary>
+    /// Literal for code: NONEJsSupBAgPresenceOnRedBloodCellsFromBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEJsSupBAgPresenceOnRedBloodCellsFromBloodProductUnit = "http://loinc.org#1088-4";
 
     /// <summary>
     /// Literal for code: MagnesiumMassMassInStool
@@ -13918,9 +18818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMagnesiumMassMassInStool = "10880-3";
 
     /// <summary>
+    /// Literal for code: NONEMagnesiumMassMassInStool
+    /// </summary>
+    public const string LiteralNONEMagnesiumMassMassInStool = "http://loinc.org#10880-3";
+
+    /// <summary>
     /// Literal for code: PentacarboxylporphyrinsMassVolumeInRedBloodCells
     /// </summary>
     public const string LiteralPentacarboxylporphyrinsMassVolumeInRedBloodCells = "10881-1";
+
+    /// <summary>
+    /// Literal for code: NONEPentacarboxylporphyrinsMassVolumeInRedBloodCells
+    /// </summary>
+    public const string LiteralNONEPentacarboxylporphyrinsMassVolumeInRedBloodCells = "http://loinc.org#10881-1";
 
     /// <summary>
     /// Literal for code: PentacarboxylporphyrinsMassVolumeInSerumOrPlasma
@@ -13928,9 +18838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPentacarboxylporphyrinsMassVolumeInSerumOrPlasma = "10882-9";
 
     /// <summary>
+    /// Literal for code: NONEPentacarboxylporphyrinsMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEPentacarboxylporphyrinsMassVolumeInSerumOrPlasma = "http://loinc.org#10882-9";
+
+    /// <summary>
     /// Literal for code: PhenolphthaleinMassMassInStool
     /// </summary>
     public const string LiteralPhenolphthaleinMassMassInStool = "10883-7";
+
+    /// <summary>
+    /// Literal for code: NONEPhenolphthaleinMassMassInStool
+    /// </summary>
+    public const string LiteralNONEPhenolphthaleinMassMassInStool = "http://loinc.org#10883-7";
 
     /// <summary>
     /// Literal for code: PhosphateMassMassInStool
@@ -13938,9 +18858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhosphateMassMassInStool = "10884-5";
 
     /// <summary>
+    /// Literal for code: NONEPhosphateMassMassInStool
+    /// </summary>
+    public const string LiteralNONEPhosphateMassMassInStool = "http://loinc.org#10884-5";
+
+    /// <summary>
     /// Literal for code: PorphyrinsMassTimeIn24HourUrine
     /// </summary>
     public const string LiteralPorphyrinsMassTimeIn24HourUrine = "10885-2";
+
+    /// <summary>
+    /// Literal for code: NONEPorphyrinsMassTimeIn24HourUrine
+    /// </summary>
+    public const string LiteralNONEPorphyrinsMassTimeIn24HourUrine = "http://loinc.org#10885-2";
 
     /// <summary>
     /// Literal for code: ProstateSpecificAgFreeMassVolumeInSerumOrPlasma
@@ -13948,9 +18878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProstateSpecificAgFreeMassVolumeInSerumOrPlasma = "10886-0";
 
     /// <summary>
+    /// Literal for code: NONEProstateSpecificAgFreeMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEProstateSpecificAgFreeMassVolumeInSerumOrPlasma = "http://loinc.org#10886-0";
+
+    /// <summary>
     /// Literal for code: PyridinolineMassTimeIn24HourUrine
     /// </summary>
     public const string LiteralPyridinolineMassTimeIn24HourUrine = "10887-8";
+
+    /// <summary>
+    /// Literal for code: NONEPyridinolineMassTimeIn24HourUrine
+    /// </summary>
+    public const string LiteralNONEPyridinolineMassTimeIn24HourUrine = "http://loinc.org#10887-8";
 
     /// <summary>
     /// Literal for code: LipaseEnzymaticActivityVolumeInUrine
@@ -13958,9 +18898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLipaseEnzymaticActivityVolumeInUrine = "10888-6";
 
     /// <summary>
+    /// Literal for code: NONELipaseEnzymaticActivityVolumeInUrine
+    /// </summary>
+    public const string LiteralNONELipaseEnzymaticActivityVolumeInUrine = "http://loinc.org#10888-6";
+
+    /// <summary>
     /// Literal for code: BisacodylMassMassInStool
     /// </summary>
     public const string LiteralBisacodylMassMassInStool = "10889-4";
+
+    /// <summary>
+    /// Literal for code: NONEBisacodylMassMassInStool
+    /// </summary>
+    public const string LiteralNONEBisacodylMassMassInStool = "http://loinc.org#10889-4";
 
     /// <summary>
     /// Literal for code: JsSupBAgPresenceOnRedBloodCellsFromDonor
@@ -13968,9 +18918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJsSupBAgPresenceOnRedBloodCellsFromDonor = "1089-2";
 
     /// <summary>
+    /// Literal for code: NONEJsSupBAgPresenceOnRedBloodCellsFromDonor
+    /// </summary>
+    public const string LiteralNONEJsSupBAgPresenceOnRedBloodCellsFromDonor = "http://loinc.org#1089-2";
+
+    /// <summary>
     /// Literal for code: DeprecatedNormethsuximideMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralDeprecatedNormethsuximideMassVolumeInSerumOrPlasma = "10890-2";
+
+    /// <summary>
+    /// Literal for code: NONEDeprecatedNormethsuximideMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEDeprecatedNormethsuximideMassVolumeInSerumOrPlasma = "http://loinc.org#10890-2";
 
     /// <summary>
     /// Literal for code: OxyphenisatinMassMassInStool
@@ -13978,9 +18938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOxyphenisatinMassMassInStool = "10891-0";
 
     /// <summary>
+    /// Literal for code: NONEOxyphenisatinMassMassInStool
+    /// </summary>
+    public const string LiteralNONEOxyphenisatinMassMassInStool = "http://loinc.org#10891-0";
+
+    /// <summary>
     /// Literal for code: PentoxifyllineMassVolumeInSerumOrPlasma
     /// </summary>
     public const string LiteralPentoxifyllineMassVolumeInSerumOrPlasma = "10892-8";
+
+    /// <summary>
+    /// Literal for code: NONEPentoxifyllineMassVolumeInSerumOrPlasma
+    /// </summary>
+    public const string LiteralNONEPentoxifyllineMassVolumeInSerumOrPlasma = "http://loinc.org#10892-8";
 
     /// <summary>
     /// Literal for code: TrenboloneMassVolumeInUrine
@@ -13988,9 +18958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrenboloneMassVolumeInUrine = "10893-6";
 
     /// <summary>
+    /// Literal for code: NONETrenboloneMassVolumeInUrine
+    /// </summary>
+    public const string LiteralNONETrenboloneMassVolumeInUrine = "http://loinc.org#10893-6";
+
+    /// <summary>
     /// Literal for code: AspergillusNigerAbPresenceInSerumByImmuneDiffusionID
     /// </summary>
     public const string LiteralAspergillusNigerAbPresenceInSerumByImmuneDiffusionID = "10894-4";
+
+    /// <summary>
+    /// Literal for code: NONEAspergillusNigerAbPresenceInSerumByImmuneDiffusionID
+    /// </summary>
+    public const string LiteralNONEAspergillusNigerAbPresenceInSerumByImmuneDiffusionID = "http://loinc.org#10894-4";
 
     /// <summary>
     /// Literal for code: ClostridiumDifficileToxinBPresenceInStool
@@ -13998,9 +18978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClostridiumDifficileToxinBPresenceInStool = "10895-1";
 
     /// <summary>
+    /// Literal for code: NONEClostridiumDifficileToxinBPresenceInStool
+    /// </summary>
+    public const string LiteralNONEClostridiumDifficileToxinBPresenceInStool = "http://loinc.org#10895-1";
+
+    /// <summary>
     /// Literal for code: EasternEquineEncephalitisVirusIgGAbTiterInSerumByImmunofluorescence
     /// </summary>
     public const string LiteralEasternEquineEncephalitisVirusIgGAbTiterInSerumByImmunofluorescence = "10896-9";
+
+    /// <summary>
+    /// Literal for code: NONEEasternEquineEncephalitisVirusIgGAbTiterInSerumByImmunofluorescence
+    /// </summary>
+    public const string LiteralNONEEasternEquineEncephalitisVirusIgGAbTiterInSerumByImmunofluorescence = "http://loinc.org#10896-9";
 
     /// <summary>
     /// Literal for code: EasternEquineEncephalitisVirusIgGAbTiterInCerebralSpinalFluidByImmunofluorescence
@@ -14008,8 +18998,2024 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEasternEquineEncephalitisVirusIgGAbTiterInCerebralSpinalFluidByImmunofluorescence = "10897-7";
 
     /// <summary>
+    /// Literal for code: NONEEasternEquineEncephalitisVirusIgGAbTiterInCerebralSpinalFluidByImmunofluorescence
+    /// </summary>
+    public const string LiteralNONEEasternEquineEncephalitisVirusIgGAbTiterInCerebralSpinalFluidByImmunofluorescence = "http://loinc.org#10897-7";
+
+    /// <summary>
     /// Literal for code: EasternEquineEncephalitisVirusIgMAbTiterInSerumByImmunofluorescence
     /// </summary>
     public const string LiteralEasternEquineEncephalitisVirusIgMAbTiterInSerumByImmunofluorescence = "10898-5";
+
+    /// <summary>
+    /// Literal for code: NONEEasternEquineEncephalitisVirusIgMAbTiterInSerumByImmunofluorescence
+    /// </summary>
+    public const string LiteralNONEEasternEquineEncephalitisVirusIgMAbTiterInSerumByImmunofluorescence = "http://loinc.org#10898-5";
+
+    /// <summary>
+    /// Dictionary for looking up ConsentContentCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1-8", AcyclovirSusceptibility }, 
+      { "http://loinc.org#1-8", AcyclovirSusceptibility }, 
+      { "10-9", AmdinocillinSusceptibilityBySerumBactericidalTiter }, 
+      { "http://loinc.org#10-9", AmdinocillinSusceptibilityBySerumBactericidalTiter }, 
+      { "100-8", CefoperazoneSusceptibilityByMinimumInhibitoryConcentrationMIC }, 
+      { "http://loinc.org#100-8", CefoperazoneSusceptibilityByMinimumInhibitoryConcentrationMIC }, 
+      { "1000-9", DBGAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "http://loinc.org#1000-9", DBGAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "10000-8", RWaveDurationInLeadAVR }, 
+      { "http://loinc.org#10000-8", RWaveDurationInLeadAVR }, 
+      { "10001-6", RWaveDurationInLeadI }, 
+      { "http://loinc.org#10001-6", RWaveDurationInLeadI }, 
+      { "10002-4", RWaveDurationInLeadII }, 
+      { "http://loinc.org#10002-4", RWaveDurationInLeadII }, 
+      { "10003-2", RWaveDurationInLeadIII }, 
+      { "http://loinc.org#10003-2", RWaveDurationInLeadIII }, 
+      { "10004-0", RWaveDurationInLeadV1 }, 
+      { "http://loinc.org#10004-0", RWaveDurationInLeadV1 }, 
+      { "10005-7", RWaveDurationInLeadV2 }, 
+      { "http://loinc.org#10005-7", RWaveDurationInLeadV2 }, 
+      { "10006-5", RWaveDurationInLeadV3 }, 
+      { "http://loinc.org#10006-5", RWaveDurationInLeadV3 }, 
+      { "10007-3", RWaveDurationInLeadV4 }, 
+      { "http://loinc.org#10007-3", RWaveDurationInLeadV4 }, 
+      { "10008-1", RWaveDurationInLeadV5 }, 
+      { "http://loinc.org#10008-1", RWaveDurationInLeadV5 }, 
+      { "10009-9", RWaveDurationInLeadV6 }, 
+      { "http://loinc.org#10009-9", RWaveDurationInLeadV6 }, 
+      { "1001-7", DBGAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "http://loinc.org#1001-7", DBGAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "10010-7", RQuoteWaveAmplitudeInLeadAVF }, 
+      { "http://loinc.org#10010-7", RQuoteWaveAmplitudeInLeadAVF }, 
+      { "10011-5", RQuoteWaveAmplitudeInLeadAVL }, 
+      { "http://loinc.org#10011-5", RQuoteWaveAmplitudeInLeadAVL }, 
+      { "10012-3", RQuoteWaveAmplitudeInLeadAVR }, 
+      { "http://loinc.org#10012-3", RQuoteWaveAmplitudeInLeadAVR }, 
+      { "10013-1", RQuoteWaveAmplitudeInLeadI }, 
+      { "http://loinc.org#10013-1", RQuoteWaveAmplitudeInLeadI }, 
+      { "10014-9", RQuoteWaveAmplitudeInLeadII }, 
+      { "http://loinc.org#10014-9", RQuoteWaveAmplitudeInLeadII }, 
+      { "10015-6", RQuoteWaveAmplitudeInLeadIII }, 
+      { "http://loinc.org#10015-6", RQuoteWaveAmplitudeInLeadIII }, 
+      { "10016-4", RQuoteWaveAmplitudeInLeadV1 }, 
+      { "http://loinc.org#10016-4", RQuoteWaveAmplitudeInLeadV1 }, 
+      { "10017-2", RQuoteWaveAmplitudeInLeadV2 }, 
+      { "http://loinc.org#10017-2", RQuoteWaveAmplitudeInLeadV2 }, 
+      { "10018-0", RQuoteWaveAmplitudeInLeadV3 }, 
+      { "http://loinc.org#10018-0", RQuoteWaveAmplitudeInLeadV3 }, 
+      { "10019-8", RQuoteWaveAmplitudeInLeadV4 }, 
+      { "http://loinc.org#10019-8", RQuoteWaveAmplitudeInLeadV4 }, 
+      { "1002-5", DBGAbPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#1002-5", DBGAbPresenceInSerumOrPlasma }, 
+      { "10020-6", RQuoteWaveAmplitudeInLeadV5 }, 
+      { "http://loinc.org#10020-6", RQuoteWaveAmplitudeInLeadV5 }, 
+      { "10021-4", RQuoteWaveAmplitudeInLeadV6 }, 
+      { "http://loinc.org#10021-4", RQuoteWaveAmplitudeInLeadV6 }, 
+      { "10022-2", RQuoteWaveDurationInLeadAVF }, 
+      { "http://loinc.org#10022-2", RQuoteWaveDurationInLeadAVF }, 
+      { "10023-0", RQuoteWaveDurationInLeadAVL }, 
+      { "http://loinc.org#10023-0", RQuoteWaveDurationInLeadAVL }, 
+      { "10024-8", RQuoteWaveDurationInLeadAVR }, 
+      { "http://loinc.org#10024-8", RQuoteWaveDurationInLeadAVR }, 
+      { "10025-5", RQuoteWaveDurationInLeadI }, 
+      { "http://loinc.org#10025-5", RQuoteWaveDurationInLeadI }, 
+      { "10026-3", RQuoteWaveDurationInLeadII }, 
+      { "http://loinc.org#10026-3", RQuoteWaveDurationInLeadII }, 
+      { "10027-1", RQuoteWaveDurationInLeadIII }, 
+      { "http://loinc.org#10027-1", RQuoteWaveDurationInLeadIII }, 
+      { "10028-9", RQuoteWaveDurationInLeadV1 }, 
+      { "http://loinc.org#10028-9", RQuoteWaveDurationInLeadV1 }, 
+      { "10029-7", RQuoteWaveDurationInLeadV2 }, 
+      { "http://loinc.org#10029-7", RQuoteWaveDurationInLeadV2 }, 
+      { "1003-3", IndirectAntiglobulinTestComplementSpecificReagentPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#1003-3", IndirectAntiglobulinTestComplementSpecificReagentPresenceInSerumOrPlasma }, 
+      { "10030-5", RQuoteWaveDurationInLeadV3 }, 
+      { "http://loinc.org#10030-5", RQuoteWaveDurationInLeadV3 }, 
+      { "10031-3", RQuoteWaveDurationInLeadV4 }, 
+      { "http://loinc.org#10031-3", RQuoteWaveDurationInLeadV4 }, 
+      { "10032-1", RQuoteWaveDurationInLeadV5 }, 
+      { "http://loinc.org#10032-1", RQuoteWaveDurationInLeadV5 }, 
+      { "10033-9", RQuoteWaveDurationInLeadV6 }, 
+      { "http://loinc.org#10033-9", RQuoteWaveDurationInLeadV6 }, 
+      { "10034-7", SWaveAmplitudeInLeadAVF }, 
+      { "http://loinc.org#10034-7", SWaveAmplitudeInLeadAVF }, 
+      { "10035-4", SWaveAmplitudeInLeadAVL }, 
+      { "http://loinc.org#10035-4", SWaveAmplitudeInLeadAVL }, 
+      { "10036-2", SWaveAmplitudeInLeadAVR }, 
+      { "http://loinc.org#10036-2", SWaveAmplitudeInLeadAVR }, 
+      { "10037-0", SWaveAmplitudeInLeadI }, 
+      { "http://loinc.org#10037-0", SWaveAmplitudeInLeadI }, 
+      { "10038-8", SWaveAmplitudeInLeadII }, 
+      { "http://loinc.org#10038-8", SWaveAmplitudeInLeadII }, 
+      { "10039-6", SWaveAmplitudeInLeadIII }, 
+      { "http://loinc.org#10039-6", SWaveAmplitudeInLeadIII }, 
+      { "1004-1", DirectAntiglobulinTestComplementSpecificReagentPresenceOnRedBloodCells }, 
+      { "http://loinc.org#1004-1", DirectAntiglobulinTestComplementSpecificReagentPresenceOnRedBloodCells }, 
+      { "10040-4", SWaveAmplitudeInLeadV1 }, 
+      { "http://loinc.org#10040-4", SWaveAmplitudeInLeadV1 }, 
+      { "10041-2", SWaveAmplitudeInLeadV2 }, 
+      { "http://loinc.org#10041-2", SWaveAmplitudeInLeadV2 }, 
+      { "10042-0", SWaveAmplitudeInLeadV3 }, 
+      { "http://loinc.org#10042-0", SWaveAmplitudeInLeadV3 }, 
+      { "10043-8", SWaveAmplitudeInLeadV4 }, 
+      { "http://loinc.org#10043-8", SWaveAmplitudeInLeadV4 }, 
+      { "10044-6", SWaveAmplitudeInLeadV5 }, 
+      { "http://loinc.org#10044-6", SWaveAmplitudeInLeadV5 }, 
+      { "10045-3", SWaveAmplitudeInLeadV6 }, 
+      { "http://loinc.org#10045-3", SWaveAmplitudeInLeadV6 }, 
+      { "10046-1", SWaveDurationInLeadAVF }, 
+      { "http://loinc.org#10046-1", SWaveDurationInLeadAVF }, 
+      { "10047-9", SWaveDurationInLeadAVL }, 
+      { "http://loinc.org#10047-9", SWaveDurationInLeadAVL }, 
+      { "10048-7", SWaveDurationInLeadAVR }, 
+      { "http://loinc.org#10048-7", SWaveDurationInLeadAVR }, 
+      { "10049-5", SWaveDurationInLeadI }, 
+      { "http://loinc.org#10049-5", SWaveDurationInLeadI }, 
+      { "1005-8", IndirectAntiglobulinTestIgGSpecificReagentPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#1005-8", IndirectAntiglobulinTestIgGSpecificReagentPresenceInSerumOrPlasma }, 
+      { "10050-3", SWaveDurationInLeadII }, 
+      { "http://loinc.org#10050-3", SWaveDurationInLeadII }, 
+      { "10051-1", SWaveDurationInLeadIII }, 
+      { "http://loinc.org#10051-1", SWaveDurationInLeadIII }, 
+      { "10052-9", SWaveDurationInLeadV1 }, 
+      { "http://loinc.org#10052-9", SWaveDurationInLeadV1 }, 
+      { "10053-7", SWaveDurationInLeadV2 }, 
+      { "http://loinc.org#10053-7", SWaveDurationInLeadV2 }, 
+      { "10054-5", SWaveDurationInLeadV3 }, 
+      { "http://loinc.org#10054-5", SWaveDurationInLeadV3 }, 
+      { "10055-2", SWaveDurationInLeadV4 }, 
+      { "http://loinc.org#10055-2", SWaveDurationInLeadV4 }, 
+      { "10056-0", SWaveDurationInLeadV5 }, 
+      { "http://loinc.org#10056-0", SWaveDurationInLeadV5 }, 
+      { "10057-8", SWaveDurationInLeadV6 }, 
+      { "http://loinc.org#10057-8", SWaveDurationInLeadV6 }, 
+      { "10058-6", SQuoteWaveAmplitudeInLeadAVF }, 
+      { "http://loinc.org#10058-6", SQuoteWaveAmplitudeInLeadAVF }, 
+      { "10059-4", SQuoteWaveAmplitudeInLeadAVL }, 
+      { "http://loinc.org#10059-4", SQuoteWaveAmplitudeInLeadAVL }, 
+      { "1006-6", DirectAntiglobulinTestIgGSpecificReagentInterpretationOnRedBloodCells }, 
+      { "http://loinc.org#1006-6", DirectAntiglobulinTestIgGSpecificReagentInterpretationOnRedBloodCells }, 
+      { "10060-2", SQuoteWaveAmplitudeInLeadAVR }, 
+      { "http://loinc.org#10060-2", SQuoteWaveAmplitudeInLeadAVR }, 
+      { "10061-0", SQuoteWaveAmplitudeInLeadI }, 
+      { "http://loinc.org#10061-0", SQuoteWaveAmplitudeInLeadI }, 
+      { "10062-8", SQuoteWaveAmplitudeInLeadII }, 
+      { "http://loinc.org#10062-8", SQuoteWaveAmplitudeInLeadII }, 
+      { "10063-6", SQuoteWaveAmplitudeInLeadIII }, 
+      { "http://loinc.org#10063-6", SQuoteWaveAmplitudeInLeadIII }, 
+      { "10064-4", SQuoteWaveAmplitudeInLeadV1 }, 
+      { "http://loinc.org#10064-4", SQuoteWaveAmplitudeInLeadV1 }, 
+      { "10065-1", SQuoteWaveAmplitudeInLeadV2 }, 
+      { "http://loinc.org#10065-1", SQuoteWaveAmplitudeInLeadV2 }, 
+      { "10066-9", SQuoteWaveAmplitudeInLeadV3 }, 
+      { "http://loinc.org#10066-9", SQuoteWaveAmplitudeInLeadV3 }, 
+      { "10067-7", SQuoteWaveAmplitudeInLeadV4 }, 
+      { "http://loinc.org#10067-7", SQuoteWaveAmplitudeInLeadV4 }, 
+      { "10068-5", SQuoteWaveAmplitudeInLeadV5 }, 
+      { "http://loinc.org#10068-5", SQuoteWaveAmplitudeInLeadV5 }, 
+      { "10069-3", SQuoteWaveAmplitudeInLeadV6 }, 
+      { "http://loinc.org#10069-3", SQuoteWaveAmplitudeInLeadV6 }, 
+      { "1007-4", DirectAntiglobulinTestPolySpecificReagentPresenceOnRedBloodCells }, 
+      { "http://loinc.org#1007-4", DirectAntiglobulinTestPolySpecificReagentPresenceOnRedBloodCells }, 
+      { "10070-1", SQuoteWaveDurationInLeadAVF }, 
+      { "http://loinc.org#10070-1", SQuoteWaveDurationInLeadAVF }, 
+      { "10071-9", SQuoteWaveDurationInLeadAVL }, 
+      { "http://loinc.org#10071-9", SQuoteWaveDurationInLeadAVL }, 
+      { "10072-7", SQuoteWaveDurationInLeadAVR }, 
+      { "http://loinc.org#10072-7", SQuoteWaveDurationInLeadAVR }, 
+      { "10073-5", SQuoteWaveDurationInLeadI }, 
+      { "http://loinc.org#10073-5", SQuoteWaveDurationInLeadI }, 
+      { "10074-3", SQuoteWaveDurationInLeadII }, 
+      { "http://loinc.org#10074-3", SQuoteWaveDurationInLeadII }, 
+      { "10075-0", SQuoteWaveDurationInLeadIII }, 
+      { "http://loinc.org#10075-0", SQuoteWaveDurationInLeadIII }, 
+      { "10076-8", SQuoteWaveDurationInLeadV1 }, 
+      { "http://loinc.org#10076-8", SQuoteWaveDurationInLeadV1 }, 
+      { "10077-6", SQuoteWaveDurationInLeadV2 }, 
+      { "http://loinc.org#10077-6", SQuoteWaveDurationInLeadV2 }, 
+      { "10078-4", SQuoteWaveDurationInLeadV3 }, 
+      { "http://loinc.org#10078-4", SQuoteWaveDurationInLeadV3 }, 
+      { "10079-2", SQuoteWaveDurationInLeadV4 }, 
+      { "http://loinc.org#10079-2", SQuoteWaveDurationInLeadV4 }, 
+      { "1008-2", IndirectAntiglobulinTestPolySpecificReagentPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#1008-2", IndirectAntiglobulinTestPolySpecificReagentPresenceInSerumOrPlasma }, 
+      { "10080-0", SQuoteWaveDurationInLeadV5 }, 
+      { "http://loinc.org#10080-0", SQuoteWaveDurationInLeadV5 }, 
+      { "10081-8", SQuoteWaveDurationInLeadV6 }, 
+      { "http://loinc.org#10081-8", SQuoteWaveDurationInLeadV6 }, 
+      { "10082-6", STInitialAmplitude6MsInLeadAVF }, 
+      { "http://loinc.org#10082-6", STInitialAmplitude6MsInLeadAVF }, 
+      { "10083-4", STInitialAmplitude6MsInLeadAVL }, 
+      { "http://loinc.org#10083-4", STInitialAmplitude6MsInLeadAVL }, 
+      { "10084-2", STInitialAmplitude6MsInLeadAVR }, 
+      { "http://loinc.org#10084-2", STInitialAmplitude6MsInLeadAVR }, 
+      { "10085-9", STInitialAmplitude6MsInLeadI }, 
+      { "http://loinc.org#10085-9", STInitialAmplitude6MsInLeadI }, 
+      { "10086-7", STInitialAmplitude6MsInLeadII }, 
+      { "http://loinc.org#10086-7", STInitialAmplitude6MsInLeadII }, 
+      { "10087-5", STInitialAmplitude6MsInLeadIII }, 
+      { "http://loinc.org#10087-5", STInitialAmplitude6MsInLeadIII }, 
+      { "10088-3", STInitialAmplitude6MsInLeadV1 }, 
+      { "http://loinc.org#10088-3", STInitialAmplitude6MsInLeadV1 }, 
+      { "10089-1", STInitialAmplitude6MsInLeadV2 }, 
+      { "http://loinc.org#10089-1", STInitialAmplitude6MsInLeadV2 }, 
+      { "1009-0", DeprecatedDirectAntiglobulinTestPolySpecificReagentPresenceOnRedBloodCells }, 
+      { "http://loinc.org#1009-0", DeprecatedDirectAntiglobulinTestPolySpecificReagentPresenceOnRedBloodCells }, 
+      { "10090-9", STInitialAmplitude6MsInLeadV3 }, 
+      { "http://loinc.org#10090-9", STInitialAmplitude6MsInLeadV3 }, 
+      { "10091-7", STInitialAmplitude6MsInLeadV4 }, 
+      { "http://loinc.org#10091-7", STInitialAmplitude6MsInLeadV4 }, 
+      { "10092-5", STInitialAmplitude6MsInLeadV5 }, 
+      { "http://loinc.org#10092-5", STInitialAmplitude6MsInLeadV5 }, 
+      { "10093-3", STInitialAmplitude6MsInLeadV6 }, 
+      { "http://loinc.org#10093-3", STInitialAmplitude6MsInLeadV6 }, 
+      { "10094-1", STSlopeInLeadAVF }, 
+      { "http://loinc.org#10094-1", STSlopeInLeadAVF }, 
+      { "10095-8", STSlopeInLeadAVL }, 
+      { "http://loinc.org#10095-8", STSlopeInLeadAVL }, 
+      { "10096-6", STSlopeInLeadAVR }, 
+      { "http://loinc.org#10096-6", STSlopeInLeadAVR }, 
+      { "10097-4", STSlopeInLeadI }, 
+      { "http://loinc.org#10097-4", STSlopeInLeadI }, 
+      { "10098-2", STSlopeInLeadII }, 
+      { "http://loinc.org#10098-2", STSlopeInLeadII }, 
+      { "10099-0", STSlopeInLeadIII }, 
+      { "http://loinc.org#10099-0", STSlopeInLeadIII }, 
+      { "101-6", CefoperazoneSusceptibilityByDiskDiffusionKB }, 
+      { "http://loinc.org#101-6", CefoperazoneSusceptibilityByDiskDiffusionKB }, 
+      { "1010-8", ESupWAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "http://loinc.org#1010-8", ESupWAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "10100-6", STSlopeInLeadV1 }, 
+      { "http://loinc.org#10100-6", STSlopeInLeadV1 }, 
+      { "10101-4", STSlopeInLeadV2 }, 
+      { "http://loinc.org#10101-4", STSlopeInLeadV2 }, 
+      { "10102-2", STSlopeInLeadV3 }, 
+      { "http://loinc.org#10102-2", STSlopeInLeadV3 }, 
+      { "10103-0", STSlopeInLeadV4 }, 
+      { "http://loinc.org#10103-0", STSlopeInLeadV4 }, 
+      { "10104-8", STSlopeInLeadV5 }, 
+      { "http://loinc.org#10104-8", STSlopeInLeadV5 }, 
+      { "10105-5", STSlopeInLeadV6 }, 
+      { "http://loinc.org#10105-5", STSlopeInLeadV6 }, 
+      { "10106-3", STWaveEndDisplacementInLeadAVF }, 
+      { "http://loinc.org#10106-3", STWaveEndDisplacementInLeadAVF }, 
+      { "10107-1", STWaveEndDisplacementInLeadAVL }, 
+      { "http://loinc.org#10107-1", STWaveEndDisplacementInLeadAVL }, 
+      { "10108-9", STWaveEndDisplacementInLeadAVR }, 
+      { "http://loinc.org#10108-9", STWaveEndDisplacementInLeadAVR }, 
+      { "10109-7", STWaveEndDisplacementInLeadI }, 
+      { "http://loinc.org#10109-7", STWaveEndDisplacementInLeadI }, 
+      { "1011-6", ESupWAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "http://loinc.org#1011-6", ESupWAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "10110-5", STWaveEndDisplacementInLeadII }, 
+      { "http://loinc.org#10110-5", STWaveEndDisplacementInLeadII }, 
+      { "10111-3", STWaveEndDisplacementInLeadIII }, 
+      { "http://loinc.org#10111-3", STWaveEndDisplacementInLeadIII }, 
+      { "10112-1", STWaveEndDisplacementInLeadV1 }, 
+      { "http://loinc.org#10112-1", STWaveEndDisplacementInLeadV1 }, 
+      { "10113-9", STWaveEndDisplacementInLeadV2 }, 
+      { "http://loinc.org#10113-9", STWaveEndDisplacementInLeadV2 }, 
+      { "10114-7", STWaveEndDisplacementInLeadV3 }, 
+      { "http://loinc.org#10114-7", STWaveEndDisplacementInLeadV3 }, 
+      { "10115-4", STWaveEndDisplacementInLeadV4 }, 
+      { "http://loinc.org#10115-4", STWaveEndDisplacementInLeadV4 }, 
+      { "10116-2", STWaveEndDisplacementInLeadV5 }, 
+      { "http://loinc.org#10116-2", STWaveEndDisplacementInLeadV5 }, 
+      { "10117-0", STWaveEndDisplacementInLeadV6 }, 
+      { "http://loinc.org#10117-0", STWaveEndDisplacementInLeadV6 }, 
+      { "10118-8", STWaveMidDisplacementInLeadAVF }, 
+      { "http://loinc.org#10118-8", STWaveMidDisplacementInLeadAVF }, 
+      { "10119-6", STWaveMidDisplacementInLeadAVL }, 
+      { "http://loinc.org#10119-6", STWaveMidDisplacementInLeadAVL }, 
+      { "1012-4", ESupWAbPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#1012-4", ESupWAbPresenceInSerumOrPlasma }, 
+      { "10120-4", STWaveMidDisplacementInLeadAVR }, 
+      { "http://loinc.org#10120-4", STWaveMidDisplacementInLeadAVR }, 
+      { "10121-2", STWaveMidDisplacementInLeadI }, 
+      { "http://loinc.org#10121-2", STWaveMidDisplacementInLeadI }, 
+      { "10122-0", STWaveMidDisplacementInLeadII }, 
+      { "http://loinc.org#10122-0", STWaveMidDisplacementInLeadII }, 
+      { "10123-8", STWaveMidDisplacementInLeadIII }, 
+      { "http://loinc.org#10123-8", STWaveMidDisplacementInLeadIII }, 
+      { "10124-6", STWaveMidDisplacementInLeadV1 }, 
+      { "http://loinc.org#10124-6", STWaveMidDisplacementInLeadV1 }, 
+      { "10125-3", STWaveMidDisplacementInLeadV2 }, 
+      { "http://loinc.org#10125-3", STWaveMidDisplacementInLeadV2 }, 
+      { "10126-1", STWaveMidDisplacementInLeadV3 }, 
+      { "http://loinc.org#10126-1", STWaveMidDisplacementInLeadV3 }, 
+      { "10127-9", STWaveMidDisplacementInLeadV4 }, 
+      { "http://loinc.org#10127-9", STWaveMidDisplacementInLeadV4 }, 
+      { "10128-7", STWaveMidDisplacementInLeadV5 }, 
+      { "http://loinc.org#10128-7", STWaveMidDisplacementInLeadV5 }, 
+      { "10129-5", STWaveMidDisplacementInLeadV6 }, 
+      { "http://loinc.org#10129-5", STWaveMidDisplacementInLeadV6 }, 
+      { "1013-2", ESupWAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "http://loinc.org#1013-2", ESupWAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "10130-3", TQuoteWaveAmplitudeInLeadAVF }, 
+      { "http://loinc.org#10130-3", TQuoteWaveAmplitudeInLeadAVF }, 
+      { "10131-1", TQuoteWaveAmplitudeInLeadAVL }, 
+      { "http://loinc.org#10131-1", TQuoteWaveAmplitudeInLeadAVL }, 
+      { "10132-9", TQuoteWaveAmplitudeInLeadAVR }, 
+      { "http://loinc.org#10132-9", TQuoteWaveAmplitudeInLeadAVR }, 
+      { "10133-7", TQuoteWaveAmplitudeInLeadI }, 
+      { "http://loinc.org#10133-7", TQuoteWaveAmplitudeInLeadI }, 
+      { "10134-5", TQuoteWaveAmplitudeInLeadII }, 
+      { "http://loinc.org#10134-5", TQuoteWaveAmplitudeInLeadII }, 
+      { "10135-2", TQuoteWaveAmplitudeInLeadIII }, 
+      { "http://loinc.org#10135-2", TQuoteWaveAmplitudeInLeadIII }, 
+      { "10136-0", TQuoteWaveAmplitudeInLeadV1 }, 
+      { "http://loinc.org#10136-0", TQuoteWaveAmplitudeInLeadV1 }, 
+      { "10137-8", TQuoteWaveAmplitudeInLeadV2 }, 
+      { "http://loinc.org#10137-8", TQuoteWaveAmplitudeInLeadV2 }, 
+      { "10138-6", TQuoteWaveAmplitudeInLeadV3 }, 
+      { "http://loinc.org#10138-6", TQuoteWaveAmplitudeInLeadV3 }, 
+      { "10139-4", TQuoteWaveAmplitudeInLeadV4 }, 
+      { "http://loinc.org#10139-4", TQuoteWaveAmplitudeInLeadV4 }, 
+      { "1014-0", ESupWAgPresenceOnRedBloodCellsFromDonor }, 
+      { "http://loinc.org#1014-0", ESupWAgPresenceOnRedBloodCellsFromDonor }, 
+      { "10140-2", TQuoteWaveAmplitudeInLeadV5 }, 
+      { "http://loinc.org#10140-2", TQuoteWaveAmplitudeInLeadV5 }, 
+      { "10141-0", TQuoteWaveAmplitudeInLeadV6 }, 
+      { "http://loinc.org#10141-0", TQuoteWaveAmplitudeInLeadV6 }, 
+      { "10142-8", TWaveAmplitudeInLeadAVF }, 
+      { "http://loinc.org#10142-8", TWaveAmplitudeInLeadAVF }, 
+      { "10143-6", TWaveAmplitudeInLeadAVL }, 
+      { "http://loinc.org#10143-6", TWaveAmplitudeInLeadAVL }, 
+      { "10144-4", TWaveAmplitudeInLeadAVR }, 
+      { "http://loinc.org#10144-4", TWaveAmplitudeInLeadAVR }, 
+      { "10145-1", TWaveAmplitudeInLeadI }, 
+      { "http://loinc.org#10145-1", TWaveAmplitudeInLeadI }, 
+      { "10146-9", TWaveAmplitudeInLeadII }, 
+      { "http://loinc.org#10146-9", TWaveAmplitudeInLeadII }, 
+      { "10147-7", TWaveAmplitudeInLeadIII }, 
+      { "http://loinc.org#10147-7", TWaveAmplitudeInLeadIII }, 
+      { "10148-5", TWaveAmplitudeInLeadV1 }, 
+      { "http://loinc.org#10148-5", TWaveAmplitudeInLeadV1 }, 
+      { "10149-3", TWaveAmplitudeInLeadV2 }, 
+      { "http://loinc.org#10149-3", TWaveAmplitudeInLeadV2 }, 
+      { "1015-7", ESupWAgPresenceOnRedBloodCells }, 
+      { "http://loinc.org#1015-7", ESupWAgPresenceOnRedBloodCells }, 
+      { "10150-1", TWaveAmplitudeInLeadV3 }, 
+      { "http://loinc.org#10150-1", TWaveAmplitudeInLeadV3 }, 
+      { "10151-9", TWaveAmplitudeInLeadV4 }, 
+      { "http://loinc.org#10151-9", TWaveAmplitudeInLeadV4 }, 
+      { "10152-7", TWaveAmplitudeInLeadV5 }, 
+      { "http://loinc.org#10152-7", TWaveAmplitudeInLeadV5 }, 
+      { "10153-5", TWaveAmplitudeInLeadV6 }, 
+      { "http://loinc.org#10153-5", TWaveAmplitudeInLeadV6 }, 
+      { "10154-3", ChiefComplaintNarrativeReported }, 
+      { "http://loinc.org#10154-3", ChiefComplaintNarrativeReported }, 
+      { "10155-0", HistoryOfAllergiesReported }, 
+      { "http://loinc.org#10155-0", HistoryOfAllergiesReported }, 
+      { "10156-8", HistoryOfChildhoodDiseasesNarrative }, 
+      { "http://loinc.org#10156-8", HistoryOfChildhoodDiseasesNarrative }, 
+      { "10157-6", HistoryOfFamilyMemberDiseasesNarrative }, 
+      { "http://loinc.org#10157-6", HistoryOfFamilyMemberDiseasesNarrative }, 
+      { "10158-4", HistoryOfFunctionalStatusNarrative }, 
+      { "http://loinc.org#10158-4", HistoryOfFunctionalStatusNarrative }, 
+      { "10159-2", HistoryOfIndustrialExposureNarrative }, 
+      { "http://loinc.org#10159-2", HistoryOfIndustrialExposureNarrative }, 
+      { "1016-5", EAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "http://loinc.org#1016-5", EAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "10160-0", HistoryOfMedicationUseNarrative }, 
+      { "http://loinc.org#10160-0", HistoryOfMedicationUseNarrative }, 
+      { "10161-8", HistoryOfOccupationalExposureNarrative }, 
+      { "http://loinc.org#10161-8", HistoryOfOccupationalExposureNarrative }, 
+      { "10162-6", HistoryOfPregnanciesNarrative }, 
+      { "http://loinc.org#10162-6", HistoryOfPregnanciesNarrative }, 
+      { "10163-4", HistoryOfPregnancies }, 
+      { "http://loinc.org#10163-4", HistoryOfPregnancies }, 
+      { "10164-2", HistoryOfPresentIllnessNarrative }, 
+      { "http://loinc.org#10164-2", HistoryOfPresentIllnessNarrative }, 
+      { "10165-9", DeprecatedHistoryOfPsychiatricSymptomsAndDiseasesNarrative }, 
+      { "http://loinc.org#10165-9", DeprecatedHistoryOfPsychiatricSymptomsAndDiseasesNarrative }, 
+      { "10166-7", HistoryOfSocialFunctionNarrative }, 
+      { "http://loinc.org#10166-7", HistoryOfSocialFunctionNarrative }, 
+      { "10167-5", HistoryOfSurgicalProceduresNarrative }, 
+      { "http://loinc.org#10167-5", HistoryOfSurgicalProceduresNarrative }, 
+      { "10168-3", HistoryOfCardiovascularSystemDisordersNarrative }, 
+      { "http://loinc.org#10168-3", HistoryOfCardiovascularSystemDisordersNarrative }, 
+      { "10169-1", HistoryOfEarDisordersNarrative }, 
+      { "http://loinc.org#10169-1", HistoryOfEarDisordersNarrative }, 
+      { "1017-3", EAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "http://loinc.org#1017-3", EAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "10170-9", HistoryOfEndocrineSystemDisordersNarrative }, 
+      { "http://loinc.org#10170-9", HistoryOfEndocrineSystemDisordersNarrative }, 
+      { "10171-7", HistoryOfEyesDisordersNarrative }, 
+      { "http://loinc.org#10171-7", HistoryOfEyesDisordersNarrative }, 
+      { "10172-5", HistoryOfHematologicSystemDisordersNarrative }, 
+      { "http://loinc.org#10172-5", HistoryOfHematologicSystemDisordersNarrative }, 
+      { "10173-3", HistoryOfMusculoskeletalSystemDisordersNarrative }, 
+      { "http://loinc.org#10173-3", HistoryOfMusculoskeletalSystemDisordersNarrative }, 
+      { "10174-1", HistoryOfNoseDisordersNarrative }, 
+      { "http://loinc.org#10174-1", HistoryOfNoseDisordersNarrative }, 
+      { "10175-8", HistoryOfOralCavityDisordersNarrative }, 
+      { "http://loinc.org#10175-8", HistoryOfOralCavityDisordersNarrative }, 
+      { "10176-6", HistoryOfReproductiveSystemDisordersNarrative }, 
+      { "http://loinc.org#10176-6", HistoryOfReproductiveSystemDisordersNarrative }, 
+      { "10177-4", HistoryOfRespiratorySystemDisordersNarrative }, 
+      { "http://loinc.org#10177-4", HistoryOfRespiratorySystemDisordersNarrative }, 
+      { "10178-2", HistoryOfSkinDisordersNarrative }, 
+      { "http://loinc.org#10178-2", HistoryOfSkinDisordersNarrative }, 
+      { "10179-0", HistoryOfThroatAndNeckDisordersNarrative }, 
+      { "http://loinc.org#10179-0", HistoryOfThroatAndNeckDisordersNarrative }, 
+      { "1018-1", EAbPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#1018-1", EAbPresenceInSerumOrPlasma }, 
+      { "10180-8", HistoryOfThroatAndNeckDisorders }, 
+      { "http://loinc.org#10180-8", HistoryOfThroatAndNeckDisorders }, 
+      { "10181-6", HistoryOfUrinaryTractDisordersNarrative }, 
+      { "http://loinc.org#10181-6", HistoryOfUrinaryTractDisordersNarrative }, 
+      { "10182-4", HistoryOfTravelNarrative }, 
+      { "http://loinc.org#10182-4", HistoryOfTravelNarrative }, 
+      { "10183-2", HospitalDischargeMedicationsNarrative }, 
+      { "http://loinc.org#10183-2", HospitalDischargeMedicationsNarrative }, 
+      { "10184-0", HospitalDischargePhysicalFindingsNarrative }, 
+      { "http://loinc.org#10184-0", HospitalDischargePhysicalFindingsNarrative }, 
+      { "10185-7", HospitalDischargeProceduresNarrative }, 
+      { "http://loinc.org#10185-7", HospitalDischargeProceduresNarrative }, 
+      { "10186-5", IdentifyingInformationNarrativeObserved }, 
+      { "http://loinc.org#10186-5", IdentifyingInformationNarrativeObserved }, 
+      { "10187-3", ReviewOfSystemsNarrativeReported }, 
+      { "http://loinc.org#10187-3", ReviewOfSystemsNarrativeReported }, 
+      { "10188-1", ReviewOfSystemsOverviewNarrativeReported }, 
+      { "http://loinc.org#10188-1", ReviewOfSystemsOverviewNarrativeReported }, 
+      { "10189-9", ReviewOfSystemsOverviewReported }, 
+      { "http://loinc.org#10189-9", ReviewOfSystemsOverviewReported }, 
+      { "1019-9", EAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "http://loinc.org#1019-9", EAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "10190-7", MentalStatusNarrative }, 
+      { "http://loinc.org#10190-7", MentalStatusNarrative }, 
+      { "10191-5", PhysicalFindingsOfAbdomenNarrative }, 
+      { "http://loinc.org#10191-5", PhysicalFindingsOfAbdomenNarrative }, 
+      { "10192-3", PhysicalFindingsOfBackNarrative }, 
+      { "http://loinc.org#10192-3", PhysicalFindingsOfBackNarrative }, 
+      { "10193-1", PhysicalFindingsOfBreastsNarrative }, 
+      { "http://loinc.org#10193-1", PhysicalFindingsOfBreastsNarrative }, 
+      { "10194-9", PhysicalFindingsOfNeurologicDeepTendonReflexesNarrative }, 
+      { "http://loinc.org#10194-9", PhysicalFindingsOfNeurologicDeepTendonReflexesNarrative }, 
+      { "10195-6", PhysicalFindingsOfEarNarrative }, 
+      { "http://loinc.org#10195-6", PhysicalFindingsOfEarNarrative }, 
+      { "10196-4", PhysicalFindingsOfExtremitiesNarrative }, 
+      { "http://loinc.org#10196-4", PhysicalFindingsOfExtremitiesNarrative }, 
+      { "10197-2", PhysicalFindingsOfEyeNarrative }, 
+      { "http://loinc.org#10197-2", PhysicalFindingsOfEyeNarrative }, 
+      { "10198-0", PhysicalFindingsOfGenitourinaryTractNarrative }, 
+      { "http://loinc.org#10198-0", PhysicalFindingsOfGenitourinaryTractNarrative }, 
+      { "10199-8", PhysicalFindingsOfHeadNarrative }, 
+      { "http://loinc.org#10199-8", PhysicalFindingsOfHeadNarrative }, 
+      { "102-4", CefoperazoneSusceptibilityBySerumBactericidalTiter }, 
+      { "http://loinc.org#102-4", CefoperazoneSusceptibilityBySerumBactericidalTiter }, 
+      { "1020-7", EAgPresenceOnRedBloodCellsFromDonor }, 
+      { "http://loinc.org#1020-7", EAgPresenceOnRedBloodCellsFromDonor }, 
+      { "10200-4", PhysicalFindingsOfHeartNarrative }, 
+      { "http://loinc.org#10200-4", PhysicalFindingsOfHeartNarrative }, 
+      { "10201-2", PhysicalFindingsOfMouthAndThroatAndTeethNarrative }, 
+      { "http://loinc.org#10201-2", PhysicalFindingsOfMouthAndThroatAndTeethNarrative }, 
+      { "10202-0", PhysicalFindingsOfNervousSystemNarrative }, 
+      { "http://loinc.org#10202-0", PhysicalFindingsOfNervousSystemNarrative }, 
+      { "10203-8", PhysicalFindingsOfNoseNarrative }, 
+      { "http://loinc.org#10203-8", PhysicalFindingsOfNoseNarrative }, 
+      { "10204-6", PhysicalFindingsOfPelvisNarrative }, 
+      { "http://loinc.org#10204-6", PhysicalFindingsOfPelvisNarrative }, 
+      { "10205-3", PhysicalFindingsOfRectumNarrative }, 
+      { "http://loinc.org#10205-3", PhysicalFindingsOfRectumNarrative }, 
+      { "10206-1", PhysicalFindingsOfSkinNarrative }, 
+      { "http://loinc.org#10206-1", PhysicalFindingsOfSkinNarrative }, 
+      { "10207-9", PhysicalFindingsOfThoraxAndLungsNarrative }, 
+      { "http://loinc.org#10207-9", PhysicalFindingsOfThoraxAndLungsNarrative }, 
+      { "10208-7", PhysicalFindingsOfVesselsNarrative }, 
+      { "http://loinc.org#10208-7", PhysicalFindingsOfVesselsNarrative }, 
+      { "10209-5", PhysicalFindingsOfNeurologicBalanceAndCoordinationNarrative }, 
+      { "http://loinc.org#10209-5", PhysicalFindingsOfNeurologicBalanceAndCoordinationNarrative }, 
+      { "1021-5", EAgPresenceOnRedBloodCells }, 
+      { "http://loinc.org#1021-5", EAgPresenceOnRedBloodCells }, 
+      { "10210-3", PhysicalFindingsOfGeneralStatusNarrative }, 
+      { "http://loinc.org#10210-3", PhysicalFindingsOfGeneralStatusNarrative }, 
+      { "10211-1", PhysicalFindingsOfSenseOfTouchNarrative }, 
+      { "http://loinc.org#10211-1", PhysicalFindingsOfSenseOfTouchNarrative }, 
+      { "10212-9", PhysicalFindingsOfStrengthNarrative }, 
+      { "http://loinc.org#10212-9", PhysicalFindingsOfStrengthNarrative }, 
+      { "10213-7", SurgicalOperationNoteAnesthesiaNarrative }, 
+      { "http://loinc.org#10213-7", SurgicalOperationNoteAnesthesiaNarrative }, 
+      { "10214-5", SurgicalOperationNoteAnesthesiaDuration }, 
+      { "http://loinc.org#10214-5", SurgicalOperationNoteAnesthesiaDuration }, 
+      { "10215-2", SurgicalOperationNoteFindingsNarrative }, 
+      { "http://loinc.org#10215-2", SurgicalOperationNoteFindingsNarrative }, 
+      { "10216-0", SurgicalOperationNoteFluidsNarrative }, 
+      { "http://loinc.org#10216-0", SurgicalOperationNoteFluidsNarrative }, 
+      { "10217-8", SurgicalOperationNoteIndicationsInterpretationNarrative }, 
+      { "http://loinc.org#10217-8", SurgicalOperationNoteIndicationsInterpretationNarrative }, 
+      { "10218-6", SurgicalOperationNotePostoperativeDiagnosisNarrative }, 
+      { "http://loinc.org#10218-6", SurgicalOperationNotePostoperativeDiagnosisNarrative }, 
+      { "10219-4", SurgicalOperationNotePreoperativeDiagnosisNarrative }, 
+      { "http://loinc.org#10219-4", SurgicalOperationNotePreoperativeDiagnosisNarrative }, 
+      { "1022-3", FySupAAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "http://loinc.org#1022-3", FySupAAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "10220-2", SurgicalOperationNotePrepTimeDuration }, 
+      { "http://loinc.org#10220-2", SurgicalOperationNotePrepTimeDuration }, 
+      { "10221-0", SurgicalOperationNoteSpecimensTakenNarrative }, 
+      { "http://loinc.org#10221-0", SurgicalOperationNoteSpecimensTakenNarrative }, 
+      { "10222-8", SurgicalOperationNoteSurgicalComplicationsInterpretationNarrative }, 
+      { "http://loinc.org#10222-8", SurgicalOperationNoteSurgicalComplicationsInterpretationNarrative }, 
+      { "10223-6", SurgicalOperationNoteSurgicalProcedureNarrative }, 
+      { "http://loinc.org#10223-6", SurgicalOperationNoteSurgicalProcedureNarrative }, 
+      { "10224-4", HemodynamicMethodSpecialCircumstances }, 
+      { "http://loinc.org#10224-4", HemodynamicMethodSpecialCircumstances }, 
+      { "10225-1", CardiacMeasurementDeviceInstitutionInventoryNumber }, 
+      { "http://loinc.org#10225-1", CardiacMeasurementDeviceInstitutionInventoryNumber }, 
+      { "10226-9", OxygenContentInIntravascularSpace }, 
+      { "http://loinc.org#10226-9", OxygenContentInIntravascularSpace }, 
+      { "10227-7", CardiacMeasurementDeviceVendorModelNumber }, 
+      { "http://loinc.org#10227-7", CardiacMeasurementDeviceVendorModelNumber }, 
+      { "10228-5", CardiacMeasurementDeviceVendorSerialNumber }, 
+      { "http://loinc.org#10228-5", CardiacMeasurementDeviceVendorSerialNumber }, 
+      { "10229-3", HemodynamicMethodTypeOf }, 
+      { "http://loinc.org#10229-3", HemodynamicMethodTypeOf }, 
+      { "1023-1", FySupAAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "http://loinc.org#1023-1", FySupAAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "10230-1", LeftVentricularEjectionFraction }, 
+      { "http://loinc.org#10230-1", LeftVentricularEjectionFraction }, 
+      { "10231-9", RightVentricularEjectionFraction }, 
+      { "http://loinc.org#10231-9", RightVentricularEjectionFraction }, 
+      { "10232-7", OxygenContentInAortaRoot }, 
+      { "http://loinc.org#10232-7", OxygenContentInAortaRoot }, 
+      { "10233-5", OxygenContentInLeftAtrium }, 
+      { "http://loinc.org#10233-5", OxygenContentInLeftAtrium }, 
+      { "10234-3", OxygenContentInRightAtrium }, 
+      { "http://loinc.org#10234-3", OxygenContentInRightAtrium }, 
+      { "10235-0", OxygenContentInHighRightAtrium }, 
+      { "http://loinc.org#10235-0", OxygenContentInHighRightAtrium }, 
+      { "10236-8", OxygenContentInLowRightAtrium }, 
+      { "http://loinc.org#10236-8", OxygenContentInLowRightAtrium }, 
+      { "10237-6", OxygenContentInMidRightAtrium }, 
+      { "http://loinc.org#10237-6", OxygenContentInMidRightAtrium }, 
+      { "10238-4", OxygenContentInLeftVentricle }, 
+      { "http://loinc.org#10238-4", OxygenContentInLeftVentricle }, 
+      { "10239-2", OxygenContentInRightVentricularOutflowTract }, 
+      { "http://loinc.org#10239-2", OxygenContentInRightVentricularOutflowTract }, 
+      { "1024-9", FySupAAbPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#1024-9", FySupAAbPresenceInSerumOrPlasma }, 
+      { "10240-0", OxygenContentInRightVentricle }, 
+      { "http://loinc.org#10240-0", OxygenContentInRightVentricle }, 
+      { "10241-8", OxygenContentInCoronarySinus }, 
+      { "http://loinc.org#10241-8", OxygenContentInCoronarySinus }, 
+      { "10242-6", OxygenContentInDuctusArteriosus }, 
+      { "http://loinc.org#10242-6", OxygenContentInDuctusArteriosus }, 
+      { "10243-4", OxygenContentInInferiorVenaCava }, 
+      { "http://loinc.org#10243-4", OxygenContentInInferiorVenaCava }, 
+      { "10244-2", OxygenContentInLeftPulmonaryArtery }, 
+      { "http://loinc.org#10244-2", OxygenContentInLeftPulmonaryArtery }, 
+      { "10245-9", OxygenContentInMainPulmonaryArtery }, 
+      { "http://loinc.org#10245-9", OxygenContentInMainPulmonaryArtery }, 
+      { "10246-7", OxygenContentInRightPulmonaryArtery }, 
+      { "http://loinc.org#10246-7", OxygenContentInRightPulmonaryArtery }, 
+      { "10247-5", OxygenContentInPulmonaryWedge }, 
+      { "http://loinc.org#10247-5", OxygenContentInPulmonaryWedge }, 
+      { "10248-3", OxygenContentInSuperiorVenaCava }, 
+      { "http://loinc.org#10248-3", OxygenContentInSuperiorVenaCava }, 
+      { "10249-1", HeartRateDeviceInstitutionInventoryNumber }, 
+      { "http://loinc.org#10249-1", HeartRateDeviceInstitutionInventoryNumber }, 
+      { "1025-6", FySupAAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "http://loinc.org#1025-6", FySupAAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "10250-9", HeartRateDeviceVendorModelNumber }, 
+      { "http://loinc.org#10250-9", HeartRateDeviceVendorModelNumber }, 
+      { "10251-7", HeartRateDeviceVendorSerialNumber }, 
+      { "http://loinc.org#10251-7", HeartRateDeviceVendorSerialNumber }, 
+      { "10252-5", BiliaryDrainSite }, 
+      { "http://loinc.org#10252-5", BiliaryDrainSite }, 
+      { "10253-3", TypeOfBiliaryDrain }, 
+      { "http://loinc.org#10253-3", TypeOfBiliaryDrain }, 
+      { "10254-1", TypeOfPeritonealDrain }, 
+      { "http://loinc.org#10254-1", TypeOfPeritonealDrain }, 
+      { "10255-8", TypeOfSubarachnoidDrain }, 
+      { "http://loinc.org#10255-8", TypeOfSubarachnoidDrain }, 
+      { "10256-6", BiliaryDrainInstitutionInventoryNumber }, 
+      { "http://loinc.org#10256-6", BiliaryDrainInstitutionInventoryNumber }, 
+      { "10257-4", ChestTubeInstitutionInventoryNumber }, 
+      { "http://loinc.org#10257-4", ChestTubeInstitutionInventoryNumber }, 
+      { "10258-2", EnteralTubeInstitutionInventoryNumber }, 
+      { "http://loinc.org#10258-2", EnteralTubeInstitutionInventoryNumber }, 
+      { "10259-0", GastrostomyTubeInstitutionInventoryNumber }, 
+      { "http://loinc.org#10259-0", GastrostomyTubeInstitutionInventoryNumber }, 
+      { "1026-4", FySupAAgPresenceOnRedBloodCellsFromDonor }, 
+      { "http://loinc.org#1026-4", FySupAAgPresenceOnRedBloodCellsFromDonor }, 
+      { "10260-8", GITubeInstitutionInventoryNumber }, 
+      { "http://loinc.org#10260-8", GITubeInstitutionInventoryNumber }, 
+      { "10261-6", IntravascularTubeInstitutionInventoryNumber }, 
+      { "http://loinc.org#10261-6", IntravascularTubeInstitutionInventoryNumber }, 
+      { "10262-4", IOTubeInstitutionInventoryNumber }, 
+      { "http://loinc.org#10262-4", IOTubeInstitutionInventoryNumber }, 
+      { "10263-2", NasogastricTubeInstitutionInventoryNumber }, 
+      { "http://loinc.org#10263-2", NasogastricTubeInstitutionInventoryNumber }, 
+      { "10264-0", OralTubeInstitutionInventoryNumber }, 
+      { "http://loinc.org#10264-0", OralTubeInstitutionInventoryNumber }, 
+      { "10265-7", PeritonealDrainInstitutionInventoryNumber }, 
+      { "http://loinc.org#10265-7", PeritonealDrainInstitutionInventoryNumber }, 
+      { "10266-5", PeritonealTubeInstitutionInventoryNumber }, 
+      { "http://loinc.org#10266-5", PeritonealTubeInstitutionInventoryNumber }, 
+      { "10267-3", RateControlDeviceInstitutionInventoryNumber }, 
+      { "http://loinc.org#10267-3", RateControlDeviceInstitutionInventoryNumber }, 
+      { "10268-1", StoolCollectionDeviceInstitutionInventoryNumber }, 
+      { "http://loinc.org#10268-1", StoolCollectionDeviceInstitutionInventoryNumber }, 
+      { "10269-9", SubarachnoidDrainInstitutionInventoryNumber }, 
+      { "http://loinc.org#10269-9", SubarachnoidDrainInstitutionInventoryNumber }, 
+      { "1027-2", FySupAAgPresenceOnRedBloodCells }, 
+      { "http://loinc.org#1027-2", FySupAAgPresenceOnRedBloodCells }, 
+      { "10270-7", SynovialDrainInstitutionInventoryNumber }, 
+      { "http://loinc.org#10270-7", SynovialDrainInstitutionInventoryNumber }, 
+      { "10271-5", TubeOrDrainInstitutionInventoryNumber }, 
+      { "http://loinc.org#10271-5", TubeOrDrainInstitutionInventoryNumber }, 
+      { "10272-3", UpperGITubeInstitutionInventoryNumber }, 
+      { "http://loinc.org#10272-3", UpperGITubeInstitutionInventoryNumber }, 
+      { "10273-1", BladderIrrigationTubeInstitutionInventoryNumber }, 
+      { "http://loinc.org#10273-1", BladderIrrigationTubeInstitutionInventoryNumber }, 
+      { "10274-9", UrineTubeInstitutionInventoryNumber }, 
+      { "http://loinc.org#10274-9", UrineTubeInstitutionInventoryNumber }, 
+      { "10275-6", WoundDrainDeviceInstitutionInventoryNumber }, 
+      { "http://loinc.org#10275-6", WoundDrainDeviceInstitutionInventoryNumber }, 
+      { "10276-4", PeritonealDrainSite }, 
+      { "http://loinc.org#10276-4", PeritonealDrainSite }, 
+      { "10277-2", StoolCollectionSite }, 
+      { "http://loinc.org#10277-2", StoolCollectionSite }, 
+      { "10278-0", SubarachnoidDrainSite }, 
+      { "http://loinc.org#10278-0", SubarachnoidDrainSite }, 
+      { "10279-8", BiliaryDrainVendorModelNumber }, 
+      { "http://loinc.org#10279-8", BiliaryDrainVendorModelNumber }, 
+      { "1028-0", FySupBAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "http://loinc.org#1028-0", FySupBAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "10280-6", ChestTubeVendorModelNumber }, 
+      { "http://loinc.org#10280-6", ChestTubeVendorModelNumber }, 
+      { "10281-4", EnteralTubeVendorModelNumber }, 
+      { "http://loinc.org#10281-4", EnteralTubeVendorModelNumber }, 
+      { "10282-2", GastrostomyTubeVendorModelNumber }, 
+      { "http://loinc.org#10282-2", GastrostomyTubeVendorModelNumber }, 
+      { "10283-0", GITubeVendorModelNumber }, 
+      { "http://loinc.org#10283-0", GITubeVendorModelNumber }, 
+      { "10284-8", IntravascularTubeVendorModelNumber }, 
+      { "http://loinc.org#10284-8", IntravascularTubeVendorModelNumber }, 
+      { "10285-5", IOTubeVendorModelNumber }, 
+      { "http://loinc.org#10285-5", IOTubeVendorModelNumber }, 
+      { "10286-3", NasogastricTubeVendorModelNumber }, 
+      { "http://loinc.org#10286-3", NasogastricTubeVendorModelNumber }, 
+      { "10287-1", OralTubeVendorModelNumber }, 
+      { "http://loinc.org#10287-1", OralTubeVendorModelNumber }, 
+      { "10288-9", PeritonealDrainVendorModelNumber }, 
+      { "http://loinc.org#10288-9", PeritonealDrainVendorModelNumber }, 
+      { "10289-7", PeritonealTubeVendorModelNumber }, 
+      { "http://loinc.org#10289-7", PeritonealTubeVendorModelNumber }, 
+      { "1029-8", FySupBAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "http://loinc.org#1029-8", FySupBAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "10290-5", RateControlDeviceVendorModelNumber }, 
+      { "http://loinc.org#10290-5", RateControlDeviceVendorModelNumber }, 
+      { "10291-3", StoolCollectionDeviceVendorModelNumber }, 
+      { "http://loinc.org#10291-3", StoolCollectionDeviceVendorModelNumber }, 
+      { "10292-1", SubarachnoidDrainVendorModelNumber }, 
+      { "http://loinc.org#10292-1", SubarachnoidDrainVendorModelNumber }, 
+      { "10293-9", SynovialDrainVendorModelNumber }, 
+      { "http://loinc.org#10293-9", SynovialDrainVendorModelNumber }, 
+      { "10294-7", TubeOrDrainVendorModelNumber }, 
+      { "http://loinc.org#10294-7", TubeOrDrainVendorModelNumber }, 
+      { "10295-4", UpperGITubeVendorModelNumber }, 
+      { "http://loinc.org#10295-4", UpperGITubeVendorModelNumber }, 
+      { "10296-2", BladderIrrigationTubeVendorModelNumber }, 
+      { "http://loinc.org#10296-2", BladderIrrigationTubeVendorModelNumber }, 
+      { "10297-0", UrineTubeVendorModelNumber }, 
+      { "http://loinc.org#10297-0", UrineTubeVendorModelNumber }, 
+      { "10298-8", WoundDrainDeviceVendorModelNumber }, 
+      { "http://loinc.org#10298-8", WoundDrainDeviceVendorModelNumber }, 
+      { "10299-6", BiliaryDrainVendorSerialNumber }, 
+      { "http://loinc.org#10299-6", BiliaryDrainVendorSerialNumber }, 
+      { "103-2", CeforanideSusceptibilityByMinimumLethalConcentrationMLC }, 
+      { "http://loinc.org#103-2", CeforanideSusceptibilityByMinimumLethalConcentrationMLC }, 
+      { "1030-6", FySupBAbPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#1030-6", FySupBAbPresenceInSerumOrPlasma }, 
+      { "10300-2", ChestTubeVendorSerialNumber }, 
+      { "http://loinc.org#10300-2", ChestTubeVendorSerialNumber }, 
+      { "10301-0", EnteralTubeVendorSerialNumber }, 
+      { "http://loinc.org#10301-0", EnteralTubeVendorSerialNumber }, 
+      { "10302-8", GastrostomyTubeVendorSerialNumber }, 
+      { "http://loinc.org#10302-8", GastrostomyTubeVendorSerialNumber }, 
+      { "10303-6", GITubeVendorSerialNumber }, 
+      { "http://loinc.org#10303-6", GITubeVendorSerialNumber }, 
+      { "10304-4", IntravascularTubeVendorSerialNumber }, 
+      { "http://loinc.org#10304-4", IntravascularTubeVendorSerialNumber }, 
+      { "10305-1", IOTubeVendorSerialNumber }, 
+      { "http://loinc.org#10305-1", IOTubeVendorSerialNumber }, 
+      { "10306-9", NasogastricTubeVendorSerialNumber }, 
+      { "http://loinc.org#10306-9", NasogastricTubeVendorSerialNumber }, 
+      { "10307-7", OralTubeVendorSerialNumber }, 
+      { "http://loinc.org#10307-7", OralTubeVendorSerialNumber }, 
+      { "10308-5", PeritonealDrainVendorSerialNumber }, 
+      { "http://loinc.org#10308-5", PeritonealDrainVendorSerialNumber }, 
+      { "10309-3", PeritonealTubeVendorSerialNumber }, 
+      { "http://loinc.org#10309-3", PeritonealTubeVendorSerialNumber }, 
+      { "1031-4", FySupBAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "http://loinc.org#1031-4", FySupBAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "10310-1", RateControlDeviceVendorSerialNumber }, 
+      { "http://loinc.org#10310-1", RateControlDeviceVendorSerialNumber }, 
+      { "10311-9", StoolCollectionDeviceVendorSerialNumber }, 
+      { "http://loinc.org#10311-9", StoolCollectionDeviceVendorSerialNumber }, 
+      { "10312-7", SubarachnoidDrainVendorSerialNumber }, 
+      { "http://loinc.org#10312-7", SubarachnoidDrainVendorSerialNumber }, 
+      { "10313-5", SynovialDrainVendorSerialNumber }, 
+      { "http://loinc.org#10313-5", SynovialDrainVendorSerialNumber }, 
+      { "10314-3", TubeOrDrainVendorSerialNumber }, 
+      { "http://loinc.org#10314-3", TubeOrDrainVendorSerialNumber }, 
+      { "10315-0", UpperGITubeVendorSerialNumber }, 
+      { "http://loinc.org#10315-0", UpperGITubeVendorSerialNumber }, 
+      { "10316-8", BladderIrrigationTubeVendorSerialNumber }, 
+      { "http://loinc.org#10316-8", BladderIrrigationTubeVendorSerialNumber }, 
+      { "10317-6", UrineTubeVendorSerialNumber }, 
+      { "http://loinc.org#10317-6", UrineTubeVendorSerialNumber }, 
+      { "10318-4", WoundDrainDeviceVendorSerialNumber }, 
+      { "http://loinc.org#10318-4", WoundDrainDeviceVendorSerialNumber }, 
+      { "10319-2", EnemaDeviceInstitutionInventoryNumber }, 
+      { "http://loinc.org#10319-2", EnemaDeviceInstitutionInventoryNumber }, 
+      { "1032-2", FySupBAgPresenceOnRedBloodCellsFromDonor }, 
+      { "http://loinc.org#1032-2", FySupBAgPresenceOnRedBloodCellsFromDonor }, 
+      { "10320-0", EnemaDeviceVendorModelNumber }, 
+      { "http://loinc.org#10320-0", EnemaDeviceVendorModelNumber }, 
+      { "10321-8", EnemaDeviceVendorSerialNumber }, 
+      { "http://loinc.org#10321-8", EnemaDeviceVendorSerialNumber }, 
+      { "10322-6", PotassiumIntake24Hour }, 
+      { "http://loinc.org#10322-6", PotassiumIntake24Hour }, 
+      { "10323-4", WoundDrainFluidAppearanceLowerGITract }, 
+      { "http://loinc.org#10323-4", WoundDrainFluidAppearanceLowerGITract }, 
+      { "10324-2", BreathRateDeviceInstitutionInventoryNumber }, 
+      { "http://loinc.org#10324-2", BreathRateDeviceInstitutionInventoryNumber }, 
+      { "10325-9", BreathRateDeviceVendorModelNumber }, 
+      { "http://loinc.org#10325-9", BreathRateDeviceVendorModelNumber }, 
+      { "10326-7", BreathRateDeviceVendorSerialNumber }, 
+      { "http://loinc.org#10326-7", BreathRateDeviceVendorSerialNumber }, 
+      { "10327-5", Eosinophils100LeukocytesInSputumByManualCount }, 
+      { "http://loinc.org#10327-5", Eosinophils100LeukocytesInSputumByManualCount }, 
+      { "10328-3", Lymphocytes100LeukocytesInCerebralSpinalFluidByManualCount }, 
+      { "http://loinc.org#10328-3", Lymphocytes100LeukocytesInCerebralSpinalFluidByManualCount }, 
+      { "10329-1", Monocytes100LeukocytesInCerebralSpinalFluidByManualCount }, 
+      { "http://loinc.org#10329-1", Monocytes100LeukocytesInCerebralSpinalFluidByManualCount }, 
+      { "1033-0", FySupBAgPresenceOnRedBloodCells }, 
+      { "http://loinc.org#1033-0", FySupBAgPresenceOnRedBloodCells }, 
+      { "10330-9", Monocytes100LeukocytesInBodyFluidByManualCount }, 
+      { "http://loinc.org#10330-9", Monocytes100LeukocytesInBodyFluidByManualCount }, 
+      { "10331-7", RhTypeInBlood }, 
+      { "http://loinc.org#10331-7", RhTypeInBlood }, 
+      { "10332-5", CortisolMassVolumeInSerumOrPlasmaPre250UgCorticotropinIM }, 
+      { "http://loinc.org#10332-5", CortisolMassVolumeInSerumOrPlasmaPre250UgCorticotropinIM }, 
+      { "10333-3", AppearanceOfCerebralSpinalFluid }, 
+      { "http://loinc.org#10333-3", AppearanceOfCerebralSpinalFluid }, 
+      { "10334-1", CancerAg125UnitsVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10334-1", CancerAg125UnitsVolumeInSerumOrPlasma }, 
+      { "10335-8", ColorOfCerebralSpinalFluid }, 
+      { "http://loinc.org#10335-8", ColorOfCerebralSpinalFluid }, 
+      { "10336-6", GonadotropinPeptideMassVolumeInUrine }, 
+      { "http://loinc.org#10336-6", GonadotropinPeptideMassVolumeInUrine }, 
+      { "10337-4", ProcollagenTypeIMassVolumeInSerum }, 
+      { "http://loinc.org#10337-4", ProcollagenTypeIMassVolumeInSerum }, 
+      { "10338-2", BarbituratesMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10338-2", BarbituratesMassVolumeInSerumOrPlasma }, 
+      { "10339-0", FluoxetinePlusNorfluoxetineMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10339-0", FluoxetinePlusNorfluoxetineMassVolumeInSerumOrPlasma }, 
+      { "1034-8", FetalCellScreenInterpretationInBlood }, 
+      { "http://loinc.org#1034-8", FetalCellScreenInterpretationInBlood }, 
+      { "10340-8", MolindoneMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10340-8", MolindoneMassVolumeInSerumOrPlasma }, 
+      { "10341-6", NorpropoxypheneMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10341-6", NorpropoxypheneMassVolumeInSerumOrPlasma }, 
+      { "10342-4", SulfamethoxazoleMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10342-4", SulfamethoxazoleMassVolumeInSerumOrPlasma }, 
+      { "10343-2", TemazepamMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10343-2", TemazepamMassVolumeInSerumOrPlasma }, 
+      { "10344-0", TranylcypromineMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10344-0", TranylcypromineMassVolumeInSerumOrPlasma }, 
+      { "10345-7", TrihexyphenidylMassVolumeInUrine }, 
+      { "http://loinc.org#10345-7", TrihexyphenidylMassVolumeInUrine }, 
+      { "10346-5", HemoglobinAUnitsVolumeInBloodByElectrophoresis }, 
+      { "http://loinc.org#10346-5", HemoglobinAUnitsVolumeInBloodByElectrophoresis }, 
+      { "10347-3", BabesiaMicrotiIdentifiedInBloodByLightMicroscopy }, 
+      { "http://loinc.org#10347-3", BabesiaMicrotiIdentifiedInBloodByLightMicroscopy }, 
+      { "10348-1", BordetellaParapertussisAbPresenceInSerum }, 
+      { "http://loinc.org#10348-1", BordetellaParapertussisAbPresenceInSerum }, 
+      { "10349-9", BrucellaSpAbUnitsVolumeInSerum }, 
+      { "http://loinc.org#10349-9", BrucellaSpAbUnitsVolumeInSerum }, 
+      { "1035-5", FreshFrozenPlasmaGivenVolume }, 
+      { "http://loinc.org#1035-5", FreshFrozenPlasmaGivenVolume }, 
+      { "10350-7", HerpesSimplexVirusIgMAbTiterInSerumByImmunoassay }, 
+      { "http://loinc.org#10350-7", HerpesSimplexVirusIgMAbTiterInSerumByImmunoassay }, 
+      { "10351-5", HIV1RNAUnitsVolumeViralLoadInSerumOrPlasmaByProbeWithAmplification }, 
+      { "http://loinc.org#10351-5", HIV1RNAUnitsVolumeViralLoadInSerumOrPlasmaByProbeWithAmplification }, 
+      { "10352-3", BacteriaIdentifiedInGenitalSpecimenByAerobeCulture }, 
+      { "http://loinc.org#10352-3", BacteriaIdentifiedInGenitalSpecimenByAerobeCulture }, 
+      { "10353-1", BacteriaIdentifiedInNoseByAerobeCulture }, 
+      { "http://loinc.org#10353-1", BacteriaIdentifiedInNoseByAerobeCulture }, 
+      { "10354-9", BacteriaIdentifiedInUrethraByCulture }, 
+      { "http://loinc.org#10354-9", BacteriaIdentifiedInUrethraByCulture }, 
+      { "10355-6", MicroscopicObservationIdentifierInBoneMarrowByWrightGiemsaStain }, 
+      { "http://loinc.org#10355-6", MicroscopicObservationIdentifierInBoneMarrowByWrightGiemsaStain }, 
+      { "10356-4", DeprecatedMicroscopicObservationIdentifierInStoolByTrichromeStain }, 
+      { "http://loinc.org#10356-4", DeprecatedMicroscopicObservationIdentifierInStoolByTrichromeStain }, 
+      { "10357-2", MicroscopicObservationIdentifierInWoundByGramStain }, 
+      { "http://loinc.org#10357-2", MicroscopicObservationIdentifierInWoundByGramStain }, 
+      { "10358-0", TeichoateAbTiterInSerumByImmuneDiffusionID }, 
+      { "http://loinc.org#10358-0", TeichoateAbTiterInSerumByImmuneDiffusionID }, 
+      { "10359-8", AsialogangliosideGM1IgMAbTiterInSerum }, 
+      { "http://loinc.org#10359-8", AsialogangliosideGM1IgMAbTiterInSerum }, 
+      { "1036-3", GAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "http://loinc.org#1036-3", GAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "10360-6", DNASingleStrandIgGAbUnitsVolumeInSerum }, 
+      { "http://loinc.org#10360-6", DNASingleStrandIgGAbUnitsVolumeInSerum }, 
+      { "10361-4", DNASingleStrandIgMAbUnitsVolumeInSerum }, 
+      { "http://loinc.org#10361-4", DNASingleStrandIgMAbUnitsVolumeInSerum }, 
+      { "10362-2", EndomysiumIgAAbPresenceInSerum }, 
+      { "http://loinc.org#10362-2", EndomysiumIgAAbPresenceInSerum }, 
+      { "10363-0", BarbituratesPresenceInUnspecifiedSpecimen }, 
+      { "http://loinc.org#10363-0", BarbituratesPresenceInUnspecifiedSpecimen }, 
+      { "10364-8", CotinineMassMassInHair }, 
+      { "http://loinc.org#10364-8", CotinineMassMassInHair }, 
+      { "10365-5", CotinineMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10365-5", CotinineMassVolumeInSerumOrPlasma }, 
+      { "10366-3", CotinineMassVolumeInUrine }, 
+      { "http://loinc.org#10366-3", CotinineMassVolumeInUrine }, 
+      { "10367-1", EthanolMassVolumeInGastricFluid }, 
+      { "http://loinc.org#10367-1", EthanolMassVolumeInGastricFluid }, 
+      { "10368-9", LeadMassVolumeInCapillaryBlood }, 
+      { "http://loinc.org#10368-9", LeadMassVolumeInCapillaryBlood }, 
+      { "10369-7", OpiatesMassMassInHair }, 
+      { "http://loinc.org#10369-7", OpiatesMassMassInHair }, 
+      { "1037-1", GAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "http://loinc.org#1037-1", GAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "10370-5", PhencyclidineMassMassInHair }, 
+      { "http://loinc.org#10370-5", PhencyclidineMassMassInHair }, 
+      { "10371-3", BiteCellsPresenceInBloodByLightMicroscopy }, 
+      { "http://loinc.org#10371-3", BiteCellsPresenceInBloodByLightMicroscopy }, 
+      { "10372-1", BlisterCellsPresenceInBloodByLightMicroscopy }, 
+      { "http://loinc.org#10372-1", BlisterCellsPresenceInBloodByLightMicroscopy }, 
+      { "10373-9", FragmentsPresenceInBloodByLightMicroscopy }, 
+      { "http://loinc.org#10373-9", FragmentsPresenceInBloodByLightMicroscopy }, 
+      { "10374-7", HelmetCellsPresenceInBloodByLightMicroscopy }, 
+      { "http://loinc.org#10374-7", HelmetCellsPresenceInBloodByLightMicroscopy }, 
+      { "10375-4", IrregularlyContractedCellsPresenceInBloodByLightMicroscopy }, 
+      { "http://loinc.org#10375-4", IrregularlyContractedCellsPresenceInBloodByLightMicroscopy }, 
+      { "10376-2", OvalMacrocytesPresenceInBloodByLightMicroscopy }, 
+      { "http://loinc.org#10376-2", OvalMacrocytesPresenceInBloodByLightMicroscopy }, 
+      { "10377-0", PencilCellsPresenceInBloodByLightMicroscopy }, 
+      { "http://loinc.org#10377-0", PencilCellsPresenceInBloodByLightMicroscopy }, 
+      { "10378-8", PolychromasiaPresenceInBloodByLightMicroscopy }, 
+      { "http://loinc.org#10378-8", PolychromasiaPresenceInBloodByLightMicroscopy }, 
+      { "10379-6", ErythrocytesDualPopulationPresenceInBloodByLightMicroscopy }, 
+      { "http://loinc.org#10379-6", ErythrocytesDualPopulationPresenceInBloodByLightMicroscopy }, 
+      { "1038-9", GAbPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#1038-9", GAbPresenceInSerumOrPlasma }, 
+      { "10380-4", StomatocytesPresenceInBloodByLightMicroscopy }, 
+      { "http://loinc.org#10380-4", StomatocytesPresenceInBloodByLightMicroscopy }, 
+      { "10381-2", TargetCellsPresenceInBloodByLightMicroscopy }, 
+      { "http://loinc.org#10381-2", TargetCellsPresenceInBloodByLightMicroscopy }, 
+      { "10382-0", ABVariantNOSAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "http://loinc.org#10382-0", ABVariantNOSAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "10383-8", ABVariantNOSAgPresenceOnRedBloodCellsFromDonor }, 
+      { "http://loinc.org#10383-8", ABVariantNOSAgPresenceOnRedBloodCellsFromDonor }, 
+      { "10384-6", ABVariantNOSAgPresenceOnRedBloodCells }, 
+      { "http://loinc.org#10384-6", ABVariantNOSAgPresenceOnRedBloodCells }, 
+      { "10385-3", AlbuminConcentrationGiven }, 
+      { "http://loinc.org#10385-3", AlbuminConcentrationGiven }, 
+      { "10386-1", AlbuminGivenVolume }, 
+      { "http://loinc.org#10386-1", AlbuminGivenVolume }, 
+      { "10387-9", AutologousErythrocytesGivenVolume }, 
+      { "http://loinc.org#10387-9", AutologousErythrocytesGivenVolume }, 
+      { "10388-7", AutologousWholeBloodGivenVolume }, 
+      { "http://loinc.org#10388-7", AutologousWholeBloodGivenVolume }, 
+      { "10389-5", BloodProductOtherType }, 
+      { "http://loinc.org#10389-5", BloodProductOtherType }, 
+      { "1039-7", GAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "http://loinc.org#1039-7", GAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "10390-3", BloodProductSpecialPreparationType }, 
+      { "http://loinc.org#10390-3", BloodProductSpecialPreparationType }, 
+      { "10391-1", CytomegalovirusImmuneGlobulinGivenVolume }, 
+      { "http://loinc.org#10391-1", CytomegalovirusImmuneGlobulinGivenVolume }, 
+      { "10392-9", CryoprecipitateGivenVolume }, 
+      { "http://loinc.org#10392-9", CryoprecipitateGivenVolume }, 
+      { "10393-7", FactorIXGivenType }, 
+      { "http://loinc.org#10393-7", FactorIXGivenType }, 
+      { "10394-5", FactorIXGivenVolume }, 
+      { "http://loinc.org#10394-5", FactorIXGivenVolume }, 
+      { "10395-2", FactorVIIIGivenType }, 
+      { "http://loinc.org#10395-2", FactorVIIIGivenType }, 
+      { "10396-0", FactorVIIIGivenVolume }, 
+      { "http://loinc.org#10396-0", FactorVIIIGivenVolume }, 
+      { "10397-8", HepatitisBImmuneGlobulinGivenVolume }, 
+      { "http://loinc.org#10397-8", HepatitisBImmuneGlobulinGivenVolume }, 
+      { "10398-6", IAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "http://loinc.org#10398-6", IAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "10399-4", IAgPresenceOnRedBloodCellsFromDonor }, 
+      { "http://loinc.org#10399-4", IAgPresenceOnRedBloodCellsFromDonor }, 
+      { "104-0", CeforanideSusceptibilityByMinimumInhibitoryConcentrationMIC }, 
+      { "http://loinc.org#104-0", CeforanideSusceptibilityByMinimumInhibitoryConcentrationMIC }, 
+      { "1040-5", GAgPresenceOnRedBloodCellsFromDonor }, 
+      { "http://loinc.org#1040-5", GAgPresenceOnRedBloodCellsFromDonor }, 
+      { "10400-0", IAgPresenceOnRedBloodCells }, 
+      { "http://loinc.org#10400-0", IAgPresenceOnRedBloodCells }, 
+      { "10401-8", ImmuneSerumGlobulinGivenType }, 
+      { "http://loinc.org#10401-8", ImmuneSerumGlobulinGivenType }, 
+      { "10402-6", ImmuneSerumGlobulinGivenVolume }, 
+      { "http://loinc.org#10402-6", ImmuneSerumGlobulinGivenVolume }, 
+      { "10403-4", InjectImmuneSerumGlobulinVolume }, 
+      { "http://loinc.org#10403-4", InjectImmuneSerumGlobulinVolume }, 
+      { "10404-2", InjectRhImmuneGlobulinVolume }, 
+      { "http://loinc.org#10404-2", InjectRhImmuneGlobulinVolume }, 
+      { "10405-9", InjectVaricellaZosterVirusImmuneGlobulinVolume }, 
+      { "http://loinc.org#10405-9", InjectVaricellaZosterVirusImmuneGlobulinVolume }, 
+      { "10406-7", LittleIAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "http://loinc.org#10406-7", LittleIAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "10407-5", LittleIAgPresenceOnRedBloodCellsFromDonor }, 
+      { "http://loinc.org#10407-5", LittleIAgPresenceOnRedBloodCellsFromDonor }, 
+      { "10408-3", LittleIAgPresenceOnRedBloodCells }, 
+      { "http://loinc.org#10408-3", LittleIAgPresenceOnRedBloodCells }, 
+      { "10409-1", PentaspanGivenVolume }, 
+      { "http://loinc.org#10409-1", PentaspanGivenVolume }, 
+      { "1041-3", GAgPresenceOnRedBloodCells }, 
+      { "http://loinc.org#1041-3", GAgPresenceOnRedBloodCells }, 
+      { "10410-9", PlasmaGivenType }, 
+      { "http://loinc.org#10410-9", PlasmaGivenType }, 
+      { "10411-7", PlasmaGivenVolume }, 
+      { "http://loinc.org#10411-7", PlasmaGivenVolume }, 
+      { "10412-5", PlateletsGivenType }, 
+      { "http://loinc.org#10412-5", PlateletsGivenType }, 
+      { "10413-3", RhImmuneGlobulinGivenVolume }, 
+      { "http://loinc.org#10413-3", RhImmuneGlobulinGivenVolume }, 
+      { "10414-1", TransfuseAlbuminVolume }, 
+      { "http://loinc.org#10414-1", TransfuseAlbuminVolume }, 
+      { "10415-8", TransfuseBloodExchangeTransfusionVolume }, 
+      { "http://loinc.org#10415-8", TransfuseBloodExchangeTransfusionVolume }, 
+      { "10416-6", TransfuseBloodProductOtherVolume }, 
+      { "http://loinc.org#10416-6", TransfuseBloodProductOtherVolume }, 
+      { "10417-4", TransfuseCryoprecipitateVolume }, 
+      { "http://loinc.org#10417-4", TransfuseCryoprecipitateVolume }, 
+      { "10418-2", TransfuseFactorIXVolume }, 
+      { "http://loinc.org#10418-2", TransfuseFactorIXVolume }, 
+      { "10419-0", TransfuseFactorVIIIVolume }, 
+      { "http://loinc.org#10419-0", TransfuseFactorVIIIVolume }, 
+      { "1042-1", HAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "http://loinc.org#1042-1", HAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "10420-8", TransfuseImmuneSerumGlobulinVolume }, 
+      { "http://loinc.org#10420-8", TransfuseImmuneSerumGlobulinVolume }, 
+      { "10421-6", TransfusePentaspanVolume }, 
+      { "http://loinc.org#10421-6", TransfusePentaspanVolume }, 
+      { "10422-4", TransfusePlasmaVolume }, 
+      { "http://loinc.org#10422-4", TransfusePlasmaVolume }, 
+      { "10423-2", TransfusePlateletsVolume }, 
+      { "http://loinc.org#10423-2", TransfusePlateletsVolume }, 
+      { "10424-0", TransfuseErythrocytesVolume }, 
+      { "http://loinc.org#10424-0", TransfuseErythrocytesVolume }, 
+      { "10425-7", TransfuseRhImmuneGlobulinVolume }, 
+      { "http://loinc.org#10425-7", TransfuseRhImmuneGlobulinVolume }, 
+      { "10426-5", TransfuseWholeBloodVolume }, 
+      { "http://loinc.org#10426-5", TransfuseWholeBloodVolume }, 
+      { "10427-3", TransfuseWholeBloodAutologousVolume }, 
+      { "http://loinc.org#10427-3", TransfuseWholeBloodAutologousVolume }, 
+      { "10428-1", VaricellaZosterVirusImmuneGlobulinGivenVolume }, 
+      { "http://loinc.org#10428-1", VaricellaZosterVirusImmuneGlobulinGivenVolume }, 
+      { "10429-9", AE1AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10429-9", AE1AgPresenceInTissueByImmuneStain }, 
+      { "1043-9", HAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "http://loinc.org#1043-9", HAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "10430-7", AE3AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10430-7", AE3AgPresenceInTissueByImmuneStain }, 
+      { "10431-5", BCellAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10431-5", BCellAgPresenceInTissueByImmuneStain }, 
+      { "10432-3", CD30AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10432-3", CD30AgPresenceInTissueByImmuneStain }, 
+      { "10433-1", BR2AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10433-1", BR2AgPresenceInTissueByImmuneStain }, 
+      { "10434-9", ComplementC3AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10434-9", ComplementC3AgPresenceInTissueByImmuneStain }, 
+      { "10435-6", C5B9AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10435-6", C5B9AgPresenceInTissueByImmuneStain }, 
+      { "10436-4", CD15AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10436-4", CD15AgPresenceInTissueByImmuneStain }, 
+      { "10437-2", CD16AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10437-2", CD16AgPresenceInTissueByImmuneStain }, 
+      { "10438-0", CD20AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10438-0", CD20AgPresenceInTissueByImmuneStain }, 
+      { "10439-8", CD3AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10439-8", CD3AgPresenceInTissueByImmuneStain }, 
+      { "1044-7", HAbPresenceInSerum }, 
+      { "http://loinc.org#1044-7", HAbPresenceInSerum }, 
+      { "10440-6", DeprecatedCD30AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10440-6", DeprecatedCD30AgPresenceInTissueByImmuneStain }, 
+      { "10441-4", CD34AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10441-4", CD34AgPresenceInTissueByImmuneStain }, 
+      { "10442-2", CD56AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10442-2", CD56AgPresenceInTissueByImmuneStain }, 
+      { "10443-0", CD43TCellMonocytePlusMyeloidCellAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10443-0", CD43TCellMonocytePlusMyeloidCellAgPresenceInTissueByImmuneStain }, 
+      { "10444-8", CD57AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10444-8", CD57AgPresenceInTissueByImmuneStain }, 
+      { "10445-5", CD11cAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10445-5", CD11cAgPresenceInTissueByImmuneStain }, 
+      { "10446-3", LeukocyteCommonAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10446-3", LeukocyteCommonAgPresenceInTissueByImmuneStain }, 
+      { "10447-1", M5AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10447-1", M5AgPresenceInTissueByImmuneStain }, 
+      { "10448-9", TCellAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10448-9", TCellAgPresenceInTissueByImmuneStain }, 
+      { "10449-7", GlucoseMassVolumeInSerumOrPlasma1HourPostMeal }, 
+      { "http://loinc.org#10449-7", GlucoseMassVolumeInSerumOrPlasma1HourPostMeal }, 
+      { "1045-4", HNOSAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "http://loinc.org#1045-4", HNOSAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "10450-5", GlucoseMassVolumeInSerumOrPlasma10HoursFasting }, 
+      { "http://loinc.org#10450-5", GlucoseMassVolumeInSerumOrPlasma10HoursFasting }, 
+      { "10451-3", ProinsulinMolesVolumeInSerumOrPlasma12HoursFasting }, 
+      { "http://loinc.org#10451-3", ProinsulinMolesVolumeInSerumOrPlasma12HoursFasting }, 
+      { "10452-1", XyloseMassVolumeInSerumOrPlasma1HourPost25GXylosePO }, 
+      { "http://loinc.org#10452-1", XyloseMassVolumeInSerumOrPlasma1HourPost25GXylosePO }, 
+      { "10453-9", XyloseMassVolumeInSerumOrPlasma1HourPostDoseXylosePO }, 
+      { "http://loinc.org#10453-9", XyloseMassVolumeInSerumOrPlasma1HourPostDoseXylosePO }, 
+      { "10454-7", XyloseMassVolumeInSerumOrPlasma2HoursPost25GXylosePO }, 
+      { "http://loinc.org#10454-7", XyloseMassVolumeInSerumOrPlasma2HoursPost25GXylosePO }, 
+      { "10455-4", XyloseMassVolumeInSerumOrPlasma30MinutesPost25GXylosePO }, 
+      { "http://loinc.org#10455-4", XyloseMassVolumeInSerumOrPlasma30MinutesPost25GXylosePO }, 
+      { "10456-2", XyloseMassVolumeInSerumOrPlasma6HoursFasting }, 
+      { "http://loinc.org#10456-2", XyloseMassVolumeInSerumOrPlasma6HoursFasting }, 
+      { "10457-0", ActinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10457-0", ActinAgPresenceInTissueByImmuneStain }, 
+      { "10458-8", AlkalinePhosphatasePlacentalAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10458-8", AlkalinePhosphatasePlacentalAgPresenceInTissueByImmuneStain }, 
+      { "10459-6", Alpha1FetoproteinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10459-6", Alpha1FetoproteinAgPresenceInTissueByImmuneStain }, 
+      { "1046-2", HNOSAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "http://loinc.org#1046-2", HNOSAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "10460-4", LactalbuminAlphaAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10460-4", LactalbuminAlphaAgPresenceInTissueByImmuneStain }, 
+      { "10461-2", Alpha1AntichymotrypsinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10461-2", Alpha1AntichymotrypsinAgPresenceInTissueByImmuneStain }, 
+      { "10462-0", Alpha1AntitrypsinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10462-0", Alpha1AntitrypsinAgPresenceInTissueByImmuneStain }, 
+      { "10463-8", AmyloidAComponentAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10463-8", AmyloidAComponentAgPresenceInTissueByImmuneStain }, 
+      { "10464-6", AmyloidPComponentAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10464-6", AmyloidPComponentAgPresenceInTissueByImmuneStain }, 
+      { "10465-3", AmyloidPrealbuminAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10465-3", AmyloidPrealbuminAgPresenceInTissueByImmuneStain }, 
+      { "10466-1", AnionGap3InSerumOrPlasma }, 
+      { "http://loinc.org#10466-1", AnionGap3InSerumOrPlasma }, 
+      { "10467-9", Beta2MicroglobulinAmyloidAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10467-9", Beta2MicroglobulinAmyloidAgPresenceInTissueByImmuneStain }, 
+      { "10468-7", CalcitoninAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10468-7", CalcitoninAgPresenceInTissueByImmuneStain }, 
+      { "10469-5", CarcinoembryonicAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10469-5", CarcinoembryonicAgPresenceInTissueByImmuneStain }, 
+      { "1047-0", HNOSAbPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#1047-0", HNOSAbPresenceInSerumOrPlasma }, 
+      { "10470-3", ChoriogonadotropinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10470-3", ChoriogonadotropinAgPresenceInTissueByImmuneStain }, 
+      { "10471-1", ChromograninAAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10471-1", ChromograninAAgPresenceInTissueByImmuneStain }, 
+      { "10472-9", ChromograninAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10472-9", ChromograninAgPresenceInTissueByImmuneStain }, 
+      { "10473-7", ChymotrypsinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10473-7", ChymotrypsinAgPresenceInTissueByImmuneStain }, 
+      { "10474-5", CollagenType4AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10474-5", CollagenType4AgPresenceInTissueByImmuneStain }, 
+      { "10475-2", CorticotropinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10475-2", CorticotropinAgPresenceInTissueByImmuneStain }, 
+      { "10476-0", DesminAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10476-0", DesminAgPresenceInTissueByImmuneStain }, 
+      { "10477-8", EnolaseNeuronSpecificAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10477-8", EnolaseNeuronSpecificAgPresenceInTissueByImmuneStain }, 
+      { "10478-6", EosinophilMajorBasicProteinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10478-6", EosinophilMajorBasicProteinAgPresenceInTissueByImmuneStain }, 
+      { "10479-4", CD227AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10479-4", CD227AgPresenceInTissueByImmuneStain }, 
+      { "1048-8", HNOSAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "http://loinc.org#1048-8", HNOSAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "10480-2", EstrogenPlusProgesteroneReceptorAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10480-2", EstrogenPlusProgesteroneReceptorAgPresenceInTissueByImmuneStain }, 
+      { "10481-0", FollitropinAlphaSubunitAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10481-0", FollitropinAlphaSubunitAgPresenceInTissueByImmuneStain }, 
+      { "10482-8", FollitropinBetaSubunitAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10482-8", FollitropinBetaSubunitAgPresenceInTissueByImmuneStain }, 
+      { "10483-6", GastrinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10483-6", GastrinAgPresenceInTissueByImmuneStain }, 
+      { "10484-4", GlialFibrillaryAcidicProteinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10484-4", GlialFibrillaryAcidicProteinAgPresenceInTissueByImmuneStain }, 
+      { "10485-1", GlucagonAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10485-1", GlucagonAgPresenceInTissueByImmuneStain }, 
+      { "10486-9", HemoglobinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10486-9", HemoglobinAgPresenceInTissueByImmuneStain }, 
+      { "10487-7", HMB45AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10487-7", HMB45AgPresenceInTissueByImmuneStain }, 
+      { "10488-5", IgAAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10488-5", IgAAgPresenceInTissueByImmuneStain }, 
+      { "10489-3", IgAHeavyChainAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10489-3", IgAHeavyChainAgPresenceInTissueByImmuneStain }, 
+      { "1049-6", HNOSAgPresenceOnRedBloodCellsFromDonor }, 
+      { "http://loinc.org#1049-6", HNOSAgPresenceOnRedBloodCellsFromDonor }, 
+      { "10490-1", IgEAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10490-1", IgEAgPresenceInTissueByImmuneStain }, 
+      { "10491-9", IgGAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10491-9", IgGAgPresenceInTissueByImmuneStain }, 
+      { "10492-7", IgGHeavyChainAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10492-7", IgGHeavyChainAgPresenceInTissueByImmuneStain }, 
+      { "10493-5", IgMAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10493-5", IgMAgPresenceInTissueByImmuneStain }, 
+      { "10494-3", IgMHeavyChainAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10494-3", IgMHeavyChainAgPresenceInTissueByImmuneStain }, 
+      { "10495-0", InsulinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10495-0", InsulinAgPresenceInTissueByImmuneStain }, 
+      { "10496-8", KappaLightChainsAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10496-8", KappaLightChainsAgPresenceInTissueByImmuneStain }, 
+      { "10497-6", ImmunoglobulinLightChainsKappaAmyloidAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10497-6", ImmunoglobulinLightChainsKappaAmyloidAgPresenceInTissueByImmuneStain }, 
+      { "10498-4", KeratinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10498-4", KeratinAgPresenceInTissueByImmuneStain }, 
+      { "10499-2", LambdaLightChainsAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10499-2", LambdaLightChainsAgPresenceInTissueByImmuneStain }, 
+      { "105-7", CeforanideSusceptibilityByDiskDiffusionKB }, 
+      { "http://loinc.org#105-7", CeforanideSusceptibilityByDiskDiffusionKB }, 
+      { "1050-4", HNOSAgPresenceOnRedBloodCells }, 
+      { "http://loinc.org#1050-4", HNOSAgPresenceOnRedBloodCells }, 
+      { "10500-7", ImmunoglobulinLightChainsLambdaAmyloidAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10500-7", ImmunoglobulinLightChainsLambdaAmyloidAgPresenceInTissueByImmuneStain }, 
+      { "10501-5", LutropinUnitsVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10501-5", LutropinUnitsVolumeInSerumOrPlasma }, 
+      { "10502-3", LutropinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10502-3", LutropinAgPresenceInTissueByImmuneStain }, 
+      { "10503-1", LysozymeAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10503-1", LysozymeAgPresenceInTissueByImmuneStain }, 
+      { "10504-9", MyelinBasicProteinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10504-9", MyelinBasicProteinAgPresenceInTissueByImmuneStain }, 
+      { "10505-6", MyoglobinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10505-6", MyoglobinAgPresenceInTissueByImmuneStain }, 
+      { "10506-4", PeanutAgglutininAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10506-4", PeanutAgglutininAgPresenceInTissueByImmuneStain }, 
+      { "10507-2", ProlactinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10507-2", ProlactinAgPresenceInTissueByImmuneStain }, 
+      { "10508-0", ProstateSpecificAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10508-0", ProstateSpecificAgPresenceInTissueByImmuneStain }, 
+      { "10509-8", ProstaticAcidPhosphataseAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10509-8", ProstaticAcidPhosphataseAgPresenceInTissueByImmuneStain }, 
+      { "1051-2", HemolyticDiseaseOfNewbornScreenInterpretationInBlood }, 
+      { "http://loinc.org#1051-2", HemolyticDiseaseOfNewbornScreenInterpretationInBlood }, 
+      { "10510-6", S100AgAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10510-6", S100AgAgPresenceInTissueByImmuneStain }, 
+      { "10511-4", SerotoninAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10511-4", SerotoninAgPresenceInTissueByImmuneStain }, 
+      { "10512-2", SomatostatinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10512-2", SomatostatinAgPresenceInTissueByImmuneStain }, 
+      { "10513-0", SomatotropinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10513-0", SomatotropinAgPresenceInTissueByImmuneStain }, 
+      { "10514-8", SynaptophysinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10514-8", SynaptophysinAgPresenceInTissueByImmuneStain }, 
+      { "10515-5", ThyroglobulinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10515-5", ThyroglobulinAgPresenceInTissueByImmuneStain }, 
+      { "10516-3", ThyrotropinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10516-3", ThyrotropinAgPresenceInTissueByImmuneStain }, 
+      { "10517-1", TrypsinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10517-1", TrypsinAgPresenceInTissueByImmuneStain }, 
+      { "10518-9", UlexEuropaeusILectinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10518-9", UlexEuropaeusILectinAgPresenceInTissueByImmuneStain }, 
+      { "10519-7", VimentinAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10519-7", VimentinAgPresenceInTissueByImmuneStain }, 
+      { "1052-0", DeprecatedIIntermediateSubtypePresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "http://loinc.org#1052-0", DeprecatedIIntermediateSubtypePresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "10520-5", CoagulationFactorVIAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10520-5", CoagulationFactorVIAgPresenceInTissueByImmuneStain }, 
+      { "10521-3", CoagulationFactorVIIIAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10521-3", CoagulationFactorVIIIAgPresenceInTissueByImmuneStain }, 
+      { "10522-1", CoagulationFactorXIIIAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10522-1", CoagulationFactorXIIIAgPresenceInTissueByImmuneStain }, 
+      { "10523-9", FibrinogenAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10523-9", FibrinogenAgPresenceInTissueByImmuneStain }, 
+      { "10524-7", MicroscopicObservationIdentifierInCervixByCytoStain }, 
+      { "http://loinc.org#10524-7", MicroscopicObservationIdentifierInCervixByCytoStain }, 
+      { "10525-4", MicroscopicObservationIdentifierInUnspecifiedSpecimenByCytoStain }, 
+      { "http://loinc.org#10525-4", MicroscopicObservationIdentifierInUnspecifiedSpecimenByCytoStain }, 
+      { "10526-2", MicroscopicObservationIdentifierInSputumByCytoStain }, 
+      { "http://loinc.org#10526-2", MicroscopicObservationIdentifierInSputumByCytoStain }, 
+      { "10527-0", MicroscopicObservationIdentifierInTissueByCytoStain }, 
+      { "http://loinc.org#10527-0", MicroscopicObservationIdentifierInTissueByCytoStain }, 
+      { "10528-8", AcetophenazineMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10528-8", AcetophenazineMassVolumeInSerumOrPlasma }, 
+      { "10529-6", AmoxapineMetaboliteMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10529-6", AmoxapineMetaboliteMassVolumeInSerumOrPlasma }, 
+      { "1053-8", DeprecatedIIntermediateSubtypePresenceInSerumOrPlasmaFromDonor }, 
+      { "http://loinc.org#1053-8", DeprecatedIIntermediateSubtypePresenceInSerumOrPlasmaFromDonor }, 
+      { "10530-4", AprobarbitalMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10530-4", AprobarbitalMassVolumeInSerumOrPlasma }, 
+      { "10531-2", BretyliumMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10531-2", BretyliumMassVolumeInSerumOrPlasma }, 
+      { "10532-0", DeprecatedDesethylamiodaroneMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10532-0", DeprecatedDesethylamiodaroneMassVolumeInSerumOrPlasma }, 
+      { "10533-8", PropoxyphenePlusAcetaminophenMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10533-8", PropoxyphenePlusAcetaminophenMassVolumeInSerumOrPlasma }, 
+      { "10534-6", DiazoxideMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10534-6", DiazoxideMassVolumeInSerumOrPlasma }, 
+      { "10535-3", DigoxinMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10535-3", DigoxinMassVolumeInSerumOrPlasma }, 
+      { "10536-1", DipyridamoleMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10536-1", DipyridamoleMassVolumeInSerumOrPlasma }, 
+      { "10537-9", DeprecatedDoxepinPlusNordoxepinMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10537-9", DeprecatedDoxepinPlusNordoxepinMassVolumeInSerumOrPlasma }, 
+      { "10538-7", DeprecatedFluoxetinePlusNorfluoxetineMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10538-7", DeprecatedFluoxetinePlusNorfluoxetineMassVolumeInSerumOrPlasma }, 
+      { "10539-5", GlipizideMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10539-5", GlipizideMassVolumeInSerumOrPlasma }, 
+      { "1054-6", DeprecatedIIntermediateSubtypePresenceInSrum }, 
+      { "http://loinc.org#1054-6", DeprecatedIIntermediateSubtypePresenceInSrum }, 
+      { "10540-3", GlyburideMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10540-3", GlyburideMassVolumeInSerumOrPlasma }, 
+      { "10541-1", MepivacaineMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10541-1", MepivacaineMassVolumeInSerumOrPlasma }, 
+      { "10542-9", MetharbitalMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10542-9", MetharbitalMassVolumeInSerumOrPlasma }, 
+      { "10543-7", MethsuximidePlusNormethsuximideMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10543-7", MethsuximidePlusNormethsuximideMassVolumeInSerumOrPlasma }, 
+      { "10544-5", NormeperidinePresenceInSerumOrPlasma }, 
+      { "http://loinc.org#10544-5", NormeperidinePresenceInSerumOrPlasma }, 
+      { "10545-2", NormephenytoinMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10545-2", NormephenytoinMassVolumeInSerumOrPlasma }, 
+      { "10546-0", NormethsuximideMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10546-0", NormethsuximideMassVolumeInSerumOrPlasma }, 
+      { "10547-8", PrimidonePlusPhenobarbitalMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10547-8", PrimidonePlusPhenobarbitalMassVolumeInSerumOrPlasma }, 
+      { "10548-6", PhenytoinFreePhenytoinTotalInSerumOrPlasma }, 
+      { "http://loinc.org#10548-6", PhenytoinFreePhenytoinTotalInSerumOrPlasma }, 
+      { "10549-4", PirmenolMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10549-4", PirmenolMassVolumeInSerumOrPlasma }, 
+      { "1055-3", DeprecatedIIntermediateSubtypePresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "http://loinc.org#1055-3", DeprecatedIIntermediateSubtypePresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "10550-2", DeprecatedTemazepamMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10550-2", DeprecatedTemazepamMassVolumeInSerumOrPlasma }, 
+      { "10551-0", TriamtereneMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10551-0", TriamtereneMassVolumeInSerumOrPlasma }, 
+      { "10552-8", TricyclicAntidepressantsMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10552-8", TricyclicAntidepressantsMassVolumeInSerumOrPlasma }, 
+      { "10553-6", ProstaticAcidPhosphataseEnzymaticActivityVolumeInGenitalFluid }, 
+      { "http://loinc.org#10553-6", ProstaticAcidPhosphataseEnzymaticActivityVolumeInGenitalFluid }, 
+      { "10554-4", DeprecatedProstaticAcidPhosphataseEnzymaticActivityVolumeInSeminalPlasma }, 
+      { "http://loinc.org#10554-4", DeprecatedProstaticAcidPhosphataseEnzymaticActivityVolumeInSeminalPlasma }, 
+      { "10555-1", AcrosinEntiticCatalyticActivityInSpermatozoa }, 
+      { "http://loinc.org#10555-1", AcrosinEntiticCatalyticActivityInSpermatozoa }, 
+      { "10556-9", DeprecatedAdenosineTriphosphataseEnzymaticActivityVolumeInSeminalPlasma }, 
+      { "http://loinc.org#10556-9", DeprecatedAdenosineTriphosphataseEnzymaticActivityVolumeInSeminalPlasma }, 
+      { "10557-7", AdenosineTriphosphateMolesVolumeInSemen }, 
+      { "http://loinc.org#10557-7", AdenosineTriphosphateMolesVolumeInSemen }, 
+      { "10558-5", AlbuminMolesVolumeInSemen }, 
+      { "http://loinc.org#10558-5", AlbuminMolesVolumeInSemen }, 
+      { "10559-3", DeprecatedCalciumMoleculesVolumeInSemen }, 
+      { "http://loinc.org#10559-3", DeprecatedCalciumMoleculesVolumeInSemen }, 
+      { "1056-1", DeprecatedIIntermediateSubtypePresenceOnRedBloodCellsFromDonor }, 
+      { "http://loinc.org#1056-1", DeprecatedIIntermediateSubtypePresenceOnRedBloodCellsFromDonor }, 
+      { "10560-1", CarcinoembryonicAgUnitsVolumeInSemen }, 
+      { "http://loinc.org#10560-1", CarcinoembryonicAgUnitsVolumeInSemen }, 
+      { "10561-9", CarnitineMolesVolumeInSemen }, 
+      { "http://loinc.org#10561-9", CarnitineMolesVolumeInSemen }, 
+      { "10562-7", CellsNumberVolumeInCervicalMucus }, 
+      { "http://loinc.org#10562-7", CellsNumberVolumeInCervicalMucus }, 
+      { "10563-5", CellsOtherThanSpermatozoaNumberVolumeInSemen }, 
+      { "http://loinc.org#10563-5", CellsOtherThanSpermatozoaNumberVolumeInSemen }, 
+      { "10564-3", CervicalMucusVolume }, 
+      { "http://loinc.org#10564-3", CervicalMucusVolume }, 
+      { "10565-0", ChoriogonadotropinUnitsVolumeInSemen }, 
+      { "http://loinc.org#10565-0", ChoriogonadotropinUnitsVolumeInSemen }, 
+      { "10566-8", DeprecatedChoriogonadotropinMoleculesVolumeInSemen }, 
+      { "http://loinc.org#10566-8", DeprecatedChoriogonadotropinMoleculesVolumeInSemen }, 
+      { "10567-6", CitrateMolesVolumeInSemen }, 
+      { "http://loinc.org#10567-6", CitrateMolesVolumeInSemen }, 
+      { "10568-4", ClarityOfSemen }, 
+      { "http://loinc.org#10568-4", ClarityOfSemen }, 
+      { "10569-2", ColorOfSemen }, 
+      { "http://loinc.org#10569-2", ColorOfSemen }, 
+      { "1057-9", DeprecatedIIntermediateSubtypePresenceOnRedBloodCells }, 
+      { "http://loinc.org#1057-9", DeprecatedIIntermediateSubtypePresenceOnRedBloodCells }, 
+      { "10570-0", ConsistencyOfCervicalMucus }, 
+      { "http://loinc.org#10570-0", ConsistencyOfCervicalMucus }, 
+      { "10571-8", DeprecatedConsistencyOfSemen }, 
+      { "http://loinc.org#10571-8", DeprecatedConsistencyOfSemen }, 
+      { "10572-6", DeprecatedDurationPowerPostEjaculation }, 
+      { "http://loinc.org#10572-6", DeprecatedDurationPowerPostEjaculation }, 
+      { "10573-4", FerningTypeInCervicalMucus }, 
+      { "http://loinc.org#10573-4", FerningTypeInCervicalMucus }, 
+      { "10574-2", FructoseMolesVolumeInSemen }, 
+      { "http://loinc.org#10574-2", FructoseMolesVolumeInSemen }, 
+      { "10575-9", DeprecatedGammaGlutamylTransferaseEnzymaticActivityVolumeInSemen }, 
+      { "http://loinc.org#10575-9", DeprecatedGammaGlutamylTransferaseEnzymaticActivityVolumeInSemen }, 
+      { "10576-7", GermCellsImmatureNumberVolumeInSemen }, 
+      { "http://loinc.org#10576-7", GermCellsImmatureNumberVolumeInSemen }, 
+      { "10577-5", GlucosidaseEnzymaticActivityVolumeInSeminalPlasma }, 
+      { "http://loinc.org#10577-5", GlucosidaseEnzymaticActivityVolumeInSeminalPlasma }, 
+      { "10578-3", GlycerophosphocholineMolesVolumeInSeminalPlasma }, 
+      { "http://loinc.org#10578-3", GlycerophosphocholineMolesVolumeInSeminalPlasma }, 
+      { "10579-1", LeukocytesNumberVolumeInSemen }, 
+      { "http://loinc.org#10579-1", LeukocytesNumberVolumeInSemen }, 
+      { "1058-7", IAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "http://loinc.org#1058-7", IAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "10580-9", LiquefactionTimeInSemen }, 
+      { "http://loinc.org#10580-9", LiquefactionTimeInSemen }, 
+      { "10581-7", DeprecatedNumberOfEntitiesNumberInSpermatozoa }, 
+      { "http://loinc.org#10581-7", DeprecatedNumberOfEntitiesNumberInSpermatozoa }, 
+      { "10582-5", PHOfCervicalMucus }, 
+      { "http://loinc.org#10582-5", PHOfCervicalMucus }, 
+      { "10583-3", ProstaglandinF1AlphaMolesVolumeInSemen }, 
+      { "http://loinc.org#10583-3", ProstaglandinF1AlphaMolesVolumeInSemen }, 
+      { "10584-1", DeprecatedProteinMassVolumeInSemen }, 
+      { "http://loinc.org#10584-1", DeprecatedProteinMassVolumeInSemen }, 
+      { "10585-8", RoundCellsNumberVolumeInSemen }, 
+      { "http://loinc.org#10585-8", RoundCellsNumberVolumeInSemen }, 
+      { "10586-6", DeprecatedVolumeOfSemen }, 
+      { "http://loinc.org#10586-6", DeprecatedVolumeOfSemen }, 
+      { "10587-4", SexualAbstinenceDuration }, 
+      { "http://loinc.org#10587-4", SexualAbstinenceDuration }, 
+      { "10588-2", SpermatogoniaNumberVolumeInSemen }, 
+      { "http://loinc.org#10588-2", SpermatogoniaNumberVolumeInSemen }, 
+      { "10589-0", SpermatidsNumberVolumeInSemenByStreptoavidinBiotinMethodSAB }, 
+      { "http://loinc.org#10589-0", SpermatidsNumberVolumeInSemenByStreptoavidinBiotinMethodSAB }, 
+      { "1059-5", IAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "http://loinc.org#1059-5", IAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "10590-8", SpermatidsNumberVolumeInSemenBySertoliCellBarrierMethodSCB }, 
+      { "http://loinc.org#10590-8", SpermatidsNumberVolumeInSemenBySertoliCellBarrierMethodSCB }, 
+      { "10591-6", PrimarySpermatocytesNumberVolumeInSemen }, 
+      { "http://loinc.org#10591-6", PrimarySpermatocytesNumberVolumeInSemen }, 
+      { "10592-4", SecondarySpermatocytesNumberVolumeInSemen }, 
+      { "http://loinc.org#10592-4", SecondarySpermatocytesNumberVolumeInSemen }, 
+      { "10593-2", SpermatozoaPyriformHead100SpermatozoaInSemen }, 
+      { "http://loinc.org#10593-2", SpermatozoaPyriformHead100SpermatozoaInSemen }, 
+      { "10594-0", SpermatozoaTaperingHead100SpermatozoaInSemen }, 
+      { "http://loinc.org#10594-0", SpermatozoaTaperingHead100SpermatozoaInSemen }, 
+      { "10595-7", DeprecatedSpermatozoaNumberVolumeInSemen }, 
+      { "http://loinc.org#10595-7", DeprecatedSpermatozoaNumberVolumeInSemen }, 
+      { "10596-5", DeprecatedSpermatozoaAbInCervicalMucosa }, 
+      { "http://loinc.org#10596-5", DeprecatedSpermatozoaAbInCervicalMucosa }, 
+      { "10597-3", DeprecatedSpermatozoaAbInSemen }, 
+      { "http://loinc.org#10597-3", DeprecatedSpermatozoaAbInSemen }, 
+      { "10598-1", DeprecatedSpermatozoaAbInSerum }, 
+      { "http://loinc.org#10598-1", DeprecatedSpermatozoaAbInSerum }, 
+      { "10599-9", SpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosaByKremerTest }, 
+      { "http://loinc.org#10599-9", SpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosaByKremerTest }, 
+      { "106-5", CeforanideSusceptibilityBySerumBactericidalTiter }, 
+      { "http://loinc.org#106-5", CeforanideSusceptibilityBySerumBactericidalTiter }, 
+      { "1060-3", IAbPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#1060-3", IAbPresenceInSerumOrPlasma }, 
+      { "10600-5", SpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosa }, 
+      { "http://loinc.org#10600-5", SpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosa }, 
+      { "10601-3", SpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosaPostCoitus }, 
+      { "http://loinc.org#10601-3", SpermatozoaPenetrationPresenceInSeminalFluidAndCervicalMucosaPostCoitus }, 
+      { "10602-1", SpermatozoaAbnormalHead100SpermatozoaInSemen }, 
+      { "http://loinc.org#10602-1", SpermatozoaAbnormalHead100SpermatozoaInSemen }, 
+      { "10603-9", SpermatozoaAbnormalMidpiece100SpermatozoaInSemen }, 
+      { "http://loinc.org#10603-9", SpermatozoaAbnormalMidpiece100SpermatozoaInSemen }, 
+      { "10604-7", SpermatozoaAbnormalTail100SpermatozoaInSemen }, 
+      { "http://loinc.org#10604-7", SpermatozoaAbnormalTail100SpermatozoaInSemen }, 
+      { "10605-4", SpermatozoaAgglutinated100SpermatozoaInSemen }, 
+      { "http://loinc.org#10605-4", SpermatozoaAgglutinated100SpermatozoaInSemen }, 
+      { "10606-2", SpermatozoaAmorphousHead100SpermatozoaInSemen }, 
+      { "http://loinc.org#10606-2", SpermatozoaAmorphousHead100SpermatozoaInSemen }, 
+      { "10607-0", SpermatozoaCoiledTail100SpermatozoaInSemen }, 
+      { "http://loinc.org#10607-0", SpermatozoaCoiledTail100SpermatozoaInSemen }, 
+      { "10608-8", SpermatozoaCytoplasmicDroplet100SpermatozoaInSemen }, 
+      { "http://loinc.org#10608-8", SpermatozoaCytoplasmicDroplet100SpermatozoaInSemen }, 
+      { "10609-6", SpermatozoaDuplicateHead100SpermatozoaInSemen }, 
+      { "http://loinc.org#10609-6", SpermatozoaDuplicateHead100SpermatozoaInSemen }, 
+      { "1061-1", INOSAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "http://loinc.org#1061-1", INOSAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "10610-4", SpermatozoaDuplicateTail100SpermatozoaInSemen }, 
+      { "http://loinc.org#10610-4", SpermatozoaDuplicateTail100SpermatozoaInSemen }, 
+      { "10611-2", SpermatozoaImmotile100SpermatozoaInSemen }, 
+      { "http://loinc.org#10611-2", SpermatozoaImmotile100SpermatozoaInSemen }, 
+      { "10612-0", SpermatozoaLargeOvalHead100SpermatozoaInSemen }, 
+      { "http://loinc.org#10612-0", SpermatozoaLargeOvalHead100SpermatozoaInSemen }, 
+      { "10613-8", SpermatozoaViable100SpermatozoaInSemen }, 
+      { "http://loinc.org#10613-8", SpermatozoaViable100SpermatozoaInSemen }, 
+      { "10614-6", SpermatozoaMotileWIgA100SpermatozoaInSemenByImmunobead }, 
+      { "http://loinc.org#10614-6", SpermatozoaMotileWIgA100SpermatozoaInSemenByImmunobead }, 
+      { "10615-3", SpermatozoaMotileWIgA100SpermatozoaInSemenByMixedAntiglobulinReaction }, 
+      { "http://loinc.org#10615-3", SpermatozoaMotileWIgA100SpermatozoaInSemenByMixedAntiglobulinReaction }, 
+      { "10616-1", SpermatozoaMotileWIgG100SpermatozoaInSemenByImmunobead }, 
+      { "http://loinc.org#10616-1", SpermatozoaMotileWIgG100SpermatozoaInSemenByImmunobead }, 
+      { "10617-9", SpermatozoaMotileWIgG100SpermatozoaInSemenByMixedAntiglobulinReaction }, 
+      { "http://loinc.org#10617-9", SpermatozoaMotileWIgG100SpermatozoaInSemenByMixedAntiglobulinReaction }, 
+      { "10618-7", SpermatozoaMotileWIgM100SpermatozoaInSemenByImmunobead }, 
+      { "http://loinc.org#10618-7", SpermatozoaMotileWIgM100SpermatozoaInSemenByImmunobead }, 
+      { "10619-5", SpermatozoaMotileWIgM100SpermatozoaInSemenByMixedAntiglobulinReaction }, 
+      { "http://loinc.org#10619-5", SpermatozoaMotileWIgM100SpermatozoaInSemenByMixedAntiglobulinReaction }, 
+      { "1062-9", INOSAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "http://loinc.org#1062-9", INOSAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "10620-3", SpermatozoaNonprogressive100SpermatozoaInSemen }, 
+      { "http://loinc.org#10620-3", SpermatozoaNonprogressive100SpermatozoaInSemen }, 
+      { "10621-1", SpermatozoaNormalHead100SpermatozoaInSemen }, 
+      { "http://loinc.org#10621-1", SpermatozoaNormalHead100SpermatozoaInSemen }, 
+      { "10622-9", SpermatozoaNormal100SpermatozoaInSemen }, 
+      { "http://loinc.org#10622-9", SpermatozoaNormal100SpermatozoaInSemen }, 
+      { "10623-7", SpermatozoaPinHead100SpermatozoaInSemen }, 
+      { "http://loinc.org#10623-7", SpermatozoaPinHead100SpermatozoaInSemen }, 
+      { "10624-5", SpermatozoaRapid100SpermatozoaInSemen }, 
+      { "http://loinc.org#10624-5", SpermatozoaRapid100SpermatozoaInSemen }, 
+      { "10625-2", SpermatozoaRoundHead100SpermatozoaInSemen }, 
+      { "http://loinc.org#10625-2", SpermatozoaRoundHead100SpermatozoaInSemen }, 
+      { "10626-0", SpermatozoaSlow100SpermatozoaInSemen }, 
+      { "http://loinc.org#10626-0", SpermatozoaSlow100SpermatozoaInSemen }, 
+      { "10627-8", SpermatozoaSmallOvalHead100SpermatozoaInSemen }, 
+      { "http://loinc.org#10627-8", SpermatozoaSmallOvalHead100SpermatozoaInSemen }, 
+      { "10628-6", SpermatozoaTailSwelling100SpermatozoaInSemen }, 
+      { "http://loinc.org#10628-6", SpermatozoaTailSwelling100SpermatozoaInSemen }, 
+      { "10629-4", SpermatozoaVacuolatedHead100SpermatozoaInSemen }, 
+      { "http://loinc.org#10629-4", SpermatozoaVacuolatedHead100SpermatozoaInSemen }, 
+      { "1063-7", INOSAbPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#1063-7", INOSAbPresenceInSerumOrPlasma }, 
+      { "10630-2", SpinnbarkeitLengthInCervicalMucus }, 
+      { "http://loinc.org#10630-2", SpinnbarkeitLengthInCervicalMucus }, 
+      { "10631-0", TestosteroneMolesVolumeInSemen }, 
+      { "http://loinc.org#10631-0", TestosteroneMolesVolumeInSemen }, 
+      { "10632-8", TimeUntilNextMenstrualPeriod }, 
+      { "http://loinc.org#10632-8", TimeUntilNextMenstrualPeriod }, 
+      { "10633-6", ZincMolesVolumeInSemen }, 
+      { "http://loinc.org#10633-6", ZincMolesVolumeInSemen }, 
+      { "10634-4", ComplementC1EsteraseInhibitorFunctionalComplementC1EsteraseInhibitorTotalInSerumOrPlasma }, 
+      { "http://loinc.org#10634-4", ComplementC1EsteraseInhibitorFunctionalComplementC1EsteraseInhibitorTotalInSerumOrPlasma }, 
+      { "10635-1", AcanthamoebaSpIdentifiedInEyeByOrganismSpecificCulture }, 
+      { "http://loinc.org#10635-1", AcanthamoebaSpIdentifiedInEyeByOrganismSpecificCulture }, 
+      { "10636-9", AcanthamoebaSpIdentifiedInEyeByWetPreparation }, 
+      { "http://loinc.org#10636-9", AcanthamoebaSpIdentifiedInEyeByWetPreparation }, 
+      { "10637-7", MicroscopicObservationIdentifierInTissueByNightBlueStain }, 
+      { "http://loinc.org#10637-7", MicroscopicObservationIdentifierInTissueByNightBlueStain }, 
+      { "10638-5", ThermophilicActinomycetesColonyCountNumberVolumeInUnspecifiedSpecimenByOrganismSpecificCulture }, 
+      { "http://loinc.org#10638-5", ThermophilicActinomycetesColonyCountNumberVolumeInUnspecifiedSpecimenByOrganismSpecificCulture }, 
+      { "10639-3", ThermophilicActinomycetesIdentifiedInUnspecifiedSpecimenByOrganismSpecificCulture }, 
+      { "http://loinc.org#10639-3", ThermophilicActinomycetesIdentifiedInUnspecifiedSpecimenByOrganismSpecificCulture }, 
+      { "1064-5", INOSAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "http://loinc.org#1064-5", INOSAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "10640-1", DeprecatedAdenovirus40Plus41IdentifierInStoolByElectronMicroscopy }, 
+      { "http://loinc.org#10640-1", DeprecatedAdenovirus40Plus41IdentifierInStoolByElectronMicroscopy }, 
+      { "10641-9", AmoebaIdentifiedInAspirateByImmuneStain }, 
+      { "http://loinc.org#10641-9", AmoebaIdentifiedInAspirateByImmuneStain }, 
+      { "10642-7", AmoebaIdentifiedInAspirateByWetPreparation }, 
+      { "http://loinc.org#10642-7", AmoebaIdentifiedInAspirateByWetPreparation }, 
+      { "10643-5", AmoebaIdentifiedInStoolByOrganismSpecificCulture }, 
+      { "http://loinc.org#10643-5", AmoebaIdentifiedInStoolByOrganismSpecificCulture }, 
+      { "10644-3", ArthropodIdentifiedInUnspecifiedSpecimen }, 
+      { "http://loinc.org#10644-3", ArthropodIdentifiedInUnspecifiedSpecimen }, 
+      { "10645-0", AspergillusFumigatusAgPresenceInTissueByImmunofluorescence }, 
+      { "http://loinc.org#10645-0", AspergillusFumigatusAgPresenceInTissueByImmunofluorescence }, 
+      { "10646-8", AstrovirusIdentifierInStoolByElectronMicroscopy }, 
+      { "http://loinc.org#10646-8", AstrovirusIdentifierInStoolByElectronMicroscopy }, 
+      { "10647-6", BabesiaSpIdentifiedInBloodByThickFilm }, 
+      { "http://loinc.org#10647-6", BabesiaSpIdentifiedInBloodByThickFilm }, 
+      { "10648-4", BabesiaSpIdentifiedInBloodByThinFilm }, 
+      { "http://loinc.org#10648-4", BabesiaSpIdentifiedInBloodByThinFilm }, 
+      { "10649-2", CalicivirusIdentifierInStoolByElectronMicroscopy }, 
+      { "http://loinc.org#10649-2", CalicivirusIdentifierInStoolByElectronMicroscopy }, 
+      { "1065-2", INOSAgPresenceOnRedBloodCellsFromDonor }, 
+      { "http://loinc.org#1065-2", INOSAgPresenceOnRedBloodCellsFromDonor }, 
+      { "10650-0", CandidaSpDNAPresenceInBloodByProbeWithAmplification }, 
+      { "http://loinc.org#10650-0", CandidaSpDNAPresenceInBloodByProbeWithAmplification }, 
+      { "10651-8", ChlamydophilaPneumoniaeAgPresenceInSputumOrBronchial }, 
+      { "http://loinc.org#10651-8", ChlamydophilaPneumoniaeAgPresenceInSputumOrBronchial }, 
+      { "10652-6", ChlamydophilaPneumoniaeDNAPresenceInSputumOrBronchialByProbeWithAmplification }, 
+      { "http://loinc.org#10652-6", ChlamydophilaPneumoniaeDNAPresenceInSputumOrBronchialByProbeWithAmplification }, 
+      { "10653-4", ClotrimazoleSusceptibilityByMinimumInhibitoryConcentrationMIC }, 
+      { "http://loinc.org#10653-4", ClotrimazoleSusceptibilityByMinimumInhibitoryConcentrationMIC }, 
+      { "10654-2", ClotrimazoleSusceptibilityByMinimumLethalConcentrationMLC }, 
+      { "http://loinc.org#10654-2", ClotrimazoleSusceptibilityByMinimumLethalConcentrationMLC }, 
+      { "10655-9", CoccidiaIdentifiedInDuodenalFluidByAcidFastStain }, 
+      { "http://loinc.org#10655-9", CoccidiaIdentifiedInDuodenalFluidByAcidFastStain }, 
+      { "10656-7", CoccidiaIdentifiedInStoolByAcidFastStain }, 
+      { "http://loinc.org#10656-7", CoccidiaIdentifiedInStoolByAcidFastStain }, 
+      { "10657-5", DeprecatedCryptococcusNeoformansAgPresenceInTissueByImmunofluorescence }, 
+      { "http://loinc.org#10657-5", DeprecatedCryptococcusNeoformansAgPresenceInTissueByImmunofluorescence }, 
+      { "10658-3", CyanobacteriumIdentifiedInWaterByLightMicroscopy }, 
+      { "http://loinc.org#10658-3", CyanobacteriumIdentifiedInWaterByLightMicroscopy }, 
+      { "10659-1", CyclosporaSpIdentifiedInStoolByAcidFastStain }, 
+      { "http://loinc.org#10659-1", CyclosporaSpIdentifiedInStoolByAcidFastStain }, 
+      { "1066-0", INOSAgPresenceOnRedBloodCells }, 
+      { "http://loinc.org#1066-0", INOSAgPresenceOnRedBloodCells }, 
+      { "10660-9", CytomegalovirusAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10660-9", CytomegalovirusAgPresenceInTissueByImmuneStain }, 
+      { "10661-7", DinoflagellateIdentifiedInWaterByLightMicroscopy }, 
+      { "http://loinc.org#10661-7", DinoflagellateIdentifiedInWaterByLightMicroscopy }, 
+      { "10662-5", FilariaIdentifiedInBloodByConcentration }, 
+      { "http://loinc.org#10662-5", FilariaIdentifiedInBloodByConcentration }, 
+      { "10663-3", FilariaIdentifiedInBloodByThickFilm }, 
+      { "http://loinc.org#10663-3", FilariaIdentifiedInBloodByThickFilm }, 
+      { "10664-1", FilariaIdentifiedInBloodByThinFilm }, 
+      { "http://loinc.org#10664-1", FilariaIdentifiedInBloodByThinFilm }, 
+      { "10665-8", FungusColonyCountNumberVolumeInUnspecifiedSpecimenByEnvironmentalCulture }, 
+      { "http://loinc.org#10665-8", FungusColonyCountNumberVolumeInUnspecifiedSpecimenByEnvironmentalCulture }, 
+      { "10666-6", FungusIdentifiedInTissueByFontanaMassonStain }, 
+      { "http://loinc.org#10666-6", FungusIdentifiedInTissueByFontanaMassonStain }, 
+      { "10667-4", FungusIdentifiedInUnspecifiedSpecimenByAnimalInoculation }, 
+      { "http://loinc.org#10667-4", FungusIdentifiedInUnspecifiedSpecimenByAnimalInoculation }, 
+      { "10668-2", FungusIdentifiedInUnspecifiedSpecimenByEnvironmentalCulture }, 
+      { "http://loinc.org#10668-2", FungusIdentifiedInUnspecifiedSpecimenByEnvironmentalCulture }, 
+      { "10669-0", FungusIdentifiedInUnspecifiedSpecimenByStickyTapeForEnvironmentalFungus }, 
+      { "http://loinc.org#10669-0", FungusIdentifiedInUnspecifiedSpecimenByStickyTapeForEnvironmentalFungus }, 
+      { "1067-8", JkSupAAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "http://loinc.org#1067-8", JkSupAAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "10670-8", GiardiaLambliaPresenceInStoolByOrganismSpecificCulture }, 
+      { "http://loinc.org#10670-8", GiardiaLambliaPresenceInStoolByOrganismSpecificCulture }, 
+      { "10671-6", HelminthIdentifiedInUnspecifiedSpecimen }, 
+      { "http://loinc.org#10671-6", HelminthIdentifiedInUnspecifiedSpecimen }, 
+      { "10672-4", HelminthPlusArthropodIdentifiedInUnspecifiedSpecimen }, 
+      { "http://loinc.org#10672-4", HelminthPlusArthropodIdentifiedInUnspecifiedSpecimen }, 
+      { "10673-2", HepatitisBVirusCoreAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10673-2", HepatitisBVirusCoreAgPresenceInTissueByImmuneStain }, 
+      { "10674-0", HepatitisBVirusSurfaceAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10674-0", HepatitisBVirusSurfaceAgPresenceInTissueByImmuneStain }, 
+      { "10675-7", HepatitisBVirusSurfaceAgPresenceInTissueByOrceinStain }, 
+      { "http://loinc.org#10675-7", HepatitisBVirusSurfaceAgPresenceInTissueByOrceinStain }, 
+      { "10676-5", HepatitisCVirusRNAUnitsVolumeViralLoadInSerumOrPlasmaByProbeWithAmplification }, 
+      { "http://loinc.org#10676-5", HepatitisCVirusRNAUnitsVolumeViralLoadInSerumOrPlasmaByProbeWithAmplification }, 
+      { "10677-3", HerpesSimplexVirus1AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10677-3", HerpesSimplexVirus1AgPresenceInTissueByImmuneStain }, 
+      { "10678-1", HerpesSimplexVirus1Plus2AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10678-1", HerpesSimplexVirus1Plus2AgPresenceInTissueByImmuneStain }, 
+      { "10679-9", HerpesSimplexVirus2AgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10679-9", HerpesSimplexVirus2AgPresenceInTissueByImmuneStain }, 
+      { "1068-6", JkSupAAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "http://loinc.org#1068-6", JkSupAAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "10680-7", HerpesSimplexVirusIdentifiedInCerebralSpinalFluidByElectronMicroscopy }, 
+      { "http://loinc.org#10680-7", HerpesSimplexVirusIdentifiedInCerebralSpinalFluidByElectronMicroscopy }, 
+      { "10681-5", HerpesSimplexVirusIdentifiedInTissueByElectronMicroscopy }, 
+      { "http://loinc.org#10681-5", HerpesSimplexVirusIdentifiedInTissueByElectronMicroscopy }, 
+      { "10682-3", DeprecatedHIV1RNAUnitsVolumeInSerumOrPlasmaByProbeWithAmplification }, 
+      { "http://loinc.org#10682-3", DeprecatedHIV1RNAUnitsVolumeInSerumOrPlasmaByProbeWithAmplification }, 
+      { "10683-1", HydatidCystIdentifiedInAspirateByImmuneStain }, 
+      { "http://loinc.org#10683-1", HydatidCystIdentifiedInAspirateByImmuneStain }, 
+      { "10684-9", HydatidCystIdentifiedInLiverByWetPreparation }, 
+      { "http://loinc.org#10684-9", HydatidCystIdentifiedInLiverByWetPreparation }, 
+      { "10685-6", HydatidCystIdentifiedInLungTissueByWetPreparation }, 
+      { "http://loinc.org#10685-6", HydatidCystIdentifiedInLungTissueByWetPreparation }, 
+      { "10686-4", LeishmaniaSpIdentifiedInTissueByGiemsaStain }, 
+      { "http://loinc.org#10686-4", LeishmaniaSpIdentifiedInTissueByGiemsaStain }, 
+      { "10687-2", LeishmaniaSpIdentifiedInTissueByOrganismSpecificCulture }, 
+      { "http://loinc.org#10687-2", LeishmaniaSpIdentifiedInTissueByOrganismSpecificCulture }, 
+      { "10688-0", MicroscopicObservationIdentifierInHairByKOHPreparation }, 
+      { "http://loinc.org#10688-0", MicroscopicObservationIdentifierInHairByKOHPreparation }, 
+      { "10689-8", MicroscopicObservationIdentifierInNailByKOHPreparation }, 
+      { "http://loinc.org#10689-8", MicroscopicObservationIdentifierInNailByKOHPreparation }, 
+      { "1069-4", JkSupAAbPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#1069-4", JkSupAAbPresenceInSerumOrPlasma }, 
+      { "10690-6", MicrosporidiaIdentifiedInDuodenalFluidByTrichromeStainModified }, 
+      { "http://loinc.org#10690-6", MicrosporidiaIdentifiedInDuodenalFluidByTrichromeStainModified }, 
+      { "10691-4", MushroomToxicIdentifiedByInspection }, 
+      { "http://loinc.org#10691-4", MushroomToxicIdentifiedByInspection }, 
+      { "10692-2", MushroomToxicIdentifiedInFoodByLightMicroscopy }, 
+      { "http://loinc.org#10692-2", MushroomToxicIdentifiedInFoodByLightMicroscopy }, 
+      { "10693-0", MushroomToxicIdentifiedInVomitusByLightMicroscopy }, 
+      { "http://loinc.org#10693-0", MushroomToxicIdentifiedInVomitusByLightMicroscopy }, 
+      { "10694-8", NaegleriaSpIdentifiedInTissueByOrganismSpecificCulture }, 
+      { "http://loinc.org#10694-8", NaegleriaSpIdentifiedInTissueByOrganismSpecificCulture }, 
+      { "10695-5", NaegleriaSpIdentifiedInTissueByWetPreparation }, 
+      { "http://loinc.org#10695-5", NaegleriaSpIdentifiedInTissueByWetPreparation }, 
+      { "10696-3", NorovirusIdentifierInStoolByElectronMicroscopy }, 
+      { "http://loinc.org#10696-3", NorovirusIdentifierInStoolByElectronMicroscopy }, 
+      { "10697-1", NystatinSusceptibilityByMinimumInhibitoryConcentrationMIC }, 
+      { "http://loinc.org#10697-1", NystatinSusceptibilityByMinimumInhibitoryConcentrationMIC }, 
+      { "10698-9", NystatinSusceptibilityByMinimumLethalConcentrationMLC }, 
+      { "http://loinc.org#10698-9", NystatinSusceptibilityByMinimumLethalConcentrationMLC }, 
+      { "10699-7", OnchocercaSpIdentifiedInTissueByWetPreparation }, 
+      { "http://loinc.org#10699-7", OnchocercaSpIdentifiedInTissueByWetPreparation }, 
+      { "107-3", CefotaximeSusceptibilityByMinimumLethalConcentrationMLC }, 
+      { "http://loinc.org#107-3", CefotaximeSusceptibilityByMinimumLethalConcentrationMLC }, 
+      { "1070-2", JkSupAAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "http://loinc.org#1070-2", JkSupAAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "10700-3", OrthopoxvirusIdentifierInSkinByElectronMicroscopy }, 
+      { "http://loinc.org#10700-3", OrthopoxvirusIdentifierInSkinByElectronMicroscopy }, 
+      { "10701-1", OvaAndParasitesIdentifiedInStoolByConcentration }, 
+      { "http://loinc.org#10701-1", OvaAndParasitesIdentifiedInStoolByConcentration }, 
+      { "10702-9", OvaAndParasitesIdentifiedInStoolByImmuneStain }, 
+      { "http://loinc.org#10702-9", OvaAndParasitesIdentifiedInStoolByImmuneStain }, 
+      { "10703-7", OvaAndParasitesIdentifiedInStoolByKinyounIronHematoxylinStain }, 
+      { "http://loinc.org#10703-7", OvaAndParasitesIdentifiedInStoolByKinyounIronHematoxylinStain }, 
+      { "10704-5", OvaAndParasitesIdentifiedInStoolByLightMicroscopy }, 
+      { "http://loinc.org#10704-5", OvaAndParasitesIdentifiedInStoolByLightMicroscopy }, 
+      { "10705-2", HumanPapillomaVirusAgPresenceInTissueByImmuneStain }, 
+      { "http://loinc.org#10705-2", HumanPapillomaVirusAgPresenceInTissueByImmuneStain }, 
+      { "10706-0", PicornavirusIdentifierInStoolByElectronMicroscopy }, 
+      { "http://loinc.org#10706-0", PicornavirusIdentifierInStoolByElectronMicroscopy }, 
+      { "10707-8", ToxicPlantIdentifiedInPlantSpecimenByInspection }, 
+      { "http://loinc.org#10707-8", ToxicPlantIdentifiedInPlantSpecimenByInspection }, 
+      { "10708-6", ToxicPlantIdentifiedInVomitusByLightMicroscopy }, 
+      { "http://loinc.org#10708-6", ToxicPlantIdentifiedInVomitusByLightMicroscopy }, 
+      { "10709-4", PlasmodiumFalciparumAgUnitsVolumeInBloodByImmunofluorescence }, 
+      { "http://loinc.org#10709-4", PlasmodiumFalciparumAgUnitsVolumeInBloodByImmunofluorescence }, 
+      { "1071-0", JkSupAAgPresenceOnRedBloodCellsFromDonor }, 
+      { "http://loinc.org#1071-0", JkSupAAgPresenceOnRedBloodCellsFromDonor }, 
+      { "10710-2", PlasmodiumSpIdentifiedInBloodByThinFilm }, 
+      { "http://loinc.org#10710-2", PlasmodiumSpIdentifiedInBloodByThinFilm }, 
+      { "10711-0", PlasmodiumVivaxAgUnitsVolumeInBloodByImmunofluorescence }, 
+      { "http://loinc.org#10711-0", PlasmodiumVivaxAgUnitsVolumeInBloodByImmunofluorescence }, 
+      { "10712-8", PneumocystisSpIdentifiedInLungTissue }, 
+      { "http://loinc.org#10712-8", PneumocystisSpIdentifiedInLungTissue }, 
+      { "10713-6", ProtothecaIdentifiedInUnspecifiedSpecimenByCulture }, 
+      { "http://loinc.org#10713-6", ProtothecaIdentifiedInUnspecifiedSpecimenByCulture }, 
+      { "10714-4", DeprecatedRotavirusIdentifierInStoolByElectronMicroscopy }, 
+      { "http://loinc.org#10714-4", DeprecatedRotavirusIdentifierInStoolByElectronMicroscopy }, 
+      { "10715-1", SchistosomaSpIdentifiedInUrineSedimentByLightMicroscopy }, 
+      { "http://loinc.org#10715-1", SchistosomaSpIdentifiedInUrineSedimentByLightMicroscopy }, 
+      { "10716-9", SchistosomaSpIdentifiedInUnspecifiedSpecimenByOrganismSpecificCulture }, 
+      { "http://loinc.org#10716-9", SchistosomaSpIdentifiedInUnspecifiedSpecimenByOrganismSpecificCulture }, 
+      { "10717-7", StreptococcusPneumoniaeAbUnitsVolumeInSerumByLatexAgglutination }, 
+      { "http://loinc.org#10717-7", StreptococcusPneumoniaeAbUnitsVolumeInSerumByLatexAgglutination }, 
+      { "10718-5", StrongyloidesSpAbUnitsVolumeInSerumByImmunoassay }, 
+      { "http://loinc.org#10718-5", StrongyloidesSpAbUnitsVolumeInSerumByImmunoassay }, 
+      { "10719-3", TaeniaSoliumAdultAbUnitsVolumeInSerumByImmunoblot }, 
+      { "http://loinc.org#10719-3", TaeniaSoliumAdultAbUnitsVolumeInSerumByImmunoblot }, 
+      { "1072-8", JkSupAAgPresenceOnRedBloodCells }, 
+      { "http://loinc.org#1072-8", JkSupAAgPresenceOnRedBloodCells }, 
+      { "10720-1", TerbinafineSusceptibilityByMinimumInhibitoryConcentrationMIC }, 
+      { "http://loinc.org#10720-1", TerbinafineSusceptibilityByMinimumInhibitoryConcentrationMIC }, 
+      { "10721-9", TerbinafineSusceptibilityByMinimumLethalConcentrationMLC }, 
+      { "http://loinc.org#10721-9", TerbinafineSusceptibilityByMinimumLethalConcentrationMLC }, 
+      { "10722-7", TorovirusIdentifierInStoolByElectronMicroscopy }, 
+      { "http://loinc.org#10722-7", TorovirusIdentifierInStoolByElectronMicroscopy }, 
+      { "10723-5", ToxoplasmaGondiiIgAAbUnitsVolumeInSerumByImmunoassay }, 
+      { "http://loinc.org#10723-5", ToxoplasmaGondiiIgAAbUnitsVolumeInSerumByImmunoassay }, 
+      { "10724-3", ToxoplasmaGondiiIgEAbUnitsVolumeInSerumByImmunoassay }, 
+      { "http://loinc.org#10724-3", ToxoplasmaGondiiIgEAbUnitsVolumeInSerumByImmunoassay }, 
+      { "10725-0", ToxoplasmaGondiiDNAUnitsVolumeInBodyFluidByProbeWithAmplification }, 
+      { "http://loinc.org#10725-0", ToxoplasmaGondiiDNAUnitsVolumeInBodyFluidByProbeWithAmplification }, 
+      { "10726-8", ToxoplasmaGondiiPresenceInTissueByGiemsaStain }, 
+      { "http://loinc.org#10726-8", ToxoplasmaGondiiPresenceInTissueByGiemsaStain }, 
+      { "10727-6", ToxoplasmaGondiiIdentifiedInTissue }, 
+      { "http://loinc.org#10727-6", ToxoplasmaGondiiIdentifiedInTissue }, 
+      { "10728-4", TrichomonasSpIdentifiedInGenitalSpecimenByOrganismSpecificCulture }, 
+      { "http://loinc.org#10728-4", TrichomonasSpIdentifiedInGenitalSpecimenByOrganismSpecificCulture }, 
+      { "10729-2", TrypanosomaSpIdentifiedInBloodByLightMicroscopy }, 
+      { "http://loinc.org#10729-2", TrypanosomaSpIdentifiedInBloodByLightMicroscopy }, 
+      { "1073-6", JkSupBAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "http://loinc.org#1073-6", JkSupBAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "10730-0", TrypanosomaSpIdentifiedInBloodByOrganismSpecificCulture }, 
+      { "http://loinc.org#10730-0", TrypanosomaSpIdentifiedInBloodByOrganismSpecificCulture }, 
+      { "10731-8", TrypanosomaSpIdentifiedInBloodByThickFilm }, 
+      { "http://loinc.org#10731-8", TrypanosomaSpIdentifiedInBloodByThickFilm }, 
+      { "10732-6", TrypanosomaSpIdentifiedInBloodByThinFilm }, 
+      { "http://loinc.org#10732-6", TrypanosomaSpIdentifiedInBloodByThinFilm }, 
+      { "10733-4", TrypanosomaSpIdentifiedInBloodByWetPreparation }, 
+      { "http://loinc.org#10733-4", TrypanosomaSpIdentifiedInBloodByWetPreparation }, 
+      { "10734-2", VaricellaZosterVirusIdentifiedInSkinByElectronMicroscopy }, 
+      { "http://loinc.org#10734-2", VaricellaZosterVirusIdentifiedInSkinByElectronMicroscopy }, 
+      { "10735-9", ViralSequencingIdentifierInSerumBySequencing }, 
+      { "http://loinc.org#10735-9", ViralSequencingIdentifierInSerumBySequencing }, 
+      { "10736-7", VirusIdentifiedInCerebralSpinalFluidByElectronMicroscopy }, 
+      { "http://loinc.org#10736-7", VirusIdentifiedInCerebralSpinalFluidByElectronMicroscopy }, 
+      { "10737-5", VirusIdentifiedInStoolByElectronMicroscopy }, 
+      { "http://loinc.org#10737-5", VirusIdentifiedInStoolByElectronMicroscopy }, 
+      { "10738-3", VirusIdentifiedInTissueByElectronMicroscopy }, 
+      { "http://loinc.org#10738-3", VirusIdentifiedInTissueByElectronMicroscopy }, 
+      { "10739-1", VirusIdentifiedInUnspecifiedSpecimenByElectronMicroscopy }, 
+      { "http://loinc.org#10739-1", VirusIdentifiedInUnspecifiedSpecimenByElectronMicroscopy }, 
+      { "1074-4", JkSupBAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "http://loinc.org#1074-4", JkSupBAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "10740-9", AluminumMicroscopicObservationIdentifierInBoneByHistomorphometryStain }, 
+      { "http://loinc.org#10740-9", AluminumMicroscopicObservationIdentifierInBoneByHistomorphometryStain }, 
+      { "10741-7", AmyloidMicroscopicObservationIdentifierInBrainByThioflavineSStain }, 
+      { "http://loinc.org#10741-7", AmyloidMicroscopicObservationIdentifierInBrainByThioflavineSStain }, 
+      { "10742-5", AmyloidMicroscopicObservationIdentifierInTissueByBennholdStainPutchlerModified }, 
+      { "http://loinc.org#10742-5", AmyloidMicroscopicObservationIdentifierInTissueByBennholdStainPutchlerModified }, 
+      { "10743-3", AmyloidMicroscopicObservationIdentifierInTissueByHighmanStain }, 
+      { "http://loinc.org#10743-3", AmyloidMicroscopicObservationIdentifierInTissueByHighmanStain }, 
+      { "10744-1", AmyloidMicroscopicObservationIdentifierInTissueByVassarCullingStain }, 
+      { "http://loinc.org#10744-1", AmyloidMicroscopicObservationIdentifierInTissueByVassarCullingStain }, 
+      { "10745-8", BileMicroscopicObservationIdentifierInTissueByFouchetStain }, 
+      { "http://loinc.org#10745-8", BileMicroscopicObservationIdentifierInTissueByFouchetStain }, 
+      { "10746-6", CalciumMicroscopicObservationIdentifierInTissueByVonKossaStain }, 
+      { "http://loinc.org#10746-6", CalciumMicroscopicObservationIdentifierInTissueByVonKossaStain }, 
+      { "10747-4", CollagenFibersPlusElasticFibersMicroscopicObservationIdentifierInTissueByLawsonVanGiesonStain }, 
+      { "http://loinc.org#10747-4", CollagenFibersPlusElasticFibersMicroscopicObservationIdentifierInTissueByLawsonVanGiesonStain }, 
+      { "10748-2", CollagenFibersPlusElasticFibersMicroscopicObservationIdentifierInTissueByVerhoeffVanGiesonStain }, 
+      { "http://loinc.org#10748-2", CollagenFibersPlusElasticFibersMicroscopicObservationIdentifierInTissueByVerhoeffVanGiesonStain }, 
+      { "10749-0", CollagenFibersMicroscopicObservationIdentifierInTissueByVanGiesonStain }, 
+      { "http://loinc.org#10749-0", CollagenFibersMicroscopicObservationIdentifierInTissueByVanGiesonStain }, 
+      { "1075-1", JkSupBAbPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#1075-1", JkSupBAbPresenceInSerumOrPlasma }, 
+      { "10750-8", ConnectiveTissueMicroscopicObservationIdentifierInTissueByTrichromeStainMasson }, 
+      { "http://loinc.org#10750-8", ConnectiveTissueMicroscopicObservationIdentifierInTissueByTrichromeStainMasson }, 
+      { "10751-6", CopperMicroscopicObservationIdentifierInTissueByRhodamineStain }, 
+      { "http://loinc.org#10751-6", CopperMicroscopicObservationIdentifierInTissueByRhodamineStain }, 
+      { "10752-4", FatMicroscopicObservationIdentifierInMilkBySudanIVStain }, 
+      { "http://loinc.org#10752-4", FatMicroscopicObservationIdentifierInMilkBySudanIVStain }, 
+      { "10753-2", FatMicroscopicObservationIdentifierInStoolBySudanIVStain }, 
+      { "http://loinc.org#10753-2", FatMicroscopicObservationIdentifierInStoolBySudanIVStain }, 
+      { "10754-0", FatMicroscopicObservationIdentifierInTissueBySudanIVStain }, 
+      { "http://loinc.org#10754-0", FatMicroscopicObservationIdentifierInTissueBySudanIVStain }, 
+      { "10755-7", FungusMicroscopicObservationIdentifierInTissueByMethenamineSilverStainGrocott }, 
+      { "http://loinc.org#10755-7", FungusMicroscopicObservationIdentifierInTissueByMethenamineSilverStainGrocott }, 
+      { "10756-5", GlialFibersMicroscopicObservationIdentifierInTissueByHolzerStain }, 
+      { "http://loinc.org#10756-5", GlialFibersMicroscopicObservationIdentifierInTissueByHolzerStain }, 
+      { "10757-3", HematologicPlusNuclearElementsMicroscopicObservationIdentifierInTissueByGiemsaStainMayGrunwald }, 
+      { "http://loinc.org#10757-3", HematologicPlusNuclearElementsMicroscopicObservationIdentifierInTissueByGiemsaStainMayGrunwald }, 
+      { "10758-1", IronMicroscopicObservationIdentifierInBoneByHistomorphometryStain }, 
+      { "http://loinc.org#10758-1", IronMicroscopicObservationIdentifierInBoneByHistomorphometryStain }, 
+      { "10759-9", IronMicroscopicObservationIdentifierInSputumByGomoriStain }, 
+      { "http://loinc.org#10759-9", IronMicroscopicObservationIdentifierInSputumByGomoriStain }, 
+      { "1076-9", JkSupBAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "http://loinc.org#1076-9", JkSupBAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "10760-7", IronMicroscopicObservationIdentifierInTissueByGomoriStain }, 
+      { "http://loinc.org#10760-7", IronMicroscopicObservationIdentifierInTissueByGomoriStain }, 
+      { "10761-5", IronMicroscopicObservationIdentifierInTissueByOtherStain }, 
+      { "http://loinc.org#10761-5", IronMicroscopicObservationIdentifierInTissueByOtherStain }, 
+      { "10762-3", MicroscopicObservationIdentifierInBloodByHemosiderinStain }, 
+      { "http://loinc.org#10762-3", MicroscopicObservationIdentifierInBloodByHemosiderinStain }, 
+      { "10763-1", MicroscopicObservationIdentifierInBodyFluidBySudanBlackStain }, 
+      { "http://loinc.org#10763-1", MicroscopicObservationIdentifierInBodyFluidBySudanBlackStain }, 
+      { "10764-9", MicroscopicObservationIdentifierInSputumBySilverStain }, 
+      { "http://loinc.org#10764-9", MicroscopicObservationIdentifierInSputumBySilverStain }, 
+      { "10765-6", MicroscopicObservationIdentifierInTissueByAcetateEsteraseStain }, 
+      { "http://loinc.org#10765-6", MicroscopicObservationIdentifierInTissueByAcetateEsteraseStain }, 
+      { "10766-4", MicroscopicObservationIdentifierInTissueByAlcianBlueStain }, 
+      { "http://loinc.org#10766-4", MicroscopicObservationIdentifierInTissueByAlcianBlueStain }, 
+      { "10767-2", MicroscopicObservationIdentifierInTissueByAlcianBlueStainSulfated }, 
+      { "http://loinc.org#10767-2", MicroscopicObservationIdentifierInTissueByAlcianBlueStainSulfated }, 
+      { "10768-0", MicroscopicObservationIdentifierInTissueByAlcianBlueStainWithPeriodicAcidSchiff }, 
+      { "http://loinc.org#10768-0", MicroscopicObservationIdentifierInTissueByAlcianBlueStainWithPeriodicAcidSchiff }, 
+      { "10769-8", MicroscopicObservationIdentifierInTissueByAlizarinRedSStain }, 
+      { "http://loinc.org#10769-8", MicroscopicObservationIdentifierInTissueByAlizarinRedSStain }, 
+      { "1077-7", JkSupBAgPresenceOnRedBloodCellsFromDonor }, 
+      { "http://loinc.org#1077-7", JkSupBAgPresenceOnRedBloodCellsFromDonor }, 
+      { "10770-6", MicroscopicObservationIdentifierInTissueByArgentaffinStain }, 
+      { "http://loinc.org#10770-6", MicroscopicObservationIdentifierInTissueByArgentaffinStain }, 
+      { "10771-4", DeprecatedMicroscopicObservationIdentifierInTissueByRhodamineAuramineFluorochromeStain }, 
+      { "http://loinc.org#10771-4", DeprecatedMicroscopicObservationIdentifierInTissueByRhodamineAuramineFluorochromeStain }, 
+      { "10772-2", MicroscopicObservationIdentifierInTissueByAzureEosinStain }, 
+      { "http://loinc.org#10772-2", MicroscopicObservationIdentifierInTissueByAzureEosinStain }, 
+      { "10773-0", MicroscopicObservationIdentifierInTissueByBasicFuchsinStain }, 
+      { "http://loinc.org#10773-0", MicroscopicObservationIdentifierInTissueByBasicFuchsinStain }, 
+      { "10774-8", MicroscopicObservationIdentifierInTissueByBielschowskyStain }, 
+      { "http://loinc.org#10774-8", MicroscopicObservationIdentifierInTissueByBielschowskyStain }, 
+      { "10775-5", MicroscopicObservationIdentifierInTissueByBleachStain }, 
+      { "http://loinc.org#10775-5", MicroscopicObservationIdentifierInTissueByBleachStain }, 
+      { "10776-3", MicroscopicObservationIdentifierInTissueByBodianStain }, 
+      { "http://loinc.org#10776-3", MicroscopicObservationIdentifierInTissueByBodianStain }, 
+      { "10777-1", MicroscopicObservationIdentifierInTissueByBrownAndBrennStain }, 
+      { "http://loinc.org#10777-1", MicroscopicObservationIdentifierInTissueByBrownAndBrennStain }, 
+      { "10778-9", MicroscopicObservationIdentifierInTissueByButyrateEsteraseStain }, 
+      { "http://loinc.org#10778-9", MicroscopicObservationIdentifierInTissueByButyrateEsteraseStain }, 
+      { "10779-7", MicroscopicObservationIdentifierInTissueByCarmineStainBest }, 
+      { "http://loinc.org#10779-7", MicroscopicObservationIdentifierInTissueByCarmineStainBest }, 
+      { "1078-5", JkSupBAgPresenceOnRedBloodCells }, 
+      { "http://loinc.org#1078-5", JkSupBAgPresenceOnRedBloodCells }, 
+      { "10780-5", MicroscopicObservationIdentifierInTissueByChloracetateEsteraseStain }, 
+      { "http://loinc.org#10780-5", MicroscopicObservationIdentifierInTissueByChloracetateEsteraseStain }, 
+      { "10781-3", MicroscopicObservationIdentifierInTissueByChurukianSchenkStain }, 
+      { "http://loinc.org#10781-3", MicroscopicObservationIdentifierInTissueByChurukianSchenkStain }, 
+      { "10782-1", MicroscopicObservationIdentifierInTissueByCongoRedStain }, 
+      { "http://loinc.org#10782-1", MicroscopicObservationIdentifierInTissueByCongoRedStain }, 
+      { "10783-9", MicroscopicObservationIdentifierInTissueByCrystalVioletStain }, 
+      { "http://loinc.org#10783-9", MicroscopicObservationIdentifierInTissueByCrystalVioletStain }, 
+      { "10784-7", MicroscopicObservationIdentifierInTissueByEsteraseStainNonSpecific }, 
+      { "http://loinc.org#10784-7", MicroscopicObservationIdentifierInTissueByEsteraseStainNonSpecific }, 
+      { "10785-4", MicroscopicObservationIdentifierInTissueByFiteFaracoStain }, 
+      { "http://loinc.org#10785-4", MicroscopicObservationIdentifierInTissueByFiteFaracoStain }, 
+      { "10786-2", DeprecatedMicroscopicObservationIdentifierInTissueByGiemsaStain3Micron }, 
+      { "http://loinc.org#10786-2", DeprecatedMicroscopicObservationIdentifierInTissueByGiemsaStain3Micron }, 
+      { "10787-0", MicroscopicObservationIdentifierInTissueByGridleyStain }, 
+      { "http://loinc.org#10787-0", MicroscopicObservationIdentifierInTissueByGridleyStain }, 
+      { "10788-8", MicroscopicObservationIdentifierInTissueByHanselStain }, 
+      { "http://loinc.org#10788-8", MicroscopicObservationIdentifierInTissueByHanselStain }, 
+      { "10789-6", MicroscopicObservationIdentifierInTissueByHematoxylinEosinHarrisRegressiveStain }, 
+      { "http://loinc.org#10789-6", MicroscopicObservationIdentifierInTissueByHematoxylinEosinHarrisRegressiveStain }, 
+      { "1079-3", JsSupAAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "http://loinc.org#1079-3", JsSupAAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "10790-4", MicroscopicObservationIdentifierInTissueByHematoxylinEosinMayersProgressiveStain }, 
+      { "http://loinc.org#10790-4", MicroscopicObservationIdentifierInTissueByHematoxylinEosinMayersProgressiveStain }, 
+      { "10791-2", MicroscopicObservationIdentifierInTissueByMalloryHeidenhainStain }, 
+      { "http://loinc.org#10791-2", MicroscopicObservationIdentifierInTissueByMalloryHeidenhainStain }, 
+      { "10792-0", MicroscopicObservationIdentifierInTissueByMethenamineSilverStainJones }, 
+      { "http://loinc.org#10792-0", MicroscopicObservationIdentifierInTissueByMethenamineSilverStainJones }, 
+      { "10793-8", MicroscopicObservationIdentifierInTissueByMethylGreenStain }, 
+      { "http://loinc.org#10793-8", MicroscopicObservationIdentifierInTissueByMethylGreenStain }, 
+      { "10794-6", MicroscopicObservationIdentifierInTissueByMethylGreenPyronineYStain }, 
+      { "http://loinc.org#10794-6", MicroscopicObservationIdentifierInTissueByMethylGreenPyronineYStain }, 
+      { "10795-3", MicroscopicObservationIdentifierInTissueByMethylVioletStain }, 
+      { "http://loinc.org#10795-3", MicroscopicObservationIdentifierInTissueByMethylVioletStain }, 
+      { "10796-1", MicroscopicObservationIdentifierInTissueByMucicarmineStain }, 
+      { "http://loinc.org#10796-1", MicroscopicObservationIdentifierInTissueByMucicarmineStain }, 
+      { "10797-9", MicroscopicObservationIdentifierInTissueByNeutralRedStain }, 
+      { "http://loinc.org#10797-9", MicroscopicObservationIdentifierInTissueByNeutralRedStain }, 
+      { "10798-7", MicroscopicObservationIdentifierInTissueByOilRedOStain }, 
+      { "http://loinc.org#10798-7", MicroscopicObservationIdentifierInTissueByOilRedOStain }, 
+      { "10799-5", MicroscopicObservationIdentifierInTissueByPentachromeStainMovat }, 
+      { "http://loinc.org#10799-5", MicroscopicObservationIdentifierInTissueByPentachromeStainMovat }, 
+      { "108-1", CefotaximeSusceptibilityByMinimumInhibitoryConcentrationMIC }, 
+      { "http://loinc.org#108-1", CefotaximeSusceptibilityByMinimumInhibitoryConcentrationMIC }, 
+      { "1080-1", JsSupAAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "http://loinc.org#1080-1", JsSupAAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "10800-1", MicroscopicObservationIdentifierInTissueByPeriodicAcidSchiffStainWithDiataseDigestion }, 
+      { "http://loinc.org#10800-1", MicroscopicObservationIdentifierInTissueByPeriodicAcidSchiffStainWithDiataseDigestion }, 
+      { "10801-9", MicroscopicObservationIdentifierInTissueByPhosphotungsticAcidHematoxylinPTAHStain }, 
+      { "http://loinc.org#10801-9", MicroscopicObservationIdentifierInTissueByPhosphotungsticAcidHematoxylinPTAHStain }, 
+      { "10802-7", MicroscopicObservationIdentifierInTissueByPrussianBlueStain }, 
+      { "http://loinc.org#10802-7", MicroscopicObservationIdentifierInTissueByPrussianBlueStain }, 
+      { "10803-5", MicroscopicObservationIdentifierInTissueByQuinacrineFluorescentStain }, 
+      { "http://loinc.org#10803-5", MicroscopicObservationIdentifierInTissueByQuinacrineFluorescentStain }, 
+      { "10804-3", MicroscopicObservationIdentifierInTissueByReticulinStain }, 
+      { "http://loinc.org#10804-3", MicroscopicObservationIdentifierInTissueByReticulinStain }, 
+      { "10805-0", MicroscopicObservationIdentifierInTissueBySafraninStain }, 
+      { "http://loinc.org#10805-0", MicroscopicObservationIdentifierInTissueBySafraninStain }, 
+      { "10806-8", MicroscopicObservationIdentifierInTissueBySchmorlStain }, 
+      { "http://loinc.org#10806-8", MicroscopicObservationIdentifierInTissueBySchmorlStain }, 
+      { "10807-6", MicroscopicObservationIdentifierInTissueBySevierMungerStain }, 
+      { "http://loinc.org#10807-6", MicroscopicObservationIdentifierInTissueBySevierMungerStain }, 
+      { "10808-4", MicroscopicObservationIdentifierInTissueBySilverImpregnationStainDieterle }, 
+      { "http://loinc.org#10808-4", MicroscopicObservationIdentifierInTissueBySilverImpregnationStainDieterle }, 
+      { "10809-2", MicroscopicObservationIdentifierInTissueBySilverNitrateStain }, 
+      { "http://loinc.org#10809-2", MicroscopicObservationIdentifierInTissueBySilverNitrateStain }, 
+      { "1081-9", JsSupAAbPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#1081-9", JsSupAAbPresenceInSerumOrPlasma }, 
+      { "10810-0", MicroscopicObservationIdentifierInTissueBySilverStainFontanaMasson }, 
+      { "http://loinc.org#10810-0", MicroscopicObservationIdentifierInTissueBySilverStainFontanaMasson }, 
+      { "10811-8", MicroscopicObservationIdentifierInTissueBySilverStainGrimelius }, 
+      { "http://loinc.org#10811-8", MicroscopicObservationIdentifierInTissueBySilverStainGrimelius }, 
+      { "10812-6", MicroscopicObservationIdentifierInTissueBySteinerStain }, 
+      { "http://loinc.org#10812-6", MicroscopicObservationIdentifierInTissueBySteinerStain }, 
+      { "10813-4", MicroscopicObservationIdentifierInTissueBySudanBlackStain }, 
+      { "http://loinc.org#10813-4", MicroscopicObservationIdentifierInTissueBySudanBlackStain }, 
+      { "10814-2", MicroscopicObservationIdentifierInTissueBySupravitalStain }, 
+      { "http://loinc.org#10814-2", MicroscopicObservationIdentifierInTissueBySupravitalStain }, 
+      { "10815-9", MicroscopicObservationIdentifierInTissueByTetrachromeStain }, 
+      { "http://loinc.org#10815-9", MicroscopicObservationIdentifierInTissueByTetrachromeStain }, 
+      { "10816-7", DeprecatedMicroscopicObservationIdentifierInTissueByToluidineBlueOStain }, 
+      { "http://loinc.org#10816-7", DeprecatedMicroscopicObservationIdentifierInTissueByToluidineBlueOStain }, 
+      { "10817-5", MicroscopicObservationIdentifierInTissueByTrichromeStainGomoriWheatley }, 
+      { "http://loinc.org#10817-5", MicroscopicObservationIdentifierInTissueByTrichromeStainGomoriWheatley }, 
+      { "10818-3", MicroscopicObservationIdentifierInTissueByTrichromeStainMassonModified }, 
+      { "http://loinc.org#10818-3", MicroscopicObservationIdentifierInTissueByTrichromeStainMassonModified }, 
+      { "10819-1", MicroscopicObservationIdentifierInTissueByWadeStain }, 
+      { "http://loinc.org#10819-1", MicroscopicObservationIdentifierInTissueByWadeStain }, 
+      { "1082-7", JsSupAAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "http://loinc.org#1082-7", JsSupAAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "10820-9", DeprecatedMicroscopicObservationIdentifierInTissueByWarthinStarryStain }, 
+      { "http://loinc.org#10820-9", DeprecatedMicroscopicObservationIdentifierInTissueByWarthinStarryStain }, 
+      { "10821-7", DeprecatedMicroscopicObservationIdentifierInTissueByWrightGiemsaStain }, 
+      { "http://loinc.org#10821-7", DeprecatedMicroscopicObservationIdentifierInTissueByWrightGiemsaStain }, 
+      { "10822-5", MucinMicroscopicObservationIdentifierInTissueByMucicarmineStainMayer }, 
+      { "http://loinc.org#10822-5", MucinMicroscopicObservationIdentifierInTissueByMucicarmineStainMayer }, 
+      { "10823-3", MucopolysaccharidesMicroscopicObservationIdentifierInTissueByColloidalFerricOxideStainHale }, 
+      { "http://loinc.org#10823-3", MucopolysaccharidesMicroscopicObservationIdentifierInTissueByColloidalFerricOxideStainHale }, 
+      { "10824-1", MyelinPlusMyelinBreakdownProductsMicroscopicObservationIdentifierInTissueByLuxolFastBluePeriodicAcidSchiffStain }, 
+      { "http://loinc.org#10824-1", MyelinPlusMyelinBreakdownProductsMicroscopicObservationIdentifierInTissueByLuxolFastBluePeriodicAcidSchiffStain }, 
+      { "10825-8", MyelinPlusNerveCellsMicroscopicObservationIdentifierInTissueByLuxolFastBlueCresylVioletStain }, 
+      { "http://loinc.org#10825-8", MyelinPlusNerveCellsMicroscopicObservationIdentifierInTissueByLuxolFastBlueCresylVioletStain }, 
+      { "10826-6", NisselMicroscopicObservationIdentifierInTissueByCresylEchtVioletStain }, 
+      { "http://loinc.org#10826-6", NisselMicroscopicObservationIdentifierInTissueByCresylEchtVioletStain }, 
+      { "10827-4", ReticulumMicroscopicObservationIdentifierInTissueByGomoriStain }, 
+      { "http://loinc.org#10827-4", ReticulumMicroscopicObservationIdentifierInTissueByGomoriStain }, 
+      { "10828-2", UrateCrystalsMicroscopicObservationTypeInTissueByDeGalanthaStain }, 
+      { "http://loinc.org#10828-2", UrateCrystalsMicroscopicObservationTypeInTissueByDeGalanthaStain }, 
+      { "10829-0", SiliconMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10829-0", SiliconMassVolumeInSerumOrPlasma }, 
+      { "1083-5", JsSupAAgPresenceOnRedBloodCellsFromDonor }, 
+      { "http://loinc.org#1083-5", JsSupAAgPresenceOnRedBloodCellsFromDonor }, 
+      { "10830-8", DeprecatedSurgicalOperationNoteComplications }, 
+      { "http://loinc.org#10830-8", DeprecatedSurgicalOperationNoteComplications }, 
+      { "10831-6", SurgicalOperationNoteComplicationsInterpretation }, 
+      { "http://loinc.org#10831-6", SurgicalOperationNoteComplicationsInterpretation }, 
+      { "10832-4", GlucoseMassVolumeInSerumOrPlasma15MinutesPost50GLactosePO }, 
+      { "http://loinc.org#10832-4", GlucoseMassVolumeInSerumOrPlasma15MinutesPost50GLactosePO }, 
+      { "10833-2", InsulinMassVolumeInSerumOrPlasma7HoursPost75GGlucosePO }, 
+      { "http://loinc.org#10833-2", InsulinMassVolumeInSerumOrPlasma7HoursPost75GGlucosePO }, 
+      { "10834-0", GlobulinMassVolumeInSerumByCalculation }, 
+      { "http://loinc.org#10834-0", GlobulinMassVolumeInSerumByCalculation }, 
+      { "10835-7", LipoproteinAMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10835-7", LipoproteinAMassVolumeInSerumOrPlasma }, 
+      { "10836-5", NiacinMassVolumeInBlood }, 
+      { "http://loinc.org#10836-5", NiacinMassVolumeInBlood }, 
+      { "10837-3", OrganicAcidsPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#10837-3", OrganicAcidsPresenceInSerumOrPlasma }, 
+      { "10838-1", PhosphoserineMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10838-1", PhosphoserineMassVolumeInSerumOrPlasma }, 
+      { "10839-9", TroponinICardiacMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10839-9", TroponinICardiacMassVolumeInSerumOrPlasma }, 
+      { "1084-3", JsSupAAgPresenceOnRedBloodCells }, 
+      { "http://loinc.org#1084-3", JsSupAAgPresenceOnRedBloodCells }, 
+      { "10840-7", AtropineMassVolumeInUrine }, 
+      { "http://loinc.org#10840-7", AtropineMassVolumeInUrine }, 
+      { "10841-5", MethazolamideMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10841-5", MethazolamideMassVolumeInSerumOrPlasma }, 
+      { "10842-3", DeprecatedHLADQ1Presence }, 
+      { "http://loinc.org#10842-3", DeprecatedHLADQ1Presence }, 
+      { "10843-1", DeprecatedHLADQ2Presence }, 
+      { "http://loinc.org#10843-1", DeprecatedHLADQ2Presence }, 
+      { "10844-9", DeprecatedHLADQ3Presence }, 
+      { "http://loinc.org#10844-9", DeprecatedHLADQ3Presence }, 
+      { "10845-6", DeprecatedHLADQ4Presence }, 
+      { "http://loinc.org#10845-6", DeprecatedHLADQ4Presence }, 
+      { "10846-4", BorreliaBurgdorferiDNAPresenceInBloodByProbeWithAmplification }, 
+      { "http://loinc.org#10846-4", BorreliaBurgdorferiDNAPresenceInBloodByProbeWithAmplification }, 
+      { "10847-2", BorreliaBurgdorferiDNAPresenceInBodyFluidByProbeWithAmplification }, 
+      { "http://loinc.org#10847-2", BorreliaBurgdorferiDNAPresenceInBodyFluidByProbeWithAmplification }, 
+      { "10848-0", ChlamydiaSpIgGAbTiterInSerumByImmunofluorescence }, 
+      { "http://loinc.org#10848-0", ChlamydiaSpIgGAbTiterInSerumByImmunofluorescence }, 
+      { "10849-8", ChlamydiaSpIgMAbTiterInSerumByImmunofluorescence }, 
+      { "http://loinc.org#10849-8", ChlamydiaSpIgMAbTiterInSerumByImmunofluorescence }, 
+      { "1085-0", JsSupBAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "http://loinc.org#1085-0", JsSupBAbPresenceInSerumOrPlasmaFromBloodProductUnit }, 
+      { "10850-6", CyclosporaCayetanensisPresenceInUnspecifiedSpecimen }, 
+      { "http://loinc.org#10850-6", CyclosporaCayetanensisPresenceInUnspecifiedSpecimen }, 
+      { "10851-4", EscherichiaColiO157H7PresenceInStoolByOrganismSpecificCulture }, 
+      { "http://loinc.org#10851-4", EscherichiaColiO157H7PresenceInStoolByOrganismSpecificCulture }, 
+      { "10852-2", DeprecatedFungusIdentifiedInBloodByCulture }, 
+      { "http://loinc.org#10852-2", DeprecatedFungusIdentifiedInBloodByCulture }, 
+      { "10853-0", IsosporaBelliPresenceInUnspecifiedSpecimenByAcidFastStainKinyounModified }, 
+      { "http://loinc.org#10853-0", IsosporaBelliPresenceInUnspecifiedSpecimenByAcidFastStainKinyounModified }, 
+      { "10854-8", DeprecatedMidrofilariaIdentifiedInBloodByConcentration }, 
+      { "http://loinc.org#10854-8", DeprecatedMidrofilariaIdentifiedInBloodByConcentration }, 
+      { "10855-5", OvaAndParasitesIdentifiedInDuodenalFluidOrGastricFluidByLightMicroscopy }, 
+      { "http://loinc.org#10855-5", OvaAndParasitesIdentifiedInDuodenalFluidOrGastricFluidByLightMicroscopy }, 
+      { "10856-3", MicroscopicObservationIdentifierInGenitalMucusByGramStain }, 
+      { "http://loinc.org#10856-3", MicroscopicObservationIdentifierInGenitalMucusByGramStain }, 
+      { "10857-1", MicrosporidiaIdentifiedInUnspecifiedSpecimenByLightMicroscopy }, 
+      { "http://loinc.org#10857-1", MicrosporidiaIdentifiedInUnspecifiedSpecimenByLightMicroscopy }, 
+      { "10858-9", TeichoateAbPresenceInSerum }, 
+      { "http://loinc.org#10858-9", TeichoateAbPresenceInSerum }, 
+      { "10859-7", TrypanosomaSpIdentifierInBloodByAcridineOrangePlusGiemsaStain }, 
+      { "http://loinc.org#10859-7", TrypanosomaSpIdentifierInBloodByAcridineOrangePlusGiemsaStain }, 
+      { "1086-8", JsSupBAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "http://loinc.org#1086-8", JsSupBAbPresenceInSerumOrPlasmaFromDonor }, 
+      { "10860-5", VaricellaZosterVirusPresenceInUnspecifiedSpecimenByOrganismSpecificCulture }, 
+      { "http://loinc.org#10860-5", VaricellaZosterVirusPresenceInUnspecifiedSpecimenByOrganismSpecificCulture }, 
+      { "10861-3", ProgesteroneReceptorMassMassInTissue }, 
+      { "http://loinc.org#10861-3", ProgesteroneReceptorMassMassInTissue }, 
+      { "10862-1", BasementMembraneAbTiterInSerum }, 
+      { "http://loinc.org#10862-1", BasementMembraneAbTiterInSerum }, 
+      { "10863-9", EndomysiumIgAAbTiterInSerum }, 
+      { "http://loinc.org#10863-9", EndomysiumIgAAbTiterInSerum }, 
+      { "10864-7", ImmuneComplexUnitsVolumeInSerumOrPlasmaByRajiCellAssay }, 
+      { "http://loinc.org#10864-7", ImmuneComplexUnitsVolumeInSerumOrPlasmaByRajiCellAssay }, 
+      { "10865-4", IntercellularSubstanceAbPresenceInSerum }, 
+      { "http://loinc.org#10865-4", IntercellularSubstanceAbPresenceInSerum }, 
+      { "10866-2", SulfatideIgGAbTiterInSerum }, 
+      { "http://loinc.org#10866-2", SulfatideIgGAbTiterInSerum }, 
+      { "10867-0", SulfatideIgMAbTiterInSerum }, 
+      { "http://loinc.org#10867-0", SulfatideIgMAbTiterInSerum }, 
+      { "10868-8", BacitracinSusceptibilityByDiskDiffusionKB }, 
+      { "http://loinc.org#10868-8", BacitracinSusceptibilityByDiskDiffusionKB }, 
+      { "10869-6", XyloseMassVolumeInBlood3HoursPost25GXylosePO }, 
+      { "http://loinc.org#10869-6", XyloseMassVolumeInBlood3HoursPost25GXylosePO }, 
+      { "1087-6", JsSupBAbPresenceInSerumOrPlasma }, 
+      { "http://loinc.org#1087-6", JsSupBAbPresenceInSerumOrPlasma }, 
+      { "10870-4", XyloseMassVolumeInBlood4HoursPost25GXylosePO }, 
+      { "http://loinc.org#10870-4", XyloseMassVolumeInBlood4HoursPost25GXylosePO }, 
+      { "10871-2", XyloseMassVolumeInBlood5HoursPost25GXylosePO }, 
+      { "http://loinc.org#10871-2", XyloseMassVolumeInBlood5HoursPost25GXylosePO }, 
+      { "10872-0", XyloseMassVolumeInBloodBaseline }, 
+      { "http://loinc.org#10872-0", XyloseMassVolumeInBloodBaseline }, 
+      { "10873-8", Beta2MicroglobulinMassTimeIn24HourUrine }, 
+      { "http://loinc.org#10873-8", Beta2MicroglobulinMassTimeIn24HourUrine }, 
+      { "10874-6", BombesinMassVolumeInPlasma }, 
+      { "http://loinc.org#10874-6", BombesinMassVolumeInPlasma }, 
+      { "10875-3", CarnitineEstersMassVolumeInUrine }, 
+      { "http://loinc.org#10875-3", CarnitineEstersMassVolumeInUrine }, 
+      { "10876-1", CarnitineEstersMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10876-1", CarnitineEstersMassVolumeInSerumOrPlasma }, 
+      { "10877-9", CarnitineFreeC0MassVolumeInUrine }, 
+      { "http://loinc.org#10877-9", CarnitineFreeC0MassVolumeInUrine }, 
+      { "10878-7", IodineProteinBoundMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10878-7", IodineProteinBoundMassVolumeInSerumOrPlasma }, 
+      { "10879-5", IsovalerylglycineMassVolumeInUrine }, 
+      { "http://loinc.org#10879-5", IsovalerylglycineMassVolumeInUrine }, 
+      { "1088-4", JsSupBAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "http://loinc.org#1088-4", JsSupBAgPresenceOnRedBloodCellsFromBloodProductUnit }, 
+      { "10880-3", MagnesiumMassMassInStool }, 
+      { "http://loinc.org#10880-3", MagnesiumMassMassInStool }, 
+      { "10881-1", PentacarboxylporphyrinsMassVolumeInRedBloodCells }, 
+      { "http://loinc.org#10881-1", PentacarboxylporphyrinsMassVolumeInRedBloodCells }, 
+      { "10882-9", PentacarboxylporphyrinsMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10882-9", PentacarboxylporphyrinsMassVolumeInSerumOrPlasma }, 
+      { "10883-7", PhenolphthaleinMassMassInStool }, 
+      { "http://loinc.org#10883-7", PhenolphthaleinMassMassInStool }, 
+      { "10884-5", PhosphateMassMassInStool }, 
+      { "http://loinc.org#10884-5", PhosphateMassMassInStool }, 
+      { "10885-2", PorphyrinsMassTimeIn24HourUrine }, 
+      { "http://loinc.org#10885-2", PorphyrinsMassTimeIn24HourUrine }, 
+      { "10886-0", ProstateSpecificAgFreeMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10886-0", ProstateSpecificAgFreeMassVolumeInSerumOrPlasma }, 
+      { "10887-8", PyridinolineMassTimeIn24HourUrine }, 
+      { "http://loinc.org#10887-8", PyridinolineMassTimeIn24HourUrine }, 
+      { "10888-6", LipaseEnzymaticActivityVolumeInUrine }, 
+      { "http://loinc.org#10888-6", LipaseEnzymaticActivityVolumeInUrine }, 
+      { "10889-4", BisacodylMassMassInStool }, 
+      { "http://loinc.org#10889-4", BisacodylMassMassInStool }, 
+      { "1089-2", JsSupBAgPresenceOnRedBloodCellsFromDonor }, 
+      { "http://loinc.org#1089-2", JsSupBAgPresenceOnRedBloodCellsFromDonor }, 
+      { "10890-2", DeprecatedNormethsuximideMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10890-2", DeprecatedNormethsuximideMassVolumeInSerumOrPlasma }, 
+      { "10891-0", OxyphenisatinMassMassInStool }, 
+      { "http://loinc.org#10891-0", OxyphenisatinMassMassInStool }, 
+      { "10892-8", PentoxifyllineMassVolumeInSerumOrPlasma }, 
+      { "http://loinc.org#10892-8", PentoxifyllineMassVolumeInSerumOrPlasma }, 
+      { "10893-6", TrenboloneMassVolumeInUrine }, 
+      { "http://loinc.org#10893-6", TrenboloneMassVolumeInUrine }, 
+      { "10894-4", AspergillusNigerAbPresenceInSerumByImmuneDiffusionID }, 
+      { "http://loinc.org#10894-4", AspergillusNigerAbPresenceInSerumByImmuneDiffusionID }, 
+      { "10895-1", ClostridiumDifficileToxinBPresenceInStool }, 
+      { "http://loinc.org#10895-1", ClostridiumDifficileToxinBPresenceInStool }, 
+      { "10896-9", EasternEquineEncephalitisVirusIgGAbTiterInSerumByImmunofluorescence }, 
+      { "http://loinc.org#10896-9", EasternEquineEncephalitisVirusIgGAbTiterInSerumByImmunofluorescence }, 
+      { "10897-7", EasternEquineEncephalitisVirusIgGAbTiterInCerebralSpinalFluidByImmunofluorescence }, 
+      { "http://loinc.org#10897-7", EasternEquineEncephalitisVirusIgGAbTiterInCerebralSpinalFluidByImmunofluorescence }, 
+      { "10898-5", EasternEquineEncephalitisVirusIgMAbTiterInSerumByImmunofluorescence }, 
+      { "http://loinc.org#10898-5", EasternEquineEncephalitisVirusIgMAbTiterInSerumByImmunofluorescence }, 
+    };
   };
 }

@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProcessingComplete = "complete";
 
     /// <summary>
+    /// Literal for code: ClaimOutcomeProcessingComplete
+    /// </summary>
+    public const string LiteralClaimOutcomeProcessingComplete = "http://hl7.org/fhir/claim-outcome#complete";
+
+    /// <summary>
     /// Literal for code: Error
     /// </summary>
     public const string LiteralError = "error";
+
+    /// <summary>
+    /// Literal for code: ClaimOutcomeError
+    /// </summary>
+    public const string LiteralClaimOutcomeError = "http://hl7.org/fhir/claim-outcome#error";
 
     /// <summary>
     /// Literal for code: PartialProcessing
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPartialProcessing = "partial";
 
     /// <summary>
+    /// Literal for code: ClaimOutcomePartialProcessing
+    /// </summary>
+    public const string LiteralClaimOutcomePartialProcessing = "http://hl7.org/fhir/claim-outcome#partial";
+
+    /// <summary>
     /// Literal for code: Queued
     /// </summary>
     public const string LiteralQueued = "queued";
+
+    /// <summary>
+    /// Literal for code: ClaimOutcomeQueued
+    /// </summary>
+    public const string LiteralClaimOutcomeQueued = "http://hl7.org/fhir/claim-outcome#queued";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimOutcome Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", ProcessingComplete }, 
+      { "http://hl7.org/fhir/claim-outcome#complete", ProcessingComplete }, 
+      { "error", Error }, 
+      { "http://hl7.org/fhir/claim-outcome#error", Error }, 
+      { "partial", PartialProcessing }, 
+      { "http://hl7.org/fhir/claim-outcome#partial", PartialProcessing }, 
+      { "queued", Queued }, 
+      { "http://hl7.org/fhir/claim-outcome#queued", Queued }, 
+    };
   };
 }

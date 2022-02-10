@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralECARule = "eca-rule";
 
     /// <summary>
+    /// Literal for code: PlanDefinitionTypeECARule
+    /// </summary>
+    public const string LiteralPlanDefinitionTypeECARule = "http://hl7.org/fhir/plan-definition-type#eca-rule";
+
+    /// <summary>
     /// Literal for code: OrderSet
     /// </summary>
     public const string LiteralOrderSet = "order-set";
 
     /// <summary>
+    /// Literal for code: PlanDefinitionTypeOrderSet
+    /// </summary>
+    public const string LiteralPlanDefinitionTypeOrderSet = "http://hl7.org/fhir/plan-definition-type#order-set";
+
+    /// <summary>
     /// Literal for code: Protocol
     /// </summary>
     public const string LiteralProtocol = "protocol";
+
+    /// <summary>
+    /// Literal for code: PlanDefinitionTypeProtocol
+    /// </summary>
+    public const string LiteralPlanDefinitionTypeProtocol = "http://hl7.org/fhir/plan-definition-type#protocol";
+
+    /// <summary>
+    /// Dictionary for looking up PlanDefinitionType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "eca-rule", ECARule }, 
+      { "http://hl7.org/fhir/plan-definition-type#eca-rule", ECARule }, 
+      { "order-set", OrderSet }, 
+      { "http://hl7.org/fhir/plan-definition-type#order-set", OrderSet }, 
+      { "protocol", Protocol }, 
+      { "http://hl7.org/fhir/plan-definition-type#protocol", Protocol }, 
+    };
   };
 }

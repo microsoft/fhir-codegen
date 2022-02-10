@@ -45,13 +45,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: ConformanceResourceStatusActive
+    /// </summary>
+    public const string LiteralConformanceResourceStatusActive = "http://hl7.org/fhir/conformance-resource-status#active";
+
+    /// <summary>
     /// Literal for code: Draft
     /// </summary>
     public const string LiteralDraft = "draft";
 
     /// <summary>
+    /// Literal for code: ConformanceResourceStatusDraft
+    /// </summary>
+    public const string LiteralConformanceResourceStatusDraft = "http://hl7.org/fhir/conformance-resource-status#draft";
+
+    /// <summary>
     /// Literal for code: Retired
     /// </summary>
     public const string LiteralRetired = "retired";
+
+    /// <summary>
+    /// Literal for code: ConformanceResourceStatusRetired
+    /// </summary>
+    public const string LiteralConformanceResourceStatusRetired = "http://hl7.org/fhir/conformance-resource-status#retired";
+
+    /// <summary>
+    /// Dictionary for looking up ConformanceResourceStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/conformance-resource-status#active", Active }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/conformance-resource-status#draft", Draft }, 
+      { "retired", Retired }, 
+      { "http://hl7.org/fhir/conformance-resource-status#retired", Retired }, 
+    };
   };
 }

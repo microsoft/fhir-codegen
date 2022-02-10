@@ -72,9 +72,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMean = "mean";
 
     /// <summary>
+    /// Literal for code: GroupMeasureMean
+    /// </summary>
+    public const string LiteralGroupMeasureMean = "http://hl7.org/fhir/group-measure#mean";
+
+    /// <summary>
     /// Literal for code: MeanOfStudyMeans
     /// </summary>
     public const string LiteralMeanOfStudyMeans = "mean-of-mean";
+
+    /// <summary>
+    /// Literal for code: GroupMeasureMeanOfStudyMeans
+    /// </summary>
+    public const string LiteralGroupMeasureMeanOfStudyMeans = "http://hl7.org/fhir/group-measure#mean-of-mean";
 
     /// <summary>
     /// Literal for code: MeanOfStudyMedins
@@ -82,9 +92,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeanOfStudyMedins = "mean-of-median";
 
     /// <summary>
+    /// Literal for code: GroupMeasureMeanOfStudyMedins
+    /// </summary>
+    public const string LiteralGroupMeasureMeanOfStudyMedins = "http://hl7.org/fhir/group-measure#mean-of-median";
+
+    /// <summary>
     /// Literal for code: Median
     /// </summary>
     public const string LiteralMedian = "median";
+
+    /// <summary>
+    /// Literal for code: GroupMeasureMedian
+    /// </summary>
+    public const string LiteralGroupMeasureMedian = "http://hl7.org/fhir/group-measure#median";
 
     /// <summary>
     /// Literal for code: MedianOfStudyMeans
@@ -92,8 +112,36 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedianOfStudyMeans = "median-of-mean";
 
     /// <summary>
+    /// Literal for code: GroupMeasureMedianOfStudyMeans
+    /// </summary>
+    public const string LiteralGroupMeasureMedianOfStudyMeans = "http://hl7.org/fhir/group-measure#median-of-mean";
+
+    /// <summary>
     /// Literal for code: MedianOfStudyMedians
     /// </summary>
     public const string LiteralMedianOfStudyMedians = "median-of-median";
+
+    /// <summary>
+    /// Literal for code: GroupMeasureMedianOfStudyMedians
+    /// </summary>
+    public const string LiteralGroupMeasureMedianOfStudyMedians = "http://hl7.org/fhir/group-measure#median-of-median";
+
+    /// <summary>
+    /// Dictionary for looking up GroupMeasure Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "mean", Mean }, 
+      { "http://hl7.org/fhir/group-measure#mean", Mean }, 
+      { "mean-of-mean", MeanOfStudyMeans }, 
+      { "http://hl7.org/fhir/group-measure#mean-of-mean", MeanOfStudyMeans }, 
+      { "mean-of-median", MeanOfStudyMedins }, 
+      { "http://hl7.org/fhir/group-measure#mean-of-median", MeanOfStudyMedins }, 
+      { "median", Median }, 
+      { "http://hl7.org/fhir/group-measure#median", Median }, 
+      { "median-of-mean", MedianOfStudyMeans }, 
+      { "http://hl7.org/fhir/group-measure#median-of-mean", MedianOfStudyMeans }, 
+      { "median-of-median", MedianOfStudyMedians }, 
+      { "http://hl7.org/fhir/group-measure#median-of-median", MedianOfStudyMedians }, 
+    };
   };
 }

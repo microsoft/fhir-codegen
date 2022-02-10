@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChildAsthma = "as";
 
     /// <summary>
+    /// Literal for code: ExProgramCodeChildAsthma
+    /// </summary>
+    public const string LiteralExProgramCodeChildAsthma = "http://terminology.hl7.org/CodeSystem/ex-programcode#as";
+
+    /// <summary>
     /// Literal for code: AutismScreening
     /// </summary>
     public const string LiteralAutismScreening = "auscr";
+
+    /// <summary>
+    /// Literal for code: ExProgramCodeAutismScreening
+    /// </summary>
+    public const string LiteralExProgramCodeAutismScreening = "http://terminology.hl7.org/CodeSystem/ex-programcode#auscr";
 
     /// <summary>
     /// Literal for code: Hemodialysis
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHemodialysis = "hd";
 
     /// <summary>
+    /// Literal for code: ExProgramCodeHemodialysis
+    /// </summary>
+    public const string LiteralExProgramCodeHemodialysis = "http://terminology.hl7.org/CodeSystem/ex-programcode#hd";
+
+    /// <summary>
     /// Literal for code: None
     /// </summary>
     public const string LiteralNone = "none";
+
+    /// <summary>
+    /// Literal for code: ExProgramCodeNone
+    /// </summary>
+    public const string LiteralExProgramCodeNone = "http://terminology.hl7.org/CodeSystem/ex-programcode#none";
+
+    /// <summary>
+    /// Dictionary for looking up ExProgramCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "as", ChildAsthma }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-programcode#as", ChildAsthma }, 
+      { "auscr", AutismScreening }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-programcode#auscr", AutismScreening }, 
+      { "hd", Hemodialysis }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-programcode#hd", Hemodialysis }, 
+      { "none", None }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-programcode#none", None }, 
+    };
   };
 }

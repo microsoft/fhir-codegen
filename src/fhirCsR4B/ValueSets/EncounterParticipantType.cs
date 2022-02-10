@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class EncounterParticipantTypeCodes
   {
     /// <summary>
-    /// 
+    /// admitter
     /// </summary>
     public static readonly Coding Admitter = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// attender
     /// </summary>
     public static readonly Coding Attender = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// callback contact
     /// </summary>
     public static readonly Coding CallbackContact = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// consultant
     /// </summary>
     public static readonly Coding Consultant = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// discharger
     /// </summary>
     public static readonly Coding Discharger = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/participant-type"
     };
     /// <summary>
-    /// 
+    /// escort
     /// </summary>
     public static readonly Coding Escort = new Coding
     {
@@ -91,7 +91,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// referrer
     /// </summary>
     public static readonly Coding Referrer = new Coding
     {
@@ -123,9 +123,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdmitter = "ADM";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeAdmitter
+    /// </summary>
+    public const string LiteralV3ParticipationTypeAdmitter = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ADM";
+
+    /// <summary>
     /// Literal for code: Attender
     /// </summary>
     public const string LiteralAttender = "ATND";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeAttender
+    /// </summary>
+    public const string LiteralV3ParticipationTypeAttender = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ATND";
 
     /// <summary>
     /// Literal for code: CallbackContact
@@ -133,9 +143,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCallbackContact = "CALLBCK";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeCallbackContact
+    /// </summary>
+    public const string LiteralV3ParticipationTypeCallbackContact = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CALLBCK";
+
+    /// <summary>
     /// Literal for code: Consultant
     /// </summary>
     public const string LiteralConsultant = "CON";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeConsultant
+    /// </summary>
+    public const string LiteralV3ParticipationTypeConsultant = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CON";
 
     /// <summary>
     /// Literal for code: Discharger
@@ -143,9 +163,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDischarger = "DIS";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeDischarger
+    /// </summary>
+    public const string LiteralV3ParticipationTypeDischarger = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DIS";
+
+    /// <summary>
     /// Literal for code: Emergency
     /// </summary>
     public const string LiteralEmergency = "emergency";
+
+    /// <summary>
+    /// Literal for code: EncounterParticipantTypeEmergency
+    /// </summary>
+    public const string LiteralEncounterParticipantTypeEmergency = "http://terminology.hl7.org/CodeSystem/participant-type#emergency";
 
     /// <summary>
     /// Literal for code: Escort
@@ -153,9 +183,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEscort = "ESC";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeEscort
+    /// </summary>
+    public const string LiteralV3ParticipationTypeEscort = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ESC";
+
+    /// <summary>
     /// Literal for code: PART
     /// </summary>
     public const string LiteralPART = "PART";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypePART
+    /// </summary>
+    public const string LiteralV3ParticipationTypePART = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PART";
 
     /// <summary>
     /// Literal for code: PPRF
@@ -163,9 +203,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPPRF = "PPRF";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypePPRF
+    /// </summary>
+    public const string LiteralV3ParticipationTypePPRF = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PPRF";
+
+    /// <summary>
     /// Literal for code: Referrer
     /// </summary>
     public const string LiteralReferrer = "REF";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeReferrer
+    /// </summary>
+    public const string LiteralV3ParticipationTypeReferrer = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#REF";
 
     /// <summary>
     /// Literal for code: SPRF
@@ -173,8 +223,48 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSPRF = "SPRF";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeSPRF
+    /// </summary>
+    public const string LiteralV3ParticipationTypeSPRF = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF";
+
+    /// <summary>
     /// Literal for code: Translator
     /// </summary>
     public const string LiteralTranslator = "translator";
+
+    /// <summary>
+    /// Literal for code: EncounterParticipantTypeTranslator
+    /// </summary>
+    public const string LiteralEncounterParticipantTypeTranslator = "http://terminology.hl7.org/CodeSystem/participant-type#translator";
+
+    /// <summary>
+    /// Dictionary for looking up EncounterParticipantType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ADM", Admitter }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ADM", Admitter }, 
+      { "ATND", Attender }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ATND", Attender }, 
+      { "CALLBCK", CallbackContact }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CALLBCK", CallbackContact }, 
+      { "CON", Consultant }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CON", Consultant }, 
+      { "DIS", Discharger }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DIS", Discharger }, 
+      { "emergency", Emergency }, 
+      { "http://terminology.hl7.org/CodeSystem/participant-type#emergency", Emergency }, 
+      { "ESC", Escort }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ESC", Escort }, 
+      { "PART", PART }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PART", PART }, 
+      { "PPRF", PPRF }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PPRF", PPRF }, 
+      { "REF", Referrer }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#REF", Referrer }, 
+      { "SPRF", SPRF }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF", SPRF }, 
+      { "translator", Translator }, 
+      { "http://terminology.hl7.org/CodeSystem/participant-type#translator", Translator }, 
+    };
   };
 }

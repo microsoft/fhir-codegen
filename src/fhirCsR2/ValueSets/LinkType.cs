@@ -45,13 +45,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralRefer = "refer";
 
     /// <summary>
+    /// Literal for code: LinkTypeRefer
+    /// </summary>
+    public const string LiteralLinkTypeRefer = "http://hl7.org/fhir/link-type#refer";
+
+    /// <summary>
     /// Literal for code: Replace
     /// </summary>
     public const string LiteralReplace = "replace";
 
     /// <summary>
+    /// Literal for code: LinkTypeReplace
+    /// </summary>
+    public const string LiteralLinkTypeReplace = "http://hl7.org/fhir/link-type#replace";
+
+    /// <summary>
     /// Literal for code: SeeAlso
     /// </summary>
     public const string LiteralSeeAlso = "seealso";
+
+    /// <summary>
+    /// Literal for code: LinkTypeSeeAlso
+    /// </summary>
+    public const string LiteralLinkTypeSeeAlso = "http://hl7.org/fhir/link-type#seealso";
+
+    /// <summary>
+    /// Dictionary for looking up LinkType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "refer", Refer }, 
+      { "http://hl7.org/fhir/link-type#refer", Refer }, 
+      { "replace", Replace }, 
+      { "http://hl7.org/fhir/link-type#replace", Replace }, 
+      { "seealso", SeeAlso }, 
+      { "http://hl7.org/fhir/link-type#seealso", SeeAlso }, 
+    };
   };
 }

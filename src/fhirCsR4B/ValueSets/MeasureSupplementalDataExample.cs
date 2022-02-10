@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAge = "age";
 
     /// <summary>
+    /// Literal for code: MeasureSupplementalDataExampleAge
+    /// </summary>
+    public const string LiteralMeasureSupplementalDataExampleAge = "http://terminology.hl7.org/CodeSystem/measure-supplemental-data-example#age";
+
+    /// <summary>
     /// Literal for code: Ethnicity
     /// </summary>
     public const string LiteralEthnicity = "ethnicity";
+
+    /// <summary>
+    /// Literal for code: MeasureSupplementalDataExampleEthnicity
+    /// </summary>
+    public const string LiteralMeasureSupplementalDataExampleEthnicity = "http://terminology.hl7.org/CodeSystem/measure-supplemental-data-example#ethnicity";
 
     /// <summary>
     /// Literal for code: Gender
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGender = "gender";
 
     /// <summary>
+    /// Literal for code: MeasureSupplementalDataExampleGender
+    /// </summary>
+    public const string LiteralMeasureSupplementalDataExampleGender = "http://terminology.hl7.org/CodeSystem/measure-supplemental-data-example#gender";
+
+    /// <summary>
     /// Literal for code: Payer
     /// </summary>
     public const string LiteralPayer = "payer";
+
+    /// <summary>
+    /// Literal for code: MeasureSupplementalDataExamplePayer
+    /// </summary>
+    public const string LiteralMeasureSupplementalDataExamplePayer = "http://terminology.hl7.org/CodeSystem/measure-supplemental-data-example#payer";
+
+    /// <summary>
+    /// Dictionary for looking up MeasureSupplementalDataExample Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "age", Age }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-supplemental-data-example#age", Age }, 
+      { "ethnicity", Ethnicity }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-supplemental-data-example#ethnicity", Ethnicity }, 
+      { "gender", Gender }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-supplemental-data-example#gender", Gender }, 
+      { "payer", Payer }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-supplemental-data-example#payer", Payer }, 
+    };
   };
 }

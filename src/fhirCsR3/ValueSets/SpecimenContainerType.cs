@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class SpecimenContainerTypeCodes
   {
     /// <summary>
-    /// 
+    /// Specimen vial
     /// </summary>
     public static readonly Coding SpecimenVial = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specimen well
     /// </summary>
     public static readonly Coding SpecimenWell = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breath specimen container
     /// </summary>
     public static readonly Coding BreathSpecimenContainer = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpecimenVial = "434746001";
 
     /// <summary>
+    /// Literal for code: NONESpecimenVial
+    /// </summary>
+    public const string LiteralNONESpecimenVial = "http://snomed.info/sct#434746001";
+
+    /// <summary>
     /// Literal for code: SpecimenWell
     /// </summary>
     public const string LiteralSpecimenWell = "434822004";
 
     /// <summary>
+    /// Literal for code: NONESpecimenWell
+    /// </summary>
+    public const string LiteralNONESpecimenWell = "http://snomed.info/sct#434822004";
+
+    /// <summary>
     /// Literal for code: BreathSpecimenContainer
     /// </summary>
     public const string LiteralBreathSpecimenContainer = "713791004";
+
+    /// <summary>
+    /// Literal for code: NONEBreathSpecimenContainer
+    /// </summary>
+    public const string LiteralNONEBreathSpecimenContainer = "http://snomed.info/sct#713791004";
+
+    /// <summary>
+    /// Dictionary for looking up SpecimenContainerType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "434746001", SpecimenVial }, 
+      { "http://snomed.info/sct#434746001", SpecimenVial }, 
+      { "434822004", SpecimenWell }, 
+      { "http://snomed.info/sct#434822004", SpecimenWell }, 
+      { "713791004", BreathSpecimenContainer }, 
+      { "http://snomed.info/sct#713791004", BreathSpecimenContainer }, 
+    };
   };
 }

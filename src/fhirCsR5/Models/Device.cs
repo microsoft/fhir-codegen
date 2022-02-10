@@ -237,6 +237,15 @@ namespace fhirCsR5.Models
     public const string SELF_REPORTED = "self-reported";
     public const string ELECTRONIC_TRANSMISSION = "electronic-transmission";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "barcode",
+      "rfid",
+      "manual",
+      "card",
+      "self-reported",
+      "electronic-transmission",
+      "unknown",
+    };
   }
   /// <summary>
   /// This represents the manufacturer's name of the device as provided by the device, from a UDI label, or by a person describing the Device.  This typically would be used when a person provides the name(s) or when the device represents one of the names available from DeviceDefinition.
@@ -361,6 +370,11 @@ namespace fhirCsR5.Models
     public const string REGISTERED_NAME = "registered-name";
     public const string USER_FRIENDLY_NAME = "user-friendly-name";
     public const string PATIENT_REPORTED_NAME = "patient-reported-name";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "registered-name",
+      "user-friendly-name",
+      "patient-reported-name",
+    };
   }
   /// <summary>
   /// The actual design of the device or software version running on the device.
@@ -509,9 +523,17 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// The string is used for properties that are intrinsically text, such as warning text, or assemlby instructions. CodeableConcept.text also supports unencoded text but should be used where the characteristic is a concept that might be coded but there is no assigned code for the present value. For example, a security class can be a code like 'Class 1' but in some cases may contain a string like 'Depending on the settings' - in this case the property is normally coded but this is an exception
     /// </summary>
     public int? ValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
     /// <summary>
     /// The string is used for properties that are intrinsically text, such as warning text, or assemlby instructions. CodeableConcept.text also supports unencoded text but should be used where the characteristic is a concept that might be coded but there is no assigned code for the present value. For example, a security class can be a code like 'Class 1' but in some cases may contain a string like 'Depending on the settings' - in this case the property is normally coded but this is an exception
     /// </summary>
@@ -565,9 +587,21 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (ValueRange != null)
@@ -622,8 +656,18 @@ namespace fhirCsR5.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR5.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR5.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueRange":
@@ -1996,5 +2040,10 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string INACTIVE = "inactive";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "inactive",
+      "entered-in-error",
+    };
   }
 }

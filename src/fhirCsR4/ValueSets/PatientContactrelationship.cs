@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class PatientContactrelationshipCodes
   {
     /// <summary>
-    /// 
+    /// Emergency Contact
     /// </summary>
     public static readonly Coding EmergencyContact = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0131"
     };
     /// <summary>
-    /// 
+    /// Employer
     /// </summary>
     public static readonly Coding Employer = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0131"
     };
     /// <summary>
-    /// 
+    /// Federal Agency
     /// </summary>
     public static readonly Coding FederalAgency = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0131"
     };
     /// <summary>
-    /// 
+    /// Insurance Company
     /// </summary>
     public static readonly Coding InsuranceCompany = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0131"
     };
     /// <summary>
-    /// 
+    /// Next-of-Kin
     /// </summary>
     public static readonly Coding NextOfKin = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0131"
     };
     /// <summary>
-    /// 
+    /// State Agency
     /// </summary>
     public static readonly Coding StateAgency = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0131"
     };
     /// <summary>
-    /// 
+    /// Unknown
     /// </summary>
     public static readonly Coding Unknown = new Coding
     {
@@ -81,9 +81,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmergencyContact = "C";
 
     /// <summary>
+    /// Literal for code: V20131EmergencyContact
+    /// </summary>
+    public const string LiteralV20131EmergencyContact = "http://terminology.hl7.org/CodeSystem/v2-0131#C";
+
+    /// <summary>
     /// Literal for code: Employer
     /// </summary>
     public const string LiteralEmployer = "E";
+
+    /// <summary>
+    /// Literal for code: V20131Employer
+    /// </summary>
+    public const string LiteralV20131Employer = "http://terminology.hl7.org/CodeSystem/v2-0131#E";
 
     /// <summary>
     /// Literal for code: FederalAgency
@@ -91,9 +101,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFederalAgency = "F";
 
     /// <summary>
+    /// Literal for code: V20131FederalAgency
+    /// </summary>
+    public const string LiteralV20131FederalAgency = "http://terminology.hl7.org/CodeSystem/v2-0131#F";
+
+    /// <summary>
     /// Literal for code: InsuranceCompany
     /// </summary>
     public const string LiteralInsuranceCompany = "I";
+
+    /// <summary>
+    /// Literal for code: V20131InsuranceCompany
+    /// </summary>
+    public const string LiteralV20131InsuranceCompany = "http://terminology.hl7.org/CodeSystem/v2-0131#I";
 
     /// <summary>
     /// Literal for code: NextOfKin
@@ -101,13 +121,48 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNextOfKin = "N";
 
     /// <summary>
+    /// Literal for code: V20131NextOfKin
+    /// </summary>
+    public const string LiteralV20131NextOfKin = "http://terminology.hl7.org/CodeSystem/v2-0131#N";
+
+    /// <summary>
     /// Literal for code: StateAgency
     /// </summary>
     public const string LiteralStateAgency = "S";
 
     /// <summary>
+    /// Literal for code: V20131StateAgency
+    /// </summary>
+    public const string LiteralV20131StateAgency = "http://terminology.hl7.org/CodeSystem/v2-0131#S";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "U";
+
+    /// <summary>
+    /// Literal for code: V20131Unknown
+    /// </summary>
+    public const string LiteralV20131Unknown = "http://terminology.hl7.org/CodeSystem/v2-0131#U";
+
+    /// <summary>
+    /// Dictionary for looking up PatientContactrelationship Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "C", EmergencyContact }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0131#C", EmergencyContact }, 
+      { "E", Employer }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0131#E", Employer }, 
+      { "F", FederalAgency }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0131#F", FederalAgency }, 
+      { "I", InsuranceCompany }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0131#I", InsuranceCompany }, 
+      { "N", NextOfKin }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0131#N", NextOfKin }, 
+      { "S", StateAgency }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0131#S", StateAgency }, 
+      { "U", Unknown }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0131#U", Unknown }, 
+    };
   };
 }

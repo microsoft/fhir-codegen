@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralError_issue_severity = "error";
 
     /// <summary>
+    /// Literal for code: IssueSeverityError_issue_severity
+    /// </summary>
+    public const string LiteralIssueSeverityError_issue_severity = "http://hl7.org/fhir/issue-severity#error";
+
+    /// <summary>
     /// Literal for code: Fatal_issue_severity
     /// </summary>
     public const string LiteralFatal_issue_severity = "fatal";
+
+    /// <summary>
+    /// Literal for code: IssueSeverityFatal_issue_severity
+    /// </summary>
+    public const string LiteralIssueSeverityFatal_issue_severity = "http://hl7.org/fhir/issue-severity#fatal";
 
     /// <summary>
     /// Literal for code: Information_issue_severity
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInformation_issue_severity = "information";
 
     /// <summary>
+    /// Literal for code: IssueSeverityInformation_issue_severity
+    /// </summary>
+    public const string LiteralIssueSeverityInformation_issue_severity = "http://hl7.org/fhir/issue-severity#information";
+
+    /// <summary>
     /// Literal for code: Success_audit_event_outcome
     /// </summary>
     public const string LiteralSuccess_audit_event_outcome = "success";
 
     /// <summary>
+    /// Literal for code: AuditEventOutcomeSuccess_audit_event_outcome
+    /// </summary>
+    public const string LiteralAuditEventOutcomeSuccess_audit_event_outcome = "http://terminology.hl7.org/CodeSystem/audit-event-outcome#success";
+
+    /// <summary>
     /// Literal for code: Warning_issue_severity
     /// </summary>
     public const string LiteralWarning_issue_severity = "warning";
+
+    /// <summary>
+    /// Literal for code: IssueSeverityWarning_issue_severity
+    /// </summary>
+    public const string LiteralIssueSeverityWarning_issue_severity = "http://hl7.org/fhir/issue-severity#warning";
+
+    /// <summary>
+    /// Dictionary for looking up AuditEventOutcome Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "error", Error_issue_severity }, 
+      { "http://hl7.org/fhir/issue-severity#error", Error_issue_severity }, 
+      { "fatal", Fatal_issue_severity }, 
+      { "http://hl7.org/fhir/issue-severity#fatal", Fatal_issue_severity }, 
+      { "information", Information_issue_severity }, 
+      { "http://hl7.org/fhir/issue-severity#information", Information_issue_severity }, 
+      { "success", Success_audit_event_outcome }, 
+      { "http://terminology.hl7.org/CodeSystem/audit-event-outcome#success", Success_audit_event_outcome }, 
+      { "warning", Warning_issue_severity }, 
+      { "http://hl7.org/fhir/issue-severity#warning", Warning_issue_severity }, 
+    };
   };
 }

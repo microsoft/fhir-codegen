@@ -704,6 +704,14 @@ namespace fhirCsR3.Models
     public const string INTENDED = "intended";
     public const string STOPPED = "stopped";
     public const string ON_HOLD = "on-hold";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "completed",
+      "entered-in-error",
+      "intended",
+      "stopped",
+      "on-hold",
+    };
   }
   /// <summary>
   /// Code Values for the MedicationStatement.taken field
@@ -713,5 +721,11 @@ namespace fhirCsR3.Models
     public const string N = "n";
     public const string UNK = "unk";
     public const string NA = "na";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "y",
+      "n",
+      "unk",
+      "na",
+    };
   }
 }

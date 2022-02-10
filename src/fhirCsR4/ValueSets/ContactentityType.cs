@@ -72,9 +72,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdministrative = "ADMIN";
 
     /// <summary>
+    /// Literal for code: ContactentityTypeAdministrative
+    /// </summary>
+    public const string LiteralContactentityTypeAdministrative = "http://terminology.hl7.org/CodeSystem/contactentity-type#ADMIN";
+
+    /// <summary>
     /// Literal for code: Billing
     /// </summary>
     public const string LiteralBilling = "BILL";
+
+    /// <summary>
+    /// Literal for code: ContactentityTypeBilling
+    /// </summary>
+    public const string LiteralContactentityTypeBilling = "http://terminology.hl7.org/CodeSystem/contactentity-type#BILL";
 
     /// <summary>
     /// Literal for code: HumanResource
@@ -82,9 +92,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHumanResource = "HR";
 
     /// <summary>
+    /// Literal for code: ContactentityTypeHumanResource
+    /// </summary>
+    public const string LiteralContactentityTypeHumanResource = "http://terminology.hl7.org/CodeSystem/contactentity-type#HR";
+
+    /// <summary>
     /// Literal for code: Patient
     /// </summary>
     public const string LiteralPatient = "PATINF";
+
+    /// <summary>
+    /// Literal for code: ContactentityTypePatient
+    /// </summary>
+    public const string LiteralContactentityTypePatient = "http://terminology.hl7.org/CodeSystem/contactentity-type#PATINF";
 
     /// <summary>
     /// Literal for code: Payor
@@ -92,8 +112,36 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPayor = "PAYOR";
 
     /// <summary>
+    /// Literal for code: ContactentityTypePayor
+    /// </summary>
+    public const string LiteralContactentityTypePayor = "http://terminology.hl7.org/CodeSystem/contactentity-type#PAYOR";
+
+    /// <summary>
     /// Literal for code: Press
     /// </summary>
     public const string LiteralPress = "PRESS";
+
+    /// <summary>
+    /// Literal for code: ContactentityTypePress
+    /// </summary>
+    public const string LiteralContactentityTypePress = "http://terminology.hl7.org/CodeSystem/contactentity-type#PRESS";
+
+    /// <summary>
+    /// Dictionary for looking up ContactentityType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ADMIN", Administrative }, 
+      { "http://terminology.hl7.org/CodeSystem/contactentity-type#ADMIN", Administrative }, 
+      { "BILL", Billing }, 
+      { "http://terminology.hl7.org/CodeSystem/contactentity-type#BILL", Billing }, 
+      { "HR", HumanResource }, 
+      { "http://terminology.hl7.org/CodeSystem/contactentity-type#HR", HumanResource }, 
+      { "PATINF", Patient }, 
+      { "http://terminology.hl7.org/CodeSystem/contactentity-type#PATINF", Patient }, 
+      { "PAYOR", Payor }, 
+      { "http://terminology.hl7.org/CodeSystem/contactentity-type#PAYOR", Payor }, 
+      { "PRESS", Press }, 
+      { "http://terminology.hl7.org/CodeSystem/contactentity-type#PRESS", Press }, 
+    };
   };
 }

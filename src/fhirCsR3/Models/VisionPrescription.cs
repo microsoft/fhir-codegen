@@ -28,6 +28,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public int? Axis { get; set; }
     /// <summary>
+    /// Extension container element for Axis
+    /// </summary>
+    public Element _Axis { get; set; }
+    /// <summary>
     /// Back curvature measured in millimeters.
     /// </summary>
     public decimal? BackCurve { get; set; }
@@ -174,6 +178,12 @@ namespace fhirCsR3.Models
         writer.WriteNumber("axis", (int)Axis!);
       }
 
+      if (_Axis != null)
+      {
+        writer.WritePropertyName("_axis");
+        _Axis.SerializeJson(writer, options);
+      }
+
       if (Prism != null)
       {
         writer.WriteNumber("prism", (decimal)Prism!);
@@ -304,6 +314,11 @@ namespace fhirCsR3.Models
 
         case "axis":
           Axis = reader.GetInt32();
+          break;
+
+        case "_axis":
+          _Axis = new fhirCsR3.Models.Element();
+          _Axis.DeserializeJson(ref reader, options);
           break;
 
         case "backCurve":
@@ -472,6 +487,12 @@ namespace fhirCsR3.Models
     public const string DOWN = "down";
     public const string VAL_IN = "in";
     public const string VAL_OUT = "out";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "up",
+      "down",
+      "in",
+      "out",
+    };
   }
   /// <summary>
   /// Code Values for the VisionPrescription.dispense.eye field
@@ -479,6 +500,10 @@ namespace fhirCsR3.Models
   public static class VisionPrescriptionDispenseEyeCodes {
     public const string RIGHT = "right";
     public const string LEFT = "left";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "right",
+      "left",
+    };
   }
   /// <summary>
   /// An authorization for the supply of glasses and/or contact lenses to a patient.
@@ -776,5 +801,11 @@ namespace fhirCsR3.Models
     public const string CANCELLED = "cancelled";
     public const string DRAFT = "draft";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "cancelled",
+      "draft",
+      "entered-in-error",
+    };
   }
 }

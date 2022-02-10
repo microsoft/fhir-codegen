@@ -110,6 +110,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? OnHold { get; set; }
     /// <summary>
+    /// Extension container element for OnHold
+    /// </summary>
+    public Element _OnHold { get; set; }
+    /// <summary>
     /// The entity who is responsible.
     /// </summary>
     public Reference Party { get; set; }
@@ -139,6 +143,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("onHold", (bool)OnHold!);
       }
 
+      if (_OnHold != null)
+      {
+        writer.WritePropertyName("_onHold");
+        _OnHold.SerializeJson(writer, options);
+      }
+
       if (Period != null)
       {
         writer.WritePropertyName("period");
@@ -159,6 +169,11 @@ namespace fhirCsR4B.Models
       {
         case "onHold":
           OnHold = reader.GetBoolean();
+          break;
+
+        case "_onHold":
+          _OnHold = new fhirCsR4B.Models.Element();
+          _OnHold.DeserializeJson(ref reader, options);
           break;
 
         case "party":
@@ -602,5 +617,12 @@ namespace fhirCsR4B.Models
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string ON_HOLD = "on-hold";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "inactive",
+      "entered-in-error",
+      "on-hold",
+      "unknown",
+    };
   }
 }

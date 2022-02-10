@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMedicalHealthCoverage = "medical";
 
     /// <summary>
+    /// Literal for code: BenefitCategoryMedicalHealthCoverage
+    /// </summary>
+    public const string LiteralBenefitCategoryMedicalHealthCoverage = "http://hl7.org/fhir/benefit-category#medical";
+
+    /// <summary>
     /// Literal for code: DentalAndOralHealthCoverage
     /// </summary>
     public const string LiteralDentalAndOralHealthCoverage = "oral";
+
+    /// <summary>
+    /// Literal for code: BenefitCategoryDentalAndOralHealthCoverage
+    /// </summary>
+    public const string LiteralBenefitCategoryDentalAndOralHealthCoverage = "http://hl7.org/fhir/benefit-category#oral";
 
     /// <summary>
     /// Literal for code: PharmacyCoverage
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPharmacyCoverage = "pharmacy";
 
     /// <summary>
+    /// Literal for code: BenefitCategoryPharmacyCoverage
+    /// </summary>
+    public const string LiteralBenefitCategoryPharmacyCoverage = "http://hl7.org/fhir/benefit-category#pharmacy";
+
+    /// <summary>
     /// Literal for code: VisionHealthCoverage
     /// </summary>
     public const string LiteralVisionHealthCoverage = "vision";
+
+    /// <summary>
+    /// Literal for code: BenefitCategoryVisionHealthCoverage
+    /// </summary>
+    public const string LiteralBenefitCategoryVisionHealthCoverage = "http://hl7.org/fhir/benefit-category#vision";
+
+    /// <summary>
+    /// Dictionary for looking up BenefitCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "medical", MedicalHealthCoverage }, 
+      { "http://hl7.org/fhir/benefit-category#medical", MedicalHealthCoverage }, 
+      { "oral", DentalAndOralHealthCoverage }, 
+      { "http://hl7.org/fhir/benefit-category#oral", DentalAndOralHealthCoverage }, 
+      { "pharmacy", PharmacyCoverage }, 
+      { "http://hl7.org/fhir/benefit-category#pharmacy", PharmacyCoverage }, 
+      { "vision", VisionHealthCoverage }, 
+      { "http://hl7.org/fhir/benefit-category#vision", VisionHealthCoverage }, 
+    };
   };
 }

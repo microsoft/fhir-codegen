@@ -162,9 +162,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL105480006 = "105480006";
 
     /// <summary>
+    /// Literal for code: NONEVAL105480006
+    /// </summary>
+    public const string LiteralNONEVAL105480006 = "http://snomed.info/sct#105480006";
+
+    /// <summary>
     /// Literal for code: VAL281323002
     /// </summary>
     public const string LiteralVAL281323002 = "281323002";
+
+    /// <summary>
+    /// Literal for code: NONEVAL281323002
+    /// </summary>
+    public const string LiteralNONEVAL281323002 = "http://snomed.info/sct#281323002";
 
     /// <summary>
     /// Literal for code: VAL310376006
@@ -172,9 +182,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL310376006 = "310376006";
 
     /// <summary>
+    /// Literal for code: NONEVAL310376006
+    /// </summary>
+    public const string LiteralNONEVAL310376006 = "http://snomed.info/sct#310376006";
+
+    /// <summary>
     /// Literal for code: VAL397709008
     /// </summary>
     public const string LiteralVAL397709008 = "397709008";
+
+    /// <summary>
+    /// Literal for code: NONEVAL397709008
+    /// </summary>
+    public const string LiteralNONEVAL397709008 = "http://snomed.info/sct#397709008";
 
     /// <summary>
     /// Literal for code: VAL398227009
@@ -182,9 +202,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL398227009 = "398227009";
 
     /// <summary>
+    /// Literal for code: NONEVAL398227009
+    /// </summary>
+    public const string LiteralNONEVAL398227009 = "http://snomed.info/sct#398227009";
+
+    /// <summary>
     /// Literal for code: VAL414859005
     /// </summary>
     public const string LiteralVAL414859005 = "414859005";
+
+    /// <summary>
+    /// Literal for code: NONEVAL414859005
+    /// </summary>
+    public const string LiteralNONEVAL414859005 = "http://snomed.info/sct#414859005";
 
     /// <summary>
     /// Literal for code: VAL416308001
@@ -192,9 +222,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL416308001 = "416308001";
 
     /// <summary>
+    /// Literal for code: NONEVAL416308001
+    /// </summary>
+    public const string LiteralNONEVAL416308001 = "http://snomed.info/sct#416308001";
+
+    /// <summary>
     /// Literal for code: VAL416409005
     /// </summary>
     public const string LiteralVAL416409005 = "416409005";
+
+    /// <summary>
+    /// Literal for code: NONEVAL416409005
+    /// </summary>
+    public const string LiteralNONEVAL416409005 = "http://snomed.info/sct#416409005";
 
     /// <summary>
     /// Literal for code: VAL445060000
@@ -202,9 +242,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL445060000 = "445060000";
 
     /// <summary>
+    /// Literal for code: NONEVAL445060000
+    /// </summary>
+    public const string LiteralNONEVAL445060000 = "http://snomed.info/sct#445060000";
+
+    /// <summary>
     /// Literal for code: VAL704273008
     /// </summary>
     public const string LiteralVAL704273008 = "704273008";
+
+    /// <summary>
+    /// Literal for code: NONEVAL704273008
+    /// </summary>
+    public const string LiteralNONEVAL704273008 = "http://snomed.info/sct#704273008";
 
     /// <summary>
     /// Literal for code: VAL704274002
@@ -212,9 +262,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL704274002 = "704274002";
 
     /// <summary>
+    /// Literal for code: NONEVAL704274002
+    /// </summary>
+    public const string LiteralNONEVAL704274002 = "http://snomed.info/sct#704274002";
+
+    /// <summary>
     /// Literal for code: VAL704275001
     /// </summary>
     public const string LiteralVAL704275001 = "704275001";
+
+    /// <summary>
+    /// Literal for code: NONEVAL704275001
+    /// </summary>
+    public const string LiteralNONEVAL704275001 = "http://snomed.info/sct#704275001";
 
     /// <summary>
     /// Literal for code: VAL704276000
@@ -222,9 +282,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL704276000 = "704276000";
 
     /// <summary>
+    /// Literal for code: NONEVAL704276000
+    /// </summary>
+    public const string LiteralNONEVAL704276000 = "http://snomed.info/sct#704276000";
+
+    /// <summary>
     /// Literal for code: VAL704277009
     /// </summary>
     public const string LiteralVAL704277009 = "704277009";
+
+    /// <summary>
+    /// Literal for code: NONEVAL704277009
+    /// </summary>
+    public const string LiteralNONEVAL704277009 = "http://snomed.info/sct#704277009";
 
     /// <summary>
     /// Literal for code: VAL704458005
@@ -232,9 +302,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL704458005 = "704458005";
 
     /// <summary>
+    /// Literal for code: NONEVAL704458005
+    /// </summary>
+    public const string LiteralNONEVAL704458005 = "http://snomed.info/sct#704458005";
+
+    /// <summary>
     /// Literal for code: VAL713835001
     /// </summary>
     public const string LiteralVAL713835001 = "713835001";
+
+    /// <summary>
+    /// Literal for code: NONEVAL713835001
+    /// </summary>
+    public const string LiteralNONEVAL713835001 = "http://snomed.info/sct#713835001";
 
     /// <summary>
     /// Literal for code: VAL719500002
@@ -242,8 +322,60 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL719500002 = "719500002";
 
     /// <summary>
+    /// Literal for code: NONEVAL719500002
+    /// </summary>
+    public const string LiteralNONEVAL719500002 = "http://snomed.info/sct#719500002";
+
+    /// <summary>
     /// Literal for code: VAL737038009
     /// </summary>
     public const string LiteralVAL737038009 = "737038009";
+
+    /// <summary>
+    /// Literal for code: NONEVAL737038009
+    /// </summary>
+    public const string LiteralNONEVAL737038009 = "http://snomed.info/sct#737038009";
+
+    /// <summary>
+    /// Dictionary for looking up CommunicationRequestStatusReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "105480006", VAL105480006 }, 
+      { "http://snomed.info/sct#105480006", VAL105480006 }, 
+      { "281323002", VAL281323002 }, 
+      { "http://snomed.info/sct#281323002", VAL281323002 }, 
+      { "310376006", VAL310376006 }, 
+      { "http://snomed.info/sct#310376006", VAL310376006 }, 
+      { "397709008", VAL397709008 }, 
+      { "http://snomed.info/sct#397709008", VAL397709008 }, 
+      { "398227009", VAL398227009 }, 
+      { "http://snomed.info/sct#398227009", VAL398227009 }, 
+      { "414859005", VAL414859005 }, 
+      { "http://snomed.info/sct#414859005", VAL414859005 }, 
+      { "416308001", VAL416308001 }, 
+      { "http://snomed.info/sct#416308001", VAL416308001 }, 
+      { "416409005", VAL416409005 }, 
+      { "http://snomed.info/sct#416409005", VAL416409005 }, 
+      { "445060000", VAL445060000 }, 
+      { "http://snomed.info/sct#445060000", VAL445060000 }, 
+      { "704273008", VAL704273008 }, 
+      { "http://snomed.info/sct#704273008", VAL704273008 }, 
+      { "704274002", VAL704274002 }, 
+      { "http://snomed.info/sct#704274002", VAL704274002 }, 
+      { "704275001", VAL704275001 }, 
+      { "http://snomed.info/sct#704275001", VAL704275001 }, 
+      { "704276000", VAL704276000 }, 
+      { "http://snomed.info/sct#704276000", VAL704276000 }, 
+      { "704277009", VAL704277009 }, 
+      { "http://snomed.info/sct#704277009", VAL704277009 }, 
+      { "704458005", VAL704458005 }, 
+      { "http://snomed.info/sct#704458005", VAL704458005 }, 
+      { "713835001", VAL713835001 }, 
+      { "http://snomed.info/sct#713835001", VAL713835001 }, 
+      { "719500002", VAL719500002 }, 
+      { "http://snomed.info/sct#719500002", VAL719500002 }, 
+      { "737038009", VAL737038009 }, 
+      { "http://snomed.info/sct#737038009", VAL737038009 }, 
+    };
   };
 }

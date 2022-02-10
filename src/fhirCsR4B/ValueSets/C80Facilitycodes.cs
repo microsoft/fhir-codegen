@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class C80FacilitycodesCodes
   {
     /// <summary>
-    /// 
+    /// Hospital outpatient dental clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientDentalClinic = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free-standing ambulatory surgery facility
     /// </summary>
     public static readonly Coding FreeStandingAmbulatorySurgeryFacility = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ambulance-based care
     /// </summary>
     public static readonly Coding AmbulanceBasedCare = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient mental health center
     /// </summary>
     public static readonly Coding HospitalOutpatientMentalHealthCenter = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free-standing radiology facility
     /// </summary>
     public static readonly Coding FreeStandingRadiologyFacility = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient geriatric health center
     /// </summary>
     public static readonly Coding HospitalOutpatientGeriatricHealthCenter = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fee-for-service private physicians' group office
     /// </summary>
     public static readonly Coding FeeForServicePrivatePhysiciansQuoteGroupOffice = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Substance abuse treatment center
     /// </summary>
     public static readonly Coding SubstanceAbuseTreatmentCenter = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital ship
     /// </summary>
     public static readonly Coding HospitalShip = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital-prison
     /// </summary>
     public static readonly Coding HospitalPrison = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient gynecology clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientGynecologyClinic = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital-community
     /// </summary>
     public static readonly Coding HospitalCommunity = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient otorhinolaryngology clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientOtorhinolaryngologyClinic = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sexually transmitted disease health center
     /// </summary>
     public static readonly Coding SexuallyTransmittedDiseaseHealthCenter = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sports facility
     /// </summary>
     public static readonly Coding SportsFacility = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elderly assessment clinic
     /// </summary>
     public static readonly Coding ElderlyAssessmentClinic = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospice facility
     /// </summary>
     public static readonly Coding HospiceFacility = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient infectious disease clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientInfectiousDiseaseClinic = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychogeriatric day hospital
     /// </summary>
     public static readonly Coding PsychogeriatricDayHospital = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Care of the elderly day hospital
     /// </summary>
     public static readonly Coding CareOfTheElderlyDayHospital = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private residential home
     /// </summary>
     public static readonly Coding PrivateResidentialHome = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient family medicine clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientFamilyMedicineClinic = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital-long term care
     /// </summary>
     public static readonly Coding HospitalLongTermCare = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital-based outpatient clinic or department--OTHER-NOT LISTED
     /// </summary>
     public static readonly Coding HospitalBasedOutpatientClinicOrDepartmentOTHERNOTLISTED = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient rheumatology clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientRheumatologyClinic = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ambulatory care site--OTHER--NOT LISTED
     /// </summary>
     public static readonly Coding AmbulatoryCareSiteOTHERNOTLISTED = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient allergy clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientAllergyClinic = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient immunology clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientImmunologyClinic = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital-trauma center
     /// </summary>
     public static readonly Coding HospitalTraumaCenter = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient pain clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientPainClinic = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient pediatric clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientPediatricClinic = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient rehabilitation clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientRehabilitationClinic = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient dermatology clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientDermatologyClinic = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient neurology clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientNeurologyClinic = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private physicians' group office
     /// </summary>
     public static readonly Coding PrivatePhysiciansQuoteGroupOffice = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Independent ambulatory care provider site--OTHER--NOT LISTED
     /// </summary>
     public static readonly Coding IndependentAmbulatoryCareProviderSiteOTHERNOTLISTED = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health encounter site--NOT LISTED
     /// </summary>
     public static readonly Coding HealthEncounterSiteNOTLISTED = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Residential school infirmary
     /// </summary>
     public static readonly Coding ResidentialSchoolInfirmary = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ambulatory surgery center
     /// </summary>
     public static readonly Coding AmbulatorySurgeryCenter = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contained casualty setting
     /// </summary>
     public static readonly Coding ContainedCasualtySetting = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult day care center
     /// </summary>
     public static readonly Coding AdultDayCareCenter = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child day care center
     /// </summary>
     public static readonly Coding ChildDayCareCenter = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free-standing geriatric health center
     /// </summary>
     public static readonly Coding FreeStandingGeriatricHealthCenter = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dialysis unit--hospital
     /// </summary>
     public static readonly Coding DialysisUnitHospital = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Residential institution
     /// </summary>
     public static readonly Coding ResidentialInstitution = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nursing home
     /// </summary>
     public static readonly Coding NursingHome = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital-military field
     /// </summary>
     public static readonly Coding HospitalMilitaryField = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skilled nursing facility
     /// </summary>
     public static readonly Coding SkilledNursingFacility = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free-standing laboratory facility
     /// </summary>
     public static readonly Coding FreeStandingLaboratoryFacility = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaccination clinic
     /// </summary>
     public static readonly Coding VaccinationClinic = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital-Veterans' Administration
     /// </summary>
     public static readonly Coding HospitalVeteransQuoteAdministration = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient urology clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientUrologyClinic = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free-standing mental health center
     /// </summary>
     public static readonly Coding FreeStandingMentalHealthCenter = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital birthing center
     /// </summary>
     public static readonly Coding HospitalBirthingCenter = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient peripheral vascular clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientPeripheralVascularClinic = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient obstetrical clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientObstetricalClinic = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient hematology clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientHematologyClinic = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient respiratory disease clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientRespiratoryDiseaseClinic = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient gastroenterology clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientGastroenterologyClinic = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Traveler's aid clinic
     /// </summary>
     public static readonly Coding TravelerQuoteSAidClinic = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital-psychiatric
     /// </summary>
     public static readonly Coding HospitalPsychiatric = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Local community health center
     /// </summary>
     public static readonly Coding LocalCommunityHealthCenter = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital ambulatory surgery facility
     /// </summary>
     public static readonly Coding HospitalAmbulatorySurgeryFacility = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health maintenance organization
     /// </summary>
     public static readonly Coding HealthMaintenanceOrganization = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient endocrinology clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientEndocrinologyClinic = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Emergency department--hospital
     /// </summary>
     public static readonly Coding EmergencyDepartmentHospital = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rural health center
     /// </summary>
     public static readonly Coding RuralHealthCenter = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient orthopedics clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientOrthopedicsClinic = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient ophthalmology clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientOphthalmologyClinic = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital radiology facility
     /// </summary>
     public static readonly Coding HospitalRadiologyFacility = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital-government
     /// </summary>
     public static readonly Coding HospitalGovernment = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital-rehabilitation
     /// </summary>
     public static readonly Coding HospitalRehabilitation = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Walk-in clinic
     /// </summary>
     public static readonly Coding WalkInClinic = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital-children's
     /// </summary>
     public static readonly Coding HospitalChildrenQuoteS = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Solo practice private office
     /// </summary>
     public static readonly Coding SoloPracticePrivateOffice = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient oncology clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientOncologyClinic = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Helicopter-based care
     /// </summary>
     public static readonly Coding HelicopterBasedCare = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital outpatient general surgery clinic
     /// </summary>
     public static readonly Coding HospitalOutpatientGeneralSurgeryClinic = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free-standing birthing center
     /// </summary>
     public static readonly Coding FreeStandingBirthingCenter = new Coding
     {
@@ -729,9 +729,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalOutpatientDentalClinic = "10206005";
 
     /// <summary>
+    /// Literal for code: NONEHospitalOutpatientDentalClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientDentalClinic = "http://snomed.info/sct#10206005";
+
+    /// <summary>
     /// Literal for code: FreeStandingAmbulatorySurgeryFacility
     /// </summary>
     public const string LiteralFreeStandingAmbulatorySurgeryFacility = "10531005";
+
+    /// <summary>
+    /// Literal for code: NONEFreeStandingAmbulatorySurgeryFacility
+    /// </summary>
+    public const string LiteralNONEFreeStandingAmbulatorySurgeryFacility = "http://snomed.info/sct#10531005";
 
     /// <summary>
     /// Literal for code: AmbulanceBasedCare
@@ -739,9 +749,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAmbulanceBasedCare = "11424001";
 
     /// <summary>
+    /// Literal for code: NONEAmbulanceBasedCare
+    /// </summary>
+    public const string LiteralNONEAmbulanceBasedCare = "http://snomed.info/sct#11424001";
+
+    /// <summary>
     /// Literal for code: HospitalOutpatientMentalHealthCenter
     /// </summary>
     public const string LiteralHospitalOutpatientMentalHealthCenter = "14866005";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalOutpatientMentalHealthCenter
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientMentalHealthCenter = "http://snomed.info/sct#14866005";
 
     /// <summary>
     /// Literal for code: FreeStandingRadiologyFacility
@@ -749,9 +769,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFreeStandingRadiologyFacility = "1773006";
 
     /// <summary>
+    /// Literal for code: NONEFreeStandingRadiologyFacility
+    /// </summary>
+    public const string LiteralNONEFreeStandingRadiologyFacility = "http://snomed.info/sct#1773006";
+
+    /// <summary>
     /// Literal for code: HospitalOutpatientGeriatricHealthCenter
     /// </summary>
     public const string LiteralHospitalOutpatientGeriatricHealthCenter = "1814000";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalOutpatientGeriatricHealthCenter
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientGeriatricHealthCenter = "http://snomed.info/sct#1814000";
 
     /// <summary>
     /// Literal for code: FeeForServicePrivatePhysiciansQuoteGroupOffice
@@ -759,9 +789,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFeeForServicePrivatePhysiciansQuoteGroupOffice = "19602009";
 
     /// <summary>
+    /// Literal for code: NONEFeeForServicePrivatePhysiciansQuoteGroupOffice
+    /// </summary>
+    public const string LiteralNONEFeeForServicePrivatePhysiciansQuoteGroupOffice = "http://snomed.info/sct#19602009";
+
+    /// <summary>
     /// Literal for code: SubstanceAbuseTreatmentCenter
     /// </summary>
     public const string LiteralSubstanceAbuseTreatmentCenter = "20078004";
+
+    /// <summary>
+    /// Literal for code: NONESubstanceAbuseTreatmentCenter
+    /// </summary>
+    public const string LiteralNONESubstanceAbuseTreatmentCenter = "http://snomed.info/sct#20078004";
 
     /// <summary>
     /// Literal for code: HospitalShip
@@ -769,9 +809,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalShip = "2081004";
 
     /// <summary>
+    /// Literal for code: NONEHospitalShip
+    /// </summary>
+    public const string LiteralNONEHospitalShip = "http://snomed.info/sct#2081004";
+
+    /// <summary>
     /// Literal for code: HospitalPrison
     /// </summary>
     public const string LiteralHospitalPrison = "224687002";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalPrison
+    /// </summary>
+    public const string LiteralNONEHospitalPrison = "http://snomed.info/sct#224687002";
 
     /// <summary>
     /// Literal for code: HospitalOutpatientGynecologyClinic
@@ -779,9 +829,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalOutpatientGynecologyClinic = "22549003";
 
     /// <summary>
+    /// Literal for code: NONEHospitalOutpatientGynecologyClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientGynecologyClinic = "http://snomed.info/sct#22549003";
+
+    /// <summary>
     /// Literal for code: HospitalCommunity
     /// </summary>
     public const string LiteralHospitalCommunity = "225732001";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalCommunity
+    /// </summary>
+    public const string LiteralNONEHospitalCommunity = "http://snomed.info/sct#225732001";
 
     /// <summary>
     /// Literal for code: HospitalOutpatientOtorhinolaryngologyClinic
@@ -789,9 +849,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalOutpatientOtorhinolaryngologyClinic = "23392004";
 
     /// <summary>
+    /// Literal for code: NONEHospitalOutpatientOtorhinolaryngologyClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientOtorhinolaryngologyClinic = "http://snomed.info/sct#23392004";
+
+    /// <summary>
     /// Literal for code: SexuallyTransmittedDiseaseHealthCenter
     /// </summary>
     public const string LiteralSexuallyTransmittedDiseaseHealthCenter = "25681007";
+
+    /// <summary>
+    /// Literal for code: NONESexuallyTransmittedDiseaseHealthCenter
+    /// </summary>
+    public const string LiteralNONESexuallyTransmittedDiseaseHealthCenter = "http://snomed.info/sct#25681007";
 
     /// <summary>
     /// Literal for code: SportsFacility
@@ -799,9 +869,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSportsFacility = "272501009";
 
     /// <summary>
+    /// Literal for code: NONESportsFacility
+    /// </summary>
+    public const string LiteralNONESportsFacility = "http://snomed.info/sct#272501009";
+
+    /// <summary>
     /// Literal for code: ElderlyAssessmentClinic
     /// </summary>
     public const string LiteralElderlyAssessmentClinic = "275576008";
+
+    /// <summary>
+    /// Literal for code: NONEElderlyAssessmentClinic
+    /// </summary>
+    public const string LiteralNONEElderlyAssessmentClinic = "http://snomed.info/sct#275576008";
 
     /// <summary>
     /// Literal for code: HospiceFacility
@@ -809,9 +889,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospiceFacility = "284546000";
 
     /// <summary>
+    /// Literal for code: NONEHospiceFacility
+    /// </summary>
+    public const string LiteralNONEHospiceFacility = "http://snomed.info/sct#284546000";
+
+    /// <summary>
     /// Literal for code: HospitalOutpatientInfectiousDiseaseClinic
     /// </summary>
     public const string LiteralHospitalOutpatientInfectiousDiseaseClinic = "2849009";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalOutpatientInfectiousDiseaseClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientInfectiousDiseaseClinic = "http://snomed.info/sct#2849009";
 
     /// <summary>
     /// Literal for code: PsychogeriatricDayHospital
@@ -819,9 +909,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPsychogeriatricDayHospital = "309898008";
 
     /// <summary>
+    /// Literal for code: NONEPsychogeriatricDayHospital
+    /// </summary>
+    public const string LiteralNONEPsychogeriatricDayHospital = "http://snomed.info/sct#309898008";
+
+    /// <summary>
     /// Literal for code: CareOfTheElderlyDayHospital
     /// </summary>
     public const string LiteralCareOfTheElderlyDayHospital = "309900005";
+
+    /// <summary>
+    /// Literal for code: NONECareOfTheElderlyDayHospital
+    /// </summary>
+    public const string LiteralNONECareOfTheElderlyDayHospital = "http://snomed.info/sct#309900005";
 
     /// <summary>
     /// Literal for code: PrivateResidentialHome
@@ -829,9 +929,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrivateResidentialHome = "310205006";
 
     /// <summary>
+    /// Literal for code: NONEPrivateResidentialHome
+    /// </summary>
+    public const string LiteralNONEPrivateResidentialHome = "http://snomed.info/sct#310205006";
+
+    /// <summary>
     /// Literal for code: HospitalOutpatientFamilyMedicineClinic
     /// </summary>
     public const string LiteralHospitalOutpatientFamilyMedicineClinic = "31628002";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalOutpatientFamilyMedicineClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientFamilyMedicineClinic = "http://snomed.info/sct#31628002";
 
     /// <summary>
     /// Literal for code: HospitalLongTermCare
@@ -839,9 +949,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalLongTermCare = "32074000";
 
     /// <summary>
+    /// Literal for code: NONEHospitalLongTermCare
+    /// </summary>
+    public const string LiteralNONEHospitalLongTermCare = "http://snomed.info/sct#32074000";
+
+    /// <summary>
     /// Literal for code: HospitalBasedOutpatientClinicOrDepartmentOTHERNOTLISTED
     /// </summary>
     public const string LiteralHospitalBasedOutpatientClinicOrDepartmentOTHERNOTLISTED = "33022008";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalBasedOutpatientClinicOrDepartmentOTHERNOTLISTED
+    /// </summary>
+    public const string LiteralNONEHospitalBasedOutpatientClinicOrDepartmentOTHERNOTLISTED = "http://snomed.info/sct#33022008";
 
     /// <summary>
     /// Literal for code: HospitalOutpatientRheumatologyClinic
@@ -849,9 +969,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalOutpatientRheumatologyClinic = "331006";
 
     /// <summary>
+    /// Literal for code: NONEHospitalOutpatientRheumatologyClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientRheumatologyClinic = "http://snomed.info/sct#331006";
+
+    /// <summary>
     /// Literal for code: AmbulatoryCareSiteOTHERNOTLISTED
     /// </summary>
     public const string LiteralAmbulatoryCareSiteOTHERNOTLISTED = "35971002";
+
+    /// <summary>
+    /// Literal for code: NONEAmbulatoryCareSiteOTHERNOTLISTED
+    /// </summary>
+    public const string LiteralNONEAmbulatoryCareSiteOTHERNOTLISTED = "http://snomed.info/sct#35971002";
 
     /// <summary>
     /// Literal for code: HospitalOutpatientAllergyClinic
@@ -859,9 +989,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalOutpatientAllergyClinic = "360957003";
 
     /// <summary>
+    /// Literal for code: NONEHospitalOutpatientAllergyClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientAllergyClinic = "http://snomed.info/sct#360957003";
+
+    /// <summary>
     /// Literal for code: HospitalOutpatientImmunologyClinic
     /// </summary>
     public const string LiteralHospitalOutpatientImmunologyClinic = "360966004";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalOutpatientImmunologyClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientImmunologyClinic = "http://snomed.info/sct#360966004";
 
     /// <summary>
     /// Literal for code: HospitalTraumaCenter
@@ -869,9 +1009,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalTraumaCenter = "36125001";
 
     /// <summary>
+    /// Literal for code: NONEHospitalTraumaCenter
+    /// </summary>
+    public const string LiteralNONEHospitalTraumaCenter = "http://snomed.info/sct#36125001";
+
+    /// <summary>
     /// Literal for code: HospitalOutpatientPainClinic
     /// </summary>
     public const string LiteralHospitalOutpatientPainClinic = "36293008";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalOutpatientPainClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientPainClinic = "http://snomed.info/sct#36293008";
 
     /// <summary>
     /// Literal for code: HospitalOutpatientPediatricClinic
@@ -879,9 +1029,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalOutpatientPediatricClinic = "3729002";
 
     /// <summary>
+    /// Literal for code: NONEHospitalOutpatientPediatricClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientPediatricClinic = "http://snomed.info/sct#3729002";
+
+    /// <summary>
     /// Literal for code: HospitalOutpatientRehabilitationClinic
     /// </summary>
     public const string LiteralHospitalOutpatientRehabilitationClinic = "37546005";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalOutpatientRehabilitationClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientRehabilitationClinic = "http://snomed.info/sct#37546005";
 
     /// <summary>
     /// Literal for code: HospitalOutpatientDermatologyClinic
@@ -889,9 +1049,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalOutpatientDermatologyClinic = "37550003";
 
     /// <summary>
+    /// Literal for code: NONEHospitalOutpatientDermatologyClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientDermatologyClinic = "http://snomed.info/sct#37550003";
+
+    /// <summary>
     /// Literal for code: HospitalOutpatientNeurologyClinic
     /// </summary>
     public const string LiteralHospitalOutpatientNeurologyClinic = "38238005";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalOutpatientNeurologyClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientNeurologyClinic = "http://snomed.info/sct#38238005";
 
     /// <summary>
     /// Literal for code: PrivatePhysiciansQuoteGroupOffice
@@ -899,9 +1069,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrivatePhysiciansQuoteGroupOffice = "39350007";
 
     /// <summary>
+    /// Literal for code: NONEPrivatePhysiciansQuoteGroupOffice
+    /// </summary>
+    public const string LiteralNONEPrivatePhysiciansQuoteGroupOffice = "http://snomed.info/sct#39350007";
+
+    /// <summary>
     /// Literal for code: IndependentAmbulatoryCareProviderSiteOTHERNOTLISTED
     /// </summary>
     public const string LiteralIndependentAmbulatoryCareProviderSiteOTHERNOTLISTED = "394759007";
+
+    /// <summary>
+    /// Literal for code: NONEIndependentAmbulatoryCareProviderSiteOTHERNOTLISTED
+    /// </summary>
+    public const string LiteralNONEIndependentAmbulatoryCareProviderSiteOTHERNOTLISTED = "http://snomed.info/sct#394759007";
 
     /// <summary>
     /// Literal for code: HealthEncounterSiteNOTLISTED
@@ -909,9 +1089,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHealthEncounterSiteNOTLISTED = "394777002";
 
     /// <summary>
+    /// Literal for code: NONEHealthEncounterSiteNOTLISTED
+    /// </summary>
+    public const string LiteralNONEHealthEncounterSiteNOTLISTED = "http://snomed.info/sct#394777002";
+
+    /// <summary>
     /// Literal for code: ResidentialSchoolInfirmary
     /// </summary>
     public const string LiteralResidentialSchoolInfirmary = "39913001";
+
+    /// <summary>
+    /// Literal for code: NONEResidentialSchoolInfirmary
+    /// </summary>
+    public const string LiteralNONEResidentialSchoolInfirmary = "http://snomed.info/sct#39913001";
 
     /// <summary>
     /// Literal for code: AmbulatorySurgeryCenter
@@ -919,9 +1109,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAmbulatorySurgeryCenter = "405607001";
 
     /// <summary>
+    /// Literal for code: NONEAmbulatorySurgeryCenter
+    /// </summary>
+    public const string LiteralNONEAmbulatorySurgeryCenter = "http://snomed.info/sct#405607001";
+
+    /// <summary>
     /// Literal for code: ContainedCasualtySetting
     /// </summary>
     public const string LiteralContainedCasualtySetting = "409519008";
+
+    /// <summary>
+    /// Literal for code: NONEContainedCasualtySetting
+    /// </summary>
+    public const string LiteralNONEContainedCasualtySetting = "http://snomed.info/sct#409519008";
 
     /// <summary>
     /// Literal for code: AdultDayCareCenter
@@ -929,9 +1129,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdultDayCareCenter = "413456002";
 
     /// <summary>
+    /// Literal for code: NONEAdultDayCareCenter
+    /// </summary>
+    public const string LiteralNONEAdultDayCareCenter = "http://snomed.info/sct#413456002";
+
+    /// <summary>
     /// Literal for code: ChildDayCareCenter
     /// </summary>
     public const string LiteralChildDayCareCenter = "413817003";
+
+    /// <summary>
+    /// Literal for code: NONEChildDayCareCenter
+    /// </summary>
+    public const string LiteralNONEChildDayCareCenter = "http://snomed.info/sct#413817003";
 
     /// <summary>
     /// Literal for code: FreeStandingGeriatricHealthCenter
@@ -939,9 +1149,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFreeStandingGeriatricHealthCenter = "41844007";
 
     /// <summary>
+    /// Literal for code: NONEFreeStandingGeriatricHealthCenter
+    /// </summary>
+    public const string LiteralNONEFreeStandingGeriatricHealthCenter = "http://snomed.info/sct#41844007";
+
+    /// <summary>
     /// Literal for code: DialysisUnitHospital
     /// </summary>
     public const string LiteralDialysisUnitHospital = "418518002";
+
+    /// <summary>
+    /// Literal for code: NONEDialysisUnitHospital
+    /// </summary>
+    public const string LiteralNONEDialysisUnitHospital = "http://snomed.info/sct#418518002";
 
     /// <summary>
     /// Literal for code: ResidentialInstitution
@@ -949,9 +1169,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralResidentialInstitution = "419955002";
 
     /// <summary>
+    /// Literal for code: NONEResidentialInstitution
+    /// </summary>
+    public const string LiteralNONEResidentialInstitution = "http://snomed.info/sct#419955002";
+
+    /// <summary>
     /// Literal for code: NursingHome
     /// </summary>
     public const string LiteralNursingHome = "42665001";
+
+    /// <summary>
+    /// Literal for code: NONENursingHome
+    /// </summary>
+    public const string LiteralNONENursingHome = "http://snomed.info/sct#42665001";
 
     /// <summary>
     /// Literal for code: HospitalMilitaryField
@@ -959,9 +1189,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalMilitaryField = "4322002";
 
     /// <summary>
+    /// Literal for code: NONEHospitalMilitaryField
+    /// </summary>
+    public const string LiteralNONEHospitalMilitaryField = "http://snomed.info/sct#4322002";
+
+    /// <summary>
     /// Literal for code: SkilledNursingFacility
     /// </summary>
     public const string LiteralSkilledNursingFacility = "45618002";
+
+    /// <summary>
+    /// Literal for code: NONESkilledNursingFacility
+    /// </summary>
+    public const string LiteralNONESkilledNursingFacility = "http://snomed.info/sct#45618002";
 
     /// <summary>
     /// Literal for code: FreeStandingLaboratoryFacility
@@ -969,9 +1209,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFreeStandingLaboratoryFacility = "45899008";
 
     /// <summary>
+    /// Literal for code: NONEFreeStandingLaboratoryFacility
+    /// </summary>
+    public const string LiteralNONEFreeStandingLaboratoryFacility = "http://snomed.info/sct#45899008";
+
+    /// <summary>
     /// Literal for code: VaccinationClinic
     /// </summary>
     public const string LiteralVaccinationClinic = "46224007";
+
+    /// <summary>
+    /// Literal for code: NONEVaccinationClinic
+    /// </summary>
+    public const string LiteralNONEVaccinationClinic = "http://snomed.info/sct#46224007";
 
     /// <summary>
     /// Literal for code: HospitalVeteransQuoteAdministration
@@ -979,9 +1229,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalVeteransQuoteAdministration = "48311003";
 
     /// <summary>
+    /// Literal for code: NONEHospitalVeteransQuoteAdministration
+    /// </summary>
+    public const string LiteralNONEHospitalVeteransQuoteAdministration = "http://snomed.info/sct#48311003";
+
+    /// <summary>
     /// Literal for code: HospitalOutpatientUrologyClinic
     /// </summary>
     public const string LiteralHospitalOutpatientUrologyClinic = "50569004";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalOutpatientUrologyClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientUrologyClinic = "http://snomed.info/sct#50569004";
 
     /// <summary>
     /// Literal for code: FreeStandingMentalHealthCenter
@@ -989,9 +1249,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFreeStandingMentalHealthCenter = "51563005";
 
     /// <summary>
+    /// Literal for code: NONEFreeStandingMentalHealthCenter
+    /// </summary>
+    public const string LiteralNONEFreeStandingMentalHealthCenter = "http://snomed.info/sct#51563005";
+
+    /// <summary>
     /// Literal for code: HospitalBirthingCenter
     /// </summary>
     public const string LiteralHospitalBirthingCenter = "52668009";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalBirthingCenter
+    /// </summary>
+    public const string LiteralNONEHospitalBirthingCenter = "http://snomed.info/sct#52668009";
 
     /// <summary>
     /// Literal for code: HospitalOutpatientPeripheralVascularClinic
@@ -999,9 +1269,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalOutpatientPeripheralVascularClinic = "5584006";
 
     /// <summary>
+    /// Literal for code: NONEHospitalOutpatientPeripheralVascularClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientPeripheralVascularClinic = "http://snomed.info/sct#5584006";
+
+    /// <summary>
     /// Literal for code: HospitalOutpatientObstetricalClinic
     /// </summary>
     public const string LiteralHospitalOutpatientObstetricalClinic = "56189001";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalOutpatientObstetricalClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientObstetricalClinic = "http://snomed.info/sct#56189001";
 
     /// <summary>
     /// Literal for code: HospitalOutpatientHematologyClinic
@@ -1009,9 +1289,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalOutpatientHematologyClinic = "56293002";
 
     /// <summary>
+    /// Literal for code: NONEHospitalOutpatientHematologyClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientHematologyClinic = "http://snomed.info/sct#56293002";
+
+    /// <summary>
     /// Literal for code: HospitalOutpatientRespiratoryDiseaseClinic
     /// </summary>
     public const string LiteralHospitalOutpatientRespiratoryDiseaseClinic = "57159002";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalOutpatientRespiratoryDiseaseClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientRespiratoryDiseaseClinic = "http://snomed.info/sct#57159002";
 
     /// <summary>
     /// Literal for code: HospitalOutpatientGastroenterologyClinic
@@ -1019,9 +1309,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalOutpatientGastroenterologyClinic = "58482006";
 
     /// <summary>
+    /// Literal for code: NONEHospitalOutpatientGastroenterologyClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientGastroenterologyClinic = "http://snomed.info/sct#58482006";
+
+    /// <summary>
     /// Literal for code: TravelerQuoteSAidClinic
     /// </summary>
     public const string LiteralTravelerQuoteSAidClinic = "59374000";
+
+    /// <summary>
+    /// Literal for code: NONETravelerQuoteSAidClinic
+    /// </summary>
+    public const string LiteralNONETravelerQuoteSAidClinic = "http://snomed.info/sct#59374000";
 
     /// <summary>
     /// Literal for code: HospitalPsychiatric
@@ -1029,9 +1329,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalPsychiatric = "62480006";
 
     /// <summary>
+    /// Literal for code: NONEHospitalPsychiatric
+    /// </summary>
+    public const string LiteralNONEHospitalPsychiatric = "http://snomed.info/sct#62480006";
+
+    /// <summary>
     /// Literal for code: LocalCommunityHealthCenter
     /// </summary>
     public const string LiteralLocalCommunityHealthCenter = "6827000";
+
+    /// <summary>
+    /// Literal for code: NONELocalCommunityHealthCenter
+    /// </summary>
+    public const string LiteralNONELocalCommunityHealthCenter = "http://snomed.info/sct#6827000";
 
     /// <summary>
     /// Literal for code: HospitalAmbulatorySurgeryFacility
@@ -1039,9 +1349,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalAmbulatorySurgeryFacility = "69362002";
 
     /// <summary>
+    /// Literal for code: NONEHospitalAmbulatorySurgeryFacility
+    /// </summary>
+    public const string LiteralNONEHospitalAmbulatorySurgeryFacility = "http://snomed.info/sct#69362002";
+
+    /// <summary>
     /// Literal for code: HealthMaintenanceOrganization
     /// </summary>
     public const string LiteralHealthMaintenanceOrganization = "72311000";
+
+    /// <summary>
+    /// Literal for code: NONEHealthMaintenanceOrganization
+    /// </summary>
+    public const string LiteralNONEHealthMaintenanceOrganization = "http://snomed.info/sct#72311000";
 
     /// <summary>
     /// Literal for code: HospitalOutpatientEndocrinologyClinic
@@ -1049,9 +1369,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalOutpatientEndocrinologyClinic = "73644007";
 
     /// <summary>
+    /// Literal for code: NONEHospitalOutpatientEndocrinologyClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientEndocrinologyClinic = "http://snomed.info/sct#73644007";
+
+    /// <summary>
     /// Literal for code: EmergencyDepartmentHospital
     /// </summary>
     public const string LiteralEmergencyDepartmentHospital = "73770003";
+
+    /// <summary>
+    /// Literal for code: NONEEmergencyDepartmentHospital
+    /// </summary>
+    public const string LiteralNONEEmergencyDepartmentHospital = "http://snomed.info/sct#73770003";
 
     /// <summary>
     /// Literal for code: RuralHealthCenter
@@ -1059,9 +1389,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRuralHealthCenter = "77931003";
 
     /// <summary>
+    /// Literal for code: NONERuralHealthCenter
+    /// </summary>
+    public const string LiteralNONERuralHealthCenter = "http://snomed.info/sct#77931003";
+
+    /// <summary>
     /// Literal for code: HospitalOutpatientOrthopedicsClinic
     /// </summary>
     public const string LiteralHospitalOutpatientOrthopedicsClinic = "78001009";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalOutpatientOrthopedicsClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientOrthopedicsClinic = "http://snomed.info/sct#78001009";
 
     /// <summary>
     /// Literal for code: HospitalOutpatientOphthalmologyClinic
@@ -1069,9 +1409,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalOutpatientOphthalmologyClinic = "78088001";
 
     /// <summary>
+    /// Literal for code: NONEHospitalOutpatientOphthalmologyClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientOphthalmologyClinic = "http://snomed.info/sct#78088001";
+
+    /// <summary>
     /// Literal for code: HospitalRadiologyFacility
     /// </summary>
     public const string LiteralHospitalRadiologyFacility = "79491001";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalRadiologyFacility
+    /// </summary>
+    public const string LiteralNONEHospitalRadiologyFacility = "http://snomed.info/sct#79491001";
 
     /// <summary>
     /// Literal for code: HospitalGovernment
@@ -1079,9 +1429,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalGovernment = "79993009";
 
     /// <summary>
+    /// Literal for code: NONEHospitalGovernment
+    /// </summary>
+    public const string LiteralNONEHospitalGovernment = "http://snomed.info/sct#79993009";
+
+    /// <summary>
     /// Literal for code: HospitalRehabilitation
     /// </summary>
     public const string LiteralHospitalRehabilitation = "80522000";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalRehabilitation
+    /// </summary>
+    public const string LiteralNONEHospitalRehabilitation = "http://snomed.info/sct#80522000";
 
     /// <summary>
     /// Literal for code: WalkInClinic
@@ -1089,9 +1449,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWalkInClinic = "81234003";
 
     /// <summary>
+    /// Literal for code: NONEWalkInClinic
+    /// </summary>
+    public const string LiteralNONEWalkInClinic = "http://snomed.info/sct#81234003";
+
+    /// <summary>
     /// Literal for code: HospitalChildrenQuoteS
     /// </summary>
     public const string LiteralHospitalChildrenQuoteS = "82242000";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalChildrenQuoteS
+    /// </summary>
+    public const string LiteralNONEHospitalChildrenQuoteS = "http://snomed.info/sct#82242000";
 
     /// <summary>
     /// Literal for code: SoloPracticePrivateOffice
@@ -1099,9 +1469,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSoloPracticePrivateOffice = "83891005";
 
     /// <summary>
+    /// Literal for code: NONESoloPracticePrivateOffice
+    /// </summary>
+    public const string LiteralNONESoloPracticePrivateOffice = "http://snomed.info/sct#83891005";
+
+    /// <summary>
     /// Literal for code: HospitalOutpatientOncologyClinic
     /// </summary>
     public const string LiteralHospitalOutpatientOncologyClinic = "89972002";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalOutpatientOncologyClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientOncologyClinic = "http://snomed.info/sct#89972002";
 
     /// <summary>
     /// Literal for code: HelicopterBasedCare
@@ -1109,13 +1489,192 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHelicopterBasedCare = "901005";
 
     /// <summary>
+    /// Literal for code: NONEHelicopterBasedCare
+    /// </summary>
+    public const string LiteralNONEHelicopterBasedCare = "http://snomed.info/sct#901005";
+
+    /// <summary>
     /// Literal for code: HospitalOutpatientGeneralSurgeryClinic
     /// </summary>
     public const string LiteralHospitalOutpatientGeneralSurgeryClinic = "90484001";
 
     /// <summary>
+    /// Literal for code: NONEHospitalOutpatientGeneralSurgeryClinic
+    /// </summary>
+    public const string LiteralNONEHospitalOutpatientGeneralSurgeryClinic = "http://snomed.info/sct#90484001";
+
+    /// <summary>
     /// Literal for code: FreeStandingBirthingCenter
     /// </summary>
     public const string LiteralFreeStandingBirthingCenter = "91154008";
+
+    /// <summary>
+    /// Literal for code: NONEFreeStandingBirthingCenter
+    /// </summary>
+    public const string LiteralNONEFreeStandingBirthingCenter = "http://snomed.info/sct#91154008";
+
+    /// <summary>
+    /// Dictionary for looking up C80Facilitycodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "10206005", HospitalOutpatientDentalClinic }, 
+      { "http://snomed.info/sct#10206005", HospitalOutpatientDentalClinic }, 
+      { "10531005", FreeStandingAmbulatorySurgeryFacility }, 
+      { "http://snomed.info/sct#10531005", FreeStandingAmbulatorySurgeryFacility }, 
+      { "11424001", AmbulanceBasedCare }, 
+      { "http://snomed.info/sct#11424001", AmbulanceBasedCare }, 
+      { "14866005", HospitalOutpatientMentalHealthCenter }, 
+      { "http://snomed.info/sct#14866005", HospitalOutpatientMentalHealthCenter }, 
+      { "1773006", FreeStandingRadiologyFacility }, 
+      { "http://snomed.info/sct#1773006", FreeStandingRadiologyFacility }, 
+      { "1814000", HospitalOutpatientGeriatricHealthCenter }, 
+      { "http://snomed.info/sct#1814000", HospitalOutpatientGeriatricHealthCenter }, 
+      { "19602009", FeeForServicePrivatePhysiciansQuoteGroupOffice }, 
+      { "http://snomed.info/sct#19602009", FeeForServicePrivatePhysiciansQuoteGroupOffice }, 
+      { "20078004", SubstanceAbuseTreatmentCenter }, 
+      { "http://snomed.info/sct#20078004", SubstanceAbuseTreatmentCenter }, 
+      { "2081004", HospitalShip }, 
+      { "http://snomed.info/sct#2081004", HospitalShip }, 
+      { "224687002", HospitalPrison }, 
+      { "http://snomed.info/sct#224687002", HospitalPrison }, 
+      { "22549003", HospitalOutpatientGynecologyClinic }, 
+      { "http://snomed.info/sct#22549003", HospitalOutpatientGynecologyClinic }, 
+      { "225732001", HospitalCommunity }, 
+      { "http://snomed.info/sct#225732001", HospitalCommunity }, 
+      { "23392004", HospitalOutpatientOtorhinolaryngologyClinic }, 
+      { "http://snomed.info/sct#23392004", HospitalOutpatientOtorhinolaryngologyClinic }, 
+      { "25681007", SexuallyTransmittedDiseaseHealthCenter }, 
+      { "http://snomed.info/sct#25681007", SexuallyTransmittedDiseaseHealthCenter }, 
+      { "272501009", SportsFacility }, 
+      { "http://snomed.info/sct#272501009", SportsFacility }, 
+      { "275576008", ElderlyAssessmentClinic }, 
+      { "http://snomed.info/sct#275576008", ElderlyAssessmentClinic }, 
+      { "284546000", HospiceFacility }, 
+      { "http://snomed.info/sct#284546000", HospiceFacility }, 
+      { "2849009", HospitalOutpatientInfectiousDiseaseClinic }, 
+      { "http://snomed.info/sct#2849009", HospitalOutpatientInfectiousDiseaseClinic }, 
+      { "309898008", PsychogeriatricDayHospital }, 
+      { "http://snomed.info/sct#309898008", PsychogeriatricDayHospital }, 
+      { "309900005", CareOfTheElderlyDayHospital }, 
+      { "http://snomed.info/sct#309900005", CareOfTheElderlyDayHospital }, 
+      { "310205006", PrivateResidentialHome }, 
+      { "http://snomed.info/sct#310205006", PrivateResidentialHome }, 
+      { "31628002", HospitalOutpatientFamilyMedicineClinic }, 
+      { "http://snomed.info/sct#31628002", HospitalOutpatientFamilyMedicineClinic }, 
+      { "32074000", HospitalLongTermCare }, 
+      { "http://snomed.info/sct#32074000", HospitalLongTermCare }, 
+      { "33022008", HospitalBasedOutpatientClinicOrDepartmentOTHERNOTLISTED }, 
+      { "http://snomed.info/sct#33022008", HospitalBasedOutpatientClinicOrDepartmentOTHERNOTLISTED }, 
+      { "331006", HospitalOutpatientRheumatologyClinic }, 
+      { "http://snomed.info/sct#331006", HospitalOutpatientRheumatologyClinic }, 
+      { "35971002", AmbulatoryCareSiteOTHERNOTLISTED }, 
+      { "http://snomed.info/sct#35971002", AmbulatoryCareSiteOTHERNOTLISTED }, 
+      { "360957003", HospitalOutpatientAllergyClinic }, 
+      { "http://snomed.info/sct#360957003", HospitalOutpatientAllergyClinic }, 
+      { "360966004", HospitalOutpatientImmunologyClinic }, 
+      { "http://snomed.info/sct#360966004", HospitalOutpatientImmunologyClinic }, 
+      { "36125001", HospitalTraumaCenter }, 
+      { "http://snomed.info/sct#36125001", HospitalTraumaCenter }, 
+      { "36293008", HospitalOutpatientPainClinic }, 
+      { "http://snomed.info/sct#36293008", HospitalOutpatientPainClinic }, 
+      { "3729002", HospitalOutpatientPediatricClinic }, 
+      { "http://snomed.info/sct#3729002", HospitalOutpatientPediatricClinic }, 
+      { "37546005", HospitalOutpatientRehabilitationClinic }, 
+      { "http://snomed.info/sct#37546005", HospitalOutpatientRehabilitationClinic }, 
+      { "37550003", HospitalOutpatientDermatologyClinic }, 
+      { "http://snomed.info/sct#37550003", HospitalOutpatientDermatologyClinic }, 
+      { "38238005", HospitalOutpatientNeurologyClinic }, 
+      { "http://snomed.info/sct#38238005", HospitalOutpatientNeurologyClinic }, 
+      { "39350007", PrivatePhysiciansQuoteGroupOffice }, 
+      { "http://snomed.info/sct#39350007", PrivatePhysiciansQuoteGroupOffice }, 
+      { "394759007", IndependentAmbulatoryCareProviderSiteOTHERNOTLISTED }, 
+      { "http://snomed.info/sct#394759007", IndependentAmbulatoryCareProviderSiteOTHERNOTLISTED }, 
+      { "394777002", HealthEncounterSiteNOTLISTED }, 
+      { "http://snomed.info/sct#394777002", HealthEncounterSiteNOTLISTED }, 
+      { "39913001", ResidentialSchoolInfirmary }, 
+      { "http://snomed.info/sct#39913001", ResidentialSchoolInfirmary }, 
+      { "405607001", AmbulatorySurgeryCenter }, 
+      { "http://snomed.info/sct#405607001", AmbulatorySurgeryCenter }, 
+      { "409519008", ContainedCasualtySetting }, 
+      { "http://snomed.info/sct#409519008", ContainedCasualtySetting }, 
+      { "413456002", AdultDayCareCenter }, 
+      { "http://snomed.info/sct#413456002", AdultDayCareCenter }, 
+      { "413817003", ChildDayCareCenter }, 
+      { "http://snomed.info/sct#413817003", ChildDayCareCenter }, 
+      { "41844007", FreeStandingGeriatricHealthCenter }, 
+      { "http://snomed.info/sct#41844007", FreeStandingGeriatricHealthCenter }, 
+      { "418518002", DialysisUnitHospital }, 
+      { "http://snomed.info/sct#418518002", DialysisUnitHospital }, 
+      { "419955002", ResidentialInstitution }, 
+      { "http://snomed.info/sct#419955002", ResidentialInstitution }, 
+      { "42665001", NursingHome }, 
+      { "http://snomed.info/sct#42665001", NursingHome }, 
+      { "4322002", HospitalMilitaryField }, 
+      { "http://snomed.info/sct#4322002", HospitalMilitaryField }, 
+      { "45618002", SkilledNursingFacility }, 
+      { "http://snomed.info/sct#45618002", SkilledNursingFacility }, 
+      { "45899008", FreeStandingLaboratoryFacility }, 
+      { "http://snomed.info/sct#45899008", FreeStandingLaboratoryFacility }, 
+      { "46224007", VaccinationClinic }, 
+      { "http://snomed.info/sct#46224007", VaccinationClinic }, 
+      { "48311003", HospitalVeteransQuoteAdministration }, 
+      { "http://snomed.info/sct#48311003", HospitalVeteransQuoteAdministration }, 
+      { "50569004", HospitalOutpatientUrologyClinic }, 
+      { "http://snomed.info/sct#50569004", HospitalOutpatientUrologyClinic }, 
+      { "51563005", FreeStandingMentalHealthCenter }, 
+      { "http://snomed.info/sct#51563005", FreeStandingMentalHealthCenter }, 
+      { "52668009", HospitalBirthingCenter }, 
+      { "http://snomed.info/sct#52668009", HospitalBirthingCenter }, 
+      { "5584006", HospitalOutpatientPeripheralVascularClinic }, 
+      { "http://snomed.info/sct#5584006", HospitalOutpatientPeripheralVascularClinic }, 
+      { "56189001", HospitalOutpatientObstetricalClinic }, 
+      { "http://snomed.info/sct#56189001", HospitalOutpatientObstetricalClinic }, 
+      { "56293002", HospitalOutpatientHematologyClinic }, 
+      { "http://snomed.info/sct#56293002", HospitalOutpatientHematologyClinic }, 
+      { "57159002", HospitalOutpatientRespiratoryDiseaseClinic }, 
+      { "http://snomed.info/sct#57159002", HospitalOutpatientRespiratoryDiseaseClinic }, 
+      { "58482006", HospitalOutpatientGastroenterologyClinic }, 
+      { "http://snomed.info/sct#58482006", HospitalOutpatientGastroenterologyClinic }, 
+      { "59374000", TravelerQuoteSAidClinic }, 
+      { "http://snomed.info/sct#59374000", TravelerQuoteSAidClinic }, 
+      { "62480006", HospitalPsychiatric }, 
+      { "http://snomed.info/sct#62480006", HospitalPsychiatric }, 
+      { "6827000", LocalCommunityHealthCenter }, 
+      { "http://snomed.info/sct#6827000", LocalCommunityHealthCenter }, 
+      { "69362002", HospitalAmbulatorySurgeryFacility }, 
+      { "http://snomed.info/sct#69362002", HospitalAmbulatorySurgeryFacility }, 
+      { "72311000", HealthMaintenanceOrganization }, 
+      { "http://snomed.info/sct#72311000", HealthMaintenanceOrganization }, 
+      { "73644007", HospitalOutpatientEndocrinologyClinic }, 
+      { "http://snomed.info/sct#73644007", HospitalOutpatientEndocrinologyClinic }, 
+      { "73770003", EmergencyDepartmentHospital }, 
+      { "http://snomed.info/sct#73770003", EmergencyDepartmentHospital }, 
+      { "77931003", RuralHealthCenter }, 
+      { "http://snomed.info/sct#77931003", RuralHealthCenter }, 
+      { "78001009", HospitalOutpatientOrthopedicsClinic }, 
+      { "http://snomed.info/sct#78001009", HospitalOutpatientOrthopedicsClinic }, 
+      { "78088001", HospitalOutpatientOphthalmologyClinic }, 
+      { "http://snomed.info/sct#78088001", HospitalOutpatientOphthalmologyClinic }, 
+      { "79491001", HospitalRadiologyFacility }, 
+      { "http://snomed.info/sct#79491001", HospitalRadiologyFacility }, 
+      { "79993009", HospitalGovernment }, 
+      { "http://snomed.info/sct#79993009", HospitalGovernment }, 
+      { "80522000", HospitalRehabilitation }, 
+      { "http://snomed.info/sct#80522000", HospitalRehabilitation }, 
+      { "81234003", WalkInClinic }, 
+      { "http://snomed.info/sct#81234003", WalkInClinic }, 
+      { "82242000", HospitalChildrenQuoteS }, 
+      { "http://snomed.info/sct#82242000", HospitalChildrenQuoteS }, 
+      { "83891005", SoloPracticePrivateOffice }, 
+      { "http://snomed.info/sct#83891005", SoloPracticePrivateOffice }, 
+      { "89972002", HospitalOutpatientOncologyClinic }, 
+      { "http://snomed.info/sct#89972002", HospitalOutpatientOncologyClinic }, 
+      { "901005", HelicopterBasedCare }, 
+      { "http://snomed.info/sct#901005", HelicopterBasedCare }, 
+      { "90484001", HospitalOutpatientGeneralSurgeryClinic }, 
+      { "http://snomed.info/sct#90484001", HospitalOutpatientGeneralSurgeryClinic }, 
+      { "91154008", FreeStandingBirthingCenter }, 
+      { "http://snomed.info/sct#91154008", FreeStandingBirthingCenter }, 
+    };
   };
 }

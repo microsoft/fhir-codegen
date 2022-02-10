@@ -81,9 +81,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEmail = "email";
 
     /// <summary>
+    /// Literal for code: ContactPointSystemEmail
+    /// </summary>
+    public const string LiteralContactPointSystemEmail = "http://hl7.org/fhir/contact-point-system#email";
+
+    /// <summary>
     /// Literal for code: Fax
     /// </summary>
     public const string LiteralFax = "fax";
+
+    /// <summary>
+    /// Literal for code: ContactPointSystemFax
+    /// </summary>
+    public const string LiteralContactPointSystemFax = "http://hl7.org/fhir/contact-point-system#fax";
 
     /// <summary>
     /// Literal for code: Other
@@ -91,9 +101,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOther = "other";
 
     /// <summary>
+    /// Literal for code: ContactPointSystemOther
+    /// </summary>
+    public const string LiteralContactPointSystemOther = "http://hl7.org/fhir/contact-point-system#other";
+
+    /// <summary>
     /// Literal for code: Pager
     /// </summary>
     public const string LiteralPager = "pager";
+
+    /// <summary>
+    /// Literal for code: ContactPointSystemPager
+    /// </summary>
+    public const string LiteralContactPointSystemPager = "http://hl7.org/fhir/contact-point-system#pager";
 
     /// <summary>
     /// Literal for code: Phone
@@ -101,13 +121,48 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhone = "phone";
 
     /// <summary>
+    /// Literal for code: ContactPointSystemPhone
+    /// </summary>
+    public const string LiteralContactPointSystemPhone = "http://hl7.org/fhir/contact-point-system#phone";
+
+    /// <summary>
     /// Literal for code: SMS
     /// </summary>
     public const string LiteralSMS = "sms";
 
     /// <summary>
+    /// Literal for code: ContactPointSystemSMS
+    /// </summary>
+    public const string LiteralContactPointSystemSMS = "http://hl7.org/fhir/contact-point-system#sms";
+
+    /// <summary>
     /// Literal for code: URL
     /// </summary>
     public const string LiteralURL = "url";
+
+    /// <summary>
+    /// Literal for code: ContactPointSystemURL
+    /// </summary>
+    public const string LiteralContactPointSystemURL = "http://hl7.org/fhir/contact-point-system#url";
+
+    /// <summary>
+    /// Dictionary for looking up ContactPointSystem Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "email", Email }, 
+      { "http://hl7.org/fhir/contact-point-system#email", Email }, 
+      { "fax", Fax }, 
+      { "http://hl7.org/fhir/contact-point-system#fax", Fax }, 
+      { "other", Other }, 
+      { "http://hl7.org/fhir/contact-point-system#other", Other }, 
+      { "pager", Pager }, 
+      { "http://hl7.org/fhir/contact-point-system#pager", Pager }, 
+      { "phone", Phone }, 
+      { "http://hl7.org/fhir/contact-point-system#phone", Phone }, 
+      { "sms", SMS }, 
+      { "http://hl7.org/fhir/contact-point-system#sms", SMS }, 
+      { "url", URL }, 
+      { "http://hl7.org/fhir/contact-point-system#url", URL }, 
+    };
   };
 }

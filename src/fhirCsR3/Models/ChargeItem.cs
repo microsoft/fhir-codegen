@@ -923,5 +923,14 @@ namespace fhirCsR3.Models
     public const string BILLED = "billed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "planned",
+      "billable",
+      "not-billable",
+      "aborted",
+      "billed",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

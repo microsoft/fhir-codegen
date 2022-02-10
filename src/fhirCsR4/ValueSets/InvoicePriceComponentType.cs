@@ -72,9 +72,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBasePrice = "base";
 
     /// <summary>
+    /// Literal for code: InvoicePriceComponentTypeBasePrice
+    /// </summary>
+    public const string LiteralInvoicePriceComponentTypeBasePrice = "http://hl7.org/fhir/invoice-priceComponentType#base";
+
+    /// <summary>
     /// Literal for code: Deduction
     /// </summary>
     public const string LiteralDeduction = "deduction";
+
+    /// <summary>
+    /// Literal for code: InvoicePriceComponentTypeDeduction
+    /// </summary>
+    public const string LiteralInvoicePriceComponentTypeDeduction = "http://hl7.org/fhir/invoice-priceComponentType#deduction";
 
     /// <summary>
     /// Literal for code: Discount
@@ -82,9 +92,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiscount = "discount";
 
     /// <summary>
+    /// Literal for code: InvoicePriceComponentTypeDiscount
+    /// </summary>
+    public const string LiteralInvoicePriceComponentTypeDiscount = "http://hl7.org/fhir/invoice-priceComponentType#discount";
+
+    /// <summary>
     /// Literal for code: Informational
     /// </summary>
     public const string LiteralInformational = "informational";
+
+    /// <summary>
+    /// Literal for code: InvoicePriceComponentTypeInformational
+    /// </summary>
+    public const string LiteralInvoicePriceComponentTypeInformational = "http://hl7.org/fhir/invoice-priceComponentType#informational";
 
     /// <summary>
     /// Literal for code: Surcharge
@@ -92,8 +112,36 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurcharge = "surcharge";
 
     /// <summary>
+    /// Literal for code: InvoicePriceComponentTypeSurcharge
+    /// </summary>
+    public const string LiteralInvoicePriceComponentTypeSurcharge = "http://hl7.org/fhir/invoice-priceComponentType#surcharge";
+
+    /// <summary>
     /// Literal for code: Tax
     /// </summary>
     public const string LiteralTax = "tax";
+
+    /// <summary>
+    /// Literal for code: InvoicePriceComponentTypeTax
+    /// </summary>
+    public const string LiteralInvoicePriceComponentTypeTax = "http://hl7.org/fhir/invoice-priceComponentType#tax";
+
+    /// <summary>
+    /// Dictionary for looking up InvoicePriceComponentType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "base", BasePrice }, 
+      { "http://hl7.org/fhir/invoice-priceComponentType#base", BasePrice }, 
+      { "deduction", Deduction }, 
+      { "http://hl7.org/fhir/invoice-priceComponentType#deduction", Deduction }, 
+      { "discount", Discount }, 
+      { "http://hl7.org/fhir/invoice-priceComponentType#discount", Discount }, 
+      { "informational", Informational }, 
+      { "http://hl7.org/fhir/invoice-priceComponentType#informational", Informational }, 
+      { "surcharge", Surcharge }, 
+      { "http://hl7.org/fhir/invoice-priceComponentType#surcharge", Surcharge }, 
+      { "tax", Tax }, 
+      { "http://hl7.org/fhir/invoice-priceComponentType#tax", Tax }, 
+    };
   };
 }

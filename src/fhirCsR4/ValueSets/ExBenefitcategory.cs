@@ -270,9 +270,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalCare = "1";
 
     /// <summary>
+    /// Literal for code: ExBenefitcategoryMedicalCare
+    /// </summary>
+    public const string LiteralExBenefitcategoryMedicalCare = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#1";
+
+    /// <summary>
     /// Literal for code: RenalSupplies
     /// </summary>
     public const string LiteralRenalSupplies = "14";
+
+    /// <summary>
+    /// Literal for code: ExBenefitcategoryRenalSupplies
+    /// </summary>
+    public const string LiteralExBenefitcategoryRenalSupplies = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#14";
 
     /// <summary>
     /// Literal for code: Surgical
@@ -280,9 +290,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgical = "2";
 
     /// <summary>
+    /// Literal for code: ExBenefitcategorySurgical
+    /// </summary>
+    public const string LiteralExBenefitcategorySurgical = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#2";
+
+    /// <summary>
     /// Literal for code: DiagnosticDental
     /// </summary>
     public const string LiteralDiagnosticDental = "23";
+
+    /// <summary>
+    /// Literal for code: ExBenefitcategoryDiagnosticDental
+    /// </summary>
+    public const string LiteralExBenefitcategoryDiagnosticDental = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#23";
 
     /// <summary>
     /// Literal for code: Periodontics
@@ -290,9 +310,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeriodontics = "24";
 
     /// <summary>
+    /// Literal for code: ExBenefitcategoryPeriodontics
+    /// </summary>
+    public const string LiteralExBenefitcategoryPeriodontics = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#24";
+
+    /// <summary>
     /// Literal for code: Restorative
     /// </summary>
     public const string LiteralRestorative = "25";
+
+    /// <summary>
+    /// Literal for code: ExBenefitcategoryRestorative
+    /// </summary>
+    public const string LiteralExBenefitcategoryRestorative = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#25";
 
     /// <summary>
     /// Literal for code: Endodontics
@@ -300,9 +330,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndodontics = "26";
 
     /// <summary>
+    /// Literal for code: ExBenefitcategoryEndodontics
+    /// </summary>
+    public const string LiteralExBenefitcategoryEndodontics = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#26";
+
+    /// <summary>
     /// Literal for code: MaxillofacialProsthetics
     /// </summary>
     public const string LiteralMaxillofacialProsthetics = "27";
+
+    /// <summary>
+    /// Literal for code: ExBenefitcategoryMaxillofacialProsthetics
+    /// </summary>
+    public const string LiteralExBenefitcategoryMaxillofacialProsthetics = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#27";
 
     /// <summary>
     /// Literal for code: AdjunctiveDentalServices
@@ -310,9 +350,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdjunctiveDentalServices = "28";
 
     /// <summary>
+    /// Literal for code: ExBenefitcategoryAdjunctiveDentalServices
+    /// </summary>
+    public const string LiteralExBenefitcategoryAdjunctiveDentalServices = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#28";
+
+    /// <summary>
     /// Literal for code: Consultation
     /// </summary>
     public const string LiteralConsultation = "3";
+
+    /// <summary>
+    /// Literal for code: ExBenefitcategoryConsultation
+    /// </summary>
+    public const string LiteralExBenefitcategoryConsultation = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#3";
 
     /// <summary>
     /// Literal for code: HealthBenefitPlanCoverage
@@ -320,9 +370,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthBenefitPlanCoverage = "30";
 
     /// <summary>
+    /// Literal for code: ExBenefitcategoryHealthBenefitPlanCoverage
+    /// </summary>
+    public const string LiteralExBenefitcategoryHealthBenefitPlanCoverage = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#30";
+
+    /// <summary>
     /// Literal for code: DentalCare
     /// </summary>
     public const string LiteralDentalCare = "35";
+
+    /// <summary>
+    /// Literal for code: ExBenefitcategoryDentalCare
+    /// </summary>
+    public const string LiteralExBenefitcategoryDentalCare = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#35";
 
     /// <summary>
     /// Literal for code: DentalCrowns
@@ -330,9 +390,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDentalCrowns = "36";
 
     /// <summary>
+    /// Literal for code: ExBenefitcategoryDentalCrowns
+    /// </summary>
+    public const string LiteralExBenefitcategoryDentalCrowns = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#36";
+
+    /// <summary>
     /// Literal for code: DentalAccident
     /// </summary>
     public const string LiteralDentalAccident = "37";
+
+    /// <summary>
+    /// Literal for code: ExBenefitcategoryDentalAccident
+    /// </summary>
+    public const string LiteralExBenefitcategoryDentalAccident = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#37";
 
     /// <summary>
     /// Literal for code: DiagnosticXRay
@@ -340,9 +410,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiagnosticXRay = "4";
 
     /// <summary>
+    /// Literal for code: ExBenefitcategoryDiagnosticXRay
+    /// </summary>
+    public const string LiteralExBenefitcategoryDiagnosticXRay = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#4";
+
+    /// <summary>
     /// Literal for code: HospitalRoomAndBoard
     /// </summary>
     public const string LiteralHospitalRoomAndBoard = "49";
+
+    /// <summary>
+    /// Literal for code: ExBenefitcategoryHospitalRoomAndBoard
+    /// </summary>
+    public const string LiteralExBenefitcategoryHospitalRoomAndBoard = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#49";
 
     /// <summary>
     /// Literal for code: DiagnosticLab
@@ -350,9 +430,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiagnosticLab = "5";
 
     /// <summary>
+    /// Literal for code: ExBenefitcategoryDiagnosticLab
+    /// </summary>
+    public const string LiteralExBenefitcategoryDiagnosticLab = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#5";
+
+    /// <summary>
     /// Literal for code: MajorMedical
     /// </summary>
     public const string LiteralMajorMedical = "55";
+
+    /// <summary>
+    /// Literal for code: ExBenefitcategoryMajorMedical
+    /// </summary>
+    public const string LiteralExBenefitcategoryMajorMedical = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#55";
 
     /// <summary>
     /// Literal for code: MedicallyRelatedTransportation
@@ -360,9 +450,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicallyRelatedTransportation = "56";
 
     /// <summary>
+    /// Literal for code: ExBenefitcategoryMedicallyRelatedTransportation
+    /// </summary>
+    public const string LiteralExBenefitcategoryMedicallyRelatedTransportation = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#56";
+
+    /// <summary>
     /// Literal for code: InVitroFertilization
     /// </summary>
     public const string LiteralInVitroFertilization = "61";
+
+    /// <summary>
+    /// Literal for code: ExBenefitcategoryInVitroFertilization
+    /// </summary>
+    public const string LiteralExBenefitcategoryInVitroFertilization = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#61";
 
     /// <summary>
     /// Literal for code: MRIScan
@@ -370,9 +470,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMRIScan = "62";
 
     /// <summary>
+    /// Literal for code: ExBenefitcategoryMRIScan
+    /// </summary>
+    public const string LiteralExBenefitcategoryMRIScan = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#62";
+
+    /// <summary>
     /// Literal for code: DonorProcedures
     /// </summary>
     public const string LiteralDonorProcedures = "63";
+
+    /// <summary>
+    /// Literal for code: ExBenefitcategoryDonorProcedures
+    /// </summary>
+    public const string LiteralExBenefitcategoryDonorProcedures = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#63";
 
     /// <summary>
     /// Literal for code: Maternity
@@ -380,9 +490,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaternity = "69";
 
     /// <summary>
+    /// Literal for code: ExBenefitcategoryMaternity
+    /// </summary>
+    public const string LiteralExBenefitcategoryMaternity = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#69";
+
+    /// <summary>
     /// Literal for code: RenalDialysis
     /// </summary>
     public const string LiteralRenalDialysis = "76";
+
+    /// <summary>
+    /// Literal for code: ExBenefitcategoryRenalDialysis
+    /// </summary>
+    public const string LiteralExBenefitcategoryRenalDialysis = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#76";
 
     /// <summary>
     /// Literal for code: MedicalCoverage
@@ -390,9 +510,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalCoverage = "F1";
 
     /// <summary>
+    /// Literal for code: ExBenefitcategoryMedicalCoverage
+    /// </summary>
+    public const string LiteralExBenefitcategoryMedicalCoverage = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#F1";
+
+    /// <summary>
     /// Literal for code: DentalCoverage
     /// </summary>
     public const string LiteralDentalCoverage = "F3";
+
+    /// <summary>
+    /// Literal for code: ExBenefitcategoryDentalCoverage
+    /// </summary>
+    public const string LiteralExBenefitcategoryDentalCoverage = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#F3";
 
     /// <summary>
     /// Literal for code: HearingCoverage
@@ -400,8 +530,80 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHearingCoverage = "F4";
 
     /// <summary>
+    /// Literal for code: ExBenefitcategoryHearingCoverage
+    /// </summary>
+    public const string LiteralExBenefitcategoryHearingCoverage = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#F4";
+
+    /// <summary>
     /// Literal for code: VisionCoverage
     /// </summary>
     public const string LiteralVisionCoverage = "F6";
+
+    /// <summary>
+    /// Literal for code: ExBenefitcategoryVisionCoverage
+    /// </summary>
+    public const string LiteralExBenefitcategoryVisionCoverage = "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#F6";
+
+    /// <summary>
+    /// Dictionary for looking up ExBenefitcategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1", MedicalCare }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#1", MedicalCare }, 
+      { "14", RenalSupplies }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#14", RenalSupplies }, 
+      { "2", Surgical }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#2", Surgical }, 
+      { "23", DiagnosticDental }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#23", DiagnosticDental }, 
+      { "24", Periodontics }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#24", Periodontics }, 
+      { "25", Restorative }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#25", Restorative }, 
+      { "26", Endodontics }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#26", Endodontics }, 
+      { "27", MaxillofacialProsthetics }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#27", MaxillofacialProsthetics }, 
+      { "28", AdjunctiveDentalServices }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#28", AdjunctiveDentalServices }, 
+      { "3", Consultation }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#3", Consultation }, 
+      { "30", HealthBenefitPlanCoverage }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#30", HealthBenefitPlanCoverage }, 
+      { "35", DentalCare }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#35", DentalCare }, 
+      { "36", DentalCrowns }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#36", DentalCrowns }, 
+      { "37", DentalAccident }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#37", DentalAccident }, 
+      { "4", DiagnosticXRay }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#4", DiagnosticXRay }, 
+      { "49", HospitalRoomAndBoard }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#49", HospitalRoomAndBoard }, 
+      { "5", DiagnosticLab }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#5", DiagnosticLab }, 
+      { "55", MajorMedical }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#55", MajorMedical }, 
+      { "56", MedicallyRelatedTransportation }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#56", MedicallyRelatedTransportation }, 
+      { "61", InVitroFertilization }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#61", InVitroFertilization }, 
+      { "62", MRIScan }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#62", MRIScan }, 
+      { "63", DonorProcedures }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#63", DonorProcedures }, 
+      { "69", Maternity }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#69", Maternity }, 
+      { "76", RenalDialysis }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#76", RenalDialysis }, 
+      { "F1", MedicalCoverage }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#F1", MedicalCoverage }, 
+      { "F3", DentalCoverage }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#F3", DentalCoverage }, 
+      { "F4", HearingCoverage }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#F4", HearingCoverage }, 
+      { "F6", VisionCoverage }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-benefitcategory#F6", VisionCoverage }, 
+    };
   };
 }

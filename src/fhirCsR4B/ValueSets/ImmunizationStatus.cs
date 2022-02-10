@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: EventStatusCompleted
+    /// </summary>
+    public const string LiteralEventStatusCompleted = "http://hl7.org/fhir/event-status#completed";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: EventStatusEnteredInError
+    /// </summary>
+    public const string LiteralEventStatusEnteredInError = "http://hl7.org/fhir/event-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: NotDone
     /// </summary>
     public const string LiteralNotDone = "not-done";
+
+    /// <summary>
+    /// Literal for code: EventStatusNotDone
+    /// </summary>
+    public const string LiteralEventStatusNotDone = "http://hl7.org/fhir/event-status#not-done";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/event-status#completed", Completed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/event-status#entered-in-error", EnteredInError }, 
+      { "not-done", NotDone }, 
+      { "http://hl7.org/fhir/event-status#not-done", NotDone }, 
+    };
   };
 }

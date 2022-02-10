@@ -326,6 +326,10 @@ namespace fhirCsR5.Models
   public static class ConditionDefinitionPreconditionTypeCodes {
     public const string SENSITIVE = "sensitive";
     public const string SPECIFIC = "specific";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "sensitive",
+      "specific",
+    };
   }
   /// <summary>
   /// Questionnaire for this condition.
@@ -436,6 +440,11 @@ namespace fhirCsR5.Models
     public const string PREADMIT = "preadmit";
     public const string DIFF_DIAGNOSIS = "diff-diagnosis";
     public const string OUTCOME = "outcome";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "preadmit",
+      "diff-diagnosis",
+      "outcome",
+    };
   }
   /// <summary>
   /// Plan that is appropriate.
@@ -576,17 +585,33 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// Whether bodySite is appropriate to collect for this condition.
     /// </summary>
     public bool? HasBodySite { get; set; }
+    /// <summary>
+    /// Extension container element for HasBodySite
+    /// </summary>
+    public Element _HasBodySite { get; set; }
     /// <summary>
     /// Whether Severity is appropriate to collect for this condition.
     /// </summary>
     public bool? HasSeverity { get; set; }
     /// <summary>
+    /// Extension container element for HasSeverity
+    /// </summary>
+    public Element _HasSeverity { get; set; }
+    /// <summary>
     /// Whether stage is appropriate to collect for this condition.
     /// </summary>
     public bool? HasStage { get; set; }
+    /// <summary>
+    /// Extension container element for HasStage
+    /// </summary>
+    public Element _HasStage { get; set; }
     /// <summary>
     /// Typically, this is used for identifiers that can go in an HL7 V3 II (instance identifier) data type, and can then identify this condition definition outside of FHIR, where it is not possible to use the logical URI.
     /// </summary>
@@ -790,6 +815,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("experimental", (bool)Experimental!);
       }
 
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Date))
       {
         writer.WriteString("date", (string)Date!);
@@ -891,14 +922,32 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("hasSeverity", (bool)HasSeverity!);
       }
 
+      if (_HasSeverity != null)
+      {
+        writer.WritePropertyName("_hasSeverity");
+        _HasSeverity.SerializeJson(writer, options);
+      }
+
       if (HasBodySite != null)
       {
         writer.WriteBoolean("hasBodySite", (bool)HasBodySite!);
       }
 
+      if (_HasBodySite != null)
+      {
+        writer.WritePropertyName("_hasBodySite");
+        _HasBodySite.SerializeJson(writer, options);
+      }
+
       if (HasStage != null)
       {
         writer.WriteBoolean("hasStage", (bool)HasStage!);
+      }
+
+      if (_HasStage != null)
+      {
+        writer.WritePropertyName("_hasStage");
+        _HasStage.SerializeJson(writer, options);
       }
 
       if ((Definition != null) && (Definition.Count != 0))
@@ -1128,16 +1177,36 @@ namespace fhirCsR5.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR5.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "hasBodySite":
           HasBodySite = reader.GetBoolean();
+          break;
+
+        case "_hasBodySite":
+          _HasBodySite = new fhirCsR5.Models.Element();
+          _HasBodySite.DeserializeJson(ref reader, options);
           break;
 
         case "hasSeverity":
           HasSeverity = reader.GetBoolean();
           break;
 
+        case "_hasSeverity":
+          _HasSeverity = new fhirCsR5.Models.Element();
+          _HasSeverity.DeserializeJson(ref reader, options);
+          break;
+
         case "hasStage":
           HasStage = reader.GetBoolean();
+          break;
+
+        case "_hasStage":
+          _HasStage = new fhirCsR5.Models.Element();
+          _HasStage.DeserializeJson(ref reader, options);
           break;
 
         case "identifier":
@@ -1495,5 +1564,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

@@ -2376,6 +2376,11 @@ namespace fhirCsR4.Models
     public const string DISPLAY = "display";
     public const string PRINT = "print";
     public const string PRINTOPER = "printoper";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "display",
+      "print",
+      "printoper",
+    };
   }
   /// <summary>
   /// All insurance coverages for the patient which may be applicable for reimbursement, of the products and services listed in the claim, are typically provided in the claim to allow insurers to confirm the ordering of the insurance coverages relative to local 'coordination of benefit' rules. One coverage (and only one) with 'focal=true' is to be used in the adjudication of this claim. Coverages appearing before the focal Coverage in the list, and where 'subrogation=false', should provide a reference to the ClaimResponse containing the adjudication results of the prior claim.
@@ -2403,6 +2408,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool Focal { get; set; }
     /// <summary>
+    /// Extension container element for Focal
+    /// </summary>
+    public Element _Focal { get; set; }
+    /// <summary>
     /// A number to uniquely identify insurance entries and provide a sequence of coverages to convey coordination of benefit order.
     /// </summary>
     public uint Sequence { get; set; }
@@ -2420,6 +2429,12 @@ namespace fhirCsR4.Models
       writer.WriteNumber("sequence", Sequence);
 
       writer.WriteBoolean("focal", Focal);
+
+      if (_Focal != null)
+      {
+        writer.WritePropertyName("_focal");
+        _Focal.SerializeJson(writer, options);
+      }
 
       if (Coverage != null)
       {
@@ -2477,6 +2492,11 @@ namespace fhirCsR4.Models
 
         case "focal":
           Focal = reader.GetBoolean();
+          break;
+
+        case "_focal":
+          _Focal = new fhirCsR4.Models.Element();
+          _Focal.DeserializeJson(ref reader, options);
           break;
 
         case "sequence":
@@ -3448,6 +3468,12 @@ namespace fhirCsR4.Models
     public const string COMPLETE = "complete";
     public const string ERROR = "error";
     public const string PARTIAL = "partial";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "queued",
+      "complete",
+      "error",
+      "partial",
+    };
   }
   /// <summary>
   /// Code Values for the ClaimResponse.status field
@@ -3457,6 +3483,12 @@ namespace fhirCsR4.Models
     public const string CANCELLED = "cancelled";
     public const string DRAFT = "draft";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "cancelled",
+      "draft",
+      "entered-in-error",
+    };
   }
   /// <summary>
   /// Code Values for the ClaimResponse.use field
@@ -3465,5 +3497,10 @@ namespace fhirCsR4.Models
     public const string CLAIM = "claim";
     public const string PREAUTHORIZATION = "preauthorization";
     public const string PREDETERMINATION = "predetermination";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "claim",
+      "preauthorization",
+      "predetermination",
+    };
   }
 }

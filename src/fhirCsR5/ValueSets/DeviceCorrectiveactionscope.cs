@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLotNumbers = "lot-numbers";
 
     /// <summary>
+    /// Literal for code: DeviceCorrectiveactionscopeLotNumbers
+    /// </summary>
+    public const string LiteralDeviceCorrectiveactionscopeLotNumbers = "http://hl7.org/fhir/device-correctiveactionscope#lot-numbers";
+
+    /// <summary>
     /// Literal for code: Model
     /// </summary>
     public const string LiteralModel = "model";
 
     /// <summary>
+    /// Literal for code: DeviceCorrectiveactionscopeModel
+    /// </summary>
+    public const string LiteralDeviceCorrectiveactionscopeModel = "http://hl7.org/fhir/device-correctiveactionscope#model";
+
+    /// <summary>
     /// Literal for code: SerialNumbers
     /// </summary>
     public const string LiteralSerialNumbers = "serial-numbers";
+
+    /// <summary>
+    /// Literal for code: DeviceCorrectiveactionscopeSerialNumbers
+    /// </summary>
+    public const string LiteralDeviceCorrectiveactionscopeSerialNumbers = "http://hl7.org/fhir/device-correctiveactionscope#serial-numbers";
+
+    /// <summary>
+    /// Dictionary for looking up DeviceCorrectiveactionscope Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "lot-numbers", LotNumbers }, 
+      { "http://hl7.org/fhir/device-correctiveactionscope#lot-numbers", LotNumbers }, 
+      { "model", Model }, 
+      { "http://hl7.org/fhir/device-correctiveactionscope#model", Model }, 
+      { "serial-numbers", SerialNumbers }, 
+      { "http://hl7.org/fhir/device-correctiveactionscope#serial-numbers", SerialNumbers }, 
+    };
   };
 }

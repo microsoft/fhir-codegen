@@ -24,6 +24,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? IsActive { get; set; }
     /// <summary>
+    /// Extension container element for IsActive
+    /// </summary>
+    public Element _IsActive { get; set; }
+    /// <summary>
     /// The actual ingredient - either a substance (simple ingredient) or another medication.
     /// </summary>
     public CodeableConcept ItemCodeableConcept { get; set; }
@@ -59,6 +63,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("isActive", (bool)IsActive!);
       }
 
+      if (_IsActive != null)
+      {
+        writer.WritePropertyName("_isActive");
+        _IsActive.SerializeJson(writer, options);
+      }
+
       if (Amount != null)
       {
         writer.WritePropertyName("amount");
@@ -84,6 +94,11 @@ namespace fhirCsR3.Models
 
         case "isActive":
           IsActive = reader.GetBoolean();
+          break;
+
+        case "_isActive":
+          _IsActive = new fhirCsR3.Models.Element();
+          _IsActive.DeserializeJson(ref reader, options);
           break;
 
         case "itemCodeableConcept":
@@ -538,9 +553,17 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? IsBrand { get; set; }
     /// <summary>
+    /// Extension container element for IsBrand
+    /// </summary>
+    public Element _IsBrand { get; set; }
+    /// <summary>
     /// Set to true if the medication can be obtained without an order from a prescriber.
     /// </summary>
     public bool? IsOverTheCounter { get; set; }
+    /// <summary>
+    /// Extension container element for IsOverTheCounter
+    /// </summary>
+    public Element _IsOverTheCounter { get; set; }
     /// <summary>
     /// Describes the details of the manufacturer of the medication product.  This is not intended to represent the distributor of a medication product.
     /// </summary>
@@ -596,9 +619,21 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("isBrand", (bool)IsBrand!);
       }
 
+      if (_IsBrand != null)
+      {
+        writer.WritePropertyName("_isBrand");
+        _IsBrand.SerializeJson(writer, options);
+      }
+
       if (IsOverTheCounter != null)
       {
         writer.WriteBoolean("isOverTheCounter", (bool)IsOverTheCounter!);
+      }
+
+      if (_IsOverTheCounter != null)
+      {
+        writer.WritePropertyName("_isOverTheCounter");
+        _IsOverTheCounter.SerializeJson(writer, options);
       }
 
       if (Manufacturer != null)
@@ -725,8 +760,18 @@ namespace fhirCsR3.Models
           IsBrand = reader.GetBoolean();
           break;
 
+        case "_isBrand":
+          _IsBrand = new fhirCsR3.Models.Element();
+          _IsBrand.DeserializeJson(ref reader, options);
+          break;
+
         case "isOverTheCounter":
           IsOverTheCounter = reader.GetBoolean();
+          break;
+
+        case "_isOverTheCounter":
+          _IsOverTheCounter = new fhirCsR3.Models.Element();
+          _IsOverTheCounter.DeserializeJson(ref reader, options);
           break;
 
         case "manufacturer":
@@ -786,5 +831,10 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string INACTIVE = "inactive";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "inactive",
+      "entered-in-error",
+    };
   }
 }

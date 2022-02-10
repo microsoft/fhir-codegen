@@ -81,9 +81,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: RequestStatusActive
+    /// </summary>
+    public const string LiteralRequestStatusActive = "http://hl7.org/fhir/request-status#active";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: RequestStatusCompleted
+    /// </summary>
+    public const string LiteralRequestStatusCompleted = "http://hl7.org/fhir/request-status#completed";
 
     /// <summary>
     /// Literal for code: Draft
@@ -91,9 +101,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDraft = "draft";
 
     /// <summary>
+    /// Literal for code: RequestStatusDraft
+    /// </summary>
+    public const string LiteralRequestStatusDraft = "http://hl7.org/fhir/request-status#draft";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: RequestStatusEnteredInError
+    /// </summary>
+    public const string LiteralRequestStatusEnteredInError = "http://hl7.org/fhir/request-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: OnHold
@@ -101,13 +121,48 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOnHold = "on-hold";
 
     /// <summary>
+    /// Literal for code: RequestStatusOnHold
+    /// </summary>
+    public const string LiteralRequestStatusOnHold = "http://hl7.org/fhir/request-status#on-hold";
+
+    /// <summary>
     /// Literal for code: Revoked
     /// </summary>
     public const string LiteralRevoked = "revoked";
 
     /// <summary>
+    /// Literal for code: RequestStatusRevoked
+    /// </summary>
+    public const string LiteralRequestStatusRevoked = "http://hl7.org/fhir/request-status#revoked";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: RequestStatusUnknown
+    /// </summary>
+    public const string LiteralRequestStatusUnknown = "http://hl7.org/fhir/request-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up RequestStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/request-status#active", Active }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/request-status#completed", Completed }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/request-status#draft", Draft }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/request-status#entered-in-error", EnteredInError }, 
+      { "on-hold", OnHold }, 
+      { "http://hl7.org/fhir/request-status#on-hold", OnHold }, 
+      { "revoked", Revoked }, 
+      { "http://hl7.org/fhir/request-status#revoked", Revoked }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/request-status#unknown", Unknown }, 
+    };
   };
 }

@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCreate = "create";
 
     /// <summary>
+    /// Literal for code: ActionTypeCreate
+    /// </summary>
+    public const string LiteralActionTypeCreate = "http://terminology.hl7.org/CodeSystem/action-type#create";
+
+    /// <summary>
     /// Literal for code: FireEvent
     /// </summary>
     public const string LiteralFireEvent = "fire-event";
+
+    /// <summary>
+    /// Literal for code: ActionTypeFireEvent
+    /// </summary>
+    public const string LiteralActionTypeFireEvent = "http://terminology.hl7.org/CodeSystem/action-type#fire-event";
 
     /// <summary>
     /// Literal for code: Remove
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRemove = "remove";
 
     /// <summary>
+    /// Literal for code: ActionTypeRemove
+    /// </summary>
+    public const string LiteralActionTypeRemove = "http://terminology.hl7.org/CodeSystem/action-type#remove";
+
+    /// <summary>
     /// Literal for code: Update
     /// </summary>
     public const string LiteralUpdate = "update";
+
+    /// <summary>
+    /// Literal for code: ActionTypeUpdate
+    /// </summary>
+    public const string LiteralActionTypeUpdate = "http://terminology.hl7.org/CodeSystem/action-type#update";
+
+    /// <summary>
+    /// Dictionary for looking up ActionType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "create", Create }, 
+      { "http://terminology.hl7.org/CodeSystem/action-type#create", Create }, 
+      { "fire-event", FireEvent }, 
+      { "http://terminology.hl7.org/CodeSystem/action-type#fire-event", FireEvent }, 
+      { "remove", Remove }, 
+      { "http://terminology.hl7.org/CodeSystem/action-type#remove", Remove }, 
+      { "update", Update }, 
+      { "http://terminology.hl7.org/CodeSystem/action-type#update", Update }, 
+    };
   };
 }

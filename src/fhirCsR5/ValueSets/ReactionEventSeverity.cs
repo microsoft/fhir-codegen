@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMild = "mild";
 
     /// <summary>
+    /// Literal for code: ReactionEventSeverityMild
+    /// </summary>
+    public const string LiteralReactionEventSeverityMild = "http://hl7.org/fhir/reaction-event-severity#mild";
+
+    /// <summary>
     /// Literal for code: Moderate
     /// </summary>
     public const string LiteralModerate = "moderate";
 
     /// <summary>
+    /// Literal for code: ReactionEventSeverityModerate
+    /// </summary>
+    public const string LiteralReactionEventSeverityModerate = "http://hl7.org/fhir/reaction-event-severity#moderate";
+
+    /// <summary>
     /// Literal for code: Severe
     /// </summary>
     public const string LiteralSevere = "severe";
+
+    /// <summary>
+    /// Literal for code: ReactionEventSeveritySevere
+    /// </summary>
+    public const string LiteralReactionEventSeveritySevere = "http://hl7.org/fhir/reaction-event-severity#severe";
+
+    /// <summary>
+    /// Dictionary for looking up ReactionEventSeverity Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "mild", Mild }, 
+      { "http://hl7.org/fhir/reaction-event-severity#mild", Mild }, 
+      { "moderate", Moderate }, 
+      { "http://hl7.org/fhir/reaction-event-severity#moderate", Moderate }, 
+      { "severe", Severe }, 
+      { "http://hl7.org/fhir/reaction-event-severity#severe", Severe }, 
+    };
   };
 }

@@ -40,6 +40,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? Exclude { get; set; }
     /// <summary>
+    /// Extension container element for Exclude
+    /// </summary>
+    public Element _Exclude { get; set; }
+    /// <summary>
     /// Indicates what effective period the study covers.
     /// </summary>
     public string ParticipantEffectiveDateTime { get; set; }
@@ -183,6 +187,12 @@ namespace fhirCsR4.Models
       if (Exclude != null)
       {
         writer.WriteBoolean("exclude", (bool)Exclude!);
+      }
+
+      if (_Exclude != null)
+      {
+        writer.WritePropertyName("_exclude");
+        _Exclude.SerializeJson(writer, options);
       }
 
       if (UnitOfMeasure != null)
@@ -343,6 +353,11 @@ namespace fhirCsR4.Models
 
         case "exclude":
           Exclude = reader.GetBoolean();
+          break;
+
+        case "_exclude":
+          _Exclude = new fhirCsR4.Models.Element();
+          _Exclude.DeserializeJson(ref reader, options);
           break;
 
         case "participantEffectiveDateTime":
@@ -512,6 +527,14 @@ namespace fhirCsR4.Models
     public const string MEAN_OF_MEDIAN = "mean-of-median";
     public const string MEDIAN_OF_MEAN = "median-of-mean";
     public const string MEDIAN_OF_MEDIAN = "median-of-median";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "mean",
+      "median",
+      "mean-of-mean",
+      "mean-of-median",
+      "median-of-mean",
+      "median-of-median",
+    };
   }
   /// <summary>
   /// Code Values for the ResearchElementDefinition.characteristic.studyEffectiveGroupMeasure field
@@ -523,6 +546,14 @@ namespace fhirCsR4.Models
     public const string MEAN_OF_MEDIAN = "mean-of-median";
     public const string MEDIAN_OF_MEAN = "median-of-mean";
     public const string MEDIAN_OF_MEDIAN = "median-of-median";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "mean",
+      "median",
+      "mean-of-mean",
+      "mean-of-median",
+      "median-of-mean",
+      "median-of-median",
+    };
   }
   /// <summary>
   /// The ResearchElementDefinition resource describes a "PICO" element that knowledge (evidence, assertion, recommendation) is about.
@@ -601,6 +632,10 @@ namespace fhirCsR4.Models
     /// Allows filtering of research element definitions that are appropriate for use versus not.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// Typically, this is used for identifiers that can go in an HL7 V3 II (instance identifier) data type, and can then identify this research element definition outside of FHIR, where it is not possible to use the logical URI.
     /// </summary>
@@ -857,6 +892,12 @@ namespace fhirCsR4.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (SubjectCodeableConcept != null)
@@ -1413,6 +1454,11 @@ namespace fhirCsR4.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR4.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "identifier":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -1793,6 +1839,12 @@ namespace fhirCsR4.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
   /// <summary>
   /// Code Values for the ResearchElementDefinition.type field
@@ -1801,6 +1853,11 @@ namespace fhirCsR4.Models
     public const string POPULATION = "population";
     public const string EXPOSURE = "exposure";
     public const string OUTCOME = "outcome";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "population",
+      "exposure",
+      "outcome",
+    };
   }
   /// <summary>
   /// Code Values for the ResearchElementDefinition.variableType field
@@ -1809,5 +1866,10 @@ namespace fhirCsR4.Models
     public const string DICHOTOMOUS = "dichotomous";
     public const string CONTINUOUS = "continuous";
     public const string DESCRIPTIVE = "descriptive";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "dichotomous",
+      "continuous",
+      "descriptive",
+    };
   }
 }

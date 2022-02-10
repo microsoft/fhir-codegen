@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFixedCode = "fixed";
 
     /// <summary>
+    /// Literal for code: ConceptmapUnmappedModeFixedCode
+    /// </summary>
+    public const string LiteralConceptmapUnmappedModeFixedCode = "http://hl7.org/fhir/conceptmap-unmapped-mode#fixed";
+
+    /// <summary>
     /// Literal for code: OtherMap
     /// </summary>
     public const string LiteralOtherMap = "other-map";
 
     /// <summary>
+    /// Literal for code: ConceptmapUnmappedModeOtherMap
+    /// </summary>
+    public const string LiteralConceptmapUnmappedModeOtherMap = "http://hl7.org/fhir/conceptmap-unmapped-mode#other-map";
+
+    /// <summary>
     /// Literal for code: ProvidedCode
     /// </summary>
     public const string LiteralProvidedCode = "provided";
+
+    /// <summary>
+    /// Literal for code: ConceptmapUnmappedModeProvidedCode
+    /// </summary>
+    public const string LiteralConceptmapUnmappedModeProvidedCode = "http://hl7.org/fhir/conceptmap-unmapped-mode#provided";
+
+    /// <summary>
+    /// Dictionary for looking up ConceptmapUnmappedMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "fixed", FixedCode }, 
+      { "http://hl7.org/fhir/conceptmap-unmapped-mode#fixed", FixedCode }, 
+      { "other-map", OtherMap }, 
+      { "http://hl7.org/fhir/conceptmap-unmapped-mode#other-map", OtherMap }, 
+      { "provided", ProvidedCode }, 
+      { "http://hl7.org/fhir/conceptmap-unmapped-mode#provided", ProvidedCode }, 
+    };
   };
 }

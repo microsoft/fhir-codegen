@@ -143,6 +143,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool Verified { get; set; }
     /// <summary>
+    /// Extension container element for Verified
+    /// </summary>
+    public Element _Verified { get; set; }
+    /// <summary>
     /// Who verified the instruction (Patient, Relative or other Authorized Person).
     /// </summary>
     public Reference VerifiedWith { get; set; }
@@ -158,6 +162,12 @@ namespace fhirCsR4B.Models
       ((fhirCsR4B.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
       writer.WriteBoolean("verified", Verified);
+
+      if (_Verified != null)
+      {
+        writer.WritePropertyName("_verified");
+        _Verified.SerializeJson(writer, options);
+      }
 
       if (VerifiedWith != null)
       {
@@ -199,6 +209,11 @@ namespace fhirCsR4B.Models
 
         case "verified":
           Verified = reader.GetBoolean();
+          break;
+
+        case "_verified":
+          _Verified = new fhirCsR4B.Models.Element();
+          _Verified.DeserializeJson(ref reader, options);
           break;
 
         case "verifiedWith":
@@ -436,6 +451,12 @@ namespace fhirCsR4B.Models
     public const string RELATED = "related";
     public const string DEPENDENTS = "dependents";
     public const string AUTHOREDBY = "authoredby";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "instance",
+      "related",
+      "dependents",
+      "authoredby",
+    };
   }
   /// <summary>
   /// An exception to the base policy of this consent. An exception can be an addition or removal of access permissions.
@@ -912,6 +933,10 @@ namespace fhirCsR4B.Models
   public static class ConsentProvisionTypeCodes {
     public const string DENY = "deny";
     public const string PERMIT = "permit";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "deny",
+      "permit",
+    };
   }
   /// <summary>
   /// A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
@@ -1402,5 +1427,13 @@ namespace fhirCsR4B.Models
     public const string REJECTED = "rejected";
     public const string INACTIVE = "inactive";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "proposed",
+      "active",
+      "rejected",
+      "inactive",
+      "entered-in-error",
+    };
   }
 }

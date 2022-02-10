@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAccepted = "accepted";
 
     /// <summary>
+    /// Literal for code: ParticipationstatusAccepted
+    /// </summary>
+    public const string LiteralParticipationstatusAccepted = "http://hl7.org/fhir/participationstatus#accepted";
+
+    /// <summary>
     /// Literal for code: Declined
     /// </summary>
     public const string LiteralDeclined = "declined";
+
+    /// <summary>
+    /// Literal for code: ParticipationstatusDeclined
+    /// </summary>
+    public const string LiteralParticipationstatusDeclined = "http://hl7.org/fhir/participationstatus#declined";
 
     /// <summary>
     /// Literal for code: NeedsAction
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeedsAction = "needs-action";
 
     /// <summary>
+    /// Literal for code: ParticipationstatusNeedsAction
+    /// </summary>
+    public const string LiteralParticipationstatusNeedsAction = "http://hl7.org/fhir/participationstatus#needs-action";
+
+    /// <summary>
     /// Literal for code: Tentative
     /// </summary>
     public const string LiteralTentative = "tentative";
+
+    /// <summary>
+    /// Literal for code: ParticipationstatusTentative
+    /// </summary>
+    public const string LiteralParticipationstatusTentative = "http://hl7.org/fhir/participationstatus#tentative";
+
+    /// <summary>
+    /// Dictionary for looking up Participationstatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "accepted", Accepted }, 
+      { "http://hl7.org/fhir/participationstatus#accepted", Accepted }, 
+      { "declined", Declined }, 
+      { "http://hl7.org/fhir/participationstatus#declined", Declined }, 
+      { "needs-action", NeedsAction }, 
+      { "http://hl7.org/fhir/participationstatus#needs-action", NeedsAction }, 
+      { "tentative", Tentative }, 
+      { "http://hl7.org/fhir/participationstatus#tentative", Tentative }, 
+    };
   };
 }

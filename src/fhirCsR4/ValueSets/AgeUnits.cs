@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class AgeUnitsCodes
   {
     /// <summary>
-    /// 
+    /// years
     /// </summary>
     public static readonly Coding Years = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://unitsofmeasure.org"
     };
     /// <summary>
-    /// 
+    /// days
     /// </summary>
     public static readonly Coding Days = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://unitsofmeasure.org"
     };
     /// <summary>
-    /// 
+    /// hours
     /// </summary>
     public static readonly Coding Hours = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://unitsofmeasure.org"
     };
     /// <summary>
-    /// 
+    /// minutes
     /// </summary>
     public static readonly Coding Minutes = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://unitsofmeasure.org"
     };
     /// <summary>
-    /// 
+    /// months
     /// </summary>
     public static readonly Coding Months = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://unitsofmeasure.org"
     };
     /// <summary>
-    /// 
+    /// weeks
     /// </summary>
     public static readonly Coding Weeks = new Coding
     {
@@ -72,9 +72,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralYears = "a";
 
     /// <summary>
+    /// Literal for code: NONEYears
+    /// </summary>
+    public const string LiteralNONEYears = "http://unitsofmeasure.org#a";
+
+    /// <summary>
     /// Literal for code: Days
     /// </summary>
     public const string LiteralDays = "d";
+
+    /// <summary>
+    /// Literal for code: NONEDays
+    /// </summary>
+    public const string LiteralNONEDays = "http://unitsofmeasure.org#d";
 
     /// <summary>
     /// Literal for code: Hours
@@ -82,9 +92,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHours = "h";
 
     /// <summary>
+    /// Literal for code: NONEHours
+    /// </summary>
+    public const string LiteralNONEHours = "http://unitsofmeasure.org#h";
+
+    /// <summary>
     /// Literal for code: Minutes
     /// </summary>
     public const string LiteralMinutes = "min";
+
+    /// <summary>
+    /// Literal for code: NONEMinutes
+    /// </summary>
+    public const string LiteralNONEMinutes = "http://unitsofmeasure.org#min";
 
     /// <summary>
     /// Literal for code: Months
@@ -92,8 +112,36 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMonths = "mo";
 
     /// <summary>
+    /// Literal for code: NONEMonths
+    /// </summary>
+    public const string LiteralNONEMonths = "http://unitsofmeasure.org#mo";
+
+    /// <summary>
     /// Literal for code: Weeks
     /// </summary>
     public const string LiteralWeeks = "wk";
+
+    /// <summary>
+    /// Literal for code: NONEWeeks
+    /// </summary>
+    public const string LiteralNONEWeeks = "http://unitsofmeasure.org#wk";
+
+    /// <summary>
+    /// Dictionary for looking up AgeUnits Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "a", Years }, 
+      { "http://unitsofmeasure.org#a", Years }, 
+      { "d", Days }, 
+      { "http://unitsofmeasure.org#d", Days }, 
+      { "h", Hours }, 
+      { "http://unitsofmeasure.org#h", Hours }, 
+      { "min", Minutes }, 
+      { "http://unitsofmeasure.org#min", Minutes }, 
+      { "mo", Months }, 
+      { "http://unitsofmeasure.org#mo", Months }, 
+      { "wk", Weeks }, 
+      { "http://unitsofmeasure.org#wk", Weeks }, 
+    };
   };
 }

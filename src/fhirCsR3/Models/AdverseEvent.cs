@@ -206,6 +206,10 @@ namespace fhirCsR3.Models
   public static class AdverseEventSuspectEntityCausalityCodes {
     public const string CAUSALITY1 = "causality1";
     public const string CAUSALITY2 = "causality2";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "causality1",
+      "causality2",
+    };
   }
   /// <summary>
   /// Actual or  potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.
@@ -706,5 +710,9 @@ namespace fhirCsR3.Models
   public static class AdverseEventCategoryCodes {
     public const string AE = "AE";
     public const string PAE = "PAE";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "AE",
+      "PAE",
+    };
   }
 }

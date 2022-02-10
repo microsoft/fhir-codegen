@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class DevicemetricTypeCodes
   {
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD
     /// </summary>
     public static readonly Coding MDCECGLEAD = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_I
     /// </summary>
     public static readonly Coding MDCECGLEADI = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_II
     /// </summary>
     public static readonly Coding MDCECGLEADII = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V1
     /// </summary>
     public static readonly Coding MDCECGLEADV1 = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V2
     /// </summary>
     public static readonly Coding MDCECGLEADV2 = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V3
     /// </summary>
     public static readonly Coding MDCECGLEADV3 = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V4
     /// </summary>
     public static readonly Coding MDCECGLEADV4 = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V5
     /// </summary>
     public static readonly Coding MDCECGLEADV5 = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V6
     /// </summary>
     public static readonly Coding MDCECGLEADV6 = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V7
     /// </summary>
     public static readonly Coding MDCECGLEADV7 = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V2R
     /// </summary>
     public static readonly Coding MDCECGLEADV2R = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V3R
     /// </summary>
     public static readonly Coding MDCECGLEADV3R = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V4R
     /// </summary>
     public static readonly Coding MDCECGLEADV4R = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V5R
     /// </summary>
     public static readonly Coding MDCECGLEADV5R = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V6R
     /// </summary>
     public static readonly Coding MDCECGLEADV6R = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V7R
     /// </summary>
     public static readonly Coding MDCECGLEADV7R = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_VX
     /// </summary>
     public static readonly Coding MDCECGLEADVX = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_VY
     /// </summary>
     public static readonly Coding MDCECGLEADVY = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_VZ
     /// </summary>
     public static readonly Coding MDCECGLEADVZ = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_CC5
     /// </summary>
     public static readonly Coding MDCECGLEADCC5 = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_CM5
     /// </summary>
     public static readonly Coding MDCECGLEADCM5 = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_LA
     /// </summary>
     public static readonly Coding MDCECGLEADLA = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_RA
     /// </summary>
     public static readonly Coding MDCECGLEADRA = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_LL
     /// </summary>
     public static readonly Coding MDCECGLEADLL = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_fI
     /// </summary>
     public static readonly Coding MDCECGLEADFI = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_fE
     /// </summary>
     public static readonly Coding MDCECGLEADFE = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_fC
     /// </summary>
     public static readonly Coding MDCECGLEADFC = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_fA
     /// </summary>
     public static readonly Coding MDCECGLEADFA = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_fM
     /// </summary>
     public static readonly Coding MDCECGLEADFM = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_fF
     /// </summary>
     public static readonly Coding MDCECGLEADFF = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_fH
     /// </summary>
     public static readonly Coding MDCECGLEADFH = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_Ical
     /// </summary>
     public static readonly Coding MDCECGLEADIcal = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_IIcal
     /// </summary>
     public static readonly Coding MDCECGLEADIIcal = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V1cal
     /// </summary>
     public static readonly Coding MDCECGLEADV1cal = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V2cal
     /// </summary>
     public static readonly Coding MDCECGLEADV2cal = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V3cal
     /// </summary>
     public static readonly Coding MDCECGLEADV3cal = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V4cal
     /// </summary>
     public static readonly Coding MDCECGLEADV4cal = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V5cal
     /// </summary>
     public static readonly Coding MDCECGLEADV5cal = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V6cal
     /// </summary>
     public static readonly Coding MDCECGLEADV6cal = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V7cal
     /// </summary>
     public static readonly Coding MDCECGLEADV7cal = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V2Rcal
     /// </summary>
     public static readonly Coding MDCECGLEADV2Rcal = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V3Rcal
     /// </summary>
     public static readonly Coding MDCECGLEADV3Rcal = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V4Rcal
     /// </summary>
     public static readonly Coding MDCECGLEADV4Rcal = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V5Rcal
     /// </summary>
     public static readonly Coding MDCECGLEADV5Rcal = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V6Rcal
     /// </summary>
     public static readonly Coding MDCECGLEADV6Rcal = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V7Rcal
     /// </summary>
     public static readonly Coding MDCECGLEADV7Rcal = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_VXcal
     /// </summary>
     public static readonly Coding MDCECGLEADVXcal = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_VYcal
     /// </summary>
     public static readonly Coding MDCECGLEADVYcal = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_VZcal
     /// </summary>
     public static readonly Coding MDCECGLEADVZcal = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_C5cal
     /// </summary>
     public static readonly Coding MDCECGLEADC5cal = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_CM5cal
     /// </summary>
     public static readonly Coding MDCECGLEADCM5cal = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_LAcal
     /// </summary>
     public static readonly Coding MDCECGLEADLAcal = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_RAcal
     /// </summary>
     public static readonly Coding MDCECGLEADRAcal = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_LLcal
     /// </summary>
     public static readonly Coding MDCECGLEADLLcal = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_fIcal
     /// </summary>
     public static readonly Coding MDCECGLEADFIcal = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_fEcal
     /// </summary>
     public static readonly Coding MDCECGLEADFEcal = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_fCcal
     /// </summary>
     public static readonly Coding MDCECGLEADFCcal = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_fAcal
     /// </summary>
     public static readonly Coding MDCECGLEADFAcal = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_fMcal
     /// </summary>
     public static readonly Coding MDCECGLEADFMcal = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_fFcal
     /// </summary>
     public static readonly Coding MDCECGLEADFFcal = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_fHcal
     /// </summary>
     public static readonly Coding MDCECGLEADFHcal = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_III
     /// </summary>
     public static readonly Coding MDCECGLEADIII = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_AVR
     /// </summary>
     public static readonly Coding MDCECGLEADAVR = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_AVL
     /// </summary>
     public static readonly Coding MDCECGLEADAVL = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_AVF
     /// </summary>
     public static readonly Coding MDCECGLEADAVF = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_AVRneg
     /// </summary>
     public static readonly Coding MDCECGLEADAVRneg = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_C
     /// </summary>
     public static readonly Coding MDCECGLEADC = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V
     /// </summary>
     public static readonly Coding MDCECGLEADV = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_VR
     /// </summary>
     public static readonly Coding MDCECGLEADVR = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_VL
     /// </summary>
     public static readonly Coding MDCECGLEADVL = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_VF
     /// </summary>
     public static readonly Coding MDCECGLEADVF = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_V8
     /// </summary>
     public static readonly Coding MDCECGLEADV8 = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_Dn
     /// </summary>
     public static readonly Coding MDCECGLEADDn = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_An
     /// </summary>
     public static readonly Coding MDCECGLEADAn = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_Jn
     /// </summary>
     public static readonly Coding MDCECGLEADJn = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_MCL
     /// </summary>
     public static readonly Coding MDCECGLEADMCL = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_MCL1
     /// </summary>
     public static readonly Coding MDCECGLEADMCL1 = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_MCL2
     /// </summary>
     public static readonly Coding MDCECGLEADMCL2 = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_MCL3
     /// </summary>
     public static readonly Coding MDCECGLEADMCL3 = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_MCL4
     /// </summary>
     public static readonly Coding MDCECGLEADMCL4 = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_MCL5
     /// </summary>
     public static readonly Coding MDCECGLEADMCL5 = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_MCL6
     /// </summary>
     public static readonly Coding MDCECGLEADMCL6 = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_C1FR
     /// </summary>
     public static readonly Coding MDCECGLEADC1FR = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_C2FR
     /// </summary>
     public static readonly Coding MDCECGLEADC2FR = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_C3FR
     /// </summary>
     public static readonly Coding MDCECGLEADC3FR = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_C4FR
     /// </summary>
     public static readonly Coding MDCECGLEADC4FR = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_C4RFR
     /// </summary>
     public static readonly Coding MDCECGLEADC4RFR = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_C5FR
     /// </summary>
     public static readonly Coding MDCECGLEADC5FR = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_C6FR
     /// </summary>
     public static readonly Coding MDCECGLEADC6FR = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_C7FR
     /// </summary>
     public static readonly Coding MDCECGLEADC7FR = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_C8FR
     /// </summary>
     public static readonly Coding MDCECGLEADC8FR = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_ECGLD91
     /// </summary>
     public static readonly Coding MDCECGLEADECGLD91 = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_ECGLD92
     /// </summary>
     public static readonly Coding MDCECGLEADECGLD92 = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_ECGLD93
     /// </summary>
     public static readonly Coding MDCECGLEADECGLD93 = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_ECGLD94
     /// </summary>
     public static readonly Coding MDCECGLEADECGLD94 = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_ECGLD95
     /// </summary>
     public static readonly Coding MDCECGLEADECGLD95 = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_ECGLD96
     /// </summary>
     public static readonly Coding MDCECGLEADECGLD96 = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_ECGLD97
     /// </summary>
     public static readonly Coding MDCECGLEADECGLD97 = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_ECGLD98
     /// </summary>
     public static readonly Coding MDCECGLEADECGLD98 = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_ECGLD99
     /// </summary>
     public static readonly Coding MDCECGLEADECGLD99 = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_ES
     /// </summary>
     public static readonly Coding MDCECGLEADES = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_AS
     /// </summary>
     public static readonly Coding MDCECGLEADAS = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_AI
     /// </summary>
     public static readonly Coding MDCECGLEADAI = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_dI
     /// </summary>
     public static readonly Coding MDCECGLEADDI = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_dII
     /// </summary>
     public static readonly Coding MDCECGLEADDII = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_dIII
     /// </summary>
     public static readonly Coding MDCECGLEADDIII = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_daVR
     /// </summary>
     public static readonly Coding MDCECGLEADDaVR = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_daVL
     /// </summary>
     public static readonly Coding MDCECGLEADDaVL = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_daVF
     /// </summary>
     public static readonly Coding MDCECGLEADDaVF = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_dV1
     /// </summary>
     public static readonly Coding MDCECGLEADDV1 = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_dV2
     /// </summary>
     public static readonly Coding MDCECGLEADDV2 = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_dV3
     /// </summary>
     public static readonly Coding MDCECGLEADDV3 = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_dV4
     /// </summary>
     public static readonly Coding MDCECGLEADDV4 = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_dV5
     /// </summary>
     public static readonly Coding MDCECGLEADDV5 = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_dV6
     /// </summary>
     public static readonly Coding MDCECGLEADDV6 = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_RL
     /// </summary>
     public static readonly Coding MDCECGLEADRL = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEAD_EASI_S
     /// </summary>
     public static readonly Coding MDCECGLEADEASIS = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL
     /// </summary>
     public static readonly Coding MDCECGELECPOTL = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_I
     /// </summary>
     public static readonly Coding MDCECGELECPOTLI = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_II
     /// </summary>
     public static readonly Coding MDCECGELECPOTLII = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_V1
     /// </summary>
     public static readonly Coding MDCECGELECPOTLV1 = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_V2
     /// </summary>
     public static readonly Coding MDCECGELECPOTLV2 = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_V3
     /// </summary>
     public static readonly Coding MDCECGELECPOTLV3 = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_V4
     /// </summary>
     public static readonly Coding MDCECGELECPOTLV4 = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_V5
     /// </summary>
     public static readonly Coding MDCECGELECPOTLV5 = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_V6
     /// </summary>
     public static readonly Coding MDCECGELECPOTLV6 = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_VX
     /// </summary>
     public static readonly Coding MDCECGELECPOTLVX = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_VY
     /// </summary>
     public static readonly Coding MDCECGELECPOTLVY = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_VZ
     /// </summary>
     public static readonly Coding MDCECGELECPOTLVZ = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_LA
     /// </summary>
     public static readonly Coding MDCECGELECPOTLLA = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_RA
     /// </summary>
     public static readonly Coding MDCECGELECPOTLRA = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_LL
     /// </summary>
     public static readonly Coding MDCECGELECPOTLLL = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_III
     /// </summary>
     public static readonly Coding MDCECGELECPOTLIII = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_AVR
     /// </summary>
     public static readonly Coding MDCECGELECPOTLAVR = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_AVL
     /// </summary>
     public static readonly Coding MDCECGELECPOTLAVL = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_AVF
     /// </summary>
     public static readonly Coding MDCECGELECPOTLAVF = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_C
     /// </summary>
     public static readonly Coding MDCECGELECPOTLC = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_V
     /// </summary>
     public static readonly Coding MDCECGELECPOTLV = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_MCL
     /// </summary>
     public static readonly Coding MDCECGELECPOTLMCL = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_MCL1
     /// </summary>
     public static readonly Coding MDCECGELECPOTLMCL1 = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_MCL2
     /// </summary>
     public static readonly Coding MDCECGELECPOTLMCL2 = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_MCL3
     /// </summary>
     public static readonly Coding MDCECGELECPOTLMCL3 = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_MCL4
     /// </summary>
     public static readonly Coding MDCECGELECPOTLMCL4 = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_MCL5
     /// </summary>
     public static readonly Coding MDCECGELECPOTLMCL5 = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_MCL6
     /// </summary>
     public static readonly Coding MDCECGELECPOTLMCL6 = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_C1FR
     /// </summary>
     public static readonly Coding MDCECGELECPOTLC1FR = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_C2FR
     /// </summary>
     public static readonly Coding MDCECGELECPOTLC2FR = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_C3FR
     /// </summary>
     public static readonly Coding MDCECGELECPOTLC3FR = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_C4FR
     /// </summary>
     public static readonly Coding MDCECGELECPOTLC4FR = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_C5FR
     /// </summary>
     public static readonly Coding MDCECGELECPOTLC5FR = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_C6FR
     /// </summary>
     public static readonly Coding MDCECGELECPOTLC6FR = new Coding
     {
@@ -1379,7 +1379,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_I
     /// </summary>
     public static readonly Coding MDCECGAMPLSTI = new Coding
     {
@@ -1388,7 +1388,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_II
     /// </summary>
     public static readonly Coding MDCECGAMPLSTII = new Coding
     {
@@ -1397,7 +1397,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_V1
     /// </summary>
     public static readonly Coding MDCECGAMPLSTV1 = new Coding
     {
@@ -1406,7 +1406,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_V2
     /// </summary>
     public static readonly Coding MDCECGAMPLSTV2 = new Coding
     {
@@ -1415,7 +1415,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_V3
     /// </summary>
     public static readonly Coding MDCECGAMPLSTV3 = new Coding
     {
@@ -1424,7 +1424,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_V4
     /// </summary>
     public static readonly Coding MDCECGAMPLSTV4 = new Coding
     {
@@ -1433,7 +1433,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_V5
     /// </summary>
     public static readonly Coding MDCECGAMPLSTV5 = new Coding
     {
@@ -1442,7 +1442,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_V6
     /// </summary>
     public static readonly Coding MDCECGAMPLSTV6 = new Coding
     {
@@ -1451,7 +1451,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_dV1
     /// </summary>
     public static readonly Coding MDCECGAMPLSTDV1 = new Coding
     {
@@ -1460,7 +1460,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_dV2
     /// </summary>
     public static readonly Coding MDCECGAMPLSTDV2 = new Coding
     {
@@ -1469,7 +1469,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_dV3
     /// </summary>
     public static readonly Coding MDCECGAMPLSTDV3 = new Coding
     {
@@ -1478,7 +1478,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_dV4
     /// </summary>
     public static readonly Coding MDCECGAMPLSTDV4 = new Coding
     {
@@ -1487,7 +1487,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_dV5
     /// </summary>
     public static readonly Coding MDCECGAMPLSTDV5 = new Coding
     {
@@ -1496,7 +1496,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_dV6
     /// </summary>
     public static readonly Coding MDCECGAMPLSTDV6 = new Coding
     {
@@ -1505,7 +1505,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_III
     /// </summary>
     public static readonly Coding MDCECGAMPLSTIII = new Coding
     {
@@ -1514,7 +1514,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_AVR
     /// </summary>
     public static readonly Coding MDCECGAMPLSTAVR = new Coding
     {
@@ -1523,7 +1523,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_AVL
     /// </summary>
     public static readonly Coding MDCECGAMPLSTAVL = new Coding
     {
@@ -1532,7 +1532,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_AVF
     /// </summary>
     public static readonly Coding MDCECGAMPLSTAVF = new Coding
     {
@@ -1541,7 +1541,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_V
     /// </summary>
     public static readonly Coding MDCECGAMPLSTV = new Coding
     {
@@ -1550,7 +1550,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_MCL
     /// </summary>
     public static readonly Coding MDCECGAMPLSTMCL = new Coding
     {
@@ -1559,7 +1559,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_MCL1
     /// </summary>
     public static readonly Coding MDCECGAMPLSTMCL1 = new Coding
     {
@@ -1568,7 +1568,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_MCL6
     /// </summary>
     public static readonly Coding MDCECGAMPLSTMCL6 = new Coding
     {
@@ -1577,7 +1577,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_ES
     /// </summary>
     public static readonly Coding MDCECGAMPLSTES = new Coding
     {
@@ -1586,7 +1586,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_AS
     /// </summary>
     public static readonly Coding MDCECGAMPLSTAS = new Coding
     {
@@ -1595,7 +1595,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_ST_AI
     /// </summary>
     public static readonly Coding MDCECGAMPLSTAI = new Coding
     {
@@ -1604,7 +1604,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_POINT_J
     /// </summary>
     public static readonly Coding MDCECGPOINTJ = new Coding
     {
@@ -1613,7 +1613,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_P_MAX
     /// </summary>
     public static readonly Coding MDCECGAMPLPMAX = new Coding
     {
@@ -1622,7 +1622,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_P_MIN
     /// </summary>
     public static readonly Coding MDCECGAMPLPMIN = new Coding
     {
@@ -1631,7 +1631,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_Q
     /// </summary>
     public static readonly Coding MDCECGAMPLQ = new Coding
     {
@@ -1640,7 +1640,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_R
     /// </summary>
     public static readonly Coding MDCECGAMPLR = new Coding
     {
@@ -1649,7 +1649,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_S
     /// </summary>
     public static readonly Coding MDCECGAMPLS = new Coding
     {
@@ -1658,7 +1658,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_T_MAX
     /// </summary>
     public static readonly Coding MDCECGAMPLTMAX = new Coding
     {
@@ -1667,7 +1667,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_T_MIN
     /// </summary>
     public static readonly Coding MDCECGAMPLTMIN = new Coding
     {
@@ -1676,7 +1676,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AMPL_P3
     /// </summary>
     public static readonly Coding MDCECGAMPLP3 = new Coding
     {
@@ -1685,7 +1685,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AREA_Q
     /// </summary>
     public static readonly Coding MDCECGAREAQ = new Coding
     {
@@ -1694,7 +1694,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AREA_T
     /// </summary>
     public static readonly Coding MDCECGAREAT = new Coding
     {
@@ -1703,7 +1703,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AREA_P
     /// </summary>
     public static readonly Coding MDCECGAREAP = new Coding
     {
@@ -1712,7 +1712,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AREA_QRS
     /// </summary>
     public static readonly Coding MDCECGAREAQRS = new Coding
     {
@@ -1721,7 +1721,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AREA_ST
     /// </summary>
     public static readonly Coding MDCECGAREAST = new Coding
     {
@@ -1730,7 +1730,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_P1
     /// </summary>
     public static readonly Coding MDCECGTIMEPDP1 = new Coding
     {
@@ -1739,7 +1739,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_P2
     /// </summary>
     public static readonly Coding MDCECGTIMEPDP2 = new Coding
     {
@@ -1748,7 +1748,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_P3
     /// </summary>
     public static readonly Coding MDCECGTIMEPDP3 = new Coding
     {
@@ -1757,7 +1757,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SLOPE_ST
     /// </summary>
     public static readonly Coding MDCECGSLOPEST = new Coding
     {
@@ -1766,7 +1766,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_END_P
     /// </summary>
     public static readonly Coding MDCECGTIMEENDP = new Coding
     {
@@ -1775,7 +1775,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_END_QRS
     /// </summary>
     public static readonly Coding MDCECGTIMEENDQRS = new Coding
     {
@@ -1784,7 +1784,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_END_T
     /// </summary>
     public static readonly Coding MDCECGTIMEENDT = new Coding
     {
@@ -1793,7 +1793,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_P
     /// </summary>
     public static readonly Coding MDCECGTIMEPDP = new Coding
     {
@@ -1802,7 +1802,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_INTEGRAL_P
     /// </summary>
     public static readonly Coding MDCECGINTEGRALP = new Coding
     {
@@ -1811,7 +1811,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_PR
     /// </summary>
     public static readonly Coding MDCECGTIMEPDPR = new Coding
     {
@@ -1820,7 +1820,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_INTEGRAL_Q
     /// </summary>
     public static readonly Coding MDCECGINTEGRALQ = new Coding
     {
@@ -1829,7 +1829,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_Q
     /// </summary>
     public static readonly Coding MDCECGTIMEPDQ = new Coding
     {
@@ -1838,7 +1838,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_QRS
     /// </summary>
     public static readonly Coding MDCECGTIMEPDQRS = new Coding
     {
@@ -1847,7 +1847,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_QT
     /// </summary>
     public static readonly Coding MDCECGTIMEPDQT = new Coding
     {
@@ -1856,7 +1856,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_QT_CORR
     /// </summary>
     public static readonly Coding MDCECGTIMEPDQTCORR = new Coding
     {
@@ -1865,7 +1865,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_INTEGRAL_QRS
     /// </summary>
     public static readonly Coding MDCECGINTEGRALQRS = new Coding
     {
@@ -1874,7 +1874,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_INTEGRAL_T
     /// </summary>
     public static readonly Coding MDCECGINTEGRALT = new Coding
     {
@@ -1883,7 +1883,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_INTEGRAL_ST
     /// </summary>
     public static readonly Coding MDCECGINTEGRALST = new Coding
     {
@@ -1892,7 +1892,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_START_P
     /// </summary>
     public static readonly Coding MDCECGTIMESTARTP = new Coding
     {
@@ -1901,7 +1901,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_START_QRS
     /// </summary>
     public static readonly Coding MDCECGTIMESTARTQRS = new Coding
     {
@@ -1910,7 +1910,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_START_T
     /// </summary>
     public static readonly Coding MDCECGTIMESTARTT = new Coding
     {
@@ -1919,7 +1919,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_POINT_REF
     /// </summary>
     public static readonly Coding MDCECGPOINTREF = new Coding
     {
@@ -1928,7 +1928,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_POINT_ST
     /// </summary>
     public static readonly Coding MDCECGPOINTST = new Coding
     {
@@ -1937,7 +1937,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_POINT_ISO
     /// </summary>
     public static readonly Coding MDCECGPOINTISO = new Coding
     {
@@ -1946,7 +1946,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_VENT_ACTIV
     /// </summary>
     public static readonly Coding MDCECGTIMEPDVENTACTIV = new Coding
     {
@@ -1955,7 +1955,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_R_1
     /// </summary>
     public static readonly Coding MDCECGTIMEPDR1 = new Coding
     {
@@ -1964,7 +1964,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_R_2
     /// </summary>
     public static readonly Coding MDCECGTIMEPDR2 = new Coding
     {
@@ -1973,7 +1973,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_R_3
     /// </summary>
     public static readonly Coding MDCECGTIMEPDR3 = new Coding
     {
@@ -1982,7 +1982,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_S_1
     /// </summary>
     public static readonly Coding MDCECGTIMEPDS1 = new Coding
     {
@@ -1991,7 +1991,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_S_2
     /// </summary>
     public static readonly Coding MDCECGTIMEPDS2 = new Coding
     {
@@ -2000,7 +2000,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_S_3
     /// </summary>
     public static readonly Coding MDCECGTIMEPDS3 = new Coding
     {
@@ -2009,7 +2009,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_R_1
     /// </summary>
     public static readonly Coding MDCECGELECPOTLR1 = new Coding
     {
@@ -2018,7 +2018,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_R_2
     /// </summary>
     public static readonly Coding MDCECGELECPOTLR2 = new Coding
     {
@@ -2027,7 +2027,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_R_3
     /// </summary>
     public static readonly Coding MDCECGELECPOTLR3 = new Coding
     {
@@ -2036,7 +2036,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_S_1
     /// </summary>
     public static readonly Coding MDCECGELECPOTLS1 = new Coding
     {
@@ -2045,7 +2045,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_S_2
     /// </summary>
     public static readonly Coding MDCECGELECPOTLS2 = new Coding
     {
@@ -2054,7 +2054,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_S_3
     /// </summary>
     public static readonly Coding MDCECGELECPOTLS3 = new Coding
     {
@@ -2063,7 +2063,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_ST_60
     /// </summary>
     public static readonly Coding MDCECGELECPOTLST60 = new Coding
     {
@@ -2072,7 +2072,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_ST_80
     /// </summary>
     public static readonly Coding MDCECGELECPOTLST80 = new Coding
     {
@@ -2081,7 +2081,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_ST_20
     /// </summary>
     public static readonly Coding MDCECGELECPOTLST20 = new Coding
     {
@@ -2090,7 +2090,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ELEC_POTL_ST_40
     /// </summary>
     public static readonly Coding MDCECGELECPOTLST40 = new Coding
     {
@@ -2099,7 +2099,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_QTC_BAZETT
     /// </summary>
     public static readonly Coding MDCECGTIMEPDQTCBAZETT = new Coding
     {
@@ -2108,7 +2108,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_QTC_FRAMINGHAM
     /// </summary>
     public static readonly Coding MDCECGTIMEPDQTCFRAMINGHAM = new Coding
     {
@@ -2117,7 +2117,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_QTC_HODGES
     /// </summary>
     public static readonly Coding MDCECGTIMEPDQTCHODGES = new Coding
     {
@@ -2126,7 +2126,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_QTC_FREDERICA
     /// </summary>
     public static readonly Coding MDCECGTIMEPDQTCFREDERICA = new Coding
     {
@@ -2135,7 +2135,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_QTC_USER
     /// </summary>
     public static readonly Coding MDCECGTIMEPDQTCUSER = new Coding
     {
@@ -2144,7 +2144,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_QTU
     /// </summary>
     public static readonly Coding MDCECGTIMEPDQTU = new Coding
     {
@@ -2153,7 +2153,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_DISPERSION_QT
     /// </summary>
     public static readonly Coding MDCECGDISPERSIONQT = new Coding
     {
@@ -2162,7 +2162,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_DISPERSION_QTC
     /// </summary>
     public static readonly Coding MDCECGDISPERSIONQTC = new Coding
     {
@@ -2171,7 +2171,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_VENTRICULAR_RATE
     /// </summary>
     public static readonly Coding MDCECGVENTRICULARRATE = new Coding
     {
@@ -2180,7 +2180,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATRIAL_RATE
     /// </summary>
     public static readonly Coding MDCECGATRIALRATE = new Coding
     {
@@ -2189,7 +2189,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_VPC_COUNT
     /// </summary>
     public static readonly Coding MDCECGVPCCOUNT = new Coding
     {
@@ -2198,7 +2198,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SVPC_RATE
     /// </summary>
     public static readonly Coding MDCECGSVPCRATE = new Coding
     {
@@ -2207,7 +2207,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_BEAT_COUNT
     /// </summary>
     public static readonly Coding MDCECGBEATCOUNT = new Coding
     {
@@ -2216,7 +2216,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_P_FRONT
     /// </summary>
     public static readonly Coding MDCECGANGLEPFRONT = new Coding
     {
@@ -2225,7 +2225,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_QRS_FRONT
     /// </summary>
     public static readonly Coding MDCECGANGLEQRSFRONT = new Coding
     {
@@ -2234,7 +2234,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_T_FRONT
     /// </summary>
     public static readonly Coding MDCECGANGLETFRONT = new Coding
     {
@@ -2243,7 +2243,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_PP_GL
     /// </summary>
     public static readonly Coding MDCECGTIMEPDPPGL = new Coding
     {
@@ -2252,7 +2252,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_PQ
     /// </summary>
     public static readonly Coding MDCECGTIMEPDPQ = new Coding
     {
@@ -2261,7 +2261,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_PR_GL
     /// </summary>
     public static readonly Coding MDCECGTIMEPDPRGL = new Coding
     {
@@ -2270,7 +2270,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_QRS_GL
     /// </summary>
     public static readonly Coding MDCECGTIMEPDQRSGL = new Coding
     {
@@ -2279,7 +2279,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_QT_GL
     /// </summary>
     public static readonly Coding MDCECGTIMEPDQTGL = new Coding
     {
@@ -2288,7 +2288,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_QTc
     /// </summary>
     public static readonly Coding MDCECGTIMEPDQTc = new Coding
     {
@@ -2297,7 +2297,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_RR
     /// </summary>
     public static readonly Coding MDCECGRR = new Coding
     {
@@ -2306,7 +2306,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_RR_MAX
     /// </summary>
     public static readonly Coding MDCECGRRMAX = new Coding
     {
@@ -2315,7 +2315,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_P_FRONT
     /// </summary>
     public static readonly Coding MDCECGMAGPFRONT = new Coding
     {
@@ -2324,7 +2324,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_QRS_FRONT
     /// </summary>
     public static readonly Coding MDCECGMAGQRSFRONT = new Coding
     {
@@ -2333,7 +2333,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_T_FRONT
     /// </summary>
     public static readonly Coding MDCECGMAGTFRONT = new Coding
     {
@@ -2342,7 +2342,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_PD_P_GL
     /// </summary>
     public static readonly Coding MDCECGTIMEPDPGL = new Coding
     {
@@ -2351,7 +2351,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_QRS_TYPE
     /// </summary>
     public static readonly Coding MDCECGQRSTYPE = new Coding
     {
@@ -2360,7 +2360,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_P_VECT
     /// </summary>
     public static readonly Coding MDCECGMAGPVECT = new Coding
     {
@@ -2369,7 +2369,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_QRS_VECT
     /// </summary>
     public static readonly Coding MDCECGMAGQRSVECT = new Coding
     {
@@ -2378,7 +2378,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_T_VECT
     /// </summary>
     public static readonly Coding MDCECGMAGTVECT = new Coding
     {
@@ -2387,7 +2387,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_P_AZIM
     /// </summary>
     public static readonly Coding MDCECGANGLEPAZIM = new Coding
     {
@@ -2396,7 +2396,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_QRS_AZIM
     /// </summary>
     public static readonly Coding MDCECGANGLEQRSAZIM = new Coding
     {
@@ -2405,7 +2405,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_T_AZIM
     /// </summary>
     public static readonly Coding MDCECGANGLETAZIM = new Coding
     {
@@ -2414,7 +2414,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_P_ELEV
     /// </summary>
     public static readonly Coding MDCECGANGLEPELEV = new Coding
     {
@@ -2423,7 +2423,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_QRS_ELEV
     /// </summary>
     public static readonly Coding MDCECGANGLEQRSELEV = new Coding
     {
@@ -2432,7 +2432,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_T_ELEV
     /// </summary>
     public static readonly Coding MDCECGANGLETELEV = new Coding
     {
@@ -2441,7 +2441,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_J_VECT
     /// </summary>
     public static readonly Coding MDCECGMAGJVECT = new Coding
     {
@@ -2450,7 +2450,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_J_AZIM
     /// </summary>
     public static readonly Coding MDCECGANGLEJAZIM = new Coding
     {
@@ -2459,7 +2459,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_J_ELEV
     /// </summary>
     public static readonly Coding MDCECGANGLEJELEV = new Coding
     {
@@ -2468,7 +2468,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_J20_VECT
     /// </summary>
     public static readonly Coding MDCECGMAGJ20VECT = new Coding
     {
@@ -2477,7 +2477,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_J20_AZIM
     /// </summary>
     public static readonly Coding MDCECGANGLEJ20AZIM = new Coding
     {
@@ -2486,7 +2486,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_J20_ELEV
     /// </summary>
     public static readonly Coding MDCECGANGLEJ20ELEV = new Coding
     {
@@ -2495,7 +2495,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_J40_VECT
     /// </summary>
     public static readonly Coding MDCECGMAGJ40VECT = new Coding
     {
@@ -2504,7 +2504,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_J40_AZIM
     /// </summary>
     public static readonly Coding MDCECGANGLEJ40AZIM = new Coding
     {
@@ -2513,7 +2513,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_J40_ELEV
     /// </summary>
     public static readonly Coding MDCECGANGLEJ40ELEV = new Coding
     {
@@ -2522,7 +2522,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_J60_VECT
     /// </summary>
     public static readonly Coding MDCECGMAGJ60VECT = new Coding
     {
@@ -2531,7 +2531,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_J60_AZIM
     /// </summary>
     public static readonly Coding MDCECGANGLEJ60AZIM = new Coding
     {
@@ -2540,7 +2540,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_J60_ELEV
     /// </summary>
     public static readonly Coding MDCECGANGLEJ60ELEV = new Coding
     {
@@ -2549,7 +2549,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_J80_VECT
     /// </summary>
     public static readonly Coding MDCECGMAGJ80VECT = new Coding
     {
@@ -2558,7 +2558,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_J80_AZIM
     /// </summary>
     public static readonly Coding MDCECGANGLEJ80AZIM = new Coding
     {
@@ -2567,7 +2567,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_J80_ELEV
     /// </summary>
     public static readonly Coding MDCECGANGLEJ80ELEV = new Coding
     {
@@ -2576,7 +2576,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_Jxx_VECT
     /// </summary>
     public static readonly Coding MDCECGMAGJxxVECT = new Coding
     {
@@ -2585,7 +2585,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_Jxx_AZIM
     /// </summary>
     public static readonly Coding MDCECGANGLEJxxAZIM = new Coding
     {
@@ -2594,7 +2594,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ANGLE_Jxx_ELEV
     /// </summary>
     public static readonly Coding MDCECGANGLEJxxELEV = new Coding
     {
@@ -2603,7 +2603,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TIME_ST_Jxx
     /// </summary>
     public static readonly Coding MDCECGTIMESTJxx = new Coding
     {
@@ -2612,7 +2612,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_P_VECT_FRONT
     /// </summary>
     public static readonly Coding MDCECGMAGPVECTFRONT = new Coding
     {
@@ -2621,7 +2621,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_P_VECT_HORIZ
     /// </summary>
     public static readonly Coding MDCECGMAGPVECTHORIZ = new Coding
     {
@@ -2630,7 +2630,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_P_VECT_SAGI
     /// </summary>
     public static readonly Coding MDCECGMAGPVECTSAGI = new Coding
     {
@@ -2639,7 +2639,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_QRS_VECT_FRONT
     /// </summary>
     public static readonly Coding MDCECGMAGQRSVECTFRONT = new Coding
     {
@@ -2648,7 +2648,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_QRS_VECT_HORIZ
     /// </summary>
     public static readonly Coding MDCECGMAGQRSVECTHORIZ = new Coding
     {
@@ -2657,7 +2657,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_QRS_VECT_SAGI
     /// </summary>
     public static readonly Coding MDCECGMAGQRSVECTSAGI = new Coding
     {
@@ -2666,7 +2666,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_T_VECT_FRONT
     /// </summary>
     public static readonly Coding MDCECGMAGTVECTFRONT = new Coding
     {
@@ -2675,7 +2675,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_T_VECT_HORIZ
     /// </summary>
     public static readonly Coding MDCECGMAGTVECTHORIZ = new Coding
     {
@@ -2684,7 +2684,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_MAG_T_VECT_SAGI
     /// </summary>
     public static readonly Coding MDCECGMAGTVECTSAGI = new Coding
     {
@@ -2693,7 +2693,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PATT
     /// </summary>
     public static readonly Coding MDCECGPATT = new Coding
     {
@@ -2702,7 +2702,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEARN_RHY
     /// </summary>
     public static readonly Coding MDCECGLEARNRHY = new Coding
     {
@@ -2711,7 +2711,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ASY_RHY
     /// </summary>
     public static readonly Coding MDCECGASYRHY = new Coding
     {
@@ -2720,7 +2720,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_PACED_RHY_CAPT
     /// </summary>
     public static readonly Coding MDCECGATRPACEDRHYCAPT = new Coding
     {
@@ -2729,7 +2729,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_IDIOV_RHY
     /// </summary>
     public static readonly Coding MDCECGIDIOVRHY = new Coding
     {
@@ -2738,7 +2738,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_IDIOV_RHY_ACCEL
     /// </summary>
     public static readonly Coding MDCECGIDIOVRHYACCEL = new Coding
     {
@@ -2747,7 +2747,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_JUNC_RHY
     /// </summary>
     public static readonly Coding MDCECGJUNCRHY = new Coding
     {
@@ -2756,7 +2756,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_JUNC_RHY_ACCEL
     /// </summary>
     public static readonly Coding MDCECGJUNCRHYACCEL = new Coding
     {
@@ -2765,7 +2765,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACED_RHY
     /// </summary>
     public static readonly Coding MDCECGPACEDRHY = new Coding
     {
@@ -2774,7 +2774,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_RHY
     /// </summary>
     public static readonly Coding MDCECGRHY = new Coding
     {
@@ -2783,7 +2783,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_RHY_ABSENT
     /// </summary>
     public static readonly Coding MDCECGRHYABSENT = new Coding
     {
@@ -2792,7 +2792,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_RHY_ECT
     /// </summary>
     public static readonly Coding MDCECGRHYECT = new Coding
     {
@@ -2801,7 +2801,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_RHY_IRREG
     /// </summary>
     public static readonly Coding MDCECGRHYIRREG = new Coding
     {
@@ -2810,7 +2810,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_RHY_REG
     /// </summary>
     public static readonly Coding MDCECGRHYREG = new Coding
     {
@@ -2819,7 +2819,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_RHY_SERIOUS
     /// </summary>
     public static readonly Coding MDCECGRHYSERIOUS = new Coding
     {
@@ -2828,7 +2828,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_RHY_UNK
     /// </summary>
     public static readonly Coding MDCECGRHYUNK = new Coding
     {
@@ -2837,7 +2837,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_RHY_UNANALYZEABLE
     /// </summary>
     public static readonly Coding MDCECGRHYUNANALYZEABLE = new Coding
     {
@@ -2846,7 +2846,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SINUS_RHY
     /// </summary>
     public static readonly Coding MDCECGSINUSRHY = new Coding
     {
@@ -2855,7 +2855,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SINUS_BRADY_RHY
     /// </summary>
     public static readonly Coding MDCECGSINUSBRADYRHY = new Coding
     {
@@ -2864,7 +2864,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SINUS_TACHY_RHY
     /// </summary>
     public static readonly Coding MDCECGSINUSTACHYRHY = new Coding
     {
@@ -2873,7 +2873,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_RHY
     /// </summary>
     public static readonly Coding MDCECGSVRHY = new Coding
     {
@@ -2882,7 +2882,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_TACHY_RHY
     /// </summary>
     public static readonly Coding MDCECGSVTACHYRHY = new Coding
     {
@@ -2891,7 +2891,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_BIGEM_RHY
     /// </summary>
     public static readonly Coding MDCECGVBIGEMRHY = new Coding
     {
@@ -2900,7 +2900,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_RHY
     /// </summary>
     public static readonly Coding MDCECGVRHY = new Coding
     {
@@ -2909,7 +2909,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_RHY_ACCEL
     /// </summary>
     public static readonly Coding MDCECGVRHYACCEL = new Coding
     {
@@ -2918,7 +2918,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_TACHY_RHY
     /// </summary>
     public static readonly Coding MDCECGVTACHYRHY = new Coding
     {
@@ -2927,7 +2927,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_TACHY_RHY_SUST
     /// </summary>
     public static readonly Coding MDCECGVTACHYRHYSUST = new Coding
     {
@@ -2936,7 +2936,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_TRIGEM_RHY
     /// </summary>
     public static readonly Coding MDCECGVTRIGEMRHY = new Coding
     {
@@ -2945,7 +2945,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_BRADY_RHY
     /// </summary>
     public static readonly Coding MDCECGSVBRADYRHY = new Coding
     {
@@ -2954,7 +2954,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_FIB_RHY
     /// </summary>
     public static readonly Coding MDCECGVFIBRHY = new Coding
     {
@@ -2963,7 +2963,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_RUN_RHY
     /// </summary>
     public static readonly Coding MDCECGVPCRUNRHY = new Coding
     {
@@ -2972,7 +2972,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_FIB_TACHY_RHY
     /// </summary>
     public static readonly Coding MDCECGVFIBTACHYRHY = new Coding
     {
@@ -2981,7 +2981,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_BB_RHY_INTERMIT
     /// </summary>
     public static readonly Coding MDCECGBBRHYINTERMIT = new Coding
     {
@@ -2990,7 +2990,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_JUNC_ESC_RHY
     /// </summary>
     public static readonly Coding MDCECGJUNCESCRHY = new Coding
     {
@@ -2999,7 +2999,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_RHY_NOS
     /// </summary>
     public static readonly Coding MDCECGRHYNOS = new Coding
     {
@@ -3008,7 +3008,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_BRADY
     /// </summary>
     public static readonly Coding MDCECGBRADY = new Coding
     {
@@ -3017,7 +3017,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ARTIFACT_ANNOT
     /// </summary>
     public static readonly Coding MDCECGARTIFACTANNOT = new Coding
     {
@@ -3026,7 +3026,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ASYSTOLE
     /// </summary>
     public static readonly Coding MDCECGASYSTOLE = new Coding
     {
@@ -3035,7 +3035,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_PACED_BEAT
     /// </summary>
     public static readonly Coding MDCECGATRPACEDBEAT = new Coding
     {
@@ -3044,7 +3044,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_PACED_BEAT_CNT
     /// </summary>
     public static readonly Coding MDCECGATRPACEDBEATCNT = new Coding
     {
@@ -3053,7 +3053,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_PACED_BEAT_ANNOT
     /// </summary>
     public static readonly Coding MDCECGATRPACEDBEATANNOT = new Coding
     {
@@ -3062,7 +3062,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_BEAT_MISSED
     /// </summary>
     public static readonly Coding MDCECGBEATMISSED = new Coding
     {
@@ -3071,7 +3071,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_BEAT_MISSED_CNT
     /// </summary>
     public static readonly Coding MDCECGBEATMISSEDCNT = new Coding
     {
@@ -3080,7 +3080,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_BEAT_MISSED_ANNOT
     /// </summary>
     public static readonly Coding MDCECGBEATMISSEDANNOT = new Coding
     {
@@ -3089,7 +3089,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_BIGEM
     /// </summary>
     public static readonly Coding MDCECGBIGEM = new Coding
     {
@@ -3098,7 +3098,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ARTIFACT
     /// </summary>
     public static readonly Coding MDCECGARTIFACT = new Coding
     {
@@ -3107,7 +3107,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_BRADY_EXTREME
     /// </summary>
     public static readonly Coding MDCECGBRADYEXTREME = new Coding
     {
@@ -3116,7 +3116,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_BRADY_SUST
     /// </summary>
     public static readonly Coding MDCECGBRADYSUST = new Coding
     {
@@ -3125,7 +3125,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_DUAL_PACED_BEAT
     /// </summary>
     public static readonly Coding MDCECGDUALPACEDBEAT = new Coding
     {
@@ -3134,7 +3134,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_DUAL_PACED_BEAT_CNT
     /// </summary>
     public static readonly Coding MDCECGDUALPACEDBEATCNT = new Coding
     {
@@ -3143,7 +3143,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_DUAL_PACED_BEAT_ANNOT
     /// </summary>
     public static readonly Coding MDCECGDUALPACEDBEATANNOT = new Coding
     {
@@ -3152,7 +3152,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ECT
     /// </summary>
     public static readonly Coding MDCECGECT = new Coding
     {
@@ -3161,7 +3161,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ECT_CNT
     /// </summary>
     public static readonly Coding MDCECGECTCNT = new Coding
     {
@@ -3170,7 +3170,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_FIB
     /// </summary>
     public static readonly Coding MDCECGFIB = new Coding
     {
@@ -3179,7 +3179,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_NO_ECT_BEAT
     /// </summary>
     public static readonly Coding MDCECGNOECTBEAT = new Coding
     {
@@ -3188,7 +3188,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_P_C
     /// </summary>
     public static readonly Coding MDCECGPC = new Coding
     {
@@ -3197,7 +3197,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACED_BEAT
     /// </summary>
     public static readonly Coding MDCECGPACEDBEAT = new Coding
     {
@@ -3206,7 +3206,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACED_BEAT_CNT
     /// </summary>
     public static readonly Coding MDCECGPACEDBEATCNT = new Coding
     {
@@ -3215,7 +3215,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACED_BEAT_RATE
     /// </summary>
     public static readonly Coding MDCECGPACEDBEATRATE = new Coding
     {
@@ -3224,7 +3224,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACED_BEAT_RATE_MAX
     /// </summary>
     public static readonly Coding MDCECGPACEDBEATRATEMAX = new Coding
     {
@@ -3233,7 +3233,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACED_BEAT_RATE_MIN
     /// </summary>
     public static readonly Coding MDCECGPACEDBEATRATEMIN = new Coding
     {
@@ -3242,7 +3242,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACED_BEAT_ANNOT
     /// </summary>
     public static readonly Coding MDCECGPACEDBEATANNOT = new Coding
     {
@@ -3251,7 +3251,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACING_EVENT
     /// </summary>
     public static readonly Coding MDCECGPACINGEVENT = new Coding
     {
@@ -3260,7 +3260,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACING_CAPT
     /// </summary>
     public static readonly Coding MDCECGPACINGCAPT = new Coding
     {
@@ -3269,7 +3269,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACING_NON_CAPT
     /// </summary>
     public static readonly Coding MDCECGPACINGNONCAPT = new Coding
     {
@@ -3278,7 +3278,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACING_NON_CAPT_CNT
     /// </summary>
     public static readonly Coding MDCECGPACINGNONCAPTCNT = new Coding
     {
@@ -3287,7 +3287,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACING_NOT_FOUND
     /// </summary>
     public static readonly Coding MDCECGPACINGNOTFOUND = new Coding
     {
@@ -3296,7 +3296,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACING_RUN
     /// </summary>
     public static readonly Coding MDCECGPACINGRUN = new Coding
     {
@@ -3305,7 +3305,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACING_RUN_CNT
     /// </summary>
     public static readonly Coding MDCECGPACINGRUNCNT = new Coding
     {
@@ -3314,7 +3314,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PAUSE
     /// </summary>
     public static readonly Coding MDCECGPAUSE = new Coding
     {
@@ -3323,7 +3323,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_QUADRIGEM
     /// </summary>
     public static readonly Coding MDCECGQUADRIGEM = new Coding
     {
@@ -3332,7 +3332,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TACHY
     /// </summary>
     public static readonly Coding MDCECGTACHY = new Coding
     {
@@ -3341,7 +3341,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TACHY_EXTREME
     /// </summary>
     public static readonly Coding MDCECGTACHYEXTREME = new Coding
     {
@@ -3350,7 +3350,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TACHY_UNSPEC
     /// </summary>
     public static readonly Coding MDCECGTACHYUNSPEC = new Coding
     {
@@ -3359,7 +3359,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_FIB
     /// </summary>
     public static readonly Coding MDCECGATRFIB = new Coding
     {
@@ -3368,7 +3368,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_FLUT
     /// </summary>
     public static readonly Coding MDCECGATRFLUT = new Coding
     {
@@ -3377,7 +3377,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_P_C
     /// </summary>
     public static readonly Coding MDCECGATRPC = new Coding
     {
@@ -3386,7 +3386,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_PACING
     /// </summary>
     public static readonly Coding MDCECGATRPACING = new Coding
     {
@@ -3395,7 +3395,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_STAND
     /// </summary>
     public static readonly Coding MDCECGATRSTAND = new Coding
     {
@@ -3404,7 +3404,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_TACHY
     /// </summary>
     public static readonly Coding MDCECGATRTACHY = new Coding
     {
@@ -3413,7 +3413,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_TACHY_MULTIFOCAL
     /// </summary>
     public static readonly Coding MDCECGATRTACHYMULTIFOCAL = new Coding
     {
@@ -3422,7 +3422,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_TACHY_PAROX
     /// </summary>
     public static readonly Coding MDCECGATRTACHYPAROX = new Coding
     {
@@ -3431,7 +3431,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AV_DISSOC
     /// </summary>
     public static readonly Coding MDCECGAVDISSOC = new Coding
     {
@@ -3440,7 +3440,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AV_PACING_SEQ
     /// </summary>
     public static readonly Coding MDCECGAVPACINGSEQ = new Coding
     {
@@ -3449,7 +3449,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AV_HEART_BLK_DEG_1
     /// </summary>
     public static readonly Coding MDCECGAVHEARTBLKDEG1 = new Coding
     {
@@ -3458,7 +3458,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AV_HEART_BLK_DEG_2
     /// </summary>
     public static readonly Coding MDCECGAVHEARTBLKDEG2 = new Coding
     {
@@ -3467,7 +3467,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AV_HEART_BLK_DEG_2_I
     /// </summary>
     public static readonly Coding MDCECGAVHEARTBLKDEG2I = new Coding
     {
@@ -3476,7 +3476,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AV_HEART_BLK_DEG_2_II
     /// </summary>
     public static readonly Coding MDCECGAVHEARTBLKDEG2II = new Coding
     {
@@ -3485,7 +3485,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_BB_BLK
     /// </summary>
     public static readonly Coding MDCECGBBBLK = new Coding
     {
@@ -3494,7 +3494,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_HEART
     /// </summary>
     public static readonly Coding MDCECGHEART = new Coding
     {
@@ -3503,7 +3503,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_CARD_BEAT_CNT
     /// </summary>
     public static readonly Coding MDCECGCARDBEATCNT = new Coding
     {
@@ -3512,7 +3512,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_HEART_RATE
     /// </summary>
     public static readonly Coding MDCECGHEARTRATE = new Coding
     {
@@ -3521,7 +3521,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_HEART_RATE_MIN
     /// </summary>
     public static readonly Coding MDCECGHEARTRATEMIN = new Coding
     {
@@ -3530,7 +3530,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_CARD_BEAT_BTB
     /// </summary>
     public static readonly Coding MDCECGCARDBEATBTB = new Coding
     {
@@ -3539,7 +3539,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_CARD_BEAT_RATE_BTB
     /// </summary>
     public static readonly Coding MDCECGCARDBEATRATEBTB = new Coding
     {
@@ -3548,7 +3548,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_CARD_BEAT_RATE_IRREG
     /// </summary>
     public static readonly Coding MDCECGCARDBEATRATEIRREG = new Coding
     {
@@ -3557,7 +3557,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_HEART_DYING
     /// </summary>
     public static readonly Coding MDCECGHEARTDYING = new Coding
     {
@@ -3566,7 +3566,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_HEART_BLK
     /// </summary>
     public static readonly Coding MDCECGHEARTBLK = new Coding
     {
@@ -3575,7 +3575,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_HEART_BLK_COMP
     /// </summary>
     public static readonly Coding MDCECGHEARTBLKCOMP = new Coding
     {
@@ -3584,7 +3584,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_JUNC_ESC_BEATS
     /// </summary>
     public static readonly Coding MDCECGJUNCESCBEATS = new Coding
     {
@@ -3593,7 +3593,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_JUNC_TACHY
     /// </summary>
     public static readonly Coding MDCECGJUNCTACHY = new Coding
     {
@@ -3602,7 +3602,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_JUNC_TACHY_PAROX
     /// </summary>
     public static readonly Coding MDCECGJUNCTACHYPAROX = new Coding
     {
@@ -3611,7 +3611,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LA_FASC_BLK
     /// </summary>
     public static readonly Coding MDCECGLAFASCBLK = new Coding
     {
@@ -3620,7 +3620,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LBB_BLK
     /// </summary>
     public static readonly Coding MDCECGLBBBLK = new Coding
     {
@@ -3629,7 +3629,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LP_FASC_BLK
     /// </summary>
     public static readonly Coding MDCECGLPFASCBLK = new Coding
     {
@@ -3638,7 +3638,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACER_NOT_PACING
     /// </summary>
     public static readonly Coding MDCECGPACERNOTPACING = new Coding
     {
@@ -3647,7 +3647,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACER_NOT_PACING_CNT
     /// </summary>
     public static readonly Coding MDCECGPACERNOTPACINGCNT = new Coding
     {
@@ -3656,7 +3656,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_RBB_BLK
     /// </summary>
     public static readonly Coding MDCECGRBBBLK = new Coding
     {
@@ -3665,7 +3665,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SINUS_BRADY
     /// </summary>
     public static readonly Coding MDCECGSINUSBRADY = new Coding
     {
@@ -3674,7 +3674,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SINUS_TACHY
     /// </summary>
     public static readonly Coding MDCECGSINUSTACHY = new Coding
     {
@@ -3683,7 +3683,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_BEAT
     /// </summary>
     public static readonly Coding MDCECGSVBEAT = new Coding
     {
@@ -3692,7 +3692,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_BEAT_CNT
     /// </summary>
     public static readonly Coding MDCECGSVBEATCNT = new Coding
     {
@@ -3701,7 +3701,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_BEAT_ANNOT
     /// </summary>
     public static readonly Coding MDCECGSVBEATANNOT = new Coding
     {
@@ -3710,7 +3710,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_BRADY
     /// </summary>
     public static readonly Coding MDCECGSVBRADY = new Coding
     {
@@ -3719,7 +3719,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_ECT
     /// </summary>
     public static readonly Coding MDCECGSVECT = new Coding
     {
@@ -3728,7 +3728,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_ECT_CNT
     /// </summary>
     public static readonly Coding MDCECGSVECTCNT = new Coding
     {
@@ -3737,7 +3737,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_P_C
     /// </summary>
     public static readonly Coding MDCECGSVPC = new Coding
     {
@@ -3746,7 +3746,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_P_C_CNT
     /// </summary>
     public static readonly Coding MDCECGSVPCCNT = new Coding
     {
@@ -3755,7 +3755,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_P_C_RATE
     /// </summary>
     public static readonly Coding MDCECGSVPCRATE_2 = new Coding
     {
@@ -3764,7 +3764,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_P_C_RATE_MAX
     /// </summary>
     public static readonly Coding MDCECGSVPCRATEMAX = new Coding
     {
@@ -3773,7 +3773,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_P_C_RATE_MIN
     /// </summary>
     public static readonly Coding MDCECGSVPCRATEMIN = new Coding
     {
@@ -3782,7 +3782,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_TACHY
     /// </summary>
     public static readonly Coding MDCECGSVTACHY = new Coding
     {
@@ -3791,7 +3791,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_PARASYS
     /// </summary>
     public static readonly Coding MDCECGVPARASYS = new Coding
     {
@@ -3800,7 +3800,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_BIGEM
     /// </summary>
     public static readonly Coding MDCECGVBIGEM = new Coding
     {
@@ -3809,7 +3809,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_FIB
     /// </summary>
     public static readonly Coding MDCECGVFIB = new Coding
     {
@@ -3818,7 +3818,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_FIB_TACHY
     /// </summary>
     public static readonly Coding MDCECGVFIBTACHY = new Coding
     {
@@ -3827,7 +3827,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_FLUT
     /// </summary>
     public static readonly Coding MDCECGVFLUT = new Coding
     {
@@ -3836,7 +3836,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_PACED_BEAT
     /// </summary>
     public static readonly Coding MDCECGVPACEDBEAT = new Coding
     {
@@ -3845,7 +3845,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_PACED_BEAT_CNT
     /// </summary>
     public static readonly Coding MDCECGVPACEDBEATCNT = new Coding
     {
@@ -3854,7 +3854,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_PACED_BEAT_ANNOT
     /// </summary>
     public static readonly Coding MDCECGVPACEDBEATANNOT = new Coding
     {
@@ -3863,7 +3863,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C
     /// </summary>
     public static readonly Coding MDCECGVPC = new Coding
     {
@@ -3872,7 +3872,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_CNT
     /// </summary>
     public static readonly Coding MDCECGVPCCNT = new Coding
     {
@@ -3881,7 +3881,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_RATE
     /// </summary>
     public static readonly Coding MDCECGVPCRATE = new Coding
     {
@@ -3890,7 +3890,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_RATE_MAX
     /// </summary>
     public static readonly Coding MDCECGVPCRATEMAX = new Coding
     {
@@ -3899,7 +3899,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_RATE_MIN
     /// </summary>
     public static readonly Coding MDCECGVPCRATEMIN = new Coding
     {
@@ -3908,7 +3908,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_FREQ
     /// </summary>
     public static readonly Coding MDCECGVPCFREQ = new Coding
     {
@@ -3917,7 +3917,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_INTERP
     /// </summary>
     public static readonly Coding MDCECGVPCINTERP = new Coding
     {
@@ -3926,7 +3926,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_MULTIFOCAL
     /// </summary>
     public static readonly Coding MDCECGVPCMULTIFOCAL = new Coding
     {
@@ -3935,7 +3935,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_PAIR
     /// </summary>
     public static readonly Coding MDCECGVPCPAIR = new Coding
     {
@@ -3944,7 +3944,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_PAIR_CNT
     /// </summary>
     public static readonly Coding MDCECGVPCPAIRCNT = new Coding
     {
@@ -3953,7 +3953,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_P_C_RUN
     /// </summary>
     public static readonly Coding MDCECGSVPCRUN = new Coding
     {
@@ -3962,7 +3962,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_P_C_RUN_CNT
     /// </summary>
     public static readonly Coding MDCECGSVPCRUNCNT = new Coding
     {
@@ -3971,7 +3971,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_RUN
     /// </summary>
     public static readonly Coding MDCECGVPCRUN = new Coding
     {
@@ -3980,7 +3980,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_RUN_CNT
     /// </summary>
     public static readonly Coding MDCECGVPCRUNCNT = new Coding
     {
@@ -3989,7 +3989,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_TRIP
     /// </summary>
     public static readonly Coding MDCECGVPCTRIP = new Coding
     {
@@ -3998,7 +3998,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_RonT
     /// </summary>
     public static readonly Coding MDCECGVPCRonT = new Coding
     {
@@ -4007,7 +4007,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_RonT_CNT
     /// </summary>
     public static readonly Coding MDCECGVPCRonTCNT = new Coding
     {
@@ -4016,7 +4016,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_PACING
     /// </summary>
     public static readonly Coding MDCECGVPACING = new Coding
     {
@@ -4025,7 +4025,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_QUADRIGEM
     /// </summary>
     public static readonly Coding MDCECGVQUADRIGEM = new Coding
     {
@@ -4034,7 +4034,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_STAND
     /// </summary>
     public static readonly Coding MDCECGVSTAND = new Coding
     {
@@ -4043,7 +4043,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_TACHY
     /// </summary>
     public static readonly Coding MDCECGVTACHY = new Coding
     {
@@ -4052,7 +4052,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_TACHY_NON_SUST
     /// </summary>
     public static readonly Coding MDCECGVTACHYNONSUST = new Coding
     {
@@ -4061,7 +4061,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_TACHY_SUST
     /// </summary>
     public static readonly Coding MDCECGVTACHYSUST = new Coding
     {
@@ -4070,7 +4070,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_TACHY_TORSADE
     /// </summary>
     public static readonly Coding MDCECGVTACHYTORSADE = new Coding
     {
@@ -4079,7 +4079,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_TRIGEM
     /// </summary>
     public static readonly Coding MDCECGVTRIGEM = new Coding
     {
@@ -4088,7 +4088,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_Q_RUN
     /// </summary>
     public static readonly Coding MDCECGVPCQRUN = new Coding
     {
@@ -4097,7 +4097,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_Q_RUN_CNT
     /// </summary>
     public static readonly Coding MDCECGVPCQRUNCNT = new Coding
     {
@@ -4106,7 +4106,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_P_C_FREQUENT
     /// </summary>
     public static readonly Coding MDCECGSVPCFREQUENT = new Coding
     {
@@ -4115,7 +4115,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_BEATS
     /// </summary>
     public static readonly Coding MDCECGSVBEATS = new Coding
     {
@@ -4124,7 +4124,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACED_BEATS
     /// </summary>
     public static readonly Coding MDCECGPACEDBEATS = new Coding
     {
@@ -4133,7 +4133,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ECT_ABSENT
     /// </summary>
     public static readonly Coding MDCECGECTABSENT = new Coding
     {
@@ -4142,7 +4142,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_BEAT_UNUSUAL
     /// </summary>
     public static readonly Coding MDCECGBEATUNUSUAL = new Coding
     {
@@ -4151,7 +4151,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACING_ARTIFACT
     /// </summary>
     public static readonly Coding MDCECGPACINGARTIFACT = new Coding
     {
@@ -4160,7 +4160,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SV_TACHY_PAROX
     /// </summary>
     public static readonly Coding MDCECGSVTACHYPAROX = new Coding
     {
@@ -4169,7 +4169,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AV_HEART_BLK_DEG_3
     /// </summary>
     public static readonly Coding MDCECGAVHEARTBLKDEG3 = new Coding
     {
@@ -4178,7 +4178,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AV_HEART_BLK_DEG_3_I
     /// </summary>
     public static readonly Coding MDCECGAVHEARTBLKDEG3I = new Coding
     {
@@ -4187,7 +4187,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_AV_HEART_BLK_DEG_4_I
     /// </summary>
     public static readonly Coding MDCECGAVHEARTBLKDEG4I = new Coding
     {
@@ -4196,7 +4196,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_P_SINIS_ATR
     /// </summary>
     public static readonly Coding MDCECGPSINISATR = new Coding
     {
@@ -4205,7 +4205,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_P_DEXT_ATR
     /// </summary>
     public static readonly Coding MDCECGPDEXTATR = new Coding
     {
@@ -4214,7 +4214,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_CONDUC_DEFECT
     /// </summary>
     public static readonly Coding MDCECGATRCONDUCDEFECT = new Coding
     {
@@ -4223,7 +4223,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_INTRA_VENT_CONDUC_DEFECT
     /// </summary>
     public static readonly Coding MDCECGINTRAVENTCONDUCDEFECT = new Coding
     {
@@ -4232,7 +4232,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LBB_BLK_COMP
     /// </summary>
     public static readonly Coding MDCECGLBBBLKCOMP = new Coding
     {
@@ -4241,7 +4241,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LBB_BLK_INCOMP
     /// </summary>
     public static readonly Coding MDCECGLBBBLKINCOMP = new Coding
     {
@@ -4250,7 +4250,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_RBB_BLK_COMP
     /// </summary>
     public static readonly Coding MDCECGRBBBLKCOMP = new Coding
     {
@@ -4259,7 +4259,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_RBB_BLK_INCOMP
     /// </summary>
     public static readonly Coding MDCECGRBBBLKINCOMP = new Coding
     {
@@ -4268,7 +4268,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_BLK_TRIFASC
     /// </summary>
     public static readonly Coding MDCECGBLKTRIFASC = new Coding
     {
@@ -4277,7 +4277,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_BLK_ANT_L_HEMI
     /// </summary>
     public static readonly Coding MDCECGBLKANTLHEMI = new Coding
     {
@@ -4286,7 +4286,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_WPW_A
     /// </summary>
     public static readonly Coding MDCECGWPWA = new Coding
     {
@@ -4295,7 +4295,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_WPW_A_PROB
     /// </summary>
     public static readonly Coding MDCECGWPWAPROB = new Coding
     {
@@ -4304,7 +4304,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_WPW_A_POSSIB
     /// </summary>
     public static readonly Coding MDCECGWPWAPOSSIB = new Coding
     {
@@ -4313,7 +4313,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_WPW_B
     /// </summary>
     public static readonly Coding MDCECGWPWB = new Coding
     {
@@ -4322,7 +4322,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_WPW_B_PROB
     /// </summary>
     public static readonly Coding MDCECGWPWBPROB = new Coding
     {
@@ -4331,7 +4331,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_WPW_B_POSSIB
     /// </summary>
     public static readonly Coding MDCECGWPWBPOSSIB = new Coding
     {
@@ -4340,7 +4340,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_WPW_UNK
     /// </summary>
     public static readonly Coding MDCECGWPWUNK = new Coding
     {
@@ -4349,7 +4349,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_WPW_UNK_PROB
     /// </summary>
     public static readonly Coding MDCECGWPWUNKPROB = new Coding
     {
@@ -4358,7 +4358,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_WPW_UNK_POSSIB
     /// </summary>
     public static readonly Coding MDCECGWPWUNKPOSSIB = new Coding
     {
@@ -4367,7 +4367,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_REG
     /// </summary>
     public static readonly Coding MDCECGREG = new Coding
     {
@@ -4376,7 +4376,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_PQ_PQ_100
     /// </summary>
     public static readonly Coding MDCECGATRPQPQ100 = new Coding
     {
@@ -4385,7 +4385,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ARRHY
     /// </summary>
     public static readonly Coding MDCECGARRHY = new Coding
     {
@@ -4394,7 +4394,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ARRHY_PQ_100
     /// </summary>
     public static readonly Coding MDCECGARRHYPQ100 = new Coding
     {
@@ -4403,7 +4403,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_SINUS_ARRHY
     /// </summary>
     public static readonly Coding MDCECGSINUSARRHY = new Coding
     {
@@ -4412,7 +4412,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ARRHY_ABS
     /// </summary>
     public static readonly Coding MDCECGARRHYABS = new Coding
     {
@@ -4421,7 +4421,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_RESP_ARRHY
     /// </summary>
     public static readonly Coding MDCECGRESPARRHY = new Coding
     {
@@ -4430,7 +4430,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_BIGEM_INTERMIT
     /// </summary>
     public static readonly Coding MDCECGBIGEMINTERMIT = new Coding
     {
@@ -4439,7 +4439,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_BIGEM
     /// </summary>
     public static readonly Coding MDCECGATRBIGEM = new Coding
     {
@@ -4448,7 +4448,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_BIGEM_INTERMIT
     /// </summary>
     public static readonly Coding MDCECGATRBIGEMINTERMIT = new Coding
     {
@@ -4457,7 +4457,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TRIGEM
     /// </summary>
     public static readonly Coding MDCECGTRIGEM = new Coding
     {
@@ -4466,7 +4466,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TRIGEM_INTERMIT
     /// </summary>
     public static readonly Coding MDCECGTRIGEMINTERMIT = new Coding
     {
@@ -4475,7 +4475,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_VENT_EXTRASYST_W_PAUSE
     /// </summary>
     public static readonly Coding MDCECGVENTEXTRASYSTWPAUSE = new Coding
     {
@@ -4484,7 +4484,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_NORMAL
     /// </summary>
     public static readonly Coding MDCECGNORMAL = new Coding
     {
@@ -4493,7 +4493,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_NORMAL_ANNOT
     /// </summary>
     public static readonly Coding MDCECGNORMALANNOT = new Coding
     {
@@ -4502,7 +4502,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_VENT_HYPERTROPHY_RIGHT
     /// </summary>
     public static readonly Coding MDCECGVENTHYPERTROPHYRIGHT = new Coding
     {
@@ -4511,7 +4511,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_VENT_HYPERTROPHY_LEFT
     /// </summary>
     public static readonly Coding MDCECGVENTHYPERTROPHYLEFT = new Coding
     {
@@ -4520,7 +4520,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_VENT_HYPERTROPHY
     /// </summary>
     public static readonly Coding MDCECGVENTHYPERTROPHY = new Coding
     {
@@ -4529,7 +4529,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_INFARCT_ANT
     /// </summary>
     public static readonly Coding MDCECGINFARCTANT = new Coding
     {
@@ -4538,7 +4538,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_INFARCT_INT
     /// </summary>
     public static readonly Coding MDCECGINFARCTINT = new Coding
     {
@@ -4547,7 +4547,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_INFARCT_MIX
     /// </summary>
     public static readonly Coding MDCECGINFARCTMIX = new Coding
     {
@@ -4556,7 +4556,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PATHOL
     /// </summary>
     public static readonly Coding MDCECGPATHOL = new Coding
     {
@@ -4565,7 +4565,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_REPOLARIZ_DISTURB
     /// </summary>
     public static readonly Coding MDCECGREPOLARIZDISTURB = new Coding
     {
@@ -4574,7 +4574,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_INFARCT_HYPER
     /// </summary>
     public static readonly Coding MDCECGINFARCTHYPER = new Coding
     {
@@ -4583,7 +4583,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_HYPER
     /// </summary>
     public static readonly Coding MDCECGHYPER = new Coding
     {
@@ -4592,7 +4592,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_INFARCT
     /// </summary>
     public static readonly Coding MDCECGINFARCT = new Coding
     {
@@ -4601,7 +4601,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_INFARCT_LAT
     /// </summary>
     public static readonly Coding MDCECGINFARCTLAT = new Coding
     {
@@ -4610,7 +4610,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_MULTIFOCAL
     /// </summary>
     public static readonly Coding MDCECGVPCMULTIFOCAL_2 = new Coding
     {
@@ -4619,7 +4619,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_P_C_MULTIFOCAL_CNT
     /// </summary>
     public static readonly Coding MDCECGVPCMULTIFOCALCNT = new Coding
     {
@@ -4628,7 +4628,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_INOP
     /// </summary>
     public static readonly Coding MDCECGINOP = new Coding
     {
@@ -4637,7 +4637,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_INOP_ANNOT
     /// </summary>
     public static readonly Coding MDCECGINOPANNOT = new Coding
     {
@@ -4646,7 +4646,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_DUAL_PACER_POSN
     /// </summary>
     public static readonly Coding MDCECGDUALPACERPOSN = new Coding
     {
@@ -4655,7 +4655,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_DUAL_PACER_POSN_ANNOT
     /// </summary>
     public static readonly Coding MDCECGDUALPACERPOSNANNOT = new Coding
     {
@@ -4664,7 +4664,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_QUESTIONABLE
     /// </summary>
     public static readonly Coding MDCECGQUESTIONABLE = new Coding
     {
@@ -4673,7 +4673,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_QUESTIONABLE_ANNOT
     /// </summary>
     public static readonly Coding MDCECGQUESTIONABLEANNOT = new Coding
     {
@@ -4682,7 +4682,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_VENT_BEAT
     /// </summary>
     public static readonly Coding MDCECGVENTBEAT = new Coding
     {
@@ -4691,7 +4691,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_VENT_BEAT_ANNOT
     /// </summary>
     public static readonly Coding MDCECGVENTBEATANNOT = new Coding
     {
@@ -4700,7 +4700,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEARN
     /// </summary>
     public static readonly Coding MDCECGLEARN = new Coding
     {
@@ -4709,7 +4709,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_LEARN_ANNOT
     /// </summary>
     public static readonly Coding MDCECGLEARNANNOT = new Coding
     {
@@ -4718,7 +4718,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_ATR_PACED_BEAT_PCT
     /// </summary>
     public static readonly Coding MDCECGATRPACEDBEATPCT = new Coding
     {
@@ -4727,7 +4727,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_BIGEM_PCT
     /// </summary>
     public static readonly Coding MDCECGBIGEMPCT = new Coding
     {
@@ -4736,7 +4736,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_CARD_BEAT_RATE_IRREG_PCT
     /// </summary>
     public static readonly Coding MDCECGCARDBEATRATEIRREGPCT = new Coding
     {
@@ -4745,7 +4745,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_DUAL_PACED_BEAT_PCT
     /// </summary>
     public static readonly Coding MDCECGDUALPACEDBEATPCT = new Coding
     {
@@ -4754,7 +4754,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_PACED_BEAT_PCT
     /// </summary>
     public static readonly Coding MDCECGPACEDBEATPCT = new Coding
     {
@@ -4763,7 +4763,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_TRIGEM_PCT
     /// </summary>
     public static readonly Coding MDCECGTRIGEMPCT = new Coding
     {
@@ -4772,7 +4772,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ECG_V_PACED_BEAT_PCT
     /// </summary>
     public static readonly Coding MDCECGVPACEDBEATPCT = new Coding
     {
@@ -4781,7 +4781,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS
     /// </summary>
     public static readonly Coding MDCPULS = new Coding
     {
@@ -4790,7 +4790,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_RATE
     /// </summary>
     public static readonly Coding MDCPULSRATE = new Coding
     {
@@ -4799,7 +4799,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_BLD_PULS_INV
     /// </summary>
     public static readonly Coding MDCBLDPULSINV = new Coding
     {
@@ -4808,7 +4808,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_BLD_PULS_RATE_INV
     /// </summary>
     public static readonly Coding MDCBLDPULSRATEINV = new Coding
     {
@@ -4817,7 +4817,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_PULS
     /// </summary>
     public static readonly Coding MDCPULSOXIMPULS = new Coding
     {
@@ -4826,7 +4826,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_PULS_RATE
     /// </summary>
     public static readonly Coding MDCPULSOXIMPULSRATE = new Coding
     {
@@ -4835,7 +4835,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PLETH_PULS
     /// </summary>
     public static readonly Coding MDCPLETHPULS = new Coding
     {
@@ -4844,7 +4844,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PLETH_PULS_RATE
     /// </summary>
     public static readonly Coding MDCPLETHPULSRATE = new Coding
     {
@@ -4853,7 +4853,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_NON_INV
     /// </summary>
     public static readonly Coding MDCPULSNONINV = new Coding
     {
@@ -4862,7 +4862,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_RATE_NON_INV
     /// </summary>
     public static readonly Coding MDCPULSRATENONINV = new Coding
     {
@@ -4871,7 +4871,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TTHOR_HEART
     /// </summary>
     public static readonly Coding MDCTTHORHEART = new Coding
     {
@@ -4880,7 +4880,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TTHOR_HEART_CNT
     /// </summary>
     public static readonly Coding MDCTTHORHEARTCNT = new Coding
     {
@@ -4889,7 +4889,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TTHOR_HEART_RATE
     /// </summary>
     public static readonly Coding MDCTTHORHEARTRATE = new Coding
     {
@@ -4898,7 +4898,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TTHOR_HEART_RATE_MAX
     /// </summary>
     public static readonly Coding MDCTTHORHEARTRATEMAX = new Coding
     {
@@ -4907,7 +4907,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TTHOR_HEART_RATE_MIN
     /// </summary>
     public static readonly Coding MDCTTHORHEARTRATEMIN = new Coding
     {
@@ -4916,7 +4916,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TTHOR_HEART_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCTTHORHEARTRATEMEAN = new Coding
     {
@@ -4925,7 +4925,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PALPATION_HEART
     /// </summary>
     public static readonly Coding MDCPALPATIONHEART = new Coding
     {
@@ -4934,7 +4934,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PALPATION_HEART_CNT
     /// </summary>
     public static readonly Coding MDCPALPATIONHEARTCNT = new Coding
     {
@@ -4943,7 +4943,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PALPATION_HEART_RATE
     /// </summary>
     public static readonly Coding MDCPALPATIONHEARTRATE = new Coding
     {
@@ -4952,7 +4952,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PALPATION_HEART_RATE_MAX
     /// </summary>
     public static readonly Coding MDCPALPATIONHEARTRATEMAX = new Coding
     {
@@ -4961,7 +4961,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PALPATION_HEART_RATE_MIN
     /// </summary>
     public static readonly Coding MDCPALPATIONHEARTRATEMIN = new Coding
     {
@@ -4970,7 +4970,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PALPATION_HEART_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCPALPATIONHEARTRATEMEAN = new Coding
     {
@@ -4979,7 +4979,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RES_VASC_SYS_INDEX
     /// </summary>
     public static readonly Coding MDCRESVASCSYSINDEX = new Coding
     {
@@ -4988,7 +4988,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_LV_STROKE_INDEX
     /// </summary>
     public static readonly Coding MDCWKLVSTROKEINDEX = new Coding
     {
@@ -4997,7 +4997,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_LV_STROKE_INDEX_MAX
     /// </summary>
     public static readonly Coding MDCWKLVSTROKEINDEXMAX = new Coding
     {
@@ -5006,7 +5006,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_LV_STROKE_INDEX_MIN
     /// </summary>
     public static readonly Coding MDCWKLVSTROKEINDEXMIN = new Coding
     {
@@ -5015,7 +5015,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_LV_STROKE_INDEX_MEAN
     /// </summary>
     public static readonly Coding MDCWKLVSTROKEINDEXMEAN = new Coding
     {
@@ -5024,7 +5024,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PVT_WK_RV_STROKE_INDEX
     /// </summary>
     public static readonly Coding MDCPVTWKRVSTROKEINDEX = new Coding
     {
@@ -5033,7 +5033,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_OUTPUT_CARD_INDEX
     /// </summary>
     public static readonly Coding MDCOUTPUTCARDINDEX = new Coding
     {
@@ -5042,7 +5042,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD
     /// </summary>
     public static readonly Coding MDCPRESSBLD = new Coding
     {
@@ -5051,7 +5051,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDSYS = new Coding
     {
@@ -5060,7 +5060,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDDIA = new Coding
     {
@@ -5069,7 +5069,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDMEAN = new Coding
     {
@@ -5078,7 +5078,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_NONINV
     /// </summary>
     public static readonly Coding MDCPRESSBLDNONINV = new Coding
     {
@@ -5087,7 +5087,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_NONINV_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDNONINVSYS = new Coding
     {
@@ -5096,7 +5096,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_NONINV_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDNONINVDIA = new Coding
     {
@@ -5105,7 +5105,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_NONINV_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDNONINVMEAN = new Coding
     {
@@ -5114,7 +5114,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_NONINV_CTS
     /// </summary>
     public static readonly Coding MDCPRESSBLDNONINVCTS = new Coding
     {
@@ -5123,7 +5123,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_NONINV_SYS_CTS
     /// </summary>
     public static readonly Coding MDCPRESSBLDNONINVSYSCTS = new Coding
     {
@@ -5132,7 +5132,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_NONINV_DIA_CTS
     /// </summary>
     public static readonly Coding MDCPRESSBLDNONINVDIACTS = new Coding
     {
@@ -5141,7 +5141,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_NONINV_MEAN_CTS
     /// </summary>
     public static readonly Coding MDCPRESSBLDNONINVMEANCTS = new Coding
     {
@@ -5150,7 +5150,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_AORT
     /// </summary>
     public static readonly Coding MDCPRESSBLDAORT = new Coding
     {
@@ -5159,7 +5159,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_AORT_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDAORTSYS = new Coding
     {
@@ -5168,7 +5168,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_AORT_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDAORTDIA = new Coding
     {
@@ -5177,7 +5177,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_AORT_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDAORTMEAN = new Coding
     {
@@ -5186,7 +5186,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART
     /// </summary>
     public static readonly Coding MDCPRESSBLDART = new Coding
     {
@@ -5195,7 +5195,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTSYS = new Coding
     {
@@ -5204,7 +5204,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTDIA = new Coding
     {
@@ -5213,7 +5213,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTMEAN = new Coding
     {
@@ -5222,7 +5222,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_ABP
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTABP = new Coding
     {
@@ -5231,7 +5231,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_ABP_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTABPSYS = new Coding
     {
@@ -5240,7 +5240,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_ABP_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTABPDIA = new Coding
     {
@@ -5249,7 +5249,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_ABP_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTABPMEAN = new Coding
     {
@@ -5258,7 +5258,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_AUG
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTAUG = new Coding
     {
@@ -5267,7 +5267,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_AUG_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTAUGDIA = new Coding
     {
@@ -5276,7 +5276,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_PULM
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTPULM = new Coding
     {
@@ -5285,7 +5285,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_PULM_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTPULMSYS = new Coding
     {
@@ -5294,7 +5294,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_PULM_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTPULMDIA = new Coding
     {
@@ -5303,7 +5303,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_PULM_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTPULMMEAN = new Coding
     {
@@ -5312,7 +5312,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_PULM_WEDGE
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTPULMWEDGE = new Coding
     {
@@ -5321,7 +5321,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_UMB
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTUMB = new Coding
     {
@@ -5330,7 +5330,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_UMB_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTUMBSYS = new Coding
     {
@@ -5339,7 +5339,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_UMB_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTUMBDIA = new Coding
     {
@@ -5348,7 +5348,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_UMB_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTUMBMEAN = new Coding
     {
@@ -5357,7 +5357,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ATR
     /// </summary>
     public static readonly Coding MDCPRESSBLDATR = new Coding
     {
@@ -5366,7 +5366,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ATR_LEFT
     /// </summary>
     public static readonly Coding MDCPRESSBLDATRLEFT = new Coding
     {
@@ -5375,7 +5375,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ATR_LEFT_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDATRLEFTSYS = new Coding
     {
@@ -5384,7 +5384,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ATR_LEFT_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDATRLEFTDIA = new Coding
     {
@@ -5393,7 +5393,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ATR_LEFT_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDATRLEFTMEAN = new Coding
     {
@@ -5402,7 +5402,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ATR_RIGHT
     /// </summary>
     public static readonly Coding MDCPRESSBLDATRRIGHT = new Coding
     {
@@ -5411,7 +5411,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ATR_RIGHT_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDATRRIGHTSYS = new Coding
     {
@@ -5420,7 +5420,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ATR_RIGHT_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDATRRIGHTDIA = new Coding
     {
@@ -5429,7 +5429,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ATR_RIGHT_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDATRRIGHTMEAN = new Coding
     {
@@ -5438,7 +5438,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_PULM_CAP
     /// </summary>
     public static readonly Coding MDCPRESSBLDPULMCAP = new Coding
     {
@@ -5447,7 +5447,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_PULM_CAP_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDPULMCAPSYS = new Coding
     {
@@ -5456,7 +5456,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_PULM_CAP_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDPULMCAPDIA = new Coding
     {
@@ -5465,7 +5465,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_PULM_CAP_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDPULMCAPMEAN = new Coding
     {
@@ -5474,7 +5474,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VEN
     /// </summary>
     public static readonly Coding MDCPRESSBLDVEN = new Coding
     {
@@ -5483,7 +5483,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VEN_CENT
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENCENT = new Coding
     {
@@ -5492,7 +5492,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VEN_CENT_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENCENTSYS = new Coding
     {
@@ -5501,7 +5501,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VEN_CENT_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENCENTDIA = new Coding
     {
@@ -5510,7 +5510,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VEN_CENT_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENCENTMEAN = new Coding
     {
@@ -5519,7 +5519,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VEN_UMB
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENUMB = new Coding
     {
@@ -5528,7 +5528,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VEN_UMB_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENUMBSYS = new Coding
     {
@@ -5537,7 +5537,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VEN_UMB_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENUMBDIA = new Coding
     {
@@ -5546,7 +5546,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VEN_UMB_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENUMBMEAN = new Coding
     {
@@ -5555,7 +5555,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENT = new Coding
     {
@@ -5564,7 +5564,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTDIA = new Coding
     {
@@ -5573,7 +5573,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_END
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTEND = new Coding
     {
@@ -5582,7 +5582,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_DIA_END
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTDIAEND = new Coding
     {
@@ -5591,7 +5591,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_LEFT
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTLEFT = new Coding
     {
@@ -5600,7 +5600,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_LEFT_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTLEFTSYS = new Coding
     {
@@ -5609,7 +5609,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_LEFT_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTLEFTDIA = new Coding
     {
@@ -5618,7 +5618,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_LEFT_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTLEFTMEAN = new Coding
     {
@@ -5627,7 +5627,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_RIGHT
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTRIGHT = new Coding
     {
@@ -5636,7 +5636,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_RIGHT_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTRIGHTSYS = new Coding
     {
@@ -5645,7 +5645,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_RIGHT_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTRIGHTDIA = new Coding
     {
@@ -5654,7 +5654,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_RIGHT_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTRIGHTMEAN = new Coding
     {
@@ -5663,7 +5663,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_AUG
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTAUG = new Coding
     {
@@ -5672,7 +5672,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONART = new Coding
     {
@@ -5681,7 +5681,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTSYS = new Coding
     {
@@ -5690,7 +5690,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTDIA = new Coding
     {
@@ -5699,7 +5699,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTMEAN = new Coding
     {
@@ -5708,7 +5708,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_L
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTL = new Coding
     {
@@ -5717,7 +5717,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_L_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTLSYS = new Coding
     {
@@ -5726,7 +5726,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_L_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTLDIA = new Coding
     {
@@ -5735,7 +5735,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_L_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTLMEAN = new Coding
     {
@@ -5744,7 +5744,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_L_ANT_DESCEND
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTLANTDESCEND = new Coding
     {
@@ -5753,7 +5753,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_L_ANT_DESCEND_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTLANTDESCENDSYS = new Coding
     {
@@ -5762,7 +5762,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_L_ANT_DESCEND_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTLANTDESCENDDIA = new Coding
     {
@@ -5771,7 +5771,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_L_ANT_DESCEND_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTLANTDESCENDMEAN = new Coding
     {
@@ -5780,7 +5780,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_L_CIRC
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTLCIRC = new Coding
     {
@@ -5789,7 +5789,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_L_CIRC_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTLCIRCSYS = new Coding
     {
@@ -5798,7 +5798,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_L_CIRC_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTLCIRCDIA = new Coding
     {
@@ -5807,7 +5807,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_L_CIRC_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTLCIRCMEAN = new Coding
     {
@@ -5816,7 +5816,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_R
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTR = new Coding
     {
@@ -5825,7 +5825,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_R_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTRSYS = new Coding
     {
@@ -5834,7 +5834,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_R_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTRDIA = new Coding
     {
@@ -5843,7 +5843,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_R_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTRMEAN = new Coding
     {
@@ -5852,7 +5852,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_R_POST_DESCEND
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTRPOSTDESCEND = new Coding
     {
@@ -5861,7 +5861,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_R_POST_DESCEND_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTRPOSTDESCENDSYS = new Coding
     {
@@ -5870,7 +5870,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_R_POST_DESCEND_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTRPOSTDESCENDDIA = new Coding
     {
@@ -5879,7 +5879,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_R_POST_DESCEND_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTRPOSTDESCENDMEAN = new Coding
     {
@@ -5888,7 +5888,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_CONUS
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTCONUS = new Coding
     {
@@ -5897,7 +5897,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_CONUS_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTCONUSSYS = new Coding
     {
@@ -5906,7 +5906,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_CONUS_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTCONUSDIA = new Coding
     {
@@ -5915,7 +5915,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_CONUS_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTCONUSMEAN = new Coding
     {
@@ -5924,7 +5924,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_R_MARG
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTRMARG = new Coding
     {
@@ -5933,7 +5933,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_R_MARG_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTRMARGSYS = new Coding
     {
@@ -5942,7 +5942,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_R_MARG_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTRMARGDIA = new Coding
     {
@@ -5951,7 +5951,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_CORON_ART_R_MARG_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDCORONARTRMARGMEAN = new Coding
     {
@@ -5960,7 +5960,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_LEFT_BEGIN
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTLEFTBEGIN = new Coding
     {
@@ -5969,7 +5969,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_LEFT_BEGIN_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTLEFTBEGINDIA = new Coding
     {
@@ -5978,7 +5978,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_LEFT_SYS_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTLEFTSYSMEAN = new Coding
     {
@@ -5987,7 +5987,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_LEFT_DIA_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTLEFTDIAMEAN = new Coding
     {
@@ -5996,7 +5996,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_O2_CONSUMP
     /// </summary>
     public static readonly Coding MDCSATO2CONSUMP = new Coding
     {
@@ -6005,7 +6005,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_OUTPUT_CARD
     /// </summary>
     public static readonly Coding MDCOUTPUTCARD = new Coding
     {
@@ -6014,7 +6014,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_OUTPUT_CARD_ART_BRANCH
     /// </summary>
     public static readonly Coding MDCOUTPUTCARDARTBRANCH = new Coding
     {
@@ -6023,7 +6023,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_OUTPUT_CARD_VEN_BRANCH
     /// </summary>
     public static readonly Coding MDCOUTPUTCARDVENBRANCH = new Coding
     {
@@ -6032,7 +6032,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PLETH_VOL_BLD
     /// </summary>
     public static readonly Coding MDCPLETHVOLBLD = new Coding
     {
@@ -6041,7 +6041,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_CUFF
     /// </summary>
     public static readonly Coding MDCPRESSCUFF = new Coding
     {
@@ -6050,7 +6050,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_CUFF_SYS
     /// </summary>
     public static readonly Coding MDCPRESSCUFFSYS = new Coding
     {
@@ -6059,7 +6059,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_CUFF_DIA
     /// </summary>
     public static readonly Coding MDCPRESSCUFFDIA = new Coding
     {
@@ -6068,7 +6068,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_CUFF_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSCUFFMEAN = new Coding
     {
@@ -6077,7 +6077,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RES_VASC
     /// </summary>
     public static readonly Coding MDCRESVASC = new Coding
     {
@@ -6086,7 +6086,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RES_VASC_PULM
     /// </summary>
     public static readonly Coding MDCRESVASCPULM = new Coding
     {
@@ -6095,7 +6095,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RES_VASC_SYS
     /// </summary>
     public static readonly Coding MDCRESVASCSYS = new Coding
     {
@@ -6104,7 +6104,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_O2
     /// </summary>
     public static readonly Coding MDCSATO2 = new Coding
     {
@@ -6113,7 +6113,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_O2_QUAL
     /// </summary>
     public static readonly Coding MDCSATO2QUAL = new Coding
     {
@@ -6122,7 +6122,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_O2_ART
     /// </summary>
     public static readonly Coding MDCSATO2ART = new Coding
     {
@@ -6131,7 +6131,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_O2_CEREB
     /// </summary>
     public static readonly Coding MDCSATO2CEREB = new Coding
     {
@@ -6140,7 +6140,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_O2_VEN
     /// </summary>
     public static readonly Coding MDCSATO2VEN = new Coding
     {
@@ -6149,7 +6149,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_DIFF_O2_ART_ALV
     /// </summary>
     public static readonly Coding MDCSATDIFFO2ARTALV = new Coding
     {
@@ -6158,7 +6158,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_DIFF_O2_ART
     /// </summary>
     public static readonly Coding MDCSATDIFFO2ART = new Coding
     {
@@ -6167,7 +6167,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TEMP
     /// </summary>
     public static readonly Coding MDCTEMP = new Coding
     {
@@ -6176,7 +6176,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TEMP_FOLEY
     /// </summary>
     public static readonly Coding MDCTEMPFOLEY = new Coding
     {
@@ -6185,7 +6185,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TEMP_ART
     /// </summary>
     public static readonly Coding MDCTEMPART = new Coding
     {
@@ -6194,7 +6194,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TEMP_AWAY
     /// </summary>
     public static readonly Coding MDCTEMPAWAY = new Coding
     {
@@ -6203,7 +6203,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TEMP_BODY
     /// </summary>
     public static readonly Coding MDCTEMPBODY = new Coding
     {
@@ -6212,7 +6212,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TEMP_CORE
     /// </summary>
     public static readonly Coding MDCTEMPCORE = new Coding
     {
@@ -6221,7 +6221,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TEMP_ESOPH
     /// </summary>
     public static readonly Coding MDCTEMPESOPH = new Coding
     {
@@ -6230,7 +6230,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TEMP_INJ
     /// </summary>
     public static readonly Coding MDCTEMPINJ = new Coding
     {
@@ -6239,7 +6239,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TEMP_NASOPH
     /// </summary>
     public static readonly Coding MDCTEMPNASOPH = new Coding
     {
@@ -6248,7 +6248,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TEMP_SKIN
     /// </summary>
     public static readonly Coding MDCTEMPSKIN = new Coding
     {
@@ -6257,7 +6257,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TEMP_TYMP
     /// </summary>
     public static readonly Coding MDCTEMPTYMP = new Coding
     {
@@ -6266,7 +6266,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TEMP_VEN
     /// </summary>
     public static readonly Coding MDCTEMPVEN = new Coding
     {
@@ -6275,7 +6275,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VOL_BLD_STROKE
     /// </summary>
     public static readonly Coding MDCVOLBLDSTROKE = new Coding
     {
@@ -6284,7 +6284,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VOL_BLD_VENT_LEFT_STROKE
     /// </summary>
     public static readonly Coding MDCVOLBLDVENTLEFTSTROKE = new Coding
     {
@@ -6293,7 +6293,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_CARD
     /// </summary>
     public static readonly Coding MDCWKCARD = new Coding
     {
@@ -6302,7 +6302,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_CARD_LEFT
     /// </summary>
     public static readonly Coding MDCWKCARDLEFT = new Coding
     {
@@ -6311,7 +6311,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_CARD_RIGHT
     /// </summary>
     public static readonly Coding MDCWKCARDRIGHT = new Coding
     {
@@ -6320,7 +6320,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_LV_STROKE
     /// </summary>
     public static readonly Coding MDCWKLVSTROKE = new Coding
     {
@@ -6329,7 +6329,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_RV
     /// </summary>
     public static readonly Coding MDCWKRV = new Coding
     {
@@ -6338,7 +6338,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_RV_STROKE
     /// </summary>
     public static readonly Coding MDCWKRVSTROKE = new Coding
     {
@@ -6347,7 +6347,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_LV
     /// </summary>
     public static readonly Coding MDCWKLV = new Coding
     {
@@ -6356,7 +6356,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_O2_ART_PULM
     /// </summary>
     public static readonly Coding MDCSATO2ARTPULM = new Coding
     {
@@ -6365,7 +6365,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_PERF_REL
     /// </summary>
     public static readonly Coding MDCPULSOXIMPERFREL = new Coding
     {
@@ -6374,7 +6374,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PLETH
     /// </summary>
     public static readonly Coding MDCPLETH = new Coding
     {
@@ -6383,7 +6383,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_SAT_O2
     /// </summary>
     public static readonly Coding MDCPULSOXIMSATO2 = new Coding
     {
@@ -6392,7 +6392,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_SAT_O2_CTS
     /// </summary>
     public static readonly Coding MDCPULSOXIMSATO2CTS = new Coding
     {
@@ -6401,7 +6401,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_SAT_O2_NONCTS
     /// </summary>
     public static readonly Coding MDCPULSOXIMSATO2NONCTS = new Coding
     {
@@ -6410,7 +6410,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_SAT_O2_DIFF
     /// </summary>
     public static readonly Coding MDCPULSOXIMSATO2DIFF = new Coding
     {
@@ -6419,7 +6419,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_SAT_O2_ART_LEFT
     /// </summary>
     public static readonly Coding MDCPULSOXIMSATO2ARTLEFT = new Coding
     {
@@ -6428,7 +6428,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_SAT_O2_ART_RIGHT
     /// </summary>
     public static readonly Coding MDCPULSOXIMSATO2ARTRIGHT = new Coding
     {
@@ -6437,7 +6437,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_NBP_SAT_O2_ART
     /// </summary>
     public static readonly Coding MDCNBPSATO2ART = new Coding
     {
@@ -6446,7 +6446,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_DESAT
     /// </summary>
     public static readonly Coding MDCDESAT = new Coding
     {
@@ -6455,7 +6455,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_BLD_PERF_INDEX
     /// </summary>
     public static readonly Coding MDCBLDPERFINDEX = new Coding
     {
@@ -6464,7 +6464,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_OUTPUT_CARD_CTS
     /// </summary>
     public static readonly Coding MDCOUTPUTCARDCTS = new Coding
     {
@@ -6473,7 +6473,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_OUTPUT_CARD_NONCTS
     /// </summary>
     public static readonly Coding MDCOUTPUTCARDNONCTS = new Coding
     {
@@ -6482,7 +6482,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_LEFT_END
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTLEFTEND = new Coding
     {
@@ -6491,7 +6491,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VENT_LEFT_END_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENTLEFTENDDIA = new Coding
     {
@@ -6500,7 +6500,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_INDEX_PRESS_VENT_L_DERIV_POS
     /// </summary>
     public static readonly Coding MDCINDEXPRESSVENTLDERIVPOS = new Coding
     {
@@ -6509,7 +6509,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_INDEX_PRESS_VENT_L_DERIV_POS_MAX_DIV_P
     /// </summary>
     public static readonly Coding MDCINDEXPRESSVENTLDERIVPOSMAXDIVP = new Coding
     {
@@ -6518,7 +6518,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_INDEX_PRESS_VENT_L_DERIV_NEG_MAX
     /// </summary>
     public static readonly Coding MDCINDEXPRESSVENTLDERIVNEGMAX = new Coding
     {
@@ -6527,7 +6527,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_INDEX_PRESS_VENT_L_RELAX
     /// </summary>
     public static readonly Coding MDCINDEXPRESSVENTLRELAX = new Coding
     {
@@ -6536,7 +6536,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TIME_PD_VENT_L_AORT_VALV
     /// </summary>
     public static readonly Coding MDCTIMEPDVENTLAORTVALV = new Coding
     {
@@ -6545,7 +6545,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TIME_PD_VENT_L_AORT_VALV_DIA_FILL
     /// </summary>
     public static readonly Coding MDCTIMEPDVENTLAORTVALVDIAFILL = new Coding
     {
@@ -6554,7 +6554,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VOL_VENT_L_END_DIA
     /// </summary>
     public static readonly Coding MDCVOLVENTLENDDIA = new Coding
     {
@@ -6563,7 +6563,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VOL_VENT_L_END_SYS
     /// </summary>
     public static readonly Coding MDCVOLVENTLENDSYS = new Coding
     {
@@ -6572,7 +6572,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_GRAD_PRESS_BLD_MITRAL
     /// </summary>
     public static readonly Coding MDCGRADPRESSBLDMITRAL = new Coding
     {
@@ -6581,7 +6581,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_GRAD_PRESS_BLD_MITRAL_MEAN
     /// </summary>
     public static readonly Coding MDCGRADPRESSBLDMITRALMEAN = new Coding
     {
@@ -6590,7 +6590,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_GRAD_PRESS_BLD_MITRAL_POS
     /// </summary>
     public static readonly Coding MDCGRADPRESSBLDMITRALPOS = new Coding
     {
@@ -6599,7 +6599,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_GRAD_PRESS_BLD_MITRAL_POS_MAX
     /// </summary>
     public static readonly Coding MDCGRADPRESSBLDMITRALPOSMAX = new Coding
     {
@@ -6608,7 +6608,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_GRAD_PRESS_BLD_TRICUSP
     /// </summary>
     public static readonly Coding MDCGRADPRESSBLDTRICUSP = new Coding
     {
@@ -6617,7 +6617,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_GRAD_PRESS_BLD_TRICUSP_MEAN
     /// </summary>
     public static readonly Coding MDCGRADPRESSBLDTRICUSPMEAN = new Coding
     {
@@ -6626,7 +6626,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_GRAD_PRESS_BLD_TRICUSP_POS
     /// </summary>
     public static readonly Coding MDCGRADPRESSBLDTRICUSPPOS = new Coding
     {
@@ -6635,7 +6635,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_GRAD_PRESS_BLD_TRICUSP_POS_MAX
     /// </summary>
     public static readonly Coding MDCGRADPRESSBLDTRICUSPPOSMAX = new Coding
     {
@@ -6644,7 +6644,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_GRAD_PRESS_BLD_PULM
     /// </summary>
     public static readonly Coding MDCGRADPRESSBLDPULM = new Coding
     {
@@ -6653,7 +6653,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_GRAD_PRESS_BLD_PULM_MEAN
     /// </summary>
     public static readonly Coding MDCGRADPRESSBLDPULMMEAN = new Coding
     {
@@ -6662,7 +6662,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_GRAD_PRESS_BLD_PULM_POS
     /// </summary>
     public static readonly Coding MDCGRADPRESSBLDPULMPOS = new Coding
     {
@@ -6671,7 +6671,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_GRAD_PRESS_BLD_PULM_POS_MAX
     /// </summary>
     public static readonly Coding MDCGRADPRESSBLDPULMPOSMAX = new Coding
     {
@@ -6680,7 +6680,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_GRAD_PRESS_BLD_AORT
     /// </summary>
     public static readonly Coding MDCGRADPRESSBLDAORT = new Coding
     {
@@ -6689,7 +6689,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_GRAD_PRESS_BLD_AORT_MEAN
     /// </summary>
     public static readonly Coding MDCGRADPRESSBLDAORTMEAN = new Coding
     {
@@ -6698,7 +6698,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_GRAD_PRESS_BLD_AORT_POS
     /// </summary>
     public static readonly Coding MDCGRADPRESSBLDAORTPOS = new Coding
     {
@@ -6707,7 +6707,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_GRAD_PRESS_BLD_AORT_POS_MAX
     /// </summary>
     public static readonly Coding MDCGRADPRESSBLDAORTPOSMAX = new Coding
     {
@@ -6716,7 +6716,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TRANSMISSION
     /// </summary>
     public static readonly Coding MDCTRANSMISSION = new Coding
     {
@@ -6725,7 +6725,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TRANSMISSION_RED
     /// </summary>
     public static readonly Coding MDCTRANSMISSIONRED = new Coding
     {
@@ -6734,7 +6734,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TRANSMISSION_INFRARED
     /// </summary>
     public static readonly Coding MDCTRANSMISSIONINFRARED = new Coding
     {
@@ -6743,7 +6743,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_MODALITY_FAST
     /// </summary>
     public static readonly Coding MDCMODALITYFAST = new Coding
     {
@@ -6752,7 +6752,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_MODALITY_FAST_MAX
     /// </summary>
     public static readonly Coding MDCMODALITYFASTMAX = new Coding
     {
@@ -6761,7 +6761,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_MODALITY_FAST_MIN
     /// </summary>
     public static readonly Coding MDCMODALITYFASTMIN = new Coding
     {
@@ -6770,7 +6770,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_MODALITY_FAST_MEAN
     /// </summary>
     public static readonly Coding MDCMODALITYFASTMEAN = new Coding
     {
@@ -6779,7 +6779,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_MODALITY_SLOW
     /// </summary>
     public static readonly Coding MDCMODALITYSLOW = new Coding
     {
@@ -6788,7 +6788,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_MODALITY_SLOW_MAX
     /// </summary>
     public static readonly Coding MDCMODALITYSLOWMAX = new Coding
     {
@@ -6797,7 +6797,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_MODALITY_SLOW_MIN
     /// </summary>
     public static readonly Coding MDCMODALITYSLOWMIN = new Coding
     {
@@ -6806,7 +6806,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_MODALITY_SLOW_MEAN
     /// </summary>
     public static readonly Coding MDCMODALITYSLOWMEAN = new Coding
     {
@@ -6815,7 +6815,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_MODALITY_SPOT
     /// </summary>
     public static readonly Coding MDCMODALITYSPOT = new Coding
     {
@@ -6824,7 +6824,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_MODALITY_SPOT_MAX
     /// </summary>
     public static readonly Coding MDCMODALITYSPOTMAX = new Coding
     {
@@ -6833,7 +6833,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_MODALITY_SPOT_MIN
     /// </summary>
     public static readonly Coding MDCMODALITYSPOTMIN = new Coding
     {
@@ -6842,7 +6842,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_MODALITY_SPOT_MEAN
     /// </summary>
     public static readonly Coding MDCMODALITYSPOTMEAN = new Coding
     {
@@ -6851,7 +6851,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_DEV_STATUS
     /// </summary>
     public static readonly Coding MDCPULSOXIMDEVSTATUS = new Coding
     {
@@ -6860,7 +6860,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_PULS_CHAR
     /// </summary>
     public static readonly Coding MDCPULSOXIMPULSCHAR = new Coding
     {
@@ -6869,7 +6869,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ACCELERATION_INDEX
     /// </summary>
     public static readonly Coding MDCACCELERATIONINDEX = new Coding
     {
@@ -6878,7 +6878,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ACCELERATION_INDEX_MAX
     /// </summary>
     public static readonly Coding MDCACCELERATIONINDEXMAX = new Coding
     {
@@ -6887,7 +6887,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ACCELERATION_INDEX_MIN
     /// </summary>
     public static readonly Coding MDCACCELERATIONINDEXMIN = new Coding
     {
@@ -6896,7 +6896,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ACCELERATION_INDEX_MEAN
     /// </summary>
     public static readonly Coding MDCACCELERATIONINDEXMEAN = new Coding
     {
@@ -6905,7 +6905,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SYSTOLIC_TIME_RATIO
     /// </summary>
     public static readonly Coding MDCSYSTOLICTIMERATIO = new Coding
     {
@@ -6914,7 +6914,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SYSTOLIC_TIME_RATIO_MAX
     /// </summary>
     public static readonly Coding MDCSYSTOLICTIMERATIOMAX = new Coding
     {
@@ -6923,7 +6923,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SYSTOLIC_TIME_RATIO_MIN
     /// </summary>
     public static readonly Coding MDCSYSTOLICTIMERATIOMIN = new Coding
     {
@@ -6932,7 +6932,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SYSTOLIC_TIME_RATIO_MEAN
     /// </summary>
     public static readonly Coding MDCSYSTOLICTIMERATIOMEAN = new Coding
     {
@@ -6941,7 +6941,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_THORACIC_FLUID_CONTENT
     /// </summary>
     public static readonly Coding MDCTHORACICFLUIDCONTENT = new Coding
     {
@@ -6950,7 +6950,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_THORACIC_FLUID_CONTENT_MAX
     /// </summary>
     public static readonly Coding MDCTHORACICFLUIDCONTENTMAX = new Coding
     {
@@ -6959,7 +6959,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_THORACIC_FLUID_CONTENT_MIN
     /// </summary>
     public static readonly Coding MDCTHORACICFLUIDCONTENTMIN = new Coding
     {
@@ -6968,7 +6968,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_THORACIC_FLUID_CONTENT_MEAN
     /// </summary>
     public static readonly Coding MDCTHORACICFLUIDCONTENTMEAN = new Coding
     {
@@ -6977,7 +6977,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TIME_PD_VENT_L_AORT_EJCT
     /// </summary>
     public static readonly Coding MDCTIMEPDVENTLAORTEJCT = new Coding
     {
@@ -6986,7 +6986,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TIME_PD_VENT_L_AORT_EJCT_MAX
     /// </summary>
     public static readonly Coding MDCTIMEPDVENTLAORTEJCTMAX = new Coding
     {
@@ -6995,7 +6995,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TIME_PD_VENT_L_AORT_EJCT_MIN
     /// </summary>
     public static readonly Coding MDCTIMEPDVENTLAORTEJCTMIN = new Coding
     {
@@ -7004,7 +7004,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TIME_PD_VENT_L_AORT_EJCT_MEAN
     /// </summary>
     public static readonly Coding MDCTIMEPDVENTLAORTEJCTMEAN = new Coding
     {
@@ -7013,7 +7013,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TIME_PD_VENT_L_AORT_PRE_EJCT
     /// </summary>
     public static readonly Coding MDCTIMEPDVENTLAORTPREEJCT = new Coding
     {
@@ -7022,7 +7022,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TIME_PD_VENT_L_AORT_PRE_EJCT_MAX
     /// </summary>
     public static readonly Coding MDCTIMEPDVENTLAORTPREEJCTMAX = new Coding
     {
@@ -7031,7 +7031,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TIME_PD_VENT_L_AORT_PRE_EJCT_MIN
     /// </summary>
     public static readonly Coding MDCTIMEPDVENTLAORTPREEJCTMIN = new Coding
     {
@@ -7040,7 +7040,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TIME_PD_VENT_L_AORT_PRE_EJCT_MEAN
     /// </summary>
     public static readonly Coding MDCTIMEPDVENTLAORTPREEJCTMEAN = new Coding
     {
@@ -7049,7 +7049,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VELOCITY_INDEX
     /// </summary>
     public static readonly Coding MDCVELOCITYINDEX = new Coding
     {
@@ -7058,7 +7058,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VELOCITY_INDEX_MAX
     /// </summary>
     public static readonly Coding MDCVELOCITYINDEXMAX = new Coding
     {
@@ -7067,7 +7067,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VELOCITY_INDEX_MIN
     /// </summary>
     public static readonly Coding MDCVELOCITYINDEXMIN = new Coding
     {
@@ -7076,7 +7076,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VELOCITY_INDEX_MEAN
     /// </summary>
     public static readonly Coding MDCVELOCITYINDEXMEAN = new Coding
     {
@@ -7085,7 +7085,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VOL_BLD_STROKE_INDEX
     /// </summary>
     public static readonly Coding MDCVOLBLDSTROKEINDEX = new Coding
     {
@@ -7094,7 +7094,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VOL_BLD_STROKE_INDEX_MAX
     /// </summary>
     public static readonly Coding MDCVOLBLDSTROKEINDEXMAX = new Coding
     {
@@ -7103,7 +7103,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VOL_BLD_STROKE_INDEX_MIN
     /// </summary>
     public static readonly Coding MDCVOLBLDSTROKEINDEXMIN = new Coding
     {
@@ -7112,7 +7112,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VOL_BLD_STROKE_INDEX_MEAN
     /// </summary>
     public static readonly Coding MDCVOLBLDSTROKEINDEXMEAN = new Coding
     {
@@ -7121,7 +7121,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_LV_WORK_INDEX
     /// </summary>
     public static readonly Coding MDCWKLVWORKINDEX = new Coding
     {
@@ -7130,7 +7130,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_LV_WORK_INDEX_MAX
     /// </summary>
     public static readonly Coding MDCWKLVWORKINDEXMAX = new Coding
     {
@@ -7139,7 +7139,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_LV_WORK_INDEX_MIN
     /// </summary>
     public static readonly Coding MDCWKLVWORKINDEXMIN = new Coding
     {
@@ -7148,7 +7148,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_LV_WORK_INDEX_MEAN
     /// </summary>
     public static readonly Coding MDCWKLVWORKINDEXMEAN = new Coding
     {
@@ -7157,7 +7157,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_RV_STROKE_INDEX
     /// </summary>
     public static readonly Coding MDCWKRVSTROKEINDEX = new Coding
     {
@@ -7166,7 +7166,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_RV_STROKE_INDEX_MAX
     /// </summary>
     public static readonly Coding MDCWKRVSTROKEINDEXMAX = new Coding
     {
@@ -7175,7 +7175,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_RV_STROKE_INDEX_MIN
     /// </summary>
     public static readonly Coding MDCWKRVSTROKEINDEXMIN = new Coding
     {
@@ -7184,7 +7184,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_WK_RV_STROKE_INDEX_MEAN
     /// </summary>
     public static readonly Coding MDCWKRVSTROKEINDEXMEAN = new Coding
     {
@@ -7193,7 +7193,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_FEMORAL
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTFEMORAL = new Coding
     {
@@ -7202,7 +7202,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_FEMORAL_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTFEMORALSYS = new Coding
     {
@@ -7211,7 +7211,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_FEMORAL_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTFEMORALDIA = new Coding
     {
@@ -7220,7 +7220,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_FEMORAL_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTFEMORALMEAN = new Coding
     {
@@ -7229,7 +7229,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_FLOW_BLD_PULM_CAP
     /// </summary>
     public static readonly Coding MDCFLOWBLDPULMCAP = new Coding
     {
@@ -7238,7 +7238,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_FLOW_BLD_PULM_CAP_MAX
     /// </summary>
     public static readonly Coding MDCFLOWBLDPULMCAPMAX = new Coding
     {
@@ -7247,7 +7247,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_FLOW_BLD_PULM_CAP_MIN
     /// </summary>
     public static readonly Coding MDCFLOWBLDPULMCAPMIN = new Coding
     {
@@ -7256,7 +7256,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_FLOW_BLD_PULM_CAP_MEAN
     /// </summary>
     public static readonly Coding MDCFLOWBLDPULMCAPMEAN = new Coding
     {
@@ -7265,7 +7265,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_O2_OXYGENATION_RATIO
     /// </summary>
     public static readonly Coding MDCO2OXYGENATIONRATIO = new Coding
     {
@@ -7274,7 +7274,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_O2_OXYGENATION_RATIO_MAX
     /// </summary>
     public static readonly Coding MDCO2OXYGENATIONRATIOMAX = new Coding
     {
@@ -7283,7 +7283,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_O2_OXYGENATION_RATIO_MIN
     /// </summary>
     public static readonly Coding MDCO2OXYGENATIONRATIOMIN = new Coding
     {
@@ -7292,7 +7292,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_O2_OXYGENATION_RATIO_MEAN
     /// </summary>
     public static readonly Coding MDCO2OXYGENATIONRATIOMEAN = new Coding
     {
@@ -7301,7 +7301,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_OUTPUT_CARDIAC_FICK
     /// </summary>
     public static readonly Coding MDCOUTPUTCARDIACFICK = new Coding
     {
@@ -7310,7 +7310,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_OUTPUT_CARDIAC_FICK_MAX
     /// </summary>
     public static readonly Coding MDCOUTPUTCARDIACFICKMAX = new Coding
     {
@@ -7319,7 +7319,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_OUTPUT_CARDIAC_FICK_MIN
     /// </summary>
     public static readonly Coding MDCOUTPUTCARDIACFICKMIN = new Coding
     {
@@ -7328,7 +7328,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_OUTPUT_CARDIAC_FICK_MEAN
     /// </summary>
     public static readonly Coding MDCOUTPUTCARDIACFICKMEAN = new Coding
     {
@@ -7337,7 +7337,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_O2_CONSUMP_INDEX
     /// </summary>
     public static readonly Coding MDCSATO2CONSUMPINDEX = new Coding
     {
@@ -7346,7 +7346,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_O2_CONSUMP_INDEX_MAX
     /// </summary>
     public static readonly Coding MDCSATO2CONSUMPINDEXMAX = new Coding
     {
@@ -7355,7 +7355,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_O2_CONSUMP_INDEX_MIN
     /// </summary>
     public static readonly Coding MDCSATO2CONSUMPINDEXMIN = new Coding
     {
@@ -7364,7 +7364,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_O2_CONSUMP_INDEX_MEAN
     /// </summary>
     public static readonly Coding MDCSATO2CONSUMPINDEXMEAN = new Coding
     {
@@ -7373,7 +7373,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_O2_DELIV_INDEX
     /// </summary>
     public static readonly Coding MDCSATO2DELIVINDEX = new Coding
     {
@@ -7382,7 +7382,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_O2_DELIV_INDEX_MAX
     /// </summary>
     public static readonly Coding MDCSATO2DELIVINDEXMAX = new Coding
     {
@@ -7391,7 +7391,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_O2_DELIV_INDEX_MIN
     /// </summary>
     public static readonly Coding MDCSATO2DELIVINDEXMIN = new Coding
     {
@@ -7400,7 +7400,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SAT_O2_DELIV_INDEX_MEAN
     /// </summary>
     public static readonly Coding MDCSATO2DELIVINDEXMEAN = new Coding
     {
@@ -7409,7 +7409,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SPO2_OXYGENATION_RATIO
     /// </summary>
     public static readonly Coding MDCSPO2OXYGENATIONRATIO = new Coding
     {
@@ -7418,7 +7418,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SPO2_OXYGENATION_RATIO_MAX
     /// </summary>
     public static readonly Coding MDCSPO2OXYGENATIONRATIOMAX = new Coding
     {
@@ -7427,7 +7427,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SPO2_OXYGENATION_RATIO_MIN
     /// </summary>
     public static readonly Coding MDCSPO2OXYGENATIONRATIOMIN = new Coding
     {
@@ -7436,7 +7436,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_SPO2_OXYGENATION_RATIO_MEAN
     /// </summary>
     public static readonly Coding MDCSPO2OXYGENATIONRATIOMEAN = new Coding
     {
@@ -7445,7 +7445,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VEN_FEMORAL
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENFEMORAL = new Coding
     {
@@ -7454,7 +7454,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VEN_FEMORAL_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENFEMORALSYS = new Coding
     {
@@ -7463,7 +7463,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VEN_FEMORAL_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENFEMORALDIA = new Coding
     {
@@ -7472,7 +7472,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_VEN_FEMORAL_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDVENFEMORALMEAN = new Coding
     {
@@ -7481,7 +7481,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_BRACHIAL
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTBRACHIAL = new Coding
     {
@@ -7490,7 +7490,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_BRACHIAL_SYS
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTBRACHIALSYS = new Coding
     {
@@ -7499,7 +7499,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_BRACHIAL_DIA
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTBRACHIALDIA = new Coding
     {
@@ -7508,7 +7508,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_BLD_ART_BRACHIAL_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSBLDARTBRACHIALMEAN = new Coding
     {
@@ -7517,7 +7517,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDCX_DIALY_O2_SAT
     /// </summary>
     public static readonly Coding MDCXDIALYO2SAT = new Coding
     {
@@ -7526,7 +7526,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDCX_DIALY_O2_SAT_MIN_NON_ALM
     /// </summary>
     public static readonly Coding MDCXDIALYO2SATMINNONALM = new Coding
     {
@@ -7535,7 +7535,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP
     /// </summary>
     public static readonly Coding MDCRESP = new Coding
     {
@@ -7544,7 +7544,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_CNT
     /// </summary>
     public static readonly Coding MDCRESPCNT = new Coding
     {
@@ -7553,7 +7553,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_RATE_MAX
     /// </summary>
     public static readonly Coding MDCRESPRATEMAX = new Coding
     {
@@ -7562,7 +7562,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_RATE_MIN
     /// </summary>
     public static readonly Coding MDCRESPRATEMIN = new Coding
     {
@@ -7571,7 +7571,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCRESPRATEMEAN = new Coding
     {
@@ -7580,7 +7580,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_BREATH
     /// </summary>
     public static readonly Coding MDCRESPBREATH = new Coding
     {
@@ -7589,7 +7589,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_RATE
     /// </summary>
     public static readonly Coding MDCRESPRATE = new Coding
     {
@@ -7598,7 +7598,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_RESP
     /// </summary>
     public static readonly Coding MDCAWAYRESP = new Coding
     {
@@ -7607,7 +7607,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_RESP_CNT
     /// </summary>
     public static readonly Coding MDCAWAYRESPCNT = new Coding
     {
@@ -7616,7 +7616,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_RESP_RATE
     /// </summary>
     public static readonly Coding MDCAWAYRESPRATE = new Coding
     {
@@ -7625,7 +7625,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_RESP_RATE_MAX
     /// </summary>
     public static readonly Coding MDCAWAYRESPRATEMAX = new Coding
     {
@@ -7634,7 +7634,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_RESP_RATE_MIN
     /// </summary>
     public static readonly Coding MDCAWAYRESPRATEMIN = new Coding
     {
@@ -7643,7 +7643,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_RESP_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCAWAYRESPRATEMEAN = new Coding
     {
@@ -7652,7 +7652,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TTHOR_RESP
     /// </summary>
     public static readonly Coding MDCTTHORRESP = new Coding
     {
@@ -7661,7 +7661,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TTHOR_RESP_CNT
     /// </summary>
     public static readonly Coding MDCTTHORRESPCNT = new Coding
     {
@@ -7670,7 +7670,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TTHOR_RESP_RATE
     /// </summary>
     public static readonly Coding MDCTTHORRESPRATE = new Coding
     {
@@ -7679,7 +7679,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TTHOR_RESP_RATE_MAX
     /// </summary>
     public static readonly Coding MDCTTHORRESPRATEMAX = new Coding
     {
@@ -7688,7 +7688,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TTHOR_RESP_RATE_MIN
     /// </summary>
     public static readonly Coding MDCTTHORRESPRATEMIN = new Coding
     {
@@ -7697,7 +7697,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_TTHOR_RESP_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCTTHORRESPRATEMEAN = new Coding
     {
@@ -7706,7 +7706,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_RESP
     /// </summary>
     public static readonly Coding MDCVENTRESP = new Coding
     {
@@ -7715,7 +7715,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_RESP_CNT
     /// </summary>
     public static readonly Coding MDCVENTRESPCNT = new Coding
     {
@@ -7724,7 +7724,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_RESP_RATE
     /// </summary>
     public static readonly Coding MDCVENTRESPRATE = new Coding
     {
@@ -7733,7 +7733,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_RESP_RATE_MAX
     /// </summary>
     public static readonly Coding MDCVENTRESPRATEMAX = new Coding
     {
@@ -7742,7 +7742,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_RESP_RATE_MIN
     /// </summary>
     public static readonly Coding MDCVENTRESPRATEMIN = new Coding
     {
@@ -7751,7 +7751,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_RESP_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCVENTRESPRATEMEAN = new Coding
     {
@@ -7760,7 +7760,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CO2_RESP
     /// </summary>
     public static readonly Coding MDCCO2RESP = new Coding
     {
@@ -7769,7 +7769,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CO2_RESP_CNT
     /// </summary>
     public static readonly Coding MDCCO2RESPCNT = new Coding
     {
@@ -7778,7 +7778,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CO2_RESP_RATE
     /// </summary>
     public static readonly Coding MDCCO2RESPRATE = new Coding
     {
@@ -7787,7 +7787,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CO2_RESP_RATE_MAX
     /// </summary>
     public static readonly Coding MDCCO2RESPRATEMAX = new Coding
     {
@@ -7796,7 +7796,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CO2_RESP_RATE_MIN
     /// </summary>
     public static readonly Coding MDCCO2RESPRATEMIN = new Coding
     {
@@ -7805,7 +7805,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CO2_RESP_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCCO2RESPRATEMEAN = new Coding
     {
@@ -7814,7 +7814,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_RESP
     /// </summary>
     public static readonly Coding MDCPRESSRESP = new Coding
     {
@@ -7823,7 +7823,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_RESP_CNT
     /// </summary>
     public static readonly Coding MDCPRESSRESPCNT = new Coding
     {
@@ -7832,7 +7832,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_RESP_RATE
     /// </summary>
     public static readonly Coding MDCPRESSRESPRATE = new Coding
     {
@@ -7841,7 +7841,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_RESP_RATE_MAX
     /// </summary>
     public static readonly Coding MDCPRESSRESPRATEMAX = new Coding
     {
@@ -7850,7 +7850,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_RESP_RATE_MIN
     /// </summary>
     public static readonly Coding MDCPRESSRESPRATEMIN = new Coding
     {
@@ -7859,7 +7859,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PRESS_RESP_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCPRESSRESPRATEMEAN = new Coding
     {
@@ -7868,7 +7868,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_CO2_RESP
     /// </summary>
     public static readonly Coding MDCVENTCO2RESP = new Coding
     {
@@ -7877,7 +7877,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_CO2_RESP_CNT
     /// </summary>
     public static readonly Coding MDCVENTCO2RESPCNT = new Coding
     {
@@ -7886,7 +7886,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_CO2_RESP_RATE
     /// </summary>
     public static readonly Coding MDCVENTCO2RESPRATE = new Coding
     {
@@ -7895,7 +7895,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_CO2_RESP_RATE_MAX
     /// </summary>
     public static readonly Coding MDCVENTCO2RESPRATEMAX = new Coding
     {
@@ -7904,7 +7904,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_CO2_RESP_RATE_MIN
     /// </summary>
     public static readonly Coding MDCVENTCO2RESPRATEMIN = new Coding
     {
@@ -7913,7 +7913,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_CO2_RESP_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCVENTCO2RESPRATEMEAN = new Coding
     {
@@ -7922,7 +7922,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_PRESS_RESP
     /// </summary>
     public static readonly Coding MDCVENTPRESSRESP = new Coding
     {
@@ -7931,7 +7931,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_PRESS_RESP_CNT
     /// </summary>
     public static readonly Coding MDCVENTPRESSRESPCNT = new Coding
     {
@@ -7940,7 +7940,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_PRESS_RESP_RATE
     /// </summary>
     public static readonly Coding MDCVENTPRESSRESPRATE = new Coding
     {
@@ -7949,7 +7949,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_PRESS_RESP_RATE_MAX
     /// </summary>
     public static readonly Coding MDCVENTPRESSRESPRATEMAX = new Coding
     {
@@ -7958,7 +7958,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_PRESS_RESP_RATE_MIN
     /// </summary>
     public static readonly Coding MDCVENTPRESSRESPRATEMIN = new Coding
     {
@@ -7967,7 +7967,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_PRESS_RESP_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCVENTPRESSRESPRATEMEAN = new Coding
     {
@@ -7976,7 +7976,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_FLOW_RESP
     /// </summary>
     public static readonly Coding MDCVENTFLOWRESP = new Coding
     {
@@ -7985,7 +7985,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_FLOW_RESP_CNT
     /// </summary>
     public static readonly Coding MDCVENTFLOWRESPCNT = new Coding
     {
@@ -7994,7 +7994,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_FLOW_RESP_RATE
     /// </summary>
     public static readonly Coding MDCVENTFLOWRESPRATE = new Coding
     {
@@ -8003,7 +8003,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_FLOW_RESP_RATE_MAX
     /// </summary>
     public static readonly Coding MDCVENTFLOWRESPRATEMAX = new Coding
     {
@@ -8012,7 +8012,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_FLOW_RESP_RATE_MIN
     /// </summary>
     public static readonly Coding MDCVENTFLOWRESPRATEMIN = new Coding
     {
@@ -8021,7 +8021,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_FLOW_RESP_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCVENTFLOWRESPRATEMEAN = new Coding
     {
@@ -8030,7 +8030,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_SIGH
     /// </summary>
     public static readonly Coding MDCVENTSIGH = new Coding
     {
@@ -8039,7 +8039,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_SIGH_CNT
     /// </summary>
     public static readonly Coding MDCVENTSIGHCNT = new Coding
     {
@@ -8048,7 +8048,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_SIGH_RATE
     /// </summary>
     public static readonly Coding MDCVENTSIGHRATE = new Coding
     {
@@ -8057,7 +8057,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_SIGH_RATE_MAX
     /// </summary>
     public static readonly Coding MDCVENTSIGHRATEMAX = new Coding
     {
@@ -8066,7 +8066,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_SIGH_RATE_MIN
     /// </summary>
     public static readonly Coding MDCVENTSIGHRATEMIN = new Coding
     {
@@ -8075,7 +8075,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_SIGH_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCVENTSIGHRATEMEAN = new Coding
     {
@@ -8084,7 +8084,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_SIGH_MULT
     /// </summary>
     public static readonly Coding MDCVENTSIGHMULT = new Coding
     {
@@ -8093,7 +8093,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_SIGH_MULT_CNT
     /// </summary>
     public static readonly Coding MDCVENTSIGHMULTCNT = new Coding
     {
@@ -8102,7 +8102,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_SIGH_MULT_RATE
     /// </summary>
     public static readonly Coding MDCVENTSIGHMULTRATE = new Coding
     {
@@ -8111,7 +8111,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_SIGH_MULT_RATE_MAX
     /// </summary>
     public static readonly Coding MDCVENTSIGHMULTRATEMAX = new Coding
     {
@@ -8120,7 +8120,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_SIGH_MULT_RATE_MIN
     /// </summary>
     public static readonly Coding MDCVENTSIGHMULTRATEMIN = new Coding
     {
@@ -8129,7 +8129,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_SIGH_MULT_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCVENTSIGHMULTRATEMEAN = new Coding
     {
@@ -8138,7 +8138,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ACOUSTIC_RESP
     /// </summary>
     public static readonly Coding MDCACOUSTICRESP = new Coding
     {
@@ -8147,7 +8147,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ACOUSTIC_RESP_CNT
     /// </summary>
     public static readonly Coding MDCACOUSTICRESPCNT = new Coding
     {
@@ -8156,7 +8156,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ACOUSTIC_RESP_RATE
     /// </summary>
     public static readonly Coding MDCACOUSTICRESPRATE = new Coding
     {
@@ -8165,7 +8165,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ACOUSTIC_RESP_RATE_MAX
     /// </summary>
     public static readonly Coding MDCACOUSTICRESPRATEMAX = new Coding
     {
@@ -8174,7 +8174,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ACOUSTIC_RESP_RATE_MIN
     /// </summary>
     public static readonly Coding MDCACOUSTICRESPRATEMIN = new Coding
     {
@@ -8183,7 +8183,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_ACOUSTIC_RESP_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCACOUSTICRESPRATEMEAN = new Coding
     {
@@ -8192,7 +8192,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_PLETH_RESP
     /// </summary>
     public static readonly Coding MDCPULSOXIMPLETHRESP = new Coding
     {
@@ -8201,7 +8201,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_PLETH_RESP_CNT
     /// </summary>
     public static readonly Coding MDCPULSOXIMPLETHRESPCNT = new Coding
     {
@@ -8210,7 +8210,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_PLETH_RESP_RATE
     /// </summary>
     public static readonly Coding MDCPULSOXIMPLETHRESPRATE = new Coding
     {
@@ -8219,7 +8219,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_PLETH_RESP_RATE_MAX
     /// </summary>
     public static readonly Coding MDCPULSOXIMPLETHRESPRATEMAX = new Coding
     {
@@ -8228,7 +8228,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_PLETH_RESP_RATE_MIN
     /// </summary>
     public static readonly Coding MDCPULSOXIMPLETHRESPRATEMIN = new Coding
     {
@@ -8237,7 +8237,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_PULS_OXIM_PLETH_RESP_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCPULSOXIMPLETHRESPRATEMEAN = new Coding
     {
@@ -8246,7 +8246,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_SPONT
     /// </summary>
     public static readonly Coding MDCRESPSPONT = new Coding
     {
@@ -8255,7 +8255,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_SPONT_CNT
     /// </summary>
     public static readonly Coding MDCRESPSPONTCNT = new Coding
     {
@@ -8264,7 +8264,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_SPONT_RATE
     /// </summary>
     public static readonly Coding MDCRESPSPONTRATE = new Coding
     {
@@ -8273,7 +8273,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_SPONT_RATE_MAX
     /// </summary>
     public static readonly Coding MDCRESPSPONTRATEMAX = new Coding
     {
@@ -8282,7 +8282,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_SPONT_RATE_MIN
     /// </summary>
     public static readonly Coding MDCRESPSPONTRATEMIN = new Coding
     {
@@ -8291,7 +8291,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_SPONT_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCRESPSPONTRATEMEAN = new Coding
     {
@@ -8300,7 +8300,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_BTSD_PS
     /// </summary>
     public static readonly Coding MDCRESPBTSDPS = new Coding
     {
@@ -8309,7 +8309,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_BTSD_PS_CNT
     /// </summary>
     public static readonly Coding MDCRESPBTSDPSCNT = new Coding
     {
@@ -8318,7 +8318,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_BTSD_PS_RATE
     /// </summary>
     public static readonly Coding MDCRESPBTSDPSRATE = new Coding
     {
@@ -8327,7 +8327,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_BTSD_PS_RATE_MAX
     /// </summary>
     public static readonly Coding MDCRESPBTSDPSRATEMAX = new Coding
     {
@@ -8336,7 +8336,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_BTSD_PS_RATE_MIN
     /// </summary>
     public static readonly Coding MDCRESPBTSDPSRATEMIN = new Coding
     {
@@ -8345,7 +8345,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_RESP_BTSD_PS_RATE_MEAN
     /// </summary>
     public static readonly Coding MDCRESPBTSDPSRATEMEAN = new Coding
     {
@@ -8354,7 +8354,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CAPAC_VITAL
     /// </summary>
     public static readonly Coding MDCCAPACVITAL = new Coding
     {
@@ -8363,7 +8363,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CAPAC_VITAL_MAX
     /// </summary>
     public static readonly Coding MDCCAPACVITALMAX = new Coding
     {
@@ -8372,7 +8372,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CAPAC_VITAL_MIN
     /// </summary>
     public static readonly Coding MDCCAPACVITALMIN = new Coding
     {
@@ -8381,7 +8381,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CAPAC_VITAL_MEAN
     /// </summary>
     public static readonly Coding MDCCAPACVITALMEAN = new Coding
     {
@@ -8390,7 +8390,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_TIME_PD_EXP_PAUSE
     /// </summary>
     public static readonly Coding MDCVENTTIMEPDEXPPAUSE = new Coding
     {
@@ -8399,7 +8399,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_TIME_PD_EXP_PAUSE_MAX
     /// </summary>
     public static readonly Coding MDCVENTTIMEPDEXPPAUSEMAX = new Coding
     {
@@ -8408,7 +8408,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_TIME_PD_EXP_PAUSE_MIN
     /// </summary>
     public static readonly Coding MDCVENTTIMEPDEXPPAUSEMIN = new Coding
     {
@@ -8417,7 +8417,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_TIME_PD_EXP_PAUSE_MEAN
     /// </summary>
     public static readonly Coding MDCVENTTIMEPDEXPPAUSEMEAN = new Coding
     {
@@ -8426,7 +8426,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_COMPL_LUNG
     /// </summary>
     public static readonly Coding MDCCOMPLLUNG = new Coding
     {
@@ -8435,7 +8435,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_COMPL_LUNG_MAX
     /// </summary>
     public static readonly Coding MDCCOMPLLUNGMAX = new Coding
     {
@@ -8444,7 +8444,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_COMPL_LUNG_MIN
     /// </summary>
     public static readonly Coding MDCCOMPLLUNGMIN = new Coding
     {
@@ -8453,7 +8453,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_COMPL_LUNG_MEAN
     /// </summary>
     public static readonly Coding MDCCOMPLLUNGMEAN = new Coding
     {
@@ -8462,7 +8462,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_COMPL_LUNG_DYN
     /// </summary>
     public static readonly Coding MDCCOMPLLUNGDYN = new Coding
     {
@@ -8471,7 +8471,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_COMPL_LUNG_DYN_MAX
     /// </summary>
     public static readonly Coding MDCCOMPLLUNGDYNMAX = new Coding
     {
@@ -8480,7 +8480,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_COMPL_LUNG_DYN_MIN
     /// </summary>
     public static readonly Coding MDCCOMPLLUNGDYNMIN = new Coding
     {
@@ -8489,7 +8489,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_COMPL_LUNG_DYN_MEAN
     /// </summary>
     public static readonly Coding MDCCOMPLLUNGDYNMEAN = new Coding
     {
@@ -8498,7 +8498,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_COMPL_LUNG_STATIC
     /// </summary>
     public static readonly Coding MDCCOMPLLUNGSTATIC = new Coding
     {
@@ -8507,7 +8507,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_COMPL_LUNG_STATIC_MAX
     /// </summary>
     public static readonly Coding MDCCOMPLLUNGSTATICMAX = new Coding
     {
@@ -8516,7 +8516,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_COMPL_LUNG_STATIC_MIN
     /// </summary>
     public static readonly Coding MDCCOMPLLUNGSTATICMIN = new Coding
     {
@@ -8525,7 +8525,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_COMPL_LUNG_STATIC_MEAN
     /// </summary>
     public static readonly Coding MDCCOMPLLUNGSTATICMEAN = new Coding
     {
@@ -8534,7 +8534,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_CO2
     /// </summary>
     public static readonly Coding MDCCONCAWAYCO2 = new Coding
     {
@@ -8543,7 +8543,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_CO2_MAX
     /// </summary>
     public static readonly Coding MDCCONCAWAYCO2MAX = new Coding
     {
@@ -8552,7 +8552,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_CO2_MIN
     /// </summary>
     public static readonly Coding MDCCONCAWAYCO2MIN = new Coding
     {
@@ -8561,7 +8561,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_CO2_MEAN
     /// </summary>
     public static readonly Coding MDCCONCAWAYCO2MEAN = new Coding
     {
@@ -8570,7 +8570,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_CO2_ET
     /// </summary>
     public static readonly Coding MDCCONCAWAYCO2ET = new Coding
     {
@@ -8579,7 +8579,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_CO2_ET_MAX
     /// </summary>
     public static readonly Coding MDCCONCAWAYCO2ETMAX = new Coding
     {
@@ -8588,7 +8588,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_CO2_ET_MIN
     /// </summary>
     public static readonly Coding MDCCONCAWAYCO2ETMIN = new Coding
     {
@@ -8597,7 +8597,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_CO2_ET_MEAN
     /// </summary>
     public static readonly Coding MDCCONCAWAYCO2ETMEAN = new Coding
     {
@@ -8606,7 +8606,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_CO2_EXP
     /// </summary>
     public static readonly Coding MDCCONCAWAYCO2EXP = new Coding
     {
@@ -8615,7 +8615,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_CO2_EXP_MAX
     /// </summary>
     public static readonly Coding MDCCONCAWAYCO2EXPMAX = new Coding
     {
@@ -8624,7 +8624,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_CO2_EXP_MIN
     /// </summary>
     public static readonly Coding MDCCONCAWAYCO2EXPMIN = new Coding
     {
@@ -8633,7 +8633,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_CO2_EXP_MEAN
     /// </summary>
     public static readonly Coding MDCCONCAWAYCO2EXPMEAN = new Coding
     {
@@ -8642,7 +8642,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_CO2_INSP
     /// </summary>
     public static readonly Coding MDCCONCAWAYCO2INSP = new Coding
     {
@@ -8651,7 +8651,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_CO2_INSP_MAX
     /// </summary>
     public static readonly Coding MDCCONCAWAYCO2INSPMAX = new Coding
     {
@@ -8660,7 +8660,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_CO2_INSP_MIN
     /// </summary>
     public static readonly Coding MDCCONCAWAYCO2INSPMIN = new Coding
     {
@@ -8669,7 +8669,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_CO2_INSP_MEAN
     /// </summary>
     public static readonly Coding MDCCONCAWAYCO2INSPMEAN = new Coding
     {
@@ -8678,7 +8678,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_CONC_AWAY_O2
     /// </summary>
     public static readonly Coding MDCVENTCONCAWAYO2 = new Coding
     {
@@ -8687,7 +8687,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_CONC_AWAY_O2_MAX
     /// </summary>
     public static readonly Coding MDCVENTCONCAWAYO2MAX = new Coding
     {
@@ -8696,7 +8696,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_CONC_AWAY_O2_MIN
     /// </summary>
     public static readonly Coding MDCVENTCONCAWAYO2MIN = new Coding
     {
@@ -8705,7 +8705,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_VENT_CONC_AWAY_O2_MEAN
     /// </summary>
     public static readonly Coding MDCVENTCONCAWAYO2MEAN = new Coding
     {
@@ -8714,7 +8714,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_CO2
     /// </summary>
     public static readonly Coding MDCAWAYCO2 = new Coding
     {
@@ -8723,7 +8723,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_CO2_MAX
     /// </summary>
     public static readonly Coding MDCAWAYCO2MAX = new Coding
     {
@@ -8732,7 +8732,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_CO2_MIN
     /// </summary>
     public static readonly Coding MDCAWAYCO2MIN = new Coding
     {
@@ -8741,7 +8741,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_CO2_MEAN
     /// </summary>
     public static readonly Coding MDCAWAYCO2MEAN = new Coding
     {
@@ -8750,7 +8750,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_CO2_ET
     /// </summary>
     public static readonly Coding MDCAWAYCO2ET = new Coding
     {
@@ -8759,7 +8759,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_CO2_ET_MAX
     /// </summary>
     public static readonly Coding MDCAWAYCO2ETMAX = new Coding
     {
@@ -8768,7 +8768,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_CO2_ET_MIN
     /// </summary>
     public static readonly Coding MDCAWAYCO2ETMIN = new Coding
     {
@@ -8777,7 +8777,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_CO2_ET_MEAN
     /// </summary>
     public static readonly Coding MDCAWAYCO2ETMEAN = new Coding
     {
@@ -8786,7 +8786,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_CO2_EXP
     /// </summary>
     public static readonly Coding MDCAWAYCO2EXP = new Coding
     {
@@ -8795,7 +8795,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_CO2_EXP_MAX
     /// </summary>
     public static readonly Coding MDCAWAYCO2EXPMAX = new Coding
     {
@@ -8804,7 +8804,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_CO2_EXP_MIN
     /// </summary>
     public static readonly Coding MDCAWAYCO2EXPMIN = new Coding
     {
@@ -8813,7 +8813,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_CO2_EXP_MEAN
     /// </summary>
     public static readonly Coding MDCAWAYCO2EXPMEAN = new Coding
     {
@@ -8822,7 +8822,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_CO2_INSP
     /// </summary>
     public static readonly Coding MDCAWAYCO2INSP = new Coding
     {
@@ -8831,7 +8831,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_CO2_INSP_MAX
     /// </summary>
     public static readonly Coding MDCAWAYCO2INSPMAX = new Coding
     {
@@ -8840,7 +8840,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_CO2_INSP_MIN
     /// </summary>
     public static readonly Coding MDCAWAYCO2INSPMIN = new Coding
     {
@@ -8849,7 +8849,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_CO2_INSP_MEAN
     /// </summary>
     public static readonly Coding MDCAWAYCO2INSPMEAN = new Coding
     {
@@ -8858,7 +8858,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_O2
     /// </summary>
     public static readonly Coding MDCAWAYO2 = new Coding
     {
@@ -8867,7 +8867,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_O2_MAX
     /// </summary>
     public static readonly Coding MDCAWAYO2MAX = new Coding
     {
@@ -8876,7 +8876,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_O2_MIN
     /// </summary>
     public static readonly Coding MDCAWAYO2MIN = new Coding
     {
@@ -8885,7 +8885,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_O2_MEAN
     /// </summary>
     public static readonly Coding MDCAWAYO2MEAN = new Coding
     {
@@ -8894,7 +8894,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_O2_DELTA
     /// </summary>
     public static readonly Coding MDCCONCAWAYO2DELTA = new Coding
     {
@@ -8903,7 +8903,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_O2_DELTA_MAX
     /// </summary>
     public static readonly Coding MDCCONCAWAYO2DELTAMAX = new Coding
     {
@@ -8912,7 +8912,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_O2_DELTA_MIN
     /// </summary>
     public static readonly Coding MDCCONCAWAYO2DELTAMIN = new Coding
     {
@@ -8921,7 +8921,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CONC_AWAY_O2_DELTA_MEAN
     /// </summary>
     public static readonly Coding MDCCONCAWAYO2DELTAMEAN = new Coding
     {
@@ -8930,7 +8930,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_O2_EXP
     /// </summary>
     public static readonly Coding MDCAWAYO2EXP = new Coding
     {
@@ -8939,7 +8939,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_O2_EXP_MAX
     /// </summary>
     public static readonly Coding MDCAWAYO2EXPMAX = new Coding
     {
@@ -8948,7 +8948,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_O2_EXP_MIN
     /// </summary>
     public static readonly Coding MDCAWAYO2EXPMIN = new Coding
     {
@@ -8957,7 +8957,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_O2_EXP_MEAN
     /// </summary>
     public static readonly Coding MDCAWAYO2EXPMEAN = new Coding
     {
@@ -8966,7 +8966,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_O2_INSP
     /// </summary>
     public static readonly Coding MDCAWAYO2INSP = new Coding
     {
@@ -8975,7 +8975,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_O2_INSP_MAX
     /// </summary>
     public static readonly Coding MDCAWAYO2INSPMAX = new Coding
     {
@@ -8984,7 +8984,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_O2_INSP_MIN
     /// </summary>
     public static readonly Coding MDCAWAYO2INSPMIN = new Coding
     {
@@ -8993,7 +8993,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_AWAY_O2_INSP_MEAN
     /// </summary>
     public static readonly Coding MDCAWAYO2INSPMEAN = new Coding
     {
@@ -9002,7 +9002,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:11073:10101"
     };
     /// <summary>
-    /// 
+    /// MDC_CO2_TCUT
     /// </summary>
     public static readonly Coding MDCCO2TCUT = new Coding
     {
@@ -9017,9 +9017,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEAD = "131072";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEAD
+    /// </summary>
+    public const string LiteralNONEMDCECGLEAD = "urn:iso:std:iso:11073:10101#131072";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADI
     /// </summary>
     public const string LiteralMDCECGLEADI = "131073";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADI
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADI = "urn:iso:std:iso:11073:10101#131073";
 
     /// <summary>
     /// Literal for code: MDCECGLEADII
@@ -9027,9 +9037,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADII = "131074";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADII
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADII = "urn:iso:std:iso:11073:10101#131074";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADV1
     /// </summary>
     public const string LiteralMDCECGLEADV1 = "131075";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADV1
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV1 = "urn:iso:std:iso:11073:10101#131075";
 
     /// <summary>
     /// Literal for code: MDCECGLEADV2
@@ -9037,9 +9057,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADV2 = "131076";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADV2
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV2 = "urn:iso:std:iso:11073:10101#131076";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADV3
     /// </summary>
     public const string LiteralMDCECGLEADV3 = "131077";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADV3
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV3 = "urn:iso:std:iso:11073:10101#131077";
 
     /// <summary>
     /// Literal for code: MDCECGLEADV4
@@ -9047,9 +9077,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADV4 = "131078";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADV4
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV4 = "urn:iso:std:iso:11073:10101#131078";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADV5
     /// </summary>
     public const string LiteralMDCECGLEADV5 = "131079";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADV5
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV5 = "urn:iso:std:iso:11073:10101#131079";
 
     /// <summary>
     /// Literal for code: MDCECGLEADV6
@@ -9057,9 +9097,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADV6 = "131080";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADV6
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV6 = "urn:iso:std:iso:11073:10101#131080";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADV7
     /// </summary>
     public const string LiteralMDCECGLEADV7 = "131081";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADV7
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV7 = "urn:iso:std:iso:11073:10101#131081";
 
     /// <summary>
     /// Literal for code: MDCECGLEADV2R
@@ -9067,9 +9117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADV2R = "131082";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADV2R
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV2R = "urn:iso:std:iso:11073:10101#131082";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADV3R
     /// </summary>
     public const string LiteralMDCECGLEADV3R = "131083";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADV3R
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV3R = "urn:iso:std:iso:11073:10101#131083";
 
     /// <summary>
     /// Literal for code: MDCECGLEADV4R
@@ -9077,9 +9137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADV4R = "131084";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADV4R
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV4R = "urn:iso:std:iso:11073:10101#131084";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADV5R
     /// </summary>
     public const string LiteralMDCECGLEADV5R = "131085";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADV5R
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV5R = "urn:iso:std:iso:11073:10101#131085";
 
     /// <summary>
     /// Literal for code: MDCECGLEADV6R
@@ -9087,9 +9157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADV6R = "131086";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADV6R
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV6R = "urn:iso:std:iso:11073:10101#131086";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADV7R
     /// </summary>
     public const string LiteralMDCECGLEADV7R = "131087";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADV7R
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV7R = "urn:iso:std:iso:11073:10101#131087";
 
     /// <summary>
     /// Literal for code: MDCECGLEADVX
@@ -9097,9 +9177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADVX = "131088";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADVX
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADVX = "urn:iso:std:iso:11073:10101#131088";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADVY
     /// </summary>
     public const string LiteralMDCECGLEADVY = "131089";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADVY
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADVY = "urn:iso:std:iso:11073:10101#131089";
 
     /// <summary>
     /// Literal for code: MDCECGLEADVZ
@@ -9107,9 +9197,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADVZ = "131090";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADVZ
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADVZ = "urn:iso:std:iso:11073:10101#131090";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADCC5
     /// </summary>
     public const string LiteralMDCECGLEADCC5 = "131091";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADCC5
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADCC5 = "urn:iso:std:iso:11073:10101#131091";
 
     /// <summary>
     /// Literal for code: MDCECGLEADCM5
@@ -9117,9 +9217,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADCM5 = "131092";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADCM5
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADCM5 = "urn:iso:std:iso:11073:10101#131092";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADLA
     /// </summary>
     public const string LiteralMDCECGLEADLA = "131093";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADLA
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADLA = "urn:iso:std:iso:11073:10101#131093";
 
     /// <summary>
     /// Literal for code: MDCECGLEADRA
@@ -9127,9 +9237,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADRA = "131094";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADRA
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADRA = "urn:iso:std:iso:11073:10101#131094";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADLL
     /// </summary>
     public const string LiteralMDCECGLEADLL = "131095";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADLL
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADLL = "urn:iso:std:iso:11073:10101#131095";
 
     /// <summary>
     /// Literal for code: MDCECGLEADFI
@@ -9137,9 +9257,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADFI = "131096";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADFI
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADFI = "urn:iso:std:iso:11073:10101#131096";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADFE
     /// </summary>
     public const string LiteralMDCECGLEADFE = "131097";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADFE
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADFE = "urn:iso:std:iso:11073:10101#131097";
 
     /// <summary>
     /// Literal for code: MDCECGLEADFC
@@ -9147,9 +9277,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADFC = "131098";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADFC
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADFC = "urn:iso:std:iso:11073:10101#131098";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADFA
     /// </summary>
     public const string LiteralMDCECGLEADFA = "131099";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADFA
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADFA = "urn:iso:std:iso:11073:10101#131099";
 
     /// <summary>
     /// Literal for code: MDCECGLEADFM
@@ -9157,9 +9297,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADFM = "131100";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADFM
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADFM = "urn:iso:std:iso:11073:10101#131100";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADFF
     /// </summary>
     public const string LiteralMDCECGLEADFF = "131101";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADFF
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADFF = "urn:iso:std:iso:11073:10101#131101";
 
     /// <summary>
     /// Literal for code: MDCECGLEADFH
@@ -9167,9 +9317,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADFH = "131102";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADFH
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADFH = "urn:iso:std:iso:11073:10101#131102";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADIcal
     /// </summary>
     public const string LiteralMDCECGLEADIcal = "131103";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADIcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADIcal = "urn:iso:std:iso:11073:10101#131103";
 
     /// <summary>
     /// Literal for code: MDCECGLEADIIcal
@@ -9177,9 +9337,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADIIcal = "131104";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADIIcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADIIcal = "urn:iso:std:iso:11073:10101#131104";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADV1cal
     /// </summary>
     public const string LiteralMDCECGLEADV1cal = "131105";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADV1cal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV1cal = "urn:iso:std:iso:11073:10101#131105";
 
     /// <summary>
     /// Literal for code: MDCECGLEADV2cal
@@ -9187,9 +9357,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADV2cal = "131106";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADV2cal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV2cal = "urn:iso:std:iso:11073:10101#131106";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADV3cal
     /// </summary>
     public const string LiteralMDCECGLEADV3cal = "131107";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADV3cal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV3cal = "urn:iso:std:iso:11073:10101#131107";
 
     /// <summary>
     /// Literal for code: MDCECGLEADV4cal
@@ -9197,9 +9377,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADV4cal = "131108";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADV4cal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV4cal = "urn:iso:std:iso:11073:10101#131108";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADV5cal
     /// </summary>
     public const string LiteralMDCECGLEADV5cal = "131109";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADV5cal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV5cal = "urn:iso:std:iso:11073:10101#131109";
 
     /// <summary>
     /// Literal for code: MDCECGLEADV6cal
@@ -9207,9 +9397,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADV6cal = "131110";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADV6cal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV6cal = "urn:iso:std:iso:11073:10101#131110";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADV7cal
     /// </summary>
     public const string LiteralMDCECGLEADV7cal = "131111";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADV7cal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV7cal = "urn:iso:std:iso:11073:10101#131111";
 
     /// <summary>
     /// Literal for code: MDCECGLEADV2Rcal
@@ -9217,9 +9417,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADV2Rcal = "131112";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADV2Rcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV2Rcal = "urn:iso:std:iso:11073:10101#131112";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADV3Rcal
     /// </summary>
     public const string LiteralMDCECGLEADV3Rcal = "131113";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADV3Rcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV3Rcal = "urn:iso:std:iso:11073:10101#131113";
 
     /// <summary>
     /// Literal for code: MDCECGLEADV4Rcal
@@ -9227,9 +9437,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADV4Rcal = "131114";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADV4Rcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV4Rcal = "urn:iso:std:iso:11073:10101#131114";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADV5Rcal
     /// </summary>
     public const string LiteralMDCECGLEADV5Rcal = "131115";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADV5Rcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV5Rcal = "urn:iso:std:iso:11073:10101#131115";
 
     /// <summary>
     /// Literal for code: MDCECGLEADV6Rcal
@@ -9237,9 +9457,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADV6Rcal = "131116";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADV6Rcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV6Rcal = "urn:iso:std:iso:11073:10101#131116";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADV7Rcal
     /// </summary>
     public const string LiteralMDCECGLEADV7Rcal = "131117";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADV7Rcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV7Rcal = "urn:iso:std:iso:11073:10101#131117";
 
     /// <summary>
     /// Literal for code: MDCECGLEADVXcal
@@ -9247,9 +9477,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADVXcal = "131118";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADVXcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADVXcal = "urn:iso:std:iso:11073:10101#131118";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADVYcal
     /// </summary>
     public const string LiteralMDCECGLEADVYcal = "131119";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADVYcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADVYcal = "urn:iso:std:iso:11073:10101#131119";
 
     /// <summary>
     /// Literal for code: MDCECGLEADVZcal
@@ -9257,9 +9497,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADVZcal = "131120";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADVZcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADVZcal = "urn:iso:std:iso:11073:10101#131120";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADC5cal
     /// </summary>
     public const string LiteralMDCECGLEADC5cal = "131121";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADC5cal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADC5cal = "urn:iso:std:iso:11073:10101#131121";
 
     /// <summary>
     /// Literal for code: MDCECGLEADCM5cal
@@ -9267,9 +9517,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADCM5cal = "131122";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADCM5cal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADCM5cal = "urn:iso:std:iso:11073:10101#131122";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADLAcal
     /// </summary>
     public const string LiteralMDCECGLEADLAcal = "131123";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADLAcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADLAcal = "urn:iso:std:iso:11073:10101#131123";
 
     /// <summary>
     /// Literal for code: MDCECGLEADRAcal
@@ -9277,9 +9537,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADRAcal = "131124";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADRAcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADRAcal = "urn:iso:std:iso:11073:10101#131124";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADLLcal
     /// </summary>
     public const string LiteralMDCECGLEADLLcal = "131125";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADLLcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADLLcal = "urn:iso:std:iso:11073:10101#131125";
 
     /// <summary>
     /// Literal for code: MDCECGLEADFIcal
@@ -9287,9 +9557,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADFIcal = "131126";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADFIcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADFIcal = "urn:iso:std:iso:11073:10101#131126";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADFEcal
     /// </summary>
     public const string LiteralMDCECGLEADFEcal = "131127";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADFEcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADFEcal = "urn:iso:std:iso:11073:10101#131127";
 
     /// <summary>
     /// Literal for code: MDCECGLEADFCcal
@@ -9297,9 +9577,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADFCcal = "131128";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADFCcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADFCcal = "urn:iso:std:iso:11073:10101#131128";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADFAcal
     /// </summary>
     public const string LiteralMDCECGLEADFAcal = "131129";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADFAcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADFAcal = "urn:iso:std:iso:11073:10101#131129";
 
     /// <summary>
     /// Literal for code: MDCECGLEADFMcal
@@ -9307,9 +9597,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADFMcal = "131130";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADFMcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADFMcal = "urn:iso:std:iso:11073:10101#131130";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADFFcal
     /// </summary>
     public const string LiteralMDCECGLEADFFcal = "131131";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADFFcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADFFcal = "urn:iso:std:iso:11073:10101#131131";
 
     /// <summary>
     /// Literal for code: MDCECGLEADFHcal
@@ -9317,9 +9617,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADFHcal = "131132";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADFHcal
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADFHcal = "urn:iso:std:iso:11073:10101#131132";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADIII
     /// </summary>
     public const string LiteralMDCECGLEADIII = "131133";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADIII
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADIII = "urn:iso:std:iso:11073:10101#131133";
 
     /// <summary>
     /// Literal for code: MDCECGLEADAVR
@@ -9327,9 +9637,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADAVR = "131134";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADAVR
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADAVR = "urn:iso:std:iso:11073:10101#131134";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADAVL
     /// </summary>
     public const string LiteralMDCECGLEADAVL = "131135";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADAVL
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADAVL = "urn:iso:std:iso:11073:10101#131135";
 
     /// <summary>
     /// Literal for code: MDCECGLEADAVF
@@ -9337,9 +9657,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADAVF = "131136";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADAVF
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADAVF = "urn:iso:std:iso:11073:10101#131136";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADAVRneg
     /// </summary>
     public const string LiteralMDCECGLEADAVRneg = "131137";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADAVRneg
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADAVRneg = "urn:iso:std:iso:11073:10101#131137";
 
     /// <summary>
     /// Literal for code: MDCECGLEADC
@@ -9347,9 +9677,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADC = "131138";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADC
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADC = "urn:iso:std:iso:11073:10101#131138";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADV
     /// </summary>
     public const string LiteralMDCECGLEADV = "131139";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADV
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV = "urn:iso:std:iso:11073:10101#131139";
 
     /// <summary>
     /// Literal for code: MDCECGLEADVR
@@ -9357,9 +9697,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADVR = "131140";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADVR
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADVR = "urn:iso:std:iso:11073:10101#131140";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADVL
     /// </summary>
     public const string LiteralMDCECGLEADVL = "131141";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADVL
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADVL = "urn:iso:std:iso:11073:10101#131141";
 
     /// <summary>
     /// Literal for code: MDCECGLEADVF
@@ -9367,9 +9717,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADVF = "131142";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADVF
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADVF = "urn:iso:std:iso:11073:10101#131142";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADV8
     /// </summary>
     public const string LiteralMDCECGLEADV8 = "131143";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADV8
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADV8 = "urn:iso:std:iso:11073:10101#131143";
 
     /// <summary>
     /// Literal for code: MDCECGLEADDn
@@ -9377,9 +9737,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADDn = "131144";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADDn
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADDn = "urn:iso:std:iso:11073:10101#131144";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADAn
     /// </summary>
     public const string LiteralMDCECGLEADAn = "131145";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADAn
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADAn = "urn:iso:std:iso:11073:10101#131145";
 
     /// <summary>
     /// Literal for code: MDCECGLEADJn
@@ -9387,9 +9757,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADJn = "131146";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADJn
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADJn = "urn:iso:std:iso:11073:10101#131146";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADMCL
     /// </summary>
     public const string LiteralMDCECGLEADMCL = "131147";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADMCL
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADMCL = "urn:iso:std:iso:11073:10101#131147";
 
     /// <summary>
     /// Literal for code: MDCECGLEADMCL1
@@ -9397,9 +9777,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADMCL1 = "131148";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADMCL1
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADMCL1 = "urn:iso:std:iso:11073:10101#131148";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADMCL2
     /// </summary>
     public const string LiteralMDCECGLEADMCL2 = "131149";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADMCL2
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADMCL2 = "urn:iso:std:iso:11073:10101#131149";
 
     /// <summary>
     /// Literal for code: MDCECGLEADMCL3
@@ -9407,9 +9797,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADMCL3 = "131150";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADMCL3
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADMCL3 = "urn:iso:std:iso:11073:10101#131150";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADMCL4
     /// </summary>
     public const string LiteralMDCECGLEADMCL4 = "131151";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADMCL4
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADMCL4 = "urn:iso:std:iso:11073:10101#131151";
 
     /// <summary>
     /// Literal for code: MDCECGLEADMCL5
@@ -9417,9 +9817,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADMCL5 = "131152";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADMCL5
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADMCL5 = "urn:iso:std:iso:11073:10101#131152";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADMCL6
     /// </summary>
     public const string LiteralMDCECGLEADMCL6 = "131153";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADMCL6
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADMCL6 = "urn:iso:std:iso:11073:10101#131153";
 
     /// <summary>
     /// Literal for code: MDCECGLEADC1FR
@@ -9427,9 +9837,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADC1FR = "131154";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADC1FR
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADC1FR = "urn:iso:std:iso:11073:10101#131154";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADC2FR
     /// </summary>
     public const string LiteralMDCECGLEADC2FR = "131155";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADC2FR
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADC2FR = "urn:iso:std:iso:11073:10101#131155";
 
     /// <summary>
     /// Literal for code: MDCECGLEADC3FR
@@ -9437,9 +9857,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADC3FR = "131156";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADC3FR
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADC3FR = "urn:iso:std:iso:11073:10101#131156";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADC4FR
     /// </summary>
     public const string LiteralMDCECGLEADC4FR = "131157";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADC4FR
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADC4FR = "urn:iso:std:iso:11073:10101#131157";
 
     /// <summary>
     /// Literal for code: MDCECGLEADC4RFR
@@ -9447,9 +9877,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADC4RFR = "131158";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADC4RFR
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADC4RFR = "urn:iso:std:iso:11073:10101#131158";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADC5FR
     /// </summary>
     public const string LiteralMDCECGLEADC5FR = "131159";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADC5FR
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADC5FR = "urn:iso:std:iso:11073:10101#131159";
 
     /// <summary>
     /// Literal for code: MDCECGLEADC6FR
@@ -9457,9 +9897,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADC6FR = "131160";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADC6FR
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADC6FR = "urn:iso:std:iso:11073:10101#131160";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADC7FR
     /// </summary>
     public const string LiteralMDCECGLEADC7FR = "131161";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADC7FR
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADC7FR = "urn:iso:std:iso:11073:10101#131161";
 
     /// <summary>
     /// Literal for code: MDCECGLEADC8FR
@@ -9467,9 +9917,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADC8FR = "131162";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADC8FR
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADC8FR = "urn:iso:std:iso:11073:10101#131162";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADECGLD91
     /// </summary>
     public const string LiteralMDCECGLEADECGLD91 = "131163";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADECGLD91
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADECGLD91 = "urn:iso:std:iso:11073:10101#131163";
 
     /// <summary>
     /// Literal for code: MDCECGLEADECGLD92
@@ -9477,9 +9937,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADECGLD92 = "131164";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADECGLD92
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADECGLD92 = "urn:iso:std:iso:11073:10101#131164";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADECGLD93
     /// </summary>
     public const string LiteralMDCECGLEADECGLD93 = "131165";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADECGLD93
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADECGLD93 = "urn:iso:std:iso:11073:10101#131165";
 
     /// <summary>
     /// Literal for code: MDCECGLEADECGLD94
@@ -9487,9 +9957,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADECGLD94 = "131166";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADECGLD94
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADECGLD94 = "urn:iso:std:iso:11073:10101#131166";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADECGLD95
     /// </summary>
     public const string LiteralMDCECGLEADECGLD95 = "131167";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADECGLD95
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADECGLD95 = "urn:iso:std:iso:11073:10101#131167";
 
     /// <summary>
     /// Literal for code: MDCECGLEADECGLD96
@@ -9497,9 +9977,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADECGLD96 = "131168";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADECGLD96
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADECGLD96 = "urn:iso:std:iso:11073:10101#131168";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADECGLD97
     /// </summary>
     public const string LiteralMDCECGLEADECGLD97 = "131169";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADECGLD97
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADECGLD97 = "urn:iso:std:iso:11073:10101#131169";
 
     /// <summary>
     /// Literal for code: MDCECGLEADECGLD98
@@ -9507,9 +9997,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADECGLD98 = "131170";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADECGLD98
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADECGLD98 = "urn:iso:std:iso:11073:10101#131170";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADECGLD99
     /// </summary>
     public const string LiteralMDCECGLEADECGLD99 = "131171";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADECGLD99
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADECGLD99 = "urn:iso:std:iso:11073:10101#131171";
 
     /// <summary>
     /// Literal for code: MDCECGLEADES
@@ -9517,9 +10017,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADES = "131172";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADES
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADES = "urn:iso:std:iso:11073:10101#131172";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADAS
     /// </summary>
     public const string LiteralMDCECGLEADAS = "131173";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADAS
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADAS = "urn:iso:std:iso:11073:10101#131173";
 
     /// <summary>
     /// Literal for code: MDCECGLEADAI
@@ -9527,9 +10037,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADAI = "131174";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADAI
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADAI = "urn:iso:std:iso:11073:10101#131174";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADDI
     /// </summary>
     public const string LiteralMDCECGLEADDI = "131175";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADDI
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADDI = "urn:iso:std:iso:11073:10101#131175";
 
     /// <summary>
     /// Literal for code: MDCECGLEADDII
@@ -9537,9 +10057,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADDII = "131176";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADDII
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADDII = "urn:iso:std:iso:11073:10101#131176";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADDIII
     /// </summary>
     public const string LiteralMDCECGLEADDIII = "131177";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADDIII
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADDIII = "urn:iso:std:iso:11073:10101#131177";
 
     /// <summary>
     /// Literal for code: MDCECGLEADDaVR
@@ -9547,9 +10077,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADDaVR = "131178";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADDaVR
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADDaVR = "urn:iso:std:iso:11073:10101#131178";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADDaVL
     /// </summary>
     public const string LiteralMDCECGLEADDaVL = "131179";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADDaVL
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADDaVL = "urn:iso:std:iso:11073:10101#131179";
 
     /// <summary>
     /// Literal for code: MDCECGLEADDaVF
@@ -9557,9 +10097,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADDaVF = "131180";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADDaVF
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADDaVF = "urn:iso:std:iso:11073:10101#131180";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADDV1
     /// </summary>
     public const string LiteralMDCECGLEADDV1 = "131181";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADDV1
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADDV1 = "urn:iso:std:iso:11073:10101#131181";
 
     /// <summary>
     /// Literal for code: MDCECGLEADDV2
@@ -9567,9 +10117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADDV2 = "131182";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADDV2
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADDV2 = "urn:iso:std:iso:11073:10101#131182";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADDV3
     /// </summary>
     public const string LiteralMDCECGLEADDV3 = "131183";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADDV3
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADDV3 = "urn:iso:std:iso:11073:10101#131183";
 
     /// <summary>
     /// Literal for code: MDCECGLEADDV4
@@ -9577,9 +10137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADDV4 = "131184";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADDV4
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADDV4 = "urn:iso:std:iso:11073:10101#131184";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADDV5
     /// </summary>
     public const string LiteralMDCECGLEADDV5 = "131185";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADDV5
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADDV5 = "urn:iso:std:iso:11073:10101#131185";
 
     /// <summary>
     /// Literal for code: MDCECGLEADDV6
@@ -9587,9 +10157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADDV6 = "131186";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADDV6
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADDV6 = "urn:iso:std:iso:11073:10101#131186";
+
+    /// <summary>
     /// Literal for code: MDCECGLEADRL
     /// </summary>
     public const string LiteralMDCECGLEADRL = "131187";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEADRL
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADRL = "urn:iso:std:iso:11073:10101#131187";
 
     /// <summary>
     /// Literal for code: MDCECGLEADEASIS
@@ -9597,9 +10177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEADEASIS = "131188";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEADEASIS
+    /// </summary>
+    public const string LiteralNONEMDCECGLEADEASIS = "urn:iso:std:iso:11073:10101#131188";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTL
     /// </summary>
     public const string LiteralMDCECGELECPOTL = "131328";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTL
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTL = "urn:iso:std:iso:11073:10101#131328";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLI
@@ -9607,9 +10197,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLI = "131329";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLI
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLI = "urn:iso:std:iso:11073:10101#131329";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLII
     /// </summary>
     public const string LiteralMDCECGELECPOTLII = "131330";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLII
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLII = "urn:iso:std:iso:11073:10101#131330";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLV1
@@ -9617,9 +10217,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLV1 = "131331";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLV1
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLV1 = "urn:iso:std:iso:11073:10101#131331";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLV2
     /// </summary>
     public const string LiteralMDCECGELECPOTLV2 = "131332";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLV2
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLV2 = "urn:iso:std:iso:11073:10101#131332";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLV3
@@ -9627,9 +10237,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLV3 = "131333";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLV3
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLV3 = "urn:iso:std:iso:11073:10101#131333";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLV4
     /// </summary>
     public const string LiteralMDCECGELECPOTLV4 = "131334";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLV4
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLV4 = "urn:iso:std:iso:11073:10101#131334";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLV5
@@ -9637,9 +10257,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLV5 = "131335";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLV5
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLV5 = "urn:iso:std:iso:11073:10101#131335";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLV6
     /// </summary>
     public const string LiteralMDCECGELECPOTLV6 = "131336";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLV6
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLV6 = "urn:iso:std:iso:11073:10101#131336";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLVX
@@ -9647,9 +10277,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLVX = "131344";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLVX
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLVX = "urn:iso:std:iso:11073:10101#131344";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLVY
     /// </summary>
     public const string LiteralMDCECGELECPOTLVY = "131345";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLVY
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLVY = "urn:iso:std:iso:11073:10101#131345";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLVZ
@@ -9657,9 +10297,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLVZ = "131346";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLVZ
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLVZ = "urn:iso:std:iso:11073:10101#131346";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLLA
     /// </summary>
     public const string LiteralMDCECGELECPOTLLA = "131349";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLLA
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLLA = "urn:iso:std:iso:11073:10101#131349";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLRA
@@ -9667,9 +10317,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLRA = "131350";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLRA
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLRA = "urn:iso:std:iso:11073:10101#131350";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLLL
     /// </summary>
     public const string LiteralMDCECGELECPOTLLL = "131351";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLLL
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLLL = "urn:iso:std:iso:11073:10101#131351";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLIII
@@ -9677,9 +10337,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLIII = "131389";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLIII
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLIII = "urn:iso:std:iso:11073:10101#131389";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLAVR
     /// </summary>
     public const string LiteralMDCECGELECPOTLAVR = "131390";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLAVR
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLAVR = "urn:iso:std:iso:11073:10101#131390";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLAVL
@@ -9687,9 +10357,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLAVL = "131391";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLAVL
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLAVL = "urn:iso:std:iso:11073:10101#131391";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLAVF
     /// </summary>
     public const string LiteralMDCECGELECPOTLAVF = "131392";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLAVF
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLAVF = "urn:iso:std:iso:11073:10101#131392";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLC
@@ -9697,9 +10377,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLC = "131394";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLC
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLC = "urn:iso:std:iso:11073:10101#131394";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLV
     /// </summary>
     public const string LiteralMDCECGELECPOTLV = "131395";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLV
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLV = "urn:iso:std:iso:11073:10101#131395";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLMCL
@@ -9707,9 +10397,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLMCL = "131403";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLMCL
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLMCL = "urn:iso:std:iso:11073:10101#131403";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLMCL1
     /// </summary>
     public const string LiteralMDCECGELECPOTLMCL1 = "131404";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLMCL1
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLMCL1 = "urn:iso:std:iso:11073:10101#131404";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLMCL2
@@ -9717,9 +10417,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLMCL2 = "131405";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLMCL2
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLMCL2 = "urn:iso:std:iso:11073:10101#131405";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLMCL3
     /// </summary>
     public const string LiteralMDCECGELECPOTLMCL3 = "131406";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLMCL3
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLMCL3 = "urn:iso:std:iso:11073:10101#131406";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLMCL4
@@ -9727,9 +10437,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLMCL4 = "131407";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLMCL4
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLMCL4 = "urn:iso:std:iso:11073:10101#131407";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLMCL5
     /// </summary>
     public const string LiteralMDCECGELECPOTLMCL5 = "131408";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLMCL5
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLMCL5 = "urn:iso:std:iso:11073:10101#131408";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLMCL6
@@ -9737,9 +10457,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLMCL6 = "131409";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLMCL6
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLMCL6 = "urn:iso:std:iso:11073:10101#131409";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLC1FR
     /// </summary>
     public const string LiteralMDCECGELECPOTLC1FR = "131410";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLC1FR
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLC1FR = "urn:iso:std:iso:11073:10101#131410";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLC2FR
@@ -9747,9 +10477,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLC2FR = "131411";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLC2FR
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLC2FR = "urn:iso:std:iso:11073:10101#131411";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLC3FR
     /// </summary>
     public const string LiteralMDCECGELECPOTLC3FR = "131412";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLC3FR
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLC3FR = "urn:iso:std:iso:11073:10101#131412";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLC4FR
@@ -9757,9 +10497,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLC4FR = "131413";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLC4FR
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLC4FR = "urn:iso:std:iso:11073:10101#131413";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLC5FR
     /// </summary>
     public const string LiteralMDCECGELECPOTLC5FR = "131415";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLC5FR
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLC5FR = "urn:iso:std:iso:11073:10101#131415";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLC6FR
@@ -9767,9 +10517,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLC6FR = "131416";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLC6FR
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLC6FR = "urn:iso:std:iso:11073:10101#131416";
+
+    /// <summary>
     /// Literal for code: VAL131840
     /// </summary>
     public const string LiteralVAL131840 = "131840";
+
+    /// <summary>
+    /// Literal for code: NONEVAL131840
+    /// </summary>
+    public const string LiteralNONEVAL131840 = "urn:iso:std:iso:11073:10101#131840";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLSTI
@@ -9777,9 +10537,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLSTI = "131841";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTI
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTI = "urn:iso:std:iso:11073:10101#131841";
+
+    /// <summary>
     /// Literal for code: MDCECGAMPLSTII
     /// </summary>
     public const string LiteralMDCECGAMPLSTII = "131842";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTII
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTII = "urn:iso:std:iso:11073:10101#131842";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLSTV1
@@ -9787,9 +10557,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLSTV1 = "131843";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTV1
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTV1 = "urn:iso:std:iso:11073:10101#131843";
+
+    /// <summary>
     /// Literal for code: MDCECGAMPLSTV2
     /// </summary>
     public const string LiteralMDCECGAMPLSTV2 = "131844";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTV2
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTV2 = "urn:iso:std:iso:11073:10101#131844";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLSTV3
@@ -9797,9 +10577,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLSTV3 = "131845";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTV3
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTV3 = "urn:iso:std:iso:11073:10101#131845";
+
+    /// <summary>
     /// Literal for code: MDCECGAMPLSTV4
     /// </summary>
     public const string LiteralMDCECGAMPLSTV4 = "131846";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTV4
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTV4 = "urn:iso:std:iso:11073:10101#131846";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLSTV5
@@ -9807,9 +10597,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLSTV5 = "131847";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTV5
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTV5 = "urn:iso:std:iso:11073:10101#131847";
+
+    /// <summary>
     /// Literal for code: MDCECGAMPLSTV6
     /// </summary>
     public const string LiteralMDCECGAMPLSTV6 = "131848";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTV6
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTV6 = "urn:iso:std:iso:11073:10101#131848";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLSTDV1
@@ -9817,9 +10617,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLSTDV1 = "131873";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTDV1
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTDV1 = "urn:iso:std:iso:11073:10101#131873";
+
+    /// <summary>
     /// Literal for code: MDCECGAMPLSTDV2
     /// </summary>
     public const string LiteralMDCECGAMPLSTDV2 = "131874";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTDV2
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTDV2 = "urn:iso:std:iso:11073:10101#131874";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLSTDV3
@@ -9827,9 +10637,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLSTDV3 = "131875";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTDV3
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTDV3 = "urn:iso:std:iso:11073:10101#131875";
+
+    /// <summary>
     /// Literal for code: MDCECGAMPLSTDV4
     /// </summary>
     public const string LiteralMDCECGAMPLSTDV4 = "131876";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTDV4
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTDV4 = "urn:iso:std:iso:11073:10101#131876";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLSTDV5
@@ -9837,9 +10657,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLSTDV5 = "131877";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTDV5
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTDV5 = "urn:iso:std:iso:11073:10101#131877";
+
+    /// <summary>
     /// Literal for code: MDCECGAMPLSTDV6
     /// </summary>
     public const string LiteralMDCECGAMPLSTDV6 = "131878";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTDV6
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTDV6 = "urn:iso:std:iso:11073:10101#131878";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLSTIII
@@ -9847,9 +10677,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLSTIII = "131901";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTIII
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTIII = "urn:iso:std:iso:11073:10101#131901";
+
+    /// <summary>
     /// Literal for code: MDCECGAMPLSTAVR
     /// </summary>
     public const string LiteralMDCECGAMPLSTAVR = "131902";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTAVR
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTAVR = "urn:iso:std:iso:11073:10101#131902";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLSTAVL
@@ -9857,9 +10697,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLSTAVL = "131903";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTAVL
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTAVL = "urn:iso:std:iso:11073:10101#131903";
+
+    /// <summary>
     /// Literal for code: MDCECGAMPLSTAVF
     /// </summary>
     public const string LiteralMDCECGAMPLSTAVF = "131904";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTAVF
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTAVF = "urn:iso:std:iso:11073:10101#131904";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLSTV
@@ -9867,9 +10717,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLSTV = "131927";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTV
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTV = "urn:iso:std:iso:11073:10101#131927";
+
+    /// <summary>
     /// Literal for code: MDCECGAMPLSTMCL
     /// </summary>
     public const string LiteralMDCECGAMPLSTMCL = "131931";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTMCL
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTMCL = "urn:iso:std:iso:11073:10101#131931";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLSTMCL1
@@ -9877,9 +10737,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLSTMCL1 = "131932";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTMCL1
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTMCL1 = "urn:iso:std:iso:11073:10101#131932";
+
+    /// <summary>
     /// Literal for code: MDCECGAMPLSTMCL6
     /// </summary>
     public const string LiteralMDCECGAMPLSTMCL6 = "131937";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTMCL6
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTMCL6 = "urn:iso:std:iso:11073:10101#131937";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLSTES
@@ -9887,9 +10757,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLSTES = "131971";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTES
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTES = "urn:iso:std:iso:11073:10101#131971";
+
+    /// <summary>
     /// Literal for code: MDCECGAMPLSTAS
     /// </summary>
     public const string LiteralMDCECGAMPLSTAS = "131972";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTAS
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTAS = "urn:iso:std:iso:11073:10101#131972";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLSTAI
@@ -9897,9 +10777,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLSTAI = "131973";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLSTAI
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLSTAI = "urn:iso:std:iso:11073:10101#131973";
+
+    /// <summary>
     /// Literal for code: MDCECGPOINTJ
     /// </summary>
     public const string LiteralMDCECGPOINTJ = "132096";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGPOINTJ
+    /// </summary>
+    public const string LiteralNONEMDCECGPOINTJ = "urn:iso:std:iso:11073:10101#132096";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLPMAX
@@ -9907,9 +10797,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLPMAX = "132352";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLPMAX
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLPMAX = "urn:iso:std:iso:11073:10101#132352";
+
+    /// <summary>
     /// Literal for code: MDCECGAMPLPMIN
     /// </summary>
     public const string LiteralMDCECGAMPLPMIN = "132608";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAMPLPMIN
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLPMIN = "urn:iso:std:iso:11073:10101#132608";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLQ
@@ -9917,9 +10817,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLQ = "132864";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLQ
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLQ = "urn:iso:std:iso:11073:10101#132864";
+
+    /// <summary>
     /// Literal for code: MDCECGAMPLR
     /// </summary>
     public const string LiteralMDCECGAMPLR = "133120";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAMPLR
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLR = "urn:iso:std:iso:11073:10101#133120";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLS
@@ -9927,9 +10837,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLS = "133376";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLS
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLS = "urn:iso:std:iso:11073:10101#133376";
+
+    /// <summary>
     /// Literal for code: MDCECGAMPLTMAX
     /// </summary>
     public const string LiteralMDCECGAMPLTMAX = "133632";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAMPLTMAX
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLTMAX = "urn:iso:std:iso:11073:10101#133632";
 
     /// <summary>
     /// Literal for code: MDCECGAMPLTMIN
@@ -9937,9 +10857,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAMPLTMIN = "133888";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAMPLTMIN
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLTMIN = "urn:iso:std:iso:11073:10101#133888";
+
+    /// <summary>
     /// Literal for code: MDCECGAMPLP3
     /// </summary>
     public const string LiteralMDCECGAMPLP3 = "134144";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAMPLP3
+    /// </summary>
+    public const string LiteralNONEMDCECGAMPLP3 = "urn:iso:std:iso:11073:10101#134144";
 
     /// <summary>
     /// Literal for code: MDCECGAREAQ
@@ -9947,9 +10877,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAREAQ = "134400";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAREAQ
+    /// </summary>
+    public const string LiteralNONEMDCECGAREAQ = "urn:iso:std:iso:11073:10101#134400";
+
+    /// <summary>
     /// Literal for code: MDCECGAREAT
     /// </summary>
     public const string LiteralMDCECGAREAT = "134656";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAREAT
+    /// </summary>
+    public const string LiteralNONEMDCECGAREAT = "urn:iso:std:iso:11073:10101#134656";
 
     /// <summary>
     /// Literal for code: MDCECGAREAP
@@ -9957,9 +10897,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAREAP = "134912";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAREAP
+    /// </summary>
+    public const string LiteralNONEMDCECGAREAP = "urn:iso:std:iso:11073:10101#134912";
+
+    /// <summary>
     /// Literal for code: MDCECGAREAQRS
     /// </summary>
     public const string LiteralMDCECGAREAQRS = "135168";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAREAQRS
+    /// </summary>
+    public const string LiteralNONEMDCECGAREAQRS = "urn:iso:std:iso:11073:10101#135168";
 
     /// <summary>
     /// Literal for code: MDCECGAREAST
@@ -9967,9 +10917,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAREAST = "135424";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAREAST
+    /// </summary>
+    public const string LiteralNONEMDCECGAREAST = "urn:iso:std:iso:11073:10101#135424";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEPDP1
     /// </summary>
     public const string LiteralMDCECGTIMEPDP1 = "135680";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDP1
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDP1 = "urn:iso:std:iso:11073:10101#135680";
 
     /// <summary>
     /// Literal for code: MDCECGTIMEPDP2
@@ -9977,9 +10937,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMEPDP2 = "135936";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDP2
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDP2 = "urn:iso:std:iso:11073:10101#135936";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEPDP3
     /// </summary>
     public const string LiteralMDCECGTIMEPDP3 = "136192";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDP3
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDP3 = "urn:iso:std:iso:11073:10101#136192";
 
     /// <summary>
     /// Literal for code: MDCECGSLOPEST
@@ -9987,9 +10957,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGSLOPEST = "136448";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGSLOPEST
+    /// </summary>
+    public const string LiteralNONEMDCECGSLOPEST = "urn:iso:std:iso:11073:10101#136448";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEENDP
     /// </summary>
     public const string LiteralMDCECGTIMEENDP = "136960";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEENDP
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEENDP = "urn:iso:std:iso:11073:10101#136960";
 
     /// <summary>
     /// Literal for code: MDCECGTIMEENDQRS
@@ -9997,9 +10977,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMEENDQRS = "137216";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMEENDQRS
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEENDQRS = "urn:iso:std:iso:11073:10101#137216";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEENDT
     /// </summary>
     public const string LiteralMDCECGTIMEENDT = "137472";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEENDT
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEENDT = "urn:iso:std:iso:11073:10101#137472";
 
     /// <summary>
     /// Literal for code: MDCECGTIMEPDP
@@ -10007,9 +10997,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMEPDP = "137728";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDP
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDP = "urn:iso:std:iso:11073:10101#137728";
+
+    /// <summary>
     /// Literal for code: MDCECGINTEGRALP
     /// </summary>
     public const string LiteralMDCECGINTEGRALP = "137984";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGINTEGRALP
+    /// </summary>
+    public const string LiteralNONEMDCECGINTEGRALP = "urn:iso:std:iso:11073:10101#137984";
 
     /// <summary>
     /// Literal for code: MDCECGTIMEPDPR
@@ -10017,9 +11017,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMEPDPR = "138240";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDPR
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDPR = "urn:iso:std:iso:11073:10101#138240";
+
+    /// <summary>
     /// Literal for code: MDCECGINTEGRALQ
     /// </summary>
     public const string LiteralMDCECGINTEGRALQ = "138496";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGINTEGRALQ
+    /// </summary>
+    public const string LiteralNONEMDCECGINTEGRALQ = "urn:iso:std:iso:11073:10101#138496";
 
     /// <summary>
     /// Literal for code: MDCECGTIMEPDQ
@@ -10027,9 +11037,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMEPDQ = "138752";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDQ
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDQ = "urn:iso:std:iso:11073:10101#138752";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEPDQRS
     /// </summary>
     public const string LiteralMDCECGTIMEPDQRS = "139008";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDQRS
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDQRS = "urn:iso:std:iso:11073:10101#139008";
 
     /// <summary>
     /// Literal for code: MDCECGTIMEPDQT
@@ -10037,9 +11057,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMEPDQT = "139264";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDQT
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDQT = "urn:iso:std:iso:11073:10101#139264";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEPDQTCORR
     /// </summary>
     public const string LiteralMDCECGTIMEPDQTCORR = "139520";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDQTCORR
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDQTCORR = "urn:iso:std:iso:11073:10101#139520";
 
     /// <summary>
     /// Literal for code: MDCECGINTEGRALQRS
@@ -10047,9 +11077,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGINTEGRALQRS = "139776";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGINTEGRALQRS
+    /// </summary>
+    public const string LiteralNONEMDCECGINTEGRALQRS = "urn:iso:std:iso:11073:10101#139776";
+
+    /// <summary>
     /// Literal for code: MDCECGINTEGRALT
     /// </summary>
     public const string LiteralMDCECGINTEGRALT = "140032";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGINTEGRALT
+    /// </summary>
+    public const string LiteralNONEMDCECGINTEGRALT = "urn:iso:std:iso:11073:10101#140032";
 
     /// <summary>
     /// Literal for code: MDCECGINTEGRALST
@@ -10057,9 +11097,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGINTEGRALST = "140288";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGINTEGRALST
+    /// </summary>
+    public const string LiteralNONEMDCECGINTEGRALST = "urn:iso:std:iso:11073:10101#140288";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMESTARTP
     /// </summary>
     public const string LiteralMDCECGTIMESTARTP = "140544";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMESTARTP
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMESTARTP = "urn:iso:std:iso:11073:10101#140544";
 
     /// <summary>
     /// Literal for code: MDCECGTIMESTARTQRS
@@ -10067,9 +11117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMESTARTQRS = "140800";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMESTARTQRS
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMESTARTQRS = "urn:iso:std:iso:11073:10101#140800";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMESTARTT
     /// </summary>
     public const string LiteralMDCECGTIMESTARTT = "141056";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMESTARTT
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMESTARTT = "urn:iso:std:iso:11073:10101#141056";
 
     /// <summary>
     /// Literal for code: MDCECGPOINTREF
@@ -10077,9 +11137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGPOINTREF = "141312";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGPOINTREF
+    /// </summary>
+    public const string LiteralNONEMDCECGPOINTREF = "urn:iso:std:iso:11073:10101#141312";
+
+    /// <summary>
     /// Literal for code: MDCECGPOINTST
     /// </summary>
     public const string LiteralMDCECGPOINTST = "141568";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGPOINTST
+    /// </summary>
+    public const string LiteralNONEMDCECGPOINTST = "urn:iso:std:iso:11073:10101#141568";
 
     /// <summary>
     /// Literal for code: MDCECGPOINTISO
@@ -10087,9 +11157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGPOINTISO = "141824";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGPOINTISO
+    /// </summary>
+    public const string LiteralNONEMDCECGPOINTISO = "urn:iso:std:iso:11073:10101#141824";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEPDVENTACTIV
     /// </summary>
     public const string LiteralMDCECGTIMEPDVENTACTIV = "142080";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDVENTACTIV
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDVENTACTIV = "urn:iso:std:iso:11073:10101#142080";
 
     /// <summary>
     /// Literal for code: MDCECGTIMEPDR1
@@ -10097,9 +11177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMEPDR1 = "142336";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDR1
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDR1 = "urn:iso:std:iso:11073:10101#142336";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEPDR2
     /// </summary>
     public const string LiteralMDCECGTIMEPDR2 = "142592";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDR2
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDR2 = "urn:iso:std:iso:11073:10101#142592";
 
     /// <summary>
     /// Literal for code: MDCECGTIMEPDR3
@@ -10107,9 +11197,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMEPDR3 = "142848";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDR3
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDR3 = "urn:iso:std:iso:11073:10101#142848";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEPDS1
     /// </summary>
     public const string LiteralMDCECGTIMEPDS1 = "143104";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDS1
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDS1 = "urn:iso:std:iso:11073:10101#143104";
 
     /// <summary>
     /// Literal for code: MDCECGTIMEPDS2
@@ -10117,9 +11217,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMEPDS2 = "143360";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDS2
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDS2 = "urn:iso:std:iso:11073:10101#143360";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEPDS3
     /// </summary>
     public const string LiteralMDCECGTIMEPDS3 = "143616";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDS3
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDS3 = "urn:iso:std:iso:11073:10101#143616";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLR1
@@ -10127,9 +11237,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLR1 = "143872";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLR1
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLR1 = "urn:iso:std:iso:11073:10101#143872";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLR2
     /// </summary>
     public const string LiteralMDCECGELECPOTLR2 = "144128";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLR2
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLR2 = "urn:iso:std:iso:11073:10101#144128";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLR3
@@ -10137,9 +11257,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLR3 = "144384";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLR3
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLR3 = "urn:iso:std:iso:11073:10101#144384";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLS1
     /// </summary>
     public const string LiteralMDCECGELECPOTLS1 = "144640";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLS1
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLS1 = "urn:iso:std:iso:11073:10101#144640";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLS2
@@ -10147,9 +11277,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLS2 = "144896";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLS2
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLS2 = "urn:iso:std:iso:11073:10101#144896";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLS3
     /// </summary>
     public const string LiteralMDCECGELECPOTLS3 = "145152";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLS3
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLS3 = "urn:iso:std:iso:11073:10101#145152";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLST60
@@ -10157,9 +11297,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLST60 = "145408";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLST60
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLST60 = "urn:iso:std:iso:11073:10101#145408";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLST80
     /// </summary>
     public const string LiteralMDCECGELECPOTLST80 = "145664";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLST80
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLST80 = "urn:iso:std:iso:11073:10101#145664";
 
     /// <summary>
     /// Literal for code: MDCECGELECPOTLST20
@@ -10167,9 +11317,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGELECPOTLST20 = "145920";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLST20
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLST20 = "urn:iso:std:iso:11073:10101#145920";
+
+    /// <summary>
     /// Literal for code: MDCECGELECPOTLST40
     /// </summary>
     public const string LiteralMDCECGELECPOTLST40 = "146176";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGELECPOTLST40
+    /// </summary>
+    public const string LiteralNONEMDCECGELECPOTLST40 = "urn:iso:std:iso:11073:10101#146176";
 
     /// <summary>
     /// Literal for code: MDCECGTIMEPDQTCBAZETT
@@ -10177,9 +11337,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMEPDQTCBAZETT = "146952";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDQTCBAZETT
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDQTCBAZETT = "urn:iso:std:iso:11073:10101#146952";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEPDQTCFRAMINGHAM
     /// </summary>
     public const string LiteralMDCECGTIMEPDQTCFRAMINGHAM = "146956";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDQTCFRAMINGHAM
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDQTCFRAMINGHAM = "urn:iso:std:iso:11073:10101#146956";
 
     /// <summary>
     /// Literal for code: MDCECGTIMEPDQTCHODGES
@@ -10187,9 +11357,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMEPDQTCHODGES = "146960";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDQTCHODGES
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDQTCHODGES = "urn:iso:std:iso:11073:10101#146960";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEPDQTCFREDERICA
     /// </summary>
     public const string LiteralMDCECGTIMEPDQTCFREDERICA = "146964";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDQTCFREDERICA
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDQTCFREDERICA = "urn:iso:std:iso:11073:10101#146964";
 
     /// <summary>
     /// Literal for code: MDCECGTIMEPDQTCUSER
@@ -10197,9 +11377,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMEPDQTCUSER = "146968";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDQTCUSER
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDQTCUSER = "urn:iso:std:iso:11073:10101#146968";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEPDQTU
     /// </summary>
     public const string LiteralMDCECGTIMEPDQTU = "147076";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDQTU
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDQTU = "urn:iso:std:iso:11073:10101#147076";
 
     /// <summary>
     /// Literal for code: MDCECGDISPERSIONQT
@@ -10207,9 +11397,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGDISPERSIONQT = "147080";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGDISPERSIONQT
+    /// </summary>
+    public const string LiteralNONEMDCECGDISPERSIONQT = "urn:iso:std:iso:11073:10101#147080";
+
+    /// <summary>
     /// Literal for code: MDCECGDISPERSIONQTC
     /// </summary>
     public const string LiteralMDCECGDISPERSIONQTC = "147084";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGDISPERSIONQTC
+    /// </summary>
+    public const string LiteralNONEMDCECGDISPERSIONQTC = "urn:iso:std:iso:11073:10101#147084";
 
     /// <summary>
     /// Literal for code: MDCECGVENTRICULARRATE
@@ -10217,9 +11417,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVENTRICULARRATE = "147088";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVENTRICULARRATE
+    /// </summary>
+    public const string LiteralNONEMDCECGVENTRICULARRATE = "urn:iso:std:iso:11073:10101#147088";
+
+    /// <summary>
     /// Literal for code: MDCECGATRIALRATE
     /// </summary>
     public const string LiteralMDCECGATRIALRATE = "147092";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGATRIALRATE
+    /// </summary>
+    public const string LiteralNONEMDCECGATRIALRATE = "urn:iso:std:iso:11073:10101#147092";
 
     /// <summary>
     /// Literal for code: MDCECGVPCCOUNT
@@ -10227,9 +11437,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVPCCOUNT = "147096";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVPCCOUNT
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCCOUNT = "urn:iso:std:iso:11073:10101#147096";
+
+    /// <summary>
     /// Literal for code: MDCECGSVPCRATE
     /// </summary>
     public const string LiteralMDCECGSVPCRATE = "147100";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGSVPCRATE
+    /// </summary>
+    public const string LiteralNONEMDCECGSVPCRATE = "urn:iso:std:iso:11073:10101#147100";
 
     /// <summary>
     /// Literal for code: MDCECGBEATCOUNT
@@ -10237,9 +11457,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGBEATCOUNT = "147104";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGBEATCOUNT
+    /// </summary>
+    public const string LiteralNONEMDCECGBEATCOUNT = "urn:iso:std:iso:11073:10101#147104";
+
+    /// <summary>
     /// Literal for code: MDCECGANGLEPFRONT
     /// </summary>
     public const string LiteralMDCECGANGLEPFRONT = "147200";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGANGLEPFRONT
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEPFRONT = "urn:iso:std:iso:11073:10101#147200";
 
     /// <summary>
     /// Literal for code: MDCECGANGLEQRSFRONT
@@ -10247,9 +11477,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGANGLEQRSFRONT = "147204";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGANGLEQRSFRONT
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEQRSFRONT = "urn:iso:std:iso:11073:10101#147204";
+
+    /// <summary>
     /// Literal for code: MDCECGANGLETFRONT
     /// </summary>
     public const string LiteralMDCECGANGLETFRONT = "147208";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGANGLETFRONT
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLETFRONT = "urn:iso:std:iso:11073:10101#147208";
 
     /// <summary>
     /// Literal for code: MDCECGTIMEPDPPGL
@@ -10257,9 +11497,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMEPDPPGL = "147212";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDPPGL
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDPPGL = "urn:iso:std:iso:11073:10101#147212";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEPDPQ
     /// </summary>
     public const string LiteralMDCECGTIMEPDPQ = "147216";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDPQ
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDPQ = "urn:iso:std:iso:11073:10101#147216";
 
     /// <summary>
     /// Literal for code: MDCECGTIMEPDPRGL
@@ -10267,9 +11517,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMEPDPRGL = "147220";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDPRGL
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDPRGL = "urn:iso:std:iso:11073:10101#147220";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEPDQRSGL
     /// </summary>
     public const string LiteralMDCECGTIMEPDQRSGL = "147228";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDQRSGL
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDQRSGL = "urn:iso:std:iso:11073:10101#147228";
 
     /// <summary>
     /// Literal for code: MDCECGTIMEPDQTGL
@@ -10277,9 +11537,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMEPDQTGL = "147232";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDQTGL
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDQTGL = "urn:iso:std:iso:11073:10101#147232";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEPDQTc
     /// </summary>
     public const string LiteralMDCECGTIMEPDQTc = "147236";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDQTc
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDQTc = "urn:iso:std:iso:11073:10101#147236";
 
     /// <summary>
     /// Literal for code: MDCECGRR
@@ -10287,9 +11557,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGRR = "147240";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGRR
+    /// </summary>
+    public const string LiteralNONEMDCECGRR = "urn:iso:std:iso:11073:10101#147240";
+
+    /// <summary>
     /// Literal for code: MDCECGRRMAX
     /// </summary>
     public const string LiteralMDCECGRRMAX = "147241";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGRRMAX
+    /// </summary>
+    public const string LiteralNONEMDCECGRRMAX = "urn:iso:std:iso:11073:10101#147241";
 
     /// <summary>
     /// Literal for code: MDCECGMAGPFRONT
@@ -10297,9 +11577,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGMAGPFRONT = "147244";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGMAGPFRONT
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGPFRONT = "urn:iso:std:iso:11073:10101#147244";
+
+    /// <summary>
     /// Literal for code: MDCECGMAGQRSFRONT
     /// </summary>
     public const string LiteralMDCECGMAGQRSFRONT = "147248";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGMAGQRSFRONT
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGQRSFRONT = "urn:iso:std:iso:11073:10101#147248";
 
     /// <summary>
     /// Literal for code: MDCECGMAGTFRONT
@@ -10307,9 +11597,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGMAGTFRONT = "147252";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGMAGTFRONT
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGTFRONT = "urn:iso:std:iso:11073:10101#147252";
+
+    /// <summary>
     /// Literal for code: MDCECGTIMEPDPGL
     /// </summary>
     public const string LiteralMDCECGTIMEPDPGL = "147256";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTIMEPDPGL
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMEPDPGL = "urn:iso:std:iso:11073:10101#147256";
 
     /// <summary>
     /// Literal for code: MDCECGQRSTYPE
@@ -10317,9 +11617,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGQRSTYPE = "147260";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGQRSTYPE
+    /// </summary>
+    public const string LiteralNONEMDCECGQRSTYPE = "urn:iso:std:iso:11073:10101#147260";
+
+    /// <summary>
     /// Literal for code: MDCECGMAGPVECT
     /// </summary>
     public const string LiteralMDCECGMAGPVECT = "147264";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGMAGPVECT
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGPVECT = "urn:iso:std:iso:11073:10101#147264";
 
     /// <summary>
     /// Literal for code: MDCECGMAGQRSVECT
@@ -10327,9 +11637,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGMAGQRSVECT = "147268";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGMAGQRSVECT
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGQRSVECT = "urn:iso:std:iso:11073:10101#147268";
+
+    /// <summary>
     /// Literal for code: MDCECGMAGTVECT
     /// </summary>
     public const string LiteralMDCECGMAGTVECT = "147272";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGMAGTVECT
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGTVECT = "urn:iso:std:iso:11073:10101#147272";
 
     /// <summary>
     /// Literal for code: MDCECGANGLEPAZIM
@@ -10337,9 +11657,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGANGLEPAZIM = "147276";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGANGLEPAZIM
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEPAZIM = "urn:iso:std:iso:11073:10101#147276";
+
+    /// <summary>
     /// Literal for code: MDCECGANGLEQRSAZIM
     /// </summary>
     public const string LiteralMDCECGANGLEQRSAZIM = "147280";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGANGLEQRSAZIM
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEQRSAZIM = "urn:iso:std:iso:11073:10101#147280";
 
     /// <summary>
     /// Literal for code: MDCECGANGLETAZIM
@@ -10347,9 +11677,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGANGLETAZIM = "147284";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGANGLETAZIM
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLETAZIM = "urn:iso:std:iso:11073:10101#147284";
+
+    /// <summary>
     /// Literal for code: MDCECGANGLEPELEV
     /// </summary>
     public const string LiteralMDCECGANGLEPELEV = "147288";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGANGLEPELEV
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEPELEV = "urn:iso:std:iso:11073:10101#147288";
 
     /// <summary>
     /// Literal for code: MDCECGANGLEQRSELEV
@@ -10357,9 +11697,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGANGLEQRSELEV = "147292";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGANGLEQRSELEV
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEQRSELEV = "urn:iso:std:iso:11073:10101#147292";
+
+    /// <summary>
     /// Literal for code: MDCECGANGLETELEV
     /// </summary>
     public const string LiteralMDCECGANGLETELEV = "147296";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGANGLETELEV
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLETELEV = "urn:iso:std:iso:11073:10101#147296";
 
     /// <summary>
     /// Literal for code: MDCECGMAGJVECT
@@ -10367,9 +11717,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGMAGJVECT = "147304";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGMAGJVECT
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGJVECT = "urn:iso:std:iso:11073:10101#147304";
+
+    /// <summary>
     /// Literal for code: MDCECGANGLEJAZIM
     /// </summary>
     public const string LiteralMDCECGANGLEJAZIM = "147308";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGANGLEJAZIM
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEJAZIM = "urn:iso:std:iso:11073:10101#147308";
 
     /// <summary>
     /// Literal for code: MDCECGANGLEJELEV
@@ -10377,9 +11737,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGANGLEJELEV = "147312";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGANGLEJELEV
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEJELEV = "urn:iso:std:iso:11073:10101#147312";
+
+    /// <summary>
     /// Literal for code: MDCECGMAGJ20VECT
     /// </summary>
     public const string LiteralMDCECGMAGJ20VECT = "147316";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGMAGJ20VECT
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGJ20VECT = "urn:iso:std:iso:11073:10101#147316";
 
     /// <summary>
     /// Literal for code: MDCECGANGLEJ20AZIM
@@ -10387,9 +11757,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGANGLEJ20AZIM = "147320";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGANGLEJ20AZIM
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEJ20AZIM = "urn:iso:std:iso:11073:10101#147320";
+
+    /// <summary>
     /// Literal for code: MDCECGANGLEJ20ELEV
     /// </summary>
     public const string LiteralMDCECGANGLEJ20ELEV = "147324";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGANGLEJ20ELEV
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEJ20ELEV = "urn:iso:std:iso:11073:10101#147324";
 
     /// <summary>
     /// Literal for code: MDCECGMAGJ40VECT
@@ -10397,9 +11777,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGMAGJ40VECT = "147328";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGMAGJ40VECT
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGJ40VECT = "urn:iso:std:iso:11073:10101#147328";
+
+    /// <summary>
     /// Literal for code: MDCECGANGLEJ40AZIM
     /// </summary>
     public const string LiteralMDCECGANGLEJ40AZIM = "147332";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGANGLEJ40AZIM
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEJ40AZIM = "urn:iso:std:iso:11073:10101#147332";
 
     /// <summary>
     /// Literal for code: MDCECGANGLEJ40ELEV
@@ -10407,9 +11797,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGANGLEJ40ELEV = "147336";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGANGLEJ40ELEV
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEJ40ELEV = "urn:iso:std:iso:11073:10101#147336";
+
+    /// <summary>
     /// Literal for code: MDCECGMAGJ60VECT
     /// </summary>
     public const string LiteralMDCECGMAGJ60VECT = "147340";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGMAGJ60VECT
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGJ60VECT = "urn:iso:std:iso:11073:10101#147340";
 
     /// <summary>
     /// Literal for code: MDCECGANGLEJ60AZIM
@@ -10417,9 +11817,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGANGLEJ60AZIM = "147344";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGANGLEJ60AZIM
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEJ60AZIM = "urn:iso:std:iso:11073:10101#147344";
+
+    /// <summary>
     /// Literal for code: MDCECGANGLEJ60ELEV
     /// </summary>
     public const string LiteralMDCECGANGLEJ60ELEV = "147348";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGANGLEJ60ELEV
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEJ60ELEV = "urn:iso:std:iso:11073:10101#147348";
 
     /// <summary>
     /// Literal for code: MDCECGMAGJ80VECT
@@ -10427,9 +11837,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGMAGJ80VECT = "147352";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGMAGJ80VECT
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGJ80VECT = "urn:iso:std:iso:11073:10101#147352";
+
+    /// <summary>
     /// Literal for code: MDCECGANGLEJ80AZIM
     /// </summary>
     public const string LiteralMDCECGANGLEJ80AZIM = "147356";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGANGLEJ80AZIM
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEJ80AZIM = "urn:iso:std:iso:11073:10101#147356";
 
     /// <summary>
     /// Literal for code: MDCECGANGLEJ80ELEV
@@ -10437,9 +11857,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGANGLEJ80ELEV = "147360";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGANGLEJ80ELEV
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEJ80ELEV = "urn:iso:std:iso:11073:10101#147360";
+
+    /// <summary>
     /// Literal for code: MDCECGMAGJxxVECT
     /// </summary>
     public const string LiteralMDCECGMAGJxxVECT = "147364";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGMAGJxxVECT
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGJxxVECT = "urn:iso:std:iso:11073:10101#147364";
 
     /// <summary>
     /// Literal for code: MDCECGANGLEJxxAZIM
@@ -10447,9 +11877,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGANGLEJxxAZIM = "147368";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGANGLEJxxAZIM
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEJxxAZIM = "urn:iso:std:iso:11073:10101#147368";
+
+    /// <summary>
     /// Literal for code: MDCECGANGLEJxxELEV
     /// </summary>
     public const string LiteralMDCECGANGLEJxxELEV = "147372";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGANGLEJxxELEV
+    /// </summary>
+    public const string LiteralNONEMDCECGANGLEJxxELEV = "urn:iso:std:iso:11073:10101#147372";
 
     /// <summary>
     /// Literal for code: MDCECGTIMESTJxx
@@ -10457,9 +11897,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTIMESTJxx = "147376";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTIMESTJxx
+    /// </summary>
+    public const string LiteralNONEMDCECGTIMESTJxx = "urn:iso:std:iso:11073:10101#147376";
+
+    /// <summary>
     /// Literal for code: MDCECGMAGPVECTFRONT
     /// </summary>
     public const string LiteralMDCECGMAGPVECTFRONT = "147380";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGMAGPVECTFRONT
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGPVECTFRONT = "urn:iso:std:iso:11073:10101#147380";
 
     /// <summary>
     /// Literal for code: MDCECGMAGPVECTHORIZ
@@ -10467,9 +11917,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGMAGPVECTHORIZ = "147384";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGMAGPVECTHORIZ
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGPVECTHORIZ = "urn:iso:std:iso:11073:10101#147384";
+
+    /// <summary>
     /// Literal for code: MDCECGMAGPVECTSAGI
     /// </summary>
     public const string LiteralMDCECGMAGPVECTSAGI = "147388";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGMAGPVECTSAGI
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGPVECTSAGI = "urn:iso:std:iso:11073:10101#147388";
 
     /// <summary>
     /// Literal for code: MDCECGMAGQRSVECTFRONT
@@ -10477,9 +11937,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGMAGQRSVECTFRONT = "147392";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGMAGQRSVECTFRONT
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGQRSVECTFRONT = "urn:iso:std:iso:11073:10101#147392";
+
+    /// <summary>
     /// Literal for code: MDCECGMAGQRSVECTHORIZ
     /// </summary>
     public const string LiteralMDCECGMAGQRSVECTHORIZ = "147396";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGMAGQRSVECTHORIZ
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGQRSVECTHORIZ = "urn:iso:std:iso:11073:10101#147396";
 
     /// <summary>
     /// Literal for code: MDCECGMAGQRSVECTSAGI
@@ -10487,9 +11957,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGMAGQRSVECTSAGI = "147400";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGMAGQRSVECTSAGI
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGQRSVECTSAGI = "urn:iso:std:iso:11073:10101#147400";
+
+    /// <summary>
     /// Literal for code: MDCECGMAGTVECTFRONT
     /// </summary>
     public const string LiteralMDCECGMAGTVECTFRONT = "147404";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGMAGTVECTFRONT
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGTVECTFRONT = "urn:iso:std:iso:11073:10101#147404";
 
     /// <summary>
     /// Literal for code: MDCECGMAGTVECTHORIZ
@@ -10497,9 +11977,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGMAGTVECTHORIZ = "147408";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGMAGTVECTHORIZ
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGTVECTHORIZ = "urn:iso:std:iso:11073:10101#147408";
+
+    /// <summary>
     /// Literal for code: MDCECGMAGTVECTSAGI
     /// </summary>
     public const string LiteralMDCECGMAGTVECTSAGI = "147412";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGMAGTVECTSAGI
+    /// </summary>
+    public const string LiteralNONEMDCECGMAGTVECTSAGI = "urn:iso:std:iso:11073:10101#147412";
 
     /// <summary>
     /// Literal for code: MDCECGPATT
@@ -10507,9 +11997,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGPATT = "147456";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGPATT
+    /// </summary>
+    public const string LiteralNONEMDCECGPATT = "urn:iso:std:iso:11073:10101#147456";
+
+    /// <summary>
     /// Literal for code: MDCECGLEARNRHY
     /// </summary>
     public const string LiteralMDCECGLEARNRHY = "147458";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEARNRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGLEARNRHY = "urn:iso:std:iso:11073:10101#147458";
 
     /// <summary>
     /// Literal for code: MDCECGASYRHY
@@ -10517,9 +12017,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGASYRHY = "147459";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGASYRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGASYRHY = "urn:iso:std:iso:11073:10101#147459";
+
+    /// <summary>
     /// Literal for code: MDCECGATRPACEDRHYCAPT
     /// </summary>
     public const string LiteralMDCECGATRPACEDRHYCAPT = "147460";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGATRPACEDRHYCAPT
+    /// </summary>
+    public const string LiteralNONEMDCECGATRPACEDRHYCAPT = "urn:iso:std:iso:11073:10101#147460";
 
     /// <summary>
     /// Literal for code: MDCECGIDIOVRHY
@@ -10527,9 +12037,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGIDIOVRHY = "147461";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGIDIOVRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGIDIOVRHY = "urn:iso:std:iso:11073:10101#147461";
+
+    /// <summary>
     /// Literal for code: MDCECGIDIOVRHYACCEL
     /// </summary>
     public const string LiteralMDCECGIDIOVRHYACCEL = "147462";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGIDIOVRHYACCEL
+    /// </summary>
+    public const string LiteralNONEMDCECGIDIOVRHYACCEL = "urn:iso:std:iso:11073:10101#147462";
 
     /// <summary>
     /// Literal for code: MDCECGJUNCRHY
@@ -10537,9 +12057,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGJUNCRHY = "147463";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGJUNCRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGJUNCRHY = "urn:iso:std:iso:11073:10101#147463";
+
+    /// <summary>
     /// Literal for code: MDCECGJUNCRHYACCEL
     /// </summary>
     public const string LiteralMDCECGJUNCRHYACCEL = "147464";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGJUNCRHYACCEL
+    /// </summary>
+    public const string LiteralNONEMDCECGJUNCRHYACCEL = "urn:iso:std:iso:11073:10101#147464";
 
     /// <summary>
     /// Literal for code: MDCECGPACEDRHY
@@ -10547,9 +12077,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGPACEDRHY = "147465";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGPACEDRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGPACEDRHY = "urn:iso:std:iso:11073:10101#147465";
+
+    /// <summary>
     /// Literal for code: MDCECGRHY
     /// </summary>
     public const string LiteralMDCECGRHY = "147466";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGRHY = "urn:iso:std:iso:11073:10101#147466";
 
     /// <summary>
     /// Literal for code: MDCECGRHYABSENT
@@ -10557,9 +12097,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGRHYABSENT = "147467";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGRHYABSENT
+    /// </summary>
+    public const string LiteralNONEMDCECGRHYABSENT = "urn:iso:std:iso:11073:10101#147467";
+
+    /// <summary>
     /// Literal for code: MDCECGRHYECT
     /// </summary>
     public const string LiteralMDCECGRHYECT = "147468";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGRHYECT
+    /// </summary>
+    public const string LiteralNONEMDCECGRHYECT = "urn:iso:std:iso:11073:10101#147468";
 
     /// <summary>
     /// Literal for code: MDCECGRHYIRREG
@@ -10567,9 +12117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGRHYIRREG = "147469";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGRHYIRREG
+    /// </summary>
+    public const string LiteralNONEMDCECGRHYIRREG = "urn:iso:std:iso:11073:10101#147469";
+
+    /// <summary>
     /// Literal for code: MDCECGRHYREG
     /// </summary>
     public const string LiteralMDCECGRHYREG = "147470";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGRHYREG
+    /// </summary>
+    public const string LiteralNONEMDCECGRHYREG = "urn:iso:std:iso:11073:10101#147470";
 
     /// <summary>
     /// Literal for code: MDCECGRHYSERIOUS
@@ -10577,9 +12137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGRHYSERIOUS = "147471";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGRHYSERIOUS
+    /// </summary>
+    public const string LiteralNONEMDCECGRHYSERIOUS = "urn:iso:std:iso:11073:10101#147471";
+
+    /// <summary>
     /// Literal for code: MDCECGRHYUNK
     /// </summary>
     public const string LiteralMDCECGRHYUNK = "147472";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGRHYUNK
+    /// </summary>
+    public const string LiteralNONEMDCECGRHYUNK = "urn:iso:std:iso:11073:10101#147472";
 
     /// <summary>
     /// Literal for code: MDCECGRHYUNANALYZEABLE
@@ -10587,9 +12157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGRHYUNANALYZEABLE = "147473";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGRHYUNANALYZEABLE
+    /// </summary>
+    public const string LiteralNONEMDCECGRHYUNANALYZEABLE = "urn:iso:std:iso:11073:10101#147473";
+
+    /// <summary>
     /// Literal for code: MDCECGSINUSRHY
     /// </summary>
     public const string LiteralMDCECGSINUSRHY = "147474";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGSINUSRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGSINUSRHY = "urn:iso:std:iso:11073:10101#147474";
 
     /// <summary>
     /// Literal for code: MDCECGSINUSBRADYRHY
@@ -10597,9 +12177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGSINUSBRADYRHY = "147475";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGSINUSBRADYRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGSINUSBRADYRHY = "urn:iso:std:iso:11073:10101#147475";
+
+    /// <summary>
     /// Literal for code: MDCECGSINUSTACHYRHY
     /// </summary>
     public const string LiteralMDCECGSINUSTACHYRHY = "147476";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGSINUSTACHYRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGSINUSTACHYRHY = "urn:iso:std:iso:11073:10101#147476";
 
     /// <summary>
     /// Literal for code: MDCECGSVRHY
@@ -10607,9 +12197,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGSVRHY = "147477";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGSVRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGSVRHY = "urn:iso:std:iso:11073:10101#147477";
+
+    /// <summary>
     /// Literal for code: MDCECGSVTACHYRHY
     /// </summary>
     public const string LiteralMDCECGSVTACHYRHY = "147478";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGSVTACHYRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGSVTACHYRHY = "urn:iso:std:iso:11073:10101#147478";
 
     /// <summary>
     /// Literal for code: MDCECGVBIGEMRHY
@@ -10617,9 +12217,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVBIGEMRHY = "147479";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVBIGEMRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGVBIGEMRHY = "urn:iso:std:iso:11073:10101#147479";
+
+    /// <summary>
     /// Literal for code: MDCECGVRHY
     /// </summary>
     public const string LiteralMDCECGVRHY = "147480";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGVRHY = "urn:iso:std:iso:11073:10101#147480";
 
     /// <summary>
     /// Literal for code: MDCECGVRHYACCEL
@@ -10627,9 +12237,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVRHYACCEL = "147481";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVRHYACCEL
+    /// </summary>
+    public const string LiteralNONEMDCECGVRHYACCEL = "urn:iso:std:iso:11073:10101#147481";
+
+    /// <summary>
     /// Literal for code: MDCECGVTACHYRHY
     /// </summary>
     public const string LiteralMDCECGVTACHYRHY = "147482";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVTACHYRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGVTACHYRHY = "urn:iso:std:iso:11073:10101#147482";
 
     /// <summary>
     /// Literal for code: MDCECGVTACHYRHYSUST
@@ -10637,9 +12257,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVTACHYRHYSUST = "147483";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVTACHYRHYSUST
+    /// </summary>
+    public const string LiteralNONEMDCECGVTACHYRHYSUST = "urn:iso:std:iso:11073:10101#147483";
+
+    /// <summary>
     /// Literal for code: MDCECGVTRIGEMRHY
     /// </summary>
     public const string LiteralMDCECGVTRIGEMRHY = "147484";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVTRIGEMRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGVTRIGEMRHY = "urn:iso:std:iso:11073:10101#147484";
 
     /// <summary>
     /// Literal for code: MDCECGSVBRADYRHY
@@ -10647,9 +12277,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGSVBRADYRHY = "147485";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGSVBRADYRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGSVBRADYRHY = "urn:iso:std:iso:11073:10101#147485";
+
+    /// <summary>
     /// Literal for code: MDCECGVFIBRHY
     /// </summary>
     public const string LiteralMDCECGVFIBRHY = "147486";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVFIBRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGVFIBRHY = "urn:iso:std:iso:11073:10101#147486";
 
     /// <summary>
     /// Literal for code: MDCECGVPCRUNRHY
@@ -10657,9 +12297,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVPCRUNRHY = "147487";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVPCRUNRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCRUNRHY = "urn:iso:std:iso:11073:10101#147487";
+
+    /// <summary>
     /// Literal for code: MDCECGVFIBTACHYRHY
     /// </summary>
     public const string LiteralMDCECGVFIBTACHYRHY = "147488";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVFIBTACHYRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGVFIBTACHYRHY = "urn:iso:std:iso:11073:10101#147488";
 
     /// <summary>
     /// Literal for code: MDCECGBBRHYINTERMIT
@@ -10667,9 +12317,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGBBRHYINTERMIT = "147489";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGBBRHYINTERMIT
+    /// </summary>
+    public const string LiteralNONEMDCECGBBRHYINTERMIT = "urn:iso:std:iso:11073:10101#147489";
+
+    /// <summary>
     /// Literal for code: MDCECGJUNCESCRHY
     /// </summary>
     public const string LiteralMDCECGJUNCESCRHY = "147490";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGJUNCESCRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGJUNCESCRHY = "urn:iso:std:iso:11073:10101#147490";
 
     /// <summary>
     /// Literal for code: MDCECGRHYNOS
@@ -10677,9 +12337,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGRHYNOS = "147519";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGRHYNOS
+    /// </summary>
+    public const string LiteralNONEMDCECGRHYNOS = "urn:iso:std:iso:11073:10101#147519";
+
+    /// <summary>
     /// Literal for code: MDCECGBRADY
     /// </summary>
     public const string LiteralMDCECGBRADY = "147520";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGBRADY
+    /// </summary>
+    public const string LiteralNONEMDCECGBRADY = "urn:iso:std:iso:11073:10101#147520";
 
     /// <summary>
     /// Literal for code: MDCECGARTIFACTANNOT
@@ -10687,9 +12357,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGARTIFACTANNOT = "147527";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGARTIFACTANNOT
+    /// </summary>
+    public const string LiteralNONEMDCECGARTIFACTANNOT = "urn:iso:std:iso:11073:10101#147527";
+
+    /// <summary>
     /// Literal for code: MDCECGASYSTOLE
     /// </summary>
     public const string LiteralMDCECGASYSTOLE = "147528";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGASYSTOLE
+    /// </summary>
+    public const string LiteralNONEMDCECGASYSTOLE = "urn:iso:std:iso:11073:10101#147528";
 
     /// <summary>
     /// Literal for code: MDCECGATRPACEDBEAT
@@ -10697,9 +12377,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGATRPACEDBEAT = "147536";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGATRPACEDBEAT
+    /// </summary>
+    public const string LiteralNONEMDCECGATRPACEDBEAT = "urn:iso:std:iso:11073:10101#147536";
+
+    /// <summary>
     /// Literal for code: MDCECGATRPACEDBEATCNT
     /// </summary>
     public const string LiteralMDCECGATRPACEDBEATCNT = "147537";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGATRPACEDBEATCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGATRPACEDBEATCNT = "urn:iso:std:iso:11073:10101#147537";
 
     /// <summary>
     /// Literal for code: MDCECGATRPACEDBEATANNOT
@@ -10707,9 +12397,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGATRPACEDBEATANNOT = "147543";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGATRPACEDBEATANNOT
+    /// </summary>
+    public const string LiteralNONEMDCECGATRPACEDBEATANNOT = "urn:iso:std:iso:11073:10101#147543";
+
+    /// <summary>
     /// Literal for code: MDCECGBEATMISSED
     /// </summary>
     public const string LiteralMDCECGBEATMISSED = "147544";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGBEATMISSED
+    /// </summary>
+    public const string LiteralNONEMDCECGBEATMISSED = "urn:iso:std:iso:11073:10101#147544";
 
     /// <summary>
     /// Literal for code: MDCECGBEATMISSEDCNT
@@ -10717,9 +12417,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGBEATMISSEDCNT = "147545";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGBEATMISSEDCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGBEATMISSEDCNT = "urn:iso:std:iso:11073:10101#147545";
+
+    /// <summary>
     /// Literal for code: MDCECGBEATMISSEDANNOT
     /// </summary>
     public const string LiteralMDCECGBEATMISSEDANNOT = "147551";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGBEATMISSEDANNOT
+    /// </summary>
+    public const string LiteralNONEMDCECGBEATMISSEDANNOT = "urn:iso:std:iso:11073:10101#147551";
 
     /// <summary>
     /// Literal for code: MDCECGBIGEM
@@ -10727,9 +12437,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGBIGEM = "147552";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGBIGEM
+    /// </summary>
+    public const string LiteralNONEMDCECGBIGEM = "urn:iso:std:iso:11073:10101#147552";
+
+    /// <summary>
     /// Literal for code: MDCECGARTIFACT
     /// </summary>
     public const string LiteralMDCECGARTIFACT = "147560";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGARTIFACT
+    /// </summary>
+    public const string LiteralNONEMDCECGARTIFACT = "urn:iso:std:iso:11073:10101#147560";
 
     /// <summary>
     /// Literal for code: MDCECGBRADYEXTREME
@@ -10737,9 +12457,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGBRADYEXTREME = "147568";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGBRADYEXTREME
+    /// </summary>
+    public const string LiteralNONEMDCECGBRADYEXTREME = "urn:iso:std:iso:11073:10101#147568";
+
+    /// <summary>
     /// Literal for code: MDCECGBRADYSUST
     /// </summary>
     public const string LiteralMDCECGBRADYSUST = "147576";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGBRADYSUST
+    /// </summary>
+    public const string LiteralNONEMDCECGBRADYSUST = "urn:iso:std:iso:11073:10101#147576";
 
     /// <summary>
     /// Literal for code: MDCECGDUALPACEDBEAT
@@ -10747,9 +12477,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGDUALPACEDBEAT = "147584";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGDUALPACEDBEAT
+    /// </summary>
+    public const string LiteralNONEMDCECGDUALPACEDBEAT = "urn:iso:std:iso:11073:10101#147584";
+
+    /// <summary>
     /// Literal for code: MDCECGDUALPACEDBEATCNT
     /// </summary>
     public const string LiteralMDCECGDUALPACEDBEATCNT = "147585";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGDUALPACEDBEATCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGDUALPACEDBEATCNT = "urn:iso:std:iso:11073:10101#147585";
 
     /// <summary>
     /// Literal for code: MDCECGDUALPACEDBEATANNOT
@@ -10757,9 +12497,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGDUALPACEDBEATANNOT = "147591";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGDUALPACEDBEATANNOT
+    /// </summary>
+    public const string LiteralNONEMDCECGDUALPACEDBEATANNOT = "urn:iso:std:iso:11073:10101#147591";
+
+    /// <summary>
     /// Literal for code: MDCECGECT
     /// </summary>
     public const string LiteralMDCECGECT = "147592";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGECT
+    /// </summary>
+    public const string LiteralNONEMDCECGECT = "urn:iso:std:iso:11073:10101#147592";
 
     /// <summary>
     /// Literal for code: MDCECGECTCNT
@@ -10767,9 +12517,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGECTCNT = "147593";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGECTCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGECTCNT = "urn:iso:std:iso:11073:10101#147593";
+
+    /// <summary>
     /// Literal for code: MDCECGFIB
     /// </summary>
     public const string LiteralMDCECGFIB = "147600";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGFIB
+    /// </summary>
+    public const string LiteralNONEMDCECGFIB = "urn:iso:std:iso:11073:10101#147600";
 
     /// <summary>
     /// Literal for code: MDCECGNOECTBEAT
@@ -10777,9 +12537,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGNOECTBEAT = "147608";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGNOECTBEAT
+    /// </summary>
+    public const string LiteralNONEMDCECGNOECTBEAT = "urn:iso:std:iso:11073:10101#147608";
+
+    /// <summary>
     /// Literal for code: MDCECGPC
     /// </summary>
     public const string LiteralMDCECGPC = "147616";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGPC
+    /// </summary>
+    public const string LiteralNONEMDCECGPC = "urn:iso:std:iso:11073:10101#147616";
 
     /// <summary>
     /// Literal for code: MDCECGPACEDBEAT
@@ -10787,9 +12557,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGPACEDBEAT = "147624";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGPACEDBEAT
+    /// </summary>
+    public const string LiteralNONEMDCECGPACEDBEAT = "urn:iso:std:iso:11073:10101#147624";
+
+    /// <summary>
     /// Literal for code: MDCECGPACEDBEATCNT
     /// </summary>
     public const string LiteralMDCECGPACEDBEATCNT = "147625";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGPACEDBEATCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGPACEDBEATCNT = "urn:iso:std:iso:11073:10101#147625";
 
     /// <summary>
     /// Literal for code: MDCECGPACEDBEATRATE
@@ -10797,9 +12577,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGPACEDBEATRATE = "147626";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGPACEDBEATRATE
+    /// </summary>
+    public const string LiteralNONEMDCECGPACEDBEATRATE = "urn:iso:std:iso:11073:10101#147626";
+
+    /// <summary>
     /// Literal for code: MDCECGPACEDBEATRATEMAX
     /// </summary>
     public const string LiteralMDCECGPACEDBEATRATEMAX = "147627";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGPACEDBEATRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCECGPACEDBEATRATEMAX = "urn:iso:std:iso:11073:10101#147627";
 
     /// <summary>
     /// Literal for code: MDCECGPACEDBEATRATEMIN
@@ -10807,9 +12597,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGPACEDBEATRATEMIN = "147628";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGPACEDBEATRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCECGPACEDBEATRATEMIN = "urn:iso:std:iso:11073:10101#147628";
+
+    /// <summary>
     /// Literal for code: MDCECGPACEDBEATANNOT
     /// </summary>
     public const string LiteralMDCECGPACEDBEATANNOT = "147631";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGPACEDBEATANNOT
+    /// </summary>
+    public const string LiteralNONEMDCECGPACEDBEATANNOT = "urn:iso:std:iso:11073:10101#147631";
 
     /// <summary>
     /// Literal for code: MDCECGPACINGEVENT
@@ -10817,9 +12617,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGPACINGEVENT = "147632";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGPACINGEVENT
+    /// </summary>
+    public const string LiteralNONEMDCECGPACINGEVENT = "urn:iso:std:iso:11073:10101#147632";
+
+    /// <summary>
     /// Literal for code: MDCECGPACINGCAPT
     /// </summary>
     public const string LiteralMDCECGPACINGCAPT = "147640";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGPACINGCAPT
+    /// </summary>
+    public const string LiteralNONEMDCECGPACINGCAPT = "urn:iso:std:iso:11073:10101#147640";
 
     /// <summary>
     /// Literal for code: MDCECGPACINGNONCAPT
@@ -10827,9 +12637,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGPACINGNONCAPT = "147648";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGPACINGNONCAPT
+    /// </summary>
+    public const string LiteralNONEMDCECGPACINGNONCAPT = "urn:iso:std:iso:11073:10101#147648";
+
+    /// <summary>
     /// Literal for code: MDCECGPACINGNONCAPTCNT
     /// </summary>
     public const string LiteralMDCECGPACINGNONCAPTCNT = "147649";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGPACINGNONCAPTCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGPACINGNONCAPTCNT = "urn:iso:std:iso:11073:10101#147649";
 
     /// <summary>
     /// Literal for code: MDCECGPACINGNOTFOUND
@@ -10837,9 +12657,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGPACINGNOTFOUND = "147656";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGPACINGNOTFOUND
+    /// </summary>
+    public const string LiteralNONEMDCECGPACINGNOTFOUND = "urn:iso:std:iso:11073:10101#147656";
+
+    /// <summary>
     /// Literal for code: MDCECGPACINGRUN
     /// </summary>
     public const string LiteralMDCECGPACINGRUN = "147664";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGPACINGRUN
+    /// </summary>
+    public const string LiteralNONEMDCECGPACINGRUN = "urn:iso:std:iso:11073:10101#147664";
 
     /// <summary>
     /// Literal for code: MDCECGPACINGRUNCNT
@@ -10847,9 +12677,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGPACINGRUNCNT = "147665";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGPACINGRUNCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGPACINGRUNCNT = "urn:iso:std:iso:11073:10101#147665";
+
+    /// <summary>
     /// Literal for code: MDCECGPAUSE
     /// </summary>
     public const string LiteralMDCECGPAUSE = "147672";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGPAUSE
+    /// </summary>
+    public const string LiteralNONEMDCECGPAUSE = "urn:iso:std:iso:11073:10101#147672";
 
     /// <summary>
     /// Literal for code: MDCECGQUADRIGEM
@@ -10857,9 +12697,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGQUADRIGEM = "147680";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGQUADRIGEM
+    /// </summary>
+    public const string LiteralNONEMDCECGQUADRIGEM = "urn:iso:std:iso:11073:10101#147680";
+
+    /// <summary>
     /// Literal for code: MDCECGTACHY
     /// </summary>
     public const string LiteralMDCECGTACHY = "147688";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTACHY
+    /// </summary>
+    public const string LiteralNONEMDCECGTACHY = "urn:iso:std:iso:11073:10101#147688";
 
     /// <summary>
     /// Literal for code: MDCECGTACHYEXTREME
@@ -10867,9 +12717,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTACHYEXTREME = "147696";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTACHYEXTREME
+    /// </summary>
+    public const string LiteralNONEMDCECGTACHYEXTREME = "urn:iso:std:iso:11073:10101#147696";
+
+    /// <summary>
     /// Literal for code: MDCECGTACHYUNSPEC
     /// </summary>
     public const string LiteralMDCECGTACHYUNSPEC = "147704";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTACHYUNSPEC
+    /// </summary>
+    public const string LiteralNONEMDCECGTACHYUNSPEC = "urn:iso:std:iso:11073:10101#147704";
 
     /// <summary>
     /// Literal for code: MDCECGATRFIB
@@ -10877,9 +12737,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGATRFIB = "147720";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGATRFIB
+    /// </summary>
+    public const string LiteralNONEMDCECGATRFIB = "urn:iso:std:iso:11073:10101#147720";
+
+    /// <summary>
     /// Literal for code: MDCECGATRFLUT
     /// </summary>
     public const string LiteralMDCECGATRFLUT = "147728";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGATRFLUT
+    /// </summary>
+    public const string LiteralNONEMDCECGATRFLUT = "urn:iso:std:iso:11073:10101#147728";
 
     /// <summary>
     /// Literal for code: MDCECGATRPC
@@ -10887,9 +12757,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGATRPC = "147736";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGATRPC
+    /// </summary>
+    public const string LiteralNONEMDCECGATRPC = "urn:iso:std:iso:11073:10101#147736";
+
+    /// <summary>
     /// Literal for code: MDCECGATRPACING
     /// </summary>
     public const string LiteralMDCECGATRPACING = "147744";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGATRPACING
+    /// </summary>
+    public const string LiteralNONEMDCECGATRPACING = "urn:iso:std:iso:11073:10101#147744";
 
     /// <summary>
     /// Literal for code: MDCECGATRSTAND
@@ -10897,9 +12777,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGATRSTAND = "147752";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGATRSTAND
+    /// </summary>
+    public const string LiteralNONEMDCECGATRSTAND = "urn:iso:std:iso:11073:10101#147752";
+
+    /// <summary>
     /// Literal for code: MDCECGATRTACHY
     /// </summary>
     public const string LiteralMDCECGATRTACHY = "147760";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGATRTACHY
+    /// </summary>
+    public const string LiteralNONEMDCECGATRTACHY = "urn:iso:std:iso:11073:10101#147760";
 
     /// <summary>
     /// Literal for code: MDCECGATRTACHYMULTIFOCAL
@@ -10907,9 +12797,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGATRTACHYMULTIFOCAL = "147768";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGATRTACHYMULTIFOCAL
+    /// </summary>
+    public const string LiteralNONEMDCECGATRTACHYMULTIFOCAL = "urn:iso:std:iso:11073:10101#147768";
+
+    /// <summary>
     /// Literal for code: MDCECGATRTACHYPAROX
     /// </summary>
     public const string LiteralMDCECGATRTACHYPAROX = "147776";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGATRTACHYPAROX
+    /// </summary>
+    public const string LiteralNONEMDCECGATRTACHYPAROX = "urn:iso:std:iso:11073:10101#147776";
 
     /// <summary>
     /// Literal for code: MDCECGAVDISSOC
@@ -10917,9 +12817,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAVDISSOC = "147784";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAVDISSOC
+    /// </summary>
+    public const string LiteralNONEMDCECGAVDISSOC = "urn:iso:std:iso:11073:10101#147784";
+
+    /// <summary>
     /// Literal for code: MDCECGAVPACINGSEQ
     /// </summary>
     public const string LiteralMDCECGAVPACINGSEQ = "147792";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAVPACINGSEQ
+    /// </summary>
+    public const string LiteralNONEMDCECGAVPACINGSEQ = "urn:iso:std:iso:11073:10101#147792";
 
     /// <summary>
     /// Literal for code: MDCECGAVHEARTBLKDEG1
@@ -10927,9 +12837,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAVHEARTBLKDEG1 = "147800";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAVHEARTBLKDEG1
+    /// </summary>
+    public const string LiteralNONEMDCECGAVHEARTBLKDEG1 = "urn:iso:std:iso:11073:10101#147800";
+
+    /// <summary>
     /// Literal for code: MDCECGAVHEARTBLKDEG2
     /// </summary>
     public const string LiteralMDCECGAVHEARTBLKDEG2 = "147808";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAVHEARTBLKDEG2
+    /// </summary>
+    public const string LiteralNONEMDCECGAVHEARTBLKDEG2 = "urn:iso:std:iso:11073:10101#147808";
 
     /// <summary>
     /// Literal for code: MDCECGAVHEARTBLKDEG2I
@@ -10937,9 +12857,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAVHEARTBLKDEG2I = "147816";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAVHEARTBLKDEG2I
+    /// </summary>
+    public const string LiteralNONEMDCECGAVHEARTBLKDEG2I = "urn:iso:std:iso:11073:10101#147816";
+
+    /// <summary>
     /// Literal for code: MDCECGAVHEARTBLKDEG2II
     /// </summary>
     public const string LiteralMDCECGAVHEARTBLKDEG2II = "147824";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAVHEARTBLKDEG2II
+    /// </summary>
+    public const string LiteralNONEMDCECGAVHEARTBLKDEG2II = "urn:iso:std:iso:11073:10101#147824";
 
     /// <summary>
     /// Literal for code: MDCECGBBBLK
@@ -10947,9 +12877,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGBBBLK = "147832";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGBBBLK
+    /// </summary>
+    public const string LiteralNONEMDCECGBBBLK = "urn:iso:std:iso:11073:10101#147832";
+
+    /// <summary>
     /// Literal for code: MDCECGHEART
     /// </summary>
     public const string LiteralMDCECGHEART = "147840";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGHEART
+    /// </summary>
+    public const string LiteralNONEMDCECGHEART = "urn:iso:std:iso:11073:10101#147840";
 
     /// <summary>
     /// Literal for code: MDCECGCARDBEATCNT
@@ -10957,9 +12897,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGCARDBEATCNT = "147841";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGCARDBEATCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGCARDBEATCNT = "urn:iso:std:iso:11073:10101#147841";
+
+    /// <summary>
     /// Literal for code: MDCECGHEARTRATE
     /// </summary>
     public const string LiteralMDCECGHEARTRATE = "147842";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGHEARTRATE
+    /// </summary>
+    public const string LiteralNONEMDCECGHEARTRATE = "urn:iso:std:iso:11073:10101#147842";
 
     /// <summary>
     /// Literal for code: MDCECGHEARTRATEMIN
@@ -10967,9 +12917,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGHEARTRATEMIN = "147844";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGHEARTRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCECGHEARTRATEMIN = "urn:iso:std:iso:11073:10101#147844";
+
+    /// <summary>
     /// Literal for code: MDCECGCARDBEATBTB
     /// </summary>
     public const string LiteralMDCECGCARDBEATBTB = "147848";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGCARDBEATBTB
+    /// </summary>
+    public const string LiteralNONEMDCECGCARDBEATBTB = "urn:iso:std:iso:11073:10101#147848";
 
     /// <summary>
     /// Literal for code: MDCECGCARDBEATRATEBTB
@@ -10977,9 +12937,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGCARDBEATRATEBTB = "147850";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGCARDBEATRATEBTB
+    /// </summary>
+    public const string LiteralNONEMDCECGCARDBEATRATEBTB = "urn:iso:std:iso:11073:10101#147850";
+
+    /// <summary>
     /// Literal for code: MDCECGCARDBEATRATEIRREG
     /// </summary>
     public const string LiteralMDCECGCARDBEATRATEIRREG = "147856";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGCARDBEATRATEIRREG
+    /// </summary>
+    public const string LiteralNONEMDCECGCARDBEATRATEIRREG = "urn:iso:std:iso:11073:10101#147856";
 
     /// <summary>
     /// Literal for code: MDCECGHEARTDYING
@@ -10987,9 +12957,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGHEARTDYING = "147864";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGHEARTDYING
+    /// </summary>
+    public const string LiteralNONEMDCECGHEARTDYING = "urn:iso:std:iso:11073:10101#147864";
+
+    /// <summary>
     /// Literal for code: MDCECGHEARTBLK
     /// </summary>
     public const string LiteralMDCECGHEARTBLK = "147872";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGHEARTBLK
+    /// </summary>
+    public const string LiteralNONEMDCECGHEARTBLK = "urn:iso:std:iso:11073:10101#147872";
 
     /// <summary>
     /// Literal for code: MDCECGHEARTBLKCOMP
@@ -10997,9 +12977,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGHEARTBLKCOMP = "147880";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGHEARTBLKCOMP
+    /// </summary>
+    public const string LiteralNONEMDCECGHEARTBLKCOMP = "urn:iso:std:iso:11073:10101#147880";
+
+    /// <summary>
     /// Literal for code: MDCECGJUNCESCBEATS
     /// </summary>
     public const string LiteralMDCECGJUNCESCBEATS = "147888";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGJUNCESCBEATS
+    /// </summary>
+    public const string LiteralNONEMDCECGJUNCESCBEATS = "urn:iso:std:iso:11073:10101#147888";
 
     /// <summary>
     /// Literal for code: MDCECGJUNCTACHY
@@ -11007,9 +12997,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGJUNCTACHY = "147896";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGJUNCTACHY
+    /// </summary>
+    public const string LiteralNONEMDCECGJUNCTACHY = "urn:iso:std:iso:11073:10101#147896";
+
+    /// <summary>
     /// Literal for code: MDCECGJUNCTACHYPAROX
     /// </summary>
     public const string LiteralMDCECGJUNCTACHYPAROX = "147904";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGJUNCTACHYPAROX
+    /// </summary>
+    public const string LiteralNONEMDCECGJUNCTACHYPAROX = "urn:iso:std:iso:11073:10101#147904";
 
     /// <summary>
     /// Literal for code: MDCECGLAFASCBLK
@@ -11017,9 +13017,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLAFASCBLK = "147912";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLAFASCBLK
+    /// </summary>
+    public const string LiteralNONEMDCECGLAFASCBLK = "urn:iso:std:iso:11073:10101#147912";
+
+    /// <summary>
     /// Literal for code: MDCECGLBBBLK
     /// </summary>
     public const string LiteralMDCECGLBBBLK = "147920";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLBBBLK
+    /// </summary>
+    public const string LiteralNONEMDCECGLBBBLK = "urn:iso:std:iso:11073:10101#147920";
 
     /// <summary>
     /// Literal for code: MDCECGLPFASCBLK
@@ -11027,9 +13037,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLPFASCBLK = "147928";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLPFASCBLK
+    /// </summary>
+    public const string LiteralNONEMDCECGLPFASCBLK = "urn:iso:std:iso:11073:10101#147928";
+
+    /// <summary>
     /// Literal for code: MDCECGPACERNOTPACING
     /// </summary>
     public const string LiteralMDCECGPACERNOTPACING = "147936";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGPACERNOTPACING
+    /// </summary>
+    public const string LiteralNONEMDCECGPACERNOTPACING = "urn:iso:std:iso:11073:10101#147936";
 
     /// <summary>
     /// Literal for code: MDCECGPACERNOTPACINGCNT
@@ -11037,9 +13057,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGPACERNOTPACINGCNT = "147937";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGPACERNOTPACINGCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGPACERNOTPACINGCNT = "urn:iso:std:iso:11073:10101#147937";
+
+    /// <summary>
     /// Literal for code: MDCECGRBBBLK
     /// </summary>
     public const string LiteralMDCECGRBBBLK = "147944";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGRBBBLK
+    /// </summary>
+    public const string LiteralNONEMDCECGRBBBLK = "urn:iso:std:iso:11073:10101#147944";
 
     /// <summary>
     /// Literal for code: MDCECGSINUSBRADY
@@ -11047,9 +13077,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGSINUSBRADY = "147960";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGSINUSBRADY
+    /// </summary>
+    public const string LiteralNONEMDCECGSINUSBRADY = "urn:iso:std:iso:11073:10101#147960";
+
+    /// <summary>
     /// Literal for code: MDCECGSINUSTACHY
     /// </summary>
     public const string LiteralMDCECGSINUSTACHY = "147968";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGSINUSTACHY
+    /// </summary>
+    public const string LiteralNONEMDCECGSINUSTACHY = "urn:iso:std:iso:11073:10101#147968";
 
     /// <summary>
     /// Literal for code: MDCECGSVBEAT
@@ -11057,9 +13097,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGSVBEAT = "147976";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGSVBEAT
+    /// </summary>
+    public const string LiteralNONEMDCECGSVBEAT = "urn:iso:std:iso:11073:10101#147976";
+
+    /// <summary>
     /// Literal for code: MDCECGSVBEATCNT
     /// </summary>
     public const string LiteralMDCECGSVBEATCNT = "147977";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGSVBEATCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGSVBEATCNT = "urn:iso:std:iso:11073:10101#147977";
 
     /// <summary>
     /// Literal for code: MDCECGSVBEATANNOT
@@ -11067,9 +13117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGSVBEATANNOT = "147983";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGSVBEATANNOT
+    /// </summary>
+    public const string LiteralNONEMDCECGSVBEATANNOT = "urn:iso:std:iso:11073:10101#147983";
+
+    /// <summary>
     /// Literal for code: MDCECGSVBRADY
     /// </summary>
     public const string LiteralMDCECGSVBRADY = "147984";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGSVBRADY
+    /// </summary>
+    public const string LiteralNONEMDCECGSVBRADY = "urn:iso:std:iso:11073:10101#147984";
 
     /// <summary>
     /// Literal for code: MDCECGSVECT
@@ -11077,9 +13137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGSVECT = "147992";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGSVECT
+    /// </summary>
+    public const string LiteralNONEMDCECGSVECT = "urn:iso:std:iso:11073:10101#147992";
+
+    /// <summary>
     /// Literal for code: MDCECGSVECTCNT
     /// </summary>
     public const string LiteralMDCECGSVECTCNT = "147993";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGSVECTCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGSVECTCNT = "urn:iso:std:iso:11073:10101#147993";
 
     /// <summary>
     /// Literal for code: MDCECGSVPC
@@ -11087,9 +13157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGSVPC = "148000";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGSVPC
+    /// </summary>
+    public const string LiteralNONEMDCECGSVPC = "urn:iso:std:iso:11073:10101#148000";
+
+    /// <summary>
     /// Literal for code: MDCECGSVPCCNT
     /// </summary>
     public const string LiteralMDCECGSVPCCNT = "148001";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGSVPCCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGSVPCCNT = "urn:iso:std:iso:11073:10101#148001";
 
     /// <summary>
     /// Literal for code: MDCECGSVPCRATE_2
@@ -11097,9 +13177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGSVPCRATE_2 = "148002";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGSVPCRATE_2
+    /// </summary>
+    public const string LiteralNONEMDCECGSVPCRATE_2 = "urn:iso:std:iso:11073:10101#148002";
+
+    /// <summary>
     /// Literal for code: MDCECGSVPCRATEMAX
     /// </summary>
     public const string LiteralMDCECGSVPCRATEMAX = "148003";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGSVPCRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCECGSVPCRATEMAX = "urn:iso:std:iso:11073:10101#148003";
 
     /// <summary>
     /// Literal for code: MDCECGSVPCRATEMIN
@@ -11107,9 +13197,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGSVPCRATEMIN = "148004";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGSVPCRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCECGSVPCRATEMIN = "urn:iso:std:iso:11073:10101#148004";
+
+    /// <summary>
     /// Literal for code: MDCECGSVTACHY
     /// </summary>
     public const string LiteralMDCECGSVTACHY = "148008";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGSVTACHY
+    /// </summary>
+    public const string LiteralNONEMDCECGSVTACHY = "urn:iso:std:iso:11073:10101#148008";
 
     /// <summary>
     /// Literal for code: MDCECGVPARASYS
@@ -11117,9 +13217,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVPARASYS = "148016";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVPARASYS
+    /// </summary>
+    public const string LiteralNONEMDCECGVPARASYS = "urn:iso:std:iso:11073:10101#148016";
+
+    /// <summary>
     /// Literal for code: MDCECGVBIGEM
     /// </summary>
     public const string LiteralMDCECGVBIGEM = "148024";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVBIGEM
+    /// </summary>
+    public const string LiteralNONEMDCECGVBIGEM = "urn:iso:std:iso:11073:10101#148024";
 
     /// <summary>
     /// Literal for code: MDCECGVFIB
@@ -11127,9 +13237,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVFIB = "148032";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVFIB
+    /// </summary>
+    public const string LiteralNONEMDCECGVFIB = "urn:iso:std:iso:11073:10101#148032";
+
+    /// <summary>
     /// Literal for code: MDCECGVFIBTACHY
     /// </summary>
     public const string LiteralMDCECGVFIBTACHY = "148040";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVFIBTACHY
+    /// </summary>
+    public const string LiteralNONEMDCECGVFIBTACHY = "urn:iso:std:iso:11073:10101#148040";
 
     /// <summary>
     /// Literal for code: MDCECGVFLUT
@@ -11137,9 +13257,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVFLUT = "148048";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVFLUT
+    /// </summary>
+    public const string LiteralNONEMDCECGVFLUT = "urn:iso:std:iso:11073:10101#148048";
+
+    /// <summary>
     /// Literal for code: MDCECGVPACEDBEAT
     /// </summary>
     public const string LiteralMDCECGVPACEDBEAT = "148056";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVPACEDBEAT
+    /// </summary>
+    public const string LiteralNONEMDCECGVPACEDBEAT = "urn:iso:std:iso:11073:10101#148056";
 
     /// <summary>
     /// Literal for code: MDCECGVPACEDBEATCNT
@@ -11147,9 +13277,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVPACEDBEATCNT = "148057";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVPACEDBEATCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGVPACEDBEATCNT = "urn:iso:std:iso:11073:10101#148057";
+
+    /// <summary>
     /// Literal for code: MDCECGVPACEDBEATANNOT
     /// </summary>
     public const string LiteralMDCECGVPACEDBEATANNOT = "148063";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVPACEDBEATANNOT
+    /// </summary>
+    public const string LiteralNONEMDCECGVPACEDBEATANNOT = "urn:iso:std:iso:11073:10101#148063";
 
     /// <summary>
     /// Literal for code: MDCECGVPC
@@ -11157,9 +13297,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVPC = "148064";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVPC
+    /// </summary>
+    public const string LiteralNONEMDCECGVPC = "urn:iso:std:iso:11073:10101#148064";
+
+    /// <summary>
     /// Literal for code: MDCECGVPCCNT
     /// </summary>
     public const string LiteralMDCECGVPCCNT = "148065";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVPCCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCCNT = "urn:iso:std:iso:11073:10101#148065";
 
     /// <summary>
     /// Literal for code: MDCECGVPCRATE
@@ -11167,9 +13317,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVPCRATE = "148066";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVPCRATE
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCRATE = "urn:iso:std:iso:11073:10101#148066";
+
+    /// <summary>
     /// Literal for code: MDCECGVPCRATEMAX
     /// </summary>
     public const string LiteralMDCECGVPCRATEMAX = "148067";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVPCRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCRATEMAX = "urn:iso:std:iso:11073:10101#148067";
 
     /// <summary>
     /// Literal for code: MDCECGVPCRATEMIN
@@ -11177,9 +13337,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVPCRATEMIN = "148068";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVPCRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCRATEMIN = "urn:iso:std:iso:11073:10101#148068";
+
+    /// <summary>
     /// Literal for code: MDCECGVPCFREQ
     /// </summary>
     public const string LiteralMDCECGVPCFREQ = "148072";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVPCFREQ
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCFREQ = "urn:iso:std:iso:11073:10101#148072";
 
     /// <summary>
     /// Literal for code: MDCECGVPCINTERP
@@ -11187,9 +13357,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVPCINTERP = "148080";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVPCINTERP
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCINTERP = "urn:iso:std:iso:11073:10101#148080";
+
+    /// <summary>
     /// Literal for code: MDCECGVPCMULTIFOCAL
     /// </summary>
     public const string LiteralMDCECGVPCMULTIFOCAL = "148088";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVPCMULTIFOCAL
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCMULTIFOCAL = "urn:iso:std:iso:11073:10101#148088";
 
     /// <summary>
     /// Literal for code: MDCECGVPCPAIR
@@ -11197,9 +13377,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVPCPAIR = "148096";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVPCPAIR
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCPAIR = "urn:iso:std:iso:11073:10101#148096";
+
+    /// <summary>
     /// Literal for code: MDCECGVPCPAIRCNT
     /// </summary>
     public const string LiteralMDCECGVPCPAIRCNT = "148097";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVPCPAIRCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCPAIRCNT = "urn:iso:std:iso:11073:10101#148097";
 
     /// <summary>
     /// Literal for code: MDCECGSVPCRUN
@@ -11207,9 +13397,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGSVPCRUN = "148104";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGSVPCRUN
+    /// </summary>
+    public const string LiteralNONEMDCECGSVPCRUN = "urn:iso:std:iso:11073:10101#148104";
+
+    /// <summary>
     /// Literal for code: MDCECGSVPCRUNCNT
     /// </summary>
     public const string LiteralMDCECGSVPCRUNCNT = "148105";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGSVPCRUNCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGSVPCRUNCNT = "urn:iso:std:iso:11073:10101#148105";
 
     /// <summary>
     /// Literal for code: MDCECGVPCRUN
@@ -11217,9 +13417,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVPCRUN = "148112";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVPCRUN
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCRUN = "urn:iso:std:iso:11073:10101#148112";
+
+    /// <summary>
     /// Literal for code: MDCECGVPCRUNCNT
     /// </summary>
     public const string LiteralMDCECGVPCRUNCNT = "148113";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVPCRUNCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCRUNCNT = "urn:iso:std:iso:11073:10101#148113";
 
     /// <summary>
     /// Literal for code: MDCECGVPCTRIP
@@ -11227,9 +13437,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVPCTRIP = "148120";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVPCTRIP
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCTRIP = "urn:iso:std:iso:11073:10101#148120";
+
+    /// <summary>
     /// Literal for code: MDCECGVPCRonT
     /// </summary>
     public const string LiteralMDCECGVPCRonT = "148128";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVPCRonT
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCRonT = "urn:iso:std:iso:11073:10101#148128";
 
     /// <summary>
     /// Literal for code: MDCECGVPCRonTCNT
@@ -11237,9 +13457,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVPCRonTCNT = "148129";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVPCRonTCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCRonTCNT = "urn:iso:std:iso:11073:10101#148129";
+
+    /// <summary>
     /// Literal for code: MDCECGVPACING
     /// </summary>
     public const string LiteralMDCECGVPACING = "148136";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVPACING
+    /// </summary>
+    public const string LiteralNONEMDCECGVPACING = "urn:iso:std:iso:11073:10101#148136";
 
     /// <summary>
     /// Literal for code: MDCECGVQUADRIGEM
@@ -11247,9 +13477,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVQUADRIGEM = "148144";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVQUADRIGEM
+    /// </summary>
+    public const string LiteralNONEMDCECGVQUADRIGEM = "urn:iso:std:iso:11073:10101#148144";
+
+    /// <summary>
     /// Literal for code: MDCECGVSTAND
     /// </summary>
     public const string LiteralMDCECGVSTAND = "148152";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVSTAND
+    /// </summary>
+    public const string LiteralNONEMDCECGVSTAND = "urn:iso:std:iso:11073:10101#148152";
 
     /// <summary>
     /// Literal for code: MDCECGVTACHY
@@ -11257,9 +13497,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVTACHY = "148160";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVTACHY
+    /// </summary>
+    public const string LiteralNONEMDCECGVTACHY = "urn:iso:std:iso:11073:10101#148160";
+
+    /// <summary>
     /// Literal for code: MDCECGVTACHYNONSUST
     /// </summary>
     public const string LiteralMDCECGVTACHYNONSUST = "148168";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVTACHYNONSUST
+    /// </summary>
+    public const string LiteralNONEMDCECGVTACHYNONSUST = "urn:iso:std:iso:11073:10101#148168";
 
     /// <summary>
     /// Literal for code: MDCECGVTACHYSUST
@@ -11267,9 +13517,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVTACHYSUST = "148176";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVTACHYSUST
+    /// </summary>
+    public const string LiteralNONEMDCECGVTACHYSUST = "urn:iso:std:iso:11073:10101#148176";
+
+    /// <summary>
     /// Literal for code: MDCECGVTACHYTORSADE
     /// </summary>
     public const string LiteralMDCECGVTACHYTORSADE = "148184";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVTACHYTORSADE
+    /// </summary>
+    public const string LiteralNONEMDCECGVTACHYTORSADE = "urn:iso:std:iso:11073:10101#148184";
 
     /// <summary>
     /// Literal for code: MDCECGVTRIGEM
@@ -11277,9 +13537,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVTRIGEM = "148192";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVTRIGEM
+    /// </summary>
+    public const string LiteralNONEMDCECGVTRIGEM = "urn:iso:std:iso:11073:10101#148192";
+
+    /// <summary>
     /// Literal for code: MDCECGVPCQRUN
     /// </summary>
     public const string LiteralMDCECGVPCQRUN = "148200";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVPCQRUN
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCQRUN = "urn:iso:std:iso:11073:10101#148200";
 
     /// <summary>
     /// Literal for code: MDCECGVPCQRUNCNT
@@ -11287,9 +13557,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVPCQRUNCNT = "148201";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVPCQRUNCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCQRUNCNT = "urn:iso:std:iso:11073:10101#148201";
+
+    /// <summary>
     /// Literal for code: MDCECGSVPCFREQUENT
     /// </summary>
     public const string LiteralMDCECGSVPCFREQUENT = "148208";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGSVPCFREQUENT
+    /// </summary>
+    public const string LiteralNONEMDCECGSVPCFREQUENT = "urn:iso:std:iso:11073:10101#148208";
 
     /// <summary>
     /// Literal for code: MDCECGSVBEATS
@@ -11297,9 +13577,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGSVBEATS = "148216";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGSVBEATS
+    /// </summary>
+    public const string LiteralNONEMDCECGSVBEATS = "urn:iso:std:iso:11073:10101#148216";
+
+    /// <summary>
     /// Literal for code: MDCECGPACEDBEATS
     /// </summary>
     public const string LiteralMDCECGPACEDBEATS = "148224";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGPACEDBEATS
+    /// </summary>
+    public const string LiteralNONEMDCECGPACEDBEATS = "urn:iso:std:iso:11073:10101#148224";
 
     /// <summary>
     /// Literal for code: MDCECGECTABSENT
@@ -11307,9 +13597,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGECTABSENT = "148232";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGECTABSENT
+    /// </summary>
+    public const string LiteralNONEMDCECGECTABSENT = "urn:iso:std:iso:11073:10101#148232";
+
+    /// <summary>
     /// Literal for code: MDCECGBEATUNUSUAL
     /// </summary>
     public const string LiteralMDCECGBEATUNUSUAL = "148240";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGBEATUNUSUAL
+    /// </summary>
+    public const string LiteralNONEMDCECGBEATUNUSUAL = "urn:iso:std:iso:11073:10101#148240";
 
     /// <summary>
     /// Literal for code: MDCECGPACINGARTIFACT
@@ -11317,9 +13617,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGPACINGARTIFACT = "148248";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGPACINGARTIFACT
+    /// </summary>
+    public const string LiteralNONEMDCECGPACINGARTIFACT = "urn:iso:std:iso:11073:10101#148248";
+
+    /// <summary>
     /// Literal for code: MDCECGSVTACHYPAROX
     /// </summary>
     public const string LiteralMDCECGSVTACHYPAROX = "148256";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGSVTACHYPAROX
+    /// </summary>
+    public const string LiteralNONEMDCECGSVTACHYPAROX = "urn:iso:std:iso:11073:10101#148256";
 
     /// <summary>
     /// Literal for code: MDCECGAVHEARTBLKDEG3
@@ -11327,9 +13637,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAVHEARTBLKDEG3 = "148264";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAVHEARTBLKDEG3
+    /// </summary>
+    public const string LiteralNONEMDCECGAVHEARTBLKDEG3 = "urn:iso:std:iso:11073:10101#148264";
+
+    /// <summary>
     /// Literal for code: MDCECGAVHEARTBLKDEG3I
     /// </summary>
     public const string LiteralMDCECGAVHEARTBLKDEG3I = "148272";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGAVHEARTBLKDEG3I
+    /// </summary>
+    public const string LiteralNONEMDCECGAVHEARTBLKDEG3I = "urn:iso:std:iso:11073:10101#148272";
 
     /// <summary>
     /// Literal for code: MDCECGAVHEARTBLKDEG4I
@@ -11337,9 +13657,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGAVHEARTBLKDEG4I = "148280";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGAVHEARTBLKDEG4I
+    /// </summary>
+    public const string LiteralNONEMDCECGAVHEARTBLKDEG4I = "urn:iso:std:iso:11073:10101#148280";
+
+    /// <summary>
     /// Literal for code: MDCECGPSINISATR
     /// </summary>
     public const string LiteralMDCECGPSINISATR = "148296";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGPSINISATR
+    /// </summary>
+    public const string LiteralNONEMDCECGPSINISATR = "urn:iso:std:iso:11073:10101#148296";
 
     /// <summary>
     /// Literal for code: MDCECGPDEXTATR
@@ -11347,9 +13677,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGPDEXTATR = "148304";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGPDEXTATR
+    /// </summary>
+    public const string LiteralNONEMDCECGPDEXTATR = "urn:iso:std:iso:11073:10101#148304";
+
+    /// <summary>
     /// Literal for code: MDCECGATRCONDUCDEFECT
     /// </summary>
     public const string LiteralMDCECGATRCONDUCDEFECT = "148312";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGATRCONDUCDEFECT
+    /// </summary>
+    public const string LiteralNONEMDCECGATRCONDUCDEFECT = "urn:iso:std:iso:11073:10101#148312";
 
     /// <summary>
     /// Literal for code: MDCECGINTRAVENTCONDUCDEFECT
@@ -11357,9 +13697,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGINTRAVENTCONDUCDEFECT = "148320";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGINTRAVENTCONDUCDEFECT
+    /// </summary>
+    public const string LiteralNONEMDCECGINTRAVENTCONDUCDEFECT = "urn:iso:std:iso:11073:10101#148320";
+
+    /// <summary>
     /// Literal for code: MDCECGLBBBLKCOMP
     /// </summary>
     public const string LiteralMDCECGLBBBLKCOMP = "148328";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLBBBLKCOMP
+    /// </summary>
+    public const string LiteralNONEMDCECGLBBBLKCOMP = "urn:iso:std:iso:11073:10101#148328";
 
     /// <summary>
     /// Literal for code: MDCECGLBBBLKINCOMP
@@ -11367,9 +13717,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLBBBLKINCOMP = "148336";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLBBBLKINCOMP
+    /// </summary>
+    public const string LiteralNONEMDCECGLBBBLKINCOMP = "urn:iso:std:iso:11073:10101#148336";
+
+    /// <summary>
     /// Literal for code: MDCECGRBBBLKCOMP
     /// </summary>
     public const string LiteralMDCECGRBBBLKCOMP = "148344";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGRBBBLKCOMP
+    /// </summary>
+    public const string LiteralNONEMDCECGRBBBLKCOMP = "urn:iso:std:iso:11073:10101#148344";
 
     /// <summary>
     /// Literal for code: MDCECGRBBBLKINCOMP
@@ -11377,9 +13737,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGRBBBLKINCOMP = "148352";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGRBBBLKINCOMP
+    /// </summary>
+    public const string LiteralNONEMDCECGRBBBLKINCOMP = "urn:iso:std:iso:11073:10101#148352";
+
+    /// <summary>
     /// Literal for code: MDCECGBLKTRIFASC
     /// </summary>
     public const string LiteralMDCECGBLKTRIFASC = "148360";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGBLKTRIFASC
+    /// </summary>
+    public const string LiteralNONEMDCECGBLKTRIFASC = "urn:iso:std:iso:11073:10101#148360";
 
     /// <summary>
     /// Literal for code: MDCECGBLKANTLHEMI
@@ -11387,9 +13757,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGBLKANTLHEMI = "148368";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGBLKANTLHEMI
+    /// </summary>
+    public const string LiteralNONEMDCECGBLKANTLHEMI = "urn:iso:std:iso:11073:10101#148368";
+
+    /// <summary>
     /// Literal for code: MDCECGWPWA
     /// </summary>
     public const string LiteralMDCECGWPWA = "148376";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGWPWA
+    /// </summary>
+    public const string LiteralNONEMDCECGWPWA = "urn:iso:std:iso:11073:10101#148376";
 
     /// <summary>
     /// Literal for code: MDCECGWPWAPROB
@@ -11397,9 +13777,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGWPWAPROB = "148384";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGWPWAPROB
+    /// </summary>
+    public const string LiteralNONEMDCECGWPWAPROB = "urn:iso:std:iso:11073:10101#148384";
+
+    /// <summary>
     /// Literal for code: MDCECGWPWAPOSSIB
     /// </summary>
     public const string LiteralMDCECGWPWAPOSSIB = "148392";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGWPWAPOSSIB
+    /// </summary>
+    public const string LiteralNONEMDCECGWPWAPOSSIB = "urn:iso:std:iso:11073:10101#148392";
 
     /// <summary>
     /// Literal for code: MDCECGWPWB
@@ -11407,9 +13797,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGWPWB = "148400";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGWPWB
+    /// </summary>
+    public const string LiteralNONEMDCECGWPWB = "urn:iso:std:iso:11073:10101#148400";
+
+    /// <summary>
     /// Literal for code: MDCECGWPWBPROB
     /// </summary>
     public const string LiteralMDCECGWPWBPROB = "148408";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGWPWBPROB
+    /// </summary>
+    public const string LiteralNONEMDCECGWPWBPROB = "urn:iso:std:iso:11073:10101#148408";
 
     /// <summary>
     /// Literal for code: MDCECGWPWBPOSSIB
@@ -11417,9 +13817,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGWPWBPOSSIB = "148416";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGWPWBPOSSIB
+    /// </summary>
+    public const string LiteralNONEMDCECGWPWBPOSSIB = "urn:iso:std:iso:11073:10101#148416";
+
+    /// <summary>
     /// Literal for code: MDCECGWPWUNK
     /// </summary>
     public const string LiteralMDCECGWPWUNK = "148424";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGWPWUNK
+    /// </summary>
+    public const string LiteralNONEMDCECGWPWUNK = "urn:iso:std:iso:11073:10101#148424";
 
     /// <summary>
     /// Literal for code: MDCECGWPWUNKPROB
@@ -11427,9 +13837,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGWPWUNKPROB = "148432";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGWPWUNKPROB
+    /// </summary>
+    public const string LiteralNONEMDCECGWPWUNKPROB = "urn:iso:std:iso:11073:10101#148432";
+
+    /// <summary>
     /// Literal for code: MDCECGWPWUNKPOSSIB
     /// </summary>
     public const string LiteralMDCECGWPWUNKPOSSIB = "148440";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGWPWUNKPOSSIB
+    /// </summary>
+    public const string LiteralNONEMDCECGWPWUNKPOSSIB = "urn:iso:std:iso:11073:10101#148440";
 
     /// <summary>
     /// Literal for code: MDCECGREG
@@ -11437,9 +13857,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGREG = "148464";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGREG
+    /// </summary>
+    public const string LiteralNONEMDCECGREG = "urn:iso:std:iso:11073:10101#148464";
+
+    /// <summary>
     /// Literal for code: MDCECGATRPQPQ100
     /// </summary>
     public const string LiteralMDCECGATRPQPQ100 = "148488";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGATRPQPQ100
+    /// </summary>
+    public const string LiteralNONEMDCECGATRPQPQ100 = "urn:iso:std:iso:11073:10101#148488";
 
     /// <summary>
     /// Literal for code: MDCECGARRHY
@@ -11447,9 +13877,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGARRHY = "148496";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGARRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGARRHY = "urn:iso:std:iso:11073:10101#148496";
+
+    /// <summary>
     /// Literal for code: MDCECGARRHYPQ100
     /// </summary>
     public const string LiteralMDCECGARRHYPQ100 = "148504";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGARRHYPQ100
+    /// </summary>
+    public const string LiteralNONEMDCECGARRHYPQ100 = "urn:iso:std:iso:11073:10101#148504";
 
     /// <summary>
     /// Literal for code: MDCECGSINUSARRHY
@@ -11457,9 +13897,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGSINUSARRHY = "148512";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGSINUSARRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGSINUSARRHY = "urn:iso:std:iso:11073:10101#148512";
+
+    /// <summary>
     /// Literal for code: MDCECGARRHYABS
     /// </summary>
     public const string LiteralMDCECGARRHYABS = "148520";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGARRHYABS
+    /// </summary>
+    public const string LiteralNONEMDCECGARRHYABS = "urn:iso:std:iso:11073:10101#148520";
 
     /// <summary>
     /// Literal for code: MDCECGRESPARRHY
@@ -11467,9 +13917,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGRESPARRHY = "148528";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGRESPARRHY
+    /// </summary>
+    public const string LiteralNONEMDCECGRESPARRHY = "urn:iso:std:iso:11073:10101#148528";
+
+    /// <summary>
     /// Literal for code: MDCECGBIGEMINTERMIT
     /// </summary>
     public const string LiteralMDCECGBIGEMINTERMIT = "148568";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGBIGEMINTERMIT
+    /// </summary>
+    public const string LiteralNONEMDCECGBIGEMINTERMIT = "urn:iso:std:iso:11073:10101#148568";
 
     /// <summary>
     /// Literal for code: MDCECGATRBIGEM
@@ -11477,9 +13937,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGATRBIGEM = "148576";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGATRBIGEM
+    /// </summary>
+    public const string LiteralNONEMDCECGATRBIGEM = "urn:iso:std:iso:11073:10101#148576";
+
+    /// <summary>
     /// Literal for code: MDCECGATRBIGEMINTERMIT
     /// </summary>
     public const string LiteralMDCECGATRBIGEMINTERMIT = "148584";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGATRBIGEMINTERMIT
+    /// </summary>
+    public const string LiteralNONEMDCECGATRBIGEMINTERMIT = "urn:iso:std:iso:11073:10101#148584";
 
     /// <summary>
     /// Literal for code: MDCECGTRIGEM
@@ -11487,9 +13957,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTRIGEM = "148592";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTRIGEM
+    /// </summary>
+    public const string LiteralNONEMDCECGTRIGEM = "urn:iso:std:iso:11073:10101#148592";
+
+    /// <summary>
     /// Literal for code: MDCECGTRIGEMINTERMIT
     /// </summary>
     public const string LiteralMDCECGTRIGEMINTERMIT = "148600";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGTRIGEMINTERMIT
+    /// </summary>
+    public const string LiteralNONEMDCECGTRIGEMINTERMIT = "urn:iso:std:iso:11073:10101#148600";
 
     /// <summary>
     /// Literal for code: MDCECGVENTEXTRASYSTWPAUSE
@@ -11497,9 +13977,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVENTEXTRASYSTWPAUSE = "148608";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVENTEXTRASYSTWPAUSE
+    /// </summary>
+    public const string LiteralNONEMDCECGVENTEXTRASYSTWPAUSE = "urn:iso:std:iso:11073:10101#148608";
+
+    /// <summary>
     /// Literal for code: MDCECGNORMAL
     /// </summary>
     public const string LiteralMDCECGNORMAL = "148624";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGNORMAL
+    /// </summary>
+    public const string LiteralNONEMDCECGNORMAL = "urn:iso:std:iso:11073:10101#148624";
 
     /// <summary>
     /// Literal for code: MDCECGNORMALANNOT
@@ -11507,9 +13997,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGNORMALANNOT = "148631";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGNORMALANNOT
+    /// </summary>
+    public const string LiteralNONEMDCECGNORMALANNOT = "urn:iso:std:iso:11073:10101#148631";
+
+    /// <summary>
     /// Literal for code: MDCECGVENTHYPERTROPHYRIGHT
     /// </summary>
     public const string LiteralMDCECGVENTHYPERTROPHYRIGHT = "148632";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVENTHYPERTROPHYRIGHT
+    /// </summary>
+    public const string LiteralNONEMDCECGVENTHYPERTROPHYRIGHT = "urn:iso:std:iso:11073:10101#148632";
 
     /// <summary>
     /// Literal for code: MDCECGVENTHYPERTROPHYLEFT
@@ -11517,9 +14017,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVENTHYPERTROPHYLEFT = "148640";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVENTHYPERTROPHYLEFT
+    /// </summary>
+    public const string LiteralNONEMDCECGVENTHYPERTROPHYLEFT = "urn:iso:std:iso:11073:10101#148640";
+
+    /// <summary>
     /// Literal for code: MDCECGVENTHYPERTROPHY
     /// </summary>
     public const string LiteralMDCECGVENTHYPERTROPHY = "148648";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVENTHYPERTROPHY
+    /// </summary>
+    public const string LiteralNONEMDCECGVENTHYPERTROPHY = "urn:iso:std:iso:11073:10101#148648";
 
     /// <summary>
     /// Literal for code: MDCECGINFARCTANT
@@ -11527,9 +14037,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGINFARCTANT = "148656";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGINFARCTANT
+    /// </summary>
+    public const string LiteralNONEMDCECGINFARCTANT = "urn:iso:std:iso:11073:10101#148656";
+
+    /// <summary>
     /// Literal for code: MDCECGINFARCTINT
     /// </summary>
     public const string LiteralMDCECGINFARCTINT = "148664";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGINFARCTINT
+    /// </summary>
+    public const string LiteralNONEMDCECGINFARCTINT = "urn:iso:std:iso:11073:10101#148664";
 
     /// <summary>
     /// Literal for code: MDCECGINFARCTMIX
@@ -11537,9 +14057,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGINFARCTMIX = "148672";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGINFARCTMIX
+    /// </summary>
+    public const string LiteralNONEMDCECGINFARCTMIX = "urn:iso:std:iso:11073:10101#148672";
+
+    /// <summary>
     /// Literal for code: MDCECGPATHOL
     /// </summary>
     public const string LiteralMDCECGPATHOL = "148680";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGPATHOL
+    /// </summary>
+    public const string LiteralNONEMDCECGPATHOL = "urn:iso:std:iso:11073:10101#148680";
 
     /// <summary>
     /// Literal for code: MDCECGREPOLARIZDISTURB
@@ -11547,9 +14077,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGREPOLARIZDISTURB = "148688";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGREPOLARIZDISTURB
+    /// </summary>
+    public const string LiteralNONEMDCECGREPOLARIZDISTURB = "urn:iso:std:iso:11073:10101#148688";
+
+    /// <summary>
     /// Literal for code: MDCECGINFARCTHYPER
     /// </summary>
     public const string LiteralMDCECGINFARCTHYPER = "148696";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGINFARCTHYPER
+    /// </summary>
+    public const string LiteralNONEMDCECGINFARCTHYPER = "urn:iso:std:iso:11073:10101#148696";
 
     /// <summary>
     /// Literal for code: MDCECGHYPER
@@ -11557,9 +14097,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGHYPER = "148704";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGHYPER
+    /// </summary>
+    public const string LiteralNONEMDCECGHYPER = "urn:iso:std:iso:11073:10101#148704";
+
+    /// <summary>
     /// Literal for code: MDCECGINFARCT
     /// </summary>
     public const string LiteralMDCECGINFARCT = "148712";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGINFARCT
+    /// </summary>
+    public const string LiteralNONEMDCECGINFARCT = "urn:iso:std:iso:11073:10101#148712";
 
     /// <summary>
     /// Literal for code: MDCECGINFARCTLAT
@@ -11567,9 +14117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGINFARCTLAT = "148720";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGINFARCTLAT
+    /// </summary>
+    public const string LiteralNONEMDCECGINFARCTLAT = "urn:iso:std:iso:11073:10101#148720";
+
+    /// <summary>
     /// Literal for code: MDCECGVPCMULTIFOCAL_2
     /// </summary>
     public const string LiteralMDCECGVPCMULTIFOCAL_2 = "148728";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVPCMULTIFOCAL_2
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCMULTIFOCAL_2 = "urn:iso:std:iso:11073:10101#148728";
 
     /// <summary>
     /// Literal for code: MDCECGVPCMULTIFOCALCNT
@@ -11577,9 +14137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVPCMULTIFOCALCNT = "148729";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVPCMULTIFOCALCNT
+    /// </summary>
+    public const string LiteralNONEMDCECGVPCMULTIFOCALCNT = "urn:iso:std:iso:11073:10101#148729";
+
+    /// <summary>
     /// Literal for code: MDCECGINOP
     /// </summary>
     public const string LiteralMDCECGINOP = "148736";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGINOP
+    /// </summary>
+    public const string LiteralNONEMDCECGINOP = "urn:iso:std:iso:11073:10101#148736";
 
     /// <summary>
     /// Literal for code: MDCECGINOPANNOT
@@ -11587,9 +14157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGINOPANNOT = "148743";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGINOPANNOT
+    /// </summary>
+    public const string LiteralNONEMDCECGINOPANNOT = "urn:iso:std:iso:11073:10101#148743";
+
+    /// <summary>
     /// Literal for code: MDCECGDUALPACERPOSN
     /// </summary>
     public const string LiteralMDCECGDUALPACERPOSN = "148744";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGDUALPACERPOSN
+    /// </summary>
+    public const string LiteralNONEMDCECGDUALPACERPOSN = "urn:iso:std:iso:11073:10101#148744";
 
     /// <summary>
     /// Literal for code: MDCECGDUALPACERPOSNANNOT
@@ -11597,9 +14177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGDUALPACERPOSNANNOT = "148751";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGDUALPACERPOSNANNOT
+    /// </summary>
+    public const string LiteralNONEMDCECGDUALPACERPOSNANNOT = "urn:iso:std:iso:11073:10101#148751";
+
+    /// <summary>
     /// Literal for code: MDCECGQUESTIONABLE
     /// </summary>
     public const string LiteralMDCECGQUESTIONABLE = "148752";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGQUESTIONABLE
+    /// </summary>
+    public const string LiteralNONEMDCECGQUESTIONABLE = "urn:iso:std:iso:11073:10101#148752";
 
     /// <summary>
     /// Literal for code: MDCECGQUESTIONABLEANNOT
@@ -11607,9 +14197,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGQUESTIONABLEANNOT = "148759";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGQUESTIONABLEANNOT
+    /// </summary>
+    public const string LiteralNONEMDCECGQUESTIONABLEANNOT = "urn:iso:std:iso:11073:10101#148759";
+
+    /// <summary>
     /// Literal for code: MDCECGVENTBEAT
     /// </summary>
     public const string LiteralMDCECGVENTBEAT = "148760";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVENTBEAT
+    /// </summary>
+    public const string LiteralNONEMDCECGVENTBEAT = "urn:iso:std:iso:11073:10101#148760";
 
     /// <summary>
     /// Literal for code: MDCECGVENTBEATANNOT
@@ -11617,9 +14217,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGVENTBEATANNOT = "148767";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGVENTBEATANNOT
+    /// </summary>
+    public const string LiteralNONEMDCECGVENTBEATANNOT = "urn:iso:std:iso:11073:10101#148767";
+
+    /// <summary>
     /// Literal for code: MDCECGLEARN
     /// </summary>
     public const string LiteralMDCECGLEARN = "148776";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGLEARN
+    /// </summary>
+    public const string LiteralNONEMDCECGLEARN = "urn:iso:std:iso:11073:10101#148776";
 
     /// <summary>
     /// Literal for code: MDCECGLEARNANNOT
@@ -11627,9 +14237,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGLEARNANNOT = "148783";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGLEARNANNOT
+    /// </summary>
+    public const string LiteralNONEMDCECGLEARNANNOT = "urn:iso:std:iso:11073:10101#148783";
+
+    /// <summary>
     /// Literal for code: MDCECGATRPACEDBEATPCT
     /// </summary>
     public const string LiteralMDCECGATRPACEDBEATPCT = "149072";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGATRPACEDBEATPCT
+    /// </summary>
+    public const string LiteralNONEMDCECGATRPACEDBEATPCT = "urn:iso:std:iso:11073:10101#149072";
 
     /// <summary>
     /// Literal for code: MDCECGBIGEMPCT
@@ -11637,9 +14257,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGBIGEMPCT = "149073";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGBIGEMPCT
+    /// </summary>
+    public const string LiteralNONEMDCECGBIGEMPCT = "urn:iso:std:iso:11073:10101#149073";
+
+    /// <summary>
     /// Literal for code: MDCECGCARDBEATRATEIRREGPCT
     /// </summary>
     public const string LiteralMDCECGCARDBEATRATEIRREGPCT = "149074";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGCARDBEATRATEIRREGPCT
+    /// </summary>
+    public const string LiteralNONEMDCECGCARDBEATRATEIRREGPCT = "urn:iso:std:iso:11073:10101#149074";
 
     /// <summary>
     /// Literal for code: MDCECGDUALPACEDBEATPCT
@@ -11647,9 +14277,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGDUALPACEDBEATPCT = "149075";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGDUALPACEDBEATPCT
+    /// </summary>
+    public const string LiteralNONEMDCECGDUALPACEDBEATPCT = "urn:iso:std:iso:11073:10101#149075";
+
+    /// <summary>
     /// Literal for code: MDCECGPACEDBEATPCT
     /// </summary>
     public const string LiteralMDCECGPACEDBEATPCT = "149076";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGPACEDBEATPCT
+    /// </summary>
+    public const string LiteralNONEMDCECGPACEDBEATPCT = "urn:iso:std:iso:11073:10101#149076";
 
     /// <summary>
     /// Literal for code: MDCECGTRIGEMPCT
@@ -11657,9 +14297,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCECGTRIGEMPCT = "149077";
 
     /// <summary>
+    /// Literal for code: NONEMDCECGTRIGEMPCT
+    /// </summary>
+    public const string LiteralNONEMDCECGTRIGEMPCT = "urn:iso:std:iso:11073:10101#149077";
+
+    /// <summary>
     /// Literal for code: MDCECGVPACEDBEATPCT
     /// </summary>
     public const string LiteralMDCECGVPACEDBEATPCT = "149078";
+
+    /// <summary>
+    /// Literal for code: NONEMDCECGVPACEDBEATPCT
+    /// </summary>
+    public const string LiteralNONEMDCECGVPACEDBEATPCT = "urn:iso:std:iso:11073:10101#149078";
 
     /// <summary>
     /// Literal for code: MDCPULS
@@ -11667,9 +14317,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPULS = "149504";
 
     /// <summary>
+    /// Literal for code: NONEMDCPULS
+    /// </summary>
+    public const string LiteralNONEMDCPULS = "urn:iso:std:iso:11073:10101#149504";
+
+    /// <summary>
     /// Literal for code: MDCPULSRATE
     /// </summary>
     public const string LiteralMDCPULSRATE = "149514";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPULSRATE
+    /// </summary>
+    public const string LiteralNONEMDCPULSRATE = "urn:iso:std:iso:11073:10101#149514";
 
     /// <summary>
     /// Literal for code: MDCBLDPULSINV
@@ -11677,9 +14337,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCBLDPULSINV = "149520";
 
     /// <summary>
+    /// Literal for code: NONEMDCBLDPULSINV
+    /// </summary>
+    public const string LiteralNONEMDCBLDPULSINV = "urn:iso:std:iso:11073:10101#149520";
+
+    /// <summary>
     /// Literal for code: MDCBLDPULSRATEINV
     /// </summary>
     public const string LiteralMDCBLDPULSRATEINV = "149522";
+
+    /// <summary>
+    /// Literal for code: NONEMDCBLDPULSRATEINV
+    /// </summary>
+    public const string LiteralNONEMDCBLDPULSRATEINV = "urn:iso:std:iso:11073:10101#149522";
 
     /// <summary>
     /// Literal for code: MDCPULSOXIMPULS
@@ -11687,9 +14357,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPULSOXIMPULS = "149528";
 
     /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMPULS
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMPULS = "urn:iso:std:iso:11073:10101#149528";
+
+    /// <summary>
     /// Literal for code: MDCPULSOXIMPULSRATE
     /// </summary>
     public const string LiteralMDCPULSOXIMPULSRATE = "149530";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMPULSRATE
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMPULSRATE = "urn:iso:std:iso:11073:10101#149530";
 
     /// <summary>
     /// Literal for code: MDCPLETHPULS
@@ -11697,9 +14377,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPLETHPULS = "149536";
 
     /// <summary>
+    /// Literal for code: NONEMDCPLETHPULS
+    /// </summary>
+    public const string LiteralNONEMDCPLETHPULS = "urn:iso:std:iso:11073:10101#149536";
+
+    /// <summary>
     /// Literal for code: MDCPLETHPULSRATE
     /// </summary>
     public const string LiteralMDCPLETHPULSRATE = "149538";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPLETHPULSRATE
+    /// </summary>
+    public const string LiteralNONEMDCPLETHPULSRATE = "urn:iso:std:iso:11073:10101#149538";
 
     /// <summary>
     /// Literal for code: MDCPULSNONINV
@@ -11707,9 +14397,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPULSNONINV = "149544";
 
     /// <summary>
+    /// Literal for code: NONEMDCPULSNONINV
+    /// </summary>
+    public const string LiteralNONEMDCPULSNONINV = "urn:iso:std:iso:11073:10101#149544";
+
+    /// <summary>
     /// Literal for code: MDCPULSRATENONINV
     /// </summary>
     public const string LiteralMDCPULSRATENONINV = "149546";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPULSRATENONINV
+    /// </summary>
+    public const string LiteralNONEMDCPULSRATENONINV = "urn:iso:std:iso:11073:10101#149546";
 
     /// <summary>
     /// Literal for code: MDCTTHORHEART
@@ -11717,9 +14417,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTTHORHEART = "149552";
 
     /// <summary>
+    /// Literal for code: NONEMDCTTHORHEART
+    /// </summary>
+    public const string LiteralNONEMDCTTHORHEART = "urn:iso:std:iso:11073:10101#149552";
+
+    /// <summary>
     /// Literal for code: MDCTTHORHEARTCNT
     /// </summary>
     public const string LiteralMDCTTHORHEARTCNT = "149553";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTTHORHEARTCNT
+    /// </summary>
+    public const string LiteralNONEMDCTTHORHEARTCNT = "urn:iso:std:iso:11073:10101#149553";
 
     /// <summary>
     /// Literal for code: MDCTTHORHEARTRATE
@@ -11727,9 +14437,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTTHORHEARTRATE = "149554";
 
     /// <summary>
+    /// Literal for code: NONEMDCTTHORHEARTRATE
+    /// </summary>
+    public const string LiteralNONEMDCTTHORHEARTRATE = "urn:iso:std:iso:11073:10101#149554";
+
+    /// <summary>
     /// Literal for code: MDCTTHORHEARTRATEMAX
     /// </summary>
     public const string LiteralMDCTTHORHEARTRATEMAX = "149555";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTTHORHEARTRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCTTHORHEARTRATEMAX = "urn:iso:std:iso:11073:10101#149555";
 
     /// <summary>
     /// Literal for code: MDCTTHORHEARTRATEMIN
@@ -11737,9 +14457,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTTHORHEARTRATEMIN = "149556";
 
     /// <summary>
+    /// Literal for code: NONEMDCTTHORHEARTRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCTTHORHEARTRATEMIN = "urn:iso:std:iso:11073:10101#149556";
+
+    /// <summary>
     /// Literal for code: MDCTTHORHEARTRATEMEAN
     /// </summary>
     public const string LiteralMDCTTHORHEARTRATEMEAN = "149557";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTTHORHEARTRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCTTHORHEARTRATEMEAN = "urn:iso:std:iso:11073:10101#149557";
 
     /// <summary>
     /// Literal for code: MDCPALPATIONHEART
@@ -11747,9 +14477,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPALPATIONHEART = "149560";
 
     /// <summary>
+    /// Literal for code: NONEMDCPALPATIONHEART
+    /// </summary>
+    public const string LiteralNONEMDCPALPATIONHEART = "urn:iso:std:iso:11073:10101#149560";
+
+    /// <summary>
     /// Literal for code: MDCPALPATIONHEARTCNT
     /// </summary>
     public const string LiteralMDCPALPATIONHEARTCNT = "149561";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPALPATIONHEARTCNT
+    /// </summary>
+    public const string LiteralNONEMDCPALPATIONHEARTCNT = "urn:iso:std:iso:11073:10101#149561";
 
     /// <summary>
     /// Literal for code: MDCPALPATIONHEARTRATE
@@ -11757,9 +14497,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPALPATIONHEARTRATE = "149562";
 
     /// <summary>
+    /// Literal for code: NONEMDCPALPATIONHEARTRATE
+    /// </summary>
+    public const string LiteralNONEMDCPALPATIONHEARTRATE = "urn:iso:std:iso:11073:10101#149562";
+
+    /// <summary>
     /// Literal for code: MDCPALPATIONHEARTRATEMAX
     /// </summary>
     public const string LiteralMDCPALPATIONHEARTRATEMAX = "149563";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPALPATIONHEARTRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCPALPATIONHEARTRATEMAX = "urn:iso:std:iso:11073:10101#149563";
 
     /// <summary>
     /// Literal for code: MDCPALPATIONHEARTRATEMIN
@@ -11767,9 +14517,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPALPATIONHEARTRATEMIN = "149564";
 
     /// <summary>
+    /// Literal for code: NONEMDCPALPATIONHEARTRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCPALPATIONHEARTRATEMIN = "urn:iso:std:iso:11073:10101#149564";
+
+    /// <summary>
     /// Literal for code: MDCPALPATIONHEARTRATEMEAN
     /// </summary>
     public const string LiteralMDCPALPATIONHEARTRATEMEAN = "149565";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPALPATIONHEARTRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPALPATIONHEARTRATEMEAN = "urn:iso:std:iso:11073:10101#149565";
 
     /// <summary>
     /// Literal for code: MDCRESVASCSYSINDEX
@@ -11777,9 +14537,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCRESVASCSYSINDEX = "149760";
 
     /// <summary>
+    /// Literal for code: NONEMDCRESVASCSYSINDEX
+    /// </summary>
+    public const string LiteralNONEMDCRESVASCSYSINDEX = "urn:iso:std:iso:11073:10101#149760";
+
+    /// <summary>
     /// Literal for code: MDCWKLVSTROKEINDEX
     /// </summary>
     public const string LiteralMDCWKLVSTROKEINDEX = "149764";
+
+    /// <summary>
+    /// Literal for code: NONEMDCWKLVSTROKEINDEX
+    /// </summary>
+    public const string LiteralNONEMDCWKLVSTROKEINDEX = "urn:iso:std:iso:11073:10101#149764";
 
     /// <summary>
     /// Literal for code: MDCWKLVSTROKEINDEXMAX
@@ -11787,9 +14557,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCWKLVSTROKEINDEXMAX = "149765";
 
     /// <summary>
+    /// Literal for code: NONEMDCWKLVSTROKEINDEXMAX
+    /// </summary>
+    public const string LiteralNONEMDCWKLVSTROKEINDEXMAX = "urn:iso:std:iso:11073:10101#149765";
+
+    /// <summary>
     /// Literal for code: MDCWKLVSTROKEINDEXMIN
     /// </summary>
     public const string LiteralMDCWKLVSTROKEINDEXMIN = "149766";
+
+    /// <summary>
+    /// Literal for code: NONEMDCWKLVSTROKEINDEXMIN
+    /// </summary>
+    public const string LiteralNONEMDCWKLVSTROKEINDEXMIN = "urn:iso:std:iso:11073:10101#149766";
 
     /// <summary>
     /// Literal for code: MDCWKLVSTROKEINDEXMEAN
@@ -11797,9 +14577,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCWKLVSTROKEINDEXMEAN = "149767";
 
     /// <summary>
+    /// Literal for code: NONEMDCWKLVSTROKEINDEXMEAN
+    /// </summary>
+    public const string LiteralNONEMDCWKLVSTROKEINDEXMEAN = "urn:iso:std:iso:11073:10101#149767";
+
+    /// <summary>
     /// Literal for code: MDCPVTWKRVSTROKEINDEX
     /// </summary>
     public const string LiteralMDCPVTWKRVSTROKEINDEX = "149768";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPVTWKRVSTROKEINDEX
+    /// </summary>
+    public const string LiteralNONEMDCPVTWKRVSTROKEINDEX = "urn:iso:std:iso:11073:10101#149768";
 
     /// <summary>
     /// Literal for code: MDCOUTPUTCARDINDEX
@@ -11807,9 +14597,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCOUTPUTCARDINDEX = "149772";
 
     /// <summary>
+    /// Literal for code: NONEMDCOUTPUTCARDINDEX
+    /// </summary>
+    public const string LiteralNONEMDCOUTPUTCARDINDEX = "urn:iso:std:iso:11073:10101#149772";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLD
     /// </summary>
     public const string LiteralMDCPRESSBLD = "150016";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLD
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLD = "urn:iso:std:iso:11073:10101#150016";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDSYS
@@ -11817,9 +14617,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDSYS = "150017";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDSYS = "urn:iso:std:iso:11073:10101#150017";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDDIA = "150018";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDDIA = "urn:iso:std:iso:11073:10101#150018";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDMEAN
@@ -11827,9 +14637,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDMEAN = "150019";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDMEAN = "urn:iso:std:iso:11073:10101#150019";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDNONINV
     /// </summary>
     public const string LiteralMDCPRESSBLDNONINV = "150020";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDNONINV
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDNONINV = "urn:iso:std:iso:11073:10101#150020";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDNONINVSYS
@@ -11837,9 +14657,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDNONINVSYS = "150021";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDNONINVSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDNONINVSYS = "urn:iso:std:iso:11073:10101#150021";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDNONINVDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDNONINVDIA = "150022";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDNONINVDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDNONINVDIA = "urn:iso:std:iso:11073:10101#150022";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDNONINVMEAN
@@ -11847,9 +14677,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDNONINVMEAN = "150023";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDNONINVMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDNONINVMEAN = "urn:iso:std:iso:11073:10101#150023";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDNONINVCTS
     /// </summary>
     public const string LiteralMDCPRESSBLDNONINVCTS = "150024";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDNONINVCTS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDNONINVCTS = "urn:iso:std:iso:11073:10101#150024";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDNONINVSYSCTS
@@ -11857,9 +14697,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDNONINVSYSCTS = "150025";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDNONINVSYSCTS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDNONINVSYSCTS = "urn:iso:std:iso:11073:10101#150025";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDNONINVDIACTS
     /// </summary>
     public const string LiteralMDCPRESSBLDNONINVDIACTS = "150026";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDNONINVDIACTS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDNONINVDIACTS = "urn:iso:std:iso:11073:10101#150026";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDNONINVMEANCTS
@@ -11867,9 +14717,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDNONINVMEANCTS = "150027";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDNONINVMEANCTS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDNONINVMEANCTS = "urn:iso:std:iso:11073:10101#150027";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDAORT
     /// </summary>
     public const string LiteralMDCPRESSBLDAORT = "150028";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDAORT
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDAORT = "urn:iso:std:iso:11073:10101#150028";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDAORTSYS
@@ -11877,9 +14737,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDAORTSYS = "150029";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDAORTSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDAORTSYS = "urn:iso:std:iso:11073:10101#150029";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDAORTDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDAORTDIA = "150030";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDAORTDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDAORTDIA = "urn:iso:std:iso:11073:10101#150030";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDAORTMEAN
@@ -11887,9 +14757,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDAORTMEAN = "150031";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDAORTMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDAORTMEAN = "urn:iso:std:iso:11073:10101#150031";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDART
     /// </summary>
     public const string LiteralMDCPRESSBLDART = "150032";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDART
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDART = "urn:iso:std:iso:11073:10101#150032";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDARTSYS
@@ -11897,9 +14777,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDARTSYS = "150033";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTSYS = "urn:iso:std:iso:11073:10101#150033";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDARTDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDARTDIA = "150034";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTDIA = "urn:iso:std:iso:11073:10101#150034";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDARTMEAN
@@ -11907,9 +14797,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDARTMEAN = "150035";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTMEAN = "urn:iso:std:iso:11073:10101#150035";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDARTABP
     /// </summary>
     public const string LiteralMDCPRESSBLDARTABP = "150036";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTABP
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTABP = "urn:iso:std:iso:11073:10101#150036";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDARTABPSYS
@@ -11917,9 +14817,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDARTABPSYS = "150037";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTABPSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTABPSYS = "urn:iso:std:iso:11073:10101#150037";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDARTABPDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDARTABPDIA = "150038";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTABPDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTABPDIA = "urn:iso:std:iso:11073:10101#150038";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDARTABPMEAN
@@ -11927,9 +14837,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDARTABPMEAN = "150039";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTABPMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTABPMEAN = "urn:iso:std:iso:11073:10101#150039";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDARTAUG
     /// </summary>
     public const string LiteralMDCPRESSBLDARTAUG = "150040";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTAUG
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTAUG = "urn:iso:std:iso:11073:10101#150040";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDARTAUGDIA
@@ -11937,9 +14857,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDARTAUGDIA = "150042";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTAUGDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTAUGDIA = "urn:iso:std:iso:11073:10101#150042";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDARTPULM
     /// </summary>
     public const string LiteralMDCPRESSBLDARTPULM = "150044";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTPULM
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTPULM = "urn:iso:std:iso:11073:10101#150044";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDARTPULMSYS
@@ -11947,9 +14877,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDARTPULMSYS = "150045";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTPULMSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTPULMSYS = "urn:iso:std:iso:11073:10101#150045";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDARTPULMDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDARTPULMDIA = "150046";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTPULMDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTPULMDIA = "urn:iso:std:iso:11073:10101#150046";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDARTPULMMEAN
@@ -11957,9 +14897,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDARTPULMMEAN = "150047";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTPULMMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTPULMMEAN = "urn:iso:std:iso:11073:10101#150047";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDARTPULMWEDGE
     /// </summary>
     public const string LiteralMDCPRESSBLDARTPULMWEDGE = "150052";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTPULMWEDGE
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTPULMWEDGE = "urn:iso:std:iso:11073:10101#150052";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDARTUMB
@@ -11967,9 +14917,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDARTUMB = "150056";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTUMB
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTUMB = "urn:iso:std:iso:11073:10101#150056";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDARTUMBSYS
     /// </summary>
     public const string LiteralMDCPRESSBLDARTUMBSYS = "150057";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTUMBSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTUMBSYS = "urn:iso:std:iso:11073:10101#150057";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDARTUMBDIA
@@ -11977,9 +14937,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDARTUMBDIA = "150058";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTUMBDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTUMBDIA = "urn:iso:std:iso:11073:10101#150058";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDARTUMBMEAN
     /// </summary>
     public const string LiteralMDCPRESSBLDARTUMBMEAN = "150059";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTUMBMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTUMBMEAN = "urn:iso:std:iso:11073:10101#150059";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDATR
@@ -11987,9 +14957,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDATR = "150060";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDATR
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDATR = "urn:iso:std:iso:11073:10101#150060";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDATRLEFT
     /// </summary>
     public const string LiteralMDCPRESSBLDATRLEFT = "150064";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDATRLEFT
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDATRLEFT = "urn:iso:std:iso:11073:10101#150064";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDATRLEFTSYS
@@ -11997,9 +14977,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDATRLEFTSYS = "150065";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDATRLEFTSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDATRLEFTSYS = "urn:iso:std:iso:11073:10101#150065";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDATRLEFTDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDATRLEFTDIA = "150066";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDATRLEFTDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDATRLEFTDIA = "urn:iso:std:iso:11073:10101#150066";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDATRLEFTMEAN
@@ -12007,9 +14997,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDATRLEFTMEAN = "150067";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDATRLEFTMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDATRLEFTMEAN = "urn:iso:std:iso:11073:10101#150067";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDATRRIGHT
     /// </summary>
     public const string LiteralMDCPRESSBLDATRRIGHT = "150068";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDATRRIGHT
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDATRRIGHT = "urn:iso:std:iso:11073:10101#150068";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDATRRIGHTSYS
@@ -12017,9 +15017,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDATRRIGHTSYS = "150069";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDATRRIGHTSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDATRRIGHTSYS = "urn:iso:std:iso:11073:10101#150069";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDATRRIGHTDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDATRRIGHTDIA = "150070";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDATRRIGHTDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDATRRIGHTDIA = "urn:iso:std:iso:11073:10101#150070";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDATRRIGHTMEAN
@@ -12027,9 +15037,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDATRRIGHTMEAN = "150071";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDATRRIGHTMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDATRRIGHTMEAN = "urn:iso:std:iso:11073:10101#150071";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDPULMCAP
     /// </summary>
     public const string LiteralMDCPRESSBLDPULMCAP = "150076";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDPULMCAP
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDPULMCAP = "urn:iso:std:iso:11073:10101#150076";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDPULMCAPSYS
@@ -12037,9 +15057,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDPULMCAPSYS = "150077";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDPULMCAPSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDPULMCAPSYS = "urn:iso:std:iso:11073:10101#150077";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDPULMCAPDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDPULMCAPDIA = "150078";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDPULMCAPDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDPULMCAPDIA = "urn:iso:std:iso:11073:10101#150078";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDPULMCAPMEAN
@@ -12047,9 +15077,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDPULMCAPMEAN = "150079";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDPULMCAPMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDPULMCAPMEAN = "urn:iso:std:iso:11073:10101#150079";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDVEN
     /// </summary>
     public const string LiteralMDCPRESSBLDVEN = "150080";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVEN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVEN = "urn:iso:std:iso:11073:10101#150080";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDVENCENT
@@ -12057,9 +15097,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDVENCENT = "150084";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENCENT
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENCENT = "urn:iso:std:iso:11073:10101#150084";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDVENCENTSYS
     /// </summary>
     public const string LiteralMDCPRESSBLDVENCENTSYS = "150085";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENCENTSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENCENTSYS = "urn:iso:std:iso:11073:10101#150085";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDVENCENTDIA
@@ -12067,9 +15117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDVENCENTDIA = "150086";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENCENTDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENCENTDIA = "urn:iso:std:iso:11073:10101#150086";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDVENCENTMEAN
     /// </summary>
     public const string LiteralMDCPRESSBLDVENCENTMEAN = "150087";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENCENTMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENCENTMEAN = "urn:iso:std:iso:11073:10101#150087";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDVENUMB
@@ -12077,9 +15137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDVENUMB = "150088";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENUMB
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENUMB = "urn:iso:std:iso:11073:10101#150088";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDVENUMBSYS
     /// </summary>
     public const string LiteralMDCPRESSBLDVENUMBSYS = "150089";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENUMBSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENUMBSYS = "urn:iso:std:iso:11073:10101#150089";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDVENUMBDIA
@@ -12087,9 +15157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDVENUMBDIA = "150090";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENUMBDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENUMBDIA = "urn:iso:std:iso:11073:10101#150090";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDVENUMBMEAN
     /// </summary>
     public const string LiteralMDCPRESSBLDVENUMBMEAN = "150091";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENUMBMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENUMBMEAN = "urn:iso:std:iso:11073:10101#150091";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDVENT
@@ -12097,9 +15177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDVENT = "150092";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENT
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENT = "urn:iso:std:iso:11073:10101#150092";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDVENTDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDVENTDIA = "150094";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTDIA = "urn:iso:std:iso:11073:10101#150094";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDVENTEND
@@ -12107,9 +15197,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDVENTEND = "150096";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTEND
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTEND = "urn:iso:std:iso:11073:10101#150096";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDVENTDIAEND
     /// </summary>
     public const string LiteralMDCPRESSBLDVENTDIAEND = "150098";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTDIAEND
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTDIAEND = "urn:iso:std:iso:11073:10101#150098";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDVENTLEFT
@@ -12117,9 +15217,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDVENTLEFT = "150100";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTLEFT
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTLEFT = "urn:iso:std:iso:11073:10101#150100";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDVENTLEFTSYS
     /// </summary>
     public const string LiteralMDCPRESSBLDVENTLEFTSYS = "150101";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTLEFTSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTLEFTSYS = "urn:iso:std:iso:11073:10101#150101";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDVENTLEFTDIA
@@ -12127,9 +15237,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDVENTLEFTDIA = "150102";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTLEFTDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTLEFTDIA = "urn:iso:std:iso:11073:10101#150102";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDVENTLEFTMEAN
     /// </summary>
     public const string LiteralMDCPRESSBLDVENTLEFTMEAN = "150103";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTLEFTMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTLEFTMEAN = "urn:iso:std:iso:11073:10101#150103";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDVENTRIGHT
@@ -12137,9 +15257,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDVENTRIGHT = "150104";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTRIGHT
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTRIGHT = "urn:iso:std:iso:11073:10101#150104";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDVENTRIGHTSYS
     /// </summary>
     public const string LiteralMDCPRESSBLDVENTRIGHTSYS = "150105";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTRIGHTSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTRIGHTSYS = "urn:iso:std:iso:11073:10101#150105";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDVENTRIGHTDIA
@@ -12147,9 +15277,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDVENTRIGHTDIA = "150106";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTRIGHTDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTRIGHTDIA = "urn:iso:std:iso:11073:10101#150106";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDVENTRIGHTMEAN
     /// </summary>
     public const string LiteralMDCPRESSBLDVENTRIGHTMEAN = "150107";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTRIGHTMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTRIGHTMEAN = "urn:iso:std:iso:11073:10101#150107";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDVENTAUG
@@ -12157,9 +15297,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDVENTAUG = "150108";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTAUG
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTAUG = "urn:iso:std:iso:11073:10101#150108";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDCORONART
     /// </summary>
     public const string LiteralMDCPRESSBLDCORONART = "150112";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONART
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONART = "urn:iso:std:iso:11073:10101#150112";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTSYS
@@ -12167,9 +15317,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDCORONARTSYS = "150113";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTSYS = "urn:iso:std:iso:11073:10101#150113";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDCORONARTDIA = "150114";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTDIA = "urn:iso:std:iso:11073:10101#150114";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTMEAN
@@ -12177,9 +15337,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDCORONARTMEAN = "150115";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTMEAN = "urn:iso:std:iso:11073:10101#150115";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTL
     /// </summary>
     public const string LiteralMDCPRESSBLDCORONARTL = "150116";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTL
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTL = "urn:iso:std:iso:11073:10101#150116";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTLSYS
@@ -12187,9 +15357,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDCORONARTLSYS = "150117";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTLSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTLSYS = "urn:iso:std:iso:11073:10101#150117";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTLDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDCORONARTLDIA = "150118";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTLDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTLDIA = "urn:iso:std:iso:11073:10101#150118";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTLMEAN
@@ -12197,9 +15377,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDCORONARTLMEAN = "150119";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTLMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTLMEAN = "urn:iso:std:iso:11073:10101#150119";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTLANTDESCEND
     /// </summary>
     public const string LiteralMDCPRESSBLDCORONARTLANTDESCEND = "150120";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTLANTDESCEND
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTLANTDESCEND = "urn:iso:std:iso:11073:10101#150120";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTLANTDESCENDSYS
@@ -12207,9 +15397,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDCORONARTLANTDESCENDSYS = "150121";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTLANTDESCENDSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTLANTDESCENDSYS = "urn:iso:std:iso:11073:10101#150121";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTLANTDESCENDDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDCORONARTLANTDESCENDDIA = "150122";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTLANTDESCENDDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTLANTDESCENDDIA = "urn:iso:std:iso:11073:10101#150122";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTLANTDESCENDMEAN
@@ -12217,9 +15417,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDCORONARTLANTDESCENDMEAN = "150123";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTLANTDESCENDMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTLANTDESCENDMEAN = "urn:iso:std:iso:11073:10101#150123";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTLCIRC
     /// </summary>
     public const string LiteralMDCPRESSBLDCORONARTLCIRC = "150124";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTLCIRC
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTLCIRC = "urn:iso:std:iso:11073:10101#150124";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTLCIRCSYS
@@ -12227,9 +15437,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDCORONARTLCIRCSYS = "150125";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTLCIRCSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTLCIRCSYS = "urn:iso:std:iso:11073:10101#150125";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTLCIRCDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDCORONARTLCIRCDIA = "150126";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTLCIRCDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTLCIRCDIA = "urn:iso:std:iso:11073:10101#150126";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTLCIRCMEAN
@@ -12237,9 +15457,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDCORONARTLCIRCMEAN = "150127";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTLCIRCMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTLCIRCMEAN = "urn:iso:std:iso:11073:10101#150127";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTR
     /// </summary>
     public const string LiteralMDCPRESSBLDCORONARTR = "150128";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTR
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTR = "urn:iso:std:iso:11073:10101#150128";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTRSYS
@@ -12247,9 +15477,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDCORONARTRSYS = "150129";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTRSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTRSYS = "urn:iso:std:iso:11073:10101#150129";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTRDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDCORONARTRDIA = "150130";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTRDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTRDIA = "urn:iso:std:iso:11073:10101#150130";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTRMEAN
@@ -12257,9 +15497,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDCORONARTRMEAN = "150131";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTRMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTRMEAN = "urn:iso:std:iso:11073:10101#150131";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTRPOSTDESCEND
     /// </summary>
     public const string LiteralMDCPRESSBLDCORONARTRPOSTDESCEND = "150132";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTRPOSTDESCEND
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTRPOSTDESCEND = "urn:iso:std:iso:11073:10101#150132";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTRPOSTDESCENDSYS
@@ -12267,9 +15517,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDCORONARTRPOSTDESCENDSYS = "150133";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTRPOSTDESCENDSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTRPOSTDESCENDSYS = "urn:iso:std:iso:11073:10101#150133";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTRPOSTDESCENDDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDCORONARTRPOSTDESCENDDIA = "150134";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTRPOSTDESCENDDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTRPOSTDESCENDDIA = "urn:iso:std:iso:11073:10101#150134";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTRPOSTDESCENDMEAN
@@ -12277,9 +15537,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDCORONARTRPOSTDESCENDMEAN = "150135";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTRPOSTDESCENDMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTRPOSTDESCENDMEAN = "urn:iso:std:iso:11073:10101#150135";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTCONUS
     /// </summary>
     public const string LiteralMDCPRESSBLDCORONARTCONUS = "150136";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTCONUS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTCONUS = "urn:iso:std:iso:11073:10101#150136";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTCONUSSYS
@@ -12287,9 +15557,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDCORONARTCONUSSYS = "150137";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTCONUSSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTCONUSSYS = "urn:iso:std:iso:11073:10101#150137";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTCONUSDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDCORONARTCONUSDIA = "150138";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTCONUSDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTCONUSDIA = "urn:iso:std:iso:11073:10101#150138";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTCONUSMEAN
@@ -12297,9 +15577,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDCORONARTCONUSMEAN = "150139";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTCONUSMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTCONUSMEAN = "urn:iso:std:iso:11073:10101#150139";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTRMARG
     /// </summary>
     public const string LiteralMDCPRESSBLDCORONARTRMARG = "150140";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTRMARG
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTRMARG = "urn:iso:std:iso:11073:10101#150140";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTRMARGSYS
@@ -12307,9 +15597,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDCORONARTRMARGSYS = "150141";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTRMARGSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTRMARGSYS = "urn:iso:std:iso:11073:10101#150141";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTRMARGDIA
     /// </summary>
     public const string LiteralMDCPRESSBLDCORONARTRMARGDIA = "150142";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTRMARGDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTRMARGDIA = "urn:iso:std:iso:11073:10101#150142";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDCORONARTRMARGMEAN
@@ -12317,9 +15617,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDCORONARTRMARGMEAN = "150143";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDCORONARTRMARGMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDCORONARTRMARGMEAN = "urn:iso:std:iso:11073:10101#150143";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDVENTLEFTBEGIN
     /// </summary>
     public const string LiteralMDCPRESSBLDVENTLEFTBEGIN = "150144";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTLEFTBEGIN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTLEFTBEGIN = "urn:iso:std:iso:11073:10101#150144";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDVENTLEFTBEGINDIA
@@ -12327,9 +15637,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDVENTLEFTBEGINDIA = "150146";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTLEFTBEGINDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTLEFTBEGINDIA = "urn:iso:std:iso:11073:10101#150146";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDVENTLEFTSYSMEAN
     /// </summary>
     public const string LiteralMDCPRESSBLDVENTLEFTSYSMEAN = "150149";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTLEFTSYSMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTLEFTSYSMEAN = "urn:iso:std:iso:11073:10101#150149";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDVENTLEFTDIAMEAN
@@ -12337,9 +15657,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDVENTLEFTDIAMEAN = "150154";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTLEFTDIAMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTLEFTDIAMEAN = "urn:iso:std:iso:11073:10101#150154";
+
+    /// <summary>
     /// Literal for code: MDCSATO2CONSUMP
     /// </summary>
     public const string LiteralMDCSATO2CONSUMP = "150272";
+
+    /// <summary>
+    /// Literal for code: NONEMDCSATO2CONSUMP
+    /// </summary>
+    public const string LiteralNONEMDCSATO2CONSUMP = "urn:iso:std:iso:11073:10101#150272";
 
     /// <summary>
     /// Literal for code: MDCOUTPUTCARD
@@ -12347,9 +15677,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCOUTPUTCARD = "150276";
 
     /// <summary>
+    /// Literal for code: NONEMDCOUTPUTCARD
+    /// </summary>
+    public const string LiteralNONEMDCOUTPUTCARD = "urn:iso:std:iso:11073:10101#150276";
+
+    /// <summary>
     /// Literal for code: MDCOUTPUTCARDARTBRANCH
     /// </summary>
     public const string LiteralMDCOUTPUTCARDARTBRANCH = "150280";
+
+    /// <summary>
+    /// Literal for code: NONEMDCOUTPUTCARDARTBRANCH
+    /// </summary>
+    public const string LiteralNONEMDCOUTPUTCARDARTBRANCH = "urn:iso:std:iso:11073:10101#150280";
 
     /// <summary>
     /// Literal for code: MDCOUTPUTCARDVENBRANCH
@@ -12357,9 +15697,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCOUTPUTCARDVENBRANCH = "150284";
 
     /// <summary>
+    /// Literal for code: NONEMDCOUTPUTCARDVENBRANCH
+    /// </summary>
+    public const string LiteralNONEMDCOUTPUTCARDVENBRANCH = "urn:iso:std:iso:11073:10101#150284";
+
+    /// <summary>
     /// Literal for code: MDCPLETHVOLBLD
     /// </summary>
     public const string LiteralMDCPLETHVOLBLD = "150296";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPLETHVOLBLD
+    /// </summary>
+    public const string LiteralNONEMDCPLETHVOLBLD = "urn:iso:std:iso:11073:10101#150296";
 
     /// <summary>
     /// Literal for code: MDCPRESSCUFF
@@ -12367,9 +15717,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSCUFF = "150300";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSCUFF
+    /// </summary>
+    public const string LiteralNONEMDCPRESSCUFF = "urn:iso:std:iso:11073:10101#150300";
+
+    /// <summary>
     /// Literal for code: MDCPRESSCUFFSYS
     /// </summary>
     public const string LiteralMDCPRESSCUFFSYS = "150301";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSCUFFSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSCUFFSYS = "urn:iso:std:iso:11073:10101#150301";
 
     /// <summary>
     /// Literal for code: MDCPRESSCUFFDIA
@@ -12377,9 +15737,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSCUFFDIA = "150302";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSCUFFDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSCUFFDIA = "urn:iso:std:iso:11073:10101#150302";
+
+    /// <summary>
     /// Literal for code: MDCPRESSCUFFMEAN
     /// </summary>
     public const string LiteralMDCPRESSCUFFMEAN = "150303";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSCUFFMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSCUFFMEAN = "urn:iso:std:iso:11073:10101#150303";
 
     /// <summary>
     /// Literal for code: MDCRESVASC
@@ -12387,9 +15757,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCRESVASC = "150304";
 
     /// <summary>
+    /// Literal for code: NONEMDCRESVASC
+    /// </summary>
+    public const string LiteralNONEMDCRESVASC = "urn:iso:std:iso:11073:10101#150304";
+
+    /// <summary>
     /// Literal for code: MDCRESVASCPULM
     /// </summary>
     public const string LiteralMDCRESVASCPULM = "150308";
+
+    /// <summary>
+    /// Literal for code: NONEMDCRESVASCPULM
+    /// </summary>
+    public const string LiteralNONEMDCRESVASCPULM = "urn:iso:std:iso:11073:10101#150308";
 
     /// <summary>
     /// Literal for code: MDCRESVASCSYS
@@ -12397,9 +15777,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCRESVASCSYS = "150312";
 
     /// <summary>
+    /// Literal for code: NONEMDCRESVASCSYS
+    /// </summary>
+    public const string LiteralNONEMDCRESVASCSYS = "urn:iso:std:iso:11073:10101#150312";
+
+    /// <summary>
     /// Literal for code: MDCSATO2
     /// </summary>
     public const string LiteralMDCSATO2 = "150316";
+
+    /// <summary>
+    /// Literal for code: NONEMDCSATO2
+    /// </summary>
+    public const string LiteralNONEMDCSATO2 = "urn:iso:std:iso:11073:10101#150316";
 
     /// <summary>
     /// Literal for code: MDCSATO2QUAL
@@ -12407,9 +15797,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCSATO2QUAL = "150320";
 
     /// <summary>
+    /// Literal for code: NONEMDCSATO2QUAL
+    /// </summary>
+    public const string LiteralNONEMDCSATO2QUAL = "urn:iso:std:iso:11073:10101#150320";
+
+    /// <summary>
     /// Literal for code: MDCSATO2ART
     /// </summary>
     public const string LiteralMDCSATO2ART = "150324";
+
+    /// <summary>
+    /// Literal for code: NONEMDCSATO2ART
+    /// </summary>
+    public const string LiteralNONEMDCSATO2ART = "urn:iso:std:iso:11073:10101#150324";
 
     /// <summary>
     /// Literal for code: MDCSATO2CEREB
@@ -12417,9 +15817,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCSATO2CEREB = "150328";
 
     /// <summary>
+    /// Literal for code: NONEMDCSATO2CEREB
+    /// </summary>
+    public const string LiteralNONEMDCSATO2CEREB = "urn:iso:std:iso:11073:10101#150328";
+
+    /// <summary>
     /// Literal for code: MDCSATO2VEN
     /// </summary>
     public const string LiteralMDCSATO2VEN = "150332";
+
+    /// <summary>
+    /// Literal for code: NONEMDCSATO2VEN
+    /// </summary>
+    public const string LiteralNONEMDCSATO2VEN = "urn:iso:std:iso:11073:10101#150332";
 
     /// <summary>
     /// Literal for code: MDCSATDIFFO2ARTALV
@@ -12427,9 +15837,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCSATDIFFO2ARTALV = "150336";
 
     /// <summary>
+    /// Literal for code: NONEMDCSATDIFFO2ARTALV
+    /// </summary>
+    public const string LiteralNONEMDCSATDIFFO2ARTALV = "urn:iso:std:iso:11073:10101#150336";
+
+    /// <summary>
     /// Literal for code: MDCSATDIFFO2ART
     /// </summary>
     public const string LiteralMDCSATDIFFO2ART = "150340";
+
+    /// <summary>
+    /// Literal for code: NONEMDCSATDIFFO2ART
+    /// </summary>
+    public const string LiteralNONEMDCSATDIFFO2ART = "urn:iso:std:iso:11073:10101#150340";
 
     /// <summary>
     /// Literal for code: MDCTEMP
@@ -12437,9 +15857,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTEMP = "150344";
 
     /// <summary>
+    /// Literal for code: NONEMDCTEMP
+    /// </summary>
+    public const string LiteralNONEMDCTEMP = "urn:iso:std:iso:11073:10101#150344";
+
+    /// <summary>
     /// Literal for code: MDCTEMPFOLEY
     /// </summary>
     public const string LiteralMDCTEMPFOLEY = "150348";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTEMPFOLEY
+    /// </summary>
+    public const string LiteralNONEMDCTEMPFOLEY = "urn:iso:std:iso:11073:10101#150348";
 
     /// <summary>
     /// Literal for code: MDCTEMPART
@@ -12447,9 +15877,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTEMPART = "150352";
 
     /// <summary>
+    /// Literal for code: NONEMDCTEMPART
+    /// </summary>
+    public const string LiteralNONEMDCTEMPART = "urn:iso:std:iso:11073:10101#150352";
+
+    /// <summary>
     /// Literal for code: MDCTEMPAWAY
     /// </summary>
     public const string LiteralMDCTEMPAWAY = "150356";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTEMPAWAY
+    /// </summary>
+    public const string LiteralNONEMDCTEMPAWAY = "urn:iso:std:iso:11073:10101#150356";
 
     /// <summary>
     /// Literal for code: MDCTEMPBODY
@@ -12457,9 +15897,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTEMPBODY = "150364";
 
     /// <summary>
+    /// Literal for code: NONEMDCTEMPBODY
+    /// </summary>
+    public const string LiteralNONEMDCTEMPBODY = "urn:iso:std:iso:11073:10101#150364";
+
+    /// <summary>
     /// Literal for code: MDCTEMPCORE
     /// </summary>
     public const string LiteralMDCTEMPCORE = "150368";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTEMPCORE
+    /// </summary>
+    public const string LiteralNONEMDCTEMPCORE = "urn:iso:std:iso:11073:10101#150368";
 
     /// <summary>
     /// Literal for code: MDCTEMPESOPH
@@ -12467,9 +15917,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTEMPESOPH = "150372";
 
     /// <summary>
+    /// Literal for code: NONEMDCTEMPESOPH
+    /// </summary>
+    public const string LiteralNONEMDCTEMPESOPH = "urn:iso:std:iso:11073:10101#150372";
+
+    /// <summary>
     /// Literal for code: MDCTEMPINJ
     /// </summary>
     public const string LiteralMDCTEMPINJ = "150376";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTEMPINJ
+    /// </summary>
+    public const string LiteralNONEMDCTEMPINJ = "urn:iso:std:iso:11073:10101#150376";
 
     /// <summary>
     /// Literal for code: MDCTEMPNASOPH
@@ -12477,9 +15937,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTEMPNASOPH = "150380";
 
     /// <summary>
+    /// Literal for code: NONEMDCTEMPNASOPH
+    /// </summary>
+    public const string LiteralNONEMDCTEMPNASOPH = "urn:iso:std:iso:11073:10101#150380";
+
+    /// <summary>
     /// Literal for code: MDCTEMPSKIN
     /// </summary>
     public const string LiteralMDCTEMPSKIN = "150388";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTEMPSKIN
+    /// </summary>
+    public const string LiteralNONEMDCTEMPSKIN = "urn:iso:std:iso:11073:10101#150388";
 
     /// <summary>
     /// Literal for code: MDCTEMPTYMP
@@ -12487,9 +15957,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTEMPTYMP = "150392";
 
     /// <summary>
+    /// Literal for code: NONEMDCTEMPTYMP
+    /// </summary>
+    public const string LiteralNONEMDCTEMPTYMP = "urn:iso:std:iso:11073:10101#150392";
+
+    /// <summary>
     /// Literal for code: MDCTEMPVEN
     /// </summary>
     public const string LiteralMDCTEMPVEN = "150396";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTEMPVEN
+    /// </summary>
+    public const string LiteralNONEMDCTEMPVEN = "urn:iso:std:iso:11073:10101#150396";
 
     /// <summary>
     /// Literal for code: MDCVOLBLDSTROKE
@@ -12497,9 +15977,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVOLBLDSTROKE = "150404";
 
     /// <summary>
+    /// Literal for code: NONEMDCVOLBLDSTROKE
+    /// </summary>
+    public const string LiteralNONEMDCVOLBLDSTROKE = "urn:iso:std:iso:11073:10101#150404";
+
+    /// <summary>
     /// Literal for code: MDCVOLBLDVENTLEFTSTROKE
     /// </summary>
     public const string LiteralMDCVOLBLDVENTLEFTSTROKE = "150408";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVOLBLDVENTLEFTSTROKE
+    /// </summary>
+    public const string LiteralNONEMDCVOLBLDVENTLEFTSTROKE = "urn:iso:std:iso:11073:10101#150408";
 
     /// <summary>
     /// Literal for code: MDCWKCARD
@@ -12507,9 +15997,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCWKCARD = "150412";
 
     /// <summary>
+    /// Literal for code: NONEMDCWKCARD
+    /// </summary>
+    public const string LiteralNONEMDCWKCARD = "urn:iso:std:iso:11073:10101#150412";
+
+    /// <summary>
     /// Literal for code: MDCWKCARDLEFT
     /// </summary>
     public const string LiteralMDCWKCARDLEFT = "150416";
+
+    /// <summary>
+    /// Literal for code: NONEMDCWKCARDLEFT
+    /// </summary>
+    public const string LiteralNONEMDCWKCARDLEFT = "urn:iso:std:iso:11073:10101#150416";
 
     /// <summary>
     /// Literal for code: MDCWKCARDRIGHT
@@ -12517,9 +16017,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCWKCARDRIGHT = "150420";
 
     /// <summary>
+    /// Literal for code: NONEMDCWKCARDRIGHT
+    /// </summary>
+    public const string LiteralNONEMDCWKCARDRIGHT = "urn:iso:std:iso:11073:10101#150420";
+
+    /// <summary>
     /// Literal for code: MDCWKLVSTROKE
     /// </summary>
     public const string LiteralMDCWKLVSTROKE = "150428";
+
+    /// <summary>
+    /// Literal for code: NONEMDCWKLVSTROKE
+    /// </summary>
+    public const string LiteralNONEMDCWKLVSTROKE = "urn:iso:std:iso:11073:10101#150428";
 
     /// <summary>
     /// Literal for code: MDCWKRV
@@ -12527,9 +16037,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCWKRV = "150432";
 
     /// <summary>
+    /// Literal for code: NONEMDCWKRV
+    /// </summary>
+    public const string LiteralNONEMDCWKRV = "urn:iso:std:iso:11073:10101#150432";
+
+    /// <summary>
     /// Literal for code: MDCWKRVSTROKE
     /// </summary>
     public const string LiteralMDCWKRVSTROKE = "150436";
+
+    /// <summary>
+    /// Literal for code: NONEMDCWKRVSTROKE
+    /// </summary>
+    public const string LiteralNONEMDCWKRVSTROKE = "urn:iso:std:iso:11073:10101#150436";
 
     /// <summary>
     /// Literal for code: MDCWKLV
@@ -12537,9 +16057,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCWKLV = "150440";
 
     /// <summary>
+    /// Literal for code: NONEMDCWKLV
+    /// </summary>
+    public const string LiteralNONEMDCWKLV = "urn:iso:std:iso:11073:10101#150440";
+
+    /// <summary>
     /// Literal for code: MDCSATO2ARTPULM
     /// </summary>
     public const string LiteralMDCSATO2ARTPULM = "150444";
+
+    /// <summary>
+    /// Literal for code: NONEMDCSATO2ARTPULM
+    /// </summary>
+    public const string LiteralNONEMDCSATO2ARTPULM = "urn:iso:std:iso:11073:10101#150444";
 
     /// <summary>
     /// Literal for code: MDCPULSOXIMPERFREL
@@ -12547,9 +16077,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPULSOXIMPERFREL = "150448";
 
     /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMPERFREL
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMPERFREL = "urn:iso:std:iso:11073:10101#150448";
+
+    /// <summary>
     /// Literal for code: MDCPLETH
     /// </summary>
     public const string LiteralMDCPLETH = "150452";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPLETH
+    /// </summary>
+    public const string LiteralNONEMDCPLETH = "urn:iso:std:iso:11073:10101#150452";
 
     /// <summary>
     /// Literal for code: MDCPULSOXIMSATO2
@@ -12557,9 +16097,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPULSOXIMSATO2 = "150456";
 
     /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMSATO2
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMSATO2 = "urn:iso:std:iso:11073:10101#150456";
+
+    /// <summary>
     /// Literal for code: MDCPULSOXIMSATO2CTS
     /// </summary>
     public const string LiteralMDCPULSOXIMSATO2CTS = "150460";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMSATO2CTS
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMSATO2CTS = "urn:iso:std:iso:11073:10101#150460";
 
     /// <summary>
     /// Literal for code: MDCPULSOXIMSATO2NONCTS
@@ -12567,9 +16117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPULSOXIMSATO2NONCTS = "150464";
 
     /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMSATO2NONCTS
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMSATO2NONCTS = "urn:iso:std:iso:11073:10101#150464";
+
+    /// <summary>
     /// Literal for code: MDCPULSOXIMSATO2DIFF
     /// </summary>
     public const string LiteralMDCPULSOXIMSATO2DIFF = "150468";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMSATO2DIFF
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMSATO2DIFF = "urn:iso:std:iso:11073:10101#150468";
 
     /// <summary>
     /// Literal for code: MDCPULSOXIMSATO2ARTLEFT
@@ -12577,9 +16137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPULSOXIMSATO2ARTLEFT = "150472";
 
     /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMSATO2ARTLEFT
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMSATO2ARTLEFT = "urn:iso:std:iso:11073:10101#150472";
+
+    /// <summary>
     /// Literal for code: MDCPULSOXIMSATO2ARTRIGHT
     /// </summary>
     public const string LiteralMDCPULSOXIMSATO2ARTRIGHT = "150476";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMSATO2ARTRIGHT
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMSATO2ARTRIGHT = "urn:iso:std:iso:11073:10101#150476";
 
     /// <summary>
     /// Literal for code: MDCNBPSATO2ART
@@ -12587,9 +16157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCNBPSATO2ART = "150480";
 
     /// <summary>
+    /// Literal for code: NONEMDCNBPSATO2ART
+    /// </summary>
+    public const string LiteralNONEMDCNBPSATO2ART = "urn:iso:std:iso:11073:10101#150480";
+
+    /// <summary>
     /// Literal for code: MDCDESAT
     /// </summary>
     public const string LiteralMDCDESAT = "150484";
+
+    /// <summary>
+    /// Literal for code: NONEMDCDESAT
+    /// </summary>
+    public const string LiteralNONEMDCDESAT = "urn:iso:std:iso:11073:10101#150484";
 
     /// <summary>
     /// Literal for code: MDCBLDPERFINDEX
@@ -12597,9 +16177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCBLDPERFINDEX = "150488";
 
     /// <summary>
+    /// Literal for code: NONEMDCBLDPERFINDEX
+    /// </summary>
+    public const string LiteralNONEMDCBLDPERFINDEX = "urn:iso:std:iso:11073:10101#150488";
+
+    /// <summary>
     /// Literal for code: MDCOUTPUTCARDCTS
     /// </summary>
     public const string LiteralMDCOUTPUTCARDCTS = "150492";
+
+    /// <summary>
+    /// Literal for code: NONEMDCOUTPUTCARDCTS
+    /// </summary>
+    public const string LiteralNONEMDCOUTPUTCARDCTS = "urn:iso:std:iso:11073:10101#150492";
 
     /// <summary>
     /// Literal for code: MDCOUTPUTCARDNONCTS
@@ -12607,9 +16197,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCOUTPUTCARDNONCTS = "150496";
 
     /// <summary>
+    /// Literal for code: NONEMDCOUTPUTCARDNONCTS
+    /// </summary>
+    public const string LiteralNONEMDCOUTPUTCARDNONCTS = "urn:iso:std:iso:11073:10101#150496";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDVENTLEFTEND
     /// </summary>
     public const string LiteralMDCPRESSBLDVENTLEFTEND = "150500";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTLEFTEND
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTLEFTEND = "urn:iso:std:iso:11073:10101#150500";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDVENTLEFTENDDIA
@@ -12617,9 +16217,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDVENTLEFTENDDIA = "150502";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENTLEFTENDDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENTLEFTENDDIA = "urn:iso:std:iso:11073:10101#150502";
+
+    /// <summary>
     /// Literal for code: MDCINDEXPRESSVENTLDERIVPOS
     /// </summary>
     public const string LiteralMDCINDEXPRESSVENTLDERIVPOS = "150504";
+
+    /// <summary>
+    /// Literal for code: NONEMDCINDEXPRESSVENTLDERIVPOS
+    /// </summary>
+    public const string LiteralNONEMDCINDEXPRESSVENTLDERIVPOS = "urn:iso:std:iso:11073:10101#150504";
 
     /// <summary>
     /// Literal for code: MDCINDEXPRESSVENTLDERIVPOSMAXDIVP
@@ -12627,9 +16237,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCINDEXPRESSVENTLDERIVPOSMAXDIVP = "150508";
 
     /// <summary>
+    /// Literal for code: NONEMDCINDEXPRESSVENTLDERIVPOSMAXDIVP
+    /// </summary>
+    public const string LiteralNONEMDCINDEXPRESSVENTLDERIVPOSMAXDIVP = "urn:iso:std:iso:11073:10101#150508";
+
+    /// <summary>
     /// Literal for code: MDCINDEXPRESSVENTLDERIVNEGMAX
     /// </summary>
     public const string LiteralMDCINDEXPRESSVENTLDERIVNEGMAX = "150512";
+
+    /// <summary>
+    /// Literal for code: NONEMDCINDEXPRESSVENTLDERIVNEGMAX
+    /// </summary>
+    public const string LiteralNONEMDCINDEXPRESSVENTLDERIVNEGMAX = "urn:iso:std:iso:11073:10101#150512";
 
     /// <summary>
     /// Literal for code: MDCINDEXPRESSVENTLRELAX
@@ -12637,9 +16257,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCINDEXPRESSVENTLRELAX = "150516";
 
     /// <summary>
+    /// Literal for code: NONEMDCINDEXPRESSVENTLRELAX
+    /// </summary>
+    public const string LiteralNONEMDCINDEXPRESSVENTLRELAX = "urn:iso:std:iso:11073:10101#150516";
+
+    /// <summary>
     /// Literal for code: MDCTIMEPDVENTLAORTVALV
     /// </summary>
     public const string LiteralMDCTIMEPDVENTLAORTVALV = "150520";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTIMEPDVENTLAORTVALV
+    /// </summary>
+    public const string LiteralNONEMDCTIMEPDVENTLAORTVALV = "urn:iso:std:iso:11073:10101#150520";
 
     /// <summary>
     /// Literal for code: MDCTIMEPDVENTLAORTVALVDIAFILL
@@ -12647,9 +16277,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTIMEPDVENTLAORTVALVDIAFILL = "150524";
 
     /// <summary>
+    /// Literal for code: NONEMDCTIMEPDVENTLAORTVALVDIAFILL
+    /// </summary>
+    public const string LiteralNONEMDCTIMEPDVENTLAORTVALVDIAFILL = "urn:iso:std:iso:11073:10101#150524";
+
+    /// <summary>
     /// Literal for code: MDCVOLVENTLENDDIA
     /// </summary>
     public const string LiteralMDCVOLVENTLENDDIA = "150528";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVOLVENTLENDDIA
+    /// </summary>
+    public const string LiteralNONEMDCVOLVENTLENDDIA = "urn:iso:std:iso:11073:10101#150528";
 
     /// <summary>
     /// Literal for code: MDCVOLVENTLENDSYS
@@ -12657,9 +16297,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVOLVENTLENDSYS = "150532";
 
     /// <summary>
+    /// Literal for code: NONEMDCVOLVENTLENDSYS
+    /// </summary>
+    public const string LiteralNONEMDCVOLVENTLENDSYS = "urn:iso:std:iso:11073:10101#150532";
+
+    /// <summary>
     /// Literal for code: MDCGRADPRESSBLDMITRAL
     /// </summary>
     public const string LiteralMDCGRADPRESSBLDMITRAL = "150536";
+
+    /// <summary>
+    /// Literal for code: NONEMDCGRADPRESSBLDMITRAL
+    /// </summary>
+    public const string LiteralNONEMDCGRADPRESSBLDMITRAL = "urn:iso:std:iso:11073:10101#150536";
 
     /// <summary>
     /// Literal for code: MDCGRADPRESSBLDMITRALMEAN
@@ -12667,9 +16317,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCGRADPRESSBLDMITRALMEAN = "150539";
 
     /// <summary>
+    /// Literal for code: NONEMDCGRADPRESSBLDMITRALMEAN
+    /// </summary>
+    public const string LiteralNONEMDCGRADPRESSBLDMITRALMEAN = "urn:iso:std:iso:11073:10101#150539";
+
+    /// <summary>
     /// Literal for code: MDCGRADPRESSBLDMITRALPOS
     /// </summary>
     public const string LiteralMDCGRADPRESSBLDMITRALPOS = "150540";
+
+    /// <summary>
+    /// Literal for code: NONEMDCGRADPRESSBLDMITRALPOS
+    /// </summary>
+    public const string LiteralNONEMDCGRADPRESSBLDMITRALPOS = "urn:iso:std:iso:11073:10101#150540";
 
     /// <summary>
     /// Literal for code: MDCGRADPRESSBLDMITRALPOSMAX
@@ -12677,9 +16337,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCGRADPRESSBLDMITRALPOSMAX = "150541";
 
     /// <summary>
+    /// Literal for code: NONEMDCGRADPRESSBLDMITRALPOSMAX
+    /// </summary>
+    public const string LiteralNONEMDCGRADPRESSBLDMITRALPOSMAX = "urn:iso:std:iso:11073:10101#150541";
+
+    /// <summary>
     /// Literal for code: MDCGRADPRESSBLDTRICUSP
     /// </summary>
     public const string LiteralMDCGRADPRESSBLDTRICUSP = "150544";
+
+    /// <summary>
+    /// Literal for code: NONEMDCGRADPRESSBLDTRICUSP
+    /// </summary>
+    public const string LiteralNONEMDCGRADPRESSBLDTRICUSP = "urn:iso:std:iso:11073:10101#150544";
 
     /// <summary>
     /// Literal for code: MDCGRADPRESSBLDTRICUSPMEAN
@@ -12687,9 +16357,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCGRADPRESSBLDTRICUSPMEAN = "150547";
 
     /// <summary>
+    /// Literal for code: NONEMDCGRADPRESSBLDTRICUSPMEAN
+    /// </summary>
+    public const string LiteralNONEMDCGRADPRESSBLDTRICUSPMEAN = "urn:iso:std:iso:11073:10101#150547";
+
+    /// <summary>
     /// Literal for code: MDCGRADPRESSBLDTRICUSPPOS
     /// </summary>
     public const string LiteralMDCGRADPRESSBLDTRICUSPPOS = "150548";
+
+    /// <summary>
+    /// Literal for code: NONEMDCGRADPRESSBLDTRICUSPPOS
+    /// </summary>
+    public const string LiteralNONEMDCGRADPRESSBLDTRICUSPPOS = "urn:iso:std:iso:11073:10101#150548";
 
     /// <summary>
     /// Literal for code: MDCGRADPRESSBLDTRICUSPPOSMAX
@@ -12697,9 +16377,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCGRADPRESSBLDTRICUSPPOSMAX = "150549";
 
     /// <summary>
+    /// Literal for code: NONEMDCGRADPRESSBLDTRICUSPPOSMAX
+    /// </summary>
+    public const string LiteralNONEMDCGRADPRESSBLDTRICUSPPOSMAX = "urn:iso:std:iso:11073:10101#150549";
+
+    /// <summary>
     /// Literal for code: MDCGRADPRESSBLDPULM
     /// </summary>
     public const string LiteralMDCGRADPRESSBLDPULM = "150552";
+
+    /// <summary>
+    /// Literal for code: NONEMDCGRADPRESSBLDPULM
+    /// </summary>
+    public const string LiteralNONEMDCGRADPRESSBLDPULM = "urn:iso:std:iso:11073:10101#150552";
 
     /// <summary>
     /// Literal for code: MDCGRADPRESSBLDPULMMEAN
@@ -12707,9 +16397,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCGRADPRESSBLDPULMMEAN = "150555";
 
     /// <summary>
+    /// Literal for code: NONEMDCGRADPRESSBLDPULMMEAN
+    /// </summary>
+    public const string LiteralNONEMDCGRADPRESSBLDPULMMEAN = "urn:iso:std:iso:11073:10101#150555";
+
+    /// <summary>
     /// Literal for code: MDCGRADPRESSBLDPULMPOS
     /// </summary>
     public const string LiteralMDCGRADPRESSBLDPULMPOS = "150556";
+
+    /// <summary>
+    /// Literal for code: NONEMDCGRADPRESSBLDPULMPOS
+    /// </summary>
+    public const string LiteralNONEMDCGRADPRESSBLDPULMPOS = "urn:iso:std:iso:11073:10101#150556";
 
     /// <summary>
     /// Literal for code: MDCGRADPRESSBLDPULMPOSMAX
@@ -12717,9 +16417,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCGRADPRESSBLDPULMPOSMAX = "150557";
 
     /// <summary>
+    /// Literal for code: NONEMDCGRADPRESSBLDPULMPOSMAX
+    /// </summary>
+    public const string LiteralNONEMDCGRADPRESSBLDPULMPOSMAX = "urn:iso:std:iso:11073:10101#150557";
+
+    /// <summary>
     /// Literal for code: MDCGRADPRESSBLDAORT
     /// </summary>
     public const string LiteralMDCGRADPRESSBLDAORT = "150560";
+
+    /// <summary>
+    /// Literal for code: NONEMDCGRADPRESSBLDAORT
+    /// </summary>
+    public const string LiteralNONEMDCGRADPRESSBLDAORT = "urn:iso:std:iso:11073:10101#150560";
 
     /// <summary>
     /// Literal for code: MDCGRADPRESSBLDAORTMEAN
@@ -12727,9 +16437,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCGRADPRESSBLDAORTMEAN = "150563";
 
     /// <summary>
+    /// Literal for code: NONEMDCGRADPRESSBLDAORTMEAN
+    /// </summary>
+    public const string LiteralNONEMDCGRADPRESSBLDAORTMEAN = "urn:iso:std:iso:11073:10101#150563";
+
+    /// <summary>
     /// Literal for code: MDCGRADPRESSBLDAORTPOS
     /// </summary>
     public const string LiteralMDCGRADPRESSBLDAORTPOS = "150564";
+
+    /// <summary>
+    /// Literal for code: NONEMDCGRADPRESSBLDAORTPOS
+    /// </summary>
+    public const string LiteralNONEMDCGRADPRESSBLDAORTPOS = "urn:iso:std:iso:11073:10101#150564";
 
     /// <summary>
     /// Literal for code: MDCGRADPRESSBLDAORTPOSMAX
@@ -12737,9 +16457,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCGRADPRESSBLDAORTPOSMAX = "150565";
 
     /// <summary>
+    /// Literal for code: NONEMDCGRADPRESSBLDAORTPOSMAX
+    /// </summary>
+    public const string LiteralNONEMDCGRADPRESSBLDAORTPOSMAX = "urn:iso:std:iso:11073:10101#150565";
+
+    /// <summary>
     /// Literal for code: MDCTRANSMISSION
     /// </summary>
     public const string LiteralMDCTRANSMISSION = "150568";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTRANSMISSION
+    /// </summary>
+    public const string LiteralNONEMDCTRANSMISSION = "urn:iso:std:iso:11073:10101#150568";
 
     /// <summary>
     /// Literal for code: MDCTRANSMISSIONRED
@@ -12747,9 +16477,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTRANSMISSIONRED = "150572";
 
     /// <summary>
+    /// Literal for code: NONEMDCTRANSMISSIONRED
+    /// </summary>
+    public const string LiteralNONEMDCTRANSMISSIONRED = "urn:iso:std:iso:11073:10101#150572";
+
+    /// <summary>
     /// Literal for code: MDCTRANSMISSIONINFRARED
     /// </summary>
     public const string LiteralMDCTRANSMISSIONINFRARED = "150576";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTRANSMISSIONINFRARED
+    /// </summary>
+    public const string LiteralNONEMDCTRANSMISSIONINFRARED = "urn:iso:std:iso:11073:10101#150576";
 
     /// <summary>
     /// Literal for code: MDCMODALITYFAST
@@ -12757,9 +16497,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCMODALITYFAST = "150580";
 
     /// <summary>
+    /// Literal for code: NONEMDCMODALITYFAST
+    /// </summary>
+    public const string LiteralNONEMDCMODALITYFAST = "urn:iso:std:iso:11073:10101#150580";
+
+    /// <summary>
     /// Literal for code: MDCMODALITYFASTMAX
     /// </summary>
     public const string LiteralMDCMODALITYFASTMAX = "150581";
+
+    /// <summary>
+    /// Literal for code: NONEMDCMODALITYFASTMAX
+    /// </summary>
+    public const string LiteralNONEMDCMODALITYFASTMAX = "urn:iso:std:iso:11073:10101#150581";
 
     /// <summary>
     /// Literal for code: MDCMODALITYFASTMIN
@@ -12767,9 +16517,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCMODALITYFASTMIN = "150582";
 
     /// <summary>
+    /// Literal for code: NONEMDCMODALITYFASTMIN
+    /// </summary>
+    public const string LiteralNONEMDCMODALITYFASTMIN = "urn:iso:std:iso:11073:10101#150582";
+
+    /// <summary>
     /// Literal for code: MDCMODALITYFASTMEAN
     /// </summary>
     public const string LiteralMDCMODALITYFASTMEAN = "150583";
+
+    /// <summary>
+    /// Literal for code: NONEMDCMODALITYFASTMEAN
+    /// </summary>
+    public const string LiteralNONEMDCMODALITYFASTMEAN = "urn:iso:std:iso:11073:10101#150583";
 
     /// <summary>
     /// Literal for code: MDCMODALITYSLOW
@@ -12777,9 +16537,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCMODALITYSLOW = "150584";
 
     /// <summary>
+    /// Literal for code: NONEMDCMODALITYSLOW
+    /// </summary>
+    public const string LiteralNONEMDCMODALITYSLOW = "urn:iso:std:iso:11073:10101#150584";
+
+    /// <summary>
     /// Literal for code: MDCMODALITYSLOWMAX
     /// </summary>
     public const string LiteralMDCMODALITYSLOWMAX = "150585";
+
+    /// <summary>
+    /// Literal for code: NONEMDCMODALITYSLOWMAX
+    /// </summary>
+    public const string LiteralNONEMDCMODALITYSLOWMAX = "urn:iso:std:iso:11073:10101#150585";
 
     /// <summary>
     /// Literal for code: MDCMODALITYSLOWMIN
@@ -12787,9 +16557,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCMODALITYSLOWMIN = "150586";
 
     /// <summary>
+    /// Literal for code: NONEMDCMODALITYSLOWMIN
+    /// </summary>
+    public const string LiteralNONEMDCMODALITYSLOWMIN = "urn:iso:std:iso:11073:10101#150586";
+
+    /// <summary>
     /// Literal for code: MDCMODALITYSLOWMEAN
     /// </summary>
     public const string LiteralMDCMODALITYSLOWMEAN = "150587";
+
+    /// <summary>
+    /// Literal for code: NONEMDCMODALITYSLOWMEAN
+    /// </summary>
+    public const string LiteralNONEMDCMODALITYSLOWMEAN = "urn:iso:std:iso:11073:10101#150587";
 
     /// <summary>
     /// Literal for code: MDCMODALITYSPOT
@@ -12797,9 +16577,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCMODALITYSPOT = "150588";
 
     /// <summary>
+    /// Literal for code: NONEMDCMODALITYSPOT
+    /// </summary>
+    public const string LiteralNONEMDCMODALITYSPOT = "urn:iso:std:iso:11073:10101#150588";
+
+    /// <summary>
     /// Literal for code: MDCMODALITYSPOTMAX
     /// </summary>
     public const string LiteralMDCMODALITYSPOTMAX = "150589";
+
+    /// <summary>
+    /// Literal for code: NONEMDCMODALITYSPOTMAX
+    /// </summary>
+    public const string LiteralNONEMDCMODALITYSPOTMAX = "urn:iso:std:iso:11073:10101#150589";
 
     /// <summary>
     /// Literal for code: MDCMODALITYSPOTMIN
@@ -12807,9 +16597,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCMODALITYSPOTMIN = "150590";
 
     /// <summary>
+    /// Literal for code: NONEMDCMODALITYSPOTMIN
+    /// </summary>
+    public const string LiteralNONEMDCMODALITYSPOTMIN = "urn:iso:std:iso:11073:10101#150590";
+
+    /// <summary>
     /// Literal for code: MDCMODALITYSPOTMEAN
     /// </summary>
     public const string LiteralMDCMODALITYSPOTMEAN = "150591";
+
+    /// <summary>
+    /// Literal for code: NONEMDCMODALITYSPOTMEAN
+    /// </summary>
+    public const string LiteralNONEMDCMODALITYSPOTMEAN = "urn:iso:std:iso:11073:10101#150591";
 
     /// <summary>
     /// Literal for code: MDCPULSOXIMDEVSTATUS
@@ -12817,9 +16617,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPULSOXIMDEVSTATUS = "150604";
 
     /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMDEVSTATUS
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMDEVSTATUS = "urn:iso:std:iso:11073:10101#150604";
+
+    /// <summary>
     /// Literal for code: MDCPULSOXIMPULSCHAR
     /// </summary>
     public const string LiteralMDCPULSOXIMPULSCHAR = "150605";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMPULSCHAR
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMPULSCHAR = "urn:iso:std:iso:11073:10101#150605";
 
     /// <summary>
     /// Literal for code: MDCACCELERATIONINDEX
@@ -12827,9 +16637,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCACCELERATIONINDEX = "150612";
 
     /// <summary>
+    /// Literal for code: NONEMDCACCELERATIONINDEX
+    /// </summary>
+    public const string LiteralNONEMDCACCELERATIONINDEX = "urn:iso:std:iso:11073:10101#150612";
+
+    /// <summary>
     /// Literal for code: MDCACCELERATIONINDEXMAX
     /// </summary>
     public const string LiteralMDCACCELERATIONINDEXMAX = "150613";
+
+    /// <summary>
+    /// Literal for code: NONEMDCACCELERATIONINDEXMAX
+    /// </summary>
+    public const string LiteralNONEMDCACCELERATIONINDEXMAX = "urn:iso:std:iso:11073:10101#150613";
 
     /// <summary>
     /// Literal for code: MDCACCELERATIONINDEXMIN
@@ -12837,9 +16657,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCACCELERATIONINDEXMIN = "150614";
 
     /// <summary>
+    /// Literal for code: NONEMDCACCELERATIONINDEXMIN
+    /// </summary>
+    public const string LiteralNONEMDCACCELERATIONINDEXMIN = "urn:iso:std:iso:11073:10101#150614";
+
+    /// <summary>
     /// Literal for code: MDCACCELERATIONINDEXMEAN
     /// </summary>
     public const string LiteralMDCACCELERATIONINDEXMEAN = "150615";
+
+    /// <summary>
+    /// Literal for code: NONEMDCACCELERATIONINDEXMEAN
+    /// </summary>
+    public const string LiteralNONEMDCACCELERATIONINDEXMEAN = "urn:iso:std:iso:11073:10101#150615";
 
     /// <summary>
     /// Literal for code: MDCSYSTOLICTIMERATIO
@@ -12847,9 +16677,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCSYSTOLICTIMERATIO = "150616";
 
     /// <summary>
+    /// Literal for code: NONEMDCSYSTOLICTIMERATIO
+    /// </summary>
+    public const string LiteralNONEMDCSYSTOLICTIMERATIO = "urn:iso:std:iso:11073:10101#150616";
+
+    /// <summary>
     /// Literal for code: MDCSYSTOLICTIMERATIOMAX
     /// </summary>
     public const string LiteralMDCSYSTOLICTIMERATIOMAX = "150617";
+
+    /// <summary>
+    /// Literal for code: NONEMDCSYSTOLICTIMERATIOMAX
+    /// </summary>
+    public const string LiteralNONEMDCSYSTOLICTIMERATIOMAX = "urn:iso:std:iso:11073:10101#150617";
 
     /// <summary>
     /// Literal for code: MDCSYSTOLICTIMERATIOMIN
@@ -12857,9 +16697,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCSYSTOLICTIMERATIOMIN = "150618";
 
     /// <summary>
+    /// Literal for code: NONEMDCSYSTOLICTIMERATIOMIN
+    /// </summary>
+    public const string LiteralNONEMDCSYSTOLICTIMERATIOMIN = "urn:iso:std:iso:11073:10101#150618";
+
+    /// <summary>
     /// Literal for code: MDCSYSTOLICTIMERATIOMEAN
     /// </summary>
     public const string LiteralMDCSYSTOLICTIMERATIOMEAN = "150619";
+
+    /// <summary>
+    /// Literal for code: NONEMDCSYSTOLICTIMERATIOMEAN
+    /// </summary>
+    public const string LiteralNONEMDCSYSTOLICTIMERATIOMEAN = "urn:iso:std:iso:11073:10101#150619";
 
     /// <summary>
     /// Literal for code: MDCTHORACICFLUIDCONTENT
@@ -12867,9 +16717,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTHORACICFLUIDCONTENT = "150620";
 
     /// <summary>
+    /// Literal for code: NONEMDCTHORACICFLUIDCONTENT
+    /// </summary>
+    public const string LiteralNONEMDCTHORACICFLUIDCONTENT = "urn:iso:std:iso:11073:10101#150620";
+
+    /// <summary>
     /// Literal for code: MDCTHORACICFLUIDCONTENTMAX
     /// </summary>
     public const string LiteralMDCTHORACICFLUIDCONTENTMAX = "150621";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTHORACICFLUIDCONTENTMAX
+    /// </summary>
+    public const string LiteralNONEMDCTHORACICFLUIDCONTENTMAX = "urn:iso:std:iso:11073:10101#150621";
 
     /// <summary>
     /// Literal for code: MDCTHORACICFLUIDCONTENTMIN
@@ -12877,9 +16737,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTHORACICFLUIDCONTENTMIN = "150622";
 
     /// <summary>
+    /// Literal for code: NONEMDCTHORACICFLUIDCONTENTMIN
+    /// </summary>
+    public const string LiteralNONEMDCTHORACICFLUIDCONTENTMIN = "urn:iso:std:iso:11073:10101#150622";
+
+    /// <summary>
     /// Literal for code: MDCTHORACICFLUIDCONTENTMEAN
     /// </summary>
     public const string LiteralMDCTHORACICFLUIDCONTENTMEAN = "150623";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTHORACICFLUIDCONTENTMEAN
+    /// </summary>
+    public const string LiteralNONEMDCTHORACICFLUIDCONTENTMEAN = "urn:iso:std:iso:11073:10101#150623";
 
     /// <summary>
     /// Literal for code: MDCTIMEPDVENTLAORTEJCT
@@ -12887,9 +16757,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTIMEPDVENTLAORTEJCT = "150624";
 
     /// <summary>
+    /// Literal for code: NONEMDCTIMEPDVENTLAORTEJCT
+    /// </summary>
+    public const string LiteralNONEMDCTIMEPDVENTLAORTEJCT = "urn:iso:std:iso:11073:10101#150624";
+
+    /// <summary>
     /// Literal for code: MDCTIMEPDVENTLAORTEJCTMAX
     /// </summary>
     public const string LiteralMDCTIMEPDVENTLAORTEJCTMAX = "150625";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTIMEPDVENTLAORTEJCTMAX
+    /// </summary>
+    public const string LiteralNONEMDCTIMEPDVENTLAORTEJCTMAX = "urn:iso:std:iso:11073:10101#150625";
 
     /// <summary>
     /// Literal for code: MDCTIMEPDVENTLAORTEJCTMIN
@@ -12897,9 +16777,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTIMEPDVENTLAORTEJCTMIN = "150626";
 
     /// <summary>
+    /// Literal for code: NONEMDCTIMEPDVENTLAORTEJCTMIN
+    /// </summary>
+    public const string LiteralNONEMDCTIMEPDVENTLAORTEJCTMIN = "urn:iso:std:iso:11073:10101#150626";
+
+    /// <summary>
     /// Literal for code: MDCTIMEPDVENTLAORTEJCTMEAN
     /// </summary>
     public const string LiteralMDCTIMEPDVENTLAORTEJCTMEAN = "150627";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTIMEPDVENTLAORTEJCTMEAN
+    /// </summary>
+    public const string LiteralNONEMDCTIMEPDVENTLAORTEJCTMEAN = "urn:iso:std:iso:11073:10101#150627";
 
     /// <summary>
     /// Literal for code: MDCTIMEPDVENTLAORTPREEJCT
@@ -12907,9 +16797,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTIMEPDVENTLAORTPREEJCT = "150628";
 
     /// <summary>
+    /// Literal for code: NONEMDCTIMEPDVENTLAORTPREEJCT
+    /// </summary>
+    public const string LiteralNONEMDCTIMEPDVENTLAORTPREEJCT = "urn:iso:std:iso:11073:10101#150628";
+
+    /// <summary>
     /// Literal for code: MDCTIMEPDVENTLAORTPREEJCTMAX
     /// </summary>
     public const string LiteralMDCTIMEPDVENTLAORTPREEJCTMAX = "150629";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTIMEPDVENTLAORTPREEJCTMAX
+    /// </summary>
+    public const string LiteralNONEMDCTIMEPDVENTLAORTPREEJCTMAX = "urn:iso:std:iso:11073:10101#150629";
 
     /// <summary>
     /// Literal for code: MDCTIMEPDVENTLAORTPREEJCTMIN
@@ -12917,9 +16817,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTIMEPDVENTLAORTPREEJCTMIN = "150630";
 
     /// <summary>
+    /// Literal for code: NONEMDCTIMEPDVENTLAORTPREEJCTMIN
+    /// </summary>
+    public const string LiteralNONEMDCTIMEPDVENTLAORTPREEJCTMIN = "urn:iso:std:iso:11073:10101#150630";
+
+    /// <summary>
     /// Literal for code: MDCTIMEPDVENTLAORTPREEJCTMEAN
     /// </summary>
     public const string LiteralMDCTIMEPDVENTLAORTPREEJCTMEAN = "150631";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTIMEPDVENTLAORTPREEJCTMEAN
+    /// </summary>
+    public const string LiteralNONEMDCTIMEPDVENTLAORTPREEJCTMEAN = "urn:iso:std:iso:11073:10101#150631";
 
     /// <summary>
     /// Literal for code: MDCVELOCITYINDEX
@@ -12927,9 +16837,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVELOCITYINDEX = "150632";
 
     /// <summary>
+    /// Literal for code: NONEMDCVELOCITYINDEX
+    /// </summary>
+    public const string LiteralNONEMDCVELOCITYINDEX = "urn:iso:std:iso:11073:10101#150632";
+
+    /// <summary>
     /// Literal for code: MDCVELOCITYINDEXMAX
     /// </summary>
     public const string LiteralMDCVELOCITYINDEXMAX = "150633";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVELOCITYINDEXMAX
+    /// </summary>
+    public const string LiteralNONEMDCVELOCITYINDEXMAX = "urn:iso:std:iso:11073:10101#150633";
 
     /// <summary>
     /// Literal for code: MDCVELOCITYINDEXMIN
@@ -12937,9 +16857,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVELOCITYINDEXMIN = "150634";
 
     /// <summary>
+    /// Literal for code: NONEMDCVELOCITYINDEXMIN
+    /// </summary>
+    public const string LiteralNONEMDCVELOCITYINDEXMIN = "urn:iso:std:iso:11073:10101#150634";
+
+    /// <summary>
     /// Literal for code: MDCVELOCITYINDEXMEAN
     /// </summary>
     public const string LiteralMDCVELOCITYINDEXMEAN = "150635";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVELOCITYINDEXMEAN
+    /// </summary>
+    public const string LiteralNONEMDCVELOCITYINDEXMEAN = "urn:iso:std:iso:11073:10101#150635";
 
     /// <summary>
     /// Literal for code: MDCVOLBLDSTROKEINDEX
@@ -12947,9 +16877,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVOLBLDSTROKEINDEX = "150636";
 
     /// <summary>
+    /// Literal for code: NONEMDCVOLBLDSTROKEINDEX
+    /// </summary>
+    public const string LiteralNONEMDCVOLBLDSTROKEINDEX = "urn:iso:std:iso:11073:10101#150636";
+
+    /// <summary>
     /// Literal for code: MDCVOLBLDSTROKEINDEXMAX
     /// </summary>
     public const string LiteralMDCVOLBLDSTROKEINDEXMAX = "150637";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVOLBLDSTROKEINDEXMAX
+    /// </summary>
+    public const string LiteralNONEMDCVOLBLDSTROKEINDEXMAX = "urn:iso:std:iso:11073:10101#150637";
 
     /// <summary>
     /// Literal for code: MDCVOLBLDSTROKEINDEXMIN
@@ -12957,9 +16897,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVOLBLDSTROKEINDEXMIN = "150638";
 
     /// <summary>
+    /// Literal for code: NONEMDCVOLBLDSTROKEINDEXMIN
+    /// </summary>
+    public const string LiteralNONEMDCVOLBLDSTROKEINDEXMIN = "urn:iso:std:iso:11073:10101#150638";
+
+    /// <summary>
     /// Literal for code: MDCVOLBLDSTROKEINDEXMEAN
     /// </summary>
     public const string LiteralMDCVOLBLDSTROKEINDEXMEAN = "150639";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVOLBLDSTROKEINDEXMEAN
+    /// </summary>
+    public const string LiteralNONEMDCVOLBLDSTROKEINDEXMEAN = "urn:iso:std:iso:11073:10101#150639";
 
     /// <summary>
     /// Literal for code: MDCWKLVWORKINDEX
@@ -12967,9 +16917,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCWKLVWORKINDEX = "150640";
 
     /// <summary>
+    /// Literal for code: NONEMDCWKLVWORKINDEX
+    /// </summary>
+    public const string LiteralNONEMDCWKLVWORKINDEX = "urn:iso:std:iso:11073:10101#150640";
+
+    /// <summary>
     /// Literal for code: MDCWKLVWORKINDEXMAX
     /// </summary>
     public const string LiteralMDCWKLVWORKINDEXMAX = "150641";
+
+    /// <summary>
+    /// Literal for code: NONEMDCWKLVWORKINDEXMAX
+    /// </summary>
+    public const string LiteralNONEMDCWKLVWORKINDEXMAX = "urn:iso:std:iso:11073:10101#150641";
 
     /// <summary>
     /// Literal for code: MDCWKLVWORKINDEXMIN
@@ -12977,9 +16937,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCWKLVWORKINDEXMIN = "150642";
 
     /// <summary>
+    /// Literal for code: NONEMDCWKLVWORKINDEXMIN
+    /// </summary>
+    public const string LiteralNONEMDCWKLVWORKINDEXMIN = "urn:iso:std:iso:11073:10101#150642";
+
+    /// <summary>
     /// Literal for code: MDCWKLVWORKINDEXMEAN
     /// </summary>
     public const string LiteralMDCWKLVWORKINDEXMEAN = "150643";
+
+    /// <summary>
+    /// Literal for code: NONEMDCWKLVWORKINDEXMEAN
+    /// </summary>
+    public const string LiteralNONEMDCWKLVWORKINDEXMEAN = "urn:iso:std:iso:11073:10101#150643";
 
     /// <summary>
     /// Literal for code: MDCWKRVSTROKEINDEX
@@ -12987,9 +16957,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCWKRVSTROKEINDEX = "150644";
 
     /// <summary>
+    /// Literal for code: NONEMDCWKRVSTROKEINDEX
+    /// </summary>
+    public const string LiteralNONEMDCWKRVSTROKEINDEX = "urn:iso:std:iso:11073:10101#150644";
+
+    /// <summary>
     /// Literal for code: MDCWKRVSTROKEINDEXMAX
     /// </summary>
     public const string LiteralMDCWKRVSTROKEINDEXMAX = "150645";
+
+    /// <summary>
+    /// Literal for code: NONEMDCWKRVSTROKEINDEXMAX
+    /// </summary>
+    public const string LiteralNONEMDCWKRVSTROKEINDEXMAX = "urn:iso:std:iso:11073:10101#150645";
 
     /// <summary>
     /// Literal for code: MDCWKRVSTROKEINDEXMIN
@@ -12997,9 +16977,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCWKRVSTROKEINDEXMIN = "150646";
 
     /// <summary>
+    /// Literal for code: NONEMDCWKRVSTROKEINDEXMIN
+    /// </summary>
+    public const string LiteralNONEMDCWKRVSTROKEINDEXMIN = "urn:iso:std:iso:11073:10101#150646";
+
+    /// <summary>
     /// Literal for code: MDCWKRVSTROKEINDEXMEAN
     /// </summary>
     public const string LiteralMDCWKRVSTROKEINDEXMEAN = "150647";
+
+    /// <summary>
+    /// Literal for code: NONEMDCWKRVSTROKEINDEXMEAN
+    /// </summary>
+    public const string LiteralNONEMDCWKRVSTROKEINDEXMEAN = "urn:iso:std:iso:11073:10101#150647";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDARTFEMORAL
@@ -13007,9 +16997,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDARTFEMORAL = "150648";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTFEMORAL
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTFEMORAL = "urn:iso:std:iso:11073:10101#150648";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDARTFEMORALSYS
     /// </summary>
     public const string LiteralMDCPRESSBLDARTFEMORALSYS = "150649";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTFEMORALSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTFEMORALSYS = "urn:iso:std:iso:11073:10101#150649";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDARTFEMORALDIA
@@ -13017,9 +17017,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDARTFEMORALDIA = "150650";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTFEMORALDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTFEMORALDIA = "urn:iso:std:iso:11073:10101#150650";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDARTFEMORALMEAN
     /// </summary>
     public const string LiteralMDCPRESSBLDARTFEMORALMEAN = "150651";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTFEMORALMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTFEMORALMEAN = "urn:iso:std:iso:11073:10101#150651";
 
     /// <summary>
     /// Literal for code: MDCFLOWBLDPULMCAP
@@ -13027,9 +17037,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCFLOWBLDPULMCAP = "150652";
 
     /// <summary>
+    /// Literal for code: NONEMDCFLOWBLDPULMCAP
+    /// </summary>
+    public const string LiteralNONEMDCFLOWBLDPULMCAP = "urn:iso:std:iso:11073:10101#150652";
+
+    /// <summary>
     /// Literal for code: MDCFLOWBLDPULMCAPMAX
     /// </summary>
     public const string LiteralMDCFLOWBLDPULMCAPMAX = "150653";
+
+    /// <summary>
+    /// Literal for code: NONEMDCFLOWBLDPULMCAPMAX
+    /// </summary>
+    public const string LiteralNONEMDCFLOWBLDPULMCAPMAX = "urn:iso:std:iso:11073:10101#150653";
 
     /// <summary>
     /// Literal for code: MDCFLOWBLDPULMCAPMIN
@@ -13037,9 +17057,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCFLOWBLDPULMCAPMIN = "150654";
 
     /// <summary>
+    /// Literal for code: NONEMDCFLOWBLDPULMCAPMIN
+    /// </summary>
+    public const string LiteralNONEMDCFLOWBLDPULMCAPMIN = "urn:iso:std:iso:11073:10101#150654";
+
+    /// <summary>
     /// Literal for code: MDCFLOWBLDPULMCAPMEAN
     /// </summary>
     public const string LiteralMDCFLOWBLDPULMCAPMEAN = "150655";
+
+    /// <summary>
+    /// Literal for code: NONEMDCFLOWBLDPULMCAPMEAN
+    /// </summary>
+    public const string LiteralNONEMDCFLOWBLDPULMCAPMEAN = "urn:iso:std:iso:11073:10101#150655";
 
     /// <summary>
     /// Literal for code: MDCO2OXYGENATIONRATIO
@@ -13047,9 +17077,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCO2OXYGENATIONRATIO = "150656";
 
     /// <summary>
+    /// Literal for code: NONEMDCO2OXYGENATIONRATIO
+    /// </summary>
+    public const string LiteralNONEMDCO2OXYGENATIONRATIO = "urn:iso:std:iso:11073:10101#150656";
+
+    /// <summary>
     /// Literal for code: MDCO2OXYGENATIONRATIOMAX
     /// </summary>
     public const string LiteralMDCO2OXYGENATIONRATIOMAX = "150657";
+
+    /// <summary>
+    /// Literal for code: NONEMDCO2OXYGENATIONRATIOMAX
+    /// </summary>
+    public const string LiteralNONEMDCO2OXYGENATIONRATIOMAX = "urn:iso:std:iso:11073:10101#150657";
 
     /// <summary>
     /// Literal for code: MDCO2OXYGENATIONRATIOMIN
@@ -13057,9 +17097,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCO2OXYGENATIONRATIOMIN = "150658";
 
     /// <summary>
+    /// Literal for code: NONEMDCO2OXYGENATIONRATIOMIN
+    /// </summary>
+    public const string LiteralNONEMDCO2OXYGENATIONRATIOMIN = "urn:iso:std:iso:11073:10101#150658";
+
+    /// <summary>
     /// Literal for code: MDCO2OXYGENATIONRATIOMEAN
     /// </summary>
     public const string LiteralMDCO2OXYGENATIONRATIOMEAN = "150659";
+
+    /// <summary>
+    /// Literal for code: NONEMDCO2OXYGENATIONRATIOMEAN
+    /// </summary>
+    public const string LiteralNONEMDCO2OXYGENATIONRATIOMEAN = "urn:iso:std:iso:11073:10101#150659";
 
     /// <summary>
     /// Literal for code: MDCOUTPUTCARDIACFICK
@@ -13067,9 +17117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCOUTPUTCARDIACFICK = "150660";
 
     /// <summary>
+    /// Literal for code: NONEMDCOUTPUTCARDIACFICK
+    /// </summary>
+    public const string LiteralNONEMDCOUTPUTCARDIACFICK = "urn:iso:std:iso:11073:10101#150660";
+
+    /// <summary>
     /// Literal for code: MDCOUTPUTCARDIACFICKMAX
     /// </summary>
     public const string LiteralMDCOUTPUTCARDIACFICKMAX = "150661";
+
+    /// <summary>
+    /// Literal for code: NONEMDCOUTPUTCARDIACFICKMAX
+    /// </summary>
+    public const string LiteralNONEMDCOUTPUTCARDIACFICKMAX = "urn:iso:std:iso:11073:10101#150661";
 
     /// <summary>
     /// Literal for code: MDCOUTPUTCARDIACFICKMIN
@@ -13077,9 +17137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCOUTPUTCARDIACFICKMIN = "150662";
 
     /// <summary>
+    /// Literal for code: NONEMDCOUTPUTCARDIACFICKMIN
+    /// </summary>
+    public const string LiteralNONEMDCOUTPUTCARDIACFICKMIN = "urn:iso:std:iso:11073:10101#150662";
+
+    /// <summary>
     /// Literal for code: MDCOUTPUTCARDIACFICKMEAN
     /// </summary>
     public const string LiteralMDCOUTPUTCARDIACFICKMEAN = "150663";
+
+    /// <summary>
+    /// Literal for code: NONEMDCOUTPUTCARDIACFICKMEAN
+    /// </summary>
+    public const string LiteralNONEMDCOUTPUTCARDIACFICKMEAN = "urn:iso:std:iso:11073:10101#150663";
 
     /// <summary>
     /// Literal for code: MDCSATO2CONSUMPINDEX
@@ -13087,9 +17157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCSATO2CONSUMPINDEX = "150664";
 
     /// <summary>
+    /// Literal for code: NONEMDCSATO2CONSUMPINDEX
+    /// </summary>
+    public const string LiteralNONEMDCSATO2CONSUMPINDEX = "urn:iso:std:iso:11073:10101#150664";
+
+    /// <summary>
     /// Literal for code: MDCSATO2CONSUMPINDEXMAX
     /// </summary>
     public const string LiteralMDCSATO2CONSUMPINDEXMAX = "150665";
+
+    /// <summary>
+    /// Literal for code: NONEMDCSATO2CONSUMPINDEXMAX
+    /// </summary>
+    public const string LiteralNONEMDCSATO2CONSUMPINDEXMAX = "urn:iso:std:iso:11073:10101#150665";
 
     /// <summary>
     /// Literal for code: MDCSATO2CONSUMPINDEXMIN
@@ -13097,9 +17177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCSATO2CONSUMPINDEXMIN = "150666";
 
     /// <summary>
+    /// Literal for code: NONEMDCSATO2CONSUMPINDEXMIN
+    /// </summary>
+    public const string LiteralNONEMDCSATO2CONSUMPINDEXMIN = "urn:iso:std:iso:11073:10101#150666";
+
+    /// <summary>
     /// Literal for code: MDCSATO2CONSUMPINDEXMEAN
     /// </summary>
     public const string LiteralMDCSATO2CONSUMPINDEXMEAN = "150667";
+
+    /// <summary>
+    /// Literal for code: NONEMDCSATO2CONSUMPINDEXMEAN
+    /// </summary>
+    public const string LiteralNONEMDCSATO2CONSUMPINDEXMEAN = "urn:iso:std:iso:11073:10101#150667";
 
     /// <summary>
     /// Literal for code: MDCSATO2DELIVINDEX
@@ -13107,9 +17197,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCSATO2DELIVINDEX = "150668";
 
     /// <summary>
+    /// Literal for code: NONEMDCSATO2DELIVINDEX
+    /// </summary>
+    public const string LiteralNONEMDCSATO2DELIVINDEX = "urn:iso:std:iso:11073:10101#150668";
+
+    /// <summary>
     /// Literal for code: MDCSATO2DELIVINDEXMAX
     /// </summary>
     public const string LiteralMDCSATO2DELIVINDEXMAX = "150669";
+
+    /// <summary>
+    /// Literal for code: NONEMDCSATO2DELIVINDEXMAX
+    /// </summary>
+    public const string LiteralNONEMDCSATO2DELIVINDEXMAX = "urn:iso:std:iso:11073:10101#150669";
 
     /// <summary>
     /// Literal for code: MDCSATO2DELIVINDEXMIN
@@ -13117,9 +17217,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCSATO2DELIVINDEXMIN = "150670";
 
     /// <summary>
+    /// Literal for code: NONEMDCSATO2DELIVINDEXMIN
+    /// </summary>
+    public const string LiteralNONEMDCSATO2DELIVINDEXMIN = "urn:iso:std:iso:11073:10101#150670";
+
+    /// <summary>
     /// Literal for code: MDCSATO2DELIVINDEXMEAN
     /// </summary>
     public const string LiteralMDCSATO2DELIVINDEXMEAN = "150671";
+
+    /// <summary>
+    /// Literal for code: NONEMDCSATO2DELIVINDEXMEAN
+    /// </summary>
+    public const string LiteralNONEMDCSATO2DELIVINDEXMEAN = "urn:iso:std:iso:11073:10101#150671";
 
     /// <summary>
     /// Literal for code: MDCSPO2OXYGENATIONRATIO
@@ -13127,9 +17237,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCSPO2OXYGENATIONRATIO = "150672";
 
     /// <summary>
+    /// Literal for code: NONEMDCSPO2OXYGENATIONRATIO
+    /// </summary>
+    public const string LiteralNONEMDCSPO2OXYGENATIONRATIO = "urn:iso:std:iso:11073:10101#150672";
+
+    /// <summary>
     /// Literal for code: MDCSPO2OXYGENATIONRATIOMAX
     /// </summary>
     public const string LiteralMDCSPO2OXYGENATIONRATIOMAX = "150673";
+
+    /// <summary>
+    /// Literal for code: NONEMDCSPO2OXYGENATIONRATIOMAX
+    /// </summary>
+    public const string LiteralNONEMDCSPO2OXYGENATIONRATIOMAX = "urn:iso:std:iso:11073:10101#150673";
 
     /// <summary>
     /// Literal for code: MDCSPO2OXYGENATIONRATIOMIN
@@ -13137,9 +17257,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCSPO2OXYGENATIONRATIOMIN = "150674";
 
     /// <summary>
+    /// Literal for code: NONEMDCSPO2OXYGENATIONRATIOMIN
+    /// </summary>
+    public const string LiteralNONEMDCSPO2OXYGENATIONRATIOMIN = "urn:iso:std:iso:11073:10101#150674";
+
+    /// <summary>
     /// Literal for code: MDCSPO2OXYGENATIONRATIOMEAN
     /// </summary>
     public const string LiteralMDCSPO2OXYGENATIONRATIOMEAN = "150675";
+
+    /// <summary>
+    /// Literal for code: NONEMDCSPO2OXYGENATIONRATIOMEAN
+    /// </summary>
+    public const string LiteralNONEMDCSPO2OXYGENATIONRATIOMEAN = "urn:iso:std:iso:11073:10101#150675";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDVENFEMORAL
@@ -13147,9 +17277,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDVENFEMORAL = "150676";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENFEMORAL
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENFEMORAL = "urn:iso:std:iso:11073:10101#150676";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDVENFEMORALSYS
     /// </summary>
     public const string LiteralMDCPRESSBLDVENFEMORALSYS = "150677";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENFEMORALSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENFEMORALSYS = "urn:iso:std:iso:11073:10101#150677";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDVENFEMORALDIA
@@ -13157,9 +17297,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDVENFEMORALDIA = "150678";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENFEMORALDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENFEMORALDIA = "urn:iso:std:iso:11073:10101#150678";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDVENFEMORALMEAN
     /// </summary>
     public const string LiteralMDCPRESSBLDVENFEMORALMEAN = "150679";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDVENFEMORALMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDVENFEMORALMEAN = "urn:iso:std:iso:11073:10101#150679";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDARTBRACHIAL
@@ -13167,9 +17317,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDARTBRACHIAL = "150680";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTBRACHIAL
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTBRACHIAL = "urn:iso:std:iso:11073:10101#150680";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDARTBRACHIALSYS
     /// </summary>
     public const string LiteralMDCPRESSBLDARTBRACHIALSYS = "150681";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTBRACHIALSYS
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTBRACHIALSYS = "urn:iso:std:iso:11073:10101#150681";
 
     /// <summary>
     /// Literal for code: MDCPRESSBLDARTBRACHIALDIA
@@ -13177,9 +17337,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSBLDARTBRACHIALDIA = "150682";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTBRACHIALDIA
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTBRACHIALDIA = "urn:iso:std:iso:11073:10101#150682";
+
+    /// <summary>
     /// Literal for code: MDCPRESSBLDARTBRACHIALMEAN
     /// </summary>
     public const string LiteralMDCPRESSBLDARTBRACHIALMEAN = "150683";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSBLDARTBRACHIALMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSBLDARTBRACHIALMEAN = "urn:iso:std:iso:11073:10101#150683";
 
     /// <summary>
     /// Literal for code: MDCXDIALYO2SAT
@@ -13187,9 +17357,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCXDIALYO2SAT = "150684";
 
     /// <summary>
+    /// Literal for code: NONEMDCXDIALYO2SAT
+    /// </summary>
+    public const string LiteralNONEMDCXDIALYO2SAT = "urn:iso:std:iso:11073:10101#150684";
+
+    /// <summary>
     /// Literal for code: MDCXDIALYO2SATMINNONALM
     /// </summary>
     public const string LiteralMDCXDIALYO2SATMINNONALM = "150685";
+
+    /// <summary>
+    /// Literal for code: NONEMDCXDIALYO2SATMINNONALM
+    /// </summary>
+    public const string LiteralNONEMDCXDIALYO2SATMINNONALM = "urn:iso:std:iso:11073:10101#150685";
 
     /// <summary>
     /// Literal for code: MDCRESP
@@ -13197,9 +17377,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCRESP = "151552";
 
     /// <summary>
+    /// Literal for code: NONEMDCRESP
+    /// </summary>
+    public const string LiteralNONEMDCRESP = "urn:iso:std:iso:11073:10101#151552";
+
+    /// <summary>
     /// Literal for code: MDCRESPCNT
     /// </summary>
     public const string LiteralMDCRESPCNT = "151553";
+
+    /// <summary>
+    /// Literal for code: NONEMDCRESPCNT
+    /// </summary>
+    public const string LiteralNONEMDCRESPCNT = "urn:iso:std:iso:11073:10101#151553";
 
     /// <summary>
     /// Literal for code: MDCRESPRATEMAX
@@ -13207,9 +17397,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCRESPRATEMAX = "151555";
 
     /// <summary>
+    /// Literal for code: NONEMDCRESPRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCRESPRATEMAX = "urn:iso:std:iso:11073:10101#151555";
+
+    /// <summary>
     /// Literal for code: MDCRESPRATEMIN
     /// </summary>
     public const string LiteralMDCRESPRATEMIN = "151556";
+
+    /// <summary>
+    /// Literal for code: NONEMDCRESPRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCRESPRATEMIN = "urn:iso:std:iso:11073:10101#151556";
 
     /// <summary>
     /// Literal for code: MDCRESPRATEMEAN
@@ -13217,9 +17417,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCRESPRATEMEAN = "151557";
 
     /// <summary>
+    /// Literal for code: NONEMDCRESPRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCRESPRATEMEAN = "urn:iso:std:iso:11073:10101#151557";
+
+    /// <summary>
     /// Literal for code: MDCRESPBREATH
     /// </summary>
     public const string LiteralMDCRESPBREATH = "151560";
+
+    /// <summary>
+    /// Literal for code: NONEMDCRESPBREATH
+    /// </summary>
+    public const string LiteralNONEMDCRESPBREATH = "urn:iso:std:iso:11073:10101#151560";
 
     /// <summary>
     /// Literal for code: MDCRESPRATE
@@ -13227,9 +17437,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCRESPRATE = "151562";
 
     /// <summary>
+    /// Literal for code: NONEMDCRESPRATE
+    /// </summary>
+    public const string LiteralNONEMDCRESPRATE = "urn:iso:std:iso:11073:10101#151562";
+
+    /// <summary>
     /// Literal for code: MDCAWAYRESP
     /// </summary>
     public const string LiteralMDCAWAYRESP = "151568";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYRESP
+    /// </summary>
+    public const string LiteralNONEMDCAWAYRESP = "urn:iso:std:iso:11073:10101#151568";
 
     /// <summary>
     /// Literal for code: MDCAWAYRESPCNT
@@ -13237,9 +17457,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYRESPCNT = "151569";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYRESPCNT
+    /// </summary>
+    public const string LiteralNONEMDCAWAYRESPCNT = "urn:iso:std:iso:11073:10101#151569";
+
+    /// <summary>
     /// Literal for code: MDCAWAYRESPRATE
     /// </summary>
     public const string LiteralMDCAWAYRESPRATE = "151570";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYRESPRATE
+    /// </summary>
+    public const string LiteralNONEMDCAWAYRESPRATE = "urn:iso:std:iso:11073:10101#151570";
 
     /// <summary>
     /// Literal for code: MDCAWAYRESPRATEMAX
@@ -13247,9 +17477,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYRESPRATEMAX = "151571";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYRESPRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCAWAYRESPRATEMAX = "urn:iso:std:iso:11073:10101#151571";
+
+    /// <summary>
     /// Literal for code: MDCAWAYRESPRATEMIN
     /// </summary>
     public const string LiteralMDCAWAYRESPRATEMIN = "151572";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYRESPRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCAWAYRESPRATEMIN = "urn:iso:std:iso:11073:10101#151572";
 
     /// <summary>
     /// Literal for code: MDCAWAYRESPRATEMEAN
@@ -13257,9 +17497,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYRESPRATEMEAN = "151573";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYRESPRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCAWAYRESPRATEMEAN = "urn:iso:std:iso:11073:10101#151573";
+
+    /// <summary>
     /// Literal for code: MDCTTHORRESP
     /// </summary>
     public const string LiteralMDCTTHORRESP = "151576";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTTHORRESP
+    /// </summary>
+    public const string LiteralNONEMDCTTHORRESP = "urn:iso:std:iso:11073:10101#151576";
 
     /// <summary>
     /// Literal for code: MDCTTHORRESPCNT
@@ -13267,9 +17517,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTTHORRESPCNT = "151577";
 
     /// <summary>
+    /// Literal for code: NONEMDCTTHORRESPCNT
+    /// </summary>
+    public const string LiteralNONEMDCTTHORRESPCNT = "urn:iso:std:iso:11073:10101#151577";
+
+    /// <summary>
     /// Literal for code: MDCTTHORRESPRATE
     /// </summary>
     public const string LiteralMDCTTHORRESPRATE = "151578";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTTHORRESPRATE
+    /// </summary>
+    public const string LiteralNONEMDCTTHORRESPRATE = "urn:iso:std:iso:11073:10101#151578";
 
     /// <summary>
     /// Literal for code: MDCTTHORRESPRATEMAX
@@ -13277,9 +17537,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTTHORRESPRATEMAX = "151579";
 
     /// <summary>
+    /// Literal for code: NONEMDCTTHORRESPRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCTTHORRESPRATEMAX = "urn:iso:std:iso:11073:10101#151579";
+
+    /// <summary>
     /// Literal for code: MDCTTHORRESPRATEMIN
     /// </summary>
     public const string LiteralMDCTTHORRESPRATEMIN = "151580";
+
+    /// <summary>
+    /// Literal for code: NONEMDCTTHORRESPRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCTTHORRESPRATEMIN = "urn:iso:std:iso:11073:10101#151580";
 
     /// <summary>
     /// Literal for code: MDCTTHORRESPRATEMEAN
@@ -13287,9 +17557,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCTTHORRESPRATEMEAN = "151581";
 
     /// <summary>
+    /// Literal for code: NONEMDCTTHORRESPRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCTTHORRESPRATEMEAN = "urn:iso:std:iso:11073:10101#151581";
+
+    /// <summary>
     /// Literal for code: MDCVENTRESP
     /// </summary>
     public const string LiteralMDCVENTRESP = "151584";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTRESP
+    /// </summary>
+    public const string LiteralNONEMDCVENTRESP = "urn:iso:std:iso:11073:10101#151584";
 
     /// <summary>
     /// Literal for code: MDCVENTRESPCNT
@@ -13297,9 +17577,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTRESPCNT = "151585";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTRESPCNT
+    /// </summary>
+    public const string LiteralNONEMDCVENTRESPCNT = "urn:iso:std:iso:11073:10101#151585";
+
+    /// <summary>
     /// Literal for code: MDCVENTRESPRATE
     /// </summary>
     public const string LiteralMDCVENTRESPRATE = "151586";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTRESPRATE
+    /// </summary>
+    public const string LiteralNONEMDCVENTRESPRATE = "urn:iso:std:iso:11073:10101#151586";
 
     /// <summary>
     /// Literal for code: MDCVENTRESPRATEMAX
@@ -13307,9 +17597,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTRESPRATEMAX = "151587";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTRESPRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCVENTRESPRATEMAX = "urn:iso:std:iso:11073:10101#151587";
+
+    /// <summary>
     /// Literal for code: MDCVENTRESPRATEMIN
     /// </summary>
     public const string LiteralMDCVENTRESPRATEMIN = "151588";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTRESPRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCVENTRESPRATEMIN = "urn:iso:std:iso:11073:10101#151588";
 
     /// <summary>
     /// Literal for code: MDCVENTRESPRATEMEAN
@@ -13317,9 +17617,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTRESPRATEMEAN = "151589";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTRESPRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCVENTRESPRATEMEAN = "urn:iso:std:iso:11073:10101#151589";
+
+    /// <summary>
     /// Literal for code: MDCCO2RESP
     /// </summary>
     public const string LiteralMDCCO2RESP = "151592";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCO2RESP
+    /// </summary>
+    public const string LiteralNONEMDCCO2RESP = "urn:iso:std:iso:11073:10101#151592";
 
     /// <summary>
     /// Literal for code: MDCCO2RESPCNT
@@ -13327,9 +17637,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCO2RESPCNT = "151593";
 
     /// <summary>
+    /// Literal for code: NONEMDCCO2RESPCNT
+    /// </summary>
+    public const string LiteralNONEMDCCO2RESPCNT = "urn:iso:std:iso:11073:10101#151593";
+
+    /// <summary>
     /// Literal for code: MDCCO2RESPRATE
     /// </summary>
     public const string LiteralMDCCO2RESPRATE = "151594";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCO2RESPRATE
+    /// </summary>
+    public const string LiteralNONEMDCCO2RESPRATE = "urn:iso:std:iso:11073:10101#151594";
 
     /// <summary>
     /// Literal for code: MDCCO2RESPRATEMAX
@@ -13337,9 +17657,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCO2RESPRATEMAX = "151595";
 
     /// <summary>
+    /// Literal for code: NONEMDCCO2RESPRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCCO2RESPRATEMAX = "urn:iso:std:iso:11073:10101#151595";
+
+    /// <summary>
     /// Literal for code: MDCCO2RESPRATEMIN
     /// </summary>
     public const string LiteralMDCCO2RESPRATEMIN = "151596";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCO2RESPRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCCO2RESPRATEMIN = "urn:iso:std:iso:11073:10101#151596";
 
     /// <summary>
     /// Literal for code: MDCCO2RESPRATEMEAN
@@ -13347,9 +17677,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCO2RESPRATEMEAN = "151597";
 
     /// <summary>
+    /// Literal for code: NONEMDCCO2RESPRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCCO2RESPRATEMEAN = "urn:iso:std:iso:11073:10101#151597";
+
+    /// <summary>
     /// Literal for code: MDCPRESSRESP
     /// </summary>
     public const string LiteralMDCPRESSRESP = "151600";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSRESP
+    /// </summary>
+    public const string LiteralNONEMDCPRESSRESP = "urn:iso:std:iso:11073:10101#151600";
 
     /// <summary>
     /// Literal for code: MDCPRESSRESPCNT
@@ -13357,9 +17697,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSRESPCNT = "151601";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSRESPCNT
+    /// </summary>
+    public const string LiteralNONEMDCPRESSRESPCNT = "urn:iso:std:iso:11073:10101#151601";
+
+    /// <summary>
     /// Literal for code: MDCPRESSRESPRATE
     /// </summary>
     public const string LiteralMDCPRESSRESPRATE = "151602";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSRESPRATE
+    /// </summary>
+    public const string LiteralNONEMDCPRESSRESPRATE = "urn:iso:std:iso:11073:10101#151602";
 
     /// <summary>
     /// Literal for code: MDCPRESSRESPRATEMAX
@@ -13367,9 +17717,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSRESPRATEMAX = "151603";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSRESPRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCPRESSRESPRATEMAX = "urn:iso:std:iso:11073:10101#151603";
+
+    /// <summary>
     /// Literal for code: MDCPRESSRESPRATEMIN
     /// </summary>
     public const string LiteralMDCPRESSRESPRATEMIN = "151604";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPRESSRESPRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSRESPRATEMIN = "urn:iso:std:iso:11073:10101#151604";
 
     /// <summary>
     /// Literal for code: MDCPRESSRESPRATEMEAN
@@ -13377,9 +17737,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPRESSRESPRATEMEAN = "151605";
 
     /// <summary>
+    /// Literal for code: NONEMDCPRESSRESPRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPRESSRESPRATEMEAN = "urn:iso:std:iso:11073:10101#151605";
+
+    /// <summary>
     /// Literal for code: MDCVENTCO2RESP
     /// </summary>
     public const string LiteralMDCVENTCO2RESP = "151608";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTCO2RESP
+    /// </summary>
+    public const string LiteralNONEMDCVENTCO2RESP = "urn:iso:std:iso:11073:10101#151608";
 
     /// <summary>
     /// Literal for code: MDCVENTCO2RESPCNT
@@ -13387,9 +17757,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTCO2RESPCNT = "151609";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTCO2RESPCNT
+    /// </summary>
+    public const string LiteralNONEMDCVENTCO2RESPCNT = "urn:iso:std:iso:11073:10101#151609";
+
+    /// <summary>
     /// Literal for code: MDCVENTCO2RESPRATE
     /// </summary>
     public const string LiteralMDCVENTCO2RESPRATE = "151610";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTCO2RESPRATE
+    /// </summary>
+    public const string LiteralNONEMDCVENTCO2RESPRATE = "urn:iso:std:iso:11073:10101#151610";
 
     /// <summary>
     /// Literal for code: MDCVENTCO2RESPRATEMAX
@@ -13397,9 +17777,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTCO2RESPRATEMAX = "151611";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTCO2RESPRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCVENTCO2RESPRATEMAX = "urn:iso:std:iso:11073:10101#151611";
+
+    /// <summary>
     /// Literal for code: MDCVENTCO2RESPRATEMIN
     /// </summary>
     public const string LiteralMDCVENTCO2RESPRATEMIN = "151612";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTCO2RESPRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCVENTCO2RESPRATEMIN = "urn:iso:std:iso:11073:10101#151612";
 
     /// <summary>
     /// Literal for code: MDCVENTCO2RESPRATEMEAN
@@ -13407,9 +17797,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTCO2RESPRATEMEAN = "151613";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTCO2RESPRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCVENTCO2RESPRATEMEAN = "urn:iso:std:iso:11073:10101#151613";
+
+    /// <summary>
     /// Literal for code: MDCVENTPRESSRESP
     /// </summary>
     public const string LiteralMDCVENTPRESSRESP = "151616";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTPRESSRESP
+    /// </summary>
+    public const string LiteralNONEMDCVENTPRESSRESP = "urn:iso:std:iso:11073:10101#151616";
 
     /// <summary>
     /// Literal for code: MDCVENTPRESSRESPCNT
@@ -13417,9 +17817,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTPRESSRESPCNT = "151617";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTPRESSRESPCNT
+    /// </summary>
+    public const string LiteralNONEMDCVENTPRESSRESPCNT = "urn:iso:std:iso:11073:10101#151617";
+
+    /// <summary>
     /// Literal for code: MDCVENTPRESSRESPRATE
     /// </summary>
     public const string LiteralMDCVENTPRESSRESPRATE = "151618";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTPRESSRESPRATE
+    /// </summary>
+    public const string LiteralNONEMDCVENTPRESSRESPRATE = "urn:iso:std:iso:11073:10101#151618";
 
     /// <summary>
     /// Literal for code: MDCVENTPRESSRESPRATEMAX
@@ -13427,9 +17837,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTPRESSRESPRATEMAX = "151619";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTPRESSRESPRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCVENTPRESSRESPRATEMAX = "urn:iso:std:iso:11073:10101#151619";
+
+    /// <summary>
     /// Literal for code: MDCVENTPRESSRESPRATEMIN
     /// </summary>
     public const string LiteralMDCVENTPRESSRESPRATEMIN = "151620";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTPRESSRESPRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCVENTPRESSRESPRATEMIN = "urn:iso:std:iso:11073:10101#151620";
 
     /// <summary>
     /// Literal for code: MDCVENTPRESSRESPRATEMEAN
@@ -13437,9 +17857,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTPRESSRESPRATEMEAN = "151621";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTPRESSRESPRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCVENTPRESSRESPRATEMEAN = "urn:iso:std:iso:11073:10101#151621";
+
+    /// <summary>
     /// Literal for code: MDCVENTFLOWRESP
     /// </summary>
     public const string LiteralMDCVENTFLOWRESP = "151624";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTFLOWRESP
+    /// </summary>
+    public const string LiteralNONEMDCVENTFLOWRESP = "urn:iso:std:iso:11073:10101#151624";
 
     /// <summary>
     /// Literal for code: MDCVENTFLOWRESPCNT
@@ -13447,9 +17877,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTFLOWRESPCNT = "151625";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTFLOWRESPCNT
+    /// </summary>
+    public const string LiteralNONEMDCVENTFLOWRESPCNT = "urn:iso:std:iso:11073:10101#151625";
+
+    /// <summary>
     /// Literal for code: MDCVENTFLOWRESPRATE
     /// </summary>
     public const string LiteralMDCVENTFLOWRESPRATE = "151626";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTFLOWRESPRATE
+    /// </summary>
+    public const string LiteralNONEMDCVENTFLOWRESPRATE = "urn:iso:std:iso:11073:10101#151626";
 
     /// <summary>
     /// Literal for code: MDCVENTFLOWRESPRATEMAX
@@ -13457,9 +17897,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTFLOWRESPRATEMAX = "151627";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTFLOWRESPRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCVENTFLOWRESPRATEMAX = "urn:iso:std:iso:11073:10101#151627";
+
+    /// <summary>
     /// Literal for code: MDCVENTFLOWRESPRATEMIN
     /// </summary>
     public const string LiteralMDCVENTFLOWRESPRATEMIN = "151628";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTFLOWRESPRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCVENTFLOWRESPRATEMIN = "urn:iso:std:iso:11073:10101#151628";
 
     /// <summary>
     /// Literal for code: MDCVENTFLOWRESPRATEMEAN
@@ -13467,9 +17917,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTFLOWRESPRATEMEAN = "151629";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTFLOWRESPRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCVENTFLOWRESPRATEMEAN = "urn:iso:std:iso:11073:10101#151629";
+
+    /// <summary>
     /// Literal for code: MDCVENTSIGH
     /// </summary>
     public const string LiteralMDCVENTSIGH = "151632";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTSIGH
+    /// </summary>
+    public const string LiteralNONEMDCVENTSIGH = "urn:iso:std:iso:11073:10101#151632";
 
     /// <summary>
     /// Literal for code: MDCVENTSIGHCNT
@@ -13477,9 +17937,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTSIGHCNT = "151633";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTSIGHCNT
+    /// </summary>
+    public const string LiteralNONEMDCVENTSIGHCNT = "urn:iso:std:iso:11073:10101#151633";
+
+    /// <summary>
     /// Literal for code: MDCVENTSIGHRATE
     /// </summary>
     public const string LiteralMDCVENTSIGHRATE = "151634";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTSIGHRATE
+    /// </summary>
+    public const string LiteralNONEMDCVENTSIGHRATE = "urn:iso:std:iso:11073:10101#151634";
 
     /// <summary>
     /// Literal for code: MDCVENTSIGHRATEMAX
@@ -13487,9 +17957,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTSIGHRATEMAX = "151635";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTSIGHRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCVENTSIGHRATEMAX = "urn:iso:std:iso:11073:10101#151635";
+
+    /// <summary>
     /// Literal for code: MDCVENTSIGHRATEMIN
     /// </summary>
     public const string LiteralMDCVENTSIGHRATEMIN = "151636";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTSIGHRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCVENTSIGHRATEMIN = "urn:iso:std:iso:11073:10101#151636";
 
     /// <summary>
     /// Literal for code: MDCVENTSIGHRATEMEAN
@@ -13497,9 +17977,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTSIGHRATEMEAN = "151637";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTSIGHRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCVENTSIGHRATEMEAN = "urn:iso:std:iso:11073:10101#151637";
+
+    /// <summary>
     /// Literal for code: MDCVENTSIGHMULT
     /// </summary>
     public const string LiteralMDCVENTSIGHMULT = "151640";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTSIGHMULT
+    /// </summary>
+    public const string LiteralNONEMDCVENTSIGHMULT = "urn:iso:std:iso:11073:10101#151640";
 
     /// <summary>
     /// Literal for code: MDCVENTSIGHMULTCNT
@@ -13507,9 +17997,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTSIGHMULTCNT = "151641";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTSIGHMULTCNT
+    /// </summary>
+    public const string LiteralNONEMDCVENTSIGHMULTCNT = "urn:iso:std:iso:11073:10101#151641";
+
+    /// <summary>
     /// Literal for code: MDCVENTSIGHMULTRATE
     /// </summary>
     public const string LiteralMDCVENTSIGHMULTRATE = "151642";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTSIGHMULTRATE
+    /// </summary>
+    public const string LiteralNONEMDCVENTSIGHMULTRATE = "urn:iso:std:iso:11073:10101#151642";
 
     /// <summary>
     /// Literal for code: MDCVENTSIGHMULTRATEMAX
@@ -13517,9 +18017,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTSIGHMULTRATEMAX = "151643";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTSIGHMULTRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCVENTSIGHMULTRATEMAX = "urn:iso:std:iso:11073:10101#151643";
+
+    /// <summary>
     /// Literal for code: MDCVENTSIGHMULTRATEMIN
     /// </summary>
     public const string LiteralMDCVENTSIGHMULTRATEMIN = "151644";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTSIGHMULTRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCVENTSIGHMULTRATEMIN = "urn:iso:std:iso:11073:10101#151644";
 
     /// <summary>
     /// Literal for code: MDCVENTSIGHMULTRATEMEAN
@@ -13527,9 +18037,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTSIGHMULTRATEMEAN = "151645";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTSIGHMULTRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCVENTSIGHMULTRATEMEAN = "urn:iso:std:iso:11073:10101#151645";
+
+    /// <summary>
     /// Literal for code: MDCACOUSTICRESP
     /// </summary>
     public const string LiteralMDCACOUSTICRESP = "151648";
+
+    /// <summary>
+    /// Literal for code: NONEMDCACOUSTICRESP
+    /// </summary>
+    public const string LiteralNONEMDCACOUSTICRESP = "urn:iso:std:iso:11073:10101#151648";
 
     /// <summary>
     /// Literal for code: MDCACOUSTICRESPCNT
@@ -13537,9 +18057,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCACOUSTICRESPCNT = "151649";
 
     /// <summary>
+    /// Literal for code: NONEMDCACOUSTICRESPCNT
+    /// </summary>
+    public const string LiteralNONEMDCACOUSTICRESPCNT = "urn:iso:std:iso:11073:10101#151649";
+
+    /// <summary>
     /// Literal for code: MDCACOUSTICRESPRATE
     /// </summary>
     public const string LiteralMDCACOUSTICRESPRATE = "151650";
+
+    /// <summary>
+    /// Literal for code: NONEMDCACOUSTICRESPRATE
+    /// </summary>
+    public const string LiteralNONEMDCACOUSTICRESPRATE = "urn:iso:std:iso:11073:10101#151650";
 
     /// <summary>
     /// Literal for code: MDCACOUSTICRESPRATEMAX
@@ -13547,9 +18077,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCACOUSTICRESPRATEMAX = "151651";
 
     /// <summary>
+    /// Literal for code: NONEMDCACOUSTICRESPRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCACOUSTICRESPRATEMAX = "urn:iso:std:iso:11073:10101#151651";
+
+    /// <summary>
     /// Literal for code: MDCACOUSTICRESPRATEMIN
     /// </summary>
     public const string LiteralMDCACOUSTICRESPRATEMIN = "151652";
+
+    /// <summary>
+    /// Literal for code: NONEMDCACOUSTICRESPRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCACOUSTICRESPRATEMIN = "urn:iso:std:iso:11073:10101#151652";
 
     /// <summary>
     /// Literal for code: MDCACOUSTICRESPRATEMEAN
@@ -13557,9 +18097,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCACOUSTICRESPRATEMEAN = "151653";
 
     /// <summary>
+    /// Literal for code: NONEMDCACOUSTICRESPRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCACOUSTICRESPRATEMEAN = "urn:iso:std:iso:11073:10101#151653";
+
+    /// <summary>
     /// Literal for code: MDCPULSOXIMPLETHRESP
     /// </summary>
     public const string LiteralMDCPULSOXIMPLETHRESP = "151656";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMPLETHRESP
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMPLETHRESP = "urn:iso:std:iso:11073:10101#151656";
 
     /// <summary>
     /// Literal for code: MDCPULSOXIMPLETHRESPCNT
@@ -13567,9 +18117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPULSOXIMPLETHRESPCNT = "151657";
 
     /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMPLETHRESPCNT
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMPLETHRESPCNT = "urn:iso:std:iso:11073:10101#151657";
+
+    /// <summary>
     /// Literal for code: MDCPULSOXIMPLETHRESPRATE
     /// </summary>
     public const string LiteralMDCPULSOXIMPLETHRESPRATE = "151658";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMPLETHRESPRATE
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMPLETHRESPRATE = "urn:iso:std:iso:11073:10101#151658";
 
     /// <summary>
     /// Literal for code: MDCPULSOXIMPLETHRESPRATEMAX
@@ -13577,9 +18137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPULSOXIMPLETHRESPRATEMAX = "151659";
 
     /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMPLETHRESPRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMPLETHRESPRATEMAX = "urn:iso:std:iso:11073:10101#151659";
+
+    /// <summary>
     /// Literal for code: MDCPULSOXIMPLETHRESPRATEMIN
     /// </summary>
     public const string LiteralMDCPULSOXIMPLETHRESPRATEMIN = "151660";
+
+    /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMPLETHRESPRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMPLETHRESPRATEMIN = "urn:iso:std:iso:11073:10101#151660";
 
     /// <summary>
     /// Literal for code: MDCPULSOXIMPLETHRESPRATEMEAN
@@ -13587,9 +18157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCPULSOXIMPLETHRESPRATEMEAN = "151661";
 
     /// <summary>
+    /// Literal for code: NONEMDCPULSOXIMPLETHRESPRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCPULSOXIMPLETHRESPRATEMEAN = "urn:iso:std:iso:11073:10101#151661";
+
+    /// <summary>
     /// Literal for code: MDCRESPSPONT
     /// </summary>
     public const string LiteralMDCRESPSPONT = "151664";
+
+    /// <summary>
+    /// Literal for code: NONEMDCRESPSPONT
+    /// </summary>
+    public const string LiteralNONEMDCRESPSPONT = "urn:iso:std:iso:11073:10101#151664";
 
     /// <summary>
     /// Literal for code: MDCRESPSPONTCNT
@@ -13597,9 +18177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCRESPSPONTCNT = "151665";
 
     /// <summary>
+    /// Literal for code: NONEMDCRESPSPONTCNT
+    /// </summary>
+    public const string LiteralNONEMDCRESPSPONTCNT = "urn:iso:std:iso:11073:10101#151665";
+
+    /// <summary>
     /// Literal for code: MDCRESPSPONTRATE
     /// </summary>
     public const string LiteralMDCRESPSPONTRATE = "151666";
+
+    /// <summary>
+    /// Literal for code: NONEMDCRESPSPONTRATE
+    /// </summary>
+    public const string LiteralNONEMDCRESPSPONTRATE = "urn:iso:std:iso:11073:10101#151666";
 
     /// <summary>
     /// Literal for code: MDCRESPSPONTRATEMAX
@@ -13607,9 +18197,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCRESPSPONTRATEMAX = "151667";
 
     /// <summary>
+    /// Literal for code: NONEMDCRESPSPONTRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCRESPSPONTRATEMAX = "urn:iso:std:iso:11073:10101#151667";
+
+    /// <summary>
     /// Literal for code: MDCRESPSPONTRATEMIN
     /// </summary>
     public const string LiteralMDCRESPSPONTRATEMIN = "151668";
+
+    /// <summary>
+    /// Literal for code: NONEMDCRESPSPONTRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCRESPSPONTRATEMIN = "urn:iso:std:iso:11073:10101#151668";
 
     /// <summary>
     /// Literal for code: MDCRESPSPONTRATEMEAN
@@ -13617,9 +18217,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCRESPSPONTRATEMEAN = "151669";
 
     /// <summary>
+    /// Literal for code: NONEMDCRESPSPONTRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCRESPSPONTRATEMEAN = "urn:iso:std:iso:11073:10101#151669";
+
+    /// <summary>
     /// Literal for code: MDCRESPBTSDPS
     /// </summary>
     public const string LiteralMDCRESPBTSDPS = "151672";
+
+    /// <summary>
+    /// Literal for code: NONEMDCRESPBTSDPS
+    /// </summary>
+    public const string LiteralNONEMDCRESPBTSDPS = "urn:iso:std:iso:11073:10101#151672";
 
     /// <summary>
     /// Literal for code: MDCRESPBTSDPSCNT
@@ -13627,9 +18237,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCRESPBTSDPSCNT = "151673";
 
     /// <summary>
+    /// Literal for code: NONEMDCRESPBTSDPSCNT
+    /// </summary>
+    public const string LiteralNONEMDCRESPBTSDPSCNT = "urn:iso:std:iso:11073:10101#151673";
+
+    /// <summary>
     /// Literal for code: MDCRESPBTSDPSRATE
     /// </summary>
     public const string LiteralMDCRESPBTSDPSRATE = "151674";
+
+    /// <summary>
+    /// Literal for code: NONEMDCRESPBTSDPSRATE
+    /// </summary>
+    public const string LiteralNONEMDCRESPBTSDPSRATE = "urn:iso:std:iso:11073:10101#151674";
 
     /// <summary>
     /// Literal for code: MDCRESPBTSDPSRATEMAX
@@ -13637,9 +18257,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCRESPBTSDPSRATEMAX = "151675";
 
     /// <summary>
+    /// Literal for code: NONEMDCRESPBTSDPSRATEMAX
+    /// </summary>
+    public const string LiteralNONEMDCRESPBTSDPSRATEMAX = "urn:iso:std:iso:11073:10101#151675";
+
+    /// <summary>
     /// Literal for code: MDCRESPBTSDPSRATEMIN
     /// </summary>
     public const string LiteralMDCRESPBTSDPSRATEMIN = "151676";
+
+    /// <summary>
+    /// Literal for code: NONEMDCRESPBTSDPSRATEMIN
+    /// </summary>
+    public const string LiteralNONEMDCRESPBTSDPSRATEMIN = "urn:iso:std:iso:11073:10101#151676";
 
     /// <summary>
     /// Literal for code: MDCRESPBTSDPSRATEMEAN
@@ -13647,9 +18277,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCRESPBTSDPSRATEMEAN = "151677";
 
     /// <summary>
+    /// Literal for code: NONEMDCRESPBTSDPSRATEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCRESPBTSDPSRATEMEAN = "urn:iso:std:iso:11073:10101#151677";
+
+    /// <summary>
     /// Literal for code: MDCCAPACVITAL
     /// </summary>
     public const string LiteralMDCCAPACVITAL = "151680";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCAPACVITAL
+    /// </summary>
+    public const string LiteralNONEMDCCAPACVITAL = "urn:iso:std:iso:11073:10101#151680";
 
     /// <summary>
     /// Literal for code: MDCCAPACVITALMAX
@@ -13657,9 +18297,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCAPACVITALMAX = "151681";
 
     /// <summary>
+    /// Literal for code: NONEMDCCAPACVITALMAX
+    /// </summary>
+    public const string LiteralNONEMDCCAPACVITALMAX = "urn:iso:std:iso:11073:10101#151681";
+
+    /// <summary>
     /// Literal for code: MDCCAPACVITALMIN
     /// </summary>
     public const string LiteralMDCCAPACVITALMIN = "151682";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCAPACVITALMIN
+    /// </summary>
+    public const string LiteralNONEMDCCAPACVITALMIN = "urn:iso:std:iso:11073:10101#151682";
 
     /// <summary>
     /// Literal for code: MDCCAPACVITALMEAN
@@ -13667,9 +18317,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCAPACVITALMEAN = "151683";
 
     /// <summary>
+    /// Literal for code: NONEMDCCAPACVITALMEAN
+    /// </summary>
+    public const string LiteralNONEMDCCAPACVITALMEAN = "urn:iso:std:iso:11073:10101#151683";
+
+    /// <summary>
     /// Literal for code: MDCVENTTIMEPDEXPPAUSE
     /// </summary>
     public const string LiteralMDCVENTTIMEPDEXPPAUSE = "151684";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTTIMEPDEXPPAUSE
+    /// </summary>
+    public const string LiteralNONEMDCVENTTIMEPDEXPPAUSE = "urn:iso:std:iso:11073:10101#151684";
 
     /// <summary>
     /// Literal for code: MDCVENTTIMEPDEXPPAUSEMAX
@@ -13677,9 +18337,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTTIMEPDEXPPAUSEMAX = "151685";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTTIMEPDEXPPAUSEMAX
+    /// </summary>
+    public const string LiteralNONEMDCVENTTIMEPDEXPPAUSEMAX = "urn:iso:std:iso:11073:10101#151685";
+
+    /// <summary>
     /// Literal for code: MDCVENTTIMEPDEXPPAUSEMIN
     /// </summary>
     public const string LiteralMDCVENTTIMEPDEXPPAUSEMIN = "151686";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTTIMEPDEXPPAUSEMIN
+    /// </summary>
+    public const string LiteralNONEMDCVENTTIMEPDEXPPAUSEMIN = "urn:iso:std:iso:11073:10101#151686";
 
     /// <summary>
     /// Literal for code: MDCVENTTIMEPDEXPPAUSEMEAN
@@ -13687,9 +18357,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTTIMEPDEXPPAUSEMEAN = "151687";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTTIMEPDEXPPAUSEMEAN
+    /// </summary>
+    public const string LiteralNONEMDCVENTTIMEPDEXPPAUSEMEAN = "urn:iso:std:iso:11073:10101#151687";
+
+    /// <summary>
     /// Literal for code: MDCCOMPLLUNG
     /// </summary>
     public const string LiteralMDCCOMPLLUNG = "151688";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCOMPLLUNG
+    /// </summary>
+    public const string LiteralNONEMDCCOMPLLUNG = "urn:iso:std:iso:11073:10101#151688";
 
     /// <summary>
     /// Literal for code: MDCCOMPLLUNGMAX
@@ -13697,9 +18377,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCOMPLLUNGMAX = "151689";
 
     /// <summary>
+    /// Literal for code: NONEMDCCOMPLLUNGMAX
+    /// </summary>
+    public const string LiteralNONEMDCCOMPLLUNGMAX = "urn:iso:std:iso:11073:10101#151689";
+
+    /// <summary>
     /// Literal for code: MDCCOMPLLUNGMIN
     /// </summary>
     public const string LiteralMDCCOMPLLUNGMIN = "151690";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCOMPLLUNGMIN
+    /// </summary>
+    public const string LiteralNONEMDCCOMPLLUNGMIN = "urn:iso:std:iso:11073:10101#151690";
 
     /// <summary>
     /// Literal for code: MDCCOMPLLUNGMEAN
@@ -13707,9 +18397,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCOMPLLUNGMEAN = "151691";
 
     /// <summary>
+    /// Literal for code: NONEMDCCOMPLLUNGMEAN
+    /// </summary>
+    public const string LiteralNONEMDCCOMPLLUNGMEAN = "urn:iso:std:iso:11073:10101#151691";
+
+    /// <summary>
     /// Literal for code: MDCCOMPLLUNGDYN
     /// </summary>
     public const string LiteralMDCCOMPLLUNGDYN = "151692";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCOMPLLUNGDYN
+    /// </summary>
+    public const string LiteralNONEMDCCOMPLLUNGDYN = "urn:iso:std:iso:11073:10101#151692";
 
     /// <summary>
     /// Literal for code: MDCCOMPLLUNGDYNMAX
@@ -13717,9 +18417,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCOMPLLUNGDYNMAX = "151693";
 
     /// <summary>
+    /// Literal for code: NONEMDCCOMPLLUNGDYNMAX
+    /// </summary>
+    public const string LiteralNONEMDCCOMPLLUNGDYNMAX = "urn:iso:std:iso:11073:10101#151693";
+
+    /// <summary>
     /// Literal for code: MDCCOMPLLUNGDYNMIN
     /// </summary>
     public const string LiteralMDCCOMPLLUNGDYNMIN = "151694";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCOMPLLUNGDYNMIN
+    /// </summary>
+    public const string LiteralNONEMDCCOMPLLUNGDYNMIN = "urn:iso:std:iso:11073:10101#151694";
 
     /// <summary>
     /// Literal for code: MDCCOMPLLUNGDYNMEAN
@@ -13727,9 +18437,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCOMPLLUNGDYNMEAN = "151695";
 
     /// <summary>
+    /// Literal for code: NONEMDCCOMPLLUNGDYNMEAN
+    /// </summary>
+    public const string LiteralNONEMDCCOMPLLUNGDYNMEAN = "urn:iso:std:iso:11073:10101#151695";
+
+    /// <summary>
     /// Literal for code: MDCCOMPLLUNGSTATIC
     /// </summary>
     public const string LiteralMDCCOMPLLUNGSTATIC = "151696";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCOMPLLUNGSTATIC
+    /// </summary>
+    public const string LiteralNONEMDCCOMPLLUNGSTATIC = "urn:iso:std:iso:11073:10101#151696";
 
     /// <summary>
     /// Literal for code: MDCCOMPLLUNGSTATICMAX
@@ -13737,9 +18457,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCOMPLLUNGSTATICMAX = "151697";
 
     /// <summary>
+    /// Literal for code: NONEMDCCOMPLLUNGSTATICMAX
+    /// </summary>
+    public const string LiteralNONEMDCCOMPLLUNGSTATICMAX = "urn:iso:std:iso:11073:10101#151697";
+
+    /// <summary>
     /// Literal for code: MDCCOMPLLUNGSTATICMIN
     /// </summary>
     public const string LiteralMDCCOMPLLUNGSTATICMIN = "151698";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCOMPLLUNGSTATICMIN
+    /// </summary>
+    public const string LiteralNONEMDCCOMPLLUNGSTATICMIN = "urn:iso:std:iso:11073:10101#151698";
 
     /// <summary>
     /// Literal for code: MDCCOMPLLUNGSTATICMEAN
@@ -13747,9 +18477,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCOMPLLUNGSTATICMEAN = "151699";
 
     /// <summary>
+    /// Literal for code: NONEMDCCOMPLLUNGSTATICMEAN
+    /// </summary>
+    public const string LiteralNONEMDCCOMPLLUNGSTATICMEAN = "urn:iso:std:iso:11073:10101#151699";
+
+    /// <summary>
     /// Literal for code: MDCCONCAWAYCO2
     /// </summary>
     public const string LiteralMDCCONCAWAYCO2 = "151700";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYCO2
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYCO2 = "urn:iso:std:iso:11073:10101#151700";
 
     /// <summary>
     /// Literal for code: MDCCONCAWAYCO2MAX
@@ -13757,9 +18497,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCONCAWAYCO2MAX = "151701";
 
     /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYCO2MAX
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYCO2MAX = "urn:iso:std:iso:11073:10101#151701";
+
+    /// <summary>
     /// Literal for code: MDCCONCAWAYCO2MIN
     /// </summary>
     public const string LiteralMDCCONCAWAYCO2MIN = "151702";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYCO2MIN
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYCO2MIN = "urn:iso:std:iso:11073:10101#151702";
 
     /// <summary>
     /// Literal for code: MDCCONCAWAYCO2MEAN
@@ -13767,9 +18517,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCONCAWAYCO2MEAN = "151703";
 
     /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYCO2MEAN
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYCO2MEAN = "urn:iso:std:iso:11073:10101#151703";
+
+    /// <summary>
     /// Literal for code: MDCCONCAWAYCO2ET
     /// </summary>
     public const string LiteralMDCCONCAWAYCO2ET = "151708";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYCO2ET
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYCO2ET = "urn:iso:std:iso:11073:10101#151708";
 
     /// <summary>
     /// Literal for code: MDCCONCAWAYCO2ETMAX
@@ -13777,9 +18537,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCONCAWAYCO2ETMAX = "151709";
 
     /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYCO2ETMAX
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYCO2ETMAX = "urn:iso:std:iso:11073:10101#151709";
+
+    /// <summary>
     /// Literal for code: MDCCONCAWAYCO2ETMIN
     /// </summary>
     public const string LiteralMDCCONCAWAYCO2ETMIN = "151710";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYCO2ETMIN
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYCO2ETMIN = "urn:iso:std:iso:11073:10101#151710";
 
     /// <summary>
     /// Literal for code: MDCCONCAWAYCO2ETMEAN
@@ -13787,9 +18557,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCONCAWAYCO2ETMEAN = "151711";
 
     /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYCO2ETMEAN
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYCO2ETMEAN = "urn:iso:std:iso:11073:10101#151711";
+
+    /// <summary>
     /// Literal for code: MDCCONCAWAYCO2EXP
     /// </summary>
     public const string LiteralMDCCONCAWAYCO2EXP = "151712";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYCO2EXP
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYCO2EXP = "urn:iso:std:iso:11073:10101#151712";
 
     /// <summary>
     /// Literal for code: MDCCONCAWAYCO2EXPMAX
@@ -13797,9 +18577,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCONCAWAYCO2EXPMAX = "151713";
 
     /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYCO2EXPMAX
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYCO2EXPMAX = "urn:iso:std:iso:11073:10101#151713";
+
+    /// <summary>
     /// Literal for code: MDCCONCAWAYCO2EXPMIN
     /// </summary>
     public const string LiteralMDCCONCAWAYCO2EXPMIN = "151714";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYCO2EXPMIN
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYCO2EXPMIN = "urn:iso:std:iso:11073:10101#151714";
 
     /// <summary>
     /// Literal for code: MDCCONCAWAYCO2EXPMEAN
@@ -13807,9 +18597,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCONCAWAYCO2EXPMEAN = "151715";
 
     /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYCO2EXPMEAN
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYCO2EXPMEAN = "urn:iso:std:iso:11073:10101#151715";
+
+    /// <summary>
     /// Literal for code: MDCCONCAWAYCO2INSP
     /// </summary>
     public const string LiteralMDCCONCAWAYCO2INSP = "151716";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYCO2INSP
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYCO2INSP = "urn:iso:std:iso:11073:10101#151716";
 
     /// <summary>
     /// Literal for code: MDCCONCAWAYCO2INSPMAX
@@ -13817,9 +18617,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCONCAWAYCO2INSPMAX = "151717";
 
     /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYCO2INSPMAX
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYCO2INSPMAX = "urn:iso:std:iso:11073:10101#151717";
+
+    /// <summary>
     /// Literal for code: MDCCONCAWAYCO2INSPMIN
     /// </summary>
     public const string LiteralMDCCONCAWAYCO2INSPMIN = "151718";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYCO2INSPMIN
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYCO2INSPMIN = "urn:iso:std:iso:11073:10101#151718";
 
     /// <summary>
     /// Literal for code: MDCCONCAWAYCO2INSPMEAN
@@ -13827,9 +18637,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCONCAWAYCO2INSPMEAN = "151719";
 
     /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYCO2INSPMEAN
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYCO2INSPMEAN = "urn:iso:std:iso:11073:10101#151719";
+
+    /// <summary>
     /// Literal for code: MDCVENTCONCAWAYO2
     /// </summary>
     public const string LiteralMDCVENTCONCAWAYO2 = "151720";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTCONCAWAYO2
+    /// </summary>
+    public const string LiteralNONEMDCVENTCONCAWAYO2 = "urn:iso:std:iso:11073:10101#151720";
 
     /// <summary>
     /// Literal for code: MDCVENTCONCAWAYO2MAX
@@ -13837,9 +18657,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTCONCAWAYO2MAX = "151721";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTCONCAWAYO2MAX
+    /// </summary>
+    public const string LiteralNONEMDCVENTCONCAWAYO2MAX = "urn:iso:std:iso:11073:10101#151721";
+
+    /// <summary>
     /// Literal for code: MDCVENTCONCAWAYO2MIN
     /// </summary>
     public const string LiteralMDCVENTCONCAWAYO2MIN = "151722";
+
+    /// <summary>
+    /// Literal for code: NONEMDCVENTCONCAWAYO2MIN
+    /// </summary>
+    public const string LiteralNONEMDCVENTCONCAWAYO2MIN = "urn:iso:std:iso:11073:10101#151722";
 
     /// <summary>
     /// Literal for code: MDCVENTCONCAWAYO2MEAN
@@ -13847,9 +18677,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCVENTCONCAWAYO2MEAN = "151723";
 
     /// <summary>
+    /// Literal for code: NONEMDCVENTCONCAWAYO2MEAN
+    /// </summary>
+    public const string LiteralNONEMDCVENTCONCAWAYO2MEAN = "urn:iso:std:iso:11073:10101#151723";
+
+    /// <summary>
     /// Literal for code: MDCAWAYCO2
     /// </summary>
     public const string LiteralMDCAWAYCO2 = "151724";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYCO2
+    /// </summary>
+    public const string LiteralNONEMDCAWAYCO2 = "urn:iso:std:iso:11073:10101#151724";
 
     /// <summary>
     /// Literal for code: MDCAWAYCO2MAX
@@ -13857,9 +18697,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYCO2MAX = "151725";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYCO2MAX
+    /// </summary>
+    public const string LiteralNONEMDCAWAYCO2MAX = "urn:iso:std:iso:11073:10101#151725";
+
+    /// <summary>
     /// Literal for code: MDCAWAYCO2MIN
     /// </summary>
     public const string LiteralMDCAWAYCO2MIN = "151726";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYCO2MIN
+    /// </summary>
+    public const string LiteralNONEMDCAWAYCO2MIN = "urn:iso:std:iso:11073:10101#151726";
 
     /// <summary>
     /// Literal for code: MDCAWAYCO2MEAN
@@ -13867,9 +18717,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYCO2MEAN = "151727";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYCO2MEAN
+    /// </summary>
+    public const string LiteralNONEMDCAWAYCO2MEAN = "urn:iso:std:iso:11073:10101#151727";
+
+    /// <summary>
     /// Literal for code: MDCAWAYCO2ET
     /// </summary>
     public const string LiteralMDCAWAYCO2ET = "151728";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYCO2ET
+    /// </summary>
+    public const string LiteralNONEMDCAWAYCO2ET = "urn:iso:std:iso:11073:10101#151728";
 
     /// <summary>
     /// Literal for code: MDCAWAYCO2ETMAX
@@ -13877,9 +18737,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYCO2ETMAX = "151729";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYCO2ETMAX
+    /// </summary>
+    public const string LiteralNONEMDCAWAYCO2ETMAX = "urn:iso:std:iso:11073:10101#151729";
+
+    /// <summary>
     /// Literal for code: MDCAWAYCO2ETMIN
     /// </summary>
     public const string LiteralMDCAWAYCO2ETMIN = "151730";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYCO2ETMIN
+    /// </summary>
+    public const string LiteralNONEMDCAWAYCO2ETMIN = "urn:iso:std:iso:11073:10101#151730";
 
     /// <summary>
     /// Literal for code: MDCAWAYCO2ETMEAN
@@ -13887,9 +18757,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYCO2ETMEAN = "151731";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYCO2ETMEAN
+    /// </summary>
+    public const string LiteralNONEMDCAWAYCO2ETMEAN = "urn:iso:std:iso:11073:10101#151731";
+
+    /// <summary>
     /// Literal for code: MDCAWAYCO2EXP
     /// </summary>
     public const string LiteralMDCAWAYCO2EXP = "151732";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYCO2EXP
+    /// </summary>
+    public const string LiteralNONEMDCAWAYCO2EXP = "urn:iso:std:iso:11073:10101#151732";
 
     /// <summary>
     /// Literal for code: MDCAWAYCO2EXPMAX
@@ -13897,9 +18777,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYCO2EXPMAX = "151733";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYCO2EXPMAX
+    /// </summary>
+    public const string LiteralNONEMDCAWAYCO2EXPMAX = "urn:iso:std:iso:11073:10101#151733";
+
+    /// <summary>
     /// Literal for code: MDCAWAYCO2EXPMIN
     /// </summary>
     public const string LiteralMDCAWAYCO2EXPMIN = "151734";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYCO2EXPMIN
+    /// </summary>
+    public const string LiteralNONEMDCAWAYCO2EXPMIN = "urn:iso:std:iso:11073:10101#151734";
 
     /// <summary>
     /// Literal for code: MDCAWAYCO2EXPMEAN
@@ -13907,9 +18797,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYCO2EXPMEAN = "151735";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYCO2EXPMEAN
+    /// </summary>
+    public const string LiteralNONEMDCAWAYCO2EXPMEAN = "urn:iso:std:iso:11073:10101#151735";
+
+    /// <summary>
     /// Literal for code: MDCAWAYCO2INSP
     /// </summary>
     public const string LiteralMDCAWAYCO2INSP = "151736";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYCO2INSP
+    /// </summary>
+    public const string LiteralNONEMDCAWAYCO2INSP = "urn:iso:std:iso:11073:10101#151736";
 
     /// <summary>
     /// Literal for code: MDCAWAYCO2INSPMAX
@@ -13917,9 +18817,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYCO2INSPMAX = "151737";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYCO2INSPMAX
+    /// </summary>
+    public const string LiteralNONEMDCAWAYCO2INSPMAX = "urn:iso:std:iso:11073:10101#151737";
+
+    /// <summary>
     /// Literal for code: MDCAWAYCO2INSPMIN
     /// </summary>
     public const string LiteralMDCAWAYCO2INSPMIN = "151738";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYCO2INSPMIN
+    /// </summary>
+    public const string LiteralNONEMDCAWAYCO2INSPMIN = "urn:iso:std:iso:11073:10101#151738";
 
     /// <summary>
     /// Literal for code: MDCAWAYCO2INSPMEAN
@@ -13927,9 +18837,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYCO2INSPMEAN = "151739";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYCO2INSPMEAN
+    /// </summary>
+    public const string LiteralNONEMDCAWAYCO2INSPMEAN = "urn:iso:std:iso:11073:10101#151739";
+
+    /// <summary>
     /// Literal for code: MDCAWAYO2
     /// </summary>
     public const string LiteralMDCAWAYO2 = "151740";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYO2
+    /// </summary>
+    public const string LiteralNONEMDCAWAYO2 = "urn:iso:std:iso:11073:10101#151740";
 
     /// <summary>
     /// Literal for code: MDCAWAYO2MAX
@@ -13937,9 +18857,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYO2MAX = "151741";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYO2MAX
+    /// </summary>
+    public const string LiteralNONEMDCAWAYO2MAX = "urn:iso:std:iso:11073:10101#151741";
+
+    /// <summary>
     /// Literal for code: MDCAWAYO2MIN
     /// </summary>
     public const string LiteralMDCAWAYO2MIN = "151742";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYO2MIN
+    /// </summary>
+    public const string LiteralNONEMDCAWAYO2MIN = "urn:iso:std:iso:11073:10101#151742";
 
     /// <summary>
     /// Literal for code: MDCAWAYO2MEAN
@@ -13947,9 +18877,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYO2MEAN = "151743";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYO2MEAN
+    /// </summary>
+    public const string LiteralNONEMDCAWAYO2MEAN = "urn:iso:std:iso:11073:10101#151743";
+
+    /// <summary>
     /// Literal for code: MDCCONCAWAYO2DELTA
     /// </summary>
     public const string LiteralMDCCONCAWAYO2DELTA = "151744";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYO2DELTA
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYO2DELTA = "urn:iso:std:iso:11073:10101#151744";
 
     /// <summary>
     /// Literal for code: MDCCONCAWAYO2DELTAMAX
@@ -13957,9 +18897,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCONCAWAYO2DELTAMAX = "151745";
 
     /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYO2DELTAMAX
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYO2DELTAMAX = "urn:iso:std:iso:11073:10101#151745";
+
+    /// <summary>
     /// Literal for code: MDCCONCAWAYO2DELTAMIN
     /// </summary>
     public const string LiteralMDCCONCAWAYO2DELTAMIN = "151746";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYO2DELTAMIN
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYO2DELTAMIN = "urn:iso:std:iso:11073:10101#151746";
 
     /// <summary>
     /// Literal for code: MDCCONCAWAYO2DELTAMEAN
@@ -13967,9 +18917,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCCONCAWAYO2DELTAMEAN = "151747";
 
     /// <summary>
+    /// Literal for code: NONEMDCCONCAWAYO2DELTAMEAN
+    /// </summary>
+    public const string LiteralNONEMDCCONCAWAYO2DELTAMEAN = "urn:iso:std:iso:11073:10101#151747";
+
+    /// <summary>
     /// Literal for code: MDCAWAYO2EXP
     /// </summary>
     public const string LiteralMDCAWAYO2EXP = "151748";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYO2EXP
+    /// </summary>
+    public const string LiteralNONEMDCAWAYO2EXP = "urn:iso:std:iso:11073:10101#151748";
 
     /// <summary>
     /// Literal for code: MDCAWAYO2EXPMAX
@@ -13977,9 +18937,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYO2EXPMAX = "151749";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYO2EXPMAX
+    /// </summary>
+    public const string LiteralNONEMDCAWAYO2EXPMAX = "urn:iso:std:iso:11073:10101#151749";
+
+    /// <summary>
     /// Literal for code: MDCAWAYO2EXPMIN
     /// </summary>
     public const string LiteralMDCAWAYO2EXPMIN = "151750";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYO2EXPMIN
+    /// </summary>
+    public const string LiteralNONEMDCAWAYO2EXPMIN = "urn:iso:std:iso:11073:10101#151750";
 
     /// <summary>
     /// Literal for code: MDCAWAYO2EXPMEAN
@@ -13987,9 +18957,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYO2EXPMEAN = "151751";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYO2EXPMEAN
+    /// </summary>
+    public const string LiteralNONEMDCAWAYO2EXPMEAN = "urn:iso:std:iso:11073:10101#151751";
+
+    /// <summary>
     /// Literal for code: MDCAWAYO2INSP
     /// </summary>
     public const string LiteralMDCAWAYO2INSP = "151752";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYO2INSP
+    /// </summary>
+    public const string LiteralNONEMDCAWAYO2INSP = "urn:iso:std:iso:11073:10101#151752";
 
     /// <summary>
     /// Literal for code: MDCAWAYO2INSPMAX
@@ -13997,9 +18977,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYO2INSPMAX = "151753";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYO2INSPMAX
+    /// </summary>
+    public const string LiteralNONEMDCAWAYO2INSPMAX = "urn:iso:std:iso:11073:10101#151753";
+
+    /// <summary>
     /// Literal for code: MDCAWAYO2INSPMIN
     /// </summary>
     public const string LiteralMDCAWAYO2INSPMIN = "151754";
+
+    /// <summary>
+    /// Literal for code: NONEMDCAWAYO2INSPMIN
+    /// </summary>
+    public const string LiteralNONEMDCAWAYO2INSPMIN = "urn:iso:std:iso:11073:10101#151754";
 
     /// <summary>
     /// Literal for code: MDCAWAYO2INSPMEAN
@@ -14007,8 +18997,2024 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMDCAWAYO2INSPMEAN = "151755";
 
     /// <summary>
+    /// Literal for code: NONEMDCAWAYO2INSPMEAN
+    /// </summary>
+    public const string LiteralNONEMDCAWAYO2INSPMEAN = "urn:iso:std:iso:11073:10101#151755";
+
+    /// <summary>
     /// Literal for code: MDCCO2TCUT
     /// </summary>
     public const string LiteralMDCCO2TCUT = "151756";
+
+    /// <summary>
+    /// Literal for code: NONEMDCCO2TCUT
+    /// </summary>
+    public const string LiteralNONEMDCCO2TCUT = "urn:iso:std:iso:11073:10101#151756";
+
+    /// <summary>
+    /// Dictionary for looking up DevicemetricType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "131072", MDCECGLEAD }, 
+      { "urn:iso:std:iso:11073:10101#131072", MDCECGLEAD }, 
+      { "131073", MDCECGLEADI }, 
+      { "urn:iso:std:iso:11073:10101#131073", MDCECGLEADI }, 
+      { "131074", MDCECGLEADII }, 
+      { "urn:iso:std:iso:11073:10101#131074", MDCECGLEADII }, 
+      { "131075", MDCECGLEADV1 }, 
+      { "urn:iso:std:iso:11073:10101#131075", MDCECGLEADV1 }, 
+      { "131076", MDCECGLEADV2 }, 
+      { "urn:iso:std:iso:11073:10101#131076", MDCECGLEADV2 }, 
+      { "131077", MDCECGLEADV3 }, 
+      { "urn:iso:std:iso:11073:10101#131077", MDCECGLEADV3 }, 
+      { "131078", MDCECGLEADV4 }, 
+      { "urn:iso:std:iso:11073:10101#131078", MDCECGLEADV4 }, 
+      { "131079", MDCECGLEADV5 }, 
+      { "urn:iso:std:iso:11073:10101#131079", MDCECGLEADV5 }, 
+      { "131080", MDCECGLEADV6 }, 
+      { "urn:iso:std:iso:11073:10101#131080", MDCECGLEADV6 }, 
+      { "131081", MDCECGLEADV7 }, 
+      { "urn:iso:std:iso:11073:10101#131081", MDCECGLEADV7 }, 
+      { "131082", MDCECGLEADV2R }, 
+      { "urn:iso:std:iso:11073:10101#131082", MDCECGLEADV2R }, 
+      { "131083", MDCECGLEADV3R }, 
+      { "urn:iso:std:iso:11073:10101#131083", MDCECGLEADV3R }, 
+      { "131084", MDCECGLEADV4R }, 
+      { "urn:iso:std:iso:11073:10101#131084", MDCECGLEADV4R }, 
+      { "131085", MDCECGLEADV5R }, 
+      { "urn:iso:std:iso:11073:10101#131085", MDCECGLEADV5R }, 
+      { "131086", MDCECGLEADV6R }, 
+      { "urn:iso:std:iso:11073:10101#131086", MDCECGLEADV6R }, 
+      { "131087", MDCECGLEADV7R }, 
+      { "urn:iso:std:iso:11073:10101#131087", MDCECGLEADV7R }, 
+      { "131088", MDCECGLEADVX }, 
+      { "urn:iso:std:iso:11073:10101#131088", MDCECGLEADVX }, 
+      { "131089", MDCECGLEADVY }, 
+      { "urn:iso:std:iso:11073:10101#131089", MDCECGLEADVY }, 
+      { "131090", MDCECGLEADVZ }, 
+      { "urn:iso:std:iso:11073:10101#131090", MDCECGLEADVZ }, 
+      { "131091", MDCECGLEADCC5 }, 
+      { "urn:iso:std:iso:11073:10101#131091", MDCECGLEADCC5 }, 
+      { "131092", MDCECGLEADCM5 }, 
+      { "urn:iso:std:iso:11073:10101#131092", MDCECGLEADCM5 }, 
+      { "131093", MDCECGLEADLA }, 
+      { "urn:iso:std:iso:11073:10101#131093", MDCECGLEADLA }, 
+      { "131094", MDCECGLEADRA }, 
+      { "urn:iso:std:iso:11073:10101#131094", MDCECGLEADRA }, 
+      { "131095", MDCECGLEADLL }, 
+      { "urn:iso:std:iso:11073:10101#131095", MDCECGLEADLL }, 
+      { "131096", MDCECGLEADFI }, 
+      { "urn:iso:std:iso:11073:10101#131096", MDCECGLEADFI }, 
+      { "131097", MDCECGLEADFE }, 
+      { "urn:iso:std:iso:11073:10101#131097", MDCECGLEADFE }, 
+      { "131098", MDCECGLEADFC }, 
+      { "urn:iso:std:iso:11073:10101#131098", MDCECGLEADFC }, 
+      { "131099", MDCECGLEADFA }, 
+      { "urn:iso:std:iso:11073:10101#131099", MDCECGLEADFA }, 
+      { "131100", MDCECGLEADFM }, 
+      { "urn:iso:std:iso:11073:10101#131100", MDCECGLEADFM }, 
+      { "131101", MDCECGLEADFF }, 
+      { "urn:iso:std:iso:11073:10101#131101", MDCECGLEADFF }, 
+      { "131102", MDCECGLEADFH }, 
+      { "urn:iso:std:iso:11073:10101#131102", MDCECGLEADFH }, 
+      { "131103", MDCECGLEADIcal }, 
+      { "urn:iso:std:iso:11073:10101#131103", MDCECGLEADIcal }, 
+      { "131104", MDCECGLEADIIcal }, 
+      { "urn:iso:std:iso:11073:10101#131104", MDCECGLEADIIcal }, 
+      { "131105", MDCECGLEADV1cal }, 
+      { "urn:iso:std:iso:11073:10101#131105", MDCECGLEADV1cal }, 
+      { "131106", MDCECGLEADV2cal }, 
+      { "urn:iso:std:iso:11073:10101#131106", MDCECGLEADV2cal }, 
+      { "131107", MDCECGLEADV3cal }, 
+      { "urn:iso:std:iso:11073:10101#131107", MDCECGLEADV3cal }, 
+      { "131108", MDCECGLEADV4cal }, 
+      { "urn:iso:std:iso:11073:10101#131108", MDCECGLEADV4cal }, 
+      { "131109", MDCECGLEADV5cal }, 
+      { "urn:iso:std:iso:11073:10101#131109", MDCECGLEADV5cal }, 
+      { "131110", MDCECGLEADV6cal }, 
+      { "urn:iso:std:iso:11073:10101#131110", MDCECGLEADV6cal }, 
+      { "131111", MDCECGLEADV7cal }, 
+      { "urn:iso:std:iso:11073:10101#131111", MDCECGLEADV7cal }, 
+      { "131112", MDCECGLEADV2Rcal }, 
+      { "urn:iso:std:iso:11073:10101#131112", MDCECGLEADV2Rcal }, 
+      { "131113", MDCECGLEADV3Rcal }, 
+      { "urn:iso:std:iso:11073:10101#131113", MDCECGLEADV3Rcal }, 
+      { "131114", MDCECGLEADV4Rcal }, 
+      { "urn:iso:std:iso:11073:10101#131114", MDCECGLEADV4Rcal }, 
+      { "131115", MDCECGLEADV5Rcal }, 
+      { "urn:iso:std:iso:11073:10101#131115", MDCECGLEADV5Rcal }, 
+      { "131116", MDCECGLEADV6Rcal }, 
+      { "urn:iso:std:iso:11073:10101#131116", MDCECGLEADV6Rcal }, 
+      { "131117", MDCECGLEADV7Rcal }, 
+      { "urn:iso:std:iso:11073:10101#131117", MDCECGLEADV7Rcal }, 
+      { "131118", MDCECGLEADVXcal }, 
+      { "urn:iso:std:iso:11073:10101#131118", MDCECGLEADVXcal }, 
+      { "131119", MDCECGLEADVYcal }, 
+      { "urn:iso:std:iso:11073:10101#131119", MDCECGLEADVYcal }, 
+      { "131120", MDCECGLEADVZcal }, 
+      { "urn:iso:std:iso:11073:10101#131120", MDCECGLEADVZcal }, 
+      { "131121", MDCECGLEADC5cal }, 
+      { "urn:iso:std:iso:11073:10101#131121", MDCECGLEADC5cal }, 
+      { "131122", MDCECGLEADCM5cal }, 
+      { "urn:iso:std:iso:11073:10101#131122", MDCECGLEADCM5cal }, 
+      { "131123", MDCECGLEADLAcal }, 
+      { "urn:iso:std:iso:11073:10101#131123", MDCECGLEADLAcal }, 
+      { "131124", MDCECGLEADRAcal }, 
+      { "urn:iso:std:iso:11073:10101#131124", MDCECGLEADRAcal }, 
+      { "131125", MDCECGLEADLLcal }, 
+      { "urn:iso:std:iso:11073:10101#131125", MDCECGLEADLLcal }, 
+      { "131126", MDCECGLEADFIcal }, 
+      { "urn:iso:std:iso:11073:10101#131126", MDCECGLEADFIcal }, 
+      { "131127", MDCECGLEADFEcal }, 
+      { "urn:iso:std:iso:11073:10101#131127", MDCECGLEADFEcal }, 
+      { "131128", MDCECGLEADFCcal }, 
+      { "urn:iso:std:iso:11073:10101#131128", MDCECGLEADFCcal }, 
+      { "131129", MDCECGLEADFAcal }, 
+      { "urn:iso:std:iso:11073:10101#131129", MDCECGLEADFAcal }, 
+      { "131130", MDCECGLEADFMcal }, 
+      { "urn:iso:std:iso:11073:10101#131130", MDCECGLEADFMcal }, 
+      { "131131", MDCECGLEADFFcal }, 
+      { "urn:iso:std:iso:11073:10101#131131", MDCECGLEADFFcal }, 
+      { "131132", MDCECGLEADFHcal }, 
+      { "urn:iso:std:iso:11073:10101#131132", MDCECGLEADFHcal }, 
+      { "131133", MDCECGLEADIII }, 
+      { "urn:iso:std:iso:11073:10101#131133", MDCECGLEADIII }, 
+      { "131134", MDCECGLEADAVR }, 
+      { "urn:iso:std:iso:11073:10101#131134", MDCECGLEADAVR }, 
+      { "131135", MDCECGLEADAVL }, 
+      { "urn:iso:std:iso:11073:10101#131135", MDCECGLEADAVL }, 
+      { "131136", MDCECGLEADAVF }, 
+      { "urn:iso:std:iso:11073:10101#131136", MDCECGLEADAVF }, 
+      { "131137", MDCECGLEADAVRneg }, 
+      { "urn:iso:std:iso:11073:10101#131137", MDCECGLEADAVRneg }, 
+      { "131138", MDCECGLEADC }, 
+      { "urn:iso:std:iso:11073:10101#131138", MDCECGLEADC }, 
+      { "131139", MDCECGLEADV }, 
+      { "urn:iso:std:iso:11073:10101#131139", MDCECGLEADV }, 
+      { "131140", MDCECGLEADVR }, 
+      { "urn:iso:std:iso:11073:10101#131140", MDCECGLEADVR }, 
+      { "131141", MDCECGLEADVL }, 
+      { "urn:iso:std:iso:11073:10101#131141", MDCECGLEADVL }, 
+      { "131142", MDCECGLEADVF }, 
+      { "urn:iso:std:iso:11073:10101#131142", MDCECGLEADVF }, 
+      { "131143", MDCECGLEADV8 }, 
+      { "urn:iso:std:iso:11073:10101#131143", MDCECGLEADV8 }, 
+      { "131144", MDCECGLEADDn }, 
+      { "urn:iso:std:iso:11073:10101#131144", MDCECGLEADDn }, 
+      { "131145", MDCECGLEADAn }, 
+      { "urn:iso:std:iso:11073:10101#131145", MDCECGLEADAn }, 
+      { "131146", MDCECGLEADJn }, 
+      { "urn:iso:std:iso:11073:10101#131146", MDCECGLEADJn }, 
+      { "131147", MDCECGLEADMCL }, 
+      { "urn:iso:std:iso:11073:10101#131147", MDCECGLEADMCL }, 
+      { "131148", MDCECGLEADMCL1 }, 
+      { "urn:iso:std:iso:11073:10101#131148", MDCECGLEADMCL1 }, 
+      { "131149", MDCECGLEADMCL2 }, 
+      { "urn:iso:std:iso:11073:10101#131149", MDCECGLEADMCL2 }, 
+      { "131150", MDCECGLEADMCL3 }, 
+      { "urn:iso:std:iso:11073:10101#131150", MDCECGLEADMCL3 }, 
+      { "131151", MDCECGLEADMCL4 }, 
+      { "urn:iso:std:iso:11073:10101#131151", MDCECGLEADMCL4 }, 
+      { "131152", MDCECGLEADMCL5 }, 
+      { "urn:iso:std:iso:11073:10101#131152", MDCECGLEADMCL5 }, 
+      { "131153", MDCECGLEADMCL6 }, 
+      { "urn:iso:std:iso:11073:10101#131153", MDCECGLEADMCL6 }, 
+      { "131154", MDCECGLEADC1FR }, 
+      { "urn:iso:std:iso:11073:10101#131154", MDCECGLEADC1FR }, 
+      { "131155", MDCECGLEADC2FR }, 
+      { "urn:iso:std:iso:11073:10101#131155", MDCECGLEADC2FR }, 
+      { "131156", MDCECGLEADC3FR }, 
+      { "urn:iso:std:iso:11073:10101#131156", MDCECGLEADC3FR }, 
+      { "131157", MDCECGLEADC4FR }, 
+      { "urn:iso:std:iso:11073:10101#131157", MDCECGLEADC4FR }, 
+      { "131158", MDCECGLEADC4RFR }, 
+      { "urn:iso:std:iso:11073:10101#131158", MDCECGLEADC4RFR }, 
+      { "131159", MDCECGLEADC5FR }, 
+      { "urn:iso:std:iso:11073:10101#131159", MDCECGLEADC5FR }, 
+      { "131160", MDCECGLEADC6FR }, 
+      { "urn:iso:std:iso:11073:10101#131160", MDCECGLEADC6FR }, 
+      { "131161", MDCECGLEADC7FR }, 
+      { "urn:iso:std:iso:11073:10101#131161", MDCECGLEADC7FR }, 
+      { "131162", MDCECGLEADC8FR }, 
+      { "urn:iso:std:iso:11073:10101#131162", MDCECGLEADC8FR }, 
+      { "131163", MDCECGLEADECGLD91 }, 
+      { "urn:iso:std:iso:11073:10101#131163", MDCECGLEADECGLD91 }, 
+      { "131164", MDCECGLEADECGLD92 }, 
+      { "urn:iso:std:iso:11073:10101#131164", MDCECGLEADECGLD92 }, 
+      { "131165", MDCECGLEADECGLD93 }, 
+      { "urn:iso:std:iso:11073:10101#131165", MDCECGLEADECGLD93 }, 
+      { "131166", MDCECGLEADECGLD94 }, 
+      { "urn:iso:std:iso:11073:10101#131166", MDCECGLEADECGLD94 }, 
+      { "131167", MDCECGLEADECGLD95 }, 
+      { "urn:iso:std:iso:11073:10101#131167", MDCECGLEADECGLD95 }, 
+      { "131168", MDCECGLEADECGLD96 }, 
+      { "urn:iso:std:iso:11073:10101#131168", MDCECGLEADECGLD96 }, 
+      { "131169", MDCECGLEADECGLD97 }, 
+      { "urn:iso:std:iso:11073:10101#131169", MDCECGLEADECGLD97 }, 
+      { "131170", MDCECGLEADECGLD98 }, 
+      { "urn:iso:std:iso:11073:10101#131170", MDCECGLEADECGLD98 }, 
+      { "131171", MDCECGLEADECGLD99 }, 
+      { "urn:iso:std:iso:11073:10101#131171", MDCECGLEADECGLD99 }, 
+      { "131172", MDCECGLEADES }, 
+      { "urn:iso:std:iso:11073:10101#131172", MDCECGLEADES }, 
+      { "131173", MDCECGLEADAS }, 
+      { "urn:iso:std:iso:11073:10101#131173", MDCECGLEADAS }, 
+      { "131174", MDCECGLEADAI }, 
+      { "urn:iso:std:iso:11073:10101#131174", MDCECGLEADAI }, 
+      { "131175", MDCECGLEADDI }, 
+      { "urn:iso:std:iso:11073:10101#131175", MDCECGLEADDI }, 
+      { "131176", MDCECGLEADDII }, 
+      { "urn:iso:std:iso:11073:10101#131176", MDCECGLEADDII }, 
+      { "131177", MDCECGLEADDIII }, 
+      { "urn:iso:std:iso:11073:10101#131177", MDCECGLEADDIII }, 
+      { "131178", MDCECGLEADDaVR }, 
+      { "urn:iso:std:iso:11073:10101#131178", MDCECGLEADDaVR }, 
+      { "131179", MDCECGLEADDaVL }, 
+      { "urn:iso:std:iso:11073:10101#131179", MDCECGLEADDaVL }, 
+      { "131180", MDCECGLEADDaVF }, 
+      { "urn:iso:std:iso:11073:10101#131180", MDCECGLEADDaVF }, 
+      { "131181", MDCECGLEADDV1 }, 
+      { "urn:iso:std:iso:11073:10101#131181", MDCECGLEADDV1 }, 
+      { "131182", MDCECGLEADDV2 }, 
+      { "urn:iso:std:iso:11073:10101#131182", MDCECGLEADDV2 }, 
+      { "131183", MDCECGLEADDV3 }, 
+      { "urn:iso:std:iso:11073:10101#131183", MDCECGLEADDV3 }, 
+      { "131184", MDCECGLEADDV4 }, 
+      { "urn:iso:std:iso:11073:10101#131184", MDCECGLEADDV4 }, 
+      { "131185", MDCECGLEADDV5 }, 
+      { "urn:iso:std:iso:11073:10101#131185", MDCECGLEADDV5 }, 
+      { "131186", MDCECGLEADDV6 }, 
+      { "urn:iso:std:iso:11073:10101#131186", MDCECGLEADDV6 }, 
+      { "131187", MDCECGLEADRL }, 
+      { "urn:iso:std:iso:11073:10101#131187", MDCECGLEADRL }, 
+      { "131188", MDCECGLEADEASIS }, 
+      { "urn:iso:std:iso:11073:10101#131188", MDCECGLEADEASIS }, 
+      { "131328", MDCECGELECPOTL }, 
+      { "urn:iso:std:iso:11073:10101#131328", MDCECGELECPOTL }, 
+      { "131329", MDCECGELECPOTLI }, 
+      { "urn:iso:std:iso:11073:10101#131329", MDCECGELECPOTLI }, 
+      { "131330", MDCECGELECPOTLII }, 
+      { "urn:iso:std:iso:11073:10101#131330", MDCECGELECPOTLII }, 
+      { "131331", MDCECGELECPOTLV1 }, 
+      { "urn:iso:std:iso:11073:10101#131331", MDCECGELECPOTLV1 }, 
+      { "131332", MDCECGELECPOTLV2 }, 
+      { "urn:iso:std:iso:11073:10101#131332", MDCECGELECPOTLV2 }, 
+      { "131333", MDCECGELECPOTLV3 }, 
+      { "urn:iso:std:iso:11073:10101#131333", MDCECGELECPOTLV3 }, 
+      { "131334", MDCECGELECPOTLV4 }, 
+      { "urn:iso:std:iso:11073:10101#131334", MDCECGELECPOTLV4 }, 
+      { "131335", MDCECGELECPOTLV5 }, 
+      { "urn:iso:std:iso:11073:10101#131335", MDCECGELECPOTLV5 }, 
+      { "131336", MDCECGELECPOTLV6 }, 
+      { "urn:iso:std:iso:11073:10101#131336", MDCECGELECPOTLV6 }, 
+      { "131344", MDCECGELECPOTLVX }, 
+      { "urn:iso:std:iso:11073:10101#131344", MDCECGELECPOTLVX }, 
+      { "131345", MDCECGELECPOTLVY }, 
+      { "urn:iso:std:iso:11073:10101#131345", MDCECGELECPOTLVY }, 
+      { "131346", MDCECGELECPOTLVZ }, 
+      { "urn:iso:std:iso:11073:10101#131346", MDCECGELECPOTLVZ }, 
+      { "131349", MDCECGELECPOTLLA }, 
+      { "urn:iso:std:iso:11073:10101#131349", MDCECGELECPOTLLA }, 
+      { "131350", MDCECGELECPOTLRA }, 
+      { "urn:iso:std:iso:11073:10101#131350", MDCECGELECPOTLRA }, 
+      { "131351", MDCECGELECPOTLLL }, 
+      { "urn:iso:std:iso:11073:10101#131351", MDCECGELECPOTLLL }, 
+      { "131389", MDCECGELECPOTLIII }, 
+      { "urn:iso:std:iso:11073:10101#131389", MDCECGELECPOTLIII }, 
+      { "131390", MDCECGELECPOTLAVR }, 
+      { "urn:iso:std:iso:11073:10101#131390", MDCECGELECPOTLAVR }, 
+      { "131391", MDCECGELECPOTLAVL }, 
+      { "urn:iso:std:iso:11073:10101#131391", MDCECGELECPOTLAVL }, 
+      { "131392", MDCECGELECPOTLAVF }, 
+      { "urn:iso:std:iso:11073:10101#131392", MDCECGELECPOTLAVF }, 
+      { "131394", MDCECGELECPOTLC }, 
+      { "urn:iso:std:iso:11073:10101#131394", MDCECGELECPOTLC }, 
+      { "131395", MDCECGELECPOTLV }, 
+      { "urn:iso:std:iso:11073:10101#131395", MDCECGELECPOTLV }, 
+      { "131403", MDCECGELECPOTLMCL }, 
+      { "urn:iso:std:iso:11073:10101#131403", MDCECGELECPOTLMCL }, 
+      { "131404", MDCECGELECPOTLMCL1 }, 
+      { "urn:iso:std:iso:11073:10101#131404", MDCECGELECPOTLMCL1 }, 
+      { "131405", MDCECGELECPOTLMCL2 }, 
+      { "urn:iso:std:iso:11073:10101#131405", MDCECGELECPOTLMCL2 }, 
+      { "131406", MDCECGELECPOTLMCL3 }, 
+      { "urn:iso:std:iso:11073:10101#131406", MDCECGELECPOTLMCL3 }, 
+      { "131407", MDCECGELECPOTLMCL4 }, 
+      { "urn:iso:std:iso:11073:10101#131407", MDCECGELECPOTLMCL4 }, 
+      { "131408", MDCECGELECPOTLMCL5 }, 
+      { "urn:iso:std:iso:11073:10101#131408", MDCECGELECPOTLMCL5 }, 
+      { "131409", MDCECGELECPOTLMCL6 }, 
+      { "urn:iso:std:iso:11073:10101#131409", MDCECGELECPOTLMCL6 }, 
+      { "131410", MDCECGELECPOTLC1FR }, 
+      { "urn:iso:std:iso:11073:10101#131410", MDCECGELECPOTLC1FR }, 
+      { "131411", MDCECGELECPOTLC2FR }, 
+      { "urn:iso:std:iso:11073:10101#131411", MDCECGELECPOTLC2FR }, 
+      { "131412", MDCECGELECPOTLC3FR }, 
+      { "urn:iso:std:iso:11073:10101#131412", MDCECGELECPOTLC3FR }, 
+      { "131413", MDCECGELECPOTLC4FR }, 
+      { "urn:iso:std:iso:11073:10101#131413", MDCECGELECPOTLC4FR }, 
+      { "131415", MDCECGELECPOTLC5FR }, 
+      { "urn:iso:std:iso:11073:10101#131415", MDCECGELECPOTLC5FR }, 
+      { "131416", MDCECGELECPOTLC6FR }, 
+      { "urn:iso:std:iso:11073:10101#131416", MDCECGELECPOTLC6FR }, 
+      { "131840", VAL131840 }, 
+      { "urn:iso:std:iso:11073:10101#131840", VAL131840 }, 
+      { "131841", MDCECGAMPLSTI }, 
+      { "urn:iso:std:iso:11073:10101#131841", MDCECGAMPLSTI }, 
+      { "131842", MDCECGAMPLSTII }, 
+      { "urn:iso:std:iso:11073:10101#131842", MDCECGAMPLSTII }, 
+      { "131843", MDCECGAMPLSTV1 }, 
+      { "urn:iso:std:iso:11073:10101#131843", MDCECGAMPLSTV1 }, 
+      { "131844", MDCECGAMPLSTV2 }, 
+      { "urn:iso:std:iso:11073:10101#131844", MDCECGAMPLSTV2 }, 
+      { "131845", MDCECGAMPLSTV3 }, 
+      { "urn:iso:std:iso:11073:10101#131845", MDCECGAMPLSTV3 }, 
+      { "131846", MDCECGAMPLSTV4 }, 
+      { "urn:iso:std:iso:11073:10101#131846", MDCECGAMPLSTV4 }, 
+      { "131847", MDCECGAMPLSTV5 }, 
+      { "urn:iso:std:iso:11073:10101#131847", MDCECGAMPLSTV5 }, 
+      { "131848", MDCECGAMPLSTV6 }, 
+      { "urn:iso:std:iso:11073:10101#131848", MDCECGAMPLSTV6 }, 
+      { "131873", MDCECGAMPLSTDV1 }, 
+      { "urn:iso:std:iso:11073:10101#131873", MDCECGAMPLSTDV1 }, 
+      { "131874", MDCECGAMPLSTDV2 }, 
+      { "urn:iso:std:iso:11073:10101#131874", MDCECGAMPLSTDV2 }, 
+      { "131875", MDCECGAMPLSTDV3 }, 
+      { "urn:iso:std:iso:11073:10101#131875", MDCECGAMPLSTDV3 }, 
+      { "131876", MDCECGAMPLSTDV4 }, 
+      { "urn:iso:std:iso:11073:10101#131876", MDCECGAMPLSTDV4 }, 
+      { "131877", MDCECGAMPLSTDV5 }, 
+      { "urn:iso:std:iso:11073:10101#131877", MDCECGAMPLSTDV5 }, 
+      { "131878", MDCECGAMPLSTDV6 }, 
+      { "urn:iso:std:iso:11073:10101#131878", MDCECGAMPLSTDV6 }, 
+      { "131901", MDCECGAMPLSTIII }, 
+      { "urn:iso:std:iso:11073:10101#131901", MDCECGAMPLSTIII }, 
+      { "131902", MDCECGAMPLSTAVR }, 
+      { "urn:iso:std:iso:11073:10101#131902", MDCECGAMPLSTAVR }, 
+      { "131903", MDCECGAMPLSTAVL }, 
+      { "urn:iso:std:iso:11073:10101#131903", MDCECGAMPLSTAVL }, 
+      { "131904", MDCECGAMPLSTAVF }, 
+      { "urn:iso:std:iso:11073:10101#131904", MDCECGAMPLSTAVF }, 
+      { "131927", MDCECGAMPLSTV }, 
+      { "urn:iso:std:iso:11073:10101#131927", MDCECGAMPLSTV }, 
+      { "131931", MDCECGAMPLSTMCL }, 
+      { "urn:iso:std:iso:11073:10101#131931", MDCECGAMPLSTMCL }, 
+      { "131932", MDCECGAMPLSTMCL1 }, 
+      { "urn:iso:std:iso:11073:10101#131932", MDCECGAMPLSTMCL1 }, 
+      { "131937", MDCECGAMPLSTMCL6 }, 
+      { "urn:iso:std:iso:11073:10101#131937", MDCECGAMPLSTMCL6 }, 
+      { "131971", MDCECGAMPLSTES }, 
+      { "urn:iso:std:iso:11073:10101#131971", MDCECGAMPLSTES }, 
+      { "131972", MDCECGAMPLSTAS }, 
+      { "urn:iso:std:iso:11073:10101#131972", MDCECGAMPLSTAS }, 
+      { "131973", MDCECGAMPLSTAI }, 
+      { "urn:iso:std:iso:11073:10101#131973", MDCECGAMPLSTAI }, 
+      { "132096", MDCECGPOINTJ }, 
+      { "urn:iso:std:iso:11073:10101#132096", MDCECGPOINTJ }, 
+      { "132352", MDCECGAMPLPMAX }, 
+      { "urn:iso:std:iso:11073:10101#132352", MDCECGAMPLPMAX }, 
+      { "132608", MDCECGAMPLPMIN }, 
+      { "urn:iso:std:iso:11073:10101#132608", MDCECGAMPLPMIN }, 
+      { "132864", MDCECGAMPLQ }, 
+      { "urn:iso:std:iso:11073:10101#132864", MDCECGAMPLQ }, 
+      { "133120", MDCECGAMPLR }, 
+      { "urn:iso:std:iso:11073:10101#133120", MDCECGAMPLR }, 
+      { "133376", MDCECGAMPLS }, 
+      { "urn:iso:std:iso:11073:10101#133376", MDCECGAMPLS }, 
+      { "133632", MDCECGAMPLTMAX }, 
+      { "urn:iso:std:iso:11073:10101#133632", MDCECGAMPLTMAX }, 
+      { "133888", MDCECGAMPLTMIN }, 
+      { "urn:iso:std:iso:11073:10101#133888", MDCECGAMPLTMIN }, 
+      { "134144", MDCECGAMPLP3 }, 
+      { "urn:iso:std:iso:11073:10101#134144", MDCECGAMPLP3 }, 
+      { "134400", MDCECGAREAQ }, 
+      { "urn:iso:std:iso:11073:10101#134400", MDCECGAREAQ }, 
+      { "134656", MDCECGAREAT }, 
+      { "urn:iso:std:iso:11073:10101#134656", MDCECGAREAT }, 
+      { "134912", MDCECGAREAP }, 
+      { "urn:iso:std:iso:11073:10101#134912", MDCECGAREAP }, 
+      { "135168", MDCECGAREAQRS }, 
+      { "urn:iso:std:iso:11073:10101#135168", MDCECGAREAQRS }, 
+      { "135424", MDCECGAREAST }, 
+      { "urn:iso:std:iso:11073:10101#135424", MDCECGAREAST }, 
+      { "135680", MDCECGTIMEPDP1 }, 
+      { "urn:iso:std:iso:11073:10101#135680", MDCECGTIMEPDP1 }, 
+      { "135936", MDCECGTIMEPDP2 }, 
+      { "urn:iso:std:iso:11073:10101#135936", MDCECGTIMEPDP2 }, 
+      { "136192", MDCECGTIMEPDP3 }, 
+      { "urn:iso:std:iso:11073:10101#136192", MDCECGTIMEPDP3 }, 
+      { "136448", MDCECGSLOPEST }, 
+      { "urn:iso:std:iso:11073:10101#136448", MDCECGSLOPEST }, 
+      { "136960", MDCECGTIMEENDP }, 
+      { "urn:iso:std:iso:11073:10101#136960", MDCECGTIMEENDP }, 
+      { "137216", MDCECGTIMEENDQRS }, 
+      { "urn:iso:std:iso:11073:10101#137216", MDCECGTIMEENDQRS }, 
+      { "137472", MDCECGTIMEENDT }, 
+      { "urn:iso:std:iso:11073:10101#137472", MDCECGTIMEENDT }, 
+      { "137728", MDCECGTIMEPDP }, 
+      { "urn:iso:std:iso:11073:10101#137728", MDCECGTIMEPDP }, 
+      { "137984", MDCECGINTEGRALP }, 
+      { "urn:iso:std:iso:11073:10101#137984", MDCECGINTEGRALP }, 
+      { "138240", MDCECGTIMEPDPR }, 
+      { "urn:iso:std:iso:11073:10101#138240", MDCECGTIMEPDPR }, 
+      { "138496", MDCECGINTEGRALQ }, 
+      { "urn:iso:std:iso:11073:10101#138496", MDCECGINTEGRALQ }, 
+      { "138752", MDCECGTIMEPDQ }, 
+      { "urn:iso:std:iso:11073:10101#138752", MDCECGTIMEPDQ }, 
+      { "139008", MDCECGTIMEPDQRS }, 
+      { "urn:iso:std:iso:11073:10101#139008", MDCECGTIMEPDQRS }, 
+      { "139264", MDCECGTIMEPDQT }, 
+      { "urn:iso:std:iso:11073:10101#139264", MDCECGTIMEPDQT }, 
+      { "139520", MDCECGTIMEPDQTCORR }, 
+      { "urn:iso:std:iso:11073:10101#139520", MDCECGTIMEPDQTCORR }, 
+      { "139776", MDCECGINTEGRALQRS }, 
+      { "urn:iso:std:iso:11073:10101#139776", MDCECGINTEGRALQRS }, 
+      { "140032", MDCECGINTEGRALT }, 
+      { "urn:iso:std:iso:11073:10101#140032", MDCECGINTEGRALT }, 
+      { "140288", MDCECGINTEGRALST }, 
+      { "urn:iso:std:iso:11073:10101#140288", MDCECGINTEGRALST }, 
+      { "140544", MDCECGTIMESTARTP }, 
+      { "urn:iso:std:iso:11073:10101#140544", MDCECGTIMESTARTP }, 
+      { "140800", MDCECGTIMESTARTQRS }, 
+      { "urn:iso:std:iso:11073:10101#140800", MDCECGTIMESTARTQRS }, 
+      { "141056", MDCECGTIMESTARTT }, 
+      { "urn:iso:std:iso:11073:10101#141056", MDCECGTIMESTARTT }, 
+      { "141312", MDCECGPOINTREF }, 
+      { "urn:iso:std:iso:11073:10101#141312", MDCECGPOINTREF }, 
+      { "141568", MDCECGPOINTST }, 
+      { "urn:iso:std:iso:11073:10101#141568", MDCECGPOINTST }, 
+      { "141824", MDCECGPOINTISO }, 
+      { "urn:iso:std:iso:11073:10101#141824", MDCECGPOINTISO }, 
+      { "142080", MDCECGTIMEPDVENTACTIV }, 
+      { "urn:iso:std:iso:11073:10101#142080", MDCECGTIMEPDVENTACTIV }, 
+      { "142336", MDCECGTIMEPDR1 }, 
+      { "urn:iso:std:iso:11073:10101#142336", MDCECGTIMEPDR1 }, 
+      { "142592", MDCECGTIMEPDR2 }, 
+      { "urn:iso:std:iso:11073:10101#142592", MDCECGTIMEPDR2 }, 
+      { "142848", MDCECGTIMEPDR3 }, 
+      { "urn:iso:std:iso:11073:10101#142848", MDCECGTIMEPDR3 }, 
+      { "143104", MDCECGTIMEPDS1 }, 
+      { "urn:iso:std:iso:11073:10101#143104", MDCECGTIMEPDS1 }, 
+      { "143360", MDCECGTIMEPDS2 }, 
+      { "urn:iso:std:iso:11073:10101#143360", MDCECGTIMEPDS2 }, 
+      { "143616", MDCECGTIMEPDS3 }, 
+      { "urn:iso:std:iso:11073:10101#143616", MDCECGTIMEPDS3 }, 
+      { "143872", MDCECGELECPOTLR1 }, 
+      { "urn:iso:std:iso:11073:10101#143872", MDCECGELECPOTLR1 }, 
+      { "144128", MDCECGELECPOTLR2 }, 
+      { "urn:iso:std:iso:11073:10101#144128", MDCECGELECPOTLR2 }, 
+      { "144384", MDCECGELECPOTLR3 }, 
+      { "urn:iso:std:iso:11073:10101#144384", MDCECGELECPOTLR3 }, 
+      { "144640", MDCECGELECPOTLS1 }, 
+      { "urn:iso:std:iso:11073:10101#144640", MDCECGELECPOTLS1 }, 
+      { "144896", MDCECGELECPOTLS2 }, 
+      { "urn:iso:std:iso:11073:10101#144896", MDCECGELECPOTLS2 }, 
+      { "145152", MDCECGELECPOTLS3 }, 
+      { "urn:iso:std:iso:11073:10101#145152", MDCECGELECPOTLS3 }, 
+      { "145408", MDCECGELECPOTLST60 }, 
+      { "urn:iso:std:iso:11073:10101#145408", MDCECGELECPOTLST60 }, 
+      { "145664", MDCECGELECPOTLST80 }, 
+      { "urn:iso:std:iso:11073:10101#145664", MDCECGELECPOTLST80 }, 
+      { "145920", MDCECGELECPOTLST20 }, 
+      { "urn:iso:std:iso:11073:10101#145920", MDCECGELECPOTLST20 }, 
+      { "146176", MDCECGELECPOTLST40 }, 
+      { "urn:iso:std:iso:11073:10101#146176", MDCECGELECPOTLST40 }, 
+      { "146952", MDCECGTIMEPDQTCBAZETT }, 
+      { "urn:iso:std:iso:11073:10101#146952", MDCECGTIMEPDQTCBAZETT }, 
+      { "146956", MDCECGTIMEPDQTCFRAMINGHAM }, 
+      { "urn:iso:std:iso:11073:10101#146956", MDCECGTIMEPDQTCFRAMINGHAM }, 
+      { "146960", MDCECGTIMEPDQTCHODGES }, 
+      { "urn:iso:std:iso:11073:10101#146960", MDCECGTIMEPDQTCHODGES }, 
+      { "146964", MDCECGTIMEPDQTCFREDERICA }, 
+      { "urn:iso:std:iso:11073:10101#146964", MDCECGTIMEPDQTCFREDERICA }, 
+      { "146968", MDCECGTIMEPDQTCUSER }, 
+      { "urn:iso:std:iso:11073:10101#146968", MDCECGTIMEPDQTCUSER }, 
+      { "147076", MDCECGTIMEPDQTU }, 
+      { "urn:iso:std:iso:11073:10101#147076", MDCECGTIMEPDQTU }, 
+      { "147080", MDCECGDISPERSIONQT }, 
+      { "urn:iso:std:iso:11073:10101#147080", MDCECGDISPERSIONQT }, 
+      { "147084", MDCECGDISPERSIONQTC }, 
+      { "urn:iso:std:iso:11073:10101#147084", MDCECGDISPERSIONQTC }, 
+      { "147088", MDCECGVENTRICULARRATE }, 
+      { "urn:iso:std:iso:11073:10101#147088", MDCECGVENTRICULARRATE }, 
+      { "147092", MDCECGATRIALRATE }, 
+      { "urn:iso:std:iso:11073:10101#147092", MDCECGATRIALRATE }, 
+      { "147096", MDCECGVPCCOUNT }, 
+      { "urn:iso:std:iso:11073:10101#147096", MDCECGVPCCOUNT }, 
+      { "147100", MDCECGSVPCRATE }, 
+      { "urn:iso:std:iso:11073:10101#147100", MDCECGSVPCRATE }, 
+      { "147104", MDCECGBEATCOUNT }, 
+      { "urn:iso:std:iso:11073:10101#147104", MDCECGBEATCOUNT }, 
+      { "147200", MDCECGANGLEPFRONT }, 
+      { "urn:iso:std:iso:11073:10101#147200", MDCECGANGLEPFRONT }, 
+      { "147204", MDCECGANGLEQRSFRONT }, 
+      { "urn:iso:std:iso:11073:10101#147204", MDCECGANGLEQRSFRONT }, 
+      { "147208", MDCECGANGLETFRONT }, 
+      { "urn:iso:std:iso:11073:10101#147208", MDCECGANGLETFRONT }, 
+      { "147212", MDCECGTIMEPDPPGL }, 
+      { "urn:iso:std:iso:11073:10101#147212", MDCECGTIMEPDPPGL }, 
+      { "147216", MDCECGTIMEPDPQ }, 
+      { "urn:iso:std:iso:11073:10101#147216", MDCECGTIMEPDPQ }, 
+      { "147220", MDCECGTIMEPDPRGL }, 
+      { "urn:iso:std:iso:11073:10101#147220", MDCECGTIMEPDPRGL }, 
+      { "147228", MDCECGTIMEPDQRSGL }, 
+      { "urn:iso:std:iso:11073:10101#147228", MDCECGTIMEPDQRSGL }, 
+      { "147232", MDCECGTIMEPDQTGL }, 
+      { "urn:iso:std:iso:11073:10101#147232", MDCECGTIMEPDQTGL }, 
+      { "147236", MDCECGTIMEPDQTc }, 
+      { "urn:iso:std:iso:11073:10101#147236", MDCECGTIMEPDQTc }, 
+      { "147240", MDCECGRR }, 
+      { "urn:iso:std:iso:11073:10101#147240", MDCECGRR }, 
+      { "147241", MDCECGRRMAX }, 
+      { "urn:iso:std:iso:11073:10101#147241", MDCECGRRMAX }, 
+      { "147244", MDCECGMAGPFRONT }, 
+      { "urn:iso:std:iso:11073:10101#147244", MDCECGMAGPFRONT }, 
+      { "147248", MDCECGMAGQRSFRONT }, 
+      { "urn:iso:std:iso:11073:10101#147248", MDCECGMAGQRSFRONT }, 
+      { "147252", MDCECGMAGTFRONT }, 
+      { "urn:iso:std:iso:11073:10101#147252", MDCECGMAGTFRONT }, 
+      { "147256", MDCECGTIMEPDPGL }, 
+      { "urn:iso:std:iso:11073:10101#147256", MDCECGTIMEPDPGL }, 
+      { "147260", MDCECGQRSTYPE }, 
+      { "urn:iso:std:iso:11073:10101#147260", MDCECGQRSTYPE }, 
+      { "147264", MDCECGMAGPVECT }, 
+      { "urn:iso:std:iso:11073:10101#147264", MDCECGMAGPVECT }, 
+      { "147268", MDCECGMAGQRSVECT }, 
+      { "urn:iso:std:iso:11073:10101#147268", MDCECGMAGQRSVECT }, 
+      { "147272", MDCECGMAGTVECT }, 
+      { "urn:iso:std:iso:11073:10101#147272", MDCECGMAGTVECT }, 
+      { "147276", MDCECGANGLEPAZIM }, 
+      { "urn:iso:std:iso:11073:10101#147276", MDCECGANGLEPAZIM }, 
+      { "147280", MDCECGANGLEQRSAZIM }, 
+      { "urn:iso:std:iso:11073:10101#147280", MDCECGANGLEQRSAZIM }, 
+      { "147284", MDCECGANGLETAZIM }, 
+      { "urn:iso:std:iso:11073:10101#147284", MDCECGANGLETAZIM }, 
+      { "147288", MDCECGANGLEPELEV }, 
+      { "urn:iso:std:iso:11073:10101#147288", MDCECGANGLEPELEV }, 
+      { "147292", MDCECGANGLEQRSELEV }, 
+      { "urn:iso:std:iso:11073:10101#147292", MDCECGANGLEQRSELEV }, 
+      { "147296", MDCECGANGLETELEV }, 
+      { "urn:iso:std:iso:11073:10101#147296", MDCECGANGLETELEV }, 
+      { "147304", MDCECGMAGJVECT }, 
+      { "urn:iso:std:iso:11073:10101#147304", MDCECGMAGJVECT }, 
+      { "147308", MDCECGANGLEJAZIM }, 
+      { "urn:iso:std:iso:11073:10101#147308", MDCECGANGLEJAZIM }, 
+      { "147312", MDCECGANGLEJELEV }, 
+      { "urn:iso:std:iso:11073:10101#147312", MDCECGANGLEJELEV }, 
+      { "147316", MDCECGMAGJ20VECT }, 
+      { "urn:iso:std:iso:11073:10101#147316", MDCECGMAGJ20VECT }, 
+      { "147320", MDCECGANGLEJ20AZIM }, 
+      { "urn:iso:std:iso:11073:10101#147320", MDCECGANGLEJ20AZIM }, 
+      { "147324", MDCECGANGLEJ20ELEV }, 
+      { "urn:iso:std:iso:11073:10101#147324", MDCECGANGLEJ20ELEV }, 
+      { "147328", MDCECGMAGJ40VECT }, 
+      { "urn:iso:std:iso:11073:10101#147328", MDCECGMAGJ40VECT }, 
+      { "147332", MDCECGANGLEJ40AZIM }, 
+      { "urn:iso:std:iso:11073:10101#147332", MDCECGANGLEJ40AZIM }, 
+      { "147336", MDCECGANGLEJ40ELEV }, 
+      { "urn:iso:std:iso:11073:10101#147336", MDCECGANGLEJ40ELEV }, 
+      { "147340", MDCECGMAGJ60VECT }, 
+      { "urn:iso:std:iso:11073:10101#147340", MDCECGMAGJ60VECT }, 
+      { "147344", MDCECGANGLEJ60AZIM }, 
+      { "urn:iso:std:iso:11073:10101#147344", MDCECGANGLEJ60AZIM }, 
+      { "147348", MDCECGANGLEJ60ELEV }, 
+      { "urn:iso:std:iso:11073:10101#147348", MDCECGANGLEJ60ELEV }, 
+      { "147352", MDCECGMAGJ80VECT }, 
+      { "urn:iso:std:iso:11073:10101#147352", MDCECGMAGJ80VECT }, 
+      { "147356", MDCECGANGLEJ80AZIM }, 
+      { "urn:iso:std:iso:11073:10101#147356", MDCECGANGLEJ80AZIM }, 
+      { "147360", MDCECGANGLEJ80ELEV }, 
+      { "urn:iso:std:iso:11073:10101#147360", MDCECGANGLEJ80ELEV }, 
+      { "147364", MDCECGMAGJxxVECT }, 
+      { "urn:iso:std:iso:11073:10101#147364", MDCECGMAGJxxVECT }, 
+      { "147368", MDCECGANGLEJxxAZIM }, 
+      { "urn:iso:std:iso:11073:10101#147368", MDCECGANGLEJxxAZIM }, 
+      { "147372", MDCECGANGLEJxxELEV }, 
+      { "urn:iso:std:iso:11073:10101#147372", MDCECGANGLEJxxELEV }, 
+      { "147376", MDCECGTIMESTJxx }, 
+      { "urn:iso:std:iso:11073:10101#147376", MDCECGTIMESTJxx }, 
+      { "147380", MDCECGMAGPVECTFRONT }, 
+      { "urn:iso:std:iso:11073:10101#147380", MDCECGMAGPVECTFRONT }, 
+      { "147384", MDCECGMAGPVECTHORIZ }, 
+      { "urn:iso:std:iso:11073:10101#147384", MDCECGMAGPVECTHORIZ }, 
+      { "147388", MDCECGMAGPVECTSAGI }, 
+      { "urn:iso:std:iso:11073:10101#147388", MDCECGMAGPVECTSAGI }, 
+      { "147392", MDCECGMAGQRSVECTFRONT }, 
+      { "urn:iso:std:iso:11073:10101#147392", MDCECGMAGQRSVECTFRONT }, 
+      { "147396", MDCECGMAGQRSVECTHORIZ }, 
+      { "urn:iso:std:iso:11073:10101#147396", MDCECGMAGQRSVECTHORIZ }, 
+      { "147400", MDCECGMAGQRSVECTSAGI }, 
+      { "urn:iso:std:iso:11073:10101#147400", MDCECGMAGQRSVECTSAGI }, 
+      { "147404", MDCECGMAGTVECTFRONT }, 
+      { "urn:iso:std:iso:11073:10101#147404", MDCECGMAGTVECTFRONT }, 
+      { "147408", MDCECGMAGTVECTHORIZ }, 
+      { "urn:iso:std:iso:11073:10101#147408", MDCECGMAGTVECTHORIZ }, 
+      { "147412", MDCECGMAGTVECTSAGI }, 
+      { "urn:iso:std:iso:11073:10101#147412", MDCECGMAGTVECTSAGI }, 
+      { "147456", MDCECGPATT }, 
+      { "urn:iso:std:iso:11073:10101#147456", MDCECGPATT }, 
+      { "147458", MDCECGLEARNRHY }, 
+      { "urn:iso:std:iso:11073:10101#147458", MDCECGLEARNRHY }, 
+      { "147459", MDCECGASYRHY }, 
+      { "urn:iso:std:iso:11073:10101#147459", MDCECGASYRHY }, 
+      { "147460", MDCECGATRPACEDRHYCAPT }, 
+      { "urn:iso:std:iso:11073:10101#147460", MDCECGATRPACEDRHYCAPT }, 
+      { "147461", MDCECGIDIOVRHY }, 
+      { "urn:iso:std:iso:11073:10101#147461", MDCECGIDIOVRHY }, 
+      { "147462", MDCECGIDIOVRHYACCEL }, 
+      { "urn:iso:std:iso:11073:10101#147462", MDCECGIDIOVRHYACCEL }, 
+      { "147463", MDCECGJUNCRHY }, 
+      { "urn:iso:std:iso:11073:10101#147463", MDCECGJUNCRHY }, 
+      { "147464", MDCECGJUNCRHYACCEL }, 
+      { "urn:iso:std:iso:11073:10101#147464", MDCECGJUNCRHYACCEL }, 
+      { "147465", MDCECGPACEDRHY }, 
+      { "urn:iso:std:iso:11073:10101#147465", MDCECGPACEDRHY }, 
+      { "147466", MDCECGRHY }, 
+      { "urn:iso:std:iso:11073:10101#147466", MDCECGRHY }, 
+      { "147467", MDCECGRHYABSENT }, 
+      { "urn:iso:std:iso:11073:10101#147467", MDCECGRHYABSENT }, 
+      { "147468", MDCECGRHYECT }, 
+      { "urn:iso:std:iso:11073:10101#147468", MDCECGRHYECT }, 
+      { "147469", MDCECGRHYIRREG }, 
+      { "urn:iso:std:iso:11073:10101#147469", MDCECGRHYIRREG }, 
+      { "147470", MDCECGRHYREG }, 
+      { "urn:iso:std:iso:11073:10101#147470", MDCECGRHYREG }, 
+      { "147471", MDCECGRHYSERIOUS }, 
+      { "urn:iso:std:iso:11073:10101#147471", MDCECGRHYSERIOUS }, 
+      { "147472", MDCECGRHYUNK }, 
+      { "urn:iso:std:iso:11073:10101#147472", MDCECGRHYUNK }, 
+      { "147473", MDCECGRHYUNANALYZEABLE }, 
+      { "urn:iso:std:iso:11073:10101#147473", MDCECGRHYUNANALYZEABLE }, 
+      { "147474", MDCECGSINUSRHY }, 
+      { "urn:iso:std:iso:11073:10101#147474", MDCECGSINUSRHY }, 
+      { "147475", MDCECGSINUSBRADYRHY }, 
+      { "urn:iso:std:iso:11073:10101#147475", MDCECGSINUSBRADYRHY }, 
+      { "147476", MDCECGSINUSTACHYRHY }, 
+      { "urn:iso:std:iso:11073:10101#147476", MDCECGSINUSTACHYRHY }, 
+      { "147477", MDCECGSVRHY }, 
+      { "urn:iso:std:iso:11073:10101#147477", MDCECGSVRHY }, 
+      { "147478", MDCECGSVTACHYRHY }, 
+      { "urn:iso:std:iso:11073:10101#147478", MDCECGSVTACHYRHY }, 
+      { "147479", MDCECGVBIGEMRHY }, 
+      { "urn:iso:std:iso:11073:10101#147479", MDCECGVBIGEMRHY }, 
+      { "147480", MDCECGVRHY }, 
+      { "urn:iso:std:iso:11073:10101#147480", MDCECGVRHY }, 
+      { "147481", MDCECGVRHYACCEL }, 
+      { "urn:iso:std:iso:11073:10101#147481", MDCECGVRHYACCEL }, 
+      { "147482", MDCECGVTACHYRHY }, 
+      { "urn:iso:std:iso:11073:10101#147482", MDCECGVTACHYRHY }, 
+      { "147483", MDCECGVTACHYRHYSUST }, 
+      { "urn:iso:std:iso:11073:10101#147483", MDCECGVTACHYRHYSUST }, 
+      { "147484", MDCECGVTRIGEMRHY }, 
+      { "urn:iso:std:iso:11073:10101#147484", MDCECGVTRIGEMRHY }, 
+      { "147485", MDCECGSVBRADYRHY }, 
+      { "urn:iso:std:iso:11073:10101#147485", MDCECGSVBRADYRHY }, 
+      { "147486", MDCECGVFIBRHY }, 
+      { "urn:iso:std:iso:11073:10101#147486", MDCECGVFIBRHY }, 
+      { "147487", MDCECGVPCRUNRHY }, 
+      { "urn:iso:std:iso:11073:10101#147487", MDCECGVPCRUNRHY }, 
+      { "147488", MDCECGVFIBTACHYRHY }, 
+      { "urn:iso:std:iso:11073:10101#147488", MDCECGVFIBTACHYRHY }, 
+      { "147489", MDCECGBBRHYINTERMIT }, 
+      { "urn:iso:std:iso:11073:10101#147489", MDCECGBBRHYINTERMIT }, 
+      { "147490", MDCECGJUNCESCRHY }, 
+      { "urn:iso:std:iso:11073:10101#147490", MDCECGJUNCESCRHY }, 
+      { "147519", MDCECGRHYNOS }, 
+      { "urn:iso:std:iso:11073:10101#147519", MDCECGRHYNOS }, 
+      { "147520", MDCECGBRADY }, 
+      { "urn:iso:std:iso:11073:10101#147520", MDCECGBRADY }, 
+      { "147527", MDCECGARTIFACTANNOT }, 
+      { "urn:iso:std:iso:11073:10101#147527", MDCECGARTIFACTANNOT }, 
+      { "147528", MDCECGASYSTOLE }, 
+      { "urn:iso:std:iso:11073:10101#147528", MDCECGASYSTOLE }, 
+      { "147536", MDCECGATRPACEDBEAT }, 
+      { "urn:iso:std:iso:11073:10101#147536", MDCECGATRPACEDBEAT }, 
+      { "147537", MDCECGATRPACEDBEATCNT }, 
+      { "urn:iso:std:iso:11073:10101#147537", MDCECGATRPACEDBEATCNT }, 
+      { "147543", MDCECGATRPACEDBEATANNOT }, 
+      { "urn:iso:std:iso:11073:10101#147543", MDCECGATRPACEDBEATANNOT }, 
+      { "147544", MDCECGBEATMISSED }, 
+      { "urn:iso:std:iso:11073:10101#147544", MDCECGBEATMISSED }, 
+      { "147545", MDCECGBEATMISSEDCNT }, 
+      { "urn:iso:std:iso:11073:10101#147545", MDCECGBEATMISSEDCNT }, 
+      { "147551", MDCECGBEATMISSEDANNOT }, 
+      { "urn:iso:std:iso:11073:10101#147551", MDCECGBEATMISSEDANNOT }, 
+      { "147552", MDCECGBIGEM }, 
+      { "urn:iso:std:iso:11073:10101#147552", MDCECGBIGEM }, 
+      { "147560", MDCECGARTIFACT }, 
+      { "urn:iso:std:iso:11073:10101#147560", MDCECGARTIFACT }, 
+      { "147568", MDCECGBRADYEXTREME }, 
+      { "urn:iso:std:iso:11073:10101#147568", MDCECGBRADYEXTREME }, 
+      { "147576", MDCECGBRADYSUST }, 
+      { "urn:iso:std:iso:11073:10101#147576", MDCECGBRADYSUST }, 
+      { "147584", MDCECGDUALPACEDBEAT }, 
+      { "urn:iso:std:iso:11073:10101#147584", MDCECGDUALPACEDBEAT }, 
+      { "147585", MDCECGDUALPACEDBEATCNT }, 
+      { "urn:iso:std:iso:11073:10101#147585", MDCECGDUALPACEDBEATCNT }, 
+      { "147591", MDCECGDUALPACEDBEATANNOT }, 
+      { "urn:iso:std:iso:11073:10101#147591", MDCECGDUALPACEDBEATANNOT }, 
+      { "147592", MDCECGECT }, 
+      { "urn:iso:std:iso:11073:10101#147592", MDCECGECT }, 
+      { "147593", MDCECGECTCNT }, 
+      { "urn:iso:std:iso:11073:10101#147593", MDCECGECTCNT }, 
+      { "147600", MDCECGFIB }, 
+      { "urn:iso:std:iso:11073:10101#147600", MDCECGFIB }, 
+      { "147608", MDCECGNOECTBEAT }, 
+      { "urn:iso:std:iso:11073:10101#147608", MDCECGNOECTBEAT }, 
+      { "147616", MDCECGPC }, 
+      { "urn:iso:std:iso:11073:10101#147616", MDCECGPC }, 
+      { "147624", MDCECGPACEDBEAT }, 
+      { "urn:iso:std:iso:11073:10101#147624", MDCECGPACEDBEAT }, 
+      { "147625", MDCECGPACEDBEATCNT }, 
+      { "urn:iso:std:iso:11073:10101#147625", MDCECGPACEDBEATCNT }, 
+      { "147626", MDCECGPACEDBEATRATE }, 
+      { "urn:iso:std:iso:11073:10101#147626", MDCECGPACEDBEATRATE }, 
+      { "147627", MDCECGPACEDBEATRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#147627", MDCECGPACEDBEATRATEMAX }, 
+      { "147628", MDCECGPACEDBEATRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#147628", MDCECGPACEDBEATRATEMIN }, 
+      { "147631", MDCECGPACEDBEATANNOT }, 
+      { "urn:iso:std:iso:11073:10101#147631", MDCECGPACEDBEATANNOT }, 
+      { "147632", MDCECGPACINGEVENT }, 
+      { "urn:iso:std:iso:11073:10101#147632", MDCECGPACINGEVENT }, 
+      { "147640", MDCECGPACINGCAPT }, 
+      { "urn:iso:std:iso:11073:10101#147640", MDCECGPACINGCAPT }, 
+      { "147648", MDCECGPACINGNONCAPT }, 
+      { "urn:iso:std:iso:11073:10101#147648", MDCECGPACINGNONCAPT }, 
+      { "147649", MDCECGPACINGNONCAPTCNT }, 
+      { "urn:iso:std:iso:11073:10101#147649", MDCECGPACINGNONCAPTCNT }, 
+      { "147656", MDCECGPACINGNOTFOUND }, 
+      { "urn:iso:std:iso:11073:10101#147656", MDCECGPACINGNOTFOUND }, 
+      { "147664", MDCECGPACINGRUN }, 
+      { "urn:iso:std:iso:11073:10101#147664", MDCECGPACINGRUN }, 
+      { "147665", MDCECGPACINGRUNCNT }, 
+      { "urn:iso:std:iso:11073:10101#147665", MDCECGPACINGRUNCNT }, 
+      { "147672", MDCECGPAUSE }, 
+      { "urn:iso:std:iso:11073:10101#147672", MDCECGPAUSE }, 
+      { "147680", MDCECGQUADRIGEM }, 
+      { "urn:iso:std:iso:11073:10101#147680", MDCECGQUADRIGEM }, 
+      { "147688", MDCECGTACHY }, 
+      { "urn:iso:std:iso:11073:10101#147688", MDCECGTACHY }, 
+      { "147696", MDCECGTACHYEXTREME }, 
+      { "urn:iso:std:iso:11073:10101#147696", MDCECGTACHYEXTREME }, 
+      { "147704", MDCECGTACHYUNSPEC }, 
+      { "urn:iso:std:iso:11073:10101#147704", MDCECGTACHYUNSPEC }, 
+      { "147720", MDCECGATRFIB }, 
+      { "urn:iso:std:iso:11073:10101#147720", MDCECGATRFIB }, 
+      { "147728", MDCECGATRFLUT }, 
+      { "urn:iso:std:iso:11073:10101#147728", MDCECGATRFLUT }, 
+      { "147736", MDCECGATRPC }, 
+      { "urn:iso:std:iso:11073:10101#147736", MDCECGATRPC }, 
+      { "147744", MDCECGATRPACING }, 
+      { "urn:iso:std:iso:11073:10101#147744", MDCECGATRPACING }, 
+      { "147752", MDCECGATRSTAND }, 
+      { "urn:iso:std:iso:11073:10101#147752", MDCECGATRSTAND }, 
+      { "147760", MDCECGATRTACHY }, 
+      { "urn:iso:std:iso:11073:10101#147760", MDCECGATRTACHY }, 
+      { "147768", MDCECGATRTACHYMULTIFOCAL }, 
+      { "urn:iso:std:iso:11073:10101#147768", MDCECGATRTACHYMULTIFOCAL }, 
+      { "147776", MDCECGATRTACHYPAROX }, 
+      { "urn:iso:std:iso:11073:10101#147776", MDCECGATRTACHYPAROX }, 
+      { "147784", MDCECGAVDISSOC }, 
+      { "urn:iso:std:iso:11073:10101#147784", MDCECGAVDISSOC }, 
+      { "147792", MDCECGAVPACINGSEQ }, 
+      { "urn:iso:std:iso:11073:10101#147792", MDCECGAVPACINGSEQ }, 
+      { "147800", MDCECGAVHEARTBLKDEG1 }, 
+      { "urn:iso:std:iso:11073:10101#147800", MDCECGAVHEARTBLKDEG1 }, 
+      { "147808", MDCECGAVHEARTBLKDEG2 }, 
+      { "urn:iso:std:iso:11073:10101#147808", MDCECGAVHEARTBLKDEG2 }, 
+      { "147816", MDCECGAVHEARTBLKDEG2I }, 
+      { "urn:iso:std:iso:11073:10101#147816", MDCECGAVHEARTBLKDEG2I }, 
+      { "147824", MDCECGAVHEARTBLKDEG2II }, 
+      { "urn:iso:std:iso:11073:10101#147824", MDCECGAVHEARTBLKDEG2II }, 
+      { "147832", MDCECGBBBLK }, 
+      { "urn:iso:std:iso:11073:10101#147832", MDCECGBBBLK }, 
+      { "147840", MDCECGHEART }, 
+      { "urn:iso:std:iso:11073:10101#147840", MDCECGHEART }, 
+      { "147841", MDCECGCARDBEATCNT }, 
+      { "urn:iso:std:iso:11073:10101#147841", MDCECGCARDBEATCNT }, 
+      { "147842", MDCECGHEARTRATE }, 
+      { "urn:iso:std:iso:11073:10101#147842", MDCECGHEARTRATE }, 
+      { "147844", MDCECGHEARTRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#147844", MDCECGHEARTRATEMIN }, 
+      { "147848", MDCECGCARDBEATBTB }, 
+      { "urn:iso:std:iso:11073:10101#147848", MDCECGCARDBEATBTB }, 
+      { "147850", MDCECGCARDBEATRATEBTB }, 
+      { "urn:iso:std:iso:11073:10101#147850", MDCECGCARDBEATRATEBTB }, 
+      { "147856", MDCECGCARDBEATRATEIRREG }, 
+      { "urn:iso:std:iso:11073:10101#147856", MDCECGCARDBEATRATEIRREG }, 
+      { "147864", MDCECGHEARTDYING }, 
+      { "urn:iso:std:iso:11073:10101#147864", MDCECGHEARTDYING }, 
+      { "147872", MDCECGHEARTBLK }, 
+      { "urn:iso:std:iso:11073:10101#147872", MDCECGHEARTBLK }, 
+      { "147880", MDCECGHEARTBLKCOMP }, 
+      { "urn:iso:std:iso:11073:10101#147880", MDCECGHEARTBLKCOMP }, 
+      { "147888", MDCECGJUNCESCBEATS }, 
+      { "urn:iso:std:iso:11073:10101#147888", MDCECGJUNCESCBEATS }, 
+      { "147896", MDCECGJUNCTACHY }, 
+      { "urn:iso:std:iso:11073:10101#147896", MDCECGJUNCTACHY }, 
+      { "147904", MDCECGJUNCTACHYPAROX }, 
+      { "urn:iso:std:iso:11073:10101#147904", MDCECGJUNCTACHYPAROX }, 
+      { "147912", MDCECGLAFASCBLK }, 
+      { "urn:iso:std:iso:11073:10101#147912", MDCECGLAFASCBLK }, 
+      { "147920", MDCECGLBBBLK }, 
+      { "urn:iso:std:iso:11073:10101#147920", MDCECGLBBBLK }, 
+      { "147928", MDCECGLPFASCBLK }, 
+      { "urn:iso:std:iso:11073:10101#147928", MDCECGLPFASCBLK }, 
+      { "147936", MDCECGPACERNOTPACING }, 
+      { "urn:iso:std:iso:11073:10101#147936", MDCECGPACERNOTPACING }, 
+      { "147937", MDCECGPACERNOTPACINGCNT }, 
+      { "urn:iso:std:iso:11073:10101#147937", MDCECGPACERNOTPACINGCNT }, 
+      { "147944", MDCECGRBBBLK }, 
+      { "urn:iso:std:iso:11073:10101#147944", MDCECGRBBBLK }, 
+      { "147960", MDCECGSINUSBRADY }, 
+      { "urn:iso:std:iso:11073:10101#147960", MDCECGSINUSBRADY }, 
+      { "147968", MDCECGSINUSTACHY }, 
+      { "urn:iso:std:iso:11073:10101#147968", MDCECGSINUSTACHY }, 
+      { "147976", MDCECGSVBEAT }, 
+      { "urn:iso:std:iso:11073:10101#147976", MDCECGSVBEAT }, 
+      { "147977", MDCECGSVBEATCNT }, 
+      { "urn:iso:std:iso:11073:10101#147977", MDCECGSVBEATCNT }, 
+      { "147983", MDCECGSVBEATANNOT }, 
+      { "urn:iso:std:iso:11073:10101#147983", MDCECGSVBEATANNOT }, 
+      { "147984", MDCECGSVBRADY }, 
+      { "urn:iso:std:iso:11073:10101#147984", MDCECGSVBRADY }, 
+      { "147992", MDCECGSVECT }, 
+      { "urn:iso:std:iso:11073:10101#147992", MDCECGSVECT }, 
+      { "147993", MDCECGSVECTCNT }, 
+      { "urn:iso:std:iso:11073:10101#147993", MDCECGSVECTCNT }, 
+      { "148000", MDCECGSVPC }, 
+      { "urn:iso:std:iso:11073:10101#148000", MDCECGSVPC }, 
+      { "148001", MDCECGSVPCCNT }, 
+      { "urn:iso:std:iso:11073:10101#148001", MDCECGSVPCCNT }, 
+      { "148002", MDCECGSVPCRATE_2 }, 
+      { "urn:iso:std:iso:11073:10101#148002", MDCECGSVPCRATE_2 }, 
+      { "148003", MDCECGSVPCRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#148003", MDCECGSVPCRATEMAX }, 
+      { "148004", MDCECGSVPCRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#148004", MDCECGSVPCRATEMIN }, 
+      { "148008", MDCECGSVTACHY }, 
+      { "urn:iso:std:iso:11073:10101#148008", MDCECGSVTACHY }, 
+      { "148016", MDCECGVPARASYS }, 
+      { "urn:iso:std:iso:11073:10101#148016", MDCECGVPARASYS }, 
+      { "148024", MDCECGVBIGEM }, 
+      { "urn:iso:std:iso:11073:10101#148024", MDCECGVBIGEM }, 
+      { "148032", MDCECGVFIB }, 
+      { "urn:iso:std:iso:11073:10101#148032", MDCECGVFIB }, 
+      { "148040", MDCECGVFIBTACHY }, 
+      { "urn:iso:std:iso:11073:10101#148040", MDCECGVFIBTACHY }, 
+      { "148048", MDCECGVFLUT }, 
+      { "urn:iso:std:iso:11073:10101#148048", MDCECGVFLUT }, 
+      { "148056", MDCECGVPACEDBEAT }, 
+      { "urn:iso:std:iso:11073:10101#148056", MDCECGVPACEDBEAT }, 
+      { "148057", MDCECGVPACEDBEATCNT }, 
+      { "urn:iso:std:iso:11073:10101#148057", MDCECGVPACEDBEATCNT }, 
+      { "148063", MDCECGVPACEDBEATANNOT }, 
+      { "urn:iso:std:iso:11073:10101#148063", MDCECGVPACEDBEATANNOT }, 
+      { "148064", MDCECGVPC }, 
+      { "urn:iso:std:iso:11073:10101#148064", MDCECGVPC }, 
+      { "148065", MDCECGVPCCNT }, 
+      { "urn:iso:std:iso:11073:10101#148065", MDCECGVPCCNT }, 
+      { "148066", MDCECGVPCRATE }, 
+      { "urn:iso:std:iso:11073:10101#148066", MDCECGVPCRATE }, 
+      { "148067", MDCECGVPCRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#148067", MDCECGVPCRATEMAX }, 
+      { "148068", MDCECGVPCRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#148068", MDCECGVPCRATEMIN }, 
+      { "148072", MDCECGVPCFREQ }, 
+      { "urn:iso:std:iso:11073:10101#148072", MDCECGVPCFREQ }, 
+      { "148080", MDCECGVPCINTERP }, 
+      { "urn:iso:std:iso:11073:10101#148080", MDCECGVPCINTERP }, 
+      { "148088", MDCECGVPCMULTIFOCAL }, 
+      { "urn:iso:std:iso:11073:10101#148088", MDCECGVPCMULTIFOCAL }, 
+      { "148096", MDCECGVPCPAIR }, 
+      { "urn:iso:std:iso:11073:10101#148096", MDCECGVPCPAIR }, 
+      { "148097", MDCECGVPCPAIRCNT }, 
+      { "urn:iso:std:iso:11073:10101#148097", MDCECGVPCPAIRCNT }, 
+      { "148104", MDCECGSVPCRUN }, 
+      { "urn:iso:std:iso:11073:10101#148104", MDCECGSVPCRUN }, 
+      { "148105", MDCECGSVPCRUNCNT }, 
+      { "urn:iso:std:iso:11073:10101#148105", MDCECGSVPCRUNCNT }, 
+      { "148112", MDCECGVPCRUN }, 
+      { "urn:iso:std:iso:11073:10101#148112", MDCECGVPCRUN }, 
+      { "148113", MDCECGVPCRUNCNT }, 
+      { "urn:iso:std:iso:11073:10101#148113", MDCECGVPCRUNCNT }, 
+      { "148120", MDCECGVPCTRIP }, 
+      { "urn:iso:std:iso:11073:10101#148120", MDCECGVPCTRIP }, 
+      { "148128", MDCECGVPCRonT }, 
+      { "urn:iso:std:iso:11073:10101#148128", MDCECGVPCRonT }, 
+      { "148129", MDCECGVPCRonTCNT }, 
+      { "urn:iso:std:iso:11073:10101#148129", MDCECGVPCRonTCNT }, 
+      { "148136", MDCECGVPACING }, 
+      { "urn:iso:std:iso:11073:10101#148136", MDCECGVPACING }, 
+      { "148144", MDCECGVQUADRIGEM }, 
+      { "urn:iso:std:iso:11073:10101#148144", MDCECGVQUADRIGEM }, 
+      { "148152", MDCECGVSTAND }, 
+      { "urn:iso:std:iso:11073:10101#148152", MDCECGVSTAND }, 
+      { "148160", MDCECGVTACHY }, 
+      { "urn:iso:std:iso:11073:10101#148160", MDCECGVTACHY }, 
+      { "148168", MDCECGVTACHYNONSUST }, 
+      { "urn:iso:std:iso:11073:10101#148168", MDCECGVTACHYNONSUST }, 
+      { "148176", MDCECGVTACHYSUST }, 
+      { "urn:iso:std:iso:11073:10101#148176", MDCECGVTACHYSUST }, 
+      { "148184", MDCECGVTACHYTORSADE }, 
+      { "urn:iso:std:iso:11073:10101#148184", MDCECGVTACHYTORSADE }, 
+      { "148192", MDCECGVTRIGEM }, 
+      { "urn:iso:std:iso:11073:10101#148192", MDCECGVTRIGEM }, 
+      { "148200", MDCECGVPCQRUN }, 
+      { "urn:iso:std:iso:11073:10101#148200", MDCECGVPCQRUN }, 
+      { "148201", MDCECGVPCQRUNCNT }, 
+      { "urn:iso:std:iso:11073:10101#148201", MDCECGVPCQRUNCNT }, 
+      { "148208", MDCECGSVPCFREQUENT }, 
+      { "urn:iso:std:iso:11073:10101#148208", MDCECGSVPCFREQUENT }, 
+      { "148216", MDCECGSVBEATS }, 
+      { "urn:iso:std:iso:11073:10101#148216", MDCECGSVBEATS }, 
+      { "148224", MDCECGPACEDBEATS }, 
+      { "urn:iso:std:iso:11073:10101#148224", MDCECGPACEDBEATS }, 
+      { "148232", MDCECGECTABSENT }, 
+      { "urn:iso:std:iso:11073:10101#148232", MDCECGECTABSENT }, 
+      { "148240", MDCECGBEATUNUSUAL }, 
+      { "urn:iso:std:iso:11073:10101#148240", MDCECGBEATUNUSUAL }, 
+      { "148248", MDCECGPACINGARTIFACT }, 
+      { "urn:iso:std:iso:11073:10101#148248", MDCECGPACINGARTIFACT }, 
+      { "148256", MDCECGSVTACHYPAROX }, 
+      { "urn:iso:std:iso:11073:10101#148256", MDCECGSVTACHYPAROX }, 
+      { "148264", MDCECGAVHEARTBLKDEG3 }, 
+      { "urn:iso:std:iso:11073:10101#148264", MDCECGAVHEARTBLKDEG3 }, 
+      { "148272", MDCECGAVHEARTBLKDEG3I }, 
+      { "urn:iso:std:iso:11073:10101#148272", MDCECGAVHEARTBLKDEG3I }, 
+      { "148280", MDCECGAVHEARTBLKDEG4I }, 
+      { "urn:iso:std:iso:11073:10101#148280", MDCECGAVHEARTBLKDEG4I }, 
+      { "148296", MDCECGPSINISATR }, 
+      { "urn:iso:std:iso:11073:10101#148296", MDCECGPSINISATR }, 
+      { "148304", MDCECGPDEXTATR }, 
+      { "urn:iso:std:iso:11073:10101#148304", MDCECGPDEXTATR }, 
+      { "148312", MDCECGATRCONDUCDEFECT }, 
+      { "urn:iso:std:iso:11073:10101#148312", MDCECGATRCONDUCDEFECT }, 
+      { "148320", MDCECGINTRAVENTCONDUCDEFECT }, 
+      { "urn:iso:std:iso:11073:10101#148320", MDCECGINTRAVENTCONDUCDEFECT }, 
+      { "148328", MDCECGLBBBLKCOMP }, 
+      { "urn:iso:std:iso:11073:10101#148328", MDCECGLBBBLKCOMP }, 
+      { "148336", MDCECGLBBBLKINCOMP }, 
+      { "urn:iso:std:iso:11073:10101#148336", MDCECGLBBBLKINCOMP }, 
+      { "148344", MDCECGRBBBLKCOMP }, 
+      { "urn:iso:std:iso:11073:10101#148344", MDCECGRBBBLKCOMP }, 
+      { "148352", MDCECGRBBBLKINCOMP }, 
+      { "urn:iso:std:iso:11073:10101#148352", MDCECGRBBBLKINCOMP }, 
+      { "148360", MDCECGBLKTRIFASC }, 
+      { "urn:iso:std:iso:11073:10101#148360", MDCECGBLKTRIFASC }, 
+      { "148368", MDCECGBLKANTLHEMI }, 
+      { "urn:iso:std:iso:11073:10101#148368", MDCECGBLKANTLHEMI }, 
+      { "148376", MDCECGWPWA }, 
+      { "urn:iso:std:iso:11073:10101#148376", MDCECGWPWA }, 
+      { "148384", MDCECGWPWAPROB }, 
+      { "urn:iso:std:iso:11073:10101#148384", MDCECGWPWAPROB }, 
+      { "148392", MDCECGWPWAPOSSIB }, 
+      { "urn:iso:std:iso:11073:10101#148392", MDCECGWPWAPOSSIB }, 
+      { "148400", MDCECGWPWB }, 
+      { "urn:iso:std:iso:11073:10101#148400", MDCECGWPWB }, 
+      { "148408", MDCECGWPWBPROB }, 
+      { "urn:iso:std:iso:11073:10101#148408", MDCECGWPWBPROB }, 
+      { "148416", MDCECGWPWBPOSSIB }, 
+      { "urn:iso:std:iso:11073:10101#148416", MDCECGWPWBPOSSIB }, 
+      { "148424", MDCECGWPWUNK }, 
+      { "urn:iso:std:iso:11073:10101#148424", MDCECGWPWUNK }, 
+      { "148432", MDCECGWPWUNKPROB }, 
+      { "urn:iso:std:iso:11073:10101#148432", MDCECGWPWUNKPROB }, 
+      { "148440", MDCECGWPWUNKPOSSIB }, 
+      { "urn:iso:std:iso:11073:10101#148440", MDCECGWPWUNKPOSSIB }, 
+      { "148464", MDCECGREG }, 
+      { "urn:iso:std:iso:11073:10101#148464", MDCECGREG }, 
+      { "148488", MDCECGATRPQPQ100 }, 
+      { "urn:iso:std:iso:11073:10101#148488", MDCECGATRPQPQ100 }, 
+      { "148496", MDCECGARRHY }, 
+      { "urn:iso:std:iso:11073:10101#148496", MDCECGARRHY }, 
+      { "148504", MDCECGARRHYPQ100 }, 
+      { "urn:iso:std:iso:11073:10101#148504", MDCECGARRHYPQ100 }, 
+      { "148512", MDCECGSINUSARRHY }, 
+      { "urn:iso:std:iso:11073:10101#148512", MDCECGSINUSARRHY }, 
+      { "148520", MDCECGARRHYABS }, 
+      { "urn:iso:std:iso:11073:10101#148520", MDCECGARRHYABS }, 
+      { "148528", MDCECGRESPARRHY }, 
+      { "urn:iso:std:iso:11073:10101#148528", MDCECGRESPARRHY }, 
+      { "148568", MDCECGBIGEMINTERMIT }, 
+      { "urn:iso:std:iso:11073:10101#148568", MDCECGBIGEMINTERMIT }, 
+      { "148576", MDCECGATRBIGEM }, 
+      { "urn:iso:std:iso:11073:10101#148576", MDCECGATRBIGEM }, 
+      { "148584", MDCECGATRBIGEMINTERMIT }, 
+      { "urn:iso:std:iso:11073:10101#148584", MDCECGATRBIGEMINTERMIT }, 
+      { "148592", MDCECGTRIGEM }, 
+      { "urn:iso:std:iso:11073:10101#148592", MDCECGTRIGEM }, 
+      { "148600", MDCECGTRIGEMINTERMIT }, 
+      { "urn:iso:std:iso:11073:10101#148600", MDCECGTRIGEMINTERMIT }, 
+      { "148608", MDCECGVENTEXTRASYSTWPAUSE }, 
+      { "urn:iso:std:iso:11073:10101#148608", MDCECGVENTEXTRASYSTWPAUSE }, 
+      { "148624", MDCECGNORMAL }, 
+      { "urn:iso:std:iso:11073:10101#148624", MDCECGNORMAL }, 
+      { "148631", MDCECGNORMALANNOT }, 
+      { "urn:iso:std:iso:11073:10101#148631", MDCECGNORMALANNOT }, 
+      { "148632", MDCECGVENTHYPERTROPHYRIGHT }, 
+      { "urn:iso:std:iso:11073:10101#148632", MDCECGVENTHYPERTROPHYRIGHT }, 
+      { "148640", MDCECGVENTHYPERTROPHYLEFT }, 
+      { "urn:iso:std:iso:11073:10101#148640", MDCECGVENTHYPERTROPHYLEFT }, 
+      { "148648", MDCECGVENTHYPERTROPHY }, 
+      { "urn:iso:std:iso:11073:10101#148648", MDCECGVENTHYPERTROPHY }, 
+      { "148656", MDCECGINFARCTANT }, 
+      { "urn:iso:std:iso:11073:10101#148656", MDCECGINFARCTANT }, 
+      { "148664", MDCECGINFARCTINT }, 
+      { "urn:iso:std:iso:11073:10101#148664", MDCECGINFARCTINT }, 
+      { "148672", MDCECGINFARCTMIX }, 
+      { "urn:iso:std:iso:11073:10101#148672", MDCECGINFARCTMIX }, 
+      { "148680", MDCECGPATHOL }, 
+      { "urn:iso:std:iso:11073:10101#148680", MDCECGPATHOL }, 
+      { "148688", MDCECGREPOLARIZDISTURB }, 
+      { "urn:iso:std:iso:11073:10101#148688", MDCECGREPOLARIZDISTURB }, 
+      { "148696", MDCECGINFARCTHYPER }, 
+      { "urn:iso:std:iso:11073:10101#148696", MDCECGINFARCTHYPER }, 
+      { "148704", MDCECGHYPER }, 
+      { "urn:iso:std:iso:11073:10101#148704", MDCECGHYPER }, 
+      { "148712", MDCECGINFARCT }, 
+      { "urn:iso:std:iso:11073:10101#148712", MDCECGINFARCT }, 
+      { "148720", MDCECGINFARCTLAT }, 
+      { "urn:iso:std:iso:11073:10101#148720", MDCECGINFARCTLAT }, 
+      { "148728", MDCECGVPCMULTIFOCAL_2 }, 
+      { "urn:iso:std:iso:11073:10101#148728", MDCECGVPCMULTIFOCAL_2 }, 
+      { "148729", MDCECGVPCMULTIFOCALCNT }, 
+      { "urn:iso:std:iso:11073:10101#148729", MDCECGVPCMULTIFOCALCNT }, 
+      { "148736", MDCECGINOP }, 
+      { "urn:iso:std:iso:11073:10101#148736", MDCECGINOP }, 
+      { "148743", MDCECGINOPANNOT }, 
+      { "urn:iso:std:iso:11073:10101#148743", MDCECGINOPANNOT }, 
+      { "148744", MDCECGDUALPACERPOSN }, 
+      { "urn:iso:std:iso:11073:10101#148744", MDCECGDUALPACERPOSN }, 
+      { "148751", MDCECGDUALPACERPOSNANNOT }, 
+      { "urn:iso:std:iso:11073:10101#148751", MDCECGDUALPACERPOSNANNOT }, 
+      { "148752", MDCECGQUESTIONABLE }, 
+      { "urn:iso:std:iso:11073:10101#148752", MDCECGQUESTIONABLE }, 
+      { "148759", MDCECGQUESTIONABLEANNOT }, 
+      { "urn:iso:std:iso:11073:10101#148759", MDCECGQUESTIONABLEANNOT }, 
+      { "148760", MDCECGVENTBEAT }, 
+      { "urn:iso:std:iso:11073:10101#148760", MDCECGVENTBEAT }, 
+      { "148767", MDCECGVENTBEATANNOT }, 
+      { "urn:iso:std:iso:11073:10101#148767", MDCECGVENTBEATANNOT }, 
+      { "148776", MDCECGLEARN }, 
+      { "urn:iso:std:iso:11073:10101#148776", MDCECGLEARN }, 
+      { "148783", MDCECGLEARNANNOT }, 
+      { "urn:iso:std:iso:11073:10101#148783", MDCECGLEARNANNOT }, 
+      { "149072", MDCECGATRPACEDBEATPCT }, 
+      { "urn:iso:std:iso:11073:10101#149072", MDCECGATRPACEDBEATPCT }, 
+      { "149073", MDCECGBIGEMPCT }, 
+      { "urn:iso:std:iso:11073:10101#149073", MDCECGBIGEMPCT }, 
+      { "149074", MDCECGCARDBEATRATEIRREGPCT }, 
+      { "urn:iso:std:iso:11073:10101#149074", MDCECGCARDBEATRATEIRREGPCT }, 
+      { "149075", MDCECGDUALPACEDBEATPCT }, 
+      { "urn:iso:std:iso:11073:10101#149075", MDCECGDUALPACEDBEATPCT }, 
+      { "149076", MDCECGPACEDBEATPCT }, 
+      { "urn:iso:std:iso:11073:10101#149076", MDCECGPACEDBEATPCT }, 
+      { "149077", MDCECGTRIGEMPCT }, 
+      { "urn:iso:std:iso:11073:10101#149077", MDCECGTRIGEMPCT }, 
+      { "149078", MDCECGVPACEDBEATPCT }, 
+      { "urn:iso:std:iso:11073:10101#149078", MDCECGVPACEDBEATPCT }, 
+      { "149504", MDCPULS }, 
+      { "urn:iso:std:iso:11073:10101#149504", MDCPULS }, 
+      { "149514", MDCPULSRATE }, 
+      { "urn:iso:std:iso:11073:10101#149514", MDCPULSRATE }, 
+      { "149520", MDCBLDPULSINV }, 
+      { "urn:iso:std:iso:11073:10101#149520", MDCBLDPULSINV }, 
+      { "149522", MDCBLDPULSRATEINV }, 
+      { "urn:iso:std:iso:11073:10101#149522", MDCBLDPULSRATEINV }, 
+      { "149528", MDCPULSOXIMPULS }, 
+      { "urn:iso:std:iso:11073:10101#149528", MDCPULSOXIMPULS }, 
+      { "149530", MDCPULSOXIMPULSRATE }, 
+      { "urn:iso:std:iso:11073:10101#149530", MDCPULSOXIMPULSRATE }, 
+      { "149536", MDCPLETHPULS }, 
+      { "urn:iso:std:iso:11073:10101#149536", MDCPLETHPULS }, 
+      { "149538", MDCPLETHPULSRATE }, 
+      { "urn:iso:std:iso:11073:10101#149538", MDCPLETHPULSRATE }, 
+      { "149544", MDCPULSNONINV }, 
+      { "urn:iso:std:iso:11073:10101#149544", MDCPULSNONINV }, 
+      { "149546", MDCPULSRATENONINV }, 
+      { "urn:iso:std:iso:11073:10101#149546", MDCPULSRATENONINV }, 
+      { "149552", MDCTTHORHEART }, 
+      { "urn:iso:std:iso:11073:10101#149552", MDCTTHORHEART }, 
+      { "149553", MDCTTHORHEARTCNT }, 
+      { "urn:iso:std:iso:11073:10101#149553", MDCTTHORHEARTCNT }, 
+      { "149554", MDCTTHORHEARTRATE }, 
+      { "urn:iso:std:iso:11073:10101#149554", MDCTTHORHEARTRATE }, 
+      { "149555", MDCTTHORHEARTRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#149555", MDCTTHORHEARTRATEMAX }, 
+      { "149556", MDCTTHORHEARTRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#149556", MDCTTHORHEARTRATEMIN }, 
+      { "149557", MDCTTHORHEARTRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#149557", MDCTTHORHEARTRATEMEAN }, 
+      { "149560", MDCPALPATIONHEART }, 
+      { "urn:iso:std:iso:11073:10101#149560", MDCPALPATIONHEART }, 
+      { "149561", MDCPALPATIONHEARTCNT }, 
+      { "urn:iso:std:iso:11073:10101#149561", MDCPALPATIONHEARTCNT }, 
+      { "149562", MDCPALPATIONHEARTRATE }, 
+      { "urn:iso:std:iso:11073:10101#149562", MDCPALPATIONHEARTRATE }, 
+      { "149563", MDCPALPATIONHEARTRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#149563", MDCPALPATIONHEARTRATEMAX }, 
+      { "149564", MDCPALPATIONHEARTRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#149564", MDCPALPATIONHEARTRATEMIN }, 
+      { "149565", MDCPALPATIONHEARTRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#149565", MDCPALPATIONHEARTRATEMEAN }, 
+      { "149760", MDCRESVASCSYSINDEX }, 
+      { "urn:iso:std:iso:11073:10101#149760", MDCRESVASCSYSINDEX }, 
+      { "149764", MDCWKLVSTROKEINDEX }, 
+      { "urn:iso:std:iso:11073:10101#149764", MDCWKLVSTROKEINDEX }, 
+      { "149765", MDCWKLVSTROKEINDEXMAX }, 
+      { "urn:iso:std:iso:11073:10101#149765", MDCWKLVSTROKEINDEXMAX }, 
+      { "149766", MDCWKLVSTROKEINDEXMIN }, 
+      { "urn:iso:std:iso:11073:10101#149766", MDCWKLVSTROKEINDEXMIN }, 
+      { "149767", MDCWKLVSTROKEINDEXMEAN }, 
+      { "urn:iso:std:iso:11073:10101#149767", MDCWKLVSTROKEINDEXMEAN }, 
+      { "149768", MDCPVTWKRVSTROKEINDEX }, 
+      { "urn:iso:std:iso:11073:10101#149768", MDCPVTWKRVSTROKEINDEX }, 
+      { "149772", MDCOUTPUTCARDINDEX }, 
+      { "urn:iso:std:iso:11073:10101#149772", MDCOUTPUTCARDINDEX }, 
+      { "150016", MDCPRESSBLD }, 
+      { "urn:iso:std:iso:11073:10101#150016", MDCPRESSBLD }, 
+      { "150017", MDCPRESSBLDSYS }, 
+      { "urn:iso:std:iso:11073:10101#150017", MDCPRESSBLDSYS }, 
+      { "150018", MDCPRESSBLDDIA }, 
+      { "urn:iso:std:iso:11073:10101#150018", MDCPRESSBLDDIA }, 
+      { "150019", MDCPRESSBLDMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150019", MDCPRESSBLDMEAN }, 
+      { "150020", MDCPRESSBLDNONINV }, 
+      { "urn:iso:std:iso:11073:10101#150020", MDCPRESSBLDNONINV }, 
+      { "150021", MDCPRESSBLDNONINVSYS }, 
+      { "urn:iso:std:iso:11073:10101#150021", MDCPRESSBLDNONINVSYS }, 
+      { "150022", MDCPRESSBLDNONINVDIA }, 
+      { "urn:iso:std:iso:11073:10101#150022", MDCPRESSBLDNONINVDIA }, 
+      { "150023", MDCPRESSBLDNONINVMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150023", MDCPRESSBLDNONINVMEAN }, 
+      { "150024", MDCPRESSBLDNONINVCTS }, 
+      { "urn:iso:std:iso:11073:10101#150024", MDCPRESSBLDNONINVCTS }, 
+      { "150025", MDCPRESSBLDNONINVSYSCTS }, 
+      { "urn:iso:std:iso:11073:10101#150025", MDCPRESSBLDNONINVSYSCTS }, 
+      { "150026", MDCPRESSBLDNONINVDIACTS }, 
+      { "urn:iso:std:iso:11073:10101#150026", MDCPRESSBLDNONINVDIACTS }, 
+      { "150027", MDCPRESSBLDNONINVMEANCTS }, 
+      { "urn:iso:std:iso:11073:10101#150027", MDCPRESSBLDNONINVMEANCTS }, 
+      { "150028", MDCPRESSBLDAORT }, 
+      { "urn:iso:std:iso:11073:10101#150028", MDCPRESSBLDAORT }, 
+      { "150029", MDCPRESSBLDAORTSYS }, 
+      { "urn:iso:std:iso:11073:10101#150029", MDCPRESSBLDAORTSYS }, 
+      { "150030", MDCPRESSBLDAORTDIA }, 
+      { "urn:iso:std:iso:11073:10101#150030", MDCPRESSBLDAORTDIA }, 
+      { "150031", MDCPRESSBLDAORTMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150031", MDCPRESSBLDAORTMEAN }, 
+      { "150032", MDCPRESSBLDART }, 
+      { "urn:iso:std:iso:11073:10101#150032", MDCPRESSBLDART }, 
+      { "150033", MDCPRESSBLDARTSYS }, 
+      { "urn:iso:std:iso:11073:10101#150033", MDCPRESSBLDARTSYS }, 
+      { "150034", MDCPRESSBLDARTDIA }, 
+      { "urn:iso:std:iso:11073:10101#150034", MDCPRESSBLDARTDIA }, 
+      { "150035", MDCPRESSBLDARTMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150035", MDCPRESSBLDARTMEAN }, 
+      { "150036", MDCPRESSBLDARTABP }, 
+      { "urn:iso:std:iso:11073:10101#150036", MDCPRESSBLDARTABP }, 
+      { "150037", MDCPRESSBLDARTABPSYS }, 
+      { "urn:iso:std:iso:11073:10101#150037", MDCPRESSBLDARTABPSYS }, 
+      { "150038", MDCPRESSBLDARTABPDIA }, 
+      { "urn:iso:std:iso:11073:10101#150038", MDCPRESSBLDARTABPDIA }, 
+      { "150039", MDCPRESSBLDARTABPMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150039", MDCPRESSBLDARTABPMEAN }, 
+      { "150040", MDCPRESSBLDARTAUG }, 
+      { "urn:iso:std:iso:11073:10101#150040", MDCPRESSBLDARTAUG }, 
+      { "150042", MDCPRESSBLDARTAUGDIA }, 
+      { "urn:iso:std:iso:11073:10101#150042", MDCPRESSBLDARTAUGDIA }, 
+      { "150044", MDCPRESSBLDARTPULM }, 
+      { "urn:iso:std:iso:11073:10101#150044", MDCPRESSBLDARTPULM }, 
+      { "150045", MDCPRESSBLDARTPULMSYS }, 
+      { "urn:iso:std:iso:11073:10101#150045", MDCPRESSBLDARTPULMSYS }, 
+      { "150046", MDCPRESSBLDARTPULMDIA }, 
+      { "urn:iso:std:iso:11073:10101#150046", MDCPRESSBLDARTPULMDIA }, 
+      { "150047", MDCPRESSBLDARTPULMMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150047", MDCPRESSBLDARTPULMMEAN }, 
+      { "150052", MDCPRESSBLDARTPULMWEDGE }, 
+      { "urn:iso:std:iso:11073:10101#150052", MDCPRESSBLDARTPULMWEDGE }, 
+      { "150056", MDCPRESSBLDARTUMB }, 
+      { "urn:iso:std:iso:11073:10101#150056", MDCPRESSBLDARTUMB }, 
+      { "150057", MDCPRESSBLDARTUMBSYS }, 
+      { "urn:iso:std:iso:11073:10101#150057", MDCPRESSBLDARTUMBSYS }, 
+      { "150058", MDCPRESSBLDARTUMBDIA }, 
+      { "urn:iso:std:iso:11073:10101#150058", MDCPRESSBLDARTUMBDIA }, 
+      { "150059", MDCPRESSBLDARTUMBMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150059", MDCPRESSBLDARTUMBMEAN }, 
+      { "150060", MDCPRESSBLDATR }, 
+      { "urn:iso:std:iso:11073:10101#150060", MDCPRESSBLDATR }, 
+      { "150064", MDCPRESSBLDATRLEFT }, 
+      { "urn:iso:std:iso:11073:10101#150064", MDCPRESSBLDATRLEFT }, 
+      { "150065", MDCPRESSBLDATRLEFTSYS }, 
+      { "urn:iso:std:iso:11073:10101#150065", MDCPRESSBLDATRLEFTSYS }, 
+      { "150066", MDCPRESSBLDATRLEFTDIA }, 
+      { "urn:iso:std:iso:11073:10101#150066", MDCPRESSBLDATRLEFTDIA }, 
+      { "150067", MDCPRESSBLDATRLEFTMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150067", MDCPRESSBLDATRLEFTMEAN }, 
+      { "150068", MDCPRESSBLDATRRIGHT }, 
+      { "urn:iso:std:iso:11073:10101#150068", MDCPRESSBLDATRRIGHT }, 
+      { "150069", MDCPRESSBLDATRRIGHTSYS }, 
+      { "urn:iso:std:iso:11073:10101#150069", MDCPRESSBLDATRRIGHTSYS }, 
+      { "150070", MDCPRESSBLDATRRIGHTDIA }, 
+      { "urn:iso:std:iso:11073:10101#150070", MDCPRESSBLDATRRIGHTDIA }, 
+      { "150071", MDCPRESSBLDATRRIGHTMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150071", MDCPRESSBLDATRRIGHTMEAN }, 
+      { "150076", MDCPRESSBLDPULMCAP }, 
+      { "urn:iso:std:iso:11073:10101#150076", MDCPRESSBLDPULMCAP }, 
+      { "150077", MDCPRESSBLDPULMCAPSYS }, 
+      { "urn:iso:std:iso:11073:10101#150077", MDCPRESSBLDPULMCAPSYS }, 
+      { "150078", MDCPRESSBLDPULMCAPDIA }, 
+      { "urn:iso:std:iso:11073:10101#150078", MDCPRESSBLDPULMCAPDIA }, 
+      { "150079", MDCPRESSBLDPULMCAPMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150079", MDCPRESSBLDPULMCAPMEAN }, 
+      { "150080", MDCPRESSBLDVEN }, 
+      { "urn:iso:std:iso:11073:10101#150080", MDCPRESSBLDVEN }, 
+      { "150084", MDCPRESSBLDVENCENT }, 
+      { "urn:iso:std:iso:11073:10101#150084", MDCPRESSBLDVENCENT }, 
+      { "150085", MDCPRESSBLDVENCENTSYS }, 
+      { "urn:iso:std:iso:11073:10101#150085", MDCPRESSBLDVENCENTSYS }, 
+      { "150086", MDCPRESSBLDVENCENTDIA }, 
+      { "urn:iso:std:iso:11073:10101#150086", MDCPRESSBLDVENCENTDIA }, 
+      { "150087", MDCPRESSBLDVENCENTMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150087", MDCPRESSBLDVENCENTMEAN }, 
+      { "150088", MDCPRESSBLDVENUMB }, 
+      { "urn:iso:std:iso:11073:10101#150088", MDCPRESSBLDVENUMB }, 
+      { "150089", MDCPRESSBLDVENUMBSYS }, 
+      { "urn:iso:std:iso:11073:10101#150089", MDCPRESSBLDVENUMBSYS }, 
+      { "150090", MDCPRESSBLDVENUMBDIA }, 
+      { "urn:iso:std:iso:11073:10101#150090", MDCPRESSBLDVENUMBDIA }, 
+      { "150091", MDCPRESSBLDVENUMBMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150091", MDCPRESSBLDVENUMBMEAN }, 
+      { "150092", MDCPRESSBLDVENT }, 
+      { "urn:iso:std:iso:11073:10101#150092", MDCPRESSBLDVENT }, 
+      { "150094", MDCPRESSBLDVENTDIA }, 
+      { "urn:iso:std:iso:11073:10101#150094", MDCPRESSBLDVENTDIA }, 
+      { "150096", MDCPRESSBLDVENTEND }, 
+      { "urn:iso:std:iso:11073:10101#150096", MDCPRESSBLDVENTEND }, 
+      { "150098", MDCPRESSBLDVENTDIAEND }, 
+      { "urn:iso:std:iso:11073:10101#150098", MDCPRESSBLDVENTDIAEND }, 
+      { "150100", MDCPRESSBLDVENTLEFT }, 
+      { "urn:iso:std:iso:11073:10101#150100", MDCPRESSBLDVENTLEFT }, 
+      { "150101", MDCPRESSBLDVENTLEFTSYS }, 
+      { "urn:iso:std:iso:11073:10101#150101", MDCPRESSBLDVENTLEFTSYS }, 
+      { "150102", MDCPRESSBLDVENTLEFTDIA }, 
+      { "urn:iso:std:iso:11073:10101#150102", MDCPRESSBLDVENTLEFTDIA }, 
+      { "150103", MDCPRESSBLDVENTLEFTMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150103", MDCPRESSBLDVENTLEFTMEAN }, 
+      { "150104", MDCPRESSBLDVENTRIGHT }, 
+      { "urn:iso:std:iso:11073:10101#150104", MDCPRESSBLDVENTRIGHT }, 
+      { "150105", MDCPRESSBLDVENTRIGHTSYS }, 
+      { "urn:iso:std:iso:11073:10101#150105", MDCPRESSBLDVENTRIGHTSYS }, 
+      { "150106", MDCPRESSBLDVENTRIGHTDIA }, 
+      { "urn:iso:std:iso:11073:10101#150106", MDCPRESSBLDVENTRIGHTDIA }, 
+      { "150107", MDCPRESSBLDVENTRIGHTMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150107", MDCPRESSBLDVENTRIGHTMEAN }, 
+      { "150108", MDCPRESSBLDVENTAUG }, 
+      { "urn:iso:std:iso:11073:10101#150108", MDCPRESSBLDVENTAUG }, 
+      { "150112", MDCPRESSBLDCORONART }, 
+      { "urn:iso:std:iso:11073:10101#150112", MDCPRESSBLDCORONART }, 
+      { "150113", MDCPRESSBLDCORONARTSYS }, 
+      { "urn:iso:std:iso:11073:10101#150113", MDCPRESSBLDCORONARTSYS }, 
+      { "150114", MDCPRESSBLDCORONARTDIA }, 
+      { "urn:iso:std:iso:11073:10101#150114", MDCPRESSBLDCORONARTDIA }, 
+      { "150115", MDCPRESSBLDCORONARTMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150115", MDCPRESSBLDCORONARTMEAN }, 
+      { "150116", MDCPRESSBLDCORONARTL }, 
+      { "urn:iso:std:iso:11073:10101#150116", MDCPRESSBLDCORONARTL }, 
+      { "150117", MDCPRESSBLDCORONARTLSYS }, 
+      { "urn:iso:std:iso:11073:10101#150117", MDCPRESSBLDCORONARTLSYS }, 
+      { "150118", MDCPRESSBLDCORONARTLDIA }, 
+      { "urn:iso:std:iso:11073:10101#150118", MDCPRESSBLDCORONARTLDIA }, 
+      { "150119", MDCPRESSBLDCORONARTLMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150119", MDCPRESSBLDCORONARTLMEAN }, 
+      { "150120", MDCPRESSBLDCORONARTLANTDESCEND }, 
+      { "urn:iso:std:iso:11073:10101#150120", MDCPRESSBLDCORONARTLANTDESCEND }, 
+      { "150121", MDCPRESSBLDCORONARTLANTDESCENDSYS }, 
+      { "urn:iso:std:iso:11073:10101#150121", MDCPRESSBLDCORONARTLANTDESCENDSYS }, 
+      { "150122", MDCPRESSBLDCORONARTLANTDESCENDDIA }, 
+      { "urn:iso:std:iso:11073:10101#150122", MDCPRESSBLDCORONARTLANTDESCENDDIA }, 
+      { "150123", MDCPRESSBLDCORONARTLANTDESCENDMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150123", MDCPRESSBLDCORONARTLANTDESCENDMEAN }, 
+      { "150124", MDCPRESSBLDCORONARTLCIRC }, 
+      { "urn:iso:std:iso:11073:10101#150124", MDCPRESSBLDCORONARTLCIRC }, 
+      { "150125", MDCPRESSBLDCORONARTLCIRCSYS }, 
+      { "urn:iso:std:iso:11073:10101#150125", MDCPRESSBLDCORONARTLCIRCSYS }, 
+      { "150126", MDCPRESSBLDCORONARTLCIRCDIA }, 
+      { "urn:iso:std:iso:11073:10101#150126", MDCPRESSBLDCORONARTLCIRCDIA }, 
+      { "150127", MDCPRESSBLDCORONARTLCIRCMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150127", MDCPRESSBLDCORONARTLCIRCMEAN }, 
+      { "150128", MDCPRESSBLDCORONARTR }, 
+      { "urn:iso:std:iso:11073:10101#150128", MDCPRESSBLDCORONARTR }, 
+      { "150129", MDCPRESSBLDCORONARTRSYS }, 
+      { "urn:iso:std:iso:11073:10101#150129", MDCPRESSBLDCORONARTRSYS }, 
+      { "150130", MDCPRESSBLDCORONARTRDIA }, 
+      { "urn:iso:std:iso:11073:10101#150130", MDCPRESSBLDCORONARTRDIA }, 
+      { "150131", MDCPRESSBLDCORONARTRMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150131", MDCPRESSBLDCORONARTRMEAN }, 
+      { "150132", MDCPRESSBLDCORONARTRPOSTDESCEND }, 
+      { "urn:iso:std:iso:11073:10101#150132", MDCPRESSBLDCORONARTRPOSTDESCEND }, 
+      { "150133", MDCPRESSBLDCORONARTRPOSTDESCENDSYS }, 
+      { "urn:iso:std:iso:11073:10101#150133", MDCPRESSBLDCORONARTRPOSTDESCENDSYS }, 
+      { "150134", MDCPRESSBLDCORONARTRPOSTDESCENDDIA }, 
+      { "urn:iso:std:iso:11073:10101#150134", MDCPRESSBLDCORONARTRPOSTDESCENDDIA }, 
+      { "150135", MDCPRESSBLDCORONARTRPOSTDESCENDMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150135", MDCPRESSBLDCORONARTRPOSTDESCENDMEAN }, 
+      { "150136", MDCPRESSBLDCORONARTCONUS }, 
+      { "urn:iso:std:iso:11073:10101#150136", MDCPRESSBLDCORONARTCONUS }, 
+      { "150137", MDCPRESSBLDCORONARTCONUSSYS }, 
+      { "urn:iso:std:iso:11073:10101#150137", MDCPRESSBLDCORONARTCONUSSYS }, 
+      { "150138", MDCPRESSBLDCORONARTCONUSDIA }, 
+      { "urn:iso:std:iso:11073:10101#150138", MDCPRESSBLDCORONARTCONUSDIA }, 
+      { "150139", MDCPRESSBLDCORONARTCONUSMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150139", MDCPRESSBLDCORONARTCONUSMEAN }, 
+      { "150140", MDCPRESSBLDCORONARTRMARG }, 
+      { "urn:iso:std:iso:11073:10101#150140", MDCPRESSBLDCORONARTRMARG }, 
+      { "150141", MDCPRESSBLDCORONARTRMARGSYS }, 
+      { "urn:iso:std:iso:11073:10101#150141", MDCPRESSBLDCORONARTRMARGSYS }, 
+      { "150142", MDCPRESSBLDCORONARTRMARGDIA }, 
+      { "urn:iso:std:iso:11073:10101#150142", MDCPRESSBLDCORONARTRMARGDIA }, 
+      { "150143", MDCPRESSBLDCORONARTRMARGMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150143", MDCPRESSBLDCORONARTRMARGMEAN }, 
+      { "150144", MDCPRESSBLDVENTLEFTBEGIN }, 
+      { "urn:iso:std:iso:11073:10101#150144", MDCPRESSBLDVENTLEFTBEGIN }, 
+      { "150146", MDCPRESSBLDVENTLEFTBEGINDIA }, 
+      { "urn:iso:std:iso:11073:10101#150146", MDCPRESSBLDVENTLEFTBEGINDIA }, 
+      { "150149", MDCPRESSBLDVENTLEFTSYSMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150149", MDCPRESSBLDVENTLEFTSYSMEAN }, 
+      { "150154", MDCPRESSBLDVENTLEFTDIAMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150154", MDCPRESSBLDVENTLEFTDIAMEAN }, 
+      { "150272", MDCSATO2CONSUMP }, 
+      { "urn:iso:std:iso:11073:10101#150272", MDCSATO2CONSUMP }, 
+      { "150276", MDCOUTPUTCARD }, 
+      { "urn:iso:std:iso:11073:10101#150276", MDCOUTPUTCARD }, 
+      { "150280", MDCOUTPUTCARDARTBRANCH }, 
+      { "urn:iso:std:iso:11073:10101#150280", MDCOUTPUTCARDARTBRANCH }, 
+      { "150284", MDCOUTPUTCARDVENBRANCH }, 
+      { "urn:iso:std:iso:11073:10101#150284", MDCOUTPUTCARDVENBRANCH }, 
+      { "150296", MDCPLETHVOLBLD }, 
+      { "urn:iso:std:iso:11073:10101#150296", MDCPLETHVOLBLD }, 
+      { "150300", MDCPRESSCUFF }, 
+      { "urn:iso:std:iso:11073:10101#150300", MDCPRESSCUFF }, 
+      { "150301", MDCPRESSCUFFSYS }, 
+      { "urn:iso:std:iso:11073:10101#150301", MDCPRESSCUFFSYS }, 
+      { "150302", MDCPRESSCUFFDIA }, 
+      { "urn:iso:std:iso:11073:10101#150302", MDCPRESSCUFFDIA }, 
+      { "150303", MDCPRESSCUFFMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150303", MDCPRESSCUFFMEAN }, 
+      { "150304", MDCRESVASC }, 
+      { "urn:iso:std:iso:11073:10101#150304", MDCRESVASC }, 
+      { "150308", MDCRESVASCPULM }, 
+      { "urn:iso:std:iso:11073:10101#150308", MDCRESVASCPULM }, 
+      { "150312", MDCRESVASCSYS }, 
+      { "urn:iso:std:iso:11073:10101#150312", MDCRESVASCSYS }, 
+      { "150316", MDCSATO2 }, 
+      { "urn:iso:std:iso:11073:10101#150316", MDCSATO2 }, 
+      { "150320", MDCSATO2QUAL }, 
+      { "urn:iso:std:iso:11073:10101#150320", MDCSATO2QUAL }, 
+      { "150324", MDCSATO2ART }, 
+      { "urn:iso:std:iso:11073:10101#150324", MDCSATO2ART }, 
+      { "150328", MDCSATO2CEREB }, 
+      { "urn:iso:std:iso:11073:10101#150328", MDCSATO2CEREB }, 
+      { "150332", MDCSATO2VEN }, 
+      { "urn:iso:std:iso:11073:10101#150332", MDCSATO2VEN }, 
+      { "150336", MDCSATDIFFO2ARTALV }, 
+      { "urn:iso:std:iso:11073:10101#150336", MDCSATDIFFO2ARTALV }, 
+      { "150340", MDCSATDIFFO2ART }, 
+      { "urn:iso:std:iso:11073:10101#150340", MDCSATDIFFO2ART }, 
+      { "150344", MDCTEMP }, 
+      { "urn:iso:std:iso:11073:10101#150344", MDCTEMP }, 
+      { "150348", MDCTEMPFOLEY }, 
+      { "urn:iso:std:iso:11073:10101#150348", MDCTEMPFOLEY }, 
+      { "150352", MDCTEMPART }, 
+      { "urn:iso:std:iso:11073:10101#150352", MDCTEMPART }, 
+      { "150356", MDCTEMPAWAY }, 
+      { "urn:iso:std:iso:11073:10101#150356", MDCTEMPAWAY }, 
+      { "150364", MDCTEMPBODY }, 
+      { "urn:iso:std:iso:11073:10101#150364", MDCTEMPBODY }, 
+      { "150368", MDCTEMPCORE }, 
+      { "urn:iso:std:iso:11073:10101#150368", MDCTEMPCORE }, 
+      { "150372", MDCTEMPESOPH }, 
+      { "urn:iso:std:iso:11073:10101#150372", MDCTEMPESOPH }, 
+      { "150376", MDCTEMPINJ }, 
+      { "urn:iso:std:iso:11073:10101#150376", MDCTEMPINJ }, 
+      { "150380", MDCTEMPNASOPH }, 
+      { "urn:iso:std:iso:11073:10101#150380", MDCTEMPNASOPH }, 
+      { "150388", MDCTEMPSKIN }, 
+      { "urn:iso:std:iso:11073:10101#150388", MDCTEMPSKIN }, 
+      { "150392", MDCTEMPTYMP }, 
+      { "urn:iso:std:iso:11073:10101#150392", MDCTEMPTYMP }, 
+      { "150396", MDCTEMPVEN }, 
+      { "urn:iso:std:iso:11073:10101#150396", MDCTEMPVEN }, 
+      { "150404", MDCVOLBLDSTROKE }, 
+      { "urn:iso:std:iso:11073:10101#150404", MDCVOLBLDSTROKE }, 
+      { "150408", MDCVOLBLDVENTLEFTSTROKE }, 
+      { "urn:iso:std:iso:11073:10101#150408", MDCVOLBLDVENTLEFTSTROKE }, 
+      { "150412", MDCWKCARD }, 
+      { "urn:iso:std:iso:11073:10101#150412", MDCWKCARD }, 
+      { "150416", MDCWKCARDLEFT }, 
+      { "urn:iso:std:iso:11073:10101#150416", MDCWKCARDLEFT }, 
+      { "150420", MDCWKCARDRIGHT }, 
+      { "urn:iso:std:iso:11073:10101#150420", MDCWKCARDRIGHT }, 
+      { "150428", MDCWKLVSTROKE }, 
+      { "urn:iso:std:iso:11073:10101#150428", MDCWKLVSTROKE }, 
+      { "150432", MDCWKRV }, 
+      { "urn:iso:std:iso:11073:10101#150432", MDCWKRV }, 
+      { "150436", MDCWKRVSTROKE }, 
+      { "urn:iso:std:iso:11073:10101#150436", MDCWKRVSTROKE }, 
+      { "150440", MDCWKLV }, 
+      { "urn:iso:std:iso:11073:10101#150440", MDCWKLV }, 
+      { "150444", MDCSATO2ARTPULM }, 
+      { "urn:iso:std:iso:11073:10101#150444", MDCSATO2ARTPULM }, 
+      { "150448", MDCPULSOXIMPERFREL }, 
+      { "urn:iso:std:iso:11073:10101#150448", MDCPULSOXIMPERFREL }, 
+      { "150452", MDCPLETH }, 
+      { "urn:iso:std:iso:11073:10101#150452", MDCPLETH }, 
+      { "150456", MDCPULSOXIMSATO2 }, 
+      { "urn:iso:std:iso:11073:10101#150456", MDCPULSOXIMSATO2 }, 
+      { "150460", MDCPULSOXIMSATO2CTS }, 
+      { "urn:iso:std:iso:11073:10101#150460", MDCPULSOXIMSATO2CTS }, 
+      { "150464", MDCPULSOXIMSATO2NONCTS }, 
+      { "urn:iso:std:iso:11073:10101#150464", MDCPULSOXIMSATO2NONCTS }, 
+      { "150468", MDCPULSOXIMSATO2DIFF }, 
+      { "urn:iso:std:iso:11073:10101#150468", MDCPULSOXIMSATO2DIFF }, 
+      { "150472", MDCPULSOXIMSATO2ARTLEFT }, 
+      { "urn:iso:std:iso:11073:10101#150472", MDCPULSOXIMSATO2ARTLEFT }, 
+      { "150476", MDCPULSOXIMSATO2ARTRIGHT }, 
+      { "urn:iso:std:iso:11073:10101#150476", MDCPULSOXIMSATO2ARTRIGHT }, 
+      { "150480", MDCNBPSATO2ART }, 
+      { "urn:iso:std:iso:11073:10101#150480", MDCNBPSATO2ART }, 
+      { "150484", MDCDESAT }, 
+      { "urn:iso:std:iso:11073:10101#150484", MDCDESAT }, 
+      { "150488", MDCBLDPERFINDEX }, 
+      { "urn:iso:std:iso:11073:10101#150488", MDCBLDPERFINDEX }, 
+      { "150492", MDCOUTPUTCARDCTS }, 
+      { "urn:iso:std:iso:11073:10101#150492", MDCOUTPUTCARDCTS }, 
+      { "150496", MDCOUTPUTCARDNONCTS }, 
+      { "urn:iso:std:iso:11073:10101#150496", MDCOUTPUTCARDNONCTS }, 
+      { "150500", MDCPRESSBLDVENTLEFTEND }, 
+      { "urn:iso:std:iso:11073:10101#150500", MDCPRESSBLDVENTLEFTEND }, 
+      { "150502", MDCPRESSBLDVENTLEFTENDDIA }, 
+      { "urn:iso:std:iso:11073:10101#150502", MDCPRESSBLDVENTLEFTENDDIA }, 
+      { "150504", MDCINDEXPRESSVENTLDERIVPOS }, 
+      { "urn:iso:std:iso:11073:10101#150504", MDCINDEXPRESSVENTLDERIVPOS }, 
+      { "150508", MDCINDEXPRESSVENTLDERIVPOSMAXDIVP }, 
+      { "urn:iso:std:iso:11073:10101#150508", MDCINDEXPRESSVENTLDERIVPOSMAXDIVP }, 
+      { "150512", MDCINDEXPRESSVENTLDERIVNEGMAX }, 
+      { "urn:iso:std:iso:11073:10101#150512", MDCINDEXPRESSVENTLDERIVNEGMAX }, 
+      { "150516", MDCINDEXPRESSVENTLRELAX }, 
+      { "urn:iso:std:iso:11073:10101#150516", MDCINDEXPRESSVENTLRELAX }, 
+      { "150520", MDCTIMEPDVENTLAORTVALV }, 
+      { "urn:iso:std:iso:11073:10101#150520", MDCTIMEPDVENTLAORTVALV }, 
+      { "150524", MDCTIMEPDVENTLAORTVALVDIAFILL }, 
+      { "urn:iso:std:iso:11073:10101#150524", MDCTIMEPDVENTLAORTVALVDIAFILL }, 
+      { "150528", MDCVOLVENTLENDDIA }, 
+      { "urn:iso:std:iso:11073:10101#150528", MDCVOLVENTLENDDIA }, 
+      { "150532", MDCVOLVENTLENDSYS }, 
+      { "urn:iso:std:iso:11073:10101#150532", MDCVOLVENTLENDSYS }, 
+      { "150536", MDCGRADPRESSBLDMITRAL }, 
+      { "urn:iso:std:iso:11073:10101#150536", MDCGRADPRESSBLDMITRAL }, 
+      { "150539", MDCGRADPRESSBLDMITRALMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150539", MDCGRADPRESSBLDMITRALMEAN }, 
+      { "150540", MDCGRADPRESSBLDMITRALPOS }, 
+      { "urn:iso:std:iso:11073:10101#150540", MDCGRADPRESSBLDMITRALPOS }, 
+      { "150541", MDCGRADPRESSBLDMITRALPOSMAX }, 
+      { "urn:iso:std:iso:11073:10101#150541", MDCGRADPRESSBLDMITRALPOSMAX }, 
+      { "150544", MDCGRADPRESSBLDTRICUSP }, 
+      { "urn:iso:std:iso:11073:10101#150544", MDCGRADPRESSBLDTRICUSP }, 
+      { "150547", MDCGRADPRESSBLDTRICUSPMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150547", MDCGRADPRESSBLDTRICUSPMEAN }, 
+      { "150548", MDCGRADPRESSBLDTRICUSPPOS }, 
+      { "urn:iso:std:iso:11073:10101#150548", MDCGRADPRESSBLDTRICUSPPOS }, 
+      { "150549", MDCGRADPRESSBLDTRICUSPPOSMAX }, 
+      { "urn:iso:std:iso:11073:10101#150549", MDCGRADPRESSBLDTRICUSPPOSMAX }, 
+      { "150552", MDCGRADPRESSBLDPULM }, 
+      { "urn:iso:std:iso:11073:10101#150552", MDCGRADPRESSBLDPULM }, 
+      { "150555", MDCGRADPRESSBLDPULMMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150555", MDCGRADPRESSBLDPULMMEAN }, 
+      { "150556", MDCGRADPRESSBLDPULMPOS }, 
+      { "urn:iso:std:iso:11073:10101#150556", MDCGRADPRESSBLDPULMPOS }, 
+      { "150557", MDCGRADPRESSBLDPULMPOSMAX }, 
+      { "urn:iso:std:iso:11073:10101#150557", MDCGRADPRESSBLDPULMPOSMAX }, 
+      { "150560", MDCGRADPRESSBLDAORT }, 
+      { "urn:iso:std:iso:11073:10101#150560", MDCGRADPRESSBLDAORT }, 
+      { "150563", MDCGRADPRESSBLDAORTMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150563", MDCGRADPRESSBLDAORTMEAN }, 
+      { "150564", MDCGRADPRESSBLDAORTPOS }, 
+      { "urn:iso:std:iso:11073:10101#150564", MDCGRADPRESSBLDAORTPOS }, 
+      { "150565", MDCGRADPRESSBLDAORTPOSMAX }, 
+      { "urn:iso:std:iso:11073:10101#150565", MDCGRADPRESSBLDAORTPOSMAX }, 
+      { "150568", MDCTRANSMISSION }, 
+      { "urn:iso:std:iso:11073:10101#150568", MDCTRANSMISSION }, 
+      { "150572", MDCTRANSMISSIONRED }, 
+      { "urn:iso:std:iso:11073:10101#150572", MDCTRANSMISSIONRED }, 
+      { "150576", MDCTRANSMISSIONINFRARED }, 
+      { "urn:iso:std:iso:11073:10101#150576", MDCTRANSMISSIONINFRARED }, 
+      { "150580", MDCMODALITYFAST }, 
+      { "urn:iso:std:iso:11073:10101#150580", MDCMODALITYFAST }, 
+      { "150581", MDCMODALITYFASTMAX }, 
+      { "urn:iso:std:iso:11073:10101#150581", MDCMODALITYFASTMAX }, 
+      { "150582", MDCMODALITYFASTMIN }, 
+      { "urn:iso:std:iso:11073:10101#150582", MDCMODALITYFASTMIN }, 
+      { "150583", MDCMODALITYFASTMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150583", MDCMODALITYFASTMEAN }, 
+      { "150584", MDCMODALITYSLOW }, 
+      { "urn:iso:std:iso:11073:10101#150584", MDCMODALITYSLOW }, 
+      { "150585", MDCMODALITYSLOWMAX }, 
+      { "urn:iso:std:iso:11073:10101#150585", MDCMODALITYSLOWMAX }, 
+      { "150586", MDCMODALITYSLOWMIN }, 
+      { "urn:iso:std:iso:11073:10101#150586", MDCMODALITYSLOWMIN }, 
+      { "150587", MDCMODALITYSLOWMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150587", MDCMODALITYSLOWMEAN }, 
+      { "150588", MDCMODALITYSPOT }, 
+      { "urn:iso:std:iso:11073:10101#150588", MDCMODALITYSPOT }, 
+      { "150589", MDCMODALITYSPOTMAX }, 
+      { "urn:iso:std:iso:11073:10101#150589", MDCMODALITYSPOTMAX }, 
+      { "150590", MDCMODALITYSPOTMIN }, 
+      { "urn:iso:std:iso:11073:10101#150590", MDCMODALITYSPOTMIN }, 
+      { "150591", MDCMODALITYSPOTMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150591", MDCMODALITYSPOTMEAN }, 
+      { "150604", MDCPULSOXIMDEVSTATUS }, 
+      { "urn:iso:std:iso:11073:10101#150604", MDCPULSOXIMDEVSTATUS }, 
+      { "150605", MDCPULSOXIMPULSCHAR }, 
+      { "urn:iso:std:iso:11073:10101#150605", MDCPULSOXIMPULSCHAR }, 
+      { "150612", MDCACCELERATIONINDEX }, 
+      { "urn:iso:std:iso:11073:10101#150612", MDCACCELERATIONINDEX }, 
+      { "150613", MDCACCELERATIONINDEXMAX }, 
+      { "urn:iso:std:iso:11073:10101#150613", MDCACCELERATIONINDEXMAX }, 
+      { "150614", MDCACCELERATIONINDEXMIN }, 
+      { "urn:iso:std:iso:11073:10101#150614", MDCACCELERATIONINDEXMIN }, 
+      { "150615", MDCACCELERATIONINDEXMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150615", MDCACCELERATIONINDEXMEAN }, 
+      { "150616", MDCSYSTOLICTIMERATIO }, 
+      { "urn:iso:std:iso:11073:10101#150616", MDCSYSTOLICTIMERATIO }, 
+      { "150617", MDCSYSTOLICTIMERATIOMAX }, 
+      { "urn:iso:std:iso:11073:10101#150617", MDCSYSTOLICTIMERATIOMAX }, 
+      { "150618", MDCSYSTOLICTIMERATIOMIN }, 
+      { "urn:iso:std:iso:11073:10101#150618", MDCSYSTOLICTIMERATIOMIN }, 
+      { "150619", MDCSYSTOLICTIMERATIOMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150619", MDCSYSTOLICTIMERATIOMEAN }, 
+      { "150620", MDCTHORACICFLUIDCONTENT }, 
+      { "urn:iso:std:iso:11073:10101#150620", MDCTHORACICFLUIDCONTENT }, 
+      { "150621", MDCTHORACICFLUIDCONTENTMAX }, 
+      { "urn:iso:std:iso:11073:10101#150621", MDCTHORACICFLUIDCONTENTMAX }, 
+      { "150622", MDCTHORACICFLUIDCONTENTMIN }, 
+      { "urn:iso:std:iso:11073:10101#150622", MDCTHORACICFLUIDCONTENTMIN }, 
+      { "150623", MDCTHORACICFLUIDCONTENTMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150623", MDCTHORACICFLUIDCONTENTMEAN }, 
+      { "150624", MDCTIMEPDVENTLAORTEJCT }, 
+      { "urn:iso:std:iso:11073:10101#150624", MDCTIMEPDVENTLAORTEJCT }, 
+      { "150625", MDCTIMEPDVENTLAORTEJCTMAX }, 
+      { "urn:iso:std:iso:11073:10101#150625", MDCTIMEPDVENTLAORTEJCTMAX }, 
+      { "150626", MDCTIMEPDVENTLAORTEJCTMIN }, 
+      { "urn:iso:std:iso:11073:10101#150626", MDCTIMEPDVENTLAORTEJCTMIN }, 
+      { "150627", MDCTIMEPDVENTLAORTEJCTMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150627", MDCTIMEPDVENTLAORTEJCTMEAN }, 
+      { "150628", MDCTIMEPDVENTLAORTPREEJCT }, 
+      { "urn:iso:std:iso:11073:10101#150628", MDCTIMEPDVENTLAORTPREEJCT }, 
+      { "150629", MDCTIMEPDVENTLAORTPREEJCTMAX }, 
+      { "urn:iso:std:iso:11073:10101#150629", MDCTIMEPDVENTLAORTPREEJCTMAX }, 
+      { "150630", MDCTIMEPDVENTLAORTPREEJCTMIN }, 
+      { "urn:iso:std:iso:11073:10101#150630", MDCTIMEPDVENTLAORTPREEJCTMIN }, 
+      { "150631", MDCTIMEPDVENTLAORTPREEJCTMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150631", MDCTIMEPDVENTLAORTPREEJCTMEAN }, 
+      { "150632", MDCVELOCITYINDEX }, 
+      { "urn:iso:std:iso:11073:10101#150632", MDCVELOCITYINDEX }, 
+      { "150633", MDCVELOCITYINDEXMAX }, 
+      { "urn:iso:std:iso:11073:10101#150633", MDCVELOCITYINDEXMAX }, 
+      { "150634", MDCVELOCITYINDEXMIN }, 
+      { "urn:iso:std:iso:11073:10101#150634", MDCVELOCITYINDEXMIN }, 
+      { "150635", MDCVELOCITYINDEXMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150635", MDCVELOCITYINDEXMEAN }, 
+      { "150636", MDCVOLBLDSTROKEINDEX }, 
+      { "urn:iso:std:iso:11073:10101#150636", MDCVOLBLDSTROKEINDEX }, 
+      { "150637", MDCVOLBLDSTROKEINDEXMAX }, 
+      { "urn:iso:std:iso:11073:10101#150637", MDCVOLBLDSTROKEINDEXMAX }, 
+      { "150638", MDCVOLBLDSTROKEINDEXMIN }, 
+      { "urn:iso:std:iso:11073:10101#150638", MDCVOLBLDSTROKEINDEXMIN }, 
+      { "150639", MDCVOLBLDSTROKEINDEXMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150639", MDCVOLBLDSTROKEINDEXMEAN }, 
+      { "150640", MDCWKLVWORKINDEX }, 
+      { "urn:iso:std:iso:11073:10101#150640", MDCWKLVWORKINDEX }, 
+      { "150641", MDCWKLVWORKINDEXMAX }, 
+      { "urn:iso:std:iso:11073:10101#150641", MDCWKLVWORKINDEXMAX }, 
+      { "150642", MDCWKLVWORKINDEXMIN }, 
+      { "urn:iso:std:iso:11073:10101#150642", MDCWKLVWORKINDEXMIN }, 
+      { "150643", MDCWKLVWORKINDEXMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150643", MDCWKLVWORKINDEXMEAN }, 
+      { "150644", MDCWKRVSTROKEINDEX }, 
+      { "urn:iso:std:iso:11073:10101#150644", MDCWKRVSTROKEINDEX }, 
+      { "150645", MDCWKRVSTROKEINDEXMAX }, 
+      { "urn:iso:std:iso:11073:10101#150645", MDCWKRVSTROKEINDEXMAX }, 
+      { "150646", MDCWKRVSTROKEINDEXMIN }, 
+      { "urn:iso:std:iso:11073:10101#150646", MDCWKRVSTROKEINDEXMIN }, 
+      { "150647", MDCWKRVSTROKEINDEXMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150647", MDCWKRVSTROKEINDEXMEAN }, 
+      { "150648", MDCPRESSBLDARTFEMORAL }, 
+      { "urn:iso:std:iso:11073:10101#150648", MDCPRESSBLDARTFEMORAL }, 
+      { "150649", MDCPRESSBLDARTFEMORALSYS }, 
+      { "urn:iso:std:iso:11073:10101#150649", MDCPRESSBLDARTFEMORALSYS }, 
+      { "150650", MDCPRESSBLDARTFEMORALDIA }, 
+      { "urn:iso:std:iso:11073:10101#150650", MDCPRESSBLDARTFEMORALDIA }, 
+      { "150651", MDCPRESSBLDARTFEMORALMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150651", MDCPRESSBLDARTFEMORALMEAN }, 
+      { "150652", MDCFLOWBLDPULMCAP }, 
+      { "urn:iso:std:iso:11073:10101#150652", MDCFLOWBLDPULMCAP }, 
+      { "150653", MDCFLOWBLDPULMCAPMAX }, 
+      { "urn:iso:std:iso:11073:10101#150653", MDCFLOWBLDPULMCAPMAX }, 
+      { "150654", MDCFLOWBLDPULMCAPMIN }, 
+      { "urn:iso:std:iso:11073:10101#150654", MDCFLOWBLDPULMCAPMIN }, 
+      { "150655", MDCFLOWBLDPULMCAPMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150655", MDCFLOWBLDPULMCAPMEAN }, 
+      { "150656", MDCO2OXYGENATIONRATIO }, 
+      { "urn:iso:std:iso:11073:10101#150656", MDCO2OXYGENATIONRATIO }, 
+      { "150657", MDCO2OXYGENATIONRATIOMAX }, 
+      { "urn:iso:std:iso:11073:10101#150657", MDCO2OXYGENATIONRATIOMAX }, 
+      { "150658", MDCO2OXYGENATIONRATIOMIN }, 
+      { "urn:iso:std:iso:11073:10101#150658", MDCO2OXYGENATIONRATIOMIN }, 
+      { "150659", MDCO2OXYGENATIONRATIOMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150659", MDCO2OXYGENATIONRATIOMEAN }, 
+      { "150660", MDCOUTPUTCARDIACFICK }, 
+      { "urn:iso:std:iso:11073:10101#150660", MDCOUTPUTCARDIACFICK }, 
+      { "150661", MDCOUTPUTCARDIACFICKMAX }, 
+      { "urn:iso:std:iso:11073:10101#150661", MDCOUTPUTCARDIACFICKMAX }, 
+      { "150662", MDCOUTPUTCARDIACFICKMIN }, 
+      { "urn:iso:std:iso:11073:10101#150662", MDCOUTPUTCARDIACFICKMIN }, 
+      { "150663", MDCOUTPUTCARDIACFICKMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150663", MDCOUTPUTCARDIACFICKMEAN }, 
+      { "150664", MDCSATO2CONSUMPINDEX }, 
+      { "urn:iso:std:iso:11073:10101#150664", MDCSATO2CONSUMPINDEX }, 
+      { "150665", MDCSATO2CONSUMPINDEXMAX }, 
+      { "urn:iso:std:iso:11073:10101#150665", MDCSATO2CONSUMPINDEXMAX }, 
+      { "150666", MDCSATO2CONSUMPINDEXMIN }, 
+      { "urn:iso:std:iso:11073:10101#150666", MDCSATO2CONSUMPINDEXMIN }, 
+      { "150667", MDCSATO2CONSUMPINDEXMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150667", MDCSATO2CONSUMPINDEXMEAN }, 
+      { "150668", MDCSATO2DELIVINDEX }, 
+      { "urn:iso:std:iso:11073:10101#150668", MDCSATO2DELIVINDEX }, 
+      { "150669", MDCSATO2DELIVINDEXMAX }, 
+      { "urn:iso:std:iso:11073:10101#150669", MDCSATO2DELIVINDEXMAX }, 
+      { "150670", MDCSATO2DELIVINDEXMIN }, 
+      { "urn:iso:std:iso:11073:10101#150670", MDCSATO2DELIVINDEXMIN }, 
+      { "150671", MDCSATO2DELIVINDEXMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150671", MDCSATO2DELIVINDEXMEAN }, 
+      { "150672", MDCSPO2OXYGENATIONRATIO }, 
+      { "urn:iso:std:iso:11073:10101#150672", MDCSPO2OXYGENATIONRATIO }, 
+      { "150673", MDCSPO2OXYGENATIONRATIOMAX }, 
+      { "urn:iso:std:iso:11073:10101#150673", MDCSPO2OXYGENATIONRATIOMAX }, 
+      { "150674", MDCSPO2OXYGENATIONRATIOMIN }, 
+      { "urn:iso:std:iso:11073:10101#150674", MDCSPO2OXYGENATIONRATIOMIN }, 
+      { "150675", MDCSPO2OXYGENATIONRATIOMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150675", MDCSPO2OXYGENATIONRATIOMEAN }, 
+      { "150676", MDCPRESSBLDVENFEMORAL }, 
+      { "urn:iso:std:iso:11073:10101#150676", MDCPRESSBLDVENFEMORAL }, 
+      { "150677", MDCPRESSBLDVENFEMORALSYS }, 
+      { "urn:iso:std:iso:11073:10101#150677", MDCPRESSBLDVENFEMORALSYS }, 
+      { "150678", MDCPRESSBLDVENFEMORALDIA }, 
+      { "urn:iso:std:iso:11073:10101#150678", MDCPRESSBLDVENFEMORALDIA }, 
+      { "150679", MDCPRESSBLDVENFEMORALMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150679", MDCPRESSBLDVENFEMORALMEAN }, 
+      { "150680", MDCPRESSBLDARTBRACHIAL }, 
+      { "urn:iso:std:iso:11073:10101#150680", MDCPRESSBLDARTBRACHIAL }, 
+      { "150681", MDCPRESSBLDARTBRACHIALSYS }, 
+      { "urn:iso:std:iso:11073:10101#150681", MDCPRESSBLDARTBRACHIALSYS }, 
+      { "150682", MDCPRESSBLDARTBRACHIALDIA }, 
+      { "urn:iso:std:iso:11073:10101#150682", MDCPRESSBLDARTBRACHIALDIA }, 
+      { "150683", MDCPRESSBLDARTBRACHIALMEAN }, 
+      { "urn:iso:std:iso:11073:10101#150683", MDCPRESSBLDARTBRACHIALMEAN }, 
+      { "150684", MDCXDIALYO2SAT }, 
+      { "urn:iso:std:iso:11073:10101#150684", MDCXDIALYO2SAT }, 
+      { "150685", MDCXDIALYO2SATMINNONALM }, 
+      { "urn:iso:std:iso:11073:10101#150685", MDCXDIALYO2SATMINNONALM }, 
+      { "151552", MDCRESP }, 
+      { "urn:iso:std:iso:11073:10101#151552", MDCRESP }, 
+      { "151553", MDCRESPCNT }, 
+      { "urn:iso:std:iso:11073:10101#151553", MDCRESPCNT }, 
+      { "151555", MDCRESPRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#151555", MDCRESPRATEMAX }, 
+      { "151556", MDCRESPRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#151556", MDCRESPRATEMIN }, 
+      { "151557", MDCRESPRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151557", MDCRESPRATEMEAN }, 
+      { "151560", MDCRESPBREATH }, 
+      { "urn:iso:std:iso:11073:10101#151560", MDCRESPBREATH }, 
+      { "151562", MDCRESPRATE }, 
+      { "urn:iso:std:iso:11073:10101#151562", MDCRESPRATE }, 
+      { "151568", MDCAWAYRESP }, 
+      { "urn:iso:std:iso:11073:10101#151568", MDCAWAYRESP }, 
+      { "151569", MDCAWAYRESPCNT }, 
+      { "urn:iso:std:iso:11073:10101#151569", MDCAWAYRESPCNT }, 
+      { "151570", MDCAWAYRESPRATE }, 
+      { "urn:iso:std:iso:11073:10101#151570", MDCAWAYRESPRATE }, 
+      { "151571", MDCAWAYRESPRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#151571", MDCAWAYRESPRATEMAX }, 
+      { "151572", MDCAWAYRESPRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#151572", MDCAWAYRESPRATEMIN }, 
+      { "151573", MDCAWAYRESPRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151573", MDCAWAYRESPRATEMEAN }, 
+      { "151576", MDCTTHORRESP }, 
+      { "urn:iso:std:iso:11073:10101#151576", MDCTTHORRESP }, 
+      { "151577", MDCTTHORRESPCNT }, 
+      { "urn:iso:std:iso:11073:10101#151577", MDCTTHORRESPCNT }, 
+      { "151578", MDCTTHORRESPRATE }, 
+      { "urn:iso:std:iso:11073:10101#151578", MDCTTHORRESPRATE }, 
+      { "151579", MDCTTHORRESPRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#151579", MDCTTHORRESPRATEMAX }, 
+      { "151580", MDCTTHORRESPRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#151580", MDCTTHORRESPRATEMIN }, 
+      { "151581", MDCTTHORRESPRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151581", MDCTTHORRESPRATEMEAN }, 
+      { "151584", MDCVENTRESP }, 
+      { "urn:iso:std:iso:11073:10101#151584", MDCVENTRESP }, 
+      { "151585", MDCVENTRESPCNT }, 
+      { "urn:iso:std:iso:11073:10101#151585", MDCVENTRESPCNT }, 
+      { "151586", MDCVENTRESPRATE }, 
+      { "urn:iso:std:iso:11073:10101#151586", MDCVENTRESPRATE }, 
+      { "151587", MDCVENTRESPRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#151587", MDCVENTRESPRATEMAX }, 
+      { "151588", MDCVENTRESPRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#151588", MDCVENTRESPRATEMIN }, 
+      { "151589", MDCVENTRESPRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151589", MDCVENTRESPRATEMEAN }, 
+      { "151592", MDCCO2RESP }, 
+      { "urn:iso:std:iso:11073:10101#151592", MDCCO2RESP }, 
+      { "151593", MDCCO2RESPCNT }, 
+      { "urn:iso:std:iso:11073:10101#151593", MDCCO2RESPCNT }, 
+      { "151594", MDCCO2RESPRATE }, 
+      { "urn:iso:std:iso:11073:10101#151594", MDCCO2RESPRATE }, 
+      { "151595", MDCCO2RESPRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#151595", MDCCO2RESPRATEMAX }, 
+      { "151596", MDCCO2RESPRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#151596", MDCCO2RESPRATEMIN }, 
+      { "151597", MDCCO2RESPRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151597", MDCCO2RESPRATEMEAN }, 
+      { "151600", MDCPRESSRESP }, 
+      { "urn:iso:std:iso:11073:10101#151600", MDCPRESSRESP }, 
+      { "151601", MDCPRESSRESPCNT }, 
+      { "urn:iso:std:iso:11073:10101#151601", MDCPRESSRESPCNT }, 
+      { "151602", MDCPRESSRESPRATE }, 
+      { "urn:iso:std:iso:11073:10101#151602", MDCPRESSRESPRATE }, 
+      { "151603", MDCPRESSRESPRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#151603", MDCPRESSRESPRATEMAX }, 
+      { "151604", MDCPRESSRESPRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#151604", MDCPRESSRESPRATEMIN }, 
+      { "151605", MDCPRESSRESPRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151605", MDCPRESSRESPRATEMEAN }, 
+      { "151608", MDCVENTCO2RESP }, 
+      { "urn:iso:std:iso:11073:10101#151608", MDCVENTCO2RESP }, 
+      { "151609", MDCVENTCO2RESPCNT }, 
+      { "urn:iso:std:iso:11073:10101#151609", MDCVENTCO2RESPCNT }, 
+      { "151610", MDCVENTCO2RESPRATE }, 
+      { "urn:iso:std:iso:11073:10101#151610", MDCVENTCO2RESPRATE }, 
+      { "151611", MDCVENTCO2RESPRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#151611", MDCVENTCO2RESPRATEMAX }, 
+      { "151612", MDCVENTCO2RESPRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#151612", MDCVENTCO2RESPRATEMIN }, 
+      { "151613", MDCVENTCO2RESPRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151613", MDCVENTCO2RESPRATEMEAN }, 
+      { "151616", MDCVENTPRESSRESP }, 
+      { "urn:iso:std:iso:11073:10101#151616", MDCVENTPRESSRESP }, 
+      { "151617", MDCVENTPRESSRESPCNT }, 
+      { "urn:iso:std:iso:11073:10101#151617", MDCVENTPRESSRESPCNT }, 
+      { "151618", MDCVENTPRESSRESPRATE }, 
+      { "urn:iso:std:iso:11073:10101#151618", MDCVENTPRESSRESPRATE }, 
+      { "151619", MDCVENTPRESSRESPRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#151619", MDCVENTPRESSRESPRATEMAX }, 
+      { "151620", MDCVENTPRESSRESPRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#151620", MDCVENTPRESSRESPRATEMIN }, 
+      { "151621", MDCVENTPRESSRESPRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151621", MDCVENTPRESSRESPRATEMEAN }, 
+      { "151624", MDCVENTFLOWRESP }, 
+      { "urn:iso:std:iso:11073:10101#151624", MDCVENTFLOWRESP }, 
+      { "151625", MDCVENTFLOWRESPCNT }, 
+      { "urn:iso:std:iso:11073:10101#151625", MDCVENTFLOWRESPCNT }, 
+      { "151626", MDCVENTFLOWRESPRATE }, 
+      { "urn:iso:std:iso:11073:10101#151626", MDCVENTFLOWRESPRATE }, 
+      { "151627", MDCVENTFLOWRESPRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#151627", MDCVENTFLOWRESPRATEMAX }, 
+      { "151628", MDCVENTFLOWRESPRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#151628", MDCVENTFLOWRESPRATEMIN }, 
+      { "151629", MDCVENTFLOWRESPRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151629", MDCVENTFLOWRESPRATEMEAN }, 
+      { "151632", MDCVENTSIGH }, 
+      { "urn:iso:std:iso:11073:10101#151632", MDCVENTSIGH }, 
+      { "151633", MDCVENTSIGHCNT }, 
+      { "urn:iso:std:iso:11073:10101#151633", MDCVENTSIGHCNT }, 
+      { "151634", MDCVENTSIGHRATE }, 
+      { "urn:iso:std:iso:11073:10101#151634", MDCVENTSIGHRATE }, 
+      { "151635", MDCVENTSIGHRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#151635", MDCVENTSIGHRATEMAX }, 
+      { "151636", MDCVENTSIGHRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#151636", MDCVENTSIGHRATEMIN }, 
+      { "151637", MDCVENTSIGHRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151637", MDCVENTSIGHRATEMEAN }, 
+      { "151640", MDCVENTSIGHMULT }, 
+      { "urn:iso:std:iso:11073:10101#151640", MDCVENTSIGHMULT }, 
+      { "151641", MDCVENTSIGHMULTCNT }, 
+      { "urn:iso:std:iso:11073:10101#151641", MDCVENTSIGHMULTCNT }, 
+      { "151642", MDCVENTSIGHMULTRATE }, 
+      { "urn:iso:std:iso:11073:10101#151642", MDCVENTSIGHMULTRATE }, 
+      { "151643", MDCVENTSIGHMULTRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#151643", MDCVENTSIGHMULTRATEMAX }, 
+      { "151644", MDCVENTSIGHMULTRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#151644", MDCVENTSIGHMULTRATEMIN }, 
+      { "151645", MDCVENTSIGHMULTRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151645", MDCVENTSIGHMULTRATEMEAN }, 
+      { "151648", MDCACOUSTICRESP }, 
+      { "urn:iso:std:iso:11073:10101#151648", MDCACOUSTICRESP }, 
+      { "151649", MDCACOUSTICRESPCNT }, 
+      { "urn:iso:std:iso:11073:10101#151649", MDCACOUSTICRESPCNT }, 
+      { "151650", MDCACOUSTICRESPRATE }, 
+      { "urn:iso:std:iso:11073:10101#151650", MDCACOUSTICRESPRATE }, 
+      { "151651", MDCACOUSTICRESPRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#151651", MDCACOUSTICRESPRATEMAX }, 
+      { "151652", MDCACOUSTICRESPRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#151652", MDCACOUSTICRESPRATEMIN }, 
+      { "151653", MDCACOUSTICRESPRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151653", MDCACOUSTICRESPRATEMEAN }, 
+      { "151656", MDCPULSOXIMPLETHRESP }, 
+      { "urn:iso:std:iso:11073:10101#151656", MDCPULSOXIMPLETHRESP }, 
+      { "151657", MDCPULSOXIMPLETHRESPCNT }, 
+      { "urn:iso:std:iso:11073:10101#151657", MDCPULSOXIMPLETHRESPCNT }, 
+      { "151658", MDCPULSOXIMPLETHRESPRATE }, 
+      { "urn:iso:std:iso:11073:10101#151658", MDCPULSOXIMPLETHRESPRATE }, 
+      { "151659", MDCPULSOXIMPLETHRESPRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#151659", MDCPULSOXIMPLETHRESPRATEMAX }, 
+      { "151660", MDCPULSOXIMPLETHRESPRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#151660", MDCPULSOXIMPLETHRESPRATEMIN }, 
+      { "151661", MDCPULSOXIMPLETHRESPRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151661", MDCPULSOXIMPLETHRESPRATEMEAN }, 
+      { "151664", MDCRESPSPONT }, 
+      { "urn:iso:std:iso:11073:10101#151664", MDCRESPSPONT }, 
+      { "151665", MDCRESPSPONTCNT }, 
+      { "urn:iso:std:iso:11073:10101#151665", MDCRESPSPONTCNT }, 
+      { "151666", MDCRESPSPONTRATE }, 
+      { "urn:iso:std:iso:11073:10101#151666", MDCRESPSPONTRATE }, 
+      { "151667", MDCRESPSPONTRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#151667", MDCRESPSPONTRATEMAX }, 
+      { "151668", MDCRESPSPONTRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#151668", MDCRESPSPONTRATEMIN }, 
+      { "151669", MDCRESPSPONTRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151669", MDCRESPSPONTRATEMEAN }, 
+      { "151672", MDCRESPBTSDPS }, 
+      { "urn:iso:std:iso:11073:10101#151672", MDCRESPBTSDPS }, 
+      { "151673", MDCRESPBTSDPSCNT }, 
+      { "urn:iso:std:iso:11073:10101#151673", MDCRESPBTSDPSCNT }, 
+      { "151674", MDCRESPBTSDPSRATE }, 
+      { "urn:iso:std:iso:11073:10101#151674", MDCRESPBTSDPSRATE }, 
+      { "151675", MDCRESPBTSDPSRATEMAX }, 
+      { "urn:iso:std:iso:11073:10101#151675", MDCRESPBTSDPSRATEMAX }, 
+      { "151676", MDCRESPBTSDPSRATEMIN }, 
+      { "urn:iso:std:iso:11073:10101#151676", MDCRESPBTSDPSRATEMIN }, 
+      { "151677", MDCRESPBTSDPSRATEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151677", MDCRESPBTSDPSRATEMEAN }, 
+      { "151680", MDCCAPACVITAL }, 
+      { "urn:iso:std:iso:11073:10101#151680", MDCCAPACVITAL }, 
+      { "151681", MDCCAPACVITALMAX }, 
+      { "urn:iso:std:iso:11073:10101#151681", MDCCAPACVITALMAX }, 
+      { "151682", MDCCAPACVITALMIN }, 
+      { "urn:iso:std:iso:11073:10101#151682", MDCCAPACVITALMIN }, 
+      { "151683", MDCCAPACVITALMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151683", MDCCAPACVITALMEAN }, 
+      { "151684", MDCVENTTIMEPDEXPPAUSE }, 
+      { "urn:iso:std:iso:11073:10101#151684", MDCVENTTIMEPDEXPPAUSE }, 
+      { "151685", MDCVENTTIMEPDEXPPAUSEMAX }, 
+      { "urn:iso:std:iso:11073:10101#151685", MDCVENTTIMEPDEXPPAUSEMAX }, 
+      { "151686", MDCVENTTIMEPDEXPPAUSEMIN }, 
+      { "urn:iso:std:iso:11073:10101#151686", MDCVENTTIMEPDEXPPAUSEMIN }, 
+      { "151687", MDCVENTTIMEPDEXPPAUSEMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151687", MDCVENTTIMEPDEXPPAUSEMEAN }, 
+      { "151688", MDCCOMPLLUNG }, 
+      { "urn:iso:std:iso:11073:10101#151688", MDCCOMPLLUNG }, 
+      { "151689", MDCCOMPLLUNGMAX }, 
+      { "urn:iso:std:iso:11073:10101#151689", MDCCOMPLLUNGMAX }, 
+      { "151690", MDCCOMPLLUNGMIN }, 
+      { "urn:iso:std:iso:11073:10101#151690", MDCCOMPLLUNGMIN }, 
+      { "151691", MDCCOMPLLUNGMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151691", MDCCOMPLLUNGMEAN }, 
+      { "151692", MDCCOMPLLUNGDYN }, 
+      { "urn:iso:std:iso:11073:10101#151692", MDCCOMPLLUNGDYN }, 
+      { "151693", MDCCOMPLLUNGDYNMAX }, 
+      { "urn:iso:std:iso:11073:10101#151693", MDCCOMPLLUNGDYNMAX }, 
+      { "151694", MDCCOMPLLUNGDYNMIN }, 
+      { "urn:iso:std:iso:11073:10101#151694", MDCCOMPLLUNGDYNMIN }, 
+      { "151695", MDCCOMPLLUNGDYNMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151695", MDCCOMPLLUNGDYNMEAN }, 
+      { "151696", MDCCOMPLLUNGSTATIC }, 
+      { "urn:iso:std:iso:11073:10101#151696", MDCCOMPLLUNGSTATIC }, 
+      { "151697", MDCCOMPLLUNGSTATICMAX }, 
+      { "urn:iso:std:iso:11073:10101#151697", MDCCOMPLLUNGSTATICMAX }, 
+      { "151698", MDCCOMPLLUNGSTATICMIN }, 
+      { "urn:iso:std:iso:11073:10101#151698", MDCCOMPLLUNGSTATICMIN }, 
+      { "151699", MDCCOMPLLUNGSTATICMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151699", MDCCOMPLLUNGSTATICMEAN }, 
+      { "151700", MDCCONCAWAYCO2 }, 
+      { "urn:iso:std:iso:11073:10101#151700", MDCCONCAWAYCO2 }, 
+      { "151701", MDCCONCAWAYCO2MAX }, 
+      { "urn:iso:std:iso:11073:10101#151701", MDCCONCAWAYCO2MAX }, 
+      { "151702", MDCCONCAWAYCO2MIN }, 
+      { "urn:iso:std:iso:11073:10101#151702", MDCCONCAWAYCO2MIN }, 
+      { "151703", MDCCONCAWAYCO2MEAN }, 
+      { "urn:iso:std:iso:11073:10101#151703", MDCCONCAWAYCO2MEAN }, 
+      { "151708", MDCCONCAWAYCO2ET }, 
+      { "urn:iso:std:iso:11073:10101#151708", MDCCONCAWAYCO2ET }, 
+      { "151709", MDCCONCAWAYCO2ETMAX }, 
+      { "urn:iso:std:iso:11073:10101#151709", MDCCONCAWAYCO2ETMAX }, 
+      { "151710", MDCCONCAWAYCO2ETMIN }, 
+      { "urn:iso:std:iso:11073:10101#151710", MDCCONCAWAYCO2ETMIN }, 
+      { "151711", MDCCONCAWAYCO2ETMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151711", MDCCONCAWAYCO2ETMEAN }, 
+      { "151712", MDCCONCAWAYCO2EXP }, 
+      { "urn:iso:std:iso:11073:10101#151712", MDCCONCAWAYCO2EXP }, 
+      { "151713", MDCCONCAWAYCO2EXPMAX }, 
+      { "urn:iso:std:iso:11073:10101#151713", MDCCONCAWAYCO2EXPMAX }, 
+      { "151714", MDCCONCAWAYCO2EXPMIN }, 
+      { "urn:iso:std:iso:11073:10101#151714", MDCCONCAWAYCO2EXPMIN }, 
+      { "151715", MDCCONCAWAYCO2EXPMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151715", MDCCONCAWAYCO2EXPMEAN }, 
+      { "151716", MDCCONCAWAYCO2INSP }, 
+      { "urn:iso:std:iso:11073:10101#151716", MDCCONCAWAYCO2INSP }, 
+      { "151717", MDCCONCAWAYCO2INSPMAX }, 
+      { "urn:iso:std:iso:11073:10101#151717", MDCCONCAWAYCO2INSPMAX }, 
+      { "151718", MDCCONCAWAYCO2INSPMIN }, 
+      { "urn:iso:std:iso:11073:10101#151718", MDCCONCAWAYCO2INSPMIN }, 
+      { "151719", MDCCONCAWAYCO2INSPMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151719", MDCCONCAWAYCO2INSPMEAN }, 
+      { "151720", MDCVENTCONCAWAYO2 }, 
+      { "urn:iso:std:iso:11073:10101#151720", MDCVENTCONCAWAYO2 }, 
+      { "151721", MDCVENTCONCAWAYO2MAX }, 
+      { "urn:iso:std:iso:11073:10101#151721", MDCVENTCONCAWAYO2MAX }, 
+      { "151722", MDCVENTCONCAWAYO2MIN }, 
+      { "urn:iso:std:iso:11073:10101#151722", MDCVENTCONCAWAYO2MIN }, 
+      { "151723", MDCVENTCONCAWAYO2MEAN }, 
+      { "urn:iso:std:iso:11073:10101#151723", MDCVENTCONCAWAYO2MEAN }, 
+      { "151724", MDCAWAYCO2 }, 
+      { "urn:iso:std:iso:11073:10101#151724", MDCAWAYCO2 }, 
+      { "151725", MDCAWAYCO2MAX }, 
+      { "urn:iso:std:iso:11073:10101#151725", MDCAWAYCO2MAX }, 
+      { "151726", MDCAWAYCO2MIN }, 
+      { "urn:iso:std:iso:11073:10101#151726", MDCAWAYCO2MIN }, 
+      { "151727", MDCAWAYCO2MEAN }, 
+      { "urn:iso:std:iso:11073:10101#151727", MDCAWAYCO2MEAN }, 
+      { "151728", MDCAWAYCO2ET }, 
+      { "urn:iso:std:iso:11073:10101#151728", MDCAWAYCO2ET }, 
+      { "151729", MDCAWAYCO2ETMAX }, 
+      { "urn:iso:std:iso:11073:10101#151729", MDCAWAYCO2ETMAX }, 
+      { "151730", MDCAWAYCO2ETMIN }, 
+      { "urn:iso:std:iso:11073:10101#151730", MDCAWAYCO2ETMIN }, 
+      { "151731", MDCAWAYCO2ETMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151731", MDCAWAYCO2ETMEAN }, 
+      { "151732", MDCAWAYCO2EXP }, 
+      { "urn:iso:std:iso:11073:10101#151732", MDCAWAYCO2EXP }, 
+      { "151733", MDCAWAYCO2EXPMAX }, 
+      { "urn:iso:std:iso:11073:10101#151733", MDCAWAYCO2EXPMAX }, 
+      { "151734", MDCAWAYCO2EXPMIN }, 
+      { "urn:iso:std:iso:11073:10101#151734", MDCAWAYCO2EXPMIN }, 
+      { "151735", MDCAWAYCO2EXPMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151735", MDCAWAYCO2EXPMEAN }, 
+      { "151736", MDCAWAYCO2INSP }, 
+      { "urn:iso:std:iso:11073:10101#151736", MDCAWAYCO2INSP }, 
+      { "151737", MDCAWAYCO2INSPMAX }, 
+      { "urn:iso:std:iso:11073:10101#151737", MDCAWAYCO2INSPMAX }, 
+      { "151738", MDCAWAYCO2INSPMIN }, 
+      { "urn:iso:std:iso:11073:10101#151738", MDCAWAYCO2INSPMIN }, 
+      { "151739", MDCAWAYCO2INSPMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151739", MDCAWAYCO2INSPMEAN }, 
+      { "151740", MDCAWAYO2 }, 
+      { "urn:iso:std:iso:11073:10101#151740", MDCAWAYO2 }, 
+      { "151741", MDCAWAYO2MAX }, 
+      { "urn:iso:std:iso:11073:10101#151741", MDCAWAYO2MAX }, 
+      { "151742", MDCAWAYO2MIN }, 
+      { "urn:iso:std:iso:11073:10101#151742", MDCAWAYO2MIN }, 
+      { "151743", MDCAWAYO2MEAN }, 
+      { "urn:iso:std:iso:11073:10101#151743", MDCAWAYO2MEAN }, 
+      { "151744", MDCCONCAWAYO2DELTA }, 
+      { "urn:iso:std:iso:11073:10101#151744", MDCCONCAWAYO2DELTA }, 
+      { "151745", MDCCONCAWAYO2DELTAMAX }, 
+      { "urn:iso:std:iso:11073:10101#151745", MDCCONCAWAYO2DELTAMAX }, 
+      { "151746", MDCCONCAWAYO2DELTAMIN }, 
+      { "urn:iso:std:iso:11073:10101#151746", MDCCONCAWAYO2DELTAMIN }, 
+      { "151747", MDCCONCAWAYO2DELTAMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151747", MDCCONCAWAYO2DELTAMEAN }, 
+      { "151748", MDCAWAYO2EXP }, 
+      { "urn:iso:std:iso:11073:10101#151748", MDCAWAYO2EXP }, 
+      { "151749", MDCAWAYO2EXPMAX }, 
+      { "urn:iso:std:iso:11073:10101#151749", MDCAWAYO2EXPMAX }, 
+      { "151750", MDCAWAYO2EXPMIN }, 
+      { "urn:iso:std:iso:11073:10101#151750", MDCAWAYO2EXPMIN }, 
+      { "151751", MDCAWAYO2EXPMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151751", MDCAWAYO2EXPMEAN }, 
+      { "151752", MDCAWAYO2INSP }, 
+      { "urn:iso:std:iso:11073:10101#151752", MDCAWAYO2INSP }, 
+      { "151753", MDCAWAYO2INSPMAX }, 
+      { "urn:iso:std:iso:11073:10101#151753", MDCAWAYO2INSPMAX }, 
+      { "151754", MDCAWAYO2INSPMIN }, 
+      { "urn:iso:std:iso:11073:10101#151754", MDCAWAYO2INSPMIN }, 
+      { "151755", MDCAWAYO2INSPMEAN }, 
+      { "urn:iso:std:iso:11073:10101#151755", MDCAWAYO2INSPMEAN }, 
+      { "151756", MDCCO2TCUT }, 
+      { "urn:iso:std:iso:11073:10101#151756", MDCCO2TCUT }, 
+    };
   };
 }

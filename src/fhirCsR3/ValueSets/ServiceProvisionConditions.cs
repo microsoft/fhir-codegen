@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFeesApply = "cost";
 
     /// <summary>
+    /// Literal for code: ServiceProvisionConditionsFeesApply
+    /// </summary>
+    public const string LiteralServiceProvisionConditionsFeesApply = "http://hl7.org/fhir/service-provision-conditions#cost";
+
+    /// <summary>
     /// Literal for code: DiscountsAvailable
     /// </summary>
     public const string LiteralDiscountsAvailable = "disc";
 
     /// <summary>
+    /// Literal for code: ServiceProvisionConditionsDiscountsAvailable
+    /// </summary>
+    public const string LiteralServiceProvisionConditionsDiscountsAvailable = "http://hl7.org/fhir/service-provision-conditions#disc";
+
+    /// <summary>
     /// Literal for code: Free
     /// </summary>
     public const string LiteralFree = "free";
+
+    /// <summary>
+    /// Literal for code: ServiceProvisionConditionsFree
+    /// </summary>
+    public const string LiteralServiceProvisionConditionsFree = "http://hl7.org/fhir/service-provision-conditions#free";
+
+    /// <summary>
+    /// Dictionary for looking up ServiceProvisionConditions Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "cost", FeesApply }, 
+      { "http://hl7.org/fhir/service-provision-conditions#cost", FeesApply }, 
+      { "disc", DiscountsAvailable }, 
+      { "http://hl7.org/fhir/service-provision-conditions#disc", DiscountsAvailable }, 
+      { "free", Free }, 
+      { "http://hl7.org/fhir/service-provision-conditions#free", Free }, 
+    };
   };
 }

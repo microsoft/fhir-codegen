@@ -63,9 +63,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAccess = "access";
 
     /// <summary>
+    /// Literal for code: ConsentActionAccess
+    /// </summary>
+    public const string LiteralConsentActionAccess = "http://terminology.hl7.org/CodeSystem/consentaction#access";
+
+    /// <summary>
     /// Literal for code: Collect
     /// </summary>
     public const string LiteralCollect = "collect";
+
+    /// <summary>
+    /// Literal for code: ConsentActionCollect
+    /// </summary>
+    public const string LiteralConsentActionCollect = "http://terminology.hl7.org/CodeSystem/consentaction#collect";
 
     /// <summary>
     /// Literal for code: AccessAndCorrect
@@ -73,13 +83,44 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAccessAndCorrect = "correct";
 
     /// <summary>
+    /// Literal for code: ConsentActionAccessAndCorrect
+    /// </summary>
+    public const string LiteralConsentActionAccessAndCorrect = "http://terminology.hl7.org/CodeSystem/consentaction#correct";
+
+    /// <summary>
     /// Literal for code: Disclose
     /// </summary>
     public const string LiteralDisclose = "disclose";
 
     /// <summary>
+    /// Literal for code: ConsentActionDisclose
+    /// </summary>
+    public const string LiteralConsentActionDisclose = "http://terminology.hl7.org/CodeSystem/consentaction#disclose";
+
+    /// <summary>
     /// Literal for code: Use
     /// </summary>
     public const string LiteralUse = "use";
+
+    /// <summary>
+    /// Literal for code: ConsentActionUse
+    /// </summary>
+    public const string LiteralConsentActionUse = "http://terminology.hl7.org/CodeSystem/consentaction#use";
+
+    /// <summary>
+    /// Dictionary for looking up ConsentAction Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "access", Access }, 
+      { "http://terminology.hl7.org/CodeSystem/consentaction#access", Access }, 
+      { "collect", Collect }, 
+      { "http://terminology.hl7.org/CodeSystem/consentaction#collect", Collect }, 
+      { "correct", AccessAndCorrect }, 
+      { "http://terminology.hl7.org/CodeSystem/consentaction#correct", AccessAndCorrect }, 
+      { "disclose", Disclose }, 
+      { "http://terminology.hl7.org/CodeSystem/consentaction#disclose", Disclose }, 
+      { "use", Use }, 
+      { "http://terminology.hl7.org/CodeSystem/consentaction#use", Use }, 
+    };
   };
 }

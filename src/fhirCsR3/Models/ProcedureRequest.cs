@@ -113,6 +113,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? AsNeededBoolean { get; set; }
     /// <summary>
+    /// Extension container element for AsNeededBoolean
+    /// </summary>
+    public Element _AsNeededBoolean { get; set; }
+    /// <summary>
     /// If a CodeableConcept is present, it indicates the pre-condition for performing the procedure.  For example "pain", "on flare-up", etc.
     /// </summary>
     public CodeableConcept AsNeededCodeableConcept { get; set; }
@@ -152,6 +156,10 @@ namespace fhirCsR3.Models
     /// This element is labeled as a [modifier](conformance-rules.html#isModifier.html) because it indicates that a procedure shouldn't happen, instead of a request for it to happen.  In general, only the code and timeframe will be present, though occasional additional qualifiers such as body site or even performer could be included to narrow the scope of the prohibition.  If the ProcedureRequest.code and ProcedureRequest.doNotPerform both contain negation, that will reinforce prohibition and should not have a double negative interpretation.
     /// </summary>
     public bool? DoNotPerform { get; set; }
+    /// <summary>
+    /// Extension container element for DoNotPerform
+    /// </summary>
+    public Element _DoNotPerform { get; set; }
     /// <summary>
     /// The identifier.type element is used to distinguish between the identifiers assigned by the orderer (known as the 'Placer' in HL7 v2) and the producer of the observations in response to the order (known as the 'Filler' in HL7 v2).  For further discussion and examples see the resource notes section below.
     /// </summary>
@@ -360,6 +368,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("doNotPerform", (bool)DoNotPerform!);
       }
 
+      if (_DoNotPerform != null)
+      {
+        writer.WritePropertyName("_doNotPerform");
+        _DoNotPerform.SerializeJson(writer, options);
+      }
+
       if ((Category != null) && (Category.Count != 0))
       {
         writer.WritePropertyName("category");
@@ -417,6 +431,12 @@ namespace fhirCsR3.Models
       if (AsNeededBoolean != null)
       {
         writer.WriteBoolean("asNeededBoolean", (bool)AsNeededBoolean!);
+      }
+
+      if (_AsNeededBoolean != null)
+      {
+        writer.WritePropertyName("_asNeededBoolean");
+        _AsNeededBoolean.SerializeJson(writer, options);
       }
 
       if (AsNeededCodeableConcept != null)
@@ -561,6 +581,11 @@ namespace fhirCsR3.Models
           AsNeededBoolean = reader.GetBoolean();
           break;
 
+        case "_asNeededBoolean":
+          _AsNeededBoolean = new fhirCsR3.Models.Element();
+          _AsNeededBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "asNeededCodeableConcept":
           AsNeededCodeableConcept = new fhirCsR3.Models.CodeableConcept();
           AsNeededCodeableConcept.DeserializeJson(ref reader, options);
@@ -695,6 +720,11 @@ namespace fhirCsR3.Models
 
         case "doNotPerform":
           DoNotPerform = reader.GetBoolean();
+          break;
+
+        case "_doNotPerform":
+          _DoNotPerform = new fhirCsR3.Models.Element();
+          _DoNotPerform.DeserializeJson(ref reader, options);
           break;
 
         case "identifier":
@@ -1027,6 +1057,16 @@ namespace fhirCsR3.Models
     public const string FILLER_ORDER = "filler-order";
     public const string INSTANCE_ORDER = "instance-order";
     public const string OPTION = "option";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposal",
+      "plan",
+      "order",
+      "original-order",
+      "reflex-order",
+      "filler-order",
+      "instance-order",
+      "option",
+    };
   }
   /// <summary>
   /// Code Values for the ProcedureRequest.priority field
@@ -1036,6 +1076,12 @@ namespace fhirCsR3.Models
     public const string URGENT = "urgent";
     public const string ASAP = "asap";
     public const string STAT = "stat";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "routine",
+      "urgent",
+      "asap",
+      "stat",
+    };
   }
   /// <summary>
   /// Code Values for the ProcedureRequest.status field
@@ -1048,5 +1094,14 @@ namespace fhirCsR3.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "suspended",
+      "cancelled",
+      "completed",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

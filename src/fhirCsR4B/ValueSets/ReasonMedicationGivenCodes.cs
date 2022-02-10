@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNone = "a";
 
     /// <summary>
+    /// Literal for code: ReasonMedicationGivenCodesNone
+    /// </summary>
+    public const string LiteralReasonMedicationGivenCodesNone = "http://terminology.hl7.org/CodeSystem/reason-medication-given#a";
+
+    /// <summary>
     /// Literal for code: GivenAsOrdered
     /// </summary>
     public const string LiteralGivenAsOrdered = "b";
 
     /// <summary>
+    /// Literal for code: ReasonMedicationGivenCodesGivenAsOrdered
+    /// </summary>
+    public const string LiteralReasonMedicationGivenCodesGivenAsOrdered = "http://terminology.hl7.org/CodeSystem/reason-medication-given#b";
+
+    /// <summary>
     /// Literal for code: Emergency
     /// </summary>
     public const string LiteralEmergency = "c";
+
+    /// <summary>
+    /// Literal for code: ReasonMedicationGivenCodesEmergency
+    /// </summary>
+    public const string LiteralReasonMedicationGivenCodesEmergency = "http://terminology.hl7.org/CodeSystem/reason-medication-given#c";
+
+    /// <summary>
+    /// Dictionary for looking up ReasonMedicationGivenCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "a", None }, 
+      { "http://terminology.hl7.org/CodeSystem/reason-medication-given#a", None }, 
+      { "b", GivenAsOrdered }, 
+      { "http://terminology.hl7.org/CodeSystem/reason-medication-given#b", GivenAsOrdered }, 
+      { "c", Emergency }, 
+      { "http://terminology.hl7.org/CodeSystem/reason-medication-given#c", Emergency }, 
+    };
   };
 }

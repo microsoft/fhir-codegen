@@ -264,6 +264,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// Used when observation has a set of component observations:
     /// -  An observation may have both a value (e.g. an  Apgar score) and component observations (the observations from which the Apgar score was derived). 
     /// -  If a value is present, the datatype for this element should be determined by the `code`.
@@ -272,6 +276,10 @@ namespace fhirCsR5.Models
     /// - For additional guidance, see the [Notes section](observation.html#notes) below.
     /// </summary>
     public int? ValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
     /// <summary>
     /// Used when observation has a set of component observations:
     /// -  An observation may have both a value (e.g. an  Apgar score) and component observations (the observations from which the Apgar score was derived). 
@@ -388,9 +396,21 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (ValueRange != null)
@@ -576,8 +596,18 @@ namespace fhirCsR5.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR5.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR5.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueRange":
@@ -846,6 +876,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// - An observation may have:
     ///   1.  a single value here
     ///   1.  both a value and a set of related or component values
@@ -856,6 +890,10 @@ namespace fhirCsR5.Models
     /// - For additional guidance, see the [Notes section](observation.html#notes) below.
     /// </summary>
     public int? ValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
     /// <summary>
     /// - An observation may have:
     ///   1.  a single value here
@@ -1155,9 +1193,21 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (ValueRange != null)
@@ -1779,8 +1829,18 @@ namespace fhirCsR5.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR5.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR5.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueRange":
@@ -1869,5 +1929,15 @@ namespace fhirCsR5.Models
     public const string CANCELLED = "cancelled";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "registered",
+      "preliminary",
+      "final",
+      "amended",
+      "corrected",
+      "cancelled",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

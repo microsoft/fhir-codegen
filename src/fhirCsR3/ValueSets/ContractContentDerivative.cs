@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralContentRegistration = "registration";
 
     /// <summary>
+    /// Literal for code: ContractContentDerivativeContentRegistration
+    /// </summary>
+    public const string LiteralContractContentDerivativeContentRegistration = "http://hl7.org/fhir/contract-content-derivative#registration";
+
+    /// <summary>
     /// Literal for code: ContentRetrieval
     /// </summary>
     public const string LiteralContentRetrieval = "retrieval";
+
+    /// <summary>
+    /// Literal for code: ContractContentDerivativeContentRetrieval
+    /// </summary>
+    public const string LiteralContractContentDerivativeContentRetrieval = "http://hl7.org/fhir/contract-content-derivative#retrieval";
 
     /// <summary>
     /// Literal for code: ShareableContent
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShareableContent = "shareable";
 
     /// <summary>
+    /// Literal for code: ContractContentDerivativeShareableContent
+    /// </summary>
+    public const string LiteralContractContentDerivativeShareableContent = "http://hl7.org/fhir/contract-content-derivative#shareable";
+
+    /// <summary>
     /// Literal for code: ContentStatement
     /// </summary>
     public const string LiteralContentStatement = "statement";
+
+    /// <summary>
+    /// Literal for code: ContractContentDerivativeContentStatement
+    /// </summary>
+    public const string LiteralContractContentDerivativeContentStatement = "http://hl7.org/fhir/contract-content-derivative#statement";
+
+    /// <summary>
+    /// Dictionary for looking up ContractContentDerivative Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "registration", ContentRegistration }, 
+      { "http://hl7.org/fhir/contract-content-derivative#registration", ContentRegistration }, 
+      { "retrieval", ContentRetrieval }, 
+      { "http://hl7.org/fhir/contract-content-derivative#retrieval", ContentRetrieval }, 
+      { "shareable", ShareableContent }, 
+      { "http://hl7.org/fhir/contract-content-derivative#shareable", ShareableContent }, 
+      { "statement", ContentStatement }, 
+      { "http://hl7.org/fhir/contract-content-derivative#statement", ContentStatement }, 
+    };
   };
 }

@@ -32,9 +32,17 @@ namespace fhirCsR3.Models
     /// </summary>
     public int? Count { get; set; }
     /// <summary>
+    /// Extension container element for Count
+    /// </summary>
+    public Element _Count { get; set; }
+    /// <summary>
     /// A maximum value for the count of the desired repetitions (e.g. do something 6-8 times).
     /// </summary>
     public int? CountMax { get; set; }
+    /// <summary>
+    /// Extension container element for CountMax
+    /// </summary>
+    public Element _CountMax { get; set; }
     /// <summary>
     /// If no days are specified, the action is assumed to happen every day as otherwise specified. The elements frequency and period cannot be used as well as dayOfWeek.
     /// </summary>
@@ -72,9 +80,17 @@ namespace fhirCsR3.Models
     /// </summary>
     public int? Frequency { get; set; }
     /// <summary>
+    /// Extension container element for Frequency
+    /// </summary>
+    public Element _Frequency { get; set; }
+    /// <summary>
     /// If present, indicates that the frequency is a range - so to repeat between [frequency] and [frequencyMax] times within the period or period range.
     /// </summary>
     public int? FrequencyMax { get; set; }
+    /// <summary>
+    /// Extension container element for FrequencyMax
+    /// </summary>
+    public Element _FrequencyMax { get; set; }
     /// <summary>
     /// The number of minutes from the event. If the event code does not indicate whether the minutes is before or after the event, then the offset is assumed to be after the event.
     /// </summary>
@@ -153,9 +169,21 @@ namespace fhirCsR3.Models
         writer.WriteNumber("count", (int)Count!);
       }
 
+      if (_Count != null)
+      {
+        writer.WritePropertyName("_count");
+        _Count.SerializeJson(writer, options);
+      }
+
       if (CountMax != null)
       {
         writer.WriteNumber("countMax", (int)CountMax!);
+      }
+
+      if (_CountMax != null)
+      {
+        writer.WritePropertyName("_countMax");
+        _CountMax.SerializeJson(writer, options);
       }
 
       if (Duration != null)
@@ -196,9 +224,21 @@ namespace fhirCsR3.Models
         writer.WriteNumber("frequency", (int)Frequency!);
       }
 
+      if (_Frequency != null)
+      {
+        writer.WritePropertyName("_frequency");
+        _Frequency.SerializeJson(writer, options);
+      }
+
       if (FrequencyMax != null)
       {
         writer.WriteNumber("frequencyMax", (int)FrequencyMax!);
+      }
+
+      if (_FrequencyMax != null)
+      {
+        writer.WritePropertyName("_frequencyMax");
+        _FrequencyMax.SerializeJson(writer, options);
       }
 
       if (Period != null)
@@ -348,8 +388,18 @@ namespace fhirCsR3.Models
           Count = reader.GetInt32();
           break;
 
+        case "_count":
+          _Count = new fhirCsR3.Models.Element();
+          _Count.DeserializeJson(ref reader, options);
+          break;
+
         case "countMax":
           CountMax = reader.GetInt32();
+          break;
+
+        case "_countMax":
+          _CountMax = new fhirCsR3.Models.Element();
+          _CountMax.DeserializeJson(ref reader, options);
           break;
 
         case "dayOfWeek":
@@ -435,8 +485,18 @@ namespace fhirCsR3.Models
           Frequency = reader.GetInt32();
           break;
 
+        case "_frequency":
+          _Frequency = new fhirCsR3.Models.Element();
+          _Frequency.DeserializeJson(ref reader, options);
+          break;
+
         case "frequencyMax":
           FrequencyMax = reader.GetInt32();
+          break;
+
+        case "_frequencyMax":
+          _FrequencyMax = new fhirCsR3.Models.Element();
+          _FrequencyMax.DeserializeJson(ref reader, options);
           break;
 
         case "offset":
@@ -616,6 +676,15 @@ namespace fhirCsR3.Models
     public const string FRI = "fri";
     public const string SAT = "sat";
     public const string SUN = "sun";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
+      "sat",
+      "sun",
+    };
   }
   /// <summary>
   /// Code Values for the Timing.repeat.durationUnit field
@@ -628,6 +697,15 @@ namespace fhirCsR3.Models
     public const string WK = "wk";
     public const string MO = "mo";
     public const string A = "a";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "s",
+      "min",
+      "h",
+      "d",
+      "wk",
+      "mo",
+      "a",
+    };
   }
   /// <summary>
   /// Code Values for the Timing.repeat.periodUnit field
@@ -640,6 +718,15 @@ namespace fhirCsR3.Models
     public const string WK = "wk";
     public const string MO = "mo";
     public const string A = "a";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "s",
+      "min",
+      "h",
+      "d",
+      "wk",
+      "mo",
+      "a",
+    };
   }
   /// <summary>
   /// Specifies an event that may occur multiple times. Timing schedules are used to record when things are planned, expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds, and may be used for reporting the schedule to which past regular activities were carried out.

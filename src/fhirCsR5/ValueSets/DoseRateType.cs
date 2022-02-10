@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCalculated = "calculated";
 
     /// <summary>
+    /// Literal for code: DoseRateTypeCalculated
+    /// </summary>
+    public const string LiteralDoseRateTypeCalculated = "http://terminology.hl7.org/CodeSystem/dose-rate-type#calculated";
+
+    /// <summary>
     /// Literal for code: Ordered
     /// </summary>
     public const string LiteralOrdered = "ordered";
+
+    /// <summary>
+    /// Literal for code: DoseRateTypeOrdered
+    /// </summary>
+    public const string LiteralDoseRateTypeOrdered = "http://terminology.hl7.org/CodeSystem/dose-rate-type#ordered";
+
+    /// <summary>
+    /// Dictionary for looking up DoseRateType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "calculated", Calculated }, 
+      { "http://terminology.hl7.org/CodeSystem/dose-rate-type#calculated", Calculated }, 
+      { "ordered", Ordered }, 
+      { "http://terminology.hl7.org/CodeSystem/dose-rate-type#ordered", Ordered }, 
+    };
   };
 }

@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOptOut = "deny";
 
     /// <summary>
+    /// Literal for code: ConsentExceptTypeOptOut
+    /// </summary>
+    public const string LiteralConsentExceptTypeOptOut = "http://hl7.org/fhir/consent-except-type#deny";
+
+    /// <summary>
     /// Literal for code: OptIn
     /// </summary>
     public const string LiteralOptIn = "permit";
+
+    /// <summary>
+    /// Literal for code: ConsentExceptTypeOptIn
+    /// </summary>
+    public const string LiteralConsentExceptTypeOptIn = "http://hl7.org/fhir/consent-except-type#permit";
+
+    /// <summary>
+    /// Dictionary for looking up ConsentExceptType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "deny", OptOut }, 
+      { "http://hl7.org/fhir/consent-except-type#deny", OptOut }, 
+      { "permit", OptIn }, 
+      { "http://hl7.org/fhir/consent-except-type#permit", OptIn }, 
+    };
   };
 }

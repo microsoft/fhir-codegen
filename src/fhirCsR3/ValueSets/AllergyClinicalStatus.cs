@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: AllergyClinicalStatusActive
+    /// </summary>
+    public const string LiteralAllergyClinicalStatusActive = "http://hl7.org/fhir/allergy-clinical-status#active";
+
+    /// <summary>
     /// Literal for code: Inactive
     /// </summary>
     public const string LiteralInactive = "inactive";
 
     /// <summary>
+    /// Literal for code: AllergyClinicalStatusInactive
+    /// </summary>
+    public const string LiteralAllergyClinicalStatusInactive = "http://hl7.org/fhir/allergy-clinical-status#inactive";
+
+    /// <summary>
     /// Literal for code: Resolved
     /// </summary>
     public const string LiteralResolved = "resolved";
+
+    /// <summary>
+    /// Literal for code: AllergyClinicalStatusResolved
+    /// </summary>
+    public const string LiteralAllergyClinicalStatusResolved = "http://hl7.org/fhir/allergy-clinical-status#resolved";
+
+    /// <summary>
+    /// Dictionary for looking up AllergyClinicalStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/allergy-clinical-status#active", Active }, 
+      { "inactive", Inactive }, 
+      { "http://hl7.org/fhir/allergy-clinical-status#inactive", Inactive }, 
+      { "resolved", Resolved }, 
+      { "http://hl7.org/fhir/allergy-clinical-status#resolved", Resolved }, 
+    };
   };
 }

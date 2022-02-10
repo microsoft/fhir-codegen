@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralASAP = "asap";
 
     /// <summary>
+    /// Literal for code: RequestPriorityASAP
+    /// </summary>
+    public const string LiteralRequestPriorityASAP = "http://hl7.org/fhir/request-priority#asap";
+
+    /// <summary>
     /// Literal for code: Routine
     /// </summary>
     public const string LiteralRoutine = "routine";
+
+    /// <summary>
+    /// Literal for code: RequestPriorityRoutine
+    /// </summary>
+    public const string LiteralRequestPriorityRoutine = "http://hl7.org/fhir/request-priority#routine";
 
     /// <summary>
     /// Literal for code: STAT
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSTAT = "stat";
 
     /// <summary>
+    /// Literal for code: RequestPrioritySTAT
+    /// </summary>
+    public const string LiteralRequestPrioritySTAT = "http://hl7.org/fhir/request-priority#stat";
+
+    /// <summary>
     /// Literal for code: Urgent
     /// </summary>
     public const string LiteralUrgent = "urgent";
+
+    /// <summary>
+    /// Literal for code: RequestPriorityUrgent
+    /// </summary>
+    public const string LiteralRequestPriorityUrgent = "http://hl7.org/fhir/request-priority#urgent";
+
+    /// <summary>
+    /// Dictionary for looking up RequestPriority Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "asap", ASAP }, 
+      { "http://hl7.org/fhir/request-priority#asap", ASAP }, 
+      { "routine", Routine }, 
+      { "http://hl7.org/fhir/request-priority#routine", Routine }, 
+      { "stat", STAT }, 
+      { "http://hl7.org/fhir/request-priority#stat", STAT }, 
+      { "urgent", Urgent }, 
+      { "http://hl7.org/fhir/request-priority#urgent", Urgent }, 
+    };
   };
 }

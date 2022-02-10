@@ -64,9 +64,17 @@ namespace fhirCsR4B.Models
     /// </summary>
     public int? WindowEnd { get; set; }
     /// <summary>
+    /// Extension container element for WindowEnd
+    /// </summary>
+    public Element _WindowEnd { get; set; }
+    /// <summary>
     /// Start position of the window on the reference sequence. If the coordinate system is either 0-based or 1-based, then start position is inclusive.
     /// </summary>
     public int? WindowStart { get; set; }
+    /// <summary>
+    /// Extension container element for WindowStart
+    /// </summary>
+    public Element _WindowStart { get; set; }
     /// <summary>
     /// Serialize to a JSON object
     /// </summary>
@@ -145,9 +153,21 @@ namespace fhirCsR4B.Models
         writer.WriteNumber("windowStart", (int)WindowStart!);
       }
 
+      if (_WindowStart != null)
+      {
+        writer.WritePropertyName("_windowStart");
+        _WindowStart.SerializeJson(writer, options);
+      }
+
       if (WindowEnd != null)
       {
         writer.WriteNumber("windowEnd", (int)WindowEnd!);
+      }
+
+      if (_WindowEnd != null)
+      {
+        writer.WritePropertyName("_windowEnd");
+        _WindowEnd.SerializeJson(writer, options);
       }
 
       if (includeStartObject)
@@ -217,8 +237,18 @@ namespace fhirCsR4B.Models
           WindowEnd = reader.GetInt32();
           break;
 
+        case "_windowEnd":
+          _WindowEnd = new fhirCsR4B.Models.Element();
+          _WindowEnd.DeserializeJson(ref reader, options);
+          break;
+
         case "windowStart":
           WindowStart = reader.GetInt32();
+          break;
+
+        case "_windowStart":
+          _WindowStart = new fhirCsR4B.Models.Element();
+          _WindowStart.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -258,6 +288,10 @@ namespace fhirCsR4B.Models
   public static class MolecularSequenceReferenceSeqOrientationCodes {
     public const string SENSE = "sense";
     public const string ANTISENSE = "antisense";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "sense",
+      "antisense",
+    };
   }
   /// <summary>
   /// Code Values for the MolecularSequence.referenceSeq.strand field
@@ -265,6 +299,10 @@ namespace fhirCsR4B.Models
   public static class MolecularSequenceReferenceSeqStrandCodes {
     public const string WATSON = "watson";
     public const string CRICK = "crick";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "watson",
+      "crick",
+    };
   }
   /// <summary>
   /// The definition of variant here originates from Sequence ontology ([variant_of](http://www.sequenceontology.org/browser/current_svn/term/variant_of)). This element can represent amino acid or nucleic sequence change(including insertion,deletion,SNP,etc.)  It can represent some complex mutation or segment variation with the assist of CIGAR string.
@@ -283,6 +321,10 @@ namespace fhirCsR4B.Models
     /// End position of the variant on the reference sequence. If the coordinate system is 0-based then end is exclusive and does not include the last position. If the coordinate system is 1-base, then end is inclusive and includes the last position.
     /// </summary>
     public int? End { get; set; }
+    /// <summary>
+    /// Extension container element for End
+    /// </summary>
+    public Element _End { get; set; }
     /// <summary>
     /// An allele is one of a set of coexisting sequence variants of a gene ([SO:0001023](http://www.sequenceontology.org/browser/current_svn/term/SO:0001023)).  Nucleotide(s)/amino acids from start position of sequence to stop position of sequence on the positive (+) strand of the observed  sequence. When the sequence  type is DNA, it should be the sequence on the positive (+) strand. This will lay in the range between variant.start and variant.end.
     /// </summary>
@@ -304,6 +346,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public int? Start { get; set; }
     /// <summary>
+    /// Extension container element for Start
+    /// </summary>
+    public Element _Start { get; set; }
+    /// <summary>
     /// A pointer to an Observation containing variant information.
     /// </summary>
     public Reference VariantPointer { get; set; }
@@ -323,9 +369,21 @@ namespace fhirCsR4B.Models
         writer.WriteNumber("start", (int)Start!);
       }
 
+      if (_Start != null)
+      {
+        writer.WritePropertyName("_start");
+        _Start.SerializeJson(writer, options);
+      }
+
       if (End != null)
       {
         writer.WriteNumber("end", (int)End!);
+      }
+
+      if (_End != null)
+      {
+        writer.WritePropertyName("_end");
+        _End.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(ObservedAllele))
@@ -392,6 +450,11 @@ namespace fhirCsR4B.Models
           End = reader.GetInt32();
           break;
 
+        case "_end":
+          _End = new fhirCsR4B.Models.Element();
+          _End.DeserializeJson(ref reader, options);
+          break;
+
         case "observedAllele":
           ObservedAllele = reader.GetString();
           break;
@@ -412,6 +475,11 @@ namespace fhirCsR4B.Models
 
         case "start":
           Start = reader.GetInt32();
+          break;
+
+        case "_start":
+          _Start = new fhirCsR4B.Models.Element();
+          _Start.DeserializeJson(ref reader, options);
           break;
 
         case "variantPointer":
@@ -468,13 +536,25 @@ namespace fhirCsR4B.Models
     /// </summary>
     public List<int> NumFN { get; set; }
     /// <summary>
+    /// Extension container element for NumFN
+    /// </summary>
+    public List<Element> _NumFN { get; set; }
+    /// <summary>
     /// The number of false positives if the GQ score threshold was set to "score" field value.
     /// </summary>
     public List<int> NumFP { get; set; }
     /// <summary>
+    /// Extension container element for NumFP
+    /// </summary>
+    public List<Element> _NumFP { get; set; }
+    /// <summary>
     /// The number of true positives if the GQ score threshold was set to "score" field value.
     /// </summary>
     public List<int> NumTP { get; set; }
+    /// <summary>
+    /// Extension container element for NumTP
+    /// </summary>
+    public List<Element> _NumTP { get; set; }
     /// <summary>
     /// Calculated precision if the GQ score threshold was set to "score" field value.
     /// </summary>
@@ -487,6 +567,10 @@ namespace fhirCsR4B.Models
     /// Invidual data point representing the GQ (genotype quality) score threshold.
     /// </summary>
     public List<int> Score { get; set; }
+    /// <summary>
+    /// Extension container element for Score
+    /// </summary>
+    public List<Element> _Score { get; set; }
     /// <summary>
     /// Calculated sensitivity if the GQ score threshold was set to "score" field value.
     /// </summary>
@@ -519,6 +603,19 @@ namespace fhirCsR4B.Models
         writer.WriteEndArray();
       }
 
+      if ((_Score != null) && (_Score.Count != 0))
+      {
+        writer.WritePropertyName("_score");
+        writer.WriteStartArray();
+
+        foreach (Element val_Score in _Score)
+        {
+          val_Score.SerializeJson(writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
       if ((NumTP != null) && (NumTP.Count != 0))
       {
         writer.WritePropertyName("numTP");
@@ -527,6 +624,19 @@ namespace fhirCsR4B.Models
         foreach (int valNumTP in NumTP)
         {
           writer.WriteNumberValue(valNumTP);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_NumTP != null) && (_NumTP.Count != 0))
+      {
+        writer.WritePropertyName("_numTP");
+        writer.WriteStartArray();
+
+        foreach (Element val_NumTP in _NumTP)
+        {
+          val_NumTP.SerializeJson(writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -545,6 +655,19 @@ namespace fhirCsR4B.Models
         writer.WriteEndArray();
       }
 
+      if ((_NumFP != null) && (_NumFP.Count != 0))
+      {
+        writer.WritePropertyName("_numFP");
+        writer.WriteStartArray();
+
+        foreach (Element val_NumFP in _NumFP)
+        {
+          val_NumFP.SerializeJson(writer, options, true);
+        }
+
+        writer.WriteEndArray();
+      }
+
       if ((NumFN != null) && (NumFN.Count != 0))
       {
         writer.WritePropertyName("numFN");
@@ -553,6 +676,19 @@ namespace fhirCsR4B.Models
         foreach (int valNumFN in NumFN)
         {
           writer.WriteNumberValue(valNumFN);
+        }
+
+        writer.WriteEndArray();
+      }
+
+      if ((_NumFN != null) && (_NumFN.Count != 0))
+      {
+        writer.WritePropertyName("_numFN");
+        writer.WriteStartArray();
+
+        foreach (Element val_NumFN in _NumFN)
+        {
+          val_NumFN.SerializeJson(writer, options, true);
         }
 
         writer.WriteEndArray();
@@ -725,6 +861,33 @@ namespace fhirCsR4B.Models
 
           break;
 
+        case "_numFN":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          _NumFN = new List<Element>();
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            fhirCsR4B.Models.Element obj_NumFN = new fhirCsR4B.Models.Element();
+            obj_NumFN.DeserializeJson(ref reader, options);
+            _NumFN.Add(obj_NumFN);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+          }
+
+          if (_NumFN.Count == 0)
+          {
+            _NumFN = null;
+          }
+
+          break;
+
         case "numFP":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -750,6 +913,33 @@ namespace fhirCsR4B.Models
 
           break;
 
+        case "_numFP":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          _NumFP = new List<Element>();
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            fhirCsR4B.Models.Element obj_NumFP = new fhirCsR4B.Models.Element();
+            obj_NumFP.DeserializeJson(ref reader, options);
+            _NumFP.Add(obj_NumFP);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+          }
+
+          if (_NumFP.Count == 0)
+          {
+            _NumFP = null;
+          }
+
+          break;
+
         case "numTP":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -771,6 +961,33 @@ namespace fhirCsR4B.Models
           if (NumTP.Count == 0)
           {
             NumTP = null;
+          }
+
+          break;
+
+        case "_numTP":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          _NumTP = new List<Element>();
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            fhirCsR4B.Models.Element obj_NumTP = new fhirCsR4B.Models.Element();
+            obj_NumTP.DeserializeJson(ref reader, options);
+            _NumTP.Add(obj_NumTP);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+          }
+
+          if (_NumTP.Count == 0)
+          {
+            _NumTP = null;
           }
 
           break;
@@ -848,6 +1065,33 @@ namespace fhirCsR4B.Models
           if (Score.Count == 0)
           {
             Score = null;
+          }
+
+          break;
+
+        case "_score":
+          if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
+          {
+            throw new JsonException();
+          }
+
+          _Score = new List<Element>();
+
+          while (reader.TokenType != JsonTokenType.EndArray)
+          {
+            fhirCsR4B.Models.Element obj_Score = new fhirCsR4B.Models.Element();
+            obj_Score.DeserializeJson(ref reader, options);
+            _Score.Add(obj_Score);
+
+            if (!reader.Read())
+            {
+              throw new JsonException();
+            }
+          }
+
+          if (_Score.Count == 0)
+          {
+            _Score = null;
           }
 
           break;
@@ -945,6 +1189,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public int? End { get; set; }
     /// <summary>
+    /// Extension container element for End
+    /// </summary>
+    public Element _End { get; set; }
+    /// <summary>
     /// Harmonic mean of Recall and Precision, computed as: 2 * precision * recall / (precision + recall).
     /// </summary>
     public decimal? FScore { get; set; }
@@ -1013,6 +1261,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public int? Start { get; set; }
     /// <summary>
+    /// Extension container element for Start
+    /// </summary>
+    public Element _Start { get; set; }
+    /// <summary>
     /// False negatives, i.e. the number of sites in the Truth Call Set for which there is no path through the Query Call Set that is consistent with all of the alleles at this site, or sites for which there is an inaccurate genotype call for the event. Sites with correct variant but incorrect genotype are counted here.
     /// </summary>
     public decimal? TruthFN { get; set; }
@@ -1069,9 +1321,21 @@ namespace fhirCsR4B.Models
         writer.WriteNumber("start", (int)Start!);
       }
 
+      if (_Start != null)
+      {
+        writer.WritePropertyName("_start");
+        _Start.SerializeJson(writer, options);
+      }
+
       if (End != null)
       {
         writer.WriteNumber("end", (int)End!);
+      }
+
+      if (_End != null)
+      {
+        writer.WritePropertyName("_end");
+        _End.SerializeJson(writer, options);
       }
 
       if (Score != null)
@@ -1196,6 +1460,11 @@ namespace fhirCsR4B.Models
           End = reader.GetInt32();
           break;
 
+        case "_end":
+          _End = new fhirCsR4B.Models.Element();
+          _End.DeserializeJson(ref reader, options);
+          break;
+
         case "fScore":
           FScore = reader.GetDecimal();
           break;
@@ -1274,6 +1543,11 @@ namespace fhirCsR4B.Models
           Start = reader.GetInt32();
           break;
 
+        case "_start":
+          _Start = new fhirCsR4B.Models.Element();
+          _Start.DeserializeJson(ref reader, options);
+          break;
+
         case "truthFN":
           TruthFN = reader.GetDecimal();
           break;
@@ -1339,6 +1613,11 @@ namespace fhirCsR4B.Models
     public const string INDEL = "indel";
     public const string SNP = "snp";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "indel",
+      "snp",
+      "unknown",
+    };
   }
   /// <summary>
   /// Configurations of the external repository. The repository shall store target's observedSeq or records related with target's observedSeq.
@@ -1576,6 +1855,13 @@ namespace fhirCsR4B.Models
     public const string LOGIN = "login";
     public const string OAUTH = "oauth";
     public const string OTHER = "other";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "directlink",
+      "openapi",
+      "login",
+      "oauth",
+      "other",
+    };
   }
   /// <summary>
   /// Structural variant outer.
@@ -1587,9 +1873,17 @@ namespace fhirCsR4B.Models
     /// </summary>
     public int? End { get; set; }
     /// <summary>
+    /// Extension container element for End
+    /// </summary>
+    public Element _End { get; set; }
+    /// <summary>
     /// Structural variant outer start. If the coordinate system is either 0-based or 1-based, then start position is inclusive.
     /// </summary>
     public int? Start { get; set; }
+    /// <summary>
+    /// Extension container element for Start
+    /// </summary>
+    public Element _Start { get; set; }
     /// <summary>
     /// Serialize to a JSON object
     /// </summary>
@@ -1606,9 +1900,21 @@ namespace fhirCsR4B.Models
         writer.WriteNumber("start", (int)Start!);
       }
 
+      if (_Start != null)
+      {
+        writer.WritePropertyName("_start");
+        _Start.SerializeJson(writer, options);
+      }
+
       if (End != null)
       {
         writer.WriteNumber("end", (int)End!);
+      }
+
+      if (_End != null)
+      {
+        writer.WritePropertyName("_end");
+        _End.SerializeJson(writer, options);
       }
 
       if (includeStartObject)
@@ -1627,8 +1933,18 @@ namespace fhirCsR4B.Models
           End = reader.GetInt32();
           break;
 
+        case "_end":
+          _End = new fhirCsR4B.Models.Element();
+          _End.DeserializeJson(ref reader, options);
+          break;
+
         case "start":
           Start = reader.GetInt32();
+          break;
+
+        case "_start":
+          _Start = new fhirCsR4B.Models.Element();
+          _Start.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -1672,9 +1988,17 @@ namespace fhirCsR4B.Models
     /// </summary>
     public int? End { get; set; }
     /// <summary>
+    /// Extension container element for End
+    /// </summary>
+    public Element _End { get; set; }
+    /// <summary>
     /// Structural variant inner start. If the coordinate system is either 0-based or 1-based, then start position is inclusive.
     /// </summary>
     public int? Start { get; set; }
+    /// <summary>
+    /// Extension container element for Start
+    /// </summary>
+    public Element _Start { get; set; }
     /// <summary>
     /// Serialize to a JSON object
     /// </summary>
@@ -1691,9 +2015,21 @@ namespace fhirCsR4B.Models
         writer.WriteNumber("start", (int)Start!);
       }
 
+      if (_Start != null)
+      {
+        writer.WritePropertyName("_start");
+        _Start.SerializeJson(writer, options);
+      }
+
       if (End != null)
       {
         writer.WriteNumber("end", (int)End!);
+      }
+
+      if (_End != null)
+      {
+        writer.WritePropertyName("_end");
+        _End.SerializeJson(writer, options);
       }
 
       if (includeStartObject)
@@ -1712,8 +2048,18 @@ namespace fhirCsR4B.Models
           End = reader.GetInt32();
           break;
 
+        case "_end":
+          _End = new fhirCsR4B.Models.Element();
+          _End.DeserializeJson(ref reader, options);
+          break;
+
         case "start":
           Start = reader.GetInt32();
+          break;
+
+        case "_start":
+          _Start = new fhirCsR4B.Models.Element();
+          _Start.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -1757,6 +2103,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? Exact { get; set; }
     /// <summary>
+    /// Extension container element for Exact
+    /// </summary>
+    public Element _Exact { get; set; }
+    /// <summary>
     /// Structural variant inner.
     /// </summary>
     public MolecularSequenceStructureVariantInner Inner { get; set; }
@@ -1764,6 +2114,10 @@ namespace fhirCsR4B.Models
     /// Length of the variant chromosome.
     /// </summary>
     public int? Length { get; set; }
+    /// <summary>
+    /// Extension container element for Length
+    /// </summary>
+    public Element _Length { get; set; }
     /// <summary>
     /// Structural variant outer.
     /// </summary>
@@ -1794,9 +2148,21 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("exact", (bool)Exact!);
       }
 
+      if (_Exact != null)
+      {
+        writer.WritePropertyName("_exact");
+        _Exact.SerializeJson(writer, options);
+      }
+
       if (Length != null)
       {
         writer.WriteNumber("length", (int)Length!);
+      }
+
+      if (_Length != null)
+      {
+        writer.WritePropertyName("_length");
+        _Length.SerializeJson(writer, options);
       }
 
       if (Outer != null)
@@ -1827,6 +2193,11 @@ namespace fhirCsR4B.Models
           Exact = reader.GetBoolean();
           break;
 
+        case "_exact":
+          _Exact = new fhirCsR4B.Models.Element();
+          _Exact.DeserializeJson(ref reader, options);
+          break;
+
         case "inner":
           Inner = new fhirCsR4B.Models.MolecularSequenceStructureVariantInner();
           Inner.DeserializeJson(ref reader, options);
@@ -1834,6 +2205,11 @@ namespace fhirCsR4B.Models
 
         case "length":
           Length = reader.GetInt32();
+          break;
+
+        case "_length":
+          _Length = new fhirCsR4B.Models.Element();
+          _Length.DeserializeJson(ref reader, options);
           break;
 
         case "outer":
@@ -1891,6 +2267,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public int CoordinateSystem { get; set; }
     /// <summary>
+    /// Extension container element for CoordinateSystem
+    /// </summary>
+    public Element _CoordinateSystem { get; set; }
+    /// <summary>
     /// The method for sequencing, for example, chip information.
     /// </summary>
     public Reference Device { get; set; }
@@ -1930,6 +2310,10 @@ namespace fhirCsR4B.Models
     /// Coverage (read depth or depth) is the average number of reads representing a given nucleotide in the reconstructed sequence.
     /// </summary>
     public int? ReadCoverage { get; set; }
+    /// <summary>
+    /// Extension container element for ReadCoverage
+    /// </summary>
+    public Element _ReadCoverage { get; set; }
     /// <summary>
     /// A sequence that is used as a reference to describe variants that are present in a sequence analyzed.
     /// </summary>
@@ -2000,6 +2384,12 @@ namespace fhirCsR4B.Models
       }
 
       writer.WriteNumber("coordinateSystem", CoordinateSystem);
+
+      if (_CoordinateSystem != null)
+      {
+        writer.WritePropertyName("_coordinateSystem");
+        _CoordinateSystem.SerializeJson(writer, options);
+      }
 
       if (Patient != null)
       {
@@ -2079,6 +2469,12 @@ namespace fhirCsR4B.Models
         writer.WriteNumber("readCoverage", (int)ReadCoverage!);
       }
 
+      if (_ReadCoverage != null)
+      {
+        writer.WritePropertyName("_readCoverage");
+        _ReadCoverage.SerializeJson(writer, options);
+      }
+
       if ((Repository != null) && (Repository.Count != 0))
       {
         writer.WritePropertyName("repository");
@@ -2132,6 +2528,11 @@ namespace fhirCsR4B.Models
       {
         case "coordinateSystem":
           CoordinateSystem = reader.GetInt32();
+          break;
+
+        case "_coordinateSystem":
+          _CoordinateSystem = new fhirCsR4B.Models.Element();
+          _CoordinateSystem.DeserializeJson(ref reader, options);
           break;
 
         case "device":
@@ -2246,6 +2647,11 @@ namespace fhirCsR4B.Models
 
         case "readCoverage":
           ReadCoverage = reader.GetInt32();
+          break;
+
+        case "_readCoverage":
+          _ReadCoverage = new fhirCsR4B.Models.Element();
+          _ReadCoverage.DeserializeJson(ref reader, options);
           break;
 
         case "referenceSeq":
@@ -2386,5 +2792,10 @@ namespace fhirCsR4B.Models
     public const string AA = "aa";
     public const string DNA = "dna";
     public const string RNA = "rna";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "aa",
+      "dna",
+      "rna",
+    };
   }
 }

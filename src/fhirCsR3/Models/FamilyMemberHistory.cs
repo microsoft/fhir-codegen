@@ -278,6 +278,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? DeceasedBoolean { get; set; }
     /// <summary>
+    /// Extension container element for DeceasedBoolean
+    /// </summary>
+    public Element _DeceasedBoolean { get; set; }
+    /// <summary>
     /// Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record.
     /// </summary>
     public Age DeceasedAge { get; set; }
@@ -310,6 +314,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? EstimatedAge { get; set; }
     /// <summary>
+    /// Extension container element for EstimatedAge
+    /// </summary>
+    public Element _EstimatedAge { get; set; }
+    /// <summary>
     /// Administrative Gender - the gender that the relative is considered to have for administration and record keeping purposes.
     /// </summary>
     public string Gender { get; set; }
@@ -333,6 +341,10 @@ namespace fhirCsR3.Models
     /// This element is labeled as a modifier because it marks the family member history as a family member history that did not occur.  The more attributes are populated, the more constrained the negated statement is.  This notDone element is being evaluated and will likely be removed in a subsequent release.
     /// </summary>
     public bool? NotDone { get; set; }
+    /// <summary>
+    /// Extension container element for NotDone
+    /// </summary>
+    public Element _NotDone { get; set; }
     /// <summary>
     /// This notDoneReason element is being evaluated and will likely be replaced in a subsequent release (e.g. dataAbsentReason).
     /// </summary>
@@ -422,6 +434,12 @@ namespace fhirCsR3.Models
       if (NotDone != null)
       {
         writer.WriteBoolean("notDone", (bool)NotDone!);
+      }
+
+      if (_NotDone != null)
+      {
+        writer.WritePropertyName("_notDone");
+        _NotDone.SerializeJson(writer, options);
       }
 
       if (NotDoneReason != null)
@@ -531,9 +549,21 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("estimatedAge", (bool)EstimatedAge!);
       }
 
+      if (_EstimatedAge != null)
+      {
+        writer.WritePropertyName("_estimatedAge");
+        _EstimatedAge.SerializeJson(writer, options);
+      }
+
       if (DeceasedBoolean != null)
       {
         writer.WriteBoolean("deceasedBoolean", (bool)DeceasedBoolean!);
+      }
+
+      if (_DeceasedBoolean != null)
+      {
+        writer.WritePropertyName("_deceasedBoolean");
+        _DeceasedBoolean.SerializeJson(writer, options);
       }
 
       if (DeceasedAge != null)
@@ -716,6 +746,11 @@ namespace fhirCsR3.Models
           DeceasedBoolean = reader.GetBoolean();
           break;
 
+        case "_deceasedBoolean":
+          _DeceasedBoolean = new fhirCsR3.Models.Element();
+          _DeceasedBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "deceasedAge":
           DeceasedAge = new fhirCsR3.Models.Age();
           DeceasedAge.DeserializeJson(ref reader, options);
@@ -775,6 +810,11 @@ namespace fhirCsR3.Models
           EstimatedAge = reader.GetBoolean();
           break;
 
+        case "_estimatedAge":
+          _EstimatedAge = new fhirCsR3.Models.Element();
+          _EstimatedAge.DeserializeJson(ref reader, options);
+          break;
+
         case "gender":
           Gender = reader.GetString();
           break;
@@ -822,6 +862,11 @@ namespace fhirCsR3.Models
 
         case "notDone":
           NotDone = reader.GetBoolean();
+          break;
+
+        case "_notDone":
+          _NotDone = new fhirCsR3.Models.Element();
+          _NotDone.DeserializeJson(ref reader, options);
           break;
 
         case "notDoneReason":
@@ -968,6 +1013,12 @@ namespace fhirCsR3.Models
     public const string FEMALE = "female";
     public const string OTHER = "other";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "male",
+      "female",
+      "other",
+      "unknown",
+    };
   }
   /// <summary>
   /// Code Values for the FamilyMemberHistory.status field
@@ -977,5 +1028,11 @@ namespace fhirCsR3.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string HEALTH_UNKNOWN = "health-unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "partial",
+      "completed",
+      "entered-in-error",
+      "health-unknown",
+    };
   }
 }

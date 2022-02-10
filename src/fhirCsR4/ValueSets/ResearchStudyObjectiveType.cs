@@ -45,13 +45,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExploratory = "exploratory";
 
     /// <summary>
+    /// Literal for code: ResearchStudyObjectiveTypeExploratory
+    /// </summary>
+    public const string LiteralResearchStudyObjectiveTypeExploratory = "http://terminology.hl7.org/CodeSystem/research-study-objective-type#exploratory";
+
+    /// <summary>
     /// Literal for code: Primary
     /// </summary>
     public const string LiteralPrimary = "primary";
 
     /// <summary>
+    /// Literal for code: ResearchStudyObjectiveTypePrimary
+    /// </summary>
+    public const string LiteralResearchStudyObjectiveTypePrimary = "http://terminology.hl7.org/CodeSystem/research-study-objective-type#primary";
+
+    /// <summary>
     /// Literal for code: Secondary
     /// </summary>
     public const string LiteralSecondary = "secondary";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyObjectiveTypeSecondary
+    /// </summary>
+    public const string LiteralResearchStudyObjectiveTypeSecondary = "http://terminology.hl7.org/CodeSystem/research-study-objective-type#secondary";
+
+    /// <summary>
+    /// Dictionary for looking up ResearchStudyObjectiveType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "exploratory", Exploratory }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-objective-type#exploratory", Exploratory }, 
+      { "primary", Primary }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-objective-type#primary", Primary }, 
+      { "secondary", Secondary }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-objective-type#secondary", Secondary }, 
+    };
   };
 }

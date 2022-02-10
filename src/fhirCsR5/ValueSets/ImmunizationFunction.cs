@@ -34,8 +34,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAP = "AP";
 
     /// <summary>
+    /// Literal for code: V20443AP
+    /// </summary>
+    public const string LiteralV20443AP = "http://terminology.hl7.org/CodeSystem/v2-0443#AP";
+
+    /// <summary>
     /// Literal for code: OP
     /// </summary>
     public const string LiteralOP = "OP";
+
+    /// <summary>
+    /// Literal for code: V20443OP
+    /// </summary>
+    public const string LiteralV20443OP = "http://terminology.hl7.org/CodeSystem/v2-0443#OP";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationFunction Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "AP", AP }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0443#AP", AP }, 
+      { "OP", OP }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0443#OP", OP }, 
+    };
   };
 }

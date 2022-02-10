@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEncounterDiagnosis = "encounter-diagnosis";
 
     /// <summary>
+    /// Literal for code: ConditionCategoryEncounterDiagnosis
+    /// </summary>
+    public const string LiteralConditionCategoryEncounterDiagnosis = "http://hl7.org/fhir/condition-category#encounter-diagnosis";
+
+    /// <summary>
     /// Literal for code: ProblemListItem
     /// </summary>
     public const string LiteralProblemListItem = "problem-list-item";
+
+    /// <summary>
+    /// Literal for code: ConditionCategoryProblemListItem
+    /// </summary>
+    public const string LiteralConditionCategoryProblemListItem = "http://hl7.org/fhir/condition-category#problem-list-item";
+
+    /// <summary>
+    /// Dictionary for looking up ConditionCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "encounter-diagnosis", EncounterDiagnosis }, 
+      { "http://hl7.org/fhir/condition-category#encounter-diagnosis", EncounterDiagnosis }, 
+      { "problem-list-item", ProblemListItem }, 
+      { "http://hl7.org/fhir/condition-category#problem-list-item", ProblemListItem }, 
+    };
   };
 }

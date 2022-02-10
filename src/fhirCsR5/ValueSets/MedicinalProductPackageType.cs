@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class MedicinalProductPackageTypeCodes
   {
     /// <summary>
-    /// 
+    /// Ampoule
     /// </summary>
     public static readonly Coding Ampoule = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/medicinal-product-package-type"
     };
     /// <summary>
-    /// 
+    /// Applicator
     /// </summary>
     public static readonly Coding Applicator = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/medicinal-product-package-type"
     };
     /// <summary>
-    /// 
+    /// Automatic injection device
     /// </summary>
     public static readonly Coding AutomaticInjectionDevice = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/medicinal-product-package-type"
     };
     /// <summary>
-    /// 
+    /// Bag
     /// </summary>
     public static readonly Coding Bag = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/medicinal-product-package-type"
     };
     /// <summary>
-    /// 
+    /// Balling gun
     /// </summary>
     public static readonly Coding BallingGun = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/medicinal-product-package-type"
     };
     /// <summary>
-    /// 
+    /// Barrel
     /// </summary>
     public static readonly Coding Barrel = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/medicinal-product-package-type"
     };
     /// <summary>
-    /// 
+    /// Blister
     /// </summary>
     public static readonly Coding Blister = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/medicinal-product-package-type"
     };
     /// <summary>
-    /// 
+    /// Bottle
     /// </summary>
     public static readonly Coding Bottle = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/medicinal-product-package-type"
     };
     /// <summary>
-    /// 
+    /// Box
     /// </summary>
     public static readonly Coding Box = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/medicinal-product-package-type"
     };
     /// <summary>
-    /// 
+    /// Sachet
     /// </summary>
     public static readonly Coding Sachet = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/medicinal-product-package-type"
     };
     /// <summary>
-    /// 
+    /// Vial
     /// </summary>
     public static readonly Coding Vial = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/medicinal-product-package-type"
     };
     /// <summary>
-    /// 
+    /// Pack
     /// </summary>
     public static readonly Coding Pack = new Coding
     {
@@ -126,9 +126,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAmpoule = "100000073490";
 
     /// <summary>
+    /// Literal for code: MedicinalProductPackageTypeAmpoule
+    /// </summary>
+    public const string LiteralMedicinalProductPackageTypeAmpoule = "http://hl7.org/fhir/medicinal-product-package-type#100000073490";
+
+    /// <summary>
     /// Literal for code: Applicator
     /// </summary>
     public const string LiteralApplicator = "100000073491";
+
+    /// <summary>
+    /// Literal for code: MedicinalProductPackageTypeApplicator
+    /// </summary>
+    public const string LiteralMedicinalProductPackageTypeApplicator = "http://hl7.org/fhir/medicinal-product-package-type#100000073491";
 
     /// <summary>
     /// Literal for code: AutomaticInjectionDevice
@@ -136,9 +146,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAutomaticInjectionDevice = "100000073492";
 
     /// <summary>
+    /// Literal for code: MedicinalProductPackageTypeAutomaticInjectionDevice
+    /// </summary>
+    public const string LiteralMedicinalProductPackageTypeAutomaticInjectionDevice = "http://hl7.org/fhir/medicinal-product-package-type#100000073492";
+
+    /// <summary>
     /// Literal for code: Bag
     /// </summary>
     public const string LiteralBag = "100000073493";
+
+    /// <summary>
+    /// Literal for code: MedicinalProductPackageTypeBag
+    /// </summary>
+    public const string LiteralMedicinalProductPackageTypeBag = "http://hl7.org/fhir/medicinal-product-package-type#100000073493";
 
     /// <summary>
     /// Literal for code: BallingGun
@@ -146,9 +166,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBallingGun = "100000073494";
 
     /// <summary>
+    /// Literal for code: MedicinalProductPackageTypeBallingGun
+    /// </summary>
+    public const string LiteralMedicinalProductPackageTypeBallingGun = "http://hl7.org/fhir/medicinal-product-package-type#100000073494";
+
+    /// <summary>
     /// Literal for code: Barrel
     /// </summary>
     public const string LiteralBarrel = "100000073495";
+
+    /// <summary>
+    /// Literal for code: MedicinalProductPackageTypeBarrel
+    /// </summary>
+    public const string LiteralMedicinalProductPackageTypeBarrel = "http://hl7.org/fhir/medicinal-product-package-type#100000073495";
 
     /// <summary>
     /// Literal for code: Blister
@@ -156,9 +186,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBlister = "100000073496";
 
     /// <summary>
+    /// Literal for code: MedicinalProductPackageTypeBlister
+    /// </summary>
+    public const string LiteralMedicinalProductPackageTypeBlister = "http://hl7.org/fhir/medicinal-product-package-type#100000073496";
+
+    /// <summary>
     /// Literal for code: Bottle
     /// </summary>
     public const string LiteralBottle = "100000073497";
+
+    /// <summary>
+    /// Literal for code: MedicinalProductPackageTypeBottle
+    /// </summary>
+    public const string LiteralMedicinalProductPackageTypeBottle = "http://hl7.org/fhir/medicinal-product-package-type#100000073497";
 
     /// <summary>
     /// Literal for code: Box
@@ -166,9 +206,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBox = "100000073498";
 
     /// <summary>
+    /// Literal for code: MedicinalProductPackageTypeBox
+    /// </summary>
+    public const string LiteralMedicinalProductPackageTypeBox = "http://hl7.org/fhir/medicinal-product-package-type#100000073498";
+
+    /// <summary>
     /// Literal for code: Sachet
     /// </summary>
     public const string LiteralSachet = "100000073547";
+
+    /// <summary>
+    /// Literal for code: MedicinalProductPackageTypeSachet
+    /// </summary>
+    public const string LiteralMedicinalProductPackageTypeSachet = "http://hl7.org/fhir/medicinal-product-package-type#100000073547";
 
     /// <summary>
     /// Literal for code: Vial
@@ -176,8 +226,48 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVial = "100000073563";
 
     /// <summary>
+    /// Literal for code: MedicinalProductPackageTypeVial
+    /// </summary>
+    public const string LiteralMedicinalProductPackageTypeVial = "http://hl7.org/fhir/medicinal-product-package-type#100000073563";
+
+    /// <summary>
     /// Literal for code: Pack
     /// </summary>
     public const string LiteralPack = "100000143555";
+
+    /// <summary>
+    /// Literal for code: MedicinalProductPackageTypePack
+    /// </summary>
+    public const string LiteralMedicinalProductPackageTypePack = "http://hl7.org/fhir/medicinal-product-package-type#100000143555";
+
+    /// <summary>
+    /// Dictionary for looking up MedicinalProductPackageType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "100000073490", Ampoule }, 
+      { "http://hl7.org/fhir/medicinal-product-package-type#100000073490", Ampoule }, 
+      { "100000073491", Applicator }, 
+      { "http://hl7.org/fhir/medicinal-product-package-type#100000073491", Applicator }, 
+      { "100000073492", AutomaticInjectionDevice }, 
+      { "http://hl7.org/fhir/medicinal-product-package-type#100000073492", AutomaticInjectionDevice }, 
+      { "100000073493", Bag }, 
+      { "http://hl7.org/fhir/medicinal-product-package-type#100000073493", Bag }, 
+      { "100000073494", BallingGun }, 
+      { "http://hl7.org/fhir/medicinal-product-package-type#100000073494", BallingGun }, 
+      { "100000073495", Barrel }, 
+      { "http://hl7.org/fhir/medicinal-product-package-type#100000073495", Barrel }, 
+      { "100000073496", Blister }, 
+      { "http://hl7.org/fhir/medicinal-product-package-type#100000073496", Blister }, 
+      { "100000073497", Bottle }, 
+      { "http://hl7.org/fhir/medicinal-product-package-type#100000073497", Bottle }, 
+      { "100000073498", Box }, 
+      { "http://hl7.org/fhir/medicinal-product-package-type#100000073498", Box }, 
+      { "100000073547", Sachet }, 
+      { "http://hl7.org/fhir/medicinal-product-package-type#100000073547", Sachet }, 
+      { "100000073563", Vial }, 
+      { "http://hl7.org/fhir/medicinal-product-package-type#100000073563", Vial }, 
+      { "100000143555", Pack }, 
+      { "http://hl7.org/fhir/medicinal-product-package-type#100000143555", Pack }, 
+    };
   };
 }

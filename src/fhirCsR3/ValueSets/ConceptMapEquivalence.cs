@@ -108,9 +108,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDisjoint = "disjoint";
 
     /// <summary>
+    /// Literal for code: ConceptMapEquivalenceDisjoint
+    /// </summary>
+    public const string LiteralConceptMapEquivalenceDisjoint = "http://hl7.org/fhir/concept-map-equivalence#disjoint";
+
+    /// <summary>
     /// Literal for code: Equal
     /// </summary>
     public const string LiteralEqual = "equal";
+
+    /// <summary>
+    /// Literal for code: ConceptMapEquivalenceEqual
+    /// </summary>
+    public const string LiteralConceptMapEquivalenceEqual = "http://hl7.org/fhir/concept-map-equivalence#equal";
 
     /// <summary>
     /// Literal for code: Equivalent
@@ -118,9 +128,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEquivalent = "equivalent";
 
     /// <summary>
+    /// Literal for code: ConceptMapEquivalenceEquivalent
+    /// </summary>
+    public const string LiteralConceptMapEquivalenceEquivalent = "http://hl7.org/fhir/concept-map-equivalence#equivalent";
+
+    /// <summary>
     /// Literal for code: Inexact
     /// </summary>
     public const string LiteralInexact = "inexact";
+
+    /// <summary>
+    /// Literal for code: ConceptMapEquivalenceInexact
+    /// </summary>
+    public const string LiteralConceptMapEquivalenceInexact = "http://hl7.org/fhir/concept-map-equivalence#inexact";
 
     /// <summary>
     /// Literal for code: Narrower
@@ -128,9 +148,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNarrower = "narrower";
 
     /// <summary>
+    /// Literal for code: ConceptMapEquivalenceNarrower
+    /// </summary>
+    public const string LiteralConceptMapEquivalenceNarrower = "http://hl7.org/fhir/concept-map-equivalence#narrower";
+
+    /// <summary>
     /// Literal for code: RelatedTo
     /// </summary>
     public const string LiteralRelatedTo = "relatedto";
+
+    /// <summary>
+    /// Literal for code: ConceptMapEquivalenceRelatedTo
+    /// </summary>
+    public const string LiteralConceptMapEquivalenceRelatedTo = "http://hl7.org/fhir/concept-map-equivalence#relatedto";
 
     /// <summary>
     /// Literal for code: Specializes
@@ -138,9 +168,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpecializes = "specializes";
 
     /// <summary>
+    /// Literal for code: ConceptMapEquivalenceSpecializes
+    /// </summary>
+    public const string LiteralConceptMapEquivalenceSpecializes = "http://hl7.org/fhir/concept-map-equivalence#specializes";
+
+    /// <summary>
     /// Literal for code: Subsumes
     /// </summary>
     public const string LiteralSubsumes = "subsumes";
+
+    /// <summary>
+    /// Literal for code: ConceptMapEquivalenceSubsumes
+    /// </summary>
+    public const string LiteralConceptMapEquivalenceSubsumes = "http://hl7.org/fhir/concept-map-equivalence#subsumes";
 
     /// <summary>
     /// Literal for code: Unmatched
@@ -148,8 +188,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnmatched = "unmatched";
 
     /// <summary>
+    /// Literal for code: ConceptMapEquivalenceUnmatched
+    /// </summary>
+    public const string LiteralConceptMapEquivalenceUnmatched = "http://hl7.org/fhir/concept-map-equivalence#unmatched";
+
+    /// <summary>
     /// Literal for code: Wider
     /// </summary>
     public const string LiteralWider = "wider";
+
+    /// <summary>
+    /// Literal for code: ConceptMapEquivalenceWider
+    /// </summary>
+    public const string LiteralConceptMapEquivalenceWider = "http://hl7.org/fhir/concept-map-equivalence#wider";
+
+    /// <summary>
+    /// Dictionary for looking up ConceptMapEquivalence Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "disjoint", Disjoint }, 
+      { "http://hl7.org/fhir/concept-map-equivalence#disjoint", Disjoint }, 
+      { "equal", Equal }, 
+      { "http://hl7.org/fhir/concept-map-equivalence#equal", Equal }, 
+      { "equivalent", Equivalent }, 
+      { "http://hl7.org/fhir/concept-map-equivalence#equivalent", Equivalent }, 
+      { "inexact", Inexact }, 
+      { "http://hl7.org/fhir/concept-map-equivalence#inexact", Inexact }, 
+      { "narrower", Narrower }, 
+      { "http://hl7.org/fhir/concept-map-equivalence#narrower", Narrower }, 
+      { "relatedto", RelatedTo }, 
+      { "http://hl7.org/fhir/concept-map-equivalence#relatedto", RelatedTo }, 
+      { "specializes", Specializes }, 
+      { "http://hl7.org/fhir/concept-map-equivalence#specializes", Specializes }, 
+      { "subsumes", Subsumes }, 
+      { "http://hl7.org/fhir/concept-map-equivalence#subsumes", Subsumes }, 
+      { "unmatched", Unmatched }, 
+      { "http://hl7.org/fhir/concept-map-equivalence#unmatched", Unmatched }, 
+      { "wider", Wider }, 
+      { "http://hl7.org/fhir/concept-map-equivalence#wider", Wider }, 
+    };
   };
 }

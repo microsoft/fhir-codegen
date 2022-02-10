@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class EncounterSpecialArrangementsCodes
   {
     /// <summary>
-    /// 
+    /// Additional bedding
     /// </summary>
     public static readonly Coding AdditionalBedding = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements"
     };
     /// <summary>
-    /// 
+    /// Attendant
     /// </summary>
     public static readonly Coding Attendant = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements"
     };
     /// <summary>
-    /// 
+    /// Guide dog
     /// </summary>
     public static readonly Coding GuideDog = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements"
     };
     /// <summary>
-    /// 
+    /// Interpreter
     /// </summary>
     public static readonly Coding Interpreter = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements"
     };
     /// <summary>
-    /// 
+    /// Wheelchair
     /// </summary>
     public static readonly Coding Wheelchair = new Coding
     {
@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAdditionalBedding = "add-bed";
 
     /// <summary>
+    /// Literal for code: EncounterSpecialArrangementsAdditionalBedding
+    /// </summary>
+    public const string LiteralEncounterSpecialArrangementsAdditionalBedding = "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements#add-bed";
+
+    /// <summary>
     /// Literal for code: Attendant
     /// </summary>
     public const string LiteralAttendant = "att";
+
+    /// <summary>
+    /// Literal for code: EncounterSpecialArrangementsAttendant
+    /// </summary>
+    public const string LiteralEncounterSpecialArrangementsAttendant = "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements#att";
 
     /// <summary>
     /// Literal for code: GuideDog
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGuideDog = "dog";
 
     /// <summary>
+    /// Literal for code: EncounterSpecialArrangementsGuideDog
+    /// </summary>
+    public const string LiteralEncounterSpecialArrangementsGuideDog = "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements#dog";
+
+    /// <summary>
     /// Literal for code: Interpreter
     /// </summary>
     public const string LiteralInterpreter = "int";
 
     /// <summary>
+    /// Literal for code: EncounterSpecialArrangementsInterpreter
+    /// </summary>
+    public const string LiteralEncounterSpecialArrangementsInterpreter = "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements#int";
+
+    /// <summary>
     /// Literal for code: Wheelchair
     /// </summary>
     public const string LiteralWheelchair = "wheel";
+
+    /// <summary>
+    /// Literal for code: EncounterSpecialArrangementsWheelchair
+    /// </summary>
+    public const string LiteralEncounterSpecialArrangementsWheelchair = "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements#wheel";
+
+    /// <summary>
+    /// Dictionary for looking up EncounterSpecialArrangements Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "add-bed", AdditionalBedding }, 
+      { "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements#add-bed", AdditionalBedding }, 
+      { "att", Attendant }, 
+      { "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements#att", Attendant }, 
+      { "dog", GuideDog }, 
+      { "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements#dog", GuideDog }, 
+      { "int", Interpreter }, 
+      { "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements#int", Interpreter }, 
+      { "wheel", Wheelchair }, 
+      { "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements#wheel", Wheelchair }, 
+    };
   };
 }

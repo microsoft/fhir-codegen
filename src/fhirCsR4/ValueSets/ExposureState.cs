@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExposure = "exposure";
 
     /// <summary>
+    /// Literal for code: ExposureStateExposure
+    /// </summary>
+    public const string LiteralExposureStateExposure = "http://hl7.org/fhir/exposure-state#exposure";
+
+    /// <summary>
     /// Literal for code: ExposureAlternative
     /// </summary>
     public const string LiteralExposureAlternative = "exposure-alternative";
+
+    /// <summary>
+    /// Literal for code: ExposureStateExposureAlternative
+    /// </summary>
+    public const string LiteralExposureStateExposureAlternative = "http://hl7.org/fhir/exposure-state#exposure-alternative";
+
+    /// <summary>
+    /// Dictionary for looking up ExposureState Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "exposure", Exposure }, 
+      { "http://hl7.org/fhir/exposure-state#exposure", Exposure }, 
+      { "exposure-alternative", ExposureAlternative }, 
+      { "http://hl7.org/fhir/exposure-state#exposure-alternative", ExposureAlternative }, 
+    };
   };
 }

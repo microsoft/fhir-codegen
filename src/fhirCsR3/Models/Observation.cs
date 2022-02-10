@@ -313,6 +313,14 @@ namespace fhirCsR3.Models
     public const string REPLACES = "replaces";
     public const string QUALIFIED_BY = "qualified-by";
     public const string INTERFERED_BY = "interfered-by";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "has-member",
+      "derived-from",
+      "sequel-to",
+      "replaces",
+      "qualified-by",
+      "interfered-by",
+    };
   }
   /// <summary>
   /// For a discussion on the ways Observations can be assembled in groups together see [Notes](observation.html#notes) below.
@@ -790,6 +798,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// Normally, an observation will have either a single value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueBoolean, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is "'value' + the type name" with a capital on the first letter of the type).
     /// 
     /// If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.    For further discussion and examples see the  [notes section](observation.html#notes) below.
@@ -991,6 +1003,12 @@ namespace fhirCsR3.Models
       if (ValueBoolean != null)
       {
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
+
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
       }
 
       if (ValueRange != null)
@@ -1441,6 +1459,11 @@ namespace fhirCsR3.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR3.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueRange":
           ValueRange = new fhirCsR3.Models.Range();
           ValueRange.DeserializeJson(ref reader, options);
@@ -1527,5 +1550,15 @@ namespace fhirCsR3.Models
     public const string CANCELLED = "cancelled";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "registered",
+      "preliminary",
+      "final",
+      "amended",
+      "corrected",
+      "cancelled",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

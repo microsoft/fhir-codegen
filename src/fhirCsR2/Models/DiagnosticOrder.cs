@@ -172,6 +172,21 @@ namespace fhirCsR2.Models
     public const string SUSPENDED = "suspended";
     public const string REJECTED = "rejected";
     public const string FAILED = "failed";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposed",
+      "draft",
+      "planned",
+      "requested",
+      "received",
+      "accepted",
+      "in-progress",
+      "review",
+      "completed",
+      "cancelled",
+      "suspended",
+      "rejected",
+      "failed",
+    };
   }
   /// <summary>
   /// The specific diagnostic investigations that are requested as part of this request. Sometimes, there can only be one item per request, but in most contexts, more than one investigation can be requested.
@@ -395,6 +410,21 @@ namespace fhirCsR2.Models
     public const string SUSPENDED = "suspended";
     public const string REJECTED = "rejected";
     public const string FAILED = "failed";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposed",
+      "draft",
+      "planned",
+      "requested",
+      "received",
+      "accepted",
+      "in-progress",
+      "review",
+      "completed",
+      "cancelled",
+      "suspended",
+      "rejected",
+      "failed",
+    };
   }
   /// <summary>
   /// A record of a request for a diagnostic investigation service to be performed.
@@ -882,6 +912,12 @@ namespace fhirCsR2.Models
     public const string URGENT = "urgent";
     public const string STAT = "stat";
     public const string ASAP = "asap";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "routine",
+      "urgent",
+      "stat",
+      "asap",
+    };
   }
   /// <summary>
   /// Code Values for the DiagnosticOrder.status field
@@ -900,5 +936,20 @@ namespace fhirCsR2.Models
     public const string SUSPENDED = "suspended";
     public const string REJECTED = "rejected";
     public const string FAILED = "failed";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposed",
+      "draft",
+      "planned",
+      "requested",
+      "received",
+      "accepted",
+      "in-progress",
+      "review",
+      "completed",
+      "cancelled",
+      "suspended",
+      "rejected",
+      "failed",
+    };
   }
 }

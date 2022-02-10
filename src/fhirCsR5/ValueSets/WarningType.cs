@@ -108,9 +108,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGetMedicalAdviceAttention = "P313";
 
     /// <summary>
+    /// Literal for code: WarningTypeGetMedicalAdviceAttention
+    /// </summary>
+    public const string LiteralWarningTypeGetMedicalAdviceAttention = "http://hl7.org/fhir/warning-type#P313";
+
+    /// <summary>
     /// Literal for code: GetMedicalAdviceAttentionIfYouFeelUnwell
     /// </summary>
     public const string LiteralGetMedicalAdviceAttentionIfYouFeelUnwell = "P314";
+
+    /// <summary>
+    /// Literal for code: WarningTypeGetMedicalAdviceAttentionIfYouFeelUnwell
+    /// </summary>
+    public const string LiteralWarningTypeGetMedicalAdviceAttentionIfYouFeelUnwell = "http://hl7.org/fhir/warning-type#P314";
 
     /// <summary>
     /// Literal for code: GetImmediateMedicalAdviceAttention
@@ -118,9 +128,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGetImmediateMedicalAdviceAttention = "P315";
 
     /// <summary>
+    /// Literal for code: WarningTypeGetImmediateMedicalAdviceAttention
+    /// </summary>
+    public const string LiteralWarningTypeGetImmediateMedicalAdviceAttention = "http://hl7.org/fhir/warning-type#P315";
+
+    /// <summary>
     /// Literal for code: SpecificTreatmentIsUrgentSeeEllipsisOnThisLabel
     /// </summary>
     public const string LiteralSpecificTreatmentIsUrgentSeeEllipsisOnThisLabel = "P320";
+
+    /// <summary>
+    /// Literal for code: WarningTypeSpecificTreatmentIsUrgentSeeEllipsisOnThisLabel
+    /// </summary>
+    public const string LiteralWarningTypeSpecificTreatmentIsUrgentSeeEllipsisOnThisLabel = "http://hl7.org/fhir/warning-type#P320";
 
     /// <summary>
     /// Literal for code: SpecificTreatmentSeeEllipsisOnThisLabel
@@ -128,9 +148,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSpecificTreatmentSeeEllipsisOnThisLabel = "P321";
 
     /// <summary>
+    /// Literal for code: WarningTypeSpecificTreatmentSeeEllipsisOnThisLabel
+    /// </summary>
+    public const string LiteralWarningTypeSpecificTreatmentSeeEllipsisOnThisLabel = "http://hl7.org/fhir/warning-type#P321";
+
+    /// <summary>
     /// Literal for code: SpecificMeasuresSeeEllipsisOnThisLabel
     /// </summary>
     public const string LiteralSpecificMeasuresSeeEllipsisOnThisLabel = "P322";
+
+    /// <summary>
+    /// Literal for code: WarningTypeSpecificMeasuresSeeEllipsisOnThisLabel
+    /// </summary>
+    public const string LiteralWarningTypeSpecificMeasuresSeeEllipsisOnThisLabel = "http://hl7.org/fhir/warning-type#P322";
 
     /// <summary>
     /// Literal for code: RinseMouth
@@ -138,9 +168,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRinseMouth = "P330";
 
     /// <summary>
+    /// Literal for code: WarningTypeRinseMouth
+    /// </summary>
+    public const string LiteralWarningTypeRinseMouth = "http://hl7.org/fhir/warning-type#P330";
+
+    /// <summary>
     /// Literal for code: DoNOTInduceVomiting
     /// </summary>
     public const string LiteralDoNOTInduceVomiting = "P331";
+
+    /// <summary>
+    /// Literal for code: WarningTypeDoNOTInduceVomiting
+    /// </summary>
+    public const string LiteralWarningTypeDoNOTInduceVomiting = "http://hl7.org/fhir/warning-type#P331";
 
     /// <summary>
     /// Literal for code: RemoveTakeOffImmediatelyAllContaminatedClothing
@@ -148,8 +188,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRemoveTakeOffImmediatelyAllContaminatedClothing = "P361";
 
     /// <summary>
+    /// Literal for code: WarningTypeRemoveTakeOffImmediatelyAllContaminatedClothing
+    /// </summary>
+    public const string LiteralWarningTypeRemoveTakeOffImmediatelyAllContaminatedClothing = "http://hl7.org/fhir/warning-type#P361";
+
+    /// <summary>
     /// Literal for code: WashContaminatedClothingBeforeReuse
     /// </summary>
     public const string LiteralWashContaminatedClothingBeforeReuse = "P363";
+
+    /// <summary>
+    /// Literal for code: WarningTypeWashContaminatedClothingBeforeReuse
+    /// </summary>
+    public const string LiteralWarningTypeWashContaminatedClothingBeforeReuse = "http://hl7.org/fhir/warning-type#P363";
+
+    /// <summary>
+    /// Dictionary for looking up WarningType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "P313", GetMedicalAdviceAttention }, 
+      { "http://hl7.org/fhir/warning-type#P313", GetMedicalAdviceAttention }, 
+      { "P314", GetMedicalAdviceAttentionIfYouFeelUnwell }, 
+      { "http://hl7.org/fhir/warning-type#P314", GetMedicalAdviceAttentionIfYouFeelUnwell }, 
+      { "P315", GetImmediateMedicalAdviceAttention }, 
+      { "http://hl7.org/fhir/warning-type#P315", GetImmediateMedicalAdviceAttention }, 
+      { "P320", SpecificTreatmentIsUrgentSeeEllipsisOnThisLabel }, 
+      { "http://hl7.org/fhir/warning-type#P320", SpecificTreatmentIsUrgentSeeEllipsisOnThisLabel }, 
+      { "P321", SpecificTreatmentSeeEllipsisOnThisLabel }, 
+      { "http://hl7.org/fhir/warning-type#P321", SpecificTreatmentSeeEllipsisOnThisLabel }, 
+      { "P322", SpecificMeasuresSeeEllipsisOnThisLabel }, 
+      { "http://hl7.org/fhir/warning-type#P322", SpecificMeasuresSeeEllipsisOnThisLabel }, 
+      { "P330", RinseMouth }, 
+      { "http://hl7.org/fhir/warning-type#P330", RinseMouth }, 
+      { "P331", DoNOTInduceVomiting }, 
+      { "http://hl7.org/fhir/warning-type#P331", DoNOTInduceVomiting }, 
+      { "P361", RemoveTakeOffImmediatelyAllContaminatedClothing }, 
+      { "http://hl7.org/fhir/warning-type#P361", RemoveTakeOffImmediatelyAllContaminatedClothing }, 
+      { "P363", WashContaminatedClothingBeforeReuse }, 
+      { "http://hl7.org/fhir/warning-type#P363", WashContaminatedClothingBeforeReuse }, 
+    };
   };
 }

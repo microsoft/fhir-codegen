@@ -99,9 +99,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCollectInformation = "collect-information";
 
     /// <summary>
+    /// Literal for code: ActionCodeCollectInformation
+    /// </summary>
+    public const string LiteralActionCodeCollectInformation = "http://terminology.hl7.org/CodeSystem/action-code#collect-information";
+
+    /// <summary>
     /// Literal for code: OrderAService
     /// </summary>
     public const string LiteralOrderAService = "order-service";
+
+    /// <summary>
+    /// Literal for code: ActionCodeOrderAService
+    /// </summary>
+    public const string LiteralActionCodeOrderAService = "http://terminology.hl7.org/CodeSystem/action-code#order-service";
 
     /// <summary>
     /// Literal for code: PrescribeAMedication
@@ -109,9 +119,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrescribeAMedication = "prescribe-medication";
 
     /// <summary>
+    /// Literal for code: ActionCodePrescribeAMedication
+    /// </summary>
+    public const string LiteralActionCodePrescribeAMedication = "http://terminology.hl7.org/CodeSystem/action-code#prescribe-medication";
+
+    /// <summary>
     /// Literal for code: ProposeADiagnosis
     /// </summary>
     public const string LiteralProposeADiagnosis = "propose-diagnosis";
+
+    /// <summary>
+    /// Literal for code: ActionCodeProposeADiagnosis
+    /// </summary>
+    public const string LiteralActionCodeProposeADiagnosis = "http://terminology.hl7.org/CodeSystem/action-code#propose-diagnosis";
 
     /// <summary>
     /// Literal for code: RecommendAnImmunization
@@ -119,9 +139,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRecommendAnImmunization = "recommend-immunization";
 
     /// <summary>
+    /// Literal for code: ActionCodeRecommendAnImmunization
+    /// </summary>
+    public const string LiteralActionCodeRecommendAnImmunization = "http://terminology.hl7.org/CodeSystem/action-code#recommend-immunization";
+
+    /// <summary>
     /// Literal for code: RecordADetectedIssue
     /// </summary>
     public const string LiteralRecordADetectedIssue = "record-detected-issue";
+
+    /// <summary>
+    /// Literal for code: ActionCodeRecordADetectedIssue
+    /// </summary>
+    public const string LiteralActionCodeRecordADetectedIssue = "http://terminology.hl7.org/CodeSystem/action-code#record-detected-issue";
 
     /// <summary>
     /// Literal for code: RecordAnInference
@@ -129,13 +159,52 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRecordAnInference = "record-inference";
 
     /// <summary>
+    /// Literal for code: ActionCodeRecordAnInference
+    /// </summary>
+    public const string LiteralActionCodeRecordAnInference = "http://terminology.hl7.org/CodeSystem/action-code#record-inference";
+
+    /// <summary>
     /// Literal for code: ReportAFlag
     /// </summary>
     public const string LiteralReportAFlag = "report-flag";
 
     /// <summary>
+    /// Literal for code: ActionCodeReportAFlag
+    /// </summary>
+    public const string LiteralActionCodeReportAFlag = "http://terminology.hl7.org/CodeSystem/action-code#report-flag";
+
+    /// <summary>
     /// Literal for code: SendAMessage
     /// </summary>
     public const string LiteralSendAMessage = "send-message";
+
+    /// <summary>
+    /// Literal for code: ActionCodeSendAMessage
+    /// </summary>
+    public const string LiteralActionCodeSendAMessage = "http://terminology.hl7.org/CodeSystem/action-code#send-message";
+
+    /// <summary>
+    /// Dictionary for looking up ActionCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "collect-information", CollectInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/action-code#collect-information", CollectInformation }, 
+      { "order-service", OrderAService }, 
+      { "http://terminology.hl7.org/CodeSystem/action-code#order-service", OrderAService }, 
+      { "prescribe-medication", PrescribeAMedication }, 
+      { "http://terminology.hl7.org/CodeSystem/action-code#prescribe-medication", PrescribeAMedication }, 
+      { "propose-diagnosis", ProposeADiagnosis }, 
+      { "http://terminology.hl7.org/CodeSystem/action-code#propose-diagnosis", ProposeADiagnosis }, 
+      { "recommend-immunization", RecommendAnImmunization }, 
+      { "http://terminology.hl7.org/CodeSystem/action-code#recommend-immunization", RecommendAnImmunization }, 
+      { "record-detected-issue", RecordADetectedIssue }, 
+      { "http://terminology.hl7.org/CodeSystem/action-code#record-detected-issue", RecordADetectedIssue }, 
+      { "record-inference", RecordAnInference }, 
+      { "http://terminology.hl7.org/CodeSystem/action-code#record-inference", RecordAnInference }, 
+      { "report-flag", ReportAFlag }, 
+      { "http://terminology.hl7.org/CodeSystem/action-code#report-flag", ReportAFlag }, 
+      { "send-message", SendAMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/action-code#send-message", SendAMessage }, 
+    };
   };
 }

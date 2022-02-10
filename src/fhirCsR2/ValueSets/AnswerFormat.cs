@@ -153,9 +153,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralAttachment = "attachment";
 
     /// <summary>
+    /// Literal for code: AnswerFormatAttachment
+    /// </summary>
+    public const string LiteralAnswerFormatAttachment = "http://hl7.org/fhir/answer-format#attachment";
+
+    /// <summary>
     /// Literal for code: Boolean
     /// </summary>
     public const string LiteralBoolean = "boolean";
+
+    /// <summary>
+    /// Literal for code: AnswerFormatBoolean
+    /// </summary>
+    public const string LiteralAnswerFormatBoolean = "http://hl7.org/fhir/answer-format#boolean";
 
     /// <summary>
     /// Literal for code: Choice
@@ -163,9 +173,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralChoice = "choice";
 
     /// <summary>
+    /// Literal for code: AnswerFormatChoice
+    /// </summary>
+    public const string LiteralAnswerFormatChoice = "http://hl7.org/fhir/answer-format#choice";
+
+    /// <summary>
     /// Literal for code: Date
     /// </summary>
     public const string LiteralDate = "date";
+
+    /// <summary>
+    /// Literal for code: AnswerFormatDate
+    /// </summary>
+    public const string LiteralAnswerFormatDate = "http://hl7.org/fhir/answer-format#date";
 
     /// <summary>
     /// Literal for code: DateTime
@@ -173,9 +193,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralDateTime = "dateTime";
 
     /// <summary>
+    /// Literal for code: AnswerFormatDateTime
+    /// </summary>
+    public const string LiteralAnswerFormatDateTime = "http://hl7.org/fhir/answer-format#dateTime";
+
+    /// <summary>
     /// Literal for code: Decimal
     /// </summary>
     public const string LiteralDecimal = "decimal";
+
+    /// <summary>
+    /// Literal for code: AnswerFormatDecimal
+    /// </summary>
+    public const string LiteralAnswerFormatDecimal = "http://hl7.org/fhir/answer-format#decimal";
 
     /// <summary>
     /// Literal for code: Instant
@@ -183,9 +213,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralInstant = "instant";
 
     /// <summary>
+    /// Literal for code: AnswerFormatInstant
+    /// </summary>
+    public const string LiteralAnswerFormatInstant = "http://hl7.org/fhir/answer-format#instant";
+
+    /// <summary>
     /// Literal for code: Integer
     /// </summary>
     public const string LiteralInteger = "integer";
+
+    /// <summary>
+    /// Literal for code: AnswerFormatInteger
+    /// </summary>
+    public const string LiteralAnswerFormatInteger = "http://hl7.org/fhir/answer-format#integer";
 
     /// <summary>
     /// Literal for code: OpenChoice
@@ -193,9 +233,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralOpenChoice = "open-choice";
 
     /// <summary>
+    /// Literal for code: AnswerFormatOpenChoice
+    /// </summary>
+    public const string LiteralAnswerFormatOpenChoice = "http://hl7.org/fhir/answer-format#open-choice";
+
+    /// <summary>
     /// Literal for code: Quantity
     /// </summary>
     public const string LiteralQuantity = "quantity";
+
+    /// <summary>
+    /// Literal for code: AnswerFormatQuantity
+    /// </summary>
+    public const string LiteralAnswerFormatQuantity = "http://hl7.org/fhir/answer-format#quantity";
 
     /// <summary>
     /// Literal for code: Reference
@@ -203,9 +253,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralReference = "reference";
 
     /// <summary>
+    /// Literal for code: AnswerFormatReference
+    /// </summary>
+    public const string LiteralAnswerFormatReference = "http://hl7.org/fhir/answer-format#reference";
+
+    /// <summary>
     /// Literal for code: String
     /// </summary>
     public const string LiteralString = "string";
+
+    /// <summary>
+    /// Literal for code: AnswerFormatString
+    /// </summary>
+    public const string LiteralAnswerFormatString = "http://hl7.org/fhir/answer-format#string";
 
     /// <summary>
     /// Literal for code: Text
@@ -213,13 +273,64 @@ namespace fhirCsR2.ValueSets
     public const string LiteralText = "text";
 
     /// <summary>
+    /// Literal for code: AnswerFormatText
+    /// </summary>
+    public const string LiteralAnswerFormatText = "http://hl7.org/fhir/answer-format#text";
+
+    /// <summary>
     /// Literal for code: Time
     /// </summary>
     public const string LiteralTime = "time";
 
     /// <summary>
+    /// Literal for code: AnswerFormatTime
+    /// </summary>
+    public const string LiteralAnswerFormatTime = "http://hl7.org/fhir/answer-format#time";
+
+    /// <summary>
     /// Literal for code: Url
     /// </summary>
     public const string LiteralUrl = "url";
+
+    /// <summary>
+    /// Literal for code: AnswerFormatUrl
+    /// </summary>
+    public const string LiteralAnswerFormatUrl = "http://hl7.org/fhir/answer-format#url";
+
+    /// <summary>
+    /// Dictionary for looking up AnswerFormat Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "attachment", Attachment }, 
+      { "http://hl7.org/fhir/answer-format#attachment", Attachment }, 
+      { "boolean", Boolean }, 
+      { "http://hl7.org/fhir/answer-format#boolean", Boolean }, 
+      { "choice", Choice }, 
+      { "http://hl7.org/fhir/answer-format#choice", Choice }, 
+      { "date", Date }, 
+      { "http://hl7.org/fhir/answer-format#date", Date }, 
+      { "dateTime", DateTime }, 
+      { "http://hl7.org/fhir/answer-format#dateTime", DateTime }, 
+      { "decimal", Decimal }, 
+      { "http://hl7.org/fhir/answer-format#decimal", Decimal }, 
+      { "instant", Instant }, 
+      { "http://hl7.org/fhir/answer-format#instant", Instant }, 
+      { "integer", Integer }, 
+      { "http://hl7.org/fhir/answer-format#integer", Integer }, 
+      { "open-choice", OpenChoice }, 
+      { "http://hl7.org/fhir/answer-format#open-choice", OpenChoice }, 
+      { "quantity", Quantity }, 
+      { "http://hl7.org/fhir/answer-format#quantity", Quantity }, 
+      { "reference", Reference }, 
+      { "http://hl7.org/fhir/answer-format#reference", Reference }, 
+      { "string", String }, 
+      { "http://hl7.org/fhir/answer-format#string", String }, 
+      { "text", Text }, 
+      { "http://hl7.org/fhir/answer-format#text", Text }, 
+      { "time", Time }, 
+      { "http://hl7.org/fhir/answer-format#time", Time }, 
+      { "url", Url }, 
+      { "http://hl7.org/fhir/answer-format#url", Url }, 
+    };
   };
 }

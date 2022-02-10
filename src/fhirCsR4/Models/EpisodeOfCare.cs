@@ -123,6 +123,15 @@ namespace fhirCsR4.Models
     public const string FINISHED = "finished";
     public const string CANCELLED = "cancelled";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "planned",
+      "waitlist",
+      "active",
+      "onhold",
+      "finished",
+      "cancelled",
+      "entered-in-error",
+    };
   }
   /// <summary>
   /// The list of diagnosis relevant to this episode of care.
@@ -702,5 +711,14 @@ namespace fhirCsR4.Models
     public const string FINISHED = "finished";
     public const string CANCELLED = "cancelled";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "planned",
+      "waitlist",
+      "active",
+      "onhold",
+      "finished",
+      "cancelled",
+      "entered-in-error",
+    };
   }
 }

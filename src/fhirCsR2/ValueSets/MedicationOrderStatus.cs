@@ -72,9 +72,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: MedicationOrderStatusActive
+    /// </summary>
+    public const string LiteralMedicationOrderStatusActive = "http://hl7.org/fhir/medication-order-status#active";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: MedicationOrderStatusCompleted
+    /// </summary>
+    public const string LiteralMedicationOrderStatusCompleted = "http://hl7.org/fhir/medication-order-status#completed";
 
     /// <summary>
     /// Literal for code: Draft
@@ -82,9 +92,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralDraft = "draft";
 
     /// <summary>
+    /// Literal for code: MedicationOrderStatusDraft
+    /// </summary>
+    public const string LiteralMedicationOrderStatusDraft = "http://hl7.org/fhir/medication-order-status#draft";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: MedicationOrderStatusEnteredInError
+    /// </summary>
+    public const string LiteralMedicationOrderStatusEnteredInError = "http://hl7.org/fhir/medication-order-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: OnHold
@@ -92,8 +112,36 @@ namespace fhirCsR2.ValueSets
     public const string LiteralOnHold = "on-hold";
 
     /// <summary>
+    /// Literal for code: MedicationOrderStatusOnHold
+    /// </summary>
+    public const string LiteralMedicationOrderStatusOnHold = "http://hl7.org/fhir/medication-order-status#on-hold";
+
+    /// <summary>
     /// Literal for code: Stopped
     /// </summary>
     public const string LiteralStopped = "stopped";
+
+    /// <summary>
+    /// Literal for code: MedicationOrderStatusStopped
+    /// </summary>
+    public const string LiteralMedicationOrderStatusStopped = "http://hl7.org/fhir/medication-order-status#stopped";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationOrderStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/medication-order-status#active", Active }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/medication-order-status#completed", Completed }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/medication-order-status#draft", Draft }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/medication-order-status#entered-in-error", EnteredInError }, 
+      { "on-hold", OnHold }, 
+      { "http://hl7.org/fhir/medication-order-status#on-hold", OnHold }, 
+      { "stopped", Stopped }, 
+      { "http://hl7.org/fhir/medication-order-status#stopped", Stopped }, 
+    };
   };
 }

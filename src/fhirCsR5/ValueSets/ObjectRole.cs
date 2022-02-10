@@ -234,9 +234,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatient = "1";
 
     /// <summary>
+    /// Literal for code: ObjectRolePatient
+    /// </summary>
+    public const string LiteralObjectRolePatient = "http://terminology.hl7.org/CodeSystem/object-role#1";
+
+    /// <summary>
     /// Literal for code: Guarantor
     /// </summary>
     public const string LiteralGuarantor = "10";
+
+    /// <summary>
+    /// Literal for code: ObjectRoleGuarantor
+    /// </summary>
+    public const string LiteralObjectRoleGuarantor = "http://terminology.hl7.org/CodeSystem/object-role#10";
 
     /// <summary>
     /// Literal for code: SecurityUserEntity
@@ -244,9 +254,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSecurityUserEntity = "11";
 
     /// <summary>
+    /// Literal for code: ObjectRoleSecurityUserEntity
+    /// </summary>
+    public const string LiteralObjectRoleSecurityUserEntity = "http://terminology.hl7.org/CodeSystem/object-role#11";
+
+    /// <summary>
     /// Literal for code: SecurityUserGroup
     /// </summary>
     public const string LiteralSecurityUserGroup = "12";
+
+    /// <summary>
+    /// Literal for code: ObjectRoleSecurityUserGroup
+    /// </summary>
+    public const string LiteralObjectRoleSecurityUserGroup = "http://terminology.hl7.org/CodeSystem/object-role#12";
 
     /// <summary>
     /// Literal for code: SecurityResource
@@ -254,9 +274,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSecurityResource = "13";
 
     /// <summary>
+    /// Literal for code: ObjectRoleSecurityResource
+    /// </summary>
+    public const string LiteralObjectRoleSecurityResource = "http://terminology.hl7.org/CodeSystem/object-role#13";
+
+    /// <summary>
     /// Literal for code: SecurityGranularityDefinition
     /// </summary>
     public const string LiteralSecurityGranularityDefinition = "14";
+
+    /// <summary>
+    /// Literal for code: ObjectRoleSecurityGranularityDefinition
+    /// </summary>
+    public const string LiteralObjectRoleSecurityGranularityDefinition = "http://terminology.hl7.org/CodeSystem/object-role#14";
 
     /// <summary>
     /// Literal for code: Practitioner
@@ -264,9 +294,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPractitioner = "15";
 
     /// <summary>
+    /// Literal for code: ObjectRolePractitioner
+    /// </summary>
+    public const string LiteralObjectRolePractitioner = "http://terminology.hl7.org/CodeSystem/object-role#15";
+
+    /// <summary>
     /// Literal for code: DataDestination
     /// </summary>
     public const string LiteralDataDestination = "16";
+
+    /// <summary>
+    /// Literal for code: ObjectRoleDataDestination
+    /// </summary>
+    public const string LiteralObjectRoleDataDestination = "http://terminology.hl7.org/CodeSystem/object-role#16";
 
     /// <summary>
     /// Literal for code: DataRepository
@@ -274,9 +314,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDataRepository = "17";
 
     /// <summary>
+    /// Literal for code: ObjectRoleDataRepository
+    /// </summary>
+    public const string LiteralObjectRoleDataRepository = "http://terminology.hl7.org/CodeSystem/object-role#17";
+
+    /// <summary>
     /// Literal for code: Schedule
     /// </summary>
     public const string LiteralSchedule = "18";
+
+    /// <summary>
+    /// Literal for code: ObjectRoleSchedule
+    /// </summary>
+    public const string LiteralObjectRoleSchedule = "http://terminology.hl7.org/CodeSystem/object-role#18";
 
     /// <summary>
     /// Literal for code: Customer
@@ -284,9 +334,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCustomer = "19";
 
     /// <summary>
+    /// Literal for code: ObjectRoleCustomer
+    /// </summary>
+    public const string LiteralObjectRoleCustomer = "http://terminology.hl7.org/CodeSystem/object-role#19";
+
+    /// <summary>
     /// Literal for code: Location
     /// </summary>
     public const string LiteralLocation = "2";
+
+    /// <summary>
+    /// Literal for code: ObjectRoleLocation
+    /// </summary>
+    public const string LiteralObjectRoleLocation = "http://terminology.hl7.org/CodeSystem/object-role#2";
 
     /// <summary>
     /// Literal for code: Job
@@ -294,9 +354,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralJob = "20";
 
     /// <summary>
+    /// Literal for code: ObjectRoleJob
+    /// </summary>
+    public const string LiteralObjectRoleJob = "http://terminology.hl7.org/CodeSystem/object-role#20";
+
+    /// <summary>
     /// Literal for code: JobStream
     /// </summary>
     public const string LiteralJobStream = "21";
+
+    /// <summary>
+    /// Literal for code: ObjectRoleJobStream
+    /// </summary>
+    public const string LiteralObjectRoleJobStream = "http://terminology.hl7.org/CodeSystem/object-role#21";
 
     /// <summary>
     /// Literal for code: Table
@@ -304,9 +374,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTable = "22";
 
     /// <summary>
+    /// Literal for code: ObjectRoleTable
+    /// </summary>
+    public const string LiteralObjectRoleTable = "http://terminology.hl7.org/CodeSystem/object-role#22";
+
+    /// <summary>
     /// Literal for code: RoutingCriteria
     /// </summary>
     public const string LiteralRoutingCriteria = "23";
+
+    /// <summary>
+    /// Literal for code: ObjectRoleRoutingCriteria
+    /// </summary>
+    public const string LiteralObjectRoleRoutingCriteria = "http://terminology.hl7.org/CodeSystem/object-role#23";
 
     /// <summary>
     /// Literal for code: Query
@@ -314,9 +394,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralQuery = "24";
 
     /// <summary>
+    /// Literal for code: ObjectRoleQuery
+    /// </summary>
+    public const string LiteralObjectRoleQuery = "http://terminology.hl7.org/CodeSystem/object-role#24";
+
+    /// <summary>
     /// Literal for code: Report
     /// </summary>
     public const string LiteralReport = "3";
+
+    /// <summary>
+    /// Literal for code: ObjectRoleReport
+    /// </summary>
+    public const string LiteralObjectRoleReport = "http://terminology.hl7.org/CodeSystem/object-role#3";
 
     /// <summary>
     /// Literal for code: DomainResource
@@ -324,9 +414,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDomainResource = "4";
 
     /// <summary>
+    /// Literal for code: ObjectRoleDomainResource
+    /// </summary>
+    public const string LiteralObjectRoleDomainResource = "http://terminology.hl7.org/CodeSystem/object-role#4";
+
+    /// <summary>
     /// Literal for code: MasterFile
     /// </summary>
     public const string LiteralMasterFile = "5";
+
+    /// <summary>
+    /// Literal for code: ObjectRoleMasterFile
+    /// </summary>
+    public const string LiteralObjectRoleMasterFile = "http://terminology.hl7.org/CodeSystem/object-role#5";
 
     /// <summary>
     /// Literal for code: User
@@ -334,9 +434,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUser = "6";
 
     /// <summary>
+    /// Literal for code: ObjectRoleUser
+    /// </summary>
+    public const string LiteralObjectRoleUser = "http://terminology.hl7.org/CodeSystem/object-role#6";
+
+    /// <summary>
     /// Literal for code: List
     /// </summary>
     public const string LiteralList = "7";
+
+    /// <summary>
+    /// Literal for code: ObjectRoleList
+    /// </summary>
+    public const string LiteralObjectRoleList = "http://terminology.hl7.org/CodeSystem/object-role#7";
 
     /// <summary>
     /// Literal for code: Doctor
@@ -344,8 +454,72 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDoctor = "8";
 
     /// <summary>
+    /// Literal for code: ObjectRoleDoctor
+    /// </summary>
+    public const string LiteralObjectRoleDoctor = "http://terminology.hl7.org/CodeSystem/object-role#8";
+
+    /// <summary>
     /// Literal for code: Subscriber
     /// </summary>
     public const string LiteralSubscriber = "9";
+
+    /// <summary>
+    /// Literal for code: ObjectRoleSubscriber
+    /// </summary>
+    public const string LiteralObjectRoleSubscriber = "http://terminology.hl7.org/CodeSystem/object-role#9";
+
+    /// <summary>
+    /// Dictionary for looking up ObjectRole Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1", Patient }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#1", Patient }, 
+      { "10", Guarantor }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#10", Guarantor }, 
+      { "11", SecurityUserEntity }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#11", SecurityUserEntity }, 
+      { "12", SecurityUserGroup }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#12", SecurityUserGroup }, 
+      { "13", SecurityResource }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#13", SecurityResource }, 
+      { "14", SecurityGranularityDefinition }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#14", SecurityGranularityDefinition }, 
+      { "15", Practitioner }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#15", Practitioner }, 
+      { "16", DataDestination }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#16", DataDestination }, 
+      { "17", DataRepository }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#17", DataRepository }, 
+      { "18", Schedule }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#18", Schedule }, 
+      { "19", Customer }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#19", Customer }, 
+      { "2", Location }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#2", Location }, 
+      { "20", Job }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#20", Job }, 
+      { "21", JobStream }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#21", JobStream }, 
+      { "22", Table }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#22", Table }, 
+      { "23", RoutingCriteria }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#23", RoutingCriteria }, 
+      { "24", Query }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#24", Query }, 
+      { "3", Report }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#3", Report }, 
+      { "4", DomainResource }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#4", DomainResource }, 
+      { "5", MasterFile }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#5", MasterFile }, 
+      { "6", User }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#6", User }, 
+      { "7", List }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#7", List }, 
+      { "8", Doctor }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#8", Doctor }, 
+      { "9", Subscriber }, 
+      { "http://terminology.hl7.org/CodeSystem/object-role#9", Subscriber }, 
+    };
   };
 }

@@ -90,9 +90,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSortedAlphabetically = "alphabetic";
 
     /// <summary>
+    /// Literal for code: ListOrderSortedAlphabetically
+    /// </summary>
+    public const string LiteralListOrderSortedAlphabetically = "http://terminology.hl7.org/CodeSystem/list-order#alphabetic";
+
+    /// <summary>
     /// Literal for code: SortedByCategory
     /// </summary>
     public const string LiteralSortedByCategory = "category";
+
+    /// <summary>
+    /// Literal for code: ListOrderSortedByCategory
+    /// </summary>
+    public const string LiteralListOrderSortedByCategory = "http://terminology.hl7.org/CodeSystem/list-order#category";
 
     /// <summary>
     /// Literal for code: SortedByItemDate
@@ -100,9 +110,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSortedByItemDate = "entry-date";
 
     /// <summary>
+    /// Literal for code: ListOrderSortedByItemDate
+    /// </summary>
+    public const string LiteralListOrderSortedByItemDate = "http://terminology.hl7.org/CodeSystem/list-order#entry-date";
+
+    /// <summary>
     /// Literal for code: SortedByEventDate
     /// </summary>
     public const string LiteralSortedByEventDate = "event-date";
+
+    /// <summary>
+    /// Literal for code: ListOrderSortedByEventDate
+    /// </summary>
+    public const string LiteralListOrderSortedByEventDate = "http://terminology.hl7.org/CodeSystem/list-order#event-date";
 
     /// <summary>
     /// Literal for code: SortedByPatient
@@ -110,9 +130,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSortedByPatient = "patient";
 
     /// <summary>
+    /// Literal for code: ListOrderSortedByPatient
+    /// </summary>
+    public const string LiteralListOrderSortedByPatient = "http://terminology.hl7.org/CodeSystem/list-order#patient";
+
+    /// <summary>
     /// Literal for code: SortedByPriority
     /// </summary>
     public const string LiteralSortedByPriority = "priority";
+
+    /// <summary>
+    /// Literal for code: ListOrderSortedByPriority
+    /// </summary>
+    public const string LiteralListOrderSortedByPriority = "http://terminology.hl7.org/CodeSystem/list-order#priority";
 
     /// <summary>
     /// Literal for code: SortedBySystem
@@ -120,8 +150,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSortedBySystem = "system";
 
     /// <summary>
+    /// Literal for code: ListOrderSortedBySystem
+    /// </summary>
+    public const string LiteralListOrderSortedBySystem = "http://terminology.hl7.org/CodeSystem/list-order#system";
+
+    /// <summary>
     /// Literal for code: SortedByUser
     /// </summary>
     public const string LiteralSortedByUser = "user";
+
+    /// <summary>
+    /// Literal for code: ListOrderSortedByUser
+    /// </summary>
+    public const string LiteralListOrderSortedByUser = "http://terminology.hl7.org/CodeSystem/list-order#user";
+
+    /// <summary>
+    /// Dictionary for looking up ListOrder Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "alphabetic", SortedAlphabetically }, 
+      { "http://terminology.hl7.org/CodeSystem/list-order#alphabetic", SortedAlphabetically }, 
+      { "category", SortedByCategory }, 
+      { "http://terminology.hl7.org/CodeSystem/list-order#category", SortedByCategory }, 
+      { "entry-date", SortedByItemDate }, 
+      { "http://terminology.hl7.org/CodeSystem/list-order#entry-date", SortedByItemDate }, 
+      { "event-date", SortedByEventDate }, 
+      { "http://terminology.hl7.org/CodeSystem/list-order#event-date", SortedByEventDate }, 
+      { "patient", SortedByPatient }, 
+      { "http://terminology.hl7.org/CodeSystem/list-order#patient", SortedByPatient }, 
+      { "priority", SortedByPriority }, 
+      { "http://terminology.hl7.org/CodeSystem/list-order#priority", SortedByPriority }, 
+      { "system", SortedBySystem }, 
+      { "http://terminology.hl7.org/CodeSystem/list-order#system", SortedBySystem }, 
+      { "user", SortedByUser }, 
+      { "http://terminology.hl7.org/CodeSystem/list-order#user", SortedByUser }, 
+    };
   };
 }

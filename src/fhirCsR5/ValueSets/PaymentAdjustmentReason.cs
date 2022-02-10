@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class PaymentAdjustmentReasonCodes
   {
     /// <summary>
-    /// 
+    /// Prior Payment Reversal
     /// </summary>
     public static readonly Coding PriorPaymentReversal = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/payment-adjustment-reason"
     };
     /// <summary>
-    /// 
+    /// Prior Overpayment
     /// </summary>
     public static readonly Coding PriorOverpayment = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPriorPaymentReversal = "a001";
 
     /// <summary>
+    /// Literal for code: PaymentAdjustmentReasonPriorPaymentReversal
+    /// </summary>
+    public const string LiteralPaymentAdjustmentReasonPriorPaymentReversal = "http://terminology.hl7.org/CodeSystem/payment-adjustment-reason#a001";
+
+    /// <summary>
     /// Literal for code: PriorOverpayment
     /// </summary>
     public const string LiteralPriorOverpayment = "a002";
+
+    /// <summary>
+    /// Literal for code: PaymentAdjustmentReasonPriorOverpayment
+    /// </summary>
+    public const string LiteralPaymentAdjustmentReasonPriorOverpayment = "http://terminology.hl7.org/CodeSystem/payment-adjustment-reason#a002";
+
+    /// <summary>
+    /// Dictionary for looking up PaymentAdjustmentReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "a001", PriorPaymentReversal }, 
+      { "http://terminology.hl7.org/CodeSystem/payment-adjustment-reason#a001", PriorPaymentReversal }, 
+      { "a002", PriorOverpayment }, 
+      { "http://terminology.hl7.org/CodeSystem/payment-adjustment-reason#a002", PriorOverpayment }, 
+    };
   };
 }

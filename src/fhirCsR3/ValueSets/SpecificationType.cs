@@ -90,9 +90,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFirmwareRevision = "firmware-revision";
 
     /// <summary>
+    /// Literal for code: SpecificationTypeFirmwareRevision
+    /// </summary>
+    public const string LiteralSpecificationTypeFirmwareRevision = "http://hl7.org/fhir/specification-type#firmware-revision";
+
+    /// <summary>
     /// Literal for code: GMDN
     /// </summary>
     public const string LiteralGMDN = "gmdn";
+
+    /// <summary>
+    /// Literal for code: SpecificationTypeGMDN
+    /// </summary>
+    public const string LiteralSpecificationTypeGMDN = "http://hl7.org/fhir/specification-type#gmdn";
 
     /// <summary>
     /// Literal for code: HardwareRevision
@@ -100,9 +110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHardwareRevision = "hardware-revision";
 
     /// <summary>
+    /// Literal for code: SpecificationTypeHardwareRevision
+    /// </summary>
+    public const string LiteralSpecificationTypeHardwareRevision = "http://hl7.org/fhir/specification-type#hardware-revision";
+
+    /// <summary>
     /// Literal for code: PartNumber
     /// </summary>
     public const string LiteralPartNumber = "part-number";
+
+    /// <summary>
+    /// Literal for code: SpecificationTypePartNumber
+    /// </summary>
+    public const string LiteralSpecificationTypePartNumber = "http://hl7.org/fhir/specification-type#part-number";
 
     /// <summary>
     /// Literal for code: ProtocolRevision
@@ -110,9 +130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProtocolRevision = "protocol-revision";
 
     /// <summary>
+    /// Literal for code: SpecificationTypeProtocolRevision
+    /// </summary>
+    public const string LiteralSpecificationTypeProtocolRevision = "http://hl7.org/fhir/specification-type#protocol-revision";
+
+    /// <summary>
     /// Literal for code: SerialNumber
     /// </summary>
     public const string LiteralSerialNumber = "serial-number";
+
+    /// <summary>
+    /// Literal for code: SpecificationTypeSerialNumber
+    /// </summary>
+    public const string LiteralSpecificationTypeSerialNumber = "http://hl7.org/fhir/specification-type#serial-number";
 
     /// <summary>
     /// Literal for code: SoftwareRevision
@@ -120,8 +150,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSoftwareRevision = "software-revision";
 
     /// <summary>
+    /// Literal for code: SpecificationTypeSoftwareRevision
+    /// </summary>
+    public const string LiteralSpecificationTypeSoftwareRevision = "http://hl7.org/fhir/specification-type#software-revision";
+
+    /// <summary>
     /// Literal for code: UnspecifiedProductionSpecification
     /// </summary>
     public const string LiteralUnspecifiedProductionSpecification = "unspecified";
+
+    /// <summary>
+    /// Literal for code: SpecificationTypeUnspecifiedProductionSpecification
+    /// </summary>
+    public const string LiteralSpecificationTypeUnspecifiedProductionSpecification = "http://hl7.org/fhir/specification-type#unspecified";
+
+    /// <summary>
+    /// Dictionary for looking up SpecificationType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "firmware-revision", FirmwareRevision }, 
+      { "http://hl7.org/fhir/specification-type#firmware-revision", FirmwareRevision }, 
+      { "gmdn", GMDN }, 
+      { "http://hl7.org/fhir/specification-type#gmdn", GMDN }, 
+      { "hardware-revision", HardwareRevision }, 
+      { "http://hl7.org/fhir/specification-type#hardware-revision", HardwareRevision }, 
+      { "part-number", PartNumber }, 
+      { "http://hl7.org/fhir/specification-type#part-number", PartNumber }, 
+      { "protocol-revision", ProtocolRevision }, 
+      { "http://hl7.org/fhir/specification-type#protocol-revision", ProtocolRevision }, 
+      { "serial-number", SerialNumber }, 
+      { "http://hl7.org/fhir/specification-type#serial-number", SerialNumber }, 
+      { "software-revision", SoftwareRevision }, 
+      { "http://hl7.org/fhir/specification-type#software-revision", SoftwareRevision }, 
+      { "unspecified", UnspecifiedProductionSpecification }, 
+      { "http://hl7.org/fhir/specification-type#unspecified", UnspecifiedProductionSpecification }, 
+    };
   };
 }

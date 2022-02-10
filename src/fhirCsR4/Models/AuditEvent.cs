@@ -176,6 +176,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool Requestor { get; set; }
     /// <summary>
+    /// Extension container element for Requestor
+    /// </summary>
+    public Element _Requestor { get; set; }
+    /// <summary>
     /// Should be roles relevant to the event. Should  not be an exhaustive list of roles.
     /// </summary>
     public List<CodeableConcept> Role { get; set; }
@@ -246,6 +250,12 @@ namespace fhirCsR4.Models
       }
 
       writer.WriteBoolean("requestor", Requestor);
+
+      if (_Requestor != null)
+      {
+        writer.WritePropertyName("_requestor");
+        _Requestor.SerializeJson(writer, options);
+      }
 
       if (Location != null)
       {
@@ -430,6 +440,11 @@ namespace fhirCsR4.Models
 
         case "requestor":
           Requestor = reader.GetBoolean();
+          break;
+
+        case "_requestor":
+          _Requestor = new fhirCsR4.Models.Element();
+          _Requestor.DeserializeJson(ref reader, options);
           break;
 
         case "role":

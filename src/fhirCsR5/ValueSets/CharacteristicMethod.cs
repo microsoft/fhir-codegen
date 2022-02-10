@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNonSystematicAssessment = "non-systematic-assessment";
 
     /// <summary>
+    /// Literal for code: CharacteristicMethodNonSystematicAssessment
+    /// </summary>
+    public const string LiteralCharacteristicMethodNonSystematicAssessment = "http://terminology.hl7.org/CodeSystem/characteristic-method#non-systematic-assessment";
+
+    /// <summary>
     /// Literal for code: SystematicAssessment
     /// </summary>
     public const string LiteralSystematicAssessment = "systematic-assessment";
+
+    /// <summary>
+    /// Literal for code: CharacteristicMethodSystematicAssessment
+    /// </summary>
+    public const string LiteralCharacteristicMethodSystematicAssessment = "http://terminology.hl7.org/CodeSystem/characteristic-method#systematic-assessment";
+
+    /// <summary>
+    /// Dictionary for looking up CharacteristicMethod Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "non-systematic-assessment", NonSystematicAssessment }, 
+      { "http://terminology.hl7.org/CodeSystem/characteristic-method#non-systematic-assessment", NonSystematicAssessment }, 
+      { "systematic-assessment", SystematicAssessment }, 
+      { "http://terminology.hl7.org/CodeSystem/characteristic-method#systematic-assessment", SystematicAssessment }, 
+    };
   };
 }

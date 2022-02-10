@@ -81,9 +81,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAllergen = "allergen";
 
     /// <summary>
+    /// Literal for code: SubstanceCategoryAllergen
+    /// </summary>
+    public const string LiteralSubstanceCategoryAllergen = "http://terminology.hl7.org/CodeSystem/substance-category#allergen";
+
+    /// <summary>
     /// Literal for code: BiologicalSubstance
     /// </summary>
     public const string LiteralBiologicalSubstance = "biological";
+
+    /// <summary>
+    /// Literal for code: SubstanceCategoryBiologicalSubstance
+    /// </summary>
+    public const string LiteralSubstanceCategoryBiologicalSubstance = "http://terminology.hl7.org/CodeSystem/substance-category#biological";
 
     /// <summary>
     /// Literal for code: BodySubstance
@@ -91,9 +101,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBodySubstance = "body";
 
     /// <summary>
+    /// Literal for code: SubstanceCategoryBodySubstance
+    /// </summary>
+    public const string LiteralSubstanceCategoryBodySubstance = "http://terminology.hl7.org/CodeSystem/substance-category#body";
+
+    /// <summary>
     /// Literal for code: Chemical
     /// </summary>
     public const string LiteralChemical = "chemical";
+
+    /// <summary>
+    /// Literal for code: SubstanceCategoryChemical
+    /// </summary>
+    public const string LiteralSubstanceCategoryChemical = "http://terminology.hl7.org/CodeSystem/substance-category#chemical";
 
     /// <summary>
     /// Literal for code: DrugOrMedicament
@@ -101,13 +121,48 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrugOrMedicament = "drug";
 
     /// <summary>
+    /// Literal for code: SubstanceCategoryDrugOrMedicament
+    /// </summary>
+    public const string LiteralSubstanceCategoryDrugOrMedicament = "http://terminology.hl7.org/CodeSystem/substance-category#drug";
+
+    /// <summary>
     /// Literal for code: DietarySubstance
     /// </summary>
     public const string LiteralDietarySubstance = "food";
 
     /// <summary>
+    /// Literal for code: SubstanceCategoryDietarySubstance
+    /// </summary>
+    public const string LiteralSubstanceCategoryDietarySubstance = "http://terminology.hl7.org/CodeSystem/substance-category#food";
+
+    /// <summary>
     /// Literal for code: Material
     /// </summary>
     public const string LiteralMaterial = "material";
+
+    /// <summary>
+    /// Literal for code: SubstanceCategoryMaterial
+    /// </summary>
+    public const string LiteralSubstanceCategoryMaterial = "http://terminology.hl7.org/CodeSystem/substance-category#material";
+
+    /// <summary>
+    /// Dictionary for looking up SubstanceCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "allergen", Allergen }, 
+      { "http://terminology.hl7.org/CodeSystem/substance-category#allergen", Allergen }, 
+      { "biological", BiologicalSubstance }, 
+      { "http://terminology.hl7.org/CodeSystem/substance-category#biological", BiologicalSubstance }, 
+      { "body", BodySubstance }, 
+      { "http://terminology.hl7.org/CodeSystem/substance-category#body", BodySubstance }, 
+      { "chemical", Chemical }, 
+      { "http://terminology.hl7.org/CodeSystem/substance-category#chemical", Chemical }, 
+      { "drug", DrugOrMedicament }, 
+      { "http://terminology.hl7.org/CodeSystem/substance-category#drug", DrugOrMedicament }, 
+      { "food", DietarySubstance }, 
+      { "http://terminology.hl7.org/CodeSystem/substance-category#food", DietarySubstance }, 
+      { "material", Material }, 
+      { "http://terminology.hl7.org/CodeSystem/substance-category#material", Material }, 
+    };
   };
 }

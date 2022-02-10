@@ -40,9 +40,17 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? DetailBoolean { get; set; }
     /// <summary>
+    /// Extension container element for DetailBoolean
+    /// </summary>
+    public Element _DetailBoolean { get; set; }
+    /// <summary>
     /// A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Goal.target.measure defines a coded value.
     /// </summary>
     public int? DetailInteger { get; set; }
+    /// <summary>
+    /// Extension container element for DetailInteger
+    /// </summary>
+    public Element _DetailInteger { get; set; }
     /// <summary>
     /// A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Goal.target.measure defines a coded value.
     /// </summary>
@@ -114,9 +122,21 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("detailBoolean", (bool)DetailBoolean!);
       }
 
+      if (_DetailBoolean != null)
+      {
+        writer.WritePropertyName("_detailBoolean");
+        _DetailBoolean.SerializeJson(writer, options);
+      }
+
       if (DetailInteger != null)
       {
         writer.WriteNumber("detailInteger", (int)DetailInteger!);
+      }
+
+      if (_DetailInteger != null)
+      {
+        writer.WritePropertyName("_detailInteger");
+        _DetailInteger.SerializeJson(writer, options);
       }
 
       if (DetailRatio != null)
@@ -182,8 +202,18 @@ namespace fhirCsR4B.Models
           DetailBoolean = reader.GetBoolean();
           break;
 
+        case "_detailBoolean":
+          _DetailBoolean = new fhirCsR4B.Models.Element();
+          _DetailBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "detailInteger":
           DetailInteger = reader.GetInt32();
+          break;
+
+        case "_detailInteger":
+          _DetailInteger = new fhirCsR4B.Models.Element();
+          _DetailInteger.DeserializeJson(ref reader, options);
           break;
 
         case "detailRatio":
@@ -834,5 +864,16 @@ namespace fhirCsR4B.Models
     public const string CANCELLED = "cancelled";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string REJECTED = "rejected";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposed",
+      "planned",
+      "accepted",
+      "active",
+      "on-hold",
+      "completed",
+      "cancelled",
+      "entered-in-error",
+      "rejected",
+    };
   }
 }

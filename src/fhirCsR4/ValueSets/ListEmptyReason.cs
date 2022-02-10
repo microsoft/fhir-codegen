@@ -72,9 +72,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClosed = "closed";
 
     /// <summary>
+    /// Literal for code: ListEmptyReasonClosed
+    /// </summary>
+    public const string LiteralListEmptyReasonClosed = "http://terminology.hl7.org/CodeSystem/list-empty-reason#closed";
+
+    /// <summary>
     /// Literal for code: NilKnown
     /// </summary>
     public const string LiteralNilKnown = "nilknown";
+
+    /// <summary>
+    /// Literal for code: ListEmptyReasonNilKnown
+    /// </summary>
+    public const string LiteralListEmptyReasonNilKnown = "http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown";
 
     /// <summary>
     /// Literal for code: NotAsked
@@ -82,9 +92,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNotAsked = "notasked";
 
     /// <summary>
+    /// Literal for code: ListEmptyReasonNotAsked
+    /// </summary>
+    public const string LiteralListEmptyReasonNotAsked = "http://terminology.hl7.org/CodeSystem/list-empty-reason#notasked";
+
+    /// <summary>
     /// Literal for code: NotStarted
     /// </summary>
     public const string LiteralNotStarted = "notstarted";
+
+    /// <summary>
+    /// Literal for code: ListEmptyReasonNotStarted
+    /// </summary>
+    public const string LiteralListEmptyReasonNotStarted = "http://terminology.hl7.org/CodeSystem/list-empty-reason#notstarted";
 
     /// <summary>
     /// Literal for code: Unavailable
@@ -92,8 +112,36 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnavailable = "unavailable";
 
     /// <summary>
+    /// Literal for code: ListEmptyReasonUnavailable
+    /// </summary>
+    public const string LiteralListEmptyReasonUnavailable = "http://terminology.hl7.org/CodeSystem/list-empty-reason#unavailable";
+
+    /// <summary>
     /// Literal for code: InformationWithheld
     /// </summary>
     public const string LiteralInformationWithheld = "withheld";
+
+    /// <summary>
+    /// Literal for code: ListEmptyReasonInformationWithheld
+    /// </summary>
+    public const string LiteralListEmptyReasonInformationWithheld = "http://terminology.hl7.org/CodeSystem/list-empty-reason#withheld";
+
+    /// <summary>
+    /// Dictionary for looking up ListEmptyReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "closed", Closed }, 
+      { "http://terminology.hl7.org/CodeSystem/list-empty-reason#closed", Closed }, 
+      { "nilknown", NilKnown }, 
+      { "http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown", NilKnown }, 
+      { "notasked", NotAsked }, 
+      { "http://terminology.hl7.org/CodeSystem/list-empty-reason#notasked", NotAsked }, 
+      { "notstarted", NotStarted }, 
+      { "http://terminology.hl7.org/CodeSystem/list-empty-reason#notstarted", NotStarted }, 
+      { "unavailable", Unavailable }, 
+      { "http://terminology.hl7.org/CodeSystem/list-empty-reason#unavailable", Unavailable }, 
+      { "withheld", InformationWithheld }, 
+      { "http://terminology.hl7.org/CodeSystem/list-empty-reason#withheld", InformationWithheld }, 
+    };
   };
 }

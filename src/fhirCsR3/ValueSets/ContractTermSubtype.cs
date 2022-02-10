@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCondition = "condition";
 
     /// <summary>
+    /// Literal for code: ContractTermSubtypeCondition
+    /// </summary>
+    public const string LiteralContractTermSubtypeCondition = "http://hl7.org/fhir/contracttermsubtypecodes#condition";
+
+    /// <summary>
     /// Literal for code: Innominate
     /// </summary>
     public const string LiteralInnominate = "innominate";
 
     /// <summary>
+    /// Literal for code: ContractTermSubtypeInnominate
+    /// </summary>
+    public const string LiteralContractTermSubtypeInnominate = "http://hl7.org/fhir/contracttermsubtypecodes#innominate";
+
+    /// <summary>
     /// Literal for code: Warranty
     /// </summary>
     public const string LiteralWarranty = "warranty";
+
+    /// <summary>
+    /// Literal for code: ContractTermSubtypeWarranty
+    /// </summary>
+    public const string LiteralContractTermSubtypeWarranty = "http://hl7.org/fhir/contracttermsubtypecodes#warranty";
+
+    /// <summary>
+    /// Dictionary for looking up ContractTermSubtype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "condition", Condition }, 
+      { "http://hl7.org/fhir/contracttermsubtypecodes#condition", Condition }, 
+      { "innominate", Innominate }, 
+      { "http://hl7.org/fhir/contracttermsubtypecodes#innominate", Innominate }, 
+      { "warranty", Warranty }, 
+      { "http://hl7.org/fhir/contracttermsubtypecodes#warranty", Warranty }, 
+    };
   };
 }

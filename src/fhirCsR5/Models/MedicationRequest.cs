@@ -496,6 +496,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? AllowedBoolean { get; set; }
     /// <summary>
+    /// Extension container element for AllowedBoolean
+    /// </summary>
+    public Element _AllowedBoolean { get; set; }
+    /// <summary>
     /// This element is labeled as a modifier because whether substitution is allow or not, it cannot be ignored.
     /// </summary>
     public CodeableConcept AllowedCodeableConcept { get; set; }
@@ -517,6 +521,12 @@ namespace fhirCsR5.Models
       if (AllowedBoolean != null)
       {
         writer.WriteBoolean("allowedBoolean", (bool)AllowedBoolean!);
+      }
+
+      if (_AllowedBoolean != null)
+      {
+        writer.WritePropertyName("_allowedBoolean");
+        _AllowedBoolean.SerializeJson(writer, options);
       }
 
       if (AllowedCodeableConcept != null)
@@ -545,6 +555,11 @@ namespace fhirCsR5.Models
       {
         case "allowedBoolean":
           AllowedBoolean = reader.GetBoolean();
+          break;
+
+        case "_allowedBoolean":
+          _AllowedBoolean = new fhirCsR5.Models.Element();
+          _AllowedBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "allowedCodeableConcept":
@@ -629,6 +644,10 @@ namespace fhirCsR5.Models
     /// If do not perform is not specified, the request is a positive request e.g. "do perform".
     /// </summary>
     public bool? DoNotPerform { get; set; }
+    /// <summary>
+    /// Extension container element for DoNotPerform
+    /// </summary>
+    public Element _DoNotPerform { get; set; }
     /// <summary>
     /// Indicates how the medication is to be used by the patient.
     /// </summary>
@@ -723,6 +742,10 @@ namespace fhirCsR5.Models
     /// Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.
     /// </summary>
     public bool? Reported { get; set; }
+    /// <summary>
+    /// Extension container element for Reported
+    /// </summary>
+    public Element _Reported { get; set; }
     /// <summary>
     /// The individual, organization, or device that initiated the request and has responsibility for its activation.
     /// </summary>
@@ -935,6 +958,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("doNotPerform", (bool)DoNotPerform!);
       }
 
+      if (_DoNotPerform != null)
+      {
+        writer.WritePropertyName("_doNotPerform");
+        _DoNotPerform.SerializeJson(writer, options);
+      }
+
       if (Medication != null)
       {
         writer.WritePropertyName("medication");
@@ -992,6 +1021,12 @@ namespace fhirCsR5.Models
       if (Reported != null)
       {
         writer.WriteBoolean("reported", (bool)Reported!);
+      }
+
+      if (_Reported != null)
+      {
+        writer.WritePropertyName("_reported");
+        _Reported.SerializeJson(writer, options);
       }
 
       if (PerformerType != null)
@@ -1215,6 +1250,11 @@ namespace fhirCsR5.Models
 
         case "doNotPerform":
           DoNotPerform = reader.GetBoolean();
+          break;
+
+        case "_doNotPerform":
+          _DoNotPerform = new fhirCsR5.Models.Element();
+          _DoNotPerform.DeserializeJson(ref reader, options);
           break;
 
         case "dose":
@@ -1523,6 +1563,11 @@ namespace fhirCsR5.Models
           Reported = reader.GetBoolean();
           break;
 
+        case "_reported":
+          _Reported = new fhirCsR5.Models.Element();
+          _Reported.DeserializeJson(ref reader, options);
+          break;
+
         case "requester":
           Requester = new fhirCsR5.Models.Reference();
           Requester.DeserializeJson(ref reader, options);
@@ -1631,6 +1676,16 @@ namespace fhirCsR5.Models
     public const string FILLER_ORDER = "filler-order";
     public const string INSTANCE_ORDER = "instance-order";
     public const string OPTION = "option";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposal",
+      "plan",
+      "order",
+      "original-order",
+      "reflex-order",
+      "filler-order",
+      "instance-order",
+      "option",
+    };
   }
   /// <summary>
   /// Code Values for the MedicationRequest.priority field
@@ -1640,6 +1695,12 @@ namespace fhirCsR5.Models
     public const string URGENT = "urgent";
     public const string ASAP = "asap";
     public const string STAT = "stat";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "routine",
+      "urgent",
+      "asap",
+      "stat",
+    };
   }
   /// <summary>
   /// Code Values for the MedicationRequest.status field
@@ -1654,5 +1715,16 @@ namespace fhirCsR5.Models
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string DRAFT = "draft";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "on-hold",
+      "ended",
+      "stopped",
+      "completed",
+      "cancelled",
+      "entered-in-error",
+      "draft",
+      "unknown",
+    };
   }
 }

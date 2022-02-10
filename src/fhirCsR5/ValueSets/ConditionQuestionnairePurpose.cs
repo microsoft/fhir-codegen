@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDiffDiagnosis = "diff-diagnosis";
 
     /// <summary>
+    /// Literal for code: ConditionQuestionnairePurposeDiffDiagnosis
+    /// </summary>
+    public const string LiteralConditionQuestionnairePurposeDiffDiagnosis = "http://hl7.org/fhir/condition-questionnaire-purpose#diff-diagnosis";
+
+    /// <summary>
     /// Literal for code: Outcome
     /// </summary>
     public const string LiteralOutcome = "outcome";
 
     /// <summary>
+    /// Literal for code: ConditionQuestionnairePurposeOutcome
+    /// </summary>
+    public const string LiteralConditionQuestionnairePurposeOutcome = "http://hl7.org/fhir/condition-questionnaire-purpose#outcome";
+
+    /// <summary>
     /// Literal for code: PreAdmit
     /// </summary>
     public const string LiteralPreAdmit = "preadmit";
+
+    /// <summary>
+    /// Literal for code: ConditionQuestionnairePurposePreAdmit
+    /// </summary>
+    public const string LiteralConditionQuestionnairePurposePreAdmit = "http://hl7.org/fhir/condition-questionnaire-purpose#preadmit";
+
+    /// <summary>
+    /// Dictionary for looking up ConditionQuestionnairePurpose Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "diff-diagnosis", DiffDiagnosis }, 
+      { "http://hl7.org/fhir/condition-questionnaire-purpose#diff-diagnosis", DiffDiagnosis }, 
+      { "outcome", Outcome }, 
+      { "http://hl7.org/fhir/condition-questionnaire-purpose#outcome", Outcome }, 
+      { "preadmit", PreAdmit }, 
+      { "http://hl7.org/fhir/condition-questionnaire-purpose#preadmit", PreAdmit }, 
+    };
   };
 }

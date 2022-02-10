@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDelivered = "delivered";
 
     /// <summary>
+    /// Literal for code: SubscriptionTagDelivered
+    /// </summary>
+    public const string LiteralSubscriptionTagDelivered = "http://hl7.org/fhir/subscription-tag#delivered";
+
+    /// <summary>
     /// Literal for code: Queued
     /// </summary>
     public const string LiteralQueued = "queued";
+
+    /// <summary>
+    /// Literal for code: SubscriptionTagQueued
+    /// </summary>
+    public const string LiteralSubscriptionTagQueued = "http://hl7.org/fhir/subscription-tag#queued";
+
+    /// <summary>
+    /// Dictionary for looking up SubscriptionTag Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "delivered", Delivered }, 
+      { "http://hl7.org/fhir/subscription-tag#delivered", Delivered }, 
+      { "queued", Queued }, 
+      { "http://hl7.org/fhir/subscription-tag#queued", Queued }, 
+    };
   };
 }

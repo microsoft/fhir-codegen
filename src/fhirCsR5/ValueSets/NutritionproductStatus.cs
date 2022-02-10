@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: NutritionproductStatusActive
+    /// </summary>
+    public const string LiteralNutritionproductStatusActive = "http://hl7.org/fhir/nutritionproduct-status#active";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: NutritionproductStatusEnteredInError
+    /// </summary>
+    public const string LiteralNutritionproductStatusEnteredInError = "http://hl7.org/fhir/nutritionproduct-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Inactive
     /// </summary>
     public const string LiteralInactive = "inactive";
+
+    /// <summary>
+    /// Literal for code: NutritionproductStatusInactive
+    /// </summary>
+    public const string LiteralNutritionproductStatusInactive = "http://hl7.org/fhir/nutritionproduct-status#inactive";
+
+    /// <summary>
+    /// Dictionary for looking up NutritionproductStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/nutritionproduct-status#active", Active }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/nutritionproduct-status#entered-in-error", EnteredInError }, 
+      { "inactive", Inactive }, 
+      { "http://hl7.org/fhir/nutritionproduct-status#inactive", Inactive }, 
+    };
   };
 }

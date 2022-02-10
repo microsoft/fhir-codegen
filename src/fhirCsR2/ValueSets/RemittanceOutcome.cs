@@ -36,8 +36,28 @@ namespace fhirCsR2.ValueSets
     public const string LiteralComplete = "complete";
 
     /// <summary>
+    /// Literal for code: RemittanceOutcomeComplete
+    /// </summary>
+    public const string LiteralRemittanceOutcomeComplete = "http://hl7.org/fhir/remittance-outcome#complete";
+
+    /// <summary>
     /// Literal for code: Error
     /// </summary>
     public const string LiteralError = "error";
+
+    /// <summary>
+    /// Literal for code: RemittanceOutcomeError
+    /// </summary>
+    public const string LiteralRemittanceOutcomeError = "http://hl7.org/fhir/remittance-outcome#error";
+
+    /// <summary>
+    /// Dictionary for looking up RemittanceOutcome Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", Complete }, 
+      { "http://hl7.org/fhir/remittance-outcome#complete", Complete }, 
+      { "error", Error }, 
+      { "http://hl7.org/fhir/remittance-outcome#error", Error }, 
+    };
   };
 }

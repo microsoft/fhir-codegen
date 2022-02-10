@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralError = "error";
 
     /// <summary>
+    /// Literal for code: IssueSeverityError
+    /// </summary>
+    public const string LiteralIssueSeverityError = "http://hl7.org/fhir/issue-severity#error";
+
+    /// <summary>
     /// Literal for code: Fatal
     /// </summary>
     public const string LiteralFatal = "fatal";
+
+    /// <summary>
+    /// Literal for code: IssueSeverityFatal
+    /// </summary>
+    public const string LiteralIssueSeverityFatal = "http://hl7.org/fhir/issue-severity#fatal";
 
     /// <summary>
     /// Literal for code: Information
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInformation = "information";
 
     /// <summary>
+    /// Literal for code: IssueSeverityInformation
+    /// </summary>
+    public const string LiteralIssueSeverityInformation = "http://hl7.org/fhir/issue-severity#information";
+
+    /// <summary>
     /// Literal for code: Warning
     /// </summary>
     public const string LiteralWarning = "warning";
+
+    /// <summary>
+    /// Literal for code: IssueSeverityWarning
+    /// </summary>
+    public const string LiteralIssueSeverityWarning = "http://hl7.org/fhir/issue-severity#warning";
+
+    /// <summary>
+    /// Dictionary for looking up IssueSeverity Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "error", Error }, 
+      { "http://hl7.org/fhir/issue-severity#error", Error }, 
+      { "fatal", Fatal }, 
+      { "http://hl7.org/fhir/issue-severity#fatal", Fatal }, 
+      { "information", Information }, 
+      { "http://hl7.org/fhir/issue-severity#information", Information }, 
+      { "warning", Warning }, 
+      { "http://hl7.org/fhir/issue-severity#warning", Warning }, 
+    };
   };
 }

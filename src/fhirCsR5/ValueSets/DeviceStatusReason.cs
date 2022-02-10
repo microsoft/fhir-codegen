@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDiscarded = "discarded";
 
     /// <summary>
+    /// Literal for code: DeviceStatusReasonDiscarded
+    /// </summary>
+    public const string LiteralDeviceStatusReasonDiscarded = "http://terminology.hl7.org/CodeSystem/device-status-reason#discarded";
+
+    /// <summary>
     /// Literal for code: Obsolete
     /// </summary>
     public const string LiteralObsolete = "obsolete";
 
     /// <summary>
+    /// Literal for code: DeviceStatusReasonObsolete
+    /// </summary>
+    public const string LiteralDeviceStatusReasonObsolete = "http://terminology.hl7.org/CodeSystem/device-status-reason#obsolete";
+
+    /// <summary>
     /// Literal for code: Removed
     /// </summary>
     public const string LiteralRemoved = "removed";
+
+    /// <summary>
+    /// Literal for code: DeviceStatusReasonRemoved
+    /// </summary>
+    public const string LiteralDeviceStatusReasonRemoved = "http://terminology.hl7.org/CodeSystem/device-status-reason#removed";
+
+    /// <summary>
+    /// Dictionary for looking up DeviceStatusReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "discarded", Discarded }, 
+      { "http://terminology.hl7.org/CodeSystem/device-status-reason#discarded", Discarded }, 
+      { "obsolete", Obsolete }, 
+      { "http://terminology.hl7.org/CodeSystem/device-status-reason#obsolete", Obsolete }, 
+      { "removed", Removed }, 
+      { "http://terminology.hl7.org/CodeSystem/device-status-reason#removed", Removed }, 
+    };
   };
 }

@@ -1551,6 +1551,10 @@ namespace fhirCsR2.Models
   public static class TestScriptSetupActionOperationAcceptCodes {
     public const string XML = "xml";
     public const string JSON = "json";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "xml",
+      "json",
+    };
   }
   /// <summary>
   /// Code Values for the TestScript.setup.action.operation.contentType field
@@ -1558,6 +1562,10 @@ namespace fhirCsR2.Models
   public static class TestScriptSetupActionOperationContentTypeCodes {
     public const string XML = "xml";
     public const string JSON = "json";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "xml",
+      "json",
+    };
   }
   /// <summary>
   /// Evaluates the results of previous operations to determine if the server under test behaves appropriately.
@@ -2128,6 +2136,10 @@ namespace fhirCsR2.Models
   public static class TestScriptSetupActionAssertContentTypeCodes {
     public const string XML = "xml";
     public const string JSON = "json";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "xml",
+      "json",
+    };
   }
   /// <summary>
   /// Code Values for the TestScript.setup.action.assert.direction field
@@ -2135,6 +2147,10 @@ namespace fhirCsR2.Models
   public static class TestScriptSetupActionAssertDirectionCodes {
     public const string RESPONSE = "response";
     public const string REQUEST = "request";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "response",
+      "request",
+    };
   }
   /// <summary>
   /// Code Values for the TestScript.setup.action.assert.operator field
@@ -2150,6 +2166,18 @@ namespace fhirCsR2.Models
     public const string NOTEMPTY = "notEmpty";
     public const string CONTAINS = "contains";
     public const string NOTCONTAINS = "notContains";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "equals",
+      "notEquals",
+      "in",
+      "notIn",
+      "greaterThan",
+      "lessThan",
+      "empty",
+      "notEmpty",
+      "contains",
+      "notContains",
+    };
   }
   /// <summary>
   /// Code Values for the TestScript.setup.action.assert.response field
@@ -2167,6 +2195,20 @@ namespace fhirCsR2.Models
     public const string GONE = "gone";
     public const string PRECONDITIONFAILED = "preconditionFailed";
     public const string UNPROCESSABLE = "unprocessable";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "okay",
+      "created",
+      "noContent",
+      "notModified",
+      "bad",
+      "forbidden",
+      "notFound",
+      "methodNotAllowed",
+      "conflict",
+      "gone",
+      "preconditionFailed",
+      "unprocessable",
+    };
   }
   /// <summary>
   /// Action would contain either an operation or an assertion.
@@ -3523,5 +3565,10 @@ namespace fhirCsR2.Models
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+    };
   }
 }

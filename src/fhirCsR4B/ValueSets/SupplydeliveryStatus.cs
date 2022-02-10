@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAbandoned = "abandoned";
 
     /// <summary>
+    /// Literal for code: SupplydeliveryStatusAbandoned
+    /// </summary>
+    public const string LiteralSupplydeliveryStatusAbandoned = "http://hl7.org/fhir/supplydelivery-status#abandoned";
+
+    /// <summary>
     /// Literal for code: Delivered
     /// </summary>
     public const string LiteralDelivered = "completed";
+
+    /// <summary>
+    /// Literal for code: SupplydeliveryStatusDelivered
+    /// </summary>
+    public const string LiteralSupplydeliveryStatusDelivered = "http://hl7.org/fhir/supplydelivery-status#completed";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: SupplydeliveryStatusEnteredInError
+    /// </summary>
+    public const string LiteralSupplydeliveryStatusEnteredInError = "http://hl7.org/fhir/supplydelivery-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: InProgress
     /// </summary>
     public const string LiteralInProgress = "in-progress";
+
+    /// <summary>
+    /// Literal for code: SupplydeliveryStatusInProgress
+    /// </summary>
+    public const string LiteralSupplydeliveryStatusInProgress = "http://hl7.org/fhir/supplydelivery-status#in-progress";
+
+    /// <summary>
+    /// Dictionary for looking up SupplydeliveryStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "abandoned", Abandoned }, 
+      { "http://hl7.org/fhir/supplydelivery-status#abandoned", Abandoned }, 
+      { "completed", Delivered }, 
+      { "http://hl7.org/fhir/supplydelivery-status#completed", Delivered }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/supplydelivery-status#entered-in-error", EnteredInError }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/supplydelivery-status#in-progress", InProgress }, 
+    };
   };
 }

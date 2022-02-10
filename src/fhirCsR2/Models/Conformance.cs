@@ -830,6 +830,17 @@ namespace fhirCsR2.Models
     public const string HISTORY_TYPE = "history-type";
     public const string CREATE = "create";
     public const string SEARCH_TYPE = "search-type";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "read",
+      "vread",
+      "update",
+      "delete",
+      "history-instance",
+      "validate",
+      "history-type",
+      "create",
+      "search-type",
+    };
   }
   /// <summary>
   /// Search parameters for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation.
@@ -1274,6 +1285,18 @@ namespace fhirCsR2.Models
     public const string BELOW = "below";
     public const string ABOVE = "above";
     public const string TYPE = "type";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "missing",
+      "exact",
+      "contains",
+      "not",
+      "text",
+      "in",
+      "not-in",
+      "below",
+      "above",
+      "type",
+    };
   }
   /// <summary>
   /// Code Values for the Conformance.rest.resource.searchParam.type field
@@ -1287,6 +1310,16 @@ namespace fhirCsR2.Models
     public const string COMPOSITE = "composite";
     public const string QUANTITY = "quantity";
     public const string URI = "uri";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "number",
+      "date",
+      "string",
+      "token",
+      "reference",
+      "composite",
+      "quantity",
+      "uri",
+    };
   }
   /// <summary>
   /// A specification of the restful capabilities of the solution for a specific resource type.
@@ -1825,6 +1858,11 @@ namespace fhirCsR2.Models
     public const string NOT_SUPPORTED = "not-supported";
     public const string SINGLE = "single";
     public const string MULTIPLE = "multiple";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "not-supported",
+      "single",
+      "multiple",
+    };
   }
   /// <summary>
   /// Code Values for the Conformance.rest.resource.versioning field
@@ -1833,6 +1871,11 @@ namespace fhirCsR2.Models
     public const string NO_VERSION = "no-version";
     public const string VERSIONED = "versioned";
     public const string VERSIONED_UPDATE = "versioned-update";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "no-version",
+      "versioned",
+      "versioned-update",
+    };
   }
   /// <summary>
   /// A specification of restful operations supported by the system.
@@ -1956,6 +1999,11 @@ namespace fhirCsR2.Models
     public const string TRANSACTION = "transaction";
     public const string SEARCH_SYSTEM = "search-system";
     public const string HISTORY_SYSTEM = "history-system";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "transaction",
+      "search-system",
+      "history-system",
+    };
   }
   /// <summary>
   /// Definition of an operation or a named query and with its parameters and their meaning and type.
@@ -2485,6 +2533,10 @@ namespace fhirCsR2.Models
   public static class ConformanceRestModeCodes {
     public const string CLIENT = "client";
     public const string SERVER = "server";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "client",
+      "server",
+    };
   }
   /// <summary>
   /// Code Values for the Conformance.rest.transactionMode field
@@ -2494,6 +2546,12 @@ namespace fhirCsR2.Models
     public const string BATCH = "batch";
     public const string TRANSACTION = "transaction";
     public const string BOTH = "both";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "not-supported",
+      "batch",
+      "transaction",
+      "both",
+    };
   }
   /// <summary>
   /// An endpoint (network accessible address) to which messages and/or replies are to be sent.
@@ -2820,6 +2878,11 @@ namespace fhirCsR2.Models
     public const string CONSEQUENCE = "Consequence";
     public const string CURRENCY = "Currency";
     public const string NOTIFICATION = "Notification";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "Consequence",
+      "Currency",
+      "Notification",
+    };
   }
   /// <summary>
   /// Code Values for the Conformance.messaging.event.mode field
@@ -2827,6 +2890,10 @@ namespace fhirCsR2.Models
   public static class ConformanceMessagingEventModeCodes {
     public const string SENDER = "sender";
     public const string RECEIVER = "receiver";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "sender",
+      "receiver",
+    };
   }
   /// <summary>
   /// A description of the messaging capabilities of the solution.
@@ -3152,6 +3219,10 @@ namespace fhirCsR2.Models
   public static class ConformanceDocumentModeCodes {
     public const string PRODUCER = "producer";
     public const string CONSUMER = "consumer";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "producer",
+      "consumer",
+    };
   }
   /// <summary>
   /// A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
@@ -3930,6 +4001,12 @@ namespace fhirCsR2.Models
     public const string EXTENSIONS = "extensions";
     public const string ELEMENTS = "elements";
     public const string BOTH = "both";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "no",
+      "extensions",
+      "elements",
+      "both",
+    };
   }
   /// <summary>
   /// Code Values for the Conformance.format field
@@ -3938,6 +4015,11 @@ namespace fhirCsR2.Models
     public const string XML = "xml";
     public const string JSON = "json";
     public const string MIME = "MIME";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "xml",
+      "json",
+      "MIME",
+    };
   }
   /// <summary>
   /// Code Values for the Conformance.kind field
@@ -3946,6 +4028,11 @@ namespace fhirCsR2.Models
     public const string INSTANCE = "instance";
     public const string CAPABILITY = "capability";
     public const string REQUIREMENTS = "requirements";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "instance",
+      "capability",
+      "requirements",
+    };
   }
   /// <summary>
   /// Code Values for the Conformance.status field
@@ -3954,5 +4041,10 @@ namespace fhirCsR2.Models
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+    };
   }
 }

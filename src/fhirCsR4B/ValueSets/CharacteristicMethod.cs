@@ -25,5 +25,18 @@ namespace fhirCsR4B.ValueSets
     /// Literal for code: Default
     /// </summary>
     public const string LiteralDefault = "Default";
+
+    /// <summary>
+    /// Literal for code: CharacteristicMethodDefault
+    /// </summary>
+    public const string LiteralCharacteristicMethodDefault = "http://terminology.hl7.org/CodeSystem/characteristic-method#Default";
+
+    /// <summary>
+    /// Dictionary for looking up CharacteristicMethod Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "Default", Default }, 
+      { "http://terminology.hl7.org/CodeSystem/characteristic-method#Default", Default }, 
+    };
   };
 }

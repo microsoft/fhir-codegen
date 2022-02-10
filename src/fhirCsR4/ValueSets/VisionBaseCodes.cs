@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDown = "down";
 
     /// <summary>
+    /// Literal for code: VisionBaseCodesDown
+    /// </summary>
+    public const string LiteralVisionBaseCodesDown = "http://hl7.org/fhir/vision-base-codes#down";
+
+    /// <summary>
     /// Literal for code: In
     /// </summary>
     public const string LiteralIn = "in";
+
+    /// <summary>
+    /// Literal for code: VisionBaseCodesIn
+    /// </summary>
+    public const string LiteralVisionBaseCodesIn = "http://hl7.org/fhir/vision-base-codes#in";
 
     /// <summary>
     /// Literal for code: Out
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOut = "out";
 
     /// <summary>
+    /// Literal for code: VisionBaseCodesOut
+    /// </summary>
+    public const string LiteralVisionBaseCodesOut = "http://hl7.org/fhir/vision-base-codes#out";
+
+    /// <summary>
     /// Literal for code: Up
     /// </summary>
     public const string LiteralUp = "up";
+
+    /// <summary>
+    /// Literal for code: VisionBaseCodesUp
+    /// </summary>
+    public const string LiteralVisionBaseCodesUp = "http://hl7.org/fhir/vision-base-codes#up";
+
+    /// <summary>
+    /// Dictionary for looking up VisionBaseCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "down", Down }, 
+      { "http://hl7.org/fhir/vision-base-codes#down", Down }, 
+      { "in", In }, 
+      { "http://hl7.org/fhir/vision-base-codes#in", In }, 
+      { "out", Out }, 
+      { "http://hl7.org/fhir/vision-base-codes#out", Out }, 
+      { "up", Up }, 
+      { "http://hl7.org/fhir/vision-base-codes#up", Up }, 
+    };
   };
 }

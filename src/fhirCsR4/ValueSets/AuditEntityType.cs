@@ -1388,9 +1388,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPerson_audit_entity_type = "1";
 
     /// <summary>
+    /// Literal for code: AuditEntityTypePerson_audit_entity_type
+    /// </summary>
+    public const string LiteralAuditEntityTypePerson_audit_entity_type = "http://terminology.hl7.org/CodeSystem/audit-entity-type#1";
+
+    /// <summary>
     /// Literal for code: SystemObject_audit_entity_type
     /// </summary>
     public const string LiteralSystemObject_audit_entity_type = "2";
+
+    /// <summary>
+    /// Literal for code: AuditEntityTypeSystemObject_audit_entity_type
+    /// </summary>
+    public const string LiteralAuditEntityTypeSystemObject_audit_entity_type = "http://terminology.hl7.org/CodeSystem/audit-entity-type#2";
 
     /// <summary>
     /// Literal for code: Organization_audit_entity_type
@@ -1398,9 +1408,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOrganization_audit_entity_type = "3";
 
     /// <summary>
+    /// Literal for code: AuditEntityTypeOrganization_audit_entity_type
+    /// </summary>
+    public const string LiteralAuditEntityTypeOrganization_audit_entity_type = "http://terminology.hl7.org/CodeSystem/audit-entity-type#3";
+
+    /// <summary>
     /// Literal for code: Other_audit_entity_type
     /// </summary>
     public const string LiteralOther_audit_entity_type = "4";
+
+    /// <summary>
+    /// Literal for code: AuditEntityTypeOther_audit_entity_type
+    /// </summary>
+    public const string LiteralAuditEntityTypeOther_audit_entity_type = "http://terminology.hl7.org/CodeSystem/audit-entity-type#4";
 
     /// <summary>
     /// Literal for code: Account_resource_types
@@ -1408,9 +1428,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAccount_resource_types = "Account";
 
     /// <summary>
+    /// Literal for code: ResourceTypesAccount_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesAccount_resource_types = "http://hl7.org/fhir/resource-types#Account";
+
+    /// <summary>
     /// Literal for code: ActivityDefinition_resource_types
     /// </summary>
     public const string LiteralActivityDefinition_resource_types = "ActivityDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesActivityDefinition_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesActivityDefinition_resource_types = "http://hl7.org/fhir/resource-types#ActivityDefinition";
 
     /// <summary>
     /// Literal for code: AdverseEvent_resource_types
@@ -1418,9 +1448,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdverseEvent_resource_types = "AdverseEvent";
 
     /// <summary>
+    /// Literal for code: ResourceTypesAdverseEvent_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesAdverseEvent_resource_types = "http://hl7.org/fhir/resource-types#AdverseEvent";
+
+    /// <summary>
     /// Literal for code: AllergyIntolerance_resource_types
     /// </summary>
     public const string LiteralAllergyIntolerance_resource_types = "AllergyIntolerance";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesAllergyIntolerance_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesAllergyIntolerance_resource_types = "http://hl7.org/fhir/resource-types#AllergyIntolerance";
 
     /// <summary>
     /// Literal for code: Appointment_resource_types
@@ -1428,9 +1468,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAppointment_resource_types = "Appointment";
 
     /// <summary>
+    /// Literal for code: ResourceTypesAppointment_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesAppointment_resource_types = "http://hl7.org/fhir/resource-types#Appointment";
+
+    /// <summary>
     /// Literal for code: AppointmentResponse_resource_types
     /// </summary>
     public const string LiteralAppointmentResponse_resource_types = "AppointmentResponse";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesAppointmentResponse_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesAppointmentResponse_resource_types = "http://hl7.org/fhir/resource-types#AppointmentResponse";
 
     /// <summary>
     /// Literal for code: AuditEvent_resource_types
@@ -1438,9 +1488,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAuditEvent_resource_types = "AuditEvent";
 
     /// <summary>
+    /// Literal for code: ResourceTypesAuditEvent_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesAuditEvent_resource_types = "http://hl7.org/fhir/resource-types#AuditEvent";
+
+    /// <summary>
     /// Literal for code: Basic_resource_types
     /// </summary>
     public const string LiteralBasic_resource_types = "Basic";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesBasic_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesBasic_resource_types = "http://hl7.org/fhir/resource-types#Basic";
 
     /// <summary>
     /// Literal for code: Binary_resource_types
@@ -1448,9 +1508,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBinary_resource_types = "Binary";
 
     /// <summary>
+    /// Literal for code: ResourceTypesBinary_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesBinary_resource_types = "http://hl7.org/fhir/resource-types#Binary";
+
+    /// <summary>
     /// Literal for code: BiologicallyDerivedProduct_resource_types
     /// </summary>
     public const string LiteralBiologicallyDerivedProduct_resource_types = "BiologicallyDerivedProduct";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesBiologicallyDerivedProduct_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesBiologicallyDerivedProduct_resource_types = "http://hl7.org/fhir/resource-types#BiologicallyDerivedProduct";
 
     /// <summary>
     /// Literal for code: BodyStructure_resource_types
@@ -1458,9 +1528,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBodyStructure_resource_types = "BodyStructure";
 
     /// <summary>
+    /// Literal for code: ResourceTypesBodyStructure_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesBodyStructure_resource_types = "http://hl7.org/fhir/resource-types#BodyStructure";
+
+    /// <summary>
     /// Literal for code: Bundle_resource_types
     /// </summary>
     public const string LiteralBundle_resource_types = "Bundle";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesBundle_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesBundle_resource_types = "http://hl7.org/fhir/resource-types#Bundle";
 
     /// <summary>
     /// Literal for code: CapabilityStatement_resource_types
@@ -1468,9 +1548,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCapabilityStatement_resource_types = "CapabilityStatement";
 
     /// <summary>
+    /// Literal for code: ResourceTypesCapabilityStatement_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesCapabilityStatement_resource_types = "http://hl7.org/fhir/resource-types#CapabilityStatement";
+
+    /// <summary>
     /// Literal for code: CarePlan_resource_types
     /// </summary>
     public const string LiteralCarePlan_resource_types = "CarePlan";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesCarePlan_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesCarePlan_resource_types = "http://hl7.org/fhir/resource-types#CarePlan";
 
     /// <summary>
     /// Literal for code: CareTeam_resource_types
@@ -1478,9 +1568,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCareTeam_resource_types = "CareTeam";
 
     /// <summary>
+    /// Literal for code: ResourceTypesCareTeam_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesCareTeam_resource_types = "http://hl7.org/fhir/resource-types#CareTeam";
+
+    /// <summary>
     /// Literal for code: CatalogEntry_resource_types
     /// </summary>
     public const string LiteralCatalogEntry_resource_types = "CatalogEntry";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesCatalogEntry_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesCatalogEntry_resource_types = "http://hl7.org/fhir/resource-types#CatalogEntry";
 
     /// <summary>
     /// Literal for code: ChargeItem_resource_types
@@ -1488,9 +1588,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChargeItem_resource_types = "ChargeItem";
 
     /// <summary>
+    /// Literal for code: ResourceTypesChargeItem_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesChargeItem_resource_types = "http://hl7.org/fhir/resource-types#ChargeItem";
+
+    /// <summary>
     /// Literal for code: ChargeItemDefinition_resource_types
     /// </summary>
     public const string LiteralChargeItemDefinition_resource_types = "ChargeItemDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesChargeItemDefinition_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesChargeItemDefinition_resource_types = "http://hl7.org/fhir/resource-types#ChargeItemDefinition";
 
     /// <summary>
     /// Literal for code: Claim_resource_types
@@ -1498,9 +1608,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClaim_resource_types = "Claim";
 
     /// <summary>
+    /// Literal for code: ResourceTypesClaim_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesClaim_resource_types = "http://hl7.org/fhir/resource-types#Claim";
+
+    /// <summary>
     /// Literal for code: ClaimResponse_resource_types
     /// </summary>
     public const string LiteralClaimResponse_resource_types = "ClaimResponse";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesClaimResponse_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesClaimResponse_resource_types = "http://hl7.org/fhir/resource-types#ClaimResponse";
 
     /// <summary>
     /// Literal for code: ClinicalImpression_resource_types
@@ -1508,9 +1628,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalImpression_resource_types = "ClinicalImpression";
 
     /// <summary>
+    /// Literal for code: ResourceTypesClinicalImpression_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesClinicalImpression_resource_types = "http://hl7.org/fhir/resource-types#ClinicalImpression";
+
+    /// <summary>
     /// Literal for code: CodeSystem_resource_types
     /// </summary>
     public const string LiteralCodeSystem_resource_types = "CodeSystem";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesCodeSystem_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesCodeSystem_resource_types = "http://hl7.org/fhir/resource-types#CodeSystem";
 
     /// <summary>
     /// Literal for code: Communication_resource_types
@@ -1518,9 +1648,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommunication_resource_types = "Communication";
 
     /// <summary>
+    /// Literal for code: ResourceTypesCommunication_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesCommunication_resource_types = "http://hl7.org/fhir/resource-types#Communication";
+
+    /// <summary>
     /// Literal for code: CommunicationRequest_resource_types
     /// </summary>
     public const string LiteralCommunicationRequest_resource_types = "CommunicationRequest";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesCommunicationRequest_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesCommunicationRequest_resource_types = "http://hl7.org/fhir/resource-types#CommunicationRequest";
 
     /// <summary>
     /// Literal for code: CompartmentDefinition_resource_types
@@ -1528,9 +1668,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCompartmentDefinition_resource_types = "CompartmentDefinition";
 
     /// <summary>
+    /// Literal for code: ResourceTypesCompartmentDefinition_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesCompartmentDefinition_resource_types = "http://hl7.org/fhir/resource-types#CompartmentDefinition";
+
+    /// <summary>
     /// Literal for code: Composition_resource_types
     /// </summary>
     public const string LiteralComposition_resource_types = "Composition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesComposition_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesComposition_resource_types = "http://hl7.org/fhir/resource-types#Composition";
 
     /// <summary>
     /// Literal for code: ConceptMap_resource_types
@@ -1538,9 +1688,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConceptMap_resource_types = "ConceptMap";
 
     /// <summary>
+    /// Literal for code: ResourceTypesConceptMap_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesConceptMap_resource_types = "http://hl7.org/fhir/resource-types#ConceptMap";
+
+    /// <summary>
     /// Literal for code: Condition_resource_types
     /// </summary>
     public const string LiteralCondition_resource_types = "Condition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesCondition_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesCondition_resource_types = "http://hl7.org/fhir/resource-types#Condition";
 
     /// <summary>
     /// Literal for code: Consent_resource_types
@@ -1548,9 +1708,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConsent_resource_types = "Consent";
 
     /// <summary>
+    /// Literal for code: ResourceTypesConsent_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesConsent_resource_types = "http://hl7.org/fhir/resource-types#Consent";
+
+    /// <summary>
     /// Literal for code: Contract_resource_types
     /// </summary>
     public const string LiteralContract_resource_types = "Contract";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesContract_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesContract_resource_types = "http://hl7.org/fhir/resource-types#Contract";
 
     /// <summary>
     /// Literal for code: Coverage_resource_types
@@ -1558,9 +1728,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoverage_resource_types = "Coverage";
 
     /// <summary>
+    /// Literal for code: ResourceTypesCoverage_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesCoverage_resource_types = "http://hl7.org/fhir/resource-types#Coverage";
+
+    /// <summary>
     /// Literal for code: CoverageEligibilityRequest_resource_types
     /// </summary>
     public const string LiteralCoverageEligibilityRequest_resource_types = "CoverageEligibilityRequest";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesCoverageEligibilityRequest_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesCoverageEligibilityRequest_resource_types = "http://hl7.org/fhir/resource-types#CoverageEligibilityRequest";
 
     /// <summary>
     /// Literal for code: CoverageEligibilityResponse_resource_types
@@ -1568,9 +1748,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoverageEligibilityResponse_resource_types = "CoverageEligibilityResponse";
 
     /// <summary>
+    /// Literal for code: ResourceTypesCoverageEligibilityResponse_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesCoverageEligibilityResponse_resource_types = "http://hl7.org/fhir/resource-types#CoverageEligibilityResponse";
+
+    /// <summary>
     /// Literal for code: DetectedIssue_resource_types
     /// </summary>
     public const string LiteralDetectedIssue_resource_types = "DetectedIssue";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesDetectedIssue_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesDetectedIssue_resource_types = "http://hl7.org/fhir/resource-types#DetectedIssue";
 
     /// <summary>
     /// Literal for code: Device_resource_types
@@ -1578,9 +1768,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDevice_resource_types = "Device";
 
     /// <summary>
+    /// Literal for code: ResourceTypesDevice_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesDevice_resource_types = "http://hl7.org/fhir/resource-types#Device";
+
+    /// <summary>
     /// Literal for code: DeviceDefinition_resource_types
     /// </summary>
     public const string LiteralDeviceDefinition_resource_types = "DeviceDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesDeviceDefinition_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesDeviceDefinition_resource_types = "http://hl7.org/fhir/resource-types#DeviceDefinition";
 
     /// <summary>
     /// Literal for code: DeviceMetric_resource_types
@@ -1588,9 +1788,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeviceMetric_resource_types = "DeviceMetric";
 
     /// <summary>
+    /// Literal for code: ResourceTypesDeviceMetric_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesDeviceMetric_resource_types = "http://hl7.org/fhir/resource-types#DeviceMetric";
+
+    /// <summary>
     /// Literal for code: DeviceRequest_resource_types
     /// </summary>
     public const string LiteralDeviceRequest_resource_types = "DeviceRequest";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesDeviceRequest_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesDeviceRequest_resource_types = "http://hl7.org/fhir/resource-types#DeviceRequest";
 
     /// <summary>
     /// Literal for code: DeviceUseStatement_resource_types
@@ -1598,9 +1808,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeviceUseStatement_resource_types = "DeviceUseStatement";
 
     /// <summary>
+    /// Literal for code: ResourceTypesDeviceUseStatement_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesDeviceUseStatement_resource_types = "http://hl7.org/fhir/resource-types#DeviceUseStatement";
+
+    /// <summary>
     /// Literal for code: DiagnosticReport_resource_types
     /// </summary>
     public const string LiteralDiagnosticReport_resource_types = "DiagnosticReport";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesDiagnosticReport_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesDiagnosticReport_resource_types = "http://hl7.org/fhir/resource-types#DiagnosticReport";
 
     /// <summary>
     /// Literal for code: DocumentManifest_resource_types
@@ -1608,9 +1828,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDocumentManifest_resource_types = "DocumentManifest";
 
     /// <summary>
+    /// Literal for code: ResourceTypesDocumentManifest_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesDocumentManifest_resource_types = "http://hl7.org/fhir/resource-types#DocumentManifest";
+
+    /// <summary>
     /// Literal for code: DocumentReference_resource_types
     /// </summary>
     public const string LiteralDocumentReference_resource_types = "DocumentReference";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesDocumentReference_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesDocumentReference_resource_types = "http://hl7.org/fhir/resource-types#DocumentReference";
 
     /// <summary>
     /// Literal for code: DomainResource_resource_types
@@ -1618,9 +1848,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDomainResource_resource_types = "DomainResource";
 
     /// <summary>
+    /// Literal for code: ResourceTypesDomainResource_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesDomainResource_resource_types = "http://hl7.org/fhir/resource-types#DomainResource";
+
+    /// <summary>
     /// Literal for code: EffectEvidenceSynthesis_resource_types
     /// </summary>
     public const string LiteralEffectEvidenceSynthesis_resource_types = "EffectEvidenceSynthesis";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesEffectEvidenceSynthesis_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesEffectEvidenceSynthesis_resource_types = "http://hl7.org/fhir/resource-types#EffectEvidenceSynthesis";
 
     /// <summary>
     /// Literal for code: Encounter_resource_types
@@ -1628,9 +1868,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEncounter_resource_types = "Encounter";
 
     /// <summary>
+    /// Literal for code: ResourceTypesEncounter_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesEncounter_resource_types = "http://hl7.org/fhir/resource-types#Encounter";
+
+    /// <summary>
     /// Literal for code: Endpoint_resource_types
     /// </summary>
     public const string LiteralEndpoint_resource_types = "Endpoint";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesEndpoint_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesEndpoint_resource_types = "http://hl7.org/fhir/resource-types#Endpoint";
 
     /// <summary>
     /// Literal for code: EnrollmentRequest_resource_types
@@ -1638,9 +1888,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEnrollmentRequest_resource_types = "EnrollmentRequest";
 
     /// <summary>
+    /// Literal for code: ResourceTypesEnrollmentRequest_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesEnrollmentRequest_resource_types = "http://hl7.org/fhir/resource-types#EnrollmentRequest";
+
+    /// <summary>
     /// Literal for code: EnrollmentResponse_resource_types
     /// </summary>
     public const string LiteralEnrollmentResponse_resource_types = "EnrollmentResponse";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesEnrollmentResponse_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesEnrollmentResponse_resource_types = "http://hl7.org/fhir/resource-types#EnrollmentResponse";
 
     /// <summary>
     /// Literal for code: EpisodeOfCare_resource_types
@@ -1648,9 +1908,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEpisodeOfCare_resource_types = "EpisodeOfCare";
 
     /// <summary>
+    /// Literal for code: ResourceTypesEpisodeOfCare_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesEpisodeOfCare_resource_types = "http://hl7.org/fhir/resource-types#EpisodeOfCare";
+
+    /// <summary>
     /// Literal for code: EventDefinition_resource_types
     /// </summary>
     public const string LiteralEventDefinition_resource_types = "EventDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesEventDefinition_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesEventDefinition_resource_types = "http://hl7.org/fhir/resource-types#EventDefinition";
 
     /// <summary>
     /// Literal for code: Evidence_resource_types
@@ -1658,9 +1928,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEvidence_resource_types = "Evidence";
 
     /// <summary>
+    /// Literal for code: ResourceTypesEvidence_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesEvidence_resource_types = "http://hl7.org/fhir/resource-types#Evidence";
+
+    /// <summary>
     /// Literal for code: EvidenceVariable_resource_types
     /// </summary>
     public const string LiteralEvidenceVariable_resource_types = "EvidenceVariable";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesEvidenceVariable_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesEvidenceVariable_resource_types = "http://hl7.org/fhir/resource-types#EvidenceVariable";
 
     /// <summary>
     /// Literal for code: ExampleScenario_resource_types
@@ -1668,9 +1948,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExampleScenario_resource_types = "ExampleScenario";
 
     /// <summary>
+    /// Literal for code: ResourceTypesExampleScenario_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesExampleScenario_resource_types = "http://hl7.org/fhir/resource-types#ExampleScenario";
+
+    /// <summary>
     /// Literal for code: ExplanationOfBenefit_resource_types
     /// </summary>
     public const string LiteralExplanationOfBenefit_resource_types = "ExplanationOfBenefit";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesExplanationOfBenefit_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesExplanationOfBenefit_resource_types = "http://hl7.org/fhir/resource-types#ExplanationOfBenefit";
 
     /// <summary>
     /// Literal for code: FamilyMemberHistory_resource_types
@@ -1678,9 +1968,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFamilyMemberHistory_resource_types = "FamilyMemberHistory";
 
     /// <summary>
+    /// Literal for code: ResourceTypesFamilyMemberHistory_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesFamilyMemberHistory_resource_types = "http://hl7.org/fhir/resource-types#FamilyMemberHistory";
+
+    /// <summary>
     /// Literal for code: Flag_resource_types
     /// </summary>
     public const string LiteralFlag_resource_types = "Flag";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesFlag_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesFlag_resource_types = "http://hl7.org/fhir/resource-types#Flag";
 
     /// <summary>
     /// Literal for code: Goal_resource_types
@@ -1688,9 +1988,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGoal_resource_types = "Goal";
 
     /// <summary>
+    /// Literal for code: ResourceTypesGoal_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesGoal_resource_types = "http://hl7.org/fhir/resource-types#Goal";
+
+    /// <summary>
     /// Literal for code: GraphDefinition_resource_types
     /// </summary>
     public const string LiteralGraphDefinition_resource_types = "GraphDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesGraphDefinition_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesGraphDefinition_resource_types = "http://hl7.org/fhir/resource-types#GraphDefinition";
 
     /// <summary>
     /// Literal for code: Group_resource_types
@@ -1698,9 +2008,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGroup_resource_types = "Group";
 
     /// <summary>
+    /// Literal for code: ResourceTypesGroup_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesGroup_resource_types = "http://hl7.org/fhir/resource-types#Group";
+
+    /// <summary>
     /// Literal for code: GuidanceResponse_resource_types
     /// </summary>
     public const string LiteralGuidanceResponse_resource_types = "GuidanceResponse";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesGuidanceResponse_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesGuidanceResponse_resource_types = "http://hl7.org/fhir/resource-types#GuidanceResponse";
 
     /// <summary>
     /// Literal for code: HealthcareService_resource_types
@@ -1708,9 +2028,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthcareService_resource_types = "HealthcareService";
 
     /// <summary>
+    /// Literal for code: ResourceTypesHealthcareService_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesHealthcareService_resource_types = "http://hl7.org/fhir/resource-types#HealthcareService";
+
+    /// <summary>
     /// Literal for code: ImagingStudy_resource_types
     /// </summary>
     public const string LiteralImagingStudy_resource_types = "ImagingStudy";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesImagingStudy_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesImagingStudy_resource_types = "http://hl7.org/fhir/resource-types#ImagingStudy";
 
     /// <summary>
     /// Literal for code: Immunization_resource_types
@@ -1718,9 +2048,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImmunization_resource_types = "Immunization";
 
     /// <summary>
+    /// Literal for code: ResourceTypesImmunization_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesImmunization_resource_types = "http://hl7.org/fhir/resource-types#Immunization";
+
+    /// <summary>
     /// Literal for code: ImmunizationEvaluation_resource_types
     /// </summary>
     public const string LiteralImmunizationEvaluation_resource_types = "ImmunizationEvaluation";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesImmunizationEvaluation_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesImmunizationEvaluation_resource_types = "http://hl7.org/fhir/resource-types#ImmunizationEvaluation";
 
     /// <summary>
     /// Literal for code: ImmunizationRecommendation_resource_types
@@ -1728,9 +2068,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImmunizationRecommendation_resource_types = "ImmunizationRecommendation";
 
     /// <summary>
+    /// Literal for code: ResourceTypesImmunizationRecommendation_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesImmunizationRecommendation_resource_types = "http://hl7.org/fhir/resource-types#ImmunizationRecommendation";
+
+    /// <summary>
     /// Literal for code: ImplementationGuide_resource_types
     /// </summary>
     public const string LiteralImplementationGuide_resource_types = "ImplementationGuide";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesImplementationGuide_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesImplementationGuide_resource_types = "http://hl7.org/fhir/resource-types#ImplementationGuide";
 
     /// <summary>
     /// Literal for code: InsurancePlan_resource_types
@@ -1738,9 +2088,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInsurancePlan_resource_types = "InsurancePlan";
 
     /// <summary>
+    /// Literal for code: ResourceTypesInsurancePlan_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesInsurancePlan_resource_types = "http://hl7.org/fhir/resource-types#InsurancePlan";
+
+    /// <summary>
     /// Literal for code: Invoice_resource_types
     /// </summary>
     public const string LiteralInvoice_resource_types = "Invoice";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesInvoice_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesInvoice_resource_types = "http://hl7.org/fhir/resource-types#Invoice";
 
     /// <summary>
     /// Literal for code: Library_resource_types
@@ -1748,9 +2108,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLibrary_resource_types = "Library";
 
     /// <summary>
+    /// Literal for code: ResourceTypesLibrary_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesLibrary_resource_types = "http://hl7.org/fhir/resource-types#Library";
+
+    /// <summary>
     /// Literal for code: Linkage_resource_types
     /// </summary>
     public const string LiteralLinkage_resource_types = "Linkage";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesLinkage_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesLinkage_resource_types = "http://hl7.org/fhir/resource-types#Linkage";
 
     /// <summary>
     /// Literal for code: List_resource_types
@@ -1758,9 +2128,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralList_resource_types = "List";
 
     /// <summary>
+    /// Literal for code: ResourceTypesList_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesList_resource_types = "http://hl7.org/fhir/resource-types#List";
+
+    /// <summary>
     /// Literal for code: Location_resource_types
     /// </summary>
     public const string LiteralLocation_resource_types = "Location";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesLocation_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesLocation_resource_types = "http://hl7.org/fhir/resource-types#Location";
 
     /// <summary>
     /// Literal for code: Measure_resource_types
@@ -1768,9 +2148,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeasure_resource_types = "Measure";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMeasure_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMeasure_resource_types = "http://hl7.org/fhir/resource-types#Measure";
+
+    /// <summary>
     /// Literal for code: MeasureReport_resource_types
     /// </summary>
     public const string LiteralMeasureReport_resource_types = "MeasureReport";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMeasureReport_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMeasureReport_resource_types = "http://hl7.org/fhir/resource-types#MeasureReport";
 
     /// <summary>
     /// Literal for code: Media_resource_types
@@ -1778,9 +2168,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedia_resource_types = "Media";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedia_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedia_resource_types = "http://hl7.org/fhir/resource-types#Media";
+
+    /// <summary>
     /// Literal for code: Medication_resource_types
     /// </summary>
     public const string LiteralMedication_resource_types = "Medication";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedication_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedication_resource_types = "http://hl7.org/fhir/resource-types#Medication";
 
     /// <summary>
     /// Literal for code: MedicationAdministration_resource_types
@@ -1788,9 +2188,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicationAdministration_resource_types = "MedicationAdministration";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedicationAdministration_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedicationAdministration_resource_types = "http://hl7.org/fhir/resource-types#MedicationAdministration";
+
+    /// <summary>
     /// Literal for code: MedicationDispense_resource_types
     /// </summary>
     public const string LiteralMedicationDispense_resource_types = "MedicationDispense";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedicationDispense_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedicationDispense_resource_types = "http://hl7.org/fhir/resource-types#MedicationDispense";
 
     /// <summary>
     /// Literal for code: MedicationKnowledge_resource_types
@@ -1798,9 +2208,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicationKnowledge_resource_types = "MedicationKnowledge";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedicationKnowledge_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedicationKnowledge_resource_types = "http://hl7.org/fhir/resource-types#MedicationKnowledge";
+
+    /// <summary>
     /// Literal for code: MedicationRequest_resource_types
     /// </summary>
     public const string LiteralMedicationRequest_resource_types = "MedicationRequest";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedicationRequest_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedicationRequest_resource_types = "http://hl7.org/fhir/resource-types#MedicationRequest";
 
     /// <summary>
     /// Literal for code: MedicationStatement_resource_types
@@ -1808,9 +2228,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicationStatement_resource_types = "MedicationStatement";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedicationStatement_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedicationStatement_resource_types = "http://hl7.org/fhir/resource-types#MedicationStatement";
+
+    /// <summary>
     /// Literal for code: MedicinalProduct_resource_types
     /// </summary>
     public const string LiteralMedicinalProduct_resource_types = "MedicinalProduct";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProduct_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProduct_resource_types = "http://hl7.org/fhir/resource-types#MedicinalProduct";
 
     /// <summary>
     /// Literal for code: MedicinalProductAuthorization_resource_types
@@ -1818,9 +2248,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicinalProductAuthorization_resource_types = "MedicinalProductAuthorization";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductAuthorization_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductAuthorization_resource_types = "http://hl7.org/fhir/resource-types#MedicinalProductAuthorization";
+
+    /// <summary>
     /// Literal for code: MedicinalProductContraindication_resource_types
     /// </summary>
     public const string LiteralMedicinalProductContraindication_resource_types = "MedicinalProductContraindication";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductContraindication_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductContraindication_resource_types = "http://hl7.org/fhir/resource-types#MedicinalProductContraindication";
 
     /// <summary>
     /// Literal for code: MedicinalProductIndication_resource_types
@@ -1828,9 +2268,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicinalProductIndication_resource_types = "MedicinalProductIndication";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductIndication_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductIndication_resource_types = "http://hl7.org/fhir/resource-types#MedicinalProductIndication";
+
+    /// <summary>
     /// Literal for code: MedicinalProductIngredient_resource_types
     /// </summary>
     public const string LiteralMedicinalProductIngredient_resource_types = "MedicinalProductIngredient";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductIngredient_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductIngredient_resource_types = "http://hl7.org/fhir/resource-types#MedicinalProductIngredient";
 
     /// <summary>
     /// Literal for code: MedicinalProductInteraction_resource_types
@@ -1838,9 +2288,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicinalProductInteraction_resource_types = "MedicinalProductInteraction";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductInteraction_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductInteraction_resource_types = "http://hl7.org/fhir/resource-types#MedicinalProductInteraction";
+
+    /// <summary>
     /// Literal for code: MedicinalProductManufactured_resource_types
     /// </summary>
     public const string LiteralMedicinalProductManufactured_resource_types = "MedicinalProductManufactured";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductManufactured_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductManufactured_resource_types = "http://hl7.org/fhir/resource-types#MedicinalProductManufactured";
 
     /// <summary>
     /// Literal for code: MedicinalProductPackaged_resource_types
@@ -1848,9 +2308,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicinalProductPackaged_resource_types = "MedicinalProductPackaged";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductPackaged_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductPackaged_resource_types = "http://hl7.org/fhir/resource-types#MedicinalProductPackaged";
+
+    /// <summary>
     /// Literal for code: MedicinalProductPharmaceutical_resource_types
     /// </summary>
     public const string LiteralMedicinalProductPharmaceutical_resource_types = "MedicinalProductPharmaceutical";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductPharmaceutical_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductPharmaceutical_resource_types = "http://hl7.org/fhir/resource-types#MedicinalProductPharmaceutical";
 
     /// <summary>
     /// Literal for code: MedicinalProductUndesirableEffect_resource_types
@@ -1858,9 +2328,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicinalProductUndesirableEffect_resource_types = "MedicinalProductUndesirableEffect";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductUndesirableEffect_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductUndesirableEffect_resource_types = "http://hl7.org/fhir/resource-types#MedicinalProductUndesirableEffect";
+
+    /// <summary>
     /// Literal for code: MessageDefinition_resource_types
     /// </summary>
     public const string LiteralMessageDefinition_resource_types = "MessageDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMessageDefinition_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMessageDefinition_resource_types = "http://hl7.org/fhir/resource-types#MessageDefinition";
 
     /// <summary>
     /// Literal for code: MessageHeader_resource_types
@@ -1868,9 +2348,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMessageHeader_resource_types = "MessageHeader";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMessageHeader_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMessageHeader_resource_types = "http://hl7.org/fhir/resource-types#MessageHeader";
+
+    /// <summary>
     /// Literal for code: MolecularSequence_resource_types
     /// </summary>
     public const string LiteralMolecularSequence_resource_types = "MolecularSequence";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMolecularSequence_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesMolecularSequence_resource_types = "http://hl7.org/fhir/resource-types#MolecularSequence";
 
     /// <summary>
     /// Literal for code: NamingSystem_resource_types
@@ -1878,9 +2368,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNamingSystem_resource_types = "NamingSystem";
 
     /// <summary>
+    /// Literal for code: ResourceTypesNamingSystem_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesNamingSystem_resource_types = "http://hl7.org/fhir/resource-types#NamingSystem";
+
+    /// <summary>
     /// Literal for code: NutritionOrder_resource_types
     /// </summary>
     public const string LiteralNutritionOrder_resource_types = "NutritionOrder";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesNutritionOrder_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesNutritionOrder_resource_types = "http://hl7.org/fhir/resource-types#NutritionOrder";
 
     /// <summary>
     /// Literal for code: Observation_resource_types
@@ -1888,9 +2388,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralObservation_resource_types = "Observation";
 
     /// <summary>
+    /// Literal for code: ResourceTypesObservation_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesObservation_resource_types = "http://hl7.org/fhir/resource-types#Observation";
+
+    /// <summary>
     /// Literal for code: ObservationDefinition_resource_types
     /// </summary>
     public const string LiteralObservationDefinition_resource_types = "ObservationDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesObservationDefinition_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesObservationDefinition_resource_types = "http://hl7.org/fhir/resource-types#ObservationDefinition";
 
     /// <summary>
     /// Literal for code: OperationDefinition_resource_types
@@ -1898,9 +2408,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOperationDefinition_resource_types = "OperationDefinition";
 
     /// <summary>
+    /// Literal for code: ResourceTypesOperationDefinition_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesOperationDefinition_resource_types = "http://hl7.org/fhir/resource-types#OperationDefinition";
+
+    /// <summary>
     /// Literal for code: OperationOutcome_resource_types
     /// </summary>
     public const string LiteralOperationOutcome_resource_types = "OperationOutcome";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesOperationOutcome_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesOperationOutcome_resource_types = "http://hl7.org/fhir/resource-types#OperationOutcome";
 
     /// <summary>
     /// Literal for code: Organization_resource_types
@@ -1908,9 +2428,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOrganization_resource_types = "Organization";
 
     /// <summary>
+    /// Literal for code: ResourceTypesOrganization_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesOrganization_resource_types = "http://hl7.org/fhir/resource-types#Organization";
+
+    /// <summary>
     /// Literal for code: OrganizationAffiliation_resource_types
     /// </summary>
     public const string LiteralOrganizationAffiliation_resource_types = "OrganizationAffiliation";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesOrganizationAffiliation_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesOrganizationAffiliation_resource_types = "http://hl7.org/fhir/resource-types#OrganizationAffiliation";
 
     /// <summary>
     /// Literal for code: Parameters_resource_types
@@ -1918,9 +2448,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParameters_resource_types = "Parameters";
 
     /// <summary>
+    /// Literal for code: ResourceTypesParameters_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesParameters_resource_types = "http://hl7.org/fhir/resource-types#Parameters";
+
+    /// <summary>
     /// Literal for code: Patient_resource_types
     /// </summary>
     public const string LiteralPatient_resource_types = "Patient";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesPatient_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesPatient_resource_types = "http://hl7.org/fhir/resource-types#Patient";
 
     /// <summary>
     /// Literal for code: PaymentNotice_resource_types
@@ -1928,9 +2468,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPaymentNotice_resource_types = "PaymentNotice";
 
     /// <summary>
+    /// Literal for code: ResourceTypesPaymentNotice_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesPaymentNotice_resource_types = "http://hl7.org/fhir/resource-types#PaymentNotice";
+
+    /// <summary>
     /// Literal for code: PaymentReconciliation_resource_types
     /// </summary>
     public const string LiteralPaymentReconciliation_resource_types = "PaymentReconciliation";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesPaymentReconciliation_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesPaymentReconciliation_resource_types = "http://hl7.org/fhir/resource-types#PaymentReconciliation";
 
     /// <summary>
     /// Literal for code: Person_resource_types
@@ -1938,9 +2488,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPerson_resource_types = "Person";
 
     /// <summary>
+    /// Literal for code: ResourceTypesPerson_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesPerson_resource_types = "http://hl7.org/fhir/resource-types#Person";
+
+    /// <summary>
     /// Literal for code: PlanDefinition_resource_types
     /// </summary>
     public const string LiteralPlanDefinition_resource_types = "PlanDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesPlanDefinition_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesPlanDefinition_resource_types = "http://hl7.org/fhir/resource-types#PlanDefinition";
 
     /// <summary>
     /// Literal for code: Practitioner_resource_types
@@ -1948,9 +2508,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPractitioner_resource_types = "Practitioner";
 
     /// <summary>
+    /// Literal for code: ResourceTypesPractitioner_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesPractitioner_resource_types = "http://hl7.org/fhir/resource-types#Practitioner";
+
+    /// <summary>
     /// Literal for code: PractitionerRole_resource_types
     /// </summary>
     public const string LiteralPractitionerRole_resource_types = "PractitionerRole";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesPractitionerRole_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesPractitionerRole_resource_types = "http://hl7.org/fhir/resource-types#PractitionerRole";
 
     /// <summary>
     /// Literal for code: Procedure_resource_types
@@ -1958,9 +2528,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProcedure_resource_types = "Procedure";
 
     /// <summary>
+    /// Literal for code: ResourceTypesProcedure_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesProcedure_resource_types = "http://hl7.org/fhir/resource-types#Procedure";
+
+    /// <summary>
     /// Literal for code: Provenance_resource_types
     /// </summary>
     public const string LiteralProvenance_resource_types = "Provenance";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesProvenance_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesProvenance_resource_types = "http://hl7.org/fhir/resource-types#Provenance";
 
     /// <summary>
     /// Literal for code: Questionnaire_resource_types
@@ -1968,9 +2548,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralQuestionnaire_resource_types = "Questionnaire";
 
     /// <summary>
+    /// Literal for code: ResourceTypesQuestionnaire_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesQuestionnaire_resource_types = "http://hl7.org/fhir/resource-types#Questionnaire";
+
+    /// <summary>
     /// Literal for code: QuestionnaireResponse_resource_types
     /// </summary>
     public const string LiteralQuestionnaireResponse_resource_types = "QuestionnaireResponse";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesQuestionnaireResponse_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesQuestionnaireResponse_resource_types = "http://hl7.org/fhir/resource-types#QuestionnaireResponse";
 
     /// <summary>
     /// Literal for code: RelatedPerson_resource_types
@@ -1978,9 +2568,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRelatedPerson_resource_types = "RelatedPerson";
 
     /// <summary>
+    /// Literal for code: ResourceTypesRelatedPerson_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesRelatedPerson_resource_types = "http://hl7.org/fhir/resource-types#RelatedPerson";
+
+    /// <summary>
     /// Literal for code: RequestGroup_resource_types
     /// </summary>
     public const string LiteralRequestGroup_resource_types = "RequestGroup";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesRequestGroup_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesRequestGroup_resource_types = "http://hl7.org/fhir/resource-types#RequestGroup";
 
     /// <summary>
     /// Literal for code: ResearchDefinition_resource_types
@@ -1988,9 +2588,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralResearchDefinition_resource_types = "ResearchDefinition";
 
     /// <summary>
+    /// Literal for code: ResourceTypesResearchDefinition_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesResearchDefinition_resource_types = "http://hl7.org/fhir/resource-types#ResearchDefinition";
+
+    /// <summary>
     /// Literal for code: ResearchElementDefinition_resource_types
     /// </summary>
     public const string LiteralResearchElementDefinition_resource_types = "ResearchElementDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesResearchElementDefinition_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesResearchElementDefinition_resource_types = "http://hl7.org/fhir/resource-types#ResearchElementDefinition";
 
     /// <summary>
     /// Literal for code: ResearchStudy_resource_types
@@ -1998,9 +2608,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralResearchStudy_resource_types = "ResearchStudy";
 
     /// <summary>
+    /// Literal for code: ResourceTypesResearchStudy_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesResearchStudy_resource_types = "http://hl7.org/fhir/resource-types#ResearchStudy";
+
+    /// <summary>
     /// Literal for code: ResearchSubject_resource_types
     /// </summary>
     public const string LiteralResearchSubject_resource_types = "ResearchSubject";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesResearchSubject_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesResearchSubject_resource_types = "http://hl7.org/fhir/resource-types#ResearchSubject";
 
     /// <summary>
     /// Literal for code: Resource_resource_types
@@ -2008,9 +2628,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralResource_resource_types = "Resource";
 
     /// <summary>
+    /// Literal for code: ResourceTypesResource_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesResource_resource_types = "http://hl7.org/fhir/resource-types#Resource";
+
+    /// <summary>
     /// Literal for code: RiskAssessment_resource_types
     /// </summary>
     public const string LiteralRiskAssessment_resource_types = "RiskAssessment";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesRiskAssessment_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesRiskAssessment_resource_types = "http://hl7.org/fhir/resource-types#RiskAssessment";
 
     /// <summary>
     /// Literal for code: RiskEvidenceSynthesis_resource_types
@@ -2018,9 +2648,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRiskEvidenceSynthesis_resource_types = "RiskEvidenceSynthesis";
 
     /// <summary>
+    /// Literal for code: ResourceTypesRiskEvidenceSynthesis_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesRiskEvidenceSynthesis_resource_types = "http://hl7.org/fhir/resource-types#RiskEvidenceSynthesis";
+
+    /// <summary>
     /// Literal for code: Schedule_resource_types
     /// </summary>
     public const string LiteralSchedule_resource_types = "Schedule";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesSchedule_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesSchedule_resource_types = "http://hl7.org/fhir/resource-types#Schedule";
 
     /// <summary>
     /// Literal for code: SearchParameter_resource_types
@@ -2028,9 +2668,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSearchParameter_resource_types = "SearchParameter";
 
     /// <summary>
+    /// Literal for code: ResourceTypesSearchParameter_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesSearchParameter_resource_types = "http://hl7.org/fhir/resource-types#SearchParameter";
+
+    /// <summary>
     /// Literal for code: ServiceRequest_resource_types
     /// </summary>
     public const string LiteralServiceRequest_resource_types = "ServiceRequest";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesServiceRequest_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesServiceRequest_resource_types = "http://hl7.org/fhir/resource-types#ServiceRequest";
 
     /// <summary>
     /// Literal for code: Slot_resource_types
@@ -2038,9 +2688,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSlot_resource_types = "Slot";
 
     /// <summary>
+    /// Literal for code: ResourceTypesSlot_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesSlot_resource_types = "http://hl7.org/fhir/resource-types#Slot";
+
+    /// <summary>
     /// Literal for code: Specimen_resource_types
     /// </summary>
     public const string LiteralSpecimen_resource_types = "Specimen";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesSpecimen_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesSpecimen_resource_types = "http://hl7.org/fhir/resource-types#Specimen";
 
     /// <summary>
     /// Literal for code: SpecimenDefinition_resource_types
@@ -2048,9 +2708,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpecimenDefinition_resource_types = "SpecimenDefinition";
 
     /// <summary>
+    /// Literal for code: ResourceTypesSpecimenDefinition_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesSpecimenDefinition_resource_types = "http://hl7.org/fhir/resource-types#SpecimenDefinition";
+
+    /// <summary>
     /// Literal for code: StructureDefinition_resource_types
     /// </summary>
     public const string LiteralStructureDefinition_resource_types = "StructureDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesStructureDefinition_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesStructureDefinition_resource_types = "http://hl7.org/fhir/resource-types#StructureDefinition";
 
     /// <summary>
     /// Literal for code: StructureMap_resource_types
@@ -2058,9 +2728,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureMap_resource_types = "StructureMap";
 
     /// <summary>
+    /// Literal for code: ResourceTypesStructureMap_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesStructureMap_resource_types = "http://hl7.org/fhir/resource-types#StructureMap";
+
+    /// <summary>
     /// Literal for code: Subscription_resource_types
     /// </summary>
     public const string LiteralSubscription_resource_types = "Subscription";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesSubscription_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesSubscription_resource_types = "http://hl7.org/fhir/resource-types#Subscription";
 
     /// <summary>
     /// Literal for code: Substance_resource_types
@@ -2068,9 +2748,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubstance_resource_types = "Substance";
 
     /// <summary>
+    /// Literal for code: ResourceTypesSubstance_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesSubstance_resource_types = "http://hl7.org/fhir/resource-types#Substance";
+
+    /// <summary>
     /// Literal for code: SubstanceNucleicAcid_resource_types
     /// </summary>
     public const string LiteralSubstanceNucleicAcid_resource_types = "SubstanceNucleicAcid";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesSubstanceNucleicAcid_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesSubstanceNucleicAcid_resource_types = "http://hl7.org/fhir/resource-types#SubstanceNucleicAcid";
 
     /// <summary>
     /// Literal for code: SubstancePolymer_resource_types
@@ -2078,9 +2768,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubstancePolymer_resource_types = "SubstancePolymer";
 
     /// <summary>
+    /// Literal for code: ResourceTypesSubstancePolymer_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesSubstancePolymer_resource_types = "http://hl7.org/fhir/resource-types#SubstancePolymer";
+
+    /// <summary>
     /// Literal for code: SubstanceProtein_resource_types
     /// </summary>
     public const string LiteralSubstanceProtein_resource_types = "SubstanceProtein";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesSubstanceProtein_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesSubstanceProtein_resource_types = "http://hl7.org/fhir/resource-types#SubstanceProtein";
 
     /// <summary>
     /// Literal for code: SubstanceReferenceInformation_resource_types
@@ -2088,9 +2788,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubstanceReferenceInformation_resource_types = "SubstanceReferenceInformation";
 
     /// <summary>
+    /// Literal for code: ResourceTypesSubstanceReferenceInformation_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesSubstanceReferenceInformation_resource_types = "http://hl7.org/fhir/resource-types#SubstanceReferenceInformation";
+
+    /// <summary>
     /// Literal for code: SubstanceSourceMaterial_resource_types
     /// </summary>
     public const string LiteralSubstanceSourceMaterial_resource_types = "SubstanceSourceMaterial";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesSubstanceSourceMaterial_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesSubstanceSourceMaterial_resource_types = "http://hl7.org/fhir/resource-types#SubstanceSourceMaterial";
 
     /// <summary>
     /// Literal for code: SubstanceSpecification_resource_types
@@ -2098,9 +2808,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubstanceSpecification_resource_types = "SubstanceSpecification";
 
     /// <summary>
+    /// Literal for code: ResourceTypesSubstanceSpecification_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesSubstanceSpecification_resource_types = "http://hl7.org/fhir/resource-types#SubstanceSpecification";
+
+    /// <summary>
     /// Literal for code: SupplyDelivery_resource_types
     /// </summary>
     public const string LiteralSupplyDelivery_resource_types = "SupplyDelivery";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesSupplyDelivery_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesSupplyDelivery_resource_types = "http://hl7.org/fhir/resource-types#SupplyDelivery";
 
     /// <summary>
     /// Literal for code: SupplyRequest_resource_types
@@ -2108,9 +2828,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSupplyRequest_resource_types = "SupplyRequest";
 
     /// <summary>
+    /// Literal for code: ResourceTypesSupplyRequest_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesSupplyRequest_resource_types = "http://hl7.org/fhir/resource-types#SupplyRequest";
+
+    /// <summary>
     /// Literal for code: Task_resource_types
     /// </summary>
     public const string LiteralTask_resource_types = "Task";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesTask_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesTask_resource_types = "http://hl7.org/fhir/resource-types#Task";
 
     /// <summary>
     /// Literal for code: TerminologyCapabilities_resource_types
@@ -2118,9 +2848,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTerminologyCapabilities_resource_types = "TerminologyCapabilities";
 
     /// <summary>
+    /// Literal for code: ResourceTypesTerminologyCapabilities_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesTerminologyCapabilities_resource_types = "http://hl7.org/fhir/resource-types#TerminologyCapabilities";
+
+    /// <summary>
     /// Literal for code: TestReport_resource_types
     /// </summary>
     public const string LiteralTestReport_resource_types = "TestReport";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesTestReport_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesTestReport_resource_types = "http://hl7.org/fhir/resource-types#TestReport";
 
     /// <summary>
     /// Literal for code: TestScript_resource_types
@@ -2128,9 +2868,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTestScript_resource_types = "TestScript";
 
     /// <summary>
+    /// Literal for code: ResourceTypesTestScript_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesTestScript_resource_types = "http://hl7.org/fhir/resource-types#TestScript";
+
+    /// <summary>
     /// Literal for code: ValueSet_resource_types
     /// </summary>
     public const string LiteralValueSet_resource_types = "ValueSet";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesValueSet_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesValueSet_resource_types = "http://hl7.org/fhir/resource-types#ValueSet";
 
     /// <summary>
     /// Literal for code: VerificationResult_resource_types
@@ -2138,8 +2888,328 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVerificationResult_resource_types = "VerificationResult";
 
     /// <summary>
+    /// Literal for code: ResourceTypesVerificationResult_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesVerificationResult_resource_types = "http://hl7.org/fhir/resource-types#VerificationResult";
+
+    /// <summary>
     /// Literal for code: VisionPrescription_resource_types
     /// </summary>
     public const string LiteralVisionPrescription_resource_types = "VisionPrescription";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesVisionPrescription_resource_types
+    /// </summary>
+    public const string LiteralResourceTypesVisionPrescription_resource_types = "http://hl7.org/fhir/resource-types#VisionPrescription";
+
+    /// <summary>
+    /// Dictionary for looking up AuditEntityType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1", Person_audit_entity_type }, 
+      { "http://terminology.hl7.org/CodeSystem/audit-entity-type#1", Person_audit_entity_type }, 
+      { "2", SystemObject_audit_entity_type }, 
+      { "http://terminology.hl7.org/CodeSystem/audit-entity-type#2", SystemObject_audit_entity_type }, 
+      { "3", Organization_audit_entity_type }, 
+      { "http://terminology.hl7.org/CodeSystem/audit-entity-type#3", Organization_audit_entity_type }, 
+      { "4", Other_audit_entity_type }, 
+      { "http://terminology.hl7.org/CodeSystem/audit-entity-type#4", Other_audit_entity_type }, 
+      { "Account", Account_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Account", Account_resource_types }, 
+      { "ActivityDefinition", ActivityDefinition_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ActivityDefinition", ActivityDefinition_resource_types }, 
+      { "AdverseEvent", AdverseEvent_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#AdverseEvent", AdverseEvent_resource_types }, 
+      { "AllergyIntolerance", AllergyIntolerance_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#AllergyIntolerance", AllergyIntolerance_resource_types }, 
+      { "Appointment", Appointment_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Appointment", Appointment_resource_types }, 
+      { "AppointmentResponse", AppointmentResponse_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#AppointmentResponse", AppointmentResponse_resource_types }, 
+      { "AuditEvent", AuditEvent_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#AuditEvent", AuditEvent_resource_types }, 
+      { "Basic", Basic_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Basic", Basic_resource_types }, 
+      { "Binary", Binary_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Binary", Binary_resource_types }, 
+      { "BiologicallyDerivedProduct", BiologicallyDerivedProduct_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#BiologicallyDerivedProduct", BiologicallyDerivedProduct_resource_types }, 
+      { "BodyStructure", BodyStructure_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#BodyStructure", BodyStructure_resource_types }, 
+      { "Bundle", Bundle_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Bundle", Bundle_resource_types }, 
+      { "CapabilityStatement", CapabilityStatement_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#CapabilityStatement", CapabilityStatement_resource_types }, 
+      { "CarePlan", CarePlan_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#CarePlan", CarePlan_resource_types }, 
+      { "CareTeam", CareTeam_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#CareTeam", CareTeam_resource_types }, 
+      { "CatalogEntry", CatalogEntry_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#CatalogEntry", CatalogEntry_resource_types }, 
+      { "ChargeItem", ChargeItem_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ChargeItem", ChargeItem_resource_types }, 
+      { "ChargeItemDefinition", ChargeItemDefinition_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ChargeItemDefinition", ChargeItemDefinition_resource_types }, 
+      { "Claim", Claim_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Claim", Claim_resource_types }, 
+      { "ClaimResponse", ClaimResponse_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ClaimResponse", ClaimResponse_resource_types }, 
+      { "ClinicalImpression", ClinicalImpression_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ClinicalImpression", ClinicalImpression_resource_types }, 
+      { "CodeSystem", CodeSystem_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#CodeSystem", CodeSystem_resource_types }, 
+      { "Communication", Communication_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Communication", Communication_resource_types }, 
+      { "CommunicationRequest", CommunicationRequest_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#CommunicationRequest", CommunicationRequest_resource_types }, 
+      { "CompartmentDefinition", CompartmentDefinition_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#CompartmentDefinition", CompartmentDefinition_resource_types }, 
+      { "Composition", Composition_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Composition", Composition_resource_types }, 
+      { "ConceptMap", ConceptMap_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ConceptMap", ConceptMap_resource_types }, 
+      { "Condition", Condition_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Condition", Condition_resource_types }, 
+      { "Consent", Consent_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Consent", Consent_resource_types }, 
+      { "Contract", Contract_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Contract", Contract_resource_types }, 
+      { "Coverage", Coverage_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Coverage", Coverage_resource_types }, 
+      { "CoverageEligibilityRequest", CoverageEligibilityRequest_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#CoverageEligibilityRequest", CoverageEligibilityRequest_resource_types }, 
+      { "CoverageEligibilityResponse", CoverageEligibilityResponse_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#CoverageEligibilityResponse", CoverageEligibilityResponse_resource_types }, 
+      { "DetectedIssue", DetectedIssue_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#DetectedIssue", DetectedIssue_resource_types }, 
+      { "Device", Device_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Device", Device_resource_types }, 
+      { "DeviceDefinition", DeviceDefinition_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#DeviceDefinition", DeviceDefinition_resource_types }, 
+      { "DeviceMetric", DeviceMetric_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#DeviceMetric", DeviceMetric_resource_types }, 
+      { "DeviceRequest", DeviceRequest_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#DeviceRequest", DeviceRequest_resource_types }, 
+      { "DeviceUseStatement", DeviceUseStatement_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#DeviceUseStatement", DeviceUseStatement_resource_types }, 
+      { "DiagnosticReport", DiagnosticReport_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#DiagnosticReport", DiagnosticReport_resource_types }, 
+      { "DocumentManifest", DocumentManifest_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#DocumentManifest", DocumentManifest_resource_types }, 
+      { "DocumentReference", DocumentReference_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#DocumentReference", DocumentReference_resource_types }, 
+      { "DomainResource", DomainResource_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#DomainResource", DomainResource_resource_types }, 
+      { "EffectEvidenceSynthesis", EffectEvidenceSynthesis_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#EffectEvidenceSynthesis", EffectEvidenceSynthesis_resource_types }, 
+      { "Encounter", Encounter_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Encounter", Encounter_resource_types }, 
+      { "Endpoint", Endpoint_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Endpoint", Endpoint_resource_types }, 
+      { "EnrollmentRequest", EnrollmentRequest_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#EnrollmentRequest", EnrollmentRequest_resource_types }, 
+      { "EnrollmentResponse", EnrollmentResponse_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#EnrollmentResponse", EnrollmentResponse_resource_types }, 
+      { "EpisodeOfCare", EpisodeOfCare_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#EpisodeOfCare", EpisodeOfCare_resource_types }, 
+      { "EventDefinition", EventDefinition_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#EventDefinition", EventDefinition_resource_types }, 
+      { "Evidence", Evidence_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Evidence", Evidence_resource_types }, 
+      { "EvidenceVariable", EvidenceVariable_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#EvidenceVariable", EvidenceVariable_resource_types }, 
+      { "ExampleScenario", ExampleScenario_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ExampleScenario", ExampleScenario_resource_types }, 
+      { "ExplanationOfBenefit", ExplanationOfBenefit_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ExplanationOfBenefit", ExplanationOfBenefit_resource_types }, 
+      { "FamilyMemberHistory", FamilyMemberHistory_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#FamilyMemberHistory", FamilyMemberHistory_resource_types }, 
+      { "Flag", Flag_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Flag", Flag_resource_types }, 
+      { "Goal", Goal_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Goal", Goal_resource_types }, 
+      { "GraphDefinition", GraphDefinition_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#GraphDefinition", GraphDefinition_resource_types }, 
+      { "Group", Group_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Group", Group_resource_types }, 
+      { "GuidanceResponse", GuidanceResponse_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#GuidanceResponse", GuidanceResponse_resource_types }, 
+      { "HealthcareService", HealthcareService_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#HealthcareService", HealthcareService_resource_types }, 
+      { "ImagingStudy", ImagingStudy_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ImagingStudy", ImagingStudy_resource_types }, 
+      { "Immunization", Immunization_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Immunization", Immunization_resource_types }, 
+      { "ImmunizationEvaluation", ImmunizationEvaluation_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ImmunizationEvaluation", ImmunizationEvaluation_resource_types }, 
+      { "ImmunizationRecommendation", ImmunizationRecommendation_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ImmunizationRecommendation", ImmunizationRecommendation_resource_types }, 
+      { "ImplementationGuide", ImplementationGuide_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ImplementationGuide", ImplementationGuide_resource_types }, 
+      { "InsurancePlan", InsurancePlan_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#InsurancePlan", InsurancePlan_resource_types }, 
+      { "Invoice", Invoice_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Invoice", Invoice_resource_types }, 
+      { "Library", Library_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Library", Library_resource_types }, 
+      { "Linkage", Linkage_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Linkage", Linkage_resource_types }, 
+      { "List", List_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#List", List_resource_types }, 
+      { "Location", Location_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Location", Location_resource_types }, 
+      { "Measure", Measure_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Measure", Measure_resource_types }, 
+      { "MeasureReport", MeasureReport_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MeasureReport", MeasureReport_resource_types }, 
+      { "Media", Media_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Media", Media_resource_types }, 
+      { "Medication", Medication_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Medication", Medication_resource_types }, 
+      { "MedicationAdministration", MedicationAdministration_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MedicationAdministration", MedicationAdministration_resource_types }, 
+      { "MedicationDispense", MedicationDispense_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MedicationDispense", MedicationDispense_resource_types }, 
+      { "MedicationKnowledge", MedicationKnowledge_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MedicationKnowledge", MedicationKnowledge_resource_types }, 
+      { "MedicationRequest", MedicationRequest_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MedicationRequest", MedicationRequest_resource_types }, 
+      { "MedicationStatement", MedicationStatement_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MedicationStatement", MedicationStatement_resource_types }, 
+      { "MedicinalProduct", MedicinalProduct_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProduct", MedicinalProduct_resource_types }, 
+      { "MedicinalProductAuthorization", MedicinalProductAuthorization_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductAuthorization", MedicinalProductAuthorization_resource_types }, 
+      { "MedicinalProductContraindication", MedicinalProductContraindication_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductContraindication", MedicinalProductContraindication_resource_types }, 
+      { "MedicinalProductIndication", MedicinalProductIndication_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductIndication", MedicinalProductIndication_resource_types }, 
+      { "MedicinalProductIngredient", MedicinalProductIngredient_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductIngredient", MedicinalProductIngredient_resource_types }, 
+      { "MedicinalProductInteraction", MedicinalProductInteraction_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductInteraction", MedicinalProductInteraction_resource_types }, 
+      { "MedicinalProductManufactured", MedicinalProductManufactured_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductManufactured", MedicinalProductManufactured_resource_types }, 
+      { "MedicinalProductPackaged", MedicinalProductPackaged_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductPackaged", MedicinalProductPackaged_resource_types }, 
+      { "MedicinalProductPharmaceutical", MedicinalProductPharmaceutical_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductPharmaceutical", MedicinalProductPharmaceutical_resource_types }, 
+      { "MedicinalProductUndesirableEffect", MedicinalProductUndesirableEffect_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductUndesirableEffect", MedicinalProductUndesirableEffect_resource_types }, 
+      { "MessageDefinition", MessageDefinition_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MessageDefinition", MessageDefinition_resource_types }, 
+      { "MessageHeader", MessageHeader_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MessageHeader", MessageHeader_resource_types }, 
+      { "MolecularSequence", MolecularSequence_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#MolecularSequence", MolecularSequence_resource_types }, 
+      { "NamingSystem", NamingSystem_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#NamingSystem", NamingSystem_resource_types }, 
+      { "NutritionOrder", NutritionOrder_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#NutritionOrder", NutritionOrder_resource_types }, 
+      { "Observation", Observation_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Observation", Observation_resource_types }, 
+      { "ObservationDefinition", ObservationDefinition_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ObservationDefinition", ObservationDefinition_resource_types }, 
+      { "OperationDefinition", OperationDefinition_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#OperationDefinition", OperationDefinition_resource_types }, 
+      { "OperationOutcome", OperationOutcome_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#OperationOutcome", OperationOutcome_resource_types }, 
+      { "Organization", Organization_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Organization", Organization_resource_types }, 
+      { "OrganizationAffiliation", OrganizationAffiliation_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#OrganizationAffiliation", OrganizationAffiliation_resource_types }, 
+      { "Parameters", Parameters_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Parameters", Parameters_resource_types }, 
+      { "Patient", Patient_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Patient", Patient_resource_types }, 
+      { "PaymentNotice", PaymentNotice_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#PaymentNotice", PaymentNotice_resource_types }, 
+      { "PaymentReconciliation", PaymentReconciliation_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#PaymentReconciliation", PaymentReconciliation_resource_types }, 
+      { "Person", Person_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Person", Person_resource_types }, 
+      { "PlanDefinition", PlanDefinition_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#PlanDefinition", PlanDefinition_resource_types }, 
+      { "Practitioner", Practitioner_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Practitioner", Practitioner_resource_types }, 
+      { "PractitionerRole", PractitionerRole_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#PractitionerRole", PractitionerRole_resource_types }, 
+      { "Procedure", Procedure_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Procedure", Procedure_resource_types }, 
+      { "Provenance", Provenance_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Provenance", Provenance_resource_types }, 
+      { "Questionnaire", Questionnaire_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Questionnaire", Questionnaire_resource_types }, 
+      { "QuestionnaireResponse", QuestionnaireResponse_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#QuestionnaireResponse", QuestionnaireResponse_resource_types }, 
+      { "RelatedPerson", RelatedPerson_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#RelatedPerson", RelatedPerson_resource_types }, 
+      { "RequestGroup", RequestGroup_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#RequestGroup", RequestGroup_resource_types }, 
+      { "ResearchDefinition", ResearchDefinition_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ResearchDefinition", ResearchDefinition_resource_types }, 
+      { "ResearchElementDefinition", ResearchElementDefinition_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ResearchElementDefinition", ResearchElementDefinition_resource_types }, 
+      { "ResearchStudy", ResearchStudy_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ResearchStudy", ResearchStudy_resource_types }, 
+      { "ResearchSubject", ResearchSubject_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ResearchSubject", ResearchSubject_resource_types }, 
+      { "Resource", Resource_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Resource", Resource_resource_types }, 
+      { "RiskAssessment", RiskAssessment_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#RiskAssessment", RiskAssessment_resource_types }, 
+      { "RiskEvidenceSynthesis", RiskEvidenceSynthesis_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#RiskEvidenceSynthesis", RiskEvidenceSynthesis_resource_types }, 
+      { "Schedule", Schedule_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Schedule", Schedule_resource_types }, 
+      { "SearchParameter", SearchParameter_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#SearchParameter", SearchParameter_resource_types }, 
+      { "ServiceRequest", ServiceRequest_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ServiceRequest", ServiceRequest_resource_types }, 
+      { "Slot", Slot_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Slot", Slot_resource_types }, 
+      { "Specimen", Specimen_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Specimen", Specimen_resource_types }, 
+      { "SpecimenDefinition", SpecimenDefinition_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#SpecimenDefinition", SpecimenDefinition_resource_types }, 
+      { "StructureDefinition", StructureDefinition_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#StructureDefinition", StructureDefinition_resource_types }, 
+      { "StructureMap", StructureMap_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#StructureMap", StructureMap_resource_types }, 
+      { "Subscription", Subscription_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Subscription", Subscription_resource_types }, 
+      { "Substance", Substance_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Substance", Substance_resource_types }, 
+      { "SubstanceNucleicAcid", SubstanceNucleicAcid_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#SubstanceNucleicAcid", SubstanceNucleicAcid_resource_types }, 
+      { "SubstancePolymer", SubstancePolymer_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#SubstancePolymer", SubstancePolymer_resource_types }, 
+      { "SubstanceProtein", SubstanceProtein_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#SubstanceProtein", SubstanceProtein_resource_types }, 
+      { "SubstanceReferenceInformation", SubstanceReferenceInformation_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#SubstanceReferenceInformation", SubstanceReferenceInformation_resource_types }, 
+      { "SubstanceSourceMaterial", SubstanceSourceMaterial_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#SubstanceSourceMaterial", SubstanceSourceMaterial_resource_types }, 
+      { "SubstanceSpecification", SubstanceSpecification_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#SubstanceSpecification", SubstanceSpecification_resource_types }, 
+      { "SupplyDelivery", SupplyDelivery_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#SupplyDelivery", SupplyDelivery_resource_types }, 
+      { "SupplyRequest", SupplyRequest_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#SupplyRequest", SupplyRequest_resource_types }, 
+      { "Task", Task_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#Task", Task_resource_types }, 
+      { "TerminologyCapabilities", TerminologyCapabilities_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#TerminologyCapabilities", TerminologyCapabilities_resource_types }, 
+      { "TestReport", TestReport_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#TestReport", TestReport_resource_types }, 
+      { "TestScript", TestScript_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#TestScript", TestScript_resource_types }, 
+      { "ValueSet", ValueSet_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#ValueSet", ValueSet_resource_types }, 
+      { "VerificationResult", VerificationResult_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#VerificationResult", VerificationResult_resource_types }, 
+      { "VisionPrescription", VisionPrescription_resource_types }, 
+      { "http://hl7.org/fhir/resource-types#VisionPrescription", VisionPrescription_resource_types }, 
+    };
   };
 }

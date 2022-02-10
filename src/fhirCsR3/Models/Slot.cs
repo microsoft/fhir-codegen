@@ -48,6 +48,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? Overbooked { get; set; }
     /// <summary>
+    /// Extension container element for Overbooked
+    /// </summary>
+    public Element _Overbooked { get; set; }
+    /// <summary>
     /// The schedule resource that this slot defines an interval of status information.
     /// </summary>
     public Reference Schedule { get; set; }
@@ -191,6 +195,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("overbooked", (bool)Overbooked!);
       }
 
+      if (_Overbooked != null)
+      {
+        writer.WritePropertyName("_overbooked");
+        _Overbooked.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Comment))
       {
         writer.WriteString("comment", (string)Comment!);
@@ -266,6 +276,11 @@ namespace fhirCsR3.Models
 
         case "overbooked":
           Overbooked = reader.GetBoolean();
+          break;
+
+        case "_overbooked":
+          _Overbooked = new fhirCsR3.Models.Element();
+          _Overbooked.DeserializeJson(ref reader, options);
           break;
 
         case "schedule":
@@ -390,5 +405,12 @@ namespace fhirCsR3.Models
     public const string BUSY_UNAVAILABLE = "busy-unavailable";
     public const string BUSY_TENTATIVE = "busy-tentative";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "busy",
+      "free",
+      "busy-unavailable",
+      "busy-tentative",
+      "entered-in-error",
+    };
   }
 }

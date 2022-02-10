@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class ContainerMaterialCodes
   {
     /// <summary>
-    /// 
+    /// glass
     /// </summary>
     public static readonly Coding Glass = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// metal
     /// </summary>
     public static readonly Coding Metal = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// plastic
     /// </summary>
     public static readonly Coding Plastic = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGlass = "32039001";
 
     /// <summary>
+    /// Literal for code: NONEGlass
+    /// </summary>
+    public const string LiteralNONEGlass = "http://snomed.info/sct#32039001";
+
+    /// <summary>
     /// Literal for code: Metal
     /// </summary>
     public const string LiteralMetal = "425620007";
 
     /// <summary>
+    /// Literal for code: NONEMetal
+    /// </summary>
+    public const string LiteralNONEMetal = "http://snomed.info/sct#425620007";
+
+    /// <summary>
     /// Literal for code: Plastic
     /// </summary>
     public const string LiteralPlastic = "61088005";
+
+    /// <summary>
+    /// Literal for code: NONEPlastic
+    /// </summary>
+    public const string LiteralNONEPlastic = "http://snomed.info/sct#61088005";
+
+    /// <summary>
+    /// Dictionary for looking up ContainerMaterial Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "32039001", Glass }, 
+      { "http://snomed.info/sct#32039001", Glass }, 
+      { "425620007", Metal }, 
+      { "http://snomed.info/sct#425620007", Metal }, 
+      { "61088005", Plastic }, 
+      { "http://snomed.info/sct#61088005", Plastic }, 
+    };
   };
 }

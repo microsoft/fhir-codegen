@@ -63,9 +63,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: CommunicationStatusCompleted
+    /// </summary>
+    public const string LiteralCommunicationStatusCompleted = "http://hl7.org/fhir/communication-status#completed";
+
+    /// <summary>
     /// Literal for code: Failed
     /// </summary>
     public const string LiteralFailed = "failed";
+
+    /// <summary>
+    /// Literal for code: CommunicationStatusFailed
+    /// </summary>
+    public const string LiteralCommunicationStatusFailed = "http://hl7.org/fhir/communication-status#failed";
 
     /// <summary>
     /// Literal for code: InProgress
@@ -73,13 +83,44 @@ namespace fhirCsR2.ValueSets
     public const string LiteralInProgress = "in-progress";
 
     /// <summary>
+    /// Literal for code: CommunicationStatusInProgress
+    /// </summary>
+    public const string LiteralCommunicationStatusInProgress = "http://hl7.org/fhir/communication-status#in-progress";
+
+    /// <summary>
     /// Literal for code: Rejected
     /// </summary>
     public const string LiteralRejected = "rejected";
 
     /// <summary>
+    /// Literal for code: CommunicationStatusRejected
+    /// </summary>
+    public const string LiteralCommunicationStatusRejected = "http://hl7.org/fhir/communication-status#rejected";
+
+    /// <summary>
     /// Literal for code: Suspended
     /// </summary>
     public const string LiteralSuspended = "suspended";
+
+    /// <summary>
+    /// Literal for code: CommunicationStatusSuspended
+    /// </summary>
+    public const string LiteralCommunicationStatusSuspended = "http://hl7.org/fhir/communication-status#suspended";
+
+    /// <summary>
+    /// Dictionary for looking up CommunicationStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/communication-status#completed", Completed }, 
+      { "failed", Failed }, 
+      { "http://hl7.org/fhir/communication-status#failed", Failed }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/communication-status#in-progress", InProgress }, 
+      { "rejected", Rejected }, 
+      { "http://hl7.org/fhir/communication-status#rejected", Rejected }, 
+      { "suspended", Suspended }, 
+      { "http://hl7.org/fhir/communication-status#suspended", Suspended }, 
+    };
   };
 }

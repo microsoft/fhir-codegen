@@ -72,9 +72,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralDictionary = "dictionary";
 
     /// <summary>
+    /// Literal for code: GuideResourcePurposeDictionary
+    /// </summary>
+    public const string LiteralGuideResourcePurposeDictionary = "http://hl7.org/fhir/guide-resource-purpose#dictionary";
+
+    /// <summary>
     /// Literal for code: Example
     /// </summary>
     public const string LiteralExample = "example";
+
+    /// <summary>
+    /// Literal for code: GuideResourcePurposeExample
+    /// </summary>
+    public const string LiteralGuideResourcePurposeExample = "http://hl7.org/fhir/guide-resource-purpose#example";
 
     /// <summary>
     /// Literal for code: Extension
@@ -82,9 +92,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralExtension = "extension";
 
     /// <summary>
+    /// Literal for code: GuideResourcePurposeExtension
+    /// </summary>
+    public const string LiteralGuideResourcePurposeExtension = "http://hl7.org/fhir/guide-resource-purpose#extension";
+
+    /// <summary>
     /// Literal for code: LogicalModel
     /// </summary>
     public const string LiteralLogicalModel = "logical";
+
+    /// <summary>
+    /// Literal for code: GuideResourcePurposeLogicalModel
+    /// </summary>
+    public const string LiteralGuideResourcePurposeLogicalModel = "http://hl7.org/fhir/guide-resource-purpose#logical";
 
     /// <summary>
     /// Literal for code: Profile
@@ -92,8 +112,36 @@ namespace fhirCsR2.ValueSets
     public const string LiteralProfile = "profile";
 
     /// <summary>
+    /// Literal for code: GuideResourcePurposeProfile
+    /// </summary>
+    public const string LiteralGuideResourcePurposeProfile = "http://hl7.org/fhir/guide-resource-purpose#profile";
+
+    /// <summary>
     /// Literal for code: Terminology
     /// </summary>
     public const string LiteralTerminology = "terminology";
+
+    /// <summary>
+    /// Literal for code: GuideResourcePurposeTerminology
+    /// </summary>
+    public const string LiteralGuideResourcePurposeTerminology = "http://hl7.org/fhir/guide-resource-purpose#terminology";
+
+    /// <summary>
+    /// Dictionary for looking up GuideResourcePurpose Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "dictionary", Dictionary }, 
+      { "http://hl7.org/fhir/guide-resource-purpose#dictionary", Dictionary }, 
+      { "example", Example }, 
+      { "http://hl7.org/fhir/guide-resource-purpose#example", Example }, 
+      { "extension", Extension }, 
+      { "http://hl7.org/fhir/guide-resource-purpose#extension", Extension }, 
+      { "logical", LogicalModel }, 
+      { "http://hl7.org/fhir/guide-resource-purpose#logical", LogicalModel }, 
+      { "profile", Profile }, 
+      { "http://hl7.org/fhir/guide-resource-purpose#profile", Profile }, 
+      { "terminology", Terminology }, 
+      { "http://hl7.org/fhir/guide-resource-purpose#terminology", Terminology }, 
+    };
   };
 }

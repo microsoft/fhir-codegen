@@ -129,6 +129,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// A value for the characteristic.
     /// </summary>
     public Attachment ValueAttachment { get; set; }
@@ -177,6 +181,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (ValueAttachment != null)
       {
         writer.WritePropertyName("valueAttachment");
@@ -221,6 +231,11 @@ namespace fhirCsR4B.Models
 
         case "valueBoolean":
           ValueBoolean = reader.GetBoolean();
+          break;
+
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR4B.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "valueAttachment":
@@ -386,6 +401,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public int? Quantity { get; set; }
     /// <summary>
+    /// Extension container element for Quantity
+    /// </summary>
+    public Element _Quantity { get; set; }
+    /// <summary>
     /// Shelf Life and storage information.
     /// </summary>
     public List<ProductShelfLife> ShelfLifeStorage { get; set; }
@@ -426,6 +445,12 @@ namespace fhirCsR4B.Models
       if (Quantity != null)
       {
         writer.WriteNumber("quantity", (int)Quantity!);
+      }
+
+      if (_Quantity != null)
+      {
+        writer.WritePropertyName("_quantity");
+        _Quantity.SerializeJson(writer, options);
       }
 
       if ((Material != null) && (Material.Count != 0))
@@ -724,6 +749,11 @@ namespace fhirCsR4B.Models
           Quantity = reader.GetInt32();
           break;
 
+        case "_quantity":
+          _Quantity = new fhirCsR4B.Models.Element();
+          _Quantity.DeserializeJson(ref reader, options);
+          break;
+
         case "shelfLifeStorage":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -808,6 +838,10 @@ namespace fhirCsR4B.Models
     /// States whether a drug product is supplied with another item such as a diluent or adjuvant.
     /// </summary>
     public bool? CopackagedIndicator { get; set; }
+    /// <summary>
+    /// Extension container element for CopackagedIndicator
+    /// </summary>
+    public Element _CopackagedIndicator { get; set; }
     /// <summary>
     /// Textual description. Note that this is not the name of the package or product.
     /// </summary>
@@ -1009,6 +1043,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("copackagedIndicator", (bool)CopackagedIndicator!);
       }
 
+      if (_CopackagedIndicator != null)
+      {
+        writer.WritePropertyName("_copackagedIndicator");
+        _CopackagedIndicator.SerializeJson(writer, options);
+      }
+
       if ((Manufacturer != null) && (Manufacturer.Count != 0))
       {
         writer.WritePropertyName("manufacturer");
@@ -1096,6 +1136,11 @@ namespace fhirCsR4B.Models
 
         case "copackagedIndicator":
           CopackagedIndicator = reader.GetBoolean();
+          break;
+
+        case "_copackagedIndicator":
+          _CopackagedIndicator = new fhirCsR4B.Models.Element();
+          _CopackagedIndicator.DeserializeJson(ref reader, options);
           break;
 
         case "description":

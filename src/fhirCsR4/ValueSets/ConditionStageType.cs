@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class ConditionStageTypeCodes
   {
     /// <summary>
-    /// 
+    /// Gleason's microscopic prostatic carcinoma grading system
     /// </summary>
     public static readonly Coding GleasonQuoteSMicroscopicProstaticCarcinomaGradingSystem = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Walter Reed staging of prostatic cancer
     /// </summary>
     public static readonly Coding WalterReedStagingOfProstaticCancer = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FIGO staging system for endometrial carcinoma
     /// </summary>
     public static readonly Coding FIGOStagingSystemForEndometrialCarcinoma = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FIGO Vulva tumor staging
     /// </summary>
     public static readonly Coding FIGOVulvaTumorStaging = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FIGO staging system for vulvar melanoma
     /// </summary>
     public static readonly Coding FIGOStagingSystemForVulvarMelanoma = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FIGO staging system for epithelial tumor of ovary
     /// </summary>
     public static readonly Coding FIGOStagingSystemForEpithelialTumorOfOvary = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FIGO Cervical tumor staging
     /// </summary>
     public static readonly Coding FIGOCervicalTumorStaging = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphoma staging descriptors
     /// </summary>
     public static readonly Coding LymphomaStagingDescriptors = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Overlapping tumor
     /// </summary>
     public static readonly Coding OverlappingTumor = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canadian Cardiovascular Society classification of angina
     /// </summary>
     public static readonly Coding CanadianCardiovascularSocietyClassificationOfAngina = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiovascular Limitations and Symptoms Profile angina score
     /// </summary>
     public static readonly Coding CardiovascularLimitationsAndSymptomsProfileAnginaScore = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiovascular Limitations and Symptoms Profile ankle swelling score
     /// </summary>
     public static readonly Coding CardiovascularLimitationsAndSymptomsProfileAnkleSwellingScore = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiovascular limitations and symptoms profile shortness of breath score
     /// </summary>
     public static readonly Coding CardiovascularLimitationsAndSymptomsProfileShortnessOfBreathScore = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stroke risk
     /// </summary>
     public static readonly Coding StrokeRisk = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// WR stage 3
     /// </summary>
     public static readonly Coding WRStage3 = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Walter Reed (WR) stage 2
     /// </summary>
     public static readonly Coding WalterReedWRStage2 = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Housing dependency scale
     /// </summary>
     public static readonly Coding HousingDependencyScale = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physical disability assessment score
     /// </summary>
     public static readonly Coding PhysicalDisabilityAssessmentScore = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physical disability admission score
     /// </summary>
     public static readonly Coding PhysicalDisabilityAdmissionScore = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physical disability inpatient score
     /// </summary>
     public static readonly Coding PhysicalDisabilityInpatientScore = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physical disability discharge score
     /// </summary>
     public static readonly Coding PhysicalDisabilityDischargeScore = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physical disability outpatient score
     /// </summary>
     public static readonly Coding PhysicalDisabilityOutpatientScore = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physical disability DV score
     /// </summary>
     public static readonly Coding PhysicalDisabilityDVScore = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Symptom ratings
     /// </summary>
     public static readonly Coding SymptomRatings = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Exertion rating
     /// </summary>
     public static readonly Coding ExertionRating = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leg fatigue rating
     /// </summary>
     public static readonly Coding LegFatigueRating = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breathlessness rating
     /// </summary>
     public static readonly Coding BreathlessnessRating = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chest pain rating
     /// </summary>
     public static readonly Coding ChestPainRating = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor staging
     /// </summary>
     public static readonly Coding TumorStaging = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// TNM tumor staging system
     /// </summary>
     public static readonly Coding TNMTumorStagingSystem = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) head and neck tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMHeadAndNeckTumorStaging = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) lip and oral cavity tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMLipAndOralCavityTumorStaging = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) oropharynx tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMOropharynxTumorStaging = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) nasopharynx tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMNasopharynxTumorStaging = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) hypopharynx tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMHypopharynxTumorStaging = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) supraglottic larynx tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMSupraglotticLarynxTumorStaging = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) glottic larynx tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMGlotticLarynxTumorStaging = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) subglottic larynx tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMSubglotticLarynxTumorStaging = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) maxillary sinus tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMMaxillarySinusTumorStaging = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) salivary glands tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMSalivaryGlandsTumorStaging = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) thyroid gland tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMThyroidGlandTumorStaging = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) digestive system tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMDigestiveSystemTumorStaging = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) esophagus tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMEsophagusTumorStaging = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) stomach tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMStomachTumorStaging = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) Small intestine tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMSmallIntestineTumorStaging = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) Colon and rectum tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMColonAndRectumTumorStaging = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) anal canal tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMAnalCanalTumorStaging = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) liver tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMLiverTumorStaging = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) gallbladder tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMGallbladderTumorStaging = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) extrahepatic bile ducts tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMExtrahepaticBileDuctsTumorStaging = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) ampulla of vater tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMAmpullaOfVaterTumorStaging = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) pancreas tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMPancreasTumorStaging = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) lung and pleural tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMLungAndPleuralTumorStaging = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) lung tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMLungTumorStaging = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) pleural mesothelioma tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMPleuralMesotheliomaTumorStaging = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) bone and soft tissue tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMBoneAndSoftTissueTumorStaging = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) bone tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMBoneTumorStaging = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) soft tissues tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMSoftTissuesTumorStaging = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) skin tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMSkinTumorStaging = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) carcinoma of skin tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMCarcinomaOfSkinTumorStaging = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) malignant melanoma of skin staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMMalignantMelanomaOfSkinStaging = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) breast tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMBreastTumorStaging = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) gynecological tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMGynecologicalTumorStaging = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) vulva tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMVulvaTumorStaging = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) vaginal tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMVaginalTumorStaging = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) cervix uteri tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMCervixUteriTumorStaging = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) corpus uteri tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMCorpusUteriTumorStaging = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) ovary tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMOvaryTumorStaging = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) urological tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMUrologicalTumorStaging = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) penis tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMPenisTumorStaging = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) Prostate tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMProstateTumorStaging = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) testis tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMTestisTumorStaging = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) kidney tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMKidneyTumorStaging = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) renal pelvis and ureter tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMRenalPelvisAndUreterTumorStaging = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) urinary bladder tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMUrinaryBladderTumorStaging = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) urethra tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMUrethraTumorStaging = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) ophthalmic tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMOphthalmicTumorStaging = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) carcinoma of eyelid staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMCarcinomaOfEyelidStaging = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) malignant melanoma of eyelid staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMMalignantMelanomaOfEyelidStaging = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) carcinoma of conjunctiva staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMCarcinomaOfConjunctivaStaging = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) malignant melanoma of conjunctiva staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMMalignantMelanomaOfConjunctivaStaging = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) malignant melanoma of uvea staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMMalignantMelanomaOfUveaStaging = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) malignant melanoma of iris staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMMalignantMelanomaOfIrisStaging = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) malignant melanoma of ciliary body staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMMalignantMelanomaOfCiliaryBodyStaging = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) malignant melanoma of choroid staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMMalignantMelanomaOfChoroidStaging = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) retinoblastoma staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMRetinoblastomaStaging = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) sarcoma of orbit staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMSarcomaOfOrbitStaging = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) lacrimal gland carcinoma staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMLacrimalGlandCarcinomaStaging = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) brain tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMBrainTumorStaging = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) Hodgkin's disease staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMHodgkinQuoteSDiseaseStaging = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) non-Hodgkin's lymphoma staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMNonHodgkinQuoteSLymphomaStaging = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) pediatric tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMPediatricTumorStaging = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) Wilms' tumor staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMWilmsQuoteTumorStaging = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) neuroblastoma staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMNeuroblastomaStaging = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) soft tissue sarcoma staging
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMSoftTissueSarcomaStaging = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dukes staging system
     /// </summary>
     public static readonly Coding DukesStagingSystem = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Astler-Coller staging system
     /// </summary>
     public static readonly Coding AstlerCollerStagingSystem = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Modified Astler-Coller staging system
     /// </summary>
     public static readonly Coding ModifiedAstlerCollerStagingSystem = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// International neuroblastoma staging system
     /// </summary>
     public static readonly Coding InternationalNeuroblastomaStagingSystem = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// NWTS - National Wilms' tumor study staging system
     /// </summary>
     public static readonly Coding NWTSNationalWilmsQuoteTumorStudyStagingSystem = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Siopel liver staging system
     /// </summary>
     public static readonly Coding SiopelLiverStagingSystem = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stannard staging system for retinoblastoma
     /// </summary>
     public static readonly Coding StannardStagingSystemForRetinoblastoma = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// United Kingdom children's cancer study group central nervous system tumor staging system
     /// </summary>
     public static readonly Coding UnitedKingdomChildrenQuoteSCancerStudyGroupCentralNervousSystemTumorStagingSystem = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// St Jude malignant histiocytosis tumor staging system
     /// </summary>
     public static readonly Coding StJudeMalignantHistiocytosisTumorStagingSystem = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// St Jude non-Hodgkin lymphoma staging system
     /// </summary>
     public static readonly Coding StJudeNonHodgkinLymphomaStagingSystem = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ann Arbor lymphoma staging system
     /// </summary>
     public static readonly Coding AnnArborLymphomaStagingSystem = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ann Arbor Hodgkin disease tumor staging system
     /// </summary>
     public static readonly Coding AnnArborHodgkinDiseaseTumorStagingSystem = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ann Arbor non-Hodgkin lymphoma tumor staging system
     /// </summary>
     public static readonly Coding AnnArborNonHodgkinLymphomaTumorStagingSystem = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cotswolds Hodgkin disease tumor staging system
     /// </summary>
     public static readonly Coding CotswoldsHodgkinDiseaseTumorStagingSystem = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Testicular tumor staging systems
     /// </summary>
     public static readonly Coding TesticularTumorStagingSystems = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Walter Reed testicular tumor staging system
     /// </summary>
     public static readonly Coding WalterReedTesticularTumorStagingSystem = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Indiana University testicular tumor staging system
     /// </summary>
     public static readonly Coding IndianaUniversityTesticularTumorStagingSystem = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Marshall Modification of Jewett-Strong staging system for urinary bladder tumor
     /// </summary>
     public static readonly Coding MarshallModificationOfJewettStrongStagingSystemForUrinaryBladderTumor = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// American Urological Association staging system for prostate cancer
     /// </summary>
     public static readonly Coding AmericanUrologicalAssociationStagingSystemForProstateCancer = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trophoblastic malignancy staging system
     /// </summary>
     public static readonly Coding TrophoblasticMalignancyStagingSystem = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FIGO staging system of gynecological malignancy
     /// </summary>
     public static readonly Coding FIGOStagingSystemOfGynecologicalMalignancy = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FIGO Vaginal tumor staging system
     /// </summary>
     public static readonly Coding FIGOVaginalTumorStagingSystem = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FIGO uterine tumor staging system
     /// </summary>
     public static readonly Coding FIGOUterineTumorStagingSystem = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FIGO ovarian tumor staging system
     /// </summary>
     public static readonly Coding FIGOOvarianTumorStagingSystem = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// HIV - Human immunodeficiency virus infection classification systems
     /// </summary>
     public static readonly Coding HIVHumanImmunodeficiencyVirusInfectionClassificationSystems = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cancer staging
     /// </summary>
     public static readonly Coding CancerStaging = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Generic tumor staging descriptor
     /// </summary>
     public static readonly Coding GenericTumorStagingDescriptor = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor-node-metastasis (TNM) tumor staging classifications
     /// </summary>
     public static readonly Coding TumorNodeMetastasisTNMTumorStagingClassifications = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// International Union Against Cancer (UICC)
     /// </summary>
     public static readonly Coding InternationalUnionAgainstCancerUICC = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// American Joint Committee on Cancer (AJCC)
     /// </summary>
     public static readonly Coding AmericanJointCommitteeOnCancerAJCC = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// G status
     /// </summary>
     public static readonly Coding GStatus = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// L status
     /// </summary>
     public static readonly Coding LStatus = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// V status
     /// </summary>
     public static readonly Coding VStatus = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Additional tumor staging descriptor
     /// </summary>
     public static readonly Coding AdditionalTumorStagingDescriptor = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// (f)
     /// </summary>
     public static readonly Coding F = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// is
     /// </summary>
     public static readonly Coding VALIs = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// (d)
     /// </summary>
     public static readonly Coding D = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Generic tumor risk status stages
     /// </summary>
     public static readonly Coding GenericTumorRiskStatusStages = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low risk tumor
     /// </summary>
     public static readonly Coding LowRiskTumor = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medium risk tumor
     /// </summary>
     public static readonly Coding MediumRiskTumor = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// High risk tumor
     /// </summary>
     public static readonly Coding HighRiskTumor = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specific tumor staging descriptor
     /// </summary>
     public static readonly Coding SpecificTumorStagingDescriptor = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liver tumor staging descriptor
     /// </summary>
     public static readonly Coding LiverTumorStagingDescriptor = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liver tumor size index
     /// </summary>
     public static readonly Coding LiverTumorSizeIndex = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Timing of liver tumor staging
     /// </summary>
     public static readonly Coding TimingOfLiverTumorStaging = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphoma staging symptom status values
     /// </summary>
     public static readonly Coding LymphomaStagingSymptomStatusValues = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphomatous extranodal involvement status values
     /// </summary>
     public static readonly Coding LymphomatousExtranodalInvolvementStatusValues = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spleen-positive minimal lymphomatous extranodal involvement
     /// </summary>
     public static readonly Coding SpleenPositiveMinimalLymphomatousExtranodalInvolvement = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spleen-positive extensive lymphomatous extranodal involvement
     /// </summary>
     public static readonly Coding SpleenPositiveExtensiveLymphomatousExtranodalInvolvement = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphomatous nodal involvement
     /// </summary>
     public static readonly Coding LymphomatousNodalInvolvement = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stannards retinoblastoma stages
     /// </summary>
     public static readonly Coding StannardsRetinoblastomaStages = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Optic nerve tumor invasion status in retinoblastoma staging
     /// </summary>
     public static readonly Coding OpticNerveTumorInvasionStatusInRetinoblastomaStaging = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Choroidal tumor invasion status in retinoblastoma staging
     /// </summary>
     public static readonly Coding ChoroidalTumorInvasionStatusInRetinoblastomaStaging = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymph nodal tumor invasion status in retinoblastoma staging
     /// </summary>
     public static readonly Coding LymphNodalTumorInvasionStatusInRetinoblastomaStaging = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brain tumor invasion status in retinoblastoma staging
     /// </summary>
     public static readonly Coding BrainTumorInvasionStatusInRetinoblastomaStaging = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Langerhans cell histiocytosis stage
     /// </summary>
     public static readonly Coding LangerhansCellHistiocytosisStage = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Number of organ systems involved with Langerhans cell histiocytosis
     /// </summary>
     public static readonly Coding NumberOfOrganSystemsInvolvedWithLangerhansCellHistiocytosis = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Single system involvement
     /// </summary>
     public static readonly Coding SingleSystemInvolvement = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multisystem involvement
     /// </summary>
     public static readonly Coding MultisystemInvolvement = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Organ failure due to Langerhans cell histiocytosis
     /// </summary>
     public static readonly Coding OrganFailureDueToLangerhansCellHistiocytosis = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vital organ failure
     /// </summary>
     public static readonly Coding VitalOrganFailure = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-vital organ failure
     /// </summary>
     public static readonly Coding NonVitalOrganFailure = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Generic lymph node tumor invasion status stage
     /// </summary>
     public static readonly Coding GenericLymphNodeTumorInvasionStatusStage = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neck node tumor involvement
     /// </summary>
     public static readonly Coding NeckNodeTumorInvolvement = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// M+
     /// </summary>
     public static readonly Coding MPlus = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Axillary lymph node level
     /// </summary>
     public static readonly Coding AxillaryLymphNodeLevel = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Level I
     /// </summary>
     public static readonly Coding LevelI = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Midaxilla
     /// </summary>
     public static readonly Coding Midaxilla = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Level III
     /// </summary>
     public static readonly Coding LevelIII = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retroperitoneal lymph node tumor invasion status
     /// </summary>
     public static readonly Coding RetroperitonealLymphNodeTumorInvasionStatus = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Generic anatomical site tumor invasion status
     /// </summary>
     public static readonly Coding GenericAnatomicalSiteTumorInvasionStatus = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lung involvement stages
     /// </summary>
     public static readonly Coding LungInvolvementStages = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lung stage L2
     /// </summary>
     public static readonly Coding LungStageL2 = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lung stage L3
     /// </summary>
     public static readonly Coding LungStageL3 = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// H+
     /// </summary>
     public static readonly Coding HPlus = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liver sectors
     /// </summary>
     public static readonly Coding LiverSectors = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liver sector 1
     /// </summary>
     public static readonly Coding LiverSector1 = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liver sector 2
     /// </summary>
     public static readonly Coding LiverSector2 = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liver sector 3
     /// </summary>
     public static readonly Coding LiverSector3 = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liver sector 4
     /// </summary>
     public static readonly Coding LiverSector4 = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Markers for liver tumor staging
     /// </summary>
     public static readonly Coding MarkersForLiverTumorStaging = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical staging (qualifier value)
     /// </summary>
     public static readonly Coding ClinicalStagingQualifierValue = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pathological staging (qualifier value)
     /// </summary>
     public static readonly Coding PathologicalStagingQualifierValue = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor stage Ta
     /// </summary>
     public static readonly Coding TumorStageTa = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Central nervous system (CNS) metastases
     /// </summary>
     public static readonly Coding CentralNervousSystemCNSMetastases = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extra central nervous system metastases
     /// </summary>
     public static readonly Coding ExtraCentralNervousSystemMetastases = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No metastases
     /// </summary>
     public static readonly Coding NoMetastases = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Borg scale
     /// </summary>
     public static readonly Coding BorgScale = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endometriosis classification of American Fertility Society
     /// </summary>
     public static readonly Coding EndometriosisClassificationOfAmericanFertilitySociety = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assessment scales
     /// </summary>
     public static readonly Coding AssessmentScales = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aachen aphasia test
     /// </summary>
     public static readonly Coding AachenAphasiaTest = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// ABC chart
     /// </summary>
     public static readonly Coding ABCChart = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// ABC test for movement
     /// </summary>
     public static readonly Coding ABCTestForMovement = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// AIS - Abbreviated injury scale
     /// </summary>
     public static readonly Coding AISAbbreviatedInjuryScale = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abbreviated mental test
     /// </summary>
     public static readonly Coding AbbreviatedMentalTest = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// AIMS - Abnormal involuntary movement scale
     /// </summary>
     public static readonly Coding AIMSAbnormalInvoluntaryMovementScale = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute physiology and chronic health evaluation
     /// </summary>
     public static readonly Coding AcutePhysiologyAndChronicHealthEvaluation = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// APACHE II - Acute physiology and chronic health evaluation II
     /// </summary>
     public static readonly Coding APACHEIIAcutePhysiologyAndChronicHealthEvaluationII = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute physiology and chronic health evaluation III
     /// </summary>
     public static readonly Coding AcutePhysiologyAndChronicHealthEvaluationIII = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Addiction severity index
     /// </summary>
     public static readonly Coding AddictionSeverityIndex = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult personality rating schedule
     /// </summary>
     public static readonly Coding AdultPersonalityRatingSchedule = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// ABS - Affect balance scale
     /// </summary>
     public static readonly Coding ABSAffectBalanceScale = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acquired immunodeficiency syndrome (AIDS) risk behavior knowledge test
     /// </summary>
     public static readonly Coding AcquiredImmunodeficiencySyndromeAIDSRiskBehaviorKnowledgeTest = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// ADS - Alcohol dependence scale
     /// </summary>
     public static readonly Coding ADSAlcoholDependenceScale = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alcohol use disorders identification test
     /// </summary>
     public static readonly Coding AlcoholUseDisordersIdentificationTest = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alcohol use inventory
     /// </summary>
     public static readonly Coding AlcoholUseInventory = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Allen cognitive level screening tool
     /// </summary>
     public static readonly Coding AllenCognitiveLevelScreeningTool = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Allen cognitive performance test
     /// </summary>
     public static readonly Coding AllenCognitivePerformanceTest = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alzheimer disease assessment scale
     /// </summary>
     public static readonly Coding AlzheimerDiseaseAssessmentScale = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// American Society of Anesthesiologists physical status classification
     /// </summary>
     public static readonly Coding AmericanSocietyOfAnesthesiologistsPhysicalStatusClassification = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amsterdam-Nijmegen Everyday Language Test
     /// </summary>
     public static readonly Coding AmsterdamNijmegenEverydayLanguageTest = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anomalous sentence repetition test - Weeks
     /// </summary>
     public static readonly Coding AnomalousSentenceRepetitionTestWeeks = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anomalous sentence test - Kopelman
     /// </summary>
     public static readonly Coding AnomalousSentenceTestKopelman = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anorexic attitudes questionnaire
     /// </summary>
     public static readonly Coding AnorexicAttitudesQuestionnaire = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// ABS - Anorexic behavior scales
     /// </summary>
     public static readonly Coding ABSAnorexicBehaviorScales = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aphasia language performance scales
     /// </summary>
     public static readonly Coding AphasiaLanguagePerformanceScales = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whurr - Aphasia screening test
     /// </summary>
     public static readonly Coding WhurrAphasiaScreeningTest = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apraxia battery for adults
     /// </summary>
     public static readonly Coding ApraxiaBatteryForAdults = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arizona battery for communication disorders of dementia
     /// </summary>
     public static readonly Coding ArizonaBatteryForCommunicationDisordersOfDementia = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// AIMS I - Arthritis impact measurement scale I
     /// </summary>
     public static readonly Coding AIMSIArthritisImpactMeasurementScaleI = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthritis impact measurement scale II
     /// </summary>
     public static readonly Coding ArthritisImpactMeasurementScaleII = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// ASEPSIS score for wound infection
     /// </summary>
     public static readonly Coding ASEPSISScoreForWoundInfection = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ashworth assessment scale
     /// </summary>
     public static readonly Coding AshworthAssessmentScale = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assessing reading difficulties
     /// </summary>
     public static readonly Coding AssessingReadingDifficulties = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assessment and therapy program for dysfluent children
     /// </summary>
     public static readonly Coding AssessmentAndTherapyProgramForDysfluentChildren = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assessment of intelligibility
     /// </summary>
     public static readonly Coding AssessmentOfIntelligibility = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assessment of motor and process skills
     /// </summary>
     public static readonly Coding AssessmentOfMotorAndProcessSkills = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// AOF - Assessment of occupational function
     /// </summary>
     public static readonly Coding AOFAssessmentOfOccupationalFunction = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assessment protocol of pragmatic linguistic skills
     /// </summary>
     public static readonly Coding AssessmentProtocolOfPragmaticLinguisticSkills = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aston index
     /// </summary>
     public static readonly Coding AstonIndex = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Attributional style questionnaire
     /// </summary>
     public static readonly Coding AttributionalStyleQuestionnaire = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Auditory comprehension test for sentences
     /// </summary>
     public static readonly Coding AuditoryComprehensionTestForSentences = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Augmentative communication profile
     /// </summary>
     public static readonly Coding AugmentativeCommunicationProfile = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Autistic features checklist
     /// </summary>
     public static readonly Coding AutisticFeaturesChecklist = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Autobiographical memory interview
     /// </summary>
     public static readonly Coding AutobiographicalMemoryInterview = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bamford Kowal and Bench non-picture related
     /// </summary>
     public static readonly Coding BamfordKowalAndBenchNonPictureRelated = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// BKBPR - Bamford Kowal and Bench picture related
     /// </summary>
     public static readonly Coding BKBPRBamfordKowalAndBenchPictureRelated = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bangor dyslexia test
     /// </summary>
     public static readonly Coding BangorDyslexiaTest = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bankson language test
     /// </summary>
     public static readonly Coding BanksonLanguageTest = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Barthel index
     /// </summary>
     public static readonly Coding BarthelIndex = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bayley scale of infant development
     /// </summary>
     public static readonly Coding BayleyScaleOfInfantDevelopment = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beck depression inventory
     /// </summary>
     public static readonly Coding BeckDepressionInventory = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beck anxiety standardized rating scale
     /// </summary>
     public static readonly Coding BeckAnxietyStandardizedRatingScale = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// BEST - Bedside evaluation and screening test of aphasia
     /// </summary>
     public static readonly Coding BESTBedsideEvaluationAndScreeningTestOfAphasia = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beery-Buktenica test of visual motor integration
     /// </summary>
     public static readonly Coding BeeryBuktenicaTestOfVisualMotorIntegration = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Behavior and mood disturbance scale
     /// </summary>
     public static readonly Coding BehaviorAndMoodDisturbanceScale = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Behavior assessment battery
     /// </summary>
     public static readonly Coding BehaviorAssessmentBattery = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Behavior problem checklist
     /// </summary>
     public static readonly Coding BehaviorProblemChecklist = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Behavior rating scale
     /// </summary>
     public static readonly Coding BehaviorRatingScale = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Behavioral inattention test
     /// </summary>
     public static readonly Coding BehavioralInattentionTest = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// BOS - Behavioral observation schedule
     /// </summary>
     public static readonly Coding BOSBehavioralObservationSchedule = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Behavioral screening questionnaire
     /// </summary>
     public static readonly Coding BehavioralScreeningQuestionnaire = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bennett test of manual dexterity
     /// </summary>
     public static readonly Coding BennettTestOfManualDexterity = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bexley-Maudsley automated psychological screening
     /// </summary>
     public static readonly Coding BexleyMaudsleyAutomatedPsychologicalScreening = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Binge eating scale
     /// </summary>
     public static readonly Coding BingeEatingScale = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// BORB - Birmingham object recognition battery
     /// </summary>
     public static readonly Coding BORBBirminghamObjectRecognitionBattery = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blakely dyspraxia assessment
     /// </summary>
     public static readonly Coding BlakelyDyspraxiaAssessment = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blessed dementia rating scale
     /// </summary>
     public static readonly Coding BlessedDementiaRatingScale = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blissymbols test
     /// </summary>
     public static readonly Coding BlissymbolsTest = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Body shape questionnaire
     /// </summary>
     public static readonly Coding BodyShapeQuestionnaire = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boehm test of basic concepts
     /// </summary>
     public static readonly Coding BoehmTestOfBasicConcepts = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Booker heterotopic ossification score
     /// </summary>
     public static readonly Coding BookerHeterotopicOssificationScore = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boston aphasia scale
     /// </summary>
     public static readonly Coding BostonAphasiaScale = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boston diagnostic aphasia examination
     /// </summary>
     public static readonly Coding BostonDiagnosticAphasiaExamination = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boston naming test
     /// </summary>
     public static readonly Coding BostonNamingTest = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bracken test of basic concept scale
     /// </summary>
     public static readonly Coding BrackenTestOfBasicConceptScale = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brief activities of daily living
     /// </summary>
     public static readonly Coding BriefActivitiesOfDailyLiving = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// BDRS - Brief depression rating scale
     /// </summary>
     public static readonly Coding BDRSBriefDepressionRatingScale = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bristol language assessment scale
     /// </summary>
     public static readonly Coding BristolLanguageAssessmentScale = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// British ability scales
     /// </summary>
     public static readonly Coding BritishAbilityScales = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// BASR - British ability scales - revised
     /// </summary>
     public static readonly Coding BASRBritishAbilityScalesRevised = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// British ability scales reading test
     /// </summary>
     public static readonly Coding BritishAbilityScalesReadingTest = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// BAS - British ability scales spelling test
     /// </summary>
     public static readonly Coding BASBritishAbilityScalesSpellingTest = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// British isles lupus assessment group score
     /// </summary>
     public static readonly Coding BritishIslesLupusAssessmentGroupScore = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bryant and Bradley rhyming task
     /// </summary>
     public static readonly Coding BryantAndBradleyRhymingTask = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Buffalo assessment profile - Wilson
     /// </summary>
     public static readonly Coding BuffaloAssessmentProfileWilson = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bulimia test
     /// </summary>
     public static readonly Coding BulimiaTest = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bulimic investigation test - Edinburgh
     /// </summary>
     public static readonly Coding BulimicInvestigationTestEdinburgh = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bus story
     /// </summary>
     public static readonly Coding BusStory = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cage questionnaire
     /// </summary>
     public static readonly Coding CageQuestionnaire = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// California personality inventory
     /// </summary>
     public static readonly Coding CaliforniaPersonalityInventory = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Callier-Azusa scale
     /// </summary>
     public static readonly Coding CallierAzusaScale = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Camberwell assessment for the needs of the elderly
     /// </summary>
     public static readonly Coding CamberwellAssessmentForTheNeedsOfTheElderly = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CAB - Cambridge apraxia battery
     /// </summary>
     public static readonly Coding CABCambridgeApraxiaBattery = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cantril ladder assessment
     /// </summary>
     public static readonly Coding CantrilLadderAssessment = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CELI - Carrow elicited language inventory
     /// </summary>
     public static readonly Coding CELICarrowElicitedLanguageInventory = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carrow screening test of auditory comprehension
     /// </summary>
     public static readonly Coding CarrowScreeningTestOfAuditoryComprehension = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chailey Heritage lying assessment
     /// </summary>
     public static readonly Coding ChaileyHeritageLyingAssessment = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chailey Heritage seating assessment
     /// </summary>
     public static readonly Coding ChaileyHeritageSeatingAssessment = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Checklist of communicative competence
     /// </summary>
     public static readonly Coding ChecklistOfCommunicativeCompetence = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Checklist of conversational abilities
     /// </summary>
     public static readonly Coding ChecklistOfConversationalAbilities = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Checklist of listening behaviors
     /// </summary>
     public static readonly Coding ChecklistOfListeningBehaviors = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// OT - Chessington occupational therapy neurological assessment battery
     /// </summary>
     public static readonly Coding OTChessingtonOccupationalTherapyNeurologicalAssessmentBattery = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child assessment schedule
     /// </summary>
     public static readonly Coding ChildAssessmentSchedule = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CDS - Child depression scale
     /// </summary>
     public static readonly Coding CDSChildDepressionScale = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Children's coma scale
     /// </summary>
     public static readonly Coding ChildrenQuoteSComaScale = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crohn disease activity index
     /// </summary>
     public static readonly Coding CrohnDiseaseActivityIndex = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CAPE - Clifton assessment procedures for the elderly
     /// </summary>
     public static readonly Coding CAPECliftonAssessmentProceduresForTheElderly = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical anxiety scale
     /// </summary>
     public static readonly Coding ClinicalAnxietyScale = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical dementia rating scale
     /// </summary>
     public static readonly Coding ClinicalDementiaRatingScale = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CEDRI - Clinical eating disorder rating instrument
     /// </summary>
     public static readonly Coding CEDRIClinicalEatingDisorderRatingInstrument = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical evaluation of language function revised
     /// </summary>
     public static readonly Coding ClinicalEvaluationOfLanguageFunctionRevised = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical evaluation of language function revised - screening test
     /// </summary>
     public static readonly Coding ClinicalEvaluationOfLanguageFunctionRevisedScreeningTest = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical evaluation of language function revised - preschool test
     /// </summary>
     public static readonly Coding ClinicalEvaluationOfLanguageFunctionRevisedPreschoolTest = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical observation of motor and postural skills
     /// </summary>
     public static readonly Coding ClinicalObservationOfMotorAndPosturalSkills = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CAAP - Cocaine abuse assessment profile
     /// </summary>
     public static readonly Coding CAAPCocaineAbuseAssessmentProfile = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cognitions questionnaire
     /// </summary>
     public static readonly Coding CognitionsQuestionnaire = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cognitive failures questionnaire
     /// </summary>
     public static readonly Coding CognitiveFailuresQuestionnaire = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CASP - Communication assessment profile for adults with a mental handicap
     /// </summary>
     public static readonly Coding CASPCommunicationAssessmentProfileForAdultsWithAMentalHandicap = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Communicative abilities in daily living
     /// </summary>
     public static readonly Coding CommunicativeAbilitiesInDailyLiving = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CIDI - Composite international diagnostic interview
     /// </summary>
     public static readonly Coding CIDICompositeInternationalDiagnosticInterview = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Comprehensive drinker profile
     /// </summary>
     public static readonly Coding ComprehensiveDrinkerProfile = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CRIS - Comprehensive injury scale
     /// </summary>
     public static readonly Coding CRISComprehensiveInjuryScale = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Comprehensive occupational therapy evaluation scale
     /// </summary>
     public static readonly Coding ComprehensiveOccupationalTherapyEvaluationScale = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CES - Compulsive eating scale
     /// </summary>
     public static readonly Coding CESCompulsiveEatingScale = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Constant and Murley shoulder assessment score
     /// </summary>
     public static readonly Coding ConstantAndMurleyShoulderAssessmentScore = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Consumer satisfaction questionnaire
     /// </summary>
     public static readonly Coding ConsumerSatisfactionQuestionnaire = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Co-op function charts
     /// </summary>
     public static readonly Coding CoOpFunctionCharts = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PFCT - Cooper personalized fluency control therapy
     /// </summary>
     public static readonly Coding PFCTCooperPersonalizedFluencyControlTherapy = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coping responses inventory
     /// </summary>
     public static readonly Coding CopingResponsesInventory = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crichton vocabulary scale
     /// </summary>
     public static readonly Coding CrichtonVocabularyScale = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Daily activities questionnaire
     /// </summary>
     public static readonly Coding DailyActivitiesQuestionnaire = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dallas pain questionnaire
     /// </summary>
     public static readonly Coding DallasPainQuestionnaire = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Daniels and Diack reading tests
     /// </summary>
     public static readonly Coding DanielsAndDiackReadingTests = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Daniels and Diack graded word spelling test
     /// </summary>
     public static readonly Coding DanielsAndDiackGradedWordSpellingTest = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// De Gangi-Berk sensory functioning in infants
     /// </summary>
     public static readonly Coding DeGangiBerkSensoryFunctioningInInfants = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delighted-terrible faces scale
     /// </summary>
     public static readonly Coding DelightedTerribleFacesScale = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Denver development scale
     /// </summary>
     public static readonly Coding DenverDevelopmentScale = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Denver developmental subscale - gross motor
     /// </summary>
     public static readonly Coding DenverDevelopmentalSubscaleGrossMotor = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Denver developmental subscale - language
     /// </summary>
     public static readonly Coding DenverDevelopmentalSubscaleLanguage = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Denver developmental subscale - personal/social
     /// </summary>
     public static readonly Coding DenverDevelopmentalSubscalePersonalSocial = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Denver developmental subscale - fine motor/adaptive
     /// </summary>
     public static readonly Coding DenverDevelopmentalSubscaleFineMotorAdaptive = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Denver development scale screening test
     /// </summary>
     public static readonly Coding DenverDevelopmentScaleScreeningTest = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Denver development scale screening test - schedule for growing skills
     /// </summary>
     public static readonly Coding DenverDevelopmentScaleScreeningTestScheduleForGrowingSkills = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Depression anxiety scale
     /// </summary>
     public static readonly Coding DepressionAnxietyScale = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Depression self rating scale
     /// </summary>
     public static readonly Coding DepressionSelfRatingScale = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dermatology life quality index
     /// </summary>
     public static readonly Coding DermatologyLifeQualityIndex = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// DSFI - Derogatis sexual functioning inventory
     /// </summary>
     public static readonly Coding DSFIDerogatisSexualFunctioningInventory = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diabetes clinic satisfaction questionnaire
     /// </summary>
     public static readonly Coding DiabetesClinicSatisfactionQuestionnaire = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// DTSQ - Diabetes treatment satisfaction questionnaire
     /// </summary>
     public static readonly Coding DTSQDiabetesTreatmentSatisfactionQuestionnaire = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diabetes wellbeing questionnaire
     /// </summary>
     public static readonly Coding DiabetesWellbeingQuestionnaire = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// DICA - Diagnostic interview for children and adolescents
     /// </summary>
     public static readonly Coding DICADiagnosticInterviewForChildrenAndAdolescents = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic interview schedule
     /// </summary>
     public static readonly Coding DiagnosticInterviewSchedule = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// DSDT - Diagnostic speech discrimination test
     /// </summary>
     public static readonly Coding DSDTDiagnosticSpeechDiscriminationTest = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic survey for eating disorders
     /// </summary>
     public static readonly Coding DiagnosticSurveyForEatingDisorders = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// DINE - Dietary instrument for nutrition education questionnaire
     /// </summary>
     public static readonly Coding DINEDietaryInstrumentForNutritionEducationQuestionnaire = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Digit sequence learning
     /// </summary>
     public static readonly Coding DigitSequenceLearning = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disability assessment schedule
     /// </summary>
     public static readonly Coding DisabilityAssessmentSchedule = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disability rating scale
     /// </summary>
     public static readonly Coding DisabilityRatingScale = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Discourse abilities profile
     /// </summary>
     public static readonly Coding DiscourseAbilitiesProfile = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dol scale
     /// </summary>
     public static readonly Coding DolScale = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doyle articular index
     /// </summary>
     public static readonly Coding DoyleArticularIndex = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drinking problem scale
     /// </summary>
     public static readonly Coding DrinkingProblemScale = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// DAST - Drug abuse screening test
     /// </summary>
     public static readonly Coding DASTDrugAbuseScreeningTest = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dubowitz score
     /// </summary>
     public static readonly Coding DubowitzScore = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Duke UNC health profile
     /// </summary>
     public static readonly Coding DukeUNCHealthProfile = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dundee cardiovascular risk score
     /// </summary>
     public static readonly Coding DundeeCardiovascularRiskScore = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Durrell test of listening comprehension
     /// </summary>
     public static readonly Coding DurrellTestOfListeningComprehension = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eakin index
     /// </summary>
     public static readonly Coding EakinIndex = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eating attitudes test
     /// </summary>
     public static readonly Coding EatingAttitudesTest = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// EAT 26 - Abbreviated eating attitudes test
     /// </summary>
     public static readonly Coding EAT26AbbreviatedEatingAttitudesTest = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// EBRS - Eating behavior rating scale
     /// </summary>
     public static readonly Coding EBRSEatingBehaviorRatingScale = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eating disorders inventory
     /// </summary>
     public static readonly Coding EatingDisordersInventory = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eating inventory
     /// </summary>
     public static readonly Coding EatingInventory = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eastern Cooperative Oncology Group (ECOG) scale for physical assessment
     /// </summary>
     public static readonly Coding EasternCooperativeOncologyGroupECOGScaleForPhysicalAssessment = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Edinburgh articulation test
     /// </summary>
     public static readonly Coding EdinburghArticulationTest = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// EFCP - Edinburgh functional communication profile
     /// </summary>
     public static readonly Coding EFCPEdinburghFunctionalCommunicationProfile = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Revised Edinburgh functional communication profile
     /// </summary>
     public static readonly Coding RevisedEdinburghFunctionalCommunicationProfile = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Edinburgh postnatal depression scale
     /// </summary>
     public static readonly Coding EdinburghPostnatalDepressionScale = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Edmans ADL index - Edmans activities of daily living index
     /// </summary>
     public static readonly Coding EdmansADLIndexEdmansActivitiesOfDailyLivingIndex = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elia normogram
     /// </summary>
     public static readonly Coding EliaNormogram = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// British picture vocabulary scale
     /// </summary>
     public static readonly Coding BritishPictureVocabularyScale = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enthesitis index
     /// </summary>
     public static readonly Coding EnthesitisIndex = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// European Organization for Research and Treatment of Cancer (EORTC) - Quality of life questionnaire
     /// </summary>
     public static readonly Coding EuropeanOrganizationForResearchAndTreatmentOfCancerEORTCQualityOfLifeQuestionnaire = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// EuroQOL
     /// </summary>
     public static readonly Coding EuroQOL = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended activities of daily living scale
     /// </summary>
     public static readonly Coding ExtendedActivitiesOfDailyLivingScale = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// EPI - Eysenck personality inventory
     /// </summary>
     public static readonly Coding EPIEysenckPersonalityInventory = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Facial recognition test
     /// </summary>
     public static readonly Coding FacialRecognitionTest = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fagerstrom tolerance questionnaire
     /// </summary>
     public static readonly Coding FagerstromToleranceQuestionnaire = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// RTQ - Revised tolerance questionnaire
     /// </summary>
     public static readonly Coding RTQRevisedToleranceQuestionnaire = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fagerstrom test for nicotine dependence
     /// </summary>
     public static readonly Coding FagerstromTestForNicotineDependence = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fear of acquired immunodeficiency syndrome scale
     /// </summary>
     public static readonly Coding FearOfAcquiredImmunodeficiencySyndromeScale = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fear survey schedule
     /// </summary>
     public static readonly Coding FearSurveySchedule = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Feeding assessment schedule
     /// </summary>
     public static readonly Coding FeedingAssessmentSchedule = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Feelings of fatness questionnaire
     /// </summary>
     public static readonly Coding FeelingsOfFatnessQuestionnaire = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FTT - Finger tapping test
     /// </summary>
     public static readonly Coding FTTFingerTappingTest = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FIRST screening test
     /// </summary>
     public static readonly Coding FIRSTScreeningTest = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frankel grading system for spinal cord injury
     /// </summary>
     public static readonly Coding FrankelGradingSystemForSpinalCordInjury = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FAI - Frenchay activities index
     /// </summary>
     public static readonly Coding FAIFrenchayActivitiesIndex = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frenchay aphasia screening test
     /// </summary>
     public static readonly Coding FrenchayAphasiaScreeningTest = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FDA - Frenchay dysarthria assessment
     /// </summary>
     public static readonly Coding FDAFrenchayDysarthriaAssessment = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fullerton language test for adolescents
     /// </summary>
     public static readonly Coding FullertonLanguageTestForAdolescents = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Functional assessment measure
     /// </summary>
     public static readonly Coding FunctionalAssessmentMeasure = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Functional communication assessment for physically handicapped children
     /// </summary>
     public static readonly Coding FunctionalCommunicationAssessmentForPhysicallyHandicappedChildren = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Functional communication profile
     /// </summary>
     public static readonly Coding FunctionalCommunicationProfile = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FIM - Functional independence measure
     /// </summary>
     public static readonly Coding FIMFunctionalIndependenceMeasure = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Functional limitation profile
     /// </summary>
     public static readonly Coding FunctionalLimitationProfile = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FMPS - Functional meal preparation scale
     /// </summary>
     public static readonly Coding FMPSFunctionalMealPreparationScale = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Functional status index
     /// </summary>
     public static readonly Coding FunctionalStatusIndex = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FSST - Fundamental speech skills test
     /// </summary>
     public static readonly Coding FSSTFundamentalSpeechSkillsTest = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Galveston orientation and amnesia test
     /// </summary>
     public static readonly Coding GalvestonOrientationAndAmnesiaTest = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gathercole - non-word repetition task
     /// </summary>
     public static readonly Coding GathercoleNonWordRepetitionTask = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General assessment of neurological impairment
     /// </summary>
     public static readonly Coding GeneralAssessmentOfNeurologicalImpairment = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General clerical test
     /// </summary>
     public static readonly Coding GeneralClericalTest = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General health questionnaire
     /// </summary>
     public static readonly Coding GeneralHealthQuestionnaire = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// GWBS - General wellbeing schedule
     /// </summary>
     public static readonly Coding GWBSGeneralWellbeingSchedule = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Geriatric depression scale
     /// </summary>
     public static readonly Coding GeriatricDepressionScale = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// German test of wordfinding
     /// </summary>
     public static readonly Coding GermanTestOfWordfinding = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glasgow abbreviated mental test score
     /// </summary>
     public static readonly Coding GlasgowAbbreviatedMentalTestScore = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glasgow outcome scale
     /// </summary>
     public static readonly Coding GlasgowOutcomeScale = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Goldman cardiac risk index
     /// </summary>
     public static readonly Coding GoldmanCardiacRiskIndex = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Goldman Fristoe test
     /// </summary>
     public static readonly Coding GoldmanFristoeTest = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Golombrok-Rust inventory of sexual satisfaction
     /// </summary>
     public static readonly Coding GolombrokRustInventoryOfSexualSatisfaction = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Goodenough draw-a-man test
     /// </summary>
     public static readonly Coding GoodenoughDrawAManTest = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Goodenough norms
     /// </summary>
     public static readonly Coding GoodenoughNorms = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grade-Rough-Breathy-Asthenic-Strain (GRBAS) scale
     /// </summary>
     public static readonly Coding GradeRoughBreathyAsthenicStrainGRBASScale = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Graded naming test
     /// </summary>
     public static readonly Coding GradedNamingTest = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Graham-Kendall memory for designs test
     /// </summary>
     public static readonly Coding GrahamKendallMemoryForDesignsTest = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grammatical analysis of elicited language
     /// </summary>
     public static readonly Coding GrammaticalAnalysisOfElicitedLanguage = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grammatical contrasts test
     /// </summary>
     public static readonly Coding GrammaticalContrastsTest = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gunzberg primary progress assessment chart of social development
     /// </summary>
     public static readonly Coding GunzbergPrimaryProgressAssessmentChartOfSocialDevelopment = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gunzberg progress assessment chart of social development number 1
     /// </summary>
     public static readonly Coding GunzbergProgressAssessmentChartOfSocialDevelopmentNumber1 = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gunzberg progress assessment chart of social development number 2
     /// </summary>
     public static readonly Coding GunzbergProgressAssessmentChartOfSocialDevelopmentNumber2 = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hachinski ischemia score
     /// </summary>
     public static readonly Coding HachinskiIschemiaScore = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hall and Baker rehabilitation evaluation
     /// </summary>
     public static readonly Coding HallAndBakerRehabilitationEvaluation = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Halstead-Reitan battery
     /// </summary>
     public static readonly Coding HalsteadReitanBattery = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hamb hip score
     /// </summary>
     public static readonly Coding HambHipScore = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hamilton rating scale for depression
     /// </summary>
     public static readonly Coding HamiltonRatingScaleForDepression = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lorr's modified multidimensional scale for rating psychiatric patients
     /// </summary>
     public static readonly Coding LorrQuoteSModifiedMultidimensionalScaleForRatingPsychiatricPatients = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hampshire assessment for living with others
     /// </summary>
     public static readonly Coding HampshireAssessmentForLivingWithOthers = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hanen early language program
     /// </summary>
     public static readonly Coding HanenEarlyLanguageProgram = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Harvey and Bradshaw index
     /// </summary>
     public static readonly Coding HarveyAndBradshawIndex = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hauser ambulatory categories
     /// </summary>
     public static readonly Coding HauserAmbulatoryCategories = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health assessment questionnaire
     /// </summary>
     public static readonly Coding HealthAssessmentQuestionnaire = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MHAQ - Modified health assessment questionnaire
     /// </summary>
     public static readonly Coding MHAQModifiedHealthAssessmentQuestionnaire = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Healthcare assessment questionnaire - Sidney Benjamin
     /// </summary>
     public static readonly Coding HealthcareAssessmentQuestionnaireSidneyBenjamin = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health of the Nation Outcome Scale (generic version)
     /// </summary>
     public static readonly Coding HealthOfTheNationOutcomeScaleGenericVersion = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health status index
     /// </summary>
     public static readonly Coding HealthStatusIndex = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hearing handicap inventory for the elderly
     /// </summary>
     public static readonly Coding HearingHandicapInventoryForTheElderly = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// HHS - Hearing handicap scale
     /// </summary>
     public static readonly Coding HHSHearingHandicapScale = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hidden figures test
     /// </summary>
     public static readonly Coding HiddenFiguresTest = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hopelessness scale
     /// </summary>
     public static readonly Coding HopelessnessScale = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hopkins symptom checklist
     /// </summary>
     public static readonly Coding HopkinsSymptomChecklist = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hornsby articulation test
     /// </summary>
     public static readonly Coding HornsbyArticulationTest = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hornsby test of language development
     /// </summary>
     public static readonly Coding HornsbyTestOfLanguageDevelopment = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital anxiety and depression scale
     /// </summary>
     public static readonly Coding HospitalAnxietyAndDepressionScale = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital trauma index
     /// </summary>
     public static readonly Coding HospitalTraumaIndex = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Human interaction assessment
     /// </summary>
     public static readonly Coding HumanInteractionAssessment = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Illinois test of psycholinguistic abilities
     /// </summary>
     public static readonly Coding IllinoisTestOfPsycholinguisticAbilities = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// IISI - Illness-injury severity index
     /// </summary>
     public static readonly Coding IISIIllnessInjurySeverityIndex = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Illness behavior questionnaire
     /// </summary>
     public static readonly Coding IllnessBehaviorQuestionnaire = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Impact of event scale
     /// </summary>
     public static readonly Coding ImpactOfEventScale = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Index of independence in activities of daily living
     /// </summary>
     public static readonly Coding IndexOfIndependenceInActivitiesOfDailyLiving = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// ISS - Injury severity score
     /// </summary>
     public static readonly Coding ISSInjurySeverityScore = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Instrumental ADL
     /// </summary>
     public static readonly Coding InstrumentalADL = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// INREAL - Inter-reactive language analysis
     /// </summary>
     public static readonly Coding INREALInterReactiveLanguageAnalysis = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interaction checklist for augmentative communication
     /// </summary>
     public static readonly Coding InteractionChecklistForAugmentativeCommunication = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interest checklist
     /// </summary>
     public static readonly Coding InterestChecklist = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// IOWA low back rating scale
     /// </summary>
     public static readonly Coding IOWALowBackRatingScale = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// IOWA structured psychiatric interview
     /// </summary>
     public static readonly Coding IOWAStructuredPsychiatricInterview = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ischemia score
     /// </summary>
     public static readonly Coding IschemiaScore = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jarman index
     /// </summary>
     public static readonly Coding JarmanIndex = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jebsen hand function test
     /// </summary>
     public static readonly Coding JebsenHandFunctionTest = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jones word order test
     /// </summary>
     public static readonly Coding JonesWordOrderTest = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Karnofsky index
     /// </summary>
     public static readonly Coding KarnofskyIndex = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Katz activities of daily living
     /// </summary>
     public static readonly Coding KatzActivitiesOfDailyLiving = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// KASR - Katz adjustment scale - relatives form
     /// </summary>
     public static readonly Coding KASRKatzAdjustmentScaleRelativesForm = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kendrick battery for detection of dementia in the elderly
     /// </summary>
     public static readonly Coding KendrickBatteryForDetectionOfDementiaInTheElderly = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kenny index of ADL
     /// </summary>
     public static readonly Coding KennyIndexOfADL = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kielhofner role checklist
     /// </summary>
     public static readonly Coding KielhofnerRoleChecklist = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kirwan Thompson articular index
     /// </summary>
     public static readonly Coding KirwanThompsonArticularIndex = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Klein-Bell Activities of Daily Living scale
     /// </summary>
     public static readonly Coding KleinBellActivitiesOfDailyLivingScale = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kurtzke multiple sclerosis rating scale
     /// </summary>
     public static readonly Coding KurtzkeMultipleSclerosisRatingScale = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// LCS - Lambeth communication scale
     /// </summary>
     public static readonly Coding LCSLambethCommunicationScale = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lambeth disability screening questionnaire
     /// </summary>
     public static readonly Coding LambethDisabilityScreeningQuestionnaire = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lamh assessment checklist
     /// </summary>
     public static readonly Coding LamhAssessmentChecklist = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Language assessment remediation and screening procedure
     /// </summary>
     public static readonly Coding LanguageAssessmentRemediationAndScreeningProcedure = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lansbury articular index
     /// </summary>
     public static readonly Coding LansburyArticularIndex = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Last six months of drinking questionnaire
     /// </summary>
     public static readonly Coding LastSixMonthsOfDrinkingQuestionnaire = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Learning development aids - handwriting assessment
     /// </summary>
     public static readonly Coding LearningDevelopmentAidsHandwritingAssessment = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leeds scales for the self-assessment of anxiety and depression
     /// </summary>
     public static readonly Coding LeedsScalesForTheSelfAssessmentOfAnxietyAndDepression = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leiter international performance scale
     /// </summary>
     public static readonly Coding LeiterInternationalPerformanceScale = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lequesne index
     /// </summary>
     public static readonly Coding LequesneIndex = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lequesne index - hip
     /// </summary>
     public static readonly Coding LequesneIndexHip = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lequesne index - knee
     /// </summary>
     public static readonly Coding LequesneIndexKnee = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Letter cancelation test
     /// </summary>
     public static readonly Coding LetterCancelationTest = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Life events and difficulties scale
     /// </summary>
     public static readonly Coding LifeEventsAndDifficultiesScale = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Life events inventory
     /// </summary>
     public static readonly Coding LifeEventsInventory = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Life satisfaction index
     /// </summary>
     public static readonly Coding LifeSatisfactionIndex = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// LSIA - Life satisfaction index A
     /// </summary>
     public static readonly Coding LSIALifeSatisfactionIndexA = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Life satisfaction index B
     /// </summary>
     public static readonly Coding LifeSatisfactionIndexB = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// LSIZ - Life satisfaction index Z
     /// </summary>
     public static readonly Coding LSIZLifeSatisfactionIndexZ = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Likert scale
     /// </summary>
     public static readonly Coding LikertScale = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lincoln rehabilitation assessment
     /// </summary>
     public static readonly Coding LincolnRehabilitationAssessment = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lindamood auditory conceptualization test
     /// </summary>
     public static readonly Coding LindamoodAuditoryConceptualizationTest = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lowenstein occupational therapy cognitive assessment
     /// </summary>
     public static readonly Coding LowensteinOccupationalTherapyCognitiveAssessment = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// London hospital pain chart assessment
     /// </summary>
     public static readonly Coding LondonHospitalPainChartAssessment = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Luria neuropsychological battery
     /// </summary>
     public static readonly Coding LuriaNeuropsychologicalBattery = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MacAndrew scale
     /// </summary>
     public static readonly Coding MacAndrewScale = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MacMillan reading test
     /// </summary>
     public static readonly Coding MacMillanReadingTest = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Make-a-picture story test
     /// </summary>
     public static readonly Coding MakeAPictureStoryTest = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mallampati scale
     /// </summary>
     public static readonly Coding MallampatiScale = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Master questionnaire
     /// </summary>
     public static readonly Coding MasterQuestionnaire = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Revised Master questionnaire
     /// </summary>
     public static readonly Coding RevisedMasterQuestionnaire = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Matson assessment
     /// </summary>
     public static readonly Coding MatsonAssessment = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// McConkey score
     /// </summary>
     public static readonly Coding McConkeyScore = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// McCormick miniature toy discrimination test
     /// </summary>
     public static readonly Coding McCormickMiniatureToyDiscriminationTest = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// McCormick miniature toy discrimination test - automated
     /// </summary>
     public static readonly Coding McCormickMiniatureToyDiscriminationTestAutomated = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// McCormick miniature toy discrimination test - manual
     /// </summary>
     public static readonly Coding McCormickMiniatureToyDiscriminationTestManual = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// McGill pain chart questionnaire
     /// </summary>
     public static readonly Coding McGillPainChartQuestionnaire = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MHIQ - McMaster health index questionnaire
     /// </summary>
     public static readonly Coding MHIQMcMasterHealthIndexQuestionnaire = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// McTears assessment of conversation
     /// </summary>
     public static readonly Coding McTearsAssessmentOfConversation = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical outcomes study short form general health survey
     /// </summary>
     public static readonly Coding MedicalOutcomesStudyShortFormGeneralHealthSurvey = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical outcomes study short form general health survey - 36
     /// </summary>
     public static readonly Coding MedicalOutcomesStudyShortFormGeneralHealthSurvey36 = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MOS SF - 20 - Medical outcomes study short form general health survey - 20
     /// </summary>
     public static readonly Coding MOSSF20MedicalOutcomesStudyShortFormGeneralHealthSurvey20 = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical Research Council motor power scale
     /// </summary>
     public static readonly Coding MedicalResearchCouncilMotorPowerScale = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical Research Council questionnaire
     /// </summary>
     public static readonly Coding MedicalResearchCouncilQuestionnaire = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mental status questionnaire
     /// </summary>
     public static readonly Coding MentalStatusQuestionnaire = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mental test quotient
     /// </summary>
     public static readonly Coding MentalTestQuotient = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mental test score - long version
     /// </summary>
     public static readonly Coding MentalTestScoreLongVersion = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Merle d'Aubigne - Charnley hip score
     /// </summary>
     public static readonly Coding MerleDQuoteAubigneCharnleyHipScore = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Michigan alcoholism screening test
     /// </summary>
     public static readonly Coding MichiganAlcoholismScreeningTest = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// BMAST - Brief Michigan alcoholism screening test
     /// </summary>
     public static readonly Coding BMASTBriefMichiganAlcoholismScreeningTest = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Short Michigan alcoholism screening test
     /// </summary>
     public static readonly Coding ShortMichiganAlcoholismScreeningTest = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MEAMS - Middlesex elderly assessment of mental state
     /// </summary>
     public static readonly Coding MEAMSMiddlesexElderlyAssessmentOfMentalState = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Midlands spelling test
     /// </summary>
     public static readonly Coding MidlandsSpellingTest = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mill Hill vocabulary scale
     /// </summary>
     public static readonly Coding MillHillVocabularyScale = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Miller assessment for preschoolers
     /// </summary>
     public static readonly Coding MillerAssessmentForPreschoolers = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Milwaukee evaluation of daily living skills
     /// </summary>
     public static readonly Coding MilwaukeeEvaluationOfDailyLivingSkills = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mini-mental state examination
     /// </summary>
     public static readonly Coding MiniMentalStateExamination = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Modified mini-mental state 3MS examination
     /// </summary>
     public static readonly Coding ModifiedMiniMentalState3MSExamination = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Minnesota test for differential diagnosis of aphasia
     /// </summary>
     public static readonly Coding MinnesotaTestForDifferentialDiagnosisOfAphasia = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shortened Schuell - Shortened Minnesota test for differential diagnosis of aphasia
     /// </summary>
     public static readonly Coding ShortenedSchuellShortenedMinnesotaTestForDifferentialDiagnosisOfAphasia = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Modified card sorting test
     /// </summary>
     public static readonly Coding ModifiedCardSortingTest = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MISS - Modified injury severity scale
     /// </summary>
     public static readonly Coding MISSModifiedInjurySeverityScale = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Modified word learning test
     /// </summary>
     public static readonly Coding ModifiedWordLearningTest = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monterey fluency program
     /// </summary>
     public static readonly Coding MontereyFluencyProgram = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mood adjective checklist
     /// </summary>
     public static readonly Coding MoodAdjectiveChecklist = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Morgan-Barry auditory discrimination and attention test
     /// </summary>
     public static readonly Coding MorganBarryAuditoryDiscriminationAndAttentionTest = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Morningside rehabilitation status scale
     /// </summary>
     public static readonly Coding MorningsideRehabilitationStatusScale = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mortality probability model
     /// </summary>
     public static readonly Coding MortalityProbabilityModel = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mortality prediction model II
     /// </summary>
     public static readonly Coding MortalityPredictionModelII = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MFS - Motives for smoking scale
     /// </summary>
     public static readonly Coding MFSMotivesForSmokingScale = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Motor assessment scale
     /// </summary>
     public static readonly Coding MotorAssessmentScale = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Motricity index
     /// </summary>
     public static readonly Coding MotricityIndex = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mount Wilga high level language screening assessment
     /// </summary>
     public static readonly Coding MountWilgaHighLevelLanguageScreeningAssessment = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Movement of upper limb evaluation
     /// </summary>
     public static readonly Coding MovementOfUpperLimbEvaluation = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multilevel informal language inventory
     /// </summary>
     public static readonly Coding MultilevelInformalLanguageInventory = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multilingual aphasia examination
     /// </summary>
     public static readonly Coding MultilingualAphasiaExamination = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Munich alcoholism test
     /// </summary>
     public static readonly Coding MunichAlcoholismTest = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// NART - National adult reading test
     /// </summary>
     public static readonly Coding NARTNationalAdultReadingTest = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neale analysis of reading ability
     /// </summary>
     public static readonly Coding NealeAnalysisOfReadingAbility = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nelson schedule of growing skills
     /// </summary>
     public static readonly Coding NelsonScheduleOfGrowingSkills = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neurobehavioral cognitive status examination
     /// </summary>
     public static readonly Coding NeurobehavioralCognitiveStatusExamination = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neuropsychological battery
     /// </summary>
     public static readonly Coding NeuropsychologicalBattery = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Newcastle articulation test
     /// </summary>
     public static readonly Coding NewcastleArticulationTest = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Newcastle dyspraxia assessment
     /// </summary>
     public static readonly Coding NewcastleDyspraxiaAssessment = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Newcastle phonology assessment
     /// </summary>
     public static readonly Coding NewcastlePhonologyAssessment = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nine hole peg test
     /// </summary>
     public static readonly Coding NineHolePegTest = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Norris functional scale
     /// </summary>
     public static readonly Coding NorrisFunctionalScale = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Northwest syntax screening test
     /// </summary>
     public static readonly Coding NorthwestSyntaxScreeningTest = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Northwick Park index of independence in activities of daily living
     /// </summary>
     public static readonly Coding NorthwickParkIndexOfIndependenceInActivitiesOfDailyLiving = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// NHP - Nottingham health profile
     /// </summary>
     public static readonly Coding NHPNottinghamHealthProfile = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nuffield dyspraxia assessment
     /// </summary>
     public static readonly Coding NuffieldDyspraxiaAssessment = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Object naming test
     /// </summary>
     public static readonly Coding ObjectNamingTest = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occasions for smoking scale
     /// </summary>
     public static readonly Coding OccasionsForSmokingScale = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupational case analysis interview and rating scale
     /// </summary>
     public static readonly Coding OccupationalCaseAnalysisInterviewAndRatingScale = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupational performance history interview
     /// </summary>
     public static readonly Coding OccupationalPerformanceHistoryInterview = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Odstock hand assessment
     /// </summary>
     public static readonly Coding OdstockHandAssessment = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Office of Population Census and Surveys (OPCS) disability scales
     /// </summary>
     public static readonly Coding OfficeOfPopulationCensusAndSurveysOPCSDisabilityScales = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Office of Population Census and Surveys (OPCS) behavior disability scale
     /// </summary>
     public static readonly Coding OfficeOfPopulationCensusAndSurveysOPCSBehaviorDisabilityScale = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Office of Population Census and Surveys (OPCS) communication disability scale
     /// </summary>
     public static readonly Coding OfficeOfPopulationCensusAndSurveysOPCSCommunicationDisabilityScale = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Office of Population Census and Surveys (OPCS) consciousness disability scale
     /// </summary>
     public static readonly Coding OfficeOfPopulationCensusAndSurveysOPCSConsciousnessDisabilityScale = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Office of Population Census and Surveys (OPCS) continence disability scale
     /// </summary>
     public static readonly Coding OfficeOfPopulationCensusAndSurveysOPCSContinenceDisabilityScale = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Office of Population Census and Surveys (OPCS) dexterity disability scale
     /// </summary>
     public static readonly Coding OfficeOfPopulationCensusAndSurveysOPCSDexterityDisabilityScale = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Office of Population Census and Surveys (OPCS) disfigurement disability scale
     /// </summary>
     public static readonly Coding OfficeOfPopulationCensusAndSurveysOPCSDisfigurementDisabilityScale = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Office of Population Census and Surveys (OPCS) eating, drinking and digestion disability scale
     /// </summary>
     public static readonly Coding OfficeOfPopulationCensusAndSurveysOPCSEatingDrinkingAndDigestionDisabilityScale = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Office of Population Census and Surveys (OPCS) hearing disability scale
     /// </summary>
     public static readonly Coding OfficeOfPopulationCensusAndSurveysOPCSHearingDisabilityScale = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Office of Population Census and Surveys (OPCS) intellectual functioning disability scale
     /// </summary>
     public static readonly Coding OfficeOfPopulationCensusAndSurveysOPCSIntellectualFunctioningDisabilityScale = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Office of Population Census and Surveys (OPCS) locomotion disability scale
     /// </summary>
     public static readonly Coding OfficeOfPopulationCensusAndSurveysOPCSLocomotionDisabilityScale = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Office of Population Census and Surveys (OPCS) personal care disability scale
     /// </summary>
     public static readonly Coding OfficeOfPopulationCensusAndSurveysOPCSPersonalCareDisabilityScale = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Office of Population Census and Surveys (OPCS) reaching and stretching disability scale
     /// </summary>
     public static readonly Coding OfficeOfPopulationCensusAndSurveysOPCSReachingAndStretchingDisabilityScale = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Office of Population Census and Surveys (OPCS) seeing disability scale
     /// </summary>
     public static readonly Coding OfficeOfPopulationCensusAndSurveysOPCSSeeingDisabilityScale = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oswestry disability index
     /// </summary>
     public static readonly Coding OswestryDisabilityIndex = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oswestry pain questionnaire
     /// </summary>
     public static readonly Coding OswestryPainQuestionnaire = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oxford grading scale for muscle strength
     /// </summary>
     public static readonly Coding OxfordGradingScaleForMuscleStrength = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Padua inventory
     /// </summary>
     public static readonly Coding PaduaInventory = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric clinical test of sensory integration and balance
     /// </summary>
     public static readonly Coding PediatricClinicalTestOfSensoryIntegrationAndBalance = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric oral skills profile
     /// </summary>
     public static readonly Coding PediatricOralSkillsProfile = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PRISM - Pediatric risk of mortality
     /// </summary>
     public static readonly Coding PRISMPediatricRiskOfMortality = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric trauma score
     /// </summary>
     public static readonly Coding PediatricTraumaScore = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pain diary
     /// </summary>
     public static readonly Coding PainDiary = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pantomime test
     /// </summary>
     public static readonly Coding PantomimeTest = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Partners in augmentative communication training
     /// </summary>
     public static readonly Coding PartnersInAugmentativeCommunicationTraining = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient activity checklist
     /// </summary>
     public static readonly Coding PatientActivityChecklist = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient satisfaction score
     /// </summary>
     public static readonly Coding PatientSatisfactionScore = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 16PF - Personality factor questionnaire
     /// </summary>
     public static readonly Coding VAL16PFPersonalityFactorQuestionnaire = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phonological Evaluation and Transcription of Audio-Visual Language (PETAL) speech assessment procedure
     /// </summary>
     public static readonly Coding PhonologicalEvaluationAndTranscriptionOfAudioVisualLanguagePETALSpeechAssessmentProcedure = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peabody picture vocabulary test
     /// </summary>
     public static readonly Coding PeabodyPictureVocabularyTest = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PSI - Perceptions of stuttering inventory
     /// </summary>
     public static readonly Coding PSIPerceptionsOfStutteringInventory = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Performance test of activities of daily living
     /// </summary>
     public static readonly Coding PerformanceTestOfActivitiesOfDailyLiving = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Personality assessment schedule
     /// </summary>
     public static readonly Coding PersonalityAssessmentSchedule = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Philadelphia geriatric center morale scale
     /// </summary>
     public static readonly Coding PhiladelphiaGeriatricCenterMoraleScale = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phonological assessment of child speech
     /// </summary>
     public static readonly Coding PhonologicalAssessmentOfChildSpeech = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PIP developmental charts
     /// </summary>
     public static readonly Coding PIPDevelopmentalCharts = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Picture pointing test
     /// </summary>
     public static readonly Coding PicturePointingTest = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Porch index of communicative ability
     /// </summary>
     public static readonly Coding PorchIndexOfCommunicativeAbility = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PANSS - Positive and negative syndrome scale
     /// </summary>
     public static readonly Coding PANSSPositiveAndNegativeSyndromeScale = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pragmatics profile
     /// </summary>
     public static readonly Coding PragmaticsProfile = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pragmatics profile of early communication skills
     /// </summary>
     public static readonly Coding PragmaticsProfileOfEarlyCommunicationSkills = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Preschool behavior check list
     /// </summary>
     public static readonly Coding PreschoolBehaviorCheckList = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pre-school Boehm
     /// </summary>
     public static readonly Coding PreSchoolBoehm = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pre-speech assessment scale
     /// </summary>
     public static readonly Coding PreSpeechAssessmentScale = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Preschool language scale
     /// </summary>
     public static readonly Coding PreschoolLanguageScale = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Previous intelligence quotient assessment by pronunciation
     /// </summary>
     public static readonly Coding PreviousIntelligenceQuotientAssessmentByPronunciation = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Probability of death score
     /// </summary>
     public static readonly Coding ProbabilityOfDeathScore = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Problem oriented medical record
     /// </summary>
     public static readonly Coding ProblemOrientedMedicalRecord = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PRISM - Profile in semantics
     /// </summary>
     public static readonly Coding PRISMProfileInSemantics = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Profile of communicative appropriateness
     /// </summary>
     public static readonly Coding ProfileOfCommunicativeAppropriateness = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Profile of mood states
     /// </summary>
     public static readonly Coding ProfileOfMoodStates = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PALPA - Psycholinguistic assessments of language processing in aphasia
     /// </summary>
     public static readonly Coding PALPAPsycholinguisticAssessmentsOfLanguageProcessingInAphasia = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychological adjustment to illness scale
     /// </summary>
     public static readonly Coding PsychologicalAdjustmentToIllnessScale = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PULSES profile
     /// </summary>
     public static readonly Coding PULSESProfile = new Coding
     {
@@ -5574,7 +5574,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Purdue pegboard scale
     /// </summary>
     public static readonly Coding PurduePegboardScale = new Coding
     {
@@ -5583,7 +5583,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pyramids and palm trees test
     /// </summary>
     public static readonly Coding PyramidsAndPalmTreesTest = new Coding
     {
@@ -5592,7 +5592,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tetraplegia index of function
     /// </summary>
     public static readonly Coding TetraplegiaIndexOfFunction = new Coding
     {
@@ -5601,7 +5601,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// QALYs - Quality adjusted life years
     /// </summary>
     public static readonly Coding QALYsQualityAdjustedLifeYears = new Coding
     {
@@ -5610,7 +5610,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Quality of life scale
     /// </summary>
     public static readonly Coding QualityOfLifeScale = new Coding
     {
@@ -5619,7 +5619,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Quality of wellbeing scale
     /// </summary>
     public static readonly Coding QualityOfWellbeingScale = new Coding
     {
@@ -5628,7 +5628,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rancho scale - levels of cognitive functioning
     /// </summary>
     public static readonly Coding RanchoScaleLevelsOfCognitiveFunctioning = new Coding
     {
@@ -5637,7 +5637,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rand functional limitations battery
     /// </summary>
     public static readonly Coding RandFunctionalLimitationsBattery = new Coding
     {
@@ -5646,7 +5646,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rankin scale
     /// </summary>
     public static readonly Coding RankinScale = new Coding
     {
@@ -5655,7 +5655,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rappaport disability rating scale
     /// </summary>
     public static readonly Coding RappaportDisabilityRatingScale = new Coding
     {
@@ -5664,7 +5664,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rating communicative behavior in head injured adults
     /// </summary>
     public static readonly Coding RatingCommunicativeBehaviorInHeadInjuredAdults = new Coding
     {
@@ -5673,7 +5673,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ravens colored progressive matrices
     /// </summary>
     public static readonly Coding RavensColoredProgressiveMatrices = new Coding
     {
@@ -5682,7 +5682,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ravens standard progressive matrices
     /// </summary>
     public static readonly Coding RavensStandardProgressiveMatrices = new Coding
     {
@@ -5691,7 +5691,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Read word discrimination test
     /// </summary>
     public static readonly Coding ReadWordDiscriminationTest = new Coding
     {
@@ -5700,7 +5700,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reading comprehension battery for aphasia
     /// </summary>
     public static readonly Coding ReadingComprehensionBatteryForAphasia = new Coding
     {
@@ -5709,7 +5709,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// RFES - Reasons for eating scale
     /// </summary>
     public static readonly Coding RFESReasonsForEatingScale = new Coding
     {
@@ -5718,7 +5718,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reasons for smoking scale
     /// </summary>
     public static readonly Coding ReasonsForSmokingScale = new Coding
     {
@@ -5727,7 +5727,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bzoch and League test
     /// </summary>
     public static readonly Coding BzochAndLeagueTest = new Coding
     {
@@ -5736,7 +5736,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// RMT - Recognition memory test
     /// </summary>
     public static readonly Coding RMTRecognitionMemoryTest = new Coding
     {
@@ -5745,7 +5745,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Relatives' stress scale
     /// </summary>
     public static readonly Coding RelativesQuoteStressScale = new Coding
     {
@@ -5754,7 +5754,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// RI - Renal index
     /// </summary>
     public static readonly Coding RIRenalIndex = new Coding
     {
@@ -5763,7 +5763,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// RAPT - Renfrew action picture test
     /// </summary>
     public static readonly Coding RAPTRenfrewActionPictureTest = new Coding
     {
@@ -5772,7 +5772,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Renfrew articulation test
     /// </summary>
     public static readonly Coding RenfrewArticulationTest = new Coding
     {
@@ -5781,7 +5781,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Renfrew wordfinding
     /// </summary>
     public static readonly Coding RenfrewWordfinding = new Coding
     {
@@ -5790,7 +5790,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repertory grid
     /// </summary>
     public static readonly Coding RepertoryGrid = new Coding
     {
@@ -5799,7 +5799,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reporters tests
     /// </summary>
     public static readonly Coding ReportersTests = new Coding
     {
@@ -5808,7 +5808,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Resistance to change grid
     /// </summary>
     public static readonly Coding ResistanceToChangeGrid = new Coding
     {
@@ -5817,7 +5817,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Respiratory index
     /// </summary>
     public static readonly Coding RespiratoryIndex = new Coding
     {
@@ -5826,7 +5826,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Restrained eating inventory
     /// </summary>
     public static readonly Coding RestrainedEatingInventory = new Coding
     {
@@ -5835,7 +5835,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Revised Iowa scale for rating severity
     /// </summary>
     public static readonly Coding RevisedIowaScaleForRatingSeverity = new Coding
     {
@@ -5844,7 +5844,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reynell developmental language scales
     /// </summary>
     public static readonly Coding ReynellDevelopmentalLanguageScales = new Coding
     {
@@ -5853,7 +5853,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reynell receptive language assessment
     /// </summary>
     public static readonly Coding ReynellReceptiveLanguageAssessment = new Coding
     {
@@ -5862,7 +5862,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reynell expressive language assessment
     /// </summary>
     public static readonly Coding ReynellExpressiveLanguageAssessment = new Coding
     {
@@ -5871,7 +5871,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reynell Zinkin language scale for the visually impaired
     /// </summary>
     public static readonly Coding ReynellZinkinLanguageScaleForTheVisuallyImpaired = new Coding
     {
@@ -5880,7 +5880,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right hemisphere battery
     /// </summary>
     public static readonly Coding RightHemisphereBattery = new Coding
     {
@@ -5889,7 +5889,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ritchie articular index
     /// </summary>
     public static readonly Coding RitchieArticularIndex = new Coding
     {
@@ -5898,7 +5898,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rivermead activities of daily living index
     /// </summary>
     public static readonly Coding RivermeadActivitiesOfDailyLivingIndex = new Coding
     {
@@ -5907,7 +5907,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// RBMT - Rivermead behavioral memory test
     /// </summary>
     public static readonly Coding RBMTRivermeadBehavioralMemoryTest = new Coding
     {
@@ -5916,7 +5916,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// RMA - Rivermead motor assessment
     /// </summary>
     public static readonly Coding RMARivermeadMotorAssessment = new Coding
     {
@@ -5925,7 +5925,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rivermead perceptual assessment battery
     /// </summary>
     public static readonly Coding RivermeadPerceptualAssessmentBattery = new Coding
     {
@@ -5934,7 +5934,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Robertson dysarthria assessment
     /// </summary>
     public static readonly Coding RobertsonDysarthriaAssessment = new Coding
     {
@@ -5943,7 +5943,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Robertson dysarthria profile
     /// </summary>
     public static readonly Coding RobertsonDysarthriaProfile = new Coding
     {
@@ -5952,7 +5952,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roehampton activities of daily living for amputees
     /// </summary>
     public static readonly Coding RoehamptonActivitiesOfDailyLivingForAmputees = new Coding
     {
@@ -5961,7 +5961,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rose Summers pragmatic profile
     /// </summary>
     public static readonly Coding RoseSummersPragmaticProfile = new Coding
     {
@@ -5970,7 +5970,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ross information processing assessment
     /// </summary>
     public static readonly Coding RossInformationProcessingAssessment = new Coding
     {
@@ -5979,7 +5979,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rosser classification of illness states
     /// </summary>
     public static readonly Coding RosserClassificationOfIllnessStates = new Coding
     {
@@ -5988,7 +5988,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roth and Spekman list of communicative intentions
     /// </summary>
     public static readonly Coding RothAndSpekmanListOfCommunicativeIntentions = new Coding
     {
@@ -5997,7 +5997,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rotterdam symptom check list
     /// </summary>
     public static readonly Coding RotterdamSymptomCheckList = new Coding
     {
@@ -6006,7 +6006,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Routine task inventory
     /// </summary>
     public static readonly Coding RoutineTaskInventory = new Coding
     {
@@ -6015,7 +6015,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rutter behavior questionnaire
     /// </summary>
     public static readonly Coding RutterBehaviorQuestionnaire = new Coding
     {
@@ -6024,7 +6024,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rutter A scale
     /// </summary>
     public static readonly Coding RutterAScale = new Coding
     {
@@ -6033,7 +6033,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rutter B scale
     /// </summary>
     public static readonly Coding RutterBScale = new Coding
     {
@@ -6042,7 +6042,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rutter B2 scale
     /// </summary>
     public static readonly Coding RutterB2Scale = new Coding
     {
@@ -6051,7 +6051,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// S scale Andrews and Cutler
     /// </summary>
     public static readonly Coding SScaleAndrewsAndCutler = new Coding
     {
@@ -6060,7 +6060,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salford reading test
     /// </summary>
     public static readonly Coding SalfordReadingTest = new Coding
     {
@@ -6069,7 +6069,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Samaritan orientation test
     /// </summary>
     public static readonly Coding SamaritanOrientationTest = new Coding
     {
@@ -6078,7 +6078,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sandwell bilingual comprehension test
     /// </summary>
     public static readonly Coding SandwellBilingualComprehensionTest = new Coding
     {
@@ -6087,7 +6087,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Santa Clara valley medical center functional assessment measure
     /// </summary>
     public static readonly Coding SantaClaraValleyMedicalCenterFunctionalAssessmentMeasure = new Coding
     {
@@ -6096,7 +6096,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Savary Miller scale
     /// </summary>
     public static readonly Coding SavaryMillerScale = new Coding
     {
@@ -6105,7 +6105,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scale of early communication skills for hearing impaired children
     /// </summary>
     public static readonly Coding ScaleOfEarlyCommunicationSkillsForHearingImpairedChildren = new Coding
     {
@@ -6114,7 +6114,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Schwachmann score
     /// </summary>
     public static readonly Coding SchwachmannScore = new Coding
     {
@@ -6123,7 +6123,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Schedules for clinical assessment in neuropsychiatry
     /// </summary>
     public static readonly Coding SchedulesForClinicalAssessmentInNeuropsychiatry = new Coding
     {
@@ -6132,7 +6132,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Schnijders Ooman test for deaf children
     /// </summary>
     public static readonly Coding SchnijdersOomanTestForDeafChildren = new Coding
     {
@@ -6141,7 +6141,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Schofield equation
     /// </summary>
     public static readonly Coding SchofieldEquation = new Coding
     {
@@ -6150,7 +6150,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Schonell graded word reading test
     /// </summary>
     public static readonly Coding SchonellGradedWordReadingTest = new Coding
     {
@@ -6159,7 +6159,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Schonell graded word spelling test
     /// </summary>
     public static readonly Coding SchonellGradedWordSpellingTest = new Coding
     {
@@ -6168,7 +6168,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scissor skills checklist
     /// </summary>
     public static readonly Coding ScissorSkillsChecklist = new Coding
     {
@@ -6177,7 +6177,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Screening for developmental apraxia of speech
     /// </summary>
     public static readonly Coding ScreeningForDevelopmentalApraxiaOfSpeech = new Coding
     {
@@ -6186,7 +6186,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Screening test for auditory processing disorders
     /// </summary>
     public static readonly Coding ScreeningTestForAuditoryProcessingDisorders = new Coding
     {
@@ -6195,7 +6195,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// SIPT
     /// </summary>
     public static readonly Coding SIPT = new Coding
     {
@@ -6204,7 +6204,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// SCT - Sentence comprehension test
     /// </summary>
     public static readonly Coding SCTSentenceComprehensionTest = new Coding
     {
@@ -6213,7 +6213,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serial sevens test
     /// </summary>
     public static readonly Coding SerialSevensTest = new Coding
     {
@@ -6222,7 +6222,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Severity of alcohol dependence questionnaire
     /// </summary>
     public static readonly Coding SeverityOfAlcoholDependenceQuestionnaire = new Coding
     {
@@ -6231,7 +6231,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// SODQ - Severity of opiate dependence questionnaire
     /// </summary>
     public static readonly Coding SODQSeverityOfOpiateDependenceQuestionnaire = new Coding
     {
@@ -6240,7 +6240,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shaper index
     /// </summary>
     public static readonly Coding ShaperIndex = new Coding
     {
@@ -6249,7 +6249,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Short alcohol dependence data
     /// </summary>
     public static readonly Coding ShortAlcoholDependenceData = new Coding
     {
@@ -6258,7 +6258,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Short orientation - memory - concentration test
     /// </summary>
     public static readonly Coding ShortOrientationMemoryConcentrationTest = new Coding
     {
@@ -6267,7 +6267,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Short orientation-memory-concentration test - alternative version
     /// </summary>
     public static readonly Coding ShortOrientationMemoryConcentrationTestAlternativeVersion = new Coding
     {
@@ -6276,7 +6276,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Short-term memory test
     /// </summary>
     public static readonly Coding ShortTermMemoryTest = new Coding
     {
@@ -6285,7 +6285,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shulman test of pragmatic skills
     /// </summary>
     public static readonly Coding ShulmanTestOfPragmaticSkills = new Coding
     {
@@ -6294,7 +6294,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sickness impact profile
     /// </summary>
     public static readonly Coding SicknessImpactProfile = new Coding
     {
@@ -6303,7 +6303,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Silvers cerebral function test
     /// </summary>
     public static readonly Coding SilversCerebralFunctionTest = new Coding
     {
@@ -6312,7 +6312,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Simplified acute physiology score
     /// </summary>
     public static readonly Coding SimplifiedAcutePhysiologyScore = new Coding
     {
@@ -6321,7 +6321,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Simplified acute physiology scale II
     /// </summary>
     public static readonly Coding SimplifiedAcutePhysiologyScaleII = new Coding
     {
@@ -6330,7 +6330,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// SCQ - Situational confidence questionnaire
     /// </summary>
     public static readonly Coding SCQSituationalConfidenceQuestionnaire = new Coding
     {
@@ -6339,7 +6339,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Situations for eating scale
     /// </summary>
     public static readonly Coding SituationsForEatingScale = new Coding
     {
@@ -6348,7 +6348,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Smith cognitive questionnaire
     /// </summary>
     public static readonly Coding SmithCognitiveQuestionnaire = new Coding
     {
@@ -6357,7 +6357,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Social adjustment scale
     /// </summary>
     public static readonly Coding SocialAdjustmentScale = new Coding
     {
@@ -6366,7 +6366,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// SAS II - Social adjustment scale II
     /// </summary>
     public static readonly Coding SASIISocialAdjustmentScaleII = new Coding
     {
@@ -6375,7 +6375,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Social adjustment scale self - report
     /// </summary>
     public static readonly Coding SocialAdjustmentScaleSelfReport = new Coding
     {
@@ -6384,7 +6384,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Social behavior assessment scale
     /// </summary>
     public static readonly Coding SocialBehaviorAssessmentScale = new Coding
     {
@@ -6393,7 +6393,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Social support questionnaire
     /// </summary>
     public static readonly Coding SocialSupportQuestionnaire = new Coding
     {
@@ -6402,7 +6402,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Social use of language program
     /// </summary>
     public static readonly Coding SocialUseOfLanguageProgram = new Coding
     {
@@ -6411,7 +6411,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// STAP - South Tyneside assessment of phonology
     /// </summary>
     public static readonly Coding STAPSouthTynesideAssessmentOfPhonology = new Coding
     {
@@ -6420,7 +6420,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// South Tyneside assessment of syntactic structures
     /// </summary>
     public static readonly Coding SouthTynesideAssessmentOfSyntacticStructures = new Coding
     {
@@ -6429,7 +6429,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FGP - Southern California figure ground visual perception test
     /// </summary>
     public static readonly Coding FGPSouthernCaliforniaFigureGroundVisualPerceptionTest = new Coding
     {
@@ -6438,7 +6438,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Southern California postrotary nystagmus test
     /// </summary>
     public static readonly Coding SouthernCaliforniaPostrotaryNystagmusTest = new Coding
     {
@@ -6447,7 +6447,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Southern California sensory integration test
     /// </summary>
     public static readonly Coding SouthernCaliforniaSensoryIntegrationTest = new Coding
     {
@@ -6456,7 +6456,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spare time activities questionnaire
     /// </summary>
     public static readonly Coding SpareTimeActivitiesQuestionnaire = new Coding
     {
@@ -6465,7 +6465,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Special hospitals assessment of personality
     /// </summary>
     public static readonly Coding SpecialHospitalsAssessmentOfPersonality = new Coding
     {
@@ -6474,7 +6474,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Speech intelligibility assessment procedure
     /// </summary>
     public static readonly Coding SpeechIntelligibilityAssessmentProcedure = new Coding
     {
@@ -6483,7 +6483,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spielberger state-trait anxiety inventory
     /// </summary>
     public static readonly Coding SpielbergerStateTraitAnxietyInventory = new Coding
     {
@@ -6492,7 +6492,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Quality of life index
     /// </summary>
     public static readonly Coding QualityOfLifeIndex = new Coding
     {
@@ -6501,7 +6501,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// St George hospital respiratory questionnaire
     /// </summary>
     public static readonly Coding StGeorgeHospitalRespiratoryQuestionnaire = new Coding
     {
@@ -6510,7 +6510,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// St Thomas disability questionnaire
     /// </summary>
     public static readonly Coding StThomasDisabilityQuestionnaire = new Coding
     {
@@ -6519,7 +6519,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// SAP - Standardized assessment of personality
     /// </summary>
     public static readonly Coding SAPStandardizedAssessmentOfPersonality = new Coding
     {
@@ -6528,7 +6528,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Terman Merrill scale
     /// </summary>
     public static readonly Coding TermanMerrillScale = new Coding
     {
@@ -6537,7 +6537,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Steinbrocker functional classification
     /// </summary>
     public static readonly Coding SteinbrockerFunctionalClassification = new Coding
     {
@@ -6546,7 +6546,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stimulus response inventory
     /// </summary>
     public static readonly Coding StimulusResponseInventory = new Coding
     {
@@ -6555,7 +6555,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stocker probe technique for diagnosis and treatment of stuttering in young children
     /// </summary>
     public static readonly Coding StockerProbeTechniqueForDiagnosisAndTreatmentOfStutteringInYoungChildren = new Coding
     {
@@ -6564,7 +6564,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stockton geriatric rating scale
     /// </summary>
     public static readonly Coding StocktonGeriatricRatingScale = new Coding
     {
@@ -6573,7 +6573,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Story completion test
     /// </summary>
     public static readonly Coding StoryCompletionTest = new Coding
     {
@@ -6582,7 +6582,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structured observation test of function
     /// </summary>
     public static readonly Coding StructuredObservationTestOfFunction = new Coding
     {
@@ -6591,7 +6591,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structured clinical interview for Diagnostic and Statistical Manual of Mental Disorders-Third Edition Revised
     /// </summary>
     public static readonly Coding StructuredClinicalInterviewForDiagnosticAndStatisticalManualOfMentalDisordersThirdEditionRevised = new Coding
     {
@@ -6600,7 +6600,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structured interview for Diagnostic and Statistical Manual of Mental Disorders, Third Edition, personality disorders
     /// </summary>
     public static readonly Coding StructuredInterviewForDiagnosticAndStatisticalManualOfMentalDisordersThirdEditionPersonalityDisorders = new Coding
     {
@@ -6609,7 +6609,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stuttering intervention program
     /// </summary>
     public static readonly Coding StutteringInterventionProgram = new Coding
     {
@@ -6618,7 +6618,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stuttering prediction instrument
     /// </summary>
     public static readonly Coding StutteringPredictionInstrument = new Coding
     {
@@ -6627,7 +6627,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stuttering severity instrument
     /// </summary>
     public static readonly Coding StutteringSeverityInstrument = new Coding
     {
@@ -6636,7 +6636,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stycar hearing test
     /// </summary>
     public static readonly Coding StycarHearingTest = new Coding
     {
@@ -6645,7 +6645,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subjective global assessment
     /// </summary>
     public static readonly Coding SubjectiveGlobalAssessment = new Coding
     {
@@ -6654,7 +6654,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Substance use disorder diagnostic schedule
     /// </summary>
     public static readonly Coding SubstanceUseDisorderDiagnosticSchedule = new Coding
     {
@@ -6663,7 +6663,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sue Spence assessment
     /// </summary>
     public static readonly Coding SueSpenceAssessment = new Coding
     {
@@ -6672,7 +6672,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suicide risk scale
     /// </summary>
     public static readonly Coding SuicideRiskScale = new Coding
     {
@@ -6681,7 +6681,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sunnybrook cord injury scale
     /// </summary>
     public static readonly Coding SunnybrookCordInjuryScale = new Coding
     {
@@ -6690,7 +6690,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Supplementary language test
     /// </summary>
     public static readonly Coding SupplementaryLanguageTest = new Coding
     {
@@ -6699,7 +6699,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swollen joint count
     /// </summary>
     public static readonly Coding SwollenJointCount = new Coding
     {
@@ -6708,7 +6708,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Symbol digit modalities test
     /// </summary>
     public static readonly Coding SymbolDigitModalitiesTest = new Coding
     {
@@ -6717,7 +6717,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Symbolic play test
     /// </summary>
     public static readonly Coding SymbolicPlayTest = new Coding
     {
@@ -6726,7 +6726,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Symptom checklist
     /// </summary>
     public static readonly Coding SymptomChecklist = new Coding
     {
@@ -6735,7 +6735,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// SLT - Synonym learning test
     /// </summary>
     public static readonly Coding SLTSynonymLearningTest = new Coding
     {
@@ -6744,7 +6744,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Systematic fluency training for young children
     /// </summary>
     public static readonly Coding SystematicFluencyTrainingForYoungChildren = new Coding
     {
@@ -6753,7 +6753,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Systemic lupus activity measure
     /// </summary>
     public static readonly Coding SystemicLupusActivityMeasure = new Coding
     {
@@ -6762,7 +6762,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// SLEDAI - Systemic lupus erythematosus disease activity index
     /// </summary>
     public static readonly Coding SLEDAISystemicLupusErythematosusDiseaseActivityIndex = new Coding
     {
@@ -6771,7 +6771,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tamb test
     /// </summary>
     public static readonly Coding TambTest = new Coding
     {
@@ -6780,7 +6780,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tender joint count
     /// </summary>
     public static readonly Coding TenderJointCount = new Coding
     {
@@ -6789,7 +6789,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Test for auditory perception of speech
     /// </summary>
     public static readonly Coding TestForAuditoryPerceptionOfSpeech = new Coding
     {
@@ -6798,7 +6798,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// TACL - Test of auditory comprehension of language
     /// </summary>
     public static readonly Coding TACLTestOfAuditoryComprehensionOfLanguage = new Coding
     {
@@ -6807,7 +6807,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Test of auditory discrimination
     /// </summary>
     public static readonly Coding TestOfAuditoryDiscrimination = new Coding
     {
@@ -6816,7 +6816,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Test of language competence
     /// </summary>
     public static readonly Coding TestOfLanguageCompetence = new Coding
     {
@@ -6825,7 +6825,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Test of language development 2
     /// </summary>
     public static readonly Coding TestOfLanguageDevelopment2 = new Coding
     {
@@ -6834,7 +6834,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Test of motor impairment - Stott-Moyes-Henderson
     /// </summary>
     public static readonly Coding TestOfMotorImpairmentStottMoyesHenderson = new Coding
     {
@@ -6843,7 +6843,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Test of pragmatic skills
     /// </summary>
     public static readonly Coding TestOfPragmaticSkills = new Coding
     {
@@ -6852,7 +6852,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Test of reception of grammar
     /// </summary>
     public static readonly Coding TestOfReceptionOfGrammar = new Coding
     {
@@ -6861,7 +6861,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// TSA - Test of syntactic abilities
     /// </summary>
     public static readonly Coding TSATestOfSyntacticAbilities = new Coding
     {
@@ -6870,7 +6870,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Test of word finding in discourse
     /// </summary>
     public static readonly Coding TestOfWordFindingInDiscourse = new Coding
     {
@@ -6879,7 +6879,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Test of word knowledge
     /// </summary>
     public static readonly Coding TestOfWordKnowledge = new Coding
     {
@@ -6888,7 +6888,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Therapeutic intervention scoring system
     /// </summary>
     public static readonly Coding TherapeuticInterventionScoringSystem = new Coding
     {
@@ -6897,7 +6897,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// TLFB - Time line follow back
     /// </summary>
     public static readonly Coding TLFBTimeLineFollowBack = new Coding
     {
@@ -6906,7 +6906,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Time trade off analysis
     /// </summary>
     public static readonly Coding TimeTradeOffAnalysis = new Coding
     {
@@ -6915,7 +6915,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Token test
     /// </summary>
     public static readonly Coding TokenTest = new Coding
     {
@@ -6924,7 +6924,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trail making test
     /// </summary>
     public static readonly Coding TrailMakingTest = new Coding
     {
@@ -6933,7 +6933,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trauma index
     /// </summary>
     public static readonly Coding TraumaIndex = new Coding
     {
@@ -6942,7 +6942,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trauma score
     /// </summary>
     public static readonly Coding TraumaScore = new Coding
     {
@@ -6951,7 +6951,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// RTS - Revised trauma score
     /// </summary>
     public static readonly Coding RTSRevisedTraumaScore = new Coding
     {
@@ -6960,7 +6960,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trauma and injury severity score
     /// </summary>
     public static readonly Coding TraumaAndInjurySeverityScore = new Coding
     {
@@ -6969,7 +6969,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Triage index
     /// </summary>
     public static readonly Coding TriageIndex = new Coding
     {
@@ -6978,7 +6978,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Valentine auditory memory test
     /// </summary>
     public static readonly Coding ValentineAuditoryMemoryTest = new Coding
     {
@@ -6987,7 +6987,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Valpar 17 pre-vocational readiness battery
     /// </summary>
     public static readonly Coding Valpar17PreVocationalReadinessBattery = new Coding
     {
@@ -6996,7 +6996,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vernon Cloze procedure reading test
     /// </summary>
     public static readonly Coding VernonClozeProcedureReadingTest = new Coding
     {
@@ -7005,7 +7005,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vernon graded word reading test
     /// </summary>
     public static readonly Coding VernonGradedWordReadingTest = new Coding
     {
@@ -7014,7 +7014,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vineland maturity scales adapted for the blind
     /// </summary>
     public static readonly Coding VinelandMaturityScalesAdaptedForTheBlind = new Coding
     {
@@ -7023,7 +7023,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vineland social maturity scale
     /// </summary>
     public static readonly Coding VinelandSocialMaturityScale = new Coding
     {
@@ -7032,7 +7032,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vineland subquotient - general self-help
     /// </summary>
     public static readonly Coding VinelandSubquotientGeneralSelfHelp = new Coding
     {
@@ -7041,7 +7041,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vineland subquotient - communication
     /// </summary>
     public static readonly Coding VinelandSubquotientCommunication = new Coding
     {
@@ -7050,7 +7050,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vineland subquotient - locomotion
     /// </summary>
     public static readonly Coding VinelandSubquotientLocomotion = new Coding
     {
@@ -7059,7 +7059,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vineland subquotient - occupation
     /// </summary>
     public static readonly Coding VinelandSubquotientOccupation = new Coding
     {
@@ -7068,7 +7068,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vineland subquotient - self-help in eating
     /// </summary>
     public static readonly Coding VinelandSubquotientSelfHelpInEating = new Coding
     {
@@ -7077,7 +7077,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vineland subquotient - socialization
     /// </summary>
     public static readonly Coding VinelandSubquotientSocialization = new Coding
     {
@@ -7086,7 +7086,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vineland behavioral assessment
     /// </summary>
     public static readonly Coding VinelandBehavioralAssessment = new Coding
     {
@@ -7095,7 +7095,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Visick symptom grade
     /// </summary>
     public static readonly Coding VisickSymptomGrade = new Coding
     {
@@ -7104,7 +7104,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// VAS - Visual analog scale
     /// </summary>
     public static readonly Coding VASVisualAnalogScale = new Coding
     {
@@ -7113,7 +7113,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Visual analog pain scale
     /// </summary>
     public static readonly Coding VisualAnalogPainScale = new Coding
     {
@@ -7122,7 +7122,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Visual and perceptual assessment program
     /// </summary>
     public static readonly Coding VisualAndPerceptualAssessmentProgram = new Coding
     {
@@ -7131,7 +7131,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Visual object and spatial perception test
     /// </summary>
     public static readonly Coding VisualObjectAndSpatialPerceptionTest = new Coding
     {
@@ -7140,7 +7140,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Voice assessment sheet - Martin
     /// </summary>
     public static readonly Coding VoiceAssessmentSheetMartin = new Coding
     {
@@ -7149,7 +7149,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Voice evaluation form
     /// </summary>
     public static readonly Coding VoiceEvaluationForm = new Coding
     {
@@ -7158,7 +7158,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Voice skills assessment
     /// </summary>
     public static readonly Coding VoiceSkillsAssessment = new Coding
     {
@@ -7167,7 +7167,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Waddell disability index
     /// </summary>
     public static readonly Coding WaddellDisabilityIndex = new Coding
     {
@@ -7176,7 +7176,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wakefield self-assessment depression inventory
     /// </summary>
     public static readonly Coding WakefieldSelfAssessmentDepressionInventory = new Coding
     {
@@ -7185,7 +7185,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ward behavior rating scale
     /// </summary>
     public static readonly Coding WardBehaviorRatingScale = new Coding
     {
@@ -7194,7 +7194,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Warner dysphagia assessment
     /// </summary>
     public static readonly Coding WarnerDysphagiaAssessment = new Coding
     {
@@ -7203,7 +7203,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wechsler adult intelligence scale
     /// </summary>
     public static readonly Coding WechslerAdultIntelligenceScale = new Coding
     {
@@ -7212,7 +7212,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wechsler adult intelligence test - revised
     /// </summary>
     public static readonly Coding WechslerAdultIntelligenceTestRevised = new Coding
     {
@@ -7221,7 +7221,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wechsler intelligence scale for children
     /// </summary>
     public static readonly Coding WechslerIntelligenceScaleForChildren = new Coding
     {
@@ -7230,7 +7230,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wechsler intelligence non-verbal performance assessment
     /// </summary>
     public static readonly Coding WechslerIntelligenceNonVerbalPerformanceAssessment = new Coding
     {
@@ -7239,7 +7239,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wechsler intelligence verbal assessment
     /// </summary>
     public static readonly Coding WechslerIntelligenceVerbalAssessment = new Coding
     {
@@ -7248,7 +7248,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Logical memory paragraph recall
     /// </summary>
     public static readonly Coding LogicalMemoryParagraphRecall = new Coding
     {
@@ -7257,7 +7257,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wechsler pre-school and primary scale of intelligence
     /// </summary>
     public static readonly Coding WechslerPreSchoolAndPrimaryScaleOfIntelligence = new Coding
     {
@@ -7266,7 +7266,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Weigl - Goldstein - Scheerer color form sorting test
     /// </summary>
     public static readonly Coding WeiglGoldsteinScheererColorFormSortingTest = new Coding
     {
@@ -7275,7 +7275,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wepman Auditory Sequential Memory Test
     /// </summary>
     public static readonly Coding WepmanAuditorySequentialMemoryTest = new Coding
     {
@@ -7284,7 +7284,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wepman Auditory Discrimination Test
     /// </summary>
     public static readonly Coding WepmanAuditoryDiscriminationTest = new Coding
     {
@@ -7293,7 +7293,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wessex revised portage language checklist
     /// </summary>
     public static readonly Coding WessexRevisedPortageLanguageChecklist = new Coding
     {
@@ -7302,7 +7302,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Western aphasia battery
     /// </summary>
     public static readonly Coding WesternAphasiaBattery = new Coding
     {
@@ -7311,7 +7311,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// WPTAS - Westmead Post-Traumatic Amnesia Scale
     /// </summary>
     public static readonly Coding WPTASWestmeadPostTraumaticAmnesiaScale = new Coding
     {
@@ -7320,7 +7320,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// World Health Organization (WHO) depression scale
     /// </summary>
     public static readonly Coding WorldHealthOrganizationWHODepressionScale = new Coding
     {
@@ -7329,7 +7329,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// World Health Organization (WHO) handicap scale
     /// </summary>
     public static readonly Coding WorldHealthOrganizationWHOHandicapScale = new Coding
     {
@@ -7338,7 +7338,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// World Health Organization (WHO) classification of impairments, disabilities and handicap scale
     /// </summary>
     public static readonly Coding WorldHealthOrganizationWHOClassificationOfImpairmentsDisabilitiesAndHandicapScale = new Coding
     {
@@ -7347,7 +7347,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// World Health Organization (WHO) economic self-sufficiency handicap scale
     /// </summary>
     public static readonly Coding WorldHealthOrganizationWHOEconomicSelfSufficiencyHandicapScale = new Coding
     {
@@ -7356,7 +7356,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// World Health Organization (WHO) mobility handicap scale
     /// </summary>
     public static readonly Coding WorldHealthOrganizationWHOMobilityHandicapScale = new Coding
     {
@@ -7365,7 +7365,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// World Health Organization (WHO) occupation handicap scale
     /// </summary>
     public static readonly Coding WorldHealthOrganizationWHOOccupationHandicapScale = new Coding
     {
@@ -7374,7 +7374,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// World Health Organization (WHO) orientation handicap scale
     /// </summary>
     public static readonly Coding WorldHealthOrganizationWHOOrientationHandicapScale = new Coding
     {
@@ -7383,7 +7383,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// World Health Organization (WHO) physical independence handicap scale
     /// </summary>
     public static readonly Coding WorldHealthOrganizationWHOPhysicalIndependenceHandicapScale = new Coding
     {
@@ -7392,7 +7392,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// World Health Organization (WHO) social integration handicap scale
     /// </summary>
     public static readonly Coding WorldHealthOrganizationWHOSocialIntegrationHandicapScale = new Coding
     {
@@ -7401,7 +7401,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Winslow feeding checklist
     /// </summary>
     public static readonly Coding WinslowFeedingChecklist = new Coding
     {
@@ -7410,7 +7410,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wisconsin card sorting test
     /// </summary>
     public static readonly Coding WisconsinCardSortingTest = new Coding
     {
@@ -7419,7 +7419,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// SDS - Zung self-rating depression scale
     /// </summary>
     public static readonly Coding SDSZungSelfRatingDepressionScale = new Coding
     {
@@ -7428,7 +7428,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zung anxiety status inventory
     /// </summary>
     public static readonly Coding ZungAnxietyStatusInventory = new Coding
     {
@@ -7437,7 +7437,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zung self-rating anxiety scale
     /// </summary>
     public static readonly Coding ZungSelfRatingAnxietyScale = new Coding
     {
@@ -7446,7 +7446,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// (m)
     /// </summary>
     public static readonly Coding M = new Coding
     {
@@ -7455,7 +7455,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Histological grading systems
     /// </summary>
     public static readonly Coding HistologicalGradingSystems = new Coding
     {
@@ -7464,7 +7464,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Daumas-Duport grading system
     /// </summary>
     public static readonly Coding DaumasDuportGradingSystem = new Coding
     {
@@ -7473,7 +7473,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// World Health Organization (WHO) central nervous system (CNS) tumor grading system
     /// </summary>
     public static readonly Coding WorldHealthOrganizationWHOCentralNervousSystemCNSTumorGradingSystem = new Coding
     {
@@ -7482,7 +7482,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Additional TNM descriptors
     /// </summary>
     public static readonly Coding AdditionalTNMDescriptors = new Coding
     {
@@ -7491,7 +7491,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// a - At autopsy
     /// </summary>
     public static readonly Coding AAtAutopsy = new Coding
     {
@@ -7500,7 +7500,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// r - Tumor recurrence
     /// </summary>
     public static readonly Coding RTumorRecurrence = new Coding
     {
@@ -7509,7 +7509,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// y - During therapy/following treatment
     /// </summary>
     public static readonly Coding YDuringTherapyFollowingTreatment = new Coding
     {
@@ -7518,7 +7518,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// m - Multiple tumors
     /// </summary>
     public static readonly Coding MMultipleTumors = new Coding
     {
@@ -7527,7 +7527,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// f - Family history
     /// </summary>
     public static readonly Coding FFamilyHistory = new Coding
     {
@@ -7536,7 +7536,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// d - Retinal involvement
     /// </summary>
     public static readonly Coding DRetinalInvolvement = new Coding
     {
@@ -7545,7 +7545,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Node stage G1 in retinoblastoma
     /// </summary>
     public static readonly Coding NodeStageG1InRetinoblastoma = new Coding
     {
@@ -7554,7 +7554,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Node stage G2 in retinoblastoma
     /// </summary>
     public static readonly Coding NodeStageG2InRetinoblastoma = new Coding
     {
@@ -7563,7 +7563,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lung stage L1
     /// </summary>
     public static readonly Coding LungStageL1 = new Coding
     {
@@ -7572,7 +7572,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parsonnet score
     /// </summary>
     public static readonly Coding ParsonnetScore = new Coding
     {
@@ -7581,7 +7581,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Short form McGill pain questionnaire
     /// </summary>
     public static readonly Coding ShortFormMcGillPainQuestionnaire = new Coding
     {
@@ -7590,7 +7590,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Waterlow pressure sore risk score
     /// </summary>
     public static readonly Coding WaterlowPressureSoreRiskScore = new Coding
     {
@@ -7599,7 +7599,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Norton score
     /// </summary>
     public static readonly Coding NortonScore = new Coding
     {
@@ -7608,7 +7608,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Verbal rating scale
     /// </summary>
     public static readonly Coding VerbalRatingScale = new Coding
     {
@@ -7617,7 +7617,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health of the Nation Outcome Scale - summated (generic version)
     /// </summary>
     public static readonly Coding HealthOfTheNationOutcomeScaleSummatedGenericVersion = new Coding
     {
@@ -7626,7 +7626,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health of the Nation Outcome Scale subscale (generic version)
     /// </summary>
     public static readonly Coding HealthOfTheNationOutcomeScaleSubscaleGenericVersion = new Coding
     {
@@ -7635,7 +7635,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health of the Nation Outcome Scale item 1 - aggressive/disruptive behavior
     /// </summary>
     public static readonly Coding HealthOfTheNationOutcomeScaleItem1AggressiveDisruptiveBehavior = new Coding
     {
@@ -7644,7 +7644,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health of the Nation Outcome Scale item 2 - non-accidental self injury
     /// </summary>
     public static readonly Coding HealthOfTheNationOutcomeScaleItem2NonAccidentalSelfInjury = new Coding
     {
@@ -7653,7 +7653,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// HoNOS item 3 - alcohol/drug problem
     /// </summary>
     public static readonly Coding HoNOSItem3AlcoholDrugProblem = new Coding
     {
@@ -7662,7 +7662,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health of the Nation Outcome Scale item 4 - cognitive problems
     /// </summary>
     public static readonly Coding HealthOfTheNationOutcomeScaleItem4CognitiveProblems = new Coding
     {
@@ -7671,7 +7671,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// HoNOS item 5
     /// </summary>
     public static readonly Coding HoNOSItem5 = new Coding
     {
@@ -7680,7 +7680,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health of the Nation Outcome Scale item 6 - hallucinations/delusions
     /// </summary>
     public static readonly Coding HealthOfTheNationOutcomeScaleItem6HallucinationsDelusions = new Coding
     {
@@ -7689,7 +7689,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// HoNOS item 7
     /// </summary>
     public static readonly Coding HoNOSItem7 = new Coding
     {
@@ -7698,7 +7698,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health of the Nation Outcome Scale item 8 - other mental/behavioral problems
     /// </summary>
     public static readonly Coding HealthOfTheNationOutcomeScaleItem8OtherMentalBehavioralProblems = new Coding
     {
@@ -7707,7 +7707,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// HoNOS item 9
     /// </summary>
     public static readonly Coding HoNOSItem9 = new Coding
     {
@@ -7716,7 +7716,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// HoNOS item 10
     /// </summary>
     public static readonly Coding HoNOSItem10 = new Coding
     {
@@ -7725,7 +7725,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health of the Nation Outcome scale item 11 - living conditions
     /// </summary>
     public static readonly Coding HealthOfTheNationOutcomeScaleItem11LivingConditions = new Coding
     {
@@ -7734,7 +7734,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// HoNOS item 12
     /// </summary>
     public static readonly Coding HoNOSItem12 = new Coding
     {
@@ -7743,7 +7743,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ramsay sedation scale
     /// </summary>
     public static readonly Coding RamsaySedationScale = new Coding
     {
@@ -7752,7 +7752,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Griffiths mental developmental scale
     /// </summary>
     public static readonly Coding GriffithsMentalDevelopmentalScale = new Coding
     {
@@ -7761,7 +7761,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gessell developmental scale
     /// </summary>
     public static readonly Coding GessellDevelopmentalScale = new Coding
     {
@@ -7770,7 +7770,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health of the Nation Outcome subscale A
     /// </summary>
     public static readonly Coding HealthOfTheNationOutcomeSubscaleA = new Coding
     {
@@ -7779,7 +7779,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// HoNOS subscale B
     /// </summary>
     public static readonly Coding HoNOSSubscaleB = new Coding
     {
@@ -7788,7 +7788,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health of the Nation Outcome subscale C
     /// </summary>
     public static readonly Coding HealthOfTheNationOutcomeSubscaleC = new Coding
     {
@@ -7797,7 +7797,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// HoNOS subscale D
     /// </summary>
     public static readonly Coding HoNOSSubscaleD = new Coding
     {
@@ -7806,7 +7806,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health of the Nation Outcome Scale item (generic version)
     /// </summary>
     public static readonly Coding HealthOfTheNationOutcomeScaleItemGenericVersion = new Coding
     {
@@ -7815,7 +7815,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// V - Hepatic vein marker
     /// </summary>
     public static readonly Coding VHepaticVeinMarker = new Coding
     {
@@ -7824,7 +7824,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// P - Portal vein marker
     /// </summary>
     public static readonly Coding PPortalVeinMarker = new Coding
     {
@@ -7833,7 +7833,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// E - Extrahepatic marker
     /// </summary>
     public static readonly Coding EExtrahepaticMarker = new Coding
     {
@@ -7842,7 +7842,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// M - Metastatic marker
     /// </summary>
     public static readonly Coding MMetastaticMarker = new Coding
     {
@@ -7851,7 +7851,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// E - Extralymphatic organ involvement marker
     /// </summary>
     public static readonly Coding EExtralymphaticOrganInvolvementMarker = new Coding
     {
@@ -7860,7 +7860,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// S - Splenic involvement marker
     /// </summary>
     public static readonly Coding SSplenicInvolvementMarker = new Coding
     {
@@ -7869,7 +7869,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suicide intent score scale
     /// </summary>
     public static readonly Coding SuicideIntentScoreScale = new Coding
     {
@@ -7878,7 +7878,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suicide intent score scale - summated
     /// </summary>
     public static readonly Coding SuicideIntentScoreScaleSummated = new Coding
     {
@@ -7887,7 +7887,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suicide intent score subscale
     /// </summary>
     public static readonly Coding SuicideIntentScoreSubscale = new Coding
     {
@@ -7896,7 +7896,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suicide intent score subscale - attempt circumstances
     /// </summary>
     public static readonly Coding SuicideIntentScoreSubscaleAttemptCircumstances = new Coding
     {
@@ -7905,7 +7905,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suicide intent score subscale - self report
     /// </summary>
     public static readonly Coding SuicideIntentScoreSubscaleSelfReport = new Coding
     {
@@ -7914,7 +7914,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suicide intent score subscale - risk
     /// </summary>
     public static readonly Coding SuicideIntentScoreSubscaleRisk = new Coding
     {
@@ -7923,7 +7923,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Global assessment of functioning - 1993 Diagnostic and Statistical Manual of Mental Disorders, Fourth Edition adaptation
     /// </summary>
     public static readonly Coding GlobalAssessmentOfFunctioning1993DiagnosticAndStatisticalManualOfMentalDisordersFourthEditionAdaptation = new Coding
     {
@@ -7932,7 +7932,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// BPRS - Brief psychiatric rating scale - 1962
     /// </summary>
     public static readonly Coding BPRSBriefPsychiatricRatingScale1962 = new Coding
     {
@@ -7941,7 +7941,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health of the Nation Outcome Scales
     /// </summary>
     public static readonly Coding HealthOfTheNationOutcomeScales = new Coding
     {
@@ -7950,7 +7950,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// GEMS - Guide to early movement skills checklist
     /// </summary>
     public static readonly Coding GEMSGuideToEarlyMovementSkillsChecklist = new Coding
     {
@@ -7959,7 +7959,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// BSTS - Bereweeke skill teaching system checklist
     /// </summary>
     public static readonly Coding BSTSBereweekeSkillTeachingSystemChecklist = new Coding
     {
@@ -7968,7 +7968,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Webster score
     /// </summary>
     public static readonly Coding WebsterScore = new Coding
     {
@@ -7977,7 +7977,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ferriman and Galway score
     /// </summary>
     public static readonly Coding FerrimanAndGalwayScore = new Coding
     {
@@ -7986,7 +7986,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rule of nines
     /// </summary>
     public static readonly Coding RuleOfNines = new Coding
     {
@@ -7995,7 +7995,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// American Association on Mental Retardation (AAMR) adaptive behavior scale
     /// </summary>
     public static readonly Coding AmericanAssociationOnMentalRetardationAAMRAdaptiveBehaviorScale = new Coding
     {
@@ -8004,7 +8004,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acceptance of illness scale
     /// </summary>
     public static readonly Coding AcceptanceOfIllnessScale = new Coding
     {
@@ -8013,7 +8013,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anomalous sentences repetition test
     /// </summary>
     public static readonly Coding AnomalousSentencesRepetitionTest = new Coding
     {
@@ -8022,7 +8022,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthritis impact measurement scale
     /// </summary>
     public static readonly Coding ArthritisImpactMeasurementScale = new Coding
     {
@@ -8031,7 +8031,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Attitudes towards doctors and medicine scale
     /// </summary>
     public static readonly Coding AttitudesTowardsDoctorsAndMedicineScale = new Coding
     {
@@ -8040,7 +8040,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beck hopelessness scale
     /// </summary>
     public static readonly Coding BeckHopelessnessScale = new Coding
     {
@@ -8049,7 +8049,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beck anxiety inventory
     /// </summary>
     public static readonly Coding BeckAnxietyInventory = new Coding
     {
@@ -8058,7 +8058,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beck scale for suicide ideation
     /// </summary>
     public static readonly Coding BeckScaleForSuicideIdeation = new Coding
     {
@@ -8067,7 +8067,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// BPCQ - Beliefs about pain control questionnaire
     /// </summary>
     public static readonly Coding BPCQBeliefsAboutPainControlQuestionnaire = new Coding
     {
@@ -8076,7 +8076,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bellak children's apperception test
     /// </summary>
     public static readonly Coding BellakChildrenQuoteSApperceptionTest = new Coding
     {
@@ -8085,7 +8085,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bender visual motor gestalt test
     /// </summary>
     public static readonly Coding BenderVisualMotorGestaltTest = new Coding
     {
@@ -8094,7 +8094,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bruininks-Oseretsky test of motor proficiency
     /// </summary>
     public static readonly Coding BruininksOseretskyTestOfMotorProficiency = new Coding
     {
@@ -8103,7 +8103,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cancer attitude inventory
     /// </summary>
     public static readonly Coding CancerAttitudeInventory = new Coding
     {
@@ -8112,7 +8112,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child depression scale, second research edition
     /// </summary>
     public static readonly Coding ChildDepressionScaleSecondResearchEdition = new Coding
     {
@@ -8121,7 +8121,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Children's health locus of control scale
     /// </summary>
     public static readonly Coding ChildrenQuoteSHealthLocusOfControlScale = new Coding
     {
@@ -8130,7 +8130,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CECS - Courtauld emotional control scale
     /// </summary>
     public static readonly Coding CECSCourtauldEmotionalControlScale = new Coding
     {
@@ -8139,7 +8139,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Middlesex hospital questionnaire
     /// </summary>
     public static readonly Coding MiddlesexHospitalQuestionnaire = new Coding
     {
@@ -8148,7 +8148,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Culture-free self-esteem inventory
     /// </summary>
     public static readonly Coding CultureFreeSelfEsteemInventory = new Coding
     {
@@ -8157,7 +8157,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delusions-symptoms-states inventory
     /// </summary>
     public static readonly Coding DelusionsSymptomsStatesInventory = new Coding
     {
@@ -8166,7 +8166,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eysenck personality questionnaire
     /// </summary>
     public static readonly Coding EysenckPersonalityQuestionnaire = new Coding
     {
@@ -8175,7 +8175,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Family relations test
     /// </summary>
     public static readonly Coding FamilyRelationsTest = new Coding
     {
@@ -8184,7 +8184,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Forced choice ratings of health-related attributes
     /// </summary>
     public static readonly Coding ForcedChoiceRatingsOfHealthRelatedAttributes = new Coding
     {
@@ -8193,7 +8193,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Framingham anger measure
     /// </summary>
     public static readonly Coding FraminghamAngerMeasure = new Coding
     {
@@ -8202,7 +8202,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Framingham type A behavior pattern measure
     /// </summary>
     public static readonly Coding FraminghamTypeABehaviorPatternMeasure = new Coding
     {
@@ -8211,7 +8211,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fuld object memory evaluation
     /// </summary>
     public static readonly Coding FuldObjectMemoryEvaluation = new Coding
     {
@@ -8220,7 +8220,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Functional performance record
     /// </summary>
     public static readonly Coding FunctionalPerformanceRecord = new Coding
     {
@@ -8229,7 +8229,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General preventative health behaviors checklist
     /// </summary>
     public static readonly Coding GeneralPreventativeHealthBehaviorsChecklist = new Coding
     {
@@ -8238,7 +8238,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hassles scale
     /// </summary>
     public static readonly Coding HasslesScale = new Coding
     {
@@ -8247,7 +8247,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health knowledge measurement
     /// </summary>
     public static readonly Coding HealthKnowledgeMeasurement = new Coding
     {
@@ -8256,7 +8256,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health value scale
     /// </summary>
     public static readonly Coding HealthValueScale = new Coding
     {
@@ -8265,7 +8265,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Illinois test of psycholinguistic abilities, revised edition
     /// </summary>
     public static readonly Coding IllinoisTestOfPsycholinguisticAbilitiesRevisedEdition = new Coding
     {
@@ -8274,7 +8274,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inventory of drinking situations
     /// </summary>
     public static readonly Coding InventoryOfDrinkingSituations = new Coding
     {
@@ -8283,7 +8283,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kaufman assessment battery for children
     /// </summary>
     public static readonly Coding KaufmanAssessmentBatteryForChildren = new Coding
     {
@@ -8292,7 +8292,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Life experiences checklist
     /// </summary>
     public static readonly Coding LifeExperiencesChecklist = new Coding
     {
@@ -8301,7 +8301,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// LOT - Life orientation test
     /// </summary>
     public static readonly Coding LOTLifeOrientationTest = new Coding
     {
@@ -8310,7 +8310,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Luria-Nebraska neuropsychological battery, children's revision
     /// </summary>
     public static readonly Coding LuriaNebraskaNeuropsychologicalBatteryChildrenQuoteSRevision = new Coding
     {
@@ -8319,7 +8319,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Luria-Nebraska neuropsychological battery, form 1
     /// </summary>
     public static readonly Coding LuriaNebraskaNeuropsychologicalBatteryForm1 = new Coding
     {
@@ -8328,7 +8328,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Marlow-Crowne scale
     /// </summary>
     public static readonly Coding MarlowCrowneScale = new Coding
     {
@@ -8337,7 +8337,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MISS - Medical interview satisfaction scale
     /// </summary>
     public static readonly Coding MISSMedicalInterviewSatisfactionScale = new Coding
     {
@@ -8346,7 +8346,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mental adjustment to cancer scale
     /// </summary>
     public static readonly Coding MentalAdjustmentToCancerScale = new Coding
     {
@@ -8355,7 +8355,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Merril-Palmer preschool performance scale
     /// </summary>
     public static readonly Coding MerrilPalmerPreschoolPerformanceScale = new Coding
     {
@@ -8364,7 +8364,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Motivation analysis test
     /// </summary>
     public static readonly Coding MotivationAnalysisTest = new Coding
     {
@@ -8373,7 +8373,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multidimensional health locus of control scale
     /// </summary>
     public static readonly Coding MultidimensionalHealthLocusOfControlScale = new Coding
     {
@@ -8382,7 +8382,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Object relations technique
     /// </summary>
     public static readonly Coding ObjectRelationsTechnique = new Coding
     {
@@ -8391,7 +8391,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pain coping strategies questionnaire
     /// </summary>
     public static readonly Coding PainCopingStrategiesQuestionnaire = new Coding
     {
@@ -8400,7 +8400,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PILL - Pennebaker inventory of linguid languidness
     /// </summary>
     public static readonly Coding PILLPennebakerInventoryOfLinguidLanguidness = new Coding
     {
@@ -8409,7 +8409,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Perceived control of insulin-dependent diabetes
     /// </summary>
     public static readonly Coding PerceivedControlOfInsulinDependentDiabetes = new Coding
     {
@@ -8418,7 +8418,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PSS - Perceived stress scale
     /// </summary>
     public static readonly Coding PSSPerceivedStressScale = new Coding
     {
@@ -8427,7 +8427,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Personality deviance scale
     /// </summary>
     public static readonly Coding PersonalityDevianceScale = new Coding
     {
@@ -8436,7 +8436,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PANAS - Positive and negative affect schedule
     /// </summary>
     public static readonly Coding PANASPositiveAndNegativeAffectSchedule = new Coding
     {
@@ -8445,7 +8445,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prejudicial evaluation and social interaction scale
     /// </summary>
     public static readonly Coding PrejudicialEvaluationAndSocialInteractionScale = new Coding
     {
@@ -8454,7 +8454,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Profile of mood states, bipolar
     /// </summary>
     public static readonly Coding ProfileOfMoodStatesBipolar = new Coding
     {
@@ -8463,7 +8463,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Quick neurological screening test
     /// </summary>
     public static readonly Coding QuickNeurologicalScreeningTest = new Coding
     {
@@ -8472,7 +8472,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Raven progressive matrices and vocabulary scales
     /// </summary>
     public static readonly Coding RavenProgressiveMatricesAndVocabularyScales = new Coding
     {
@@ -8481,7 +8481,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// RLOC - Recovery locus of control scale
     /// </summary>
     public static readonly Coding RLOCRecoveryLocusOfControlScale = new Coding
     {
@@ -8490,7 +8490,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reported health behaviors checklist
     /// </summary>
     public static readonly Coding ReportedHealthBehaviorsChecklist = new Coding
     {
@@ -8499,7 +8499,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Revised token test
     /// </summary>
     public static readonly Coding RevisedTokenTest = new Coding
     {
@@ -8508,7 +8508,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reynell developmental language scales, second revision
     /// </summary>
     public static readonly Coding ReynellDevelopmentalLanguageScalesSecondRevision = new Coding
     {
@@ -8517,7 +8517,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reynell Zinkin scale for young visually handicapped children
     /// </summary>
     public static readonly Coding ReynellZinkinScaleForYoungVisuallyHandicappedChildren = new Coding
     {
@@ -8526,7 +8526,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rogers personal adjustment inventory, revised
     /// </summary>
     public static readonly Coding RogersPersonalAdjustmentInventoryRevised = new Coding
     {
@@ -8535,7 +8535,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// RSES - Rosenberg self-esteem scale
     /// </summary>
     public static readonly Coding RSESRosenbergSelfEsteemScale = new Coding
     {
@@ -8544,7 +8544,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rust inventory of schizotypal cognitions
     /// </summary>
     public static readonly Coding RustInventoryOfSchizotypalCognitions = new Coding
     {
@@ -8553,7 +8553,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Satisfaction with life scale
     /// </summary>
     public static readonly Coding SatisfactionWithLifeScale = new Coding
     {
@@ -8562,7 +8562,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Screening test for the Luria-Nebraska neuropsychological battery
     /// </summary>
     public static readonly Coding ScreeningTestForTheLuriaNebraskaNeuropsychologicalBattery = new Coding
     {
@@ -8571,7 +8571,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Short form social support questionnaire
     /// </summary>
     public static readonly Coding ShortFormSocialSupportQuestionnaire = new Coding
     {
@@ -8580,7 +8580,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// SOS - Significant others scale
     /// </summary>
     public static readonly Coding SOSSignificantOthersScale = new Coding
     {
@@ -8589,7 +8589,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Snijders-Oomen non-verbal intelligence scale, revised
     /// </summary>
     public static readonly Coding SnijdersOomenNonVerbalIntelligenceScaleRevised = new Coding
     {
@@ -8598,7 +8598,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stanford Binet intelligence scale, fourth edition
     /// </summary>
     public static readonly Coding StanfordBinetIntelligenceScaleFourthEdition = new Coding
     {
@@ -8607,7 +8607,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stanford Binet form L/M
     /// </summary>
     public static readonly Coding StanfordBinetFormLM = new Coding
     {
@@ -8616,7 +8616,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// State-trait anger expression inventory
     /// </summary>
     public static readonly Coding StateTraitAngerExpressionInventory = new Coding
     {
@@ -8625,7 +8625,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stroop neuropsychological screening test
     /// </summary>
     public static readonly Coding StroopNeuropsychologicalScreeningTest = new Coding
     {
@@ -8634,7 +8634,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Symbolic play test, second edition
     /// </summary>
     public static readonly Coding SymbolicPlayTestSecondEdition = new Coding
     {
@@ -8643,7 +8643,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Token test for children
     /// </summary>
     public static readonly Coding TokenTestForChildren = new Coding
     {
@@ -8652,7 +8652,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Uplifts scale
     /// </summary>
     public static readonly Coding UpliftsScale = new Coding
     {
@@ -8661,7 +8661,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Varni-Thompson pediatric pain questionnaire
     /// </summary>
     public static readonly Coding VarniThompsonPediatricPainQuestionnaire = new Coding
     {
@@ -8670,7 +8670,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vineland adaptive behavior scales
     /// </summary>
     public static readonly Coding VinelandAdaptiveBehaviorScales = new Coding
     {
@@ -8679,7 +8679,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Duke treadmill score
     /// </summary>
     public static readonly Coding DukeTreadmillScore = new Coding
     {
@@ -8688,7 +8688,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Strange situation test
     /// </summary>
     public static readonly Coding StrangeSituationTest = new Coding
     {
@@ -8697,7 +8697,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rey figure test
     /// </summary>
     public static readonly Coding ReyFigureTest = new Coding
     {
@@ -8706,7 +8706,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Test of everyday attention
     /// </summary>
     public static readonly Coding TestOfEverydayAttention = new Coding
     {
@@ -8715,7 +8715,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Test of everyday attention - adult
     /// </summary>
     public static readonly Coding TestOfEverydayAttentionAdult = new Coding
     {
@@ -8724,7 +8724,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Test of everyday attention - child
     /// </summary>
     public static readonly Coding TestOfEverydayAttentionChild = new Coding
     {
@@ -8733,7 +8733,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rivermead behavioral memory test - adult version
     /// </summary>
     public static readonly Coding RivermeadBehavioralMemoryTestAdultVersion = new Coding
     {
@@ -8742,7 +8742,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rivermead behavioral memory test - child version
     /// </summary>
     public static readonly Coding RivermeadBehavioralMemoryTestChildVersion = new Coding
     {
@@ -8751,7 +8751,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wechsler objective numerical dimensions test
     /// </summary>
     public static readonly Coding WechslerObjectiveNumericalDimensionsTest = new Coding
     {
@@ -8760,7 +8760,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// WOLD - Wechsler objective language dimensions test
     /// </summary>
     public static readonly Coding WOLDWechslerObjectiveLanguageDimensionsTest = new Coding
     {
@@ -8769,7 +8769,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health of the Nation Outcome Scale for children
     /// </summary>
     public static readonly Coding HealthOfTheNationOutcomeScaleForChildren = new Coding
     {
@@ -8778,7 +8778,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health of the Nation Outcome Scale for adolescents
     /// </summary>
     public static readonly Coding HealthOfTheNationOutcomeScaleForAdolescents = new Coding
     {
@@ -8787,7 +8787,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maudsley addiction profile
     /// </summary>
     public static readonly Coding MaudsleyAddictionProfile = new Coding
     {
@@ -8796,7 +8796,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Education score - diabetes
     /// </summary>
     public static readonly Coding EducationScoreDiabetes = new Coding
     {
@@ -8805,7 +8805,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Attention process training questionnaire
     /// </summary>
     public static readonly Coding AttentionProcessTrainingQuestionnaire = new Coding
     {
@@ -8814,7 +8814,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rating scale of attentional behavior
     /// </summary>
     public static readonly Coding RatingScaleOfAttentionalBehavior = new Coding
     {
@@ -8823,7 +8823,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Everyday memory questionnaire
     /// </summary>
     public static readonly Coding EverydayMemoryQuestionnaire = new Coding
     {
@@ -8832,7 +8832,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Behavior assessment of the dysexecutive syndrome
     /// </summary>
     public static readonly Coding BehaviorAssessmentOfTheDysexecutiveSyndrome = new Coding
     {
@@ -8841,7 +8841,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doors and people assessment
     /// </summary>
     public static readonly Coding DoorsAndPeopleAssessment = new Coding
     {
@@ -8850,7 +8850,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended 2 &amp; 7 test
     /// </summary>
     public static readonly Coding Extended2And7Test = new Coding
     {
@@ -8859,7 +8859,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alphabet number alteration test
     /// </summary>
     public static readonly Coding AlphabetNumberAlterationTest = new Coding
     {
@@ -8868,7 +8868,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vigil/W test
     /// </summary>
     public static readonly Coding VigilWTest = new Coding
     {
@@ -8877,7 +8877,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Attentional capacity test
     /// </summary>
     public static readonly Coding AttentionalCapacityTest = new Coding
     {
@@ -8886,7 +8886,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Consonant trigrams test
     /// </summary>
     public static readonly Coding ConsonantTrigramsTest = new Coding
     {
@@ -8895,7 +8895,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Buschke selective reminding test
     /// </summary>
     public static readonly Coding BuschkeSelectiveRemindingTest = new Coding
     {
@@ -8904,7 +8904,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// California verbal learning test
     /// </summary>
     public static readonly Coding CaliforniaVerbalLearningTest = new Coding
     {
@@ -8913,7 +8913,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Williams memory assessment scales
     /// </summary>
     public static readonly Coding WilliamsMemoryAssessmentScales = new Coding
     {
@@ -8922,7 +8922,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wechsler memory scale revised
     /// </summary>
     public static readonly Coding WechslerMemoryScaleRevised = new Coding
     {
@@ -8931,7 +8931,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Association for neuropsychological research and development prospective memory test
     /// </summary>
     public static readonly Coding AssociationForNeuropsychologicalResearchAndDevelopmentProspectiveMemoryTest = new Coding
     {
@@ -8940,7 +8940,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PASAT - Paced auditory stimulation test
     /// </summary>
     public static readonly Coding PASATPacedAuditoryStimulationTest = new Coding
     {
@@ -8949,7 +8949,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Category test
     /// </summary>
     public static readonly Coding CategoryTest = new Coding
     {
@@ -8958,7 +8958,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Profile of executive control system
     /// </summary>
     public static readonly Coding ProfileOfExecutiveControlSystem = new Coding
     {
@@ -8967,7 +8967,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brixton test
     /// </summary>
     public static readonly Coding BrixtonTest = new Coding
     {
@@ -8976,7 +8976,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hayling test
     /// </summary>
     public static readonly Coding HaylingTest = new Coding
     {
@@ -8985,7 +8985,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microcog - assessment of cognitive function
     /// </summary>
     public static readonly Coding MicrocogAssessmentOfCognitiveFunction = new Coding
     {
@@ -8994,7 +8994,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Walter Reed (WR) stage 1
     /// </summary>
     public static readonly Coding WalterReedWRStage1 = new Coding
     {
@@ -9003,7 +9003,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// WR stage 5
     /// </summary>
     public static readonly Coding WRStage5 = new Coding
     {
@@ -9012,7 +9012,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// WR stage 4
     /// </summary>
     public static readonly Coding WRStage4 = new Coding
     {
@@ -9021,7 +9021,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// WR stage 6
     /// </summary>
     public static readonly Coding WRStage6 = new Coding
     {
@@ -9036,9 +9036,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGleasonQuoteSMicroscopicProstaticCarcinomaGradingSystem = "106241006";
 
     /// <summary>
+    /// Literal for code: NONEGleasonQuoteSMicroscopicProstaticCarcinomaGradingSystem
+    /// </summary>
+    public const string LiteralNONEGleasonQuoteSMicroscopicProstaticCarcinomaGradingSystem = "http://snomed.info/sct#106241006";
+
+    /// <summary>
     /// Literal for code: WalterReedStagingOfProstaticCancer
     /// </summary>
     public const string LiteralWalterReedStagingOfProstaticCancer = "106242004";
+
+    /// <summary>
+    /// Literal for code: NONEWalterReedStagingOfProstaticCancer
+    /// </summary>
+    public const string LiteralNONEWalterReedStagingOfProstaticCancer = "http://snomed.info/sct#106242004";
 
     /// <summary>
     /// Literal for code: FIGOStagingSystemForEndometrialCarcinoma
@@ -9046,9 +9056,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFIGOStagingSystemForEndometrialCarcinoma = "106244003";
 
     /// <summary>
+    /// Literal for code: NONEFIGOStagingSystemForEndometrialCarcinoma
+    /// </summary>
+    public const string LiteralNONEFIGOStagingSystemForEndometrialCarcinoma = "http://snomed.info/sct#106244003";
+
+    /// <summary>
     /// Literal for code: FIGOVulvaTumorStaging
     /// </summary>
     public const string LiteralFIGOVulvaTumorStaging = "106245002";
+
+    /// <summary>
+    /// Literal for code: NONEFIGOVulvaTumorStaging
+    /// </summary>
+    public const string LiteralNONEFIGOVulvaTumorStaging = "http://snomed.info/sct#106245002";
 
     /// <summary>
     /// Literal for code: FIGOStagingSystemForVulvarMelanoma
@@ -9056,9 +9076,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFIGOStagingSystemForVulvarMelanoma = "106246001";
 
     /// <summary>
+    /// Literal for code: NONEFIGOStagingSystemForVulvarMelanoma
+    /// </summary>
+    public const string LiteralNONEFIGOStagingSystemForVulvarMelanoma = "http://snomed.info/sct#106246001";
+
+    /// <summary>
     /// Literal for code: FIGOStagingSystemForEpithelialTumorOfOvary
     /// </summary>
     public const string LiteralFIGOStagingSystemForEpithelialTumorOfOvary = "106247005";
+
+    /// <summary>
+    /// Literal for code: NONEFIGOStagingSystemForEpithelialTumorOfOvary
+    /// </summary>
+    public const string LiteralNONEFIGOStagingSystemForEpithelialTumorOfOvary = "http://snomed.info/sct#106247005";
 
     /// <summary>
     /// Literal for code: FIGOCervicalTumorStaging
@@ -9066,9 +9096,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFIGOCervicalTumorStaging = "106250008";
 
     /// <summary>
+    /// Literal for code: NONEFIGOCervicalTumorStaging
+    /// </summary>
+    public const string LiteralNONEFIGOCervicalTumorStaging = "http://snomed.info/sct#106250008";
+
+    /// <summary>
     /// Literal for code: LymphomaStagingDescriptors
     /// </summary>
     public const string LiteralLymphomaStagingDescriptors = "106252000";
+
+    /// <summary>
+    /// Literal for code: NONELymphomaStagingDescriptors
+    /// </summary>
+    public const string LiteralNONELymphomaStagingDescriptors = "http://snomed.info/sct#106252000";
 
     /// <summary>
     /// Literal for code: OverlappingTumor
@@ -9076,9 +9116,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOverlappingTumor = "110375007";
 
     /// <summary>
+    /// Literal for code: NONEOverlappingTumor
+    /// </summary>
+    public const string LiteralNONEOverlappingTumor = "http://snomed.info/sct#110375007";
+
+    /// <summary>
     /// Literal for code: CanadianCardiovascularSocietyClassificationOfAngina
     /// </summary>
     public const string LiteralCanadianCardiovascularSocietyClassificationOfAngina = "134438001";
+
+    /// <summary>
+    /// Literal for code: NONECanadianCardiovascularSocietyClassificationOfAngina
+    /// </summary>
+    public const string LiteralNONECanadianCardiovascularSocietyClassificationOfAngina = "http://snomed.info/sct#134438001";
 
     /// <summary>
     /// Literal for code: CardiovascularLimitationsAndSymptomsProfileAnginaScore
@@ -9086,9 +9136,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCardiovascularLimitationsAndSymptomsProfileAnginaScore = "135831005";
 
     /// <summary>
+    /// Literal for code: NONECardiovascularLimitationsAndSymptomsProfileAnginaScore
+    /// </summary>
+    public const string LiteralNONECardiovascularLimitationsAndSymptomsProfileAnginaScore = "http://snomed.info/sct#135831005";
+
+    /// <summary>
     /// Literal for code: CardiovascularLimitationsAndSymptomsProfileAnkleSwellingScore
     /// </summary>
     public const string LiteralCardiovascularLimitationsAndSymptomsProfileAnkleSwellingScore = "135832003";
+
+    /// <summary>
+    /// Literal for code: NONECardiovascularLimitationsAndSymptomsProfileAnkleSwellingScore
+    /// </summary>
+    public const string LiteralNONECardiovascularLimitationsAndSymptomsProfileAnkleSwellingScore = "http://snomed.info/sct#135832003";
 
     /// <summary>
     /// Literal for code: CardiovascularLimitationsAndSymptomsProfileShortnessOfBreathScore
@@ -9096,9 +9156,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCardiovascularLimitationsAndSymptomsProfileShortnessOfBreathScore = "135833008";
 
     /// <summary>
+    /// Literal for code: NONECardiovascularLimitationsAndSymptomsProfileShortnessOfBreathScore
+    /// </summary>
+    public const string LiteralNONECardiovascularLimitationsAndSymptomsProfileShortnessOfBreathScore = "http://snomed.info/sct#135833008";
+
+    /// <summary>
     /// Literal for code: StrokeRisk
     /// </summary>
     public const string LiteralStrokeRisk = "135877001";
+
+    /// <summary>
+    /// Literal for code: NONEStrokeRisk
+    /// </summary>
+    public const string LiteralNONEStrokeRisk = "http://snomed.info/sct#135877001";
 
     /// <summary>
     /// Literal for code: WRStage3
@@ -9106,9 +9176,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWRStage3 = "13808002";
 
     /// <summary>
+    /// Literal for code: NONEWRStage3
+    /// </summary>
+    public const string LiteralNONEWRStage3 = "http://snomed.info/sct#13808002";
+
+    /// <summary>
     /// Literal for code: WalterReedWRStage2
     /// </summary>
     public const string LiteralWalterReedWRStage2 = "15972002";
+
+    /// <summary>
+    /// Literal for code: NONEWalterReedWRStage2
+    /// </summary>
+    public const string LiteralNONEWalterReedWRStage2 = "http://snomed.info/sct#15972002";
 
     /// <summary>
     /// Literal for code: HousingDependencyScale
@@ -9116,9 +9196,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHousingDependencyScale = "160723003";
 
     /// <summary>
+    /// Literal for code: NONEHousingDependencyScale
+    /// </summary>
+    public const string LiteralNONEHousingDependencyScale = "http://snomed.info/sct#160723003";
+
+    /// <summary>
     /// Literal for code: PhysicalDisabilityAssessmentScore
     /// </summary>
     public const string LiteralPhysicalDisabilityAssessmentScore = "165270003";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalDisabilityAssessmentScore
+    /// </summary>
+    public const string LiteralNONEPhysicalDisabilityAssessmentScore = "http://snomed.info/sct#165270003";
 
     /// <summary>
     /// Literal for code: PhysicalDisabilityAdmissionScore
@@ -9126,9 +9216,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysicalDisabilityAdmissionScore = "165271004";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalDisabilityAdmissionScore
+    /// </summary>
+    public const string LiteralNONEPhysicalDisabilityAdmissionScore = "http://snomed.info/sct#165271004";
+
+    /// <summary>
     /// Literal for code: PhysicalDisabilityInpatientScore
     /// </summary>
     public const string LiteralPhysicalDisabilityInpatientScore = "165272006";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalDisabilityInpatientScore
+    /// </summary>
+    public const string LiteralNONEPhysicalDisabilityInpatientScore = "http://snomed.info/sct#165272006";
 
     /// <summary>
     /// Literal for code: PhysicalDisabilityDischargeScore
@@ -9136,9 +9236,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysicalDisabilityDischargeScore = "165273001";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalDisabilityDischargeScore
+    /// </summary>
+    public const string LiteralNONEPhysicalDisabilityDischargeScore = "http://snomed.info/sct#165273001";
+
+    /// <summary>
     /// Literal for code: PhysicalDisabilityOutpatientScore
     /// </summary>
     public const string LiteralPhysicalDisabilityOutpatientScore = "165274007";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalDisabilityOutpatientScore
+    /// </summary>
+    public const string LiteralNONEPhysicalDisabilityOutpatientScore = "http://snomed.info/sct#165274007";
 
     /// <summary>
     /// Literal for code: PhysicalDisabilityDVScore
@@ -9146,9 +9256,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysicalDisabilityDVScore = "165275008";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalDisabilityDVScore
+    /// </summary>
+    public const string LiteralNONEPhysicalDisabilityDVScore = "http://snomed.info/sct#165275008";
+
+    /// <summary>
     /// Literal for code: SymptomRatings
     /// </summary>
     public const string LiteralSymptomRatings = "251893009";
+
+    /// <summary>
+    /// Literal for code: NONESymptomRatings
+    /// </summary>
+    public const string LiteralNONESymptomRatings = "http://snomed.info/sct#251893009";
 
     /// <summary>
     /// Literal for code: ExertionRating
@@ -9156,9 +9276,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExertionRating = "251894003";
 
     /// <summary>
+    /// Literal for code: NONEExertionRating
+    /// </summary>
+    public const string LiteralNONEExertionRating = "http://snomed.info/sct#251894003";
+
+    /// <summary>
     /// Literal for code: LegFatigueRating
     /// </summary>
     public const string LiteralLegFatigueRating = "251895002";
+
+    /// <summary>
+    /// Literal for code: NONELegFatigueRating
+    /// </summary>
+    public const string LiteralNONELegFatigueRating = "http://snomed.info/sct#251895002";
 
     /// <summary>
     /// Literal for code: BreathlessnessRating
@@ -9166,9 +9296,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBreathlessnessRating = "251896001";
 
     /// <summary>
+    /// Literal for code: NONEBreathlessnessRating
+    /// </summary>
+    public const string LiteralNONEBreathlessnessRating = "http://snomed.info/sct#251896001";
+
+    /// <summary>
     /// Literal for code: ChestPainRating
     /// </summary>
     public const string LiteralChestPainRating = "251897005";
+
+    /// <summary>
+    /// Literal for code: NONEChestPainRating
+    /// </summary>
+    public const string LiteralNONEChestPainRating = "http://snomed.info/sct#251897005";
 
     /// <summary>
     /// Literal for code: TumorStaging
@@ -9176,9 +9316,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorStaging = "254292007";
 
     /// <summary>
+    /// Literal for code: NONETumorStaging
+    /// </summary>
+    public const string LiteralNONETumorStaging = "http://snomed.info/sct#254292007";
+
+    /// <summary>
     /// Literal for code: TNMTumorStagingSystem
     /// </summary>
     public const string LiteralTNMTumorStagingSystem = "254293002";
+
+    /// <summary>
+    /// Literal for code: NONETNMTumorStagingSystem
+    /// </summary>
+    public const string LiteralNONETNMTumorStagingSystem = "http://snomed.info/sct#254293002";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMHeadAndNeckTumorStaging
@@ -9186,9 +9336,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMHeadAndNeckTumorStaging = "254294008";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMHeadAndNeckTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMHeadAndNeckTumorStaging = "http://snomed.info/sct#254294008";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMLipAndOralCavityTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMLipAndOralCavityTumorStaging = "254295009";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMLipAndOralCavityTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMLipAndOralCavityTumorStaging = "http://snomed.info/sct#254295009";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMOropharynxTumorStaging
@@ -9196,9 +9356,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMOropharynxTumorStaging = "254296005";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMOropharynxTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMOropharynxTumorStaging = "http://snomed.info/sct#254296005";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMNasopharynxTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMNasopharynxTumorStaging = "254297001";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMNasopharynxTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMNasopharynxTumorStaging = "http://snomed.info/sct#254297001";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMHypopharynxTumorStaging
@@ -9206,9 +9376,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMHypopharynxTumorStaging = "254298006";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMHypopharynxTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMHypopharynxTumorStaging = "http://snomed.info/sct#254298006";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMSupraglotticLarynxTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMSupraglotticLarynxTumorStaging = "254299003";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMSupraglotticLarynxTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMSupraglotticLarynxTumorStaging = "http://snomed.info/sct#254299003";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMGlotticLarynxTumorStaging
@@ -9216,9 +9396,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMGlotticLarynxTumorStaging = "254300006";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMGlotticLarynxTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMGlotticLarynxTumorStaging = "http://snomed.info/sct#254300006";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMSubglotticLarynxTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMSubglotticLarynxTumorStaging = "254301005";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMSubglotticLarynxTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMSubglotticLarynxTumorStaging = "http://snomed.info/sct#254301005";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMMaxillarySinusTumorStaging
@@ -9226,9 +9416,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMMaxillarySinusTumorStaging = "254302003";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMMaxillarySinusTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMMaxillarySinusTumorStaging = "http://snomed.info/sct#254302003";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMSalivaryGlandsTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMSalivaryGlandsTumorStaging = "254303008";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMSalivaryGlandsTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMSalivaryGlandsTumorStaging = "http://snomed.info/sct#254303008";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMThyroidGlandTumorStaging
@@ -9236,9 +9436,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMThyroidGlandTumorStaging = "254304002";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMThyroidGlandTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMThyroidGlandTumorStaging = "http://snomed.info/sct#254304002";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMDigestiveSystemTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMDigestiveSystemTumorStaging = "254305001";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMDigestiveSystemTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMDigestiveSystemTumorStaging = "http://snomed.info/sct#254305001";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMEsophagusTumorStaging
@@ -9246,9 +9456,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMEsophagusTumorStaging = "254306000";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMEsophagusTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMEsophagusTumorStaging = "http://snomed.info/sct#254306000";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMStomachTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMStomachTumorStaging = "254307009";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMStomachTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMStomachTumorStaging = "http://snomed.info/sct#254307009";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMSmallIntestineTumorStaging
@@ -9256,9 +9476,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMSmallIntestineTumorStaging = "254309007";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMSmallIntestineTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMSmallIntestineTumorStaging = "http://snomed.info/sct#254309007";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMColonAndRectumTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMColonAndRectumTumorStaging = "254310002";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMColonAndRectumTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMColonAndRectumTumorStaging = "http://snomed.info/sct#254310002";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMAnalCanalTumorStaging
@@ -9266,9 +9496,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMAnalCanalTumorStaging = "254311003";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMAnalCanalTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMAnalCanalTumorStaging = "http://snomed.info/sct#254311003";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMLiverTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMLiverTumorStaging = "254312005";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMLiverTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMLiverTumorStaging = "http://snomed.info/sct#254312005";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMGallbladderTumorStaging
@@ -9276,9 +9516,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMGallbladderTumorStaging = "254313000";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMGallbladderTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMGallbladderTumorStaging = "http://snomed.info/sct#254313000";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMExtrahepaticBileDuctsTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMExtrahepaticBileDuctsTumorStaging = "254314006";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMExtrahepaticBileDuctsTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMExtrahepaticBileDuctsTumorStaging = "http://snomed.info/sct#254314006";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMAmpullaOfVaterTumorStaging
@@ -9286,9 +9536,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMAmpullaOfVaterTumorStaging = "254315007";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMAmpullaOfVaterTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMAmpullaOfVaterTumorStaging = "http://snomed.info/sct#254315007";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMPancreasTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMPancreasTumorStaging = "254316008";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMPancreasTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMPancreasTumorStaging = "http://snomed.info/sct#254316008";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMLungAndPleuralTumorStaging
@@ -9296,9 +9556,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMLungAndPleuralTumorStaging = "254317004";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMLungAndPleuralTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMLungAndPleuralTumorStaging = "http://snomed.info/sct#254317004";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMLungTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMLungTumorStaging = "254318009";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMLungTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMLungTumorStaging = "http://snomed.info/sct#254318009";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMPleuralMesotheliomaTumorStaging
@@ -9306,9 +9576,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMPleuralMesotheliomaTumorStaging = "254319001";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMPleuralMesotheliomaTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMPleuralMesotheliomaTumorStaging = "http://snomed.info/sct#254319001";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMBoneAndSoftTissueTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMBoneAndSoftTissueTumorStaging = "254320007";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMBoneAndSoftTissueTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMBoneAndSoftTissueTumorStaging = "http://snomed.info/sct#254320007";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMBoneTumorStaging
@@ -9316,9 +9596,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMBoneTumorStaging = "254321006";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMBoneTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMBoneTumorStaging = "http://snomed.info/sct#254321006";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMSoftTissuesTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMSoftTissuesTumorStaging = "254322004";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMSoftTissuesTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMSoftTissuesTumorStaging = "http://snomed.info/sct#254322004";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMSkinTumorStaging
@@ -9326,9 +9616,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMSkinTumorStaging = "254323009";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMSkinTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMSkinTumorStaging = "http://snomed.info/sct#254323009";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMCarcinomaOfSkinTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMCarcinomaOfSkinTumorStaging = "254324003";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMCarcinomaOfSkinTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMCarcinomaOfSkinTumorStaging = "http://snomed.info/sct#254324003";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMMalignantMelanomaOfSkinStaging
@@ -9336,9 +9636,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMMalignantMelanomaOfSkinStaging = "254325002";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMMalignantMelanomaOfSkinStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMMalignantMelanomaOfSkinStaging = "http://snomed.info/sct#254325002";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMBreastTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMBreastTumorStaging = "254326001";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMBreastTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMBreastTumorStaging = "http://snomed.info/sct#254326001";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMGynecologicalTumorStaging
@@ -9346,9 +9656,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMGynecologicalTumorStaging = "254327005";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMGynecologicalTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMGynecologicalTumorStaging = "http://snomed.info/sct#254327005";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMVulvaTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMVulvaTumorStaging = "254328000";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMVulvaTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMVulvaTumorStaging = "http://snomed.info/sct#254328000";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMVaginalTumorStaging
@@ -9356,9 +9676,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMVaginalTumorStaging = "254329008";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMVaginalTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMVaginalTumorStaging = "http://snomed.info/sct#254329008";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMCervixUteriTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMCervixUteriTumorStaging = "254330003";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMCervixUteriTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMCervixUteriTumorStaging = "http://snomed.info/sct#254330003";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMCorpusUteriTumorStaging
@@ -9366,9 +9696,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMCorpusUteriTumorStaging = "254331004";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMCorpusUteriTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMCorpusUteriTumorStaging = "http://snomed.info/sct#254331004";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMOvaryTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMOvaryTumorStaging = "254332006";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMOvaryTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMOvaryTumorStaging = "http://snomed.info/sct#254332006";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMUrologicalTumorStaging
@@ -9376,9 +9716,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMUrologicalTumorStaging = "254333001";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMUrologicalTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMUrologicalTumorStaging = "http://snomed.info/sct#254333001";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMPenisTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMPenisTumorStaging = "254334007";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMPenisTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMPenisTumorStaging = "http://snomed.info/sct#254334007";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMProstateTumorStaging
@@ -9386,9 +9736,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMProstateTumorStaging = "254335008";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMProstateTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMProstateTumorStaging = "http://snomed.info/sct#254335008";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMTestisTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMTestisTumorStaging = "254336009";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMTestisTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMTestisTumorStaging = "http://snomed.info/sct#254336009";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMKidneyTumorStaging
@@ -9396,9 +9756,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMKidneyTumorStaging = "254337000";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMKidneyTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMKidneyTumorStaging = "http://snomed.info/sct#254337000";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMRenalPelvisAndUreterTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMRenalPelvisAndUreterTumorStaging = "254338005";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMRenalPelvisAndUreterTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMRenalPelvisAndUreterTumorStaging = "http://snomed.info/sct#254338005";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMUrinaryBladderTumorStaging
@@ -9406,9 +9776,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMUrinaryBladderTumorStaging = "254339002";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMUrinaryBladderTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMUrinaryBladderTumorStaging = "http://snomed.info/sct#254339002";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMUrethraTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMUrethraTumorStaging = "254340000";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMUrethraTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMUrethraTumorStaging = "http://snomed.info/sct#254340000";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMOphthalmicTumorStaging
@@ -9416,9 +9796,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMOphthalmicTumorStaging = "254341001";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMOphthalmicTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMOphthalmicTumorStaging = "http://snomed.info/sct#254341001";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMCarcinomaOfEyelidStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMCarcinomaOfEyelidStaging = "254342008";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMCarcinomaOfEyelidStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMCarcinomaOfEyelidStaging = "http://snomed.info/sct#254342008";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMMalignantMelanomaOfEyelidStaging
@@ -9426,9 +9816,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMMalignantMelanomaOfEyelidStaging = "254343003";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMMalignantMelanomaOfEyelidStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMMalignantMelanomaOfEyelidStaging = "http://snomed.info/sct#254343003";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMCarcinomaOfConjunctivaStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMCarcinomaOfConjunctivaStaging = "254344009";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMCarcinomaOfConjunctivaStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMCarcinomaOfConjunctivaStaging = "http://snomed.info/sct#254344009";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMMalignantMelanomaOfConjunctivaStaging
@@ -9436,9 +9836,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMMalignantMelanomaOfConjunctivaStaging = "254345005";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMMalignantMelanomaOfConjunctivaStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMMalignantMelanomaOfConjunctivaStaging = "http://snomed.info/sct#254345005";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMMalignantMelanomaOfUveaStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMMalignantMelanomaOfUveaStaging = "254346006";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMMalignantMelanomaOfUveaStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMMalignantMelanomaOfUveaStaging = "http://snomed.info/sct#254346006";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMMalignantMelanomaOfIrisStaging
@@ -9446,9 +9856,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMMalignantMelanomaOfIrisStaging = "254347002";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMMalignantMelanomaOfIrisStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMMalignantMelanomaOfIrisStaging = "http://snomed.info/sct#254347002";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMMalignantMelanomaOfCiliaryBodyStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMMalignantMelanomaOfCiliaryBodyStaging = "254348007";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMMalignantMelanomaOfCiliaryBodyStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMMalignantMelanomaOfCiliaryBodyStaging = "http://snomed.info/sct#254348007";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMMalignantMelanomaOfChoroidStaging
@@ -9456,9 +9876,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMMalignantMelanomaOfChoroidStaging = "254349004";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMMalignantMelanomaOfChoroidStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMMalignantMelanomaOfChoroidStaging = "http://snomed.info/sct#254349004";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMRetinoblastomaStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMRetinoblastomaStaging = "254350004";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMRetinoblastomaStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMRetinoblastomaStaging = "http://snomed.info/sct#254350004";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMSarcomaOfOrbitStaging
@@ -9466,9 +9896,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMSarcomaOfOrbitStaging = "254351000";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMSarcomaOfOrbitStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMSarcomaOfOrbitStaging = "http://snomed.info/sct#254351000";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMLacrimalGlandCarcinomaStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMLacrimalGlandCarcinomaStaging = "254352007";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMLacrimalGlandCarcinomaStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMLacrimalGlandCarcinomaStaging = "http://snomed.info/sct#254352007";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMBrainTumorStaging
@@ -9476,9 +9916,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMBrainTumorStaging = "254353002";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMBrainTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMBrainTumorStaging = "http://snomed.info/sct#254353002";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMHodgkinQuoteSDiseaseStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMHodgkinQuoteSDiseaseStaging = "254354008";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMHodgkinQuoteSDiseaseStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMHodgkinQuoteSDiseaseStaging = "http://snomed.info/sct#254354008";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMNonHodgkinQuoteSLymphomaStaging
@@ -9486,9 +9936,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMNonHodgkinQuoteSLymphomaStaging = "254355009";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMNonHodgkinQuoteSLymphomaStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMNonHodgkinQuoteSLymphomaStaging = "http://snomed.info/sct#254355009";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMPediatricTumorStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMPediatricTumorStaging = "254356005";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMPediatricTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMPediatricTumorStaging = "http://snomed.info/sct#254356005";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMWilmsQuoteTumorStaging
@@ -9496,9 +9956,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMWilmsQuoteTumorStaging = "254357001";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMWilmsQuoteTumorStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMWilmsQuoteTumorStaging = "http://snomed.info/sct#254357001";
+
+    /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMNeuroblastomaStaging
     /// </summary>
     public const string LiteralTumorNodeMetastasisTNMNeuroblastomaStaging = "254358006";
+
+    /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMNeuroblastomaStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMNeuroblastomaStaging = "http://snomed.info/sct#254358006";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMSoftTissueSarcomaStaging
@@ -9506,9 +9976,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMSoftTissueSarcomaStaging = "254359003";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMSoftTissueSarcomaStaging
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMSoftTissueSarcomaStaging = "http://snomed.info/sct#254359003";
+
+    /// <summary>
     /// Literal for code: DukesStagingSystem
     /// </summary>
     public const string LiteralDukesStagingSystem = "254360008";
+
+    /// <summary>
+    /// Literal for code: NONEDukesStagingSystem
+    /// </summary>
+    public const string LiteralNONEDukesStagingSystem = "http://snomed.info/sct#254360008";
 
     /// <summary>
     /// Literal for code: AstlerCollerStagingSystem
@@ -9516,9 +9996,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAstlerCollerStagingSystem = "254361007";
 
     /// <summary>
+    /// Literal for code: NONEAstlerCollerStagingSystem
+    /// </summary>
+    public const string LiteralNONEAstlerCollerStagingSystem = "http://snomed.info/sct#254361007";
+
+    /// <summary>
     /// Literal for code: ModifiedAstlerCollerStagingSystem
     /// </summary>
     public const string LiteralModifiedAstlerCollerStagingSystem = "254362000";
+
+    /// <summary>
+    /// Literal for code: NONEModifiedAstlerCollerStagingSystem
+    /// </summary>
+    public const string LiteralNONEModifiedAstlerCollerStagingSystem = "http://snomed.info/sct#254362000";
 
     /// <summary>
     /// Literal for code: InternationalNeuroblastomaStagingSystem
@@ -9526,9 +10016,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInternationalNeuroblastomaStagingSystem = "254363005";
 
     /// <summary>
+    /// Literal for code: NONEInternationalNeuroblastomaStagingSystem
+    /// </summary>
+    public const string LiteralNONEInternationalNeuroblastomaStagingSystem = "http://snomed.info/sct#254363005";
+
+    /// <summary>
     /// Literal for code: NWTSNationalWilmsQuoteTumorStudyStagingSystem
     /// </summary>
     public const string LiteralNWTSNationalWilmsQuoteTumorStudyStagingSystem = "254364004";
+
+    /// <summary>
+    /// Literal for code: NONENWTSNationalWilmsQuoteTumorStudyStagingSystem
+    /// </summary>
+    public const string LiteralNONENWTSNationalWilmsQuoteTumorStudyStagingSystem = "http://snomed.info/sct#254364004";
 
     /// <summary>
     /// Literal for code: SiopelLiverStagingSystem
@@ -9536,9 +10036,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSiopelLiverStagingSystem = "254365003";
 
     /// <summary>
+    /// Literal for code: NONESiopelLiverStagingSystem
+    /// </summary>
+    public const string LiteralNONESiopelLiverStagingSystem = "http://snomed.info/sct#254365003";
+
+    /// <summary>
     /// Literal for code: StannardStagingSystemForRetinoblastoma
     /// </summary>
     public const string LiteralStannardStagingSystemForRetinoblastoma = "254366002";
+
+    /// <summary>
+    /// Literal for code: NONEStannardStagingSystemForRetinoblastoma
+    /// </summary>
+    public const string LiteralNONEStannardStagingSystemForRetinoblastoma = "http://snomed.info/sct#254366002";
 
     /// <summary>
     /// Literal for code: UnitedKingdomChildrenQuoteSCancerStudyGroupCentralNervousSystemTumorStagingSystem
@@ -9546,9 +10056,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnitedKingdomChildrenQuoteSCancerStudyGroupCentralNervousSystemTumorStagingSystem = "254368001";
 
     /// <summary>
+    /// Literal for code: NONEUnitedKingdomChildrenQuoteSCancerStudyGroupCentralNervousSystemTumorStagingSystem
+    /// </summary>
+    public const string LiteralNONEUnitedKingdomChildrenQuoteSCancerStudyGroupCentralNervousSystemTumorStagingSystem = "http://snomed.info/sct#254368001";
+
+    /// <summary>
     /// Literal for code: StJudeMalignantHistiocytosisTumorStagingSystem
     /// </summary>
     public const string LiteralStJudeMalignantHistiocytosisTumorStagingSystem = "254370005";
+
+    /// <summary>
+    /// Literal for code: NONEStJudeMalignantHistiocytosisTumorStagingSystem
+    /// </summary>
+    public const string LiteralNONEStJudeMalignantHistiocytosisTumorStagingSystem = "http://snomed.info/sct#254370005";
 
     /// <summary>
     /// Literal for code: StJudeNonHodgkinLymphomaStagingSystem
@@ -9556,9 +10076,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStJudeNonHodgkinLymphomaStagingSystem = "254371009";
 
     /// <summary>
+    /// Literal for code: NONEStJudeNonHodgkinLymphomaStagingSystem
+    /// </summary>
+    public const string LiteralNONEStJudeNonHodgkinLymphomaStagingSystem = "http://snomed.info/sct#254371009";
+
+    /// <summary>
     /// Literal for code: AnnArborLymphomaStagingSystem
     /// </summary>
     public const string LiteralAnnArborLymphomaStagingSystem = "254372002";
+
+    /// <summary>
+    /// Literal for code: NONEAnnArborLymphomaStagingSystem
+    /// </summary>
+    public const string LiteralNONEAnnArborLymphomaStagingSystem = "http://snomed.info/sct#254372002";
 
     /// <summary>
     /// Literal for code: AnnArborHodgkinDiseaseTumorStagingSystem
@@ -9566,9 +10096,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnnArborHodgkinDiseaseTumorStagingSystem = "254373007";
 
     /// <summary>
+    /// Literal for code: NONEAnnArborHodgkinDiseaseTumorStagingSystem
+    /// </summary>
+    public const string LiteralNONEAnnArborHodgkinDiseaseTumorStagingSystem = "http://snomed.info/sct#254373007";
+
+    /// <summary>
     /// Literal for code: AnnArborNonHodgkinLymphomaTumorStagingSystem
     /// </summary>
     public const string LiteralAnnArborNonHodgkinLymphomaTumorStagingSystem = "254374001";
+
+    /// <summary>
+    /// Literal for code: NONEAnnArborNonHodgkinLymphomaTumorStagingSystem
+    /// </summary>
+    public const string LiteralNONEAnnArborNonHodgkinLymphomaTumorStagingSystem = "http://snomed.info/sct#254374001";
 
     /// <summary>
     /// Literal for code: CotswoldsHodgkinDiseaseTumorStagingSystem
@@ -9576,9 +10116,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCotswoldsHodgkinDiseaseTumorStagingSystem = "254375000";
 
     /// <summary>
+    /// Literal for code: NONECotswoldsHodgkinDiseaseTumorStagingSystem
+    /// </summary>
+    public const string LiteralNONECotswoldsHodgkinDiseaseTumorStagingSystem = "http://snomed.info/sct#254375000";
+
+    /// <summary>
     /// Literal for code: TesticularTumorStagingSystems
     /// </summary>
     public const string LiteralTesticularTumorStagingSystems = "254376004";
+
+    /// <summary>
+    /// Literal for code: NONETesticularTumorStagingSystems
+    /// </summary>
+    public const string LiteralNONETesticularTumorStagingSystems = "http://snomed.info/sct#254376004";
 
     /// <summary>
     /// Literal for code: WalterReedTesticularTumorStagingSystem
@@ -9586,9 +10136,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWalterReedTesticularTumorStagingSystem = "254378003";
 
     /// <summary>
+    /// Literal for code: NONEWalterReedTesticularTumorStagingSystem
+    /// </summary>
+    public const string LiteralNONEWalterReedTesticularTumorStagingSystem = "http://snomed.info/sct#254378003";
+
+    /// <summary>
     /// Literal for code: IndianaUniversityTesticularTumorStagingSystem
     /// </summary>
     public const string LiteralIndianaUniversityTesticularTumorStagingSystem = "254379006";
+
+    /// <summary>
+    /// Literal for code: NONEIndianaUniversityTesticularTumorStagingSystem
+    /// </summary>
+    public const string LiteralNONEIndianaUniversityTesticularTumorStagingSystem = "http://snomed.info/sct#254379006";
 
     /// <summary>
     /// Literal for code: MarshallModificationOfJewettStrongStagingSystemForUrinaryBladderTumor
@@ -9596,9 +10156,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMarshallModificationOfJewettStrongStagingSystemForUrinaryBladderTumor = "254380009";
 
     /// <summary>
+    /// Literal for code: NONEMarshallModificationOfJewettStrongStagingSystemForUrinaryBladderTumor
+    /// </summary>
+    public const string LiteralNONEMarshallModificationOfJewettStrongStagingSystemForUrinaryBladderTumor = "http://snomed.info/sct#254380009";
+
+    /// <summary>
     /// Literal for code: AmericanUrologicalAssociationStagingSystemForProstateCancer
     /// </summary>
     public const string LiteralAmericanUrologicalAssociationStagingSystemForProstateCancer = "254381008";
+
+    /// <summary>
+    /// Literal for code: NONEAmericanUrologicalAssociationStagingSystemForProstateCancer
+    /// </summary>
+    public const string LiteralNONEAmericanUrologicalAssociationStagingSystemForProstateCancer = "http://snomed.info/sct#254381008";
 
     /// <summary>
     /// Literal for code: TrophoblasticMalignancyStagingSystem
@@ -9606,9 +10176,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrophoblasticMalignancyStagingSystem = "254382001";
 
     /// <summary>
+    /// Literal for code: NONETrophoblasticMalignancyStagingSystem
+    /// </summary>
+    public const string LiteralNONETrophoblasticMalignancyStagingSystem = "http://snomed.info/sct#254382001";
+
+    /// <summary>
     /// Literal for code: FIGOStagingSystemOfGynecologicalMalignancy
     /// </summary>
     public const string LiteralFIGOStagingSystemOfGynecologicalMalignancy = "254383006";
+
+    /// <summary>
+    /// Literal for code: NONEFIGOStagingSystemOfGynecologicalMalignancy
+    /// </summary>
+    public const string LiteralNONEFIGOStagingSystemOfGynecologicalMalignancy = "http://snomed.info/sct#254383006";
 
     /// <summary>
     /// Literal for code: FIGOVaginalTumorStagingSystem
@@ -9616,9 +10196,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFIGOVaginalTumorStagingSystem = "254384000";
 
     /// <summary>
+    /// Literal for code: NONEFIGOVaginalTumorStagingSystem
+    /// </summary>
+    public const string LiteralNONEFIGOVaginalTumorStagingSystem = "http://snomed.info/sct#254384000";
+
+    /// <summary>
     /// Literal for code: FIGOUterineTumorStagingSystem
     /// </summary>
     public const string LiteralFIGOUterineTumorStagingSystem = "254385004";
+
+    /// <summary>
+    /// Literal for code: NONEFIGOUterineTumorStagingSystem
+    /// </summary>
+    public const string LiteralNONEFIGOUterineTumorStagingSystem = "http://snomed.info/sct#254385004";
 
     /// <summary>
     /// Literal for code: FIGOOvarianTumorStagingSystem
@@ -9626,9 +10216,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFIGOOvarianTumorStagingSystem = "254386003";
 
     /// <summary>
+    /// Literal for code: NONEFIGOOvarianTumorStagingSystem
+    /// </summary>
+    public const string LiteralNONEFIGOOvarianTumorStagingSystem = "http://snomed.info/sct#254386003";
+
+    /// <summary>
     /// Literal for code: HIVHumanImmunodeficiencyVirusInfectionClassificationSystems
     /// </summary>
     public const string LiteralHIVHumanImmunodeficiencyVirusInfectionClassificationSystems = "254387007";
+
+    /// <summary>
+    /// Literal for code: NONEHIVHumanImmunodeficiencyVirusInfectionClassificationSystems
+    /// </summary>
+    public const string LiteralNONEHIVHumanImmunodeficiencyVirusInfectionClassificationSystems = "http://snomed.info/sct#254387007";
 
     /// <summary>
     /// Literal for code: CancerStaging
@@ -9636,9 +10236,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCancerStaging = "258232002";
 
     /// <summary>
+    /// Literal for code: NONECancerStaging
+    /// </summary>
+    public const string LiteralNONECancerStaging = "http://snomed.info/sct#258232002";
+
+    /// <summary>
     /// Literal for code: GenericTumorStagingDescriptor
     /// </summary>
     public const string LiteralGenericTumorStagingDescriptor = "258233007";
+
+    /// <summary>
+    /// Literal for code: NONEGenericTumorStagingDescriptor
+    /// </summary>
+    public const string LiteralNONEGenericTumorStagingDescriptor = "http://snomed.info/sct#258233007";
 
     /// <summary>
     /// Literal for code: TumorNodeMetastasisTNMTumorStagingClassifications
@@ -9646,9 +10256,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorNodeMetastasisTNMTumorStagingClassifications = "258234001";
 
     /// <summary>
+    /// Literal for code: NONETumorNodeMetastasisTNMTumorStagingClassifications
+    /// </summary>
+    public const string LiteralNONETumorNodeMetastasisTNMTumorStagingClassifications = "http://snomed.info/sct#258234001";
+
+    /// <summary>
     /// Literal for code: InternationalUnionAgainstCancerUICC
     /// </summary>
     public const string LiteralInternationalUnionAgainstCancerUICC = "258235000";
+
+    /// <summary>
+    /// Literal for code: NONEInternationalUnionAgainstCancerUICC
+    /// </summary>
+    public const string LiteralNONEInternationalUnionAgainstCancerUICC = "http://snomed.info/sct#258235000";
 
     /// <summary>
     /// Literal for code: AmericanJointCommitteeOnCancerAJCC
@@ -9656,9 +10276,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAmericanJointCommitteeOnCancerAJCC = "258236004";
 
     /// <summary>
+    /// Literal for code: NONEAmericanJointCommitteeOnCancerAJCC
+    /// </summary>
+    public const string LiteralNONEAmericanJointCommitteeOnCancerAJCC = "http://snomed.info/sct#258236004";
+
+    /// <summary>
     /// Literal for code: GStatus
     /// </summary>
     public const string LiteralGStatus = "258244004";
+
+    /// <summary>
+    /// Literal for code: NONEGStatus
+    /// </summary>
+    public const string LiteralNONEGStatus = "http://snomed.info/sct#258244004";
 
     /// <summary>
     /// Literal for code: LStatus
@@ -9666,9 +10296,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLStatus = "258246002";
 
     /// <summary>
+    /// Literal for code: NONELStatus
+    /// </summary>
+    public const string LiteralNONELStatus = "http://snomed.info/sct#258246002";
+
+    /// <summary>
     /// Literal for code: VStatus
     /// </summary>
     public const string LiteralVStatus = "258247006";
+
+    /// <summary>
+    /// Literal for code: NONEVStatus
+    /// </summary>
+    public const string LiteralNONEVStatus = "http://snomed.info/sct#258247006";
 
     /// <summary>
     /// Literal for code: AdditionalTumorStagingDescriptor
@@ -9676,9 +10316,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdditionalTumorStagingDescriptor = "258257007";
 
     /// <summary>
+    /// Literal for code: NONEAdditionalTumorStagingDescriptor
+    /// </summary>
+    public const string LiteralNONEAdditionalTumorStagingDescriptor = "http://snomed.info/sct#258257007";
+
+    /// <summary>
     /// Literal for code: F
     /// </summary>
     public const string LiteralF = "258258002";
+
+    /// <summary>
+    /// Literal for code: NONEF
+    /// </summary>
+    public const string LiteralNONEF = "http://snomed.info/sct#258258002";
 
     /// <summary>
     /// Literal for code: VALIs
@@ -9686,9 +10336,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVALIs = "258259005";
 
     /// <summary>
+    /// Literal for code: NONEVALIs
+    /// </summary>
+    public const string LiteralNONEVALIs = "http://snomed.info/sct#258259005";
+
+    /// <summary>
     /// Literal for code: D
     /// </summary>
     public const string LiteralD = "258260000";
+
+    /// <summary>
+    /// Literal for code: NONED
+    /// </summary>
+    public const string LiteralNONED = "http://snomed.info/sct#258260000";
 
     /// <summary>
     /// Literal for code: GenericTumorRiskStatusStages
@@ -9696,9 +10356,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGenericTumorRiskStatusStages = "258267002";
 
     /// <summary>
+    /// Literal for code: NONEGenericTumorRiskStatusStages
+    /// </summary>
+    public const string LiteralNONEGenericTumorRiskStatusStages = "http://snomed.info/sct#258267002";
+
+    /// <summary>
     /// Literal for code: LowRiskTumor
     /// </summary>
     public const string LiteralLowRiskTumor = "258268007";
+
+    /// <summary>
+    /// Literal for code: NONELowRiskTumor
+    /// </summary>
+    public const string LiteralNONELowRiskTumor = "http://snomed.info/sct#258268007";
 
     /// <summary>
     /// Literal for code: MediumRiskTumor
@@ -9706,9 +10376,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMediumRiskTumor = "258269004";
 
     /// <summary>
+    /// Literal for code: NONEMediumRiskTumor
+    /// </summary>
+    public const string LiteralNONEMediumRiskTumor = "http://snomed.info/sct#258269004";
+
+    /// <summary>
     /// Literal for code: HighRiskTumor
     /// </summary>
     public const string LiteralHighRiskTumor = "258270003";
+
+    /// <summary>
+    /// Literal for code: NONEHighRiskTumor
+    /// </summary>
+    public const string LiteralNONEHighRiskTumor = "http://snomed.info/sct#258270003";
 
     /// <summary>
     /// Literal for code: SpecificTumorStagingDescriptor
@@ -9716,9 +10396,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpecificTumorStagingDescriptor = "258271004";
 
     /// <summary>
+    /// Literal for code: NONESpecificTumorStagingDescriptor
+    /// </summary>
+    public const string LiteralNONESpecificTumorStagingDescriptor = "http://snomed.info/sct#258271004";
+
+    /// <summary>
     /// Literal for code: LiverTumorStagingDescriptor
     /// </summary>
     public const string LiteralLiverTumorStagingDescriptor = "258272006";
+
+    /// <summary>
+    /// Literal for code: NONELiverTumorStagingDescriptor
+    /// </summary>
+    public const string LiteralNONELiverTumorStagingDescriptor = "http://snomed.info/sct#258272006";
 
     /// <summary>
     /// Literal for code: LiverTumorSizeIndex
@@ -9726,9 +10416,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLiverTumorSizeIndex = "258273001";
 
     /// <summary>
+    /// Literal for code: NONELiverTumorSizeIndex
+    /// </summary>
+    public const string LiteralNONELiverTumorSizeIndex = "http://snomed.info/sct#258273001";
+
+    /// <summary>
     /// Literal for code: TimingOfLiverTumorStaging
     /// </summary>
     public const string LiteralTimingOfLiverTumorStaging = "258276009";
+
+    /// <summary>
+    /// Literal for code: NONETimingOfLiverTumorStaging
+    /// </summary>
+    public const string LiteralNONETimingOfLiverTumorStaging = "http://snomed.info/sct#258276009";
 
     /// <summary>
     /// Literal for code: LymphomaStagingSymptomStatusValues
@@ -9736,9 +10436,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLymphomaStagingSymptomStatusValues = "258279002";
 
     /// <summary>
+    /// Literal for code: NONELymphomaStagingSymptomStatusValues
+    /// </summary>
+    public const string LiteralNONELymphomaStagingSymptomStatusValues = "http://snomed.info/sct#258279002";
+
+    /// <summary>
     /// Literal for code: LymphomatousExtranodalInvolvementStatusValues
     /// </summary>
     public const string LiteralLymphomatousExtranodalInvolvementStatusValues = "258280004";
+
+    /// <summary>
+    /// Literal for code: NONELymphomatousExtranodalInvolvementStatusValues
+    /// </summary>
+    public const string LiteralNONELymphomatousExtranodalInvolvementStatusValues = "http://snomed.info/sct#258280004";
 
     /// <summary>
     /// Literal for code: SpleenPositiveMinimalLymphomatousExtranodalInvolvement
@@ -9746,9 +10456,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpleenPositiveMinimalLymphomatousExtranodalInvolvement = "258281000";
 
     /// <summary>
+    /// Literal for code: NONESpleenPositiveMinimalLymphomatousExtranodalInvolvement
+    /// </summary>
+    public const string LiteralNONESpleenPositiveMinimalLymphomatousExtranodalInvolvement = "http://snomed.info/sct#258281000";
+
+    /// <summary>
     /// Literal for code: SpleenPositiveExtensiveLymphomatousExtranodalInvolvement
     /// </summary>
     public const string LiteralSpleenPositiveExtensiveLymphomatousExtranodalInvolvement = "258282007";
+
+    /// <summary>
+    /// Literal for code: NONESpleenPositiveExtensiveLymphomatousExtranodalInvolvement
+    /// </summary>
+    public const string LiteralNONESpleenPositiveExtensiveLymphomatousExtranodalInvolvement = "http://snomed.info/sct#258282007";
 
     /// <summary>
     /// Literal for code: LymphomatousNodalInvolvement
@@ -9756,9 +10476,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLymphomatousNodalInvolvement = "258283002";
 
     /// <summary>
+    /// Literal for code: NONELymphomatousNodalInvolvement
+    /// </summary>
+    public const string LiteralNONELymphomatousNodalInvolvement = "http://snomed.info/sct#258283002";
+
+    /// <summary>
     /// Literal for code: StannardsRetinoblastomaStages
     /// </summary>
     public const string LiteralStannardsRetinoblastomaStages = "258284008";
+
+    /// <summary>
+    /// Literal for code: NONEStannardsRetinoblastomaStages
+    /// </summary>
+    public const string LiteralNONEStannardsRetinoblastomaStages = "http://snomed.info/sct#258284008";
 
     /// <summary>
     /// Literal for code: OpticNerveTumorInvasionStatusInRetinoblastomaStaging
@@ -9766,9 +10496,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpticNerveTumorInvasionStatusInRetinoblastomaStaging = "258285009";
 
     /// <summary>
+    /// Literal for code: NONEOpticNerveTumorInvasionStatusInRetinoblastomaStaging
+    /// </summary>
+    public const string LiteralNONEOpticNerveTumorInvasionStatusInRetinoblastomaStaging = "http://snomed.info/sct#258285009";
+
+    /// <summary>
     /// Literal for code: ChoroidalTumorInvasionStatusInRetinoblastomaStaging
     /// </summary>
     public const string LiteralChoroidalTumorInvasionStatusInRetinoblastomaStaging = "258286005";
+
+    /// <summary>
+    /// Literal for code: NONEChoroidalTumorInvasionStatusInRetinoblastomaStaging
+    /// </summary>
+    public const string LiteralNONEChoroidalTumorInvasionStatusInRetinoblastomaStaging = "http://snomed.info/sct#258286005";
 
     /// <summary>
     /// Literal for code: LymphNodalTumorInvasionStatusInRetinoblastomaStaging
@@ -9776,9 +10516,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLymphNodalTumorInvasionStatusInRetinoblastomaStaging = "258292004";
 
     /// <summary>
+    /// Literal for code: NONELymphNodalTumorInvasionStatusInRetinoblastomaStaging
+    /// </summary>
+    public const string LiteralNONELymphNodalTumorInvasionStatusInRetinoblastomaStaging = "http://snomed.info/sct#258292004";
+
+    /// <summary>
     /// Literal for code: BrainTumorInvasionStatusInRetinoblastomaStaging
     /// </summary>
     public const string LiteralBrainTumorInvasionStatusInRetinoblastomaStaging = "258293009";
+
+    /// <summary>
+    /// Literal for code: NONEBrainTumorInvasionStatusInRetinoblastomaStaging
+    /// </summary>
+    public const string LiteralNONEBrainTumorInvasionStatusInRetinoblastomaStaging = "http://snomed.info/sct#258293009";
 
     /// <summary>
     /// Literal for code: LangerhansCellHistiocytosisStage
@@ -9786,9 +10536,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLangerhansCellHistiocytosisStage = "258301001";
 
     /// <summary>
+    /// Literal for code: NONELangerhansCellHistiocytosisStage
+    /// </summary>
+    public const string LiteralNONELangerhansCellHistiocytosisStage = "http://snomed.info/sct#258301001";
+
+    /// <summary>
     /// Literal for code: NumberOfOrganSystemsInvolvedWithLangerhansCellHistiocytosis
     /// </summary>
     public const string LiteralNumberOfOrganSystemsInvolvedWithLangerhansCellHistiocytosis = "258302008";
+
+    /// <summary>
+    /// Literal for code: NONENumberOfOrganSystemsInvolvedWithLangerhansCellHistiocytosis
+    /// </summary>
+    public const string LiteralNONENumberOfOrganSystemsInvolvedWithLangerhansCellHistiocytosis = "http://snomed.info/sct#258302008";
 
     /// <summary>
     /// Literal for code: SingleSystemInvolvement
@@ -9796,9 +10556,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSingleSystemInvolvement = "258303003";
 
     /// <summary>
+    /// Literal for code: NONESingleSystemInvolvement
+    /// </summary>
+    public const string LiteralNONESingleSystemInvolvement = "http://snomed.info/sct#258303003";
+
+    /// <summary>
     /// Literal for code: MultisystemInvolvement
     /// </summary>
     public const string LiteralMultisystemInvolvement = "258304009";
+
+    /// <summary>
+    /// Literal for code: NONEMultisystemInvolvement
+    /// </summary>
+    public const string LiteralNONEMultisystemInvolvement = "http://snomed.info/sct#258304009";
 
     /// <summary>
     /// Literal for code: OrganFailureDueToLangerhansCellHistiocytosis
@@ -9806,9 +10576,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOrganFailureDueToLangerhansCellHistiocytosis = "258305005";
 
     /// <summary>
+    /// Literal for code: NONEOrganFailureDueToLangerhansCellHistiocytosis
+    /// </summary>
+    public const string LiteralNONEOrganFailureDueToLangerhansCellHistiocytosis = "http://snomed.info/sct#258305005";
+
+    /// <summary>
     /// Literal for code: VitalOrganFailure
     /// </summary>
     public const string LiteralVitalOrganFailure = "258306006";
+
+    /// <summary>
+    /// Literal for code: NONEVitalOrganFailure
+    /// </summary>
+    public const string LiteralNONEVitalOrganFailure = "http://snomed.info/sct#258306006";
 
     /// <summary>
     /// Literal for code: NonVitalOrganFailure
@@ -9816,9 +10596,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonVitalOrganFailure = "258307002";
 
     /// <summary>
+    /// Literal for code: NONENonVitalOrganFailure
+    /// </summary>
+    public const string LiteralNONENonVitalOrganFailure = "http://snomed.info/sct#258307002";
+
+    /// <summary>
     /// Literal for code: GenericLymphNodeTumorInvasionStatusStage
     /// </summary>
     public const string LiteralGenericLymphNodeTumorInvasionStatusStage = "258309004";
+
+    /// <summary>
+    /// Literal for code: NONEGenericLymphNodeTumorInvasionStatusStage
+    /// </summary>
+    public const string LiteralNONEGenericLymphNodeTumorInvasionStatusStage = "http://snomed.info/sct#258309004";
 
     /// <summary>
     /// Literal for code: NeckNodeTumorInvolvement
@@ -9826,9 +10616,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeckNodeTumorInvolvement = "258310009";
 
     /// <summary>
+    /// Literal for code: NONENeckNodeTumorInvolvement
+    /// </summary>
+    public const string LiteralNONENeckNodeTumorInvolvement = "http://snomed.info/sct#258310009";
+
+    /// <summary>
     /// Literal for code: MPlus
     /// </summary>
     public const string LiteralMPlus = "258311008";
+
+    /// <summary>
+    /// Literal for code: NONEMPlus
+    /// </summary>
+    public const string LiteralNONEMPlus = "http://snomed.info/sct#258311008";
 
     /// <summary>
     /// Literal for code: AxillaryLymphNodeLevel
@@ -9836,9 +10636,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAxillaryLymphNodeLevel = "258312001";
 
     /// <summary>
+    /// Literal for code: NONEAxillaryLymphNodeLevel
+    /// </summary>
+    public const string LiteralNONEAxillaryLymphNodeLevel = "http://snomed.info/sct#258312001";
+
+    /// <summary>
     /// Literal for code: LevelI
     /// </summary>
     public const string LiteralLevelI = "258313006";
+
+    /// <summary>
+    /// Literal for code: NONELevelI
+    /// </summary>
+    public const string LiteralNONELevelI = "http://snomed.info/sct#258313006";
 
     /// <summary>
     /// Literal for code: Midaxilla
@@ -9846,9 +10656,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMidaxilla = "258314000";
 
     /// <summary>
+    /// Literal for code: NONEMidaxilla
+    /// </summary>
+    public const string LiteralNONEMidaxilla = "http://snomed.info/sct#258314000";
+
+    /// <summary>
     /// Literal for code: LevelIII
     /// </summary>
     public const string LiteralLevelIII = "258315004";
+
+    /// <summary>
+    /// Literal for code: NONELevelIII
+    /// </summary>
+    public const string LiteralNONELevelIII = "http://snomed.info/sct#258315004";
 
     /// <summary>
     /// Literal for code: RetroperitonealLymphNodeTumorInvasionStatus
@@ -9856,9 +10676,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRetroperitonealLymphNodeTumorInvasionStatus = "258316003";
 
     /// <summary>
+    /// Literal for code: NONERetroperitonealLymphNodeTumorInvasionStatus
+    /// </summary>
+    public const string LiteralNONERetroperitonealLymphNodeTumorInvasionStatus = "http://snomed.info/sct#258316003";
+
+    /// <summary>
     /// Literal for code: GenericAnatomicalSiteTumorInvasionStatus
     /// </summary>
     public const string LiteralGenericAnatomicalSiteTumorInvasionStatus = "258318002";
+
+    /// <summary>
+    /// Literal for code: NONEGenericAnatomicalSiteTumorInvasionStatus
+    /// </summary>
+    public const string LiteralNONEGenericAnatomicalSiteTumorInvasionStatus = "http://snomed.info/sct#258318002";
 
     /// <summary>
     /// Literal for code: LungInvolvementStages
@@ -9866,9 +10696,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLungInvolvementStages = "258319005";
 
     /// <summary>
+    /// Literal for code: NONELungInvolvementStages
+    /// </summary>
+    public const string LiteralNONELungInvolvementStages = "http://snomed.info/sct#258319005";
+
+    /// <summary>
     /// Literal for code: LungStageL2
     /// </summary>
     public const string LiteralLungStageL2 = "258320004";
+
+    /// <summary>
+    /// Literal for code: NONELungStageL2
+    /// </summary>
+    public const string LiteralNONELungStageL2 = "http://snomed.info/sct#258320004";
 
     /// <summary>
     /// Literal for code: LungStageL3
@@ -9876,9 +10716,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLungStageL3 = "258321000";
 
     /// <summary>
+    /// Literal for code: NONELungStageL3
+    /// </summary>
+    public const string LiteralNONELungStageL3 = "http://snomed.info/sct#258321000";
+
+    /// <summary>
     /// Literal for code: HPlus
     /// </summary>
     public const string LiteralHPlus = "258322007";
+
+    /// <summary>
+    /// Literal for code: NONEHPlus
+    /// </summary>
+    public const string LiteralNONEHPlus = "http://snomed.info/sct#258322007";
 
     /// <summary>
     /// Literal for code: LiverSectors
@@ -9886,9 +10736,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLiverSectors = "258323002";
 
     /// <summary>
+    /// Literal for code: NONELiverSectors
+    /// </summary>
+    public const string LiteralNONELiverSectors = "http://snomed.info/sct#258323002";
+
+    /// <summary>
     /// Literal for code: LiverSector1
     /// </summary>
     public const string LiteralLiverSector1 = "258324008";
+
+    /// <summary>
+    /// Literal for code: NONELiverSector1
+    /// </summary>
+    public const string LiteralNONELiverSector1 = "http://snomed.info/sct#258324008";
 
     /// <summary>
     /// Literal for code: LiverSector2
@@ -9896,9 +10756,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLiverSector2 = "258325009";
 
     /// <summary>
+    /// Literal for code: NONELiverSector2
+    /// </summary>
+    public const string LiteralNONELiverSector2 = "http://snomed.info/sct#258325009";
+
+    /// <summary>
     /// Literal for code: LiverSector3
     /// </summary>
     public const string LiteralLiverSector3 = "258326005";
+
+    /// <summary>
+    /// Literal for code: NONELiverSector3
+    /// </summary>
+    public const string LiteralNONELiverSector3 = "http://snomed.info/sct#258326005";
 
     /// <summary>
     /// Literal for code: LiverSector4
@@ -9906,9 +10776,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLiverSector4 = "258327001";
 
     /// <summary>
+    /// Literal for code: NONELiverSector4
+    /// </summary>
+    public const string LiteralNONELiverSector4 = "http://snomed.info/sct#258327001";
+
+    /// <summary>
     /// Literal for code: MarkersForLiverTumorStaging
     /// </summary>
     public const string LiteralMarkersForLiverTumorStaging = "258328006";
+
+    /// <summary>
+    /// Literal for code: NONEMarkersForLiverTumorStaging
+    /// </summary>
+    public const string LiteralNONEMarkersForLiverTumorStaging = "http://snomed.info/sct#258328006";
 
     /// <summary>
     /// Literal for code: ClinicalStagingQualifierValue
@@ -9916,9 +10796,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalStagingQualifierValue = "260998006";
 
     /// <summary>
+    /// Literal for code: NONEClinicalStagingQualifierValue
+    /// </summary>
+    public const string LiteralNONEClinicalStagingQualifierValue = "http://snomed.info/sct#260998006";
+
+    /// <summary>
     /// Literal for code: PathologicalStagingQualifierValue
     /// </summary>
     public const string LiteralPathologicalStagingQualifierValue = "261023001";
+
+    /// <summary>
+    /// Literal for code: NONEPathologicalStagingQualifierValue
+    /// </summary>
+    public const string LiteralNONEPathologicalStagingQualifierValue = "http://snomed.info/sct#261023001";
 
     /// <summary>
     /// Literal for code: TumorStageTa
@@ -9926,9 +10816,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTumorStageTa = "261663004";
 
     /// <summary>
+    /// Literal for code: NONETumorStageTa
+    /// </summary>
+    public const string LiteralNONETumorStageTa = "http://snomed.info/sct#261663004";
+
+    /// <summary>
     /// Literal for code: CentralNervousSystemCNSMetastases
     /// </summary>
     public const string LiteralCentralNervousSystemCNSMetastases = "261731003";
+
+    /// <summary>
+    /// Literal for code: NONECentralNervousSystemCNSMetastases
+    /// </summary>
+    public const string LiteralNONECentralNervousSystemCNSMetastases = "http://snomed.info/sct#261731003";
 
     /// <summary>
     /// Literal for code: ExtraCentralNervousSystemMetastases
@@ -9936,9 +10836,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExtraCentralNervousSystemMetastases = "261789009";
 
     /// <summary>
+    /// Literal for code: NONEExtraCentralNervousSystemMetastases
+    /// </summary>
+    public const string LiteralNONEExtraCentralNervousSystemMetastases = "http://snomed.info/sct#261789009";
+
+    /// <summary>
     /// Literal for code: NoMetastases
     /// </summary>
     public const string LiteralNoMetastases = "261985008";
+
+    /// <summary>
+    /// Literal for code: NONENoMetastases
+    /// </summary>
+    public const string LiteralNONENoMetastases = "http://snomed.info/sct#261985008";
 
     /// <summary>
     /// Literal for code: BorgScale
@@ -9946,9 +10856,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBorgScale = "263487004";
 
     /// <summary>
+    /// Literal for code: NONEBorgScale
+    /// </summary>
+    public const string LiteralNONEBorgScale = "http://snomed.info/sct#263487004";
+
+    /// <summary>
     /// Literal for code: EndometriosisClassificationOfAmericanFertilitySociety
     /// </summary>
     public const string LiteralEndometriosisClassificationOfAmericanFertilitySociety = "263638005";
+
+    /// <summary>
+    /// Literal for code: NONEEndometriosisClassificationOfAmericanFertilitySociety
+    /// </summary>
+    public const string LiteralNONEEndometriosisClassificationOfAmericanFertilitySociety = "http://snomed.info/sct#263638005";
 
     /// <summary>
     /// Literal for code: AssessmentScales
@@ -9956,9 +10876,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAssessmentScales = "273249006";
 
     /// <summary>
+    /// Literal for code: NONEAssessmentScales
+    /// </summary>
+    public const string LiteralNONEAssessmentScales = "http://snomed.info/sct#273249006";
+
+    /// <summary>
     /// Literal for code: AachenAphasiaTest
     /// </summary>
     public const string LiteralAachenAphasiaTest = "273251005";
+
+    /// <summary>
+    /// Literal for code: NONEAachenAphasiaTest
+    /// </summary>
+    public const string LiteralNONEAachenAphasiaTest = "http://snomed.info/sct#273251005";
 
     /// <summary>
     /// Literal for code: ABCChart
@@ -9966,9 +10896,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralABCChart = "273252003";
 
     /// <summary>
+    /// Literal for code: NONEABCChart
+    /// </summary>
+    public const string LiteralNONEABCChart = "http://snomed.info/sct#273252003";
+
+    /// <summary>
     /// Literal for code: ABCTestForMovement
     /// </summary>
     public const string LiteralABCTestForMovement = "273253008";
+
+    /// <summary>
+    /// Literal for code: NONEABCTestForMovement
+    /// </summary>
+    public const string LiteralNONEABCTestForMovement = "http://snomed.info/sct#273253008";
 
     /// <summary>
     /// Literal for code: AISAbbreviatedInjuryScale
@@ -9976,9 +10916,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAISAbbreviatedInjuryScale = "273254002";
 
     /// <summary>
+    /// Literal for code: NONEAISAbbreviatedInjuryScale
+    /// </summary>
+    public const string LiteralNONEAISAbbreviatedInjuryScale = "http://snomed.info/sct#273254002";
+
+    /// <summary>
     /// Literal for code: AbbreviatedMentalTest
     /// </summary>
     public const string LiteralAbbreviatedMentalTest = "273255001";
+
+    /// <summary>
+    /// Literal for code: NONEAbbreviatedMentalTest
+    /// </summary>
+    public const string LiteralNONEAbbreviatedMentalTest = "http://snomed.info/sct#273255001";
 
     /// <summary>
     /// Literal for code: AIMSAbnormalInvoluntaryMovementScale
@@ -9986,9 +10936,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAIMSAbnormalInvoluntaryMovementScale = "273256000";
 
     /// <summary>
+    /// Literal for code: NONEAIMSAbnormalInvoluntaryMovementScale
+    /// </summary>
+    public const string LiteralNONEAIMSAbnormalInvoluntaryMovementScale = "http://snomed.info/sct#273256000";
+
+    /// <summary>
     /// Literal for code: AcutePhysiologyAndChronicHealthEvaluation
     /// </summary>
     public const string LiteralAcutePhysiologyAndChronicHealthEvaluation = "273257009";
+
+    /// <summary>
+    /// Literal for code: NONEAcutePhysiologyAndChronicHealthEvaluation
+    /// </summary>
+    public const string LiteralNONEAcutePhysiologyAndChronicHealthEvaluation = "http://snomed.info/sct#273257009";
 
     /// <summary>
     /// Literal for code: APACHEIIAcutePhysiologyAndChronicHealthEvaluationII
@@ -9996,9 +10956,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAPACHEIIAcutePhysiologyAndChronicHealthEvaluationII = "273258004";
 
     /// <summary>
+    /// Literal for code: NONEAPACHEIIAcutePhysiologyAndChronicHealthEvaluationII
+    /// </summary>
+    public const string LiteralNONEAPACHEIIAcutePhysiologyAndChronicHealthEvaluationII = "http://snomed.info/sct#273258004";
+
+    /// <summary>
     /// Literal for code: AcutePhysiologyAndChronicHealthEvaluationIII
     /// </summary>
     public const string LiteralAcutePhysiologyAndChronicHealthEvaluationIII = "273259007";
+
+    /// <summary>
+    /// Literal for code: NONEAcutePhysiologyAndChronicHealthEvaluationIII
+    /// </summary>
+    public const string LiteralNONEAcutePhysiologyAndChronicHealthEvaluationIII = "http://snomed.info/sct#273259007";
 
     /// <summary>
     /// Literal for code: AddictionSeverityIndex
@@ -10006,9 +10976,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAddictionSeverityIndex = "273260002";
 
     /// <summary>
+    /// Literal for code: NONEAddictionSeverityIndex
+    /// </summary>
+    public const string LiteralNONEAddictionSeverityIndex = "http://snomed.info/sct#273260002";
+
+    /// <summary>
     /// Literal for code: AdultPersonalityRatingSchedule
     /// </summary>
     public const string LiteralAdultPersonalityRatingSchedule = "273261003";
+
+    /// <summary>
+    /// Literal for code: NONEAdultPersonalityRatingSchedule
+    /// </summary>
+    public const string LiteralNONEAdultPersonalityRatingSchedule = "http://snomed.info/sct#273261003";
 
     /// <summary>
     /// Literal for code: ABSAffectBalanceScale
@@ -10016,9 +10996,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralABSAffectBalanceScale = "273262005";
 
     /// <summary>
+    /// Literal for code: NONEABSAffectBalanceScale
+    /// </summary>
+    public const string LiteralNONEABSAffectBalanceScale = "http://snomed.info/sct#273262005";
+
+    /// <summary>
     /// Literal for code: AcquiredImmunodeficiencySyndromeAIDSRiskBehaviorKnowledgeTest
     /// </summary>
     public const string LiteralAcquiredImmunodeficiencySyndromeAIDSRiskBehaviorKnowledgeTest = "273263000";
+
+    /// <summary>
+    /// Literal for code: NONEAcquiredImmunodeficiencySyndromeAIDSRiskBehaviorKnowledgeTest
+    /// </summary>
+    public const string LiteralNONEAcquiredImmunodeficiencySyndromeAIDSRiskBehaviorKnowledgeTest = "http://snomed.info/sct#273263000";
 
     /// <summary>
     /// Literal for code: ADSAlcoholDependenceScale
@@ -10026,9 +11016,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralADSAlcoholDependenceScale = "273264006";
 
     /// <summary>
+    /// Literal for code: NONEADSAlcoholDependenceScale
+    /// </summary>
+    public const string LiteralNONEADSAlcoholDependenceScale = "http://snomed.info/sct#273264006";
+
+    /// <summary>
     /// Literal for code: AlcoholUseDisordersIdentificationTest
     /// </summary>
     public const string LiteralAlcoholUseDisordersIdentificationTest = "273265007";
+
+    /// <summary>
+    /// Literal for code: NONEAlcoholUseDisordersIdentificationTest
+    /// </summary>
+    public const string LiteralNONEAlcoholUseDisordersIdentificationTest = "http://snomed.info/sct#273265007";
 
     /// <summary>
     /// Literal for code: AlcoholUseInventory
@@ -10036,9 +11036,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlcoholUseInventory = "273266008";
 
     /// <summary>
+    /// Literal for code: NONEAlcoholUseInventory
+    /// </summary>
+    public const string LiteralNONEAlcoholUseInventory = "http://snomed.info/sct#273266008";
+
+    /// <summary>
     /// Literal for code: AllenCognitiveLevelScreeningTool
     /// </summary>
     public const string LiteralAllenCognitiveLevelScreeningTool = "273267004";
+
+    /// <summary>
+    /// Literal for code: NONEAllenCognitiveLevelScreeningTool
+    /// </summary>
+    public const string LiteralNONEAllenCognitiveLevelScreeningTool = "http://snomed.info/sct#273267004";
 
     /// <summary>
     /// Literal for code: AllenCognitivePerformanceTest
@@ -10046,9 +11056,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAllenCognitivePerformanceTest = "273268009";
 
     /// <summary>
+    /// Literal for code: NONEAllenCognitivePerformanceTest
+    /// </summary>
+    public const string LiteralNONEAllenCognitivePerformanceTest = "http://snomed.info/sct#273268009";
+
+    /// <summary>
     /// Literal for code: AlzheimerDiseaseAssessmentScale
     /// </summary>
     public const string LiteralAlzheimerDiseaseAssessmentScale = "273269001";
+
+    /// <summary>
+    /// Literal for code: NONEAlzheimerDiseaseAssessmentScale
+    /// </summary>
+    public const string LiteralNONEAlzheimerDiseaseAssessmentScale = "http://snomed.info/sct#273269001";
 
     /// <summary>
     /// Literal for code: AmericanSocietyOfAnesthesiologistsPhysicalStatusClassification
@@ -10056,9 +11076,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAmericanSocietyOfAnesthesiologistsPhysicalStatusClassification = "273270000";
 
     /// <summary>
+    /// Literal for code: NONEAmericanSocietyOfAnesthesiologistsPhysicalStatusClassification
+    /// </summary>
+    public const string LiteralNONEAmericanSocietyOfAnesthesiologistsPhysicalStatusClassification = "http://snomed.info/sct#273270000";
+
+    /// <summary>
     /// Literal for code: AmsterdamNijmegenEverydayLanguageTest
     /// </summary>
     public const string LiteralAmsterdamNijmegenEverydayLanguageTest = "273271001";
+
+    /// <summary>
+    /// Literal for code: NONEAmsterdamNijmegenEverydayLanguageTest
+    /// </summary>
+    public const string LiteralNONEAmsterdamNijmegenEverydayLanguageTest = "http://snomed.info/sct#273271001";
 
     /// <summary>
     /// Literal for code: AnomalousSentenceRepetitionTestWeeks
@@ -10066,9 +11096,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnomalousSentenceRepetitionTestWeeks = "273272008";
 
     /// <summary>
+    /// Literal for code: NONEAnomalousSentenceRepetitionTestWeeks
+    /// </summary>
+    public const string LiteralNONEAnomalousSentenceRepetitionTestWeeks = "http://snomed.info/sct#273272008";
+
+    /// <summary>
     /// Literal for code: AnomalousSentenceTestKopelman
     /// </summary>
     public const string LiteralAnomalousSentenceTestKopelman = "273273003";
+
+    /// <summary>
+    /// Literal for code: NONEAnomalousSentenceTestKopelman
+    /// </summary>
+    public const string LiteralNONEAnomalousSentenceTestKopelman = "http://snomed.info/sct#273273003";
 
     /// <summary>
     /// Literal for code: AnorexicAttitudesQuestionnaire
@@ -10076,9 +11116,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnorexicAttitudesQuestionnaire = "273274009";
 
     /// <summary>
+    /// Literal for code: NONEAnorexicAttitudesQuestionnaire
+    /// </summary>
+    public const string LiteralNONEAnorexicAttitudesQuestionnaire = "http://snomed.info/sct#273274009";
+
+    /// <summary>
     /// Literal for code: ABSAnorexicBehaviorScales
     /// </summary>
     public const string LiteralABSAnorexicBehaviorScales = "273275005";
+
+    /// <summary>
+    /// Literal for code: NONEABSAnorexicBehaviorScales
+    /// </summary>
+    public const string LiteralNONEABSAnorexicBehaviorScales = "http://snomed.info/sct#273275005";
 
     /// <summary>
     /// Literal for code: AphasiaLanguagePerformanceScales
@@ -10086,9 +11136,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAphasiaLanguagePerformanceScales = "273276006";
 
     /// <summary>
+    /// Literal for code: NONEAphasiaLanguagePerformanceScales
+    /// </summary>
+    public const string LiteralNONEAphasiaLanguagePerformanceScales = "http://snomed.info/sct#273276006";
+
+    /// <summary>
     /// Literal for code: WhurrAphasiaScreeningTest
     /// </summary>
     public const string LiteralWhurrAphasiaScreeningTest = "273277002";
+
+    /// <summary>
+    /// Literal for code: NONEWhurrAphasiaScreeningTest
+    /// </summary>
+    public const string LiteralNONEWhurrAphasiaScreeningTest = "http://snomed.info/sct#273277002";
 
     /// <summary>
     /// Literal for code: ApraxiaBatteryForAdults
@@ -10096,9 +11156,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralApraxiaBatteryForAdults = "273279004";
 
     /// <summary>
+    /// Literal for code: NONEApraxiaBatteryForAdults
+    /// </summary>
+    public const string LiteralNONEApraxiaBatteryForAdults = "http://snomed.info/sct#273279004";
+
+    /// <summary>
     /// Literal for code: ArizonaBatteryForCommunicationDisordersOfDementia
     /// </summary>
     public const string LiteralArizonaBatteryForCommunicationDisordersOfDementia = "273280001";
+
+    /// <summary>
+    /// Literal for code: NONEArizonaBatteryForCommunicationDisordersOfDementia
+    /// </summary>
+    public const string LiteralNONEArizonaBatteryForCommunicationDisordersOfDementia = "http://snomed.info/sct#273280001";
 
     /// <summary>
     /// Literal for code: AIMSIArthritisImpactMeasurementScaleI
@@ -10106,9 +11176,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAIMSIArthritisImpactMeasurementScaleI = "273281002";
 
     /// <summary>
+    /// Literal for code: NONEAIMSIArthritisImpactMeasurementScaleI
+    /// </summary>
+    public const string LiteralNONEAIMSIArthritisImpactMeasurementScaleI = "http://snomed.info/sct#273281002";
+
+    /// <summary>
     /// Literal for code: ArthritisImpactMeasurementScaleII
     /// </summary>
     public const string LiteralArthritisImpactMeasurementScaleII = "273282009";
+
+    /// <summary>
+    /// Literal for code: NONEArthritisImpactMeasurementScaleII
+    /// </summary>
+    public const string LiteralNONEArthritisImpactMeasurementScaleII = "http://snomed.info/sct#273282009";
 
     /// <summary>
     /// Literal for code: ASEPSISScoreForWoundInfection
@@ -10116,9 +11196,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralASEPSISScoreForWoundInfection = "273283004";
 
     /// <summary>
+    /// Literal for code: NONEASEPSISScoreForWoundInfection
+    /// </summary>
+    public const string LiteralNONEASEPSISScoreForWoundInfection = "http://snomed.info/sct#273283004";
+
+    /// <summary>
     /// Literal for code: AshworthAssessmentScale
     /// </summary>
     public const string LiteralAshworthAssessmentScale = "273284005";
+
+    /// <summary>
+    /// Literal for code: NONEAshworthAssessmentScale
+    /// </summary>
+    public const string LiteralNONEAshworthAssessmentScale = "http://snomed.info/sct#273284005";
 
     /// <summary>
     /// Literal for code: AssessingReadingDifficulties
@@ -10126,9 +11216,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAssessingReadingDifficulties = "273285006";
 
     /// <summary>
+    /// Literal for code: NONEAssessingReadingDifficulties
+    /// </summary>
+    public const string LiteralNONEAssessingReadingDifficulties = "http://snomed.info/sct#273285006";
+
+    /// <summary>
     /// Literal for code: AssessmentAndTherapyProgramForDysfluentChildren
     /// </summary>
     public const string LiteralAssessmentAndTherapyProgramForDysfluentChildren = "273286007";
+
+    /// <summary>
+    /// Literal for code: NONEAssessmentAndTherapyProgramForDysfluentChildren
+    /// </summary>
+    public const string LiteralNONEAssessmentAndTherapyProgramForDysfluentChildren = "http://snomed.info/sct#273286007";
 
     /// <summary>
     /// Literal for code: AssessmentOfIntelligibility
@@ -10136,9 +11236,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAssessmentOfIntelligibility = "273287003";
 
     /// <summary>
+    /// Literal for code: NONEAssessmentOfIntelligibility
+    /// </summary>
+    public const string LiteralNONEAssessmentOfIntelligibility = "http://snomed.info/sct#273287003";
+
+    /// <summary>
     /// Literal for code: AssessmentOfMotorAndProcessSkills
     /// </summary>
     public const string LiteralAssessmentOfMotorAndProcessSkills = "273288008";
+
+    /// <summary>
+    /// Literal for code: NONEAssessmentOfMotorAndProcessSkills
+    /// </summary>
+    public const string LiteralNONEAssessmentOfMotorAndProcessSkills = "http://snomed.info/sct#273288008";
 
     /// <summary>
     /// Literal for code: AOFAssessmentOfOccupationalFunction
@@ -10146,9 +11256,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAOFAssessmentOfOccupationalFunction = "273289000";
 
     /// <summary>
+    /// Literal for code: NONEAOFAssessmentOfOccupationalFunction
+    /// </summary>
+    public const string LiteralNONEAOFAssessmentOfOccupationalFunction = "http://snomed.info/sct#273289000";
+
+    /// <summary>
     /// Literal for code: AssessmentProtocolOfPragmaticLinguisticSkills
     /// </summary>
     public const string LiteralAssessmentProtocolOfPragmaticLinguisticSkills = "273290009";
+
+    /// <summary>
+    /// Literal for code: NONEAssessmentProtocolOfPragmaticLinguisticSkills
+    /// </summary>
+    public const string LiteralNONEAssessmentProtocolOfPragmaticLinguisticSkills = "http://snomed.info/sct#273290009";
 
     /// <summary>
     /// Literal for code: AstonIndex
@@ -10156,9 +11276,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAstonIndex = "273291008";
 
     /// <summary>
+    /// Literal for code: NONEAstonIndex
+    /// </summary>
+    public const string LiteralNONEAstonIndex = "http://snomed.info/sct#273291008";
+
+    /// <summary>
     /// Literal for code: AttributionalStyleQuestionnaire
     /// </summary>
     public const string LiteralAttributionalStyleQuestionnaire = "273292001";
+
+    /// <summary>
+    /// Literal for code: NONEAttributionalStyleQuestionnaire
+    /// </summary>
+    public const string LiteralNONEAttributionalStyleQuestionnaire = "http://snomed.info/sct#273292001";
 
     /// <summary>
     /// Literal for code: AuditoryComprehensionTestForSentences
@@ -10166,9 +11296,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAuditoryComprehensionTestForSentences = "273293006";
 
     /// <summary>
+    /// Literal for code: NONEAuditoryComprehensionTestForSentences
+    /// </summary>
+    public const string LiteralNONEAuditoryComprehensionTestForSentences = "http://snomed.info/sct#273293006";
+
+    /// <summary>
     /// Literal for code: AugmentativeCommunicationProfile
     /// </summary>
     public const string LiteralAugmentativeCommunicationProfile = "273294000";
+
+    /// <summary>
+    /// Literal for code: NONEAugmentativeCommunicationProfile
+    /// </summary>
+    public const string LiteralNONEAugmentativeCommunicationProfile = "http://snomed.info/sct#273294000";
 
     /// <summary>
     /// Literal for code: AutisticFeaturesChecklist
@@ -10176,9 +11316,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAutisticFeaturesChecklist = "273295004";
 
     /// <summary>
+    /// Literal for code: NONEAutisticFeaturesChecklist
+    /// </summary>
+    public const string LiteralNONEAutisticFeaturesChecklist = "http://snomed.info/sct#273295004";
+
+    /// <summary>
     /// Literal for code: AutobiographicalMemoryInterview
     /// </summary>
     public const string LiteralAutobiographicalMemoryInterview = "273296003";
+
+    /// <summary>
+    /// Literal for code: NONEAutobiographicalMemoryInterview
+    /// </summary>
+    public const string LiteralNONEAutobiographicalMemoryInterview = "http://snomed.info/sct#273296003";
 
     /// <summary>
     /// Literal for code: BamfordKowalAndBenchNonPictureRelated
@@ -10186,9 +11336,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBamfordKowalAndBenchNonPictureRelated = "273298002";
 
     /// <summary>
+    /// Literal for code: NONEBamfordKowalAndBenchNonPictureRelated
+    /// </summary>
+    public const string LiteralNONEBamfordKowalAndBenchNonPictureRelated = "http://snomed.info/sct#273298002";
+
+    /// <summary>
     /// Literal for code: BKBPRBamfordKowalAndBenchPictureRelated
     /// </summary>
     public const string LiteralBKBPRBamfordKowalAndBenchPictureRelated = "273299005";
+
+    /// <summary>
+    /// Literal for code: NONEBKBPRBamfordKowalAndBenchPictureRelated
+    /// </summary>
+    public const string LiteralNONEBKBPRBamfordKowalAndBenchPictureRelated = "http://snomed.info/sct#273299005";
 
     /// <summary>
     /// Literal for code: BangorDyslexiaTest
@@ -10196,9 +11356,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBangorDyslexiaTest = "273300002";
 
     /// <summary>
+    /// Literal for code: NONEBangorDyslexiaTest
+    /// </summary>
+    public const string LiteralNONEBangorDyslexiaTest = "http://snomed.info/sct#273300002";
+
+    /// <summary>
     /// Literal for code: BanksonLanguageTest
     /// </summary>
     public const string LiteralBanksonLanguageTest = "273301003";
+
+    /// <summary>
+    /// Literal for code: NONEBanksonLanguageTest
+    /// </summary>
+    public const string LiteralNONEBanksonLanguageTest = "http://snomed.info/sct#273301003";
 
     /// <summary>
     /// Literal for code: BarthelIndex
@@ -10206,9 +11376,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBarthelIndex = "273302005";
 
     /// <summary>
+    /// Literal for code: NONEBarthelIndex
+    /// </summary>
+    public const string LiteralNONEBarthelIndex = "http://snomed.info/sct#273302005";
+
+    /// <summary>
     /// Literal for code: BayleyScaleOfInfantDevelopment
     /// </summary>
     public const string LiteralBayleyScaleOfInfantDevelopment = "273305007";
+
+    /// <summary>
+    /// Literal for code: NONEBayleyScaleOfInfantDevelopment
+    /// </summary>
+    public const string LiteralNONEBayleyScaleOfInfantDevelopment = "http://snomed.info/sct#273305007";
 
     /// <summary>
     /// Literal for code: BeckDepressionInventory
@@ -10216,9 +11396,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBeckDepressionInventory = "273306008";
 
     /// <summary>
+    /// Literal for code: NONEBeckDepressionInventory
+    /// </summary>
+    public const string LiteralNONEBeckDepressionInventory = "http://snomed.info/sct#273306008";
+
+    /// <summary>
     /// Literal for code: BeckAnxietyStandardizedRatingScale
     /// </summary>
     public const string LiteralBeckAnxietyStandardizedRatingScale = "273307004";
+
+    /// <summary>
+    /// Literal for code: NONEBeckAnxietyStandardizedRatingScale
+    /// </summary>
+    public const string LiteralNONEBeckAnxietyStandardizedRatingScale = "http://snomed.info/sct#273307004";
 
     /// <summary>
     /// Literal for code: BESTBedsideEvaluationAndScreeningTestOfAphasia
@@ -10226,9 +11416,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBESTBedsideEvaluationAndScreeningTestOfAphasia = "273308009";
 
     /// <summary>
+    /// Literal for code: NONEBESTBedsideEvaluationAndScreeningTestOfAphasia
+    /// </summary>
+    public const string LiteralNONEBESTBedsideEvaluationAndScreeningTestOfAphasia = "http://snomed.info/sct#273308009";
+
+    /// <summary>
     /// Literal for code: BeeryBuktenicaTestOfVisualMotorIntegration
     /// </summary>
     public const string LiteralBeeryBuktenicaTestOfVisualMotorIntegration = "273309001";
+
+    /// <summary>
+    /// Literal for code: NONEBeeryBuktenicaTestOfVisualMotorIntegration
+    /// </summary>
+    public const string LiteralNONEBeeryBuktenicaTestOfVisualMotorIntegration = "http://snomed.info/sct#273309001";
 
     /// <summary>
     /// Literal for code: BehaviorAndMoodDisturbanceScale
@@ -10236,9 +11436,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBehaviorAndMoodDisturbanceScale = "273310006";
 
     /// <summary>
+    /// Literal for code: NONEBehaviorAndMoodDisturbanceScale
+    /// </summary>
+    public const string LiteralNONEBehaviorAndMoodDisturbanceScale = "http://snomed.info/sct#273310006";
+
+    /// <summary>
     /// Literal for code: BehaviorAssessmentBattery
     /// </summary>
     public const string LiteralBehaviorAssessmentBattery = "273311005";
+
+    /// <summary>
+    /// Literal for code: NONEBehaviorAssessmentBattery
+    /// </summary>
+    public const string LiteralNONEBehaviorAssessmentBattery = "http://snomed.info/sct#273311005";
 
     /// <summary>
     /// Literal for code: BehaviorProblemChecklist
@@ -10246,9 +11456,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBehaviorProblemChecklist = "273312003";
 
     /// <summary>
+    /// Literal for code: NONEBehaviorProblemChecklist
+    /// </summary>
+    public const string LiteralNONEBehaviorProblemChecklist = "http://snomed.info/sct#273312003";
+
+    /// <summary>
     /// Literal for code: BehaviorRatingScale
     /// </summary>
     public const string LiteralBehaviorRatingScale = "273313008";
+
+    /// <summary>
+    /// Literal for code: NONEBehaviorRatingScale
+    /// </summary>
+    public const string LiteralNONEBehaviorRatingScale = "http://snomed.info/sct#273313008";
 
     /// <summary>
     /// Literal for code: BehavioralInattentionTest
@@ -10256,9 +11476,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBehavioralInattentionTest = "273314002";
 
     /// <summary>
+    /// Literal for code: NONEBehavioralInattentionTest
+    /// </summary>
+    public const string LiteralNONEBehavioralInattentionTest = "http://snomed.info/sct#273314002";
+
+    /// <summary>
     /// Literal for code: BOSBehavioralObservationSchedule
     /// </summary>
     public const string LiteralBOSBehavioralObservationSchedule = "273315001";
+
+    /// <summary>
+    /// Literal for code: NONEBOSBehavioralObservationSchedule
+    /// </summary>
+    public const string LiteralNONEBOSBehavioralObservationSchedule = "http://snomed.info/sct#273315001";
 
     /// <summary>
     /// Literal for code: BehavioralScreeningQuestionnaire
@@ -10266,9 +11496,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBehavioralScreeningQuestionnaire = "273316000";
 
     /// <summary>
+    /// Literal for code: NONEBehavioralScreeningQuestionnaire
+    /// </summary>
+    public const string LiteralNONEBehavioralScreeningQuestionnaire = "http://snomed.info/sct#273316000";
+
+    /// <summary>
     /// Literal for code: BennettTestOfManualDexterity
     /// </summary>
     public const string LiteralBennettTestOfManualDexterity = "273317009";
+
+    /// <summary>
+    /// Literal for code: NONEBennettTestOfManualDexterity
+    /// </summary>
+    public const string LiteralNONEBennettTestOfManualDexterity = "http://snomed.info/sct#273317009";
 
     /// <summary>
     /// Literal for code: BexleyMaudsleyAutomatedPsychologicalScreening
@@ -10276,9 +11516,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBexleyMaudsleyAutomatedPsychologicalScreening = "273319007";
 
     /// <summary>
+    /// Literal for code: NONEBexleyMaudsleyAutomatedPsychologicalScreening
+    /// </summary>
+    public const string LiteralNONEBexleyMaudsleyAutomatedPsychologicalScreening = "http://snomed.info/sct#273319007";
+
+    /// <summary>
     /// Literal for code: BingeEatingScale
     /// </summary>
     public const string LiteralBingeEatingScale = "273320001";
+
+    /// <summary>
+    /// Literal for code: NONEBingeEatingScale
+    /// </summary>
+    public const string LiteralNONEBingeEatingScale = "http://snomed.info/sct#273320001";
 
     /// <summary>
     /// Literal for code: BORBBirminghamObjectRecognitionBattery
@@ -10286,9 +11536,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBORBBirminghamObjectRecognitionBattery = "273321002";
 
     /// <summary>
+    /// Literal for code: NONEBORBBirminghamObjectRecognitionBattery
+    /// </summary>
+    public const string LiteralNONEBORBBirminghamObjectRecognitionBattery = "http://snomed.info/sct#273321002";
+
+    /// <summary>
     /// Literal for code: BlakelyDyspraxiaAssessment
     /// </summary>
     public const string LiteralBlakelyDyspraxiaAssessment = "273322009";
+
+    /// <summary>
+    /// Literal for code: NONEBlakelyDyspraxiaAssessment
+    /// </summary>
+    public const string LiteralNONEBlakelyDyspraxiaAssessment = "http://snomed.info/sct#273322009";
 
     /// <summary>
     /// Literal for code: BlessedDementiaRatingScale
@@ -10296,9 +11556,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBlessedDementiaRatingScale = "273323004";
 
     /// <summary>
+    /// Literal for code: NONEBlessedDementiaRatingScale
+    /// </summary>
+    public const string LiteralNONEBlessedDementiaRatingScale = "http://snomed.info/sct#273323004";
+
+    /// <summary>
     /// Literal for code: BlissymbolsTest
     /// </summary>
     public const string LiteralBlissymbolsTest = "273324005";
+
+    /// <summary>
+    /// Literal for code: NONEBlissymbolsTest
+    /// </summary>
+    public const string LiteralNONEBlissymbolsTest = "http://snomed.info/sct#273324005";
 
     /// <summary>
     /// Literal for code: BodyShapeQuestionnaire
@@ -10306,9 +11576,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBodyShapeQuestionnaire = "273325006";
 
     /// <summary>
+    /// Literal for code: NONEBodyShapeQuestionnaire
+    /// </summary>
+    public const string LiteralNONEBodyShapeQuestionnaire = "http://snomed.info/sct#273325006";
+
+    /// <summary>
     /// Literal for code: BoehmTestOfBasicConcepts
     /// </summary>
     public const string LiteralBoehmTestOfBasicConcepts = "273326007";
+
+    /// <summary>
+    /// Literal for code: NONEBoehmTestOfBasicConcepts
+    /// </summary>
+    public const string LiteralNONEBoehmTestOfBasicConcepts = "http://snomed.info/sct#273326007";
 
     /// <summary>
     /// Literal for code: BookerHeterotopicOssificationScore
@@ -10316,9 +11596,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBookerHeterotopicOssificationScore = "273327003";
 
     /// <summary>
+    /// Literal for code: NONEBookerHeterotopicOssificationScore
+    /// </summary>
+    public const string LiteralNONEBookerHeterotopicOssificationScore = "http://snomed.info/sct#273327003";
+
+    /// <summary>
     /// Literal for code: BostonAphasiaScale
     /// </summary>
     public const string LiteralBostonAphasiaScale = "273328008";
+
+    /// <summary>
+    /// Literal for code: NONEBostonAphasiaScale
+    /// </summary>
+    public const string LiteralNONEBostonAphasiaScale = "http://snomed.info/sct#273328008";
 
     /// <summary>
     /// Literal for code: BostonDiagnosticAphasiaExamination
@@ -10326,9 +11616,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBostonDiagnosticAphasiaExamination = "273329000";
 
     /// <summary>
+    /// Literal for code: NONEBostonDiagnosticAphasiaExamination
+    /// </summary>
+    public const string LiteralNONEBostonDiagnosticAphasiaExamination = "http://snomed.info/sct#273329000";
+
+    /// <summary>
     /// Literal for code: BostonNamingTest
     /// </summary>
     public const string LiteralBostonNamingTest = "273330005";
+
+    /// <summary>
+    /// Literal for code: NONEBostonNamingTest
+    /// </summary>
+    public const string LiteralNONEBostonNamingTest = "http://snomed.info/sct#273330005";
 
     /// <summary>
     /// Literal for code: BrackenTestOfBasicConceptScale
@@ -10336,9 +11636,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBrackenTestOfBasicConceptScale = "273331009";
 
     /// <summary>
+    /// Literal for code: NONEBrackenTestOfBasicConceptScale
+    /// </summary>
+    public const string LiteralNONEBrackenTestOfBasicConceptScale = "http://snomed.info/sct#273331009";
+
+    /// <summary>
     /// Literal for code: BriefActivitiesOfDailyLiving
     /// </summary>
     public const string LiteralBriefActivitiesOfDailyLiving = "273332002";
+
+    /// <summary>
+    /// Literal for code: NONEBriefActivitiesOfDailyLiving
+    /// </summary>
+    public const string LiteralNONEBriefActivitiesOfDailyLiving = "http://snomed.info/sct#273332002";
 
     /// <summary>
     /// Literal for code: BDRSBriefDepressionRatingScale
@@ -10346,9 +11656,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBDRSBriefDepressionRatingScale = "273333007";
 
     /// <summary>
+    /// Literal for code: NONEBDRSBriefDepressionRatingScale
+    /// </summary>
+    public const string LiteralNONEBDRSBriefDepressionRatingScale = "http://snomed.info/sct#273333007";
+
+    /// <summary>
     /// Literal for code: BristolLanguageAssessmentScale
     /// </summary>
     public const string LiteralBristolLanguageAssessmentScale = "273334001";
+
+    /// <summary>
+    /// Literal for code: NONEBristolLanguageAssessmentScale
+    /// </summary>
+    public const string LiteralNONEBristolLanguageAssessmentScale = "http://snomed.info/sct#273334001";
 
     /// <summary>
     /// Literal for code: BritishAbilityScales
@@ -10356,9 +11676,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBritishAbilityScales = "273335000";
 
     /// <summary>
+    /// Literal for code: NONEBritishAbilityScales
+    /// </summary>
+    public const string LiteralNONEBritishAbilityScales = "http://snomed.info/sct#273335000";
+
+    /// <summary>
     /// Literal for code: BASRBritishAbilityScalesRevised
     /// </summary>
     public const string LiteralBASRBritishAbilityScalesRevised = "273336004";
+
+    /// <summary>
+    /// Literal for code: NONEBASRBritishAbilityScalesRevised
+    /// </summary>
+    public const string LiteralNONEBASRBritishAbilityScalesRevised = "http://snomed.info/sct#273336004";
 
     /// <summary>
     /// Literal for code: BritishAbilityScalesReadingTest
@@ -10366,9 +11696,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBritishAbilityScalesReadingTest = "273337008";
 
     /// <summary>
+    /// Literal for code: NONEBritishAbilityScalesReadingTest
+    /// </summary>
+    public const string LiteralNONEBritishAbilityScalesReadingTest = "http://snomed.info/sct#273337008";
+
+    /// <summary>
     /// Literal for code: BASBritishAbilityScalesSpellingTest
     /// </summary>
     public const string LiteralBASBritishAbilityScalesSpellingTest = "273338003";
+
+    /// <summary>
+    /// Literal for code: NONEBASBritishAbilityScalesSpellingTest
+    /// </summary>
+    public const string LiteralNONEBASBritishAbilityScalesSpellingTest = "http://snomed.info/sct#273338003";
 
     /// <summary>
     /// Literal for code: BritishIslesLupusAssessmentGroupScore
@@ -10376,9 +11716,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBritishIslesLupusAssessmentGroupScore = "273339006";
 
     /// <summary>
+    /// Literal for code: NONEBritishIslesLupusAssessmentGroupScore
+    /// </summary>
+    public const string LiteralNONEBritishIslesLupusAssessmentGroupScore = "http://snomed.info/sct#273339006";
+
+    /// <summary>
     /// Literal for code: BryantAndBradleyRhymingTask
     /// </summary>
     public const string LiteralBryantAndBradleyRhymingTask = "273341007";
+
+    /// <summary>
+    /// Literal for code: NONEBryantAndBradleyRhymingTask
+    /// </summary>
+    public const string LiteralNONEBryantAndBradleyRhymingTask = "http://snomed.info/sct#273341007";
 
     /// <summary>
     /// Literal for code: BuffaloAssessmentProfileWilson
@@ -10386,9 +11736,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBuffaloAssessmentProfileWilson = "273342000";
 
     /// <summary>
+    /// Literal for code: NONEBuffaloAssessmentProfileWilson
+    /// </summary>
+    public const string LiteralNONEBuffaloAssessmentProfileWilson = "http://snomed.info/sct#273342000";
+
+    /// <summary>
     /// Literal for code: BulimiaTest
     /// </summary>
     public const string LiteralBulimiaTest = "273343005";
+
+    /// <summary>
+    /// Literal for code: NONEBulimiaTest
+    /// </summary>
+    public const string LiteralNONEBulimiaTest = "http://snomed.info/sct#273343005";
 
     /// <summary>
     /// Literal for code: BulimicInvestigationTestEdinburgh
@@ -10396,9 +11756,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBulimicInvestigationTestEdinburgh = "273344004";
 
     /// <summary>
+    /// Literal for code: NONEBulimicInvestigationTestEdinburgh
+    /// </summary>
+    public const string LiteralNONEBulimicInvestigationTestEdinburgh = "http://snomed.info/sct#273344004";
+
+    /// <summary>
     /// Literal for code: BusStory
     /// </summary>
     public const string LiteralBusStory = "273345003";
+
+    /// <summary>
+    /// Literal for code: NONEBusStory
+    /// </summary>
+    public const string LiteralNONEBusStory = "http://snomed.info/sct#273345003";
 
     /// <summary>
     /// Literal for code: CageQuestionnaire
@@ -10406,9 +11776,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCageQuestionnaire = "273347006";
 
     /// <summary>
+    /// Literal for code: NONECageQuestionnaire
+    /// </summary>
+    public const string LiteralNONECageQuestionnaire = "http://snomed.info/sct#273347006";
+
+    /// <summary>
     /// Literal for code: CaliforniaPersonalityInventory
     /// </summary>
     public const string LiteralCaliforniaPersonalityInventory = "273348001";
+
+    /// <summary>
+    /// Literal for code: NONECaliforniaPersonalityInventory
+    /// </summary>
+    public const string LiteralNONECaliforniaPersonalityInventory = "http://snomed.info/sct#273348001";
 
     /// <summary>
     /// Literal for code: CallierAzusaScale
@@ -10416,9 +11796,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCallierAzusaScale = "273349009";
 
     /// <summary>
+    /// Literal for code: NONECallierAzusaScale
+    /// </summary>
+    public const string LiteralNONECallierAzusaScale = "http://snomed.info/sct#273349009";
+
+    /// <summary>
     /// Literal for code: CamberwellAssessmentForTheNeedsOfTheElderly
     /// </summary>
     public const string LiteralCamberwellAssessmentForTheNeedsOfTheElderly = "273350009";
+
+    /// <summary>
+    /// Literal for code: NONECamberwellAssessmentForTheNeedsOfTheElderly
+    /// </summary>
+    public const string LiteralNONECamberwellAssessmentForTheNeedsOfTheElderly = "http://snomed.info/sct#273350009";
 
     /// <summary>
     /// Literal for code: CABCambridgeApraxiaBattery
@@ -10426,9 +11816,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCABCambridgeApraxiaBattery = "273351008";
 
     /// <summary>
+    /// Literal for code: NONECABCambridgeApraxiaBattery
+    /// </summary>
+    public const string LiteralNONECABCambridgeApraxiaBattery = "http://snomed.info/sct#273351008";
+
+    /// <summary>
     /// Literal for code: CantrilLadderAssessment
     /// </summary>
     public const string LiteralCantrilLadderAssessment = "273352001";
+
+    /// <summary>
+    /// Literal for code: NONECantrilLadderAssessment
+    /// </summary>
+    public const string LiteralNONECantrilLadderAssessment = "http://snomed.info/sct#273352001";
 
     /// <summary>
     /// Literal for code: CELICarrowElicitedLanguageInventory
@@ -10436,9 +11836,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCELICarrowElicitedLanguageInventory = "273353006";
 
     /// <summary>
+    /// Literal for code: NONECELICarrowElicitedLanguageInventory
+    /// </summary>
+    public const string LiteralNONECELICarrowElicitedLanguageInventory = "http://snomed.info/sct#273353006";
+
+    /// <summary>
     /// Literal for code: CarrowScreeningTestOfAuditoryComprehension
     /// </summary>
     public const string LiteralCarrowScreeningTestOfAuditoryComprehension = "273354000";
+
+    /// <summary>
+    /// Literal for code: NONECarrowScreeningTestOfAuditoryComprehension
+    /// </summary>
+    public const string LiteralNONECarrowScreeningTestOfAuditoryComprehension = "http://snomed.info/sct#273354000";
 
     /// <summary>
     /// Literal for code: ChaileyHeritageLyingAssessment
@@ -10446,9 +11856,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChaileyHeritageLyingAssessment = "273355004";
 
     /// <summary>
+    /// Literal for code: NONEChaileyHeritageLyingAssessment
+    /// </summary>
+    public const string LiteralNONEChaileyHeritageLyingAssessment = "http://snomed.info/sct#273355004";
+
+    /// <summary>
     /// Literal for code: ChaileyHeritageSeatingAssessment
     /// </summary>
     public const string LiteralChaileyHeritageSeatingAssessment = "273356003";
+
+    /// <summary>
+    /// Literal for code: NONEChaileyHeritageSeatingAssessment
+    /// </summary>
+    public const string LiteralNONEChaileyHeritageSeatingAssessment = "http://snomed.info/sct#273356003";
 
     /// <summary>
     /// Literal for code: ChecklistOfCommunicativeCompetence
@@ -10456,9 +11876,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChecklistOfCommunicativeCompetence = "273357007";
 
     /// <summary>
+    /// Literal for code: NONEChecklistOfCommunicativeCompetence
+    /// </summary>
+    public const string LiteralNONEChecklistOfCommunicativeCompetence = "http://snomed.info/sct#273357007";
+
+    /// <summary>
     /// Literal for code: ChecklistOfConversationalAbilities
     /// </summary>
     public const string LiteralChecklistOfConversationalAbilities = "273358002";
+
+    /// <summary>
+    /// Literal for code: NONEChecklistOfConversationalAbilities
+    /// </summary>
+    public const string LiteralNONEChecklistOfConversationalAbilities = "http://snomed.info/sct#273358002";
 
     /// <summary>
     /// Literal for code: ChecklistOfListeningBehaviors
@@ -10466,9 +11896,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChecklistOfListeningBehaviors = "273359005";
 
     /// <summary>
+    /// Literal for code: NONEChecklistOfListeningBehaviors
+    /// </summary>
+    public const string LiteralNONEChecklistOfListeningBehaviors = "http://snomed.info/sct#273359005";
+
+    /// <summary>
     /// Literal for code: OTChessingtonOccupationalTherapyNeurologicalAssessmentBattery
     /// </summary>
     public const string LiteralOTChessingtonOccupationalTherapyNeurologicalAssessmentBattery = "273360000";
+
+    /// <summary>
+    /// Literal for code: NONEOTChessingtonOccupationalTherapyNeurologicalAssessmentBattery
+    /// </summary>
+    public const string LiteralNONEOTChessingtonOccupationalTherapyNeurologicalAssessmentBattery = "http://snomed.info/sct#273360000";
 
     /// <summary>
     /// Literal for code: ChildAssessmentSchedule
@@ -10476,9 +11916,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChildAssessmentSchedule = "273361001";
 
     /// <summary>
+    /// Literal for code: NONEChildAssessmentSchedule
+    /// </summary>
+    public const string LiteralNONEChildAssessmentSchedule = "http://snomed.info/sct#273361001";
+
+    /// <summary>
     /// Literal for code: CDSChildDepressionScale
     /// </summary>
     public const string LiteralCDSChildDepressionScale = "273362008";
+
+    /// <summary>
+    /// Literal for code: NONECDSChildDepressionScale
+    /// </summary>
+    public const string LiteralNONECDSChildDepressionScale = "http://snomed.info/sct#273362008";
 
     /// <summary>
     /// Literal for code: ChildrenQuoteSComaScale
@@ -10486,9 +11936,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChildrenQuoteSComaScale = "273363003";
 
     /// <summary>
+    /// Literal for code: NONEChildrenQuoteSComaScale
+    /// </summary>
+    public const string LiteralNONEChildrenQuoteSComaScale = "http://snomed.info/sct#273363003";
+
+    /// <summary>
     /// Literal for code: CrohnDiseaseActivityIndex
     /// </summary>
     public const string LiteralCrohnDiseaseActivityIndex = "273364009";
+
+    /// <summary>
+    /// Literal for code: NONECrohnDiseaseActivityIndex
+    /// </summary>
+    public const string LiteralNONECrohnDiseaseActivityIndex = "http://snomed.info/sct#273364009";
 
     /// <summary>
     /// Literal for code: CAPECliftonAssessmentProceduresForTheElderly
@@ -10496,9 +11956,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCAPECliftonAssessmentProceduresForTheElderly = "273365005";
 
     /// <summary>
+    /// Literal for code: NONECAPECliftonAssessmentProceduresForTheElderly
+    /// </summary>
+    public const string LiteralNONECAPECliftonAssessmentProceduresForTheElderly = "http://snomed.info/sct#273365005";
+
+    /// <summary>
     /// Literal for code: ClinicalAnxietyScale
     /// </summary>
     public const string LiteralClinicalAnxietyScale = "273366006";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalAnxietyScale
+    /// </summary>
+    public const string LiteralNONEClinicalAnxietyScale = "http://snomed.info/sct#273366006";
 
     /// <summary>
     /// Literal for code: ClinicalDementiaRatingScale
@@ -10506,9 +11976,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalDementiaRatingScale = "273367002";
 
     /// <summary>
+    /// Literal for code: NONEClinicalDementiaRatingScale
+    /// </summary>
+    public const string LiteralNONEClinicalDementiaRatingScale = "http://snomed.info/sct#273367002";
+
+    /// <summary>
     /// Literal for code: CEDRIClinicalEatingDisorderRatingInstrument
     /// </summary>
     public const string LiteralCEDRIClinicalEatingDisorderRatingInstrument = "273368007";
+
+    /// <summary>
+    /// Literal for code: NONECEDRIClinicalEatingDisorderRatingInstrument
+    /// </summary>
+    public const string LiteralNONECEDRIClinicalEatingDisorderRatingInstrument = "http://snomed.info/sct#273368007";
 
     /// <summary>
     /// Literal for code: ClinicalEvaluationOfLanguageFunctionRevised
@@ -10516,9 +11996,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalEvaluationOfLanguageFunctionRevised = "273369004";
 
     /// <summary>
+    /// Literal for code: NONEClinicalEvaluationOfLanguageFunctionRevised
+    /// </summary>
+    public const string LiteralNONEClinicalEvaluationOfLanguageFunctionRevised = "http://snomed.info/sct#273369004";
+
+    /// <summary>
     /// Literal for code: ClinicalEvaluationOfLanguageFunctionRevisedScreeningTest
     /// </summary>
     public const string LiteralClinicalEvaluationOfLanguageFunctionRevisedScreeningTest = "273370003";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalEvaluationOfLanguageFunctionRevisedScreeningTest
+    /// </summary>
+    public const string LiteralNONEClinicalEvaluationOfLanguageFunctionRevisedScreeningTest = "http://snomed.info/sct#273370003";
 
     /// <summary>
     /// Literal for code: ClinicalEvaluationOfLanguageFunctionRevisedPreschoolTest
@@ -10526,9 +12016,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalEvaluationOfLanguageFunctionRevisedPreschoolTest = "273371004";
 
     /// <summary>
+    /// Literal for code: NONEClinicalEvaluationOfLanguageFunctionRevisedPreschoolTest
+    /// </summary>
+    public const string LiteralNONEClinicalEvaluationOfLanguageFunctionRevisedPreschoolTest = "http://snomed.info/sct#273371004";
+
+    /// <summary>
     /// Literal for code: ClinicalObservationOfMotorAndPosturalSkills
     /// </summary>
     public const string LiteralClinicalObservationOfMotorAndPosturalSkills = "273372006";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalObservationOfMotorAndPosturalSkills
+    /// </summary>
+    public const string LiteralNONEClinicalObservationOfMotorAndPosturalSkills = "http://snomed.info/sct#273372006";
 
     /// <summary>
     /// Literal for code: CAAPCocaineAbuseAssessmentProfile
@@ -10536,9 +12036,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCAAPCocaineAbuseAssessmentProfile = "273373001";
 
     /// <summary>
+    /// Literal for code: NONECAAPCocaineAbuseAssessmentProfile
+    /// </summary>
+    public const string LiteralNONECAAPCocaineAbuseAssessmentProfile = "http://snomed.info/sct#273373001";
+
+    /// <summary>
     /// Literal for code: CognitionsQuestionnaire
     /// </summary>
     public const string LiteralCognitionsQuestionnaire = "273374007";
+
+    /// <summary>
+    /// Literal for code: NONECognitionsQuestionnaire
+    /// </summary>
+    public const string LiteralNONECognitionsQuestionnaire = "http://snomed.info/sct#273374007";
 
     /// <summary>
     /// Literal for code: CognitiveFailuresQuestionnaire
@@ -10546,9 +12056,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCognitiveFailuresQuestionnaire = "273375008";
 
     /// <summary>
+    /// Literal for code: NONECognitiveFailuresQuestionnaire
+    /// </summary>
+    public const string LiteralNONECognitiveFailuresQuestionnaire = "http://snomed.info/sct#273375008";
+
+    /// <summary>
     /// Literal for code: CASPCommunicationAssessmentProfileForAdultsWithAMentalHandicap
     /// </summary>
     public const string LiteralCASPCommunicationAssessmentProfileForAdultsWithAMentalHandicap = "273376009";
+
+    /// <summary>
+    /// Literal for code: NONECASPCommunicationAssessmentProfileForAdultsWithAMentalHandicap
+    /// </summary>
+    public const string LiteralNONECASPCommunicationAssessmentProfileForAdultsWithAMentalHandicap = "http://snomed.info/sct#273376009";
 
     /// <summary>
     /// Literal for code: CommunicativeAbilitiesInDailyLiving
@@ -10556,9 +12076,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommunicativeAbilitiesInDailyLiving = "273377000";
 
     /// <summary>
+    /// Literal for code: NONECommunicativeAbilitiesInDailyLiving
+    /// </summary>
+    public const string LiteralNONECommunicativeAbilitiesInDailyLiving = "http://snomed.info/sct#273377000";
+
+    /// <summary>
     /// Literal for code: CIDICompositeInternationalDiagnosticInterview
     /// </summary>
     public const string LiteralCIDICompositeInternationalDiagnosticInterview = "273378005";
+
+    /// <summary>
+    /// Literal for code: NONECIDICompositeInternationalDiagnosticInterview
+    /// </summary>
+    public const string LiteralNONECIDICompositeInternationalDiagnosticInterview = "http://snomed.info/sct#273378005";
 
     /// <summary>
     /// Literal for code: ComprehensiveDrinkerProfile
@@ -10566,9 +12096,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralComprehensiveDrinkerProfile = "273379002";
 
     /// <summary>
+    /// Literal for code: NONEComprehensiveDrinkerProfile
+    /// </summary>
+    public const string LiteralNONEComprehensiveDrinkerProfile = "http://snomed.info/sct#273379002";
+
+    /// <summary>
     /// Literal for code: CRISComprehensiveInjuryScale
     /// </summary>
     public const string LiteralCRISComprehensiveInjuryScale = "273380004";
+
+    /// <summary>
+    /// Literal for code: NONECRISComprehensiveInjuryScale
+    /// </summary>
+    public const string LiteralNONECRISComprehensiveInjuryScale = "http://snomed.info/sct#273380004";
 
     /// <summary>
     /// Literal for code: ComprehensiveOccupationalTherapyEvaluationScale
@@ -10576,9 +12116,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralComprehensiveOccupationalTherapyEvaluationScale = "273381000";
 
     /// <summary>
+    /// Literal for code: NONEComprehensiveOccupationalTherapyEvaluationScale
+    /// </summary>
+    public const string LiteralNONEComprehensiveOccupationalTherapyEvaluationScale = "http://snomed.info/sct#273381000";
+
+    /// <summary>
     /// Literal for code: CESCompulsiveEatingScale
     /// </summary>
     public const string LiteralCESCompulsiveEatingScale = "273382007";
+
+    /// <summary>
+    /// Literal for code: NONECESCompulsiveEatingScale
+    /// </summary>
+    public const string LiteralNONECESCompulsiveEatingScale = "http://snomed.info/sct#273382007";
 
     /// <summary>
     /// Literal for code: ConstantAndMurleyShoulderAssessmentScore
@@ -10586,9 +12136,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConstantAndMurleyShoulderAssessmentScore = "273383002";
 
     /// <summary>
+    /// Literal for code: NONEConstantAndMurleyShoulderAssessmentScore
+    /// </summary>
+    public const string LiteralNONEConstantAndMurleyShoulderAssessmentScore = "http://snomed.info/sct#273383002";
+
+    /// <summary>
     /// Literal for code: ConsumerSatisfactionQuestionnaire
     /// </summary>
     public const string LiteralConsumerSatisfactionQuestionnaire = "273384008";
+
+    /// <summary>
+    /// Literal for code: NONEConsumerSatisfactionQuestionnaire
+    /// </summary>
+    public const string LiteralNONEConsumerSatisfactionQuestionnaire = "http://snomed.info/sct#273384008";
 
     /// <summary>
     /// Literal for code: CoOpFunctionCharts
@@ -10596,9 +12156,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoOpFunctionCharts = "273385009";
 
     /// <summary>
+    /// Literal for code: NONECoOpFunctionCharts
+    /// </summary>
+    public const string LiteralNONECoOpFunctionCharts = "http://snomed.info/sct#273385009";
+
+    /// <summary>
     /// Literal for code: PFCTCooperPersonalizedFluencyControlTherapy
     /// </summary>
     public const string LiteralPFCTCooperPersonalizedFluencyControlTherapy = "273386005";
+
+    /// <summary>
+    /// Literal for code: NONEPFCTCooperPersonalizedFluencyControlTherapy
+    /// </summary>
+    public const string LiteralNONEPFCTCooperPersonalizedFluencyControlTherapy = "http://snomed.info/sct#273386005";
 
     /// <summary>
     /// Literal for code: CopingResponsesInventory
@@ -10606,9 +12176,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCopingResponsesInventory = "273387001";
 
     /// <summary>
+    /// Literal for code: NONECopingResponsesInventory
+    /// </summary>
+    public const string LiteralNONECopingResponsesInventory = "http://snomed.info/sct#273387001";
+
+    /// <summary>
     /// Literal for code: CrichtonVocabularyScale
     /// </summary>
     public const string LiteralCrichtonVocabularyScale = "273388006";
+
+    /// <summary>
+    /// Literal for code: NONECrichtonVocabularyScale
+    /// </summary>
+    public const string LiteralNONECrichtonVocabularyScale = "http://snomed.info/sct#273388006";
 
     /// <summary>
     /// Literal for code: DailyActivitiesQuestionnaire
@@ -10616,9 +12196,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDailyActivitiesQuestionnaire = "273389003";
 
     /// <summary>
+    /// Literal for code: NONEDailyActivitiesQuestionnaire
+    /// </summary>
+    public const string LiteralNONEDailyActivitiesQuestionnaire = "http://snomed.info/sct#273389003";
+
+    /// <summary>
     /// Literal for code: DallasPainQuestionnaire
     /// </summary>
     public const string LiteralDallasPainQuestionnaire = "273390007";
+
+    /// <summary>
+    /// Literal for code: NONEDallasPainQuestionnaire
+    /// </summary>
+    public const string LiteralNONEDallasPainQuestionnaire = "http://snomed.info/sct#273390007";
 
     /// <summary>
     /// Literal for code: DanielsAndDiackReadingTests
@@ -10626,9 +12216,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDanielsAndDiackReadingTests = "273391006";
 
     /// <summary>
+    /// Literal for code: NONEDanielsAndDiackReadingTests
+    /// </summary>
+    public const string LiteralNONEDanielsAndDiackReadingTests = "http://snomed.info/sct#273391006";
+
+    /// <summary>
     /// Literal for code: DanielsAndDiackGradedWordSpellingTest
     /// </summary>
     public const string LiteralDanielsAndDiackGradedWordSpellingTest = "273392004";
+
+    /// <summary>
+    /// Literal for code: NONEDanielsAndDiackGradedWordSpellingTest
+    /// </summary>
+    public const string LiteralNONEDanielsAndDiackGradedWordSpellingTest = "http://snomed.info/sct#273392004";
 
     /// <summary>
     /// Literal for code: DeGangiBerkSensoryFunctioningInInfants
@@ -10636,9 +12236,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeGangiBerkSensoryFunctioningInInfants = "273393009";
 
     /// <summary>
+    /// Literal for code: NONEDeGangiBerkSensoryFunctioningInInfants
+    /// </summary>
+    public const string LiteralNONEDeGangiBerkSensoryFunctioningInInfants = "http://snomed.info/sct#273393009";
+
+    /// <summary>
     /// Literal for code: DelightedTerribleFacesScale
     /// </summary>
     public const string LiteralDelightedTerribleFacesScale = "273394003";
+
+    /// <summary>
+    /// Literal for code: NONEDelightedTerribleFacesScale
+    /// </summary>
+    public const string LiteralNONEDelightedTerribleFacesScale = "http://snomed.info/sct#273394003";
 
     /// <summary>
     /// Literal for code: DenverDevelopmentScale
@@ -10646,9 +12256,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDenverDevelopmentScale = "273395002";
 
     /// <summary>
+    /// Literal for code: NONEDenverDevelopmentScale
+    /// </summary>
+    public const string LiteralNONEDenverDevelopmentScale = "http://snomed.info/sct#273395002";
+
+    /// <summary>
     /// Literal for code: DenverDevelopmentalSubscaleGrossMotor
     /// </summary>
     public const string LiteralDenverDevelopmentalSubscaleGrossMotor = "273396001";
+
+    /// <summary>
+    /// Literal for code: NONEDenverDevelopmentalSubscaleGrossMotor
+    /// </summary>
+    public const string LiteralNONEDenverDevelopmentalSubscaleGrossMotor = "http://snomed.info/sct#273396001";
 
     /// <summary>
     /// Literal for code: DenverDevelopmentalSubscaleLanguage
@@ -10656,9 +12276,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDenverDevelopmentalSubscaleLanguage = "273397005";
 
     /// <summary>
+    /// Literal for code: NONEDenverDevelopmentalSubscaleLanguage
+    /// </summary>
+    public const string LiteralNONEDenverDevelopmentalSubscaleLanguage = "http://snomed.info/sct#273397005";
+
+    /// <summary>
     /// Literal for code: DenverDevelopmentalSubscalePersonalSocial
     /// </summary>
     public const string LiteralDenverDevelopmentalSubscalePersonalSocial = "273398000";
+
+    /// <summary>
+    /// Literal for code: NONEDenverDevelopmentalSubscalePersonalSocial
+    /// </summary>
+    public const string LiteralNONEDenverDevelopmentalSubscalePersonalSocial = "http://snomed.info/sct#273398000";
 
     /// <summary>
     /// Literal for code: DenverDevelopmentalSubscaleFineMotorAdaptive
@@ -10666,9 +12296,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDenverDevelopmentalSubscaleFineMotorAdaptive = "273399008";
 
     /// <summary>
+    /// Literal for code: NONEDenverDevelopmentalSubscaleFineMotorAdaptive
+    /// </summary>
+    public const string LiteralNONEDenverDevelopmentalSubscaleFineMotorAdaptive = "http://snomed.info/sct#273399008";
+
+    /// <summary>
     /// Literal for code: DenverDevelopmentScaleScreeningTest
     /// </summary>
     public const string LiteralDenverDevelopmentScaleScreeningTest = "273400001";
+
+    /// <summary>
+    /// Literal for code: NONEDenverDevelopmentScaleScreeningTest
+    /// </summary>
+    public const string LiteralNONEDenverDevelopmentScaleScreeningTest = "http://snomed.info/sct#273400001";
 
     /// <summary>
     /// Literal for code: DenverDevelopmentScaleScreeningTestScheduleForGrowingSkills
@@ -10676,9 +12316,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDenverDevelopmentScaleScreeningTestScheduleForGrowingSkills = "273401002";
 
     /// <summary>
+    /// Literal for code: NONEDenverDevelopmentScaleScreeningTestScheduleForGrowingSkills
+    /// </summary>
+    public const string LiteralNONEDenverDevelopmentScaleScreeningTestScheduleForGrowingSkills = "http://snomed.info/sct#273401002";
+
+    /// <summary>
     /// Literal for code: DepressionAnxietyScale
     /// </summary>
     public const string LiteralDepressionAnxietyScale = "273402009";
+
+    /// <summary>
+    /// Literal for code: NONEDepressionAnxietyScale
+    /// </summary>
+    public const string LiteralNONEDepressionAnxietyScale = "http://snomed.info/sct#273402009";
 
     /// <summary>
     /// Literal for code: DepressionSelfRatingScale
@@ -10686,9 +12336,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDepressionSelfRatingScale = "273403004";
 
     /// <summary>
+    /// Literal for code: NONEDepressionSelfRatingScale
+    /// </summary>
+    public const string LiteralNONEDepressionSelfRatingScale = "http://snomed.info/sct#273403004";
+
+    /// <summary>
     /// Literal for code: DermatologyLifeQualityIndex
     /// </summary>
     public const string LiteralDermatologyLifeQualityIndex = "273408008";
+
+    /// <summary>
+    /// Literal for code: NONEDermatologyLifeQualityIndex
+    /// </summary>
+    public const string LiteralNONEDermatologyLifeQualityIndex = "http://snomed.info/sct#273408008";
 
     /// <summary>
     /// Literal for code: DSFIDerogatisSexualFunctioningInventory
@@ -10696,9 +12356,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDSFIDerogatisSexualFunctioningInventory = "273409000";
 
     /// <summary>
+    /// Literal for code: NONEDSFIDerogatisSexualFunctioningInventory
+    /// </summary>
+    public const string LiteralNONEDSFIDerogatisSexualFunctioningInventory = "http://snomed.info/sct#273409000";
+
+    /// <summary>
     /// Literal for code: DiabetesClinicSatisfactionQuestionnaire
     /// </summary>
     public const string LiteralDiabetesClinicSatisfactionQuestionnaire = "273411009";
+
+    /// <summary>
+    /// Literal for code: NONEDiabetesClinicSatisfactionQuestionnaire
+    /// </summary>
+    public const string LiteralNONEDiabetesClinicSatisfactionQuestionnaire = "http://snomed.info/sct#273411009";
 
     /// <summary>
     /// Literal for code: DTSQDiabetesTreatmentSatisfactionQuestionnaire
@@ -10706,9 +12376,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDTSQDiabetesTreatmentSatisfactionQuestionnaire = "273412002";
 
     /// <summary>
+    /// Literal for code: NONEDTSQDiabetesTreatmentSatisfactionQuestionnaire
+    /// </summary>
+    public const string LiteralNONEDTSQDiabetesTreatmentSatisfactionQuestionnaire = "http://snomed.info/sct#273412002";
+
+    /// <summary>
     /// Literal for code: DiabetesWellbeingQuestionnaire
     /// </summary>
     public const string LiteralDiabetesWellbeingQuestionnaire = "273413007";
+
+    /// <summary>
+    /// Literal for code: NONEDiabetesWellbeingQuestionnaire
+    /// </summary>
+    public const string LiteralNONEDiabetesWellbeingQuestionnaire = "http://snomed.info/sct#273413007";
 
     /// <summary>
     /// Literal for code: DICADiagnosticInterviewForChildrenAndAdolescents
@@ -10716,9 +12396,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDICADiagnosticInterviewForChildrenAndAdolescents = "273414001";
 
     /// <summary>
+    /// Literal for code: NONEDICADiagnosticInterviewForChildrenAndAdolescents
+    /// </summary>
+    public const string LiteralNONEDICADiagnosticInterviewForChildrenAndAdolescents = "http://snomed.info/sct#273414001";
+
+    /// <summary>
     /// Literal for code: DiagnosticInterviewSchedule
     /// </summary>
     public const string LiteralDiagnosticInterviewSchedule = "273415000";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticInterviewSchedule
+    /// </summary>
+    public const string LiteralNONEDiagnosticInterviewSchedule = "http://snomed.info/sct#273415000";
 
     /// <summary>
     /// Literal for code: DSDTDiagnosticSpeechDiscriminationTest
@@ -10726,9 +12416,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDSDTDiagnosticSpeechDiscriminationTest = "273416004";
 
     /// <summary>
+    /// Literal for code: NONEDSDTDiagnosticSpeechDiscriminationTest
+    /// </summary>
+    public const string LiteralNONEDSDTDiagnosticSpeechDiscriminationTest = "http://snomed.info/sct#273416004";
+
+    /// <summary>
     /// Literal for code: DiagnosticSurveyForEatingDisorders
     /// </summary>
     public const string LiteralDiagnosticSurveyForEatingDisorders = "273417008";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticSurveyForEatingDisorders
+    /// </summary>
+    public const string LiteralNONEDiagnosticSurveyForEatingDisorders = "http://snomed.info/sct#273417008";
 
     /// <summary>
     /// Literal for code: DINEDietaryInstrumentForNutritionEducationQuestionnaire
@@ -10736,9 +12436,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDINEDietaryInstrumentForNutritionEducationQuestionnaire = "273418003";
 
     /// <summary>
+    /// Literal for code: NONEDINEDietaryInstrumentForNutritionEducationQuestionnaire
+    /// </summary>
+    public const string LiteralNONEDINEDietaryInstrumentForNutritionEducationQuestionnaire = "http://snomed.info/sct#273418003";
+
+    /// <summary>
     /// Literal for code: DigitSequenceLearning
     /// </summary>
     public const string LiteralDigitSequenceLearning = "273419006";
+
+    /// <summary>
+    /// Literal for code: NONEDigitSequenceLearning
+    /// </summary>
+    public const string LiteralNONEDigitSequenceLearning = "http://snomed.info/sct#273419006";
 
     /// <summary>
     /// Literal for code: DisabilityAssessmentSchedule
@@ -10746,9 +12456,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDisabilityAssessmentSchedule = "273420000";
 
     /// <summary>
+    /// Literal for code: NONEDisabilityAssessmentSchedule
+    /// </summary>
+    public const string LiteralNONEDisabilityAssessmentSchedule = "http://snomed.info/sct#273420000";
+
+    /// <summary>
     /// Literal for code: DisabilityRatingScale
     /// </summary>
     public const string LiteralDisabilityRatingScale = "273421001";
+
+    /// <summary>
+    /// Literal for code: NONEDisabilityRatingScale
+    /// </summary>
+    public const string LiteralNONEDisabilityRatingScale = "http://snomed.info/sct#273421001";
 
     /// <summary>
     /// Literal for code: DiscourseAbilitiesProfile
@@ -10756,9 +12476,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiscourseAbilitiesProfile = "273422008";
 
     /// <summary>
+    /// Literal for code: NONEDiscourseAbilitiesProfile
+    /// </summary>
+    public const string LiteralNONEDiscourseAbilitiesProfile = "http://snomed.info/sct#273422008";
+
+    /// <summary>
     /// Literal for code: DolScale
     /// </summary>
     public const string LiteralDolScale = "273423003";
+
+    /// <summary>
+    /// Literal for code: NONEDolScale
+    /// </summary>
+    public const string LiteralNONEDolScale = "http://snomed.info/sct#273423003";
 
     /// <summary>
     /// Literal for code: DoyleArticularIndex
@@ -10766,9 +12496,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDoyleArticularIndex = "273424009";
 
     /// <summary>
+    /// Literal for code: NONEDoyleArticularIndex
+    /// </summary>
+    public const string LiteralNONEDoyleArticularIndex = "http://snomed.info/sct#273424009";
+
+    /// <summary>
     /// Literal for code: DrinkingProblemScale
     /// </summary>
     public const string LiteralDrinkingProblemScale = "273425005";
+
+    /// <summary>
+    /// Literal for code: NONEDrinkingProblemScale
+    /// </summary>
+    public const string LiteralNONEDrinkingProblemScale = "http://snomed.info/sct#273425005";
 
     /// <summary>
     /// Literal for code: DASTDrugAbuseScreeningTest
@@ -10776,9 +12516,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDASTDrugAbuseScreeningTest = "273426006";
 
     /// <summary>
+    /// Literal for code: NONEDASTDrugAbuseScreeningTest
+    /// </summary>
+    public const string LiteralNONEDASTDrugAbuseScreeningTest = "http://snomed.info/sct#273426006";
+
+    /// <summary>
     /// Literal for code: DubowitzScore
     /// </summary>
     public const string LiteralDubowitzScore = "273427002";
+
+    /// <summary>
+    /// Literal for code: NONEDubowitzScore
+    /// </summary>
+    public const string LiteralNONEDubowitzScore = "http://snomed.info/sct#273427002";
 
     /// <summary>
     /// Literal for code: DukeUNCHealthProfile
@@ -10786,9 +12536,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDukeUNCHealthProfile = "273428007";
 
     /// <summary>
+    /// Literal for code: NONEDukeUNCHealthProfile
+    /// </summary>
+    public const string LiteralNONEDukeUNCHealthProfile = "http://snomed.info/sct#273428007";
+
+    /// <summary>
     /// Literal for code: DundeeCardiovascularRiskScore
     /// </summary>
     public const string LiteralDundeeCardiovascularRiskScore = "273429004";
+
+    /// <summary>
+    /// Literal for code: NONEDundeeCardiovascularRiskScore
+    /// </summary>
+    public const string LiteralNONEDundeeCardiovascularRiskScore = "http://snomed.info/sct#273429004";
 
     /// <summary>
     /// Literal for code: DurrellTestOfListeningComprehension
@@ -10796,9 +12556,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDurrellTestOfListeningComprehension = "273430009";
 
     /// <summary>
+    /// Literal for code: NONEDurrellTestOfListeningComprehension
+    /// </summary>
+    public const string LiteralNONEDurrellTestOfListeningComprehension = "http://snomed.info/sct#273430009";
+
+    /// <summary>
     /// Literal for code: EakinIndex
     /// </summary>
     public const string LiteralEakinIndex = "273431008";
+
+    /// <summary>
+    /// Literal for code: NONEEakinIndex
+    /// </summary>
+    public const string LiteralNONEEakinIndex = "http://snomed.info/sct#273431008";
 
     /// <summary>
     /// Literal for code: EatingAttitudesTest
@@ -10806,9 +12576,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEatingAttitudesTest = "273432001";
 
     /// <summary>
+    /// Literal for code: NONEEatingAttitudesTest
+    /// </summary>
+    public const string LiteralNONEEatingAttitudesTest = "http://snomed.info/sct#273432001";
+
+    /// <summary>
     /// Literal for code: EAT26AbbreviatedEatingAttitudesTest
     /// </summary>
     public const string LiteralEAT26AbbreviatedEatingAttitudesTest = "273433006";
+
+    /// <summary>
+    /// Literal for code: NONEEAT26AbbreviatedEatingAttitudesTest
+    /// </summary>
+    public const string LiteralNONEEAT26AbbreviatedEatingAttitudesTest = "http://snomed.info/sct#273433006";
 
     /// <summary>
     /// Literal for code: EBRSEatingBehaviorRatingScale
@@ -10816,9 +12596,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEBRSEatingBehaviorRatingScale = "273434000";
 
     /// <summary>
+    /// Literal for code: NONEEBRSEatingBehaviorRatingScale
+    /// </summary>
+    public const string LiteralNONEEBRSEatingBehaviorRatingScale = "http://snomed.info/sct#273434000";
+
+    /// <summary>
     /// Literal for code: EatingDisordersInventory
     /// </summary>
     public const string LiteralEatingDisordersInventory = "273435004";
+
+    /// <summary>
+    /// Literal for code: NONEEatingDisordersInventory
+    /// </summary>
+    public const string LiteralNONEEatingDisordersInventory = "http://snomed.info/sct#273435004";
 
     /// <summary>
     /// Literal for code: EatingInventory
@@ -10826,9 +12616,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEatingInventory = "273436003";
 
     /// <summary>
+    /// Literal for code: NONEEatingInventory
+    /// </summary>
+    public const string LiteralNONEEatingInventory = "http://snomed.info/sct#273436003";
+
+    /// <summary>
     /// Literal for code: EasternCooperativeOncologyGroupECOGScaleForPhysicalAssessment
     /// </summary>
     public const string LiteralEasternCooperativeOncologyGroupECOGScaleForPhysicalAssessment = "273437007";
+
+    /// <summary>
+    /// Literal for code: NONEEasternCooperativeOncologyGroupECOGScaleForPhysicalAssessment
+    /// </summary>
+    public const string LiteralNONEEasternCooperativeOncologyGroupECOGScaleForPhysicalAssessment = "http://snomed.info/sct#273437007";
 
     /// <summary>
     /// Literal for code: EdinburghArticulationTest
@@ -10836,9 +12636,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEdinburghArticulationTest = "273438002";
 
     /// <summary>
+    /// Literal for code: NONEEdinburghArticulationTest
+    /// </summary>
+    public const string LiteralNONEEdinburghArticulationTest = "http://snomed.info/sct#273438002";
+
+    /// <summary>
     /// Literal for code: EFCPEdinburghFunctionalCommunicationProfile
     /// </summary>
     public const string LiteralEFCPEdinburghFunctionalCommunicationProfile = "273439005";
+
+    /// <summary>
+    /// Literal for code: NONEEFCPEdinburghFunctionalCommunicationProfile
+    /// </summary>
+    public const string LiteralNONEEFCPEdinburghFunctionalCommunicationProfile = "http://snomed.info/sct#273439005";
 
     /// <summary>
     /// Literal for code: RevisedEdinburghFunctionalCommunicationProfile
@@ -10846,9 +12656,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRevisedEdinburghFunctionalCommunicationProfile = "273440007";
 
     /// <summary>
+    /// Literal for code: NONERevisedEdinburghFunctionalCommunicationProfile
+    /// </summary>
+    public const string LiteralNONERevisedEdinburghFunctionalCommunicationProfile = "http://snomed.info/sct#273440007";
+
+    /// <summary>
     /// Literal for code: EdinburghPostnatalDepressionScale
     /// </summary>
     public const string LiteralEdinburghPostnatalDepressionScale = "273441006";
+
+    /// <summary>
+    /// Literal for code: NONEEdinburghPostnatalDepressionScale
+    /// </summary>
+    public const string LiteralNONEEdinburghPostnatalDepressionScale = "http://snomed.info/sct#273441006";
 
     /// <summary>
     /// Literal for code: EdmansADLIndexEdmansActivitiesOfDailyLivingIndex
@@ -10856,9 +12676,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEdmansADLIndexEdmansActivitiesOfDailyLivingIndex = "273442004";
 
     /// <summary>
+    /// Literal for code: NONEEdmansADLIndexEdmansActivitiesOfDailyLivingIndex
+    /// </summary>
+    public const string LiteralNONEEdmansADLIndexEdmansActivitiesOfDailyLivingIndex = "http://snomed.info/sct#273442004";
+
+    /// <summary>
     /// Literal for code: EliaNormogram
     /// </summary>
     public const string LiteralEliaNormogram = "273443009";
+
+    /// <summary>
+    /// Literal for code: NONEEliaNormogram
+    /// </summary>
+    public const string LiteralNONEEliaNormogram = "http://snomed.info/sct#273443009";
 
     /// <summary>
     /// Literal for code: BritishPictureVocabularyScale
@@ -10866,9 +12696,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBritishPictureVocabularyScale = "273444003";
 
     /// <summary>
+    /// Literal for code: NONEBritishPictureVocabularyScale
+    /// </summary>
+    public const string LiteralNONEBritishPictureVocabularyScale = "http://snomed.info/sct#273444003";
+
+    /// <summary>
     /// Literal for code: EnthesitisIndex
     /// </summary>
     public const string LiteralEnthesitisIndex = "273445002";
+
+    /// <summary>
+    /// Literal for code: NONEEnthesitisIndex
+    /// </summary>
+    public const string LiteralNONEEnthesitisIndex = "http://snomed.info/sct#273445002";
 
     /// <summary>
     /// Literal for code: EuropeanOrganizationForResearchAndTreatmentOfCancerEORTCQualityOfLifeQuestionnaire
@@ -10876,9 +12716,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEuropeanOrganizationForResearchAndTreatmentOfCancerEORTCQualityOfLifeQuestionnaire = "273446001";
 
     /// <summary>
+    /// Literal for code: NONEEuropeanOrganizationForResearchAndTreatmentOfCancerEORTCQualityOfLifeQuestionnaire
+    /// </summary>
+    public const string LiteralNONEEuropeanOrganizationForResearchAndTreatmentOfCancerEORTCQualityOfLifeQuestionnaire = "http://snomed.info/sct#273446001";
+
+    /// <summary>
     /// Literal for code: EuroQOL
     /// </summary>
     public const string LiteralEuroQOL = "273447005";
+
+    /// <summary>
+    /// Literal for code: NONEEuroQOL
+    /// </summary>
+    public const string LiteralNONEEuroQOL = "http://snomed.info/sct#273447005";
 
     /// <summary>
     /// Literal for code: ExtendedActivitiesOfDailyLivingScale
@@ -10886,9 +12736,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExtendedActivitiesOfDailyLivingScale = "273448000";
 
     /// <summary>
+    /// Literal for code: NONEExtendedActivitiesOfDailyLivingScale
+    /// </summary>
+    public const string LiteralNONEExtendedActivitiesOfDailyLivingScale = "http://snomed.info/sct#273448000";
+
+    /// <summary>
     /// Literal for code: EPIEysenckPersonalityInventory
     /// </summary>
     public const string LiteralEPIEysenckPersonalityInventory = "273449008";
+
+    /// <summary>
+    /// Literal for code: NONEEPIEysenckPersonalityInventory
+    /// </summary>
+    public const string LiteralNONEEPIEysenckPersonalityInventory = "http://snomed.info/sct#273449008";
 
     /// <summary>
     /// Literal for code: FacialRecognitionTest
@@ -10896,9 +12756,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFacialRecognitionTest = "273450008";
 
     /// <summary>
+    /// Literal for code: NONEFacialRecognitionTest
+    /// </summary>
+    public const string LiteralNONEFacialRecognitionTest = "http://snomed.info/sct#273450008";
+
+    /// <summary>
     /// Literal for code: FagerstromToleranceQuestionnaire
     /// </summary>
     public const string LiteralFagerstromToleranceQuestionnaire = "273451007";
+
+    /// <summary>
+    /// Literal for code: NONEFagerstromToleranceQuestionnaire
+    /// </summary>
+    public const string LiteralNONEFagerstromToleranceQuestionnaire = "http://snomed.info/sct#273451007";
 
     /// <summary>
     /// Literal for code: RTQRevisedToleranceQuestionnaire
@@ -10906,9 +12776,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRTQRevisedToleranceQuestionnaire = "273452000";
 
     /// <summary>
+    /// Literal for code: NONERTQRevisedToleranceQuestionnaire
+    /// </summary>
+    public const string LiteralNONERTQRevisedToleranceQuestionnaire = "http://snomed.info/sct#273452000";
+
+    /// <summary>
     /// Literal for code: FagerstromTestForNicotineDependence
     /// </summary>
     public const string LiteralFagerstromTestForNicotineDependence = "273453005";
+
+    /// <summary>
+    /// Literal for code: NONEFagerstromTestForNicotineDependence
+    /// </summary>
+    public const string LiteralNONEFagerstromTestForNicotineDependence = "http://snomed.info/sct#273453005";
 
     /// <summary>
     /// Literal for code: FearOfAcquiredImmunodeficiencySyndromeScale
@@ -10916,9 +12796,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFearOfAcquiredImmunodeficiencySyndromeScale = "273454004";
 
     /// <summary>
+    /// Literal for code: NONEFearOfAcquiredImmunodeficiencySyndromeScale
+    /// </summary>
+    public const string LiteralNONEFearOfAcquiredImmunodeficiencySyndromeScale = "http://snomed.info/sct#273454004";
+
+    /// <summary>
     /// Literal for code: FearSurveySchedule
     /// </summary>
     public const string LiteralFearSurveySchedule = "273455003";
+
+    /// <summary>
+    /// Literal for code: NONEFearSurveySchedule
+    /// </summary>
+    public const string LiteralNONEFearSurveySchedule = "http://snomed.info/sct#273455003";
 
     /// <summary>
     /// Literal for code: FeedingAssessmentSchedule
@@ -10926,9 +12816,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFeedingAssessmentSchedule = "273456002";
 
     /// <summary>
+    /// Literal for code: NONEFeedingAssessmentSchedule
+    /// </summary>
+    public const string LiteralNONEFeedingAssessmentSchedule = "http://snomed.info/sct#273456002";
+
+    /// <summary>
     /// Literal for code: FeelingsOfFatnessQuestionnaire
     /// </summary>
     public const string LiteralFeelingsOfFatnessQuestionnaire = "273457006";
+
+    /// <summary>
+    /// Literal for code: NONEFeelingsOfFatnessQuestionnaire
+    /// </summary>
+    public const string LiteralNONEFeelingsOfFatnessQuestionnaire = "http://snomed.info/sct#273457006";
 
     /// <summary>
     /// Literal for code: FTTFingerTappingTest
@@ -10936,9 +12836,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFTTFingerTappingTest = "273458001";
 
     /// <summary>
+    /// Literal for code: NONEFTTFingerTappingTest
+    /// </summary>
+    public const string LiteralNONEFTTFingerTappingTest = "http://snomed.info/sct#273458001";
+
+    /// <summary>
     /// Literal for code: FIRSTScreeningTest
     /// </summary>
     public const string LiteralFIRSTScreeningTest = "273459009";
+
+    /// <summary>
+    /// Literal for code: NONEFIRSTScreeningTest
+    /// </summary>
+    public const string LiteralNONEFIRSTScreeningTest = "http://snomed.info/sct#273459009";
 
     /// <summary>
     /// Literal for code: FrankelGradingSystemForSpinalCordInjury
@@ -10946,9 +12856,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFrankelGradingSystemForSpinalCordInjury = "273460004";
 
     /// <summary>
+    /// Literal for code: NONEFrankelGradingSystemForSpinalCordInjury
+    /// </summary>
+    public const string LiteralNONEFrankelGradingSystemForSpinalCordInjury = "http://snomed.info/sct#273460004";
+
+    /// <summary>
     /// Literal for code: FAIFrenchayActivitiesIndex
     /// </summary>
     public const string LiteralFAIFrenchayActivitiesIndex = "273461000";
+
+    /// <summary>
+    /// Literal for code: NONEFAIFrenchayActivitiesIndex
+    /// </summary>
+    public const string LiteralNONEFAIFrenchayActivitiesIndex = "http://snomed.info/sct#273461000";
 
     /// <summary>
     /// Literal for code: FrenchayAphasiaScreeningTest
@@ -10956,9 +12876,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFrenchayAphasiaScreeningTest = "273462007";
 
     /// <summary>
+    /// Literal for code: NONEFrenchayAphasiaScreeningTest
+    /// </summary>
+    public const string LiteralNONEFrenchayAphasiaScreeningTest = "http://snomed.info/sct#273462007";
+
+    /// <summary>
     /// Literal for code: FDAFrenchayDysarthriaAssessment
     /// </summary>
     public const string LiteralFDAFrenchayDysarthriaAssessment = "273463002";
+
+    /// <summary>
+    /// Literal for code: NONEFDAFrenchayDysarthriaAssessment
+    /// </summary>
+    public const string LiteralNONEFDAFrenchayDysarthriaAssessment = "http://snomed.info/sct#273463002";
 
     /// <summary>
     /// Literal for code: FullertonLanguageTestForAdolescents
@@ -10966,9 +12896,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFullertonLanguageTestForAdolescents = "273465009";
 
     /// <summary>
+    /// Literal for code: NONEFullertonLanguageTestForAdolescents
+    /// </summary>
+    public const string LiteralNONEFullertonLanguageTestForAdolescents = "http://snomed.info/sct#273465009";
+
+    /// <summary>
     /// Literal for code: FunctionalAssessmentMeasure
     /// </summary>
     public const string LiteralFunctionalAssessmentMeasure = "273466005";
+
+    /// <summary>
+    /// Literal for code: NONEFunctionalAssessmentMeasure
+    /// </summary>
+    public const string LiteralNONEFunctionalAssessmentMeasure = "http://snomed.info/sct#273466005";
 
     /// <summary>
     /// Literal for code: FunctionalCommunicationAssessmentForPhysicallyHandicappedChildren
@@ -10976,9 +12916,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFunctionalCommunicationAssessmentForPhysicallyHandicappedChildren = "273467001";
 
     /// <summary>
+    /// Literal for code: NONEFunctionalCommunicationAssessmentForPhysicallyHandicappedChildren
+    /// </summary>
+    public const string LiteralNONEFunctionalCommunicationAssessmentForPhysicallyHandicappedChildren = "http://snomed.info/sct#273467001";
+
+    /// <summary>
     /// Literal for code: FunctionalCommunicationProfile
     /// </summary>
     public const string LiteralFunctionalCommunicationProfile = "273468006";
+
+    /// <summary>
+    /// Literal for code: NONEFunctionalCommunicationProfile
+    /// </summary>
+    public const string LiteralNONEFunctionalCommunicationProfile = "http://snomed.info/sct#273468006";
 
     /// <summary>
     /// Literal for code: FIMFunctionalIndependenceMeasure
@@ -10986,9 +12936,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFIMFunctionalIndependenceMeasure = "273469003";
 
     /// <summary>
+    /// Literal for code: NONEFIMFunctionalIndependenceMeasure
+    /// </summary>
+    public const string LiteralNONEFIMFunctionalIndependenceMeasure = "http://snomed.info/sct#273469003";
+
+    /// <summary>
     /// Literal for code: FunctionalLimitationProfile
     /// </summary>
     public const string LiteralFunctionalLimitationProfile = "273470002";
+
+    /// <summary>
+    /// Literal for code: NONEFunctionalLimitationProfile
+    /// </summary>
+    public const string LiteralNONEFunctionalLimitationProfile = "http://snomed.info/sct#273470002";
 
     /// <summary>
     /// Literal for code: FMPSFunctionalMealPreparationScale
@@ -10996,9 +12956,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFMPSFunctionalMealPreparationScale = "273471003";
 
     /// <summary>
+    /// Literal for code: NONEFMPSFunctionalMealPreparationScale
+    /// </summary>
+    public const string LiteralNONEFMPSFunctionalMealPreparationScale = "http://snomed.info/sct#273471003";
+
+    /// <summary>
     /// Literal for code: FunctionalStatusIndex
     /// </summary>
     public const string LiteralFunctionalStatusIndex = "273472005";
+
+    /// <summary>
+    /// Literal for code: NONEFunctionalStatusIndex
+    /// </summary>
+    public const string LiteralNONEFunctionalStatusIndex = "http://snomed.info/sct#273472005";
 
     /// <summary>
     /// Literal for code: FSSTFundamentalSpeechSkillsTest
@@ -11006,9 +12976,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFSSTFundamentalSpeechSkillsTest = "273473000";
 
     /// <summary>
+    /// Literal for code: NONEFSSTFundamentalSpeechSkillsTest
+    /// </summary>
+    public const string LiteralNONEFSSTFundamentalSpeechSkillsTest = "http://snomed.info/sct#273473000";
+
+    /// <summary>
     /// Literal for code: GalvestonOrientationAndAmnesiaTest
     /// </summary>
     public const string LiteralGalvestonOrientationAndAmnesiaTest = "273474006";
+
+    /// <summary>
+    /// Literal for code: NONEGalvestonOrientationAndAmnesiaTest
+    /// </summary>
+    public const string LiteralNONEGalvestonOrientationAndAmnesiaTest = "http://snomed.info/sct#273474006";
 
     /// <summary>
     /// Literal for code: GathercoleNonWordRepetitionTask
@@ -11016,9 +12996,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGathercoleNonWordRepetitionTask = "273475007";
 
     /// <summary>
+    /// Literal for code: NONEGathercoleNonWordRepetitionTask
+    /// </summary>
+    public const string LiteralNONEGathercoleNonWordRepetitionTask = "http://snomed.info/sct#273475007";
+
+    /// <summary>
     /// Literal for code: GeneralAssessmentOfNeurologicalImpairment
     /// </summary>
     public const string LiteralGeneralAssessmentOfNeurologicalImpairment = "273477004";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralAssessmentOfNeurologicalImpairment
+    /// </summary>
+    public const string LiteralNONEGeneralAssessmentOfNeurologicalImpairment = "http://snomed.info/sct#273477004";
 
     /// <summary>
     /// Literal for code: GeneralClericalTest
@@ -11026,9 +13016,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGeneralClericalTest = "273478009";
 
     /// <summary>
+    /// Literal for code: NONEGeneralClericalTest
+    /// </summary>
+    public const string LiteralNONEGeneralClericalTest = "http://snomed.info/sct#273478009";
+
+    /// <summary>
     /// Literal for code: GeneralHealthQuestionnaire
     /// </summary>
     public const string LiteralGeneralHealthQuestionnaire = "273479001";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralHealthQuestionnaire
+    /// </summary>
+    public const string LiteralNONEGeneralHealthQuestionnaire = "http://snomed.info/sct#273479001";
 
     /// <summary>
     /// Literal for code: GWBSGeneralWellbeingSchedule
@@ -11036,9 +13036,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGWBSGeneralWellbeingSchedule = "273480003";
 
     /// <summary>
+    /// Literal for code: NONEGWBSGeneralWellbeingSchedule
+    /// </summary>
+    public const string LiteralNONEGWBSGeneralWellbeingSchedule = "http://snomed.info/sct#273480003";
+
+    /// <summary>
     /// Literal for code: GeriatricDepressionScale
     /// </summary>
     public const string LiteralGeriatricDepressionScale = "273481004";
+
+    /// <summary>
+    /// Literal for code: NONEGeriatricDepressionScale
+    /// </summary>
+    public const string LiteralNONEGeriatricDepressionScale = "http://snomed.info/sct#273481004";
 
     /// <summary>
     /// Literal for code: GermanTestOfWordfinding
@@ -11046,9 +13056,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGermanTestOfWordfinding = "273482006";
 
     /// <summary>
+    /// Literal for code: NONEGermanTestOfWordfinding
+    /// </summary>
+    public const string LiteralNONEGermanTestOfWordfinding = "http://snomed.info/sct#273482006";
+
+    /// <summary>
     /// Literal for code: GlasgowAbbreviatedMentalTestScore
     /// </summary>
     public const string LiteralGlasgowAbbreviatedMentalTestScore = "273483001";
+
+    /// <summary>
+    /// Literal for code: NONEGlasgowAbbreviatedMentalTestScore
+    /// </summary>
+    public const string LiteralNONEGlasgowAbbreviatedMentalTestScore = "http://snomed.info/sct#273483001";
 
     /// <summary>
     /// Literal for code: GlasgowOutcomeScale
@@ -11056,9 +13076,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGlasgowOutcomeScale = "273484007";
 
     /// <summary>
+    /// Literal for code: NONEGlasgowOutcomeScale
+    /// </summary>
+    public const string LiteralNONEGlasgowOutcomeScale = "http://snomed.info/sct#273484007";
+
+    /// <summary>
     /// Literal for code: GoldmanCardiacRiskIndex
     /// </summary>
     public const string LiteralGoldmanCardiacRiskIndex = "273485008";
+
+    /// <summary>
+    /// Literal for code: NONEGoldmanCardiacRiskIndex
+    /// </summary>
+    public const string LiteralNONEGoldmanCardiacRiskIndex = "http://snomed.info/sct#273485008";
 
     /// <summary>
     /// Literal for code: GoldmanFristoeTest
@@ -11066,9 +13096,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGoldmanFristoeTest = "273486009";
 
     /// <summary>
+    /// Literal for code: NONEGoldmanFristoeTest
+    /// </summary>
+    public const string LiteralNONEGoldmanFristoeTest = "http://snomed.info/sct#273486009";
+
+    /// <summary>
     /// Literal for code: GolombrokRustInventoryOfSexualSatisfaction
     /// </summary>
     public const string LiteralGolombrokRustInventoryOfSexualSatisfaction = "273487000";
+
+    /// <summary>
+    /// Literal for code: NONEGolombrokRustInventoryOfSexualSatisfaction
+    /// </summary>
+    public const string LiteralNONEGolombrokRustInventoryOfSexualSatisfaction = "http://snomed.info/sct#273487000";
 
     /// <summary>
     /// Literal for code: GoodenoughDrawAManTest
@@ -11076,9 +13116,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGoodenoughDrawAManTest = "273488005";
 
     /// <summary>
+    /// Literal for code: NONEGoodenoughDrawAManTest
+    /// </summary>
+    public const string LiteralNONEGoodenoughDrawAManTest = "http://snomed.info/sct#273488005";
+
+    /// <summary>
     /// Literal for code: GoodenoughNorms
     /// </summary>
     public const string LiteralGoodenoughNorms = "273489002";
+
+    /// <summary>
+    /// Literal for code: NONEGoodenoughNorms
+    /// </summary>
+    public const string LiteralNONEGoodenoughNorms = "http://snomed.info/sct#273489002";
 
     /// <summary>
     /// Literal for code: GradeRoughBreathyAsthenicStrainGRBASScale
@@ -11086,9 +13136,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGradeRoughBreathyAsthenicStrainGRBASScale = "273490006";
 
     /// <summary>
+    /// Literal for code: NONEGradeRoughBreathyAsthenicStrainGRBASScale
+    /// </summary>
+    public const string LiteralNONEGradeRoughBreathyAsthenicStrainGRBASScale = "http://snomed.info/sct#273490006";
+
+    /// <summary>
     /// Literal for code: GradedNamingTest
     /// </summary>
     public const string LiteralGradedNamingTest = "273492003";
+
+    /// <summary>
+    /// Literal for code: NONEGradedNamingTest
+    /// </summary>
+    public const string LiteralNONEGradedNamingTest = "http://snomed.info/sct#273492003";
 
     /// <summary>
     /// Literal for code: GrahamKendallMemoryForDesignsTest
@@ -11096,9 +13156,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGrahamKendallMemoryForDesignsTest = "273493008";
 
     /// <summary>
+    /// Literal for code: NONEGrahamKendallMemoryForDesignsTest
+    /// </summary>
+    public const string LiteralNONEGrahamKendallMemoryForDesignsTest = "http://snomed.info/sct#273493008";
+
+    /// <summary>
     /// Literal for code: GrammaticalAnalysisOfElicitedLanguage
     /// </summary>
     public const string LiteralGrammaticalAnalysisOfElicitedLanguage = "273494002";
+
+    /// <summary>
+    /// Literal for code: NONEGrammaticalAnalysisOfElicitedLanguage
+    /// </summary>
+    public const string LiteralNONEGrammaticalAnalysisOfElicitedLanguage = "http://snomed.info/sct#273494002";
 
     /// <summary>
     /// Literal for code: GrammaticalContrastsTest
@@ -11106,9 +13176,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGrammaticalContrastsTest = "273495001";
 
     /// <summary>
+    /// Literal for code: NONEGrammaticalContrastsTest
+    /// </summary>
+    public const string LiteralNONEGrammaticalContrastsTest = "http://snomed.info/sct#273495001";
+
+    /// <summary>
     /// Literal for code: GunzbergPrimaryProgressAssessmentChartOfSocialDevelopment
     /// </summary>
     public const string LiteralGunzbergPrimaryProgressAssessmentChartOfSocialDevelopment = "273496000";
+
+    /// <summary>
+    /// Literal for code: NONEGunzbergPrimaryProgressAssessmentChartOfSocialDevelopment
+    /// </summary>
+    public const string LiteralNONEGunzbergPrimaryProgressAssessmentChartOfSocialDevelopment = "http://snomed.info/sct#273496000";
 
     /// <summary>
     /// Literal for code: GunzbergProgressAssessmentChartOfSocialDevelopmentNumber1
@@ -11116,9 +13196,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGunzbergProgressAssessmentChartOfSocialDevelopmentNumber1 = "273497009";
 
     /// <summary>
+    /// Literal for code: NONEGunzbergProgressAssessmentChartOfSocialDevelopmentNumber1
+    /// </summary>
+    public const string LiteralNONEGunzbergProgressAssessmentChartOfSocialDevelopmentNumber1 = "http://snomed.info/sct#273497009";
+
+    /// <summary>
     /// Literal for code: GunzbergProgressAssessmentChartOfSocialDevelopmentNumber2
     /// </summary>
     public const string LiteralGunzbergProgressAssessmentChartOfSocialDevelopmentNumber2 = "273498004";
+
+    /// <summary>
+    /// Literal for code: NONEGunzbergProgressAssessmentChartOfSocialDevelopmentNumber2
+    /// </summary>
+    public const string LiteralNONEGunzbergProgressAssessmentChartOfSocialDevelopmentNumber2 = "http://snomed.info/sct#273498004";
 
     /// <summary>
     /// Literal for code: HachinskiIschemiaScore
@@ -11126,9 +13216,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHachinskiIschemiaScore = "273499007";
 
     /// <summary>
+    /// Literal for code: NONEHachinskiIschemiaScore
+    /// </summary>
+    public const string LiteralNONEHachinskiIschemiaScore = "http://snomed.info/sct#273499007";
+
+    /// <summary>
     /// Literal for code: HallAndBakerRehabilitationEvaluation
     /// </summary>
     public const string LiteralHallAndBakerRehabilitationEvaluation = "273500003";
+
+    /// <summary>
+    /// Literal for code: NONEHallAndBakerRehabilitationEvaluation
+    /// </summary>
+    public const string LiteralNONEHallAndBakerRehabilitationEvaluation = "http://snomed.info/sct#273500003";
 
     /// <summary>
     /// Literal for code: HalsteadReitanBattery
@@ -11136,9 +13236,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHalsteadReitanBattery = "273501004";
 
     /// <summary>
+    /// Literal for code: NONEHalsteadReitanBattery
+    /// </summary>
+    public const string LiteralNONEHalsteadReitanBattery = "http://snomed.info/sct#273501004";
+
+    /// <summary>
     /// Literal for code: HambHipScore
     /// </summary>
     public const string LiteralHambHipScore = "273502006";
+
+    /// <summary>
+    /// Literal for code: NONEHambHipScore
+    /// </summary>
+    public const string LiteralNONEHambHipScore = "http://snomed.info/sct#273502006";
 
     /// <summary>
     /// Literal for code: HamiltonRatingScaleForDepression
@@ -11146,9 +13256,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHamiltonRatingScaleForDepression = "273503001";
 
     /// <summary>
+    /// Literal for code: NONEHamiltonRatingScaleForDepression
+    /// </summary>
+    public const string LiteralNONEHamiltonRatingScaleForDepression = "http://snomed.info/sct#273503001";
+
+    /// <summary>
     /// Literal for code: LorrQuoteSModifiedMultidimensionalScaleForRatingPsychiatricPatients
     /// </summary>
     public const string LiteralLorrQuoteSModifiedMultidimensionalScaleForRatingPsychiatricPatients = "273504007";
+
+    /// <summary>
+    /// Literal for code: NONELorrQuoteSModifiedMultidimensionalScaleForRatingPsychiatricPatients
+    /// </summary>
+    public const string LiteralNONELorrQuoteSModifiedMultidimensionalScaleForRatingPsychiatricPatients = "http://snomed.info/sct#273504007";
 
     /// <summary>
     /// Literal for code: HampshireAssessmentForLivingWithOthers
@@ -11156,9 +13276,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHampshireAssessmentForLivingWithOthers = "273505008";
 
     /// <summary>
+    /// Literal for code: NONEHampshireAssessmentForLivingWithOthers
+    /// </summary>
+    public const string LiteralNONEHampshireAssessmentForLivingWithOthers = "http://snomed.info/sct#273505008";
+
+    /// <summary>
     /// Literal for code: HanenEarlyLanguageProgram
     /// </summary>
     public const string LiteralHanenEarlyLanguageProgram = "273507000";
+
+    /// <summary>
+    /// Literal for code: NONEHanenEarlyLanguageProgram
+    /// </summary>
+    public const string LiteralNONEHanenEarlyLanguageProgram = "http://snomed.info/sct#273507000";
 
     /// <summary>
     /// Literal for code: HarveyAndBradshawIndex
@@ -11166,9 +13296,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHarveyAndBradshawIndex = "273508005";
 
     /// <summary>
+    /// Literal for code: NONEHarveyAndBradshawIndex
+    /// </summary>
+    public const string LiteralNONEHarveyAndBradshawIndex = "http://snomed.info/sct#273508005";
+
+    /// <summary>
     /// Literal for code: HauserAmbulatoryCategories
     /// </summary>
     public const string LiteralHauserAmbulatoryCategories = "273509002";
+
+    /// <summary>
+    /// Literal for code: NONEHauserAmbulatoryCategories
+    /// </summary>
+    public const string LiteralNONEHauserAmbulatoryCategories = "http://snomed.info/sct#273509002";
 
     /// <summary>
     /// Literal for code: HealthAssessmentQuestionnaire
@@ -11176,9 +13316,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthAssessmentQuestionnaire = "273510007";
 
     /// <summary>
+    /// Literal for code: NONEHealthAssessmentQuestionnaire
+    /// </summary>
+    public const string LiteralNONEHealthAssessmentQuestionnaire = "http://snomed.info/sct#273510007";
+
+    /// <summary>
     /// Literal for code: MHAQModifiedHealthAssessmentQuestionnaire
     /// </summary>
     public const string LiteralMHAQModifiedHealthAssessmentQuestionnaire = "273511006";
+
+    /// <summary>
+    /// Literal for code: NONEMHAQModifiedHealthAssessmentQuestionnaire
+    /// </summary>
+    public const string LiteralNONEMHAQModifiedHealthAssessmentQuestionnaire = "http://snomed.info/sct#273511006";
 
     /// <summary>
     /// Literal for code: HealthcareAssessmentQuestionnaireSidneyBenjamin
@@ -11186,9 +13336,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthcareAssessmentQuestionnaireSidneyBenjamin = "273512004";
 
     /// <summary>
+    /// Literal for code: NONEHealthcareAssessmentQuestionnaireSidneyBenjamin
+    /// </summary>
+    public const string LiteralNONEHealthcareAssessmentQuestionnaireSidneyBenjamin = "http://snomed.info/sct#273512004";
+
+    /// <summary>
     /// Literal for code: HealthOfTheNationOutcomeScaleGenericVersion
     /// </summary>
     public const string LiteralHealthOfTheNationOutcomeScaleGenericVersion = "273513009";
+
+    /// <summary>
+    /// Literal for code: NONEHealthOfTheNationOutcomeScaleGenericVersion
+    /// </summary>
+    public const string LiteralNONEHealthOfTheNationOutcomeScaleGenericVersion = "http://snomed.info/sct#273513009";
 
     /// <summary>
     /// Literal for code: HealthStatusIndex
@@ -11196,9 +13356,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthStatusIndex = "273514003";
 
     /// <summary>
+    /// Literal for code: NONEHealthStatusIndex
+    /// </summary>
+    public const string LiteralNONEHealthStatusIndex = "http://snomed.info/sct#273514003";
+
+    /// <summary>
     /// Literal for code: HearingHandicapInventoryForTheElderly
     /// </summary>
     public const string LiteralHearingHandicapInventoryForTheElderly = "273515002";
+
+    /// <summary>
+    /// Literal for code: NONEHearingHandicapInventoryForTheElderly
+    /// </summary>
+    public const string LiteralNONEHearingHandicapInventoryForTheElderly = "http://snomed.info/sct#273515002";
 
     /// <summary>
     /// Literal for code: HHSHearingHandicapScale
@@ -11206,9 +13376,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHHSHearingHandicapScale = "273516001";
 
     /// <summary>
+    /// Literal for code: NONEHHSHearingHandicapScale
+    /// </summary>
+    public const string LiteralNONEHHSHearingHandicapScale = "http://snomed.info/sct#273516001";
+
+    /// <summary>
     /// Literal for code: HiddenFiguresTest
     /// </summary>
     public const string LiteralHiddenFiguresTest = "273517005";
+
+    /// <summary>
+    /// Literal for code: NONEHiddenFiguresTest
+    /// </summary>
+    public const string LiteralNONEHiddenFiguresTest = "http://snomed.info/sct#273517005";
 
     /// <summary>
     /// Literal for code: HopelessnessScale
@@ -11216,9 +13396,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHopelessnessScale = "273520002";
 
     /// <summary>
+    /// Literal for code: NONEHopelessnessScale
+    /// </summary>
+    public const string LiteralNONEHopelessnessScale = "http://snomed.info/sct#273520002";
+
+    /// <summary>
     /// Literal for code: HopkinsSymptomChecklist
     /// </summary>
     public const string LiteralHopkinsSymptomChecklist = "273521003";
+
+    /// <summary>
+    /// Literal for code: NONEHopkinsSymptomChecklist
+    /// </summary>
+    public const string LiteralNONEHopkinsSymptomChecklist = "http://snomed.info/sct#273521003";
 
     /// <summary>
     /// Literal for code: HornsbyArticulationTest
@@ -11226,9 +13416,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHornsbyArticulationTest = "273522005";
 
     /// <summary>
+    /// Literal for code: NONEHornsbyArticulationTest
+    /// </summary>
+    public const string LiteralNONEHornsbyArticulationTest = "http://snomed.info/sct#273522005";
+
+    /// <summary>
     /// Literal for code: HornsbyTestOfLanguageDevelopment
     /// </summary>
     public const string LiteralHornsbyTestOfLanguageDevelopment = "273523000";
+
+    /// <summary>
+    /// Literal for code: NONEHornsbyTestOfLanguageDevelopment
+    /// </summary>
+    public const string LiteralNONEHornsbyTestOfLanguageDevelopment = "http://snomed.info/sct#273523000";
 
     /// <summary>
     /// Literal for code: HospitalAnxietyAndDepressionScale
@@ -11236,9 +13436,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospitalAnxietyAndDepressionScale = "273524006";
 
     /// <summary>
+    /// Literal for code: NONEHospitalAnxietyAndDepressionScale
+    /// </summary>
+    public const string LiteralNONEHospitalAnxietyAndDepressionScale = "http://snomed.info/sct#273524006";
+
+    /// <summary>
     /// Literal for code: HospitalTraumaIndex
     /// </summary>
     public const string LiteralHospitalTraumaIndex = "273525007";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalTraumaIndex
+    /// </summary>
+    public const string LiteralNONEHospitalTraumaIndex = "http://snomed.info/sct#273525007";
 
     /// <summary>
     /// Literal for code: HumanInteractionAssessment
@@ -11246,9 +13456,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHumanInteractionAssessment = "273526008";
 
     /// <summary>
+    /// Literal for code: NONEHumanInteractionAssessment
+    /// </summary>
+    public const string LiteralNONEHumanInteractionAssessment = "http://snomed.info/sct#273526008";
+
+    /// <summary>
     /// Literal for code: IllinoisTestOfPsycholinguisticAbilities
     /// </summary>
     public const string LiteralIllinoisTestOfPsycholinguisticAbilities = "273527004";
+
+    /// <summary>
+    /// Literal for code: NONEIllinoisTestOfPsycholinguisticAbilities
+    /// </summary>
+    public const string LiteralNONEIllinoisTestOfPsycholinguisticAbilities = "http://snomed.info/sct#273527004";
 
     /// <summary>
     /// Literal for code: IISIIllnessInjurySeverityIndex
@@ -11256,9 +13476,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIISIIllnessInjurySeverityIndex = "273528009";
 
     /// <summary>
+    /// Literal for code: NONEIISIIllnessInjurySeverityIndex
+    /// </summary>
+    public const string LiteralNONEIISIIllnessInjurySeverityIndex = "http://snomed.info/sct#273528009";
+
+    /// <summary>
     /// Literal for code: IllnessBehaviorQuestionnaire
     /// </summary>
     public const string LiteralIllnessBehaviorQuestionnaire = "273529001";
+
+    /// <summary>
+    /// Literal for code: NONEIllnessBehaviorQuestionnaire
+    /// </summary>
+    public const string LiteralNONEIllnessBehaviorQuestionnaire = "http://snomed.info/sct#273529001";
 
     /// <summary>
     /// Literal for code: ImpactOfEventScale
@@ -11266,9 +13496,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImpactOfEventScale = "273530006";
 
     /// <summary>
+    /// Literal for code: NONEImpactOfEventScale
+    /// </summary>
+    public const string LiteralNONEImpactOfEventScale = "http://snomed.info/sct#273530006";
+
+    /// <summary>
     /// Literal for code: IndexOfIndependenceInActivitiesOfDailyLiving
     /// </summary>
     public const string LiteralIndexOfIndependenceInActivitiesOfDailyLiving = "273531005";
+
+    /// <summary>
+    /// Literal for code: NONEIndexOfIndependenceInActivitiesOfDailyLiving
+    /// </summary>
+    public const string LiteralNONEIndexOfIndependenceInActivitiesOfDailyLiving = "http://snomed.info/sct#273531005";
 
     /// <summary>
     /// Literal for code: ISSInjurySeverityScore
@@ -11276,9 +13516,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralISSInjurySeverityScore = "273533008";
 
     /// <summary>
+    /// Literal for code: NONEISSInjurySeverityScore
+    /// </summary>
+    public const string LiteralNONEISSInjurySeverityScore = "http://snomed.info/sct#273533008";
+
+    /// <summary>
     /// Literal for code: InstrumentalADL
     /// </summary>
     public const string LiteralInstrumentalADL = "273534002";
+
+    /// <summary>
+    /// Literal for code: NONEInstrumentalADL
+    /// </summary>
+    public const string LiteralNONEInstrumentalADL = "http://snomed.info/sct#273534002";
 
     /// <summary>
     /// Literal for code: INREALInterReactiveLanguageAnalysis
@@ -11286,9 +13536,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralINREALInterReactiveLanguageAnalysis = "273535001";
 
     /// <summary>
+    /// Literal for code: NONEINREALInterReactiveLanguageAnalysis
+    /// </summary>
+    public const string LiteralNONEINREALInterReactiveLanguageAnalysis = "http://snomed.info/sct#273535001";
+
+    /// <summary>
     /// Literal for code: InteractionChecklistForAugmentativeCommunication
     /// </summary>
     public const string LiteralInteractionChecklistForAugmentativeCommunication = "273536000";
+
+    /// <summary>
+    /// Literal for code: NONEInteractionChecklistForAugmentativeCommunication
+    /// </summary>
+    public const string LiteralNONEInteractionChecklistForAugmentativeCommunication = "http://snomed.info/sct#273536000";
 
     /// <summary>
     /// Literal for code: InterestChecklist
@@ -11296,9 +13556,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInterestChecklist = "273537009";
 
     /// <summary>
+    /// Literal for code: NONEInterestChecklist
+    /// </summary>
+    public const string LiteralNONEInterestChecklist = "http://snomed.info/sct#273537009";
+
+    /// <summary>
     /// Literal for code: IOWALowBackRatingScale
     /// </summary>
     public const string LiteralIOWALowBackRatingScale = "273538004";
+
+    /// <summary>
+    /// Literal for code: NONEIOWALowBackRatingScale
+    /// </summary>
+    public const string LiteralNONEIOWALowBackRatingScale = "http://snomed.info/sct#273538004";
 
     /// <summary>
     /// Literal for code: IOWAStructuredPsychiatricInterview
@@ -11306,9 +13576,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIOWAStructuredPsychiatricInterview = "273539007";
 
     /// <summary>
+    /// Literal for code: NONEIOWAStructuredPsychiatricInterview
+    /// </summary>
+    public const string LiteralNONEIOWAStructuredPsychiatricInterview = "http://snomed.info/sct#273539007";
+
+    /// <summary>
     /// Literal for code: IschemiaScore
     /// </summary>
     public const string LiteralIschemiaScore = "273540009";
+
+    /// <summary>
+    /// Literal for code: NONEIschemiaScore
+    /// </summary>
+    public const string LiteralNONEIschemiaScore = "http://snomed.info/sct#273540009";
 
     /// <summary>
     /// Literal for code: JarmanIndex
@@ -11316,9 +13596,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJarmanIndex = "273542001";
 
     /// <summary>
+    /// Literal for code: NONEJarmanIndex
+    /// </summary>
+    public const string LiteralNONEJarmanIndex = "http://snomed.info/sct#273542001";
+
+    /// <summary>
     /// Literal for code: JebsenHandFunctionTest
     /// </summary>
     public const string LiteralJebsenHandFunctionTest = "273543006";
+
+    /// <summary>
+    /// Literal for code: NONEJebsenHandFunctionTest
+    /// </summary>
+    public const string LiteralNONEJebsenHandFunctionTest = "http://snomed.info/sct#273543006";
 
     /// <summary>
     /// Literal for code: JonesWordOrderTest
@@ -11326,9 +13616,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJonesWordOrderTest = "273544000";
 
     /// <summary>
+    /// Literal for code: NONEJonesWordOrderTest
+    /// </summary>
+    public const string LiteralNONEJonesWordOrderTest = "http://snomed.info/sct#273544000";
+
+    /// <summary>
     /// Literal for code: KarnofskyIndex
     /// </summary>
     public const string LiteralKarnofskyIndex = "273546003";
+
+    /// <summary>
+    /// Literal for code: NONEKarnofskyIndex
+    /// </summary>
+    public const string LiteralNONEKarnofskyIndex = "http://snomed.info/sct#273546003";
 
     /// <summary>
     /// Literal for code: KatzActivitiesOfDailyLiving
@@ -11336,9 +13636,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKatzActivitiesOfDailyLiving = "273547007";
 
     /// <summary>
+    /// Literal for code: NONEKatzActivitiesOfDailyLiving
+    /// </summary>
+    public const string LiteralNONEKatzActivitiesOfDailyLiving = "http://snomed.info/sct#273547007";
+
+    /// <summary>
     /// Literal for code: KASRKatzAdjustmentScaleRelativesForm
     /// </summary>
     public const string LiteralKASRKatzAdjustmentScaleRelativesForm = "273548002";
+
+    /// <summary>
+    /// Literal for code: NONEKASRKatzAdjustmentScaleRelativesForm
+    /// </summary>
+    public const string LiteralNONEKASRKatzAdjustmentScaleRelativesForm = "http://snomed.info/sct#273548002";
 
     /// <summary>
     /// Literal for code: KendrickBatteryForDetectionOfDementiaInTheElderly
@@ -11346,9 +13656,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKendrickBatteryForDetectionOfDementiaInTheElderly = "273549005";
 
     /// <summary>
+    /// Literal for code: NONEKendrickBatteryForDetectionOfDementiaInTheElderly
+    /// </summary>
+    public const string LiteralNONEKendrickBatteryForDetectionOfDementiaInTheElderly = "http://snomed.info/sct#273549005";
+
+    /// <summary>
     /// Literal for code: KennyIndexOfADL
     /// </summary>
     public const string LiteralKennyIndexOfADL = "273550005";
+
+    /// <summary>
+    /// Literal for code: NONEKennyIndexOfADL
+    /// </summary>
+    public const string LiteralNONEKennyIndexOfADL = "http://snomed.info/sct#273550005";
 
     /// <summary>
     /// Literal for code: KielhofnerRoleChecklist
@@ -11356,9 +13676,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKielhofnerRoleChecklist = "273551009";
 
     /// <summary>
+    /// Literal for code: NONEKielhofnerRoleChecklist
+    /// </summary>
+    public const string LiteralNONEKielhofnerRoleChecklist = "http://snomed.info/sct#273551009";
+
+    /// <summary>
     /// Literal for code: KirwanThompsonArticularIndex
     /// </summary>
     public const string LiteralKirwanThompsonArticularIndex = "273552002";
+
+    /// <summary>
+    /// Literal for code: NONEKirwanThompsonArticularIndex
+    /// </summary>
+    public const string LiteralNONEKirwanThompsonArticularIndex = "http://snomed.info/sct#273552002";
 
     /// <summary>
     /// Literal for code: KleinBellActivitiesOfDailyLivingScale
@@ -11366,9 +13696,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKleinBellActivitiesOfDailyLivingScale = "273553007";
 
     /// <summary>
+    /// Literal for code: NONEKleinBellActivitiesOfDailyLivingScale
+    /// </summary>
+    public const string LiteralNONEKleinBellActivitiesOfDailyLivingScale = "http://snomed.info/sct#273553007";
+
+    /// <summary>
     /// Literal for code: KurtzkeMultipleSclerosisRatingScale
     /// </summary>
     public const string LiteralKurtzkeMultipleSclerosisRatingScale = "273554001";
+
+    /// <summary>
+    /// Literal for code: NONEKurtzkeMultipleSclerosisRatingScale
+    /// </summary>
+    public const string LiteralNONEKurtzkeMultipleSclerosisRatingScale = "http://snomed.info/sct#273554001";
 
     /// <summary>
     /// Literal for code: LCSLambethCommunicationScale
@@ -11376,9 +13716,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLCSLambethCommunicationScale = "273555000";
 
     /// <summary>
+    /// Literal for code: NONELCSLambethCommunicationScale
+    /// </summary>
+    public const string LiteralNONELCSLambethCommunicationScale = "http://snomed.info/sct#273555000";
+
+    /// <summary>
     /// Literal for code: LambethDisabilityScreeningQuestionnaire
     /// </summary>
     public const string LiteralLambethDisabilityScreeningQuestionnaire = "273556004";
+
+    /// <summary>
+    /// Literal for code: NONELambethDisabilityScreeningQuestionnaire
+    /// </summary>
+    public const string LiteralNONELambethDisabilityScreeningQuestionnaire = "http://snomed.info/sct#273556004";
 
     /// <summary>
     /// Literal for code: LamhAssessmentChecklist
@@ -11386,9 +13736,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLamhAssessmentChecklist = "273557008";
 
     /// <summary>
+    /// Literal for code: NONELamhAssessmentChecklist
+    /// </summary>
+    public const string LiteralNONELamhAssessmentChecklist = "http://snomed.info/sct#273557008";
+
+    /// <summary>
     /// Literal for code: LanguageAssessmentRemediationAndScreeningProcedure
     /// </summary>
     public const string LiteralLanguageAssessmentRemediationAndScreeningProcedure = "273558003";
+
+    /// <summary>
+    /// Literal for code: NONELanguageAssessmentRemediationAndScreeningProcedure
+    /// </summary>
+    public const string LiteralNONELanguageAssessmentRemediationAndScreeningProcedure = "http://snomed.info/sct#273558003";
 
     /// <summary>
     /// Literal for code: LansburyArticularIndex
@@ -11396,9 +13756,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLansburyArticularIndex = "273559006";
 
     /// <summary>
+    /// Literal for code: NONELansburyArticularIndex
+    /// </summary>
+    public const string LiteralNONELansburyArticularIndex = "http://snomed.info/sct#273559006";
+
+    /// <summary>
     /// Literal for code: LastSixMonthsOfDrinkingQuestionnaire
     /// </summary>
     public const string LiteralLastSixMonthsOfDrinkingQuestionnaire = "273560001";
+
+    /// <summary>
+    /// Literal for code: NONELastSixMonthsOfDrinkingQuestionnaire
+    /// </summary>
+    public const string LiteralNONELastSixMonthsOfDrinkingQuestionnaire = "http://snomed.info/sct#273560001";
 
     /// <summary>
     /// Literal for code: LearningDevelopmentAidsHandwritingAssessment
@@ -11406,9 +13776,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLearningDevelopmentAidsHandwritingAssessment = "273561002";
 
     /// <summary>
+    /// Literal for code: NONELearningDevelopmentAidsHandwritingAssessment
+    /// </summary>
+    public const string LiteralNONELearningDevelopmentAidsHandwritingAssessment = "http://snomed.info/sct#273561002";
+
+    /// <summary>
     /// Literal for code: LeedsScalesForTheSelfAssessmentOfAnxietyAndDepression
     /// </summary>
     public const string LiteralLeedsScalesForTheSelfAssessmentOfAnxietyAndDepression = "273562009";
+
+    /// <summary>
+    /// Literal for code: NONELeedsScalesForTheSelfAssessmentOfAnxietyAndDepression
+    /// </summary>
+    public const string LiteralNONELeedsScalesForTheSelfAssessmentOfAnxietyAndDepression = "http://snomed.info/sct#273562009";
 
     /// <summary>
     /// Literal for code: LeiterInternationalPerformanceScale
@@ -11416,9 +13796,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeiterInternationalPerformanceScale = "273564005";
 
     /// <summary>
+    /// Literal for code: NONELeiterInternationalPerformanceScale
+    /// </summary>
+    public const string LiteralNONELeiterInternationalPerformanceScale = "http://snomed.info/sct#273564005";
+
+    /// <summary>
     /// Literal for code: LequesneIndex
     /// </summary>
     public const string LiteralLequesneIndex = "273565006";
+
+    /// <summary>
+    /// Literal for code: NONELequesneIndex
+    /// </summary>
+    public const string LiteralNONELequesneIndex = "http://snomed.info/sct#273565006";
 
     /// <summary>
     /// Literal for code: LequesneIndexHip
@@ -11426,9 +13816,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLequesneIndexHip = "273566007";
 
     /// <summary>
+    /// Literal for code: NONELequesneIndexHip
+    /// </summary>
+    public const string LiteralNONELequesneIndexHip = "http://snomed.info/sct#273566007";
+
+    /// <summary>
     /// Literal for code: LequesneIndexKnee
     /// </summary>
     public const string LiteralLequesneIndexKnee = "273567003";
+
+    /// <summary>
+    /// Literal for code: NONELequesneIndexKnee
+    /// </summary>
+    public const string LiteralNONELequesneIndexKnee = "http://snomed.info/sct#273567003";
 
     /// <summary>
     /// Literal for code: LetterCancelationTest
@@ -11436,9 +13836,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLetterCancelationTest = "273568008";
 
     /// <summary>
+    /// Literal for code: NONELetterCancelationTest
+    /// </summary>
+    public const string LiteralNONELetterCancelationTest = "http://snomed.info/sct#273568008";
+
+    /// <summary>
     /// Literal for code: LifeEventsAndDifficultiesScale
     /// </summary>
     public const string LiteralLifeEventsAndDifficultiesScale = "273569000";
+
+    /// <summary>
+    /// Literal for code: NONELifeEventsAndDifficultiesScale
+    /// </summary>
+    public const string LiteralNONELifeEventsAndDifficultiesScale = "http://snomed.info/sct#273569000";
 
     /// <summary>
     /// Literal for code: LifeEventsInventory
@@ -11446,9 +13856,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLifeEventsInventory = "273570004";
 
     /// <summary>
+    /// Literal for code: NONELifeEventsInventory
+    /// </summary>
+    public const string LiteralNONELifeEventsInventory = "http://snomed.info/sct#273570004";
+
+    /// <summary>
     /// Literal for code: LifeSatisfactionIndex
     /// </summary>
     public const string LiteralLifeSatisfactionIndex = "273571000";
+
+    /// <summary>
+    /// Literal for code: NONELifeSatisfactionIndex
+    /// </summary>
+    public const string LiteralNONELifeSatisfactionIndex = "http://snomed.info/sct#273571000";
 
     /// <summary>
     /// Literal for code: LSIALifeSatisfactionIndexA
@@ -11456,9 +13876,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLSIALifeSatisfactionIndexA = "273572007";
 
     /// <summary>
+    /// Literal for code: NONELSIALifeSatisfactionIndexA
+    /// </summary>
+    public const string LiteralNONELSIALifeSatisfactionIndexA = "http://snomed.info/sct#273572007";
+
+    /// <summary>
     /// Literal for code: LifeSatisfactionIndexB
     /// </summary>
     public const string LiteralLifeSatisfactionIndexB = "273573002";
+
+    /// <summary>
+    /// Literal for code: NONELifeSatisfactionIndexB
+    /// </summary>
+    public const string LiteralNONELifeSatisfactionIndexB = "http://snomed.info/sct#273573002";
 
     /// <summary>
     /// Literal for code: LSIZLifeSatisfactionIndexZ
@@ -11466,9 +13896,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLSIZLifeSatisfactionIndexZ = "273574008";
 
     /// <summary>
+    /// Literal for code: NONELSIZLifeSatisfactionIndexZ
+    /// </summary>
+    public const string LiteralNONELSIZLifeSatisfactionIndexZ = "http://snomed.info/sct#273574008";
+
+    /// <summary>
     /// Literal for code: LikertScale
     /// </summary>
     public const string LiteralLikertScale = "273575009";
+
+    /// <summary>
+    /// Literal for code: NONELikertScale
+    /// </summary>
+    public const string LiteralNONELikertScale = "http://snomed.info/sct#273575009";
 
     /// <summary>
     /// Literal for code: LincolnRehabilitationAssessment
@@ -11476,9 +13916,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLincolnRehabilitationAssessment = "273576005";
 
     /// <summary>
+    /// Literal for code: NONELincolnRehabilitationAssessment
+    /// </summary>
+    public const string LiteralNONELincolnRehabilitationAssessment = "http://snomed.info/sct#273576005";
+
+    /// <summary>
     /// Literal for code: LindamoodAuditoryConceptualizationTest
     /// </summary>
     public const string LiteralLindamoodAuditoryConceptualizationTest = "273577001";
+
+    /// <summary>
+    /// Literal for code: NONELindamoodAuditoryConceptualizationTest
+    /// </summary>
+    public const string LiteralNONELindamoodAuditoryConceptualizationTest = "http://snomed.info/sct#273577001";
 
     /// <summary>
     /// Literal for code: LowensteinOccupationalTherapyCognitiveAssessment
@@ -11486,9 +13936,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLowensteinOccupationalTherapyCognitiveAssessment = "273578006";
 
     /// <summary>
+    /// Literal for code: NONELowensteinOccupationalTherapyCognitiveAssessment
+    /// </summary>
+    public const string LiteralNONELowensteinOccupationalTherapyCognitiveAssessment = "http://snomed.info/sct#273578006";
+
+    /// <summary>
     /// Literal for code: LondonHospitalPainChartAssessment
     /// </summary>
     public const string LiteralLondonHospitalPainChartAssessment = "273580000";
+
+    /// <summary>
+    /// Literal for code: NONELondonHospitalPainChartAssessment
+    /// </summary>
+    public const string LiteralNONELondonHospitalPainChartAssessment = "http://snomed.info/sct#273580000";
 
     /// <summary>
     /// Literal for code: LuriaNeuropsychologicalBattery
@@ -11496,9 +13956,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLuriaNeuropsychologicalBattery = "273581001";
 
     /// <summary>
+    /// Literal for code: NONELuriaNeuropsychologicalBattery
+    /// </summary>
+    public const string LiteralNONELuriaNeuropsychologicalBattery = "http://snomed.info/sct#273581001";
+
+    /// <summary>
     /// Literal for code: MacAndrewScale
     /// </summary>
     public const string LiteralMacAndrewScale = "273582008";
+
+    /// <summary>
+    /// Literal for code: NONEMacAndrewScale
+    /// </summary>
+    public const string LiteralNONEMacAndrewScale = "http://snomed.info/sct#273582008";
 
     /// <summary>
     /// Literal for code: MacMillanReadingTest
@@ -11506,9 +13976,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMacMillanReadingTest = "273583003";
 
     /// <summary>
+    /// Literal for code: NONEMacMillanReadingTest
+    /// </summary>
+    public const string LiteralNONEMacMillanReadingTest = "http://snomed.info/sct#273583003";
+
+    /// <summary>
     /// Literal for code: MakeAPictureStoryTest
     /// </summary>
     public const string LiteralMakeAPictureStoryTest = "273584009";
+
+    /// <summary>
+    /// Literal for code: NONEMakeAPictureStoryTest
+    /// </summary>
+    public const string LiteralNONEMakeAPictureStoryTest = "http://snomed.info/sct#273584009";
 
     /// <summary>
     /// Literal for code: MallampatiScale
@@ -11516,9 +13996,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMallampatiScale = "273585005";
 
     /// <summary>
+    /// Literal for code: NONEMallampatiScale
+    /// </summary>
+    public const string LiteralNONEMallampatiScale = "http://snomed.info/sct#273585005";
+
+    /// <summary>
     /// Literal for code: MasterQuestionnaire
     /// </summary>
     public const string LiteralMasterQuestionnaire = "273586006";
+
+    /// <summary>
+    /// Literal for code: NONEMasterQuestionnaire
+    /// </summary>
+    public const string LiteralNONEMasterQuestionnaire = "http://snomed.info/sct#273586006";
 
     /// <summary>
     /// Literal for code: RevisedMasterQuestionnaire
@@ -11526,9 +14016,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRevisedMasterQuestionnaire = "273587002";
 
     /// <summary>
+    /// Literal for code: NONERevisedMasterQuestionnaire
+    /// </summary>
+    public const string LiteralNONERevisedMasterQuestionnaire = "http://snomed.info/sct#273587002";
+
+    /// <summary>
     /// Literal for code: MatsonAssessment
     /// </summary>
     public const string LiteralMatsonAssessment = "273588007";
+
+    /// <summary>
+    /// Literal for code: NONEMatsonAssessment
+    /// </summary>
+    public const string LiteralNONEMatsonAssessment = "http://snomed.info/sct#273588007";
 
     /// <summary>
     /// Literal for code: McConkeyScore
@@ -11536,9 +14036,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMcConkeyScore = "273589004";
 
     /// <summary>
+    /// Literal for code: NONEMcConkeyScore
+    /// </summary>
+    public const string LiteralNONEMcConkeyScore = "http://snomed.info/sct#273589004";
+
+    /// <summary>
     /// Literal for code: McCormickMiniatureToyDiscriminationTest
     /// </summary>
     public const string LiteralMcCormickMiniatureToyDiscriminationTest = "273590008";
+
+    /// <summary>
+    /// Literal for code: NONEMcCormickMiniatureToyDiscriminationTest
+    /// </summary>
+    public const string LiteralNONEMcCormickMiniatureToyDiscriminationTest = "http://snomed.info/sct#273590008";
 
     /// <summary>
     /// Literal for code: McCormickMiniatureToyDiscriminationTestAutomated
@@ -11546,9 +14056,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMcCormickMiniatureToyDiscriminationTestAutomated = "273591007";
 
     /// <summary>
+    /// Literal for code: NONEMcCormickMiniatureToyDiscriminationTestAutomated
+    /// </summary>
+    public const string LiteralNONEMcCormickMiniatureToyDiscriminationTestAutomated = "http://snomed.info/sct#273591007";
+
+    /// <summary>
     /// Literal for code: McCormickMiniatureToyDiscriminationTestManual
     /// </summary>
     public const string LiteralMcCormickMiniatureToyDiscriminationTestManual = "273592000";
+
+    /// <summary>
+    /// Literal for code: NONEMcCormickMiniatureToyDiscriminationTestManual
+    /// </summary>
+    public const string LiteralNONEMcCormickMiniatureToyDiscriminationTestManual = "http://snomed.info/sct#273592000";
 
     /// <summary>
     /// Literal for code: McGillPainChartQuestionnaire
@@ -11556,9 +14076,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMcGillPainChartQuestionnaire = "273593005";
 
     /// <summary>
+    /// Literal for code: NONEMcGillPainChartQuestionnaire
+    /// </summary>
+    public const string LiteralNONEMcGillPainChartQuestionnaire = "http://snomed.info/sct#273593005";
+
+    /// <summary>
     /// Literal for code: MHIQMcMasterHealthIndexQuestionnaire
     /// </summary>
     public const string LiteralMHIQMcMasterHealthIndexQuestionnaire = "273594004";
+
+    /// <summary>
+    /// Literal for code: NONEMHIQMcMasterHealthIndexQuestionnaire
+    /// </summary>
+    public const string LiteralNONEMHIQMcMasterHealthIndexQuestionnaire = "http://snomed.info/sct#273594004";
 
     /// <summary>
     /// Literal for code: McTearsAssessmentOfConversation
@@ -11566,9 +14096,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMcTearsAssessmentOfConversation = "273595003";
 
     /// <summary>
+    /// Literal for code: NONEMcTearsAssessmentOfConversation
+    /// </summary>
+    public const string LiteralNONEMcTearsAssessmentOfConversation = "http://snomed.info/sct#273595003";
+
+    /// <summary>
     /// Literal for code: MedicalOutcomesStudyShortFormGeneralHealthSurvey
     /// </summary>
     public const string LiteralMedicalOutcomesStudyShortFormGeneralHealthSurvey = "273596002";
+
+    /// <summary>
+    /// Literal for code: NONEMedicalOutcomesStudyShortFormGeneralHealthSurvey
+    /// </summary>
+    public const string LiteralNONEMedicalOutcomesStudyShortFormGeneralHealthSurvey = "http://snomed.info/sct#273596002";
 
     /// <summary>
     /// Literal for code: MedicalOutcomesStudyShortFormGeneralHealthSurvey36
@@ -11576,9 +14116,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalOutcomesStudyShortFormGeneralHealthSurvey36 = "273597006";
 
     /// <summary>
+    /// Literal for code: NONEMedicalOutcomesStudyShortFormGeneralHealthSurvey36
+    /// </summary>
+    public const string LiteralNONEMedicalOutcomesStudyShortFormGeneralHealthSurvey36 = "http://snomed.info/sct#273597006";
+
+    /// <summary>
     /// Literal for code: MOSSF20MedicalOutcomesStudyShortFormGeneralHealthSurvey20
     /// </summary>
     public const string LiteralMOSSF20MedicalOutcomesStudyShortFormGeneralHealthSurvey20 = "273598001";
+
+    /// <summary>
+    /// Literal for code: NONEMOSSF20MedicalOutcomesStudyShortFormGeneralHealthSurvey20
+    /// </summary>
+    public const string LiteralNONEMOSSF20MedicalOutcomesStudyShortFormGeneralHealthSurvey20 = "http://snomed.info/sct#273598001";
 
     /// <summary>
     /// Literal for code: MedicalResearchCouncilMotorPowerScale
@@ -11586,9 +14136,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalResearchCouncilMotorPowerScale = "273599009";
 
     /// <summary>
+    /// Literal for code: NONEMedicalResearchCouncilMotorPowerScale
+    /// </summary>
+    public const string LiteralNONEMedicalResearchCouncilMotorPowerScale = "http://snomed.info/sct#273599009";
+
+    /// <summary>
     /// Literal for code: MedicalResearchCouncilQuestionnaire
     /// </summary>
     public const string LiteralMedicalResearchCouncilQuestionnaire = "273600007";
+
+    /// <summary>
+    /// Literal for code: NONEMedicalResearchCouncilQuestionnaire
+    /// </summary>
+    public const string LiteralNONEMedicalResearchCouncilQuestionnaire = "http://snomed.info/sct#273600007";
 
     /// <summary>
     /// Literal for code: MentalStatusQuestionnaire
@@ -11596,9 +14156,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMentalStatusQuestionnaire = "273601006";
 
     /// <summary>
+    /// Literal for code: NONEMentalStatusQuestionnaire
+    /// </summary>
+    public const string LiteralNONEMentalStatusQuestionnaire = "http://snomed.info/sct#273601006";
+
+    /// <summary>
     /// Literal for code: MentalTestQuotient
     /// </summary>
     public const string LiteralMentalTestQuotient = "273602004";
+
+    /// <summary>
+    /// Literal for code: NONEMentalTestQuotient
+    /// </summary>
+    public const string LiteralNONEMentalTestQuotient = "http://snomed.info/sct#273602004";
 
     /// <summary>
     /// Literal for code: MentalTestScoreLongVersion
@@ -11606,9 +14176,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMentalTestScoreLongVersion = "273603009";
 
     /// <summary>
+    /// Literal for code: NONEMentalTestScoreLongVersion
+    /// </summary>
+    public const string LiteralNONEMentalTestScoreLongVersion = "http://snomed.info/sct#273603009";
+
+    /// <summary>
     /// Literal for code: MerleDQuoteAubigneCharnleyHipScore
     /// </summary>
     public const string LiteralMerleDQuoteAubigneCharnleyHipScore = "273604003";
+
+    /// <summary>
+    /// Literal for code: NONEMerleDQuoteAubigneCharnleyHipScore
+    /// </summary>
+    public const string LiteralNONEMerleDQuoteAubigneCharnleyHipScore = "http://snomed.info/sct#273604003";
 
     /// <summary>
     /// Literal for code: MichiganAlcoholismScreeningTest
@@ -11616,9 +14196,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMichiganAlcoholismScreeningTest = "273608000";
 
     /// <summary>
+    /// Literal for code: NONEMichiganAlcoholismScreeningTest
+    /// </summary>
+    public const string LiteralNONEMichiganAlcoholismScreeningTest = "http://snomed.info/sct#273608000";
+
+    /// <summary>
     /// Literal for code: BMASTBriefMichiganAlcoholismScreeningTest
     /// </summary>
     public const string LiteralBMASTBriefMichiganAlcoholismScreeningTest = "273609008";
+
+    /// <summary>
+    /// Literal for code: NONEBMASTBriefMichiganAlcoholismScreeningTest
+    /// </summary>
+    public const string LiteralNONEBMASTBriefMichiganAlcoholismScreeningTest = "http://snomed.info/sct#273609008";
 
     /// <summary>
     /// Literal for code: ShortMichiganAlcoholismScreeningTest
@@ -11626,9 +14216,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralShortMichiganAlcoholismScreeningTest = "273610003";
 
     /// <summary>
+    /// Literal for code: NONEShortMichiganAlcoholismScreeningTest
+    /// </summary>
+    public const string LiteralNONEShortMichiganAlcoholismScreeningTest = "http://snomed.info/sct#273610003";
+
+    /// <summary>
     /// Literal for code: MEAMSMiddlesexElderlyAssessmentOfMentalState
     /// </summary>
     public const string LiteralMEAMSMiddlesexElderlyAssessmentOfMentalState = "273611004";
+
+    /// <summary>
+    /// Literal for code: NONEMEAMSMiddlesexElderlyAssessmentOfMentalState
+    /// </summary>
+    public const string LiteralNONEMEAMSMiddlesexElderlyAssessmentOfMentalState = "http://snomed.info/sct#273611004";
 
     /// <summary>
     /// Literal for code: MidlandsSpellingTest
@@ -11636,9 +14236,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMidlandsSpellingTest = "273613001";
 
     /// <summary>
+    /// Literal for code: NONEMidlandsSpellingTest
+    /// </summary>
+    public const string LiteralNONEMidlandsSpellingTest = "http://snomed.info/sct#273613001";
+
+    /// <summary>
     /// Literal for code: MillHillVocabularyScale
     /// </summary>
     public const string LiteralMillHillVocabularyScale = "273614007";
+
+    /// <summary>
+    /// Literal for code: NONEMillHillVocabularyScale
+    /// </summary>
+    public const string LiteralNONEMillHillVocabularyScale = "http://snomed.info/sct#273614007";
 
     /// <summary>
     /// Literal for code: MillerAssessmentForPreschoolers
@@ -11646,9 +14256,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMillerAssessmentForPreschoolers = "273615008";
 
     /// <summary>
+    /// Literal for code: NONEMillerAssessmentForPreschoolers
+    /// </summary>
+    public const string LiteralNONEMillerAssessmentForPreschoolers = "http://snomed.info/sct#273615008";
+
+    /// <summary>
     /// Literal for code: MilwaukeeEvaluationOfDailyLivingSkills
     /// </summary>
     public const string LiteralMilwaukeeEvaluationOfDailyLivingSkills = "273616009";
+
+    /// <summary>
+    /// Literal for code: NONEMilwaukeeEvaluationOfDailyLivingSkills
+    /// </summary>
+    public const string LiteralNONEMilwaukeeEvaluationOfDailyLivingSkills = "http://snomed.info/sct#273616009";
 
     /// <summary>
     /// Literal for code: MiniMentalStateExamination
@@ -11656,9 +14276,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMiniMentalStateExamination = "273617000";
 
     /// <summary>
+    /// Literal for code: NONEMiniMentalStateExamination
+    /// </summary>
+    public const string LiteralNONEMiniMentalStateExamination = "http://snomed.info/sct#273617000";
+
+    /// <summary>
     /// Literal for code: ModifiedMiniMentalState3MSExamination
     /// </summary>
     public const string LiteralModifiedMiniMentalState3MSExamination = "273619002";
+
+    /// <summary>
+    /// Literal for code: NONEModifiedMiniMentalState3MSExamination
+    /// </summary>
+    public const string LiteralNONEModifiedMiniMentalState3MSExamination = "http://snomed.info/sct#273619002";
 
     /// <summary>
     /// Literal for code: MinnesotaTestForDifferentialDiagnosisOfAphasia
@@ -11666,9 +14296,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMinnesotaTestForDifferentialDiagnosisOfAphasia = "273621007";
 
     /// <summary>
+    /// Literal for code: NONEMinnesotaTestForDifferentialDiagnosisOfAphasia
+    /// </summary>
+    public const string LiteralNONEMinnesotaTestForDifferentialDiagnosisOfAphasia = "http://snomed.info/sct#273621007";
+
+    /// <summary>
     /// Literal for code: ShortenedSchuellShortenedMinnesotaTestForDifferentialDiagnosisOfAphasia
     /// </summary>
     public const string LiteralShortenedSchuellShortenedMinnesotaTestForDifferentialDiagnosisOfAphasia = "273622000";
+
+    /// <summary>
+    /// Literal for code: NONEShortenedSchuellShortenedMinnesotaTestForDifferentialDiagnosisOfAphasia
+    /// </summary>
+    public const string LiteralNONEShortenedSchuellShortenedMinnesotaTestForDifferentialDiagnosisOfAphasia = "http://snomed.info/sct#273622000";
 
     /// <summary>
     /// Literal for code: ModifiedCardSortingTest
@@ -11676,9 +14316,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralModifiedCardSortingTest = "273623005";
 
     /// <summary>
+    /// Literal for code: NONEModifiedCardSortingTest
+    /// </summary>
+    public const string LiteralNONEModifiedCardSortingTest = "http://snomed.info/sct#273623005";
+
+    /// <summary>
     /// Literal for code: MISSModifiedInjurySeverityScale
     /// </summary>
     public const string LiteralMISSModifiedInjurySeverityScale = "273624004";
+
+    /// <summary>
+    /// Literal for code: NONEMISSModifiedInjurySeverityScale
+    /// </summary>
+    public const string LiteralNONEMISSModifiedInjurySeverityScale = "http://snomed.info/sct#273624004";
 
     /// <summary>
     /// Literal for code: ModifiedWordLearningTest
@@ -11686,9 +14336,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralModifiedWordLearningTest = "273625003";
 
     /// <summary>
+    /// Literal for code: NONEModifiedWordLearningTest
+    /// </summary>
+    public const string LiteralNONEModifiedWordLearningTest = "http://snomed.info/sct#273625003";
+
+    /// <summary>
     /// Literal for code: MontereyFluencyProgram
     /// </summary>
     public const string LiteralMontereyFluencyProgram = "273626002";
+
+    /// <summary>
+    /// Literal for code: NONEMontereyFluencyProgram
+    /// </summary>
+    public const string LiteralNONEMontereyFluencyProgram = "http://snomed.info/sct#273626002";
 
     /// <summary>
     /// Literal for code: MoodAdjectiveChecklist
@@ -11696,9 +14356,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMoodAdjectiveChecklist = "273627006";
 
     /// <summary>
+    /// Literal for code: NONEMoodAdjectiveChecklist
+    /// </summary>
+    public const string LiteralNONEMoodAdjectiveChecklist = "http://snomed.info/sct#273627006";
+
+    /// <summary>
     /// Literal for code: MorganBarryAuditoryDiscriminationAndAttentionTest
     /// </summary>
     public const string LiteralMorganBarryAuditoryDiscriminationAndAttentionTest = "273628001";
+
+    /// <summary>
+    /// Literal for code: NONEMorganBarryAuditoryDiscriminationAndAttentionTest
+    /// </summary>
+    public const string LiteralNONEMorganBarryAuditoryDiscriminationAndAttentionTest = "http://snomed.info/sct#273628001";
 
     /// <summary>
     /// Literal for code: MorningsideRehabilitationStatusScale
@@ -11706,9 +14376,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMorningsideRehabilitationStatusScale = "273629009";
 
     /// <summary>
+    /// Literal for code: NONEMorningsideRehabilitationStatusScale
+    /// </summary>
+    public const string LiteralNONEMorningsideRehabilitationStatusScale = "http://snomed.info/sct#273629009";
+
+    /// <summary>
     /// Literal for code: MortalityProbabilityModel
     /// </summary>
     public const string LiteralMortalityProbabilityModel = "273630004";
+
+    /// <summary>
+    /// Literal for code: NONEMortalityProbabilityModel
+    /// </summary>
+    public const string LiteralNONEMortalityProbabilityModel = "http://snomed.info/sct#273630004";
 
     /// <summary>
     /// Literal for code: MortalityPredictionModelII
@@ -11716,9 +14396,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMortalityPredictionModelII = "273631000";
 
     /// <summary>
+    /// Literal for code: NONEMortalityPredictionModelII
+    /// </summary>
+    public const string LiteralNONEMortalityPredictionModelII = "http://snomed.info/sct#273631000";
+
+    /// <summary>
     /// Literal for code: MFSMotivesForSmokingScale
     /// </summary>
     public const string LiteralMFSMotivesForSmokingScale = "273632007";
+
+    /// <summary>
+    /// Literal for code: NONEMFSMotivesForSmokingScale
+    /// </summary>
+    public const string LiteralNONEMFSMotivesForSmokingScale = "http://snomed.info/sct#273632007";
 
     /// <summary>
     /// Literal for code: MotorAssessmentScale
@@ -11726,9 +14416,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMotorAssessmentScale = "273633002";
 
     /// <summary>
+    /// Literal for code: NONEMotorAssessmentScale
+    /// </summary>
+    public const string LiteralNONEMotorAssessmentScale = "http://snomed.info/sct#273633002";
+
+    /// <summary>
     /// Literal for code: MotricityIndex
     /// </summary>
     public const string LiteralMotricityIndex = "273634008";
+
+    /// <summary>
+    /// Literal for code: NONEMotricityIndex
+    /// </summary>
+    public const string LiteralNONEMotricityIndex = "http://snomed.info/sct#273634008";
 
     /// <summary>
     /// Literal for code: MountWilgaHighLevelLanguageScreeningAssessment
@@ -11736,9 +14436,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMountWilgaHighLevelLanguageScreeningAssessment = "273635009";
 
     /// <summary>
+    /// Literal for code: NONEMountWilgaHighLevelLanguageScreeningAssessment
+    /// </summary>
+    public const string LiteralNONEMountWilgaHighLevelLanguageScreeningAssessment = "http://snomed.info/sct#273635009";
+
+    /// <summary>
     /// Literal for code: MovementOfUpperLimbEvaluation
     /// </summary>
     public const string LiteralMovementOfUpperLimbEvaluation = "273636005";
+
+    /// <summary>
+    /// Literal for code: NONEMovementOfUpperLimbEvaluation
+    /// </summary>
+    public const string LiteralNONEMovementOfUpperLimbEvaluation = "http://snomed.info/sct#273636005";
 
     /// <summary>
     /// Literal for code: MultilevelInformalLanguageInventory
@@ -11746,9 +14456,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMultilevelInformalLanguageInventory = "273637001";
 
     /// <summary>
+    /// Literal for code: NONEMultilevelInformalLanguageInventory
+    /// </summary>
+    public const string LiteralNONEMultilevelInformalLanguageInventory = "http://snomed.info/sct#273637001";
+
+    /// <summary>
     /// Literal for code: MultilingualAphasiaExamination
     /// </summary>
     public const string LiteralMultilingualAphasiaExamination = "273638006";
+
+    /// <summary>
+    /// Literal for code: NONEMultilingualAphasiaExamination
+    /// </summary>
+    public const string LiteralNONEMultilingualAphasiaExamination = "http://snomed.info/sct#273638006";
 
     /// <summary>
     /// Literal for code: MunichAlcoholismTest
@@ -11756,9 +14476,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMunichAlcoholismTest = "273639003";
 
     /// <summary>
+    /// Literal for code: NONEMunichAlcoholismTest
+    /// </summary>
+    public const string LiteralNONEMunichAlcoholismTest = "http://snomed.info/sct#273639003";
+
+    /// <summary>
     /// Literal for code: NARTNationalAdultReadingTest
     /// </summary>
     public const string LiteralNARTNationalAdultReadingTest = "273640001";
+
+    /// <summary>
+    /// Literal for code: NONENARTNationalAdultReadingTest
+    /// </summary>
+    public const string LiteralNONENARTNationalAdultReadingTest = "http://snomed.info/sct#273640001";
 
     /// <summary>
     /// Literal for code: NealeAnalysisOfReadingAbility
@@ -11766,9 +14496,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNealeAnalysisOfReadingAbility = "273641002";
 
     /// <summary>
+    /// Literal for code: NONENealeAnalysisOfReadingAbility
+    /// </summary>
+    public const string LiteralNONENealeAnalysisOfReadingAbility = "http://snomed.info/sct#273641002";
+
+    /// <summary>
     /// Literal for code: NelsonScheduleOfGrowingSkills
     /// </summary>
     public const string LiteralNelsonScheduleOfGrowingSkills = "273642009";
+
+    /// <summary>
+    /// Literal for code: NONENelsonScheduleOfGrowingSkills
+    /// </summary>
+    public const string LiteralNONENelsonScheduleOfGrowingSkills = "http://snomed.info/sct#273642009";
 
     /// <summary>
     /// Literal for code: NeurobehavioralCognitiveStatusExamination
@@ -11776,9 +14516,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeurobehavioralCognitiveStatusExamination = "273643004";
 
     /// <summary>
+    /// Literal for code: NONENeurobehavioralCognitiveStatusExamination
+    /// </summary>
+    public const string LiteralNONENeurobehavioralCognitiveStatusExamination = "http://snomed.info/sct#273643004";
+
+    /// <summary>
     /// Literal for code: NeuropsychologicalBattery
     /// </summary>
     public const string LiteralNeuropsychologicalBattery = "273644005";
+
+    /// <summary>
+    /// Literal for code: NONENeuropsychologicalBattery
+    /// </summary>
+    public const string LiteralNONENeuropsychologicalBattery = "http://snomed.info/sct#273644005";
 
     /// <summary>
     /// Literal for code: NewcastleArticulationTest
@@ -11786,9 +14536,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNewcastleArticulationTest = "273645006";
 
     /// <summary>
+    /// Literal for code: NONENewcastleArticulationTest
+    /// </summary>
+    public const string LiteralNONENewcastleArticulationTest = "http://snomed.info/sct#273645006";
+
+    /// <summary>
     /// Literal for code: NewcastleDyspraxiaAssessment
     /// </summary>
     public const string LiteralNewcastleDyspraxiaAssessment = "273646007";
+
+    /// <summary>
+    /// Literal for code: NONENewcastleDyspraxiaAssessment
+    /// </summary>
+    public const string LiteralNONENewcastleDyspraxiaAssessment = "http://snomed.info/sct#273646007";
 
     /// <summary>
     /// Literal for code: NewcastlePhonologyAssessment
@@ -11796,9 +14556,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNewcastlePhonologyAssessment = "273647003";
 
     /// <summary>
+    /// Literal for code: NONENewcastlePhonologyAssessment
+    /// </summary>
+    public const string LiteralNONENewcastlePhonologyAssessment = "http://snomed.info/sct#273647003";
+
+    /// <summary>
     /// Literal for code: NineHolePegTest
     /// </summary>
     public const string LiteralNineHolePegTest = "273648008";
+
+    /// <summary>
+    /// Literal for code: NONENineHolePegTest
+    /// </summary>
+    public const string LiteralNONENineHolePegTest = "http://snomed.info/sct#273648008";
 
     /// <summary>
     /// Literal for code: NorrisFunctionalScale
@@ -11806,9 +14576,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNorrisFunctionalScale = "273649000";
 
     /// <summary>
+    /// Literal for code: NONENorrisFunctionalScale
+    /// </summary>
+    public const string LiteralNONENorrisFunctionalScale = "http://snomed.info/sct#273649000";
+
+    /// <summary>
     /// Literal for code: NorthwestSyntaxScreeningTest
     /// </summary>
     public const string LiteralNorthwestSyntaxScreeningTest = "273650000";
+
+    /// <summary>
+    /// Literal for code: NONENorthwestSyntaxScreeningTest
+    /// </summary>
+    public const string LiteralNONENorthwestSyntaxScreeningTest = "http://snomed.info/sct#273650000";
 
     /// <summary>
     /// Literal for code: NorthwickParkIndexOfIndependenceInActivitiesOfDailyLiving
@@ -11816,9 +14596,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNorthwickParkIndexOfIndependenceInActivitiesOfDailyLiving = "273651001";
 
     /// <summary>
+    /// Literal for code: NONENorthwickParkIndexOfIndependenceInActivitiesOfDailyLiving
+    /// </summary>
+    public const string LiteralNONENorthwickParkIndexOfIndependenceInActivitiesOfDailyLiving = "http://snomed.info/sct#273651001";
+
+    /// <summary>
     /// Literal for code: NHPNottinghamHealthProfile
     /// </summary>
     public const string LiteralNHPNottinghamHealthProfile = "273652008";
+
+    /// <summary>
+    /// Literal for code: NONENHPNottinghamHealthProfile
+    /// </summary>
+    public const string LiteralNONENHPNottinghamHealthProfile = "http://snomed.info/sct#273652008";
 
     /// <summary>
     /// Literal for code: NuffieldDyspraxiaAssessment
@@ -11826,9 +14616,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNuffieldDyspraxiaAssessment = "273654009";
 
     /// <summary>
+    /// Literal for code: NONENuffieldDyspraxiaAssessment
+    /// </summary>
+    public const string LiteralNONENuffieldDyspraxiaAssessment = "http://snomed.info/sct#273654009";
+
+    /// <summary>
     /// Literal for code: ObjectNamingTest
     /// </summary>
     public const string LiteralObjectNamingTest = "273656006";
+
+    /// <summary>
+    /// Literal for code: NONEObjectNamingTest
+    /// </summary>
+    public const string LiteralNONEObjectNamingTest = "http://snomed.info/sct#273656006";
 
     /// <summary>
     /// Literal for code: OccasionsForSmokingScale
@@ -11836,9 +14636,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOccasionsForSmokingScale = "273657002";
 
     /// <summary>
+    /// Literal for code: NONEOccasionsForSmokingScale
+    /// </summary>
+    public const string LiteralNONEOccasionsForSmokingScale = "http://snomed.info/sct#273657002";
+
+    /// <summary>
     /// Literal for code: OccupationalCaseAnalysisInterviewAndRatingScale
     /// </summary>
     public const string LiteralOccupationalCaseAnalysisInterviewAndRatingScale = "273658007";
+
+    /// <summary>
+    /// Literal for code: NONEOccupationalCaseAnalysisInterviewAndRatingScale
+    /// </summary>
+    public const string LiteralNONEOccupationalCaseAnalysisInterviewAndRatingScale = "http://snomed.info/sct#273658007";
 
     /// <summary>
     /// Literal for code: OccupationalPerformanceHistoryInterview
@@ -11846,9 +14656,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOccupationalPerformanceHistoryInterview = "273659004";
 
     /// <summary>
+    /// Literal for code: NONEOccupationalPerformanceHistoryInterview
+    /// </summary>
+    public const string LiteralNONEOccupationalPerformanceHistoryInterview = "http://snomed.info/sct#273659004";
+
+    /// <summary>
     /// Literal for code: OdstockHandAssessment
     /// </summary>
     public const string LiteralOdstockHandAssessment = "273660009";
+
+    /// <summary>
+    /// Literal for code: NONEOdstockHandAssessment
+    /// </summary>
+    public const string LiteralNONEOdstockHandAssessment = "http://snomed.info/sct#273660009";
 
     /// <summary>
     /// Literal for code: OfficeOfPopulationCensusAndSurveysOPCSDisabilityScales
@@ -11856,9 +14676,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOfficeOfPopulationCensusAndSurveysOPCSDisabilityScales = "273661008";
 
     /// <summary>
+    /// Literal for code: NONEOfficeOfPopulationCensusAndSurveysOPCSDisabilityScales
+    /// </summary>
+    public const string LiteralNONEOfficeOfPopulationCensusAndSurveysOPCSDisabilityScales = "http://snomed.info/sct#273661008";
+
+    /// <summary>
     /// Literal for code: OfficeOfPopulationCensusAndSurveysOPCSBehaviorDisabilityScale
     /// </summary>
     public const string LiteralOfficeOfPopulationCensusAndSurveysOPCSBehaviorDisabilityScale = "273662001";
+
+    /// <summary>
+    /// Literal for code: NONEOfficeOfPopulationCensusAndSurveysOPCSBehaviorDisabilityScale
+    /// </summary>
+    public const string LiteralNONEOfficeOfPopulationCensusAndSurveysOPCSBehaviorDisabilityScale = "http://snomed.info/sct#273662001";
 
     /// <summary>
     /// Literal for code: OfficeOfPopulationCensusAndSurveysOPCSCommunicationDisabilityScale
@@ -11866,9 +14696,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOfficeOfPopulationCensusAndSurveysOPCSCommunicationDisabilityScale = "273663006";
 
     /// <summary>
+    /// Literal for code: NONEOfficeOfPopulationCensusAndSurveysOPCSCommunicationDisabilityScale
+    /// </summary>
+    public const string LiteralNONEOfficeOfPopulationCensusAndSurveysOPCSCommunicationDisabilityScale = "http://snomed.info/sct#273663006";
+
+    /// <summary>
     /// Literal for code: OfficeOfPopulationCensusAndSurveysOPCSConsciousnessDisabilityScale
     /// </summary>
     public const string LiteralOfficeOfPopulationCensusAndSurveysOPCSConsciousnessDisabilityScale = "273664000";
+
+    /// <summary>
+    /// Literal for code: NONEOfficeOfPopulationCensusAndSurveysOPCSConsciousnessDisabilityScale
+    /// </summary>
+    public const string LiteralNONEOfficeOfPopulationCensusAndSurveysOPCSConsciousnessDisabilityScale = "http://snomed.info/sct#273664000";
 
     /// <summary>
     /// Literal for code: OfficeOfPopulationCensusAndSurveysOPCSContinenceDisabilityScale
@@ -11876,9 +14716,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOfficeOfPopulationCensusAndSurveysOPCSContinenceDisabilityScale = "273665004";
 
     /// <summary>
+    /// Literal for code: NONEOfficeOfPopulationCensusAndSurveysOPCSContinenceDisabilityScale
+    /// </summary>
+    public const string LiteralNONEOfficeOfPopulationCensusAndSurveysOPCSContinenceDisabilityScale = "http://snomed.info/sct#273665004";
+
+    /// <summary>
     /// Literal for code: OfficeOfPopulationCensusAndSurveysOPCSDexterityDisabilityScale
     /// </summary>
     public const string LiteralOfficeOfPopulationCensusAndSurveysOPCSDexterityDisabilityScale = "273666003";
+
+    /// <summary>
+    /// Literal for code: NONEOfficeOfPopulationCensusAndSurveysOPCSDexterityDisabilityScale
+    /// </summary>
+    public const string LiteralNONEOfficeOfPopulationCensusAndSurveysOPCSDexterityDisabilityScale = "http://snomed.info/sct#273666003";
 
     /// <summary>
     /// Literal for code: OfficeOfPopulationCensusAndSurveysOPCSDisfigurementDisabilityScale
@@ -11886,9 +14736,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOfficeOfPopulationCensusAndSurveysOPCSDisfigurementDisabilityScale = "273667007";
 
     /// <summary>
+    /// Literal for code: NONEOfficeOfPopulationCensusAndSurveysOPCSDisfigurementDisabilityScale
+    /// </summary>
+    public const string LiteralNONEOfficeOfPopulationCensusAndSurveysOPCSDisfigurementDisabilityScale = "http://snomed.info/sct#273667007";
+
+    /// <summary>
     /// Literal for code: OfficeOfPopulationCensusAndSurveysOPCSEatingDrinkingAndDigestionDisabilityScale
     /// </summary>
     public const string LiteralOfficeOfPopulationCensusAndSurveysOPCSEatingDrinkingAndDigestionDisabilityScale = "273668002";
+
+    /// <summary>
+    /// Literal for code: NONEOfficeOfPopulationCensusAndSurveysOPCSEatingDrinkingAndDigestionDisabilityScale
+    /// </summary>
+    public const string LiteralNONEOfficeOfPopulationCensusAndSurveysOPCSEatingDrinkingAndDigestionDisabilityScale = "http://snomed.info/sct#273668002";
 
     /// <summary>
     /// Literal for code: OfficeOfPopulationCensusAndSurveysOPCSHearingDisabilityScale
@@ -11896,9 +14756,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOfficeOfPopulationCensusAndSurveysOPCSHearingDisabilityScale = "273669005";
 
     /// <summary>
+    /// Literal for code: NONEOfficeOfPopulationCensusAndSurveysOPCSHearingDisabilityScale
+    /// </summary>
+    public const string LiteralNONEOfficeOfPopulationCensusAndSurveysOPCSHearingDisabilityScale = "http://snomed.info/sct#273669005";
+
+    /// <summary>
     /// Literal for code: OfficeOfPopulationCensusAndSurveysOPCSIntellectualFunctioningDisabilityScale
     /// </summary>
     public const string LiteralOfficeOfPopulationCensusAndSurveysOPCSIntellectualFunctioningDisabilityScale = "273670006";
+
+    /// <summary>
+    /// Literal for code: NONEOfficeOfPopulationCensusAndSurveysOPCSIntellectualFunctioningDisabilityScale
+    /// </summary>
+    public const string LiteralNONEOfficeOfPopulationCensusAndSurveysOPCSIntellectualFunctioningDisabilityScale = "http://snomed.info/sct#273670006";
 
     /// <summary>
     /// Literal for code: OfficeOfPopulationCensusAndSurveysOPCSLocomotionDisabilityScale
@@ -11906,9 +14776,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOfficeOfPopulationCensusAndSurveysOPCSLocomotionDisabilityScale = "273671005";
 
     /// <summary>
+    /// Literal for code: NONEOfficeOfPopulationCensusAndSurveysOPCSLocomotionDisabilityScale
+    /// </summary>
+    public const string LiteralNONEOfficeOfPopulationCensusAndSurveysOPCSLocomotionDisabilityScale = "http://snomed.info/sct#273671005";
+
+    /// <summary>
     /// Literal for code: OfficeOfPopulationCensusAndSurveysOPCSPersonalCareDisabilityScale
     /// </summary>
     public const string LiteralOfficeOfPopulationCensusAndSurveysOPCSPersonalCareDisabilityScale = "273672003";
+
+    /// <summary>
+    /// Literal for code: NONEOfficeOfPopulationCensusAndSurveysOPCSPersonalCareDisabilityScale
+    /// </summary>
+    public const string LiteralNONEOfficeOfPopulationCensusAndSurveysOPCSPersonalCareDisabilityScale = "http://snomed.info/sct#273672003";
 
     /// <summary>
     /// Literal for code: OfficeOfPopulationCensusAndSurveysOPCSReachingAndStretchingDisabilityScale
@@ -11916,9 +14796,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOfficeOfPopulationCensusAndSurveysOPCSReachingAndStretchingDisabilityScale = "273673008";
 
     /// <summary>
+    /// Literal for code: NONEOfficeOfPopulationCensusAndSurveysOPCSReachingAndStretchingDisabilityScale
+    /// </summary>
+    public const string LiteralNONEOfficeOfPopulationCensusAndSurveysOPCSReachingAndStretchingDisabilityScale = "http://snomed.info/sct#273673008";
+
+    /// <summary>
     /// Literal for code: OfficeOfPopulationCensusAndSurveysOPCSSeeingDisabilityScale
     /// </summary>
     public const string LiteralOfficeOfPopulationCensusAndSurveysOPCSSeeingDisabilityScale = "273674002";
+
+    /// <summary>
+    /// Literal for code: NONEOfficeOfPopulationCensusAndSurveysOPCSSeeingDisabilityScale
+    /// </summary>
+    public const string LiteralNONEOfficeOfPopulationCensusAndSurveysOPCSSeeingDisabilityScale = "http://snomed.info/sct#273674002";
 
     /// <summary>
     /// Literal for code: OswestryDisabilityIndex
@@ -11926,9 +14816,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOswestryDisabilityIndex = "273675001";
 
     /// <summary>
+    /// Literal for code: NONEOswestryDisabilityIndex
+    /// </summary>
+    public const string LiteralNONEOswestryDisabilityIndex = "http://snomed.info/sct#273675001";
+
+    /// <summary>
     /// Literal for code: OswestryPainQuestionnaire
     /// </summary>
     public const string LiteralOswestryPainQuestionnaire = "273676000";
+
+    /// <summary>
+    /// Literal for code: NONEOswestryPainQuestionnaire
+    /// </summary>
+    public const string LiteralNONEOswestryPainQuestionnaire = "http://snomed.info/sct#273676000";
 
     /// <summary>
     /// Literal for code: OxfordGradingScaleForMuscleStrength
@@ -11936,9 +14836,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOxfordGradingScaleForMuscleStrength = "273677009";
 
     /// <summary>
+    /// Literal for code: NONEOxfordGradingScaleForMuscleStrength
+    /// </summary>
+    public const string LiteralNONEOxfordGradingScaleForMuscleStrength = "http://snomed.info/sct#273677009";
+
+    /// <summary>
     /// Literal for code: PaduaInventory
     /// </summary>
     public const string LiteralPaduaInventory = "273680005";
+
+    /// <summary>
+    /// Literal for code: NONEPaduaInventory
+    /// </summary>
+    public const string LiteralNONEPaduaInventory = "http://snomed.info/sct#273680005";
 
     /// <summary>
     /// Literal for code: PediatricClinicalTestOfSensoryIntegrationAndBalance
@@ -11946,9 +14856,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricClinicalTestOfSensoryIntegrationAndBalance = "273681009";
 
     /// <summary>
+    /// Literal for code: NONEPediatricClinicalTestOfSensoryIntegrationAndBalance
+    /// </summary>
+    public const string LiteralNONEPediatricClinicalTestOfSensoryIntegrationAndBalance = "http://snomed.info/sct#273681009";
+
+    /// <summary>
     /// Literal for code: PediatricOralSkillsProfile
     /// </summary>
     public const string LiteralPediatricOralSkillsProfile = "273682002";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricOralSkillsProfile
+    /// </summary>
+    public const string LiteralNONEPediatricOralSkillsProfile = "http://snomed.info/sct#273682002";
 
     /// <summary>
     /// Literal for code: PRISMPediatricRiskOfMortality
@@ -11956,9 +14876,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPRISMPediatricRiskOfMortality = "273683007";
 
     /// <summary>
+    /// Literal for code: NONEPRISMPediatricRiskOfMortality
+    /// </summary>
+    public const string LiteralNONEPRISMPediatricRiskOfMortality = "http://snomed.info/sct#273683007";
+
+    /// <summary>
     /// Literal for code: PediatricTraumaScore
     /// </summary>
     public const string LiteralPediatricTraumaScore = "273684001";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricTraumaScore
+    /// </summary>
+    public const string LiteralNONEPediatricTraumaScore = "http://snomed.info/sct#273684001";
 
     /// <summary>
     /// Literal for code: PainDiary
@@ -11966,9 +14896,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPainDiary = "273685000";
 
     /// <summary>
+    /// Literal for code: NONEPainDiary
+    /// </summary>
+    public const string LiteralNONEPainDiary = "http://snomed.info/sct#273685000";
+
+    /// <summary>
     /// Literal for code: PantomimeTest
     /// </summary>
     public const string LiteralPantomimeTest = "273686004";
+
+    /// <summary>
+    /// Literal for code: NONEPantomimeTest
+    /// </summary>
+    public const string LiteralNONEPantomimeTest = "http://snomed.info/sct#273686004";
 
     /// <summary>
     /// Literal for code: PartnersInAugmentativeCommunicationTraining
@@ -11976,9 +14916,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPartnersInAugmentativeCommunicationTraining = "273687008";
 
     /// <summary>
+    /// Literal for code: NONEPartnersInAugmentativeCommunicationTraining
+    /// </summary>
+    public const string LiteralNONEPartnersInAugmentativeCommunicationTraining = "http://snomed.info/sct#273687008";
+
+    /// <summary>
     /// Literal for code: PatientActivityChecklist
     /// </summary>
     public const string LiteralPatientActivityChecklist = "273688003";
+
+    /// <summary>
+    /// Literal for code: NONEPatientActivityChecklist
+    /// </summary>
+    public const string LiteralNONEPatientActivityChecklist = "http://snomed.info/sct#273688003";
 
     /// <summary>
     /// Literal for code: PatientSatisfactionScore
@@ -11986,9 +14936,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPatientSatisfactionScore = "273689006";
 
     /// <summary>
+    /// Literal for code: NONEPatientSatisfactionScore
+    /// </summary>
+    public const string LiteralNONEPatientSatisfactionScore = "http://snomed.info/sct#273689006";
+
+    /// <summary>
     /// Literal for code: VAL16PFPersonalityFactorQuestionnaire
     /// </summary>
     public const string LiteralVAL16PFPersonalityFactorQuestionnaire = "273690002";
+
+    /// <summary>
+    /// Literal for code: NONEVAL16PFPersonalityFactorQuestionnaire
+    /// </summary>
+    public const string LiteralNONEVAL16PFPersonalityFactorQuestionnaire = "http://snomed.info/sct#273690002";
 
     /// <summary>
     /// Literal for code: PhonologicalEvaluationAndTranscriptionOfAudioVisualLanguagePETALSpeechAssessmentProcedure
@@ -11996,9 +14956,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhonologicalEvaluationAndTranscriptionOfAudioVisualLanguagePETALSpeechAssessmentProcedure = "273691003";
 
     /// <summary>
+    /// Literal for code: NONEPhonologicalEvaluationAndTranscriptionOfAudioVisualLanguagePETALSpeechAssessmentProcedure
+    /// </summary>
+    public const string LiteralNONEPhonologicalEvaluationAndTranscriptionOfAudioVisualLanguagePETALSpeechAssessmentProcedure = "http://snomed.info/sct#273691003";
+
+    /// <summary>
     /// Literal for code: PeabodyPictureVocabularyTest
     /// </summary>
     public const string LiteralPeabodyPictureVocabularyTest = "273692005";
+
+    /// <summary>
+    /// Literal for code: NONEPeabodyPictureVocabularyTest
+    /// </summary>
+    public const string LiteralNONEPeabodyPictureVocabularyTest = "http://snomed.info/sct#273692005";
 
     /// <summary>
     /// Literal for code: PSIPerceptionsOfStutteringInventory
@@ -12006,9 +14976,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPSIPerceptionsOfStutteringInventory = "273693000";
 
     /// <summary>
+    /// Literal for code: NONEPSIPerceptionsOfStutteringInventory
+    /// </summary>
+    public const string LiteralNONEPSIPerceptionsOfStutteringInventory = "http://snomed.info/sct#273693000";
+
+    /// <summary>
     /// Literal for code: PerformanceTestOfActivitiesOfDailyLiving
     /// </summary>
     public const string LiteralPerformanceTestOfActivitiesOfDailyLiving = "273694006";
+
+    /// <summary>
+    /// Literal for code: NONEPerformanceTestOfActivitiesOfDailyLiving
+    /// </summary>
+    public const string LiteralNONEPerformanceTestOfActivitiesOfDailyLiving = "http://snomed.info/sct#273694006";
 
     /// <summary>
     /// Literal for code: PersonalityAssessmentSchedule
@@ -12016,9 +14996,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPersonalityAssessmentSchedule = "273695007";
 
     /// <summary>
+    /// Literal for code: NONEPersonalityAssessmentSchedule
+    /// </summary>
+    public const string LiteralNONEPersonalityAssessmentSchedule = "http://snomed.info/sct#273695007";
+
+    /// <summary>
     /// Literal for code: PhiladelphiaGeriatricCenterMoraleScale
     /// </summary>
     public const string LiteralPhiladelphiaGeriatricCenterMoraleScale = "273696008";
+
+    /// <summary>
+    /// Literal for code: NONEPhiladelphiaGeriatricCenterMoraleScale
+    /// </summary>
+    public const string LiteralNONEPhiladelphiaGeriatricCenterMoraleScale = "http://snomed.info/sct#273696008";
 
     /// <summary>
     /// Literal for code: PhonologicalAssessmentOfChildSpeech
@@ -12026,9 +15016,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhonologicalAssessmentOfChildSpeech = "273697004";
 
     /// <summary>
+    /// Literal for code: NONEPhonologicalAssessmentOfChildSpeech
+    /// </summary>
+    public const string LiteralNONEPhonologicalAssessmentOfChildSpeech = "http://snomed.info/sct#273697004";
+
+    /// <summary>
     /// Literal for code: PIPDevelopmentalCharts
     /// </summary>
     public const string LiteralPIPDevelopmentalCharts = "273699001";
+
+    /// <summary>
+    /// Literal for code: NONEPIPDevelopmentalCharts
+    /// </summary>
+    public const string LiteralNONEPIPDevelopmentalCharts = "http://snomed.info/sct#273699001";
 
     /// <summary>
     /// Literal for code: PicturePointingTest
@@ -12036,9 +15036,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPicturePointingTest = "273701001";
 
     /// <summary>
+    /// Literal for code: NONEPicturePointingTest
+    /// </summary>
+    public const string LiteralNONEPicturePointingTest = "http://snomed.info/sct#273701001";
+
+    /// <summary>
     /// Literal for code: PorchIndexOfCommunicativeAbility
     /// </summary>
     public const string LiteralPorchIndexOfCommunicativeAbility = "273702008";
+
+    /// <summary>
+    /// Literal for code: NONEPorchIndexOfCommunicativeAbility
+    /// </summary>
+    public const string LiteralNONEPorchIndexOfCommunicativeAbility = "http://snomed.info/sct#273702008";
 
     /// <summary>
     /// Literal for code: PANSSPositiveAndNegativeSyndromeScale
@@ -12046,9 +15056,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPANSSPositiveAndNegativeSyndromeScale = "273703003";
 
     /// <summary>
+    /// Literal for code: NONEPANSSPositiveAndNegativeSyndromeScale
+    /// </summary>
+    public const string LiteralNONEPANSSPositiveAndNegativeSyndromeScale = "http://snomed.info/sct#273703003";
+
+    /// <summary>
     /// Literal for code: PragmaticsProfile
     /// </summary>
     public const string LiteralPragmaticsProfile = "273704009";
+
+    /// <summary>
+    /// Literal for code: NONEPragmaticsProfile
+    /// </summary>
+    public const string LiteralNONEPragmaticsProfile = "http://snomed.info/sct#273704009";
 
     /// <summary>
     /// Literal for code: PragmaticsProfileOfEarlyCommunicationSkills
@@ -12056,9 +15076,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPragmaticsProfileOfEarlyCommunicationSkills = "273705005";
 
     /// <summary>
+    /// Literal for code: NONEPragmaticsProfileOfEarlyCommunicationSkills
+    /// </summary>
+    public const string LiteralNONEPragmaticsProfileOfEarlyCommunicationSkills = "http://snomed.info/sct#273705005";
+
+    /// <summary>
     /// Literal for code: PreschoolBehaviorCheckList
     /// </summary>
     public const string LiteralPreschoolBehaviorCheckList = "273706006";
+
+    /// <summary>
+    /// Literal for code: NONEPreschoolBehaviorCheckList
+    /// </summary>
+    public const string LiteralNONEPreschoolBehaviorCheckList = "http://snomed.info/sct#273706006";
 
     /// <summary>
     /// Literal for code: PreSchoolBoehm
@@ -12066,9 +15096,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPreSchoolBoehm = "273707002";
 
     /// <summary>
+    /// Literal for code: NONEPreSchoolBoehm
+    /// </summary>
+    public const string LiteralNONEPreSchoolBoehm = "http://snomed.info/sct#273707002";
+
+    /// <summary>
     /// Literal for code: PreSpeechAssessmentScale
     /// </summary>
     public const string LiteralPreSpeechAssessmentScale = "273709004";
+
+    /// <summary>
+    /// Literal for code: NONEPreSpeechAssessmentScale
+    /// </summary>
+    public const string LiteralNONEPreSpeechAssessmentScale = "http://snomed.info/sct#273709004";
 
     /// <summary>
     /// Literal for code: PreschoolLanguageScale
@@ -12076,9 +15116,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPreschoolLanguageScale = "273711008";
 
     /// <summary>
+    /// Literal for code: NONEPreschoolLanguageScale
+    /// </summary>
+    public const string LiteralNONEPreschoolLanguageScale = "http://snomed.info/sct#273711008";
+
+    /// <summary>
     /// Literal for code: PreviousIntelligenceQuotientAssessmentByPronunciation
     /// </summary>
     public const string LiteralPreviousIntelligenceQuotientAssessmentByPronunciation = "273712001";
+
+    /// <summary>
+    /// Literal for code: NONEPreviousIntelligenceQuotientAssessmentByPronunciation
+    /// </summary>
+    public const string LiteralNONEPreviousIntelligenceQuotientAssessmentByPronunciation = "http://snomed.info/sct#273712001";
 
     /// <summary>
     /// Literal for code: ProbabilityOfDeathScore
@@ -12086,9 +15136,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProbabilityOfDeathScore = "273713006";
 
     /// <summary>
+    /// Literal for code: NONEProbabilityOfDeathScore
+    /// </summary>
+    public const string LiteralNONEProbabilityOfDeathScore = "http://snomed.info/sct#273713006";
+
+    /// <summary>
     /// Literal for code: ProblemOrientedMedicalRecord
     /// </summary>
     public const string LiteralProblemOrientedMedicalRecord = "273714000";
+
+    /// <summary>
+    /// Literal for code: NONEProblemOrientedMedicalRecord
+    /// </summary>
+    public const string LiteralNONEProblemOrientedMedicalRecord = "http://snomed.info/sct#273714000";
 
     /// <summary>
     /// Literal for code: PRISMProfileInSemantics
@@ -12096,9 +15156,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPRISMProfileInSemantics = "273715004";
 
     /// <summary>
+    /// Literal for code: NONEPRISMProfileInSemantics
+    /// </summary>
+    public const string LiteralNONEPRISMProfileInSemantics = "http://snomed.info/sct#273715004";
+
+    /// <summary>
     /// Literal for code: ProfileOfCommunicativeAppropriateness
     /// </summary>
     public const string LiteralProfileOfCommunicativeAppropriateness = "273716003";
+
+    /// <summary>
+    /// Literal for code: NONEProfileOfCommunicativeAppropriateness
+    /// </summary>
+    public const string LiteralNONEProfileOfCommunicativeAppropriateness = "http://snomed.info/sct#273716003";
 
     /// <summary>
     /// Literal for code: ProfileOfMoodStates
@@ -12106,9 +15176,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProfileOfMoodStates = "273717007";
 
     /// <summary>
+    /// Literal for code: NONEProfileOfMoodStates
+    /// </summary>
+    public const string LiteralNONEProfileOfMoodStates = "http://snomed.info/sct#273717007";
+
+    /// <summary>
     /// Literal for code: PALPAPsycholinguisticAssessmentsOfLanguageProcessingInAphasia
     /// </summary>
     public const string LiteralPALPAPsycholinguisticAssessmentsOfLanguageProcessingInAphasia = "273718002";
+
+    /// <summary>
+    /// Literal for code: NONEPALPAPsycholinguisticAssessmentsOfLanguageProcessingInAphasia
+    /// </summary>
+    public const string LiteralNONEPALPAPsycholinguisticAssessmentsOfLanguageProcessingInAphasia = "http://snomed.info/sct#273718002";
 
     /// <summary>
     /// Literal for code: PsychologicalAdjustmentToIllnessScale
@@ -12116,9 +15196,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPsychologicalAdjustmentToIllnessScale = "273719005";
 
     /// <summary>
+    /// Literal for code: NONEPsychologicalAdjustmentToIllnessScale
+    /// </summary>
+    public const string LiteralNONEPsychologicalAdjustmentToIllnessScale = "http://snomed.info/sct#273719005";
+
+    /// <summary>
     /// Literal for code: PULSESProfile
     /// </summary>
     public const string LiteralPULSESProfile = "273720004";
+
+    /// <summary>
+    /// Literal for code: NONEPULSESProfile
+    /// </summary>
+    public const string LiteralNONEPULSESProfile = "http://snomed.info/sct#273720004";
 
     /// <summary>
     /// Literal for code: PurduePegboardScale
@@ -12126,9 +15216,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPurduePegboardScale = "273721000";
 
     /// <summary>
+    /// Literal for code: NONEPurduePegboardScale
+    /// </summary>
+    public const string LiteralNONEPurduePegboardScale = "http://snomed.info/sct#273721000";
+
+    /// <summary>
     /// Literal for code: PyramidsAndPalmTreesTest
     /// </summary>
     public const string LiteralPyramidsAndPalmTreesTest = "273722007";
+
+    /// <summary>
+    /// Literal for code: NONEPyramidsAndPalmTreesTest
+    /// </summary>
+    public const string LiteralNONEPyramidsAndPalmTreesTest = "http://snomed.info/sct#273722007";
 
     /// <summary>
     /// Literal for code: TetraplegiaIndexOfFunction
@@ -12136,9 +15236,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTetraplegiaIndexOfFunction = "273723002";
 
     /// <summary>
+    /// Literal for code: NONETetraplegiaIndexOfFunction
+    /// </summary>
+    public const string LiteralNONETetraplegiaIndexOfFunction = "http://snomed.info/sct#273723002";
+
+    /// <summary>
     /// Literal for code: QALYsQualityAdjustedLifeYears
     /// </summary>
     public const string LiteralQALYsQualityAdjustedLifeYears = "273724008";
+
+    /// <summary>
+    /// Literal for code: NONEQALYsQualityAdjustedLifeYears
+    /// </summary>
+    public const string LiteralNONEQALYsQualityAdjustedLifeYears = "http://snomed.info/sct#273724008";
 
     /// <summary>
     /// Literal for code: QualityOfLifeScale
@@ -12146,9 +15256,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralQualityOfLifeScale = "273725009";
 
     /// <summary>
+    /// Literal for code: NONEQualityOfLifeScale
+    /// </summary>
+    public const string LiteralNONEQualityOfLifeScale = "http://snomed.info/sct#273725009";
+
+    /// <summary>
     /// Literal for code: QualityOfWellbeingScale
     /// </summary>
     public const string LiteralQualityOfWellbeingScale = "273726005";
+
+    /// <summary>
+    /// Literal for code: NONEQualityOfWellbeingScale
+    /// </summary>
+    public const string LiteralNONEQualityOfWellbeingScale = "http://snomed.info/sct#273726005";
 
     /// <summary>
     /// Literal for code: RanchoScaleLevelsOfCognitiveFunctioning
@@ -12156,9 +15276,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRanchoScaleLevelsOfCognitiveFunctioning = "273727001";
 
     /// <summary>
+    /// Literal for code: NONERanchoScaleLevelsOfCognitiveFunctioning
+    /// </summary>
+    public const string LiteralNONERanchoScaleLevelsOfCognitiveFunctioning = "http://snomed.info/sct#273727001";
+
+    /// <summary>
     /// Literal for code: RandFunctionalLimitationsBattery
     /// </summary>
     public const string LiteralRandFunctionalLimitationsBattery = "273728006";
+
+    /// <summary>
+    /// Literal for code: NONERandFunctionalLimitationsBattery
+    /// </summary>
+    public const string LiteralNONERandFunctionalLimitationsBattery = "http://snomed.info/sct#273728006";
 
     /// <summary>
     /// Literal for code: RankinScale
@@ -12166,9 +15296,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRankinScale = "273729003";
 
     /// <summary>
+    /// Literal for code: NONERankinScale
+    /// </summary>
+    public const string LiteralNONERankinScale = "http://snomed.info/sct#273729003";
+
+    /// <summary>
     /// Literal for code: RappaportDisabilityRatingScale
     /// </summary>
     public const string LiteralRappaportDisabilityRatingScale = "273730008";
+
+    /// <summary>
+    /// Literal for code: NONERappaportDisabilityRatingScale
+    /// </summary>
+    public const string LiteralNONERappaportDisabilityRatingScale = "http://snomed.info/sct#273730008";
 
     /// <summary>
     /// Literal for code: RatingCommunicativeBehaviorInHeadInjuredAdults
@@ -12176,9 +15316,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRatingCommunicativeBehaviorInHeadInjuredAdults = "273731007";
 
     /// <summary>
+    /// Literal for code: NONERatingCommunicativeBehaviorInHeadInjuredAdults
+    /// </summary>
+    public const string LiteralNONERatingCommunicativeBehaviorInHeadInjuredAdults = "http://snomed.info/sct#273731007";
+
+    /// <summary>
     /// Literal for code: RavensColoredProgressiveMatrices
     /// </summary>
     public const string LiteralRavensColoredProgressiveMatrices = "273732000";
+
+    /// <summary>
+    /// Literal for code: NONERavensColoredProgressiveMatrices
+    /// </summary>
+    public const string LiteralNONERavensColoredProgressiveMatrices = "http://snomed.info/sct#273732000";
 
     /// <summary>
     /// Literal for code: RavensStandardProgressiveMatrices
@@ -12186,9 +15336,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRavensStandardProgressiveMatrices = "273733005";
 
     /// <summary>
+    /// Literal for code: NONERavensStandardProgressiveMatrices
+    /// </summary>
+    public const string LiteralNONERavensStandardProgressiveMatrices = "http://snomed.info/sct#273733005";
+
+    /// <summary>
     /// Literal for code: ReadWordDiscriminationTest
     /// </summary>
     public const string LiteralReadWordDiscriminationTest = "273735003";
+
+    /// <summary>
+    /// Literal for code: NONEReadWordDiscriminationTest
+    /// </summary>
+    public const string LiteralNONEReadWordDiscriminationTest = "http://snomed.info/sct#273735003";
 
     /// <summary>
     /// Literal for code: ReadingComprehensionBatteryForAphasia
@@ -12196,9 +15356,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReadingComprehensionBatteryForAphasia = "273736002";
 
     /// <summary>
+    /// Literal for code: NONEReadingComprehensionBatteryForAphasia
+    /// </summary>
+    public const string LiteralNONEReadingComprehensionBatteryForAphasia = "http://snomed.info/sct#273736002";
+
+    /// <summary>
     /// Literal for code: RFESReasonsForEatingScale
     /// </summary>
     public const string LiteralRFESReasonsForEatingScale = "273737006";
+
+    /// <summary>
+    /// Literal for code: NONERFESReasonsForEatingScale
+    /// </summary>
+    public const string LiteralNONERFESReasonsForEatingScale = "http://snomed.info/sct#273737006";
 
     /// <summary>
     /// Literal for code: ReasonsForSmokingScale
@@ -12206,9 +15376,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReasonsForSmokingScale = "273738001";
 
     /// <summary>
+    /// Literal for code: NONEReasonsForSmokingScale
+    /// </summary>
+    public const string LiteralNONEReasonsForSmokingScale = "http://snomed.info/sct#273738001";
+
+    /// <summary>
     /// Literal for code: BzochAndLeagueTest
     /// </summary>
     public const string LiteralBzochAndLeagueTest = "273739009";
+
+    /// <summary>
+    /// Literal for code: NONEBzochAndLeagueTest
+    /// </summary>
+    public const string LiteralNONEBzochAndLeagueTest = "http://snomed.info/sct#273739009";
 
     /// <summary>
     /// Literal for code: RMTRecognitionMemoryTest
@@ -12216,9 +15396,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRMTRecognitionMemoryTest = "273740006";
 
     /// <summary>
+    /// Literal for code: NONERMTRecognitionMemoryTest
+    /// </summary>
+    public const string LiteralNONERMTRecognitionMemoryTest = "http://snomed.info/sct#273740006";
+
+    /// <summary>
     /// Literal for code: RelativesQuoteStressScale
     /// </summary>
     public const string LiteralRelativesQuoteStressScale = "273741005";
+
+    /// <summary>
+    /// Literal for code: NONERelativesQuoteStressScale
+    /// </summary>
+    public const string LiteralNONERelativesQuoteStressScale = "http://snomed.info/sct#273741005";
 
     /// <summary>
     /// Literal for code: RIRenalIndex
@@ -12226,9 +15416,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRIRenalIndex = "273742003";
 
     /// <summary>
+    /// Literal for code: NONERIRenalIndex
+    /// </summary>
+    public const string LiteralNONERIRenalIndex = "http://snomed.info/sct#273742003";
+
+    /// <summary>
     /// Literal for code: RAPTRenfrewActionPictureTest
     /// </summary>
     public const string LiteralRAPTRenfrewActionPictureTest = "273743008";
+
+    /// <summary>
+    /// Literal for code: NONERAPTRenfrewActionPictureTest
+    /// </summary>
+    public const string LiteralNONERAPTRenfrewActionPictureTest = "http://snomed.info/sct#273743008";
 
     /// <summary>
     /// Literal for code: RenfrewArticulationTest
@@ -12236,9 +15436,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRenfrewArticulationTest = "273744002";
 
     /// <summary>
+    /// Literal for code: NONERenfrewArticulationTest
+    /// </summary>
+    public const string LiteralNONERenfrewArticulationTest = "http://snomed.info/sct#273744002";
+
+    /// <summary>
     /// Literal for code: RenfrewWordfinding
     /// </summary>
     public const string LiteralRenfrewWordfinding = "273745001";
+
+    /// <summary>
+    /// Literal for code: NONERenfrewWordfinding
+    /// </summary>
+    public const string LiteralNONERenfrewWordfinding = "http://snomed.info/sct#273745001";
 
     /// <summary>
     /// Literal for code: RepertoryGrid
@@ -12246,9 +15456,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRepertoryGrid = "273746000";
 
     /// <summary>
+    /// Literal for code: NONERepertoryGrid
+    /// </summary>
+    public const string LiteralNONERepertoryGrid = "http://snomed.info/sct#273746000";
+
+    /// <summary>
     /// Literal for code: ReportersTests
     /// </summary>
     public const string LiteralReportersTests = "273747009";
+
+    /// <summary>
+    /// Literal for code: NONEReportersTests
+    /// </summary>
+    public const string LiteralNONEReportersTests = "http://snomed.info/sct#273747009";
 
     /// <summary>
     /// Literal for code: ResistanceToChangeGrid
@@ -12256,9 +15476,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralResistanceToChangeGrid = "273748004";
 
     /// <summary>
+    /// Literal for code: NONEResistanceToChangeGrid
+    /// </summary>
+    public const string LiteralNONEResistanceToChangeGrid = "http://snomed.info/sct#273748004";
+
+    /// <summary>
     /// Literal for code: RespiratoryIndex
     /// </summary>
     public const string LiteralRespiratoryIndex = "273749007";
+
+    /// <summary>
+    /// Literal for code: NONERespiratoryIndex
+    /// </summary>
+    public const string LiteralNONERespiratoryIndex = "http://snomed.info/sct#273749007";
 
     /// <summary>
     /// Literal for code: RestrainedEatingInventory
@@ -12266,9 +15496,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRestrainedEatingInventory = "273750007";
 
     /// <summary>
+    /// Literal for code: NONERestrainedEatingInventory
+    /// </summary>
+    public const string LiteralNONERestrainedEatingInventory = "http://snomed.info/sct#273750007";
+
+    /// <summary>
     /// Literal for code: RevisedIowaScaleForRatingSeverity
     /// </summary>
     public const string LiteralRevisedIowaScaleForRatingSeverity = "273751006";
+
+    /// <summary>
+    /// Literal for code: NONERevisedIowaScaleForRatingSeverity
+    /// </summary>
+    public const string LiteralNONERevisedIowaScaleForRatingSeverity = "http://snomed.info/sct#273751006";
 
     /// <summary>
     /// Literal for code: ReynellDevelopmentalLanguageScales
@@ -12276,9 +15516,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReynellDevelopmentalLanguageScales = "273752004";
 
     /// <summary>
+    /// Literal for code: NONEReynellDevelopmentalLanguageScales
+    /// </summary>
+    public const string LiteralNONEReynellDevelopmentalLanguageScales = "http://snomed.info/sct#273752004";
+
+    /// <summary>
     /// Literal for code: ReynellReceptiveLanguageAssessment
     /// </summary>
     public const string LiteralReynellReceptiveLanguageAssessment = "273753009";
+
+    /// <summary>
+    /// Literal for code: NONEReynellReceptiveLanguageAssessment
+    /// </summary>
+    public const string LiteralNONEReynellReceptiveLanguageAssessment = "http://snomed.info/sct#273753009";
 
     /// <summary>
     /// Literal for code: ReynellExpressiveLanguageAssessment
@@ -12286,9 +15536,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReynellExpressiveLanguageAssessment = "273754003";
 
     /// <summary>
+    /// Literal for code: NONEReynellExpressiveLanguageAssessment
+    /// </summary>
+    public const string LiteralNONEReynellExpressiveLanguageAssessment = "http://snomed.info/sct#273754003";
+
+    /// <summary>
     /// Literal for code: ReynellZinkinLanguageScaleForTheVisuallyImpaired
     /// </summary>
     public const string LiteralReynellZinkinLanguageScaleForTheVisuallyImpaired = "273756001";
+
+    /// <summary>
+    /// Literal for code: NONEReynellZinkinLanguageScaleForTheVisuallyImpaired
+    /// </summary>
+    public const string LiteralNONEReynellZinkinLanguageScaleForTheVisuallyImpaired = "http://snomed.info/sct#273756001";
 
     /// <summary>
     /// Literal for code: RightHemisphereBattery
@@ -12296,9 +15556,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRightHemisphereBattery = "273757005";
 
     /// <summary>
+    /// Literal for code: NONERightHemisphereBattery
+    /// </summary>
+    public const string LiteralNONERightHemisphereBattery = "http://snomed.info/sct#273757005";
+
+    /// <summary>
     /// Literal for code: RitchieArticularIndex
     /// </summary>
     public const string LiteralRitchieArticularIndex = "273758000";
+
+    /// <summary>
+    /// Literal for code: NONERitchieArticularIndex
+    /// </summary>
+    public const string LiteralNONERitchieArticularIndex = "http://snomed.info/sct#273758000";
 
     /// <summary>
     /// Literal for code: RivermeadActivitiesOfDailyLivingIndex
@@ -12306,9 +15576,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRivermeadActivitiesOfDailyLivingIndex = "273759008";
 
     /// <summary>
+    /// Literal for code: NONERivermeadActivitiesOfDailyLivingIndex
+    /// </summary>
+    public const string LiteralNONERivermeadActivitiesOfDailyLivingIndex = "http://snomed.info/sct#273759008";
+
+    /// <summary>
     /// Literal for code: RBMTRivermeadBehavioralMemoryTest
     /// </summary>
     public const string LiteralRBMTRivermeadBehavioralMemoryTest = "273761004";
+
+    /// <summary>
+    /// Literal for code: NONERBMTRivermeadBehavioralMemoryTest
+    /// </summary>
+    public const string LiteralNONERBMTRivermeadBehavioralMemoryTest = "http://snomed.info/sct#273761004";
 
     /// <summary>
     /// Literal for code: RMARivermeadMotorAssessment
@@ -12316,9 +15596,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRMARivermeadMotorAssessment = "273762006";
 
     /// <summary>
+    /// Literal for code: NONERMARivermeadMotorAssessment
+    /// </summary>
+    public const string LiteralNONERMARivermeadMotorAssessment = "http://snomed.info/sct#273762006";
+
+    /// <summary>
     /// Literal for code: RivermeadPerceptualAssessmentBattery
     /// </summary>
     public const string LiteralRivermeadPerceptualAssessmentBattery = "273763001";
+
+    /// <summary>
+    /// Literal for code: NONERivermeadPerceptualAssessmentBattery
+    /// </summary>
+    public const string LiteralNONERivermeadPerceptualAssessmentBattery = "http://snomed.info/sct#273763001";
 
     /// <summary>
     /// Literal for code: RobertsonDysarthriaAssessment
@@ -12326,9 +15616,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRobertsonDysarthriaAssessment = "273764007";
 
     /// <summary>
+    /// Literal for code: NONERobertsonDysarthriaAssessment
+    /// </summary>
+    public const string LiteralNONERobertsonDysarthriaAssessment = "http://snomed.info/sct#273764007";
+
+    /// <summary>
     /// Literal for code: RobertsonDysarthriaProfile
     /// </summary>
     public const string LiteralRobertsonDysarthriaProfile = "273765008";
+
+    /// <summary>
+    /// Literal for code: NONERobertsonDysarthriaProfile
+    /// </summary>
+    public const string LiteralNONERobertsonDysarthriaProfile = "http://snomed.info/sct#273765008";
 
     /// <summary>
     /// Literal for code: RoehamptonActivitiesOfDailyLivingForAmputees
@@ -12336,9 +15636,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRoehamptonActivitiesOfDailyLivingForAmputees = "273766009";
 
     /// <summary>
+    /// Literal for code: NONERoehamptonActivitiesOfDailyLivingForAmputees
+    /// </summary>
+    public const string LiteralNONERoehamptonActivitiesOfDailyLivingForAmputees = "http://snomed.info/sct#273766009";
+
+    /// <summary>
     /// Literal for code: RoseSummersPragmaticProfile
     /// </summary>
     public const string LiteralRoseSummersPragmaticProfile = "273767000";
+
+    /// <summary>
+    /// Literal for code: NONERoseSummersPragmaticProfile
+    /// </summary>
+    public const string LiteralNONERoseSummersPragmaticProfile = "http://snomed.info/sct#273767000";
 
     /// <summary>
     /// Literal for code: RossInformationProcessingAssessment
@@ -12346,9 +15656,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRossInformationProcessingAssessment = "273768005";
 
     /// <summary>
+    /// Literal for code: NONERossInformationProcessingAssessment
+    /// </summary>
+    public const string LiteralNONERossInformationProcessingAssessment = "http://snomed.info/sct#273768005";
+
+    /// <summary>
     /// Literal for code: RosserClassificationOfIllnessStates
     /// </summary>
     public const string LiteralRosserClassificationOfIllnessStates = "273769002";
+
+    /// <summary>
+    /// Literal for code: NONERosserClassificationOfIllnessStates
+    /// </summary>
+    public const string LiteralNONERosserClassificationOfIllnessStates = "http://snomed.info/sct#273769002";
 
     /// <summary>
     /// Literal for code: RothAndSpekmanListOfCommunicativeIntentions
@@ -12356,9 +15676,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRothAndSpekmanListOfCommunicativeIntentions = "273770001";
 
     /// <summary>
+    /// Literal for code: NONERothAndSpekmanListOfCommunicativeIntentions
+    /// </summary>
+    public const string LiteralNONERothAndSpekmanListOfCommunicativeIntentions = "http://snomed.info/sct#273770001";
+
+    /// <summary>
     /// Literal for code: RotterdamSymptomCheckList
     /// </summary>
     public const string LiteralRotterdamSymptomCheckList = "273771002";
+
+    /// <summary>
+    /// Literal for code: NONERotterdamSymptomCheckList
+    /// </summary>
+    public const string LiteralNONERotterdamSymptomCheckList = "http://snomed.info/sct#273771002";
 
     /// <summary>
     /// Literal for code: RoutineTaskInventory
@@ -12366,9 +15696,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRoutineTaskInventory = "273772009";
 
     /// <summary>
+    /// Literal for code: NONERoutineTaskInventory
+    /// </summary>
+    public const string LiteralNONERoutineTaskInventory = "http://snomed.info/sct#273772009";
+
+    /// <summary>
     /// Literal for code: RutterBehaviorQuestionnaire
     /// </summary>
     public const string LiteralRutterBehaviorQuestionnaire = "273774005";
+
+    /// <summary>
+    /// Literal for code: NONERutterBehaviorQuestionnaire
+    /// </summary>
+    public const string LiteralNONERutterBehaviorQuestionnaire = "http://snomed.info/sct#273774005";
 
     /// <summary>
     /// Literal for code: RutterAScale
@@ -12376,9 +15716,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRutterAScale = "273775006";
 
     /// <summary>
+    /// Literal for code: NONERutterAScale
+    /// </summary>
+    public const string LiteralNONERutterAScale = "http://snomed.info/sct#273775006";
+
+    /// <summary>
     /// Literal for code: RutterBScale
     /// </summary>
     public const string LiteralRutterBScale = "273776007";
+
+    /// <summary>
+    /// Literal for code: NONERutterBScale
+    /// </summary>
+    public const string LiteralNONERutterBScale = "http://snomed.info/sct#273776007";
 
     /// <summary>
     /// Literal for code: RutterB2Scale
@@ -12386,9 +15736,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRutterB2Scale = "273777003";
 
     /// <summary>
+    /// Literal for code: NONERutterB2Scale
+    /// </summary>
+    public const string LiteralNONERutterB2Scale = "http://snomed.info/sct#273777003";
+
+    /// <summary>
     /// Literal for code: SScaleAndrewsAndCutler
     /// </summary>
     public const string LiteralSScaleAndrewsAndCutler = "273778008";
+
+    /// <summary>
+    /// Literal for code: NONESScaleAndrewsAndCutler
+    /// </summary>
+    public const string LiteralNONESScaleAndrewsAndCutler = "http://snomed.info/sct#273778008";
 
     /// <summary>
     /// Literal for code: SalfordReadingTest
@@ -12396,9 +15756,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSalfordReadingTest = "273779000";
 
     /// <summary>
+    /// Literal for code: NONESalfordReadingTest
+    /// </summary>
+    public const string LiteralNONESalfordReadingTest = "http://snomed.info/sct#273779000";
+
+    /// <summary>
     /// Literal for code: SamaritanOrientationTest
     /// </summary>
     public const string LiteralSamaritanOrientationTest = "273780002";
+
+    /// <summary>
+    /// Literal for code: NONESamaritanOrientationTest
+    /// </summary>
+    public const string LiteralNONESamaritanOrientationTest = "http://snomed.info/sct#273780002";
 
     /// <summary>
     /// Literal for code: SandwellBilingualComprehensionTest
@@ -12406,9 +15776,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSandwellBilingualComprehensionTest = "273781003";
 
     /// <summary>
+    /// Literal for code: NONESandwellBilingualComprehensionTest
+    /// </summary>
+    public const string LiteralNONESandwellBilingualComprehensionTest = "http://snomed.info/sct#273781003";
+
+    /// <summary>
     /// Literal for code: SantaClaraValleyMedicalCenterFunctionalAssessmentMeasure
     /// </summary>
     public const string LiteralSantaClaraValleyMedicalCenterFunctionalAssessmentMeasure = "273782005";
+
+    /// <summary>
+    /// Literal for code: NONESantaClaraValleyMedicalCenterFunctionalAssessmentMeasure
+    /// </summary>
+    public const string LiteralNONESantaClaraValleyMedicalCenterFunctionalAssessmentMeasure = "http://snomed.info/sct#273782005";
 
     /// <summary>
     /// Literal for code: SavaryMillerScale
@@ -12416,9 +15796,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSavaryMillerScale = "273783000";
 
     /// <summary>
+    /// Literal for code: NONESavaryMillerScale
+    /// </summary>
+    public const string LiteralNONESavaryMillerScale = "http://snomed.info/sct#273783000";
+
+    /// <summary>
     /// Literal for code: ScaleOfEarlyCommunicationSkillsForHearingImpairedChildren
     /// </summary>
     public const string LiteralScaleOfEarlyCommunicationSkillsForHearingImpairedChildren = "273784006";
+
+    /// <summary>
+    /// Literal for code: NONEScaleOfEarlyCommunicationSkillsForHearingImpairedChildren
+    /// </summary>
+    public const string LiteralNONEScaleOfEarlyCommunicationSkillsForHearingImpairedChildren = "http://snomed.info/sct#273784006";
 
     /// <summary>
     /// Literal for code: SchwachmannScore
@@ -12426,9 +15816,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSchwachmannScore = "273785007";
 
     /// <summary>
+    /// Literal for code: NONESchwachmannScore
+    /// </summary>
+    public const string LiteralNONESchwachmannScore = "http://snomed.info/sct#273785007";
+
+    /// <summary>
     /// Literal for code: SchedulesForClinicalAssessmentInNeuropsychiatry
     /// </summary>
     public const string LiteralSchedulesForClinicalAssessmentInNeuropsychiatry = "273786008";
+
+    /// <summary>
+    /// Literal for code: NONESchedulesForClinicalAssessmentInNeuropsychiatry
+    /// </summary>
+    public const string LiteralNONESchedulesForClinicalAssessmentInNeuropsychiatry = "http://snomed.info/sct#273786008";
 
     /// <summary>
     /// Literal for code: SchnijdersOomanTestForDeafChildren
@@ -12436,9 +15836,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSchnijdersOomanTestForDeafChildren = "273787004";
 
     /// <summary>
+    /// Literal for code: NONESchnijdersOomanTestForDeafChildren
+    /// </summary>
+    public const string LiteralNONESchnijdersOomanTestForDeafChildren = "http://snomed.info/sct#273787004";
+
+    /// <summary>
     /// Literal for code: SchofieldEquation
     /// </summary>
     public const string LiteralSchofieldEquation = "273788009";
+
+    /// <summary>
+    /// Literal for code: NONESchofieldEquation
+    /// </summary>
+    public const string LiteralNONESchofieldEquation = "http://snomed.info/sct#273788009";
 
     /// <summary>
     /// Literal for code: SchonellGradedWordReadingTest
@@ -12446,9 +15856,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSchonellGradedWordReadingTest = "273789001";
 
     /// <summary>
+    /// Literal for code: NONESchonellGradedWordReadingTest
+    /// </summary>
+    public const string LiteralNONESchonellGradedWordReadingTest = "http://snomed.info/sct#273789001";
+
+    /// <summary>
     /// Literal for code: SchonellGradedWordSpellingTest
     /// </summary>
     public const string LiteralSchonellGradedWordSpellingTest = "273790005";
+
+    /// <summary>
+    /// Literal for code: NONESchonellGradedWordSpellingTest
+    /// </summary>
+    public const string LiteralNONESchonellGradedWordSpellingTest = "http://snomed.info/sct#273790005";
 
     /// <summary>
     /// Literal for code: ScissorSkillsChecklist
@@ -12456,9 +15876,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralScissorSkillsChecklist = "273791009";
 
     /// <summary>
+    /// Literal for code: NONEScissorSkillsChecklist
+    /// </summary>
+    public const string LiteralNONEScissorSkillsChecklist = "http://snomed.info/sct#273791009";
+
+    /// <summary>
     /// Literal for code: ScreeningForDevelopmentalApraxiaOfSpeech
     /// </summary>
     public const string LiteralScreeningForDevelopmentalApraxiaOfSpeech = "273792002";
+
+    /// <summary>
+    /// Literal for code: NONEScreeningForDevelopmentalApraxiaOfSpeech
+    /// </summary>
+    public const string LiteralNONEScreeningForDevelopmentalApraxiaOfSpeech = "http://snomed.info/sct#273792002";
 
     /// <summary>
     /// Literal for code: ScreeningTestForAuditoryProcessingDisorders
@@ -12466,9 +15896,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralScreeningTestForAuditoryProcessingDisorders = "273793007";
 
     /// <summary>
+    /// Literal for code: NONEScreeningTestForAuditoryProcessingDisorders
+    /// </summary>
+    public const string LiteralNONEScreeningTestForAuditoryProcessingDisorders = "http://snomed.info/sct#273793007";
+
+    /// <summary>
     /// Literal for code: SIPT
     /// </summary>
     public const string LiteralSIPT = "273795000";
+
+    /// <summary>
+    /// Literal for code: NONESIPT
+    /// </summary>
+    public const string LiteralNONESIPT = "http://snomed.info/sct#273795000";
 
     /// <summary>
     /// Literal for code: SCTSentenceComprehensionTest
@@ -12476,9 +15916,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSCTSentenceComprehensionTest = "273797008";
 
     /// <summary>
+    /// Literal for code: NONESCTSentenceComprehensionTest
+    /// </summary>
+    public const string LiteralNONESCTSentenceComprehensionTest = "http://snomed.info/sct#273797008";
+
+    /// <summary>
     /// Literal for code: SerialSevensTest
     /// </summary>
     public const string LiteralSerialSevensTest = "273798003";
+
+    /// <summary>
+    /// Literal for code: NONESerialSevensTest
+    /// </summary>
+    public const string LiteralNONESerialSevensTest = "http://snomed.info/sct#273798003";
 
     /// <summary>
     /// Literal for code: SeverityOfAlcoholDependenceQuestionnaire
@@ -12486,9 +15936,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSeverityOfAlcoholDependenceQuestionnaire = "273799006";
 
     /// <summary>
+    /// Literal for code: NONESeverityOfAlcoholDependenceQuestionnaire
+    /// </summary>
+    public const string LiteralNONESeverityOfAlcoholDependenceQuestionnaire = "http://snomed.info/sct#273799006";
+
+    /// <summary>
     /// Literal for code: SODQSeverityOfOpiateDependenceQuestionnaire
     /// </summary>
     public const string LiteralSODQSeverityOfOpiateDependenceQuestionnaire = "273800005";
+
+    /// <summary>
+    /// Literal for code: NONESODQSeverityOfOpiateDependenceQuestionnaire
+    /// </summary>
+    public const string LiteralNONESODQSeverityOfOpiateDependenceQuestionnaire = "http://snomed.info/sct#273800005";
 
     /// <summary>
     /// Literal for code: ShaperIndex
@@ -12496,9 +15956,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralShaperIndex = "273801009";
 
     /// <summary>
+    /// Literal for code: NONEShaperIndex
+    /// </summary>
+    public const string LiteralNONEShaperIndex = "http://snomed.info/sct#273801009";
+
+    /// <summary>
     /// Literal for code: ShortAlcoholDependenceData
     /// </summary>
     public const string LiteralShortAlcoholDependenceData = "273802002";
+
+    /// <summary>
+    /// Literal for code: NONEShortAlcoholDependenceData
+    /// </summary>
+    public const string LiteralNONEShortAlcoholDependenceData = "http://snomed.info/sct#273802002";
 
     /// <summary>
     /// Literal for code: ShortOrientationMemoryConcentrationTest
@@ -12506,9 +15976,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralShortOrientationMemoryConcentrationTest = "273803007";
 
     /// <summary>
+    /// Literal for code: NONEShortOrientationMemoryConcentrationTest
+    /// </summary>
+    public const string LiteralNONEShortOrientationMemoryConcentrationTest = "http://snomed.info/sct#273803007";
+
+    /// <summary>
     /// Literal for code: ShortOrientationMemoryConcentrationTestAlternativeVersion
     /// </summary>
     public const string LiteralShortOrientationMemoryConcentrationTestAlternativeVersion = "273804001";
+
+    /// <summary>
+    /// Literal for code: NONEShortOrientationMemoryConcentrationTestAlternativeVersion
+    /// </summary>
+    public const string LiteralNONEShortOrientationMemoryConcentrationTestAlternativeVersion = "http://snomed.info/sct#273804001";
 
     /// <summary>
     /// Literal for code: ShortTermMemoryTest
@@ -12516,9 +15996,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralShortTermMemoryTest = "273805000";
 
     /// <summary>
+    /// Literal for code: NONEShortTermMemoryTest
+    /// </summary>
+    public const string LiteralNONEShortTermMemoryTest = "http://snomed.info/sct#273805000";
+
+    /// <summary>
     /// Literal for code: ShulmanTestOfPragmaticSkills
     /// </summary>
     public const string LiteralShulmanTestOfPragmaticSkills = "273806004";
+
+    /// <summary>
+    /// Literal for code: NONEShulmanTestOfPragmaticSkills
+    /// </summary>
+    public const string LiteralNONEShulmanTestOfPragmaticSkills = "http://snomed.info/sct#273806004";
 
     /// <summary>
     /// Literal for code: SicknessImpactProfile
@@ -12526,9 +16016,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSicknessImpactProfile = "273807008";
 
     /// <summary>
+    /// Literal for code: NONESicknessImpactProfile
+    /// </summary>
+    public const string LiteralNONESicknessImpactProfile = "http://snomed.info/sct#273807008";
+
+    /// <summary>
     /// Literal for code: SilversCerebralFunctionTest
     /// </summary>
     public const string LiteralSilversCerebralFunctionTest = "273809006";
+
+    /// <summary>
+    /// Literal for code: NONESilversCerebralFunctionTest
+    /// </summary>
+    public const string LiteralNONESilversCerebralFunctionTest = "http://snomed.info/sct#273809006";
 
     /// <summary>
     /// Literal for code: SimplifiedAcutePhysiologyScore
@@ -12536,9 +16036,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSimplifiedAcutePhysiologyScore = "273811002";
 
     /// <summary>
+    /// Literal for code: NONESimplifiedAcutePhysiologyScore
+    /// </summary>
+    public const string LiteralNONESimplifiedAcutePhysiologyScore = "http://snomed.info/sct#273811002";
+
+    /// <summary>
     /// Literal for code: SimplifiedAcutePhysiologyScaleII
     /// </summary>
     public const string LiteralSimplifiedAcutePhysiologyScaleII = "273812009";
+
+    /// <summary>
+    /// Literal for code: NONESimplifiedAcutePhysiologyScaleII
+    /// </summary>
+    public const string LiteralNONESimplifiedAcutePhysiologyScaleII = "http://snomed.info/sct#273812009";
 
     /// <summary>
     /// Literal for code: SCQSituationalConfidenceQuestionnaire
@@ -12546,9 +16056,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSCQSituationalConfidenceQuestionnaire = "273813004";
 
     /// <summary>
+    /// Literal for code: NONESCQSituationalConfidenceQuestionnaire
+    /// </summary>
+    public const string LiteralNONESCQSituationalConfidenceQuestionnaire = "http://snomed.info/sct#273813004";
+
+    /// <summary>
     /// Literal for code: SituationsForEatingScale
     /// </summary>
     public const string LiteralSituationsForEatingScale = "273814005";
+
+    /// <summary>
+    /// Literal for code: NONESituationsForEatingScale
+    /// </summary>
+    public const string LiteralNONESituationsForEatingScale = "http://snomed.info/sct#273814005";
 
     /// <summary>
     /// Literal for code: SmithCognitiveQuestionnaire
@@ -12556,9 +16076,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSmithCognitiveQuestionnaire = "273815006";
 
     /// <summary>
+    /// Literal for code: NONESmithCognitiveQuestionnaire
+    /// </summary>
+    public const string LiteralNONESmithCognitiveQuestionnaire = "http://snomed.info/sct#273815006";
+
+    /// <summary>
     /// Literal for code: SocialAdjustmentScale
     /// </summary>
     public const string LiteralSocialAdjustmentScale = "273816007";
+
+    /// <summary>
+    /// Literal for code: NONESocialAdjustmentScale
+    /// </summary>
+    public const string LiteralNONESocialAdjustmentScale = "http://snomed.info/sct#273816007";
 
     /// <summary>
     /// Literal for code: SASIISocialAdjustmentScaleII
@@ -12566,9 +16096,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSASIISocialAdjustmentScaleII = "273817003";
 
     /// <summary>
+    /// Literal for code: NONESASIISocialAdjustmentScaleII
+    /// </summary>
+    public const string LiteralNONESASIISocialAdjustmentScaleII = "http://snomed.info/sct#273817003";
+
+    /// <summary>
     /// Literal for code: SocialAdjustmentScaleSelfReport
     /// </summary>
     public const string LiteralSocialAdjustmentScaleSelfReport = "273818008";
+
+    /// <summary>
+    /// Literal for code: NONESocialAdjustmentScaleSelfReport
+    /// </summary>
+    public const string LiteralNONESocialAdjustmentScaleSelfReport = "http://snomed.info/sct#273818008";
 
     /// <summary>
     /// Literal for code: SocialBehaviorAssessmentScale
@@ -12576,9 +16116,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSocialBehaviorAssessmentScale = "273819000";
 
     /// <summary>
+    /// Literal for code: NONESocialBehaviorAssessmentScale
+    /// </summary>
+    public const string LiteralNONESocialBehaviorAssessmentScale = "http://snomed.info/sct#273819000";
+
+    /// <summary>
     /// Literal for code: SocialSupportQuestionnaire
     /// </summary>
     public const string LiteralSocialSupportQuestionnaire = "273820006";
+
+    /// <summary>
+    /// Literal for code: NONESocialSupportQuestionnaire
+    /// </summary>
+    public const string LiteralNONESocialSupportQuestionnaire = "http://snomed.info/sct#273820006";
 
     /// <summary>
     /// Literal for code: SocialUseOfLanguageProgram
@@ -12586,9 +16136,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSocialUseOfLanguageProgram = "273821005";
 
     /// <summary>
+    /// Literal for code: NONESocialUseOfLanguageProgram
+    /// </summary>
+    public const string LiteralNONESocialUseOfLanguageProgram = "http://snomed.info/sct#273821005";
+
+    /// <summary>
     /// Literal for code: STAPSouthTynesideAssessmentOfPhonology
     /// </summary>
     public const string LiteralSTAPSouthTynesideAssessmentOfPhonology = "273822003";
+
+    /// <summary>
+    /// Literal for code: NONESTAPSouthTynesideAssessmentOfPhonology
+    /// </summary>
+    public const string LiteralNONESTAPSouthTynesideAssessmentOfPhonology = "http://snomed.info/sct#273822003";
 
     /// <summary>
     /// Literal for code: SouthTynesideAssessmentOfSyntacticStructures
@@ -12596,9 +16156,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSouthTynesideAssessmentOfSyntacticStructures = "273823008";
 
     /// <summary>
+    /// Literal for code: NONESouthTynesideAssessmentOfSyntacticStructures
+    /// </summary>
+    public const string LiteralNONESouthTynesideAssessmentOfSyntacticStructures = "http://snomed.info/sct#273823008";
+
+    /// <summary>
     /// Literal for code: FGPSouthernCaliforniaFigureGroundVisualPerceptionTest
     /// </summary>
     public const string LiteralFGPSouthernCaliforniaFigureGroundVisualPerceptionTest = "273824002";
+
+    /// <summary>
+    /// Literal for code: NONEFGPSouthernCaliforniaFigureGroundVisualPerceptionTest
+    /// </summary>
+    public const string LiteralNONEFGPSouthernCaliforniaFigureGroundVisualPerceptionTest = "http://snomed.info/sct#273824002";
 
     /// <summary>
     /// Literal for code: SouthernCaliforniaPostrotaryNystagmusTest
@@ -12606,9 +16176,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSouthernCaliforniaPostrotaryNystagmusTest = "273825001";
 
     /// <summary>
+    /// Literal for code: NONESouthernCaliforniaPostrotaryNystagmusTest
+    /// </summary>
+    public const string LiteralNONESouthernCaliforniaPostrotaryNystagmusTest = "http://snomed.info/sct#273825001";
+
+    /// <summary>
     /// Literal for code: SouthernCaliforniaSensoryIntegrationTest
     /// </summary>
     public const string LiteralSouthernCaliforniaSensoryIntegrationTest = "273826000";
+
+    /// <summary>
+    /// Literal for code: NONESouthernCaliforniaSensoryIntegrationTest
+    /// </summary>
+    public const string LiteralNONESouthernCaliforniaSensoryIntegrationTest = "http://snomed.info/sct#273826000";
 
     /// <summary>
     /// Literal for code: SpareTimeActivitiesQuestionnaire
@@ -12616,9 +16196,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpareTimeActivitiesQuestionnaire = "273827009";
 
     /// <summary>
+    /// Literal for code: NONESpareTimeActivitiesQuestionnaire
+    /// </summary>
+    public const string LiteralNONESpareTimeActivitiesQuestionnaire = "http://snomed.info/sct#273827009";
+
+    /// <summary>
     /// Literal for code: SpecialHospitalsAssessmentOfPersonality
     /// </summary>
     public const string LiteralSpecialHospitalsAssessmentOfPersonality = "273828004";
+
+    /// <summary>
+    /// Literal for code: NONESpecialHospitalsAssessmentOfPersonality
+    /// </summary>
+    public const string LiteralNONESpecialHospitalsAssessmentOfPersonality = "http://snomed.info/sct#273828004";
 
     /// <summary>
     /// Literal for code: SpeechIntelligibilityAssessmentProcedure
@@ -12626,9 +16216,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpeechIntelligibilityAssessmentProcedure = "273829007";
 
     /// <summary>
+    /// Literal for code: NONESpeechIntelligibilityAssessmentProcedure
+    /// </summary>
+    public const string LiteralNONESpeechIntelligibilityAssessmentProcedure = "http://snomed.info/sct#273829007";
+
+    /// <summary>
     /// Literal for code: SpielbergerStateTraitAnxietyInventory
     /// </summary>
     public const string LiteralSpielbergerStateTraitAnxietyInventory = "273830002";
+
+    /// <summary>
+    /// Literal for code: NONESpielbergerStateTraitAnxietyInventory
+    /// </summary>
+    public const string LiteralNONESpielbergerStateTraitAnxietyInventory = "http://snomed.info/sct#273830002";
 
     /// <summary>
     /// Literal for code: QualityOfLifeIndex
@@ -12636,9 +16236,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralQualityOfLifeIndex = "273831003";
 
     /// <summary>
+    /// Literal for code: NONEQualityOfLifeIndex
+    /// </summary>
+    public const string LiteralNONEQualityOfLifeIndex = "http://snomed.info/sct#273831003";
+
+    /// <summary>
     /// Literal for code: StGeorgeHospitalRespiratoryQuestionnaire
     /// </summary>
     public const string LiteralStGeorgeHospitalRespiratoryQuestionnaire = "273833000";
+
+    /// <summary>
+    /// Literal for code: NONEStGeorgeHospitalRespiratoryQuestionnaire
+    /// </summary>
+    public const string LiteralNONEStGeorgeHospitalRespiratoryQuestionnaire = "http://snomed.info/sct#273833000";
 
     /// <summary>
     /// Literal for code: StThomasDisabilityQuestionnaire
@@ -12646,9 +16256,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStThomasDisabilityQuestionnaire = "273834006";
 
     /// <summary>
+    /// Literal for code: NONEStThomasDisabilityQuestionnaire
+    /// </summary>
+    public const string LiteralNONEStThomasDisabilityQuestionnaire = "http://snomed.info/sct#273834006";
+
+    /// <summary>
     /// Literal for code: SAPStandardizedAssessmentOfPersonality
     /// </summary>
     public const string LiteralSAPStandardizedAssessmentOfPersonality = "273835007";
+
+    /// <summary>
+    /// Literal for code: NONESAPStandardizedAssessmentOfPersonality
+    /// </summary>
+    public const string LiteralNONESAPStandardizedAssessmentOfPersonality = "http://snomed.info/sct#273835007";
 
     /// <summary>
     /// Literal for code: TermanMerrillScale
@@ -12656,9 +16276,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTermanMerrillScale = "273836008";
 
     /// <summary>
+    /// Literal for code: NONETermanMerrillScale
+    /// </summary>
+    public const string LiteralNONETermanMerrillScale = "http://snomed.info/sct#273836008";
+
+    /// <summary>
     /// Literal for code: SteinbrockerFunctionalClassification
     /// </summary>
     public const string LiteralSteinbrockerFunctionalClassification = "273837004";
+
+    /// <summary>
+    /// Literal for code: NONESteinbrockerFunctionalClassification
+    /// </summary>
+    public const string LiteralNONESteinbrockerFunctionalClassification = "http://snomed.info/sct#273837004";
 
     /// <summary>
     /// Literal for code: StimulusResponseInventory
@@ -12666,9 +16296,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStimulusResponseInventory = "273838009";
 
     /// <summary>
+    /// Literal for code: NONEStimulusResponseInventory
+    /// </summary>
+    public const string LiteralNONEStimulusResponseInventory = "http://snomed.info/sct#273838009";
+
+    /// <summary>
     /// Literal for code: StockerProbeTechniqueForDiagnosisAndTreatmentOfStutteringInYoungChildren
     /// </summary>
     public const string LiteralStockerProbeTechniqueForDiagnosisAndTreatmentOfStutteringInYoungChildren = "273839001";
+
+    /// <summary>
+    /// Literal for code: NONEStockerProbeTechniqueForDiagnosisAndTreatmentOfStutteringInYoungChildren
+    /// </summary>
+    public const string LiteralNONEStockerProbeTechniqueForDiagnosisAndTreatmentOfStutteringInYoungChildren = "http://snomed.info/sct#273839001";
 
     /// <summary>
     /// Literal for code: StocktonGeriatricRatingScale
@@ -12676,9 +16316,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStocktonGeriatricRatingScale = "273840004";
 
     /// <summary>
+    /// Literal for code: NONEStocktonGeriatricRatingScale
+    /// </summary>
+    public const string LiteralNONEStocktonGeriatricRatingScale = "http://snomed.info/sct#273840004";
+
+    /// <summary>
     /// Literal for code: StoryCompletionTest
     /// </summary>
     public const string LiteralStoryCompletionTest = "273841000";
+
+    /// <summary>
+    /// Literal for code: NONEStoryCompletionTest
+    /// </summary>
+    public const string LiteralNONEStoryCompletionTest = "http://snomed.info/sct#273841000";
 
     /// <summary>
     /// Literal for code: StructuredObservationTestOfFunction
@@ -12686,9 +16336,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructuredObservationTestOfFunction = "273842007";
 
     /// <summary>
+    /// Literal for code: NONEStructuredObservationTestOfFunction
+    /// </summary>
+    public const string LiteralNONEStructuredObservationTestOfFunction = "http://snomed.info/sct#273842007";
+
+    /// <summary>
     /// Literal for code: StructuredClinicalInterviewForDiagnosticAndStatisticalManualOfMentalDisordersThirdEditionRevised
     /// </summary>
     public const string LiteralStructuredClinicalInterviewForDiagnosticAndStatisticalManualOfMentalDisordersThirdEditionRevised = "273843002";
+
+    /// <summary>
+    /// Literal for code: NONEStructuredClinicalInterviewForDiagnosticAndStatisticalManualOfMentalDisordersThirdEditionRevised
+    /// </summary>
+    public const string LiteralNONEStructuredClinicalInterviewForDiagnosticAndStatisticalManualOfMentalDisordersThirdEditionRevised = "http://snomed.info/sct#273843002";
 
     /// <summary>
     /// Literal for code: StructuredInterviewForDiagnosticAndStatisticalManualOfMentalDisordersThirdEditionPersonalityDisorders
@@ -12696,9 +16356,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructuredInterviewForDiagnosticAndStatisticalManualOfMentalDisordersThirdEditionPersonalityDisorders = "273844008";
 
     /// <summary>
+    /// Literal for code: NONEStructuredInterviewForDiagnosticAndStatisticalManualOfMentalDisordersThirdEditionPersonalityDisorders
+    /// </summary>
+    public const string LiteralNONEStructuredInterviewForDiagnosticAndStatisticalManualOfMentalDisordersThirdEditionPersonalityDisorders = "http://snomed.info/sct#273844008";
+
+    /// <summary>
     /// Literal for code: StutteringInterventionProgram
     /// </summary>
     public const string LiteralStutteringInterventionProgram = "273845009";
+
+    /// <summary>
+    /// Literal for code: NONEStutteringInterventionProgram
+    /// </summary>
+    public const string LiteralNONEStutteringInterventionProgram = "http://snomed.info/sct#273845009";
 
     /// <summary>
     /// Literal for code: StutteringPredictionInstrument
@@ -12706,9 +16376,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStutteringPredictionInstrument = "273846005";
 
     /// <summary>
+    /// Literal for code: NONEStutteringPredictionInstrument
+    /// </summary>
+    public const string LiteralNONEStutteringPredictionInstrument = "http://snomed.info/sct#273846005";
+
+    /// <summary>
     /// Literal for code: StutteringSeverityInstrument
     /// </summary>
     public const string LiteralStutteringSeverityInstrument = "273847001";
+
+    /// <summary>
+    /// Literal for code: NONEStutteringSeverityInstrument
+    /// </summary>
+    public const string LiteralNONEStutteringSeverityInstrument = "http://snomed.info/sct#273847001";
 
     /// <summary>
     /// Literal for code: StycarHearingTest
@@ -12716,9 +16396,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStycarHearingTest = "273848006";
 
     /// <summary>
+    /// Literal for code: NONEStycarHearingTest
+    /// </summary>
+    public const string LiteralNONEStycarHearingTest = "http://snomed.info/sct#273848006";
+
+    /// <summary>
     /// Literal for code: SubjectiveGlobalAssessment
     /// </summary>
     public const string LiteralSubjectiveGlobalAssessment = "273849003";
+
+    /// <summary>
+    /// Literal for code: NONESubjectiveGlobalAssessment
+    /// </summary>
+    public const string LiteralNONESubjectiveGlobalAssessment = "http://snomed.info/sct#273849003";
 
     /// <summary>
     /// Literal for code: SubstanceUseDisorderDiagnosticSchedule
@@ -12726,9 +16416,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubstanceUseDisorderDiagnosticSchedule = "273850003";
 
     /// <summary>
+    /// Literal for code: NONESubstanceUseDisorderDiagnosticSchedule
+    /// </summary>
+    public const string LiteralNONESubstanceUseDisorderDiagnosticSchedule = "http://snomed.info/sct#273850003";
+
+    /// <summary>
     /// Literal for code: SueSpenceAssessment
     /// </summary>
     public const string LiteralSueSpenceAssessment = "273851004";
+
+    /// <summary>
+    /// Literal for code: NONESueSpenceAssessment
+    /// </summary>
+    public const string LiteralNONESueSpenceAssessment = "http://snomed.info/sct#273851004";
 
     /// <summary>
     /// Literal for code: SuicideRiskScale
@@ -12736,9 +16436,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuicideRiskScale = "273852006";
 
     /// <summary>
+    /// Literal for code: NONESuicideRiskScale
+    /// </summary>
+    public const string LiteralNONESuicideRiskScale = "http://snomed.info/sct#273852006";
+
+    /// <summary>
     /// Literal for code: SunnybrookCordInjuryScale
     /// </summary>
     public const string LiteralSunnybrookCordInjuryScale = "273853001";
+
+    /// <summary>
+    /// Literal for code: NONESunnybrookCordInjuryScale
+    /// </summary>
+    public const string LiteralNONESunnybrookCordInjuryScale = "http://snomed.info/sct#273853001";
 
     /// <summary>
     /// Literal for code: SupplementaryLanguageTest
@@ -12746,9 +16456,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSupplementaryLanguageTest = "273854007";
 
     /// <summary>
+    /// Literal for code: NONESupplementaryLanguageTest
+    /// </summary>
+    public const string LiteralNONESupplementaryLanguageTest = "http://snomed.info/sct#273854007";
+
+    /// <summary>
     /// Literal for code: SwollenJointCount
     /// </summary>
     public const string LiteralSwollenJointCount = "273856009";
+
+    /// <summary>
+    /// Literal for code: NONESwollenJointCount
+    /// </summary>
+    public const string LiteralNONESwollenJointCount = "http://snomed.info/sct#273856009";
 
     /// <summary>
     /// Literal for code: SymbolDigitModalitiesTest
@@ -12756,9 +16476,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSymbolDigitModalitiesTest = "273857000";
 
     /// <summary>
+    /// Literal for code: NONESymbolDigitModalitiesTest
+    /// </summary>
+    public const string LiteralNONESymbolDigitModalitiesTest = "http://snomed.info/sct#273857000";
+
+    /// <summary>
     /// Literal for code: SymbolicPlayTest
     /// </summary>
     public const string LiteralSymbolicPlayTest = "273858005";
+
+    /// <summary>
+    /// Literal for code: NONESymbolicPlayTest
+    /// </summary>
+    public const string LiteralNONESymbolicPlayTest = "http://snomed.info/sct#273858005";
 
     /// <summary>
     /// Literal for code: SymptomChecklist
@@ -12766,9 +16496,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSymptomChecklist = "273859002";
 
     /// <summary>
+    /// Literal for code: NONESymptomChecklist
+    /// </summary>
+    public const string LiteralNONESymptomChecklist = "http://snomed.info/sct#273859002";
+
+    /// <summary>
     /// Literal for code: SLTSynonymLearningTest
     /// </summary>
     public const string LiteralSLTSynonymLearningTest = "273860007";
+
+    /// <summary>
+    /// Literal for code: NONESLTSynonymLearningTest
+    /// </summary>
+    public const string LiteralNONESLTSynonymLearningTest = "http://snomed.info/sct#273860007";
 
     /// <summary>
     /// Literal for code: SystematicFluencyTrainingForYoungChildren
@@ -12776,9 +16516,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSystematicFluencyTrainingForYoungChildren = "273861006";
 
     /// <summary>
+    /// Literal for code: NONESystematicFluencyTrainingForYoungChildren
+    /// </summary>
+    public const string LiteralNONESystematicFluencyTrainingForYoungChildren = "http://snomed.info/sct#273861006";
+
+    /// <summary>
     /// Literal for code: SystemicLupusActivityMeasure
     /// </summary>
     public const string LiteralSystemicLupusActivityMeasure = "273862004";
+
+    /// <summary>
+    /// Literal for code: NONESystemicLupusActivityMeasure
+    /// </summary>
+    public const string LiteralNONESystemicLupusActivityMeasure = "http://snomed.info/sct#273862004";
 
     /// <summary>
     /// Literal for code: SLEDAISystemicLupusErythematosusDiseaseActivityIndex
@@ -12786,9 +16536,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSLEDAISystemicLupusErythematosusDiseaseActivityIndex = "273863009";
 
     /// <summary>
+    /// Literal for code: NONESLEDAISystemicLupusErythematosusDiseaseActivityIndex
+    /// </summary>
+    public const string LiteralNONESLEDAISystemicLupusErythematosusDiseaseActivityIndex = "http://snomed.info/sct#273863009";
+
+    /// <summary>
     /// Literal for code: TambTest
     /// </summary>
     public const string LiteralTambTest = "273864003";
+
+    /// <summary>
+    /// Literal for code: NONETambTest
+    /// </summary>
+    public const string LiteralNONETambTest = "http://snomed.info/sct#273864003";
 
     /// <summary>
     /// Literal for code: TenderJointCount
@@ -12796,9 +16556,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTenderJointCount = "273865002";
 
     /// <summary>
+    /// Literal for code: NONETenderJointCount
+    /// </summary>
+    public const string LiteralNONETenderJointCount = "http://snomed.info/sct#273865002";
+
+    /// <summary>
     /// Literal for code: TestForAuditoryPerceptionOfSpeech
     /// </summary>
     public const string LiteralTestForAuditoryPerceptionOfSpeech = "273867005";
+
+    /// <summary>
+    /// Literal for code: NONETestForAuditoryPerceptionOfSpeech
+    /// </summary>
+    public const string LiteralNONETestForAuditoryPerceptionOfSpeech = "http://snomed.info/sct#273867005";
 
     /// <summary>
     /// Literal for code: TACLTestOfAuditoryComprehensionOfLanguage
@@ -12806,9 +16576,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTACLTestOfAuditoryComprehensionOfLanguage = "273868000";
 
     /// <summary>
+    /// Literal for code: NONETACLTestOfAuditoryComprehensionOfLanguage
+    /// </summary>
+    public const string LiteralNONETACLTestOfAuditoryComprehensionOfLanguage = "http://snomed.info/sct#273868000";
+
+    /// <summary>
     /// Literal for code: TestOfAuditoryDiscrimination
     /// </summary>
     public const string LiteralTestOfAuditoryDiscrimination = "273869008";
+
+    /// <summary>
+    /// Literal for code: NONETestOfAuditoryDiscrimination
+    /// </summary>
+    public const string LiteralNONETestOfAuditoryDiscrimination = "http://snomed.info/sct#273869008";
 
     /// <summary>
     /// Literal for code: TestOfLanguageCompetence
@@ -12816,9 +16596,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTestOfLanguageCompetence = "273870009";
 
     /// <summary>
+    /// Literal for code: NONETestOfLanguageCompetence
+    /// </summary>
+    public const string LiteralNONETestOfLanguageCompetence = "http://snomed.info/sct#273870009";
+
+    /// <summary>
     /// Literal for code: TestOfLanguageDevelopment2
     /// </summary>
     public const string LiteralTestOfLanguageDevelopment2 = "273871008";
+
+    /// <summary>
+    /// Literal for code: NONETestOfLanguageDevelopment2
+    /// </summary>
+    public const string LiteralNONETestOfLanguageDevelopment2 = "http://snomed.info/sct#273871008";
 
     /// <summary>
     /// Literal for code: TestOfMotorImpairmentStottMoyesHenderson
@@ -12826,9 +16616,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTestOfMotorImpairmentStottMoyesHenderson = "273872001";
 
     /// <summary>
+    /// Literal for code: NONETestOfMotorImpairmentStottMoyesHenderson
+    /// </summary>
+    public const string LiteralNONETestOfMotorImpairmentStottMoyesHenderson = "http://snomed.info/sct#273872001";
+
+    /// <summary>
     /// Literal for code: TestOfPragmaticSkills
     /// </summary>
     public const string LiteralTestOfPragmaticSkills = "273873006";
+
+    /// <summary>
+    /// Literal for code: NONETestOfPragmaticSkills
+    /// </summary>
+    public const string LiteralNONETestOfPragmaticSkills = "http://snomed.info/sct#273873006";
 
     /// <summary>
     /// Literal for code: TestOfReceptionOfGrammar
@@ -12836,9 +16636,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTestOfReceptionOfGrammar = "273874000";
 
     /// <summary>
+    /// Literal for code: NONETestOfReceptionOfGrammar
+    /// </summary>
+    public const string LiteralNONETestOfReceptionOfGrammar = "http://snomed.info/sct#273874000";
+
+    /// <summary>
     /// Literal for code: TSATestOfSyntacticAbilities
     /// </summary>
     public const string LiteralTSATestOfSyntacticAbilities = "273875004";
+
+    /// <summary>
+    /// Literal for code: NONETSATestOfSyntacticAbilities
+    /// </summary>
+    public const string LiteralNONETSATestOfSyntacticAbilities = "http://snomed.info/sct#273875004";
 
     /// <summary>
     /// Literal for code: TestOfWordFindingInDiscourse
@@ -12846,9 +16656,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTestOfWordFindingInDiscourse = "273876003";
 
     /// <summary>
+    /// Literal for code: NONETestOfWordFindingInDiscourse
+    /// </summary>
+    public const string LiteralNONETestOfWordFindingInDiscourse = "http://snomed.info/sct#273876003";
+
+    /// <summary>
     /// Literal for code: TestOfWordKnowledge
     /// </summary>
     public const string LiteralTestOfWordKnowledge = "273877007";
+
+    /// <summary>
+    /// Literal for code: NONETestOfWordKnowledge
+    /// </summary>
+    public const string LiteralNONETestOfWordKnowledge = "http://snomed.info/sct#273877007";
 
     /// <summary>
     /// Literal for code: TherapeuticInterventionScoringSystem
@@ -12856,9 +16676,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTherapeuticInterventionScoringSystem = "273878002";
 
     /// <summary>
+    /// Literal for code: NONETherapeuticInterventionScoringSystem
+    /// </summary>
+    public const string LiteralNONETherapeuticInterventionScoringSystem = "http://snomed.info/sct#273878002";
+
+    /// <summary>
     /// Literal for code: TLFBTimeLineFollowBack
     /// </summary>
     public const string LiteralTLFBTimeLineFollowBack = "273879005";
+
+    /// <summary>
+    /// Literal for code: NONETLFBTimeLineFollowBack
+    /// </summary>
+    public const string LiteralNONETLFBTimeLineFollowBack = "http://snomed.info/sct#273879005";
 
     /// <summary>
     /// Literal for code: TimeTradeOffAnalysis
@@ -12866,9 +16696,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTimeTradeOffAnalysis = "273880008";
 
     /// <summary>
+    /// Literal for code: NONETimeTradeOffAnalysis
+    /// </summary>
+    public const string LiteralNONETimeTradeOffAnalysis = "http://snomed.info/sct#273880008";
+
+    /// <summary>
     /// Literal for code: TokenTest
     /// </summary>
     public const string LiteralTokenTest = "273881007";
+
+    /// <summary>
+    /// Literal for code: NONETokenTest
+    /// </summary>
+    public const string LiteralNONETokenTest = "http://snomed.info/sct#273881007";
 
     /// <summary>
     /// Literal for code: TrailMakingTest
@@ -12876,9 +16716,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrailMakingTest = "273882000";
 
     /// <summary>
+    /// Literal for code: NONETrailMakingTest
+    /// </summary>
+    public const string LiteralNONETrailMakingTest = "http://snomed.info/sct#273882000";
+
+    /// <summary>
     /// Literal for code: TraumaIndex
     /// </summary>
     public const string LiteralTraumaIndex = "273883005";
+
+    /// <summary>
+    /// Literal for code: NONETraumaIndex
+    /// </summary>
+    public const string LiteralNONETraumaIndex = "http://snomed.info/sct#273883005";
 
     /// <summary>
     /// Literal for code: TraumaScore
@@ -12886,9 +16736,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTraumaScore = "273884004";
 
     /// <summary>
+    /// Literal for code: NONETraumaScore
+    /// </summary>
+    public const string LiteralNONETraumaScore = "http://snomed.info/sct#273884004";
+
+    /// <summary>
     /// Literal for code: RTSRevisedTraumaScore
     /// </summary>
     public const string LiteralRTSRevisedTraumaScore = "273885003";
+
+    /// <summary>
+    /// Literal for code: NONERTSRevisedTraumaScore
+    /// </summary>
+    public const string LiteralNONERTSRevisedTraumaScore = "http://snomed.info/sct#273885003";
 
     /// <summary>
     /// Literal for code: TraumaAndInjurySeverityScore
@@ -12896,9 +16756,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTraumaAndInjurySeverityScore = "273886002";
 
     /// <summary>
+    /// Literal for code: NONETraumaAndInjurySeverityScore
+    /// </summary>
+    public const string LiteralNONETraumaAndInjurySeverityScore = "http://snomed.info/sct#273886002";
+
+    /// <summary>
     /// Literal for code: TriageIndex
     /// </summary>
     public const string LiteralTriageIndex = "273887006";
+
+    /// <summary>
+    /// Literal for code: NONETriageIndex
+    /// </summary>
+    public const string LiteralNONETriageIndex = "http://snomed.info/sct#273887006";
 
     /// <summary>
     /// Literal for code: ValentineAuditoryMemoryTest
@@ -12906,9 +16776,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralValentineAuditoryMemoryTest = "273888001";
 
     /// <summary>
+    /// Literal for code: NONEValentineAuditoryMemoryTest
+    /// </summary>
+    public const string LiteralNONEValentineAuditoryMemoryTest = "http://snomed.info/sct#273888001";
+
+    /// <summary>
     /// Literal for code: Valpar17PreVocationalReadinessBattery
     /// </summary>
     public const string LiteralValpar17PreVocationalReadinessBattery = "273889009";
+
+    /// <summary>
+    /// Literal for code: NONEValpar17PreVocationalReadinessBattery
+    /// </summary>
+    public const string LiteralNONEValpar17PreVocationalReadinessBattery = "http://snomed.info/sct#273889009";
 
     /// <summary>
     /// Literal for code: VernonClozeProcedureReadingTest
@@ -12916,9 +16796,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVernonClozeProcedureReadingTest = "273891001";
 
     /// <summary>
+    /// Literal for code: NONEVernonClozeProcedureReadingTest
+    /// </summary>
+    public const string LiteralNONEVernonClozeProcedureReadingTest = "http://snomed.info/sct#273891001";
+
+    /// <summary>
     /// Literal for code: VernonGradedWordReadingTest
     /// </summary>
     public const string LiteralVernonGradedWordReadingTest = "273892008";
+
+    /// <summary>
+    /// Literal for code: NONEVernonGradedWordReadingTest
+    /// </summary>
+    public const string LiteralNONEVernonGradedWordReadingTest = "http://snomed.info/sct#273892008";
 
     /// <summary>
     /// Literal for code: VinelandMaturityScalesAdaptedForTheBlind
@@ -12926,9 +16816,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVinelandMaturityScalesAdaptedForTheBlind = "273893003";
 
     /// <summary>
+    /// Literal for code: NONEVinelandMaturityScalesAdaptedForTheBlind
+    /// </summary>
+    public const string LiteralNONEVinelandMaturityScalesAdaptedForTheBlind = "http://snomed.info/sct#273893003";
+
+    /// <summary>
     /// Literal for code: VinelandSocialMaturityScale
     /// </summary>
     public const string LiteralVinelandSocialMaturityScale = "273894009";
+
+    /// <summary>
+    /// Literal for code: NONEVinelandSocialMaturityScale
+    /// </summary>
+    public const string LiteralNONEVinelandSocialMaturityScale = "http://snomed.info/sct#273894009";
 
     /// <summary>
     /// Literal for code: VinelandSubquotientGeneralSelfHelp
@@ -12936,9 +16836,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVinelandSubquotientGeneralSelfHelp = "273895005";
 
     /// <summary>
+    /// Literal for code: NONEVinelandSubquotientGeneralSelfHelp
+    /// </summary>
+    public const string LiteralNONEVinelandSubquotientGeneralSelfHelp = "http://snomed.info/sct#273895005";
+
+    /// <summary>
     /// Literal for code: VinelandSubquotientCommunication
     /// </summary>
     public const string LiteralVinelandSubquotientCommunication = "273896006";
+
+    /// <summary>
+    /// Literal for code: NONEVinelandSubquotientCommunication
+    /// </summary>
+    public const string LiteralNONEVinelandSubquotientCommunication = "http://snomed.info/sct#273896006";
 
     /// <summary>
     /// Literal for code: VinelandSubquotientLocomotion
@@ -12946,9 +16856,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVinelandSubquotientLocomotion = "273897002";
 
     /// <summary>
+    /// Literal for code: NONEVinelandSubquotientLocomotion
+    /// </summary>
+    public const string LiteralNONEVinelandSubquotientLocomotion = "http://snomed.info/sct#273897002";
+
+    /// <summary>
     /// Literal for code: VinelandSubquotientOccupation
     /// </summary>
     public const string LiteralVinelandSubquotientOccupation = "273898007";
+
+    /// <summary>
+    /// Literal for code: NONEVinelandSubquotientOccupation
+    /// </summary>
+    public const string LiteralNONEVinelandSubquotientOccupation = "http://snomed.info/sct#273898007";
 
     /// <summary>
     /// Literal for code: VinelandSubquotientSelfHelpInEating
@@ -12956,9 +16876,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVinelandSubquotientSelfHelpInEating = "273899004";
 
     /// <summary>
+    /// Literal for code: NONEVinelandSubquotientSelfHelpInEating
+    /// </summary>
+    public const string LiteralNONEVinelandSubquotientSelfHelpInEating = "http://snomed.info/sct#273899004";
+
+    /// <summary>
     /// Literal for code: VinelandSubquotientSocialization
     /// </summary>
     public const string LiteralVinelandSubquotientSocialization = "273900009";
+
+    /// <summary>
+    /// Literal for code: NONEVinelandSubquotientSocialization
+    /// </summary>
+    public const string LiteralNONEVinelandSubquotientSocialization = "http://snomed.info/sct#273900009";
 
     /// <summary>
     /// Literal for code: VinelandBehavioralAssessment
@@ -12966,9 +16896,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVinelandBehavioralAssessment = "273901008";
 
     /// <summary>
+    /// Literal for code: NONEVinelandBehavioralAssessment
+    /// </summary>
+    public const string LiteralNONEVinelandBehavioralAssessment = "http://snomed.info/sct#273901008";
+
+    /// <summary>
     /// Literal for code: VisickSymptomGrade
     /// </summary>
     public const string LiteralVisickSymptomGrade = "273902001";
+
+    /// <summary>
+    /// Literal for code: NONEVisickSymptomGrade
+    /// </summary>
+    public const string LiteralNONEVisickSymptomGrade = "http://snomed.info/sct#273902001";
 
     /// <summary>
     /// Literal for code: VASVisualAnalogScale
@@ -12976,9 +16916,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVASVisualAnalogScale = "273903006";
 
     /// <summary>
+    /// Literal for code: NONEVASVisualAnalogScale
+    /// </summary>
+    public const string LiteralNONEVASVisualAnalogScale = "http://snomed.info/sct#273903006";
+
+    /// <summary>
     /// Literal for code: VisualAnalogPainScale
     /// </summary>
     public const string LiteralVisualAnalogPainScale = "273904000";
+
+    /// <summary>
+    /// Literal for code: NONEVisualAnalogPainScale
+    /// </summary>
+    public const string LiteralNONEVisualAnalogPainScale = "http://snomed.info/sct#273904000";
 
     /// <summary>
     /// Literal for code: VisualAndPerceptualAssessmentProgram
@@ -12986,9 +16936,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVisualAndPerceptualAssessmentProgram = "273905004";
 
     /// <summary>
+    /// Literal for code: NONEVisualAndPerceptualAssessmentProgram
+    /// </summary>
+    public const string LiteralNONEVisualAndPerceptualAssessmentProgram = "http://snomed.info/sct#273905004";
+
+    /// <summary>
     /// Literal for code: VisualObjectAndSpatialPerceptionTest
     /// </summary>
     public const string LiteralVisualObjectAndSpatialPerceptionTest = "273906003";
+
+    /// <summary>
+    /// Literal for code: NONEVisualObjectAndSpatialPerceptionTest
+    /// </summary>
+    public const string LiteralNONEVisualObjectAndSpatialPerceptionTest = "http://snomed.info/sct#273906003";
 
     /// <summary>
     /// Literal for code: VoiceAssessmentSheetMartin
@@ -12996,9 +16956,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVoiceAssessmentSheetMartin = "273908002";
 
     /// <summary>
+    /// Literal for code: NONEVoiceAssessmentSheetMartin
+    /// </summary>
+    public const string LiteralNONEVoiceAssessmentSheetMartin = "http://snomed.info/sct#273908002";
+
+    /// <summary>
     /// Literal for code: VoiceEvaluationForm
     /// </summary>
     public const string LiteralVoiceEvaluationForm = "273909005";
+
+    /// <summary>
+    /// Literal for code: NONEVoiceEvaluationForm
+    /// </summary>
+    public const string LiteralNONEVoiceEvaluationForm = "http://snomed.info/sct#273909005";
 
     /// <summary>
     /// Literal for code: VoiceSkillsAssessment
@@ -13006,9 +16976,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVoiceSkillsAssessment = "273910000";
 
     /// <summary>
+    /// Literal for code: NONEVoiceSkillsAssessment
+    /// </summary>
+    public const string LiteralNONEVoiceSkillsAssessment = "http://snomed.info/sct#273910000";
+
+    /// <summary>
     /// Literal for code: WaddellDisabilityIndex
     /// </summary>
     public const string LiteralWaddellDisabilityIndex = "273912008";
+
+    /// <summary>
+    /// Literal for code: NONEWaddellDisabilityIndex
+    /// </summary>
+    public const string LiteralNONEWaddellDisabilityIndex = "http://snomed.info/sct#273912008";
 
     /// <summary>
     /// Literal for code: WakefieldSelfAssessmentDepressionInventory
@@ -13016,9 +16996,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWakefieldSelfAssessmentDepressionInventory = "273913003";
 
     /// <summary>
+    /// Literal for code: NONEWakefieldSelfAssessmentDepressionInventory
+    /// </summary>
+    public const string LiteralNONEWakefieldSelfAssessmentDepressionInventory = "http://snomed.info/sct#273913003";
+
+    /// <summary>
     /// Literal for code: WardBehaviorRatingScale
     /// </summary>
     public const string LiteralWardBehaviorRatingScale = "273914009";
+
+    /// <summary>
+    /// Literal for code: NONEWardBehaviorRatingScale
+    /// </summary>
+    public const string LiteralNONEWardBehaviorRatingScale = "http://snomed.info/sct#273914009";
 
     /// <summary>
     /// Literal for code: WarnerDysphagiaAssessment
@@ -13026,9 +17016,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWarnerDysphagiaAssessment = "273915005";
 
     /// <summary>
+    /// Literal for code: NONEWarnerDysphagiaAssessment
+    /// </summary>
+    public const string LiteralNONEWarnerDysphagiaAssessment = "http://snomed.info/sct#273915005";
+
+    /// <summary>
     /// Literal for code: WechslerAdultIntelligenceScale
     /// </summary>
     public const string LiteralWechslerAdultIntelligenceScale = "273916006";
+
+    /// <summary>
+    /// Literal for code: NONEWechslerAdultIntelligenceScale
+    /// </summary>
+    public const string LiteralNONEWechslerAdultIntelligenceScale = "http://snomed.info/sct#273916006";
 
     /// <summary>
     /// Literal for code: WechslerAdultIntelligenceTestRevised
@@ -13036,9 +17036,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWechslerAdultIntelligenceTestRevised = "273917002";
 
     /// <summary>
+    /// Literal for code: NONEWechslerAdultIntelligenceTestRevised
+    /// </summary>
+    public const string LiteralNONEWechslerAdultIntelligenceTestRevised = "http://snomed.info/sct#273917002";
+
+    /// <summary>
     /// Literal for code: WechslerIntelligenceScaleForChildren
     /// </summary>
     public const string LiteralWechslerIntelligenceScaleForChildren = "273918007";
+
+    /// <summary>
+    /// Literal for code: NONEWechslerIntelligenceScaleForChildren
+    /// </summary>
+    public const string LiteralNONEWechslerIntelligenceScaleForChildren = "http://snomed.info/sct#273918007";
 
     /// <summary>
     /// Literal for code: WechslerIntelligenceNonVerbalPerformanceAssessment
@@ -13046,9 +17056,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWechslerIntelligenceNonVerbalPerformanceAssessment = "273919004";
 
     /// <summary>
+    /// Literal for code: NONEWechslerIntelligenceNonVerbalPerformanceAssessment
+    /// </summary>
+    public const string LiteralNONEWechslerIntelligenceNonVerbalPerformanceAssessment = "http://snomed.info/sct#273919004";
+
+    /// <summary>
     /// Literal for code: WechslerIntelligenceVerbalAssessment
     /// </summary>
     public const string LiteralWechslerIntelligenceVerbalAssessment = "273920005";
+
+    /// <summary>
+    /// Literal for code: NONEWechslerIntelligenceVerbalAssessment
+    /// </summary>
+    public const string LiteralNONEWechslerIntelligenceVerbalAssessment = "http://snomed.info/sct#273920005";
 
     /// <summary>
     /// Literal for code: LogicalMemoryParagraphRecall
@@ -13056,9 +17076,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLogicalMemoryParagraphRecall = "273921009";
 
     /// <summary>
+    /// Literal for code: NONELogicalMemoryParagraphRecall
+    /// </summary>
+    public const string LiteralNONELogicalMemoryParagraphRecall = "http://snomed.info/sct#273921009";
+
+    /// <summary>
     /// Literal for code: WechslerPreSchoolAndPrimaryScaleOfIntelligence
     /// </summary>
     public const string LiteralWechslerPreSchoolAndPrimaryScaleOfIntelligence = "273922002";
+
+    /// <summary>
+    /// Literal for code: NONEWechslerPreSchoolAndPrimaryScaleOfIntelligence
+    /// </summary>
+    public const string LiteralNONEWechslerPreSchoolAndPrimaryScaleOfIntelligence = "http://snomed.info/sct#273922002";
 
     /// <summary>
     /// Literal for code: WeiglGoldsteinScheererColorFormSortingTest
@@ -13066,9 +17096,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWeiglGoldsteinScheererColorFormSortingTest = "273923007";
 
     /// <summary>
+    /// Literal for code: NONEWeiglGoldsteinScheererColorFormSortingTest
+    /// </summary>
+    public const string LiteralNONEWeiglGoldsteinScheererColorFormSortingTest = "http://snomed.info/sct#273923007";
+
+    /// <summary>
     /// Literal for code: WepmanAuditorySequentialMemoryTest
     /// </summary>
     public const string LiteralWepmanAuditorySequentialMemoryTest = "273924001";
+
+    /// <summary>
+    /// Literal for code: NONEWepmanAuditorySequentialMemoryTest
+    /// </summary>
+    public const string LiteralNONEWepmanAuditorySequentialMemoryTest = "http://snomed.info/sct#273924001";
 
     /// <summary>
     /// Literal for code: WepmanAuditoryDiscriminationTest
@@ -13076,9 +17116,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWepmanAuditoryDiscriminationTest = "273925000";
 
     /// <summary>
+    /// Literal for code: NONEWepmanAuditoryDiscriminationTest
+    /// </summary>
+    public const string LiteralNONEWepmanAuditoryDiscriminationTest = "http://snomed.info/sct#273925000";
+
+    /// <summary>
     /// Literal for code: WessexRevisedPortageLanguageChecklist
     /// </summary>
     public const string LiteralWessexRevisedPortageLanguageChecklist = "273926004";
+
+    /// <summary>
+    /// Literal for code: NONEWessexRevisedPortageLanguageChecklist
+    /// </summary>
+    public const string LiteralNONEWessexRevisedPortageLanguageChecklist = "http://snomed.info/sct#273926004";
 
     /// <summary>
     /// Literal for code: WesternAphasiaBattery
@@ -13086,9 +17136,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWesternAphasiaBattery = "273927008";
 
     /// <summary>
+    /// Literal for code: NONEWesternAphasiaBattery
+    /// </summary>
+    public const string LiteralNONEWesternAphasiaBattery = "http://snomed.info/sct#273927008";
+
+    /// <summary>
     /// Literal for code: WPTASWestmeadPostTraumaticAmnesiaScale
     /// </summary>
     public const string LiteralWPTASWestmeadPostTraumaticAmnesiaScale = "273928003";
+
+    /// <summary>
+    /// Literal for code: NONEWPTASWestmeadPostTraumaticAmnesiaScale
+    /// </summary>
+    public const string LiteralNONEWPTASWestmeadPostTraumaticAmnesiaScale = "http://snomed.info/sct#273928003";
 
     /// <summary>
     /// Literal for code: WorldHealthOrganizationWHODepressionScale
@@ -13096,9 +17156,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWorldHealthOrganizationWHODepressionScale = "273929006";
 
     /// <summary>
+    /// Literal for code: NONEWorldHealthOrganizationWHODepressionScale
+    /// </summary>
+    public const string LiteralNONEWorldHealthOrganizationWHODepressionScale = "http://snomed.info/sct#273929006";
+
+    /// <summary>
     /// Literal for code: WorldHealthOrganizationWHOHandicapScale
     /// </summary>
     public const string LiteralWorldHealthOrganizationWHOHandicapScale = "273930001";
+
+    /// <summary>
+    /// Literal for code: NONEWorldHealthOrganizationWHOHandicapScale
+    /// </summary>
+    public const string LiteralNONEWorldHealthOrganizationWHOHandicapScale = "http://snomed.info/sct#273930001";
 
     /// <summary>
     /// Literal for code: WorldHealthOrganizationWHOClassificationOfImpairmentsDisabilitiesAndHandicapScale
@@ -13106,9 +17176,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWorldHealthOrganizationWHOClassificationOfImpairmentsDisabilitiesAndHandicapScale = "273931002";
 
     /// <summary>
+    /// Literal for code: NONEWorldHealthOrganizationWHOClassificationOfImpairmentsDisabilitiesAndHandicapScale
+    /// </summary>
+    public const string LiteralNONEWorldHealthOrganizationWHOClassificationOfImpairmentsDisabilitiesAndHandicapScale = "http://snomed.info/sct#273931002";
+
+    /// <summary>
     /// Literal for code: WorldHealthOrganizationWHOEconomicSelfSufficiencyHandicapScale
     /// </summary>
     public const string LiteralWorldHealthOrganizationWHOEconomicSelfSufficiencyHandicapScale = "273932009";
+
+    /// <summary>
+    /// Literal for code: NONEWorldHealthOrganizationWHOEconomicSelfSufficiencyHandicapScale
+    /// </summary>
+    public const string LiteralNONEWorldHealthOrganizationWHOEconomicSelfSufficiencyHandicapScale = "http://snomed.info/sct#273932009";
 
     /// <summary>
     /// Literal for code: WorldHealthOrganizationWHOMobilityHandicapScale
@@ -13116,9 +17196,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWorldHealthOrganizationWHOMobilityHandicapScale = "273933004";
 
     /// <summary>
+    /// Literal for code: NONEWorldHealthOrganizationWHOMobilityHandicapScale
+    /// </summary>
+    public const string LiteralNONEWorldHealthOrganizationWHOMobilityHandicapScale = "http://snomed.info/sct#273933004";
+
+    /// <summary>
     /// Literal for code: WorldHealthOrganizationWHOOccupationHandicapScale
     /// </summary>
     public const string LiteralWorldHealthOrganizationWHOOccupationHandicapScale = "273934005";
+
+    /// <summary>
+    /// Literal for code: NONEWorldHealthOrganizationWHOOccupationHandicapScale
+    /// </summary>
+    public const string LiteralNONEWorldHealthOrganizationWHOOccupationHandicapScale = "http://snomed.info/sct#273934005";
 
     /// <summary>
     /// Literal for code: WorldHealthOrganizationWHOOrientationHandicapScale
@@ -13126,9 +17216,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWorldHealthOrganizationWHOOrientationHandicapScale = "273935006";
 
     /// <summary>
+    /// Literal for code: NONEWorldHealthOrganizationWHOOrientationHandicapScale
+    /// </summary>
+    public const string LiteralNONEWorldHealthOrganizationWHOOrientationHandicapScale = "http://snomed.info/sct#273935006";
+
+    /// <summary>
     /// Literal for code: WorldHealthOrganizationWHOPhysicalIndependenceHandicapScale
     /// </summary>
     public const string LiteralWorldHealthOrganizationWHOPhysicalIndependenceHandicapScale = "273936007";
+
+    /// <summary>
+    /// Literal for code: NONEWorldHealthOrganizationWHOPhysicalIndependenceHandicapScale
+    /// </summary>
+    public const string LiteralNONEWorldHealthOrganizationWHOPhysicalIndependenceHandicapScale = "http://snomed.info/sct#273936007";
 
     /// <summary>
     /// Literal for code: WorldHealthOrganizationWHOSocialIntegrationHandicapScale
@@ -13136,9 +17236,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWorldHealthOrganizationWHOSocialIntegrationHandicapScale = "273937003";
 
     /// <summary>
+    /// Literal for code: NONEWorldHealthOrganizationWHOSocialIntegrationHandicapScale
+    /// </summary>
+    public const string LiteralNONEWorldHealthOrganizationWHOSocialIntegrationHandicapScale = "http://snomed.info/sct#273937003";
+
+    /// <summary>
     /// Literal for code: WinslowFeedingChecklist
     /// </summary>
     public const string LiteralWinslowFeedingChecklist = "273938008";
+
+    /// <summary>
+    /// Literal for code: NONEWinslowFeedingChecklist
+    /// </summary>
+    public const string LiteralNONEWinslowFeedingChecklist = "http://snomed.info/sct#273938008";
 
     /// <summary>
     /// Literal for code: WisconsinCardSortingTest
@@ -13146,9 +17256,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWisconsinCardSortingTest = "273939000";
 
     /// <summary>
+    /// Literal for code: NONEWisconsinCardSortingTest
+    /// </summary>
+    public const string LiteralNONEWisconsinCardSortingTest = "http://snomed.info/sct#273939000";
+
+    /// <summary>
     /// Literal for code: SDSZungSelfRatingDepressionScale
     /// </summary>
     public const string LiteralSDSZungSelfRatingDepressionScale = "273940003";
+
+    /// <summary>
+    /// Literal for code: NONESDSZungSelfRatingDepressionScale
+    /// </summary>
+    public const string LiteralNONESDSZungSelfRatingDepressionScale = "http://snomed.info/sct#273940003";
 
     /// <summary>
     /// Literal for code: ZungAnxietyStatusInventory
@@ -13156,9 +17276,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralZungAnxietyStatusInventory = "273941004";
 
     /// <summary>
+    /// Literal for code: NONEZungAnxietyStatusInventory
+    /// </summary>
+    public const string LiteralNONEZungAnxietyStatusInventory = "http://snomed.info/sct#273941004";
+
+    /// <summary>
     /// Literal for code: ZungSelfRatingAnxietyScale
     /// </summary>
     public const string LiteralZungSelfRatingAnxietyScale = "273942006";
+
+    /// <summary>
+    /// Literal for code: NONEZungSelfRatingAnxietyScale
+    /// </summary>
+    public const string LiteralNONEZungSelfRatingAnxietyScale = "http://snomed.info/sct#273942006";
 
     /// <summary>
     /// Literal for code: M
@@ -13166,9 +17296,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralM = "277318003";
 
     /// <summary>
+    /// Literal for code: NONEM
+    /// </summary>
+    public const string LiteralNONEM = "http://snomed.info/sct#277318003";
+
+    /// <summary>
     /// Literal for code: HistologicalGradingSystems
     /// </summary>
     public const string LiteralHistologicalGradingSystems = "277457005";
+
+    /// <summary>
+    /// Literal for code: NONEHistologicalGradingSystems
+    /// </summary>
+    public const string LiteralNONEHistologicalGradingSystems = "http://snomed.info/sct#277457005";
 
     /// <summary>
     /// Literal for code: DaumasDuportGradingSystem
@@ -13176,9 +17316,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDaumasDuportGradingSystem = "277459008";
 
     /// <summary>
+    /// Literal for code: NONEDaumasDuportGradingSystem
+    /// </summary>
+    public const string LiteralNONEDaumasDuportGradingSystem = "http://snomed.info/sct#277459008";
+
+    /// <summary>
     /// Literal for code: WorldHealthOrganizationWHOCentralNervousSystemCNSTumorGradingSystem
     /// </summary>
     public const string LiteralWorldHealthOrganizationWHOCentralNervousSystemCNSTumorGradingSystem = "277460003";
+
+    /// <summary>
+    /// Literal for code: NONEWorldHealthOrganizationWHOCentralNervousSystemCNSTumorGradingSystem
+    /// </summary>
+    public const string LiteralNONEWorldHealthOrganizationWHOCentralNervousSystemCNSTumorGradingSystem = "http://snomed.info/sct#277460003";
 
     /// <summary>
     /// Literal for code: AdditionalTNMDescriptors
@@ -13186,9 +17336,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdditionalTNMDescriptors = "277645005";
 
     /// <summary>
+    /// Literal for code: NONEAdditionalTNMDescriptors
+    /// </summary>
+    public const string LiteralNONEAdditionalTNMDescriptors = "http://snomed.info/sct#277645005";
+
+    /// <summary>
     /// Literal for code: AAtAutopsy
     /// </summary>
     public const string LiteralAAtAutopsy = "277646006";
+
+    /// <summary>
+    /// Literal for code: NONEAAtAutopsy
+    /// </summary>
+    public const string LiteralNONEAAtAutopsy = "http://snomed.info/sct#277646006";
 
     /// <summary>
     /// Literal for code: RTumorRecurrence
@@ -13196,9 +17356,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRTumorRecurrence = "277647002";
 
     /// <summary>
+    /// Literal for code: NONERTumorRecurrence
+    /// </summary>
+    public const string LiteralNONERTumorRecurrence = "http://snomed.info/sct#277647002";
+
+    /// <summary>
     /// Literal for code: YDuringTherapyFollowingTreatment
     /// </summary>
     public const string LiteralYDuringTherapyFollowingTreatment = "277649004";
+
+    /// <summary>
+    /// Literal for code: NONEYDuringTherapyFollowingTreatment
+    /// </summary>
+    public const string LiteralNONEYDuringTherapyFollowingTreatment = "http://snomed.info/sct#277649004";
 
     /// <summary>
     /// Literal for code: MMultipleTumors
@@ -13206,9 +17376,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMMultipleTumors = "277650004";
 
     /// <summary>
+    /// Literal for code: NONEMMultipleTumors
+    /// </summary>
+    public const string LiteralNONEMMultipleTumors = "http://snomed.info/sct#277650004";
+
+    /// <summary>
     /// Literal for code: FFamilyHistory
     /// </summary>
     public const string LiteralFFamilyHistory = "277652007";
+
+    /// <summary>
+    /// Literal for code: NONEFFamilyHistory
+    /// </summary>
+    public const string LiteralNONEFFamilyHistory = "http://snomed.info/sct#277652007";
 
     /// <summary>
     /// Literal for code: DRetinalInvolvement
@@ -13216,9 +17396,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDRetinalInvolvement = "277676004";
 
     /// <summary>
+    /// Literal for code: NONEDRetinalInvolvement
+    /// </summary>
+    public const string LiteralNONEDRetinalInvolvement = "http://snomed.info/sct#277676004";
+
+    /// <summary>
     /// Literal for code: NodeStageG1InRetinoblastoma
     /// </summary>
     public const string LiteralNodeStageG1InRetinoblastoma = "278241006";
+
+    /// <summary>
+    /// Literal for code: NONENodeStageG1InRetinoblastoma
+    /// </summary>
+    public const string LiteralNONENodeStageG1InRetinoblastoma = "http://snomed.info/sct#278241006";
 
     /// <summary>
     /// Literal for code: NodeStageG2InRetinoblastoma
@@ -13226,9 +17416,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNodeStageG2InRetinoblastoma = "278242004";
 
     /// <summary>
+    /// Literal for code: NONENodeStageG2InRetinoblastoma
+    /// </summary>
+    public const string LiteralNONENodeStageG2InRetinoblastoma = "http://snomed.info/sct#278242004";
+
+    /// <summary>
     /// Literal for code: LungStageL1
     /// </summary>
     public const string LiteralLungStageL1 = "278247005";
+
+    /// <summary>
+    /// Literal for code: NONELungStageL1
+    /// </summary>
+    public const string LiteralNONELungStageL1 = "http://snomed.info/sct#278247005";
 
     /// <summary>
     /// Literal for code: ParsonnetScore
@@ -13236,9 +17436,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParsonnetScore = "278699003";
 
     /// <summary>
+    /// Literal for code: NONEParsonnetScore
+    /// </summary>
+    public const string LiteralNONEParsonnetScore = "http://snomed.info/sct#278699003";
+
+    /// <summary>
     /// Literal for code: ShortFormMcGillPainQuestionnaire
     /// </summary>
     public const string LiteralShortFormMcGillPainQuestionnaire = "278896008";
+
+    /// <summary>
+    /// Literal for code: NONEShortFormMcGillPainQuestionnaire
+    /// </summary>
+    public const string LiteralNONEShortFormMcGillPainQuestionnaire = "http://snomed.info/sct#278896008";
 
     /// <summary>
     /// Literal for code: WaterlowPressureSoreRiskScore
@@ -13246,9 +17456,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWaterlowPressureSoreRiskScore = "278897004";
 
     /// <summary>
+    /// Literal for code: NONEWaterlowPressureSoreRiskScore
+    /// </summary>
+    public const string LiteralNONEWaterlowPressureSoreRiskScore = "http://snomed.info/sct#278897004";
+
+    /// <summary>
     /// Literal for code: NortonScore
     /// </summary>
     public const string LiteralNortonScore = "278898009";
+
+    /// <summary>
+    /// Literal for code: NONENortonScore
+    /// </summary>
+    public const string LiteralNONENortonScore = "http://snomed.info/sct#278898009";
 
     /// <summary>
     /// Literal for code: VerbalRatingScale
@@ -13256,9 +17476,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVerbalRatingScale = "279101002";
 
     /// <summary>
+    /// Literal for code: NONEVerbalRatingScale
+    /// </summary>
+    public const string LiteralNONEVerbalRatingScale = "http://snomed.info/sct#279101002";
+
+    /// <summary>
     /// Literal for code: HealthOfTheNationOutcomeScaleSummatedGenericVersion
     /// </summary>
     public const string LiteralHealthOfTheNationOutcomeScaleSummatedGenericVersion = "281113000";
+
+    /// <summary>
+    /// Literal for code: NONEHealthOfTheNationOutcomeScaleSummatedGenericVersion
+    /// </summary>
+    public const string LiteralNONEHealthOfTheNationOutcomeScaleSummatedGenericVersion = "http://snomed.info/sct#281113000";
 
     /// <summary>
     /// Literal for code: HealthOfTheNationOutcomeScaleSubscaleGenericVersion
@@ -13266,9 +17496,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthOfTheNationOutcomeScaleSubscaleGenericVersion = "281114006";
 
     /// <summary>
+    /// Literal for code: NONEHealthOfTheNationOutcomeScaleSubscaleGenericVersion
+    /// </summary>
+    public const string LiteralNONEHealthOfTheNationOutcomeScaleSubscaleGenericVersion = "http://snomed.info/sct#281114006";
+
+    /// <summary>
     /// Literal for code: HealthOfTheNationOutcomeScaleItem1AggressiveDisruptiveBehavior
     /// </summary>
     public const string LiteralHealthOfTheNationOutcomeScaleItem1AggressiveDisruptiveBehavior = "281115007";
+
+    /// <summary>
+    /// Literal for code: NONEHealthOfTheNationOutcomeScaleItem1AggressiveDisruptiveBehavior
+    /// </summary>
+    public const string LiteralNONEHealthOfTheNationOutcomeScaleItem1AggressiveDisruptiveBehavior = "http://snomed.info/sct#281115007";
 
     /// <summary>
     /// Literal for code: HealthOfTheNationOutcomeScaleItem2NonAccidentalSelfInjury
@@ -13276,9 +17516,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthOfTheNationOutcomeScaleItem2NonAccidentalSelfInjury = "281116008";
 
     /// <summary>
+    /// Literal for code: NONEHealthOfTheNationOutcomeScaleItem2NonAccidentalSelfInjury
+    /// </summary>
+    public const string LiteralNONEHealthOfTheNationOutcomeScaleItem2NonAccidentalSelfInjury = "http://snomed.info/sct#281116008";
+
+    /// <summary>
     /// Literal for code: HoNOSItem3AlcoholDrugProblem
     /// </summary>
     public const string LiteralHoNOSItem3AlcoholDrugProblem = "281117004";
+
+    /// <summary>
+    /// Literal for code: NONEHoNOSItem3AlcoholDrugProblem
+    /// </summary>
+    public const string LiteralNONEHoNOSItem3AlcoholDrugProblem = "http://snomed.info/sct#281117004";
 
     /// <summary>
     /// Literal for code: HealthOfTheNationOutcomeScaleItem4CognitiveProblems
@@ -13286,9 +17536,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthOfTheNationOutcomeScaleItem4CognitiveProblems = "281118009";
 
     /// <summary>
+    /// Literal for code: NONEHealthOfTheNationOutcomeScaleItem4CognitiveProblems
+    /// </summary>
+    public const string LiteralNONEHealthOfTheNationOutcomeScaleItem4CognitiveProblems = "http://snomed.info/sct#281118009";
+
+    /// <summary>
     /// Literal for code: HoNOSItem5
     /// </summary>
     public const string LiteralHoNOSItem5 = "281119001";
+
+    /// <summary>
+    /// Literal for code: NONEHoNOSItem5
+    /// </summary>
+    public const string LiteralNONEHoNOSItem5 = "http://snomed.info/sct#281119001";
 
     /// <summary>
     /// Literal for code: HealthOfTheNationOutcomeScaleItem6HallucinationsDelusions
@@ -13296,9 +17556,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthOfTheNationOutcomeScaleItem6HallucinationsDelusions = "281120007";
 
     /// <summary>
+    /// Literal for code: NONEHealthOfTheNationOutcomeScaleItem6HallucinationsDelusions
+    /// </summary>
+    public const string LiteralNONEHealthOfTheNationOutcomeScaleItem6HallucinationsDelusions = "http://snomed.info/sct#281120007";
+
+    /// <summary>
     /// Literal for code: HoNOSItem7
     /// </summary>
     public const string LiteralHoNOSItem7 = "281121006";
+
+    /// <summary>
+    /// Literal for code: NONEHoNOSItem7
+    /// </summary>
+    public const string LiteralNONEHoNOSItem7 = "http://snomed.info/sct#281121006";
 
     /// <summary>
     /// Literal for code: HealthOfTheNationOutcomeScaleItem8OtherMentalBehavioralProblems
@@ -13306,9 +17576,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthOfTheNationOutcomeScaleItem8OtherMentalBehavioralProblems = "281122004";
 
     /// <summary>
+    /// Literal for code: NONEHealthOfTheNationOutcomeScaleItem8OtherMentalBehavioralProblems
+    /// </summary>
+    public const string LiteralNONEHealthOfTheNationOutcomeScaleItem8OtherMentalBehavioralProblems = "http://snomed.info/sct#281122004";
+
+    /// <summary>
     /// Literal for code: HoNOSItem9
     /// </summary>
     public const string LiteralHoNOSItem9 = "281123009";
+
+    /// <summary>
+    /// Literal for code: NONEHoNOSItem9
+    /// </summary>
+    public const string LiteralNONEHoNOSItem9 = "http://snomed.info/sct#281123009";
 
     /// <summary>
     /// Literal for code: HoNOSItem10
@@ -13316,9 +17596,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHoNOSItem10 = "281124003";
 
     /// <summary>
+    /// Literal for code: NONEHoNOSItem10
+    /// </summary>
+    public const string LiteralNONEHoNOSItem10 = "http://snomed.info/sct#281124003";
+
+    /// <summary>
     /// Literal for code: HealthOfTheNationOutcomeScaleItem11LivingConditions
     /// </summary>
     public const string LiteralHealthOfTheNationOutcomeScaleItem11LivingConditions = "281125002";
+
+    /// <summary>
+    /// Literal for code: NONEHealthOfTheNationOutcomeScaleItem11LivingConditions
+    /// </summary>
+    public const string LiteralNONEHealthOfTheNationOutcomeScaleItem11LivingConditions = "http://snomed.info/sct#281125002";
 
     /// <summary>
     /// Literal for code: HoNOSItem12
@@ -13326,9 +17616,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHoNOSItem12 = "281126001";
 
     /// <summary>
+    /// Literal for code: NONEHoNOSItem12
+    /// </summary>
+    public const string LiteralNONEHoNOSItem12 = "http://snomed.info/sct#281126001";
+
+    /// <summary>
     /// Literal for code: RamsaySedationScale
     /// </summary>
     public const string LiteralRamsaySedationScale = "281400004";
+
+    /// <summary>
+    /// Literal for code: NONERamsaySedationScale
+    /// </summary>
+    public const string LiteralNONERamsaySedationScale = "http://snomed.info/sct#281400004";
 
     /// <summary>
     /// Literal for code: GriffithsMentalDevelopmentalScale
@@ -13336,9 +17636,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGriffithsMentalDevelopmentalScale = "281692008";
 
     /// <summary>
+    /// Literal for code: NONEGriffithsMentalDevelopmentalScale
+    /// </summary>
+    public const string LiteralNONEGriffithsMentalDevelopmentalScale = "http://snomed.info/sct#281692008";
+
+    /// <summary>
     /// Literal for code: GessellDevelopmentalScale
     /// </summary>
     public const string LiteralGessellDevelopmentalScale = "281693003";
+
+    /// <summary>
+    /// Literal for code: NONEGessellDevelopmentalScale
+    /// </summary>
+    public const string LiteralNONEGessellDevelopmentalScale = "http://snomed.info/sct#281693003";
 
     /// <summary>
     /// Literal for code: HealthOfTheNationOutcomeSubscaleA
@@ -13346,9 +17656,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthOfTheNationOutcomeSubscaleA = "281844006";
 
     /// <summary>
+    /// Literal for code: NONEHealthOfTheNationOutcomeSubscaleA
+    /// </summary>
+    public const string LiteralNONEHealthOfTheNationOutcomeSubscaleA = "http://snomed.info/sct#281844006";
+
+    /// <summary>
     /// Literal for code: HoNOSSubscaleB
     /// </summary>
     public const string LiteralHoNOSSubscaleB = "281845007";
+
+    /// <summary>
+    /// Literal for code: NONEHoNOSSubscaleB
+    /// </summary>
+    public const string LiteralNONEHoNOSSubscaleB = "http://snomed.info/sct#281845007";
 
     /// <summary>
     /// Literal for code: HealthOfTheNationOutcomeSubscaleC
@@ -13356,9 +17676,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthOfTheNationOutcomeSubscaleC = "281846008";
 
     /// <summary>
+    /// Literal for code: NONEHealthOfTheNationOutcomeSubscaleC
+    /// </summary>
+    public const string LiteralNONEHealthOfTheNationOutcomeSubscaleC = "http://snomed.info/sct#281846008";
+
+    /// <summary>
     /// Literal for code: HoNOSSubscaleD
     /// </summary>
     public const string LiteralHoNOSSubscaleD = "281848009";
+
+    /// <summary>
+    /// Literal for code: NONEHoNOSSubscaleD
+    /// </summary>
+    public const string LiteralNONEHoNOSSubscaleD = "http://snomed.info/sct#281848009";
 
     /// <summary>
     /// Literal for code: HealthOfTheNationOutcomeScaleItemGenericVersion
@@ -13366,9 +17696,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthOfTheNationOutcomeScaleItemGenericVersion = "281849001";
 
     /// <summary>
+    /// Literal for code: NONEHealthOfTheNationOutcomeScaleItemGenericVersion
+    /// </summary>
+    public const string LiteralNONEHealthOfTheNationOutcomeScaleItemGenericVersion = "http://snomed.info/sct#281849001";
+
+    /// <summary>
     /// Literal for code: VHepaticVeinMarker
     /// </summary>
     public const string LiteralVHepaticVeinMarker = "282402005";
+
+    /// <summary>
+    /// Literal for code: NONEVHepaticVeinMarker
+    /// </summary>
+    public const string LiteralNONEVHepaticVeinMarker = "http://snomed.info/sct#282402005";
 
     /// <summary>
     /// Literal for code: PPortalVeinMarker
@@ -13376,9 +17716,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPPortalVeinMarker = "282403000";
 
     /// <summary>
+    /// Literal for code: NONEPPortalVeinMarker
+    /// </summary>
+    public const string LiteralNONEPPortalVeinMarker = "http://snomed.info/sct#282403000";
+
+    /// <summary>
     /// Literal for code: EExtrahepaticMarker
     /// </summary>
     public const string LiteralEExtrahepaticMarker = "282404006";
+
+    /// <summary>
+    /// Literal for code: NONEEExtrahepaticMarker
+    /// </summary>
+    public const string LiteralNONEEExtrahepaticMarker = "http://snomed.info/sct#282404006";
 
     /// <summary>
     /// Literal for code: MMetastaticMarker
@@ -13386,9 +17736,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMMetastaticMarker = "282405007";
 
     /// <summary>
+    /// Literal for code: NONEMMetastaticMarker
+    /// </summary>
+    public const string LiteralNONEMMetastaticMarker = "http://snomed.info/sct#282405007";
+
+    /// <summary>
     /// Literal for code: EExtralymphaticOrganInvolvementMarker
     /// </summary>
     public const string LiteralEExtralymphaticOrganInvolvementMarker = "282436004";
+
+    /// <summary>
+    /// Literal for code: NONEEExtralymphaticOrganInvolvementMarker
+    /// </summary>
+    public const string LiteralNONEEExtralymphaticOrganInvolvementMarker = "http://snomed.info/sct#282436004";
 
     /// <summary>
     /// Literal for code: SSplenicInvolvementMarker
@@ -13396,9 +17756,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSSplenicInvolvementMarker = "282437008";
 
     /// <summary>
+    /// Literal for code: NONESSplenicInvolvementMarker
+    /// </summary>
+    public const string LiteralNONESSplenicInvolvementMarker = "http://snomed.info/sct#282437008";
+
+    /// <summary>
     /// Literal for code: SuicideIntentScoreScale
     /// </summary>
     public const string LiteralSuicideIntentScoreScale = "282466006";
+
+    /// <summary>
+    /// Literal for code: NONESuicideIntentScoreScale
+    /// </summary>
+    public const string LiteralNONESuicideIntentScoreScale = "http://snomed.info/sct#282466006";
 
     /// <summary>
     /// Literal for code: SuicideIntentScoreScaleSummated
@@ -13406,9 +17776,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuicideIntentScoreScaleSummated = "282467002";
 
     /// <summary>
+    /// Literal for code: NONESuicideIntentScoreScaleSummated
+    /// </summary>
+    public const string LiteralNONESuicideIntentScoreScaleSummated = "http://snomed.info/sct#282467002";
+
+    /// <summary>
     /// Literal for code: SuicideIntentScoreSubscale
     /// </summary>
     public const string LiteralSuicideIntentScoreSubscale = "282468007";
+
+    /// <summary>
+    /// Literal for code: NONESuicideIntentScoreSubscale
+    /// </summary>
+    public const string LiteralNONESuicideIntentScoreSubscale = "http://snomed.info/sct#282468007";
 
     /// <summary>
     /// Literal for code: SuicideIntentScoreSubscaleAttemptCircumstances
@@ -13416,9 +17796,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuicideIntentScoreSubscaleAttemptCircumstances = "282469004";
 
     /// <summary>
+    /// Literal for code: NONESuicideIntentScoreSubscaleAttemptCircumstances
+    /// </summary>
+    public const string LiteralNONESuicideIntentScoreSubscaleAttemptCircumstances = "http://snomed.info/sct#282469004";
+
+    /// <summary>
     /// Literal for code: SuicideIntentScoreSubscaleSelfReport
     /// </summary>
     public const string LiteralSuicideIntentScoreSubscaleSelfReport = "282470003";
+
+    /// <summary>
+    /// Literal for code: NONESuicideIntentScoreSubscaleSelfReport
+    /// </summary>
+    public const string LiteralNONESuicideIntentScoreSubscaleSelfReport = "http://snomed.info/sct#282470003";
 
     /// <summary>
     /// Literal for code: SuicideIntentScoreSubscaleRisk
@@ -13426,9 +17816,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuicideIntentScoreSubscaleRisk = "282471004";
 
     /// <summary>
+    /// Literal for code: NONESuicideIntentScoreSubscaleRisk
+    /// </summary>
+    public const string LiteralNONESuicideIntentScoreSubscaleRisk = "http://snomed.info/sct#282471004";
+
+    /// <summary>
     /// Literal for code: GlobalAssessmentOfFunctioning1993DiagnosticAndStatisticalManualOfMentalDisordersFourthEditionAdaptation
     /// </summary>
     public const string LiteralGlobalAssessmentOfFunctioning1993DiagnosticAndStatisticalManualOfMentalDisordersFourthEditionAdaptation = "284061009";
+
+    /// <summary>
+    /// Literal for code: NONEGlobalAssessmentOfFunctioning1993DiagnosticAndStatisticalManualOfMentalDisordersFourthEditionAdaptation
+    /// </summary>
+    public const string LiteralNONEGlobalAssessmentOfFunctioning1993DiagnosticAndStatisticalManualOfMentalDisordersFourthEditionAdaptation = "http://snomed.info/sct#284061009";
 
     /// <summary>
     /// Literal for code: BPRSBriefPsychiatricRatingScale1962
@@ -13436,9 +17836,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBPRSBriefPsychiatricRatingScale1962 = "284064001";
 
     /// <summary>
+    /// Literal for code: NONEBPRSBriefPsychiatricRatingScale1962
+    /// </summary>
+    public const string LiteralNONEBPRSBriefPsychiatricRatingScale1962 = "http://snomed.info/sct#284064001";
+
+    /// <summary>
     /// Literal for code: HealthOfTheNationOutcomeScales
     /// </summary>
     public const string LiteralHealthOfTheNationOutcomeScales = "284464005";
+
+    /// <summary>
+    /// Literal for code: NONEHealthOfTheNationOutcomeScales
+    /// </summary>
+    public const string LiteralNONEHealthOfTheNationOutcomeScales = "http://snomed.info/sct#284464005";
 
     /// <summary>
     /// Literal for code: GEMSGuideToEarlyMovementSkillsChecklist
@@ -13446,9 +17856,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGEMSGuideToEarlyMovementSkillsChecklist = "285713000";
 
     /// <summary>
+    /// Literal for code: NONEGEMSGuideToEarlyMovementSkillsChecklist
+    /// </summary>
+    public const string LiteralNONEGEMSGuideToEarlyMovementSkillsChecklist = "http://snomed.info/sct#285713000";
+
+    /// <summary>
     /// Literal for code: BSTSBereweekeSkillTeachingSystemChecklist
     /// </summary>
     public const string LiteralBSTSBereweekeSkillTeachingSystemChecklist = "285714006";
+
+    /// <summary>
+    /// Literal for code: NONEBSTSBereweekeSkillTeachingSystemChecklist
+    /// </summary>
+    public const string LiteralNONEBSTSBereweekeSkillTeachingSystemChecklist = "http://snomed.info/sct#285714006";
 
     /// <summary>
     /// Literal for code: WebsterScore
@@ -13456,9 +17876,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWebsterScore = "300991009";
 
     /// <summary>
+    /// Literal for code: NONEWebsterScore
+    /// </summary>
+    public const string LiteralNONEWebsterScore = "http://snomed.info/sct#300991009";
+
+    /// <summary>
     /// Literal for code: FerrimanAndGalwayScore
     /// </summary>
     public const string LiteralFerrimanAndGalwayScore = "302029005";
+
+    /// <summary>
+    /// Literal for code: NONEFerrimanAndGalwayScore
+    /// </summary>
+    public const string LiteralNONEFerrimanAndGalwayScore = "http://snomed.info/sct#302029005";
 
     /// <summary>
     /// Literal for code: RuleOfNines
@@ -13466,9 +17896,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRuleOfNines = "303807002";
 
     /// <summary>
+    /// Literal for code: NONERuleOfNines
+    /// </summary>
+    public const string LiteralNONERuleOfNines = "http://snomed.info/sct#303807002";
+
+    /// <summary>
     /// Literal for code: AmericanAssociationOnMentalRetardationAAMRAdaptiveBehaviorScale
     /// </summary>
     public const string LiteralAmericanAssociationOnMentalRetardationAAMRAdaptiveBehaviorScale = "304705008";
+
+    /// <summary>
+    /// Literal for code: NONEAmericanAssociationOnMentalRetardationAAMRAdaptiveBehaviorScale
+    /// </summary>
+    public const string LiteralNONEAmericanAssociationOnMentalRetardationAAMRAdaptiveBehaviorScale = "http://snomed.info/sct#304705008";
 
     /// <summary>
     /// Literal for code: AcceptanceOfIllnessScale
@@ -13476,9 +17916,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcceptanceOfIllnessScale = "304706009";
 
     /// <summary>
+    /// Literal for code: NONEAcceptanceOfIllnessScale
+    /// </summary>
+    public const string LiteralNONEAcceptanceOfIllnessScale = "http://snomed.info/sct#304706009";
+
+    /// <summary>
     /// Literal for code: AnomalousSentencesRepetitionTest
     /// </summary>
     public const string LiteralAnomalousSentencesRepetitionTest = "304707000";
+
+    /// <summary>
+    /// Literal for code: NONEAnomalousSentencesRepetitionTest
+    /// </summary>
+    public const string LiteralNONEAnomalousSentencesRepetitionTest = "http://snomed.info/sct#304707000";
 
     /// <summary>
     /// Literal for code: ArthritisImpactMeasurementScale
@@ -13486,9 +17936,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArthritisImpactMeasurementScale = "304708005";
 
     /// <summary>
+    /// Literal for code: NONEArthritisImpactMeasurementScale
+    /// </summary>
+    public const string LiteralNONEArthritisImpactMeasurementScale = "http://snomed.info/sct#304708005";
+
+    /// <summary>
     /// Literal for code: AttitudesTowardsDoctorsAndMedicineScale
     /// </summary>
     public const string LiteralAttitudesTowardsDoctorsAndMedicineScale = "304709002";
+
+    /// <summary>
+    /// Literal for code: NONEAttitudesTowardsDoctorsAndMedicineScale
+    /// </summary>
+    public const string LiteralNONEAttitudesTowardsDoctorsAndMedicineScale = "http://snomed.info/sct#304709002";
 
     /// <summary>
     /// Literal for code: BeckHopelessnessScale
@@ -13496,9 +17956,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBeckHopelessnessScale = "304710007";
 
     /// <summary>
+    /// Literal for code: NONEBeckHopelessnessScale
+    /// </summary>
+    public const string LiteralNONEBeckHopelessnessScale = "http://snomed.info/sct#304710007";
+
+    /// <summary>
     /// Literal for code: BeckAnxietyInventory
     /// </summary>
     public const string LiteralBeckAnxietyInventory = "304711006";
+
+    /// <summary>
+    /// Literal for code: NONEBeckAnxietyInventory
+    /// </summary>
+    public const string LiteralNONEBeckAnxietyInventory = "http://snomed.info/sct#304711006";
 
     /// <summary>
     /// Literal for code: BeckScaleForSuicideIdeation
@@ -13506,9 +17976,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBeckScaleForSuicideIdeation = "304712004";
 
     /// <summary>
+    /// Literal for code: NONEBeckScaleForSuicideIdeation
+    /// </summary>
+    public const string LiteralNONEBeckScaleForSuicideIdeation = "http://snomed.info/sct#304712004";
+
+    /// <summary>
     /// Literal for code: BPCQBeliefsAboutPainControlQuestionnaire
     /// </summary>
     public const string LiteralBPCQBeliefsAboutPainControlQuestionnaire = "304713009";
+
+    /// <summary>
+    /// Literal for code: NONEBPCQBeliefsAboutPainControlQuestionnaire
+    /// </summary>
+    public const string LiteralNONEBPCQBeliefsAboutPainControlQuestionnaire = "http://snomed.info/sct#304713009";
 
     /// <summary>
     /// Literal for code: BellakChildrenQuoteSApperceptionTest
@@ -13516,9 +17996,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBellakChildrenQuoteSApperceptionTest = "304714003";
 
     /// <summary>
+    /// Literal for code: NONEBellakChildrenQuoteSApperceptionTest
+    /// </summary>
+    public const string LiteralNONEBellakChildrenQuoteSApperceptionTest = "http://snomed.info/sct#304714003";
+
+    /// <summary>
     /// Literal for code: BenderVisualMotorGestaltTest
     /// </summary>
     public const string LiteralBenderVisualMotorGestaltTest = "304715002";
+
+    /// <summary>
+    /// Literal for code: NONEBenderVisualMotorGestaltTest
+    /// </summary>
+    public const string LiteralNONEBenderVisualMotorGestaltTest = "http://snomed.info/sct#304715002";
 
     /// <summary>
     /// Literal for code: BruininksOseretskyTestOfMotorProficiency
@@ -13526,9 +18016,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBruininksOseretskyTestOfMotorProficiency = "304716001";
 
     /// <summary>
+    /// Literal for code: NONEBruininksOseretskyTestOfMotorProficiency
+    /// </summary>
+    public const string LiteralNONEBruininksOseretskyTestOfMotorProficiency = "http://snomed.info/sct#304716001";
+
+    /// <summary>
     /// Literal for code: CancerAttitudeInventory
     /// </summary>
     public const string LiteralCancerAttitudeInventory = "304717005";
+
+    /// <summary>
+    /// Literal for code: NONECancerAttitudeInventory
+    /// </summary>
+    public const string LiteralNONECancerAttitudeInventory = "http://snomed.info/sct#304717005";
 
     /// <summary>
     /// Literal for code: ChildDepressionScaleSecondResearchEdition
@@ -13536,9 +18036,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChildDepressionScaleSecondResearchEdition = "304718000";
 
     /// <summary>
+    /// Literal for code: NONEChildDepressionScaleSecondResearchEdition
+    /// </summary>
+    public const string LiteralNONEChildDepressionScaleSecondResearchEdition = "http://snomed.info/sct#304718000";
+
+    /// <summary>
     /// Literal for code: ChildrenQuoteSHealthLocusOfControlScale
     /// </summary>
     public const string LiteralChildrenQuoteSHealthLocusOfControlScale = "304719008";
+
+    /// <summary>
+    /// Literal for code: NONEChildrenQuoteSHealthLocusOfControlScale
+    /// </summary>
+    public const string LiteralNONEChildrenQuoteSHealthLocusOfControlScale = "http://snomed.info/sct#304719008";
 
     /// <summary>
     /// Literal for code: CECSCourtauldEmotionalControlScale
@@ -13546,9 +18056,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCECSCourtauldEmotionalControlScale = "304720002";
 
     /// <summary>
+    /// Literal for code: NONECECSCourtauldEmotionalControlScale
+    /// </summary>
+    public const string LiteralNONECECSCourtauldEmotionalControlScale = "http://snomed.info/sct#304720002";
+
+    /// <summary>
     /// Literal for code: MiddlesexHospitalQuestionnaire
     /// </summary>
     public const string LiteralMiddlesexHospitalQuestionnaire = "304721003";
+
+    /// <summary>
+    /// Literal for code: NONEMiddlesexHospitalQuestionnaire
+    /// </summary>
+    public const string LiteralNONEMiddlesexHospitalQuestionnaire = "http://snomed.info/sct#304721003";
 
     /// <summary>
     /// Literal for code: CultureFreeSelfEsteemInventory
@@ -13556,9 +18076,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCultureFreeSelfEsteemInventory = "304722005";
 
     /// <summary>
+    /// Literal for code: NONECultureFreeSelfEsteemInventory
+    /// </summary>
+    public const string LiteralNONECultureFreeSelfEsteemInventory = "http://snomed.info/sct#304722005";
+
+    /// <summary>
     /// Literal for code: DelusionsSymptomsStatesInventory
     /// </summary>
     public const string LiteralDelusionsSymptomsStatesInventory = "304723000";
+
+    /// <summary>
+    /// Literal for code: NONEDelusionsSymptomsStatesInventory
+    /// </summary>
+    public const string LiteralNONEDelusionsSymptomsStatesInventory = "http://snomed.info/sct#304723000";
 
     /// <summary>
     /// Literal for code: EysenckPersonalityQuestionnaire
@@ -13566,9 +18096,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEysenckPersonalityQuestionnaire = "304724006";
 
     /// <summary>
+    /// Literal for code: NONEEysenckPersonalityQuestionnaire
+    /// </summary>
+    public const string LiteralNONEEysenckPersonalityQuestionnaire = "http://snomed.info/sct#304724006";
+
+    /// <summary>
     /// Literal for code: FamilyRelationsTest
     /// </summary>
     public const string LiteralFamilyRelationsTest = "304725007";
+
+    /// <summary>
+    /// Literal for code: NONEFamilyRelationsTest
+    /// </summary>
+    public const string LiteralNONEFamilyRelationsTest = "http://snomed.info/sct#304725007";
 
     /// <summary>
     /// Literal for code: ForcedChoiceRatingsOfHealthRelatedAttributes
@@ -13576,9 +18116,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralForcedChoiceRatingsOfHealthRelatedAttributes = "304726008";
 
     /// <summary>
+    /// Literal for code: NONEForcedChoiceRatingsOfHealthRelatedAttributes
+    /// </summary>
+    public const string LiteralNONEForcedChoiceRatingsOfHealthRelatedAttributes = "http://snomed.info/sct#304726008";
+
+    /// <summary>
     /// Literal for code: FraminghamAngerMeasure
     /// </summary>
     public const string LiteralFraminghamAngerMeasure = "304727004";
+
+    /// <summary>
+    /// Literal for code: NONEFraminghamAngerMeasure
+    /// </summary>
+    public const string LiteralNONEFraminghamAngerMeasure = "http://snomed.info/sct#304727004";
 
     /// <summary>
     /// Literal for code: FraminghamTypeABehaviorPatternMeasure
@@ -13586,9 +18136,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFraminghamTypeABehaviorPatternMeasure = "304728009";
 
     /// <summary>
+    /// Literal for code: NONEFraminghamTypeABehaviorPatternMeasure
+    /// </summary>
+    public const string LiteralNONEFraminghamTypeABehaviorPatternMeasure = "http://snomed.info/sct#304728009";
+
+    /// <summary>
     /// Literal for code: FuldObjectMemoryEvaluation
     /// </summary>
     public const string LiteralFuldObjectMemoryEvaluation = "304729001";
+
+    /// <summary>
+    /// Literal for code: NONEFuldObjectMemoryEvaluation
+    /// </summary>
+    public const string LiteralNONEFuldObjectMemoryEvaluation = "http://snomed.info/sct#304729001";
 
     /// <summary>
     /// Literal for code: FunctionalPerformanceRecord
@@ -13596,9 +18156,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFunctionalPerformanceRecord = "304730006";
 
     /// <summary>
+    /// Literal for code: NONEFunctionalPerformanceRecord
+    /// </summary>
+    public const string LiteralNONEFunctionalPerformanceRecord = "http://snomed.info/sct#304730006";
+
+    /// <summary>
     /// Literal for code: GeneralPreventativeHealthBehaviorsChecklist
     /// </summary>
     public const string LiteralGeneralPreventativeHealthBehaviorsChecklist = "304731005";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralPreventativeHealthBehaviorsChecklist
+    /// </summary>
+    public const string LiteralNONEGeneralPreventativeHealthBehaviorsChecklist = "http://snomed.info/sct#304731005";
 
     /// <summary>
     /// Literal for code: HasslesScale
@@ -13606,9 +18176,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHasslesScale = "304732003";
 
     /// <summary>
+    /// Literal for code: NONEHasslesScale
+    /// </summary>
+    public const string LiteralNONEHasslesScale = "http://snomed.info/sct#304732003";
+
+    /// <summary>
     /// Literal for code: HealthKnowledgeMeasurement
     /// </summary>
     public const string LiteralHealthKnowledgeMeasurement = "304733008";
+
+    /// <summary>
+    /// Literal for code: NONEHealthKnowledgeMeasurement
+    /// </summary>
+    public const string LiteralNONEHealthKnowledgeMeasurement = "http://snomed.info/sct#304733008";
 
     /// <summary>
     /// Literal for code: HealthValueScale
@@ -13616,9 +18196,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthValueScale = "304734002";
 
     /// <summary>
+    /// Literal for code: NONEHealthValueScale
+    /// </summary>
+    public const string LiteralNONEHealthValueScale = "http://snomed.info/sct#304734002";
+
+    /// <summary>
     /// Literal for code: IllinoisTestOfPsycholinguisticAbilitiesRevisedEdition
     /// </summary>
     public const string LiteralIllinoisTestOfPsycholinguisticAbilitiesRevisedEdition = "304735001";
+
+    /// <summary>
+    /// Literal for code: NONEIllinoisTestOfPsycholinguisticAbilitiesRevisedEdition
+    /// </summary>
+    public const string LiteralNONEIllinoisTestOfPsycholinguisticAbilitiesRevisedEdition = "http://snomed.info/sct#304735001";
 
     /// <summary>
     /// Literal for code: InventoryOfDrinkingSituations
@@ -13626,9 +18216,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInventoryOfDrinkingSituations = "304736000";
 
     /// <summary>
+    /// Literal for code: NONEInventoryOfDrinkingSituations
+    /// </summary>
+    public const string LiteralNONEInventoryOfDrinkingSituations = "http://snomed.info/sct#304736000";
+
+    /// <summary>
     /// Literal for code: KaufmanAssessmentBatteryForChildren
     /// </summary>
     public const string LiteralKaufmanAssessmentBatteryForChildren = "304738004";
+
+    /// <summary>
+    /// Literal for code: NONEKaufmanAssessmentBatteryForChildren
+    /// </summary>
+    public const string LiteralNONEKaufmanAssessmentBatteryForChildren = "http://snomed.info/sct#304738004";
 
     /// <summary>
     /// Literal for code: LifeExperiencesChecklist
@@ -13636,9 +18236,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLifeExperiencesChecklist = "304739007";
 
     /// <summary>
+    /// Literal for code: NONELifeExperiencesChecklist
+    /// </summary>
+    public const string LiteralNONELifeExperiencesChecklist = "http://snomed.info/sct#304739007";
+
+    /// <summary>
     /// Literal for code: LOTLifeOrientationTest
     /// </summary>
     public const string LiteralLOTLifeOrientationTest = "304740009";
+
+    /// <summary>
+    /// Literal for code: NONELOTLifeOrientationTest
+    /// </summary>
+    public const string LiteralNONELOTLifeOrientationTest = "http://snomed.info/sct#304740009";
 
     /// <summary>
     /// Literal for code: LuriaNebraskaNeuropsychologicalBatteryChildrenQuoteSRevision
@@ -13646,9 +18256,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLuriaNebraskaNeuropsychologicalBatteryChildrenQuoteSRevision = "304741008";
 
     /// <summary>
+    /// Literal for code: NONELuriaNebraskaNeuropsychologicalBatteryChildrenQuoteSRevision
+    /// </summary>
+    public const string LiteralNONELuriaNebraskaNeuropsychologicalBatteryChildrenQuoteSRevision = "http://snomed.info/sct#304741008";
+
+    /// <summary>
     /// Literal for code: LuriaNebraskaNeuropsychologicalBatteryForm1
     /// </summary>
     public const string LiteralLuriaNebraskaNeuropsychologicalBatteryForm1 = "304742001";
+
+    /// <summary>
+    /// Literal for code: NONELuriaNebraskaNeuropsychologicalBatteryForm1
+    /// </summary>
+    public const string LiteralNONELuriaNebraskaNeuropsychologicalBatteryForm1 = "http://snomed.info/sct#304742001";
 
     /// <summary>
     /// Literal for code: MarlowCrowneScale
@@ -13656,9 +18276,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMarlowCrowneScale = "304743006";
 
     /// <summary>
+    /// Literal for code: NONEMarlowCrowneScale
+    /// </summary>
+    public const string LiteralNONEMarlowCrowneScale = "http://snomed.info/sct#304743006";
+
+    /// <summary>
     /// Literal for code: MISSMedicalInterviewSatisfactionScale
     /// </summary>
     public const string LiteralMISSMedicalInterviewSatisfactionScale = "304744000";
+
+    /// <summary>
+    /// Literal for code: NONEMISSMedicalInterviewSatisfactionScale
+    /// </summary>
+    public const string LiteralNONEMISSMedicalInterviewSatisfactionScale = "http://snomed.info/sct#304744000";
 
     /// <summary>
     /// Literal for code: MentalAdjustmentToCancerScale
@@ -13666,9 +18296,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMentalAdjustmentToCancerScale = "304745004";
 
     /// <summary>
+    /// Literal for code: NONEMentalAdjustmentToCancerScale
+    /// </summary>
+    public const string LiteralNONEMentalAdjustmentToCancerScale = "http://snomed.info/sct#304745004";
+
+    /// <summary>
     /// Literal for code: MerrilPalmerPreschoolPerformanceScale
     /// </summary>
     public const string LiteralMerrilPalmerPreschoolPerformanceScale = "304746003";
+
+    /// <summary>
+    /// Literal for code: NONEMerrilPalmerPreschoolPerformanceScale
+    /// </summary>
+    public const string LiteralNONEMerrilPalmerPreschoolPerformanceScale = "http://snomed.info/sct#304746003";
 
     /// <summary>
     /// Literal for code: MotivationAnalysisTest
@@ -13676,9 +18316,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMotivationAnalysisTest = "304747007";
 
     /// <summary>
+    /// Literal for code: NONEMotivationAnalysisTest
+    /// </summary>
+    public const string LiteralNONEMotivationAnalysisTest = "http://snomed.info/sct#304747007";
+
+    /// <summary>
     /// Literal for code: MultidimensionalHealthLocusOfControlScale
     /// </summary>
     public const string LiteralMultidimensionalHealthLocusOfControlScale = "304748002";
+
+    /// <summary>
+    /// Literal for code: NONEMultidimensionalHealthLocusOfControlScale
+    /// </summary>
+    public const string LiteralNONEMultidimensionalHealthLocusOfControlScale = "http://snomed.info/sct#304748002";
 
     /// <summary>
     /// Literal for code: ObjectRelationsTechnique
@@ -13686,9 +18336,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralObjectRelationsTechnique = "304749005";
 
     /// <summary>
+    /// Literal for code: NONEObjectRelationsTechnique
+    /// </summary>
+    public const string LiteralNONEObjectRelationsTechnique = "http://snomed.info/sct#304749005";
+
+    /// <summary>
     /// Literal for code: PainCopingStrategiesQuestionnaire
     /// </summary>
     public const string LiteralPainCopingStrategiesQuestionnaire = "304750005";
+
+    /// <summary>
+    /// Literal for code: NONEPainCopingStrategiesQuestionnaire
+    /// </summary>
+    public const string LiteralNONEPainCopingStrategiesQuestionnaire = "http://snomed.info/sct#304750005";
 
     /// <summary>
     /// Literal for code: PILLPennebakerInventoryOfLinguidLanguidness
@@ -13696,9 +18356,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPILLPennebakerInventoryOfLinguidLanguidness = "304751009";
 
     /// <summary>
+    /// Literal for code: NONEPILLPennebakerInventoryOfLinguidLanguidness
+    /// </summary>
+    public const string LiteralNONEPILLPennebakerInventoryOfLinguidLanguidness = "http://snomed.info/sct#304751009";
+
+    /// <summary>
     /// Literal for code: PerceivedControlOfInsulinDependentDiabetes
     /// </summary>
     public const string LiteralPerceivedControlOfInsulinDependentDiabetes = "304752002";
+
+    /// <summary>
+    /// Literal for code: NONEPerceivedControlOfInsulinDependentDiabetes
+    /// </summary>
+    public const string LiteralNONEPerceivedControlOfInsulinDependentDiabetes = "http://snomed.info/sct#304752002";
 
     /// <summary>
     /// Literal for code: PSSPerceivedStressScale
@@ -13706,9 +18376,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPSSPerceivedStressScale = "304753007";
 
     /// <summary>
+    /// Literal for code: NONEPSSPerceivedStressScale
+    /// </summary>
+    public const string LiteralNONEPSSPerceivedStressScale = "http://snomed.info/sct#304753007";
+
+    /// <summary>
     /// Literal for code: PersonalityDevianceScale
     /// </summary>
     public const string LiteralPersonalityDevianceScale = "304754001";
+
+    /// <summary>
+    /// Literal for code: NONEPersonalityDevianceScale
+    /// </summary>
+    public const string LiteralNONEPersonalityDevianceScale = "http://snomed.info/sct#304754001";
 
     /// <summary>
     /// Literal for code: PANASPositiveAndNegativeAffectSchedule
@@ -13716,9 +18396,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPANASPositiveAndNegativeAffectSchedule = "304755000";
 
     /// <summary>
+    /// Literal for code: NONEPANASPositiveAndNegativeAffectSchedule
+    /// </summary>
+    public const string LiteralNONEPANASPositiveAndNegativeAffectSchedule = "http://snomed.info/sct#304755000";
+
+    /// <summary>
     /// Literal for code: PrejudicialEvaluationAndSocialInteractionScale
     /// </summary>
     public const string LiteralPrejudicialEvaluationAndSocialInteractionScale = "304756004";
+
+    /// <summary>
+    /// Literal for code: NONEPrejudicialEvaluationAndSocialInteractionScale
+    /// </summary>
+    public const string LiteralNONEPrejudicialEvaluationAndSocialInteractionScale = "http://snomed.info/sct#304756004";
 
     /// <summary>
     /// Literal for code: ProfileOfMoodStatesBipolar
@@ -13726,9 +18416,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProfileOfMoodStatesBipolar = "304757008";
 
     /// <summary>
+    /// Literal for code: NONEProfileOfMoodStatesBipolar
+    /// </summary>
+    public const string LiteralNONEProfileOfMoodStatesBipolar = "http://snomed.info/sct#304757008";
+
+    /// <summary>
     /// Literal for code: QuickNeurologicalScreeningTest
     /// </summary>
     public const string LiteralQuickNeurologicalScreeningTest = "304758003";
+
+    /// <summary>
+    /// Literal for code: NONEQuickNeurologicalScreeningTest
+    /// </summary>
+    public const string LiteralNONEQuickNeurologicalScreeningTest = "http://snomed.info/sct#304758003";
 
     /// <summary>
     /// Literal for code: RavenProgressiveMatricesAndVocabularyScales
@@ -13736,9 +18436,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRavenProgressiveMatricesAndVocabularyScales = "304759006";
 
     /// <summary>
+    /// Literal for code: NONERavenProgressiveMatricesAndVocabularyScales
+    /// </summary>
+    public const string LiteralNONERavenProgressiveMatricesAndVocabularyScales = "http://snomed.info/sct#304759006";
+
+    /// <summary>
     /// Literal for code: RLOCRecoveryLocusOfControlScale
     /// </summary>
     public const string LiteralRLOCRecoveryLocusOfControlScale = "304760001";
+
+    /// <summary>
+    /// Literal for code: NONERLOCRecoveryLocusOfControlScale
+    /// </summary>
+    public const string LiteralNONERLOCRecoveryLocusOfControlScale = "http://snomed.info/sct#304760001";
 
     /// <summary>
     /// Literal for code: ReportedHealthBehaviorsChecklist
@@ -13746,9 +18456,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReportedHealthBehaviorsChecklist = "304761002";
 
     /// <summary>
+    /// Literal for code: NONEReportedHealthBehaviorsChecklist
+    /// </summary>
+    public const string LiteralNONEReportedHealthBehaviorsChecklist = "http://snomed.info/sct#304761002";
+
+    /// <summary>
     /// Literal for code: RevisedTokenTest
     /// </summary>
     public const string LiteralRevisedTokenTest = "304762009";
+
+    /// <summary>
+    /// Literal for code: NONERevisedTokenTest
+    /// </summary>
+    public const string LiteralNONERevisedTokenTest = "http://snomed.info/sct#304762009";
 
     /// <summary>
     /// Literal for code: ReynellDevelopmentalLanguageScalesSecondRevision
@@ -13756,9 +18476,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReynellDevelopmentalLanguageScalesSecondRevision = "304763004";
 
     /// <summary>
+    /// Literal for code: NONEReynellDevelopmentalLanguageScalesSecondRevision
+    /// </summary>
+    public const string LiteralNONEReynellDevelopmentalLanguageScalesSecondRevision = "http://snomed.info/sct#304763004";
+
+    /// <summary>
     /// Literal for code: ReynellZinkinScaleForYoungVisuallyHandicappedChildren
     /// </summary>
     public const string LiteralReynellZinkinScaleForYoungVisuallyHandicappedChildren = "304764005";
+
+    /// <summary>
+    /// Literal for code: NONEReynellZinkinScaleForYoungVisuallyHandicappedChildren
+    /// </summary>
+    public const string LiteralNONEReynellZinkinScaleForYoungVisuallyHandicappedChildren = "http://snomed.info/sct#304764005";
 
     /// <summary>
     /// Literal for code: RogersPersonalAdjustmentInventoryRevised
@@ -13766,9 +18496,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRogersPersonalAdjustmentInventoryRevised = "304765006";
 
     /// <summary>
+    /// Literal for code: NONERogersPersonalAdjustmentInventoryRevised
+    /// </summary>
+    public const string LiteralNONERogersPersonalAdjustmentInventoryRevised = "http://snomed.info/sct#304765006";
+
+    /// <summary>
     /// Literal for code: RSESRosenbergSelfEsteemScale
     /// </summary>
     public const string LiteralRSESRosenbergSelfEsteemScale = "304766007";
+
+    /// <summary>
+    /// Literal for code: NONERSESRosenbergSelfEsteemScale
+    /// </summary>
+    public const string LiteralNONERSESRosenbergSelfEsteemScale = "http://snomed.info/sct#304766007";
 
     /// <summary>
     /// Literal for code: RustInventoryOfSchizotypalCognitions
@@ -13776,9 +18516,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRustInventoryOfSchizotypalCognitions = "304767003";
 
     /// <summary>
+    /// Literal for code: NONERustInventoryOfSchizotypalCognitions
+    /// </summary>
+    public const string LiteralNONERustInventoryOfSchizotypalCognitions = "http://snomed.info/sct#304767003";
+
+    /// <summary>
     /// Literal for code: SatisfactionWithLifeScale
     /// </summary>
     public const string LiteralSatisfactionWithLifeScale = "304768008";
+
+    /// <summary>
+    /// Literal for code: NONESatisfactionWithLifeScale
+    /// </summary>
+    public const string LiteralNONESatisfactionWithLifeScale = "http://snomed.info/sct#304768008";
 
     /// <summary>
     /// Literal for code: ScreeningTestForTheLuriaNebraskaNeuropsychologicalBattery
@@ -13786,9 +18536,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralScreeningTestForTheLuriaNebraskaNeuropsychologicalBattery = "304769000";
 
     /// <summary>
+    /// Literal for code: NONEScreeningTestForTheLuriaNebraskaNeuropsychologicalBattery
+    /// </summary>
+    public const string LiteralNONEScreeningTestForTheLuriaNebraskaNeuropsychologicalBattery = "http://snomed.info/sct#304769000";
+
+    /// <summary>
     /// Literal for code: ShortFormSocialSupportQuestionnaire
     /// </summary>
     public const string LiteralShortFormSocialSupportQuestionnaire = "304770004";
+
+    /// <summary>
+    /// Literal for code: NONEShortFormSocialSupportQuestionnaire
+    /// </summary>
+    public const string LiteralNONEShortFormSocialSupportQuestionnaire = "http://snomed.info/sct#304770004";
 
     /// <summary>
     /// Literal for code: SOSSignificantOthersScale
@@ -13796,9 +18556,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSOSSignificantOthersScale = "304771000";
 
     /// <summary>
+    /// Literal for code: NONESOSSignificantOthersScale
+    /// </summary>
+    public const string LiteralNONESOSSignificantOthersScale = "http://snomed.info/sct#304771000";
+
+    /// <summary>
     /// Literal for code: SnijdersOomenNonVerbalIntelligenceScaleRevised
     /// </summary>
     public const string LiteralSnijdersOomenNonVerbalIntelligenceScaleRevised = "304772007";
+
+    /// <summary>
+    /// Literal for code: NONESnijdersOomenNonVerbalIntelligenceScaleRevised
+    /// </summary>
+    public const string LiteralNONESnijdersOomenNonVerbalIntelligenceScaleRevised = "http://snomed.info/sct#304772007";
 
     /// <summary>
     /// Literal for code: StanfordBinetIntelligenceScaleFourthEdition
@@ -13806,9 +18576,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStanfordBinetIntelligenceScaleFourthEdition = "304773002";
 
     /// <summary>
+    /// Literal for code: NONEStanfordBinetIntelligenceScaleFourthEdition
+    /// </summary>
+    public const string LiteralNONEStanfordBinetIntelligenceScaleFourthEdition = "http://snomed.info/sct#304773002";
+
+    /// <summary>
     /// Literal for code: StanfordBinetFormLM
     /// </summary>
     public const string LiteralStanfordBinetFormLM = "304774008";
+
+    /// <summary>
+    /// Literal for code: NONEStanfordBinetFormLM
+    /// </summary>
+    public const string LiteralNONEStanfordBinetFormLM = "http://snomed.info/sct#304774008";
 
     /// <summary>
     /// Literal for code: StateTraitAngerExpressionInventory
@@ -13816,9 +18596,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStateTraitAngerExpressionInventory = "304775009";
 
     /// <summary>
+    /// Literal for code: NONEStateTraitAngerExpressionInventory
+    /// </summary>
+    public const string LiteralNONEStateTraitAngerExpressionInventory = "http://snomed.info/sct#304775009";
+
+    /// <summary>
     /// Literal for code: StroopNeuropsychologicalScreeningTest
     /// </summary>
     public const string LiteralStroopNeuropsychologicalScreeningTest = "304776005";
+
+    /// <summary>
+    /// Literal for code: NONEStroopNeuropsychologicalScreeningTest
+    /// </summary>
+    public const string LiteralNONEStroopNeuropsychologicalScreeningTest = "http://snomed.info/sct#304776005";
 
     /// <summary>
     /// Literal for code: SymbolicPlayTestSecondEdition
@@ -13826,9 +18616,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSymbolicPlayTestSecondEdition = "304777001";
 
     /// <summary>
+    /// Literal for code: NONESymbolicPlayTestSecondEdition
+    /// </summary>
+    public const string LiteralNONESymbolicPlayTestSecondEdition = "http://snomed.info/sct#304777001";
+
+    /// <summary>
     /// Literal for code: TokenTestForChildren
     /// </summary>
     public const string LiteralTokenTestForChildren = "304778006";
+
+    /// <summary>
+    /// Literal for code: NONETokenTestForChildren
+    /// </summary>
+    public const string LiteralNONETokenTestForChildren = "http://snomed.info/sct#304778006";
 
     /// <summary>
     /// Literal for code: UpliftsScale
@@ -13836,9 +18636,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUpliftsScale = "304779003";
 
     /// <summary>
+    /// Literal for code: NONEUpliftsScale
+    /// </summary>
+    public const string LiteralNONEUpliftsScale = "http://snomed.info/sct#304779003";
+
+    /// <summary>
     /// Literal for code: VarniThompsonPediatricPainQuestionnaire
     /// </summary>
     public const string LiteralVarniThompsonPediatricPainQuestionnaire = "304780000";
+
+    /// <summary>
+    /// Literal for code: NONEVarniThompsonPediatricPainQuestionnaire
+    /// </summary>
+    public const string LiteralNONEVarniThompsonPediatricPainQuestionnaire = "http://snomed.info/sct#304780000";
 
     /// <summary>
     /// Literal for code: VinelandAdaptiveBehaviorScales
@@ -13846,9 +18656,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVinelandAdaptiveBehaviorScales = "304781001";
 
     /// <summary>
+    /// Literal for code: NONEVinelandAdaptiveBehaviorScales
+    /// </summary>
+    public const string LiteralNONEVinelandAdaptiveBehaviorScales = "http://snomed.info/sct#304781001";
+
+    /// <summary>
     /// Literal for code: DukeTreadmillScore
     /// </summary>
     public const string LiteralDukeTreadmillScore = "304915008";
+
+    /// <summary>
+    /// Literal for code: NONEDukeTreadmillScore
+    /// </summary>
+    public const string LiteralNONEDukeTreadmillScore = "http://snomed.info/sct#304915008";
 
     /// <summary>
     /// Literal for code: StrangeSituationTest
@@ -13856,9 +18676,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStrangeSituationTest = "307791002";
 
     /// <summary>
+    /// Literal for code: NONEStrangeSituationTest
+    /// </summary>
+    public const string LiteralNONEStrangeSituationTest = "http://snomed.info/sct#307791002";
+
+    /// <summary>
     /// Literal for code: ReyFigureTest
     /// </summary>
     public const string LiteralReyFigureTest = "307792009";
+
+    /// <summary>
+    /// Literal for code: NONEReyFigureTest
+    /// </summary>
+    public const string LiteralNONEReyFigureTest = "http://snomed.info/sct#307792009";
 
     /// <summary>
     /// Literal for code: TestOfEverydayAttention
@@ -13866,9 +18696,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTestOfEverydayAttention = "307793004";
 
     /// <summary>
+    /// Literal for code: NONETestOfEverydayAttention
+    /// </summary>
+    public const string LiteralNONETestOfEverydayAttention = "http://snomed.info/sct#307793004";
+
+    /// <summary>
     /// Literal for code: TestOfEverydayAttentionAdult
     /// </summary>
     public const string LiteralTestOfEverydayAttentionAdult = "307794005";
+
+    /// <summary>
+    /// Literal for code: NONETestOfEverydayAttentionAdult
+    /// </summary>
+    public const string LiteralNONETestOfEverydayAttentionAdult = "http://snomed.info/sct#307794005";
 
     /// <summary>
     /// Literal for code: TestOfEverydayAttentionChild
@@ -13876,9 +18716,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTestOfEverydayAttentionChild = "307795006";
 
     /// <summary>
+    /// Literal for code: NONETestOfEverydayAttentionChild
+    /// </summary>
+    public const string LiteralNONETestOfEverydayAttentionChild = "http://snomed.info/sct#307795006";
+
+    /// <summary>
     /// Literal for code: RivermeadBehavioralMemoryTestAdultVersion
     /// </summary>
     public const string LiteralRivermeadBehavioralMemoryTestAdultVersion = "307801002";
+
+    /// <summary>
+    /// Literal for code: NONERivermeadBehavioralMemoryTestAdultVersion
+    /// </summary>
+    public const string LiteralNONERivermeadBehavioralMemoryTestAdultVersion = "http://snomed.info/sct#307801002";
 
     /// <summary>
     /// Literal for code: RivermeadBehavioralMemoryTestChildVersion
@@ -13886,9 +18736,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRivermeadBehavioralMemoryTestChildVersion = "307802009";
 
     /// <summary>
+    /// Literal for code: NONERivermeadBehavioralMemoryTestChildVersion
+    /// </summary>
+    public const string LiteralNONERivermeadBehavioralMemoryTestChildVersion = "http://snomed.info/sct#307802009";
+
+    /// <summary>
     /// Literal for code: WechslerObjectiveNumericalDimensionsTest
     /// </summary>
     public const string LiteralWechslerObjectiveNumericalDimensionsTest = "307803004";
+
+    /// <summary>
+    /// Literal for code: NONEWechslerObjectiveNumericalDimensionsTest
+    /// </summary>
+    public const string LiteralNONEWechslerObjectiveNumericalDimensionsTest = "http://snomed.info/sct#307803004";
 
     /// <summary>
     /// Literal for code: WOLDWechslerObjectiveLanguageDimensionsTest
@@ -13896,9 +18756,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWOLDWechslerObjectiveLanguageDimensionsTest = "307804005";
 
     /// <summary>
+    /// Literal for code: NONEWOLDWechslerObjectiveLanguageDimensionsTest
+    /// </summary>
+    public const string LiteralNONEWOLDWechslerObjectiveLanguageDimensionsTest = "http://snomed.info/sct#307804005";
+
+    /// <summary>
     /// Literal for code: HealthOfTheNationOutcomeScaleForChildren
     /// </summary>
     public const string LiteralHealthOfTheNationOutcomeScaleForChildren = "307805006";
+
+    /// <summary>
+    /// Literal for code: NONEHealthOfTheNationOutcomeScaleForChildren
+    /// </summary>
+    public const string LiteralNONEHealthOfTheNationOutcomeScaleForChildren = "http://snomed.info/sct#307805006";
 
     /// <summary>
     /// Literal for code: HealthOfTheNationOutcomeScaleForAdolescents
@@ -13906,9 +18776,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthOfTheNationOutcomeScaleForAdolescents = "307806007";
 
     /// <summary>
+    /// Literal for code: NONEHealthOfTheNationOutcomeScaleForAdolescents
+    /// </summary>
+    public const string LiteralNONEHealthOfTheNationOutcomeScaleForAdolescents = "http://snomed.info/sct#307806007";
+
+    /// <summary>
     /// Literal for code: MaudsleyAddictionProfile
     /// </summary>
     public const string LiteralMaudsleyAddictionProfile = "307807003";
+
+    /// <summary>
+    /// Literal for code: NONEMaudsleyAddictionProfile
+    /// </summary>
+    public const string LiteralNONEMaudsleyAddictionProfile = "http://snomed.info/sct#307807003";
 
     /// <summary>
     /// Literal for code: EducationScoreDiabetes
@@ -13916,9 +18796,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEducationScoreDiabetes = "309593006";
 
     /// <summary>
+    /// Literal for code: NONEEducationScoreDiabetes
+    /// </summary>
+    public const string LiteralNONEEducationScoreDiabetes = "http://snomed.info/sct#309593006";
+
+    /// <summary>
     /// Literal for code: AttentionProcessTrainingQuestionnaire
     /// </summary>
     public const string LiteralAttentionProcessTrainingQuestionnaire = "311404002";
+
+    /// <summary>
+    /// Literal for code: NONEAttentionProcessTrainingQuestionnaire
+    /// </summary>
+    public const string LiteralNONEAttentionProcessTrainingQuestionnaire = "http://snomed.info/sct#311404002";
 
     /// <summary>
     /// Literal for code: RatingScaleOfAttentionalBehavior
@@ -13926,9 +18816,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRatingScaleOfAttentionalBehavior = "311405001";
 
     /// <summary>
+    /// Literal for code: NONERatingScaleOfAttentionalBehavior
+    /// </summary>
+    public const string LiteralNONERatingScaleOfAttentionalBehavior = "http://snomed.info/sct#311405001";
+
+    /// <summary>
     /// Literal for code: EverydayMemoryQuestionnaire
     /// </summary>
     public const string LiteralEverydayMemoryQuestionnaire = "311406000";
+
+    /// <summary>
+    /// Literal for code: NONEEverydayMemoryQuestionnaire
+    /// </summary>
+    public const string LiteralNONEEverydayMemoryQuestionnaire = "http://snomed.info/sct#311406000";
 
     /// <summary>
     /// Literal for code: BehaviorAssessmentOfTheDysexecutiveSyndrome
@@ -13936,9 +18836,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBehaviorAssessmentOfTheDysexecutiveSyndrome = "311457001";
 
     /// <summary>
+    /// Literal for code: NONEBehaviorAssessmentOfTheDysexecutiveSyndrome
+    /// </summary>
+    public const string LiteralNONEBehaviorAssessmentOfTheDysexecutiveSyndrome = "http://snomed.info/sct#311457001";
+
+    /// <summary>
     /// Literal for code: DoorsAndPeopleAssessment
     /// </summary>
     public const string LiteralDoorsAndPeopleAssessment = "311458006";
+
+    /// <summary>
+    /// Literal for code: NONEDoorsAndPeopleAssessment
+    /// </summary>
+    public const string LiteralNONEDoorsAndPeopleAssessment = "http://snomed.info/sct#311458006";
 
     /// <summary>
     /// Literal for code: Extended2And7Test
@@ -13946,9 +18856,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExtended2And7Test = "311471009";
 
     /// <summary>
+    /// Literal for code: NONEExtended2And7Test
+    /// </summary>
+    public const string LiteralNONEExtended2And7Test = "http://snomed.info/sct#311471009";
+
+    /// <summary>
     /// Literal for code: AlphabetNumberAlterationTest
     /// </summary>
     public const string LiteralAlphabetNumberAlterationTest = "311472002";
+
+    /// <summary>
+    /// Literal for code: NONEAlphabetNumberAlterationTest
+    /// </summary>
+    public const string LiteralNONEAlphabetNumberAlterationTest = "http://snomed.info/sct#311472002";
 
     /// <summary>
     /// Literal for code: VigilWTest
@@ -13956,9 +18876,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVigilWTest = "311473007";
 
     /// <summary>
+    /// Literal for code: NONEVigilWTest
+    /// </summary>
+    public const string LiteralNONEVigilWTest = "http://snomed.info/sct#311473007";
+
+    /// <summary>
     /// Literal for code: AttentionalCapacityTest
     /// </summary>
     public const string LiteralAttentionalCapacityTest = "311474001";
+
+    /// <summary>
+    /// Literal for code: NONEAttentionalCapacityTest
+    /// </summary>
+    public const string LiteralNONEAttentionalCapacityTest = "http://snomed.info/sct#311474001";
 
     /// <summary>
     /// Literal for code: ConsonantTrigramsTest
@@ -13966,9 +18896,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConsonantTrigramsTest = "311475000";
 
     /// <summary>
+    /// Literal for code: NONEConsonantTrigramsTest
+    /// </summary>
+    public const string LiteralNONEConsonantTrigramsTest = "http://snomed.info/sct#311475000";
+
+    /// <summary>
     /// Literal for code: BuschkeSelectiveRemindingTest
     /// </summary>
     public const string LiteralBuschkeSelectiveRemindingTest = "311477008";
+
+    /// <summary>
+    /// Literal for code: NONEBuschkeSelectiveRemindingTest
+    /// </summary>
+    public const string LiteralNONEBuschkeSelectiveRemindingTest = "http://snomed.info/sct#311477008";
 
     /// <summary>
     /// Literal for code: CaliforniaVerbalLearningTest
@@ -13976,9 +18916,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCaliforniaVerbalLearningTest = "311478003";
 
     /// <summary>
+    /// Literal for code: NONECaliforniaVerbalLearningTest
+    /// </summary>
+    public const string LiteralNONECaliforniaVerbalLearningTest = "http://snomed.info/sct#311478003";
+
+    /// <summary>
     /// Literal for code: WilliamsMemoryAssessmentScales
     /// </summary>
     public const string LiteralWilliamsMemoryAssessmentScales = "311480009";
+
+    /// <summary>
+    /// Literal for code: NONEWilliamsMemoryAssessmentScales
+    /// </summary>
+    public const string LiteralNONEWilliamsMemoryAssessmentScales = "http://snomed.info/sct#311480009";
 
     /// <summary>
     /// Literal for code: WechslerMemoryScaleRevised
@@ -13986,9 +18936,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWechslerMemoryScaleRevised = "311481008";
 
     /// <summary>
+    /// Literal for code: NONEWechslerMemoryScaleRevised
+    /// </summary>
+    public const string LiteralNONEWechslerMemoryScaleRevised = "http://snomed.info/sct#311481008";
+
+    /// <summary>
     /// Literal for code: AssociationForNeuropsychologicalResearchAndDevelopmentProspectiveMemoryTest
     /// </summary>
     public const string LiteralAssociationForNeuropsychologicalResearchAndDevelopmentProspectiveMemoryTest = "311483006";
+
+    /// <summary>
+    /// Literal for code: NONEAssociationForNeuropsychologicalResearchAndDevelopmentProspectiveMemoryTest
+    /// </summary>
+    public const string LiteralNONEAssociationForNeuropsychologicalResearchAndDevelopmentProspectiveMemoryTest = "http://snomed.info/sct#311483006";
 
     /// <summary>
     /// Literal for code: PASATPacedAuditoryStimulationTest
@@ -13996,9 +18956,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPASATPacedAuditoryStimulationTest = "311484000";
 
     /// <summary>
+    /// Literal for code: NONEPASATPacedAuditoryStimulationTest
+    /// </summary>
+    public const string LiteralNONEPASATPacedAuditoryStimulationTest = "http://snomed.info/sct#311484000";
+
+    /// <summary>
     /// Literal for code: CategoryTest
     /// </summary>
     public const string LiteralCategoryTest = "311485004";
+
+    /// <summary>
+    /// Literal for code: NONECategoryTest
+    /// </summary>
+    public const string LiteralNONECategoryTest = "http://snomed.info/sct#311485004";
 
     /// <summary>
     /// Literal for code: ProfileOfExecutiveControlSystem
@@ -14006,9 +18976,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProfileOfExecutiveControlSystem = "311486003";
 
     /// <summary>
+    /// Literal for code: NONEProfileOfExecutiveControlSystem
+    /// </summary>
+    public const string LiteralNONEProfileOfExecutiveControlSystem = "http://snomed.info/sct#311486003";
+
+    /// <summary>
     /// Literal for code: BrixtonTest
     /// </summary>
     public const string LiteralBrixtonTest = "311512008";
+
+    /// <summary>
+    /// Literal for code: NONEBrixtonTest
+    /// </summary>
+    public const string LiteralNONEBrixtonTest = "http://snomed.info/sct#311512008";
 
     /// <summary>
     /// Literal for code: HaylingTest
@@ -14016,9 +18996,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHaylingTest = "311513003";
 
     /// <summary>
+    /// Literal for code: NONEHaylingTest
+    /// </summary>
+    public const string LiteralNONEHaylingTest = "http://snomed.info/sct#311513003";
+
+    /// <summary>
     /// Literal for code: MicrocogAssessmentOfCognitiveFunction
     /// </summary>
     public const string LiteralMicrocogAssessmentOfCognitiveFunction = "311514009";
+
+    /// <summary>
+    /// Literal for code: NONEMicrocogAssessmentOfCognitiveFunction
+    /// </summary>
+    public const string LiteralNONEMicrocogAssessmentOfCognitiveFunction = "http://snomed.info/sct#311514009";
 
     /// <summary>
     /// Literal for code: WalterReedWRStage1
@@ -14026,9 +19016,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWalterReedWRStage1 = "42114005";
 
     /// <summary>
+    /// Literal for code: NONEWalterReedWRStage1
+    /// </summary>
+    public const string LiteralNONEWalterReedWRStage1 = "http://snomed.info/sct#42114005";
+
+    /// <summary>
     /// Literal for code: WRStage5
     /// </summary>
     public const string LiteralWRStage5 = "66470009";
+
+    /// <summary>
+    /// Literal for code: NONEWRStage5
+    /// </summary>
+    public const string LiteralNONEWRStage5 = "http://snomed.info/sct#66470009";
 
     /// <summary>
     /// Literal for code: WRStage4
@@ -14036,8 +19036,2028 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWRStage4 = "74542008";
 
     /// <summary>
+    /// Literal for code: NONEWRStage4
+    /// </summary>
+    public const string LiteralNONEWRStage4 = "http://snomed.info/sct#74542008";
+
+    /// <summary>
     /// Literal for code: WRStage6
     /// </summary>
     public const string LiteralWRStage6 = "83200007";
+
+    /// <summary>
+    /// Literal for code: NONEWRStage6
+    /// </summary>
+    public const string LiteralNONEWRStage6 = "http://snomed.info/sct#83200007";
+
+    /// <summary>
+    /// Dictionary for looking up ConditionStageType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "106241006", GleasonQuoteSMicroscopicProstaticCarcinomaGradingSystem }, 
+      { "http://snomed.info/sct#106241006", GleasonQuoteSMicroscopicProstaticCarcinomaGradingSystem }, 
+      { "106242004", WalterReedStagingOfProstaticCancer }, 
+      { "http://snomed.info/sct#106242004", WalterReedStagingOfProstaticCancer }, 
+      { "106244003", FIGOStagingSystemForEndometrialCarcinoma }, 
+      { "http://snomed.info/sct#106244003", FIGOStagingSystemForEndometrialCarcinoma }, 
+      { "106245002", FIGOVulvaTumorStaging }, 
+      { "http://snomed.info/sct#106245002", FIGOVulvaTumorStaging }, 
+      { "106246001", FIGOStagingSystemForVulvarMelanoma }, 
+      { "http://snomed.info/sct#106246001", FIGOStagingSystemForVulvarMelanoma }, 
+      { "106247005", FIGOStagingSystemForEpithelialTumorOfOvary }, 
+      { "http://snomed.info/sct#106247005", FIGOStagingSystemForEpithelialTumorOfOvary }, 
+      { "106250008", FIGOCervicalTumorStaging }, 
+      { "http://snomed.info/sct#106250008", FIGOCervicalTumorStaging }, 
+      { "106252000", LymphomaStagingDescriptors }, 
+      { "http://snomed.info/sct#106252000", LymphomaStagingDescriptors }, 
+      { "110375007", OverlappingTumor }, 
+      { "http://snomed.info/sct#110375007", OverlappingTumor }, 
+      { "134438001", CanadianCardiovascularSocietyClassificationOfAngina }, 
+      { "http://snomed.info/sct#134438001", CanadianCardiovascularSocietyClassificationOfAngina }, 
+      { "135831005", CardiovascularLimitationsAndSymptomsProfileAnginaScore }, 
+      { "http://snomed.info/sct#135831005", CardiovascularLimitationsAndSymptomsProfileAnginaScore }, 
+      { "135832003", CardiovascularLimitationsAndSymptomsProfileAnkleSwellingScore }, 
+      { "http://snomed.info/sct#135832003", CardiovascularLimitationsAndSymptomsProfileAnkleSwellingScore }, 
+      { "135833008", CardiovascularLimitationsAndSymptomsProfileShortnessOfBreathScore }, 
+      { "http://snomed.info/sct#135833008", CardiovascularLimitationsAndSymptomsProfileShortnessOfBreathScore }, 
+      { "135877001", StrokeRisk }, 
+      { "http://snomed.info/sct#135877001", StrokeRisk }, 
+      { "13808002", WRStage3 }, 
+      { "http://snomed.info/sct#13808002", WRStage3 }, 
+      { "15972002", WalterReedWRStage2 }, 
+      { "http://snomed.info/sct#15972002", WalterReedWRStage2 }, 
+      { "160723003", HousingDependencyScale }, 
+      { "http://snomed.info/sct#160723003", HousingDependencyScale }, 
+      { "165270003", PhysicalDisabilityAssessmentScore }, 
+      { "http://snomed.info/sct#165270003", PhysicalDisabilityAssessmentScore }, 
+      { "165271004", PhysicalDisabilityAdmissionScore }, 
+      { "http://snomed.info/sct#165271004", PhysicalDisabilityAdmissionScore }, 
+      { "165272006", PhysicalDisabilityInpatientScore }, 
+      { "http://snomed.info/sct#165272006", PhysicalDisabilityInpatientScore }, 
+      { "165273001", PhysicalDisabilityDischargeScore }, 
+      { "http://snomed.info/sct#165273001", PhysicalDisabilityDischargeScore }, 
+      { "165274007", PhysicalDisabilityOutpatientScore }, 
+      { "http://snomed.info/sct#165274007", PhysicalDisabilityOutpatientScore }, 
+      { "165275008", PhysicalDisabilityDVScore }, 
+      { "http://snomed.info/sct#165275008", PhysicalDisabilityDVScore }, 
+      { "251893009", SymptomRatings }, 
+      { "http://snomed.info/sct#251893009", SymptomRatings }, 
+      { "251894003", ExertionRating }, 
+      { "http://snomed.info/sct#251894003", ExertionRating }, 
+      { "251895002", LegFatigueRating }, 
+      { "http://snomed.info/sct#251895002", LegFatigueRating }, 
+      { "251896001", BreathlessnessRating }, 
+      { "http://snomed.info/sct#251896001", BreathlessnessRating }, 
+      { "251897005", ChestPainRating }, 
+      { "http://snomed.info/sct#251897005", ChestPainRating }, 
+      { "254292007", TumorStaging }, 
+      { "http://snomed.info/sct#254292007", TumorStaging }, 
+      { "254293002", TNMTumorStagingSystem }, 
+      { "http://snomed.info/sct#254293002", TNMTumorStagingSystem }, 
+      { "254294008", TumorNodeMetastasisTNMHeadAndNeckTumorStaging }, 
+      { "http://snomed.info/sct#254294008", TumorNodeMetastasisTNMHeadAndNeckTumorStaging }, 
+      { "254295009", TumorNodeMetastasisTNMLipAndOralCavityTumorStaging }, 
+      { "http://snomed.info/sct#254295009", TumorNodeMetastasisTNMLipAndOralCavityTumorStaging }, 
+      { "254296005", TumorNodeMetastasisTNMOropharynxTumorStaging }, 
+      { "http://snomed.info/sct#254296005", TumorNodeMetastasisTNMOropharynxTumorStaging }, 
+      { "254297001", TumorNodeMetastasisTNMNasopharynxTumorStaging }, 
+      { "http://snomed.info/sct#254297001", TumorNodeMetastasisTNMNasopharynxTumorStaging }, 
+      { "254298006", TumorNodeMetastasisTNMHypopharynxTumorStaging }, 
+      { "http://snomed.info/sct#254298006", TumorNodeMetastasisTNMHypopharynxTumorStaging }, 
+      { "254299003", TumorNodeMetastasisTNMSupraglotticLarynxTumorStaging }, 
+      { "http://snomed.info/sct#254299003", TumorNodeMetastasisTNMSupraglotticLarynxTumorStaging }, 
+      { "254300006", TumorNodeMetastasisTNMGlotticLarynxTumorStaging }, 
+      { "http://snomed.info/sct#254300006", TumorNodeMetastasisTNMGlotticLarynxTumorStaging }, 
+      { "254301005", TumorNodeMetastasisTNMSubglotticLarynxTumorStaging }, 
+      { "http://snomed.info/sct#254301005", TumorNodeMetastasisTNMSubglotticLarynxTumorStaging }, 
+      { "254302003", TumorNodeMetastasisTNMMaxillarySinusTumorStaging }, 
+      { "http://snomed.info/sct#254302003", TumorNodeMetastasisTNMMaxillarySinusTumorStaging }, 
+      { "254303008", TumorNodeMetastasisTNMSalivaryGlandsTumorStaging }, 
+      { "http://snomed.info/sct#254303008", TumorNodeMetastasisTNMSalivaryGlandsTumorStaging }, 
+      { "254304002", TumorNodeMetastasisTNMThyroidGlandTumorStaging }, 
+      { "http://snomed.info/sct#254304002", TumorNodeMetastasisTNMThyroidGlandTumorStaging }, 
+      { "254305001", TumorNodeMetastasisTNMDigestiveSystemTumorStaging }, 
+      { "http://snomed.info/sct#254305001", TumorNodeMetastasisTNMDigestiveSystemTumorStaging }, 
+      { "254306000", TumorNodeMetastasisTNMEsophagusTumorStaging }, 
+      { "http://snomed.info/sct#254306000", TumorNodeMetastasisTNMEsophagusTumorStaging }, 
+      { "254307009", TumorNodeMetastasisTNMStomachTumorStaging }, 
+      { "http://snomed.info/sct#254307009", TumorNodeMetastasisTNMStomachTumorStaging }, 
+      { "254309007", TumorNodeMetastasisTNMSmallIntestineTumorStaging }, 
+      { "http://snomed.info/sct#254309007", TumorNodeMetastasisTNMSmallIntestineTumorStaging }, 
+      { "254310002", TumorNodeMetastasisTNMColonAndRectumTumorStaging }, 
+      { "http://snomed.info/sct#254310002", TumorNodeMetastasisTNMColonAndRectumTumorStaging }, 
+      { "254311003", TumorNodeMetastasisTNMAnalCanalTumorStaging }, 
+      { "http://snomed.info/sct#254311003", TumorNodeMetastasisTNMAnalCanalTumorStaging }, 
+      { "254312005", TumorNodeMetastasisTNMLiverTumorStaging }, 
+      { "http://snomed.info/sct#254312005", TumorNodeMetastasisTNMLiverTumorStaging }, 
+      { "254313000", TumorNodeMetastasisTNMGallbladderTumorStaging }, 
+      { "http://snomed.info/sct#254313000", TumorNodeMetastasisTNMGallbladderTumorStaging }, 
+      { "254314006", TumorNodeMetastasisTNMExtrahepaticBileDuctsTumorStaging }, 
+      { "http://snomed.info/sct#254314006", TumorNodeMetastasisTNMExtrahepaticBileDuctsTumorStaging }, 
+      { "254315007", TumorNodeMetastasisTNMAmpullaOfVaterTumorStaging }, 
+      { "http://snomed.info/sct#254315007", TumorNodeMetastasisTNMAmpullaOfVaterTumorStaging }, 
+      { "254316008", TumorNodeMetastasisTNMPancreasTumorStaging }, 
+      { "http://snomed.info/sct#254316008", TumorNodeMetastasisTNMPancreasTumorStaging }, 
+      { "254317004", TumorNodeMetastasisTNMLungAndPleuralTumorStaging }, 
+      { "http://snomed.info/sct#254317004", TumorNodeMetastasisTNMLungAndPleuralTumorStaging }, 
+      { "254318009", TumorNodeMetastasisTNMLungTumorStaging }, 
+      { "http://snomed.info/sct#254318009", TumorNodeMetastasisTNMLungTumorStaging }, 
+      { "254319001", TumorNodeMetastasisTNMPleuralMesotheliomaTumorStaging }, 
+      { "http://snomed.info/sct#254319001", TumorNodeMetastasisTNMPleuralMesotheliomaTumorStaging }, 
+      { "254320007", TumorNodeMetastasisTNMBoneAndSoftTissueTumorStaging }, 
+      { "http://snomed.info/sct#254320007", TumorNodeMetastasisTNMBoneAndSoftTissueTumorStaging }, 
+      { "254321006", TumorNodeMetastasisTNMBoneTumorStaging }, 
+      { "http://snomed.info/sct#254321006", TumorNodeMetastasisTNMBoneTumorStaging }, 
+      { "254322004", TumorNodeMetastasisTNMSoftTissuesTumorStaging }, 
+      { "http://snomed.info/sct#254322004", TumorNodeMetastasisTNMSoftTissuesTumorStaging }, 
+      { "254323009", TumorNodeMetastasisTNMSkinTumorStaging }, 
+      { "http://snomed.info/sct#254323009", TumorNodeMetastasisTNMSkinTumorStaging }, 
+      { "254324003", TumorNodeMetastasisTNMCarcinomaOfSkinTumorStaging }, 
+      { "http://snomed.info/sct#254324003", TumorNodeMetastasisTNMCarcinomaOfSkinTumorStaging }, 
+      { "254325002", TumorNodeMetastasisTNMMalignantMelanomaOfSkinStaging }, 
+      { "http://snomed.info/sct#254325002", TumorNodeMetastasisTNMMalignantMelanomaOfSkinStaging }, 
+      { "254326001", TumorNodeMetastasisTNMBreastTumorStaging }, 
+      { "http://snomed.info/sct#254326001", TumorNodeMetastasisTNMBreastTumorStaging }, 
+      { "254327005", TumorNodeMetastasisTNMGynecologicalTumorStaging }, 
+      { "http://snomed.info/sct#254327005", TumorNodeMetastasisTNMGynecologicalTumorStaging }, 
+      { "254328000", TumorNodeMetastasisTNMVulvaTumorStaging }, 
+      { "http://snomed.info/sct#254328000", TumorNodeMetastasisTNMVulvaTumorStaging }, 
+      { "254329008", TumorNodeMetastasisTNMVaginalTumorStaging }, 
+      { "http://snomed.info/sct#254329008", TumorNodeMetastasisTNMVaginalTumorStaging }, 
+      { "254330003", TumorNodeMetastasisTNMCervixUteriTumorStaging }, 
+      { "http://snomed.info/sct#254330003", TumorNodeMetastasisTNMCervixUteriTumorStaging }, 
+      { "254331004", TumorNodeMetastasisTNMCorpusUteriTumorStaging }, 
+      { "http://snomed.info/sct#254331004", TumorNodeMetastasisTNMCorpusUteriTumorStaging }, 
+      { "254332006", TumorNodeMetastasisTNMOvaryTumorStaging }, 
+      { "http://snomed.info/sct#254332006", TumorNodeMetastasisTNMOvaryTumorStaging }, 
+      { "254333001", TumorNodeMetastasisTNMUrologicalTumorStaging }, 
+      { "http://snomed.info/sct#254333001", TumorNodeMetastasisTNMUrologicalTumorStaging }, 
+      { "254334007", TumorNodeMetastasisTNMPenisTumorStaging }, 
+      { "http://snomed.info/sct#254334007", TumorNodeMetastasisTNMPenisTumorStaging }, 
+      { "254335008", TumorNodeMetastasisTNMProstateTumorStaging }, 
+      { "http://snomed.info/sct#254335008", TumorNodeMetastasisTNMProstateTumorStaging }, 
+      { "254336009", TumorNodeMetastasisTNMTestisTumorStaging }, 
+      { "http://snomed.info/sct#254336009", TumorNodeMetastasisTNMTestisTumorStaging }, 
+      { "254337000", TumorNodeMetastasisTNMKidneyTumorStaging }, 
+      { "http://snomed.info/sct#254337000", TumorNodeMetastasisTNMKidneyTumorStaging }, 
+      { "254338005", TumorNodeMetastasisTNMRenalPelvisAndUreterTumorStaging }, 
+      { "http://snomed.info/sct#254338005", TumorNodeMetastasisTNMRenalPelvisAndUreterTumorStaging }, 
+      { "254339002", TumorNodeMetastasisTNMUrinaryBladderTumorStaging }, 
+      { "http://snomed.info/sct#254339002", TumorNodeMetastasisTNMUrinaryBladderTumorStaging }, 
+      { "254340000", TumorNodeMetastasisTNMUrethraTumorStaging }, 
+      { "http://snomed.info/sct#254340000", TumorNodeMetastasisTNMUrethraTumorStaging }, 
+      { "254341001", TumorNodeMetastasisTNMOphthalmicTumorStaging }, 
+      { "http://snomed.info/sct#254341001", TumorNodeMetastasisTNMOphthalmicTumorStaging }, 
+      { "254342008", TumorNodeMetastasisTNMCarcinomaOfEyelidStaging }, 
+      { "http://snomed.info/sct#254342008", TumorNodeMetastasisTNMCarcinomaOfEyelidStaging }, 
+      { "254343003", TumorNodeMetastasisTNMMalignantMelanomaOfEyelidStaging }, 
+      { "http://snomed.info/sct#254343003", TumorNodeMetastasisTNMMalignantMelanomaOfEyelidStaging }, 
+      { "254344009", TumorNodeMetastasisTNMCarcinomaOfConjunctivaStaging }, 
+      { "http://snomed.info/sct#254344009", TumorNodeMetastasisTNMCarcinomaOfConjunctivaStaging }, 
+      { "254345005", TumorNodeMetastasisTNMMalignantMelanomaOfConjunctivaStaging }, 
+      { "http://snomed.info/sct#254345005", TumorNodeMetastasisTNMMalignantMelanomaOfConjunctivaStaging }, 
+      { "254346006", TumorNodeMetastasisTNMMalignantMelanomaOfUveaStaging }, 
+      { "http://snomed.info/sct#254346006", TumorNodeMetastasisTNMMalignantMelanomaOfUveaStaging }, 
+      { "254347002", TumorNodeMetastasisTNMMalignantMelanomaOfIrisStaging }, 
+      { "http://snomed.info/sct#254347002", TumorNodeMetastasisTNMMalignantMelanomaOfIrisStaging }, 
+      { "254348007", TumorNodeMetastasisTNMMalignantMelanomaOfCiliaryBodyStaging }, 
+      { "http://snomed.info/sct#254348007", TumorNodeMetastasisTNMMalignantMelanomaOfCiliaryBodyStaging }, 
+      { "254349004", TumorNodeMetastasisTNMMalignantMelanomaOfChoroidStaging }, 
+      { "http://snomed.info/sct#254349004", TumorNodeMetastasisTNMMalignantMelanomaOfChoroidStaging }, 
+      { "254350004", TumorNodeMetastasisTNMRetinoblastomaStaging }, 
+      { "http://snomed.info/sct#254350004", TumorNodeMetastasisTNMRetinoblastomaStaging }, 
+      { "254351000", TumorNodeMetastasisTNMSarcomaOfOrbitStaging }, 
+      { "http://snomed.info/sct#254351000", TumorNodeMetastasisTNMSarcomaOfOrbitStaging }, 
+      { "254352007", TumorNodeMetastasisTNMLacrimalGlandCarcinomaStaging }, 
+      { "http://snomed.info/sct#254352007", TumorNodeMetastasisTNMLacrimalGlandCarcinomaStaging }, 
+      { "254353002", TumorNodeMetastasisTNMBrainTumorStaging }, 
+      { "http://snomed.info/sct#254353002", TumorNodeMetastasisTNMBrainTumorStaging }, 
+      { "254354008", TumorNodeMetastasisTNMHodgkinQuoteSDiseaseStaging }, 
+      { "http://snomed.info/sct#254354008", TumorNodeMetastasisTNMHodgkinQuoteSDiseaseStaging }, 
+      { "254355009", TumorNodeMetastasisTNMNonHodgkinQuoteSLymphomaStaging }, 
+      { "http://snomed.info/sct#254355009", TumorNodeMetastasisTNMNonHodgkinQuoteSLymphomaStaging }, 
+      { "254356005", TumorNodeMetastasisTNMPediatricTumorStaging }, 
+      { "http://snomed.info/sct#254356005", TumorNodeMetastasisTNMPediatricTumorStaging }, 
+      { "254357001", TumorNodeMetastasisTNMWilmsQuoteTumorStaging }, 
+      { "http://snomed.info/sct#254357001", TumorNodeMetastasisTNMWilmsQuoteTumorStaging }, 
+      { "254358006", TumorNodeMetastasisTNMNeuroblastomaStaging }, 
+      { "http://snomed.info/sct#254358006", TumorNodeMetastasisTNMNeuroblastomaStaging }, 
+      { "254359003", TumorNodeMetastasisTNMSoftTissueSarcomaStaging }, 
+      { "http://snomed.info/sct#254359003", TumorNodeMetastasisTNMSoftTissueSarcomaStaging }, 
+      { "254360008", DukesStagingSystem }, 
+      { "http://snomed.info/sct#254360008", DukesStagingSystem }, 
+      { "254361007", AstlerCollerStagingSystem }, 
+      { "http://snomed.info/sct#254361007", AstlerCollerStagingSystem }, 
+      { "254362000", ModifiedAstlerCollerStagingSystem }, 
+      { "http://snomed.info/sct#254362000", ModifiedAstlerCollerStagingSystem }, 
+      { "254363005", InternationalNeuroblastomaStagingSystem }, 
+      { "http://snomed.info/sct#254363005", InternationalNeuroblastomaStagingSystem }, 
+      { "254364004", NWTSNationalWilmsQuoteTumorStudyStagingSystem }, 
+      { "http://snomed.info/sct#254364004", NWTSNationalWilmsQuoteTumorStudyStagingSystem }, 
+      { "254365003", SiopelLiverStagingSystem }, 
+      { "http://snomed.info/sct#254365003", SiopelLiverStagingSystem }, 
+      { "254366002", StannardStagingSystemForRetinoblastoma }, 
+      { "http://snomed.info/sct#254366002", StannardStagingSystemForRetinoblastoma }, 
+      { "254368001", UnitedKingdomChildrenQuoteSCancerStudyGroupCentralNervousSystemTumorStagingSystem }, 
+      { "http://snomed.info/sct#254368001", UnitedKingdomChildrenQuoteSCancerStudyGroupCentralNervousSystemTumorStagingSystem }, 
+      { "254370005", StJudeMalignantHistiocytosisTumorStagingSystem }, 
+      { "http://snomed.info/sct#254370005", StJudeMalignantHistiocytosisTumorStagingSystem }, 
+      { "254371009", StJudeNonHodgkinLymphomaStagingSystem }, 
+      { "http://snomed.info/sct#254371009", StJudeNonHodgkinLymphomaStagingSystem }, 
+      { "254372002", AnnArborLymphomaStagingSystem }, 
+      { "http://snomed.info/sct#254372002", AnnArborLymphomaStagingSystem }, 
+      { "254373007", AnnArborHodgkinDiseaseTumorStagingSystem }, 
+      { "http://snomed.info/sct#254373007", AnnArborHodgkinDiseaseTumorStagingSystem }, 
+      { "254374001", AnnArborNonHodgkinLymphomaTumorStagingSystem }, 
+      { "http://snomed.info/sct#254374001", AnnArborNonHodgkinLymphomaTumorStagingSystem }, 
+      { "254375000", CotswoldsHodgkinDiseaseTumorStagingSystem }, 
+      { "http://snomed.info/sct#254375000", CotswoldsHodgkinDiseaseTumorStagingSystem }, 
+      { "254376004", TesticularTumorStagingSystems }, 
+      { "http://snomed.info/sct#254376004", TesticularTumorStagingSystems }, 
+      { "254378003", WalterReedTesticularTumorStagingSystem }, 
+      { "http://snomed.info/sct#254378003", WalterReedTesticularTumorStagingSystem }, 
+      { "254379006", IndianaUniversityTesticularTumorStagingSystem }, 
+      { "http://snomed.info/sct#254379006", IndianaUniversityTesticularTumorStagingSystem }, 
+      { "254380009", MarshallModificationOfJewettStrongStagingSystemForUrinaryBladderTumor }, 
+      { "http://snomed.info/sct#254380009", MarshallModificationOfJewettStrongStagingSystemForUrinaryBladderTumor }, 
+      { "254381008", AmericanUrologicalAssociationStagingSystemForProstateCancer }, 
+      { "http://snomed.info/sct#254381008", AmericanUrologicalAssociationStagingSystemForProstateCancer }, 
+      { "254382001", TrophoblasticMalignancyStagingSystem }, 
+      { "http://snomed.info/sct#254382001", TrophoblasticMalignancyStagingSystem }, 
+      { "254383006", FIGOStagingSystemOfGynecologicalMalignancy }, 
+      { "http://snomed.info/sct#254383006", FIGOStagingSystemOfGynecologicalMalignancy }, 
+      { "254384000", FIGOVaginalTumorStagingSystem }, 
+      { "http://snomed.info/sct#254384000", FIGOVaginalTumorStagingSystem }, 
+      { "254385004", FIGOUterineTumorStagingSystem }, 
+      { "http://snomed.info/sct#254385004", FIGOUterineTumorStagingSystem }, 
+      { "254386003", FIGOOvarianTumorStagingSystem }, 
+      { "http://snomed.info/sct#254386003", FIGOOvarianTumorStagingSystem }, 
+      { "254387007", HIVHumanImmunodeficiencyVirusInfectionClassificationSystems }, 
+      { "http://snomed.info/sct#254387007", HIVHumanImmunodeficiencyVirusInfectionClassificationSystems }, 
+      { "258232002", CancerStaging }, 
+      { "http://snomed.info/sct#258232002", CancerStaging }, 
+      { "258233007", GenericTumorStagingDescriptor }, 
+      { "http://snomed.info/sct#258233007", GenericTumorStagingDescriptor }, 
+      { "258234001", TumorNodeMetastasisTNMTumorStagingClassifications }, 
+      { "http://snomed.info/sct#258234001", TumorNodeMetastasisTNMTumorStagingClassifications }, 
+      { "258235000", InternationalUnionAgainstCancerUICC }, 
+      { "http://snomed.info/sct#258235000", InternationalUnionAgainstCancerUICC }, 
+      { "258236004", AmericanJointCommitteeOnCancerAJCC }, 
+      { "http://snomed.info/sct#258236004", AmericanJointCommitteeOnCancerAJCC }, 
+      { "258244004", GStatus }, 
+      { "http://snomed.info/sct#258244004", GStatus }, 
+      { "258246002", LStatus }, 
+      { "http://snomed.info/sct#258246002", LStatus }, 
+      { "258247006", VStatus }, 
+      { "http://snomed.info/sct#258247006", VStatus }, 
+      { "258257007", AdditionalTumorStagingDescriptor }, 
+      { "http://snomed.info/sct#258257007", AdditionalTumorStagingDescriptor }, 
+      { "258258002", F }, 
+      { "http://snomed.info/sct#258258002", F }, 
+      { "258259005", VALIs }, 
+      { "http://snomed.info/sct#258259005", VALIs }, 
+      { "258260000", D }, 
+      { "http://snomed.info/sct#258260000", D }, 
+      { "258267002", GenericTumorRiskStatusStages }, 
+      { "http://snomed.info/sct#258267002", GenericTumorRiskStatusStages }, 
+      { "258268007", LowRiskTumor }, 
+      { "http://snomed.info/sct#258268007", LowRiskTumor }, 
+      { "258269004", MediumRiskTumor }, 
+      { "http://snomed.info/sct#258269004", MediumRiskTumor }, 
+      { "258270003", HighRiskTumor }, 
+      { "http://snomed.info/sct#258270003", HighRiskTumor }, 
+      { "258271004", SpecificTumorStagingDescriptor }, 
+      { "http://snomed.info/sct#258271004", SpecificTumorStagingDescriptor }, 
+      { "258272006", LiverTumorStagingDescriptor }, 
+      { "http://snomed.info/sct#258272006", LiverTumorStagingDescriptor }, 
+      { "258273001", LiverTumorSizeIndex }, 
+      { "http://snomed.info/sct#258273001", LiverTumorSizeIndex }, 
+      { "258276009", TimingOfLiverTumorStaging }, 
+      { "http://snomed.info/sct#258276009", TimingOfLiverTumorStaging }, 
+      { "258279002", LymphomaStagingSymptomStatusValues }, 
+      { "http://snomed.info/sct#258279002", LymphomaStagingSymptomStatusValues }, 
+      { "258280004", LymphomatousExtranodalInvolvementStatusValues }, 
+      { "http://snomed.info/sct#258280004", LymphomatousExtranodalInvolvementStatusValues }, 
+      { "258281000", SpleenPositiveMinimalLymphomatousExtranodalInvolvement }, 
+      { "http://snomed.info/sct#258281000", SpleenPositiveMinimalLymphomatousExtranodalInvolvement }, 
+      { "258282007", SpleenPositiveExtensiveLymphomatousExtranodalInvolvement }, 
+      { "http://snomed.info/sct#258282007", SpleenPositiveExtensiveLymphomatousExtranodalInvolvement }, 
+      { "258283002", LymphomatousNodalInvolvement }, 
+      { "http://snomed.info/sct#258283002", LymphomatousNodalInvolvement }, 
+      { "258284008", StannardsRetinoblastomaStages }, 
+      { "http://snomed.info/sct#258284008", StannardsRetinoblastomaStages }, 
+      { "258285009", OpticNerveTumorInvasionStatusInRetinoblastomaStaging }, 
+      { "http://snomed.info/sct#258285009", OpticNerveTumorInvasionStatusInRetinoblastomaStaging }, 
+      { "258286005", ChoroidalTumorInvasionStatusInRetinoblastomaStaging }, 
+      { "http://snomed.info/sct#258286005", ChoroidalTumorInvasionStatusInRetinoblastomaStaging }, 
+      { "258292004", LymphNodalTumorInvasionStatusInRetinoblastomaStaging }, 
+      { "http://snomed.info/sct#258292004", LymphNodalTumorInvasionStatusInRetinoblastomaStaging }, 
+      { "258293009", BrainTumorInvasionStatusInRetinoblastomaStaging }, 
+      { "http://snomed.info/sct#258293009", BrainTumorInvasionStatusInRetinoblastomaStaging }, 
+      { "258301001", LangerhansCellHistiocytosisStage }, 
+      { "http://snomed.info/sct#258301001", LangerhansCellHistiocytosisStage }, 
+      { "258302008", NumberOfOrganSystemsInvolvedWithLangerhansCellHistiocytosis }, 
+      { "http://snomed.info/sct#258302008", NumberOfOrganSystemsInvolvedWithLangerhansCellHistiocytosis }, 
+      { "258303003", SingleSystemInvolvement }, 
+      { "http://snomed.info/sct#258303003", SingleSystemInvolvement }, 
+      { "258304009", MultisystemInvolvement }, 
+      { "http://snomed.info/sct#258304009", MultisystemInvolvement }, 
+      { "258305005", OrganFailureDueToLangerhansCellHistiocytosis }, 
+      { "http://snomed.info/sct#258305005", OrganFailureDueToLangerhansCellHistiocytosis }, 
+      { "258306006", VitalOrganFailure }, 
+      { "http://snomed.info/sct#258306006", VitalOrganFailure }, 
+      { "258307002", NonVitalOrganFailure }, 
+      { "http://snomed.info/sct#258307002", NonVitalOrganFailure }, 
+      { "258309004", GenericLymphNodeTumorInvasionStatusStage }, 
+      { "http://snomed.info/sct#258309004", GenericLymphNodeTumorInvasionStatusStage }, 
+      { "258310009", NeckNodeTumorInvolvement }, 
+      { "http://snomed.info/sct#258310009", NeckNodeTumorInvolvement }, 
+      { "258311008", MPlus }, 
+      { "http://snomed.info/sct#258311008", MPlus }, 
+      { "258312001", AxillaryLymphNodeLevel }, 
+      { "http://snomed.info/sct#258312001", AxillaryLymphNodeLevel }, 
+      { "258313006", LevelI }, 
+      { "http://snomed.info/sct#258313006", LevelI }, 
+      { "258314000", Midaxilla }, 
+      { "http://snomed.info/sct#258314000", Midaxilla }, 
+      { "258315004", LevelIII }, 
+      { "http://snomed.info/sct#258315004", LevelIII }, 
+      { "258316003", RetroperitonealLymphNodeTumorInvasionStatus }, 
+      { "http://snomed.info/sct#258316003", RetroperitonealLymphNodeTumorInvasionStatus }, 
+      { "258318002", GenericAnatomicalSiteTumorInvasionStatus }, 
+      { "http://snomed.info/sct#258318002", GenericAnatomicalSiteTumorInvasionStatus }, 
+      { "258319005", LungInvolvementStages }, 
+      { "http://snomed.info/sct#258319005", LungInvolvementStages }, 
+      { "258320004", LungStageL2 }, 
+      { "http://snomed.info/sct#258320004", LungStageL2 }, 
+      { "258321000", LungStageL3 }, 
+      { "http://snomed.info/sct#258321000", LungStageL3 }, 
+      { "258322007", HPlus }, 
+      { "http://snomed.info/sct#258322007", HPlus }, 
+      { "258323002", LiverSectors }, 
+      { "http://snomed.info/sct#258323002", LiverSectors }, 
+      { "258324008", LiverSector1 }, 
+      { "http://snomed.info/sct#258324008", LiverSector1 }, 
+      { "258325009", LiverSector2 }, 
+      { "http://snomed.info/sct#258325009", LiverSector2 }, 
+      { "258326005", LiverSector3 }, 
+      { "http://snomed.info/sct#258326005", LiverSector3 }, 
+      { "258327001", LiverSector4 }, 
+      { "http://snomed.info/sct#258327001", LiverSector4 }, 
+      { "258328006", MarkersForLiverTumorStaging }, 
+      { "http://snomed.info/sct#258328006", MarkersForLiverTumorStaging }, 
+      { "260998006", ClinicalStagingQualifierValue }, 
+      { "http://snomed.info/sct#260998006", ClinicalStagingQualifierValue }, 
+      { "261023001", PathologicalStagingQualifierValue }, 
+      { "http://snomed.info/sct#261023001", PathologicalStagingQualifierValue }, 
+      { "261663004", TumorStageTa }, 
+      { "http://snomed.info/sct#261663004", TumorStageTa }, 
+      { "261731003", CentralNervousSystemCNSMetastases }, 
+      { "http://snomed.info/sct#261731003", CentralNervousSystemCNSMetastases }, 
+      { "261789009", ExtraCentralNervousSystemMetastases }, 
+      { "http://snomed.info/sct#261789009", ExtraCentralNervousSystemMetastases }, 
+      { "261985008", NoMetastases }, 
+      { "http://snomed.info/sct#261985008", NoMetastases }, 
+      { "263487004", BorgScale }, 
+      { "http://snomed.info/sct#263487004", BorgScale }, 
+      { "263638005", EndometriosisClassificationOfAmericanFertilitySociety }, 
+      { "http://snomed.info/sct#263638005", EndometriosisClassificationOfAmericanFertilitySociety }, 
+      { "273249006", AssessmentScales }, 
+      { "http://snomed.info/sct#273249006", AssessmentScales }, 
+      { "273251005", AachenAphasiaTest }, 
+      { "http://snomed.info/sct#273251005", AachenAphasiaTest }, 
+      { "273252003", ABCChart }, 
+      { "http://snomed.info/sct#273252003", ABCChart }, 
+      { "273253008", ABCTestForMovement }, 
+      { "http://snomed.info/sct#273253008", ABCTestForMovement }, 
+      { "273254002", AISAbbreviatedInjuryScale }, 
+      { "http://snomed.info/sct#273254002", AISAbbreviatedInjuryScale }, 
+      { "273255001", AbbreviatedMentalTest }, 
+      { "http://snomed.info/sct#273255001", AbbreviatedMentalTest }, 
+      { "273256000", AIMSAbnormalInvoluntaryMovementScale }, 
+      { "http://snomed.info/sct#273256000", AIMSAbnormalInvoluntaryMovementScale }, 
+      { "273257009", AcutePhysiologyAndChronicHealthEvaluation }, 
+      { "http://snomed.info/sct#273257009", AcutePhysiologyAndChronicHealthEvaluation }, 
+      { "273258004", APACHEIIAcutePhysiologyAndChronicHealthEvaluationII }, 
+      { "http://snomed.info/sct#273258004", APACHEIIAcutePhysiologyAndChronicHealthEvaluationII }, 
+      { "273259007", AcutePhysiologyAndChronicHealthEvaluationIII }, 
+      { "http://snomed.info/sct#273259007", AcutePhysiologyAndChronicHealthEvaluationIII }, 
+      { "273260002", AddictionSeverityIndex }, 
+      { "http://snomed.info/sct#273260002", AddictionSeverityIndex }, 
+      { "273261003", AdultPersonalityRatingSchedule }, 
+      { "http://snomed.info/sct#273261003", AdultPersonalityRatingSchedule }, 
+      { "273262005", ABSAffectBalanceScale }, 
+      { "http://snomed.info/sct#273262005", ABSAffectBalanceScale }, 
+      { "273263000", AcquiredImmunodeficiencySyndromeAIDSRiskBehaviorKnowledgeTest }, 
+      { "http://snomed.info/sct#273263000", AcquiredImmunodeficiencySyndromeAIDSRiskBehaviorKnowledgeTest }, 
+      { "273264006", ADSAlcoholDependenceScale }, 
+      { "http://snomed.info/sct#273264006", ADSAlcoholDependenceScale }, 
+      { "273265007", AlcoholUseDisordersIdentificationTest }, 
+      { "http://snomed.info/sct#273265007", AlcoholUseDisordersIdentificationTest }, 
+      { "273266008", AlcoholUseInventory }, 
+      { "http://snomed.info/sct#273266008", AlcoholUseInventory }, 
+      { "273267004", AllenCognitiveLevelScreeningTool }, 
+      { "http://snomed.info/sct#273267004", AllenCognitiveLevelScreeningTool }, 
+      { "273268009", AllenCognitivePerformanceTest }, 
+      { "http://snomed.info/sct#273268009", AllenCognitivePerformanceTest }, 
+      { "273269001", AlzheimerDiseaseAssessmentScale }, 
+      { "http://snomed.info/sct#273269001", AlzheimerDiseaseAssessmentScale }, 
+      { "273270000", AmericanSocietyOfAnesthesiologistsPhysicalStatusClassification }, 
+      { "http://snomed.info/sct#273270000", AmericanSocietyOfAnesthesiologistsPhysicalStatusClassification }, 
+      { "273271001", AmsterdamNijmegenEverydayLanguageTest }, 
+      { "http://snomed.info/sct#273271001", AmsterdamNijmegenEverydayLanguageTest }, 
+      { "273272008", AnomalousSentenceRepetitionTestWeeks }, 
+      { "http://snomed.info/sct#273272008", AnomalousSentenceRepetitionTestWeeks }, 
+      { "273273003", AnomalousSentenceTestKopelman }, 
+      { "http://snomed.info/sct#273273003", AnomalousSentenceTestKopelman }, 
+      { "273274009", AnorexicAttitudesQuestionnaire }, 
+      { "http://snomed.info/sct#273274009", AnorexicAttitudesQuestionnaire }, 
+      { "273275005", ABSAnorexicBehaviorScales }, 
+      { "http://snomed.info/sct#273275005", ABSAnorexicBehaviorScales }, 
+      { "273276006", AphasiaLanguagePerformanceScales }, 
+      { "http://snomed.info/sct#273276006", AphasiaLanguagePerformanceScales }, 
+      { "273277002", WhurrAphasiaScreeningTest }, 
+      { "http://snomed.info/sct#273277002", WhurrAphasiaScreeningTest }, 
+      { "273279004", ApraxiaBatteryForAdults }, 
+      { "http://snomed.info/sct#273279004", ApraxiaBatteryForAdults }, 
+      { "273280001", ArizonaBatteryForCommunicationDisordersOfDementia }, 
+      { "http://snomed.info/sct#273280001", ArizonaBatteryForCommunicationDisordersOfDementia }, 
+      { "273281002", AIMSIArthritisImpactMeasurementScaleI }, 
+      { "http://snomed.info/sct#273281002", AIMSIArthritisImpactMeasurementScaleI }, 
+      { "273282009", ArthritisImpactMeasurementScaleII }, 
+      { "http://snomed.info/sct#273282009", ArthritisImpactMeasurementScaleII }, 
+      { "273283004", ASEPSISScoreForWoundInfection }, 
+      { "http://snomed.info/sct#273283004", ASEPSISScoreForWoundInfection }, 
+      { "273284005", AshworthAssessmentScale }, 
+      { "http://snomed.info/sct#273284005", AshworthAssessmentScale }, 
+      { "273285006", AssessingReadingDifficulties }, 
+      { "http://snomed.info/sct#273285006", AssessingReadingDifficulties }, 
+      { "273286007", AssessmentAndTherapyProgramForDysfluentChildren }, 
+      { "http://snomed.info/sct#273286007", AssessmentAndTherapyProgramForDysfluentChildren }, 
+      { "273287003", AssessmentOfIntelligibility }, 
+      { "http://snomed.info/sct#273287003", AssessmentOfIntelligibility }, 
+      { "273288008", AssessmentOfMotorAndProcessSkills }, 
+      { "http://snomed.info/sct#273288008", AssessmentOfMotorAndProcessSkills }, 
+      { "273289000", AOFAssessmentOfOccupationalFunction }, 
+      { "http://snomed.info/sct#273289000", AOFAssessmentOfOccupationalFunction }, 
+      { "273290009", AssessmentProtocolOfPragmaticLinguisticSkills }, 
+      { "http://snomed.info/sct#273290009", AssessmentProtocolOfPragmaticLinguisticSkills }, 
+      { "273291008", AstonIndex }, 
+      { "http://snomed.info/sct#273291008", AstonIndex }, 
+      { "273292001", AttributionalStyleQuestionnaire }, 
+      { "http://snomed.info/sct#273292001", AttributionalStyleQuestionnaire }, 
+      { "273293006", AuditoryComprehensionTestForSentences }, 
+      { "http://snomed.info/sct#273293006", AuditoryComprehensionTestForSentences }, 
+      { "273294000", AugmentativeCommunicationProfile }, 
+      { "http://snomed.info/sct#273294000", AugmentativeCommunicationProfile }, 
+      { "273295004", AutisticFeaturesChecklist }, 
+      { "http://snomed.info/sct#273295004", AutisticFeaturesChecklist }, 
+      { "273296003", AutobiographicalMemoryInterview }, 
+      { "http://snomed.info/sct#273296003", AutobiographicalMemoryInterview }, 
+      { "273298002", BamfordKowalAndBenchNonPictureRelated }, 
+      { "http://snomed.info/sct#273298002", BamfordKowalAndBenchNonPictureRelated }, 
+      { "273299005", BKBPRBamfordKowalAndBenchPictureRelated }, 
+      { "http://snomed.info/sct#273299005", BKBPRBamfordKowalAndBenchPictureRelated }, 
+      { "273300002", BangorDyslexiaTest }, 
+      { "http://snomed.info/sct#273300002", BangorDyslexiaTest }, 
+      { "273301003", BanksonLanguageTest }, 
+      { "http://snomed.info/sct#273301003", BanksonLanguageTest }, 
+      { "273302005", BarthelIndex }, 
+      { "http://snomed.info/sct#273302005", BarthelIndex }, 
+      { "273305007", BayleyScaleOfInfantDevelopment }, 
+      { "http://snomed.info/sct#273305007", BayleyScaleOfInfantDevelopment }, 
+      { "273306008", BeckDepressionInventory }, 
+      { "http://snomed.info/sct#273306008", BeckDepressionInventory }, 
+      { "273307004", BeckAnxietyStandardizedRatingScale }, 
+      { "http://snomed.info/sct#273307004", BeckAnxietyStandardizedRatingScale }, 
+      { "273308009", BESTBedsideEvaluationAndScreeningTestOfAphasia }, 
+      { "http://snomed.info/sct#273308009", BESTBedsideEvaluationAndScreeningTestOfAphasia }, 
+      { "273309001", BeeryBuktenicaTestOfVisualMotorIntegration }, 
+      { "http://snomed.info/sct#273309001", BeeryBuktenicaTestOfVisualMotorIntegration }, 
+      { "273310006", BehaviorAndMoodDisturbanceScale }, 
+      { "http://snomed.info/sct#273310006", BehaviorAndMoodDisturbanceScale }, 
+      { "273311005", BehaviorAssessmentBattery }, 
+      { "http://snomed.info/sct#273311005", BehaviorAssessmentBattery }, 
+      { "273312003", BehaviorProblemChecklist }, 
+      { "http://snomed.info/sct#273312003", BehaviorProblemChecklist }, 
+      { "273313008", BehaviorRatingScale }, 
+      { "http://snomed.info/sct#273313008", BehaviorRatingScale }, 
+      { "273314002", BehavioralInattentionTest }, 
+      { "http://snomed.info/sct#273314002", BehavioralInattentionTest }, 
+      { "273315001", BOSBehavioralObservationSchedule }, 
+      { "http://snomed.info/sct#273315001", BOSBehavioralObservationSchedule }, 
+      { "273316000", BehavioralScreeningQuestionnaire }, 
+      { "http://snomed.info/sct#273316000", BehavioralScreeningQuestionnaire }, 
+      { "273317009", BennettTestOfManualDexterity }, 
+      { "http://snomed.info/sct#273317009", BennettTestOfManualDexterity }, 
+      { "273319007", BexleyMaudsleyAutomatedPsychologicalScreening }, 
+      { "http://snomed.info/sct#273319007", BexleyMaudsleyAutomatedPsychologicalScreening }, 
+      { "273320001", BingeEatingScale }, 
+      { "http://snomed.info/sct#273320001", BingeEatingScale }, 
+      { "273321002", BORBBirminghamObjectRecognitionBattery }, 
+      { "http://snomed.info/sct#273321002", BORBBirminghamObjectRecognitionBattery }, 
+      { "273322009", BlakelyDyspraxiaAssessment }, 
+      { "http://snomed.info/sct#273322009", BlakelyDyspraxiaAssessment }, 
+      { "273323004", BlessedDementiaRatingScale }, 
+      { "http://snomed.info/sct#273323004", BlessedDementiaRatingScale }, 
+      { "273324005", BlissymbolsTest }, 
+      { "http://snomed.info/sct#273324005", BlissymbolsTest }, 
+      { "273325006", BodyShapeQuestionnaire }, 
+      { "http://snomed.info/sct#273325006", BodyShapeQuestionnaire }, 
+      { "273326007", BoehmTestOfBasicConcepts }, 
+      { "http://snomed.info/sct#273326007", BoehmTestOfBasicConcepts }, 
+      { "273327003", BookerHeterotopicOssificationScore }, 
+      { "http://snomed.info/sct#273327003", BookerHeterotopicOssificationScore }, 
+      { "273328008", BostonAphasiaScale }, 
+      { "http://snomed.info/sct#273328008", BostonAphasiaScale }, 
+      { "273329000", BostonDiagnosticAphasiaExamination }, 
+      { "http://snomed.info/sct#273329000", BostonDiagnosticAphasiaExamination }, 
+      { "273330005", BostonNamingTest }, 
+      { "http://snomed.info/sct#273330005", BostonNamingTest }, 
+      { "273331009", BrackenTestOfBasicConceptScale }, 
+      { "http://snomed.info/sct#273331009", BrackenTestOfBasicConceptScale }, 
+      { "273332002", BriefActivitiesOfDailyLiving }, 
+      { "http://snomed.info/sct#273332002", BriefActivitiesOfDailyLiving }, 
+      { "273333007", BDRSBriefDepressionRatingScale }, 
+      { "http://snomed.info/sct#273333007", BDRSBriefDepressionRatingScale }, 
+      { "273334001", BristolLanguageAssessmentScale }, 
+      { "http://snomed.info/sct#273334001", BristolLanguageAssessmentScale }, 
+      { "273335000", BritishAbilityScales }, 
+      { "http://snomed.info/sct#273335000", BritishAbilityScales }, 
+      { "273336004", BASRBritishAbilityScalesRevised }, 
+      { "http://snomed.info/sct#273336004", BASRBritishAbilityScalesRevised }, 
+      { "273337008", BritishAbilityScalesReadingTest }, 
+      { "http://snomed.info/sct#273337008", BritishAbilityScalesReadingTest }, 
+      { "273338003", BASBritishAbilityScalesSpellingTest }, 
+      { "http://snomed.info/sct#273338003", BASBritishAbilityScalesSpellingTest }, 
+      { "273339006", BritishIslesLupusAssessmentGroupScore }, 
+      { "http://snomed.info/sct#273339006", BritishIslesLupusAssessmentGroupScore }, 
+      { "273341007", BryantAndBradleyRhymingTask }, 
+      { "http://snomed.info/sct#273341007", BryantAndBradleyRhymingTask }, 
+      { "273342000", BuffaloAssessmentProfileWilson }, 
+      { "http://snomed.info/sct#273342000", BuffaloAssessmentProfileWilson }, 
+      { "273343005", BulimiaTest }, 
+      { "http://snomed.info/sct#273343005", BulimiaTest }, 
+      { "273344004", BulimicInvestigationTestEdinburgh }, 
+      { "http://snomed.info/sct#273344004", BulimicInvestigationTestEdinburgh }, 
+      { "273345003", BusStory }, 
+      { "http://snomed.info/sct#273345003", BusStory }, 
+      { "273347006", CageQuestionnaire }, 
+      { "http://snomed.info/sct#273347006", CageQuestionnaire }, 
+      { "273348001", CaliforniaPersonalityInventory }, 
+      { "http://snomed.info/sct#273348001", CaliforniaPersonalityInventory }, 
+      { "273349009", CallierAzusaScale }, 
+      { "http://snomed.info/sct#273349009", CallierAzusaScale }, 
+      { "273350009", CamberwellAssessmentForTheNeedsOfTheElderly }, 
+      { "http://snomed.info/sct#273350009", CamberwellAssessmentForTheNeedsOfTheElderly }, 
+      { "273351008", CABCambridgeApraxiaBattery }, 
+      { "http://snomed.info/sct#273351008", CABCambridgeApraxiaBattery }, 
+      { "273352001", CantrilLadderAssessment }, 
+      { "http://snomed.info/sct#273352001", CantrilLadderAssessment }, 
+      { "273353006", CELICarrowElicitedLanguageInventory }, 
+      { "http://snomed.info/sct#273353006", CELICarrowElicitedLanguageInventory }, 
+      { "273354000", CarrowScreeningTestOfAuditoryComprehension }, 
+      { "http://snomed.info/sct#273354000", CarrowScreeningTestOfAuditoryComprehension }, 
+      { "273355004", ChaileyHeritageLyingAssessment }, 
+      { "http://snomed.info/sct#273355004", ChaileyHeritageLyingAssessment }, 
+      { "273356003", ChaileyHeritageSeatingAssessment }, 
+      { "http://snomed.info/sct#273356003", ChaileyHeritageSeatingAssessment }, 
+      { "273357007", ChecklistOfCommunicativeCompetence }, 
+      { "http://snomed.info/sct#273357007", ChecklistOfCommunicativeCompetence }, 
+      { "273358002", ChecklistOfConversationalAbilities }, 
+      { "http://snomed.info/sct#273358002", ChecklistOfConversationalAbilities }, 
+      { "273359005", ChecklistOfListeningBehaviors }, 
+      { "http://snomed.info/sct#273359005", ChecklistOfListeningBehaviors }, 
+      { "273360000", OTChessingtonOccupationalTherapyNeurologicalAssessmentBattery }, 
+      { "http://snomed.info/sct#273360000", OTChessingtonOccupationalTherapyNeurologicalAssessmentBattery }, 
+      { "273361001", ChildAssessmentSchedule }, 
+      { "http://snomed.info/sct#273361001", ChildAssessmentSchedule }, 
+      { "273362008", CDSChildDepressionScale }, 
+      { "http://snomed.info/sct#273362008", CDSChildDepressionScale }, 
+      { "273363003", ChildrenQuoteSComaScale }, 
+      { "http://snomed.info/sct#273363003", ChildrenQuoteSComaScale }, 
+      { "273364009", CrohnDiseaseActivityIndex }, 
+      { "http://snomed.info/sct#273364009", CrohnDiseaseActivityIndex }, 
+      { "273365005", CAPECliftonAssessmentProceduresForTheElderly }, 
+      { "http://snomed.info/sct#273365005", CAPECliftonAssessmentProceduresForTheElderly }, 
+      { "273366006", ClinicalAnxietyScale }, 
+      { "http://snomed.info/sct#273366006", ClinicalAnxietyScale }, 
+      { "273367002", ClinicalDementiaRatingScale }, 
+      { "http://snomed.info/sct#273367002", ClinicalDementiaRatingScale }, 
+      { "273368007", CEDRIClinicalEatingDisorderRatingInstrument }, 
+      { "http://snomed.info/sct#273368007", CEDRIClinicalEatingDisorderRatingInstrument }, 
+      { "273369004", ClinicalEvaluationOfLanguageFunctionRevised }, 
+      { "http://snomed.info/sct#273369004", ClinicalEvaluationOfLanguageFunctionRevised }, 
+      { "273370003", ClinicalEvaluationOfLanguageFunctionRevisedScreeningTest }, 
+      { "http://snomed.info/sct#273370003", ClinicalEvaluationOfLanguageFunctionRevisedScreeningTest }, 
+      { "273371004", ClinicalEvaluationOfLanguageFunctionRevisedPreschoolTest }, 
+      { "http://snomed.info/sct#273371004", ClinicalEvaluationOfLanguageFunctionRevisedPreschoolTest }, 
+      { "273372006", ClinicalObservationOfMotorAndPosturalSkills }, 
+      { "http://snomed.info/sct#273372006", ClinicalObservationOfMotorAndPosturalSkills }, 
+      { "273373001", CAAPCocaineAbuseAssessmentProfile }, 
+      { "http://snomed.info/sct#273373001", CAAPCocaineAbuseAssessmentProfile }, 
+      { "273374007", CognitionsQuestionnaire }, 
+      { "http://snomed.info/sct#273374007", CognitionsQuestionnaire }, 
+      { "273375008", CognitiveFailuresQuestionnaire }, 
+      { "http://snomed.info/sct#273375008", CognitiveFailuresQuestionnaire }, 
+      { "273376009", CASPCommunicationAssessmentProfileForAdultsWithAMentalHandicap }, 
+      { "http://snomed.info/sct#273376009", CASPCommunicationAssessmentProfileForAdultsWithAMentalHandicap }, 
+      { "273377000", CommunicativeAbilitiesInDailyLiving }, 
+      { "http://snomed.info/sct#273377000", CommunicativeAbilitiesInDailyLiving }, 
+      { "273378005", CIDICompositeInternationalDiagnosticInterview }, 
+      { "http://snomed.info/sct#273378005", CIDICompositeInternationalDiagnosticInterview }, 
+      { "273379002", ComprehensiveDrinkerProfile }, 
+      { "http://snomed.info/sct#273379002", ComprehensiveDrinkerProfile }, 
+      { "273380004", CRISComprehensiveInjuryScale }, 
+      { "http://snomed.info/sct#273380004", CRISComprehensiveInjuryScale }, 
+      { "273381000", ComprehensiveOccupationalTherapyEvaluationScale }, 
+      { "http://snomed.info/sct#273381000", ComprehensiveOccupationalTherapyEvaluationScale }, 
+      { "273382007", CESCompulsiveEatingScale }, 
+      { "http://snomed.info/sct#273382007", CESCompulsiveEatingScale }, 
+      { "273383002", ConstantAndMurleyShoulderAssessmentScore }, 
+      { "http://snomed.info/sct#273383002", ConstantAndMurleyShoulderAssessmentScore }, 
+      { "273384008", ConsumerSatisfactionQuestionnaire }, 
+      { "http://snomed.info/sct#273384008", ConsumerSatisfactionQuestionnaire }, 
+      { "273385009", CoOpFunctionCharts }, 
+      { "http://snomed.info/sct#273385009", CoOpFunctionCharts }, 
+      { "273386005", PFCTCooperPersonalizedFluencyControlTherapy }, 
+      { "http://snomed.info/sct#273386005", PFCTCooperPersonalizedFluencyControlTherapy }, 
+      { "273387001", CopingResponsesInventory }, 
+      { "http://snomed.info/sct#273387001", CopingResponsesInventory }, 
+      { "273388006", CrichtonVocabularyScale }, 
+      { "http://snomed.info/sct#273388006", CrichtonVocabularyScale }, 
+      { "273389003", DailyActivitiesQuestionnaire }, 
+      { "http://snomed.info/sct#273389003", DailyActivitiesQuestionnaire }, 
+      { "273390007", DallasPainQuestionnaire }, 
+      { "http://snomed.info/sct#273390007", DallasPainQuestionnaire }, 
+      { "273391006", DanielsAndDiackReadingTests }, 
+      { "http://snomed.info/sct#273391006", DanielsAndDiackReadingTests }, 
+      { "273392004", DanielsAndDiackGradedWordSpellingTest }, 
+      { "http://snomed.info/sct#273392004", DanielsAndDiackGradedWordSpellingTest }, 
+      { "273393009", DeGangiBerkSensoryFunctioningInInfants }, 
+      { "http://snomed.info/sct#273393009", DeGangiBerkSensoryFunctioningInInfants }, 
+      { "273394003", DelightedTerribleFacesScale }, 
+      { "http://snomed.info/sct#273394003", DelightedTerribleFacesScale }, 
+      { "273395002", DenverDevelopmentScale }, 
+      { "http://snomed.info/sct#273395002", DenverDevelopmentScale }, 
+      { "273396001", DenverDevelopmentalSubscaleGrossMotor }, 
+      { "http://snomed.info/sct#273396001", DenverDevelopmentalSubscaleGrossMotor }, 
+      { "273397005", DenverDevelopmentalSubscaleLanguage }, 
+      { "http://snomed.info/sct#273397005", DenverDevelopmentalSubscaleLanguage }, 
+      { "273398000", DenverDevelopmentalSubscalePersonalSocial }, 
+      { "http://snomed.info/sct#273398000", DenverDevelopmentalSubscalePersonalSocial }, 
+      { "273399008", DenverDevelopmentalSubscaleFineMotorAdaptive }, 
+      { "http://snomed.info/sct#273399008", DenverDevelopmentalSubscaleFineMotorAdaptive }, 
+      { "273400001", DenverDevelopmentScaleScreeningTest }, 
+      { "http://snomed.info/sct#273400001", DenverDevelopmentScaleScreeningTest }, 
+      { "273401002", DenverDevelopmentScaleScreeningTestScheduleForGrowingSkills }, 
+      { "http://snomed.info/sct#273401002", DenverDevelopmentScaleScreeningTestScheduleForGrowingSkills }, 
+      { "273402009", DepressionAnxietyScale }, 
+      { "http://snomed.info/sct#273402009", DepressionAnxietyScale }, 
+      { "273403004", DepressionSelfRatingScale }, 
+      { "http://snomed.info/sct#273403004", DepressionSelfRatingScale }, 
+      { "273408008", DermatologyLifeQualityIndex }, 
+      { "http://snomed.info/sct#273408008", DermatologyLifeQualityIndex }, 
+      { "273409000", DSFIDerogatisSexualFunctioningInventory }, 
+      { "http://snomed.info/sct#273409000", DSFIDerogatisSexualFunctioningInventory }, 
+      { "273411009", DiabetesClinicSatisfactionQuestionnaire }, 
+      { "http://snomed.info/sct#273411009", DiabetesClinicSatisfactionQuestionnaire }, 
+      { "273412002", DTSQDiabetesTreatmentSatisfactionQuestionnaire }, 
+      { "http://snomed.info/sct#273412002", DTSQDiabetesTreatmentSatisfactionQuestionnaire }, 
+      { "273413007", DiabetesWellbeingQuestionnaire }, 
+      { "http://snomed.info/sct#273413007", DiabetesWellbeingQuestionnaire }, 
+      { "273414001", DICADiagnosticInterviewForChildrenAndAdolescents }, 
+      { "http://snomed.info/sct#273414001", DICADiagnosticInterviewForChildrenAndAdolescents }, 
+      { "273415000", DiagnosticInterviewSchedule }, 
+      { "http://snomed.info/sct#273415000", DiagnosticInterviewSchedule }, 
+      { "273416004", DSDTDiagnosticSpeechDiscriminationTest }, 
+      { "http://snomed.info/sct#273416004", DSDTDiagnosticSpeechDiscriminationTest }, 
+      { "273417008", DiagnosticSurveyForEatingDisorders }, 
+      { "http://snomed.info/sct#273417008", DiagnosticSurveyForEatingDisorders }, 
+      { "273418003", DINEDietaryInstrumentForNutritionEducationQuestionnaire }, 
+      { "http://snomed.info/sct#273418003", DINEDietaryInstrumentForNutritionEducationQuestionnaire }, 
+      { "273419006", DigitSequenceLearning }, 
+      { "http://snomed.info/sct#273419006", DigitSequenceLearning }, 
+      { "273420000", DisabilityAssessmentSchedule }, 
+      { "http://snomed.info/sct#273420000", DisabilityAssessmentSchedule }, 
+      { "273421001", DisabilityRatingScale }, 
+      { "http://snomed.info/sct#273421001", DisabilityRatingScale }, 
+      { "273422008", DiscourseAbilitiesProfile }, 
+      { "http://snomed.info/sct#273422008", DiscourseAbilitiesProfile }, 
+      { "273423003", DolScale }, 
+      { "http://snomed.info/sct#273423003", DolScale }, 
+      { "273424009", DoyleArticularIndex }, 
+      { "http://snomed.info/sct#273424009", DoyleArticularIndex }, 
+      { "273425005", DrinkingProblemScale }, 
+      { "http://snomed.info/sct#273425005", DrinkingProblemScale }, 
+      { "273426006", DASTDrugAbuseScreeningTest }, 
+      { "http://snomed.info/sct#273426006", DASTDrugAbuseScreeningTest }, 
+      { "273427002", DubowitzScore }, 
+      { "http://snomed.info/sct#273427002", DubowitzScore }, 
+      { "273428007", DukeUNCHealthProfile }, 
+      { "http://snomed.info/sct#273428007", DukeUNCHealthProfile }, 
+      { "273429004", DundeeCardiovascularRiskScore }, 
+      { "http://snomed.info/sct#273429004", DundeeCardiovascularRiskScore }, 
+      { "273430009", DurrellTestOfListeningComprehension }, 
+      { "http://snomed.info/sct#273430009", DurrellTestOfListeningComprehension }, 
+      { "273431008", EakinIndex }, 
+      { "http://snomed.info/sct#273431008", EakinIndex }, 
+      { "273432001", EatingAttitudesTest }, 
+      { "http://snomed.info/sct#273432001", EatingAttitudesTest }, 
+      { "273433006", EAT26AbbreviatedEatingAttitudesTest }, 
+      { "http://snomed.info/sct#273433006", EAT26AbbreviatedEatingAttitudesTest }, 
+      { "273434000", EBRSEatingBehaviorRatingScale }, 
+      { "http://snomed.info/sct#273434000", EBRSEatingBehaviorRatingScale }, 
+      { "273435004", EatingDisordersInventory }, 
+      { "http://snomed.info/sct#273435004", EatingDisordersInventory }, 
+      { "273436003", EatingInventory }, 
+      { "http://snomed.info/sct#273436003", EatingInventory }, 
+      { "273437007", EasternCooperativeOncologyGroupECOGScaleForPhysicalAssessment }, 
+      { "http://snomed.info/sct#273437007", EasternCooperativeOncologyGroupECOGScaleForPhysicalAssessment }, 
+      { "273438002", EdinburghArticulationTest }, 
+      { "http://snomed.info/sct#273438002", EdinburghArticulationTest }, 
+      { "273439005", EFCPEdinburghFunctionalCommunicationProfile }, 
+      { "http://snomed.info/sct#273439005", EFCPEdinburghFunctionalCommunicationProfile }, 
+      { "273440007", RevisedEdinburghFunctionalCommunicationProfile }, 
+      { "http://snomed.info/sct#273440007", RevisedEdinburghFunctionalCommunicationProfile }, 
+      { "273441006", EdinburghPostnatalDepressionScale }, 
+      { "http://snomed.info/sct#273441006", EdinburghPostnatalDepressionScale }, 
+      { "273442004", EdmansADLIndexEdmansActivitiesOfDailyLivingIndex }, 
+      { "http://snomed.info/sct#273442004", EdmansADLIndexEdmansActivitiesOfDailyLivingIndex }, 
+      { "273443009", EliaNormogram }, 
+      { "http://snomed.info/sct#273443009", EliaNormogram }, 
+      { "273444003", BritishPictureVocabularyScale }, 
+      { "http://snomed.info/sct#273444003", BritishPictureVocabularyScale }, 
+      { "273445002", EnthesitisIndex }, 
+      { "http://snomed.info/sct#273445002", EnthesitisIndex }, 
+      { "273446001", EuropeanOrganizationForResearchAndTreatmentOfCancerEORTCQualityOfLifeQuestionnaire }, 
+      { "http://snomed.info/sct#273446001", EuropeanOrganizationForResearchAndTreatmentOfCancerEORTCQualityOfLifeQuestionnaire }, 
+      { "273447005", EuroQOL }, 
+      { "http://snomed.info/sct#273447005", EuroQOL }, 
+      { "273448000", ExtendedActivitiesOfDailyLivingScale }, 
+      { "http://snomed.info/sct#273448000", ExtendedActivitiesOfDailyLivingScale }, 
+      { "273449008", EPIEysenckPersonalityInventory }, 
+      { "http://snomed.info/sct#273449008", EPIEysenckPersonalityInventory }, 
+      { "273450008", FacialRecognitionTest }, 
+      { "http://snomed.info/sct#273450008", FacialRecognitionTest }, 
+      { "273451007", FagerstromToleranceQuestionnaire }, 
+      { "http://snomed.info/sct#273451007", FagerstromToleranceQuestionnaire }, 
+      { "273452000", RTQRevisedToleranceQuestionnaire }, 
+      { "http://snomed.info/sct#273452000", RTQRevisedToleranceQuestionnaire }, 
+      { "273453005", FagerstromTestForNicotineDependence }, 
+      { "http://snomed.info/sct#273453005", FagerstromTestForNicotineDependence }, 
+      { "273454004", FearOfAcquiredImmunodeficiencySyndromeScale }, 
+      { "http://snomed.info/sct#273454004", FearOfAcquiredImmunodeficiencySyndromeScale }, 
+      { "273455003", FearSurveySchedule }, 
+      { "http://snomed.info/sct#273455003", FearSurveySchedule }, 
+      { "273456002", FeedingAssessmentSchedule }, 
+      { "http://snomed.info/sct#273456002", FeedingAssessmentSchedule }, 
+      { "273457006", FeelingsOfFatnessQuestionnaire }, 
+      { "http://snomed.info/sct#273457006", FeelingsOfFatnessQuestionnaire }, 
+      { "273458001", FTTFingerTappingTest }, 
+      { "http://snomed.info/sct#273458001", FTTFingerTappingTest }, 
+      { "273459009", FIRSTScreeningTest }, 
+      { "http://snomed.info/sct#273459009", FIRSTScreeningTest }, 
+      { "273460004", FrankelGradingSystemForSpinalCordInjury }, 
+      { "http://snomed.info/sct#273460004", FrankelGradingSystemForSpinalCordInjury }, 
+      { "273461000", FAIFrenchayActivitiesIndex }, 
+      { "http://snomed.info/sct#273461000", FAIFrenchayActivitiesIndex }, 
+      { "273462007", FrenchayAphasiaScreeningTest }, 
+      { "http://snomed.info/sct#273462007", FrenchayAphasiaScreeningTest }, 
+      { "273463002", FDAFrenchayDysarthriaAssessment }, 
+      { "http://snomed.info/sct#273463002", FDAFrenchayDysarthriaAssessment }, 
+      { "273465009", FullertonLanguageTestForAdolescents }, 
+      { "http://snomed.info/sct#273465009", FullertonLanguageTestForAdolescents }, 
+      { "273466005", FunctionalAssessmentMeasure }, 
+      { "http://snomed.info/sct#273466005", FunctionalAssessmentMeasure }, 
+      { "273467001", FunctionalCommunicationAssessmentForPhysicallyHandicappedChildren }, 
+      { "http://snomed.info/sct#273467001", FunctionalCommunicationAssessmentForPhysicallyHandicappedChildren }, 
+      { "273468006", FunctionalCommunicationProfile }, 
+      { "http://snomed.info/sct#273468006", FunctionalCommunicationProfile }, 
+      { "273469003", FIMFunctionalIndependenceMeasure }, 
+      { "http://snomed.info/sct#273469003", FIMFunctionalIndependenceMeasure }, 
+      { "273470002", FunctionalLimitationProfile }, 
+      { "http://snomed.info/sct#273470002", FunctionalLimitationProfile }, 
+      { "273471003", FMPSFunctionalMealPreparationScale }, 
+      { "http://snomed.info/sct#273471003", FMPSFunctionalMealPreparationScale }, 
+      { "273472005", FunctionalStatusIndex }, 
+      { "http://snomed.info/sct#273472005", FunctionalStatusIndex }, 
+      { "273473000", FSSTFundamentalSpeechSkillsTest }, 
+      { "http://snomed.info/sct#273473000", FSSTFundamentalSpeechSkillsTest }, 
+      { "273474006", GalvestonOrientationAndAmnesiaTest }, 
+      { "http://snomed.info/sct#273474006", GalvestonOrientationAndAmnesiaTest }, 
+      { "273475007", GathercoleNonWordRepetitionTask }, 
+      { "http://snomed.info/sct#273475007", GathercoleNonWordRepetitionTask }, 
+      { "273477004", GeneralAssessmentOfNeurologicalImpairment }, 
+      { "http://snomed.info/sct#273477004", GeneralAssessmentOfNeurologicalImpairment }, 
+      { "273478009", GeneralClericalTest }, 
+      { "http://snomed.info/sct#273478009", GeneralClericalTest }, 
+      { "273479001", GeneralHealthQuestionnaire }, 
+      { "http://snomed.info/sct#273479001", GeneralHealthQuestionnaire }, 
+      { "273480003", GWBSGeneralWellbeingSchedule }, 
+      { "http://snomed.info/sct#273480003", GWBSGeneralWellbeingSchedule }, 
+      { "273481004", GeriatricDepressionScale }, 
+      { "http://snomed.info/sct#273481004", GeriatricDepressionScale }, 
+      { "273482006", GermanTestOfWordfinding }, 
+      { "http://snomed.info/sct#273482006", GermanTestOfWordfinding }, 
+      { "273483001", GlasgowAbbreviatedMentalTestScore }, 
+      { "http://snomed.info/sct#273483001", GlasgowAbbreviatedMentalTestScore }, 
+      { "273484007", GlasgowOutcomeScale }, 
+      { "http://snomed.info/sct#273484007", GlasgowOutcomeScale }, 
+      { "273485008", GoldmanCardiacRiskIndex }, 
+      { "http://snomed.info/sct#273485008", GoldmanCardiacRiskIndex }, 
+      { "273486009", GoldmanFristoeTest }, 
+      { "http://snomed.info/sct#273486009", GoldmanFristoeTest }, 
+      { "273487000", GolombrokRustInventoryOfSexualSatisfaction }, 
+      { "http://snomed.info/sct#273487000", GolombrokRustInventoryOfSexualSatisfaction }, 
+      { "273488005", GoodenoughDrawAManTest }, 
+      { "http://snomed.info/sct#273488005", GoodenoughDrawAManTest }, 
+      { "273489002", GoodenoughNorms }, 
+      { "http://snomed.info/sct#273489002", GoodenoughNorms }, 
+      { "273490006", GradeRoughBreathyAsthenicStrainGRBASScale }, 
+      { "http://snomed.info/sct#273490006", GradeRoughBreathyAsthenicStrainGRBASScale }, 
+      { "273492003", GradedNamingTest }, 
+      { "http://snomed.info/sct#273492003", GradedNamingTest }, 
+      { "273493008", GrahamKendallMemoryForDesignsTest }, 
+      { "http://snomed.info/sct#273493008", GrahamKendallMemoryForDesignsTest }, 
+      { "273494002", GrammaticalAnalysisOfElicitedLanguage }, 
+      { "http://snomed.info/sct#273494002", GrammaticalAnalysisOfElicitedLanguage }, 
+      { "273495001", GrammaticalContrastsTest }, 
+      { "http://snomed.info/sct#273495001", GrammaticalContrastsTest }, 
+      { "273496000", GunzbergPrimaryProgressAssessmentChartOfSocialDevelopment }, 
+      { "http://snomed.info/sct#273496000", GunzbergPrimaryProgressAssessmentChartOfSocialDevelopment }, 
+      { "273497009", GunzbergProgressAssessmentChartOfSocialDevelopmentNumber1 }, 
+      { "http://snomed.info/sct#273497009", GunzbergProgressAssessmentChartOfSocialDevelopmentNumber1 }, 
+      { "273498004", GunzbergProgressAssessmentChartOfSocialDevelopmentNumber2 }, 
+      { "http://snomed.info/sct#273498004", GunzbergProgressAssessmentChartOfSocialDevelopmentNumber2 }, 
+      { "273499007", HachinskiIschemiaScore }, 
+      { "http://snomed.info/sct#273499007", HachinskiIschemiaScore }, 
+      { "273500003", HallAndBakerRehabilitationEvaluation }, 
+      { "http://snomed.info/sct#273500003", HallAndBakerRehabilitationEvaluation }, 
+      { "273501004", HalsteadReitanBattery }, 
+      { "http://snomed.info/sct#273501004", HalsteadReitanBattery }, 
+      { "273502006", HambHipScore }, 
+      { "http://snomed.info/sct#273502006", HambHipScore }, 
+      { "273503001", HamiltonRatingScaleForDepression }, 
+      { "http://snomed.info/sct#273503001", HamiltonRatingScaleForDepression }, 
+      { "273504007", LorrQuoteSModifiedMultidimensionalScaleForRatingPsychiatricPatients }, 
+      { "http://snomed.info/sct#273504007", LorrQuoteSModifiedMultidimensionalScaleForRatingPsychiatricPatients }, 
+      { "273505008", HampshireAssessmentForLivingWithOthers }, 
+      { "http://snomed.info/sct#273505008", HampshireAssessmentForLivingWithOthers }, 
+      { "273507000", HanenEarlyLanguageProgram }, 
+      { "http://snomed.info/sct#273507000", HanenEarlyLanguageProgram }, 
+      { "273508005", HarveyAndBradshawIndex }, 
+      { "http://snomed.info/sct#273508005", HarveyAndBradshawIndex }, 
+      { "273509002", HauserAmbulatoryCategories }, 
+      { "http://snomed.info/sct#273509002", HauserAmbulatoryCategories }, 
+      { "273510007", HealthAssessmentQuestionnaire }, 
+      { "http://snomed.info/sct#273510007", HealthAssessmentQuestionnaire }, 
+      { "273511006", MHAQModifiedHealthAssessmentQuestionnaire }, 
+      { "http://snomed.info/sct#273511006", MHAQModifiedHealthAssessmentQuestionnaire }, 
+      { "273512004", HealthcareAssessmentQuestionnaireSidneyBenjamin }, 
+      { "http://snomed.info/sct#273512004", HealthcareAssessmentQuestionnaireSidneyBenjamin }, 
+      { "273513009", HealthOfTheNationOutcomeScaleGenericVersion }, 
+      { "http://snomed.info/sct#273513009", HealthOfTheNationOutcomeScaleGenericVersion }, 
+      { "273514003", HealthStatusIndex }, 
+      { "http://snomed.info/sct#273514003", HealthStatusIndex }, 
+      { "273515002", HearingHandicapInventoryForTheElderly }, 
+      { "http://snomed.info/sct#273515002", HearingHandicapInventoryForTheElderly }, 
+      { "273516001", HHSHearingHandicapScale }, 
+      { "http://snomed.info/sct#273516001", HHSHearingHandicapScale }, 
+      { "273517005", HiddenFiguresTest }, 
+      { "http://snomed.info/sct#273517005", HiddenFiguresTest }, 
+      { "273520002", HopelessnessScale }, 
+      { "http://snomed.info/sct#273520002", HopelessnessScale }, 
+      { "273521003", HopkinsSymptomChecklist }, 
+      { "http://snomed.info/sct#273521003", HopkinsSymptomChecklist }, 
+      { "273522005", HornsbyArticulationTest }, 
+      { "http://snomed.info/sct#273522005", HornsbyArticulationTest }, 
+      { "273523000", HornsbyTestOfLanguageDevelopment }, 
+      { "http://snomed.info/sct#273523000", HornsbyTestOfLanguageDevelopment }, 
+      { "273524006", HospitalAnxietyAndDepressionScale }, 
+      { "http://snomed.info/sct#273524006", HospitalAnxietyAndDepressionScale }, 
+      { "273525007", HospitalTraumaIndex }, 
+      { "http://snomed.info/sct#273525007", HospitalTraumaIndex }, 
+      { "273526008", HumanInteractionAssessment }, 
+      { "http://snomed.info/sct#273526008", HumanInteractionAssessment }, 
+      { "273527004", IllinoisTestOfPsycholinguisticAbilities }, 
+      { "http://snomed.info/sct#273527004", IllinoisTestOfPsycholinguisticAbilities }, 
+      { "273528009", IISIIllnessInjurySeverityIndex }, 
+      { "http://snomed.info/sct#273528009", IISIIllnessInjurySeverityIndex }, 
+      { "273529001", IllnessBehaviorQuestionnaire }, 
+      { "http://snomed.info/sct#273529001", IllnessBehaviorQuestionnaire }, 
+      { "273530006", ImpactOfEventScale }, 
+      { "http://snomed.info/sct#273530006", ImpactOfEventScale }, 
+      { "273531005", IndexOfIndependenceInActivitiesOfDailyLiving }, 
+      { "http://snomed.info/sct#273531005", IndexOfIndependenceInActivitiesOfDailyLiving }, 
+      { "273533008", ISSInjurySeverityScore }, 
+      { "http://snomed.info/sct#273533008", ISSInjurySeverityScore }, 
+      { "273534002", InstrumentalADL }, 
+      { "http://snomed.info/sct#273534002", InstrumentalADL }, 
+      { "273535001", INREALInterReactiveLanguageAnalysis }, 
+      { "http://snomed.info/sct#273535001", INREALInterReactiveLanguageAnalysis }, 
+      { "273536000", InteractionChecklistForAugmentativeCommunication }, 
+      { "http://snomed.info/sct#273536000", InteractionChecklistForAugmentativeCommunication }, 
+      { "273537009", InterestChecklist }, 
+      { "http://snomed.info/sct#273537009", InterestChecklist }, 
+      { "273538004", IOWALowBackRatingScale }, 
+      { "http://snomed.info/sct#273538004", IOWALowBackRatingScale }, 
+      { "273539007", IOWAStructuredPsychiatricInterview }, 
+      { "http://snomed.info/sct#273539007", IOWAStructuredPsychiatricInterview }, 
+      { "273540009", IschemiaScore }, 
+      { "http://snomed.info/sct#273540009", IschemiaScore }, 
+      { "273542001", JarmanIndex }, 
+      { "http://snomed.info/sct#273542001", JarmanIndex }, 
+      { "273543006", JebsenHandFunctionTest }, 
+      { "http://snomed.info/sct#273543006", JebsenHandFunctionTest }, 
+      { "273544000", JonesWordOrderTest }, 
+      { "http://snomed.info/sct#273544000", JonesWordOrderTest }, 
+      { "273546003", KarnofskyIndex }, 
+      { "http://snomed.info/sct#273546003", KarnofskyIndex }, 
+      { "273547007", KatzActivitiesOfDailyLiving }, 
+      { "http://snomed.info/sct#273547007", KatzActivitiesOfDailyLiving }, 
+      { "273548002", KASRKatzAdjustmentScaleRelativesForm }, 
+      { "http://snomed.info/sct#273548002", KASRKatzAdjustmentScaleRelativesForm }, 
+      { "273549005", KendrickBatteryForDetectionOfDementiaInTheElderly }, 
+      { "http://snomed.info/sct#273549005", KendrickBatteryForDetectionOfDementiaInTheElderly }, 
+      { "273550005", KennyIndexOfADL }, 
+      { "http://snomed.info/sct#273550005", KennyIndexOfADL }, 
+      { "273551009", KielhofnerRoleChecklist }, 
+      { "http://snomed.info/sct#273551009", KielhofnerRoleChecklist }, 
+      { "273552002", KirwanThompsonArticularIndex }, 
+      { "http://snomed.info/sct#273552002", KirwanThompsonArticularIndex }, 
+      { "273553007", KleinBellActivitiesOfDailyLivingScale }, 
+      { "http://snomed.info/sct#273553007", KleinBellActivitiesOfDailyLivingScale }, 
+      { "273554001", KurtzkeMultipleSclerosisRatingScale }, 
+      { "http://snomed.info/sct#273554001", KurtzkeMultipleSclerosisRatingScale }, 
+      { "273555000", LCSLambethCommunicationScale }, 
+      { "http://snomed.info/sct#273555000", LCSLambethCommunicationScale }, 
+      { "273556004", LambethDisabilityScreeningQuestionnaire }, 
+      { "http://snomed.info/sct#273556004", LambethDisabilityScreeningQuestionnaire }, 
+      { "273557008", LamhAssessmentChecklist }, 
+      { "http://snomed.info/sct#273557008", LamhAssessmentChecklist }, 
+      { "273558003", LanguageAssessmentRemediationAndScreeningProcedure }, 
+      { "http://snomed.info/sct#273558003", LanguageAssessmentRemediationAndScreeningProcedure }, 
+      { "273559006", LansburyArticularIndex }, 
+      { "http://snomed.info/sct#273559006", LansburyArticularIndex }, 
+      { "273560001", LastSixMonthsOfDrinkingQuestionnaire }, 
+      { "http://snomed.info/sct#273560001", LastSixMonthsOfDrinkingQuestionnaire }, 
+      { "273561002", LearningDevelopmentAidsHandwritingAssessment }, 
+      { "http://snomed.info/sct#273561002", LearningDevelopmentAidsHandwritingAssessment }, 
+      { "273562009", LeedsScalesForTheSelfAssessmentOfAnxietyAndDepression }, 
+      { "http://snomed.info/sct#273562009", LeedsScalesForTheSelfAssessmentOfAnxietyAndDepression }, 
+      { "273564005", LeiterInternationalPerformanceScale }, 
+      { "http://snomed.info/sct#273564005", LeiterInternationalPerformanceScale }, 
+      { "273565006", LequesneIndex }, 
+      { "http://snomed.info/sct#273565006", LequesneIndex }, 
+      { "273566007", LequesneIndexHip }, 
+      { "http://snomed.info/sct#273566007", LequesneIndexHip }, 
+      { "273567003", LequesneIndexKnee }, 
+      { "http://snomed.info/sct#273567003", LequesneIndexKnee }, 
+      { "273568008", LetterCancelationTest }, 
+      { "http://snomed.info/sct#273568008", LetterCancelationTest }, 
+      { "273569000", LifeEventsAndDifficultiesScale }, 
+      { "http://snomed.info/sct#273569000", LifeEventsAndDifficultiesScale }, 
+      { "273570004", LifeEventsInventory }, 
+      { "http://snomed.info/sct#273570004", LifeEventsInventory }, 
+      { "273571000", LifeSatisfactionIndex }, 
+      { "http://snomed.info/sct#273571000", LifeSatisfactionIndex }, 
+      { "273572007", LSIALifeSatisfactionIndexA }, 
+      { "http://snomed.info/sct#273572007", LSIALifeSatisfactionIndexA }, 
+      { "273573002", LifeSatisfactionIndexB }, 
+      { "http://snomed.info/sct#273573002", LifeSatisfactionIndexB }, 
+      { "273574008", LSIZLifeSatisfactionIndexZ }, 
+      { "http://snomed.info/sct#273574008", LSIZLifeSatisfactionIndexZ }, 
+      { "273575009", LikertScale }, 
+      { "http://snomed.info/sct#273575009", LikertScale }, 
+      { "273576005", LincolnRehabilitationAssessment }, 
+      { "http://snomed.info/sct#273576005", LincolnRehabilitationAssessment }, 
+      { "273577001", LindamoodAuditoryConceptualizationTest }, 
+      { "http://snomed.info/sct#273577001", LindamoodAuditoryConceptualizationTest }, 
+      { "273578006", LowensteinOccupationalTherapyCognitiveAssessment }, 
+      { "http://snomed.info/sct#273578006", LowensteinOccupationalTherapyCognitiveAssessment }, 
+      { "273580000", LondonHospitalPainChartAssessment }, 
+      { "http://snomed.info/sct#273580000", LondonHospitalPainChartAssessment }, 
+      { "273581001", LuriaNeuropsychologicalBattery }, 
+      { "http://snomed.info/sct#273581001", LuriaNeuropsychologicalBattery }, 
+      { "273582008", MacAndrewScale }, 
+      { "http://snomed.info/sct#273582008", MacAndrewScale }, 
+      { "273583003", MacMillanReadingTest }, 
+      { "http://snomed.info/sct#273583003", MacMillanReadingTest }, 
+      { "273584009", MakeAPictureStoryTest }, 
+      { "http://snomed.info/sct#273584009", MakeAPictureStoryTest }, 
+      { "273585005", MallampatiScale }, 
+      { "http://snomed.info/sct#273585005", MallampatiScale }, 
+      { "273586006", MasterQuestionnaire }, 
+      { "http://snomed.info/sct#273586006", MasterQuestionnaire }, 
+      { "273587002", RevisedMasterQuestionnaire }, 
+      { "http://snomed.info/sct#273587002", RevisedMasterQuestionnaire }, 
+      { "273588007", MatsonAssessment }, 
+      { "http://snomed.info/sct#273588007", MatsonAssessment }, 
+      { "273589004", McConkeyScore }, 
+      { "http://snomed.info/sct#273589004", McConkeyScore }, 
+      { "273590008", McCormickMiniatureToyDiscriminationTest }, 
+      { "http://snomed.info/sct#273590008", McCormickMiniatureToyDiscriminationTest }, 
+      { "273591007", McCormickMiniatureToyDiscriminationTestAutomated }, 
+      { "http://snomed.info/sct#273591007", McCormickMiniatureToyDiscriminationTestAutomated }, 
+      { "273592000", McCormickMiniatureToyDiscriminationTestManual }, 
+      { "http://snomed.info/sct#273592000", McCormickMiniatureToyDiscriminationTestManual }, 
+      { "273593005", McGillPainChartQuestionnaire }, 
+      { "http://snomed.info/sct#273593005", McGillPainChartQuestionnaire }, 
+      { "273594004", MHIQMcMasterHealthIndexQuestionnaire }, 
+      { "http://snomed.info/sct#273594004", MHIQMcMasterHealthIndexQuestionnaire }, 
+      { "273595003", McTearsAssessmentOfConversation }, 
+      { "http://snomed.info/sct#273595003", McTearsAssessmentOfConversation }, 
+      { "273596002", MedicalOutcomesStudyShortFormGeneralHealthSurvey }, 
+      { "http://snomed.info/sct#273596002", MedicalOutcomesStudyShortFormGeneralHealthSurvey }, 
+      { "273597006", MedicalOutcomesStudyShortFormGeneralHealthSurvey36 }, 
+      { "http://snomed.info/sct#273597006", MedicalOutcomesStudyShortFormGeneralHealthSurvey36 }, 
+      { "273598001", MOSSF20MedicalOutcomesStudyShortFormGeneralHealthSurvey20 }, 
+      { "http://snomed.info/sct#273598001", MOSSF20MedicalOutcomesStudyShortFormGeneralHealthSurvey20 }, 
+      { "273599009", MedicalResearchCouncilMotorPowerScale }, 
+      { "http://snomed.info/sct#273599009", MedicalResearchCouncilMotorPowerScale }, 
+      { "273600007", MedicalResearchCouncilQuestionnaire }, 
+      { "http://snomed.info/sct#273600007", MedicalResearchCouncilQuestionnaire }, 
+      { "273601006", MentalStatusQuestionnaire }, 
+      { "http://snomed.info/sct#273601006", MentalStatusQuestionnaire }, 
+      { "273602004", MentalTestQuotient }, 
+      { "http://snomed.info/sct#273602004", MentalTestQuotient }, 
+      { "273603009", MentalTestScoreLongVersion }, 
+      { "http://snomed.info/sct#273603009", MentalTestScoreLongVersion }, 
+      { "273604003", MerleDQuoteAubigneCharnleyHipScore }, 
+      { "http://snomed.info/sct#273604003", MerleDQuoteAubigneCharnleyHipScore }, 
+      { "273608000", MichiganAlcoholismScreeningTest }, 
+      { "http://snomed.info/sct#273608000", MichiganAlcoholismScreeningTest }, 
+      { "273609008", BMASTBriefMichiganAlcoholismScreeningTest }, 
+      { "http://snomed.info/sct#273609008", BMASTBriefMichiganAlcoholismScreeningTest }, 
+      { "273610003", ShortMichiganAlcoholismScreeningTest }, 
+      { "http://snomed.info/sct#273610003", ShortMichiganAlcoholismScreeningTest }, 
+      { "273611004", MEAMSMiddlesexElderlyAssessmentOfMentalState }, 
+      { "http://snomed.info/sct#273611004", MEAMSMiddlesexElderlyAssessmentOfMentalState }, 
+      { "273613001", MidlandsSpellingTest }, 
+      { "http://snomed.info/sct#273613001", MidlandsSpellingTest }, 
+      { "273614007", MillHillVocabularyScale }, 
+      { "http://snomed.info/sct#273614007", MillHillVocabularyScale }, 
+      { "273615008", MillerAssessmentForPreschoolers }, 
+      { "http://snomed.info/sct#273615008", MillerAssessmentForPreschoolers }, 
+      { "273616009", MilwaukeeEvaluationOfDailyLivingSkills }, 
+      { "http://snomed.info/sct#273616009", MilwaukeeEvaluationOfDailyLivingSkills }, 
+      { "273617000", MiniMentalStateExamination }, 
+      { "http://snomed.info/sct#273617000", MiniMentalStateExamination }, 
+      { "273619002", ModifiedMiniMentalState3MSExamination }, 
+      { "http://snomed.info/sct#273619002", ModifiedMiniMentalState3MSExamination }, 
+      { "273621007", MinnesotaTestForDifferentialDiagnosisOfAphasia }, 
+      { "http://snomed.info/sct#273621007", MinnesotaTestForDifferentialDiagnosisOfAphasia }, 
+      { "273622000", ShortenedSchuellShortenedMinnesotaTestForDifferentialDiagnosisOfAphasia }, 
+      { "http://snomed.info/sct#273622000", ShortenedSchuellShortenedMinnesotaTestForDifferentialDiagnosisOfAphasia }, 
+      { "273623005", ModifiedCardSortingTest }, 
+      { "http://snomed.info/sct#273623005", ModifiedCardSortingTest }, 
+      { "273624004", MISSModifiedInjurySeverityScale }, 
+      { "http://snomed.info/sct#273624004", MISSModifiedInjurySeverityScale }, 
+      { "273625003", ModifiedWordLearningTest }, 
+      { "http://snomed.info/sct#273625003", ModifiedWordLearningTest }, 
+      { "273626002", MontereyFluencyProgram }, 
+      { "http://snomed.info/sct#273626002", MontereyFluencyProgram }, 
+      { "273627006", MoodAdjectiveChecklist }, 
+      { "http://snomed.info/sct#273627006", MoodAdjectiveChecklist }, 
+      { "273628001", MorganBarryAuditoryDiscriminationAndAttentionTest }, 
+      { "http://snomed.info/sct#273628001", MorganBarryAuditoryDiscriminationAndAttentionTest }, 
+      { "273629009", MorningsideRehabilitationStatusScale }, 
+      { "http://snomed.info/sct#273629009", MorningsideRehabilitationStatusScale }, 
+      { "273630004", MortalityProbabilityModel }, 
+      { "http://snomed.info/sct#273630004", MortalityProbabilityModel }, 
+      { "273631000", MortalityPredictionModelII }, 
+      { "http://snomed.info/sct#273631000", MortalityPredictionModelII }, 
+      { "273632007", MFSMotivesForSmokingScale }, 
+      { "http://snomed.info/sct#273632007", MFSMotivesForSmokingScale }, 
+      { "273633002", MotorAssessmentScale }, 
+      { "http://snomed.info/sct#273633002", MotorAssessmentScale }, 
+      { "273634008", MotricityIndex }, 
+      { "http://snomed.info/sct#273634008", MotricityIndex }, 
+      { "273635009", MountWilgaHighLevelLanguageScreeningAssessment }, 
+      { "http://snomed.info/sct#273635009", MountWilgaHighLevelLanguageScreeningAssessment }, 
+      { "273636005", MovementOfUpperLimbEvaluation }, 
+      { "http://snomed.info/sct#273636005", MovementOfUpperLimbEvaluation }, 
+      { "273637001", MultilevelInformalLanguageInventory }, 
+      { "http://snomed.info/sct#273637001", MultilevelInformalLanguageInventory }, 
+      { "273638006", MultilingualAphasiaExamination }, 
+      { "http://snomed.info/sct#273638006", MultilingualAphasiaExamination }, 
+      { "273639003", MunichAlcoholismTest }, 
+      { "http://snomed.info/sct#273639003", MunichAlcoholismTest }, 
+      { "273640001", NARTNationalAdultReadingTest }, 
+      { "http://snomed.info/sct#273640001", NARTNationalAdultReadingTest }, 
+      { "273641002", NealeAnalysisOfReadingAbility }, 
+      { "http://snomed.info/sct#273641002", NealeAnalysisOfReadingAbility }, 
+      { "273642009", NelsonScheduleOfGrowingSkills }, 
+      { "http://snomed.info/sct#273642009", NelsonScheduleOfGrowingSkills }, 
+      { "273643004", NeurobehavioralCognitiveStatusExamination }, 
+      { "http://snomed.info/sct#273643004", NeurobehavioralCognitiveStatusExamination }, 
+      { "273644005", NeuropsychologicalBattery }, 
+      { "http://snomed.info/sct#273644005", NeuropsychologicalBattery }, 
+      { "273645006", NewcastleArticulationTest }, 
+      { "http://snomed.info/sct#273645006", NewcastleArticulationTest }, 
+      { "273646007", NewcastleDyspraxiaAssessment }, 
+      { "http://snomed.info/sct#273646007", NewcastleDyspraxiaAssessment }, 
+      { "273647003", NewcastlePhonologyAssessment }, 
+      { "http://snomed.info/sct#273647003", NewcastlePhonologyAssessment }, 
+      { "273648008", NineHolePegTest }, 
+      { "http://snomed.info/sct#273648008", NineHolePegTest }, 
+      { "273649000", NorrisFunctionalScale }, 
+      { "http://snomed.info/sct#273649000", NorrisFunctionalScale }, 
+      { "273650000", NorthwestSyntaxScreeningTest }, 
+      { "http://snomed.info/sct#273650000", NorthwestSyntaxScreeningTest }, 
+      { "273651001", NorthwickParkIndexOfIndependenceInActivitiesOfDailyLiving }, 
+      { "http://snomed.info/sct#273651001", NorthwickParkIndexOfIndependenceInActivitiesOfDailyLiving }, 
+      { "273652008", NHPNottinghamHealthProfile }, 
+      { "http://snomed.info/sct#273652008", NHPNottinghamHealthProfile }, 
+      { "273654009", NuffieldDyspraxiaAssessment }, 
+      { "http://snomed.info/sct#273654009", NuffieldDyspraxiaAssessment }, 
+      { "273656006", ObjectNamingTest }, 
+      { "http://snomed.info/sct#273656006", ObjectNamingTest }, 
+      { "273657002", OccasionsForSmokingScale }, 
+      { "http://snomed.info/sct#273657002", OccasionsForSmokingScale }, 
+      { "273658007", OccupationalCaseAnalysisInterviewAndRatingScale }, 
+      { "http://snomed.info/sct#273658007", OccupationalCaseAnalysisInterviewAndRatingScale }, 
+      { "273659004", OccupationalPerformanceHistoryInterview }, 
+      { "http://snomed.info/sct#273659004", OccupationalPerformanceHistoryInterview }, 
+      { "273660009", OdstockHandAssessment }, 
+      { "http://snomed.info/sct#273660009", OdstockHandAssessment }, 
+      { "273661008", OfficeOfPopulationCensusAndSurveysOPCSDisabilityScales }, 
+      { "http://snomed.info/sct#273661008", OfficeOfPopulationCensusAndSurveysOPCSDisabilityScales }, 
+      { "273662001", OfficeOfPopulationCensusAndSurveysOPCSBehaviorDisabilityScale }, 
+      { "http://snomed.info/sct#273662001", OfficeOfPopulationCensusAndSurveysOPCSBehaviorDisabilityScale }, 
+      { "273663006", OfficeOfPopulationCensusAndSurveysOPCSCommunicationDisabilityScale }, 
+      { "http://snomed.info/sct#273663006", OfficeOfPopulationCensusAndSurveysOPCSCommunicationDisabilityScale }, 
+      { "273664000", OfficeOfPopulationCensusAndSurveysOPCSConsciousnessDisabilityScale }, 
+      { "http://snomed.info/sct#273664000", OfficeOfPopulationCensusAndSurveysOPCSConsciousnessDisabilityScale }, 
+      { "273665004", OfficeOfPopulationCensusAndSurveysOPCSContinenceDisabilityScale }, 
+      { "http://snomed.info/sct#273665004", OfficeOfPopulationCensusAndSurveysOPCSContinenceDisabilityScale }, 
+      { "273666003", OfficeOfPopulationCensusAndSurveysOPCSDexterityDisabilityScale }, 
+      { "http://snomed.info/sct#273666003", OfficeOfPopulationCensusAndSurveysOPCSDexterityDisabilityScale }, 
+      { "273667007", OfficeOfPopulationCensusAndSurveysOPCSDisfigurementDisabilityScale }, 
+      { "http://snomed.info/sct#273667007", OfficeOfPopulationCensusAndSurveysOPCSDisfigurementDisabilityScale }, 
+      { "273668002", OfficeOfPopulationCensusAndSurveysOPCSEatingDrinkingAndDigestionDisabilityScale }, 
+      { "http://snomed.info/sct#273668002", OfficeOfPopulationCensusAndSurveysOPCSEatingDrinkingAndDigestionDisabilityScale }, 
+      { "273669005", OfficeOfPopulationCensusAndSurveysOPCSHearingDisabilityScale }, 
+      { "http://snomed.info/sct#273669005", OfficeOfPopulationCensusAndSurveysOPCSHearingDisabilityScale }, 
+      { "273670006", OfficeOfPopulationCensusAndSurveysOPCSIntellectualFunctioningDisabilityScale }, 
+      { "http://snomed.info/sct#273670006", OfficeOfPopulationCensusAndSurveysOPCSIntellectualFunctioningDisabilityScale }, 
+      { "273671005", OfficeOfPopulationCensusAndSurveysOPCSLocomotionDisabilityScale }, 
+      { "http://snomed.info/sct#273671005", OfficeOfPopulationCensusAndSurveysOPCSLocomotionDisabilityScale }, 
+      { "273672003", OfficeOfPopulationCensusAndSurveysOPCSPersonalCareDisabilityScale }, 
+      { "http://snomed.info/sct#273672003", OfficeOfPopulationCensusAndSurveysOPCSPersonalCareDisabilityScale }, 
+      { "273673008", OfficeOfPopulationCensusAndSurveysOPCSReachingAndStretchingDisabilityScale }, 
+      { "http://snomed.info/sct#273673008", OfficeOfPopulationCensusAndSurveysOPCSReachingAndStretchingDisabilityScale }, 
+      { "273674002", OfficeOfPopulationCensusAndSurveysOPCSSeeingDisabilityScale }, 
+      { "http://snomed.info/sct#273674002", OfficeOfPopulationCensusAndSurveysOPCSSeeingDisabilityScale }, 
+      { "273675001", OswestryDisabilityIndex }, 
+      { "http://snomed.info/sct#273675001", OswestryDisabilityIndex }, 
+      { "273676000", OswestryPainQuestionnaire }, 
+      { "http://snomed.info/sct#273676000", OswestryPainQuestionnaire }, 
+      { "273677009", OxfordGradingScaleForMuscleStrength }, 
+      { "http://snomed.info/sct#273677009", OxfordGradingScaleForMuscleStrength }, 
+      { "273680005", PaduaInventory }, 
+      { "http://snomed.info/sct#273680005", PaduaInventory }, 
+      { "273681009", PediatricClinicalTestOfSensoryIntegrationAndBalance }, 
+      { "http://snomed.info/sct#273681009", PediatricClinicalTestOfSensoryIntegrationAndBalance }, 
+      { "273682002", PediatricOralSkillsProfile }, 
+      { "http://snomed.info/sct#273682002", PediatricOralSkillsProfile }, 
+      { "273683007", PRISMPediatricRiskOfMortality }, 
+      { "http://snomed.info/sct#273683007", PRISMPediatricRiskOfMortality }, 
+      { "273684001", PediatricTraumaScore }, 
+      { "http://snomed.info/sct#273684001", PediatricTraumaScore }, 
+      { "273685000", PainDiary }, 
+      { "http://snomed.info/sct#273685000", PainDiary }, 
+      { "273686004", PantomimeTest }, 
+      { "http://snomed.info/sct#273686004", PantomimeTest }, 
+      { "273687008", PartnersInAugmentativeCommunicationTraining }, 
+      { "http://snomed.info/sct#273687008", PartnersInAugmentativeCommunicationTraining }, 
+      { "273688003", PatientActivityChecklist }, 
+      { "http://snomed.info/sct#273688003", PatientActivityChecklist }, 
+      { "273689006", PatientSatisfactionScore }, 
+      { "http://snomed.info/sct#273689006", PatientSatisfactionScore }, 
+      { "273690002", VAL16PFPersonalityFactorQuestionnaire }, 
+      { "http://snomed.info/sct#273690002", VAL16PFPersonalityFactorQuestionnaire }, 
+      { "273691003", PhonologicalEvaluationAndTranscriptionOfAudioVisualLanguagePETALSpeechAssessmentProcedure }, 
+      { "http://snomed.info/sct#273691003", PhonologicalEvaluationAndTranscriptionOfAudioVisualLanguagePETALSpeechAssessmentProcedure }, 
+      { "273692005", PeabodyPictureVocabularyTest }, 
+      { "http://snomed.info/sct#273692005", PeabodyPictureVocabularyTest }, 
+      { "273693000", PSIPerceptionsOfStutteringInventory }, 
+      { "http://snomed.info/sct#273693000", PSIPerceptionsOfStutteringInventory }, 
+      { "273694006", PerformanceTestOfActivitiesOfDailyLiving }, 
+      { "http://snomed.info/sct#273694006", PerformanceTestOfActivitiesOfDailyLiving }, 
+      { "273695007", PersonalityAssessmentSchedule }, 
+      { "http://snomed.info/sct#273695007", PersonalityAssessmentSchedule }, 
+      { "273696008", PhiladelphiaGeriatricCenterMoraleScale }, 
+      { "http://snomed.info/sct#273696008", PhiladelphiaGeriatricCenterMoraleScale }, 
+      { "273697004", PhonologicalAssessmentOfChildSpeech }, 
+      { "http://snomed.info/sct#273697004", PhonologicalAssessmentOfChildSpeech }, 
+      { "273699001", PIPDevelopmentalCharts }, 
+      { "http://snomed.info/sct#273699001", PIPDevelopmentalCharts }, 
+      { "273701001", PicturePointingTest }, 
+      { "http://snomed.info/sct#273701001", PicturePointingTest }, 
+      { "273702008", PorchIndexOfCommunicativeAbility }, 
+      { "http://snomed.info/sct#273702008", PorchIndexOfCommunicativeAbility }, 
+      { "273703003", PANSSPositiveAndNegativeSyndromeScale }, 
+      { "http://snomed.info/sct#273703003", PANSSPositiveAndNegativeSyndromeScale }, 
+      { "273704009", PragmaticsProfile }, 
+      { "http://snomed.info/sct#273704009", PragmaticsProfile }, 
+      { "273705005", PragmaticsProfileOfEarlyCommunicationSkills }, 
+      { "http://snomed.info/sct#273705005", PragmaticsProfileOfEarlyCommunicationSkills }, 
+      { "273706006", PreschoolBehaviorCheckList }, 
+      { "http://snomed.info/sct#273706006", PreschoolBehaviorCheckList }, 
+      { "273707002", PreSchoolBoehm }, 
+      { "http://snomed.info/sct#273707002", PreSchoolBoehm }, 
+      { "273709004", PreSpeechAssessmentScale }, 
+      { "http://snomed.info/sct#273709004", PreSpeechAssessmentScale }, 
+      { "273711008", PreschoolLanguageScale }, 
+      { "http://snomed.info/sct#273711008", PreschoolLanguageScale }, 
+      { "273712001", PreviousIntelligenceQuotientAssessmentByPronunciation }, 
+      { "http://snomed.info/sct#273712001", PreviousIntelligenceQuotientAssessmentByPronunciation }, 
+      { "273713006", ProbabilityOfDeathScore }, 
+      { "http://snomed.info/sct#273713006", ProbabilityOfDeathScore }, 
+      { "273714000", ProblemOrientedMedicalRecord }, 
+      { "http://snomed.info/sct#273714000", ProblemOrientedMedicalRecord }, 
+      { "273715004", PRISMProfileInSemantics }, 
+      { "http://snomed.info/sct#273715004", PRISMProfileInSemantics }, 
+      { "273716003", ProfileOfCommunicativeAppropriateness }, 
+      { "http://snomed.info/sct#273716003", ProfileOfCommunicativeAppropriateness }, 
+      { "273717007", ProfileOfMoodStates }, 
+      { "http://snomed.info/sct#273717007", ProfileOfMoodStates }, 
+      { "273718002", PALPAPsycholinguisticAssessmentsOfLanguageProcessingInAphasia }, 
+      { "http://snomed.info/sct#273718002", PALPAPsycholinguisticAssessmentsOfLanguageProcessingInAphasia }, 
+      { "273719005", PsychologicalAdjustmentToIllnessScale }, 
+      { "http://snomed.info/sct#273719005", PsychologicalAdjustmentToIllnessScale }, 
+      { "273720004", PULSESProfile }, 
+      { "http://snomed.info/sct#273720004", PULSESProfile }, 
+      { "273721000", PurduePegboardScale }, 
+      { "http://snomed.info/sct#273721000", PurduePegboardScale }, 
+      { "273722007", PyramidsAndPalmTreesTest }, 
+      { "http://snomed.info/sct#273722007", PyramidsAndPalmTreesTest }, 
+      { "273723002", TetraplegiaIndexOfFunction }, 
+      { "http://snomed.info/sct#273723002", TetraplegiaIndexOfFunction }, 
+      { "273724008", QALYsQualityAdjustedLifeYears }, 
+      { "http://snomed.info/sct#273724008", QALYsQualityAdjustedLifeYears }, 
+      { "273725009", QualityOfLifeScale }, 
+      { "http://snomed.info/sct#273725009", QualityOfLifeScale }, 
+      { "273726005", QualityOfWellbeingScale }, 
+      { "http://snomed.info/sct#273726005", QualityOfWellbeingScale }, 
+      { "273727001", RanchoScaleLevelsOfCognitiveFunctioning }, 
+      { "http://snomed.info/sct#273727001", RanchoScaleLevelsOfCognitiveFunctioning }, 
+      { "273728006", RandFunctionalLimitationsBattery }, 
+      { "http://snomed.info/sct#273728006", RandFunctionalLimitationsBattery }, 
+      { "273729003", RankinScale }, 
+      { "http://snomed.info/sct#273729003", RankinScale }, 
+      { "273730008", RappaportDisabilityRatingScale }, 
+      { "http://snomed.info/sct#273730008", RappaportDisabilityRatingScale }, 
+      { "273731007", RatingCommunicativeBehaviorInHeadInjuredAdults }, 
+      { "http://snomed.info/sct#273731007", RatingCommunicativeBehaviorInHeadInjuredAdults }, 
+      { "273732000", RavensColoredProgressiveMatrices }, 
+      { "http://snomed.info/sct#273732000", RavensColoredProgressiveMatrices }, 
+      { "273733005", RavensStandardProgressiveMatrices }, 
+      { "http://snomed.info/sct#273733005", RavensStandardProgressiveMatrices }, 
+      { "273735003", ReadWordDiscriminationTest }, 
+      { "http://snomed.info/sct#273735003", ReadWordDiscriminationTest }, 
+      { "273736002", ReadingComprehensionBatteryForAphasia }, 
+      { "http://snomed.info/sct#273736002", ReadingComprehensionBatteryForAphasia }, 
+      { "273737006", RFESReasonsForEatingScale }, 
+      { "http://snomed.info/sct#273737006", RFESReasonsForEatingScale }, 
+      { "273738001", ReasonsForSmokingScale }, 
+      { "http://snomed.info/sct#273738001", ReasonsForSmokingScale }, 
+      { "273739009", BzochAndLeagueTest }, 
+      { "http://snomed.info/sct#273739009", BzochAndLeagueTest }, 
+      { "273740006", RMTRecognitionMemoryTest }, 
+      { "http://snomed.info/sct#273740006", RMTRecognitionMemoryTest }, 
+      { "273741005", RelativesQuoteStressScale }, 
+      { "http://snomed.info/sct#273741005", RelativesQuoteStressScale }, 
+      { "273742003", RIRenalIndex }, 
+      { "http://snomed.info/sct#273742003", RIRenalIndex }, 
+      { "273743008", RAPTRenfrewActionPictureTest }, 
+      { "http://snomed.info/sct#273743008", RAPTRenfrewActionPictureTest }, 
+      { "273744002", RenfrewArticulationTest }, 
+      { "http://snomed.info/sct#273744002", RenfrewArticulationTest }, 
+      { "273745001", RenfrewWordfinding }, 
+      { "http://snomed.info/sct#273745001", RenfrewWordfinding }, 
+      { "273746000", RepertoryGrid }, 
+      { "http://snomed.info/sct#273746000", RepertoryGrid }, 
+      { "273747009", ReportersTests }, 
+      { "http://snomed.info/sct#273747009", ReportersTests }, 
+      { "273748004", ResistanceToChangeGrid }, 
+      { "http://snomed.info/sct#273748004", ResistanceToChangeGrid }, 
+      { "273749007", RespiratoryIndex }, 
+      { "http://snomed.info/sct#273749007", RespiratoryIndex }, 
+      { "273750007", RestrainedEatingInventory }, 
+      { "http://snomed.info/sct#273750007", RestrainedEatingInventory }, 
+      { "273751006", RevisedIowaScaleForRatingSeverity }, 
+      { "http://snomed.info/sct#273751006", RevisedIowaScaleForRatingSeverity }, 
+      { "273752004", ReynellDevelopmentalLanguageScales }, 
+      { "http://snomed.info/sct#273752004", ReynellDevelopmentalLanguageScales }, 
+      { "273753009", ReynellReceptiveLanguageAssessment }, 
+      { "http://snomed.info/sct#273753009", ReynellReceptiveLanguageAssessment }, 
+      { "273754003", ReynellExpressiveLanguageAssessment }, 
+      { "http://snomed.info/sct#273754003", ReynellExpressiveLanguageAssessment }, 
+      { "273756001", ReynellZinkinLanguageScaleForTheVisuallyImpaired }, 
+      { "http://snomed.info/sct#273756001", ReynellZinkinLanguageScaleForTheVisuallyImpaired }, 
+      { "273757005", RightHemisphereBattery }, 
+      { "http://snomed.info/sct#273757005", RightHemisphereBattery }, 
+      { "273758000", RitchieArticularIndex }, 
+      { "http://snomed.info/sct#273758000", RitchieArticularIndex }, 
+      { "273759008", RivermeadActivitiesOfDailyLivingIndex }, 
+      { "http://snomed.info/sct#273759008", RivermeadActivitiesOfDailyLivingIndex }, 
+      { "273761004", RBMTRivermeadBehavioralMemoryTest }, 
+      { "http://snomed.info/sct#273761004", RBMTRivermeadBehavioralMemoryTest }, 
+      { "273762006", RMARivermeadMotorAssessment }, 
+      { "http://snomed.info/sct#273762006", RMARivermeadMotorAssessment }, 
+      { "273763001", RivermeadPerceptualAssessmentBattery }, 
+      { "http://snomed.info/sct#273763001", RivermeadPerceptualAssessmentBattery }, 
+      { "273764007", RobertsonDysarthriaAssessment }, 
+      { "http://snomed.info/sct#273764007", RobertsonDysarthriaAssessment }, 
+      { "273765008", RobertsonDysarthriaProfile }, 
+      { "http://snomed.info/sct#273765008", RobertsonDysarthriaProfile }, 
+      { "273766009", RoehamptonActivitiesOfDailyLivingForAmputees }, 
+      { "http://snomed.info/sct#273766009", RoehamptonActivitiesOfDailyLivingForAmputees }, 
+      { "273767000", RoseSummersPragmaticProfile }, 
+      { "http://snomed.info/sct#273767000", RoseSummersPragmaticProfile }, 
+      { "273768005", RossInformationProcessingAssessment }, 
+      { "http://snomed.info/sct#273768005", RossInformationProcessingAssessment }, 
+      { "273769002", RosserClassificationOfIllnessStates }, 
+      { "http://snomed.info/sct#273769002", RosserClassificationOfIllnessStates }, 
+      { "273770001", RothAndSpekmanListOfCommunicativeIntentions }, 
+      { "http://snomed.info/sct#273770001", RothAndSpekmanListOfCommunicativeIntentions }, 
+      { "273771002", RotterdamSymptomCheckList }, 
+      { "http://snomed.info/sct#273771002", RotterdamSymptomCheckList }, 
+      { "273772009", RoutineTaskInventory }, 
+      { "http://snomed.info/sct#273772009", RoutineTaskInventory }, 
+      { "273774005", RutterBehaviorQuestionnaire }, 
+      { "http://snomed.info/sct#273774005", RutterBehaviorQuestionnaire }, 
+      { "273775006", RutterAScale }, 
+      { "http://snomed.info/sct#273775006", RutterAScale }, 
+      { "273776007", RutterBScale }, 
+      { "http://snomed.info/sct#273776007", RutterBScale }, 
+      { "273777003", RutterB2Scale }, 
+      { "http://snomed.info/sct#273777003", RutterB2Scale }, 
+      { "273778008", SScaleAndrewsAndCutler }, 
+      { "http://snomed.info/sct#273778008", SScaleAndrewsAndCutler }, 
+      { "273779000", SalfordReadingTest }, 
+      { "http://snomed.info/sct#273779000", SalfordReadingTest }, 
+      { "273780002", SamaritanOrientationTest }, 
+      { "http://snomed.info/sct#273780002", SamaritanOrientationTest }, 
+      { "273781003", SandwellBilingualComprehensionTest }, 
+      { "http://snomed.info/sct#273781003", SandwellBilingualComprehensionTest }, 
+      { "273782005", SantaClaraValleyMedicalCenterFunctionalAssessmentMeasure }, 
+      { "http://snomed.info/sct#273782005", SantaClaraValleyMedicalCenterFunctionalAssessmentMeasure }, 
+      { "273783000", SavaryMillerScale }, 
+      { "http://snomed.info/sct#273783000", SavaryMillerScale }, 
+      { "273784006", ScaleOfEarlyCommunicationSkillsForHearingImpairedChildren }, 
+      { "http://snomed.info/sct#273784006", ScaleOfEarlyCommunicationSkillsForHearingImpairedChildren }, 
+      { "273785007", SchwachmannScore }, 
+      { "http://snomed.info/sct#273785007", SchwachmannScore }, 
+      { "273786008", SchedulesForClinicalAssessmentInNeuropsychiatry }, 
+      { "http://snomed.info/sct#273786008", SchedulesForClinicalAssessmentInNeuropsychiatry }, 
+      { "273787004", SchnijdersOomanTestForDeafChildren }, 
+      { "http://snomed.info/sct#273787004", SchnijdersOomanTestForDeafChildren }, 
+      { "273788009", SchofieldEquation }, 
+      { "http://snomed.info/sct#273788009", SchofieldEquation }, 
+      { "273789001", SchonellGradedWordReadingTest }, 
+      { "http://snomed.info/sct#273789001", SchonellGradedWordReadingTest }, 
+      { "273790005", SchonellGradedWordSpellingTest }, 
+      { "http://snomed.info/sct#273790005", SchonellGradedWordSpellingTest }, 
+      { "273791009", ScissorSkillsChecklist }, 
+      { "http://snomed.info/sct#273791009", ScissorSkillsChecklist }, 
+      { "273792002", ScreeningForDevelopmentalApraxiaOfSpeech }, 
+      { "http://snomed.info/sct#273792002", ScreeningForDevelopmentalApraxiaOfSpeech }, 
+      { "273793007", ScreeningTestForAuditoryProcessingDisorders }, 
+      { "http://snomed.info/sct#273793007", ScreeningTestForAuditoryProcessingDisorders }, 
+      { "273795000", SIPT }, 
+      { "http://snomed.info/sct#273795000", SIPT }, 
+      { "273797008", SCTSentenceComprehensionTest }, 
+      { "http://snomed.info/sct#273797008", SCTSentenceComprehensionTest }, 
+      { "273798003", SerialSevensTest }, 
+      { "http://snomed.info/sct#273798003", SerialSevensTest }, 
+      { "273799006", SeverityOfAlcoholDependenceQuestionnaire }, 
+      { "http://snomed.info/sct#273799006", SeverityOfAlcoholDependenceQuestionnaire }, 
+      { "273800005", SODQSeverityOfOpiateDependenceQuestionnaire }, 
+      { "http://snomed.info/sct#273800005", SODQSeverityOfOpiateDependenceQuestionnaire }, 
+      { "273801009", ShaperIndex }, 
+      { "http://snomed.info/sct#273801009", ShaperIndex }, 
+      { "273802002", ShortAlcoholDependenceData }, 
+      { "http://snomed.info/sct#273802002", ShortAlcoholDependenceData }, 
+      { "273803007", ShortOrientationMemoryConcentrationTest }, 
+      { "http://snomed.info/sct#273803007", ShortOrientationMemoryConcentrationTest }, 
+      { "273804001", ShortOrientationMemoryConcentrationTestAlternativeVersion }, 
+      { "http://snomed.info/sct#273804001", ShortOrientationMemoryConcentrationTestAlternativeVersion }, 
+      { "273805000", ShortTermMemoryTest }, 
+      { "http://snomed.info/sct#273805000", ShortTermMemoryTest }, 
+      { "273806004", ShulmanTestOfPragmaticSkills }, 
+      { "http://snomed.info/sct#273806004", ShulmanTestOfPragmaticSkills }, 
+      { "273807008", SicknessImpactProfile }, 
+      { "http://snomed.info/sct#273807008", SicknessImpactProfile }, 
+      { "273809006", SilversCerebralFunctionTest }, 
+      { "http://snomed.info/sct#273809006", SilversCerebralFunctionTest }, 
+      { "273811002", SimplifiedAcutePhysiologyScore }, 
+      { "http://snomed.info/sct#273811002", SimplifiedAcutePhysiologyScore }, 
+      { "273812009", SimplifiedAcutePhysiologyScaleII }, 
+      { "http://snomed.info/sct#273812009", SimplifiedAcutePhysiologyScaleII }, 
+      { "273813004", SCQSituationalConfidenceQuestionnaire }, 
+      { "http://snomed.info/sct#273813004", SCQSituationalConfidenceQuestionnaire }, 
+      { "273814005", SituationsForEatingScale }, 
+      { "http://snomed.info/sct#273814005", SituationsForEatingScale }, 
+      { "273815006", SmithCognitiveQuestionnaire }, 
+      { "http://snomed.info/sct#273815006", SmithCognitiveQuestionnaire }, 
+      { "273816007", SocialAdjustmentScale }, 
+      { "http://snomed.info/sct#273816007", SocialAdjustmentScale }, 
+      { "273817003", SASIISocialAdjustmentScaleII }, 
+      { "http://snomed.info/sct#273817003", SASIISocialAdjustmentScaleII }, 
+      { "273818008", SocialAdjustmentScaleSelfReport }, 
+      { "http://snomed.info/sct#273818008", SocialAdjustmentScaleSelfReport }, 
+      { "273819000", SocialBehaviorAssessmentScale }, 
+      { "http://snomed.info/sct#273819000", SocialBehaviorAssessmentScale }, 
+      { "273820006", SocialSupportQuestionnaire }, 
+      { "http://snomed.info/sct#273820006", SocialSupportQuestionnaire }, 
+      { "273821005", SocialUseOfLanguageProgram }, 
+      { "http://snomed.info/sct#273821005", SocialUseOfLanguageProgram }, 
+      { "273822003", STAPSouthTynesideAssessmentOfPhonology }, 
+      { "http://snomed.info/sct#273822003", STAPSouthTynesideAssessmentOfPhonology }, 
+      { "273823008", SouthTynesideAssessmentOfSyntacticStructures }, 
+      { "http://snomed.info/sct#273823008", SouthTynesideAssessmentOfSyntacticStructures }, 
+      { "273824002", FGPSouthernCaliforniaFigureGroundVisualPerceptionTest }, 
+      { "http://snomed.info/sct#273824002", FGPSouthernCaliforniaFigureGroundVisualPerceptionTest }, 
+      { "273825001", SouthernCaliforniaPostrotaryNystagmusTest }, 
+      { "http://snomed.info/sct#273825001", SouthernCaliforniaPostrotaryNystagmusTest }, 
+      { "273826000", SouthernCaliforniaSensoryIntegrationTest }, 
+      { "http://snomed.info/sct#273826000", SouthernCaliforniaSensoryIntegrationTest }, 
+      { "273827009", SpareTimeActivitiesQuestionnaire }, 
+      { "http://snomed.info/sct#273827009", SpareTimeActivitiesQuestionnaire }, 
+      { "273828004", SpecialHospitalsAssessmentOfPersonality }, 
+      { "http://snomed.info/sct#273828004", SpecialHospitalsAssessmentOfPersonality }, 
+      { "273829007", SpeechIntelligibilityAssessmentProcedure }, 
+      { "http://snomed.info/sct#273829007", SpeechIntelligibilityAssessmentProcedure }, 
+      { "273830002", SpielbergerStateTraitAnxietyInventory }, 
+      { "http://snomed.info/sct#273830002", SpielbergerStateTraitAnxietyInventory }, 
+      { "273831003", QualityOfLifeIndex }, 
+      { "http://snomed.info/sct#273831003", QualityOfLifeIndex }, 
+      { "273833000", StGeorgeHospitalRespiratoryQuestionnaire }, 
+      { "http://snomed.info/sct#273833000", StGeorgeHospitalRespiratoryQuestionnaire }, 
+      { "273834006", StThomasDisabilityQuestionnaire }, 
+      { "http://snomed.info/sct#273834006", StThomasDisabilityQuestionnaire }, 
+      { "273835007", SAPStandardizedAssessmentOfPersonality }, 
+      { "http://snomed.info/sct#273835007", SAPStandardizedAssessmentOfPersonality }, 
+      { "273836008", TermanMerrillScale }, 
+      { "http://snomed.info/sct#273836008", TermanMerrillScale }, 
+      { "273837004", SteinbrockerFunctionalClassification }, 
+      { "http://snomed.info/sct#273837004", SteinbrockerFunctionalClassification }, 
+      { "273838009", StimulusResponseInventory }, 
+      { "http://snomed.info/sct#273838009", StimulusResponseInventory }, 
+      { "273839001", StockerProbeTechniqueForDiagnosisAndTreatmentOfStutteringInYoungChildren }, 
+      { "http://snomed.info/sct#273839001", StockerProbeTechniqueForDiagnosisAndTreatmentOfStutteringInYoungChildren }, 
+      { "273840004", StocktonGeriatricRatingScale }, 
+      { "http://snomed.info/sct#273840004", StocktonGeriatricRatingScale }, 
+      { "273841000", StoryCompletionTest }, 
+      { "http://snomed.info/sct#273841000", StoryCompletionTest }, 
+      { "273842007", StructuredObservationTestOfFunction }, 
+      { "http://snomed.info/sct#273842007", StructuredObservationTestOfFunction }, 
+      { "273843002", StructuredClinicalInterviewForDiagnosticAndStatisticalManualOfMentalDisordersThirdEditionRevised }, 
+      { "http://snomed.info/sct#273843002", StructuredClinicalInterviewForDiagnosticAndStatisticalManualOfMentalDisordersThirdEditionRevised }, 
+      { "273844008", StructuredInterviewForDiagnosticAndStatisticalManualOfMentalDisordersThirdEditionPersonalityDisorders }, 
+      { "http://snomed.info/sct#273844008", StructuredInterviewForDiagnosticAndStatisticalManualOfMentalDisordersThirdEditionPersonalityDisorders }, 
+      { "273845009", StutteringInterventionProgram }, 
+      { "http://snomed.info/sct#273845009", StutteringInterventionProgram }, 
+      { "273846005", StutteringPredictionInstrument }, 
+      { "http://snomed.info/sct#273846005", StutteringPredictionInstrument }, 
+      { "273847001", StutteringSeverityInstrument }, 
+      { "http://snomed.info/sct#273847001", StutteringSeverityInstrument }, 
+      { "273848006", StycarHearingTest }, 
+      { "http://snomed.info/sct#273848006", StycarHearingTest }, 
+      { "273849003", SubjectiveGlobalAssessment }, 
+      { "http://snomed.info/sct#273849003", SubjectiveGlobalAssessment }, 
+      { "273850003", SubstanceUseDisorderDiagnosticSchedule }, 
+      { "http://snomed.info/sct#273850003", SubstanceUseDisorderDiagnosticSchedule }, 
+      { "273851004", SueSpenceAssessment }, 
+      { "http://snomed.info/sct#273851004", SueSpenceAssessment }, 
+      { "273852006", SuicideRiskScale }, 
+      { "http://snomed.info/sct#273852006", SuicideRiskScale }, 
+      { "273853001", SunnybrookCordInjuryScale }, 
+      { "http://snomed.info/sct#273853001", SunnybrookCordInjuryScale }, 
+      { "273854007", SupplementaryLanguageTest }, 
+      { "http://snomed.info/sct#273854007", SupplementaryLanguageTest }, 
+      { "273856009", SwollenJointCount }, 
+      { "http://snomed.info/sct#273856009", SwollenJointCount }, 
+      { "273857000", SymbolDigitModalitiesTest }, 
+      { "http://snomed.info/sct#273857000", SymbolDigitModalitiesTest }, 
+      { "273858005", SymbolicPlayTest }, 
+      { "http://snomed.info/sct#273858005", SymbolicPlayTest }, 
+      { "273859002", SymptomChecklist }, 
+      { "http://snomed.info/sct#273859002", SymptomChecklist }, 
+      { "273860007", SLTSynonymLearningTest }, 
+      { "http://snomed.info/sct#273860007", SLTSynonymLearningTest }, 
+      { "273861006", SystematicFluencyTrainingForYoungChildren }, 
+      { "http://snomed.info/sct#273861006", SystematicFluencyTrainingForYoungChildren }, 
+      { "273862004", SystemicLupusActivityMeasure }, 
+      { "http://snomed.info/sct#273862004", SystemicLupusActivityMeasure }, 
+      { "273863009", SLEDAISystemicLupusErythematosusDiseaseActivityIndex }, 
+      { "http://snomed.info/sct#273863009", SLEDAISystemicLupusErythematosusDiseaseActivityIndex }, 
+      { "273864003", TambTest }, 
+      { "http://snomed.info/sct#273864003", TambTest }, 
+      { "273865002", TenderJointCount }, 
+      { "http://snomed.info/sct#273865002", TenderJointCount }, 
+      { "273867005", TestForAuditoryPerceptionOfSpeech }, 
+      { "http://snomed.info/sct#273867005", TestForAuditoryPerceptionOfSpeech }, 
+      { "273868000", TACLTestOfAuditoryComprehensionOfLanguage }, 
+      { "http://snomed.info/sct#273868000", TACLTestOfAuditoryComprehensionOfLanguage }, 
+      { "273869008", TestOfAuditoryDiscrimination }, 
+      { "http://snomed.info/sct#273869008", TestOfAuditoryDiscrimination }, 
+      { "273870009", TestOfLanguageCompetence }, 
+      { "http://snomed.info/sct#273870009", TestOfLanguageCompetence }, 
+      { "273871008", TestOfLanguageDevelopment2 }, 
+      { "http://snomed.info/sct#273871008", TestOfLanguageDevelopment2 }, 
+      { "273872001", TestOfMotorImpairmentStottMoyesHenderson }, 
+      { "http://snomed.info/sct#273872001", TestOfMotorImpairmentStottMoyesHenderson }, 
+      { "273873006", TestOfPragmaticSkills }, 
+      { "http://snomed.info/sct#273873006", TestOfPragmaticSkills }, 
+      { "273874000", TestOfReceptionOfGrammar }, 
+      { "http://snomed.info/sct#273874000", TestOfReceptionOfGrammar }, 
+      { "273875004", TSATestOfSyntacticAbilities }, 
+      { "http://snomed.info/sct#273875004", TSATestOfSyntacticAbilities }, 
+      { "273876003", TestOfWordFindingInDiscourse }, 
+      { "http://snomed.info/sct#273876003", TestOfWordFindingInDiscourse }, 
+      { "273877007", TestOfWordKnowledge }, 
+      { "http://snomed.info/sct#273877007", TestOfWordKnowledge }, 
+      { "273878002", TherapeuticInterventionScoringSystem }, 
+      { "http://snomed.info/sct#273878002", TherapeuticInterventionScoringSystem }, 
+      { "273879005", TLFBTimeLineFollowBack }, 
+      { "http://snomed.info/sct#273879005", TLFBTimeLineFollowBack }, 
+      { "273880008", TimeTradeOffAnalysis }, 
+      { "http://snomed.info/sct#273880008", TimeTradeOffAnalysis }, 
+      { "273881007", TokenTest }, 
+      { "http://snomed.info/sct#273881007", TokenTest }, 
+      { "273882000", TrailMakingTest }, 
+      { "http://snomed.info/sct#273882000", TrailMakingTest }, 
+      { "273883005", TraumaIndex }, 
+      { "http://snomed.info/sct#273883005", TraumaIndex }, 
+      { "273884004", TraumaScore }, 
+      { "http://snomed.info/sct#273884004", TraumaScore }, 
+      { "273885003", RTSRevisedTraumaScore }, 
+      { "http://snomed.info/sct#273885003", RTSRevisedTraumaScore }, 
+      { "273886002", TraumaAndInjurySeverityScore }, 
+      { "http://snomed.info/sct#273886002", TraumaAndInjurySeverityScore }, 
+      { "273887006", TriageIndex }, 
+      { "http://snomed.info/sct#273887006", TriageIndex }, 
+      { "273888001", ValentineAuditoryMemoryTest }, 
+      { "http://snomed.info/sct#273888001", ValentineAuditoryMemoryTest }, 
+      { "273889009", Valpar17PreVocationalReadinessBattery }, 
+      { "http://snomed.info/sct#273889009", Valpar17PreVocationalReadinessBattery }, 
+      { "273891001", VernonClozeProcedureReadingTest }, 
+      { "http://snomed.info/sct#273891001", VernonClozeProcedureReadingTest }, 
+      { "273892008", VernonGradedWordReadingTest }, 
+      { "http://snomed.info/sct#273892008", VernonGradedWordReadingTest }, 
+      { "273893003", VinelandMaturityScalesAdaptedForTheBlind }, 
+      { "http://snomed.info/sct#273893003", VinelandMaturityScalesAdaptedForTheBlind }, 
+      { "273894009", VinelandSocialMaturityScale }, 
+      { "http://snomed.info/sct#273894009", VinelandSocialMaturityScale }, 
+      { "273895005", VinelandSubquotientGeneralSelfHelp }, 
+      { "http://snomed.info/sct#273895005", VinelandSubquotientGeneralSelfHelp }, 
+      { "273896006", VinelandSubquotientCommunication }, 
+      { "http://snomed.info/sct#273896006", VinelandSubquotientCommunication }, 
+      { "273897002", VinelandSubquotientLocomotion }, 
+      { "http://snomed.info/sct#273897002", VinelandSubquotientLocomotion }, 
+      { "273898007", VinelandSubquotientOccupation }, 
+      { "http://snomed.info/sct#273898007", VinelandSubquotientOccupation }, 
+      { "273899004", VinelandSubquotientSelfHelpInEating }, 
+      { "http://snomed.info/sct#273899004", VinelandSubquotientSelfHelpInEating }, 
+      { "273900009", VinelandSubquotientSocialization }, 
+      { "http://snomed.info/sct#273900009", VinelandSubquotientSocialization }, 
+      { "273901008", VinelandBehavioralAssessment }, 
+      { "http://snomed.info/sct#273901008", VinelandBehavioralAssessment }, 
+      { "273902001", VisickSymptomGrade }, 
+      { "http://snomed.info/sct#273902001", VisickSymptomGrade }, 
+      { "273903006", VASVisualAnalogScale }, 
+      { "http://snomed.info/sct#273903006", VASVisualAnalogScale }, 
+      { "273904000", VisualAnalogPainScale }, 
+      { "http://snomed.info/sct#273904000", VisualAnalogPainScale }, 
+      { "273905004", VisualAndPerceptualAssessmentProgram }, 
+      { "http://snomed.info/sct#273905004", VisualAndPerceptualAssessmentProgram }, 
+      { "273906003", VisualObjectAndSpatialPerceptionTest }, 
+      { "http://snomed.info/sct#273906003", VisualObjectAndSpatialPerceptionTest }, 
+      { "273908002", VoiceAssessmentSheetMartin }, 
+      { "http://snomed.info/sct#273908002", VoiceAssessmentSheetMartin }, 
+      { "273909005", VoiceEvaluationForm }, 
+      { "http://snomed.info/sct#273909005", VoiceEvaluationForm }, 
+      { "273910000", VoiceSkillsAssessment }, 
+      { "http://snomed.info/sct#273910000", VoiceSkillsAssessment }, 
+      { "273912008", WaddellDisabilityIndex }, 
+      { "http://snomed.info/sct#273912008", WaddellDisabilityIndex }, 
+      { "273913003", WakefieldSelfAssessmentDepressionInventory }, 
+      { "http://snomed.info/sct#273913003", WakefieldSelfAssessmentDepressionInventory }, 
+      { "273914009", WardBehaviorRatingScale }, 
+      { "http://snomed.info/sct#273914009", WardBehaviorRatingScale }, 
+      { "273915005", WarnerDysphagiaAssessment }, 
+      { "http://snomed.info/sct#273915005", WarnerDysphagiaAssessment }, 
+      { "273916006", WechslerAdultIntelligenceScale }, 
+      { "http://snomed.info/sct#273916006", WechslerAdultIntelligenceScale }, 
+      { "273917002", WechslerAdultIntelligenceTestRevised }, 
+      { "http://snomed.info/sct#273917002", WechslerAdultIntelligenceTestRevised }, 
+      { "273918007", WechslerIntelligenceScaleForChildren }, 
+      { "http://snomed.info/sct#273918007", WechslerIntelligenceScaleForChildren }, 
+      { "273919004", WechslerIntelligenceNonVerbalPerformanceAssessment }, 
+      { "http://snomed.info/sct#273919004", WechslerIntelligenceNonVerbalPerformanceAssessment }, 
+      { "273920005", WechslerIntelligenceVerbalAssessment }, 
+      { "http://snomed.info/sct#273920005", WechslerIntelligenceVerbalAssessment }, 
+      { "273921009", LogicalMemoryParagraphRecall }, 
+      { "http://snomed.info/sct#273921009", LogicalMemoryParagraphRecall }, 
+      { "273922002", WechslerPreSchoolAndPrimaryScaleOfIntelligence }, 
+      { "http://snomed.info/sct#273922002", WechslerPreSchoolAndPrimaryScaleOfIntelligence }, 
+      { "273923007", WeiglGoldsteinScheererColorFormSortingTest }, 
+      { "http://snomed.info/sct#273923007", WeiglGoldsteinScheererColorFormSortingTest }, 
+      { "273924001", WepmanAuditorySequentialMemoryTest }, 
+      { "http://snomed.info/sct#273924001", WepmanAuditorySequentialMemoryTest }, 
+      { "273925000", WepmanAuditoryDiscriminationTest }, 
+      { "http://snomed.info/sct#273925000", WepmanAuditoryDiscriminationTest }, 
+      { "273926004", WessexRevisedPortageLanguageChecklist }, 
+      { "http://snomed.info/sct#273926004", WessexRevisedPortageLanguageChecklist }, 
+      { "273927008", WesternAphasiaBattery }, 
+      { "http://snomed.info/sct#273927008", WesternAphasiaBattery }, 
+      { "273928003", WPTASWestmeadPostTraumaticAmnesiaScale }, 
+      { "http://snomed.info/sct#273928003", WPTASWestmeadPostTraumaticAmnesiaScale }, 
+      { "273929006", WorldHealthOrganizationWHODepressionScale }, 
+      { "http://snomed.info/sct#273929006", WorldHealthOrganizationWHODepressionScale }, 
+      { "273930001", WorldHealthOrganizationWHOHandicapScale }, 
+      { "http://snomed.info/sct#273930001", WorldHealthOrganizationWHOHandicapScale }, 
+      { "273931002", WorldHealthOrganizationWHOClassificationOfImpairmentsDisabilitiesAndHandicapScale }, 
+      { "http://snomed.info/sct#273931002", WorldHealthOrganizationWHOClassificationOfImpairmentsDisabilitiesAndHandicapScale }, 
+      { "273932009", WorldHealthOrganizationWHOEconomicSelfSufficiencyHandicapScale }, 
+      { "http://snomed.info/sct#273932009", WorldHealthOrganizationWHOEconomicSelfSufficiencyHandicapScale }, 
+      { "273933004", WorldHealthOrganizationWHOMobilityHandicapScale }, 
+      { "http://snomed.info/sct#273933004", WorldHealthOrganizationWHOMobilityHandicapScale }, 
+      { "273934005", WorldHealthOrganizationWHOOccupationHandicapScale }, 
+      { "http://snomed.info/sct#273934005", WorldHealthOrganizationWHOOccupationHandicapScale }, 
+      { "273935006", WorldHealthOrganizationWHOOrientationHandicapScale }, 
+      { "http://snomed.info/sct#273935006", WorldHealthOrganizationWHOOrientationHandicapScale }, 
+      { "273936007", WorldHealthOrganizationWHOPhysicalIndependenceHandicapScale }, 
+      { "http://snomed.info/sct#273936007", WorldHealthOrganizationWHOPhysicalIndependenceHandicapScale }, 
+      { "273937003", WorldHealthOrganizationWHOSocialIntegrationHandicapScale }, 
+      { "http://snomed.info/sct#273937003", WorldHealthOrganizationWHOSocialIntegrationHandicapScale }, 
+      { "273938008", WinslowFeedingChecklist }, 
+      { "http://snomed.info/sct#273938008", WinslowFeedingChecklist }, 
+      { "273939000", WisconsinCardSortingTest }, 
+      { "http://snomed.info/sct#273939000", WisconsinCardSortingTest }, 
+      { "273940003", SDSZungSelfRatingDepressionScale }, 
+      { "http://snomed.info/sct#273940003", SDSZungSelfRatingDepressionScale }, 
+      { "273941004", ZungAnxietyStatusInventory }, 
+      { "http://snomed.info/sct#273941004", ZungAnxietyStatusInventory }, 
+      { "273942006", ZungSelfRatingAnxietyScale }, 
+      { "http://snomed.info/sct#273942006", ZungSelfRatingAnxietyScale }, 
+      { "277318003", M }, 
+      { "http://snomed.info/sct#277318003", M }, 
+      { "277457005", HistologicalGradingSystems }, 
+      { "http://snomed.info/sct#277457005", HistologicalGradingSystems }, 
+      { "277459008", DaumasDuportGradingSystem }, 
+      { "http://snomed.info/sct#277459008", DaumasDuportGradingSystem }, 
+      { "277460003", WorldHealthOrganizationWHOCentralNervousSystemCNSTumorGradingSystem }, 
+      { "http://snomed.info/sct#277460003", WorldHealthOrganizationWHOCentralNervousSystemCNSTumorGradingSystem }, 
+      { "277645005", AdditionalTNMDescriptors }, 
+      { "http://snomed.info/sct#277645005", AdditionalTNMDescriptors }, 
+      { "277646006", AAtAutopsy }, 
+      { "http://snomed.info/sct#277646006", AAtAutopsy }, 
+      { "277647002", RTumorRecurrence }, 
+      { "http://snomed.info/sct#277647002", RTumorRecurrence }, 
+      { "277649004", YDuringTherapyFollowingTreatment }, 
+      { "http://snomed.info/sct#277649004", YDuringTherapyFollowingTreatment }, 
+      { "277650004", MMultipleTumors }, 
+      { "http://snomed.info/sct#277650004", MMultipleTumors }, 
+      { "277652007", FFamilyHistory }, 
+      { "http://snomed.info/sct#277652007", FFamilyHistory }, 
+      { "277676004", DRetinalInvolvement }, 
+      { "http://snomed.info/sct#277676004", DRetinalInvolvement }, 
+      { "278241006", NodeStageG1InRetinoblastoma }, 
+      { "http://snomed.info/sct#278241006", NodeStageG1InRetinoblastoma }, 
+      { "278242004", NodeStageG2InRetinoblastoma }, 
+      { "http://snomed.info/sct#278242004", NodeStageG2InRetinoblastoma }, 
+      { "278247005", LungStageL1 }, 
+      { "http://snomed.info/sct#278247005", LungStageL1 }, 
+      { "278699003", ParsonnetScore }, 
+      { "http://snomed.info/sct#278699003", ParsonnetScore }, 
+      { "278896008", ShortFormMcGillPainQuestionnaire }, 
+      { "http://snomed.info/sct#278896008", ShortFormMcGillPainQuestionnaire }, 
+      { "278897004", WaterlowPressureSoreRiskScore }, 
+      { "http://snomed.info/sct#278897004", WaterlowPressureSoreRiskScore }, 
+      { "278898009", NortonScore }, 
+      { "http://snomed.info/sct#278898009", NortonScore }, 
+      { "279101002", VerbalRatingScale }, 
+      { "http://snomed.info/sct#279101002", VerbalRatingScale }, 
+      { "281113000", HealthOfTheNationOutcomeScaleSummatedGenericVersion }, 
+      { "http://snomed.info/sct#281113000", HealthOfTheNationOutcomeScaleSummatedGenericVersion }, 
+      { "281114006", HealthOfTheNationOutcomeScaleSubscaleGenericVersion }, 
+      { "http://snomed.info/sct#281114006", HealthOfTheNationOutcomeScaleSubscaleGenericVersion }, 
+      { "281115007", HealthOfTheNationOutcomeScaleItem1AggressiveDisruptiveBehavior }, 
+      { "http://snomed.info/sct#281115007", HealthOfTheNationOutcomeScaleItem1AggressiveDisruptiveBehavior }, 
+      { "281116008", HealthOfTheNationOutcomeScaleItem2NonAccidentalSelfInjury }, 
+      { "http://snomed.info/sct#281116008", HealthOfTheNationOutcomeScaleItem2NonAccidentalSelfInjury }, 
+      { "281117004", HoNOSItem3AlcoholDrugProblem }, 
+      { "http://snomed.info/sct#281117004", HoNOSItem3AlcoholDrugProblem }, 
+      { "281118009", HealthOfTheNationOutcomeScaleItem4CognitiveProblems }, 
+      { "http://snomed.info/sct#281118009", HealthOfTheNationOutcomeScaleItem4CognitiveProblems }, 
+      { "281119001", HoNOSItem5 }, 
+      { "http://snomed.info/sct#281119001", HoNOSItem5 }, 
+      { "281120007", HealthOfTheNationOutcomeScaleItem6HallucinationsDelusions }, 
+      { "http://snomed.info/sct#281120007", HealthOfTheNationOutcomeScaleItem6HallucinationsDelusions }, 
+      { "281121006", HoNOSItem7 }, 
+      { "http://snomed.info/sct#281121006", HoNOSItem7 }, 
+      { "281122004", HealthOfTheNationOutcomeScaleItem8OtherMentalBehavioralProblems }, 
+      { "http://snomed.info/sct#281122004", HealthOfTheNationOutcomeScaleItem8OtherMentalBehavioralProblems }, 
+      { "281123009", HoNOSItem9 }, 
+      { "http://snomed.info/sct#281123009", HoNOSItem9 }, 
+      { "281124003", HoNOSItem10 }, 
+      { "http://snomed.info/sct#281124003", HoNOSItem10 }, 
+      { "281125002", HealthOfTheNationOutcomeScaleItem11LivingConditions }, 
+      { "http://snomed.info/sct#281125002", HealthOfTheNationOutcomeScaleItem11LivingConditions }, 
+      { "281126001", HoNOSItem12 }, 
+      { "http://snomed.info/sct#281126001", HoNOSItem12 }, 
+      { "281400004", RamsaySedationScale }, 
+      { "http://snomed.info/sct#281400004", RamsaySedationScale }, 
+      { "281692008", GriffithsMentalDevelopmentalScale }, 
+      { "http://snomed.info/sct#281692008", GriffithsMentalDevelopmentalScale }, 
+      { "281693003", GessellDevelopmentalScale }, 
+      { "http://snomed.info/sct#281693003", GessellDevelopmentalScale }, 
+      { "281844006", HealthOfTheNationOutcomeSubscaleA }, 
+      { "http://snomed.info/sct#281844006", HealthOfTheNationOutcomeSubscaleA }, 
+      { "281845007", HoNOSSubscaleB }, 
+      { "http://snomed.info/sct#281845007", HoNOSSubscaleB }, 
+      { "281846008", HealthOfTheNationOutcomeSubscaleC }, 
+      { "http://snomed.info/sct#281846008", HealthOfTheNationOutcomeSubscaleC }, 
+      { "281848009", HoNOSSubscaleD }, 
+      { "http://snomed.info/sct#281848009", HoNOSSubscaleD }, 
+      { "281849001", HealthOfTheNationOutcomeScaleItemGenericVersion }, 
+      { "http://snomed.info/sct#281849001", HealthOfTheNationOutcomeScaleItemGenericVersion }, 
+      { "282402005", VHepaticVeinMarker }, 
+      { "http://snomed.info/sct#282402005", VHepaticVeinMarker }, 
+      { "282403000", PPortalVeinMarker }, 
+      { "http://snomed.info/sct#282403000", PPortalVeinMarker }, 
+      { "282404006", EExtrahepaticMarker }, 
+      { "http://snomed.info/sct#282404006", EExtrahepaticMarker }, 
+      { "282405007", MMetastaticMarker }, 
+      { "http://snomed.info/sct#282405007", MMetastaticMarker }, 
+      { "282436004", EExtralymphaticOrganInvolvementMarker }, 
+      { "http://snomed.info/sct#282436004", EExtralymphaticOrganInvolvementMarker }, 
+      { "282437008", SSplenicInvolvementMarker }, 
+      { "http://snomed.info/sct#282437008", SSplenicInvolvementMarker }, 
+      { "282466006", SuicideIntentScoreScale }, 
+      { "http://snomed.info/sct#282466006", SuicideIntentScoreScale }, 
+      { "282467002", SuicideIntentScoreScaleSummated }, 
+      { "http://snomed.info/sct#282467002", SuicideIntentScoreScaleSummated }, 
+      { "282468007", SuicideIntentScoreSubscale }, 
+      { "http://snomed.info/sct#282468007", SuicideIntentScoreSubscale }, 
+      { "282469004", SuicideIntentScoreSubscaleAttemptCircumstances }, 
+      { "http://snomed.info/sct#282469004", SuicideIntentScoreSubscaleAttemptCircumstances }, 
+      { "282470003", SuicideIntentScoreSubscaleSelfReport }, 
+      { "http://snomed.info/sct#282470003", SuicideIntentScoreSubscaleSelfReport }, 
+      { "282471004", SuicideIntentScoreSubscaleRisk }, 
+      { "http://snomed.info/sct#282471004", SuicideIntentScoreSubscaleRisk }, 
+      { "284061009", GlobalAssessmentOfFunctioning1993DiagnosticAndStatisticalManualOfMentalDisordersFourthEditionAdaptation }, 
+      { "http://snomed.info/sct#284061009", GlobalAssessmentOfFunctioning1993DiagnosticAndStatisticalManualOfMentalDisordersFourthEditionAdaptation }, 
+      { "284064001", BPRSBriefPsychiatricRatingScale1962 }, 
+      { "http://snomed.info/sct#284064001", BPRSBriefPsychiatricRatingScale1962 }, 
+      { "284464005", HealthOfTheNationOutcomeScales }, 
+      { "http://snomed.info/sct#284464005", HealthOfTheNationOutcomeScales }, 
+      { "285713000", GEMSGuideToEarlyMovementSkillsChecklist }, 
+      { "http://snomed.info/sct#285713000", GEMSGuideToEarlyMovementSkillsChecklist }, 
+      { "285714006", BSTSBereweekeSkillTeachingSystemChecklist }, 
+      { "http://snomed.info/sct#285714006", BSTSBereweekeSkillTeachingSystemChecklist }, 
+      { "300991009", WebsterScore }, 
+      { "http://snomed.info/sct#300991009", WebsterScore }, 
+      { "302029005", FerrimanAndGalwayScore }, 
+      { "http://snomed.info/sct#302029005", FerrimanAndGalwayScore }, 
+      { "303807002", RuleOfNines }, 
+      { "http://snomed.info/sct#303807002", RuleOfNines }, 
+      { "304705008", AmericanAssociationOnMentalRetardationAAMRAdaptiveBehaviorScale }, 
+      { "http://snomed.info/sct#304705008", AmericanAssociationOnMentalRetardationAAMRAdaptiveBehaviorScale }, 
+      { "304706009", AcceptanceOfIllnessScale }, 
+      { "http://snomed.info/sct#304706009", AcceptanceOfIllnessScale }, 
+      { "304707000", AnomalousSentencesRepetitionTest }, 
+      { "http://snomed.info/sct#304707000", AnomalousSentencesRepetitionTest }, 
+      { "304708005", ArthritisImpactMeasurementScale }, 
+      { "http://snomed.info/sct#304708005", ArthritisImpactMeasurementScale }, 
+      { "304709002", AttitudesTowardsDoctorsAndMedicineScale }, 
+      { "http://snomed.info/sct#304709002", AttitudesTowardsDoctorsAndMedicineScale }, 
+      { "304710007", BeckHopelessnessScale }, 
+      { "http://snomed.info/sct#304710007", BeckHopelessnessScale }, 
+      { "304711006", BeckAnxietyInventory }, 
+      { "http://snomed.info/sct#304711006", BeckAnxietyInventory }, 
+      { "304712004", BeckScaleForSuicideIdeation }, 
+      { "http://snomed.info/sct#304712004", BeckScaleForSuicideIdeation }, 
+      { "304713009", BPCQBeliefsAboutPainControlQuestionnaire }, 
+      { "http://snomed.info/sct#304713009", BPCQBeliefsAboutPainControlQuestionnaire }, 
+      { "304714003", BellakChildrenQuoteSApperceptionTest }, 
+      { "http://snomed.info/sct#304714003", BellakChildrenQuoteSApperceptionTest }, 
+      { "304715002", BenderVisualMotorGestaltTest }, 
+      { "http://snomed.info/sct#304715002", BenderVisualMotorGestaltTest }, 
+      { "304716001", BruininksOseretskyTestOfMotorProficiency }, 
+      { "http://snomed.info/sct#304716001", BruininksOseretskyTestOfMotorProficiency }, 
+      { "304717005", CancerAttitudeInventory }, 
+      { "http://snomed.info/sct#304717005", CancerAttitudeInventory }, 
+      { "304718000", ChildDepressionScaleSecondResearchEdition }, 
+      { "http://snomed.info/sct#304718000", ChildDepressionScaleSecondResearchEdition }, 
+      { "304719008", ChildrenQuoteSHealthLocusOfControlScale }, 
+      { "http://snomed.info/sct#304719008", ChildrenQuoteSHealthLocusOfControlScale }, 
+      { "304720002", CECSCourtauldEmotionalControlScale }, 
+      { "http://snomed.info/sct#304720002", CECSCourtauldEmotionalControlScale }, 
+      { "304721003", MiddlesexHospitalQuestionnaire }, 
+      { "http://snomed.info/sct#304721003", MiddlesexHospitalQuestionnaire }, 
+      { "304722005", CultureFreeSelfEsteemInventory }, 
+      { "http://snomed.info/sct#304722005", CultureFreeSelfEsteemInventory }, 
+      { "304723000", DelusionsSymptomsStatesInventory }, 
+      { "http://snomed.info/sct#304723000", DelusionsSymptomsStatesInventory }, 
+      { "304724006", EysenckPersonalityQuestionnaire }, 
+      { "http://snomed.info/sct#304724006", EysenckPersonalityQuestionnaire }, 
+      { "304725007", FamilyRelationsTest }, 
+      { "http://snomed.info/sct#304725007", FamilyRelationsTest }, 
+      { "304726008", ForcedChoiceRatingsOfHealthRelatedAttributes }, 
+      { "http://snomed.info/sct#304726008", ForcedChoiceRatingsOfHealthRelatedAttributes }, 
+      { "304727004", FraminghamAngerMeasure }, 
+      { "http://snomed.info/sct#304727004", FraminghamAngerMeasure }, 
+      { "304728009", FraminghamTypeABehaviorPatternMeasure }, 
+      { "http://snomed.info/sct#304728009", FraminghamTypeABehaviorPatternMeasure }, 
+      { "304729001", FuldObjectMemoryEvaluation }, 
+      { "http://snomed.info/sct#304729001", FuldObjectMemoryEvaluation }, 
+      { "304730006", FunctionalPerformanceRecord }, 
+      { "http://snomed.info/sct#304730006", FunctionalPerformanceRecord }, 
+      { "304731005", GeneralPreventativeHealthBehaviorsChecklist }, 
+      { "http://snomed.info/sct#304731005", GeneralPreventativeHealthBehaviorsChecklist }, 
+      { "304732003", HasslesScale }, 
+      { "http://snomed.info/sct#304732003", HasslesScale }, 
+      { "304733008", HealthKnowledgeMeasurement }, 
+      { "http://snomed.info/sct#304733008", HealthKnowledgeMeasurement }, 
+      { "304734002", HealthValueScale }, 
+      { "http://snomed.info/sct#304734002", HealthValueScale }, 
+      { "304735001", IllinoisTestOfPsycholinguisticAbilitiesRevisedEdition }, 
+      { "http://snomed.info/sct#304735001", IllinoisTestOfPsycholinguisticAbilitiesRevisedEdition }, 
+      { "304736000", InventoryOfDrinkingSituations }, 
+      { "http://snomed.info/sct#304736000", InventoryOfDrinkingSituations }, 
+      { "304738004", KaufmanAssessmentBatteryForChildren }, 
+      { "http://snomed.info/sct#304738004", KaufmanAssessmentBatteryForChildren }, 
+      { "304739007", LifeExperiencesChecklist }, 
+      { "http://snomed.info/sct#304739007", LifeExperiencesChecklist }, 
+      { "304740009", LOTLifeOrientationTest }, 
+      { "http://snomed.info/sct#304740009", LOTLifeOrientationTest }, 
+      { "304741008", LuriaNebraskaNeuropsychologicalBatteryChildrenQuoteSRevision }, 
+      { "http://snomed.info/sct#304741008", LuriaNebraskaNeuropsychologicalBatteryChildrenQuoteSRevision }, 
+      { "304742001", LuriaNebraskaNeuropsychologicalBatteryForm1 }, 
+      { "http://snomed.info/sct#304742001", LuriaNebraskaNeuropsychologicalBatteryForm1 }, 
+      { "304743006", MarlowCrowneScale }, 
+      { "http://snomed.info/sct#304743006", MarlowCrowneScale }, 
+      { "304744000", MISSMedicalInterviewSatisfactionScale }, 
+      { "http://snomed.info/sct#304744000", MISSMedicalInterviewSatisfactionScale }, 
+      { "304745004", MentalAdjustmentToCancerScale }, 
+      { "http://snomed.info/sct#304745004", MentalAdjustmentToCancerScale }, 
+      { "304746003", MerrilPalmerPreschoolPerformanceScale }, 
+      { "http://snomed.info/sct#304746003", MerrilPalmerPreschoolPerformanceScale }, 
+      { "304747007", MotivationAnalysisTest }, 
+      { "http://snomed.info/sct#304747007", MotivationAnalysisTest }, 
+      { "304748002", MultidimensionalHealthLocusOfControlScale }, 
+      { "http://snomed.info/sct#304748002", MultidimensionalHealthLocusOfControlScale }, 
+      { "304749005", ObjectRelationsTechnique }, 
+      { "http://snomed.info/sct#304749005", ObjectRelationsTechnique }, 
+      { "304750005", PainCopingStrategiesQuestionnaire }, 
+      { "http://snomed.info/sct#304750005", PainCopingStrategiesQuestionnaire }, 
+      { "304751009", PILLPennebakerInventoryOfLinguidLanguidness }, 
+      { "http://snomed.info/sct#304751009", PILLPennebakerInventoryOfLinguidLanguidness }, 
+      { "304752002", PerceivedControlOfInsulinDependentDiabetes }, 
+      { "http://snomed.info/sct#304752002", PerceivedControlOfInsulinDependentDiabetes }, 
+      { "304753007", PSSPerceivedStressScale }, 
+      { "http://snomed.info/sct#304753007", PSSPerceivedStressScale }, 
+      { "304754001", PersonalityDevianceScale }, 
+      { "http://snomed.info/sct#304754001", PersonalityDevianceScale }, 
+      { "304755000", PANASPositiveAndNegativeAffectSchedule }, 
+      { "http://snomed.info/sct#304755000", PANASPositiveAndNegativeAffectSchedule }, 
+      { "304756004", PrejudicialEvaluationAndSocialInteractionScale }, 
+      { "http://snomed.info/sct#304756004", PrejudicialEvaluationAndSocialInteractionScale }, 
+      { "304757008", ProfileOfMoodStatesBipolar }, 
+      { "http://snomed.info/sct#304757008", ProfileOfMoodStatesBipolar }, 
+      { "304758003", QuickNeurologicalScreeningTest }, 
+      { "http://snomed.info/sct#304758003", QuickNeurologicalScreeningTest }, 
+      { "304759006", RavenProgressiveMatricesAndVocabularyScales }, 
+      { "http://snomed.info/sct#304759006", RavenProgressiveMatricesAndVocabularyScales }, 
+      { "304760001", RLOCRecoveryLocusOfControlScale }, 
+      { "http://snomed.info/sct#304760001", RLOCRecoveryLocusOfControlScale }, 
+      { "304761002", ReportedHealthBehaviorsChecklist }, 
+      { "http://snomed.info/sct#304761002", ReportedHealthBehaviorsChecklist }, 
+      { "304762009", RevisedTokenTest }, 
+      { "http://snomed.info/sct#304762009", RevisedTokenTest }, 
+      { "304763004", ReynellDevelopmentalLanguageScalesSecondRevision }, 
+      { "http://snomed.info/sct#304763004", ReynellDevelopmentalLanguageScalesSecondRevision }, 
+      { "304764005", ReynellZinkinScaleForYoungVisuallyHandicappedChildren }, 
+      { "http://snomed.info/sct#304764005", ReynellZinkinScaleForYoungVisuallyHandicappedChildren }, 
+      { "304765006", RogersPersonalAdjustmentInventoryRevised }, 
+      { "http://snomed.info/sct#304765006", RogersPersonalAdjustmentInventoryRevised }, 
+      { "304766007", RSESRosenbergSelfEsteemScale }, 
+      { "http://snomed.info/sct#304766007", RSESRosenbergSelfEsteemScale }, 
+      { "304767003", RustInventoryOfSchizotypalCognitions }, 
+      { "http://snomed.info/sct#304767003", RustInventoryOfSchizotypalCognitions }, 
+      { "304768008", SatisfactionWithLifeScale }, 
+      { "http://snomed.info/sct#304768008", SatisfactionWithLifeScale }, 
+      { "304769000", ScreeningTestForTheLuriaNebraskaNeuropsychologicalBattery }, 
+      { "http://snomed.info/sct#304769000", ScreeningTestForTheLuriaNebraskaNeuropsychologicalBattery }, 
+      { "304770004", ShortFormSocialSupportQuestionnaire }, 
+      { "http://snomed.info/sct#304770004", ShortFormSocialSupportQuestionnaire }, 
+      { "304771000", SOSSignificantOthersScale }, 
+      { "http://snomed.info/sct#304771000", SOSSignificantOthersScale }, 
+      { "304772007", SnijdersOomenNonVerbalIntelligenceScaleRevised }, 
+      { "http://snomed.info/sct#304772007", SnijdersOomenNonVerbalIntelligenceScaleRevised }, 
+      { "304773002", StanfordBinetIntelligenceScaleFourthEdition }, 
+      { "http://snomed.info/sct#304773002", StanfordBinetIntelligenceScaleFourthEdition }, 
+      { "304774008", StanfordBinetFormLM }, 
+      { "http://snomed.info/sct#304774008", StanfordBinetFormLM }, 
+      { "304775009", StateTraitAngerExpressionInventory }, 
+      { "http://snomed.info/sct#304775009", StateTraitAngerExpressionInventory }, 
+      { "304776005", StroopNeuropsychologicalScreeningTest }, 
+      { "http://snomed.info/sct#304776005", StroopNeuropsychologicalScreeningTest }, 
+      { "304777001", SymbolicPlayTestSecondEdition }, 
+      { "http://snomed.info/sct#304777001", SymbolicPlayTestSecondEdition }, 
+      { "304778006", TokenTestForChildren }, 
+      { "http://snomed.info/sct#304778006", TokenTestForChildren }, 
+      { "304779003", UpliftsScale }, 
+      { "http://snomed.info/sct#304779003", UpliftsScale }, 
+      { "304780000", VarniThompsonPediatricPainQuestionnaire }, 
+      { "http://snomed.info/sct#304780000", VarniThompsonPediatricPainQuestionnaire }, 
+      { "304781001", VinelandAdaptiveBehaviorScales }, 
+      { "http://snomed.info/sct#304781001", VinelandAdaptiveBehaviorScales }, 
+      { "304915008", DukeTreadmillScore }, 
+      { "http://snomed.info/sct#304915008", DukeTreadmillScore }, 
+      { "307791002", StrangeSituationTest }, 
+      { "http://snomed.info/sct#307791002", StrangeSituationTest }, 
+      { "307792009", ReyFigureTest }, 
+      { "http://snomed.info/sct#307792009", ReyFigureTest }, 
+      { "307793004", TestOfEverydayAttention }, 
+      { "http://snomed.info/sct#307793004", TestOfEverydayAttention }, 
+      { "307794005", TestOfEverydayAttentionAdult }, 
+      { "http://snomed.info/sct#307794005", TestOfEverydayAttentionAdult }, 
+      { "307795006", TestOfEverydayAttentionChild }, 
+      { "http://snomed.info/sct#307795006", TestOfEverydayAttentionChild }, 
+      { "307801002", RivermeadBehavioralMemoryTestAdultVersion }, 
+      { "http://snomed.info/sct#307801002", RivermeadBehavioralMemoryTestAdultVersion }, 
+      { "307802009", RivermeadBehavioralMemoryTestChildVersion }, 
+      { "http://snomed.info/sct#307802009", RivermeadBehavioralMemoryTestChildVersion }, 
+      { "307803004", WechslerObjectiveNumericalDimensionsTest }, 
+      { "http://snomed.info/sct#307803004", WechslerObjectiveNumericalDimensionsTest }, 
+      { "307804005", WOLDWechslerObjectiveLanguageDimensionsTest }, 
+      { "http://snomed.info/sct#307804005", WOLDWechslerObjectiveLanguageDimensionsTest }, 
+      { "307805006", HealthOfTheNationOutcomeScaleForChildren }, 
+      { "http://snomed.info/sct#307805006", HealthOfTheNationOutcomeScaleForChildren }, 
+      { "307806007", HealthOfTheNationOutcomeScaleForAdolescents }, 
+      { "http://snomed.info/sct#307806007", HealthOfTheNationOutcomeScaleForAdolescents }, 
+      { "307807003", MaudsleyAddictionProfile }, 
+      { "http://snomed.info/sct#307807003", MaudsleyAddictionProfile }, 
+      { "309593006", EducationScoreDiabetes }, 
+      { "http://snomed.info/sct#309593006", EducationScoreDiabetes }, 
+      { "311404002", AttentionProcessTrainingQuestionnaire }, 
+      { "http://snomed.info/sct#311404002", AttentionProcessTrainingQuestionnaire }, 
+      { "311405001", RatingScaleOfAttentionalBehavior }, 
+      { "http://snomed.info/sct#311405001", RatingScaleOfAttentionalBehavior }, 
+      { "311406000", EverydayMemoryQuestionnaire }, 
+      { "http://snomed.info/sct#311406000", EverydayMemoryQuestionnaire }, 
+      { "311457001", BehaviorAssessmentOfTheDysexecutiveSyndrome }, 
+      { "http://snomed.info/sct#311457001", BehaviorAssessmentOfTheDysexecutiveSyndrome }, 
+      { "311458006", DoorsAndPeopleAssessment }, 
+      { "http://snomed.info/sct#311458006", DoorsAndPeopleAssessment }, 
+      { "311471009", Extended2And7Test }, 
+      { "http://snomed.info/sct#311471009", Extended2And7Test }, 
+      { "311472002", AlphabetNumberAlterationTest }, 
+      { "http://snomed.info/sct#311472002", AlphabetNumberAlterationTest }, 
+      { "311473007", VigilWTest }, 
+      { "http://snomed.info/sct#311473007", VigilWTest }, 
+      { "311474001", AttentionalCapacityTest }, 
+      { "http://snomed.info/sct#311474001", AttentionalCapacityTest }, 
+      { "311475000", ConsonantTrigramsTest }, 
+      { "http://snomed.info/sct#311475000", ConsonantTrigramsTest }, 
+      { "311477008", BuschkeSelectiveRemindingTest }, 
+      { "http://snomed.info/sct#311477008", BuschkeSelectiveRemindingTest }, 
+      { "311478003", CaliforniaVerbalLearningTest }, 
+      { "http://snomed.info/sct#311478003", CaliforniaVerbalLearningTest }, 
+      { "311480009", WilliamsMemoryAssessmentScales }, 
+      { "http://snomed.info/sct#311480009", WilliamsMemoryAssessmentScales }, 
+      { "311481008", WechslerMemoryScaleRevised }, 
+      { "http://snomed.info/sct#311481008", WechslerMemoryScaleRevised }, 
+      { "311483006", AssociationForNeuropsychologicalResearchAndDevelopmentProspectiveMemoryTest }, 
+      { "http://snomed.info/sct#311483006", AssociationForNeuropsychologicalResearchAndDevelopmentProspectiveMemoryTest }, 
+      { "311484000", PASATPacedAuditoryStimulationTest }, 
+      { "http://snomed.info/sct#311484000", PASATPacedAuditoryStimulationTest }, 
+      { "311485004", CategoryTest }, 
+      { "http://snomed.info/sct#311485004", CategoryTest }, 
+      { "311486003", ProfileOfExecutiveControlSystem }, 
+      { "http://snomed.info/sct#311486003", ProfileOfExecutiveControlSystem }, 
+      { "311512008", BrixtonTest }, 
+      { "http://snomed.info/sct#311512008", BrixtonTest }, 
+      { "311513003", HaylingTest }, 
+      { "http://snomed.info/sct#311513003", HaylingTest }, 
+      { "311514009", MicrocogAssessmentOfCognitiveFunction }, 
+      { "http://snomed.info/sct#311514009", MicrocogAssessmentOfCognitiveFunction }, 
+      { "42114005", WalterReedWRStage1 }, 
+      { "http://snomed.info/sct#42114005", WalterReedWRStage1 }, 
+      { "66470009", WRStage5 }, 
+      { "http://snomed.info/sct#66470009", WRStage5 }, 
+      { "74542008", WRStage4 }, 
+      { "http://snomed.info/sct#74542008", WRStage4 }, 
+      { "83200007", WRStage6 }, 
+      { "http://snomed.info/sct#83200007", WRStage6 }, 
+    };
   };
 }

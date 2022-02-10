@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeferred = "deferred";
 
     /// <summary>
+    /// Literal for code: HistoryNotDoneReasonDeferred
+    /// </summary>
+    public const string LiteralHistoryNotDoneReasonDeferred = "http://hl7.org/fhir/history-not-done-reason#deferred";
+
+    /// <summary>
     /// Literal for code: SubjectUnknown
     /// </summary>
     public const string LiteralSubjectUnknown = "subject-unknown";
+
+    /// <summary>
+    /// Literal for code: HistoryNotDoneReasonSubjectUnknown
+    /// </summary>
+    public const string LiteralHistoryNotDoneReasonSubjectUnknown = "http://hl7.org/fhir/history-not-done-reason#subject-unknown";
 
     /// <summary>
     /// Literal for code: UnableToObtain
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnableToObtain = "unable-to-obtain";
 
     /// <summary>
+    /// Literal for code: HistoryNotDoneReasonUnableToObtain
+    /// </summary>
+    public const string LiteralHistoryNotDoneReasonUnableToObtain = "http://hl7.org/fhir/history-not-done-reason#unable-to-obtain";
+
+    /// <summary>
     /// Literal for code: InformationWithheld
     /// </summary>
     public const string LiteralInformationWithheld = "withheld";
+
+    /// <summary>
+    /// Literal for code: HistoryNotDoneReasonInformationWithheld
+    /// </summary>
+    public const string LiteralHistoryNotDoneReasonInformationWithheld = "http://hl7.org/fhir/history-not-done-reason#withheld";
+
+    /// <summary>
+    /// Dictionary for looking up HistoryNotDoneReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "deferred", Deferred }, 
+      { "http://hl7.org/fhir/history-not-done-reason#deferred", Deferred }, 
+      { "subject-unknown", SubjectUnknown }, 
+      { "http://hl7.org/fhir/history-not-done-reason#subject-unknown", SubjectUnknown }, 
+      { "unable-to-obtain", UnableToObtain }, 
+      { "http://hl7.org/fhir/history-not-done-reason#unable-to-obtain", UnableToObtain }, 
+      { "withheld", InformationWithheld }, 
+      { "http://hl7.org/fhir/history-not-done-reason#withheld", InformationWithheld }, 
+    };
   };
 }

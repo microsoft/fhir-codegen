@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRequest = "request";
 
     /// <summary>
+    /// Literal for code: AssertDirectionCodesRequest
+    /// </summary>
+    public const string LiteralAssertDirectionCodesRequest = "http://hl7.org/fhir/assert-direction-codes#request";
+
+    /// <summary>
     /// Literal for code: Response
     /// </summary>
     public const string LiteralResponse = "response";
+
+    /// <summary>
+    /// Literal for code: AssertDirectionCodesResponse
+    /// </summary>
+    public const string LiteralAssertDirectionCodesResponse = "http://hl7.org/fhir/assert-direction-codes#response";
+
+    /// <summary>
+    /// Dictionary for looking up AssertDirectionCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "request", Request }, 
+      { "http://hl7.org/fhir/assert-direction-codes#request", Request }, 
+      { "response", Response }, 
+      { "http://hl7.org/fhir/assert-direction-codes#response", Response }, 
+    };
   };
 }

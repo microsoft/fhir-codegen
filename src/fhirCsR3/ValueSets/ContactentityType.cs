@@ -72,9 +72,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdministrative = "ADMIN";
 
     /// <summary>
+    /// Literal for code: ContactentityTypeAdministrative
+    /// </summary>
+    public const string LiteralContactentityTypeAdministrative = "http://hl7.org/fhir/contactentity-type#ADMIN";
+
+    /// <summary>
     /// Literal for code: Billing
     /// </summary>
     public const string LiteralBilling = "BILL";
+
+    /// <summary>
+    /// Literal for code: ContactentityTypeBilling
+    /// </summary>
+    public const string LiteralContactentityTypeBilling = "http://hl7.org/fhir/contactentity-type#BILL";
 
     /// <summary>
     /// Literal for code: HumanResource
@@ -82,9 +92,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHumanResource = "HR";
 
     /// <summary>
+    /// Literal for code: ContactentityTypeHumanResource
+    /// </summary>
+    public const string LiteralContactentityTypeHumanResource = "http://hl7.org/fhir/contactentity-type#HR";
+
+    /// <summary>
     /// Literal for code: Patient
     /// </summary>
     public const string LiteralPatient = "PATINF";
+
+    /// <summary>
+    /// Literal for code: ContactentityTypePatient
+    /// </summary>
+    public const string LiteralContactentityTypePatient = "http://hl7.org/fhir/contactentity-type#PATINF";
 
     /// <summary>
     /// Literal for code: Payor
@@ -92,8 +112,36 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPayor = "PAYOR";
 
     /// <summary>
+    /// Literal for code: ContactentityTypePayor
+    /// </summary>
+    public const string LiteralContactentityTypePayor = "http://hl7.org/fhir/contactentity-type#PAYOR";
+
+    /// <summary>
     /// Literal for code: Press
     /// </summary>
     public const string LiteralPress = "PRESS";
+
+    /// <summary>
+    /// Literal for code: ContactentityTypePress
+    /// </summary>
+    public const string LiteralContactentityTypePress = "http://hl7.org/fhir/contactentity-type#PRESS";
+
+    /// <summary>
+    /// Dictionary for looking up ContactentityType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ADMIN", Administrative }, 
+      { "http://hl7.org/fhir/contactentity-type#ADMIN", Administrative }, 
+      { "BILL", Billing }, 
+      { "http://hl7.org/fhir/contactentity-type#BILL", Billing }, 
+      { "HR", HumanResource }, 
+      { "http://hl7.org/fhir/contactentity-type#HR", HumanResource }, 
+      { "PATINF", Patient }, 
+      { "http://hl7.org/fhir/contactentity-type#PATINF", Patient }, 
+      { "PAYOR", Payor }, 
+      { "http://hl7.org/fhir/contactentity-type#PAYOR", Payor }, 
+      { "PRESS", Press }, 
+      { "http://hl7.org/fhir/contactentity-type#PRESS", Press }, 
+    };
   };
 }

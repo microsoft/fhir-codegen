@@ -38,8 +38,28 @@ namespace fhirCsR2.ValueSets
     public const string LiteralJson = "json";
 
     /// <summary>
+    /// Literal for code: ContentTypeJson
+    /// </summary>
+    public const string LiteralContentTypeJson = "http://hl7.org/fhir/content-type#json";
+
+    /// <summary>
     /// Literal for code: Xml
     /// </summary>
     public const string LiteralXml = "xml";
+
+    /// <summary>
+    /// Literal for code: ContentTypeXml
+    /// </summary>
+    public const string LiteralContentTypeXml = "http://hl7.org/fhir/content-type#xml";
+
+    /// <summary>
+    /// Dictionary for looking up ContentType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "json", Json }, 
+      { "http://hl7.org/fhir/content-type#json", Json }, 
+      { "xml", Xml }, 
+      { "http://hl7.org/fhir/content-type#xml", Xml }, 
+    };
   };
 }

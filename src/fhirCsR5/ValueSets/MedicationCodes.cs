@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class MedicationCodesCodes
   {
     /// <summary>
-    /// 
+    /// Product containing ketoprofen (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingKetoprofenMedicinalProduct = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing Cinchona alkaloid (product)
     /// </summary>
     public static readonly Coding ProductContainingCinchonaAlkaloidProduct = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing prednisone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPrednisoneMedicinalProduct = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mercaptopurine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMercaptopurineMedicinalProduct = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pentaerithrityl tetranitrate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPentaerithritylTetranitrateMedicinalProduct = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing doxycycline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDoxycyclineMedicinalProduct = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing lututrin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLututrinMedicinalProduct = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tocainide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTocainideMedicinalProduct = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multivitamin preparation
     /// </summary>
     public static readonly Coding MultivitaminPreparation = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing glucagon (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGlucagonMedicinalProduct = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing haloperidol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHaloperidolMedicinalProduct = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as antipsychotic agent (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsAntipsychoticAgentProduct = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing enzyme (product)
     /// </summary>
     public static readonly Coding ProductContainingEnzymeProduct = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tetracyclic antidepressant
     /// </summary>
     public static readonly Coding TetracyclicAntidepressant = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ticarcillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTicarcillinMedicinalProduct = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing vitamin D and vitamin D derivative (product)
     /// </summary>
     public static readonly Coding ProductContainingVitaminDAndVitaminDDerivativeProduct = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cetylpyridinium (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCetylpyridiniumMedicinalProduct = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as stool softener (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsStoolSoftenerProduct = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methysergide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethysergideMedicinalProduct = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypotensive agent
     /// </summary>
     public static readonly Coding HypotensiveAgent = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing doxepin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDoxepinMedicinalProduct = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing naproxen (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNaproxenMedicinalProduct = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing procainamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingProcainamideMedicinalProduct = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing alpha-2 adrenergic receptor antagonist (product)
     /// </summary>
     public static readonly Coding ProductContainingAlpha2AdrenergicReceptorAntagonistProduct = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nystatin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNystatinMedicinalProduct = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing metronidazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMetronidazoleMedicinalProduct = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pancreatin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPancreatinMedicinalProduct = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diatrizoate-containing product
     /// </summary>
     public static readonly Coding DiatrizoateContainingProduct = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing oxytocin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOxytocinMedicinalProduct = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing vinblastine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingVinblastineMedicinalProduct = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing magnesium citrate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMagnesiumCitrateMedicinalProduct = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing triamterene (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTriamtereneMedicinalProduct = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing emetine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEmetineMedicinalProduct = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing estradiol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEstradiolMedicinalProduct = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dextran (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDextranMedicinalProduct = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing salsalate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSalsalateMedicinalProduct = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefadroxil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefadroxilMedicinalProduct = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nortriptyline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNortriptylineMedicinalProduct = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing minocycline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMinocyclineMedicinalProduct = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing acetylcholine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAcetylcholineMedicinalProduct = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bisacodyl (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBisacodylMedicinalProduct = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pyrazinamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPyrazinamideMedicinalProduct = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dimercaprol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDimercaprolMedicinalProduct = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing iron in oral dose form (medicinal product form)
     /// </summary>
     public static readonly Coding ProductContainingIronInOralDoseFormMedicinalProductForm = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing naftifine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNaftifineMedicinalProduct = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing biotin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBiotinMedicinalProduct = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing beclometasone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBeclometasoneMedicinalProduct = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing spironolactone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSpironolactoneMedicinalProduct = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing butorphanol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingButorphanolMedicinalProduct = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing valproic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingValproicAcidMedicinalProduct = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing opioid receptor antagonist (product)
     /// </summary>
     public static readonly Coding ProductContainingOpioidReceptorAntagonistProduct = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing capreomycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCapreomycinMedicinalProduct = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing calamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCalamineMedicinalProduct = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing acetylcholine receptor antagonist (product)
     /// </summary>
     public static readonly Coding ProductContainingAcetylcholineReceptorAntagonistProduct = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phenethicillin-containing product
     /// </summary>
     public static readonly Coding PhenethicillinContainingProduct = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chloroquine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChloroquineMedicinalProduct = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing trimethobenzamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTrimethobenzamideMedicinalProduct = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cocaine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCocaineMedicinalProduct = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing enalapril (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEnalaprilMedicinalProduct = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing folinic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFolinicAcidMedicinalProduct = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phenanthrene derivative (product)
     /// </summary>
     public static readonly Coding ProductContainingPhenanthreneDerivativeProduct = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing levodopa (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLevodopaMedicinalProduct = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ethinylestradiol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEthinylestradiolMedicinalProduct = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as saluretic (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsSalureticProduct = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing beta-1 adrenergic receptor antagonist (product)
     /// </summary>
     public static readonly Coding ProductContainingBeta1AdrenergicReceptorAntagonistProduct = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ethanolamine derivative histamine receptor antagonist product
     /// </summary>
     public static readonly Coding EthanolamineDerivativeHistamineReceptorAntagonistProduct = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing azatadine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAzatadineMedicinalProduct = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dexchlorpheniramine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDexchlorpheniramineMedicinalProduct = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing terfenadine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTerfenadineMedicinalProduct = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing benzodiazepine (product)
     /// </summary>
     public static readonly Coding ProductContainingBenzodiazepineProduct = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing antivenom (product)
     /// </summary>
     public static readonly Coding ProductContainingAntivenomProduct = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-steroidal anti-inflammatory agent
     /// </summary>
     public static readonly Coding NonSteroidalAntiInflammatoryAgent = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hydrocortisone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHydrocortisoneMedicinalProduct = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing Streptococcus equisimilis antiserum and Streptococcus suis antiserum (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingStreptococcusEquisimilisAntiserumAndStreptococcusSuisAntiserumMedicinalProduct = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefradine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefradineMedicinalProduct = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Conjugated estrogens-containing product
     /// </summary>
     public static readonly Coding ConjugatedEstrogensContainingProduct = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing urea (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingUreaMedicinalProduct = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sulfathiazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSulfathiazoleMedicinalProduct = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hypothalamic releasing factor (product)
     /// </summary>
     public static readonly Coding ProductContainingHypothalamicReleasingFactorProduct = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing proguanil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingProguanilMedicinalProduct = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing lithium carbonate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLithiumCarbonateMedicinalProduct = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dapsone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDapsoneMedicinalProduct = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing anti-infective
     /// </summary>
     public static readonly Coding ProductContainingAntiInfective = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing paramethasone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingParamethasoneMedicinalProduct = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing corn oil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCornOilMedicinalProduct = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing motilin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMotilinMedicinalProduct = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radioisotope
     /// </summary>
     public static readonly Coding DiagnosticRadioisotope = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing lithium citrate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLithiumCitrateMedicinalProduct = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing polyvalent crotalidae antivenom (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPolyvalentCrotalidaeAntivenomMedicinalProduct = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skeletal muscle relaxant
     /// </summary>
     public static readonly Coding SkeletalMuscleRelaxant = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing auranofin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAuranofinMedicinalProduct = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fluocinonide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFluocinonideMedicinalProduct = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing plicamycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPlicamycinMedicinalProduct = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing oxychlorosene (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOxychloroseneMedicinalProduct = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pindolol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPindololMedicinalProduct = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing diphemanil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDiphemanilMedicinalProduct = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methylphenidate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethylphenidateMedicinalProduct = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing potassium exchange resin (product)
     /// </summary>
     public static readonly Coding ProductContainingPotassiumExchangeResinProduct = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hexachlorophene (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHexachloropheneMedicinalProduct = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing asparaginase (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAsparaginaseMedicinalProduct = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing permethrin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPermethrinMedicinalProduct = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hydroflumethiazide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHydroflumethiazideMedicinalProduct = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing econazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEconazoleMedicinalProduct = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing didanosine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDidanosineMedicinalProduct = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing lorazepam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLorazepamMedicinalProduct = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing prilocaine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPrilocaineMedicinalProduct = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sulfinpyrazone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSulfinpyrazoneMedicinalProduct = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing flurazepam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFlurazepamMedicinalProduct = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing netilmicin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNetilmicinMedicinalProduct = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parasympathomimetic agent-containing product
     /// </summary>
     public static readonly Coding ParasympathomimeticAgentContainingProduct = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing diclofenamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDiclofenamideMedicinalProduct = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing silver sulfadiazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSilverSulfadiazineMedicinalProduct = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing alkylating agent (product)
     /// </summary>
     public static readonly Coding ProductContainingAlkylatingAgentProduct = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bacitracin-containing product in ocular dose form
     /// </summary>
     public static readonly Coding BacitracinContainingProductInOcularDoseForm = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ceftriaxone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCeftriaxoneMedicinalProduct = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing somatotropin releasing factor (product)
     /// </summary>
     public static readonly Coding ProductContainingSomatotropinReleasingFactorProduct = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dextromethorphan (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDextromethorphanMedicinalProduct = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nafoxidine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNafoxidineMedicinalProduct = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dihydrotachysterol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDihydrotachysterolMedicinalProduct = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hydrocodone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHydrocodoneMedicinalProduct = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing choriogonadotropin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChoriogonadotropinMedicinalProduct = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing diflunisal (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDiflunisalMedicinalProduct = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lipotropic agent
     /// </summary>
     public static readonly Coding LipotropicAgent = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing norethandrolone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNorethandroloneMedicinalProduct = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pargyline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPargylineMedicinalProduct = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing magnesium trisilicate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMagnesiumTrisilicateMedicinalProduct = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cromoglicic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCromoglicicAcidMedicinalProduct = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing iron dextran (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIronDextranMedicinalProduct = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tetryzoline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTetryzolineMedicinalProduct = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing trihexyphenidyl (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTrihexyphenidylMedicinalProduct = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing Erysipelothrix rhusiopathiae antiserum (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingErysipelothrixRhusiopathiaeAntiserumMedicinalProduct = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hormone (product)
     /// </summary>
     public static readonly Coding ProductContainingHormoneProduct = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing metolazone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMetolazoneMedicinalProduct = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methandriol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethandriolMedicinalProduct = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing aldosterone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAldosteroneMedicinalProduct = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing depolarizing neuromuscular blocker (product)
     /// </summary>
     public static readonly Coding ProductContainingDepolarizingNeuromuscularBlockerProduct = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing calcitonin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCalcitoninMedicinalProduct = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing amfetamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAmfetamineMedicinalProduct = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hydralazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHydralazineMedicinalProduct = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing oxytetracycline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOxytetracyclineMedicinalProduct = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing vincristine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingVincristineMedicinalProduct = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing antiserum (product)
     /// </summary>
     public static readonly Coding ProductContainingAntiserumProduct = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phenmetrazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhenmetrazineMedicinalProduct = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sulfacetamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSulfacetamideMedicinalProduct = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cascara (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCascaraMedicinalProduct = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as antianemic agent (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsAntianemicAgentProduct = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ethambutol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEthambutolMedicinalProduct = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methylcellulose (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethylcelluloseMedicinalProduct = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing Salmonella typhimurium antiserum (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSalmonellaTyphimuriumAntiserumMedicinalProduct = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hexetidine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHexetidineMedicinalProduct = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tripelennamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTripelennamineMedicinalProduct = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing carisoprodol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCarisoprodolMedicinalProduct = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cholecystokinin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCholecystokininMedicinalProduct = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing trilostane (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTrilostaneMedicinalProduct = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing allopurinol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAllopurinolMedicinalProduct = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ichthammol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIchthammolMedicinalProduct = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing barium sulfate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBariumSulfateMedicinalProduct = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing omeprazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOmeprazoleMedicinalProduct = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing busulfan (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBusulfanMedicinalProduct = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing terconazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTerconazoleMedicinalProduct = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing lincomycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLincomycinMedicinalProduct = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing triprolidine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTriprolidineMedicinalProduct = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dimetindene (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDimetindeneMedicinalProduct = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing glipizide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGlipizideMedicinalProduct = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing muscarinic receptor antagonist (product)
     /// </summary>
     public static readonly Coding ProductContainingMuscarinicReceptorAntagonistProduct = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hexestrol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHexestrolMedicinalProduct = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemostatic agent
     /// </summary>
     public static readonly Coding HemostaticAgent = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing diphenhydramine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDiphenhydramineMedicinalProduct = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cyproheptadine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCyproheptadineMedicinalProduct = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing deserpidine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDeserpidineMedicinalProduct = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dobutamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDobutamineMedicinalProduct = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pancreatic hormone (product)
     /// </summary>
     public static readonly Coding ProductContainingPancreaticHormoneProduct = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing droperidol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDroperidolMedicinalProduct = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Digestant
     /// </summary>
     public static readonly Coding Digestant = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ferrous gluconate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFerrousGluconateMedicinalProduct = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing oxandrolone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOxandroloneMedicinalProduct = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing midazolam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMidazolamMedicinalProduct = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing burbot liver oil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBurbotLiverOilMedicinalProduct = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing heavy metal antagonist (product)
     /// </summary>
     public static readonly Coding ProductContainingHeavyMetalAntagonistProduct = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bupivacaine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBupivacaineMedicinalProduct = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methylprednisolone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethylprednisoloneMedicinalProduct = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing zidovudine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingZidovudineMedicinalProduct = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parathyroid hormone agent-containing product
     /// </summary>
     public static readonly Coding ParathyroidHormoneAgentContainingProduct = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing alteplase (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAlteplaseMedicinalProduct = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing amoxicillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAmoxicillinMedicinalProduct = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing piroxicam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPiroxicamMedicinalProduct = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antineoplastic agent
     /// </summary>
     public static readonly Coding AntineoplasticAgent = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pentostatin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPentostatinMedicinalProduct = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing doxapram (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDoxapramMedicinalProduct = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing alpha-carboxypenicillin (product)
     /// </summary>
     public static readonly Coding ProductContainingAlphaCarboxypenicillinProduct = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methscopolamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethscopolamineMedicinalProduct = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fluocinolone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFluocinoloneMedicinalProduct = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing flucytosine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFlucytosineMedicinalProduct = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chloral hydrate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChloralHydrateMedicinalProduct = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ethisterone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEthisteroneMedicinalProduct = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing percoid liver oil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPercoidLiverOilMedicinalProduct = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing halcinonide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHalcinonideMedicinalProduct = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mitobronitol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMitobronitolMedicinalProduct = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mersalyl (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMersalylMedicinalProduct = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing oxymetazoline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOxymetazolineMedicinalProduct = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mechlorethamine-containing product
     /// </summary>
     public static readonly Coding MechlorethamineContainingProduct = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing rifampicin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingRifampicinMedicinalProduct = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing captopril (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCaptoprilMedicinalProduct = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic aid
     /// </summary>
     public static readonly Coding DiagnosticAid = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing beta tocopherol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBetaTocopherolMedicinalProduct = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing amoxapine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAmoxapineMedicinalProduct = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing isocarboxazid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIsocarboxazidMedicinalProduct = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing betamethasone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBetamethasoneMedicinalProduct = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cyanocobalamin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCyanocobalaminMedicinalProduct = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing senna (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSennaMedicinalProduct = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing spiramycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSpiramycinMedicinalProduct = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing thiamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingThiamineMedicinalProduct = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cisapride (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCisaprideMedicinalProduct = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing flumetasone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFlumetasoneMedicinalProduct = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing erythromycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingErythromycinMedicinalProduct = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing clomifene (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingClomifeneMedicinalProduct = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as diuretic (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsDiureticProduct = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing iron (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIronMedicinalProduct = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mannitol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMannitolMedicinalProduct = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methyprylon (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethyprylonMedicinalProduct = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dienestrol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDienestrolMedicinalProduct = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ampicillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAmpicillinMedicinalProduct = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hydrogen peroxide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHydrogenPeroxideMedicinalProduct = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fluorouracil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFluorouracilMedicinalProduct = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing Streptococcus equisimilis antiserum (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingStreptococcusEquisimilisAntiserumMedicinalProduct = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing quinidine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingQuinidineMedicinalProduct = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing buprenorphine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBuprenorphineMedicinalProduct = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bethanechol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBethanecholMedicinalProduct = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pentamidine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPentamidineMedicinalProduct = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fluconazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFluconazoleMedicinalProduct = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pramocaine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPramocaineMedicinalProduct = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing antiviral (product)
     /// </summary>
     public static readonly Coding ProductContainingAntiviralProduct = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing enflurane (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEnfluraneMedicinalProduct = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing melanocyte stimulating hormone releasing factor (product)
     /// </summary>
     public static readonly Coding ProductContainingMelanocyteStimulatingHormoneReleasingFactorProduct = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing probucol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingProbucolMedicinalProduct = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as antiseborrheic agent (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsAntiseborrheicAgentProduct = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ergotamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingErgotamineMedicinalProduct = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ergosterol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingErgosterolMedicinalProduct = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing trimethoprim (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTrimethoprimMedicinalProduct = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing maprotiline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMaprotilineMedicinalProduct = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing domperidone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDomperidoneMedicinalProduct = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing thiosalicylate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingThiosalicylateMedicinalProduct = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tolbutamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTolbutamideMedicinalProduct = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tricyclic antidepressant
     /// </summary>
     public static readonly Coding TricyclicAntidepressant = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pentobarbital (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPentobarbitalMedicinalProduct = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing beta adrenergic receptor antagonist (product)
     /// </summary>
     public static readonly Coding ProductContainingBetaAdrenergicReceptorAntagonistProduct = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefotaxime (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefotaximeMedicinalProduct = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing desipramine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDesipramineMedicinalProduct = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing thioridazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingThioridazineMedicinalProduct = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing glycoside (product)
     /// </summary>
     public static readonly Coding ProductContainingGlycosideProduct = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing acetazolamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAcetazolamideMedicinalProduct = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing carbachol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCarbacholMedicinalProduct = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as mydriatic (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsMydriaticProduct = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing Streptococcus suis antiserum (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingStreptococcusSuisAntiserumMedicinalProduct = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sulfonylurea (product)
     /// </summary>
     public static readonly Coding ProductContainingSulfonylureaProduct = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing oxyquinoline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOxyquinolineMedicinalProduct = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mefenamic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMefenamicAcidMedicinalProduct = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tolazamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTolazamideMedicinalProduct = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing natamycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNatamycinMedicinalProduct = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing thyroglobulin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingThyroglobulinMedicinalProduct = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing zalcitabine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingZalcitabineMedicinalProduct = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing carbenicillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCarbenicillinMedicinalProduct = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cod liver oil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCodLiverOilMedicinalProduct = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hydrocortisone in ocular dose form (medicinal product form)
     /// </summary>
     public static readonly Coding ProductContainingHydrocortisoneInOcularDoseFormMedicinalProductForm = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing benzethonium (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBenzethoniumMedicinalProduct = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing orphenadrine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOrphenadrineMedicinalProduct = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ribavirin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingRibavirinMedicinalProduct = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing gemfibrozil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGemfibrozilMedicinalProduct = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing daunorubicin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDaunorubicinMedicinalProduct = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing paraldehyde (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingParaldehydeMedicinalProduct = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing calcium exchange resin (product)
     /// </summary>
     public static readonly Coding ProductContainingCalciumExchangeResinProduct = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing silver nitrate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSilverNitrateMedicinalProduct = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hydrocortamate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHydrocortamateMedicinalProduct = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing oxybutynin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOxybutyninMedicinalProduct = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing medazepam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMedazepamMedicinalProduct = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pyrantel (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPyrantelMedicinalProduct = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing imipramine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingImipramineMedicinalProduct = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing thiethylperazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingThiethylperazineMedicinalProduct = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as antidepressant agent (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsAntidepressantAgentProduct = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing primaquine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPrimaquineMedicinalProduct = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ambenonium (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAmbenoniumMedicinalProduct = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tiabendazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTiabendazoleMedicinalProduct = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing medroxyprogesterone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMedroxyprogesteroneMedicinalProduct = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing propantheline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPropanthelineMedicinalProduct = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ceftazidime (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCeftazidimeMedicinalProduct = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phenindamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhenindamineMedicinalProduct = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing quinolone and antibiotic
     /// </summary>
     public static readonly Coding ProductContainingQuinoloneAndAntibiotic = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing vidarabine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingVidarabineMedicinalProduct = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing magnesium sulfate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMagnesiumSulfateMedicinalProduct = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefalotin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefalotinMedicinalProduct = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tubocurarine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTubocurarineMedicinalProduct = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing thyroxine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingThyroxineMedicinalProduct = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing propylthiouracil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPropylthiouracilMedicinalProduct = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tolnaftate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTolnaftateMedicinalProduct = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing succinylcholine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSuccinylcholineMedicinalProduct = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing polysaccharide-iron complex (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPolysaccharideIronComplexMedicinalProduct = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ibuprofen (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIbuprofenMedicinalProduct = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing isotretinoin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIsotretinoinMedicinalProduct = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product manufactured as otic dose form (product)
     /// </summary>
     public static readonly Coding ProductManufacturedAsOticDoseFormProduct = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing megestrol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMegestrolMedicinalProduct = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Proliferant agent
     /// </summary>
     public static readonly Coding ProliferantAgent = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing acetohexamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAcetohexamideMedicinalProduct = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methohexital (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethohexitalMedicinalProduct = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing famotidine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFamotidineMedicinalProduct = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phendimetrazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhendimetrazineMedicinalProduct = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Water balance agent
     /// </summary>
     public static readonly Coding WaterBalanceAgent = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phenoxymethylpenicillin-containing product
     /// </summary>
     public static readonly Coding PhenoxymethylpenicillinContainingProduct = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insulin-containing product
     /// </summary>
     public static readonly Coding InsulinContainingProduct = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing disulfiram (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDisulfiramMedicinalProduct = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pentazocine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPentazocineMedicinalProduct = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing para-aminobenzoic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingParaAminobenzoicAcidMedicinalProduct = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fructose (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFructoseMedicinalProduct = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phenyltoloxamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhenyltoloxamineMedicinalProduct = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ketoconazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingKetoconazoleMedicinalProduct = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing calcium lactate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCalciumLactateMedicinalProduct = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing etomidate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEtomidateMedicinalProduct = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bromelains (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBromelainsMedicinalProduct = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phenytoin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhenytoinMedicinalProduct = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methylergometrine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethylergometrineMedicinalProduct = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing amitriptyline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAmitriptylineMedicinalProduct = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fentanyl (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFentanylMedicinalProduct = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing carbamazepine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCarbamazepineMedicinalProduct = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing streptomycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingStreptomycinMedicinalProduct = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing beractant (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBeractantMedicinalProduct = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dipipanone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDipipanoneMedicinalProduct = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing lomustine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLomustineMedicinalProduct = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dinoprost (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDinoprostMedicinalProduct = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing metaraminol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMetaraminolMedicinalProduct = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing perphenazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPerphenazineMedicinalProduct = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing aciclovir (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAciclovirMedicinalProduct = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fluprednisolone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFluprednisoloneMedicinalProduct = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing propiomazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPropiomazineMedicinalProduct = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fluphenazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFluphenazineMedicinalProduct = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing enterogastrone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEnterogastroneMedicinalProduct = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing oxazolidinedione
     /// </summary>
     public static readonly Coding ProductContainingOxazolidinedione = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing corbadrine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCorbadrineMedicinalProduct = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dicycloverine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDicycloverineMedicinalProduct = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing angiotensin-converting enzyme inhibitor (product)
     /// </summary>
     public static readonly Coding ProductContainingAngiotensinConvertingEnzymeInhibitorProduct = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mazindol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMazindolMedicinalProduct = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bitolterol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBitolterolMedicinalProduct = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing vancomycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingVancomycinMedicinalProduct = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dexamethasone in ocular dose form (medicinal product form)
     /// </summary>
     public static readonly Coding ProductContainingDexamethasoneInOcularDoseFormMedicinalProductForm = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing penicillamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPenicillamineMedicinalProduct = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tolazoline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTolazolineMedicinalProduct = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing glutamic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGlutamicAcidMedicinalProduct = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methyltestosterone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethyltestosteroneMedicinalProduct = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing secobarbital (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSecobarbitalMedicinalProduct = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing procaine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingProcaineMedicinalProduct = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methylrosanilinium chloride (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethylrosaniliniumChlorideMedicinalProduct = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing Escherichia coli antiserum (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEscherichiaColiAntiserumMedicinalProduct = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing miconazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMiconazoleMedicinalProduct = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing magaldrate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMagaldrateMedicinalProduct = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chloramphenicol in ocular dose form (medicinal product form)
     /// </summary>
     public static readonly Coding ProductContainingChloramphenicolInOcularDoseFormMedicinalProductForm = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing misoprostol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMisoprostolMedicinalProduct = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dydrogesterone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDydrogesteroneMedicinalProduct = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Centrally acting hypotensive agent
     /// </summary>
     public static readonly Coding CentrallyActingHypotensiveAgent = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing flunisolide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFlunisolideMedicinalProduct = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Therapeutic radioisotope
     /// </summary>
     public static readonly Coding TherapeuticRadioisotope = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Analeptic agent
     /// </summary>
     public static readonly Coding AnalepticAgent = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing diperodon (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDiperodonMedicinalProduct = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing percomorph liver oil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPercomorphLiverOilMedicinalProduct = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing promazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPromazineMedicinalProduct = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydrocortisone-containing product in otic dose form
     /// </summary>
     public static readonly Coding HydrocortisoneContainingProductInOticDoseForm = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ethosuximide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEthosuximideMedicinalProduct = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dinoprostone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDinoprostoneMedicinalProduct = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefoperazone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefoperazoneMedicinalProduct = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing procyclidine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingProcyclidineMedicinalProduct = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing clemastine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingClemastineMedicinalProduct = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing terbutaline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTerbutalineMedicinalProduct = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing propylpiperazine derivative of phenothiazine (product)
     /// </summary>
     public static readonly Coding ProductContainingPropylpiperazineDerivativeOfPhenothiazineProduct = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tolmetin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTolmetinMedicinalProduct = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sulfasalazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSulfasalazineMedicinalProduct = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing gamma tocopherol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGammaTocopherolMedicinalProduct = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chlorambucil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChlorambucilMedicinalProduct = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychotherapeutic agent
     /// </summary>
     public static readonly Coding PsychotherapeuticAgent = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ascorbic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAscorbicAcidMedicinalProduct = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing haloprogin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHaloproginMedicinalProduct = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing encainide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEncainideMedicinalProduct = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing brilliant green (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBrilliantGreenMedicinalProduct = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing labetalol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLabetalolMedicinalProduct = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing flecainide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFlecainideMedicinalProduct = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methylphenobarbital (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethylphenobarbitalMedicinalProduct = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing salicylic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSalicylicAcidMedicinalProduct = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing edrophonium (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEdrophoniumMedicinalProduct = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing iothiouracil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIothiouracilMedicinalProduct = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing quinine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingQuinineMedicinalProduct = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing primidone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPrimidoneMedicinalProduct = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing aminoglutethimide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAminoglutethimideMedicinalProduct = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing medrysone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMedrysoneMedicinalProduct = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chlorpromazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChlorpromazineMedicinalProduct = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phenindione (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhenindioneMedicinalProduct = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nalidixic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNalidixicAcidMedicinalProduct = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing verapamil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingVerapamilMedicinalProduct = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ranitidine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingRanitidineMedicinalProduct = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing benzyl benzoate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBenzylBenzoateMedicinalProduct = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Emollient product
     /// </summary>
     public static readonly Coding EmollientProduct = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phenylbutazone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhenylbutazoneMedicinalProduct = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing diazepam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDiazepamMedicinalProduct = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing warfarin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingWarfarinMedicinalProduct = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing clobetasol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingClobetasolMedicinalProduct = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pancrelipase (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPancrelipaseMedicinalProduct = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing prolactin releasing factor (product)
     /// </summary>
     public static readonly Coding ProductContainingProlactinReleasingFactorProduct = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing calcium channel blocker (product)
     /// </summary>
     public static readonly Coding ProductContainingCalciumChannelBlockerProduct = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing amikacin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAmikacinMedicinalProduct = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dihydroergotamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDihydroergotamineMedicinalProduct = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hyoscyamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHyoscyamineMedicinalProduct = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing prednisolone in ocular dose form (medicinal product form)
     /// </summary>
     public static readonly Coding ProductContainingPrednisoloneInOcularDoseFormMedicinalProductForm = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Uricosuric agent
     /// </summary>
     public static readonly Coding UricosuricAgent = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing oxyphenbutazone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOxyphenbutazoneMedicinalProduct = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing protriptyline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingProtriptylineMedicinalProduct = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefaclor (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefaclorMedicinalProduct = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing norfloxacin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNorfloxacinMedicinalProduct = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing minoxidil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMinoxidilMedicinalProduct = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing carbenoxolone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCarbenoxoloneMedicinalProduct = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing Escherichia coli antiserum and Pasteurella multocida antiserum and Salmonella typhimurium antiserum (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEscherichiaColiAntiserumAndPasteurellaMultocidaAntiserumAndSalmonellaTyphimuriumAntiserumMedicinalProduct = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hexocyclium (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHexocycliumMedicinalProduct = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mucolytic agent
     /// </summary>
     public static readonly Coding MucolyticAgent = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing idoxuridine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIdoxuridineMedicinalProduct = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing blood group antibody D (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBloodGroupAntibodyDMedicinalProduct = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pheniramine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPheniramineMedicinalProduct = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hetastarch (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHetastarchMedicinalProduct = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing antitrichomonal (product)
     /// </summary>
     public static readonly Coding ProductContainingAntitrichomonalProduct = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing progesterone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingProgesteroneMedicinalProduct = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing levorphanol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLevorphanolMedicinalProduct = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing framycetin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFramycetinMedicinalProduct = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antithyroid agent
     /// </summary>
     public static readonly Coding AntithyroidAgent = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chloramphenicol in otic dose form (medicinal product form)
     /// </summary>
     public static readonly Coding ProductContainingChloramphenicolInOticDoseFormMedicinalProductForm = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dexamfetamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDexamfetamineMedicinalProduct = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sulfadimethoxine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSulfadimethoxineMedicinalProduct = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phenobarbital (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhenobarbitalMedicinalProduct = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing benzestrol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBenzestrolMedicinalProduct = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hyaluronidase (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHyaluronidaseMedicinalProduct = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing carmustine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCarmustineMedicinalProduct = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cycloserine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCycloserineMedicinalProduct = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing amantadine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAmantadineMedicinalProduct = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dehydrocholic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDehydrocholicAcidMedicinalProduct = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methadone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethadoneMedicinalProduct = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cephalosporin and antibiotic (product)
     /// </summary>
     public static readonly Coding ProductContainingCephalosporinAndAntibioticProduct = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing prenylamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPrenylamineMedicinalProduct = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing gastrin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGastrinMedicinalProduct = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as antiemetic agent (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsAntiemeticAgentProduct = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ferrous fumarate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFerrousFumarateMedicinalProduct = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing desonide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDesonideMedicinalProduct = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing prednisolone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPrednisoloneMedicinalProduct = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tar (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTarMedicinalProduct = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hydroxyamfetamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHydroxyamfetamineMedicinalProduct = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing clioquinol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingClioquinolMedicinalProduct = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as analgesic agent (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsAnalgesicAgentProduct = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phentermine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhentermineMedicinalProduct = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methacholine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethacholineMedicinalProduct = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fluoxetine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFluoxetineMedicinalProduct = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing flavoxate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFlavoxateMedicinalProduct = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing calcium gluconate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCalciumGluconateMedicinalProduct = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing Escherichia coli antibody (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEscherichiaColiAntibodyMedicinalProduct = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dithranol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDithranolMedicinalProduct = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing metyrapone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMetyraponeMedicinalProduct = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing domiphen (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDomiphenMedicinalProduct = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing flurbiprofen (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFlurbiprofenMedicinalProduct = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing levamisole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLevamisoleMedicinalProduct = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing melphalan (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMelphalanMedicinalProduct = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methoxamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethoxamineMedicinalProduct = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ergometrine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingErgometrineMedicinalProduct = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pethidine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPethidineMedicinalProduct = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ceftizoxime (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCeftizoximeMedicinalProduct = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing temazepam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTemazepamMedicinalProduct = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phenylephrine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhenylephrineMedicinalProduct = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing trifluperidol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTrifluperidolMedicinalProduct = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing isometheptene (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIsomethepteneMedicinalProduct = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing amfepramone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAmfepramoneMedicinalProduct = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefalexin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefalexinMedicinalProduct = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tretinoin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTretinoinMedicinalProduct = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing promethestrol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPromethestrolMedicinalProduct = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sodium lactate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSodiumLactateMedicinalProduct = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing calcium carbonate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCalciumCarbonateMedicinalProduct = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing azlocillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAzlocillinMedicinalProduct = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tetracaine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTetracaineMedicinalProduct = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sodium iothalamate (125-I) (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSodiumIothalamate125IMedicinalProduct = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing propranolol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPropranololMedicinalProduct = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Natural hormone preparation
     /// </summary>
     public static readonly Coding NaturalHormonePreparation = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing human menopausal gonadotropin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHumanMenopausalGonadotropinMedicinalProduct = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing aminophylline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAminophyllineMedicinalProduct = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing praziquantel (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPraziquantelMedicinalProduct = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hydroxyprogesterone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHydroxyprogesteroneMedicinalProduct = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dihydrotestosterone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDihydrotestosteroneMedicinalProduct = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mebendazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMebendazoleMedicinalProduct = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dexamethasone in nasal dose form (medicinal product form)
     /// </summary>
     public static readonly Coding ProductContainingDexamethasoneInNasalDoseFormMedicinalProductForm = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methenamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethenamineMedicinalProduct = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bretylium (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBretyliumMedicinalProduct = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing somatotropin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSomatotropinMedicinalProduct = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing brompheniramine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBrompheniramineMedicinalProduct = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing metoclopramide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMetoclopramideMedicinalProduct = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hydroxycarbamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHydroxycarbamideMedicinalProduct = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing polyestradiol phosphate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPolyestradiolPhosphateMedicinalProduct = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing etoposide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEtoposideMedicinalProduct = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing povidone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPovidoneMedicinalProduct = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chlorprothixene (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChlorprothixeneMedicinalProduct = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cisplatin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCisplatinMedicinalProduct = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chloramphenicol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChloramphenicolMedicinalProduct = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing Latrodectus mactans antivenom (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLatrodectusMactansAntivenomMedicinalProduct = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing oxiconazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOxiconazoleMedicinalProduct = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing demeclocycline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDemeclocyclineMedicinalProduct = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sodium bicarbonate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSodiumBicarbonateMedicinalProduct = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chlortetracycline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChlortetracyclineMedicinalProduct = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sodium tetradecyl sulfate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSodiumTetradecylSulfateMedicinalProduct = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefoxitin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefoxitinMedicinalProduct = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing gentamicin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGentamicinMedicinalProduct = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as anesthetic agent (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsAnestheticAgentProduct = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dihydrocodeine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDihydrocodeineMedicinalProduct = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing somatostatin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSomatostatinMedicinalProduct = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing isoprenaline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIsoprenalineMedicinalProduct = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing clidinium (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingClidiniumMedicinalProduct = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chlorothiazide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChlorothiazideMedicinalProduct = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chlortalidone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChlortalidoneMedicinalProduct = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antilipemic agent
     /// </summary>
     public static readonly Coding AntilipemicAgent = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing clotrimazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingClotrimazoleMedicinalProduct = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antiparkinson agent
     /// </summary>
     public static readonly Coding AntiparkinsonAgent = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phenazocine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhenazocineMedicinalProduct = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing papaverine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPapaverineMedicinalProduct = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing propylamine derivative and histamine receptor antagonist (product)
     /// </summary>
     public static readonly Coding ProductContainingPropylamineDerivativeAndHistamineReceptorAntagonistProduct = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing antimetabolite (product)
     /// </summary>
     public static readonly Coding ProductContainingAntimetaboliteProduct = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pituitary hormone (product)
     /// </summary>
     public static readonly Coding ProductContainingPituitaryHormoneProduct = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing clindamycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingClindamycinMedicinalProduct = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing trifluridine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTrifluridineMedicinalProduct = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing diazoxide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDiazoxideMedicinalProduct = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as vasodilator (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsVasodilatorProduct = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing antihemophilic factor agent (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAntihemophilicFactorAgentMedicinalProduct = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dopamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDopamineMedicinalProduct = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mitomycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMitomycinMedicinalProduct = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sulfonamide and antibiotic (product)
     /// </summary>
     public static readonly Coding ProductContainingSulfonamideAndAntibioticProduct = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing loxapine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLoxapineMedicinalProduct = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing astemizole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAstemizoleMedicinalProduct = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pyrimethamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPyrimethamineMedicinalProduct = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nondepolarizing neuromuscular blocker
     /// </summary>
     public static readonly Coding ProductContainingNondepolarizingNeuromuscularBlocker = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing niclosamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNiclosamideMedicinalProduct = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antitussive agent
     /// </summary>
     public static readonly Coding AntitussiveAgent = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing diltiazem (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDiltiazemMedicinalProduct = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pyridostigmine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPyridostigmineMedicinalProduct = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing indometacin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIndometacinMedicinalProduct = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as antacid agent (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsAntacidAgentProduct = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing triamcinolone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTriamcinoloneMedicinalProduct = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing magnesium hydroxide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMagnesiumHydroxideMedicinalProduct = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as astringent (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsAstringentProduct = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing lanatoside C (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLanatosideCMedicinalProduct = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing orciprenaline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOrciprenalineMedicinalProduct = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ecothiopate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEcothiopateMedicinalProduct = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing coal tar (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCoalTarMedicinalProduct = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing diethylcarbamazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDiethylcarbamazineMedicinalProduct = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing diamorphine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDiamorphineMedicinalProduct = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing barbiturate (product)
     /// </summary>
     public static readonly Coding ProductContainingBarbiturateProduct = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing thyroid hormone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingThyroidHormoneMedicinalProduct = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing baclofen (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBaclofenMedicinalProduct = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing prolactin inhibiting factor (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingProlactinInhibitingFactorMedicinalProduct = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing gas gangrene antitoxin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGasGangreneAntitoxinMedicinalProduct = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing oxymetholone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOxymetholoneMedicinalProduct = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing meprednisone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMeprednisoneMedicinalProduct = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing molindone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMolindoneMedicinalProduct = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing adrenal hormone (product)
     /// </summary>
     public static readonly Coding ProductContainingAdrenalHormoneProduct = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as laxative (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsLaxativeProduct = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing buclizine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBuclizineMedicinalProduct = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefamandole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefamandoleMedicinalProduct = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing meticillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMeticillinMedicinalProduct = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing estrogen (product)
     /// </summary>
     public static readonly Coding ProductContainingEstrogenProduct = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dichlorisone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDichlorisoneMedicinalProduct = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing anthelmintic (product)
     /// </summary>
     public static readonly Coding ProductContainingAnthelminticProduct = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Varicella-zoster virus antibody-containing product
     /// </summary>
     public static readonly Coding VaricellaZosterVirusAntibodyContainingProduct = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing naphazoline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNaphazolineMedicinalProduct = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing folic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFolicAcidMedicinalProduct = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tiotixene (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTiotixeneMedicinalProduct = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fluorometholone in ocular dose form (medicinal product form)
     /// </summary>
     public static readonly Coding ProductContainingFluorometholoneInOcularDoseFormMedicinalProductForm = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing precisely hydrogen peroxide 30 milligram/1 milliliter conventional release cutaneous solution (clinical drug)
     /// </summary>
     public static readonly Coding ProductContainingPreciselyHydrogenPeroxide30Milligram1MilliliterConventionalReleaseCutaneousSolutionClinicalDrug = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing clonidine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingClonidineMedicinalProduct = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as anticonvulsant agent (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsAnticonvulsantAgentProduct = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phytomenadione (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhytomenadioneMedicinalProduct = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing benzoic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBenzoicAcidMedicinalProduct = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fluoxymesterone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFluoxymesteroneMedicinalProduct = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nicotinic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNicotinicAcidMedicinalProduct = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing halothane (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHalothaneMedicinalProduct = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing penicillin and antibiotic (product)
     /// </summary>
     public static readonly Coding ProductContainingPenicillinAndAntibioticProduct = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing norethisterone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNorethisteroneMedicinalProduct = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing vitamin E and vitamin E derivative (product)
     /// </summary>
     public static readonly Coding ProductContainingVitaminEAndVitaminEDerivativeProduct = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Genitourinary smooth muscle relaxant
     /// </summary>
     public static readonly Coding GenitourinarySmoothMuscleRelaxant = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing amodiaquine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAmodiaquineMedicinalProduct = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dactinomycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDactinomycinMedicinalProduct = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methandrostenolone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethandrostenoloneMedicinalProduct = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing histamine receptor antagonist (product)
     /// </summary>
     public static readonly Coding ProductContainingHistamineReceptorAntagonistProduct = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing griseofulvin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGriseofulvinMedicinalProduct = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing terpin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTerpinMedicinalProduct = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Methixene-containing product
     /// </summary>
     public static readonly Coding MethixeneContainingProduct = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing diiodohydroxyquinoline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDiiodohydroxyquinolineMedicinalProduct = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methylthiouracil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethylthiouracilMedicinalProduct = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing benzocaine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBenzocaineMedicinalProduct = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ephedrine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEphedrineMedicinalProduct = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing biperiden (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBiperidenMedicinalProduct = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chloropyrilene (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChloropyrileneMedicinalProduct = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nalorphine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNalorphineMedicinalProduct = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing prostacyclin PGI2 (product)
     /// </summary>
     public static readonly Coding ProductContainingProstacyclinPGI2Product = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing epinephrine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEpinephrineMedicinalProduct = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastrointestinal smooth muscle relaxant
     /// </summary>
     public static readonly Coding GastrointestinalSmoothMuscleRelaxant = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing vitamin K5 (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingVitaminK5MedicinalProduct = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protective agent
     /// </summary>
     public static readonly Coding ProtectiveAgent = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dantron (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDantronMedicinalProduct = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing Micrurus fulvius antivenom (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMicrurusFulviusAntivenomMedicinalProduct = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing probenecid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingProbenecidMedicinalProduct = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing flunisolide in nasal dose form (medicinal product form)
     /// </summary>
     public static readonly Coding ProductContainingFlunisolideInNasalDoseFormMedicinalProductForm = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing zinc sulfate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingZincSulfateMedicinalProduct = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tetracycline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTetracyclineMedicinalProduct = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing androgen receptor agonist (product)
     /// </summary>
     public static readonly Coding ProductContainingAndrogenReceptorAgonistProduct = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pantothenic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPantothenicAcidMedicinalProduct = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing isoflurane (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIsofluraneMedicinalProduct = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing theophylline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTheophyllineMedicinalProduct = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing stanozolol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingStanozololMedicinalProduct = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pigmenting agent
     /// </summary>
     public static readonly Coding PigmentingAgent = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dipyridamole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDipyridamoleMedicinalProduct = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing aluminium chloride (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAluminiumChlorideMedicinalProduct = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methyclothiazide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethyclothiazideMedicinalProduct = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing colestipol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingColestipolMedicinalProduct = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abortifacient agent
     /// </summary>
     public static readonly Coding AbortifacientAgent = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing lymphocyte immunoglobulin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLymphocyteImmunoglobulinMedicinalProduct = new Coding
     {
@@ -5574,7 +5574,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing acylaminopenicillin (product)
     /// </summary>
     public static readonly Coding ProductContainingAcylaminopenicillinProduct = new Coding
     {
@@ -5583,7 +5583,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing alpha adrenergic receptor antagonist (product)
     /// </summary>
     public static readonly Coding ProductContainingAlphaAdrenergicReceptorAntagonistProduct = new Coding
     {
@@ -5592,7 +5592,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as antiarrhythmic agent (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsAntiarrhythmicAgentProduct = new Coding
     {
@@ -5601,7 +5601,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing paclitaxel (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPaclitaxelMedicinalProduct = new Coding
     {
@@ -5610,7 +5610,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing second generation cephalosporin (product)
     /// </summary>
     public static readonly Coding ProductContainingSecondGenerationCephalosporinProduct = new Coding
     {
@@ -5619,7 +5619,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing apomorphine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingApomorphineMedicinalProduct = new Coding
     {
@@ -5628,7 +5628,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing acebutolol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAcebutololMedicinalProduct = new Coding
     {
@@ -5637,7 +5637,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing calcitriol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCalcitriolMedicinalProduct = new Coding
     {
@@ -5646,7 +5646,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing calcium chloride (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCalciumChlorideMedicinalProduct = new Coding
     {
@@ -5655,7 +5655,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing somatomedin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSomatomedinMedicinalProduct = new Coding
     {
@@ -5664,7 +5664,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing carbonic anhydrase inhibitor (product)
     /// </summary>
     public static readonly Coding ProductContainingCarbonicAnhydraseInhibitorProduct = new Coding
     {
@@ -5673,7 +5673,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydrogen peroxide 300 mg/mL cutaneous solution
     /// </summary>
     public static readonly Coding HydrogenPeroxide300MgMLCutaneousSolution = new Coding
     {
@@ -5682,7 +5682,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cloxacillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCloxacillinMedicinalProduct = new Coding
     {
@@ -5691,7 +5691,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing isoflurophate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIsoflurophateMedicinalProduct = new Coding
     {
@@ -5700,7 +5700,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing doxorubicin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDoxorubicinMedicinalProduct = new Coding
     {
@@ -5709,7 +5709,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sodium propionate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSodiumPropionateMedicinalProduct = new Coding
     {
@@ -5718,7 +5718,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing secretin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSecretinMedicinalProduct = new Coding
     {
@@ -5727,7 +5727,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sodium aurothiomalate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSodiumAurothiomalateMedicinalProduct = new Coding
     {
@@ -5736,7 +5736,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing isoxsuprine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIsoxsuprineMedicinalProduct = new Coding
     {
@@ -5745,7 +5745,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methotrexate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethotrexateMedicinalProduct = new Coding
     {
@@ -5754,7 +5754,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing penicillinase-resistant penicillin (product)
     /// </summary>
     public static readonly Coding ProductContainingPenicillinaseResistantPenicillinProduct = new Coding
     {
@@ -5763,7 +5763,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dantrolene (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDantroleneMedicinalProduct = new Coding
     {
@@ -5772,7 +5772,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing guanadrel (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGuanadrelMedicinalProduct = new Coding
     {
@@ -5781,7 +5781,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing amiodarone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAmiodaroneMedicinalProduct = new Coding
     {
@@ -5790,7 +5790,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as miotic (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsMioticProduct = new Coding
     {
@@ -5799,7 +5799,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ciclacillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCiclacillinMedicinalProduct = new Coding
     {
@@ -5808,7 +5808,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as immunosuppressant (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsImmunosuppressantProduct = new Coding
     {
@@ -5817,7 +5817,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing menadione (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMenadioneMedicinalProduct = new Coding
     {
@@ -5826,7 +5826,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing polymyxin B (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPolymyxinBMedicinalProduct = new Coding
     {
@@ -5835,7 +5835,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing clonazepam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingClonazepamMedicinalProduct = new Coding
     {
@@ -5844,7 +5844,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing opium (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOpiumMedicinalProduct = new Coding
     {
@@ -5853,7 +5853,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing altretamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAltretamineMedicinalProduct = new Coding
     {
@@ -5862,7 +5862,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing aztreonam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAztreonamMedicinalProduct = new Coding
     {
@@ -5871,7 +5871,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sucralfate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSucralfateMedicinalProduct = new Coding
     {
@@ -5880,7 +5880,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sulfamethoxazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSulfamethoxazoleMedicinalProduct = new Coding
     {
@@ -5889,7 +5889,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sulfamethizole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSulfamethizoleMedicinalProduct = new Coding
     {
@@ -5898,7 +5898,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing piperazine derivative and histamine receptor antagonist (product)
     /// </summary>
     public static readonly Coding ProductContainingPiperazineDerivativeAndHistamineReceptorAntagonistProduct = new Coding
     {
@@ -5907,7 +5907,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sodium chloride (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSodiumChlorideMedicinalProduct = new Coding
     {
@@ -5916,7 +5916,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fish liver oil-containing product
     /// </summary>
     public static readonly Coding FishLiverOilContainingProduct = new Coding
     {
@@ -5925,7 +5925,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing deferoxamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDeferoxamineMedicinalProduct = new Coding
     {
@@ -5934,7 +5934,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pemoline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPemolineMedicinalProduct = new Coding
     {
@@ -5943,7 +5943,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chymotrypsin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChymotrypsinMedicinalProduct = new Coding
     {
@@ -5952,7 +5952,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing meprobamate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMeprobamateMedicinalProduct = new Coding
     {
@@ -5961,7 +5961,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing metoprolol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMetoprololMedicinalProduct = new Coding
     {
@@ -5970,7 +5970,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing demecarium (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDemecariumMedicinalProduct = new Coding
     {
@@ -5979,7 +5979,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing snake antivenom immunoglobulin (product)
     /// </summary>
     public static readonly Coding ProductContainingSnakeAntivenomImmunoglobulinProduct = new Coding
     {
@@ -5988,7 +5988,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiographic contrast media
     /// </summary>
     public static readonly Coding RadiographicContrastMedia = new Coding
     {
@@ -5997,7 +5997,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing kanamycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingKanamycinMedicinalProduct = new Coding
     {
@@ -6006,7 +6006,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mupirocin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMupirocinMedicinalProduct = new Coding
     {
@@ -6015,7 +6015,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fludroxycortide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFludroxycortideMedicinalProduct = new Coding
     {
@@ -6024,7 +6024,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing Podophyllum resin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPodophyllumResinMedicinalProduct = new Coding
     {
@@ -6033,7 +6033,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ergocalciferol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingErgocalciferolMedicinalProduct = new Coding
     {
@@ -6042,7 +6042,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing monobasic sodium phosphate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMonobasicSodiumPhosphateMedicinalProduct = new Coding
     {
@@ -6051,7 +6051,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chlormezanone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChlormezanoneMedicinalProduct = new Coding
     {
@@ -6060,7 +6060,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing magnesium carbonate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMagnesiumCarbonateMedicinalProduct = new Coding
     {
@@ -6069,7 +6069,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing trifluoperazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTrifluoperazineMedicinalProduct = new Coding
     {
@@ -6078,7 +6078,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ferrous sulfate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFerrousSulfateMedicinalProduct = new Coding
     {
@@ -6087,7 +6087,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing medrysone in ocular dose form (medicinal product form)
     /// </summary>
     public static readonly Coding ProductContainingMedrysoneInOcularDoseFormMedicinalProductForm = new Coding
     {
@@ -6096,7 +6096,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing glyceryl trinitrate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGlycerylTrinitrateMedicinalProduct = new Coding
     {
@@ -6105,7 +6105,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing monoamine oxidase inhibitor (product)
     /// </summary>
     public static readonly Coding ProductContainingMonoamineOxidaseInhibitorProduct = new Coding
     {
@@ -6114,7 +6114,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fenoprofen (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFenoprofenMedicinalProduct = new Coding
     {
@@ -6123,7 +6123,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cytotoxic agent
     /// </summary>
     public static readonly Coding CytotoxicAgent = new Coding
     {
@@ -6132,7 +6132,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cyclandelate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCyclandelateMedicinalProduct = new Coding
     {
@@ -6141,7 +6141,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ethylenediamine derivative and histamine receptor antagonist (product)
     /// </summary>
     public static readonly Coding ProductContainingEthylenediamineDerivativeAndHistamineReceptorAntagonistProduct = new Coding
     {
@@ -6150,7 +6150,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing metacycline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMetacyclineMedicinalProduct = new Coding
     {
@@ -6159,7 +6159,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tioguanine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTioguanineMedicinalProduct = new Coding
     {
@@ -6168,7 +6168,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing colestyramine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingColestyramineMedicinalProduct = new Coding
     {
@@ -6177,7 +6177,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing scopolamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingScopolamineMedicinalProduct = new Coding
     {
@@ -6186,7 +6186,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing indocyanine green (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIndocyanineGreenMedicinalProduct = new Coding
     {
@@ -6195,7 +6195,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing clofazimine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingClofazimineMedicinalProduct = new Coding
     {
@@ -6204,7 +6204,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sodium salicylate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSodiumSalicylateMedicinalProduct = new Coding
     {
@@ -6213,7 +6213,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing colistin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingColistinMedicinalProduct = new Coding
     {
@@ -6222,7 +6222,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing neomycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNeomycinMedicinalProduct = new Coding
     {
@@ -6231,7 +6231,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing colchicine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingColchicineMedicinalProduct = new Coding
     {
@@ -6240,7 +6240,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing menthol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMentholMedicinalProduct = new Coding
     {
@@ -6249,7 +6249,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing iodipamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIodipamideMedicinalProduct = new Coding
     {
@@ -6258,7 +6258,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mecamylamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMecamylamineMedicinalProduct = new Coding
     {
@@ -6267,7 +6267,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing trazodone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTrazodoneMedicinalProduct = new Coding
     {
@@ -6276,7 +6276,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing desmopressin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDesmopressinMedicinalProduct = new Coding
     {
@@ -6285,7 +6285,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing morphine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMorphineMedicinalProduct = new Coding
     {
@@ -6294,7 +6294,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dipivefrin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDipivefrinMedicinalProduct = new Coding
     {
@@ -6303,7 +6303,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing amobarbital (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAmobarbitalMedicinalProduct = new Coding
     {
@@ -6312,7 +6312,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing extended spectrum penicillin (product)
     /// </summary>
     public static readonly Coding ProductContainingExtendedSpectrumPenicillinProduct = new Coding
     {
@@ -6321,7 +6321,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing thyrotropin releasing factor (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingThyrotropinReleasingFactorMedicinalProduct = new Coding
     {
@@ -6330,7 +6330,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing atropine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAtropineMedicinalProduct = new Coding
     {
@@ -6339,7 +6339,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefuroxime (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefuroximeMedicinalProduct = new Coding
     {
@@ -6348,7 +6348,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mepenzolate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMepenzolateMedicinalProduct = new Coding
     {
@@ -6357,7 +6357,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing prazepam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPrazepamMedicinalProduct = new Coding
     {
@@ -6366,7 +6366,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing atracurium (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAtracuriumMedicinalProduct = new Coding
     {
@@ -6375,7 +6375,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing indapamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIndapamideMedicinalProduct = new Coding
     {
@@ -6384,7 +6384,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing vitamin K and vitamin K derivative (product)
     /// </summary>
     public static readonly Coding ProductContainingVitaminKAndVitaminKDerivativeProduct = new Coding
     {
@@ -6393,7 +6393,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cyclophosphamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCyclophosphamideMedicinalProduct = new Coding
     {
@@ -6402,7 +6402,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as potassium supplement (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsPotassiumSupplementProduct = new Coding
     {
@@ -6411,7 +6411,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing piperacillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPiperacillinMedicinalProduct = new Coding
     {
@@ -6420,7 +6420,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hydroquinone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHydroquinoneMedicinalProduct = new Coding
     {
@@ -6429,7 +6429,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Succinimide-containing product
     /// </summary>
     public static readonly Coding SuccinimideContainingProduct = new Coding
     {
@@ -6438,7 +6438,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing propofol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPropofolMedicinalProduct = new Coding
     {
@@ -6447,7 +6447,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phenoxybenzamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhenoxybenzamineMedicinalProduct = new Coding
     {
@@ -6456,7 +6456,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing naturally occurring alkaloid (product)
     /// </summary>
     public static readonly Coding ProductContainingNaturallyOccurringAlkaloidProduct = new Coding
     {
@@ -6465,7 +6465,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pipenzolate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPipenzolateMedicinalProduct = new Coding
     {
@@ -6474,7 +6474,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing acetohydroxamic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAcetohydroxamicAcidMedicinalProduct = new Coding
     {
@@ -6483,7 +6483,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing 11-deoxycorticosterone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContaining11DeoxycorticosteroneMedicinalProduct = new Coding
     {
@@ -6492,7 +6492,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mometasone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMometasoneMedicinalProduct = new Coding
     {
@@ -6501,7 +6501,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dexbrompheniramine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDexbrompheniramineMedicinalProduct = new Coding
     {
@@ -6510,7 +6510,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bromazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBromazineMedicinalProduct = new Coding
     {
@@ -6519,7 +6519,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dexamethasone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDexamethasoneMedicinalProduct = new Coding
     {
@@ -6528,7 +6528,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing delta tocopherol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDeltaTocopherolMedicinalProduct = new Coding
     {
@@ -6537,7 +6537,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ciprofloxacin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCiprofloxacinMedicinalProduct = new Coding
     {
@@ -6546,7 +6546,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing floxuridine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFloxuridineMedicinalProduct = new Coding
     {
@@ -6555,7 +6555,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tamoxifen (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTamoxifenMedicinalProduct = new Coding
     {
@@ -6564,7 +6564,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing gonadotropin releasing factor (product)
     /// </summary>
     public static readonly Coding ProductContainingGonadotropinReleasingFactorProduct = new Coding
     {
@@ -6573,7 +6573,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing prazosin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPrazosinMedicinalProduct = new Coding
     {
@@ -6582,7 +6582,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing iopanoic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIopanoicAcidMedicinalProduct = new Coding
     {
@@ -6591,7 +6591,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sodium perborate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSodiumPerborateMedicinalProduct = new Coding
     {
@@ -6600,7 +6600,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing gallamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGallamineMedicinalProduct = new Coding
     {
@@ -6609,7 +6609,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing xylometazoline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingXylometazolineMedicinalProduct = new Coding
     {
@@ -6618,7 +6618,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product (product)
     /// </summary>
     public static readonly Coding MedicinalProductProduct = new Coding
     {
@@ -6627,7 +6627,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing alpha-1 adrenergic receptor antagonist (product)
     /// </summary>
     public static readonly Coding ProductContainingAlpha1AdrenergicReceptorAntagonistProduct = new Coding
     {
@@ -6636,7 +6636,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing practolol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPractololMedicinalProduct = new Coding
     {
@@ -6645,7 +6645,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bleomycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBleomycinMedicinalProduct = new Coding
     {
@@ -6654,7 +6654,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing noscapine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNoscapineMedicinalProduct = new Coding
     {
@@ -6663,7 +6663,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing disopyramide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDisopyramideMedicinalProduct = new Coding
     {
@@ -6672,7 +6672,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing iproniazid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIproniazidMedicinalProduct = new Coding
     {
@@ -6681,7 +6681,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing clofibrate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingClofibrateMedicinalProduct = new Coding
     {
@@ -6690,7 +6690,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing diphtheria antitoxin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDiphtheriaAntitoxinMedicinalProduct = new Coding
     {
@@ -6699,7 +6699,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as emetic (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsEmeticProduct = new Coding
     {
@@ -6708,7 +6708,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing benzatropine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBenzatropineMedicinalProduct = new Coding
     {
@@ -6717,7 +6717,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as antidiarrheal agent (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsAntidiarrhealAgentProduct = new Coding
     {
@@ -6726,7 +6726,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing terpene (product)
     /// </summary>
     public static readonly Coding ProductContainingTerpeneProduct = new Coding
     {
@@ -6735,7 +6735,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing acetylcysteine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAcetylcysteineMedicinalProduct = new Coding
     {
@@ -6744,7 +6744,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dacarbazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDacarbazineMedicinalProduct = new Coding
     {
@@ -6753,7 +6753,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing esmolol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEsmololMedicinalProduct = new Coding
     {
@@ -6762,7 +6762,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mestranol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMestranolMedicinalProduct = new Coding
     {
@@ -6771,7 +6771,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing simeticone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSimeticoneMedicinalProduct = new Coding
     {
@@ -6780,7 +6780,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ganciclovir (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGanciclovirMedicinalProduct = new Coding
     {
@@ -6789,7 +6789,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mezlocillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMezlocillinMedicinalProduct = new Coding
     {
@@ -6798,7 +6798,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Expectorant agent
     /// </summary>
     public static readonly Coding ExpectorantAgent = new Coding
     {
@@ -6807,7 +6807,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing reserpine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingReserpineMedicinalProduct = new Coding
     {
@@ -6816,7 +6816,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nitrazepam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNitrazepamMedicinalProduct = new Coding
     {
@@ -6825,7 +6825,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing benzylpenicillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBenzylpenicillinMedicinalProduct = new Coding
     {
@@ -6834,7 +6834,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing potassium citrate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPotassiumCitrateMedicinalProduct = new Coding
     {
@@ -6843,7 +6843,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mesoridazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMesoridazineMedicinalProduct = new Coding
     {
@@ -6852,7 +6852,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fenfluramine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFenfluramineMedicinalProduct = new Coding
     {
@@ -6861,7 +6861,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing etamivan (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEtamivanMedicinalProduct = new Coding
     {
@@ -6870,7 +6870,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing prochlorperazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingProchlorperazineMedicinalProduct = new Coding
     {
@@ -6879,7 +6879,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing gelatin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGelatinMedicinalProduct = new Coding
     {
@@ -6888,7 +6888,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing propoxycaine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPropoxycaineMedicinalProduct = new Coding
     {
@@ -6897,7 +6897,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing oxazepam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOxazepamMedicinalProduct = new Coding
     {
@@ -6906,7 +6906,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing guanethidine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGuanethidineMedicinalProduct = new Coding
     {
@@ -6915,7 +6915,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing diethylstilbestrol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDiethylstilbestrolMedicinalProduct = new Coding
     {
@@ -6924,7 +6924,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing acenocoumarol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAcenocoumarolMedicinalProduct = new Coding
     {
@@ -6933,7 +6933,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing corticosteroid and corticosteroid derivative (product)
     /// </summary>
     public static readonly Coding ProductContainingCorticosteroidAndCorticosteroidDerivativeProduct = new Coding
     {
@@ -6942,7 +6942,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing aspirin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAspirinMedicinalProduct = new Coding
     {
@@ -6951,7 +6951,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychostimulant
     /// </summary>
     public static readonly Coding Psychostimulant = new Coding
     {
@@ -6960,7 +6960,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing teniposide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTeniposideMedicinalProduct = new Coding
     {
@@ -6969,7 +6969,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing digoxin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDigoxinMedicinalProduct = new Coding
     {
@@ -6978,7 +6978,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ciclopirox (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCiclopiroxMedicinalProduct = new Coding
     {
@@ -6987,7 +6987,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaccinia human immune globulin-containing product
     /// </summary>
     public static readonly Coding VacciniaHumanImmuneGlobulinContainingProduct = new Coding
     {
@@ -6996,7 +6996,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing neostigmine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNeostigmineMedicinalProduct = new Coding
     {
@@ -7005,7 +7005,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phenylpropanolamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhenylpropanolamineMedicinalProduct = new Coding
     {
@@ -7014,7 +7014,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hydroxyzine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHydroxyzineMedicinalProduct = new Coding
     {
@@ -7023,7 +7023,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing antimalarial (product)
     /// </summary>
     public static readonly Coding ProductContainingAntimalarialProduct = new Coding
     {
@@ -7032,7 +7032,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing butacaine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingButacaineMedicinalProduct = new Coding
     {
@@ -7041,7 +7041,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chlorphenesin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChlorphenesinMedicinalProduct = new Coding
     {
@@ -7050,7 +7050,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing aluminium hydroxide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAluminiumHydroxideMedicinalProduct = new Coding
     {
@@ -7059,7 +7059,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ethylestrenol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEthylestrenolMedicinalProduct = new Coding
     {
@@ -7068,7 +7068,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sulfafurazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSulfafurazoleMedicinalProduct = new Coding
     {
@@ -7077,7 +7077,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cyclobenzaprine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCyclobenzaprineMedicinalProduct = new Coding
     {
@@ -7086,7 +7086,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing rabies human immune globulin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingRabiesHumanImmuneGlobulinMedicinalProduct = new Coding
     {
@@ -7095,7 +7095,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing glibenclamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGlibenclamideMedicinalProduct = new Coding
     {
@@ -7104,7 +7104,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ciclosporin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCiclosporinMedicinalProduct = new Coding
     {
@@ -7113,7 +7113,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dimenhydrinate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDimenhydrinateMedicinalProduct = new Coding
     {
@@ -7122,7 +7122,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefazolin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefazolinMedicinalProduct = new Coding
     {
@@ -7131,7 +7131,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing alimemazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAlimemazineMedicinalProduct = new Coding
     {
@@ -7140,7 +7140,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mumps human immune globulin-containing product
     /// </summary>
     public static readonly Coding MumpsHumanImmuneGlobulinContainingProduct = new Coding
     {
@@ -7149,7 +7149,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing third generation cephalosporin (product)
     /// </summary>
     public static readonly Coding ProductContainingThirdGenerationCephalosporinProduct = new Coding
     {
@@ -7158,7 +7158,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing isoniazid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIsoniazidMedicinalProduct = new Coding
     {
@@ -7167,7 +7167,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing desoximetasone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDesoximetasoneMedicinalProduct = new Coding
     {
@@ -7176,7 +7176,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing procarbazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingProcarbazineMedicinalProduct = new Coding
     {
@@ -7185,7 +7185,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing furosemide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFurosemideMedicinalProduct = new Coding
     {
@@ -7194,7 +7194,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nitroprusside (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNitroprussideMedicinalProduct = new Coding
     {
@@ -7203,7 +7203,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing diphenylpyraline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDiphenylpyralineMedicinalProduct = new Coding
     {
@@ -7212,7 +7212,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing digitoxin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDigitoxinMedicinalProduct = new Coding
     {
@@ -7221,7 +7221,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immune enhancement agent
     /// </summary>
     public static readonly Coding ImmuneEnhancementAgent = new Coding
     {
@@ -7230,7 +7230,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as anticoagulant agent (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsAnticoagulantAgentProduct = new Coding
     {
@@ -7239,7 +7239,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing etacrynic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEtacrynicAcidMedicinalProduct = new Coding
     {
@@ -7248,7 +7248,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing noretynodrel (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNoretynodrelMedicinalProduct = new Coding
     {
@@ -7257,7 +7257,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing retinol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingRetinolMedicinalProduct = new Coding
     {
@@ -7266,7 +7266,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phentolamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhentolamineMedicinalProduct = new Coding
     {
@@ -7275,7 +7275,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing prolactin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingProlactinMedicinalProduct = new Coding
     {
@@ -7284,7 +7284,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing norgestrel (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNorgestrelMedicinalProduct = new Coding
     {
@@ -7293,7 +7293,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing homatropine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHomatropineMedicinalProduct = new Coding
     {
@@ -7302,7 +7302,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bismuth (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBismuthMedicinalProduct = new Coding
     {
@@ -7311,7 +7311,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bacampicillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBacampicillinMedicinalProduct = new Coding
     {
@@ -7320,7 +7320,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing lidocaine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLidocaineMedicinalProduct = new Coding
     {
@@ -7329,7 +7329,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chlordiazepoxide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChlordiazepoxideMedicinalProduct = new Coding
     {
@@ -7338,7 +7338,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product manufactured as nasal dose form (product)
     /// </summary>
     public static readonly Coding ProductManufacturedAsNasalDoseFormProduct = new Coding
     {
@@ -7347,7 +7347,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nadolol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNadololMedicinalProduct = new Coding
     {
@@ -7356,7 +7356,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing guanabenz (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGuanabenzMedicinalProduct = new Coding
     {
@@ -7365,7 +7365,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nalbuphine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNalbuphineMedicinalProduct = new Coding
     {
@@ -7374,7 +7374,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nephrogenic vitamin D preparation
     /// </summary>
     public static readonly Coding NephrogenicVitaminDPreparation = new Coding
     {
@@ -7383,7 +7383,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mescaline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMescalineMedicinalProduct = new Coding
     {
@@ -7392,7 +7392,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing oxacillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOxacillinMedicinalProduct = new Coding
     {
@@ -7401,7 +7401,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing diloxanide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDiloxanideMedicinalProduct = new Coding
     {
@@ -7410,7 +7410,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cyclopentolate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCyclopentolateMedicinalProduct = new Coding
     {
@@ -7419,7 +7419,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hydroxychloroquine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHydroxychloroquineMedicinalProduct = new Coding
     {
@@ -7428,7 +7428,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cimetidine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCimetidineMedicinalProduct = new Coding
     {
@@ -7437,7 +7437,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mineralocorticoid (product)
     /// </summary>
     public static readonly Coding ProductContainingMineralocorticoidProduct = new Coding
     {
@@ -7446,7 +7446,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing promethazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPromethazineMedicinalProduct = new Coding
     {
@@ -7455,7 +7455,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methocarbamol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethocarbamolMedicinalProduct = new Coding
     {
@@ -7464,7 +7464,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing clarithromycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingClarithromycinMedicinalProduct = new Coding
     {
@@ -7473,7 +7473,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methyldopa (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethyldopaMedicinalProduct = new Coding
     {
@@ -7482,7 +7482,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dicloxacillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDicloxacillinMedicinalProduct = new Coding
     {
@@ -7491,7 +7491,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dextrothyroxine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDextrothyroxineMedicinalProduct = new Coding
     {
@@ -7500,7 +7500,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mafenide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMafenideMedicinalProduct = new Coding
     {
@@ -7509,7 +7509,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing heparin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHeparinMedicinalProduct = new Coding
     {
@@ -7518,7 +7518,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing butoconazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingButoconazoleMedicinalProduct = new Coding
     {
@@ -7527,7 +7527,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing meclozine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMeclozineMedicinalProduct = new Coding
     {
@@ -7536,7 +7536,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing corticotropin releasing factor (product)
     /// </summary>
     public static readonly Coding ProductContainingCorticotropinReleasingFactorProduct = new Coding
     {
@@ -7545,7 +7545,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing opioid receptor partial agonist (product)
     /// </summary>
     public static readonly Coding ProductContainingOpioidReceptorPartialAgonistProduct = new Coding
     {
@@ -7554,7 +7554,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nifedipine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNifedipineMedicinalProduct = new Coding
     {
@@ -7563,7 +7563,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nitrofurantoin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNitrofurantoinMedicinalProduct = new Coding
     {
@@ -7572,7 +7572,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cyclizine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCyclizineMedicinalProduct = new Coding
     {
@@ -7581,7 +7581,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing antazoline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAntazolineMedicinalProduct = new Coding
     {
@@ -7590,7 +7590,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing autonomic agent (product)
     /// </summary>
     public static readonly Coding ProductContainingAutonomicAgentProduct = new Coding
     {
@@ -7599,7 +7599,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing physostigmine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhysostigmineMedicinalProduct = new Coding
     {
@@ -7608,7 +7608,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing polythiazide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPolythiazideMedicinalProduct = new Coding
     {
@@ -7617,7 +7617,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing esterified estrogen (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEsterifiedEstrogenMedicinalProduct = new Coding
     {
@@ -7626,7 +7626,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing timolol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTimololMedicinalProduct = new Coding
     {
@@ -7635,7 +7635,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as vasoconstrictor (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsVasoconstrictorProduct = new Coding
     {
@@ -7644,7 +7644,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing codeine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCodeineMedicinalProduct = new Coding
     {
@@ -7653,7 +7653,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing spectinomycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSpectinomycinMedicinalProduct = new Coding
     {
@@ -7662,7 +7662,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing botulinum antitoxin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBotulinumAntitoxinMedicinalProduct = new Coding
     {
@@ -7671,7 +7671,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing vecuronium (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingVecuroniumMedicinalProduct = new Coding
     {
@@ -7680,7 +7680,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing metirosine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMetirosineMedicinalProduct = new Coding
     {
@@ -7689,7 +7689,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nandrolone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNandroloneMedicinalProduct = new Coding
     {
@@ -7698,7 +7698,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sympathomimetic (product)
     /// </summary>
     public static readonly Coding ProductContainingSympathomimeticProduct = new Coding
     {
@@ -7707,7 +7707,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tetanus immunoglobulin of human origin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTetanusImmunoglobulinOfHumanOriginMedicinalProduct = new Coding
     {
@@ -7716,7 +7716,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing shark liver oil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSharkLiverOilMedicinalProduct = new Coding
     {
@@ -7725,7 +7725,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing natural penicillin (product)
     /// </summary>
     public static readonly Coding ProductContainingNaturalPenicillinProduct = new Coding
     {
@@ -7734,7 +7734,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing human serum albumin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHumanSerumAlbuminMedicinalProduct = new Coding
     {
@@ -7743,7 +7743,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Replacement preparation
     /// </summary>
     public static readonly Coding ReplacementPreparation = new Coding
     {
@@ -7752,7 +7752,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bumetanide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBumetanideMedicinalProduct = new Coding
     {
@@ -7761,7 +7761,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing propylamino derivative of phenothiazine (product)
     /// </summary>
     public static readonly Coding ProductContainingPropylaminoDerivativeOfPhenothiazineProduct = new Coding
     {
@@ -7770,7 +7770,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing metamfetamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMetamfetamineMedicinalProduct = new Coding
     {
@@ -7779,7 +7779,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sulfaguanidine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSulfaguanidineMedicinalProduct = new Coding
     {
@@ -7788,7 +7788,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as antispasmodic agent (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsAntispasmodicAgentProduct = new Coding
     {
@@ -7797,7 +7797,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mesalazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMesalazineMedicinalProduct = new Coding
     {
@@ -7806,7 +7806,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing low molecular weight heparin (product)
     /// </summary>
     public static readonly Coding ProductContainingLowMolecularWeightHeparinProduct = new Coding
     {
@@ -7815,7 +7815,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nimodipine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNimodipineMedicinalProduct = new Coding
     {
@@ -7824,7 +7824,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing amiloride (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAmilorideMedicinalProduct = new Coding
     {
@@ -7833,7 +7833,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mefloquine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMefloquineMedicinalProduct = new Coding
     {
@@ -7842,7 +7842,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing neuromuscular blocker
     /// </summary>
     public static readonly Coding ProductContainingNeuromuscularBlocker = new Coding
     {
@@ -7851,7 +7851,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing naltrexone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNaltrexoneMedicinalProduct = new Coding
     {
@@ -7860,7 +7860,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing atenolol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAtenololMedicinalProduct = new Coding
     {
@@ -7869,7 +7869,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing danazol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDanazolMedicinalProduct = new Coding
     {
@@ -7878,7 +7878,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing rauwolfia alkaloid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingRauwolfiaAlkaloidMedicinalProduct = new Coding
     {
@@ -7887,7 +7887,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hydrocortisone in nasal dose form (medicinal product form)
     /// </summary>
     public static readonly Coding ProductContainingHydrocortisoneInNasalDoseFormMedicinalProductForm = new Coding
     {
@@ -7896,7 +7896,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as antirheumatic agent (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsAntirheumaticAgentProduct = new Coding
     {
@@ -7905,7 +7905,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing calcifediol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCalcifediolMedicinalProduct = new Coding
     {
@@ -7914,7 +7914,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing liver extract (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLiverExtractMedicinalProduct = new Coding
     {
@@ -7923,7 +7923,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing first generation cephalosporin (product)
     /// </summary>
     public static readonly Coding ProductContainingFirstGenerationCephalosporinProduct = new Coding
     {
@@ -7932,7 +7932,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing thiotepa (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingThiotepaMedicinalProduct = new Coding
     {
@@ -7941,7 +7941,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing naloxone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNaloxoneMedicinalProduct = new Coding
     {
@@ -7950,7 +7950,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing levomepromazine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLevomepromazineMedicinalProduct = new Coding
     {
@@ -7959,7 +7959,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pertussis human immune globulin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPertussisHumanImmuneGlobulinMedicinalProduct = new Coding
     {
@@ -7968,7 +7968,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tranylcypromine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTranylcypromineMedicinalProduct = new Coding
     {
@@ -7977,7 +7977,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chenodeoxycholic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChenodeoxycholicAcidMedicinalProduct = new Coding
     {
@@ -7986,7 +7986,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fludrocortisone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFludrocortisoneMedicinalProduct = new Coding
     {
@@ -7995,7 +7995,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cytarabine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCytarabineMedicinalProduct = new Coding
     {
@@ -8004,7 +8004,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing poliomyelitis human immune globulin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPoliomyelitisHumanImmuneGlobulinMedicinalProduct = new Coding
     {
@@ -8013,7 +8013,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing methallenestril (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMethallenestrilMedicinalProduct = new Coding
     {
@@ -8022,7 +8022,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sulindac (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSulindacMedicinalProduct = new Coding
     {
@@ -8031,7 +8031,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicinal product acting as antidote agent (product)
     /// </summary>
     public static readonly Coding MedicinalProductActingAsAntidoteAgentProduct = new Coding
     {
@@ -8040,7 +8040,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing metocurine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMetocurineMedicinalProduct = new Coding
     {
@@ -8049,7 +8049,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing crotamiton (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCrotamitonMedicinalProduct = new Coding
     {
@@ -8058,7 +8058,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tobramycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTobramycinMedicinalProduct = new Coding
     {
@@ -8067,7 +8067,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ritodrine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingRitodrineMedicinalProduct = new Coding
     {
@@ -8076,7 +8076,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Smooth muscle relaxant
     /// </summary>
     public static readonly Coding SmoothMuscleRelaxant = new Coding
     {
@@ -8085,7 +8085,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing estrone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEstroneMedicinalProduct = new Coding
     {
@@ -8094,7 +8094,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing paracetamol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingParacetamolMedicinalProduct = new Coding
     {
@@ -8103,7 +8103,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing razoxane (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingRazoxaneMedicinalProduct = new Coding
     {
@@ -8112,7 +8112,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pilocarpine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPilocarpineMedicinalProduct = new Coding
     {
@@ -8121,7 +8121,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing benzalkonium (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBenzalkoniumMedicinalProduct = new Coding
     {
@@ -8130,7 +8130,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing trimipramine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTrimipramineMedicinalProduct = new Coding
     {
@@ -8139,7 +8139,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing beta-lactam and antibiotic (product)
     /// </summary>
     public static readonly Coding ProductContainingBetaLactamAndAntibioticProduct = new Coding
     {
@@ -8148,7 +8148,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing natamycin in ocular dose form (medicinal product form)
     /// </summary>
     public static readonly Coding ProductContainingNatamycinInOcularDoseFormMedicinalProductForm = new Coding
     {
@@ -8157,7 +8157,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing aminopenicillin (product)
     /// </summary>
     public static readonly Coding ProductContainingAminopenicillinProduct = new Coding
     {
@@ -8166,7 +8166,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing reversible anticholinesterase (product)
     /// </summary>
     public static readonly Coding ProductContainingReversibleAnticholinesteraseProduct = new Coding
     {
@@ -8175,7 +8175,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing carbinoxamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCarbinoxamineMedicinalProduct = new Coding
     {
@@ -8184,7 +8184,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing caffeine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCaffeineMedicinalProduct = new Coding
     {
@@ -8193,7 +8193,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bendroflumethiazide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBendroflumethiazideMedicinalProduct = new Coding
     {
@@ -8202,7 +8202,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing salbutamol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSalbutamolMedicinalProduct = new Coding
     {
@@ -8211,7 +8211,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nafcillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNafcillinMedicinalProduct = new Coding
     {
@@ -8220,7 +8220,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Digitalis-containing product
     /// </summary>
     public static readonly Coding DigitalisContainingProduct = new Coding
     {
@@ -8229,7 +8229,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing trimetrexate (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTrimetrexateMedicinalProduct = new Coding
     {
@@ -8238,7 +8238,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pentoxifylline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPentoxifyllineMedicinalProduct = new Coding
     {
@@ -8247,7 +8247,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pseudoephedrine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPseudoephedrineMedicinalProduct = new Coding
     {
@@ -8256,7 +8256,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing buspirone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBuspironeMedicinalProduct = new Coding
     {
@@ -8265,7 +8265,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing gramicidin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingGramicidinMedicinalProduct = new Coding
     {
@@ -8274,7 +8274,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hydrochlorothiazide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHydrochlorothiazideMedicinalProduct = new Coding
     {
@@ -8283,7 +8283,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tropicamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTropicamideMedicinalProduct = new Coding
     {
@@ -8292,7 +8292,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pralidoxime (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPralidoximeMedicinalProduct = new Coding
     {
@@ -8301,7 +8301,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing secbutabarbital (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSecbutabarbitalMedicinalProduct = new Coding
     {
@@ -8310,7 +8310,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing phenelzine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPhenelzineMedicinalProduct = new Coding
     {
@@ -8319,7 +8319,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepatitis B surface antigen immunoglobulin-containing product
     /// </summary>
     public static readonly Coding HepatitisBSurfaceAntigenImmunoglobulinContainingProduct = new Coding
     {
@@ -8328,7 +8328,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing carbomycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCarbomycinMedicinalProduct = new Coding
     {
@@ -8337,7 +8337,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing teicoplanin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTeicoplaninMedicinalProduct = new Coding
     {
@@ -8346,7 +8346,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fusidic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFusidicAcidMedicinalProduct = new Coding
     {
@@ -8355,7 +8355,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tiamulin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTiamulinMedicinalProduct = new Coding
     {
@@ -8364,7 +8364,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tylosin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTylosinMedicinalProduct = new Coding
     {
@@ -8373,7 +8373,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing virginiamycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingVirginiamycinMedicinalProduct = new Coding
     {
@@ -8382,7 +8382,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing apramycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingApramycinMedicinalProduct = new Coding
     {
@@ -8391,7 +8391,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing azithromycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAzithromycinMedicinalProduct = new Coding
     {
@@ -8400,7 +8400,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing itraconazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingItraconazoleMedicinalProduct = new Coding
     {
@@ -8409,7 +8409,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ceftiofur (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCeftiofurMedicinalProduct = new Coding
     {
@@ -8418,7 +8418,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefpirome (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefpiromeMedicinalProduct = new Coding
     {
@@ -8427,7 +8427,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefpodoxime (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefpodoximeMedicinalProduct = new Coding
     {
@@ -8436,7 +8436,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ceftibuten (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCeftibutenMedicinalProduct = new Coding
     {
@@ -8445,7 +8445,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefixime (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefiximeMedicinalProduct = new Coding
     {
@@ -8454,7 +8454,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefsulodin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefsulodinMedicinalProduct = new Coding
     {
@@ -8463,7 +8463,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefprozil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefprozilMedicinalProduct = new Coding
     {
@@ -8472,7 +8472,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cefodizime (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCefodizimeMedicinalProduct = new Coding
     {
@@ -8481,7 +8481,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing meropenem (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMeropenemMedicinalProduct = new Coding
     {
@@ -8490,7 +8490,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mecillinam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMecillinamMedicinalProduct = new Coding
     {
@@ -8499,7 +8499,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pivmecillinam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPivmecillinamMedicinalProduct = new Coding
     {
@@ -8508,7 +8508,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing temocillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTemocillinMedicinalProduct = new Coding
     {
@@ -8517,7 +8517,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing flucloxacillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFlucloxacillinMedicinalProduct = new Coding
     {
@@ -8526,7 +8526,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing pivampicillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPivampicillinMedicinalProduct = new Coding
     {
@@ -8535,7 +8535,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing talampicillin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTalampicillinMedicinalProduct = new Coding
     {
@@ -8544,7 +8544,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing lymecycline (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLymecyclineMedicinalProduct = new Coding
     {
@@ -8553,7 +8553,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing cinoxacin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingCinoxacinMedicinalProduct = new Coding
     {
@@ -8562,7 +8562,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing enoxacin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEnoxacinMedicinalProduct = new Coding
     {
@@ -8571,7 +8571,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ofloxacin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOfloxacinMedicinalProduct = new Coding
     {
@@ -8580,7 +8580,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing levofloxacin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLevofloxacinMedicinalProduct = new Coding
     {
@@ -8589,7 +8589,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing lomefloxacin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLomefloxacinMedicinalProduct = new Coding
     {
@@ -8598,7 +8598,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sparfloxacin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSparfloxacinMedicinalProduct = new Coding
     {
@@ -8607,7 +8607,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing temafloxacin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTemafloxacinMedicinalProduct = new Coding
     {
@@ -8616,7 +8616,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing rosoxacin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingRosoxacinMedicinalProduct = new Coding
     {
@@ -8625,7 +8625,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing famciclovir (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFamciclovirMedicinalProduct = new Coding
     {
@@ -8634,7 +8634,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing foscarnet (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFoscarnetMedicinalProduct = new Coding
     {
@@ -8643,7 +8643,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ipronidazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIpronidazoleMedicinalProduct = new Coding
     {
@@ -8652,7 +8652,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing antibabesial (product)
     /// </summary>
     public static readonly Coding ProductContainingAntibabesialProduct = new Coding
     {
@@ -8661,7 +8661,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing imidocarb (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingImidocarbMedicinalProduct = new Coding
     {
@@ -8670,7 +8670,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing albendazole (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAlbendazoleMedicinalProduct = new Coding
     {
@@ -8679,7 +8679,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing ivermectin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingIvermectinMedicinalProduct = new Coding
     {
@@ -8688,7 +8688,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coccidiostat-containing product
     /// </summary>
     public static readonly Coding CoccidiostatContainingProduct = new Coding
     {
@@ -8697,7 +8697,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bambermycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBambermycinMedicinalProduct = new Coding
     {
@@ -8706,7 +8706,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing salinomycin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSalinomycinMedicinalProduct = new Coding
     {
@@ -8715,7 +8715,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing alfentanil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingAlfentanilMedicinalProduct = new Coding
     {
@@ -8724,7 +8724,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing tilidine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingTilidineMedicinalProduct = new Coding
     {
@@ -8733,7 +8733,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing dextromoramide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingDextromoramideMedicinalProduct = new Coding
     {
@@ -8742,7 +8742,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing lamotrigine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLamotrigineMedicinalProduct = new Coding
     {
@@ -8751,7 +8751,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing butalbital (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingButalbitalMedicinalProduct = new Coding
     {
@@ -8760,7 +8760,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bupropion (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBupropionMedicinalProduct = new Coding
     {
@@ -8769,7 +8769,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mianserin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMianserinMedicinalProduct = new Coding
     {
@@ -8778,7 +8778,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing clomipramine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingClomipramineMedicinalProduct = new Coding
     {
@@ -8787,7 +8787,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing fluvoxamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFluvoxamineMedicinalProduct = new Coding
     {
@@ -8796,7 +8796,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing flupentixol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFlupentixolMedicinalProduct = new Coding
     {
@@ -8805,7 +8805,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing clozapine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingClozapineMedicinalProduct = new Coding
     {
@@ -8814,7 +8814,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing zolpidem (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingZolpidemMedicinalProduct = new Coding
     {
@@ -8823,7 +8823,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing lormetazepam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingLormetazepamMedicinalProduct = new Coding
     {
@@ -8832,7 +8832,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bromazepam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingBromazepamMedicinalProduct = new Coding
     {
@@ -8841,7 +8841,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing clobazam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingClobazamMedicinalProduct = new Coding
     {
@@ -8850,7 +8850,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing flunitrazepam (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFlunitrazepamMedicinalProduct = new Coding
     {
@@ -8859,7 +8859,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing benzodiazepine receptor antagonist (product)
     /// </summary>
     public static readonly Coding ProductContainingBenzodiazepineReceptorAntagonistProduct = new Coding
     {
@@ -8868,7 +8868,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing flumazenil (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingFlumazenilMedicinalProduct = new Coding
     {
@@ -8877,7 +8877,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing prolintane (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingProlintaneMedicinalProduct = new Coding
     {
@@ -8886,7 +8886,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing hyaluronic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingHyaluronicAcidMedicinalProduct = new Coding
     {
@@ -8895,7 +8895,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bone resorption inhibitor
     /// </summary>
     public static readonly Coding ProductContainingBoneResorptionInhibitor = new Coding
     {
@@ -8904,7 +8904,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing bisphosphonate (product)
     /// </summary>
     public static readonly Coding ProductContainingBisphosphonateProduct = new Coding
     {
@@ -8913,7 +8913,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing etidronic acid (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingEtidronicAcidMedicinalProduct = new Coding
     {
@@ -8922,7 +8922,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing mexiletine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingMexiletineMedicinalProduct = new Coding
     {
@@ -8931,7 +8931,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing oxprenolol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingOxprenololMedicinalProduct = new Coding
     {
@@ -8940,7 +8940,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing propafenone (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingPropafenoneMedicinalProduct = new Coding
     {
@@ -8949,7 +8949,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sotalol (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSotalolMedicinalProduct = new Coding
     {
@@ -8958,7 +8958,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing 3-hydroxy-3-methylglutaryl-coenzyme A reductase inhibitor (product)
     /// </summary>
     public static readonly Coding ProductContaining3Hydroxy3MethylglutarylCoenzymeAReductaseInhibitorProduct = new Coding
     {
@@ -8967,7 +8967,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing simvastatin (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSimvastatinMedicinalProduct = new Coding
     {
@@ -8976,7 +8976,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing nikethamide (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingNikethamideMedicinalProduct = new Coding
     {
@@ -8985,7 +8985,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing sucrose (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingSucroseMedicinalProduct = new Coding
     {
@@ -8994,7 +8994,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cytomegalovirus antibody-containing product
     /// </summary>
     public static readonly Coding CytomegalovirusAntibodyContainingProduct = new Coding
     {
@@ -9003,7 +9003,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Product containing chlorphenamine (medicinal product)
     /// </summary>
     public static readonly Coding ProductContainingChlorphenamineMedicinalProduct = new Coding
     {
@@ -9018,9 +9018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingKetoprofenMedicinalProduct = "10099000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingKetoprofenMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingKetoprofenMedicinalProduct = "http://snomed.info/sct#10099000";
+
+    /// <summary>
     /// Literal for code: ProductContainingCinchonaAlkaloidProduct
     /// </summary>
     public const string LiteralProductContainingCinchonaAlkaloidProduct = "10135005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCinchonaAlkaloidProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCinchonaAlkaloidProduct = "http://snomed.info/sct#10135005";
 
     /// <summary>
     /// Literal for code: ProductContainingPrednisoneMedicinalProduct
@@ -9028,9 +9038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPrednisoneMedicinalProduct = "10312003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPrednisoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPrednisoneMedicinalProduct = "http://snomed.info/sct#10312003";
+
+    /// <summary>
     /// Literal for code: ProductContainingMercaptopurineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMercaptopurineMedicinalProduct = "1039008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMercaptopurineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMercaptopurineMedicinalProduct = "http://snomed.info/sct#1039008";
 
     /// <summary>
     /// Literal for code: ProductContainingPentaerithritylTetranitrateMedicinalProduct
@@ -9038,9 +9058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPentaerithritylTetranitrateMedicinalProduct = "10422008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPentaerithritylTetranitrateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPentaerithritylTetranitrateMedicinalProduct = "http://snomed.info/sct#10422008";
+
+    /// <summary>
     /// Literal for code: ProductContainingDoxycyclineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDoxycyclineMedicinalProduct = "10504007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDoxycyclineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDoxycyclineMedicinalProduct = "http://snomed.info/sct#10504007";
 
     /// <summary>
     /// Literal for code: ProductContainingLututrinMedicinalProduct
@@ -9048,9 +9078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingLututrinMedicinalProduct = "10515002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingLututrinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLututrinMedicinalProduct = "http://snomed.info/sct#10515002";
+
+    /// <summary>
     /// Literal for code: ProductContainingTocainideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTocainideMedicinalProduct = "10555000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTocainideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTocainideMedicinalProduct = "http://snomed.info/sct#10555000";
 
     /// <summary>
     /// Literal for code: MultivitaminPreparation
@@ -9058,9 +9098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMultivitaminPreparation = "10632007";
 
     /// <summary>
+    /// Literal for code: NONEMultivitaminPreparation
+    /// </summary>
+    public const string LiteralNONEMultivitaminPreparation = "http://snomed.info/sct#10632007";
+
+    /// <summary>
     /// Literal for code: ProductContainingGlucagonMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingGlucagonMedicinalProduct = "10712001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingGlucagonMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGlucagonMedicinalProduct = "http://snomed.info/sct#10712001";
 
     /// <summary>
     /// Literal for code: ProductContainingHaloperidolMedicinalProduct
@@ -9068,9 +9118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHaloperidolMedicinalProduct = "10756001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHaloperidolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHaloperidolMedicinalProduct = "http://snomed.info/sct#10756001";
+
+    /// <summary>
     /// Literal for code: MedicinalProductActingAsAntipsychoticAgentProduct
     /// </summary>
     public const string LiteralMedicinalProductActingAsAntipsychoticAgentProduct = "10784006";
+
+    /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsAntipsychoticAgentProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsAntipsychoticAgentProduct = "http://snomed.info/sct#10784006";
 
     /// <summary>
     /// Literal for code: ProductContainingEnzymeProduct
@@ -9078,9 +9138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingEnzymeProduct = "11402001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingEnzymeProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEnzymeProduct = "http://snomed.info/sct#11402001";
+
+    /// <summary>
     /// Literal for code: TetracyclicAntidepressant
     /// </summary>
     public const string LiteralTetracyclicAntidepressant = "11430001";
+
+    /// <summary>
+    /// Literal for code: NONETetracyclicAntidepressant
+    /// </summary>
+    public const string LiteralNONETetracyclicAntidepressant = "http://snomed.info/sct#11430001";
 
     /// <summary>
     /// Literal for code: ProductContainingTicarcillinMedicinalProduct
@@ -9088,9 +9158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTicarcillinMedicinalProduct = "1148001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTicarcillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTicarcillinMedicinalProduct = "http://snomed.info/sct#1148001";
+
+    /// <summary>
     /// Literal for code: ProductContainingVitaminDAndVitaminDDerivativeProduct
     /// </summary>
     public const string LiteralProductContainingVitaminDAndVitaminDDerivativeProduct = "11563006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingVitaminDAndVitaminDDerivativeProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingVitaminDAndVitaminDDerivativeProduct = "http://snomed.info/sct#11563006";
 
     /// <summary>
     /// Literal for code: ProductContainingCetylpyridiniumMedicinalProduct
@@ -9098,9 +9178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCetylpyridiniumMedicinalProduct = "11719000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCetylpyridiniumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCetylpyridiniumMedicinalProduct = "http://snomed.info/sct#11719000";
+
+    /// <summary>
     /// Literal for code: MedicinalProductActingAsStoolSoftenerProduct
     /// </summary>
     public const string LiteralMedicinalProductActingAsStoolSoftenerProduct = "11783005";
+
+    /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsStoolSoftenerProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsStoolSoftenerProduct = "http://snomed.info/sct#11783005";
 
     /// <summary>
     /// Literal for code: ProductContainingMethysergideMedicinalProduct
@@ -9108,9 +9198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMethysergideMedicinalProduct = "11796006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMethysergideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethysergideMedicinalProduct = "http://snomed.info/sct#11796006";
+
+    /// <summary>
     /// Literal for code: HypotensiveAgent
     /// </summary>
     public const string LiteralHypotensiveAgent = "1182007";
+
+    /// <summary>
+    /// Literal for code: NONEHypotensiveAgent
+    /// </summary>
+    public const string LiteralNONEHypotensiveAgent = "http://snomed.info/sct#1182007";
 
     /// <summary>
     /// Literal for code: ProductContainingDoxepinMedicinalProduct
@@ -9118,9 +9218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDoxepinMedicinalProduct = "11841005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDoxepinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDoxepinMedicinalProduct = "http://snomed.info/sct#11841005";
+
+    /// <summary>
     /// Literal for code: ProductContainingNaproxenMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNaproxenMedicinalProduct = "11847009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNaproxenMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNaproxenMedicinalProduct = "http://snomed.info/sct#11847009";
 
     /// <summary>
     /// Literal for code: ProductContainingProcainamideMedicinalProduct
@@ -9128,9 +9238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingProcainamideMedicinalProduct = "11959009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingProcainamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingProcainamideMedicinalProduct = "http://snomed.info/sct#11959009";
+
+    /// <summary>
     /// Literal for code: ProductContainingAlpha2AdrenergicReceptorAntagonistProduct
     /// </summary>
     public const string LiteralProductContainingAlpha2AdrenergicReceptorAntagonistProduct = "1206000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAlpha2AdrenergicReceptorAntagonistProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAlpha2AdrenergicReceptorAntagonistProduct = "http://snomed.info/sct#1206000";
 
     /// <summary>
     /// Literal for code: ProductContainingNystatinMedicinalProduct
@@ -9138,9 +9258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNystatinMedicinalProduct = "12096000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNystatinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNystatinMedicinalProduct = "http://snomed.info/sct#12096000";
+
+    /// <summary>
     /// Literal for code: ProductContainingMetronidazoleMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMetronidazoleMedicinalProduct = "1222004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMetronidazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMetronidazoleMedicinalProduct = "http://snomed.info/sct#1222004";
 
     /// <summary>
     /// Literal for code: ProductContainingPancreatinMedicinalProduct
@@ -9148,9 +9278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPancreatinMedicinalProduct = "12236006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPancreatinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPancreatinMedicinalProduct = "http://snomed.info/sct#12236006";
+
+    /// <summary>
     /// Literal for code: DiatrizoateContainingProduct
     /// </summary>
     public const string LiteralDiatrizoateContainingProduct = "12335007";
+
+    /// <summary>
+    /// Literal for code: NONEDiatrizoateContainingProduct
+    /// </summary>
+    public const string LiteralNONEDiatrizoateContainingProduct = "http://snomed.info/sct#12335007";
 
     /// <summary>
     /// Literal for code: ProductContainingOxytocinMedicinalProduct
@@ -9158,9 +9298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingOxytocinMedicinalProduct = "12369008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingOxytocinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOxytocinMedicinalProduct = "http://snomed.info/sct#12369008";
+
+    /// <summary>
     /// Literal for code: ProductContainingVinblastineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingVinblastineMedicinalProduct = "12436009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingVinblastineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingVinblastineMedicinalProduct = "http://snomed.info/sct#12436009";
 
     /// <summary>
     /// Literal for code: ProductContainingMagnesiumCitrateMedicinalProduct
@@ -9168,9 +9318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMagnesiumCitrateMedicinalProduct = "12495006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMagnesiumCitrateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMagnesiumCitrateMedicinalProduct = "http://snomed.info/sct#12495006";
+
+    /// <summary>
     /// Literal for code: ProductContainingTriamtereneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTriamtereneMedicinalProduct = "12512008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTriamtereneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTriamtereneMedicinalProduct = "http://snomed.info/sct#12512008";
 
     /// <summary>
     /// Literal for code: ProductContainingEmetineMedicinalProduct
@@ -9178,9 +9338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingEmetineMedicinalProduct = "12559001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingEmetineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEmetineMedicinalProduct = "http://snomed.info/sct#12559001";
+
+    /// <summary>
     /// Literal for code: ProductContainingEstradiolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEstradiolMedicinalProduct = "12839006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEstradiolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEstradiolMedicinalProduct = "http://snomed.info/sct#12839006";
 
     /// <summary>
     /// Literal for code: ProductContainingDextranMedicinalProduct
@@ -9188,9 +9358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDextranMedicinalProduct = "13132007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDextranMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDextranMedicinalProduct = "http://snomed.info/sct#13132007";
+
+    /// <summary>
     /// Literal for code: ProductContainingSalsalateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSalsalateMedicinalProduct = "13252002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSalsalateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSalsalateMedicinalProduct = "http://snomed.info/sct#13252002";
 
     /// <summary>
     /// Literal for code: ProductContainingCefadroxilMedicinalProduct
@@ -9198,9 +9378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCefadroxilMedicinalProduct = "13414000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCefadroxilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefadroxilMedicinalProduct = "http://snomed.info/sct#13414000";
+
+    /// <summary>
     /// Literal for code: ProductContainingNortriptylineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNortriptylineMedicinalProduct = "13432000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNortriptylineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNortriptylineMedicinalProduct = "http://snomed.info/sct#13432000";
 
     /// <summary>
     /// Literal for code: ProductContainingMinocyclineMedicinalProduct
@@ -9208,9 +9398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMinocyclineMedicinalProduct = "13512003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMinocyclineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMinocyclineMedicinalProduct = "http://snomed.info/sct#13512003";
+
+    /// <summary>
     /// Literal for code: ProductContainingAcetylcholineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAcetylcholineMedicinalProduct = "13525006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAcetylcholineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAcetylcholineMedicinalProduct = "http://snomed.info/sct#13525006";
 
     /// <summary>
     /// Literal for code: ProductContainingBisacodylMedicinalProduct
@@ -9218,9 +9418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBisacodylMedicinalProduct = "13565005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBisacodylMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBisacodylMedicinalProduct = "http://snomed.info/sct#13565005";
+
+    /// <summary>
     /// Literal for code: ProductContainingPyrazinamideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPyrazinamideMedicinalProduct = "13592004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPyrazinamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPyrazinamideMedicinalProduct = "http://snomed.info/sct#13592004";
 
     /// <summary>
     /// Literal for code: ProductContainingDimercaprolMedicinalProduct
@@ -9228,9 +9438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDimercaprolMedicinalProduct = "13664004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDimercaprolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDimercaprolMedicinalProduct = "http://snomed.info/sct#13664004";
+
+    /// <summary>
     /// Literal for code: ProductContainingIronInOralDoseFormMedicinalProductForm
     /// </summary>
     public const string LiteralProductContainingIronInOralDoseFormMedicinalProductForm = "13790009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingIronInOralDoseFormMedicinalProductForm
+    /// </summary>
+    public const string LiteralNONEProductContainingIronInOralDoseFormMedicinalProductForm = "http://snomed.info/sct#13790009";
 
     /// <summary>
     /// Literal for code: ProductContainingNaftifineMedicinalProduct
@@ -9238,9 +9458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNaftifineMedicinalProduct = "13800009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNaftifineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNaftifineMedicinalProduct = "http://snomed.info/sct#13800009";
+
+    /// <summary>
     /// Literal for code: ProductContainingBiotinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingBiotinMedicinalProduct = "13813003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBiotinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBiotinMedicinalProduct = "http://snomed.info/sct#13813003";
 
     /// <summary>
     /// Literal for code: ProductContainingBeclometasoneMedicinalProduct
@@ -9248,9 +9478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBeclometasoneMedicinalProduct = "1389007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBeclometasoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBeclometasoneMedicinalProduct = "http://snomed.info/sct#1389007";
+
+    /// <summary>
     /// Literal for code: ProductContainingSpironolactoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSpironolactoneMedicinalProduct = "13929005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSpironolactoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSpironolactoneMedicinalProduct = "http://snomed.info/sct#13929005";
 
     /// <summary>
     /// Literal for code: ProductContainingButorphanolMedicinalProduct
@@ -9258,9 +9498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingButorphanolMedicinalProduct = "13936006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingButorphanolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingButorphanolMedicinalProduct = "http://snomed.info/sct#13936006";
+
+    /// <summary>
     /// Literal for code: ProductContainingValproicAcidMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingValproicAcidMedicinalProduct = "13965000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingValproicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingValproicAcidMedicinalProduct = "http://snomed.info/sct#13965000";
 
     /// <summary>
     /// Literal for code: ProductContainingOpioidReceptorAntagonistProduct
@@ -9268,9 +9518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingOpioidReceptorAntagonistProduct = "14103001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingOpioidReceptorAntagonistProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOpioidReceptorAntagonistProduct = "http://snomed.info/sct#14103001";
+
+    /// <summary>
     /// Literal for code: ProductContainingCapreomycinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCapreomycinMedicinalProduct = "14170004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCapreomycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCapreomycinMedicinalProduct = "http://snomed.info/sct#14170004";
 
     /// <summary>
     /// Literal for code: ProductContainingCalamineMedicinalProduct
@@ -9278,9 +9538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCalamineMedicinalProduct = "1434005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCalamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCalamineMedicinalProduct = "http://snomed.info/sct#1434005";
+
+    /// <summary>
     /// Literal for code: ProductContainingAcetylcholineReceptorAntagonistProduct
     /// </summary>
     public const string LiteralProductContainingAcetylcholineReceptorAntagonistProduct = "14601000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAcetylcholineReceptorAntagonistProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAcetylcholineReceptorAntagonistProduct = "http://snomed.info/sct#14601000";
 
     /// <summary>
     /// Literal for code: PhenethicillinContainingProduct
@@ -9288,9 +9558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPhenethicillinContainingProduct = "14706000";
 
     /// <summary>
+    /// Literal for code: NONEPhenethicillinContainingProduct
+    /// </summary>
+    public const string LiteralNONEPhenethicillinContainingProduct = "http://snomed.info/sct#14706000";
+
+    /// <summary>
     /// Literal for code: ProductContainingChloroquineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingChloroquineMedicinalProduct = "14728000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingChloroquineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChloroquineMedicinalProduct = "http://snomed.info/sct#14728000";
 
     /// <summary>
     /// Literal for code: ProductContainingTrimethobenzamideMedicinalProduct
@@ -9298,9 +9578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTrimethobenzamideMedicinalProduct = "14814001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTrimethobenzamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTrimethobenzamideMedicinalProduct = "http://snomed.info/sct#14814001";
+
+    /// <summary>
     /// Literal for code: ProductContainingCocaineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCocaineMedicinalProduct = "14816004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCocaineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCocaineMedicinalProduct = "http://snomed.info/sct#14816004";
 
     /// <summary>
     /// Literal for code: ProductContainingEnalaprilMedicinalProduct
@@ -9308,9 +9598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingEnalaprilMedicinalProduct = "15222008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingEnalaprilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEnalaprilMedicinalProduct = "http://snomed.info/sct#15222008";
+
+    /// <summary>
     /// Literal for code: ProductContainingFolinicAcidMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFolinicAcidMedicinalProduct = "1528001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFolinicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFolinicAcidMedicinalProduct = "http://snomed.info/sct#1528001";
 
     /// <summary>
     /// Literal for code: ProductContainingPhenanthreneDerivativeProduct
@@ -9318,9 +9618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPhenanthreneDerivativeProduct = "15375005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPhenanthreneDerivativeProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhenanthreneDerivativeProduct = "http://snomed.info/sct#15375005";
+
+    /// <summary>
     /// Literal for code: ProductContainingLevodopaMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingLevodopaMedicinalProduct = "15383004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingLevodopaMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLevodopaMedicinalProduct = "http://snomed.info/sct#15383004";
 
     /// <summary>
     /// Literal for code: ProductContainingEthinylestradiolMedicinalProduct
@@ -9328,9 +9638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingEthinylestradiolMedicinalProduct = "15432003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingEthinylestradiolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEthinylestradiolMedicinalProduct = "http://snomed.info/sct#15432003";
+
+    /// <summary>
     /// Literal for code: MedicinalProductActingAsSalureticProduct
     /// </summary>
     public const string LiteralMedicinalProductActingAsSalureticProduct = "1552008";
+
+    /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsSalureticProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsSalureticProduct = "http://snomed.info/sct#1552008";
 
     /// <summary>
     /// Literal for code: ProductContainingBeta1AdrenergicReceptorAntagonistProduct
@@ -9338,9 +9658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBeta1AdrenergicReceptorAntagonistProduct = "15772006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBeta1AdrenergicReceptorAntagonistProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBeta1AdrenergicReceptorAntagonistProduct = "http://snomed.info/sct#15772006";
+
+    /// <summary>
     /// Literal for code: EthanolamineDerivativeHistamineReceptorAntagonistProduct
     /// </summary>
     public const string LiteralEthanolamineDerivativeHistamineReceptorAntagonistProduct = "15857002";
+
+    /// <summary>
+    /// Literal for code: NONEEthanolamineDerivativeHistamineReceptorAntagonistProduct
+    /// </summary>
+    public const string LiteralNONEEthanolamineDerivativeHistamineReceptorAntagonistProduct = "http://snomed.info/sct#15857002";
 
     /// <summary>
     /// Literal for code: ProductContainingAzatadineMedicinalProduct
@@ -9348,9 +9678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAzatadineMedicinalProduct = "1594006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAzatadineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAzatadineMedicinalProduct = "http://snomed.info/sct#1594006";
+
+    /// <summary>
     /// Literal for code: ProductContainingDexchlorpheniramineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDexchlorpheniramineMedicinalProduct = "16031005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDexchlorpheniramineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDexchlorpheniramineMedicinalProduct = "http://snomed.info/sct#16031005";
 
     /// <summary>
     /// Literal for code: ProductContainingTerfenadineMedicinalProduct
@@ -9358,9 +9698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTerfenadineMedicinalProduct = "16037009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTerfenadineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTerfenadineMedicinalProduct = "http://snomed.info/sct#16037009";
+
+    /// <summary>
     /// Literal for code: ProductContainingBenzodiazepineProduct
     /// </summary>
     public const string LiteralProductContainingBenzodiazepineProduct = "16047007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBenzodiazepineProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBenzodiazepineProduct = "http://snomed.info/sct#16047007";
 
     /// <summary>
     /// Literal for code: ProductContainingAntivenomProduct
@@ -9368,9 +9718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAntivenomProduct = "16131008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAntivenomProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAntivenomProduct = "http://snomed.info/sct#16131008";
+
+    /// <summary>
     /// Literal for code: NonSteroidalAntiInflammatoryAgent
     /// </summary>
     public const string LiteralNonSteroidalAntiInflammatoryAgent = "16403005";
+
+    /// <summary>
+    /// Literal for code: NONENonSteroidalAntiInflammatoryAgent
+    /// </summary>
+    public const string LiteralNONENonSteroidalAntiInflammatoryAgent = "http://snomed.info/sct#16403005";
 
     /// <summary>
     /// Literal for code: ProductContainingHydrocortisoneMedicinalProduct
@@ -9378,9 +9738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHydrocortisoneMedicinalProduct = "16602005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHydrocortisoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHydrocortisoneMedicinalProduct = "http://snomed.info/sct#16602005";
+
+    /// <summary>
     /// Literal for code: ProductContainingStreptococcusEquisimilisAntiserumAndStreptococcusSuisAntiserumMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingStreptococcusEquisimilisAntiserumAndStreptococcusSuisAntiserumMedicinalProduct = "16787005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingStreptococcusEquisimilisAntiserumAndStreptococcusSuisAntiserumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingStreptococcusEquisimilisAntiserumAndStreptococcusSuisAntiserumMedicinalProduct = "http://snomed.info/sct#16787005";
 
     /// <summary>
     /// Literal for code: ProductContainingCefradineMedicinalProduct
@@ -9388,9 +9758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCefradineMedicinalProduct = "16791000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCefradineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefradineMedicinalProduct = "http://snomed.info/sct#16791000";
+
+    /// <summary>
     /// Literal for code: ConjugatedEstrogensContainingProduct
     /// </summary>
     public const string LiteralConjugatedEstrogensContainingProduct = "16832004";
+
+    /// <summary>
+    /// Literal for code: NONEConjugatedEstrogensContainingProduct
+    /// </summary>
+    public const string LiteralNONEConjugatedEstrogensContainingProduct = "http://snomed.info/sct#16832004";
 
     /// <summary>
     /// Literal for code: ProductContainingUreaMedicinalProduct
@@ -9398,9 +9778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingUreaMedicinalProduct = "16858004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingUreaMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingUreaMedicinalProduct = "http://snomed.info/sct#16858004";
+
+    /// <summary>
     /// Literal for code: ProductContainingSulfathiazoleMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSulfathiazoleMedicinalProduct = "16867004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSulfathiazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSulfathiazoleMedicinalProduct = "http://snomed.info/sct#16867004";
 
     /// <summary>
     /// Literal for code: ProductContainingHypothalamicReleasingFactorProduct
@@ -9408,9 +9798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHypothalamicReleasingFactorProduct = "169008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHypothalamicReleasingFactorProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHypothalamicReleasingFactorProduct = "http://snomed.info/sct#169008";
+
+    /// <summary>
     /// Literal for code: ProductContainingProguanilMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingProguanilMedicinalProduct = "16970001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingProguanilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingProguanilMedicinalProduct = "http://snomed.info/sct#16970001";
 
     /// <summary>
     /// Literal for code: ProductContainingLithiumCarbonateMedicinalProduct
@@ -9418,9 +9818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingLithiumCarbonateMedicinalProduct = "16977003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingLithiumCarbonateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLithiumCarbonateMedicinalProduct = "http://snomed.info/sct#16977003";
+
+    /// <summary>
     /// Literal for code: ProductContainingDapsoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDapsoneMedicinalProduct = "17308007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDapsoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDapsoneMedicinalProduct = "http://snomed.info/sct#17308007";
 
     /// <summary>
     /// Literal for code: ProductContainingAntiInfective
@@ -9428,9 +9838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAntiInfective = "17386008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAntiInfective
+    /// </summary>
+    public const string LiteralNONEProductContainingAntiInfective = "http://snomed.info/sct#17386008";
+
+    /// <summary>
     /// Literal for code: ProductContainingParamethasoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingParamethasoneMedicinalProduct = "17554004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingParamethasoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingParamethasoneMedicinalProduct = "http://snomed.info/sct#17554004";
 
     /// <summary>
     /// Literal for code: ProductContainingCornOilMedicinalProduct
@@ -9438,9 +9858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCornOilMedicinalProduct = "17558001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCornOilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCornOilMedicinalProduct = "http://snomed.info/sct#17558001";
+
+    /// <summary>
     /// Literal for code: ProductContainingMotilinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMotilinMedicinalProduct = "1758005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMotilinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMotilinMedicinalProduct = "http://snomed.info/sct#1758005";
 
     /// <summary>
     /// Literal for code: DiagnosticRadioisotope
@@ -9448,9 +9878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDiagnosticRadioisotope = "17600005";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadioisotope
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadioisotope = "http://snomed.info/sct#17600005";
+
+    /// <summary>
     /// Literal for code: ProductContainingLithiumCitrateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingLithiumCitrateMedicinalProduct = "17805003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingLithiumCitrateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLithiumCitrateMedicinalProduct = "http://snomed.info/sct#17805003";
 
     /// <summary>
     /// Literal for code: ProductContainingPolyvalentCrotalidaeAntivenomMedicinalProduct
@@ -9458,9 +9898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPolyvalentCrotalidaeAntivenomMedicinalProduct = "17859000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPolyvalentCrotalidaeAntivenomMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPolyvalentCrotalidaeAntivenomMedicinalProduct = "http://snomed.info/sct#17859000";
+
+    /// <summary>
     /// Literal for code: SkeletalMuscleRelaxant
     /// </summary>
     public const string LiteralSkeletalMuscleRelaxant = "17893001";
+
+    /// <summary>
+    /// Literal for code: NONESkeletalMuscleRelaxant
+    /// </summary>
+    public const string LiteralNONESkeletalMuscleRelaxant = "http://snomed.info/sct#17893001";
 
     /// <summary>
     /// Literal for code: ProductContainingAuranofinMedicinalProduct
@@ -9468,9 +9918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAuranofinMedicinalProduct = "18002004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAuranofinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAuranofinMedicinalProduct = "http://snomed.info/sct#18002004";
+
+    /// <summary>
     /// Literal for code: ProductContainingFluocinonideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFluocinonideMedicinalProduct = "18125000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFluocinonideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFluocinonideMedicinalProduct = "http://snomed.info/sct#18125000";
 
     /// <summary>
     /// Literal for code: ProductContainingPlicamycinMedicinalProduct
@@ -9478,9 +9938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPlicamycinMedicinalProduct = "18335001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPlicamycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPlicamycinMedicinalProduct = "http://snomed.info/sct#18335001";
+
+    /// <summary>
     /// Literal for code: ProductContainingOxychloroseneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingOxychloroseneMedicinalProduct = "18340009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingOxychloroseneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOxychloroseneMedicinalProduct = "http://snomed.info/sct#18340009";
 
     /// <summary>
     /// Literal for code: ProductContainingPindololMedicinalProduct
@@ -9488,9 +9958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPindololMedicinalProduct = "18381001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPindololMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPindololMedicinalProduct = "http://snomed.info/sct#18381001";
+
+    /// <summary>
     /// Literal for code: ProductContainingDiphemanilMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDiphemanilMedicinalProduct = "1842003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDiphemanilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDiphemanilMedicinalProduct = "http://snomed.info/sct#1842003";
 
     /// <summary>
     /// Literal for code: ProductContainingMethylphenidateMedicinalProduct
@@ -9498,9 +9978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMethylphenidateMedicinalProduct = "18548003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMethylphenidateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethylphenidateMedicinalProduct = "http://snomed.info/sct#18548003";
+
+    /// <summary>
     /// Literal for code: ProductContainingPotassiumExchangeResinProduct
     /// </summary>
     public const string LiteralProductContainingPotassiumExchangeResinProduct = "18679008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPotassiumExchangeResinProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPotassiumExchangeResinProduct = "http://snomed.info/sct#18679008";
 
     /// <summary>
     /// Literal for code: ProductContainingHexachloropheneMedicinalProduct
@@ -9508,9 +9998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHexachloropheneMedicinalProduct = "1878008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHexachloropheneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHexachloropheneMedicinalProduct = "http://snomed.info/sct#1878008";
+
+    /// <summary>
     /// Literal for code: ProductContainingAsparaginaseMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAsparaginaseMedicinalProduct = "18811003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAsparaginaseMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAsparaginaseMedicinalProduct = "http://snomed.info/sct#18811003";
 
     /// <summary>
     /// Literal for code: ProductContainingPermethrinMedicinalProduct
@@ -9518,9 +10018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPermethrinMedicinalProduct = "1887004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPermethrinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPermethrinMedicinalProduct = "http://snomed.info/sct#1887004";
+
+    /// <summary>
     /// Literal for code: ProductContainingHydroflumethiazideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingHydroflumethiazideMedicinalProduct = "18914005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingHydroflumethiazideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHydroflumethiazideMedicinalProduct = "http://snomed.info/sct#18914005";
 
     /// <summary>
     /// Literal for code: ProductContainingEconazoleMedicinalProduct
@@ -9528,9 +10038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingEconazoleMedicinalProduct = "18952006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingEconazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEconazoleMedicinalProduct = "http://snomed.info/sct#18952006";
+
+    /// <summary>
     /// Literal for code: ProductContainingDidanosineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDidanosineMedicinalProduct = "19194001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDidanosineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDidanosineMedicinalProduct = "http://snomed.info/sct#19194001";
 
     /// <summary>
     /// Literal for code: ProductContainingLorazepamMedicinalProduct
@@ -9538,9 +10058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingLorazepamMedicinalProduct = "19225000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingLorazepamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLorazepamMedicinalProduct = "http://snomed.info/sct#19225000";
+
+    /// <summary>
     /// Literal for code: ProductContainingPrilocaineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPrilocaineMedicinalProduct = "19232009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPrilocaineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPrilocaineMedicinalProduct = "http://snomed.info/sct#19232009";
 
     /// <summary>
     /// Literal for code: ProductContainingSulfinpyrazoneMedicinalProduct
@@ -9548,9 +10078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSulfinpyrazoneMedicinalProduct = "19261005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSulfinpyrazoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSulfinpyrazoneMedicinalProduct = "http://snomed.info/sct#19261005";
+
+    /// <summary>
     /// Literal for code: ProductContainingFlurazepamMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFlurazepamMedicinalProduct = "19403009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFlurazepamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFlurazepamMedicinalProduct = "http://snomed.info/sct#19403009";
 
     /// <summary>
     /// Literal for code: ProductContainingNetilmicinMedicinalProduct
@@ -9558,9 +10098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNetilmicinMedicinalProduct = "19405002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNetilmicinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNetilmicinMedicinalProduct = "http://snomed.info/sct#19405002";
+
+    /// <summary>
     /// Literal for code: ParasympathomimeticAgentContainingProduct
     /// </summary>
     public const string LiteralParasympathomimeticAgentContainingProduct = "19581007";
+
+    /// <summary>
+    /// Literal for code: NONEParasympathomimeticAgentContainingProduct
+    /// </summary>
+    public const string LiteralNONEParasympathomimeticAgentContainingProduct = "http://snomed.info/sct#19581007";
 
     /// <summary>
     /// Literal for code: ProductContainingDiclofenamideMedicinalProduct
@@ -9568,9 +10118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDiclofenamideMedicinalProduct = "19583005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDiclofenamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDiclofenamideMedicinalProduct = "http://snomed.info/sct#19583005";
+
+    /// <summary>
     /// Literal for code: ProductContainingSilverSulfadiazineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSilverSulfadiazineMedicinalProduct = "19630009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSilverSulfadiazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSilverSulfadiazineMedicinalProduct = "http://snomed.info/sct#19630009";
 
     /// <summary>
     /// Literal for code: ProductContainingAlkylatingAgentProduct
@@ -9578,9 +10138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAlkylatingAgentProduct = "19768003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAlkylatingAgentProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAlkylatingAgentProduct = "http://snomed.info/sct#19768003";
+
+    /// <summary>
     /// Literal for code: BacitracinContainingProductInOcularDoseForm
     /// </summary>
     public const string LiteralBacitracinContainingProductInOcularDoseForm = "1982006";
+
+    /// <summary>
+    /// Literal for code: NONEBacitracinContainingProductInOcularDoseForm
+    /// </summary>
+    public const string LiteralNONEBacitracinContainingProductInOcularDoseForm = "http://snomed.info/sct#1982006";
 
     /// <summary>
     /// Literal for code: ProductContainingCeftriaxoneMedicinalProduct
@@ -9588,9 +10158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCeftriaxoneMedicinalProduct = "19841008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCeftriaxoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCeftriaxoneMedicinalProduct = "http://snomed.info/sct#19841008";
+
+    /// <summary>
     /// Literal for code: ProductContainingSomatotropinReleasingFactorProduct
     /// </summary>
     public const string LiteralProductContainingSomatotropinReleasingFactorProduct = "20091003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSomatotropinReleasingFactorProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSomatotropinReleasingFactorProduct = "http://snomed.info/sct#20091003";
 
     /// <summary>
     /// Literal for code: ProductContainingDextromethorphanMedicinalProduct
@@ -9598,9 +10178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDextromethorphanMedicinalProduct = "2016004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDextromethorphanMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDextromethorphanMedicinalProduct = "http://snomed.info/sct#2016004";
+
+    /// <summary>
     /// Literal for code: ProductContainingNafoxidineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNafoxidineMedicinalProduct = "20201001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNafoxidineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNafoxidineMedicinalProduct = "http://snomed.info/sct#20201001";
 
     /// <summary>
     /// Literal for code: ProductContainingDihydrotachysterolMedicinalProduct
@@ -9608,9 +10198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDihydrotachysterolMedicinalProduct = "20237006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDihydrotachysterolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDihydrotachysterolMedicinalProduct = "http://snomed.info/sct#20237006";
+
+    /// <summary>
     /// Literal for code: ProductContainingHydrocodoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingHydrocodoneMedicinalProduct = "20320002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingHydrocodoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHydrocodoneMedicinalProduct = "http://snomed.info/sct#20320002";
 
     /// <summary>
     /// Literal for code: ProductContainingChoriogonadotropinMedicinalProduct
@@ -9618,9 +10218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingChoriogonadotropinMedicinalProduct = "20577002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingChoriogonadotropinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChoriogonadotropinMedicinalProduct = "http://snomed.info/sct#20577002";
+
+    /// <summary>
     /// Literal for code: ProductContainingDiflunisalMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDiflunisalMedicinalProduct = "20865003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDiflunisalMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDiflunisalMedicinalProduct = "http://snomed.info/sct#20865003";
 
     /// <summary>
     /// Literal for code: LipotropicAgent
@@ -9628,9 +10238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLipotropicAgent = "21069002";
 
     /// <summary>
+    /// Literal for code: NONELipotropicAgent
+    /// </summary>
+    public const string LiteralNONELipotropicAgent = "http://snomed.info/sct#21069002";
+
+    /// <summary>
     /// Literal for code: ProductContainingNorethandroloneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNorethandroloneMedicinalProduct = "211009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNorethandroloneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNorethandroloneMedicinalProduct = "http://snomed.info/sct#211009";
 
     /// <summary>
     /// Literal for code: ProductContainingPargylineMedicinalProduct
@@ -9638,9 +10258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPargylineMedicinalProduct = "21159006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPargylineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPargylineMedicinalProduct = "http://snomed.info/sct#21159006";
+
+    /// <summary>
     /// Literal for code: ProductContainingMagnesiumTrisilicateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMagnesiumTrisilicateMedicinalProduct = "21691008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMagnesiumTrisilicateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMagnesiumTrisilicateMedicinalProduct = "http://snomed.info/sct#21691008";
 
     /// <summary>
     /// Literal for code: ProductContainingCromoglicicAcidMedicinalProduct
@@ -9648,9 +10278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCromoglicicAcidMedicinalProduct = "21701005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCromoglicicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCromoglicicAcidMedicinalProduct = "http://snomed.info/sct#21701005";
+
+    /// <summary>
     /// Literal for code: ProductContainingIronDextranMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingIronDextranMedicinalProduct = "21767006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingIronDextranMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIronDextranMedicinalProduct = "http://snomed.info/sct#21767006";
 
     /// <summary>
     /// Literal for code: ProductContainingTetryzolineMedicinalProduct
@@ -9658,9 +10298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTetryzolineMedicinalProduct = "2183004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTetryzolineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTetryzolineMedicinalProduct = "http://snomed.info/sct#2183004";
+
+    /// <summary>
     /// Literal for code: ProductContainingTrihexyphenidylMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTrihexyphenidylMedicinalProduct = "2190009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTrihexyphenidylMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTrihexyphenidylMedicinalProduct = "http://snomed.info/sct#2190009";
 
     /// <summary>
     /// Literal for code: ProductContainingErysipelothrixRhusiopathiaeAntiserumMedicinalProduct
@@ -9668,9 +10318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingErysipelothrixRhusiopathiaeAntiserumMedicinalProduct = "21986005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingErysipelothrixRhusiopathiaeAntiserumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingErysipelothrixRhusiopathiaeAntiserumMedicinalProduct = "http://snomed.info/sct#21986005";
+
+    /// <summary>
     /// Literal for code: ProductContainingHormoneProduct
     /// </summary>
     public const string LiteralProductContainingHormoneProduct = "22091006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingHormoneProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHormoneProduct = "http://snomed.info/sct#22091006";
 
     /// <summary>
     /// Literal for code: ProductContainingMetolazoneMedicinalProduct
@@ -9678,9 +10338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMetolazoneMedicinalProduct = "22198003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMetolazoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMetolazoneMedicinalProduct = "http://snomed.info/sct#22198003";
+
+    /// <summary>
     /// Literal for code: ProductContainingMethandriolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMethandriolMedicinalProduct = "22274004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMethandriolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethandriolMedicinalProduct = "http://snomed.info/sct#22274004";
 
     /// <summary>
     /// Literal for code: ProductContainingAldosteroneMedicinalProduct
@@ -9688,9 +10358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAldosteroneMedicinalProduct = "22474002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAldosteroneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAldosteroneMedicinalProduct = "http://snomed.info/sct#22474002";
+
+    /// <summary>
     /// Literal for code: ProductContainingDepolarizingNeuromuscularBlockerProduct
     /// </summary>
     public const string LiteralProductContainingDepolarizingNeuromuscularBlockerProduct = "22587006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDepolarizingNeuromuscularBlockerProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDepolarizingNeuromuscularBlockerProduct = "http://snomed.info/sct#22587006";
 
     /// <summary>
     /// Literal for code: ProductContainingCalcitoninMedicinalProduct
@@ -9698,9 +10378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCalcitoninMedicinalProduct = "22657006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCalcitoninMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCalcitoninMedicinalProduct = "http://snomed.info/sct#22657006";
+
+    /// <summary>
     /// Literal for code: ProductContainingAmfetamineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAmfetamineMedicinalProduct = "22672005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAmfetamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAmfetamineMedicinalProduct = "http://snomed.info/sct#22672005";
 
     /// <summary>
     /// Literal for code: ProductContainingHydralazineMedicinalProduct
@@ -9708,9 +10398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHydralazineMedicinalProduct = "22696000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHydralazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHydralazineMedicinalProduct = "http://snomed.info/sct#22696000";
+
+    /// <summary>
     /// Literal for code: ProductContainingOxytetracyclineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingOxytetracyclineMedicinalProduct = "22969001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingOxytetracyclineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOxytetracyclineMedicinalProduct = "http://snomed.info/sct#22969001";
 
     /// <summary>
     /// Literal for code: ProductContainingVincristineMedicinalProduct
@@ -9718,9 +10418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingVincristineMedicinalProduct = "23079006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingVincristineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingVincristineMedicinalProduct = "http://snomed.info/sct#23079006";
+
+    /// <summary>
     /// Literal for code: ProductContainingAntiserumProduct
     /// </summary>
     public const string LiteralProductContainingAntiserumProduct = "23222006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAntiserumProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAntiserumProduct = "http://snomed.info/sct#23222006";
 
     /// <summary>
     /// Literal for code: ProductContainingPhenmetrazineMedicinalProduct
@@ -9728,9 +10438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPhenmetrazineMedicinalProduct = "23532003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPhenmetrazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhenmetrazineMedicinalProduct = "http://snomed.info/sct#23532003";
+
+    /// <summary>
     /// Literal for code: ProductContainingSulfacetamideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSulfacetamideMedicinalProduct = "23827009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSulfacetamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSulfacetamideMedicinalProduct = "http://snomed.info/sct#23827009";
 
     /// <summary>
     /// Literal for code: ProductContainingCascaraMedicinalProduct
@@ -9738,9 +10458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCascaraMedicinalProduct = "23888001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCascaraMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCascaraMedicinalProduct = "http://snomed.info/sct#23888001";
+
+    /// <summary>
     /// Literal for code: MedicinalProductActingAsAntianemicAgentProduct
     /// </summary>
     public const string LiteralMedicinalProductActingAsAntianemicAgentProduct = "24036003";
+
+    /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsAntianemicAgentProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsAntianemicAgentProduct = "http://snomed.info/sct#24036003";
 
     /// <summary>
     /// Literal for code: ProductContainingEthambutolMedicinalProduct
@@ -9748,9 +10478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingEthambutolMedicinalProduct = "24450004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingEthambutolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEthambutolMedicinalProduct = "http://snomed.info/sct#24450004";
+
+    /// <summary>
     /// Literal for code: ProductContainingMethylcelluloseMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMethylcelluloseMedicinalProduct = "24504000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMethylcelluloseMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethylcelluloseMedicinalProduct = "http://snomed.info/sct#24504000";
 
     /// <summary>
     /// Literal for code: ProductContainingSalmonellaTyphimuriumAntiserumMedicinalProduct
@@ -9758,9 +10498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSalmonellaTyphimuriumAntiserumMedicinalProduct = "24866006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSalmonellaTyphimuriumAntiserumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSalmonellaTyphimuriumAntiserumMedicinalProduct = "http://snomed.info/sct#24866006";
+
+    /// <summary>
     /// Literal for code: ProductContainingHexetidineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingHexetidineMedicinalProduct = "2497003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingHexetidineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHexetidineMedicinalProduct = "http://snomed.info/sct#2497003";
 
     /// <summary>
     /// Literal for code: ProductContainingTripelennamineMedicinalProduct
@@ -9768,9 +10518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTripelennamineMedicinalProduct = "25014009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTripelennamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTripelennamineMedicinalProduct = "http://snomed.info/sct#25014009";
+
+    /// <summary>
     /// Literal for code: ProductContainingCarisoprodolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCarisoprodolMedicinalProduct = "25076002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCarisoprodolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCarisoprodolMedicinalProduct = "http://snomed.info/sct#25076002";
 
     /// <summary>
     /// Literal for code: ProductContainingCholecystokininMedicinalProduct
@@ -9778,9 +10538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCholecystokininMedicinalProduct = "25085002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCholecystokininMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCholecystokininMedicinalProduct = "http://snomed.info/sct#25085002";
+
+    /// <summary>
     /// Literal for code: ProductContainingTrilostaneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTrilostaneMedicinalProduct = "25142008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTrilostaneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTrilostaneMedicinalProduct = "http://snomed.info/sct#25142008";
 
     /// <summary>
     /// Literal for code: ProductContainingAllopurinolMedicinalProduct
@@ -9788,9 +10558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAllopurinolMedicinalProduct = "25246002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAllopurinolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAllopurinolMedicinalProduct = "http://snomed.info/sct#25246002";
+
+    /// <summary>
     /// Literal for code: ProductContainingIchthammolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingIchthammolMedicinalProduct = "25398003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingIchthammolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIchthammolMedicinalProduct = "http://snomed.info/sct#25398003";
 
     /// <summary>
     /// Literal for code: ProductContainingBariumSulfateMedicinalProduct
@@ -9798,9 +10578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBariumSulfateMedicinalProduct = "25419009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBariumSulfateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBariumSulfateMedicinalProduct = "http://snomed.info/sct#25419009";
+
+    /// <summary>
     /// Literal for code: ProductContainingOmeprazoleMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingOmeprazoleMedicinalProduct = "25673006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingOmeprazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOmeprazoleMedicinalProduct = "http://snomed.info/sct#25673006";
 
     /// <summary>
     /// Literal for code: ProductContainingBusulfanMedicinalProduct
@@ -9808,9 +10598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBusulfanMedicinalProduct = "2571007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBusulfanMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBusulfanMedicinalProduct = "http://snomed.info/sct#2571007";
+
+    /// <summary>
     /// Literal for code: ProductContainingTerconazoleMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTerconazoleMedicinalProduct = "25860005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTerconazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTerconazoleMedicinalProduct = "http://snomed.info/sct#25860005";
 
     /// <summary>
     /// Literal for code: ProductContainingLincomycinMedicinalProduct
@@ -9818,9 +10618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingLincomycinMedicinalProduct = "2596005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingLincomycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLincomycinMedicinalProduct = "http://snomed.info/sct#2596005";
+
+    /// <summary>
     /// Literal for code: ProductContainingTriprolidineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTriprolidineMedicinalProduct = "25995007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTriprolidineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTriprolidineMedicinalProduct = "http://snomed.info/sct#25995007";
 
     /// <summary>
     /// Literal for code: ProductContainingDimetindeneMedicinalProduct
@@ -9828,9 +10638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDimetindeneMedicinalProduct = "26122009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDimetindeneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDimetindeneMedicinalProduct = "http://snomed.info/sct#26122009";
+
+    /// <summary>
     /// Literal for code: ProductContainingGlipizideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingGlipizideMedicinalProduct = "26124005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingGlipizideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGlipizideMedicinalProduct = "http://snomed.info/sct#26124005";
 
     /// <summary>
     /// Literal for code: ProductContainingMuscarinicReceptorAntagonistProduct
@@ -9838,9 +10658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMuscarinicReceptorAntagonistProduct = "26244009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMuscarinicReceptorAntagonistProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMuscarinicReceptorAntagonistProduct = "http://snomed.info/sct#26244009";
+
+    /// <summary>
     /// Literal for code: ProductContainingHexestrolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingHexestrolMedicinalProduct = "26303005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingHexestrolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHexestrolMedicinalProduct = "http://snomed.info/sct#26303005";
 
     /// <summary>
     /// Literal for code: HemostaticAgent
@@ -9848,9 +10678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHemostaticAgent = "26370007";
 
     /// <summary>
+    /// Literal for code: NONEHemostaticAgent
+    /// </summary>
+    public const string LiteralNONEHemostaticAgent = "http://snomed.info/sct#26370007";
+
+    /// <summary>
     /// Literal for code: ProductContainingDiphenhydramineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDiphenhydramineMedicinalProduct = "26458009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDiphenhydramineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDiphenhydramineMedicinalProduct = "http://snomed.info/sct#26458009";
 
     /// <summary>
     /// Literal for code: ProductContainingCyproheptadineMedicinalProduct
@@ -9858,9 +10698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCyproheptadineMedicinalProduct = "26462003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCyproheptadineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCyproheptadineMedicinalProduct = "http://snomed.info/sct#26462003";
+
+    /// <summary>
     /// Literal for code: ProductContainingDeserpidineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDeserpidineMedicinalProduct = "26503009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDeserpidineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDeserpidineMedicinalProduct = "http://snomed.info/sct#26503009";
 
     /// <summary>
     /// Literal for code: ProductContainingDobutamineMedicinalProduct
@@ -9868,9 +10718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDobutamineMedicinalProduct = "26523005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDobutamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDobutamineMedicinalProduct = "http://snomed.info/sct#26523005";
+
+    /// <summary>
     /// Literal for code: ProductContainingPancreaticHormoneProduct
     /// </summary>
     public const string LiteralProductContainingPancreaticHormoneProduct = "26548008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPancreaticHormoneProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPancreaticHormoneProduct = "http://snomed.info/sct#26548008";
 
     /// <summary>
     /// Literal for code: ProductContainingDroperidolMedicinalProduct
@@ -9878,9 +10738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDroperidolMedicinalProduct = "26574002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDroperidolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDroperidolMedicinalProduct = "http://snomed.info/sct#26574002";
+
+    /// <summary>
     /// Literal for code: Digestant
     /// </summary>
     public const string LiteralDigestant = "26580005";
+
+    /// <summary>
+    /// Literal for code: NONEDigestant
+    /// </summary>
+    public const string LiteralNONEDigestant = "http://snomed.info/sct#26580005";
 
     /// <summary>
     /// Literal for code: ProductContainingFerrousGluconateMedicinalProduct
@@ -9888,9 +10758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFerrousGluconateMedicinalProduct = "26736008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFerrousGluconateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFerrousGluconateMedicinalProduct = "http://snomed.info/sct#26736008";
+
+    /// <summary>
     /// Literal for code: ProductContainingOxandroloneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingOxandroloneMedicinalProduct = "2679000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingOxandroloneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOxandroloneMedicinalProduct = "http://snomed.info/sct#2679000";
 
     /// <summary>
     /// Literal for code: ProductContainingMidazolamMedicinalProduct
@@ -9898,9 +10778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMidazolamMedicinalProduct = "26800000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMidazolamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMidazolamMedicinalProduct = "http://snomed.info/sct#26800000";
+
+    /// <summary>
     /// Literal for code: ProductContainingBurbotLiverOilMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingBurbotLiverOilMedicinalProduct = "26842003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBurbotLiverOilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBurbotLiverOilMedicinalProduct = "http://snomed.info/sct#26842003";
 
     /// <summary>
     /// Literal for code: ProductContainingHeavyMetalAntagonistProduct
@@ -9908,9 +10798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHeavyMetalAntagonistProduct = "27035007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHeavyMetalAntagonistProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHeavyMetalAntagonistProduct = "http://snomed.info/sct#27035007";
+
+    /// <summary>
     /// Literal for code: ProductContainingBupivacaineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingBupivacaineMedicinalProduct = "27196008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBupivacaineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBupivacaineMedicinalProduct = "http://snomed.info/sct#27196008";
 
     /// <summary>
     /// Literal for code: ProductContainingMethylprednisoloneMedicinalProduct
@@ -9918,9 +10818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMethylprednisoloneMedicinalProduct = "27242001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMethylprednisoloneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethylprednisoloneMedicinalProduct = "http://snomed.info/sct#27242001";
+
+    /// <summary>
     /// Literal for code: ProductContainingZidovudineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingZidovudineMedicinalProduct = "27479000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingZidovudineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingZidovudineMedicinalProduct = "http://snomed.info/sct#27479000";
 
     /// <summary>
     /// Literal for code: ParathyroidHormoneAgentContainingProduct
@@ -9928,9 +10838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralParathyroidHormoneAgentContainingProduct = "27518004";
 
     /// <summary>
+    /// Literal for code: NONEParathyroidHormoneAgentContainingProduct
+    /// </summary>
+    public const string LiteralNONEParathyroidHormoneAgentContainingProduct = "http://snomed.info/sct#27518004";
+
+    /// <summary>
     /// Literal for code: ProductContainingAlteplaseMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAlteplaseMedicinalProduct = "27638005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAlteplaseMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAlteplaseMedicinalProduct = "http://snomed.info/sct#27638005";
 
     /// <summary>
     /// Literal for code: ProductContainingAmoxicillinMedicinalProduct
@@ -9938,9 +10858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAmoxicillinMedicinalProduct = "27658006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAmoxicillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAmoxicillinMedicinalProduct = "http://snomed.info/sct#27658006";
+
+    /// <summary>
     /// Literal for code: ProductContainingPiroxicamMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPiroxicamMedicinalProduct = "27754002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPiroxicamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPiroxicamMedicinalProduct = "http://snomed.info/sct#27754002";
 
     /// <summary>
     /// Literal for code: AntineoplasticAgent
@@ -9948,9 +10878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAntineoplasticAgent = "27867009";
 
     /// <summary>
+    /// Literal for code: NONEAntineoplasticAgent
+    /// </summary>
+    public const string LiteralNONEAntineoplasticAgent = "http://snomed.info/sct#27867009";
+
+    /// <summary>
     /// Literal for code: ProductContainingPentostatinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPentostatinMedicinalProduct = "28149003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPentostatinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPentostatinMedicinalProduct = "http://snomed.info/sct#28149003";
 
     /// <summary>
     /// Literal for code: ProductContainingDoxapramMedicinalProduct
@@ -9958,9 +10898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDoxapramMedicinalProduct = "28235004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDoxapramMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDoxapramMedicinalProduct = "http://snomed.info/sct#28235004";
+
+    /// <summary>
     /// Literal for code: ProductContainingAlphaCarboxypenicillinProduct
     /// </summary>
     public const string LiteralProductContainingAlphaCarboxypenicillinProduct = "28410007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAlphaCarboxypenicillinProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAlphaCarboxypenicillinProduct = "http://snomed.info/sct#28410007";
 
     /// <summary>
     /// Literal for code: ProductContainingMethscopolamineMedicinalProduct
@@ -9968,9 +10918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMethscopolamineMedicinalProduct = "28415002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMethscopolamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethscopolamineMedicinalProduct = "http://snomed.info/sct#28415002";
+
+    /// <summary>
     /// Literal for code: ProductContainingFluocinoloneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFluocinoloneMedicinalProduct = "28426008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFluocinoloneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFluocinoloneMedicinalProduct = "http://snomed.info/sct#28426008";
 
     /// <summary>
     /// Literal for code: ProductContainingFlucytosineMedicinalProduct
@@ -9978,9 +10938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFlucytosineMedicinalProduct = "28506006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFlucytosineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFlucytosineMedicinalProduct = "http://snomed.info/sct#28506006";
+
+    /// <summary>
     /// Literal for code: ProductContainingChloralHydrateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingChloralHydrateMedicinalProduct = "28748001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingChloralHydrateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChloralHydrateMedicinalProduct = "http://snomed.info/sct#28748001";
 
     /// <summary>
     /// Literal for code: ProductContainingEthisteroneMedicinalProduct
@@ -9988,9 +10958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingEthisteroneMedicinalProduct = "28841002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingEthisteroneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEthisteroneMedicinalProduct = "http://snomed.info/sct#28841002";
+
+    /// <summary>
     /// Literal for code: ProductContainingPercoidLiverOilMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPercoidLiverOilMedicinalProduct = "28906000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPercoidLiverOilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPercoidLiverOilMedicinalProduct = "http://snomed.info/sct#28906000";
 
     /// <summary>
     /// Literal for code: ProductContainingHalcinonideMedicinalProduct
@@ -9998,9 +10978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHalcinonideMedicinalProduct = "29058003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHalcinonideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHalcinonideMedicinalProduct = "http://snomed.info/sct#29058003";
+
+    /// <summary>
     /// Literal for code: ProductContainingMitobronitolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMitobronitolMedicinalProduct = "29089004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMitobronitolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMitobronitolMedicinalProduct = "http://snomed.info/sct#29089004";
 
     /// <summary>
     /// Literal for code: ProductContainingMersalylMedicinalProduct
@@ -10008,9 +10998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMersalylMedicinalProduct = "29121001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMersalylMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMersalylMedicinalProduct = "http://snomed.info/sct#29121001";
+
+    /// <summary>
     /// Literal for code: ProductContainingOxymetazolineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingOxymetazolineMedicinalProduct = "29129004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingOxymetazolineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOxymetazolineMedicinalProduct = "http://snomed.info/sct#29129004";
 
     /// <summary>
     /// Literal for code: MechlorethamineContainingProduct
@@ -10018,9 +11018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMechlorethamineContainingProduct = "29156002";
 
     /// <summary>
+    /// Literal for code: NONEMechlorethamineContainingProduct
+    /// </summary>
+    public const string LiteralNONEMechlorethamineContainingProduct = "http://snomed.info/sct#29156002";
+
+    /// <summary>
     /// Literal for code: ProductContainingRifampicinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingRifampicinMedicinalProduct = "29175007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingRifampicinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingRifampicinMedicinalProduct = "http://snomed.info/sct#29175007";
 
     /// <summary>
     /// Literal for code: ProductContainingCaptoprilMedicinalProduct
@@ -10028,9 +11038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCaptoprilMedicinalProduct = "29439004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCaptoprilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCaptoprilMedicinalProduct = "http://snomed.info/sct#29439004";
+
+    /// <summary>
     /// Literal for code: DiagnosticAid
     /// </summary>
     public const string LiteralDiagnosticAid = "2949005";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticAid
+    /// </summary>
+    public const string LiteralNONEDiagnosticAid = "http://snomed.info/sct#2949005";
 
     /// <summary>
     /// Literal for code: ProductContainingBetaTocopherolMedicinalProduct
@@ -10038,9 +11058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBetaTocopherolMedicinalProduct = "29620001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBetaTocopherolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBetaTocopherolMedicinalProduct = "http://snomed.info/sct#29620001";
+
+    /// <summary>
     /// Literal for code: ProductContainingAmoxapineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAmoxapineMedicinalProduct = "29840005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAmoxapineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAmoxapineMedicinalProduct = "http://snomed.info/sct#29840005";
 
     /// <summary>
     /// Literal for code: ProductContainingIsocarboxazidMedicinalProduct
@@ -10048,9 +11078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingIsocarboxazidMedicinalProduct = "29877002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingIsocarboxazidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIsocarboxazidMedicinalProduct = "http://snomed.info/sct#29877002";
+
+    /// <summary>
     /// Literal for code: ProductContainingBetamethasoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingBetamethasoneMedicinalProduct = "29896003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBetamethasoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBetamethasoneMedicinalProduct = "http://snomed.info/sct#29896003";
 
     /// <summary>
     /// Literal for code: ProductContainingCyanocobalaminMedicinalProduct
@@ -10058,9 +11098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCyanocobalaminMedicinalProduct = "30010009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCyanocobalaminMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCyanocobalaminMedicinalProduct = "http://snomed.info/sct#30010009";
+
+    /// <summary>
     /// Literal for code: ProductContainingSennaMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSennaMedicinalProduct = "30125007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSennaMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSennaMedicinalProduct = "http://snomed.info/sct#30125007";
 
     /// <summary>
     /// Literal for code: ProductContainingSpiramycinMedicinalProduct
@@ -10068,9 +11118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSpiramycinMedicinalProduct = "302007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSpiramycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSpiramycinMedicinalProduct = "http://snomed.info/sct#302007";
+
+    /// <summary>
     /// Literal for code: ProductContainingThiamineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingThiamineMedicinalProduct = "30306003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingThiamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingThiamineMedicinalProduct = "http://snomed.info/sct#30306003";
 
     /// <summary>
     /// Literal for code: ProductContainingCisaprideMedicinalProduct
@@ -10078,9 +11138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCisaprideMedicinalProduct = "30317002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCisaprideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCisaprideMedicinalProduct = "http://snomed.info/sct#30317002";
+
+    /// <summary>
     /// Literal for code: ProductContainingFlumetasoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFlumetasoneMedicinalProduct = "3037004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFlumetasoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFlumetasoneMedicinalProduct = "http://snomed.info/sct#3037004";
 
     /// <summary>
     /// Literal for code: ProductContainingErythromycinMedicinalProduct
@@ -10088,9 +11158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingErythromycinMedicinalProduct = "30427009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingErythromycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingErythromycinMedicinalProduct = "http://snomed.info/sct#30427009";
+
+    /// <summary>
     /// Literal for code: ProductContainingClomifeneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingClomifeneMedicinalProduct = "30466001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingClomifeneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingClomifeneMedicinalProduct = "http://snomed.info/sct#30466001";
 
     /// <summary>
     /// Literal for code: MedicinalProductActingAsDiureticProduct
@@ -10098,9 +11178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicinalProductActingAsDiureticProduct = "30492008";
 
     /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsDiureticProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsDiureticProduct = "http://snomed.info/sct#30492008";
+
+    /// <summary>
     /// Literal for code: ProductContainingIronMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingIronMedicinalProduct = "30729008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingIronMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIronMedicinalProduct = "http://snomed.info/sct#30729008";
 
     /// <summary>
     /// Literal for code: ProductContainingMannitolMedicinalProduct
@@ -10108,9 +11198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMannitolMedicinalProduct = "30761007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMannitolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMannitolMedicinalProduct = "http://snomed.info/sct#30761007";
+
+    /// <summary>
     /// Literal for code: ProductContainingMethyprylonMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMethyprylonMedicinalProduct = "30964009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMethyprylonMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethyprylonMedicinalProduct = "http://snomed.info/sct#30964009";
 
     /// <summary>
     /// Literal for code: ProductContainingDienestrolMedicinalProduct
@@ -10118,9 +11218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDienestrolMedicinalProduct = "30988006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDienestrolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDienestrolMedicinalProduct = "http://snomed.info/sct#30988006";
+
+    /// <summary>
     /// Literal for code: ProductContainingAmpicillinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAmpicillinMedicinalProduct = "31087008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAmpicillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAmpicillinMedicinalProduct = "http://snomed.info/sct#31087008";
 
     /// <summary>
     /// Literal for code: ProductContainingHydrogenPeroxideMedicinalProduct
@@ -10128,9 +11238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHydrogenPeroxideMedicinalProduct = "31231007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHydrogenPeroxideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHydrogenPeroxideMedicinalProduct = "http://snomed.info/sct#31231007";
+
+    /// <summary>
     /// Literal for code: ProductContainingFluorouracilMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFluorouracilMedicinalProduct = "3127006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFluorouracilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFluorouracilMedicinalProduct = "http://snomed.info/sct#3127006";
 
     /// <summary>
     /// Literal for code: ProductContainingStreptococcusEquisimilisAntiserumMedicinalProduct
@@ -10138,9 +11258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingStreptococcusEquisimilisAntiserumMedicinalProduct = "31305008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingStreptococcusEquisimilisAntiserumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingStreptococcusEquisimilisAntiserumMedicinalProduct = "http://snomed.info/sct#31305008";
+
+    /// <summary>
     /// Literal for code: ProductContainingQuinidineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingQuinidineMedicinalProduct = "31306009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingQuinidineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingQuinidineMedicinalProduct = "http://snomed.info/sct#31306009";
 
     /// <summary>
     /// Literal for code: ProductContainingBuprenorphineMedicinalProduct
@@ -10148,9 +11278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBuprenorphineMedicinalProduct = "31684002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBuprenorphineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBuprenorphineMedicinalProduct = "http://snomed.info/sct#31684002";
+
+    /// <summary>
     /// Literal for code: ProductContainingBethanecholMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingBethanecholMedicinalProduct = "31690003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBethanecholMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBethanecholMedicinalProduct = "http://snomed.info/sct#31690003";
 
     /// <summary>
     /// Literal for code: ProductContainingPentamidineMedicinalProduct
@@ -10158,9 +11298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPentamidineMedicinalProduct = "31692006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPentamidineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPentamidineMedicinalProduct = "http://snomed.info/sct#31692006";
+
+    /// <summary>
     /// Literal for code: ProductContainingFluconazoleMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFluconazoleMedicinalProduct = "31865003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFluconazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFluconazoleMedicinalProduct = "http://snomed.info/sct#31865003";
 
     /// <summary>
     /// Literal for code: ProductContainingPramocaineMedicinalProduct
@@ -10168,9 +11318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPramocaineMedicinalProduct = "31872002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPramocaineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPramocaineMedicinalProduct = "http://snomed.info/sct#31872002";
+
+    /// <summary>
     /// Literal for code: ProductContainingAntiviralProduct
     /// </summary>
     public const string LiteralProductContainingAntiviralProduct = "32249005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAntiviralProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAntiviralProduct = "http://snomed.info/sct#32249005";
 
     /// <summary>
     /// Literal for code: ProductContainingEnfluraneMedicinalProduct
@@ -10178,9 +11338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingEnfluraneMedicinalProduct = "32313007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingEnfluraneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEnfluraneMedicinalProduct = "http://snomed.info/sct#32313007";
+
+    /// <summary>
     /// Literal for code: ProductContainingMelanocyteStimulatingHormoneReleasingFactorProduct
     /// </summary>
     public const string LiteralProductContainingMelanocyteStimulatingHormoneReleasingFactorProduct = "32462006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMelanocyteStimulatingHormoneReleasingFactorProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMelanocyteStimulatingHormoneReleasingFactorProduct = "http://snomed.info/sct#32462006";
 
     /// <summary>
     /// Literal for code: ProductContainingProbucolMedicinalProduct
@@ -10188,9 +11358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingProbucolMedicinalProduct = "32474005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingProbucolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingProbucolMedicinalProduct = "http://snomed.info/sct#32474005";
+
+    /// <summary>
     /// Literal for code: MedicinalProductActingAsAntiseborrheicAgentProduct
     /// </summary>
     public const string LiteralMedicinalProductActingAsAntiseborrheicAgentProduct = "32583002";
+
+    /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsAntiseborrheicAgentProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsAntiseborrheicAgentProduct = "http://snomed.info/sct#32583002";
 
     /// <summary>
     /// Literal for code: ProductContainingErgotamineMedicinalProduct
@@ -10198,9 +11378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingErgotamineMedicinalProduct = "32647002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingErgotamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingErgotamineMedicinalProduct = "http://snomed.info/sct#32647002";
+
+    /// <summary>
     /// Literal for code: ProductContainingErgosterolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingErgosterolMedicinalProduct = "32653002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingErgosterolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingErgosterolMedicinalProduct = "http://snomed.info/sct#32653002";
 
     /// <summary>
     /// Literal for code: ProductContainingTrimethoprimMedicinalProduct
@@ -10208,9 +11398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTrimethoprimMedicinalProduct = "32792001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTrimethoprimMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTrimethoprimMedicinalProduct = "http://snomed.info/sct#32792001";
+
+    /// <summary>
     /// Literal for code: ProductContainingMaprotilineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMaprotilineMedicinalProduct = "32823007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMaprotilineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMaprotilineMedicinalProduct = "http://snomed.info/sct#32823007";
 
     /// <summary>
     /// Literal for code: ProductContainingDomperidoneMedicinalProduct
@@ -10218,9 +11418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDomperidoneMedicinalProduct = "32955006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDomperidoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDomperidoneMedicinalProduct = "http://snomed.info/sct#32955006";
+
+    /// <summary>
     /// Literal for code: ProductContainingThiosalicylateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingThiosalicylateMedicinalProduct = "32960005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingThiosalicylateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingThiosalicylateMedicinalProduct = "http://snomed.info/sct#32960005";
 
     /// <summary>
     /// Literal for code: ProductContainingTolbutamideMedicinalProduct
@@ -10228,9 +11438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTolbutamideMedicinalProduct = "33124007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTolbutamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTolbutamideMedicinalProduct = "http://snomed.info/sct#33124007";
+
+    /// <summary>
     /// Literal for code: TricyclicAntidepressant
     /// </summary>
     public const string LiteralTricyclicAntidepressant = "33219003";
+
+    /// <summary>
+    /// Literal for code: NONETricyclicAntidepressant
+    /// </summary>
+    public const string LiteralNONETricyclicAntidepressant = "http://snomed.info/sct#33219003";
 
     /// <summary>
     /// Literal for code: ProductContainingPentobarbitalMedicinalProduct
@@ -10238,9 +11458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPentobarbitalMedicinalProduct = "33231001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPentobarbitalMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPentobarbitalMedicinalProduct = "http://snomed.info/sct#33231001";
+
+    /// <summary>
     /// Literal for code: ProductContainingBetaAdrenergicReceptorAntagonistProduct
     /// </summary>
     public const string LiteralProductContainingBetaAdrenergicReceptorAntagonistProduct = "33252009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBetaAdrenergicReceptorAntagonistProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBetaAdrenergicReceptorAntagonistProduct = "http://snomed.info/sct#33252009";
 
     /// <summary>
     /// Literal for code: ProductContainingCefotaximeMedicinalProduct
@@ -10248,9 +11478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCefotaximeMedicinalProduct = "3334000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCefotaximeMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefotaximeMedicinalProduct = "http://snomed.info/sct#3334000";
+
+    /// <summary>
     /// Literal for code: ProductContainingDesipramineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDesipramineMedicinalProduct = "33378002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDesipramineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDesipramineMedicinalProduct = "http://snomed.info/sct#33378002";
 
     /// <summary>
     /// Literal for code: ProductContainingThioridazineMedicinalProduct
@@ -10258,9 +11498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingThioridazineMedicinalProduct = "33588000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingThioridazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingThioridazineMedicinalProduct = "http://snomed.info/sct#33588000";
+
+    /// <summary>
     /// Literal for code: ProductContainingGlycosideProduct
     /// </summary>
     public const string LiteralProductContainingGlycosideProduct = "33589008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingGlycosideProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGlycosideProduct = "http://snomed.info/sct#33589008";
 
     /// <summary>
     /// Literal for code: ProductContainingAcetazolamideMedicinalProduct
@@ -10268,9 +11518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAcetazolamideMedicinalProduct = "33664007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAcetazolamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAcetazolamideMedicinalProduct = "http://snomed.info/sct#33664007";
+
+    /// <summary>
     /// Literal for code: ProductContainingCarbacholMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCarbacholMedicinalProduct = "33675006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCarbacholMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCarbacholMedicinalProduct = "http://snomed.info/sct#33675006";
 
     /// <summary>
     /// Literal for code: MedicinalProductActingAsMydriaticProduct
@@ -10278,9 +11538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicinalProductActingAsMydriaticProduct = "33682005";
 
     /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsMydriaticProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsMydriaticProduct = "http://snomed.info/sct#33682005";
+
+    /// <summary>
     /// Literal for code: ProductContainingStreptococcusSuisAntiserumMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingStreptococcusSuisAntiserumMedicinalProduct = "33815001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingStreptococcusSuisAntiserumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingStreptococcusSuisAntiserumMedicinalProduct = "http://snomed.info/sct#33815001";
 
     /// <summary>
     /// Literal for code: ProductContainingSulfonylureaProduct
@@ -10288,9 +11558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSulfonylureaProduct = "34012005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSulfonylureaProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSulfonylureaProduct = "http://snomed.info/sct#34012005";
+
+    /// <summary>
     /// Literal for code: ProductContainingOxyquinolineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingOxyquinolineMedicinalProduct = "34217006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingOxyquinolineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOxyquinolineMedicinalProduct = "http://snomed.info/sct#34217006";
 
     /// <summary>
     /// Literal for code: ProductContainingMefenamicAcidMedicinalProduct
@@ -10298,9 +11578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMefenamicAcidMedicinalProduct = "34364009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMefenamicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMefenamicAcidMedicinalProduct = "http://snomed.info/sct#34364009";
+
+    /// <summary>
     /// Literal for code: ProductContainingTolazamideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTolazamideMedicinalProduct = "34393009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTolazamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTolazamideMedicinalProduct = "http://snomed.info/sct#34393009";
 
     /// <summary>
     /// Literal for code: ProductContainingNatamycinMedicinalProduct
@@ -10308,9 +11598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNatamycinMedicinalProduct = "34462007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNatamycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNatamycinMedicinalProduct = "http://snomed.info/sct#34462007";
+
+    /// <summary>
     /// Literal for code: ProductContainingThyroglobulinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingThyroglobulinMedicinalProduct = "34599009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingThyroglobulinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingThyroglobulinMedicinalProduct = "http://snomed.info/sct#34599009";
 
     /// <summary>
     /// Literal for code: ProductContainingZalcitabineMedicinalProduct
@@ -10318,9 +11618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingZalcitabineMedicinalProduct = "34693000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingZalcitabineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingZalcitabineMedicinalProduct = "http://snomed.info/sct#34693000";
+
+    /// <summary>
     /// Literal for code: ProductContainingCarbenicillinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCarbenicillinMedicinalProduct = "34731007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCarbenicillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCarbenicillinMedicinalProduct = "http://snomed.info/sct#34731007";
 
     /// <summary>
     /// Literal for code: ProductContainingCodLiverOilMedicinalProduct
@@ -10328,9 +11638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCodLiverOilMedicinalProduct = "34816007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCodLiverOilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCodLiverOilMedicinalProduct = "http://snomed.info/sct#34816007";
+
+    /// <summary>
     /// Literal for code: ProductContainingHydrocortisoneInOcularDoseFormMedicinalProductForm
     /// </summary>
     public const string LiteralProductContainingHydrocortisoneInOcularDoseFormMedicinalProductForm = "34833000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingHydrocortisoneInOcularDoseFormMedicinalProductForm
+    /// </summary>
+    public const string LiteralNONEProductContainingHydrocortisoneInOcularDoseFormMedicinalProductForm = "http://snomed.info/sct#34833000";
 
     /// <summary>
     /// Literal for code: ProductContainingBenzethoniumMedicinalProduct
@@ -10338,9 +11658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBenzethoniumMedicinalProduct = "34929006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBenzethoniumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBenzethoniumMedicinalProduct = "http://snomed.info/sct#34929006";
+
+    /// <summary>
     /// Literal for code: ProductContainingOrphenadrineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingOrphenadrineMedicinalProduct = "35035001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingOrphenadrineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOrphenadrineMedicinalProduct = "http://snomed.info/sct#35035001";
 
     /// <summary>
     /// Literal for code: ProductContainingRibavirinMedicinalProduct
@@ -10348,9 +11678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingRibavirinMedicinalProduct = "35063004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingRibavirinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingRibavirinMedicinalProduct = "http://snomed.info/sct#35063004";
+
+    /// <summary>
     /// Literal for code: ProductContainingGemfibrozilMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingGemfibrozilMedicinalProduct = "35282000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingGemfibrozilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGemfibrozilMedicinalProduct = "http://snomed.info/sct#35282000";
 
     /// <summary>
     /// Literal for code: ProductContainingDaunorubicinMedicinalProduct
@@ -10358,9 +11698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDaunorubicinMedicinalProduct = "35300007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDaunorubicinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDaunorubicinMedicinalProduct = "http://snomed.info/sct#35300007";
+
+    /// <summary>
     /// Literal for code: ProductContainingParaldehydeMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingParaldehydeMedicinalProduct = "35324004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingParaldehydeMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingParaldehydeMedicinalProduct = "http://snomed.info/sct#35324004";
 
     /// <summary>
     /// Literal for code: ProductContainingCalciumExchangeResinProduct
@@ -10368,9 +11718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCalciumExchangeResinProduct = "35392005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCalciumExchangeResinProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCalciumExchangeResinProduct = "http://snomed.info/sct#35392005";
+
+    /// <summary>
     /// Literal for code: ProductContainingSilverNitrateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSilverNitrateMedicinalProduct = "35476001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSilverNitrateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSilverNitrateMedicinalProduct = "http://snomed.info/sct#35476001";
 
     /// <summary>
     /// Literal for code: ProductContainingHydrocortamateMedicinalProduct
@@ -10378,9 +11738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHydrocortamateMedicinalProduct = "35531004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHydrocortamateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHydrocortamateMedicinalProduct = "http://snomed.info/sct#35531004";
+
+    /// <summary>
     /// Literal for code: ProductContainingOxybutyninMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingOxybutyninMedicinalProduct = "35768004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingOxybutyninMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOxybutyninMedicinalProduct = "http://snomed.info/sct#35768004";
 
     /// <summary>
     /// Literal for code: ProductContainingMedazepamMedicinalProduct
@@ -10388,9 +11758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMedazepamMedicinalProduct = "35967000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMedazepamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMedazepamMedicinalProduct = "http://snomed.info/sct#35967000";
+
+    /// <summary>
     /// Literal for code: ProductContainingPyrantelMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPyrantelMedicinalProduct = "36068003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPyrantelMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPyrantelMedicinalProduct = "http://snomed.info/sct#36068003";
 
     /// <summary>
     /// Literal for code: ProductContainingImipramineMedicinalProduct
@@ -10398,9 +11778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingImipramineMedicinalProduct = "36113004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingImipramineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingImipramineMedicinalProduct = "http://snomed.info/sct#36113004";
+
+    /// <summary>
     /// Literal for code: ProductContainingThiethylperazineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingThiethylperazineMedicinalProduct = "36218003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingThiethylperazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingThiethylperazineMedicinalProduct = "http://snomed.info/sct#36218003";
 
     /// <summary>
     /// Literal for code: MedicinalProductActingAsAntidepressantAgentProduct
@@ -10408,9 +11798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicinalProductActingAsAntidepressantAgentProduct = "36236003";
 
     /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsAntidepressantAgentProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsAntidepressantAgentProduct = "http://snomed.info/sct#36236003";
+
+    /// <summary>
     /// Literal for code: ProductContainingPrimaquineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPrimaquineMedicinalProduct = "36391008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPrimaquineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPrimaquineMedicinalProduct = "http://snomed.info/sct#36391008";
 
     /// <summary>
     /// Literal for code: ProductContainingAmbenoniumMedicinalProduct
@@ -10418,9 +11818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAmbenoniumMedicinalProduct = "36537006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAmbenoniumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAmbenoniumMedicinalProduct = "http://snomed.info/sct#36537006";
+
+    /// <summary>
     /// Literal for code: ProductContainingTiabendazoleMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTiabendazoleMedicinalProduct = "36594001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTiabendazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTiabendazoleMedicinalProduct = "http://snomed.info/sct#36594001";
 
     /// <summary>
     /// Literal for code: ProductContainingMedroxyprogesteroneMedicinalProduct
@@ -10428,9 +11838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMedroxyprogesteroneMedicinalProduct = "36621009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMedroxyprogesteroneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMedroxyprogesteroneMedicinalProduct = "http://snomed.info/sct#36621009";
+
+    /// <summary>
     /// Literal for code: ProductContainingPropanthelineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPropanthelineMedicinalProduct = "36642006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPropanthelineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPropanthelineMedicinalProduct = "http://snomed.info/sct#36642006";
 
     /// <summary>
     /// Literal for code: ProductContainingCeftazidimeMedicinalProduct
@@ -10438,9 +11858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCeftazidimeMedicinalProduct = "36893000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCeftazidimeMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCeftazidimeMedicinalProduct = "http://snomed.info/sct#36893000";
+
+    /// <summary>
     /// Literal for code: ProductContainingPhenindamineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPhenindamineMedicinalProduct = "36909007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPhenindamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhenindamineMedicinalProduct = "http://snomed.info/sct#36909007";
 
     /// <summary>
     /// Literal for code: ProductContainingQuinoloneAndAntibiotic
@@ -10448,9 +11878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingQuinoloneAndAntibiotic = "37084008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingQuinoloneAndAntibiotic
+    /// </summary>
+    public const string LiteralNONEProductContainingQuinoloneAndAntibiotic = "http://snomed.info/sct#37084008";
+
+    /// <summary>
     /// Literal for code: ProductContainingVidarabineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingVidarabineMedicinalProduct = "37306000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingVidarabineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingVidarabineMedicinalProduct = "http://snomed.info/sct#37306000";
 
     /// <summary>
     /// Literal for code: ProductContainingMagnesiumSulfateMedicinalProduct
@@ -10458,9 +11898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMagnesiumSulfateMedicinalProduct = "37400007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMagnesiumSulfateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMagnesiumSulfateMedicinalProduct = "http://snomed.info/sct#37400007";
+
+    /// <summary>
     /// Literal for code: ProductContainingCefalotinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCefalotinMedicinalProduct = "37628007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCefalotinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefalotinMedicinalProduct = "http://snomed.info/sct#37628007";
 
     /// <summary>
     /// Literal for code: ProductContainingTubocurarineMedicinalProduct
@@ -10468,9 +11918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTubocurarineMedicinalProduct = "37803001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTubocurarineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTubocurarineMedicinalProduct = "http://snomed.info/sct#37803001";
+
+    /// <summary>
     /// Literal for code: ProductContainingThyroxineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingThyroxineMedicinalProduct = "38076006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingThyroxineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingThyroxineMedicinalProduct = "http://snomed.info/sct#38076006";
 
     /// <summary>
     /// Literal for code: ProductContainingPropylthiouracilMedicinalProduct
@@ -10478,9 +11938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPropylthiouracilMedicinalProduct = "3814009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPropylthiouracilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPropylthiouracilMedicinalProduct = "http://snomed.info/sct#3814009";
+
+    /// <summary>
     /// Literal for code: ProductContainingTolnaftateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTolnaftateMedicinalProduct = "38166006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTolnaftateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTolnaftateMedicinalProduct = "http://snomed.info/sct#38166006";
 
     /// <summary>
     /// Literal for code: ProductContainingSuccinylcholineMedicinalProduct
@@ -10488,9 +11958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSuccinylcholineMedicinalProduct = "3822002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSuccinylcholineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSuccinylcholineMedicinalProduct = "http://snomed.info/sct#3822002";
+
+    /// <summary>
     /// Literal for code: ProductContainingPolysaccharideIronComplexMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPolysaccharideIronComplexMedicinalProduct = "38231004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPolysaccharideIronComplexMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPolysaccharideIronComplexMedicinalProduct = "http://snomed.info/sct#38231004";
 
     /// <summary>
     /// Literal for code: ProductContainingIbuprofenMedicinalProduct
@@ -10498,9 +11978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingIbuprofenMedicinalProduct = "38268001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingIbuprofenMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIbuprofenMedicinalProduct = "http://snomed.info/sct#38268001";
+
+    /// <summary>
     /// Literal for code: ProductContainingIsotretinoinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingIsotretinoinMedicinalProduct = "38314008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingIsotretinoinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIsotretinoinMedicinalProduct = "http://snomed.info/sct#38314008";
 
     /// <summary>
     /// Literal for code: ProductManufacturedAsOticDoseFormProduct
@@ -10508,9 +11998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductManufacturedAsOticDoseFormProduct = "38413003";
 
     /// <summary>
+    /// Literal for code: NONEProductManufacturedAsOticDoseFormProduct
+    /// </summary>
+    public const string LiteralNONEProductManufacturedAsOticDoseFormProduct = "http://snomed.info/sct#38413003";
+
+    /// <summary>
     /// Literal for code: ProductContainingMegestrolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMegestrolMedicinalProduct = "38578004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMegestrolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMegestrolMedicinalProduct = "http://snomed.info/sct#38578004";
 
     /// <summary>
     /// Literal for code: ProliferantAgent
@@ -10518,9 +12018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProliferantAgent = "38900001";
 
     /// <summary>
+    /// Literal for code: NONEProliferantAgent
+    /// </summary>
+    public const string LiteralNONEProliferantAgent = "http://snomed.info/sct#38900001";
+
+    /// <summary>
     /// Literal for code: ProductContainingAcetohexamideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAcetohexamideMedicinalProduct = "39064002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAcetohexamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAcetohexamideMedicinalProduct = "http://snomed.info/sct#39064002";
 
     /// <summary>
     /// Literal for code: ProductContainingMethohexitalMedicinalProduct
@@ -10528,9 +12038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMethohexitalMedicinalProduct = "39124003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMethohexitalMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethohexitalMedicinalProduct = "http://snomed.info/sct#39124003";
+
+    /// <summary>
     /// Literal for code: ProductContainingFamotidineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFamotidineMedicinalProduct = "39128000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFamotidineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFamotidineMedicinalProduct = "http://snomed.info/sct#39128000";
 
     /// <summary>
     /// Literal for code: ProductContainingPhendimetrazineMedicinalProduct
@@ -10538,9 +12058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPhendimetrazineMedicinalProduct = "39142008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPhendimetrazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhendimetrazineMedicinalProduct = "http://snomed.info/sct#39142008";
+
+    /// <summary>
     /// Literal for code: WaterBalanceAgent
     /// </summary>
     public const string LiteralWaterBalanceAgent = "39252001";
+
+    /// <summary>
+    /// Literal for code: NONEWaterBalanceAgent
+    /// </summary>
+    public const string LiteralNONEWaterBalanceAgent = "http://snomed.info/sct#39252001";
 
     /// <summary>
     /// Literal for code: PhenoxymethylpenicillinContainingProduct
@@ -10548,9 +12078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPhenoxymethylpenicillinContainingProduct = "39359008";
 
     /// <summary>
+    /// Literal for code: NONEPhenoxymethylpenicillinContainingProduct
+    /// </summary>
+    public const string LiteralNONEPhenoxymethylpenicillinContainingProduct = "http://snomed.info/sct#39359008";
+
+    /// <summary>
     /// Literal for code: InsulinContainingProduct
     /// </summary>
     public const string LiteralInsulinContainingProduct = "39487003";
+
+    /// <summary>
+    /// Literal for code: NONEInsulinContainingProduct
+    /// </summary>
+    public const string LiteralNONEInsulinContainingProduct = "http://snomed.info/sct#39487003";
 
     /// <summary>
     /// Literal for code: ProductContainingDisulfiramMedicinalProduct
@@ -10558,9 +12098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDisulfiramMedicinalProduct = "39516004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDisulfiramMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDisulfiramMedicinalProduct = "http://snomed.info/sct#39516004";
+
+    /// <summary>
     /// Literal for code: ProductContainingPentazocineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPentazocineMedicinalProduct = "39608003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPentazocineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPentazocineMedicinalProduct = "http://snomed.info/sct#39608003";
 
     /// <summary>
     /// Literal for code: ProductContainingParaAminobenzoicAcidMedicinalProduct
@@ -10568,9 +12118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingParaAminobenzoicAcidMedicinalProduct = "39707000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingParaAminobenzoicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingParaAminobenzoicAcidMedicinalProduct = "http://snomed.info/sct#39707000";
+
+    /// <summary>
     /// Literal for code: ProductContainingFructoseMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFructoseMedicinalProduct = "39860005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFructoseMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFructoseMedicinalProduct = "http://snomed.info/sct#39860005";
 
     /// <summary>
     /// Literal for code: ProductContainingPhenyltoloxamineMedicinalProduct
@@ -10578,9 +12138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPhenyltoloxamineMedicinalProduct = "39939003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPhenyltoloxamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhenyltoloxamineMedicinalProduct = "http://snomed.info/sct#39939003";
+
+    /// <summary>
     /// Literal for code: ProductContainingKetoconazoleMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingKetoconazoleMedicinalProduct = "40232005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingKetoconazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingKetoconazoleMedicinalProduct = "http://snomed.info/sct#40232005";
 
     /// <summary>
     /// Literal for code: ProductContainingCalciumLactateMedicinalProduct
@@ -10588,9 +12158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCalciumLactateMedicinalProduct = "40339003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCalciumLactateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCalciumLactateMedicinalProduct = "http://snomed.info/sct#40339003";
+
+    /// <summary>
     /// Literal for code: ProductContainingEtomidateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEtomidateMedicinalProduct = "40429005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEtomidateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEtomidateMedicinalProduct = "http://snomed.info/sct#40429005";
 
     /// <summary>
     /// Literal for code: ProductContainingBromelainsMedicinalProduct
@@ -10598,9 +12178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBromelainsMedicinalProduct = "40430000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBromelainsMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBromelainsMedicinalProduct = "http://snomed.info/sct#40430000";
+
+    /// <summary>
     /// Literal for code: ProductContainingPhenytoinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPhenytoinMedicinalProduct = "40556005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPhenytoinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhenytoinMedicinalProduct = "http://snomed.info/sct#40556005";
 
     /// <summary>
     /// Literal for code: ProductContainingMethylergometrineMedicinalProduct
@@ -10608,9 +12198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMethylergometrineMedicinalProduct = "40562000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMethylergometrineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethylergometrineMedicinalProduct = "http://snomed.info/sct#40562000";
+
+    /// <summary>
     /// Literal for code: ProductContainingAmitriptylineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAmitriptylineMedicinalProduct = "40589005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAmitriptylineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAmitriptylineMedicinalProduct = "http://snomed.info/sct#40589005";
 
     /// <summary>
     /// Literal for code: ProductContainingFentanylMedicinalProduct
@@ -10618,9 +12218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFentanylMedicinalProduct = "40648001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFentanylMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFentanylMedicinalProduct = "http://snomed.info/sct#40648001";
+
+    /// <summary>
     /// Literal for code: ProductContainingCarbamazepineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCarbamazepineMedicinalProduct = "40820003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCarbamazepineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCarbamazepineMedicinalProduct = "http://snomed.info/sct#40820003";
 
     /// <summary>
     /// Literal for code: ProductContainingStreptomycinMedicinalProduct
@@ -10628,9 +12238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingStreptomycinMedicinalProduct = "40877002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingStreptomycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingStreptomycinMedicinalProduct = "http://snomed.info/sct#40877002";
+
+    /// <summary>
     /// Literal for code: ProductContainingBeractantMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingBeractantMedicinalProduct = "40905005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBeractantMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBeractantMedicinalProduct = "http://snomed.info/sct#40905005";
 
     /// <summary>
     /// Literal for code: ProductContainingDipipanoneMedicinalProduct
@@ -10638,9 +12258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDipipanoneMedicinalProduct = "40974005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDipipanoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDipipanoneMedicinalProduct = "http://snomed.info/sct#40974005";
+
+    /// <summary>
     /// Literal for code: ProductContainingLomustineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingLomustineMedicinalProduct = "40999006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingLomustineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLomustineMedicinalProduct = "http://snomed.info/sct#40999006";
 
     /// <summary>
     /// Literal for code: ProductContainingDinoprostMedicinalProduct
@@ -10648,9 +12278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDinoprostMedicinalProduct = "41001009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDinoprostMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDinoprostMedicinalProduct = "http://snomed.info/sct#41001009";
+
+    /// <summary>
     /// Literal for code: ProductContainingMetaraminolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMetaraminolMedicinalProduct = "41015006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMetaraminolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMetaraminolMedicinalProduct = "http://snomed.info/sct#41015006";
 
     /// <summary>
     /// Literal for code: ProductContainingPerphenazineMedicinalProduct
@@ -10658,9 +12298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPerphenazineMedicinalProduct = "41147003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPerphenazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPerphenazineMedicinalProduct = "http://snomed.info/sct#41147003";
+
+    /// <summary>
     /// Literal for code: ProductContainingAciclovirMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAciclovirMedicinalProduct = "41193000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAciclovirMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAciclovirMedicinalProduct = "http://snomed.info/sct#41193000";
 
     /// <summary>
     /// Literal for code: ProductContainingFluprednisoloneMedicinalProduct
@@ -10668,9 +12318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFluprednisoloneMedicinalProduct = "4126008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFluprednisoloneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFluprednisoloneMedicinalProduct = "http://snomed.info/sct#4126008";
+
+    /// <summary>
     /// Literal for code: ProductContainingPropiomazineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPropiomazineMedicinalProduct = "41324009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPropiomazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPropiomazineMedicinalProduct = "http://snomed.info/sct#41324009";
 
     /// <summary>
     /// Literal for code: ProductContainingFluphenazineMedicinalProduct
@@ -10678,9 +12338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFluphenazineMedicinalProduct = "41365009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFluphenazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFluphenazineMedicinalProduct = "http://snomed.info/sct#41365009";
+
+    /// <summary>
     /// Literal for code: ProductContainingEnterogastroneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEnterogastroneMedicinalProduct = "41367001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEnterogastroneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEnterogastroneMedicinalProduct = "http://snomed.info/sct#41367001";
 
     /// <summary>
     /// Literal for code: ProductContainingOxazolidinedione
@@ -10688,9 +12358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingOxazolidinedione = "41399007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingOxazolidinedione
+    /// </summary>
+    public const string LiteralNONEProductContainingOxazolidinedione = "http://snomed.info/sct#41399007";
+
+    /// <summary>
     /// Literal for code: ProductContainingCorbadrineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCorbadrineMedicinalProduct = "41470001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCorbadrineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCorbadrineMedicinalProduct = "http://snomed.info/sct#41470001";
 
     /// <summary>
     /// Literal for code: ProductContainingDicycloverineMedicinalProduct
@@ -10698,9 +12378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDicycloverineMedicinalProduct = "41493007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDicycloverineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDicycloverineMedicinalProduct = "http://snomed.info/sct#41493007";
+
+    /// <summary>
     /// Literal for code: ProductContainingAngiotensinConvertingEnzymeInhibitorProduct
     /// </summary>
     public const string LiteralProductContainingAngiotensinConvertingEnzymeInhibitorProduct = "41549009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAngiotensinConvertingEnzymeInhibitorProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAngiotensinConvertingEnzymeInhibitorProduct = "http://snomed.info/sct#41549009";
 
     /// <summary>
     /// Literal for code: ProductContainingMazindolMedicinalProduct
@@ -10708,9 +12398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMazindolMedicinalProduct = "4194004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMazindolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMazindolMedicinalProduct = "http://snomed.info/sct#4194004";
+
+    /// <summary>
     /// Literal for code: ProductContainingBitolterolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingBitolterolMedicinalProduct = "41985001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBitolterolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBitolterolMedicinalProduct = "http://snomed.info/sct#41985001";
 
     /// <summary>
     /// Literal for code: ProductContainingVancomycinMedicinalProduct
@@ -10718,9 +12418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingVancomycinMedicinalProduct = "42082003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingVancomycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingVancomycinMedicinalProduct = "http://snomed.info/sct#42082003";
+
+    /// <summary>
     /// Literal for code: ProductContainingDexamethasoneInOcularDoseFormMedicinalProductForm
     /// </summary>
     public const string LiteralProductContainingDexamethasoneInOcularDoseFormMedicinalProductForm = "42098005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDexamethasoneInOcularDoseFormMedicinalProductForm
+    /// </summary>
+    public const string LiteralNONEProductContainingDexamethasoneInOcularDoseFormMedicinalProductForm = "http://snomed.info/sct#42098005";
 
     /// <summary>
     /// Literal for code: ProductContainingPenicillamineMedicinalProduct
@@ -10728,9 +12438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPenicillamineMedicinalProduct = "4219002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPenicillamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPenicillamineMedicinalProduct = "http://snomed.info/sct#4219002";
+
+    /// <summary>
     /// Literal for code: ProductContainingTolazolineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTolazolineMedicinalProduct = "4220008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTolazolineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTolazolineMedicinalProduct = "http://snomed.info/sct#4220008";
 
     /// <summary>
     /// Literal for code: ProductContainingGlutamicAcidMedicinalProduct
@@ -10738,9 +12458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingGlutamicAcidMedicinalProduct = "42271003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingGlutamicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGlutamicAcidMedicinalProduct = "http://snomed.info/sct#42271003";
+
+    /// <summary>
     /// Literal for code: ProductContainingMethyltestosteroneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMethyltestosteroneMedicinalProduct = "42348003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMethyltestosteroneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethyltestosteroneMedicinalProduct = "http://snomed.info/sct#42348003";
 
     /// <summary>
     /// Literal for code: ProductContainingSecobarbitalMedicinalProduct
@@ -10748,9 +12478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSecobarbitalMedicinalProduct = "42444000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSecobarbitalMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSecobarbitalMedicinalProduct = "http://snomed.info/sct#42444000";
+
+    /// <summary>
     /// Literal for code: ProductContainingProcaineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingProcaineMedicinalProduct = "42514000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingProcaineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingProcaineMedicinalProduct = "http://snomed.info/sct#42514000";
 
     /// <summary>
     /// Literal for code: ProductContainingMethylrosaniliniumChlorideMedicinalProduct
@@ -10758,9 +12498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMethylrosaniliniumChlorideMedicinalProduct = "42638008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMethylrosaniliniumChlorideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethylrosaniliniumChlorideMedicinalProduct = "http://snomed.info/sct#42638008";
+
+    /// <summary>
     /// Literal for code: ProductContainingEscherichiaColiAntiserumMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEscherichiaColiAntiserumMedicinalProduct = "42714002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEscherichiaColiAntiserumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEscherichiaColiAntiserumMedicinalProduct = "http://snomed.info/sct#42714002";
 
     /// <summary>
     /// Literal for code: ProductContainingMiconazoleMedicinalProduct
@@ -10768,9 +12518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMiconazoleMedicinalProduct = "42720001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMiconazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMiconazoleMedicinalProduct = "http://snomed.info/sct#42720001";
+
+    /// <summary>
     /// Literal for code: ProductContainingMagaldrateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMagaldrateMedicinalProduct = "43343000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMagaldrateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMagaldrateMedicinalProduct = "http://snomed.info/sct#43343000";
 
     /// <summary>
     /// Literal for code: ProductContainingChloramphenicolInOcularDoseFormMedicinalProductForm
@@ -10778,9 +12538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingChloramphenicolInOcularDoseFormMedicinalProductForm = "43533002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingChloramphenicolInOcularDoseFormMedicinalProductForm
+    /// </summary>
+    public const string LiteralNONEProductContainingChloramphenicolInOcularDoseFormMedicinalProductForm = "http://snomed.info/sct#43533002";
+
+    /// <summary>
     /// Literal for code: ProductContainingMisoprostolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMisoprostolMedicinalProduct = "43684009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMisoprostolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMisoprostolMedicinalProduct = "http://snomed.info/sct#43684009";
 
     /// <summary>
     /// Literal for code: ProductContainingDydrogesteroneMedicinalProduct
@@ -10788,9 +12558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDydrogesteroneMedicinalProduct = "43753001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDydrogesteroneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDydrogesteroneMedicinalProduct = "http://snomed.info/sct#43753001";
+
+    /// <summary>
     /// Literal for code: CentrallyActingHypotensiveAgent
     /// </summary>
     public const string LiteralCentrallyActingHypotensiveAgent = "4382004";
+
+    /// <summary>
+    /// Literal for code: NONECentrallyActingHypotensiveAgent
+    /// </summary>
+    public const string LiteralNONECentrallyActingHypotensiveAgent = "http://snomed.info/sct#4382004";
 
     /// <summary>
     /// Literal for code: ProductContainingFlunisolideMedicinalProduct
@@ -10798,9 +12578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFlunisolideMedicinalProduct = "43879000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFlunisolideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFlunisolideMedicinalProduct = "http://snomed.info/sct#43879000";
+
+    /// <summary>
     /// Literal for code: TherapeuticRadioisotope
     /// </summary>
     public const string LiteralTherapeuticRadioisotope = "439007";
+
+    /// <summary>
+    /// Literal for code: NONETherapeuticRadioisotope
+    /// </summary>
+    public const string LiteralNONETherapeuticRadioisotope = "http://snomed.info/sct#439007";
 
     /// <summary>
     /// Literal for code: AnalepticAgent
@@ -10808,9 +12598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAnalepticAgent = "43927002";
 
     /// <summary>
+    /// Literal for code: NONEAnalepticAgent
+    /// </summary>
+    public const string LiteralNONEAnalepticAgent = "http://snomed.info/sct#43927002";
+
+    /// <summary>
     /// Literal for code: ProductContainingDiperodonMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDiperodonMedicinalProduct = "44175000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDiperodonMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDiperodonMedicinalProduct = "http://snomed.info/sct#44175000";
 
     /// <summary>
     /// Literal for code: ProductContainingPercomorphLiverOilMedicinalProduct
@@ -10818,9 +12618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPercomorphLiverOilMedicinalProduct = "44418001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPercomorphLiverOilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPercomorphLiverOilMedicinalProduct = "http://snomed.info/sct#44418001";
+
+    /// <summary>
     /// Literal for code: ProductContainingPromazineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPromazineMedicinalProduct = "44658005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPromazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPromazineMedicinalProduct = "http://snomed.info/sct#44658005";
 
     /// <summary>
     /// Literal for code: HydrocortisoneContainingProductInOticDoseForm
@@ -10828,9 +12638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHydrocortisoneContainingProductInOticDoseForm = "44731005";
 
     /// <summary>
+    /// Literal for code: NONEHydrocortisoneContainingProductInOticDoseForm
+    /// </summary>
+    public const string LiteralNONEHydrocortisoneContainingProductInOticDoseForm = "http://snomed.info/sct#44731005";
+
+    /// <summary>
     /// Literal for code: ProductContainingEthosuximideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEthosuximideMedicinalProduct = "44790008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEthosuximideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEthosuximideMedicinalProduct = "http://snomed.info/sct#44790008";
 
     /// <summary>
     /// Literal for code: ProductContainingDinoprostoneMedicinalProduct
@@ -10838,9 +12658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDinoprostoneMedicinalProduct = "44798001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDinoprostoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDinoprostoneMedicinalProduct = "http://snomed.info/sct#44798001";
+
+    /// <summary>
     /// Literal for code: ProductContainingCefoperazoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCefoperazoneMedicinalProduct = "44938006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCefoperazoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefoperazoneMedicinalProduct = "http://snomed.info/sct#44938006";
 
     /// <summary>
     /// Literal for code: ProductContainingProcyclidineMedicinalProduct
@@ -10848,9 +12678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingProcyclidineMedicinalProduct = "44990002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingProcyclidineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingProcyclidineMedicinalProduct = "http://snomed.info/sct#44990002";
+
+    /// <summary>
     /// Literal for code: ProductContainingClemastineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingClemastineMedicinalProduct = "45218006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingClemastineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingClemastineMedicinalProduct = "http://snomed.info/sct#45218006";
 
     /// <summary>
     /// Literal for code: ProductContainingTerbutalineMedicinalProduct
@@ -10858,9 +12698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTerbutalineMedicinalProduct = "45311002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTerbutalineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTerbutalineMedicinalProduct = "http://snomed.info/sct#45311002";
+
+    /// <summary>
     /// Literal for code: ProductContainingPropylpiperazineDerivativeOfPhenothiazineProduct
     /// </summary>
     public const string LiteralProductContainingPropylpiperazineDerivativeOfPhenothiazineProduct = "45313004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPropylpiperazineDerivativeOfPhenothiazineProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPropylpiperazineDerivativeOfPhenothiazineProduct = "http://snomed.info/sct#45313004";
 
     /// <summary>
     /// Literal for code: ProductContainingTolmetinMedicinalProduct
@@ -10868,9 +12718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTolmetinMedicinalProduct = "45680002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTolmetinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTolmetinMedicinalProduct = "http://snomed.info/sct#45680002";
+
+    /// <summary>
     /// Literal for code: ProductContainingSulfasalazineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSulfasalazineMedicinalProduct = "45844004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSulfasalazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSulfasalazineMedicinalProduct = "http://snomed.info/sct#45844004";
 
     /// <summary>
     /// Literal for code: ProductContainingGammaTocopherolMedicinalProduct
@@ -10878,9 +12738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingGammaTocopherolMedicinalProduct = "45888006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingGammaTocopherolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGammaTocopherolMedicinalProduct = "http://snomed.info/sct#45888006";
+
+    /// <summary>
     /// Literal for code: ProductContainingChlorambucilMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingChlorambucilMedicinalProduct = "46009007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingChlorambucilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChlorambucilMedicinalProduct = "http://snomed.info/sct#46009007";
 
     /// <summary>
     /// Literal for code: PsychotherapeuticAgent
@@ -10888,9 +12758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPsychotherapeuticAgent = "46063005";
 
     /// <summary>
+    /// Literal for code: NONEPsychotherapeuticAgent
+    /// </summary>
+    public const string LiteralNONEPsychotherapeuticAgent = "http://snomed.info/sct#46063005";
+
+    /// <summary>
     /// Literal for code: ProductContainingAscorbicAcidMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAscorbicAcidMedicinalProduct = "46123006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAscorbicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAscorbicAcidMedicinalProduct = "http://snomed.info/sct#46123006";
 
     /// <summary>
     /// Literal for code: ProductContainingHaloproginMedicinalProduct
@@ -10898,9 +12778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHaloproginMedicinalProduct = "46436003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHaloproginMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHaloproginMedicinalProduct = "http://snomed.info/sct#46436003";
+
+    /// <summary>
     /// Literal for code: ProductContainingEncainideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEncainideMedicinalProduct = "46479001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEncainideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEncainideMedicinalProduct = "http://snomed.info/sct#46479001";
 
     /// <summary>
     /// Literal for code: ProductContainingBrilliantGreenMedicinalProduct
@@ -10908,9 +12798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBrilliantGreenMedicinalProduct = "46532003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBrilliantGreenMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBrilliantGreenMedicinalProduct = "http://snomed.info/sct#46532003";
+
+    /// <summary>
     /// Literal for code: ProductContainingLabetalolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingLabetalolMedicinalProduct = "46547007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingLabetalolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLabetalolMedicinalProduct = "http://snomed.info/sct#46547007";
 
     /// <summary>
     /// Literal for code: ProductContainingFlecainideMedicinalProduct
@@ -10918,9 +12818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFlecainideMedicinalProduct = "46576005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFlecainideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFlecainideMedicinalProduct = "http://snomed.info/sct#46576005";
+
+    /// <summary>
     /// Literal for code: ProductContainingMethylphenobarbitalMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMethylphenobarbitalMedicinalProduct = "46709004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMethylphenobarbitalMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethylphenobarbitalMedicinalProduct = "http://snomed.info/sct#46709004";
 
     /// <summary>
     /// Literal for code: ProductContainingSalicylicAcidMedicinalProduct
@@ -10928,9 +12838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSalicylicAcidMedicinalProduct = "46741005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSalicylicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSalicylicAcidMedicinalProduct = "http://snomed.info/sct#46741005";
+
+    /// <summary>
     /// Literal for code: ProductContainingEdrophoniumMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEdrophoniumMedicinalProduct = "46913003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEdrophoniumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEdrophoniumMedicinalProduct = "http://snomed.info/sct#46913003";
 
     /// <summary>
     /// Literal for code: ProductContainingIothiouracilMedicinalProduct
@@ -10938,9 +12858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingIothiouracilMedicinalProduct = "4704002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingIothiouracilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIothiouracilMedicinalProduct = "http://snomed.info/sct#4704002";
+
+    /// <summary>
     /// Literal for code: ProductContainingQuinineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingQuinineMedicinalProduct = "47065008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingQuinineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingQuinineMedicinalProduct = "http://snomed.info/sct#47065008";
 
     /// <summary>
     /// Literal for code: ProductContainingPrimidoneMedicinalProduct
@@ -10948,9 +12878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPrimidoneMedicinalProduct = "47120002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPrimidoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPrimidoneMedicinalProduct = "http://snomed.info/sct#47120002";
+
+    /// <summary>
     /// Literal for code: ProductContainingAminoglutethimideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAminoglutethimideMedicinalProduct = "47124006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAminoglutethimideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAminoglutethimideMedicinalProduct = "http://snomed.info/sct#47124006";
 
     /// <summary>
     /// Literal for code: ProductContainingMedrysoneMedicinalProduct
@@ -10958,9 +12898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMedrysoneMedicinalProduct = "47140009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMedrysoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMedrysoneMedicinalProduct = "http://snomed.info/sct#47140009";
+
+    /// <summary>
     /// Literal for code: ProductContainingChlorpromazineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingChlorpromazineMedicinalProduct = "47331002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingChlorpromazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChlorpromazineMedicinalProduct = "http://snomed.info/sct#47331002";
 
     /// <summary>
     /// Literal for code: ProductContainingPhenindioneMedicinalProduct
@@ -10968,9 +12918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPhenindioneMedicinalProduct = "47527007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPhenindioneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhenindioneMedicinalProduct = "http://snomed.info/sct#47527007";
+
+    /// <summary>
     /// Literal for code: ProductContainingNalidixicAcidMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNalidixicAcidMedicinalProduct = "47602007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNalidixicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNalidixicAcidMedicinalProduct = "http://snomed.info/sct#47602007";
 
     /// <summary>
     /// Literal for code: ProductContainingVerapamilMedicinalProduct
@@ -10978,9 +12938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingVerapamilMedicinalProduct = "47898004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingVerapamilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingVerapamilMedicinalProduct = "http://snomed.info/sct#47898004";
+
+    /// <summary>
     /// Literal for code: ProductContainingRanitidineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingRanitidineMedicinalProduct = "48174005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingRanitidineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingRanitidineMedicinalProduct = "http://snomed.info/sct#48174005";
 
     /// <summary>
     /// Literal for code: ProductContainingBenzylBenzoateMedicinalProduct
@@ -10988,9 +12958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBenzylBenzoateMedicinalProduct = "48256008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBenzylBenzoateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBenzylBenzoateMedicinalProduct = "http://snomed.info/sct#48256008";
+
+    /// <summary>
     /// Literal for code: EmollientProduct
     /// </summary>
     public const string LiteralEmollientProduct = "48279009";
+
+    /// <summary>
+    /// Literal for code: NONEEmollientProduct
+    /// </summary>
+    public const string LiteralNONEEmollientProduct = "http://snomed.info/sct#48279009";
 
     /// <summary>
     /// Literal for code: ProductContainingPhenylbutazoneMedicinalProduct
@@ -10998,9 +12978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPhenylbutazoneMedicinalProduct = "48351000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPhenylbutazoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhenylbutazoneMedicinalProduct = "http://snomed.info/sct#48351000";
+
+    /// <summary>
     /// Literal for code: ProductContainingDiazepamMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDiazepamMedicinalProduct = "48546005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDiazepamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDiazepamMedicinalProduct = "http://snomed.info/sct#48546005";
 
     /// <summary>
     /// Literal for code: ProductContainingWarfarinMedicinalProduct
@@ -11008,9 +12998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingWarfarinMedicinalProduct = "48603004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingWarfarinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingWarfarinMedicinalProduct = "http://snomed.info/sct#48603004";
+
+    /// <summary>
     /// Literal for code: ProductContainingClobetasolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingClobetasolMedicinalProduct = "48614001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingClobetasolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingClobetasolMedicinalProduct = "http://snomed.info/sct#48614001";
 
     /// <summary>
     /// Literal for code: ProductContainingPancrelipaseMedicinalProduct
@@ -11018,9 +13018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPancrelipaseMedicinalProduct = "48647005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPancrelipaseMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPancrelipaseMedicinalProduct = "http://snomed.info/sct#48647005";
+
+    /// <summary>
     /// Literal for code: ProductContainingProlactinReleasingFactorProduct
     /// </summary>
     public const string LiteralProductContainingProlactinReleasingFactorProduct = "4865009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingProlactinReleasingFactorProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingProlactinReleasingFactorProduct = "http://snomed.info/sct#4865009";
 
     /// <summary>
     /// Literal for code: ProductContainingCalciumChannelBlockerProduct
@@ -11028,9 +13038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCalciumChannelBlockerProduct = "48698004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCalciumChannelBlockerProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCalciumChannelBlockerProduct = "http://snomed.info/sct#48698004";
+
+    /// <summary>
     /// Literal for code: ProductContainingAmikacinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAmikacinMedicinalProduct = "48836000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAmikacinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAmikacinMedicinalProduct = "http://snomed.info/sct#48836000";
 
     /// <summary>
     /// Literal for code: ProductContainingDihydroergotamineMedicinalProduct
@@ -11038,9 +13058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDihydroergotamineMedicinalProduct = "48875009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDihydroergotamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDihydroergotamineMedicinalProduct = "http://snomed.info/sct#48875009";
+
+    /// <summary>
     /// Literal for code: ProductContainingHyoscyamineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingHyoscyamineMedicinalProduct = "48899009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingHyoscyamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHyoscyamineMedicinalProduct = "http://snomed.info/sct#48899009";
 
     /// <summary>
     /// Literal for code: ProductContainingPrednisoloneInOcularDoseFormMedicinalProductForm
@@ -11048,9 +13078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPrednisoloneInOcularDoseFormMedicinalProductForm = "49019002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPrednisoloneInOcularDoseFormMedicinalProductForm
+    /// </summary>
+    public const string LiteralNONEProductContainingPrednisoloneInOcularDoseFormMedicinalProductForm = "http://snomed.info/sct#49019002";
+
+    /// <summary>
     /// Literal for code: UricosuricAgent
     /// </summary>
     public const string LiteralUricosuricAgent = "49157004";
+
+    /// <summary>
+    /// Literal for code: NONEUricosuricAgent
+    /// </summary>
+    public const string LiteralNONEUricosuricAgent = "http://snomed.info/sct#49157004";
 
     /// <summary>
     /// Literal for code: ProductContainingOxyphenbutazoneMedicinalProduct
@@ -11058,9 +13098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingOxyphenbutazoneMedicinalProduct = "49267000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingOxyphenbutazoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOxyphenbutazoneMedicinalProduct = "http://snomed.info/sct#49267000";
+
+    /// <summary>
     /// Literal for code: ProductContainingProtriptylineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingProtriptylineMedicinalProduct = "49299006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingProtriptylineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingProtriptylineMedicinalProduct = "http://snomed.info/sct#49299006";
 
     /// <summary>
     /// Literal for code: ProductContainingCefaclorMedicinalProduct
@@ -11068,9 +13118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCefaclorMedicinalProduct = "4937008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCefaclorMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefaclorMedicinalProduct = "http://snomed.info/sct#4937008";
+
+    /// <summary>
     /// Literal for code: ProductContainingNorfloxacinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNorfloxacinMedicinalProduct = "49485009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNorfloxacinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNorfloxacinMedicinalProduct = "http://snomed.info/sct#49485009";
 
     /// <summary>
     /// Literal for code: ProductContainingMinoxidilMedicinalProduct
@@ -11078,9 +13138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMinoxidilMedicinalProduct = "49577002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMinoxidilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMinoxidilMedicinalProduct = "http://snomed.info/sct#49577002";
+
+    /// <summary>
     /// Literal for code: ProductContainingCarbenoxoloneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCarbenoxoloneMedicinalProduct = "49617001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCarbenoxoloneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCarbenoxoloneMedicinalProduct = "http://snomed.info/sct#49617001";
 
     /// <summary>
     /// Literal for code: ProductContainingEscherichiaColiAntiserumAndPasteurellaMultocidaAntiserumAndSalmonellaTyphimuriumAntiserumMedicinalProduct
@@ -11088,9 +13158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingEscherichiaColiAntiserumAndPasteurellaMultocidaAntiserumAndSalmonellaTyphimuriumAntiserumMedicinalProduct = "49669006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingEscherichiaColiAntiserumAndPasteurellaMultocidaAntiserumAndSalmonellaTyphimuriumAntiserumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEscherichiaColiAntiserumAndPasteurellaMultocidaAntiserumAndSalmonellaTyphimuriumAntiserumMedicinalProduct = "http://snomed.info/sct#49669006";
+
+    /// <summary>
     /// Literal for code: ProductContainingHexocycliumMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingHexocycliumMedicinalProduct = "49688004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingHexocycliumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHexocycliumMedicinalProduct = "http://snomed.info/sct#49688004";
 
     /// <summary>
     /// Literal for code: MucolyticAgent
@@ -11098,9 +13178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMucolyticAgent = "49694007";
 
     /// <summary>
+    /// Literal for code: NONEMucolyticAgent
+    /// </summary>
+    public const string LiteralNONEMucolyticAgent = "http://snomed.info/sct#49694007";
+
+    /// <summary>
     /// Literal for code: ProductContainingIdoxuridineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingIdoxuridineMedicinalProduct = "49705006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingIdoxuridineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIdoxuridineMedicinalProduct = "http://snomed.info/sct#49705006";
 
     /// <summary>
     /// Literal for code: ProductContainingBloodGroupAntibodyDMedicinalProduct
@@ -11108,9 +13198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBloodGroupAntibodyDMedicinalProduct = "49802003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBloodGroupAntibodyDMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBloodGroupAntibodyDMedicinalProduct = "http://snomed.info/sct#49802003";
+
+    /// <summary>
     /// Literal for code: ProductContainingPheniramineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPheniramineMedicinalProduct = "49953001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPheniramineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPheniramineMedicinalProduct = "http://snomed.info/sct#49953001";
 
     /// <summary>
     /// Literal for code: ProductContainingHetastarchMedicinalProduct
@@ -11118,9 +13218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHetastarchMedicinalProduct = "50094009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHetastarchMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHetastarchMedicinalProduct = "http://snomed.info/sct#50094009";
+
+    /// <summary>
     /// Literal for code: ProductContainingAntitrichomonalProduct
     /// </summary>
     public const string LiteralProductContainingAntitrichomonalProduct = "50256004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAntitrichomonalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAntitrichomonalProduct = "http://snomed.info/sct#50256004";
 
     /// <summary>
     /// Literal for code: ProductContainingProgesteroneMedicinalProduct
@@ -11128,9 +13238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingProgesteroneMedicinalProduct = "50318003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingProgesteroneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingProgesteroneMedicinalProduct = "http://snomed.info/sct#50318003";
+
+    /// <summary>
     /// Literal for code: ProductContainingLevorphanolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingLevorphanolMedicinalProduct = "50335004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingLevorphanolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLevorphanolMedicinalProduct = "http://snomed.info/sct#50335004";
 
     /// <summary>
     /// Literal for code: ProductContainingFramycetinMedicinalProduct
@@ -11138,9 +13258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFramycetinMedicinalProduct = "50520001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFramycetinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFramycetinMedicinalProduct = "http://snomed.info/sct#50520001";
+
+    /// <summary>
     /// Literal for code: AntithyroidAgent
     /// </summary>
     public const string LiteralAntithyroidAgent = "5067008";
+
+    /// <summary>
+    /// Literal for code: NONEAntithyroidAgent
+    /// </summary>
+    public const string LiteralNONEAntithyroidAgent = "http://snomed.info/sct#5067008";
 
     /// <summary>
     /// Literal for code: ProductContainingChloramphenicolInOticDoseFormMedicinalProductForm
@@ -11148,9 +13278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingChloramphenicolInOticDoseFormMedicinalProductForm = "50841004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingChloramphenicolInOticDoseFormMedicinalProductForm
+    /// </summary>
+    public const string LiteralNONEProductContainingChloramphenicolInOticDoseFormMedicinalProductForm = "http://snomed.info/sct#50841004";
+
+    /// <summary>
     /// Literal for code: ProductContainingDexamfetamineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDexamfetamineMedicinalProduct = "50868004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDexamfetamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDexamfetamineMedicinalProduct = "http://snomed.info/sct#50868004";
 
     /// <summary>
     /// Literal for code: ProductContainingSulfadimethoxineMedicinalProduct
@@ -11158,9 +13298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSulfadimethoxineMedicinalProduct = "51013009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSulfadimethoxineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSulfadimethoxineMedicinalProduct = "http://snomed.info/sct#51013009";
+
+    /// <summary>
     /// Literal for code: ProductContainingPhenobarbitalMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPhenobarbitalMedicinalProduct = "51073002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPhenobarbitalMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhenobarbitalMedicinalProduct = "http://snomed.info/sct#51073002";
 
     /// <summary>
     /// Literal for code: ProductContainingBenzestrolMedicinalProduct
@@ -11168,9 +13318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBenzestrolMedicinalProduct = "51126006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBenzestrolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBenzestrolMedicinalProduct = "http://snomed.info/sct#51126006";
+
+    /// <summary>
     /// Literal for code: ProductContainingHyaluronidaseMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingHyaluronidaseMedicinalProduct = "51132001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingHyaluronidaseMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHyaluronidaseMedicinalProduct = "http://snomed.info/sct#51132001";
 
     /// <summary>
     /// Literal for code: ProductContainingCarmustineMedicinalProduct
@@ -11178,9 +13338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCarmustineMedicinalProduct = "51326002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCarmustineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCarmustineMedicinalProduct = "http://snomed.info/sct#51326002";
+
+    /// <summary>
     /// Literal for code: ProductContainingCycloserineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCycloserineMedicinalProduct = "51334008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCycloserineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCycloserineMedicinalProduct = "http://snomed.info/sct#51334008";
 
     /// <summary>
     /// Literal for code: ProductContainingAmantadineMedicinalProduct
@@ -11188,9 +13358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAmantadineMedicinalProduct = "51361008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAmantadineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAmantadineMedicinalProduct = "http://snomed.info/sct#51361008";
+
+    /// <summary>
     /// Literal for code: ProductContainingDehydrocholicAcidMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDehydrocholicAcidMedicinalProduct = "51752005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDehydrocholicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDehydrocholicAcidMedicinalProduct = "http://snomed.info/sct#51752005";
 
     /// <summary>
     /// Literal for code: ProductContainingMethadoneMedicinalProduct
@@ -11198,9 +13378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMethadoneMedicinalProduct = "51758009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMethadoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethadoneMedicinalProduct = "http://snomed.info/sct#51758009";
+
+    /// <summary>
     /// Literal for code: ProductContainingCephalosporinAndAntibioticProduct
     /// </summary>
     public const string LiteralProductContainingCephalosporinAndAntibioticProduct = "51779009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCephalosporinAndAntibioticProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCephalosporinAndAntibioticProduct = "http://snomed.info/sct#51779009";
 
     /// <summary>
     /// Literal for code: ProductContainingPrenylamineMedicinalProduct
@@ -11208,9 +13398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPrenylamineMedicinalProduct = "51908007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPrenylamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPrenylamineMedicinalProduct = "http://snomed.info/sct#51908007";
+
+    /// <summary>
     /// Literal for code: ProductContainingGastrinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingGastrinMedicinalProduct = "51992002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingGastrinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGastrinMedicinalProduct = "http://snomed.info/sct#51992002";
 
     /// <summary>
     /// Literal for code: MedicinalProductActingAsAntiemeticAgentProduct
@@ -11218,9 +13418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicinalProductActingAsAntiemeticAgentProduct = "52017007";
 
     /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsAntiemeticAgentProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsAntiemeticAgentProduct = "http://snomed.info/sct#52017007";
+
+    /// <summary>
     /// Literal for code: ProductContainingFerrousFumarateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFerrousFumarateMedicinalProduct = "52108005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFerrousFumarateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFerrousFumarateMedicinalProduct = "http://snomed.info/sct#52108005";
 
     /// <summary>
     /// Literal for code: ProductContainingDesonideMedicinalProduct
@@ -11228,9 +13438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDesonideMedicinalProduct = "52215008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDesonideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDesonideMedicinalProduct = "http://snomed.info/sct#52215008";
+
+    /// <summary>
     /// Literal for code: ProductContainingPrednisoloneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPrednisoloneMedicinalProduct = "52388000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPrednisoloneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPrednisoloneMedicinalProduct = "http://snomed.info/sct#52388000";
 
     /// <summary>
     /// Literal for code: ProductContainingTarMedicinalProduct
@@ -11238,9 +13458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTarMedicinalProduct = "52423008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTarMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTarMedicinalProduct = "http://snomed.info/sct#52423008";
+
+    /// <summary>
     /// Literal for code: ProductContainingHydroxyamfetamineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingHydroxyamfetamineMedicinalProduct = "52883001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingHydroxyamfetamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHydroxyamfetamineMedicinalProduct = "http://snomed.info/sct#52883001";
 
     /// <summary>
     /// Literal for code: ProductContainingClioquinolMedicinalProduct
@@ -11248,9 +13478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingClioquinolMedicinalProduct = "52896000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingClioquinolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingClioquinolMedicinalProduct = "http://snomed.info/sct#52896000";
+
+    /// <summary>
     /// Literal for code: MedicinalProductActingAsAnalgesicAgentProduct
     /// </summary>
     public const string LiteralMedicinalProductActingAsAnalgesicAgentProduct = "53009005";
+
+    /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsAnalgesicAgentProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsAnalgesicAgentProduct = "http://snomed.info/sct#53009005";
 
     /// <summary>
     /// Literal for code: ProductContainingPhentermineMedicinalProduct
@@ -11258,9 +13498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPhentermineMedicinalProduct = "53480001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPhentermineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhentermineMedicinalProduct = "http://snomed.info/sct#53480001";
+
+    /// <summary>
     /// Literal for code: ProductContainingMethacholineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMethacholineMedicinalProduct = "53584007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMethacholineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethacholineMedicinalProduct = "http://snomed.info/sct#53584007";
 
     /// <summary>
     /// Literal for code: ProductContainingFluoxetineMedicinalProduct
@@ -11268,9 +13518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFluoxetineMedicinalProduct = "53640004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFluoxetineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFluoxetineMedicinalProduct = "http://snomed.info/sct#53640004";
+
+    /// <summary>
     /// Literal for code: ProductContainingFlavoxateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFlavoxateMedicinalProduct = "53641000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFlavoxateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFlavoxateMedicinalProduct = "http://snomed.info/sct#53641000";
 
     /// <summary>
     /// Literal for code: ProductContainingCalciumGluconateMedicinalProduct
@@ -11278,9 +13538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCalciumGluconateMedicinalProduct = "53691001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCalciumGluconateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCalciumGluconateMedicinalProduct = "http://snomed.info/sct#53691001";
+
+    /// <summary>
     /// Literal for code: ProductContainingEscherichiaColiAntibodyMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEscherichiaColiAntibodyMedicinalProduct = "53793005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEscherichiaColiAntibodyMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEscherichiaColiAntibodyMedicinalProduct = "http://snomed.info/sct#53793005";
 
     /// <summary>
     /// Literal for code: ProductContainingDithranolMedicinalProduct
@@ -11288,9 +13558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDithranolMedicinalProduct = "53800008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDithranolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDithranolMedicinalProduct = "http://snomed.info/sct#53800008";
+
+    /// <summary>
     /// Literal for code: ProductContainingMetyraponeMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMetyraponeMedicinalProduct = "53848009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMetyraponeMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMetyraponeMedicinalProduct = "http://snomed.info/sct#53848009";
 
     /// <summary>
     /// Literal for code: ProductContainingDomiphenMedicinalProduct
@@ -11298,9 +13578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDomiphenMedicinalProduct = "54142000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDomiphenMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDomiphenMedicinalProduct = "http://snomed.info/sct#54142000";
+
+    /// <summary>
     /// Literal for code: ProductContainingFlurbiprofenMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFlurbiprofenMedicinalProduct = "54344006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFlurbiprofenMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFlurbiprofenMedicinalProduct = "http://snomed.info/sct#54344006";
 
     /// <summary>
     /// Literal for code: ProductContainingLevamisoleMedicinalProduct
@@ -11308,9 +13598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingLevamisoleMedicinalProduct = "54391004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingLevamisoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLevamisoleMedicinalProduct = "http://snomed.info/sct#54391004";
+
+    /// <summary>
     /// Literal for code: ProductContainingMelphalanMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMelphalanMedicinalProduct = "544002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMelphalanMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMelphalanMedicinalProduct = "http://snomed.info/sct#544002";
 
     /// <summary>
     /// Literal for code: ProductContainingMethoxamineMedicinalProduct
@@ -11318,9 +13618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMethoxamineMedicinalProduct = "54406003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMethoxamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethoxamineMedicinalProduct = "http://snomed.info/sct#54406003";
+
+    /// <summary>
     /// Literal for code: ProductContainingErgometrineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingErgometrineMedicinalProduct = "54541002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingErgometrineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingErgometrineMedicinalProduct = "http://snomed.info/sct#54541002";
 
     /// <summary>
     /// Literal for code: ProductContainingPethidineMedicinalProduct
@@ -11328,9 +13638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPethidineMedicinalProduct = "54544005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPethidineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPethidineMedicinalProduct = "http://snomed.info/sct#54544005";
+
+    /// <summary>
     /// Literal for code: ProductContainingCeftizoximeMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCeftizoximeMedicinalProduct = "54577009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCeftizoximeMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCeftizoximeMedicinalProduct = "http://snomed.info/sct#54577009";
 
     /// <summary>
     /// Literal for code: ProductContainingTemazepamMedicinalProduct
@@ -11338,9 +13658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTemazepamMedicinalProduct = "54705000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTemazepamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTemazepamMedicinalProduct = "http://snomed.info/sct#54705000";
+
+    /// <summary>
     /// Literal for code: ProductContainingPhenylephrineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPhenylephrineMedicinalProduct = "54765002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPhenylephrineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhenylephrineMedicinalProduct = "http://snomed.info/sct#54765002";
 
     /// <summary>
     /// Literal for code: ProductContainingTrifluperidolMedicinalProduct
@@ -11348,9 +13678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTrifluperidolMedicinalProduct = "5478006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTrifluperidolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTrifluperidolMedicinalProduct = "http://snomed.info/sct#5478006";
+
+    /// <summary>
     /// Literal for code: ProductContainingIsomethepteneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingIsomethepteneMedicinalProduct = "54824008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingIsomethepteneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIsomethepteneMedicinalProduct = "http://snomed.info/sct#54824008";
 
     /// <summary>
     /// Literal for code: ProductContainingAmfepramoneMedicinalProduct
@@ -11358,9 +13698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAmfepramoneMedicinalProduct = "54882005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAmfepramoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAmfepramoneMedicinalProduct = "http://snomed.info/sct#54882005";
+
+    /// <summary>
     /// Literal for code: ProductContainingCefalexinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCefalexinMedicinalProduct = "54887004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCefalexinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefalexinMedicinalProduct = "http://snomed.info/sct#54887004";
 
     /// <summary>
     /// Literal for code: ProductContainingTretinoinMedicinalProduct
@@ -11368,9 +13718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTretinoinMedicinalProduct = "54972005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTretinoinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTretinoinMedicinalProduct = "http://snomed.info/sct#54972005";
+
+    /// <summary>
     /// Literal for code: ProductContainingPromethestrolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPromethestrolMedicinalProduct = "54982006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPromethestrolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPromethestrolMedicinalProduct = "http://snomed.info/sct#54982006";
 
     /// <summary>
     /// Literal for code: ProductContainingSodiumLactateMedicinalProduct
@@ -11378,9 +13738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSodiumLactateMedicinalProduct = "55015008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSodiumLactateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSodiumLactateMedicinalProduct = "http://snomed.info/sct#55015008";
+
+    /// <summary>
     /// Literal for code: ProductContainingCalciumCarbonateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCalciumCarbonateMedicinalProduct = "55217007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCalciumCarbonateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCalciumCarbonateMedicinalProduct = "http://snomed.info/sct#55217007";
 
     /// <summary>
     /// Literal for code: ProductContainingAzlocillinMedicinalProduct
@@ -11388,9 +13758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAzlocillinMedicinalProduct = "55432002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAzlocillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAzlocillinMedicinalProduct = "http://snomed.info/sct#55432002";
+
+    /// <summary>
     /// Literal for code: ProductContainingTetracaineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTetracaineMedicinalProduct = "55556000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTetracaineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTetracaineMedicinalProduct = "http://snomed.info/sct#55556000";
 
     /// <summary>
     /// Literal for code: ProductContainingSodiumIothalamate125IMedicinalProduct
@@ -11398,9 +13778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSodiumIothalamate125IMedicinalProduct = "55673009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSodiumIothalamate125IMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSodiumIothalamate125IMedicinalProduct = "http://snomed.info/sct#55673009";
+
+    /// <summary>
     /// Literal for code: ProductContainingPropranololMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPropranololMedicinalProduct = "55745002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPropranololMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPropranololMedicinalProduct = "http://snomed.info/sct#55745002";
 
     /// <summary>
     /// Literal for code: NaturalHormonePreparation
@@ -11408,9 +13798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNaturalHormonePreparation = "55784007";
 
     /// <summary>
+    /// Literal for code: NONENaturalHormonePreparation
+    /// </summary>
+    public const string LiteralNONENaturalHormonePreparation = "http://snomed.info/sct#55784007";
+
+    /// <summary>
     /// Literal for code: ProductContainingHumanMenopausalGonadotropinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingHumanMenopausalGonadotropinMedicinalProduct = "55830003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingHumanMenopausalGonadotropinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHumanMenopausalGonadotropinMedicinalProduct = "http://snomed.info/sct#55830003";
 
     /// <summary>
     /// Literal for code: ProductContainingAminophyllineMedicinalProduct
@@ -11418,9 +13818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAminophyllineMedicinalProduct = "55867006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAminophyllineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAminophyllineMedicinalProduct = "http://snomed.info/sct#55867006";
+
+    /// <summary>
     /// Literal for code: ProductContainingPraziquantelMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPraziquantelMedicinalProduct = "55889005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPraziquantelMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPraziquantelMedicinalProduct = "http://snomed.info/sct#55889005";
 
     /// <summary>
     /// Literal for code: ProductContainingHydroxyprogesteroneMedicinalProduct
@@ -11428,9 +13838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHydroxyprogesteroneMedicinalProduct = "56014002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHydroxyprogesteroneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHydroxyprogesteroneMedicinalProduct = "http://snomed.info/sct#56014002";
+
+    /// <summary>
     /// Literal for code: ProductContainingDihydrotestosteroneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDihydrotestosteroneMedicinalProduct = "56032002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDihydrotestosteroneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDihydrotestosteroneMedicinalProduct = "http://snomed.info/sct#56032002";
 
     /// <summary>
     /// Literal for code: ProductContainingMebendazoleMedicinalProduct
@@ -11438,9 +13858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMebendazoleMedicinalProduct = "56059005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMebendazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMebendazoleMedicinalProduct = "http://snomed.info/sct#56059005";
+
+    /// <summary>
     /// Literal for code: ProductContainingDexamethasoneInNasalDoseFormMedicinalProductForm
     /// </summary>
     public const string LiteralProductContainingDexamethasoneInNasalDoseFormMedicinalProductForm = "5606003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDexamethasoneInNasalDoseFormMedicinalProductForm
+    /// </summary>
+    public const string LiteralNONEProductContainingDexamethasoneInNasalDoseFormMedicinalProductForm = "http://snomed.info/sct#5606003";
 
     /// <summary>
     /// Literal for code: ProductContainingMethenamineMedicinalProduct
@@ -11448,9 +13878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMethenamineMedicinalProduct = "56123002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMethenamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethenamineMedicinalProduct = "http://snomed.info/sct#56123002";
+
+    /// <summary>
     /// Literal for code: ProductContainingBretyliumMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingBretyliumMedicinalProduct = "56230001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBretyliumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBretyliumMedicinalProduct = "http://snomed.info/sct#56230001";
 
     /// <summary>
     /// Literal for code: ProductContainingSomatotropinMedicinalProduct
@@ -11458,9 +13898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSomatotropinMedicinalProduct = "56234005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSomatotropinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSomatotropinMedicinalProduct = "http://snomed.info/sct#56234005";
+
+    /// <summary>
     /// Literal for code: ProductContainingBrompheniramineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingBrompheniramineMedicinalProduct = "56480005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBrompheniramineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBrompheniramineMedicinalProduct = "http://snomed.info/sct#56480005";
 
     /// <summary>
     /// Literal for code: ProductContainingMetoclopramideMedicinalProduct
@@ -11468,9 +13918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMetoclopramideMedicinalProduct = "56549003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMetoclopramideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMetoclopramideMedicinalProduct = "http://snomed.info/sct#56549003";
+
+    /// <summary>
     /// Literal for code: ProductContainingHydroxycarbamideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingHydroxycarbamideMedicinalProduct = "56602009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingHydroxycarbamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHydroxycarbamideMedicinalProduct = "http://snomed.info/sct#56602009";
 
     /// <summary>
     /// Literal for code: ProductContainingPolyestradiolPhosphateMedicinalProduct
@@ -11478,9 +13938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPolyestradiolPhosphateMedicinalProduct = "56615000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPolyestradiolPhosphateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPolyestradiolPhosphateMedicinalProduct = "http://snomed.info/sct#56615000";
+
+    /// <summary>
     /// Literal for code: ProductContainingEtoposideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEtoposideMedicinalProduct = "56928005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEtoposideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEtoposideMedicinalProduct = "http://snomed.info/sct#56928005";
 
     /// <summary>
     /// Literal for code: ProductContainingPovidoneMedicinalProduct
@@ -11488,9 +13958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPovidoneMedicinalProduct = "56934003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPovidoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPovidoneMedicinalProduct = "http://snomed.info/sct#56934003";
+
+    /// <summary>
     /// Literal for code: ProductContainingChlorprothixeneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingChlorprothixeneMedicinalProduct = "57002000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingChlorprothixeneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChlorprothixeneMedicinalProduct = "http://snomed.info/sct#57002000";
 
     /// <summary>
     /// Literal for code: ProductContainingCisplatinMedicinalProduct
@@ -11498,9 +13978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCisplatinMedicinalProduct = "57066004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCisplatinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCisplatinMedicinalProduct = "http://snomed.info/sct#57066004";
+
+    /// <summary>
     /// Literal for code: ProductContainingChloramphenicolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingChloramphenicolMedicinalProduct = "57191001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingChloramphenicolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChloramphenicolMedicinalProduct = "http://snomed.info/sct#57191001";
 
     /// <summary>
     /// Literal for code: ProductContainingLatrodectusMactansAntivenomMedicinalProduct
@@ -11508,9 +13998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingLatrodectusMactansAntivenomMedicinalProduct = "5720001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingLatrodectusMactansAntivenomMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLatrodectusMactansAntivenomMedicinalProduct = "http://snomed.info/sct#5720001";
+
+    /// <summary>
     /// Literal for code: ProductContainingOxiconazoleMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingOxiconazoleMedicinalProduct = "57263002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingOxiconazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOxiconazoleMedicinalProduct = "http://snomed.info/sct#57263002";
 
     /// <summary>
     /// Literal for code: ProductContainingDemeclocyclineMedicinalProduct
@@ -11518,9 +14018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDemeclocyclineMedicinalProduct = "5737008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDemeclocyclineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDemeclocyclineMedicinalProduct = "http://snomed.info/sct#5737008";
+
+    /// <summary>
     /// Literal for code: ProductContainingSodiumBicarbonateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSodiumBicarbonateMedicinalProduct = "57376006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSodiumBicarbonateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSodiumBicarbonateMedicinalProduct = "http://snomed.info/sct#57376006";
 
     /// <summary>
     /// Literal for code: ProductContainingChlortetracyclineMedicinalProduct
@@ -11528,9 +14038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingChlortetracyclineMedicinalProduct = "57538001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingChlortetracyclineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChlortetracyclineMedicinalProduct = "http://snomed.info/sct#57538001";
+
+    /// <summary>
     /// Literal for code: ProductContainingSodiumTetradecylSulfateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSodiumTetradecylSulfateMedicinalProduct = "57616006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSodiumTetradecylSulfateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSodiumTetradecylSulfateMedicinalProduct = "http://snomed.info/sct#57616006";
 
     /// <summary>
     /// Literal for code: ProductContainingCefoxitinMedicinalProduct
@@ -11538,9 +14058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCefoxitinMedicinalProduct = "57670008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCefoxitinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefoxitinMedicinalProduct = "http://snomed.info/sct#57670008";
+
+    /// <summary>
     /// Literal for code: ProductContainingGentamicinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingGentamicinMedicinalProduct = "57752001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingGentamicinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGentamicinMedicinalProduct = "http://snomed.info/sct#57752001";
 
     /// <summary>
     /// Literal for code: MedicinalProductActingAsAnestheticAgentProduct
@@ -11548,9 +14078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicinalProductActingAsAnestheticAgentProduct = "5776009";
 
     /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsAnestheticAgentProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsAnestheticAgentProduct = "http://snomed.info/sct#5776009";
+
+    /// <summary>
     /// Literal for code: ProductContainingDihydrocodeineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDihydrocodeineMedicinalProduct = "57811004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDihydrocodeineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDihydrocodeineMedicinalProduct = "http://snomed.info/sct#57811004";
 
     /// <summary>
     /// Literal for code: ProductContainingSomatostatinMedicinalProduct
@@ -11558,9 +14098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSomatostatinMedicinalProduct = "57819002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSomatostatinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSomatostatinMedicinalProduct = "http://snomed.info/sct#57819002";
+
+    /// <summary>
     /// Literal for code: ProductContainingIsoprenalineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingIsoprenalineMedicinalProduct = "57845006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingIsoprenalineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIsoprenalineMedicinalProduct = "http://snomed.info/sct#57845006";
 
     /// <summary>
     /// Literal for code: ProductContainingClidiniumMedicinalProduct
@@ -11568,9 +14118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingClidiniumMedicinalProduct = "57853003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingClidiniumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingClidiniumMedicinalProduct = "http://snomed.info/sct#57853003";
+
+    /// <summary>
     /// Literal for code: ProductContainingChlorothiazideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingChlorothiazideMedicinalProduct = "5786005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingChlorothiazideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChlorothiazideMedicinalProduct = "http://snomed.info/sct#5786005";
 
     /// <summary>
     /// Literal for code: ProductContainingChlortalidoneMedicinalProduct
@@ -11578,9 +14138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingChlortalidoneMedicinalProduct = "57893000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingChlortalidoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChlortalidoneMedicinalProduct = "http://snomed.info/sct#57893000";
+
+    /// <summary>
     /// Literal for code: AntilipemicAgent
     /// </summary>
     public const string LiteralAntilipemicAgent = "57952007";
+
+    /// <summary>
+    /// Literal for code: NONEAntilipemicAgent
+    /// </summary>
+    public const string LiteralNONEAntilipemicAgent = "http://snomed.info/sct#57952007";
 
     /// <summary>
     /// Literal for code: ProductContainingClotrimazoleMedicinalProduct
@@ -11588,9 +14158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingClotrimazoleMedicinalProduct = "5797005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingClotrimazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingClotrimazoleMedicinalProduct = "http://snomed.info/sct#5797005";
+
+    /// <summary>
     /// Literal for code: AntiparkinsonAgent
     /// </summary>
     public const string LiteralAntiparkinsonAgent = "58050004";
+
+    /// <summary>
+    /// Literal for code: NONEAntiparkinsonAgent
+    /// </summary>
+    public const string LiteralNONEAntiparkinsonAgent = "http://snomed.info/sct#58050004";
 
     /// <summary>
     /// Literal for code: ProductContainingPhenazocineMedicinalProduct
@@ -11598,9 +14178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPhenazocineMedicinalProduct = "58360000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPhenazocineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhenazocineMedicinalProduct = "http://snomed.info/sct#58360000";
+
+    /// <summary>
     /// Literal for code: ProductContainingPapaverineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPapaverineMedicinalProduct = "58467001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPapaverineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPapaverineMedicinalProduct = "http://snomed.info/sct#58467001";
 
     /// <summary>
     /// Literal for code: ProductContainingPropylamineDerivativeAndHistamineReceptorAntagonistProduct
@@ -11608,9 +14198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPropylamineDerivativeAndHistamineReceptorAntagonistProduct = "58502006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPropylamineDerivativeAndHistamineReceptorAntagonistProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPropylamineDerivativeAndHistamineReceptorAntagonistProduct = "http://snomed.info/sct#58502006";
+
+    /// <summary>
     /// Literal for code: ProductContainingAntimetaboliteProduct
     /// </summary>
     public const string LiteralProductContainingAntimetaboliteProduct = "58760003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAntimetaboliteProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAntimetaboliteProduct = "http://snomed.info/sct#58760003";
 
     /// <summary>
     /// Literal for code: ProductContainingPituitaryHormoneProduct
@@ -11618,9 +14218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPituitaryHormoneProduct = "58805000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPituitaryHormoneProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPituitaryHormoneProduct = "http://snomed.info/sct#58805000";
+
+    /// <summary>
     /// Literal for code: ProductContainingClindamycinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingClindamycinMedicinalProduct = "58883005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingClindamycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingClindamycinMedicinalProduct = "http://snomed.info/sct#58883005";
 
     /// <summary>
     /// Literal for code: ProductContainingTrifluridineMedicinalProduct
@@ -11628,9 +14238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTrifluridineMedicinalProduct = "58892008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTrifluridineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTrifluridineMedicinalProduct = "http://snomed.info/sct#58892008";
+
+    /// <summary>
     /// Literal for code: ProductContainingDiazoxideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDiazoxideMedicinalProduct = "58905004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDiazoxideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDiazoxideMedicinalProduct = "http://snomed.info/sct#58905004";
 
     /// <summary>
     /// Literal for code: MedicinalProductActingAsVasodilatorProduct
@@ -11638,9 +14258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicinalProductActingAsVasodilatorProduct = "58944007";
 
     /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsVasodilatorProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsVasodilatorProduct = "http://snomed.info/sct#58944007";
+
+    /// <summary>
     /// Literal for code: ProductContainingAntihemophilicFactorAgentMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAntihemophilicFactorAgentMedicinalProduct = "59057006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAntihemophilicFactorAgentMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAntihemophilicFactorAgentMedicinalProduct = "http://snomed.info/sct#59057006";
 
     /// <summary>
     /// Literal for code: ProductContainingDopamineMedicinalProduct
@@ -11648,9 +14278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDopamineMedicinalProduct = "59187003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDopamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDopamineMedicinalProduct = "http://snomed.info/sct#59187003";
+
+    /// <summary>
     /// Literal for code: ProductContainingMitomycinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMitomycinMedicinalProduct = "59240002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMitomycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMitomycinMedicinalProduct = "http://snomed.info/sct#59240002";
 
     /// <summary>
     /// Literal for code: ProductContainingSulfonamideAndAntibioticProduct
@@ -11658,9 +14298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSulfonamideAndAntibioticProduct = "59255006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSulfonamideAndAntibioticProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSulfonamideAndAntibioticProduct = "http://snomed.info/sct#59255006";
+
+    /// <summary>
     /// Literal for code: ProductContainingLoxapineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingLoxapineMedicinalProduct = "59270007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingLoxapineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLoxapineMedicinalProduct = "http://snomed.info/sct#59270007";
 
     /// <summary>
     /// Literal for code: ProductContainingAstemizoleMedicinalProduct
@@ -11668,9 +14318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAstemizoleMedicinalProduct = "59456005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAstemizoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAstemizoleMedicinalProduct = "http://snomed.info/sct#59456005";
+
+    /// <summary>
     /// Literal for code: ProductContainingPyrimethamineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPyrimethamineMedicinalProduct = "59589008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPyrimethamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPyrimethamineMedicinalProduct = "http://snomed.info/sct#59589008";
 
     /// <summary>
     /// Literal for code: ProductContainingNondepolarizingNeuromuscularBlocker
@@ -11678,9 +14338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNondepolarizingNeuromuscularBlocker = "59594008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNondepolarizingNeuromuscularBlocker
+    /// </summary>
+    public const string LiteralNONEProductContainingNondepolarizingNeuromuscularBlocker = "http://snomed.info/sct#59594008";
+
+    /// <summary>
     /// Literal for code: ProductContainingNiclosamideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNiclosamideMedicinalProduct = "5975000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNiclosamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNiclosamideMedicinalProduct = "http://snomed.info/sct#5975000";
 
     /// <summary>
     /// Literal for code: AntitussiveAgent
@@ -11688,9 +14358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAntitussiveAgent = "59751001";
 
     /// <summary>
+    /// Literal for code: NONEAntitussiveAgent
+    /// </summary>
+    public const string LiteralNONEAntitussiveAgent = "http://snomed.info/sct#59751001";
+
+    /// <summary>
     /// Literal for code: ProductContainingDiltiazemMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDiltiazemMedicinalProduct = "59941008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDiltiazemMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDiltiazemMedicinalProduct = "http://snomed.info/sct#59941008";
 
     /// <summary>
     /// Literal for code: ProductContainingPyridostigmineMedicinalProduct
@@ -11698,9 +14378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPyridostigmineMedicinalProduct = "59953007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPyridostigmineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPyridostigmineMedicinalProduct = "http://snomed.info/sct#59953007";
+
+    /// <summary>
     /// Literal for code: ProductContainingIndometacinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingIndometacinMedicinalProduct = "60149003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingIndometacinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIndometacinMedicinalProduct = "http://snomed.info/sct#60149003";
 
     /// <summary>
     /// Literal for code: MedicinalProductActingAsAntacidAgentProduct
@@ -11708,9 +14398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicinalProductActingAsAntacidAgentProduct = "60169008";
 
     /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsAntacidAgentProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsAntacidAgentProduct = "http://snomed.info/sct#60169008";
+
+    /// <summary>
     /// Literal for code: ProductContainingTriamcinoloneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTriamcinoloneMedicinalProduct = "6028009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTriamcinoloneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTriamcinoloneMedicinalProduct = "http://snomed.info/sct#6028009";
 
     /// <summary>
     /// Literal for code: ProductContainingMagnesiumHydroxideMedicinalProduct
@@ -11718,9 +14418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMagnesiumHydroxideMedicinalProduct = "60468008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMagnesiumHydroxideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMagnesiumHydroxideMedicinalProduct = "http://snomed.info/sct#60468008";
+
+    /// <summary>
     /// Literal for code: MedicinalProductActingAsAstringentProduct
     /// </summary>
     public const string LiteralMedicinalProductActingAsAstringentProduct = "60533005";
+
+    /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsAstringentProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsAstringentProduct = "http://snomed.info/sct#60533005";
 
     /// <summary>
     /// Literal for code: ProductContainingLanatosideCMedicinalProduct
@@ -11728,9 +14438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingLanatosideCMedicinalProduct = "60541005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingLanatosideCMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLanatosideCMedicinalProduct = "http://snomed.info/sct#60541005";
+
+    /// <summary>
     /// Literal for code: ProductContainingOrciprenalineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingOrciprenalineMedicinalProduct = "6067003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingOrciprenalineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOrciprenalineMedicinalProduct = "http://snomed.info/sct#6067003";
 
     /// <summary>
     /// Literal for code: ProductContainingEcothiopateMedicinalProduct
@@ -11738,9 +14458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingEcothiopateMedicinalProduct = "60682004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingEcothiopateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEcothiopateMedicinalProduct = "http://snomed.info/sct#60682004";
+
+    /// <summary>
     /// Literal for code: ProductContainingCoalTarMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCoalTarMedicinalProduct = "6071000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCoalTarMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCoalTarMedicinalProduct = "http://snomed.info/sct#6071000";
 
     /// <summary>
     /// Literal for code: ProductContainingDiethylcarbamazineMedicinalProduct
@@ -11748,9 +14478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDiethylcarbamazineMedicinalProduct = "60731009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDiethylcarbamazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDiethylcarbamazineMedicinalProduct = "http://snomed.info/sct#60731009";
+
+    /// <summary>
     /// Literal for code: ProductContainingDiamorphineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDiamorphineMedicinalProduct = "60881009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDiamorphineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDiamorphineMedicinalProduct = "http://snomed.info/sct#60881009";
 
     /// <summary>
     /// Literal for code: ProductContainingBarbiturateProduct
@@ -11758,9 +14498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBarbiturateProduct = "60978003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBarbiturateProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBarbiturateProduct = "http://snomed.info/sct#60978003";
+
+    /// <summary>
     /// Literal for code: ProductContainingThyroidHormoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingThyroidHormoneMedicinalProduct = "61020000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingThyroidHormoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingThyroidHormoneMedicinalProduct = "http://snomed.info/sct#61020000";
 
     /// <summary>
     /// Literal for code: ProductContainingBaclofenMedicinalProduct
@@ -11768,9 +14518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBaclofenMedicinalProduct = "6102009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBaclofenMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBaclofenMedicinalProduct = "http://snomed.info/sct#6102009";
+
+    /// <summary>
     /// Literal for code: ProductContainingProlactinInhibitingFactorMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingProlactinInhibitingFactorMedicinalProduct = "61093008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingProlactinInhibitingFactorMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingProlactinInhibitingFactorMedicinalProduct = "http://snomed.info/sct#61093008";
 
     /// <summary>
     /// Literal for code: ProductContainingGasGangreneAntitoxinMedicinalProduct
@@ -11778,9 +14538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingGasGangreneAntitoxinMedicinalProduct = "61132004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingGasGangreneAntitoxinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGasGangreneAntitoxinMedicinalProduct = "http://snomed.info/sct#61132004";
+
+    /// <summary>
     /// Literal for code: ProductContainingOxymetholoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingOxymetholoneMedicinalProduct = "6116004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingOxymetholoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOxymetholoneMedicinalProduct = "http://snomed.info/sct#6116004";
 
     /// <summary>
     /// Literal for code: ProductContainingMeprednisoneMedicinalProduct
@@ -11788,9 +14558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMeprednisoneMedicinalProduct = "61181002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMeprednisoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMeprednisoneMedicinalProduct = "http://snomed.info/sct#61181002";
+
+    /// <summary>
     /// Literal for code: ProductContainingMolindoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMolindoneMedicinalProduct = "61408004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMolindoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMolindoneMedicinalProduct = "http://snomed.info/sct#61408004";
 
     /// <summary>
     /// Literal for code: ProductContainingAdrenalHormoneProduct
@@ -11798,9 +14578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAdrenalHormoneProduct = "61457001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAdrenalHormoneProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAdrenalHormoneProduct = "http://snomed.info/sct#61457001";
+
+    /// <summary>
     /// Literal for code: MedicinalProductActingAsLaxativeProduct
     /// </summary>
     public const string LiteralMedicinalProductActingAsLaxativeProduct = "61621000";
+
+    /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsLaxativeProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsLaxativeProduct = "http://snomed.info/sct#61621000";
 
     /// <summary>
     /// Literal for code: ProductContainingBuclizineMedicinalProduct
@@ -11808,9 +14598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBuclizineMedicinalProduct = "61623002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBuclizineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBuclizineMedicinalProduct = "http://snomed.info/sct#61623002";
+
+    /// <summary>
     /// Literal for code: ProductContainingCefamandoleMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCefamandoleMedicinalProduct = "61651006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCefamandoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefamandoleMedicinalProduct = "http://snomed.info/sct#61651006";
 
     /// <summary>
     /// Literal for code: ProductContainingMeticillinMedicinalProduct
@@ -11818,9 +14618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMeticillinMedicinalProduct = "61862008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMeticillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMeticillinMedicinalProduct = "http://snomed.info/sct#61862008";
+
+    /// <summary>
     /// Literal for code: ProductContainingEstrogenProduct
     /// </summary>
     public const string LiteralProductContainingEstrogenProduct = "61946003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEstrogenProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEstrogenProduct = "http://snomed.info/sct#61946003";
 
     /// <summary>
     /// Literal for code: ProductContainingDichlorisoneMedicinalProduct
@@ -11828,9 +14638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDichlorisoneMedicinalProduct = "62051009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDichlorisoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDichlorisoneMedicinalProduct = "http://snomed.info/sct#62051009";
+
+    /// <summary>
     /// Literal for code: ProductContainingAnthelminticProduct
     /// </summary>
     public const string LiteralProductContainingAnthelminticProduct = "62288001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAnthelminticProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAnthelminticProduct = "http://snomed.info/sct#62288001";
 
     /// <summary>
     /// Literal for code: VaricellaZosterVirusAntibodyContainingProduct
@@ -11838,9 +14658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVaricellaZosterVirusAntibodyContainingProduct = "62294009";
 
     /// <summary>
+    /// Literal for code: NONEVaricellaZosterVirusAntibodyContainingProduct
+    /// </summary>
+    public const string LiteralNONEVaricellaZosterVirusAntibodyContainingProduct = "http://snomed.info/sct#62294009";
+
+    /// <summary>
     /// Literal for code: ProductContainingNaphazolineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNaphazolineMedicinalProduct = "6232005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNaphazolineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNaphazolineMedicinalProduct = "http://snomed.info/sct#6232005";
 
     /// <summary>
     /// Literal for code: ProductContainingFolicAcidMedicinalProduct
@@ -11848,9 +14678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFolicAcidMedicinalProduct = "6247001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFolicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFolicAcidMedicinalProduct = "http://snomed.info/sct#6247001";
+
+    /// <summary>
     /// Literal for code: ProductContainingTiotixeneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTiotixeneMedicinalProduct = "62529008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTiotixeneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTiotixeneMedicinalProduct = "http://snomed.info/sct#62529008";
 
     /// <summary>
     /// Literal for code: ProductContainingFluorometholoneInOcularDoseFormMedicinalProductForm
@@ -11858,9 +14698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFluorometholoneInOcularDoseFormMedicinalProductForm = "62560008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFluorometholoneInOcularDoseFormMedicinalProductForm
+    /// </summary>
+    public const string LiteralNONEProductContainingFluorometholoneInOcularDoseFormMedicinalProductForm = "http://snomed.info/sct#62560008";
+
+    /// <summary>
     /// Literal for code: ProductContainingPreciselyHydrogenPeroxide30Milligram1MilliliterConventionalReleaseCutaneousSolutionClinicalDrug
     /// </summary>
     public const string LiteralProductContainingPreciselyHydrogenPeroxide30Milligram1MilliliterConventionalReleaseCutaneousSolutionClinicalDrug = "6259002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPreciselyHydrogenPeroxide30Milligram1MilliliterConventionalReleaseCutaneousSolutionClinicalDrug
+    /// </summary>
+    public const string LiteralNONEProductContainingPreciselyHydrogenPeroxide30Milligram1MilliliterConventionalReleaseCutaneousSolutionClinicalDrug = "http://snomed.info/sct#6259002";
 
     /// <summary>
     /// Literal for code: ProductContainingClonidineMedicinalProduct
@@ -11868,9 +14718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingClonidineMedicinalProduct = "62782004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingClonidineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingClonidineMedicinalProduct = "http://snomed.info/sct#62782004";
+
+    /// <summary>
     /// Literal for code: MedicinalProductActingAsAnticonvulsantAgentProduct
     /// </summary>
     public const string LiteralMedicinalProductActingAsAnticonvulsantAgentProduct = "63094006";
+
+    /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsAnticonvulsantAgentProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsAnticonvulsantAgentProduct = "http://snomed.info/sct#63094006";
 
     /// <summary>
     /// Literal for code: ProductContainingPhytomenadioneMedicinalProduct
@@ -11878,9 +14738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPhytomenadioneMedicinalProduct = "63136007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPhytomenadioneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhytomenadioneMedicinalProduct = "http://snomed.info/sct#63136007";
+
+    /// <summary>
     /// Literal for code: ProductContainingBenzoicAcidMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingBenzoicAcidMedicinalProduct = "63318000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBenzoicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBenzoicAcidMedicinalProduct = "http://snomed.info/sct#63318000";
 
     /// <summary>
     /// Literal for code: ProductContainingFluoxymesteroneMedicinalProduct
@@ -11888,9 +14758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFluoxymesteroneMedicinalProduct = "63470003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFluoxymesteroneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFluoxymesteroneMedicinalProduct = "http://snomed.info/sct#63470003";
+
+    /// <summary>
     /// Literal for code: ProductContainingNicotinicAcidMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNicotinicAcidMedicinalProduct = "63639004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNicotinicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNicotinicAcidMedicinalProduct = "http://snomed.info/sct#63639004";
 
     /// <summary>
     /// Literal for code: ProductContainingHalothaneMedicinalProduct
@@ -11898,9 +14778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHalothaneMedicinalProduct = "63682003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHalothaneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHalothaneMedicinalProduct = "http://snomed.info/sct#63682003";
+
+    /// <summary>
     /// Literal for code: ProductContainingPenicillinAndAntibioticProduct
     /// </summary>
     public const string LiteralProductContainingPenicillinAndAntibioticProduct = "6369005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPenicillinAndAntibioticProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPenicillinAndAntibioticProduct = "http://snomed.info/sct#6369005";
 
     /// <summary>
     /// Literal for code: ProductContainingNorethisteroneMedicinalProduct
@@ -11908,9 +14798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNorethisteroneMedicinalProduct = "63758001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNorethisteroneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNorethisteroneMedicinalProduct = "http://snomed.info/sct#63758001";
+
+    /// <summary>
     /// Literal for code: ProductContainingVitaminEAndVitaminEDerivativeProduct
     /// </summary>
     public const string LiteralProductContainingVitaminEAndVitaminEDerivativeProduct = "63822004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingVitaminEAndVitaminEDerivativeProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingVitaminEAndVitaminEDerivativeProduct = "http://snomed.info/sct#63822004";
 
     /// <summary>
     /// Literal for code: GenitourinarySmoothMuscleRelaxant
@@ -11918,9 +14818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGenitourinarySmoothMuscleRelaxant = "64083002";
 
     /// <summary>
+    /// Literal for code: NONEGenitourinarySmoothMuscleRelaxant
+    /// </summary>
+    public const string LiteralNONEGenitourinarySmoothMuscleRelaxant = "http://snomed.info/sct#64083002";
+
+    /// <summary>
     /// Literal for code: ProductContainingAmodiaquineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAmodiaquineMedicinalProduct = "64115004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAmodiaquineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAmodiaquineMedicinalProduct = "http://snomed.info/sct#64115004";
 
     /// <summary>
     /// Literal for code: ProductContainingDactinomycinMedicinalProduct
@@ -11928,9 +14838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDactinomycinMedicinalProduct = "64127001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDactinomycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDactinomycinMedicinalProduct = "http://snomed.info/sct#64127001";
+
+    /// <summary>
     /// Literal for code: ProductContainingMethandrostenoloneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMethandrostenoloneMedicinalProduct = "64240003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMethandrostenoloneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethandrostenoloneMedicinalProduct = "http://snomed.info/sct#64240003";
 
     /// <summary>
     /// Literal for code: ProductContainingHistamineReceptorAntagonistProduct
@@ -11938,9 +14858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHistamineReceptorAntagonistProduct = "6425004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHistamineReceptorAntagonistProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHistamineReceptorAntagonistProduct = "http://snomed.info/sct#6425004";
+
+    /// <summary>
     /// Literal for code: ProductContainingGriseofulvinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingGriseofulvinMedicinalProduct = "64349004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingGriseofulvinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGriseofulvinMedicinalProduct = "http://snomed.info/sct#64349004";
 
     /// <summary>
     /// Literal for code: ProductContainingTerpinMedicinalProduct
@@ -11948,9 +14878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTerpinMedicinalProduct = "64462001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTerpinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTerpinMedicinalProduct = "http://snomed.info/sct#64462001";
+
+    /// <summary>
     /// Literal for code: MethixeneContainingProduct
     /// </summary>
     public const string LiteralMethixeneContainingProduct = "64558005";
+
+    /// <summary>
+    /// Literal for code: NONEMethixeneContainingProduct
+    /// </summary>
+    public const string LiteralNONEMethixeneContainingProduct = "http://snomed.info/sct#64558005";
 
     /// <summary>
     /// Literal for code: ProductContainingDiiodohydroxyquinolineMedicinalProduct
@@ -11958,9 +14898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDiiodohydroxyquinolineMedicinalProduct = "64851009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDiiodohydroxyquinolineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDiiodohydroxyquinolineMedicinalProduct = "http://snomed.info/sct#64851009";
+
+    /// <summary>
     /// Literal for code: ProductContainingMethylthiouracilMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMethylthiouracilMedicinalProduct = "64878006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMethylthiouracilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethylthiouracilMedicinalProduct = "http://snomed.info/sct#64878006";
 
     /// <summary>
     /// Literal for code: ProductContainingBenzocaineMedicinalProduct
@@ -11968,9 +14918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBenzocaineMedicinalProduct = "65020006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBenzocaineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBenzocaineMedicinalProduct = "http://snomed.info/sct#65020006";
+
+    /// <summary>
     /// Literal for code: ProductContainingEphedrineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEphedrineMedicinalProduct = "65026000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEphedrineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEphedrineMedicinalProduct = "http://snomed.info/sct#65026000";
 
     /// <summary>
     /// Literal for code: ProductContainingBiperidenMedicinalProduct
@@ -11978,9 +14938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBiperidenMedicinalProduct = "65041000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBiperidenMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBiperidenMedicinalProduct = "http://snomed.info/sct#65041000";
+
+    /// <summary>
     /// Literal for code: ProductContainingChloropyrileneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingChloropyrileneMedicinalProduct = "65092008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingChloropyrileneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChloropyrileneMedicinalProduct = "http://snomed.info/sct#65092008";
 
     /// <summary>
     /// Literal for code: ProductContainingNalorphineMedicinalProduct
@@ -11988,9 +14958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNalorphineMedicinalProduct = "6526001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNalorphineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNalorphineMedicinalProduct = "http://snomed.info/sct#6526001";
+
+    /// <summary>
     /// Literal for code: ProductContainingProstacyclinPGI2Product
     /// </summary>
     public const string LiteralProductContainingProstacyclinPGI2Product = "65484006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingProstacyclinPGI2Product
+    /// </summary>
+    public const string LiteralNONEProductContainingProstacyclinPGI2Product = "http://snomed.info/sct#65484006";
 
     /// <summary>
     /// Literal for code: ProductContainingEpinephrineMedicinalProduct
@@ -11998,9 +14978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingEpinephrineMedicinalProduct = "65502005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingEpinephrineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEpinephrineMedicinalProduct = "http://snomed.info/sct#65502005";
+
+    /// <summary>
     /// Literal for code: GastrointestinalSmoothMuscleRelaxant
     /// </summary>
     public const string LiteralGastrointestinalSmoothMuscleRelaxant = "65505007";
+
+    /// <summary>
+    /// Literal for code: NONEGastrointestinalSmoothMuscleRelaxant
+    /// </summary>
+    public const string LiteralNONEGastrointestinalSmoothMuscleRelaxant = "http://snomed.info/sct#65505007";
 
     /// <summary>
     /// Literal for code: ProductContainingVitaminK5MedicinalProduct
@@ -12008,9 +14998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingVitaminK5MedicinalProduct = "65627005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingVitaminK5MedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingVitaminK5MedicinalProduct = "http://snomed.info/sct#65627005";
+
+    /// <summary>
     /// Literal for code: ProtectiveAgent
     /// </summary>
     public const string LiteralProtectiveAgent = "65823007";
+
+    /// <summary>
+    /// Literal for code: NONEProtectiveAgent
+    /// </summary>
+    public const string LiteralNONEProtectiveAgent = "http://snomed.info/sct#65823007";
 
     /// <summary>
     /// Literal for code: ProductContainingDantronMedicinalProduct
@@ -12018,9 +15018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDantronMedicinalProduct = "65884003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDantronMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDantronMedicinalProduct = "http://snomed.info/sct#65884003";
+
+    /// <summary>
     /// Literal for code: ProductContainingMicrurusFulviusAntivenomMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMicrurusFulviusAntivenomMedicinalProduct = "65965000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMicrurusFulviusAntivenomMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMicrurusFulviusAntivenomMedicinalProduct = "http://snomed.info/sct#65965000";
 
     /// <summary>
     /// Literal for code: ProductContainingProbenecidMedicinalProduct
@@ -12028,9 +15038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingProbenecidMedicinalProduct = "66094001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingProbenecidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingProbenecidMedicinalProduct = "http://snomed.info/sct#66094001";
+
+    /// <summary>
     /// Literal for code: ProductContainingFlunisolideInNasalDoseFormMedicinalProductForm
     /// </summary>
     public const string LiteralProductContainingFlunisolideInNasalDoseFormMedicinalProductForm = "66125007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFlunisolideInNasalDoseFormMedicinalProductForm
+    /// </summary>
+    public const string LiteralNONEProductContainingFlunisolideInNasalDoseFormMedicinalProductForm = "http://snomed.info/sct#66125007";
 
     /// <summary>
     /// Literal for code: ProductContainingZincSulfateMedicinalProduct
@@ -12038,9 +15058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingZincSulfateMedicinalProduct = "6625006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingZincSulfateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingZincSulfateMedicinalProduct = "http://snomed.info/sct#6625006";
+
+    /// <summary>
     /// Literal for code: ProductContainingTetracyclineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTetracyclineMedicinalProduct = "66261008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTetracyclineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTetracyclineMedicinalProduct = "http://snomed.info/sct#66261008";
 
     /// <summary>
     /// Literal for code: ProductContainingAndrogenReceptorAgonistProduct
@@ -12048,9 +15078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAndrogenReceptorAgonistProduct = "66349002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAndrogenReceptorAgonistProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAndrogenReceptorAgonistProduct = "http://snomed.info/sct#66349002";
+
+    /// <summary>
     /// Literal for code: ProductContainingPantothenicAcidMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPantothenicAcidMedicinalProduct = "66441000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPantothenicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPantothenicAcidMedicinalProduct = "http://snomed.info/sct#66441000";
 
     /// <summary>
     /// Literal for code: ProductContainingIsofluraneMedicinalProduct
@@ -12058,9 +15098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingIsofluraneMedicinalProduct = "66492008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingIsofluraneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIsofluraneMedicinalProduct = "http://snomed.info/sct#66492008";
+
+    /// <summary>
     /// Literal for code: ProductContainingTheophyllineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTheophyllineMedicinalProduct = "66493003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTheophyllineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTheophyllineMedicinalProduct = "http://snomed.info/sct#66493003";
 
     /// <summary>
     /// Literal for code: ProductContainingStanozololMedicinalProduct
@@ -12068,9 +15118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingStanozololMedicinalProduct = "66602007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingStanozololMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingStanozololMedicinalProduct = "http://snomed.info/sct#66602007";
+
+    /// <summary>
     /// Literal for code: PigmentingAgent
     /// </summary>
     public const string LiteralPigmentingAgent = "66742008";
+
+    /// <summary>
+    /// Literal for code: NONEPigmentingAgent
+    /// </summary>
+    public const string LiteralNONEPigmentingAgent = "http://snomed.info/sct#66742008";
 
     /// <summary>
     /// Literal for code: ProductContainingDipyridamoleMedicinalProduct
@@ -12078,9 +15138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDipyridamoleMedicinalProduct = "66859009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDipyridamoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDipyridamoleMedicinalProduct = "http://snomed.info/sct#66859009";
+
+    /// <summary>
     /// Literal for code: ProductContainingAluminiumChlorideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAluminiumChlorideMedicinalProduct = "66860004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAluminiumChlorideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAluminiumChlorideMedicinalProduct = "http://snomed.info/sct#66860004";
 
     /// <summary>
     /// Literal for code: ProductContainingMethyclothiazideMedicinalProduct
@@ -12088,9 +15158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMethyclothiazideMedicinalProduct = "66919007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMethyclothiazideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethyclothiazideMedicinalProduct = "http://snomed.info/sct#66919007";
+
+    /// <summary>
     /// Literal for code: ProductContainingColestipolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingColestipolMedicinalProduct = "66971004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingColestipolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingColestipolMedicinalProduct = "http://snomed.info/sct#66971004";
 
     /// <summary>
     /// Literal for code: AbortifacientAgent
@@ -12098,9 +15178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAbortifacientAgent = "6716006";
 
     /// <summary>
+    /// Literal for code: NONEAbortifacientAgent
+    /// </summary>
+    public const string LiteralNONEAbortifacientAgent = "http://snomed.info/sct#6716006";
+
+    /// <summary>
     /// Literal for code: ProductContainingLymphocyteImmunoglobulinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingLymphocyteImmunoglobulinMedicinalProduct = "67213005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingLymphocyteImmunoglobulinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLymphocyteImmunoglobulinMedicinalProduct = "http://snomed.info/sct#67213005";
 
     /// <summary>
     /// Literal for code: ProductContainingAcylaminopenicillinProduct
@@ -12108,9 +15198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAcylaminopenicillinProduct = "67423003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAcylaminopenicillinProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAcylaminopenicillinProduct = "http://snomed.info/sct#67423003";
+
+    /// <summary>
     /// Literal for code: ProductContainingAlphaAdrenergicReceptorAntagonistProduct
     /// </summary>
     public const string LiteralProductContainingAlphaAdrenergicReceptorAntagonistProduct = "67440007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAlphaAdrenergicReceptorAntagonistProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAlphaAdrenergicReceptorAntagonistProduct = "http://snomed.info/sct#67440007";
 
     /// <summary>
     /// Literal for code: MedicinalProductActingAsAntiarrhythmicAgentProduct
@@ -12118,9 +15218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicinalProductActingAsAntiarrhythmicAgentProduct = "67507000";
 
     /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsAntiarrhythmicAgentProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsAntiarrhythmicAgentProduct = "http://snomed.info/sct#67507000";
+
+    /// <summary>
     /// Literal for code: ProductContainingPaclitaxelMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPaclitaxelMedicinalProduct = "67735003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPaclitaxelMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPaclitaxelMedicinalProduct = "http://snomed.info/sct#67735003";
 
     /// <summary>
     /// Literal for code: ProductContainingSecondGenerationCephalosporinProduct
@@ -12128,9 +15238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSecondGenerationCephalosporinProduct = "67891001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSecondGenerationCephalosporinProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSecondGenerationCephalosporinProduct = "http://snomed.info/sct#67891001";
+
+    /// <summary>
     /// Literal for code: ProductContainingApomorphineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingApomorphineMedicinalProduct = "67939000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingApomorphineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingApomorphineMedicinalProduct = "http://snomed.info/sct#67939000";
 
     /// <summary>
     /// Literal for code: ProductContainingAcebutololMedicinalProduct
@@ -12138,9 +15258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAcebutololMedicinalProduct = "68088000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAcebutololMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAcebutololMedicinalProduct = "http://snomed.info/sct#68088000";
+
+    /// <summary>
     /// Literal for code: ProductContainingCalcitriolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCalcitriolMedicinalProduct = "68206008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCalcitriolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCalcitriolMedicinalProduct = "http://snomed.info/sct#68206008";
 
     /// <summary>
     /// Literal for code: ProductContainingCalciumChlorideMedicinalProduct
@@ -12148,9 +15278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCalciumChlorideMedicinalProduct = "68395000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCalciumChlorideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCalciumChlorideMedicinalProduct = "http://snomed.info/sct#68395000";
+
+    /// <summary>
     /// Literal for code: ProductContainingSomatomedinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSomatomedinMedicinalProduct = "68398003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSomatomedinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSomatomedinMedicinalProduct = "http://snomed.info/sct#68398003";
 
     /// <summary>
     /// Literal for code: ProductContainingCarbonicAnhydraseInhibitorProduct
@@ -12158,9 +15298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCarbonicAnhydraseInhibitorProduct = "68402007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCarbonicAnhydraseInhibitorProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCarbonicAnhydraseInhibitorProduct = "http://snomed.info/sct#68402007";
+
+    /// <summary>
     /// Literal for code: HydrogenPeroxide300MgMLCutaneousSolution
     /// </summary>
     public const string LiteralHydrogenPeroxide300MgMLCutaneousSolution = "68407001";
+
+    /// <summary>
+    /// Literal for code: NONEHydrogenPeroxide300MgMLCutaneousSolution
+    /// </summary>
+    public const string LiteralNONEHydrogenPeroxide300MgMLCutaneousSolution = "http://snomed.info/sct#68407001";
 
     /// <summary>
     /// Literal for code: ProductContainingCloxacillinMedicinalProduct
@@ -12168,9 +15318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCloxacillinMedicinalProduct = "68422006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCloxacillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCloxacillinMedicinalProduct = "http://snomed.info/sct#68422006";
+
+    /// <summary>
     /// Literal for code: ProductContainingIsoflurophateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingIsoflurophateMedicinalProduct = "68424007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingIsoflurophateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIsoflurophateMedicinalProduct = "http://snomed.info/sct#68424007";
 
     /// <summary>
     /// Literal for code: ProductContainingDoxorubicinMedicinalProduct
@@ -12178,9 +15338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDoxorubicinMedicinalProduct = "68444001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDoxorubicinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDoxorubicinMedicinalProduct = "http://snomed.info/sct#68444001";
+
+    /// <summary>
     /// Literal for code: ProductContainingSodiumPropionateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSodiumPropionateMedicinalProduct = "68490009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSodiumPropionateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSodiumPropionateMedicinalProduct = "http://snomed.info/sct#68490009";
 
     /// <summary>
     /// Literal for code: ProductContainingSecretinMedicinalProduct
@@ -12188,9 +15358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSecretinMedicinalProduct = "68622003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSecretinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSecretinMedicinalProduct = "http://snomed.info/sct#68622003";
+
+    /// <summary>
     /// Literal for code: ProductContainingSodiumAurothiomalateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSodiumAurothiomalateMedicinalProduct = "68702006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSodiumAurothiomalateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSodiumAurothiomalateMedicinalProduct = "http://snomed.info/sct#68702006";
 
     /// <summary>
     /// Literal for code: ProductContainingIsoxsuprineMedicinalProduct
@@ -12198,9 +15378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingIsoxsuprineMedicinalProduct = "68774008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingIsoxsuprineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIsoxsuprineMedicinalProduct = "http://snomed.info/sct#68774008";
+
+    /// <summary>
     /// Literal for code: ProductContainingMethotrexateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMethotrexateMedicinalProduct = "68887009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMethotrexateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethotrexateMedicinalProduct = "http://snomed.info/sct#68887009";
 
     /// <summary>
     /// Literal for code: ProductContainingPenicillinaseResistantPenicillinProduct
@@ -12208,9 +15398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPenicillinaseResistantPenicillinProduct = "68892006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPenicillinaseResistantPenicillinProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPenicillinaseResistantPenicillinProduct = "http://snomed.info/sct#68892006";
+
+    /// <summary>
     /// Literal for code: ProductContainingDantroleneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDantroleneMedicinalProduct = "69107004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDantroleneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDantroleneMedicinalProduct = "http://snomed.info/sct#69107004";
 
     /// <summary>
     /// Literal for code: ProductContainingGuanadrelMedicinalProduct
@@ -12218,9 +15418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingGuanadrelMedicinalProduct = "69204002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingGuanadrelMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGuanadrelMedicinalProduct = "http://snomed.info/sct#69204002";
+
+    /// <summary>
     /// Literal for code: ProductContainingAmiodaroneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAmiodaroneMedicinalProduct = "69236009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAmiodaroneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAmiodaroneMedicinalProduct = "http://snomed.info/sct#69236009";
 
     /// <summary>
     /// Literal for code: MedicinalProductActingAsMioticProduct
@@ -12228,9 +15438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicinalProductActingAsMioticProduct = "69242008";
 
     /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsMioticProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsMioticProduct = "http://snomed.info/sct#69242008";
+
+    /// <summary>
     /// Literal for code: ProductContainingCiclacillinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCiclacillinMedicinalProduct = "69331001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCiclacillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCiclacillinMedicinalProduct = "http://snomed.info/sct#69331001";
 
     /// <summary>
     /// Literal for code: MedicinalProductActingAsImmunosuppressantProduct
@@ -12238,9 +15458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicinalProductActingAsImmunosuppressantProduct = "69431002";
 
     /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsImmunosuppressantProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsImmunosuppressantProduct = "http://snomed.info/sct#69431002";
+
+    /// <summary>
     /// Literal for code: ProductContainingMenadioneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMenadioneMedicinalProduct = "69576000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMenadioneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMenadioneMedicinalProduct = "http://snomed.info/sct#69576000";
 
     /// <summary>
     /// Literal for code: ProductContainingPolymyxinBMedicinalProduct
@@ -12248,9 +15478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPolymyxinBMedicinalProduct = "6960003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPolymyxinBMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPolymyxinBMedicinalProduct = "http://snomed.info/sct#6960003";
+
+    /// <summary>
     /// Literal for code: ProductContainingClonazepamMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingClonazepamMedicinalProduct = "69708003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingClonazepamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingClonazepamMedicinalProduct = "http://snomed.info/sct#69708003";
 
     /// <summary>
     /// Literal for code: ProductContainingOpiumMedicinalProduct
@@ -12258,9 +15498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingOpiumMedicinalProduct = "6985007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingOpiumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOpiumMedicinalProduct = "http://snomed.info/sct#6985007";
+
+    /// <summary>
     /// Literal for code: ProductContainingAltretamineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAltretamineMedicinalProduct = "69879000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAltretamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAltretamineMedicinalProduct = "http://snomed.info/sct#69879000";
 
     /// <summary>
     /// Literal for code: ProductContainingAztreonamMedicinalProduct
@@ -12268,9 +15518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAztreonamMedicinalProduct = "69918003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAztreonamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAztreonamMedicinalProduct = "http://snomed.info/sct#69918003";
+
+    /// <summary>
     /// Literal for code: ProductContainingSucralfateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSucralfateMedicinalProduct = "69967001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSucralfateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSucralfateMedicinalProduct = "http://snomed.info/sct#69967001";
 
     /// <summary>
     /// Literal for code: ProductContainingSulfamethoxazoleMedicinalProduct
@@ -12278,9 +15538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSulfamethoxazoleMedicinalProduct = "70047000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSulfamethoxazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSulfamethoxazoleMedicinalProduct = "http://snomed.info/sct#70047000";
+
+    /// <summary>
     /// Literal for code: ProductContainingSulfamethizoleMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSulfamethizoleMedicinalProduct = "70254000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSulfamethizoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSulfamethizoleMedicinalProduct = "http://snomed.info/sct#70254000";
 
     /// <summary>
     /// Literal for code: ProductContainingPiperazineDerivativeAndHistamineReceptorAntagonistProduct
@@ -12288,9 +15558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPiperazineDerivativeAndHistamineReceptorAntagonistProduct = "70343008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPiperazineDerivativeAndHistamineReceptorAntagonistProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPiperazineDerivativeAndHistamineReceptorAntagonistProduct = "http://snomed.info/sct#70343008";
+
+    /// <summary>
     /// Literal for code: ProductContainingSodiumChlorideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSodiumChlorideMedicinalProduct = "70379000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSodiumChlorideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSodiumChlorideMedicinalProduct = "http://snomed.info/sct#70379000";
 
     /// <summary>
     /// Literal for code: FishLiverOilContainingProduct
@@ -12298,9 +15578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFishLiverOilContainingProduct = "70460002";
 
     /// <summary>
+    /// Literal for code: NONEFishLiverOilContainingProduct
+    /// </summary>
+    public const string LiteralNONEFishLiverOilContainingProduct = "http://snomed.info/sct#70460002";
+
+    /// <summary>
     /// Literal for code: ProductContainingDeferoxamineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDeferoxamineMedicinalProduct = "70702006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDeferoxamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDeferoxamineMedicinalProduct = "http://snomed.info/sct#70702006";
 
     /// <summary>
     /// Literal for code: ProductContainingPemolineMedicinalProduct
@@ -12308,9 +15598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPemolineMedicinalProduct = "70776005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPemolineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPemolineMedicinalProduct = "http://snomed.info/sct#70776005";
+
+    /// <summary>
     /// Literal for code: ProductContainingChymotrypsinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingChymotrypsinMedicinalProduct = "70841003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingChymotrypsinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChymotrypsinMedicinalProduct = "http://snomed.info/sct#70841003";
 
     /// <summary>
     /// Literal for code: ProductContainingMeprobamateMedicinalProduct
@@ -12318,9 +15618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMeprobamateMedicinalProduct = "70864001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMeprobamateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMeprobamateMedicinalProduct = "http://snomed.info/sct#70864001";
+
+    /// <summary>
     /// Literal for code: ProductContainingMetoprololMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMetoprololMedicinalProduct = "7092007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMetoprololMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMetoprololMedicinalProduct = "http://snomed.info/sct#7092007";
 
     /// <summary>
     /// Literal for code: ProductContainingDemecariumMedicinalProduct
@@ -12328,9 +15638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDemecariumMedicinalProduct = "70934008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDemecariumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDemecariumMedicinalProduct = "http://snomed.info/sct#70934008";
+
+    /// <summary>
     /// Literal for code: ProductContainingSnakeAntivenomImmunoglobulinProduct
     /// </summary>
     public const string LiteralProductContainingSnakeAntivenomImmunoglobulinProduct = "71289008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSnakeAntivenomImmunoglobulinProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSnakeAntivenomImmunoglobulinProduct = "http://snomed.info/sct#71289008";
 
     /// <summary>
     /// Literal for code: RadiographicContrastMedia
@@ -12338,9 +15658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRadiographicContrastMedia = "7140000";
 
     /// <summary>
+    /// Literal for code: NONERadiographicContrastMedia
+    /// </summary>
+    public const string LiteralNONERadiographicContrastMedia = "http://snomed.info/sct#7140000";
+
+    /// <summary>
     /// Literal for code: ProductContainingKanamycinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingKanamycinMedicinalProduct = "71451001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingKanamycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingKanamycinMedicinalProduct = "http://snomed.info/sct#71451001";
 
     /// <summary>
     /// Literal for code: ProductContainingMupirocinMedicinalProduct
@@ -12348,9 +15678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMupirocinMedicinalProduct = "71453003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMupirocinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMupirocinMedicinalProduct = "http://snomed.info/sct#71453003";
+
+    /// <summary>
     /// Literal for code: ProductContainingFludroxycortideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFludroxycortideMedicinalProduct = "71455005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFludroxycortideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFludroxycortideMedicinalProduct = "http://snomed.info/sct#71455005";
 
     /// <summary>
     /// Literal for code: ProductContainingPodophyllumResinMedicinalProduct
@@ -12358,9 +15698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPodophyllumResinMedicinalProduct = "71462001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPodophyllumResinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPodophyllumResinMedicinalProduct = "http://snomed.info/sct#71462001";
+
+    /// <summary>
     /// Literal for code: ProductContainingErgocalciferolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingErgocalciferolMedicinalProduct = "71516007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingErgocalciferolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingErgocalciferolMedicinalProduct = "http://snomed.info/sct#71516007";
 
     /// <summary>
     /// Literal for code: ProductContainingMonobasicSodiumPhosphateMedicinalProduct
@@ -12368,9 +15718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMonobasicSodiumPhosphateMedicinalProduct = "71584004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMonobasicSodiumPhosphateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMonobasicSodiumPhosphateMedicinalProduct = "http://snomed.info/sct#71584004";
+
+    /// <summary>
     /// Literal for code: ProductContainingChlormezanoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingChlormezanoneMedicinalProduct = "71634000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingChlormezanoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChlormezanoneMedicinalProduct = "http://snomed.info/sct#71634000";
 
     /// <summary>
     /// Literal for code: ProductContainingMagnesiumCarbonateMedicinalProduct
@@ -12378,9 +15738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMagnesiumCarbonateMedicinalProduct = "7168001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMagnesiumCarbonateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMagnesiumCarbonateMedicinalProduct = "http://snomed.info/sct#7168001";
+
+    /// <summary>
     /// Literal for code: ProductContainingTrifluoperazineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTrifluoperazineMedicinalProduct = "71699007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTrifluoperazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTrifluoperazineMedicinalProduct = "http://snomed.info/sct#71699007";
 
     /// <summary>
     /// Literal for code: ProductContainingFerrousSulfateMedicinalProduct
@@ -12388,9 +15758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFerrousSulfateMedicinalProduct = "71724000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFerrousSulfateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFerrousSulfateMedicinalProduct = "http://snomed.info/sct#71724000";
+
+    /// <summary>
     /// Literal for code: ProductContainingMedrysoneInOcularDoseFormMedicinalProductForm
     /// </summary>
     public const string LiteralProductContainingMedrysoneInOcularDoseFormMedicinalProductForm = "71731001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMedrysoneInOcularDoseFormMedicinalProductForm
+    /// </summary>
+    public const string LiteralNONEProductContainingMedrysoneInOcularDoseFormMedicinalProductForm = "http://snomed.info/sct#71731001";
 
     /// <summary>
     /// Literal for code: ProductContainingGlycerylTrinitrateMedicinalProduct
@@ -12398,9 +15778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingGlycerylTrinitrateMedicinalProduct = "71759000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingGlycerylTrinitrateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGlycerylTrinitrateMedicinalProduct = "http://snomed.info/sct#71759000";
+
+    /// <summary>
     /// Literal for code: ProductContainingMonoamineOxidaseInhibitorProduct
     /// </summary>
     public const string LiteralProductContainingMonoamineOxidaseInhibitorProduct = "71770007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMonoamineOxidaseInhibitorProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMonoamineOxidaseInhibitorProduct = "http://snomed.info/sct#71770007";
 
     /// <summary>
     /// Literal for code: ProductContainingFenoprofenMedicinalProduct
@@ -12408,9 +15798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFenoprofenMedicinalProduct = "71798005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFenoprofenMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFenoprofenMedicinalProduct = "http://snomed.info/sct#71798005";
+
+    /// <summary>
     /// Literal for code: CytotoxicAgent
     /// </summary>
     public const string LiteralCytotoxicAgent = "71837009";
+
+    /// <summary>
+    /// Literal for code: NONECytotoxicAgent
+    /// </summary>
+    public const string LiteralNONECytotoxicAgent = "http://snomed.info/sct#71837009";
 
     /// <summary>
     /// Literal for code: ProductContainingCyclandelateMedicinalProduct
@@ -12418,9 +15818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCyclandelateMedicinalProduct = "72312007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCyclandelateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCyclandelateMedicinalProduct = "http://snomed.info/sct#72312007";
+
+    /// <summary>
     /// Literal for code: ProductContainingEthylenediamineDerivativeAndHistamineReceptorAntagonistProduct
     /// </summary>
     public const string LiteralProductContainingEthylenediamineDerivativeAndHistamineReceptorAntagonistProduct = "7235000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEthylenediamineDerivativeAndHistamineReceptorAntagonistProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEthylenediamineDerivativeAndHistamineReceptorAntagonistProduct = "http://snomed.info/sct#7235000";
 
     /// <summary>
     /// Literal for code: ProductContainingMetacyclineMedicinalProduct
@@ -12428,9 +15838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMetacyclineMedicinalProduct = "72416006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMetacyclineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMetacyclineMedicinalProduct = "http://snomed.info/sct#72416006";
+
+    /// <summary>
     /// Literal for code: ProductContainingTioguanineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTioguanineMedicinalProduct = "72623000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTioguanineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTioguanineMedicinalProduct = "http://snomed.info/sct#72623000";
 
     /// <summary>
     /// Literal for code: ProductContainingColestyramineMedicinalProduct
@@ -12438,9 +15858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingColestyramineMedicinalProduct = "72824008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingColestyramineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingColestyramineMedicinalProduct = "http://snomed.info/sct#72824008";
+
+    /// <summary>
     /// Literal for code: ProductContainingScopolamineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingScopolamineMedicinalProduct = "72870001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingScopolamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingScopolamineMedicinalProduct = "http://snomed.info/sct#72870001";
 
     /// <summary>
     /// Literal for code: ProductContainingIndocyanineGreenMedicinalProduct
@@ -12448,9 +15878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingIndocyanineGreenMedicinalProduct = "7292004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingIndocyanineGreenMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIndocyanineGreenMedicinalProduct = "http://snomed.info/sct#7292004";
+
+    /// <summary>
     /// Literal for code: ProductContainingClofazimineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingClofazimineMedicinalProduct = "72924009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingClofazimineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingClofazimineMedicinalProduct = "http://snomed.info/sct#72924009";
 
     /// <summary>
     /// Literal for code: ProductContainingSodiumSalicylateMedicinalProduct
@@ -12458,9 +15898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSodiumSalicylateMedicinalProduct = "72968006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSodiumSalicylateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSodiumSalicylateMedicinalProduct = "http://snomed.info/sct#72968006";
+
+    /// <summary>
     /// Literal for code: ProductContainingColistinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingColistinMedicinalProduct = "73074003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingColistinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingColistinMedicinalProduct = "http://snomed.info/sct#73074003";
 
     /// <summary>
     /// Literal for code: ProductContainingNeomycinMedicinalProduct
@@ -12468,9 +15918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNeomycinMedicinalProduct = "73093001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNeomycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNeomycinMedicinalProduct = "http://snomed.info/sct#73093001";
+
+    /// <summary>
     /// Literal for code: ProductContainingColchicineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingColchicineMedicinalProduct = "73133000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingColchicineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingColchicineMedicinalProduct = "http://snomed.info/sct#73133000";
 
     /// <summary>
     /// Literal for code: ProductContainingMentholMedicinalProduct
@@ -12478,9 +15938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMentholMedicinalProduct = "73170009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMentholMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMentholMedicinalProduct = "http://snomed.info/sct#73170009";
+
+    /// <summary>
     /// Literal for code: ProductContainingIodipamideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingIodipamideMedicinalProduct = "73212002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingIodipamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIodipamideMedicinalProduct = "http://snomed.info/sct#73212002";
 
     /// <summary>
     /// Literal for code: ProductContainingMecamylamineMedicinalProduct
@@ -12488,9 +15958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMecamylamineMedicinalProduct = "73277004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMecamylamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMecamylamineMedicinalProduct = "http://snomed.info/sct#73277004";
+
+    /// <summary>
     /// Literal for code: ProductContainingTrazodoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTrazodoneMedicinalProduct = "7336002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTrazodoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTrazodoneMedicinalProduct = "http://snomed.info/sct#7336002";
 
     /// <summary>
     /// Literal for code: ProductContainingDesmopressinMedicinalProduct
@@ -12498,9 +15978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDesmopressinMedicinalProduct = "73454001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDesmopressinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDesmopressinMedicinalProduct = "http://snomed.info/sct#73454001";
+
+    /// <summary>
     /// Literal for code: ProductContainingMorphineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMorphineMedicinalProduct = "73572009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMorphineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMorphineMedicinalProduct = "http://snomed.info/sct#73572009";
 
     /// <summary>
     /// Literal for code: ProductContainingDipivefrinMedicinalProduct
@@ -12508,9 +15998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDipivefrinMedicinalProduct = "73647000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDipivefrinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDipivefrinMedicinalProduct = "http://snomed.info/sct#73647000";
+
+    /// <summary>
     /// Literal for code: ProductContainingAmobarbitalMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAmobarbitalMedicinalProduct = "73756003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAmobarbitalMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAmobarbitalMedicinalProduct = "http://snomed.info/sct#73756003";
 
     /// <summary>
     /// Literal for code: ProductContainingExtendedSpectrumPenicillinProduct
@@ -12518,9 +16018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingExtendedSpectrumPenicillinProduct = "73763003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingExtendedSpectrumPenicillinProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingExtendedSpectrumPenicillinProduct = "http://snomed.info/sct#73763003";
+
+    /// <summary>
     /// Literal for code: ProductContainingThyrotropinReleasingFactorMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingThyrotropinReleasingFactorMedicinalProduct = "73805002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingThyrotropinReleasingFactorMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingThyrotropinReleasingFactorMedicinalProduct = "http://snomed.info/sct#73805002";
 
     /// <summary>
     /// Literal for code: ProductContainingAtropineMedicinalProduct
@@ -12528,9 +16038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAtropineMedicinalProduct = "73949004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAtropineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAtropineMedicinalProduct = "http://snomed.info/sct#73949004";
+
+    /// <summary>
     /// Literal for code: ProductContainingCefuroximeMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCefuroximeMedicinalProduct = "73986003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCefuroximeMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefuroximeMedicinalProduct = "http://snomed.info/sct#73986003";
 
     /// <summary>
     /// Literal for code: ProductContainingMepenzolateMedicinalProduct
@@ -12538,9 +16058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMepenzolateMedicinalProduct = "74022005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMepenzolateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMepenzolateMedicinalProduct = "http://snomed.info/sct#74022005";
+
+    /// <summary>
     /// Literal for code: ProductContainingPrazepamMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPrazepamMedicinalProduct = "74065006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPrazepamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPrazepamMedicinalProduct = "http://snomed.info/sct#74065006";
 
     /// <summary>
     /// Literal for code: ProductContainingAtracuriumMedicinalProduct
@@ -12548,9 +16078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAtracuriumMedicinalProduct = "74074008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAtracuriumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAtracuriumMedicinalProduct = "http://snomed.info/sct#74074008";
+
+    /// <summary>
     /// Literal for code: ProductContainingIndapamideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingIndapamideMedicinalProduct = "74213004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingIndapamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIndapamideMedicinalProduct = "http://snomed.info/sct#74213004";
 
     /// <summary>
     /// Literal for code: ProductContainingVitaminKAndVitaminKDerivativeProduct
@@ -12558,9 +16098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingVitaminKAndVitaminKDerivativeProduct = "74226000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingVitaminKAndVitaminKDerivativeProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingVitaminKAndVitaminKDerivativeProduct = "http://snomed.info/sct#74226000";
+
+    /// <summary>
     /// Literal for code: ProductContainingCyclophosphamideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCyclophosphamideMedicinalProduct = "74470007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCyclophosphamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCyclophosphamideMedicinalProduct = "http://snomed.info/sct#74470007";
 
     /// <summary>
     /// Literal for code: MedicinalProductActingAsPotassiumSupplementProduct
@@ -12568,9 +16118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicinalProductActingAsPotassiumSupplementProduct = "74480006";
 
     /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsPotassiumSupplementProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsPotassiumSupplementProduct = "http://snomed.info/sct#74480006";
+
+    /// <summary>
     /// Literal for code: ProductContainingPiperacillinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPiperacillinMedicinalProduct = "74575000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPiperacillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPiperacillinMedicinalProduct = "http://snomed.info/sct#74575000";
 
     /// <summary>
     /// Literal for code: ProductContainingHydroquinoneMedicinalProduct
@@ -12578,9 +16138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHydroquinoneMedicinalProduct = "74583006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHydroquinoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHydroquinoneMedicinalProduct = "http://snomed.info/sct#74583006";
+
+    /// <summary>
     /// Literal for code: SuccinimideContainingProduct
     /// </summary>
     public const string LiteralSuccinimideContainingProduct = "74632002";
+
+    /// <summary>
+    /// Literal for code: NONESuccinimideContainingProduct
+    /// </summary>
+    public const string LiteralNONESuccinimideContainingProduct = "http://snomed.info/sct#74632002";
 
     /// <summary>
     /// Literal for code: ProductContainingPropofolMedicinalProduct
@@ -12588,9 +16158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPropofolMedicinalProduct = "74674007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPropofolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPropofolMedicinalProduct = "http://snomed.info/sct#74674007";
+
+    /// <summary>
     /// Literal for code: ProductContainingPhenoxybenzamineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPhenoxybenzamineMedicinalProduct = "74771007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPhenoxybenzamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhenoxybenzamineMedicinalProduct = "http://snomed.info/sct#74771007";
 
     /// <summary>
     /// Literal for code: ProductContainingNaturallyOccurringAlkaloidProduct
@@ -12598,9 +16178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNaturallyOccurringAlkaloidProduct = "74782004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNaturallyOccurringAlkaloidProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNaturallyOccurringAlkaloidProduct = "http://snomed.info/sct#74782004";
+
+    /// <summary>
     /// Literal for code: ProductContainingPipenzolateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPipenzolateMedicinalProduct = "74798006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPipenzolateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPipenzolateMedicinalProduct = "http://snomed.info/sct#74798006";
 
     /// <summary>
     /// Literal for code: ProductContainingAcetohydroxamicAcidMedicinalProduct
@@ -12608,9 +16198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAcetohydroxamicAcidMedicinalProduct = "74819009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAcetohydroxamicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAcetohydroxamicAcidMedicinalProduct = "http://snomed.info/sct#74819009";
+
+    /// <summary>
     /// Literal for code: ProductContaining11DeoxycorticosteroneMedicinalProduct
     /// </summary>
     public const string LiteralProductContaining11DeoxycorticosteroneMedicinalProduct = "75029008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContaining11DeoxycorticosteroneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContaining11DeoxycorticosteroneMedicinalProduct = "http://snomed.info/sct#75029008";
 
     /// <summary>
     /// Literal for code: ProductContainingMometasoneMedicinalProduct
@@ -12618,9 +16218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMometasoneMedicinalProduct = "75203002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMometasoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMometasoneMedicinalProduct = "http://snomed.info/sct#75203002";
+
+    /// <summary>
     /// Literal for code: ProductContainingDexbrompheniramineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDexbrompheniramineMedicinalProduct = "75429004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDexbrompheniramineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDexbrompheniramineMedicinalProduct = "http://snomed.info/sct#75429004";
 
     /// <summary>
     /// Literal for code: ProductContainingBromazineMedicinalProduct
@@ -12628,9 +16238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBromazineMedicinalProduct = "75501004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBromazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBromazineMedicinalProduct = "http://snomed.info/sct#75501004";
+
+    /// <summary>
     /// Literal for code: ProductContainingDexamethasoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDexamethasoneMedicinalProduct = "7561000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDexamethasoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDexamethasoneMedicinalProduct = "http://snomed.info/sct#7561000";
 
     /// <summary>
     /// Literal for code: ProductContainingDeltaTocopherolMedicinalProduct
@@ -12638,9 +16258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDeltaTocopherolMedicinalProduct = "75661008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDeltaTocopherolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDeltaTocopherolMedicinalProduct = "http://snomed.info/sct#75661008";
+
+    /// <summary>
     /// Literal for code: ProductContainingCiprofloxacinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCiprofloxacinMedicinalProduct = "7577004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCiprofloxacinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCiprofloxacinMedicinalProduct = "http://snomed.info/sct#7577004";
 
     /// <summary>
     /// Literal for code: ProductContainingFloxuridineMedicinalProduct
@@ -12648,9 +16278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFloxuridineMedicinalProduct = "75927008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFloxuridineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFloxuridineMedicinalProduct = "http://snomed.info/sct#75927008";
+
+    /// <summary>
     /// Literal for code: ProductContainingTamoxifenMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTamoxifenMedicinalProduct = "75959001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTamoxifenMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTamoxifenMedicinalProduct = "http://snomed.info/sct#75959001";
 
     /// <summary>
     /// Literal for code: ProductContainingGonadotropinReleasingFactorProduct
@@ -12658,9 +16298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingGonadotropinReleasingFactorProduct = "75969007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingGonadotropinReleasingFactorProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGonadotropinReleasingFactorProduct = "http://snomed.info/sct#75969007";
+
+    /// <summary>
     /// Literal for code: ProductContainingPrazosinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPrazosinMedicinalProduct = "76058001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPrazosinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPrazosinMedicinalProduct = "http://snomed.info/sct#76058001";
 
     /// <summary>
     /// Literal for code: ProductContainingIopanoicAcidMedicinalProduct
@@ -12668,9 +16318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingIopanoicAcidMedicinalProduct = "76155001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingIopanoicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIopanoicAcidMedicinalProduct = "http://snomed.info/sct#76155001";
+
+    /// <summary>
     /// Literal for code: ProductContainingSodiumPerborateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSodiumPerborateMedicinalProduct = "7624002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSodiumPerborateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSodiumPerborateMedicinalProduct = "http://snomed.info/sct#7624002";
 
     /// <summary>
     /// Literal for code: ProductContainingGallamineMedicinalProduct
@@ -12678,9 +16338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingGallamineMedicinalProduct = "76286000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingGallamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGallamineMedicinalProduct = "http://snomed.info/sct#76286000";
+
+    /// <summary>
     /// Literal for code: ProductContainingXylometazolineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingXylometazolineMedicinalProduct = "76289007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingXylometazolineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingXylometazolineMedicinalProduct = "http://snomed.info/sct#76289007";
 
     /// <summary>
     /// Literal for code: MedicinalProductProduct
@@ -12688,9 +16358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicinalProductProduct = "763158003";
 
     /// <summary>
+    /// Literal for code: NONEMedicinalProductProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductProduct = "http://snomed.info/sct#763158003";
+
+    /// <summary>
     /// Literal for code: ProductContainingAlpha1AdrenergicReceptorAntagonistProduct
     /// </summary>
     public const string LiteralProductContainingAlpha1AdrenergicReceptorAntagonistProduct = "76385003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAlpha1AdrenergicReceptorAntagonistProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAlpha1AdrenergicReceptorAntagonistProduct = "http://snomed.info/sct#76385003";
 
     /// <summary>
     /// Literal for code: ProductContainingPractololMedicinalProduct
@@ -12698,9 +16378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPractololMedicinalProduct = "76390000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPractololMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPractololMedicinalProduct = "http://snomed.info/sct#76390000";
+
+    /// <summary>
     /// Literal for code: ProductContainingBleomycinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingBleomycinMedicinalProduct = "76591000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBleomycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBleomycinMedicinalProduct = "http://snomed.info/sct#76591000";
 
     /// <summary>
     /// Literal for code: ProductContainingNoscapineMedicinalProduct
@@ -12708,9 +16398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNoscapineMedicinalProduct = "76696004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNoscapineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNoscapineMedicinalProduct = "http://snomed.info/sct#76696004";
+
+    /// <summary>
     /// Literal for code: ProductContainingDisopyramideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDisopyramideMedicinalProduct = "76759004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDisopyramideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDisopyramideMedicinalProduct = "http://snomed.info/sct#76759004";
 
     /// <summary>
     /// Literal for code: ProductContainingIproniazidMedicinalProduct
@@ -12718,9 +16418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingIproniazidMedicinalProduct = "76962009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingIproniazidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIproniazidMedicinalProduct = "http://snomed.info/sct#76962009";
+
+    /// <summary>
     /// Literal for code: ProductContainingClofibrateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingClofibrateMedicinalProduct = "77035009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingClofibrateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingClofibrateMedicinalProduct = "http://snomed.info/sct#77035009";
 
     /// <summary>
     /// Literal for code: ProductContainingDiphtheriaAntitoxinMedicinalProduct
@@ -12728,9 +16438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDiphtheriaAntitoxinMedicinalProduct = "77048008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDiphtheriaAntitoxinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDiphtheriaAntitoxinMedicinalProduct = "http://snomed.info/sct#77048008";
+
+    /// <summary>
     /// Literal for code: MedicinalProductActingAsEmeticProduct
     /// </summary>
     public const string LiteralMedicinalProductActingAsEmeticProduct = "77237006";
+
+    /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsEmeticProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsEmeticProduct = "http://snomed.info/sct#77237006";
 
     /// <summary>
     /// Literal for code: ProductContainingBenzatropineMedicinalProduct
@@ -12738,9 +16458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBenzatropineMedicinalProduct = "77390008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBenzatropineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBenzatropineMedicinalProduct = "http://snomed.info/sct#77390008";
+
+    /// <summary>
     /// Literal for code: MedicinalProductActingAsAntidiarrhealAgentProduct
     /// </summary>
     public const string LiteralMedicinalProductActingAsAntidiarrhealAgentProduct = "77398001";
+
+    /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsAntidiarrhealAgentProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsAntidiarrhealAgentProduct = "http://snomed.info/sct#77398001";
 
     /// <summary>
     /// Literal for code: ProductContainingTerpeneProduct
@@ -12748,9 +16478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTerpeneProduct = "77549006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTerpeneProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTerpeneProduct = "http://snomed.info/sct#77549006";
+
+    /// <summary>
     /// Literal for code: ProductContainingAcetylcysteineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAcetylcysteineMedicinalProduct = "77731008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAcetylcysteineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAcetylcysteineMedicinalProduct = "http://snomed.info/sct#77731008";
 
     /// <summary>
     /// Literal for code: ProductContainingDacarbazineMedicinalProduct
@@ -12758,9 +16498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDacarbazineMedicinalProduct = "77750008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDacarbazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDacarbazineMedicinalProduct = "http://snomed.info/sct#77750008";
+
+    /// <summary>
     /// Literal for code: ProductContainingEsmololMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEsmololMedicinalProduct = "77856005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEsmololMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEsmololMedicinalProduct = "http://snomed.info/sct#77856005";
 
     /// <summary>
     /// Literal for code: ProductContainingMestranolMedicinalProduct
@@ -12768,9 +16518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMestranolMedicinalProduct = "77885004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMestranolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMestranolMedicinalProduct = "http://snomed.info/sct#77885004";
+
+    /// <summary>
     /// Literal for code: ProductContainingSimeticoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSimeticoneMedicinalProduct = "77898008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSimeticoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSimeticoneMedicinalProduct = "http://snomed.info/sct#77898008";
 
     /// <summary>
     /// Literal for code: ProductContainingGanciclovirMedicinalProduct
@@ -12778,9 +16538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingGanciclovirMedicinalProduct = "78025001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingGanciclovirMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGanciclovirMedicinalProduct = "http://snomed.info/sct#78025001";
+
+    /// <summary>
     /// Literal for code: ProductContainingMezlocillinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMezlocillinMedicinalProduct = "78174002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMezlocillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMezlocillinMedicinalProduct = "http://snomed.info/sct#78174002";
 
     /// <summary>
     /// Literal for code: ExpectorantAgent
@@ -12788,9 +16558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralExpectorantAgent = "7836006";
 
     /// <summary>
+    /// Literal for code: NONEExpectorantAgent
+    /// </summary>
+    public const string LiteralNONEExpectorantAgent = "http://snomed.info/sct#7836006";
+
+    /// <summary>
     /// Literal for code: ProductContainingReserpineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingReserpineMedicinalProduct = "78379001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingReserpineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingReserpineMedicinalProduct = "http://snomed.info/sct#78379001";
 
     /// <summary>
     /// Literal for code: ProductContainingNitrazepamMedicinalProduct
@@ -12798,9 +16578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNitrazepamMedicinalProduct = "78449007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNitrazepamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNitrazepamMedicinalProduct = "http://snomed.info/sct#78449007";
+
+    /// <summary>
     /// Literal for code: ProductContainingBenzylpenicillinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingBenzylpenicillinMedicinalProduct = "78507004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBenzylpenicillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBenzylpenicillinMedicinalProduct = "http://snomed.info/sct#78507004";
 
     /// <summary>
     /// Literal for code: ProductContainingPotassiumCitrateMedicinalProduct
@@ -12808,9 +16598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPotassiumCitrateMedicinalProduct = "78542000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPotassiumCitrateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPotassiumCitrateMedicinalProduct = "http://snomed.info/sct#78542000";
+
+    /// <summary>
     /// Literal for code: ProductContainingMesoridazineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMesoridazineMedicinalProduct = "78684000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMesoridazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMesoridazineMedicinalProduct = "http://snomed.info/sct#78684000";
 
     /// <summary>
     /// Literal for code: ProductContainingFenfluramineMedicinalProduct
@@ -12818,9 +16618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFenfluramineMedicinalProduct = "78700004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFenfluramineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFenfluramineMedicinalProduct = "http://snomed.info/sct#78700004";
+
+    /// <summary>
     /// Literal for code: ProductContainingEtamivanMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEtamivanMedicinalProduct = "78983008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEtamivanMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEtamivanMedicinalProduct = "http://snomed.info/sct#78983008";
 
     /// <summary>
     /// Literal for code: ProductContainingProchlorperazineMedicinalProduct
@@ -12828,9 +16638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingProchlorperazineMedicinalProduct = "79129001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingProchlorperazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingProchlorperazineMedicinalProduct = "http://snomed.info/sct#79129001";
+
+    /// <summary>
     /// Literal for code: ProductContainingGelatinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingGelatinMedicinalProduct = "79138004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingGelatinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGelatinMedicinalProduct = "http://snomed.info/sct#79138004";
 
     /// <summary>
     /// Literal for code: ProductContainingPropoxycaineMedicinalProduct
@@ -12838,9 +16658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPropoxycaineMedicinalProduct = "79221007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPropoxycaineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPropoxycaineMedicinalProduct = "http://snomed.info/sct#79221007";
+
+    /// <summary>
     /// Literal for code: ProductContainingOxazepamMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingOxazepamMedicinalProduct = "79225003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingOxazepamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOxazepamMedicinalProduct = "http://snomed.info/sct#79225003";
 
     /// <summary>
     /// Literal for code: ProductContainingGuanethidineMedicinalProduct
@@ -12848,9 +16678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingGuanethidineMedicinalProduct = "79305004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingGuanethidineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGuanethidineMedicinalProduct = "http://snomed.info/sct#79305004";
+
+    /// <summary>
     /// Literal for code: ProductContainingDiethylstilbestrolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDiethylstilbestrolMedicinalProduct = "79332009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDiethylstilbestrolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDiethylstilbestrolMedicinalProduct = "http://snomed.info/sct#79332009";
 
     /// <summary>
     /// Literal for code: ProductContainingAcenocoumarolMedicinalProduct
@@ -12858,9 +16698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAcenocoumarolMedicinalProduct = "79356008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAcenocoumarolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAcenocoumarolMedicinalProduct = "http://snomed.info/sct#79356008";
+
+    /// <summary>
     /// Literal for code: ProductContainingCorticosteroidAndCorticosteroidDerivativeProduct
     /// </summary>
     public const string LiteralProductContainingCorticosteroidAndCorticosteroidDerivativeProduct = "79440004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCorticosteroidAndCorticosteroidDerivativeProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCorticosteroidAndCorticosteroidDerivativeProduct = "http://snomed.info/sct#79440004";
 
     /// <summary>
     /// Literal for code: ProductContainingAspirinMedicinalProduct
@@ -12868,9 +16718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAspirinMedicinalProduct = "7947003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAspirinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAspirinMedicinalProduct = "http://snomed.info/sct#7947003";
+
+    /// <summary>
     /// Literal for code: Psychostimulant
     /// </summary>
     public const string LiteralPsychostimulant = "79543000";
+
+    /// <summary>
+    /// Literal for code: NONEPsychostimulant
+    /// </summary>
+    public const string LiteralNONEPsychostimulant = "http://snomed.info/sct#79543000";
 
     /// <summary>
     /// Literal for code: ProductContainingTeniposideMedicinalProduct
@@ -12878,9 +16738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTeniposideMedicinalProduct = "7959004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTeniposideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTeniposideMedicinalProduct = "http://snomed.info/sct#7959004";
+
+    /// <summary>
     /// Literal for code: ProductContainingDigoxinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDigoxinMedicinalProduct = "796001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDigoxinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDigoxinMedicinalProduct = "http://snomed.info/sct#796001";
 
     /// <summary>
     /// Literal for code: ProductContainingCiclopiroxMedicinalProduct
@@ -12888,9 +16758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCiclopiroxMedicinalProduct = "79736009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCiclopiroxMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCiclopiroxMedicinalProduct = "http://snomed.info/sct#79736009";
+
+    /// <summary>
     /// Literal for code: VacciniaHumanImmuneGlobulinContainingProduct
     /// </summary>
     public const string LiteralVacciniaHumanImmuneGlobulinContainingProduct = "79873000";
+
+    /// <summary>
+    /// Literal for code: NONEVacciniaHumanImmuneGlobulinContainingProduct
+    /// </summary>
+    public const string LiteralNONEVacciniaHumanImmuneGlobulinContainingProduct = "http://snomed.info/sct#79873000";
 
     /// <summary>
     /// Literal for code: ProductContainingNeostigmineMedicinalProduct
@@ -12898,9 +16778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNeostigmineMedicinalProduct = "80024007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNeostigmineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNeostigmineMedicinalProduct = "http://snomed.info/sct#80024007";
+
+    /// <summary>
     /// Literal for code: ProductContainingPhenylpropanolamineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPhenylpropanolamineMedicinalProduct = "80127003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPhenylpropanolamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhenylpropanolamineMedicinalProduct = "http://snomed.info/sct#80127003";
 
     /// <summary>
     /// Literal for code: ProductContainingHydroxyzineMedicinalProduct
@@ -12908,9 +16798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHydroxyzineMedicinalProduct = "80165005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHydroxyzineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHydroxyzineMedicinalProduct = "http://snomed.info/sct#80165005";
+
+    /// <summary>
     /// Literal for code: ProductContainingAntimalarialProduct
     /// </summary>
     public const string LiteralProductContainingAntimalarialProduct = "80229008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAntimalarialProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAntimalarialProduct = "http://snomed.info/sct#80229008";
 
     /// <summary>
     /// Literal for code: ProductContainingButacaineMedicinalProduct
@@ -12918,9 +16818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingButacaineMedicinalProduct = "8028001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingButacaineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingButacaineMedicinalProduct = "http://snomed.info/sct#8028001";
+
+    /// <summary>
     /// Literal for code: ProductContainingChlorphenesinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingChlorphenesinMedicinalProduct = "80311000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingChlorphenesinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChlorphenesinMedicinalProduct = "http://snomed.info/sct#80311000";
 
     /// <summary>
     /// Literal for code: ProductContainingAluminiumHydroxideMedicinalProduct
@@ -12928,9 +16838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAluminiumHydroxideMedicinalProduct = "80399002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAluminiumHydroxideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAluminiumHydroxideMedicinalProduct = "http://snomed.info/sct#80399002";
+
+    /// <summary>
     /// Literal for code: ProductContainingEthylestrenolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEthylestrenolMedicinalProduct = "80618000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEthylestrenolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEthylestrenolMedicinalProduct = "http://snomed.info/sct#80618000";
 
     /// <summary>
     /// Literal for code: ProductContainingSulfafurazoleMedicinalProduct
@@ -12938,9 +16858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSulfafurazoleMedicinalProduct = "80732005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSulfafurazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSulfafurazoleMedicinalProduct = "http://snomed.info/sct#80732005";
+
+    /// <summary>
     /// Literal for code: ProductContainingCyclobenzaprineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCyclobenzaprineMedicinalProduct = "80802008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCyclobenzaprineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCyclobenzaprineMedicinalProduct = "http://snomed.info/sct#80802008";
 
     /// <summary>
     /// Literal for code: ProductContainingRabiesHumanImmuneGlobulinMedicinalProduct
@@ -12948,9 +16878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingRabiesHumanImmuneGlobulinMedicinalProduct = "80834004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingRabiesHumanImmuneGlobulinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingRabiesHumanImmuneGlobulinMedicinalProduct = "http://snomed.info/sct#80834004";
+
+    /// <summary>
     /// Literal for code: ProductContainingGlibenclamideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingGlibenclamideMedicinalProduct = "80870001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingGlibenclamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGlibenclamideMedicinalProduct = "http://snomed.info/sct#80870001";
 
     /// <summary>
     /// Literal for code: ProductContainingCiclosporinMedicinalProduct
@@ -12958,9 +16898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCiclosporinMedicinalProduct = "80906007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCiclosporinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCiclosporinMedicinalProduct = "http://snomed.info/sct#80906007";
+
+    /// <summary>
     /// Literal for code: ProductContainingDimenhydrinateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDimenhydrinateMedicinalProduct = "81073007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDimenhydrinateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDimenhydrinateMedicinalProduct = "http://snomed.info/sct#81073007";
 
     /// <summary>
     /// Literal for code: ProductContainingCefazolinMedicinalProduct
@@ -12968,9 +16918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCefazolinMedicinalProduct = "81088002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCefazolinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefazolinMedicinalProduct = "http://snomed.info/sct#81088002";
+
+    /// <summary>
     /// Literal for code: ProductContainingAlimemazineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAlimemazineMedicinalProduct = "8109005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAlimemazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAlimemazineMedicinalProduct = "http://snomed.info/sct#8109005";
 
     /// <summary>
     /// Literal for code: MumpsHumanImmuneGlobulinContainingProduct
@@ -12978,9 +16938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMumpsHumanImmuneGlobulinContainingProduct = "81219009";
 
     /// <summary>
+    /// Literal for code: NONEMumpsHumanImmuneGlobulinContainingProduct
+    /// </summary>
+    public const string LiteralNONEMumpsHumanImmuneGlobulinContainingProduct = "http://snomed.info/sct#81219009";
+
+    /// <summary>
     /// Literal for code: ProductContainingThirdGenerationCephalosporinProduct
     /// </summary>
     public const string LiteralProductContainingThirdGenerationCephalosporinProduct = "81252003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingThirdGenerationCephalosporinProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingThirdGenerationCephalosporinProduct = "http://snomed.info/sct#81252003";
 
     /// <summary>
     /// Literal for code: ProductContainingIsoniazidMedicinalProduct
@@ -12988,9 +16958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingIsoniazidMedicinalProduct = "81335000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingIsoniazidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIsoniazidMedicinalProduct = "http://snomed.info/sct#81335000";
+
+    /// <summary>
     /// Literal for code: ProductContainingDesoximetasoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDesoximetasoneMedicinalProduct = "81457006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDesoximetasoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDesoximetasoneMedicinalProduct = "http://snomed.info/sct#81457006";
 
     /// <summary>
     /// Literal for code: ProductContainingProcarbazineMedicinalProduct
@@ -12998,9 +16978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingProcarbazineMedicinalProduct = "81583003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingProcarbazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingProcarbazineMedicinalProduct = "http://snomed.info/sct#81583003";
+
+    /// <summary>
     /// Literal for code: ProductContainingFurosemideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFurosemideMedicinalProduct = "81609008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFurosemideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFurosemideMedicinalProduct = "http://snomed.info/sct#81609008";
 
     /// <summary>
     /// Literal for code: ProductContainingNitroprussideMedicinalProduct
@@ -13008,9 +16998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNitroprussideMedicinalProduct = "8163008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNitroprussideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNitroprussideMedicinalProduct = "http://snomed.info/sct#8163008";
+
+    /// <summary>
     /// Literal for code: ProductContainingDiphenylpyralineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDiphenylpyralineMedicinalProduct = "81646007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDiphenylpyralineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDiphenylpyralineMedicinalProduct = "http://snomed.info/sct#81646007";
 
     /// <summary>
     /// Literal for code: ProductContainingDigitoxinMedicinalProduct
@@ -13018,9 +17018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDigitoxinMedicinalProduct = "81728006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDigitoxinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDigitoxinMedicinalProduct = "http://snomed.info/sct#81728006";
+
+    /// <summary>
     /// Literal for code: ImmuneEnhancementAgent
     /// </summary>
     public const string LiteralImmuneEnhancementAgent = "81759008";
+
+    /// <summary>
+    /// Literal for code: NONEImmuneEnhancementAgent
+    /// </summary>
+    public const string LiteralNONEImmuneEnhancementAgent = "http://snomed.info/sct#81759008";
 
     /// <summary>
     /// Literal for code: MedicinalProductActingAsAnticoagulantAgentProduct
@@ -13028,9 +17038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicinalProductActingAsAnticoagulantAgentProduct = "81839001";
 
     /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsAnticoagulantAgentProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsAnticoagulantAgentProduct = "http://snomed.info/sct#81839001";
+
+    /// <summary>
     /// Literal for code: ProductContainingEtacrynicAcidMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEtacrynicAcidMedicinalProduct = "81947000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEtacrynicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEtacrynicAcidMedicinalProduct = "http://snomed.info/sct#81947000";
 
     /// <summary>
     /// Literal for code: ProductContainingNoretynodrelMedicinalProduct
@@ -13038,9 +17058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNoretynodrelMedicinalProduct = "82133001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNoretynodrelMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNoretynodrelMedicinalProduct = "http://snomed.info/sct#82133001";
+
+    /// <summary>
     /// Literal for code: ProductContainingRetinolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingRetinolMedicinalProduct = "82156005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingRetinolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingRetinolMedicinalProduct = "http://snomed.info/sct#82156005";
 
     /// <summary>
     /// Literal for code: ProductContainingPhentolamineMedicinalProduct
@@ -13048,9 +17078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPhentolamineMedicinalProduct = "82165003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPhentolamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhentolamineMedicinalProduct = "http://snomed.info/sct#82165003";
+
+    /// <summary>
     /// Literal for code: ProductContainingProlactinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingProlactinMedicinalProduct = "82166002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingProlactinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingProlactinMedicinalProduct = "http://snomed.info/sct#82166002";
 
     /// <summary>
     /// Literal for code: ProductContainingNorgestrelMedicinalProduct
@@ -13058,9 +17098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNorgestrelMedicinalProduct = "82240008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNorgestrelMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNorgestrelMedicinalProduct = "http://snomed.info/sct#82240008";
+
+    /// <summary>
     /// Literal for code: ProductContainingHomatropineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingHomatropineMedicinalProduct = "82264009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingHomatropineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHomatropineMedicinalProduct = "http://snomed.info/sct#82264009";
 
     /// <summary>
     /// Literal for code: ProductContainingBismuthMedicinalProduct
@@ -13068,9 +17118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBismuthMedicinalProduct = "82290007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBismuthMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBismuthMedicinalProduct = "http://snomed.info/sct#82290007";
+
+    /// <summary>
     /// Literal for code: ProductContainingBacampicillinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingBacampicillinMedicinalProduct = "82312001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBacampicillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBacampicillinMedicinalProduct = "http://snomed.info/sct#82312001";
 
     /// <summary>
     /// Literal for code: ProductContainingLidocaineMedicinalProduct
@@ -13078,9 +17138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingLidocaineMedicinalProduct = "82573000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingLidocaineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLidocaineMedicinalProduct = "http://snomed.info/sct#82573000";
+
+    /// <summary>
     /// Literal for code: ProductContainingChlordiazepoxideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingChlordiazepoxideMedicinalProduct = "82746003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingChlordiazepoxideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChlordiazepoxideMedicinalProduct = "http://snomed.info/sct#82746003";
 
     /// <summary>
     /// Literal for code: ProductManufacturedAsNasalDoseFormProduct
@@ -13088,9 +17158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductManufacturedAsNasalDoseFormProduct = "82804004";
 
     /// <summary>
+    /// Literal for code: NONEProductManufacturedAsNasalDoseFormProduct
+    /// </summary>
+    public const string LiteralNONEProductManufacturedAsNasalDoseFormProduct = "http://snomed.info/sct#82804004";
+
+    /// <summary>
     /// Literal for code: ProductContainingNadololMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNadololMedicinalProduct = "82896009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNadololMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNadololMedicinalProduct = "http://snomed.info/sct#82896009";
 
     /// <summary>
     /// Literal for code: ProductContainingGuanabenzMedicinalProduct
@@ -13098,9 +17178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingGuanabenzMedicinalProduct = "82951001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingGuanabenzMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGuanabenzMedicinalProduct = "http://snomed.info/sct#82951001";
+
+    /// <summary>
     /// Literal for code: ProductContainingNalbuphineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNalbuphineMedicinalProduct = "83085007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNalbuphineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNalbuphineMedicinalProduct = "http://snomed.info/sct#83085007";
 
     /// <summary>
     /// Literal for code: NephrogenicVitaminDPreparation
@@ -13108,9 +17198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNephrogenicVitaminDPreparation = "83179003";
 
     /// <summary>
+    /// Literal for code: NONENephrogenicVitaminDPreparation
+    /// </summary>
+    public const string LiteralNONENephrogenicVitaminDPreparation = "http://snomed.info/sct#83179003";
+
+    /// <summary>
     /// Literal for code: ProductContainingMescalineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMescalineMedicinalProduct = "83192000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMescalineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMescalineMedicinalProduct = "http://snomed.info/sct#83192000";
 
     /// <summary>
     /// Literal for code: ProductContainingOxacillinMedicinalProduct
@@ -13118,9 +17218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingOxacillinMedicinalProduct = "83201006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingOxacillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOxacillinMedicinalProduct = "http://snomed.info/sct#83201006";
+
+    /// <summary>
     /// Literal for code: ProductContainingDiloxanideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDiloxanideMedicinalProduct = "83288003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDiloxanideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDiloxanideMedicinalProduct = "http://snomed.info/sct#83288003";
 
     /// <summary>
     /// Literal for code: ProductContainingCyclopentolateMedicinalProduct
@@ -13128,9 +17238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCyclopentolateMedicinalProduct = "8348002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCyclopentolateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCyclopentolateMedicinalProduct = "http://snomed.info/sct#8348002";
+
+    /// <summary>
     /// Literal for code: ProductContainingHydroxychloroquineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingHydroxychloroquineMedicinalProduct = "83490000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingHydroxychloroquineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHydroxychloroquineMedicinalProduct = "http://snomed.info/sct#83490000";
 
     /// <summary>
     /// Literal for code: ProductContainingCimetidineMedicinalProduct
@@ -13138,9 +17258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCimetidineMedicinalProduct = "83532008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCimetidineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCimetidineMedicinalProduct = "http://snomed.info/sct#83532008";
+
+    /// <summary>
     /// Literal for code: ProductContainingMineralocorticoidProduct
     /// </summary>
     public const string LiteralProductContainingMineralocorticoidProduct = "83692001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMineralocorticoidProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMineralocorticoidProduct = "http://snomed.info/sct#83692001";
 
     /// <summary>
     /// Literal for code: ProductContainingPromethazineMedicinalProduct
@@ -13148,9 +17278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPromethazineMedicinalProduct = "8372007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPromethazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPromethazineMedicinalProduct = "http://snomed.info/sct#8372007";
+
+    /// <summary>
     /// Literal for code: ProductContainingMethocarbamolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMethocarbamolMedicinalProduct = "83973001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMethocarbamolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethocarbamolMedicinalProduct = "http://snomed.info/sct#83973001";
 
     /// <summary>
     /// Literal for code: ProductContainingClarithromycinMedicinalProduct
@@ -13158,9 +17298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingClarithromycinMedicinalProduct = "83999008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingClarithromycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingClarithromycinMedicinalProduct = "http://snomed.info/sct#83999008";
+
+    /// <summary>
     /// Literal for code: ProductContainingMethyldopaMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMethyldopaMedicinalProduct = "84078002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMethyldopaMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethyldopaMedicinalProduct = "http://snomed.info/sct#84078002";
 
     /// <summary>
     /// Literal for code: ProductContainingDicloxacillinMedicinalProduct
@@ -13168,9 +17318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingDicloxacillinMedicinalProduct = "8416000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingDicloxacillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDicloxacillinMedicinalProduct = "http://snomed.info/sct#8416000";
+
+    /// <summary>
     /// Literal for code: ProductContainingDextrothyroxineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDextrothyroxineMedicinalProduct = "847003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDextrothyroxineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDextrothyroxineMedicinalProduct = "http://snomed.info/sct#847003";
 
     /// <summary>
     /// Literal for code: ProductContainingMafenideMedicinalProduct
@@ -13178,9 +17338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMafenideMedicinalProduct = "84737005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMafenideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMafenideMedicinalProduct = "http://snomed.info/sct#84737005";
+
+    /// <summary>
     /// Literal for code: ProductContainingHeparinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingHeparinMedicinalProduct = "84812008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingHeparinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHeparinMedicinalProduct = "http://snomed.info/sct#84812008";
 
     /// <summary>
     /// Literal for code: ProductContainingButoconazoleMedicinalProduct
@@ -13188,9 +17358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingButoconazoleMedicinalProduct = "84844007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingButoconazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingButoconazoleMedicinalProduct = "http://snomed.info/sct#84844007";
+
+    /// <summary>
     /// Literal for code: ProductContainingMeclozineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMeclozineMedicinalProduct = "84951002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMeclozineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMeclozineMedicinalProduct = "http://snomed.info/sct#84951002";
 
     /// <summary>
     /// Literal for code: ProductContainingCorticotropinReleasingFactorProduct
@@ -13198,9 +17378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCorticotropinReleasingFactorProduct = "84986000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCorticotropinReleasingFactorProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCorticotropinReleasingFactorProduct = "http://snomed.info/sct#84986000";
+
+    /// <summary>
     /// Literal for code: ProductContainingOpioidReceptorPartialAgonistProduct
     /// </summary>
     public const string LiteralProductContainingOpioidReceptorPartialAgonistProduct = "85063003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingOpioidReceptorPartialAgonistProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOpioidReceptorPartialAgonistProduct = "http://snomed.info/sct#85063003";
 
     /// <summary>
     /// Literal for code: ProductContainingNifedipineMedicinalProduct
@@ -13208,9 +17398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNifedipineMedicinalProduct = "85272000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNifedipineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNifedipineMedicinalProduct = "http://snomed.info/sct#85272000";
+
+    /// <summary>
     /// Literal for code: ProductContainingNitrofurantoinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNitrofurantoinMedicinalProduct = "85343003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNitrofurantoinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNitrofurantoinMedicinalProduct = "http://snomed.info/sct#85343003";
 
     /// <summary>
     /// Literal for code: ProductContainingCyclizineMedicinalProduct
@@ -13218,9 +17418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCyclizineMedicinalProduct = "85354008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCyclizineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCyclizineMedicinalProduct = "http://snomed.info/sct#85354008";
+
+    /// <summary>
     /// Literal for code: ProductContainingAntazolineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAntazolineMedicinalProduct = "85408000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAntazolineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAntazolineMedicinalProduct = "http://snomed.info/sct#85408000";
 
     /// <summary>
     /// Literal for code: ProductContainingAutonomicAgentProduct
@@ -13228,9 +17438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAutonomicAgentProduct = "85417000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAutonomicAgentProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAutonomicAgentProduct = "http://snomed.info/sct#85417000";
+
+    /// <summary>
     /// Literal for code: ProductContainingPhysostigmineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPhysostigmineMedicinalProduct = "85429009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPhysostigmineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhysostigmineMedicinalProduct = "http://snomed.info/sct#85429009";
 
     /// <summary>
     /// Literal for code: ProductContainingPolythiazideMedicinalProduct
@@ -13238,9 +17458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPolythiazideMedicinalProduct = "85468002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPolythiazideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPolythiazideMedicinalProduct = "http://snomed.info/sct#85468002";
+
+    /// <summary>
     /// Literal for code: ProductContainingEsterifiedEstrogenMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEsterifiedEstrogenMedicinalProduct = "85507008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEsterifiedEstrogenMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEsterifiedEstrogenMedicinalProduct = "http://snomed.info/sct#85507008";
 
     /// <summary>
     /// Literal for code: ProductContainingTimololMedicinalProduct
@@ -13248,9 +17478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTimololMedicinalProduct = "85591001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTimololMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTimololMedicinalProduct = "http://snomed.info/sct#85591001";
+
+    /// <summary>
     /// Literal for code: MedicinalProductActingAsVasoconstrictorProduct
     /// </summary>
     public const string LiteralMedicinalProductActingAsVasoconstrictorProduct = "8571001";
+
+    /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsVasoconstrictorProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsVasoconstrictorProduct = "http://snomed.info/sct#8571001";
 
     /// <summary>
     /// Literal for code: ProductContainingCodeineMedicinalProduct
@@ -13258,9 +17498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCodeineMedicinalProduct = "85990009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCodeineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCodeineMedicinalProduct = "http://snomed.info/sct#85990009";
+
+    /// <summary>
     /// Literal for code: ProductContainingSpectinomycinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSpectinomycinMedicinalProduct = "86066003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSpectinomycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSpectinomycinMedicinalProduct = "http://snomed.info/sct#86066003";
 
     /// <summary>
     /// Literal for code: ProductContainingBotulinumAntitoxinMedicinalProduct
@@ -13268,9 +17518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBotulinumAntitoxinMedicinalProduct = "86080005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBotulinumAntitoxinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBotulinumAntitoxinMedicinalProduct = "http://snomed.info/sct#86080005";
+
+    /// <summary>
     /// Literal for code: ProductContainingVecuroniumMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingVecuroniumMedicinalProduct = "86085000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingVecuroniumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingVecuroniumMedicinalProduct = "http://snomed.info/sct#86085000";
 
     /// <summary>
     /// Literal for code: ProductContainingMetirosineMedicinalProduct
@@ -13278,9 +17538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMetirosineMedicinalProduct = "86131002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMetirosineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMetirosineMedicinalProduct = "http://snomed.info/sct#86131002";
+
+    /// <summary>
     /// Literal for code: ProductContainingNandroloneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNandroloneMedicinalProduct = "86162003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNandroloneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNandroloneMedicinalProduct = "http://snomed.info/sct#86162003";
 
     /// <summary>
     /// Literal for code: ProductContainingSympathomimeticProduct
@@ -13288,9 +17558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSympathomimeticProduct = "86308005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSympathomimeticProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSympathomimeticProduct = "http://snomed.info/sct#86308005";
+
+    /// <summary>
     /// Literal for code: ProductContainingTetanusImmunoglobulinOfHumanOriginMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTetanusImmunoglobulinOfHumanOriginMedicinalProduct = "86337009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTetanusImmunoglobulinOfHumanOriginMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTetanusImmunoglobulinOfHumanOriginMedicinalProduct = "http://snomed.info/sct#86337009";
 
     /// <summary>
     /// Literal for code: ProductContainingSharkLiverOilMedicinalProduct
@@ -13298,9 +17578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSharkLiverOilMedicinalProduct = "86389004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSharkLiverOilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSharkLiverOilMedicinalProduct = "http://snomed.info/sct#86389004";
+
+    /// <summary>
     /// Literal for code: ProductContainingNaturalPenicillinProduct
     /// </summary>
     public const string LiteralProductContainingNaturalPenicillinProduct = "86536001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNaturalPenicillinProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNaturalPenicillinProduct = "http://snomed.info/sct#86536001";
 
     /// <summary>
     /// Literal for code: ProductContainingHumanSerumAlbuminMedicinalProduct
@@ -13308,9 +17598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHumanSerumAlbuminMedicinalProduct = "8658008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHumanSerumAlbuminMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHumanSerumAlbuminMedicinalProduct = "http://snomed.info/sct#8658008";
+
+    /// <summary>
     /// Literal for code: ReplacementPreparation
     /// </summary>
     public const string LiteralReplacementPreparation = "8661009";
+
+    /// <summary>
+    /// Literal for code: NONEReplacementPreparation
+    /// </summary>
+    public const string LiteralNONEReplacementPreparation = "http://snomed.info/sct#8661009";
 
     /// <summary>
     /// Literal for code: ProductContainingBumetanideMedicinalProduct
@@ -13318,9 +17618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBumetanideMedicinalProduct = "86647004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBumetanideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBumetanideMedicinalProduct = "http://snomed.info/sct#86647004";
+
+    /// <summary>
     /// Literal for code: ProductContainingPropylaminoDerivativeOfPhenothiazineProduct
     /// </summary>
     public const string LiteralProductContainingPropylaminoDerivativeOfPhenothiazineProduct = "86906004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPropylaminoDerivativeOfPhenothiazineProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPropylaminoDerivativeOfPhenothiazineProduct = "http://snomed.info/sct#86906004";
 
     /// <summary>
     /// Literal for code: ProductContainingMetamfetamineMedicinalProduct
@@ -13328,9 +17638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMetamfetamineMedicinalProduct = "8692006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMetamfetamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMetamfetamineMedicinalProduct = "http://snomed.info/sct#8692006";
+
+    /// <summary>
     /// Literal for code: ProductContainingSulfaguanidineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSulfaguanidineMedicinalProduct = "86939001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSulfaguanidineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSulfaguanidineMedicinalProduct = "http://snomed.info/sct#86939001";
 
     /// <summary>
     /// Literal for code: MedicinalProductActingAsAntispasmodicAgentProduct
@@ -13338,9 +17658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicinalProductActingAsAntispasmodicAgentProduct = "8696009";
 
     /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsAntispasmodicAgentProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsAntispasmodicAgentProduct = "http://snomed.info/sct#8696009";
+
+    /// <summary>
     /// Literal for code: ProductContainingMesalazineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMesalazineMedicinalProduct = "86977007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMesalazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMesalazineMedicinalProduct = "http://snomed.info/sct#86977007";
 
     /// <summary>
     /// Literal for code: ProductContainingLowMolecularWeightHeparinProduct
@@ -13348,9 +17678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingLowMolecularWeightHeparinProduct = "87233003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingLowMolecularWeightHeparinProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLowMolecularWeightHeparinProduct = "http://snomed.info/sct#87233003";
+
+    /// <summary>
     /// Literal for code: ProductContainingNimodipineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNimodipineMedicinalProduct = "87285001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNimodipineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNimodipineMedicinalProduct = "http://snomed.info/sct#87285001";
 
     /// <summary>
     /// Literal for code: ProductContainingAmilorideMedicinalProduct
@@ -13358,9 +17698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAmilorideMedicinalProduct = "87395005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAmilorideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAmilorideMedicinalProduct = "http://snomed.info/sct#87395005";
+
+    /// <summary>
     /// Literal for code: ProductContainingMefloquineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMefloquineMedicinalProduct = "87567009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMefloquineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMefloquineMedicinalProduct = "http://snomed.info/sct#87567009";
 
     /// <summary>
     /// Literal for code: ProductContainingNeuromuscularBlocker
@@ -13368,9 +17718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNeuromuscularBlocker = "87586001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNeuromuscularBlocker
+    /// </summary>
+    public const string LiteralNONEProductContainingNeuromuscularBlocker = "http://snomed.info/sct#87586001";
+
+    /// <summary>
     /// Literal for code: ProductContainingNaltrexoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNaltrexoneMedicinalProduct = "87617007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNaltrexoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNaltrexoneMedicinalProduct = "http://snomed.info/sct#87617007";
 
     /// <summary>
     /// Literal for code: ProductContainingAtenololMedicinalProduct
@@ -13378,9 +17738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAtenololMedicinalProduct = "87652004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAtenololMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAtenololMedicinalProduct = "http://snomed.info/sct#87652004";
+
+    /// <summary>
     /// Literal for code: ProductContainingDanazolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDanazolMedicinalProduct = "87881000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDanazolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDanazolMedicinalProduct = "http://snomed.info/sct#87881000";
 
     /// <summary>
     /// Literal for code: ProductContainingRauwolfiaAlkaloidMedicinalProduct
@@ -13388,9 +17758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingRauwolfiaAlkaloidMedicinalProduct = "88134000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingRauwolfiaAlkaloidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingRauwolfiaAlkaloidMedicinalProduct = "http://snomed.info/sct#88134000";
+
+    /// <summary>
     /// Literal for code: ProductContainingHydrocortisoneInNasalDoseFormMedicinalProductForm
     /// </summary>
     public const string LiteralProductContainingHydrocortisoneInNasalDoseFormMedicinalProductForm = "88226000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingHydrocortisoneInNasalDoseFormMedicinalProductForm
+    /// </summary>
+    public const string LiteralNONEProductContainingHydrocortisoneInNasalDoseFormMedicinalProductForm = "http://snomed.info/sct#88226000";
 
     /// <summary>
     /// Literal for code: MedicinalProductActingAsAntirheumaticAgentProduct
@@ -13398,9 +17778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicinalProductActingAsAntirheumaticAgentProduct = "88279005";
 
     /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsAntirheumaticAgentProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsAntirheumaticAgentProduct = "http://snomed.info/sct#88279005";
+
+    /// <summary>
     /// Literal for code: ProductContainingCalcifediolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCalcifediolMedicinalProduct = "88519001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCalcifediolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCalcifediolMedicinalProduct = "http://snomed.info/sct#88519001";
 
     /// <summary>
     /// Literal for code: ProductContainingLiverExtractMedicinalProduct
@@ -13408,9 +17798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingLiverExtractMedicinalProduct = "88566002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingLiverExtractMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLiverExtractMedicinalProduct = "http://snomed.info/sct#88566002";
+
+    /// <summary>
     /// Literal for code: ProductContainingFirstGenerationCephalosporinProduct
     /// </summary>
     public const string LiteralProductContainingFirstGenerationCephalosporinProduct = "88870000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFirstGenerationCephalosporinProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFirstGenerationCephalosporinProduct = "http://snomed.info/sct#88870000";
 
     /// <summary>
     /// Literal for code: ProductContainingThiotepaMedicinalProduct
@@ -13418,9 +17818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingThiotepaMedicinalProduct = "88997008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingThiotepaMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingThiotepaMedicinalProduct = "http://snomed.info/sct#88997008";
+
+    /// <summary>
     /// Literal for code: ProductContainingNaloxoneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNaloxoneMedicinalProduct = "89018006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNaloxoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNaloxoneMedicinalProduct = "http://snomed.info/sct#89018006";
 
     /// <summary>
     /// Literal for code: ProductContainingLevomepromazineMedicinalProduct
@@ -13428,9 +17838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingLevomepromazineMedicinalProduct = "89029005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingLevomepromazineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLevomepromazineMedicinalProduct = "http://snomed.info/sct#89029005";
+
+    /// <summary>
     /// Literal for code: ProductContainingPertussisHumanImmuneGlobulinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPertussisHumanImmuneGlobulinMedicinalProduct = "89045007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPertussisHumanImmuneGlobulinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPertussisHumanImmuneGlobulinMedicinalProduct = "http://snomed.info/sct#89045007";
 
     /// <summary>
     /// Literal for code: ProductContainingTranylcypromineMedicinalProduct
@@ -13438,9 +17858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTranylcypromineMedicinalProduct = "89092006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTranylcypromineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTranylcypromineMedicinalProduct = "http://snomed.info/sct#89092006";
+
+    /// <summary>
     /// Literal for code: ProductContainingChenodeoxycholicAcidMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingChenodeoxycholicAcidMedicinalProduct = "89132005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingChenodeoxycholicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChenodeoxycholicAcidMedicinalProduct = "http://snomed.info/sct#89132005";
 
     /// <summary>
     /// Literal for code: ProductContainingFludrocortisoneMedicinalProduct
@@ -13448,9 +17878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFludrocortisoneMedicinalProduct = "89192008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFludrocortisoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFludrocortisoneMedicinalProduct = "http://snomed.info/sct#89192008";
+
+    /// <summary>
     /// Literal for code: ProductContainingCytarabineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCytarabineMedicinalProduct = "89265009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCytarabineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCytarabineMedicinalProduct = "http://snomed.info/sct#89265009";
 
     /// <summary>
     /// Literal for code: ProductContainingPoliomyelitisHumanImmuneGlobulinMedicinalProduct
@@ -13458,9 +17898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPoliomyelitisHumanImmuneGlobulinMedicinalProduct = "89435001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPoliomyelitisHumanImmuneGlobulinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPoliomyelitisHumanImmuneGlobulinMedicinalProduct = "http://snomed.info/sct#89435001";
+
+    /// <summary>
     /// Literal for code: ProductContainingMethallenestrilMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMethallenestrilMedicinalProduct = "89466007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMethallenestrilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMethallenestrilMedicinalProduct = "http://snomed.info/sct#89466007";
 
     /// <summary>
     /// Literal for code: ProductContainingSulindacMedicinalProduct
@@ -13468,9 +17918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSulindacMedicinalProduct = "89505005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSulindacMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSulindacMedicinalProduct = "http://snomed.info/sct#89505005";
+
+    /// <summary>
     /// Literal for code: MedicinalProductActingAsAntidoteAgentProduct
     /// </summary>
     public const string LiteralMedicinalProductActingAsAntidoteAgentProduct = "89626004";
+
+    /// <summary>
+    /// Literal for code: NONEMedicinalProductActingAsAntidoteAgentProduct
+    /// </summary>
+    public const string LiteralNONEMedicinalProductActingAsAntidoteAgentProduct = "http://snomed.info/sct#89626004";
 
     /// <summary>
     /// Literal for code: ProductContainingMetocurineMedicinalProduct
@@ -13478,9 +17938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMetocurineMedicinalProduct = "89664002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMetocurineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMetocurineMedicinalProduct = "http://snomed.info/sct#89664002";
+
+    /// <summary>
     /// Literal for code: ProductContainingCrotamitonMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCrotamitonMedicinalProduct = "89692007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCrotamitonMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCrotamitonMedicinalProduct = "http://snomed.info/sct#89692007";
 
     /// <summary>
     /// Literal for code: ProductContainingTobramycinMedicinalProduct
@@ -13488,9 +17958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTobramycinMedicinalProduct = "89695009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTobramycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTobramycinMedicinalProduct = "http://snomed.info/sct#89695009";
+
+    /// <summary>
     /// Literal for code: ProductContainingRitodrineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingRitodrineMedicinalProduct = "89785009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingRitodrineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingRitodrineMedicinalProduct = "http://snomed.info/sct#89785009";
 
     /// <summary>
     /// Literal for code: SmoothMuscleRelaxant
@@ -13498,9 +17978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSmoothMuscleRelaxant = "90000002";
 
     /// <summary>
+    /// Literal for code: NONESmoothMuscleRelaxant
+    /// </summary>
+    public const string LiteralNONESmoothMuscleRelaxant = "http://snomed.info/sct#90000002";
+
+    /// <summary>
     /// Literal for code: ProductContainingEstroneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEstroneMedicinalProduct = "90017009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEstroneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEstroneMedicinalProduct = "http://snomed.info/sct#90017009";
 
     /// <summary>
     /// Literal for code: ProductContainingParacetamolMedicinalProduct
@@ -13508,9 +17998,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingParacetamolMedicinalProduct = "90332006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingParacetamolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingParacetamolMedicinalProduct = "http://snomed.info/sct#90332006";
+
+    /// <summary>
     /// Literal for code: ProductContainingRazoxaneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingRazoxaneMedicinalProduct = "90346006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingRazoxaneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingRazoxaneMedicinalProduct = "http://snomed.info/sct#90346006";
 
     /// <summary>
     /// Literal for code: ProductContainingPilocarpineMedicinalProduct
@@ -13518,9 +18018,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPilocarpineMedicinalProduct = "90356005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPilocarpineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPilocarpineMedicinalProduct = "http://snomed.info/sct#90356005";
+
+    /// <summary>
     /// Literal for code: ProductContainingBenzalkoniumMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingBenzalkoniumMedicinalProduct = "90370005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBenzalkoniumMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBenzalkoniumMedicinalProduct = "http://snomed.info/sct#90370005";
 
     /// <summary>
     /// Literal for code: ProductContainingTrimipramineMedicinalProduct
@@ -13528,9 +18038,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTrimipramineMedicinalProduct = "90426002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTrimipramineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTrimipramineMedicinalProduct = "http://snomed.info/sct#90426002";
+
+    /// <summary>
     /// Literal for code: ProductContainingBetaLactamAndAntibioticProduct
     /// </summary>
     public const string LiteralProductContainingBetaLactamAndAntibioticProduct = "90614001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBetaLactamAndAntibioticProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBetaLactamAndAntibioticProduct = "http://snomed.info/sct#90614001";
 
     /// <summary>
     /// Literal for code: ProductContainingNatamycinInOcularDoseFormMedicinalProductForm
@@ -13538,9 +18058,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNatamycinInOcularDoseFormMedicinalProductForm = "90659009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNatamycinInOcularDoseFormMedicinalProductForm
+    /// </summary>
+    public const string LiteralNONEProductContainingNatamycinInOcularDoseFormMedicinalProductForm = "http://snomed.info/sct#90659009";
+
+    /// <summary>
     /// Literal for code: ProductContainingAminopenicillinProduct
     /// </summary>
     public const string LiteralProductContainingAminopenicillinProduct = "90704004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAminopenicillinProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAminopenicillinProduct = "http://snomed.info/sct#90704004";
 
     /// <summary>
     /// Literal for code: ProductContainingReversibleAnticholinesteraseProduct
@@ -13548,9 +18078,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingReversibleAnticholinesteraseProduct = "90802006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingReversibleAnticholinesteraseProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingReversibleAnticholinesteraseProduct = "http://snomed.info/sct#90802006";
+
+    /// <summary>
     /// Literal for code: ProductContainingCarbinoxamineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCarbinoxamineMedicinalProduct = "90882008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCarbinoxamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCarbinoxamineMedicinalProduct = "http://snomed.info/sct#90882008";
 
     /// <summary>
     /// Literal for code: ProductContainingCaffeineMedicinalProduct
@@ -13558,9 +18098,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCaffeineMedicinalProduct = "91107009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCaffeineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCaffeineMedicinalProduct = "http://snomed.info/sct#91107009";
+
+    /// <summary>
     /// Literal for code: ProductContainingBendroflumethiazideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingBendroflumethiazideMedicinalProduct = "91135008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBendroflumethiazideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBendroflumethiazideMedicinalProduct = "http://snomed.info/sct#91135008";
 
     /// <summary>
     /// Literal for code: ProductContainingSalbutamolMedicinalProduct
@@ -13568,9 +18118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSalbutamolMedicinalProduct = "91143003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSalbutamolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSalbutamolMedicinalProduct = "http://snomed.info/sct#91143003";
+
+    /// <summary>
     /// Literal for code: ProductContainingNafcillinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingNafcillinMedicinalProduct = "91169009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingNafcillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNafcillinMedicinalProduct = "http://snomed.info/sct#91169009";
 
     /// <summary>
     /// Literal for code: DigitalisContainingProduct
@@ -13578,9 +18138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDigitalisContainingProduct = "91307002";
 
     /// <summary>
+    /// Literal for code: NONEDigitalisContainingProduct
+    /// </summary>
+    public const string LiteralNONEDigitalisContainingProduct = "http://snomed.info/sct#91307002";
+
+    /// <summary>
     /// Literal for code: ProductContainingTrimetrexateMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTrimetrexateMedicinalProduct = "91339009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTrimetrexateMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTrimetrexateMedicinalProduct = "http://snomed.info/sct#91339009";
 
     /// <summary>
     /// Literal for code: ProductContainingPentoxifyllineMedicinalProduct
@@ -13588,9 +18158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPentoxifyllineMedicinalProduct = "91376007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPentoxifyllineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPentoxifyllineMedicinalProduct = "http://snomed.info/sct#91376007";
+
+    /// <summary>
     /// Literal for code: ProductContainingPseudoephedrineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPseudoephedrineMedicinalProduct = "91435002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPseudoephedrineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPseudoephedrineMedicinalProduct = "http://snomed.info/sct#91435002";
 
     /// <summary>
     /// Literal for code: ProductContainingBuspironeMedicinalProduct
@@ -13598,9 +18178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBuspironeMedicinalProduct = "91452003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBuspironeMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBuspironeMedicinalProduct = "http://snomed.info/sct#91452003";
+
+    /// <summary>
     /// Literal for code: ProductContainingGramicidinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingGramicidinMedicinalProduct = "91479004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingGramicidinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingGramicidinMedicinalProduct = "http://snomed.info/sct#91479004";
 
     /// <summary>
     /// Literal for code: ProductContainingHydrochlorothiazideMedicinalProduct
@@ -13608,9 +18198,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHydrochlorothiazideMedicinalProduct = "91667005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHydrochlorothiazideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHydrochlorothiazideMedicinalProduct = "http://snomed.info/sct#91667005";
+
+    /// <summary>
     /// Literal for code: ProductContainingTropicamideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTropicamideMedicinalProduct = "9190005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTropicamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTropicamideMedicinalProduct = "http://snomed.info/sct#9190005";
 
     /// <summary>
     /// Literal for code: ProductContainingPralidoximeMedicinalProduct
@@ -13618,9 +18218,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPralidoximeMedicinalProduct = "922004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPralidoximeMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPralidoximeMedicinalProduct = "http://snomed.info/sct#922004";
+
+    /// <summary>
     /// Literal for code: ProductContainingSecbutabarbitalMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSecbutabarbitalMedicinalProduct = "9268004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSecbutabarbitalMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSecbutabarbitalMedicinalProduct = "http://snomed.info/sct#9268004";
 
     /// <summary>
     /// Literal for code: ProductContainingPhenelzineMedicinalProduct
@@ -13628,9 +18238,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPhenelzineMedicinalProduct = "9500005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPhenelzineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPhenelzineMedicinalProduct = "http://snomed.info/sct#9500005";
+
+    /// <summary>
     /// Literal for code: HepatitisBSurfaceAntigenImmunoglobulinContainingProduct
     /// </summary>
     public const string LiteralHepatitisBSurfaceAntigenImmunoglobulinContainingProduct = "9542007";
+
+    /// <summary>
+    /// Literal for code: NONEHepatitisBSurfaceAntigenImmunoglobulinContainingProduct
+    /// </summary>
+    public const string LiteralNONEHepatitisBSurfaceAntigenImmunoglobulinContainingProduct = "http://snomed.info/sct#9542007";
 
     /// <summary>
     /// Literal for code: ProductContainingCarbomycinMedicinalProduct
@@ -13638,9 +18258,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCarbomycinMedicinalProduct = "96011002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCarbomycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCarbomycinMedicinalProduct = "http://snomed.info/sct#96011002";
+
+    /// <summary>
     /// Literal for code: ProductContainingTeicoplaninMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTeicoplaninMedicinalProduct = "96014005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTeicoplaninMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTeicoplaninMedicinalProduct = "http://snomed.info/sct#96014005";
 
     /// <summary>
     /// Literal for code: ProductContainingFusidicAcidMedicinalProduct
@@ -13648,9 +18278,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFusidicAcidMedicinalProduct = "96015006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFusidicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFusidicAcidMedicinalProduct = "http://snomed.info/sct#96015006";
+
+    /// <summary>
     /// Literal for code: ProductContainingTiamulinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTiamulinMedicinalProduct = "96018008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTiamulinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTiamulinMedicinalProduct = "http://snomed.info/sct#96018008";
 
     /// <summary>
     /// Literal for code: ProductContainingTylosinMedicinalProduct
@@ -13658,9 +18298,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTylosinMedicinalProduct = "96020006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTylosinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTylosinMedicinalProduct = "http://snomed.info/sct#96020006";
+
+    /// <summary>
     /// Literal for code: ProductContainingVirginiamycinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingVirginiamycinMedicinalProduct = "96023008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingVirginiamycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingVirginiamycinMedicinalProduct = "http://snomed.info/sct#96023008";
 
     /// <summary>
     /// Literal for code: ProductContainingApramycinMedicinalProduct
@@ -13668,9 +18318,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingApramycinMedicinalProduct = "96029007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingApramycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingApramycinMedicinalProduct = "http://snomed.info/sct#96029007";
+
+    /// <summary>
     /// Literal for code: ProductContainingAzithromycinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAzithromycinMedicinalProduct = "96034006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAzithromycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAzithromycinMedicinalProduct = "http://snomed.info/sct#96034006";
 
     /// <summary>
     /// Literal for code: ProductContainingItraconazoleMedicinalProduct
@@ -13678,9 +18338,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingItraconazoleMedicinalProduct = "96038009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingItraconazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingItraconazoleMedicinalProduct = "http://snomed.info/sct#96038009";
+
+    /// <summary>
     /// Literal for code: ProductContainingCeftiofurMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCeftiofurMedicinalProduct = "96044008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCeftiofurMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCeftiofurMedicinalProduct = "http://snomed.info/sct#96044008";
 
     /// <summary>
     /// Literal for code: ProductContainingCefpiromeMedicinalProduct
@@ -13688,9 +18358,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCefpiromeMedicinalProduct = "96047001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCefpiromeMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefpiromeMedicinalProduct = "http://snomed.info/sct#96047001";
+
+    /// <summary>
     /// Literal for code: ProductContainingCefpodoximeMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCefpodoximeMedicinalProduct = "96049003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCefpodoximeMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefpodoximeMedicinalProduct = "http://snomed.info/sct#96049003";
 
     /// <summary>
     /// Literal for code: ProductContainingCeftibutenMedicinalProduct
@@ -13698,9 +18378,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCeftibutenMedicinalProduct = "96051004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCeftibutenMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCeftibutenMedicinalProduct = "http://snomed.info/sct#96051004";
+
+    /// <summary>
     /// Literal for code: ProductContainingCefiximeMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCefiximeMedicinalProduct = "96052006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCefiximeMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefiximeMedicinalProduct = "http://snomed.info/sct#96052006";
 
     /// <summary>
     /// Literal for code: ProductContainingCefsulodinMedicinalProduct
@@ -13708,9 +18398,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCefsulodinMedicinalProduct = "96053001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCefsulodinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefsulodinMedicinalProduct = "http://snomed.info/sct#96053001";
+
+    /// <summary>
     /// Literal for code: ProductContainingCefprozilMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCefprozilMedicinalProduct = "96054007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCefprozilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefprozilMedicinalProduct = "http://snomed.info/sct#96054007";
 
     /// <summary>
     /// Literal for code: ProductContainingCefodizimeMedicinalProduct
@@ -13718,9 +18418,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingCefodizimeMedicinalProduct = "96055008";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingCefodizimeMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCefodizimeMedicinalProduct = "http://snomed.info/sct#96055008";
+
+    /// <summary>
     /// Literal for code: ProductContainingMeropenemMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMeropenemMedicinalProduct = "96062004";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMeropenemMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMeropenemMedicinalProduct = "http://snomed.info/sct#96062004";
 
     /// <summary>
     /// Literal for code: ProductContainingMecillinamMedicinalProduct
@@ -13728,9 +18438,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMecillinamMedicinalProduct = "96063009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMecillinamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMecillinamMedicinalProduct = "http://snomed.info/sct#96063009";
+
+    /// <summary>
     /// Literal for code: ProductContainingPivmecillinamMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingPivmecillinamMedicinalProduct = "96064003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingPivmecillinamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPivmecillinamMedicinalProduct = "http://snomed.info/sct#96064003";
 
     /// <summary>
     /// Literal for code: ProductContainingTemocillinMedicinalProduct
@@ -13738,9 +18458,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTemocillinMedicinalProduct = "96065002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTemocillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTemocillinMedicinalProduct = "http://snomed.info/sct#96065002";
+
+    /// <summary>
     /// Literal for code: ProductContainingFlucloxacillinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFlucloxacillinMedicinalProduct = "96067005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFlucloxacillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFlucloxacillinMedicinalProduct = "http://snomed.info/sct#96067005";
 
     /// <summary>
     /// Literal for code: ProductContainingPivampicillinMedicinalProduct
@@ -13748,9 +18478,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPivampicillinMedicinalProduct = "96072001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPivampicillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPivampicillinMedicinalProduct = "http://snomed.info/sct#96072001";
+
+    /// <summary>
     /// Literal for code: ProductContainingTalampicillinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTalampicillinMedicinalProduct = "96073006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTalampicillinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTalampicillinMedicinalProduct = "http://snomed.info/sct#96073006";
 
     /// <summary>
     /// Literal for code: ProductContainingLymecyclineMedicinalProduct
@@ -13758,9 +18498,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingLymecyclineMedicinalProduct = "96077007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingLymecyclineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLymecyclineMedicinalProduct = "http://snomed.info/sct#96077007";
+
+    /// <summary>
     /// Literal for code: ProductContainingCinoxacinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingCinoxacinMedicinalProduct = "96081007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingCinoxacinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingCinoxacinMedicinalProduct = "http://snomed.info/sct#96081007";
 
     /// <summary>
     /// Literal for code: ProductContainingEnoxacinMedicinalProduct
@@ -13768,9 +18518,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingEnoxacinMedicinalProduct = "96084004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingEnoxacinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEnoxacinMedicinalProduct = "http://snomed.info/sct#96084004";
+
+    /// <summary>
     /// Literal for code: ProductContainingOfloxacinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingOfloxacinMedicinalProduct = "96086002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingOfloxacinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOfloxacinMedicinalProduct = "http://snomed.info/sct#96086002";
 
     /// <summary>
     /// Literal for code: ProductContainingLevofloxacinMedicinalProduct
@@ -13778,9 +18538,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingLevofloxacinMedicinalProduct = "96087006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingLevofloxacinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLevofloxacinMedicinalProduct = "http://snomed.info/sct#96087006";
+
+    /// <summary>
     /// Literal for code: ProductContainingLomefloxacinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingLomefloxacinMedicinalProduct = "96088001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingLomefloxacinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLomefloxacinMedicinalProduct = "http://snomed.info/sct#96088001";
 
     /// <summary>
     /// Literal for code: ProductContainingSparfloxacinMedicinalProduct
@@ -13788,9 +18558,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSparfloxacinMedicinalProduct = "96090000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSparfloxacinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSparfloxacinMedicinalProduct = "http://snomed.info/sct#96090000";
+
+    /// <summary>
     /// Literal for code: ProductContainingTemafloxacinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingTemafloxacinMedicinalProduct = "96091001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingTemafloxacinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTemafloxacinMedicinalProduct = "http://snomed.info/sct#96091001";
 
     /// <summary>
     /// Literal for code: ProductContainingRosoxacinMedicinalProduct
@@ -13798,9 +18578,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingRosoxacinMedicinalProduct = "96093003";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingRosoxacinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingRosoxacinMedicinalProduct = "http://snomed.info/sct#96093003";
+
+    /// <summary>
     /// Literal for code: ProductContainingFamciclovirMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFamciclovirMedicinalProduct = "96097002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFamciclovirMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFamciclovirMedicinalProduct = "http://snomed.info/sct#96097002";
 
     /// <summary>
     /// Literal for code: ProductContainingFoscarnetMedicinalProduct
@@ -13808,9 +18598,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFoscarnetMedicinalProduct = "96099004";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFoscarnetMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFoscarnetMedicinalProduct = "http://snomed.info/sct#96099004";
+
+    /// <summary>
     /// Literal for code: ProductContainingIpronidazoleMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingIpronidazoleMedicinalProduct = "96103009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingIpronidazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIpronidazoleMedicinalProduct = "http://snomed.info/sct#96103009";
 
     /// <summary>
     /// Literal for code: ProductContainingAntibabesialProduct
@@ -13818,9 +18618,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAntibabesialProduct = "96107005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAntibabesialProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAntibabesialProduct = "http://snomed.info/sct#96107005";
+
+    /// <summary>
     /// Literal for code: ProductContainingImidocarbMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingImidocarbMedicinalProduct = "96108000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingImidocarbMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingImidocarbMedicinalProduct = "http://snomed.info/sct#96108000";
 
     /// <summary>
     /// Literal for code: ProductContainingAlbendazoleMedicinalProduct
@@ -13828,9 +18638,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingAlbendazoleMedicinalProduct = "96119002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingAlbendazoleMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAlbendazoleMedicinalProduct = "http://snomed.info/sct#96119002";
+
+    /// <summary>
     /// Literal for code: ProductContainingIvermectinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingIvermectinMedicinalProduct = "96138006";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingIvermectinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingIvermectinMedicinalProduct = "http://snomed.info/sct#96138006";
 
     /// <summary>
     /// Literal for code: CoccidiostatContainingProduct
@@ -13838,9 +18658,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCoccidiostatContainingProduct = "96144005";
 
     /// <summary>
+    /// Literal for code: NONECoccidiostatContainingProduct
+    /// </summary>
+    public const string LiteralNONECoccidiostatContainingProduct = "http://snomed.info/sct#96144005";
+
+    /// <summary>
     /// Literal for code: ProductContainingBambermycinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingBambermycinMedicinalProduct = "96149000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBambermycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBambermycinMedicinalProduct = "http://snomed.info/sct#96149000";
 
     /// <summary>
     /// Literal for code: ProductContainingSalinomycinMedicinalProduct
@@ -13848,9 +18678,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingSalinomycinMedicinalProduct = "96169005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingSalinomycinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSalinomycinMedicinalProduct = "http://snomed.info/sct#96169005";
+
+    /// <summary>
     /// Literal for code: ProductContainingAlfentanilMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingAlfentanilMedicinalProduct = "96183007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingAlfentanilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingAlfentanilMedicinalProduct = "http://snomed.info/sct#96183007";
 
     /// <summary>
     /// Literal for code: ProductContainingTilidineMedicinalProduct
@@ -13858,9 +18698,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingTilidineMedicinalProduct = "96185000";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingTilidineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingTilidineMedicinalProduct = "http://snomed.info/sct#96185000";
+
+    /// <summary>
     /// Literal for code: ProductContainingDextromoramideMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingDextromoramideMedicinalProduct = "96191003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingDextromoramideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingDextromoramideMedicinalProduct = "http://snomed.info/sct#96191003";
 
     /// <summary>
     /// Literal for code: ProductContainingLamotrigineMedicinalProduct
@@ -13868,9 +18718,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingLamotrigineMedicinalProduct = "96195007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingLamotrigineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLamotrigineMedicinalProduct = "http://snomed.info/sct#96195007";
+
+    /// <summary>
     /// Literal for code: ProductContainingButalbitalMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingButalbitalMedicinalProduct = "96196008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingButalbitalMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingButalbitalMedicinalProduct = "http://snomed.info/sct#96196008";
 
     /// <summary>
     /// Literal for code: ProductContainingBupropionMedicinalProduct
@@ -13878,9 +18738,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBupropionMedicinalProduct = "96199001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBupropionMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBupropionMedicinalProduct = "http://snomed.info/sct#96199001";
+
+    /// <summary>
     /// Literal for code: ProductContainingMianserinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingMianserinMedicinalProduct = "96200003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingMianserinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMianserinMedicinalProduct = "http://snomed.info/sct#96200003";
 
     /// <summary>
     /// Literal for code: ProductContainingClomipramineMedicinalProduct
@@ -13888,9 +18758,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingClomipramineMedicinalProduct = "96209002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingClomipramineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingClomipramineMedicinalProduct = "http://snomed.info/sct#96209002";
+
+    /// <summary>
     /// Literal for code: ProductContainingFluvoxamineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingFluvoxamineMedicinalProduct = "96213009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingFluvoxamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFluvoxamineMedicinalProduct = "http://snomed.info/sct#96213009";
 
     /// <summary>
     /// Literal for code: ProductContainingFlupentixolMedicinalProduct
@@ -13898,9 +18778,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFlupentixolMedicinalProduct = "96220002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFlupentixolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFlupentixolMedicinalProduct = "http://snomed.info/sct#96220002";
+
+    /// <summary>
     /// Literal for code: ProductContainingClozapineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingClozapineMedicinalProduct = "96221003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingClozapineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingClozapineMedicinalProduct = "http://snomed.info/sct#96221003";
 
     /// <summary>
     /// Literal for code: ProductContainingZolpidemMedicinalProduct
@@ -13908,9 +18798,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingZolpidemMedicinalProduct = "96231005";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingZolpidemMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingZolpidemMedicinalProduct = "http://snomed.info/sct#96231005";
+
+    /// <summary>
     /// Literal for code: ProductContainingLormetazepamMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingLormetazepamMedicinalProduct = "96233008";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingLormetazepamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingLormetazepamMedicinalProduct = "http://snomed.info/sct#96233008";
 
     /// <summary>
     /// Literal for code: ProductContainingBromazepamMedicinalProduct
@@ -13918,9 +18818,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBromazepamMedicinalProduct = "96234002";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBromazepamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBromazepamMedicinalProduct = "http://snomed.info/sct#96234002";
+
+    /// <summary>
     /// Literal for code: ProductContainingClobazamMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingClobazamMedicinalProduct = "96236000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingClobazamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingClobazamMedicinalProduct = "http://snomed.info/sct#96236000";
 
     /// <summary>
     /// Literal for code: ProductContainingFlunitrazepamMedicinalProduct
@@ -13928,9 +18838,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFlunitrazepamMedicinalProduct = "96237009";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFlunitrazepamMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFlunitrazepamMedicinalProduct = "http://snomed.info/sct#96237009";
+
+    /// <summary>
     /// Literal for code: ProductContainingBenzodiazepineReceptorAntagonistProduct
     /// </summary>
     public const string LiteralProductContainingBenzodiazepineReceptorAntagonistProduct = "96246003";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBenzodiazepineReceptorAntagonistProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBenzodiazepineReceptorAntagonistProduct = "http://snomed.info/sct#96246003";
 
     /// <summary>
     /// Literal for code: ProductContainingFlumazenilMedicinalProduct
@@ -13938,9 +18858,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingFlumazenilMedicinalProduct = "96247007";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingFlumazenilMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingFlumazenilMedicinalProduct = "http://snomed.info/sct#96247007";
+
+    /// <summary>
     /// Literal for code: ProductContainingProlintaneMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingProlintaneMedicinalProduct = "96252002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingProlintaneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingProlintaneMedicinalProduct = "http://snomed.info/sct#96252002";
 
     /// <summary>
     /// Literal for code: ProductContainingHyaluronicAcidMedicinalProduct
@@ -13948,9 +18878,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingHyaluronicAcidMedicinalProduct = "96278006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingHyaluronicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingHyaluronicAcidMedicinalProduct = "http://snomed.info/sct#96278006";
+
+    /// <summary>
     /// Literal for code: ProductContainingBoneResorptionInhibitor
     /// </summary>
     public const string LiteralProductContainingBoneResorptionInhibitor = "96280000";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingBoneResorptionInhibitor
+    /// </summary>
+    public const string LiteralNONEProductContainingBoneResorptionInhibitor = "http://snomed.info/sct#96280000";
 
     /// <summary>
     /// Literal for code: ProductContainingBisphosphonateProduct
@@ -13958,9 +18898,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingBisphosphonateProduct = "96281001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingBisphosphonateProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingBisphosphonateProduct = "http://snomed.info/sct#96281001";
+
+    /// <summary>
     /// Literal for code: ProductContainingEtidronicAcidMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingEtidronicAcidMedicinalProduct = "96284009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingEtidronicAcidMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingEtidronicAcidMedicinalProduct = "http://snomed.info/sct#96284009";
 
     /// <summary>
     /// Literal for code: ProductContainingMexiletineMedicinalProduct
@@ -13968,9 +18918,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingMexiletineMedicinalProduct = "96298001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingMexiletineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingMexiletineMedicinalProduct = "http://snomed.info/sct#96298001";
+
+    /// <summary>
     /// Literal for code: ProductContainingOxprenololMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingOxprenololMedicinalProduct = "96299009";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingOxprenololMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingOxprenololMedicinalProduct = "http://snomed.info/sct#96299009";
 
     /// <summary>
     /// Literal for code: ProductContainingPropafenoneMedicinalProduct
@@ -13978,9 +18938,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingPropafenoneMedicinalProduct = "96300001";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingPropafenoneMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingPropafenoneMedicinalProduct = "http://snomed.info/sct#96300001";
+
+    /// <summary>
     /// Literal for code: ProductContainingSotalolMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSotalolMedicinalProduct = "96301002";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSotalolMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSotalolMedicinalProduct = "http://snomed.info/sct#96301002";
 
     /// <summary>
     /// Literal for code: ProductContaining3Hydroxy3MethylglutarylCoenzymeAReductaseInhibitorProduct
@@ -13988,9 +18958,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContaining3Hydroxy3MethylglutarylCoenzymeAReductaseInhibitorProduct = "96302009";
 
     /// <summary>
+    /// Literal for code: NONEProductContaining3Hydroxy3MethylglutarylCoenzymeAReductaseInhibitorProduct
+    /// </summary>
+    public const string LiteralNONEProductContaining3Hydroxy3MethylglutarylCoenzymeAReductaseInhibitorProduct = "http://snomed.info/sct#96302009";
+
+    /// <summary>
     /// Literal for code: ProductContainingSimvastatinMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSimvastatinMedicinalProduct = "96304005";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSimvastatinMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSimvastatinMedicinalProduct = "http://snomed.info/sct#96304005";
 
     /// <summary>
     /// Literal for code: ProductContainingNikethamideMedicinalProduct
@@ -13998,9 +18978,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductContainingNikethamideMedicinalProduct = "9690006";
 
     /// <summary>
+    /// Literal for code: NONEProductContainingNikethamideMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingNikethamideMedicinalProduct = "http://snomed.info/sct#9690006";
+
+    /// <summary>
     /// Literal for code: ProductContainingSucroseMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingSucroseMedicinalProduct = "9745007";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingSucroseMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingSucroseMedicinalProduct = "http://snomed.info/sct#9745007";
 
     /// <summary>
     /// Literal for code: CytomegalovirusAntibodyContainingProduct
@@ -14008,8 +18998,2024 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCytomegalovirusAntibodyContainingProduct = "9778000";
 
     /// <summary>
+    /// Literal for code: NONECytomegalovirusAntibodyContainingProduct
+    /// </summary>
+    public const string LiteralNONECytomegalovirusAntibodyContainingProduct = "http://snomed.info/sct#9778000";
+
+    /// <summary>
     /// Literal for code: ProductContainingChlorphenamineMedicinalProduct
     /// </summary>
     public const string LiteralProductContainingChlorphenamineMedicinalProduct = "9944001";
+
+    /// <summary>
+    /// Literal for code: NONEProductContainingChlorphenamineMedicinalProduct
+    /// </summary>
+    public const string LiteralNONEProductContainingChlorphenamineMedicinalProduct = "http://snomed.info/sct#9944001";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "10099000", ProductContainingKetoprofenMedicinalProduct }, 
+      { "http://snomed.info/sct#10099000", ProductContainingKetoprofenMedicinalProduct }, 
+      { "10135005", ProductContainingCinchonaAlkaloidProduct }, 
+      { "http://snomed.info/sct#10135005", ProductContainingCinchonaAlkaloidProduct }, 
+      { "10312003", ProductContainingPrednisoneMedicinalProduct }, 
+      { "http://snomed.info/sct#10312003", ProductContainingPrednisoneMedicinalProduct }, 
+      { "1039008", ProductContainingMercaptopurineMedicinalProduct }, 
+      { "http://snomed.info/sct#1039008", ProductContainingMercaptopurineMedicinalProduct }, 
+      { "10422008", ProductContainingPentaerithritylTetranitrateMedicinalProduct }, 
+      { "http://snomed.info/sct#10422008", ProductContainingPentaerithritylTetranitrateMedicinalProduct }, 
+      { "10504007", ProductContainingDoxycyclineMedicinalProduct }, 
+      { "http://snomed.info/sct#10504007", ProductContainingDoxycyclineMedicinalProduct }, 
+      { "10515002", ProductContainingLututrinMedicinalProduct }, 
+      { "http://snomed.info/sct#10515002", ProductContainingLututrinMedicinalProduct }, 
+      { "10555000", ProductContainingTocainideMedicinalProduct }, 
+      { "http://snomed.info/sct#10555000", ProductContainingTocainideMedicinalProduct }, 
+      { "10632007", MultivitaminPreparation }, 
+      { "http://snomed.info/sct#10632007", MultivitaminPreparation }, 
+      { "10712001", ProductContainingGlucagonMedicinalProduct }, 
+      { "http://snomed.info/sct#10712001", ProductContainingGlucagonMedicinalProduct }, 
+      { "10756001", ProductContainingHaloperidolMedicinalProduct }, 
+      { "http://snomed.info/sct#10756001", ProductContainingHaloperidolMedicinalProduct }, 
+      { "10784006", MedicinalProductActingAsAntipsychoticAgentProduct }, 
+      { "http://snomed.info/sct#10784006", MedicinalProductActingAsAntipsychoticAgentProduct }, 
+      { "11402001", ProductContainingEnzymeProduct }, 
+      { "http://snomed.info/sct#11402001", ProductContainingEnzymeProduct }, 
+      { "11430001", TetracyclicAntidepressant }, 
+      { "http://snomed.info/sct#11430001", TetracyclicAntidepressant }, 
+      { "1148001", ProductContainingTicarcillinMedicinalProduct }, 
+      { "http://snomed.info/sct#1148001", ProductContainingTicarcillinMedicinalProduct }, 
+      { "11563006", ProductContainingVitaminDAndVitaminDDerivativeProduct }, 
+      { "http://snomed.info/sct#11563006", ProductContainingVitaminDAndVitaminDDerivativeProduct }, 
+      { "11719000", ProductContainingCetylpyridiniumMedicinalProduct }, 
+      { "http://snomed.info/sct#11719000", ProductContainingCetylpyridiniumMedicinalProduct }, 
+      { "11783005", MedicinalProductActingAsStoolSoftenerProduct }, 
+      { "http://snomed.info/sct#11783005", MedicinalProductActingAsStoolSoftenerProduct }, 
+      { "11796006", ProductContainingMethysergideMedicinalProduct }, 
+      { "http://snomed.info/sct#11796006", ProductContainingMethysergideMedicinalProduct }, 
+      { "1182007", HypotensiveAgent }, 
+      { "http://snomed.info/sct#1182007", HypotensiveAgent }, 
+      { "11841005", ProductContainingDoxepinMedicinalProduct }, 
+      { "http://snomed.info/sct#11841005", ProductContainingDoxepinMedicinalProduct }, 
+      { "11847009", ProductContainingNaproxenMedicinalProduct }, 
+      { "http://snomed.info/sct#11847009", ProductContainingNaproxenMedicinalProduct }, 
+      { "11959009", ProductContainingProcainamideMedicinalProduct }, 
+      { "http://snomed.info/sct#11959009", ProductContainingProcainamideMedicinalProduct }, 
+      { "1206000", ProductContainingAlpha2AdrenergicReceptorAntagonistProduct }, 
+      { "http://snomed.info/sct#1206000", ProductContainingAlpha2AdrenergicReceptorAntagonistProduct }, 
+      { "12096000", ProductContainingNystatinMedicinalProduct }, 
+      { "http://snomed.info/sct#12096000", ProductContainingNystatinMedicinalProduct }, 
+      { "1222004", ProductContainingMetronidazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#1222004", ProductContainingMetronidazoleMedicinalProduct }, 
+      { "12236006", ProductContainingPancreatinMedicinalProduct }, 
+      { "http://snomed.info/sct#12236006", ProductContainingPancreatinMedicinalProduct }, 
+      { "12335007", DiatrizoateContainingProduct }, 
+      { "http://snomed.info/sct#12335007", DiatrizoateContainingProduct }, 
+      { "12369008", ProductContainingOxytocinMedicinalProduct }, 
+      { "http://snomed.info/sct#12369008", ProductContainingOxytocinMedicinalProduct }, 
+      { "12436009", ProductContainingVinblastineMedicinalProduct }, 
+      { "http://snomed.info/sct#12436009", ProductContainingVinblastineMedicinalProduct }, 
+      { "12495006", ProductContainingMagnesiumCitrateMedicinalProduct }, 
+      { "http://snomed.info/sct#12495006", ProductContainingMagnesiumCitrateMedicinalProduct }, 
+      { "12512008", ProductContainingTriamtereneMedicinalProduct }, 
+      { "http://snomed.info/sct#12512008", ProductContainingTriamtereneMedicinalProduct }, 
+      { "12559001", ProductContainingEmetineMedicinalProduct }, 
+      { "http://snomed.info/sct#12559001", ProductContainingEmetineMedicinalProduct }, 
+      { "12839006", ProductContainingEstradiolMedicinalProduct }, 
+      { "http://snomed.info/sct#12839006", ProductContainingEstradiolMedicinalProduct }, 
+      { "13132007", ProductContainingDextranMedicinalProduct }, 
+      { "http://snomed.info/sct#13132007", ProductContainingDextranMedicinalProduct }, 
+      { "13252002", ProductContainingSalsalateMedicinalProduct }, 
+      { "http://snomed.info/sct#13252002", ProductContainingSalsalateMedicinalProduct }, 
+      { "13414000", ProductContainingCefadroxilMedicinalProduct }, 
+      { "http://snomed.info/sct#13414000", ProductContainingCefadroxilMedicinalProduct }, 
+      { "13432000", ProductContainingNortriptylineMedicinalProduct }, 
+      { "http://snomed.info/sct#13432000", ProductContainingNortriptylineMedicinalProduct }, 
+      { "13512003", ProductContainingMinocyclineMedicinalProduct }, 
+      { "http://snomed.info/sct#13512003", ProductContainingMinocyclineMedicinalProduct }, 
+      { "13525006", ProductContainingAcetylcholineMedicinalProduct }, 
+      { "http://snomed.info/sct#13525006", ProductContainingAcetylcholineMedicinalProduct }, 
+      { "13565005", ProductContainingBisacodylMedicinalProduct }, 
+      { "http://snomed.info/sct#13565005", ProductContainingBisacodylMedicinalProduct }, 
+      { "13592004", ProductContainingPyrazinamideMedicinalProduct }, 
+      { "http://snomed.info/sct#13592004", ProductContainingPyrazinamideMedicinalProduct }, 
+      { "13664004", ProductContainingDimercaprolMedicinalProduct }, 
+      { "http://snomed.info/sct#13664004", ProductContainingDimercaprolMedicinalProduct }, 
+      { "13790009", ProductContainingIronInOralDoseFormMedicinalProductForm }, 
+      { "http://snomed.info/sct#13790009", ProductContainingIronInOralDoseFormMedicinalProductForm }, 
+      { "13800009", ProductContainingNaftifineMedicinalProduct }, 
+      { "http://snomed.info/sct#13800009", ProductContainingNaftifineMedicinalProduct }, 
+      { "13813003", ProductContainingBiotinMedicinalProduct }, 
+      { "http://snomed.info/sct#13813003", ProductContainingBiotinMedicinalProduct }, 
+      { "1389007", ProductContainingBeclometasoneMedicinalProduct }, 
+      { "http://snomed.info/sct#1389007", ProductContainingBeclometasoneMedicinalProduct }, 
+      { "13929005", ProductContainingSpironolactoneMedicinalProduct }, 
+      { "http://snomed.info/sct#13929005", ProductContainingSpironolactoneMedicinalProduct }, 
+      { "13936006", ProductContainingButorphanolMedicinalProduct }, 
+      { "http://snomed.info/sct#13936006", ProductContainingButorphanolMedicinalProduct }, 
+      { "13965000", ProductContainingValproicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#13965000", ProductContainingValproicAcidMedicinalProduct }, 
+      { "14103001", ProductContainingOpioidReceptorAntagonistProduct }, 
+      { "http://snomed.info/sct#14103001", ProductContainingOpioidReceptorAntagonistProduct }, 
+      { "14170004", ProductContainingCapreomycinMedicinalProduct }, 
+      { "http://snomed.info/sct#14170004", ProductContainingCapreomycinMedicinalProduct }, 
+      { "1434005", ProductContainingCalamineMedicinalProduct }, 
+      { "http://snomed.info/sct#1434005", ProductContainingCalamineMedicinalProduct }, 
+      { "14601000", ProductContainingAcetylcholineReceptorAntagonistProduct }, 
+      { "http://snomed.info/sct#14601000", ProductContainingAcetylcholineReceptorAntagonistProduct }, 
+      { "14706000", PhenethicillinContainingProduct }, 
+      { "http://snomed.info/sct#14706000", PhenethicillinContainingProduct }, 
+      { "14728000", ProductContainingChloroquineMedicinalProduct }, 
+      { "http://snomed.info/sct#14728000", ProductContainingChloroquineMedicinalProduct }, 
+      { "14814001", ProductContainingTrimethobenzamideMedicinalProduct }, 
+      { "http://snomed.info/sct#14814001", ProductContainingTrimethobenzamideMedicinalProduct }, 
+      { "14816004", ProductContainingCocaineMedicinalProduct }, 
+      { "http://snomed.info/sct#14816004", ProductContainingCocaineMedicinalProduct }, 
+      { "15222008", ProductContainingEnalaprilMedicinalProduct }, 
+      { "http://snomed.info/sct#15222008", ProductContainingEnalaprilMedicinalProduct }, 
+      { "1528001", ProductContainingFolinicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#1528001", ProductContainingFolinicAcidMedicinalProduct }, 
+      { "15375005", ProductContainingPhenanthreneDerivativeProduct }, 
+      { "http://snomed.info/sct#15375005", ProductContainingPhenanthreneDerivativeProduct }, 
+      { "15383004", ProductContainingLevodopaMedicinalProduct }, 
+      { "http://snomed.info/sct#15383004", ProductContainingLevodopaMedicinalProduct }, 
+      { "15432003", ProductContainingEthinylestradiolMedicinalProduct }, 
+      { "http://snomed.info/sct#15432003", ProductContainingEthinylestradiolMedicinalProduct }, 
+      { "1552008", MedicinalProductActingAsSalureticProduct }, 
+      { "http://snomed.info/sct#1552008", MedicinalProductActingAsSalureticProduct }, 
+      { "15772006", ProductContainingBeta1AdrenergicReceptorAntagonistProduct }, 
+      { "http://snomed.info/sct#15772006", ProductContainingBeta1AdrenergicReceptorAntagonistProduct }, 
+      { "15857002", EthanolamineDerivativeHistamineReceptorAntagonistProduct }, 
+      { "http://snomed.info/sct#15857002", EthanolamineDerivativeHistamineReceptorAntagonistProduct }, 
+      { "1594006", ProductContainingAzatadineMedicinalProduct }, 
+      { "http://snomed.info/sct#1594006", ProductContainingAzatadineMedicinalProduct }, 
+      { "16031005", ProductContainingDexchlorpheniramineMedicinalProduct }, 
+      { "http://snomed.info/sct#16031005", ProductContainingDexchlorpheniramineMedicinalProduct }, 
+      { "16037009", ProductContainingTerfenadineMedicinalProduct }, 
+      { "http://snomed.info/sct#16037009", ProductContainingTerfenadineMedicinalProduct }, 
+      { "16047007", ProductContainingBenzodiazepineProduct }, 
+      { "http://snomed.info/sct#16047007", ProductContainingBenzodiazepineProduct }, 
+      { "16131008", ProductContainingAntivenomProduct }, 
+      { "http://snomed.info/sct#16131008", ProductContainingAntivenomProduct }, 
+      { "16403005", NonSteroidalAntiInflammatoryAgent }, 
+      { "http://snomed.info/sct#16403005", NonSteroidalAntiInflammatoryAgent }, 
+      { "16602005", ProductContainingHydrocortisoneMedicinalProduct }, 
+      { "http://snomed.info/sct#16602005", ProductContainingHydrocortisoneMedicinalProduct }, 
+      { "16787005", ProductContainingStreptococcusEquisimilisAntiserumAndStreptococcusSuisAntiserumMedicinalProduct }, 
+      { "http://snomed.info/sct#16787005", ProductContainingStreptococcusEquisimilisAntiserumAndStreptococcusSuisAntiserumMedicinalProduct }, 
+      { "16791000", ProductContainingCefradineMedicinalProduct }, 
+      { "http://snomed.info/sct#16791000", ProductContainingCefradineMedicinalProduct }, 
+      { "16832004", ConjugatedEstrogensContainingProduct }, 
+      { "http://snomed.info/sct#16832004", ConjugatedEstrogensContainingProduct }, 
+      { "16858004", ProductContainingUreaMedicinalProduct }, 
+      { "http://snomed.info/sct#16858004", ProductContainingUreaMedicinalProduct }, 
+      { "16867004", ProductContainingSulfathiazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#16867004", ProductContainingSulfathiazoleMedicinalProduct }, 
+      { "169008", ProductContainingHypothalamicReleasingFactorProduct }, 
+      { "http://snomed.info/sct#169008", ProductContainingHypothalamicReleasingFactorProduct }, 
+      { "16970001", ProductContainingProguanilMedicinalProduct }, 
+      { "http://snomed.info/sct#16970001", ProductContainingProguanilMedicinalProduct }, 
+      { "16977003", ProductContainingLithiumCarbonateMedicinalProduct }, 
+      { "http://snomed.info/sct#16977003", ProductContainingLithiumCarbonateMedicinalProduct }, 
+      { "17308007", ProductContainingDapsoneMedicinalProduct }, 
+      { "http://snomed.info/sct#17308007", ProductContainingDapsoneMedicinalProduct }, 
+      { "17386008", ProductContainingAntiInfective }, 
+      { "http://snomed.info/sct#17386008", ProductContainingAntiInfective }, 
+      { "17554004", ProductContainingParamethasoneMedicinalProduct }, 
+      { "http://snomed.info/sct#17554004", ProductContainingParamethasoneMedicinalProduct }, 
+      { "17558001", ProductContainingCornOilMedicinalProduct }, 
+      { "http://snomed.info/sct#17558001", ProductContainingCornOilMedicinalProduct }, 
+      { "1758005", ProductContainingMotilinMedicinalProduct }, 
+      { "http://snomed.info/sct#1758005", ProductContainingMotilinMedicinalProduct }, 
+      { "17600005", DiagnosticRadioisotope }, 
+      { "http://snomed.info/sct#17600005", DiagnosticRadioisotope }, 
+      { "17805003", ProductContainingLithiumCitrateMedicinalProduct }, 
+      { "http://snomed.info/sct#17805003", ProductContainingLithiumCitrateMedicinalProduct }, 
+      { "17859000", ProductContainingPolyvalentCrotalidaeAntivenomMedicinalProduct }, 
+      { "http://snomed.info/sct#17859000", ProductContainingPolyvalentCrotalidaeAntivenomMedicinalProduct }, 
+      { "17893001", SkeletalMuscleRelaxant }, 
+      { "http://snomed.info/sct#17893001", SkeletalMuscleRelaxant }, 
+      { "18002004", ProductContainingAuranofinMedicinalProduct }, 
+      { "http://snomed.info/sct#18002004", ProductContainingAuranofinMedicinalProduct }, 
+      { "18125000", ProductContainingFluocinonideMedicinalProduct }, 
+      { "http://snomed.info/sct#18125000", ProductContainingFluocinonideMedicinalProduct }, 
+      { "18335001", ProductContainingPlicamycinMedicinalProduct }, 
+      { "http://snomed.info/sct#18335001", ProductContainingPlicamycinMedicinalProduct }, 
+      { "18340009", ProductContainingOxychloroseneMedicinalProduct }, 
+      { "http://snomed.info/sct#18340009", ProductContainingOxychloroseneMedicinalProduct }, 
+      { "18381001", ProductContainingPindololMedicinalProduct }, 
+      { "http://snomed.info/sct#18381001", ProductContainingPindololMedicinalProduct }, 
+      { "1842003", ProductContainingDiphemanilMedicinalProduct }, 
+      { "http://snomed.info/sct#1842003", ProductContainingDiphemanilMedicinalProduct }, 
+      { "18548003", ProductContainingMethylphenidateMedicinalProduct }, 
+      { "http://snomed.info/sct#18548003", ProductContainingMethylphenidateMedicinalProduct }, 
+      { "18679008", ProductContainingPotassiumExchangeResinProduct }, 
+      { "http://snomed.info/sct#18679008", ProductContainingPotassiumExchangeResinProduct }, 
+      { "1878008", ProductContainingHexachloropheneMedicinalProduct }, 
+      { "http://snomed.info/sct#1878008", ProductContainingHexachloropheneMedicinalProduct }, 
+      { "18811003", ProductContainingAsparaginaseMedicinalProduct }, 
+      { "http://snomed.info/sct#18811003", ProductContainingAsparaginaseMedicinalProduct }, 
+      { "1887004", ProductContainingPermethrinMedicinalProduct }, 
+      { "http://snomed.info/sct#1887004", ProductContainingPermethrinMedicinalProduct }, 
+      { "18914005", ProductContainingHydroflumethiazideMedicinalProduct }, 
+      { "http://snomed.info/sct#18914005", ProductContainingHydroflumethiazideMedicinalProduct }, 
+      { "18952006", ProductContainingEconazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#18952006", ProductContainingEconazoleMedicinalProduct }, 
+      { "19194001", ProductContainingDidanosineMedicinalProduct }, 
+      { "http://snomed.info/sct#19194001", ProductContainingDidanosineMedicinalProduct }, 
+      { "19225000", ProductContainingLorazepamMedicinalProduct }, 
+      { "http://snomed.info/sct#19225000", ProductContainingLorazepamMedicinalProduct }, 
+      { "19232009", ProductContainingPrilocaineMedicinalProduct }, 
+      { "http://snomed.info/sct#19232009", ProductContainingPrilocaineMedicinalProduct }, 
+      { "19261005", ProductContainingSulfinpyrazoneMedicinalProduct }, 
+      { "http://snomed.info/sct#19261005", ProductContainingSulfinpyrazoneMedicinalProduct }, 
+      { "19403009", ProductContainingFlurazepamMedicinalProduct }, 
+      { "http://snomed.info/sct#19403009", ProductContainingFlurazepamMedicinalProduct }, 
+      { "19405002", ProductContainingNetilmicinMedicinalProduct }, 
+      { "http://snomed.info/sct#19405002", ProductContainingNetilmicinMedicinalProduct }, 
+      { "19581007", ParasympathomimeticAgentContainingProduct }, 
+      { "http://snomed.info/sct#19581007", ParasympathomimeticAgentContainingProduct }, 
+      { "19583005", ProductContainingDiclofenamideMedicinalProduct }, 
+      { "http://snomed.info/sct#19583005", ProductContainingDiclofenamideMedicinalProduct }, 
+      { "19630009", ProductContainingSilverSulfadiazineMedicinalProduct }, 
+      { "http://snomed.info/sct#19630009", ProductContainingSilverSulfadiazineMedicinalProduct }, 
+      { "19768003", ProductContainingAlkylatingAgentProduct }, 
+      { "http://snomed.info/sct#19768003", ProductContainingAlkylatingAgentProduct }, 
+      { "1982006", BacitracinContainingProductInOcularDoseForm }, 
+      { "http://snomed.info/sct#1982006", BacitracinContainingProductInOcularDoseForm }, 
+      { "19841008", ProductContainingCeftriaxoneMedicinalProduct }, 
+      { "http://snomed.info/sct#19841008", ProductContainingCeftriaxoneMedicinalProduct }, 
+      { "20091003", ProductContainingSomatotropinReleasingFactorProduct }, 
+      { "http://snomed.info/sct#20091003", ProductContainingSomatotropinReleasingFactorProduct }, 
+      { "2016004", ProductContainingDextromethorphanMedicinalProduct }, 
+      { "http://snomed.info/sct#2016004", ProductContainingDextromethorphanMedicinalProduct }, 
+      { "20201001", ProductContainingNafoxidineMedicinalProduct }, 
+      { "http://snomed.info/sct#20201001", ProductContainingNafoxidineMedicinalProduct }, 
+      { "20237006", ProductContainingDihydrotachysterolMedicinalProduct }, 
+      { "http://snomed.info/sct#20237006", ProductContainingDihydrotachysterolMedicinalProduct }, 
+      { "20320002", ProductContainingHydrocodoneMedicinalProduct }, 
+      { "http://snomed.info/sct#20320002", ProductContainingHydrocodoneMedicinalProduct }, 
+      { "20577002", ProductContainingChoriogonadotropinMedicinalProduct }, 
+      { "http://snomed.info/sct#20577002", ProductContainingChoriogonadotropinMedicinalProduct }, 
+      { "20865003", ProductContainingDiflunisalMedicinalProduct }, 
+      { "http://snomed.info/sct#20865003", ProductContainingDiflunisalMedicinalProduct }, 
+      { "21069002", LipotropicAgent }, 
+      { "http://snomed.info/sct#21069002", LipotropicAgent }, 
+      { "211009", ProductContainingNorethandroloneMedicinalProduct }, 
+      { "http://snomed.info/sct#211009", ProductContainingNorethandroloneMedicinalProduct }, 
+      { "21159006", ProductContainingPargylineMedicinalProduct }, 
+      { "http://snomed.info/sct#21159006", ProductContainingPargylineMedicinalProduct }, 
+      { "21691008", ProductContainingMagnesiumTrisilicateMedicinalProduct }, 
+      { "http://snomed.info/sct#21691008", ProductContainingMagnesiumTrisilicateMedicinalProduct }, 
+      { "21701005", ProductContainingCromoglicicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#21701005", ProductContainingCromoglicicAcidMedicinalProduct }, 
+      { "21767006", ProductContainingIronDextranMedicinalProduct }, 
+      { "http://snomed.info/sct#21767006", ProductContainingIronDextranMedicinalProduct }, 
+      { "2183004", ProductContainingTetryzolineMedicinalProduct }, 
+      { "http://snomed.info/sct#2183004", ProductContainingTetryzolineMedicinalProduct }, 
+      { "2190009", ProductContainingTrihexyphenidylMedicinalProduct }, 
+      { "http://snomed.info/sct#2190009", ProductContainingTrihexyphenidylMedicinalProduct }, 
+      { "21986005", ProductContainingErysipelothrixRhusiopathiaeAntiserumMedicinalProduct }, 
+      { "http://snomed.info/sct#21986005", ProductContainingErysipelothrixRhusiopathiaeAntiserumMedicinalProduct }, 
+      { "22091006", ProductContainingHormoneProduct }, 
+      { "http://snomed.info/sct#22091006", ProductContainingHormoneProduct }, 
+      { "22198003", ProductContainingMetolazoneMedicinalProduct }, 
+      { "http://snomed.info/sct#22198003", ProductContainingMetolazoneMedicinalProduct }, 
+      { "22274004", ProductContainingMethandriolMedicinalProduct }, 
+      { "http://snomed.info/sct#22274004", ProductContainingMethandriolMedicinalProduct }, 
+      { "22474002", ProductContainingAldosteroneMedicinalProduct }, 
+      { "http://snomed.info/sct#22474002", ProductContainingAldosteroneMedicinalProduct }, 
+      { "22587006", ProductContainingDepolarizingNeuromuscularBlockerProduct }, 
+      { "http://snomed.info/sct#22587006", ProductContainingDepolarizingNeuromuscularBlockerProduct }, 
+      { "22657006", ProductContainingCalcitoninMedicinalProduct }, 
+      { "http://snomed.info/sct#22657006", ProductContainingCalcitoninMedicinalProduct }, 
+      { "22672005", ProductContainingAmfetamineMedicinalProduct }, 
+      { "http://snomed.info/sct#22672005", ProductContainingAmfetamineMedicinalProduct }, 
+      { "22696000", ProductContainingHydralazineMedicinalProduct }, 
+      { "http://snomed.info/sct#22696000", ProductContainingHydralazineMedicinalProduct }, 
+      { "22969001", ProductContainingOxytetracyclineMedicinalProduct }, 
+      { "http://snomed.info/sct#22969001", ProductContainingOxytetracyclineMedicinalProduct }, 
+      { "23079006", ProductContainingVincristineMedicinalProduct }, 
+      { "http://snomed.info/sct#23079006", ProductContainingVincristineMedicinalProduct }, 
+      { "23222006", ProductContainingAntiserumProduct }, 
+      { "http://snomed.info/sct#23222006", ProductContainingAntiserumProduct }, 
+      { "23532003", ProductContainingPhenmetrazineMedicinalProduct }, 
+      { "http://snomed.info/sct#23532003", ProductContainingPhenmetrazineMedicinalProduct }, 
+      { "23827009", ProductContainingSulfacetamideMedicinalProduct }, 
+      { "http://snomed.info/sct#23827009", ProductContainingSulfacetamideMedicinalProduct }, 
+      { "23888001", ProductContainingCascaraMedicinalProduct }, 
+      { "http://snomed.info/sct#23888001", ProductContainingCascaraMedicinalProduct }, 
+      { "24036003", MedicinalProductActingAsAntianemicAgentProduct }, 
+      { "http://snomed.info/sct#24036003", MedicinalProductActingAsAntianemicAgentProduct }, 
+      { "24450004", ProductContainingEthambutolMedicinalProduct }, 
+      { "http://snomed.info/sct#24450004", ProductContainingEthambutolMedicinalProduct }, 
+      { "24504000", ProductContainingMethylcelluloseMedicinalProduct }, 
+      { "http://snomed.info/sct#24504000", ProductContainingMethylcelluloseMedicinalProduct }, 
+      { "24866006", ProductContainingSalmonellaTyphimuriumAntiserumMedicinalProduct }, 
+      { "http://snomed.info/sct#24866006", ProductContainingSalmonellaTyphimuriumAntiserumMedicinalProduct }, 
+      { "2497003", ProductContainingHexetidineMedicinalProduct }, 
+      { "http://snomed.info/sct#2497003", ProductContainingHexetidineMedicinalProduct }, 
+      { "25014009", ProductContainingTripelennamineMedicinalProduct }, 
+      { "http://snomed.info/sct#25014009", ProductContainingTripelennamineMedicinalProduct }, 
+      { "25076002", ProductContainingCarisoprodolMedicinalProduct }, 
+      { "http://snomed.info/sct#25076002", ProductContainingCarisoprodolMedicinalProduct }, 
+      { "25085002", ProductContainingCholecystokininMedicinalProduct }, 
+      { "http://snomed.info/sct#25085002", ProductContainingCholecystokininMedicinalProduct }, 
+      { "25142008", ProductContainingTrilostaneMedicinalProduct }, 
+      { "http://snomed.info/sct#25142008", ProductContainingTrilostaneMedicinalProduct }, 
+      { "25246002", ProductContainingAllopurinolMedicinalProduct }, 
+      { "http://snomed.info/sct#25246002", ProductContainingAllopurinolMedicinalProduct }, 
+      { "25398003", ProductContainingIchthammolMedicinalProduct }, 
+      { "http://snomed.info/sct#25398003", ProductContainingIchthammolMedicinalProduct }, 
+      { "25419009", ProductContainingBariumSulfateMedicinalProduct }, 
+      { "http://snomed.info/sct#25419009", ProductContainingBariumSulfateMedicinalProduct }, 
+      { "25673006", ProductContainingOmeprazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#25673006", ProductContainingOmeprazoleMedicinalProduct }, 
+      { "2571007", ProductContainingBusulfanMedicinalProduct }, 
+      { "http://snomed.info/sct#2571007", ProductContainingBusulfanMedicinalProduct }, 
+      { "25860005", ProductContainingTerconazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#25860005", ProductContainingTerconazoleMedicinalProduct }, 
+      { "2596005", ProductContainingLincomycinMedicinalProduct }, 
+      { "http://snomed.info/sct#2596005", ProductContainingLincomycinMedicinalProduct }, 
+      { "25995007", ProductContainingTriprolidineMedicinalProduct }, 
+      { "http://snomed.info/sct#25995007", ProductContainingTriprolidineMedicinalProduct }, 
+      { "26122009", ProductContainingDimetindeneMedicinalProduct }, 
+      { "http://snomed.info/sct#26122009", ProductContainingDimetindeneMedicinalProduct }, 
+      { "26124005", ProductContainingGlipizideMedicinalProduct }, 
+      { "http://snomed.info/sct#26124005", ProductContainingGlipizideMedicinalProduct }, 
+      { "26244009", ProductContainingMuscarinicReceptorAntagonistProduct }, 
+      { "http://snomed.info/sct#26244009", ProductContainingMuscarinicReceptorAntagonistProduct }, 
+      { "26303005", ProductContainingHexestrolMedicinalProduct }, 
+      { "http://snomed.info/sct#26303005", ProductContainingHexestrolMedicinalProduct }, 
+      { "26370007", HemostaticAgent }, 
+      { "http://snomed.info/sct#26370007", HemostaticAgent }, 
+      { "26458009", ProductContainingDiphenhydramineMedicinalProduct }, 
+      { "http://snomed.info/sct#26458009", ProductContainingDiphenhydramineMedicinalProduct }, 
+      { "26462003", ProductContainingCyproheptadineMedicinalProduct }, 
+      { "http://snomed.info/sct#26462003", ProductContainingCyproheptadineMedicinalProduct }, 
+      { "26503009", ProductContainingDeserpidineMedicinalProduct }, 
+      { "http://snomed.info/sct#26503009", ProductContainingDeserpidineMedicinalProduct }, 
+      { "26523005", ProductContainingDobutamineMedicinalProduct }, 
+      { "http://snomed.info/sct#26523005", ProductContainingDobutamineMedicinalProduct }, 
+      { "26548008", ProductContainingPancreaticHormoneProduct }, 
+      { "http://snomed.info/sct#26548008", ProductContainingPancreaticHormoneProduct }, 
+      { "26574002", ProductContainingDroperidolMedicinalProduct }, 
+      { "http://snomed.info/sct#26574002", ProductContainingDroperidolMedicinalProduct }, 
+      { "26580005", Digestant }, 
+      { "http://snomed.info/sct#26580005", Digestant }, 
+      { "26736008", ProductContainingFerrousGluconateMedicinalProduct }, 
+      { "http://snomed.info/sct#26736008", ProductContainingFerrousGluconateMedicinalProduct }, 
+      { "2679000", ProductContainingOxandroloneMedicinalProduct }, 
+      { "http://snomed.info/sct#2679000", ProductContainingOxandroloneMedicinalProduct }, 
+      { "26800000", ProductContainingMidazolamMedicinalProduct }, 
+      { "http://snomed.info/sct#26800000", ProductContainingMidazolamMedicinalProduct }, 
+      { "26842003", ProductContainingBurbotLiverOilMedicinalProduct }, 
+      { "http://snomed.info/sct#26842003", ProductContainingBurbotLiverOilMedicinalProduct }, 
+      { "27035007", ProductContainingHeavyMetalAntagonistProduct }, 
+      { "http://snomed.info/sct#27035007", ProductContainingHeavyMetalAntagonistProduct }, 
+      { "27196008", ProductContainingBupivacaineMedicinalProduct }, 
+      { "http://snomed.info/sct#27196008", ProductContainingBupivacaineMedicinalProduct }, 
+      { "27242001", ProductContainingMethylprednisoloneMedicinalProduct }, 
+      { "http://snomed.info/sct#27242001", ProductContainingMethylprednisoloneMedicinalProduct }, 
+      { "27479000", ProductContainingZidovudineMedicinalProduct }, 
+      { "http://snomed.info/sct#27479000", ProductContainingZidovudineMedicinalProduct }, 
+      { "27518004", ParathyroidHormoneAgentContainingProduct }, 
+      { "http://snomed.info/sct#27518004", ParathyroidHormoneAgentContainingProduct }, 
+      { "27638005", ProductContainingAlteplaseMedicinalProduct }, 
+      { "http://snomed.info/sct#27638005", ProductContainingAlteplaseMedicinalProduct }, 
+      { "27658006", ProductContainingAmoxicillinMedicinalProduct }, 
+      { "http://snomed.info/sct#27658006", ProductContainingAmoxicillinMedicinalProduct }, 
+      { "27754002", ProductContainingPiroxicamMedicinalProduct }, 
+      { "http://snomed.info/sct#27754002", ProductContainingPiroxicamMedicinalProduct }, 
+      { "27867009", AntineoplasticAgent }, 
+      { "http://snomed.info/sct#27867009", AntineoplasticAgent }, 
+      { "28149003", ProductContainingPentostatinMedicinalProduct }, 
+      { "http://snomed.info/sct#28149003", ProductContainingPentostatinMedicinalProduct }, 
+      { "28235004", ProductContainingDoxapramMedicinalProduct }, 
+      { "http://snomed.info/sct#28235004", ProductContainingDoxapramMedicinalProduct }, 
+      { "28410007", ProductContainingAlphaCarboxypenicillinProduct }, 
+      { "http://snomed.info/sct#28410007", ProductContainingAlphaCarboxypenicillinProduct }, 
+      { "28415002", ProductContainingMethscopolamineMedicinalProduct }, 
+      { "http://snomed.info/sct#28415002", ProductContainingMethscopolamineMedicinalProduct }, 
+      { "28426008", ProductContainingFluocinoloneMedicinalProduct }, 
+      { "http://snomed.info/sct#28426008", ProductContainingFluocinoloneMedicinalProduct }, 
+      { "28506006", ProductContainingFlucytosineMedicinalProduct }, 
+      { "http://snomed.info/sct#28506006", ProductContainingFlucytosineMedicinalProduct }, 
+      { "28748001", ProductContainingChloralHydrateMedicinalProduct }, 
+      { "http://snomed.info/sct#28748001", ProductContainingChloralHydrateMedicinalProduct }, 
+      { "28841002", ProductContainingEthisteroneMedicinalProduct }, 
+      { "http://snomed.info/sct#28841002", ProductContainingEthisteroneMedicinalProduct }, 
+      { "28906000", ProductContainingPercoidLiverOilMedicinalProduct }, 
+      { "http://snomed.info/sct#28906000", ProductContainingPercoidLiverOilMedicinalProduct }, 
+      { "29058003", ProductContainingHalcinonideMedicinalProduct }, 
+      { "http://snomed.info/sct#29058003", ProductContainingHalcinonideMedicinalProduct }, 
+      { "29089004", ProductContainingMitobronitolMedicinalProduct }, 
+      { "http://snomed.info/sct#29089004", ProductContainingMitobronitolMedicinalProduct }, 
+      { "29121001", ProductContainingMersalylMedicinalProduct }, 
+      { "http://snomed.info/sct#29121001", ProductContainingMersalylMedicinalProduct }, 
+      { "29129004", ProductContainingOxymetazolineMedicinalProduct }, 
+      { "http://snomed.info/sct#29129004", ProductContainingOxymetazolineMedicinalProduct }, 
+      { "29156002", MechlorethamineContainingProduct }, 
+      { "http://snomed.info/sct#29156002", MechlorethamineContainingProduct }, 
+      { "29175007", ProductContainingRifampicinMedicinalProduct }, 
+      { "http://snomed.info/sct#29175007", ProductContainingRifampicinMedicinalProduct }, 
+      { "29439004", ProductContainingCaptoprilMedicinalProduct }, 
+      { "http://snomed.info/sct#29439004", ProductContainingCaptoprilMedicinalProduct }, 
+      { "2949005", DiagnosticAid }, 
+      { "http://snomed.info/sct#2949005", DiagnosticAid }, 
+      { "29620001", ProductContainingBetaTocopherolMedicinalProduct }, 
+      { "http://snomed.info/sct#29620001", ProductContainingBetaTocopherolMedicinalProduct }, 
+      { "29840005", ProductContainingAmoxapineMedicinalProduct }, 
+      { "http://snomed.info/sct#29840005", ProductContainingAmoxapineMedicinalProduct }, 
+      { "29877002", ProductContainingIsocarboxazidMedicinalProduct }, 
+      { "http://snomed.info/sct#29877002", ProductContainingIsocarboxazidMedicinalProduct }, 
+      { "29896003", ProductContainingBetamethasoneMedicinalProduct }, 
+      { "http://snomed.info/sct#29896003", ProductContainingBetamethasoneMedicinalProduct }, 
+      { "30010009", ProductContainingCyanocobalaminMedicinalProduct }, 
+      { "http://snomed.info/sct#30010009", ProductContainingCyanocobalaminMedicinalProduct }, 
+      { "30125007", ProductContainingSennaMedicinalProduct }, 
+      { "http://snomed.info/sct#30125007", ProductContainingSennaMedicinalProduct }, 
+      { "302007", ProductContainingSpiramycinMedicinalProduct }, 
+      { "http://snomed.info/sct#302007", ProductContainingSpiramycinMedicinalProduct }, 
+      { "30306003", ProductContainingThiamineMedicinalProduct }, 
+      { "http://snomed.info/sct#30306003", ProductContainingThiamineMedicinalProduct }, 
+      { "30317002", ProductContainingCisaprideMedicinalProduct }, 
+      { "http://snomed.info/sct#30317002", ProductContainingCisaprideMedicinalProduct }, 
+      { "3037004", ProductContainingFlumetasoneMedicinalProduct }, 
+      { "http://snomed.info/sct#3037004", ProductContainingFlumetasoneMedicinalProduct }, 
+      { "30427009", ProductContainingErythromycinMedicinalProduct }, 
+      { "http://snomed.info/sct#30427009", ProductContainingErythromycinMedicinalProduct }, 
+      { "30466001", ProductContainingClomifeneMedicinalProduct }, 
+      { "http://snomed.info/sct#30466001", ProductContainingClomifeneMedicinalProduct }, 
+      { "30492008", MedicinalProductActingAsDiureticProduct }, 
+      { "http://snomed.info/sct#30492008", MedicinalProductActingAsDiureticProduct }, 
+      { "30729008", ProductContainingIronMedicinalProduct }, 
+      { "http://snomed.info/sct#30729008", ProductContainingIronMedicinalProduct }, 
+      { "30761007", ProductContainingMannitolMedicinalProduct }, 
+      { "http://snomed.info/sct#30761007", ProductContainingMannitolMedicinalProduct }, 
+      { "30964009", ProductContainingMethyprylonMedicinalProduct }, 
+      { "http://snomed.info/sct#30964009", ProductContainingMethyprylonMedicinalProduct }, 
+      { "30988006", ProductContainingDienestrolMedicinalProduct }, 
+      { "http://snomed.info/sct#30988006", ProductContainingDienestrolMedicinalProduct }, 
+      { "31087008", ProductContainingAmpicillinMedicinalProduct }, 
+      { "http://snomed.info/sct#31087008", ProductContainingAmpicillinMedicinalProduct }, 
+      { "31231007", ProductContainingHydrogenPeroxideMedicinalProduct }, 
+      { "http://snomed.info/sct#31231007", ProductContainingHydrogenPeroxideMedicinalProduct }, 
+      { "3127006", ProductContainingFluorouracilMedicinalProduct }, 
+      { "http://snomed.info/sct#3127006", ProductContainingFluorouracilMedicinalProduct }, 
+      { "31305008", ProductContainingStreptococcusEquisimilisAntiserumMedicinalProduct }, 
+      { "http://snomed.info/sct#31305008", ProductContainingStreptococcusEquisimilisAntiserumMedicinalProduct }, 
+      { "31306009", ProductContainingQuinidineMedicinalProduct }, 
+      { "http://snomed.info/sct#31306009", ProductContainingQuinidineMedicinalProduct }, 
+      { "31684002", ProductContainingBuprenorphineMedicinalProduct }, 
+      { "http://snomed.info/sct#31684002", ProductContainingBuprenorphineMedicinalProduct }, 
+      { "31690003", ProductContainingBethanecholMedicinalProduct }, 
+      { "http://snomed.info/sct#31690003", ProductContainingBethanecholMedicinalProduct }, 
+      { "31692006", ProductContainingPentamidineMedicinalProduct }, 
+      { "http://snomed.info/sct#31692006", ProductContainingPentamidineMedicinalProduct }, 
+      { "31865003", ProductContainingFluconazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#31865003", ProductContainingFluconazoleMedicinalProduct }, 
+      { "31872002", ProductContainingPramocaineMedicinalProduct }, 
+      { "http://snomed.info/sct#31872002", ProductContainingPramocaineMedicinalProduct }, 
+      { "32249005", ProductContainingAntiviralProduct }, 
+      { "http://snomed.info/sct#32249005", ProductContainingAntiviralProduct }, 
+      { "32313007", ProductContainingEnfluraneMedicinalProduct }, 
+      { "http://snomed.info/sct#32313007", ProductContainingEnfluraneMedicinalProduct }, 
+      { "32462006", ProductContainingMelanocyteStimulatingHormoneReleasingFactorProduct }, 
+      { "http://snomed.info/sct#32462006", ProductContainingMelanocyteStimulatingHormoneReleasingFactorProduct }, 
+      { "32474005", ProductContainingProbucolMedicinalProduct }, 
+      { "http://snomed.info/sct#32474005", ProductContainingProbucolMedicinalProduct }, 
+      { "32583002", MedicinalProductActingAsAntiseborrheicAgentProduct }, 
+      { "http://snomed.info/sct#32583002", MedicinalProductActingAsAntiseborrheicAgentProduct }, 
+      { "32647002", ProductContainingErgotamineMedicinalProduct }, 
+      { "http://snomed.info/sct#32647002", ProductContainingErgotamineMedicinalProduct }, 
+      { "32653002", ProductContainingErgosterolMedicinalProduct }, 
+      { "http://snomed.info/sct#32653002", ProductContainingErgosterolMedicinalProduct }, 
+      { "32792001", ProductContainingTrimethoprimMedicinalProduct }, 
+      { "http://snomed.info/sct#32792001", ProductContainingTrimethoprimMedicinalProduct }, 
+      { "32823007", ProductContainingMaprotilineMedicinalProduct }, 
+      { "http://snomed.info/sct#32823007", ProductContainingMaprotilineMedicinalProduct }, 
+      { "32955006", ProductContainingDomperidoneMedicinalProduct }, 
+      { "http://snomed.info/sct#32955006", ProductContainingDomperidoneMedicinalProduct }, 
+      { "32960005", ProductContainingThiosalicylateMedicinalProduct }, 
+      { "http://snomed.info/sct#32960005", ProductContainingThiosalicylateMedicinalProduct }, 
+      { "33124007", ProductContainingTolbutamideMedicinalProduct }, 
+      { "http://snomed.info/sct#33124007", ProductContainingTolbutamideMedicinalProduct }, 
+      { "33219003", TricyclicAntidepressant }, 
+      { "http://snomed.info/sct#33219003", TricyclicAntidepressant }, 
+      { "33231001", ProductContainingPentobarbitalMedicinalProduct }, 
+      { "http://snomed.info/sct#33231001", ProductContainingPentobarbitalMedicinalProduct }, 
+      { "33252009", ProductContainingBetaAdrenergicReceptorAntagonistProduct }, 
+      { "http://snomed.info/sct#33252009", ProductContainingBetaAdrenergicReceptorAntagonistProduct }, 
+      { "3334000", ProductContainingCefotaximeMedicinalProduct }, 
+      { "http://snomed.info/sct#3334000", ProductContainingCefotaximeMedicinalProduct }, 
+      { "33378002", ProductContainingDesipramineMedicinalProduct }, 
+      { "http://snomed.info/sct#33378002", ProductContainingDesipramineMedicinalProduct }, 
+      { "33588000", ProductContainingThioridazineMedicinalProduct }, 
+      { "http://snomed.info/sct#33588000", ProductContainingThioridazineMedicinalProduct }, 
+      { "33589008", ProductContainingGlycosideProduct }, 
+      { "http://snomed.info/sct#33589008", ProductContainingGlycosideProduct }, 
+      { "33664007", ProductContainingAcetazolamideMedicinalProduct }, 
+      { "http://snomed.info/sct#33664007", ProductContainingAcetazolamideMedicinalProduct }, 
+      { "33675006", ProductContainingCarbacholMedicinalProduct }, 
+      { "http://snomed.info/sct#33675006", ProductContainingCarbacholMedicinalProduct }, 
+      { "33682005", MedicinalProductActingAsMydriaticProduct }, 
+      { "http://snomed.info/sct#33682005", MedicinalProductActingAsMydriaticProduct }, 
+      { "33815001", ProductContainingStreptococcusSuisAntiserumMedicinalProduct }, 
+      { "http://snomed.info/sct#33815001", ProductContainingStreptococcusSuisAntiserumMedicinalProduct }, 
+      { "34012005", ProductContainingSulfonylureaProduct }, 
+      { "http://snomed.info/sct#34012005", ProductContainingSulfonylureaProduct }, 
+      { "34217006", ProductContainingOxyquinolineMedicinalProduct }, 
+      { "http://snomed.info/sct#34217006", ProductContainingOxyquinolineMedicinalProduct }, 
+      { "34364009", ProductContainingMefenamicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#34364009", ProductContainingMefenamicAcidMedicinalProduct }, 
+      { "34393009", ProductContainingTolazamideMedicinalProduct }, 
+      { "http://snomed.info/sct#34393009", ProductContainingTolazamideMedicinalProduct }, 
+      { "34462007", ProductContainingNatamycinMedicinalProduct }, 
+      { "http://snomed.info/sct#34462007", ProductContainingNatamycinMedicinalProduct }, 
+      { "34599009", ProductContainingThyroglobulinMedicinalProduct }, 
+      { "http://snomed.info/sct#34599009", ProductContainingThyroglobulinMedicinalProduct }, 
+      { "34693000", ProductContainingZalcitabineMedicinalProduct }, 
+      { "http://snomed.info/sct#34693000", ProductContainingZalcitabineMedicinalProduct }, 
+      { "34731007", ProductContainingCarbenicillinMedicinalProduct }, 
+      { "http://snomed.info/sct#34731007", ProductContainingCarbenicillinMedicinalProduct }, 
+      { "34816007", ProductContainingCodLiverOilMedicinalProduct }, 
+      { "http://snomed.info/sct#34816007", ProductContainingCodLiverOilMedicinalProduct }, 
+      { "34833000", ProductContainingHydrocortisoneInOcularDoseFormMedicinalProductForm }, 
+      { "http://snomed.info/sct#34833000", ProductContainingHydrocortisoneInOcularDoseFormMedicinalProductForm }, 
+      { "34929006", ProductContainingBenzethoniumMedicinalProduct }, 
+      { "http://snomed.info/sct#34929006", ProductContainingBenzethoniumMedicinalProduct }, 
+      { "35035001", ProductContainingOrphenadrineMedicinalProduct }, 
+      { "http://snomed.info/sct#35035001", ProductContainingOrphenadrineMedicinalProduct }, 
+      { "35063004", ProductContainingRibavirinMedicinalProduct }, 
+      { "http://snomed.info/sct#35063004", ProductContainingRibavirinMedicinalProduct }, 
+      { "35282000", ProductContainingGemfibrozilMedicinalProduct }, 
+      { "http://snomed.info/sct#35282000", ProductContainingGemfibrozilMedicinalProduct }, 
+      { "35300007", ProductContainingDaunorubicinMedicinalProduct }, 
+      { "http://snomed.info/sct#35300007", ProductContainingDaunorubicinMedicinalProduct }, 
+      { "35324004", ProductContainingParaldehydeMedicinalProduct }, 
+      { "http://snomed.info/sct#35324004", ProductContainingParaldehydeMedicinalProduct }, 
+      { "35392005", ProductContainingCalciumExchangeResinProduct }, 
+      { "http://snomed.info/sct#35392005", ProductContainingCalciumExchangeResinProduct }, 
+      { "35476001", ProductContainingSilverNitrateMedicinalProduct }, 
+      { "http://snomed.info/sct#35476001", ProductContainingSilverNitrateMedicinalProduct }, 
+      { "35531004", ProductContainingHydrocortamateMedicinalProduct }, 
+      { "http://snomed.info/sct#35531004", ProductContainingHydrocortamateMedicinalProduct }, 
+      { "35768004", ProductContainingOxybutyninMedicinalProduct }, 
+      { "http://snomed.info/sct#35768004", ProductContainingOxybutyninMedicinalProduct }, 
+      { "35967000", ProductContainingMedazepamMedicinalProduct }, 
+      { "http://snomed.info/sct#35967000", ProductContainingMedazepamMedicinalProduct }, 
+      { "36068003", ProductContainingPyrantelMedicinalProduct }, 
+      { "http://snomed.info/sct#36068003", ProductContainingPyrantelMedicinalProduct }, 
+      { "36113004", ProductContainingImipramineMedicinalProduct }, 
+      { "http://snomed.info/sct#36113004", ProductContainingImipramineMedicinalProduct }, 
+      { "36218003", ProductContainingThiethylperazineMedicinalProduct }, 
+      { "http://snomed.info/sct#36218003", ProductContainingThiethylperazineMedicinalProduct }, 
+      { "36236003", MedicinalProductActingAsAntidepressantAgentProduct }, 
+      { "http://snomed.info/sct#36236003", MedicinalProductActingAsAntidepressantAgentProduct }, 
+      { "36391008", ProductContainingPrimaquineMedicinalProduct }, 
+      { "http://snomed.info/sct#36391008", ProductContainingPrimaquineMedicinalProduct }, 
+      { "36537006", ProductContainingAmbenoniumMedicinalProduct }, 
+      { "http://snomed.info/sct#36537006", ProductContainingAmbenoniumMedicinalProduct }, 
+      { "36594001", ProductContainingTiabendazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#36594001", ProductContainingTiabendazoleMedicinalProduct }, 
+      { "36621009", ProductContainingMedroxyprogesteroneMedicinalProduct }, 
+      { "http://snomed.info/sct#36621009", ProductContainingMedroxyprogesteroneMedicinalProduct }, 
+      { "36642006", ProductContainingPropanthelineMedicinalProduct }, 
+      { "http://snomed.info/sct#36642006", ProductContainingPropanthelineMedicinalProduct }, 
+      { "36893000", ProductContainingCeftazidimeMedicinalProduct }, 
+      { "http://snomed.info/sct#36893000", ProductContainingCeftazidimeMedicinalProduct }, 
+      { "36909007", ProductContainingPhenindamineMedicinalProduct }, 
+      { "http://snomed.info/sct#36909007", ProductContainingPhenindamineMedicinalProduct }, 
+      { "37084008", ProductContainingQuinoloneAndAntibiotic }, 
+      { "http://snomed.info/sct#37084008", ProductContainingQuinoloneAndAntibiotic }, 
+      { "37306000", ProductContainingVidarabineMedicinalProduct }, 
+      { "http://snomed.info/sct#37306000", ProductContainingVidarabineMedicinalProduct }, 
+      { "37400007", ProductContainingMagnesiumSulfateMedicinalProduct }, 
+      { "http://snomed.info/sct#37400007", ProductContainingMagnesiumSulfateMedicinalProduct }, 
+      { "37628007", ProductContainingCefalotinMedicinalProduct }, 
+      { "http://snomed.info/sct#37628007", ProductContainingCefalotinMedicinalProduct }, 
+      { "37803001", ProductContainingTubocurarineMedicinalProduct }, 
+      { "http://snomed.info/sct#37803001", ProductContainingTubocurarineMedicinalProduct }, 
+      { "38076006", ProductContainingThyroxineMedicinalProduct }, 
+      { "http://snomed.info/sct#38076006", ProductContainingThyroxineMedicinalProduct }, 
+      { "3814009", ProductContainingPropylthiouracilMedicinalProduct }, 
+      { "http://snomed.info/sct#3814009", ProductContainingPropylthiouracilMedicinalProduct }, 
+      { "38166006", ProductContainingTolnaftateMedicinalProduct }, 
+      { "http://snomed.info/sct#38166006", ProductContainingTolnaftateMedicinalProduct }, 
+      { "3822002", ProductContainingSuccinylcholineMedicinalProduct }, 
+      { "http://snomed.info/sct#3822002", ProductContainingSuccinylcholineMedicinalProduct }, 
+      { "38231004", ProductContainingPolysaccharideIronComplexMedicinalProduct }, 
+      { "http://snomed.info/sct#38231004", ProductContainingPolysaccharideIronComplexMedicinalProduct }, 
+      { "38268001", ProductContainingIbuprofenMedicinalProduct }, 
+      { "http://snomed.info/sct#38268001", ProductContainingIbuprofenMedicinalProduct }, 
+      { "38314008", ProductContainingIsotretinoinMedicinalProduct }, 
+      { "http://snomed.info/sct#38314008", ProductContainingIsotretinoinMedicinalProduct }, 
+      { "38413003", ProductManufacturedAsOticDoseFormProduct }, 
+      { "http://snomed.info/sct#38413003", ProductManufacturedAsOticDoseFormProduct }, 
+      { "38578004", ProductContainingMegestrolMedicinalProduct }, 
+      { "http://snomed.info/sct#38578004", ProductContainingMegestrolMedicinalProduct }, 
+      { "38900001", ProliferantAgent }, 
+      { "http://snomed.info/sct#38900001", ProliferantAgent }, 
+      { "39064002", ProductContainingAcetohexamideMedicinalProduct }, 
+      { "http://snomed.info/sct#39064002", ProductContainingAcetohexamideMedicinalProduct }, 
+      { "39124003", ProductContainingMethohexitalMedicinalProduct }, 
+      { "http://snomed.info/sct#39124003", ProductContainingMethohexitalMedicinalProduct }, 
+      { "39128000", ProductContainingFamotidineMedicinalProduct }, 
+      { "http://snomed.info/sct#39128000", ProductContainingFamotidineMedicinalProduct }, 
+      { "39142008", ProductContainingPhendimetrazineMedicinalProduct }, 
+      { "http://snomed.info/sct#39142008", ProductContainingPhendimetrazineMedicinalProduct }, 
+      { "39252001", WaterBalanceAgent }, 
+      { "http://snomed.info/sct#39252001", WaterBalanceAgent }, 
+      { "39359008", PhenoxymethylpenicillinContainingProduct }, 
+      { "http://snomed.info/sct#39359008", PhenoxymethylpenicillinContainingProduct }, 
+      { "39487003", InsulinContainingProduct }, 
+      { "http://snomed.info/sct#39487003", InsulinContainingProduct }, 
+      { "39516004", ProductContainingDisulfiramMedicinalProduct }, 
+      { "http://snomed.info/sct#39516004", ProductContainingDisulfiramMedicinalProduct }, 
+      { "39608003", ProductContainingPentazocineMedicinalProduct }, 
+      { "http://snomed.info/sct#39608003", ProductContainingPentazocineMedicinalProduct }, 
+      { "39707000", ProductContainingParaAminobenzoicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#39707000", ProductContainingParaAminobenzoicAcidMedicinalProduct }, 
+      { "39860005", ProductContainingFructoseMedicinalProduct }, 
+      { "http://snomed.info/sct#39860005", ProductContainingFructoseMedicinalProduct }, 
+      { "39939003", ProductContainingPhenyltoloxamineMedicinalProduct }, 
+      { "http://snomed.info/sct#39939003", ProductContainingPhenyltoloxamineMedicinalProduct }, 
+      { "40232005", ProductContainingKetoconazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#40232005", ProductContainingKetoconazoleMedicinalProduct }, 
+      { "40339003", ProductContainingCalciumLactateMedicinalProduct }, 
+      { "http://snomed.info/sct#40339003", ProductContainingCalciumLactateMedicinalProduct }, 
+      { "40429005", ProductContainingEtomidateMedicinalProduct }, 
+      { "http://snomed.info/sct#40429005", ProductContainingEtomidateMedicinalProduct }, 
+      { "40430000", ProductContainingBromelainsMedicinalProduct }, 
+      { "http://snomed.info/sct#40430000", ProductContainingBromelainsMedicinalProduct }, 
+      { "40556005", ProductContainingPhenytoinMedicinalProduct }, 
+      { "http://snomed.info/sct#40556005", ProductContainingPhenytoinMedicinalProduct }, 
+      { "40562000", ProductContainingMethylergometrineMedicinalProduct }, 
+      { "http://snomed.info/sct#40562000", ProductContainingMethylergometrineMedicinalProduct }, 
+      { "40589005", ProductContainingAmitriptylineMedicinalProduct }, 
+      { "http://snomed.info/sct#40589005", ProductContainingAmitriptylineMedicinalProduct }, 
+      { "40648001", ProductContainingFentanylMedicinalProduct }, 
+      { "http://snomed.info/sct#40648001", ProductContainingFentanylMedicinalProduct }, 
+      { "40820003", ProductContainingCarbamazepineMedicinalProduct }, 
+      { "http://snomed.info/sct#40820003", ProductContainingCarbamazepineMedicinalProduct }, 
+      { "40877002", ProductContainingStreptomycinMedicinalProduct }, 
+      { "http://snomed.info/sct#40877002", ProductContainingStreptomycinMedicinalProduct }, 
+      { "40905005", ProductContainingBeractantMedicinalProduct }, 
+      { "http://snomed.info/sct#40905005", ProductContainingBeractantMedicinalProduct }, 
+      { "40974005", ProductContainingDipipanoneMedicinalProduct }, 
+      { "http://snomed.info/sct#40974005", ProductContainingDipipanoneMedicinalProduct }, 
+      { "40999006", ProductContainingLomustineMedicinalProduct }, 
+      { "http://snomed.info/sct#40999006", ProductContainingLomustineMedicinalProduct }, 
+      { "41001009", ProductContainingDinoprostMedicinalProduct }, 
+      { "http://snomed.info/sct#41001009", ProductContainingDinoprostMedicinalProduct }, 
+      { "41015006", ProductContainingMetaraminolMedicinalProduct }, 
+      { "http://snomed.info/sct#41015006", ProductContainingMetaraminolMedicinalProduct }, 
+      { "41147003", ProductContainingPerphenazineMedicinalProduct }, 
+      { "http://snomed.info/sct#41147003", ProductContainingPerphenazineMedicinalProduct }, 
+      { "41193000", ProductContainingAciclovirMedicinalProduct }, 
+      { "http://snomed.info/sct#41193000", ProductContainingAciclovirMedicinalProduct }, 
+      { "4126008", ProductContainingFluprednisoloneMedicinalProduct }, 
+      { "http://snomed.info/sct#4126008", ProductContainingFluprednisoloneMedicinalProduct }, 
+      { "41324009", ProductContainingPropiomazineMedicinalProduct }, 
+      { "http://snomed.info/sct#41324009", ProductContainingPropiomazineMedicinalProduct }, 
+      { "41365009", ProductContainingFluphenazineMedicinalProduct }, 
+      { "http://snomed.info/sct#41365009", ProductContainingFluphenazineMedicinalProduct }, 
+      { "41367001", ProductContainingEnterogastroneMedicinalProduct }, 
+      { "http://snomed.info/sct#41367001", ProductContainingEnterogastroneMedicinalProduct }, 
+      { "41399007", ProductContainingOxazolidinedione }, 
+      { "http://snomed.info/sct#41399007", ProductContainingOxazolidinedione }, 
+      { "41470001", ProductContainingCorbadrineMedicinalProduct }, 
+      { "http://snomed.info/sct#41470001", ProductContainingCorbadrineMedicinalProduct }, 
+      { "41493007", ProductContainingDicycloverineMedicinalProduct }, 
+      { "http://snomed.info/sct#41493007", ProductContainingDicycloverineMedicinalProduct }, 
+      { "41549009", ProductContainingAngiotensinConvertingEnzymeInhibitorProduct }, 
+      { "http://snomed.info/sct#41549009", ProductContainingAngiotensinConvertingEnzymeInhibitorProduct }, 
+      { "4194004", ProductContainingMazindolMedicinalProduct }, 
+      { "http://snomed.info/sct#4194004", ProductContainingMazindolMedicinalProduct }, 
+      { "41985001", ProductContainingBitolterolMedicinalProduct }, 
+      { "http://snomed.info/sct#41985001", ProductContainingBitolterolMedicinalProduct }, 
+      { "42082003", ProductContainingVancomycinMedicinalProduct }, 
+      { "http://snomed.info/sct#42082003", ProductContainingVancomycinMedicinalProduct }, 
+      { "42098005", ProductContainingDexamethasoneInOcularDoseFormMedicinalProductForm }, 
+      { "http://snomed.info/sct#42098005", ProductContainingDexamethasoneInOcularDoseFormMedicinalProductForm }, 
+      { "4219002", ProductContainingPenicillamineMedicinalProduct }, 
+      { "http://snomed.info/sct#4219002", ProductContainingPenicillamineMedicinalProduct }, 
+      { "4220008", ProductContainingTolazolineMedicinalProduct }, 
+      { "http://snomed.info/sct#4220008", ProductContainingTolazolineMedicinalProduct }, 
+      { "42271003", ProductContainingGlutamicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#42271003", ProductContainingGlutamicAcidMedicinalProduct }, 
+      { "42348003", ProductContainingMethyltestosteroneMedicinalProduct }, 
+      { "http://snomed.info/sct#42348003", ProductContainingMethyltestosteroneMedicinalProduct }, 
+      { "42444000", ProductContainingSecobarbitalMedicinalProduct }, 
+      { "http://snomed.info/sct#42444000", ProductContainingSecobarbitalMedicinalProduct }, 
+      { "42514000", ProductContainingProcaineMedicinalProduct }, 
+      { "http://snomed.info/sct#42514000", ProductContainingProcaineMedicinalProduct }, 
+      { "42638008", ProductContainingMethylrosaniliniumChlorideMedicinalProduct }, 
+      { "http://snomed.info/sct#42638008", ProductContainingMethylrosaniliniumChlorideMedicinalProduct }, 
+      { "42714002", ProductContainingEscherichiaColiAntiserumMedicinalProduct }, 
+      { "http://snomed.info/sct#42714002", ProductContainingEscherichiaColiAntiserumMedicinalProduct }, 
+      { "42720001", ProductContainingMiconazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#42720001", ProductContainingMiconazoleMedicinalProduct }, 
+      { "43343000", ProductContainingMagaldrateMedicinalProduct }, 
+      { "http://snomed.info/sct#43343000", ProductContainingMagaldrateMedicinalProduct }, 
+      { "43533002", ProductContainingChloramphenicolInOcularDoseFormMedicinalProductForm }, 
+      { "http://snomed.info/sct#43533002", ProductContainingChloramphenicolInOcularDoseFormMedicinalProductForm }, 
+      { "43684009", ProductContainingMisoprostolMedicinalProduct }, 
+      { "http://snomed.info/sct#43684009", ProductContainingMisoprostolMedicinalProduct }, 
+      { "43753001", ProductContainingDydrogesteroneMedicinalProduct }, 
+      { "http://snomed.info/sct#43753001", ProductContainingDydrogesteroneMedicinalProduct }, 
+      { "4382004", CentrallyActingHypotensiveAgent }, 
+      { "http://snomed.info/sct#4382004", CentrallyActingHypotensiveAgent }, 
+      { "43879000", ProductContainingFlunisolideMedicinalProduct }, 
+      { "http://snomed.info/sct#43879000", ProductContainingFlunisolideMedicinalProduct }, 
+      { "439007", TherapeuticRadioisotope }, 
+      { "http://snomed.info/sct#439007", TherapeuticRadioisotope }, 
+      { "43927002", AnalepticAgent }, 
+      { "http://snomed.info/sct#43927002", AnalepticAgent }, 
+      { "44175000", ProductContainingDiperodonMedicinalProduct }, 
+      { "http://snomed.info/sct#44175000", ProductContainingDiperodonMedicinalProduct }, 
+      { "44418001", ProductContainingPercomorphLiverOilMedicinalProduct }, 
+      { "http://snomed.info/sct#44418001", ProductContainingPercomorphLiverOilMedicinalProduct }, 
+      { "44658005", ProductContainingPromazineMedicinalProduct }, 
+      { "http://snomed.info/sct#44658005", ProductContainingPromazineMedicinalProduct }, 
+      { "44731005", HydrocortisoneContainingProductInOticDoseForm }, 
+      { "http://snomed.info/sct#44731005", HydrocortisoneContainingProductInOticDoseForm }, 
+      { "44790008", ProductContainingEthosuximideMedicinalProduct }, 
+      { "http://snomed.info/sct#44790008", ProductContainingEthosuximideMedicinalProduct }, 
+      { "44798001", ProductContainingDinoprostoneMedicinalProduct }, 
+      { "http://snomed.info/sct#44798001", ProductContainingDinoprostoneMedicinalProduct }, 
+      { "44938006", ProductContainingCefoperazoneMedicinalProduct }, 
+      { "http://snomed.info/sct#44938006", ProductContainingCefoperazoneMedicinalProduct }, 
+      { "44990002", ProductContainingProcyclidineMedicinalProduct }, 
+      { "http://snomed.info/sct#44990002", ProductContainingProcyclidineMedicinalProduct }, 
+      { "45218006", ProductContainingClemastineMedicinalProduct }, 
+      { "http://snomed.info/sct#45218006", ProductContainingClemastineMedicinalProduct }, 
+      { "45311002", ProductContainingTerbutalineMedicinalProduct }, 
+      { "http://snomed.info/sct#45311002", ProductContainingTerbutalineMedicinalProduct }, 
+      { "45313004", ProductContainingPropylpiperazineDerivativeOfPhenothiazineProduct }, 
+      { "http://snomed.info/sct#45313004", ProductContainingPropylpiperazineDerivativeOfPhenothiazineProduct }, 
+      { "45680002", ProductContainingTolmetinMedicinalProduct }, 
+      { "http://snomed.info/sct#45680002", ProductContainingTolmetinMedicinalProduct }, 
+      { "45844004", ProductContainingSulfasalazineMedicinalProduct }, 
+      { "http://snomed.info/sct#45844004", ProductContainingSulfasalazineMedicinalProduct }, 
+      { "45888006", ProductContainingGammaTocopherolMedicinalProduct }, 
+      { "http://snomed.info/sct#45888006", ProductContainingGammaTocopherolMedicinalProduct }, 
+      { "46009007", ProductContainingChlorambucilMedicinalProduct }, 
+      { "http://snomed.info/sct#46009007", ProductContainingChlorambucilMedicinalProduct }, 
+      { "46063005", PsychotherapeuticAgent }, 
+      { "http://snomed.info/sct#46063005", PsychotherapeuticAgent }, 
+      { "46123006", ProductContainingAscorbicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#46123006", ProductContainingAscorbicAcidMedicinalProduct }, 
+      { "46436003", ProductContainingHaloproginMedicinalProduct }, 
+      { "http://snomed.info/sct#46436003", ProductContainingHaloproginMedicinalProduct }, 
+      { "46479001", ProductContainingEncainideMedicinalProduct }, 
+      { "http://snomed.info/sct#46479001", ProductContainingEncainideMedicinalProduct }, 
+      { "46532003", ProductContainingBrilliantGreenMedicinalProduct }, 
+      { "http://snomed.info/sct#46532003", ProductContainingBrilliantGreenMedicinalProduct }, 
+      { "46547007", ProductContainingLabetalolMedicinalProduct }, 
+      { "http://snomed.info/sct#46547007", ProductContainingLabetalolMedicinalProduct }, 
+      { "46576005", ProductContainingFlecainideMedicinalProduct }, 
+      { "http://snomed.info/sct#46576005", ProductContainingFlecainideMedicinalProduct }, 
+      { "46709004", ProductContainingMethylphenobarbitalMedicinalProduct }, 
+      { "http://snomed.info/sct#46709004", ProductContainingMethylphenobarbitalMedicinalProduct }, 
+      { "46741005", ProductContainingSalicylicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#46741005", ProductContainingSalicylicAcidMedicinalProduct }, 
+      { "46913003", ProductContainingEdrophoniumMedicinalProduct }, 
+      { "http://snomed.info/sct#46913003", ProductContainingEdrophoniumMedicinalProduct }, 
+      { "4704002", ProductContainingIothiouracilMedicinalProduct }, 
+      { "http://snomed.info/sct#4704002", ProductContainingIothiouracilMedicinalProduct }, 
+      { "47065008", ProductContainingQuinineMedicinalProduct }, 
+      { "http://snomed.info/sct#47065008", ProductContainingQuinineMedicinalProduct }, 
+      { "47120002", ProductContainingPrimidoneMedicinalProduct }, 
+      { "http://snomed.info/sct#47120002", ProductContainingPrimidoneMedicinalProduct }, 
+      { "47124006", ProductContainingAminoglutethimideMedicinalProduct }, 
+      { "http://snomed.info/sct#47124006", ProductContainingAminoglutethimideMedicinalProduct }, 
+      { "47140009", ProductContainingMedrysoneMedicinalProduct }, 
+      { "http://snomed.info/sct#47140009", ProductContainingMedrysoneMedicinalProduct }, 
+      { "47331002", ProductContainingChlorpromazineMedicinalProduct }, 
+      { "http://snomed.info/sct#47331002", ProductContainingChlorpromazineMedicinalProduct }, 
+      { "47527007", ProductContainingPhenindioneMedicinalProduct }, 
+      { "http://snomed.info/sct#47527007", ProductContainingPhenindioneMedicinalProduct }, 
+      { "47602007", ProductContainingNalidixicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#47602007", ProductContainingNalidixicAcidMedicinalProduct }, 
+      { "47898004", ProductContainingVerapamilMedicinalProduct }, 
+      { "http://snomed.info/sct#47898004", ProductContainingVerapamilMedicinalProduct }, 
+      { "48174005", ProductContainingRanitidineMedicinalProduct }, 
+      { "http://snomed.info/sct#48174005", ProductContainingRanitidineMedicinalProduct }, 
+      { "48256008", ProductContainingBenzylBenzoateMedicinalProduct }, 
+      { "http://snomed.info/sct#48256008", ProductContainingBenzylBenzoateMedicinalProduct }, 
+      { "48279009", EmollientProduct }, 
+      { "http://snomed.info/sct#48279009", EmollientProduct }, 
+      { "48351000", ProductContainingPhenylbutazoneMedicinalProduct }, 
+      { "http://snomed.info/sct#48351000", ProductContainingPhenylbutazoneMedicinalProduct }, 
+      { "48546005", ProductContainingDiazepamMedicinalProduct }, 
+      { "http://snomed.info/sct#48546005", ProductContainingDiazepamMedicinalProduct }, 
+      { "48603004", ProductContainingWarfarinMedicinalProduct }, 
+      { "http://snomed.info/sct#48603004", ProductContainingWarfarinMedicinalProduct }, 
+      { "48614001", ProductContainingClobetasolMedicinalProduct }, 
+      { "http://snomed.info/sct#48614001", ProductContainingClobetasolMedicinalProduct }, 
+      { "48647005", ProductContainingPancrelipaseMedicinalProduct }, 
+      { "http://snomed.info/sct#48647005", ProductContainingPancrelipaseMedicinalProduct }, 
+      { "4865009", ProductContainingProlactinReleasingFactorProduct }, 
+      { "http://snomed.info/sct#4865009", ProductContainingProlactinReleasingFactorProduct }, 
+      { "48698004", ProductContainingCalciumChannelBlockerProduct }, 
+      { "http://snomed.info/sct#48698004", ProductContainingCalciumChannelBlockerProduct }, 
+      { "48836000", ProductContainingAmikacinMedicinalProduct }, 
+      { "http://snomed.info/sct#48836000", ProductContainingAmikacinMedicinalProduct }, 
+      { "48875009", ProductContainingDihydroergotamineMedicinalProduct }, 
+      { "http://snomed.info/sct#48875009", ProductContainingDihydroergotamineMedicinalProduct }, 
+      { "48899009", ProductContainingHyoscyamineMedicinalProduct }, 
+      { "http://snomed.info/sct#48899009", ProductContainingHyoscyamineMedicinalProduct }, 
+      { "49019002", ProductContainingPrednisoloneInOcularDoseFormMedicinalProductForm }, 
+      { "http://snomed.info/sct#49019002", ProductContainingPrednisoloneInOcularDoseFormMedicinalProductForm }, 
+      { "49157004", UricosuricAgent }, 
+      { "http://snomed.info/sct#49157004", UricosuricAgent }, 
+      { "49267000", ProductContainingOxyphenbutazoneMedicinalProduct }, 
+      { "http://snomed.info/sct#49267000", ProductContainingOxyphenbutazoneMedicinalProduct }, 
+      { "49299006", ProductContainingProtriptylineMedicinalProduct }, 
+      { "http://snomed.info/sct#49299006", ProductContainingProtriptylineMedicinalProduct }, 
+      { "4937008", ProductContainingCefaclorMedicinalProduct }, 
+      { "http://snomed.info/sct#4937008", ProductContainingCefaclorMedicinalProduct }, 
+      { "49485009", ProductContainingNorfloxacinMedicinalProduct }, 
+      { "http://snomed.info/sct#49485009", ProductContainingNorfloxacinMedicinalProduct }, 
+      { "49577002", ProductContainingMinoxidilMedicinalProduct }, 
+      { "http://snomed.info/sct#49577002", ProductContainingMinoxidilMedicinalProduct }, 
+      { "49617001", ProductContainingCarbenoxoloneMedicinalProduct }, 
+      { "http://snomed.info/sct#49617001", ProductContainingCarbenoxoloneMedicinalProduct }, 
+      { "49669006", ProductContainingEscherichiaColiAntiserumAndPasteurellaMultocidaAntiserumAndSalmonellaTyphimuriumAntiserumMedicinalProduct }, 
+      { "http://snomed.info/sct#49669006", ProductContainingEscherichiaColiAntiserumAndPasteurellaMultocidaAntiserumAndSalmonellaTyphimuriumAntiserumMedicinalProduct }, 
+      { "49688004", ProductContainingHexocycliumMedicinalProduct }, 
+      { "http://snomed.info/sct#49688004", ProductContainingHexocycliumMedicinalProduct }, 
+      { "49694007", MucolyticAgent }, 
+      { "http://snomed.info/sct#49694007", MucolyticAgent }, 
+      { "49705006", ProductContainingIdoxuridineMedicinalProduct }, 
+      { "http://snomed.info/sct#49705006", ProductContainingIdoxuridineMedicinalProduct }, 
+      { "49802003", ProductContainingBloodGroupAntibodyDMedicinalProduct }, 
+      { "http://snomed.info/sct#49802003", ProductContainingBloodGroupAntibodyDMedicinalProduct }, 
+      { "49953001", ProductContainingPheniramineMedicinalProduct }, 
+      { "http://snomed.info/sct#49953001", ProductContainingPheniramineMedicinalProduct }, 
+      { "50094009", ProductContainingHetastarchMedicinalProduct }, 
+      { "http://snomed.info/sct#50094009", ProductContainingHetastarchMedicinalProduct }, 
+      { "50256004", ProductContainingAntitrichomonalProduct }, 
+      { "http://snomed.info/sct#50256004", ProductContainingAntitrichomonalProduct }, 
+      { "50318003", ProductContainingProgesteroneMedicinalProduct }, 
+      { "http://snomed.info/sct#50318003", ProductContainingProgesteroneMedicinalProduct }, 
+      { "50335004", ProductContainingLevorphanolMedicinalProduct }, 
+      { "http://snomed.info/sct#50335004", ProductContainingLevorphanolMedicinalProduct }, 
+      { "50520001", ProductContainingFramycetinMedicinalProduct }, 
+      { "http://snomed.info/sct#50520001", ProductContainingFramycetinMedicinalProduct }, 
+      { "5067008", AntithyroidAgent }, 
+      { "http://snomed.info/sct#5067008", AntithyroidAgent }, 
+      { "50841004", ProductContainingChloramphenicolInOticDoseFormMedicinalProductForm }, 
+      { "http://snomed.info/sct#50841004", ProductContainingChloramphenicolInOticDoseFormMedicinalProductForm }, 
+      { "50868004", ProductContainingDexamfetamineMedicinalProduct }, 
+      { "http://snomed.info/sct#50868004", ProductContainingDexamfetamineMedicinalProduct }, 
+      { "51013009", ProductContainingSulfadimethoxineMedicinalProduct }, 
+      { "http://snomed.info/sct#51013009", ProductContainingSulfadimethoxineMedicinalProduct }, 
+      { "51073002", ProductContainingPhenobarbitalMedicinalProduct }, 
+      { "http://snomed.info/sct#51073002", ProductContainingPhenobarbitalMedicinalProduct }, 
+      { "51126006", ProductContainingBenzestrolMedicinalProduct }, 
+      { "http://snomed.info/sct#51126006", ProductContainingBenzestrolMedicinalProduct }, 
+      { "51132001", ProductContainingHyaluronidaseMedicinalProduct }, 
+      { "http://snomed.info/sct#51132001", ProductContainingHyaluronidaseMedicinalProduct }, 
+      { "51326002", ProductContainingCarmustineMedicinalProduct }, 
+      { "http://snomed.info/sct#51326002", ProductContainingCarmustineMedicinalProduct }, 
+      { "51334008", ProductContainingCycloserineMedicinalProduct }, 
+      { "http://snomed.info/sct#51334008", ProductContainingCycloserineMedicinalProduct }, 
+      { "51361008", ProductContainingAmantadineMedicinalProduct }, 
+      { "http://snomed.info/sct#51361008", ProductContainingAmantadineMedicinalProduct }, 
+      { "51752005", ProductContainingDehydrocholicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#51752005", ProductContainingDehydrocholicAcidMedicinalProduct }, 
+      { "51758009", ProductContainingMethadoneMedicinalProduct }, 
+      { "http://snomed.info/sct#51758009", ProductContainingMethadoneMedicinalProduct }, 
+      { "51779009", ProductContainingCephalosporinAndAntibioticProduct }, 
+      { "http://snomed.info/sct#51779009", ProductContainingCephalosporinAndAntibioticProduct }, 
+      { "51908007", ProductContainingPrenylamineMedicinalProduct }, 
+      { "http://snomed.info/sct#51908007", ProductContainingPrenylamineMedicinalProduct }, 
+      { "51992002", ProductContainingGastrinMedicinalProduct }, 
+      { "http://snomed.info/sct#51992002", ProductContainingGastrinMedicinalProduct }, 
+      { "52017007", MedicinalProductActingAsAntiemeticAgentProduct }, 
+      { "http://snomed.info/sct#52017007", MedicinalProductActingAsAntiemeticAgentProduct }, 
+      { "52108005", ProductContainingFerrousFumarateMedicinalProduct }, 
+      { "http://snomed.info/sct#52108005", ProductContainingFerrousFumarateMedicinalProduct }, 
+      { "52215008", ProductContainingDesonideMedicinalProduct }, 
+      { "http://snomed.info/sct#52215008", ProductContainingDesonideMedicinalProduct }, 
+      { "52388000", ProductContainingPrednisoloneMedicinalProduct }, 
+      { "http://snomed.info/sct#52388000", ProductContainingPrednisoloneMedicinalProduct }, 
+      { "52423008", ProductContainingTarMedicinalProduct }, 
+      { "http://snomed.info/sct#52423008", ProductContainingTarMedicinalProduct }, 
+      { "52883001", ProductContainingHydroxyamfetamineMedicinalProduct }, 
+      { "http://snomed.info/sct#52883001", ProductContainingHydroxyamfetamineMedicinalProduct }, 
+      { "52896000", ProductContainingClioquinolMedicinalProduct }, 
+      { "http://snomed.info/sct#52896000", ProductContainingClioquinolMedicinalProduct }, 
+      { "53009005", MedicinalProductActingAsAnalgesicAgentProduct }, 
+      { "http://snomed.info/sct#53009005", MedicinalProductActingAsAnalgesicAgentProduct }, 
+      { "53480001", ProductContainingPhentermineMedicinalProduct }, 
+      { "http://snomed.info/sct#53480001", ProductContainingPhentermineMedicinalProduct }, 
+      { "53584007", ProductContainingMethacholineMedicinalProduct }, 
+      { "http://snomed.info/sct#53584007", ProductContainingMethacholineMedicinalProduct }, 
+      { "53640004", ProductContainingFluoxetineMedicinalProduct }, 
+      { "http://snomed.info/sct#53640004", ProductContainingFluoxetineMedicinalProduct }, 
+      { "53641000", ProductContainingFlavoxateMedicinalProduct }, 
+      { "http://snomed.info/sct#53641000", ProductContainingFlavoxateMedicinalProduct }, 
+      { "53691001", ProductContainingCalciumGluconateMedicinalProduct }, 
+      { "http://snomed.info/sct#53691001", ProductContainingCalciumGluconateMedicinalProduct }, 
+      { "53793005", ProductContainingEscherichiaColiAntibodyMedicinalProduct }, 
+      { "http://snomed.info/sct#53793005", ProductContainingEscherichiaColiAntibodyMedicinalProduct }, 
+      { "53800008", ProductContainingDithranolMedicinalProduct }, 
+      { "http://snomed.info/sct#53800008", ProductContainingDithranolMedicinalProduct }, 
+      { "53848009", ProductContainingMetyraponeMedicinalProduct }, 
+      { "http://snomed.info/sct#53848009", ProductContainingMetyraponeMedicinalProduct }, 
+      { "54142000", ProductContainingDomiphenMedicinalProduct }, 
+      { "http://snomed.info/sct#54142000", ProductContainingDomiphenMedicinalProduct }, 
+      { "54344006", ProductContainingFlurbiprofenMedicinalProduct }, 
+      { "http://snomed.info/sct#54344006", ProductContainingFlurbiprofenMedicinalProduct }, 
+      { "54391004", ProductContainingLevamisoleMedicinalProduct }, 
+      { "http://snomed.info/sct#54391004", ProductContainingLevamisoleMedicinalProduct }, 
+      { "544002", ProductContainingMelphalanMedicinalProduct }, 
+      { "http://snomed.info/sct#544002", ProductContainingMelphalanMedicinalProduct }, 
+      { "54406003", ProductContainingMethoxamineMedicinalProduct }, 
+      { "http://snomed.info/sct#54406003", ProductContainingMethoxamineMedicinalProduct }, 
+      { "54541002", ProductContainingErgometrineMedicinalProduct }, 
+      { "http://snomed.info/sct#54541002", ProductContainingErgometrineMedicinalProduct }, 
+      { "54544005", ProductContainingPethidineMedicinalProduct }, 
+      { "http://snomed.info/sct#54544005", ProductContainingPethidineMedicinalProduct }, 
+      { "54577009", ProductContainingCeftizoximeMedicinalProduct }, 
+      { "http://snomed.info/sct#54577009", ProductContainingCeftizoximeMedicinalProduct }, 
+      { "54705000", ProductContainingTemazepamMedicinalProduct }, 
+      { "http://snomed.info/sct#54705000", ProductContainingTemazepamMedicinalProduct }, 
+      { "54765002", ProductContainingPhenylephrineMedicinalProduct }, 
+      { "http://snomed.info/sct#54765002", ProductContainingPhenylephrineMedicinalProduct }, 
+      { "5478006", ProductContainingTrifluperidolMedicinalProduct }, 
+      { "http://snomed.info/sct#5478006", ProductContainingTrifluperidolMedicinalProduct }, 
+      { "54824008", ProductContainingIsomethepteneMedicinalProduct }, 
+      { "http://snomed.info/sct#54824008", ProductContainingIsomethepteneMedicinalProduct }, 
+      { "54882005", ProductContainingAmfepramoneMedicinalProduct }, 
+      { "http://snomed.info/sct#54882005", ProductContainingAmfepramoneMedicinalProduct }, 
+      { "54887004", ProductContainingCefalexinMedicinalProduct }, 
+      { "http://snomed.info/sct#54887004", ProductContainingCefalexinMedicinalProduct }, 
+      { "54972005", ProductContainingTretinoinMedicinalProduct }, 
+      { "http://snomed.info/sct#54972005", ProductContainingTretinoinMedicinalProduct }, 
+      { "54982006", ProductContainingPromethestrolMedicinalProduct }, 
+      { "http://snomed.info/sct#54982006", ProductContainingPromethestrolMedicinalProduct }, 
+      { "55015008", ProductContainingSodiumLactateMedicinalProduct }, 
+      { "http://snomed.info/sct#55015008", ProductContainingSodiumLactateMedicinalProduct }, 
+      { "55217007", ProductContainingCalciumCarbonateMedicinalProduct }, 
+      { "http://snomed.info/sct#55217007", ProductContainingCalciumCarbonateMedicinalProduct }, 
+      { "55432002", ProductContainingAzlocillinMedicinalProduct }, 
+      { "http://snomed.info/sct#55432002", ProductContainingAzlocillinMedicinalProduct }, 
+      { "55556000", ProductContainingTetracaineMedicinalProduct }, 
+      { "http://snomed.info/sct#55556000", ProductContainingTetracaineMedicinalProduct }, 
+      { "55673009", ProductContainingSodiumIothalamate125IMedicinalProduct }, 
+      { "http://snomed.info/sct#55673009", ProductContainingSodiumIothalamate125IMedicinalProduct }, 
+      { "55745002", ProductContainingPropranololMedicinalProduct }, 
+      { "http://snomed.info/sct#55745002", ProductContainingPropranololMedicinalProduct }, 
+      { "55784007", NaturalHormonePreparation }, 
+      { "http://snomed.info/sct#55784007", NaturalHormonePreparation }, 
+      { "55830003", ProductContainingHumanMenopausalGonadotropinMedicinalProduct }, 
+      { "http://snomed.info/sct#55830003", ProductContainingHumanMenopausalGonadotropinMedicinalProduct }, 
+      { "55867006", ProductContainingAminophyllineMedicinalProduct }, 
+      { "http://snomed.info/sct#55867006", ProductContainingAminophyllineMedicinalProduct }, 
+      { "55889005", ProductContainingPraziquantelMedicinalProduct }, 
+      { "http://snomed.info/sct#55889005", ProductContainingPraziquantelMedicinalProduct }, 
+      { "56014002", ProductContainingHydroxyprogesteroneMedicinalProduct }, 
+      { "http://snomed.info/sct#56014002", ProductContainingHydroxyprogesteroneMedicinalProduct }, 
+      { "56032002", ProductContainingDihydrotestosteroneMedicinalProduct }, 
+      { "http://snomed.info/sct#56032002", ProductContainingDihydrotestosteroneMedicinalProduct }, 
+      { "56059005", ProductContainingMebendazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#56059005", ProductContainingMebendazoleMedicinalProduct }, 
+      { "5606003", ProductContainingDexamethasoneInNasalDoseFormMedicinalProductForm }, 
+      { "http://snomed.info/sct#5606003", ProductContainingDexamethasoneInNasalDoseFormMedicinalProductForm }, 
+      { "56123002", ProductContainingMethenamineMedicinalProduct }, 
+      { "http://snomed.info/sct#56123002", ProductContainingMethenamineMedicinalProduct }, 
+      { "56230001", ProductContainingBretyliumMedicinalProduct }, 
+      { "http://snomed.info/sct#56230001", ProductContainingBretyliumMedicinalProduct }, 
+      { "56234005", ProductContainingSomatotropinMedicinalProduct }, 
+      { "http://snomed.info/sct#56234005", ProductContainingSomatotropinMedicinalProduct }, 
+      { "56480005", ProductContainingBrompheniramineMedicinalProduct }, 
+      { "http://snomed.info/sct#56480005", ProductContainingBrompheniramineMedicinalProduct }, 
+      { "56549003", ProductContainingMetoclopramideMedicinalProduct }, 
+      { "http://snomed.info/sct#56549003", ProductContainingMetoclopramideMedicinalProduct }, 
+      { "56602009", ProductContainingHydroxycarbamideMedicinalProduct }, 
+      { "http://snomed.info/sct#56602009", ProductContainingHydroxycarbamideMedicinalProduct }, 
+      { "56615000", ProductContainingPolyestradiolPhosphateMedicinalProduct }, 
+      { "http://snomed.info/sct#56615000", ProductContainingPolyestradiolPhosphateMedicinalProduct }, 
+      { "56928005", ProductContainingEtoposideMedicinalProduct }, 
+      { "http://snomed.info/sct#56928005", ProductContainingEtoposideMedicinalProduct }, 
+      { "56934003", ProductContainingPovidoneMedicinalProduct }, 
+      { "http://snomed.info/sct#56934003", ProductContainingPovidoneMedicinalProduct }, 
+      { "57002000", ProductContainingChlorprothixeneMedicinalProduct }, 
+      { "http://snomed.info/sct#57002000", ProductContainingChlorprothixeneMedicinalProduct }, 
+      { "57066004", ProductContainingCisplatinMedicinalProduct }, 
+      { "http://snomed.info/sct#57066004", ProductContainingCisplatinMedicinalProduct }, 
+      { "57191001", ProductContainingChloramphenicolMedicinalProduct }, 
+      { "http://snomed.info/sct#57191001", ProductContainingChloramphenicolMedicinalProduct }, 
+      { "5720001", ProductContainingLatrodectusMactansAntivenomMedicinalProduct }, 
+      { "http://snomed.info/sct#5720001", ProductContainingLatrodectusMactansAntivenomMedicinalProduct }, 
+      { "57263002", ProductContainingOxiconazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#57263002", ProductContainingOxiconazoleMedicinalProduct }, 
+      { "5737008", ProductContainingDemeclocyclineMedicinalProduct }, 
+      { "http://snomed.info/sct#5737008", ProductContainingDemeclocyclineMedicinalProduct }, 
+      { "57376006", ProductContainingSodiumBicarbonateMedicinalProduct }, 
+      { "http://snomed.info/sct#57376006", ProductContainingSodiumBicarbonateMedicinalProduct }, 
+      { "57538001", ProductContainingChlortetracyclineMedicinalProduct }, 
+      { "http://snomed.info/sct#57538001", ProductContainingChlortetracyclineMedicinalProduct }, 
+      { "57616006", ProductContainingSodiumTetradecylSulfateMedicinalProduct }, 
+      { "http://snomed.info/sct#57616006", ProductContainingSodiumTetradecylSulfateMedicinalProduct }, 
+      { "57670008", ProductContainingCefoxitinMedicinalProduct }, 
+      { "http://snomed.info/sct#57670008", ProductContainingCefoxitinMedicinalProduct }, 
+      { "57752001", ProductContainingGentamicinMedicinalProduct }, 
+      { "http://snomed.info/sct#57752001", ProductContainingGentamicinMedicinalProduct }, 
+      { "5776009", MedicinalProductActingAsAnestheticAgentProduct }, 
+      { "http://snomed.info/sct#5776009", MedicinalProductActingAsAnestheticAgentProduct }, 
+      { "57811004", ProductContainingDihydrocodeineMedicinalProduct }, 
+      { "http://snomed.info/sct#57811004", ProductContainingDihydrocodeineMedicinalProduct }, 
+      { "57819002", ProductContainingSomatostatinMedicinalProduct }, 
+      { "http://snomed.info/sct#57819002", ProductContainingSomatostatinMedicinalProduct }, 
+      { "57845006", ProductContainingIsoprenalineMedicinalProduct }, 
+      { "http://snomed.info/sct#57845006", ProductContainingIsoprenalineMedicinalProduct }, 
+      { "57853003", ProductContainingClidiniumMedicinalProduct }, 
+      { "http://snomed.info/sct#57853003", ProductContainingClidiniumMedicinalProduct }, 
+      { "5786005", ProductContainingChlorothiazideMedicinalProduct }, 
+      { "http://snomed.info/sct#5786005", ProductContainingChlorothiazideMedicinalProduct }, 
+      { "57893000", ProductContainingChlortalidoneMedicinalProduct }, 
+      { "http://snomed.info/sct#57893000", ProductContainingChlortalidoneMedicinalProduct }, 
+      { "57952007", AntilipemicAgent }, 
+      { "http://snomed.info/sct#57952007", AntilipemicAgent }, 
+      { "5797005", ProductContainingClotrimazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#5797005", ProductContainingClotrimazoleMedicinalProduct }, 
+      { "58050004", AntiparkinsonAgent }, 
+      { "http://snomed.info/sct#58050004", AntiparkinsonAgent }, 
+      { "58360000", ProductContainingPhenazocineMedicinalProduct }, 
+      { "http://snomed.info/sct#58360000", ProductContainingPhenazocineMedicinalProduct }, 
+      { "58467001", ProductContainingPapaverineMedicinalProduct }, 
+      { "http://snomed.info/sct#58467001", ProductContainingPapaverineMedicinalProduct }, 
+      { "58502006", ProductContainingPropylamineDerivativeAndHistamineReceptorAntagonistProduct }, 
+      { "http://snomed.info/sct#58502006", ProductContainingPropylamineDerivativeAndHistamineReceptorAntagonistProduct }, 
+      { "58760003", ProductContainingAntimetaboliteProduct }, 
+      { "http://snomed.info/sct#58760003", ProductContainingAntimetaboliteProduct }, 
+      { "58805000", ProductContainingPituitaryHormoneProduct }, 
+      { "http://snomed.info/sct#58805000", ProductContainingPituitaryHormoneProduct }, 
+      { "58883005", ProductContainingClindamycinMedicinalProduct }, 
+      { "http://snomed.info/sct#58883005", ProductContainingClindamycinMedicinalProduct }, 
+      { "58892008", ProductContainingTrifluridineMedicinalProduct }, 
+      { "http://snomed.info/sct#58892008", ProductContainingTrifluridineMedicinalProduct }, 
+      { "58905004", ProductContainingDiazoxideMedicinalProduct }, 
+      { "http://snomed.info/sct#58905004", ProductContainingDiazoxideMedicinalProduct }, 
+      { "58944007", MedicinalProductActingAsVasodilatorProduct }, 
+      { "http://snomed.info/sct#58944007", MedicinalProductActingAsVasodilatorProduct }, 
+      { "59057006", ProductContainingAntihemophilicFactorAgentMedicinalProduct }, 
+      { "http://snomed.info/sct#59057006", ProductContainingAntihemophilicFactorAgentMedicinalProduct }, 
+      { "59187003", ProductContainingDopamineMedicinalProduct }, 
+      { "http://snomed.info/sct#59187003", ProductContainingDopamineMedicinalProduct }, 
+      { "59240002", ProductContainingMitomycinMedicinalProduct }, 
+      { "http://snomed.info/sct#59240002", ProductContainingMitomycinMedicinalProduct }, 
+      { "59255006", ProductContainingSulfonamideAndAntibioticProduct }, 
+      { "http://snomed.info/sct#59255006", ProductContainingSulfonamideAndAntibioticProduct }, 
+      { "59270007", ProductContainingLoxapineMedicinalProduct }, 
+      { "http://snomed.info/sct#59270007", ProductContainingLoxapineMedicinalProduct }, 
+      { "59456005", ProductContainingAstemizoleMedicinalProduct }, 
+      { "http://snomed.info/sct#59456005", ProductContainingAstemizoleMedicinalProduct }, 
+      { "59589008", ProductContainingPyrimethamineMedicinalProduct }, 
+      { "http://snomed.info/sct#59589008", ProductContainingPyrimethamineMedicinalProduct }, 
+      { "59594008", ProductContainingNondepolarizingNeuromuscularBlocker }, 
+      { "http://snomed.info/sct#59594008", ProductContainingNondepolarizingNeuromuscularBlocker }, 
+      { "5975000", ProductContainingNiclosamideMedicinalProduct }, 
+      { "http://snomed.info/sct#5975000", ProductContainingNiclosamideMedicinalProduct }, 
+      { "59751001", AntitussiveAgent }, 
+      { "http://snomed.info/sct#59751001", AntitussiveAgent }, 
+      { "59941008", ProductContainingDiltiazemMedicinalProduct }, 
+      { "http://snomed.info/sct#59941008", ProductContainingDiltiazemMedicinalProduct }, 
+      { "59953007", ProductContainingPyridostigmineMedicinalProduct }, 
+      { "http://snomed.info/sct#59953007", ProductContainingPyridostigmineMedicinalProduct }, 
+      { "60149003", ProductContainingIndometacinMedicinalProduct }, 
+      { "http://snomed.info/sct#60149003", ProductContainingIndometacinMedicinalProduct }, 
+      { "60169008", MedicinalProductActingAsAntacidAgentProduct }, 
+      { "http://snomed.info/sct#60169008", MedicinalProductActingAsAntacidAgentProduct }, 
+      { "6028009", ProductContainingTriamcinoloneMedicinalProduct }, 
+      { "http://snomed.info/sct#6028009", ProductContainingTriamcinoloneMedicinalProduct }, 
+      { "60468008", ProductContainingMagnesiumHydroxideMedicinalProduct }, 
+      { "http://snomed.info/sct#60468008", ProductContainingMagnesiumHydroxideMedicinalProduct }, 
+      { "60533005", MedicinalProductActingAsAstringentProduct }, 
+      { "http://snomed.info/sct#60533005", MedicinalProductActingAsAstringentProduct }, 
+      { "60541005", ProductContainingLanatosideCMedicinalProduct }, 
+      { "http://snomed.info/sct#60541005", ProductContainingLanatosideCMedicinalProduct }, 
+      { "6067003", ProductContainingOrciprenalineMedicinalProduct }, 
+      { "http://snomed.info/sct#6067003", ProductContainingOrciprenalineMedicinalProduct }, 
+      { "60682004", ProductContainingEcothiopateMedicinalProduct }, 
+      { "http://snomed.info/sct#60682004", ProductContainingEcothiopateMedicinalProduct }, 
+      { "6071000", ProductContainingCoalTarMedicinalProduct }, 
+      { "http://snomed.info/sct#6071000", ProductContainingCoalTarMedicinalProduct }, 
+      { "60731009", ProductContainingDiethylcarbamazineMedicinalProduct }, 
+      { "http://snomed.info/sct#60731009", ProductContainingDiethylcarbamazineMedicinalProduct }, 
+      { "60881009", ProductContainingDiamorphineMedicinalProduct }, 
+      { "http://snomed.info/sct#60881009", ProductContainingDiamorphineMedicinalProduct }, 
+      { "60978003", ProductContainingBarbiturateProduct }, 
+      { "http://snomed.info/sct#60978003", ProductContainingBarbiturateProduct }, 
+      { "61020000", ProductContainingThyroidHormoneMedicinalProduct }, 
+      { "http://snomed.info/sct#61020000", ProductContainingThyroidHormoneMedicinalProduct }, 
+      { "6102009", ProductContainingBaclofenMedicinalProduct }, 
+      { "http://snomed.info/sct#6102009", ProductContainingBaclofenMedicinalProduct }, 
+      { "61093008", ProductContainingProlactinInhibitingFactorMedicinalProduct }, 
+      { "http://snomed.info/sct#61093008", ProductContainingProlactinInhibitingFactorMedicinalProduct }, 
+      { "61132004", ProductContainingGasGangreneAntitoxinMedicinalProduct }, 
+      { "http://snomed.info/sct#61132004", ProductContainingGasGangreneAntitoxinMedicinalProduct }, 
+      { "6116004", ProductContainingOxymetholoneMedicinalProduct }, 
+      { "http://snomed.info/sct#6116004", ProductContainingOxymetholoneMedicinalProduct }, 
+      { "61181002", ProductContainingMeprednisoneMedicinalProduct }, 
+      { "http://snomed.info/sct#61181002", ProductContainingMeprednisoneMedicinalProduct }, 
+      { "61408004", ProductContainingMolindoneMedicinalProduct }, 
+      { "http://snomed.info/sct#61408004", ProductContainingMolindoneMedicinalProduct }, 
+      { "61457001", ProductContainingAdrenalHormoneProduct }, 
+      { "http://snomed.info/sct#61457001", ProductContainingAdrenalHormoneProduct }, 
+      { "61621000", MedicinalProductActingAsLaxativeProduct }, 
+      { "http://snomed.info/sct#61621000", MedicinalProductActingAsLaxativeProduct }, 
+      { "61623002", ProductContainingBuclizineMedicinalProduct }, 
+      { "http://snomed.info/sct#61623002", ProductContainingBuclizineMedicinalProduct }, 
+      { "61651006", ProductContainingCefamandoleMedicinalProduct }, 
+      { "http://snomed.info/sct#61651006", ProductContainingCefamandoleMedicinalProduct }, 
+      { "61862008", ProductContainingMeticillinMedicinalProduct }, 
+      { "http://snomed.info/sct#61862008", ProductContainingMeticillinMedicinalProduct }, 
+      { "61946003", ProductContainingEstrogenProduct }, 
+      { "http://snomed.info/sct#61946003", ProductContainingEstrogenProduct }, 
+      { "62051009", ProductContainingDichlorisoneMedicinalProduct }, 
+      { "http://snomed.info/sct#62051009", ProductContainingDichlorisoneMedicinalProduct }, 
+      { "62288001", ProductContainingAnthelminticProduct }, 
+      { "http://snomed.info/sct#62288001", ProductContainingAnthelminticProduct }, 
+      { "62294009", VaricellaZosterVirusAntibodyContainingProduct }, 
+      { "http://snomed.info/sct#62294009", VaricellaZosterVirusAntibodyContainingProduct }, 
+      { "6232005", ProductContainingNaphazolineMedicinalProduct }, 
+      { "http://snomed.info/sct#6232005", ProductContainingNaphazolineMedicinalProduct }, 
+      { "6247001", ProductContainingFolicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#6247001", ProductContainingFolicAcidMedicinalProduct }, 
+      { "62529008", ProductContainingTiotixeneMedicinalProduct }, 
+      { "http://snomed.info/sct#62529008", ProductContainingTiotixeneMedicinalProduct }, 
+      { "62560008", ProductContainingFluorometholoneInOcularDoseFormMedicinalProductForm }, 
+      { "http://snomed.info/sct#62560008", ProductContainingFluorometholoneInOcularDoseFormMedicinalProductForm }, 
+      { "6259002", ProductContainingPreciselyHydrogenPeroxide30Milligram1MilliliterConventionalReleaseCutaneousSolutionClinicalDrug }, 
+      { "http://snomed.info/sct#6259002", ProductContainingPreciselyHydrogenPeroxide30Milligram1MilliliterConventionalReleaseCutaneousSolutionClinicalDrug }, 
+      { "62782004", ProductContainingClonidineMedicinalProduct }, 
+      { "http://snomed.info/sct#62782004", ProductContainingClonidineMedicinalProduct }, 
+      { "63094006", MedicinalProductActingAsAnticonvulsantAgentProduct }, 
+      { "http://snomed.info/sct#63094006", MedicinalProductActingAsAnticonvulsantAgentProduct }, 
+      { "63136007", ProductContainingPhytomenadioneMedicinalProduct }, 
+      { "http://snomed.info/sct#63136007", ProductContainingPhytomenadioneMedicinalProduct }, 
+      { "63318000", ProductContainingBenzoicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#63318000", ProductContainingBenzoicAcidMedicinalProduct }, 
+      { "63470003", ProductContainingFluoxymesteroneMedicinalProduct }, 
+      { "http://snomed.info/sct#63470003", ProductContainingFluoxymesteroneMedicinalProduct }, 
+      { "63639004", ProductContainingNicotinicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#63639004", ProductContainingNicotinicAcidMedicinalProduct }, 
+      { "63682003", ProductContainingHalothaneMedicinalProduct }, 
+      { "http://snomed.info/sct#63682003", ProductContainingHalothaneMedicinalProduct }, 
+      { "6369005", ProductContainingPenicillinAndAntibioticProduct }, 
+      { "http://snomed.info/sct#6369005", ProductContainingPenicillinAndAntibioticProduct }, 
+      { "63758001", ProductContainingNorethisteroneMedicinalProduct }, 
+      { "http://snomed.info/sct#63758001", ProductContainingNorethisteroneMedicinalProduct }, 
+      { "63822004", ProductContainingVitaminEAndVitaminEDerivativeProduct }, 
+      { "http://snomed.info/sct#63822004", ProductContainingVitaminEAndVitaminEDerivativeProduct }, 
+      { "64083002", GenitourinarySmoothMuscleRelaxant }, 
+      { "http://snomed.info/sct#64083002", GenitourinarySmoothMuscleRelaxant }, 
+      { "64115004", ProductContainingAmodiaquineMedicinalProduct }, 
+      { "http://snomed.info/sct#64115004", ProductContainingAmodiaquineMedicinalProduct }, 
+      { "64127001", ProductContainingDactinomycinMedicinalProduct }, 
+      { "http://snomed.info/sct#64127001", ProductContainingDactinomycinMedicinalProduct }, 
+      { "64240003", ProductContainingMethandrostenoloneMedicinalProduct }, 
+      { "http://snomed.info/sct#64240003", ProductContainingMethandrostenoloneMedicinalProduct }, 
+      { "6425004", ProductContainingHistamineReceptorAntagonistProduct }, 
+      { "http://snomed.info/sct#6425004", ProductContainingHistamineReceptorAntagonistProduct }, 
+      { "64349004", ProductContainingGriseofulvinMedicinalProduct }, 
+      { "http://snomed.info/sct#64349004", ProductContainingGriseofulvinMedicinalProduct }, 
+      { "64462001", ProductContainingTerpinMedicinalProduct }, 
+      { "http://snomed.info/sct#64462001", ProductContainingTerpinMedicinalProduct }, 
+      { "64558005", MethixeneContainingProduct }, 
+      { "http://snomed.info/sct#64558005", MethixeneContainingProduct }, 
+      { "64851009", ProductContainingDiiodohydroxyquinolineMedicinalProduct }, 
+      { "http://snomed.info/sct#64851009", ProductContainingDiiodohydroxyquinolineMedicinalProduct }, 
+      { "64878006", ProductContainingMethylthiouracilMedicinalProduct }, 
+      { "http://snomed.info/sct#64878006", ProductContainingMethylthiouracilMedicinalProduct }, 
+      { "65020006", ProductContainingBenzocaineMedicinalProduct }, 
+      { "http://snomed.info/sct#65020006", ProductContainingBenzocaineMedicinalProduct }, 
+      { "65026000", ProductContainingEphedrineMedicinalProduct }, 
+      { "http://snomed.info/sct#65026000", ProductContainingEphedrineMedicinalProduct }, 
+      { "65041000", ProductContainingBiperidenMedicinalProduct }, 
+      { "http://snomed.info/sct#65041000", ProductContainingBiperidenMedicinalProduct }, 
+      { "65092008", ProductContainingChloropyrileneMedicinalProduct }, 
+      { "http://snomed.info/sct#65092008", ProductContainingChloropyrileneMedicinalProduct }, 
+      { "6526001", ProductContainingNalorphineMedicinalProduct }, 
+      { "http://snomed.info/sct#6526001", ProductContainingNalorphineMedicinalProduct }, 
+      { "65484006", ProductContainingProstacyclinPGI2Product }, 
+      { "http://snomed.info/sct#65484006", ProductContainingProstacyclinPGI2Product }, 
+      { "65502005", ProductContainingEpinephrineMedicinalProduct }, 
+      { "http://snomed.info/sct#65502005", ProductContainingEpinephrineMedicinalProduct }, 
+      { "65505007", GastrointestinalSmoothMuscleRelaxant }, 
+      { "http://snomed.info/sct#65505007", GastrointestinalSmoothMuscleRelaxant }, 
+      { "65627005", ProductContainingVitaminK5MedicinalProduct }, 
+      { "http://snomed.info/sct#65627005", ProductContainingVitaminK5MedicinalProduct }, 
+      { "65823007", ProtectiveAgent }, 
+      { "http://snomed.info/sct#65823007", ProtectiveAgent }, 
+      { "65884003", ProductContainingDantronMedicinalProduct }, 
+      { "http://snomed.info/sct#65884003", ProductContainingDantronMedicinalProduct }, 
+      { "65965000", ProductContainingMicrurusFulviusAntivenomMedicinalProduct }, 
+      { "http://snomed.info/sct#65965000", ProductContainingMicrurusFulviusAntivenomMedicinalProduct }, 
+      { "66094001", ProductContainingProbenecidMedicinalProduct }, 
+      { "http://snomed.info/sct#66094001", ProductContainingProbenecidMedicinalProduct }, 
+      { "66125007", ProductContainingFlunisolideInNasalDoseFormMedicinalProductForm }, 
+      { "http://snomed.info/sct#66125007", ProductContainingFlunisolideInNasalDoseFormMedicinalProductForm }, 
+      { "6625006", ProductContainingZincSulfateMedicinalProduct }, 
+      { "http://snomed.info/sct#6625006", ProductContainingZincSulfateMedicinalProduct }, 
+      { "66261008", ProductContainingTetracyclineMedicinalProduct }, 
+      { "http://snomed.info/sct#66261008", ProductContainingTetracyclineMedicinalProduct }, 
+      { "66349002", ProductContainingAndrogenReceptorAgonistProduct }, 
+      { "http://snomed.info/sct#66349002", ProductContainingAndrogenReceptorAgonistProduct }, 
+      { "66441000", ProductContainingPantothenicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#66441000", ProductContainingPantothenicAcidMedicinalProduct }, 
+      { "66492008", ProductContainingIsofluraneMedicinalProduct }, 
+      { "http://snomed.info/sct#66492008", ProductContainingIsofluraneMedicinalProduct }, 
+      { "66493003", ProductContainingTheophyllineMedicinalProduct }, 
+      { "http://snomed.info/sct#66493003", ProductContainingTheophyllineMedicinalProduct }, 
+      { "66602007", ProductContainingStanozololMedicinalProduct }, 
+      { "http://snomed.info/sct#66602007", ProductContainingStanozololMedicinalProduct }, 
+      { "66742008", PigmentingAgent }, 
+      { "http://snomed.info/sct#66742008", PigmentingAgent }, 
+      { "66859009", ProductContainingDipyridamoleMedicinalProduct }, 
+      { "http://snomed.info/sct#66859009", ProductContainingDipyridamoleMedicinalProduct }, 
+      { "66860004", ProductContainingAluminiumChlorideMedicinalProduct }, 
+      { "http://snomed.info/sct#66860004", ProductContainingAluminiumChlorideMedicinalProduct }, 
+      { "66919007", ProductContainingMethyclothiazideMedicinalProduct }, 
+      { "http://snomed.info/sct#66919007", ProductContainingMethyclothiazideMedicinalProduct }, 
+      { "66971004", ProductContainingColestipolMedicinalProduct }, 
+      { "http://snomed.info/sct#66971004", ProductContainingColestipolMedicinalProduct }, 
+      { "6716006", AbortifacientAgent }, 
+      { "http://snomed.info/sct#6716006", AbortifacientAgent }, 
+      { "67213005", ProductContainingLymphocyteImmunoglobulinMedicinalProduct }, 
+      { "http://snomed.info/sct#67213005", ProductContainingLymphocyteImmunoglobulinMedicinalProduct }, 
+      { "67423003", ProductContainingAcylaminopenicillinProduct }, 
+      { "http://snomed.info/sct#67423003", ProductContainingAcylaminopenicillinProduct }, 
+      { "67440007", ProductContainingAlphaAdrenergicReceptorAntagonistProduct }, 
+      { "http://snomed.info/sct#67440007", ProductContainingAlphaAdrenergicReceptorAntagonistProduct }, 
+      { "67507000", MedicinalProductActingAsAntiarrhythmicAgentProduct }, 
+      { "http://snomed.info/sct#67507000", MedicinalProductActingAsAntiarrhythmicAgentProduct }, 
+      { "67735003", ProductContainingPaclitaxelMedicinalProduct }, 
+      { "http://snomed.info/sct#67735003", ProductContainingPaclitaxelMedicinalProduct }, 
+      { "67891001", ProductContainingSecondGenerationCephalosporinProduct }, 
+      { "http://snomed.info/sct#67891001", ProductContainingSecondGenerationCephalosporinProduct }, 
+      { "67939000", ProductContainingApomorphineMedicinalProduct }, 
+      { "http://snomed.info/sct#67939000", ProductContainingApomorphineMedicinalProduct }, 
+      { "68088000", ProductContainingAcebutololMedicinalProduct }, 
+      { "http://snomed.info/sct#68088000", ProductContainingAcebutololMedicinalProduct }, 
+      { "68206008", ProductContainingCalcitriolMedicinalProduct }, 
+      { "http://snomed.info/sct#68206008", ProductContainingCalcitriolMedicinalProduct }, 
+      { "68395000", ProductContainingCalciumChlorideMedicinalProduct }, 
+      { "http://snomed.info/sct#68395000", ProductContainingCalciumChlorideMedicinalProduct }, 
+      { "68398003", ProductContainingSomatomedinMedicinalProduct }, 
+      { "http://snomed.info/sct#68398003", ProductContainingSomatomedinMedicinalProduct }, 
+      { "68402007", ProductContainingCarbonicAnhydraseInhibitorProduct }, 
+      { "http://snomed.info/sct#68402007", ProductContainingCarbonicAnhydraseInhibitorProduct }, 
+      { "68407001", HydrogenPeroxide300MgMLCutaneousSolution }, 
+      { "http://snomed.info/sct#68407001", HydrogenPeroxide300MgMLCutaneousSolution }, 
+      { "68422006", ProductContainingCloxacillinMedicinalProduct }, 
+      { "http://snomed.info/sct#68422006", ProductContainingCloxacillinMedicinalProduct }, 
+      { "68424007", ProductContainingIsoflurophateMedicinalProduct }, 
+      { "http://snomed.info/sct#68424007", ProductContainingIsoflurophateMedicinalProduct }, 
+      { "68444001", ProductContainingDoxorubicinMedicinalProduct }, 
+      { "http://snomed.info/sct#68444001", ProductContainingDoxorubicinMedicinalProduct }, 
+      { "68490009", ProductContainingSodiumPropionateMedicinalProduct }, 
+      { "http://snomed.info/sct#68490009", ProductContainingSodiumPropionateMedicinalProduct }, 
+      { "68622003", ProductContainingSecretinMedicinalProduct }, 
+      { "http://snomed.info/sct#68622003", ProductContainingSecretinMedicinalProduct }, 
+      { "68702006", ProductContainingSodiumAurothiomalateMedicinalProduct }, 
+      { "http://snomed.info/sct#68702006", ProductContainingSodiumAurothiomalateMedicinalProduct }, 
+      { "68774008", ProductContainingIsoxsuprineMedicinalProduct }, 
+      { "http://snomed.info/sct#68774008", ProductContainingIsoxsuprineMedicinalProduct }, 
+      { "68887009", ProductContainingMethotrexateMedicinalProduct }, 
+      { "http://snomed.info/sct#68887009", ProductContainingMethotrexateMedicinalProduct }, 
+      { "68892006", ProductContainingPenicillinaseResistantPenicillinProduct }, 
+      { "http://snomed.info/sct#68892006", ProductContainingPenicillinaseResistantPenicillinProduct }, 
+      { "69107004", ProductContainingDantroleneMedicinalProduct }, 
+      { "http://snomed.info/sct#69107004", ProductContainingDantroleneMedicinalProduct }, 
+      { "69204002", ProductContainingGuanadrelMedicinalProduct }, 
+      { "http://snomed.info/sct#69204002", ProductContainingGuanadrelMedicinalProduct }, 
+      { "69236009", ProductContainingAmiodaroneMedicinalProduct }, 
+      { "http://snomed.info/sct#69236009", ProductContainingAmiodaroneMedicinalProduct }, 
+      { "69242008", MedicinalProductActingAsMioticProduct }, 
+      { "http://snomed.info/sct#69242008", MedicinalProductActingAsMioticProduct }, 
+      { "69331001", ProductContainingCiclacillinMedicinalProduct }, 
+      { "http://snomed.info/sct#69331001", ProductContainingCiclacillinMedicinalProduct }, 
+      { "69431002", MedicinalProductActingAsImmunosuppressantProduct }, 
+      { "http://snomed.info/sct#69431002", MedicinalProductActingAsImmunosuppressantProduct }, 
+      { "69576000", ProductContainingMenadioneMedicinalProduct }, 
+      { "http://snomed.info/sct#69576000", ProductContainingMenadioneMedicinalProduct }, 
+      { "6960003", ProductContainingPolymyxinBMedicinalProduct }, 
+      { "http://snomed.info/sct#6960003", ProductContainingPolymyxinBMedicinalProduct }, 
+      { "69708003", ProductContainingClonazepamMedicinalProduct }, 
+      { "http://snomed.info/sct#69708003", ProductContainingClonazepamMedicinalProduct }, 
+      { "6985007", ProductContainingOpiumMedicinalProduct }, 
+      { "http://snomed.info/sct#6985007", ProductContainingOpiumMedicinalProduct }, 
+      { "69879000", ProductContainingAltretamineMedicinalProduct }, 
+      { "http://snomed.info/sct#69879000", ProductContainingAltretamineMedicinalProduct }, 
+      { "69918003", ProductContainingAztreonamMedicinalProduct }, 
+      { "http://snomed.info/sct#69918003", ProductContainingAztreonamMedicinalProduct }, 
+      { "69967001", ProductContainingSucralfateMedicinalProduct }, 
+      { "http://snomed.info/sct#69967001", ProductContainingSucralfateMedicinalProduct }, 
+      { "70047000", ProductContainingSulfamethoxazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#70047000", ProductContainingSulfamethoxazoleMedicinalProduct }, 
+      { "70254000", ProductContainingSulfamethizoleMedicinalProduct }, 
+      { "http://snomed.info/sct#70254000", ProductContainingSulfamethizoleMedicinalProduct }, 
+      { "70343008", ProductContainingPiperazineDerivativeAndHistamineReceptorAntagonistProduct }, 
+      { "http://snomed.info/sct#70343008", ProductContainingPiperazineDerivativeAndHistamineReceptorAntagonistProduct }, 
+      { "70379000", ProductContainingSodiumChlorideMedicinalProduct }, 
+      { "http://snomed.info/sct#70379000", ProductContainingSodiumChlorideMedicinalProduct }, 
+      { "70460002", FishLiverOilContainingProduct }, 
+      { "http://snomed.info/sct#70460002", FishLiverOilContainingProduct }, 
+      { "70702006", ProductContainingDeferoxamineMedicinalProduct }, 
+      { "http://snomed.info/sct#70702006", ProductContainingDeferoxamineMedicinalProduct }, 
+      { "70776005", ProductContainingPemolineMedicinalProduct }, 
+      { "http://snomed.info/sct#70776005", ProductContainingPemolineMedicinalProduct }, 
+      { "70841003", ProductContainingChymotrypsinMedicinalProduct }, 
+      { "http://snomed.info/sct#70841003", ProductContainingChymotrypsinMedicinalProduct }, 
+      { "70864001", ProductContainingMeprobamateMedicinalProduct }, 
+      { "http://snomed.info/sct#70864001", ProductContainingMeprobamateMedicinalProduct }, 
+      { "7092007", ProductContainingMetoprololMedicinalProduct }, 
+      { "http://snomed.info/sct#7092007", ProductContainingMetoprololMedicinalProduct }, 
+      { "70934008", ProductContainingDemecariumMedicinalProduct }, 
+      { "http://snomed.info/sct#70934008", ProductContainingDemecariumMedicinalProduct }, 
+      { "71289008", ProductContainingSnakeAntivenomImmunoglobulinProduct }, 
+      { "http://snomed.info/sct#71289008", ProductContainingSnakeAntivenomImmunoglobulinProduct }, 
+      { "7140000", RadiographicContrastMedia }, 
+      { "http://snomed.info/sct#7140000", RadiographicContrastMedia }, 
+      { "71451001", ProductContainingKanamycinMedicinalProduct }, 
+      { "http://snomed.info/sct#71451001", ProductContainingKanamycinMedicinalProduct }, 
+      { "71453003", ProductContainingMupirocinMedicinalProduct }, 
+      { "http://snomed.info/sct#71453003", ProductContainingMupirocinMedicinalProduct }, 
+      { "71455005", ProductContainingFludroxycortideMedicinalProduct }, 
+      { "http://snomed.info/sct#71455005", ProductContainingFludroxycortideMedicinalProduct }, 
+      { "71462001", ProductContainingPodophyllumResinMedicinalProduct }, 
+      { "http://snomed.info/sct#71462001", ProductContainingPodophyllumResinMedicinalProduct }, 
+      { "71516007", ProductContainingErgocalciferolMedicinalProduct }, 
+      { "http://snomed.info/sct#71516007", ProductContainingErgocalciferolMedicinalProduct }, 
+      { "71584004", ProductContainingMonobasicSodiumPhosphateMedicinalProduct }, 
+      { "http://snomed.info/sct#71584004", ProductContainingMonobasicSodiumPhosphateMedicinalProduct }, 
+      { "71634000", ProductContainingChlormezanoneMedicinalProduct }, 
+      { "http://snomed.info/sct#71634000", ProductContainingChlormezanoneMedicinalProduct }, 
+      { "7168001", ProductContainingMagnesiumCarbonateMedicinalProduct }, 
+      { "http://snomed.info/sct#7168001", ProductContainingMagnesiumCarbonateMedicinalProduct }, 
+      { "71699007", ProductContainingTrifluoperazineMedicinalProduct }, 
+      { "http://snomed.info/sct#71699007", ProductContainingTrifluoperazineMedicinalProduct }, 
+      { "71724000", ProductContainingFerrousSulfateMedicinalProduct }, 
+      { "http://snomed.info/sct#71724000", ProductContainingFerrousSulfateMedicinalProduct }, 
+      { "71731001", ProductContainingMedrysoneInOcularDoseFormMedicinalProductForm }, 
+      { "http://snomed.info/sct#71731001", ProductContainingMedrysoneInOcularDoseFormMedicinalProductForm }, 
+      { "71759000", ProductContainingGlycerylTrinitrateMedicinalProduct }, 
+      { "http://snomed.info/sct#71759000", ProductContainingGlycerylTrinitrateMedicinalProduct }, 
+      { "71770007", ProductContainingMonoamineOxidaseInhibitorProduct }, 
+      { "http://snomed.info/sct#71770007", ProductContainingMonoamineOxidaseInhibitorProduct }, 
+      { "71798005", ProductContainingFenoprofenMedicinalProduct }, 
+      { "http://snomed.info/sct#71798005", ProductContainingFenoprofenMedicinalProduct }, 
+      { "71837009", CytotoxicAgent }, 
+      { "http://snomed.info/sct#71837009", CytotoxicAgent }, 
+      { "72312007", ProductContainingCyclandelateMedicinalProduct }, 
+      { "http://snomed.info/sct#72312007", ProductContainingCyclandelateMedicinalProduct }, 
+      { "7235000", ProductContainingEthylenediamineDerivativeAndHistamineReceptorAntagonistProduct }, 
+      { "http://snomed.info/sct#7235000", ProductContainingEthylenediamineDerivativeAndHistamineReceptorAntagonistProduct }, 
+      { "72416006", ProductContainingMetacyclineMedicinalProduct }, 
+      { "http://snomed.info/sct#72416006", ProductContainingMetacyclineMedicinalProduct }, 
+      { "72623000", ProductContainingTioguanineMedicinalProduct }, 
+      { "http://snomed.info/sct#72623000", ProductContainingTioguanineMedicinalProduct }, 
+      { "72824008", ProductContainingColestyramineMedicinalProduct }, 
+      { "http://snomed.info/sct#72824008", ProductContainingColestyramineMedicinalProduct }, 
+      { "72870001", ProductContainingScopolamineMedicinalProduct }, 
+      { "http://snomed.info/sct#72870001", ProductContainingScopolamineMedicinalProduct }, 
+      { "7292004", ProductContainingIndocyanineGreenMedicinalProduct }, 
+      { "http://snomed.info/sct#7292004", ProductContainingIndocyanineGreenMedicinalProduct }, 
+      { "72924009", ProductContainingClofazimineMedicinalProduct }, 
+      { "http://snomed.info/sct#72924009", ProductContainingClofazimineMedicinalProduct }, 
+      { "72968006", ProductContainingSodiumSalicylateMedicinalProduct }, 
+      { "http://snomed.info/sct#72968006", ProductContainingSodiumSalicylateMedicinalProduct }, 
+      { "73074003", ProductContainingColistinMedicinalProduct }, 
+      { "http://snomed.info/sct#73074003", ProductContainingColistinMedicinalProduct }, 
+      { "73093001", ProductContainingNeomycinMedicinalProduct }, 
+      { "http://snomed.info/sct#73093001", ProductContainingNeomycinMedicinalProduct }, 
+      { "73133000", ProductContainingColchicineMedicinalProduct }, 
+      { "http://snomed.info/sct#73133000", ProductContainingColchicineMedicinalProduct }, 
+      { "73170009", ProductContainingMentholMedicinalProduct }, 
+      { "http://snomed.info/sct#73170009", ProductContainingMentholMedicinalProduct }, 
+      { "73212002", ProductContainingIodipamideMedicinalProduct }, 
+      { "http://snomed.info/sct#73212002", ProductContainingIodipamideMedicinalProduct }, 
+      { "73277004", ProductContainingMecamylamineMedicinalProduct }, 
+      { "http://snomed.info/sct#73277004", ProductContainingMecamylamineMedicinalProduct }, 
+      { "7336002", ProductContainingTrazodoneMedicinalProduct }, 
+      { "http://snomed.info/sct#7336002", ProductContainingTrazodoneMedicinalProduct }, 
+      { "73454001", ProductContainingDesmopressinMedicinalProduct }, 
+      { "http://snomed.info/sct#73454001", ProductContainingDesmopressinMedicinalProduct }, 
+      { "73572009", ProductContainingMorphineMedicinalProduct }, 
+      { "http://snomed.info/sct#73572009", ProductContainingMorphineMedicinalProduct }, 
+      { "73647000", ProductContainingDipivefrinMedicinalProduct }, 
+      { "http://snomed.info/sct#73647000", ProductContainingDipivefrinMedicinalProduct }, 
+      { "73756003", ProductContainingAmobarbitalMedicinalProduct }, 
+      { "http://snomed.info/sct#73756003", ProductContainingAmobarbitalMedicinalProduct }, 
+      { "73763003", ProductContainingExtendedSpectrumPenicillinProduct }, 
+      { "http://snomed.info/sct#73763003", ProductContainingExtendedSpectrumPenicillinProduct }, 
+      { "73805002", ProductContainingThyrotropinReleasingFactorMedicinalProduct }, 
+      { "http://snomed.info/sct#73805002", ProductContainingThyrotropinReleasingFactorMedicinalProduct }, 
+      { "73949004", ProductContainingAtropineMedicinalProduct }, 
+      { "http://snomed.info/sct#73949004", ProductContainingAtropineMedicinalProduct }, 
+      { "73986003", ProductContainingCefuroximeMedicinalProduct }, 
+      { "http://snomed.info/sct#73986003", ProductContainingCefuroximeMedicinalProduct }, 
+      { "74022005", ProductContainingMepenzolateMedicinalProduct }, 
+      { "http://snomed.info/sct#74022005", ProductContainingMepenzolateMedicinalProduct }, 
+      { "74065006", ProductContainingPrazepamMedicinalProduct }, 
+      { "http://snomed.info/sct#74065006", ProductContainingPrazepamMedicinalProduct }, 
+      { "74074008", ProductContainingAtracuriumMedicinalProduct }, 
+      { "http://snomed.info/sct#74074008", ProductContainingAtracuriumMedicinalProduct }, 
+      { "74213004", ProductContainingIndapamideMedicinalProduct }, 
+      { "http://snomed.info/sct#74213004", ProductContainingIndapamideMedicinalProduct }, 
+      { "74226000", ProductContainingVitaminKAndVitaminKDerivativeProduct }, 
+      { "http://snomed.info/sct#74226000", ProductContainingVitaminKAndVitaminKDerivativeProduct }, 
+      { "74470007", ProductContainingCyclophosphamideMedicinalProduct }, 
+      { "http://snomed.info/sct#74470007", ProductContainingCyclophosphamideMedicinalProduct }, 
+      { "74480006", MedicinalProductActingAsPotassiumSupplementProduct }, 
+      { "http://snomed.info/sct#74480006", MedicinalProductActingAsPotassiumSupplementProduct }, 
+      { "74575000", ProductContainingPiperacillinMedicinalProduct }, 
+      { "http://snomed.info/sct#74575000", ProductContainingPiperacillinMedicinalProduct }, 
+      { "74583006", ProductContainingHydroquinoneMedicinalProduct }, 
+      { "http://snomed.info/sct#74583006", ProductContainingHydroquinoneMedicinalProduct }, 
+      { "74632002", SuccinimideContainingProduct }, 
+      { "http://snomed.info/sct#74632002", SuccinimideContainingProduct }, 
+      { "74674007", ProductContainingPropofolMedicinalProduct }, 
+      { "http://snomed.info/sct#74674007", ProductContainingPropofolMedicinalProduct }, 
+      { "74771007", ProductContainingPhenoxybenzamineMedicinalProduct }, 
+      { "http://snomed.info/sct#74771007", ProductContainingPhenoxybenzamineMedicinalProduct }, 
+      { "74782004", ProductContainingNaturallyOccurringAlkaloidProduct }, 
+      { "http://snomed.info/sct#74782004", ProductContainingNaturallyOccurringAlkaloidProduct }, 
+      { "74798006", ProductContainingPipenzolateMedicinalProduct }, 
+      { "http://snomed.info/sct#74798006", ProductContainingPipenzolateMedicinalProduct }, 
+      { "74819009", ProductContainingAcetohydroxamicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#74819009", ProductContainingAcetohydroxamicAcidMedicinalProduct }, 
+      { "75029008", ProductContaining11DeoxycorticosteroneMedicinalProduct }, 
+      { "http://snomed.info/sct#75029008", ProductContaining11DeoxycorticosteroneMedicinalProduct }, 
+      { "75203002", ProductContainingMometasoneMedicinalProduct }, 
+      { "http://snomed.info/sct#75203002", ProductContainingMometasoneMedicinalProduct }, 
+      { "75429004", ProductContainingDexbrompheniramineMedicinalProduct }, 
+      { "http://snomed.info/sct#75429004", ProductContainingDexbrompheniramineMedicinalProduct }, 
+      { "75501004", ProductContainingBromazineMedicinalProduct }, 
+      { "http://snomed.info/sct#75501004", ProductContainingBromazineMedicinalProduct }, 
+      { "7561000", ProductContainingDexamethasoneMedicinalProduct }, 
+      { "http://snomed.info/sct#7561000", ProductContainingDexamethasoneMedicinalProduct }, 
+      { "75661008", ProductContainingDeltaTocopherolMedicinalProduct }, 
+      { "http://snomed.info/sct#75661008", ProductContainingDeltaTocopherolMedicinalProduct }, 
+      { "7577004", ProductContainingCiprofloxacinMedicinalProduct }, 
+      { "http://snomed.info/sct#7577004", ProductContainingCiprofloxacinMedicinalProduct }, 
+      { "75927008", ProductContainingFloxuridineMedicinalProduct }, 
+      { "http://snomed.info/sct#75927008", ProductContainingFloxuridineMedicinalProduct }, 
+      { "75959001", ProductContainingTamoxifenMedicinalProduct }, 
+      { "http://snomed.info/sct#75959001", ProductContainingTamoxifenMedicinalProduct }, 
+      { "75969007", ProductContainingGonadotropinReleasingFactorProduct }, 
+      { "http://snomed.info/sct#75969007", ProductContainingGonadotropinReleasingFactorProduct }, 
+      { "76058001", ProductContainingPrazosinMedicinalProduct }, 
+      { "http://snomed.info/sct#76058001", ProductContainingPrazosinMedicinalProduct }, 
+      { "76155001", ProductContainingIopanoicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#76155001", ProductContainingIopanoicAcidMedicinalProduct }, 
+      { "7624002", ProductContainingSodiumPerborateMedicinalProduct }, 
+      { "http://snomed.info/sct#7624002", ProductContainingSodiumPerborateMedicinalProduct }, 
+      { "76286000", ProductContainingGallamineMedicinalProduct }, 
+      { "http://snomed.info/sct#76286000", ProductContainingGallamineMedicinalProduct }, 
+      { "76289007", ProductContainingXylometazolineMedicinalProduct }, 
+      { "http://snomed.info/sct#76289007", ProductContainingXylometazolineMedicinalProduct }, 
+      { "763158003", MedicinalProductProduct }, 
+      { "http://snomed.info/sct#763158003", MedicinalProductProduct }, 
+      { "76385003", ProductContainingAlpha1AdrenergicReceptorAntagonistProduct }, 
+      { "http://snomed.info/sct#76385003", ProductContainingAlpha1AdrenergicReceptorAntagonistProduct }, 
+      { "76390000", ProductContainingPractololMedicinalProduct }, 
+      { "http://snomed.info/sct#76390000", ProductContainingPractololMedicinalProduct }, 
+      { "76591000", ProductContainingBleomycinMedicinalProduct }, 
+      { "http://snomed.info/sct#76591000", ProductContainingBleomycinMedicinalProduct }, 
+      { "76696004", ProductContainingNoscapineMedicinalProduct }, 
+      { "http://snomed.info/sct#76696004", ProductContainingNoscapineMedicinalProduct }, 
+      { "76759004", ProductContainingDisopyramideMedicinalProduct }, 
+      { "http://snomed.info/sct#76759004", ProductContainingDisopyramideMedicinalProduct }, 
+      { "76962009", ProductContainingIproniazidMedicinalProduct }, 
+      { "http://snomed.info/sct#76962009", ProductContainingIproniazidMedicinalProduct }, 
+      { "77035009", ProductContainingClofibrateMedicinalProduct }, 
+      { "http://snomed.info/sct#77035009", ProductContainingClofibrateMedicinalProduct }, 
+      { "77048008", ProductContainingDiphtheriaAntitoxinMedicinalProduct }, 
+      { "http://snomed.info/sct#77048008", ProductContainingDiphtheriaAntitoxinMedicinalProduct }, 
+      { "77237006", MedicinalProductActingAsEmeticProduct }, 
+      { "http://snomed.info/sct#77237006", MedicinalProductActingAsEmeticProduct }, 
+      { "77390008", ProductContainingBenzatropineMedicinalProduct }, 
+      { "http://snomed.info/sct#77390008", ProductContainingBenzatropineMedicinalProduct }, 
+      { "77398001", MedicinalProductActingAsAntidiarrhealAgentProduct }, 
+      { "http://snomed.info/sct#77398001", MedicinalProductActingAsAntidiarrhealAgentProduct }, 
+      { "77549006", ProductContainingTerpeneProduct }, 
+      { "http://snomed.info/sct#77549006", ProductContainingTerpeneProduct }, 
+      { "77731008", ProductContainingAcetylcysteineMedicinalProduct }, 
+      { "http://snomed.info/sct#77731008", ProductContainingAcetylcysteineMedicinalProduct }, 
+      { "77750008", ProductContainingDacarbazineMedicinalProduct }, 
+      { "http://snomed.info/sct#77750008", ProductContainingDacarbazineMedicinalProduct }, 
+      { "77856005", ProductContainingEsmololMedicinalProduct }, 
+      { "http://snomed.info/sct#77856005", ProductContainingEsmololMedicinalProduct }, 
+      { "77885004", ProductContainingMestranolMedicinalProduct }, 
+      { "http://snomed.info/sct#77885004", ProductContainingMestranolMedicinalProduct }, 
+      { "77898008", ProductContainingSimeticoneMedicinalProduct }, 
+      { "http://snomed.info/sct#77898008", ProductContainingSimeticoneMedicinalProduct }, 
+      { "78025001", ProductContainingGanciclovirMedicinalProduct }, 
+      { "http://snomed.info/sct#78025001", ProductContainingGanciclovirMedicinalProduct }, 
+      { "78174002", ProductContainingMezlocillinMedicinalProduct }, 
+      { "http://snomed.info/sct#78174002", ProductContainingMezlocillinMedicinalProduct }, 
+      { "7836006", ExpectorantAgent }, 
+      { "http://snomed.info/sct#7836006", ExpectorantAgent }, 
+      { "78379001", ProductContainingReserpineMedicinalProduct }, 
+      { "http://snomed.info/sct#78379001", ProductContainingReserpineMedicinalProduct }, 
+      { "78449007", ProductContainingNitrazepamMedicinalProduct }, 
+      { "http://snomed.info/sct#78449007", ProductContainingNitrazepamMedicinalProduct }, 
+      { "78507004", ProductContainingBenzylpenicillinMedicinalProduct }, 
+      { "http://snomed.info/sct#78507004", ProductContainingBenzylpenicillinMedicinalProduct }, 
+      { "78542000", ProductContainingPotassiumCitrateMedicinalProduct }, 
+      { "http://snomed.info/sct#78542000", ProductContainingPotassiumCitrateMedicinalProduct }, 
+      { "78684000", ProductContainingMesoridazineMedicinalProduct }, 
+      { "http://snomed.info/sct#78684000", ProductContainingMesoridazineMedicinalProduct }, 
+      { "78700004", ProductContainingFenfluramineMedicinalProduct }, 
+      { "http://snomed.info/sct#78700004", ProductContainingFenfluramineMedicinalProduct }, 
+      { "78983008", ProductContainingEtamivanMedicinalProduct }, 
+      { "http://snomed.info/sct#78983008", ProductContainingEtamivanMedicinalProduct }, 
+      { "79129001", ProductContainingProchlorperazineMedicinalProduct }, 
+      { "http://snomed.info/sct#79129001", ProductContainingProchlorperazineMedicinalProduct }, 
+      { "79138004", ProductContainingGelatinMedicinalProduct }, 
+      { "http://snomed.info/sct#79138004", ProductContainingGelatinMedicinalProduct }, 
+      { "79221007", ProductContainingPropoxycaineMedicinalProduct }, 
+      { "http://snomed.info/sct#79221007", ProductContainingPropoxycaineMedicinalProduct }, 
+      { "79225003", ProductContainingOxazepamMedicinalProduct }, 
+      { "http://snomed.info/sct#79225003", ProductContainingOxazepamMedicinalProduct }, 
+      { "79305004", ProductContainingGuanethidineMedicinalProduct }, 
+      { "http://snomed.info/sct#79305004", ProductContainingGuanethidineMedicinalProduct }, 
+      { "79332009", ProductContainingDiethylstilbestrolMedicinalProduct }, 
+      { "http://snomed.info/sct#79332009", ProductContainingDiethylstilbestrolMedicinalProduct }, 
+      { "79356008", ProductContainingAcenocoumarolMedicinalProduct }, 
+      { "http://snomed.info/sct#79356008", ProductContainingAcenocoumarolMedicinalProduct }, 
+      { "79440004", ProductContainingCorticosteroidAndCorticosteroidDerivativeProduct }, 
+      { "http://snomed.info/sct#79440004", ProductContainingCorticosteroidAndCorticosteroidDerivativeProduct }, 
+      { "7947003", ProductContainingAspirinMedicinalProduct }, 
+      { "http://snomed.info/sct#7947003", ProductContainingAspirinMedicinalProduct }, 
+      { "79543000", Psychostimulant }, 
+      { "http://snomed.info/sct#79543000", Psychostimulant }, 
+      { "7959004", ProductContainingTeniposideMedicinalProduct }, 
+      { "http://snomed.info/sct#7959004", ProductContainingTeniposideMedicinalProduct }, 
+      { "796001", ProductContainingDigoxinMedicinalProduct }, 
+      { "http://snomed.info/sct#796001", ProductContainingDigoxinMedicinalProduct }, 
+      { "79736009", ProductContainingCiclopiroxMedicinalProduct }, 
+      { "http://snomed.info/sct#79736009", ProductContainingCiclopiroxMedicinalProduct }, 
+      { "79873000", VacciniaHumanImmuneGlobulinContainingProduct }, 
+      { "http://snomed.info/sct#79873000", VacciniaHumanImmuneGlobulinContainingProduct }, 
+      { "80024007", ProductContainingNeostigmineMedicinalProduct }, 
+      { "http://snomed.info/sct#80024007", ProductContainingNeostigmineMedicinalProduct }, 
+      { "80127003", ProductContainingPhenylpropanolamineMedicinalProduct }, 
+      { "http://snomed.info/sct#80127003", ProductContainingPhenylpropanolamineMedicinalProduct }, 
+      { "80165005", ProductContainingHydroxyzineMedicinalProduct }, 
+      { "http://snomed.info/sct#80165005", ProductContainingHydroxyzineMedicinalProduct }, 
+      { "80229008", ProductContainingAntimalarialProduct }, 
+      { "http://snomed.info/sct#80229008", ProductContainingAntimalarialProduct }, 
+      { "8028001", ProductContainingButacaineMedicinalProduct }, 
+      { "http://snomed.info/sct#8028001", ProductContainingButacaineMedicinalProduct }, 
+      { "80311000", ProductContainingChlorphenesinMedicinalProduct }, 
+      { "http://snomed.info/sct#80311000", ProductContainingChlorphenesinMedicinalProduct }, 
+      { "80399002", ProductContainingAluminiumHydroxideMedicinalProduct }, 
+      { "http://snomed.info/sct#80399002", ProductContainingAluminiumHydroxideMedicinalProduct }, 
+      { "80618000", ProductContainingEthylestrenolMedicinalProduct }, 
+      { "http://snomed.info/sct#80618000", ProductContainingEthylestrenolMedicinalProduct }, 
+      { "80732005", ProductContainingSulfafurazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#80732005", ProductContainingSulfafurazoleMedicinalProduct }, 
+      { "80802008", ProductContainingCyclobenzaprineMedicinalProduct }, 
+      { "http://snomed.info/sct#80802008", ProductContainingCyclobenzaprineMedicinalProduct }, 
+      { "80834004", ProductContainingRabiesHumanImmuneGlobulinMedicinalProduct }, 
+      { "http://snomed.info/sct#80834004", ProductContainingRabiesHumanImmuneGlobulinMedicinalProduct }, 
+      { "80870001", ProductContainingGlibenclamideMedicinalProduct }, 
+      { "http://snomed.info/sct#80870001", ProductContainingGlibenclamideMedicinalProduct }, 
+      { "80906007", ProductContainingCiclosporinMedicinalProduct }, 
+      { "http://snomed.info/sct#80906007", ProductContainingCiclosporinMedicinalProduct }, 
+      { "81073007", ProductContainingDimenhydrinateMedicinalProduct }, 
+      { "http://snomed.info/sct#81073007", ProductContainingDimenhydrinateMedicinalProduct }, 
+      { "81088002", ProductContainingCefazolinMedicinalProduct }, 
+      { "http://snomed.info/sct#81088002", ProductContainingCefazolinMedicinalProduct }, 
+      { "8109005", ProductContainingAlimemazineMedicinalProduct }, 
+      { "http://snomed.info/sct#8109005", ProductContainingAlimemazineMedicinalProduct }, 
+      { "81219009", MumpsHumanImmuneGlobulinContainingProduct }, 
+      { "http://snomed.info/sct#81219009", MumpsHumanImmuneGlobulinContainingProduct }, 
+      { "81252003", ProductContainingThirdGenerationCephalosporinProduct }, 
+      { "http://snomed.info/sct#81252003", ProductContainingThirdGenerationCephalosporinProduct }, 
+      { "81335000", ProductContainingIsoniazidMedicinalProduct }, 
+      { "http://snomed.info/sct#81335000", ProductContainingIsoniazidMedicinalProduct }, 
+      { "81457006", ProductContainingDesoximetasoneMedicinalProduct }, 
+      { "http://snomed.info/sct#81457006", ProductContainingDesoximetasoneMedicinalProduct }, 
+      { "81583003", ProductContainingProcarbazineMedicinalProduct }, 
+      { "http://snomed.info/sct#81583003", ProductContainingProcarbazineMedicinalProduct }, 
+      { "81609008", ProductContainingFurosemideMedicinalProduct }, 
+      { "http://snomed.info/sct#81609008", ProductContainingFurosemideMedicinalProduct }, 
+      { "8163008", ProductContainingNitroprussideMedicinalProduct }, 
+      { "http://snomed.info/sct#8163008", ProductContainingNitroprussideMedicinalProduct }, 
+      { "81646007", ProductContainingDiphenylpyralineMedicinalProduct }, 
+      { "http://snomed.info/sct#81646007", ProductContainingDiphenylpyralineMedicinalProduct }, 
+      { "81728006", ProductContainingDigitoxinMedicinalProduct }, 
+      { "http://snomed.info/sct#81728006", ProductContainingDigitoxinMedicinalProduct }, 
+      { "81759008", ImmuneEnhancementAgent }, 
+      { "http://snomed.info/sct#81759008", ImmuneEnhancementAgent }, 
+      { "81839001", MedicinalProductActingAsAnticoagulantAgentProduct }, 
+      { "http://snomed.info/sct#81839001", MedicinalProductActingAsAnticoagulantAgentProduct }, 
+      { "81947000", ProductContainingEtacrynicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#81947000", ProductContainingEtacrynicAcidMedicinalProduct }, 
+      { "82133001", ProductContainingNoretynodrelMedicinalProduct }, 
+      { "http://snomed.info/sct#82133001", ProductContainingNoretynodrelMedicinalProduct }, 
+      { "82156005", ProductContainingRetinolMedicinalProduct }, 
+      { "http://snomed.info/sct#82156005", ProductContainingRetinolMedicinalProduct }, 
+      { "82165003", ProductContainingPhentolamineMedicinalProduct }, 
+      { "http://snomed.info/sct#82165003", ProductContainingPhentolamineMedicinalProduct }, 
+      { "82166002", ProductContainingProlactinMedicinalProduct }, 
+      { "http://snomed.info/sct#82166002", ProductContainingProlactinMedicinalProduct }, 
+      { "82240008", ProductContainingNorgestrelMedicinalProduct }, 
+      { "http://snomed.info/sct#82240008", ProductContainingNorgestrelMedicinalProduct }, 
+      { "82264009", ProductContainingHomatropineMedicinalProduct }, 
+      { "http://snomed.info/sct#82264009", ProductContainingHomatropineMedicinalProduct }, 
+      { "82290007", ProductContainingBismuthMedicinalProduct }, 
+      { "http://snomed.info/sct#82290007", ProductContainingBismuthMedicinalProduct }, 
+      { "82312001", ProductContainingBacampicillinMedicinalProduct }, 
+      { "http://snomed.info/sct#82312001", ProductContainingBacampicillinMedicinalProduct }, 
+      { "82573000", ProductContainingLidocaineMedicinalProduct }, 
+      { "http://snomed.info/sct#82573000", ProductContainingLidocaineMedicinalProduct }, 
+      { "82746003", ProductContainingChlordiazepoxideMedicinalProduct }, 
+      { "http://snomed.info/sct#82746003", ProductContainingChlordiazepoxideMedicinalProduct }, 
+      { "82804004", ProductManufacturedAsNasalDoseFormProduct }, 
+      { "http://snomed.info/sct#82804004", ProductManufacturedAsNasalDoseFormProduct }, 
+      { "82896009", ProductContainingNadololMedicinalProduct }, 
+      { "http://snomed.info/sct#82896009", ProductContainingNadololMedicinalProduct }, 
+      { "82951001", ProductContainingGuanabenzMedicinalProduct }, 
+      { "http://snomed.info/sct#82951001", ProductContainingGuanabenzMedicinalProduct }, 
+      { "83085007", ProductContainingNalbuphineMedicinalProduct }, 
+      { "http://snomed.info/sct#83085007", ProductContainingNalbuphineMedicinalProduct }, 
+      { "83179003", NephrogenicVitaminDPreparation }, 
+      { "http://snomed.info/sct#83179003", NephrogenicVitaminDPreparation }, 
+      { "83192000", ProductContainingMescalineMedicinalProduct }, 
+      { "http://snomed.info/sct#83192000", ProductContainingMescalineMedicinalProduct }, 
+      { "83201006", ProductContainingOxacillinMedicinalProduct }, 
+      { "http://snomed.info/sct#83201006", ProductContainingOxacillinMedicinalProduct }, 
+      { "83288003", ProductContainingDiloxanideMedicinalProduct }, 
+      { "http://snomed.info/sct#83288003", ProductContainingDiloxanideMedicinalProduct }, 
+      { "8348002", ProductContainingCyclopentolateMedicinalProduct }, 
+      { "http://snomed.info/sct#8348002", ProductContainingCyclopentolateMedicinalProduct }, 
+      { "83490000", ProductContainingHydroxychloroquineMedicinalProduct }, 
+      { "http://snomed.info/sct#83490000", ProductContainingHydroxychloroquineMedicinalProduct }, 
+      { "83532008", ProductContainingCimetidineMedicinalProduct }, 
+      { "http://snomed.info/sct#83532008", ProductContainingCimetidineMedicinalProduct }, 
+      { "83692001", ProductContainingMineralocorticoidProduct }, 
+      { "http://snomed.info/sct#83692001", ProductContainingMineralocorticoidProduct }, 
+      { "8372007", ProductContainingPromethazineMedicinalProduct }, 
+      { "http://snomed.info/sct#8372007", ProductContainingPromethazineMedicinalProduct }, 
+      { "83973001", ProductContainingMethocarbamolMedicinalProduct }, 
+      { "http://snomed.info/sct#83973001", ProductContainingMethocarbamolMedicinalProduct }, 
+      { "83999008", ProductContainingClarithromycinMedicinalProduct }, 
+      { "http://snomed.info/sct#83999008", ProductContainingClarithromycinMedicinalProduct }, 
+      { "84078002", ProductContainingMethyldopaMedicinalProduct }, 
+      { "http://snomed.info/sct#84078002", ProductContainingMethyldopaMedicinalProduct }, 
+      { "8416000", ProductContainingDicloxacillinMedicinalProduct }, 
+      { "http://snomed.info/sct#8416000", ProductContainingDicloxacillinMedicinalProduct }, 
+      { "847003", ProductContainingDextrothyroxineMedicinalProduct }, 
+      { "http://snomed.info/sct#847003", ProductContainingDextrothyroxineMedicinalProduct }, 
+      { "84737005", ProductContainingMafenideMedicinalProduct }, 
+      { "http://snomed.info/sct#84737005", ProductContainingMafenideMedicinalProduct }, 
+      { "84812008", ProductContainingHeparinMedicinalProduct }, 
+      { "http://snomed.info/sct#84812008", ProductContainingHeparinMedicinalProduct }, 
+      { "84844007", ProductContainingButoconazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#84844007", ProductContainingButoconazoleMedicinalProduct }, 
+      { "84951002", ProductContainingMeclozineMedicinalProduct }, 
+      { "http://snomed.info/sct#84951002", ProductContainingMeclozineMedicinalProduct }, 
+      { "84986000", ProductContainingCorticotropinReleasingFactorProduct }, 
+      { "http://snomed.info/sct#84986000", ProductContainingCorticotropinReleasingFactorProduct }, 
+      { "85063003", ProductContainingOpioidReceptorPartialAgonistProduct }, 
+      { "http://snomed.info/sct#85063003", ProductContainingOpioidReceptorPartialAgonistProduct }, 
+      { "85272000", ProductContainingNifedipineMedicinalProduct }, 
+      { "http://snomed.info/sct#85272000", ProductContainingNifedipineMedicinalProduct }, 
+      { "85343003", ProductContainingNitrofurantoinMedicinalProduct }, 
+      { "http://snomed.info/sct#85343003", ProductContainingNitrofurantoinMedicinalProduct }, 
+      { "85354008", ProductContainingCyclizineMedicinalProduct }, 
+      { "http://snomed.info/sct#85354008", ProductContainingCyclizineMedicinalProduct }, 
+      { "85408000", ProductContainingAntazolineMedicinalProduct }, 
+      { "http://snomed.info/sct#85408000", ProductContainingAntazolineMedicinalProduct }, 
+      { "85417000", ProductContainingAutonomicAgentProduct }, 
+      { "http://snomed.info/sct#85417000", ProductContainingAutonomicAgentProduct }, 
+      { "85429009", ProductContainingPhysostigmineMedicinalProduct }, 
+      { "http://snomed.info/sct#85429009", ProductContainingPhysostigmineMedicinalProduct }, 
+      { "85468002", ProductContainingPolythiazideMedicinalProduct }, 
+      { "http://snomed.info/sct#85468002", ProductContainingPolythiazideMedicinalProduct }, 
+      { "85507008", ProductContainingEsterifiedEstrogenMedicinalProduct }, 
+      { "http://snomed.info/sct#85507008", ProductContainingEsterifiedEstrogenMedicinalProduct }, 
+      { "85591001", ProductContainingTimololMedicinalProduct }, 
+      { "http://snomed.info/sct#85591001", ProductContainingTimololMedicinalProduct }, 
+      { "8571001", MedicinalProductActingAsVasoconstrictorProduct }, 
+      { "http://snomed.info/sct#8571001", MedicinalProductActingAsVasoconstrictorProduct }, 
+      { "85990009", ProductContainingCodeineMedicinalProduct }, 
+      { "http://snomed.info/sct#85990009", ProductContainingCodeineMedicinalProduct }, 
+      { "86066003", ProductContainingSpectinomycinMedicinalProduct }, 
+      { "http://snomed.info/sct#86066003", ProductContainingSpectinomycinMedicinalProduct }, 
+      { "86080005", ProductContainingBotulinumAntitoxinMedicinalProduct }, 
+      { "http://snomed.info/sct#86080005", ProductContainingBotulinumAntitoxinMedicinalProduct }, 
+      { "86085000", ProductContainingVecuroniumMedicinalProduct }, 
+      { "http://snomed.info/sct#86085000", ProductContainingVecuroniumMedicinalProduct }, 
+      { "86131002", ProductContainingMetirosineMedicinalProduct }, 
+      { "http://snomed.info/sct#86131002", ProductContainingMetirosineMedicinalProduct }, 
+      { "86162003", ProductContainingNandroloneMedicinalProduct }, 
+      { "http://snomed.info/sct#86162003", ProductContainingNandroloneMedicinalProduct }, 
+      { "86308005", ProductContainingSympathomimeticProduct }, 
+      { "http://snomed.info/sct#86308005", ProductContainingSympathomimeticProduct }, 
+      { "86337009", ProductContainingTetanusImmunoglobulinOfHumanOriginMedicinalProduct }, 
+      { "http://snomed.info/sct#86337009", ProductContainingTetanusImmunoglobulinOfHumanOriginMedicinalProduct }, 
+      { "86389004", ProductContainingSharkLiverOilMedicinalProduct }, 
+      { "http://snomed.info/sct#86389004", ProductContainingSharkLiverOilMedicinalProduct }, 
+      { "86536001", ProductContainingNaturalPenicillinProduct }, 
+      { "http://snomed.info/sct#86536001", ProductContainingNaturalPenicillinProduct }, 
+      { "8658008", ProductContainingHumanSerumAlbuminMedicinalProduct }, 
+      { "http://snomed.info/sct#8658008", ProductContainingHumanSerumAlbuminMedicinalProduct }, 
+      { "8661009", ReplacementPreparation }, 
+      { "http://snomed.info/sct#8661009", ReplacementPreparation }, 
+      { "86647004", ProductContainingBumetanideMedicinalProduct }, 
+      { "http://snomed.info/sct#86647004", ProductContainingBumetanideMedicinalProduct }, 
+      { "86906004", ProductContainingPropylaminoDerivativeOfPhenothiazineProduct }, 
+      { "http://snomed.info/sct#86906004", ProductContainingPropylaminoDerivativeOfPhenothiazineProduct }, 
+      { "8692006", ProductContainingMetamfetamineMedicinalProduct }, 
+      { "http://snomed.info/sct#8692006", ProductContainingMetamfetamineMedicinalProduct }, 
+      { "86939001", ProductContainingSulfaguanidineMedicinalProduct }, 
+      { "http://snomed.info/sct#86939001", ProductContainingSulfaguanidineMedicinalProduct }, 
+      { "8696009", MedicinalProductActingAsAntispasmodicAgentProduct }, 
+      { "http://snomed.info/sct#8696009", MedicinalProductActingAsAntispasmodicAgentProduct }, 
+      { "86977007", ProductContainingMesalazineMedicinalProduct }, 
+      { "http://snomed.info/sct#86977007", ProductContainingMesalazineMedicinalProduct }, 
+      { "87233003", ProductContainingLowMolecularWeightHeparinProduct }, 
+      { "http://snomed.info/sct#87233003", ProductContainingLowMolecularWeightHeparinProduct }, 
+      { "87285001", ProductContainingNimodipineMedicinalProduct }, 
+      { "http://snomed.info/sct#87285001", ProductContainingNimodipineMedicinalProduct }, 
+      { "87395005", ProductContainingAmilorideMedicinalProduct }, 
+      { "http://snomed.info/sct#87395005", ProductContainingAmilorideMedicinalProduct }, 
+      { "87567009", ProductContainingMefloquineMedicinalProduct }, 
+      { "http://snomed.info/sct#87567009", ProductContainingMefloquineMedicinalProduct }, 
+      { "87586001", ProductContainingNeuromuscularBlocker }, 
+      { "http://snomed.info/sct#87586001", ProductContainingNeuromuscularBlocker }, 
+      { "87617007", ProductContainingNaltrexoneMedicinalProduct }, 
+      { "http://snomed.info/sct#87617007", ProductContainingNaltrexoneMedicinalProduct }, 
+      { "87652004", ProductContainingAtenololMedicinalProduct }, 
+      { "http://snomed.info/sct#87652004", ProductContainingAtenololMedicinalProduct }, 
+      { "87881000", ProductContainingDanazolMedicinalProduct }, 
+      { "http://snomed.info/sct#87881000", ProductContainingDanazolMedicinalProduct }, 
+      { "88134000", ProductContainingRauwolfiaAlkaloidMedicinalProduct }, 
+      { "http://snomed.info/sct#88134000", ProductContainingRauwolfiaAlkaloidMedicinalProduct }, 
+      { "88226000", ProductContainingHydrocortisoneInNasalDoseFormMedicinalProductForm }, 
+      { "http://snomed.info/sct#88226000", ProductContainingHydrocortisoneInNasalDoseFormMedicinalProductForm }, 
+      { "88279005", MedicinalProductActingAsAntirheumaticAgentProduct }, 
+      { "http://snomed.info/sct#88279005", MedicinalProductActingAsAntirheumaticAgentProduct }, 
+      { "88519001", ProductContainingCalcifediolMedicinalProduct }, 
+      { "http://snomed.info/sct#88519001", ProductContainingCalcifediolMedicinalProduct }, 
+      { "88566002", ProductContainingLiverExtractMedicinalProduct }, 
+      { "http://snomed.info/sct#88566002", ProductContainingLiverExtractMedicinalProduct }, 
+      { "88870000", ProductContainingFirstGenerationCephalosporinProduct }, 
+      { "http://snomed.info/sct#88870000", ProductContainingFirstGenerationCephalosporinProduct }, 
+      { "88997008", ProductContainingThiotepaMedicinalProduct }, 
+      { "http://snomed.info/sct#88997008", ProductContainingThiotepaMedicinalProduct }, 
+      { "89018006", ProductContainingNaloxoneMedicinalProduct }, 
+      { "http://snomed.info/sct#89018006", ProductContainingNaloxoneMedicinalProduct }, 
+      { "89029005", ProductContainingLevomepromazineMedicinalProduct }, 
+      { "http://snomed.info/sct#89029005", ProductContainingLevomepromazineMedicinalProduct }, 
+      { "89045007", ProductContainingPertussisHumanImmuneGlobulinMedicinalProduct }, 
+      { "http://snomed.info/sct#89045007", ProductContainingPertussisHumanImmuneGlobulinMedicinalProduct }, 
+      { "89092006", ProductContainingTranylcypromineMedicinalProduct }, 
+      { "http://snomed.info/sct#89092006", ProductContainingTranylcypromineMedicinalProduct }, 
+      { "89132005", ProductContainingChenodeoxycholicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#89132005", ProductContainingChenodeoxycholicAcidMedicinalProduct }, 
+      { "89192008", ProductContainingFludrocortisoneMedicinalProduct }, 
+      { "http://snomed.info/sct#89192008", ProductContainingFludrocortisoneMedicinalProduct }, 
+      { "89265009", ProductContainingCytarabineMedicinalProduct }, 
+      { "http://snomed.info/sct#89265009", ProductContainingCytarabineMedicinalProduct }, 
+      { "89435001", ProductContainingPoliomyelitisHumanImmuneGlobulinMedicinalProduct }, 
+      { "http://snomed.info/sct#89435001", ProductContainingPoliomyelitisHumanImmuneGlobulinMedicinalProduct }, 
+      { "89466007", ProductContainingMethallenestrilMedicinalProduct }, 
+      { "http://snomed.info/sct#89466007", ProductContainingMethallenestrilMedicinalProduct }, 
+      { "89505005", ProductContainingSulindacMedicinalProduct }, 
+      { "http://snomed.info/sct#89505005", ProductContainingSulindacMedicinalProduct }, 
+      { "89626004", MedicinalProductActingAsAntidoteAgentProduct }, 
+      { "http://snomed.info/sct#89626004", MedicinalProductActingAsAntidoteAgentProduct }, 
+      { "89664002", ProductContainingMetocurineMedicinalProduct }, 
+      { "http://snomed.info/sct#89664002", ProductContainingMetocurineMedicinalProduct }, 
+      { "89692007", ProductContainingCrotamitonMedicinalProduct }, 
+      { "http://snomed.info/sct#89692007", ProductContainingCrotamitonMedicinalProduct }, 
+      { "89695009", ProductContainingTobramycinMedicinalProduct }, 
+      { "http://snomed.info/sct#89695009", ProductContainingTobramycinMedicinalProduct }, 
+      { "89785009", ProductContainingRitodrineMedicinalProduct }, 
+      { "http://snomed.info/sct#89785009", ProductContainingRitodrineMedicinalProduct }, 
+      { "90000002", SmoothMuscleRelaxant }, 
+      { "http://snomed.info/sct#90000002", SmoothMuscleRelaxant }, 
+      { "90017009", ProductContainingEstroneMedicinalProduct }, 
+      { "http://snomed.info/sct#90017009", ProductContainingEstroneMedicinalProduct }, 
+      { "90332006", ProductContainingParacetamolMedicinalProduct }, 
+      { "http://snomed.info/sct#90332006", ProductContainingParacetamolMedicinalProduct }, 
+      { "90346006", ProductContainingRazoxaneMedicinalProduct }, 
+      { "http://snomed.info/sct#90346006", ProductContainingRazoxaneMedicinalProduct }, 
+      { "90356005", ProductContainingPilocarpineMedicinalProduct }, 
+      { "http://snomed.info/sct#90356005", ProductContainingPilocarpineMedicinalProduct }, 
+      { "90370005", ProductContainingBenzalkoniumMedicinalProduct }, 
+      { "http://snomed.info/sct#90370005", ProductContainingBenzalkoniumMedicinalProduct }, 
+      { "90426002", ProductContainingTrimipramineMedicinalProduct }, 
+      { "http://snomed.info/sct#90426002", ProductContainingTrimipramineMedicinalProduct }, 
+      { "90614001", ProductContainingBetaLactamAndAntibioticProduct }, 
+      { "http://snomed.info/sct#90614001", ProductContainingBetaLactamAndAntibioticProduct }, 
+      { "90659009", ProductContainingNatamycinInOcularDoseFormMedicinalProductForm }, 
+      { "http://snomed.info/sct#90659009", ProductContainingNatamycinInOcularDoseFormMedicinalProductForm }, 
+      { "90704004", ProductContainingAminopenicillinProduct }, 
+      { "http://snomed.info/sct#90704004", ProductContainingAminopenicillinProduct }, 
+      { "90802006", ProductContainingReversibleAnticholinesteraseProduct }, 
+      { "http://snomed.info/sct#90802006", ProductContainingReversibleAnticholinesteraseProduct }, 
+      { "90882008", ProductContainingCarbinoxamineMedicinalProduct }, 
+      { "http://snomed.info/sct#90882008", ProductContainingCarbinoxamineMedicinalProduct }, 
+      { "91107009", ProductContainingCaffeineMedicinalProduct }, 
+      { "http://snomed.info/sct#91107009", ProductContainingCaffeineMedicinalProduct }, 
+      { "91135008", ProductContainingBendroflumethiazideMedicinalProduct }, 
+      { "http://snomed.info/sct#91135008", ProductContainingBendroflumethiazideMedicinalProduct }, 
+      { "91143003", ProductContainingSalbutamolMedicinalProduct }, 
+      { "http://snomed.info/sct#91143003", ProductContainingSalbutamolMedicinalProduct }, 
+      { "91169009", ProductContainingNafcillinMedicinalProduct }, 
+      { "http://snomed.info/sct#91169009", ProductContainingNafcillinMedicinalProduct }, 
+      { "91307002", DigitalisContainingProduct }, 
+      { "http://snomed.info/sct#91307002", DigitalisContainingProduct }, 
+      { "91339009", ProductContainingTrimetrexateMedicinalProduct }, 
+      { "http://snomed.info/sct#91339009", ProductContainingTrimetrexateMedicinalProduct }, 
+      { "91376007", ProductContainingPentoxifyllineMedicinalProduct }, 
+      { "http://snomed.info/sct#91376007", ProductContainingPentoxifyllineMedicinalProduct }, 
+      { "91435002", ProductContainingPseudoephedrineMedicinalProduct }, 
+      { "http://snomed.info/sct#91435002", ProductContainingPseudoephedrineMedicinalProduct }, 
+      { "91452003", ProductContainingBuspironeMedicinalProduct }, 
+      { "http://snomed.info/sct#91452003", ProductContainingBuspironeMedicinalProduct }, 
+      { "91479004", ProductContainingGramicidinMedicinalProduct }, 
+      { "http://snomed.info/sct#91479004", ProductContainingGramicidinMedicinalProduct }, 
+      { "91667005", ProductContainingHydrochlorothiazideMedicinalProduct }, 
+      { "http://snomed.info/sct#91667005", ProductContainingHydrochlorothiazideMedicinalProduct }, 
+      { "9190005", ProductContainingTropicamideMedicinalProduct }, 
+      { "http://snomed.info/sct#9190005", ProductContainingTropicamideMedicinalProduct }, 
+      { "922004", ProductContainingPralidoximeMedicinalProduct }, 
+      { "http://snomed.info/sct#922004", ProductContainingPralidoximeMedicinalProduct }, 
+      { "9268004", ProductContainingSecbutabarbitalMedicinalProduct }, 
+      { "http://snomed.info/sct#9268004", ProductContainingSecbutabarbitalMedicinalProduct }, 
+      { "9500005", ProductContainingPhenelzineMedicinalProduct }, 
+      { "http://snomed.info/sct#9500005", ProductContainingPhenelzineMedicinalProduct }, 
+      { "9542007", HepatitisBSurfaceAntigenImmunoglobulinContainingProduct }, 
+      { "http://snomed.info/sct#9542007", HepatitisBSurfaceAntigenImmunoglobulinContainingProduct }, 
+      { "96011002", ProductContainingCarbomycinMedicinalProduct }, 
+      { "http://snomed.info/sct#96011002", ProductContainingCarbomycinMedicinalProduct }, 
+      { "96014005", ProductContainingTeicoplaninMedicinalProduct }, 
+      { "http://snomed.info/sct#96014005", ProductContainingTeicoplaninMedicinalProduct }, 
+      { "96015006", ProductContainingFusidicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#96015006", ProductContainingFusidicAcidMedicinalProduct }, 
+      { "96018008", ProductContainingTiamulinMedicinalProduct }, 
+      { "http://snomed.info/sct#96018008", ProductContainingTiamulinMedicinalProduct }, 
+      { "96020006", ProductContainingTylosinMedicinalProduct }, 
+      { "http://snomed.info/sct#96020006", ProductContainingTylosinMedicinalProduct }, 
+      { "96023008", ProductContainingVirginiamycinMedicinalProduct }, 
+      { "http://snomed.info/sct#96023008", ProductContainingVirginiamycinMedicinalProduct }, 
+      { "96029007", ProductContainingApramycinMedicinalProduct }, 
+      { "http://snomed.info/sct#96029007", ProductContainingApramycinMedicinalProduct }, 
+      { "96034006", ProductContainingAzithromycinMedicinalProduct }, 
+      { "http://snomed.info/sct#96034006", ProductContainingAzithromycinMedicinalProduct }, 
+      { "96038009", ProductContainingItraconazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#96038009", ProductContainingItraconazoleMedicinalProduct }, 
+      { "96044008", ProductContainingCeftiofurMedicinalProduct }, 
+      { "http://snomed.info/sct#96044008", ProductContainingCeftiofurMedicinalProduct }, 
+      { "96047001", ProductContainingCefpiromeMedicinalProduct }, 
+      { "http://snomed.info/sct#96047001", ProductContainingCefpiromeMedicinalProduct }, 
+      { "96049003", ProductContainingCefpodoximeMedicinalProduct }, 
+      { "http://snomed.info/sct#96049003", ProductContainingCefpodoximeMedicinalProduct }, 
+      { "96051004", ProductContainingCeftibutenMedicinalProduct }, 
+      { "http://snomed.info/sct#96051004", ProductContainingCeftibutenMedicinalProduct }, 
+      { "96052006", ProductContainingCefiximeMedicinalProduct }, 
+      { "http://snomed.info/sct#96052006", ProductContainingCefiximeMedicinalProduct }, 
+      { "96053001", ProductContainingCefsulodinMedicinalProduct }, 
+      { "http://snomed.info/sct#96053001", ProductContainingCefsulodinMedicinalProduct }, 
+      { "96054007", ProductContainingCefprozilMedicinalProduct }, 
+      { "http://snomed.info/sct#96054007", ProductContainingCefprozilMedicinalProduct }, 
+      { "96055008", ProductContainingCefodizimeMedicinalProduct }, 
+      { "http://snomed.info/sct#96055008", ProductContainingCefodizimeMedicinalProduct }, 
+      { "96062004", ProductContainingMeropenemMedicinalProduct }, 
+      { "http://snomed.info/sct#96062004", ProductContainingMeropenemMedicinalProduct }, 
+      { "96063009", ProductContainingMecillinamMedicinalProduct }, 
+      { "http://snomed.info/sct#96063009", ProductContainingMecillinamMedicinalProduct }, 
+      { "96064003", ProductContainingPivmecillinamMedicinalProduct }, 
+      { "http://snomed.info/sct#96064003", ProductContainingPivmecillinamMedicinalProduct }, 
+      { "96065002", ProductContainingTemocillinMedicinalProduct }, 
+      { "http://snomed.info/sct#96065002", ProductContainingTemocillinMedicinalProduct }, 
+      { "96067005", ProductContainingFlucloxacillinMedicinalProduct }, 
+      { "http://snomed.info/sct#96067005", ProductContainingFlucloxacillinMedicinalProduct }, 
+      { "96072001", ProductContainingPivampicillinMedicinalProduct }, 
+      { "http://snomed.info/sct#96072001", ProductContainingPivampicillinMedicinalProduct }, 
+      { "96073006", ProductContainingTalampicillinMedicinalProduct }, 
+      { "http://snomed.info/sct#96073006", ProductContainingTalampicillinMedicinalProduct }, 
+      { "96077007", ProductContainingLymecyclineMedicinalProduct }, 
+      { "http://snomed.info/sct#96077007", ProductContainingLymecyclineMedicinalProduct }, 
+      { "96081007", ProductContainingCinoxacinMedicinalProduct }, 
+      { "http://snomed.info/sct#96081007", ProductContainingCinoxacinMedicinalProduct }, 
+      { "96084004", ProductContainingEnoxacinMedicinalProduct }, 
+      { "http://snomed.info/sct#96084004", ProductContainingEnoxacinMedicinalProduct }, 
+      { "96086002", ProductContainingOfloxacinMedicinalProduct }, 
+      { "http://snomed.info/sct#96086002", ProductContainingOfloxacinMedicinalProduct }, 
+      { "96087006", ProductContainingLevofloxacinMedicinalProduct }, 
+      { "http://snomed.info/sct#96087006", ProductContainingLevofloxacinMedicinalProduct }, 
+      { "96088001", ProductContainingLomefloxacinMedicinalProduct }, 
+      { "http://snomed.info/sct#96088001", ProductContainingLomefloxacinMedicinalProduct }, 
+      { "96090000", ProductContainingSparfloxacinMedicinalProduct }, 
+      { "http://snomed.info/sct#96090000", ProductContainingSparfloxacinMedicinalProduct }, 
+      { "96091001", ProductContainingTemafloxacinMedicinalProduct }, 
+      { "http://snomed.info/sct#96091001", ProductContainingTemafloxacinMedicinalProduct }, 
+      { "96093003", ProductContainingRosoxacinMedicinalProduct }, 
+      { "http://snomed.info/sct#96093003", ProductContainingRosoxacinMedicinalProduct }, 
+      { "96097002", ProductContainingFamciclovirMedicinalProduct }, 
+      { "http://snomed.info/sct#96097002", ProductContainingFamciclovirMedicinalProduct }, 
+      { "96099004", ProductContainingFoscarnetMedicinalProduct }, 
+      { "http://snomed.info/sct#96099004", ProductContainingFoscarnetMedicinalProduct }, 
+      { "96103009", ProductContainingIpronidazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#96103009", ProductContainingIpronidazoleMedicinalProduct }, 
+      { "96107005", ProductContainingAntibabesialProduct }, 
+      { "http://snomed.info/sct#96107005", ProductContainingAntibabesialProduct }, 
+      { "96108000", ProductContainingImidocarbMedicinalProduct }, 
+      { "http://snomed.info/sct#96108000", ProductContainingImidocarbMedicinalProduct }, 
+      { "96119002", ProductContainingAlbendazoleMedicinalProduct }, 
+      { "http://snomed.info/sct#96119002", ProductContainingAlbendazoleMedicinalProduct }, 
+      { "96138006", ProductContainingIvermectinMedicinalProduct }, 
+      { "http://snomed.info/sct#96138006", ProductContainingIvermectinMedicinalProduct }, 
+      { "96144005", CoccidiostatContainingProduct }, 
+      { "http://snomed.info/sct#96144005", CoccidiostatContainingProduct }, 
+      { "96149000", ProductContainingBambermycinMedicinalProduct }, 
+      { "http://snomed.info/sct#96149000", ProductContainingBambermycinMedicinalProduct }, 
+      { "96169005", ProductContainingSalinomycinMedicinalProduct }, 
+      { "http://snomed.info/sct#96169005", ProductContainingSalinomycinMedicinalProduct }, 
+      { "96183007", ProductContainingAlfentanilMedicinalProduct }, 
+      { "http://snomed.info/sct#96183007", ProductContainingAlfentanilMedicinalProduct }, 
+      { "96185000", ProductContainingTilidineMedicinalProduct }, 
+      { "http://snomed.info/sct#96185000", ProductContainingTilidineMedicinalProduct }, 
+      { "96191003", ProductContainingDextromoramideMedicinalProduct }, 
+      { "http://snomed.info/sct#96191003", ProductContainingDextromoramideMedicinalProduct }, 
+      { "96195007", ProductContainingLamotrigineMedicinalProduct }, 
+      { "http://snomed.info/sct#96195007", ProductContainingLamotrigineMedicinalProduct }, 
+      { "96196008", ProductContainingButalbitalMedicinalProduct }, 
+      { "http://snomed.info/sct#96196008", ProductContainingButalbitalMedicinalProduct }, 
+      { "96199001", ProductContainingBupropionMedicinalProduct }, 
+      { "http://snomed.info/sct#96199001", ProductContainingBupropionMedicinalProduct }, 
+      { "96200003", ProductContainingMianserinMedicinalProduct }, 
+      { "http://snomed.info/sct#96200003", ProductContainingMianserinMedicinalProduct }, 
+      { "96209002", ProductContainingClomipramineMedicinalProduct }, 
+      { "http://snomed.info/sct#96209002", ProductContainingClomipramineMedicinalProduct }, 
+      { "96213009", ProductContainingFluvoxamineMedicinalProduct }, 
+      { "http://snomed.info/sct#96213009", ProductContainingFluvoxamineMedicinalProduct }, 
+      { "96220002", ProductContainingFlupentixolMedicinalProduct }, 
+      { "http://snomed.info/sct#96220002", ProductContainingFlupentixolMedicinalProduct }, 
+      { "96221003", ProductContainingClozapineMedicinalProduct }, 
+      { "http://snomed.info/sct#96221003", ProductContainingClozapineMedicinalProduct }, 
+      { "96231005", ProductContainingZolpidemMedicinalProduct }, 
+      { "http://snomed.info/sct#96231005", ProductContainingZolpidemMedicinalProduct }, 
+      { "96233008", ProductContainingLormetazepamMedicinalProduct }, 
+      { "http://snomed.info/sct#96233008", ProductContainingLormetazepamMedicinalProduct }, 
+      { "96234002", ProductContainingBromazepamMedicinalProduct }, 
+      { "http://snomed.info/sct#96234002", ProductContainingBromazepamMedicinalProduct }, 
+      { "96236000", ProductContainingClobazamMedicinalProduct }, 
+      { "http://snomed.info/sct#96236000", ProductContainingClobazamMedicinalProduct }, 
+      { "96237009", ProductContainingFlunitrazepamMedicinalProduct }, 
+      { "http://snomed.info/sct#96237009", ProductContainingFlunitrazepamMedicinalProduct }, 
+      { "96246003", ProductContainingBenzodiazepineReceptorAntagonistProduct }, 
+      { "http://snomed.info/sct#96246003", ProductContainingBenzodiazepineReceptorAntagonistProduct }, 
+      { "96247007", ProductContainingFlumazenilMedicinalProduct }, 
+      { "http://snomed.info/sct#96247007", ProductContainingFlumazenilMedicinalProduct }, 
+      { "96252002", ProductContainingProlintaneMedicinalProduct }, 
+      { "http://snomed.info/sct#96252002", ProductContainingProlintaneMedicinalProduct }, 
+      { "96278006", ProductContainingHyaluronicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#96278006", ProductContainingHyaluronicAcidMedicinalProduct }, 
+      { "96280000", ProductContainingBoneResorptionInhibitor }, 
+      { "http://snomed.info/sct#96280000", ProductContainingBoneResorptionInhibitor }, 
+      { "96281001", ProductContainingBisphosphonateProduct }, 
+      { "http://snomed.info/sct#96281001", ProductContainingBisphosphonateProduct }, 
+      { "96284009", ProductContainingEtidronicAcidMedicinalProduct }, 
+      { "http://snomed.info/sct#96284009", ProductContainingEtidronicAcidMedicinalProduct }, 
+      { "96298001", ProductContainingMexiletineMedicinalProduct }, 
+      { "http://snomed.info/sct#96298001", ProductContainingMexiletineMedicinalProduct }, 
+      { "96299009", ProductContainingOxprenololMedicinalProduct }, 
+      { "http://snomed.info/sct#96299009", ProductContainingOxprenololMedicinalProduct }, 
+      { "96300001", ProductContainingPropafenoneMedicinalProduct }, 
+      { "http://snomed.info/sct#96300001", ProductContainingPropafenoneMedicinalProduct }, 
+      { "96301002", ProductContainingSotalolMedicinalProduct }, 
+      { "http://snomed.info/sct#96301002", ProductContainingSotalolMedicinalProduct }, 
+      { "96302009", ProductContaining3Hydroxy3MethylglutarylCoenzymeAReductaseInhibitorProduct }, 
+      { "http://snomed.info/sct#96302009", ProductContaining3Hydroxy3MethylglutarylCoenzymeAReductaseInhibitorProduct }, 
+      { "96304005", ProductContainingSimvastatinMedicinalProduct }, 
+      { "http://snomed.info/sct#96304005", ProductContainingSimvastatinMedicinalProduct }, 
+      { "9690006", ProductContainingNikethamideMedicinalProduct }, 
+      { "http://snomed.info/sct#9690006", ProductContainingNikethamideMedicinalProduct }, 
+      { "9745007", ProductContainingSucroseMedicinalProduct }, 
+      { "http://snomed.info/sct#9745007", ProductContainingSucroseMedicinalProduct }, 
+      { "9778000", CytomegalovirusAntibodyContainingProduct }, 
+      { "http://snomed.info/sct#9778000", CytomegalovirusAntibodyContainingProduct }, 
+      { "9944001", ProductContainingChlorphenamineMedicinalProduct }, 
+      { "http://snomed.info/sct#9944001", ProductContainingChlorphenamineMedicinalProduct }, 
+    };
   };
 }

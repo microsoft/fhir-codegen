@@ -20,6 +20,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public int SequenceLinkId { get; set; }
     /// <summary>
+    /// Extension container element for SequenceLinkId
+    /// </summary>
+    public Element _SequenceLinkId { get; set; }
+    /// <summary>
     /// Serialize to a JSON object
     /// </summary>
     public new void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
@@ -31,6 +35,12 @@ namespace fhirCsR3.Models
       ((fhirCsR3.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
       writer.WriteNumber("sequenceLinkId", SequenceLinkId);
+
+      if (_SequenceLinkId != null)
+      {
+        writer.WritePropertyName("_sequenceLinkId");
+        _SequenceLinkId.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -46,6 +56,11 @@ namespace fhirCsR3.Models
       {
         case "sequenceLinkId":
           SequenceLinkId = reader.GetInt32();
+          break;
+
+        case "_sequenceLinkId":
+          _SequenceLinkId = new fhirCsR3.Models.Element();
+          _SequenceLinkId.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -132,6 +147,10 @@ namespace fhirCsR3.Models
     /// If true remove all history excluding audit.
     /// </summary>
     public bool? Nullify { get; set; }
+    /// <summary>
+    /// Extension container element for Nullify
+    /// </summary>
+    public Element _Nullify { get; set; }
     /// <summary>
     /// The organization which is responsible for the action speccified in this request.
     /// </summary>
@@ -268,6 +287,12 @@ namespace fhirCsR3.Models
       if (Nullify != null)
       {
         writer.WriteBoolean("nullify", (bool)Nullify!);
+      }
+
+      if (_Nullify != null)
+      {
+        writer.WritePropertyName("_nullify");
+        _Nullify.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Reference))
@@ -544,6 +569,11 @@ namespace fhirCsR3.Models
           Nullify = reader.GetBoolean();
           break;
 
+        case "_nullify":
+          _Nullify = new fhirCsR3.Models.Element();
+          _Nullify.DeserializeJson(ref reader, options);
+          break;
+
         case "organization":
           Organization = new fhirCsR3.Models.Reference();
           Organization.DeserializeJson(ref reader, options);
@@ -631,6 +661,12 @@ namespace fhirCsR3.Models
     public const string POLL = "poll";
     public const string REPROCESS = "reprocess";
     public const string STATUS = "status";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "cancel",
+      "poll",
+      "reprocess",
+      "status",
+    };
   }
   /// <summary>
   /// Code Values for the ProcessRequest.status field
@@ -640,5 +676,11 @@ namespace fhirCsR3.Models
     public const string CANCELLED = "cancelled";
     public const string DRAFT = "draft";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "cancelled",
+      "draft",
+      "entered-in-error",
+    };
   }
 }

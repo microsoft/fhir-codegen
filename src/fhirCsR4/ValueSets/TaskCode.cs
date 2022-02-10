@@ -81,9 +81,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMarkTheFocalResourceAsNoLongerActive = "abort";
 
     /// <summary>
+    /// Literal for code: TaskCodeMarkTheFocalResourceAsNoLongerActive
+    /// </summary>
+    public const string LiteralTaskCodeMarkTheFocalResourceAsNoLongerActive = "http://hl7.org/fhir/CodeSystem/task-code#abort";
+
+    /// <summary>
     /// Literal for code: ActivateApproveTheFocalResource
     /// </summary>
     public const string LiteralActivateApproveTheFocalResource = "approve";
+
+    /// <summary>
+    /// Literal for code: TaskCodeActivateApproveTheFocalResource
+    /// </summary>
+    public const string LiteralTaskCodeActivateApproveTheFocalResource = "http://hl7.org/fhir/CodeSystem/task-code#approve";
 
     /// <summary>
     /// Literal for code: ChangeTheFocalResource
@@ -91,9 +101,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChangeTheFocalResource = "change";
 
     /// <summary>
+    /// Literal for code: TaskCodeChangeTheFocalResource
+    /// </summary>
+    public const string LiteralTaskCodeChangeTheFocalResource = "http://hl7.org/fhir/CodeSystem/task-code#change";
+
+    /// <summary>
     /// Literal for code: FulfillTheFocalRequest
     /// </summary>
     public const string LiteralFulfillTheFocalRequest = "fulfill";
+
+    /// <summary>
+    /// Literal for code: TaskCodeFulfillTheFocalRequest
+    /// </summary>
+    public const string LiteralTaskCodeFulfillTheFocalRequest = "http://hl7.org/fhir/CodeSystem/task-code#fulfill";
 
     /// <summary>
     /// Literal for code: ReplaceTheFocalResourceWithTheInputResource
@@ -101,13 +121,48 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReplaceTheFocalResourceWithTheInputResource = "replace";
 
     /// <summary>
+    /// Literal for code: TaskCodeReplaceTheFocalResourceWithTheInputResource
+    /// </summary>
+    public const string LiteralTaskCodeReplaceTheFocalResourceWithTheInputResource = "http://hl7.org/fhir/CodeSystem/task-code#replace";
+
+    /// <summary>
     /// Literal for code: ReActivateTheFocalResource
     /// </summary>
     public const string LiteralReActivateTheFocalResource = "resume";
 
     /// <summary>
+    /// Literal for code: TaskCodeReActivateTheFocalResource
+    /// </summary>
+    public const string LiteralTaskCodeReActivateTheFocalResource = "http://hl7.org/fhir/CodeSystem/task-code#resume";
+
+    /// <summary>
     /// Literal for code: SuspendTheFocalResource
     /// </summary>
     public const string LiteralSuspendTheFocalResource = "suspend";
+
+    /// <summary>
+    /// Literal for code: TaskCodeSuspendTheFocalResource
+    /// </summary>
+    public const string LiteralTaskCodeSuspendTheFocalResource = "http://hl7.org/fhir/CodeSystem/task-code#suspend";
+
+    /// <summary>
+    /// Dictionary for looking up TaskCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "abort", MarkTheFocalResourceAsNoLongerActive }, 
+      { "http://hl7.org/fhir/CodeSystem/task-code#abort", MarkTheFocalResourceAsNoLongerActive }, 
+      { "approve", ActivateApproveTheFocalResource }, 
+      { "http://hl7.org/fhir/CodeSystem/task-code#approve", ActivateApproveTheFocalResource }, 
+      { "change", ChangeTheFocalResource }, 
+      { "http://hl7.org/fhir/CodeSystem/task-code#change", ChangeTheFocalResource }, 
+      { "fulfill", FulfillTheFocalRequest }, 
+      { "http://hl7.org/fhir/CodeSystem/task-code#fulfill", FulfillTheFocalRequest }, 
+      { "replace", ReplaceTheFocalResourceWithTheInputResource }, 
+      { "http://hl7.org/fhir/CodeSystem/task-code#replace", ReplaceTheFocalResourceWithTheInputResource }, 
+      { "resume", ReActivateTheFocalResource }, 
+      { "http://hl7.org/fhir/CodeSystem/task-code#resume", ReActivateTheFocalResource }, 
+      { "suspend", SuspendTheFocalResource }, 
+      { "http://hl7.org/fhir/CodeSystem/task-code#suspend", SuspendTheFocalResource }, 
+    };
   };
 }

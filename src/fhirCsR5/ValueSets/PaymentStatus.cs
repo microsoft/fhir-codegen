@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class PaymentStatusCodes
   {
     /// <summary>
-    /// 
+    /// Cleared
     /// </summary>
     public static readonly Coding Cleared = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/paymentstatus"
     };
     /// <summary>
-    /// 
+    /// Paid
     /// </summary>
     public static readonly Coding Paid = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCleared = "cleared";
 
     /// <summary>
+    /// Literal for code: PaymentstatusCleared
+    /// </summary>
+    public const string LiteralPaymentstatusCleared = "http://terminology.hl7.org/CodeSystem/paymentstatus#cleared";
+
+    /// <summary>
     /// Literal for code: Paid
     /// </summary>
     public const string LiteralPaid = "paid";
+
+    /// <summary>
+    /// Literal for code: PaymentstatusPaid
+    /// </summary>
+    public const string LiteralPaymentstatusPaid = "http://terminology.hl7.org/CodeSystem/paymentstatus#paid";
+
+    /// <summary>
+    /// Dictionary for looking up PaymentStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "cleared", Cleared }, 
+      { "http://terminology.hl7.org/CodeSystem/paymentstatus#cleared", Cleared }, 
+      { "paid", Paid }, 
+      { "http://terminology.hl7.org/CodeSystem/paymentstatus#paid", Paid }, 
+    };
   };
 }

@@ -81,9 +81,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: CarePlanStatusActive
+    /// </summary>
+    public const string LiteralCarePlanStatusActive = "http://hl7.org/fhir/care-plan-status#active";
+
+    /// <summary>
     /// Literal for code: Cancelled
     /// </summary>
     public const string LiteralCancelled = "cancelled";
+
+    /// <summary>
+    /// Literal for code: CarePlanStatusCancelled
+    /// </summary>
+    public const string LiteralCarePlanStatusCancelled = "http://hl7.org/fhir/care-plan-status#cancelled";
 
     /// <summary>
     /// Literal for code: Completed
@@ -91,9 +101,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: CarePlanStatusCompleted
+    /// </summary>
+    public const string LiteralCarePlanStatusCompleted = "http://hl7.org/fhir/care-plan-status#completed";
+
+    /// <summary>
     /// Literal for code: Pending
     /// </summary>
     public const string LiteralPending = "draft";
+
+    /// <summary>
+    /// Literal for code: CarePlanStatusPending
+    /// </summary>
+    public const string LiteralCarePlanStatusPending = "http://hl7.org/fhir/care-plan-status#draft";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -101,13 +121,48 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: CarePlanStatusEnteredInError
+    /// </summary>
+    public const string LiteralCarePlanStatusEnteredInError = "http://hl7.org/fhir/care-plan-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Suspended
     /// </summary>
     public const string LiteralSuspended = "suspended";
 
     /// <summary>
+    /// Literal for code: CarePlanStatusSuspended
+    /// </summary>
+    public const string LiteralCarePlanStatusSuspended = "http://hl7.org/fhir/care-plan-status#suspended";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: CarePlanStatusUnknown
+    /// </summary>
+    public const string LiteralCarePlanStatusUnknown = "http://hl7.org/fhir/care-plan-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up CarePlanStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/care-plan-status#active", Active }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/care-plan-status#cancelled", Cancelled }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/care-plan-status#completed", Completed }, 
+      { "draft", Pending }, 
+      { "http://hl7.org/fhir/care-plan-status#draft", Pending }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/care-plan-status#entered-in-error", EnteredInError }, 
+      { "suspended", Suspended }, 
+      { "http://hl7.org/fhir/care-plan-status#suspended", Suspended }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/care-plan-status#unknown", Unknown }, 
+    };
   };
 }

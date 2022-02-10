@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ExRevenueCenterCodes
   {
     /// <summary>
-    /// 
+    /// Vision Clinic
     /// </summary>
     public static readonly Coding VisionClinic = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-revenue-center"
     };
     /// <summary>
-    /// 
+    /// Dental Clinic
     /// </summary>
     public static readonly Coding DentalClinic = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-revenue-center"
     };
     /// <summary>
-    /// 
+    /// Emergency
     /// </summary>
     public static readonly Coding Emergency = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVisionClinic = "0010";
 
     /// <summary>
+    /// Literal for code: ExRevenueCenterVisionClinic
+    /// </summary>
+    public const string LiteralExRevenueCenterVisionClinic = "http://terminology.hl7.org/CodeSystem/ex-revenue-center#0010";
+
+    /// <summary>
     /// Literal for code: DentalClinic
     /// </summary>
     public const string LiteralDentalClinic = "0011";
 
     /// <summary>
+    /// Literal for code: ExRevenueCenterDentalClinic
+    /// </summary>
+    public const string LiteralExRevenueCenterDentalClinic = "http://terminology.hl7.org/CodeSystem/ex-revenue-center#0011";
+
+    /// <summary>
     /// Literal for code: Emergency
     /// </summary>
     public const string LiteralEmergency = "1001";
+
+    /// <summary>
+    /// Literal for code: ExRevenueCenterEmergency
+    /// </summary>
+    public const string LiteralExRevenueCenterEmergency = "http://terminology.hl7.org/CodeSystem/ex-revenue-center#1001";
+
+    /// <summary>
+    /// Dictionary for looking up ExRevenueCenter Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "0010", VisionClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-revenue-center#0010", VisionClinic }, 
+      { "0011", DentalClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-revenue-center#0011", DentalClinic }, 
+      { "1001", Emergency }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-revenue-center#1001", Emergency }, 
+    };
   };
 }

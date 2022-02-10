@@ -176,6 +176,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Requestor { get; set; }
     /// <summary>
+    /// Extension container element for Requestor
+    /// </summary>
+    public Element _Requestor { get; set; }
+    /// <summary>
     /// For example: Chief-of-Radiology, Nurse, Physician, Medical-Student, etc.
     /// </summary>
     public List<CodeableConcept> Role { get; set; }
@@ -226,6 +230,12 @@ namespace fhirCsR5.Models
       if (Requestor != null)
       {
         writer.WriteBoolean("requestor", (bool)Requestor!);
+      }
+
+      if (_Requestor != null)
+      {
+        writer.WritePropertyName("_requestor");
+        _Requestor.SerializeJson(writer, options);
       }
 
       if (Location != null)
@@ -422,6 +432,11 @@ namespace fhirCsR5.Models
 
         case "requestor":
           Requestor = reader.GetBoolean();
+          break;
+
+        case "_requestor":
+          _Requestor = new fhirCsR5.Models.Element();
+          _Requestor.DeserializeJson(ref reader, options);
           break;
 
         case "role":
@@ -655,9 +670,17 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// The  value of the extra detail.
     /// </summary>
     public int? ValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
     /// <summary>
     /// The  value of the extra detail.
     /// </summary>
@@ -735,9 +758,21 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (ValueRange != null)
@@ -825,8 +860,18 @@ namespace fhirCsR5.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR5.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR5.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueRange":
@@ -1622,5 +1667,15 @@ namespace fhirCsR5.Models
     public const string NOTICE = "notice";
     public const string INFORMATIONAL = "informational";
     public const string DEBUG = "debug";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "emergency",
+      "alert",
+      "critical",
+      "error",
+      "warning",
+      "notice",
+      "informational",
+      "debug",
+    };
   }
 }

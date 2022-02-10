@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBook = "D001877";
 
     /// <summary>
+    /// Literal for code: PublishedInTypeBook
+    /// </summary>
+    public const string LiteralPublishedInTypeBook = "http://terminology.hl7.org/CodeSystem/published-in-type#D001877";
+
+    /// <summary>
     /// Literal for code: Database
     /// </summary>
     public const string LiteralDatabase = "D019991";
+
+    /// <summary>
+    /// Literal for code: PublishedInTypeDatabase
+    /// </summary>
+    public const string LiteralPublishedInTypeDatabase = "http://terminology.hl7.org/CodeSystem/published-in-type#D019991";
 
     /// <summary>
     /// Literal for code: Periodical
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPeriodical = "D020492";
 
     /// <summary>
+    /// Literal for code: PublishedInTypePeriodical
+    /// </summary>
+    public const string LiteralPublishedInTypePeriodical = "http://terminology.hl7.org/CodeSystem/published-in-type#D020492";
+
+    /// <summary>
     /// Literal for code: Dataset
     /// </summary>
     public const string LiteralDataset = "D064886";
+
+    /// <summary>
+    /// Literal for code: PublishedInTypeDataset
+    /// </summary>
+    public const string LiteralPublishedInTypeDataset = "http://terminology.hl7.org/CodeSystem/published-in-type#D064886";
+
+    /// <summary>
+    /// Dictionary for looking up PublishedInType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "D001877", Book }, 
+      { "http://terminology.hl7.org/CodeSystem/published-in-type#D001877", Book }, 
+      { "D019991", Database }, 
+      { "http://terminology.hl7.org/CodeSystem/published-in-type#D019991", Database }, 
+      { "D020492", Periodical }, 
+      { "http://terminology.hl7.org/CodeSystem/published-in-type#D020492", Periodical }, 
+      { "D064886", Dataset }, 
+      { "http://terminology.hl7.org/CodeSystem/published-in-type#D064886", Dataset }, 
+    };
   };
 }

@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class CoverageClassCodes
   {
     /// <summary>
-    /// 
+    /// Class
     /// </summary>
     public static readonly Coding Class = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverage-class"
     };
     /// <summary>
-    /// 
+    /// Group
     /// </summary>
     public static readonly Coding Group = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverage-class"
     };
     /// <summary>
-    /// 
+    /// Plan
     /// </summary>
     public static readonly Coding Plan = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverage-class"
     };
     /// <summary>
-    /// 
+    /// RX BIN
     /// </summary>
     public static readonly Coding RXBIN = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverage-class"
     };
     /// <summary>
-    /// 
+    /// RX Group
     /// </summary>
     public static readonly Coding RXGroup = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverage-class"
     };
     /// <summary>
-    /// 
+    /// RX Id
     /// </summary>
     public static readonly Coding RXId = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverage-class"
     };
     /// <summary>
-    /// 
+    /// RX PCN
     /// </summary>
     public static readonly Coding RXPCN = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverage-class"
     };
     /// <summary>
-    /// 
+    /// Sequence
     /// </summary>
     public static readonly Coding Sequence = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverage-class"
     };
     /// <summary>
-    /// 
+    /// SubClass
     /// </summary>
     public static readonly Coding SubClass = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverage-class"
     };
     /// <summary>
-    /// 
+    /// SubGroup
     /// </summary>
     public static readonly Coding SubGroup = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverage-class"
     };
     /// <summary>
-    /// 
+    /// SubPlan
     /// </summary>
     public static readonly Coding SubPlan = new Coding
     {
@@ -117,9 +117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClass = "class";
 
     /// <summary>
+    /// Literal for code: CoverageClassClass
+    /// </summary>
+    public const string LiteralCoverageClassClass = "http://terminology.hl7.org/CodeSystem/coverage-class#class";
+
+    /// <summary>
     /// Literal for code: Group
     /// </summary>
     public const string LiteralGroup = "group";
+
+    /// <summary>
+    /// Literal for code: CoverageClassGroup
+    /// </summary>
+    public const string LiteralCoverageClassGroup = "http://terminology.hl7.org/CodeSystem/coverage-class#group";
 
     /// <summary>
     /// Literal for code: Plan
@@ -127,9 +137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPlan = "plan";
 
     /// <summary>
+    /// Literal for code: CoverageClassPlan
+    /// </summary>
+    public const string LiteralCoverageClassPlan = "http://terminology.hl7.org/CodeSystem/coverage-class#plan";
+
+    /// <summary>
     /// Literal for code: RXBIN
     /// </summary>
     public const string LiteralRXBIN = "rxbin";
+
+    /// <summary>
+    /// Literal for code: CoverageClassRXBIN
+    /// </summary>
+    public const string LiteralCoverageClassRXBIN = "http://terminology.hl7.org/CodeSystem/coverage-class#rxbin";
 
     /// <summary>
     /// Literal for code: RXGroup
@@ -137,9 +157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRXGroup = "rxgroup";
 
     /// <summary>
+    /// Literal for code: CoverageClassRXGroup
+    /// </summary>
+    public const string LiteralCoverageClassRXGroup = "http://terminology.hl7.org/CodeSystem/coverage-class#rxgroup";
+
+    /// <summary>
     /// Literal for code: RXId
     /// </summary>
     public const string LiteralRXId = "rxid";
+
+    /// <summary>
+    /// Literal for code: CoverageClassRXId
+    /// </summary>
+    public const string LiteralCoverageClassRXId = "http://terminology.hl7.org/CodeSystem/coverage-class#rxid";
 
     /// <summary>
     /// Literal for code: RXPCN
@@ -147,9 +177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRXPCN = "rxpcn";
 
     /// <summary>
+    /// Literal for code: CoverageClassRXPCN
+    /// </summary>
+    public const string LiteralCoverageClassRXPCN = "http://terminology.hl7.org/CodeSystem/coverage-class#rxpcn";
+
+    /// <summary>
     /// Literal for code: Sequence
     /// </summary>
     public const string LiteralSequence = "sequence";
+
+    /// <summary>
+    /// Literal for code: CoverageClassSequence
+    /// </summary>
+    public const string LiteralCoverageClassSequence = "http://terminology.hl7.org/CodeSystem/coverage-class#sequence";
 
     /// <summary>
     /// Literal for code: SubClass
@@ -157,13 +197,56 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSubClass = "subclass";
 
     /// <summary>
+    /// Literal for code: CoverageClassSubClass
+    /// </summary>
+    public const string LiteralCoverageClassSubClass = "http://terminology.hl7.org/CodeSystem/coverage-class#subclass";
+
+    /// <summary>
     /// Literal for code: SubGroup
     /// </summary>
     public const string LiteralSubGroup = "subgroup";
 
     /// <summary>
+    /// Literal for code: CoverageClassSubGroup
+    /// </summary>
+    public const string LiteralCoverageClassSubGroup = "http://terminology.hl7.org/CodeSystem/coverage-class#subgroup";
+
+    /// <summary>
     /// Literal for code: SubPlan
     /// </summary>
     public const string LiteralSubPlan = "subplan";
+
+    /// <summary>
+    /// Literal for code: CoverageClassSubPlan
+    /// </summary>
+    public const string LiteralCoverageClassSubPlan = "http://terminology.hl7.org/CodeSystem/coverage-class#subplan";
+
+    /// <summary>
+    /// Dictionary for looking up CoverageClass Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "class", Class }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-class#class", Class }, 
+      { "group", Group }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-class#group", Group }, 
+      { "plan", Plan }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-class#plan", Plan }, 
+      { "rxbin", RXBIN }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-class#rxbin", RXBIN }, 
+      { "rxgroup", RXGroup }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-class#rxgroup", RXGroup }, 
+      { "rxid", RXId }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-class#rxid", RXId }, 
+      { "rxpcn", RXPCN }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-class#rxpcn", RXPCN }, 
+      { "sequence", Sequence }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-class#sequence", Sequence }, 
+      { "subclass", SubClass }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-class#subclass", SubClass }, 
+      { "subgroup", SubGroup }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-class#subgroup", SubGroup }, 
+      { "subplan", SubPlan }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-class#subplan", SubPlan }, 
+    };
   };
 }

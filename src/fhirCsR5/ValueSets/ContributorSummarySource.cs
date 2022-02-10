@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCopiedFromArticle = "article-copy";
 
     /// <summary>
+    /// Literal for code: ContributorSummarySourceCopiedFromArticle
+    /// </summary>
+    public const string LiteralContributorSummarySourceCopiedFromArticle = "http://terminology.hl7.org/CodeSystem/contributor-summary-source#article-copy";
+
+    /// <summary>
     /// Literal for code: ReportedByCitationManager
     /// </summary>
     public const string LiteralReportedByCitationManager = "citation-manager";
+
+    /// <summary>
+    /// Literal for code: ContributorSummarySourceReportedByCitationManager
+    /// </summary>
+    public const string LiteralContributorSummarySourceReportedByCitationManager = "http://terminology.hl7.org/CodeSystem/contributor-summary-source#citation-manager";
 
     /// <summary>
     /// Literal for code: CustomFormat
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCustomFormat = "custom";
 
     /// <summary>
+    /// Literal for code: ContributorSummarySourceCustomFormat
+    /// </summary>
+    public const string LiteralContributorSummarySourceCustomFormat = "http://terminology.hl7.org/CodeSystem/contributor-summary-source#custom";
+
+    /// <summary>
     /// Literal for code: PublisherProvided
     /// </summary>
     public const string LiteralPublisherProvided = "publisher-data";
+
+    /// <summary>
+    /// Literal for code: ContributorSummarySourcePublisherProvided
+    /// </summary>
+    public const string LiteralContributorSummarySourcePublisherProvided = "http://terminology.hl7.org/CodeSystem/contributor-summary-source#publisher-data";
+
+    /// <summary>
+    /// Dictionary for looking up ContributorSummarySource Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "article-copy", CopiedFromArticle }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-source#article-copy", CopiedFromArticle }, 
+      { "citation-manager", ReportedByCitationManager }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-source#citation-manager", ReportedByCitationManager }, 
+      { "custom", CustomFormat }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-source#custom", CustomFormat }, 
+      { "publisher-data", PublisherProvided }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-source#publisher-data", PublisherProvided }, 
+    };
   };
 }

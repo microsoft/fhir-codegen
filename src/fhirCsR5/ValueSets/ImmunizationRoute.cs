@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ImmunizationRouteCodes
   {
     /// <summary>
-    /// 
+    /// Injection, intradermal
     /// </summary>
     public static readonly Coding InjectionIntradermal = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
     };
     /// <summary>
-    /// 
+    /// Injection, intramuscular
     /// </summary>
     public static readonly Coding InjectionIntramuscular = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
     };
     /// <summary>
-    /// 
+    /// Injection, intravenous
     /// </summary>
     public static readonly Coding InjectionIntravenous = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
     };
     /// <summary>
-    /// 
+    /// Inhalation, nasal
     /// </summary>
     public static readonly Coding InhalationNasal = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
     };
     /// <summary>
-    /// 
+    /// Swallow, oral
     /// </summary>
     public static readonly Coding SwallowOral = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
     };
     /// <summary>
-    /// 
+    /// Injection, subcutaneous
     /// </summary>
     public static readonly Coding InjectionSubcutaneous = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"
     };
     /// <summary>
-    /// 
+    /// Transdermal
     /// </summary>
     public static readonly Coding Transdermal = new Coding
     {
@@ -81,9 +81,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInjectionIntradermal = "IDINJ";
 
     /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInjectionIntradermal
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInjectionIntradermal = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#IDINJ";
+
+    /// <summary>
     /// Literal for code: InjectionIntramuscular
     /// </summary>
     public const string LiteralInjectionIntramuscular = "IM";
+
+    /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInjectionIntramuscular
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInjectionIntramuscular = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#IM";
 
     /// <summary>
     /// Literal for code: InjectionIntravenous
@@ -91,9 +101,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInjectionIntravenous = "IVINJ";
 
     /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInjectionIntravenous
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInjectionIntravenous = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#IVINJ";
+
+    /// <summary>
     /// Literal for code: InhalationNasal
     /// </summary>
     public const string LiteralInhalationNasal = "NASINHLC";
+
+    /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInhalationNasal
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInhalationNasal = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#NASINHLC";
 
     /// <summary>
     /// Literal for code: SwallowOral
@@ -101,13 +121,48 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSwallowOral = "PO";
 
     /// <summary>
+    /// Literal for code: V3RouteOfAdministrationSwallowOral
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationSwallowOral = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#PO";
+
+    /// <summary>
     /// Literal for code: InjectionSubcutaneous
     /// </summary>
     public const string LiteralInjectionSubcutaneous = "SQ";
 
     /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInjectionSubcutaneous
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInjectionSubcutaneous = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#SQ";
+
+    /// <summary>
     /// Literal for code: Transdermal
     /// </summary>
     public const string LiteralTransdermal = "TRNSDERM";
+
+    /// <summary>
+    /// Literal for code: V3RouteOfAdministrationTransdermal
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationTransdermal = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#TRNSDERM";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationRoute Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "IDINJ", InjectionIntradermal }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#IDINJ", InjectionIntradermal }, 
+      { "IM", InjectionIntramuscular }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#IM", InjectionIntramuscular }, 
+      { "IVINJ", InjectionIntravenous }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#IVINJ", InjectionIntravenous }, 
+      { "NASINHLC", InhalationNasal }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#NASINHLC", InhalationNasal }, 
+      { "PO", SwallowOral }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#PO", SwallowOral }, 
+      { "SQ", InjectionSubcutaneous }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#SQ", InjectionSubcutaneous }, 
+      { "TRNSDERM", Transdermal }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#TRNSDERM", Transdermal }, 
+    };
   };
 }

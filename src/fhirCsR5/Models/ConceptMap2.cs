@@ -48,9 +48,17 @@ namespace fhirCsR5.Models
     /// </summary>
     public int? ValueInteger { get; set; }
     /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
+    /// <summary>
     /// Property value that the map depends on.
     /// </summary>
     public bool? ValueBoolean { get; set; }
+    /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
     /// <summary>
     /// Property value that the map depends on.
     /// </summary>
@@ -138,9 +146,21 @@ namespace fhirCsR5.Models
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
       }
 
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
+      }
+
       if (ValueBoolean != null)
       {
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
+
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(ValueDateTime))
@@ -235,8 +255,18 @@ namespace fhirCsR5.Models
           ValueInteger = reader.GetInt32();
           break;
 
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR5.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
+          break;
+
         case "valueBoolean":
           ValueBoolean = reader.GetBoolean();
+          break;
+
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR5.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "valueDateTime":
@@ -602,6 +632,13 @@ namespace fhirCsR5.Models
     public const string SOURCE_IS_NARROWER_THAN_TARGET = "source-is-narrower-than-target";
     public const string SOURCE_IS_BROADER_THAN_TARGET = "source-is-broader-than-target";
     public const string NOT_RELATED_TO = "not-related-to";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "related-to",
+      "equivalent",
+      "source-is-narrower-than-target",
+      "source-is-broader-than-target",
+      "not-related-to",
+    };
   }
   /// <summary>
   /// Generally, the ideal is that there would only be one mapping for each concept in the source value set, but a given concept may be mapped multiple times with different comments or dependencies.
@@ -628,6 +665,10 @@ namespace fhirCsR5.Models
     /// If noMap = true this indicates that no mapping to a target concept exists for this source concept.
     /// </summary>
     public bool? NoMap { get; set; }
+    /// <summary>
+    /// Extension container element for NoMap
+    /// </summary>
+    public Element _NoMap { get; set; }
     /// <summary>
     /// Ideally there would only be one map, with an 'equivalent' mapping. But multiple maps are allowed for several narrower (i.e. source-is-broader-than-target) options, or to assert that other concepts are not related.
     /// </summary>
@@ -689,6 +730,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("noMap", (bool)NoMap!);
       }
 
+      if (_NoMap != null)
+      {
+        writer.WritePropertyName("_noMap");
+        _NoMap.SerializeJson(writer, options);
+      }
+
       if ((Target != null) && (Target.Count != 0))
       {
         writer.WritePropertyName("target");
@@ -734,6 +781,11 @@ namespace fhirCsR5.Models
 
         case "noMap":
           NoMap = reader.GetBoolean();
+          break;
+
+        case "_noMap":
+          _NoMap = new fhirCsR5.Models.Element();
+          _NoMap.DeserializeJson(ref reader, options);
           break;
 
         case "target":
@@ -1009,6 +1061,11 @@ namespace fhirCsR5.Models
     public const string PROVIDED = "provided";
     public const string VAL_FIXED = "fixed";
     public const string OTHER_MAP = "other-map";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "provided",
+      "fixed",
+      "other-map",
+    };
   }
   /// <summary>
   /// A group of mappings that all have the same source and target system.
@@ -1226,6 +1283,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// A group of mappings that all have the same source and target system.
     /// </summary>
     public List<ConceptMap2Group> Group { get; set; }
@@ -1419,6 +1480,12 @@ namespace fhirCsR5.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -1640,6 +1707,11 @@ namespace fhirCsR5.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR5.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "group":
@@ -1888,5 +1960,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

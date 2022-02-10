@@ -144,9 +144,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArea = "area";
 
     /// <summary>
+    /// Literal for code: LocationPhysicalTypeArea
+    /// </summary>
+    public const string LiteralLocationPhysicalTypeArea = "http://terminology.hl7.org/CodeSystem/location-physical-type#area";
+
+    /// <summary>
     /// Literal for code: Bed
     /// </summary>
     public const string LiteralBed = "bd";
+
+    /// <summary>
+    /// Literal for code: LocationPhysicalTypeBed
+    /// </summary>
+    public const string LiteralLocationPhysicalTypeBed = "http://terminology.hl7.org/CodeSystem/location-physical-type#bd";
 
     /// <summary>
     /// Literal for code: Building
@@ -154,9 +164,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBuilding = "bu";
 
     /// <summary>
+    /// Literal for code: LocationPhysicalTypeBuilding
+    /// </summary>
+    public const string LiteralLocationPhysicalTypeBuilding = "http://terminology.hl7.org/CodeSystem/location-physical-type#bu";
+
+    /// <summary>
     /// Literal for code: Cabinet
     /// </summary>
     public const string LiteralCabinet = "ca";
+
+    /// <summary>
+    /// Literal for code: LocationPhysicalTypeCabinet
+    /// </summary>
+    public const string LiteralLocationPhysicalTypeCabinet = "http://terminology.hl7.org/CodeSystem/location-physical-type#ca";
 
     /// <summary>
     /// Literal for code: Corridor
@@ -164,9 +184,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCorridor = "co";
 
     /// <summary>
+    /// Literal for code: LocationPhysicalTypeCorridor
+    /// </summary>
+    public const string LiteralLocationPhysicalTypeCorridor = "http://terminology.hl7.org/CodeSystem/location-physical-type#co";
+
+    /// <summary>
     /// Literal for code: House
     /// </summary>
     public const string LiteralHouse = "ho";
+
+    /// <summary>
+    /// Literal for code: LocationPhysicalTypeHouse
+    /// </summary>
+    public const string LiteralLocationPhysicalTypeHouse = "http://terminology.hl7.org/CodeSystem/location-physical-type#ho";
 
     /// <summary>
     /// Literal for code: Jurisdiction
@@ -174,9 +204,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJurisdiction = "jdn";
 
     /// <summary>
+    /// Literal for code: LocationPhysicalTypeJurisdiction
+    /// </summary>
+    public const string LiteralLocationPhysicalTypeJurisdiction = "http://terminology.hl7.org/CodeSystem/location-physical-type#jdn";
+
+    /// <summary>
     /// Literal for code: Level
     /// </summary>
     public const string LiteralLevel = "lvl";
+
+    /// <summary>
+    /// Literal for code: LocationPhysicalTypeLevel
+    /// </summary>
+    public const string LiteralLocationPhysicalTypeLevel = "http://terminology.hl7.org/CodeSystem/location-physical-type#lvl";
 
     /// <summary>
     /// Literal for code: Road
@@ -184,9 +224,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRoad = "rd";
 
     /// <summary>
+    /// Literal for code: LocationPhysicalTypeRoad
+    /// </summary>
+    public const string LiteralLocationPhysicalTypeRoad = "http://terminology.hl7.org/CodeSystem/location-physical-type#rd";
+
+    /// <summary>
     /// Literal for code: Room
     /// </summary>
     public const string LiteralRoom = "ro";
+
+    /// <summary>
+    /// Literal for code: LocationPhysicalTypeRoom
+    /// </summary>
+    public const string LiteralLocationPhysicalTypeRoom = "http://terminology.hl7.org/CodeSystem/location-physical-type#ro";
 
     /// <summary>
     /// Literal for code: Site
@@ -194,9 +244,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSite = "si";
 
     /// <summary>
+    /// Literal for code: LocationPhysicalTypeSite
+    /// </summary>
+    public const string LiteralLocationPhysicalTypeSite = "http://terminology.hl7.org/CodeSystem/location-physical-type#si";
+
+    /// <summary>
     /// Literal for code: Vehicle
     /// </summary>
     public const string LiteralVehicle = "ve";
+
+    /// <summary>
+    /// Literal for code: LocationPhysicalTypeVehicle
+    /// </summary>
+    public const string LiteralLocationPhysicalTypeVehicle = "http://terminology.hl7.org/CodeSystem/location-physical-type#ve";
 
     /// <summary>
     /// Literal for code: Ward
@@ -204,8 +264,52 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWard = "wa";
 
     /// <summary>
+    /// Literal for code: LocationPhysicalTypeWard
+    /// </summary>
+    public const string LiteralLocationPhysicalTypeWard = "http://terminology.hl7.org/CodeSystem/location-physical-type#wa";
+
+    /// <summary>
     /// Literal for code: Wing
     /// </summary>
     public const string LiteralWing = "wi";
+
+    /// <summary>
+    /// Literal for code: LocationPhysicalTypeWing
+    /// </summary>
+    public const string LiteralLocationPhysicalTypeWing = "http://terminology.hl7.org/CodeSystem/location-physical-type#wi";
+
+    /// <summary>
+    /// Dictionary for looking up LocationPhysicalType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "area", Area }, 
+      { "http://terminology.hl7.org/CodeSystem/location-physical-type#area", Area }, 
+      { "bd", Bed }, 
+      { "http://terminology.hl7.org/CodeSystem/location-physical-type#bd", Bed }, 
+      { "bu", Building }, 
+      { "http://terminology.hl7.org/CodeSystem/location-physical-type#bu", Building }, 
+      { "ca", Cabinet }, 
+      { "http://terminology.hl7.org/CodeSystem/location-physical-type#ca", Cabinet }, 
+      { "co", Corridor }, 
+      { "http://terminology.hl7.org/CodeSystem/location-physical-type#co", Corridor }, 
+      { "ho", House }, 
+      { "http://terminology.hl7.org/CodeSystem/location-physical-type#ho", House }, 
+      { "jdn", Jurisdiction }, 
+      { "http://terminology.hl7.org/CodeSystem/location-physical-type#jdn", Jurisdiction }, 
+      { "lvl", Level }, 
+      { "http://terminology.hl7.org/CodeSystem/location-physical-type#lvl", Level }, 
+      { "rd", Road }, 
+      { "http://terminology.hl7.org/CodeSystem/location-physical-type#rd", Road }, 
+      { "ro", Room }, 
+      { "http://terminology.hl7.org/CodeSystem/location-physical-type#ro", Room }, 
+      { "si", Site }, 
+      { "http://terminology.hl7.org/CodeSystem/location-physical-type#si", Site }, 
+      { "ve", Vehicle }, 
+      { "http://terminology.hl7.org/CodeSystem/location-physical-type#ve", Vehicle }, 
+      { "wa", Ward }, 
+      { "http://terminology.hl7.org/CodeSystem/location-physical-type#wa", Ward }, 
+      { "wi", Wing }, 
+      { "http://terminology.hl7.org/CodeSystem/location-physical-type#wi", Wing }, 
+    };
   };
 }

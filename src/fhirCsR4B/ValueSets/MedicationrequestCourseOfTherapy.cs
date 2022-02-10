@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralShortCourseAcuteTherapy = "acute";
 
     /// <summary>
+    /// Literal for code: MedicationrequestCourseOfTherapyShortCourseAcuteTherapy
+    /// </summary>
+    public const string LiteralMedicationrequestCourseOfTherapyShortCourseAcuteTherapy = "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy#acute";
+
+    /// <summary>
     /// Literal for code: ContinuousLongTermTherapy
     /// </summary>
     public const string LiteralContinuousLongTermTherapy = "continuous";
 
     /// <summary>
+    /// Literal for code: MedicationrequestCourseOfTherapyContinuousLongTermTherapy
+    /// </summary>
+    public const string LiteralMedicationrequestCourseOfTherapyContinuousLongTermTherapy = "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy#continuous";
+
+    /// <summary>
     /// Literal for code: Seasonal
     /// </summary>
     public const string LiteralSeasonal = "seasonal";
+
+    /// <summary>
+    /// Literal for code: MedicationrequestCourseOfTherapySeasonal
+    /// </summary>
+    public const string LiteralMedicationrequestCourseOfTherapySeasonal = "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy#seasonal";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationrequestCourseOfTherapy Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "acute", ShortCourseAcuteTherapy }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy#acute", ShortCourseAcuteTherapy }, 
+      { "continuous", ContinuousLongTermTherapy }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy#continuous", ContinuousLongTermTherapy }, 
+      { "seasonal", Seasonal }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy#seasonal", Seasonal }, 
+    };
   };
 }

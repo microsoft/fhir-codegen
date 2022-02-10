@@ -72,9 +72,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAppointmentReminder = "appointment-reminder";
 
     /// <summary>
+    /// Literal for code: CommunicationTopicAppointmentReminder
+    /// </summary>
+    public const string LiteralCommunicationTopicAppointmentReminder = "http://terminology.hl7.org/CodeSystem/communication-topic#appointment-reminder";
+
+    /// <summary>
     /// Literal for code: PhoneConsult
     /// </summary>
     public const string LiteralPhoneConsult = "phone-consult";
+
+    /// <summary>
+    /// Literal for code: CommunicationTopicPhoneConsult
+    /// </summary>
+    public const string LiteralCommunicationTopicPhoneConsult = "http://terminology.hl7.org/CodeSystem/communication-topic#phone-consult";
 
     /// <summary>
     /// Literal for code: PrescriptionRefillRequest
@@ -82,9 +92,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrescriptionRefillRequest = "prescription-refill-request";
 
     /// <summary>
+    /// Literal for code: CommunicationTopicPrescriptionRefillRequest
+    /// </summary>
+    public const string LiteralCommunicationTopicPrescriptionRefillRequest = "http://terminology.hl7.org/CodeSystem/communication-topic#prescription-refill-request";
+
+    /// <summary>
     /// Literal for code: ProgressUpdate
     /// </summary>
     public const string LiteralProgressUpdate = "progress-update";
+
+    /// <summary>
+    /// Literal for code: CommunicationTopicProgressUpdate
+    /// </summary>
+    public const string LiteralCommunicationTopicProgressUpdate = "http://terminology.hl7.org/CodeSystem/communication-topic#progress-update";
 
     /// <summary>
     /// Literal for code: ReportLabs
@@ -92,8 +112,36 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralReportLabs = "report-labs";
 
     /// <summary>
+    /// Literal for code: CommunicationTopicReportLabs
+    /// </summary>
+    public const string LiteralCommunicationTopicReportLabs = "http://terminology.hl7.org/CodeSystem/communication-topic#report-labs";
+
+    /// <summary>
     /// Literal for code: SummaryReport
     /// </summary>
     public const string LiteralSummaryReport = "summary-report";
+
+    /// <summary>
+    /// Literal for code: CommunicationTopicSummaryReport
+    /// </summary>
+    public const string LiteralCommunicationTopicSummaryReport = "http://terminology.hl7.org/CodeSystem/communication-topic#summary-report";
+
+    /// <summary>
+    /// Dictionary for looking up CommunicationTopic Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "appointment-reminder", AppointmentReminder }, 
+      { "http://terminology.hl7.org/CodeSystem/communication-topic#appointment-reminder", AppointmentReminder }, 
+      { "phone-consult", PhoneConsult }, 
+      { "http://terminology.hl7.org/CodeSystem/communication-topic#phone-consult", PhoneConsult }, 
+      { "prescription-refill-request", PrescriptionRefillRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/communication-topic#prescription-refill-request", PrescriptionRefillRequest }, 
+      { "progress-update", ProgressUpdate }, 
+      { "http://terminology.hl7.org/CodeSystem/communication-topic#progress-update", ProgressUpdate }, 
+      { "report-labs", ReportLabs }, 
+      { "http://terminology.hl7.org/CodeSystem/communication-topic#report-labs", ReportLabs }, 
+      { "summary-report", SummaryReport }, 
+      { "http://terminology.hl7.org/CodeSystem/communication-topic#summary-report", SummaryReport }, 
+    };
   };
 }

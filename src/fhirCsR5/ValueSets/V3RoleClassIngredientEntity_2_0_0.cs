@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class V3RoleClassIngredientEntityCodes
   {
     /// <summary>
-    /// 
+    /// active ingredient
     /// </summary>
     public static readonly Coding ActiveIngredient = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleClass"
     };
     /// <summary>
-    /// 
+    /// active ingredient - basis of strength
     /// </summary>
     public static readonly Coding ActiveIngredientBasisOfStrength = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleClass"
     };
     /// <summary>
-    /// 
+    /// active ingredient - moiety is basis of strength
     /// </summary>
     public static readonly Coding ActiveIngredientMoietyIsBasisOfStrength = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleClass"
     };
     /// <summary>
-    /// 
+    /// active ingredient - reference substance is basis of strength
     /// </summary>
     public static readonly Coding ActiveIngredientReferenceSubstanceIsBasisOfStrength = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleClass"
     };
     /// <summary>
-    /// 
+    /// adjuvant
     /// </summary>
     public static readonly Coding Adjuvant = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleClass"
     };
     /// <summary>
-    /// 
+    /// additive
     /// </summary>
     public static readonly Coding Additive = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleClass"
     };
     /// <summary>
-    /// 
+    /// base
     /// </summary>
     public static readonly Coding VALBase = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleClass"
     };
     /// <summary>
-    /// 
+    /// contaminant ingredient
     /// </summary>
     public static readonly Coding ContaminantIngredient = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleClass"
     };
     /// <summary>
-    /// 
+    /// color additive
     /// </summary>
     public static readonly Coding ColorAdditive = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleClass"
     };
     /// <summary>
-    /// 
+    /// flavor additive
     /// </summary>
     public static readonly Coding FlavorAdditive = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleClass"
     };
     /// <summary>
-    /// 
+    /// inactive ingredient
     /// </summary>
     public static readonly Coding InactiveIngredient = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleClass"
     };
     /// <summary>
-    /// 
+    /// ingredient
     /// </summary>
     public static readonly Coding Ingredient = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleClass"
     };
     /// <summary>
-    /// 
+    /// mechanical ingredient
     /// </summary>
     public static readonly Coding MechanicalIngredient = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleClass"
     };
     /// <summary>
-    /// 
+    /// preservative
     /// </summary>
     public static readonly Coding Preservative = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-RoleClass"
     };
     /// <summary>
-    /// 
+    /// stabilizer
     /// </summary>
     public static readonly Coding Stabilizer = new Coding
     {
@@ -153,9 +153,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActiveIngredient = "ACTI";
 
     /// <summary>
+    /// Literal for code: V3RoleClassActiveIngredient
+    /// </summary>
+    public const string LiteralV3RoleClassActiveIngredient = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#ACTI";
+
+    /// <summary>
     /// Literal for code: ActiveIngredientBasisOfStrength
     /// </summary>
     public const string LiteralActiveIngredientBasisOfStrength = "ACTIB";
+
+    /// <summary>
+    /// Literal for code: V3RoleClassActiveIngredientBasisOfStrength
+    /// </summary>
+    public const string LiteralV3RoleClassActiveIngredientBasisOfStrength = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#ACTIB";
 
     /// <summary>
     /// Literal for code: ActiveIngredientMoietyIsBasisOfStrength
@@ -163,9 +173,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActiveIngredientMoietyIsBasisOfStrength = "ACTIM";
 
     /// <summary>
+    /// Literal for code: V3RoleClassActiveIngredientMoietyIsBasisOfStrength
+    /// </summary>
+    public const string LiteralV3RoleClassActiveIngredientMoietyIsBasisOfStrength = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#ACTIM";
+
+    /// <summary>
     /// Literal for code: ActiveIngredientReferenceSubstanceIsBasisOfStrength
     /// </summary>
     public const string LiteralActiveIngredientReferenceSubstanceIsBasisOfStrength = "ACTIR";
+
+    /// <summary>
+    /// Literal for code: V3RoleClassActiveIngredientReferenceSubstanceIsBasisOfStrength
+    /// </summary>
+    public const string LiteralV3RoleClassActiveIngredientReferenceSubstanceIsBasisOfStrength = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#ACTIR";
 
     /// <summary>
     /// Literal for code: Adjuvant
@@ -173,9 +193,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAdjuvant = "ADJV";
 
     /// <summary>
+    /// Literal for code: V3RoleClassAdjuvant
+    /// </summary>
+    public const string LiteralV3RoleClassAdjuvant = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#ADJV";
+
+    /// <summary>
     /// Literal for code: Additive
     /// </summary>
     public const string LiteralAdditive = "ADTV";
+
+    /// <summary>
+    /// Literal for code: V3RoleClassAdditive
+    /// </summary>
+    public const string LiteralV3RoleClassAdditive = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#ADTV";
 
     /// <summary>
     /// Literal for code: VALBase
@@ -183,9 +213,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVALBase = "BASE";
 
     /// <summary>
+    /// Literal for code: V3RoleClassVALBase
+    /// </summary>
+    public const string LiteralV3RoleClassVALBase = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#BASE";
+
+    /// <summary>
     /// Literal for code: ContaminantIngredient
     /// </summary>
     public const string LiteralContaminantIngredient = "CNTM";
+
+    /// <summary>
+    /// Literal for code: V3RoleClassContaminantIngredient
+    /// </summary>
+    public const string LiteralV3RoleClassContaminantIngredient = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#CNTM";
 
     /// <summary>
     /// Literal for code: ColorAdditive
@@ -193,9 +233,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralColorAdditive = "COLR";
 
     /// <summary>
+    /// Literal for code: V3RoleClassColorAdditive
+    /// </summary>
+    public const string LiteralV3RoleClassColorAdditive = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#COLR";
+
+    /// <summary>
     /// Literal for code: FlavorAdditive
     /// </summary>
     public const string LiteralFlavorAdditive = "FLVR";
+
+    /// <summary>
+    /// Literal for code: V3RoleClassFlavorAdditive
+    /// </summary>
+    public const string LiteralV3RoleClassFlavorAdditive = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#FLVR";
 
     /// <summary>
     /// Literal for code: InactiveIngredient
@@ -203,9 +253,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInactiveIngredient = "IACT";
 
     /// <summary>
+    /// Literal for code: V3RoleClassInactiveIngredient
+    /// </summary>
+    public const string LiteralV3RoleClassInactiveIngredient = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#IACT";
+
+    /// <summary>
     /// Literal for code: Ingredient
     /// </summary>
     public const string LiteralIngredient = "INGR";
+
+    /// <summary>
+    /// Literal for code: V3RoleClassIngredient
+    /// </summary>
+    public const string LiteralV3RoleClassIngredient = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#INGR";
 
     /// <summary>
     /// Literal for code: MechanicalIngredient
@@ -213,13 +273,64 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMechanicalIngredient = "MECH";
 
     /// <summary>
+    /// Literal for code: V3RoleClassMechanicalIngredient
+    /// </summary>
+    public const string LiteralV3RoleClassMechanicalIngredient = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#MECH";
+
+    /// <summary>
     /// Literal for code: Preservative
     /// </summary>
     public const string LiteralPreservative = "PRSV";
 
     /// <summary>
+    /// Literal for code: V3RoleClassPreservative
+    /// </summary>
+    public const string LiteralV3RoleClassPreservative = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#PRSV";
+
+    /// <summary>
     /// Literal for code: Stabilizer
     /// </summary>
     public const string LiteralStabilizer = "STBL";
+
+    /// <summary>
+    /// Literal for code: V3RoleClassStabilizer
+    /// </summary>
+    public const string LiteralV3RoleClassStabilizer = "http://terminology.hl7.org/CodeSystem/v3-RoleClass#STBL";
+
+    /// <summary>
+    /// Dictionary for looking up V3RoleClassIngredientEntity Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ACTI", ActiveIngredient }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#ACTI", ActiveIngredient }, 
+      { "ACTIB", ActiveIngredientBasisOfStrength }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#ACTIB", ActiveIngredientBasisOfStrength }, 
+      { "ACTIM", ActiveIngredientMoietyIsBasisOfStrength }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#ACTIM", ActiveIngredientMoietyIsBasisOfStrength }, 
+      { "ACTIR", ActiveIngredientReferenceSubstanceIsBasisOfStrength }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#ACTIR", ActiveIngredientReferenceSubstanceIsBasisOfStrength }, 
+      { "ADJV", Adjuvant }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#ADJV", Adjuvant }, 
+      { "ADTV", Additive }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#ADTV", Additive }, 
+      { "BASE", VALBase }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#BASE", VALBase }, 
+      { "CNTM", ContaminantIngredient }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#CNTM", ContaminantIngredient }, 
+      { "COLR", ColorAdditive }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#COLR", ColorAdditive }, 
+      { "FLVR", FlavorAdditive }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#FLVR", FlavorAdditive }, 
+      { "IACT", InactiveIngredient }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#IACT", InactiveIngredient }, 
+      { "INGR", Ingredient }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#INGR", Ingredient }, 
+      { "MECH", MechanicalIngredient }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#MECH", MechanicalIngredient }, 
+      { "PRSV", Preservative }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#PRSV", Preservative }, 
+      { "STBL", Stabilizer }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleClass#STBL", Stabilizer }, 
+    };
   };
 }

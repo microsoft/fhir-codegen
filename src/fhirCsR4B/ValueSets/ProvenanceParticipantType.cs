@@ -108,9 +108,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAssembler = "assembler";
 
     /// <summary>
+    /// Literal for code: ProvenanceAgentTypeAssembler
+    /// </summary>
+    public const string LiteralProvenanceAgentTypeAssembler = "http://terminology.hl7.org/CodeSystem/provenance-participant-type#assembler";
+
+    /// <summary>
     /// Literal for code: Attester
     /// </summary>
     public const string LiteralAttester = "attester";
+
+    /// <summary>
+    /// Literal for code: ProvenanceAgentTypeAttester
+    /// </summary>
+    public const string LiteralProvenanceAgentTypeAttester = "http://terminology.hl7.org/CodeSystem/provenance-participant-type#attester";
 
     /// <summary>
     /// Literal for code: Author
@@ -118,9 +128,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAuthor = "author";
 
     /// <summary>
+    /// Literal for code: ProvenanceAgentTypeAuthor
+    /// </summary>
+    public const string LiteralProvenanceAgentTypeAuthor = "http://terminology.hl7.org/CodeSystem/provenance-participant-type#author";
+
+    /// <summary>
     /// Literal for code: Composer
     /// </summary>
     public const string LiteralComposer = "composer";
+
+    /// <summary>
+    /// Literal for code: ProvenanceAgentTypeComposer
+    /// </summary>
+    public const string LiteralProvenanceAgentTypeComposer = "http://terminology.hl7.org/CodeSystem/provenance-participant-type#composer";
 
     /// <summary>
     /// Literal for code: Custodian
@@ -128,9 +148,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCustodian = "custodian";
 
     /// <summary>
+    /// Literal for code: ProvenanceAgentTypeCustodian
+    /// </summary>
+    public const string LiteralProvenanceAgentTypeCustodian = "http://terminology.hl7.org/CodeSystem/provenance-participant-type#custodian";
+
+    /// <summary>
     /// Literal for code: Enterer
     /// </summary>
     public const string LiteralEnterer = "enterer";
+
+    /// <summary>
+    /// Literal for code: ProvenanceAgentTypeEnterer
+    /// </summary>
+    public const string LiteralProvenanceAgentTypeEnterer = "http://terminology.hl7.org/CodeSystem/provenance-participant-type#enterer";
 
     /// <summary>
     /// Literal for code: Informant
@@ -138,9 +168,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInformant = "informant";
 
     /// <summary>
+    /// Literal for code: ProvenanceAgentTypeInformant
+    /// </summary>
+    public const string LiteralProvenanceAgentTypeInformant = "http://terminology.hl7.org/CodeSystem/provenance-participant-type#informant";
+
+    /// <summary>
     /// Literal for code: LegalAuthenticator
     /// </summary>
     public const string LiteralLegalAuthenticator = "legal";
+
+    /// <summary>
+    /// Literal for code: ProvenanceAgentTypeLegalAuthenticator
+    /// </summary>
+    public const string LiteralProvenanceAgentTypeLegalAuthenticator = "http://terminology.hl7.org/CodeSystem/provenance-participant-type#legal";
 
     /// <summary>
     /// Literal for code: Performer
@@ -148,8 +188,44 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPerformer = "performer";
 
     /// <summary>
+    /// Literal for code: ProvenanceAgentTypePerformer
+    /// </summary>
+    public const string LiteralProvenanceAgentTypePerformer = "http://terminology.hl7.org/CodeSystem/provenance-participant-type#performer";
+
+    /// <summary>
     /// Literal for code: Verifier
     /// </summary>
     public const string LiteralVerifier = "verifier";
+
+    /// <summary>
+    /// Literal for code: ProvenanceAgentTypeVerifier
+    /// </summary>
+    public const string LiteralProvenanceAgentTypeVerifier = "http://terminology.hl7.org/CodeSystem/provenance-participant-type#verifier";
+
+    /// <summary>
+    /// Dictionary for looking up ProvenanceParticipantType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "assembler", Assembler }, 
+      { "http://terminology.hl7.org/CodeSystem/provenance-participant-type#assembler", Assembler }, 
+      { "attester", Attester }, 
+      { "http://terminology.hl7.org/CodeSystem/provenance-participant-type#attester", Attester }, 
+      { "author", Author }, 
+      { "http://terminology.hl7.org/CodeSystem/provenance-participant-type#author", Author }, 
+      { "composer", Composer }, 
+      { "http://terminology.hl7.org/CodeSystem/provenance-participant-type#composer", Composer }, 
+      { "custodian", Custodian }, 
+      { "http://terminology.hl7.org/CodeSystem/provenance-participant-type#custodian", Custodian }, 
+      { "enterer", Enterer }, 
+      { "http://terminology.hl7.org/CodeSystem/provenance-participant-type#enterer", Enterer }, 
+      { "informant", Informant }, 
+      { "http://terminology.hl7.org/CodeSystem/provenance-participant-type#informant", Informant }, 
+      { "legal", LegalAuthenticator }, 
+      { "http://terminology.hl7.org/CodeSystem/provenance-participant-type#legal", LegalAuthenticator }, 
+      { "performer", Performer }, 
+      { "http://terminology.hl7.org/CodeSystem/provenance-participant-type#performer", Performer }, 
+      { "verifier", Verifier }, 
+      { "http://terminology.hl7.org/CodeSystem/provenance-participant-type#verifier", Verifier }, 
+    };
   };
 }

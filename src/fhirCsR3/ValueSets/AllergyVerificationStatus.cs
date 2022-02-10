@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConfirmed = "confirmed";
 
     /// <summary>
+    /// Literal for code: AllergyVerificationStatusConfirmed
+    /// </summary>
+    public const string LiteralAllergyVerificationStatusConfirmed = "http://hl7.org/fhir/allergy-verification-status#confirmed";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: AllergyVerificationStatusEnteredInError
+    /// </summary>
+    public const string LiteralAllergyVerificationStatusEnteredInError = "http://hl7.org/fhir/allergy-verification-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: Refuted
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRefuted = "refuted";
 
     /// <summary>
+    /// Literal for code: AllergyVerificationStatusRefuted
+    /// </summary>
+    public const string LiteralAllergyVerificationStatusRefuted = "http://hl7.org/fhir/allergy-verification-status#refuted";
+
+    /// <summary>
     /// Literal for code: Unconfirmed
     /// </summary>
     public const string LiteralUnconfirmed = "unconfirmed";
+
+    /// <summary>
+    /// Literal for code: AllergyVerificationStatusUnconfirmed
+    /// </summary>
+    public const string LiteralAllergyVerificationStatusUnconfirmed = "http://hl7.org/fhir/allergy-verification-status#unconfirmed";
+
+    /// <summary>
+    /// Dictionary for looking up AllergyVerificationStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "confirmed", Confirmed }, 
+      { "http://hl7.org/fhir/allergy-verification-status#confirmed", Confirmed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/allergy-verification-status#entered-in-error", EnteredInError }, 
+      { "refuted", Refuted }, 
+      { "http://hl7.org/fhir/allergy-verification-status#refuted", Refuted }, 
+      { "unconfirmed", Unconfirmed }, 
+      { "http://hl7.org/fhir/allergy-verification-status#unconfirmed", Unconfirmed }, 
+    };
   };
 }

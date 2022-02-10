@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class OperationOutcomeCodes
   {
     /// <summary>
-    /// 
+    /// Error: Multiple matches exist for the conditional delete
     /// </summary>
     public static readonly Coding ErrorMultipleMatchesExistForTheConditionalDelete = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// You must authenticate before you can use this service
     /// </summary>
     public static readonly Coding YouMustAuthenticateBeforeYouCanUseThisService = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Bad Syntax: "%s" must be a %s'
     /// </summary>
     public static readonly Coding BadSyntaxQuotationPercentSQuotationMustBeAPercentSQuote = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Bad Syntax in %s
     /// </summary>
     public static readonly Coding BadSyntaxInPercentS = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Unable to parse feed (entry content type = "%s")
     /// </summary>
     public static readonly Coding UnableToParseFeedEntryContentTypeEqualsQuotationPercentSQuotation = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Unable to parse feed (root element name = "%s")
     /// </summary>
     public static readonly Coding UnableToParseFeedRootElementNameEqualsQuotationPercentSQuotation = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// New resource created
     /// </summary>
     public static readonly Coding NewResourceCreated = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// The Date value %s is not in the correct format (Xml Date Format required)
     /// </summary>
     public static readonly Coding TheDateValuePercentSIsNotInTheCorrectFormatXmlDateFormatRequired = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// This resource has been deleted
     /// </summary>
     public static readonly Coding ThisResourceHasBeenDeleted = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Resource deleted
     /// </summary>
     public static readonly Coding ResourceDeleted = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// The resource "%s" has been deleted
     /// </summary>
     public static readonly Coding TheResourceQuotationPercentSQuotationHasBeenDeleted = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Duplicate Id %s for resource type %s
     /// </summary>
     public static readonly Coding DuplicateIdPercentSForResourceTypePercentS = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Error parsing resource Xml (%s)
     /// </summary>
     public static readonly Coding ErrorParsingResourceXmlPercentS = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Id "%s" has an invalid character "%s"
     /// </summary>
     public static readonly Coding IdQuotationPercentSQuotationHasAnInvalidCharacterQuotationPercentSQuotation = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Id "%s" too long (length limit 36)
     /// </summary>
     public static readonly Coding IdQuotationPercentSQuotationTooLongLengthLimit36 = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Id not accepted
     /// </summary>
     public static readonly Coding IdNotAccepted = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Json Source for a resource should start with an object
     /// </summary>
     public static readonly Coding JsonSourceForAResourceShouldStartWithAnObject = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Unable to resolve local reference to resource %s
     /// </summary>
     public static readonly Coding UnableToResolveLocalReferenceToResourcePercentS = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Resource Id "%s" does not exist
     /// </summary>
     public static readonly Coding ResourceIdQuotationPercentSQuotationDoesNotExist = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// No Resource found matching the query "%s"
     /// </summary>
     public static readonly Coding NoResourceFoundMatchingTheQueryQuotationPercentSQuotation = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// No module could be found to handle the request "%s"
     /// </summary>
     public static readonly Coding NoModuleCouldBeFoundToHandleTheRequestQuotationPercentSQuotation = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// No Summary for this resource
     /// </summary>
     public static readonly Coding NoSummaryForThisResource = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Operation %s not allowed for resource %s (due to local configuration)
     /// </summary>
     public static readonly Coding OperationPercentSNotAllowedForResourcePercentSDueToLocalConfiguration = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Unknown chained parameter name "%s"
     /// </summary>
     public static readonly Coding UnknownChainedParameterNameQuotationPercentSQuotation = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Parameter "%s" content is invalid
     /// </summary>
     public static readonly Coding ParameterQuotationPercentSQuotationContentIsInvalid = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Parameter "%s" modifier is invalid
     /// </summary>
     public static readonly Coding ParameterQuotationPercentSQuotationModifierIsInvalid = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Parameter "%s" is not allowed to repeat
     /// </summary>
     public static readonly Coding ParameterQuotationPercentSQuotationIsNotAllowedToRepeat = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Parameter "%s" not understood
     /// </summary>
     public static readonly Coding ParameterQuotationPercentSQuotationNotUnderstood = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Resources with identity "example" cannot be deleted (for testing/training purposes)
     /// </summary>
     public static readonly Coding ResourcesWithIdentityQuotationExampleQuotationCannotBeDeletedForTestingTrainingPurposes = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// unable to allocate resource id
     /// </summary>
     public static readonly Coding UnableToAllocateResourceId = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Resource Id Mismatch
     /// </summary>
     public static readonly Coding ResourceIdMismatch = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Resource Id Missing
     /// </summary>
     public static readonly Coding ResourceIdMissing = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Not allowed to submit a resource for this operation
     /// </summary>
     public static readonly Coding NotAllowedToSubmitAResourceForThisOperation = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// A resource is required
     /// </summary>
     public static readonly Coding AResourceIsRequired = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Resource Type Mismatch
     /// </summary>
     public static readonly Coding ResourceTypeMismatch = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Unknown sort parameter name "%s"
     /// </summary>
     public static readonly Coding UnknownSortParameterNameQuotationPercentSQuotation = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Duplicate Identifier in transaction: %s
     /// </summary>
     public static readonly Coding DuplicateIdentifierInTransactionPercentS = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Missing Identifier in transaction - an entry.id must be provided
     /// </summary>
     public static readonly Coding MissingIdentifierInTransactionAnEntryIdMustBeProvided = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Unhandled xml node type "%s"
     /// </summary>
     public static readonly Coding UnhandledXmlNodeTypeQuotationPercentSQuotation = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Unknown Content (%s) at %s
     /// </summary>
     public static readonly Coding UnknownContentPercentSAtPercentS = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// unknown FHIR http operation
     /// </summary>
     public static readonly Coding UnknownFHIRHttpOperation = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Resource Type "%s" not recognised
     /// </summary>
     public static readonly Coding ResourceTypeQuotationPercentSQuotationNotRecognised = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// existing resource updated
     /// </summary>
     public static readonly Coding ExistingResourceUpdated = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Version aware updates are required for this resource
     /// </summary>
     public static readonly Coding VersionAwareUpdatesAreRequiredForThisResource = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Update Conflict (server current version = "%s", client version referenced = "%s")
     /// </summary>
     public static readonly Coding UpdateConflictServerCurrentVersionEqualsQuotationPercentSQuotationClientVersionReferencedEqualsQuotationPercentSQuotation = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Version specific URL not recognised
     /// </summary>
     public static readonly Coding VersionSpecificURLNotRecognised = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// This does not appear to be a FHIR element or resource (wrong namespace "%s")
     /// </summary>
     public static readonly Coding ThisDoesNotAppearToBeAFHIRElementOrResourceWrongNamespaceQuotationPercentSQuotation = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Error: Multiple matches exist for %s search parameters "%s"
     /// </summary>
     public static readonly Coding ErrorMultipleMatchesExistForPercentSSearchParametersQuotationPercentSQuotation = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Error: no processable search found for %s search parameters "%s"
     /// </summary>
     public static readonly Coding ErrorNoProcessableSearchFoundForPercentSSearchParametersQuotationPercentSQuotation = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/operation-outcome"
     };
     /// <summary>
-    /// 
+    /// Error: Multiple matches exist for the conditional update
     /// </summary>
     public static readonly Coding ErrorMultipleMatchesExistForTheConditionalUpdate = new Coding
     {
@@ -468,9 +468,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralErrorMultipleMatchesExistForTheConditionalDelete = "DELETE_MULTIPLE_MATCHES";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeErrorMultipleMatchesExistForTheConditionalDelete
+    /// </summary>
+    public const string LiteralOperationOutcomeErrorMultipleMatchesExistForTheConditionalDelete = "http://hl7.org/fhir/operation-outcome#DELETE_MULTIPLE_MATCHES";
+
+    /// <summary>
     /// Literal for code: YouMustAuthenticateBeforeYouCanUseThisService
     /// </summary>
     public const string LiteralYouMustAuthenticateBeforeYouCanUseThisService = "MSG_AUTH_REQUIRED";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeYouMustAuthenticateBeforeYouCanUseThisService
+    /// </summary>
+    public const string LiteralOperationOutcomeYouMustAuthenticateBeforeYouCanUseThisService = "http://hl7.org/fhir/operation-outcome#MSG_AUTH_REQUIRED";
 
     /// <summary>
     /// Literal for code: BadSyntaxQuotationPercentSQuotationMustBeAPercentSQuote
@@ -478,9 +488,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBadSyntaxQuotationPercentSQuotationMustBeAPercentSQuote = "MSG_BAD_FORMAT";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeBadSyntaxQuotationPercentSQuotationMustBeAPercentSQuote
+    /// </summary>
+    public const string LiteralOperationOutcomeBadSyntaxQuotationPercentSQuotationMustBeAPercentSQuote = "http://hl7.org/fhir/operation-outcome#MSG_BAD_FORMAT";
+
+    /// <summary>
     /// Literal for code: BadSyntaxInPercentS
     /// </summary>
     public const string LiteralBadSyntaxInPercentS = "MSG_BAD_SYNTAX";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeBadSyntaxInPercentS
+    /// </summary>
+    public const string LiteralOperationOutcomeBadSyntaxInPercentS = "http://hl7.org/fhir/operation-outcome#MSG_BAD_SYNTAX";
 
     /// <summary>
     /// Literal for code: UnableToParseFeedEntryContentTypeEqualsQuotationPercentSQuotation
@@ -488,9 +508,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnableToParseFeedEntryContentTypeEqualsQuotationPercentSQuotation = "MSG_CANT_PARSE_CONTENT";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeUnableToParseFeedEntryContentTypeEqualsQuotationPercentSQuotation
+    /// </summary>
+    public const string LiteralOperationOutcomeUnableToParseFeedEntryContentTypeEqualsQuotationPercentSQuotation = "http://hl7.org/fhir/operation-outcome#MSG_CANT_PARSE_CONTENT";
+
+    /// <summary>
     /// Literal for code: UnableToParseFeedRootElementNameEqualsQuotationPercentSQuotation
     /// </summary>
     public const string LiteralUnableToParseFeedRootElementNameEqualsQuotationPercentSQuotation = "MSG_CANT_PARSE_ROOT";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeUnableToParseFeedRootElementNameEqualsQuotationPercentSQuotation
+    /// </summary>
+    public const string LiteralOperationOutcomeUnableToParseFeedRootElementNameEqualsQuotationPercentSQuotation = "http://hl7.org/fhir/operation-outcome#MSG_CANT_PARSE_ROOT";
 
     /// <summary>
     /// Literal for code: NewResourceCreated
@@ -498,9 +528,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNewResourceCreated = "MSG_CREATED";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeNewResourceCreated
+    /// </summary>
+    public const string LiteralOperationOutcomeNewResourceCreated = "http://hl7.org/fhir/operation-outcome#MSG_CREATED";
+
+    /// <summary>
     /// Literal for code: TheDateValuePercentSIsNotInTheCorrectFormatXmlDateFormatRequired
     /// </summary>
     public const string LiteralTheDateValuePercentSIsNotInTheCorrectFormatXmlDateFormatRequired = "MSG_DATE_FORMAT";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeTheDateValuePercentSIsNotInTheCorrectFormatXmlDateFormatRequired
+    /// </summary>
+    public const string LiteralOperationOutcomeTheDateValuePercentSIsNotInTheCorrectFormatXmlDateFormatRequired = "http://hl7.org/fhir/operation-outcome#MSG_DATE_FORMAT";
 
     /// <summary>
     /// Literal for code: ThisResourceHasBeenDeleted
@@ -508,9 +548,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThisResourceHasBeenDeleted = "MSG_DELETED";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeThisResourceHasBeenDeleted
+    /// </summary>
+    public const string LiteralOperationOutcomeThisResourceHasBeenDeleted = "http://hl7.org/fhir/operation-outcome#MSG_DELETED";
+
+    /// <summary>
     /// Literal for code: ResourceDeleted
     /// </summary>
     public const string LiteralResourceDeleted = "MSG_DELETED_DONE";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeResourceDeleted
+    /// </summary>
+    public const string LiteralOperationOutcomeResourceDeleted = "http://hl7.org/fhir/operation-outcome#MSG_DELETED_DONE";
 
     /// <summary>
     /// Literal for code: TheResourceQuotationPercentSQuotationHasBeenDeleted
@@ -518,9 +568,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTheResourceQuotationPercentSQuotationHasBeenDeleted = "MSG_DELETED_ID";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeTheResourceQuotationPercentSQuotationHasBeenDeleted
+    /// </summary>
+    public const string LiteralOperationOutcomeTheResourceQuotationPercentSQuotationHasBeenDeleted = "http://hl7.org/fhir/operation-outcome#MSG_DELETED_ID";
+
+    /// <summary>
     /// Literal for code: DuplicateIdPercentSForResourceTypePercentS
     /// </summary>
     public const string LiteralDuplicateIdPercentSForResourceTypePercentS = "MSG_DUPLICATE_ID";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeDuplicateIdPercentSForResourceTypePercentS
+    /// </summary>
+    public const string LiteralOperationOutcomeDuplicateIdPercentSForResourceTypePercentS = "http://hl7.org/fhir/operation-outcome#MSG_DUPLICATE_ID";
 
     /// <summary>
     /// Literal for code: ErrorParsingResourceXmlPercentS
@@ -528,9 +588,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralErrorParsingResourceXmlPercentS = "MSG_ERROR_PARSING";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeErrorParsingResourceXmlPercentS
+    /// </summary>
+    public const string LiteralOperationOutcomeErrorParsingResourceXmlPercentS = "http://hl7.org/fhir/operation-outcome#MSG_ERROR_PARSING";
+
+    /// <summary>
     /// Literal for code: IdQuotationPercentSQuotationHasAnInvalidCharacterQuotationPercentSQuotation
     /// </summary>
     public const string LiteralIdQuotationPercentSQuotationHasAnInvalidCharacterQuotationPercentSQuotation = "MSG_ID_INVALID";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeIdQuotationPercentSQuotationHasAnInvalidCharacterQuotationPercentSQuotation
+    /// </summary>
+    public const string LiteralOperationOutcomeIdQuotationPercentSQuotationHasAnInvalidCharacterQuotationPercentSQuotation = "http://hl7.org/fhir/operation-outcome#MSG_ID_INVALID";
 
     /// <summary>
     /// Literal for code: IdQuotationPercentSQuotationTooLongLengthLimit36
@@ -538,9 +608,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIdQuotationPercentSQuotationTooLongLengthLimit36 = "MSG_ID_TOO_LONG";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeIdQuotationPercentSQuotationTooLongLengthLimit36
+    /// </summary>
+    public const string LiteralOperationOutcomeIdQuotationPercentSQuotationTooLongLengthLimit36 = "http://hl7.org/fhir/operation-outcome#MSG_ID_TOO_LONG";
+
+    /// <summary>
     /// Literal for code: IdNotAccepted
     /// </summary>
     public const string LiteralIdNotAccepted = "MSG_INVALID_ID";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeIdNotAccepted
+    /// </summary>
+    public const string LiteralOperationOutcomeIdNotAccepted = "http://hl7.org/fhir/operation-outcome#MSG_INVALID_ID";
 
     /// <summary>
     /// Literal for code: JsonSourceForAResourceShouldStartWithAnObject
@@ -548,9 +628,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralJsonSourceForAResourceShouldStartWithAnObject = "MSG_JSON_OBJECT";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeJsonSourceForAResourceShouldStartWithAnObject
+    /// </summary>
+    public const string LiteralOperationOutcomeJsonSourceForAResourceShouldStartWithAnObject = "http://hl7.org/fhir/operation-outcome#MSG_JSON_OBJECT";
+
+    /// <summary>
     /// Literal for code: UnableToResolveLocalReferenceToResourcePercentS
     /// </summary>
     public const string LiteralUnableToResolveLocalReferenceToResourcePercentS = "MSG_LOCAL_FAIL";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeUnableToResolveLocalReferenceToResourcePercentS
+    /// </summary>
+    public const string LiteralOperationOutcomeUnableToResolveLocalReferenceToResourcePercentS = "http://hl7.org/fhir/operation-outcome#MSG_LOCAL_FAIL";
 
     /// <summary>
     /// Literal for code: ResourceIdQuotationPercentSQuotationDoesNotExist
@@ -558,9 +648,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralResourceIdQuotationPercentSQuotationDoesNotExist = "MSG_NO_EXIST";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeResourceIdQuotationPercentSQuotationDoesNotExist
+    /// </summary>
+    public const string LiteralOperationOutcomeResourceIdQuotationPercentSQuotationDoesNotExist = "http://hl7.org/fhir/operation-outcome#MSG_NO_EXIST";
+
+    /// <summary>
     /// Literal for code: NoResourceFoundMatchingTheQueryQuotationPercentSQuotation
     /// </summary>
     public const string LiteralNoResourceFoundMatchingTheQueryQuotationPercentSQuotation = "MSG_NO_MATCH";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeNoResourceFoundMatchingTheQueryQuotationPercentSQuotation
+    /// </summary>
+    public const string LiteralOperationOutcomeNoResourceFoundMatchingTheQueryQuotationPercentSQuotation = "http://hl7.org/fhir/operation-outcome#MSG_NO_MATCH";
 
     /// <summary>
     /// Literal for code: NoModuleCouldBeFoundToHandleTheRequestQuotationPercentSQuotation
@@ -568,9 +668,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoModuleCouldBeFoundToHandleTheRequestQuotationPercentSQuotation = "MSG_NO_MODULE";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeNoModuleCouldBeFoundToHandleTheRequestQuotationPercentSQuotation
+    /// </summary>
+    public const string LiteralOperationOutcomeNoModuleCouldBeFoundToHandleTheRequestQuotationPercentSQuotation = "http://hl7.org/fhir/operation-outcome#MSG_NO_MODULE";
+
+    /// <summary>
     /// Literal for code: NoSummaryForThisResource
     /// </summary>
     public const string LiteralNoSummaryForThisResource = "MSG_NO_SUMMARY";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeNoSummaryForThisResource
+    /// </summary>
+    public const string LiteralOperationOutcomeNoSummaryForThisResource = "http://hl7.org/fhir/operation-outcome#MSG_NO_SUMMARY";
 
     /// <summary>
     /// Literal for code: OperationPercentSNotAllowedForResourcePercentSDueToLocalConfiguration
@@ -578,9 +688,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOperationPercentSNotAllowedForResourcePercentSDueToLocalConfiguration = "MSG_OP_NOT_ALLOWED";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeOperationPercentSNotAllowedForResourcePercentSDueToLocalConfiguration
+    /// </summary>
+    public const string LiteralOperationOutcomeOperationPercentSNotAllowedForResourcePercentSDueToLocalConfiguration = "http://hl7.org/fhir/operation-outcome#MSG_OP_NOT_ALLOWED";
+
+    /// <summary>
     /// Literal for code: UnknownChainedParameterNameQuotationPercentSQuotation
     /// </summary>
     public const string LiteralUnknownChainedParameterNameQuotationPercentSQuotation = "MSG_PARAM_CHAINED";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeUnknownChainedParameterNameQuotationPercentSQuotation
+    /// </summary>
+    public const string LiteralOperationOutcomeUnknownChainedParameterNameQuotationPercentSQuotation = "http://hl7.org/fhir/operation-outcome#MSG_PARAM_CHAINED";
 
     /// <summary>
     /// Literal for code: ParameterQuotationPercentSQuotationContentIsInvalid
@@ -588,9 +708,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralParameterQuotationPercentSQuotationContentIsInvalid = "MSG_PARAM_INVALID";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeParameterQuotationPercentSQuotationContentIsInvalid
+    /// </summary>
+    public const string LiteralOperationOutcomeParameterQuotationPercentSQuotationContentIsInvalid = "http://hl7.org/fhir/operation-outcome#MSG_PARAM_INVALID";
+
+    /// <summary>
     /// Literal for code: ParameterQuotationPercentSQuotationModifierIsInvalid
     /// </summary>
     public const string LiteralParameterQuotationPercentSQuotationModifierIsInvalid = "MSG_PARAM_MODIFIER_INVALID";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeParameterQuotationPercentSQuotationModifierIsInvalid
+    /// </summary>
+    public const string LiteralOperationOutcomeParameterQuotationPercentSQuotationModifierIsInvalid = "http://hl7.org/fhir/operation-outcome#MSG_PARAM_MODIFIER_INVALID";
 
     /// <summary>
     /// Literal for code: ParameterQuotationPercentSQuotationIsNotAllowedToRepeat
@@ -598,9 +728,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralParameterQuotationPercentSQuotationIsNotAllowedToRepeat = "MSG_PARAM_NO_REPEAT";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeParameterQuotationPercentSQuotationIsNotAllowedToRepeat
+    /// </summary>
+    public const string LiteralOperationOutcomeParameterQuotationPercentSQuotationIsNotAllowedToRepeat = "http://hl7.org/fhir/operation-outcome#MSG_PARAM_NO_REPEAT";
+
+    /// <summary>
     /// Literal for code: ParameterQuotationPercentSQuotationNotUnderstood
     /// </summary>
     public const string LiteralParameterQuotationPercentSQuotationNotUnderstood = "MSG_PARAM_UNKNOWN";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeParameterQuotationPercentSQuotationNotUnderstood
+    /// </summary>
+    public const string LiteralOperationOutcomeParameterQuotationPercentSQuotationNotUnderstood = "http://hl7.org/fhir/operation-outcome#MSG_PARAM_UNKNOWN";
 
     /// <summary>
     /// Literal for code: ResourcesWithIdentityQuotationExampleQuotationCannotBeDeletedForTestingTrainingPurposes
@@ -608,9 +748,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralResourcesWithIdentityQuotationExampleQuotationCannotBeDeletedForTestingTrainingPurposes = "MSG_RESOURCE_EXAMPLE_PROTECTED";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeResourcesWithIdentityQuotationExampleQuotationCannotBeDeletedForTestingTrainingPurposes
+    /// </summary>
+    public const string LiteralOperationOutcomeResourcesWithIdentityQuotationExampleQuotationCannotBeDeletedForTestingTrainingPurposes = "http://hl7.org/fhir/operation-outcome#MSG_RESOURCE_EXAMPLE_PROTECTED";
+
+    /// <summary>
     /// Literal for code: UnableToAllocateResourceId
     /// </summary>
     public const string LiteralUnableToAllocateResourceId = "MSG_RESOURCE_ID_FAIL";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeUnableToAllocateResourceId
+    /// </summary>
+    public const string LiteralOperationOutcomeUnableToAllocateResourceId = "http://hl7.org/fhir/operation-outcome#MSG_RESOURCE_ID_FAIL";
 
     /// <summary>
     /// Literal for code: ResourceIdMismatch
@@ -618,9 +768,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralResourceIdMismatch = "MSG_RESOURCE_ID_MISMATCH";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeResourceIdMismatch
+    /// </summary>
+    public const string LiteralOperationOutcomeResourceIdMismatch = "http://hl7.org/fhir/operation-outcome#MSG_RESOURCE_ID_MISMATCH";
+
+    /// <summary>
     /// Literal for code: ResourceIdMissing
     /// </summary>
     public const string LiteralResourceIdMissing = "MSG_RESOURCE_ID_MISSING";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeResourceIdMissing
+    /// </summary>
+    public const string LiteralOperationOutcomeResourceIdMissing = "http://hl7.org/fhir/operation-outcome#MSG_RESOURCE_ID_MISSING";
 
     /// <summary>
     /// Literal for code: NotAllowedToSubmitAResourceForThisOperation
@@ -628,9 +788,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNotAllowedToSubmitAResourceForThisOperation = "MSG_RESOURCE_NOT_ALLOWED";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeNotAllowedToSubmitAResourceForThisOperation
+    /// </summary>
+    public const string LiteralOperationOutcomeNotAllowedToSubmitAResourceForThisOperation = "http://hl7.org/fhir/operation-outcome#MSG_RESOURCE_NOT_ALLOWED";
+
+    /// <summary>
     /// Literal for code: AResourceIsRequired
     /// </summary>
     public const string LiteralAResourceIsRequired = "MSG_RESOURCE_REQUIRED";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeAResourceIsRequired
+    /// </summary>
+    public const string LiteralOperationOutcomeAResourceIsRequired = "http://hl7.org/fhir/operation-outcome#MSG_RESOURCE_REQUIRED";
 
     /// <summary>
     /// Literal for code: ResourceTypeMismatch
@@ -638,9 +808,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralResourceTypeMismatch = "MSG_RESOURCE_TYPE_MISMATCH";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeResourceTypeMismatch
+    /// </summary>
+    public const string LiteralOperationOutcomeResourceTypeMismatch = "http://hl7.org/fhir/operation-outcome#MSG_RESOURCE_TYPE_MISMATCH";
+
+    /// <summary>
     /// Literal for code: UnknownSortParameterNameQuotationPercentSQuotation
     /// </summary>
     public const string LiteralUnknownSortParameterNameQuotationPercentSQuotation = "MSG_SORT_UNKNOWN";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeUnknownSortParameterNameQuotationPercentSQuotation
+    /// </summary>
+    public const string LiteralOperationOutcomeUnknownSortParameterNameQuotationPercentSQuotation = "http://hl7.org/fhir/operation-outcome#MSG_SORT_UNKNOWN";
 
     /// <summary>
     /// Literal for code: DuplicateIdentifierInTransactionPercentS
@@ -648,9 +828,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDuplicateIdentifierInTransactionPercentS = "MSG_TRANSACTION_DUPLICATE_ID";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeDuplicateIdentifierInTransactionPercentS
+    /// </summary>
+    public const string LiteralOperationOutcomeDuplicateIdentifierInTransactionPercentS = "http://hl7.org/fhir/operation-outcome#MSG_TRANSACTION_DUPLICATE_ID";
+
+    /// <summary>
     /// Literal for code: MissingIdentifierInTransactionAnEntryIdMustBeProvided
     /// </summary>
     public const string LiteralMissingIdentifierInTransactionAnEntryIdMustBeProvided = "MSG_TRANSACTION_MISSING_ID";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeMissingIdentifierInTransactionAnEntryIdMustBeProvided
+    /// </summary>
+    public const string LiteralOperationOutcomeMissingIdentifierInTransactionAnEntryIdMustBeProvided = "http://hl7.org/fhir/operation-outcome#MSG_TRANSACTION_MISSING_ID";
 
     /// <summary>
     /// Literal for code: UnhandledXmlNodeTypeQuotationPercentSQuotation
@@ -658,9 +848,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnhandledXmlNodeTypeQuotationPercentSQuotation = "MSG_UNHANDLED_NODE_TYPE";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeUnhandledXmlNodeTypeQuotationPercentSQuotation
+    /// </summary>
+    public const string LiteralOperationOutcomeUnhandledXmlNodeTypeQuotationPercentSQuotation = "http://hl7.org/fhir/operation-outcome#MSG_UNHANDLED_NODE_TYPE";
+
+    /// <summary>
     /// Literal for code: UnknownContentPercentSAtPercentS
     /// </summary>
     public const string LiteralUnknownContentPercentSAtPercentS = "MSG_UNKNOWN_CONTENT";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeUnknownContentPercentSAtPercentS
+    /// </summary>
+    public const string LiteralOperationOutcomeUnknownContentPercentSAtPercentS = "http://hl7.org/fhir/operation-outcome#MSG_UNKNOWN_CONTENT";
 
     /// <summary>
     /// Literal for code: UnknownFHIRHttpOperation
@@ -668,9 +868,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnknownFHIRHttpOperation = "MSG_UNKNOWN_OPERATION";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeUnknownFHIRHttpOperation
+    /// </summary>
+    public const string LiteralOperationOutcomeUnknownFHIRHttpOperation = "http://hl7.org/fhir/operation-outcome#MSG_UNKNOWN_OPERATION";
+
+    /// <summary>
     /// Literal for code: ResourceTypeQuotationPercentSQuotationNotRecognised
     /// </summary>
     public const string LiteralResourceTypeQuotationPercentSQuotationNotRecognised = "MSG_UNKNOWN_TYPE";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeResourceTypeQuotationPercentSQuotationNotRecognised
+    /// </summary>
+    public const string LiteralOperationOutcomeResourceTypeQuotationPercentSQuotationNotRecognised = "http://hl7.org/fhir/operation-outcome#MSG_UNKNOWN_TYPE";
 
     /// <summary>
     /// Literal for code: ExistingResourceUpdated
@@ -678,9 +888,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExistingResourceUpdated = "MSG_UPDATED";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeExistingResourceUpdated
+    /// </summary>
+    public const string LiteralOperationOutcomeExistingResourceUpdated = "http://hl7.org/fhir/operation-outcome#MSG_UPDATED";
+
+    /// <summary>
     /// Literal for code: VersionAwareUpdatesAreRequiredForThisResource
     /// </summary>
     public const string LiteralVersionAwareUpdatesAreRequiredForThisResource = "MSG_VERSION_AWARE";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeVersionAwareUpdatesAreRequiredForThisResource
+    /// </summary>
+    public const string LiteralOperationOutcomeVersionAwareUpdatesAreRequiredForThisResource = "http://hl7.org/fhir/operation-outcome#MSG_VERSION_AWARE";
 
     /// <summary>
     /// Literal for code: UpdateConflictServerCurrentVersionEqualsQuotationPercentSQuotationClientVersionReferencedEqualsQuotationPercentSQuotation
@@ -688,9 +908,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUpdateConflictServerCurrentVersionEqualsQuotationPercentSQuotationClientVersionReferencedEqualsQuotationPercentSQuotation = "MSG_VERSION_AWARE_CONFLICT";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeUpdateConflictServerCurrentVersionEqualsQuotationPercentSQuotationClientVersionReferencedEqualsQuotationPercentSQuotation
+    /// </summary>
+    public const string LiteralOperationOutcomeUpdateConflictServerCurrentVersionEqualsQuotationPercentSQuotationClientVersionReferencedEqualsQuotationPercentSQuotation = "http://hl7.org/fhir/operation-outcome#MSG_VERSION_AWARE_CONFLICT";
+
+    /// <summary>
     /// Literal for code: VersionSpecificURLNotRecognised
     /// </summary>
     public const string LiteralVersionSpecificURLNotRecognised = "MSG_VERSION_AWARE_URL";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeVersionSpecificURLNotRecognised
+    /// </summary>
+    public const string LiteralOperationOutcomeVersionSpecificURLNotRecognised = "http://hl7.org/fhir/operation-outcome#MSG_VERSION_AWARE_URL";
 
     /// <summary>
     /// Literal for code: ThisDoesNotAppearToBeAFHIRElementOrResourceWrongNamespaceQuotationPercentSQuotation
@@ -698,9 +928,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThisDoesNotAppearToBeAFHIRElementOrResourceWrongNamespaceQuotationPercentSQuotation = "MSG_WRONG_NS";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeThisDoesNotAppearToBeAFHIRElementOrResourceWrongNamespaceQuotationPercentSQuotation
+    /// </summary>
+    public const string LiteralOperationOutcomeThisDoesNotAppearToBeAFHIRElementOrResourceWrongNamespaceQuotationPercentSQuotation = "http://hl7.org/fhir/operation-outcome#MSG_WRONG_NS";
+
+    /// <summary>
     /// Literal for code: ErrorMultipleMatchesExistForPercentSSearchParametersQuotationPercentSQuotation
     /// </summary>
     public const string LiteralErrorMultipleMatchesExistForPercentSSearchParametersQuotationPercentSQuotation = "SEARCH_MULTIPLE";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeErrorMultipleMatchesExistForPercentSSearchParametersQuotationPercentSQuotation
+    /// </summary>
+    public const string LiteralOperationOutcomeErrorMultipleMatchesExistForPercentSSearchParametersQuotationPercentSQuotation = "http://hl7.org/fhir/operation-outcome#SEARCH_MULTIPLE";
 
     /// <summary>
     /// Literal for code: ErrorNoProcessableSearchFoundForPercentSSearchParametersQuotationPercentSQuotation
@@ -708,8 +948,124 @@ namespace fhirCsR3.ValueSets
     public const string LiteralErrorNoProcessableSearchFoundForPercentSSearchParametersQuotationPercentSQuotation = "SEARCH_NONE";
 
     /// <summary>
+    /// Literal for code: OperationOutcomeErrorNoProcessableSearchFoundForPercentSSearchParametersQuotationPercentSQuotation
+    /// </summary>
+    public const string LiteralOperationOutcomeErrorNoProcessableSearchFoundForPercentSSearchParametersQuotationPercentSQuotation = "http://hl7.org/fhir/operation-outcome#SEARCH_NONE";
+
+    /// <summary>
     /// Literal for code: ErrorMultipleMatchesExistForTheConditionalUpdate
     /// </summary>
     public const string LiteralErrorMultipleMatchesExistForTheConditionalUpdate = "UPDATE_MULTIPLE_MATCHES";
+
+    /// <summary>
+    /// Literal for code: OperationOutcomeErrorMultipleMatchesExistForTheConditionalUpdate
+    /// </summary>
+    public const string LiteralOperationOutcomeErrorMultipleMatchesExistForTheConditionalUpdate = "http://hl7.org/fhir/operation-outcome#UPDATE_MULTIPLE_MATCHES";
+
+    /// <summary>
+    /// Dictionary for looking up OperationOutcome Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "DELETE_MULTIPLE_MATCHES", ErrorMultipleMatchesExistForTheConditionalDelete }, 
+      { "http://hl7.org/fhir/operation-outcome#DELETE_MULTIPLE_MATCHES", ErrorMultipleMatchesExistForTheConditionalDelete }, 
+      { "MSG_AUTH_REQUIRED", YouMustAuthenticateBeforeYouCanUseThisService }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_AUTH_REQUIRED", YouMustAuthenticateBeforeYouCanUseThisService }, 
+      { "MSG_BAD_FORMAT", BadSyntaxQuotationPercentSQuotationMustBeAPercentSQuote }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_BAD_FORMAT", BadSyntaxQuotationPercentSQuotationMustBeAPercentSQuote }, 
+      { "MSG_BAD_SYNTAX", BadSyntaxInPercentS }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_BAD_SYNTAX", BadSyntaxInPercentS }, 
+      { "MSG_CANT_PARSE_CONTENT", UnableToParseFeedEntryContentTypeEqualsQuotationPercentSQuotation }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_CANT_PARSE_CONTENT", UnableToParseFeedEntryContentTypeEqualsQuotationPercentSQuotation }, 
+      { "MSG_CANT_PARSE_ROOT", UnableToParseFeedRootElementNameEqualsQuotationPercentSQuotation }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_CANT_PARSE_ROOT", UnableToParseFeedRootElementNameEqualsQuotationPercentSQuotation }, 
+      { "MSG_CREATED", NewResourceCreated }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_CREATED", NewResourceCreated }, 
+      { "MSG_DATE_FORMAT", TheDateValuePercentSIsNotInTheCorrectFormatXmlDateFormatRequired }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_DATE_FORMAT", TheDateValuePercentSIsNotInTheCorrectFormatXmlDateFormatRequired }, 
+      { "MSG_DELETED", ThisResourceHasBeenDeleted }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_DELETED", ThisResourceHasBeenDeleted }, 
+      { "MSG_DELETED_DONE", ResourceDeleted }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_DELETED_DONE", ResourceDeleted }, 
+      { "MSG_DELETED_ID", TheResourceQuotationPercentSQuotationHasBeenDeleted }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_DELETED_ID", TheResourceQuotationPercentSQuotationHasBeenDeleted }, 
+      { "MSG_DUPLICATE_ID", DuplicateIdPercentSForResourceTypePercentS }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_DUPLICATE_ID", DuplicateIdPercentSForResourceTypePercentS }, 
+      { "MSG_ERROR_PARSING", ErrorParsingResourceXmlPercentS }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_ERROR_PARSING", ErrorParsingResourceXmlPercentS }, 
+      { "MSG_ID_INVALID", IdQuotationPercentSQuotationHasAnInvalidCharacterQuotationPercentSQuotation }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_ID_INVALID", IdQuotationPercentSQuotationHasAnInvalidCharacterQuotationPercentSQuotation }, 
+      { "MSG_ID_TOO_LONG", IdQuotationPercentSQuotationTooLongLengthLimit36 }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_ID_TOO_LONG", IdQuotationPercentSQuotationTooLongLengthLimit36 }, 
+      { "MSG_INVALID_ID", IdNotAccepted }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_INVALID_ID", IdNotAccepted }, 
+      { "MSG_JSON_OBJECT", JsonSourceForAResourceShouldStartWithAnObject }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_JSON_OBJECT", JsonSourceForAResourceShouldStartWithAnObject }, 
+      { "MSG_LOCAL_FAIL", UnableToResolveLocalReferenceToResourcePercentS }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_LOCAL_FAIL", UnableToResolveLocalReferenceToResourcePercentS }, 
+      { "MSG_NO_EXIST", ResourceIdQuotationPercentSQuotationDoesNotExist }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_NO_EXIST", ResourceIdQuotationPercentSQuotationDoesNotExist }, 
+      { "MSG_NO_MATCH", NoResourceFoundMatchingTheQueryQuotationPercentSQuotation }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_NO_MATCH", NoResourceFoundMatchingTheQueryQuotationPercentSQuotation }, 
+      { "MSG_NO_MODULE", NoModuleCouldBeFoundToHandleTheRequestQuotationPercentSQuotation }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_NO_MODULE", NoModuleCouldBeFoundToHandleTheRequestQuotationPercentSQuotation }, 
+      { "MSG_NO_SUMMARY", NoSummaryForThisResource }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_NO_SUMMARY", NoSummaryForThisResource }, 
+      { "MSG_OP_NOT_ALLOWED", OperationPercentSNotAllowedForResourcePercentSDueToLocalConfiguration }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_OP_NOT_ALLOWED", OperationPercentSNotAllowedForResourcePercentSDueToLocalConfiguration }, 
+      { "MSG_PARAM_CHAINED", UnknownChainedParameterNameQuotationPercentSQuotation }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_PARAM_CHAINED", UnknownChainedParameterNameQuotationPercentSQuotation }, 
+      { "MSG_PARAM_INVALID", ParameterQuotationPercentSQuotationContentIsInvalid }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_PARAM_INVALID", ParameterQuotationPercentSQuotationContentIsInvalid }, 
+      { "MSG_PARAM_MODIFIER_INVALID", ParameterQuotationPercentSQuotationModifierIsInvalid }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_PARAM_MODIFIER_INVALID", ParameterQuotationPercentSQuotationModifierIsInvalid }, 
+      { "MSG_PARAM_NO_REPEAT", ParameterQuotationPercentSQuotationIsNotAllowedToRepeat }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_PARAM_NO_REPEAT", ParameterQuotationPercentSQuotationIsNotAllowedToRepeat }, 
+      { "MSG_PARAM_UNKNOWN", ParameterQuotationPercentSQuotationNotUnderstood }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_PARAM_UNKNOWN", ParameterQuotationPercentSQuotationNotUnderstood }, 
+      { "MSG_RESOURCE_EXAMPLE_PROTECTED", ResourcesWithIdentityQuotationExampleQuotationCannotBeDeletedForTestingTrainingPurposes }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_RESOURCE_EXAMPLE_PROTECTED", ResourcesWithIdentityQuotationExampleQuotationCannotBeDeletedForTestingTrainingPurposes }, 
+      { "MSG_RESOURCE_ID_FAIL", UnableToAllocateResourceId }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_RESOURCE_ID_FAIL", UnableToAllocateResourceId }, 
+      { "MSG_RESOURCE_ID_MISMATCH", ResourceIdMismatch }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_RESOURCE_ID_MISMATCH", ResourceIdMismatch }, 
+      { "MSG_RESOURCE_ID_MISSING", ResourceIdMissing }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_RESOURCE_ID_MISSING", ResourceIdMissing }, 
+      { "MSG_RESOURCE_NOT_ALLOWED", NotAllowedToSubmitAResourceForThisOperation }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_RESOURCE_NOT_ALLOWED", NotAllowedToSubmitAResourceForThisOperation }, 
+      { "MSG_RESOURCE_REQUIRED", AResourceIsRequired }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_RESOURCE_REQUIRED", AResourceIsRequired }, 
+      { "MSG_RESOURCE_TYPE_MISMATCH", ResourceTypeMismatch }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_RESOURCE_TYPE_MISMATCH", ResourceTypeMismatch }, 
+      { "MSG_SORT_UNKNOWN", UnknownSortParameterNameQuotationPercentSQuotation }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_SORT_UNKNOWN", UnknownSortParameterNameQuotationPercentSQuotation }, 
+      { "MSG_TRANSACTION_DUPLICATE_ID", DuplicateIdentifierInTransactionPercentS }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_TRANSACTION_DUPLICATE_ID", DuplicateIdentifierInTransactionPercentS }, 
+      { "MSG_TRANSACTION_MISSING_ID", MissingIdentifierInTransactionAnEntryIdMustBeProvided }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_TRANSACTION_MISSING_ID", MissingIdentifierInTransactionAnEntryIdMustBeProvided }, 
+      { "MSG_UNHANDLED_NODE_TYPE", UnhandledXmlNodeTypeQuotationPercentSQuotation }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_UNHANDLED_NODE_TYPE", UnhandledXmlNodeTypeQuotationPercentSQuotation }, 
+      { "MSG_UNKNOWN_CONTENT", UnknownContentPercentSAtPercentS }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_UNKNOWN_CONTENT", UnknownContentPercentSAtPercentS }, 
+      { "MSG_UNKNOWN_OPERATION", UnknownFHIRHttpOperation }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_UNKNOWN_OPERATION", UnknownFHIRHttpOperation }, 
+      { "MSG_UNKNOWN_TYPE", ResourceTypeQuotationPercentSQuotationNotRecognised }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_UNKNOWN_TYPE", ResourceTypeQuotationPercentSQuotationNotRecognised }, 
+      { "MSG_UPDATED", ExistingResourceUpdated }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_UPDATED", ExistingResourceUpdated }, 
+      { "MSG_VERSION_AWARE", VersionAwareUpdatesAreRequiredForThisResource }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_VERSION_AWARE", VersionAwareUpdatesAreRequiredForThisResource }, 
+      { "MSG_VERSION_AWARE_CONFLICT", UpdateConflictServerCurrentVersionEqualsQuotationPercentSQuotationClientVersionReferencedEqualsQuotationPercentSQuotation }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_VERSION_AWARE_CONFLICT", UpdateConflictServerCurrentVersionEqualsQuotationPercentSQuotationClientVersionReferencedEqualsQuotationPercentSQuotation }, 
+      { "MSG_VERSION_AWARE_URL", VersionSpecificURLNotRecognised }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_VERSION_AWARE_URL", VersionSpecificURLNotRecognised }, 
+      { "MSG_WRONG_NS", ThisDoesNotAppearToBeAFHIRElementOrResourceWrongNamespaceQuotationPercentSQuotation }, 
+      { "http://hl7.org/fhir/operation-outcome#MSG_WRONG_NS", ThisDoesNotAppearToBeAFHIRElementOrResourceWrongNamespaceQuotationPercentSQuotation }, 
+      { "SEARCH_MULTIPLE", ErrorMultipleMatchesExistForPercentSSearchParametersQuotationPercentSQuotation }, 
+      { "http://hl7.org/fhir/operation-outcome#SEARCH_MULTIPLE", ErrorMultipleMatchesExistForPercentSSearchParametersQuotationPercentSQuotation }, 
+      { "SEARCH_NONE", ErrorNoProcessableSearchFoundForPercentSSearchParametersQuotationPercentSQuotation }, 
+      { "http://hl7.org/fhir/operation-outcome#SEARCH_NONE", ErrorNoProcessableSearchFoundForPercentSSearchParametersQuotationPercentSQuotation }, 
+      { "UPDATE_MULTIPLE_MATCHES", ErrorMultipleMatchesExistForTheConditionalUpdate }, 
+      { "http://hl7.org/fhir/operation-outcome#UPDATE_MULTIPLE_MATCHES", ErrorMultipleMatchesExistForTheConditionalUpdate }, 
+    };
   };
 }

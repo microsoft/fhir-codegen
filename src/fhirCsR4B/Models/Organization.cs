@@ -173,6 +173,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? Active { get; set; }
     /// <summary>
+    /// Extension container element for Active
+    /// </summary>
+    public Element _Active { get; set; }
+    /// <summary>
     /// Organization may have multiple addresses with different uses or applicable periods. The use code 'home' is not to be used.
     /// </summary>
     public List<Address> Address { get; set; }
@@ -251,6 +255,12 @@ namespace fhirCsR4B.Models
       if (Active != null)
       {
         writer.WriteBoolean("active", (bool)Active!);
+      }
+
+      if (_Active != null)
+      {
+        writer.WritePropertyName("_active");
+        _Active.SerializeJson(writer, options);
       }
 
       if ((Type != null) && (Type.Count != 0))
@@ -375,6 +385,11 @@ namespace fhirCsR4B.Models
       {
         case "active":
           Active = reader.GetBoolean();
+          break;
+
+        case "_active":
+          _Active = new fhirCsR4B.Models.Element();
+          _Active.DeserializeJson(ref reader, options);
           break;
 
         case "address":

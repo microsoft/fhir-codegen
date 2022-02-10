@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralExactMatchBetweenObservedAndIntendedVariable = "exact";
 
     /// <summary>
+    /// Literal for code: DirectnessExactMatchBetweenObservedAndIntendedVariable
+    /// </summary>
+    public const string LiteralDirectnessExactMatchBetweenObservedAndIntendedVariable = "http://terminology.hl7.org/CodeSystem/directness#exact";
+
+    /// <summary>
     /// Literal for code: HighQualityMatchBetweenObservedAndIntendedVariable
     /// </summary>
     public const string LiteralHighQualityMatchBetweenObservedAndIntendedVariable = "high";
+
+    /// <summary>
+    /// Literal for code: DirectnessHighQualityMatchBetweenObservedAndIntendedVariable
+    /// </summary>
+    public const string LiteralDirectnessHighQualityMatchBetweenObservedAndIntendedVariable = "http://terminology.hl7.org/CodeSystem/directness#high";
 
     /// <summary>
     /// Literal for code: LowQualityMatchBetweenObservedAndIntendedVariable
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLowQualityMatchBetweenObservedAndIntendedVariable = "low";
 
     /// <summary>
+    /// Literal for code: DirectnessLowQualityMatchBetweenObservedAndIntendedVariable
+    /// </summary>
+    public const string LiteralDirectnessLowQualityMatchBetweenObservedAndIntendedVariable = "http://terminology.hl7.org/CodeSystem/directness#low";
+
+    /// <summary>
     /// Literal for code: ModerateQualityMatchBetweenObservedAndIntendedVariable
     /// </summary>
     public const string LiteralModerateQualityMatchBetweenObservedAndIntendedVariable = "moderate";
+
+    /// <summary>
+    /// Literal for code: DirectnessModerateQualityMatchBetweenObservedAndIntendedVariable
+    /// </summary>
+    public const string LiteralDirectnessModerateQualityMatchBetweenObservedAndIntendedVariable = "http://terminology.hl7.org/CodeSystem/directness#moderate";
+
+    /// <summary>
+    /// Dictionary for looking up Directness Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "exact", ExactMatchBetweenObservedAndIntendedVariable }, 
+      { "http://terminology.hl7.org/CodeSystem/directness#exact", ExactMatchBetweenObservedAndIntendedVariable }, 
+      { "high", HighQualityMatchBetweenObservedAndIntendedVariable }, 
+      { "http://terminology.hl7.org/CodeSystem/directness#high", HighQualityMatchBetweenObservedAndIntendedVariable }, 
+      { "low", LowQualityMatchBetweenObservedAndIntendedVariable }, 
+      { "http://terminology.hl7.org/CodeSystem/directness#low", LowQualityMatchBetweenObservedAndIntendedVariable }, 
+      { "moderate", ModerateQualityMatchBetweenObservedAndIntendedVariable }, 
+      { "http://terminology.hl7.org/CodeSystem/directness#moderate", ModerateQualityMatchBetweenObservedAndIntendedVariable }, 
+    };
   };
 }

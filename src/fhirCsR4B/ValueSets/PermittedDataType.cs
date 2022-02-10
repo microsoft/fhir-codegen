@@ -117,9 +117,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBoolean = "boolean";
 
     /// <summary>
+    /// Literal for code: PermittedDataTypeBoolean
+    /// </summary>
+    public const string LiteralPermittedDataTypeBoolean = "http://hl7.org/fhir/permitted-data-type#boolean";
+
+    /// <summary>
     /// Literal for code: CodeableConcept
     /// </summary>
     public const string LiteralCodeableConcept = "CodeableConcept";
+
+    /// <summary>
+    /// Literal for code: PermittedDataTypeCodeableConcept
+    /// </summary>
+    public const string LiteralPermittedDataTypeCodeableConcept = "http://hl7.org/fhir/permitted-data-type#CodeableConcept";
 
     /// <summary>
     /// Literal for code: DateTime
@@ -127,9 +137,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDateTime = "dateTime";
 
     /// <summary>
+    /// Literal for code: PermittedDataTypeDateTime
+    /// </summary>
+    public const string LiteralPermittedDataTypeDateTime = "http://hl7.org/fhir/permitted-data-type#dateTime";
+
+    /// <summary>
     /// Literal for code: Integer
     /// </summary>
     public const string LiteralInteger = "integer";
+
+    /// <summary>
+    /// Literal for code: PermittedDataTypeInteger
+    /// </summary>
+    public const string LiteralPermittedDataTypeInteger = "http://hl7.org/fhir/permitted-data-type#integer";
 
     /// <summary>
     /// Literal for code: Period
@@ -137,9 +157,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPeriod = "Period";
 
     /// <summary>
+    /// Literal for code: PermittedDataTypePeriod
+    /// </summary>
+    public const string LiteralPermittedDataTypePeriod = "http://hl7.org/fhir/permitted-data-type#Period";
+
+    /// <summary>
     /// Literal for code: Quantity
     /// </summary>
     public const string LiteralQuantity = "Quantity";
+
+    /// <summary>
+    /// Literal for code: PermittedDataTypeQuantity
+    /// </summary>
+    public const string LiteralPermittedDataTypeQuantity = "http://hl7.org/fhir/permitted-data-type#Quantity";
 
     /// <summary>
     /// Literal for code: Range
@@ -147,9 +177,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRange = "Range";
 
     /// <summary>
+    /// Literal for code: PermittedDataTypeRange
+    /// </summary>
+    public const string LiteralPermittedDataTypeRange = "http://hl7.org/fhir/permitted-data-type#Range";
+
+    /// <summary>
     /// Literal for code: Ratio
     /// </summary>
     public const string LiteralRatio = "Ratio";
+
+    /// <summary>
+    /// Literal for code: PermittedDataTypeRatio
+    /// </summary>
+    public const string LiteralPermittedDataTypeRatio = "http://hl7.org/fhir/permitted-data-type#Ratio";
 
     /// <summary>
     /// Literal for code: SampledData
@@ -157,13 +197,56 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSampledData = "SampledData";
 
     /// <summary>
+    /// Literal for code: PermittedDataTypeSampledData
+    /// </summary>
+    public const string LiteralPermittedDataTypeSampledData = "http://hl7.org/fhir/permitted-data-type#SampledData";
+
+    /// <summary>
     /// Literal for code: VALString
     /// </summary>
     public const string LiteralVALString = "string";
 
     /// <summary>
+    /// Literal for code: PermittedDataTypeVALString
+    /// </summary>
+    public const string LiteralPermittedDataTypeVALString = "http://hl7.org/fhir/permitted-data-type#string";
+
+    /// <summary>
     /// Literal for code: Time
     /// </summary>
     public const string LiteralTime = "time";
+
+    /// <summary>
+    /// Literal for code: PermittedDataTypeTime
+    /// </summary>
+    public const string LiteralPermittedDataTypeTime = "http://hl7.org/fhir/permitted-data-type#time";
+
+    /// <summary>
+    /// Dictionary for looking up PermittedDataType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "boolean", Boolean }, 
+      { "http://hl7.org/fhir/permitted-data-type#boolean", Boolean }, 
+      { "CodeableConcept", CodeableConcept }, 
+      { "http://hl7.org/fhir/permitted-data-type#CodeableConcept", CodeableConcept }, 
+      { "dateTime", DateTime }, 
+      { "http://hl7.org/fhir/permitted-data-type#dateTime", DateTime }, 
+      { "integer", Integer }, 
+      { "http://hl7.org/fhir/permitted-data-type#integer", Integer }, 
+      { "Period", Period }, 
+      { "http://hl7.org/fhir/permitted-data-type#Period", Period }, 
+      { "Quantity", Quantity }, 
+      { "http://hl7.org/fhir/permitted-data-type#Quantity", Quantity }, 
+      { "Range", Range }, 
+      { "http://hl7.org/fhir/permitted-data-type#Range", Range }, 
+      { "Ratio", Ratio }, 
+      { "http://hl7.org/fhir/permitted-data-type#Ratio", Ratio }, 
+      { "SampledData", SampledData }, 
+      { "http://hl7.org/fhir/permitted-data-type#SampledData", SampledData }, 
+      { "string", VALString }, 
+      { "http://hl7.org/fhir/permitted-data-type#string", VALString }, 
+      { "time", Time }, 
+      { "http://hl7.org/fhir/permitted-data-type#time", Time }, 
+    };
   };
 }

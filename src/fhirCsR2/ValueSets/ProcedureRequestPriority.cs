@@ -54,9 +54,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralASAP = "asap";
 
     /// <summary>
+    /// Literal for code: ProcedureRequestPriorityASAP
+    /// </summary>
+    public const string LiteralProcedureRequestPriorityASAP = "http://hl7.org/fhir/procedure-request-priority#asap";
+
+    /// <summary>
     /// Literal for code: Routine
     /// </summary>
     public const string LiteralRoutine = "routine";
+
+    /// <summary>
+    /// Literal for code: ProcedureRequestPriorityRoutine
+    /// </summary>
+    public const string LiteralProcedureRequestPriorityRoutine = "http://hl7.org/fhir/procedure-request-priority#routine";
 
     /// <summary>
     /// Literal for code: Stat
@@ -64,8 +74,32 @@ namespace fhirCsR2.ValueSets
     public const string LiteralStat = "stat";
 
     /// <summary>
+    /// Literal for code: ProcedureRequestPriorityStat
+    /// </summary>
+    public const string LiteralProcedureRequestPriorityStat = "http://hl7.org/fhir/procedure-request-priority#stat";
+
+    /// <summary>
     /// Literal for code: Urgent
     /// </summary>
     public const string LiteralUrgent = "urgent";
+
+    /// <summary>
+    /// Literal for code: ProcedureRequestPriorityUrgent
+    /// </summary>
+    public const string LiteralProcedureRequestPriorityUrgent = "http://hl7.org/fhir/procedure-request-priority#urgent";
+
+    /// <summary>
+    /// Dictionary for looking up ProcedureRequestPriority Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "asap", ASAP }, 
+      { "http://hl7.org/fhir/procedure-request-priority#asap", ASAP }, 
+      { "routine", Routine }, 
+      { "http://hl7.org/fhir/procedure-request-priority#routine", Routine }, 
+      { "stat", Stat }, 
+      { "http://hl7.org/fhir/procedure-request-priority#stat", Stat }, 
+      { "urgent", Urgent }, 
+      { "http://hl7.org/fhir/procedure-request-priority#urgent", Urgent }, 
+    };
   };
 }

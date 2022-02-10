@@ -54,9 +54,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: HistoryStatusCompleted
+    /// </summary>
+    public const string LiteralHistoryStatusCompleted = "http://hl7.org/fhir/history-status#completed";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: HistoryStatusEnteredInError
+    /// </summary>
+    public const string LiteralHistoryStatusEnteredInError = "http://hl7.org/fhir/history-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: HealthUnknown
@@ -64,8 +74,32 @@ namespace fhirCsR2.ValueSets
     public const string LiteralHealthUnknown = "health-unknown";
 
     /// <summary>
+    /// Literal for code: HistoryStatusHealthUnknown
+    /// </summary>
+    public const string LiteralHistoryStatusHealthUnknown = "http://hl7.org/fhir/history-status#health-unknown";
+
+    /// <summary>
     /// Literal for code: Partial
     /// </summary>
     public const string LiteralPartial = "partial";
+
+    /// <summary>
+    /// Literal for code: HistoryStatusPartial
+    /// </summary>
+    public const string LiteralHistoryStatusPartial = "http://hl7.org/fhir/history-status#partial";
+
+    /// <summary>
+    /// Dictionary for looking up HistoryStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/history-status#completed", Completed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/history-status#entered-in-error", EnteredInError }, 
+      { "health-unknown", HealthUnknown }, 
+      { "http://hl7.org/fhir/history-status#health-unknown", HealthUnknown }, 
+      { "partial", Partial }, 
+      { "http://hl7.org/fhir/history-status#partial", Partial }, 
+    };
   };
 }

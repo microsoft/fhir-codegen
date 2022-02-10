@@ -90,9 +90,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSortedAlphabetically = "alphabetic";
 
     /// <summary>
+    /// Literal for code: ListOrderSortedAlphabetically
+    /// </summary>
+    public const string LiteralListOrderSortedAlphabetically = "http://hl7.org/fhir/list-order#alphabetic";
+
+    /// <summary>
     /// Literal for code: SortedByCategory
     /// </summary>
     public const string LiteralSortedByCategory = "category";
+
+    /// <summary>
+    /// Literal for code: ListOrderSortedByCategory
+    /// </summary>
+    public const string LiteralListOrderSortedByCategory = "http://hl7.org/fhir/list-order#category";
 
     /// <summary>
     /// Literal for code: SortedByItemDate
@@ -100,9 +110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSortedByItemDate = "entry-date";
 
     /// <summary>
+    /// Literal for code: ListOrderSortedByItemDate
+    /// </summary>
+    public const string LiteralListOrderSortedByItemDate = "http://hl7.org/fhir/list-order#entry-date";
+
+    /// <summary>
     /// Literal for code: SortedByEventDate
     /// </summary>
     public const string LiteralSortedByEventDate = "event-date";
+
+    /// <summary>
+    /// Literal for code: ListOrderSortedByEventDate
+    /// </summary>
+    public const string LiteralListOrderSortedByEventDate = "http://hl7.org/fhir/list-order#event-date";
 
     /// <summary>
     /// Literal for code: SortedByPatient
@@ -110,9 +130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSortedByPatient = "patient";
 
     /// <summary>
+    /// Literal for code: ListOrderSortedByPatient
+    /// </summary>
+    public const string LiteralListOrderSortedByPatient = "http://hl7.org/fhir/list-order#patient";
+
+    /// <summary>
     /// Literal for code: SortedByPriority
     /// </summary>
     public const string LiteralSortedByPriority = "priority";
+
+    /// <summary>
+    /// Literal for code: ListOrderSortedByPriority
+    /// </summary>
+    public const string LiteralListOrderSortedByPriority = "http://hl7.org/fhir/list-order#priority";
 
     /// <summary>
     /// Literal for code: SortedBySystem
@@ -120,8 +150,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSortedBySystem = "system";
 
     /// <summary>
+    /// Literal for code: ListOrderSortedBySystem
+    /// </summary>
+    public const string LiteralListOrderSortedBySystem = "http://hl7.org/fhir/list-order#system";
+
+    /// <summary>
     /// Literal for code: SortedByUser
     /// </summary>
     public const string LiteralSortedByUser = "user";
+
+    /// <summary>
+    /// Literal for code: ListOrderSortedByUser
+    /// </summary>
+    public const string LiteralListOrderSortedByUser = "http://hl7.org/fhir/list-order#user";
+
+    /// <summary>
+    /// Dictionary for looking up ListOrder Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "alphabetic", SortedAlphabetically }, 
+      { "http://hl7.org/fhir/list-order#alphabetic", SortedAlphabetically }, 
+      { "category", SortedByCategory }, 
+      { "http://hl7.org/fhir/list-order#category", SortedByCategory }, 
+      { "entry-date", SortedByItemDate }, 
+      { "http://hl7.org/fhir/list-order#entry-date", SortedByItemDate }, 
+      { "event-date", SortedByEventDate }, 
+      { "http://hl7.org/fhir/list-order#event-date", SortedByEventDate }, 
+      { "patient", SortedByPatient }, 
+      { "http://hl7.org/fhir/list-order#patient", SortedByPatient }, 
+      { "priority", SortedByPriority }, 
+      { "http://hl7.org/fhir/list-order#priority", SortedByPriority }, 
+      { "system", SortedBySystem }, 
+      { "http://hl7.org/fhir/list-order#system", SortedBySystem }, 
+      { "user", SortedByUser }, 
+      { "http://hl7.org/fhir/list-order#user", SortedByUser }, 
+    };
   };
 }

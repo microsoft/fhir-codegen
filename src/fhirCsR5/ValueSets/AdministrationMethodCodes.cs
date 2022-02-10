@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class AdministrationMethodCodesCodes
   {
     /// <summary>
-    /// 
+    /// Dose form administration method (administration method)
     /// </summary>
     public static readonly Coding DoseFormAdministrationMethodAdministrationMethod = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Administer (administration method)
     /// </summary>
     public static readonly Coding AdministerAdministrationMethod = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apply (administration method)
     /// </summary>
     public static readonly Coding ApplyAdministrationMethod = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chew (administration method)
     /// </summary>
     public static readonly Coding ChewAdministrationMethod = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insert (administration method)
     /// </summary>
     public static readonly Coding InsertAdministrationMethod = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Instill
     /// </summary>
     public static readonly Coding Instill = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swallow (administration method)
     /// </summary>
     public static readonly Coding SwallowAdministrationMethod = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spray
     /// </summary>
     public static readonly Coding Spray = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhale (administration method)
     /// </summary>
     public static readonly Coding InhaleAdministrationMethod = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inject (administration method)
     /// </summary>
     public static readonly Coding InjectAdministrationMethod = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suck
     /// </summary>
     public static readonly Coding Suck = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infuse (administration method)
     /// </summary>
     public static readonly Coding InfuseAdministrationMethod = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rinse (administration method)
     /// </summary>
     public static readonly Coding RinseAdministrationMethod = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gargle
     /// </summary>
     public static readonly Coding Gargle = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rinse or wash
     /// </summary>
     public static readonly Coding RinseOrWash = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orodisperse (administration method)
     /// </summary>
     public static readonly Coding OrodisperseAdministrationMethod = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implant
     /// </summary>
     public static readonly Coding Implant = new Coding
     {
@@ -171,9 +171,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDoseFormAdministrationMethodAdministrationMethod = "736665006";
 
     /// <summary>
+    /// Literal for code: NONEDoseFormAdministrationMethodAdministrationMethod
+    /// </summary>
+    public const string LiteralNONEDoseFormAdministrationMethodAdministrationMethod = "http://snomed.info/sct#736665006";
+
+    /// <summary>
     /// Literal for code: AdministerAdministrationMethod
     /// </summary>
     public const string LiteralAdministerAdministrationMethod = "738990001";
+
+    /// <summary>
+    /// Literal for code: NONEAdministerAdministrationMethod
+    /// </summary>
+    public const string LiteralNONEAdministerAdministrationMethod = "http://snomed.info/sct#738990001";
 
     /// <summary>
     /// Literal for code: ApplyAdministrationMethod
@@ -181,9 +191,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralApplyAdministrationMethod = "738991002";
 
     /// <summary>
+    /// Literal for code: NONEApplyAdministrationMethod
+    /// </summary>
+    public const string LiteralNONEApplyAdministrationMethod = "http://snomed.info/sct#738991002";
+
+    /// <summary>
     /// Literal for code: ChewAdministrationMethod
     /// </summary>
     public const string LiteralChewAdministrationMethod = "738992009";
+
+    /// <summary>
+    /// Literal for code: NONEChewAdministrationMethod
+    /// </summary>
+    public const string LiteralNONEChewAdministrationMethod = "http://snomed.info/sct#738992009";
 
     /// <summary>
     /// Literal for code: InsertAdministrationMethod
@@ -191,9 +211,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInsertAdministrationMethod = "738993004";
 
     /// <summary>
+    /// Literal for code: NONEInsertAdministrationMethod
+    /// </summary>
+    public const string LiteralNONEInsertAdministrationMethod = "http://snomed.info/sct#738993004";
+
+    /// <summary>
     /// Literal for code: Instill
     /// </summary>
     public const string LiteralInstill = "738994005";
+
+    /// <summary>
+    /// Literal for code: NONEInstill
+    /// </summary>
+    public const string LiteralNONEInstill = "http://snomed.info/sct#738994005";
 
     /// <summary>
     /// Literal for code: SwallowAdministrationMethod
@@ -201,9 +231,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSwallowAdministrationMethod = "738995006";
 
     /// <summary>
+    /// Literal for code: NONESwallowAdministrationMethod
+    /// </summary>
+    public const string LiteralNONESwallowAdministrationMethod = "http://snomed.info/sct#738995006";
+
+    /// <summary>
     /// Literal for code: Spray
     /// </summary>
     public const string LiteralSpray = "738996007";
+
+    /// <summary>
+    /// Literal for code: NONESpray
+    /// </summary>
+    public const string LiteralNONESpray = "http://snomed.info/sct#738996007";
 
     /// <summary>
     /// Literal for code: InhaleAdministrationMethod
@@ -211,9 +251,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInhaleAdministrationMethod = "740666001";
 
     /// <summary>
+    /// Literal for code: NONEInhaleAdministrationMethod
+    /// </summary>
+    public const string LiteralNONEInhaleAdministrationMethod = "http://snomed.info/sct#740666001";
+
+    /// <summary>
     /// Literal for code: InjectAdministrationMethod
     /// </summary>
     public const string LiteralInjectAdministrationMethod = "740685003";
+
+    /// <summary>
+    /// Literal for code: NONEInjectAdministrationMethod
+    /// </summary>
+    public const string LiteralNONEInjectAdministrationMethod = "http://snomed.info/sct#740685003";
 
     /// <summary>
     /// Literal for code: Suck
@@ -221,9 +271,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSuck = "764498003";
 
     /// <summary>
+    /// Literal for code: NONESuck
+    /// </summary>
+    public const string LiteralNONESuck = "http://snomed.info/sct#764498003";
+
+    /// <summary>
     /// Literal for code: InfuseAdministrationMethod
     /// </summary>
     public const string LiteralInfuseAdministrationMethod = "764794000";
+
+    /// <summary>
+    /// Literal for code: NONEInfuseAdministrationMethod
+    /// </summary>
+    public const string LiteralNONEInfuseAdministrationMethod = "http://snomed.info/sct#764794000";
 
     /// <summary>
     /// Literal for code: RinseAdministrationMethod
@@ -231,9 +291,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRinseAdministrationMethod = "782155003";
 
     /// <summary>
+    /// Literal for code: NONERinseAdministrationMethod
+    /// </summary>
+    public const string LiteralNONERinseAdministrationMethod = "http://snomed.info/sct#782155003";
+
+    /// <summary>
     /// Literal for code: Gargle
     /// </summary>
     public const string LiteralGargle = "782168006";
+
+    /// <summary>
+    /// Literal for code: NONEGargle
+    /// </summary>
+    public const string LiteralNONEGargle = "http://snomed.info/sct#782168006";
 
     /// <summary>
     /// Literal for code: RinseOrWash
@@ -241,13 +311,68 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRinseOrWash = "785900008";
 
     /// <summary>
+    /// Literal for code: NONERinseOrWash
+    /// </summary>
+    public const string LiteralNONERinseOrWash = "http://snomed.info/sct#785900008";
+
+    /// <summary>
     /// Literal for code: OrodisperseAdministrationMethod
     /// </summary>
     public const string LiteralOrodisperseAdministrationMethod = "823034001";
 
     /// <summary>
+    /// Literal for code: NONEOrodisperseAdministrationMethod
+    /// </summary>
+    public const string LiteralNONEOrodisperseAdministrationMethod = "http://snomed.info/sct#823034001";
+
+    /// <summary>
     /// Literal for code: Implant
     /// </summary>
     public const string LiteralImplant = "827107003";
+
+    /// <summary>
+    /// Literal for code: NONEImplant
+    /// </summary>
+    public const string LiteralNONEImplant = "http://snomed.info/sct#827107003";
+
+    /// <summary>
+    /// Dictionary for looking up AdministrationMethodCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "736665006", DoseFormAdministrationMethodAdministrationMethod }, 
+      { "http://snomed.info/sct#736665006", DoseFormAdministrationMethodAdministrationMethod }, 
+      { "738990001", AdministerAdministrationMethod }, 
+      { "http://snomed.info/sct#738990001", AdministerAdministrationMethod }, 
+      { "738991002", ApplyAdministrationMethod }, 
+      { "http://snomed.info/sct#738991002", ApplyAdministrationMethod }, 
+      { "738992009", ChewAdministrationMethod }, 
+      { "http://snomed.info/sct#738992009", ChewAdministrationMethod }, 
+      { "738993004", InsertAdministrationMethod }, 
+      { "http://snomed.info/sct#738993004", InsertAdministrationMethod }, 
+      { "738994005", Instill }, 
+      { "http://snomed.info/sct#738994005", Instill }, 
+      { "738995006", SwallowAdministrationMethod }, 
+      { "http://snomed.info/sct#738995006", SwallowAdministrationMethod }, 
+      { "738996007", Spray }, 
+      { "http://snomed.info/sct#738996007", Spray }, 
+      { "740666001", InhaleAdministrationMethod }, 
+      { "http://snomed.info/sct#740666001", InhaleAdministrationMethod }, 
+      { "740685003", InjectAdministrationMethod }, 
+      { "http://snomed.info/sct#740685003", InjectAdministrationMethod }, 
+      { "764498003", Suck }, 
+      { "http://snomed.info/sct#764498003", Suck }, 
+      { "764794000", InfuseAdministrationMethod }, 
+      { "http://snomed.info/sct#764794000", InfuseAdministrationMethod }, 
+      { "782155003", RinseAdministrationMethod }, 
+      { "http://snomed.info/sct#782155003", RinseAdministrationMethod }, 
+      { "782168006", Gargle }, 
+      { "http://snomed.info/sct#782168006", Gargle }, 
+      { "785900008", RinseOrWash }, 
+      { "http://snomed.info/sct#785900008", RinseOrWash }, 
+      { "823034001", OrodisperseAdministrationMethod }, 
+      { "http://snomed.info/sct#823034001", OrodisperseAdministrationMethod }, 
+      { "827107003", Implant }, 
+      { "http://snomed.info/sct#827107003", Implant }, 
+    };
   };
 }

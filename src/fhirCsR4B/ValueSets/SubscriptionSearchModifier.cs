@@ -153,9 +153,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEquals = "=";
 
     /// <summary>
+    /// Literal for code: SubscriptionSearchModifierEquals
+    /// </summary>
+    public const string LiteralSubscriptionSearchModifierEquals = "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#=";
+
+    /// <summary>
     /// Literal for code: Above
     /// </summary>
     public const string LiteralAbove = "above";
+
+    /// <summary>
+    /// Literal for code: SubscriptionSearchModifierAbove
+    /// </summary>
+    public const string LiteralSubscriptionSearchModifierAbove = "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#above";
 
     /// <summary>
     /// Literal for code: Approximately
@@ -163,9 +173,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralApproximately = "ap";
 
     /// <summary>
+    /// Literal for code: SubscriptionSearchModifierApproximately
+    /// </summary>
+    public const string LiteralSubscriptionSearchModifierApproximately = "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#ap";
+
+    /// <summary>
     /// Literal for code: Below
     /// </summary>
     public const string LiteralBelow = "below";
+
+    /// <summary>
+    /// Literal for code: SubscriptionSearchModifierBelow
+    /// </summary>
+    public const string LiteralSubscriptionSearchModifierBelow = "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#below";
 
     /// <summary>
     /// Literal for code: EndsBefore
@@ -173,9 +193,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEndsBefore = "eb";
 
     /// <summary>
+    /// Literal for code: SubscriptionSearchModifierEndsBefore
+    /// </summary>
+    public const string LiteralSubscriptionSearchModifierEndsBefore = "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#eb";
+
+    /// <summary>
     /// Literal for code: Equal
     /// </summary>
     public const string LiteralEqual = "eq";
+
+    /// <summary>
+    /// Literal for code: SubscriptionSearchModifierEqual
+    /// </summary>
+    public const string LiteralSubscriptionSearchModifierEqual = "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#eq";
 
     /// <summary>
     /// Literal for code: GreaterThanOrEqual
@@ -183,9 +213,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGreaterThanOrEqual = "ge";
 
     /// <summary>
+    /// Literal for code: SubscriptionSearchModifierGreaterThanOrEqual
+    /// </summary>
+    public const string LiteralSubscriptionSearchModifierGreaterThanOrEqual = "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#ge";
+
+    /// <summary>
     /// Literal for code: GreaterThan
     /// </summary>
     public const string LiteralGreaterThan = "gt";
+
+    /// <summary>
+    /// Literal for code: SubscriptionSearchModifierGreaterThan
+    /// </summary>
+    public const string LiteralSubscriptionSearchModifierGreaterThan = "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#gt";
 
     /// <summary>
     /// Literal for code: In
@@ -193,9 +233,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIn = "in";
 
     /// <summary>
+    /// Literal for code: SubscriptionSearchModifierIn
+    /// </summary>
+    public const string LiteralSubscriptionSearchModifierIn = "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#in";
+
+    /// <summary>
     /// Literal for code: LessThanOrEqual
     /// </summary>
     public const string LiteralLessThanOrEqual = "le";
+
+    /// <summary>
+    /// Literal for code: SubscriptionSearchModifierLessThanOrEqual
+    /// </summary>
+    public const string LiteralSubscriptionSearchModifierLessThanOrEqual = "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#le";
 
     /// <summary>
     /// Literal for code: LessThan
@@ -203,9 +253,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLessThan = "lt";
 
     /// <summary>
+    /// Literal for code: SubscriptionSearchModifierLessThan
+    /// </summary>
+    public const string LiteralSubscriptionSearchModifierLessThan = "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#lt";
+
+    /// <summary>
     /// Literal for code: NotEqual
     /// </summary>
     public const string LiteralNotEqual = "ne";
+
+    /// <summary>
+    /// Literal for code: SubscriptionSearchModifierNotEqual
+    /// </summary>
+    public const string LiteralSubscriptionSearchModifierNotEqual = "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#ne";
 
     /// <summary>
     /// Literal for code: NotIn
@@ -213,13 +273,64 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNotIn = "not-in";
 
     /// <summary>
+    /// Literal for code: SubscriptionSearchModifierNotIn
+    /// </summary>
+    public const string LiteralSubscriptionSearchModifierNotIn = "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#not-in";
+
+    /// <summary>
     /// Literal for code: OfType
     /// </summary>
     public const string LiteralOfType = "of-type";
 
     /// <summary>
+    /// Literal for code: SubscriptionSearchModifierOfType
+    /// </summary>
+    public const string LiteralSubscriptionSearchModifierOfType = "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#of-type";
+
+    /// <summary>
     /// Literal for code: StartsAfter
     /// </summary>
     public const string LiteralStartsAfter = "sa";
+
+    /// <summary>
+    /// Literal for code: SubscriptionSearchModifierStartsAfter
+    /// </summary>
+    public const string LiteralSubscriptionSearchModifierStartsAfter = "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#sa";
+
+    /// <summary>
+    /// Dictionary for looking up SubscriptionSearchModifier Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "=", Equals }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#=", Equals }, 
+      { "above", Above }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#above", Above }, 
+      { "ap", Approximately }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#ap", Approximately }, 
+      { "below", Below }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#below", Below }, 
+      { "eb", EndsBefore }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#eb", EndsBefore }, 
+      { "eq", Equal }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#eq", Equal }, 
+      { "ge", GreaterThanOrEqual }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#ge", GreaterThanOrEqual }, 
+      { "gt", GreaterThan }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#gt", GreaterThan }, 
+      { "in", In }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#in", In }, 
+      { "le", LessThanOrEqual }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#le", LessThanOrEqual }, 
+      { "lt", LessThan }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#lt", LessThan }, 
+      { "ne", NotEqual }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#ne", NotEqual }, 
+      { "not-in", NotIn }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#not-in", NotIn }, 
+      { "of-type", OfType }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#of-type", OfType }, 
+      { "sa", StartsAfter }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-search-modifier#sa", StartsAfter }, 
+    };
   };
 }

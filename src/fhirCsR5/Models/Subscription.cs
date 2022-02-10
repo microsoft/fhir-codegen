@@ -200,6 +200,23 @@ namespace fhirCsR5.Models
     public const string VAL_IN = "in";
     public const string NOT_IN = "not-in";
     public const string OF_TYPE = "of-type";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "=",
+      "eq",
+      "ne",
+      "gt",
+      "lt",
+      "ge",
+      "le",
+      "sa",
+      "eb",
+      "ap",
+      "above",
+      "below",
+      "in",
+      "not-in",
+      "of-type",
+    };
   }
   /// <summary>
   /// The subscription resource describes a particular client's request to be notified about a SubscriptionTopic.
@@ -802,6 +819,11 @@ namespace fhirCsR5.Models
     public const string EMPTY = "empty";
     public const string ID_ONLY = "id-only";
     public const string FULL_RESOURCE = "full-resource";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "empty",
+      "id-only",
+      "full-resource",
+    };
   }
   /// <summary>
   /// Code Values for the Subscription.notificationUrlLocation field
@@ -811,6 +833,12 @@ namespace fhirCsR5.Models
     public const string FULL_URL = "full-url";
     public const string REQUEST_RESPONSE = "request-response";
     public const string ALL = "all";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "none",
+      "full-url",
+      "request-response",
+      "all",
+    };
   }
   /// <summary>
   /// Code Values for the Subscription.status field
@@ -821,5 +849,12 @@ namespace fhirCsR5.Models
     public const string ERROR = "error";
     public const string OFF = "off";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "requested",
+      "active",
+      "error",
+      "off",
+      "entered-in-error",
+    };
   }
 }

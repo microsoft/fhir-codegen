@@ -1161,9 +1161,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDedicatedClinicalLocationRoleType = "_DedicatedClinicalLocationRoleType";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeDedicatedClinicalLocationRoleType
+    /// </summary>
+    public const string LiteralV3RoleCodeDedicatedClinicalLocationRoleType = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#_DedicatedClinicalLocationRoleType";
+
+    /// <summary>
     /// Literal for code: DedicatedNonClinicalLocationRoleType
     /// </summary>
     public const string LiteralDedicatedNonClinicalLocationRoleType = "_DedicatedNonClinicalLocationRoleType";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeDedicatedNonClinicalLocationRoleType
+    /// </summary>
+    public const string LiteralV3RoleCodeDedicatedNonClinicalLocationRoleType = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#_DedicatedNonClinicalLocationRoleType";
 
     /// <summary>
     /// Literal for code: DedicatedServiceDeliveryLocationRoleType
@@ -1171,9 +1181,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDedicatedServiceDeliveryLocationRoleType = "_DedicatedServiceDeliveryLocationRoleType";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeDedicatedServiceDeliveryLocationRoleType
+    /// </summary>
+    public const string LiteralV3RoleCodeDedicatedServiceDeliveryLocationRoleType = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#_DedicatedServiceDeliveryLocationRoleType";
+
+    /// <summary>
     /// Literal for code: IncidentalServiceDeliveryLocationRoleType
     /// </summary>
     public const string LiteralIncidentalServiceDeliveryLocationRoleType = "_IncidentalServiceDeliveryLocationRoleType";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeIncidentalServiceDeliveryLocationRoleType
+    /// </summary>
+    public const string LiteralV3RoleCodeIncidentalServiceDeliveryLocationRoleType = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#_IncidentalServiceDeliveryLocationRoleType";
 
     /// <summary>
     /// Literal for code: AccidentSite
@@ -1181,9 +1201,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAccidentSite = "ACC";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeAccidentSite
+    /// </summary>
+    public const string LiteralV3RoleCodeAccidentSite = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ACC";
+
+    /// <summary>
     /// Literal for code: AllergyClinic
     /// </summary>
     public const string LiteralAllergyClinic = "ALL";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeAllergyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeAllergyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ALL";
 
     /// <summary>
     /// Literal for code: Ambulance
@@ -1191,9 +1221,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAmbulance = "AMB";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeAmbulance
+    /// </summary>
+    public const string LiteralV3RoleCodeAmbulance = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#AMB";
+
+    /// <summary>
     /// Literal for code: AmputeeClinic
     /// </summary>
     public const string LiteralAmputeeClinic = "AMPUT";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeAmputeeClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeAmputeeClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#AMPUT";
 
     /// <summary>
     /// Literal for code: BoneMarrowTransplantClinic
@@ -1201,9 +1241,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBoneMarrowTransplantClinic = "BMTC";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeBoneMarrowTransplantClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeBoneMarrowTransplantClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#BMTC";
+
+    /// <summary>
     /// Literal for code: BoneMarrowTransplantUnit
     /// </summary>
     public const string LiteralBoneMarrowTransplantUnit = "BMTU";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeBoneMarrowTransplantUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeBoneMarrowTransplantUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#BMTU";
 
     /// <summary>
     /// Literal for code: BreastClinic
@@ -1211,9 +1261,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBreastClinic = "BREAST";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeBreastClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeBreastClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#BREAST";
+
+    /// <summary>
     /// Literal for code: ChildAndAdolescentNeurologyClinic
     /// </summary>
     public const string LiteralChildAndAdolescentNeurologyClinic = "CANC";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeChildAndAdolescentNeurologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeChildAndAdolescentNeurologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CANC";
 
     /// <summary>
     /// Literal for code: ChildAndAdolescentPsychiatryClinic
@@ -1221,9 +1281,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChildAndAdolescentPsychiatryClinic = "CAPC";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeChildAndAdolescentPsychiatryClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeChildAndAdolescentPsychiatryClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CAPC";
+
+    /// <summary>
     /// Literal for code: AmbulatoryHealthCareFacilitiesClinicCenterRehabilitationCardiacFacilities
     /// </summary>
     public const string LiteralAmbulatoryHealthCareFacilitiesClinicCenterRehabilitationCardiacFacilities = "CARD";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeAmbulatoryHealthCareFacilitiesClinicCenterRehabilitationCardiacFacilities
+    /// </summary>
+    public const string LiteralV3RoleCodeAmbulatoryHealthCareFacilitiesClinicCenterRehabilitationCardiacFacilities = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CARD";
 
     /// <summary>
     /// Literal for code: CardiacCatheterizationLab
@@ -1231,9 +1301,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCardiacCatheterizationLab = "CATH";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeCardiacCatheterizationLab
+    /// </summary>
+    public const string LiteralV3RoleCodeCardiacCatheterizationLab = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CATH";
+
+    /// <summary>
     /// Literal for code: CoronaryCareUnit
     /// </summary>
     public const string LiteralCoronaryCareUnit = "CCU";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeCoronaryCareUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeCoronaryCareUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CCU";
 
     /// <summary>
     /// Literal for code: ChestUnit
@@ -1241,9 +1321,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChestUnit = "CHEST";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeChestUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeChestUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CHEST";
+
+    /// <summary>
     /// Literal for code: ChronicCareFacility
     /// </summary>
     public const string LiteralChronicCareFacility = "CHR";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeChronicCareFacility
+    /// </summary>
+    public const string LiteralV3RoleCodeChronicCareFacility = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CHR";
 
     /// <summary>
     /// Literal for code: CoagulationClinic
@@ -1251,9 +1341,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoagulationClinic = "COAG";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeCoagulationClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeCoagulationClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#COAG";
+
+    /// <summary>
     /// Literal for code: CommunityLocation
     /// </summary>
     public const string LiteralCommunityLocation = "COMM";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeCommunityLocation
+    /// </summary>
+    public const string LiteralV3RoleCodeCommunityLocation = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#COMM";
 
     /// <summary>
     /// Literal for code: ColonAndRectalSurgeryClinic
@@ -1261,9 +1361,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralColonAndRectalSurgeryClinic = "CRS";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeColonAndRectalSurgeryClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeColonAndRectalSurgeryClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CRS";
+
+    /// <summary>
     /// Literal for code: CommunityServiceCenter
     /// </summary>
     public const string LiteralCommunityServiceCenter = "CSC";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeCommunityServiceCenter
+    /// </summary>
+    public const string LiteralV3RoleCodeCommunityServiceCenter = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CSC";
 
     /// <summary>
     /// Literal for code: CardiovascularDiagnosticsOrTherapeuticsUnit
@@ -1271,9 +1381,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCardiovascularDiagnosticsOrTherapeuticsUnit = "CVDX";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeCardiovascularDiagnosticsOrTherapeuticsUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeCardiovascularDiagnosticsOrTherapeuticsUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CVDX";
+
+    /// <summary>
     /// Literal for code: DeliveryAddress
     /// </summary>
     public const string LiteralDeliveryAddress = "DADDR";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeDeliveryAddress
+    /// </summary>
+    public const string LiteralV3RoleCodeDeliveryAddress = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DADDR";
 
     /// <summary>
     /// Literal for code: DermatologyClinic
@@ -1281,9 +1401,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDermatologyClinic = "DERM";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeDermatologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeDermatologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DERM";
+
+    /// <summary>
     /// Literal for code: DiagnosticsOrTherapeuticsUnit
     /// </summary>
     public const string LiteralDiagnosticsOrTherapeuticsUnit = "DX";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeDiagnosticsOrTherapeuticsUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeDiagnosticsOrTherapeuticsUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DX";
 
     /// <summary>
     /// Literal for code: EchocardiographyLab
@@ -1291,9 +1421,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEchocardiographyLab = "ECHO";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeEchocardiographyLab
+    /// </summary>
+    public const string LiteralV3RoleCodeEchocardiographyLab = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ECHO";
+
+    /// <summary>
     /// Literal for code: EndocrinologyClinic
     /// </summary>
     public const string LiteralEndocrinologyClinic = "ENDO";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeEndocrinologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeEndocrinologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ENDO";
 
     /// <summary>
     /// Literal for code: EndoscopyLab
@@ -1301,9 +1441,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndoscopyLab = "ENDOS";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeEndoscopyLab
+    /// </summary>
+    public const string LiteralV3RoleCodeEndoscopyLab = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ENDOS";
+
+    /// <summary>
     /// Literal for code: OtorhinolaryngologyClinic
     /// </summary>
     public const string LiteralOtorhinolaryngologyClinic = "ENT";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeOtorhinolaryngologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeOtorhinolaryngologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ENT";
 
     /// <summary>
     /// Literal for code: EpilepsyUnit
@@ -1311,9 +1461,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEpilepsyUnit = "EPIL";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeEpilepsyUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeEpilepsyUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#EPIL";
+
+    /// <summary>
     /// Literal for code: EmergencyRoom
     /// </summary>
     public const string LiteralEmergencyRoom = "ER";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeEmergencyRoom
+    /// </summary>
+    public const string LiteralV3RoleCodeEmergencyRoom = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ER";
 
     /// <summary>
     /// Literal for code: EmergencyTraumaUnit
@@ -1321,9 +1481,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmergencyTraumaUnit = "ETU";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeEmergencyTraumaUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeEmergencyTraumaUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ETU";
+
+    /// <summary>
     /// Literal for code: FamilyMedicineClinic
     /// </summary>
     public const string LiteralFamilyMedicineClinic = "FMC";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeFamilyMedicineClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeFamilyMedicineClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FMC";
 
     /// <summary>
     /// Literal for code: HospitalsGeneralAcuteCareHospital
@@ -1331,9 +1501,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospitalsGeneralAcuteCareHospital = "GACH";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeHospitalsGeneralAcuteCareHospital
+    /// </summary>
+    public const string LiteralV3RoleCodeHospitalsGeneralAcuteCareHospital = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GACH";
+
+    /// <summary>
     /// Literal for code: GastroenterologyClinic
     /// </summary>
     public const string LiteralGastroenterologyClinic = "GI";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeGastroenterologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeGastroenterologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GI";
 
     /// <summary>
     /// Literal for code: GastroenterologyDiagnosticsOrTherapeuticsLab
@@ -1341,9 +1521,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGastroenterologyDiagnosticsOrTherapeuticsLab = "GIDX";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeGastroenterologyDiagnosticsOrTherapeuticsLab
+    /// </summary>
+    public const string LiteralV3RoleCodeGastroenterologyDiagnosticsOrTherapeuticsLab = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GIDX";
+
+    /// <summary>
     /// Literal for code: GeneralInternalMedicineClinic
     /// </summary>
     public const string LiteralGeneralInternalMedicineClinic = "GIM";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeGeneralInternalMedicineClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeGeneralInternalMedicineClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GIM";
 
     /// <summary>
     /// Literal for code: GynecologyClinic
@@ -1351,9 +1541,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGynecologyClinic = "GYN";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeGynecologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeGynecologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GYN";
+
+    /// <summary>
     /// Literal for code: HandClinic
     /// </summary>
     public const string LiteralHandClinic = "HAND";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeHandClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeHandClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HAND";
 
     /// <summary>
     /// Literal for code: HemodialysisUnit
@@ -1361,9 +1561,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHemodialysisUnit = "HD";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeHemodialysisUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeHemodialysisUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HD";
+
+    /// <summary>
     /// Literal for code: HematologyClinic
     /// </summary>
     public const string LiteralHematologyClinic = "HEM";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeHematologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeHematologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HEM";
 
     /// <summary>
     /// Literal for code: HospitalLaboratory
@@ -1371,9 +1581,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospitalLaboratory = "HLAB";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeHospitalLaboratory
+    /// </summary>
+    public const string LiteralV3RoleCodeHospitalLaboratory = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HLAB";
+
+    /// <summary>
     /// Literal for code: Hospital
     /// </summary>
     public const string LiteralHospital = "HOSP";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeHospital
+    /// </summary>
+    public const string LiteralV3RoleCodeHospital = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HOSP";
 
     /// <summary>
     /// Literal for code: RadiologyUnit
@@ -1381,9 +1601,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRadiologyUnit = "HRAD";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeRadiologyUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeRadiologyUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HRAD";
+
+    /// <summary>
     /// Literal for code: HypertensionClinic
     /// </summary>
     public const string LiteralHypertensionClinic = "HTN";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeHypertensionClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeHypertensionClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HTN";
 
     /// <summary>
     /// Literal for code: HospitalUnit
@@ -1391,9 +1621,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospitalUnit = "HU";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeHospitalUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeHospitalUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HU";
+
+    /// <summary>
     /// Literal for code: SpecimenCollectionSite
     /// </summary>
     public const string LiteralSpecimenCollectionSite = "HUSCS";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeSpecimenCollectionSite
+    /// </summary>
+    public const string LiteralV3RoleCodeSpecimenCollectionSite = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HUSCS";
 
     /// <summary>
     /// Literal for code: IntensiveCareUnit
@@ -1401,9 +1641,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntensiveCareUnit = "ICU";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeIntensiveCareUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeIntensiveCareUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ICU";
+
+    /// <summary>
     /// Literal for code: ImpairmentEvaluationCenter
     /// </summary>
     public const string LiteralImpairmentEvaluationCenter = "IEC";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeImpairmentEvaluationCenter
+    /// </summary>
+    public const string LiteralV3RoleCodeImpairmentEvaluationCenter = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#IEC";
 
     /// <summary>
     /// Literal for code: InfectiousDiseaseClinic
@@ -1411,9 +1661,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfectiousDiseaseClinic = "INFD";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeInfectiousDiseaseClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeInfectiousDiseaseClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#INFD";
+
+    /// <summary>
     /// Literal for code: InpatientLaboratory
     /// </summary>
     public const string LiteralInpatientLaboratory = "INLAB";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeInpatientLaboratory
+    /// </summary>
+    public const string LiteralV3RoleCodeInpatientLaboratory = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#INLAB";
 
     /// <summary>
     /// Literal for code: InpatientPharmacy
@@ -1421,9 +1681,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInpatientPharmacy = "INPHARM";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeInpatientPharmacy
+    /// </summary>
+    public const string LiteralV3RoleCodeInpatientPharmacy = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#INPHARM";
+
+    /// <summary>
     /// Literal for code: InfertilityClinic
     /// </summary>
     public const string LiteralInfertilityClinic = "INV";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeInfertilityClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeInfertilityClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#INV";
 
     /// <summary>
     /// Literal for code: LympedemaClinic
@@ -1431,9 +1701,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLympedemaClinic = "LYMPH";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeLympedemaClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeLympedemaClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#LYMPH";
+
+    /// <summary>
     /// Literal for code: MedicalLaboratory
     /// </summary>
     public const string LiteralMedicalLaboratory = "MBL";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeMedicalLaboratory
+    /// </summary>
+    public const string LiteralV3RoleCodeMedicalLaboratory = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MBL";
 
     /// <summary>
     /// Literal for code: MedicalGeneticsClinic
@@ -1441,9 +1721,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalGeneticsClinic = "MGEN";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeMedicalGeneticsClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeMedicalGeneticsClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MGEN";
+
+    /// <summary>
     /// Literal for code: MilitaryHospital
     /// </summary>
     public const string LiteralMilitaryHospital = "MHSP";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeMilitaryHospital
+    /// </summary>
+    public const string LiteralV3RoleCodeMilitaryHospital = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MHSP";
 
     /// <summary>
     /// Literal for code: MobileUnit
@@ -1451,9 +1741,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMobileUnit = "MOBL";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeMobileUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeMobileUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MOBL";
+
+    /// <summary>
     /// Literal for code: NursingOrCustodialCareFacility
     /// </summary>
     public const string LiteralNursingOrCustodialCareFacility = "NCCF";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeNursingOrCustodialCareFacility
+    /// </summary>
+    public const string LiteralV3RoleCodeNursingOrCustodialCareFacility = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NCCF";
 
     /// <summary>
     /// Literal for code: NeurologyCriticalCareAndStrokeUnit
@@ -1461,9 +1761,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeurologyCriticalCareAndStrokeUnit = "NCCS";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeNeurologyCriticalCareAndStrokeUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeNeurologyCriticalCareAndStrokeUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NCCS";
+
+    /// <summary>
     /// Literal for code: NephrologyClinic
     /// </summary>
     public const string LiteralNephrologyClinic = "NEPH";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeNephrologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeNephrologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NEPH";
 
     /// <summary>
     /// Literal for code: NeurologyClinic
@@ -1471,9 +1781,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeurologyClinic = "NEUR";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeNeurologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeNeurologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NEUR";
+
+    /// <summary>
     /// Literal for code: NeurosurgeryUnit
     /// </summary>
     public const string LiteralNeurosurgeryUnit = "NS";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeNeurosurgeryUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeNeurosurgeryUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NS";
 
     /// <summary>
     /// Literal for code: ObstetricsClinic
@@ -1481,9 +1801,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralObstetricsClinic = "OB";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeObstetricsClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeObstetricsClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#OB";
+
+    /// <summary>
     /// Literal for code: OutpatientFacility
     /// </summary>
     public const string LiteralOutpatientFacility = "OF";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeOutpatientFacility
+    /// </summary>
+    public const string LiteralV3RoleCodeOutpatientFacility = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#OF";
 
     /// <summary>
     /// Literal for code: OralAndMaxillofacialSurgeryClinic
@@ -1491,9 +1821,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOralAndMaxillofacialSurgeryClinic = "OMS";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeOralAndMaxillofacialSurgeryClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeOralAndMaxillofacialSurgeryClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#OMS";
+
+    /// <summary>
     /// Literal for code: MedicalOncologyClinic
     /// </summary>
     public const string LiteralMedicalOncologyClinic = "ONCL";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeMedicalOncologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeMedicalOncologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ONCL";
 
     /// <summary>
     /// Literal for code: OpthalmologyClinic
@@ -1501,9 +1841,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpthalmologyClinic = "OPH";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeOpthalmologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeOpthalmologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#OPH";
+
+    /// <summary>
     /// Literal for code: OptometryClinic
     /// </summary>
     public const string LiteralOptometryClinic = "OPTC";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeOptometryClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeOptometryClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#OPTC";
 
     /// <summary>
     /// Literal for code: OrthopedicsClinic
@@ -1511,9 +1861,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOrthopedicsClinic = "ORTHO";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeOrthopedicsClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeOrthopedicsClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ORTHO";
+
+    /// <summary>
     /// Literal for code: OutpatientLaboratory
     /// </summary>
     public const string LiteralOutpatientLaboratory = "OUTLAB";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeOutpatientLaboratory
+    /// </summary>
+    public const string LiteralV3RoleCodeOutpatientLaboratory = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#OUTLAB";
 
     /// <summary>
     /// Literal for code: OutpatientPharmacy
@@ -1521,9 +1881,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOutpatientPharmacy = "OUTPHARM";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeOutpatientPharmacy
+    /// </summary>
+    public const string LiteralV3RoleCodeOutpatientPharmacy = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#OUTPHARM";
+
+    /// <summary>
     /// Literal for code: PainClinic
     /// </summary>
     public const string LiteralPainClinic = "PAINCL";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePainClinic
+    /// </summary>
+    public const string LiteralV3RoleCodePainClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PAINCL";
 
     /// <summary>
     /// Literal for code: PrimaryCareClinic
@@ -1531,9 +1901,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrimaryCareClinic = "PC";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePrimaryCareClinic
+    /// </summary>
+    public const string LiteralV3RoleCodePrimaryCareClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PC";
+
+    /// <summary>
     /// Literal for code: PediatricsClinic
     /// </summary>
     public const string LiteralPediatricsClinic = "PEDC";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePediatricsClinic
+    /// </summary>
+    public const string LiteralV3RoleCodePediatricsClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDC";
 
     /// <summary>
     /// Literal for code: PediatricCardiologyClinic
@@ -1541,9 +1921,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricCardiologyClinic = "PEDCARD";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePediatricCardiologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodePediatricCardiologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDCARD";
+
+    /// <summary>
     /// Literal for code: PediatricEndocrinologyClinic
     /// </summary>
     public const string LiteralPediatricEndocrinologyClinic = "PEDE";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePediatricEndocrinologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodePediatricEndocrinologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDE";
 
     /// <summary>
     /// Literal for code: PediatricGastroenterologyClinic
@@ -1551,9 +1941,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricGastroenterologyClinic = "PEDGI";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePediatricGastroenterologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodePediatricGastroenterologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDGI";
+
+    /// <summary>
     /// Literal for code: PediatricHematologyClinic
     /// </summary>
     public const string LiteralPediatricHematologyClinic = "PEDHEM";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePediatricHematologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodePediatricHematologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDHEM";
 
     /// <summary>
     /// Literal for code: PediatricOncologyClinic
@@ -1561,9 +1961,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricOncologyClinic = "PEDHO";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePediatricOncologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodePediatricOncologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDHO";
+
+    /// <summary>
     /// Literal for code: PediatricIntensiveCareUnit
     /// </summary>
     public const string LiteralPediatricIntensiveCareUnit = "PEDICU";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePediatricIntensiveCareUnit
+    /// </summary>
+    public const string LiteralV3RoleCodePediatricIntensiveCareUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDICU";
 
     /// <summary>
     /// Literal for code: PediatricInfectiousDiseaseClinic
@@ -1571,9 +1981,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricInfectiousDiseaseClinic = "PEDID";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePediatricInfectiousDiseaseClinic
+    /// </summary>
+    public const string LiteralV3RoleCodePediatricInfectiousDiseaseClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDID";
+
+    /// <summary>
     /// Literal for code: PediatricNephrologyClinic
     /// </summary>
     public const string LiteralPediatricNephrologyClinic = "PEDNEPH";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePediatricNephrologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodePediatricNephrologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDNEPH";
 
     /// <summary>
     /// Literal for code: PediatricNeonatalIntensiveCareUnit
@@ -1581,9 +2001,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricNeonatalIntensiveCareUnit = "PEDNICU";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePediatricNeonatalIntensiveCareUnit
+    /// </summary>
+    public const string LiteralV3RoleCodePediatricNeonatalIntensiveCareUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDNICU";
+
+    /// <summary>
     /// Literal for code: PediatricRheumatologyClinic
     /// </summary>
     public const string LiteralPediatricRheumatologyClinic = "PEDRHEUM";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePediatricRheumatologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodePediatricRheumatologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDRHEUM";
 
     /// <summary>
     /// Literal for code: PediatricUnit
@@ -1591,9 +2021,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricUnit = "PEDU";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePediatricUnit
+    /// </summary>
+    public const string LiteralV3RoleCodePediatricUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDU";
+
+    /// <summary>
     /// Literal for code: Pharmacy
     /// </summary>
     public const string LiteralPharmacy = "PHARM";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePharmacy
+    /// </summary>
+    public const string LiteralV3RoleCodePharmacy = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PHARM";
 
     /// <summary>
     /// Literal for code: PsychiatricHospitalUnit
@@ -1601,9 +2041,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPsychiatricHospitalUnit = "PHU";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePsychiatricHospitalUnit
+    /// </summary>
+    public const string LiteralV3RoleCodePsychiatricHospitalUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PHU";
+
+    /// <summary>
     /// Literal for code: PlasticSurgeryClinic
     /// </summary>
     public const string LiteralPlasticSurgeryClinic = "PLS";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePlasticSurgeryClinic
+    /// </summary>
+    public const string LiteralV3RoleCodePlasticSurgeryClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PLS";
 
     /// <summary>
     /// Literal for code: PodiatryClinic
@@ -1611,9 +2061,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPodiatryClinic = "POD";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePodiatryClinic
+    /// </summary>
+    public const string LiteralV3RoleCodePodiatryClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#POD";
+
+    /// <summary>
     /// Literal for code: PainRehabilitationCenter
     /// </summary>
     public const string LiteralPainRehabilitationCenter = "PRC";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePainRehabilitationCenter
+    /// </summary>
+    public const string LiteralV3RoleCodePainRehabilitationCenter = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PRC";
 
     /// <summary>
     /// Literal for code: PreventiveMedicineClinic
@@ -1621,9 +2081,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPreventiveMedicineClinic = "PREV";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePreventiveMedicineClinic
+    /// </summary>
+    public const string LiteralV3RoleCodePreventiveMedicineClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PREV";
+
+    /// <summary>
     /// Literal for code: ProctologyClinic
     /// </summary>
     public const string LiteralProctologyClinic = "PROCTO";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeProctologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeProctologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PROCTO";
 
     /// <summary>
     /// Literal for code: ProviderQuoteSOffice
@@ -1631,9 +2101,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProviderQuoteSOffice = "PROFF";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeProviderQuoteSOffice
+    /// </summary>
+    public const string LiteralV3RoleCodeProviderQuoteSOffice = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PROFF";
+
+    /// <summary>
     /// Literal for code: ProsthodonticsClinic
     /// </summary>
     public const string LiteralProsthodonticsClinic = "PROS";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeProsthodonticsClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeProsthodonticsClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PROS";
 
     /// <summary>
     /// Literal for code: PsychologyClinic
@@ -1641,9 +2121,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPsychologyClinic = "PSI";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePsychologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodePsychologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PSI";
+
+    /// <summary>
     /// Literal for code: PsychiatryClinic
     /// </summary>
     public const string LiteralPsychiatryClinic = "PSY";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePsychiatryClinic
+    /// </summary>
+    public const string LiteralV3RoleCodePsychiatryClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PSY";
 
     /// <summary>
     /// Literal for code: PsychatricCareFacility
@@ -1651,9 +2141,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPsychatricCareFacility = "PSYCHF";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePsychatricCareFacility
+    /// </summary>
+    public const string LiteralV3RoleCodePsychatricCareFacility = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PSYCHF";
+
+    /// <summary>
     /// Literal for code: PatientQuoteSResidence
     /// </summary>
     public const string LiteralPatientQuoteSResidence = "PTRES";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePatientQuoteSResidence
+    /// </summary>
+    public const string LiteralV3RoleCodePatientQuoteSResidence = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PTRES";
 
     /// <summary>
     /// Literal for code: RadiologyDiagnosticsOrTherapeuticsUnit
@@ -1661,9 +2161,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRadiologyDiagnosticsOrTherapeuticsUnit = "RADDX";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeRadiologyDiagnosticsOrTherapeuticsUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeRadiologyDiagnosticsOrTherapeuticsUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RADDX";
+
+    /// <summary>
     /// Literal for code: RadiationOncologyUnit
     /// </summary>
     public const string LiteralRadiationOncologyUnit = "RADO";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeRadiationOncologyUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeRadiationOncologyUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RADO";
 
     /// <summary>
     /// Literal for code: RehabilitationHospital
@@ -1671,9 +2181,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRehabilitationHospital = "RH";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeRehabilitationHospital
+    /// </summary>
+    public const string LiteralV3RoleCodeRehabilitationHospital = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RH";
+
+    /// <summary>
     /// Literal for code: AddictionTreatmentCenter
     /// </summary>
     public const string LiteralAddictionTreatmentCenter = "RHAT";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeAddictionTreatmentCenter
+    /// </summary>
+    public const string LiteralV3RoleCodeAddictionTreatmentCenter = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHAT";
 
     /// <summary>
     /// Literal for code: RheumatologyClinic
@@ -1681,9 +2201,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRheumatologyClinic = "RHEUM";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeRheumatologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeRheumatologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHEUM";
+
+    /// <summary>
     /// Literal for code: IntellectualImpairmentCenter
     /// </summary>
     public const string LiteralIntellectualImpairmentCenter = "RHII";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeIntellectualImpairmentCenter
+    /// </summary>
+    public const string LiteralV3RoleCodeIntellectualImpairmentCenter = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHII";
 
     /// <summary>
     /// Literal for code: ParentsWithAdjustmentDifficultiesCenter
@@ -1691,9 +2221,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParentsWithAdjustmentDifficultiesCenter = "RHMAD";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeParentsWithAdjustmentDifficultiesCenter
+    /// </summary>
+    public const string LiteralV3RoleCodeParentsWithAdjustmentDifficultiesCenter = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHMAD";
+
+    /// <summary>
     /// Literal for code: PhysicalImpairmentCenter
     /// </summary>
     public const string LiteralPhysicalImpairmentCenter = "RHPI";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePhysicalImpairmentCenter
+    /// </summary>
+    public const string LiteralV3RoleCodePhysicalImpairmentCenter = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHPI";
 
     /// <summary>
     /// Literal for code: PhysicalImpairmentHearingCenter
@@ -1701,9 +2241,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysicalImpairmentHearingCenter = "RHPIH";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePhysicalImpairmentHearingCenter
+    /// </summary>
+    public const string LiteralV3RoleCodePhysicalImpairmentHearingCenter = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHPIH";
+
+    /// <summary>
     /// Literal for code: PhysicalImpairmentMotorSkillsCenter
     /// </summary>
     public const string LiteralPhysicalImpairmentMotorSkillsCenter = "RHPIMS";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodePhysicalImpairmentMotorSkillsCenter
+    /// </summary>
+    public const string LiteralV3RoleCodePhysicalImpairmentMotorSkillsCenter = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHPIMS";
 
     /// <summary>
     /// Literal for code: PhysicalImpairmentVisualSkillsCenter
@@ -1711,9 +2261,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysicalImpairmentVisualSkillsCenter = "RHPIVS";
 
     /// <summary>
+    /// Literal for code: V3RoleCodePhysicalImpairmentVisualSkillsCenter
+    /// </summary>
+    public const string LiteralV3RoleCodePhysicalImpairmentVisualSkillsCenter = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHPIVS";
+
+    /// <summary>
     /// Literal for code: RehabilitationHospitalUnit
     /// </summary>
     public const string LiteralRehabilitationHospitalUnit = "RHU";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeRehabilitationHospitalUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeRehabilitationHospitalUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHU";
 
     /// <summary>
     /// Literal for code: YouthsWithAdjustmentDifficultiesCenter
@@ -1721,9 +2281,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralYouthsWithAdjustmentDifficultiesCenter = "RHYAD";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeYouthsWithAdjustmentDifficultiesCenter
+    /// </summary>
+    public const string LiteralV3RoleCodeYouthsWithAdjustmentDifficultiesCenter = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHYAD";
+
+    /// <summary>
     /// Literal for code: NeuroradiologyUnit
     /// </summary>
     public const string LiteralNeuroradiologyUnit = "RNEU";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeNeuroradiologyUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeNeuroradiologyUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RNEU";
 
     /// <summary>
     /// Literal for code: ResidentialTreatmentFacility
@@ -1731,9 +2301,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralResidentialTreatmentFacility = "RTF";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeResidentialTreatmentFacility
+    /// </summary>
+    public const string LiteralV3RoleCodeResidentialTreatmentFacility = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RTF";
+
+    /// <summary>
     /// Literal for code: School
     /// </summary>
     public const string LiteralSchool = "SCHOOL";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeSchool
+    /// </summary>
+    public const string LiteralV3RoleCodeSchool = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SCHOOL";
 
     /// <summary>
     /// Literal for code: SleepDisordersUnit
@@ -1741,9 +2321,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSleepDisordersUnit = "SLEEP";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeSleepDisordersUnit
+    /// </summary>
+    public const string LiteralV3RoleCodeSleepDisordersUnit = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SLEEP";
+
+    /// <summary>
     /// Literal for code: SkilledNursingFacility
     /// </summary>
     public const string LiteralSkilledNursingFacility = "SNF";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeSkilledNursingFacility
+    /// </summary>
+    public const string LiteralV3RoleCodeSkilledNursingFacility = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SNF";
 
     /// <summary>
     /// Literal for code: SportsMedicineClinic
@@ -1751,9 +2341,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSportsMedicineClinic = "SPMED";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeSportsMedicineClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeSportsMedicineClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SPMED";
+
+    /// <summary>
     /// Literal for code: SurgeryClinic
     /// </summary>
     public const string LiteralSurgeryClinic = "SU";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeSurgeryClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeSurgeryClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SU";
 
     /// <summary>
     /// Literal for code: SubstanceUseRehabilitationFacility
@@ -1761,9 +2361,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubstanceUseRehabilitationFacility = "SURF";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeSubstanceUseRehabilitationFacility
+    /// </summary>
+    public const string LiteralV3RoleCodeSubstanceUseRehabilitationFacility = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SURF";
+
+    /// <summary>
     /// Literal for code: TransplantClinic
     /// </summary>
     public const string LiteralTransplantClinic = "TR";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeTransplantClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeTransplantClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#TR";
 
     /// <summary>
     /// Literal for code: TravelAndGeographicMedicineClinic
@@ -1771,9 +2381,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTravelAndGeographicMedicineClinic = "TRAVEL";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeTravelAndGeographicMedicineClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeTravelAndGeographicMedicineClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#TRAVEL";
+
+    /// <summary>
     /// Literal for code: UnderageProtectionCenter
     /// </summary>
     public const string LiteralUnderageProtectionCenter = "UPC";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeUnderageProtectionCenter
+    /// </summary>
+    public const string LiteralV3RoleCodeUnderageProtectionCenter = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#UPC";
 
     /// <summary>
     /// Literal for code: UrologyClinic
@@ -1781,13 +2401,288 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUrologyClinic = "URO";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeUrologyClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeUrologyClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#URO";
+
+    /// <summary>
     /// Literal for code: WoundClinic
     /// </summary>
     public const string LiteralWoundClinic = "WND";
 
     /// <summary>
+    /// Literal for code: V3RoleCodeWoundClinic
+    /// </summary>
+    public const string LiteralV3RoleCodeWoundClinic = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#WND";
+
+    /// <summary>
     /// Literal for code: WorkSite
     /// </summary>
     public const string LiteralWorkSite = "WORK";
+
+    /// <summary>
+    /// Literal for code: V3RoleCodeWorkSite
+    /// </summary>
+    public const string LiteralV3RoleCodeWorkSite = "http://terminology.hl7.org/CodeSystem/v3-RoleCode#WORK";
+
+    /// <summary>
+    /// Dictionary for looking up V3ServiceDeliveryLocationRoleType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "_DedicatedClinicalLocationRoleType", DedicatedClinicalLocationRoleType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#_DedicatedClinicalLocationRoleType", DedicatedClinicalLocationRoleType }, 
+      { "_DedicatedNonClinicalLocationRoleType", DedicatedNonClinicalLocationRoleType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#_DedicatedNonClinicalLocationRoleType", DedicatedNonClinicalLocationRoleType }, 
+      { "_DedicatedServiceDeliveryLocationRoleType", DedicatedServiceDeliveryLocationRoleType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#_DedicatedServiceDeliveryLocationRoleType", DedicatedServiceDeliveryLocationRoleType }, 
+      { "_IncidentalServiceDeliveryLocationRoleType", IncidentalServiceDeliveryLocationRoleType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#_IncidentalServiceDeliveryLocationRoleType", IncidentalServiceDeliveryLocationRoleType }, 
+      { "ACC", AccidentSite }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ACC", AccidentSite }, 
+      { "ALL", AllergyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ALL", AllergyClinic }, 
+      { "AMB", Ambulance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#AMB", Ambulance }, 
+      { "AMPUT", AmputeeClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#AMPUT", AmputeeClinic }, 
+      { "BMTC", BoneMarrowTransplantClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#BMTC", BoneMarrowTransplantClinic }, 
+      { "BMTU", BoneMarrowTransplantUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#BMTU", BoneMarrowTransplantUnit }, 
+      { "BREAST", BreastClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#BREAST", BreastClinic }, 
+      { "CANC", ChildAndAdolescentNeurologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CANC", ChildAndAdolescentNeurologyClinic }, 
+      { "CAPC", ChildAndAdolescentPsychiatryClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CAPC", ChildAndAdolescentPsychiatryClinic }, 
+      { "CARD", AmbulatoryHealthCareFacilitiesClinicCenterRehabilitationCardiacFacilities }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CARD", AmbulatoryHealthCareFacilitiesClinicCenterRehabilitationCardiacFacilities }, 
+      { "CATH", CardiacCatheterizationLab }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CATH", CardiacCatheterizationLab }, 
+      { "CCU", CoronaryCareUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CCU", CoronaryCareUnit }, 
+      { "CHEST", ChestUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CHEST", ChestUnit }, 
+      { "CHR", ChronicCareFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CHR", ChronicCareFacility }, 
+      { "COAG", CoagulationClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#COAG", CoagulationClinic }, 
+      { "COMM", CommunityLocation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#COMM", CommunityLocation }, 
+      { "CRS", ColonAndRectalSurgeryClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CRS", ColonAndRectalSurgeryClinic }, 
+      { "CSC", CommunityServiceCenter }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CSC", CommunityServiceCenter }, 
+      { "CVDX", CardiovascularDiagnosticsOrTherapeuticsUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#CVDX", CardiovascularDiagnosticsOrTherapeuticsUnit }, 
+      { "DADDR", DeliveryAddress }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DADDR", DeliveryAddress }, 
+      { "DERM", DermatologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DERM", DermatologyClinic }, 
+      { "DX", DiagnosticsOrTherapeuticsUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#DX", DiagnosticsOrTherapeuticsUnit }, 
+      { "ECHO", EchocardiographyLab }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ECHO", EchocardiographyLab }, 
+      { "ENDO", EndocrinologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ENDO", EndocrinologyClinic }, 
+      { "ENDOS", EndoscopyLab }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ENDOS", EndoscopyLab }, 
+      { "ENT", OtorhinolaryngologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ENT", OtorhinolaryngologyClinic }, 
+      { "EPIL", EpilepsyUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#EPIL", EpilepsyUnit }, 
+      { "ER", EmergencyRoom }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ER", EmergencyRoom }, 
+      { "ETU", EmergencyTraumaUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ETU", EmergencyTraumaUnit }, 
+      { "FMC", FamilyMedicineClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#FMC", FamilyMedicineClinic }, 
+      { "GACH", HospitalsGeneralAcuteCareHospital }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GACH", HospitalsGeneralAcuteCareHospital }, 
+      { "GI", GastroenterologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GI", GastroenterologyClinic }, 
+      { "GIDX", GastroenterologyDiagnosticsOrTherapeuticsLab }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GIDX", GastroenterologyDiagnosticsOrTherapeuticsLab }, 
+      { "GIM", GeneralInternalMedicineClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GIM", GeneralInternalMedicineClinic }, 
+      { "GYN", GynecologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#GYN", GynecologyClinic }, 
+      { "HAND", HandClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HAND", HandClinic }, 
+      { "HD", HemodialysisUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HD", HemodialysisUnit }, 
+      { "HEM", HematologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HEM", HematologyClinic }, 
+      { "HLAB", HospitalLaboratory }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HLAB", HospitalLaboratory }, 
+      { "HOSP", Hospital }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HOSP", Hospital }, 
+      { "HRAD", RadiologyUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HRAD", RadiologyUnit }, 
+      { "HTN", HypertensionClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HTN", HypertensionClinic }, 
+      { "HU", HospitalUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HU", HospitalUnit }, 
+      { "HUSCS", SpecimenCollectionSite }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#HUSCS", SpecimenCollectionSite }, 
+      { "ICU", IntensiveCareUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ICU", IntensiveCareUnit }, 
+      { "IEC", ImpairmentEvaluationCenter }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#IEC", ImpairmentEvaluationCenter }, 
+      { "INFD", InfectiousDiseaseClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#INFD", InfectiousDiseaseClinic }, 
+      { "INLAB", InpatientLaboratory }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#INLAB", InpatientLaboratory }, 
+      { "INPHARM", InpatientPharmacy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#INPHARM", InpatientPharmacy }, 
+      { "INV", InfertilityClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#INV", InfertilityClinic }, 
+      { "LYMPH", LympedemaClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#LYMPH", LympedemaClinic }, 
+      { "MBL", MedicalLaboratory }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MBL", MedicalLaboratory }, 
+      { "MGEN", MedicalGeneticsClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MGEN", MedicalGeneticsClinic }, 
+      { "MHSP", MilitaryHospital }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MHSP", MilitaryHospital }, 
+      { "MOBL", MobileUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#MOBL", MobileUnit }, 
+      { "NCCF", NursingOrCustodialCareFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NCCF", NursingOrCustodialCareFacility }, 
+      { "NCCS", NeurologyCriticalCareAndStrokeUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NCCS", NeurologyCriticalCareAndStrokeUnit }, 
+      { "NEPH", NephrologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NEPH", NephrologyClinic }, 
+      { "NEUR", NeurologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NEUR", NeurologyClinic }, 
+      { "NS", NeurosurgeryUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#NS", NeurosurgeryUnit }, 
+      { "OB", ObstetricsClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#OB", ObstetricsClinic }, 
+      { "OF", OutpatientFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#OF", OutpatientFacility }, 
+      { "OMS", OralAndMaxillofacialSurgeryClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#OMS", OralAndMaxillofacialSurgeryClinic }, 
+      { "ONCL", MedicalOncologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ONCL", MedicalOncologyClinic }, 
+      { "OPH", OpthalmologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#OPH", OpthalmologyClinic }, 
+      { "OPTC", OptometryClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#OPTC", OptometryClinic }, 
+      { "ORTHO", OrthopedicsClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#ORTHO", OrthopedicsClinic }, 
+      { "OUTLAB", OutpatientLaboratory }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#OUTLAB", OutpatientLaboratory }, 
+      { "OUTPHARM", OutpatientPharmacy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#OUTPHARM", OutpatientPharmacy }, 
+      { "PAINCL", PainClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PAINCL", PainClinic }, 
+      { "PC", PrimaryCareClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PC", PrimaryCareClinic }, 
+      { "PEDC", PediatricsClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDC", PediatricsClinic }, 
+      { "PEDCARD", PediatricCardiologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDCARD", PediatricCardiologyClinic }, 
+      { "PEDE", PediatricEndocrinologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDE", PediatricEndocrinologyClinic }, 
+      { "PEDGI", PediatricGastroenterologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDGI", PediatricGastroenterologyClinic }, 
+      { "PEDHEM", PediatricHematologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDHEM", PediatricHematologyClinic }, 
+      { "PEDHO", PediatricOncologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDHO", PediatricOncologyClinic }, 
+      { "PEDICU", PediatricIntensiveCareUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDICU", PediatricIntensiveCareUnit }, 
+      { "PEDID", PediatricInfectiousDiseaseClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDID", PediatricInfectiousDiseaseClinic }, 
+      { "PEDNEPH", PediatricNephrologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDNEPH", PediatricNephrologyClinic }, 
+      { "PEDNICU", PediatricNeonatalIntensiveCareUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDNICU", PediatricNeonatalIntensiveCareUnit }, 
+      { "PEDRHEUM", PediatricRheumatologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDRHEUM", PediatricRheumatologyClinic }, 
+      { "PEDU", PediatricUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PEDU", PediatricUnit }, 
+      { "PHARM", Pharmacy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PHARM", Pharmacy }, 
+      { "PHU", PsychiatricHospitalUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PHU", PsychiatricHospitalUnit }, 
+      { "PLS", PlasticSurgeryClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PLS", PlasticSurgeryClinic }, 
+      { "POD", PodiatryClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#POD", PodiatryClinic }, 
+      { "PRC", PainRehabilitationCenter }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PRC", PainRehabilitationCenter }, 
+      { "PREV", PreventiveMedicineClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PREV", PreventiveMedicineClinic }, 
+      { "PROCTO", ProctologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PROCTO", ProctologyClinic }, 
+      { "PROFF", ProviderQuoteSOffice }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PROFF", ProviderQuoteSOffice }, 
+      { "PROS", ProsthodonticsClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PROS", ProsthodonticsClinic }, 
+      { "PSI", PsychologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PSI", PsychologyClinic }, 
+      { "PSY", PsychiatryClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PSY", PsychiatryClinic }, 
+      { "PSYCHF", PsychatricCareFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PSYCHF", PsychatricCareFacility }, 
+      { "PTRES", PatientQuoteSResidence }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#PTRES", PatientQuoteSResidence }, 
+      { "RADDX", RadiologyDiagnosticsOrTherapeuticsUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RADDX", RadiologyDiagnosticsOrTherapeuticsUnit }, 
+      { "RADO", RadiationOncologyUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RADO", RadiationOncologyUnit }, 
+      { "RH", RehabilitationHospital }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RH", RehabilitationHospital }, 
+      { "RHAT", AddictionTreatmentCenter }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHAT", AddictionTreatmentCenter }, 
+      { "RHEUM", RheumatologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHEUM", RheumatologyClinic }, 
+      { "RHII", IntellectualImpairmentCenter }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHII", IntellectualImpairmentCenter }, 
+      { "RHMAD", ParentsWithAdjustmentDifficultiesCenter }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHMAD", ParentsWithAdjustmentDifficultiesCenter }, 
+      { "RHPI", PhysicalImpairmentCenter }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHPI", PhysicalImpairmentCenter }, 
+      { "RHPIH", PhysicalImpairmentHearingCenter }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHPIH", PhysicalImpairmentHearingCenter }, 
+      { "RHPIMS", PhysicalImpairmentMotorSkillsCenter }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHPIMS", PhysicalImpairmentMotorSkillsCenter }, 
+      { "RHPIVS", PhysicalImpairmentVisualSkillsCenter }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHPIVS", PhysicalImpairmentVisualSkillsCenter }, 
+      { "RHU", RehabilitationHospitalUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHU", RehabilitationHospitalUnit }, 
+      { "RHYAD", YouthsWithAdjustmentDifficultiesCenter }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RHYAD", YouthsWithAdjustmentDifficultiesCenter }, 
+      { "RNEU", NeuroradiologyUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RNEU", NeuroradiologyUnit }, 
+      { "RTF", ResidentialTreatmentFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#RTF", ResidentialTreatmentFacility }, 
+      { "SCHOOL", School }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SCHOOL", School }, 
+      { "SLEEP", SleepDisordersUnit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SLEEP", SleepDisordersUnit }, 
+      { "SNF", SkilledNursingFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SNF", SkilledNursingFacility }, 
+      { "SPMED", SportsMedicineClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SPMED", SportsMedicineClinic }, 
+      { "SU", SurgeryClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SU", SurgeryClinic }, 
+      { "SURF", SubstanceUseRehabilitationFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#SURF", SubstanceUseRehabilitationFacility }, 
+      { "TR", TransplantClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#TR", TransplantClinic }, 
+      { "TRAVEL", TravelAndGeographicMedicineClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#TRAVEL", TravelAndGeographicMedicineClinic }, 
+      { "UPC", UnderageProtectionCenter }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#UPC", UnderageProtectionCenter }, 
+      { "URO", UrologyClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#URO", UrologyClinic }, 
+      { "WND", WoundClinic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#WND", WoundClinic }, 
+      { "WORK", WorkSite }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RoleCode#WORK", WorkSite }, 
+    };
   };
 }

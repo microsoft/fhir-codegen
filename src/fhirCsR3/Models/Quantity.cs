@@ -217,5 +217,11 @@ namespace fhirCsR3.Models
     public const string LESS_THAN_OR_EQUALS = "<=";
     public const string GREATER_THAN_OR_EQUALS = ">=";
     public const string GREATER_THAN = ">";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "<",
+      "<=",
+      ">=",
+      ">",
+    };
   }
 }

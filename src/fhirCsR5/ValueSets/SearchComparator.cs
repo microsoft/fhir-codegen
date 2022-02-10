@@ -99,9 +99,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralApproximately = "ap";
 
     /// <summary>
+    /// Literal for code: SearchComparatorApproximately
+    /// </summary>
+    public const string LiteralSearchComparatorApproximately = "http://hl7.org/fhir/search-comparator#ap";
+
+    /// <summary>
     /// Literal for code: EndsBefore
     /// </summary>
     public const string LiteralEndsBefore = "eb";
+
+    /// <summary>
+    /// Literal for code: SearchComparatorEndsBefore
+    /// </summary>
+    public const string LiteralSearchComparatorEndsBefore = "http://hl7.org/fhir/search-comparator#eb";
 
     /// <summary>
     /// Literal for code: Equals
@@ -109,9 +119,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEquals = "eq";
 
     /// <summary>
+    /// Literal for code: SearchComparatorEquals
+    /// </summary>
+    public const string LiteralSearchComparatorEquals = "http://hl7.org/fhir/search-comparator#eq";
+
+    /// <summary>
     /// Literal for code: GreaterOrEquals
     /// </summary>
     public const string LiteralGreaterOrEquals = "ge";
+
+    /// <summary>
+    /// Literal for code: SearchComparatorGreaterOrEquals
+    /// </summary>
+    public const string LiteralSearchComparatorGreaterOrEquals = "http://hl7.org/fhir/search-comparator#ge";
 
     /// <summary>
     /// Literal for code: GreaterThan
@@ -119,9 +139,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGreaterThan = "gt";
 
     /// <summary>
+    /// Literal for code: SearchComparatorGreaterThan
+    /// </summary>
+    public const string LiteralSearchComparatorGreaterThan = "http://hl7.org/fhir/search-comparator#gt";
+
+    /// <summary>
     /// Literal for code: LessOfEqual
     /// </summary>
     public const string LiteralLessOfEqual = "le";
+
+    /// <summary>
+    /// Literal for code: SearchComparatorLessOfEqual
+    /// </summary>
+    public const string LiteralSearchComparatorLessOfEqual = "http://hl7.org/fhir/search-comparator#le";
 
     /// <summary>
     /// Literal for code: LessThan
@@ -129,13 +159,52 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLessThan = "lt";
 
     /// <summary>
+    /// Literal for code: SearchComparatorLessThan
+    /// </summary>
+    public const string LiteralSearchComparatorLessThan = "http://hl7.org/fhir/search-comparator#lt";
+
+    /// <summary>
     /// Literal for code: NotEquals
     /// </summary>
     public const string LiteralNotEquals = "ne";
 
     /// <summary>
+    /// Literal for code: SearchComparatorNotEquals
+    /// </summary>
+    public const string LiteralSearchComparatorNotEquals = "http://hl7.org/fhir/search-comparator#ne";
+
+    /// <summary>
     /// Literal for code: StartsAfter
     /// </summary>
     public const string LiteralStartsAfter = "sa";
+
+    /// <summary>
+    /// Literal for code: SearchComparatorStartsAfter
+    /// </summary>
+    public const string LiteralSearchComparatorStartsAfter = "http://hl7.org/fhir/search-comparator#sa";
+
+    /// <summary>
+    /// Dictionary for looking up SearchComparator Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ap", Approximately }, 
+      { "http://hl7.org/fhir/search-comparator#ap", Approximately }, 
+      { "eb", EndsBefore }, 
+      { "http://hl7.org/fhir/search-comparator#eb", EndsBefore }, 
+      { "eq", Equals }, 
+      { "http://hl7.org/fhir/search-comparator#eq", Equals }, 
+      { "ge", GreaterOrEquals }, 
+      { "http://hl7.org/fhir/search-comparator#ge", GreaterOrEquals }, 
+      { "gt", GreaterThan }, 
+      { "http://hl7.org/fhir/search-comparator#gt", GreaterThan }, 
+      { "le", LessOfEqual }, 
+      { "http://hl7.org/fhir/search-comparator#le", LessOfEqual }, 
+      { "lt", LessThan }, 
+      { "http://hl7.org/fhir/search-comparator#lt", LessThan }, 
+      { "ne", NotEquals }, 
+      { "http://hl7.org/fhir/search-comparator#ne", NotEquals }, 
+      { "sa", StartsAfter }, 
+      { "http://hl7.org/fhir/search-comparator#sa", StartsAfter }, 
+    };
   };
 }

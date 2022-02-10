@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBatch = "batch";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionBatch
+    /// </summary>
+    public const string LiteralRestfulInteractionBatch = "http://hl7.org/fhir/restful-interaction#batch";
+
+    /// <summary>
     /// Literal for code: HistorySystem
     /// </summary>
     public const string LiteralHistorySystem = "history-system";
+
+    /// <summary>
+    /// Literal for code: RestfulInteractionHistorySystem
+    /// </summary>
+    public const string LiteralRestfulInteractionHistorySystem = "http://hl7.org/fhir/restful-interaction#history-system";
 
     /// <summary>
     /// Literal for code: SearchSystem
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSearchSystem = "search-system";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionSearchSystem
+    /// </summary>
+    public const string LiteralRestfulInteractionSearchSystem = "http://hl7.org/fhir/restful-interaction#search-system";
+
+    /// <summary>
     /// Literal for code: Transaction
     /// </summary>
     public const string LiteralTransaction = "transaction";
+
+    /// <summary>
+    /// Literal for code: RestfulInteractionTransaction
+    /// </summary>
+    public const string LiteralRestfulInteractionTransaction = "http://hl7.org/fhir/restful-interaction#transaction";
+
+    /// <summary>
+    /// Dictionary for looking up SystemRestfulInteraction Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "batch", Batch }, 
+      { "http://hl7.org/fhir/restful-interaction#batch", Batch }, 
+      { "history-system", HistorySystem }, 
+      { "http://hl7.org/fhir/restful-interaction#history-system", HistorySystem }, 
+      { "search-system", SearchSystem }, 
+      { "http://hl7.org/fhir/restful-interaction#search-system", SearchSystem }, 
+      { "transaction", Transaction }, 
+      { "http://hl7.org/fhir/restful-interaction#transaction", Transaction }, 
+    };
   };
 }

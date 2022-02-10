@@ -63,9 +63,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdverseStorageCondition = "advstorage";
 
     /// <summary>
+    /// Literal for code: ImmunizationEvaluationDoseStatusReasonAdverseStorageCondition
+    /// </summary>
+    public const string LiteralImmunizationEvaluationDoseStatusReasonAdverseStorageCondition = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#advstorage";
+
+    /// <summary>
     /// Literal for code: ColdChainBreak
     /// </summary>
     public const string LiteralColdChainBreak = "coldchbrk";
+
+    /// <summary>
+    /// Literal for code: ImmunizationEvaluationDoseStatusReasonColdChainBreak
+    /// </summary>
+    public const string LiteralImmunizationEvaluationDoseStatusReasonColdChainBreak = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#coldchbrk";
 
     /// <summary>
     /// Literal for code: ExpiredLot
@@ -73,13 +83,44 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExpiredLot = "explot";
 
     /// <summary>
+    /// Literal for code: ImmunizationEvaluationDoseStatusReasonExpiredLot
+    /// </summary>
+    public const string LiteralImmunizationEvaluationDoseStatusReasonExpiredLot = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#explot";
+
+    /// <summary>
     /// Literal for code: AdministeredOutsideRecommendedSchedule
     /// </summary>
     public const string LiteralAdministeredOutsideRecommendedSchedule = "outsidesched";
 
     /// <summary>
+    /// Literal for code: ImmunizationEvaluationDoseStatusReasonAdministeredOutsideRecommendedSchedule
+    /// </summary>
+    public const string LiteralImmunizationEvaluationDoseStatusReasonAdministeredOutsideRecommendedSchedule = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#outsidesched";
+
+    /// <summary>
     /// Literal for code: ProductRecall
     /// </summary>
     public const string LiteralProductRecall = "prodrecall";
+
+    /// <summary>
+    /// Literal for code: ImmunizationEvaluationDoseStatusReasonProductRecall
+    /// </summary>
+    public const string LiteralImmunizationEvaluationDoseStatusReasonProductRecall = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#prodrecall";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationEvaluationDoseStatusReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "advstorage", AdverseStorageCondition }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#advstorage", AdverseStorageCondition }, 
+      { "coldchbrk", ColdChainBreak }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#coldchbrk", ColdChainBreak }, 
+      { "explot", ExpiredLot }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#explot", ExpiredLot }, 
+      { "outsidesched", AdministeredOutsideRecommendedSchedule }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#outsidesched", AdministeredOutsideRecommendedSchedule }, 
+      { "prodrecall", ProductRecall }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#prodrecall", ProductRecall }, 
+    };
   };
 }

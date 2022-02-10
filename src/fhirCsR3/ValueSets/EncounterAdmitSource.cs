@@ -108,9 +108,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBornInHospital = "born";
 
     /// <summary>
+    /// Literal for code: EncounterAdmitSourceBornInHospital
+    /// </summary>
+    public const string LiteralEncounterAdmitSourceBornInHospital = "http://hl7.org/fhir/admit-source#born";
+
+    /// <summary>
     /// Literal for code: FromAccidentEmergencyDepartment
     /// </summary>
     public const string LiteralFromAccidentEmergencyDepartment = "emd";
+
+    /// <summary>
+    /// Literal for code: EncounterAdmitSourceFromAccidentEmergencyDepartment
+    /// </summary>
+    public const string LiteralEncounterAdmitSourceFromAccidentEmergencyDepartment = "http://hl7.org/fhir/admit-source#emd";
 
     /// <summary>
     /// Literal for code: GeneralPractitionerReferral
@@ -118,9 +128,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGeneralPractitionerReferral = "gp";
 
     /// <summary>
+    /// Literal for code: EncounterAdmitSourceGeneralPractitionerReferral
+    /// </summary>
+    public const string LiteralEncounterAdmitSourceGeneralPractitionerReferral = "http://hl7.org/fhir/admit-source#gp";
+
+    /// <summary>
     /// Literal for code: TransferredFromOtherHospital
     /// </summary>
     public const string LiteralTransferredFromOtherHospital = "hosp-trans";
+
+    /// <summary>
+    /// Literal for code: EncounterAdmitSourceTransferredFromOtherHospital
+    /// </summary>
+    public const string LiteralEncounterAdmitSourceTransferredFromOtherHospital = "http://hl7.org/fhir/admit-source#hosp-trans";
 
     /// <summary>
     /// Literal for code: MedicalPractitionerPhysicianReferral
@@ -128,9 +148,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMedicalPractitionerPhysicianReferral = "mp";
 
     /// <summary>
+    /// Literal for code: EncounterAdmitSourceMedicalPractitionerPhysicianReferral
+    /// </summary>
+    public const string LiteralEncounterAdmitSourceMedicalPractitionerPhysicianReferral = "http://hl7.org/fhir/admit-source#mp";
+
+    /// <summary>
     /// Literal for code: FromNursingHome
     /// </summary>
     public const string LiteralFromNursingHome = "nursing";
+
+    /// <summary>
+    /// Literal for code: EncounterAdmitSourceFromNursingHome
+    /// </summary>
+    public const string LiteralEncounterAdmitSourceFromNursingHome = "http://hl7.org/fhir/admit-source#nursing";
 
     /// <summary>
     /// Literal for code: Other
@@ -138,9 +168,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOther = "other";
 
     /// <summary>
+    /// Literal for code: EncounterAdmitSourceOther
+    /// </summary>
+    public const string LiteralEncounterAdmitSourceOther = "http://hl7.org/fhir/admit-source#other";
+
+    /// <summary>
     /// Literal for code: FromOutpatientDepartment
     /// </summary>
     public const string LiteralFromOutpatientDepartment = "outp";
+
+    /// <summary>
+    /// Literal for code: EncounterAdmitSourceFromOutpatientDepartment
+    /// </summary>
+    public const string LiteralEncounterAdmitSourceFromOutpatientDepartment = "http://hl7.org/fhir/admit-source#outp";
 
     /// <summary>
     /// Literal for code: FromPsychiatricHospital
@@ -148,8 +188,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFromPsychiatricHospital = "psych";
 
     /// <summary>
+    /// Literal for code: EncounterAdmitSourceFromPsychiatricHospital
+    /// </summary>
+    public const string LiteralEncounterAdmitSourceFromPsychiatricHospital = "http://hl7.org/fhir/admit-source#psych";
+
+    /// <summary>
     /// Literal for code: FromRehabilitationFacility
     /// </summary>
     public const string LiteralFromRehabilitationFacility = "rehab";
+
+    /// <summary>
+    /// Literal for code: EncounterAdmitSourceFromRehabilitationFacility
+    /// </summary>
+    public const string LiteralEncounterAdmitSourceFromRehabilitationFacility = "http://hl7.org/fhir/admit-source#rehab";
+
+    /// <summary>
+    /// Dictionary for looking up EncounterAdmitSource Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "born", BornInHospital }, 
+      { "http://hl7.org/fhir/admit-source#born", BornInHospital }, 
+      { "emd", FromAccidentEmergencyDepartment }, 
+      { "http://hl7.org/fhir/admit-source#emd", FromAccidentEmergencyDepartment }, 
+      { "gp", GeneralPractitionerReferral }, 
+      { "http://hl7.org/fhir/admit-source#gp", GeneralPractitionerReferral }, 
+      { "hosp-trans", TransferredFromOtherHospital }, 
+      { "http://hl7.org/fhir/admit-source#hosp-trans", TransferredFromOtherHospital }, 
+      { "mp", MedicalPractitionerPhysicianReferral }, 
+      { "http://hl7.org/fhir/admit-source#mp", MedicalPractitionerPhysicianReferral }, 
+      { "nursing", FromNursingHome }, 
+      { "http://hl7.org/fhir/admit-source#nursing", FromNursingHome }, 
+      { "other", Other }, 
+      { "http://hl7.org/fhir/admit-source#other", Other }, 
+      { "outp", FromOutpatientDepartment }, 
+      { "http://hl7.org/fhir/admit-source#outp", FromOutpatientDepartment }, 
+      { "psych", FromPsychiatricHospital }, 
+      { "http://hl7.org/fhir/admit-source#psych", FromPsychiatricHospital }, 
+      { "rehab", FromRehabilitationFacility }, 
+      { "http://hl7.org/fhir/admit-source#rehab", FromRehabilitationFacility }, 
+    };
   };
 }

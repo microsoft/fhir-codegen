@@ -135,9 +135,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAccepted = "accepted";
 
     /// <summary>
+    /// Literal for code: GoalStatusAccepted
+    /// </summary>
+    public const string LiteralGoalStatusAccepted = "http://hl7.org/fhir/goal-status#accepted";
+
+    /// <summary>
     /// Literal for code: Achieved
     /// </summary>
     public const string LiteralAchieved = "achieved";
+
+    /// <summary>
+    /// Literal for code: GoalStatusAchieved
+    /// </summary>
+    public const string LiteralGoalStatusAchieved = "http://hl7.org/fhir/goal-status#achieved";
 
     /// <summary>
     /// Literal for code: AheadOfTarget
@@ -145,9 +155,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAheadOfTarget = "ahead-of-target";
 
     /// <summary>
+    /// Literal for code: GoalStatusAheadOfTarget
+    /// </summary>
+    public const string LiteralGoalStatusAheadOfTarget = "http://hl7.org/fhir/goal-status#ahead-of-target";
+
+    /// <summary>
     /// Literal for code: BehindTarget
     /// </summary>
     public const string LiteralBehindTarget = "behind-target";
+
+    /// <summary>
+    /// Literal for code: GoalStatusBehindTarget
+    /// </summary>
+    public const string LiteralGoalStatusBehindTarget = "http://hl7.org/fhir/goal-status#behind-target";
 
     /// <summary>
     /// Literal for code: Cancelled
@@ -155,9 +175,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCancelled = "cancelled";
 
     /// <summary>
+    /// Literal for code: GoalStatusCancelled
+    /// </summary>
+    public const string LiteralGoalStatusCancelled = "http://hl7.org/fhir/goal-status#cancelled";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: GoalStatusEnteredInError
+    /// </summary>
+    public const string LiteralGoalStatusEnteredInError = "http://hl7.org/fhir/goal-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: InProgress
@@ -165,9 +195,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInProgress = "in-progress";
 
     /// <summary>
+    /// Literal for code: GoalStatusInProgress
+    /// </summary>
+    public const string LiteralGoalStatusInProgress = "http://hl7.org/fhir/goal-status#in-progress";
+
+    /// <summary>
     /// Literal for code: OnHold
     /// </summary>
     public const string LiteralOnHold = "on-hold";
+
+    /// <summary>
+    /// Literal for code: GoalStatusOnHold
+    /// </summary>
+    public const string LiteralGoalStatusOnHold = "http://hl7.org/fhir/goal-status#on-hold";
 
     /// <summary>
     /// Literal for code: OnTarget
@@ -175,9 +215,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOnTarget = "on-target";
 
     /// <summary>
+    /// Literal for code: GoalStatusOnTarget
+    /// </summary>
+    public const string LiteralGoalStatusOnTarget = "http://hl7.org/fhir/goal-status#on-target";
+
+    /// <summary>
     /// Literal for code: Planned
     /// </summary>
     public const string LiteralPlanned = "planned";
+
+    /// <summary>
+    /// Literal for code: GoalStatusPlanned
+    /// </summary>
+    public const string LiteralGoalStatusPlanned = "http://hl7.org/fhir/goal-status#planned";
 
     /// <summary>
     /// Literal for code: Proposed
@@ -185,13 +235,60 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProposed = "proposed";
 
     /// <summary>
+    /// Literal for code: GoalStatusProposed
+    /// </summary>
+    public const string LiteralGoalStatusProposed = "http://hl7.org/fhir/goal-status#proposed";
+
+    /// <summary>
     /// Literal for code: Rejected
     /// </summary>
     public const string LiteralRejected = "rejected";
 
     /// <summary>
+    /// Literal for code: GoalStatusRejected
+    /// </summary>
+    public const string LiteralGoalStatusRejected = "http://hl7.org/fhir/goal-status#rejected";
+
+    /// <summary>
     /// Literal for code: Sustaining
     /// </summary>
     public const string LiteralSustaining = "sustaining";
+
+    /// <summary>
+    /// Literal for code: GoalStatusSustaining
+    /// </summary>
+    public const string LiteralGoalStatusSustaining = "http://hl7.org/fhir/goal-status#sustaining";
+
+    /// <summary>
+    /// Dictionary for looking up GoalStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "accepted", Accepted }, 
+      { "http://hl7.org/fhir/goal-status#accepted", Accepted }, 
+      { "achieved", Achieved }, 
+      { "http://hl7.org/fhir/goal-status#achieved", Achieved }, 
+      { "ahead-of-target", AheadOfTarget }, 
+      { "http://hl7.org/fhir/goal-status#ahead-of-target", AheadOfTarget }, 
+      { "behind-target", BehindTarget }, 
+      { "http://hl7.org/fhir/goal-status#behind-target", BehindTarget }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/goal-status#cancelled", Cancelled }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/goal-status#entered-in-error", EnteredInError }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/goal-status#in-progress", InProgress }, 
+      { "on-hold", OnHold }, 
+      { "http://hl7.org/fhir/goal-status#on-hold", OnHold }, 
+      { "on-target", OnTarget }, 
+      { "http://hl7.org/fhir/goal-status#on-target", OnTarget }, 
+      { "planned", Planned }, 
+      { "http://hl7.org/fhir/goal-status#planned", Planned }, 
+      { "proposed", Proposed }, 
+      { "http://hl7.org/fhir/goal-status#proposed", Proposed }, 
+      { "rejected", Rejected }, 
+      { "http://hl7.org/fhir/goal-status#rejected", Rejected }, 
+      { "sustaining", Sustaining }, 
+      { "http://hl7.org/fhir/goal-status#sustaining", Sustaining }, 
+    };
   };
 }

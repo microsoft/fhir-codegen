@@ -315,9 +315,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralActSuppliedItemDetectedIssueCode = "_ActSuppliedItemDetectedIssueCode";
 
     /// <summary>
+    /// Literal for code: V3ActCodeActSuppliedItemDetectedIssueCode
+    /// </summary>
+    public const string LiteralV3ActCodeActSuppliedItemDetectedIssueCode = "http://hl7.org/fhir/v3/ActCode#_ActSuppliedItemDetectedIssueCode";
+
+    /// <summary>
     /// Literal for code: AdministrationDetectedIssueCode
     /// </summary>
     public const string LiteralAdministrationDetectedIssueCode = "_AdministrationDetectedIssueCode";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAdministrationDetectedIssueCode
+    /// </summary>
+    public const string LiteralV3ActCodeAdministrationDetectedIssueCode = "http://hl7.org/fhir/v3/ActCode#_AdministrationDetectedIssueCode";
 
     /// <summary>
     /// Literal for code: AppropriatenessDetectedIssueCode
@@ -325,9 +335,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAppropriatenessDetectedIssueCode = "_AppropriatenessDetectedIssueCode";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAppropriatenessDetectedIssueCode
+    /// </summary>
+    public const string LiteralV3ActCodeAppropriatenessDetectedIssueCode = "http://hl7.org/fhir/v3/ActCode#_AppropriatenessDetectedIssueCode";
+
+    /// <summary>
     /// Literal for code: InteractionDetectedIssueCode
     /// </summary>
     public const string LiteralInteractionDetectedIssueCode = "_InteractionDetectedIssueCode";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeInteractionDetectedIssueCode
+    /// </summary>
+    public const string LiteralV3ActCodeInteractionDetectedIssueCode = "http://hl7.org/fhir/v3/ActCode#_InteractionDetectedIssueCode";
 
     /// <summary>
     /// Literal for code: SupplyDetectedIssueCode
@@ -335,9 +355,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSupplyDetectedIssueCode = "_SupplyDetectedIssueCode";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSupplyDetectedIssueCode
+    /// </summary>
+    public const string LiteralV3ActCodeSupplyDetectedIssueCode = "http://hl7.org/fhir/v3/ActCode#_SupplyDetectedIssueCode";
+
+    /// <summary>
     /// Literal for code: TimingDetectedIssueCode
     /// </summary>
     public const string LiteralTimingDetectedIssueCode = "_TimingDetectedIssueCode";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeTimingDetectedIssueCode
+    /// </summary>
+    public const string LiteralV3ActCodeTimingDetectedIssueCode = "http://hl7.org/fhir/v3/ActCode#_TimingDetectedIssueCode";
 
     /// <summary>
     /// Literal for code: AlreadyPerformed
@@ -345,9 +375,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAlreadyPerformed = "ALLDONE";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAlreadyPerformed
+    /// </summary>
+    public const string LiteralV3ActCodeAlreadyPerformed = "http://hl7.org/fhir/v3/ActCode#ALLDONE";
+
+    /// <summary>
     /// Literal for code: EndTooLateAlert
     /// </summary>
     public const string LiteralEndTooLateAlert = "ALRTENDLATE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEndTooLateAlert
+    /// </summary>
+    public const string LiteralV3ActCodeEndTooLateAlert = "http://hl7.org/fhir/v3/ActCode#ALRTENDLATE";
 
     /// <summary>
     /// Literal for code: StartTooLateAlert
@@ -355,9 +395,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStartTooLateAlert = "ALRTSTRTLATE";
 
     /// <summary>
+    /// Literal for code: V3ActCodeStartTooLateAlert
+    /// </summary>
+    public const string LiteralV3ActCodeStartTooLateAlert = "http://hl7.org/fhir/v3/ActCode#ALRTSTRTLATE";
+
+    /// <summary>
     /// Literal for code: DrugActionDetectedIssue
     /// </summary>
     public const string LiteralDrugActionDetectedIssue = "DACT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDrugActionDetectedIssue
+    /// </summary>
+    public const string LiteralV3ActCodeDrugActionDetectedIssue = "http://hl7.org/fhir/v3/ActCode#DACT";
 
     /// <summary>
     /// Literal for code: DrugInteractionAlert
@@ -365,9 +415,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrugInteractionAlert = "DRG";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDrugInteractionAlert
+    /// </summary>
+    public const string LiteralV3ActCodeDrugInteractionAlert = "http://hl7.org/fhir/v3/ActCode#DRG";
+
+    /// <summary>
     /// Literal for code: EndTooLateAlert_2
     /// </summary>
     public const string LiteralEndTooLateAlert_2 = "ENDLATE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEndTooLateAlert_2
+    /// </summary>
+    public const string LiteralV3ActCodeEndTooLateAlert_2 = "http://hl7.org/fhir/v3/ActCode#ENDLATE";
 
     /// <summary>
     /// Literal for code: FoodInteractionAlert
@@ -375,9 +435,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFoodInteractionAlert = "FOOD";
 
     /// <summary>
+    /// Literal for code: V3ActCodeFoodInteractionAlert
+    /// </summary>
+    public const string LiteralV3ActCodeFoodInteractionAlert = "http://hl7.org/fhir/v3/ActCode#FOOD";
+
+    /// <summary>
     /// Literal for code: FulfillmentAlert
     /// </summary>
     public const string LiteralFulfillmentAlert = "FULFIL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeFulfillmentAlert
+    /// </summary>
+    public const string LiteralV3ActCodeFulfillmentAlert = "http://hl7.org/fhir/v3/ActCode#FULFIL";
 
     /// <summary>
     /// Literal for code: HeldSuspendedAlert
@@ -385,9 +455,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeldSuspendedAlert = "HELD";
 
     /// <summary>
+    /// Literal for code: V3ActCodeHeldSuspendedAlert
+    /// </summary>
+    public const string LiteralV3ActCodeHeldSuspendedAlert = "http://hl7.org/fhir/v3/ActCode#HELD";
+
+    /// <summary>
     /// Literal for code: RecordRecordedAsHistorical
     /// </summary>
     public const string LiteralRecordRecordedAsHistorical = "HISTORIC";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeRecordRecordedAsHistorical
+    /// </summary>
+    public const string LiteralV3ActCodeRecordRecordedAsHistorical = "http://hl7.org/fhir/v3/ActCode#HISTORIC";
 
     /// <summary>
     /// Literal for code: OutsideRequestedTime
@@ -395,9 +475,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOutsideRequestedTime = "INTERVAL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeOutsideRequestedTime
+    /// </summary>
+    public const string LiteralV3ActCodeOutsideRequestedTime = "http://hl7.org/fhir/v3/ActCode#INTERVAL";
+
+    /// <summary>
     /// Literal for code: TooSoonWithinFrequencyBasedOnTheUsage
     /// </summary>
     public const string LiteralTooSoonWithinFrequencyBasedOnTheUsage = "MINFREQ";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeTooSoonWithinFrequencyBasedOnTheUsage
+    /// </summary>
+    public const string LiteralV3ActCodeTooSoonWithinFrequencyBasedOnTheUsage = "http://hl7.org/fhir/v3/ActCode#MINFREQ";
 
     /// <summary>
     /// Literal for code: NaturalHealthProductAlert
@@ -405,9 +495,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNaturalHealthProductAlert = "NHP";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNaturalHealthProductAlert
+    /// </summary>
+    public const string LiteralV3ActCodeNaturalHealthProductAlert = "http://hl7.org/fhir/v3/ActCode#NHP";
+
+    /// <summary>
     /// Literal for code: NonPrescriptionInteractionAlert
     /// </summary>
     public const string LiteralNonPrescriptionInteractionAlert = "NONRX";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNonPrescriptionInteractionAlert
+    /// </summary>
+    public const string LiteralV3ActCodeNonPrescriptionInteractionAlert = "http://hl7.org/fhir/v3/ActCode#NONRX";
 
     /// <summary>
     /// Literal for code: NoLongerActionable
@@ -415,9 +515,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoLongerActionable = "NOTACTN";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoLongerActionable
+    /// </summary>
+    public const string LiteralV3ActCodeNoLongerActionable = "http://hl7.org/fhir/v3/ActCode#NOTACTN";
+
+    /// <summary>
     /// Literal for code: NotEquivalentAlert
     /// </summary>
     public const string LiteralNotEquivalentAlert = "NOTEQUIV";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNotEquivalentAlert
+    /// </summary>
+    public const string LiteralV3ActCodeNotEquivalentAlert = "http://hl7.org/fhir/v3/ActCode#NOTEQUIV";
 
     /// <summary>
     /// Literal for code: NotGenericallyEquivalentAlert
@@ -425,9 +535,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNotGenericallyEquivalentAlert = "NOTEQUIVGEN";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNotGenericallyEquivalentAlert
+    /// </summary>
+    public const string LiteralV3ActCodeNotGenericallyEquivalentAlert = "http://hl7.org/fhir/v3/ActCode#NOTEQUIVGEN";
+
+    /// <summary>
     /// Literal for code: NotTherapeuticallyEquivalentAlert
     /// </summary>
     public const string LiteralNotTherapeuticallyEquivalentAlert = "NOTEQUIVTHER";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNotTherapeuticallyEquivalentAlert
+    /// </summary>
+    public const string LiteralV3ActCodeNotTherapeuticallyEquivalentAlert = "http://hl7.org/fhir/v3/ActCode#NOTEQUIVTHER";
 
     /// <summary>
     /// Literal for code: ViolatesStatedPreferences
@@ -435,9 +555,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralViolatesStatedPreferences = "PATPREF";
 
     /// <summary>
+    /// Literal for code: V3ActCodeViolatesStatedPreferences
+    /// </summary>
+    public const string LiteralV3ActCodeViolatesStatedPreferences = "http://hl7.org/fhir/v3/ActCode#PATPREF";
+
+    /// <summary>
     /// Literal for code: ViolatesStatedPreferencesAlternateAvailable
     /// </summary>
     public const string LiteralViolatesStatedPreferencesAlternateAvailable = "PATPREFALT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeViolatesStatedPreferencesAlternateAvailable
+    /// </summary>
+    public const string LiteralV3ActCodeViolatesStatedPreferencesAlternateAvailable = "http://hl7.org/fhir/v3/ActCode#PATPREFALT";
 
     /// <summary>
     /// Literal for code: PreviouslyIneffective
@@ -445,9 +575,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPreviouslyIneffective = "PREVINEF";
 
     /// <summary>
+    /// Literal for code: V3ActCodePreviouslyIneffective
+    /// </summary>
+    public const string LiteralV3ActCodePreviouslyIneffective = "http://hl7.org/fhir/v3/ActCode#PREVINEF";
+
+    /// <summary>
     /// Literal for code: StartTooLateAlert_2
     /// </summary>
     public const string LiteralStartTooLateAlert_2 = "STRTLATE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeStartTooLateAlert_2
+    /// </summary>
+    public const string LiteralV3ActCodeStartTooLateAlert_2 = "http://hl7.org/fhir/v3/ActCode#STRTLATE";
 
     /// <summary>
     /// Literal for code: TimingDetectedIssue
@@ -455,9 +595,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTimingDetectedIssue = "TIME";
 
     /// <summary>
+    /// Literal for code: V3ActCodeTimingDetectedIssue
+    /// </summary>
+    public const string LiteralV3ActCodeTimingDetectedIssue = "http://hl7.org/fhir/v3/ActCode#TIME";
+
+    /// <summary>
     /// Literal for code: EventTimingIncorrectAlert
     /// </summary>
     public const string LiteralEventTimingIncorrectAlert = "TIMING";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEventTimingIncorrectAlert
+    /// </summary>
+    public const string LiteralV3ActCodeEventTimingIncorrectAlert = "http://hl7.org/fhir/v3/ActCode#TIMING";
 
     /// <summary>
     /// Literal for code: RefillTooLateAlert
@@ -465,13 +615,100 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRefillTooLateAlert = "TOOLATE";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRefillTooLateAlert
+    /// </summary>
+    public const string LiteralV3ActCodeRefillTooLateAlert = "http://hl7.org/fhir/v3/ActCode#TOOLATE";
+
+    /// <summary>
     /// Literal for code: RefillTooSoonAlert
     /// </summary>
     public const string LiteralRefillTooSoonAlert = "TOOSOON";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRefillTooSoonAlert
+    /// </summary>
+    public const string LiteralV3ActCodeRefillTooSoonAlert = "http://hl7.org/fhir/v3/ActCode#TOOSOON";
+
+    /// <summary>
     /// Literal for code: TherapeuticProductAlert
     /// </summary>
     public const string LiteralTherapeuticProductAlert = "TPROD";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeTherapeuticProductAlert
+    /// </summary>
+    public const string LiteralV3ActCodeTherapeuticProductAlert = "http://hl7.org/fhir/v3/ActCode#TPROD";
+
+    /// <summary>
+    /// Dictionary for looking up DetectedissueCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "_ActSuppliedItemDetectedIssueCode", ActSuppliedItemDetectedIssueCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#_ActSuppliedItemDetectedIssueCode", ActSuppliedItemDetectedIssueCode }, 
+      { "_AdministrationDetectedIssueCode", AdministrationDetectedIssueCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#_AdministrationDetectedIssueCode", AdministrationDetectedIssueCode }, 
+      { "_AppropriatenessDetectedIssueCode", AppropriatenessDetectedIssueCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#_AppropriatenessDetectedIssueCode", AppropriatenessDetectedIssueCode }, 
+      { "_InteractionDetectedIssueCode", InteractionDetectedIssueCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#_InteractionDetectedIssueCode", InteractionDetectedIssueCode }, 
+      { "_SupplyDetectedIssueCode", SupplyDetectedIssueCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#_SupplyDetectedIssueCode", SupplyDetectedIssueCode }, 
+      { "_TimingDetectedIssueCode", TimingDetectedIssueCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#_TimingDetectedIssueCode", TimingDetectedIssueCode }, 
+      { "ALLDONE", AlreadyPerformed }, 
+      { "http://hl7.org/fhir/v3/ActCode#ALLDONE", AlreadyPerformed }, 
+      { "ALRTENDLATE", EndTooLateAlert }, 
+      { "http://hl7.org/fhir/v3/ActCode#ALRTENDLATE", EndTooLateAlert }, 
+      { "ALRTSTRTLATE", StartTooLateAlert }, 
+      { "http://hl7.org/fhir/v3/ActCode#ALRTSTRTLATE", StartTooLateAlert }, 
+      { "DACT", DrugActionDetectedIssue }, 
+      { "http://hl7.org/fhir/v3/ActCode#DACT", DrugActionDetectedIssue }, 
+      { "DRG", DrugInteractionAlert }, 
+      { "http://hl7.org/fhir/v3/ActCode#DRG", DrugInteractionAlert }, 
+      { "ENDLATE", EndTooLateAlert_2 }, 
+      { "http://hl7.org/fhir/v3/ActCode#ENDLATE", EndTooLateAlert_2 }, 
+      { "FOOD", FoodInteractionAlert }, 
+      { "http://hl7.org/fhir/v3/ActCode#FOOD", FoodInteractionAlert }, 
+      { "FULFIL", FulfillmentAlert }, 
+      { "http://hl7.org/fhir/v3/ActCode#FULFIL", FulfillmentAlert }, 
+      { "HELD", HeldSuspendedAlert }, 
+      { "http://hl7.org/fhir/v3/ActCode#HELD", HeldSuspendedAlert }, 
+      { "HISTORIC", RecordRecordedAsHistorical }, 
+      { "http://hl7.org/fhir/v3/ActCode#HISTORIC", RecordRecordedAsHistorical }, 
+      { "INTERVAL", OutsideRequestedTime }, 
+      { "http://hl7.org/fhir/v3/ActCode#INTERVAL", OutsideRequestedTime }, 
+      { "MINFREQ", TooSoonWithinFrequencyBasedOnTheUsage }, 
+      { "http://hl7.org/fhir/v3/ActCode#MINFREQ", TooSoonWithinFrequencyBasedOnTheUsage }, 
+      { "NHP", NaturalHealthProductAlert }, 
+      { "http://hl7.org/fhir/v3/ActCode#NHP", NaturalHealthProductAlert }, 
+      { "NONRX", NonPrescriptionInteractionAlert }, 
+      { "http://hl7.org/fhir/v3/ActCode#NONRX", NonPrescriptionInteractionAlert }, 
+      { "NOTACTN", NoLongerActionable }, 
+      { "http://hl7.org/fhir/v3/ActCode#NOTACTN", NoLongerActionable }, 
+      { "NOTEQUIV", NotEquivalentAlert }, 
+      { "http://hl7.org/fhir/v3/ActCode#NOTEQUIV", NotEquivalentAlert }, 
+      { "NOTEQUIVGEN", NotGenericallyEquivalentAlert }, 
+      { "http://hl7.org/fhir/v3/ActCode#NOTEQUIVGEN", NotGenericallyEquivalentAlert }, 
+      { "NOTEQUIVTHER", NotTherapeuticallyEquivalentAlert }, 
+      { "http://hl7.org/fhir/v3/ActCode#NOTEQUIVTHER", NotTherapeuticallyEquivalentAlert }, 
+      { "PATPREF", ViolatesStatedPreferences }, 
+      { "http://hl7.org/fhir/v3/ActCode#PATPREF", ViolatesStatedPreferences }, 
+      { "PATPREFALT", ViolatesStatedPreferencesAlternateAvailable }, 
+      { "http://hl7.org/fhir/v3/ActCode#PATPREFALT", ViolatesStatedPreferencesAlternateAvailable }, 
+      { "PREVINEF", PreviouslyIneffective }, 
+      { "http://hl7.org/fhir/v3/ActCode#PREVINEF", PreviouslyIneffective }, 
+      { "STRTLATE", StartTooLateAlert_2 }, 
+      { "http://hl7.org/fhir/v3/ActCode#STRTLATE", StartTooLateAlert_2 }, 
+      { "TIME", TimingDetectedIssue }, 
+      { "http://hl7.org/fhir/v3/ActCode#TIME", TimingDetectedIssue }, 
+      { "TIMING", EventTimingIncorrectAlert }, 
+      { "http://hl7.org/fhir/v3/ActCode#TIMING", EventTimingIncorrectAlert }, 
+      { "TOOLATE", RefillTooLateAlert }, 
+      { "http://hl7.org/fhir/v3/ActCode#TOOLATE", RefillTooLateAlert }, 
+      { "TOOSOON", RefillTooSoonAlert }, 
+      { "http://hl7.org/fhir/v3/ActCode#TOOSOON", RefillTooSoonAlert }, 
+      { "TPROD", TherapeuticProductAlert }, 
+      { "http://hl7.org/fhir/v3/ActCode#TPROD", TherapeuticProductAlert }, 
+    };
   };
 }

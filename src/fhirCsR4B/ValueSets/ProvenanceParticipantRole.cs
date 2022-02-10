@@ -108,9 +108,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAssembler = "assembler";
 
     /// <summary>
+    /// Literal for code: ProvenanceParticipantRoleAssembler
+    /// </summary>
+    public const string LiteralProvenanceParticipantRoleAssembler = "http://hl7.org/fhir/provenance-participant-role#assembler";
+
+    /// <summary>
     /// Literal for code: Attester
     /// </summary>
     public const string LiteralAttester = "attester";
+
+    /// <summary>
+    /// Literal for code: ProvenanceParticipantRoleAttester
+    /// </summary>
+    public const string LiteralProvenanceParticipantRoleAttester = "http://hl7.org/fhir/provenance-participant-role#attester";
 
     /// <summary>
     /// Literal for code: Author
@@ -118,9 +128,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAuthor = "author";
 
     /// <summary>
+    /// Literal for code: ProvenanceParticipantRoleAuthor
+    /// </summary>
+    public const string LiteralProvenanceParticipantRoleAuthor = "http://hl7.org/fhir/provenance-participant-role#author";
+
+    /// <summary>
     /// Literal for code: Composer
     /// </summary>
     public const string LiteralComposer = "composer";
+
+    /// <summary>
+    /// Literal for code: ProvenanceParticipantRoleComposer
+    /// </summary>
+    public const string LiteralProvenanceParticipantRoleComposer = "http://hl7.org/fhir/provenance-participant-role#composer";
 
     /// <summary>
     /// Literal for code: Custodian
@@ -128,9 +148,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCustodian = "custodian";
 
     /// <summary>
+    /// Literal for code: ProvenanceParticipantRoleCustodian
+    /// </summary>
+    public const string LiteralProvenanceParticipantRoleCustodian = "http://hl7.org/fhir/provenance-participant-role#custodian";
+
+    /// <summary>
     /// Literal for code: Enterer
     /// </summary>
     public const string LiteralEnterer = "enterer";
+
+    /// <summary>
+    /// Literal for code: ProvenanceParticipantRoleEnterer
+    /// </summary>
+    public const string LiteralProvenanceParticipantRoleEnterer = "http://hl7.org/fhir/provenance-participant-role#enterer";
 
     /// <summary>
     /// Literal for code: Informant
@@ -138,9 +168,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInformant = "informant";
 
     /// <summary>
+    /// Literal for code: ProvenanceParticipantRoleInformant
+    /// </summary>
+    public const string LiteralProvenanceParticipantRoleInformant = "http://hl7.org/fhir/provenance-participant-role#informant";
+
+    /// <summary>
     /// Literal for code: LegalAuthenticator
     /// </summary>
     public const string LiteralLegalAuthenticator = "legal";
+
+    /// <summary>
+    /// Literal for code: ProvenanceParticipantRoleLegalAuthenticator
+    /// </summary>
+    public const string LiteralProvenanceParticipantRoleLegalAuthenticator = "http://hl7.org/fhir/provenance-participant-role#legal";
 
     /// <summary>
     /// Literal for code: Performer
@@ -148,8 +188,44 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPerformer = "performer";
 
     /// <summary>
+    /// Literal for code: ProvenanceParticipantRolePerformer
+    /// </summary>
+    public const string LiteralProvenanceParticipantRolePerformer = "http://hl7.org/fhir/provenance-participant-role#performer";
+
+    /// <summary>
     /// Literal for code: Verifier
     /// </summary>
     public const string LiteralVerifier = "verifier";
+
+    /// <summary>
+    /// Literal for code: ProvenanceParticipantRoleVerifier
+    /// </summary>
+    public const string LiteralProvenanceParticipantRoleVerifier = "http://hl7.org/fhir/provenance-participant-role#verifier";
+
+    /// <summary>
+    /// Dictionary for looking up ProvenanceParticipantRole Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "assembler", Assembler }, 
+      { "http://hl7.org/fhir/provenance-participant-role#assembler", Assembler }, 
+      { "attester", Attester }, 
+      { "http://hl7.org/fhir/provenance-participant-role#attester", Attester }, 
+      { "author", Author }, 
+      { "http://hl7.org/fhir/provenance-participant-role#author", Author }, 
+      { "composer", Composer }, 
+      { "http://hl7.org/fhir/provenance-participant-role#composer", Composer }, 
+      { "custodian", Custodian }, 
+      { "http://hl7.org/fhir/provenance-participant-role#custodian", Custodian }, 
+      { "enterer", Enterer }, 
+      { "http://hl7.org/fhir/provenance-participant-role#enterer", Enterer }, 
+      { "informant", Informant }, 
+      { "http://hl7.org/fhir/provenance-participant-role#informant", Informant }, 
+      { "legal", LegalAuthenticator }, 
+      { "http://hl7.org/fhir/provenance-participant-role#legal", LegalAuthenticator }, 
+      { "performer", Performer }, 
+      { "http://hl7.org/fhir/provenance-participant-role#performer", Performer }, 
+      { "verifier", Verifier }, 
+      { "http://hl7.org/fhir/provenance-participant-role#verifier", Verifier }, 
+    };
   };
 }

@@ -90,9 +90,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEarlyPhase1 = "early-phase-1";
 
     /// <summary>
+    /// Literal for code: ResearchStudyPhaseEarlyPhase1
+    /// </summary>
+    public const string LiteralResearchStudyPhaseEarlyPhase1 = "http://terminology.hl7.org/CodeSystem/research-study-phase#early-phase-1";
+
+    /// <summary>
     /// Literal for code: NA
     /// </summary>
     public const string LiteralNA = "n-a";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyPhaseNA
+    /// </summary>
+    public const string LiteralResearchStudyPhaseNA = "http://terminology.hl7.org/CodeSystem/research-study-phase#n-a";
 
     /// <summary>
     /// Literal for code: Phase1
@@ -100,9 +110,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPhase1 = "phase-1";
 
     /// <summary>
+    /// Literal for code: ResearchStudyPhasePhase1
+    /// </summary>
+    public const string LiteralResearchStudyPhasePhase1 = "http://terminology.hl7.org/CodeSystem/research-study-phase#phase-1";
+
+    /// <summary>
     /// Literal for code: Phase1Phase2
     /// </summary>
     public const string LiteralPhase1Phase2 = "phase-1-phase-2";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyPhasePhase1Phase2
+    /// </summary>
+    public const string LiteralResearchStudyPhasePhase1Phase2 = "http://terminology.hl7.org/CodeSystem/research-study-phase#phase-1-phase-2";
 
     /// <summary>
     /// Literal for code: Phase2
@@ -110,9 +130,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPhase2 = "phase-2";
 
     /// <summary>
+    /// Literal for code: ResearchStudyPhasePhase2
+    /// </summary>
+    public const string LiteralResearchStudyPhasePhase2 = "http://terminology.hl7.org/CodeSystem/research-study-phase#phase-2";
+
+    /// <summary>
     /// Literal for code: Phase2Phase3
     /// </summary>
     public const string LiteralPhase2Phase3 = "phase-2-phase-3";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyPhasePhase2Phase3
+    /// </summary>
+    public const string LiteralResearchStudyPhasePhase2Phase3 = "http://terminology.hl7.org/CodeSystem/research-study-phase#phase-2-phase-3";
 
     /// <summary>
     /// Literal for code: Phase3
@@ -120,8 +150,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPhase3 = "phase-3";
 
     /// <summary>
+    /// Literal for code: ResearchStudyPhasePhase3
+    /// </summary>
+    public const string LiteralResearchStudyPhasePhase3 = "http://terminology.hl7.org/CodeSystem/research-study-phase#phase-3";
+
+    /// <summary>
     /// Literal for code: Phase4
     /// </summary>
     public const string LiteralPhase4 = "phase-4";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyPhasePhase4
+    /// </summary>
+    public const string LiteralResearchStudyPhasePhase4 = "http://terminology.hl7.org/CodeSystem/research-study-phase#phase-4";
+
+    /// <summary>
+    /// Dictionary for looking up ResearchStudyPhase Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "early-phase-1", EarlyPhase1 }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-phase#early-phase-1", EarlyPhase1 }, 
+      { "n-a", NA }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-phase#n-a", NA }, 
+      { "phase-1", Phase1 }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-phase#phase-1", Phase1 }, 
+      { "phase-1-phase-2", Phase1Phase2 }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-phase#phase-1-phase-2", Phase1Phase2 }, 
+      { "phase-2", Phase2 }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-phase#phase-2", Phase2 }, 
+      { "phase-2-phase-3", Phase2Phase3 }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-phase#phase-2-phase-3", Phase2Phase3 }, 
+      { "phase-3", Phase3 }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-phase#phase-3", Phase3 }, 
+      { "phase-4", Phase4 }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-phase#phase-4", Phase4 }, 
+    };
   };
 }

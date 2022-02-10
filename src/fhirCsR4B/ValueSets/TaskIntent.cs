@@ -99,9 +99,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFillerOrder_request_intent = "filler-order";
 
     /// <summary>
+    /// Literal for code: RequestIntentFillerOrder_request_intent
+    /// </summary>
+    public const string LiteralRequestIntentFillerOrder_request_intent = "http://hl7.org/fhir/request-intent#filler-order";
+
+    /// <summary>
     /// Literal for code: InstanceOrder_request_intent
     /// </summary>
     public const string LiteralInstanceOrder_request_intent = "instance-order";
+
+    /// <summary>
+    /// Literal for code: RequestIntentInstanceOrder_request_intent
+    /// </summary>
+    public const string LiteralRequestIntentInstanceOrder_request_intent = "http://hl7.org/fhir/request-intent#instance-order";
 
     /// <summary>
     /// Literal for code: Option_request_intent
@@ -109,9 +119,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOption_request_intent = "option";
 
     /// <summary>
+    /// Literal for code: RequestIntentOption_request_intent
+    /// </summary>
+    public const string LiteralRequestIntentOption_request_intent = "http://hl7.org/fhir/request-intent#option";
+
+    /// <summary>
     /// Literal for code: Order_request_intent
     /// </summary>
     public const string LiteralOrder_request_intent = "order";
+
+    /// <summary>
+    /// Literal for code: RequestIntentOrder_request_intent
+    /// </summary>
+    public const string LiteralRequestIntentOrder_request_intent = "http://hl7.org/fhir/request-intent#order";
 
     /// <summary>
     /// Literal for code: OriginalOrder_request_intent
@@ -119,9 +139,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOriginalOrder_request_intent = "original-order";
 
     /// <summary>
+    /// Literal for code: RequestIntentOriginalOrder_request_intent
+    /// </summary>
+    public const string LiteralRequestIntentOriginalOrder_request_intent = "http://hl7.org/fhir/request-intent#original-order";
+
+    /// <summary>
     /// Literal for code: Plan_request_intent
     /// </summary>
     public const string LiteralPlan_request_intent = "plan";
+
+    /// <summary>
+    /// Literal for code: RequestIntentPlan_request_intent
+    /// </summary>
+    public const string LiteralRequestIntentPlan_request_intent = "http://hl7.org/fhir/request-intent#plan";
 
     /// <summary>
     /// Literal for code: Proposal_request_intent
@@ -129,13 +159,52 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProposal_request_intent = "proposal";
 
     /// <summary>
+    /// Literal for code: RequestIntentProposal_request_intent
+    /// </summary>
+    public const string LiteralRequestIntentProposal_request_intent = "http://hl7.org/fhir/request-intent#proposal";
+
+    /// <summary>
     /// Literal for code: ReflexOrder_request_intent
     /// </summary>
     public const string LiteralReflexOrder_request_intent = "reflex-order";
 
     /// <summary>
+    /// Literal for code: RequestIntentReflexOrder_request_intent
+    /// </summary>
+    public const string LiteralRequestIntentReflexOrder_request_intent = "http://hl7.org/fhir/request-intent#reflex-order";
+
+    /// <summary>
     /// Literal for code: Unknown_task_intent
     /// </summary>
     public const string LiteralUnknown_task_intent = "unknown";
+
+    /// <summary>
+    /// Literal for code: TaskIntentUnknown_task_intent
+    /// </summary>
+    public const string LiteralTaskIntentUnknown_task_intent = "http://hl7.org/fhir/task-intent#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up TaskIntent Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "filler-order", FillerOrder_request_intent }, 
+      { "http://hl7.org/fhir/request-intent#filler-order", FillerOrder_request_intent }, 
+      { "instance-order", InstanceOrder_request_intent }, 
+      { "http://hl7.org/fhir/request-intent#instance-order", InstanceOrder_request_intent }, 
+      { "option", Option_request_intent }, 
+      { "http://hl7.org/fhir/request-intent#option", Option_request_intent }, 
+      { "order", Order_request_intent }, 
+      { "http://hl7.org/fhir/request-intent#order", Order_request_intent }, 
+      { "original-order", OriginalOrder_request_intent }, 
+      { "http://hl7.org/fhir/request-intent#original-order", OriginalOrder_request_intent }, 
+      { "plan", Plan_request_intent }, 
+      { "http://hl7.org/fhir/request-intent#plan", Plan_request_intent }, 
+      { "proposal", Proposal_request_intent }, 
+      { "http://hl7.org/fhir/request-intent#proposal", Proposal_request_intent }, 
+      { "reflex-order", ReflexOrder_request_intent }, 
+      { "http://hl7.org/fhir/request-intent#reflex-order", ReflexOrder_request_intent }, 
+      { "unknown", Unknown_task_intent }, 
+      { "http://hl7.org/fhir/task-intent#unknown", Unknown_task_intent }, 
+    };
   };
 }

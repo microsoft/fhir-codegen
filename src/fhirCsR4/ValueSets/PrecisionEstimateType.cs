@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConfidenceInterval = "CI";
 
     /// <summary>
+    /// Literal for code: PrecisionEstimateTypeConfidenceInterval
+    /// </summary>
+    public const string LiteralPrecisionEstimateTypeConfidenceInterval = "http://terminology.hl7.org/CodeSystem/precision-estimate-type#CI";
+
+    /// <summary>
     /// Literal for code: InterquartileRange
     /// </summary>
     public const string LiteralInterquartileRange = "IQR";
+
+    /// <summary>
+    /// Literal for code: PrecisionEstimateTypeInterquartileRange
+    /// </summary>
+    public const string LiteralPrecisionEstimateTypeInterquartileRange = "http://terminology.hl7.org/CodeSystem/precision-estimate-type#IQR";
 
     /// <summary>
     /// Literal for code: StandardDeviation
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStandardDeviation = "SD";
 
     /// <summary>
+    /// Literal for code: PrecisionEstimateTypeStandardDeviation
+    /// </summary>
+    public const string LiteralPrecisionEstimateTypeStandardDeviation = "http://terminology.hl7.org/CodeSystem/precision-estimate-type#SD";
+
+    /// <summary>
     /// Literal for code: StandardError
     /// </summary>
     public const string LiteralStandardError = "SE";
+
+    /// <summary>
+    /// Literal for code: PrecisionEstimateTypeStandardError
+    /// </summary>
+    public const string LiteralPrecisionEstimateTypeStandardError = "http://terminology.hl7.org/CodeSystem/precision-estimate-type#SE";
+
+    /// <summary>
+    /// Dictionary for looking up PrecisionEstimateType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "CI", ConfidenceInterval }, 
+      { "http://terminology.hl7.org/CodeSystem/precision-estimate-type#CI", ConfidenceInterval }, 
+      { "IQR", InterquartileRange }, 
+      { "http://terminology.hl7.org/CodeSystem/precision-estimate-type#IQR", InterquartileRange }, 
+      { "SD", StandardDeviation }, 
+      { "http://terminology.hl7.org/CodeSystem/precision-estimate-type#SD", StandardDeviation }, 
+      { "SE", StandardError }, 
+      { "http://terminology.hl7.org/CodeSystem/precision-estimate-type#SE", StandardError }, 
+    };
   };
 }

@@ -202,6 +202,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public int? EventsInNotification { get; set; }
     /// <summary>
+    /// Extension container element for EventsInNotification
+    /// </summary>
+    public Element _EventsInNotification { get; set; }
+    /// <summary>
     /// The total number of actual events which have been generated since the Subscription was created (inclusive of this notification) - regardless of how many have been successfully communicated.  This number is NOT incremented for handshake and heartbeat notifications.
     /// </summary>
     public string EventsSinceSubscriptionStart { get; set; }
@@ -296,6 +300,12 @@ namespace fhirCsR4B.Models
         writer.WriteNumber("eventsInNotification", (int)EventsInNotification!);
       }
 
+      if (_EventsInNotification != null)
+      {
+        writer.WritePropertyName("_eventsInNotification");
+        _EventsInNotification.SerializeJson(writer, options);
+      }
+
       if ((NotificationEvent != null) && (NotificationEvent.Count != 0))
       {
         writer.WritePropertyName("notificationEvent");
@@ -380,6 +390,11 @@ namespace fhirCsR4B.Models
 
         case "eventsInNotification":
           EventsInNotification = reader.GetInt32();
+          break;
+
+        case "_eventsInNotification":
+          _EventsInNotification = new fhirCsR4B.Models.Element();
+          _EventsInNotification.DeserializeJson(ref reader, options);
           break;
 
         case "eventsSinceSubscriptionStart":
@@ -489,6 +504,12 @@ namespace fhirCsR4B.Models
     public const string ACTIVE = "active";
     public const string ERROR = "error";
     public const string OFF = "off";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "requested",
+      "active",
+      "error",
+      "off",
+    };
   }
   /// <summary>
   /// Code Values for the SubscriptionStatus.type field
@@ -499,5 +520,12 @@ namespace fhirCsR4B.Models
     public const string EVENT_NOTIFICATION = "event-notification";
     public const string QUERY_STATUS = "query-status";
     public const string QUERY_EVENT = "query-event";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "handshake",
+      "heartbeat",
+      "event-notification",
+      "query-status",
+      "query-event",
+    };
   }
 }

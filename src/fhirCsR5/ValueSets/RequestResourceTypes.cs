@@ -153,9 +153,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAppointment = "Appointment";
 
     /// <summary>
+    /// Literal for code: RequestResourceTypesAppointment
+    /// </summary>
+    public const string LiteralRequestResourceTypesAppointment = "http://hl7.org/fhir/request-resource-types#Appointment";
+
+    /// <summary>
     /// Literal for code: AppointmentResponse
     /// </summary>
     public const string LiteralAppointmentResponse = "AppointmentResponse";
+
+    /// <summary>
+    /// Literal for code: RequestResourceTypesAppointmentResponse
+    /// </summary>
+    public const string LiteralRequestResourceTypesAppointmentResponse = "http://hl7.org/fhir/request-resource-types#AppointmentResponse";
 
     /// <summary>
     /// Literal for code: CarePlan
@@ -163,9 +173,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCarePlan = "CarePlan";
 
     /// <summary>
+    /// Literal for code: RequestResourceTypesCarePlan
+    /// </summary>
+    public const string LiteralRequestResourceTypesCarePlan = "http://hl7.org/fhir/request-resource-types#CarePlan";
+
+    /// <summary>
     /// Literal for code: Claim
     /// </summary>
     public const string LiteralClaim = "Claim";
+
+    /// <summary>
+    /// Literal for code: RequestResourceTypesClaim
+    /// </summary>
+    public const string LiteralRequestResourceTypesClaim = "http://hl7.org/fhir/request-resource-types#Claim";
 
     /// <summary>
     /// Literal for code: CommunicationRequest
@@ -173,9 +193,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCommunicationRequest = "CommunicationRequest";
 
     /// <summary>
+    /// Literal for code: RequestResourceTypesCommunicationRequest
+    /// </summary>
+    public const string LiteralRequestResourceTypesCommunicationRequest = "http://hl7.org/fhir/request-resource-types#CommunicationRequest";
+
+    /// <summary>
     /// Literal for code: Contract
     /// </summary>
     public const string LiteralContract = "Contract";
+
+    /// <summary>
+    /// Literal for code: RequestResourceTypesContract
+    /// </summary>
+    public const string LiteralRequestResourceTypesContract = "http://hl7.org/fhir/request-resource-types#Contract";
 
     /// <summary>
     /// Literal for code: DeviceRequest
@@ -183,9 +213,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDeviceRequest = "DeviceRequest";
 
     /// <summary>
+    /// Literal for code: RequestResourceTypesDeviceRequest
+    /// </summary>
+    public const string LiteralRequestResourceTypesDeviceRequest = "http://hl7.org/fhir/request-resource-types#DeviceRequest";
+
+    /// <summary>
     /// Literal for code: EnrollmentRequest
     /// </summary>
     public const string LiteralEnrollmentRequest = "EnrollmentRequest";
+
+    /// <summary>
+    /// Literal for code: RequestResourceTypesEnrollmentRequest
+    /// </summary>
+    public const string LiteralRequestResourceTypesEnrollmentRequest = "http://hl7.org/fhir/request-resource-types#EnrollmentRequest";
 
     /// <summary>
     /// Literal for code: ImmunizationRecommendation
@@ -193,9 +233,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralImmunizationRecommendation = "ImmunizationRecommendation";
 
     /// <summary>
+    /// Literal for code: RequestResourceTypesImmunizationRecommendation
+    /// </summary>
+    public const string LiteralRequestResourceTypesImmunizationRecommendation = "http://hl7.org/fhir/request-resource-types#ImmunizationRecommendation";
+
+    /// <summary>
     /// Literal for code: MedicationRequest
     /// </summary>
     public const string LiteralMedicationRequest = "MedicationRequest";
+
+    /// <summary>
+    /// Literal for code: RequestResourceTypesMedicationRequest
+    /// </summary>
+    public const string LiteralRequestResourceTypesMedicationRequest = "http://hl7.org/fhir/request-resource-types#MedicationRequest";
 
     /// <summary>
     /// Literal for code: NutritionOrder
@@ -203,9 +253,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNutritionOrder = "NutritionOrder";
 
     /// <summary>
+    /// Literal for code: RequestResourceTypesNutritionOrder
+    /// </summary>
+    public const string LiteralRequestResourceTypesNutritionOrder = "http://hl7.org/fhir/request-resource-types#NutritionOrder";
+
+    /// <summary>
     /// Literal for code: ServiceRequest
     /// </summary>
     public const string LiteralServiceRequest = "ServiceRequest";
+
+    /// <summary>
+    /// Literal for code: RequestResourceTypesServiceRequest
+    /// </summary>
+    public const string LiteralRequestResourceTypesServiceRequest = "http://hl7.org/fhir/request-resource-types#ServiceRequest";
 
     /// <summary>
     /// Literal for code: SupplyRequest
@@ -213,13 +273,64 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSupplyRequest = "SupplyRequest";
 
     /// <summary>
+    /// Literal for code: RequestResourceTypesSupplyRequest
+    /// </summary>
+    public const string LiteralRequestResourceTypesSupplyRequest = "http://hl7.org/fhir/request-resource-types#SupplyRequest";
+
+    /// <summary>
     /// Literal for code: Task
     /// </summary>
     public const string LiteralTask = "Task";
 
     /// <summary>
+    /// Literal for code: RequestResourceTypesTask
+    /// </summary>
+    public const string LiteralRequestResourceTypesTask = "http://hl7.org/fhir/request-resource-types#Task";
+
+    /// <summary>
     /// Literal for code: VisionPrescription
     /// </summary>
     public const string LiteralVisionPrescription = "VisionPrescription";
+
+    /// <summary>
+    /// Literal for code: RequestResourceTypesVisionPrescription
+    /// </summary>
+    public const string LiteralRequestResourceTypesVisionPrescription = "http://hl7.org/fhir/request-resource-types#VisionPrescription";
+
+    /// <summary>
+    /// Dictionary for looking up RequestResourceTypes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "Appointment", Appointment }, 
+      { "http://hl7.org/fhir/request-resource-types#Appointment", Appointment }, 
+      { "AppointmentResponse", AppointmentResponse }, 
+      { "http://hl7.org/fhir/request-resource-types#AppointmentResponse", AppointmentResponse }, 
+      { "CarePlan", CarePlan }, 
+      { "http://hl7.org/fhir/request-resource-types#CarePlan", CarePlan }, 
+      { "Claim", Claim }, 
+      { "http://hl7.org/fhir/request-resource-types#Claim", Claim }, 
+      { "CommunicationRequest", CommunicationRequest }, 
+      { "http://hl7.org/fhir/request-resource-types#CommunicationRequest", CommunicationRequest }, 
+      { "Contract", Contract }, 
+      { "http://hl7.org/fhir/request-resource-types#Contract", Contract }, 
+      { "DeviceRequest", DeviceRequest }, 
+      { "http://hl7.org/fhir/request-resource-types#DeviceRequest", DeviceRequest }, 
+      { "EnrollmentRequest", EnrollmentRequest }, 
+      { "http://hl7.org/fhir/request-resource-types#EnrollmentRequest", EnrollmentRequest }, 
+      { "ImmunizationRecommendation", ImmunizationRecommendation }, 
+      { "http://hl7.org/fhir/request-resource-types#ImmunizationRecommendation", ImmunizationRecommendation }, 
+      { "MedicationRequest", MedicationRequest }, 
+      { "http://hl7.org/fhir/request-resource-types#MedicationRequest", MedicationRequest }, 
+      { "NutritionOrder", NutritionOrder }, 
+      { "http://hl7.org/fhir/request-resource-types#NutritionOrder", NutritionOrder }, 
+      { "ServiceRequest", ServiceRequest }, 
+      { "http://hl7.org/fhir/request-resource-types#ServiceRequest", ServiceRequest }, 
+      { "SupplyRequest", SupplyRequest }, 
+      { "http://hl7.org/fhir/request-resource-types#SupplyRequest", SupplyRequest }, 
+      { "Task", Task }, 
+      { "http://hl7.org/fhir/request-resource-types#Task", Task }, 
+      { "VisionPrescription", VisionPrescription }, 
+      { "http://hl7.org/fhir/request-resource-types#VisionPrescription", VisionPrescription }, 
+    };
   };
 }

@@ -711,6 +711,11 @@ namespace fhirCsR2.Models
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+    };
   }
   /// <summary>
   /// Code Values for the SearchParameter.type field
@@ -724,6 +729,16 @@ namespace fhirCsR2.Models
     public const string COMPOSITE = "composite";
     public const string QUANTITY = "quantity";
     public const string URI = "uri";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "number",
+      "date",
+      "string",
+      "token",
+      "reference",
+      "composite",
+      "quantity",
+      "uri",
+    };
   }
   /// <summary>
   /// Code Values for the SearchParameter.xpathUsage field
@@ -734,5 +749,12 @@ namespace fhirCsR2.Models
     public const string NEARBY = "nearby";
     public const string DISTANCE = "distance";
     public const string OTHER = "other";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "normal",
+      "phonetic",
+      "nearby",
+      "distance",
+      "other",
+    };
   }
 }

@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class GoalAchievementCodes
   {
     /// <summary>
-    /// 
+    /// Achieved
     /// </summary>
     public static readonly Coding Achieved = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/goal-achievement"
     };
     /// <summary>
-    /// 
+    /// Improving
     /// </summary>
     public static readonly Coding Improving = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/goal-achievement"
     };
     /// <summary>
-    /// 
+    /// In Progress
     /// </summary>
     public static readonly Coding InProgress = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/goal-achievement"
     };
     /// <summary>
-    /// 
+    /// No Change
     /// </summary>
     public static readonly Coding NoChange = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/goal-achievement"
     };
     /// <summary>
-    /// 
+    /// No Progress
     /// </summary>
     public static readonly Coding NoProgress = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/goal-achievement"
     };
     /// <summary>
-    /// 
+    /// Not Achieved
     /// </summary>
     public static readonly Coding NotAchieved = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/goal-achievement"
     };
     /// <summary>
-    /// 
+    /// Not Attainable
     /// </summary>
     public static readonly Coding NotAttainable = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/goal-achievement"
     };
     /// <summary>
-    /// 
+    /// Sustaining
     /// </summary>
     public static readonly Coding Sustaining = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/goal-achievement"
     };
     /// <summary>
-    /// 
+    /// Worsening
     /// </summary>
     public static readonly Coding Worsening = new Coding
     {
@@ -99,9 +99,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAchieved = "achieved";
 
     /// <summary>
+    /// Literal for code: GoalAchievementAchieved
+    /// </summary>
+    public const string LiteralGoalAchievementAchieved = "http://terminology.hl7.org/CodeSystem/goal-achievement#achieved";
+
+    /// <summary>
     /// Literal for code: Improving
     /// </summary>
     public const string LiteralImproving = "improving";
+
+    /// <summary>
+    /// Literal for code: GoalAchievementImproving
+    /// </summary>
+    public const string LiteralGoalAchievementImproving = "http://terminology.hl7.org/CodeSystem/goal-achievement#improving";
 
     /// <summary>
     /// Literal for code: InProgress
@@ -109,9 +119,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInProgress = "in-progress";
 
     /// <summary>
+    /// Literal for code: GoalAchievementInProgress
+    /// </summary>
+    public const string LiteralGoalAchievementInProgress = "http://terminology.hl7.org/CodeSystem/goal-achievement#in-progress";
+
+    /// <summary>
     /// Literal for code: NoChange
     /// </summary>
     public const string LiteralNoChange = "no-change";
+
+    /// <summary>
+    /// Literal for code: GoalAchievementNoChange
+    /// </summary>
+    public const string LiteralGoalAchievementNoChange = "http://terminology.hl7.org/CodeSystem/goal-achievement#no-change";
 
     /// <summary>
     /// Literal for code: NoProgress
@@ -119,9 +139,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoProgress = "no-progress";
 
     /// <summary>
+    /// Literal for code: GoalAchievementNoProgress
+    /// </summary>
+    public const string LiteralGoalAchievementNoProgress = "http://terminology.hl7.org/CodeSystem/goal-achievement#no-progress";
+
+    /// <summary>
     /// Literal for code: NotAchieved
     /// </summary>
     public const string LiteralNotAchieved = "not-achieved";
+
+    /// <summary>
+    /// Literal for code: GoalAchievementNotAchieved
+    /// </summary>
+    public const string LiteralGoalAchievementNotAchieved = "http://terminology.hl7.org/CodeSystem/goal-achievement#not-achieved";
 
     /// <summary>
     /// Literal for code: NotAttainable
@@ -129,13 +159,52 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotAttainable = "not-attainable";
 
     /// <summary>
+    /// Literal for code: GoalAchievementNotAttainable
+    /// </summary>
+    public const string LiteralGoalAchievementNotAttainable = "http://terminology.hl7.org/CodeSystem/goal-achievement#not-attainable";
+
+    /// <summary>
     /// Literal for code: Sustaining
     /// </summary>
     public const string LiteralSustaining = "sustaining";
 
     /// <summary>
+    /// Literal for code: GoalAchievementSustaining
+    /// </summary>
+    public const string LiteralGoalAchievementSustaining = "http://terminology.hl7.org/CodeSystem/goal-achievement#sustaining";
+
+    /// <summary>
     /// Literal for code: Worsening
     /// </summary>
     public const string LiteralWorsening = "worsening";
+
+    /// <summary>
+    /// Literal for code: GoalAchievementWorsening
+    /// </summary>
+    public const string LiteralGoalAchievementWorsening = "http://terminology.hl7.org/CodeSystem/goal-achievement#worsening";
+
+    /// <summary>
+    /// Dictionary for looking up GoalAchievement Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "achieved", Achieved }, 
+      { "http://terminology.hl7.org/CodeSystem/goal-achievement#achieved", Achieved }, 
+      { "improving", Improving }, 
+      { "http://terminology.hl7.org/CodeSystem/goal-achievement#improving", Improving }, 
+      { "in-progress", InProgress }, 
+      { "http://terminology.hl7.org/CodeSystem/goal-achievement#in-progress", InProgress }, 
+      { "no-change", NoChange }, 
+      { "http://terminology.hl7.org/CodeSystem/goal-achievement#no-change", NoChange }, 
+      { "no-progress", NoProgress }, 
+      { "http://terminology.hl7.org/CodeSystem/goal-achievement#no-progress", NoProgress }, 
+      { "not-achieved", NotAchieved }, 
+      { "http://terminology.hl7.org/CodeSystem/goal-achievement#not-achieved", NotAchieved }, 
+      { "not-attainable", NotAttainable }, 
+      { "http://terminology.hl7.org/CodeSystem/goal-achievement#not-attainable", NotAttainable }, 
+      { "sustaining", Sustaining }, 
+      { "http://terminology.hl7.org/CodeSystem/goal-achievement#sustaining", Sustaining }, 
+      { "worsening", Worsening }, 
+      { "http://terminology.hl7.org/CodeSystem/goal-achievement#worsening", Worsening }, 
+    };
   };
 }

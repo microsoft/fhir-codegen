@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class VerificationresultCanPushUpdatesCodes
   {
     /// <summary>
-    /// 
+    /// No
     /// </summary>
     public static readonly Coding No = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/can-push-updates"
     };
     /// <summary>
-    /// 
+    /// Undetermined
     /// </summary>
     public static readonly Coding Undetermined = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/can-push-updates"
     };
     /// <summary>
-    /// 
+    /// Yes
     /// </summary>
     public static readonly Coding Yes = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNo = "no";
 
     /// <summary>
+    /// Literal for code: CanPushUpdatesNo
+    /// </summary>
+    public const string LiteralCanPushUpdatesNo = "http://terminology.hl7.org/CodeSystem/can-push-updates#no";
+
+    /// <summary>
     /// Literal for code: Undetermined
     /// </summary>
     public const string LiteralUndetermined = "undetermined";
 
     /// <summary>
+    /// Literal for code: CanPushUpdatesUndetermined
+    /// </summary>
+    public const string LiteralCanPushUpdatesUndetermined = "http://terminology.hl7.org/CodeSystem/can-push-updates#undetermined";
+
+    /// <summary>
     /// Literal for code: Yes
     /// </summary>
     public const string LiteralYes = "yes";
+
+    /// <summary>
+    /// Literal for code: CanPushUpdatesYes
+    /// </summary>
+    public const string LiteralCanPushUpdatesYes = "http://terminology.hl7.org/CodeSystem/can-push-updates#yes";
+
+    /// <summary>
+    /// Dictionary for looking up VerificationresultCanPushUpdates Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "no", No }, 
+      { "http://terminology.hl7.org/CodeSystem/can-push-updates#no", No }, 
+      { "undetermined", Undetermined }, 
+      { "http://terminology.hl7.org/CodeSystem/can-push-updates#undetermined", Undetermined }, 
+      { "yes", Yes }, 
+      { "http://terminology.hl7.org/CodeSystem/can-push-updates#yes", Yes }, 
+    };
   };
 }

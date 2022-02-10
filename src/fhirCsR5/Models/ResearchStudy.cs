@@ -551,6 +551,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Actual { get; set; }
     /// <summary>
+    /// Extension container element for Actual
+    /// </summary>
+    public Element _Actual { get; set; }
+    /// <summary>
     /// Date range.
     /// </summary>
     public Period Period { get; set; }
@@ -574,6 +578,12 @@ namespace fhirCsR5.Models
       if (Actual != null)
       {
         writer.WriteBoolean("actual", (bool)Actual!);
+      }
+
+      if (_Actual != null)
+      {
+        writer.WritePropertyName("_actual");
+        _Actual.SerializeJson(writer, options);
       }
 
       if (Period != null)
@@ -601,6 +611,11 @@ namespace fhirCsR5.Models
 
         case "actual":
           Actual = reader.GetBoolean();
+          break;
+
+        case "_actual":
+          _Actual = new fhirCsR5.Models.Element();
+          _Actual.DeserializeJson(ref reader, options);
           break;
 
         case "period":
@@ -2766,5 +2781,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

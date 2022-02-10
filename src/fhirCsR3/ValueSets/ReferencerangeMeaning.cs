@@ -135,9 +135,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEndocrine = "endocrine";
 
     /// <summary>
+    /// Literal for code: ReferencerangeMeaningEndocrine
+    /// </summary>
+    public const string LiteralReferencerangeMeaningEndocrine = "http://hl7.org/fhir/referencerange-meaning#endocrine";
+
+    /// <summary>
     /// Literal for code: FollicularStage
     /// </summary>
     public const string LiteralFollicularStage = "follicular";
+
+    /// <summary>
+    /// Literal for code: ReferencerangeMeaningFollicularStage
+    /// </summary>
+    public const string LiteralReferencerangeMeaningFollicularStage = "http://hl7.org/fhir/referencerange-meaning#follicular";
 
     /// <summary>
     /// Literal for code: Luteal
@@ -145,9 +155,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLuteal = "luteal";
 
     /// <summary>
+    /// Literal for code: ReferencerangeMeaningLuteal
+    /// </summary>
+    public const string LiteralReferencerangeMeaningLuteal = "http://hl7.org/fhir/referencerange-meaning#luteal";
+
+    /// <summary>
     /// Literal for code: MidCycle
     /// </summary>
     public const string LiteralMidCycle = "midcycle";
+
+    /// <summary>
+    /// Literal for code: ReferencerangeMeaningMidCycle
+    /// </summary>
+    public const string LiteralReferencerangeMeaningMidCycle = "http://hl7.org/fhir/referencerange-meaning#midcycle";
 
     /// <summary>
     /// Literal for code: NormalRange
@@ -155,9 +175,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNormalRange = "normal";
 
     /// <summary>
+    /// Literal for code: ReferencerangeMeaningNormalRange
+    /// </summary>
+    public const string LiteralReferencerangeMeaningNormalRange = "http://hl7.org/fhir/referencerange-meaning#normal";
+
+    /// <summary>
     /// Literal for code: PostTherapeuticDesiredLevel
     /// </summary>
     public const string LiteralPostTherapeuticDesiredLevel = "post";
+
+    /// <summary>
+    /// Literal for code: ReferencerangeMeaningPostTherapeuticDesiredLevel
+    /// </summary>
+    public const string LiteralReferencerangeMeaningPostTherapeuticDesiredLevel = "http://hl7.org/fhir/referencerange-meaning#post";
 
     /// <summary>
     /// Literal for code: PostMenopause
@@ -165,9 +195,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPostMenopause = "postmeopausal";
 
     /// <summary>
+    /// Literal for code: ReferencerangeMeaningPostMenopause
+    /// </summary>
+    public const string LiteralReferencerangeMeaningPostMenopause = "http://hl7.org/fhir/referencerange-meaning#postmeopausal";
+
+    /// <summary>
     /// Literal for code: PreTherapeuticDesiredLevel
     /// </summary>
     public const string LiteralPreTherapeuticDesiredLevel = "pre";
+
+    /// <summary>
+    /// Literal for code: ReferencerangeMeaningPreTherapeuticDesiredLevel
+    /// </summary>
+    public const string LiteralReferencerangeMeaningPreTherapeuticDesiredLevel = "http://hl7.org/fhir/referencerange-meaning#pre";
 
     /// <summary>
     /// Literal for code: PrePuberty
@@ -175,9 +215,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrePuberty = "pre-puberty";
 
     /// <summary>
+    /// Literal for code: ReferencerangeMeaningPrePuberty
+    /// </summary>
+    public const string LiteralReferencerangeMeaningPrePuberty = "http://hl7.org/fhir/referencerange-meaning#pre-puberty";
+
+    /// <summary>
     /// Literal for code: RecommendedRange
     /// </summary>
     public const string LiteralRecommendedRange = "recommended";
+
+    /// <summary>
+    /// Literal for code: ReferencerangeMeaningRecommendedRange
+    /// </summary>
+    public const string LiteralReferencerangeMeaningRecommendedRange = "http://hl7.org/fhir/referencerange-meaning#recommended";
 
     /// <summary>
     /// Literal for code: TherapeuticDesiredLevel
@@ -185,13 +235,60 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTherapeuticDesiredLevel = "therapeutic";
 
     /// <summary>
+    /// Literal for code: ReferencerangeMeaningTherapeuticDesiredLevel
+    /// </summary>
+    public const string LiteralReferencerangeMeaningTherapeuticDesiredLevel = "http://hl7.org/fhir/referencerange-meaning#therapeutic";
+
+    /// <summary>
     /// Literal for code: TreatmentRange
     /// </summary>
     public const string LiteralTreatmentRange = "treatment";
 
     /// <summary>
+    /// Literal for code: ReferencerangeMeaningTreatmentRange
+    /// </summary>
+    public const string LiteralReferencerangeMeaningTreatmentRange = "http://hl7.org/fhir/referencerange-meaning#treatment";
+
+    /// <summary>
     /// Literal for code: Type
     /// </summary>
     public const string LiteralType = "type";
+
+    /// <summary>
+    /// Literal for code: ReferencerangeMeaningType
+    /// </summary>
+    public const string LiteralReferencerangeMeaningType = "http://hl7.org/fhir/referencerange-meaning#type";
+
+    /// <summary>
+    /// Dictionary for looking up ReferencerangeMeaning Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "endocrine", Endocrine }, 
+      { "http://hl7.org/fhir/referencerange-meaning#endocrine", Endocrine }, 
+      { "follicular", FollicularStage }, 
+      { "http://hl7.org/fhir/referencerange-meaning#follicular", FollicularStage }, 
+      { "luteal", Luteal }, 
+      { "http://hl7.org/fhir/referencerange-meaning#luteal", Luteal }, 
+      { "midcycle", MidCycle }, 
+      { "http://hl7.org/fhir/referencerange-meaning#midcycle", MidCycle }, 
+      { "normal", NormalRange }, 
+      { "http://hl7.org/fhir/referencerange-meaning#normal", NormalRange }, 
+      { "post", PostTherapeuticDesiredLevel }, 
+      { "http://hl7.org/fhir/referencerange-meaning#post", PostTherapeuticDesiredLevel }, 
+      { "postmeopausal", PostMenopause }, 
+      { "http://hl7.org/fhir/referencerange-meaning#postmeopausal", PostMenopause }, 
+      { "pre", PreTherapeuticDesiredLevel }, 
+      { "http://hl7.org/fhir/referencerange-meaning#pre", PreTherapeuticDesiredLevel }, 
+      { "pre-puberty", PrePuberty }, 
+      { "http://hl7.org/fhir/referencerange-meaning#pre-puberty", PrePuberty }, 
+      { "recommended", RecommendedRange }, 
+      { "http://hl7.org/fhir/referencerange-meaning#recommended", RecommendedRange }, 
+      { "therapeutic", TherapeuticDesiredLevel }, 
+      { "http://hl7.org/fhir/referencerange-meaning#therapeutic", TherapeuticDesiredLevel }, 
+      { "treatment", TreatmentRange }, 
+      { "http://hl7.org/fhir/referencerange-meaning#treatment", TreatmentRange }, 
+      { "type", Type }, 
+      { "http://hl7.org/fhir/referencerange-meaning#type", Type }, 
+    };
   };
 }

@@ -279,6 +279,12 @@ namespace fhirCsR2.Models
     public const string EXTENSIBLE = "extensible";
     public const string PREFERRED = "preferred";
     public const string EXAMPLE = "example";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "required",
+      "extensible",
+      "preferred",
+      "example",
+    };
   }
   /// <summary>
   /// The parameters for the operation/query.
@@ -584,6 +590,10 @@ namespace fhirCsR2.Models
   public static class OperationDefinitionParameterUseCodes {
     public const string VAL_IN = "in";
     public const string VAL_OUT = "out";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "in",
+      "out",
+    };
   }
   /// <summary>
   /// A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).
@@ -1263,6 +1273,10 @@ namespace fhirCsR2.Models
   public static class OperationDefinitionKindCodes {
     public const string OPERATION = "operation";
     public const string QUERY = "query";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "operation",
+      "query",
+    };
   }
   /// <summary>
   /// Code Values for the OperationDefinition.status field
@@ -1271,5 +1285,10 @@ namespace fhirCsR2.Models
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+    };
   }
 }

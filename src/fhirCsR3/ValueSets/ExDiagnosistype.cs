@@ -126,9 +126,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdmittingDiagnosis = "admitting";
 
     /// <summary>
+    /// Literal for code: ExDiagnosistypeAdmittingDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeAdmittingDiagnosis = "http://hl7.org/fhir/ex-diagnosistype#admitting";
+
+    /// <summary>
     /// Literal for code: ClinicalDiagnosis
     /// </summary>
     public const string LiteralClinicalDiagnosis = "clinical";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosistypeClinicalDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeClinicalDiagnosis = "http://hl7.org/fhir/ex-diagnosistype#clinical";
 
     /// <summary>
     /// Literal for code: DifferentialDiagnosis
@@ -136,9 +146,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDifferentialDiagnosis = "differential";
 
     /// <summary>
+    /// Literal for code: ExDiagnosistypeDifferentialDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeDifferentialDiagnosis = "http://hl7.org/fhir/ex-diagnosistype#differential";
+
+    /// <summary>
     /// Literal for code: DischargeDiagnosis
     /// </summary>
     public const string LiteralDischargeDiagnosis = "discharge";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosistypeDischargeDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeDischargeDiagnosis = "http://hl7.org/fhir/ex-diagnosistype#discharge";
 
     /// <summary>
     /// Literal for code: LaboratoryDiagnosis
@@ -146,9 +166,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLaboratoryDiagnosis = "laboratory";
 
     /// <summary>
+    /// Literal for code: ExDiagnosistypeLaboratoryDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeLaboratoryDiagnosis = "http://hl7.org/fhir/ex-diagnosistype#laboratory";
+
+    /// <summary>
     /// Literal for code: NursingDiagnosis
     /// </summary>
     public const string LiteralNursingDiagnosis = "nursing";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosistypeNursingDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeNursingDiagnosis = "http://hl7.org/fhir/ex-diagnosistype#nursing";
 
     /// <summary>
     /// Literal for code: PrenatalDiagnosis
@@ -156,9 +186,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrenatalDiagnosis = "prenatal";
 
     /// <summary>
+    /// Literal for code: ExDiagnosistypePrenatalDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypePrenatalDiagnosis = "http://hl7.org/fhir/ex-diagnosistype#prenatal";
+
+    /// <summary>
     /// Literal for code: PrincipalDiagnosis
     /// </summary>
     public const string LiteralPrincipalDiagnosis = "principal";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosistypePrincipalDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypePrincipalDiagnosis = "http://hl7.org/fhir/ex-diagnosistype#principal";
 
     /// <summary>
     /// Literal for code: RadiologyDiagnosis
@@ -166,9 +206,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiologyDiagnosis = "radiology";
 
     /// <summary>
+    /// Literal for code: ExDiagnosistypeRadiologyDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeRadiologyDiagnosis = "http://hl7.org/fhir/ex-diagnosistype#radiology";
+
+    /// <summary>
     /// Literal for code: RemoteDiagnosis
     /// </summary>
     public const string LiteralRemoteDiagnosis = "remote";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosistypeRemoteDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeRemoteDiagnosis = "http://hl7.org/fhir/ex-diagnosistype#remote";
 
     /// <summary>
     /// Literal for code: RetrospectiveDiagnosis
@@ -176,8 +226,48 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRetrospectiveDiagnosis = "retrospective";
 
     /// <summary>
+    /// Literal for code: ExDiagnosistypeRetrospectiveDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeRetrospectiveDiagnosis = "http://hl7.org/fhir/ex-diagnosistype#retrospective";
+
+    /// <summary>
     /// Literal for code: SelfDiagnosis
     /// </summary>
     public const string LiteralSelfDiagnosis = "self";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosistypeSelfDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeSelfDiagnosis = "http://hl7.org/fhir/ex-diagnosistype#self";
+
+    /// <summary>
+    /// Dictionary for looking up ExDiagnosistype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "admitting", AdmittingDiagnosis }, 
+      { "http://hl7.org/fhir/ex-diagnosistype#admitting", AdmittingDiagnosis }, 
+      { "clinical", ClinicalDiagnosis }, 
+      { "http://hl7.org/fhir/ex-diagnosistype#clinical", ClinicalDiagnosis }, 
+      { "differential", DifferentialDiagnosis }, 
+      { "http://hl7.org/fhir/ex-diagnosistype#differential", DifferentialDiagnosis }, 
+      { "discharge", DischargeDiagnosis }, 
+      { "http://hl7.org/fhir/ex-diagnosistype#discharge", DischargeDiagnosis }, 
+      { "laboratory", LaboratoryDiagnosis }, 
+      { "http://hl7.org/fhir/ex-diagnosistype#laboratory", LaboratoryDiagnosis }, 
+      { "nursing", NursingDiagnosis }, 
+      { "http://hl7.org/fhir/ex-diagnosistype#nursing", NursingDiagnosis }, 
+      { "prenatal", PrenatalDiagnosis }, 
+      { "http://hl7.org/fhir/ex-diagnosistype#prenatal", PrenatalDiagnosis }, 
+      { "principal", PrincipalDiagnosis }, 
+      { "http://hl7.org/fhir/ex-diagnosistype#principal", PrincipalDiagnosis }, 
+      { "radiology", RadiologyDiagnosis }, 
+      { "http://hl7.org/fhir/ex-diagnosistype#radiology", RadiologyDiagnosis }, 
+      { "remote", RemoteDiagnosis }, 
+      { "http://hl7.org/fhir/ex-diagnosistype#remote", RemoteDiagnosis }, 
+      { "retrospective", RetrospectiveDiagnosis }, 
+      { "http://hl7.org/fhir/ex-diagnosistype#retrospective", RetrospectiveDiagnosis }, 
+      { "self", SelfDiagnosis }, 
+      { "http://hl7.org/fhir/ex-diagnosistype#self", SelfDiagnosis }, 
+    };
   };
 }

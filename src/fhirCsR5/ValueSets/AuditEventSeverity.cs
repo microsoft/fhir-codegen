@@ -90,9 +90,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAlert = "alert";
 
     /// <summary>
+    /// Literal for code: AuditEventSeverityAlert
+    /// </summary>
+    public const string LiteralAuditEventSeverityAlert = "http://hl7.org/fhir/audit-event-severity#alert";
+
+    /// <summary>
     /// Literal for code: Critical
     /// </summary>
     public const string LiteralCritical = "critical";
+
+    /// <summary>
+    /// Literal for code: AuditEventSeverityCritical
+    /// </summary>
+    public const string LiteralAuditEventSeverityCritical = "http://hl7.org/fhir/audit-event-severity#critical";
 
     /// <summary>
     /// Literal for code: Debug
@@ -100,9 +110,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDebug = "debug";
 
     /// <summary>
+    /// Literal for code: AuditEventSeverityDebug
+    /// </summary>
+    public const string LiteralAuditEventSeverityDebug = "http://hl7.org/fhir/audit-event-severity#debug";
+
+    /// <summary>
     /// Literal for code: Emergency
     /// </summary>
     public const string LiteralEmergency = "emergency";
+
+    /// <summary>
+    /// Literal for code: AuditEventSeverityEmergency
+    /// </summary>
+    public const string LiteralAuditEventSeverityEmergency = "http://hl7.org/fhir/audit-event-severity#emergency";
 
     /// <summary>
     /// Literal for code: Error
@@ -110,9 +130,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralError = "error";
 
     /// <summary>
+    /// Literal for code: AuditEventSeverityError
+    /// </summary>
+    public const string LiteralAuditEventSeverityError = "http://hl7.org/fhir/audit-event-severity#error";
+
+    /// <summary>
     /// Literal for code: Informational
     /// </summary>
     public const string LiteralInformational = "informational";
+
+    /// <summary>
+    /// Literal for code: AuditEventSeverityInformational
+    /// </summary>
+    public const string LiteralAuditEventSeverityInformational = "http://hl7.org/fhir/audit-event-severity#informational";
 
     /// <summary>
     /// Literal for code: Notice
@@ -120,8 +150,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotice = "notice";
 
     /// <summary>
+    /// Literal for code: AuditEventSeverityNotice
+    /// </summary>
+    public const string LiteralAuditEventSeverityNotice = "http://hl7.org/fhir/audit-event-severity#notice";
+
+    /// <summary>
     /// Literal for code: Warning
     /// </summary>
     public const string LiteralWarning = "warning";
+
+    /// <summary>
+    /// Literal for code: AuditEventSeverityWarning
+    /// </summary>
+    public const string LiteralAuditEventSeverityWarning = "http://hl7.org/fhir/audit-event-severity#warning";
+
+    /// <summary>
+    /// Dictionary for looking up AuditEventSeverity Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "alert", Alert }, 
+      { "http://hl7.org/fhir/audit-event-severity#alert", Alert }, 
+      { "critical", Critical }, 
+      { "http://hl7.org/fhir/audit-event-severity#critical", Critical }, 
+      { "debug", Debug }, 
+      { "http://hl7.org/fhir/audit-event-severity#debug", Debug }, 
+      { "emergency", Emergency }, 
+      { "http://hl7.org/fhir/audit-event-severity#emergency", Emergency }, 
+      { "error", Error }, 
+      { "http://hl7.org/fhir/audit-event-severity#error", Error }, 
+      { "informational", Informational }, 
+      { "http://hl7.org/fhir/audit-event-severity#informational", Informational }, 
+      { "notice", Notice }, 
+      { "http://hl7.org/fhir/audit-event-severity#notice", Notice }, 
+      { "warning", Warning }, 
+      { "http://hl7.org/fhir/audit-event-severity#warning", Warning }, 
+    };
   };
 }

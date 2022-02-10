@@ -63,9 +63,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralDistance = "distance";
 
     /// <summary>
+    /// Literal for code: SearchXpathUsageDistance
+    /// </summary>
+    public const string LiteralSearchXpathUsageDistance = "http://hl7.org/fhir/search-xpath-usage#distance";
+
+    /// <summary>
     /// Literal for code: Nearby
     /// </summary>
     public const string LiteralNearby = "nearby";
+
+    /// <summary>
+    /// Literal for code: SearchXpathUsageNearby
+    /// </summary>
+    public const string LiteralSearchXpathUsageNearby = "http://hl7.org/fhir/search-xpath-usage#nearby";
 
     /// <summary>
     /// Literal for code: Normal
@@ -73,13 +83,44 @@ namespace fhirCsR2.ValueSets
     public const string LiteralNormal = "normal";
 
     /// <summary>
+    /// Literal for code: SearchXpathUsageNormal
+    /// </summary>
+    public const string LiteralSearchXpathUsageNormal = "http://hl7.org/fhir/search-xpath-usage#normal";
+
+    /// <summary>
     /// Literal for code: Other
     /// </summary>
     public const string LiteralOther = "other";
 
     /// <summary>
+    /// Literal for code: SearchXpathUsageOther
+    /// </summary>
+    public const string LiteralSearchXpathUsageOther = "http://hl7.org/fhir/search-xpath-usage#other";
+
+    /// <summary>
     /// Literal for code: Phonetic
     /// </summary>
     public const string LiteralPhonetic = "phonetic";
+
+    /// <summary>
+    /// Literal for code: SearchXpathUsagePhonetic
+    /// </summary>
+    public const string LiteralSearchXpathUsagePhonetic = "http://hl7.org/fhir/search-xpath-usage#phonetic";
+
+    /// <summary>
+    /// Dictionary for looking up SearchXpathUsage Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "distance", Distance }, 
+      { "http://hl7.org/fhir/search-xpath-usage#distance", Distance }, 
+      { "nearby", Nearby }, 
+      { "http://hl7.org/fhir/search-xpath-usage#nearby", Nearby }, 
+      { "normal", Normal }, 
+      { "http://hl7.org/fhir/search-xpath-usage#normal", Normal }, 
+      { "other", Other }, 
+      { "http://hl7.org/fhir/search-xpath-usage#other", Other }, 
+      { "phonetic", Phonetic }, 
+      { "http://hl7.org/fhir/search-xpath-usage#phonetic", Phonetic }, 
+    };
   };
 }

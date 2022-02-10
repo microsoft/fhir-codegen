@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIndividual = "individual";
 
     /// <summary>
+    /// Literal for code: MeasureReportTypeIndividual
+    /// </summary>
+    public const string LiteralMeasureReportTypeIndividual = "http://hl7.org/fhir/measure-report-type#individual";
+
+    /// <summary>
     /// Literal for code: PatientList
     /// </summary>
     public const string LiteralPatientList = "patient-list";
 
     /// <summary>
+    /// Literal for code: MeasureReportTypePatientList
+    /// </summary>
+    public const string LiteralMeasureReportTypePatientList = "http://hl7.org/fhir/measure-report-type#patient-list";
+
+    /// <summary>
     /// Literal for code: Summary
     /// </summary>
     public const string LiteralSummary = "summary";
+
+    /// <summary>
+    /// Literal for code: MeasureReportTypeSummary
+    /// </summary>
+    public const string LiteralMeasureReportTypeSummary = "http://hl7.org/fhir/measure-report-type#summary";
+
+    /// <summary>
+    /// Dictionary for looking up MeasureReportType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "individual", Individual }, 
+      { "http://hl7.org/fhir/measure-report-type#individual", Individual }, 
+      { "patient-list", PatientList }, 
+      { "http://hl7.org/fhir/measure-report-type#patient-list", PatientList }, 
+      { "summary", Summary }, 
+      { "http://hl7.org/fhir/measure-report-type#summary", Summary }, 
+    };
   };
 }

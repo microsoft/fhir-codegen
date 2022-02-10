@@ -63,9 +63,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHome = "home";
 
     /// <summary>
+    /// Literal for code: ContactPointUseHome
+    /// </summary>
+    public const string LiteralContactPointUseHome = "http://hl7.org/fhir/contact-point-use#home";
+
+    /// <summary>
     /// Literal for code: Mobile
     /// </summary>
     public const string LiteralMobile = "mobile";
+
+    /// <summary>
+    /// Literal for code: ContactPointUseMobile
+    /// </summary>
+    public const string LiteralContactPointUseMobile = "http://hl7.org/fhir/contact-point-use#mobile";
 
     /// <summary>
     /// Literal for code: Old
@@ -73,13 +83,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOld = "old";
 
     /// <summary>
+    /// Literal for code: ContactPointUseOld
+    /// </summary>
+    public const string LiteralContactPointUseOld = "http://hl7.org/fhir/contact-point-use#old";
+
+    /// <summary>
     /// Literal for code: Temp
     /// </summary>
     public const string LiteralTemp = "temp";
 
     /// <summary>
+    /// Literal for code: ContactPointUseTemp
+    /// </summary>
+    public const string LiteralContactPointUseTemp = "http://hl7.org/fhir/contact-point-use#temp";
+
+    /// <summary>
     /// Literal for code: Work
     /// </summary>
     public const string LiteralWork = "work";
+
+    /// <summary>
+    /// Literal for code: ContactPointUseWork
+    /// </summary>
+    public const string LiteralContactPointUseWork = "http://hl7.org/fhir/contact-point-use#work";
+
+    /// <summary>
+    /// Dictionary for looking up ContactPointUse Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "home", Home }, 
+      { "http://hl7.org/fhir/contact-point-use#home", Home }, 
+      { "mobile", Mobile }, 
+      { "http://hl7.org/fhir/contact-point-use#mobile", Mobile }, 
+      { "old", Old }, 
+      { "http://hl7.org/fhir/contact-point-use#old", Old }, 
+      { "temp", Temp }, 
+      { "http://hl7.org/fhir/contact-point-use#temp", Temp }, 
+      { "work", Work }, 
+      { "http://hl7.org/fhir/contact-point-use#work", Work }, 
+    };
   };
 }

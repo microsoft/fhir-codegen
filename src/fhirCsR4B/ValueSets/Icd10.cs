@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class Icd10Codes
   {
     /// <summary>
-    /// 
+    /// Cholera
     /// </summary>
     public static readonly Coding Cholera = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Intestinal infectious diseases
     /// </summary>
     public static readonly Coding IntestinalInfectiousDiseases = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cholera due to Vibrio cholerae 01, biovar cholerae
     /// </summary>
     public static readonly Coding CholeraDueToVibrioCholerae01BiovarCholerae = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cholera due to Vibrio cholerae 01, biovar eltor
     /// </summary>
     public static readonly Coding CholeraDueToVibrioCholerae01BiovarEltor = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cholera, unspecified
     /// </summary>
     public static readonly Coding CholeraUnspecified = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Typhoid and paratyphoid fevers
     /// </summary>
     public static readonly Coding TyphoidAndParatyphoidFevers = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Typhoid fever
     /// </summary>
     public static readonly Coding TyphoidFever = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Paratyphoid fever A
     /// </summary>
     public static readonly Coding ParatyphoidFeverA = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Paratyphoid fever B
     /// </summary>
     public static readonly Coding ParatyphoidFeverB = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Paratyphoid fever C
     /// </summary>
     public static readonly Coding ParatyphoidFeverC = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Paratyphoid fever, unspecified
     /// </summary>
     public static readonly Coding ParatyphoidFeverUnspecified = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other salmonella infections
     /// </summary>
     public static readonly Coding OtherSalmonellaInfections = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Salmonella enteritis
     /// </summary>
     public static readonly Coding SalmonellaEnteritis = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Salmonella sepsis
     /// </summary>
     public static readonly Coding SalmonellaSepsis = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Localized salmonella infections
     /// </summary>
     public static readonly Coding LocalizedSalmonellaInfections = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified salmonella infections
     /// </summary>
     public static readonly Coding OtherSpecifiedSalmonellaInfections = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Salmonella infection, unspecified
     /// </summary>
     public static readonly Coding SalmonellaInfectionUnspecified = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Shigellosis
     /// </summary>
     public static readonly Coding Shigellosis = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Shigellosis due to Shigella dysenteriae
     /// </summary>
     public static readonly Coding ShigellosisDueToShigellaDysenteriae = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Shigellosis due to Shigella flexneri
     /// </summary>
     public static readonly Coding ShigellosisDueToShigellaFlexneri = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Shigellosis due to Shigella boydii
     /// </summary>
     public static readonly Coding ShigellosisDueToShigellaBoydii = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Shigellosis due to Shigella sonnei
     /// </summary>
     public static readonly Coding ShigellosisDueToShigellaSonnei = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other shigellosis
     /// </summary>
     public static readonly Coding OtherShigellosis = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Shigellosis, unspecified
     /// </summary>
     public static readonly Coding ShigellosisUnspecified = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other bacterial intestinal infections
     /// </summary>
     public static readonly Coding OtherBacterialIntestinalInfections = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Enteropathogenic Escherichia coli infection
     /// </summary>
     public static readonly Coding EnteropathogenicEscherichiaColiInfection = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Enterotoxigenic Escherichia coli infection
     /// </summary>
     public static readonly Coding EnterotoxigenicEscherichiaColiInfection = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Enteroinvasive Escherichia coli infection
     /// </summary>
     public static readonly Coding EnteroinvasiveEscherichiaColiInfection = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Enterohaemorrhagic Escherichia coli infection
     /// </summary>
     public static readonly Coding EnterohaemorrhagicEscherichiaColiInfection = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other intestinal Escherichia coli infections
     /// </summary>
     public static readonly Coding OtherIntestinalEscherichiaColiInfections = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Campylobacter enteritis
     /// </summary>
     public static readonly Coding CampylobacterEnteritis = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Enteritis due to Yersinia enterocolitica
     /// </summary>
     public static readonly Coding EnteritisDueToYersiniaEnterocolitica = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Enterocolitis due to Clostridium difficile
     /// </summary>
     public static readonly Coding EnterocolitisDueToClostridiumDifficile = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified bacterial intestinal infections
     /// </summary>
     public static readonly Coding OtherSpecifiedBacterialIntestinalInfections = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Bacterial intestinal infection, unspecified
     /// </summary>
     public static readonly Coding BacterialIntestinalInfectionUnspecified = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other bacterial foodborne intoxications, not elsewhere classified
     /// </summary>
     public static readonly Coding OtherBacterialFoodborneIntoxicationsNotElsewhereClassified = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Foodborne staphylococcal intoxication
     /// </summary>
     public static readonly Coding FoodborneStaphylococcalIntoxication = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Botulism
     /// </summary>
     public static readonly Coding Botulism = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Foodborne Clostridium perfringens [Clostridium welchii] intoxication
     /// </summary>
     public static readonly Coding FoodborneClostridiumPerfringensClostridiumWelchiiIntoxication = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Foodborne Vibrio parahaemolyticus intoxication
     /// </summary>
     public static readonly Coding FoodborneVibrioParahaemolyticusIntoxication = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Foodborne Bacillus cereus intoxication
     /// </summary>
     public static readonly Coding FoodborneBacillusCereusIntoxication = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified bacterial foodborne intoxications
     /// </summary>
     public static readonly Coding OtherSpecifiedBacterialFoodborneIntoxications = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Bacterial foodborne intoxication, unspecified
     /// </summary>
     public static readonly Coding BacterialFoodborneIntoxicationUnspecified = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Amoebiasis
     /// </summary>
     public static readonly Coding Amoebiasis = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute amoebic dysentery
     /// </summary>
     public static readonly Coding AcuteAmoebicDysentery = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chronic intestinal amoebiasis
     /// </summary>
     public static readonly Coding ChronicIntestinalAmoebiasis = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Amoebic nondysenteric colitis
     /// </summary>
     public static readonly Coding AmoebicNondysentericColitis = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Amoeboma of intestine
     /// </summary>
     public static readonly Coding AmoebomaOfIntestine = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Amoebic liver abscess[K77.0]
     /// </summary>
     public static readonly Coding AmoebicLiverAbscessK770 = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Amoebic lung abscess
     /// </summary>
     public static readonly Coding AmoebicLungAbscess = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Amoebic brain abscess[G07]
     /// </summary>
     public static readonly Coding AmoebicBrainAbscessG07 = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cutaneous amoebiasis
     /// </summary>
     public static readonly Coding CutaneousAmoebiasis = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Amoebic infection of other sites
     /// </summary>
     public static readonly Coding AmoebicInfectionOfOtherSites = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Amoebiasis, unspecified
     /// </summary>
     public static readonly Coding AmoebiasisUnspecified = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other protozoal intestinal diseases
     /// </summary>
     public static readonly Coding OtherProtozoalIntestinalDiseases = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Balantidiasis
     /// </summary>
     public static readonly Coding Balantidiasis = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Giardiasis [lambliasis]
     /// </summary>
     public static readonly Coding GiardiasisLambliasis = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cryptosporidiosis
     /// </summary>
     public static readonly Coding Cryptosporidiosis = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Isosporiasis
     /// </summary>
     public static readonly Coding Isosporiasis = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified protozoal intestinal diseases
     /// </summary>
     public static readonly Coding OtherSpecifiedProtozoalIntestinalDiseases = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Protozoal intestinal disease, unspecified
     /// </summary>
     public static readonly Coding ProtozoalIntestinalDiseaseUnspecified = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Viral and other specified intestinal infections
     /// </summary>
     public static readonly Coding ViralAndOtherSpecifiedIntestinalInfections = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rotaviral enteritis
     /// </summary>
     public static readonly Coding RotaviralEnteritis = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute gastroenteropathy due to Norovirus
     /// </summary>
     public static readonly Coding AcuteGastroenteropathyDueToNorovirus = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Adenoviral enteritis
     /// </summary>
     public static readonly Coding AdenoviralEnteritis = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other viral enteritis
     /// </summary>
     public static readonly Coding OtherViralEnteritis = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Viral intestinal infection, unspecified
     /// </summary>
     public static readonly Coding ViralIntestinalInfectionUnspecified = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified intestinal infections
     /// </summary>
     public static readonly Coding OtherSpecifiedIntestinalInfections = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other gastroenteritis and colitis of infectious and unspecified origin
     /// </summary>
     public static readonly Coding OtherGastroenteritisAndColitisOfInfectiousAndUnspecifiedOrigin = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other and unspecified gastroenteritis and colitis of infectious origin
     /// </summary>
     public static readonly Coding OtherAndUnspecifiedGastroenteritisAndColitisOfInfectiousOrigin = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gastroenteritis and colitis of unspecified origin
     /// </summary>
     public static readonly Coding GastroenteritisAndColitisOfUnspecifiedOrigin = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Respiratory tuberculosis, bacteriologically and histologically confirmed
     /// </summary>
     public static readonly Coding RespiratoryTuberculosisBacteriologicallyAndHistologicallyConfirmed = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis
     /// </summary>
     public static readonly Coding Tuberculosis = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of lung, confirmed by sputum microscopy with or without culture
     /// </summary>
     public static readonly Coding TuberculosisOfLungConfirmedBySputumMicroscopyWithOrWithoutCulture = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of lung, confirmed by culture only
     /// </summary>
     public static readonly Coding TuberculosisOfLungConfirmedByCultureOnly = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of lung, confirmed histologically
     /// </summary>
     public static readonly Coding TuberculosisOfLungConfirmedHistologically = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of lung, confirmed by unspecified means
     /// </summary>
     public static readonly Coding TuberculosisOfLungConfirmedByUnspecifiedMeans = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of intrathoracic lymph nodes, confirmed bacteriologically and histologically
     /// </summary>
     public static readonly Coding TuberculosisOfIntrathoracicLymphNodesConfirmedBacteriologicallyAndHistologically = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of larynx, trachea and bronchus, confirmed bacteriologically and histologically
     /// </summary>
     public static readonly Coding TuberculosisOfLarynxTracheaAndBronchusConfirmedBacteriologicallyAndHistologically = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculous pleurisy, confirmed bacteriologically and histologically
     /// </summary>
     public static readonly Coding TuberculousPleurisyConfirmedBacteriologicallyAndHistologically = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Primary respiratory tuberculosis, confirmed bacteriologically and histologically
     /// </summary>
     public static readonly Coding PrimaryRespiratoryTuberculosisConfirmedBacteriologicallyAndHistologically = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other respiratory tuberculosis, confirmed bacteriologically and histologically
     /// </summary>
     public static readonly Coding OtherRespiratoryTuberculosisConfirmedBacteriologicallyAndHistologically = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Respiratory tuberculosis unspecified, confirmed bacteriologically and histologically
     /// </summary>
     public static readonly Coding RespiratoryTuberculosisUnspecifiedConfirmedBacteriologicallyAndHistologically = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Respiratory tuberculosis, not confirmed bacteriologically or histologically
     /// </summary>
     public static readonly Coding RespiratoryTuberculosisNotConfirmedBacteriologicallyOrHistologically = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of lung, bacteriologically and histologically negative
     /// </summary>
     public static readonly Coding TuberculosisOfLungBacteriologicallyAndHistologicallyNegative = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of lung, bacteriological and histological examination not done
     /// </summary>
     public static readonly Coding TuberculosisOfLungBacteriologicalAndHistologicalExaminationNotDone = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of lung, without mention of bacteriological or histological confirmation
     /// </summary>
     public static readonly Coding TuberculosisOfLungWithoutMentionOfBacteriologicalOrHistologicalConfirmation = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of intrathoracic lymph nodes, without mention of bacteriological or histological confirmation
     /// </summary>
     public static readonly Coding TuberculosisOfIntrathoracicLymphNodesWithoutMentionOfBacteriologicalOrHistologicalConfirmation = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of larynx, trachea and bronchus, without mention of bacteriological or histological confirmation
     /// </summary>
     public static readonly Coding TuberculosisOfLarynxTracheaAndBronchusWithoutMentionOfBacteriologicalOrHistologicalConfirmation = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculous pleurisy, without mention of bacteriological or histological confirmation
     /// </summary>
     public static readonly Coding TuberculousPleurisyWithoutMentionOfBacteriologicalOrHistologicalConfirmation = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Primary respiratory tuberculosis without mention of bacteriological or histological confirmation
     /// </summary>
     public static readonly Coding PrimaryRespiratoryTuberculosisWithoutMentionOfBacteriologicalOrHistologicalConfirmation = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other respiratory tuberculosis, without mention of bacteriological or histological confirmation
     /// </summary>
     public static readonly Coding OtherRespiratoryTuberculosisWithoutMentionOfBacteriologicalOrHistologicalConfirmation = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Respiratory tuberculosis unspecified, without mention of bacteriological or histological confirmation
     /// </summary>
     public static readonly Coding RespiratoryTuberculosisUnspecifiedWithoutMentionOfBacteriologicalOrHistologicalConfirmation = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of nervous system
     /// </summary>
     public static readonly Coding TuberculosisOfNervousSystem = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculous meningitis[G01]
     /// </summary>
     public static readonly Coding TuberculousMeningitisG01 = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Meningeal tuberculoma[G07]
     /// </summary>
     public static readonly Coding MeningealTuberculomaG07 = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other tuberculosis of nervous system
     /// </summary>
     public static readonly Coding OtherTuberculosisOfNervousSystem = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of nervous system, unspecified[G99.8]
     /// </summary>
     public static readonly Coding TuberculosisOfNervousSystemUnspecifiedG998 = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of other organs
     /// </summary>
     public static readonly Coding TuberculosisOfOtherOrgans = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of bones and joints
     /// </summary>
     public static readonly Coding TuberculosisOfBonesAndJoints = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of genitourinary system
     /// </summary>
     public static readonly Coding TuberculosisOfGenitourinarySystem = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculous peripheral lymphadenopathy
     /// </summary>
     public static readonly Coding TuberculousPeripheralLymphadenopathy = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of intestines, peritoneum and mesenteric glands
     /// </summary>
     public static readonly Coding TuberculosisOfIntestinesPeritoneumAndMesentericGlands = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of skin and subcutaneous tissue
     /// </summary>
     public static readonly Coding TuberculosisOfSkinAndSubcutaneousTissue = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of eye
     /// </summary>
     public static readonly Coding TuberculosisOfEye = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of ear
     /// </summary>
     public static readonly Coding TuberculosisOfEar = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of adrenal glands[E35.1]
     /// </summary>
     public static readonly Coding TuberculosisOfAdrenalGlandsE351 = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculosis of other specified organs
     /// </summary>
     public static readonly Coding TuberculosisOfOtherSpecifiedOrgans = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Miliary tuberculosis
     /// </summary>
     public static readonly Coding MiliaryTuberculosis = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute miliary tuberculosis of a single specified site
     /// </summary>
     public static readonly Coding AcuteMiliaryTuberculosisOfASingleSpecifiedSite = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute miliary tuberculosis of multiple sites
     /// </summary>
     public static readonly Coding AcuteMiliaryTuberculosisOfMultipleSites = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute miliary tuberculosis, unspecified
     /// </summary>
     public static readonly Coding AcuteMiliaryTuberculosisUnspecified = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other miliary tuberculosis
     /// </summary>
     public static readonly Coding OtherMiliaryTuberculosis = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Miliary tuberculosis, unspecified
     /// </summary>
     public static readonly Coding MiliaryTuberculosisUnspecified = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Plague
     /// </summary>
     public static readonly Coding Plague = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Certain zoonotic bacterial diseases
     /// </summary>
     public static readonly Coding CertainZoonoticBacterialDiseases = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Bubonic plague
     /// </summary>
     public static readonly Coding BubonicPlague = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cellulocutaneous plague
     /// </summary>
     public static readonly Coding CellulocutaneousPlague = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pneumonic plague
     /// </summary>
     public static readonly Coding PneumonicPlague = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Plague meningitis
     /// </summary>
     public static readonly Coding PlagueMeningitis = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Septicaemic plague
     /// </summary>
     public static readonly Coding SepticaemicPlague = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of plague
     /// </summary>
     public static readonly Coding OtherFormsOfPlague = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Plague, unspecified
     /// </summary>
     public static readonly Coding PlagueUnspecified = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tularaemia
     /// </summary>
     public static readonly Coding Tularaemia = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Ulceroglandular tularaemia
     /// </summary>
     public static readonly Coding UlceroglandularTularaemia = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Oculoglandular tularaemia
     /// </summary>
     public static readonly Coding OculoglandularTularaemia = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pulmonary tularaemia
     /// </summary>
     public static readonly Coding PulmonaryTularaemia = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gastrointestinal tularaemia
     /// </summary>
     public static readonly Coding GastrointestinalTularaemia = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Generalized tularaemia
     /// </summary>
     public static readonly Coding GeneralizedTularaemia = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of tularaemia
     /// </summary>
     public static readonly Coding OtherFormsOfTularaemia = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tularaemia, unspecified
     /// </summary>
     public static readonly Coding TularaemiaUnspecified = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Anthrax
     /// </summary>
     public static readonly Coding Anthrax = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cutaneous anthrax
     /// </summary>
     public static readonly Coding CutaneousAnthrax = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pulmonary anthrax
     /// </summary>
     public static readonly Coding PulmonaryAnthrax = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gastrointestinal anthrax
     /// </summary>
     public static readonly Coding GastrointestinalAnthrax = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Anthrax sepsis
     /// </summary>
     public static readonly Coding AnthraxSepsis = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of anthrax
     /// </summary>
     public static readonly Coding OtherFormsOfAnthrax = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Anthrax, unspecified
     /// </summary>
     public static readonly Coding AnthraxUnspecified = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Brucellosis
     /// </summary>
     public static readonly Coding Brucellosis = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Brucellosis due to Brucella melitensis
     /// </summary>
     public static readonly Coding BrucellosisDueToBrucellaMelitensis = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Brucellosis due to Brucella abortus
     /// </summary>
     public static readonly Coding BrucellosisDueToBrucellaAbortus = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Brucellosis due to Brucella suis
     /// </summary>
     public static readonly Coding BrucellosisDueToBrucellaSuis = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Brucellosis due to Brucella canis
     /// </summary>
     public static readonly Coding BrucellosisDueToBrucellaCanis = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other brucellosis
     /// </summary>
     public static readonly Coding OtherBrucellosis = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Brucellosis, unspecified
     /// </summary>
     public static readonly Coding BrucellosisUnspecified = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Glanders and melioidosis
     /// </summary>
     public static readonly Coding GlandersAndMelioidosis = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Glanders
     /// </summary>
     public static readonly Coding Glanders = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute and fulminating melioidosis
     /// </summary>
     public static readonly Coding AcuteAndFulminatingMelioidosis = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Subacute and chronic melioidosis
     /// </summary>
     public static readonly Coding SubacuteAndChronicMelioidosis = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other melioidosis
     /// </summary>
     public static readonly Coding OtherMelioidosis = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Melioidosis, unspecified
     /// </summary>
     public static readonly Coding MelioidosisUnspecified = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rat-bite fevers
     /// </summary>
     public static readonly Coding RatBiteFevers = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Spirillosis
     /// </summary>
     public static readonly Coding Spirillosis = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Streptobacillosis
     /// </summary>
     public static readonly Coding Streptobacillosis = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rat-bite fever, unspecified
     /// </summary>
     public static readonly Coding RatBiteFeverUnspecified = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Erysipeloid
     /// </summary>
     public static readonly Coding Erysipeloid = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cutaneous erysipeloid
     /// </summary>
     public static readonly Coding CutaneousErysipeloid = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Erysipelothrix sepsis
     /// </summary>
     public static readonly Coding ErysipelothrixSepsis = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of erysipeloid
     /// </summary>
     public static readonly Coding OtherFormsOfErysipeloid = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Erysipeloid, unspecified
     /// </summary>
     public static readonly Coding ErysipeloidUnspecified = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Leptospirosis
     /// </summary>
     public static readonly Coding Leptospirosis = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Leptospirosis icterohaemorrhagica
     /// </summary>
     public static readonly Coding LeptospirosisIcterohaemorrhagica = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of leptospirosis
     /// </summary>
     public static readonly Coding OtherFormsOfLeptospirosis = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Leptospirosis, unspecified
     /// </summary>
     public static readonly Coding LeptospirosisUnspecified = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other zoonotic bacterial diseases, not elsewhere classified
     /// </summary>
     public static readonly Coding OtherZoonoticBacterialDiseasesNotElsewhereClassified = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pasteurellosis
     /// </summary>
     public static readonly Coding Pasteurellosis = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cat-scratch disease
     /// </summary>
     public static readonly Coding CatScratchDisease = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Extraintestinal yersiniosis
     /// </summary>
     public static readonly Coding ExtraintestinalYersiniosis = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified zoonotic bacterial diseases, not elsewhere classified
     /// </summary>
     public static readonly Coding OtherSpecifiedZoonoticBacterialDiseasesNotElsewhereClassified = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Zoonotic bacterial disease, unspecified
     /// </summary>
     public static readonly Coding ZoonoticBacterialDiseaseUnspecified = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Leprosy [Hansen disease]
     /// </summary>
     public static readonly Coding LeprosyHansenDisease = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other bacterial diseases
     /// </summary>
     public static readonly Coding OtherBacterialDiseases = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Indeterminate leprosy
     /// </summary>
     public static readonly Coding IndeterminateLeprosy = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tuberculoid leprosy
     /// </summary>
     public static readonly Coding TuberculoidLeprosy = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Borderline tuberculoid leprosy
     /// </summary>
     public static readonly Coding BorderlineTuberculoidLeprosy = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Borderline leprosy
     /// </summary>
     public static readonly Coding BorderlineLeprosy = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Borderline lepromatous leprosy
     /// </summary>
     public static readonly Coding BorderlineLepromatousLeprosy = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Lepromatous leprosy
     /// </summary>
     public static readonly Coding LepromatousLeprosy = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of leprosy
     /// </summary>
     public static readonly Coding OtherFormsOfLeprosy = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Leprosy, unspecified
     /// </summary>
     public static readonly Coding LeprosyUnspecified = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Infection due to other mycobacteria
     /// </summary>
     public static readonly Coding InfectionDueToOtherMycobacteria = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pulmonary mycobacterial infection
     /// </summary>
     public static readonly Coding PulmonaryMycobacterialInfection = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cutaneous mycobacterial infection
     /// </summary>
     public static readonly Coding CutaneousMycobacterialInfection = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other mycobacterial infections
     /// </summary>
     public static readonly Coding OtherMycobacterialInfections = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mycobacterial infection, unspecified
     /// </summary>
     public static readonly Coding MycobacterialInfectionUnspecified = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Listeriosis
     /// </summary>
     public static readonly Coding Listeriosis = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cutaneous listeriosis
     /// </summary>
     public static readonly Coding CutaneousListeriosis = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Listerial meningitis and meningoencephalitis
     /// </summary>
     public static readonly Coding ListerialMeningitisAndMeningoencephalitis = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Listerial sepsis
     /// </summary>
     public static readonly Coding ListerialSepsis = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of listeriosis
     /// </summary>
     public static readonly Coding OtherFormsOfListeriosis = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Listeriosis, unspecified
     /// </summary>
     public static readonly Coding ListeriosisUnspecified = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tetanus neonatorum
     /// </summary>
     public static readonly Coding TetanusNeonatorum = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Obstetrical tetanus
     /// </summary>
     public static readonly Coding ObstetricalTetanus = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other tetanus
     /// </summary>
     public static readonly Coding OtherTetanus = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Diphtheria
     /// </summary>
     public static readonly Coding Diphtheria = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pharyngeal diphtheria
     /// </summary>
     public static readonly Coding PharyngealDiphtheria = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Nasopharyngeal diphtheria
     /// </summary>
     public static readonly Coding NasopharyngealDiphtheria = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Laryngeal diphtheria
     /// </summary>
     public static readonly Coding LaryngealDiphtheria = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cutaneous diphtheria
     /// </summary>
     public static readonly Coding CutaneousDiphtheria = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other diphtheria
     /// </summary>
     public static readonly Coding OtherDiphtheria = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Diphtheria, unspecified
     /// </summary>
     public static readonly Coding DiphtheriaUnspecified = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Whooping cough
     /// </summary>
     public static readonly Coding WhoopingCough = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Whooping cough due to Bordetella pertussis
     /// </summary>
     public static readonly Coding WhoopingCoughDueToBordetellaPertussis = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Whooping cough due to Bordetella parapertussis
     /// </summary>
     public static readonly Coding WhoopingCoughDueToBordetellaParapertussis = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Whooping cough due to other Bordetella species
     /// </summary>
     public static readonly Coding WhoopingCoughDueToOtherBordetellaSpecies = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Whooping cough, unspecified
     /// </summary>
     public static readonly Coding WhoopingCoughUnspecified = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Scarlet fever
     /// </summary>
     public static readonly Coding ScarletFever = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Meningococcal infection
     /// </summary>
     public static readonly Coding MeningococcalInfection = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Meningococcal meningitis[G01]
     /// </summary>
     public static readonly Coding MeningococcalMeningitisG01 = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Waterhouse-Friderichsen syndrome[E35.1]
     /// </summary>
     public static readonly Coding WaterhouseFriderichsenSyndromeE351 = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute meningococcaemia
     /// </summary>
     public static readonly Coding AcuteMeningococcaemia = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chronic meningococcaemia
     /// </summary>
     public static readonly Coding ChronicMeningococcaemia = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Meningococcaemia, unspecified
     /// </summary>
     public static readonly Coding MeningococcaemiaUnspecified = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Meningococcal heart disease
     /// </summary>
     public static readonly Coding MeningococcalHeartDisease = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other meningococcal infections
     /// </summary>
     public static readonly Coding OtherMeningococcalInfections = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Meningococcal infection, unspecified
     /// </summary>
     public static readonly Coding MeningococcalInfectionUnspecified = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Streptococcal sepsis
     /// </summary>
     public static readonly Coding StreptococcalSepsis = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sepsis due to streptococcus, group A
     /// </summary>
     public static readonly Coding SepsisDueToStreptococcusGroupA = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sepsis due to streptococcus, group B
     /// </summary>
     public static readonly Coding SepsisDueToStreptococcusGroupB = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sepsis due to streptococcus, group D and enterococcus
     /// </summary>
     public static readonly Coding SepsisDueToStreptococcusGroupDAndEnterococcus = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sepsis due to Streptococcus pneumoniae
     /// </summary>
     public static readonly Coding SepsisDueToStreptococcusPneumoniae = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other streptococcal sepsis
     /// </summary>
     public static readonly Coding OtherStreptococcalSepsis = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Streptococcal sepsis, unspecified
     /// </summary>
     public static readonly Coding StreptococcalSepsisUnspecified = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other sepsis
     /// </summary>
     public static readonly Coding OtherSepsis = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sepsis due to Staphylococcus aureus
     /// </summary>
     public static readonly Coding SepsisDueToStaphylococcusAureus = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sepsis due to other specified staphylococcus
     /// </summary>
     public static readonly Coding SepsisDueToOtherSpecifiedStaphylococcus = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sepsis due to unspecified staphylococcus
     /// </summary>
     public static readonly Coding SepsisDueToUnspecifiedStaphylococcus = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sepsis due to Haemophilus influenzae
     /// </summary>
     public static readonly Coding SepsisDueToHaemophilusInfluenzae = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sepsis due to anaerobes
     /// </summary>
     public static readonly Coding SepsisDueToAnaerobes = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sepsis due to other Gram-negative organisms
     /// </summary>
     public static readonly Coding SepsisDueToOtherGramNegativeOrganisms = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified sepsis
     /// </summary>
     public static readonly Coding OtherSpecifiedSepsis = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sepsis, unspecified
     /// </summary>
     public static readonly Coding SepsisUnspecified = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Actinomycosis
     /// </summary>
     public static readonly Coding Actinomycosis = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pulmonary actinomycosis
     /// </summary>
     public static readonly Coding PulmonaryActinomycosis = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Abdominal actinomycosis
     /// </summary>
     public static readonly Coding AbdominalActinomycosis = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cervicofacial actinomycosis
     /// </summary>
     public static readonly Coding CervicofacialActinomycosis = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Actinomycotic sepsis
     /// </summary>
     public static readonly Coding ActinomycoticSepsis = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of actinomycosis
     /// </summary>
     public static readonly Coding OtherFormsOfActinomycosis = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Actinomycosis, unspecified
     /// </summary>
     public static readonly Coding ActinomycosisUnspecified = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Nocardiosis
     /// </summary>
     public static readonly Coding Nocardiosis = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pulmonary nocardiosis
     /// </summary>
     public static readonly Coding PulmonaryNocardiosis = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cutaneous nocardiosis
     /// </summary>
     public static readonly Coding CutaneousNocardiosis = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of nocardiosis
     /// </summary>
     public static readonly Coding OtherFormsOfNocardiosis = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Nocardiosis, unspecified
     /// </summary>
     public static readonly Coding NocardiosisUnspecified = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Bartonellosis
     /// </summary>
     public static readonly Coding Bartonellosis = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Systemic bartonellosis
     /// </summary>
     public static readonly Coding SystemicBartonellosis = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cutaneous and mucocutaneous bartonellosis
     /// </summary>
     public static readonly Coding CutaneousAndMucocutaneousBartonellosis = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of bartonellosis
     /// </summary>
     public static readonly Coding OtherFormsOfBartonellosis = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Bartonellosis, unspecified
     /// </summary>
     public static readonly Coding BartonellosisUnspecified = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Erysipelas
     /// </summary>
     public static readonly Coding Erysipelas = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other bacterial diseases, not elsewhere classified
     /// </summary>
     public static readonly Coding OtherBacterialDiseasesNotElsewhereClassified = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gas gangrene
     /// </summary>
     public static readonly Coding GasGangrene = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Legionnaires disease
     /// </summary>
     public static readonly Coding LegionnairesDisease = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Nonpneumonic Legionnaires disease [Pontiac fever]
     /// </summary>
     public static readonly Coding NonpneumonicLegionnairesDiseasePontiacFever = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Toxic shock syndrome
     /// </summary>
     public static readonly Coding ToxicShockSyndrome = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Brazilian purpuric fever
     /// </summary>
     public static readonly Coding BrazilianPurpuricFever = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified bacterial diseases
     /// </summary>
     public static readonly Coding OtherSpecifiedBacterialDiseases = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Bacterial infection of unspecified site
     /// </summary>
     public static readonly Coding BacterialInfectionOfUnspecifiedSite = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Staphylococcal infection, unspecified site
     /// </summary>
     public static readonly Coding StaphylococcalInfectionUnspecifiedSite = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Streptococcal and enterococcal infection, unspecified site
     /// </summary>
     public static readonly Coding StreptococcalAndEnterococcalInfectionUnspecifiedSite = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Haemophilus influenzae infection, unspecified site
     /// </summary>
     public static readonly Coding HaemophilusInfluenzaeInfectionUnspecifiedSite = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mycoplasma infection, unspecified site
     /// </summary>
     public static readonly Coding MycoplasmaInfectionUnspecifiedSite = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other bacterial infections of unspecified site
     /// </summary>
     public static readonly Coding OtherBacterialInfectionsOfUnspecifiedSite = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Bacterial infection, unspecified
     /// </summary>
     public static readonly Coding BacterialInfectionUnspecified = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Congenital syphilis
     /// </summary>
     public static readonly Coding CongenitalSyphilis = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Infections with a predominantly sexual mode of transmission
     /// </summary>
     public static readonly Coding InfectionsWithAPredominantlySexualModeOfTransmission = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Early congenital syphilis, symptomatic
     /// </summary>
     public static readonly Coding EarlyCongenitalSyphilisSymptomatic = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Early congenital syphilis, latent
     /// </summary>
     public static readonly Coding EarlyCongenitalSyphilisLatent = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Early congenital syphilis, unspecified
     /// </summary>
     public static readonly Coding EarlyCongenitalSyphilisUnspecified = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Late congenital syphilitic oculopathy
     /// </summary>
     public static readonly Coding LateCongenitalSyphiliticOculopathy = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Late congenital neurosyphilis [juvenile neurosyphilis]
     /// </summary>
     public static readonly Coding LateCongenitalNeurosyphilisJuvenileNeurosyphilis = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other late congenital syphilis, symptomatic
     /// </summary>
     public static readonly Coding OtherLateCongenitalSyphilisSymptomatic = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Late congenital syphilis, latent
     /// </summary>
     public static readonly Coding LateCongenitalSyphilisLatent = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Late congenital syphilis, unspecified
     /// </summary>
     public static readonly Coding LateCongenitalSyphilisUnspecified = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Congenital syphilis, unspecified
     /// </summary>
     public static readonly Coding CongenitalSyphilisUnspecified = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Early syphilis
     /// </summary>
     public static readonly Coding EarlySyphilis = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Primary genital syphilis
     /// </summary>
     public static readonly Coding PrimaryGenitalSyphilis = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Primary anal syphilis
     /// </summary>
     public static readonly Coding PrimaryAnalSyphilis = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Primary syphilis of other sites
     /// </summary>
     public static readonly Coding PrimarySyphilisOfOtherSites = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Secondary syphilis of skin and mucous membranes
     /// </summary>
     public static readonly Coding SecondarySyphilisOfSkinAndMucousMembranes = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other secondary syphilis
     /// </summary>
     public static readonly Coding OtherSecondarySyphilis = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Early syphilis, latent
     /// </summary>
     public static readonly Coding EarlySyphilisLatent = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Early syphilis, unspecified
     /// </summary>
     public static readonly Coding EarlySyphilisUnspecified = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Late syphilis
     /// </summary>
     public static readonly Coding LateSyphilis = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cardiovascular syphilis
     /// </summary>
     public static readonly Coding CardiovascularSyphilis = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Symptomatic neurosyphilis
     /// </summary>
     public static readonly Coding SymptomaticNeurosyphilis = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Asymptomatic neurosyphilis
     /// </summary>
     public static readonly Coding AsymptomaticNeurosyphilis = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Neurosyphilis, unspecified
     /// </summary>
     public static readonly Coding NeurosyphilisUnspecified = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other symptomatic late syphilis
     /// </summary>
     public static readonly Coding OtherSymptomaticLateSyphilis = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Late syphilis, latent
     /// </summary>
     public static readonly Coding LateSyphilisLatent = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Late syphilis, unspecified
     /// </summary>
     public static readonly Coding LateSyphilisUnspecified = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other and unspecified syphilis
     /// </summary>
     public static readonly Coding OtherAndUnspecifiedSyphilis = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Latent syphilis, unspecified as early or late
     /// </summary>
     public static readonly Coding LatentSyphilisUnspecifiedAsEarlyOrLate = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Syphilis, unspecified
     /// </summary>
     public static readonly Coding SyphilisUnspecified = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gonococcal infection
     /// </summary>
     public static readonly Coding GonococcalInfection = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gonococcal infection of lower genitourinary tract without periurethral or accessory gland abscess
     /// </summary>
     public static readonly Coding GonococcalInfectionOfLowerGenitourinaryTractWithoutPeriurethralOrAccessoryGlandAbscess = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gonococcal infection of lower genitourinary tract with periurethral and accessory gland abscess
     /// </summary>
     public static readonly Coding GonococcalInfectionOfLowerGenitourinaryTractWithPeriurethralAndAccessoryGlandAbscess = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gonococcal pelviperitonitis and other gonococcal genitourinary infections
     /// </summary>
     public static readonly Coding GonococcalPelviperitonitisAndOtherGonococcalGenitourinaryInfections = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gonococcal infection of eye
     /// </summary>
     public static readonly Coding GonococcalInfectionOfEye = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gonococcal infection of musculoskeletal system
     /// </summary>
     public static readonly Coding GonococcalInfectionOfMusculoskeletalSystem = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gonococcal pharyngitis
     /// </summary>
     public static readonly Coding GonococcalPharyngitis = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gonococcal infection of anus and rectum
     /// </summary>
     public static readonly Coding GonococcalInfectionOfAnusAndRectum = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other gonococcal infections
     /// </summary>
     public static readonly Coding OtherGonococcalInfections = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gonococcal infection, unspecified
     /// </summary>
     public static readonly Coding GonococcalInfectionUnspecified = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chlamydial lymphogranuloma (venereum)
     /// </summary>
     public static readonly Coding ChlamydialLymphogranulomaVenereum = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other sexually transmitted chlamydial diseases
     /// </summary>
     public static readonly Coding OtherSexuallyTransmittedChlamydialDiseases = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chlamydial infection of lower genitourinary tract
     /// </summary>
     public static readonly Coding ChlamydialInfectionOfLowerGenitourinaryTract = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chlamydial infection of pelviperitoneum and other genitourinary organs
     /// </summary>
     public static readonly Coding ChlamydialInfectionOfPelviperitoneumAndOtherGenitourinaryOrgans = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chlamydial infection of genitourinary tract, unspecified
     /// </summary>
     public static readonly Coding ChlamydialInfectionOfGenitourinaryTractUnspecified = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chlamydial infection of anus and rectum
     /// </summary>
     public static readonly Coding ChlamydialInfectionOfAnusAndRectum = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chlamydial infection of pharynx
     /// </summary>
     public static readonly Coding ChlamydialInfectionOfPharynx = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sexually transmitted chlamydial infection of other sites
     /// </summary>
     public static readonly Coding SexuallyTransmittedChlamydialInfectionOfOtherSites = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chancroid
     /// </summary>
     public static readonly Coding Chancroid = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Granuloma inguinale
     /// </summary>
     public static readonly Coding GranulomaInguinale = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Trichomoniasis
     /// </summary>
     public static readonly Coding Trichomoniasis = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Urogenital trichomoniasis
     /// </summary>
     public static readonly Coding UrogenitalTrichomoniasis = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Trichomoniasis of other sites
     /// </summary>
     public static readonly Coding TrichomoniasisOfOtherSites = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Trichomoniasis, unspecified
     /// </summary>
     public static readonly Coding TrichomoniasisUnspecified = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Anogenital herpesviral [herpes simplex] infection
     /// </summary>
     public static readonly Coding AnogenitalHerpesviralHerpesSimplexInfection = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Herpesviral infection of genitalia and urogenital tract
     /// </summary>
     public static readonly Coding HerpesviralInfectionOfGenitaliaAndUrogenitalTract = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Herpesviral infection of perianal skin and rectum
     /// </summary>
     public static readonly Coding HerpesviralInfectionOfPerianalSkinAndRectum = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Anogenital herpesviral infection, unspecified
     /// </summary>
     public static readonly Coding AnogenitalHerpesviralInfectionUnspecified = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other predominantly sexually transmitted diseases, not elsewhere classified
     /// </summary>
     public static readonly Coding OtherPredominantlySexuallyTransmittedDiseasesNotElsewhereClassified = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Anogenital (venereal) warts
     /// </summary>
     public static readonly Coding AnogenitalVenerealWarts = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified predominantly sexually transmitted diseases
     /// </summary>
     public static readonly Coding OtherSpecifiedPredominantlySexuallyTransmittedDiseases = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified sexually transmitted disease
     /// </summary>
     public static readonly Coding UnspecifiedSexuallyTransmittedDisease = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Nonvenereal syphilis
     /// </summary>
     public static readonly Coding NonvenerealSyphilis = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other spirochaetal diseases
     /// </summary>
     public static readonly Coding OtherSpirochaetalDiseases = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Yaws
     /// </summary>
     public static readonly Coding Yaws = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Initial lesions of yaws
     /// </summary>
     public static readonly Coding InitialLesionsOfYaws = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Multiple papillomata and wet crab yaws
     /// </summary>
     public static readonly Coding MultiplePapillomataAndWetCrabYaws = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other early skin lesions of yaws
     /// </summary>
     public static readonly Coding OtherEarlySkinLesionsOfYaws = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Hyperkeratosis of yaws
     /// </summary>
     public static readonly Coding HyperkeratosisOfYaws = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gummata and ulcers of yaws
     /// </summary>
     public static readonly Coding GummataAndUlcersOfYaws = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gangosa
     /// </summary>
     public static readonly Coding Gangosa = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Bone and joint lesions of yaws
     /// </summary>
     public static readonly Coding BoneAndJointLesionsOfYaws = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other manifestations of yaws
     /// </summary>
     public static readonly Coding OtherManifestationsOfYaws = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Latent yaws
     /// </summary>
     public static readonly Coding LatentYaws = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Yaws, unspecified
     /// </summary>
     public static readonly Coding YawsUnspecified = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pinta [carate]
     /// </summary>
     public static readonly Coding PintaCarate = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Primary lesions of pinta
     /// </summary>
     public static readonly Coding PrimaryLesionsOfPinta = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Intermediate lesions of pinta
     /// </summary>
     public static readonly Coding IntermediateLesionsOfPinta = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Late lesions of pinta
     /// </summary>
     public static readonly Coding LateLesionsOfPinta = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mixed lesions of pinta
     /// </summary>
     public static readonly Coding MixedLesionsOfPinta = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pinta, unspecified
     /// </summary>
     public static readonly Coding PintaUnspecified = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Relapsing fevers
     /// </summary>
     public static readonly Coding RelapsingFevers = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Louse-borne relapsing fever
     /// </summary>
     public static readonly Coding LouseBorneRelapsingFever = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tick-borne relapsing fever
     /// </summary>
     public static readonly Coding TickBorneRelapsingFever = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Relapsing fever, unspecified
     /// </summary>
     public static readonly Coding RelapsingFeverUnspecified = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other spirochaetal infections
     /// </summary>
     public static readonly Coding OtherSpirochaetalInfections = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Necrotizing ulcerative stomatitis
     /// </summary>
     public static readonly Coding NecrotizingUlcerativeStomatitis = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other Vincent infections
     /// </summary>
     public static readonly Coding OtherVincentInfections = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Lyme disease
     /// </summary>
     public static readonly Coding LymeDisease = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified spirochaetal infections
     /// </summary>
     public static readonly Coding OtherSpecifiedSpirochaetalInfections = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Spirochaetal infection, unspecified
     /// </summary>
     public static readonly Coding SpirochaetalInfectionUnspecified = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chlamydia psittaci infection
     /// </summary>
     public static readonly Coding ChlamydiaPsittaciInfection = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other diseases caused by chlamydiae
     /// </summary>
     public static readonly Coding OtherDiseasesCausedByChlamydiae = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Trachoma
     /// </summary>
     public static readonly Coding Trachoma = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Initial stage of trachoma
     /// </summary>
     public static readonly Coding InitialStageOfTrachoma = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Active stage of trachoma
     /// </summary>
     public static readonly Coding ActiveStageOfTrachoma = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Trachoma, unspecified
     /// </summary>
     public static readonly Coding TrachomaUnspecified = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other diseases caused by chlamydiae
     /// </summary>
     public static readonly Coding OtherDiseasesCausedByChlamydiae_2 = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chlamydial conjunctivitis[H13.1]
     /// </summary>
     public static readonly Coding ChlamydialConjunctivitisH131 = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other chlamydial diseases
     /// </summary>
     public static readonly Coding OtherChlamydialDiseases = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chlamydial infection, unspecified
     /// </summary>
     public static readonly Coding ChlamydialInfectionUnspecified = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Typhus fever
     /// </summary>
     public static readonly Coding TyphusFever = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rickettsioses
     /// </summary>
     public static readonly Coding Rickettsioses = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Epidemic louse-borne typhus fever due to Rickettsia prowazekii
     /// </summary>
     public static readonly Coding EpidemicLouseBorneTyphusFeverDueToRickettsiaProwazekii = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Recrudescent typhus [Brill disease]
     /// </summary>
     public static readonly Coding RecrudescentTyphusBrillDisease = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Typhus fever due to Rickettsia typhi
     /// </summary>
     public static readonly Coding TyphusFeverDueToRickettsiaTyphi = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Typhus fever due to Rickettsia tsutsugamushi
     /// </summary>
     public static readonly Coding TyphusFeverDueToRickettsiaTsutsugamushi = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Typhus fever, unspecified
     /// </summary>
     public static readonly Coding TyphusFeverUnspecified = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Spotted fever [tick-borne rickettsioses]
     /// </summary>
     public static readonly Coding SpottedFeverTickBorneRickettsioses = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Spotted fever due to Rickettsia rickettsii
     /// </summary>
     public static readonly Coding SpottedFeverDueToRickettsiaRickettsii = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Spotted fever due to Rickettsia conorii
     /// </summary>
     public static readonly Coding SpottedFeverDueToRickettsiaConorii = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Spotted fever due to Rickettsia sibirica
     /// </summary>
     public static readonly Coding SpottedFeverDueToRickettsiaSibirica = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Spotted fever due to Rickettsia australis
     /// </summary>
     public static readonly Coding SpottedFeverDueToRickettsiaAustralis = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other spotted fevers
     /// </summary>
     public static readonly Coding OtherSpottedFevers = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Spotted fever, unspecified
     /// </summary>
     public static readonly Coding SpottedFeverUnspecified = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Q fever
     /// </summary>
     public static readonly Coding QFever = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other rickettsioses
     /// </summary>
     public static readonly Coding OtherRickettsioses = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Trench fever
     /// </summary>
     public static readonly Coding TrenchFever = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rickettsialpox due to Rickettsia akari
     /// </summary>
     public static readonly Coding RickettsialpoxDueToRickettsiaAkari = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified rickettsioses
     /// </summary>
     public static readonly Coding OtherSpecifiedRickettsioses = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rickettsiosis, unspecified
     /// </summary>
     public static readonly Coding RickettsiosisUnspecified = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute poliomyelitis
     /// </summary>
     public static readonly Coding AcutePoliomyelitis = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Viral infections of the central nervous system
     /// </summary>
     public static readonly Coding ViralInfectionsOfTheCentralNervousSystem = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute paralytic poliomyelitis, vaccine-associated
     /// </summary>
     public static readonly Coding AcuteParalyticPoliomyelitisVaccineAssociated = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute paralytic poliomyelitis, wild virus, imported
     /// </summary>
     public static readonly Coding AcuteParalyticPoliomyelitisWildVirusImported = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute paralytic poliomyelitis, wild virus, indigenous
     /// </summary>
     public static readonly Coding AcuteParalyticPoliomyelitisWildVirusIndigenous = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute paralytic poliomyelitis, other and unspecified
     /// </summary>
     public static readonly Coding AcuteParalyticPoliomyelitisOtherAndUnspecified = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute nonparalytic poliomyelitis
     /// </summary>
     public static readonly Coding AcuteNonparalyticPoliomyelitis = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute poliomyelitis, unspecified
     /// </summary>
     public static readonly Coding AcutePoliomyelitisUnspecified = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Atypical virus infections of central nervous system
     /// </summary>
     public static readonly Coding AtypicalVirusInfectionsOfCentralNervousSystem = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Creutzfeldt-Jakob disease
     /// </summary>
     public static readonly Coding CreutzfeldtJakobDisease = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Subacute sclerosing panencephalitis
     /// </summary>
     public static readonly Coding SubacuteSclerosingPanencephalitis = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Progressive multifocal leukoencephalopathy
     /// </summary>
     public static readonly Coding ProgressiveMultifocalLeukoencephalopathy = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other atypical virus infections of central nervous system
     /// </summary>
     public static readonly Coding OtherAtypicalVirusInfectionsOfCentralNervousSystem = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Atypical virus infection of central nervous system, unspecified
     /// </summary>
     public static readonly Coding AtypicalVirusInfectionOfCentralNervousSystemUnspecified = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rabies
     /// </summary>
     public static readonly Coding Rabies = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sylvatic rabies
     /// </summary>
     public static readonly Coding SylvaticRabies = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Urban rabies
     /// </summary>
     public static readonly Coding UrbanRabies = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rabies, unspecified
     /// </summary>
     public static readonly Coding RabiesUnspecified = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mosquito-borne viral encephalitis
     /// </summary>
     public static readonly Coding MosquitoBorneViralEncephalitis = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Japanese encephalitis
     /// </summary>
     public static readonly Coding JapaneseEncephalitis = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Western equine encephalitis
     /// </summary>
     public static readonly Coding WesternEquineEncephalitis = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Eastern equine encephalitis
     /// </summary>
     public static readonly Coding EasternEquineEncephalitis = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// St Louis encephalitis
     /// </summary>
     public static readonly Coding StLouisEncephalitis = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Australian encephalitis
     /// </summary>
     public static readonly Coding AustralianEncephalitis = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// California encephalitis
     /// </summary>
     public static readonly Coding CaliforniaEncephalitis = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rocio virus disease
     /// </summary>
     public static readonly Coding RocioVirusDisease = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other mosquito-borne viral encephalitis
     /// </summary>
     public static readonly Coding OtherMosquitoBorneViralEncephalitis = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mosquito-borne viral encephalitis, unspecified
     /// </summary>
     public static readonly Coding MosquitoBorneViralEncephalitisUnspecified = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tick-borne viral encephalitis
     /// </summary>
     public static readonly Coding TickBorneViralEncephalitis = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Far Eastern tick-borne encephalitis [Russian spring-summer encephalitis]
     /// </summary>
     public static readonly Coding FarEasternTickBorneEncephalitisRussianSpringSummerEncephalitis = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Central European tick-borne encephalitis
     /// </summary>
     public static readonly Coding CentralEuropeanTickBorneEncephalitis = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other tick-borne viral encephalitis
     /// </summary>
     public static readonly Coding OtherTickBorneViralEncephalitis = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tick-borne viral encephalitis, unspecified
     /// </summary>
     public static readonly Coding TickBorneViralEncephalitisUnspecified = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other viral encephalitis, not elsewhere classified
     /// </summary>
     public static readonly Coding OtherViralEncephalitisNotElsewhereClassified = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Enteroviral encephalitis[G05.1]
     /// </summary>
     public static readonly Coding EnteroviralEncephalitisG051 = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Adenoviral encephalitis[G05.1]
     /// </summary>
     public static readonly Coding AdenoviralEncephalitisG051 = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Arthropod-borne viral encephalitis, unspecified
     /// </summary>
     public static readonly Coding ArthropodBorneViralEncephalitisUnspecified = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified viral encephalitis
     /// </summary>
     public static readonly Coding OtherSpecifiedViralEncephalitis = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified viral encephalitis
     /// </summary>
     public static readonly Coding UnspecifiedViralEncephalitis = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Viral meningitis
     /// </summary>
     public static readonly Coding ViralMeningitis = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Enteroviral meningitis[G02.0]
     /// </summary>
     public static readonly Coding EnteroviralMeningitisG020 = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Adenoviral meningitis[G02.0]
     /// </summary>
     public static readonly Coding AdenoviralMeningitisG020 = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Lymphocytic choriomeningitis
     /// </summary>
     public static readonly Coding LymphocyticChoriomeningitis = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other viral meningitis
     /// </summary>
     public static readonly Coding OtherViralMeningitis = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Viral meningitis, unspecified
     /// </summary>
     public static readonly Coding ViralMeningitisUnspecified = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other viral infections of central nervous system, not elsewhere classified
     /// </summary>
     public static readonly Coding OtherViralInfectionsOfCentralNervousSystemNotElsewhereClassified = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Enteroviral exanthematous fever [Boston exanthem]
     /// </summary>
     public static readonly Coding EnteroviralExanthematousFeverBostonExanthem = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Epidemic vertigo
     /// </summary>
     public static readonly Coding EpidemicVertigo = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified viral infections of central nervous system
     /// </summary>
     public static readonly Coding OtherSpecifiedViralInfectionsOfCentralNervousSystem = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified viral infection of central nervous system
     /// </summary>
     public static readonly Coding UnspecifiedViralInfectionOfCentralNervousSystem = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other mosquito-borne viral fevers
     /// </summary>
     public static readonly Coding OtherMosquitoBorneViralFevers = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Arthropod-borne viral fevers and viral haemorrhagic fevers
     /// </summary>
     public static readonly Coding ArthropodBorneViralFeversAndViralHaemorrhagicFevers = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chikungunya virus disease
     /// </summary>
     public static readonly Coding ChikungunyaVirusDisease = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// O'nyong-nyong fever
     /// </summary>
     public static readonly Coding OQuoteNyongNyongFever = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Venezuelan equine fever
     /// </summary>
     public static readonly Coding VenezuelanEquineFever = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// West Nile virus infection
     /// </summary>
     public static readonly Coding WestNileVirusInfection = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rift Valley fever
     /// </summary>
     public static readonly Coding RiftValleyFever = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Zika virus disease
     /// </summary>
     public static readonly Coding ZikaVirusDisease = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified mosquito-borne viral fevers
     /// </summary>
     public static readonly Coding OtherSpecifiedMosquitoBorneViralFevers = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mosquito-borne viral fever, unspecified
     /// </summary>
     public static readonly Coding MosquitoBorneViralFeverUnspecified = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other arthropod-borne viral fevers, not elsewhere classified
     /// </summary>
     public static readonly Coding OtherArthropodBorneViralFeversNotElsewhereClassified = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Oropouche virus disease
     /// </summary>
     public static readonly Coding OropoucheVirusDisease = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sandfly fever
     /// </summary>
     public static readonly Coding SandflyFever = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Colorado tick fever
     /// </summary>
     public static readonly Coding ColoradoTickFever = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified arthropod-borne viral fevers
     /// </summary>
     public static readonly Coding OtherSpecifiedArthropodBorneViralFevers = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified arthropod-borne viral fever
     /// </summary>
     public static readonly Coding UnspecifiedArthropodBorneViralFever = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Yellow fever
     /// </summary>
     public static readonly Coding YellowFever = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sylvatic yellow fever
     /// </summary>
     public static readonly Coding SylvaticYellowFever = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Urban yellow fever
     /// </summary>
     public static readonly Coding UrbanYellowFever = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Yellow fever, unspecified
     /// </summary>
     public static readonly Coding YellowFeverUnspecified = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Arenaviral haemorrhagic fever
     /// </summary>
     public static readonly Coding ArenaviralHaemorrhagicFever = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Junin haemorrhagic fever
     /// </summary>
     public static readonly Coding JuninHaemorrhagicFever = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Machupo haemorrhagic fever
     /// </summary>
     public static readonly Coding MachupoHaemorrhagicFever = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Lassa fever
     /// </summary>
     public static readonly Coding LassaFever = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other arenaviral haemorrhagic fevers
     /// </summary>
     public static readonly Coding OtherArenaviralHaemorrhagicFevers = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Arenaviral haemorrhagic fever, unspecified
     /// </summary>
     public static readonly Coding ArenaviralHaemorrhagicFeverUnspecified = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Dengue
     /// </summary>
     public static readonly Coding Dengue = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Dengue without warning signs
     /// </summary>
     public static readonly Coding DengueWithoutWarningSigns = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Dengue with warning signs
     /// </summary>
     public static readonly Coding DengueWithWarningSigns = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Severe Dengue
     /// </summary>
     public static readonly Coding SevereDengue = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Dengue, unspecified
     /// </summary>
     public static readonly Coding DengueUnspecified = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other viral haemorrhagic fevers, not elsewhere classified
     /// </summary>
     public static readonly Coding OtherViralHaemorrhagicFeversNotElsewhereClassified = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Crimean-Congo haemorrhagic fever
     /// </summary>
     public static readonly Coding CrimeanCongoHaemorrhagicFever = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Omsk haemorrhagic fever
     /// </summary>
     public static readonly Coding OmskHaemorrhagicFever = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Kyasanur Forest disease
     /// </summary>
     public static readonly Coding KyasanurForestDisease = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Marburg virus disease
     /// </summary>
     public static readonly Coding MarburgVirusDisease = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Ebola virus disease
     /// </summary>
     public static readonly Coding EbolaVirusDisease = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Haemorrhagic fever with renal syndrome
     /// </summary>
     public static readonly Coding HaemorrhagicFeverWithRenalSyndrome = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified viral haemorrhagic fevers
     /// </summary>
     public static readonly Coding OtherSpecifiedViralHaemorrhagicFevers = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified viral haemorrhagic fever
     /// </summary>
     public static readonly Coding UnspecifiedViralHaemorrhagicFever = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Herpesviral [herpes simplex] infections
     /// </summary>
     public static readonly Coding HerpesviralHerpesSimplexInfections = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Viral infections characterized by skin and mucous membrane lesions
     /// </summary>
     public static readonly Coding ViralInfectionsCharacterizedBySkinAndMucousMembraneLesions = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Eczema herpeticum
     /// </summary>
     public static readonly Coding EczemaHerpeticum = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Herpesviral vesicular dermatitis
     /// </summary>
     public static readonly Coding HerpesviralVesicularDermatitis = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Herpesviral gingivostomatitis and pharyngotonsillitis
     /// </summary>
     public static readonly Coding HerpesviralGingivostomatitisAndPharyngotonsillitis = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Herpesviral meningitis[G02.0]
     /// </summary>
     public static readonly Coding HerpesviralMeningitisG020 = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Herpesviral encephalitis[G05.1]
     /// </summary>
     public static readonly Coding HerpesviralEncephalitisG051 = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Herpesviral ocular disease
     /// </summary>
     public static readonly Coding HerpesviralOcularDisease = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Disseminated herpesviral disease
     /// </summary>
     public static readonly Coding DisseminatedHerpesviralDisease = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of herpesviral infection
     /// </summary>
     public static readonly Coding OtherFormsOfHerpesviralInfection = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Herpesviral infection, unspecified
     /// </summary>
     public static readonly Coding HerpesviralInfectionUnspecified = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Varicella [chickenpox]
     /// </summary>
     public static readonly Coding VaricellaChickenpox = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Varicella meningitis[G02.0]
     /// </summary>
     public static readonly Coding VaricellaMeningitisG020 = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Varicella encephalitis[G05.1]
     /// </summary>
     public static readonly Coding VaricellaEncephalitisG051 = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Varicella pneumonia[J17.1]
     /// </summary>
     public static readonly Coding VaricellaPneumoniaJ171 = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Varicella with other complications
     /// </summary>
     public static readonly Coding VaricellaWithOtherComplications = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Varicella without complication
     /// </summary>
     public static readonly Coding VaricellaWithoutComplication = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Zoster [herpes zoster]
     /// </summary>
     public static readonly Coding ZosterHerpesZoster = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Zoster encephalitis[G05.1]
     /// </summary>
     public static readonly Coding ZosterEncephalitisG051 = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Zoster meningitis[G02.0]
     /// </summary>
     public static readonly Coding ZosterMeningitisG020 = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Zoster with other nervous system involvement
     /// </summary>
     public static readonly Coding ZosterWithOtherNervousSystemInvolvement = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Zoster ocular disease
     /// </summary>
     public static readonly Coding ZosterOcularDisease = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Disseminated zoster
     /// </summary>
     public static readonly Coding DisseminatedZoster = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Zoster with other complications
     /// </summary>
     public static readonly Coding ZosterWithOtherComplications = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Zoster without complication
     /// </summary>
     public static readonly Coding ZosterWithoutComplication = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// SmallpoxINCLUDE
     /// </summary>
     public static readonly Coding SmallpoxINCLUDE = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Monkeypox
     /// </summary>
     public static readonly Coding Monkeypox = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Measles
     /// </summary>
     public static readonly Coding Measles = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Measles complicated by encephalitis[G05.1]
     /// </summary>
     public static readonly Coding MeaslesComplicatedByEncephalitisG051 = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Measles complicated by meningitis[G02.0]
     /// </summary>
     public static readonly Coding MeaslesComplicatedByMeningitisG020 = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Measles complicated by pneumonia[J17.1]
     /// </summary>
     public static readonly Coding MeaslesComplicatedByPneumoniaJ171 = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Measles complicated by otitis media[H67.1]
     /// </summary>
     public static readonly Coding MeaslesComplicatedByOtitisMediaH671 = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Measles with intestinal complications
     /// </summary>
     public static readonly Coding MeaslesWithIntestinalComplications = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Measles with other complications
     /// </summary>
     public static readonly Coding MeaslesWithOtherComplications = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Measles without complication
     /// </summary>
     public static readonly Coding MeaslesWithoutComplication = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rubella [German measles]
     /// </summary>
     public static readonly Coding RubellaGermanMeasles = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rubella with neurological complications
     /// </summary>
     public static readonly Coding RubellaWithNeurologicalComplications = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rubella with other complications
     /// </summary>
     public static readonly Coding RubellaWithOtherComplications = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rubella without complication
     /// </summary>
     public static readonly Coding RubellaWithoutComplication = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Viral warts
     /// </summary>
     public static readonly Coding ViralWarts = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other viral infections characterized by skin and mucous membrane lesions, not elsewhere classified
     /// </summary>
     public static readonly Coding OtherViralInfectionsCharacterizedBySkinAndMucousMembraneLesionsNotElsewhereClassified = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other orthopoxvirus infections
     /// </summary>
     public static readonly Coding OtherOrthopoxvirusInfections = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Molluscum contagiosum
     /// </summary>
     public static readonly Coding MolluscumContagiosum = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Exanthema subitum [sixth disease]
     /// </summary>
     public static readonly Coding ExanthemaSubitumSixthDisease = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Erythema infectiosum [fifth disease]
     /// </summary>
     public static readonly Coding ErythemaInfectiosumFifthDisease = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Enteroviral vesicular stomatitis with exanthem
     /// </summary>
     public static readonly Coding EnteroviralVesicularStomatitisWithExanthem = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Enteroviral vesicular pharyngitis
     /// </summary>
     public static readonly Coding EnteroviralVesicularPharyngitis = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified viral infections characterized by skin and mucous membrane lesions
     /// </summary>
     public static readonly Coding OtherSpecifiedViralInfectionsCharacterizedBySkinAndMucousMembraneLesions = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified viral infection characterized by skin and mucous membrane lesions
     /// </summary>
     public static readonly Coding UnspecifiedViralInfectionCharacterizedBySkinAndMucousMembraneLesions = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute hepatitis A
     /// </summary>
     public static readonly Coding AcuteHepatitisA = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Viral hepatitis
     /// </summary>
     public static readonly Coding ViralHepatitis = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Hepatitis A with hepatic coma
     /// </summary>
     public static readonly Coding HepatitisAWithHepaticComa = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Hepatitis A without hepatic coma
     /// </summary>
     public static readonly Coding HepatitisAWithoutHepaticComa = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute hepatitis B
     /// </summary>
     public static readonly Coding AcuteHepatitisB = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute hepatitis B with delta-agent (coinfection) with hepatic coma
     /// </summary>
     public static readonly Coding AcuteHepatitisBWithDeltaAgentCoinfectionWithHepaticComa = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute hepatitis B with delta-agent (coinfection) without hepatic coma
     /// </summary>
     public static readonly Coding AcuteHepatitisBWithDeltaAgentCoinfectionWithoutHepaticComa = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute hepatitis B without delta-agent with hepatic coma
     /// </summary>
     public static readonly Coding AcuteHepatitisBWithoutDeltaAgentWithHepaticComa = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute hepatitis B without delta-agent and without hepatic coma
     /// </summary>
     public static readonly Coding AcuteHepatitisBWithoutDeltaAgentAndWithoutHepaticComa = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other acute viral hepatitis
     /// </summary>
     public static readonly Coding OtherAcuteViralHepatitis = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute delta-(super)infection in chronic hepatitis B
     /// </summary>
     public static readonly Coding AcuteDeltaSuperInfectionInChronicHepatitisB = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute hepatitis C
     /// </summary>
     public static readonly Coding AcuteHepatitisC = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute hepatitis E
     /// </summary>
     public static readonly Coding AcuteHepatitisE = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified acute viral hepatitis
     /// </summary>
     public static readonly Coding OtherSpecifiedAcuteViralHepatitis = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute viral hepatitis, unspecified
     /// </summary>
     public static readonly Coding AcuteViralHepatitisUnspecified = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chronic viral hepatitis
     /// </summary>
     public static readonly Coding ChronicViralHepatitis = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chronic viral hepatitis B with delta-agent
     /// </summary>
     public static readonly Coding ChronicViralHepatitisBWithDeltaAgent = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chronic viral hepatitis B without delta-agent
     /// </summary>
     public static readonly Coding ChronicViralHepatitisBWithoutDeltaAgent = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chronic viral hepatitis C
     /// </summary>
     public static readonly Coding ChronicViralHepatitisC = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other chronic viral hepatitis
     /// </summary>
     public static readonly Coding OtherChronicViralHepatitis = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chronic viral hepatitis, unspecified
     /// </summary>
     public static readonly Coding ChronicViralHepatitisUnspecified = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified viral hepatitis
     /// </summary>
     public static readonly Coding UnspecifiedViralHepatitis = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified viral hepatitis with hepatic coma
     /// </summary>
     public static readonly Coding UnspecifiedViralHepatitisWithHepaticComa = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified viral hepatitis without hepatic coma
     /// </summary>
     public static readonly Coding UnspecifiedViralHepatitisWithoutHepaticComa = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Human immunodeficiency virus [HIV] disease resulting in infectious and parasitic diseases
     /// </summary>
     public static readonly Coding HumanImmunodeficiencyVirusHIVDiseaseResultingInInfectiousAndParasiticDiseases = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Human immunodeficiency virus [HIV] disease
     /// </summary>
     public static readonly Coding HumanImmunodeficiencyVirusHIVDisease = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in mycobacterial infection
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInMycobacterialInfection = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in other bacterial infections
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInOtherBacterialInfections = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in cytomegaloviral disease
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInCytomegaloviralDisease = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in other viral infections
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInOtherViralInfections = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in candidiasis
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInCandidiasis = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in other mycoses
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInOtherMycoses = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in Pneumocystis jirovecii pneumonia
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInPneumocystisJiroveciiPneumonia = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in multiple infections
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInMultipleInfections = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in other infectious and parasitic diseases
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInOtherInfectiousAndParasiticDiseases = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in unspecified infectious or parasitic disease
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInUnspecifiedInfectiousOrParasiticDisease = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Human immunodeficiency virus [HIV] disease resulting in malignant neoplasms
     /// </summary>
     public static readonly Coding HumanImmunodeficiencyVirusHIVDiseaseResultingInMalignantNeoplasms = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in Kaposi sarcoma
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInKaposiSarcoma = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in Burkitt lymphoma
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInBurkittLymphoma = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in other types of non-Hodgkin lymphoma
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInOtherTypesOfNonHodgkinLymphoma = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in other malignant neoplasms of lymphoid, haematopoietic and related tissue
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInOtherMalignantNeoplasmsOfLymphoidHaematopoieticAndRelatedTissue = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in multiple malignant neoplasms
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInMultipleMalignantNeoplasms = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in other malignant neoplasms
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInOtherMalignantNeoplasms = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in unspecified malignant neoplasm
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInUnspecifiedMalignantNeoplasm = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Human immunodeficiency virus [HIV] disease resulting in other specified diseases
     /// </summary>
     public static readonly Coding HumanImmunodeficiencyVirusHIVDiseaseResultingInOtherSpecifiedDiseases = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in encephalopathy
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInEncephalopathy = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in lymphoid interstitial pneumonitis
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInLymphoidInterstitialPneumonitis = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in wasting syndrome
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInWastingSyndrome = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in multiple diseases classified elsewhere
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInMultipleDiseasesClassifiedElsewhere = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Human immunodeficiency virus [HIV] disease resulting in other conditions
     /// </summary>
     public static readonly Coding HumanImmunodeficiencyVirusHIVDiseaseResultingInOtherConditions = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute HIV infection syndrome
     /// </summary>
     public static readonly Coding AcuteHIVInfectionSyndrome = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in (persistent) generalized lymphadenopathy
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInPersistentGeneralizedLymphadenopathy = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in haematological and immunological abnormalities, not elsewhere classified
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInHaematologicalAndImmunologicalAbnormalitiesNotElsewhereClassified = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// HIV disease resulting in other specified conditions
     /// </summary>
     public static readonly Coding HIVDiseaseResultingInOtherSpecifiedConditions = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified human immunodeficiency virus [HIV] disease
     /// </summary>
     public static readonly Coding UnspecifiedHumanImmunodeficiencyVirusHIVDisease = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cytomegaloviral disease
     /// </summary>
     public static readonly Coding CytomegaloviralDisease = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other viral diseases
     /// </summary>
     public static readonly Coding OtherViralDiseases = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cytomegaloviral pneumonitis[J17.1]
     /// </summary>
     public static readonly Coding CytomegaloviralPneumonitisJ171 = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cytomegaloviral hepatitis[K77.0]
     /// </summary>
     public static readonly Coding CytomegaloviralHepatitisK770 = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cytomegaloviral pancreatitis[K87.1]
     /// </summary>
     public static readonly Coding CytomegaloviralPancreatitisK871 = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other cytomegaloviral diseases
     /// </summary>
     public static readonly Coding OtherCytomegaloviralDiseases = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cytomegaloviral disease, unspecified
     /// </summary>
     public static readonly Coding CytomegaloviralDiseaseUnspecified = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mumps
     /// </summary>
     public static readonly Coding Mumps = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mumps orchitis[N51.1]
     /// </summary>
     public static readonly Coding MumpsOrchitisN511 = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mumps meningitis[G02.0]
     /// </summary>
     public static readonly Coding MumpsMeningitisG020 = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mumps encephalitis[G05.1]
     /// </summary>
     public static readonly Coding MumpsEncephalitisG051 = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mumps pancreatitis[K87.1]
     /// </summary>
     public static readonly Coding MumpsPancreatitisK871 = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mumps with other complications
     /// </summary>
     public static readonly Coding MumpsWithOtherComplications = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mumps without complication
     /// </summary>
     public static readonly Coding MumpsWithoutComplication = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Infectious mononucleosis
     /// </summary>
     public static readonly Coding InfectiousMononucleosis = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gammaherpesviral mononucleosis
     /// </summary>
     public static readonly Coding GammaherpesviralMononucleosis = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cytomegaloviral mononucleosis
     /// </summary>
     public static readonly Coding CytomegaloviralMononucleosis = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other infectious mononucleosis
     /// </summary>
     public static readonly Coding OtherInfectiousMononucleosis = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Infectious mononucleosis, unspecified
     /// </summary>
     public static readonly Coding InfectiousMononucleosisUnspecified = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Viral conjunctivitis
     /// </summary>
     public static readonly Coding ViralConjunctivitis = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Keratoconjunctivitis due to adenovirus[H19.2]
     /// </summary>
     public static readonly Coding KeratoconjunctivitisDueToAdenovirusH192 = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Conjunctivitis due to adenovirus[H13.1]
     /// </summary>
     public static readonly Coding ConjunctivitisDueToAdenovirusH131 = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Viral pharyngoconjunctivitis
     /// </summary>
     public static readonly Coding ViralPharyngoconjunctivitis = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute epidemic haemorrhagic conjunctivitis (enteroviral)[H13.1]
     /// </summary>
     public static readonly Coding AcuteEpidemicHaemorrhagicConjunctivitisEnteroviralH131 = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other viral conjunctivitis[H13.1]
     /// </summary>
     public static readonly Coding OtherViralConjunctivitisH131 = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Viral conjunctivitis, unspecified
     /// </summary>
     public static readonly Coding ViralConjunctivitisUnspecified = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other viral diseases, not elsewhere classified
     /// </summary>
     public static readonly Coding OtherViralDiseasesNotElsewhereClassified = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Epidemic myalgia
     /// </summary>
     public static readonly Coding EpidemicMyalgia = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Ross River disease
     /// </summary>
     public static readonly Coding RossRiverDisease = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Viral carditis
     /// </summary>
     public static readonly Coding ViralCarditis = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Retrovirus infections, not elsewhere classified
     /// </summary>
     public static readonly Coding RetrovirusInfectionsNotElsewhereClassified = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Hantavirus (cardio-)pulmonary syndrome [HPS] [HCPS][J17.1]
     /// </summary>
     public static readonly Coding HantavirusCardioPulmonarySyndromeHPSHCPSJ171 = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified viral diseases
     /// </summary>
     public static readonly Coding OtherSpecifiedViralDiseases = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Viral infection of unspecified site
     /// </summary>
     public static readonly Coding ViralInfectionOfUnspecifiedSite = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Adenovirus infection, unspecified site
     /// </summary>
     public static readonly Coding AdenovirusInfectionUnspecifiedSite = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Enterovirus infection, unspecified site
     /// </summary>
     public static readonly Coding EnterovirusInfectionUnspecifiedSite = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Coronavirus infection, unspecified site
     /// </summary>
     public static readonly Coding CoronavirusInfectionUnspecifiedSite = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Parvovirus infection, unspecified site
     /// </summary>
     public static readonly Coding ParvovirusInfectionUnspecifiedSite = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Papovavirus infection, unspecified site
     /// </summary>
     public static readonly Coding PapovavirusInfectionUnspecifiedSite = new Coding
     {
@@ -5574,7 +5574,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other viral infections of unspecified site
     /// </summary>
     public static readonly Coding OtherViralInfectionsOfUnspecifiedSite = new Coding
     {
@@ -5583,7 +5583,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Viral infection, unspecified
     /// </summary>
     public static readonly Coding ViralInfectionUnspecified = new Coding
     {
@@ -5592,7 +5592,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Dermatophytosis
     /// </summary>
     public static readonly Coding Dermatophytosis = new Coding
     {
@@ -5601,7 +5601,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mycoses
     /// </summary>
     public static readonly Coding Mycoses = new Coding
     {
@@ -5610,7 +5610,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tinea barbae and tinea capitis
     /// </summary>
     public static readonly Coding TineaBarbaeAndTineaCapitis = new Coding
     {
@@ -5619,7 +5619,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tinea unguium
     /// </summary>
     public static readonly Coding TineaUnguium = new Coding
     {
@@ -5628,7 +5628,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tinea manuum
     /// </summary>
     public static readonly Coding TineaManuum = new Coding
     {
@@ -5637,7 +5637,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tinea pedis
     /// </summary>
     public static readonly Coding TineaPedis = new Coding
     {
@@ -5646,7 +5646,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tinea corporis
     /// </summary>
     public static readonly Coding TineaCorporis = new Coding
     {
@@ -5655,7 +5655,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tinea imbricata
     /// </summary>
     public static readonly Coding TineaImbricata = new Coding
     {
@@ -5664,7 +5664,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tinea inguinalis [Tinea cruris]
     /// </summary>
     public static readonly Coding TineaInguinalisTineaCruris = new Coding
     {
@@ -5673,7 +5673,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other dermatophytoses
     /// </summary>
     public static readonly Coding OtherDermatophytoses = new Coding
     {
@@ -5682,7 +5682,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Dermatophytosis, unspecified
     /// </summary>
     public static readonly Coding DermatophytosisUnspecified = new Coding
     {
@@ -5691,7 +5691,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other superficial mycoses
     /// </summary>
     public static readonly Coding OtherSuperficialMycoses = new Coding
     {
@@ -5700,7 +5700,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pityriasis versicolor
     /// </summary>
     public static readonly Coding PityriasisVersicolor = new Coding
     {
@@ -5709,7 +5709,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tinea nigra
     /// </summary>
     public static readonly Coding TineaNigra = new Coding
     {
@@ -5718,7 +5718,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// White piedra
     /// </summary>
     public static readonly Coding WhitePiedra = new Coding
     {
@@ -5727,7 +5727,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Black piedra
     /// </summary>
     public static readonly Coding BlackPiedra = new Coding
     {
@@ -5736,7 +5736,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified superficial mycoses
     /// </summary>
     public static readonly Coding OtherSpecifiedSuperficialMycoses = new Coding
     {
@@ -5745,7 +5745,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Superficial mycosis, unspecified
     /// </summary>
     public static readonly Coding SuperficialMycosisUnspecified = new Coding
     {
@@ -5754,7 +5754,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Candidiasis
     /// </summary>
     public static readonly Coding Candidiasis = new Coding
     {
@@ -5763,7 +5763,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Candidal stomatitis
     /// </summary>
     public static readonly Coding CandidalStomatitis = new Coding
     {
@@ -5772,7 +5772,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pulmonary candidiasis
     /// </summary>
     public static readonly Coding PulmonaryCandidiasis = new Coding
     {
@@ -5781,7 +5781,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Candidiasis of skin and nail
     /// </summary>
     public static readonly Coding CandidiasisOfSkinAndNail = new Coding
     {
@@ -5790,7 +5790,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Candidiasis of vulva and vagina[N77.1]
     /// </summary>
     public static readonly Coding CandidiasisOfVulvaAndVaginaN771 = new Coding
     {
@@ -5799,7 +5799,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Candidiasis of other urogenital sites
     /// </summary>
     public static readonly Coding CandidiasisOfOtherUrogenitalSites = new Coding
     {
@@ -5808,7 +5808,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Candidal meningitis[G02.1]
     /// </summary>
     public static readonly Coding CandidalMeningitisG021 = new Coding
     {
@@ -5817,7 +5817,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Candidal endocarditis[I39.8]
     /// </summary>
     public static readonly Coding CandidalEndocarditisI398 = new Coding
     {
@@ -5826,7 +5826,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Candidal sepsis
     /// </summary>
     public static readonly Coding CandidalSepsis = new Coding
     {
@@ -5835,7 +5835,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Candidiasis of other sites
     /// </summary>
     public static readonly Coding CandidiasisOfOtherSites = new Coding
     {
@@ -5844,7 +5844,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Candidiasis, unspecified
     /// </summary>
     public static readonly Coding CandidiasisUnspecified = new Coding
     {
@@ -5853,7 +5853,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Coccidioidomycosis
     /// </summary>
     public static readonly Coding Coccidioidomycosis = new Coding
     {
@@ -5862,7 +5862,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute pulmonary coccidioidomycosis
     /// </summary>
     public static readonly Coding AcutePulmonaryCoccidioidomycosis = new Coding
     {
@@ -5871,7 +5871,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chronic pulmonary coccidioidomycosis
     /// </summary>
     public static readonly Coding ChronicPulmonaryCoccidioidomycosis = new Coding
     {
@@ -5880,7 +5880,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pulmonary coccidioidomycosis, unspecified
     /// </summary>
     public static readonly Coding PulmonaryCoccidioidomycosisUnspecified = new Coding
     {
@@ -5889,7 +5889,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cutaneous coccidioidomycosis
     /// </summary>
     public static readonly Coding CutaneousCoccidioidomycosis = new Coding
     {
@@ -5898,7 +5898,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Coccidioidomycosis meningitis[G02.1]
     /// </summary>
     public static readonly Coding CoccidioidomycosisMeningitisG021 = new Coding
     {
@@ -5907,7 +5907,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Disseminated coccidioidomycosis
     /// </summary>
     public static readonly Coding DisseminatedCoccidioidomycosis = new Coding
     {
@@ -5916,7 +5916,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of coccidioidomycosis
     /// </summary>
     public static readonly Coding OtherFormsOfCoccidioidomycosis = new Coding
     {
@@ -5925,7 +5925,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Coccidioidomycosis, unspecified
     /// </summary>
     public static readonly Coding CoccidioidomycosisUnspecified = new Coding
     {
@@ -5934,7 +5934,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Histoplasmosis
     /// </summary>
     public static readonly Coding Histoplasmosis = new Coding
     {
@@ -5943,7 +5943,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute pulmonary histoplasmosis capsulati
     /// </summary>
     public static readonly Coding AcutePulmonaryHistoplasmosisCapsulati = new Coding
     {
@@ -5952,7 +5952,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chronic pulmonary histoplasmosis capsulati
     /// </summary>
     public static readonly Coding ChronicPulmonaryHistoplasmosisCapsulati = new Coding
     {
@@ -5961,7 +5961,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pulmonary histoplasmosis capsulati, unspecified
     /// </summary>
     public static readonly Coding PulmonaryHistoplasmosisCapsulatiUnspecified = new Coding
     {
@@ -5970,7 +5970,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Disseminated histoplasmosis capsulati
     /// </summary>
     public static readonly Coding DisseminatedHistoplasmosisCapsulati = new Coding
     {
@@ -5979,7 +5979,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Histoplasmosis capsulati, unspecified
     /// </summary>
     public static readonly Coding HistoplasmosisCapsulatiUnspecified = new Coding
     {
@@ -5988,7 +5988,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Histoplasmosis duboisii
     /// </summary>
     public static readonly Coding HistoplasmosisDuboisii = new Coding
     {
@@ -5997,7 +5997,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Histoplasmosis, unspecified
     /// </summary>
     public static readonly Coding HistoplasmosisUnspecified = new Coding
     {
@@ -6006,7 +6006,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Blastomycosis
     /// </summary>
     public static readonly Coding Blastomycosis = new Coding
     {
@@ -6015,7 +6015,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute pulmonary blastomycosis
     /// </summary>
     public static readonly Coding AcutePulmonaryBlastomycosis = new Coding
     {
@@ -6024,7 +6024,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chronic pulmonary blastomycosis
     /// </summary>
     public static readonly Coding ChronicPulmonaryBlastomycosis = new Coding
     {
@@ -6033,7 +6033,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pulmonary blastomycosis, unspecified
     /// </summary>
     public static readonly Coding PulmonaryBlastomycosisUnspecified = new Coding
     {
@@ -6042,7 +6042,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cutaneous blastomycosis
     /// </summary>
     public static readonly Coding CutaneousBlastomycosis = new Coding
     {
@@ -6051,7 +6051,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Disseminated blastomycosis
     /// </summary>
     public static readonly Coding DisseminatedBlastomycosis = new Coding
     {
@@ -6060,7 +6060,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of blastomycosis
     /// </summary>
     public static readonly Coding OtherFormsOfBlastomycosis = new Coding
     {
@@ -6069,7 +6069,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Blastomycosis, unspecified
     /// </summary>
     public static readonly Coding BlastomycosisUnspecified = new Coding
     {
@@ -6078,7 +6078,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Paracoccidioidomycosis
     /// </summary>
     public static readonly Coding Paracoccidioidomycosis = new Coding
     {
@@ -6087,7 +6087,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pulmonary paracoccidioidomycosis
     /// </summary>
     public static readonly Coding PulmonaryParacoccidioidomycosis = new Coding
     {
@@ -6096,7 +6096,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Disseminated paracoccidioidomycosis
     /// </summary>
     public static readonly Coding DisseminatedParacoccidioidomycosis = new Coding
     {
@@ -6105,7 +6105,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of paracoccidioidomycosis
     /// </summary>
     public static readonly Coding OtherFormsOfParacoccidioidomycosis = new Coding
     {
@@ -6114,7 +6114,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Paracoccidioidomycosis, unspecified
     /// </summary>
     public static readonly Coding ParacoccidioidomycosisUnspecified = new Coding
     {
@@ -6123,7 +6123,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sporotrichosis
     /// </summary>
     public static readonly Coding Sporotrichosis = new Coding
     {
@@ -6132,7 +6132,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pulmonary sporotrichosis[J99.8]
     /// </summary>
     public static readonly Coding PulmonarySporotrichosisJ998 = new Coding
     {
@@ -6141,7 +6141,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Lymphocutaneous sporotrichosis
     /// </summary>
     public static readonly Coding LymphocutaneousSporotrichosis = new Coding
     {
@@ -6150,7 +6150,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Disseminated sporotrichosis
     /// </summary>
     public static readonly Coding DisseminatedSporotrichosis = new Coding
     {
@@ -6159,7 +6159,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of sporotrichosis
     /// </summary>
     public static readonly Coding OtherFormsOfSporotrichosis = new Coding
     {
@@ -6168,7 +6168,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sporotrichosis, unspecified
     /// </summary>
     public static readonly Coding SporotrichosisUnspecified = new Coding
     {
@@ -6177,7 +6177,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chromomycosis and phaeomycotic abscess
     /// </summary>
     public static readonly Coding ChromomycosisAndPhaeomycoticAbscess = new Coding
     {
@@ -6186,7 +6186,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cutaneous chromomycosis
     /// </summary>
     public static readonly Coding CutaneousChromomycosis = new Coding
     {
@@ -6195,7 +6195,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Phaeomycotic brain abscess
     /// </summary>
     public static readonly Coding PhaeomycoticBrainAbscess = new Coding
     {
@@ -6204,7 +6204,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Subcutaneous phaeomycotic abscess and cyst
     /// </summary>
     public static readonly Coding SubcutaneousPhaeomycoticAbscessAndCyst = new Coding
     {
@@ -6213,7 +6213,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of chromomycosis
     /// </summary>
     public static readonly Coding OtherFormsOfChromomycosis = new Coding
     {
@@ -6222,7 +6222,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chromomycosis, unspecified
     /// </summary>
     public static readonly Coding ChromomycosisUnspecified = new Coding
     {
@@ -6231,7 +6231,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Aspergillosis
     /// </summary>
     public static readonly Coding Aspergillosis = new Coding
     {
@@ -6240,7 +6240,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Invasive pulmonary aspergillosis
     /// </summary>
     public static readonly Coding InvasivePulmonaryAspergillosis = new Coding
     {
@@ -6249,7 +6249,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other pulmonary aspergillosis
     /// </summary>
     public static readonly Coding OtherPulmonaryAspergillosis = new Coding
     {
@@ -6258,7 +6258,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tonsillar aspergillosis
     /// </summary>
     public static readonly Coding TonsillarAspergillosis = new Coding
     {
@@ -6267,7 +6267,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Disseminated aspergillosis
     /// </summary>
     public static readonly Coding DisseminatedAspergillosis = new Coding
     {
@@ -6276,7 +6276,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of aspergillosis
     /// </summary>
     public static readonly Coding OtherFormsOfAspergillosis = new Coding
     {
@@ -6285,7 +6285,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Aspergillosis, unspecified
     /// </summary>
     public static readonly Coding AspergillosisUnspecified = new Coding
     {
@@ -6294,7 +6294,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cryptococcosis
     /// </summary>
     public static readonly Coding Cryptococcosis = new Coding
     {
@@ -6303,7 +6303,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pulmonary cryptococcosis
     /// </summary>
     public static readonly Coding PulmonaryCryptococcosis = new Coding
     {
@@ -6312,7 +6312,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cerebral cryptococcosis
     /// </summary>
     public static readonly Coding CerebralCryptococcosis = new Coding
     {
@@ -6321,7 +6321,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cutaneous cryptococcosis
     /// </summary>
     public static readonly Coding CutaneousCryptococcosis = new Coding
     {
@@ -6330,7 +6330,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Osseous cryptococcosis
     /// </summary>
     public static readonly Coding OsseousCryptococcosis = new Coding
     {
@@ -6339,7 +6339,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Disseminated cryptococcosis
     /// </summary>
     public static readonly Coding DisseminatedCryptococcosis = new Coding
     {
@@ -6348,7 +6348,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other forms of cryptococcosis
     /// </summary>
     public static readonly Coding OtherFormsOfCryptococcosis = new Coding
     {
@@ -6357,7 +6357,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cryptococcosis, unspecified
     /// </summary>
     public static readonly Coding CryptococcosisUnspecified = new Coding
     {
@@ -6366,7 +6366,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Zygomycosis
     /// </summary>
     public static readonly Coding Zygomycosis = new Coding
     {
@@ -6375,7 +6375,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pulmonary mucormycosis
     /// </summary>
     public static readonly Coding PulmonaryMucormycosis = new Coding
     {
@@ -6384,7 +6384,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rhinocerebral mucormycosis
     /// </summary>
     public static readonly Coding RhinocerebralMucormycosis = new Coding
     {
@@ -6393,7 +6393,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gastrointestinal mucormycosis
     /// </summary>
     public static readonly Coding GastrointestinalMucormycosis = new Coding
     {
@@ -6402,7 +6402,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cutaneous mucormycosis
     /// </summary>
     public static readonly Coding CutaneousMucormycosis = new Coding
     {
@@ -6411,7 +6411,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Disseminated mucormycosis
     /// </summary>
     public static readonly Coding DisseminatedMucormycosis = new Coding
     {
@@ -6420,7 +6420,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mucormycosis, unspecified
     /// </summary>
     public static readonly Coding MucormycosisUnspecified = new Coding
     {
@@ -6429,7 +6429,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other zygomycoses
     /// </summary>
     public static readonly Coding OtherZygomycoses = new Coding
     {
@@ -6438,7 +6438,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Zygomycosis, unspecified
     /// </summary>
     public static readonly Coding ZygomycosisUnspecified = new Coding
     {
@@ -6447,7 +6447,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mycetoma
     /// </summary>
     public static readonly Coding Mycetoma = new Coding
     {
@@ -6456,7 +6456,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Eumycetoma
     /// </summary>
     public static readonly Coding Eumycetoma = new Coding
     {
@@ -6465,7 +6465,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Actinomycetoma
     /// </summary>
     public static readonly Coding Actinomycetoma = new Coding
     {
@@ -6474,7 +6474,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mycetoma, unspecified
     /// </summary>
     public static readonly Coding MycetomaUnspecified = new Coding
     {
@@ -6483,7 +6483,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other mycoses, not elsewhere classified
     /// </summary>
     public static readonly Coding OtherMycosesNotElsewhereClassified = new Coding
     {
@@ -6492,7 +6492,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Lobomycosis
     /// </summary>
     public static readonly Coding Lobomycosis = new Coding
     {
@@ -6501,7 +6501,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rhinosporidiosis
     /// </summary>
     public static readonly Coding Rhinosporidiosis = new Coding
     {
@@ -6510,7 +6510,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Allescheriasis
     /// </summary>
     public static readonly Coding Allescheriasis = new Coding
     {
@@ -6519,7 +6519,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Geotrichosis
     /// </summary>
     public static readonly Coding Geotrichosis = new Coding
     {
@@ -6528,7 +6528,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Penicillosis
     /// </summary>
     public static readonly Coding Penicillosis = new Coding
     {
@@ -6537,7 +6537,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pneumocystosis[J17.2]
     /// </summary>
     public static readonly Coding PneumocystosisJ172 = new Coding
     {
@@ -6546,7 +6546,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Opportunistic mycoses
     /// </summary>
     public static readonly Coding OpportunisticMycoses = new Coding
     {
@@ -6555,7 +6555,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified mycoses
     /// </summary>
     public static readonly Coding OtherSpecifiedMycoses = new Coding
     {
@@ -6564,7 +6564,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified mycosis
     /// </summary>
     public static readonly Coding UnspecifiedMycosis = new Coding
     {
@@ -6573,7 +6573,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Plasmodium falciparum malaria
     /// </summary>
     public static readonly Coding PlasmodiumFalciparumMalaria = new Coding
     {
@@ -6582,7 +6582,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Protozoal diseases
     /// </summary>
     public static readonly Coding ProtozoalDiseases = new Coding
     {
@@ -6591,7 +6591,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Plasmodium falciparum malaria with cerebral complications
     /// </summary>
     public static readonly Coding PlasmodiumFalciparumMalariaWithCerebralComplications = new Coding
     {
@@ -6600,7 +6600,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other severe and complicated Plasmodium falciparum malaria
     /// </summary>
     public static readonly Coding OtherSevereAndComplicatedPlasmodiumFalciparumMalaria = new Coding
     {
@@ -6609,7 +6609,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Plasmodium falciparum malaria, unspecified
     /// </summary>
     public static readonly Coding PlasmodiumFalciparumMalariaUnspecified = new Coding
     {
@@ -6618,7 +6618,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Plasmodium vivax malaria
     /// </summary>
     public static readonly Coding PlasmodiumVivaxMalaria = new Coding
     {
@@ -6627,7 +6627,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Plasmodium vivax malaria with rupture of spleen
     /// </summary>
     public static readonly Coding PlasmodiumVivaxMalariaWithRuptureOfSpleen = new Coding
     {
@@ -6636,7 +6636,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Plasmodium vivax malaria with other complications
     /// </summary>
     public static readonly Coding PlasmodiumVivaxMalariaWithOtherComplications = new Coding
     {
@@ -6645,7 +6645,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Plasmodium vivax malaria without complication
     /// </summary>
     public static readonly Coding PlasmodiumVivaxMalariaWithoutComplication = new Coding
     {
@@ -6654,7 +6654,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Plasmodium malariae malaria
     /// </summary>
     public static readonly Coding PlasmodiumMalariaeMalaria = new Coding
     {
@@ -6663,7 +6663,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Plasmodium malariae malaria with nephropathy
     /// </summary>
     public static readonly Coding PlasmodiumMalariaeMalariaWithNephropathy = new Coding
     {
@@ -6672,7 +6672,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Plasmodium malariae malaria with other complications
     /// </summary>
     public static readonly Coding PlasmodiumMalariaeMalariaWithOtherComplications = new Coding
     {
@@ -6681,7 +6681,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Plasmodium malariae malaria without complication
     /// </summary>
     public static readonly Coding PlasmodiumMalariaeMalariaWithoutComplication = new Coding
     {
@@ -6690,7 +6690,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other parasitologically confirmed malaria
     /// </summary>
     public static readonly Coding OtherParasitologicallyConfirmedMalaria = new Coding
     {
@@ -6699,7 +6699,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Plasmodium ovale malaria
     /// </summary>
     public static readonly Coding PlasmodiumOvaleMalaria = new Coding
     {
@@ -6708,7 +6708,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Malaria due to simian plasmodia
     /// </summary>
     public static readonly Coding MalariaDueToSimianPlasmodia = new Coding
     {
@@ -6717,7 +6717,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other parasitologically confirmed malaria, not elsewhere classified
     /// </summary>
     public static readonly Coding OtherParasitologicallyConfirmedMalariaNotElsewhereClassified = new Coding
     {
@@ -6726,7 +6726,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified malaria
     /// </summary>
     public static readonly Coding UnspecifiedMalaria = new Coding
     {
@@ -6735,7 +6735,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Leishmaniasis
     /// </summary>
     public static readonly Coding Leishmaniasis = new Coding
     {
@@ -6744,7 +6744,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Visceral leishmaniasis
     /// </summary>
     public static readonly Coding VisceralLeishmaniasis = new Coding
     {
@@ -6753,7 +6753,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cutaneous leishmaniasis
     /// </summary>
     public static readonly Coding CutaneousLeishmaniasis = new Coding
     {
@@ -6762,7 +6762,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mucocutaneous leishmaniasis
     /// </summary>
     public static readonly Coding MucocutaneousLeishmaniasis = new Coding
     {
@@ -6771,7 +6771,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Leishmaniasis, unspecified
     /// </summary>
     public static readonly Coding LeishmaniasisUnspecified = new Coding
     {
@@ -6780,7 +6780,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// African trypanosomiasis
     /// </summary>
     public static readonly Coding AfricanTrypanosomiasis = new Coding
     {
@@ -6789,7 +6789,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gambiense trypanosomiasis
     /// </summary>
     public static readonly Coding GambienseTrypanosomiasis = new Coding
     {
@@ -6798,7 +6798,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Rhodesiense trypanosomiasis
     /// </summary>
     public static readonly Coding RhodesienseTrypanosomiasis = new Coding
     {
@@ -6807,7 +6807,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// African trypanosomiasis, unspecified
     /// </summary>
     public static readonly Coding AfricanTrypanosomiasisUnspecified = new Coding
     {
@@ -6816,7 +6816,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chagas disease
     /// </summary>
     public static readonly Coding ChagasDisease = new Coding
     {
@@ -6825,7 +6825,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute Chagas disease with heart involvement[I41.2][I98.1]
     /// </summary>
     public static readonly Coding AcuteChagasDiseaseWithHeartInvolvementI412I981 = new Coding
     {
@@ -6834,7 +6834,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acute Chagas disease without heart involvement
     /// </summary>
     public static readonly Coding AcuteChagasDiseaseWithoutHeartInvolvement = new Coding
     {
@@ -6843,7 +6843,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chagas disease (chronic) with heart involvement
     /// </summary>
     public static readonly Coding ChagasDiseaseChronicWithHeartInvolvement = new Coding
     {
@@ -6852,7 +6852,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chagas disease (chronic) with digestive system involvement
     /// </summary>
     public static readonly Coding ChagasDiseaseChronicWithDigestiveSystemInvolvement = new Coding
     {
@@ -6861,7 +6861,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chagas disease (chronic) with nervous system involvement
     /// </summary>
     public static readonly Coding ChagasDiseaseChronicWithNervousSystemInvolvement = new Coding
     {
@@ -6870,7 +6870,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Chagas disease (chronic) with other organ involvement
     /// </summary>
     public static readonly Coding ChagasDiseaseChronicWithOtherOrganInvolvement = new Coding
     {
@@ -6879,7 +6879,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Toxoplasmosis
     /// </summary>
     public static readonly Coding Toxoplasmosis = new Coding
     {
@@ -6888,7 +6888,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Toxoplasma oculopathy
     /// </summary>
     public static readonly Coding ToxoplasmaOculopathy = new Coding
     {
@@ -6897,7 +6897,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Toxoplasma hepatitis[K77.0]
     /// </summary>
     public static readonly Coding ToxoplasmaHepatitisK770 = new Coding
     {
@@ -6906,7 +6906,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Toxoplasma meningoencephalitis[G05.2]
     /// </summary>
     public static readonly Coding ToxoplasmaMeningoencephalitisG052 = new Coding
     {
@@ -6915,7 +6915,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pulmonary toxoplasmosis[J17.3]
     /// </summary>
     public static readonly Coding PulmonaryToxoplasmosisJ173 = new Coding
     {
@@ -6924,7 +6924,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Toxoplasmosis with other organ involvement
     /// </summary>
     public static readonly Coding ToxoplasmosisWithOtherOrganInvolvement = new Coding
     {
@@ -6933,7 +6933,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Toxoplasmosis, unspecified
     /// </summary>
     public static readonly Coding ToxoplasmosisUnspecified = new Coding
     {
@@ -6942,7 +6942,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other protozoal diseases, not elsewhere classified
     /// </summary>
     public static readonly Coding OtherProtozoalDiseasesNotElsewhereClassified = new Coding
     {
@@ -6951,7 +6951,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Babesiosis
     /// </summary>
     public static readonly Coding Babesiosis = new Coding
     {
@@ -6960,7 +6960,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Acanthamoebiasis
     /// </summary>
     public static readonly Coding Acanthamoebiasis = new Coding
     {
@@ -6969,7 +6969,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Naegleriasis
     /// </summary>
     public static readonly Coding Naegleriasis = new Coding
     {
@@ -6978,7 +6978,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified protozoal diseases
     /// </summary>
     public static readonly Coding OtherSpecifiedProtozoalDiseases = new Coding
     {
@@ -6987,7 +6987,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified protozoal disease
     /// </summary>
     public static readonly Coding UnspecifiedProtozoalDisease = new Coding
     {
@@ -6996,7 +6996,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Schistosomiasis [bilharziasis]
     /// </summary>
     public static readonly Coding SchistosomiasisBilharziasis = new Coding
     {
@@ -7005,7 +7005,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Helminthiases
     /// </summary>
     public static readonly Coding Helminthiases = new Coding
     {
@@ -7014,7 +7014,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Schistosomiasis due to Schistosoma haematobium [urinary schistosomiasis]
     /// </summary>
     public static readonly Coding SchistosomiasisDueToSchistosomaHaematobiumUrinarySchistosomiasis = new Coding
     {
@@ -7023,7 +7023,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Schistosomiasis due to Schistosoma mansoni [intestinal schistosomiasis]
     /// </summary>
     public static readonly Coding SchistosomiasisDueToSchistosomaMansoniIntestinalSchistosomiasis = new Coding
     {
@@ -7032,7 +7032,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Schistosomiasis due to Schistosoma japonicum
     /// </summary>
     public static readonly Coding SchistosomiasisDueToSchistosomaJaponicum = new Coding
     {
@@ -7041,7 +7041,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cercarial dermatitis
     /// </summary>
     public static readonly Coding CercarialDermatitis = new Coding
     {
@@ -7050,7 +7050,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other schistosomiases
     /// </summary>
     public static readonly Coding OtherSchistosomiases = new Coding
     {
@@ -7059,7 +7059,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Schistosomiasis, unspecified
     /// </summary>
     public static readonly Coding SchistosomiasisUnspecified = new Coding
     {
@@ -7068,7 +7068,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other fluke infections
     /// </summary>
     public static readonly Coding OtherFlukeInfections = new Coding
     {
@@ -7077,7 +7077,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Opisthorchiasis
     /// </summary>
     public static readonly Coding Opisthorchiasis = new Coding
     {
@@ -7086,7 +7086,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Clonorchiasis
     /// </summary>
     public static readonly Coding Clonorchiasis = new Coding
     {
@@ -7095,7 +7095,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Dicrocoeliasis
     /// </summary>
     public static readonly Coding Dicrocoeliasis = new Coding
     {
@@ -7104,7 +7104,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Fascioliasis
     /// </summary>
     public static readonly Coding Fascioliasis = new Coding
     {
@@ -7113,7 +7113,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Paragonimiasis
     /// </summary>
     public static readonly Coding Paragonimiasis = new Coding
     {
@@ -7122,7 +7122,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Fasciolopsiasis
     /// </summary>
     public static readonly Coding Fasciolopsiasis = new Coding
     {
@@ -7131,7 +7131,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified fluke infections
     /// </summary>
     public static readonly Coding OtherSpecifiedFlukeInfections = new Coding
     {
@@ -7140,7 +7140,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Fluke infection, unspecified
     /// </summary>
     public static readonly Coding FlukeInfectionUnspecified = new Coding
     {
@@ -7149,7 +7149,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Echinococcosis
     /// </summary>
     public static readonly Coding Echinococcosis = new Coding
     {
@@ -7158,7 +7158,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Echinococcus granulosus infection of liver
     /// </summary>
     public static readonly Coding EchinococcusGranulosusInfectionOfLiver = new Coding
     {
@@ -7167,7 +7167,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Echinococcus granulosus infection of lung
     /// </summary>
     public static readonly Coding EchinococcusGranulosusInfectionOfLung = new Coding
     {
@@ -7176,7 +7176,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Echinococcus granulosus infection of bone
     /// </summary>
     public static readonly Coding EchinococcusGranulosusInfectionOfBone = new Coding
     {
@@ -7185,7 +7185,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Echinococcus granulosus infection, other and multiple sites
     /// </summary>
     public static readonly Coding EchinococcusGranulosusInfectionOtherAndMultipleSites = new Coding
     {
@@ -7194,7 +7194,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Echinococcus granulosus infection, unspecified
     /// </summary>
     public static readonly Coding EchinococcusGranulosusInfectionUnspecified = new Coding
     {
@@ -7203,7 +7203,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Echinococcus multilocularis infection of liver
     /// </summary>
     public static readonly Coding EchinococcusMultilocularisInfectionOfLiver = new Coding
     {
@@ -7212,7 +7212,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Echinococcus multilocularis infection, other and multiple sites
     /// </summary>
     public static readonly Coding EchinococcusMultilocularisInfectionOtherAndMultipleSites = new Coding
     {
@@ -7221,7 +7221,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Echinococcus multilocularis infection, unspecified
     /// </summary>
     public static readonly Coding EchinococcusMultilocularisInfectionUnspecified = new Coding
     {
@@ -7230,7 +7230,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Echinococcosis, unspecified, of liver
     /// </summary>
     public static readonly Coding EchinococcosisUnspecifiedOfLiver = new Coding
     {
@@ -7239,7 +7239,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Echinococcosis, other and unspecified
     /// </summary>
     public static readonly Coding EchinococcosisOtherAndUnspecified = new Coding
     {
@@ -7248,7 +7248,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Taeniasis
     /// </summary>
     public static readonly Coding Taeniasis = new Coding
     {
@@ -7257,7 +7257,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Taenia solium taeniasis
     /// </summary>
     public static readonly Coding TaeniaSoliumTaeniasis = new Coding
     {
@@ -7266,7 +7266,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Taenia saginata taeniasis
     /// </summary>
     public static readonly Coding TaeniaSaginataTaeniasis = new Coding
     {
@@ -7275,7 +7275,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Taeniasis, unspecified
     /// </summary>
     public static readonly Coding TaeniasisUnspecified = new Coding
     {
@@ -7284,7 +7284,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cysticercosis
     /// </summary>
     public static readonly Coding Cysticercosis = new Coding
     {
@@ -7293,7 +7293,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cysticercosis of central nervous system
     /// </summary>
     public static readonly Coding CysticercosisOfCentralNervousSystem = new Coding
     {
@@ -7302,7 +7302,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cysticercosis of eye
     /// </summary>
     public static readonly Coding CysticercosisOfEye = new Coding
     {
@@ -7311,7 +7311,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cysticercosis of other sites
     /// </summary>
     public static readonly Coding CysticercosisOfOtherSites = new Coding
     {
@@ -7320,7 +7320,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cysticercosis, unspecified
     /// </summary>
     public static readonly Coding CysticercosisUnspecified = new Coding
     {
@@ -7329,7 +7329,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Diphyllobothriasis and sparganosis
     /// </summary>
     public static readonly Coding DiphyllobothriasisAndSparganosis = new Coding
     {
@@ -7338,7 +7338,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Diphyllobothriasis
     /// </summary>
     public static readonly Coding Diphyllobothriasis = new Coding
     {
@@ -7347,7 +7347,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sparganosis
     /// </summary>
     public static readonly Coding Sparganosis = new Coding
     {
@@ -7356,7 +7356,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other cestode infections
     /// </summary>
     public static readonly Coding OtherCestodeInfections = new Coding
     {
@@ -7365,7 +7365,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Hymenolepiasis
     /// </summary>
     public static readonly Coding Hymenolepiasis = new Coding
     {
@@ -7374,7 +7374,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Dipylidiasis
     /// </summary>
     public static readonly Coding Dipylidiasis = new Coding
     {
@@ -7383,7 +7383,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified cestode infections
     /// </summary>
     public static readonly Coding OtherSpecifiedCestodeInfections = new Coding
     {
@@ -7392,7 +7392,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cestode infection, unspecified
     /// </summary>
     public static readonly Coding CestodeInfectionUnspecified = new Coding
     {
@@ -7401,7 +7401,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Dracunculiasis
     /// </summary>
     public static readonly Coding Dracunculiasis = new Coding
     {
@@ -7410,7 +7410,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Onchocerciasis
     /// </summary>
     public static readonly Coding Onchocerciasis = new Coding
     {
@@ -7419,7 +7419,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Filariasis
     /// </summary>
     public static readonly Coding Filariasis = new Coding
     {
@@ -7428,7 +7428,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Filariasis due to Wuchereria bancrofti
     /// </summary>
     public static readonly Coding FilariasisDueToWuchereriaBancrofti = new Coding
     {
@@ -7437,7 +7437,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Filariasis due to Brugia malayi
     /// </summary>
     public static readonly Coding FilariasisDueToBrugiaMalayi = new Coding
     {
@@ -7446,7 +7446,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Filariasis due to Brugia timori
     /// </summary>
     public static readonly Coding FilariasisDueToBrugiaTimori = new Coding
     {
@@ -7455,7 +7455,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Loiasis
     /// </summary>
     public static readonly Coding Loiasis = new Coding
     {
@@ -7464,7 +7464,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mansonelliasis
     /// </summary>
     public static readonly Coding Mansonelliasis = new Coding
     {
@@ -7473,7 +7473,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other filariases
     /// </summary>
     public static readonly Coding OtherFilariases = new Coding
     {
@@ -7482,7 +7482,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Filariasis, unspecified
     /// </summary>
     public static readonly Coding FilariasisUnspecified = new Coding
     {
@@ -7491,7 +7491,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Trichinellosis
     /// </summary>
     public static readonly Coding Trichinellosis = new Coding
     {
@@ -7500,7 +7500,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Hookworm diseases
     /// </summary>
     public static readonly Coding HookwormDiseases = new Coding
     {
@@ -7509,7 +7509,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Ancylostomiasis
     /// </summary>
     public static readonly Coding Ancylostomiasis = new Coding
     {
@@ -7518,7 +7518,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Necatoriasis
     /// </summary>
     public static readonly Coding Necatoriasis = new Coding
     {
@@ -7527,7 +7527,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other hookworm diseases
     /// </summary>
     public static readonly Coding OtherHookwormDiseases = new Coding
     {
@@ -7536,7 +7536,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Hookworm disease, unspecified
     /// </summary>
     public static readonly Coding HookwormDiseaseUnspecified = new Coding
     {
@@ -7545,7 +7545,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Ascariasis
     /// </summary>
     public static readonly Coding Ascariasis = new Coding
     {
@@ -7554,7 +7554,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Ascariasis with intestinal complications
     /// </summary>
     public static readonly Coding AscariasisWithIntestinalComplications = new Coding
     {
@@ -7563,7 +7563,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Ascariasis with other complications
     /// </summary>
     public static readonly Coding AscariasisWithOtherComplications = new Coding
     {
@@ -7572,7 +7572,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Ascariasis, unspecified
     /// </summary>
     public static readonly Coding AscariasisUnspecified = new Coding
     {
@@ -7581,7 +7581,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Strongyloidiasis
     /// </summary>
     public static readonly Coding Strongyloidiasis = new Coding
     {
@@ -7590,7 +7590,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Intestinal strongyloidiasis
     /// </summary>
     public static readonly Coding IntestinalStrongyloidiasis = new Coding
     {
@@ -7599,7 +7599,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cutaneous strongyloidiasis
     /// </summary>
     public static readonly Coding CutaneousStrongyloidiasis = new Coding
     {
@@ -7608,7 +7608,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Disseminated strongyloidiasis
     /// </summary>
     public static readonly Coding DisseminatedStrongyloidiasis = new Coding
     {
@@ -7617,7 +7617,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Strongyloidiasis, unspecified
     /// </summary>
     public static readonly Coding StrongyloidiasisUnspecified = new Coding
     {
@@ -7626,7 +7626,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Trichuriasis
     /// </summary>
     public static readonly Coding Trichuriasis = new Coding
     {
@@ -7635,7 +7635,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Enterobiasis
     /// </summary>
     public static readonly Coding Enterobiasis = new Coding
     {
@@ -7644,7 +7644,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other intestinal helminthiases, not elsewhere classified
     /// </summary>
     public static readonly Coding OtherIntestinalHelminthiasesNotElsewhereClassified = new Coding
     {
@@ -7653,7 +7653,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Anisakiasis
     /// </summary>
     public static readonly Coding Anisakiasis = new Coding
     {
@@ -7662,7 +7662,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Intestinal capillariasis
     /// </summary>
     public static readonly Coding IntestinalCapillariasis = new Coding
     {
@@ -7671,7 +7671,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Trichostrongyliasis
     /// </summary>
     public static readonly Coding Trichostrongyliasis = new Coding
     {
@@ -7680,7 +7680,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Intestinal angiostrongyliasis
     /// </summary>
     public static readonly Coding IntestinalAngiostrongyliasis = new Coding
     {
@@ -7689,7 +7689,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mixed intestinal helminthiases
     /// </summary>
     public static readonly Coding MixedIntestinalHelminthiases = new Coding
     {
@@ -7698,7 +7698,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified intestinal helminthiases
     /// </summary>
     public static readonly Coding OtherSpecifiedIntestinalHelminthiases = new Coding
     {
@@ -7707,7 +7707,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified intestinal parasitism
     /// </summary>
     public static readonly Coding UnspecifiedIntestinalParasitism = new Coding
     {
@@ -7716,7 +7716,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Intestinal helminthiasis, unspecified
     /// </summary>
     public static readonly Coding IntestinalHelminthiasisUnspecified = new Coding
     {
@@ -7725,7 +7725,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Intestinal parasitism, unspecified
     /// </summary>
     public static readonly Coding IntestinalParasitismUnspecified = new Coding
     {
@@ -7734,7 +7734,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other helminthiases
     /// </summary>
     public static readonly Coding OtherHelminthiases = new Coding
     {
@@ -7743,7 +7743,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Visceral larva migrans
     /// </summary>
     public static readonly Coding VisceralLarvaMigrans = new Coding
     {
@@ -7752,7 +7752,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gnathostomiasis
     /// </summary>
     public static readonly Coding Gnathostomiasis = new Coding
     {
@@ -7761,7 +7761,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Angiostrongyliasis due to Parastrongylus cantonensis
     /// </summary>
     public static readonly Coding AngiostrongyliasisDueToParastrongylusCantonensis = new Coding
     {
@@ -7770,7 +7770,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Syngamiasis
     /// </summary>
     public static readonly Coding Syngamiasis = new Coding
     {
@@ -7779,7 +7779,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Internal hirudiniasis
     /// </summary>
     public static readonly Coding InternalHirudiniasis = new Coding
     {
@@ -7788,7 +7788,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified helminthiases
     /// </summary>
     public static readonly Coding OtherSpecifiedHelminthiases = new Coding
     {
@@ -7797,7 +7797,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Helminthiasis, unspecified
     /// </summary>
     public static readonly Coding HelminthiasisUnspecified = new Coding
     {
@@ -7806,7 +7806,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pediculosis and phthiriasis
     /// </summary>
     public static readonly Coding PediculosisAndPhthiriasis = new Coding
     {
@@ -7815,7 +7815,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pediculosis, acariasis and other infestations
     /// </summary>
     public static readonly Coding PediculosisAcariasisAndOtherInfestations = new Coding
     {
@@ -7824,7 +7824,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pediculosis due to Pediculus humanus capitis
     /// </summary>
     public static readonly Coding PediculosisDueToPediculusHumanusCapitis = new Coding
     {
@@ -7833,7 +7833,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pediculosis due to Pediculus humanus corporis
     /// </summary>
     public static readonly Coding PediculosisDueToPediculusHumanusCorporis = new Coding
     {
@@ -7842,7 +7842,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pediculosis, unspecified
     /// </summary>
     public static readonly Coding PediculosisUnspecified = new Coding
     {
@@ -7851,7 +7851,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Phthiriasis
     /// </summary>
     public static readonly Coding Phthiriasis = new Coding
     {
@@ -7860,7 +7860,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mixed pediculosis and phthiriasis
     /// </summary>
     public static readonly Coding MixedPediculosisAndPhthiriasis = new Coding
     {
@@ -7869,7 +7869,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Scabies
     /// </summary>
     public static readonly Coding Scabies = new Coding
     {
@@ -7878,7 +7878,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Myiasis
     /// </summary>
     public static readonly Coding Myiasis = new Coding
     {
@@ -7887,7 +7887,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cutaneous myiasis
     /// </summary>
     public static readonly Coding CutaneousMyiasis = new Coding
     {
@@ -7896,7 +7896,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Wound myiasis
     /// </summary>
     public static readonly Coding WoundMyiasis = new Coding
     {
@@ -7905,7 +7905,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Ocular myiasis
     /// </summary>
     public static readonly Coding OcularMyiasis = new Coding
     {
@@ -7914,7 +7914,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Nasopharyngeal myiasis
     /// </summary>
     public static readonly Coding NasopharyngealMyiasis = new Coding
     {
@@ -7923,7 +7923,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Aural myiasis
     /// </summary>
     public static readonly Coding AuralMyiasis = new Coding
     {
@@ -7932,7 +7932,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Myiasis of other sites
     /// </summary>
     public static readonly Coding MyiasisOfOtherSites = new Coding
     {
@@ -7941,7 +7941,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Myiasis, unspecified
     /// </summary>
     public static readonly Coding MyiasisUnspecified = new Coding
     {
@@ -7950,7 +7950,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other infestations
     /// </summary>
     public static readonly Coding OtherInfestations = new Coding
     {
@@ -7959,7 +7959,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other acariasis
     /// </summary>
     public static readonly Coding OtherAcariasis = new Coding
     {
@@ -7968,7 +7968,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tungiasis [sandflea infestation]
     /// </summary>
     public static readonly Coding TungiasisSandfleaInfestation = new Coding
     {
@@ -7977,7 +7977,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other arthropod infestations
     /// </summary>
     public static readonly Coding OtherArthropodInfestations = new Coding
     {
@@ -7986,7 +7986,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// External hirudiniasis
     /// </summary>
     public static readonly Coding ExternalHirudiniasis = new Coding
     {
@@ -7995,7 +7995,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified infestations
     /// </summary>
     public static readonly Coding OtherSpecifiedInfestations = new Coding
     {
@@ -8004,7 +8004,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Infestation, unspecified
     /// </summary>
     public static readonly Coding InfestationUnspecified = new Coding
     {
@@ -8013,7 +8013,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified parasitic disease
     /// </summary>
     public static readonly Coding UnspecifiedParasiticDisease = new Coding
     {
@@ -8022,7 +8022,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sequelae of tuberculosis
     /// </summary>
     public static readonly Coding SequelaeOfTuberculosis = new Coding
     {
@@ -8031,7 +8031,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sequelae of infectious and parasitic diseases
     /// </summary>
     public static readonly Coding SequelaeOfInfectiousAndParasiticDiseases = new Coding
     {
@@ -8040,7 +8040,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sequelae of central nervous system tuberculosis
     /// </summary>
     public static readonly Coding SequelaeOfCentralNervousSystemTuberculosis = new Coding
     {
@@ -8049,7 +8049,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sequelae of genitourinary tuberculosis
     /// </summary>
     public static readonly Coding SequelaeOfGenitourinaryTuberculosis = new Coding
     {
@@ -8058,7 +8058,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sequelae of tuberculosis of bones and joints
     /// </summary>
     public static readonly Coding SequelaeOfTuberculosisOfBonesAndJoints = new Coding
     {
@@ -8067,7 +8067,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sequelae of tuberculosis of other organs
     /// </summary>
     public static readonly Coding SequelaeOfTuberculosisOfOtherOrgans = new Coding
     {
@@ -8076,7 +8076,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sequelae of respiratory and unspecified tuberculosis
     /// </summary>
     public static readonly Coding SequelaeOfRespiratoryAndUnspecifiedTuberculosis = new Coding
     {
@@ -8085,7 +8085,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sequelae of poliomyelitis
     /// </summary>
     public static readonly Coding SequelaeOfPoliomyelitis = new Coding
     {
@@ -8094,7 +8094,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sequelae of leprosy
     /// </summary>
     public static readonly Coding SequelaeOfLeprosy = new Coding
     {
@@ -8103,7 +8103,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sequelae of other and unspecified infectious and parasitic diseases
     /// </summary>
     public static readonly Coding SequelaeOfOtherAndUnspecifiedInfectiousAndParasiticDiseases = new Coding
     {
@@ -8112,7 +8112,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sequelae of trachoma
     /// </summary>
     public static readonly Coding SequelaeOfTrachoma = new Coding
     {
@@ -8121,7 +8121,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sequelae of viral encephalitis
     /// </summary>
     public static readonly Coding SequelaeOfViralEncephalitis = new Coding
     {
@@ -8130,7 +8130,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sequelae of viral hepatitis
     /// </summary>
     public static readonly Coding SequelaeOfViralHepatitis = new Coding
     {
@@ -8139,7 +8139,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sequelae of other specified infectious and parasitic diseases
     /// </summary>
     public static readonly Coding SequelaeOfOtherSpecifiedInfectiousAndParasiticDiseases = new Coding
     {
@@ -8148,7 +8148,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sequelae of unspecified infectious or parasitic disease
     /// </summary>
     public static readonly Coding SequelaeOfUnspecifiedInfectiousOrParasiticDisease = new Coding
     {
@@ -8157,7 +8157,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Streptococcus and staphylococcus as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding StreptococcusAndStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8166,7 +8166,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Bacterial, viral and other infectious agents
     /// </summary>
     public static readonly Coding BacterialViralAndOtherInfectiousAgents = new Coding
     {
@@ -8175,7 +8175,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Streptococcus, group A, as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding StreptococcusGroupAAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8184,7 +8184,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Streptococcus, group B, as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding StreptococcusGroupBAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8193,7 +8193,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Streptococcus group D and enterococcus as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding StreptococcusGroupDAndEnterococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8202,7 +8202,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Streptococcus pneumoniae as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding StreptococcusPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8211,7 +8211,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other streptococcus as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding OtherStreptococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8220,7 +8220,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified streptococcus as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding UnspecifiedStreptococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8229,7 +8229,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Staphylococcus aureus as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding StaphylococcusAureusAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8238,7 +8238,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other staphylococcus as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding OtherStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8247,7 +8247,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Unspecified staphylococcus as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding UnspecifiedStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8256,7 +8256,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified bacterial agents as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding OtherSpecifiedBacterialAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8265,7 +8265,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mycoplasma pneumoniae [M. pneumoniae] as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding MycoplasmaPneumoniaeMPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8274,7 +8274,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Klebsiella pneumoniae [K. pneumoniae] as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding KlebsiellaPneumoniaeKPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8283,7 +8283,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Escherichia coli [E. coli] as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding EscherichiaColiEColiAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8292,7 +8292,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Haemophilus influenzae [H. influenzae] as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding HaemophilusInfluenzaeHInfluenzaeAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8301,7 +8301,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Proteus (mirabilis)(morganii) as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding ProteusMirabilisMorganiiAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8310,7 +8310,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Pseudomonas (aeruginosa) as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding PseudomonasAeruginosaAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8319,7 +8319,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Bacillus fragilis [B. fragilis] as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding BacillusFragilisBFragilisAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8328,7 +8328,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Clostridium perfringens [C. perfringens] as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding ClostridiumPerfringensCPerfringensAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8337,7 +8337,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified bacterial agents as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding OtherSpecifiedBacterialAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters_2 = new Coding
     {
@@ -8346,7 +8346,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Viral agents as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding ViralAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8355,7 +8355,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Adenovirus as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding AdenovirusAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8364,7 +8364,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Enterovirus as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding EnterovirusAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8373,7 +8373,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Coronavirus as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding CoronavirusAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8382,7 +8382,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Retrovirus as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding RetrovirusAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8391,7 +8391,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Respiratory syncytial virus as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding RespiratorySyncytialVirusAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8400,7 +8400,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Reovirus as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding ReovirusAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8409,7 +8409,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Parvovirus as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding ParvovirusAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8418,7 +8418,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Papillomavirus as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding PapillomavirusAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8427,7 +8427,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other viral agents as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding OtherViralAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8436,7 +8436,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other specified infectious agents as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding OtherSpecifiedInfectiousAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8445,7 +8445,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Helicobacter pylori [H.pylori] as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding HelicobacterPyloriHPyloriAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8454,7 +8454,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Vibrio vulnificus as the cause of diseases classified to other chapters
     /// </summary>
     public static readonly Coding VibrioVulnificusAsTheCauseOfDiseasesClassifiedToOtherChapters = new Coding
     {
@@ -8463,7 +8463,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other and unspecified infectious diseases
     /// </summary>
     public static readonly Coding OtherAndUnspecifiedInfectiousDiseases = new Coding
     {
@@ -8472,7 +8472,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Other infectious diseases
     /// </summary>
     public static readonly Coding OtherInfectiousDiseases = new Coding
     {
@@ -8481,7 +8481,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Malignant neoplasm of lip
     /// </summary>
     public static readonly Coding MalignantNeoplasmOfLip = new Coding
     {
@@ -8490,7 +8490,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Malignant neoplasms of lip, oral cavity and pharynx
     /// </summary>
     public static readonly Coding MalignantNeoplasmsOfLipOralCavityAndPharynx = new Coding
     {
@@ -8499,7 +8499,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Malignant neoplasms, stated or presumed to be primary, of specified sites, except of lymphoid, haematopoietic and related tissue
     /// </summary>
     public static readonly Coding MalignantNeoplasmsStatedOrPresumedToBePrimaryOfSpecifiedSitesExceptOfLymphoidHaematopoieticAndRelatedTissue = new Coding
     {
@@ -8508,7 +8508,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Malignant neoplasms
     /// </summary>
     public static readonly Coding MalignantNeoplasms = new Coding
     {
@@ -8517,7 +8517,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// External upper lip
     /// </summary>
     public static readonly Coding ExternalUpperLip = new Coding
     {
@@ -8526,7 +8526,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// External lower lip
     /// </summary>
     public static readonly Coding ExternalLowerLip = new Coding
     {
@@ -8535,7 +8535,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// External lip, unspecified
     /// </summary>
     public static readonly Coding ExternalLipUnspecified = new Coding
     {
@@ -8544,7 +8544,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Upper lip, inner aspect
     /// </summary>
     public static readonly Coding UpperLipInnerAspect = new Coding
     {
@@ -8553,7 +8553,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Lower lip, inner aspect
     /// </summary>
     public static readonly Coding LowerLipInnerAspect = new Coding
     {
@@ -8562,7 +8562,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Lip, unspecified, inner aspect
     /// </summary>
     public static readonly Coding LipUnspecifiedInnerAspect = new Coding
     {
@@ -8571,7 +8571,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Commissure of lip
     /// </summary>
     public static readonly Coding CommissureOfLip = new Coding
     {
@@ -8580,7 +8580,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Overlapping lesion of lip
     /// </summary>
     public static readonly Coding OverlappingLesionOfLip = new Coding
     {
@@ -8589,7 +8589,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Lip, unspecified
     /// </summary>
     public static readonly Coding LipUnspecified = new Coding
     {
@@ -8598,7 +8598,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Malignant neoplasm of base of tongue
     /// </summary>
     public static readonly Coding MalignantNeoplasmOfBaseOfTongue = new Coding
     {
@@ -8607,7 +8607,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Malignant neoplasm of other and unspecified parts of tongue
     /// </summary>
     public static readonly Coding MalignantNeoplasmOfOtherAndUnspecifiedPartsOfTongue = new Coding
     {
@@ -8616,7 +8616,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Dorsal surface of tongue
     /// </summary>
     public static readonly Coding DorsalSurfaceOfTongue = new Coding
     {
@@ -8625,7 +8625,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Border of tongue
     /// </summary>
     public static readonly Coding BorderOfTongue = new Coding
     {
@@ -8634,7 +8634,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Ventral surface of tongue
     /// </summary>
     public static readonly Coding VentralSurfaceOfTongue = new Coding
     {
@@ -8643,7 +8643,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Anterior two-thirds of tongue, part unspecified
     /// </summary>
     public static readonly Coding AnteriorTwoThirdsOfTonguePartUnspecified = new Coding
     {
@@ -8652,7 +8652,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Lingual tonsil
     /// </summary>
     public static readonly Coding LingualTonsil = new Coding
     {
@@ -8661,7 +8661,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Overlapping lesion of tongue
     /// </summary>
     public static readonly Coding OverlappingLesionOfTongue = new Coding
     {
@@ -8670,7 +8670,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tongue, unspecified
     /// </summary>
     public static readonly Coding TongueUnspecified = new Coding
     {
@@ -8679,7 +8679,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Malignant neoplasm of gum
     /// </summary>
     public static readonly Coding MalignantNeoplasmOfGum = new Coding
     {
@@ -8688,7 +8688,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Upper gum
     /// </summary>
     public static readonly Coding UpperGum = new Coding
     {
@@ -8697,7 +8697,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Lower gum
     /// </summary>
     public static readonly Coding LowerGum = new Coding
     {
@@ -8706,7 +8706,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Gum, unspecified
     /// </summary>
     public static readonly Coding GumUnspecified = new Coding
     {
@@ -8715,7 +8715,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Malignant neoplasm of floor of mouth
     /// </summary>
     public static readonly Coding MalignantNeoplasmOfFloorOfMouth = new Coding
     {
@@ -8724,7 +8724,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Anterior floor of mouth
     /// </summary>
     public static readonly Coding AnteriorFloorOfMouth = new Coding
     {
@@ -8733,7 +8733,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Lateral floor of mouth
     /// </summary>
     public static readonly Coding LateralFloorOfMouth = new Coding
     {
@@ -8742,7 +8742,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Overlapping lesion of floor of mouth
     /// </summary>
     public static readonly Coding OverlappingLesionOfFloorOfMouth = new Coding
     {
@@ -8751,7 +8751,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Floor of mouth, unspecified
     /// </summary>
     public static readonly Coding FloorOfMouthUnspecified = new Coding
     {
@@ -8760,7 +8760,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Malignant neoplasm of palate
     /// </summary>
     public static readonly Coding MalignantNeoplasmOfPalate = new Coding
     {
@@ -8769,7 +8769,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Hard palate
     /// </summary>
     public static readonly Coding HardPalate = new Coding
     {
@@ -8778,7 +8778,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Soft palate
     /// </summary>
     public static readonly Coding SoftPalate = new Coding
     {
@@ -8787,7 +8787,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Uvula
     /// </summary>
     public static readonly Coding Uvula = new Coding
     {
@@ -8796,7 +8796,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Overlapping lesion of palate
     /// </summary>
     public static readonly Coding OverlappingLesionOfPalate = new Coding
     {
@@ -8805,7 +8805,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Palate, unspecified
     /// </summary>
     public static readonly Coding PalateUnspecified = new Coding
     {
@@ -8814,7 +8814,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Malignant neoplasm of other and unspecified parts of mouth
     /// </summary>
     public static readonly Coding MalignantNeoplasmOfOtherAndUnspecifiedPartsOfMouth = new Coding
     {
@@ -8823,7 +8823,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Cheek mucosa
     /// </summary>
     public static readonly Coding CheekMucosa = new Coding
     {
@@ -8832,7 +8832,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Vestibule of mouth
     /// </summary>
     public static readonly Coding VestibuleOfMouth = new Coding
     {
@@ -8841,7 +8841,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Retromolar area
     /// </summary>
     public static readonly Coding RetromolarArea = new Coding
     {
@@ -8850,7 +8850,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Overlapping lesion of other and unspecified parts of mouth
     /// </summary>
     public static readonly Coding OverlappingLesionOfOtherAndUnspecifiedPartsOfMouth = new Coding
     {
@@ -8859,7 +8859,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Mouth, unspecified
     /// </summary>
     public static readonly Coding MouthUnspecified = new Coding
     {
@@ -8868,7 +8868,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Malignant neoplasm of parotid gland
     /// </summary>
     public static readonly Coding MalignantNeoplasmOfParotidGland = new Coding
     {
@@ -8877,7 +8877,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Malignant neoplasm of other and unspecified major salivary glands
     /// </summary>
     public static readonly Coding MalignantNeoplasmOfOtherAndUnspecifiedMajorSalivaryGlands = new Coding
     {
@@ -8886,7 +8886,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Submandibular gland
     /// </summary>
     public static readonly Coding SubmandibularGland = new Coding
     {
@@ -8895,7 +8895,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Sublingual gland
     /// </summary>
     public static readonly Coding SublingualGland = new Coding
     {
@@ -8904,7 +8904,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Overlapping lesion of major salivary glands
     /// </summary>
     public static readonly Coding OverlappingLesionOfMajorSalivaryGlands = new Coding
     {
@@ -8913,7 +8913,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Major salivary gland, unspecified
     /// </summary>
     public static readonly Coding MajorSalivaryGlandUnspecified = new Coding
     {
@@ -8922,7 +8922,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Malignant neoplasm of tonsil
     /// </summary>
     public static readonly Coding MalignantNeoplasmOfTonsil = new Coding
     {
@@ -8931,7 +8931,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tonsillar fossa
     /// </summary>
     public static readonly Coding TonsillarFossa = new Coding
     {
@@ -8940,7 +8940,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tonsillar pillar (anterior)(posterior)
     /// </summary>
     public static readonly Coding TonsillarPillarAnteriorPosterior = new Coding
     {
@@ -8949,7 +8949,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Overlapping lesion of tonsil
     /// </summary>
     public static readonly Coding OverlappingLesionOfTonsil = new Coding
     {
@@ -8958,7 +8958,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Tonsil, unspecified
     /// </summary>
     public static readonly Coding TonsilUnspecified = new Coding
     {
@@ -8967,7 +8967,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Malignant neoplasm of oropharynx
     /// </summary>
     public static readonly Coding MalignantNeoplasmOfOropharynx = new Coding
     {
@@ -8976,7 +8976,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Vallecula
     /// </summary>
     public static readonly Coding Vallecula = new Coding
     {
@@ -8985,7 +8985,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Anterior surface of epiglottis
     /// </summary>
     public static readonly Coding AnteriorSurfaceOfEpiglottis = new Coding
     {
@@ -8994,7 +8994,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Certain infectious and parasitic diseases
     /// </summary>
     public static readonly Coding CertainInfectiousAndParasiticDiseases = new Coding
     {
@@ -9003,7 +9003,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://hl7.org/fhir/sid/icd-10"
     };
     /// <summary>
-    /// 
+    /// Neoplasms
     /// </summary>
     public static readonly Coding Neoplasms = new Coding
     {
@@ -9018,9 +9018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCholera = "A00";
 
     /// <summary>
+    /// Literal for code: SidIcd10Cholera
+    /// </summary>
+    public const string LiteralSidIcd10Cholera = "http://hl7.org/fhir/sid/icd-10#A00";
+
+    /// <summary>
     /// Literal for code: IntestinalInfectiousDiseases
     /// </summary>
     public const string LiteralIntestinalInfectiousDiseases = "A00-A09";
+
+    /// <summary>
+    /// Literal for code: SidIcd10IntestinalInfectiousDiseases
+    /// </summary>
+    public const string LiteralSidIcd10IntestinalInfectiousDiseases = "http://hl7.org/fhir/sid/icd-10#A00-A09";
 
     /// <summary>
     /// Literal for code: CholeraDueToVibrioCholerae01BiovarCholerae
@@ -9028,9 +9038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCholeraDueToVibrioCholerae01BiovarCholerae = "A00.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10CholeraDueToVibrioCholerae01BiovarCholerae
+    /// </summary>
+    public const string LiteralSidIcd10CholeraDueToVibrioCholerae01BiovarCholerae = "http://hl7.org/fhir/sid/icd-10#A00.0";
+
+    /// <summary>
     /// Literal for code: CholeraDueToVibrioCholerae01BiovarEltor
     /// </summary>
     public const string LiteralCholeraDueToVibrioCholerae01BiovarEltor = "A00.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CholeraDueToVibrioCholerae01BiovarEltor
+    /// </summary>
+    public const string LiteralSidIcd10CholeraDueToVibrioCholerae01BiovarEltor = "http://hl7.org/fhir/sid/icd-10#A00.1";
 
     /// <summary>
     /// Literal for code: CholeraUnspecified
@@ -9038,9 +9058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCholeraUnspecified = "A00.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10CholeraUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10CholeraUnspecified = "http://hl7.org/fhir/sid/icd-10#A00.9";
+
+    /// <summary>
     /// Literal for code: TyphoidAndParatyphoidFevers
     /// </summary>
     public const string LiteralTyphoidAndParatyphoidFevers = "A01";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TyphoidAndParatyphoidFevers
+    /// </summary>
+    public const string LiteralSidIcd10TyphoidAndParatyphoidFevers = "http://hl7.org/fhir/sid/icd-10#A01";
 
     /// <summary>
     /// Literal for code: TyphoidFever
@@ -9048,9 +9078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTyphoidFever = "A01.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10TyphoidFever
+    /// </summary>
+    public const string LiteralSidIcd10TyphoidFever = "http://hl7.org/fhir/sid/icd-10#A01.0";
+
+    /// <summary>
     /// Literal for code: ParatyphoidFeverA
     /// </summary>
     public const string LiteralParatyphoidFeverA = "A01.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ParatyphoidFeverA
+    /// </summary>
+    public const string LiteralSidIcd10ParatyphoidFeverA = "http://hl7.org/fhir/sid/icd-10#A01.1";
 
     /// <summary>
     /// Literal for code: ParatyphoidFeverB
@@ -9058,9 +9098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralParatyphoidFeverB = "A01.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10ParatyphoidFeverB
+    /// </summary>
+    public const string LiteralSidIcd10ParatyphoidFeverB = "http://hl7.org/fhir/sid/icd-10#A01.2";
+
+    /// <summary>
     /// Literal for code: ParatyphoidFeverC
     /// </summary>
     public const string LiteralParatyphoidFeverC = "A01.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ParatyphoidFeverC
+    /// </summary>
+    public const string LiteralSidIcd10ParatyphoidFeverC = "http://hl7.org/fhir/sid/icd-10#A01.3";
 
     /// <summary>
     /// Literal for code: ParatyphoidFeverUnspecified
@@ -9068,9 +9118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralParatyphoidFeverUnspecified = "A01.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10ParatyphoidFeverUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ParatyphoidFeverUnspecified = "http://hl7.org/fhir/sid/icd-10#A01.4";
+
+    /// <summary>
     /// Literal for code: OtherSalmonellaInfections
     /// </summary>
     public const string LiteralOtherSalmonellaInfections = "A02";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSalmonellaInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherSalmonellaInfections = "http://hl7.org/fhir/sid/icd-10#A02";
 
     /// <summary>
     /// Literal for code: SalmonellaEnteritis
@@ -9078,9 +9138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSalmonellaEnteritis = "A02.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10SalmonellaEnteritis
+    /// </summary>
+    public const string LiteralSidIcd10SalmonellaEnteritis = "http://hl7.org/fhir/sid/icd-10#A02.0";
+
+    /// <summary>
     /// Literal for code: SalmonellaSepsis
     /// </summary>
     public const string LiteralSalmonellaSepsis = "A02.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SalmonellaSepsis
+    /// </summary>
+    public const string LiteralSidIcd10SalmonellaSepsis = "http://hl7.org/fhir/sid/icd-10#A02.1";
 
     /// <summary>
     /// Literal for code: LocalizedSalmonellaInfections
@@ -9088,9 +9158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLocalizedSalmonellaInfections = "A02.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10LocalizedSalmonellaInfections
+    /// </summary>
+    public const string LiteralSidIcd10LocalizedSalmonellaInfections = "http://hl7.org/fhir/sid/icd-10#A02.2";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedSalmonellaInfections
     /// </summary>
     public const string LiteralOtherSpecifiedSalmonellaInfections = "A02.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedSalmonellaInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedSalmonellaInfections = "http://hl7.org/fhir/sid/icd-10#A02.8";
 
     /// <summary>
     /// Literal for code: SalmonellaInfectionUnspecified
@@ -9098,9 +9178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSalmonellaInfectionUnspecified = "A02.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10SalmonellaInfectionUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10SalmonellaInfectionUnspecified = "http://hl7.org/fhir/sid/icd-10#A02.9";
+
+    /// <summary>
     /// Literal for code: Shigellosis
     /// </summary>
     public const string LiteralShigellosis = "A03";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Shigellosis
+    /// </summary>
+    public const string LiteralSidIcd10Shigellosis = "http://hl7.org/fhir/sid/icd-10#A03";
 
     /// <summary>
     /// Literal for code: ShigellosisDueToShigellaDysenteriae
@@ -9108,9 +9198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralShigellosisDueToShigellaDysenteriae = "A03.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10ShigellosisDueToShigellaDysenteriae
+    /// </summary>
+    public const string LiteralSidIcd10ShigellosisDueToShigellaDysenteriae = "http://hl7.org/fhir/sid/icd-10#A03.0";
+
+    /// <summary>
     /// Literal for code: ShigellosisDueToShigellaFlexneri
     /// </summary>
     public const string LiteralShigellosisDueToShigellaFlexneri = "A03.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ShigellosisDueToShigellaFlexneri
+    /// </summary>
+    public const string LiteralSidIcd10ShigellosisDueToShigellaFlexneri = "http://hl7.org/fhir/sid/icd-10#A03.1";
 
     /// <summary>
     /// Literal for code: ShigellosisDueToShigellaBoydii
@@ -9118,9 +9218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralShigellosisDueToShigellaBoydii = "A03.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10ShigellosisDueToShigellaBoydii
+    /// </summary>
+    public const string LiteralSidIcd10ShigellosisDueToShigellaBoydii = "http://hl7.org/fhir/sid/icd-10#A03.2";
+
+    /// <summary>
     /// Literal for code: ShigellosisDueToShigellaSonnei
     /// </summary>
     public const string LiteralShigellosisDueToShigellaSonnei = "A03.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ShigellosisDueToShigellaSonnei
+    /// </summary>
+    public const string LiteralSidIcd10ShigellosisDueToShigellaSonnei = "http://hl7.org/fhir/sid/icd-10#A03.3";
 
     /// <summary>
     /// Literal for code: OtherShigellosis
@@ -9128,9 +9238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherShigellosis = "A03.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherShigellosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherShigellosis = "http://hl7.org/fhir/sid/icd-10#A03.8";
+
+    /// <summary>
     /// Literal for code: ShigellosisUnspecified
     /// </summary>
     public const string LiteralShigellosisUnspecified = "A03.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ShigellosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ShigellosisUnspecified = "http://hl7.org/fhir/sid/icd-10#A03.9";
 
     /// <summary>
     /// Literal for code: OtherBacterialIntestinalInfections
@@ -9138,9 +9258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherBacterialIntestinalInfections = "A04";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherBacterialIntestinalInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherBacterialIntestinalInfections = "http://hl7.org/fhir/sid/icd-10#A04";
+
+    /// <summary>
     /// Literal for code: EnteropathogenicEscherichiaColiInfection
     /// </summary>
     public const string LiteralEnteropathogenicEscherichiaColiInfection = "A04.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EnteropathogenicEscherichiaColiInfection
+    /// </summary>
+    public const string LiteralSidIcd10EnteropathogenicEscherichiaColiInfection = "http://hl7.org/fhir/sid/icd-10#A04.0";
 
     /// <summary>
     /// Literal for code: EnterotoxigenicEscherichiaColiInfection
@@ -9148,9 +9278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEnterotoxigenicEscherichiaColiInfection = "A04.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10EnterotoxigenicEscherichiaColiInfection
+    /// </summary>
+    public const string LiteralSidIcd10EnterotoxigenicEscherichiaColiInfection = "http://hl7.org/fhir/sid/icd-10#A04.1";
+
+    /// <summary>
     /// Literal for code: EnteroinvasiveEscherichiaColiInfection
     /// </summary>
     public const string LiteralEnteroinvasiveEscherichiaColiInfection = "A04.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EnteroinvasiveEscherichiaColiInfection
+    /// </summary>
+    public const string LiteralSidIcd10EnteroinvasiveEscherichiaColiInfection = "http://hl7.org/fhir/sid/icd-10#A04.2";
 
     /// <summary>
     /// Literal for code: EnterohaemorrhagicEscherichiaColiInfection
@@ -9158,9 +9298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEnterohaemorrhagicEscherichiaColiInfection = "A04.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10EnterohaemorrhagicEscherichiaColiInfection
+    /// </summary>
+    public const string LiteralSidIcd10EnterohaemorrhagicEscherichiaColiInfection = "http://hl7.org/fhir/sid/icd-10#A04.3";
+
+    /// <summary>
     /// Literal for code: OtherIntestinalEscherichiaColiInfections
     /// </summary>
     public const string LiteralOtherIntestinalEscherichiaColiInfections = "A04.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherIntestinalEscherichiaColiInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherIntestinalEscherichiaColiInfections = "http://hl7.org/fhir/sid/icd-10#A04.4";
 
     /// <summary>
     /// Literal for code: CampylobacterEnteritis
@@ -9168,9 +9318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCampylobacterEnteritis = "A04.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10CampylobacterEnteritis
+    /// </summary>
+    public const string LiteralSidIcd10CampylobacterEnteritis = "http://hl7.org/fhir/sid/icd-10#A04.5";
+
+    /// <summary>
     /// Literal for code: EnteritisDueToYersiniaEnterocolitica
     /// </summary>
     public const string LiteralEnteritisDueToYersiniaEnterocolitica = "A04.6";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EnteritisDueToYersiniaEnterocolitica
+    /// </summary>
+    public const string LiteralSidIcd10EnteritisDueToYersiniaEnterocolitica = "http://hl7.org/fhir/sid/icd-10#A04.6";
 
     /// <summary>
     /// Literal for code: EnterocolitisDueToClostridiumDifficile
@@ -9178,9 +9338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEnterocolitisDueToClostridiumDifficile = "A04.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10EnterocolitisDueToClostridiumDifficile
+    /// </summary>
+    public const string LiteralSidIcd10EnterocolitisDueToClostridiumDifficile = "http://hl7.org/fhir/sid/icd-10#A04.7";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedBacterialIntestinalInfections
     /// </summary>
     public const string LiteralOtherSpecifiedBacterialIntestinalInfections = "A04.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedBacterialIntestinalInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedBacterialIntestinalInfections = "http://hl7.org/fhir/sid/icd-10#A04.8";
 
     /// <summary>
     /// Literal for code: BacterialIntestinalInfectionUnspecified
@@ -9188,9 +9358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBacterialIntestinalInfectionUnspecified = "A04.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10BacterialIntestinalInfectionUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10BacterialIntestinalInfectionUnspecified = "http://hl7.org/fhir/sid/icd-10#A04.9";
+
+    /// <summary>
     /// Literal for code: OtherBacterialFoodborneIntoxicationsNotElsewhereClassified
     /// </summary>
     public const string LiteralOtherBacterialFoodborneIntoxicationsNotElsewhereClassified = "A05";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherBacterialFoodborneIntoxicationsNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10OtherBacterialFoodborneIntoxicationsNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#A05";
 
     /// <summary>
     /// Literal for code: FoodborneStaphylococcalIntoxication
@@ -9198,9 +9378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFoodborneStaphylococcalIntoxication = "A05.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10FoodborneStaphylococcalIntoxication
+    /// </summary>
+    public const string LiteralSidIcd10FoodborneStaphylococcalIntoxication = "http://hl7.org/fhir/sid/icd-10#A05.0";
+
+    /// <summary>
     /// Literal for code: Botulism
     /// </summary>
     public const string LiteralBotulism = "A05.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Botulism
+    /// </summary>
+    public const string LiteralSidIcd10Botulism = "http://hl7.org/fhir/sid/icd-10#A05.1";
 
     /// <summary>
     /// Literal for code: FoodborneClostridiumPerfringensClostridiumWelchiiIntoxication
@@ -9208,9 +9398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFoodborneClostridiumPerfringensClostridiumWelchiiIntoxication = "A05.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10FoodborneClostridiumPerfringensClostridiumWelchiiIntoxication
+    /// </summary>
+    public const string LiteralSidIcd10FoodborneClostridiumPerfringensClostridiumWelchiiIntoxication = "http://hl7.org/fhir/sid/icd-10#A05.2";
+
+    /// <summary>
     /// Literal for code: FoodborneVibrioParahaemolyticusIntoxication
     /// </summary>
     public const string LiteralFoodborneVibrioParahaemolyticusIntoxication = "A05.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10FoodborneVibrioParahaemolyticusIntoxication
+    /// </summary>
+    public const string LiteralSidIcd10FoodborneVibrioParahaemolyticusIntoxication = "http://hl7.org/fhir/sid/icd-10#A05.3";
 
     /// <summary>
     /// Literal for code: FoodborneBacillusCereusIntoxication
@@ -9218,9 +9418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFoodborneBacillusCereusIntoxication = "A05.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10FoodborneBacillusCereusIntoxication
+    /// </summary>
+    public const string LiteralSidIcd10FoodborneBacillusCereusIntoxication = "http://hl7.org/fhir/sid/icd-10#A05.4";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedBacterialFoodborneIntoxications
     /// </summary>
     public const string LiteralOtherSpecifiedBacterialFoodborneIntoxications = "A05.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedBacterialFoodborneIntoxications
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedBacterialFoodborneIntoxications = "http://hl7.org/fhir/sid/icd-10#A05.8";
 
     /// <summary>
     /// Literal for code: BacterialFoodborneIntoxicationUnspecified
@@ -9228,9 +9438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBacterialFoodborneIntoxicationUnspecified = "A05.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10BacterialFoodborneIntoxicationUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10BacterialFoodborneIntoxicationUnspecified = "http://hl7.org/fhir/sid/icd-10#A05.9";
+
+    /// <summary>
     /// Literal for code: Amoebiasis
     /// </summary>
     public const string LiteralAmoebiasis = "A06";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Amoebiasis
+    /// </summary>
+    public const string LiteralSidIcd10Amoebiasis = "http://hl7.org/fhir/sid/icd-10#A06";
 
     /// <summary>
     /// Literal for code: AcuteAmoebicDysentery
@@ -9238,9 +9458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcuteAmoebicDysentery = "A06.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcuteAmoebicDysentery
+    /// </summary>
+    public const string LiteralSidIcd10AcuteAmoebicDysentery = "http://hl7.org/fhir/sid/icd-10#A06.0";
+
+    /// <summary>
     /// Literal for code: ChronicIntestinalAmoebiasis
     /// </summary>
     public const string LiteralChronicIntestinalAmoebiasis = "A06.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ChronicIntestinalAmoebiasis
+    /// </summary>
+    public const string LiteralSidIcd10ChronicIntestinalAmoebiasis = "http://hl7.org/fhir/sid/icd-10#A06.1";
 
     /// <summary>
     /// Literal for code: AmoebicNondysentericColitis
@@ -9248,9 +9478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAmoebicNondysentericColitis = "A06.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10AmoebicNondysentericColitis
+    /// </summary>
+    public const string LiteralSidIcd10AmoebicNondysentericColitis = "http://hl7.org/fhir/sid/icd-10#A06.2";
+
+    /// <summary>
     /// Literal for code: AmoebomaOfIntestine
     /// </summary>
     public const string LiteralAmoebomaOfIntestine = "A06.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AmoebomaOfIntestine
+    /// </summary>
+    public const string LiteralSidIcd10AmoebomaOfIntestine = "http://hl7.org/fhir/sid/icd-10#A06.3";
 
     /// <summary>
     /// Literal for code: AmoebicLiverAbscessK770
@@ -9258,9 +9498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAmoebicLiverAbscessK770 = "A06.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10AmoebicLiverAbscessK770
+    /// </summary>
+    public const string LiteralSidIcd10AmoebicLiverAbscessK770 = "http://hl7.org/fhir/sid/icd-10#A06.4";
+
+    /// <summary>
     /// Literal for code: AmoebicLungAbscess
     /// </summary>
     public const string LiteralAmoebicLungAbscess = "A06.5";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AmoebicLungAbscess
+    /// </summary>
+    public const string LiteralSidIcd10AmoebicLungAbscess = "http://hl7.org/fhir/sid/icd-10#A06.5";
 
     /// <summary>
     /// Literal for code: AmoebicBrainAbscessG07
@@ -9268,9 +9518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAmoebicBrainAbscessG07 = "A06.6";
 
     /// <summary>
+    /// Literal for code: SidIcd10AmoebicBrainAbscessG07
+    /// </summary>
+    public const string LiteralSidIcd10AmoebicBrainAbscessG07 = "http://hl7.org/fhir/sid/icd-10#A06.6";
+
+    /// <summary>
     /// Literal for code: CutaneousAmoebiasis
     /// </summary>
     public const string LiteralCutaneousAmoebiasis = "A06.7";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CutaneousAmoebiasis
+    /// </summary>
+    public const string LiteralSidIcd10CutaneousAmoebiasis = "http://hl7.org/fhir/sid/icd-10#A06.7";
 
     /// <summary>
     /// Literal for code: AmoebicInfectionOfOtherSites
@@ -9278,9 +9538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAmoebicInfectionOfOtherSites = "A06.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10AmoebicInfectionOfOtherSites
+    /// </summary>
+    public const string LiteralSidIcd10AmoebicInfectionOfOtherSites = "http://hl7.org/fhir/sid/icd-10#A06.8";
+
+    /// <summary>
     /// Literal for code: AmoebiasisUnspecified
     /// </summary>
     public const string LiteralAmoebiasisUnspecified = "A06.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AmoebiasisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10AmoebiasisUnspecified = "http://hl7.org/fhir/sid/icd-10#A06.9";
 
     /// <summary>
     /// Literal for code: OtherProtozoalIntestinalDiseases
@@ -9288,9 +9558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherProtozoalIntestinalDiseases = "A07";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherProtozoalIntestinalDiseases
+    /// </summary>
+    public const string LiteralSidIcd10OtherProtozoalIntestinalDiseases = "http://hl7.org/fhir/sid/icd-10#A07";
+
+    /// <summary>
     /// Literal for code: Balantidiasis
     /// </summary>
     public const string LiteralBalantidiasis = "A07.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Balantidiasis
+    /// </summary>
+    public const string LiteralSidIcd10Balantidiasis = "http://hl7.org/fhir/sid/icd-10#A07.0";
 
     /// <summary>
     /// Literal for code: GiardiasisLambliasis
@@ -9298,9 +9578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGiardiasisLambliasis = "A07.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10GiardiasisLambliasis
+    /// </summary>
+    public const string LiteralSidIcd10GiardiasisLambliasis = "http://hl7.org/fhir/sid/icd-10#A07.1";
+
+    /// <summary>
     /// Literal for code: Cryptosporidiosis
     /// </summary>
     public const string LiteralCryptosporidiosis = "A07.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Cryptosporidiosis
+    /// </summary>
+    public const string LiteralSidIcd10Cryptosporidiosis = "http://hl7.org/fhir/sid/icd-10#A07.2";
 
     /// <summary>
     /// Literal for code: Isosporiasis
@@ -9308,9 +9598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIsosporiasis = "A07.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10Isosporiasis
+    /// </summary>
+    public const string LiteralSidIcd10Isosporiasis = "http://hl7.org/fhir/sid/icd-10#A07.3";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedProtozoalIntestinalDiseases
     /// </summary>
     public const string LiteralOtherSpecifiedProtozoalIntestinalDiseases = "A07.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedProtozoalIntestinalDiseases
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedProtozoalIntestinalDiseases = "http://hl7.org/fhir/sid/icd-10#A07.8";
 
     /// <summary>
     /// Literal for code: ProtozoalIntestinalDiseaseUnspecified
@@ -9318,9 +9618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProtozoalIntestinalDiseaseUnspecified = "A07.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10ProtozoalIntestinalDiseaseUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ProtozoalIntestinalDiseaseUnspecified = "http://hl7.org/fhir/sid/icd-10#A07.9";
+
+    /// <summary>
     /// Literal for code: ViralAndOtherSpecifiedIntestinalInfections
     /// </summary>
     public const string LiteralViralAndOtherSpecifiedIntestinalInfections = "A08";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ViralAndOtherSpecifiedIntestinalInfections
+    /// </summary>
+    public const string LiteralSidIcd10ViralAndOtherSpecifiedIntestinalInfections = "http://hl7.org/fhir/sid/icd-10#A08";
 
     /// <summary>
     /// Literal for code: RotaviralEnteritis
@@ -9328,9 +9638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRotaviralEnteritis = "A08.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10RotaviralEnteritis
+    /// </summary>
+    public const string LiteralSidIcd10RotaviralEnteritis = "http://hl7.org/fhir/sid/icd-10#A08.0";
+
+    /// <summary>
     /// Literal for code: AcuteGastroenteropathyDueToNorovirus
     /// </summary>
     public const string LiteralAcuteGastroenteropathyDueToNorovirus = "A08.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AcuteGastroenteropathyDueToNorovirus
+    /// </summary>
+    public const string LiteralSidIcd10AcuteGastroenteropathyDueToNorovirus = "http://hl7.org/fhir/sid/icd-10#A08.1";
 
     /// <summary>
     /// Literal for code: AdenoviralEnteritis
@@ -9338,9 +9658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdenoviralEnteritis = "A08.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10AdenoviralEnteritis
+    /// </summary>
+    public const string LiteralSidIcd10AdenoviralEnteritis = "http://hl7.org/fhir/sid/icd-10#A08.2";
+
+    /// <summary>
     /// Literal for code: OtherViralEnteritis
     /// </summary>
     public const string LiteralOtherViralEnteritis = "A08.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherViralEnteritis
+    /// </summary>
+    public const string LiteralSidIcd10OtherViralEnteritis = "http://hl7.org/fhir/sid/icd-10#A08.3";
 
     /// <summary>
     /// Literal for code: ViralIntestinalInfectionUnspecified
@@ -9348,9 +9678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralViralIntestinalInfectionUnspecified = "A08.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10ViralIntestinalInfectionUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ViralIntestinalInfectionUnspecified = "http://hl7.org/fhir/sid/icd-10#A08.4";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedIntestinalInfections
     /// </summary>
     public const string LiteralOtherSpecifiedIntestinalInfections = "A08.5";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedIntestinalInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedIntestinalInfections = "http://hl7.org/fhir/sid/icd-10#A08.5";
 
     /// <summary>
     /// Literal for code: OtherGastroenteritisAndColitisOfInfectiousAndUnspecifiedOrigin
@@ -9358,9 +9698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherGastroenteritisAndColitisOfInfectiousAndUnspecifiedOrigin = "A09";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherGastroenteritisAndColitisOfInfectiousAndUnspecifiedOrigin
+    /// </summary>
+    public const string LiteralSidIcd10OtherGastroenteritisAndColitisOfInfectiousAndUnspecifiedOrigin = "http://hl7.org/fhir/sid/icd-10#A09";
+
+    /// <summary>
     /// Literal for code: OtherAndUnspecifiedGastroenteritisAndColitisOfInfectiousOrigin
     /// </summary>
     public const string LiteralOtherAndUnspecifiedGastroenteritisAndColitisOfInfectiousOrigin = "A09.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherAndUnspecifiedGastroenteritisAndColitisOfInfectiousOrigin
+    /// </summary>
+    public const string LiteralSidIcd10OtherAndUnspecifiedGastroenteritisAndColitisOfInfectiousOrigin = "http://hl7.org/fhir/sid/icd-10#A09.0";
 
     /// <summary>
     /// Literal for code: GastroenteritisAndColitisOfUnspecifiedOrigin
@@ -9368,9 +9718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGastroenteritisAndColitisOfUnspecifiedOrigin = "A09.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10GastroenteritisAndColitisOfUnspecifiedOrigin
+    /// </summary>
+    public const string LiteralSidIcd10GastroenteritisAndColitisOfUnspecifiedOrigin = "http://hl7.org/fhir/sid/icd-10#A09.9";
+
+    /// <summary>
     /// Literal for code: RespiratoryTuberculosisBacteriologicallyAndHistologicallyConfirmed
     /// </summary>
     public const string LiteralRespiratoryTuberculosisBacteriologicallyAndHistologicallyConfirmed = "A15";
+
+    /// <summary>
+    /// Literal for code: SidIcd10RespiratoryTuberculosisBacteriologicallyAndHistologicallyConfirmed
+    /// </summary>
+    public const string LiteralSidIcd10RespiratoryTuberculosisBacteriologicallyAndHistologicallyConfirmed = "http://hl7.org/fhir/sid/icd-10#A15";
 
     /// <summary>
     /// Literal for code: Tuberculosis
@@ -9378,9 +9738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTuberculosis = "A15-A19";
 
     /// <summary>
+    /// Literal for code: SidIcd10Tuberculosis
+    /// </summary>
+    public const string LiteralSidIcd10Tuberculosis = "http://hl7.org/fhir/sid/icd-10#A15-A19";
+
+    /// <summary>
     /// Literal for code: TuberculosisOfLungConfirmedBySputumMicroscopyWithOrWithoutCulture
     /// </summary>
     public const string LiteralTuberculosisOfLungConfirmedBySputumMicroscopyWithOrWithoutCulture = "A15.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfLungConfirmedBySputumMicroscopyWithOrWithoutCulture
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfLungConfirmedBySputumMicroscopyWithOrWithoutCulture = "http://hl7.org/fhir/sid/icd-10#A15.0";
 
     /// <summary>
     /// Literal for code: TuberculosisOfLungConfirmedByCultureOnly
@@ -9388,9 +9758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTuberculosisOfLungConfirmedByCultureOnly = "A15.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfLungConfirmedByCultureOnly
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfLungConfirmedByCultureOnly = "http://hl7.org/fhir/sid/icd-10#A15.1";
+
+    /// <summary>
     /// Literal for code: TuberculosisOfLungConfirmedHistologically
     /// </summary>
     public const string LiteralTuberculosisOfLungConfirmedHistologically = "A15.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfLungConfirmedHistologically
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfLungConfirmedHistologically = "http://hl7.org/fhir/sid/icd-10#A15.2";
 
     /// <summary>
     /// Literal for code: TuberculosisOfLungConfirmedByUnspecifiedMeans
@@ -9398,9 +9778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTuberculosisOfLungConfirmedByUnspecifiedMeans = "A15.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfLungConfirmedByUnspecifiedMeans
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfLungConfirmedByUnspecifiedMeans = "http://hl7.org/fhir/sid/icd-10#A15.3";
+
+    /// <summary>
     /// Literal for code: TuberculosisOfIntrathoracicLymphNodesConfirmedBacteriologicallyAndHistologically
     /// </summary>
     public const string LiteralTuberculosisOfIntrathoracicLymphNodesConfirmedBacteriologicallyAndHistologically = "A15.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfIntrathoracicLymphNodesConfirmedBacteriologicallyAndHistologically
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfIntrathoracicLymphNodesConfirmedBacteriologicallyAndHistologically = "http://hl7.org/fhir/sid/icd-10#A15.4";
 
     /// <summary>
     /// Literal for code: TuberculosisOfLarynxTracheaAndBronchusConfirmedBacteriologicallyAndHistologically
@@ -9408,9 +9798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTuberculosisOfLarynxTracheaAndBronchusConfirmedBacteriologicallyAndHistologically = "A15.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfLarynxTracheaAndBronchusConfirmedBacteriologicallyAndHistologically
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfLarynxTracheaAndBronchusConfirmedBacteriologicallyAndHistologically = "http://hl7.org/fhir/sid/icd-10#A15.5";
+
+    /// <summary>
     /// Literal for code: TuberculousPleurisyConfirmedBacteriologicallyAndHistologically
     /// </summary>
     public const string LiteralTuberculousPleurisyConfirmedBacteriologicallyAndHistologically = "A15.6";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TuberculousPleurisyConfirmedBacteriologicallyAndHistologically
+    /// </summary>
+    public const string LiteralSidIcd10TuberculousPleurisyConfirmedBacteriologicallyAndHistologically = "http://hl7.org/fhir/sid/icd-10#A15.6";
 
     /// <summary>
     /// Literal for code: PrimaryRespiratoryTuberculosisConfirmedBacteriologicallyAndHistologically
@@ -9418,9 +9818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrimaryRespiratoryTuberculosisConfirmedBacteriologicallyAndHistologically = "A15.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10PrimaryRespiratoryTuberculosisConfirmedBacteriologicallyAndHistologically
+    /// </summary>
+    public const string LiteralSidIcd10PrimaryRespiratoryTuberculosisConfirmedBacteriologicallyAndHistologically = "http://hl7.org/fhir/sid/icd-10#A15.7";
+
+    /// <summary>
     /// Literal for code: OtherRespiratoryTuberculosisConfirmedBacteriologicallyAndHistologically
     /// </summary>
     public const string LiteralOtherRespiratoryTuberculosisConfirmedBacteriologicallyAndHistologically = "A15.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherRespiratoryTuberculosisConfirmedBacteriologicallyAndHistologically
+    /// </summary>
+    public const string LiteralSidIcd10OtherRespiratoryTuberculosisConfirmedBacteriologicallyAndHistologically = "http://hl7.org/fhir/sid/icd-10#A15.8";
 
     /// <summary>
     /// Literal for code: RespiratoryTuberculosisUnspecifiedConfirmedBacteriologicallyAndHistologically
@@ -9428,9 +9838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRespiratoryTuberculosisUnspecifiedConfirmedBacteriologicallyAndHistologically = "A15.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10RespiratoryTuberculosisUnspecifiedConfirmedBacteriologicallyAndHistologically
+    /// </summary>
+    public const string LiteralSidIcd10RespiratoryTuberculosisUnspecifiedConfirmedBacteriologicallyAndHistologically = "http://hl7.org/fhir/sid/icd-10#A15.9";
+
+    /// <summary>
     /// Literal for code: RespiratoryTuberculosisNotConfirmedBacteriologicallyOrHistologically
     /// </summary>
     public const string LiteralRespiratoryTuberculosisNotConfirmedBacteriologicallyOrHistologically = "A16";
+
+    /// <summary>
+    /// Literal for code: SidIcd10RespiratoryTuberculosisNotConfirmedBacteriologicallyOrHistologically
+    /// </summary>
+    public const string LiteralSidIcd10RespiratoryTuberculosisNotConfirmedBacteriologicallyOrHistologically = "http://hl7.org/fhir/sid/icd-10#A16";
 
     /// <summary>
     /// Literal for code: TuberculosisOfLungBacteriologicallyAndHistologicallyNegative
@@ -9438,9 +9858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTuberculosisOfLungBacteriologicallyAndHistologicallyNegative = "A16.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfLungBacteriologicallyAndHistologicallyNegative
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfLungBacteriologicallyAndHistologicallyNegative = "http://hl7.org/fhir/sid/icd-10#A16.0";
+
+    /// <summary>
     /// Literal for code: TuberculosisOfLungBacteriologicalAndHistologicalExaminationNotDone
     /// </summary>
     public const string LiteralTuberculosisOfLungBacteriologicalAndHistologicalExaminationNotDone = "A16.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfLungBacteriologicalAndHistologicalExaminationNotDone
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfLungBacteriologicalAndHistologicalExaminationNotDone = "http://hl7.org/fhir/sid/icd-10#A16.1";
 
     /// <summary>
     /// Literal for code: TuberculosisOfLungWithoutMentionOfBacteriologicalOrHistologicalConfirmation
@@ -9448,9 +9878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTuberculosisOfLungWithoutMentionOfBacteriologicalOrHistologicalConfirmation = "A16.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfLungWithoutMentionOfBacteriologicalOrHistologicalConfirmation
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfLungWithoutMentionOfBacteriologicalOrHistologicalConfirmation = "http://hl7.org/fhir/sid/icd-10#A16.2";
+
+    /// <summary>
     /// Literal for code: TuberculosisOfIntrathoracicLymphNodesWithoutMentionOfBacteriologicalOrHistologicalConfirmation
     /// </summary>
     public const string LiteralTuberculosisOfIntrathoracicLymphNodesWithoutMentionOfBacteriologicalOrHistologicalConfirmation = "A16.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfIntrathoracicLymphNodesWithoutMentionOfBacteriologicalOrHistologicalConfirmation
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfIntrathoracicLymphNodesWithoutMentionOfBacteriologicalOrHistologicalConfirmation = "http://hl7.org/fhir/sid/icd-10#A16.3";
 
     /// <summary>
     /// Literal for code: TuberculosisOfLarynxTracheaAndBronchusWithoutMentionOfBacteriologicalOrHistologicalConfirmation
@@ -9458,9 +9898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTuberculosisOfLarynxTracheaAndBronchusWithoutMentionOfBacteriologicalOrHistologicalConfirmation = "A16.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfLarynxTracheaAndBronchusWithoutMentionOfBacteriologicalOrHistologicalConfirmation
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfLarynxTracheaAndBronchusWithoutMentionOfBacteriologicalOrHistologicalConfirmation = "http://hl7.org/fhir/sid/icd-10#A16.4";
+
+    /// <summary>
     /// Literal for code: TuberculousPleurisyWithoutMentionOfBacteriologicalOrHistologicalConfirmation
     /// </summary>
     public const string LiteralTuberculousPleurisyWithoutMentionOfBacteriologicalOrHistologicalConfirmation = "A16.5";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TuberculousPleurisyWithoutMentionOfBacteriologicalOrHistologicalConfirmation
+    /// </summary>
+    public const string LiteralSidIcd10TuberculousPleurisyWithoutMentionOfBacteriologicalOrHistologicalConfirmation = "http://hl7.org/fhir/sid/icd-10#A16.5";
 
     /// <summary>
     /// Literal for code: PrimaryRespiratoryTuberculosisWithoutMentionOfBacteriologicalOrHistologicalConfirmation
@@ -9468,9 +9918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrimaryRespiratoryTuberculosisWithoutMentionOfBacteriologicalOrHistologicalConfirmation = "A16.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10PrimaryRespiratoryTuberculosisWithoutMentionOfBacteriologicalOrHistologicalConfirmation
+    /// </summary>
+    public const string LiteralSidIcd10PrimaryRespiratoryTuberculosisWithoutMentionOfBacteriologicalOrHistologicalConfirmation = "http://hl7.org/fhir/sid/icd-10#A16.7";
+
+    /// <summary>
     /// Literal for code: OtherRespiratoryTuberculosisWithoutMentionOfBacteriologicalOrHistologicalConfirmation
     /// </summary>
     public const string LiteralOtherRespiratoryTuberculosisWithoutMentionOfBacteriologicalOrHistologicalConfirmation = "A16.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherRespiratoryTuberculosisWithoutMentionOfBacteriologicalOrHistologicalConfirmation
+    /// </summary>
+    public const string LiteralSidIcd10OtherRespiratoryTuberculosisWithoutMentionOfBacteriologicalOrHistologicalConfirmation = "http://hl7.org/fhir/sid/icd-10#A16.8";
 
     /// <summary>
     /// Literal for code: RespiratoryTuberculosisUnspecifiedWithoutMentionOfBacteriologicalOrHistologicalConfirmation
@@ -9478,9 +9938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRespiratoryTuberculosisUnspecifiedWithoutMentionOfBacteriologicalOrHistologicalConfirmation = "A16.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10RespiratoryTuberculosisUnspecifiedWithoutMentionOfBacteriologicalOrHistologicalConfirmation
+    /// </summary>
+    public const string LiteralSidIcd10RespiratoryTuberculosisUnspecifiedWithoutMentionOfBacteriologicalOrHistologicalConfirmation = "http://hl7.org/fhir/sid/icd-10#A16.9";
+
+    /// <summary>
     /// Literal for code: TuberculosisOfNervousSystem
     /// </summary>
     public const string LiteralTuberculosisOfNervousSystem = "A17";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfNervousSystem
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfNervousSystem = "http://hl7.org/fhir/sid/icd-10#A17";
 
     /// <summary>
     /// Literal for code: TuberculousMeningitisG01
@@ -9488,9 +9958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTuberculousMeningitisG01 = "A17.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10TuberculousMeningitisG01
+    /// </summary>
+    public const string LiteralSidIcd10TuberculousMeningitisG01 = "http://hl7.org/fhir/sid/icd-10#A17.0";
+
+    /// <summary>
     /// Literal for code: MeningealTuberculomaG07
     /// </summary>
     public const string LiteralMeningealTuberculomaG07 = "A17.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MeningealTuberculomaG07
+    /// </summary>
+    public const string LiteralSidIcd10MeningealTuberculomaG07 = "http://hl7.org/fhir/sid/icd-10#A17.1";
 
     /// <summary>
     /// Literal for code: OtherTuberculosisOfNervousSystem
@@ -9498,9 +9978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherTuberculosisOfNervousSystem = "A17.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherTuberculosisOfNervousSystem
+    /// </summary>
+    public const string LiteralSidIcd10OtherTuberculosisOfNervousSystem = "http://hl7.org/fhir/sid/icd-10#A17.8";
+
+    /// <summary>
     /// Literal for code: TuberculosisOfNervousSystemUnspecifiedG998
     /// </summary>
     public const string LiteralTuberculosisOfNervousSystemUnspecifiedG998 = "A17.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfNervousSystemUnspecifiedG998
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfNervousSystemUnspecifiedG998 = "http://hl7.org/fhir/sid/icd-10#A17.9";
 
     /// <summary>
     /// Literal for code: TuberculosisOfOtherOrgans
@@ -9508,9 +9998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTuberculosisOfOtherOrgans = "A18";
 
     /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfOtherOrgans
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfOtherOrgans = "http://hl7.org/fhir/sid/icd-10#A18";
+
+    /// <summary>
     /// Literal for code: TuberculosisOfBonesAndJoints
     /// </summary>
     public const string LiteralTuberculosisOfBonesAndJoints = "A18.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfBonesAndJoints
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfBonesAndJoints = "http://hl7.org/fhir/sid/icd-10#A18.0";
 
     /// <summary>
     /// Literal for code: TuberculosisOfGenitourinarySystem
@@ -9518,9 +10018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTuberculosisOfGenitourinarySystem = "A18.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfGenitourinarySystem
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfGenitourinarySystem = "http://hl7.org/fhir/sid/icd-10#A18.1";
+
+    /// <summary>
     /// Literal for code: TuberculousPeripheralLymphadenopathy
     /// </summary>
     public const string LiteralTuberculousPeripheralLymphadenopathy = "A18.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TuberculousPeripheralLymphadenopathy
+    /// </summary>
+    public const string LiteralSidIcd10TuberculousPeripheralLymphadenopathy = "http://hl7.org/fhir/sid/icd-10#A18.2";
 
     /// <summary>
     /// Literal for code: TuberculosisOfIntestinesPeritoneumAndMesentericGlands
@@ -9528,9 +10038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTuberculosisOfIntestinesPeritoneumAndMesentericGlands = "A18.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfIntestinesPeritoneumAndMesentericGlands
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfIntestinesPeritoneumAndMesentericGlands = "http://hl7.org/fhir/sid/icd-10#A18.3";
+
+    /// <summary>
     /// Literal for code: TuberculosisOfSkinAndSubcutaneousTissue
     /// </summary>
     public const string LiteralTuberculosisOfSkinAndSubcutaneousTissue = "A18.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfSkinAndSubcutaneousTissue
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfSkinAndSubcutaneousTissue = "http://hl7.org/fhir/sid/icd-10#A18.4";
 
     /// <summary>
     /// Literal for code: TuberculosisOfEye
@@ -9538,9 +10058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTuberculosisOfEye = "A18.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfEye
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfEye = "http://hl7.org/fhir/sid/icd-10#A18.5";
+
+    /// <summary>
     /// Literal for code: TuberculosisOfEar
     /// </summary>
     public const string LiteralTuberculosisOfEar = "A18.6";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfEar
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfEar = "http://hl7.org/fhir/sid/icd-10#A18.6";
 
     /// <summary>
     /// Literal for code: TuberculosisOfAdrenalGlandsE351
@@ -9548,9 +10078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTuberculosisOfAdrenalGlandsE351 = "A18.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfAdrenalGlandsE351
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfAdrenalGlandsE351 = "http://hl7.org/fhir/sid/icd-10#A18.7";
+
+    /// <summary>
     /// Literal for code: TuberculosisOfOtherSpecifiedOrgans
     /// </summary>
     public const string LiteralTuberculosisOfOtherSpecifiedOrgans = "A18.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TuberculosisOfOtherSpecifiedOrgans
+    /// </summary>
+    public const string LiteralSidIcd10TuberculosisOfOtherSpecifiedOrgans = "http://hl7.org/fhir/sid/icd-10#A18.8";
 
     /// <summary>
     /// Literal for code: MiliaryTuberculosis
@@ -9558,9 +10098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMiliaryTuberculosis = "A19";
 
     /// <summary>
+    /// Literal for code: SidIcd10MiliaryTuberculosis
+    /// </summary>
+    public const string LiteralSidIcd10MiliaryTuberculosis = "http://hl7.org/fhir/sid/icd-10#A19";
+
+    /// <summary>
     /// Literal for code: AcuteMiliaryTuberculosisOfASingleSpecifiedSite
     /// </summary>
     public const string LiteralAcuteMiliaryTuberculosisOfASingleSpecifiedSite = "A19.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AcuteMiliaryTuberculosisOfASingleSpecifiedSite
+    /// </summary>
+    public const string LiteralSidIcd10AcuteMiliaryTuberculosisOfASingleSpecifiedSite = "http://hl7.org/fhir/sid/icd-10#A19.0";
 
     /// <summary>
     /// Literal for code: AcuteMiliaryTuberculosisOfMultipleSites
@@ -9568,9 +10118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcuteMiliaryTuberculosisOfMultipleSites = "A19.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcuteMiliaryTuberculosisOfMultipleSites
+    /// </summary>
+    public const string LiteralSidIcd10AcuteMiliaryTuberculosisOfMultipleSites = "http://hl7.org/fhir/sid/icd-10#A19.1";
+
+    /// <summary>
     /// Literal for code: AcuteMiliaryTuberculosisUnspecified
     /// </summary>
     public const string LiteralAcuteMiliaryTuberculosisUnspecified = "A19.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AcuteMiliaryTuberculosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10AcuteMiliaryTuberculosisUnspecified = "http://hl7.org/fhir/sid/icd-10#A19.2";
 
     /// <summary>
     /// Literal for code: OtherMiliaryTuberculosis
@@ -9578,9 +10138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherMiliaryTuberculosis = "A19.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherMiliaryTuberculosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherMiliaryTuberculosis = "http://hl7.org/fhir/sid/icd-10#A19.8";
+
+    /// <summary>
     /// Literal for code: MiliaryTuberculosisUnspecified
     /// </summary>
     public const string LiteralMiliaryTuberculosisUnspecified = "A19.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MiliaryTuberculosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10MiliaryTuberculosisUnspecified = "http://hl7.org/fhir/sid/icd-10#A19.9";
 
     /// <summary>
     /// Literal for code: Plague
@@ -9588,9 +10158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlague = "A20";
 
     /// <summary>
+    /// Literal for code: SidIcd10Plague
+    /// </summary>
+    public const string LiteralSidIcd10Plague = "http://hl7.org/fhir/sid/icd-10#A20";
+
+    /// <summary>
     /// Literal for code: CertainZoonoticBacterialDiseases
     /// </summary>
     public const string LiteralCertainZoonoticBacterialDiseases = "A20-A28";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CertainZoonoticBacterialDiseases
+    /// </summary>
+    public const string LiteralSidIcd10CertainZoonoticBacterialDiseases = "http://hl7.org/fhir/sid/icd-10#A20-A28";
 
     /// <summary>
     /// Literal for code: BubonicPlague
@@ -9598,9 +10178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBubonicPlague = "A20.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10BubonicPlague
+    /// </summary>
+    public const string LiteralSidIcd10BubonicPlague = "http://hl7.org/fhir/sid/icd-10#A20.0";
+
+    /// <summary>
     /// Literal for code: CellulocutaneousPlague
     /// </summary>
     public const string LiteralCellulocutaneousPlague = "A20.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CellulocutaneousPlague
+    /// </summary>
+    public const string LiteralSidIcd10CellulocutaneousPlague = "http://hl7.org/fhir/sid/icd-10#A20.1";
 
     /// <summary>
     /// Literal for code: PneumonicPlague
@@ -9608,9 +10198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPneumonicPlague = "A20.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10PneumonicPlague
+    /// </summary>
+    public const string LiteralSidIcd10PneumonicPlague = "http://hl7.org/fhir/sid/icd-10#A20.2";
+
+    /// <summary>
     /// Literal for code: PlagueMeningitis
     /// </summary>
     public const string LiteralPlagueMeningitis = "A20.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PlagueMeningitis
+    /// </summary>
+    public const string LiteralSidIcd10PlagueMeningitis = "http://hl7.org/fhir/sid/icd-10#A20.3";
 
     /// <summary>
     /// Literal for code: SepticaemicPlague
@@ -9618,9 +10218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSepticaemicPlague = "A20.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10SepticaemicPlague
+    /// </summary>
+    public const string LiteralSidIcd10SepticaemicPlague = "http://hl7.org/fhir/sid/icd-10#A20.7";
+
+    /// <summary>
     /// Literal for code: OtherFormsOfPlague
     /// </summary>
     public const string LiteralOtherFormsOfPlague = "A20.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfPlague
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfPlague = "http://hl7.org/fhir/sid/icd-10#A20.8";
 
     /// <summary>
     /// Literal for code: PlagueUnspecified
@@ -9628,9 +10238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlagueUnspecified = "A20.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10PlagueUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10PlagueUnspecified = "http://hl7.org/fhir/sid/icd-10#A20.9";
+
+    /// <summary>
     /// Literal for code: Tularaemia
     /// </summary>
     public const string LiteralTularaemia = "A21";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Tularaemia
+    /// </summary>
+    public const string LiteralSidIcd10Tularaemia = "http://hl7.org/fhir/sid/icd-10#A21";
 
     /// <summary>
     /// Literal for code: UlceroglandularTularaemia
@@ -9638,9 +10258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUlceroglandularTularaemia = "A21.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10UlceroglandularTularaemia
+    /// </summary>
+    public const string LiteralSidIcd10UlceroglandularTularaemia = "http://hl7.org/fhir/sid/icd-10#A21.0";
+
+    /// <summary>
     /// Literal for code: OculoglandularTularaemia
     /// </summary>
     public const string LiteralOculoglandularTularaemia = "A21.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OculoglandularTularaemia
+    /// </summary>
+    public const string LiteralSidIcd10OculoglandularTularaemia = "http://hl7.org/fhir/sid/icd-10#A21.1";
 
     /// <summary>
     /// Literal for code: PulmonaryTularaemia
@@ -9648,9 +10278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPulmonaryTularaemia = "A21.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10PulmonaryTularaemia
+    /// </summary>
+    public const string LiteralSidIcd10PulmonaryTularaemia = "http://hl7.org/fhir/sid/icd-10#A21.2";
+
+    /// <summary>
     /// Literal for code: GastrointestinalTularaemia
     /// </summary>
     public const string LiteralGastrointestinalTularaemia = "A21.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10GastrointestinalTularaemia
+    /// </summary>
+    public const string LiteralSidIcd10GastrointestinalTularaemia = "http://hl7.org/fhir/sid/icd-10#A21.3";
 
     /// <summary>
     /// Literal for code: GeneralizedTularaemia
@@ -9658,9 +10298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGeneralizedTularaemia = "A21.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10GeneralizedTularaemia
+    /// </summary>
+    public const string LiteralSidIcd10GeneralizedTularaemia = "http://hl7.org/fhir/sid/icd-10#A21.7";
+
+    /// <summary>
     /// Literal for code: OtherFormsOfTularaemia
     /// </summary>
     public const string LiteralOtherFormsOfTularaemia = "A21.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfTularaemia
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfTularaemia = "http://hl7.org/fhir/sid/icd-10#A21.8";
 
     /// <summary>
     /// Literal for code: TularaemiaUnspecified
@@ -9668,9 +10318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTularaemiaUnspecified = "A21.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10TularaemiaUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10TularaemiaUnspecified = "http://hl7.org/fhir/sid/icd-10#A21.9";
+
+    /// <summary>
     /// Literal for code: Anthrax
     /// </summary>
     public const string LiteralAnthrax = "A22";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Anthrax
+    /// </summary>
+    public const string LiteralSidIcd10Anthrax = "http://hl7.org/fhir/sid/icd-10#A22";
 
     /// <summary>
     /// Literal for code: CutaneousAnthrax
@@ -9678,9 +10338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCutaneousAnthrax = "A22.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10CutaneousAnthrax
+    /// </summary>
+    public const string LiteralSidIcd10CutaneousAnthrax = "http://hl7.org/fhir/sid/icd-10#A22.0";
+
+    /// <summary>
     /// Literal for code: PulmonaryAnthrax
     /// </summary>
     public const string LiteralPulmonaryAnthrax = "A22.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PulmonaryAnthrax
+    /// </summary>
+    public const string LiteralSidIcd10PulmonaryAnthrax = "http://hl7.org/fhir/sid/icd-10#A22.1";
 
     /// <summary>
     /// Literal for code: GastrointestinalAnthrax
@@ -9688,9 +10358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGastrointestinalAnthrax = "A22.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10GastrointestinalAnthrax
+    /// </summary>
+    public const string LiteralSidIcd10GastrointestinalAnthrax = "http://hl7.org/fhir/sid/icd-10#A22.2";
+
+    /// <summary>
     /// Literal for code: AnthraxSepsis
     /// </summary>
     public const string LiteralAnthraxSepsis = "A22.7";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AnthraxSepsis
+    /// </summary>
+    public const string LiteralSidIcd10AnthraxSepsis = "http://hl7.org/fhir/sid/icd-10#A22.7";
 
     /// <summary>
     /// Literal for code: OtherFormsOfAnthrax
@@ -9698,9 +10378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherFormsOfAnthrax = "A22.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfAnthrax
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfAnthrax = "http://hl7.org/fhir/sid/icd-10#A22.8";
+
+    /// <summary>
     /// Literal for code: AnthraxUnspecified
     /// </summary>
     public const string LiteralAnthraxUnspecified = "A22.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AnthraxUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10AnthraxUnspecified = "http://hl7.org/fhir/sid/icd-10#A22.9";
 
     /// <summary>
     /// Literal for code: Brucellosis
@@ -9708,9 +10398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBrucellosis = "A23";
 
     /// <summary>
+    /// Literal for code: SidIcd10Brucellosis
+    /// </summary>
+    public const string LiteralSidIcd10Brucellosis = "http://hl7.org/fhir/sid/icd-10#A23";
+
+    /// <summary>
     /// Literal for code: BrucellosisDueToBrucellaMelitensis
     /// </summary>
     public const string LiteralBrucellosisDueToBrucellaMelitensis = "A23.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10BrucellosisDueToBrucellaMelitensis
+    /// </summary>
+    public const string LiteralSidIcd10BrucellosisDueToBrucellaMelitensis = "http://hl7.org/fhir/sid/icd-10#A23.0";
 
     /// <summary>
     /// Literal for code: BrucellosisDueToBrucellaAbortus
@@ -9718,9 +10418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBrucellosisDueToBrucellaAbortus = "A23.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10BrucellosisDueToBrucellaAbortus
+    /// </summary>
+    public const string LiteralSidIcd10BrucellosisDueToBrucellaAbortus = "http://hl7.org/fhir/sid/icd-10#A23.1";
+
+    /// <summary>
     /// Literal for code: BrucellosisDueToBrucellaSuis
     /// </summary>
     public const string LiteralBrucellosisDueToBrucellaSuis = "A23.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10BrucellosisDueToBrucellaSuis
+    /// </summary>
+    public const string LiteralSidIcd10BrucellosisDueToBrucellaSuis = "http://hl7.org/fhir/sid/icd-10#A23.2";
 
     /// <summary>
     /// Literal for code: BrucellosisDueToBrucellaCanis
@@ -9728,9 +10438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBrucellosisDueToBrucellaCanis = "A23.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10BrucellosisDueToBrucellaCanis
+    /// </summary>
+    public const string LiteralSidIcd10BrucellosisDueToBrucellaCanis = "http://hl7.org/fhir/sid/icd-10#A23.3";
+
+    /// <summary>
     /// Literal for code: OtherBrucellosis
     /// </summary>
     public const string LiteralOtherBrucellosis = "A23.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherBrucellosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherBrucellosis = "http://hl7.org/fhir/sid/icd-10#A23.8";
 
     /// <summary>
     /// Literal for code: BrucellosisUnspecified
@@ -9738,9 +10458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBrucellosisUnspecified = "A23.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10BrucellosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10BrucellosisUnspecified = "http://hl7.org/fhir/sid/icd-10#A23.9";
+
+    /// <summary>
     /// Literal for code: GlandersAndMelioidosis
     /// </summary>
     public const string LiteralGlandersAndMelioidosis = "A24";
+
+    /// <summary>
+    /// Literal for code: SidIcd10GlandersAndMelioidosis
+    /// </summary>
+    public const string LiteralSidIcd10GlandersAndMelioidosis = "http://hl7.org/fhir/sid/icd-10#A24";
 
     /// <summary>
     /// Literal for code: Glanders
@@ -9748,9 +10478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGlanders = "A24.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10Glanders
+    /// </summary>
+    public const string LiteralSidIcd10Glanders = "http://hl7.org/fhir/sid/icd-10#A24.0";
+
+    /// <summary>
     /// Literal for code: AcuteAndFulminatingMelioidosis
     /// </summary>
     public const string LiteralAcuteAndFulminatingMelioidosis = "A24.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AcuteAndFulminatingMelioidosis
+    /// </summary>
+    public const string LiteralSidIcd10AcuteAndFulminatingMelioidosis = "http://hl7.org/fhir/sid/icd-10#A24.1";
 
     /// <summary>
     /// Literal for code: SubacuteAndChronicMelioidosis
@@ -9758,9 +10498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSubacuteAndChronicMelioidosis = "A24.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10SubacuteAndChronicMelioidosis
+    /// </summary>
+    public const string LiteralSidIcd10SubacuteAndChronicMelioidosis = "http://hl7.org/fhir/sid/icd-10#A24.2";
+
+    /// <summary>
     /// Literal for code: OtherMelioidosis
     /// </summary>
     public const string LiteralOtherMelioidosis = "A24.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherMelioidosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherMelioidosis = "http://hl7.org/fhir/sid/icd-10#A24.3";
 
     /// <summary>
     /// Literal for code: MelioidosisUnspecified
@@ -9768,9 +10518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMelioidosisUnspecified = "A24.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10MelioidosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10MelioidosisUnspecified = "http://hl7.org/fhir/sid/icd-10#A24.4";
+
+    /// <summary>
     /// Literal for code: RatBiteFevers
     /// </summary>
     public const string LiteralRatBiteFevers = "A25";
+
+    /// <summary>
+    /// Literal for code: SidIcd10RatBiteFevers
+    /// </summary>
+    public const string LiteralSidIcd10RatBiteFevers = "http://hl7.org/fhir/sid/icd-10#A25";
 
     /// <summary>
     /// Literal for code: Spirillosis
@@ -9778,9 +10538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpirillosis = "A25.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10Spirillosis
+    /// </summary>
+    public const string LiteralSidIcd10Spirillosis = "http://hl7.org/fhir/sid/icd-10#A25.0";
+
+    /// <summary>
     /// Literal for code: Streptobacillosis
     /// </summary>
     public const string LiteralStreptobacillosis = "A25.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Streptobacillosis
+    /// </summary>
+    public const string LiteralSidIcd10Streptobacillosis = "http://hl7.org/fhir/sid/icd-10#A25.1";
 
     /// <summary>
     /// Literal for code: RatBiteFeverUnspecified
@@ -9788,9 +10558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRatBiteFeverUnspecified = "A25.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10RatBiteFeverUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10RatBiteFeverUnspecified = "http://hl7.org/fhir/sid/icd-10#A25.9";
+
+    /// <summary>
     /// Literal for code: Erysipeloid
     /// </summary>
     public const string LiteralErysipeloid = "A26";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Erysipeloid
+    /// </summary>
+    public const string LiteralSidIcd10Erysipeloid = "http://hl7.org/fhir/sid/icd-10#A26";
 
     /// <summary>
     /// Literal for code: CutaneousErysipeloid
@@ -9798,9 +10578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCutaneousErysipeloid = "A26.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10CutaneousErysipeloid
+    /// </summary>
+    public const string LiteralSidIcd10CutaneousErysipeloid = "http://hl7.org/fhir/sid/icd-10#A26.0";
+
+    /// <summary>
     /// Literal for code: ErysipelothrixSepsis
     /// </summary>
     public const string LiteralErysipelothrixSepsis = "A26.7";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ErysipelothrixSepsis
+    /// </summary>
+    public const string LiteralSidIcd10ErysipelothrixSepsis = "http://hl7.org/fhir/sid/icd-10#A26.7";
 
     /// <summary>
     /// Literal for code: OtherFormsOfErysipeloid
@@ -9808,9 +10598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherFormsOfErysipeloid = "A26.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfErysipeloid
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfErysipeloid = "http://hl7.org/fhir/sid/icd-10#A26.8";
+
+    /// <summary>
     /// Literal for code: ErysipeloidUnspecified
     /// </summary>
     public const string LiteralErysipeloidUnspecified = "A26.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ErysipeloidUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ErysipeloidUnspecified = "http://hl7.org/fhir/sid/icd-10#A26.9";
 
     /// <summary>
     /// Literal for code: Leptospirosis
@@ -9818,9 +10618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLeptospirosis = "A27";
 
     /// <summary>
+    /// Literal for code: SidIcd10Leptospirosis
+    /// </summary>
+    public const string LiteralSidIcd10Leptospirosis = "http://hl7.org/fhir/sid/icd-10#A27";
+
+    /// <summary>
     /// Literal for code: LeptospirosisIcterohaemorrhagica
     /// </summary>
     public const string LiteralLeptospirosisIcterohaemorrhagica = "A27.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LeptospirosisIcterohaemorrhagica
+    /// </summary>
+    public const string LiteralSidIcd10LeptospirosisIcterohaemorrhagica = "http://hl7.org/fhir/sid/icd-10#A27.0";
 
     /// <summary>
     /// Literal for code: OtherFormsOfLeptospirosis
@@ -9828,9 +10638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherFormsOfLeptospirosis = "A27.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfLeptospirosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfLeptospirosis = "http://hl7.org/fhir/sid/icd-10#A27.8";
+
+    /// <summary>
     /// Literal for code: LeptospirosisUnspecified
     /// </summary>
     public const string LiteralLeptospirosisUnspecified = "A27.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LeptospirosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10LeptospirosisUnspecified = "http://hl7.org/fhir/sid/icd-10#A27.9";
 
     /// <summary>
     /// Literal for code: OtherZoonoticBacterialDiseasesNotElsewhereClassified
@@ -9838,9 +10658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherZoonoticBacterialDiseasesNotElsewhereClassified = "A28";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherZoonoticBacterialDiseasesNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10OtherZoonoticBacterialDiseasesNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#A28";
+
+    /// <summary>
     /// Literal for code: Pasteurellosis
     /// </summary>
     public const string LiteralPasteurellosis = "A28.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Pasteurellosis
+    /// </summary>
+    public const string LiteralSidIcd10Pasteurellosis = "http://hl7.org/fhir/sid/icd-10#A28.0";
 
     /// <summary>
     /// Literal for code: CatScratchDisease
@@ -9848,9 +10678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCatScratchDisease = "A28.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10CatScratchDisease
+    /// </summary>
+    public const string LiteralSidIcd10CatScratchDisease = "http://hl7.org/fhir/sid/icd-10#A28.1";
+
+    /// <summary>
     /// Literal for code: ExtraintestinalYersiniosis
     /// </summary>
     public const string LiteralExtraintestinalYersiniosis = "A28.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ExtraintestinalYersiniosis
+    /// </summary>
+    public const string LiteralSidIcd10ExtraintestinalYersiniosis = "http://hl7.org/fhir/sid/icd-10#A28.2";
 
     /// <summary>
     /// Literal for code: OtherSpecifiedZoonoticBacterialDiseasesNotElsewhereClassified
@@ -9858,9 +10698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherSpecifiedZoonoticBacterialDiseasesNotElsewhereClassified = "A28.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedZoonoticBacterialDiseasesNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedZoonoticBacterialDiseasesNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#A28.8";
+
+    /// <summary>
     /// Literal for code: ZoonoticBacterialDiseaseUnspecified
     /// </summary>
     public const string LiteralZoonoticBacterialDiseaseUnspecified = "A28.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ZoonoticBacterialDiseaseUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ZoonoticBacterialDiseaseUnspecified = "http://hl7.org/fhir/sid/icd-10#A28.9";
 
     /// <summary>
     /// Literal for code: LeprosyHansenDisease
@@ -9868,9 +10718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLeprosyHansenDisease = "A30";
 
     /// <summary>
+    /// Literal for code: SidIcd10LeprosyHansenDisease
+    /// </summary>
+    public const string LiteralSidIcd10LeprosyHansenDisease = "http://hl7.org/fhir/sid/icd-10#A30";
+
+    /// <summary>
     /// Literal for code: OtherBacterialDiseases
     /// </summary>
     public const string LiteralOtherBacterialDiseases = "A30-A49";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherBacterialDiseases
+    /// </summary>
+    public const string LiteralSidIcd10OtherBacterialDiseases = "http://hl7.org/fhir/sid/icd-10#A30-A49";
 
     /// <summary>
     /// Literal for code: IndeterminateLeprosy
@@ -9878,9 +10738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIndeterminateLeprosy = "A30.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10IndeterminateLeprosy
+    /// </summary>
+    public const string LiteralSidIcd10IndeterminateLeprosy = "http://hl7.org/fhir/sid/icd-10#A30.0";
+
+    /// <summary>
     /// Literal for code: TuberculoidLeprosy
     /// </summary>
     public const string LiteralTuberculoidLeprosy = "A30.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TuberculoidLeprosy
+    /// </summary>
+    public const string LiteralSidIcd10TuberculoidLeprosy = "http://hl7.org/fhir/sid/icd-10#A30.1";
 
     /// <summary>
     /// Literal for code: BorderlineTuberculoidLeprosy
@@ -9888,9 +10758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBorderlineTuberculoidLeprosy = "A30.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10BorderlineTuberculoidLeprosy
+    /// </summary>
+    public const string LiteralSidIcd10BorderlineTuberculoidLeprosy = "http://hl7.org/fhir/sid/icd-10#A30.2";
+
+    /// <summary>
     /// Literal for code: BorderlineLeprosy
     /// </summary>
     public const string LiteralBorderlineLeprosy = "A30.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10BorderlineLeprosy
+    /// </summary>
+    public const string LiteralSidIcd10BorderlineLeprosy = "http://hl7.org/fhir/sid/icd-10#A30.3";
 
     /// <summary>
     /// Literal for code: BorderlineLepromatousLeprosy
@@ -9898,9 +10778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBorderlineLepromatousLeprosy = "A30.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10BorderlineLepromatousLeprosy
+    /// </summary>
+    public const string LiteralSidIcd10BorderlineLepromatousLeprosy = "http://hl7.org/fhir/sid/icd-10#A30.4";
+
+    /// <summary>
     /// Literal for code: LepromatousLeprosy
     /// </summary>
     public const string LiteralLepromatousLeprosy = "A30.5";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LepromatousLeprosy
+    /// </summary>
+    public const string LiteralSidIcd10LepromatousLeprosy = "http://hl7.org/fhir/sid/icd-10#A30.5";
 
     /// <summary>
     /// Literal for code: OtherFormsOfLeprosy
@@ -9908,9 +10798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherFormsOfLeprosy = "A30.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfLeprosy
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfLeprosy = "http://hl7.org/fhir/sid/icd-10#A30.8";
+
+    /// <summary>
     /// Literal for code: LeprosyUnspecified
     /// </summary>
     public const string LiteralLeprosyUnspecified = "A30.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LeprosyUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10LeprosyUnspecified = "http://hl7.org/fhir/sid/icd-10#A30.9";
 
     /// <summary>
     /// Literal for code: InfectionDueToOtherMycobacteria
@@ -9918,9 +10818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInfectionDueToOtherMycobacteria = "A31";
 
     /// <summary>
+    /// Literal for code: SidIcd10InfectionDueToOtherMycobacteria
+    /// </summary>
+    public const string LiteralSidIcd10InfectionDueToOtherMycobacteria = "http://hl7.org/fhir/sid/icd-10#A31";
+
+    /// <summary>
     /// Literal for code: PulmonaryMycobacterialInfection
     /// </summary>
     public const string LiteralPulmonaryMycobacterialInfection = "A31.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PulmonaryMycobacterialInfection
+    /// </summary>
+    public const string LiteralSidIcd10PulmonaryMycobacterialInfection = "http://hl7.org/fhir/sid/icd-10#A31.0";
 
     /// <summary>
     /// Literal for code: CutaneousMycobacterialInfection
@@ -9928,9 +10838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCutaneousMycobacterialInfection = "A31.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10CutaneousMycobacterialInfection
+    /// </summary>
+    public const string LiteralSidIcd10CutaneousMycobacterialInfection = "http://hl7.org/fhir/sid/icd-10#A31.1";
+
+    /// <summary>
     /// Literal for code: OtherMycobacterialInfections
     /// </summary>
     public const string LiteralOtherMycobacterialInfections = "A31.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherMycobacterialInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherMycobacterialInfections = "http://hl7.org/fhir/sid/icd-10#A31.8";
 
     /// <summary>
     /// Literal for code: MycobacterialInfectionUnspecified
@@ -9938,9 +10858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMycobacterialInfectionUnspecified = "A31.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10MycobacterialInfectionUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10MycobacterialInfectionUnspecified = "http://hl7.org/fhir/sid/icd-10#A31.9";
+
+    /// <summary>
     /// Literal for code: Listeriosis
     /// </summary>
     public const string LiteralListeriosis = "A32";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Listeriosis
+    /// </summary>
+    public const string LiteralSidIcd10Listeriosis = "http://hl7.org/fhir/sid/icd-10#A32";
 
     /// <summary>
     /// Literal for code: CutaneousListeriosis
@@ -9948,9 +10878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCutaneousListeriosis = "A32.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10CutaneousListeriosis
+    /// </summary>
+    public const string LiteralSidIcd10CutaneousListeriosis = "http://hl7.org/fhir/sid/icd-10#A32.0";
+
+    /// <summary>
     /// Literal for code: ListerialMeningitisAndMeningoencephalitis
     /// </summary>
     public const string LiteralListerialMeningitisAndMeningoencephalitis = "A32.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ListerialMeningitisAndMeningoencephalitis
+    /// </summary>
+    public const string LiteralSidIcd10ListerialMeningitisAndMeningoencephalitis = "http://hl7.org/fhir/sid/icd-10#A32.1";
 
     /// <summary>
     /// Literal for code: ListerialSepsis
@@ -9958,9 +10898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralListerialSepsis = "A32.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10ListerialSepsis
+    /// </summary>
+    public const string LiteralSidIcd10ListerialSepsis = "http://hl7.org/fhir/sid/icd-10#A32.7";
+
+    /// <summary>
     /// Literal for code: OtherFormsOfListeriosis
     /// </summary>
     public const string LiteralOtherFormsOfListeriosis = "A32.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfListeriosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfListeriosis = "http://hl7.org/fhir/sid/icd-10#A32.8";
 
     /// <summary>
     /// Literal for code: ListeriosisUnspecified
@@ -9968,9 +10918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralListeriosisUnspecified = "A32.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10ListeriosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ListeriosisUnspecified = "http://hl7.org/fhir/sid/icd-10#A32.9";
+
+    /// <summary>
     /// Literal for code: TetanusNeonatorum
     /// </summary>
     public const string LiteralTetanusNeonatorum = "A33";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TetanusNeonatorum
+    /// </summary>
+    public const string LiteralSidIcd10TetanusNeonatorum = "http://hl7.org/fhir/sid/icd-10#A33";
 
     /// <summary>
     /// Literal for code: ObstetricalTetanus
@@ -9978,9 +10938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralObstetricalTetanus = "A34";
 
     /// <summary>
+    /// Literal for code: SidIcd10ObstetricalTetanus
+    /// </summary>
+    public const string LiteralSidIcd10ObstetricalTetanus = "http://hl7.org/fhir/sid/icd-10#A34";
+
+    /// <summary>
     /// Literal for code: OtherTetanus
     /// </summary>
     public const string LiteralOtherTetanus = "A35";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherTetanus
+    /// </summary>
+    public const string LiteralSidIcd10OtherTetanus = "http://hl7.org/fhir/sid/icd-10#A35";
 
     /// <summary>
     /// Literal for code: Diphtheria
@@ -9988,9 +10958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDiphtheria = "A36";
 
     /// <summary>
+    /// Literal for code: SidIcd10Diphtheria
+    /// </summary>
+    public const string LiteralSidIcd10Diphtheria = "http://hl7.org/fhir/sid/icd-10#A36";
+
+    /// <summary>
     /// Literal for code: PharyngealDiphtheria
     /// </summary>
     public const string LiteralPharyngealDiphtheria = "A36.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PharyngealDiphtheria
+    /// </summary>
+    public const string LiteralSidIcd10PharyngealDiphtheria = "http://hl7.org/fhir/sid/icd-10#A36.0";
 
     /// <summary>
     /// Literal for code: NasopharyngealDiphtheria
@@ -9998,9 +10978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNasopharyngealDiphtheria = "A36.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10NasopharyngealDiphtheria
+    /// </summary>
+    public const string LiteralSidIcd10NasopharyngealDiphtheria = "http://hl7.org/fhir/sid/icd-10#A36.1";
+
+    /// <summary>
     /// Literal for code: LaryngealDiphtheria
     /// </summary>
     public const string LiteralLaryngealDiphtheria = "A36.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LaryngealDiphtheria
+    /// </summary>
+    public const string LiteralSidIcd10LaryngealDiphtheria = "http://hl7.org/fhir/sid/icd-10#A36.2";
 
     /// <summary>
     /// Literal for code: CutaneousDiphtheria
@@ -10008,9 +10998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCutaneousDiphtheria = "A36.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10CutaneousDiphtheria
+    /// </summary>
+    public const string LiteralSidIcd10CutaneousDiphtheria = "http://hl7.org/fhir/sid/icd-10#A36.3";
+
+    /// <summary>
     /// Literal for code: OtherDiphtheria
     /// </summary>
     public const string LiteralOtherDiphtheria = "A36.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherDiphtheria
+    /// </summary>
+    public const string LiteralSidIcd10OtherDiphtheria = "http://hl7.org/fhir/sid/icd-10#A36.8";
 
     /// <summary>
     /// Literal for code: DiphtheriaUnspecified
@@ -10018,9 +11018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDiphtheriaUnspecified = "A36.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10DiphtheriaUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10DiphtheriaUnspecified = "http://hl7.org/fhir/sid/icd-10#A36.9";
+
+    /// <summary>
     /// Literal for code: WhoopingCough
     /// </summary>
     public const string LiteralWhoopingCough = "A37";
+
+    /// <summary>
+    /// Literal for code: SidIcd10WhoopingCough
+    /// </summary>
+    public const string LiteralSidIcd10WhoopingCough = "http://hl7.org/fhir/sid/icd-10#A37";
 
     /// <summary>
     /// Literal for code: WhoopingCoughDueToBordetellaPertussis
@@ -10028,9 +11038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWhoopingCoughDueToBordetellaPertussis = "A37.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10WhoopingCoughDueToBordetellaPertussis
+    /// </summary>
+    public const string LiteralSidIcd10WhoopingCoughDueToBordetellaPertussis = "http://hl7.org/fhir/sid/icd-10#A37.0";
+
+    /// <summary>
     /// Literal for code: WhoopingCoughDueToBordetellaParapertussis
     /// </summary>
     public const string LiteralWhoopingCoughDueToBordetellaParapertussis = "A37.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10WhoopingCoughDueToBordetellaParapertussis
+    /// </summary>
+    public const string LiteralSidIcd10WhoopingCoughDueToBordetellaParapertussis = "http://hl7.org/fhir/sid/icd-10#A37.1";
 
     /// <summary>
     /// Literal for code: WhoopingCoughDueToOtherBordetellaSpecies
@@ -10038,9 +11058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWhoopingCoughDueToOtherBordetellaSpecies = "A37.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10WhoopingCoughDueToOtherBordetellaSpecies
+    /// </summary>
+    public const string LiteralSidIcd10WhoopingCoughDueToOtherBordetellaSpecies = "http://hl7.org/fhir/sid/icd-10#A37.8";
+
+    /// <summary>
     /// Literal for code: WhoopingCoughUnspecified
     /// </summary>
     public const string LiteralWhoopingCoughUnspecified = "A37.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10WhoopingCoughUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10WhoopingCoughUnspecified = "http://hl7.org/fhir/sid/icd-10#A37.9";
 
     /// <summary>
     /// Literal for code: ScarletFever
@@ -10048,9 +11078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralScarletFever = "A38";
 
     /// <summary>
+    /// Literal for code: SidIcd10ScarletFever
+    /// </summary>
+    public const string LiteralSidIcd10ScarletFever = "http://hl7.org/fhir/sid/icd-10#A38";
+
+    /// <summary>
     /// Literal for code: MeningococcalInfection
     /// </summary>
     public const string LiteralMeningococcalInfection = "A39";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MeningococcalInfection
+    /// </summary>
+    public const string LiteralSidIcd10MeningococcalInfection = "http://hl7.org/fhir/sid/icd-10#A39";
 
     /// <summary>
     /// Literal for code: MeningococcalMeningitisG01
@@ -10058,9 +11098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMeningococcalMeningitisG01 = "A39.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10MeningococcalMeningitisG01
+    /// </summary>
+    public const string LiteralSidIcd10MeningococcalMeningitisG01 = "http://hl7.org/fhir/sid/icd-10#A39.0";
+
+    /// <summary>
     /// Literal for code: WaterhouseFriderichsenSyndromeE351
     /// </summary>
     public const string LiteralWaterhouseFriderichsenSyndromeE351 = "A39.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10WaterhouseFriderichsenSyndromeE351
+    /// </summary>
+    public const string LiteralSidIcd10WaterhouseFriderichsenSyndromeE351 = "http://hl7.org/fhir/sid/icd-10#A39.1";
 
     /// <summary>
     /// Literal for code: AcuteMeningococcaemia
@@ -10068,9 +11118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcuteMeningococcaemia = "A39.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcuteMeningococcaemia
+    /// </summary>
+    public const string LiteralSidIcd10AcuteMeningococcaemia = "http://hl7.org/fhir/sid/icd-10#A39.2";
+
+    /// <summary>
     /// Literal for code: ChronicMeningococcaemia
     /// </summary>
     public const string LiteralChronicMeningococcaemia = "A39.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ChronicMeningococcaemia
+    /// </summary>
+    public const string LiteralSidIcd10ChronicMeningococcaemia = "http://hl7.org/fhir/sid/icd-10#A39.3";
 
     /// <summary>
     /// Literal for code: MeningococcaemiaUnspecified
@@ -10078,9 +11138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMeningococcaemiaUnspecified = "A39.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10MeningococcaemiaUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10MeningococcaemiaUnspecified = "http://hl7.org/fhir/sid/icd-10#A39.4";
+
+    /// <summary>
     /// Literal for code: MeningococcalHeartDisease
     /// </summary>
     public const string LiteralMeningococcalHeartDisease = "A39.5";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MeningococcalHeartDisease
+    /// </summary>
+    public const string LiteralSidIcd10MeningococcalHeartDisease = "http://hl7.org/fhir/sid/icd-10#A39.5";
 
     /// <summary>
     /// Literal for code: OtherMeningococcalInfections
@@ -10088,9 +11158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherMeningococcalInfections = "A39.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherMeningococcalInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherMeningococcalInfections = "http://hl7.org/fhir/sid/icd-10#A39.8";
+
+    /// <summary>
     /// Literal for code: MeningococcalInfectionUnspecified
     /// </summary>
     public const string LiteralMeningococcalInfectionUnspecified = "A39.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MeningococcalInfectionUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10MeningococcalInfectionUnspecified = "http://hl7.org/fhir/sid/icd-10#A39.9";
 
     /// <summary>
     /// Literal for code: StreptococcalSepsis
@@ -10098,9 +11178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStreptococcalSepsis = "A40";
 
     /// <summary>
+    /// Literal for code: SidIcd10StreptococcalSepsis
+    /// </summary>
+    public const string LiteralSidIcd10StreptococcalSepsis = "http://hl7.org/fhir/sid/icd-10#A40";
+
+    /// <summary>
     /// Literal for code: SepsisDueToStreptococcusGroupA
     /// </summary>
     public const string LiteralSepsisDueToStreptococcusGroupA = "A40.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SepsisDueToStreptococcusGroupA
+    /// </summary>
+    public const string LiteralSidIcd10SepsisDueToStreptococcusGroupA = "http://hl7.org/fhir/sid/icd-10#A40.0";
 
     /// <summary>
     /// Literal for code: SepsisDueToStreptococcusGroupB
@@ -10108,9 +11198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSepsisDueToStreptococcusGroupB = "A40.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10SepsisDueToStreptococcusGroupB
+    /// </summary>
+    public const string LiteralSidIcd10SepsisDueToStreptococcusGroupB = "http://hl7.org/fhir/sid/icd-10#A40.1";
+
+    /// <summary>
     /// Literal for code: SepsisDueToStreptococcusGroupDAndEnterococcus
     /// </summary>
     public const string LiteralSepsisDueToStreptococcusGroupDAndEnterococcus = "A40.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SepsisDueToStreptococcusGroupDAndEnterococcus
+    /// </summary>
+    public const string LiteralSidIcd10SepsisDueToStreptococcusGroupDAndEnterococcus = "http://hl7.org/fhir/sid/icd-10#A40.2";
 
     /// <summary>
     /// Literal for code: SepsisDueToStreptococcusPneumoniae
@@ -10118,9 +11218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSepsisDueToStreptococcusPneumoniae = "A40.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10SepsisDueToStreptococcusPneumoniae
+    /// </summary>
+    public const string LiteralSidIcd10SepsisDueToStreptococcusPneumoniae = "http://hl7.org/fhir/sid/icd-10#A40.3";
+
+    /// <summary>
     /// Literal for code: OtherStreptococcalSepsis
     /// </summary>
     public const string LiteralOtherStreptococcalSepsis = "A40.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherStreptococcalSepsis
+    /// </summary>
+    public const string LiteralSidIcd10OtherStreptococcalSepsis = "http://hl7.org/fhir/sid/icd-10#A40.8";
 
     /// <summary>
     /// Literal for code: StreptococcalSepsisUnspecified
@@ -10128,9 +11238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStreptococcalSepsisUnspecified = "A40.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10StreptococcalSepsisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10StreptococcalSepsisUnspecified = "http://hl7.org/fhir/sid/icd-10#A40.9";
+
+    /// <summary>
     /// Literal for code: OtherSepsis
     /// </summary>
     public const string LiteralOtherSepsis = "A41";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSepsis
+    /// </summary>
+    public const string LiteralSidIcd10OtherSepsis = "http://hl7.org/fhir/sid/icd-10#A41";
 
     /// <summary>
     /// Literal for code: SepsisDueToStaphylococcusAureus
@@ -10138,9 +11258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSepsisDueToStaphylococcusAureus = "A41.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10SepsisDueToStaphylococcusAureus
+    /// </summary>
+    public const string LiteralSidIcd10SepsisDueToStaphylococcusAureus = "http://hl7.org/fhir/sid/icd-10#A41.0";
+
+    /// <summary>
     /// Literal for code: SepsisDueToOtherSpecifiedStaphylococcus
     /// </summary>
     public const string LiteralSepsisDueToOtherSpecifiedStaphylococcus = "A41.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SepsisDueToOtherSpecifiedStaphylococcus
+    /// </summary>
+    public const string LiteralSidIcd10SepsisDueToOtherSpecifiedStaphylococcus = "http://hl7.org/fhir/sid/icd-10#A41.1";
 
     /// <summary>
     /// Literal for code: SepsisDueToUnspecifiedStaphylococcus
@@ -10148,9 +11278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSepsisDueToUnspecifiedStaphylococcus = "A41.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10SepsisDueToUnspecifiedStaphylococcus
+    /// </summary>
+    public const string LiteralSidIcd10SepsisDueToUnspecifiedStaphylococcus = "http://hl7.org/fhir/sid/icd-10#A41.2";
+
+    /// <summary>
     /// Literal for code: SepsisDueToHaemophilusInfluenzae
     /// </summary>
     public const string LiteralSepsisDueToHaemophilusInfluenzae = "A41.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SepsisDueToHaemophilusInfluenzae
+    /// </summary>
+    public const string LiteralSidIcd10SepsisDueToHaemophilusInfluenzae = "http://hl7.org/fhir/sid/icd-10#A41.3";
 
     /// <summary>
     /// Literal for code: SepsisDueToAnaerobes
@@ -10158,9 +11298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSepsisDueToAnaerobes = "A41.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10SepsisDueToAnaerobes
+    /// </summary>
+    public const string LiteralSidIcd10SepsisDueToAnaerobes = "http://hl7.org/fhir/sid/icd-10#A41.4";
+
+    /// <summary>
     /// Literal for code: SepsisDueToOtherGramNegativeOrganisms
     /// </summary>
     public const string LiteralSepsisDueToOtherGramNegativeOrganisms = "A41.5";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SepsisDueToOtherGramNegativeOrganisms
+    /// </summary>
+    public const string LiteralSidIcd10SepsisDueToOtherGramNegativeOrganisms = "http://hl7.org/fhir/sid/icd-10#A41.5";
 
     /// <summary>
     /// Literal for code: OtherSpecifiedSepsis
@@ -10168,9 +11318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherSpecifiedSepsis = "A41.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedSepsis
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedSepsis = "http://hl7.org/fhir/sid/icd-10#A41.8";
+
+    /// <summary>
     /// Literal for code: SepsisUnspecified
     /// </summary>
     public const string LiteralSepsisUnspecified = "A41.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SepsisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10SepsisUnspecified = "http://hl7.org/fhir/sid/icd-10#A41.9";
 
     /// <summary>
     /// Literal for code: Actinomycosis
@@ -10178,9 +11338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralActinomycosis = "A42";
 
     /// <summary>
+    /// Literal for code: SidIcd10Actinomycosis
+    /// </summary>
+    public const string LiteralSidIcd10Actinomycosis = "http://hl7.org/fhir/sid/icd-10#A42";
+
+    /// <summary>
     /// Literal for code: PulmonaryActinomycosis
     /// </summary>
     public const string LiteralPulmonaryActinomycosis = "A42.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PulmonaryActinomycosis
+    /// </summary>
+    public const string LiteralSidIcd10PulmonaryActinomycosis = "http://hl7.org/fhir/sid/icd-10#A42.0";
 
     /// <summary>
     /// Literal for code: AbdominalActinomycosis
@@ -10188,9 +11358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAbdominalActinomycosis = "A42.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10AbdominalActinomycosis
+    /// </summary>
+    public const string LiteralSidIcd10AbdominalActinomycosis = "http://hl7.org/fhir/sid/icd-10#A42.1";
+
+    /// <summary>
     /// Literal for code: CervicofacialActinomycosis
     /// </summary>
     public const string LiteralCervicofacialActinomycosis = "A42.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CervicofacialActinomycosis
+    /// </summary>
+    public const string LiteralSidIcd10CervicofacialActinomycosis = "http://hl7.org/fhir/sid/icd-10#A42.2";
 
     /// <summary>
     /// Literal for code: ActinomycoticSepsis
@@ -10198,9 +11378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralActinomycoticSepsis = "A42.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10ActinomycoticSepsis
+    /// </summary>
+    public const string LiteralSidIcd10ActinomycoticSepsis = "http://hl7.org/fhir/sid/icd-10#A42.7";
+
+    /// <summary>
     /// Literal for code: OtherFormsOfActinomycosis
     /// </summary>
     public const string LiteralOtherFormsOfActinomycosis = "A42.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfActinomycosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfActinomycosis = "http://hl7.org/fhir/sid/icd-10#A42.8";
 
     /// <summary>
     /// Literal for code: ActinomycosisUnspecified
@@ -10208,9 +11398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralActinomycosisUnspecified = "A42.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10ActinomycosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ActinomycosisUnspecified = "http://hl7.org/fhir/sid/icd-10#A42.9";
+
+    /// <summary>
     /// Literal for code: Nocardiosis
     /// </summary>
     public const string LiteralNocardiosis = "A43";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Nocardiosis
+    /// </summary>
+    public const string LiteralSidIcd10Nocardiosis = "http://hl7.org/fhir/sid/icd-10#A43";
 
     /// <summary>
     /// Literal for code: PulmonaryNocardiosis
@@ -10218,9 +11418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPulmonaryNocardiosis = "A43.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10PulmonaryNocardiosis
+    /// </summary>
+    public const string LiteralSidIcd10PulmonaryNocardiosis = "http://hl7.org/fhir/sid/icd-10#A43.0";
+
+    /// <summary>
     /// Literal for code: CutaneousNocardiosis
     /// </summary>
     public const string LiteralCutaneousNocardiosis = "A43.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CutaneousNocardiosis
+    /// </summary>
+    public const string LiteralSidIcd10CutaneousNocardiosis = "http://hl7.org/fhir/sid/icd-10#A43.1";
 
     /// <summary>
     /// Literal for code: OtherFormsOfNocardiosis
@@ -10228,9 +11438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherFormsOfNocardiosis = "A43.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfNocardiosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfNocardiosis = "http://hl7.org/fhir/sid/icd-10#A43.8";
+
+    /// <summary>
     /// Literal for code: NocardiosisUnspecified
     /// </summary>
     public const string LiteralNocardiosisUnspecified = "A43.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10NocardiosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10NocardiosisUnspecified = "http://hl7.org/fhir/sid/icd-10#A43.9";
 
     /// <summary>
     /// Literal for code: Bartonellosis
@@ -10238,9 +11458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBartonellosis = "A44";
 
     /// <summary>
+    /// Literal for code: SidIcd10Bartonellosis
+    /// </summary>
+    public const string LiteralSidIcd10Bartonellosis = "http://hl7.org/fhir/sid/icd-10#A44";
+
+    /// <summary>
     /// Literal for code: SystemicBartonellosis
     /// </summary>
     public const string LiteralSystemicBartonellosis = "A44.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SystemicBartonellosis
+    /// </summary>
+    public const string LiteralSidIcd10SystemicBartonellosis = "http://hl7.org/fhir/sid/icd-10#A44.0";
 
     /// <summary>
     /// Literal for code: CutaneousAndMucocutaneousBartonellosis
@@ -10248,9 +11478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCutaneousAndMucocutaneousBartonellosis = "A44.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10CutaneousAndMucocutaneousBartonellosis
+    /// </summary>
+    public const string LiteralSidIcd10CutaneousAndMucocutaneousBartonellosis = "http://hl7.org/fhir/sid/icd-10#A44.1";
+
+    /// <summary>
     /// Literal for code: OtherFormsOfBartonellosis
     /// </summary>
     public const string LiteralOtherFormsOfBartonellosis = "A44.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfBartonellosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfBartonellosis = "http://hl7.org/fhir/sid/icd-10#A44.8";
 
     /// <summary>
     /// Literal for code: BartonellosisUnspecified
@@ -10258,9 +11498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBartonellosisUnspecified = "A44.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10BartonellosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10BartonellosisUnspecified = "http://hl7.org/fhir/sid/icd-10#A44.9";
+
+    /// <summary>
     /// Literal for code: Erysipelas
     /// </summary>
     public const string LiteralErysipelas = "A46";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Erysipelas
+    /// </summary>
+    public const string LiteralSidIcd10Erysipelas = "http://hl7.org/fhir/sid/icd-10#A46";
 
     /// <summary>
     /// Literal for code: OtherBacterialDiseasesNotElsewhereClassified
@@ -10268,9 +11518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherBacterialDiseasesNotElsewhereClassified = "A48";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherBacterialDiseasesNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10OtherBacterialDiseasesNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#A48";
+
+    /// <summary>
     /// Literal for code: GasGangrene
     /// </summary>
     public const string LiteralGasGangrene = "A48.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10GasGangrene
+    /// </summary>
+    public const string LiteralSidIcd10GasGangrene = "http://hl7.org/fhir/sid/icd-10#A48.0";
 
     /// <summary>
     /// Literal for code: LegionnairesDisease
@@ -10278,9 +11538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLegionnairesDisease = "A48.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10LegionnairesDisease
+    /// </summary>
+    public const string LiteralSidIcd10LegionnairesDisease = "http://hl7.org/fhir/sid/icd-10#A48.1";
+
+    /// <summary>
     /// Literal for code: NonpneumonicLegionnairesDiseasePontiacFever
     /// </summary>
     public const string LiteralNonpneumonicLegionnairesDiseasePontiacFever = "A48.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10NonpneumonicLegionnairesDiseasePontiacFever
+    /// </summary>
+    public const string LiteralSidIcd10NonpneumonicLegionnairesDiseasePontiacFever = "http://hl7.org/fhir/sid/icd-10#A48.2";
 
     /// <summary>
     /// Literal for code: ToxicShockSyndrome
@@ -10288,9 +11558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralToxicShockSyndrome = "A48.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10ToxicShockSyndrome
+    /// </summary>
+    public const string LiteralSidIcd10ToxicShockSyndrome = "http://hl7.org/fhir/sid/icd-10#A48.3";
+
+    /// <summary>
     /// Literal for code: BrazilianPurpuricFever
     /// </summary>
     public const string LiteralBrazilianPurpuricFever = "A48.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10BrazilianPurpuricFever
+    /// </summary>
+    public const string LiteralSidIcd10BrazilianPurpuricFever = "http://hl7.org/fhir/sid/icd-10#A48.4";
 
     /// <summary>
     /// Literal for code: OtherSpecifiedBacterialDiseases
@@ -10298,9 +11578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherSpecifiedBacterialDiseases = "A48.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedBacterialDiseases
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedBacterialDiseases = "http://hl7.org/fhir/sid/icd-10#A48.8";
+
+    /// <summary>
     /// Literal for code: BacterialInfectionOfUnspecifiedSite
     /// </summary>
     public const string LiteralBacterialInfectionOfUnspecifiedSite = "A49";
+
+    /// <summary>
+    /// Literal for code: SidIcd10BacterialInfectionOfUnspecifiedSite
+    /// </summary>
+    public const string LiteralSidIcd10BacterialInfectionOfUnspecifiedSite = "http://hl7.org/fhir/sid/icd-10#A49";
 
     /// <summary>
     /// Literal for code: StaphylococcalInfectionUnspecifiedSite
@@ -10308,9 +11598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStaphylococcalInfectionUnspecifiedSite = "A49.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10StaphylococcalInfectionUnspecifiedSite
+    /// </summary>
+    public const string LiteralSidIcd10StaphylococcalInfectionUnspecifiedSite = "http://hl7.org/fhir/sid/icd-10#A49.0";
+
+    /// <summary>
     /// Literal for code: StreptococcalAndEnterococcalInfectionUnspecifiedSite
     /// </summary>
     public const string LiteralStreptococcalAndEnterococcalInfectionUnspecifiedSite = "A49.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10StreptococcalAndEnterococcalInfectionUnspecifiedSite
+    /// </summary>
+    public const string LiteralSidIcd10StreptococcalAndEnterococcalInfectionUnspecifiedSite = "http://hl7.org/fhir/sid/icd-10#A49.1";
 
     /// <summary>
     /// Literal for code: HaemophilusInfluenzaeInfectionUnspecifiedSite
@@ -10318,9 +11618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHaemophilusInfluenzaeInfectionUnspecifiedSite = "A49.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10HaemophilusInfluenzaeInfectionUnspecifiedSite
+    /// </summary>
+    public const string LiteralSidIcd10HaemophilusInfluenzaeInfectionUnspecifiedSite = "http://hl7.org/fhir/sid/icd-10#A49.2";
+
+    /// <summary>
     /// Literal for code: MycoplasmaInfectionUnspecifiedSite
     /// </summary>
     public const string LiteralMycoplasmaInfectionUnspecifiedSite = "A49.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MycoplasmaInfectionUnspecifiedSite
+    /// </summary>
+    public const string LiteralSidIcd10MycoplasmaInfectionUnspecifiedSite = "http://hl7.org/fhir/sid/icd-10#A49.3";
 
     /// <summary>
     /// Literal for code: OtherBacterialInfectionsOfUnspecifiedSite
@@ -10328,9 +11638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherBacterialInfectionsOfUnspecifiedSite = "A49.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherBacterialInfectionsOfUnspecifiedSite
+    /// </summary>
+    public const string LiteralSidIcd10OtherBacterialInfectionsOfUnspecifiedSite = "http://hl7.org/fhir/sid/icd-10#A49.8";
+
+    /// <summary>
     /// Literal for code: BacterialInfectionUnspecified
     /// </summary>
     public const string LiteralBacterialInfectionUnspecified = "A49.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10BacterialInfectionUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10BacterialInfectionUnspecified = "http://hl7.org/fhir/sid/icd-10#A49.9";
 
     /// <summary>
     /// Literal for code: CongenitalSyphilis
@@ -10338,9 +11658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCongenitalSyphilis = "A50";
 
     /// <summary>
+    /// Literal for code: SidIcd10CongenitalSyphilis
+    /// </summary>
+    public const string LiteralSidIcd10CongenitalSyphilis = "http://hl7.org/fhir/sid/icd-10#A50";
+
+    /// <summary>
     /// Literal for code: InfectionsWithAPredominantlySexualModeOfTransmission
     /// </summary>
     public const string LiteralInfectionsWithAPredominantlySexualModeOfTransmission = "A50-A64";
+
+    /// <summary>
+    /// Literal for code: SidIcd10InfectionsWithAPredominantlySexualModeOfTransmission
+    /// </summary>
+    public const string LiteralSidIcd10InfectionsWithAPredominantlySexualModeOfTransmission = "http://hl7.org/fhir/sid/icd-10#A50-A64";
 
     /// <summary>
     /// Literal for code: EarlyCongenitalSyphilisSymptomatic
@@ -10348,9 +11678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEarlyCongenitalSyphilisSymptomatic = "A50.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10EarlyCongenitalSyphilisSymptomatic
+    /// </summary>
+    public const string LiteralSidIcd10EarlyCongenitalSyphilisSymptomatic = "http://hl7.org/fhir/sid/icd-10#A50.0";
+
+    /// <summary>
     /// Literal for code: EarlyCongenitalSyphilisLatent
     /// </summary>
     public const string LiteralEarlyCongenitalSyphilisLatent = "A50.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EarlyCongenitalSyphilisLatent
+    /// </summary>
+    public const string LiteralSidIcd10EarlyCongenitalSyphilisLatent = "http://hl7.org/fhir/sid/icd-10#A50.1";
 
     /// <summary>
     /// Literal for code: EarlyCongenitalSyphilisUnspecified
@@ -10358,9 +11698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEarlyCongenitalSyphilisUnspecified = "A50.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10EarlyCongenitalSyphilisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10EarlyCongenitalSyphilisUnspecified = "http://hl7.org/fhir/sid/icd-10#A50.2";
+
+    /// <summary>
     /// Literal for code: LateCongenitalSyphiliticOculopathy
     /// </summary>
     public const string LiteralLateCongenitalSyphiliticOculopathy = "A50.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LateCongenitalSyphiliticOculopathy
+    /// </summary>
+    public const string LiteralSidIcd10LateCongenitalSyphiliticOculopathy = "http://hl7.org/fhir/sid/icd-10#A50.3";
 
     /// <summary>
     /// Literal for code: LateCongenitalNeurosyphilisJuvenileNeurosyphilis
@@ -10368,9 +11718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLateCongenitalNeurosyphilisJuvenileNeurosyphilis = "A50.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10LateCongenitalNeurosyphilisJuvenileNeurosyphilis
+    /// </summary>
+    public const string LiteralSidIcd10LateCongenitalNeurosyphilisJuvenileNeurosyphilis = "http://hl7.org/fhir/sid/icd-10#A50.4";
+
+    /// <summary>
     /// Literal for code: OtherLateCongenitalSyphilisSymptomatic
     /// </summary>
     public const string LiteralOtherLateCongenitalSyphilisSymptomatic = "A50.5";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherLateCongenitalSyphilisSymptomatic
+    /// </summary>
+    public const string LiteralSidIcd10OtherLateCongenitalSyphilisSymptomatic = "http://hl7.org/fhir/sid/icd-10#A50.5";
 
     /// <summary>
     /// Literal for code: LateCongenitalSyphilisLatent
@@ -10378,9 +11738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLateCongenitalSyphilisLatent = "A50.6";
 
     /// <summary>
+    /// Literal for code: SidIcd10LateCongenitalSyphilisLatent
+    /// </summary>
+    public const string LiteralSidIcd10LateCongenitalSyphilisLatent = "http://hl7.org/fhir/sid/icd-10#A50.6";
+
+    /// <summary>
     /// Literal for code: LateCongenitalSyphilisUnspecified
     /// </summary>
     public const string LiteralLateCongenitalSyphilisUnspecified = "A50.7";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LateCongenitalSyphilisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10LateCongenitalSyphilisUnspecified = "http://hl7.org/fhir/sid/icd-10#A50.7";
 
     /// <summary>
     /// Literal for code: CongenitalSyphilisUnspecified
@@ -10388,9 +11758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCongenitalSyphilisUnspecified = "A50.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10CongenitalSyphilisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10CongenitalSyphilisUnspecified = "http://hl7.org/fhir/sid/icd-10#A50.9";
+
+    /// <summary>
     /// Literal for code: EarlySyphilis
     /// </summary>
     public const string LiteralEarlySyphilis = "A51";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EarlySyphilis
+    /// </summary>
+    public const string LiteralSidIcd10EarlySyphilis = "http://hl7.org/fhir/sid/icd-10#A51";
 
     /// <summary>
     /// Literal for code: PrimaryGenitalSyphilis
@@ -10398,9 +11778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrimaryGenitalSyphilis = "A51.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10PrimaryGenitalSyphilis
+    /// </summary>
+    public const string LiteralSidIcd10PrimaryGenitalSyphilis = "http://hl7.org/fhir/sid/icd-10#A51.0";
+
+    /// <summary>
     /// Literal for code: PrimaryAnalSyphilis
     /// </summary>
     public const string LiteralPrimaryAnalSyphilis = "A51.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PrimaryAnalSyphilis
+    /// </summary>
+    public const string LiteralSidIcd10PrimaryAnalSyphilis = "http://hl7.org/fhir/sid/icd-10#A51.1";
 
     /// <summary>
     /// Literal for code: PrimarySyphilisOfOtherSites
@@ -10408,9 +11798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrimarySyphilisOfOtherSites = "A51.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10PrimarySyphilisOfOtherSites
+    /// </summary>
+    public const string LiteralSidIcd10PrimarySyphilisOfOtherSites = "http://hl7.org/fhir/sid/icd-10#A51.2";
+
+    /// <summary>
     /// Literal for code: SecondarySyphilisOfSkinAndMucousMembranes
     /// </summary>
     public const string LiteralSecondarySyphilisOfSkinAndMucousMembranes = "A51.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SecondarySyphilisOfSkinAndMucousMembranes
+    /// </summary>
+    public const string LiteralSidIcd10SecondarySyphilisOfSkinAndMucousMembranes = "http://hl7.org/fhir/sid/icd-10#A51.3";
 
     /// <summary>
     /// Literal for code: OtherSecondarySyphilis
@@ -10418,9 +11818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherSecondarySyphilis = "A51.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherSecondarySyphilis
+    /// </summary>
+    public const string LiteralSidIcd10OtherSecondarySyphilis = "http://hl7.org/fhir/sid/icd-10#A51.4";
+
+    /// <summary>
     /// Literal for code: EarlySyphilisLatent
     /// </summary>
     public const string LiteralEarlySyphilisLatent = "A51.5";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EarlySyphilisLatent
+    /// </summary>
+    public const string LiteralSidIcd10EarlySyphilisLatent = "http://hl7.org/fhir/sid/icd-10#A51.5";
 
     /// <summary>
     /// Literal for code: EarlySyphilisUnspecified
@@ -10428,9 +11838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEarlySyphilisUnspecified = "A51.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10EarlySyphilisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10EarlySyphilisUnspecified = "http://hl7.org/fhir/sid/icd-10#A51.9";
+
+    /// <summary>
     /// Literal for code: LateSyphilis
     /// </summary>
     public const string LiteralLateSyphilis = "A52";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LateSyphilis
+    /// </summary>
+    public const string LiteralSidIcd10LateSyphilis = "http://hl7.org/fhir/sid/icd-10#A52";
 
     /// <summary>
     /// Literal for code: CardiovascularSyphilis
@@ -10438,9 +11858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCardiovascularSyphilis = "A52.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10CardiovascularSyphilis
+    /// </summary>
+    public const string LiteralSidIcd10CardiovascularSyphilis = "http://hl7.org/fhir/sid/icd-10#A52.0";
+
+    /// <summary>
     /// Literal for code: SymptomaticNeurosyphilis
     /// </summary>
     public const string LiteralSymptomaticNeurosyphilis = "A52.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SymptomaticNeurosyphilis
+    /// </summary>
+    public const string LiteralSidIcd10SymptomaticNeurosyphilis = "http://hl7.org/fhir/sid/icd-10#A52.1";
 
     /// <summary>
     /// Literal for code: AsymptomaticNeurosyphilis
@@ -10448,9 +11878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAsymptomaticNeurosyphilis = "A52.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10AsymptomaticNeurosyphilis
+    /// </summary>
+    public const string LiteralSidIcd10AsymptomaticNeurosyphilis = "http://hl7.org/fhir/sid/icd-10#A52.2";
+
+    /// <summary>
     /// Literal for code: NeurosyphilisUnspecified
     /// </summary>
     public const string LiteralNeurosyphilisUnspecified = "A52.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10NeurosyphilisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10NeurosyphilisUnspecified = "http://hl7.org/fhir/sid/icd-10#A52.3";
 
     /// <summary>
     /// Literal for code: OtherSymptomaticLateSyphilis
@@ -10458,9 +11898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherSymptomaticLateSyphilis = "A52.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherSymptomaticLateSyphilis
+    /// </summary>
+    public const string LiteralSidIcd10OtherSymptomaticLateSyphilis = "http://hl7.org/fhir/sid/icd-10#A52.7";
+
+    /// <summary>
     /// Literal for code: LateSyphilisLatent
     /// </summary>
     public const string LiteralLateSyphilisLatent = "A52.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LateSyphilisLatent
+    /// </summary>
+    public const string LiteralSidIcd10LateSyphilisLatent = "http://hl7.org/fhir/sid/icd-10#A52.8";
 
     /// <summary>
     /// Literal for code: LateSyphilisUnspecified
@@ -10468,9 +11918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLateSyphilisUnspecified = "A52.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10LateSyphilisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10LateSyphilisUnspecified = "http://hl7.org/fhir/sid/icd-10#A52.9";
+
+    /// <summary>
     /// Literal for code: OtherAndUnspecifiedSyphilis
     /// </summary>
     public const string LiteralOtherAndUnspecifiedSyphilis = "A53";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherAndUnspecifiedSyphilis
+    /// </summary>
+    public const string LiteralSidIcd10OtherAndUnspecifiedSyphilis = "http://hl7.org/fhir/sid/icd-10#A53";
 
     /// <summary>
     /// Literal for code: LatentSyphilisUnspecifiedAsEarlyOrLate
@@ -10478,9 +11938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLatentSyphilisUnspecifiedAsEarlyOrLate = "A53.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10LatentSyphilisUnspecifiedAsEarlyOrLate
+    /// </summary>
+    public const string LiteralSidIcd10LatentSyphilisUnspecifiedAsEarlyOrLate = "http://hl7.org/fhir/sid/icd-10#A53.0";
+
+    /// <summary>
     /// Literal for code: SyphilisUnspecified
     /// </summary>
     public const string LiteralSyphilisUnspecified = "A53.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SyphilisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10SyphilisUnspecified = "http://hl7.org/fhir/sid/icd-10#A53.9";
 
     /// <summary>
     /// Literal for code: GonococcalInfection
@@ -10488,9 +11958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGonococcalInfection = "A54";
 
     /// <summary>
+    /// Literal for code: SidIcd10GonococcalInfection
+    /// </summary>
+    public const string LiteralSidIcd10GonococcalInfection = "http://hl7.org/fhir/sid/icd-10#A54";
+
+    /// <summary>
     /// Literal for code: GonococcalInfectionOfLowerGenitourinaryTractWithoutPeriurethralOrAccessoryGlandAbscess
     /// </summary>
     public const string LiteralGonococcalInfectionOfLowerGenitourinaryTractWithoutPeriurethralOrAccessoryGlandAbscess = "A54.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10GonococcalInfectionOfLowerGenitourinaryTractWithoutPeriurethralOrAccessoryGlandAbscess
+    /// </summary>
+    public const string LiteralSidIcd10GonococcalInfectionOfLowerGenitourinaryTractWithoutPeriurethralOrAccessoryGlandAbscess = "http://hl7.org/fhir/sid/icd-10#A54.0";
 
     /// <summary>
     /// Literal for code: GonococcalInfectionOfLowerGenitourinaryTractWithPeriurethralAndAccessoryGlandAbscess
@@ -10498,9 +11978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGonococcalInfectionOfLowerGenitourinaryTractWithPeriurethralAndAccessoryGlandAbscess = "A54.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10GonococcalInfectionOfLowerGenitourinaryTractWithPeriurethralAndAccessoryGlandAbscess
+    /// </summary>
+    public const string LiteralSidIcd10GonococcalInfectionOfLowerGenitourinaryTractWithPeriurethralAndAccessoryGlandAbscess = "http://hl7.org/fhir/sid/icd-10#A54.1";
+
+    /// <summary>
     /// Literal for code: GonococcalPelviperitonitisAndOtherGonococcalGenitourinaryInfections
     /// </summary>
     public const string LiteralGonococcalPelviperitonitisAndOtherGonococcalGenitourinaryInfections = "A54.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10GonococcalPelviperitonitisAndOtherGonococcalGenitourinaryInfections
+    /// </summary>
+    public const string LiteralSidIcd10GonococcalPelviperitonitisAndOtherGonococcalGenitourinaryInfections = "http://hl7.org/fhir/sid/icd-10#A54.2";
 
     /// <summary>
     /// Literal for code: GonococcalInfectionOfEye
@@ -10508,9 +11998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGonococcalInfectionOfEye = "A54.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10GonococcalInfectionOfEye
+    /// </summary>
+    public const string LiteralSidIcd10GonococcalInfectionOfEye = "http://hl7.org/fhir/sid/icd-10#A54.3";
+
+    /// <summary>
     /// Literal for code: GonococcalInfectionOfMusculoskeletalSystem
     /// </summary>
     public const string LiteralGonococcalInfectionOfMusculoskeletalSystem = "A54.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10GonococcalInfectionOfMusculoskeletalSystem
+    /// </summary>
+    public const string LiteralSidIcd10GonococcalInfectionOfMusculoskeletalSystem = "http://hl7.org/fhir/sid/icd-10#A54.4";
 
     /// <summary>
     /// Literal for code: GonococcalPharyngitis
@@ -10518,9 +12018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGonococcalPharyngitis = "A54.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10GonococcalPharyngitis
+    /// </summary>
+    public const string LiteralSidIcd10GonococcalPharyngitis = "http://hl7.org/fhir/sid/icd-10#A54.5";
+
+    /// <summary>
     /// Literal for code: GonococcalInfectionOfAnusAndRectum
     /// </summary>
     public const string LiteralGonococcalInfectionOfAnusAndRectum = "A54.6";
+
+    /// <summary>
+    /// Literal for code: SidIcd10GonococcalInfectionOfAnusAndRectum
+    /// </summary>
+    public const string LiteralSidIcd10GonococcalInfectionOfAnusAndRectum = "http://hl7.org/fhir/sid/icd-10#A54.6";
 
     /// <summary>
     /// Literal for code: OtherGonococcalInfections
@@ -10528,9 +12038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherGonococcalInfections = "A54.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherGonococcalInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherGonococcalInfections = "http://hl7.org/fhir/sid/icd-10#A54.8";
+
+    /// <summary>
     /// Literal for code: GonococcalInfectionUnspecified
     /// </summary>
     public const string LiteralGonococcalInfectionUnspecified = "A54.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10GonococcalInfectionUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10GonococcalInfectionUnspecified = "http://hl7.org/fhir/sid/icd-10#A54.9";
 
     /// <summary>
     /// Literal for code: ChlamydialLymphogranulomaVenereum
@@ -10538,9 +12058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChlamydialLymphogranulomaVenereum = "A55";
 
     /// <summary>
+    /// Literal for code: SidIcd10ChlamydialLymphogranulomaVenereum
+    /// </summary>
+    public const string LiteralSidIcd10ChlamydialLymphogranulomaVenereum = "http://hl7.org/fhir/sid/icd-10#A55";
+
+    /// <summary>
     /// Literal for code: OtherSexuallyTransmittedChlamydialDiseases
     /// </summary>
     public const string LiteralOtherSexuallyTransmittedChlamydialDiseases = "A56";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSexuallyTransmittedChlamydialDiseases
+    /// </summary>
+    public const string LiteralSidIcd10OtherSexuallyTransmittedChlamydialDiseases = "http://hl7.org/fhir/sid/icd-10#A56";
 
     /// <summary>
     /// Literal for code: ChlamydialInfectionOfLowerGenitourinaryTract
@@ -10548,9 +12078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChlamydialInfectionOfLowerGenitourinaryTract = "A56.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10ChlamydialInfectionOfLowerGenitourinaryTract
+    /// </summary>
+    public const string LiteralSidIcd10ChlamydialInfectionOfLowerGenitourinaryTract = "http://hl7.org/fhir/sid/icd-10#A56.0";
+
+    /// <summary>
     /// Literal for code: ChlamydialInfectionOfPelviperitoneumAndOtherGenitourinaryOrgans
     /// </summary>
     public const string LiteralChlamydialInfectionOfPelviperitoneumAndOtherGenitourinaryOrgans = "A56.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ChlamydialInfectionOfPelviperitoneumAndOtherGenitourinaryOrgans
+    /// </summary>
+    public const string LiteralSidIcd10ChlamydialInfectionOfPelviperitoneumAndOtherGenitourinaryOrgans = "http://hl7.org/fhir/sid/icd-10#A56.1";
 
     /// <summary>
     /// Literal for code: ChlamydialInfectionOfGenitourinaryTractUnspecified
@@ -10558,9 +12098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChlamydialInfectionOfGenitourinaryTractUnspecified = "A56.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10ChlamydialInfectionOfGenitourinaryTractUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ChlamydialInfectionOfGenitourinaryTractUnspecified = "http://hl7.org/fhir/sid/icd-10#A56.2";
+
+    /// <summary>
     /// Literal for code: ChlamydialInfectionOfAnusAndRectum
     /// </summary>
     public const string LiteralChlamydialInfectionOfAnusAndRectum = "A56.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ChlamydialInfectionOfAnusAndRectum
+    /// </summary>
+    public const string LiteralSidIcd10ChlamydialInfectionOfAnusAndRectum = "http://hl7.org/fhir/sid/icd-10#A56.3";
 
     /// <summary>
     /// Literal for code: ChlamydialInfectionOfPharynx
@@ -10568,9 +12118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChlamydialInfectionOfPharynx = "A56.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10ChlamydialInfectionOfPharynx
+    /// </summary>
+    public const string LiteralSidIcd10ChlamydialInfectionOfPharynx = "http://hl7.org/fhir/sid/icd-10#A56.4";
+
+    /// <summary>
     /// Literal for code: SexuallyTransmittedChlamydialInfectionOfOtherSites
     /// </summary>
     public const string LiteralSexuallyTransmittedChlamydialInfectionOfOtherSites = "A56.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SexuallyTransmittedChlamydialInfectionOfOtherSites
+    /// </summary>
+    public const string LiteralSidIcd10SexuallyTransmittedChlamydialInfectionOfOtherSites = "http://hl7.org/fhir/sid/icd-10#A56.8";
 
     /// <summary>
     /// Literal for code: Chancroid
@@ -10578,9 +12138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChancroid = "A57";
 
     /// <summary>
+    /// Literal for code: SidIcd10Chancroid
+    /// </summary>
+    public const string LiteralSidIcd10Chancroid = "http://hl7.org/fhir/sid/icd-10#A57";
+
+    /// <summary>
     /// Literal for code: GranulomaInguinale
     /// </summary>
     public const string LiteralGranulomaInguinale = "A58";
+
+    /// <summary>
+    /// Literal for code: SidIcd10GranulomaInguinale
+    /// </summary>
+    public const string LiteralSidIcd10GranulomaInguinale = "http://hl7.org/fhir/sid/icd-10#A58";
 
     /// <summary>
     /// Literal for code: Trichomoniasis
@@ -10588,9 +12158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTrichomoniasis = "A59";
 
     /// <summary>
+    /// Literal for code: SidIcd10Trichomoniasis
+    /// </summary>
+    public const string LiteralSidIcd10Trichomoniasis = "http://hl7.org/fhir/sid/icd-10#A59";
+
+    /// <summary>
     /// Literal for code: UrogenitalTrichomoniasis
     /// </summary>
     public const string LiteralUrogenitalTrichomoniasis = "A59.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10UrogenitalTrichomoniasis
+    /// </summary>
+    public const string LiteralSidIcd10UrogenitalTrichomoniasis = "http://hl7.org/fhir/sid/icd-10#A59.0";
 
     /// <summary>
     /// Literal for code: TrichomoniasisOfOtherSites
@@ -10598,9 +12178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTrichomoniasisOfOtherSites = "A59.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10TrichomoniasisOfOtherSites
+    /// </summary>
+    public const string LiteralSidIcd10TrichomoniasisOfOtherSites = "http://hl7.org/fhir/sid/icd-10#A59.8";
+
+    /// <summary>
     /// Literal for code: TrichomoniasisUnspecified
     /// </summary>
     public const string LiteralTrichomoniasisUnspecified = "A59.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TrichomoniasisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10TrichomoniasisUnspecified = "http://hl7.org/fhir/sid/icd-10#A59.9";
 
     /// <summary>
     /// Literal for code: AnogenitalHerpesviralHerpesSimplexInfection
@@ -10608,9 +12198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAnogenitalHerpesviralHerpesSimplexInfection = "A60";
 
     /// <summary>
+    /// Literal for code: SidIcd10AnogenitalHerpesviralHerpesSimplexInfection
+    /// </summary>
+    public const string LiteralSidIcd10AnogenitalHerpesviralHerpesSimplexInfection = "http://hl7.org/fhir/sid/icd-10#A60";
+
+    /// <summary>
     /// Literal for code: HerpesviralInfectionOfGenitaliaAndUrogenitalTract
     /// </summary>
     public const string LiteralHerpesviralInfectionOfGenitaliaAndUrogenitalTract = "A60.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HerpesviralInfectionOfGenitaliaAndUrogenitalTract
+    /// </summary>
+    public const string LiteralSidIcd10HerpesviralInfectionOfGenitaliaAndUrogenitalTract = "http://hl7.org/fhir/sid/icd-10#A60.0";
 
     /// <summary>
     /// Literal for code: HerpesviralInfectionOfPerianalSkinAndRectum
@@ -10618,9 +12218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHerpesviralInfectionOfPerianalSkinAndRectum = "A60.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10HerpesviralInfectionOfPerianalSkinAndRectum
+    /// </summary>
+    public const string LiteralSidIcd10HerpesviralInfectionOfPerianalSkinAndRectum = "http://hl7.org/fhir/sid/icd-10#A60.1";
+
+    /// <summary>
     /// Literal for code: AnogenitalHerpesviralInfectionUnspecified
     /// </summary>
     public const string LiteralAnogenitalHerpesviralInfectionUnspecified = "A60.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AnogenitalHerpesviralInfectionUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10AnogenitalHerpesviralInfectionUnspecified = "http://hl7.org/fhir/sid/icd-10#A60.9";
 
     /// <summary>
     /// Literal for code: OtherPredominantlySexuallyTransmittedDiseasesNotElsewhereClassified
@@ -10628,9 +12238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherPredominantlySexuallyTransmittedDiseasesNotElsewhereClassified = "A63";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherPredominantlySexuallyTransmittedDiseasesNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10OtherPredominantlySexuallyTransmittedDiseasesNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#A63";
+
+    /// <summary>
     /// Literal for code: AnogenitalVenerealWarts
     /// </summary>
     public const string LiteralAnogenitalVenerealWarts = "A63.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AnogenitalVenerealWarts
+    /// </summary>
+    public const string LiteralSidIcd10AnogenitalVenerealWarts = "http://hl7.org/fhir/sid/icd-10#A63.0";
 
     /// <summary>
     /// Literal for code: OtherSpecifiedPredominantlySexuallyTransmittedDiseases
@@ -10638,9 +12258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherSpecifiedPredominantlySexuallyTransmittedDiseases = "A63.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedPredominantlySexuallyTransmittedDiseases
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedPredominantlySexuallyTransmittedDiseases = "http://hl7.org/fhir/sid/icd-10#A63.8";
+
+    /// <summary>
     /// Literal for code: UnspecifiedSexuallyTransmittedDisease
     /// </summary>
     public const string LiteralUnspecifiedSexuallyTransmittedDisease = "A64";
+
+    /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedSexuallyTransmittedDisease
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedSexuallyTransmittedDisease = "http://hl7.org/fhir/sid/icd-10#A64";
 
     /// <summary>
     /// Literal for code: NonvenerealSyphilis
@@ -10648,9 +12278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNonvenerealSyphilis = "A65";
 
     /// <summary>
+    /// Literal for code: SidIcd10NonvenerealSyphilis
+    /// </summary>
+    public const string LiteralSidIcd10NonvenerealSyphilis = "http://hl7.org/fhir/sid/icd-10#A65";
+
+    /// <summary>
     /// Literal for code: OtherSpirochaetalDiseases
     /// </summary>
     public const string LiteralOtherSpirochaetalDiseases = "A65-A69";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpirochaetalDiseases
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpirochaetalDiseases = "http://hl7.org/fhir/sid/icd-10#A65-A69";
 
     /// <summary>
     /// Literal for code: Yaws
@@ -10658,9 +12298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralYaws = "A66";
 
     /// <summary>
+    /// Literal for code: SidIcd10Yaws
+    /// </summary>
+    public const string LiteralSidIcd10Yaws = "http://hl7.org/fhir/sid/icd-10#A66";
+
+    /// <summary>
     /// Literal for code: InitialLesionsOfYaws
     /// </summary>
     public const string LiteralInitialLesionsOfYaws = "A66.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10InitialLesionsOfYaws
+    /// </summary>
+    public const string LiteralSidIcd10InitialLesionsOfYaws = "http://hl7.org/fhir/sid/icd-10#A66.0";
 
     /// <summary>
     /// Literal for code: MultiplePapillomataAndWetCrabYaws
@@ -10668,9 +12318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMultiplePapillomataAndWetCrabYaws = "A66.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10MultiplePapillomataAndWetCrabYaws
+    /// </summary>
+    public const string LiteralSidIcd10MultiplePapillomataAndWetCrabYaws = "http://hl7.org/fhir/sid/icd-10#A66.1";
+
+    /// <summary>
     /// Literal for code: OtherEarlySkinLesionsOfYaws
     /// </summary>
     public const string LiteralOtherEarlySkinLesionsOfYaws = "A66.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherEarlySkinLesionsOfYaws
+    /// </summary>
+    public const string LiteralSidIcd10OtherEarlySkinLesionsOfYaws = "http://hl7.org/fhir/sid/icd-10#A66.2";
 
     /// <summary>
     /// Literal for code: HyperkeratosisOfYaws
@@ -10678,9 +12338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHyperkeratosisOfYaws = "A66.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10HyperkeratosisOfYaws
+    /// </summary>
+    public const string LiteralSidIcd10HyperkeratosisOfYaws = "http://hl7.org/fhir/sid/icd-10#A66.3";
+
+    /// <summary>
     /// Literal for code: GummataAndUlcersOfYaws
     /// </summary>
     public const string LiteralGummataAndUlcersOfYaws = "A66.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10GummataAndUlcersOfYaws
+    /// </summary>
+    public const string LiteralSidIcd10GummataAndUlcersOfYaws = "http://hl7.org/fhir/sid/icd-10#A66.4";
 
     /// <summary>
     /// Literal for code: Gangosa
@@ -10688,9 +12358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGangosa = "A66.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10Gangosa
+    /// </summary>
+    public const string LiteralSidIcd10Gangosa = "http://hl7.org/fhir/sid/icd-10#A66.5";
+
+    /// <summary>
     /// Literal for code: BoneAndJointLesionsOfYaws
     /// </summary>
     public const string LiteralBoneAndJointLesionsOfYaws = "A66.6";
+
+    /// <summary>
+    /// Literal for code: SidIcd10BoneAndJointLesionsOfYaws
+    /// </summary>
+    public const string LiteralSidIcd10BoneAndJointLesionsOfYaws = "http://hl7.org/fhir/sid/icd-10#A66.6";
 
     /// <summary>
     /// Literal for code: OtherManifestationsOfYaws
@@ -10698,9 +12378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherManifestationsOfYaws = "A66.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherManifestationsOfYaws
+    /// </summary>
+    public const string LiteralSidIcd10OtherManifestationsOfYaws = "http://hl7.org/fhir/sid/icd-10#A66.7";
+
+    /// <summary>
     /// Literal for code: LatentYaws
     /// </summary>
     public const string LiteralLatentYaws = "A66.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LatentYaws
+    /// </summary>
+    public const string LiteralSidIcd10LatentYaws = "http://hl7.org/fhir/sid/icd-10#A66.8";
 
     /// <summary>
     /// Literal for code: YawsUnspecified
@@ -10708,9 +12398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralYawsUnspecified = "A66.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10YawsUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10YawsUnspecified = "http://hl7.org/fhir/sid/icd-10#A66.9";
+
+    /// <summary>
     /// Literal for code: PintaCarate
     /// </summary>
     public const string LiteralPintaCarate = "A67";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PintaCarate
+    /// </summary>
+    public const string LiteralSidIcd10PintaCarate = "http://hl7.org/fhir/sid/icd-10#A67";
 
     /// <summary>
     /// Literal for code: PrimaryLesionsOfPinta
@@ -10718,9 +12418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrimaryLesionsOfPinta = "A67.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10PrimaryLesionsOfPinta
+    /// </summary>
+    public const string LiteralSidIcd10PrimaryLesionsOfPinta = "http://hl7.org/fhir/sid/icd-10#A67.0";
+
+    /// <summary>
     /// Literal for code: IntermediateLesionsOfPinta
     /// </summary>
     public const string LiteralIntermediateLesionsOfPinta = "A67.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10IntermediateLesionsOfPinta
+    /// </summary>
+    public const string LiteralSidIcd10IntermediateLesionsOfPinta = "http://hl7.org/fhir/sid/icd-10#A67.1";
 
     /// <summary>
     /// Literal for code: LateLesionsOfPinta
@@ -10728,9 +12438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLateLesionsOfPinta = "A67.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10LateLesionsOfPinta
+    /// </summary>
+    public const string LiteralSidIcd10LateLesionsOfPinta = "http://hl7.org/fhir/sid/icd-10#A67.2";
+
+    /// <summary>
     /// Literal for code: MixedLesionsOfPinta
     /// </summary>
     public const string LiteralMixedLesionsOfPinta = "A67.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MixedLesionsOfPinta
+    /// </summary>
+    public const string LiteralSidIcd10MixedLesionsOfPinta = "http://hl7.org/fhir/sid/icd-10#A67.3";
 
     /// <summary>
     /// Literal for code: PintaUnspecified
@@ -10738,9 +12458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPintaUnspecified = "A67.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10PintaUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10PintaUnspecified = "http://hl7.org/fhir/sid/icd-10#A67.9";
+
+    /// <summary>
     /// Literal for code: RelapsingFevers
     /// </summary>
     public const string LiteralRelapsingFevers = "A68";
+
+    /// <summary>
+    /// Literal for code: SidIcd10RelapsingFevers
+    /// </summary>
+    public const string LiteralSidIcd10RelapsingFevers = "http://hl7.org/fhir/sid/icd-10#A68";
 
     /// <summary>
     /// Literal for code: LouseBorneRelapsingFever
@@ -10748,9 +12478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLouseBorneRelapsingFever = "A68.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10LouseBorneRelapsingFever
+    /// </summary>
+    public const string LiteralSidIcd10LouseBorneRelapsingFever = "http://hl7.org/fhir/sid/icd-10#A68.0";
+
+    /// <summary>
     /// Literal for code: TickBorneRelapsingFever
     /// </summary>
     public const string LiteralTickBorneRelapsingFever = "A68.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TickBorneRelapsingFever
+    /// </summary>
+    public const string LiteralSidIcd10TickBorneRelapsingFever = "http://hl7.org/fhir/sid/icd-10#A68.1";
 
     /// <summary>
     /// Literal for code: RelapsingFeverUnspecified
@@ -10758,9 +12498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRelapsingFeverUnspecified = "A68.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10RelapsingFeverUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10RelapsingFeverUnspecified = "http://hl7.org/fhir/sid/icd-10#A68.9";
+
+    /// <summary>
     /// Literal for code: OtherSpirochaetalInfections
     /// </summary>
     public const string LiteralOtherSpirochaetalInfections = "A69";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpirochaetalInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpirochaetalInfections = "http://hl7.org/fhir/sid/icd-10#A69";
 
     /// <summary>
     /// Literal for code: NecrotizingUlcerativeStomatitis
@@ -10768,9 +12518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNecrotizingUlcerativeStomatitis = "A69.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10NecrotizingUlcerativeStomatitis
+    /// </summary>
+    public const string LiteralSidIcd10NecrotizingUlcerativeStomatitis = "http://hl7.org/fhir/sid/icd-10#A69.0";
+
+    /// <summary>
     /// Literal for code: OtherVincentInfections
     /// </summary>
     public const string LiteralOtherVincentInfections = "A69.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherVincentInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherVincentInfections = "http://hl7.org/fhir/sid/icd-10#A69.1";
 
     /// <summary>
     /// Literal for code: LymeDisease
@@ -10778,9 +12538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLymeDisease = "A69.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10LymeDisease
+    /// </summary>
+    public const string LiteralSidIcd10LymeDisease = "http://hl7.org/fhir/sid/icd-10#A69.2";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedSpirochaetalInfections
     /// </summary>
     public const string LiteralOtherSpecifiedSpirochaetalInfections = "A69.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedSpirochaetalInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedSpirochaetalInfections = "http://hl7.org/fhir/sid/icd-10#A69.8";
 
     /// <summary>
     /// Literal for code: SpirochaetalInfectionUnspecified
@@ -10788,9 +12558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpirochaetalInfectionUnspecified = "A69.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10SpirochaetalInfectionUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10SpirochaetalInfectionUnspecified = "http://hl7.org/fhir/sid/icd-10#A69.9";
+
+    /// <summary>
     /// Literal for code: ChlamydiaPsittaciInfection
     /// </summary>
     public const string LiteralChlamydiaPsittaciInfection = "A70";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ChlamydiaPsittaciInfection
+    /// </summary>
+    public const string LiteralSidIcd10ChlamydiaPsittaciInfection = "http://hl7.org/fhir/sid/icd-10#A70";
 
     /// <summary>
     /// Literal for code: OtherDiseasesCausedByChlamydiae
@@ -10798,9 +12578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherDiseasesCausedByChlamydiae = "A70-A74";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherDiseasesCausedByChlamydiae
+    /// </summary>
+    public const string LiteralSidIcd10OtherDiseasesCausedByChlamydiae = "http://hl7.org/fhir/sid/icd-10#A70-A74";
+
+    /// <summary>
     /// Literal for code: Trachoma
     /// </summary>
     public const string LiteralTrachoma = "A71";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Trachoma
+    /// </summary>
+    public const string LiteralSidIcd10Trachoma = "http://hl7.org/fhir/sid/icd-10#A71";
 
     /// <summary>
     /// Literal for code: InitialStageOfTrachoma
@@ -10808,9 +12598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInitialStageOfTrachoma = "A71.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10InitialStageOfTrachoma
+    /// </summary>
+    public const string LiteralSidIcd10InitialStageOfTrachoma = "http://hl7.org/fhir/sid/icd-10#A71.0";
+
+    /// <summary>
     /// Literal for code: ActiveStageOfTrachoma
     /// </summary>
     public const string LiteralActiveStageOfTrachoma = "A71.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ActiveStageOfTrachoma
+    /// </summary>
+    public const string LiteralSidIcd10ActiveStageOfTrachoma = "http://hl7.org/fhir/sid/icd-10#A71.1";
 
     /// <summary>
     /// Literal for code: TrachomaUnspecified
@@ -10818,9 +12618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTrachomaUnspecified = "A71.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10TrachomaUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10TrachomaUnspecified = "http://hl7.org/fhir/sid/icd-10#A71.9";
+
+    /// <summary>
     /// Literal for code: OtherDiseasesCausedByChlamydiae_2
     /// </summary>
     public const string LiteralOtherDiseasesCausedByChlamydiae_2 = "A74";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherDiseasesCausedByChlamydiae_2
+    /// </summary>
+    public const string LiteralSidIcd10OtherDiseasesCausedByChlamydiae_2 = "http://hl7.org/fhir/sid/icd-10#A74";
 
     /// <summary>
     /// Literal for code: ChlamydialConjunctivitisH131
@@ -10828,9 +12638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChlamydialConjunctivitisH131 = "A74.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10ChlamydialConjunctivitisH131
+    /// </summary>
+    public const string LiteralSidIcd10ChlamydialConjunctivitisH131 = "http://hl7.org/fhir/sid/icd-10#A74.0";
+
+    /// <summary>
     /// Literal for code: OtherChlamydialDiseases
     /// </summary>
     public const string LiteralOtherChlamydialDiseases = "A74.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherChlamydialDiseases
+    /// </summary>
+    public const string LiteralSidIcd10OtherChlamydialDiseases = "http://hl7.org/fhir/sid/icd-10#A74.8";
 
     /// <summary>
     /// Literal for code: ChlamydialInfectionUnspecified
@@ -10838,9 +12658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChlamydialInfectionUnspecified = "A74.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10ChlamydialInfectionUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ChlamydialInfectionUnspecified = "http://hl7.org/fhir/sid/icd-10#A74.9";
+
+    /// <summary>
     /// Literal for code: TyphusFever
     /// </summary>
     public const string LiteralTyphusFever = "A75";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TyphusFever
+    /// </summary>
+    public const string LiteralSidIcd10TyphusFever = "http://hl7.org/fhir/sid/icd-10#A75";
 
     /// <summary>
     /// Literal for code: Rickettsioses
@@ -10848,9 +12678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRickettsioses = "A75-A79";
 
     /// <summary>
+    /// Literal for code: SidIcd10Rickettsioses
+    /// </summary>
+    public const string LiteralSidIcd10Rickettsioses = "http://hl7.org/fhir/sid/icd-10#A75-A79";
+
+    /// <summary>
     /// Literal for code: EpidemicLouseBorneTyphusFeverDueToRickettsiaProwazekii
     /// </summary>
     public const string LiteralEpidemicLouseBorneTyphusFeverDueToRickettsiaProwazekii = "A75.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EpidemicLouseBorneTyphusFeverDueToRickettsiaProwazekii
+    /// </summary>
+    public const string LiteralSidIcd10EpidemicLouseBorneTyphusFeverDueToRickettsiaProwazekii = "http://hl7.org/fhir/sid/icd-10#A75.0";
 
     /// <summary>
     /// Literal for code: RecrudescentTyphusBrillDisease
@@ -10858,9 +12698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRecrudescentTyphusBrillDisease = "A75.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10RecrudescentTyphusBrillDisease
+    /// </summary>
+    public const string LiteralSidIcd10RecrudescentTyphusBrillDisease = "http://hl7.org/fhir/sid/icd-10#A75.1";
+
+    /// <summary>
     /// Literal for code: TyphusFeverDueToRickettsiaTyphi
     /// </summary>
     public const string LiteralTyphusFeverDueToRickettsiaTyphi = "A75.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TyphusFeverDueToRickettsiaTyphi
+    /// </summary>
+    public const string LiteralSidIcd10TyphusFeverDueToRickettsiaTyphi = "http://hl7.org/fhir/sid/icd-10#A75.2";
 
     /// <summary>
     /// Literal for code: TyphusFeverDueToRickettsiaTsutsugamushi
@@ -10868,9 +12718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTyphusFeverDueToRickettsiaTsutsugamushi = "A75.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10TyphusFeverDueToRickettsiaTsutsugamushi
+    /// </summary>
+    public const string LiteralSidIcd10TyphusFeverDueToRickettsiaTsutsugamushi = "http://hl7.org/fhir/sid/icd-10#A75.3";
+
+    /// <summary>
     /// Literal for code: TyphusFeverUnspecified
     /// </summary>
     public const string LiteralTyphusFeverUnspecified = "A75.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TyphusFeverUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10TyphusFeverUnspecified = "http://hl7.org/fhir/sid/icd-10#A75.9";
 
     /// <summary>
     /// Literal for code: SpottedFeverTickBorneRickettsioses
@@ -10878,9 +12738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpottedFeverTickBorneRickettsioses = "A77";
 
     /// <summary>
+    /// Literal for code: SidIcd10SpottedFeverTickBorneRickettsioses
+    /// </summary>
+    public const string LiteralSidIcd10SpottedFeverTickBorneRickettsioses = "http://hl7.org/fhir/sid/icd-10#A77";
+
+    /// <summary>
     /// Literal for code: SpottedFeverDueToRickettsiaRickettsii
     /// </summary>
     public const string LiteralSpottedFeverDueToRickettsiaRickettsii = "A77.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SpottedFeverDueToRickettsiaRickettsii
+    /// </summary>
+    public const string LiteralSidIcd10SpottedFeverDueToRickettsiaRickettsii = "http://hl7.org/fhir/sid/icd-10#A77.0";
 
     /// <summary>
     /// Literal for code: SpottedFeverDueToRickettsiaConorii
@@ -10888,9 +12758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpottedFeverDueToRickettsiaConorii = "A77.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10SpottedFeverDueToRickettsiaConorii
+    /// </summary>
+    public const string LiteralSidIcd10SpottedFeverDueToRickettsiaConorii = "http://hl7.org/fhir/sid/icd-10#A77.1";
+
+    /// <summary>
     /// Literal for code: SpottedFeverDueToRickettsiaSibirica
     /// </summary>
     public const string LiteralSpottedFeverDueToRickettsiaSibirica = "A77.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SpottedFeverDueToRickettsiaSibirica
+    /// </summary>
+    public const string LiteralSidIcd10SpottedFeverDueToRickettsiaSibirica = "http://hl7.org/fhir/sid/icd-10#A77.2";
 
     /// <summary>
     /// Literal for code: SpottedFeverDueToRickettsiaAustralis
@@ -10898,9 +12778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpottedFeverDueToRickettsiaAustralis = "A77.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10SpottedFeverDueToRickettsiaAustralis
+    /// </summary>
+    public const string LiteralSidIcd10SpottedFeverDueToRickettsiaAustralis = "http://hl7.org/fhir/sid/icd-10#A77.3";
+
+    /// <summary>
     /// Literal for code: OtherSpottedFevers
     /// </summary>
     public const string LiteralOtherSpottedFevers = "A77.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpottedFevers
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpottedFevers = "http://hl7.org/fhir/sid/icd-10#A77.8";
 
     /// <summary>
     /// Literal for code: SpottedFeverUnspecified
@@ -10908,9 +12798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpottedFeverUnspecified = "A77.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10SpottedFeverUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10SpottedFeverUnspecified = "http://hl7.org/fhir/sid/icd-10#A77.9";
+
+    /// <summary>
     /// Literal for code: QFever
     /// </summary>
     public const string LiteralQFever = "A78";
+
+    /// <summary>
+    /// Literal for code: SidIcd10QFever
+    /// </summary>
+    public const string LiteralSidIcd10QFever = "http://hl7.org/fhir/sid/icd-10#A78";
 
     /// <summary>
     /// Literal for code: OtherRickettsioses
@@ -10918,9 +12818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherRickettsioses = "A79";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherRickettsioses
+    /// </summary>
+    public const string LiteralSidIcd10OtherRickettsioses = "http://hl7.org/fhir/sid/icd-10#A79";
+
+    /// <summary>
     /// Literal for code: TrenchFever
     /// </summary>
     public const string LiteralTrenchFever = "A79.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TrenchFever
+    /// </summary>
+    public const string LiteralSidIcd10TrenchFever = "http://hl7.org/fhir/sid/icd-10#A79.0";
 
     /// <summary>
     /// Literal for code: RickettsialpoxDueToRickettsiaAkari
@@ -10928,9 +12838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRickettsialpoxDueToRickettsiaAkari = "A79.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10RickettsialpoxDueToRickettsiaAkari
+    /// </summary>
+    public const string LiteralSidIcd10RickettsialpoxDueToRickettsiaAkari = "http://hl7.org/fhir/sid/icd-10#A79.1";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedRickettsioses
     /// </summary>
     public const string LiteralOtherSpecifiedRickettsioses = "A79.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedRickettsioses
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedRickettsioses = "http://hl7.org/fhir/sid/icd-10#A79.8";
 
     /// <summary>
     /// Literal for code: RickettsiosisUnspecified
@@ -10938,9 +12858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRickettsiosisUnspecified = "A79.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10RickettsiosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10RickettsiosisUnspecified = "http://hl7.org/fhir/sid/icd-10#A79.9";
+
+    /// <summary>
     /// Literal for code: AcutePoliomyelitis
     /// </summary>
     public const string LiteralAcutePoliomyelitis = "A80";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AcutePoliomyelitis
+    /// </summary>
+    public const string LiteralSidIcd10AcutePoliomyelitis = "http://hl7.org/fhir/sid/icd-10#A80";
 
     /// <summary>
     /// Literal for code: ViralInfectionsOfTheCentralNervousSystem
@@ -10948,9 +12878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralViralInfectionsOfTheCentralNervousSystem = "A80-A89";
 
     /// <summary>
+    /// Literal for code: SidIcd10ViralInfectionsOfTheCentralNervousSystem
+    /// </summary>
+    public const string LiteralSidIcd10ViralInfectionsOfTheCentralNervousSystem = "http://hl7.org/fhir/sid/icd-10#A80-A89";
+
+    /// <summary>
     /// Literal for code: AcuteParalyticPoliomyelitisVaccineAssociated
     /// </summary>
     public const string LiteralAcuteParalyticPoliomyelitisVaccineAssociated = "A80.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AcuteParalyticPoliomyelitisVaccineAssociated
+    /// </summary>
+    public const string LiteralSidIcd10AcuteParalyticPoliomyelitisVaccineAssociated = "http://hl7.org/fhir/sid/icd-10#A80.0";
 
     /// <summary>
     /// Literal for code: AcuteParalyticPoliomyelitisWildVirusImported
@@ -10958,9 +12898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcuteParalyticPoliomyelitisWildVirusImported = "A80.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcuteParalyticPoliomyelitisWildVirusImported
+    /// </summary>
+    public const string LiteralSidIcd10AcuteParalyticPoliomyelitisWildVirusImported = "http://hl7.org/fhir/sid/icd-10#A80.1";
+
+    /// <summary>
     /// Literal for code: AcuteParalyticPoliomyelitisWildVirusIndigenous
     /// </summary>
     public const string LiteralAcuteParalyticPoliomyelitisWildVirusIndigenous = "A80.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AcuteParalyticPoliomyelitisWildVirusIndigenous
+    /// </summary>
+    public const string LiteralSidIcd10AcuteParalyticPoliomyelitisWildVirusIndigenous = "http://hl7.org/fhir/sid/icd-10#A80.2";
 
     /// <summary>
     /// Literal for code: AcuteParalyticPoliomyelitisOtherAndUnspecified
@@ -10968,9 +12918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcuteParalyticPoliomyelitisOtherAndUnspecified = "A80.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcuteParalyticPoliomyelitisOtherAndUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10AcuteParalyticPoliomyelitisOtherAndUnspecified = "http://hl7.org/fhir/sid/icd-10#A80.3";
+
+    /// <summary>
     /// Literal for code: AcuteNonparalyticPoliomyelitis
     /// </summary>
     public const string LiteralAcuteNonparalyticPoliomyelitis = "A80.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AcuteNonparalyticPoliomyelitis
+    /// </summary>
+    public const string LiteralSidIcd10AcuteNonparalyticPoliomyelitis = "http://hl7.org/fhir/sid/icd-10#A80.4";
 
     /// <summary>
     /// Literal for code: AcutePoliomyelitisUnspecified
@@ -10978,9 +12938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcutePoliomyelitisUnspecified = "A80.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcutePoliomyelitisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10AcutePoliomyelitisUnspecified = "http://hl7.org/fhir/sid/icd-10#A80.9";
+
+    /// <summary>
     /// Literal for code: AtypicalVirusInfectionsOfCentralNervousSystem
     /// </summary>
     public const string LiteralAtypicalVirusInfectionsOfCentralNervousSystem = "A81";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AtypicalVirusInfectionsOfCentralNervousSystem
+    /// </summary>
+    public const string LiteralSidIcd10AtypicalVirusInfectionsOfCentralNervousSystem = "http://hl7.org/fhir/sid/icd-10#A81";
 
     /// <summary>
     /// Literal for code: CreutzfeldtJakobDisease
@@ -10988,9 +12958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCreutzfeldtJakobDisease = "A81.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10CreutzfeldtJakobDisease
+    /// </summary>
+    public const string LiteralSidIcd10CreutzfeldtJakobDisease = "http://hl7.org/fhir/sid/icd-10#A81.0";
+
+    /// <summary>
     /// Literal for code: SubacuteSclerosingPanencephalitis
     /// </summary>
     public const string LiteralSubacuteSclerosingPanencephalitis = "A81.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SubacuteSclerosingPanencephalitis
+    /// </summary>
+    public const string LiteralSidIcd10SubacuteSclerosingPanencephalitis = "http://hl7.org/fhir/sid/icd-10#A81.1";
 
     /// <summary>
     /// Literal for code: ProgressiveMultifocalLeukoencephalopathy
@@ -10998,9 +12978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProgressiveMultifocalLeukoencephalopathy = "A81.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10ProgressiveMultifocalLeukoencephalopathy
+    /// </summary>
+    public const string LiteralSidIcd10ProgressiveMultifocalLeukoencephalopathy = "http://hl7.org/fhir/sid/icd-10#A81.2";
+
+    /// <summary>
     /// Literal for code: OtherAtypicalVirusInfectionsOfCentralNervousSystem
     /// </summary>
     public const string LiteralOtherAtypicalVirusInfectionsOfCentralNervousSystem = "A81.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherAtypicalVirusInfectionsOfCentralNervousSystem
+    /// </summary>
+    public const string LiteralSidIcd10OtherAtypicalVirusInfectionsOfCentralNervousSystem = "http://hl7.org/fhir/sid/icd-10#A81.8";
 
     /// <summary>
     /// Literal for code: AtypicalVirusInfectionOfCentralNervousSystemUnspecified
@@ -11008,9 +12998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAtypicalVirusInfectionOfCentralNervousSystemUnspecified = "A81.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10AtypicalVirusInfectionOfCentralNervousSystemUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10AtypicalVirusInfectionOfCentralNervousSystemUnspecified = "http://hl7.org/fhir/sid/icd-10#A81.9";
+
+    /// <summary>
     /// Literal for code: Rabies
     /// </summary>
     public const string LiteralRabies = "A82";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Rabies
+    /// </summary>
+    public const string LiteralSidIcd10Rabies = "http://hl7.org/fhir/sid/icd-10#A82";
 
     /// <summary>
     /// Literal for code: SylvaticRabies
@@ -11018,9 +13018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSylvaticRabies = "A82.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10SylvaticRabies
+    /// </summary>
+    public const string LiteralSidIcd10SylvaticRabies = "http://hl7.org/fhir/sid/icd-10#A82.0";
+
+    /// <summary>
     /// Literal for code: UrbanRabies
     /// </summary>
     public const string LiteralUrbanRabies = "A82.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10UrbanRabies
+    /// </summary>
+    public const string LiteralSidIcd10UrbanRabies = "http://hl7.org/fhir/sid/icd-10#A82.1";
 
     /// <summary>
     /// Literal for code: RabiesUnspecified
@@ -11028,9 +13038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRabiesUnspecified = "A82.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10RabiesUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10RabiesUnspecified = "http://hl7.org/fhir/sid/icd-10#A82.9";
+
+    /// <summary>
     /// Literal for code: MosquitoBorneViralEncephalitis
     /// </summary>
     public const string LiteralMosquitoBorneViralEncephalitis = "A83";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MosquitoBorneViralEncephalitis
+    /// </summary>
+    public const string LiteralSidIcd10MosquitoBorneViralEncephalitis = "http://hl7.org/fhir/sid/icd-10#A83";
 
     /// <summary>
     /// Literal for code: JapaneseEncephalitis
@@ -11038,9 +13058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralJapaneseEncephalitis = "A83.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10JapaneseEncephalitis
+    /// </summary>
+    public const string LiteralSidIcd10JapaneseEncephalitis = "http://hl7.org/fhir/sid/icd-10#A83.0";
+
+    /// <summary>
     /// Literal for code: WesternEquineEncephalitis
     /// </summary>
     public const string LiteralWesternEquineEncephalitis = "A83.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10WesternEquineEncephalitis
+    /// </summary>
+    public const string LiteralSidIcd10WesternEquineEncephalitis = "http://hl7.org/fhir/sid/icd-10#A83.1";
 
     /// <summary>
     /// Literal for code: EasternEquineEncephalitis
@@ -11048,9 +13078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEasternEquineEncephalitis = "A83.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10EasternEquineEncephalitis
+    /// </summary>
+    public const string LiteralSidIcd10EasternEquineEncephalitis = "http://hl7.org/fhir/sid/icd-10#A83.2";
+
+    /// <summary>
     /// Literal for code: StLouisEncephalitis
     /// </summary>
     public const string LiteralStLouisEncephalitis = "A83.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10StLouisEncephalitis
+    /// </summary>
+    public const string LiteralSidIcd10StLouisEncephalitis = "http://hl7.org/fhir/sid/icd-10#A83.3";
 
     /// <summary>
     /// Literal for code: AustralianEncephalitis
@@ -11058,9 +13098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAustralianEncephalitis = "A83.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10AustralianEncephalitis
+    /// </summary>
+    public const string LiteralSidIcd10AustralianEncephalitis = "http://hl7.org/fhir/sid/icd-10#A83.4";
+
+    /// <summary>
     /// Literal for code: CaliforniaEncephalitis
     /// </summary>
     public const string LiteralCaliforniaEncephalitis = "A83.5";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CaliforniaEncephalitis
+    /// </summary>
+    public const string LiteralSidIcd10CaliforniaEncephalitis = "http://hl7.org/fhir/sid/icd-10#A83.5";
 
     /// <summary>
     /// Literal for code: RocioVirusDisease
@@ -11068,9 +13118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRocioVirusDisease = "A83.6";
 
     /// <summary>
+    /// Literal for code: SidIcd10RocioVirusDisease
+    /// </summary>
+    public const string LiteralSidIcd10RocioVirusDisease = "http://hl7.org/fhir/sid/icd-10#A83.6";
+
+    /// <summary>
     /// Literal for code: OtherMosquitoBorneViralEncephalitis
     /// </summary>
     public const string LiteralOtherMosquitoBorneViralEncephalitis = "A83.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherMosquitoBorneViralEncephalitis
+    /// </summary>
+    public const string LiteralSidIcd10OtherMosquitoBorneViralEncephalitis = "http://hl7.org/fhir/sid/icd-10#A83.8";
 
     /// <summary>
     /// Literal for code: MosquitoBorneViralEncephalitisUnspecified
@@ -11078,9 +13138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMosquitoBorneViralEncephalitisUnspecified = "A83.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10MosquitoBorneViralEncephalitisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10MosquitoBorneViralEncephalitisUnspecified = "http://hl7.org/fhir/sid/icd-10#A83.9";
+
+    /// <summary>
     /// Literal for code: TickBorneViralEncephalitis
     /// </summary>
     public const string LiteralTickBorneViralEncephalitis = "A84";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TickBorneViralEncephalitis
+    /// </summary>
+    public const string LiteralSidIcd10TickBorneViralEncephalitis = "http://hl7.org/fhir/sid/icd-10#A84";
 
     /// <summary>
     /// Literal for code: FarEasternTickBorneEncephalitisRussianSpringSummerEncephalitis
@@ -11088,9 +13158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFarEasternTickBorneEncephalitisRussianSpringSummerEncephalitis = "A84.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10FarEasternTickBorneEncephalitisRussianSpringSummerEncephalitis
+    /// </summary>
+    public const string LiteralSidIcd10FarEasternTickBorneEncephalitisRussianSpringSummerEncephalitis = "http://hl7.org/fhir/sid/icd-10#A84.0";
+
+    /// <summary>
     /// Literal for code: CentralEuropeanTickBorneEncephalitis
     /// </summary>
     public const string LiteralCentralEuropeanTickBorneEncephalitis = "A84.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CentralEuropeanTickBorneEncephalitis
+    /// </summary>
+    public const string LiteralSidIcd10CentralEuropeanTickBorneEncephalitis = "http://hl7.org/fhir/sid/icd-10#A84.1";
 
     /// <summary>
     /// Literal for code: OtherTickBorneViralEncephalitis
@@ -11098,9 +13178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherTickBorneViralEncephalitis = "A84.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherTickBorneViralEncephalitis
+    /// </summary>
+    public const string LiteralSidIcd10OtherTickBorneViralEncephalitis = "http://hl7.org/fhir/sid/icd-10#A84.8";
+
+    /// <summary>
     /// Literal for code: TickBorneViralEncephalitisUnspecified
     /// </summary>
     public const string LiteralTickBorneViralEncephalitisUnspecified = "A84.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TickBorneViralEncephalitisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10TickBorneViralEncephalitisUnspecified = "http://hl7.org/fhir/sid/icd-10#A84.9";
 
     /// <summary>
     /// Literal for code: OtherViralEncephalitisNotElsewhereClassified
@@ -11108,9 +13198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherViralEncephalitisNotElsewhereClassified = "A85";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherViralEncephalitisNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10OtherViralEncephalitisNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#A85";
+
+    /// <summary>
     /// Literal for code: EnteroviralEncephalitisG051
     /// </summary>
     public const string LiteralEnteroviralEncephalitisG051 = "A85.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EnteroviralEncephalitisG051
+    /// </summary>
+    public const string LiteralSidIcd10EnteroviralEncephalitisG051 = "http://hl7.org/fhir/sid/icd-10#A85.0";
 
     /// <summary>
     /// Literal for code: AdenoviralEncephalitisG051
@@ -11118,9 +13218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdenoviralEncephalitisG051 = "A85.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10AdenoviralEncephalitisG051
+    /// </summary>
+    public const string LiteralSidIcd10AdenoviralEncephalitisG051 = "http://hl7.org/fhir/sid/icd-10#A85.1";
+
+    /// <summary>
     /// Literal for code: ArthropodBorneViralEncephalitisUnspecified
     /// </summary>
     public const string LiteralArthropodBorneViralEncephalitisUnspecified = "A85.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ArthropodBorneViralEncephalitisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ArthropodBorneViralEncephalitisUnspecified = "http://hl7.org/fhir/sid/icd-10#A85.2";
 
     /// <summary>
     /// Literal for code: OtherSpecifiedViralEncephalitis
@@ -11128,9 +13238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherSpecifiedViralEncephalitis = "A85.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedViralEncephalitis
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedViralEncephalitis = "http://hl7.org/fhir/sid/icd-10#A85.8";
+
+    /// <summary>
     /// Literal for code: UnspecifiedViralEncephalitis
     /// </summary>
     public const string LiteralUnspecifiedViralEncephalitis = "A86";
+
+    /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedViralEncephalitis
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedViralEncephalitis = "http://hl7.org/fhir/sid/icd-10#A86";
 
     /// <summary>
     /// Literal for code: ViralMeningitis
@@ -11138,9 +13258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralViralMeningitis = "A87";
 
     /// <summary>
+    /// Literal for code: SidIcd10ViralMeningitis
+    /// </summary>
+    public const string LiteralSidIcd10ViralMeningitis = "http://hl7.org/fhir/sid/icd-10#A87";
+
+    /// <summary>
     /// Literal for code: EnteroviralMeningitisG020
     /// </summary>
     public const string LiteralEnteroviralMeningitisG020 = "A87.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EnteroviralMeningitisG020
+    /// </summary>
+    public const string LiteralSidIcd10EnteroviralMeningitisG020 = "http://hl7.org/fhir/sid/icd-10#A87.0";
 
     /// <summary>
     /// Literal for code: AdenoviralMeningitisG020
@@ -11148,9 +13278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdenoviralMeningitisG020 = "A87.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10AdenoviralMeningitisG020
+    /// </summary>
+    public const string LiteralSidIcd10AdenoviralMeningitisG020 = "http://hl7.org/fhir/sid/icd-10#A87.1";
+
+    /// <summary>
     /// Literal for code: LymphocyticChoriomeningitis
     /// </summary>
     public const string LiteralLymphocyticChoriomeningitis = "A87.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LymphocyticChoriomeningitis
+    /// </summary>
+    public const string LiteralSidIcd10LymphocyticChoriomeningitis = "http://hl7.org/fhir/sid/icd-10#A87.2";
 
     /// <summary>
     /// Literal for code: OtherViralMeningitis
@@ -11158,9 +13298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherViralMeningitis = "A87.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherViralMeningitis
+    /// </summary>
+    public const string LiteralSidIcd10OtherViralMeningitis = "http://hl7.org/fhir/sid/icd-10#A87.8";
+
+    /// <summary>
     /// Literal for code: ViralMeningitisUnspecified
     /// </summary>
     public const string LiteralViralMeningitisUnspecified = "A87.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ViralMeningitisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ViralMeningitisUnspecified = "http://hl7.org/fhir/sid/icd-10#A87.9";
 
     /// <summary>
     /// Literal for code: OtherViralInfectionsOfCentralNervousSystemNotElsewhereClassified
@@ -11168,9 +13318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherViralInfectionsOfCentralNervousSystemNotElsewhereClassified = "A88";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherViralInfectionsOfCentralNervousSystemNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10OtherViralInfectionsOfCentralNervousSystemNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#A88";
+
+    /// <summary>
     /// Literal for code: EnteroviralExanthematousFeverBostonExanthem
     /// </summary>
     public const string LiteralEnteroviralExanthematousFeverBostonExanthem = "A88.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EnteroviralExanthematousFeverBostonExanthem
+    /// </summary>
+    public const string LiteralSidIcd10EnteroviralExanthematousFeverBostonExanthem = "http://hl7.org/fhir/sid/icd-10#A88.0";
 
     /// <summary>
     /// Literal for code: EpidemicVertigo
@@ -11178,9 +13338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEpidemicVertigo = "A88.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10EpidemicVertigo
+    /// </summary>
+    public const string LiteralSidIcd10EpidemicVertigo = "http://hl7.org/fhir/sid/icd-10#A88.1";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedViralInfectionsOfCentralNervousSystem
     /// </summary>
     public const string LiteralOtherSpecifiedViralInfectionsOfCentralNervousSystem = "A88.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedViralInfectionsOfCentralNervousSystem
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedViralInfectionsOfCentralNervousSystem = "http://hl7.org/fhir/sid/icd-10#A88.8";
 
     /// <summary>
     /// Literal for code: UnspecifiedViralInfectionOfCentralNervousSystem
@@ -11188,9 +13358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUnspecifiedViralInfectionOfCentralNervousSystem = "A89";
 
     /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedViralInfectionOfCentralNervousSystem
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedViralInfectionOfCentralNervousSystem = "http://hl7.org/fhir/sid/icd-10#A89";
+
+    /// <summary>
     /// Literal for code: OtherMosquitoBorneViralFevers
     /// </summary>
     public const string LiteralOtherMosquitoBorneViralFevers = "A92";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherMosquitoBorneViralFevers
+    /// </summary>
+    public const string LiteralSidIcd10OtherMosquitoBorneViralFevers = "http://hl7.org/fhir/sid/icd-10#A92";
 
     /// <summary>
     /// Literal for code: ArthropodBorneViralFeversAndViralHaemorrhagicFevers
@@ -11198,9 +13378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralArthropodBorneViralFeversAndViralHaemorrhagicFevers = "A92-A99";
 
     /// <summary>
+    /// Literal for code: SidIcd10ArthropodBorneViralFeversAndViralHaemorrhagicFevers
+    /// </summary>
+    public const string LiteralSidIcd10ArthropodBorneViralFeversAndViralHaemorrhagicFevers = "http://hl7.org/fhir/sid/icd-10#A92-A99";
+
+    /// <summary>
     /// Literal for code: ChikungunyaVirusDisease
     /// </summary>
     public const string LiteralChikungunyaVirusDisease = "A92.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ChikungunyaVirusDisease
+    /// </summary>
+    public const string LiteralSidIcd10ChikungunyaVirusDisease = "http://hl7.org/fhir/sid/icd-10#A92.0";
 
     /// <summary>
     /// Literal for code: OQuoteNyongNyongFever
@@ -11208,9 +13398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOQuoteNyongNyongFever = "A92.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10OQuoteNyongNyongFever
+    /// </summary>
+    public const string LiteralSidIcd10OQuoteNyongNyongFever = "http://hl7.org/fhir/sid/icd-10#A92.1";
+
+    /// <summary>
     /// Literal for code: VenezuelanEquineFever
     /// </summary>
     public const string LiteralVenezuelanEquineFever = "A92.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10VenezuelanEquineFever
+    /// </summary>
+    public const string LiteralSidIcd10VenezuelanEquineFever = "http://hl7.org/fhir/sid/icd-10#A92.2";
 
     /// <summary>
     /// Literal for code: WestNileVirusInfection
@@ -11218,9 +13418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWestNileVirusInfection = "A92.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10WestNileVirusInfection
+    /// </summary>
+    public const string LiteralSidIcd10WestNileVirusInfection = "http://hl7.org/fhir/sid/icd-10#A92.3";
+
+    /// <summary>
     /// Literal for code: RiftValleyFever
     /// </summary>
     public const string LiteralRiftValleyFever = "A92.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10RiftValleyFever
+    /// </summary>
+    public const string LiteralSidIcd10RiftValleyFever = "http://hl7.org/fhir/sid/icd-10#A92.4";
 
     /// <summary>
     /// Literal for code: ZikaVirusDisease
@@ -11228,9 +13438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralZikaVirusDisease = "A92.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10ZikaVirusDisease
+    /// </summary>
+    public const string LiteralSidIcd10ZikaVirusDisease = "http://hl7.org/fhir/sid/icd-10#A92.5";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedMosquitoBorneViralFevers
     /// </summary>
     public const string LiteralOtherSpecifiedMosquitoBorneViralFevers = "A92.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedMosquitoBorneViralFevers
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedMosquitoBorneViralFevers = "http://hl7.org/fhir/sid/icd-10#A92.8";
 
     /// <summary>
     /// Literal for code: MosquitoBorneViralFeverUnspecified
@@ -11238,9 +13458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMosquitoBorneViralFeverUnspecified = "A92.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10MosquitoBorneViralFeverUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10MosquitoBorneViralFeverUnspecified = "http://hl7.org/fhir/sid/icd-10#A92.9";
+
+    /// <summary>
     /// Literal for code: OtherArthropodBorneViralFeversNotElsewhereClassified
     /// </summary>
     public const string LiteralOtherArthropodBorneViralFeversNotElsewhereClassified = "A93";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherArthropodBorneViralFeversNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10OtherArthropodBorneViralFeversNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#A93";
 
     /// <summary>
     /// Literal for code: OropoucheVirusDisease
@@ -11248,9 +13478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOropoucheVirusDisease = "A93.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10OropoucheVirusDisease
+    /// </summary>
+    public const string LiteralSidIcd10OropoucheVirusDisease = "http://hl7.org/fhir/sid/icd-10#A93.0";
+
+    /// <summary>
     /// Literal for code: SandflyFever
     /// </summary>
     public const string LiteralSandflyFever = "A93.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SandflyFever
+    /// </summary>
+    public const string LiteralSidIcd10SandflyFever = "http://hl7.org/fhir/sid/icd-10#A93.1";
 
     /// <summary>
     /// Literal for code: ColoradoTickFever
@@ -11258,9 +13498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralColoradoTickFever = "A93.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10ColoradoTickFever
+    /// </summary>
+    public const string LiteralSidIcd10ColoradoTickFever = "http://hl7.org/fhir/sid/icd-10#A93.2";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedArthropodBorneViralFevers
     /// </summary>
     public const string LiteralOtherSpecifiedArthropodBorneViralFevers = "A93.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedArthropodBorneViralFevers
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedArthropodBorneViralFevers = "http://hl7.org/fhir/sid/icd-10#A93.8";
 
     /// <summary>
     /// Literal for code: UnspecifiedArthropodBorneViralFever
@@ -11268,9 +13518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUnspecifiedArthropodBorneViralFever = "A94";
 
     /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedArthropodBorneViralFever
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedArthropodBorneViralFever = "http://hl7.org/fhir/sid/icd-10#A94";
+
+    /// <summary>
     /// Literal for code: YellowFever
     /// </summary>
     public const string LiteralYellowFever = "A95";
+
+    /// <summary>
+    /// Literal for code: SidIcd10YellowFever
+    /// </summary>
+    public const string LiteralSidIcd10YellowFever = "http://hl7.org/fhir/sid/icd-10#A95";
 
     /// <summary>
     /// Literal for code: SylvaticYellowFever
@@ -11278,9 +13538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSylvaticYellowFever = "A95.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10SylvaticYellowFever
+    /// </summary>
+    public const string LiteralSidIcd10SylvaticYellowFever = "http://hl7.org/fhir/sid/icd-10#A95.0";
+
+    /// <summary>
     /// Literal for code: UrbanYellowFever
     /// </summary>
     public const string LiteralUrbanYellowFever = "A95.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10UrbanYellowFever
+    /// </summary>
+    public const string LiteralSidIcd10UrbanYellowFever = "http://hl7.org/fhir/sid/icd-10#A95.1";
 
     /// <summary>
     /// Literal for code: YellowFeverUnspecified
@@ -11288,9 +13558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralYellowFeverUnspecified = "A95.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10YellowFeverUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10YellowFeverUnspecified = "http://hl7.org/fhir/sid/icd-10#A95.9";
+
+    /// <summary>
     /// Literal for code: ArenaviralHaemorrhagicFever
     /// </summary>
     public const string LiteralArenaviralHaemorrhagicFever = "A96";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ArenaviralHaemorrhagicFever
+    /// </summary>
+    public const string LiteralSidIcd10ArenaviralHaemorrhagicFever = "http://hl7.org/fhir/sid/icd-10#A96";
 
     /// <summary>
     /// Literal for code: JuninHaemorrhagicFever
@@ -11298,9 +13578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralJuninHaemorrhagicFever = "A96.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10JuninHaemorrhagicFever
+    /// </summary>
+    public const string LiteralSidIcd10JuninHaemorrhagicFever = "http://hl7.org/fhir/sid/icd-10#A96.0";
+
+    /// <summary>
     /// Literal for code: MachupoHaemorrhagicFever
     /// </summary>
     public const string LiteralMachupoHaemorrhagicFever = "A96.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MachupoHaemorrhagicFever
+    /// </summary>
+    public const string LiteralSidIcd10MachupoHaemorrhagicFever = "http://hl7.org/fhir/sid/icd-10#A96.1";
 
     /// <summary>
     /// Literal for code: LassaFever
@@ -11308,9 +13598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLassaFever = "A96.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10LassaFever
+    /// </summary>
+    public const string LiteralSidIcd10LassaFever = "http://hl7.org/fhir/sid/icd-10#A96.2";
+
+    /// <summary>
     /// Literal for code: OtherArenaviralHaemorrhagicFevers
     /// </summary>
     public const string LiteralOtherArenaviralHaemorrhagicFevers = "A96.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherArenaviralHaemorrhagicFevers
+    /// </summary>
+    public const string LiteralSidIcd10OtherArenaviralHaemorrhagicFevers = "http://hl7.org/fhir/sid/icd-10#A96.8";
 
     /// <summary>
     /// Literal for code: ArenaviralHaemorrhagicFeverUnspecified
@@ -11318,9 +13618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralArenaviralHaemorrhagicFeverUnspecified = "A96.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10ArenaviralHaemorrhagicFeverUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ArenaviralHaemorrhagicFeverUnspecified = "http://hl7.org/fhir/sid/icd-10#A96.9";
+
+    /// <summary>
     /// Literal for code: Dengue
     /// </summary>
     public const string LiteralDengue = "A97";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Dengue
+    /// </summary>
+    public const string LiteralSidIcd10Dengue = "http://hl7.org/fhir/sid/icd-10#A97";
 
     /// <summary>
     /// Literal for code: DengueWithoutWarningSigns
@@ -11328,9 +13638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDengueWithoutWarningSigns = "A97.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10DengueWithoutWarningSigns
+    /// </summary>
+    public const string LiteralSidIcd10DengueWithoutWarningSigns = "http://hl7.org/fhir/sid/icd-10#A97.0";
+
+    /// <summary>
     /// Literal for code: DengueWithWarningSigns
     /// </summary>
     public const string LiteralDengueWithWarningSigns = "A97.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10DengueWithWarningSigns
+    /// </summary>
+    public const string LiteralSidIcd10DengueWithWarningSigns = "http://hl7.org/fhir/sid/icd-10#A97.1";
 
     /// <summary>
     /// Literal for code: SevereDengue
@@ -11338,9 +13658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSevereDengue = "A97.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10SevereDengue
+    /// </summary>
+    public const string LiteralSidIcd10SevereDengue = "http://hl7.org/fhir/sid/icd-10#A97.2";
+
+    /// <summary>
     /// Literal for code: DengueUnspecified
     /// </summary>
     public const string LiteralDengueUnspecified = "A97.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10DengueUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10DengueUnspecified = "http://hl7.org/fhir/sid/icd-10#A97.9";
 
     /// <summary>
     /// Literal for code: OtherViralHaemorrhagicFeversNotElsewhereClassified
@@ -11348,9 +13678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherViralHaemorrhagicFeversNotElsewhereClassified = "A98";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherViralHaemorrhagicFeversNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10OtherViralHaemorrhagicFeversNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#A98";
+
+    /// <summary>
     /// Literal for code: CrimeanCongoHaemorrhagicFever
     /// </summary>
     public const string LiteralCrimeanCongoHaemorrhagicFever = "A98.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CrimeanCongoHaemorrhagicFever
+    /// </summary>
+    public const string LiteralSidIcd10CrimeanCongoHaemorrhagicFever = "http://hl7.org/fhir/sid/icd-10#A98.0";
 
     /// <summary>
     /// Literal for code: OmskHaemorrhagicFever
@@ -11358,9 +13698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOmskHaemorrhagicFever = "A98.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10OmskHaemorrhagicFever
+    /// </summary>
+    public const string LiteralSidIcd10OmskHaemorrhagicFever = "http://hl7.org/fhir/sid/icd-10#A98.1";
+
+    /// <summary>
     /// Literal for code: KyasanurForestDisease
     /// </summary>
     public const string LiteralKyasanurForestDisease = "A98.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10KyasanurForestDisease
+    /// </summary>
+    public const string LiteralSidIcd10KyasanurForestDisease = "http://hl7.org/fhir/sid/icd-10#A98.2";
 
     /// <summary>
     /// Literal for code: MarburgVirusDisease
@@ -11368,9 +13718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMarburgVirusDisease = "A98.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10MarburgVirusDisease
+    /// </summary>
+    public const string LiteralSidIcd10MarburgVirusDisease = "http://hl7.org/fhir/sid/icd-10#A98.3";
+
+    /// <summary>
     /// Literal for code: EbolaVirusDisease
     /// </summary>
     public const string LiteralEbolaVirusDisease = "A98.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EbolaVirusDisease
+    /// </summary>
+    public const string LiteralSidIcd10EbolaVirusDisease = "http://hl7.org/fhir/sid/icd-10#A98.4";
 
     /// <summary>
     /// Literal for code: HaemorrhagicFeverWithRenalSyndrome
@@ -11378,9 +13738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHaemorrhagicFeverWithRenalSyndrome = "A98.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10HaemorrhagicFeverWithRenalSyndrome
+    /// </summary>
+    public const string LiteralSidIcd10HaemorrhagicFeverWithRenalSyndrome = "http://hl7.org/fhir/sid/icd-10#A98.5";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedViralHaemorrhagicFevers
     /// </summary>
     public const string LiteralOtherSpecifiedViralHaemorrhagicFevers = "A98.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedViralHaemorrhagicFevers
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedViralHaemorrhagicFevers = "http://hl7.org/fhir/sid/icd-10#A98.8";
 
     /// <summary>
     /// Literal for code: UnspecifiedViralHaemorrhagicFever
@@ -11388,9 +13758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUnspecifiedViralHaemorrhagicFever = "A99";
 
     /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedViralHaemorrhagicFever
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedViralHaemorrhagicFever = "http://hl7.org/fhir/sid/icd-10#A99";
+
+    /// <summary>
     /// Literal for code: HerpesviralHerpesSimplexInfections
     /// </summary>
     public const string LiteralHerpesviralHerpesSimplexInfections = "B00";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HerpesviralHerpesSimplexInfections
+    /// </summary>
+    public const string LiteralSidIcd10HerpesviralHerpesSimplexInfections = "http://hl7.org/fhir/sid/icd-10#B00";
 
     /// <summary>
     /// Literal for code: ViralInfectionsCharacterizedBySkinAndMucousMembraneLesions
@@ -11398,9 +13778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralViralInfectionsCharacterizedBySkinAndMucousMembraneLesions = "B00-B09";
 
     /// <summary>
+    /// Literal for code: SidIcd10ViralInfectionsCharacterizedBySkinAndMucousMembraneLesions
+    /// </summary>
+    public const string LiteralSidIcd10ViralInfectionsCharacterizedBySkinAndMucousMembraneLesions = "http://hl7.org/fhir/sid/icd-10#B00-B09";
+
+    /// <summary>
     /// Literal for code: EczemaHerpeticum
     /// </summary>
     public const string LiteralEczemaHerpeticum = "B00.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EczemaHerpeticum
+    /// </summary>
+    public const string LiteralSidIcd10EczemaHerpeticum = "http://hl7.org/fhir/sid/icd-10#B00.0";
 
     /// <summary>
     /// Literal for code: HerpesviralVesicularDermatitis
@@ -11408,9 +13798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHerpesviralVesicularDermatitis = "B00.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10HerpesviralVesicularDermatitis
+    /// </summary>
+    public const string LiteralSidIcd10HerpesviralVesicularDermatitis = "http://hl7.org/fhir/sid/icd-10#B00.1";
+
+    /// <summary>
     /// Literal for code: HerpesviralGingivostomatitisAndPharyngotonsillitis
     /// </summary>
     public const string LiteralHerpesviralGingivostomatitisAndPharyngotonsillitis = "B00.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HerpesviralGingivostomatitisAndPharyngotonsillitis
+    /// </summary>
+    public const string LiteralSidIcd10HerpesviralGingivostomatitisAndPharyngotonsillitis = "http://hl7.org/fhir/sid/icd-10#B00.2";
 
     /// <summary>
     /// Literal for code: HerpesviralMeningitisG020
@@ -11418,9 +13818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHerpesviralMeningitisG020 = "B00.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10HerpesviralMeningitisG020
+    /// </summary>
+    public const string LiteralSidIcd10HerpesviralMeningitisG020 = "http://hl7.org/fhir/sid/icd-10#B00.3";
+
+    /// <summary>
     /// Literal for code: HerpesviralEncephalitisG051
     /// </summary>
     public const string LiteralHerpesviralEncephalitisG051 = "B00.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HerpesviralEncephalitisG051
+    /// </summary>
+    public const string LiteralSidIcd10HerpesviralEncephalitisG051 = "http://hl7.org/fhir/sid/icd-10#B00.4";
 
     /// <summary>
     /// Literal for code: HerpesviralOcularDisease
@@ -11428,9 +13838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHerpesviralOcularDisease = "B00.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10HerpesviralOcularDisease
+    /// </summary>
+    public const string LiteralSidIcd10HerpesviralOcularDisease = "http://hl7.org/fhir/sid/icd-10#B00.5";
+
+    /// <summary>
     /// Literal for code: DisseminatedHerpesviralDisease
     /// </summary>
     public const string LiteralDisseminatedHerpesviralDisease = "B00.7";
+
+    /// <summary>
+    /// Literal for code: SidIcd10DisseminatedHerpesviralDisease
+    /// </summary>
+    public const string LiteralSidIcd10DisseminatedHerpesviralDisease = "http://hl7.org/fhir/sid/icd-10#B00.7";
 
     /// <summary>
     /// Literal for code: OtherFormsOfHerpesviralInfection
@@ -11438,9 +13858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherFormsOfHerpesviralInfection = "B00.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfHerpesviralInfection
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfHerpesviralInfection = "http://hl7.org/fhir/sid/icd-10#B00.8";
+
+    /// <summary>
     /// Literal for code: HerpesviralInfectionUnspecified
     /// </summary>
     public const string LiteralHerpesviralInfectionUnspecified = "B00.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HerpesviralInfectionUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10HerpesviralInfectionUnspecified = "http://hl7.org/fhir/sid/icd-10#B00.9";
 
     /// <summary>
     /// Literal for code: VaricellaChickenpox
@@ -11448,9 +13878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVaricellaChickenpox = "B01";
 
     /// <summary>
+    /// Literal for code: SidIcd10VaricellaChickenpox
+    /// </summary>
+    public const string LiteralSidIcd10VaricellaChickenpox = "http://hl7.org/fhir/sid/icd-10#B01";
+
+    /// <summary>
     /// Literal for code: VaricellaMeningitisG020
     /// </summary>
     public const string LiteralVaricellaMeningitisG020 = "B01.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10VaricellaMeningitisG020
+    /// </summary>
+    public const string LiteralSidIcd10VaricellaMeningitisG020 = "http://hl7.org/fhir/sid/icd-10#B01.0";
 
     /// <summary>
     /// Literal for code: VaricellaEncephalitisG051
@@ -11458,9 +13898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVaricellaEncephalitisG051 = "B01.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10VaricellaEncephalitisG051
+    /// </summary>
+    public const string LiteralSidIcd10VaricellaEncephalitisG051 = "http://hl7.org/fhir/sid/icd-10#B01.1";
+
+    /// <summary>
     /// Literal for code: VaricellaPneumoniaJ171
     /// </summary>
     public const string LiteralVaricellaPneumoniaJ171 = "B01.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10VaricellaPneumoniaJ171
+    /// </summary>
+    public const string LiteralSidIcd10VaricellaPneumoniaJ171 = "http://hl7.org/fhir/sid/icd-10#B01.2";
 
     /// <summary>
     /// Literal for code: VaricellaWithOtherComplications
@@ -11468,9 +13918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVaricellaWithOtherComplications = "B01.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10VaricellaWithOtherComplications
+    /// </summary>
+    public const string LiteralSidIcd10VaricellaWithOtherComplications = "http://hl7.org/fhir/sid/icd-10#B01.8";
+
+    /// <summary>
     /// Literal for code: VaricellaWithoutComplication
     /// </summary>
     public const string LiteralVaricellaWithoutComplication = "B01.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10VaricellaWithoutComplication
+    /// </summary>
+    public const string LiteralSidIcd10VaricellaWithoutComplication = "http://hl7.org/fhir/sid/icd-10#B01.9";
 
     /// <summary>
     /// Literal for code: ZosterHerpesZoster
@@ -11478,9 +13938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralZosterHerpesZoster = "B02";
 
     /// <summary>
+    /// Literal for code: SidIcd10ZosterHerpesZoster
+    /// </summary>
+    public const string LiteralSidIcd10ZosterHerpesZoster = "http://hl7.org/fhir/sid/icd-10#B02";
+
+    /// <summary>
     /// Literal for code: ZosterEncephalitisG051
     /// </summary>
     public const string LiteralZosterEncephalitisG051 = "B02.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ZosterEncephalitisG051
+    /// </summary>
+    public const string LiteralSidIcd10ZosterEncephalitisG051 = "http://hl7.org/fhir/sid/icd-10#B02.0";
 
     /// <summary>
     /// Literal for code: ZosterMeningitisG020
@@ -11488,9 +13958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralZosterMeningitisG020 = "B02.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10ZosterMeningitisG020
+    /// </summary>
+    public const string LiteralSidIcd10ZosterMeningitisG020 = "http://hl7.org/fhir/sid/icd-10#B02.1";
+
+    /// <summary>
     /// Literal for code: ZosterWithOtherNervousSystemInvolvement
     /// </summary>
     public const string LiteralZosterWithOtherNervousSystemInvolvement = "B02.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ZosterWithOtherNervousSystemInvolvement
+    /// </summary>
+    public const string LiteralSidIcd10ZosterWithOtherNervousSystemInvolvement = "http://hl7.org/fhir/sid/icd-10#B02.2";
 
     /// <summary>
     /// Literal for code: ZosterOcularDisease
@@ -11498,9 +13978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralZosterOcularDisease = "B02.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10ZosterOcularDisease
+    /// </summary>
+    public const string LiteralSidIcd10ZosterOcularDisease = "http://hl7.org/fhir/sid/icd-10#B02.3";
+
+    /// <summary>
     /// Literal for code: DisseminatedZoster
     /// </summary>
     public const string LiteralDisseminatedZoster = "B02.7";
+
+    /// <summary>
+    /// Literal for code: SidIcd10DisseminatedZoster
+    /// </summary>
+    public const string LiteralSidIcd10DisseminatedZoster = "http://hl7.org/fhir/sid/icd-10#B02.7";
 
     /// <summary>
     /// Literal for code: ZosterWithOtherComplications
@@ -11508,9 +13998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralZosterWithOtherComplications = "B02.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10ZosterWithOtherComplications
+    /// </summary>
+    public const string LiteralSidIcd10ZosterWithOtherComplications = "http://hl7.org/fhir/sid/icd-10#B02.8";
+
+    /// <summary>
     /// Literal for code: ZosterWithoutComplication
     /// </summary>
     public const string LiteralZosterWithoutComplication = "B02.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ZosterWithoutComplication
+    /// </summary>
+    public const string LiteralSidIcd10ZosterWithoutComplication = "http://hl7.org/fhir/sid/icd-10#B02.9";
 
     /// <summary>
     /// Literal for code: SmallpoxINCLUDE
@@ -11518,9 +14018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSmallpoxINCLUDE = "B03";
 
     /// <summary>
+    /// Literal for code: SidIcd10SmallpoxINCLUDE
+    /// </summary>
+    public const string LiteralSidIcd10SmallpoxINCLUDE = "http://hl7.org/fhir/sid/icd-10#B03";
+
+    /// <summary>
     /// Literal for code: Monkeypox
     /// </summary>
     public const string LiteralMonkeypox = "B04";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Monkeypox
+    /// </summary>
+    public const string LiteralSidIcd10Monkeypox = "http://hl7.org/fhir/sid/icd-10#B04";
 
     /// <summary>
     /// Literal for code: Measles
@@ -11528,9 +14038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMeasles = "B05";
 
     /// <summary>
+    /// Literal for code: SidIcd10Measles
+    /// </summary>
+    public const string LiteralSidIcd10Measles = "http://hl7.org/fhir/sid/icd-10#B05";
+
+    /// <summary>
     /// Literal for code: MeaslesComplicatedByEncephalitisG051
     /// </summary>
     public const string LiteralMeaslesComplicatedByEncephalitisG051 = "B05.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MeaslesComplicatedByEncephalitisG051
+    /// </summary>
+    public const string LiteralSidIcd10MeaslesComplicatedByEncephalitisG051 = "http://hl7.org/fhir/sid/icd-10#B05.0";
 
     /// <summary>
     /// Literal for code: MeaslesComplicatedByMeningitisG020
@@ -11538,9 +14058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMeaslesComplicatedByMeningitisG020 = "B05.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10MeaslesComplicatedByMeningitisG020
+    /// </summary>
+    public const string LiteralSidIcd10MeaslesComplicatedByMeningitisG020 = "http://hl7.org/fhir/sid/icd-10#B05.1";
+
+    /// <summary>
     /// Literal for code: MeaslesComplicatedByPneumoniaJ171
     /// </summary>
     public const string LiteralMeaslesComplicatedByPneumoniaJ171 = "B05.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MeaslesComplicatedByPneumoniaJ171
+    /// </summary>
+    public const string LiteralSidIcd10MeaslesComplicatedByPneumoniaJ171 = "http://hl7.org/fhir/sid/icd-10#B05.2";
 
     /// <summary>
     /// Literal for code: MeaslesComplicatedByOtitisMediaH671
@@ -11548,9 +14078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMeaslesComplicatedByOtitisMediaH671 = "B05.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10MeaslesComplicatedByOtitisMediaH671
+    /// </summary>
+    public const string LiteralSidIcd10MeaslesComplicatedByOtitisMediaH671 = "http://hl7.org/fhir/sid/icd-10#B05.3";
+
+    /// <summary>
     /// Literal for code: MeaslesWithIntestinalComplications
     /// </summary>
     public const string LiteralMeaslesWithIntestinalComplications = "B05.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MeaslesWithIntestinalComplications
+    /// </summary>
+    public const string LiteralSidIcd10MeaslesWithIntestinalComplications = "http://hl7.org/fhir/sid/icd-10#B05.4";
 
     /// <summary>
     /// Literal for code: MeaslesWithOtherComplications
@@ -11558,9 +14098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMeaslesWithOtherComplications = "B05.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10MeaslesWithOtherComplications
+    /// </summary>
+    public const string LiteralSidIcd10MeaslesWithOtherComplications = "http://hl7.org/fhir/sid/icd-10#B05.8";
+
+    /// <summary>
     /// Literal for code: MeaslesWithoutComplication
     /// </summary>
     public const string LiteralMeaslesWithoutComplication = "B05.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MeaslesWithoutComplication
+    /// </summary>
+    public const string LiteralSidIcd10MeaslesWithoutComplication = "http://hl7.org/fhir/sid/icd-10#B05.9";
 
     /// <summary>
     /// Literal for code: RubellaGermanMeasles
@@ -11568,9 +14118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRubellaGermanMeasles = "B06";
 
     /// <summary>
+    /// Literal for code: SidIcd10RubellaGermanMeasles
+    /// </summary>
+    public const string LiteralSidIcd10RubellaGermanMeasles = "http://hl7.org/fhir/sid/icd-10#B06";
+
+    /// <summary>
     /// Literal for code: RubellaWithNeurologicalComplications
     /// </summary>
     public const string LiteralRubellaWithNeurologicalComplications = "B06.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10RubellaWithNeurologicalComplications
+    /// </summary>
+    public const string LiteralSidIcd10RubellaWithNeurologicalComplications = "http://hl7.org/fhir/sid/icd-10#B06.0";
 
     /// <summary>
     /// Literal for code: RubellaWithOtherComplications
@@ -11578,9 +14138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRubellaWithOtherComplications = "B06.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10RubellaWithOtherComplications
+    /// </summary>
+    public const string LiteralSidIcd10RubellaWithOtherComplications = "http://hl7.org/fhir/sid/icd-10#B06.8";
+
+    /// <summary>
     /// Literal for code: RubellaWithoutComplication
     /// </summary>
     public const string LiteralRubellaWithoutComplication = "B06.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10RubellaWithoutComplication
+    /// </summary>
+    public const string LiteralSidIcd10RubellaWithoutComplication = "http://hl7.org/fhir/sid/icd-10#B06.9";
 
     /// <summary>
     /// Literal for code: ViralWarts
@@ -11588,9 +14158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralViralWarts = "B07";
 
     /// <summary>
+    /// Literal for code: SidIcd10ViralWarts
+    /// </summary>
+    public const string LiteralSidIcd10ViralWarts = "http://hl7.org/fhir/sid/icd-10#B07";
+
+    /// <summary>
     /// Literal for code: OtherViralInfectionsCharacterizedBySkinAndMucousMembraneLesionsNotElsewhereClassified
     /// </summary>
     public const string LiteralOtherViralInfectionsCharacterizedBySkinAndMucousMembraneLesionsNotElsewhereClassified = "B08";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherViralInfectionsCharacterizedBySkinAndMucousMembraneLesionsNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10OtherViralInfectionsCharacterizedBySkinAndMucousMembraneLesionsNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#B08";
 
     /// <summary>
     /// Literal for code: OtherOrthopoxvirusInfections
@@ -11598,9 +14178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherOrthopoxvirusInfections = "B08.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherOrthopoxvirusInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherOrthopoxvirusInfections = "http://hl7.org/fhir/sid/icd-10#B08.0";
+
+    /// <summary>
     /// Literal for code: MolluscumContagiosum
     /// </summary>
     public const string LiteralMolluscumContagiosum = "B08.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MolluscumContagiosum
+    /// </summary>
+    public const string LiteralSidIcd10MolluscumContagiosum = "http://hl7.org/fhir/sid/icd-10#B08.1";
 
     /// <summary>
     /// Literal for code: ExanthemaSubitumSixthDisease
@@ -11608,9 +14198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExanthemaSubitumSixthDisease = "B08.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10ExanthemaSubitumSixthDisease
+    /// </summary>
+    public const string LiteralSidIcd10ExanthemaSubitumSixthDisease = "http://hl7.org/fhir/sid/icd-10#B08.2";
+
+    /// <summary>
     /// Literal for code: ErythemaInfectiosumFifthDisease
     /// </summary>
     public const string LiteralErythemaInfectiosumFifthDisease = "B08.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ErythemaInfectiosumFifthDisease
+    /// </summary>
+    public const string LiteralSidIcd10ErythemaInfectiosumFifthDisease = "http://hl7.org/fhir/sid/icd-10#B08.3";
 
     /// <summary>
     /// Literal for code: EnteroviralVesicularStomatitisWithExanthem
@@ -11618,9 +14218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEnteroviralVesicularStomatitisWithExanthem = "B08.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10EnteroviralVesicularStomatitisWithExanthem
+    /// </summary>
+    public const string LiteralSidIcd10EnteroviralVesicularStomatitisWithExanthem = "http://hl7.org/fhir/sid/icd-10#B08.4";
+
+    /// <summary>
     /// Literal for code: EnteroviralVesicularPharyngitis
     /// </summary>
     public const string LiteralEnteroviralVesicularPharyngitis = "B08.5";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EnteroviralVesicularPharyngitis
+    /// </summary>
+    public const string LiteralSidIcd10EnteroviralVesicularPharyngitis = "http://hl7.org/fhir/sid/icd-10#B08.5";
 
     /// <summary>
     /// Literal for code: OtherSpecifiedViralInfectionsCharacterizedBySkinAndMucousMembraneLesions
@@ -11628,9 +14238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherSpecifiedViralInfectionsCharacterizedBySkinAndMucousMembraneLesions = "B08.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedViralInfectionsCharacterizedBySkinAndMucousMembraneLesions
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedViralInfectionsCharacterizedBySkinAndMucousMembraneLesions = "http://hl7.org/fhir/sid/icd-10#B08.8";
+
+    /// <summary>
     /// Literal for code: UnspecifiedViralInfectionCharacterizedBySkinAndMucousMembraneLesions
     /// </summary>
     public const string LiteralUnspecifiedViralInfectionCharacterizedBySkinAndMucousMembraneLesions = "B09";
+
+    /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedViralInfectionCharacterizedBySkinAndMucousMembraneLesions
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedViralInfectionCharacterizedBySkinAndMucousMembraneLesions = "http://hl7.org/fhir/sid/icd-10#B09";
 
     /// <summary>
     /// Literal for code: AcuteHepatitisA
@@ -11638,9 +14258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcuteHepatitisA = "B15";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcuteHepatitisA
+    /// </summary>
+    public const string LiteralSidIcd10AcuteHepatitisA = "http://hl7.org/fhir/sid/icd-10#B15";
+
+    /// <summary>
     /// Literal for code: ViralHepatitis
     /// </summary>
     public const string LiteralViralHepatitis = "B15-B19";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ViralHepatitis
+    /// </summary>
+    public const string LiteralSidIcd10ViralHepatitis = "http://hl7.org/fhir/sid/icd-10#B15-B19";
 
     /// <summary>
     /// Literal for code: HepatitisAWithHepaticComa
@@ -11648,9 +14278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHepatitisAWithHepaticComa = "B15.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10HepatitisAWithHepaticComa
+    /// </summary>
+    public const string LiteralSidIcd10HepatitisAWithHepaticComa = "http://hl7.org/fhir/sid/icd-10#B15.0";
+
+    /// <summary>
     /// Literal for code: HepatitisAWithoutHepaticComa
     /// </summary>
     public const string LiteralHepatitisAWithoutHepaticComa = "B15.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HepatitisAWithoutHepaticComa
+    /// </summary>
+    public const string LiteralSidIcd10HepatitisAWithoutHepaticComa = "http://hl7.org/fhir/sid/icd-10#B15.9";
 
     /// <summary>
     /// Literal for code: AcuteHepatitisB
@@ -11658,9 +14298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcuteHepatitisB = "B16";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcuteHepatitisB
+    /// </summary>
+    public const string LiteralSidIcd10AcuteHepatitisB = "http://hl7.org/fhir/sid/icd-10#B16";
+
+    /// <summary>
     /// Literal for code: AcuteHepatitisBWithDeltaAgentCoinfectionWithHepaticComa
     /// </summary>
     public const string LiteralAcuteHepatitisBWithDeltaAgentCoinfectionWithHepaticComa = "B16.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AcuteHepatitisBWithDeltaAgentCoinfectionWithHepaticComa
+    /// </summary>
+    public const string LiteralSidIcd10AcuteHepatitisBWithDeltaAgentCoinfectionWithHepaticComa = "http://hl7.org/fhir/sid/icd-10#B16.0";
 
     /// <summary>
     /// Literal for code: AcuteHepatitisBWithDeltaAgentCoinfectionWithoutHepaticComa
@@ -11668,9 +14318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcuteHepatitisBWithDeltaAgentCoinfectionWithoutHepaticComa = "B16.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcuteHepatitisBWithDeltaAgentCoinfectionWithoutHepaticComa
+    /// </summary>
+    public const string LiteralSidIcd10AcuteHepatitisBWithDeltaAgentCoinfectionWithoutHepaticComa = "http://hl7.org/fhir/sid/icd-10#B16.1";
+
+    /// <summary>
     /// Literal for code: AcuteHepatitisBWithoutDeltaAgentWithHepaticComa
     /// </summary>
     public const string LiteralAcuteHepatitisBWithoutDeltaAgentWithHepaticComa = "B16.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AcuteHepatitisBWithoutDeltaAgentWithHepaticComa
+    /// </summary>
+    public const string LiteralSidIcd10AcuteHepatitisBWithoutDeltaAgentWithHepaticComa = "http://hl7.org/fhir/sid/icd-10#B16.2";
 
     /// <summary>
     /// Literal for code: AcuteHepatitisBWithoutDeltaAgentAndWithoutHepaticComa
@@ -11678,9 +14338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcuteHepatitisBWithoutDeltaAgentAndWithoutHepaticComa = "B16.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcuteHepatitisBWithoutDeltaAgentAndWithoutHepaticComa
+    /// </summary>
+    public const string LiteralSidIcd10AcuteHepatitisBWithoutDeltaAgentAndWithoutHepaticComa = "http://hl7.org/fhir/sid/icd-10#B16.9";
+
+    /// <summary>
     /// Literal for code: OtherAcuteViralHepatitis
     /// </summary>
     public const string LiteralOtherAcuteViralHepatitis = "B17";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherAcuteViralHepatitis
+    /// </summary>
+    public const string LiteralSidIcd10OtherAcuteViralHepatitis = "http://hl7.org/fhir/sid/icd-10#B17";
 
     /// <summary>
     /// Literal for code: AcuteDeltaSuperInfectionInChronicHepatitisB
@@ -11688,9 +14358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcuteDeltaSuperInfectionInChronicHepatitisB = "B17.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcuteDeltaSuperInfectionInChronicHepatitisB
+    /// </summary>
+    public const string LiteralSidIcd10AcuteDeltaSuperInfectionInChronicHepatitisB = "http://hl7.org/fhir/sid/icd-10#B17.0";
+
+    /// <summary>
     /// Literal for code: AcuteHepatitisC
     /// </summary>
     public const string LiteralAcuteHepatitisC = "B17.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AcuteHepatitisC
+    /// </summary>
+    public const string LiteralSidIcd10AcuteHepatitisC = "http://hl7.org/fhir/sid/icd-10#B17.1";
 
     /// <summary>
     /// Literal for code: AcuteHepatitisE
@@ -11698,9 +14378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcuteHepatitisE = "B17.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcuteHepatitisE
+    /// </summary>
+    public const string LiteralSidIcd10AcuteHepatitisE = "http://hl7.org/fhir/sid/icd-10#B17.2";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedAcuteViralHepatitis
     /// </summary>
     public const string LiteralOtherSpecifiedAcuteViralHepatitis = "B17.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedAcuteViralHepatitis
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedAcuteViralHepatitis = "http://hl7.org/fhir/sid/icd-10#B17.8";
 
     /// <summary>
     /// Literal for code: AcuteViralHepatitisUnspecified
@@ -11708,9 +14398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcuteViralHepatitisUnspecified = "B17.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcuteViralHepatitisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10AcuteViralHepatitisUnspecified = "http://hl7.org/fhir/sid/icd-10#B17.9";
+
+    /// <summary>
     /// Literal for code: ChronicViralHepatitis
     /// </summary>
     public const string LiteralChronicViralHepatitis = "B18";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ChronicViralHepatitis
+    /// </summary>
+    public const string LiteralSidIcd10ChronicViralHepatitis = "http://hl7.org/fhir/sid/icd-10#B18";
 
     /// <summary>
     /// Literal for code: ChronicViralHepatitisBWithDeltaAgent
@@ -11718,9 +14418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChronicViralHepatitisBWithDeltaAgent = "B18.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10ChronicViralHepatitisBWithDeltaAgent
+    /// </summary>
+    public const string LiteralSidIcd10ChronicViralHepatitisBWithDeltaAgent = "http://hl7.org/fhir/sid/icd-10#B18.0";
+
+    /// <summary>
     /// Literal for code: ChronicViralHepatitisBWithoutDeltaAgent
     /// </summary>
     public const string LiteralChronicViralHepatitisBWithoutDeltaAgent = "B18.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ChronicViralHepatitisBWithoutDeltaAgent
+    /// </summary>
+    public const string LiteralSidIcd10ChronicViralHepatitisBWithoutDeltaAgent = "http://hl7.org/fhir/sid/icd-10#B18.1";
 
     /// <summary>
     /// Literal for code: ChronicViralHepatitisC
@@ -11728,9 +14438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChronicViralHepatitisC = "B18.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10ChronicViralHepatitisC
+    /// </summary>
+    public const string LiteralSidIcd10ChronicViralHepatitisC = "http://hl7.org/fhir/sid/icd-10#B18.2";
+
+    /// <summary>
     /// Literal for code: OtherChronicViralHepatitis
     /// </summary>
     public const string LiteralOtherChronicViralHepatitis = "B18.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherChronicViralHepatitis
+    /// </summary>
+    public const string LiteralSidIcd10OtherChronicViralHepatitis = "http://hl7.org/fhir/sid/icd-10#B18.8";
 
     /// <summary>
     /// Literal for code: ChronicViralHepatitisUnspecified
@@ -11738,9 +14458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChronicViralHepatitisUnspecified = "B18.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10ChronicViralHepatitisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ChronicViralHepatitisUnspecified = "http://hl7.org/fhir/sid/icd-10#B18.9";
+
+    /// <summary>
     /// Literal for code: UnspecifiedViralHepatitis
     /// </summary>
     public const string LiteralUnspecifiedViralHepatitis = "B19";
+
+    /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedViralHepatitis
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedViralHepatitis = "http://hl7.org/fhir/sid/icd-10#B19";
 
     /// <summary>
     /// Literal for code: UnspecifiedViralHepatitisWithHepaticComa
@@ -11748,9 +14478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUnspecifiedViralHepatitisWithHepaticComa = "B19.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedViralHepatitisWithHepaticComa
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedViralHepatitisWithHepaticComa = "http://hl7.org/fhir/sid/icd-10#B19.0";
+
+    /// <summary>
     /// Literal for code: UnspecifiedViralHepatitisWithoutHepaticComa
     /// </summary>
     public const string LiteralUnspecifiedViralHepatitisWithoutHepaticComa = "B19.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedViralHepatitisWithoutHepaticComa
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedViralHepatitisWithoutHepaticComa = "http://hl7.org/fhir/sid/icd-10#B19.9";
 
     /// <summary>
     /// Literal for code: HumanImmunodeficiencyVirusHIVDiseaseResultingInInfectiousAndParasiticDiseases
@@ -11758,9 +14498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHumanImmunodeficiencyVirusHIVDiseaseResultingInInfectiousAndParasiticDiseases = "B20";
 
     /// <summary>
+    /// Literal for code: SidIcd10HumanImmunodeficiencyVirusHIVDiseaseResultingInInfectiousAndParasiticDiseases
+    /// </summary>
+    public const string LiteralSidIcd10HumanImmunodeficiencyVirusHIVDiseaseResultingInInfectiousAndParasiticDiseases = "http://hl7.org/fhir/sid/icd-10#B20";
+
+    /// <summary>
     /// Literal for code: HumanImmunodeficiencyVirusHIVDisease
     /// </summary>
     public const string LiteralHumanImmunodeficiencyVirusHIVDisease = "B20-B24";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HumanImmunodeficiencyVirusHIVDisease
+    /// </summary>
+    public const string LiteralSidIcd10HumanImmunodeficiencyVirusHIVDisease = "http://hl7.org/fhir/sid/icd-10#B20-B24";
 
     /// <summary>
     /// Literal for code: HIVDiseaseResultingInMycobacterialInfection
@@ -11768,9 +14518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHIVDiseaseResultingInMycobacterialInfection = "B20.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInMycobacterialInfection
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInMycobacterialInfection = "http://hl7.org/fhir/sid/icd-10#B20.0";
+
+    /// <summary>
     /// Literal for code: HIVDiseaseResultingInOtherBacterialInfections
     /// </summary>
     public const string LiteralHIVDiseaseResultingInOtherBacterialInfections = "B20.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInOtherBacterialInfections
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInOtherBacterialInfections = "http://hl7.org/fhir/sid/icd-10#B20.1";
 
     /// <summary>
     /// Literal for code: HIVDiseaseResultingInCytomegaloviralDisease
@@ -11778,9 +14538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHIVDiseaseResultingInCytomegaloviralDisease = "B20.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInCytomegaloviralDisease
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInCytomegaloviralDisease = "http://hl7.org/fhir/sid/icd-10#B20.2";
+
+    /// <summary>
     /// Literal for code: HIVDiseaseResultingInOtherViralInfections
     /// </summary>
     public const string LiteralHIVDiseaseResultingInOtherViralInfections = "B20.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInOtherViralInfections
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInOtherViralInfections = "http://hl7.org/fhir/sid/icd-10#B20.3";
 
     /// <summary>
     /// Literal for code: HIVDiseaseResultingInCandidiasis
@@ -11788,9 +14558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHIVDiseaseResultingInCandidiasis = "B20.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInCandidiasis
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInCandidiasis = "http://hl7.org/fhir/sid/icd-10#B20.4";
+
+    /// <summary>
     /// Literal for code: HIVDiseaseResultingInOtherMycoses
     /// </summary>
     public const string LiteralHIVDiseaseResultingInOtherMycoses = "B20.5";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInOtherMycoses
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInOtherMycoses = "http://hl7.org/fhir/sid/icd-10#B20.5";
 
     /// <summary>
     /// Literal for code: HIVDiseaseResultingInPneumocystisJiroveciiPneumonia
@@ -11798,9 +14578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHIVDiseaseResultingInPneumocystisJiroveciiPneumonia = "B20.6";
 
     /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInPneumocystisJiroveciiPneumonia
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInPneumocystisJiroveciiPneumonia = "http://hl7.org/fhir/sid/icd-10#B20.6";
+
+    /// <summary>
     /// Literal for code: HIVDiseaseResultingInMultipleInfections
     /// </summary>
     public const string LiteralHIVDiseaseResultingInMultipleInfections = "B20.7";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInMultipleInfections
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInMultipleInfections = "http://hl7.org/fhir/sid/icd-10#B20.7";
 
     /// <summary>
     /// Literal for code: HIVDiseaseResultingInOtherInfectiousAndParasiticDiseases
@@ -11808,9 +14598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHIVDiseaseResultingInOtherInfectiousAndParasiticDiseases = "B20.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInOtherInfectiousAndParasiticDiseases
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInOtherInfectiousAndParasiticDiseases = "http://hl7.org/fhir/sid/icd-10#B20.8";
+
+    /// <summary>
     /// Literal for code: HIVDiseaseResultingInUnspecifiedInfectiousOrParasiticDisease
     /// </summary>
     public const string LiteralHIVDiseaseResultingInUnspecifiedInfectiousOrParasiticDisease = "B20.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInUnspecifiedInfectiousOrParasiticDisease
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInUnspecifiedInfectiousOrParasiticDisease = "http://hl7.org/fhir/sid/icd-10#B20.9";
 
     /// <summary>
     /// Literal for code: HumanImmunodeficiencyVirusHIVDiseaseResultingInMalignantNeoplasms
@@ -11818,9 +14618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHumanImmunodeficiencyVirusHIVDiseaseResultingInMalignantNeoplasms = "B21";
 
     /// <summary>
+    /// Literal for code: SidIcd10HumanImmunodeficiencyVirusHIVDiseaseResultingInMalignantNeoplasms
+    /// </summary>
+    public const string LiteralSidIcd10HumanImmunodeficiencyVirusHIVDiseaseResultingInMalignantNeoplasms = "http://hl7.org/fhir/sid/icd-10#B21";
+
+    /// <summary>
     /// Literal for code: HIVDiseaseResultingInKaposiSarcoma
     /// </summary>
     public const string LiteralHIVDiseaseResultingInKaposiSarcoma = "B21.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInKaposiSarcoma
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInKaposiSarcoma = "http://hl7.org/fhir/sid/icd-10#B21.0";
 
     /// <summary>
     /// Literal for code: HIVDiseaseResultingInBurkittLymphoma
@@ -11828,9 +14638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHIVDiseaseResultingInBurkittLymphoma = "B21.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInBurkittLymphoma
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInBurkittLymphoma = "http://hl7.org/fhir/sid/icd-10#B21.1";
+
+    /// <summary>
     /// Literal for code: HIVDiseaseResultingInOtherTypesOfNonHodgkinLymphoma
     /// </summary>
     public const string LiteralHIVDiseaseResultingInOtherTypesOfNonHodgkinLymphoma = "B21.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInOtherTypesOfNonHodgkinLymphoma
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInOtherTypesOfNonHodgkinLymphoma = "http://hl7.org/fhir/sid/icd-10#B21.2";
 
     /// <summary>
     /// Literal for code: HIVDiseaseResultingInOtherMalignantNeoplasmsOfLymphoidHaematopoieticAndRelatedTissue
@@ -11838,9 +14658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHIVDiseaseResultingInOtherMalignantNeoplasmsOfLymphoidHaematopoieticAndRelatedTissue = "B21.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInOtherMalignantNeoplasmsOfLymphoidHaematopoieticAndRelatedTissue
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInOtherMalignantNeoplasmsOfLymphoidHaematopoieticAndRelatedTissue = "http://hl7.org/fhir/sid/icd-10#B21.3";
+
+    /// <summary>
     /// Literal for code: HIVDiseaseResultingInMultipleMalignantNeoplasms
     /// </summary>
     public const string LiteralHIVDiseaseResultingInMultipleMalignantNeoplasms = "B21.7";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInMultipleMalignantNeoplasms
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInMultipleMalignantNeoplasms = "http://hl7.org/fhir/sid/icd-10#B21.7";
 
     /// <summary>
     /// Literal for code: HIVDiseaseResultingInOtherMalignantNeoplasms
@@ -11848,9 +14678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHIVDiseaseResultingInOtherMalignantNeoplasms = "B21.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInOtherMalignantNeoplasms
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInOtherMalignantNeoplasms = "http://hl7.org/fhir/sid/icd-10#B21.8";
+
+    /// <summary>
     /// Literal for code: HIVDiseaseResultingInUnspecifiedMalignantNeoplasm
     /// </summary>
     public const string LiteralHIVDiseaseResultingInUnspecifiedMalignantNeoplasm = "B21.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInUnspecifiedMalignantNeoplasm
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInUnspecifiedMalignantNeoplasm = "http://hl7.org/fhir/sid/icd-10#B21.9";
 
     /// <summary>
     /// Literal for code: HumanImmunodeficiencyVirusHIVDiseaseResultingInOtherSpecifiedDiseases
@@ -11858,9 +14698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHumanImmunodeficiencyVirusHIVDiseaseResultingInOtherSpecifiedDiseases = "B22";
 
     /// <summary>
+    /// Literal for code: SidIcd10HumanImmunodeficiencyVirusHIVDiseaseResultingInOtherSpecifiedDiseases
+    /// </summary>
+    public const string LiteralSidIcd10HumanImmunodeficiencyVirusHIVDiseaseResultingInOtherSpecifiedDiseases = "http://hl7.org/fhir/sid/icd-10#B22";
+
+    /// <summary>
     /// Literal for code: HIVDiseaseResultingInEncephalopathy
     /// </summary>
     public const string LiteralHIVDiseaseResultingInEncephalopathy = "B22.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInEncephalopathy
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInEncephalopathy = "http://hl7.org/fhir/sid/icd-10#B22.0";
 
     /// <summary>
     /// Literal for code: HIVDiseaseResultingInLymphoidInterstitialPneumonitis
@@ -11868,9 +14718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHIVDiseaseResultingInLymphoidInterstitialPneumonitis = "B22.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInLymphoidInterstitialPneumonitis
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInLymphoidInterstitialPneumonitis = "http://hl7.org/fhir/sid/icd-10#B22.1";
+
+    /// <summary>
     /// Literal for code: HIVDiseaseResultingInWastingSyndrome
     /// </summary>
     public const string LiteralHIVDiseaseResultingInWastingSyndrome = "B22.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInWastingSyndrome
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInWastingSyndrome = "http://hl7.org/fhir/sid/icd-10#B22.2";
 
     /// <summary>
     /// Literal for code: HIVDiseaseResultingInMultipleDiseasesClassifiedElsewhere
@@ -11878,9 +14738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHIVDiseaseResultingInMultipleDiseasesClassifiedElsewhere = "B22.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInMultipleDiseasesClassifiedElsewhere
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInMultipleDiseasesClassifiedElsewhere = "http://hl7.org/fhir/sid/icd-10#B22.7";
+
+    /// <summary>
     /// Literal for code: HumanImmunodeficiencyVirusHIVDiseaseResultingInOtherConditions
     /// </summary>
     public const string LiteralHumanImmunodeficiencyVirusHIVDiseaseResultingInOtherConditions = "B23";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HumanImmunodeficiencyVirusHIVDiseaseResultingInOtherConditions
+    /// </summary>
+    public const string LiteralSidIcd10HumanImmunodeficiencyVirusHIVDiseaseResultingInOtherConditions = "http://hl7.org/fhir/sid/icd-10#B23";
 
     /// <summary>
     /// Literal for code: AcuteHIVInfectionSyndrome
@@ -11888,9 +14758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcuteHIVInfectionSyndrome = "B23.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcuteHIVInfectionSyndrome
+    /// </summary>
+    public const string LiteralSidIcd10AcuteHIVInfectionSyndrome = "http://hl7.org/fhir/sid/icd-10#B23.0";
+
+    /// <summary>
     /// Literal for code: HIVDiseaseResultingInPersistentGeneralizedLymphadenopathy
     /// </summary>
     public const string LiteralHIVDiseaseResultingInPersistentGeneralizedLymphadenopathy = "B23.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInPersistentGeneralizedLymphadenopathy
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInPersistentGeneralizedLymphadenopathy = "http://hl7.org/fhir/sid/icd-10#B23.1";
 
     /// <summary>
     /// Literal for code: HIVDiseaseResultingInHaematologicalAndImmunologicalAbnormalitiesNotElsewhereClassified
@@ -11898,9 +14778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHIVDiseaseResultingInHaematologicalAndImmunologicalAbnormalitiesNotElsewhereClassified = "B23.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInHaematologicalAndImmunologicalAbnormalitiesNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInHaematologicalAndImmunologicalAbnormalitiesNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#B23.2";
+
+    /// <summary>
     /// Literal for code: HIVDiseaseResultingInOtherSpecifiedConditions
     /// </summary>
     public const string LiteralHIVDiseaseResultingInOtherSpecifiedConditions = "B23.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HIVDiseaseResultingInOtherSpecifiedConditions
+    /// </summary>
+    public const string LiteralSidIcd10HIVDiseaseResultingInOtherSpecifiedConditions = "http://hl7.org/fhir/sid/icd-10#B23.8";
 
     /// <summary>
     /// Literal for code: UnspecifiedHumanImmunodeficiencyVirusHIVDisease
@@ -11908,9 +14798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUnspecifiedHumanImmunodeficiencyVirusHIVDisease = "B24";
 
     /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedHumanImmunodeficiencyVirusHIVDisease
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedHumanImmunodeficiencyVirusHIVDisease = "http://hl7.org/fhir/sid/icd-10#B24";
+
+    /// <summary>
     /// Literal for code: CytomegaloviralDisease
     /// </summary>
     public const string LiteralCytomegaloviralDisease = "B25";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CytomegaloviralDisease
+    /// </summary>
+    public const string LiteralSidIcd10CytomegaloviralDisease = "http://hl7.org/fhir/sid/icd-10#B25";
 
     /// <summary>
     /// Literal for code: OtherViralDiseases
@@ -11918,9 +14818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherViralDiseases = "B25-B34";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherViralDiseases
+    /// </summary>
+    public const string LiteralSidIcd10OtherViralDiseases = "http://hl7.org/fhir/sid/icd-10#B25-B34";
+
+    /// <summary>
     /// Literal for code: CytomegaloviralPneumonitisJ171
     /// </summary>
     public const string LiteralCytomegaloviralPneumonitisJ171 = "B25.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CytomegaloviralPneumonitisJ171
+    /// </summary>
+    public const string LiteralSidIcd10CytomegaloviralPneumonitisJ171 = "http://hl7.org/fhir/sid/icd-10#B25.0";
 
     /// <summary>
     /// Literal for code: CytomegaloviralHepatitisK770
@@ -11928,9 +14838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCytomegaloviralHepatitisK770 = "B25.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10CytomegaloviralHepatitisK770
+    /// </summary>
+    public const string LiteralSidIcd10CytomegaloviralHepatitisK770 = "http://hl7.org/fhir/sid/icd-10#B25.1";
+
+    /// <summary>
     /// Literal for code: CytomegaloviralPancreatitisK871
     /// </summary>
     public const string LiteralCytomegaloviralPancreatitisK871 = "B25.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CytomegaloviralPancreatitisK871
+    /// </summary>
+    public const string LiteralSidIcd10CytomegaloviralPancreatitisK871 = "http://hl7.org/fhir/sid/icd-10#B25.2";
 
     /// <summary>
     /// Literal for code: OtherCytomegaloviralDiseases
@@ -11938,9 +14858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherCytomegaloviralDiseases = "B25.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherCytomegaloviralDiseases
+    /// </summary>
+    public const string LiteralSidIcd10OtherCytomegaloviralDiseases = "http://hl7.org/fhir/sid/icd-10#B25.8";
+
+    /// <summary>
     /// Literal for code: CytomegaloviralDiseaseUnspecified
     /// </summary>
     public const string LiteralCytomegaloviralDiseaseUnspecified = "B25.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CytomegaloviralDiseaseUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10CytomegaloviralDiseaseUnspecified = "http://hl7.org/fhir/sid/icd-10#B25.9";
 
     /// <summary>
     /// Literal for code: Mumps
@@ -11948,9 +14878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMumps = "B26";
 
     /// <summary>
+    /// Literal for code: SidIcd10Mumps
+    /// </summary>
+    public const string LiteralSidIcd10Mumps = "http://hl7.org/fhir/sid/icd-10#B26";
+
+    /// <summary>
     /// Literal for code: MumpsOrchitisN511
     /// </summary>
     public const string LiteralMumpsOrchitisN511 = "B26.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MumpsOrchitisN511
+    /// </summary>
+    public const string LiteralSidIcd10MumpsOrchitisN511 = "http://hl7.org/fhir/sid/icd-10#B26.0";
 
     /// <summary>
     /// Literal for code: MumpsMeningitisG020
@@ -11958,9 +14898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMumpsMeningitisG020 = "B26.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10MumpsMeningitisG020
+    /// </summary>
+    public const string LiteralSidIcd10MumpsMeningitisG020 = "http://hl7.org/fhir/sid/icd-10#B26.1";
+
+    /// <summary>
     /// Literal for code: MumpsEncephalitisG051
     /// </summary>
     public const string LiteralMumpsEncephalitisG051 = "B26.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MumpsEncephalitisG051
+    /// </summary>
+    public const string LiteralSidIcd10MumpsEncephalitisG051 = "http://hl7.org/fhir/sid/icd-10#B26.2";
 
     /// <summary>
     /// Literal for code: MumpsPancreatitisK871
@@ -11968,9 +14918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMumpsPancreatitisK871 = "B26.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10MumpsPancreatitisK871
+    /// </summary>
+    public const string LiteralSidIcd10MumpsPancreatitisK871 = "http://hl7.org/fhir/sid/icd-10#B26.3";
+
+    /// <summary>
     /// Literal for code: MumpsWithOtherComplications
     /// </summary>
     public const string LiteralMumpsWithOtherComplications = "B26.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MumpsWithOtherComplications
+    /// </summary>
+    public const string LiteralSidIcd10MumpsWithOtherComplications = "http://hl7.org/fhir/sid/icd-10#B26.8";
 
     /// <summary>
     /// Literal for code: MumpsWithoutComplication
@@ -11978,9 +14938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMumpsWithoutComplication = "B26.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10MumpsWithoutComplication
+    /// </summary>
+    public const string LiteralSidIcd10MumpsWithoutComplication = "http://hl7.org/fhir/sid/icd-10#B26.9";
+
+    /// <summary>
     /// Literal for code: InfectiousMononucleosis
     /// </summary>
     public const string LiteralInfectiousMononucleosis = "B27";
+
+    /// <summary>
+    /// Literal for code: SidIcd10InfectiousMononucleosis
+    /// </summary>
+    public const string LiteralSidIcd10InfectiousMononucleosis = "http://hl7.org/fhir/sid/icd-10#B27";
 
     /// <summary>
     /// Literal for code: GammaherpesviralMononucleosis
@@ -11988,9 +14958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGammaherpesviralMononucleosis = "B27.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10GammaherpesviralMononucleosis
+    /// </summary>
+    public const string LiteralSidIcd10GammaherpesviralMononucleosis = "http://hl7.org/fhir/sid/icd-10#B27.0";
+
+    /// <summary>
     /// Literal for code: CytomegaloviralMononucleosis
     /// </summary>
     public const string LiteralCytomegaloviralMononucleosis = "B27.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CytomegaloviralMononucleosis
+    /// </summary>
+    public const string LiteralSidIcd10CytomegaloviralMononucleosis = "http://hl7.org/fhir/sid/icd-10#B27.1";
 
     /// <summary>
     /// Literal for code: OtherInfectiousMononucleosis
@@ -11998,9 +14978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherInfectiousMononucleosis = "B27.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherInfectiousMononucleosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherInfectiousMononucleosis = "http://hl7.org/fhir/sid/icd-10#B27.8";
+
+    /// <summary>
     /// Literal for code: InfectiousMononucleosisUnspecified
     /// </summary>
     public const string LiteralInfectiousMononucleosisUnspecified = "B27.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10InfectiousMononucleosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10InfectiousMononucleosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B27.9";
 
     /// <summary>
     /// Literal for code: ViralConjunctivitis
@@ -12008,9 +14998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralViralConjunctivitis = "B30";
 
     /// <summary>
+    /// Literal for code: SidIcd10ViralConjunctivitis
+    /// </summary>
+    public const string LiteralSidIcd10ViralConjunctivitis = "http://hl7.org/fhir/sid/icd-10#B30";
+
+    /// <summary>
     /// Literal for code: KeratoconjunctivitisDueToAdenovirusH192
     /// </summary>
     public const string LiteralKeratoconjunctivitisDueToAdenovirusH192 = "B30.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10KeratoconjunctivitisDueToAdenovirusH192
+    /// </summary>
+    public const string LiteralSidIcd10KeratoconjunctivitisDueToAdenovirusH192 = "http://hl7.org/fhir/sid/icd-10#B30.0";
 
     /// <summary>
     /// Literal for code: ConjunctivitisDueToAdenovirusH131
@@ -12018,9 +15018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralConjunctivitisDueToAdenovirusH131 = "B30.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10ConjunctivitisDueToAdenovirusH131
+    /// </summary>
+    public const string LiteralSidIcd10ConjunctivitisDueToAdenovirusH131 = "http://hl7.org/fhir/sid/icd-10#B30.1";
+
+    /// <summary>
     /// Literal for code: ViralPharyngoconjunctivitis
     /// </summary>
     public const string LiteralViralPharyngoconjunctivitis = "B30.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ViralPharyngoconjunctivitis
+    /// </summary>
+    public const string LiteralSidIcd10ViralPharyngoconjunctivitis = "http://hl7.org/fhir/sid/icd-10#B30.2";
 
     /// <summary>
     /// Literal for code: AcuteEpidemicHaemorrhagicConjunctivitisEnteroviralH131
@@ -12028,9 +15038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcuteEpidemicHaemorrhagicConjunctivitisEnteroviralH131 = "B30.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcuteEpidemicHaemorrhagicConjunctivitisEnteroviralH131
+    /// </summary>
+    public const string LiteralSidIcd10AcuteEpidemicHaemorrhagicConjunctivitisEnteroviralH131 = "http://hl7.org/fhir/sid/icd-10#B30.3";
+
+    /// <summary>
     /// Literal for code: OtherViralConjunctivitisH131
     /// </summary>
     public const string LiteralOtherViralConjunctivitisH131 = "B30.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherViralConjunctivitisH131
+    /// </summary>
+    public const string LiteralSidIcd10OtherViralConjunctivitisH131 = "http://hl7.org/fhir/sid/icd-10#B30.8";
 
     /// <summary>
     /// Literal for code: ViralConjunctivitisUnspecified
@@ -12038,9 +15058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralViralConjunctivitisUnspecified = "B30.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10ViralConjunctivitisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ViralConjunctivitisUnspecified = "http://hl7.org/fhir/sid/icd-10#B30.9";
+
+    /// <summary>
     /// Literal for code: OtherViralDiseasesNotElsewhereClassified
     /// </summary>
     public const string LiteralOtherViralDiseasesNotElsewhereClassified = "B33";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherViralDiseasesNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10OtherViralDiseasesNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#B33";
 
     /// <summary>
     /// Literal for code: EpidemicMyalgia
@@ -12048,9 +15078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEpidemicMyalgia = "B33.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10EpidemicMyalgia
+    /// </summary>
+    public const string LiteralSidIcd10EpidemicMyalgia = "http://hl7.org/fhir/sid/icd-10#B33.0";
+
+    /// <summary>
     /// Literal for code: RossRiverDisease
     /// </summary>
     public const string LiteralRossRiverDisease = "B33.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10RossRiverDisease
+    /// </summary>
+    public const string LiteralSidIcd10RossRiverDisease = "http://hl7.org/fhir/sid/icd-10#B33.1";
 
     /// <summary>
     /// Literal for code: ViralCarditis
@@ -12058,9 +15098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralViralCarditis = "B33.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10ViralCarditis
+    /// </summary>
+    public const string LiteralSidIcd10ViralCarditis = "http://hl7.org/fhir/sid/icd-10#B33.2";
+
+    /// <summary>
     /// Literal for code: RetrovirusInfectionsNotElsewhereClassified
     /// </summary>
     public const string LiteralRetrovirusInfectionsNotElsewhereClassified = "B33.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10RetrovirusInfectionsNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10RetrovirusInfectionsNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#B33.3";
 
     /// <summary>
     /// Literal for code: HantavirusCardioPulmonarySyndromeHPSHCPSJ171
@@ -12068,9 +15118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHantavirusCardioPulmonarySyndromeHPSHCPSJ171 = "B33.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10HantavirusCardioPulmonarySyndromeHPSHCPSJ171
+    /// </summary>
+    public const string LiteralSidIcd10HantavirusCardioPulmonarySyndromeHPSHCPSJ171 = "http://hl7.org/fhir/sid/icd-10#B33.4";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedViralDiseases
     /// </summary>
     public const string LiteralOtherSpecifiedViralDiseases = "B33.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedViralDiseases
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedViralDiseases = "http://hl7.org/fhir/sid/icd-10#B33.8";
 
     /// <summary>
     /// Literal for code: ViralInfectionOfUnspecifiedSite
@@ -12078,9 +15138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralViralInfectionOfUnspecifiedSite = "B34";
 
     /// <summary>
+    /// Literal for code: SidIcd10ViralInfectionOfUnspecifiedSite
+    /// </summary>
+    public const string LiteralSidIcd10ViralInfectionOfUnspecifiedSite = "http://hl7.org/fhir/sid/icd-10#B34";
+
+    /// <summary>
     /// Literal for code: AdenovirusInfectionUnspecifiedSite
     /// </summary>
     public const string LiteralAdenovirusInfectionUnspecifiedSite = "B34.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AdenovirusInfectionUnspecifiedSite
+    /// </summary>
+    public const string LiteralSidIcd10AdenovirusInfectionUnspecifiedSite = "http://hl7.org/fhir/sid/icd-10#B34.0";
 
     /// <summary>
     /// Literal for code: EnterovirusInfectionUnspecifiedSite
@@ -12088,9 +15158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEnterovirusInfectionUnspecifiedSite = "B34.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10EnterovirusInfectionUnspecifiedSite
+    /// </summary>
+    public const string LiteralSidIcd10EnterovirusInfectionUnspecifiedSite = "http://hl7.org/fhir/sid/icd-10#B34.1";
+
+    /// <summary>
     /// Literal for code: CoronavirusInfectionUnspecifiedSite
     /// </summary>
     public const string LiteralCoronavirusInfectionUnspecifiedSite = "B34.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CoronavirusInfectionUnspecifiedSite
+    /// </summary>
+    public const string LiteralSidIcd10CoronavirusInfectionUnspecifiedSite = "http://hl7.org/fhir/sid/icd-10#B34.2";
 
     /// <summary>
     /// Literal for code: ParvovirusInfectionUnspecifiedSite
@@ -12098,9 +15178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralParvovirusInfectionUnspecifiedSite = "B34.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10ParvovirusInfectionUnspecifiedSite
+    /// </summary>
+    public const string LiteralSidIcd10ParvovirusInfectionUnspecifiedSite = "http://hl7.org/fhir/sid/icd-10#B34.3";
+
+    /// <summary>
     /// Literal for code: PapovavirusInfectionUnspecifiedSite
     /// </summary>
     public const string LiteralPapovavirusInfectionUnspecifiedSite = "B34.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PapovavirusInfectionUnspecifiedSite
+    /// </summary>
+    public const string LiteralSidIcd10PapovavirusInfectionUnspecifiedSite = "http://hl7.org/fhir/sid/icd-10#B34.4";
 
     /// <summary>
     /// Literal for code: OtherViralInfectionsOfUnspecifiedSite
@@ -12108,9 +15198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherViralInfectionsOfUnspecifiedSite = "B34.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherViralInfectionsOfUnspecifiedSite
+    /// </summary>
+    public const string LiteralSidIcd10OtherViralInfectionsOfUnspecifiedSite = "http://hl7.org/fhir/sid/icd-10#B34.8";
+
+    /// <summary>
     /// Literal for code: ViralInfectionUnspecified
     /// </summary>
     public const string LiteralViralInfectionUnspecified = "B34.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ViralInfectionUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ViralInfectionUnspecified = "http://hl7.org/fhir/sid/icd-10#B34.9";
 
     /// <summary>
     /// Literal for code: Dermatophytosis
@@ -12118,9 +15218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDermatophytosis = "B35";
 
     /// <summary>
+    /// Literal for code: SidIcd10Dermatophytosis
+    /// </summary>
+    public const string LiteralSidIcd10Dermatophytosis = "http://hl7.org/fhir/sid/icd-10#B35";
+
+    /// <summary>
     /// Literal for code: Mycoses
     /// </summary>
     public const string LiteralMycoses = "B35-B49";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Mycoses
+    /// </summary>
+    public const string LiteralSidIcd10Mycoses = "http://hl7.org/fhir/sid/icd-10#B35-B49";
 
     /// <summary>
     /// Literal for code: TineaBarbaeAndTineaCapitis
@@ -12128,9 +15238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTineaBarbaeAndTineaCapitis = "B35.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10TineaBarbaeAndTineaCapitis
+    /// </summary>
+    public const string LiteralSidIcd10TineaBarbaeAndTineaCapitis = "http://hl7.org/fhir/sid/icd-10#B35.0";
+
+    /// <summary>
     /// Literal for code: TineaUnguium
     /// </summary>
     public const string LiteralTineaUnguium = "B35.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TineaUnguium
+    /// </summary>
+    public const string LiteralSidIcd10TineaUnguium = "http://hl7.org/fhir/sid/icd-10#B35.1";
 
     /// <summary>
     /// Literal for code: TineaManuum
@@ -12138,9 +15258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTineaManuum = "B35.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10TineaManuum
+    /// </summary>
+    public const string LiteralSidIcd10TineaManuum = "http://hl7.org/fhir/sid/icd-10#B35.2";
+
+    /// <summary>
     /// Literal for code: TineaPedis
     /// </summary>
     public const string LiteralTineaPedis = "B35.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TineaPedis
+    /// </summary>
+    public const string LiteralSidIcd10TineaPedis = "http://hl7.org/fhir/sid/icd-10#B35.3";
 
     /// <summary>
     /// Literal for code: TineaCorporis
@@ -12148,9 +15278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTineaCorporis = "B35.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10TineaCorporis
+    /// </summary>
+    public const string LiteralSidIcd10TineaCorporis = "http://hl7.org/fhir/sid/icd-10#B35.4";
+
+    /// <summary>
     /// Literal for code: TineaImbricata
     /// </summary>
     public const string LiteralTineaImbricata = "B35.5";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TineaImbricata
+    /// </summary>
+    public const string LiteralSidIcd10TineaImbricata = "http://hl7.org/fhir/sid/icd-10#B35.5";
 
     /// <summary>
     /// Literal for code: TineaInguinalisTineaCruris
@@ -12158,9 +15298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTineaInguinalisTineaCruris = "B35.6";
 
     /// <summary>
+    /// Literal for code: SidIcd10TineaInguinalisTineaCruris
+    /// </summary>
+    public const string LiteralSidIcd10TineaInguinalisTineaCruris = "http://hl7.org/fhir/sid/icd-10#B35.6";
+
+    /// <summary>
     /// Literal for code: OtherDermatophytoses
     /// </summary>
     public const string LiteralOtherDermatophytoses = "B35.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherDermatophytoses
+    /// </summary>
+    public const string LiteralSidIcd10OtherDermatophytoses = "http://hl7.org/fhir/sid/icd-10#B35.8";
 
     /// <summary>
     /// Literal for code: DermatophytosisUnspecified
@@ -12168,9 +15318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDermatophytosisUnspecified = "B35.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10DermatophytosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10DermatophytosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B35.9";
+
+    /// <summary>
     /// Literal for code: OtherSuperficialMycoses
     /// </summary>
     public const string LiteralOtherSuperficialMycoses = "B36";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSuperficialMycoses
+    /// </summary>
+    public const string LiteralSidIcd10OtherSuperficialMycoses = "http://hl7.org/fhir/sid/icd-10#B36";
 
     /// <summary>
     /// Literal for code: PityriasisVersicolor
@@ -12178,9 +15338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPityriasisVersicolor = "B36.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10PityriasisVersicolor
+    /// </summary>
+    public const string LiteralSidIcd10PityriasisVersicolor = "http://hl7.org/fhir/sid/icd-10#B36.0";
+
+    /// <summary>
     /// Literal for code: TineaNigra
     /// </summary>
     public const string LiteralTineaNigra = "B36.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TineaNigra
+    /// </summary>
+    public const string LiteralSidIcd10TineaNigra = "http://hl7.org/fhir/sid/icd-10#B36.1";
 
     /// <summary>
     /// Literal for code: WhitePiedra
@@ -12188,9 +15358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWhitePiedra = "B36.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10WhitePiedra
+    /// </summary>
+    public const string LiteralSidIcd10WhitePiedra = "http://hl7.org/fhir/sid/icd-10#B36.2";
+
+    /// <summary>
     /// Literal for code: BlackPiedra
     /// </summary>
     public const string LiteralBlackPiedra = "B36.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10BlackPiedra
+    /// </summary>
+    public const string LiteralSidIcd10BlackPiedra = "http://hl7.org/fhir/sid/icd-10#B36.3";
 
     /// <summary>
     /// Literal for code: OtherSpecifiedSuperficialMycoses
@@ -12198,9 +15378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherSpecifiedSuperficialMycoses = "B36.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedSuperficialMycoses
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedSuperficialMycoses = "http://hl7.org/fhir/sid/icd-10#B36.8";
+
+    /// <summary>
     /// Literal for code: SuperficialMycosisUnspecified
     /// </summary>
     public const string LiteralSuperficialMycosisUnspecified = "B36.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SuperficialMycosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10SuperficialMycosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B36.9";
 
     /// <summary>
     /// Literal for code: Candidiasis
@@ -12208,9 +15398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCandidiasis = "B37";
 
     /// <summary>
+    /// Literal for code: SidIcd10Candidiasis
+    /// </summary>
+    public const string LiteralSidIcd10Candidiasis = "http://hl7.org/fhir/sid/icd-10#B37";
+
+    /// <summary>
     /// Literal for code: CandidalStomatitis
     /// </summary>
     public const string LiteralCandidalStomatitis = "B37.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CandidalStomatitis
+    /// </summary>
+    public const string LiteralSidIcd10CandidalStomatitis = "http://hl7.org/fhir/sid/icd-10#B37.0";
 
     /// <summary>
     /// Literal for code: PulmonaryCandidiasis
@@ -12218,9 +15418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPulmonaryCandidiasis = "B37.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10PulmonaryCandidiasis
+    /// </summary>
+    public const string LiteralSidIcd10PulmonaryCandidiasis = "http://hl7.org/fhir/sid/icd-10#B37.1";
+
+    /// <summary>
     /// Literal for code: CandidiasisOfSkinAndNail
     /// </summary>
     public const string LiteralCandidiasisOfSkinAndNail = "B37.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CandidiasisOfSkinAndNail
+    /// </summary>
+    public const string LiteralSidIcd10CandidiasisOfSkinAndNail = "http://hl7.org/fhir/sid/icd-10#B37.2";
 
     /// <summary>
     /// Literal for code: CandidiasisOfVulvaAndVaginaN771
@@ -12228,9 +15438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCandidiasisOfVulvaAndVaginaN771 = "B37.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10CandidiasisOfVulvaAndVaginaN771
+    /// </summary>
+    public const string LiteralSidIcd10CandidiasisOfVulvaAndVaginaN771 = "http://hl7.org/fhir/sid/icd-10#B37.3";
+
+    /// <summary>
     /// Literal for code: CandidiasisOfOtherUrogenitalSites
     /// </summary>
     public const string LiteralCandidiasisOfOtherUrogenitalSites = "B37.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CandidiasisOfOtherUrogenitalSites
+    /// </summary>
+    public const string LiteralSidIcd10CandidiasisOfOtherUrogenitalSites = "http://hl7.org/fhir/sid/icd-10#B37.4";
 
     /// <summary>
     /// Literal for code: CandidalMeningitisG021
@@ -12238,9 +15458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCandidalMeningitisG021 = "B37.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10CandidalMeningitisG021
+    /// </summary>
+    public const string LiteralSidIcd10CandidalMeningitisG021 = "http://hl7.org/fhir/sid/icd-10#B37.5";
+
+    /// <summary>
     /// Literal for code: CandidalEndocarditisI398
     /// </summary>
     public const string LiteralCandidalEndocarditisI398 = "B37.6";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CandidalEndocarditisI398
+    /// </summary>
+    public const string LiteralSidIcd10CandidalEndocarditisI398 = "http://hl7.org/fhir/sid/icd-10#B37.6";
 
     /// <summary>
     /// Literal for code: CandidalSepsis
@@ -12248,9 +15478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCandidalSepsis = "B37.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10CandidalSepsis
+    /// </summary>
+    public const string LiteralSidIcd10CandidalSepsis = "http://hl7.org/fhir/sid/icd-10#B37.7";
+
+    /// <summary>
     /// Literal for code: CandidiasisOfOtherSites
     /// </summary>
     public const string LiteralCandidiasisOfOtherSites = "B37.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CandidiasisOfOtherSites
+    /// </summary>
+    public const string LiteralSidIcd10CandidiasisOfOtherSites = "http://hl7.org/fhir/sid/icd-10#B37.8";
 
     /// <summary>
     /// Literal for code: CandidiasisUnspecified
@@ -12258,9 +15498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCandidiasisUnspecified = "B37.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10CandidiasisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10CandidiasisUnspecified = "http://hl7.org/fhir/sid/icd-10#B37.9";
+
+    /// <summary>
     /// Literal for code: Coccidioidomycosis
     /// </summary>
     public const string LiteralCoccidioidomycosis = "B38";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Coccidioidomycosis
+    /// </summary>
+    public const string LiteralSidIcd10Coccidioidomycosis = "http://hl7.org/fhir/sid/icd-10#B38";
 
     /// <summary>
     /// Literal for code: AcutePulmonaryCoccidioidomycosis
@@ -12268,9 +15518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcutePulmonaryCoccidioidomycosis = "B38.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcutePulmonaryCoccidioidomycosis
+    /// </summary>
+    public const string LiteralSidIcd10AcutePulmonaryCoccidioidomycosis = "http://hl7.org/fhir/sid/icd-10#B38.0";
+
+    /// <summary>
     /// Literal for code: ChronicPulmonaryCoccidioidomycosis
     /// </summary>
     public const string LiteralChronicPulmonaryCoccidioidomycosis = "B38.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ChronicPulmonaryCoccidioidomycosis
+    /// </summary>
+    public const string LiteralSidIcd10ChronicPulmonaryCoccidioidomycosis = "http://hl7.org/fhir/sid/icd-10#B38.1";
 
     /// <summary>
     /// Literal for code: PulmonaryCoccidioidomycosisUnspecified
@@ -12278,9 +15538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPulmonaryCoccidioidomycosisUnspecified = "B38.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10PulmonaryCoccidioidomycosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10PulmonaryCoccidioidomycosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B38.2";
+
+    /// <summary>
     /// Literal for code: CutaneousCoccidioidomycosis
     /// </summary>
     public const string LiteralCutaneousCoccidioidomycosis = "B38.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CutaneousCoccidioidomycosis
+    /// </summary>
+    public const string LiteralSidIcd10CutaneousCoccidioidomycosis = "http://hl7.org/fhir/sid/icd-10#B38.3";
 
     /// <summary>
     /// Literal for code: CoccidioidomycosisMeningitisG021
@@ -12288,9 +15558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCoccidioidomycosisMeningitisG021 = "B38.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10CoccidioidomycosisMeningitisG021
+    /// </summary>
+    public const string LiteralSidIcd10CoccidioidomycosisMeningitisG021 = "http://hl7.org/fhir/sid/icd-10#B38.4";
+
+    /// <summary>
     /// Literal for code: DisseminatedCoccidioidomycosis
     /// </summary>
     public const string LiteralDisseminatedCoccidioidomycosis = "B38.7";
+
+    /// <summary>
+    /// Literal for code: SidIcd10DisseminatedCoccidioidomycosis
+    /// </summary>
+    public const string LiteralSidIcd10DisseminatedCoccidioidomycosis = "http://hl7.org/fhir/sid/icd-10#B38.7";
 
     /// <summary>
     /// Literal for code: OtherFormsOfCoccidioidomycosis
@@ -12298,9 +15578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherFormsOfCoccidioidomycosis = "B38.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfCoccidioidomycosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfCoccidioidomycosis = "http://hl7.org/fhir/sid/icd-10#B38.8";
+
+    /// <summary>
     /// Literal for code: CoccidioidomycosisUnspecified
     /// </summary>
     public const string LiteralCoccidioidomycosisUnspecified = "B38.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CoccidioidomycosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10CoccidioidomycosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B38.9";
 
     /// <summary>
     /// Literal for code: Histoplasmosis
@@ -12308,9 +15598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHistoplasmosis = "B39";
 
     /// <summary>
+    /// Literal for code: SidIcd10Histoplasmosis
+    /// </summary>
+    public const string LiteralSidIcd10Histoplasmosis = "http://hl7.org/fhir/sid/icd-10#B39";
+
+    /// <summary>
     /// Literal for code: AcutePulmonaryHistoplasmosisCapsulati
     /// </summary>
     public const string LiteralAcutePulmonaryHistoplasmosisCapsulati = "B39.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AcutePulmonaryHistoplasmosisCapsulati
+    /// </summary>
+    public const string LiteralSidIcd10AcutePulmonaryHistoplasmosisCapsulati = "http://hl7.org/fhir/sid/icd-10#B39.0";
 
     /// <summary>
     /// Literal for code: ChronicPulmonaryHistoplasmosisCapsulati
@@ -12318,9 +15618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChronicPulmonaryHistoplasmosisCapsulati = "B39.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10ChronicPulmonaryHistoplasmosisCapsulati
+    /// </summary>
+    public const string LiteralSidIcd10ChronicPulmonaryHistoplasmosisCapsulati = "http://hl7.org/fhir/sid/icd-10#B39.1";
+
+    /// <summary>
     /// Literal for code: PulmonaryHistoplasmosisCapsulatiUnspecified
     /// </summary>
     public const string LiteralPulmonaryHistoplasmosisCapsulatiUnspecified = "B39.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PulmonaryHistoplasmosisCapsulatiUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10PulmonaryHistoplasmosisCapsulatiUnspecified = "http://hl7.org/fhir/sid/icd-10#B39.2";
 
     /// <summary>
     /// Literal for code: DisseminatedHistoplasmosisCapsulati
@@ -12328,9 +15638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDisseminatedHistoplasmosisCapsulati = "B39.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10DisseminatedHistoplasmosisCapsulati
+    /// </summary>
+    public const string LiteralSidIcd10DisseminatedHistoplasmosisCapsulati = "http://hl7.org/fhir/sid/icd-10#B39.3";
+
+    /// <summary>
     /// Literal for code: HistoplasmosisCapsulatiUnspecified
     /// </summary>
     public const string LiteralHistoplasmosisCapsulatiUnspecified = "B39.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HistoplasmosisCapsulatiUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10HistoplasmosisCapsulatiUnspecified = "http://hl7.org/fhir/sid/icd-10#B39.4";
 
     /// <summary>
     /// Literal for code: HistoplasmosisDuboisii
@@ -12338,9 +15658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHistoplasmosisDuboisii = "B39.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10HistoplasmosisDuboisii
+    /// </summary>
+    public const string LiteralSidIcd10HistoplasmosisDuboisii = "http://hl7.org/fhir/sid/icd-10#B39.5";
+
+    /// <summary>
     /// Literal for code: HistoplasmosisUnspecified
     /// </summary>
     public const string LiteralHistoplasmosisUnspecified = "B39.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HistoplasmosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10HistoplasmosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B39.9";
 
     /// <summary>
     /// Literal for code: Blastomycosis
@@ -12348,9 +15678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBlastomycosis = "B40";
 
     /// <summary>
+    /// Literal for code: SidIcd10Blastomycosis
+    /// </summary>
+    public const string LiteralSidIcd10Blastomycosis = "http://hl7.org/fhir/sid/icd-10#B40";
+
+    /// <summary>
     /// Literal for code: AcutePulmonaryBlastomycosis
     /// </summary>
     public const string LiteralAcutePulmonaryBlastomycosis = "B40.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AcutePulmonaryBlastomycosis
+    /// </summary>
+    public const string LiteralSidIcd10AcutePulmonaryBlastomycosis = "http://hl7.org/fhir/sid/icd-10#B40.0";
 
     /// <summary>
     /// Literal for code: ChronicPulmonaryBlastomycosis
@@ -12358,9 +15698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChronicPulmonaryBlastomycosis = "B40.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10ChronicPulmonaryBlastomycosis
+    /// </summary>
+    public const string LiteralSidIcd10ChronicPulmonaryBlastomycosis = "http://hl7.org/fhir/sid/icd-10#B40.1";
+
+    /// <summary>
     /// Literal for code: PulmonaryBlastomycosisUnspecified
     /// </summary>
     public const string LiteralPulmonaryBlastomycosisUnspecified = "B40.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PulmonaryBlastomycosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10PulmonaryBlastomycosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B40.2";
 
     /// <summary>
     /// Literal for code: CutaneousBlastomycosis
@@ -12368,9 +15718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCutaneousBlastomycosis = "B40.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10CutaneousBlastomycosis
+    /// </summary>
+    public const string LiteralSidIcd10CutaneousBlastomycosis = "http://hl7.org/fhir/sid/icd-10#B40.3";
+
+    /// <summary>
     /// Literal for code: DisseminatedBlastomycosis
     /// </summary>
     public const string LiteralDisseminatedBlastomycosis = "B40.7";
+
+    /// <summary>
+    /// Literal for code: SidIcd10DisseminatedBlastomycosis
+    /// </summary>
+    public const string LiteralSidIcd10DisseminatedBlastomycosis = "http://hl7.org/fhir/sid/icd-10#B40.7";
 
     /// <summary>
     /// Literal for code: OtherFormsOfBlastomycosis
@@ -12378,9 +15738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherFormsOfBlastomycosis = "B40.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfBlastomycosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfBlastomycosis = "http://hl7.org/fhir/sid/icd-10#B40.8";
+
+    /// <summary>
     /// Literal for code: BlastomycosisUnspecified
     /// </summary>
     public const string LiteralBlastomycosisUnspecified = "B40.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10BlastomycosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10BlastomycosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B40.9";
 
     /// <summary>
     /// Literal for code: Paracoccidioidomycosis
@@ -12388,9 +15758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralParacoccidioidomycosis = "B41";
 
     /// <summary>
+    /// Literal for code: SidIcd10Paracoccidioidomycosis
+    /// </summary>
+    public const string LiteralSidIcd10Paracoccidioidomycosis = "http://hl7.org/fhir/sid/icd-10#B41";
+
+    /// <summary>
     /// Literal for code: PulmonaryParacoccidioidomycosis
     /// </summary>
     public const string LiteralPulmonaryParacoccidioidomycosis = "B41.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PulmonaryParacoccidioidomycosis
+    /// </summary>
+    public const string LiteralSidIcd10PulmonaryParacoccidioidomycosis = "http://hl7.org/fhir/sid/icd-10#B41.0";
 
     /// <summary>
     /// Literal for code: DisseminatedParacoccidioidomycosis
@@ -12398,9 +15778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDisseminatedParacoccidioidomycosis = "B41.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10DisseminatedParacoccidioidomycosis
+    /// </summary>
+    public const string LiteralSidIcd10DisseminatedParacoccidioidomycosis = "http://hl7.org/fhir/sid/icd-10#B41.7";
+
+    /// <summary>
     /// Literal for code: OtherFormsOfParacoccidioidomycosis
     /// </summary>
     public const string LiteralOtherFormsOfParacoccidioidomycosis = "B41.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfParacoccidioidomycosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfParacoccidioidomycosis = "http://hl7.org/fhir/sid/icd-10#B41.8";
 
     /// <summary>
     /// Literal for code: ParacoccidioidomycosisUnspecified
@@ -12408,9 +15798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralParacoccidioidomycosisUnspecified = "B41.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10ParacoccidioidomycosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ParacoccidioidomycosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B41.9";
+
+    /// <summary>
     /// Literal for code: Sporotrichosis
     /// </summary>
     public const string LiteralSporotrichosis = "B42";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Sporotrichosis
+    /// </summary>
+    public const string LiteralSidIcd10Sporotrichosis = "http://hl7.org/fhir/sid/icd-10#B42";
 
     /// <summary>
     /// Literal for code: PulmonarySporotrichosisJ998
@@ -12418,9 +15818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPulmonarySporotrichosisJ998 = "B42.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10PulmonarySporotrichosisJ998
+    /// </summary>
+    public const string LiteralSidIcd10PulmonarySporotrichosisJ998 = "http://hl7.org/fhir/sid/icd-10#B42.0";
+
+    /// <summary>
     /// Literal for code: LymphocutaneousSporotrichosis
     /// </summary>
     public const string LiteralLymphocutaneousSporotrichosis = "B42.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LymphocutaneousSporotrichosis
+    /// </summary>
+    public const string LiteralSidIcd10LymphocutaneousSporotrichosis = "http://hl7.org/fhir/sid/icd-10#B42.1";
 
     /// <summary>
     /// Literal for code: DisseminatedSporotrichosis
@@ -12428,9 +15838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDisseminatedSporotrichosis = "B42.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10DisseminatedSporotrichosis
+    /// </summary>
+    public const string LiteralSidIcd10DisseminatedSporotrichosis = "http://hl7.org/fhir/sid/icd-10#B42.7";
+
+    /// <summary>
     /// Literal for code: OtherFormsOfSporotrichosis
     /// </summary>
     public const string LiteralOtherFormsOfSporotrichosis = "B42.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfSporotrichosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfSporotrichosis = "http://hl7.org/fhir/sid/icd-10#B42.8";
 
     /// <summary>
     /// Literal for code: SporotrichosisUnspecified
@@ -12438,9 +15858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSporotrichosisUnspecified = "B42.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10SporotrichosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10SporotrichosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B42.9";
+
+    /// <summary>
     /// Literal for code: ChromomycosisAndPhaeomycoticAbscess
     /// </summary>
     public const string LiteralChromomycosisAndPhaeomycoticAbscess = "B43";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ChromomycosisAndPhaeomycoticAbscess
+    /// </summary>
+    public const string LiteralSidIcd10ChromomycosisAndPhaeomycoticAbscess = "http://hl7.org/fhir/sid/icd-10#B43";
 
     /// <summary>
     /// Literal for code: CutaneousChromomycosis
@@ -12448,9 +15878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCutaneousChromomycosis = "B43.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10CutaneousChromomycosis
+    /// </summary>
+    public const string LiteralSidIcd10CutaneousChromomycosis = "http://hl7.org/fhir/sid/icd-10#B43.0";
+
+    /// <summary>
     /// Literal for code: PhaeomycoticBrainAbscess
     /// </summary>
     public const string LiteralPhaeomycoticBrainAbscess = "B43.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PhaeomycoticBrainAbscess
+    /// </summary>
+    public const string LiteralSidIcd10PhaeomycoticBrainAbscess = "http://hl7.org/fhir/sid/icd-10#B43.1";
 
     /// <summary>
     /// Literal for code: SubcutaneousPhaeomycoticAbscessAndCyst
@@ -12458,9 +15898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSubcutaneousPhaeomycoticAbscessAndCyst = "B43.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10SubcutaneousPhaeomycoticAbscessAndCyst
+    /// </summary>
+    public const string LiteralSidIcd10SubcutaneousPhaeomycoticAbscessAndCyst = "http://hl7.org/fhir/sid/icd-10#B43.2";
+
+    /// <summary>
     /// Literal for code: OtherFormsOfChromomycosis
     /// </summary>
     public const string LiteralOtherFormsOfChromomycosis = "B43.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfChromomycosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfChromomycosis = "http://hl7.org/fhir/sid/icd-10#B43.8";
 
     /// <summary>
     /// Literal for code: ChromomycosisUnspecified
@@ -12468,9 +15918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChromomycosisUnspecified = "B43.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10ChromomycosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ChromomycosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B43.9";
+
+    /// <summary>
     /// Literal for code: Aspergillosis
     /// </summary>
     public const string LiteralAspergillosis = "B44";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Aspergillosis
+    /// </summary>
+    public const string LiteralSidIcd10Aspergillosis = "http://hl7.org/fhir/sid/icd-10#B44";
 
     /// <summary>
     /// Literal for code: InvasivePulmonaryAspergillosis
@@ -12478,9 +15938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInvasivePulmonaryAspergillosis = "B44.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10InvasivePulmonaryAspergillosis
+    /// </summary>
+    public const string LiteralSidIcd10InvasivePulmonaryAspergillosis = "http://hl7.org/fhir/sid/icd-10#B44.0";
+
+    /// <summary>
     /// Literal for code: OtherPulmonaryAspergillosis
     /// </summary>
     public const string LiteralOtherPulmonaryAspergillosis = "B44.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherPulmonaryAspergillosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherPulmonaryAspergillosis = "http://hl7.org/fhir/sid/icd-10#B44.1";
 
     /// <summary>
     /// Literal for code: TonsillarAspergillosis
@@ -12488,9 +15958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTonsillarAspergillosis = "B44.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10TonsillarAspergillosis
+    /// </summary>
+    public const string LiteralSidIcd10TonsillarAspergillosis = "http://hl7.org/fhir/sid/icd-10#B44.2";
+
+    /// <summary>
     /// Literal for code: DisseminatedAspergillosis
     /// </summary>
     public const string LiteralDisseminatedAspergillosis = "B44.7";
+
+    /// <summary>
+    /// Literal for code: SidIcd10DisseminatedAspergillosis
+    /// </summary>
+    public const string LiteralSidIcd10DisseminatedAspergillosis = "http://hl7.org/fhir/sid/icd-10#B44.7";
 
     /// <summary>
     /// Literal for code: OtherFormsOfAspergillosis
@@ -12498,9 +15978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherFormsOfAspergillosis = "B44.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfAspergillosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfAspergillosis = "http://hl7.org/fhir/sid/icd-10#B44.8";
+
+    /// <summary>
     /// Literal for code: AspergillosisUnspecified
     /// </summary>
     public const string LiteralAspergillosisUnspecified = "B44.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AspergillosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10AspergillosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B44.9";
 
     /// <summary>
     /// Literal for code: Cryptococcosis
@@ -12508,9 +15998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCryptococcosis = "B45";
 
     /// <summary>
+    /// Literal for code: SidIcd10Cryptococcosis
+    /// </summary>
+    public const string LiteralSidIcd10Cryptococcosis = "http://hl7.org/fhir/sid/icd-10#B45";
+
+    /// <summary>
     /// Literal for code: PulmonaryCryptococcosis
     /// </summary>
     public const string LiteralPulmonaryCryptococcosis = "B45.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PulmonaryCryptococcosis
+    /// </summary>
+    public const string LiteralSidIcd10PulmonaryCryptococcosis = "http://hl7.org/fhir/sid/icd-10#B45.0";
 
     /// <summary>
     /// Literal for code: CerebralCryptococcosis
@@ -12518,9 +16018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCerebralCryptococcosis = "B45.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10CerebralCryptococcosis
+    /// </summary>
+    public const string LiteralSidIcd10CerebralCryptococcosis = "http://hl7.org/fhir/sid/icd-10#B45.1";
+
+    /// <summary>
     /// Literal for code: CutaneousCryptococcosis
     /// </summary>
     public const string LiteralCutaneousCryptococcosis = "B45.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CutaneousCryptococcosis
+    /// </summary>
+    public const string LiteralSidIcd10CutaneousCryptococcosis = "http://hl7.org/fhir/sid/icd-10#B45.2";
 
     /// <summary>
     /// Literal for code: OsseousCryptococcosis
@@ -12528,9 +16038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOsseousCryptococcosis = "B45.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10OsseousCryptococcosis
+    /// </summary>
+    public const string LiteralSidIcd10OsseousCryptococcosis = "http://hl7.org/fhir/sid/icd-10#B45.3";
+
+    /// <summary>
     /// Literal for code: DisseminatedCryptococcosis
     /// </summary>
     public const string LiteralDisseminatedCryptococcosis = "B45.7";
+
+    /// <summary>
+    /// Literal for code: SidIcd10DisseminatedCryptococcosis
+    /// </summary>
+    public const string LiteralSidIcd10DisseminatedCryptococcosis = "http://hl7.org/fhir/sid/icd-10#B45.7";
 
     /// <summary>
     /// Literal for code: OtherFormsOfCryptococcosis
@@ -12538,9 +16058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherFormsOfCryptococcosis = "B45.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherFormsOfCryptococcosis
+    /// </summary>
+    public const string LiteralSidIcd10OtherFormsOfCryptococcosis = "http://hl7.org/fhir/sid/icd-10#B45.8";
+
+    /// <summary>
     /// Literal for code: CryptococcosisUnspecified
     /// </summary>
     public const string LiteralCryptococcosisUnspecified = "B45.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CryptococcosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10CryptococcosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B45.9";
 
     /// <summary>
     /// Literal for code: Zygomycosis
@@ -12548,9 +16078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralZygomycosis = "B46";
 
     /// <summary>
+    /// Literal for code: SidIcd10Zygomycosis
+    /// </summary>
+    public const string LiteralSidIcd10Zygomycosis = "http://hl7.org/fhir/sid/icd-10#B46";
+
+    /// <summary>
     /// Literal for code: PulmonaryMucormycosis
     /// </summary>
     public const string LiteralPulmonaryMucormycosis = "B46.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PulmonaryMucormycosis
+    /// </summary>
+    public const string LiteralSidIcd10PulmonaryMucormycosis = "http://hl7.org/fhir/sid/icd-10#B46.0";
 
     /// <summary>
     /// Literal for code: RhinocerebralMucormycosis
@@ -12558,9 +16098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRhinocerebralMucormycosis = "B46.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10RhinocerebralMucormycosis
+    /// </summary>
+    public const string LiteralSidIcd10RhinocerebralMucormycosis = "http://hl7.org/fhir/sid/icd-10#B46.1";
+
+    /// <summary>
     /// Literal for code: GastrointestinalMucormycosis
     /// </summary>
     public const string LiteralGastrointestinalMucormycosis = "B46.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10GastrointestinalMucormycosis
+    /// </summary>
+    public const string LiteralSidIcd10GastrointestinalMucormycosis = "http://hl7.org/fhir/sid/icd-10#B46.2";
 
     /// <summary>
     /// Literal for code: CutaneousMucormycosis
@@ -12568,9 +16118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCutaneousMucormycosis = "B46.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10CutaneousMucormycosis
+    /// </summary>
+    public const string LiteralSidIcd10CutaneousMucormycosis = "http://hl7.org/fhir/sid/icd-10#B46.3";
+
+    /// <summary>
     /// Literal for code: DisseminatedMucormycosis
     /// </summary>
     public const string LiteralDisseminatedMucormycosis = "B46.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10DisseminatedMucormycosis
+    /// </summary>
+    public const string LiteralSidIcd10DisseminatedMucormycosis = "http://hl7.org/fhir/sid/icd-10#B46.4";
 
     /// <summary>
     /// Literal for code: MucormycosisUnspecified
@@ -12578,9 +16138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMucormycosisUnspecified = "B46.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10MucormycosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10MucormycosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B46.5";
+
+    /// <summary>
     /// Literal for code: OtherZygomycoses
     /// </summary>
     public const string LiteralOtherZygomycoses = "B46.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherZygomycoses
+    /// </summary>
+    public const string LiteralSidIcd10OtherZygomycoses = "http://hl7.org/fhir/sid/icd-10#B46.8";
 
     /// <summary>
     /// Literal for code: ZygomycosisUnspecified
@@ -12588,9 +16158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralZygomycosisUnspecified = "B46.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10ZygomycosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ZygomycosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B46.9";
+
+    /// <summary>
     /// Literal for code: Mycetoma
     /// </summary>
     public const string LiteralMycetoma = "B47";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Mycetoma
+    /// </summary>
+    public const string LiteralSidIcd10Mycetoma = "http://hl7.org/fhir/sid/icd-10#B47";
 
     /// <summary>
     /// Literal for code: Eumycetoma
@@ -12598,9 +16178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEumycetoma = "B47.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10Eumycetoma
+    /// </summary>
+    public const string LiteralSidIcd10Eumycetoma = "http://hl7.org/fhir/sid/icd-10#B47.0";
+
+    /// <summary>
     /// Literal for code: Actinomycetoma
     /// </summary>
     public const string LiteralActinomycetoma = "B47.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Actinomycetoma
+    /// </summary>
+    public const string LiteralSidIcd10Actinomycetoma = "http://hl7.org/fhir/sid/icd-10#B47.1";
 
     /// <summary>
     /// Literal for code: MycetomaUnspecified
@@ -12608,9 +16198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMycetomaUnspecified = "B47.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10MycetomaUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10MycetomaUnspecified = "http://hl7.org/fhir/sid/icd-10#B47.9";
+
+    /// <summary>
     /// Literal for code: OtherMycosesNotElsewhereClassified
     /// </summary>
     public const string LiteralOtherMycosesNotElsewhereClassified = "B48";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherMycosesNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10OtherMycosesNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#B48";
 
     /// <summary>
     /// Literal for code: Lobomycosis
@@ -12618,9 +16218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLobomycosis = "B48.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10Lobomycosis
+    /// </summary>
+    public const string LiteralSidIcd10Lobomycosis = "http://hl7.org/fhir/sid/icd-10#B48.0";
+
+    /// <summary>
     /// Literal for code: Rhinosporidiosis
     /// </summary>
     public const string LiteralRhinosporidiosis = "B48.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Rhinosporidiosis
+    /// </summary>
+    public const string LiteralSidIcd10Rhinosporidiosis = "http://hl7.org/fhir/sid/icd-10#B48.1";
 
     /// <summary>
     /// Literal for code: Allescheriasis
@@ -12628,9 +16238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAllescheriasis = "B48.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10Allescheriasis
+    /// </summary>
+    public const string LiteralSidIcd10Allescheriasis = "http://hl7.org/fhir/sid/icd-10#B48.2";
+
+    /// <summary>
     /// Literal for code: Geotrichosis
     /// </summary>
     public const string LiteralGeotrichosis = "B48.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Geotrichosis
+    /// </summary>
+    public const string LiteralSidIcd10Geotrichosis = "http://hl7.org/fhir/sid/icd-10#B48.3";
 
     /// <summary>
     /// Literal for code: Penicillosis
@@ -12638,9 +16258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPenicillosis = "B48.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10Penicillosis
+    /// </summary>
+    public const string LiteralSidIcd10Penicillosis = "http://hl7.org/fhir/sid/icd-10#B48.4";
+
+    /// <summary>
     /// Literal for code: PneumocystosisJ172
     /// </summary>
     public const string LiteralPneumocystosisJ172 = "B48.5";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PneumocystosisJ172
+    /// </summary>
+    public const string LiteralSidIcd10PneumocystosisJ172 = "http://hl7.org/fhir/sid/icd-10#B48.5";
 
     /// <summary>
     /// Literal for code: OpportunisticMycoses
@@ -12648,9 +16278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOpportunisticMycoses = "B48.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10OpportunisticMycoses
+    /// </summary>
+    public const string LiteralSidIcd10OpportunisticMycoses = "http://hl7.org/fhir/sid/icd-10#B48.7";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedMycoses
     /// </summary>
     public const string LiteralOtherSpecifiedMycoses = "B48.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedMycoses
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedMycoses = "http://hl7.org/fhir/sid/icd-10#B48.8";
 
     /// <summary>
     /// Literal for code: UnspecifiedMycosis
@@ -12658,9 +16298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUnspecifiedMycosis = "B49";
 
     /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedMycosis
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedMycosis = "http://hl7.org/fhir/sid/icd-10#B49";
+
+    /// <summary>
     /// Literal for code: PlasmodiumFalciparumMalaria
     /// </summary>
     public const string LiteralPlasmodiumFalciparumMalaria = "B50";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PlasmodiumFalciparumMalaria
+    /// </summary>
+    public const string LiteralSidIcd10PlasmodiumFalciparumMalaria = "http://hl7.org/fhir/sid/icd-10#B50";
 
     /// <summary>
     /// Literal for code: ProtozoalDiseases
@@ -12668,9 +16318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProtozoalDiseases = "B50-B64";
 
     /// <summary>
+    /// Literal for code: SidIcd10ProtozoalDiseases
+    /// </summary>
+    public const string LiteralSidIcd10ProtozoalDiseases = "http://hl7.org/fhir/sid/icd-10#B50-B64";
+
+    /// <summary>
     /// Literal for code: PlasmodiumFalciparumMalariaWithCerebralComplications
     /// </summary>
     public const string LiteralPlasmodiumFalciparumMalariaWithCerebralComplications = "B50.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PlasmodiumFalciparumMalariaWithCerebralComplications
+    /// </summary>
+    public const string LiteralSidIcd10PlasmodiumFalciparumMalariaWithCerebralComplications = "http://hl7.org/fhir/sid/icd-10#B50.0";
 
     /// <summary>
     /// Literal for code: OtherSevereAndComplicatedPlasmodiumFalciparumMalaria
@@ -12678,9 +16338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherSevereAndComplicatedPlasmodiumFalciparumMalaria = "B50.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherSevereAndComplicatedPlasmodiumFalciparumMalaria
+    /// </summary>
+    public const string LiteralSidIcd10OtherSevereAndComplicatedPlasmodiumFalciparumMalaria = "http://hl7.org/fhir/sid/icd-10#B50.8";
+
+    /// <summary>
     /// Literal for code: PlasmodiumFalciparumMalariaUnspecified
     /// </summary>
     public const string LiteralPlasmodiumFalciparumMalariaUnspecified = "B50.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PlasmodiumFalciparumMalariaUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10PlasmodiumFalciparumMalariaUnspecified = "http://hl7.org/fhir/sid/icd-10#B50.9";
 
     /// <summary>
     /// Literal for code: PlasmodiumVivaxMalaria
@@ -12688,9 +16358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlasmodiumVivaxMalaria = "B51";
 
     /// <summary>
+    /// Literal for code: SidIcd10PlasmodiumVivaxMalaria
+    /// </summary>
+    public const string LiteralSidIcd10PlasmodiumVivaxMalaria = "http://hl7.org/fhir/sid/icd-10#B51";
+
+    /// <summary>
     /// Literal for code: PlasmodiumVivaxMalariaWithRuptureOfSpleen
     /// </summary>
     public const string LiteralPlasmodiumVivaxMalariaWithRuptureOfSpleen = "B51.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PlasmodiumVivaxMalariaWithRuptureOfSpleen
+    /// </summary>
+    public const string LiteralSidIcd10PlasmodiumVivaxMalariaWithRuptureOfSpleen = "http://hl7.org/fhir/sid/icd-10#B51.0";
 
     /// <summary>
     /// Literal for code: PlasmodiumVivaxMalariaWithOtherComplications
@@ -12698,9 +16378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlasmodiumVivaxMalariaWithOtherComplications = "B51.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10PlasmodiumVivaxMalariaWithOtherComplications
+    /// </summary>
+    public const string LiteralSidIcd10PlasmodiumVivaxMalariaWithOtherComplications = "http://hl7.org/fhir/sid/icd-10#B51.8";
+
+    /// <summary>
     /// Literal for code: PlasmodiumVivaxMalariaWithoutComplication
     /// </summary>
     public const string LiteralPlasmodiumVivaxMalariaWithoutComplication = "B51.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PlasmodiumVivaxMalariaWithoutComplication
+    /// </summary>
+    public const string LiteralSidIcd10PlasmodiumVivaxMalariaWithoutComplication = "http://hl7.org/fhir/sid/icd-10#B51.9";
 
     /// <summary>
     /// Literal for code: PlasmodiumMalariaeMalaria
@@ -12708,9 +16398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlasmodiumMalariaeMalaria = "B52";
 
     /// <summary>
+    /// Literal for code: SidIcd10PlasmodiumMalariaeMalaria
+    /// </summary>
+    public const string LiteralSidIcd10PlasmodiumMalariaeMalaria = "http://hl7.org/fhir/sid/icd-10#B52";
+
+    /// <summary>
     /// Literal for code: PlasmodiumMalariaeMalariaWithNephropathy
     /// </summary>
     public const string LiteralPlasmodiumMalariaeMalariaWithNephropathy = "B52.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PlasmodiumMalariaeMalariaWithNephropathy
+    /// </summary>
+    public const string LiteralSidIcd10PlasmodiumMalariaeMalariaWithNephropathy = "http://hl7.org/fhir/sid/icd-10#B52.0";
 
     /// <summary>
     /// Literal for code: PlasmodiumMalariaeMalariaWithOtherComplications
@@ -12718,9 +16418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlasmodiumMalariaeMalariaWithOtherComplications = "B52.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10PlasmodiumMalariaeMalariaWithOtherComplications
+    /// </summary>
+    public const string LiteralSidIcd10PlasmodiumMalariaeMalariaWithOtherComplications = "http://hl7.org/fhir/sid/icd-10#B52.8";
+
+    /// <summary>
     /// Literal for code: PlasmodiumMalariaeMalariaWithoutComplication
     /// </summary>
     public const string LiteralPlasmodiumMalariaeMalariaWithoutComplication = "B52.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PlasmodiumMalariaeMalariaWithoutComplication
+    /// </summary>
+    public const string LiteralSidIcd10PlasmodiumMalariaeMalariaWithoutComplication = "http://hl7.org/fhir/sid/icd-10#B52.9";
 
     /// <summary>
     /// Literal for code: OtherParasitologicallyConfirmedMalaria
@@ -12728,9 +16438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherParasitologicallyConfirmedMalaria = "B53";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherParasitologicallyConfirmedMalaria
+    /// </summary>
+    public const string LiteralSidIcd10OtherParasitologicallyConfirmedMalaria = "http://hl7.org/fhir/sid/icd-10#B53";
+
+    /// <summary>
     /// Literal for code: PlasmodiumOvaleMalaria
     /// </summary>
     public const string LiteralPlasmodiumOvaleMalaria = "B53.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PlasmodiumOvaleMalaria
+    /// </summary>
+    public const string LiteralSidIcd10PlasmodiumOvaleMalaria = "http://hl7.org/fhir/sid/icd-10#B53.0";
 
     /// <summary>
     /// Literal for code: MalariaDueToSimianPlasmodia
@@ -12738,9 +16458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMalariaDueToSimianPlasmodia = "B53.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10MalariaDueToSimianPlasmodia
+    /// </summary>
+    public const string LiteralSidIcd10MalariaDueToSimianPlasmodia = "http://hl7.org/fhir/sid/icd-10#B53.1";
+
+    /// <summary>
     /// Literal for code: OtherParasitologicallyConfirmedMalariaNotElsewhereClassified
     /// </summary>
     public const string LiteralOtherParasitologicallyConfirmedMalariaNotElsewhereClassified = "B53.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherParasitologicallyConfirmedMalariaNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10OtherParasitologicallyConfirmedMalariaNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#B53.8";
 
     /// <summary>
     /// Literal for code: UnspecifiedMalaria
@@ -12748,9 +16478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUnspecifiedMalaria = "B54";
 
     /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedMalaria
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedMalaria = "http://hl7.org/fhir/sid/icd-10#B54";
+
+    /// <summary>
     /// Literal for code: Leishmaniasis
     /// </summary>
     public const string LiteralLeishmaniasis = "B55";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Leishmaniasis
+    /// </summary>
+    public const string LiteralSidIcd10Leishmaniasis = "http://hl7.org/fhir/sid/icd-10#B55";
 
     /// <summary>
     /// Literal for code: VisceralLeishmaniasis
@@ -12758,9 +16498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVisceralLeishmaniasis = "B55.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10VisceralLeishmaniasis
+    /// </summary>
+    public const string LiteralSidIcd10VisceralLeishmaniasis = "http://hl7.org/fhir/sid/icd-10#B55.0";
+
+    /// <summary>
     /// Literal for code: CutaneousLeishmaniasis
     /// </summary>
     public const string LiteralCutaneousLeishmaniasis = "B55.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CutaneousLeishmaniasis
+    /// </summary>
+    public const string LiteralSidIcd10CutaneousLeishmaniasis = "http://hl7.org/fhir/sid/icd-10#B55.1";
 
     /// <summary>
     /// Literal for code: MucocutaneousLeishmaniasis
@@ -12768,9 +16518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMucocutaneousLeishmaniasis = "B55.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10MucocutaneousLeishmaniasis
+    /// </summary>
+    public const string LiteralSidIcd10MucocutaneousLeishmaniasis = "http://hl7.org/fhir/sid/icd-10#B55.2";
+
+    /// <summary>
     /// Literal for code: LeishmaniasisUnspecified
     /// </summary>
     public const string LiteralLeishmaniasisUnspecified = "B55.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LeishmaniasisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10LeishmaniasisUnspecified = "http://hl7.org/fhir/sid/icd-10#B55.9";
 
     /// <summary>
     /// Literal for code: AfricanTrypanosomiasis
@@ -12778,9 +16538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAfricanTrypanosomiasis = "B56";
 
     /// <summary>
+    /// Literal for code: SidIcd10AfricanTrypanosomiasis
+    /// </summary>
+    public const string LiteralSidIcd10AfricanTrypanosomiasis = "http://hl7.org/fhir/sid/icd-10#B56";
+
+    /// <summary>
     /// Literal for code: GambienseTrypanosomiasis
     /// </summary>
     public const string LiteralGambienseTrypanosomiasis = "B56.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10GambienseTrypanosomiasis
+    /// </summary>
+    public const string LiteralSidIcd10GambienseTrypanosomiasis = "http://hl7.org/fhir/sid/icd-10#B56.0";
 
     /// <summary>
     /// Literal for code: RhodesienseTrypanosomiasis
@@ -12788,9 +16558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRhodesienseTrypanosomiasis = "B56.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10RhodesienseTrypanosomiasis
+    /// </summary>
+    public const string LiteralSidIcd10RhodesienseTrypanosomiasis = "http://hl7.org/fhir/sid/icd-10#B56.1";
+
+    /// <summary>
     /// Literal for code: AfricanTrypanosomiasisUnspecified
     /// </summary>
     public const string LiteralAfricanTrypanosomiasisUnspecified = "B56.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AfricanTrypanosomiasisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10AfricanTrypanosomiasisUnspecified = "http://hl7.org/fhir/sid/icd-10#B56.9";
 
     /// <summary>
     /// Literal for code: ChagasDisease
@@ -12798,9 +16578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChagasDisease = "B57";
 
     /// <summary>
+    /// Literal for code: SidIcd10ChagasDisease
+    /// </summary>
+    public const string LiteralSidIcd10ChagasDisease = "http://hl7.org/fhir/sid/icd-10#B57";
+
+    /// <summary>
     /// Literal for code: AcuteChagasDiseaseWithHeartInvolvementI412I981
     /// </summary>
     public const string LiteralAcuteChagasDiseaseWithHeartInvolvementI412I981 = "B57.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AcuteChagasDiseaseWithHeartInvolvementI412I981
+    /// </summary>
+    public const string LiteralSidIcd10AcuteChagasDiseaseWithHeartInvolvementI412I981 = "http://hl7.org/fhir/sid/icd-10#B57.0";
 
     /// <summary>
     /// Literal for code: AcuteChagasDiseaseWithoutHeartInvolvement
@@ -12808,9 +16598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcuteChagasDiseaseWithoutHeartInvolvement = "B57.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10AcuteChagasDiseaseWithoutHeartInvolvement
+    /// </summary>
+    public const string LiteralSidIcd10AcuteChagasDiseaseWithoutHeartInvolvement = "http://hl7.org/fhir/sid/icd-10#B57.1";
+
+    /// <summary>
     /// Literal for code: ChagasDiseaseChronicWithHeartInvolvement
     /// </summary>
     public const string LiteralChagasDiseaseChronicWithHeartInvolvement = "B57.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ChagasDiseaseChronicWithHeartInvolvement
+    /// </summary>
+    public const string LiteralSidIcd10ChagasDiseaseChronicWithHeartInvolvement = "http://hl7.org/fhir/sid/icd-10#B57.2";
 
     /// <summary>
     /// Literal for code: ChagasDiseaseChronicWithDigestiveSystemInvolvement
@@ -12818,9 +16618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChagasDiseaseChronicWithDigestiveSystemInvolvement = "B57.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10ChagasDiseaseChronicWithDigestiveSystemInvolvement
+    /// </summary>
+    public const string LiteralSidIcd10ChagasDiseaseChronicWithDigestiveSystemInvolvement = "http://hl7.org/fhir/sid/icd-10#B57.3";
+
+    /// <summary>
     /// Literal for code: ChagasDiseaseChronicWithNervousSystemInvolvement
     /// </summary>
     public const string LiteralChagasDiseaseChronicWithNervousSystemInvolvement = "B57.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ChagasDiseaseChronicWithNervousSystemInvolvement
+    /// </summary>
+    public const string LiteralSidIcd10ChagasDiseaseChronicWithNervousSystemInvolvement = "http://hl7.org/fhir/sid/icd-10#B57.4";
 
     /// <summary>
     /// Literal for code: ChagasDiseaseChronicWithOtherOrganInvolvement
@@ -12828,9 +16638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChagasDiseaseChronicWithOtherOrganInvolvement = "B57.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10ChagasDiseaseChronicWithOtherOrganInvolvement
+    /// </summary>
+    public const string LiteralSidIcd10ChagasDiseaseChronicWithOtherOrganInvolvement = "http://hl7.org/fhir/sid/icd-10#B57.5";
+
+    /// <summary>
     /// Literal for code: Toxoplasmosis
     /// </summary>
     public const string LiteralToxoplasmosis = "B58";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Toxoplasmosis
+    /// </summary>
+    public const string LiteralSidIcd10Toxoplasmosis = "http://hl7.org/fhir/sid/icd-10#B58";
 
     /// <summary>
     /// Literal for code: ToxoplasmaOculopathy
@@ -12838,9 +16658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralToxoplasmaOculopathy = "B58.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10ToxoplasmaOculopathy
+    /// </summary>
+    public const string LiteralSidIcd10ToxoplasmaOculopathy = "http://hl7.org/fhir/sid/icd-10#B58.0";
+
+    /// <summary>
     /// Literal for code: ToxoplasmaHepatitisK770
     /// </summary>
     public const string LiteralToxoplasmaHepatitisK770 = "B58.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ToxoplasmaHepatitisK770
+    /// </summary>
+    public const string LiteralSidIcd10ToxoplasmaHepatitisK770 = "http://hl7.org/fhir/sid/icd-10#B58.1";
 
     /// <summary>
     /// Literal for code: ToxoplasmaMeningoencephalitisG052
@@ -12848,9 +16678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralToxoplasmaMeningoencephalitisG052 = "B58.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10ToxoplasmaMeningoencephalitisG052
+    /// </summary>
+    public const string LiteralSidIcd10ToxoplasmaMeningoencephalitisG052 = "http://hl7.org/fhir/sid/icd-10#B58.2";
+
+    /// <summary>
     /// Literal for code: PulmonaryToxoplasmosisJ173
     /// </summary>
     public const string LiteralPulmonaryToxoplasmosisJ173 = "B58.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PulmonaryToxoplasmosisJ173
+    /// </summary>
+    public const string LiteralSidIcd10PulmonaryToxoplasmosisJ173 = "http://hl7.org/fhir/sid/icd-10#B58.3";
 
     /// <summary>
     /// Literal for code: ToxoplasmosisWithOtherOrganInvolvement
@@ -12858,9 +16698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralToxoplasmosisWithOtherOrganInvolvement = "B58.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10ToxoplasmosisWithOtherOrganInvolvement
+    /// </summary>
+    public const string LiteralSidIcd10ToxoplasmosisWithOtherOrganInvolvement = "http://hl7.org/fhir/sid/icd-10#B58.8";
+
+    /// <summary>
     /// Literal for code: ToxoplasmosisUnspecified
     /// </summary>
     public const string LiteralToxoplasmosisUnspecified = "B58.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ToxoplasmosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ToxoplasmosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B58.9";
 
     /// <summary>
     /// Literal for code: OtherProtozoalDiseasesNotElsewhereClassified
@@ -12868,9 +16718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherProtozoalDiseasesNotElsewhereClassified = "B60";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherProtozoalDiseasesNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10OtherProtozoalDiseasesNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#B60";
+
+    /// <summary>
     /// Literal for code: Babesiosis
     /// </summary>
     public const string LiteralBabesiosis = "B60.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Babesiosis
+    /// </summary>
+    public const string LiteralSidIcd10Babesiosis = "http://hl7.org/fhir/sid/icd-10#B60.0";
 
     /// <summary>
     /// Literal for code: Acanthamoebiasis
@@ -12878,9 +16738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAcanthamoebiasis = "B60.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10Acanthamoebiasis
+    /// </summary>
+    public const string LiteralSidIcd10Acanthamoebiasis = "http://hl7.org/fhir/sid/icd-10#B60.1";
+
+    /// <summary>
     /// Literal for code: Naegleriasis
     /// </summary>
     public const string LiteralNaegleriasis = "B60.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Naegleriasis
+    /// </summary>
+    public const string LiteralSidIcd10Naegleriasis = "http://hl7.org/fhir/sid/icd-10#B60.2";
 
     /// <summary>
     /// Literal for code: OtherSpecifiedProtozoalDiseases
@@ -12888,9 +16758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherSpecifiedProtozoalDiseases = "B60.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedProtozoalDiseases
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedProtozoalDiseases = "http://hl7.org/fhir/sid/icd-10#B60.8";
+
+    /// <summary>
     /// Literal for code: UnspecifiedProtozoalDisease
     /// </summary>
     public const string LiteralUnspecifiedProtozoalDisease = "B64";
+
+    /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedProtozoalDisease
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedProtozoalDisease = "http://hl7.org/fhir/sid/icd-10#B64";
 
     /// <summary>
     /// Literal for code: SchistosomiasisBilharziasis
@@ -12898,9 +16778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSchistosomiasisBilharziasis = "B65";
 
     /// <summary>
+    /// Literal for code: SidIcd10SchistosomiasisBilharziasis
+    /// </summary>
+    public const string LiteralSidIcd10SchistosomiasisBilharziasis = "http://hl7.org/fhir/sid/icd-10#B65";
+
+    /// <summary>
     /// Literal for code: Helminthiases
     /// </summary>
     public const string LiteralHelminthiases = "B65-B83";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Helminthiases
+    /// </summary>
+    public const string LiteralSidIcd10Helminthiases = "http://hl7.org/fhir/sid/icd-10#B65-B83";
 
     /// <summary>
     /// Literal for code: SchistosomiasisDueToSchistosomaHaematobiumUrinarySchistosomiasis
@@ -12908,9 +16798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSchistosomiasisDueToSchistosomaHaematobiumUrinarySchistosomiasis = "B65.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10SchistosomiasisDueToSchistosomaHaematobiumUrinarySchistosomiasis
+    /// </summary>
+    public const string LiteralSidIcd10SchistosomiasisDueToSchistosomaHaematobiumUrinarySchistosomiasis = "http://hl7.org/fhir/sid/icd-10#B65.0";
+
+    /// <summary>
     /// Literal for code: SchistosomiasisDueToSchistosomaMansoniIntestinalSchistosomiasis
     /// </summary>
     public const string LiteralSchistosomiasisDueToSchistosomaMansoniIntestinalSchistosomiasis = "B65.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SchistosomiasisDueToSchistosomaMansoniIntestinalSchistosomiasis
+    /// </summary>
+    public const string LiteralSidIcd10SchistosomiasisDueToSchistosomaMansoniIntestinalSchistosomiasis = "http://hl7.org/fhir/sid/icd-10#B65.1";
 
     /// <summary>
     /// Literal for code: SchistosomiasisDueToSchistosomaJaponicum
@@ -12918,9 +16818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSchistosomiasisDueToSchistosomaJaponicum = "B65.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10SchistosomiasisDueToSchistosomaJaponicum
+    /// </summary>
+    public const string LiteralSidIcd10SchistosomiasisDueToSchistosomaJaponicum = "http://hl7.org/fhir/sid/icd-10#B65.2";
+
+    /// <summary>
     /// Literal for code: CercarialDermatitis
     /// </summary>
     public const string LiteralCercarialDermatitis = "B65.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CercarialDermatitis
+    /// </summary>
+    public const string LiteralSidIcd10CercarialDermatitis = "http://hl7.org/fhir/sid/icd-10#B65.3";
 
     /// <summary>
     /// Literal for code: OtherSchistosomiases
@@ -12928,9 +16838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherSchistosomiases = "B65.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherSchistosomiases
+    /// </summary>
+    public const string LiteralSidIcd10OtherSchistosomiases = "http://hl7.org/fhir/sid/icd-10#B65.8";
+
+    /// <summary>
     /// Literal for code: SchistosomiasisUnspecified
     /// </summary>
     public const string LiteralSchistosomiasisUnspecified = "B65.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SchistosomiasisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10SchistosomiasisUnspecified = "http://hl7.org/fhir/sid/icd-10#B65.9";
 
     /// <summary>
     /// Literal for code: OtherFlukeInfections
@@ -12938,9 +16858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherFlukeInfections = "B66";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherFlukeInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherFlukeInfections = "http://hl7.org/fhir/sid/icd-10#B66";
+
+    /// <summary>
     /// Literal for code: Opisthorchiasis
     /// </summary>
     public const string LiteralOpisthorchiasis = "B66.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Opisthorchiasis
+    /// </summary>
+    public const string LiteralSidIcd10Opisthorchiasis = "http://hl7.org/fhir/sid/icd-10#B66.0";
 
     /// <summary>
     /// Literal for code: Clonorchiasis
@@ -12948,9 +16878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralClonorchiasis = "B66.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10Clonorchiasis
+    /// </summary>
+    public const string LiteralSidIcd10Clonorchiasis = "http://hl7.org/fhir/sid/icd-10#B66.1";
+
+    /// <summary>
     /// Literal for code: Dicrocoeliasis
     /// </summary>
     public const string LiteralDicrocoeliasis = "B66.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Dicrocoeliasis
+    /// </summary>
+    public const string LiteralSidIcd10Dicrocoeliasis = "http://hl7.org/fhir/sid/icd-10#B66.2";
 
     /// <summary>
     /// Literal for code: Fascioliasis
@@ -12958,9 +16898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFascioliasis = "B66.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10Fascioliasis
+    /// </summary>
+    public const string LiteralSidIcd10Fascioliasis = "http://hl7.org/fhir/sid/icd-10#B66.3";
+
+    /// <summary>
     /// Literal for code: Paragonimiasis
     /// </summary>
     public const string LiteralParagonimiasis = "B66.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Paragonimiasis
+    /// </summary>
+    public const string LiteralSidIcd10Paragonimiasis = "http://hl7.org/fhir/sid/icd-10#B66.4";
 
     /// <summary>
     /// Literal for code: Fasciolopsiasis
@@ -12968,9 +16918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFasciolopsiasis = "B66.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10Fasciolopsiasis
+    /// </summary>
+    public const string LiteralSidIcd10Fasciolopsiasis = "http://hl7.org/fhir/sid/icd-10#B66.5";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedFlukeInfections
     /// </summary>
     public const string LiteralOtherSpecifiedFlukeInfections = "B66.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedFlukeInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedFlukeInfections = "http://hl7.org/fhir/sid/icd-10#B66.8";
 
     /// <summary>
     /// Literal for code: FlukeInfectionUnspecified
@@ -12978,9 +16938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFlukeInfectionUnspecified = "B66.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10FlukeInfectionUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10FlukeInfectionUnspecified = "http://hl7.org/fhir/sid/icd-10#B66.9";
+
+    /// <summary>
     /// Literal for code: Echinococcosis
     /// </summary>
     public const string LiteralEchinococcosis = "B67";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Echinococcosis
+    /// </summary>
+    public const string LiteralSidIcd10Echinococcosis = "http://hl7.org/fhir/sid/icd-10#B67";
 
     /// <summary>
     /// Literal for code: EchinococcusGranulosusInfectionOfLiver
@@ -12988,9 +16958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEchinococcusGranulosusInfectionOfLiver = "B67.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10EchinococcusGranulosusInfectionOfLiver
+    /// </summary>
+    public const string LiteralSidIcd10EchinococcusGranulosusInfectionOfLiver = "http://hl7.org/fhir/sid/icd-10#B67.0";
+
+    /// <summary>
     /// Literal for code: EchinococcusGranulosusInfectionOfLung
     /// </summary>
     public const string LiteralEchinococcusGranulosusInfectionOfLung = "B67.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EchinococcusGranulosusInfectionOfLung
+    /// </summary>
+    public const string LiteralSidIcd10EchinococcusGranulosusInfectionOfLung = "http://hl7.org/fhir/sid/icd-10#B67.1";
 
     /// <summary>
     /// Literal for code: EchinococcusGranulosusInfectionOfBone
@@ -12998,9 +16978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEchinococcusGranulosusInfectionOfBone = "B67.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10EchinococcusGranulosusInfectionOfBone
+    /// </summary>
+    public const string LiteralSidIcd10EchinococcusGranulosusInfectionOfBone = "http://hl7.org/fhir/sid/icd-10#B67.2";
+
+    /// <summary>
     /// Literal for code: EchinococcusGranulosusInfectionOtherAndMultipleSites
     /// </summary>
     public const string LiteralEchinococcusGranulosusInfectionOtherAndMultipleSites = "B67.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EchinococcusGranulosusInfectionOtherAndMultipleSites
+    /// </summary>
+    public const string LiteralSidIcd10EchinococcusGranulosusInfectionOtherAndMultipleSites = "http://hl7.org/fhir/sid/icd-10#B67.3";
 
     /// <summary>
     /// Literal for code: EchinococcusGranulosusInfectionUnspecified
@@ -13008,9 +16998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEchinococcusGranulosusInfectionUnspecified = "B67.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10EchinococcusGranulosusInfectionUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10EchinococcusGranulosusInfectionUnspecified = "http://hl7.org/fhir/sid/icd-10#B67.4";
+
+    /// <summary>
     /// Literal for code: EchinococcusMultilocularisInfectionOfLiver
     /// </summary>
     public const string LiteralEchinococcusMultilocularisInfectionOfLiver = "B67.5";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EchinococcusMultilocularisInfectionOfLiver
+    /// </summary>
+    public const string LiteralSidIcd10EchinococcusMultilocularisInfectionOfLiver = "http://hl7.org/fhir/sid/icd-10#B67.5";
 
     /// <summary>
     /// Literal for code: EchinococcusMultilocularisInfectionOtherAndMultipleSites
@@ -13018,9 +17018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEchinococcusMultilocularisInfectionOtherAndMultipleSites = "B67.6";
 
     /// <summary>
+    /// Literal for code: SidIcd10EchinococcusMultilocularisInfectionOtherAndMultipleSites
+    /// </summary>
+    public const string LiteralSidIcd10EchinococcusMultilocularisInfectionOtherAndMultipleSites = "http://hl7.org/fhir/sid/icd-10#B67.6";
+
+    /// <summary>
     /// Literal for code: EchinococcusMultilocularisInfectionUnspecified
     /// </summary>
     public const string LiteralEchinococcusMultilocularisInfectionUnspecified = "B67.7";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EchinococcusMultilocularisInfectionUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10EchinococcusMultilocularisInfectionUnspecified = "http://hl7.org/fhir/sid/icd-10#B67.7";
 
     /// <summary>
     /// Literal for code: EchinococcosisUnspecifiedOfLiver
@@ -13028,9 +17038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEchinococcosisUnspecifiedOfLiver = "B67.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10EchinococcosisUnspecifiedOfLiver
+    /// </summary>
+    public const string LiteralSidIcd10EchinococcosisUnspecifiedOfLiver = "http://hl7.org/fhir/sid/icd-10#B67.8";
+
+    /// <summary>
     /// Literal for code: EchinococcosisOtherAndUnspecified
     /// </summary>
     public const string LiteralEchinococcosisOtherAndUnspecified = "B67.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EchinococcosisOtherAndUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10EchinococcosisOtherAndUnspecified = "http://hl7.org/fhir/sid/icd-10#B67.9";
 
     /// <summary>
     /// Literal for code: Taeniasis
@@ -13038,9 +17058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTaeniasis = "B68";
 
     /// <summary>
+    /// Literal for code: SidIcd10Taeniasis
+    /// </summary>
+    public const string LiteralSidIcd10Taeniasis = "http://hl7.org/fhir/sid/icd-10#B68";
+
+    /// <summary>
     /// Literal for code: TaeniaSoliumTaeniasis
     /// </summary>
     public const string LiteralTaeniaSoliumTaeniasis = "B68.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TaeniaSoliumTaeniasis
+    /// </summary>
+    public const string LiteralSidIcd10TaeniaSoliumTaeniasis = "http://hl7.org/fhir/sid/icd-10#B68.0";
 
     /// <summary>
     /// Literal for code: TaeniaSaginataTaeniasis
@@ -13048,9 +17078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTaeniaSaginataTaeniasis = "B68.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10TaeniaSaginataTaeniasis
+    /// </summary>
+    public const string LiteralSidIcd10TaeniaSaginataTaeniasis = "http://hl7.org/fhir/sid/icd-10#B68.1";
+
+    /// <summary>
     /// Literal for code: TaeniasisUnspecified
     /// </summary>
     public const string LiteralTaeniasisUnspecified = "B68.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TaeniasisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10TaeniasisUnspecified = "http://hl7.org/fhir/sid/icd-10#B68.9";
 
     /// <summary>
     /// Literal for code: Cysticercosis
@@ -13058,9 +17098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCysticercosis = "B69";
 
     /// <summary>
+    /// Literal for code: SidIcd10Cysticercosis
+    /// </summary>
+    public const string LiteralSidIcd10Cysticercosis = "http://hl7.org/fhir/sid/icd-10#B69";
+
+    /// <summary>
     /// Literal for code: CysticercosisOfCentralNervousSystem
     /// </summary>
     public const string LiteralCysticercosisOfCentralNervousSystem = "B69.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CysticercosisOfCentralNervousSystem
+    /// </summary>
+    public const string LiteralSidIcd10CysticercosisOfCentralNervousSystem = "http://hl7.org/fhir/sid/icd-10#B69.0";
 
     /// <summary>
     /// Literal for code: CysticercosisOfEye
@@ -13068,9 +17118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCysticercosisOfEye = "B69.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10CysticercosisOfEye
+    /// </summary>
+    public const string LiteralSidIcd10CysticercosisOfEye = "http://hl7.org/fhir/sid/icd-10#B69.1";
+
+    /// <summary>
     /// Literal for code: CysticercosisOfOtherSites
     /// </summary>
     public const string LiteralCysticercosisOfOtherSites = "B69.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CysticercosisOfOtherSites
+    /// </summary>
+    public const string LiteralSidIcd10CysticercosisOfOtherSites = "http://hl7.org/fhir/sid/icd-10#B69.8";
 
     /// <summary>
     /// Literal for code: CysticercosisUnspecified
@@ -13078,9 +17138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCysticercosisUnspecified = "B69.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10CysticercosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10CysticercosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B69.9";
+
+    /// <summary>
     /// Literal for code: DiphyllobothriasisAndSparganosis
     /// </summary>
     public const string LiteralDiphyllobothriasisAndSparganosis = "B70";
+
+    /// <summary>
+    /// Literal for code: SidIcd10DiphyllobothriasisAndSparganosis
+    /// </summary>
+    public const string LiteralSidIcd10DiphyllobothriasisAndSparganosis = "http://hl7.org/fhir/sid/icd-10#B70";
 
     /// <summary>
     /// Literal for code: Diphyllobothriasis
@@ -13088,9 +17158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDiphyllobothriasis = "B70.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10Diphyllobothriasis
+    /// </summary>
+    public const string LiteralSidIcd10Diphyllobothriasis = "http://hl7.org/fhir/sid/icd-10#B70.0";
+
+    /// <summary>
     /// Literal for code: Sparganosis
     /// </summary>
     public const string LiteralSparganosis = "B70.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Sparganosis
+    /// </summary>
+    public const string LiteralSidIcd10Sparganosis = "http://hl7.org/fhir/sid/icd-10#B70.1";
 
     /// <summary>
     /// Literal for code: OtherCestodeInfections
@@ -13098,9 +17178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherCestodeInfections = "B71";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherCestodeInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherCestodeInfections = "http://hl7.org/fhir/sid/icd-10#B71";
+
+    /// <summary>
     /// Literal for code: Hymenolepiasis
     /// </summary>
     public const string LiteralHymenolepiasis = "B71.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Hymenolepiasis
+    /// </summary>
+    public const string LiteralSidIcd10Hymenolepiasis = "http://hl7.org/fhir/sid/icd-10#B71.0";
 
     /// <summary>
     /// Literal for code: Dipylidiasis
@@ -13108,9 +17198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDipylidiasis = "B71.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10Dipylidiasis
+    /// </summary>
+    public const string LiteralSidIcd10Dipylidiasis = "http://hl7.org/fhir/sid/icd-10#B71.1";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedCestodeInfections
     /// </summary>
     public const string LiteralOtherSpecifiedCestodeInfections = "B71.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedCestodeInfections
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedCestodeInfections = "http://hl7.org/fhir/sid/icd-10#B71.8";
 
     /// <summary>
     /// Literal for code: CestodeInfectionUnspecified
@@ -13118,9 +17218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCestodeInfectionUnspecified = "B71.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10CestodeInfectionUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10CestodeInfectionUnspecified = "http://hl7.org/fhir/sid/icd-10#B71.9";
+
+    /// <summary>
     /// Literal for code: Dracunculiasis
     /// </summary>
     public const string LiteralDracunculiasis = "B72";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Dracunculiasis
+    /// </summary>
+    public const string LiteralSidIcd10Dracunculiasis = "http://hl7.org/fhir/sid/icd-10#B72";
 
     /// <summary>
     /// Literal for code: Onchocerciasis
@@ -13128,9 +17238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOnchocerciasis = "B73";
 
     /// <summary>
+    /// Literal for code: SidIcd10Onchocerciasis
+    /// </summary>
+    public const string LiteralSidIcd10Onchocerciasis = "http://hl7.org/fhir/sid/icd-10#B73";
+
+    /// <summary>
     /// Literal for code: Filariasis
     /// </summary>
     public const string LiteralFilariasis = "B74";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Filariasis
+    /// </summary>
+    public const string LiteralSidIcd10Filariasis = "http://hl7.org/fhir/sid/icd-10#B74";
 
     /// <summary>
     /// Literal for code: FilariasisDueToWuchereriaBancrofti
@@ -13138,9 +17258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFilariasisDueToWuchereriaBancrofti = "B74.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10FilariasisDueToWuchereriaBancrofti
+    /// </summary>
+    public const string LiteralSidIcd10FilariasisDueToWuchereriaBancrofti = "http://hl7.org/fhir/sid/icd-10#B74.0";
+
+    /// <summary>
     /// Literal for code: FilariasisDueToBrugiaMalayi
     /// </summary>
     public const string LiteralFilariasisDueToBrugiaMalayi = "B74.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10FilariasisDueToBrugiaMalayi
+    /// </summary>
+    public const string LiteralSidIcd10FilariasisDueToBrugiaMalayi = "http://hl7.org/fhir/sid/icd-10#B74.1";
 
     /// <summary>
     /// Literal for code: FilariasisDueToBrugiaTimori
@@ -13148,9 +17278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFilariasisDueToBrugiaTimori = "B74.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10FilariasisDueToBrugiaTimori
+    /// </summary>
+    public const string LiteralSidIcd10FilariasisDueToBrugiaTimori = "http://hl7.org/fhir/sid/icd-10#B74.2";
+
+    /// <summary>
     /// Literal for code: Loiasis
     /// </summary>
     public const string LiteralLoiasis = "B74.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Loiasis
+    /// </summary>
+    public const string LiteralSidIcd10Loiasis = "http://hl7.org/fhir/sid/icd-10#B74.3";
 
     /// <summary>
     /// Literal for code: Mansonelliasis
@@ -13158,9 +17298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMansonelliasis = "B74.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10Mansonelliasis
+    /// </summary>
+    public const string LiteralSidIcd10Mansonelliasis = "http://hl7.org/fhir/sid/icd-10#B74.4";
+
+    /// <summary>
     /// Literal for code: OtherFilariases
     /// </summary>
     public const string LiteralOtherFilariases = "B74.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherFilariases
+    /// </summary>
+    public const string LiteralSidIcd10OtherFilariases = "http://hl7.org/fhir/sid/icd-10#B74.8";
 
     /// <summary>
     /// Literal for code: FilariasisUnspecified
@@ -13168,9 +17318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFilariasisUnspecified = "B74.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10FilariasisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10FilariasisUnspecified = "http://hl7.org/fhir/sid/icd-10#B74.9";
+
+    /// <summary>
     /// Literal for code: Trichinellosis
     /// </summary>
     public const string LiteralTrichinellosis = "B75";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Trichinellosis
+    /// </summary>
+    public const string LiteralSidIcd10Trichinellosis = "http://hl7.org/fhir/sid/icd-10#B75";
 
     /// <summary>
     /// Literal for code: HookwormDiseases
@@ -13178,9 +17338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHookwormDiseases = "B76";
 
     /// <summary>
+    /// Literal for code: SidIcd10HookwormDiseases
+    /// </summary>
+    public const string LiteralSidIcd10HookwormDiseases = "http://hl7.org/fhir/sid/icd-10#B76";
+
+    /// <summary>
     /// Literal for code: Ancylostomiasis
     /// </summary>
     public const string LiteralAncylostomiasis = "B76.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Ancylostomiasis
+    /// </summary>
+    public const string LiteralSidIcd10Ancylostomiasis = "http://hl7.org/fhir/sid/icd-10#B76.0";
 
     /// <summary>
     /// Literal for code: Necatoriasis
@@ -13188,9 +17358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNecatoriasis = "B76.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10Necatoriasis
+    /// </summary>
+    public const string LiteralSidIcd10Necatoriasis = "http://hl7.org/fhir/sid/icd-10#B76.1";
+
+    /// <summary>
     /// Literal for code: OtherHookwormDiseases
     /// </summary>
     public const string LiteralOtherHookwormDiseases = "B76.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherHookwormDiseases
+    /// </summary>
+    public const string LiteralSidIcd10OtherHookwormDiseases = "http://hl7.org/fhir/sid/icd-10#B76.8";
 
     /// <summary>
     /// Literal for code: HookwormDiseaseUnspecified
@@ -13198,9 +17378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHookwormDiseaseUnspecified = "B76.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10HookwormDiseaseUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10HookwormDiseaseUnspecified = "http://hl7.org/fhir/sid/icd-10#B76.9";
+
+    /// <summary>
     /// Literal for code: Ascariasis
     /// </summary>
     public const string LiteralAscariasis = "B77";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Ascariasis
+    /// </summary>
+    public const string LiteralSidIcd10Ascariasis = "http://hl7.org/fhir/sid/icd-10#B77";
 
     /// <summary>
     /// Literal for code: AscariasisWithIntestinalComplications
@@ -13208,9 +17398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAscariasisWithIntestinalComplications = "B77.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10AscariasisWithIntestinalComplications
+    /// </summary>
+    public const string LiteralSidIcd10AscariasisWithIntestinalComplications = "http://hl7.org/fhir/sid/icd-10#B77.0";
+
+    /// <summary>
     /// Literal for code: AscariasisWithOtherComplications
     /// </summary>
     public const string LiteralAscariasisWithOtherComplications = "B77.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AscariasisWithOtherComplications
+    /// </summary>
+    public const string LiteralSidIcd10AscariasisWithOtherComplications = "http://hl7.org/fhir/sid/icd-10#B77.8";
 
     /// <summary>
     /// Literal for code: AscariasisUnspecified
@@ -13218,9 +17418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAscariasisUnspecified = "B77.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10AscariasisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10AscariasisUnspecified = "http://hl7.org/fhir/sid/icd-10#B77.9";
+
+    /// <summary>
     /// Literal for code: Strongyloidiasis
     /// </summary>
     public const string LiteralStrongyloidiasis = "B78";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Strongyloidiasis
+    /// </summary>
+    public const string LiteralSidIcd10Strongyloidiasis = "http://hl7.org/fhir/sid/icd-10#B78";
 
     /// <summary>
     /// Literal for code: IntestinalStrongyloidiasis
@@ -13228,9 +17438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIntestinalStrongyloidiasis = "B78.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10IntestinalStrongyloidiasis
+    /// </summary>
+    public const string LiteralSidIcd10IntestinalStrongyloidiasis = "http://hl7.org/fhir/sid/icd-10#B78.0";
+
+    /// <summary>
     /// Literal for code: CutaneousStrongyloidiasis
     /// </summary>
     public const string LiteralCutaneousStrongyloidiasis = "B78.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CutaneousStrongyloidiasis
+    /// </summary>
+    public const string LiteralSidIcd10CutaneousStrongyloidiasis = "http://hl7.org/fhir/sid/icd-10#B78.1";
 
     /// <summary>
     /// Literal for code: DisseminatedStrongyloidiasis
@@ -13238,9 +17458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDisseminatedStrongyloidiasis = "B78.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10DisseminatedStrongyloidiasis
+    /// </summary>
+    public const string LiteralSidIcd10DisseminatedStrongyloidiasis = "http://hl7.org/fhir/sid/icd-10#B78.7";
+
+    /// <summary>
     /// Literal for code: StrongyloidiasisUnspecified
     /// </summary>
     public const string LiteralStrongyloidiasisUnspecified = "B78.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10StrongyloidiasisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10StrongyloidiasisUnspecified = "http://hl7.org/fhir/sid/icd-10#B78.9";
 
     /// <summary>
     /// Literal for code: Trichuriasis
@@ -13248,9 +17478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTrichuriasis = "B79";
 
     /// <summary>
+    /// Literal for code: SidIcd10Trichuriasis
+    /// </summary>
+    public const string LiteralSidIcd10Trichuriasis = "http://hl7.org/fhir/sid/icd-10#B79";
+
+    /// <summary>
     /// Literal for code: Enterobiasis
     /// </summary>
     public const string LiteralEnterobiasis = "B80";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Enterobiasis
+    /// </summary>
+    public const string LiteralSidIcd10Enterobiasis = "http://hl7.org/fhir/sid/icd-10#B80";
 
     /// <summary>
     /// Literal for code: OtherIntestinalHelminthiasesNotElsewhereClassified
@@ -13258,9 +17498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherIntestinalHelminthiasesNotElsewhereClassified = "B81";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherIntestinalHelminthiasesNotElsewhereClassified
+    /// </summary>
+    public const string LiteralSidIcd10OtherIntestinalHelminthiasesNotElsewhereClassified = "http://hl7.org/fhir/sid/icd-10#B81";
+
+    /// <summary>
     /// Literal for code: Anisakiasis
     /// </summary>
     public const string LiteralAnisakiasis = "B81.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Anisakiasis
+    /// </summary>
+    public const string LiteralSidIcd10Anisakiasis = "http://hl7.org/fhir/sid/icd-10#B81.0";
 
     /// <summary>
     /// Literal for code: IntestinalCapillariasis
@@ -13268,9 +17518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIntestinalCapillariasis = "B81.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10IntestinalCapillariasis
+    /// </summary>
+    public const string LiteralSidIcd10IntestinalCapillariasis = "http://hl7.org/fhir/sid/icd-10#B81.1";
+
+    /// <summary>
     /// Literal for code: Trichostrongyliasis
     /// </summary>
     public const string LiteralTrichostrongyliasis = "B81.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Trichostrongyliasis
+    /// </summary>
+    public const string LiteralSidIcd10Trichostrongyliasis = "http://hl7.org/fhir/sid/icd-10#B81.2";
 
     /// <summary>
     /// Literal for code: IntestinalAngiostrongyliasis
@@ -13278,9 +17538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIntestinalAngiostrongyliasis = "B81.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10IntestinalAngiostrongyliasis
+    /// </summary>
+    public const string LiteralSidIcd10IntestinalAngiostrongyliasis = "http://hl7.org/fhir/sid/icd-10#B81.3";
+
+    /// <summary>
     /// Literal for code: MixedIntestinalHelminthiases
     /// </summary>
     public const string LiteralMixedIntestinalHelminthiases = "B81.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MixedIntestinalHelminthiases
+    /// </summary>
+    public const string LiteralSidIcd10MixedIntestinalHelminthiases = "http://hl7.org/fhir/sid/icd-10#B81.4";
 
     /// <summary>
     /// Literal for code: OtherSpecifiedIntestinalHelminthiases
@@ -13288,9 +17558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherSpecifiedIntestinalHelminthiases = "B81.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedIntestinalHelminthiases
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedIntestinalHelminthiases = "http://hl7.org/fhir/sid/icd-10#B81.8";
+
+    /// <summary>
     /// Literal for code: UnspecifiedIntestinalParasitism
     /// </summary>
     public const string LiteralUnspecifiedIntestinalParasitism = "B82";
+
+    /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedIntestinalParasitism
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedIntestinalParasitism = "http://hl7.org/fhir/sid/icd-10#B82";
 
     /// <summary>
     /// Literal for code: IntestinalHelminthiasisUnspecified
@@ -13298,9 +17578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIntestinalHelminthiasisUnspecified = "B82.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10IntestinalHelminthiasisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10IntestinalHelminthiasisUnspecified = "http://hl7.org/fhir/sid/icd-10#B82.0";
+
+    /// <summary>
     /// Literal for code: IntestinalParasitismUnspecified
     /// </summary>
     public const string LiteralIntestinalParasitismUnspecified = "B82.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10IntestinalParasitismUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10IntestinalParasitismUnspecified = "http://hl7.org/fhir/sid/icd-10#B82.9";
 
     /// <summary>
     /// Literal for code: OtherHelminthiases
@@ -13308,9 +17598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherHelminthiases = "B83";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherHelminthiases
+    /// </summary>
+    public const string LiteralSidIcd10OtherHelminthiases = "http://hl7.org/fhir/sid/icd-10#B83";
+
+    /// <summary>
     /// Literal for code: VisceralLarvaMigrans
     /// </summary>
     public const string LiteralVisceralLarvaMigrans = "B83.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10VisceralLarvaMigrans
+    /// </summary>
+    public const string LiteralSidIcd10VisceralLarvaMigrans = "http://hl7.org/fhir/sid/icd-10#B83.0";
 
     /// <summary>
     /// Literal for code: Gnathostomiasis
@@ -13318,9 +17618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGnathostomiasis = "B83.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10Gnathostomiasis
+    /// </summary>
+    public const string LiteralSidIcd10Gnathostomiasis = "http://hl7.org/fhir/sid/icd-10#B83.1";
+
+    /// <summary>
     /// Literal for code: AngiostrongyliasisDueToParastrongylusCantonensis
     /// </summary>
     public const string LiteralAngiostrongyliasisDueToParastrongylusCantonensis = "B83.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AngiostrongyliasisDueToParastrongylusCantonensis
+    /// </summary>
+    public const string LiteralSidIcd10AngiostrongyliasisDueToParastrongylusCantonensis = "http://hl7.org/fhir/sid/icd-10#B83.2";
 
     /// <summary>
     /// Literal for code: Syngamiasis
@@ -13328,9 +17638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSyngamiasis = "B83.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10Syngamiasis
+    /// </summary>
+    public const string LiteralSidIcd10Syngamiasis = "http://hl7.org/fhir/sid/icd-10#B83.3";
+
+    /// <summary>
     /// Literal for code: InternalHirudiniasis
     /// </summary>
     public const string LiteralInternalHirudiniasis = "B83.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10InternalHirudiniasis
+    /// </summary>
+    public const string LiteralSidIcd10InternalHirudiniasis = "http://hl7.org/fhir/sid/icd-10#B83.4";
 
     /// <summary>
     /// Literal for code: OtherSpecifiedHelminthiases
@@ -13338,9 +17658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherSpecifiedHelminthiases = "B83.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedHelminthiases
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedHelminthiases = "http://hl7.org/fhir/sid/icd-10#B83.8";
+
+    /// <summary>
     /// Literal for code: HelminthiasisUnspecified
     /// </summary>
     public const string LiteralHelminthiasisUnspecified = "B83.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HelminthiasisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10HelminthiasisUnspecified = "http://hl7.org/fhir/sid/icd-10#B83.9";
 
     /// <summary>
     /// Literal for code: PediculosisAndPhthiriasis
@@ -13348,9 +17678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPediculosisAndPhthiriasis = "B85";
 
     /// <summary>
+    /// Literal for code: SidIcd10PediculosisAndPhthiriasis
+    /// </summary>
+    public const string LiteralSidIcd10PediculosisAndPhthiriasis = "http://hl7.org/fhir/sid/icd-10#B85";
+
+    /// <summary>
     /// Literal for code: PediculosisAcariasisAndOtherInfestations
     /// </summary>
     public const string LiteralPediculosisAcariasisAndOtherInfestations = "B85-B89";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PediculosisAcariasisAndOtherInfestations
+    /// </summary>
+    public const string LiteralSidIcd10PediculosisAcariasisAndOtherInfestations = "http://hl7.org/fhir/sid/icd-10#B85-B89";
 
     /// <summary>
     /// Literal for code: PediculosisDueToPediculusHumanusCapitis
@@ -13358,9 +17698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPediculosisDueToPediculusHumanusCapitis = "B85.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10PediculosisDueToPediculusHumanusCapitis
+    /// </summary>
+    public const string LiteralSidIcd10PediculosisDueToPediculusHumanusCapitis = "http://hl7.org/fhir/sid/icd-10#B85.0";
+
+    /// <summary>
     /// Literal for code: PediculosisDueToPediculusHumanusCorporis
     /// </summary>
     public const string LiteralPediculosisDueToPediculusHumanusCorporis = "B85.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PediculosisDueToPediculusHumanusCorporis
+    /// </summary>
+    public const string LiteralSidIcd10PediculosisDueToPediculusHumanusCorporis = "http://hl7.org/fhir/sid/icd-10#B85.1";
 
     /// <summary>
     /// Literal for code: PediculosisUnspecified
@@ -13368,9 +17718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPediculosisUnspecified = "B85.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10PediculosisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10PediculosisUnspecified = "http://hl7.org/fhir/sid/icd-10#B85.2";
+
+    /// <summary>
     /// Literal for code: Phthiriasis
     /// </summary>
     public const string LiteralPhthiriasis = "B85.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Phthiriasis
+    /// </summary>
+    public const string LiteralSidIcd10Phthiriasis = "http://hl7.org/fhir/sid/icd-10#B85.3";
 
     /// <summary>
     /// Literal for code: MixedPediculosisAndPhthiriasis
@@ -13378,9 +17738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMixedPediculosisAndPhthiriasis = "B85.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10MixedPediculosisAndPhthiriasis
+    /// </summary>
+    public const string LiteralSidIcd10MixedPediculosisAndPhthiriasis = "http://hl7.org/fhir/sid/icd-10#B85.4";
+
+    /// <summary>
     /// Literal for code: Scabies
     /// </summary>
     public const string LiteralScabies = "B86";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Scabies
+    /// </summary>
+    public const string LiteralSidIcd10Scabies = "http://hl7.org/fhir/sid/icd-10#B86";
 
     /// <summary>
     /// Literal for code: Myiasis
@@ -13388,9 +17758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMyiasis = "B87";
 
     /// <summary>
+    /// Literal for code: SidIcd10Myiasis
+    /// </summary>
+    public const string LiteralSidIcd10Myiasis = "http://hl7.org/fhir/sid/icd-10#B87";
+
+    /// <summary>
     /// Literal for code: CutaneousMyiasis
     /// </summary>
     public const string LiteralCutaneousMyiasis = "B87.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CutaneousMyiasis
+    /// </summary>
+    public const string LiteralSidIcd10CutaneousMyiasis = "http://hl7.org/fhir/sid/icd-10#B87.0";
 
     /// <summary>
     /// Literal for code: WoundMyiasis
@@ -13398,9 +17778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWoundMyiasis = "B87.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10WoundMyiasis
+    /// </summary>
+    public const string LiteralSidIcd10WoundMyiasis = "http://hl7.org/fhir/sid/icd-10#B87.1";
+
+    /// <summary>
     /// Literal for code: OcularMyiasis
     /// </summary>
     public const string LiteralOcularMyiasis = "B87.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OcularMyiasis
+    /// </summary>
+    public const string LiteralSidIcd10OcularMyiasis = "http://hl7.org/fhir/sid/icd-10#B87.2";
 
     /// <summary>
     /// Literal for code: NasopharyngealMyiasis
@@ -13408,9 +17798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNasopharyngealMyiasis = "B87.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10NasopharyngealMyiasis
+    /// </summary>
+    public const string LiteralSidIcd10NasopharyngealMyiasis = "http://hl7.org/fhir/sid/icd-10#B87.3";
+
+    /// <summary>
     /// Literal for code: AuralMyiasis
     /// </summary>
     public const string LiteralAuralMyiasis = "B87.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AuralMyiasis
+    /// </summary>
+    public const string LiteralSidIcd10AuralMyiasis = "http://hl7.org/fhir/sid/icd-10#B87.4";
 
     /// <summary>
     /// Literal for code: MyiasisOfOtherSites
@@ -13418,9 +17818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMyiasisOfOtherSites = "B87.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10MyiasisOfOtherSites
+    /// </summary>
+    public const string LiteralSidIcd10MyiasisOfOtherSites = "http://hl7.org/fhir/sid/icd-10#B87.8";
+
+    /// <summary>
     /// Literal for code: MyiasisUnspecified
     /// </summary>
     public const string LiteralMyiasisUnspecified = "B87.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MyiasisUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10MyiasisUnspecified = "http://hl7.org/fhir/sid/icd-10#B87.9";
 
     /// <summary>
     /// Literal for code: OtherInfestations
@@ -13428,9 +17838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherInfestations = "B88";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherInfestations
+    /// </summary>
+    public const string LiteralSidIcd10OtherInfestations = "http://hl7.org/fhir/sid/icd-10#B88";
+
+    /// <summary>
     /// Literal for code: OtherAcariasis
     /// </summary>
     public const string LiteralOtherAcariasis = "B88.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherAcariasis
+    /// </summary>
+    public const string LiteralSidIcd10OtherAcariasis = "http://hl7.org/fhir/sid/icd-10#B88.0";
 
     /// <summary>
     /// Literal for code: TungiasisSandfleaInfestation
@@ -13438,9 +17858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTungiasisSandfleaInfestation = "B88.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10TungiasisSandfleaInfestation
+    /// </summary>
+    public const string LiteralSidIcd10TungiasisSandfleaInfestation = "http://hl7.org/fhir/sid/icd-10#B88.1";
+
+    /// <summary>
     /// Literal for code: OtherArthropodInfestations
     /// </summary>
     public const string LiteralOtherArthropodInfestations = "B88.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherArthropodInfestations
+    /// </summary>
+    public const string LiteralSidIcd10OtherArthropodInfestations = "http://hl7.org/fhir/sid/icd-10#B88.2";
 
     /// <summary>
     /// Literal for code: ExternalHirudiniasis
@@ -13448,9 +17878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExternalHirudiniasis = "B88.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10ExternalHirudiniasis
+    /// </summary>
+    public const string LiteralSidIcd10ExternalHirudiniasis = "http://hl7.org/fhir/sid/icd-10#B88.3";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedInfestations
     /// </summary>
     public const string LiteralOtherSpecifiedInfestations = "B88.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedInfestations
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedInfestations = "http://hl7.org/fhir/sid/icd-10#B88.8";
 
     /// <summary>
     /// Literal for code: InfestationUnspecified
@@ -13458,9 +17898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInfestationUnspecified = "B88.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10InfestationUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10InfestationUnspecified = "http://hl7.org/fhir/sid/icd-10#B88.9";
+
+    /// <summary>
     /// Literal for code: UnspecifiedParasiticDisease
     /// </summary>
     public const string LiteralUnspecifiedParasiticDisease = "B89";
+
+    /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedParasiticDisease
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedParasiticDisease = "http://hl7.org/fhir/sid/icd-10#B89";
 
     /// <summary>
     /// Literal for code: SequelaeOfTuberculosis
@@ -13468,9 +17918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSequelaeOfTuberculosis = "B90";
 
     /// <summary>
+    /// Literal for code: SidIcd10SequelaeOfTuberculosis
+    /// </summary>
+    public const string LiteralSidIcd10SequelaeOfTuberculosis = "http://hl7.org/fhir/sid/icd-10#B90";
+
+    /// <summary>
     /// Literal for code: SequelaeOfInfectiousAndParasiticDiseases
     /// </summary>
     public const string LiteralSequelaeOfInfectiousAndParasiticDiseases = "B90-B94";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SequelaeOfInfectiousAndParasiticDiseases
+    /// </summary>
+    public const string LiteralSidIcd10SequelaeOfInfectiousAndParasiticDiseases = "http://hl7.org/fhir/sid/icd-10#B90-B94";
 
     /// <summary>
     /// Literal for code: SequelaeOfCentralNervousSystemTuberculosis
@@ -13478,9 +17938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSequelaeOfCentralNervousSystemTuberculosis = "B90.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10SequelaeOfCentralNervousSystemTuberculosis
+    /// </summary>
+    public const string LiteralSidIcd10SequelaeOfCentralNervousSystemTuberculosis = "http://hl7.org/fhir/sid/icd-10#B90.0";
+
+    /// <summary>
     /// Literal for code: SequelaeOfGenitourinaryTuberculosis
     /// </summary>
     public const string LiteralSequelaeOfGenitourinaryTuberculosis = "B90.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SequelaeOfGenitourinaryTuberculosis
+    /// </summary>
+    public const string LiteralSidIcd10SequelaeOfGenitourinaryTuberculosis = "http://hl7.org/fhir/sid/icd-10#B90.1";
 
     /// <summary>
     /// Literal for code: SequelaeOfTuberculosisOfBonesAndJoints
@@ -13488,9 +17958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSequelaeOfTuberculosisOfBonesAndJoints = "B90.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10SequelaeOfTuberculosisOfBonesAndJoints
+    /// </summary>
+    public const string LiteralSidIcd10SequelaeOfTuberculosisOfBonesAndJoints = "http://hl7.org/fhir/sid/icd-10#B90.2";
+
+    /// <summary>
     /// Literal for code: SequelaeOfTuberculosisOfOtherOrgans
     /// </summary>
     public const string LiteralSequelaeOfTuberculosisOfOtherOrgans = "B90.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SequelaeOfTuberculosisOfOtherOrgans
+    /// </summary>
+    public const string LiteralSidIcd10SequelaeOfTuberculosisOfOtherOrgans = "http://hl7.org/fhir/sid/icd-10#B90.8";
 
     /// <summary>
     /// Literal for code: SequelaeOfRespiratoryAndUnspecifiedTuberculosis
@@ -13498,9 +17978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSequelaeOfRespiratoryAndUnspecifiedTuberculosis = "B90.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10SequelaeOfRespiratoryAndUnspecifiedTuberculosis
+    /// </summary>
+    public const string LiteralSidIcd10SequelaeOfRespiratoryAndUnspecifiedTuberculosis = "http://hl7.org/fhir/sid/icd-10#B90.9";
+
+    /// <summary>
     /// Literal for code: SequelaeOfPoliomyelitis
     /// </summary>
     public const string LiteralSequelaeOfPoliomyelitis = "B91";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SequelaeOfPoliomyelitis
+    /// </summary>
+    public const string LiteralSidIcd10SequelaeOfPoliomyelitis = "http://hl7.org/fhir/sid/icd-10#B91";
 
     /// <summary>
     /// Literal for code: SequelaeOfLeprosy
@@ -13508,9 +17998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSequelaeOfLeprosy = "B92";
 
     /// <summary>
+    /// Literal for code: SidIcd10SequelaeOfLeprosy
+    /// </summary>
+    public const string LiteralSidIcd10SequelaeOfLeprosy = "http://hl7.org/fhir/sid/icd-10#B92";
+
+    /// <summary>
     /// Literal for code: SequelaeOfOtherAndUnspecifiedInfectiousAndParasiticDiseases
     /// </summary>
     public const string LiteralSequelaeOfOtherAndUnspecifiedInfectiousAndParasiticDiseases = "B94";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SequelaeOfOtherAndUnspecifiedInfectiousAndParasiticDiseases
+    /// </summary>
+    public const string LiteralSidIcd10SequelaeOfOtherAndUnspecifiedInfectiousAndParasiticDiseases = "http://hl7.org/fhir/sid/icd-10#B94";
 
     /// <summary>
     /// Literal for code: SequelaeOfTrachoma
@@ -13518,9 +18018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSequelaeOfTrachoma = "B94.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10SequelaeOfTrachoma
+    /// </summary>
+    public const string LiteralSidIcd10SequelaeOfTrachoma = "http://hl7.org/fhir/sid/icd-10#B94.0";
+
+    /// <summary>
     /// Literal for code: SequelaeOfViralEncephalitis
     /// </summary>
     public const string LiteralSequelaeOfViralEncephalitis = "B94.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SequelaeOfViralEncephalitis
+    /// </summary>
+    public const string LiteralSidIcd10SequelaeOfViralEncephalitis = "http://hl7.org/fhir/sid/icd-10#B94.1";
 
     /// <summary>
     /// Literal for code: SequelaeOfViralHepatitis
@@ -13528,9 +18038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSequelaeOfViralHepatitis = "B94.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10SequelaeOfViralHepatitis
+    /// </summary>
+    public const string LiteralSidIcd10SequelaeOfViralHepatitis = "http://hl7.org/fhir/sid/icd-10#B94.2";
+
+    /// <summary>
     /// Literal for code: SequelaeOfOtherSpecifiedInfectiousAndParasiticDiseases
     /// </summary>
     public const string LiteralSequelaeOfOtherSpecifiedInfectiousAndParasiticDiseases = "B94.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SequelaeOfOtherSpecifiedInfectiousAndParasiticDiseases
+    /// </summary>
+    public const string LiteralSidIcd10SequelaeOfOtherSpecifiedInfectiousAndParasiticDiseases = "http://hl7.org/fhir/sid/icd-10#B94.8";
 
     /// <summary>
     /// Literal for code: SequelaeOfUnspecifiedInfectiousOrParasiticDisease
@@ -13538,9 +18058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSequelaeOfUnspecifiedInfectiousOrParasiticDisease = "B94.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10SequelaeOfUnspecifiedInfectiousOrParasiticDisease
+    /// </summary>
+    public const string LiteralSidIcd10SequelaeOfUnspecifiedInfectiousOrParasiticDisease = "http://hl7.org/fhir/sid/icd-10#B94.9";
+
+    /// <summary>
     /// Literal for code: StreptococcusAndStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters
     /// </summary>
     public const string LiteralStreptococcusAndStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = "B95";
+
+    /// <summary>
+    /// Literal for code: SidIcd10StreptococcusAndStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10StreptococcusAndStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B95";
 
     /// <summary>
     /// Literal for code: BacterialViralAndOtherInfectiousAgents
@@ -13548,9 +18078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBacterialViralAndOtherInfectiousAgents = "B95-B98";
 
     /// <summary>
+    /// Literal for code: SidIcd10BacterialViralAndOtherInfectiousAgents
+    /// </summary>
+    public const string LiteralSidIcd10BacterialViralAndOtherInfectiousAgents = "http://hl7.org/fhir/sid/icd-10#B95-B98";
+
+    /// <summary>
     /// Literal for code: StreptococcusGroupAAsTheCauseOfDiseasesClassifiedToOtherChapters
     /// </summary>
     public const string LiteralStreptococcusGroupAAsTheCauseOfDiseasesClassifiedToOtherChapters = "B95.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10StreptococcusGroupAAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10StreptococcusGroupAAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B95.0";
 
     /// <summary>
     /// Literal for code: StreptococcusGroupBAsTheCauseOfDiseasesClassifiedToOtherChapters
@@ -13558,9 +18098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStreptococcusGroupBAsTheCauseOfDiseasesClassifiedToOtherChapters = "B95.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10StreptococcusGroupBAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10StreptococcusGroupBAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B95.1";
+
+    /// <summary>
     /// Literal for code: StreptococcusGroupDAndEnterococcusAsTheCauseOfDiseasesClassifiedToOtherChapters
     /// </summary>
     public const string LiteralStreptococcusGroupDAndEnterococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = "B95.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10StreptococcusGroupDAndEnterococcusAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10StreptococcusGroupDAndEnterococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B95.2";
 
     /// <summary>
     /// Literal for code: StreptococcusPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters
@@ -13568,9 +18118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStreptococcusPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters = "B95.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10StreptococcusPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10StreptococcusPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B95.3";
+
+    /// <summary>
     /// Literal for code: OtherStreptococcusAsTheCauseOfDiseasesClassifiedToOtherChapters
     /// </summary>
     public const string LiteralOtherStreptococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = "B95.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherStreptococcusAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10OtherStreptococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B95.4";
 
     /// <summary>
     /// Literal for code: UnspecifiedStreptococcusAsTheCauseOfDiseasesClassifiedToOtherChapters
@@ -13578,9 +18138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUnspecifiedStreptococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = "B95.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedStreptococcusAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedStreptococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B95.5";
+
+    /// <summary>
     /// Literal for code: StaphylococcusAureusAsTheCauseOfDiseasesClassifiedToOtherChapters
     /// </summary>
     public const string LiteralStaphylococcusAureusAsTheCauseOfDiseasesClassifiedToOtherChapters = "B95.6";
+
+    /// <summary>
+    /// Literal for code: SidIcd10StaphylococcusAureusAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10StaphylococcusAureusAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B95.6";
 
     /// <summary>
     /// Literal for code: OtherStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters
@@ -13588,9 +18158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = "B95.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10OtherStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B95.7";
+
+    /// <summary>
     /// Literal for code: UnspecifiedStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters
     /// </summary>
     public const string LiteralUnspecifiedStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = "B95.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10UnspecifiedStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10UnspecifiedStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B95.8";
 
     /// <summary>
     /// Literal for code: OtherSpecifiedBacterialAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters
@@ -13598,9 +18178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherSpecifiedBacterialAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters = "B96";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedBacterialAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedBacterialAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B96";
+
+    /// <summary>
     /// Literal for code: MycoplasmaPneumoniaeMPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters
     /// </summary>
     public const string LiteralMycoplasmaPneumoniaeMPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters = "B96.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MycoplasmaPneumoniaeMPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10MycoplasmaPneumoniaeMPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B96.0";
 
     /// <summary>
     /// Literal for code: KlebsiellaPneumoniaeKPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters
@@ -13608,9 +18198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralKlebsiellaPneumoniaeKPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters = "B96.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10KlebsiellaPneumoniaeKPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10KlebsiellaPneumoniaeKPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B96.1";
+
+    /// <summary>
     /// Literal for code: EscherichiaColiEColiAsTheCauseOfDiseasesClassifiedToOtherChapters
     /// </summary>
     public const string LiteralEscherichiaColiEColiAsTheCauseOfDiseasesClassifiedToOtherChapters = "B96.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10EscherichiaColiEColiAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10EscherichiaColiEColiAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B96.2";
 
     /// <summary>
     /// Literal for code: HaemophilusInfluenzaeHInfluenzaeAsTheCauseOfDiseasesClassifiedToOtherChapters
@@ -13618,9 +18218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHaemophilusInfluenzaeHInfluenzaeAsTheCauseOfDiseasesClassifiedToOtherChapters = "B96.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10HaemophilusInfluenzaeHInfluenzaeAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10HaemophilusInfluenzaeHInfluenzaeAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B96.3";
+
+    /// <summary>
     /// Literal for code: ProteusMirabilisMorganiiAsTheCauseOfDiseasesClassifiedToOtherChapters
     /// </summary>
     public const string LiteralProteusMirabilisMorganiiAsTheCauseOfDiseasesClassifiedToOtherChapters = "B96.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ProteusMirabilisMorganiiAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10ProteusMirabilisMorganiiAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B96.4";
 
     /// <summary>
     /// Literal for code: PseudomonasAeruginosaAsTheCauseOfDiseasesClassifiedToOtherChapters
@@ -13628,9 +18238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPseudomonasAeruginosaAsTheCauseOfDiseasesClassifiedToOtherChapters = "B96.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10PseudomonasAeruginosaAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10PseudomonasAeruginosaAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B96.5";
+
+    /// <summary>
     /// Literal for code: BacillusFragilisBFragilisAsTheCauseOfDiseasesClassifiedToOtherChapters
     /// </summary>
     public const string LiteralBacillusFragilisBFragilisAsTheCauseOfDiseasesClassifiedToOtherChapters = "B96.6";
+
+    /// <summary>
+    /// Literal for code: SidIcd10BacillusFragilisBFragilisAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10BacillusFragilisBFragilisAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B96.6";
 
     /// <summary>
     /// Literal for code: ClostridiumPerfringensCPerfringensAsTheCauseOfDiseasesClassifiedToOtherChapters
@@ -13638,9 +18258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralClostridiumPerfringensCPerfringensAsTheCauseOfDiseasesClassifiedToOtherChapters = "B96.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10ClostridiumPerfringensCPerfringensAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10ClostridiumPerfringensCPerfringensAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B96.7";
+
+    /// <summary>
     /// Literal for code: OtherSpecifiedBacterialAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters_2
     /// </summary>
     public const string LiteralOtherSpecifiedBacterialAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters_2 = "B96.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedBacterialAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters_2
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedBacterialAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters_2 = "http://hl7.org/fhir/sid/icd-10#B96.8";
 
     /// <summary>
     /// Literal for code: ViralAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters
@@ -13648,9 +18278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralViralAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters = "B97";
 
     /// <summary>
+    /// Literal for code: SidIcd10ViralAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10ViralAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B97";
+
+    /// <summary>
     /// Literal for code: AdenovirusAsTheCauseOfDiseasesClassifiedToOtherChapters
     /// </summary>
     public const string LiteralAdenovirusAsTheCauseOfDiseasesClassifiedToOtherChapters = "B97.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AdenovirusAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10AdenovirusAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B97.0";
 
     /// <summary>
     /// Literal for code: EnterovirusAsTheCauseOfDiseasesClassifiedToOtherChapters
@@ -13658,9 +18298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEnterovirusAsTheCauseOfDiseasesClassifiedToOtherChapters = "B97.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10EnterovirusAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10EnterovirusAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B97.1";
+
+    /// <summary>
     /// Literal for code: CoronavirusAsTheCauseOfDiseasesClassifiedToOtherChapters
     /// </summary>
     public const string LiteralCoronavirusAsTheCauseOfDiseasesClassifiedToOtherChapters = "B97.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CoronavirusAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10CoronavirusAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B97.2";
 
     /// <summary>
     /// Literal for code: RetrovirusAsTheCauseOfDiseasesClassifiedToOtherChapters
@@ -13668,9 +18318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRetrovirusAsTheCauseOfDiseasesClassifiedToOtherChapters = "B97.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10RetrovirusAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10RetrovirusAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B97.3";
+
+    /// <summary>
     /// Literal for code: RespiratorySyncytialVirusAsTheCauseOfDiseasesClassifiedToOtherChapters
     /// </summary>
     public const string LiteralRespiratorySyncytialVirusAsTheCauseOfDiseasesClassifiedToOtherChapters = "B97.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10RespiratorySyncytialVirusAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10RespiratorySyncytialVirusAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B97.4";
 
     /// <summary>
     /// Literal for code: ReovirusAsTheCauseOfDiseasesClassifiedToOtherChapters
@@ -13678,9 +18338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralReovirusAsTheCauseOfDiseasesClassifiedToOtherChapters = "B97.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10ReovirusAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10ReovirusAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B97.5";
+
+    /// <summary>
     /// Literal for code: ParvovirusAsTheCauseOfDiseasesClassifiedToOtherChapters
     /// </summary>
     public const string LiteralParvovirusAsTheCauseOfDiseasesClassifiedToOtherChapters = "B97.6";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ParvovirusAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10ParvovirusAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B97.6";
 
     /// <summary>
     /// Literal for code: PapillomavirusAsTheCauseOfDiseasesClassifiedToOtherChapters
@@ -13688,9 +18358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPapillomavirusAsTheCauseOfDiseasesClassifiedToOtherChapters = "B97.7";
 
     /// <summary>
+    /// Literal for code: SidIcd10PapillomavirusAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10PapillomavirusAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B97.7";
+
+    /// <summary>
     /// Literal for code: OtherViralAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters
     /// </summary>
     public const string LiteralOtherViralAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters = "B97.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherViralAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10OtherViralAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B97.8";
 
     /// <summary>
     /// Literal for code: OtherSpecifiedInfectiousAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters
@@ -13698,9 +18378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherSpecifiedInfectiousAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters = "B98";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherSpecifiedInfectiousAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10OtherSpecifiedInfectiousAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B98";
+
+    /// <summary>
     /// Literal for code: HelicobacterPyloriHPyloriAsTheCauseOfDiseasesClassifiedToOtherChapters
     /// </summary>
     public const string LiteralHelicobacterPyloriHPyloriAsTheCauseOfDiseasesClassifiedToOtherChapters = "B98.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HelicobacterPyloriHPyloriAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10HelicobacterPyloriHPyloriAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B98.0";
 
     /// <summary>
     /// Literal for code: VibrioVulnificusAsTheCauseOfDiseasesClassifiedToOtherChapters
@@ -13708,9 +18398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVibrioVulnificusAsTheCauseOfDiseasesClassifiedToOtherChapters = "B98.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10VibrioVulnificusAsTheCauseOfDiseasesClassifiedToOtherChapters
+    /// </summary>
+    public const string LiteralSidIcd10VibrioVulnificusAsTheCauseOfDiseasesClassifiedToOtherChapters = "http://hl7.org/fhir/sid/icd-10#B98.1";
+
+    /// <summary>
     /// Literal for code: OtherAndUnspecifiedInfectiousDiseases
     /// </summary>
     public const string LiteralOtherAndUnspecifiedInfectiousDiseases = "B99";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OtherAndUnspecifiedInfectiousDiseases
+    /// </summary>
+    public const string LiteralSidIcd10OtherAndUnspecifiedInfectiousDiseases = "http://hl7.org/fhir/sid/icd-10#B99";
 
     /// <summary>
     /// Literal for code: OtherInfectiousDiseases
@@ -13718,9 +18418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherInfectiousDiseases = "B99-B99";
 
     /// <summary>
+    /// Literal for code: SidIcd10OtherInfectiousDiseases
+    /// </summary>
+    public const string LiteralSidIcd10OtherInfectiousDiseases = "http://hl7.org/fhir/sid/icd-10#B99-B99";
+
+    /// <summary>
     /// Literal for code: MalignantNeoplasmOfLip
     /// </summary>
     public const string LiteralMalignantNeoplasmOfLip = "C00";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MalignantNeoplasmOfLip
+    /// </summary>
+    public const string LiteralSidIcd10MalignantNeoplasmOfLip = "http://hl7.org/fhir/sid/icd-10#C00";
 
     /// <summary>
     /// Literal for code: MalignantNeoplasmsOfLipOralCavityAndPharynx
@@ -13728,9 +18438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMalignantNeoplasmsOfLipOralCavityAndPharynx = "C00-C14";
 
     /// <summary>
+    /// Literal for code: SidIcd10MalignantNeoplasmsOfLipOralCavityAndPharynx
+    /// </summary>
+    public const string LiteralSidIcd10MalignantNeoplasmsOfLipOralCavityAndPharynx = "http://hl7.org/fhir/sid/icd-10#C00-C14";
+
+    /// <summary>
     /// Literal for code: MalignantNeoplasmsStatedOrPresumedToBePrimaryOfSpecifiedSitesExceptOfLymphoidHaematopoieticAndRelatedTissue
     /// </summary>
     public const string LiteralMalignantNeoplasmsStatedOrPresumedToBePrimaryOfSpecifiedSitesExceptOfLymphoidHaematopoieticAndRelatedTissue = "C00-C75";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MalignantNeoplasmsStatedOrPresumedToBePrimaryOfSpecifiedSitesExceptOfLymphoidHaematopoieticAndRelatedTissue
+    /// </summary>
+    public const string LiteralSidIcd10MalignantNeoplasmsStatedOrPresumedToBePrimaryOfSpecifiedSitesExceptOfLymphoidHaematopoieticAndRelatedTissue = "http://hl7.org/fhir/sid/icd-10#C00-C75";
 
     /// <summary>
     /// Literal for code: MalignantNeoplasms
@@ -13738,9 +18458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMalignantNeoplasms = "C00-C97";
 
     /// <summary>
+    /// Literal for code: SidIcd10MalignantNeoplasms
+    /// </summary>
+    public const string LiteralSidIcd10MalignantNeoplasms = "http://hl7.org/fhir/sid/icd-10#C00-C97";
+
+    /// <summary>
     /// Literal for code: ExternalUpperLip
     /// </summary>
     public const string LiteralExternalUpperLip = "C00.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ExternalUpperLip
+    /// </summary>
+    public const string LiteralSidIcd10ExternalUpperLip = "http://hl7.org/fhir/sid/icd-10#C00.0";
 
     /// <summary>
     /// Literal for code: ExternalLowerLip
@@ -13748,9 +18478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExternalLowerLip = "C00.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10ExternalLowerLip
+    /// </summary>
+    public const string LiteralSidIcd10ExternalLowerLip = "http://hl7.org/fhir/sid/icd-10#C00.1";
+
+    /// <summary>
     /// Literal for code: ExternalLipUnspecified
     /// </summary>
     public const string LiteralExternalLipUnspecified = "C00.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10ExternalLipUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10ExternalLipUnspecified = "http://hl7.org/fhir/sid/icd-10#C00.2";
 
     /// <summary>
     /// Literal for code: UpperLipInnerAspect
@@ -13758,9 +18498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUpperLipInnerAspect = "C00.3";
 
     /// <summary>
+    /// Literal for code: SidIcd10UpperLipInnerAspect
+    /// </summary>
+    public const string LiteralSidIcd10UpperLipInnerAspect = "http://hl7.org/fhir/sid/icd-10#C00.3";
+
+    /// <summary>
     /// Literal for code: LowerLipInnerAspect
     /// </summary>
     public const string LiteralLowerLipInnerAspect = "C00.4";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LowerLipInnerAspect
+    /// </summary>
+    public const string LiteralSidIcd10LowerLipInnerAspect = "http://hl7.org/fhir/sid/icd-10#C00.4";
 
     /// <summary>
     /// Literal for code: LipUnspecifiedInnerAspect
@@ -13768,9 +18518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLipUnspecifiedInnerAspect = "C00.5";
 
     /// <summary>
+    /// Literal for code: SidIcd10LipUnspecifiedInnerAspect
+    /// </summary>
+    public const string LiteralSidIcd10LipUnspecifiedInnerAspect = "http://hl7.org/fhir/sid/icd-10#C00.5";
+
+    /// <summary>
     /// Literal for code: CommissureOfLip
     /// </summary>
     public const string LiteralCommissureOfLip = "C00.6";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CommissureOfLip
+    /// </summary>
+    public const string LiteralSidIcd10CommissureOfLip = "http://hl7.org/fhir/sid/icd-10#C00.6";
 
     /// <summary>
     /// Literal for code: OverlappingLesionOfLip
@@ -13778,9 +18538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOverlappingLesionOfLip = "C00.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OverlappingLesionOfLip
+    /// </summary>
+    public const string LiteralSidIcd10OverlappingLesionOfLip = "http://hl7.org/fhir/sid/icd-10#C00.8";
+
+    /// <summary>
     /// Literal for code: LipUnspecified
     /// </summary>
     public const string LiteralLipUnspecified = "C00.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LipUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10LipUnspecified = "http://hl7.org/fhir/sid/icd-10#C00.9";
 
     /// <summary>
     /// Literal for code: MalignantNeoplasmOfBaseOfTongue
@@ -13788,9 +18558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMalignantNeoplasmOfBaseOfTongue = "C01";
 
     /// <summary>
+    /// Literal for code: SidIcd10MalignantNeoplasmOfBaseOfTongue
+    /// </summary>
+    public const string LiteralSidIcd10MalignantNeoplasmOfBaseOfTongue = "http://hl7.org/fhir/sid/icd-10#C01";
+
+    /// <summary>
     /// Literal for code: MalignantNeoplasmOfOtherAndUnspecifiedPartsOfTongue
     /// </summary>
     public const string LiteralMalignantNeoplasmOfOtherAndUnspecifiedPartsOfTongue = "C02";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MalignantNeoplasmOfOtherAndUnspecifiedPartsOfTongue
+    /// </summary>
+    public const string LiteralSidIcd10MalignantNeoplasmOfOtherAndUnspecifiedPartsOfTongue = "http://hl7.org/fhir/sid/icd-10#C02";
 
     /// <summary>
     /// Literal for code: DorsalSurfaceOfTongue
@@ -13798,9 +18578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDorsalSurfaceOfTongue = "C02.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10DorsalSurfaceOfTongue
+    /// </summary>
+    public const string LiteralSidIcd10DorsalSurfaceOfTongue = "http://hl7.org/fhir/sid/icd-10#C02.0";
+
+    /// <summary>
     /// Literal for code: BorderOfTongue
     /// </summary>
     public const string LiteralBorderOfTongue = "C02.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10BorderOfTongue
+    /// </summary>
+    public const string LiteralSidIcd10BorderOfTongue = "http://hl7.org/fhir/sid/icd-10#C02.1";
 
     /// <summary>
     /// Literal for code: VentralSurfaceOfTongue
@@ -13808,9 +18598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVentralSurfaceOfTongue = "C02.2";
 
     /// <summary>
+    /// Literal for code: SidIcd10VentralSurfaceOfTongue
+    /// </summary>
+    public const string LiteralSidIcd10VentralSurfaceOfTongue = "http://hl7.org/fhir/sid/icd-10#C02.2";
+
+    /// <summary>
     /// Literal for code: AnteriorTwoThirdsOfTonguePartUnspecified
     /// </summary>
     public const string LiteralAnteriorTwoThirdsOfTonguePartUnspecified = "C02.3";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AnteriorTwoThirdsOfTonguePartUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10AnteriorTwoThirdsOfTonguePartUnspecified = "http://hl7.org/fhir/sid/icd-10#C02.3";
 
     /// <summary>
     /// Literal for code: LingualTonsil
@@ -13818,9 +18618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLingualTonsil = "C02.4";
 
     /// <summary>
+    /// Literal for code: SidIcd10LingualTonsil
+    /// </summary>
+    public const string LiteralSidIcd10LingualTonsil = "http://hl7.org/fhir/sid/icd-10#C02.4";
+
+    /// <summary>
     /// Literal for code: OverlappingLesionOfTongue
     /// </summary>
     public const string LiteralOverlappingLesionOfTongue = "C02.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OverlappingLesionOfTongue
+    /// </summary>
+    public const string LiteralSidIcd10OverlappingLesionOfTongue = "http://hl7.org/fhir/sid/icd-10#C02.8";
 
     /// <summary>
     /// Literal for code: TongueUnspecified
@@ -13828,9 +18638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTongueUnspecified = "C02.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10TongueUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10TongueUnspecified = "http://hl7.org/fhir/sid/icd-10#C02.9";
+
+    /// <summary>
     /// Literal for code: MalignantNeoplasmOfGum
     /// </summary>
     public const string LiteralMalignantNeoplasmOfGum = "C03";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MalignantNeoplasmOfGum
+    /// </summary>
+    public const string LiteralSidIcd10MalignantNeoplasmOfGum = "http://hl7.org/fhir/sid/icd-10#C03";
 
     /// <summary>
     /// Literal for code: UpperGum
@@ -13838,9 +18658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUpperGum = "C03.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10UpperGum
+    /// </summary>
+    public const string LiteralSidIcd10UpperGum = "http://hl7.org/fhir/sid/icd-10#C03.0";
+
+    /// <summary>
     /// Literal for code: LowerGum
     /// </summary>
     public const string LiteralLowerGum = "C03.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LowerGum
+    /// </summary>
+    public const string LiteralSidIcd10LowerGum = "http://hl7.org/fhir/sid/icd-10#C03.1";
 
     /// <summary>
     /// Literal for code: GumUnspecified
@@ -13848,9 +18678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGumUnspecified = "C03.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10GumUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10GumUnspecified = "http://hl7.org/fhir/sid/icd-10#C03.9";
+
+    /// <summary>
     /// Literal for code: MalignantNeoplasmOfFloorOfMouth
     /// </summary>
     public const string LiteralMalignantNeoplasmOfFloorOfMouth = "C04";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MalignantNeoplasmOfFloorOfMouth
+    /// </summary>
+    public const string LiteralSidIcd10MalignantNeoplasmOfFloorOfMouth = "http://hl7.org/fhir/sid/icd-10#C04";
 
     /// <summary>
     /// Literal for code: AnteriorFloorOfMouth
@@ -13858,9 +18698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAnteriorFloorOfMouth = "C04.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10AnteriorFloorOfMouth
+    /// </summary>
+    public const string LiteralSidIcd10AnteriorFloorOfMouth = "http://hl7.org/fhir/sid/icd-10#C04.0";
+
+    /// <summary>
     /// Literal for code: LateralFloorOfMouth
     /// </summary>
     public const string LiteralLateralFloorOfMouth = "C04.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10LateralFloorOfMouth
+    /// </summary>
+    public const string LiteralSidIcd10LateralFloorOfMouth = "http://hl7.org/fhir/sid/icd-10#C04.1";
 
     /// <summary>
     /// Literal for code: OverlappingLesionOfFloorOfMouth
@@ -13868,9 +18718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOverlappingLesionOfFloorOfMouth = "C04.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OverlappingLesionOfFloorOfMouth
+    /// </summary>
+    public const string LiteralSidIcd10OverlappingLesionOfFloorOfMouth = "http://hl7.org/fhir/sid/icd-10#C04.8";
+
+    /// <summary>
     /// Literal for code: FloorOfMouthUnspecified
     /// </summary>
     public const string LiteralFloorOfMouthUnspecified = "C04.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10FloorOfMouthUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10FloorOfMouthUnspecified = "http://hl7.org/fhir/sid/icd-10#C04.9";
 
     /// <summary>
     /// Literal for code: MalignantNeoplasmOfPalate
@@ -13878,9 +18738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMalignantNeoplasmOfPalate = "C05";
 
     /// <summary>
+    /// Literal for code: SidIcd10MalignantNeoplasmOfPalate
+    /// </summary>
+    public const string LiteralSidIcd10MalignantNeoplasmOfPalate = "http://hl7.org/fhir/sid/icd-10#C05";
+
+    /// <summary>
     /// Literal for code: HardPalate
     /// </summary>
     public const string LiteralHardPalate = "C05.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10HardPalate
+    /// </summary>
+    public const string LiteralSidIcd10HardPalate = "http://hl7.org/fhir/sid/icd-10#C05.0";
 
     /// <summary>
     /// Literal for code: SoftPalate
@@ -13888,9 +18758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSoftPalate = "C05.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10SoftPalate
+    /// </summary>
+    public const string LiteralSidIcd10SoftPalate = "http://hl7.org/fhir/sid/icd-10#C05.1";
+
+    /// <summary>
     /// Literal for code: Uvula
     /// </summary>
     public const string LiteralUvula = "C05.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Uvula
+    /// </summary>
+    public const string LiteralSidIcd10Uvula = "http://hl7.org/fhir/sid/icd-10#C05.2";
 
     /// <summary>
     /// Literal for code: OverlappingLesionOfPalate
@@ -13898,9 +18778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOverlappingLesionOfPalate = "C05.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OverlappingLesionOfPalate
+    /// </summary>
+    public const string LiteralSidIcd10OverlappingLesionOfPalate = "http://hl7.org/fhir/sid/icd-10#C05.8";
+
+    /// <summary>
     /// Literal for code: PalateUnspecified
     /// </summary>
     public const string LiteralPalateUnspecified = "C05.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10PalateUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10PalateUnspecified = "http://hl7.org/fhir/sid/icd-10#C05.9";
 
     /// <summary>
     /// Literal for code: MalignantNeoplasmOfOtherAndUnspecifiedPartsOfMouth
@@ -13908,9 +18798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMalignantNeoplasmOfOtherAndUnspecifiedPartsOfMouth = "C06";
 
     /// <summary>
+    /// Literal for code: SidIcd10MalignantNeoplasmOfOtherAndUnspecifiedPartsOfMouth
+    /// </summary>
+    public const string LiteralSidIcd10MalignantNeoplasmOfOtherAndUnspecifiedPartsOfMouth = "http://hl7.org/fhir/sid/icd-10#C06";
+
+    /// <summary>
     /// Literal for code: CheekMucosa
     /// </summary>
     public const string LiteralCheekMucosa = "C06.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10CheekMucosa
+    /// </summary>
+    public const string LiteralSidIcd10CheekMucosa = "http://hl7.org/fhir/sid/icd-10#C06.0";
 
     /// <summary>
     /// Literal for code: VestibuleOfMouth
@@ -13918,9 +18818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVestibuleOfMouth = "C06.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10VestibuleOfMouth
+    /// </summary>
+    public const string LiteralSidIcd10VestibuleOfMouth = "http://hl7.org/fhir/sid/icd-10#C06.1";
+
+    /// <summary>
     /// Literal for code: RetromolarArea
     /// </summary>
     public const string LiteralRetromolarArea = "C06.2";
+
+    /// <summary>
+    /// Literal for code: SidIcd10RetromolarArea
+    /// </summary>
+    public const string LiteralSidIcd10RetromolarArea = "http://hl7.org/fhir/sid/icd-10#C06.2";
 
     /// <summary>
     /// Literal for code: OverlappingLesionOfOtherAndUnspecifiedPartsOfMouth
@@ -13928,9 +18838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOverlappingLesionOfOtherAndUnspecifiedPartsOfMouth = "C06.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OverlappingLesionOfOtherAndUnspecifiedPartsOfMouth
+    /// </summary>
+    public const string LiteralSidIcd10OverlappingLesionOfOtherAndUnspecifiedPartsOfMouth = "http://hl7.org/fhir/sid/icd-10#C06.8";
+
+    /// <summary>
     /// Literal for code: MouthUnspecified
     /// </summary>
     public const string LiteralMouthUnspecified = "C06.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MouthUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10MouthUnspecified = "http://hl7.org/fhir/sid/icd-10#C06.9";
 
     /// <summary>
     /// Literal for code: MalignantNeoplasmOfParotidGland
@@ -13938,9 +18858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMalignantNeoplasmOfParotidGland = "C07";
 
     /// <summary>
+    /// Literal for code: SidIcd10MalignantNeoplasmOfParotidGland
+    /// </summary>
+    public const string LiteralSidIcd10MalignantNeoplasmOfParotidGland = "http://hl7.org/fhir/sid/icd-10#C07";
+
+    /// <summary>
     /// Literal for code: MalignantNeoplasmOfOtherAndUnspecifiedMajorSalivaryGlands
     /// </summary>
     public const string LiteralMalignantNeoplasmOfOtherAndUnspecifiedMajorSalivaryGlands = "C08";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MalignantNeoplasmOfOtherAndUnspecifiedMajorSalivaryGlands
+    /// </summary>
+    public const string LiteralSidIcd10MalignantNeoplasmOfOtherAndUnspecifiedMajorSalivaryGlands = "http://hl7.org/fhir/sid/icd-10#C08";
 
     /// <summary>
     /// Literal for code: SubmandibularGland
@@ -13948,9 +18878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSubmandibularGland = "C08.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10SubmandibularGland
+    /// </summary>
+    public const string LiteralSidIcd10SubmandibularGland = "http://hl7.org/fhir/sid/icd-10#C08.0";
+
+    /// <summary>
     /// Literal for code: SublingualGland
     /// </summary>
     public const string LiteralSublingualGland = "C08.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10SublingualGland
+    /// </summary>
+    public const string LiteralSidIcd10SublingualGland = "http://hl7.org/fhir/sid/icd-10#C08.1";
 
     /// <summary>
     /// Literal for code: OverlappingLesionOfMajorSalivaryGlands
@@ -13958,9 +18898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOverlappingLesionOfMajorSalivaryGlands = "C08.8";
 
     /// <summary>
+    /// Literal for code: SidIcd10OverlappingLesionOfMajorSalivaryGlands
+    /// </summary>
+    public const string LiteralSidIcd10OverlappingLesionOfMajorSalivaryGlands = "http://hl7.org/fhir/sid/icd-10#C08.8";
+
+    /// <summary>
     /// Literal for code: MajorSalivaryGlandUnspecified
     /// </summary>
     public const string LiteralMajorSalivaryGlandUnspecified = "C08.9";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MajorSalivaryGlandUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10MajorSalivaryGlandUnspecified = "http://hl7.org/fhir/sid/icd-10#C08.9";
 
     /// <summary>
     /// Literal for code: MalignantNeoplasmOfTonsil
@@ -13968,9 +18918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMalignantNeoplasmOfTonsil = "C09";
 
     /// <summary>
+    /// Literal for code: SidIcd10MalignantNeoplasmOfTonsil
+    /// </summary>
+    public const string LiteralSidIcd10MalignantNeoplasmOfTonsil = "http://hl7.org/fhir/sid/icd-10#C09";
+
+    /// <summary>
     /// Literal for code: TonsillarFossa
     /// </summary>
     public const string LiteralTonsillarFossa = "C09.0";
+
+    /// <summary>
+    /// Literal for code: SidIcd10TonsillarFossa
+    /// </summary>
+    public const string LiteralSidIcd10TonsillarFossa = "http://hl7.org/fhir/sid/icd-10#C09.0";
 
     /// <summary>
     /// Literal for code: TonsillarPillarAnteriorPosterior
@@ -13978,9 +18938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTonsillarPillarAnteriorPosterior = "C09.1";
 
     /// <summary>
+    /// Literal for code: SidIcd10TonsillarPillarAnteriorPosterior
+    /// </summary>
+    public const string LiteralSidIcd10TonsillarPillarAnteriorPosterior = "http://hl7.org/fhir/sid/icd-10#C09.1";
+
+    /// <summary>
     /// Literal for code: OverlappingLesionOfTonsil
     /// </summary>
     public const string LiteralOverlappingLesionOfTonsil = "C09.8";
+
+    /// <summary>
+    /// Literal for code: SidIcd10OverlappingLesionOfTonsil
+    /// </summary>
+    public const string LiteralSidIcd10OverlappingLesionOfTonsil = "http://hl7.org/fhir/sid/icd-10#C09.8";
 
     /// <summary>
     /// Literal for code: TonsilUnspecified
@@ -13988,9 +18958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTonsilUnspecified = "C09.9";
 
     /// <summary>
+    /// Literal for code: SidIcd10TonsilUnspecified
+    /// </summary>
+    public const string LiteralSidIcd10TonsilUnspecified = "http://hl7.org/fhir/sid/icd-10#C09.9";
+
+    /// <summary>
     /// Literal for code: MalignantNeoplasmOfOropharynx
     /// </summary>
     public const string LiteralMalignantNeoplasmOfOropharynx = "C10";
+
+    /// <summary>
+    /// Literal for code: SidIcd10MalignantNeoplasmOfOropharynx
+    /// </summary>
+    public const string LiteralSidIcd10MalignantNeoplasmOfOropharynx = "http://hl7.org/fhir/sid/icd-10#C10";
 
     /// <summary>
     /// Literal for code: Vallecula
@@ -13998,9 +18978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVallecula = "C10.0";
 
     /// <summary>
+    /// Literal for code: SidIcd10Vallecula
+    /// </summary>
+    public const string LiteralSidIcd10Vallecula = "http://hl7.org/fhir/sid/icd-10#C10.0";
+
+    /// <summary>
     /// Literal for code: AnteriorSurfaceOfEpiglottis
     /// </summary>
     public const string LiteralAnteriorSurfaceOfEpiglottis = "C10.1";
+
+    /// <summary>
+    /// Literal for code: SidIcd10AnteriorSurfaceOfEpiglottis
+    /// </summary>
+    public const string LiteralSidIcd10AnteriorSurfaceOfEpiglottis = "http://hl7.org/fhir/sid/icd-10#C10.1";
 
     /// <summary>
     /// Literal for code: CertainInfectiousAndParasiticDiseases
@@ -14008,8 +18998,2024 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCertainInfectiousAndParasiticDiseases = "I";
 
     /// <summary>
+    /// Literal for code: SidIcd10CertainInfectiousAndParasiticDiseases
+    /// </summary>
+    public const string LiteralSidIcd10CertainInfectiousAndParasiticDiseases = "http://hl7.org/fhir/sid/icd-10#I";
+
+    /// <summary>
     /// Literal for code: Neoplasms
     /// </summary>
     public const string LiteralNeoplasms = "II";
+
+    /// <summary>
+    /// Literal for code: SidIcd10Neoplasms
+    /// </summary>
+    public const string LiteralSidIcd10Neoplasms = "http://hl7.org/fhir/sid/icd-10#II";
+
+    /// <summary>
+    /// Dictionary for looking up Icd10 Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "A00", Cholera }, 
+      { "http://hl7.org/fhir/sid/icd-10#A00", Cholera }, 
+      { "A00-A09", IntestinalInfectiousDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#A00-A09", IntestinalInfectiousDiseases }, 
+      { "A00.0", CholeraDueToVibrioCholerae01BiovarCholerae }, 
+      { "http://hl7.org/fhir/sid/icd-10#A00.0", CholeraDueToVibrioCholerae01BiovarCholerae }, 
+      { "A00.1", CholeraDueToVibrioCholerae01BiovarEltor }, 
+      { "http://hl7.org/fhir/sid/icd-10#A00.1", CholeraDueToVibrioCholerae01BiovarEltor }, 
+      { "A00.9", CholeraUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A00.9", CholeraUnspecified }, 
+      { "A01", TyphoidAndParatyphoidFevers }, 
+      { "http://hl7.org/fhir/sid/icd-10#A01", TyphoidAndParatyphoidFevers }, 
+      { "A01.0", TyphoidFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A01.0", TyphoidFever }, 
+      { "A01.1", ParatyphoidFeverA }, 
+      { "http://hl7.org/fhir/sid/icd-10#A01.1", ParatyphoidFeverA }, 
+      { "A01.2", ParatyphoidFeverB }, 
+      { "http://hl7.org/fhir/sid/icd-10#A01.2", ParatyphoidFeverB }, 
+      { "A01.3", ParatyphoidFeverC }, 
+      { "http://hl7.org/fhir/sid/icd-10#A01.3", ParatyphoidFeverC }, 
+      { "A01.4", ParatyphoidFeverUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A01.4", ParatyphoidFeverUnspecified }, 
+      { "A02", OtherSalmonellaInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#A02", OtherSalmonellaInfections }, 
+      { "A02.0", SalmonellaEnteritis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A02.0", SalmonellaEnteritis }, 
+      { "A02.1", SalmonellaSepsis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A02.1", SalmonellaSepsis }, 
+      { "A02.2", LocalizedSalmonellaInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#A02.2", LocalizedSalmonellaInfections }, 
+      { "A02.8", OtherSpecifiedSalmonellaInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#A02.8", OtherSpecifiedSalmonellaInfections }, 
+      { "A02.9", SalmonellaInfectionUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A02.9", SalmonellaInfectionUnspecified }, 
+      { "A03", Shigellosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A03", Shigellosis }, 
+      { "A03.0", ShigellosisDueToShigellaDysenteriae }, 
+      { "http://hl7.org/fhir/sid/icd-10#A03.0", ShigellosisDueToShigellaDysenteriae }, 
+      { "A03.1", ShigellosisDueToShigellaFlexneri }, 
+      { "http://hl7.org/fhir/sid/icd-10#A03.1", ShigellosisDueToShigellaFlexneri }, 
+      { "A03.2", ShigellosisDueToShigellaBoydii }, 
+      { "http://hl7.org/fhir/sid/icd-10#A03.2", ShigellosisDueToShigellaBoydii }, 
+      { "A03.3", ShigellosisDueToShigellaSonnei }, 
+      { "http://hl7.org/fhir/sid/icd-10#A03.3", ShigellosisDueToShigellaSonnei }, 
+      { "A03.8", OtherShigellosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A03.8", OtherShigellosis }, 
+      { "A03.9", ShigellosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A03.9", ShigellosisUnspecified }, 
+      { "A04", OtherBacterialIntestinalInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#A04", OtherBacterialIntestinalInfections }, 
+      { "A04.0", EnteropathogenicEscherichiaColiInfection }, 
+      { "http://hl7.org/fhir/sid/icd-10#A04.0", EnteropathogenicEscherichiaColiInfection }, 
+      { "A04.1", EnterotoxigenicEscherichiaColiInfection }, 
+      { "http://hl7.org/fhir/sid/icd-10#A04.1", EnterotoxigenicEscherichiaColiInfection }, 
+      { "A04.2", EnteroinvasiveEscherichiaColiInfection }, 
+      { "http://hl7.org/fhir/sid/icd-10#A04.2", EnteroinvasiveEscherichiaColiInfection }, 
+      { "A04.3", EnterohaemorrhagicEscherichiaColiInfection }, 
+      { "http://hl7.org/fhir/sid/icd-10#A04.3", EnterohaemorrhagicEscherichiaColiInfection }, 
+      { "A04.4", OtherIntestinalEscherichiaColiInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#A04.4", OtherIntestinalEscherichiaColiInfections }, 
+      { "A04.5", CampylobacterEnteritis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A04.5", CampylobacterEnteritis }, 
+      { "A04.6", EnteritisDueToYersiniaEnterocolitica }, 
+      { "http://hl7.org/fhir/sid/icd-10#A04.6", EnteritisDueToYersiniaEnterocolitica }, 
+      { "A04.7", EnterocolitisDueToClostridiumDifficile }, 
+      { "http://hl7.org/fhir/sid/icd-10#A04.7", EnterocolitisDueToClostridiumDifficile }, 
+      { "A04.8", OtherSpecifiedBacterialIntestinalInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#A04.8", OtherSpecifiedBacterialIntestinalInfections }, 
+      { "A04.9", BacterialIntestinalInfectionUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A04.9", BacterialIntestinalInfectionUnspecified }, 
+      { "A05", OtherBacterialFoodborneIntoxicationsNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A05", OtherBacterialFoodborneIntoxicationsNotElsewhereClassified }, 
+      { "A05.0", FoodborneStaphylococcalIntoxication }, 
+      { "http://hl7.org/fhir/sid/icd-10#A05.0", FoodborneStaphylococcalIntoxication }, 
+      { "A05.1", Botulism }, 
+      { "http://hl7.org/fhir/sid/icd-10#A05.1", Botulism }, 
+      { "A05.2", FoodborneClostridiumPerfringensClostridiumWelchiiIntoxication }, 
+      { "http://hl7.org/fhir/sid/icd-10#A05.2", FoodborneClostridiumPerfringensClostridiumWelchiiIntoxication }, 
+      { "A05.3", FoodborneVibrioParahaemolyticusIntoxication }, 
+      { "http://hl7.org/fhir/sid/icd-10#A05.3", FoodborneVibrioParahaemolyticusIntoxication }, 
+      { "A05.4", FoodborneBacillusCereusIntoxication }, 
+      { "http://hl7.org/fhir/sid/icd-10#A05.4", FoodborneBacillusCereusIntoxication }, 
+      { "A05.8", OtherSpecifiedBacterialFoodborneIntoxications }, 
+      { "http://hl7.org/fhir/sid/icd-10#A05.8", OtherSpecifiedBacterialFoodborneIntoxications }, 
+      { "A05.9", BacterialFoodborneIntoxicationUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A05.9", BacterialFoodborneIntoxicationUnspecified }, 
+      { "A06", Amoebiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A06", Amoebiasis }, 
+      { "A06.0", AcuteAmoebicDysentery }, 
+      { "http://hl7.org/fhir/sid/icd-10#A06.0", AcuteAmoebicDysentery }, 
+      { "A06.1", ChronicIntestinalAmoebiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A06.1", ChronicIntestinalAmoebiasis }, 
+      { "A06.2", AmoebicNondysentericColitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A06.2", AmoebicNondysentericColitis }, 
+      { "A06.3", AmoebomaOfIntestine }, 
+      { "http://hl7.org/fhir/sid/icd-10#A06.3", AmoebomaOfIntestine }, 
+      { "A06.4", AmoebicLiverAbscessK770 }, 
+      { "http://hl7.org/fhir/sid/icd-10#A06.4", AmoebicLiverAbscessK770 }, 
+      { "A06.5", AmoebicLungAbscess }, 
+      { "http://hl7.org/fhir/sid/icd-10#A06.5", AmoebicLungAbscess }, 
+      { "A06.6", AmoebicBrainAbscessG07 }, 
+      { "http://hl7.org/fhir/sid/icd-10#A06.6", AmoebicBrainAbscessG07 }, 
+      { "A06.7", CutaneousAmoebiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A06.7", CutaneousAmoebiasis }, 
+      { "A06.8", AmoebicInfectionOfOtherSites }, 
+      { "http://hl7.org/fhir/sid/icd-10#A06.8", AmoebicInfectionOfOtherSites }, 
+      { "A06.9", AmoebiasisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A06.9", AmoebiasisUnspecified }, 
+      { "A07", OtherProtozoalIntestinalDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#A07", OtherProtozoalIntestinalDiseases }, 
+      { "A07.0", Balantidiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A07.0", Balantidiasis }, 
+      { "A07.1", GiardiasisLambliasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A07.1", GiardiasisLambliasis }, 
+      { "A07.2", Cryptosporidiosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A07.2", Cryptosporidiosis }, 
+      { "A07.3", Isosporiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A07.3", Isosporiasis }, 
+      { "A07.8", OtherSpecifiedProtozoalIntestinalDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#A07.8", OtherSpecifiedProtozoalIntestinalDiseases }, 
+      { "A07.9", ProtozoalIntestinalDiseaseUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A07.9", ProtozoalIntestinalDiseaseUnspecified }, 
+      { "A08", ViralAndOtherSpecifiedIntestinalInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#A08", ViralAndOtherSpecifiedIntestinalInfections }, 
+      { "A08.0", RotaviralEnteritis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A08.0", RotaviralEnteritis }, 
+      { "A08.1", AcuteGastroenteropathyDueToNorovirus }, 
+      { "http://hl7.org/fhir/sid/icd-10#A08.1", AcuteGastroenteropathyDueToNorovirus }, 
+      { "A08.2", AdenoviralEnteritis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A08.2", AdenoviralEnteritis }, 
+      { "A08.3", OtherViralEnteritis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A08.3", OtherViralEnteritis }, 
+      { "A08.4", ViralIntestinalInfectionUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A08.4", ViralIntestinalInfectionUnspecified }, 
+      { "A08.5", OtherSpecifiedIntestinalInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#A08.5", OtherSpecifiedIntestinalInfections }, 
+      { "A09", OtherGastroenteritisAndColitisOfInfectiousAndUnspecifiedOrigin }, 
+      { "http://hl7.org/fhir/sid/icd-10#A09", OtherGastroenteritisAndColitisOfInfectiousAndUnspecifiedOrigin }, 
+      { "A09.0", OtherAndUnspecifiedGastroenteritisAndColitisOfInfectiousOrigin }, 
+      { "http://hl7.org/fhir/sid/icd-10#A09.0", OtherAndUnspecifiedGastroenteritisAndColitisOfInfectiousOrigin }, 
+      { "A09.9", GastroenteritisAndColitisOfUnspecifiedOrigin }, 
+      { "http://hl7.org/fhir/sid/icd-10#A09.9", GastroenteritisAndColitisOfUnspecifiedOrigin }, 
+      { "A15", RespiratoryTuberculosisBacteriologicallyAndHistologicallyConfirmed }, 
+      { "http://hl7.org/fhir/sid/icd-10#A15", RespiratoryTuberculosisBacteriologicallyAndHistologicallyConfirmed }, 
+      { "A15-A19", Tuberculosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A15-A19", Tuberculosis }, 
+      { "A15.0", TuberculosisOfLungConfirmedBySputumMicroscopyWithOrWithoutCulture }, 
+      { "http://hl7.org/fhir/sid/icd-10#A15.0", TuberculosisOfLungConfirmedBySputumMicroscopyWithOrWithoutCulture }, 
+      { "A15.1", TuberculosisOfLungConfirmedByCultureOnly }, 
+      { "http://hl7.org/fhir/sid/icd-10#A15.1", TuberculosisOfLungConfirmedByCultureOnly }, 
+      { "A15.2", TuberculosisOfLungConfirmedHistologically }, 
+      { "http://hl7.org/fhir/sid/icd-10#A15.2", TuberculosisOfLungConfirmedHistologically }, 
+      { "A15.3", TuberculosisOfLungConfirmedByUnspecifiedMeans }, 
+      { "http://hl7.org/fhir/sid/icd-10#A15.3", TuberculosisOfLungConfirmedByUnspecifiedMeans }, 
+      { "A15.4", TuberculosisOfIntrathoracicLymphNodesConfirmedBacteriologicallyAndHistologically }, 
+      { "http://hl7.org/fhir/sid/icd-10#A15.4", TuberculosisOfIntrathoracicLymphNodesConfirmedBacteriologicallyAndHistologically }, 
+      { "A15.5", TuberculosisOfLarynxTracheaAndBronchusConfirmedBacteriologicallyAndHistologically }, 
+      { "http://hl7.org/fhir/sid/icd-10#A15.5", TuberculosisOfLarynxTracheaAndBronchusConfirmedBacteriologicallyAndHistologically }, 
+      { "A15.6", TuberculousPleurisyConfirmedBacteriologicallyAndHistologically }, 
+      { "http://hl7.org/fhir/sid/icd-10#A15.6", TuberculousPleurisyConfirmedBacteriologicallyAndHistologically }, 
+      { "A15.7", PrimaryRespiratoryTuberculosisConfirmedBacteriologicallyAndHistologically }, 
+      { "http://hl7.org/fhir/sid/icd-10#A15.7", PrimaryRespiratoryTuberculosisConfirmedBacteriologicallyAndHistologically }, 
+      { "A15.8", OtherRespiratoryTuberculosisConfirmedBacteriologicallyAndHistologically }, 
+      { "http://hl7.org/fhir/sid/icd-10#A15.8", OtherRespiratoryTuberculosisConfirmedBacteriologicallyAndHistologically }, 
+      { "A15.9", RespiratoryTuberculosisUnspecifiedConfirmedBacteriologicallyAndHistologically }, 
+      { "http://hl7.org/fhir/sid/icd-10#A15.9", RespiratoryTuberculosisUnspecifiedConfirmedBacteriologicallyAndHistologically }, 
+      { "A16", RespiratoryTuberculosisNotConfirmedBacteriologicallyOrHistologically }, 
+      { "http://hl7.org/fhir/sid/icd-10#A16", RespiratoryTuberculosisNotConfirmedBacteriologicallyOrHistologically }, 
+      { "A16.0", TuberculosisOfLungBacteriologicallyAndHistologicallyNegative }, 
+      { "http://hl7.org/fhir/sid/icd-10#A16.0", TuberculosisOfLungBacteriologicallyAndHistologicallyNegative }, 
+      { "A16.1", TuberculosisOfLungBacteriologicalAndHistologicalExaminationNotDone }, 
+      { "http://hl7.org/fhir/sid/icd-10#A16.1", TuberculosisOfLungBacteriologicalAndHistologicalExaminationNotDone }, 
+      { "A16.2", TuberculosisOfLungWithoutMentionOfBacteriologicalOrHistologicalConfirmation }, 
+      { "http://hl7.org/fhir/sid/icd-10#A16.2", TuberculosisOfLungWithoutMentionOfBacteriologicalOrHistologicalConfirmation }, 
+      { "A16.3", TuberculosisOfIntrathoracicLymphNodesWithoutMentionOfBacteriologicalOrHistologicalConfirmation }, 
+      { "http://hl7.org/fhir/sid/icd-10#A16.3", TuberculosisOfIntrathoracicLymphNodesWithoutMentionOfBacteriologicalOrHistologicalConfirmation }, 
+      { "A16.4", TuberculosisOfLarynxTracheaAndBronchusWithoutMentionOfBacteriologicalOrHistologicalConfirmation }, 
+      { "http://hl7.org/fhir/sid/icd-10#A16.4", TuberculosisOfLarynxTracheaAndBronchusWithoutMentionOfBacteriologicalOrHistologicalConfirmation }, 
+      { "A16.5", TuberculousPleurisyWithoutMentionOfBacteriologicalOrHistologicalConfirmation }, 
+      { "http://hl7.org/fhir/sid/icd-10#A16.5", TuberculousPleurisyWithoutMentionOfBacteriologicalOrHistologicalConfirmation }, 
+      { "A16.7", PrimaryRespiratoryTuberculosisWithoutMentionOfBacteriologicalOrHistologicalConfirmation }, 
+      { "http://hl7.org/fhir/sid/icd-10#A16.7", PrimaryRespiratoryTuberculosisWithoutMentionOfBacteriologicalOrHistologicalConfirmation }, 
+      { "A16.8", OtherRespiratoryTuberculosisWithoutMentionOfBacteriologicalOrHistologicalConfirmation }, 
+      { "http://hl7.org/fhir/sid/icd-10#A16.8", OtherRespiratoryTuberculosisWithoutMentionOfBacteriologicalOrHistologicalConfirmation }, 
+      { "A16.9", RespiratoryTuberculosisUnspecifiedWithoutMentionOfBacteriologicalOrHistologicalConfirmation }, 
+      { "http://hl7.org/fhir/sid/icd-10#A16.9", RespiratoryTuberculosisUnspecifiedWithoutMentionOfBacteriologicalOrHistologicalConfirmation }, 
+      { "A17", TuberculosisOfNervousSystem }, 
+      { "http://hl7.org/fhir/sid/icd-10#A17", TuberculosisOfNervousSystem }, 
+      { "A17.0", TuberculousMeningitisG01 }, 
+      { "http://hl7.org/fhir/sid/icd-10#A17.0", TuberculousMeningitisG01 }, 
+      { "A17.1", MeningealTuberculomaG07 }, 
+      { "http://hl7.org/fhir/sid/icd-10#A17.1", MeningealTuberculomaG07 }, 
+      { "A17.8", OtherTuberculosisOfNervousSystem }, 
+      { "http://hl7.org/fhir/sid/icd-10#A17.8", OtherTuberculosisOfNervousSystem }, 
+      { "A17.9", TuberculosisOfNervousSystemUnspecifiedG998 }, 
+      { "http://hl7.org/fhir/sid/icd-10#A17.9", TuberculosisOfNervousSystemUnspecifiedG998 }, 
+      { "A18", TuberculosisOfOtherOrgans }, 
+      { "http://hl7.org/fhir/sid/icd-10#A18", TuberculosisOfOtherOrgans }, 
+      { "A18.0", TuberculosisOfBonesAndJoints }, 
+      { "http://hl7.org/fhir/sid/icd-10#A18.0", TuberculosisOfBonesAndJoints }, 
+      { "A18.1", TuberculosisOfGenitourinarySystem }, 
+      { "http://hl7.org/fhir/sid/icd-10#A18.1", TuberculosisOfGenitourinarySystem }, 
+      { "A18.2", TuberculousPeripheralLymphadenopathy }, 
+      { "http://hl7.org/fhir/sid/icd-10#A18.2", TuberculousPeripheralLymphadenopathy }, 
+      { "A18.3", TuberculosisOfIntestinesPeritoneumAndMesentericGlands }, 
+      { "http://hl7.org/fhir/sid/icd-10#A18.3", TuberculosisOfIntestinesPeritoneumAndMesentericGlands }, 
+      { "A18.4", TuberculosisOfSkinAndSubcutaneousTissue }, 
+      { "http://hl7.org/fhir/sid/icd-10#A18.4", TuberculosisOfSkinAndSubcutaneousTissue }, 
+      { "A18.5", TuberculosisOfEye }, 
+      { "http://hl7.org/fhir/sid/icd-10#A18.5", TuberculosisOfEye }, 
+      { "A18.6", TuberculosisOfEar }, 
+      { "http://hl7.org/fhir/sid/icd-10#A18.6", TuberculosisOfEar }, 
+      { "A18.7", TuberculosisOfAdrenalGlandsE351 }, 
+      { "http://hl7.org/fhir/sid/icd-10#A18.7", TuberculosisOfAdrenalGlandsE351 }, 
+      { "A18.8", TuberculosisOfOtherSpecifiedOrgans }, 
+      { "http://hl7.org/fhir/sid/icd-10#A18.8", TuberculosisOfOtherSpecifiedOrgans }, 
+      { "A19", MiliaryTuberculosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A19", MiliaryTuberculosis }, 
+      { "A19.0", AcuteMiliaryTuberculosisOfASingleSpecifiedSite }, 
+      { "http://hl7.org/fhir/sid/icd-10#A19.0", AcuteMiliaryTuberculosisOfASingleSpecifiedSite }, 
+      { "A19.1", AcuteMiliaryTuberculosisOfMultipleSites }, 
+      { "http://hl7.org/fhir/sid/icd-10#A19.1", AcuteMiliaryTuberculosisOfMultipleSites }, 
+      { "A19.2", AcuteMiliaryTuberculosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A19.2", AcuteMiliaryTuberculosisUnspecified }, 
+      { "A19.8", OtherMiliaryTuberculosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A19.8", OtherMiliaryTuberculosis }, 
+      { "A19.9", MiliaryTuberculosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A19.9", MiliaryTuberculosisUnspecified }, 
+      { "A20", Plague }, 
+      { "http://hl7.org/fhir/sid/icd-10#A20", Plague }, 
+      { "A20-A28", CertainZoonoticBacterialDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#A20-A28", CertainZoonoticBacterialDiseases }, 
+      { "A20.0", BubonicPlague }, 
+      { "http://hl7.org/fhir/sid/icd-10#A20.0", BubonicPlague }, 
+      { "A20.1", CellulocutaneousPlague }, 
+      { "http://hl7.org/fhir/sid/icd-10#A20.1", CellulocutaneousPlague }, 
+      { "A20.2", PneumonicPlague }, 
+      { "http://hl7.org/fhir/sid/icd-10#A20.2", PneumonicPlague }, 
+      { "A20.3", PlagueMeningitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A20.3", PlagueMeningitis }, 
+      { "A20.7", SepticaemicPlague }, 
+      { "http://hl7.org/fhir/sid/icd-10#A20.7", SepticaemicPlague }, 
+      { "A20.8", OtherFormsOfPlague }, 
+      { "http://hl7.org/fhir/sid/icd-10#A20.8", OtherFormsOfPlague }, 
+      { "A20.9", PlagueUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A20.9", PlagueUnspecified }, 
+      { "A21", Tularaemia }, 
+      { "http://hl7.org/fhir/sid/icd-10#A21", Tularaemia }, 
+      { "A21.0", UlceroglandularTularaemia }, 
+      { "http://hl7.org/fhir/sid/icd-10#A21.0", UlceroglandularTularaemia }, 
+      { "A21.1", OculoglandularTularaemia }, 
+      { "http://hl7.org/fhir/sid/icd-10#A21.1", OculoglandularTularaemia }, 
+      { "A21.2", PulmonaryTularaemia }, 
+      { "http://hl7.org/fhir/sid/icd-10#A21.2", PulmonaryTularaemia }, 
+      { "A21.3", GastrointestinalTularaemia }, 
+      { "http://hl7.org/fhir/sid/icd-10#A21.3", GastrointestinalTularaemia }, 
+      { "A21.7", GeneralizedTularaemia }, 
+      { "http://hl7.org/fhir/sid/icd-10#A21.7", GeneralizedTularaemia }, 
+      { "A21.8", OtherFormsOfTularaemia }, 
+      { "http://hl7.org/fhir/sid/icd-10#A21.8", OtherFormsOfTularaemia }, 
+      { "A21.9", TularaemiaUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A21.9", TularaemiaUnspecified }, 
+      { "A22", Anthrax }, 
+      { "http://hl7.org/fhir/sid/icd-10#A22", Anthrax }, 
+      { "A22.0", CutaneousAnthrax }, 
+      { "http://hl7.org/fhir/sid/icd-10#A22.0", CutaneousAnthrax }, 
+      { "A22.1", PulmonaryAnthrax }, 
+      { "http://hl7.org/fhir/sid/icd-10#A22.1", PulmonaryAnthrax }, 
+      { "A22.2", GastrointestinalAnthrax }, 
+      { "http://hl7.org/fhir/sid/icd-10#A22.2", GastrointestinalAnthrax }, 
+      { "A22.7", AnthraxSepsis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A22.7", AnthraxSepsis }, 
+      { "A22.8", OtherFormsOfAnthrax }, 
+      { "http://hl7.org/fhir/sid/icd-10#A22.8", OtherFormsOfAnthrax }, 
+      { "A22.9", AnthraxUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A22.9", AnthraxUnspecified }, 
+      { "A23", Brucellosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A23", Brucellosis }, 
+      { "A23.0", BrucellosisDueToBrucellaMelitensis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A23.0", BrucellosisDueToBrucellaMelitensis }, 
+      { "A23.1", BrucellosisDueToBrucellaAbortus }, 
+      { "http://hl7.org/fhir/sid/icd-10#A23.1", BrucellosisDueToBrucellaAbortus }, 
+      { "A23.2", BrucellosisDueToBrucellaSuis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A23.2", BrucellosisDueToBrucellaSuis }, 
+      { "A23.3", BrucellosisDueToBrucellaCanis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A23.3", BrucellosisDueToBrucellaCanis }, 
+      { "A23.8", OtherBrucellosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A23.8", OtherBrucellosis }, 
+      { "A23.9", BrucellosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A23.9", BrucellosisUnspecified }, 
+      { "A24", GlandersAndMelioidosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A24", GlandersAndMelioidosis }, 
+      { "A24.0", Glanders }, 
+      { "http://hl7.org/fhir/sid/icd-10#A24.0", Glanders }, 
+      { "A24.1", AcuteAndFulminatingMelioidosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A24.1", AcuteAndFulminatingMelioidosis }, 
+      { "A24.2", SubacuteAndChronicMelioidosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A24.2", SubacuteAndChronicMelioidosis }, 
+      { "A24.3", OtherMelioidosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A24.3", OtherMelioidosis }, 
+      { "A24.4", MelioidosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A24.4", MelioidosisUnspecified }, 
+      { "A25", RatBiteFevers }, 
+      { "http://hl7.org/fhir/sid/icd-10#A25", RatBiteFevers }, 
+      { "A25.0", Spirillosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A25.0", Spirillosis }, 
+      { "A25.1", Streptobacillosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A25.1", Streptobacillosis }, 
+      { "A25.9", RatBiteFeverUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A25.9", RatBiteFeverUnspecified }, 
+      { "A26", Erysipeloid }, 
+      { "http://hl7.org/fhir/sid/icd-10#A26", Erysipeloid }, 
+      { "A26.0", CutaneousErysipeloid }, 
+      { "http://hl7.org/fhir/sid/icd-10#A26.0", CutaneousErysipeloid }, 
+      { "A26.7", ErysipelothrixSepsis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A26.7", ErysipelothrixSepsis }, 
+      { "A26.8", OtherFormsOfErysipeloid }, 
+      { "http://hl7.org/fhir/sid/icd-10#A26.8", OtherFormsOfErysipeloid }, 
+      { "A26.9", ErysipeloidUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A26.9", ErysipeloidUnspecified }, 
+      { "A27", Leptospirosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A27", Leptospirosis }, 
+      { "A27.0", LeptospirosisIcterohaemorrhagica }, 
+      { "http://hl7.org/fhir/sid/icd-10#A27.0", LeptospirosisIcterohaemorrhagica }, 
+      { "A27.8", OtherFormsOfLeptospirosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A27.8", OtherFormsOfLeptospirosis }, 
+      { "A27.9", LeptospirosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A27.9", LeptospirosisUnspecified }, 
+      { "A28", OtherZoonoticBacterialDiseasesNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A28", OtherZoonoticBacterialDiseasesNotElsewhereClassified }, 
+      { "A28.0", Pasteurellosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A28.0", Pasteurellosis }, 
+      { "A28.1", CatScratchDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#A28.1", CatScratchDisease }, 
+      { "A28.2", ExtraintestinalYersiniosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A28.2", ExtraintestinalYersiniosis }, 
+      { "A28.8", OtherSpecifiedZoonoticBacterialDiseasesNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A28.8", OtherSpecifiedZoonoticBacterialDiseasesNotElsewhereClassified }, 
+      { "A28.9", ZoonoticBacterialDiseaseUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A28.9", ZoonoticBacterialDiseaseUnspecified }, 
+      { "A30", LeprosyHansenDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#A30", LeprosyHansenDisease }, 
+      { "A30-A49", OtherBacterialDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#A30-A49", OtherBacterialDiseases }, 
+      { "A30.0", IndeterminateLeprosy }, 
+      { "http://hl7.org/fhir/sid/icd-10#A30.0", IndeterminateLeprosy }, 
+      { "A30.1", TuberculoidLeprosy }, 
+      { "http://hl7.org/fhir/sid/icd-10#A30.1", TuberculoidLeprosy }, 
+      { "A30.2", BorderlineTuberculoidLeprosy }, 
+      { "http://hl7.org/fhir/sid/icd-10#A30.2", BorderlineTuberculoidLeprosy }, 
+      { "A30.3", BorderlineLeprosy }, 
+      { "http://hl7.org/fhir/sid/icd-10#A30.3", BorderlineLeprosy }, 
+      { "A30.4", BorderlineLepromatousLeprosy }, 
+      { "http://hl7.org/fhir/sid/icd-10#A30.4", BorderlineLepromatousLeprosy }, 
+      { "A30.5", LepromatousLeprosy }, 
+      { "http://hl7.org/fhir/sid/icd-10#A30.5", LepromatousLeprosy }, 
+      { "A30.8", OtherFormsOfLeprosy }, 
+      { "http://hl7.org/fhir/sid/icd-10#A30.8", OtherFormsOfLeprosy }, 
+      { "A30.9", LeprosyUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A30.9", LeprosyUnspecified }, 
+      { "A31", InfectionDueToOtherMycobacteria }, 
+      { "http://hl7.org/fhir/sid/icd-10#A31", InfectionDueToOtherMycobacteria }, 
+      { "A31.0", PulmonaryMycobacterialInfection }, 
+      { "http://hl7.org/fhir/sid/icd-10#A31.0", PulmonaryMycobacterialInfection }, 
+      { "A31.1", CutaneousMycobacterialInfection }, 
+      { "http://hl7.org/fhir/sid/icd-10#A31.1", CutaneousMycobacterialInfection }, 
+      { "A31.8", OtherMycobacterialInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#A31.8", OtherMycobacterialInfections }, 
+      { "A31.9", MycobacterialInfectionUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A31.9", MycobacterialInfectionUnspecified }, 
+      { "A32", Listeriosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A32", Listeriosis }, 
+      { "A32.0", CutaneousListeriosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A32.0", CutaneousListeriosis }, 
+      { "A32.1", ListerialMeningitisAndMeningoencephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A32.1", ListerialMeningitisAndMeningoencephalitis }, 
+      { "A32.7", ListerialSepsis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A32.7", ListerialSepsis }, 
+      { "A32.8", OtherFormsOfListeriosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A32.8", OtherFormsOfListeriosis }, 
+      { "A32.9", ListeriosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A32.9", ListeriosisUnspecified }, 
+      { "A33", TetanusNeonatorum }, 
+      { "http://hl7.org/fhir/sid/icd-10#A33", TetanusNeonatorum }, 
+      { "A34", ObstetricalTetanus }, 
+      { "http://hl7.org/fhir/sid/icd-10#A34", ObstetricalTetanus }, 
+      { "A35", OtherTetanus }, 
+      { "http://hl7.org/fhir/sid/icd-10#A35", OtherTetanus }, 
+      { "A36", Diphtheria }, 
+      { "http://hl7.org/fhir/sid/icd-10#A36", Diphtheria }, 
+      { "A36.0", PharyngealDiphtheria }, 
+      { "http://hl7.org/fhir/sid/icd-10#A36.0", PharyngealDiphtheria }, 
+      { "A36.1", NasopharyngealDiphtheria }, 
+      { "http://hl7.org/fhir/sid/icd-10#A36.1", NasopharyngealDiphtheria }, 
+      { "A36.2", LaryngealDiphtheria }, 
+      { "http://hl7.org/fhir/sid/icd-10#A36.2", LaryngealDiphtheria }, 
+      { "A36.3", CutaneousDiphtheria }, 
+      { "http://hl7.org/fhir/sid/icd-10#A36.3", CutaneousDiphtheria }, 
+      { "A36.8", OtherDiphtheria }, 
+      { "http://hl7.org/fhir/sid/icd-10#A36.8", OtherDiphtheria }, 
+      { "A36.9", DiphtheriaUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A36.9", DiphtheriaUnspecified }, 
+      { "A37", WhoopingCough }, 
+      { "http://hl7.org/fhir/sid/icd-10#A37", WhoopingCough }, 
+      { "A37.0", WhoopingCoughDueToBordetellaPertussis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A37.0", WhoopingCoughDueToBordetellaPertussis }, 
+      { "A37.1", WhoopingCoughDueToBordetellaParapertussis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A37.1", WhoopingCoughDueToBordetellaParapertussis }, 
+      { "A37.8", WhoopingCoughDueToOtherBordetellaSpecies }, 
+      { "http://hl7.org/fhir/sid/icd-10#A37.8", WhoopingCoughDueToOtherBordetellaSpecies }, 
+      { "A37.9", WhoopingCoughUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A37.9", WhoopingCoughUnspecified }, 
+      { "A38", ScarletFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A38", ScarletFever }, 
+      { "A39", MeningococcalInfection }, 
+      { "http://hl7.org/fhir/sid/icd-10#A39", MeningococcalInfection }, 
+      { "A39.0", MeningococcalMeningitisG01 }, 
+      { "http://hl7.org/fhir/sid/icd-10#A39.0", MeningococcalMeningitisG01 }, 
+      { "A39.1", WaterhouseFriderichsenSyndromeE351 }, 
+      { "http://hl7.org/fhir/sid/icd-10#A39.1", WaterhouseFriderichsenSyndromeE351 }, 
+      { "A39.2", AcuteMeningococcaemia }, 
+      { "http://hl7.org/fhir/sid/icd-10#A39.2", AcuteMeningococcaemia }, 
+      { "A39.3", ChronicMeningococcaemia }, 
+      { "http://hl7.org/fhir/sid/icd-10#A39.3", ChronicMeningococcaemia }, 
+      { "A39.4", MeningococcaemiaUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A39.4", MeningococcaemiaUnspecified }, 
+      { "A39.5", MeningococcalHeartDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#A39.5", MeningococcalHeartDisease }, 
+      { "A39.8", OtherMeningococcalInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#A39.8", OtherMeningococcalInfections }, 
+      { "A39.9", MeningococcalInfectionUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A39.9", MeningococcalInfectionUnspecified }, 
+      { "A40", StreptococcalSepsis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A40", StreptococcalSepsis }, 
+      { "A40.0", SepsisDueToStreptococcusGroupA }, 
+      { "http://hl7.org/fhir/sid/icd-10#A40.0", SepsisDueToStreptococcusGroupA }, 
+      { "A40.1", SepsisDueToStreptococcusGroupB }, 
+      { "http://hl7.org/fhir/sid/icd-10#A40.1", SepsisDueToStreptococcusGroupB }, 
+      { "A40.2", SepsisDueToStreptococcusGroupDAndEnterococcus }, 
+      { "http://hl7.org/fhir/sid/icd-10#A40.2", SepsisDueToStreptococcusGroupDAndEnterococcus }, 
+      { "A40.3", SepsisDueToStreptococcusPneumoniae }, 
+      { "http://hl7.org/fhir/sid/icd-10#A40.3", SepsisDueToStreptococcusPneumoniae }, 
+      { "A40.8", OtherStreptococcalSepsis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A40.8", OtherStreptococcalSepsis }, 
+      { "A40.9", StreptococcalSepsisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A40.9", StreptococcalSepsisUnspecified }, 
+      { "A41", OtherSepsis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A41", OtherSepsis }, 
+      { "A41.0", SepsisDueToStaphylococcusAureus }, 
+      { "http://hl7.org/fhir/sid/icd-10#A41.0", SepsisDueToStaphylococcusAureus }, 
+      { "A41.1", SepsisDueToOtherSpecifiedStaphylococcus }, 
+      { "http://hl7.org/fhir/sid/icd-10#A41.1", SepsisDueToOtherSpecifiedStaphylococcus }, 
+      { "A41.2", SepsisDueToUnspecifiedStaphylococcus }, 
+      { "http://hl7.org/fhir/sid/icd-10#A41.2", SepsisDueToUnspecifiedStaphylococcus }, 
+      { "A41.3", SepsisDueToHaemophilusInfluenzae }, 
+      { "http://hl7.org/fhir/sid/icd-10#A41.3", SepsisDueToHaemophilusInfluenzae }, 
+      { "A41.4", SepsisDueToAnaerobes }, 
+      { "http://hl7.org/fhir/sid/icd-10#A41.4", SepsisDueToAnaerobes }, 
+      { "A41.5", SepsisDueToOtherGramNegativeOrganisms }, 
+      { "http://hl7.org/fhir/sid/icd-10#A41.5", SepsisDueToOtherGramNegativeOrganisms }, 
+      { "A41.8", OtherSpecifiedSepsis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A41.8", OtherSpecifiedSepsis }, 
+      { "A41.9", SepsisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A41.9", SepsisUnspecified }, 
+      { "A42", Actinomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A42", Actinomycosis }, 
+      { "A42.0", PulmonaryActinomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A42.0", PulmonaryActinomycosis }, 
+      { "A42.1", AbdominalActinomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A42.1", AbdominalActinomycosis }, 
+      { "A42.2", CervicofacialActinomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A42.2", CervicofacialActinomycosis }, 
+      { "A42.7", ActinomycoticSepsis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A42.7", ActinomycoticSepsis }, 
+      { "A42.8", OtherFormsOfActinomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A42.8", OtherFormsOfActinomycosis }, 
+      { "A42.9", ActinomycosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A42.9", ActinomycosisUnspecified }, 
+      { "A43", Nocardiosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A43", Nocardiosis }, 
+      { "A43.0", PulmonaryNocardiosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A43.0", PulmonaryNocardiosis }, 
+      { "A43.1", CutaneousNocardiosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A43.1", CutaneousNocardiosis }, 
+      { "A43.8", OtherFormsOfNocardiosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A43.8", OtherFormsOfNocardiosis }, 
+      { "A43.9", NocardiosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A43.9", NocardiosisUnspecified }, 
+      { "A44", Bartonellosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A44", Bartonellosis }, 
+      { "A44.0", SystemicBartonellosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A44.0", SystemicBartonellosis }, 
+      { "A44.1", CutaneousAndMucocutaneousBartonellosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A44.1", CutaneousAndMucocutaneousBartonellosis }, 
+      { "A44.8", OtherFormsOfBartonellosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A44.8", OtherFormsOfBartonellosis }, 
+      { "A44.9", BartonellosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A44.9", BartonellosisUnspecified }, 
+      { "A46", Erysipelas }, 
+      { "http://hl7.org/fhir/sid/icd-10#A46", Erysipelas }, 
+      { "A48", OtherBacterialDiseasesNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A48", OtherBacterialDiseasesNotElsewhereClassified }, 
+      { "A48.0", GasGangrene }, 
+      { "http://hl7.org/fhir/sid/icd-10#A48.0", GasGangrene }, 
+      { "A48.1", LegionnairesDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#A48.1", LegionnairesDisease }, 
+      { "A48.2", NonpneumonicLegionnairesDiseasePontiacFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A48.2", NonpneumonicLegionnairesDiseasePontiacFever }, 
+      { "A48.3", ToxicShockSyndrome }, 
+      { "http://hl7.org/fhir/sid/icd-10#A48.3", ToxicShockSyndrome }, 
+      { "A48.4", BrazilianPurpuricFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A48.4", BrazilianPurpuricFever }, 
+      { "A48.8", OtherSpecifiedBacterialDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#A48.8", OtherSpecifiedBacterialDiseases }, 
+      { "A49", BacterialInfectionOfUnspecifiedSite }, 
+      { "http://hl7.org/fhir/sid/icd-10#A49", BacterialInfectionOfUnspecifiedSite }, 
+      { "A49.0", StaphylococcalInfectionUnspecifiedSite }, 
+      { "http://hl7.org/fhir/sid/icd-10#A49.0", StaphylococcalInfectionUnspecifiedSite }, 
+      { "A49.1", StreptococcalAndEnterococcalInfectionUnspecifiedSite }, 
+      { "http://hl7.org/fhir/sid/icd-10#A49.1", StreptococcalAndEnterococcalInfectionUnspecifiedSite }, 
+      { "A49.2", HaemophilusInfluenzaeInfectionUnspecifiedSite }, 
+      { "http://hl7.org/fhir/sid/icd-10#A49.2", HaemophilusInfluenzaeInfectionUnspecifiedSite }, 
+      { "A49.3", MycoplasmaInfectionUnspecifiedSite }, 
+      { "http://hl7.org/fhir/sid/icd-10#A49.3", MycoplasmaInfectionUnspecifiedSite }, 
+      { "A49.8", OtherBacterialInfectionsOfUnspecifiedSite }, 
+      { "http://hl7.org/fhir/sid/icd-10#A49.8", OtherBacterialInfectionsOfUnspecifiedSite }, 
+      { "A49.9", BacterialInfectionUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A49.9", BacterialInfectionUnspecified }, 
+      { "A50", CongenitalSyphilis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A50", CongenitalSyphilis }, 
+      { "A50-A64", InfectionsWithAPredominantlySexualModeOfTransmission }, 
+      { "http://hl7.org/fhir/sid/icd-10#A50-A64", InfectionsWithAPredominantlySexualModeOfTransmission }, 
+      { "A50.0", EarlyCongenitalSyphilisSymptomatic }, 
+      { "http://hl7.org/fhir/sid/icd-10#A50.0", EarlyCongenitalSyphilisSymptomatic }, 
+      { "A50.1", EarlyCongenitalSyphilisLatent }, 
+      { "http://hl7.org/fhir/sid/icd-10#A50.1", EarlyCongenitalSyphilisLatent }, 
+      { "A50.2", EarlyCongenitalSyphilisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A50.2", EarlyCongenitalSyphilisUnspecified }, 
+      { "A50.3", LateCongenitalSyphiliticOculopathy }, 
+      { "http://hl7.org/fhir/sid/icd-10#A50.3", LateCongenitalSyphiliticOculopathy }, 
+      { "A50.4", LateCongenitalNeurosyphilisJuvenileNeurosyphilis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A50.4", LateCongenitalNeurosyphilisJuvenileNeurosyphilis }, 
+      { "A50.5", OtherLateCongenitalSyphilisSymptomatic }, 
+      { "http://hl7.org/fhir/sid/icd-10#A50.5", OtherLateCongenitalSyphilisSymptomatic }, 
+      { "A50.6", LateCongenitalSyphilisLatent }, 
+      { "http://hl7.org/fhir/sid/icd-10#A50.6", LateCongenitalSyphilisLatent }, 
+      { "A50.7", LateCongenitalSyphilisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A50.7", LateCongenitalSyphilisUnspecified }, 
+      { "A50.9", CongenitalSyphilisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A50.9", CongenitalSyphilisUnspecified }, 
+      { "A51", EarlySyphilis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A51", EarlySyphilis }, 
+      { "A51.0", PrimaryGenitalSyphilis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A51.0", PrimaryGenitalSyphilis }, 
+      { "A51.1", PrimaryAnalSyphilis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A51.1", PrimaryAnalSyphilis }, 
+      { "A51.2", PrimarySyphilisOfOtherSites }, 
+      { "http://hl7.org/fhir/sid/icd-10#A51.2", PrimarySyphilisOfOtherSites }, 
+      { "A51.3", SecondarySyphilisOfSkinAndMucousMembranes }, 
+      { "http://hl7.org/fhir/sid/icd-10#A51.3", SecondarySyphilisOfSkinAndMucousMembranes }, 
+      { "A51.4", OtherSecondarySyphilis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A51.4", OtherSecondarySyphilis }, 
+      { "A51.5", EarlySyphilisLatent }, 
+      { "http://hl7.org/fhir/sid/icd-10#A51.5", EarlySyphilisLatent }, 
+      { "A51.9", EarlySyphilisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A51.9", EarlySyphilisUnspecified }, 
+      { "A52", LateSyphilis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A52", LateSyphilis }, 
+      { "A52.0", CardiovascularSyphilis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A52.0", CardiovascularSyphilis }, 
+      { "A52.1", SymptomaticNeurosyphilis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A52.1", SymptomaticNeurosyphilis }, 
+      { "A52.2", AsymptomaticNeurosyphilis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A52.2", AsymptomaticNeurosyphilis }, 
+      { "A52.3", NeurosyphilisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A52.3", NeurosyphilisUnspecified }, 
+      { "A52.7", OtherSymptomaticLateSyphilis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A52.7", OtherSymptomaticLateSyphilis }, 
+      { "A52.8", LateSyphilisLatent }, 
+      { "http://hl7.org/fhir/sid/icd-10#A52.8", LateSyphilisLatent }, 
+      { "A52.9", LateSyphilisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A52.9", LateSyphilisUnspecified }, 
+      { "A53", OtherAndUnspecifiedSyphilis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A53", OtherAndUnspecifiedSyphilis }, 
+      { "A53.0", LatentSyphilisUnspecifiedAsEarlyOrLate }, 
+      { "http://hl7.org/fhir/sid/icd-10#A53.0", LatentSyphilisUnspecifiedAsEarlyOrLate }, 
+      { "A53.9", SyphilisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A53.9", SyphilisUnspecified }, 
+      { "A54", GonococcalInfection }, 
+      { "http://hl7.org/fhir/sid/icd-10#A54", GonococcalInfection }, 
+      { "A54.0", GonococcalInfectionOfLowerGenitourinaryTractWithoutPeriurethralOrAccessoryGlandAbscess }, 
+      { "http://hl7.org/fhir/sid/icd-10#A54.0", GonococcalInfectionOfLowerGenitourinaryTractWithoutPeriurethralOrAccessoryGlandAbscess }, 
+      { "A54.1", GonococcalInfectionOfLowerGenitourinaryTractWithPeriurethralAndAccessoryGlandAbscess }, 
+      { "http://hl7.org/fhir/sid/icd-10#A54.1", GonococcalInfectionOfLowerGenitourinaryTractWithPeriurethralAndAccessoryGlandAbscess }, 
+      { "A54.2", GonococcalPelviperitonitisAndOtherGonococcalGenitourinaryInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#A54.2", GonococcalPelviperitonitisAndOtherGonococcalGenitourinaryInfections }, 
+      { "A54.3", GonococcalInfectionOfEye }, 
+      { "http://hl7.org/fhir/sid/icd-10#A54.3", GonococcalInfectionOfEye }, 
+      { "A54.4", GonococcalInfectionOfMusculoskeletalSystem }, 
+      { "http://hl7.org/fhir/sid/icd-10#A54.4", GonococcalInfectionOfMusculoskeletalSystem }, 
+      { "A54.5", GonococcalPharyngitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A54.5", GonococcalPharyngitis }, 
+      { "A54.6", GonococcalInfectionOfAnusAndRectum }, 
+      { "http://hl7.org/fhir/sid/icd-10#A54.6", GonococcalInfectionOfAnusAndRectum }, 
+      { "A54.8", OtherGonococcalInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#A54.8", OtherGonococcalInfections }, 
+      { "A54.9", GonococcalInfectionUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A54.9", GonococcalInfectionUnspecified }, 
+      { "A55", ChlamydialLymphogranulomaVenereum }, 
+      { "http://hl7.org/fhir/sid/icd-10#A55", ChlamydialLymphogranulomaVenereum }, 
+      { "A56", OtherSexuallyTransmittedChlamydialDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#A56", OtherSexuallyTransmittedChlamydialDiseases }, 
+      { "A56.0", ChlamydialInfectionOfLowerGenitourinaryTract }, 
+      { "http://hl7.org/fhir/sid/icd-10#A56.0", ChlamydialInfectionOfLowerGenitourinaryTract }, 
+      { "A56.1", ChlamydialInfectionOfPelviperitoneumAndOtherGenitourinaryOrgans }, 
+      { "http://hl7.org/fhir/sid/icd-10#A56.1", ChlamydialInfectionOfPelviperitoneumAndOtherGenitourinaryOrgans }, 
+      { "A56.2", ChlamydialInfectionOfGenitourinaryTractUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A56.2", ChlamydialInfectionOfGenitourinaryTractUnspecified }, 
+      { "A56.3", ChlamydialInfectionOfAnusAndRectum }, 
+      { "http://hl7.org/fhir/sid/icd-10#A56.3", ChlamydialInfectionOfAnusAndRectum }, 
+      { "A56.4", ChlamydialInfectionOfPharynx }, 
+      { "http://hl7.org/fhir/sid/icd-10#A56.4", ChlamydialInfectionOfPharynx }, 
+      { "A56.8", SexuallyTransmittedChlamydialInfectionOfOtherSites }, 
+      { "http://hl7.org/fhir/sid/icd-10#A56.8", SexuallyTransmittedChlamydialInfectionOfOtherSites }, 
+      { "A57", Chancroid }, 
+      { "http://hl7.org/fhir/sid/icd-10#A57", Chancroid }, 
+      { "A58", GranulomaInguinale }, 
+      { "http://hl7.org/fhir/sid/icd-10#A58", GranulomaInguinale }, 
+      { "A59", Trichomoniasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A59", Trichomoniasis }, 
+      { "A59.0", UrogenitalTrichomoniasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A59.0", UrogenitalTrichomoniasis }, 
+      { "A59.8", TrichomoniasisOfOtherSites }, 
+      { "http://hl7.org/fhir/sid/icd-10#A59.8", TrichomoniasisOfOtherSites }, 
+      { "A59.9", TrichomoniasisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A59.9", TrichomoniasisUnspecified }, 
+      { "A60", AnogenitalHerpesviralHerpesSimplexInfection }, 
+      { "http://hl7.org/fhir/sid/icd-10#A60", AnogenitalHerpesviralHerpesSimplexInfection }, 
+      { "A60.0", HerpesviralInfectionOfGenitaliaAndUrogenitalTract }, 
+      { "http://hl7.org/fhir/sid/icd-10#A60.0", HerpesviralInfectionOfGenitaliaAndUrogenitalTract }, 
+      { "A60.1", HerpesviralInfectionOfPerianalSkinAndRectum }, 
+      { "http://hl7.org/fhir/sid/icd-10#A60.1", HerpesviralInfectionOfPerianalSkinAndRectum }, 
+      { "A60.9", AnogenitalHerpesviralInfectionUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A60.9", AnogenitalHerpesviralInfectionUnspecified }, 
+      { "A63", OtherPredominantlySexuallyTransmittedDiseasesNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A63", OtherPredominantlySexuallyTransmittedDiseasesNotElsewhereClassified }, 
+      { "A63.0", AnogenitalVenerealWarts }, 
+      { "http://hl7.org/fhir/sid/icd-10#A63.0", AnogenitalVenerealWarts }, 
+      { "A63.8", OtherSpecifiedPredominantlySexuallyTransmittedDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#A63.8", OtherSpecifiedPredominantlySexuallyTransmittedDiseases }, 
+      { "A64", UnspecifiedSexuallyTransmittedDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#A64", UnspecifiedSexuallyTransmittedDisease }, 
+      { "A65", NonvenerealSyphilis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A65", NonvenerealSyphilis }, 
+      { "A65-A69", OtherSpirochaetalDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#A65-A69", OtherSpirochaetalDiseases }, 
+      { "A66", Yaws }, 
+      { "http://hl7.org/fhir/sid/icd-10#A66", Yaws }, 
+      { "A66.0", InitialLesionsOfYaws }, 
+      { "http://hl7.org/fhir/sid/icd-10#A66.0", InitialLesionsOfYaws }, 
+      { "A66.1", MultiplePapillomataAndWetCrabYaws }, 
+      { "http://hl7.org/fhir/sid/icd-10#A66.1", MultiplePapillomataAndWetCrabYaws }, 
+      { "A66.2", OtherEarlySkinLesionsOfYaws }, 
+      { "http://hl7.org/fhir/sid/icd-10#A66.2", OtherEarlySkinLesionsOfYaws }, 
+      { "A66.3", HyperkeratosisOfYaws }, 
+      { "http://hl7.org/fhir/sid/icd-10#A66.3", HyperkeratosisOfYaws }, 
+      { "A66.4", GummataAndUlcersOfYaws }, 
+      { "http://hl7.org/fhir/sid/icd-10#A66.4", GummataAndUlcersOfYaws }, 
+      { "A66.5", Gangosa }, 
+      { "http://hl7.org/fhir/sid/icd-10#A66.5", Gangosa }, 
+      { "A66.6", BoneAndJointLesionsOfYaws }, 
+      { "http://hl7.org/fhir/sid/icd-10#A66.6", BoneAndJointLesionsOfYaws }, 
+      { "A66.7", OtherManifestationsOfYaws }, 
+      { "http://hl7.org/fhir/sid/icd-10#A66.7", OtherManifestationsOfYaws }, 
+      { "A66.8", LatentYaws }, 
+      { "http://hl7.org/fhir/sid/icd-10#A66.8", LatentYaws }, 
+      { "A66.9", YawsUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A66.9", YawsUnspecified }, 
+      { "A67", PintaCarate }, 
+      { "http://hl7.org/fhir/sid/icd-10#A67", PintaCarate }, 
+      { "A67.0", PrimaryLesionsOfPinta }, 
+      { "http://hl7.org/fhir/sid/icd-10#A67.0", PrimaryLesionsOfPinta }, 
+      { "A67.1", IntermediateLesionsOfPinta }, 
+      { "http://hl7.org/fhir/sid/icd-10#A67.1", IntermediateLesionsOfPinta }, 
+      { "A67.2", LateLesionsOfPinta }, 
+      { "http://hl7.org/fhir/sid/icd-10#A67.2", LateLesionsOfPinta }, 
+      { "A67.3", MixedLesionsOfPinta }, 
+      { "http://hl7.org/fhir/sid/icd-10#A67.3", MixedLesionsOfPinta }, 
+      { "A67.9", PintaUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A67.9", PintaUnspecified }, 
+      { "A68", RelapsingFevers }, 
+      { "http://hl7.org/fhir/sid/icd-10#A68", RelapsingFevers }, 
+      { "A68.0", LouseBorneRelapsingFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A68.0", LouseBorneRelapsingFever }, 
+      { "A68.1", TickBorneRelapsingFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A68.1", TickBorneRelapsingFever }, 
+      { "A68.9", RelapsingFeverUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A68.9", RelapsingFeverUnspecified }, 
+      { "A69", OtherSpirochaetalInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#A69", OtherSpirochaetalInfections }, 
+      { "A69.0", NecrotizingUlcerativeStomatitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A69.0", NecrotizingUlcerativeStomatitis }, 
+      { "A69.1", OtherVincentInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#A69.1", OtherVincentInfections }, 
+      { "A69.2", LymeDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#A69.2", LymeDisease }, 
+      { "A69.8", OtherSpecifiedSpirochaetalInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#A69.8", OtherSpecifiedSpirochaetalInfections }, 
+      { "A69.9", SpirochaetalInfectionUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A69.9", SpirochaetalInfectionUnspecified }, 
+      { "A70", ChlamydiaPsittaciInfection }, 
+      { "http://hl7.org/fhir/sid/icd-10#A70", ChlamydiaPsittaciInfection }, 
+      { "A70-A74", OtherDiseasesCausedByChlamydiae }, 
+      { "http://hl7.org/fhir/sid/icd-10#A70-A74", OtherDiseasesCausedByChlamydiae }, 
+      { "A71", Trachoma }, 
+      { "http://hl7.org/fhir/sid/icd-10#A71", Trachoma }, 
+      { "A71.0", InitialStageOfTrachoma }, 
+      { "http://hl7.org/fhir/sid/icd-10#A71.0", InitialStageOfTrachoma }, 
+      { "A71.1", ActiveStageOfTrachoma }, 
+      { "http://hl7.org/fhir/sid/icd-10#A71.1", ActiveStageOfTrachoma }, 
+      { "A71.9", TrachomaUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A71.9", TrachomaUnspecified }, 
+      { "A74", OtherDiseasesCausedByChlamydiae_2 }, 
+      { "http://hl7.org/fhir/sid/icd-10#A74", OtherDiseasesCausedByChlamydiae_2 }, 
+      { "A74.0", ChlamydialConjunctivitisH131 }, 
+      { "http://hl7.org/fhir/sid/icd-10#A74.0", ChlamydialConjunctivitisH131 }, 
+      { "A74.8", OtherChlamydialDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#A74.8", OtherChlamydialDiseases }, 
+      { "A74.9", ChlamydialInfectionUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A74.9", ChlamydialInfectionUnspecified }, 
+      { "A75", TyphusFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A75", TyphusFever }, 
+      { "A75-A79", Rickettsioses }, 
+      { "http://hl7.org/fhir/sid/icd-10#A75-A79", Rickettsioses }, 
+      { "A75.0", EpidemicLouseBorneTyphusFeverDueToRickettsiaProwazekii }, 
+      { "http://hl7.org/fhir/sid/icd-10#A75.0", EpidemicLouseBorneTyphusFeverDueToRickettsiaProwazekii }, 
+      { "A75.1", RecrudescentTyphusBrillDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#A75.1", RecrudescentTyphusBrillDisease }, 
+      { "A75.2", TyphusFeverDueToRickettsiaTyphi }, 
+      { "http://hl7.org/fhir/sid/icd-10#A75.2", TyphusFeverDueToRickettsiaTyphi }, 
+      { "A75.3", TyphusFeverDueToRickettsiaTsutsugamushi }, 
+      { "http://hl7.org/fhir/sid/icd-10#A75.3", TyphusFeverDueToRickettsiaTsutsugamushi }, 
+      { "A75.9", TyphusFeverUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A75.9", TyphusFeverUnspecified }, 
+      { "A77", SpottedFeverTickBorneRickettsioses }, 
+      { "http://hl7.org/fhir/sid/icd-10#A77", SpottedFeverTickBorneRickettsioses }, 
+      { "A77.0", SpottedFeverDueToRickettsiaRickettsii }, 
+      { "http://hl7.org/fhir/sid/icd-10#A77.0", SpottedFeverDueToRickettsiaRickettsii }, 
+      { "A77.1", SpottedFeverDueToRickettsiaConorii }, 
+      { "http://hl7.org/fhir/sid/icd-10#A77.1", SpottedFeverDueToRickettsiaConorii }, 
+      { "A77.2", SpottedFeverDueToRickettsiaSibirica }, 
+      { "http://hl7.org/fhir/sid/icd-10#A77.2", SpottedFeverDueToRickettsiaSibirica }, 
+      { "A77.3", SpottedFeverDueToRickettsiaAustralis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A77.3", SpottedFeverDueToRickettsiaAustralis }, 
+      { "A77.8", OtherSpottedFevers }, 
+      { "http://hl7.org/fhir/sid/icd-10#A77.8", OtherSpottedFevers }, 
+      { "A77.9", SpottedFeverUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A77.9", SpottedFeverUnspecified }, 
+      { "A78", QFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A78", QFever }, 
+      { "A79", OtherRickettsioses }, 
+      { "http://hl7.org/fhir/sid/icd-10#A79", OtherRickettsioses }, 
+      { "A79.0", TrenchFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A79.0", TrenchFever }, 
+      { "A79.1", RickettsialpoxDueToRickettsiaAkari }, 
+      { "http://hl7.org/fhir/sid/icd-10#A79.1", RickettsialpoxDueToRickettsiaAkari }, 
+      { "A79.8", OtherSpecifiedRickettsioses }, 
+      { "http://hl7.org/fhir/sid/icd-10#A79.8", OtherSpecifiedRickettsioses }, 
+      { "A79.9", RickettsiosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A79.9", RickettsiosisUnspecified }, 
+      { "A80", AcutePoliomyelitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A80", AcutePoliomyelitis }, 
+      { "A80-A89", ViralInfectionsOfTheCentralNervousSystem }, 
+      { "http://hl7.org/fhir/sid/icd-10#A80-A89", ViralInfectionsOfTheCentralNervousSystem }, 
+      { "A80.0", AcuteParalyticPoliomyelitisVaccineAssociated }, 
+      { "http://hl7.org/fhir/sid/icd-10#A80.0", AcuteParalyticPoliomyelitisVaccineAssociated }, 
+      { "A80.1", AcuteParalyticPoliomyelitisWildVirusImported }, 
+      { "http://hl7.org/fhir/sid/icd-10#A80.1", AcuteParalyticPoliomyelitisWildVirusImported }, 
+      { "A80.2", AcuteParalyticPoliomyelitisWildVirusIndigenous }, 
+      { "http://hl7.org/fhir/sid/icd-10#A80.2", AcuteParalyticPoliomyelitisWildVirusIndigenous }, 
+      { "A80.3", AcuteParalyticPoliomyelitisOtherAndUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A80.3", AcuteParalyticPoliomyelitisOtherAndUnspecified }, 
+      { "A80.4", AcuteNonparalyticPoliomyelitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A80.4", AcuteNonparalyticPoliomyelitis }, 
+      { "A80.9", AcutePoliomyelitisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A80.9", AcutePoliomyelitisUnspecified }, 
+      { "A81", AtypicalVirusInfectionsOfCentralNervousSystem }, 
+      { "http://hl7.org/fhir/sid/icd-10#A81", AtypicalVirusInfectionsOfCentralNervousSystem }, 
+      { "A81.0", CreutzfeldtJakobDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#A81.0", CreutzfeldtJakobDisease }, 
+      { "A81.1", SubacuteSclerosingPanencephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A81.1", SubacuteSclerosingPanencephalitis }, 
+      { "A81.2", ProgressiveMultifocalLeukoencephalopathy }, 
+      { "http://hl7.org/fhir/sid/icd-10#A81.2", ProgressiveMultifocalLeukoencephalopathy }, 
+      { "A81.8", OtherAtypicalVirusInfectionsOfCentralNervousSystem }, 
+      { "http://hl7.org/fhir/sid/icd-10#A81.8", OtherAtypicalVirusInfectionsOfCentralNervousSystem }, 
+      { "A81.9", AtypicalVirusInfectionOfCentralNervousSystemUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A81.9", AtypicalVirusInfectionOfCentralNervousSystemUnspecified }, 
+      { "A82", Rabies }, 
+      { "http://hl7.org/fhir/sid/icd-10#A82", Rabies }, 
+      { "A82.0", SylvaticRabies }, 
+      { "http://hl7.org/fhir/sid/icd-10#A82.0", SylvaticRabies }, 
+      { "A82.1", UrbanRabies }, 
+      { "http://hl7.org/fhir/sid/icd-10#A82.1", UrbanRabies }, 
+      { "A82.9", RabiesUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A82.9", RabiesUnspecified }, 
+      { "A83", MosquitoBorneViralEncephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A83", MosquitoBorneViralEncephalitis }, 
+      { "A83.0", JapaneseEncephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A83.0", JapaneseEncephalitis }, 
+      { "A83.1", WesternEquineEncephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A83.1", WesternEquineEncephalitis }, 
+      { "A83.2", EasternEquineEncephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A83.2", EasternEquineEncephalitis }, 
+      { "A83.3", StLouisEncephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A83.3", StLouisEncephalitis }, 
+      { "A83.4", AustralianEncephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A83.4", AustralianEncephalitis }, 
+      { "A83.5", CaliforniaEncephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A83.5", CaliforniaEncephalitis }, 
+      { "A83.6", RocioVirusDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#A83.6", RocioVirusDisease }, 
+      { "A83.8", OtherMosquitoBorneViralEncephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A83.8", OtherMosquitoBorneViralEncephalitis }, 
+      { "A83.9", MosquitoBorneViralEncephalitisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A83.9", MosquitoBorneViralEncephalitisUnspecified }, 
+      { "A84", TickBorneViralEncephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A84", TickBorneViralEncephalitis }, 
+      { "A84.0", FarEasternTickBorneEncephalitisRussianSpringSummerEncephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A84.0", FarEasternTickBorneEncephalitisRussianSpringSummerEncephalitis }, 
+      { "A84.1", CentralEuropeanTickBorneEncephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A84.1", CentralEuropeanTickBorneEncephalitis }, 
+      { "A84.8", OtherTickBorneViralEncephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A84.8", OtherTickBorneViralEncephalitis }, 
+      { "A84.9", TickBorneViralEncephalitisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A84.9", TickBorneViralEncephalitisUnspecified }, 
+      { "A85", OtherViralEncephalitisNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A85", OtherViralEncephalitisNotElsewhereClassified }, 
+      { "A85.0", EnteroviralEncephalitisG051 }, 
+      { "http://hl7.org/fhir/sid/icd-10#A85.0", EnteroviralEncephalitisG051 }, 
+      { "A85.1", AdenoviralEncephalitisG051 }, 
+      { "http://hl7.org/fhir/sid/icd-10#A85.1", AdenoviralEncephalitisG051 }, 
+      { "A85.2", ArthropodBorneViralEncephalitisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A85.2", ArthropodBorneViralEncephalitisUnspecified }, 
+      { "A85.8", OtherSpecifiedViralEncephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A85.8", OtherSpecifiedViralEncephalitis }, 
+      { "A86", UnspecifiedViralEncephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A86", UnspecifiedViralEncephalitis }, 
+      { "A87", ViralMeningitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A87", ViralMeningitis }, 
+      { "A87.0", EnteroviralMeningitisG020 }, 
+      { "http://hl7.org/fhir/sid/icd-10#A87.0", EnteroviralMeningitisG020 }, 
+      { "A87.1", AdenoviralMeningitisG020 }, 
+      { "http://hl7.org/fhir/sid/icd-10#A87.1", AdenoviralMeningitisG020 }, 
+      { "A87.2", LymphocyticChoriomeningitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A87.2", LymphocyticChoriomeningitis }, 
+      { "A87.8", OtherViralMeningitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#A87.8", OtherViralMeningitis }, 
+      { "A87.9", ViralMeningitisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A87.9", ViralMeningitisUnspecified }, 
+      { "A88", OtherViralInfectionsOfCentralNervousSystemNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A88", OtherViralInfectionsOfCentralNervousSystemNotElsewhereClassified }, 
+      { "A88.0", EnteroviralExanthematousFeverBostonExanthem }, 
+      { "http://hl7.org/fhir/sid/icd-10#A88.0", EnteroviralExanthematousFeverBostonExanthem }, 
+      { "A88.1", EpidemicVertigo }, 
+      { "http://hl7.org/fhir/sid/icd-10#A88.1", EpidemicVertigo }, 
+      { "A88.8", OtherSpecifiedViralInfectionsOfCentralNervousSystem }, 
+      { "http://hl7.org/fhir/sid/icd-10#A88.8", OtherSpecifiedViralInfectionsOfCentralNervousSystem }, 
+      { "A89", UnspecifiedViralInfectionOfCentralNervousSystem }, 
+      { "http://hl7.org/fhir/sid/icd-10#A89", UnspecifiedViralInfectionOfCentralNervousSystem }, 
+      { "A92", OtherMosquitoBorneViralFevers }, 
+      { "http://hl7.org/fhir/sid/icd-10#A92", OtherMosquitoBorneViralFevers }, 
+      { "A92-A99", ArthropodBorneViralFeversAndViralHaemorrhagicFevers }, 
+      { "http://hl7.org/fhir/sid/icd-10#A92-A99", ArthropodBorneViralFeversAndViralHaemorrhagicFevers }, 
+      { "A92.0", ChikungunyaVirusDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#A92.0", ChikungunyaVirusDisease }, 
+      { "A92.1", OQuoteNyongNyongFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A92.1", OQuoteNyongNyongFever }, 
+      { "A92.2", VenezuelanEquineFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A92.2", VenezuelanEquineFever }, 
+      { "A92.3", WestNileVirusInfection }, 
+      { "http://hl7.org/fhir/sid/icd-10#A92.3", WestNileVirusInfection }, 
+      { "A92.4", RiftValleyFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A92.4", RiftValleyFever }, 
+      { "A92.5", ZikaVirusDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#A92.5", ZikaVirusDisease }, 
+      { "A92.8", OtherSpecifiedMosquitoBorneViralFevers }, 
+      { "http://hl7.org/fhir/sid/icd-10#A92.8", OtherSpecifiedMosquitoBorneViralFevers }, 
+      { "A92.9", MosquitoBorneViralFeverUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A92.9", MosquitoBorneViralFeverUnspecified }, 
+      { "A93", OtherArthropodBorneViralFeversNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A93", OtherArthropodBorneViralFeversNotElsewhereClassified }, 
+      { "A93.0", OropoucheVirusDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#A93.0", OropoucheVirusDisease }, 
+      { "A93.1", SandflyFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A93.1", SandflyFever }, 
+      { "A93.2", ColoradoTickFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A93.2", ColoradoTickFever }, 
+      { "A93.8", OtherSpecifiedArthropodBorneViralFevers }, 
+      { "http://hl7.org/fhir/sid/icd-10#A93.8", OtherSpecifiedArthropodBorneViralFevers }, 
+      { "A94", UnspecifiedArthropodBorneViralFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A94", UnspecifiedArthropodBorneViralFever }, 
+      { "A95", YellowFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A95", YellowFever }, 
+      { "A95.0", SylvaticYellowFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A95.0", SylvaticYellowFever }, 
+      { "A95.1", UrbanYellowFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A95.1", UrbanYellowFever }, 
+      { "A95.9", YellowFeverUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A95.9", YellowFeverUnspecified }, 
+      { "A96", ArenaviralHaemorrhagicFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A96", ArenaviralHaemorrhagicFever }, 
+      { "A96.0", JuninHaemorrhagicFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A96.0", JuninHaemorrhagicFever }, 
+      { "A96.1", MachupoHaemorrhagicFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A96.1", MachupoHaemorrhagicFever }, 
+      { "A96.2", LassaFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A96.2", LassaFever }, 
+      { "A96.8", OtherArenaviralHaemorrhagicFevers }, 
+      { "http://hl7.org/fhir/sid/icd-10#A96.8", OtherArenaviralHaemorrhagicFevers }, 
+      { "A96.9", ArenaviralHaemorrhagicFeverUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A96.9", ArenaviralHaemorrhagicFeverUnspecified }, 
+      { "A97", Dengue }, 
+      { "http://hl7.org/fhir/sid/icd-10#A97", Dengue }, 
+      { "A97.0", DengueWithoutWarningSigns }, 
+      { "http://hl7.org/fhir/sid/icd-10#A97.0", DengueWithoutWarningSigns }, 
+      { "A97.1", DengueWithWarningSigns }, 
+      { "http://hl7.org/fhir/sid/icd-10#A97.1", DengueWithWarningSigns }, 
+      { "A97.2", SevereDengue }, 
+      { "http://hl7.org/fhir/sid/icd-10#A97.2", SevereDengue }, 
+      { "A97.9", DengueUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A97.9", DengueUnspecified }, 
+      { "A98", OtherViralHaemorrhagicFeversNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#A98", OtherViralHaemorrhagicFeversNotElsewhereClassified }, 
+      { "A98.0", CrimeanCongoHaemorrhagicFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A98.0", CrimeanCongoHaemorrhagicFever }, 
+      { "A98.1", OmskHaemorrhagicFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A98.1", OmskHaemorrhagicFever }, 
+      { "A98.2", KyasanurForestDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#A98.2", KyasanurForestDisease }, 
+      { "A98.3", MarburgVirusDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#A98.3", MarburgVirusDisease }, 
+      { "A98.4", EbolaVirusDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#A98.4", EbolaVirusDisease }, 
+      { "A98.5", HaemorrhagicFeverWithRenalSyndrome }, 
+      { "http://hl7.org/fhir/sid/icd-10#A98.5", HaemorrhagicFeverWithRenalSyndrome }, 
+      { "A98.8", OtherSpecifiedViralHaemorrhagicFevers }, 
+      { "http://hl7.org/fhir/sid/icd-10#A98.8", OtherSpecifiedViralHaemorrhagicFevers }, 
+      { "A99", UnspecifiedViralHaemorrhagicFever }, 
+      { "http://hl7.org/fhir/sid/icd-10#A99", UnspecifiedViralHaemorrhagicFever }, 
+      { "B00", HerpesviralHerpesSimplexInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#B00", HerpesviralHerpesSimplexInfections }, 
+      { "B00-B09", ViralInfectionsCharacterizedBySkinAndMucousMembraneLesions }, 
+      { "http://hl7.org/fhir/sid/icd-10#B00-B09", ViralInfectionsCharacterizedBySkinAndMucousMembraneLesions }, 
+      { "B00.0", EczemaHerpeticum }, 
+      { "http://hl7.org/fhir/sid/icd-10#B00.0", EczemaHerpeticum }, 
+      { "B00.1", HerpesviralVesicularDermatitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B00.1", HerpesviralVesicularDermatitis }, 
+      { "B00.2", HerpesviralGingivostomatitisAndPharyngotonsillitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B00.2", HerpesviralGingivostomatitisAndPharyngotonsillitis }, 
+      { "B00.3", HerpesviralMeningitisG020 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B00.3", HerpesviralMeningitisG020 }, 
+      { "B00.4", HerpesviralEncephalitisG051 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B00.4", HerpesviralEncephalitisG051 }, 
+      { "B00.5", HerpesviralOcularDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#B00.5", HerpesviralOcularDisease }, 
+      { "B00.7", DisseminatedHerpesviralDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#B00.7", DisseminatedHerpesviralDisease }, 
+      { "B00.8", OtherFormsOfHerpesviralInfection }, 
+      { "http://hl7.org/fhir/sid/icd-10#B00.8", OtherFormsOfHerpesviralInfection }, 
+      { "B00.9", HerpesviralInfectionUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B00.9", HerpesviralInfectionUnspecified }, 
+      { "B01", VaricellaChickenpox }, 
+      { "http://hl7.org/fhir/sid/icd-10#B01", VaricellaChickenpox }, 
+      { "B01.0", VaricellaMeningitisG020 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B01.0", VaricellaMeningitisG020 }, 
+      { "B01.1", VaricellaEncephalitisG051 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B01.1", VaricellaEncephalitisG051 }, 
+      { "B01.2", VaricellaPneumoniaJ171 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B01.2", VaricellaPneumoniaJ171 }, 
+      { "B01.8", VaricellaWithOtherComplications }, 
+      { "http://hl7.org/fhir/sid/icd-10#B01.8", VaricellaWithOtherComplications }, 
+      { "B01.9", VaricellaWithoutComplication }, 
+      { "http://hl7.org/fhir/sid/icd-10#B01.9", VaricellaWithoutComplication }, 
+      { "B02", ZosterHerpesZoster }, 
+      { "http://hl7.org/fhir/sid/icd-10#B02", ZosterHerpesZoster }, 
+      { "B02.0", ZosterEncephalitisG051 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B02.0", ZosterEncephalitisG051 }, 
+      { "B02.1", ZosterMeningitisG020 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B02.1", ZosterMeningitisG020 }, 
+      { "B02.2", ZosterWithOtherNervousSystemInvolvement }, 
+      { "http://hl7.org/fhir/sid/icd-10#B02.2", ZosterWithOtherNervousSystemInvolvement }, 
+      { "B02.3", ZosterOcularDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#B02.3", ZosterOcularDisease }, 
+      { "B02.7", DisseminatedZoster }, 
+      { "http://hl7.org/fhir/sid/icd-10#B02.7", DisseminatedZoster }, 
+      { "B02.8", ZosterWithOtherComplications }, 
+      { "http://hl7.org/fhir/sid/icd-10#B02.8", ZosterWithOtherComplications }, 
+      { "B02.9", ZosterWithoutComplication }, 
+      { "http://hl7.org/fhir/sid/icd-10#B02.9", ZosterWithoutComplication }, 
+      { "B03", SmallpoxINCLUDE }, 
+      { "http://hl7.org/fhir/sid/icd-10#B03", SmallpoxINCLUDE }, 
+      { "B04", Monkeypox }, 
+      { "http://hl7.org/fhir/sid/icd-10#B04", Monkeypox }, 
+      { "B05", Measles }, 
+      { "http://hl7.org/fhir/sid/icd-10#B05", Measles }, 
+      { "B05.0", MeaslesComplicatedByEncephalitisG051 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B05.0", MeaslesComplicatedByEncephalitisG051 }, 
+      { "B05.1", MeaslesComplicatedByMeningitisG020 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B05.1", MeaslesComplicatedByMeningitisG020 }, 
+      { "B05.2", MeaslesComplicatedByPneumoniaJ171 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B05.2", MeaslesComplicatedByPneumoniaJ171 }, 
+      { "B05.3", MeaslesComplicatedByOtitisMediaH671 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B05.3", MeaslesComplicatedByOtitisMediaH671 }, 
+      { "B05.4", MeaslesWithIntestinalComplications }, 
+      { "http://hl7.org/fhir/sid/icd-10#B05.4", MeaslesWithIntestinalComplications }, 
+      { "B05.8", MeaslesWithOtherComplications }, 
+      { "http://hl7.org/fhir/sid/icd-10#B05.8", MeaslesWithOtherComplications }, 
+      { "B05.9", MeaslesWithoutComplication }, 
+      { "http://hl7.org/fhir/sid/icd-10#B05.9", MeaslesWithoutComplication }, 
+      { "B06", RubellaGermanMeasles }, 
+      { "http://hl7.org/fhir/sid/icd-10#B06", RubellaGermanMeasles }, 
+      { "B06.0", RubellaWithNeurologicalComplications }, 
+      { "http://hl7.org/fhir/sid/icd-10#B06.0", RubellaWithNeurologicalComplications }, 
+      { "B06.8", RubellaWithOtherComplications }, 
+      { "http://hl7.org/fhir/sid/icd-10#B06.8", RubellaWithOtherComplications }, 
+      { "B06.9", RubellaWithoutComplication }, 
+      { "http://hl7.org/fhir/sid/icd-10#B06.9", RubellaWithoutComplication }, 
+      { "B07", ViralWarts }, 
+      { "http://hl7.org/fhir/sid/icd-10#B07", ViralWarts }, 
+      { "B08", OtherViralInfectionsCharacterizedBySkinAndMucousMembraneLesionsNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B08", OtherViralInfectionsCharacterizedBySkinAndMucousMembraneLesionsNotElsewhereClassified }, 
+      { "B08.0", OtherOrthopoxvirusInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#B08.0", OtherOrthopoxvirusInfections }, 
+      { "B08.1", MolluscumContagiosum }, 
+      { "http://hl7.org/fhir/sid/icd-10#B08.1", MolluscumContagiosum }, 
+      { "B08.2", ExanthemaSubitumSixthDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#B08.2", ExanthemaSubitumSixthDisease }, 
+      { "B08.3", ErythemaInfectiosumFifthDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#B08.3", ErythemaInfectiosumFifthDisease }, 
+      { "B08.4", EnteroviralVesicularStomatitisWithExanthem }, 
+      { "http://hl7.org/fhir/sid/icd-10#B08.4", EnteroviralVesicularStomatitisWithExanthem }, 
+      { "B08.5", EnteroviralVesicularPharyngitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B08.5", EnteroviralVesicularPharyngitis }, 
+      { "B08.8", OtherSpecifiedViralInfectionsCharacterizedBySkinAndMucousMembraneLesions }, 
+      { "http://hl7.org/fhir/sid/icd-10#B08.8", OtherSpecifiedViralInfectionsCharacterizedBySkinAndMucousMembraneLesions }, 
+      { "B09", UnspecifiedViralInfectionCharacterizedBySkinAndMucousMembraneLesions }, 
+      { "http://hl7.org/fhir/sid/icd-10#B09", UnspecifiedViralInfectionCharacterizedBySkinAndMucousMembraneLesions }, 
+      { "B15", AcuteHepatitisA }, 
+      { "http://hl7.org/fhir/sid/icd-10#B15", AcuteHepatitisA }, 
+      { "B15-B19", ViralHepatitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B15-B19", ViralHepatitis }, 
+      { "B15.0", HepatitisAWithHepaticComa }, 
+      { "http://hl7.org/fhir/sid/icd-10#B15.0", HepatitisAWithHepaticComa }, 
+      { "B15.9", HepatitisAWithoutHepaticComa }, 
+      { "http://hl7.org/fhir/sid/icd-10#B15.9", HepatitisAWithoutHepaticComa }, 
+      { "B16", AcuteHepatitisB }, 
+      { "http://hl7.org/fhir/sid/icd-10#B16", AcuteHepatitisB }, 
+      { "B16.0", AcuteHepatitisBWithDeltaAgentCoinfectionWithHepaticComa }, 
+      { "http://hl7.org/fhir/sid/icd-10#B16.0", AcuteHepatitisBWithDeltaAgentCoinfectionWithHepaticComa }, 
+      { "B16.1", AcuteHepatitisBWithDeltaAgentCoinfectionWithoutHepaticComa }, 
+      { "http://hl7.org/fhir/sid/icd-10#B16.1", AcuteHepatitisBWithDeltaAgentCoinfectionWithoutHepaticComa }, 
+      { "B16.2", AcuteHepatitisBWithoutDeltaAgentWithHepaticComa }, 
+      { "http://hl7.org/fhir/sid/icd-10#B16.2", AcuteHepatitisBWithoutDeltaAgentWithHepaticComa }, 
+      { "B16.9", AcuteHepatitisBWithoutDeltaAgentAndWithoutHepaticComa }, 
+      { "http://hl7.org/fhir/sid/icd-10#B16.9", AcuteHepatitisBWithoutDeltaAgentAndWithoutHepaticComa }, 
+      { "B17", OtherAcuteViralHepatitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B17", OtherAcuteViralHepatitis }, 
+      { "B17.0", AcuteDeltaSuperInfectionInChronicHepatitisB }, 
+      { "http://hl7.org/fhir/sid/icd-10#B17.0", AcuteDeltaSuperInfectionInChronicHepatitisB }, 
+      { "B17.1", AcuteHepatitisC }, 
+      { "http://hl7.org/fhir/sid/icd-10#B17.1", AcuteHepatitisC }, 
+      { "B17.2", AcuteHepatitisE }, 
+      { "http://hl7.org/fhir/sid/icd-10#B17.2", AcuteHepatitisE }, 
+      { "B17.8", OtherSpecifiedAcuteViralHepatitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B17.8", OtherSpecifiedAcuteViralHepatitis }, 
+      { "B17.9", AcuteViralHepatitisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B17.9", AcuteViralHepatitisUnspecified }, 
+      { "B18", ChronicViralHepatitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B18", ChronicViralHepatitis }, 
+      { "B18.0", ChronicViralHepatitisBWithDeltaAgent }, 
+      { "http://hl7.org/fhir/sid/icd-10#B18.0", ChronicViralHepatitisBWithDeltaAgent }, 
+      { "B18.1", ChronicViralHepatitisBWithoutDeltaAgent }, 
+      { "http://hl7.org/fhir/sid/icd-10#B18.1", ChronicViralHepatitisBWithoutDeltaAgent }, 
+      { "B18.2", ChronicViralHepatitisC }, 
+      { "http://hl7.org/fhir/sid/icd-10#B18.2", ChronicViralHepatitisC }, 
+      { "B18.8", OtherChronicViralHepatitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B18.8", OtherChronicViralHepatitis }, 
+      { "B18.9", ChronicViralHepatitisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B18.9", ChronicViralHepatitisUnspecified }, 
+      { "B19", UnspecifiedViralHepatitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B19", UnspecifiedViralHepatitis }, 
+      { "B19.0", UnspecifiedViralHepatitisWithHepaticComa }, 
+      { "http://hl7.org/fhir/sid/icd-10#B19.0", UnspecifiedViralHepatitisWithHepaticComa }, 
+      { "B19.9", UnspecifiedViralHepatitisWithoutHepaticComa }, 
+      { "http://hl7.org/fhir/sid/icd-10#B19.9", UnspecifiedViralHepatitisWithoutHepaticComa }, 
+      { "B20", HumanImmunodeficiencyVirusHIVDiseaseResultingInInfectiousAndParasiticDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B20", HumanImmunodeficiencyVirusHIVDiseaseResultingInInfectiousAndParasiticDiseases }, 
+      { "B20-B24", HumanImmunodeficiencyVirusHIVDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#B20-B24", HumanImmunodeficiencyVirusHIVDisease }, 
+      { "B20.0", HIVDiseaseResultingInMycobacterialInfection }, 
+      { "http://hl7.org/fhir/sid/icd-10#B20.0", HIVDiseaseResultingInMycobacterialInfection }, 
+      { "B20.1", HIVDiseaseResultingInOtherBacterialInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#B20.1", HIVDiseaseResultingInOtherBacterialInfections }, 
+      { "B20.2", HIVDiseaseResultingInCytomegaloviralDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#B20.2", HIVDiseaseResultingInCytomegaloviralDisease }, 
+      { "B20.3", HIVDiseaseResultingInOtherViralInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#B20.3", HIVDiseaseResultingInOtherViralInfections }, 
+      { "B20.4", HIVDiseaseResultingInCandidiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B20.4", HIVDiseaseResultingInCandidiasis }, 
+      { "B20.5", HIVDiseaseResultingInOtherMycoses }, 
+      { "http://hl7.org/fhir/sid/icd-10#B20.5", HIVDiseaseResultingInOtherMycoses }, 
+      { "B20.6", HIVDiseaseResultingInPneumocystisJiroveciiPneumonia }, 
+      { "http://hl7.org/fhir/sid/icd-10#B20.6", HIVDiseaseResultingInPneumocystisJiroveciiPneumonia }, 
+      { "B20.7", HIVDiseaseResultingInMultipleInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#B20.7", HIVDiseaseResultingInMultipleInfections }, 
+      { "B20.8", HIVDiseaseResultingInOtherInfectiousAndParasiticDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B20.8", HIVDiseaseResultingInOtherInfectiousAndParasiticDiseases }, 
+      { "B20.9", HIVDiseaseResultingInUnspecifiedInfectiousOrParasiticDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#B20.9", HIVDiseaseResultingInUnspecifiedInfectiousOrParasiticDisease }, 
+      { "B21", HumanImmunodeficiencyVirusHIVDiseaseResultingInMalignantNeoplasms }, 
+      { "http://hl7.org/fhir/sid/icd-10#B21", HumanImmunodeficiencyVirusHIVDiseaseResultingInMalignantNeoplasms }, 
+      { "B21.0", HIVDiseaseResultingInKaposiSarcoma }, 
+      { "http://hl7.org/fhir/sid/icd-10#B21.0", HIVDiseaseResultingInKaposiSarcoma }, 
+      { "B21.1", HIVDiseaseResultingInBurkittLymphoma }, 
+      { "http://hl7.org/fhir/sid/icd-10#B21.1", HIVDiseaseResultingInBurkittLymphoma }, 
+      { "B21.2", HIVDiseaseResultingInOtherTypesOfNonHodgkinLymphoma }, 
+      { "http://hl7.org/fhir/sid/icd-10#B21.2", HIVDiseaseResultingInOtherTypesOfNonHodgkinLymphoma }, 
+      { "B21.3", HIVDiseaseResultingInOtherMalignantNeoplasmsOfLymphoidHaematopoieticAndRelatedTissue }, 
+      { "http://hl7.org/fhir/sid/icd-10#B21.3", HIVDiseaseResultingInOtherMalignantNeoplasmsOfLymphoidHaematopoieticAndRelatedTissue }, 
+      { "B21.7", HIVDiseaseResultingInMultipleMalignantNeoplasms }, 
+      { "http://hl7.org/fhir/sid/icd-10#B21.7", HIVDiseaseResultingInMultipleMalignantNeoplasms }, 
+      { "B21.8", HIVDiseaseResultingInOtherMalignantNeoplasms }, 
+      { "http://hl7.org/fhir/sid/icd-10#B21.8", HIVDiseaseResultingInOtherMalignantNeoplasms }, 
+      { "B21.9", HIVDiseaseResultingInUnspecifiedMalignantNeoplasm }, 
+      { "http://hl7.org/fhir/sid/icd-10#B21.9", HIVDiseaseResultingInUnspecifiedMalignantNeoplasm }, 
+      { "B22", HumanImmunodeficiencyVirusHIVDiseaseResultingInOtherSpecifiedDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B22", HumanImmunodeficiencyVirusHIVDiseaseResultingInOtherSpecifiedDiseases }, 
+      { "B22.0", HIVDiseaseResultingInEncephalopathy }, 
+      { "http://hl7.org/fhir/sid/icd-10#B22.0", HIVDiseaseResultingInEncephalopathy }, 
+      { "B22.1", HIVDiseaseResultingInLymphoidInterstitialPneumonitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B22.1", HIVDiseaseResultingInLymphoidInterstitialPneumonitis }, 
+      { "B22.2", HIVDiseaseResultingInWastingSyndrome }, 
+      { "http://hl7.org/fhir/sid/icd-10#B22.2", HIVDiseaseResultingInWastingSyndrome }, 
+      { "B22.7", HIVDiseaseResultingInMultipleDiseasesClassifiedElsewhere }, 
+      { "http://hl7.org/fhir/sid/icd-10#B22.7", HIVDiseaseResultingInMultipleDiseasesClassifiedElsewhere }, 
+      { "B23", HumanImmunodeficiencyVirusHIVDiseaseResultingInOtherConditions }, 
+      { "http://hl7.org/fhir/sid/icd-10#B23", HumanImmunodeficiencyVirusHIVDiseaseResultingInOtherConditions }, 
+      { "B23.0", AcuteHIVInfectionSyndrome }, 
+      { "http://hl7.org/fhir/sid/icd-10#B23.0", AcuteHIVInfectionSyndrome }, 
+      { "B23.1", HIVDiseaseResultingInPersistentGeneralizedLymphadenopathy }, 
+      { "http://hl7.org/fhir/sid/icd-10#B23.1", HIVDiseaseResultingInPersistentGeneralizedLymphadenopathy }, 
+      { "B23.2", HIVDiseaseResultingInHaematologicalAndImmunologicalAbnormalitiesNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B23.2", HIVDiseaseResultingInHaematologicalAndImmunologicalAbnormalitiesNotElsewhereClassified }, 
+      { "B23.8", HIVDiseaseResultingInOtherSpecifiedConditions }, 
+      { "http://hl7.org/fhir/sid/icd-10#B23.8", HIVDiseaseResultingInOtherSpecifiedConditions }, 
+      { "B24", UnspecifiedHumanImmunodeficiencyVirusHIVDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#B24", UnspecifiedHumanImmunodeficiencyVirusHIVDisease }, 
+      { "B25", CytomegaloviralDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#B25", CytomegaloviralDisease }, 
+      { "B25-B34", OtherViralDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B25-B34", OtherViralDiseases }, 
+      { "B25.0", CytomegaloviralPneumonitisJ171 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B25.0", CytomegaloviralPneumonitisJ171 }, 
+      { "B25.1", CytomegaloviralHepatitisK770 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B25.1", CytomegaloviralHepatitisK770 }, 
+      { "B25.2", CytomegaloviralPancreatitisK871 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B25.2", CytomegaloviralPancreatitisK871 }, 
+      { "B25.8", OtherCytomegaloviralDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B25.8", OtherCytomegaloviralDiseases }, 
+      { "B25.9", CytomegaloviralDiseaseUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B25.9", CytomegaloviralDiseaseUnspecified }, 
+      { "B26", Mumps }, 
+      { "http://hl7.org/fhir/sid/icd-10#B26", Mumps }, 
+      { "B26.0", MumpsOrchitisN511 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B26.0", MumpsOrchitisN511 }, 
+      { "B26.1", MumpsMeningitisG020 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B26.1", MumpsMeningitisG020 }, 
+      { "B26.2", MumpsEncephalitisG051 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B26.2", MumpsEncephalitisG051 }, 
+      { "B26.3", MumpsPancreatitisK871 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B26.3", MumpsPancreatitisK871 }, 
+      { "B26.8", MumpsWithOtherComplications }, 
+      { "http://hl7.org/fhir/sid/icd-10#B26.8", MumpsWithOtherComplications }, 
+      { "B26.9", MumpsWithoutComplication }, 
+      { "http://hl7.org/fhir/sid/icd-10#B26.9", MumpsWithoutComplication }, 
+      { "B27", InfectiousMononucleosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B27", InfectiousMononucleosis }, 
+      { "B27.0", GammaherpesviralMononucleosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B27.0", GammaherpesviralMononucleosis }, 
+      { "B27.1", CytomegaloviralMononucleosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B27.1", CytomegaloviralMononucleosis }, 
+      { "B27.8", OtherInfectiousMononucleosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B27.8", OtherInfectiousMononucleosis }, 
+      { "B27.9", InfectiousMononucleosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B27.9", InfectiousMononucleosisUnspecified }, 
+      { "B30", ViralConjunctivitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B30", ViralConjunctivitis }, 
+      { "B30.0", KeratoconjunctivitisDueToAdenovirusH192 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B30.0", KeratoconjunctivitisDueToAdenovirusH192 }, 
+      { "B30.1", ConjunctivitisDueToAdenovirusH131 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B30.1", ConjunctivitisDueToAdenovirusH131 }, 
+      { "B30.2", ViralPharyngoconjunctivitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B30.2", ViralPharyngoconjunctivitis }, 
+      { "B30.3", AcuteEpidemicHaemorrhagicConjunctivitisEnteroviralH131 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B30.3", AcuteEpidemicHaemorrhagicConjunctivitisEnteroviralH131 }, 
+      { "B30.8", OtherViralConjunctivitisH131 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B30.8", OtherViralConjunctivitisH131 }, 
+      { "B30.9", ViralConjunctivitisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B30.9", ViralConjunctivitisUnspecified }, 
+      { "B33", OtherViralDiseasesNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B33", OtherViralDiseasesNotElsewhereClassified }, 
+      { "B33.0", EpidemicMyalgia }, 
+      { "http://hl7.org/fhir/sid/icd-10#B33.0", EpidemicMyalgia }, 
+      { "B33.1", RossRiverDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#B33.1", RossRiverDisease }, 
+      { "B33.2", ViralCarditis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B33.2", ViralCarditis }, 
+      { "B33.3", RetrovirusInfectionsNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B33.3", RetrovirusInfectionsNotElsewhereClassified }, 
+      { "B33.4", HantavirusCardioPulmonarySyndromeHPSHCPSJ171 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B33.4", HantavirusCardioPulmonarySyndromeHPSHCPSJ171 }, 
+      { "B33.8", OtherSpecifiedViralDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B33.8", OtherSpecifiedViralDiseases }, 
+      { "B34", ViralInfectionOfUnspecifiedSite }, 
+      { "http://hl7.org/fhir/sid/icd-10#B34", ViralInfectionOfUnspecifiedSite }, 
+      { "B34.0", AdenovirusInfectionUnspecifiedSite }, 
+      { "http://hl7.org/fhir/sid/icd-10#B34.0", AdenovirusInfectionUnspecifiedSite }, 
+      { "B34.1", EnterovirusInfectionUnspecifiedSite }, 
+      { "http://hl7.org/fhir/sid/icd-10#B34.1", EnterovirusInfectionUnspecifiedSite }, 
+      { "B34.2", CoronavirusInfectionUnspecifiedSite }, 
+      { "http://hl7.org/fhir/sid/icd-10#B34.2", CoronavirusInfectionUnspecifiedSite }, 
+      { "B34.3", ParvovirusInfectionUnspecifiedSite }, 
+      { "http://hl7.org/fhir/sid/icd-10#B34.3", ParvovirusInfectionUnspecifiedSite }, 
+      { "B34.4", PapovavirusInfectionUnspecifiedSite }, 
+      { "http://hl7.org/fhir/sid/icd-10#B34.4", PapovavirusInfectionUnspecifiedSite }, 
+      { "B34.8", OtherViralInfectionsOfUnspecifiedSite }, 
+      { "http://hl7.org/fhir/sid/icd-10#B34.8", OtherViralInfectionsOfUnspecifiedSite }, 
+      { "B34.9", ViralInfectionUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B34.9", ViralInfectionUnspecified }, 
+      { "B35", Dermatophytosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B35", Dermatophytosis }, 
+      { "B35-B49", Mycoses }, 
+      { "http://hl7.org/fhir/sid/icd-10#B35-B49", Mycoses }, 
+      { "B35.0", TineaBarbaeAndTineaCapitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B35.0", TineaBarbaeAndTineaCapitis }, 
+      { "B35.1", TineaUnguium }, 
+      { "http://hl7.org/fhir/sid/icd-10#B35.1", TineaUnguium }, 
+      { "B35.2", TineaManuum }, 
+      { "http://hl7.org/fhir/sid/icd-10#B35.2", TineaManuum }, 
+      { "B35.3", TineaPedis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B35.3", TineaPedis }, 
+      { "B35.4", TineaCorporis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B35.4", TineaCorporis }, 
+      { "B35.5", TineaImbricata }, 
+      { "http://hl7.org/fhir/sid/icd-10#B35.5", TineaImbricata }, 
+      { "B35.6", TineaInguinalisTineaCruris }, 
+      { "http://hl7.org/fhir/sid/icd-10#B35.6", TineaInguinalisTineaCruris }, 
+      { "B35.8", OtherDermatophytoses }, 
+      { "http://hl7.org/fhir/sid/icd-10#B35.8", OtherDermatophytoses }, 
+      { "B35.9", DermatophytosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B35.9", DermatophytosisUnspecified }, 
+      { "B36", OtherSuperficialMycoses }, 
+      { "http://hl7.org/fhir/sid/icd-10#B36", OtherSuperficialMycoses }, 
+      { "B36.0", PityriasisVersicolor }, 
+      { "http://hl7.org/fhir/sid/icd-10#B36.0", PityriasisVersicolor }, 
+      { "B36.1", TineaNigra }, 
+      { "http://hl7.org/fhir/sid/icd-10#B36.1", TineaNigra }, 
+      { "B36.2", WhitePiedra }, 
+      { "http://hl7.org/fhir/sid/icd-10#B36.2", WhitePiedra }, 
+      { "B36.3", BlackPiedra }, 
+      { "http://hl7.org/fhir/sid/icd-10#B36.3", BlackPiedra }, 
+      { "B36.8", OtherSpecifiedSuperficialMycoses }, 
+      { "http://hl7.org/fhir/sid/icd-10#B36.8", OtherSpecifiedSuperficialMycoses }, 
+      { "B36.9", SuperficialMycosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B36.9", SuperficialMycosisUnspecified }, 
+      { "B37", Candidiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B37", Candidiasis }, 
+      { "B37.0", CandidalStomatitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B37.0", CandidalStomatitis }, 
+      { "B37.1", PulmonaryCandidiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B37.1", PulmonaryCandidiasis }, 
+      { "B37.2", CandidiasisOfSkinAndNail }, 
+      { "http://hl7.org/fhir/sid/icd-10#B37.2", CandidiasisOfSkinAndNail }, 
+      { "B37.3", CandidiasisOfVulvaAndVaginaN771 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B37.3", CandidiasisOfVulvaAndVaginaN771 }, 
+      { "B37.4", CandidiasisOfOtherUrogenitalSites }, 
+      { "http://hl7.org/fhir/sid/icd-10#B37.4", CandidiasisOfOtherUrogenitalSites }, 
+      { "B37.5", CandidalMeningitisG021 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B37.5", CandidalMeningitisG021 }, 
+      { "B37.6", CandidalEndocarditisI398 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B37.6", CandidalEndocarditisI398 }, 
+      { "B37.7", CandidalSepsis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B37.7", CandidalSepsis }, 
+      { "B37.8", CandidiasisOfOtherSites }, 
+      { "http://hl7.org/fhir/sid/icd-10#B37.8", CandidiasisOfOtherSites }, 
+      { "B37.9", CandidiasisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B37.9", CandidiasisUnspecified }, 
+      { "B38", Coccidioidomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B38", Coccidioidomycosis }, 
+      { "B38.0", AcutePulmonaryCoccidioidomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B38.0", AcutePulmonaryCoccidioidomycosis }, 
+      { "B38.1", ChronicPulmonaryCoccidioidomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B38.1", ChronicPulmonaryCoccidioidomycosis }, 
+      { "B38.2", PulmonaryCoccidioidomycosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B38.2", PulmonaryCoccidioidomycosisUnspecified }, 
+      { "B38.3", CutaneousCoccidioidomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B38.3", CutaneousCoccidioidomycosis }, 
+      { "B38.4", CoccidioidomycosisMeningitisG021 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B38.4", CoccidioidomycosisMeningitisG021 }, 
+      { "B38.7", DisseminatedCoccidioidomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B38.7", DisseminatedCoccidioidomycosis }, 
+      { "B38.8", OtherFormsOfCoccidioidomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B38.8", OtherFormsOfCoccidioidomycosis }, 
+      { "B38.9", CoccidioidomycosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B38.9", CoccidioidomycosisUnspecified }, 
+      { "B39", Histoplasmosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B39", Histoplasmosis }, 
+      { "B39.0", AcutePulmonaryHistoplasmosisCapsulati }, 
+      { "http://hl7.org/fhir/sid/icd-10#B39.0", AcutePulmonaryHistoplasmosisCapsulati }, 
+      { "B39.1", ChronicPulmonaryHistoplasmosisCapsulati }, 
+      { "http://hl7.org/fhir/sid/icd-10#B39.1", ChronicPulmonaryHistoplasmosisCapsulati }, 
+      { "B39.2", PulmonaryHistoplasmosisCapsulatiUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B39.2", PulmonaryHistoplasmosisCapsulatiUnspecified }, 
+      { "B39.3", DisseminatedHistoplasmosisCapsulati }, 
+      { "http://hl7.org/fhir/sid/icd-10#B39.3", DisseminatedHistoplasmosisCapsulati }, 
+      { "B39.4", HistoplasmosisCapsulatiUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B39.4", HistoplasmosisCapsulatiUnspecified }, 
+      { "B39.5", HistoplasmosisDuboisii }, 
+      { "http://hl7.org/fhir/sid/icd-10#B39.5", HistoplasmosisDuboisii }, 
+      { "B39.9", HistoplasmosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B39.9", HistoplasmosisUnspecified }, 
+      { "B40", Blastomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B40", Blastomycosis }, 
+      { "B40.0", AcutePulmonaryBlastomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B40.0", AcutePulmonaryBlastomycosis }, 
+      { "B40.1", ChronicPulmonaryBlastomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B40.1", ChronicPulmonaryBlastomycosis }, 
+      { "B40.2", PulmonaryBlastomycosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B40.2", PulmonaryBlastomycosisUnspecified }, 
+      { "B40.3", CutaneousBlastomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B40.3", CutaneousBlastomycosis }, 
+      { "B40.7", DisseminatedBlastomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B40.7", DisseminatedBlastomycosis }, 
+      { "B40.8", OtherFormsOfBlastomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B40.8", OtherFormsOfBlastomycosis }, 
+      { "B40.9", BlastomycosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B40.9", BlastomycosisUnspecified }, 
+      { "B41", Paracoccidioidomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B41", Paracoccidioidomycosis }, 
+      { "B41.0", PulmonaryParacoccidioidomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B41.0", PulmonaryParacoccidioidomycosis }, 
+      { "B41.7", DisseminatedParacoccidioidomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B41.7", DisseminatedParacoccidioidomycosis }, 
+      { "B41.8", OtherFormsOfParacoccidioidomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B41.8", OtherFormsOfParacoccidioidomycosis }, 
+      { "B41.9", ParacoccidioidomycosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B41.9", ParacoccidioidomycosisUnspecified }, 
+      { "B42", Sporotrichosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B42", Sporotrichosis }, 
+      { "B42.0", PulmonarySporotrichosisJ998 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B42.0", PulmonarySporotrichosisJ998 }, 
+      { "B42.1", LymphocutaneousSporotrichosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B42.1", LymphocutaneousSporotrichosis }, 
+      { "B42.7", DisseminatedSporotrichosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B42.7", DisseminatedSporotrichosis }, 
+      { "B42.8", OtherFormsOfSporotrichosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B42.8", OtherFormsOfSporotrichosis }, 
+      { "B42.9", SporotrichosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B42.9", SporotrichosisUnspecified }, 
+      { "B43", ChromomycosisAndPhaeomycoticAbscess }, 
+      { "http://hl7.org/fhir/sid/icd-10#B43", ChromomycosisAndPhaeomycoticAbscess }, 
+      { "B43.0", CutaneousChromomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B43.0", CutaneousChromomycosis }, 
+      { "B43.1", PhaeomycoticBrainAbscess }, 
+      { "http://hl7.org/fhir/sid/icd-10#B43.1", PhaeomycoticBrainAbscess }, 
+      { "B43.2", SubcutaneousPhaeomycoticAbscessAndCyst }, 
+      { "http://hl7.org/fhir/sid/icd-10#B43.2", SubcutaneousPhaeomycoticAbscessAndCyst }, 
+      { "B43.8", OtherFormsOfChromomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B43.8", OtherFormsOfChromomycosis }, 
+      { "B43.9", ChromomycosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B43.9", ChromomycosisUnspecified }, 
+      { "B44", Aspergillosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B44", Aspergillosis }, 
+      { "B44.0", InvasivePulmonaryAspergillosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B44.0", InvasivePulmonaryAspergillosis }, 
+      { "B44.1", OtherPulmonaryAspergillosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B44.1", OtherPulmonaryAspergillosis }, 
+      { "B44.2", TonsillarAspergillosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B44.2", TonsillarAspergillosis }, 
+      { "B44.7", DisseminatedAspergillosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B44.7", DisseminatedAspergillosis }, 
+      { "B44.8", OtherFormsOfAspergillosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B44.8", OtherFormsOfAspergillosis }, 
+      { "B44.9", AspergillosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B44.9", AspergillosisUnspecified }, 
+      { "B45", Cryptococcosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B45", Cryptococcosis }, 
+      { "B45.0", PulmonaryCryptococcosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B45.0", PulmonaryCryptococcosis }, 
+      { "B45.1", CerebralCryptococcosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B45.1", CerebralCryptococcosis }, 
+      { "B45.2", CutaneousCryptococcosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B45.2", CutaneousCryptococcosis }, 
+      { "B45.3", OsseousCryptococcosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B45.3", OsseousCryptococcosis }, 
+      { "B45.7", DisseminatedCryptococcosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B45.7", DisseminatedCryptococcosis }, 
+      { "B45.8", OtherFormsOfCryptococcosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B45.8", OtherFormsOfCryptococcosis }, 
+      { "B45.9", CryptococcosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B45.9", CryptococcosisUnspecified }, 
+      { "B46", Zygomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B46", Zygomycosis }, 
+      { "B46.0", PulmonaryMucormycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B46.0", PulmonaryMucormycosis }, 
+      { "B46.1", RhinocerebralMucormycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B46.1", RhinocerebralMucormycosis }, 
+      { "B46.2", GastrointestinalMucormycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B46.2", GastrointestinalMucormycosis }, 
+      { "B46.3", CutaneousMucormycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B46.3", CutaneousMucormycosis }, 
+      { "B46.4", DisseminatedMucormycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B46.4", DisseminatedMucormycosis }, 
+      { "B46.5", MucormycosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B46.5", MucormycosisUnspecified }, 
+      { "B46.8", OtherZygomycoses }, 
+      { "http://hl7.org/fhir/sid/icd-10#B46.8", OtherZygomycoses }, 
+      { "B46.9", ZygomycosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B46.9", ZygomycosisUnspecified }, 
+      { "B47", Mycetoma }, 
+      { "http://hl7.org/fhir/sid/icd-10#B47", Mycetoma }, 
+      { "B47.0", Eumycetoma }, 
+      { "http://hl7.org/fhir/sid/icd-10#B47.0", Eumycetoma }, 
+      { "B47.1", Actinomycetoma }, 
+      { "http://hl7.org/fhir/sid/icd-10#B47.1", Actinomycetoma }, 
+      { "B47.9", MycetomaUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B47.9", MycetomaUnspecified }, 
+      { "B48", OtherMycosesNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B48", OtherMycosesNotElsewhereClassified }, 
+      { "B48.0", Lobomycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B48.0", Lobomycosis }, 
+      { "B48.1", Rhinosporidiosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B48.1", Rhinosporidiosis }, 
+      { "B48.2", Allescheriasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B48.2", Allescheriasis }, 
+      { "B48.3", Geotrichosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B48.3", Geotrichosis }, 
+      { "B48.4", Penicillosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B48.4", Penicillosis }, 
+      { "B48.5", PneumocystosisJ172 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B48.5", PneumocystosisJ172 }, 
+      { "B48.7", OpportunisticMycoses }, 
+      { "http://hl7.org/fhir/sid/icd-10#B48.7", OpportunisticMycoses }, 
+      { "B48.8", OtherSpecifiedMycoses }, 
+      { "http://hl7.org/fhir/sid/icd-10#B48.8", OtherSpecifiedMycoses }, 
+      { "B49", UnspecifiedMycosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B49", UnspecifiedMycosis }, 
+      { "B50", PlasmodiumFalciparumMalaria }, 
+      { "http://hl7.org/fhir/sid/icd-10#B50", PlasmodiumFalciparumMalaria }, 
+      { "B50-B64", ProtozoalDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B50-B64", ProtozoalDiseases }, 
+      { "B50.0", PlasmodiumFalciparumMalariaWithCerebralComplications }, 
+      { "http://hl7.org/fhir/sid/icd-10#B50.0", PlasmodiumFalciparumMalariaWithCerebralComplications }, 
+      { "B50.8", OtherSevereAndComplicatedPlasmodiumFalciparumMalaria }, 
+      { "http://hl7.org/fhir/sid/icd-10#B50.8", OtherSevereAndComplicatedPlasmodiumFalciparumMalaria }, 
+      { "B50.9", PlasmodiumFalciparumMalariaUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B50.9", PlasmodiumFalciparumMalariaUnspecified }, 
+      { "B51", PlasmodiumVivaxMalaria }, 
+      { "http://hl7.org/fhir/sid/icd-10#B51", PlasmodiumVivaxMalaria }, 
+      { "B51.0", PlasmodiumVivaxMalariaWithRuptureOfSpleen }, 
+      { "http://hl7.org/fhir/sid/icd-10#B51.0", PlasmodiumVivaxMalariaWithRuptureOfSpleen }, 
+      { "B51.8", PlasmodiumVivaxMalariaWithOtherComplications }, 
+      { "http://hl7.org/fhir/sid/icd-10#B51.8", PlasmodiumVivaxMalariaWithOtherComplications }, 
+      { "B51.9", PlasmodiumVivaxMalariaWithoutComplication }, 
+      { "http://hl7.org/fhir/sid/icd-10#B51.9", PlasmodiumVivaxMalariaWithoutComplication }, 
+      { "B52", PlasmodiumMalariaeMalaria }, 
+      { "http://hl7.org/fhir/sid/icd-10#B52", PlasmodiumMalariaeMalaria }, 
+      { "B52.0", PlasmodiumMalariaeMalariaWithNephropathy }, 
+      { "http://hl7.org/fhir/sid/icd-10#B52.0", PlasmodiumMalariaeMalariaWithNephropathy }, 
+      { "B52.8", PlasmodiumMalariaeMalariaWithOtherComplications }, 
+      { "http://hl7.org/fhir/sid/icd-10#B52.8", PlasmodiumMalariaeMalariaWithOtherComplications }, 
+      { "B52.9", PlasmodiumMalariaeMalariaWithoutComplication }, 
+      { "http://hl7.org/fhir/sid/icd-10#B52.9", PlasmodiumMalariaeMalariaWithoutComplication }, 
+      { "B53", OtherParasitologicallyConfirmedMalaria }, 
+      { "http://hl7.org/fhir/sid/icd-10#B53", OtherParasitologicallyConfirmedMalaria }, 
+      { "B53.0", PlasmodiumOvaleMalaria }, 
+      { "http://hl7.org/fhir/sid/icd-10#B53.0", PlasmodiumOvaleMalaria }, 
+      { "B53.1", MalariaDueToSimianPlasmodia }, 
+      { "http://hl7.org/fhir/sid/icd-10#B53.1", MalariaDueToSimianPlasmodia }, 
+      { "B53.8", OtherParasitologicallyConfirmedMalariaNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B53.8", OtherParasitologicallyConfirmedMalariaNotElsewhereClassified }, 
+      { "B54", UnspecifiedMalaria }, 
+      { "http://hl7.org/fhir/sid/icd-10#B54", UnspecifiedMalaria }, 
+      { "B55", Leishmaniasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B55", Leishmaniasis }, 
+      { "B55.0", VisceralLeishmaniasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B55.0", VisceralLeishmaniasis }, 
+      { "B55.1", CutaneousLeishmaniasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B55.1", CutaneousLeishmaniasis }, 
+      { "B55.2", MucocutaneousLeishmaniasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B55.2", MucocutaneousLeishmaniasis }, 
+      { "B55.9", LeishmaniasisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B55.9", LeishmaniasisUnspecified }, 
+      { "B56", AfricanTrypanosomiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B56", AfricanTrypanosomiasis }, 
+      { "B56.0", GambienseTrypanosomiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B56.0", GambienseTrypanosomiasis }, 
+      { "B56.1", RhodesienseTrypanosomiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B56.1", RhodesienseTrypanosomiasis }, 
+      { "B56.9", AfricanTrypanosomiasisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B56.9", AfricanTrypanosomiasisUnspecified }, 
+      { "B57", ChagasDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#B57", ChagasDisease }, 
+      { "B57.0", AcuteChagasDiseaseWithHeartInvolvementI412I981 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B57.0", AcuteChagasDiseaseWithHeartInvolvementI412I981 }, 
+      { "B57.1", AcuteChagasDiseaseWithoutHeartInvolvement }, 
+      { "http://hl7.org/fhir/sid/icd-10#B57.1", AcuteChagasDiseaseWithoutHeartInvolvement }, 
+      { "B57.2", ChagasDiseaseChronicWithHeartInvolvement }, 
+      { "http://hl7.org/fhir/sid/icd-10#B57.2", ChagasDiseaseChronicWithHeartInvolvement }, 
+      { "B57.3", ChagasDiseaseChronicWithDigestiveSystemInvolvement }, 
+      { "http://hl7.org/fhir/sid/icd-10#B57.3", ChagasDiseaseChronicWithDigestiveSystemInvolvement }, 
+      { "B57.4", ChagasDiseaseChronicWithNervousSystemInvolvement }, 
+      { "http://hl7.org/fhir/sid/icd-10#B57.4", ChagasDiseaseChronicWithNervousSystemInvolvement }, 
+      { "B57.5", ChagasDiseaseChronicWithOtherOrganInvolvement }, 
+      { "http://hl7.org/fhir/sid/icd-10#B57.5", ChagasDiseaseChronicWithOtherOrganInvolvement }, 
+      { "B58", Toxoplasmosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B58", Toxoplasmosis }, 
+      { "B58.0", ToxoplasmaOculopathy }, 
+      { "http://hl7.org/fhir/sid/icd-10#B58.0", ToxoplasmaOculopathy }, 
+      { "B58.1", ToxoplasmaHepatitisK770 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B58.1", ToxoplasmaHepatitisK770 }, 
+      { "B58.2", ToxoplasmaMeningoencephalitisG052 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B58.2", ToxoplasmaMeningoencephalitisG052 }, 
+      { "B58.3", PulmonaryToxoplasmosisJ173 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B58.3", PulmonaryToxoplasmosisJ173 }, 
+      { "B58.8", ToxoplasmosisWithOtherOrganInvolvement }, 
+      { "http://hl7.org/fhir/sid/icd-10#B58.8", ToxoplasmosisWithOtherOrganInvolvement }, 
+      { "B58.9", ToxoplasmosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B58.9", ToxoplasmosisUnspecified }, 
+      { "B60", OtherProtozoalDiseasesNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B60", OtherProtozoalDiseasesNotElsewhereClassified }, 
+      { "B60.0", Babesiosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B60.0", Babesiosis }, 
+      { "B60.1", Acanthamoebiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B60.1", Acanthamoebiasis }, 
+      { "B60.2", Naegleriasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B60.2", Naegleriasis }, 
+      { "B60.8", OtherSpecifiedProtozoalDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B60.8", OtherSpecifiedProtozoalDiseases }, 
+      { "B64", UnspecifiedProtozoalDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#B64", UnspecifiedProtozoalDisease }, 
+      { "B65", SchistosomiasisBilharziasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B65", SchistosomiasisBilharziasis }, 
+      { "B65-B83", Helminthiases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B65-B83", Helminthiases }, 
+      { "B65.0", SchistosomiasisDueToSchistosomaHaematobiumUrinarySchistosomiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B65.0", SchistosomiasisDueToSchistosomaHaematobiumUrinarySchistosomiasis }, 
+      { "B65.1", SchistosomiasisDueToSchistosomaMansoniIntestinalSchistosomiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B65.1", SchistosomiasisDueToSchistosomaMansoniIntestinalSchistosomiasis }, 
+      { "B65.2", SchistosomiasisDueToSchistosomaJaponicum }, 
+      { "http://hl7.org/fhir/sid/icd-10#B65.2", SchistosomiasisDueToSchistosomaJaponicum }, 
+      { "B65.3", CercarialDermatitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B65.3", CercarialDermatitis }, 
+      { "B65.8", OtherSchistosomiases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B65.8", OtherSchistosomiases }, 
+      { "B65.9", SchistosomiasisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B65.9", SchistosomiasisUnspecified }, 
+      { "B66", OtherFlukeInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#B66", OtherFlukeInfections }, 
+      { "B66.0", Opisthorchiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B66.0", Opisthorchiasis }, 
+      { "B66.1", Clonorchiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B66.1", Clonorchiasis }, 
+      { "B66.2", Dicrocoeliasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B66.2", Dicrocoeliasis }, 
+      { "B66.3", Fascioliasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B66.3", Fascioliasis }, 
+      { "B66.4", Paragonimiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B66.4", Paragonimiasis }, 
+      { "B66.5", Fasciolopsiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B66.5", Fasciolopsiasis }, 
+      { "B66.8", OtherSpecifiedFlukeInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#B66.8", OtherSpecifiedFlukeInfections }, 
+      { "B66.9", FlukeInfectionUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B66.9", FlukeInfectionUnspecified }, 
+      { "B67", Echinococcosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B67", Echinococcosis }, 
+      { "B67.0", EchinococcusGranulosusInfectionOfLiver }, 
+      { "http://hl7.org/fhir/sid/icd-10#B67.0", EchinococcusGranulosusInfectionOfLiver }, 
+      { "B67.1", EchinococcusGranulosusInfectionOfLung }, 
+      { "http://hl7.org/fhir/sid/icd-10#B67.1", EchinococcusGranulosusInfectionOfLung }, 
+      { "B67.2", EchinococcusGranulosusInfectionOfBone }, 
+      { "http://hl7.org/fhir/sid/icd-10#B67.2", EchinococcusGranulosusInfectionOfBone }, 
+      { "B67.3", EchinococcusGranulosusInfectionOtherAndMultipleSites }, 
+      { "http://hl7.org/fhir/sid/icd-10#B67.3", EchinococcusGranulosusInfectionOtherAndMultipleSites }, 
+      { "B67.4", EchinococcusGranulosusInfectionUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B67.4", EchinococcusGranulosusInfectionUnspecified }, 
+      { "B67.5", EchinococcusMultilocularisInfectionOfLiver }, 
+      { "http://hl7.org/fhir/sid/icd-10#B67.5", EchinococcusMultilocularisInfectionOfLiver }, 
+      { "B67.6", EchinococcusMultilocularisInfectionOtherAndMultipleSites }, 
+      { "http://hl7.org/fhir/sid/icd-10#B67.6", EchinococcusMultilocularisInfectionOtherAndMultipleSites }, 
+      { "B67.7", EchinococcusMultilocularisInfectionUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B67.7", EchinococcusMultilocularisInfectionUnspecified }, 
+      { "B67.8", EchinococcosisUnspecifiedOfLiver }, 
+      { "http://hl7.org/fhir/sid/icd-10#B67.8", EchinococcosisUnspecifiedOfLiver }, 
+      { "B67.9", EchinococcosisOtherAndUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B67.9", EchinococcosisOtherAndUnspecified }, 
+      { "B68", Taeniasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B68", Taeniasis }, 
+      { "B68.0", TaeniaSoliumTaeniasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B68.0", TaeniaSoliumTaeniasis }, 
+      { "B68.1", TaeniaSaginataTaeniasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B68.1", TaeniaSaginataTaeniasis }, 
+      { "B68.9", TaeniasisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B68.9", TaeniasisUnspecified }, 
+      { "B69", Cysticercosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B69", Cysticercosis }, 
+      { "B69.0", CysticercosisOfCentralNervousSystem }, 
+      { "http://hl7.org/fhir/sid/icd-10#B69.0", CysticercosisOfCentralNervousSystem }, 
+      { "B69.1", CysticercosisOfEye }, 
+      { "http://hl7.org/fhir/sid/icd-10#B69.1", CysticercosisOfEye }, 
+      { "B69.8", CysticercosisOfOtherSites }, 
+      { "http://hl7.org/fhir/sid/icd-10#B69.8", CysticercosisOfOtherSites }, 
+      { "B69.9", CysticercosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B69.9", CysticercosisUnspecified }, 
+      { "B70", DiphyllobothriasisAndSparganosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B70", DiphyllobothriasisAndSparganosis }, 
+      { "B70.0", Diphyllobothriasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B70.0", Diphyllobothriasis }, 
+      { "B70.1", Sparganosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B70.1", Sparganosis }, 
+      { "B71", OtherCestodeInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#B71", OtherCestodeInfections }, 
+      { "B71.0", Hymenolepiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B71.0", Hymenolepiasis }, 
+      { "B71.1", Dipylidiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B71.1", Dipylidiasis }, 
+      { "B71.8", OtherSpecifiedCestodeInfections }, 
+      { "http://hl7.org/fhir/sid/icd-10#B71.8", OtherSpecifiedCestodeInfections }, 
+      { "B71.9", CestodeInfectionUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B71.9", CestodeInfectionUnspecified }, 
+      { "B72", Dracunculiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B72", Dracunculiasis }, 
+      { "B73", Onchocerciasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B73", Onchocerciasis }, 
+      { "B74", Filariasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B74", Filariasis }, 
+      { "B74.0", FilariasisDueToWuchereriaBancrofti }, 
+      { "http://hl7.org/fhir/sid/icd-10#B74.0", FilariasisDueToWuchereriaBancrofti }, 
+      { "B74.1", FilariasisDueToBrugiaMalayi }, 
+      { "http://hl7.org/fhir/sid/icd-10#B74.1", FilariasisDueToBrugiaMalayi }, 
+      { "B74.2", FilariasisDueToBrugiaTimori }, 
+      { "http://hl7.org/fhir/sid/icd-10#B74.2", FilariasisDueToBrugiaTimori }, 
+      { "B74.3", Loiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B74.3", Loiasis }, 
+      { "B74.4", Mansonelliasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B74.4", Mansonelliasis }, 
+      { "B74.8", OtherFilariases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B74.8", OtherFilariases }, 
+      { "B74.9", FilariasisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B74.9", FilariasisUnspecified }, 
+      { "B75", Trichinellosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B75", Trichinellosis }, 
+      { "B76", HookwormDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B76", HookwormDiseases }, 
+      { "B76.0", Ancylostomiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B76.0", Ancylostomiasis }, 
+      { "B76.1", Necatoriasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B76.1", Necatoriasis }, 
+      { "B76.8", OtherHookwormDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B76.8", OtherHookwormDiseases }, 
+      { "B76.9", HookwormDiseaseUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B76.9", HookwormDiseaseUnspecified }, 
+      { "B77", Ascariasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B77", Ascariasis }, 
+      { "B77.0", AscariasisWithIntestinalComplications }, 
+      { "http://hl7.org/fhir/sid/icd-10#B77.0", AscariasisWithIntestinalComplications }, 
+      { "B77.8", AscariasisWithOtherComplications }, 
+      { "http://hl7.org/fhir/sid/icd-10#B77.8", AscariasisWithOtherComplications }, 
+      { "B77.9", AscariasisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B77.9", AscariasisUnspecified }, 
+      { "B78", Strongyloidiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B78", Strongyloidiasis }, 
+      { "B78.0", IntestinalStrongyloidiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B78.0", IntestinalStrongyloidiasis }, 
+      { "B78.1", CutaneousStrongyloidiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B78.1", CutaneousStrongyloidiasis }, 
+      { "B78.7", DisseminatedStrongyloidiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B78.7", DisseminatedStrongyloidiasis }, 
+      { "B78.9", StrongyloidiasisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B78.9", StrongyloidiasisUnspecified }, 
+      { "B79", Trichuriasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B79", Trichuriasis }, 
+      { "B80", Enterobiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B80", Enterobiasis }, 
+      { "B81", OtherIntestinalHelminthiasesNotElsewhereClassified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B81", OtherIntestinalHelminthiasesNotElsewhereClassified }, 
+      { "B81.0", Anisakiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B81.0", Anisakiasis }, 
+      { "B81.1", IntestinalCapillariasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B81.1", IntestinalCapillariasis }, 
+      { "B81.2", Trichostrongyliasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B81.2", Trichostrongyliasis }, 
+      { "B81.3", IntestinalAngiostrongyliasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B81.3", IntestinalAngiostrongyliasis }, 
+      { "B81.4", MixedIntestinalHelminthiases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B81.4", MixedIntestinalHelminthiases }, 
+      { "B81.8", OtherSpecifiedIntestinalHelminthiases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B81.8", OtherSpecifiedIntestinalHelminthiases }, 
+      { "B82", UnspecifiedIntestinalParasitism }, 
+      { "http://hl7.org/fhir/sid/icd-10#B82", UnspecifiedIntestinalParasitism }, 
+      { "B82.0", IntestinalHelminthiasisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B82.0", IntestinalHelminthiasisUnspecified }, 
+      { "B82.9", IntestinalParasitismUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B82.9", IntestinalParasitismUnspecified }, 
+      { "B83", OtherHelminthiases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B83", OtherHelminthiases }, 
+      { "B83.0", VisceralLarvaMigrans }, 
+      { "http://hl7.org/fhir/sid/icd-10#B83.0", VisceralLarvaMigrans }, 
+      { "B83.1", Gnathostomiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B83.1", Gnathostomiasis }, 
+      { "B83.2", AngiostrongyliasisDueToParastrongylusCantonensis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B83.2", AngiostrongyliasisDueToParastrongylusCantonensis }, 
+      { "B83.3", Syngamiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B83.3", Syngamiasis }, 
+      { "B83.4", InternalHirudiniasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B83.4", InternalHirudiniasis }, 
+      { "B83.8", OtherSpecifiedHelminthiases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B83.8", OtherSpecifiedHelminthiases }, 
+      { "B83.9", HelminthiasisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B83.9", HelminthiasisUnspecified }, 
+      { "B85", PediculosisAndPhthiriasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B85", PediculosisAndPhthiriasis }, 
+      { "B85-B89", PediculosisAcariasisAndOtherInfestations }, 
+      { "http://hl7.org/fhir/sid/icd-10#B85-B89", PediculosisAcariasisAndOtherInfestations }, 
+      { "B85.0", PediculosisDueToPediculusHumanusCapitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B85.0", PediculosisDueToPediculusHumanusCapitis }, 
+      { "B85.1", PediculosisDueToPediculusHumanusCorporis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B85.1", PediculosisDueToPediculusHumanusCorporis }, 
+      { "B85.2", PediculosisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B85.2", PediculosisUnspecified }, 
+      { "B85.3", Phthiriasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B85.3", Phthiriasis }, 
+      { "B85.4", MixedPediculosisAndPhthiriasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B85.4", MixedPediculosisAndPhthiriasis }, 
+      { "B86", Scabies }, 
+      { "http://hl7.org/fhir/sid/icd-10#B86", Scabies }, 
+      { "B87", Myiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B87", Myiasis }, 
+      { "B87.0", CutaneousMyiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B87.0", CutaneousMyiasis }, 
+      { "B87.1", WoundMyiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B87.1", WoundMyiasis }, 
+      { "B87.2", OcularMyiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B87.2", OcularMyiasis }, 
+      { "B87.3", NasopharyngealMyiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B87.3", NasopharyngealMyiasis }, 
+      { "B87.4", AuralMyiasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B87.4", AuralMyiasis }, 
+      { "B87.8", MyiasisOfOtherSites }, 
+      { "http://hl7.org/fhir/sid/icd-10#B87.8", MyiasisOfOtherSites }, 
+      { "B87.9", MyiasisUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B87.9", MyiasisUnspecified }, 
+      { "B88", OtherInfestations }, 
+      { "http://hl7.org/fhir/sid/icd-10#B88", OtherInfestations }, 
+      { "B88.0", OtherAcariasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B88.0", OtherAcariasis }, 
+      { "B88.1", TungiasisSandfleaInfestation }, 
+      { "http://hl7.org/fhir/sid/icd-10#B88.1", TungiasisSandfleaInfestation }, 
+      { "B88.2", OtherArthropodInfestations }, 
+      { "http://hl7.org/fhir/sid/icd-10#B88.2", OtherArthropodInfestations }, 
+      { "B88.3", ExternalHirudiniasis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B88.3", ExternalHirudiniasis }, 
+      { "B88.8", OtherSpecifiedInfestations }, 
+      { "http://hl7.org/fhir/sid/icd-10#B88.8", OtherSpecifiedInfestations }, 
+      { "B88.9", InfestationUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#B88.9", InfestationUnspecified }, 
+      { "B89", UnspecifiedParasiticDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#B89", UnspecifiedParasiticDisease }, 
+      { "B90", SequelaeOfTuberculosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B90", SequelaeOfTuberculosis }, 
+      { "B90-B94", SequelaeOfInfectiousAndParasiticDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B90-B94", SequelaeOfInfectiousAndParasiticDiseases }, 
+      { "B90.0", SequelaeOfCentralNervousSystemTuberculosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B90.0", SequelaeOfCentralNervousSystemTuberculosis }, 
+      { "B90.1", SequelaeOfGenitourinaryTuberculosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B90.1", SequelaeOfGenitourinaryTuberculosis }, 
+      { "B90.2", SequelaeOfTuberculosisOfBonesAndJoints }, 
+      { "http://hl7.org/fhir/sid/icd-10#B90.2", SequelaeOfTuberculosisOfBonesAndJoints }, 
+      { "B90.8", SequelaeOfTuberculosisOfOtherOrgans }, 
+      { "http://hl7.org/fhir/sid/icd-10#B90.8", SequelaeOfTuberculosisOfOtherOrgans }, 
+      { "B90.9", SequelaeOfRespiratoryAndUnspecifiedTuberculosis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B90.9", SequelaeOfRespiratoryAndUnspecifiedTuberculosis }, 
+      { "B91", SequelaeOfPoliomyelitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B91", SequelaeOfPoliomyelitis }, 
+      { "B92", SequelaeOfLeprosy }, 
+      { "http://hl7.org/fhir/sid/icd-10#B92", SequelaeOfLeprosy }, 
+      { "B94", SequelaeOfOtherAndUnspecifiedInfectiousAndParasiticDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B94", SequelaeOfOtherAndUnspecifiedInfectiousAndParasiticDiseases }, 
+      { "B94.0", SequelaeOfTrachoma }, 
+      { "http://hl7.org/fhir/sid/icd-10#B94.0", SequelaeOfTrachoma }, 
+      { "B94.1", SequelaeOfViralEncephalitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B94.1", SequelaeOfViralEncephalitis }, 
+      { "B94.2", SequelaeOfViralHepatitis }, 
+      { "http://hl7.org/fhir/sid/icd-10#B94.2", SequelaeOfViralHepatitis }, 
+      { "B94.8", SequelaeOfOtherSpecifiedInfectiousAndParasiticDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B94.8", SequelaeOfOtherSpecifiedInfectiousAndParasiticDiseases }, 
+      { "B94.9", SequelaeOfUnspecifiedInfectiousOrParasiticDisease }, 
+      { "http://hl7.org/fhir/sid/icd-10#B94.9", SequelaeOfUnspecifiedInfectiousOrParasiticDisease }, 
+      { "B95", StreptococcusAndStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B95", StreptococcusAndStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B95-B98", BacterialViralAndOtherInfectiousAgents }, 
+      { "http://hl7.org/fhir/sid/icd-10#B95-B98", BacterialViralAndOtherInfectiousAgents }, 
+      { "B95.0", StreptococcusGroupAAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B95.0", StreptococcusGroupAAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B95.1", StreptococcusGroupBAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B95.1", StreptococcusGroupBAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B95.2", StreptococcusGroupDAndEnterococcusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B95.2", StreptococcusGroupDAndEnterococcusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B95.3", StreptococcusPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B95.3", StreptococcusPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B95.4", OtherStreptococcusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B95.4", OtherStreptococcusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B95.5", UnspecifiedStreptococcusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B95.5", UnspecifiedStreptococcusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B95.6", StaphylococcusAureusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B95.6", StaphylococcusAureusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B95.7", OtherStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B95.7", OtherStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B95.8", UnspecifiedStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B95.8", UnspecifiedStaphylococcusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B96", OtherSpecifiedBacterialAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B96", OtherSpecifiedBacterialAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B96.0", MycoplasmaPneumoniaeMPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B96.0", MycoplasmaPneumoniaeMPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B96.1", KlebsiellaPneumoniaeKPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B96.1", KlebsiellaPneumoniaeKPneumoniaeAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B96.2", EscherichiaColiEColiAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B96.2", EscherichiaColiEColiAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B96.3", HaemophilusInfluenzaeHInfluenzaeAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B96.3", HaemophilusInfluenzaeHInfluenzaeAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B96.4", ProteusMirabilisMorganiiAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B96.4", ProteusMirabilisMorganiiAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B96.5", PseudomonasAeruginosaAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B96.5", PseudomonasAeruginosaAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B96.6", BacillusFragilisBFragilisAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B96.6", BacillusFragilisBFragilisAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B96.7", ClostridiumPerfringensCPerfringensAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B96.7", ClostridiumPerfringensCPerfringensAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B96.8", OtherSpecifiedBacterialAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters_2 }, 
+      { "http://hl7.org/fhir/sid/icd-10#B96.8", OtherSpecifiedBacterialAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters_2 }, 
+      { "B97", ViralAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B97", ViralAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B97.0", AdenovirusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B97.0", AdenovirusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B97.1", EnterovirusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B97.1", EnterovirusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B97.2", CoronavirusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B97.2", CoronavirusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B97.3", RetrovirusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B97.3", RetrovirusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B97.4", RespiratorySyncytialVirusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B97.4", RespiratorySyncytialVirusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B97.5", ReovirusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B97.5", ReovirusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B97.6", ParvovirusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B97.6", ParvovirusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B97.7", PapillomavirusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B97.7", PapillomavirusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B97.8", OtherViralAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B97.8", OtherViralAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B98", OtherSpecifiedInfectiousAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B98", OtherSpecifiedInfectiousAgentsAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B98.0", HelicobacterPyloriHPyloriAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B98.0", HelicobacterPyloriHPyloriAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B98.1", VibrioVulnificusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "http://hl7.org/fhir/sid/icd-10#B98.1", VibrioVulnificusAsTheCauseOfDiseasesClassifiedToOtherChapters }, 
+      { "B99", OtherAndUnspecifiedInfectiousDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B99", OtherAndUnspecifiedInfectiousDiseases }, 
+      { "B99-B99", OtherInfectiousDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#B99-B99", OtherInfectiousDiseases }, 
+      { "C00", MalignantNeoplasmOfLip }, 
+      { "http://hl7.org/fhir/sid/icd-10#C00", MalignantNeoplasmOfLip }, 
+      { "C00-C14", MalignantNeoplasmsOfLipOralCavityAndPharynx }, 
+      { "http://hl7.org/fhir/sid/icd-10#C00-C14", MalignantNeoplasmsOfLipOralCavityAndPharynx }, 
+      { "C00-C75", MalignantNeoplasmsStatedOrPresumedToBePrimaryOfSpecifiedSitesExceptOfLymphoidHaematopoieticAndRelatedTissue }, 
+      { "http://hl7.org/fhir/sid/icd-10#C00-C75", MalignantNeoplasmsStatedOrPresumedToBePrimaryOfSpecifiedSitesExceptOfLymphoidHaematopoieticAndRelatedTissue }, 
+      { "C00-C97", MalignantNeoplasms }, 
+      { "http://hl7.org/fhir/sid/icd-10#C00-C97", MalignantNeoplasms }, 
+      { "C00.0", ExternalUpperLip }, 
+      { "http://hl7.org/fhir/sid/icd-10#C00.0", ExternalUpperLip }, 
+      { "C00.1", ExternalLowerLip }, 
+      { "http://hl7.org/fhir/sid/icd-10#C00.1", ExternalLowerLip }, 
+      { "C00.2", ExternalLipUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#C00.2", ExternalLipUnspecified }, 
+      { "C00.3", UpperLipInnerAspect }, 
+      { "http://hl7.org/fhir/sid/icd-10#C00.3", UpperLipInnerAspect }, 
+      { "C00.4", LowerLipInnerAspect }, 
+      { "http://hl7.org/fhir/sid/icd-10#C00.4", LowerLipInnerAspect }, 
+      { "C00.5", LipUnspecifiedInnerAspect }, 
+      { "http://hl7.org/fhir/sid/icd-10#C00.5", LipUnspecifiedInnerAspect }, 
+      { "C00.6", CommissureOfLip }, 
+      { "http://hl7.org/fhir/sid/icd-10#C00.6", CommissureOfLip }, 
+      { "C00.8", OverlappingLesionOfLip }, 
+      { "http://hl7.org/fhir/sid/icd-10#C00.8", OverlappingLesionOfLip }, 
+      { "C00.9", LipUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#C00.9", LipUnspecified }, 
+      { "C01", MalignantNeoplasmOfBaseOfTongue }, 
+      { "http://hl7.org/fhir/sid/icd-10#C01", MalignantNeoplasmOfBaseOfTongue }, 
+      { "C02", MalignantNeoplasmOfOtherAndUnspecifiedPartsOfTongue }, 
+      { "http://hl7.org/fhir/sid/icd-10#C02", MalignantNeoplasmOfOtherAndUnspecifiedPartsOfTongue }, 
+      { "C02.0", DorsalSurfaceOfTongue }, 
+      { "http://hl7.org/fhir/sid/icd-10#C02.0", DorsalSurfaceOfTongue }, 
+      { "C02.1", BorderOfTongue }, 
+      { "http://hl7.org/fhir/sid/icd-10#C02.1", BorderOfTongue }, 
+      { "C02.2", VentralSurfaceOfTongue }, 
+      { "http://hl7.org/fhir/sid/icd-10#C02.2", VentralSurfaceOfTongue }, 
+      { "C02.3", AnteriorTwoThirdsOfTonguePartUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#C02.3", AnteriorTwoThirdsOfTonguePartUnspecified }, 
+      { "C02.4", LingualTonsil }, 
+      { "http://hl7.org/fhir/sid/icd-10#C02.4", LingualTonsil }, 
+      { "C02.8", OverlappingLesionOfTongue }, 
+      { "http://hl7.org/fhir/sid/icd-10#C02.8", OverlappingLesionOfTongue }, 
+      { "C02.9", TongueUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#C02.9", TongueUnspecified }, 
+      { "C03", MalignantNeoplasmOfGum }, 
+      { "http://hl7.org/fhir/sid/icd-10#C03", MalignantNeoplasmOfGum }, 
+      { "C03.0", UpperGum }, 
+      { "http://hl7.org/fhir/sid/icd-10#C03.0", UpperGum }, 
+      { "C03.1", LowerGum }, 
+      { "http://hl7.org/fhir/sid/icd-10#C03.1", LowerGum }, 
+      { "C03.9", GumUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#C03.9", GumUnspecified }, 
+      { "C04", MalignantNeoplasmOfFloorOfMouth }, 
+      { "http://hl7.org/fhir/sid/icd-10#C04", MalignantNeoplasmOfFloorOfMouth }, 
+      { "C04.0", AnteriorFloorOfMouth }, 
+      { "http://hl7.org/fhir/sid/icd-10#C04.0", AnteriorFloorOfMouth }, 
+      { "C04.1", LateralFloorOfMouth }, 
+      { "http://hl7.org/fhir/sid/icd-10#C04.1", LateralFloorOfMouth }, 
+      { "C04.8", OverlappingLesionOfFloorOfMouth }, 
+      { "http://hl7.org/fhir/sid/icd-10#C04.8", OverlappingLesionOfFloorOfMouth }, 
+      { "C04.9", FloorOfMouthUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#C04.9", FloorOfMouthUnspecified }, 
+      { "C05", MalignantNeoplasmOfPalate }, 
+      { "http://hl7.org/fhir/sid/icd-10#C05", MalignantNeoplasmOfPalate }, 
+      { "C05.0", HardPalate }, 
+      { "http://hl7.org/fhir/sid/icd-10#C05.0", HardPalate }, 
+      { "C05.1", SoftPalate }, 
+      { "http://hl7.org/fhir/sid/icd-10#C05.1", SoftPalate }, 
+      { "C05.2", Uvula }, 
+      { "http://hl7.org/fhir/sid/icd-10#C05.2", Uvula }, 
+      { "C05.8", OverlappingLesionOfPalate }, 
+      { "http://hl7.org/fhir/sid/icd-10#C05.8", OverlappingLesionOfPalate }, 
+      { "C05.9", PalateUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#C05.9", PalateUnspecified }, 
+      { "C06", MalignantNeoplasmOfOtherAndUnspecifiedPartsOfMouth }, 
+      { "http://hl7.org/fhir/sid/icd-10#C06", MalignantNeoplasmOfOtherAndUnspecifiedPartsOfMouth }, 
+      { "C06.0", CheekMucosa }, 
+      { "http://hl7.org/fhir/sid/icd-10#C06.0", CheekMucosa }, 
+      { "C06.1", VestibuleOfMouth }, 
+      { "http://hl7.org/fhir/sid/icd-10#C06.1", VestibuleOfMouth }, 
+      { "C06.2", RetromolarArea }, 
+      { "http://hl7.org/fhir/sid/icd-10#C06.2", RetromolarArea }, 
+      { "C06.8", OverlappingLesionOfOtherAndUnspecifiedPartsOfMouth }, 
+      { "http://hl7.org/fhir/sid/icd-10#C06.8", OverlappingLesionOfOtherAndUnspecifiedPartsOfMouth }, 
+      { "C06.9", MouthUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#C06.9", MouthUnspecified }, 
+      { "C07", MalignantNeoplasmOfParotidGland }, 
+      { "http://hl7.org/fhir/sid/icd-10#C07", MalignantNeoplasmOfParotidGland }, 
+      { "C08", MalignantNeoplasmOfOtherAndUnspecifiedMajorSalivaryGlands }, 
+      { "http://hl7.org/fhir/sid/icd-10#C08", MalignantNeoplasmOfOtherAndUnspecifiedMajorSalivaryGlands }, 
+      { "C08.0", SubmandibularGland }, 
+      { "http://hl7.org/fhir/sid/icd-10#C08.0", SubmandibularGland }, 
+      { "C08.1", SublingualGland }, 
+      { "http://hl7.org/fhir/sid/icd-10#C08.1", SublingualGland }, 
+      { "C08.8", OverlappingLesionOfMajorSalivaryGlands }, 
+      { "http://hl7.org/fhir/sid/icd-10#C08.8", OverlappingLesionOfMajorSalivaryGlands }, 
+      { "C08.9", MajorSalivaryGlandUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#C08.9", MajorSalivaryGlandUnspecified }, 
+      { "C09", MalignantNeoplasmOfTonsil }, 
+      { "http://hl7.org/fhir/sid/icd-10#C09", MalignantNeoplasmOfTonsil }, 
+      { "C09.0", TonsillarFossa }, 
+      { "http://hl7.org/fhir/sid/icd-10#C09.0", TonsillarFossa }, 
+      { "C09.1", TonsillarPillarAnteriorPosterior }, 
+      { "http://hl7.org/fhir/sid/icd-10#C09.1", TonsillarPillarAnteriorPosterior }, 
+      { "C09.8", OverlappingLesionOfTonsil }, 
+      { "http://hl7.org/fhir/sid/icd-10#C09.8", OverlappingLesionOfTonsil }, 
+      { "C09.9", TonsilUnspecified }, 
+      { "http://hl7.org/fhir/sid/icd-10#C09.9", TonsilUnspecified }, 
+      { "C10", MalignantNeoplasmOfOropharynx }, 
+      { "http://hl7.org/fhir/sid/icd-10#C10", MalignantNeoplasmOfOropharynx }, 
+      { "C10.0", Vallecula }, 
+      { "http://hl7.org/fhir/sid/icd-10#C10.0", Vallecula }, 
+      { "C10.1", AnteriorSurfaceOfEpiglottis }, 
+      { "http://hl7.org/fhir/sid/icd-10#C10.1", AnteriorSurfaceOfEpiglottis }, 
+      { "I", CertainInfectiousAndParasiticDiseases }, 
+      { "http://hl7.org/fhir/sid/icd-10#I", CertainInfectiousAndParasiticDiseases }, 
+      { "II", Neoplasms }, 
+      { "http://hl7.org/fhir/sid/icd-10#II", Neoplasms }, 
+    };
   };
 }

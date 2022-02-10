@@ -218,5 +218,12 @@ namespace fhirCsR5.Models
     public const string GREATER_THAN_OR_EQUALS = ">=";
     public const string GREATER_THAN = ">";
     public const string AD = "ad";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "<",
+      "<=",
+      ">=",
+      ">",
+      "ad",
+    };
   }
 }

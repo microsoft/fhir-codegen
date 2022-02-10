@@ -99,9 +99,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralArrived = "arrived";
 
     /// <summary>
+    /// Literal for code: EncounterStatusArrived
+    /// </summary>
+    public const string LiteralEncounterStatusArrived = "http://hl7.org/fhir/encounter-status#arrived";
+
+    /// <summary>
     /// Literal for code: Cancelled
     /// </summary>
     public const string LiteralCancelled = "cancelled";
+
+    /// <summary>
+    /// Literal for code: EncounterStatusCancelled
+    /// </summary>
+    public const string LiteralEncounterStatusCancelled = "http://hl7.org/fhir/encounter-status#cancelled";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -109,9 +119,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: EncounterStatusEnteredInError
+    /// </summary>
+    public const string LiteralEncounterStatusEnteredInError = "http://hl7.org/fhir/encounter-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Finished
     /// </summary>
     public const string LiteralFinished = "finished";
+
+    /// <summary>
+    /// Literal for code: EncounterStatusFinished
+    /// </summary>
+    public const string LiteralEncounterStatusFinished = "http://hl7.org/fhir/encounter-status#finished";
 
     /// <summary>
     /// Literal for code: InProgress
@@ -119,9 +139,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInProgress = "in-progress";
 
     /// <summary>
+    /// Literal for code: EncounterStatusInProgress
+    /// </summary>
+    public const string LiteralEncounterStatusInProgress = "http://hl7.org/fhir/encounter-status#in-progress";
+
+    /// <summary>
     /// Literal for code: OnLeave
     /// </summary>
     public const string LiteralOnLeave = "onleave";
+
+    /// <summary>
+    /// Literal for code: EncounterStatusOnLeave
+    /// </summary>
+    public const string LiteralEncounterStatusOnLeave = "http://hl7.org/fhir/encounter-status#onleave";
 
     /// <summary>
     /// Literal for code: Planned
@@ -129,13 +159,52 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlanned = "planned";
 
     /// <summary>
+    /// Literal for code: EncounterStatusPlanned
+    /// </summary>
+    public const string LiteralEncounterStatusPlanned = "http://hl7.org/fhir/encounter-status#planned";
+
+    /// <summary>
     /// Literal for code: Triaged
     /// </summary>
     public const string LiteralTriaged = "triaged";
 
     /// <summary>
+    /// Literal for code: EncounterStatusTriaged
+    /// </summary>
+    public const string LiteralEncounterStatusTriaged = "http://hl7.org/fhir/encounter-status#triaged";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: EncounterStatusUnknown
+    /// </summary>
+    public const string LiteralEncounterStatusUnknown = "http://hl7.org/fhir/encounter-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up EncounterStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "arrived", Arrived }, 
+      { "http://hl7.org/fhir/encounter-status#arrived", Arrived }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/encounter-status#cancelled", Cancelled }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/encounter-status#entered-in-error", EnteredInError }, 
+      { "finished", Finished }, 
+      { "http://hl7.org/fhir/encounter-status#finished", Finished }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/encounter-status#in-progress", InProgress }, 
+      { "onleave", OnLeave }, 
+      { "http://hl7.org/fhir/encounter-status#onleave", OnLeave }, 
+      { "planned", Planned }, 
+      { "http://hl7.org/fhir/encounter-status#planned", Planned }, 
+      { "triaged", Triaged }, 
+      { "http://hl7.org/fhir/encounter-status#triaged", Triaged }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/encounter-status#unknown", Unknown }, 
+    };
   };
 }

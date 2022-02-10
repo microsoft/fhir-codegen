@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComplete = "complete";
 
     /// <summary>
+    /// Literal for code: MeasureReportStatusComplete
+    /// </summary>
+    public const string LiteralMeasureReportStatusComplete = "http://hl7.org/fhir/measure-report-status#complete";
+
+    /// <summary>
     /// Literal for code: Error
     /// </summary>
     public const string LiteralError = "error";
 
     /// <summary>
+    /// Literal for code: MeasureReportStatusError
+    /// </summary>
+    public const string LiteralMeasureReportStatusError = "http://hl7.org/fhir/measure-report-status#error";
+
+    /// <summary>
     /// Literal for code: Pending
     /// </summary>
     public const string LiteralPending = "pending";
+
+    /// <summary>
+    /// Literal for code: MeasureReportStatusPending
+    /// </summary>
+    public const string LiteralMeasureReportStatusPending = "http://hl7.org/fhir/measure-report-status#pending";
+
+    /// <summary>
+    /// Dictionary for looking up MeasureReportStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", Complete }, 
+      { "http://hl7.org/fhir/measure-report-status#complete", Complete }, 
+      { "error", Error }, 
+      { "http://hl7.org/fhir/measure-report-status#error", Error }, 
+      { "pending", Pending }, 
+      { "http://hl7.org/fhir/measure-report-status#pending", Pending }, 
+    };
   };
 }

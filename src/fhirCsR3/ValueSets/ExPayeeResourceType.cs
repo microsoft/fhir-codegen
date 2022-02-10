@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOrganization = "organization";
 
     /// <summary>
+    /// Literal for code: ExPayeeResourceTypeOrganization
+    /// </summary>
+    public const string LiteralExPayeeResourceTypeOrganization = "http://hl7.org/fhir/ex-payee-resource-type#organization";
+
+    /// <summary>
     /// Literal for code: Patient
     /// </summary>
     public const string LiteralPatient = "patient";
+
+    /// <summary>
+    /// Literal for code: ExPayeeResourceTypePatient
+    /// </summary>
+    public const string LiteralExPayeeResourceTypePatient = "http://hl7.org/fhir/ex-payee-resource-type#patient";
 
     /// <summary>
     /// Literal for code: Practitioner
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPractitioner = "practitioner";
 
     /// <summary>
+    /// Literal for code: ExPayeeResourceTypePractitioner
+    /// </summary>
+    public const string LiteralExPayeeResourceTypePractitioner = "http://hl7.org/fhir/ex-payee-resource-type#practitioner";
+
+    /// <summary>
     /// Literal for code: RelatedPerson
     /// </summary>
     public const string LiteralRelatedPerson = "relatedperson";
+
+    /// <summary>
+    /// Literal for code: ExPayeeResourceTypeRelatedPerson
+    /// </summary>
+    public const string LiteralExPayeeResourceTypeRelatedPerson = "http://hl7.org/fhir/ex-payee-resource-type#relatedperson";
+
+    /// <summary>
+    /// Dictionary for looking up ExPayeeResourceType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "organization", Organization }, 
+      { "http://hl7.org/fhir/ex-payee-resource-type#organization", Organization }, 
+      { "patient", Patient }, 
+      { "http://hl7.org/fhir/ex-payee-resource-type#patient", Patient }, 
+      { "practitioner", Practitioner }, 
+      { "http://hl7.org/fhir/ex-payee-resource-type#practitioner", Practitioner }, 
+      { "relatedperson", RelatedPerson }, 
+      { "http://hl7.org/fhir/ex-payee-resource-type#relatedperson", RelatedPerson }, 
+    };
   };
 }

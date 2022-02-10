@@ -122,6 +122,14 @@ namespace fhirCsR2.Models
     public const string ONHOLD = "onhold";
     public const string FINISHED = "finished";
     public const string CANCELLED = "cancelled";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "planned",
+      "waitlist",
+      "active",
+      "onhold",
+      "finished",
+      "cancelled",
+    };
   }
   /// <summary>
   /// The list of practitioners that may be facilitating this episode of care for specific purposes.
@@ -687,5 +695,13 @@ namespace fhirCsR2.Models
     public const string ONHOLD = "onhold";
     public const string FINISHED = "finished";
     public const string CANCELLED = "cancelled";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "planned",
+      "waitlist",
+      "active",
+      "onhold",
+      "finished",
+      "cancelled",
+    };
   }
 }

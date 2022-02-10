@@ -72,9 +72,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralActivityDefinition = "ActivityDefinition";
 
     /// <summary>
+    /// Literal for code: DefinitionResourceTypesActivityDefinition
+    /// </summary>
+    public const string LiteralDefinitionResourceTypesActivityDefinition = "http://hl7.org/fhir/definition-resource-types#ActivityDefinition";
+
+    /// <summary>
     /// Literal for code: EventDefinition
     /// </summary>
     public const string LiteralEventDefinition = "EventDefinition";
+
+    /// <summary>
+    /// Literal for code: DefinitionResourceTypesEventDefinition
+    /// </summary>
+    public const string LiteralDefinitionResourceTypesEventDefinition = "http://hl7.org/fhir/definition-resource-types#EventDefinition";
 
     /// <summary>
     /// Literal for code: Measure
@@ -82,9 +92,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeasure = "Measure";
 
     /// <summary>
+    /// Literal for code: DefinitionResourceTypesMeasure
+    /// </summary>
+    public const string LiteralDefinitionResourceTypesMeasure = "http://hl7.org/fhir/definition-resource-types#Measure";
+
+    /// <summary>
     /// Literal for code: OperationDefinition
     /// </summary>
     public const string LiteralOperationDefinition = "OperationDefinition";
+
+    /// <summary>
+    /// Literal for code: DefinitionResourceTypesOperationDefinition
+    /// </summary>
+    public const string LiteralDefinitionResourceTypesOperationDefinition = "http://hl7.org/fhir/definition-resource-types#OperationDefinition";
 
     /// <summary>
     /// Literal for code: PlanDefinition
@@ -92,8 +112,36 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPlanDefinition = "PlanDefinition";
 
     /// <summary>
+    /// Literal for code: DefinitionResourceTypesPlanDefinition
+    /// </summary>
+    public const string LiteralDefinitionResourceTypesPlanDefinition = "http://hl7.org/fhir/definition-resource-types#PlanDefinition";
+
+    /// <summary>
     /// Literal for code: Questionnaire
     /// </summary>
     public const string LiteralQuestionnaire = "Questionnaire";
+
+    /// <summary>
+    /// Literal for code: DefinitionResourceTypesQuestionnaire
+    /// </summary>
+    public const string LiteralDefinitionResourceTypesQuestionnaire = "http://hl7.org/fhir/definition-resource-types#Questionnaire";
+
+    /// <summary>
+    /// Dictionary for looking up DefinitionResourceTypes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ActivityDefinition", ActivityDefinition }, 
+      { "http://hl7.org/fhir/definition-resource-types#ActivityDefinition", ActivityDefinition }, 
+      { "EventDefinition", EventDefinition }, 
+      { "http://hl7.org/fhir/definition-resource-types#EventDefinition", EventDefinition }, 
+      { "Measure", Measure }, 
+      { "http://hl7.org/fhir/definition-resource-types#Measure", Measure }, 
+      { "OperationDefinition", OperationDefinition }, 
+      { "http://hl7.org/fhir/definition-resource-types#OperationDefinition", OperationDefinition }, 
+      { "PlanDefinition", PlanDefinition }, 
+      { "http://hl7.org/fhir/definition-resource-types#PlanDefinition", PlanDefinition }, 
+      { "Questionnaire", Questionnaire }, 
+      { "http://hl7.org/fhir/definition-resource-types#Questionnaire", Questionnaire }, 
+    };
   };
 }

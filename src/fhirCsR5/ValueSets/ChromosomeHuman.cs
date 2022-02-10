@@ -234,9 +234,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChromosome1 = "1";
 
     /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome1
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome1 = "http://terminology.hl7.org/CodeSystem/chromosome-human#1";
+
+    /// <summary>
     /// Literal for code: Chromosome10
     /// </summary>
     public const string LiteralChromosome10 = "10";
+
+    /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome10
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome10 = "http://terminology.hl7.org/CodeSystem/chromosome-human#10";
 
     /// <summary>
     /// Literal for code: Chromosome11
@@ -244,9 +254,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChromosome11 = "11";
 
     /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome11
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome11 = "http://terminology.hl7.org/CodeSystem/chromosome-human#11";
+
+    /// <summary>
     /// Literal for code: Chromosome12
     /// </summary>
     public const string LiteralChromosome12 = "12";
+
+    /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome12
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome12 = "http://terminology.hl7.org/CodeSystem/chromosome-human#12";
 
     /// <summary>
     /// Literal for code: Chromosome13
@@ -254,9 +274,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChromosome13 = "13";
 
     /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome13
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome13 = "http://terminology.hl7.org/CodeSystem/chromosome-human#13";
+
+    /// <summary>
     /// Literal for code: Chromosome14
     /// </summary>
     public const string LiteralChromosome14 = "14";
+
+    /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome14
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome14 = "http://terminology.hl7.org/CodeSystem/chromosome-human#14";
 
     /// <summary>
     /// Literal for code: Chromosome15
@@ -264,9 +294,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChromosome15 = "15";
 
     /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome15
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome15 = "http://terminology.hl7.org/CodeSystem/chromosome-human#15";
+
+    /// <summary>
     /// Literal for code: Chromosome16
     /// </summary>
     public const string LiteralChromosome16 = "16";
+
+    /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome16
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome16 = "http://terminology.hl7.org/CodeSystem/chromosome-human#16";
 
     /// <summary>
     /// Literal for code: Chromosome17
@@ -274,9 +314,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChromosome17 = "17";
 
     /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome17
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome17 = "http://terminology.hl7.org/CodeSystem/chromosome-human#17";
+
+    /// <summary>
     /// Literal for code: Chromosome18
     /// </summary>
     public const string LiteralChromosome18 = "18";
+
+    /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome18
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome18 = "http://terminology.hl7.org/CodeSystem/chromosome-human#18";
 
     /// <summary>
     /// Literal for code: Chromosome19
@@ -284,9 +334,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChromosome19 = "19";
 
     /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome19
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome19 = "http://terminology.hl7.org/CodeSystem/chromosome-human#19";
+
+    /// <summary>
     /// Literal for code: Chromosome2
     /// </summary>
     public const string LiteralChromosome2 = "2";
+
+    /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome2
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome2 = "http://terminology.hl7.org/CodeSystem/chromosome-human#2";
 
     /// <summary>
     /// Literal for code: Chromosome20
@@ -294,9 +354,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChromosome20 = "20";
 
     /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome20
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome20 = "http://terminology.hl7.org/CodeSystem/chromosome-human#20";
+
+    /// <summary>
     /// Literal for code: Chromosome21
     /// </summary>
     public const string LiteralChromosome21 = "21";
+
+    /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome21
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome21 = "http://terminology.hl7.org/CodeSystem/chromosome-human#21";
 
     /// <summary>
     /// Literal for code: Chromosome22
@@ -304,9 +374,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChromosome22 = "22";
 
     /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome22
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome22 = "http://terminology.hl7.org/CodeSystem/chromosome-human#22";
+
+    /// <summary>
     /// Literal for code: Chromosome3
     /// </summary>
     public const string LiteralChromosome3 = "3";
+
+    /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome3
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome3 = "http://terminology.hl7.org/CodeSystem/chromosome-human#3";
 
     /// <summary>
     /// Literal for code: Chromosome4
@@ -314,9 +394,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChromosome4 = "4";
 
     /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome4
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome4 = "http://terminology.hl7.org/CodeSystem/chromosome-human#4";
+
+    /// <summary>
     /// Literal for code: Chromosome5
     /// </summary>
     public const string LiteralChromosome5 = "5";
+
+    /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome5
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome5 = "http://terminology.hl7.org/CodeSystem/chromosome-human#5";
 
     /// <summary>
     /// Literal for code: Chromosome6
@@ -324,9 +414,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChromosome6 = "6";
 
     /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome6
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome6 = "http://terminology.hl7.org/CodeSystem/chromosome-human#6";
+
+    /// <summary>
     /// Literal for code: Chromosome7
     /// </summary>
     public const string LiteralChromosome7 = "7";
+
+    /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome7
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome7 = "http://terminology.hl7.org/CodeSystem/chromosome-human#7";
 
     /// <summary>
     /// Literal for code: Chromosome8
@@ -334,9 +434,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChromosome8 = "8";
 
     /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome8
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome8 = "http://terminology.hl7.org/CodeSystem/chromosome-human#8";
+
+    /// <summary>
     /// Literal for code: Chromosome9
     /// </summary>
     public const string LiteralChromosome9 = "9";
+
+    /// <summary>
+    /// Literal for code: ChromosomeHumanChromosome9
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosome9 = "http://terminology.hl7.org/CodeSystem/chromosome-human#9";
 
     /// <summary>
     /// Literal for code: ChromosomeX
@@ -344,8 +454,72 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChromosomeX = "X";
 
     /// <summary>
+    /// Literal for code: ChromosomeHumanChromosomeX
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosomeX = "http://terminology.hl7.org/CodeSystem/chromosome-human#X";
+
+    /// <summary>
     /// Literal for code: ChromosomeY
     /// </summary>
     public const string LiteralChromosomeY = "Y";
+
+    /// <summary>
+    /// Literal for code: ChromosomeHumanChromosomeY
+    /// </summary>
+    public const string LiteralChromosomeHumanChromosomeY = "http://terminology.hl7.org/CodeSystem/chromosome-human#Y";
+
+    /// <summary>
+    /// Dictionary for looking up ChromosomeHuman Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1", Chromosome1 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#1", Chromosome1 }, 
+      { "10", Chromosome10 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#10", Chromosome10 }, 
+      { "11", Chromosome11 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#11", Chromosome11 }, 
+      { "12", Chromosome12 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#12", Chromosome12 }, 
+      { "13", Chromosome13 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#13", Chromosome13 }, 
+      { "14", Chromosome14 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#14", Chromosome14 }, 
+      { "15", Chromosome15 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#15", Chromosome15 }, 
+      { "16", Chromosome16 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#16", Chromosome16 }, 
+      { "17", Chromosome17 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#17", Chromosome17 }, 
+      { "18", Chromosome18 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#18", Chromosome18 }, 
+      { "19", Chromosome19 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#19", Chromosome19 }, 
+      { "2", Chromosome2 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#2", Chromosome2 }, 
+      { "20", Chromosome20 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#20", Chromosome20 }, 
+      { "21", Chromosome21 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#21", Chromosome21 }, 
+      { "22", Chromosome22 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#22", Chromosome22 }, 
+      { "3", Chromosome3 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#3", Chromosome3 }, 
+      { "4", Chromosome4 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#4", Chromosome4 }, 
+      { "5", Chromosome5 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#5", Chromosome5 }, 
+      { "6", Chromosome6 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#6", Chromosome6 }, 
+      { "7", Chromosome7 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#7", Chromosome7 }, 
+      { "8", Chromosome8 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#8", Chromosome8 }, 
+      { "9", Chromosome9 }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#9", Chromosome9 }, 
+      { "X", ChromosomeX }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#X", ChromosomeX }, 
+      { "Y", ChromosomeY }, 
+      { "http://terminology.hl7.org/CodeSystem/chromosome-human#Y", ChromosomeY }, 
+    };
   };
 }

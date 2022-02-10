@@ -262,6 +262,12 @@ namespace fhirCsR2.Models
     public const string ERROR = "error";
     public const string WARNING = "warning";
     public const string INFORMATION = "information";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "fatal",
+      "error",
+      "warning",
+      "information",
+    };
   }
   /// <summary>
   /// A collection of error, warning or information messages that result from a system action.

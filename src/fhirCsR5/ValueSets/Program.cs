@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ProgramCodes
   {
     /// <summary>
-    /// 
+    /// Acquired Brain Injury (ABI) Program 
     /// </summary>
     public static readonly Coding AcquiredBrainInjuryABIProgram = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Cognitive Dementia Memory Service (CDAMS)
     /// </summary>
     public static readonly Coding CognitiveDementiaMemoryServiceCDAMS = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// ChildFIRST
     /// </summary>
     public static readonly Coding ChildFIRST = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Children's Contact Services
     /// </summary>
     public static readonly Coding ChildrenQuoteSContactServices = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Community Visitors Scheme
     /// </summary>
     public static readonly Coding CommunityVisitorsScheme = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// CPP (Community Partners Program)
     /// </summary>
     public static readonly Coding CPPCommunityPartnersProgram = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Closing the Gap (CTG)
     /// </summary>
     public static readonly Coding ClosingTheGapCTG = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Coordinated Veterans' Care (CVC) Program
     /// </summary>
     public static readonly Coding CoordinatedVeteransQuoteCareCVCProgram = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Day Program
     /// </summary>
     public static readonly Coding DayProgram = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Drop In Program
     /// </summary>
     public static readonly Coding DropInProgram = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Early Years Program
     /// </summary>
     public static readonly Coding EarlyYearsProgram = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// ABI Slow To Recover (ABI STR) Program
     /// </summary>
     public static readonly Coding ABISlowToRecoverABISTRProgram = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Employee Assistance Program
     /// </summary>
     public static readonly Coding EmployeeAssistanceProgram = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Home And Community Care (HACC)
     /// </summary>
     public static readonly Coding HomeAndCommunityCareHACC = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Hospital Admission Risk Program (HARP)
     /// </summary>
     public static readonly Coding HospitalAdmissionRiskProgramHARP = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Hospital in the Home (HITH) Program
     /// </summary>
     public static readonly Coding HospitalInTheHomeHITHProgram = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// ICTP (Intensive Community Treatment Program)
     /// </summary>
     public static readonly Coding ICTPIntensiveCommunityTreatmentProgram = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// IFSS (Intensive Family Support Program)
     /// </summary>
     public static readonly Coding IFSSIntensiveFamilySupportProgram = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// JPET (Job Placement, Education and Training)
     /// </summary>
     public static readonly Coding JPETJobPlacementEducationAndTraining = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Koori Juvenile Justice Program
     /// </summary>
     public static readonly Coding KooriJuvenileJusticeProgram = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Language Literacy and Numeracy Program
     /// </summary>
     public static readonly Coding LanguageLiteracyAndNumeracyProgram = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Life Skills Program
     /// </summary>
     public static readonly Coding LifeSkillsProgram = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Access Programs
     /// </summary>
     public static readonly Coding AccessPrograms = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// LMP (Lifestyle Modification Program)
     /// </summary>
     public static readonly Coding LMPLifestyleModificationProgram = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// MedsCheck Program
     /// </summary>
     public static readonly Coding MedsCheckProgram = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Methadone/Buprenorphine Program
     /// </summary>
     public static readonly Coding MethadoneBuprenorphineProgram = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// National Disabilities Insurance Scheme (NDIS)
     /// </summary>
     public static readonly Coding NationalDisabilitiesInsuranceSchemeNDIS = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// National Diabetes Services Scheme (NDSS)
     /// </summary>
     public static readonly Coding NationalDiabetesServicesSchemeNDSS = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Needle/Syringe Program
     /// </summary>
     public static readonly Coding NeedleSyringeProgram = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// nPEP Program
     /// </summary>
     public static readonly Coding NPEPProgram = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Personal Support Program
     /// </summary>
     public static readonly Coding PersonalSupportProgram = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Partners in Recovery (PIR) Program
     /// </summary>
     public static readonly Coding PartnersInRecoveryPIRProgram = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Pre-employment Program
     /// </summary>
     public static readonly Coding PreEmploymentProgram = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Adult and Further Education (ACFE) Program
     /// </summary>
     public static readonly Coding AdultAndFurtherEducationACFEProgram = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Reconnect Program
     /// </summary>
     public static readonly Coding ReconnectProgram = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Sexual Abuse Counselling and Prevention Program (SACPP)
     /// </summary>
     public static readonly Coding SexualAbuseCounsellingAndPreventionProgramSACPP = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Social Support Programs
     /// </summary>
     public static readonly Coding SocialSupportPrograms = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Supported Residential Service (SRS)
     /// </summary>
     public static readonly Coding SupportedResidentialServiceSRS = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Tasmanian Aboriginal Centre (TAC)
     /// </summary>
     public static readonly Coding TasmanianAboriginalCentreTAC = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Victim's Assistance Program
     /// </summary>
     public static readonly Coding VictimQuoteSAssistanceProgram = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Adult Day Activity and Support Services (ADASS) Program
     /// </summary>
     public static readonly Coding AdultDayActivityAndSupportServicesADASSProgram = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Adult Day Care Program
     /// </summary>
     public static readonly Coding AdultDayCareProgram = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// ATSS (Adult Training Support Service)
     /// </summary>
     public static readonly Coding ATSSAdultTrainingSupportService = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Community Aged Care Packages (CACP)
     /// </summary>
     public static readonly Coding CommunityAgedCarePackagesCACP = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/program"
     };
     /// <summary>
-    /// 
+    /// Care Coordination &amp; Supplementary Services (CCSS)
     /// </summary>
     public static readonly Coding CareCoordinationAndSupplementaryServicesCCSS = new Coding
     {
@@ -423,9 +423,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAcquiredBrainInjuryABIProgram = "1";
 
     /// <summary>
+    /// Literal for code: ProgramAcquiredBrainInjuryABIProgram
+    /// </summary>
+    public const string LiteralProgramAcquiredBrainInjuryABIProgram = "http://terminology.hl7.org/CodeSystem/program#1";
+
+    /// <summary>
     /// Literal for code: CognitiveDementiaMemoryServiceCDAMS
     /// </summary>
     public const string LiteralCognitiveDementiaMemoryServiceCDAMS = "10";
+
+    /// <summary>
+    /// Literal for code: ProgramCognitiveDementiaMemoryServiceCDAMS
+    /// </summary>
+    public const string LiteralProgramCognitiveDementiaMemoryServiceCDAMS = "http://terminology.hl7.org/CodeSystem/program#10";
 
     /// <summary>
     /// Literal for code: ChildFIRST
@@ -433,9 +443,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChildFIRST = "11";
 
     /// <summary>
+    /// Literal for code: ProgramChildFIRST
+    /// </summary>
+    public const string LiteralProgramChildFIRST = "http://terminology.hl7.org/CodeSystem/program#11";
+
+    /// <summary>
     /// Literal for code: ChildrenQuoteSContactServices
     /// </summary>
     public const string LiteralChildrenQuoteSContactServices = "12";
+
+    /// <summary>
+    /// Literal for code: ProgramChildrenQuoteSContactServices
+    /// </summary>
+    public const string LiteralProgramChildrenQuoteSContactServices = "http://terminology.hl7.org/CodeSystem/program#12";
 
     /// <summary>
     /// Literal for code: CommunityVisitorsScheme
@@ -443,9 +463,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCommunityVisitorsScheme = "13";
 
     /// <summary>
+    /// Literal for code: ProgramCommunityVisitorsScheme
+    /// </summary>
+    public const string LiteralProgramCommunityVisitorsScheme = "http://terminology.hl7.org/CodeSystem/program#13";
+
+    /// <summary>
     /// Literal for code: CPPCommunityPartnersProgram
     /// </summary>
     public const string LiteralCPPCommunityPartnersProgram = "14";
+
+    /// <summary>
+    /// Literal for code: ProgramCPPCommunityPartnersProgram
+    /// </summary>
+    public const string LiteralProgramCPPCommunityPartnersProgram = "http://terminology.hl7.org/CodeSystem/program#14";
 
     /// <summary>
     /// Literal for code: ClosingTheGapCTG
@@ -453,9 +483,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClosingTheGapCTG = "15";
 
     /// <summary>
+    /// Literal for code: ProgramClosingTheGapCTG
+    /// </summary>
+    public const string LiteralProgramClosingTheGapCTG = "http://terminology.hl7.org/CodeSystem/program#15";
+
+    /// <summary>
     /// Literal for code: CoordinatedVeteransQuoteCareCVCProgram
     /// </summary>
     public const string LiteralCoordinatedVeteransQuoteCareCVCProgram = "16";
+
+    /// <summary>
+    /// Literal for code: ProgramCoordinatedVeteransQuoteCareCVCProgram
+    /// </summary>
+    public const string LiteralProgramCoordinatedVeteransQuoteCareCVCProgram = "http://terminology.hl7.org/CodeSystem/program#16";
 
     /// <summary>
     /// Literal for code: DayProgram
@@ -463,9 +503,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDayProgram = "17";
 
     /// <summary>
+    /// Literal for code: ProgramDayProgram
+    /// </summary>
+    public const string LiteralProgramDayProgram = "http://terminology.hl7.org/CodeSystem/program#17";
+
+    /// <summary>
     /// Literal for code: DropInProgram
     /// </summary>
     public const string LiteralDropInProgram = "18";
+
+    /// <summary>
+    /// Literal for code: ProgramDropInProgram
+    /// </summary>
+    public const string LiteralProgramDropInProgram = "http://terminology.hl7.org/CodeSystem/program#18";
 
     /// <summary>
     /// Literal for code: EarlyYearsProgram
@@ -473,9 +523,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEarlyYearsProgram = "19";
 
     /// <summary>
+    /// Literal for code: ProgramEarlyYearsProgram
+    /// </summary>
+    public const string LiteralProgramEarlyYearsProgram = "http://terminology.hl7.org/CodeSystem/program#19";
+
+    /// <summary>
     /// Literal for code: ABISlowToRecoverABISTRProgram
     /// </summary>
     public const string LiteralABISlowToRecoverABISTRProgram = "2";
+
+    /// <summary>
+    /// Literal for code: ProgramABISlowToRecoverABISTRProgram
+    /// </summary>
+    public const string LiteralProgramABISlowToRecoverABISTRProgram = "http://terminology.hl7.org/CodeSystem/program#2";
 
     /// <summary>
     /// Literal for code: EmployeeAssistanceProgram
@@ -483,9 +543,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmployeeAssistanceProgram = "20";
 
     /// <summary>
+    /// Literal for code: ProgramEmployeeAssistanceProgram
+    /// </summary>
+    public const string LiteralProgramEmployeeAssistanceProgram = "http://terminology.hl7.org/CodeSystem/program#20";
+
+    /// <summary>
     /// Literal for code: HomeAndCommunityCareHACC
     /// </summary>
     public const string LiteralHomeAndCommunityCareHACC = "21";
+
+    /// <summary>
+    /// Literal for code: ProgramHomeAndCommunityCareHACC
+    /// </summary>
+    public const string LiteralProgramHomeAndCommunityCareHACC = "http://terminology.hl7.org/CodeSystem/program#21";
 
     /// <summary>
     /// Literal for code: HospitalAdmissionRiskProgramHARP
@@ -493,9 +563,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHospitalAdmissionRiskProgramHARP = "22";
 
     /// <summary>
+    /// Literal for code: ProgramHospitalAdmissionRiskProgramHARP
+    /// </summary>
+    public const string LiteralProgramHospitalAdmissionRiskProgramHARP = "http://terminology.hl7.org/CodeSystem/program#22";
+
+    /// <summary>
     /// Literal for code: HospitalInTheHomeHITHProgram
     /// </summary>
     public const string LiteralHospitalInTheHomeHITHProgram = "23";
+
+    /// <summary>
+    /// Literal for code: ProgramHospitalInTheHomeHITHProgram
+    /// </summary>
+    public const string LiteralProgramHospitalInTheHomeHITHProgram = "http://terminology.hl7.org/CodeSystem/program#23";
 
     /// <summary>
     /// Literal for code: ICTPIntensiveCommunityTreatmentProgram
@@ -503,9 +583,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralICTPIntensiveCommunityTreatmentProgram = "24";
 
     /// <summary>
+    /// Literal for code: ProgramICTPIntensiveCommunityTreatmentProgram
+    /// </summary>
+    public const string LiteralProgramICTPIntensiveCommunityTreatmentProgram = "http://terminology.hl7.org/CodeSystem/program#24";
+
+    /// <summary>
     /// Literal for code: IFSSIntensiveFamilySupportProgram
     /// </summary>
     public const string LiteralIFSSIntensiveFamilySupportProgram = "25";
+
+    /// <summary>
+    /// Literal for code: ProgramIFSSIntensiveFamilySupportProgram
+    /// </summary>
+    public const string LiteralProgramIFSSIntensiveFamilySupportProgram = "http://terminology.hl7.org/CodeSystem/program#25";
 
     /// <summary>
     /// Literal for code: JPETJobPlacementEducationAndTraining
@@ -513,9 +603,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralJPETJobPlacementEducationAndTraining = "26";
 
     /// <summary>
+    /// Literal for code: ProgramJPETJobPlacementEducationAndTraining
+    /// </summary>
+    public const string LiteralProgramJPETJobPlacementEducationAndTraining = "http://terminology.hl7.org/CodeSystem/program#26";
+
+    /// <summary>
     /// Literal for code: KooriJuvenileJusticeProgram
     /// </summary>
     public const string LiteralKooriJuvenileJusticeProgram = "27";
+
+    /// <summary>
+    /// Literal for code: ProgramKooriJuvenileJusticeProgram
+    /// </summary>
+    public const string LiteralProgramKooriJuvenileJusticeProgram = "http://terminology.hl7.org/CodeSystem/program#27";
 
     /// <summary>
     /// Literal for code: LanguageLiteracyAndNumeracyProgram
@@ -523,9 +623,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLanguageLiteracyAndNumeracyProgram = "28";
 
     /// <summary>
+    /// Literal for code: ProgramLanguageLiteracyAndNumeracyProgram
+    /// </summary>
+    public const string LiteralProgramLanguageLiteracyAndNumeracyProgram = "http://terminology.hl7.org/CodeSystem/program#28";
+
+    /// <summary>
     /// Literal for code: LifeSkillsProgram
     /// </summary>
     public const string LiteralLifeSkillsProgram = "29";
+
+    /// <summary>
+    /// Literal for code: ProgramLifeSkillsProgram
+    /// </summary>
+    public const string LiteralProgramLifeSkillsProgram = "http://terminology.hl7.org/CodeSystem/program#29";
 
     /// <summary>
     /// Literal for code: AccessPrograms
@@ -533,9 +643,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAccessPrograms = "3";
 
     /// <summary>
+    /// Literal for code: ProgramAccessPrograms
+    /// </summary>
+    public const string LiteralProgramAccessPrograms = "http://terminology.hl7.org/CodeSystem/program#3";
+
+    /// <summary>
     /// Literal for code: LMPLifestyleModificationProgram
     /// </summary>
     public const string LiteralLMPLifestyleModificationProgram = "30";
+
+    /// <summary>
+    /// Literal for code: ProgramLMPLifestyleModificationProgram
+    /// </summary>
+    public const string LiteralProgramLMPLifestyleModificationProgram = "http://terminology.hl7.org/CodeSystem/program#30";
 
     /// <summary>
     /// Literal for code: MedsCheckProgram
@@ -543,9 +663,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedsCheckProgram = "31";
 
     /// <summary>
+    /// Literal for code: ProgramMedsCheckProgram
+    /// </summary>
+    public const string LiteralProgramMedsCheckProgram = "http://terminology.hl7.org/CodeSystem/program#31";
+
+    /// <summary>
     /// Literal for code: MethadoneBuprenorphineProgram
     /// </summary>
     public const string LiteralMethadoneBuprenorphineProgram = "32";
+
+    /// <summary>
+    /// Literal for code: ProgramMethadoneBuprenorphineProgram
+    /// </summary>
+    public const string LiteralProgramMethadoneBuprenorphineProgram = "http://terminology.hl7.org/CodeSystem/program#32";
 
     /// <summary>
     /// Literal for code: NationalDisabilitiesInsuranceSchemeNDIS
@@ -553,9 +683,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNationalDisabilitiesInsuranceSchemeNDIS = "33";
 
     /// <summary>
+    /// Literal for code: ProgramNationalDisabilitiesInsuranceSchemeNDIS
+    /// </summary>
+    public const string LiteralProgramNationalDisabilitiesInsuranceSchemeNDIS = "http://terminology.hl7.org/CodeSystem/program#33";
+
+    /// <summary>
     /// Literal for code: NationalDiabetesServicesSchemeNDSS
     /// </summary>
     public const string LiteralNationalDiabetesServicesSchemeNDSS = "34";
+
+    /// <summary>
+    /// Literal for code: ProgramNationalDiabetesServicesSchemeNDSS
+    /// </summary>
+    public const string LiteralProgramNationalDiabetesServicesSchemeNDSS = "http://terminology.hl7.org/CodeSystem/program#34";
 
     /// <summary>
     /// Literal for code: NeedleSyringeProgram
@@ -563,9 +703,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNeedleSyringeProgram = "35";
 
     /// <summary>
+    /// Literal for code: ProgramNeedleSyringeProgram
+    /// </summary>
+    public const string LiteralProgramNeedleSyringeProgram = "http://terminology.hl7.org/CodeSystem/program#35";
+
+    /// <summary>
     /// Literal for code: NPEPProgram
     /// </summary>
     public const string LiteralNPEPProgram = "36";
+
+    /// <summary>
+    /// Literal for code: ProgramNPEPProgram
+    /// </summary>
+    public const string LiteralProgramNPEPProgram = "http://terminology.hl7.org/CodeSystem/program#36";
 
     /// <summary>
     /// Literal for code: PersonalSupportProgram
@@ -573,9 +723,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPersonalSupportProgram = "37";
 
     /// <summary>
+    /// Literal for code: ProgramPersonalSupportProgram
+    /// </summary>
+    public const string LiteralProgramPersonalSupportProgram = "http://terminology.hl7.org/CodeSystem/program#37";
+
+    /// <summary>
     /// Literal for code: PartnersInRecoveryPIRProgram
     /// </summary>
     public const string LiteralPartnersInRecoveryPIRProgram = "38";
+
+    /// <summary>
+    /// Literal for code: ProgramPartnersInRecoveryPIRProgram
+    /// </summary>
+    public const string LiteralProgramPartnersInRecoveryPIRProgram = "http://terminology.hl7.org/CodeSystem/program#38";
 
     /// <summary>
     /// Literal for code: PreEmploymentProgram
@@ -583,9 +743,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPreEmploymentProgram = "39";
 
     /// <summary>
+    /// Literal for code: ProgramPreEmploymentProgram
+    /// </summary>
+    public const string LiteralProgramPreEmploymentProgram = "http://terminology.hl7.org/CodeSystem/program#39";
+
+    /// <summary>
     /// Literal for code: AdultAndFurtherEducationACFEProgram
     /// </summary>
     public const string LiteralAdultAndFurtherEducationACFEProgram = "4";
+
+    /// <summary>
+    /// Literal for code: ProgramAdultAndFurtherEducationACFEProgram
+    /// </summary>
+    public const string LiteralProgramAdultAndFurtherEducationACFEProgram = "http://terminology.hl7.org/CodeSystem/program#4";
 
     /// <summary>
     /// Literal for code: ReconnectProgram
@@ -593,9 +763,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralReconnectProgram = "40";
 
     /// <summary>
+    /// Literal for code: ProgramReconnectProgram
+    /// </summary>
+    public const string LiteralProgramReconnectProgram = "http://terminology.hl7.org/CodeSystem/program#40";
+
+    /// <summary>
     /// Literal for code: SexualAbuseCounsellingAndPreventionProgramSACPP
     /// </summary>
     public const string LiteralSexualAbuseCounsellingAndPreventionProgramSACPP = "41";
+
+    /// <summary>
+    /// Literal for code: ProgramSexualAbuseCounsellingAndPreventionProgramSACPP
+    /// </summary>
+    public const string LiteralProgramSexualAbuseCounsellingAndPreventionProgramSACPP = "http://terminology.hl7.org/CodeSystem/program#41";
 
     /// <summary>
     /// Literal for code: SocialSupportPrograms
@@ -603,9 +783,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSocialSupportPrograms = "42";
 
     /// <summary>
+    /// Literal for code: ProgramSocialSupportPrograms
+    /// </summary>
+    public const string LiteralProgramSocialSupportPrograms = "http://terminology.hl7.org/CodeSystem/program#42";
+
+    /// <summary>
     /// Literal for code: SupportedResidentialServiceSRS
     /// </summary>
     public const string LiteralSupportedResidentialServiceSRS = "43";
+
+    /// <summary>
+    /// Literal for code: ProgramSupportedResidentialServiceSRS
+    /// </summary>
+    public const string LiteralProgramSupportedResidentialServiceSRS = "http://terminology.hl7.org/CodeSystem/program#43";
 
     /// <summary>
     /// Literal for code: TasmanianAboriginalCentreTAC
@@ -613,9 +803,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTasmanianAboriginalCentreTAC = "44";
 
     /// <summary>
+    /// Literal for code: ProgramTasmanianAboriginalCentreTAC
+    /// </summary>
+    public const string LiteralProgramTasmanianAboriginalCentreTAC = "http://terminology.hl7.org/CodeSystem/program#44";
+
+    /// <summary>
     /// Literal for code: VictimQuoteSAssistanceProgram
     /// </summary>
     public const string LiteralVictimQuoteSAssistanceProgram = "45";
+
+    /// <summary>
+    /// Literal for code: ProgramVictimQuoteSAssistanceProgram
+    /// </summary>
+    public const string LiteralProgramVictimQuoteSAssistanceProgram = "http://terminology.hl7.org/CodeSystem/program#45";
 
     /// <summary>
     /// Literal for code: AdultDayActivityAndSupportServicesADASSProgram
@@ -623,9 +823,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAdultDayActivityAndSupportServicesADASSProgram = "5";
 
     /// <summary>
+    /// Literal for code: ProgramAdultDayActivityAndSupportServicesADASSProgram
+    /// </summary>
+    public const string LiteralProgramAdultDayActivityAndSupportServicesADASSProgram = "http://terminology.hl7.org/CodeSystem/program#5";
+
+    /// <summary>
     /// Literal for code: AdultDayCareProgram
     /// </summary>
     public const string LiteralAdultDayCareProgram = "6";
+
+    /// <summary>
+    /// Literal for code: ProgramAdultDayCareProgram
+    /// </summary>
+    public const string LiteralProgramAdultDayCareProgram = "http://terminology.hl7.org/CodeSystem/program#6";
 
     /// <summary>
     /// Literal for code: ATSSAdultTrainingSupportService
@@ -633,13 +843,124 @@ namespace fhirCsR5.ValueSets
     public const string LiteralATSSAdultTrainingSupportService = "7";
 
     /// <summary>
+    /// Literal for code: ProgramATSSAdultTrainingSupportService
+    /// </summary>
+    public const string LiteralProgramATSSAdultTrainingSupportService = "http://terminology.hl7.org/CodeSystem/program#7";
+
+    /// <summary>
     /// Literal for code: CommunityAgedCarePackagesCACP
     /// </summary>
     public const string LiteralCommunityAgedCarePackagesCACP = "8";
 
     /// <summary>
+    /// Literal for code: ProgramCommunityAgedCarePackagesCACP
+    /// </summary>
+    public const string LiteralProgramCommunityAgedCarePackagesCACP = "http://terminology.hl7.org/CodeSystem/program#8";
+
+    /// <summary>
     /// Literal for code: CareCoordinationAndSupplementaryServicesCCSS
     /// </summary>
     public const string LiteralCareCoordinationAndSupplementaryServicesCCSS = "9";
+
+    /// <summary>
+    /// Literal for code: ProgramCareCoordinationAndSupplementaryServicesCCSS
+    /// </summary>
+    public const string LiteralProgramCareCoordinationAndSupplementaryServicesCCSS = "http://terminology.hl7.org/CodeSystem/program#9";
+
+    /// <summary>
+    /// Dictionary for looking up Program Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1", AcquiredBrainInjuryABIProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#1", AcquiredBrainInjuryABIProgram }, 
+      { "10", CognitiveDementiaMemoryServiceCDAMS }, 
+      { "http://terminology.hl7.org/CodeSystem/program#10", CognitiveDementiaMemoryServiceCDAMS }, 
+      { "11", ChildFIRST }, 
+      { "http://terminology.hl7.org/CodeSystem/program#11", ChildFIRST }, 
+      { "12", ChildrenQuoteSContactServices }, 
+      { "http://terminology.hl7.org/CodeSystem/program#12", ChildrenQuoteSContactServices }, 
+      { "13", CommunityVisitorsScheme }, 
+      { "http://terminology.hl7.org/CodeSystem/program#13", CommunityVisitorsScheme }, 
+      { "14", CPPCommunityPartnersProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#14", CPPCommunityPartnersProgram }, 
+      { "15", ClosingTheGapCTG }, 
+      { "http://terminology.hl7.org/CodeSystem/program#15", ClosingTheGapCTG }, 
+      { "16", CoordinatedVeteransQuoteCareCVCProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#16", CoordinatedVeteransQuoteCareCVCProgram }, 
+      { "17", DayProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#17", DayProgram }, 
+      { "18", DropInProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#18", DropInProgram }, 
+      { "19", EarlyYearsProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#19", EarlyYearsProgram }, 
+      { "2", ABISlowToRecoverABISTRProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#2", ABISlowToRecoverABISTRProgram }, 
+      { "20", EmployeeAssistanceProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#20", EmployeeAssistanceProgram }, 
+      { "21", HomeAndCommunityCareHACC }, 
+      { "http://terminology.hl7.org/CodeSystem/program#21", HomeAndCommunityCareHACC }, 
+      { "22", HospitalAdmissionRiskProgramHARP }, 
+      { "http://terminology.hl7.org/CodeSystem/program#22", HospitalAdmissionRiskProgramHARP }, 
+      { "23", HospitalInTheHomeHITHProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#23", HospitalInTheHomeHITHProgram }, 
+      { "24", ICTPIntensiveCommunityTreatmentProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#24", ICTPIntensiveCommunityTreatmentProgram }, 
+      { "25", IFSSIntensiveFamilySupportProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#25", IFSSIntensiveFamilySupportProgram }, 
+      { "26", JPETJobPlacementEducationAndTraining }, 
+      { "http://terminology.hl7.org/CodeSystem/program#26", JPETJobPlacementEducationAndTraining }, 
+      { "27", KooriJuvenileJusticeProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#27", KooriJuvenileJusticeProgram }, 
+      { "28", LanguageLiteracyAndNumeracyProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#28", LanguageLiteracyAndNumeracyProgram }, 
+      { "29", LifeSkillsProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#29", LifeSkillsProgram }, 
+      { "3", AccessPrograms }, 
+      { "http://terminology.hl7.org/CodeSystem/program#3", AccessPrograms }, 
+      { "30", LMPLifestyleModificationProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#30", LMPLifestyleModificationProgram }, 
+      { "31", MedsCheckProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#31", MedsCheckProgram }, 
+      { "32", MethadoneBuprenorphineProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#32", MethadoneBuprenorphineProgram }, 
+      { "33", NationalDisabilitiesInsuranceSchemeNDIS }, 
+      { "http://terminology.hl7.org/CodeSystem/program#33", NationalDisabilitiesInsuranceSchemeNDIS }, 
+      { "34", NationalDiabetesServicesSchemeNDSS }, 
+      { "http://terminology.hl7.org/CodeSystem/program#34", NationalDiabetesServicesSchemeNDSS }, 
+      { "35", NeedleSyringeProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#35", NeedleSyringeProgram }, 
+      { "36", NPEPProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#36", NPEPProgram }, 
+      { "37", PersonalSupportProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#37", PersonalSupportProgram }, 
+      { "38", PartnersInRecoveryPIRProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#38", PartnersInRecoveryPIRProgram }, 
+      { "39", PreEmploymentProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#39", PreEmploymentProgram }, 
+      { "4", AdultAndFurtherEducationACFEProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#4", AdultAndFurtherEducationACFEProgram }, 
+      { "40", ReconnectProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#40", ReconnectProgram }, 
+      { "41", SexualAbuseCounsellingAndPreventionProgramSACPP }, 
+      { "http://terminology.hl7.org/CodeSystem/program#41", SexualAbuseCounsellingAndPreventionProgramSACPP }, 
+      { "42", SocialSupportPrograms }, 
+      { "http://terminology.hl7.org/CodeSystem/program#42", SocialSupportPrograms }, 
+      { "43", SupportedResidentialServiceSRS }, 
+      { "http://terminology.hl7.org/CodeSystem/program#43", SupportedResidentialServiceSRS }, 
+      { "44", TasmanianAboriginalCentreTAC }, 
+      { "http://terminology.hl7.org/CodeSystem/program#44", TasmanianAboriginalCentreTAC }, 
+      { "45", VictimQuoteSAssistanceProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#45", VictimQuoteSAssistanceProgram }, 
+      { "5", AdultDayActivityAndSupportServicesADASSProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#5", AdultDayActivityAndSupportServicesADASSProgram }, 
+      { "6", AdultDayCareProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/program#6", AdultDayCareProgram }, 
+      { "7", ATSSAdultTrainingSupportService }, 
+      { "http://terminology.hl7.org/CodeSystem/program#7", ATSSAdultTrainingSupportService }, 
+      { "8", CommunityAgedCarePackagesCACP }, 
+      { "http://terminology.hl7.org/CodeSystem/program#8", CommunityAgedCarePackagesCACP }, 
+      { "9", CareCoordinationAndSupplementaryServicesCCSS }, 
+      { "http://terminology.hl7.org/CodeSystem/program#9", CareCoordinationAndSupplementaryServicesCCSS }, 
+    };
   };
 }

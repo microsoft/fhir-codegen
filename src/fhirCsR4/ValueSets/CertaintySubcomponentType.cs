@@ -90,9 +90,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDoseResponseGradient = "DoseResponseGradient";
 
     /// <summary>
+    /// Literal for code: CertaintySubcomponentTypeDoseResponseGradient
+    /// </summary>
+    public const string LiteralCertaintySubcomponentTypeDoseResponseGradient = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type#DoseResponseGradient";
+
+    /// <summary>
     /// Literal for code: Imprecision
     /// </summary>
     public const string LiteralImprecision = "Imprecision";
+
+    /// <summary>
+    /// Literal for code: CertaintySubcomponentTypeImprecision
+    /// </summary>
+    public const string LiteralCertaintySubcomponentTypeImprecision = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type#Imprecision";
 
     /// <summary>
     /// Literal for code: Inconsistency
@@ -100,9 +110,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInconsistency = "Inconsistency";
 
     /// <summary>
+    /// Literal for code: CertaintySubcomponentTypeInconsistency
+    /// </summary>
+    public const string LiteralCertaintySubcomponentTypeInconsistency = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type#Inconsistency";
+
+    /// <summary>
     /// Literal for code: Indirectness
     /// </summary>
     public const string LiteralIndirectness = "Indirectness";
+
+    /// <summary>
+    /// Literal for code: CertaintySubcomponentTypeIndirectness
+    /// </summary>
+    public const string LiteralCertaintySubcomponentTypeIndirectness = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type#Indirectness";
 
     /// <summary>
     /// Literal for code: LargeEffect
@@ -110,9 +130,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLargeEffect = "LargeEffect";
 
     /// <summary>
+    /// Literal for code: CertaintySubcomponentTypeLargeEffect
+    /// </summary>
+    public const string LiteralCertaintySubcomponentTypeLargeEffect = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type#LargeEffect";
+
+    /// <summary>
     /// Literal for code: PlausibleConfounding
     /// </summary>
     public const string LiteralPlausibleConfounding = "PlausibleConfounding";
+
+    /// <summary>
+    /// Literal for code: CertaintySubcomponentTypePlausibleConfounding
+    /// </summary>
+    public const string LiteralCertaintySubcomponentTypePlausibleConfounding = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type#PlausibleConfounding";
 
     /// <summary>
     /// Literal for code: PublicationBias
@@ -120,8 +150,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPublicationBias = "PublicationBias";
 
     /// <summary>
+    /// Literal for code: CertaintySubcomponentTypePublicationBias
+    /// </summary>
+    public const string LiteralCertaintySubcomponentTypePublicationBias = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type#PublicationBias";
+
+    /// <summary>
     /// Literal for code: RiskOfBias
     /// </summary>
     public const string LiteralRiskOfBias = "RiskOfBias";
+
+    /// <summary>
+    /// Literal for code: CertaintySubcomponentTypeRiskOfBias
+    /// </summary>
+    public const string LiteralCertaintySubcomponentTypeRiskOfBias = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type#RiskOfBias";
+
+    /// <summary>
+    /// Dictionary for looking up CertaintySubcomponentType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "DoseResponseGradient", DoseResponseGradient }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type#DoseResponseGradient", DoseResponseGradient }, 
+      { "Imprecision", Imprecision }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type#Imprecision", Imprecision }, 
+      { "Inconsistency", Inconsistency }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type#Inconsistency", Inconsistency }, 
+      { "Indirectness", Indirectness }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type#Indirectness", Indirectness }, 
+      { "LargeEffect", LargeEffect }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type#LargeEffect", LargeEffect }, 
+      { "PlausibleConfounding", PlausibleConfounding }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type#PlausibleConfounding", PlausibleConfounding }, 
+      { "PublicationBias", PublicationBias }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type#PublicationBias", PublicationBias }, 
+      { "RiskOfBias", RiskOfBias }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type#RiskOfBias", RiskOfBias }, 
+    };
   };
 }

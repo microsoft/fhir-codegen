@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInstance = "instance";
 
     /// <summary>
+    /// Literal for code: LocationModeInstance
+    /// </summary>
+    public const string LiteralLocationModeInstance = "http://hl7.org/fhir/location-mode#instance";
+
+    /// <summary>
     /// Literal for code: Kind
     /// </summary>
     public const string LiteralKind = "kind";
+
+    /// <summary>
+    /// Literal for code: LocationModeKind
+    /// </summary>
+    public const string LiteralLocationModeKind = "http://hl7.org/fhir/location-mode#kind";
+
+    /// <summary>
+    /// Dictionary for looking up LocationMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "instance", Instance }, 
+      { "http://hl7.org/fhir/location-mode#instance", Instance }, 
+      { "kind", Kind }, 
+      { "http://hl7.org/fhir/location-mode#kind", Kind }, 
+    };
   };
 }

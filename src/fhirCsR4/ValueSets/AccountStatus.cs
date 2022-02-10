@@ -63,9 +63,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: AccountStatusActive
+    /// </summary>
+    public const string LiteralAccountStatusActive = "http://hl7.org/fhir/account-status#active";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: AccountStatusEnteredInError
+    /// </summary>
+    public const string LiteralAccountStatusEnteredInError = "http://hl7.org/fhir/account-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: Inactive
@@ -73,13 +83,44 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInactive = "inactive";
 
     /// <summary>
+    /// Literal for code: AccountStatusInactive
+    /// </summary>
+    public const string LiteralAccountStatusInactive = "http://hl7.org/fhir/account-status#inactive";
+
+    /// <summary>
     /// Literal for code: OnHold
     /// </summary>
     public const string LiteralOnHold = "on-hold";
 
     /// <summary>
+    /// Literal for code: AccountStatusOnHold
+    /// </summary>
+    public const string LiteralAccountStatusOnHold = "http://hl7.org/fhir/account-status#on-hold";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: AccountStatusUnknown
+    /// </summary>
+    public const string LiteralAccountStatusUnknown = "http://hl7.org/fhir/account-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up AccountStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/account-status#active", Active }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/account-status#entered-in-error", EnteredInError }, 
+      { "inactive", Inactive }, 
+      { "http://hl7.org/fhir/account-status#inactive", Inactive }, 
+      { "on-hold", OnHold }, 
+      { "http://hl7.org/fhir/account-status#on-hold", OnHold }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/account-status#unknown", Unknown }, 
+    };
   };
 }

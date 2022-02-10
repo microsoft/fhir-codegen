@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFosterChild = "foster";
 
     /// <summary>
+    /// Literal for code: CoverageFinancialExceptionFosterChild
+    /// </summary>
+    public const string LiteralCoverageFinancialExceptionFosterChild = "http://terminology.hl7.org/CodeSystem/ex-coverage-financial-exception#foster";
+
+    /// <summary>
     /// Literal for code: Retired
     /// </summary>
     public const string LiteralRetired = "retired";
+
+    /// <summary>
+    /// Literal for code: CoverageFinancialExceptionRetired
+    /// </summary>
+    public const string LiteralCoverageFinancialExceptionRetired = "http://terminology.hl7.org/CodeSystem/ex-coverage-financial-exception#retired";
+
+    /// <summary>
+    /// Dictionary for looking up CoverageFinancialException Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "foster", FosterChild }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-coverage-financial-exception#foster", FosterChild }, 
+      { "retired", Retired }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-coverage-financial-exception#retired", Retired }, 
+    };
   };
 }

@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdditional = "additional";
 
     /// <summary>
+    /// Literal for code: NarrativeStatusAdditional
+    /// </summary>
+    public const string LiteralNarrativeStatusAdditional = "http://hl7.org/fhir/narrative-status#additional";
+
+    /// <summary>
     /// Literal for code: Empty
     /// </summary>
     public const string LiteralEmpty = "empty";
+
+    /// <summary>
+    /// Literal for code: NarrativeStatusEmpty
+    /// </summary>
+    public const string LiteralNarrativeStatusEmpty = "http://hl7.org/fhir/narrative-status#empty";
 
     /// <summary>
     /// Literal for code: Extensions
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExtensions = "extensions";
 
     /// <summary>
+    /// Literal for code: NarrativeStatusExtensions
+    /// </summary>
+    public const string LiteralNarrativeStatusExtensions = "http://hl7.org/fhir/narrative-status#extensions";
+
+    /// <summary>
     /// Literal for code: Generated
     /// </summary>
     public const string LiteralGenerated = "generated";
+
+    /// <summary>
+    /// Literal for code: NarrativeStatusGenerated
+    /// </summary>
+    public const string LiteralNarrativeStatusGenerated = "http://hl7.org/fhir/narrative-status#generated";
+
+    /// <summary>
+    /// Dictionary for looking up NarrativeStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "additional", Additional }, 
+      { "http://hl7.org/fhir/narrative-status#additional", Additional }, 
+      { "empty", Empty }, 
+      { "http://hl7.org/fhir/narrative-status#empty", Empty }, 
+      { "extensions", Extensions }, 
+      { "http://hl7.org/fhir/narrative-status#extensions", Extensions }, 
+      { "generated", Generated }, 
+      { "http://hl7.org/fhir/narrative-status#generated", Generated }, 
+    };
   };
 }

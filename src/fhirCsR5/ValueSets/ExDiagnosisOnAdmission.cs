@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ExDiagnosisOnAdmissionCodes
   {
     /// <summary>
-    /// 
+    /// No
     /// </summary>
     public static readonly Coding No = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission"
     };
     /// <summary>
-    /// 
+    /// Unknown
     /// </summary>
     public static readonly Coding Unknown = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission"
     };
     /// <summary>
-    /// 
+    /// Yes
     /// </summary>
     public static readonly Coding Yes = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNo = "no";
 
     /// <summary>
+    /// Literal for code: ExDiagnosisOnAdmissionNo
+    /// </summary>
+    public const string LiteralExDiagnosisOnAdmissionNo = "http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission#no";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
 
     /// <summary>
+    /// Literal for code: ExDiagnosisOnAdmissionUnknown
+    /// </summary>
+    public const string LiteralExDiagnosisOnAdmissionUnknown = "http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission#unknown";
+
+    /// <summary>
     /// Literal for code: Yes
     /// </summary>
     public const string LiteralYes = "yes";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosisOnAdmissionYes
+    /// </summary>
+    public const string LiteralExDiagnosisOnAdmissionYes = "http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission#yes";
+
+    /// <summary>
+    /// Dictionary for looking up ExDiagnosisOnAdmission Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "no", No }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission#no", No }, 
+      { "unknown", Unknown }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission#unknown", Unknown }, 
+      { "yes", Yes }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission#yes", Yes }, 
+    };
   };
 }

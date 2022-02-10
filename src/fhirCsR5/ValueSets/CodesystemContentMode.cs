@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralComplete = "complete";
 
     /// <summary>
+    /// Literal for code: CodesystemContentModeComplete
+    /// </summary>
+    public const string LiteralCodesystemContentModeComplete = "http://hl7.org/fhir/codesystem-content-mode#complete";
+
+    /// <summary>
     /// Literal for code: Example
     /// </summary>
     public const string LiteralExample = "example";
+
+    /// <summary>
+    /// Literal for code: CodesystemContentModeExample
+    /// </summary>
+    public const string LiteralCodesystemContentModeExample = "http://hl7.org/fhir/codesystem-content-mode#example";
 
     /// <summary>
     /// Literal for code: Fragment
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFragment = "fragment";
 
     /// <summary>
+    /// Literal for code: CodesystemContentModeFragment
+    /// </summary>
+    public const string LiteralCodesystemContentModeFragment = "http://hl7.org/fhir/codesystem-content-mode#fragment";
+
+    /// <summary>
     /// Literal for code: NotPresent
     /// </summary>
     public const string LiteralNotPresent = "not-present";
 
     /// <summary>
+    /// Literal for code: CodesystemContentModeNotPresent
+    /// </summary>
+    public const string LiteralCodesystemContentModeNotPresent = "http://hl7.org/fhir/codesystem-content-mode#not-present";
+
+    /// <summary>
     /// Literal for code: Supplement
     /// </summary>
     public const string LiteralSupplement = "supplement";
+
+    /// <summary>
+    /// Literal for code: CodesystemContentModeSupplement
+    /// </summary>
+    public const string LiteralCodesystemContentModeSupplement = "http://hl7.org/fhir/codesystem-content-mode#supplement";
+
+    /// <summary>
+    /// Dictionary for looking up CodesystemContentMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", Complete }, 
+      { "http://hl7.org/fhir/codesystem-content-mode#complete", Complete }, 
+      { "example", Example }, 
+      { "http://hl7.org/fhir/codesystem-content-mode#example", Example }, 
+      { "fragment", Fragment }, 
+      { "http://hl7.org/fhir/codesystem-content-mode#fragment", Fragment }, 
+      { "not-present", NotPresent }, 
+      { "http://hl7.org/fhir/codesystem-content-mode#not-present", NotPresent }, 
+      { "supplement", Supplement }, 
+      { "http://hl7.org/fhir/codesystem-content-mode#supplement", Supplement }, 
+    };
   };
 }

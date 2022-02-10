@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class CarePlanActivityCodes
   {
     /// <summary>
-    /// 
+    /// Cauterization of Bartholin's gland
     /// </summary>
     public static readonly Coding CauterizationOfBartholinQuoteSGland = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operation on nerve ganglion
     /// </summary>
     public static readonly Coding OperationOnNerveGanglion = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of corneal epithelium
     /// </summary>
     public static readonly Coding RemovalOfCornealEpithelium = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of scrotum
     /// </summary>
     public static readonly Coding RepairOfScrotum = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fetoscopy
     /// </summary>
     public static readonly Coding Fetoscopy = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enucleation of parotid gland cyst
     /// </summary>
     public static readonly Coding EnucleationOfParotidGlandCyst = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Minimum bactericidal concentration test, microdilution method
     /// </summary>
     public static readonly Coding MinimumBactericidalConcentrationTestMicrodilutionMethod = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insertion of intravascular device in common iliac vein, complete
     /// </summary>
     public static readonly Coding InsertionOfIntravascularDeviceInCommonIliacVeinComplete = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of lesion of patella
     /// </summary>
     public static readonly Coding ExcisionOfLesionOfPatella = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Debridement of open fracture of phalanges of foot
     /// </summary>
     public static readonly Coding DebridementOfOpenFractureOfPhalangesOfFoot = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paternity testing
     /// </summary>
     public static readonly Coding PaternityTesting = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doppler color flow velocity mapping
     /// </summary>
     public static readonly Coding DopplerColorFlowVelocityMapping = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic ultrasound of abdomen and retroperitoneum
     /// </summary>
     public static readonly Coding DiagnosticUltrasoundOfAbdomenAndRetroperitoneum = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Capillary specimen collection
     /// </summary>
     public static readonly Coding CapillarySpecimenCollection = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision of sphincter of Oddi
     /// </summary>
     public static readonly Coding IncisionOfSphincterOfOddi = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Proximal splenorenal anastomosis
     /// </summary>
     public static readonly Coding ProximalSplenorenalAnastomosis = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of perinephric cyst
     /// </summary>
     public static readonly Coding ExcisionOfPerinephricCyst = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of abdominal varicose vein
     /// </summary>
     public static readonly Coding ExcisionOfAbdominalVaricoseVein = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transcrural mobilization of stapes
     /// </summary>
     public static readonly Coding TranscruralMobilizationOfStapes = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Triad knee repair
     /// </summary>
     public static readonly Coding TriadKneeRepair = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decortication
     /// </summary>
     public static readonly Coding Decortication = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed reduction of dislocation of foot and toe
     /// </summary>
     public static readonly Coding ClosedReductionOfDislocationOfFootAndToe = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kinetic activities for range of motion
     /// </summary>
     public static readonly Coding KineticActivitiesForRangeOfMotion = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interstitial radium application
     /// </summary>
     public static readonly Coding InterstitialRadiumApplication = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of intact mammary implant, bilateral
     /// </summary>
     public static readonly Coding RemovalOfIntactMammaryImplantBilateral = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removable appliance therapy
     /// </summary>
     public static readonly Coding RemovableApplianceTherapy = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ureteroenterostomy
     /// </summary>
     public static readonly Coding Ureteroenterostomy = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision of inguinal region
     /// </summary>
     public static readonly Coding IncisionOfInguinalRegion = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of tendon for graft
     /// </summary>
     public static readonly Coding ExcisionOfTendonForGraft = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesia for procedure on bony pelvis
     /// </summary>
     public static readonly Coding AnesthesiaForProcedureOnBonyPelvis = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracoscopic partial lobectomy of lung
     /// </summary>
     public static readonly Coding ThoracoscopicPartialLobectomyOfLung = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excisional biopsy of bone of scapula
     /// </summary>
     public static readonly Coding ExcisionalBiopsyOfBoneOfScapula = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthroscopy of knee with lateral meniscus repair
     /// </summary>
     public static readonly Coding ArthroscopyOfKneeWithLateralMeniscusRepair = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retrobulbar injection of therapeutic agent
     /// </summary>
     public static readonly Coding RetrobulbarInjectionOfTherapeuticAgent = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of humerus
     /// </summary>
     public static readonly Coding RadiographyOfHumerus = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision of subvalvular tissue for discrete subvalvular aortic stenosis
     /// </summary>
     public static readonly Coding IncisionOfSubvalvularTissueForDiscreteSubvalvularAorticStenosis = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muscle transfer
     /// </summary>
     public static readonly Coding MuscleTransfer = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Application of cast, sugar tong
     /// </summary>
     public static readonly Coding ApplicationOfCastSugarTong = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epiphyseal arrest by stapling of distal radius
     /// </summary>
     public static readonly Coding EpiphysealArrestByStaplingOfDistalRadius = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incisional biopsy of testis
     /// </summary>
     public static readonly Coding IncisionalBiopsyOfTestis = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refusion of spine
     /// </summary>
     public static readonly Coding RefusionOfSpine = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of meniscus of wrist
     /// </summary>
     public static readonly Coding ExcisionOfMeniscusOfWrist = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closure of fistula of ear drum
     /// </summary>
     public static readonly Coding ClosureOfFistulaOfEarDrum = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrocoagulation of lesion of vagina
     /// </summary>
     public static readonly Coding ElectrocoagulationOfLesionOfVagina = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open reduction of closed shoulder dislocation with fracture of greater tuberosity
     /// </summary>
     public static readonly Coding OpenReductionOfClosedShoulderDislocationWithFractureOfGreaterTuberosity = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of cardiac pacemaker pocket in skin AND/OR subcutaneous tissue
     /// </summary>
     public static readonly Coding RepairOfCardiacPacemakerPocketInSkinANDORSubcutaneousTissue = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hand microscope examination of skin
     /// </summary>
     public static readonly Coding HandMicroscopeExaminationOfSkin = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of urinary bladder
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfUrinaryBladder = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of appendiceal stump
     /// </summary>
     public static readonly Coding ExcisionOfAppendicealStump = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reconstruction of eyebrow
     /// </summary>
     public static readonly Coding ReconstructionOfEyebrow = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Upper partial denture, cast metal base without resin saddles, including any conventional clasps, rests and teeth
     /// </summary>
     public static readonly Coding UpperPartialDentureCastMetalBaseWithoutResinSaddlesIncludingAnyConventionalClaspsRestsAndTeeth = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebrospinal fluid IgG ratio and IgG index
     /// </summary>
     public static readonly Coding CerebrospinalFluidIgGRatioAndIgGIndex = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Procedure on Meckel's diverticulum
     /// </summary>
     public static readonly Coding ProcedureOnMeckelQuoteSDiverticulum = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ilioiliac shunt
     /// </summary>
     public static readonly Coding IlioiliacShunt = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Division of congenital web of larynx
     /// </summary>
     public static readonly Coding DivisionOfCongenitalWebOfLarynx = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous implantation of neurostimulator electrodes into neuromuscular component
     /// </summary>
     public static readonly Coding PercutaneousImplantationOfNeurostimulatorElectrodesIntoNeuromuscularComponent = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Colosigmoidostomy
     /// </summary>
     public static readonly Coding Colosigmoidostomy = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of impacted feces
     /// </summary>
     public static readonly Coding RemovalOfImpactedFeces = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical procedure on palate
     /// </summary>
     public static readonly Coding MedicalProcedureOnPalate = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrotomy of wrist joint with exploration and biopsy
     /// </summary>
     public static readonly Coding ArthrotomyOfWristJointWithExplorationAndBiopsy = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior spinal rhizotomy
     /// </summary>
     public static readonly Coding AnteriorSpinalRhizotomy = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anti-human globulin test, enzyme technique, titer
     /// </summary>
     public static readonly Coding AntiHumanGlobulinTestEnzymeTechniqueTiter = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhalation therapy procedure
     /// </summary>
     public static readonly Coding InhalationTherapyProcedure = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, scan B-mode for fetal age determination
     /// </summary>
     public static readonly Coding EchographyScanBModeForFetalAgeDetermination = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laparoscopic-assisted sigmoid colectomy
     /// </summary>
     public static readonly Coding LaparoscopicAssistedSigmoidColectomy = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Direct thrombectomy of iliac vein by leg incision
     /// </summary>
     public static readonly Coding DirectThrombectomyOfIliacVeinByLegIncision = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and exploration of ureter
     /// </summary>
     public static readonly Coding IncisionAndExplorationOfUreter = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Application of long leg cast, brace type
     /// </summary>
     public static readonly Coding ApplicationOfLongLegCastBraceType = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesia for tympanotomy
     /// </summary>
     public static readonly Coding AnesthesiaForTympanotomy = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operation on papillary muscle of heart
     /// </summary>
     public static readonly Coding OperationOnPapillaryMuscleOfHeart = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Penetrating keratoplasty with homograft
     /// </summary>
     public static readonly Coding PenetratingKeratoplastyWithHomograft = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of arteriovenous shunt
     /// </summary>
     public static readonly Coding AngiographyOfArteriovenousShunt = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operation on face
     /// </summary>
     public static readonly Coding OperationOnFace = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of tumor from shoulder area, deep, intramuscular
     /// </summary>
     public static readonly Coding ExcisionOfTumorFromShoulderAreaDeepIntramuscular = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fixation
     /// </summary>
     public static readonly Coding Fixation = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair with resection-recession
     /// </summary>
     public static readonly Coding RepairWithResectionRecession = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epilation
     /// </summary>
     public static readonly Coding Epilation = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biofeedback, galvanic skin response
     /// </summary>
     public static readonly Coding BiofeedbackGalvanicSkinResponse = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerclage
     /// </summary>
     public static readonly Coding Cerclage = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Truncal vagotomy with pyloroplasty and gastrostomy
     /// </summary>
     public static readonly Coding TruncalVagotomyWithPyloroplastyAndGastrostomy = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of nonunion of metatarsal with bone graft
     /// </summary>
     public static readonly Coding RepairOfNonunionOfMetatarsalWithBoneGraft = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osmolarity measurement
     /// </summary>
     public static readonly Coding OsmolarityMeasurement = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral epididymovasostomy with anastomosis of epididymis to vas deferens
     /// </summary>
     public static readonly Coding BilateralEpididymovasostomyWithAnastomosisOfEpididymisToVasDeferens = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Altemeier operation, perineal rectal pull-through
     /// </summary>
     public static readonly Coding AltemeierOperationPerinealRectalPullThrough = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital admission for isolation
     /// </summary>
     public static readonly Coding HospitalAdmissionForIsolation = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aspiration of soft tissue
     /// </summary>
     public static readonly Coding AspirationOfSoftTissue = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cystourethroscopy with resection of ureterocele
     /// </summary>
     public static readonly Coding CystourethroscopyWithResectionOfUreterocele = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ureteroplication
     /// </summary>
     public static readonly Coding Ureteroplication = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amikacin measurement
     /// </summary>
     public static readonly Coding AmikacinMeasurement = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brief group psychotherapy
     /// </summary>
     public static readonly Coding BriefGroupPsychotherapy = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// IL-2 assay
     /// </summary>
     public static readonly Coding IL2Assay = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of uteroenteric fistula
     /// </summary>
     public static readonly Coding RepairOfUteroentericFistula = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantation of cardiac single-chamber device replacement, rate-responsive
     /// </summary>
     public static readonly Coding ImplantationOfCardiacSingleChamberDeviceReplacementRateResponsive = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reconstruction of ossicles with stapedectomy
     /// </summary>
     public static readonly Coding ReconstructionOfOssiclesWithStapedectomy = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tractotomy of mesencephalon
     /// </summary>
     public static readonly Coding TractotomyOfMesencephalon = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lengthening of gastrocnemius muscle
     /// </summary>
     public static readonly Coding LengtheningOfGastrocnemiusMuscle = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesia for total elbow replacement
     /// </summary>
     public static readonly Coding AnesthesiaForTotalElbowReplacement = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skeletal X-ray of ankle and foot
     /// </summary>
     public static readonly Coding SkeletalXRayOfAnkleAndFoot = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of foreign body of tendon and/or tendon sheath
     /// </summary>
     public static readonly Coding RemovalOfForeignBodyOfTendonAndOrTendonSheath = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Social service interview with planning
     /// </summary>
     public static readonly Coding SocialServiceInterviewWithPlanning = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral repair of inguinal hernia, direct
     /// </summary>
     public static readonly Coding BilateralRepairOfInguinalHerniaDirect = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reline upper partial denture, chairside
     /// </summary>
     public static readonly Coding RelineUpperPartialDentureChairside = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Galactosylceramide beta-galactosidase measurement, leukocytes
     /// </summary>
     public static readonly Coding GalactosylceramideBetaGalactosidaseMeasurementLeukocytes = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injection of sclerosing agent in varicose vein
     /// </summary>
     public static readonly Coding InjectionOfSclerosingAgentInVaricoseVein = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cineplasty with cineplastic prosthesis of extremity
     /// </summary>
     public static readonly Coding CineplastyWithCineplasticProsthesisOfExtremity = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// History and physical examination, insurance
     /// </summary>
     public static readonly Coding HistoryAndPhysicalExaminationInsurance = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transduodenal sphincterotomy
     /// </summary>
     public static readonly Coding TransduodenalSphincterotomy = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of tendon sheath
     /// </summary>
     public static readonly Coding ExcisionOfTendonSheath = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Internal fixation of bone without fracture reduction
     /// </summary>
     public static readonly Coding InternalFixationOfBoneWithoutFractureReduction = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Behavioral therapy
     /// </summary>
     public static readonly Coding BehavioralTherapy = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Making occupied bed
     /// </summary>
     public static readonly Coding MakingOccupiedBed = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Haagensen test
     /// </summary>
     public static readonly Coding HaagensenTest = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endoscopic procedure of nerve
     /// </summary>
     public static readonly Coding EndoscopicProcedureOfNerve = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Secondary chemoprophylaxis
     /// </summary>
     public static readonly Coding SecondaryChemoprophylaxis = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Direct closure of laceration of conjunctiva
     /// </summary>
     public static readonly Coding DirectClosureOfLacerationOfConjunctiva = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Local excision of ovary
     /// </summary>
     public static readonly Coding LocalExcisionOfOvary = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drainage of abscess of tonsil
     /// </summary>
     public static readonly Coding DrainageOfAbscessOfTonsil = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Special dosimetry
     /// </summary>
     public static readonly Coding SpecialDosimetry = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Special potency disk identification, vancomycin test
     /// </summary>
     public static readonly Coding SpecialPotencyDiskIdentificationVancomycinTest = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Labial veneer, resin laminate, laboratory
     /// </summary>
     public static readonly Coding LabialVeneerResinLaminateLaboratory = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of congenital pseudoarthrosis of tibia
     /// </summary>
     public static readonly Coding RepairOfCongenitalPseudoarthrosisOfTibia = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breast reconstruction, bilateral, with bilateral pedicle TRAM flaps
     /// </summary>
     public static readonly Coding BreastReconstructionBilateralWithBilateralPedicleTRAMFlaps = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immunoglobulin typing, IgG
     /// </summary>
     public static readonly Coding ImmunoglobulinTypingIgG = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypothermia, total body, induction and maintenance
     /// </summary>
     public static readonly Coding HypothermiaTotalBodyInductionAndMaintenance = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suture of skin wound of hindfoot
     /// </summary>
     public static readonly Coding SutureOfSkinWoundOfHindfoot = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Harrison-Richardson operation on vagina
     /// </summary>
     public static readonly Coding HarrisonRichardsonOperationOnVagina = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scleral buckling with implant
     /// </summary>
     public static readonly Coding ScleralBucklingWithImplant = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Replacement of skeletal muscle stimulator
     /// </summary>
     public static readonly Coding ReplacementOfSkeletalMuscleStimulator = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Resection of uveal tissue
     /// </summary>
     public static readonly Coding ResectionOfUvealTissue = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthroscopy of wrist with partial synovectomy
     /// </summary>
     public static readonly Coding ArthroscopyOfWristWithPartialSynovectomy = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assessment of nutritional status
     /// </summary>
     public static readonly Coding AssessmentOfNutritionalStatus = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anastomosis of rectum
     /// </summary>
     public static readonly Coding AnastomosisOfRectum = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mitral valvotomy
     /// </summary>
     public static readonly Coding MitralValvotomy = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasopharyngeal rehabilitation
     /// </summary>
     public static readonly Coding NasopharyngealRehabilitation = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Submaxillary incision with drainage
     /// </summary>
     public static readonly Coding SubmaxillaryIncisionWithDrainage = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fecal stercobilin, qualitative
     /// </summary>
     public static readonly Coding FecalStercobilinQualitative = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonic guidance for pericardiocentesis
     /// </summary>
     public static readonly Coding UltrasonicGuidanceForPericardiocentesis = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood unit collection for directed donation, donor
     /// </summary>
     public static readonly Coding BloodUnitCollectionForDirectedDonationDonor = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endoscopic biopsy of duodenum
     /// </summary>
     public static readonly Coding EndoscopicBiopsyOfDuodenum = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical closure of stoma
     /// </summary>
     public static readonly Coding SurgicalClosureOfStoma = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aspiration of bursa of hand
     /// </summary>
     public static readonly Coding AspirationOfBursaOfHand = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cryotherapy of genital warts
     /// </summary>
     public static readonly Coding CryotherapyOfGenitalWarts = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alcohol measurement, breath
     /// </summary>
     public static readonly Coding AlcoholMeasurementBreath = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open reduction of open sacral fracture
     /// </summary>
     public static readonly Coding OpenReductionOfOpenSacralFracture = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of diverticulum of ventricle of heart
     /// </summary>
     public static readonly Coding ExcisionOfDiverticulumOfVentricleOfHeart = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plication of ligament
     /// </summary>
     public static readonly Coding PlicationOfLigament = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision of nose
     /// </summary>
     public static readonly Coding IncisionOfNose = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of foreign body from tendon of hand
     /// </summary>
     public static readonly Coding RemovalOfForeignBodyFromTendonOfHand = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesia for closed procedure on humerus and elbow
     /// </summary>
     public static readonly Coding AnesthesiaForClosedProcedureOnHumerusAndElbow = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracic phlebectomy
     /// </summary>
     public static readonly Coding ThoracicPhlebectomy = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral nephrectomy
     /// </summary>
     public static readonly Coding BilateralNephrectomy = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of foreign body from brain
     /// </summary>
     public static readonly Coding RemovalOfForeignBodyFromBrain = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insertion of halo device of skull with synchronous skeletal traction
     /// </summary>
     public static readonly Coding InsertionOfHaloDeviceOfSkullWithSynchronousSkeletalTraction = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of aneurysm of coronary artery
     /// </summary>
     public static readonly Coding RepairOfAneurysmOfCoronaryArtery = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suture of male perineum
     /// </summary>
     public static readonly Coding SutureOfMalePerineum = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Recession of prognathic jaw
     /// </summary>
     public static readonly Coding RecessionOfPrognathicJaw = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluorescent antigen measurement
     /// </summary>
     public static readonly Coding FluorescentAntigenMeasurement = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient transfer, in-hospital, unit-to-unit
     /// </summary>
     public static readonly Coding PatientTransferInHospitalUnitToUnit = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of lesion of artery
     /// </summary>
     public static readonly Coding ExcisionOfLesionOfArtery = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insertion of prosthesis or prosthetic device of arm, bioelectric or cineplastic
     /// </summary>
     public static readonly Coding InsertionOfProsthesisOrProstheticDeviceOfArmBioelectricOrCineplastic = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bifurcation of bone
     /// </summary>
     public static readonly Coding BifurcationOfBone = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient discharge, deceased, medicolegal case
     /// </summary>
     public static readonly Coding PatientDischargeDeceasedMedicolegalCase = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepaticotomy with drainage
     /// </summary>
     public static readonly Coding HepaticotomyWithDrainage = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drainage of abscess of nasal septum
     /// </summary>
     public static readonly Coding DrainageOfAbscessOfNasalSeptum = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grafting of bone of thumb with transfer of skin flap
     /// </summary>
     public static readonly Coding GraftingOfBoneOfThumbWithTransferOfSkinFlap = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Central block anesthesia
     /// </summary>
     public static readonly Coding CentralBlockAnesthesia = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mold to yeast conversion test
     /// </summary>
     public static readonly Coding MoldToYeastConversionTest = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Total urethrectomy including cystostomy in female
     /// </summary>
     public static readonly Coding TotalUrethrectomyIncludingCystostomyInFemale = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stripping of cerebral meninges
     /// </summary>
     public static readonly Coding StrippingOfCerebralMeninges = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychologic test
     /// </summary>
     public static readonly Coding PsychologicTest = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Construction of subcutaneous tunnel without esophageal anastomosis
     /// </summary>
     public static readonly Coding ConstructionOfSubcutaneousTunnelWithoutEsophagealAnastomosis = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Internal fixation of radius and ulna without fracture reduction
     /// </summary>
     public static readonly Coding InternalFixationOfRadiusAndUlnaWithoutFractureReduction = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Red cell iron utilization study
     /// </summary>
     public static readonly Coding RedCellIronUtilizationStudy = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Barbiturates measurement, quantitative and qualitative
     /// </summary>
     public static readonly Coding BarbituratesMeasurementQuantitativeAndQualitative = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantation of electromagnetic hearing aid
     /// </summary>
     public static readonly Coding ImplantationOfElectromagneticHearingAid = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental subperiosteal implant
     /// </summary>
     public static readonly Coding DentalSubperiostealImplant = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Puncture of bursa of hand
     /// </summary>
     public static readonly Coding PunctureOfBursaOfHand = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reimplantation of anomalous pulmonary artery
     /// </summary>
     public static readonly Coding ReimplantationOfAnomalousPulmonaryArtery = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiectomy with anastomosis of lower limb artery
     /// </summary>
     public static readonly Coding AngiectomyWithAnastomosisOfLowerLimbArtery = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open reduction of open mandibular fracture with external fixation
     /// </summary>
     public static readonly Coding OpenReductionOfOpenMandibularFractureWithExternalFixation = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental prophylaxis, children
     /// </summary>
     public static readonly Coding DentalProphylaxisChildren = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of blood vessel
     /// </summary>
     public static readonly Coding RepairOfBloodVessel = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reduction of closed sacral fracture
     /// </summary>
     public static readonly Coding ReductionOfClosedSacralFracture = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of pericardial tumor
     /// </summary>
     public static readonly Coding ExcisionOfPericardialTumor = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac catheterization education
     /// </summary>
     public static readonly Coding CardiacCatheterizationEducation = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operation on vulva
     /// </summary>
     public static readonly Coding OperationOnVulva = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injection of aorta
     /// </summary>
     public static readonly Coding InjectionOfAorta = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bicuspidization of aortic valve
     /// </summary>
     public static readonly Coding BicuspidizationOfAorticValve = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of tonsil tags
     /// </summary>
     public static readonly Coding ExcisionOfTonsilTags = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ureterocentesis
     /// </summary>
     public static readonly Coding Ureterocentesis = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operation for bone injury of tarsals and metatarsals
     /// </summary>
     public static readonly Coding OperationForBoneInjuryOfTarsalsAndMetatarsals = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suture of tendon to skeletal attachment
     /// </summary>
     public static readonly Coding SutureOfTendonToSkeletalAttachment = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of ruptured aneurysm with graft of celiac artery
     /// </summary>
     public static readonly Coding RepairOfRupturedAneurysmWithGraftOfCeliacArtery = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gas liquid chromatography, electron capture type
     /// </summary>
     public static readonly Coding GasLiquidChromatographyElectronCaptureType = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of lesion of cul-de-sac
     /// </summary>
     public static readonly Coding ExcisionOfLesionOfCulDeSac = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Curette test of skin
     /// </summary>
     public static readonly Coding CuretteTestOfSkin = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complement component assay
     /// </summary>
     public static readonly Coding ComplementComponentAssay = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sensititer system test
     /// </summary>
     public static readonly Coding SensititerSystemTest = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Proctosigmoidopexy
     /// </summary>
     public static readonly Coding Proctosigmoidopexy = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stone operation, anoplasty
     /// </summary>
     public static readonly Coding StoneOperationAnoplasty = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reconstruction of eyelid
     /// </summary>
     public static readonly Coding ReconstructionOfEyelid = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthroscopy of wrist with internal fixation for instability
     /// </summary>
     public static readonly Coding ArthroscopyOfWristWithInternalFixationForInstability = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Resection of ascending aorta with anastomosis
     /// </summary>
     public static readonly Coding ResectionOfAscendingAortaWithAnastomosis = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital admission, urgent, 48 hours
     /// </summary>
     public static readonly Coding HospitalAdmissionUrgent48Hours = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography of adrenal, bilateral
     /// </summary>
     public static readonly Coding VenographyOfAdrenalBilateral = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Changing tracheostomy tube
     /// </summary>
     public static readonly Coding ChangingTracheostomyTube = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of cleft hand
     /// </summary>
     public static readonly Coding RepairOfCleftHand = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Exploration of popliteal artery
     /// </summary>
     public static readonly Coding ExplorationOfPoplitealArtery = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urinalysis, automated
     /// </summary>
     public static readonly Coding UrinalysisAutomated = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antibody detection, RBC, enzyme, 1 stage technique, including anti-human globulin
     /// </summary>
     public static readonly Coding AntibodyDetectionRBCEnzyme1StageTechniqueIncludingAntiHumanGlobulin = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microbial culture, anaerobic, initial isolation
     /// </summary>
     public static readonly Coding MicrobialCultureAnaerobicInitialIsolation = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Miller operation, urethrovesical suspension
     /// </summary>
     public static readonly Coding MillerOperationUrethrovesicalSuspension = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operation on cerebral meninges
     /// </summary>
     public static readonly Coding OperationOnCerebralMeninges = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesia for cast procedure on forearm, wrist or hand
     /// </summary>
     public static readonly Coding AnesthesiaForCastProcedureOnForearmWristOrHand = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delivery by Ritgen maneuver
     /// </summary>
     public static readonly Coding DeliveryByRitgenManeuver = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suture of recent wound of eyelid, direct closure, full-thickness
     /// </summary>
     public static readonly Coding SutureOfRecentWoundOfEyelidDirectClosureFullThickness = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adductor tenotomy of hip
     /// </summary>
     public static readonly Coding AdductorTenotomyOfHip = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complicated cystorrhaphy
     /// </summary>
     public static readonly Coding ComplicatedCystorrhaphy = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic model construction
     /// </summary>
     public static readonly Coding DiagnosticModelConstruction = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radical resection of tumor of soft tissue of wrist area
     /// </summary>
     public static readonly Coding RadicalResectionOfTumorOfSoftTissueOfWristArea = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tympanoplasty type II with graft against incus or malleus
     /// </summary>
     public static readonly Coding TympanoplastyTypeIIWithGraftAgainstIncusOrMalleus = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Buffy coat smear evaluation
     /// </summary>
     public static readonly Coding BuffyCoatSmearEvaluation = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Application of manual or electric breast pump
     /// </summary>
     public static readonly Coding ApplicationOfManualOrElectricBreastPump = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reduction of closed patellar dislocation
     /// </summary>
     public static readonly Coding ReductionOfClosedPatellarDislocation = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligation of vein of lower limb
     /// </summary>
     public static readonly Coding LigationOfVeinOfLowerLimb = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Periodontic dental consultation and report
     /// </summary>
     public static readonly Coding PeriodonticDentalConsultationAndReport = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of mediastinal tumor
     /// </summary>
     public static readonly Coding ExcisionOfMediastinalTumor = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hexosaminidase A and total hexosaminidase measurement, serum
     /// </summary>
     public static readonly Coding HexosaminidaseAAndTotalHexosaminidaseMeasurementSerum = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reattachment of extremity of foot
     /// </summary>
     public static readonly Coding ReattachmentOfExtremityOfFoot = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epstein-Barr virus serologic test
     /// </summary>
     public static readonly Coding EpsteinBarrVirusSerologicTest = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Replacement of cerebral ventricular tube
     /// </summary>
     public static readonly Coding ReplacementOfCerebralVentricularTube = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision of lacrimal canaliculus
     /// </summary>
     public static readonly Coding IncisionOfLacrimalCanaliculus = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cell count of synovial fluid with differential count
     /// </summary>
     public static readonly Coding CellCountOfSynovialFluidWithDifferentialCount = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Division of nerve ganglion
     /// </summary>
     public static readonly Coding DivisionOfNerveGanglion = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Revision of lumbosubarachnoid shunt
     /// </summary>
     public static readonly Coding RevisionOfLumbosubarachnoidShunt = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blind rehabilitation therapy
     /// </summary>
     public static readonly Coding BlindRehabilitationTherapy = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Educational therapy
     /// </summary>
     public static readonly Coding EducationalTherapy = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Destructive procedure of artery of upper extremity
     /// </summary>
     public static readonly Coding DestructiveProcedureOfArteryOfUpperExtremity = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tennis elbow test
     /// </summary>
     public static readonly Coding TennisElbowTest = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of malunion of metatarsal bones
     /// </summary>
     public static readonly Coding RepairOfMalunionOfMetatarsalBones = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urine specimen collection, 24 hours
     /// </summary>
     public static readonly Coding UrineSpecimenCollection24Hours = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Debridement of skin, subcutaneous tissue, muscle and bone
     /// </summary>
     public static readonly Coding DebridementOfSkinSubcutaneousTissueMuscleAndBone = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Destruction of tissue of breast
     /// </summary>
     public static readonly Coding DestructionOfTissueOfBreast = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prescription, fitting and dispensing of contact lens
     /// </summary>
     public static readonly Coding PrescriptionFittingAndDispensingOfContactLens = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nursing conference
     /// </summary>
     public static readonly Coding NursingConference = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rebase of upper partial denture
     /// </summary>
     public static readonly Coding RebaseOfUpperPartialDenture = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 5' Nucleotidase measurement
     /// </summary>
     public static readonly Coding VAL5QuoteNucleotidaseMeasurement = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retrograde urography with KUB
     /// </summary>
     public static readonly Coding RetrogradeUrographyWithKUB = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reduction of closed humeral supracondylar fracture with manipulation and traction
     /// </summary>
     public static readonly Coding ReductionOfClosedHumeralSupracondylarFractureWithManipulationAndTraction = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stroke rehabilitation
     /// </summary>
     public static readonly Coding StrokeRehabilitation = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chiropractic visit
     /// </summary>
     public static readonly Coding ChiropracticVisit = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mononuclear cell function assay
     /// </summary>
     public static readonly Coding MononuclearCellFunctionAssay = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulpectomy
     /// </summary>
     public static readonly Coding Pulpectomy = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injection of medication in anterior chamber of eye
     /// </summary>
     public static readonly Coding InjectionOfMedicationInAnteriorChamberOfEye = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of keloid
     /// </summary>
     public static readonly Coding ExcisionOfKeloid = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision of cerebral subarachnoid space
     /// </summary>
     public static readonly Coding IncisionOfCerebralSubarachnoidSpace = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Creation of lumbar shunt including laminectomy
     /// </summary>
     public static readonly Coding CreationOfLumbarShuntIncludingLaminectomy = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteoplasty of radius
     /// </summary>
     public static readonly Coding OsteoplastyOfRadius = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Resection of rib by transaxillary approach
     /// </summary>
     public static readonly Coding ResectionOfRibByTransaxillaryApproach = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transplant of hair follicles to scalp
     /// </summary>
     public static readonly Coding TransplantOfHairFolliclesToScalp = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open heart surgery
     /// </summary>
     public static readonly Coding OpenHeartSurgery = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of bone flap of skull
     /// </summary>
     public static readonly Coding RemovalOfBoneFlapOfSkull = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operation on uterus supporting structures
     /// </summary>
     public static readonly Coding OperationOnUterusSupportingStructures = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantation of prosthesis or prosthetic device of joint of hand
     /// </summary>
     public static readonly Coding ImplantationOfProsthesisOrProstheticDeviceOfJointOfHand = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of ligature from fallopian tube
     /// </summary>
     public static readonly Coding RemovalOfLigatureFromFallopianTube = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of bifid digit of hand
     /// </summary>
     public static readonly Coding RepairOfBifidDigitOfHand = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychiatric interpretation to family or parents of patient
     /// </summary>
     public static readonly Coding PsychiatricInterpretationToFamilyOrParentsOfPatient = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous aspiration of renal pelvis
     /// </summary>
     public static readonly Coding PercutaneousAspirationOfRenalPelvis = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracranial/cerebral perfusion pressure monitoring
     /// </summary>
     public static readonly Coding IntracranialCerebralPerfusionPressureMonitoring = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and drainage of infected bursa of upper arm
     /// </summary>
     public static readonly Coding IncisionAndDrainageOfInfectedBursaOfUpperArm = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prefabricated post and core in addition to crown
     /// </summary>
     public static readonly Coding PrefabricatedPostAndCoreInAdditionToCrown = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligation of varicose vein of head and neck
     /// </summary>
     public static readonly Coding LigationOfVaricoseVeinOfHeadAndNeck = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cauterization of liver
     /// </summary>
     public static readonly Coding CauterizationOfLiver = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intelligence test/WB1
     /// </summary>
     public static readonly Coding IntelligenceTestWB1 = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and exploration of vas deferens
     /// </summary>
     public static readonly Coding IncisionAndExplorationOfVasDeferens = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Social service interview of patient
     /// </summary>
     public static readonly Coding SocialServiceInterviewOfPatient = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suture of ligament of lower extremity
     /// </summary>
     public static readonly Coding SutureOfLigamentOfLowerExtremity = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Recementation of space maintainer
     /// </summary>
     public static readonly Coding RecementationOfSpaceMaintainer = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic procedure on cornea
     /// </summary>
     public static readonly Coding DiagnosticProcedureOnCornea = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anal fistulectomy, multiple
     /// </summary>
     public static readonly Coding AnalFistulectomyMultiple = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and drainage of masticator space by extraoral approach
     /// </summary>
     public static readonly Coding IncisionAndDrainageOfMasticatorSpaceByExtraoralApproach = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stripping
     /// </summary>
     public static readonly Coding Stripping = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of pelvis
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfPelvis = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stool fat, quantitative measurement
     /// </summary>
     public static readonly Coding StoolFatQuantitativeMeasurement = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepatic venography with hemodynamic evaluation
     /// </summary>
     public static readonly Coding HepaticVenographyWithHemodynamicEvaluation = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stripping and ligation of saphenous vein
     /// </summary>
     public static readonly Coding StrippingAndLigationOfSaphenousVein = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dermal-fat-fascia graft
     /// </summary>
     public static readonly Coding DermalFatFasciaGraft = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// IL-3 assay
     /// </summary>
     public static readonly Coding IL3Assay = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serologic test for influenza virus A
     /// </summary>
     public static readonly Coding SerologicTestForInfluenzaVirusA = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Recession of tendon of hand
     /// </summary>
     public static readonly Coding RecessionOfTendonOfHand = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Exploratory craniotomy, infratentorial
     /// </summary>
     public static readonly Coding ExploratoryCraniotomyInfratentorial = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Destruction of Bartholin's gland or cyst
     /// </summary>
     public static readonly Coding DestructionOfBartholinQuoteSGlandOrCyst = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operative endoscopy of ileum
     /// </summary>
     public static readonly Coding OperativeEndoscopyOfIleum = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Omentopexy
     /// </summary>
     public static readonly Coding Omentopexy = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incudopexy
     /// </summary>
     public static readonly Coding Incudopexy = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteoplasty of facial bones
     /// </summary>
     public static readonly Coding OsteoplastyOfFacialBones = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cauterization of navel
     /// </summary>
     public static readonly Coding CauterizationOfNavel = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manual dilation and stretching
     /// </summary>
     public static readonly Coding ManualDilationAndStretching = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cineradiography of pharynx
     /// </summary>
     public static readonly Coding CineradiographyOfPharynx = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nephroureterocystectomy
     /// </summary>
     public static readonly Coding Nephroureterocystectomy = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transposition of ulnar nerve at elbow
     /// </summary>
     public static readonly Coding TranspositionOfUlnarNerveAtElbow = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gas chromatography measurement
     /// </summary>
     public static readonly Coding GasChromatographyMeasurement = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Revision of urinary conduit
     /// </summary>
     public static readonly Coding RevisionOfUrinaryConduit = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cervical myelography
     /// </summary>
     public static readonly Coding CervicalMyelography = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and drainage of vulva
     /// </summary>
     public static readonly Coding IncisionAndDrainageOfVulva = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrotomy for synovectomy of sternoclavicular joint
     /// </summary>
     public static readonly Coding ArthrotomyForSynovectomyOfSternoclavicularJoint = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bursectomy of hand
     /// </summary>
     public static readonly Coding BursectomyOfHand = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pinealectomy
     /// </summary>
     public static readonly Coding Pinealectomy = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obliteration of lymphatic structure
     /// </summary>
     public static readonly Coding ObliterationOfLymphaticStructure = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantation of prosthesis or prosthetic device of elbow joint
     /// </summary>
     public static readonly Coding ImplantationOfProsthesisOrProstheticDeviceOfElbowJoint = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital admission, type unclassified, explain by report
     /// </summary>
     public static readonly Coding HospitalAdmissionTypeUnclassifiedExplainByReport = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intradermal skin test
     /// </summary>
     public static readonly Coding IntradermalSkinTest = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthroscopy of elbow with partial synovectomy
     /// </summary>
     public static readonly Coding ArthroscopyOfElbowWithPartialSynovectomy = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// DNA analysis, antenatal, blood
     /// </summary>
     public static readonly Coding DNAAnalysisAntenatalBlood = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic procedure on anterior chamber of eye
     /// </summary>
     public static readonly Coding DiagnosticProcedureOnAnteriorChamberOfEye = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Destruction of hemorrhoids by cryotherapy
     /// </summary>
     public static readonly Coding DestructionOfHemorrhoidsByCryotherapy = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior sclerotomy
     /// </summary>
     public static readonly Coding AnteriorSclerotomy = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suture of capsule of ankle
     /// </summary>
     public static readonly Coding SutureOfCapsuleOfAnkle = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pneumogynecography
     /// </summary>
     public static readonly Coding Pneumogynecography = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excisional biopsy of joint structure of spine
     /// </summary>
     public static readonly Coding ExcisionalBiopsyOfJointStructureOfSpine = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suprapubic diverticulectomy of bladder
     /// </summary>
     public static readonly Coding SuprapubicDiverticulectomyOfBladder = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Therapeutic compound measurement
     /// </summary>
     public static readonly Coding TherapeuticCompoundMeasurement = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nonexcisional destruction of cyst of ciliary body
     /// </summary>
     public static readonly Coding NonexcisionalDestructionOfCystOfCiliaryBody = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of fistula of cervix
     /// </summary>
     public static readonly Coding RepairOfFistulaOfCervix = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Craniectomy with treatment of penetrating wound of brain
     /// </summary>
     public static readonly Coding CraniectomyWithTreatmentOfPenetratingWoundOfBrain = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metacarpal lengthening and transfer of local flap
     /// </summary>
     public static readonly Coding MetacarpalLengtheningAndTransferOfLocalFlap = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closure of urethrovaginal fistula
     /// </summary>
     public static readonly Coding ClosureOfUrethrovaginalFistula = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thrombectomy of lower limb vein
     /// </summary>
     public static readonly Coding ThrombectomyOfLowerLimbVein = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Total lobectomy with bronchoplasty
     /// </summary>
     public static readonly Coding TotalLobectomyWithBronchoplasty = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of silastic tubes from ear
     /// </summary>
     public static readonly Coding RemovalOfSilasticTubesFromEar = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of Crutchfield tongs from skull
     /// </summary>
     public static readonly Coding RemovalOfCrutchfieldTongsFromSkull = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calcitonin measurement
     /// </summary>
     public static readonly Coding CalcitoninMeasurement = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tibiotalar arthrodesis
     /// </summary>
     public static readonly Coding TibiotalarArthrodesis = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peripheral nervous system disease rehabilitation
     /// </summary>
     public static readonly Coding PeripheralNervousSystemDiseaseRehabilitation = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of stomach
     /// </summary>
     public static readonly Coding RepairOfStomach = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kowa fundus photography
     /// </summary>
     public static readonly Coding KowaFundusPhotography = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Forequarter amputation, right
     /// </summary>
     public static readonly Coding ForequarterAmputationRight = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of kidney
     /// </summary>
     public static readonly Coding EchographyOfKidney = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complete avulsion of nail
     /// </summary>
     public static readonly Coding CompleteAvulsionOfNail = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastroscopy through artificial stoma
     /// </summary>
     public static readonly Coding GastroscopyThroughArtificialStoma = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nonoperative removal of prosthesis of bile duct
     /// </summary>
     public static readonly Coding NonoperativeRemovalOfProsthesisOfBileDuct = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Embolectomy with catheter of renal artery by abdominal incision
     /// </summary>
     public static readonly Coding EmbolectomyWithCatheterOfRenalArteryByAbdominalIncision = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of device from thorax
     /// </summary>
     public static readonly Coding RemovalOfDeviceFromThorax = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesia for endoscopic procedure on upper extremity
     /// </summary>
     public static readonly Coding AnesthesiaForEndoscopicProcedureOnUpperExtremity = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aneurysmectomy with graft replacement of lower limb artery
     /// </summary>
     public static readonly Coding AneurysmectomyWithGraftReplacementOfLowerLimbArtery = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Restraint removal
     /// </summary>
     public static readonly Coding RestraintRemoval = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood coagulation panel
     /// </summary>
     public static readonly Coding BloodCoagulationPanel = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monitoring of cardiac output by ECG
     /// </summary>
     public static readonly Coding MonitoringOfCardiacOutputByECG = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient discharge, deceased, autopsy
     /// </summary>
     public static readonly Coding PatientDischargeDeceasedAutopsy = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reimplantation
     /// </summary>
     public static readonly Coding Reimplantation = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Visual field examination and evaluation, intermediate
     /// </summary>
     public static readonly Coding VisualFieldExaminationAndEvaluationIntermediate = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Partial dacryocystectomy
     /// </summary>
     public static readonly Coding PartialDacryocystectomy = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gadolinium measurement
     /// </summary>
     public static readonly Coding GadoliniumMeasurement = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open reduction of closed mandibular fracture with interdental fixation
     /// </summary>
     public static readonly Coding OpenReductionOfClosedMandibularFractureWithInterdentalFixation = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Irrigation of muscle of hand
     /// </summary>
     public static readonly Coding IrrigationOfMuscleOfHand = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of salivary gland fistula
     /// </summary>
     public static readonly Coding RepairOfSalivaryGlandFistula = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Internal obstetrical version
     /// </summary>
     public static readonly Coding InternalObstetricalVersion = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closure of colostomy
     /// </summary>
     public static readonly Coding ClosureOfColostomy = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of Skene's gland
     /// </summary>
     public static readonly Coding ExcisionOfSkeneQuoteSGland = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epilation by forceps
     /// </summary>
     public static readonly Coding EpilationByForceps = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Destructive procedure of nerve
     /// </summary>
     public static readonly Coding DestructiveProcedureOfNerve = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Correction of chordee with mobilization of urethra
     /// </summary>
     public static readonly Coding CorrectionOfChordeeWithMobilizationOfUrethra = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical construction of filtration bleb
     /// </summary>
     public static readonly Coding SurgicalConstructionOfFiltrationBleb = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mayo operation, herniorrhaphy
     /// </summary>
     public static readonly Coding MayoOperationHerniorrhaphy = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cervical lymphangiogram
     /// </summary>
     public static readonly Coding CervicalLymphangiogram = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Empty and measure peritoneal dialysis fluid
     /// </summary>
     public static readonly Coding EmptyAndMeasurePeritonealDialysisFluid = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arteriography of cerebral arteries
     /// </summary>
     public static readonly Coding ArteriographyOfCerebralArteries = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transplantation of tissue of pelvic region
     /// </summary>
     public static readonly Coding TransplantationOfTissueOfPelvicRegion = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantation of neurostimulator in spine
     /// </summary>
     public static readonly Coding ImplantationOfNeurostimulatorInSpine = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lysis of adhesions of bursa of hand
     /// </summary>
     public static readonly Coding LysisOfAdhesionsOfBursaOfHand = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cholecystogastrostomy
     /// </summary>
     public static readonly Coding Cholecystogastrostomy = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Autotransfusion
     /// </summary>
     public static readonly Coding Autotransfusion = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laser beam photocoagulation
     /// </summary>
     public static readonly Coding LaserBeamPhotocoagulation = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of bunionette
     /// </summary>
     public static readonly Coding ExcisionOfBunionette = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision of vein of head and neck
     /// </summary>
     public static readonly Coding IncisionOfVeinOfHeadAndNeck = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Application of short arm splint, forearm to hand, static
     /// </summary>
     public static readonly Coding ApplicationOfShortArmSplintForearmToHandStatic = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open reduction of open radial shaft fracture
     /// </summary>
     public static readonly Coding OpenReductionOfOpenRadialShaftFracture = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Panorex examination of mandible
     /// </summary>
     public static readonly Coding PanorexExaminationOfMandible = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parathyroid hormone measurement
     /// </summary>
     public static readonly Coding ParathyroidHormoneMeasurement = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iron kinetics study
     /// </summary>
     public static readonly Coding IronKineticsStudy = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anastomosis of bile ducts
     /// </summary>
     public static readonly Coding AnastomosisOfBileDucts = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Verification routine
     /// </summary>
     public static readonly Coding VerificationRoutine = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reduction of torsion of omentum
     /// </summary>
     public static readonly Coding ReductionOfTorsionOfOmentum = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Creation of lesion of spinal cord by percutaneous method
     /// </summary>
     public static readonly Coding CreationOfLesionOfSpinalCordByPercutaneousMethod = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood cell morphology
     /// </summary>
     public static readonly Coding BloodCellMorphology = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chondrectomy of spine
     /// </summary>
     public static readonly Coding ChondrectomyOfSpine = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amobarbital interview
     /// </summary>
     public static readonly Coding AmobarbitalInterview = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Preventive dental service
     /// </summary>
     public static readonly Coding PreventiveDentalService = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulp cap, direct, excluding final restoration
     /// </summary>
     public static readonly Coding PulpCapDirectExcludingFinalRestoration = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fixation of contralateral testis
     /// </summary>
     public static readonly Coding FixationOfContralateralTestis = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphocytes, T &amp; B cell evaluation
     /// </summary>
     public static readonly Coding LymphocytesTAndBCellEvaluation = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral
     /// </summary>
     public static readonly Coding PatientReferral = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Periodontal scaling and root planing, per quadrant
     /// </summary>
     public static readonly Coding PeriodontalScalingAndRootPlaningPerQuadrant = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of heart assist system with replacement
     /// </summary>
     public static readonly Coding RemovalOfHeartAssistSystemWithReplacement = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide dynamic function study
     /// </summary>
     public static readonly Coding RadionuclideDynamicFunctionStudy = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Total excision of pituitary gland by transsphenoidal approach
     /// </summary>
     public static readonly Coding TotalExcisionOfPituitaryGlandByTranssphenoidalApproach = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aspiration of vitreous with replacement
     /// </summary>
     public static readonly Coding AspirationOfVitreousWithReplacement = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Streptococcus vaccination
     /// </summary>
     public static readonly Coding StreptococcusVaccination = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urinary undiversion of ureteral anastomosis
     /// </summary>
     public static readonly Coding UrinaryUndiversionOfUreteralAnastomosis = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of arteries of extremity
     /// </summary>
     public static readonly Coding AngiographyOfArteriesOfExtremity = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Replacement of electronic heart device, pulse generator
     /// </summary>
     public static readonly Coding ReplacementOfElectronicHeartDevicePulseGenerator = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of foreign body of pelvis from subcutaneous tissue
     /// </summary>
     public static readonly Coding RemovalOfForeignBodyOfPelvisFromSubcutaneousTissue = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aversive psychotherapy
     /// </summary>
     public static readonly Coding AversivePsychotherapy = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reagent RBC, preparation antibody sensitized pool
     /// </summary>
     public static readonly Coding ReagentRBCPreparationAntibodySensitizedPool = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antibody measurement
     /// </summary>
     public static readonly Coding AntibodyMeasurement = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// IV/irrigation monitoring
     /// </summary>
     public static readonly Coding IVIrrigationMonitoring = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aortocoronary artery bypass graft with saphenous vein graft
     /// </summary>
     public static readonly Coding AortocoronaryArteryBypassGraftWithSaphenousVeinGraft = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insertion of ureteral stent with ureterotomy
     /// </summary>
     public static readonly Coding InsertionOfUreteralStentWithUreterotomy = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rodney Smith operation, radical subtotal pancreatectomy
     /// </summary>
     public static readonly Coding RodneySmithOperationRadicalSubtotalPancreatectomy = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of foreign body from fallopian tube
     /// </summary>
     public static readonly Coding RemovalOfForeignBodyFromFallopianTube = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of fascia with graft of fascia
     /// </summary>
     public static readonly Coding RepairOfFasciaWithGraftOfFascia = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of calculus of pharynx
     /// </summary>
     public static readonly Coding RemovalOfCalculusOfPharynx = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reduction of ciliary body
     /// </summary>
     public static readonly Coding ReductionOfCiliaryBody = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transplantation of mesenteric tissue
     /// </summary>
     public static readonly Coding TransplantationOfMesentericTissue = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Red cell survival study with hepatic sequestration
     /// </summary>
     public static readonly Coding RedCellSurvivalStudyWithHepaticSequestration = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesia for brachial arteriograms, retrograde
     /// </summary>
     public static readonly Coding AnesthesiaForBrachialArteriogramsRetrograde = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Morphometric analysis, nerve
     /// </summary>
     public static readonly Coding MorphometricAnalysisNerve = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lingulectomy of lung
     /// </summary>
     public static readonly Coding LingulectomyOfLung = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision of inner ear
     /// </summary>
     public static readonly Coding IncisionOfInnerEar = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of scleral fistula
     /// </summary>
     public static readonly Coding RepairOfScleralFistula = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peripheral neurorrhaphy
     /// </summary>
     public static readonly Coding PeripheralNeurorrhaphy = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fitting of prosthesis or prosthetic device of upper arm
     /// </summary>
     public static readonly Coding FittingOfProsthesisOrProstheticDeviceOfUpperArm = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leadbetter urethral reconstruction
     /// </summary>
     public static readonly Coding LeadbetterUrethralReconstruction = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Selenium measurement, urine
     /// </summary>
     public static readonly Coding SeleniumMeasurementUrine = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zancolli operation for tendon transfer of biceps
     /// </summary>
     public static readonly Coding ZancolliOperationForTendonTransferOfBiceps = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesia for lens surgery
     /// </summary>
     public static readonly Coding AnesthesiaForLensSurgery = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shunt of left subclavian to descending aorta by Blalock-Park operation
     /// </summary>
     public static readonly Coding ShuntOfLeftSubclavianToDescendingAortaByBlalockParkOperation = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wedge osteotomy of tarsals and metatarsals
     /// </summary>
     public static readonly Coding WedgeOsteotomyOfTarsalsAndMetatarsals = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tissue processing technique, routine, embed, cut and stain, per autopsy
     /// </summary>
     public static readonly Coding TissueProcessingTechniqueRoutineEmbedCutAndStainPerAutopsy = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Erysiphake extraction of cataract by intracapsular approach
     /// </summary>
     public static readonly Coding ErysiphakeExtractionOfCataractByIntracapsularApproach = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of foreign body of hip from subcutaneous tissue
     /// </summary>
     public static readonly Coding RemovalOfForeignBodyOfHipFromSubcutaneousTissue = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Release for de Quervain's tenosynovitis of hand
     /// </summary>
     public static readonly Coding ReleaseForDeQuervainQuoteSTenosynovitisOfHand = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dilute Russell viper venom time
     /// </summary>
     public static readonly Coding DiluteRussellViperVenomTime = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Partial-thickness skin graft
     /// </summary>
     public static readonly Coding PartialThicknessSkinGraft = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coproporphyrin III measurement
     /// </summary>
     public static readonly Coding CoproporphyrinIIIMeasurement = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of foreign body of canthus by incision
     /// </summary>
     public static readonly Coding RemovalOfForeignBodyOfCanthusByIncision = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Costosternoplasty for pectus excavatum repair
     /// </summary>
     public static readonly Coding CostosternoplastyForPectusExcavatumRepair = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biopsy of perirenal tissue
     /// </summary>
     public static readonly Coding BiopsyOfPerirenalTissue = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reduction of closed ischial fracture
     /// </summary>
     public static readonly Coding ReductionOfClosedIschialFracture = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thrombectomy with catheter of subclavian artery by neck incision
     /// </summary>
     public static readonly Coding ThrombectomyWithCatheterOfSubclavianArteryByNeckIncision = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ward urine dip stick testing
     /// </summary>
     public static readonly Coding WardUrineDipStickTesting = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manipulation of scrotal tissue
     /// </summary>
     public static readonly Coding ManipulationOfScrotalTissue = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Routine patient disposition, no follow-up planned
     /// </summary>
     public static readonly Coding RoutinePatientDispositionNoFollowUpPlanned = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delayed hypersensitivity skin test for SK-SD
     /// </summary>
     public static readonly Coding DelayedHypersensitivitySkinTestForSKSD = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of lesion of pharynx
     /// </summary>
     public static readonly Coding ExcisionOfLesionOfPharynx = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonic guidance for needle biopsy
     /// </summary>
     public static readonly Coding UltrasonicGuidanceForNeedleBiopsy = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pregnanetriol measurement
     /// </summary>
     public static readonly Coding PregnanetriolMeasurement = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of redundant mucosa from jejunostomy
     /// </summary>
     public static readonly Coding ExcisionOfRedundantMucosaFromJejunostomy = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of adenoids
     /// </summary>
     public static readonly Coding RadiographyOfAdenoids = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental application of desensitizing medicament
     /// </summary>
     public static readonly Coding DentalApplicationOfDesensitizingMedicament = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Embolization of thoracic artery
     /// </summary>
     public static readonly Coding EmbolizationOfThoracicArtery = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blepharotomy with drainage of abscess of eyelid
     /// </summary>
     public static readonly Coding BlepharotomyWithDrainageOfAbscessOfEyelid = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open biopsy of vertebral body of thoracic region
     /// </summary>
     public static readonly Coding OpenBiopsyOfVertebralBodyOfThoracicRegion = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chiropractic application of ice
     /// </summary>
     public static readonly Coding ChiropracticApplicationOfIce = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of foreign body from fascia
     /// </summary>
     public static readonly Coding RemovalOfForeignBodyFromFascia = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of thyroid, A-mode
     /// </summary>
     public static readonly Coding EchographyOfThyroidAMode = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aneurysmectomy with anastomosis of lower limb artery
     /// </summary>
     public static readonly Coding AneurysmectomyWithAnastomosisOfLowerLimbArtery = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Total vital capacity measurement
     /// </summary>
     public static readonly Coding TotalVitalCapacityMeasurement = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excisional biopsy of scrotum
     /// </summary>
     public static readonly Coding ExcisionalBiopsyOfScrotum = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of lesion of fibula
     /// </summary>
     public static readonly Coding ExcisionOfLesionOfFibula = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blepharorrhaphy
     /// </summary>
     public static readonly Coding Blepharorrhaphy = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and drainage of submental space by extraoral approach
     /// </summary>
     public static readonly Coding IncisionAndDrainageOfSubmentalSpaceByExtraoralApproach = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligation of wart
     /// </summary>
     public static readonly Coding LigationOfWart = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suture of lip
     /// </summary>
     public static readonly Coding SutureOfLip = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tobramycin measurement
     /// </summary>
     public static readonly Coding TobramycinMeasurement = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Comprehensive orthodontic treatment, permanent dentition, for class I malocclusion
     /// </summary>
     public static readonly Coding ComprehensiveOrthodonticTreatmentPermanentDentitionForClassIMalocclusion = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Application of dressing
     /// </summary>
     public static readonly Coding ApplicationOfDressing = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and drainage of retroperitoneal abscess
     /// </summary>
     public static readonly Coding IncisionAndDrainageOfRetroperitonealAbscess = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muscle transplantation
     /// </summary>
     public static readonly Coding MuscleTransplantation = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of artery of thorax and abdomen
     /// </summary>
     public static readonly Coding ExcisionOfArteryOfThoraxAndAbdomen = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excisional biopsy of phalanges of foot
     /// </summary>
     public static readonly Coding ExcisionalBiopsyOfPhalangesOfFoot = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plastic repair with lengthening
     /// </summary>
     public static readonly Coding PlasticRepairWithLengthening = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lactic acid measurement
     /// </summary>
     public static readonly Coding LacticAcidMeasurement = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient transfer, in-hospital, bed-to-bed
     /// </summary>
     public static readonly Coding PatientTransferInHospitalBedToBed = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Making Foster bed
     /// </summary>
     public static readonly Coding MakingFosterBed = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerclage for retinal reattachment
     /// </summary>
     public static readonly Coding CerclageForRetinalReattachment = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cystopexy
     /// </summary>
     public static readonly Coding Cystopexy = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antibody elution, RBC
     /// </summary>
     public static readonly Coding AntibodyElutionRBC = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arteriectomy of thoracoabdominal aorta
     /// </summary>
     public static readonly Coding ArteriectomyOfThoracoabdominalAorta = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operation on submaxillary gland
     /// </summary>
     public static readonly Coding OperationOnSubmaxillaryGland = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluorescence polarization immunoassay
     /// </summary>
     public static readonly Coding FluorescencePolarizationImmunoassay = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Facetectomy of vertebra
     /// </summary>
     public static readonly Coding FacetectomyOfVertebra = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of osteocartilagenous loose body from joint structures
     /// </summary>
     public static readonly Coding RemovalOfOsteocartilagenousLooseBodyFromJointStructures = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Duchenne muscular dystrophy carrier detection
     /// </summary>
     public static readonly Coding DuchenneMuscularDystrophyCarrierDetection = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subtotal resection of esophagus
     /// </summary>
     public static readonly Coding SubtotalResectionOfEsophagus = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carrier detection, molecular genetics
     /// </summary>
     public static readonly Coding CarrierDetectionMolecularGenetics = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesia for procedure on arteries of lower leg with bypass graft
     /// </summary>
     public static readonly Coding AnesthesiaForProcedureOnArteriesOfLowerLegWithBypassGraft = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of pelvis, prostate and bladder
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfPelvisProstateAndBladder = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone imaging of limited area
     /// </summary>
     public static readonly Coding BoneImagingOfLimitedArea = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anti-human globulin test, indirect, titer, non-gamma
     /// </summary>
     public static readonly Coding AntiHumanGlobulinTestIndirectTiterNonGamma = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phlebography of neck
     /// </summary>
     public static readonly Coding PhlebographyOfNeck = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oophorectomy of remaining ovary with tube
     /// </summary>
     public static readonly Coding OophorectomyOfRemainingOvaryWithTube = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Distal subtotal pancreatectomy
     /// </summary>
     public static readonly Coding DistalSubtotalPancreatectomy = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantation of electronic stimulator into phrenic nerve
     /// </summary>
     public static readonly Coding ImplantationOfElectronicStimulatorIntoPhrenicNerve = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed reduction of facial fracture, except mandible
     /// </summary>
     public static readonly Coding ClosedReductionOfFacialFractureExceptMandible = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Restoration, resin, two surfaces, posterior, permanent
     /// </summary>
     public static readonly Coding RestorationResinTwoSurfacesPosteriorPermanent = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthroscopy of elbow with extensive debridement
     /// </summary>
     public static readonly Coding ArthroscopyOfElbowWithExtensiveDebridement = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of vascular graft or prosthesis
     /// </summary>
     public static readonly Coding RemovalOfVascularGraftOrProsthesis = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Permanent colostomy
     /// </summary>
     public static readonly Coding PermanentColostomy = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drainage of cerebral ventricle by incision
     /// </summary>
     public static readonly Coding DrainageOfCerebralVentricleByIncision = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous aspiration of spinal cord cyst
     /// </summary>
     public static readonly Coding PercutaneousAspirationOfSpinalCordCyst = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fulguration of stomach lesion
     /// </summary>
     public static readonly Coding FulgurationOfStomachLesion = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specimen aliquoting
     /// </summary>
     public static readonly Coding SpecimenAliquoting = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of ventricular reservoir with synchronous replacement
     /// </summary>
     public static readonly Coding RemovalOfVentricularReservoirWithSynchronousReplacement = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fitting of prosthesis or prosthetic device of lower arm
     /// </summary>
     public static readonly Coding FittingOfProsthesisOrProstheticDeviceOfLowerArm = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of tendon of hand by graft or implant of muscle
     /// </summary>
     public static readonly Coding RepairOfTendonOfHandByGraftOrImplantOfMuscle = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Replacement of transvenous atrial and ventricular pacemaker electrode leads
     /// </summary>
     public static readonly Coding ReplacementOfTransvenousAtrialAndVentricularPacemakerElectrodeLeads = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reduction of retroversion of uterus by suppository
     /// </summary>
     public static readonly Coding ReductionOfRetroversionOfUterusBySuppository = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Revision of spinal pleurothecal shunt
     /// </summary>
     public static readonly Coding RevisionOfSpinalPleurothecalShunt = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Root canal therapy, anterior, excluding final restoration
     /// </summary>
     public static readonly Coding RootCanalTherapyAnteriorExcludingFinalRestoration = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parenteral chemotherapy for malignant neoplasm
     /// </summary>
     public static readonly Coding ParenteralChemotherapyForMalignantNeoplasm = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fenestration procedure
     /// </summary>
     public static readonly Coding FenestrationProcedure = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracranial phlebectomy with anastomosis
     /// </summary>
     public static readonly Coding IntracranialPhlebectomyWithAnastomosis = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantation into pelvic region
     /// </summary>
     public static readonly Coding ImplantationIntoPelvicRegion = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operative block anesthesia
     /// </summary>
     public static readonly Coding OperativeBlockAnesthesia = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior spinal cordotomy
     /// </summary>
     public static readonly Coding PosteriorSpinalCordotomy = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injection of anterior chamber of eye
     /// </summary>
     public static readonly Coding InjectionOfAnteriorChamberOfEye = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone histomorphometry, aluminum stain
     /// </summary>
     public static readonly Coding BoneHistomorphometryAluminumStain = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and drainage of penis
     /// </summary>
     public static readonly Coding IncisionAndDrainageOfPenis = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delayed hypersensitivity skin test for staphage lysate
     /// </summary>
     public static readonly Coding DelayedHypersensitivitySkinTestForStaphageLysate = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital re-admission
     /// </summary>
     public static readonly Coding HospitalReAdmission = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fothergill operation on uterus
     /// </summary>
     public static readonly Coding FothergillOperationOnUterus = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toxicology testing for organophosphate insecticide
     /// </summary>
     public static readonly Coding ToxicologyTestingForOrganophosphateInsecticide = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantation of Ommaya reservoir
     /// </summary>
     public static readonly Coding ImplantationOfOmmayaReservoir = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracardiac injection for cardiac resuscitation
     /// </summary>
     public static readonly Coding IntracardiacInjectionForCardiacResuscitation = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of lesion of thoracic vein
     /// </summary>
     public static readonly Coding ExcisionOfLesionOfThoracicVein = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aneurysmectomy with graft replacement by interposition
     /// </summary>
     public static readonly Coding AneurysmectomyWithGraftReplacementByInterposition = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biopsy of soft tissue of elbow area, superficial
     /// </summary>
     public static readonly Coding BiopsyOfSoftTissueOfElbowAreaSuperficial = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient referral for drug addiction rehabilitation
     /// </summary>
     public static readonly Coding PatientReferralForDrugAddictionRehabilitation = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insertion of bone growth stimulator into femur
     /// </summary>
     public static readonly Coding InsertionOfBoneGrowthStimulatorIntoFemur = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reduction of intussusception by laparotomy
     /// </summary>
     public static readonly Coding ReductionOfIntussusceptionByLaparotomy = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of cusp of tricuspid valve
     /// </summary>
     public static readonly Coding ExcisionOfCuspOfTricuspidValve = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rebase of complete lower denture
     /// </summary>
     public static readonly Coding RebaseOfCompleteLowerDenture = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of lower extremity arteries, bilateral
     /// </summary>
     public static readonly Coding AngiographyOfLowerExtremityArteriesBilateral = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Destruction of lesion of sclera
     /// </summary>
     public static readonly Coding DestructionOfLesionOfSclera = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesia for hernia repair in lower abdomen
     /// </summary>
     public static readonly Coding AnesthesiaForHerniaRepairInLowerAbdomen = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and drainage of perisplenic space
     /// </summary>
     public static readonly Coding IncisionAndDrainageOfPerisplenicSpace = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lloyd-Davies operation, abdominoperineal resection
     /// </summary>
     public static readonly Coding LloydDaviesOperationAbdominoperinealResection = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Homogentisic acid measurement
     /// </summary>
     public static readonly Coding HomogentisicAcidMeasurement = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of nasolabial fistula
     /// </summary>
     public static readonly Coding RepairOfNasolabialFistula = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complete submucous resection of turbinate
     /// </summary>
     public static readonly Coding CompleteSubmucousResectionOfTurbinate = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cryopexy
     /// </summary>
     public static readonly Coding Cryopexy = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Musculoplasty of hand
     /// </summary>
     public static readonly Coding MusculoplastyOfHand = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of implant of cornea
     /// </summary>
     public static readonly Coding RemovalOfImplantOfCornea = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary inhalation study
     /// </summary>
     public static readonly Coding PulmonaryInhalationStudy = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endoscopic brush biopsy of trachea
     /// </summary>
     public static readonly Coding EndoscopicBrushBiopsyOfTrachea = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical repair
     /// </summary>
     public static readonly Coding SurgicalRepair = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transposition of vulvar tissue
     /// </summary>
     public static readonly Coding TranspositionOfVulvarTissue = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Valvuloplasty of pulmonary valve in total repair of tetralogy of Fallot
     /// </summary>
     public static readonly Coding ValvuloplastyOfPulmonaryValveInTotalRepairOfTetralogyOfFallot = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of splenocolic fistula
     /// </summary>
     public static readonly Coding RepairOfSplenocolicFistula = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Slitting of lacrimal canaliculus for passage of tube
     /// </summary>
     public static readonly Coding SlittingOfLacrimalCanaliculusForPassageOfTube = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of device from female genital tract
     /// </summary>
     public static readonly Coding RemovalOfDeviceFromFemaleGenitalTract = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and drainage of parapharyngeal abscess by external approach
     /// </summary>
     public static readonly Coding IncisionAndDrainageOfParapharyngealAbscessByExternalApproach = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Making orthopedic bed
     /// </summary>
     public static readonly Coding MakingOrthopedicBed = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MCP receptor measurement
     /// </summary>
     public static readonly Coding MCPReceptorMeasurement = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography of vena cava
     /// </summary>
     public static readonly Coding VenographyOfVenaCava = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decortication of ovary
     /// </summary>
     public static readonly Coding DecorticationOfOvary = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Autopsy, gross and microscopic examination, stillborn or newborn without CNS
     /// </summary>
     public static readonly Coding AutopsyGrossAndMicroscopicExaminationStillbornOrNewbornWithoutCNS = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manipulation of spinal meninges
     /// </summary>
     public static readonly Coding ManipulationOfSpinalMeninges = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Application of Kirschner wire
     /// </summary>
     public static readonly Coding ApplicationOfKirschnerWire = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of malunion of tibia
     /// </summary>
     public static readonly Coding RepairOfMalunionOfTibia = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open reduction of open elbow dislocation
     /// </summary>
     public static readonly Coding OpenReductionOfOpenElbowDislocation = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insertion of mold into vagina
     /// </summary>
     public static readonly Coding InsertionOfMoldIntoVagina = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Exploration of artery of upper limb
     /// </summary>
     public static readonly Coding ExplorationOfArteryOfUpperLimb = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of tumor of ankle area, deep, intramuscular
     /// </summary>
     public static readonly Coding ExcisionOfTumorOfAnkleAreaDeepIntramuscular = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cyanide measurement
     /// </summary>
     public static readonly Coding CyanideMeasurement = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Norepinephrine measurement, supine
     /// </summary>
     public static readonly Coding NorepinephrineMeasurementSupine = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neurolysis of trigeminal nerve
     /// </summary>
     public static readonly Coding NeurolysisOfTrigeminalNerve = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Special care of mouth
     /// </summary>
     public static readonly Coding SpecialCareOfMouth = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of foreign body of sclera without use of magnet
     /// </summary>
     public static readonly Coding RemovalOfForeignBodyOfScleraWithoutUseOfMagnet = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potter's obstetrical version with extraction
     /// </summary>
     public static readonly Coding PotterQuoteSObstetricalVersionWithExtraction = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tenolysis of flexor tendon of forearm
     /// </summary>
     public static readonly Coding TenolysisOfFlexorTendonOfForearm = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decompression fasciotomy of wrist, flexor and extensor compartment
     /// </summary>
     public static readonly Coding DecompressionFasciotomyOfWristFlexorAndExtensorCompartment = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Restoration, inlay, composite/resin, one surface, laboratory processed
     /// </summary>
     public static readonly Coding RestorationInlayCompositeResinOneSurfaceLaboratoryProcessed = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iridencleisis and iridotasis
     /// </summary>
     public static readonly Coding IridencleisisAndIridotasis = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anastomosis of esophagus, antesternal or antethoracic, with insertion of prosthesis
     /// </summary>
     public static readonly Coding AnastomosisOfEsophagusAntesternalOrAntethoracicWithInsertionOfProsthesis = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Emergency department patient visit
     /// </summary>
     public static readonly Coding EmergencyDepartmentPatientVisit = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligation of artery of lower limb
     /// </summary>
     public static readonly Coding LigationOfArteryOfLowerLimb = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision of pelvirectal tissue
     /// </summary>
     public static readonly Coding IncisionOfPelvirectalTissue = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of bronchogenic cyst
     /// </summary>
     public static readonly Coding ExcisionOfBronchogenicCyst = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed reduction of fracture of foot
     /// </summary>
     public static readonly Coding ClosedReductionOfFractureOfFoot = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of subcutaneous tumor of extremities
     /// </summary>
     public static readonly Coding ExcisionOfSubcutaneousTumorOfExtremities = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior resection of rectum
     /// </summary>
     public static readonly Coding AnteriorResectionOfRectum = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Total abdominal colectomy with ileostomy
     /// </summary>
     public static readonly Coding TotalAbdominalColectomyWithIleostomy = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital admission, transfer from other hospital or health care facility
     /// </summary>
     public static readonly Coding HospitalAdmissionTransferFromOtherHospitalOrHealthCareFacility = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chemopallidectomy
     /// </summary>
     public static readonly Coding Chemopallidectomy = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Creation of ventriculo-atrial shunt
     /// </summary>
     public static readonly Coding CreationOfVentriculoAtrialShunt = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coreoplasty
     /// </summary>
     public static readonly Coding Coreoplasty = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decompression of tendon of hand
     /// </summary>
     public static readonly Coding DecompressionOfTendonOfHand = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epiphysiodesis of distal radius
     /// </summary>
     public static readonly Coding EpiphysiodesisOfDistalRadius = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical procedure related to reproduction
     /// </summary>
     public static readonly Coding MedicalProcedureRelatedToReproduction = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed condylotomy of mandible
     /// </summary>
     public static readonly Coding ClosedCondylotomyOfMandible = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cauterization of sclera with iridectomy
     /// </summary>
     public static readonly Coding CauterizationOfScleraWithIridectomy = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coproporphyrin isomers, series I &amp; III, urine
     /// </summary>
     public static readonly Coding CoproporphyrinIsomersSeriesIAndIIIUrine = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioimmunoassay
     /// </summary>
     public static readonly Coding Radioimmunoassay = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apical pulse taking
     /// </summary>
     public static readonly Coding ApicalPulseTaking = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Take-down of arterial anastomosis
     /// </summary>
     public static readonly Coding TakeDownOfArterialAnastomosis = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed reduction of coxofemoral joint dislocation with splint
     /// </summary>
     public static readonly Coding ClosedReductionOfCoxofemoralJointDislocationWithSplint = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Denker operation for radical maxillary antrotomy
     /// </summary>
     public static readonly Coding DenkerOperationForRadicalMaxillaryAntrotomy = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligation of fallopian tubes by abdominal approach
     /// </summary>
     public static readonly Coding LigationOfFallopianTubesByAbdominalApproach = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of inflatable penile prosthesis, with pump, reservoir and cylinders
     /// </summary>
     public static readonly Coding RemovalOfInflatablePenileProsthesisWithPumpReservoirAndCylinders = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic procedure on phalanges of foot
     /// </summary>
     public static readonly Coding DiagnosticProcedureOnPhalangesOfFoot = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Catheterization of bronchus
     /// </summary>
     public static readonly Coding CatheterizationOfBronchus = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of lesion from sphenoid sinus
     /// </summary>
     public static readonly Coding ExcisionOfLesionFromSphenoidSinus = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical procedure on the nervous system
     /// </summary>
     public static readonly Coding MedicalProcedureOnTheNervousSystem = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glutathione measurement
     /// </summary>
     public static readonly Coding GlutathioneMeasurement = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Identification of rotavirus antigen in feces
     /// </summary>
     public static readonly Coding IdentificationOfRotavirusAntigenInFeces = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transplantation of artery of upper extremity
     /// </summary>
     public static readonly Coding TransplantationOfArteryOfUpperExtremity = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous needle biopsy of muscle
     /// </summary>
     public static readonly Coding PercutaneousNeedleBiopsyOfMuscle = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alpha naphthyl butyrate stain method, blood or bone marrow
     /// </summary>
     public static readonly Coding AlphaNaphthylButyrateStainMethodBloodOrBoneMarrow = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Colony forming unit-granulocyte-monocyte-erythroid-megakaryocyte assay
     /// </summary>
     public static readonly Coding ColonyFormingUnitGranulocyteMonocyteErythroidMegakaryocyteAssay = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Partial excision of calcaneus
     /// </summary>
     public static readonly Coding PartialExcisionOfCalcaneus = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of Gardner Wells tongs from skull
     /// </summary>
     public static readonly Coding RemovalOfGardnerWellsTongsFromSkull = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endoscopy and photography
     /// </summary>
     public static readonly Coding EndoscopyAndPhotography = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychologic cognitive testing and assessment
     /// </summary>
     public static readonly Coding PsychologicCognitiveTestingAndAssessment = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lipoprotein electrophoresis
     /// </summary>
     public static readonly Coding LipoproteinElectrophoresis = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Irrigation of wound catheter of integument
     /// </summary>
     public static readonly Coding IrrigationOfWoundCatheterOfIntegument = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mycobacteria culture
     /// </summary>
     public static readonly Coding MycobacteriaCulture = new Coding
     {
@@ -5574,7 +5574,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Esophagoenteric anastomosis, intrathoracic
     /// </summary>
     public static readonly Coding EsophagoentericAnastomosisIntrathoracic = new Coding
     {
@@ -5583,7 +5583,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cryotherapy of subcutaneous tissue
     /// </summary>
     public static readonly Coding CryotherapyOfSubcutaneousTissue = new Coding
     {
@@ -5592,7 +5592,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incudostapediopexy
     /// </summary>
     public static readonly Coding Incudostapediopexy = new Coding
     {
@@ -5601,7 +5601,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jet ventilation procedure
     /// </summary>
     public static readonly Coding JetVentilationProcedure = new Coding
     {
@@ -5610,7 +5610,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insertion of ocular implant following or secondary to enucleation
     /// </summary>
     public static readonly Coding InsertionOfOcularImplantFollowingOrSecondaryToEnucleation = new Coding
     {
@@ -5619,7 +5619,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Colporrhaphy for repair of urethrocele
     /// </summary>
     public static readonly Coding ColporrhaphyForRepairOfUrethrocele = new Coding
     {
@@ -5628,7 +5628,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reduction of torsion of spermatic cord
     /// </summary>
     public static readonly Coding ReductionOfTorsionOfSpermaticCord = new Coding
     {
@@ -5637,7 +5637,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operation on sublingual gland
     /// </summary>
     public static readonly Coding OperationOnSublingualGland = new Coding
     {
@@ -5646,7 +5646,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microbial identification test
     /// </summary>
     public static readonly Coding MicrobialIdentificationTest = new Coding
     {
@@ -5655,7 +5655,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reconstruction of diaphragm
     /// </summary>
     public static readonly Coding ReconstructionOfDiaphragm = new Coding
     {
@@ -5664,7 +5664,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antibody identification, RBC antibody panel, enzyme, 2 stage technique including anti-human globulin
     /// </summary>
     public static readonly Coding AntibodyIdentificationRBCAntibodyPanelEnzyme2StageTechniqueIncludingAntiHumanGlobulin = new Coding
     {
@@ -5673,7 +5673,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision of labial frenum
     /// </summary>
     public static readonly Coding IncisionOfLabialFrenum = new Coding
     {
@@ -5682,7 +5682,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shower hydrotherapy
     /// </summary>
     public static readonly Coding ShowerHydrotherapy = new Coding
     {
@@ -5691,7 +5691,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of small intestine for interposition
     /// </summary>
     public static readonly Coding ExcisionOfSmallIntestineForInterposition = new Coding
     {
@@ -5700,7 +5700,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesia for cesarean section
     /// </summary>
     public static readonly Coding AnesthesiaForCesareanSection = new Coding
     {
@@ -5709,7 +5709,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biopsy of ovary
     /// </summary>
     public static readonly Coding BiopsyOfOvary = new Coding
     {
@@ -5718,7 +5718,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Revision of anastomosis of large intestine
     /// </summary>
     public static readonly Coding RevisionOfAnastomosisOfLargeIntestine = new Coding
     {
@@ -5727,7 +5727,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extracapsular extraction of lens with iridectomy
     /// </summary>
     public static readonly Coding ExtracapsularExtractionOfLensWithIridectomy = new Coding
     {
@@ -5736,7 +5736,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ferritin measurement
     /// </summary>
     public static readonly Coding FerritinMeasurement = new Coding
     {
@@ -5745,7 +5745,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Proctostomy
     /// </summary>
     public static readonly Coding Proctostomy = new Coding
     {
@@ -5754,7 +5754,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Construction of sigmoid bladder
     /// </summary>
     public static readonly Coding ConstructionOfSigmoidBladder = new Coding
     {
@@ -5763,7 +5763,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ethchlorvynol measurement
     /// </summary>
     public static readonly Coding EthchlorvynolMeasurement = new Coding
     {
@@ -5772,7 +5772,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serum protein electrophoresis
     /// </summary>
     public static readonly Coding SerumProteinElectrophoresis = new Coding
     {
@@ -5781,7 +5781,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dilation of anal sphincter under nonlocal anesthesia
     /// </summary>
     public static readonly Coding DilationOfAnalSphincterUnderNonlocalAnesthesia = new Coding
     {
@@ -5790,7 +5790,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Treatment planning for teletherapy
     /// </summary>
     public static readonly Coding TreatmentPlanningForTeletherapy = new Coding
     {
@@ -5799,7 +5799,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Local perfusion of kidney
     /// </summary>
     public static readonly Coding LocalPerfusionOfKidney = new Coding
     {
@@ -5808,7 +5808,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of thoracogastric fistula
     /// </summary>
     public static readonly Coding RepairOfThoracogastricFistula = new Coding
     {
@@ -5817,7 +5817,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urobilinogen measurement, 48-hour, feces
     /// </summary>
     public static readonly Coding UrobilinogenMeasurement48HourFeces = new Coding
     {
@@ -5826,7 +5826,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salpingography
     /// </summary>
     public static readonly Coding Salpingography = new Coding
     {
@@ -5835,7 +5835,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of lesion of tonsil
     /// </summary>
     public static readonly Coding ExcisionOfLesionOfTonsil = new Coding
     {
@@ -5844,7 +5844,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cervical spinal fusion for pseudoarthrosis
     /// </summary>
     public static readonly Coding CervicalSpinalFusionForPseudoarthrosis = new Coding
     {
@@ -5853,7 +5853,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extracorporeal perfusion
     /// </summary>
     public static readonly Coding ExtracorporealPerfusion = new Coding
     {
@@ -5862,7 +5862,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography
     /// </summary>
     public static readonly Coding Venography = new Coding
     {
@@ -5871,7 +5871,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Replacement of cochlear prosthesis, multiple channels
     /// </summary>
     public static readonly Coding ReplacementOfCochlearProsthesisMultipleChannels = new Coding
     {
@@ -5880,7 +5880,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operation on liver
     /// </summary>
     public static readonly Coding OperationOnLiver = new Coding
     {
@@ -5889,7 +5889,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesia for endoscopic procedure on lower extremity
     /// </summary>
     public static readonly Coding AnesthesiaForEndoscopicProcedureOnLowerExtremity = new Coding
     {
@@ -5898,7 +5898,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteoplasty of cranium with flap of bone
     /// </summary>
     public static readonly Coding OsteoplastyOfCraniumWithFlapOfBone = new Coding
     {
@@ -5907,7 +5907,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac catheterization, left heart, retrograde, percutaneous
     /// </summary>
     public static readonly Coding CardiacCatheterizationLeftHeartRetrogradePercutaneous = new Coding
     {
@@ -5916,7 +5916,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ischemic limb exercise with EMG and lactic acid determination
     /// </summary>
     public static readonly Coding IschemicLimbExerciseWithEMGAndLacticAcidDetermination = new Coding
     {
@@ -5925,7 +5925,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pontic, resin with high noble metal
     /// </summary>
     public static readonly Coding PonticResinWithHighNobleMetal = new Coding
     {
@@ -5934,7 +5934,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Direct laryngoscopy with biopsy
     /// </summary>
     public static readonly Coding DirectLaryngoscopyWithBiopsy = new Coding
     {
@@ -5943,7 +5943,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aldosterone measurement, standing, normal salt diet
     /// </summary>
     public static readonly Coding AldosteroneMeasurementStandingNormalSaltDiet = new Coding
     {
@@ -5952,7 +5952,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lysergic acid diethylamide measurement
     /// </summary>
     public static readonly Coding LysergicAcidDiethylamideMeasurement = new Coding
     {
@@ -5961,7 +5961,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Semen analysis, presence and motility of sperm
     /// </summary>
     public static readonly Coding SemenAnalysisPresenceAndMotilityOfSperm = new Coding
     {
@@ -5970,7 +5970,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corneal gluing
     /// </summary>
     public static readonly Coding CornealGluing = new Coding
     {
@@ -5979,7 +5979,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Labial veneer, porcelain laminate, laboratory
     /// </summary>
     public static readonly Coding LabialVeneerPorcelainLaminateLaboratory = new Coding
     {
@@ -5988,7 +5988,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Graft to hair-bearing skin
     /// </summary>
     public static readonly Coding GraftToHairBearingSkin = new Coding
     {
@@ -5997,7 +5997,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// External cephalic version with tocolysis
     /// </summary>
     public static readonly Coding ExternalCephalicVersionWithTocolysis = new Coding
     {
@@ -6006,7 +6006,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Uniscept system test
     /// </summary>
     public static readonly Coding UnisceptSystemTest = new Coding
     {
@@ -6015,7 +6015,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radical orbitomaxillectomy
     /// </summary>
     public static readonly Coding RadicalOrbitomaxillectomy = new Coding
     {
@@ -6024,7 +6024,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reduction of closed traumatic hip dislocation with anesthesia
     /// </summary>
     public static readonly Coding ReductionOfClosedTraumaticHipDislocationWithAnesthesia = new Coding
     {
@@ -6033,7 +6033,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peripheral vascular disease study
     /// </summary>
     public static readonly Coding PeripheralVascularDiseaseStudy = new Coding
     {
@@ -6042,7 +6042,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endoscopy of renal pelvis
     /// </summary>
     public static readonly Coding EndoscopyOfRenalPelvis = new Coding
     {
@@ -6051,7 +6051,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound peripheral imaging, real time scan
     /// </summary>
     public static readonly Coding UltrasoundPeripheralImagingRealTimeScan = new Coding
     {
@@ -6060,7 +6060,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// T4 free measurement
     /// </summary>
     public static readonly Coding T4FreeMeasurement = new Coding
     {
@@ -6069,7 +6069,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epiglottidectomy
     /// </summary>
     public static readonly Coding Epiglottidectomy = new Coding
     {
@@ -6078,7 +6078,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wedge osteotomy of pelvic bone
     /// </summary>
     public static readonly Coding WedgeOsteotomyOfPelvicBone = new Coding
     {
@@ -6087,7 +6087,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesia for procedure on pericardium with pump oxygenator
     /// </summary>
     public static readonly Coding AnesthesiaForProcedureOnPericardiumWithPumpOxygenator = new Coding
     {
@@ -6096,7 +6096,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extraction of primary membranous cataract by discission
     /// </summary>
     public static readonly Coding ExtractionOfPrimaryMembranousCataractByDiscission = new Coding
     {
@@ -6105,7 +6105,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of chest wall
     /// </summary>
     public static readonly Coding RadiographyOfChestWall = new Coding
     {
@@ -6114,7 +6114,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic procedure on scapula
     /// </summary>
     public static readonly Coding DiagnosticProcedureOnScapula = new Coding
     {
@@ -6123,7 +6123,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of lesion of ankle joint
     /// </summary>
     public static readonly Coding ExcisionOfLesionOfAnkleJoint = new Coding
     {
@@ -6132,7 +6132,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manual reduction of hemorrhoids
     /// </summary>
     public static readonly Coding ManualReductionOfHemorrhoids = new Coding
     {
@@ -6141,7 +6141,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Speech therapy
     /// </summary>
     public static readonly Coding SpeechTherapy = new Coding
     {
@@ -6150,7 +6150,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specialty clinic admission
     /// </summary>
     public static readonly Coding SpecialtyClinicAdmission = new Coding
     {
@@ -6159,7 +6159,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of pressure ulcer
     /// </summary>
     public static readonly Coding ExcisionOfPressureUlcer = new Coding
     {
@@ -6168,7 +6168,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Division of thoracic artery
     /// </summary>
     public static readonly Coding DivisionOfThoracicArtery = new Coding
     {
@@ -6177,7 +6177,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thromboendarterectomy with graft of renal artery
     /// </summary>
     public static readonly Coding ThromboendarterectomyWithGraftOfRenalArtery = new Coding
     {
@@ -6186,7 +6186,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Total body perfusion
     /// </summary>
     public static readonly Coding TotalBodyPerfusion = new Coding
     {
@@ -6195,7 +6195,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteotomy of shaft of femur with fixation
     /// </summary>
     public static readonly Coding OsteotomyOfShaftOfFemurWithFixation = new Coding
     {
@@ -6204,7 +6204,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrotomy for synovectomy of glenohumeral joint
     /// </summary>
     public static readonly Coding ArthrotomyForSynovectomyOfGlenohumeralJoint = new Coding
     {
@@ -6213,7 +6213,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cell fusion
     /// </summary>
     public static readonly Coding CellFusion = new Coding
     {
@@ -6222,7 +6222,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical treatment of missed abortion of second trimester
     /// </summary>
     public static readonly Coding SurgicalTreatmentOfMissedAbortionOfSecondTrimester = new Coding
     {
@@ -6231,7 +6231,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of lesion of lacrimal gland by frontal approach
     /// </summary>
     public static readonly Coding ExcisionOfLesionOfLacrimalGlandByFrontalApproach = new Coding
     {
@@ -6240,7 +6240,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Three dimensional ultrasound imaging of heart
     /// </summary>
     public static readonly Coding ThreeDimensionalUltrasoundImagingOfHeart = new Coding
     {
@@ -6249,7 +6249,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral fasciotomy
     /// </summary>
     public static readonly Coding LateralFasciotomy = new Coding
     {
@@ -6258,7 +6258,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suture of adenoid fossa
     /// </summary>
     public static readonly Coding SutureOfAdenoidFossa = new Coding
     {
@@ -6267,7 +6267,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transplantation of peripheral vein
     /// </summary>
     public static readonly Coding TransplantationOfPeripheralVein = new Coding
     {
@@ -6276,7 +6276,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breakpoint cluster region analysis
     /// </summary>
     public static readonly Coding BreakpointClusterRegionAnalysis = new Coding
     {
@@ -6285,7 +6285,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Total bile acids measurement
     /// </summary>
     public static readonly Coding TotalBileAcidsMeasurement = new Coding
     {
@@ -6294,7 +6294,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligation of adrenal artery
     /// </summary>
     public static readonly Coding LigationOfAdrenalArtery = new Coding
     {
@@ -6303,7 +6303,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral destruction of fallopian tubes
     /// </summary>
     public static readonly Coding BilateralDestructionOfFallopianTubes = new Coding
     {
@@ -6312,7 +6312,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reduction of closed fracture of proximal end of ulna with manipulation
     /// </summary>
     public static readonly Coding ReductionOfClosedFractureOfProximalEndOfUlnaWithManipulation = new Coding
     {
@@ -6321,7 +6321,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operation on oropharynx
     /// </summary>
     public static readonly Coding OperationOnOropharynx = new Coding
     {
@@ -6330,7 +6330,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and drainage of Ludwig's angina
     /// </summary>
     public static readonly Coding IncisionAndDrainageOfLudwigQuoteSAngina = new Coding
     {
@@ -6339,7 +6339,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and drainage of deep hematoma of thigh region
     /// </summary>
     public static readonly Coding IncisionAndDrainageOfDeepHematomaOfThighRegion = new Coding
     {
@@ -6348,7 +6348,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep radiation therapy, 200-300 KVP
     /// </summary>
     public static readonly Coding DeepRadiationTherapy200300KVP = new Coding
     {
@@ -6357,7 +6357,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open pulmonary valve commissurotomy with inflow occlusion
     /// </summary>
     public static readonly Coding OpenPulmonaryValveCommissurotomyWithInflowOcclusion = new Coding
     {
@@ -6366,7 +6366,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed osteotomy of mandibular ramus
     /// </summary>
     public static readonly Coding ClosedOsteotomyOfMandibularRamus = new Coding
     {
@@ -6375,7 +6375,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radical amputation of penis with bilateral pelvic lymphadenectomy
     /// </summary>
     public static readonly Coding RadicalAmputationOfPenisWithBilateralPelvicLymphadenectomy = new Coding
     {
@@ -6384,7 +6384,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Administration of dermatologic formulation
     /// </summary>
     public static readonly Coding AdministrationOfDermatologicFormulation = new Coding
     {
@@ -6393,7 +6393,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shortening of Achilles tendon
     /// </summary>
     public static readonly Coding ShorteningOfAchillesTendon = new Coding
     {
@@ -6402,7 +6402,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of vesicocolic fistula
     /// </summary>
     public static readonly Coding RepairOfVesicocolicFistula = new Coding
     {
@@ -6411,7 +6411,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trocar biopsy
     /// </summary>
     public static readonly Coding TrocarBiopsy = new Coding
     {
@@ -6420,7 +6420,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nicotine measurement
     /// </summary>
     public static readonly Coding NicotineMeasurement = new Coding
     {
@@ -6429,7 +6429,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prophylactic treatment of tibia with methyl methacrylate
     /// </summary>
     public static readonly Coding ProphylacticTreatmentOfTibiaWithMethylMethacrylate = new Coding
     {
@@ -6438,7 +6438,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of endocardial cushion defect
     /// </summary>
     public static readonly Coding RepairOfEndocardialCushionDefect = new Coding
     {
@@ -6447,7 +6447,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closure of ureterovesicovaginal fistula
     /// </summary>
     public static readonly Coding ClosureOfUreterovesicovaginalFistula = new Coding
     {
@@ -6456,7 +6456,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leukocyte poor blood preparation
     /// </summary>
     public static readonly Coding LeukocytePoorBloodPreparation = new Coding
     {
@@ -6465,7 +6465,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stress breaker
     /// </summary>
     public static readonly Coding StressBreaker = new Coding
     {
@@ -6474,7 +6474,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of part of frontal cortex
     /// </summary>
     public static readonly Coding ExcisionOfPartOfFrontalCortex = new Coding
     {
@@ -6483,7 +6483,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Artificial voice rehabilitation
     /// </summary>
     public static readonly Coding ArtificialVoiceRehabilitation = new Coding
     {
@@ -6492,7 +6492,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Exploration of parathyroid with mediastinal exploration by sternal split approach
     /// </summary>
     public static readonly Coding ExplorationOfParathyroidWithMediastinalExplorationBySternalSplitApproach = new Coding
     {
@@ -6501,7 +6501,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antibody to single and double stranded DNA measurement
     /// </summary>
     public static readonly Coding AntibodyToSingleAndDoubleStrandedDNAMeasurement = new Coding
     {
@@ -6510,7 +6510,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manipulation of thoracic artery
     /// </summary>
     public static readonly Coding ManipulationOfThoracicArtery = new Coding
     {
@@ -6519,7 +6519,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injection of fallopian tube
     /// </summary>
     public static readonly Coding InjectionOfFallopianTube = new Coding
     {
@@ -6528,7 +6528,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Destruction of lesion of liver
     /// </summary>
     public static readonly Coding DestructionOfLesionOfLiver = new Coding
     {
@@ -6537,7 +6537,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lysis of adhesions of tendon of hand
     /// </summary>
     public static readonly Coding LysisOfAdhesionsOfTendonOfHand = new Coding
     {
@@ -6546,7 +6546,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amylase measurement, peritoneal fluid
     /// </summary>
     public static readonly Coding AmylaseMeasurementPeritonealFluid = new Coding
     {
@@ -6555,7 +6555,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic procedure on nipple
     /// </summary>
     public static readonly Coding DiagnosticProcedureOnNipple = new Coding
     {
@@ -6564,7 +6564,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Choledochostomy with transduodenal sphincteroplasty
     /// </summary>
     public static readonly Coding CholedochostomyWithTransduodenalSphincteroplasty = new Coding
     {
@@ -6573,7 +6573,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous transluminal angioplasty
     /// </summary>
     public static readonly Coding PercutaneousTransluminalAngioplasty = new Coding
     {
@@ -6582,7 +6582,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skeletal X-ray of lower limb
     /// </summary>
     public static readonly Coding SkeletalXRayOfLowerLimb = new Coding
     {
@@ -6591,7 +6591,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of cervical rib for outlet compression syndrome with sympathectomy
     /// </summary>
     public static readonly Coding ExcisionOfCervicalRibForOutletCompressionSyndromeWithSympathectomy = new Coding
     {
@@ -6600,7 +6600,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transfusion
     /// </summary>
     public static readonly Coding Transfusion = new Coding
     {
@@ -6609,7 +6609,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operative procedure on lower leg
     /// </summary>
     public static readonly Coding OperativeProcedureOnLowerLeg = new Coding
     {
@@ -6618,7 +6618,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Core needle biopsy of thymus
     /// </summary>
     public static readonly Coding CoreNeedleBiopsyOfThymus = new Coding
     {
@@ -6627,7 +6627,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Graft of lymphatic structure
     /// </summary>
     public static readonly Coding GraftOfLymphaticStructure = new Coding
     {
@@ -6636,7 +6636,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serologic test for Rickettsia conorii
     /// </summary>
     public static readonly Coding SerologicTestForRickettsiaConorii = new Coding
     {
@@ -6645,7 +6645,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of prosthesis from fallopian tube
     /// </summary>
     public static readonly Coding RemovalOfProsthesisFromFallopianTube = new Coding
     {
@@ -6654,7 +6654,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Select picture audiometry
     /// </summary>
     public static readonly Coding SelectPictureAudiometry = new Coding
     {
@@ -6663,7 +6663,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serologic test for Blastomyces
     /// </summary>
     public static readonly Coding SerologicTestForBlastomyces = new Coding
     {
@@ -6672,7 +6672,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delayed suture of tendon of hand
     /// </summary>
     public static readonly Coding DelayedSutureOfTendonOfHand = new Coding
     {
@@ -6681,7 +6681,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic procedure on radius
     /// </summary>
     public static readonly Coding DiagnosticProcedureOnRadius = new Coding
     {
@@ -6690,7 +6690,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision of intracranial vein
     /// </summary>
     public static readonly Coding IncisionOfIntracranialVein = new Coding
     {
@@ -6699,7 +6699,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of lesion of adenoids
     /// </summary>
     public static readonly Coding ExcisionOfLesionOfAdenoids = new Coding
     {
@@ -6708,7 +6708,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and exploration of abdominal wall
     /// </summary>
     public static readonly Coding IncisionAndExplorationOfAbdominalWall = new Coding
     {
@@ -6717,7 +6717,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Restoration, inlay, porcelain/ceramic, per tooth, in addition to inlay
     /// </summary>
     public static readonly Coding RestorationInlayPorcelainCeramicPerToothInAdditionToInlay = new Coding
     {
@@ -6726,7 +6726,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open reduction of fracture of phalanges of foot
     /// </summary>
     public static readonly Coding OpenReductionOfFractureOfPhalangesOfFoot = new Coding
     {
@@ -6735,7 +6735,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrodesis of carpometacarpal joint of digits, other than thumb
     /// </summary>
     public static readonly Coding ArthrodesisOfCarpometacarpalJointOfDigitsOtherThanThumb = new Coding
     {
@@ -6744,7 +6744,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of carotid body
     /// </summary>
     public static readonly Coding RepairOfCarotidBody = new Coding
     {
@@ -6753,7 +6753,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Direct laryngoscopy with arytenoidectomy with operating microscope
     /// </summary>
     public static readonly Coding DirectLaryngoscopyWithArytenoidectomyWithOperatingMicroscope = new Coding
     {
@@ -6762,7 +6762,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manually assisted spontaneous delivery
     /// </summary>
     public static readonly Coding ManuallyAssistedSpontaneousDelivery = new Coding
     {
@@ -6771,7 +6771,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrotomy for infection with exploration and drainage of carpometacarpal joint
     /// </summary>
     public static readonly Coding ArthrotomyForInfectionWithExplorationAndDrainageOfCarpometacarpalJoint = new Coding
     {
@@ -6780,7 +6780,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of lesion of aorta with end-to-end anastomosis
     /// </summary>
     public static readonly Coding ExcisionOfLesionOfAortaWithEndToEndAnastomosis = new Coding
     {
@@ -6789,7 +6789,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision of kidney pelvis
     /// </summary>
     public static readonly Coding IncisionOfKidneyPelvis = new Coding
     {
@@ -6798,7 +6798,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aminolevulinic acid dehydratase measurement
     /// </summary>
     public static readonly Coding AminolevulinicAcidDehydrataseMeasurement = new Coding
     {
@@ -6807,7 +6807,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of varicose vein
     /// </summary>
     public static readonly Coding ExcisionOfVaricoseVein = new Coding
     {
@@ -6816,7 +6816,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excretion measurement
     /// </summary>
     public static readonly Coding ExcretionMeasurement = new Coding
     {
@@ -6825,7 +6825,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteoplasty of tibia
     /// </summary>
     public static readonly Coding OsteoplastyOfTibia = new Coding
     {
@@ -6834,7 +6834,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of malignant lesion of skin of extremities
     /// </summary>
     public static readonly Coding ExcisionOfMalignantLesionOfSkinOfExtremities = new Coding
     {
@@ -6843,7 +6843,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open biopsy of bronchus
     /// </summary>
     public static readonly Coding OpenBiopsyOfBronchus = new Coding
     {
@@ -6852,7 +6852,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fistulectomy of bone
     /// </summary>
     public static readonly Coding FistulectomyOfBone = new Coding
     {
@@ -6861,7 +6861,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carbohydrate measurement
     /// </summary>
     public static readonly Coding CarbohydrateMeasurement = new Coding
     {
@@ -6870,7 +6870,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical repair and revision of shunt
     /// </summary>
     public static readonly Coding SurgicalRepairAndRevisionOfShunt = new Coding
     {
@@ -6879,7 +6879,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arylsulfatase A measurement
     /// </summary>
     public static readonly Coding ArylsulfataseAMeasurement = new Coding
     {
@@ -6888,7 +6888,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phlebectomy of varicose vein of head and neck
     /// </summary>
     public static readonly Coding PhlebectomyOfVaricoseVeinOfHeadAndNeck = new Coding
     {
@@ -6897,7 +6897,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Portable electroencephalogram awake and asleep with stimulation
     /// </summary>
     public static readonly Coding PortableElectroencephalogramAwakeAndAsleepWithStimulation = new Coding
     {
@@ -6906,7 +6906,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnet extraction of foreign body from ciliary body
     /// </summary>
     public static readonly Coding MagnetExtractionOfForeignBodyFromCiliaryBody = new Coding
     {
@@ -6915,7 +6915,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of foreign body from ovary
     /// </summary>
     public static readonly Coding RemovalOfForeignBodyFromOvary = new Coding
     {
@@ -6924,7 +6924,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision of seminal vesicle
     /// </summary>
     public static readonly Coding IncisionOfSeminalVesicle = new Coding
     {
@@ -6933,7 +6933,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crisis intervention with follow-up
     /// </summary>
     public static readonly Coding CrisisInterventionWithFollowUp = new Coding
     {
@@ -6942,7 +6942,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaccination for arthropod-borne viral encephalitis
     /// </summary>
     public static readonly Coding VaccinationForArthropodBorneViralEncephalitis = new Coding
     {
@@ -6951,7 +6951,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of eyebrow
     /// </summary>
     public static readonly Coding RepairOfEyebrow = new Coding
     {
@@ -6960,7 +6960,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical reanastomosis of colon
     /// </summary>
     public static readonly Coding SurgicalReanastomosisOfColon = new Coding
     {
@@ -6969,7 +6969,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of epicardial electrodes
     /// </summary>
     public static readonly Coding RemovalOfEpicardialElectrodes = new Coding
     {
@@ -6978,7 +6978,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anoscopy for removal of foreign body
     /// </summary>
     public static readonly Coding AnoscopyForRemovalOfForeignBody = new Coding
     {
@@ -6987,7 +6987,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemosiderin, quantitative measurement
     /// </summary>
     public static readonly Coding HemosiderinQuantitativeMeasurement = new Coding
     {
@@ -6996,7 +6996,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluorescent identification of anti-nuclear antibody
     /// </summary>
     public static readonly Coding FluorescentIdentificationOfAntiNuclearAntibody = new Coding
     {
@@ -7005,7 +7005,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biopsy of cul-de-sac
     /// </summary>
     public static readonly Coding BiopsyOfCulDeSac = new Coding
     {
@@ -7014,7 +7014,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Benzodiazepine measurement
     /// </summary>
     public static readonly Coding BenzodiazepineMeasurement = new Coding
     {
@@ -7023,7 +7023,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision ampulla of Vater with reimplantation of common duct
     /// </summary>
     public static readonly Coding ExcisionAmpullaOfVaterWithReimplantationOfCommonDuct = new Coding
     {
@@ -7032,7 +7032,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteoplasty of radius and ulna, shortening
     /// </summary>
     public static readonly Coding OsteoplastyOfRadiusAndUlnaShortening = new Coding
     {
@@ -7041,7 +7041,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blepharotomy
     /// </summary>
     public static readonly Coding Blepharotomy = new Coding
     {
@@ -7050,7 +7050,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flexorplasty of elbow
     /// </summary>
     public static readonly Coding FlexorplastyOfElbow = new Coding
     {
@@ -7059,7 +7059,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operation on nasal septum
     /// </summary>
     public static readonly Coding OperationOnNasalSeptum = new Coding
     {
@@ -7068,7 +7068,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Forensic autopsy
     /// </summary>
     public static readonly Coding ForensicAutopsy = new Coding
     {
@@ -7077,7 +7077,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elevation of bone fragments of orbit of skull with debridement
     /// </summary>
     public static readonly Coding ElevationOfBoneFragmentsOfOrbitOfSkullWithDebridement = new Coding
     {
@@ -7086,7 +7086,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lysis of adhesions of intestines
     /// </summary>
     public static readonly Coding LysisOfAdhesionsOfIntestines = new Coding
     {
@@ -7095,7 +7095,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of external thrombotic hemorrhoid
     /// </summary>
     public static readonly Coding ExcisionOfExternalThromboticHemorrhoid = new Coding
     {
@@ -7104,7 +7104,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Revision of tracheostomy scar
     /// </summary>
     public static readonly Coding RevisionOfTracheostomyScar = new Coding
     {
@@ -7113,7 +7113,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fenestration of inner ear, initial
     /// </summary>
     public static readonly Coding FenestrationOfInnerEarInitial = new Coding
     {
@@ -7122,7 +7122,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Selective vagotomy with pyloroplasty and gastrostomy
     /// </summary>
     public static readonly Coding SelectiveVagotomyWithPyloroplastyAndGastrostomy = new Coding
     {
@@ -7131,7 +7131,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laboratory reporting, fax
     /// </summary>
     public static readonly Coding LaboratoryReportingFax = new Coding
     {
@@ -7140,7 +7140,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flocculation test
     /// </summary>
     public static readonly Coding FlocculationTest = new Coding
     {
@@ -7149,7 +7149,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligation, division and complete stripping of long and short saphenous veins
     /// </summary>
     public static readonly Coding LigationDivisionAndCompleteStrippingOfLongAndShortSaphenousVeins = new Coding
     {
@@ -7158,7 +7158,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography, left
     /// </summary>
     public static readonly Coding DiagnosticRadiographyLeft = new Coding
     {
@@ -7167,7 +7167,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Partial ostectomy of thorax, ribs or sternum
     /// </summary>
     public static readonly Coding PartialOstectomyOfThoraxRibsOrSternum = new Coding
     {
@@ -7176,7 +7176,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Emulsification procedure
     /// </summary>
     public static readonly Coding EmulsificationProcedure = new Coding
     {
@@ -7185,7 +7185,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of toes
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfToes = new Coding
     {
@@ -7194,7 +7194,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complement mediated cytotoxicity assay
     /// </summary>
     public static readonly Coding ComplementMediatedCytotoxicityAssay = new Coding
     {
@@ -7203,7 +7203,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open reduction of dislocation of toe
     /// </summary>
     public static readonly Coding OpenReductionOfDislocationOfToe = new Coding
     {
@@ -7212,7 +7212,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tertiary closure of abdominal wall
     /// </summary>
     public static readonly Coding TertiaryClosureOfAbdominalWall = new Coding
     {
@@ -7221,7 +7221,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical examination
     /// </summary>
     public static readonly Coding ClinicalExamination = new Coding
     {
@@ -7230,7 +7230,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mastoid antrotomy
     /// </summary>
     public static readonly Coding MastoidAntrotomy = new Coding
     {
@@ -7239,7 +7239,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Methyl red test
     /// </summary>
     public static readonly Coding MethylRedTest = new Coding
     {
@@ -7248,7 +7248,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of Scribner shunt
     /// </summary>
     public static readonly Coding RemovalOfScribnerShunt = new Coding
     {
@@ -7257,7 +7257,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// History and physical examination, complete
     /// </summary>
     public static readonly Coding HistoryAndPhysicalExaminationComplete = new Coding
     {
@@ -7266,7 +7266,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and drainage of hematoma of wrist
     /// </summary>
     public static readonly Coding IncisionAndDrainageOfHematomaOfWrist = new Coding
     {
@@ -7275,7 +7275,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac monitor removal
     /// </summary>
     public static readonly Coding CardiacMonitorRemoval = new Coding
     {
@@ -7284,7 +7284,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Consultation for hearing and/or speech problem
     /// </summary>
     public static readonly Coding ConsultationForHearingAndOrSpeechProblem = new Coding
     {
@@ -7293,7 +7293,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Division of blood vessels of cornea
     /// </summary>
     public static readonly Coding DivisionOfBloodVesselsOfCornea = new Coding
     {
@@ -7302,7 +7302,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of foreign body from elbow area, deep
     /// </summary>
     public static readonly Coding RemovalOfForeignBodyFromElbowAreaDeep = new Coding
     {
@@ -7311,7 +7311,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and drainage of axilla
     /// </summary>
     public static readonly Coding IncisionAndDrainageOfAxilla = new Coding
     {
@@ -7320,7 +7320,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of spermatic cord
     /// </summary>
     public static readonly Coding RepairOfSpermaticCord = new Coding
     {
@@ -7329,7 +7329,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-sensitized spontaneous sheep erythrocyte binding, E-rosette
     /// </summary>
     public static readonly Coding NonSensitizedSpontaneousSheepErythrocyteBindingERosette = new Coding
     {
@@ -7338,7 +7338,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Midtarsal arthrodesis, multiple
     /// </summary>
     public static readonly Coding MidtarsalArthrodesisMultiple = new Coding
     {
@@ -7347,7 +7347,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gas liquid chromatography, flame photometric type
     /// </summary>
     public static readonly Coding GasLiquidChromatographyFlamePhotometricType = new Coding
     {
@@ -7356,7 +7356,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drainage of cerebral subarachnoid space by aspiration
     /// </summary>
     public static readonly Coding DrainageOfCerebralSubarachnoidSpaceByAspiration = new Coding
     {
@@ -7365,7 +7365,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radical dissection of groin
     /// </summary>
     public static readonly Coding RadicalDissectionOfGroin = new Coding
     {
@@ -7374,7 +7374,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transplantation of vitreous by anterior approach
     /// </summary>
     public static readonly Coding TransplantationOfVitreousByAnteriorApproach = new Coding
     {
@@ -7383,7 +7383,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of chest
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfChest = new Coding
     {
@@ -7392,7 +7392,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endoscopy of large intestine
     /// </summary>
     public static readonly Coding EndoscopyOfLargeIntestine = new Coding
     {
@@ -7401,7 +7401,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laparoscopic appendectomy
     /// </summary>
     public static readonly Coding LaparoscopicAppendectomy = new Coding
     {
@@ -7410,7 +7410,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of coronary artery obstruction by percutaneous transluminal balloon with thrombolytic agent
     /// </summary>
     public static readonly Coding RemovalOfCoronaryArteryObstructionByPercutaneousTransluminalBalloonWithThrombolyticAgent = new Coding
     {
@@ -7419,7 +7419,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Augmentation of outflow tract of pulmonary valve
     /// </summary>
     public static readonly Coding AugmentationOfOutflowTractOfPulmonaryValve = new Coding
     {
@@ -7428,7 +7428,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Synchondrotomy
     /// </summary>
     public static readonly Coding Synchondrotomy = new Coding
     {
@@ -7437,7 +7437,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chart abstracting
     /// </summary>
     public static readonly Coding ChartAbstracting = new Coding
     {
@@ -7446,7 +7446,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kanamycin measurement
     /// </summary>
     public static readonly Coding KanamycinMeasurement = new Coding
     {
@@ -7455,7 +7455,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Panniculotomy
     /// </summary>
     public static readonly Coding Panniculotomy = new Coding
     {
@@ -7464,7 +7464,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Perforation of footplate
     /// </summary>
     public static readonly Coding PerforationOfFootplate = new Coding
     {
@@ -7473,7 +7473,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aspiration of nasal sinus by puncture
     /// </summary>
     public static readonly Coding AspirationOfNasalSinusByPuncture = new Coding
     {
@@ -7482,7 +7482,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fenestration of stapes footplate with vein graft
     /// </summary>
     public static readonly Coding FenestrationOfStapesFootplateWithVeinGraft = new Coding
     {
@@ -7491,7 +7491,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subdural tap through fontanel, infant, initial
     /// </summary>
     public static readonly Coding SubduralTapThroughFontanelInfantInitial = new Coding
     {
@@ -7500,7 +7500,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Local destruction of lesion of bony palate
     /// </summary>
     public static readonly Coding LocalDestructionOfLesionOfBonyPalate = new Coding
     {
@@ -7509,7 +7509,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Change of gastrostomy tube
     /// </summary>
     public static readonly Coding ChangeOfGastrostomyTube = new Coding
     {
@@ -7518,7 +7518,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fitzgerald factor assay
     /// </summary>
     public static readonly Coding FitzgeraldFactorAssay = new Coding
     {
@@ -7527,7 +7527,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of abdomen, oblique standard
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfAbdomenObliqueStandard = new Coding
     {
@@ -7536,7 +7536,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical exposure of impacted or unerupted tooth to aid eruption
     /// </summary>
     public static readonly Coding SurgicalExposureOfImpactedOrUneruptedToothToAidEruption = new Coding
     {
@@ -7545,7 +7545,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphokine assay
     /// </summary>
     public static readonly Coding LymphokineAssay = new Coding
     {
@@ -7554,7 +7554,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diabetic education
     /// </summary>
     public static readonly Coding DiabeticEducation = new Coding
     {
@@ -7563,7 +7563,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of heart septum with prosthesis
     /// </summary>
     public static readonly Coding RepairOfHeartSeptumWithProsthesis = new Coding
     {
@@ -7572,7 +7572,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chondrectomy of semilunar cartilage of knee
     /// </summary>
     public static readonly Coding ChondrectomyOfSemilunarCartilageOfKnee = new Coding
     {
@@ -7581,7 +7581,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endoscopic retrograde cholangiopancreatography with biopsy
     /// </summary>
     public static readonly Coding EndoscopicRetrogradeCholangiopancreatographyWithBiopsy = new Coding
     {
@@ -7590,7 +7590,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Galactose measurement
     /// </summary>
     public static readonly Coding GalactoseMeasurement = new Coding
     {
@@ -7599,7 +7599,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of lesion of capsule of toes
     /// </summary>
     public static readonly Coding ExcisionOfLesionOfCapsuleOfToes = new Coding
     {
@@ -7608,7 +7608,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteoclasis of clavicle
     /// </summary>
     public static readonly Coding OsteoclasisOfClavicle = new Coding
     {
@@ -7617,7 +7617,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nephropyeloureterostomy
     /// </summary>
     public static readonly Coding Nephropyeloureterostomy = new Coding
     {
@@ -7626,7 +7626,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone graft to mandible
     /// </summary>
     public static readonly Coding BoneGraftToMandible = new Coding
     {
@@ -7635,7 +7635,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Southern blot assay
     /// </summary>
     public static readonly Coding SouthernBlotAssay = new Coding
     {
@@ -7644,7 +7644,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frontal sinusectomy
     /// </summary>
     public static readonly Coding FrontalSinusectomy = new Coding
     {
@@ -7653,7 +7653,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of aneurysm with graft of common femoral artery
     /// </summary>
     public static readonly Coding RepairOfAneurysmWithGraftOfCommonFemoralArtery = new Coding
     {
@@ -7662,7 +7662,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrotomy of knee
     /// </summary>
     public static readonly Coding ArthrotomyOfKnee = new Coding
     {
@@ -7671,7 +7671,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of aberrant tissue of breast
     /// </summary>
     public static readonly Coding ExcisionOfAberrantTissueOfBreast = new Coding
     {
@@ -7680,7 +7680,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Colopexy
     /// </summary>
     public static readonly Coding Colopexy = new Coding
     {
@@ -7689,7 +7689,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transurethral drainage of prostatic abscess
     /// </summary>
     public static readonly Coding TransurethralDrainageOfProstaticAbscess = new Coding
     {
@@ -7698,7 +7698,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of fracture with Sofield type procedure
     /// </summary>
     public static readonly Coding RepairOfFractureWithSofieldTypeProcedure = new Coding
     {
@@ -7707,7 +7707,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of lesion of female perineum
     /// </summary>
     public static readonly Coding ExcisionOfLesionOfFemalePerineum = new Coding
     {
@@ -7716,7 +7716,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluorescent antigen, titer
     /// </summary>
     public static readonly Coding FluorescentAntigenTiter = new Coding
     {
@@ -7725,7 +7725,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prescribing corneoscleral contact lens
     /// </summary>
     public static readonly Coding PrescribingCorneoscleralContactLens = new Coding
     {
@@ -7734,7 +7734,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suture of colon
     /// </summary>
     public static readonly Coding SutureOfColon = new Coding
     {
@@ -7743,7 +7743,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antibody detection, RBC, enzyme, 2 stage technique, including anti-human globulin
     /// </summary>
     public static readonly Coding AntibodyDetectionRBCEnzyme2StageTechniqueIncludingAntiHumanGlobulin = new Coding
     {
@@ -7752,7 +7752,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Visual rehabilitation, eye motion defect
     /// </summary>
     public static readonly Coding VisualRehabilitationEyeMotionDefect = new Coding
     {
@@ -7761,7 +7761,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Relationship psychotherapy
     /// </summary>
     public static readonly Coding RelationshipPsychotherapy = new Coding
     {
@@ -7770,7 +7770,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Graft of palate
     /// </summary>
     public static readonly Coding GraftOfPalate = new Coding
     {
@@ -7779,7 +7779,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiography of sacroiliac joints
     /// </summary>
     public static readonly Coding DiagnosticRadiographyOfSacroiliacJoints = new Coding
     {
@@ -7788,7 +7788,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operative procedure on knee
     /// </summary>
     public static readonly Coding OperativeProcedureOnKnee = new Coding
     {
@@ -7797,7 +7797,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of supernumerary digit
     /// </summary>
     public static readonly Coding RemovalOfSupernumeraryDigit = new Coding
     {
@@ -7806,7 +7806,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Resection of abdominal artery with replacement
     /// </summary>
     public static readonly Coding ResectionOfAbdominalArteryWithReplacement = new Coding
     {
@@ -7815,7 +7815,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, immersion B-scan
     /// </summary>
     public static readonly Coding EchographyImmersionBScan = new Coding
     {
@@ -7824,7 +7824,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of aural glomus tumor, extended, extratemporal
     /// </summary>
     public static readonly Coding ExcisionOfAuralGlomusTumorExtendedExtratemporal = new Coding
     {
@@ -7833,7 +7833,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Steinman test
     /// </summary>
     public static readonly Coding SteinmanTest = new Coding
     {
@@ -7842,7 +7842,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Destructive procedure on ovaries and fallopian tubes
     /// </summary>
     public static readonly Coding DestructiveProcedureOnOvariesAndFallopianTubes = new Coding
     {
@@ -7851,7 +7851,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White blood cell histogram evaluation
     /// </summary>
     public static readonly Coding WhiteBloodCellHistogramEvaluation = new Coding
     {
@@ -7860,7 +7860,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lysis of adhesions of urethra
     /// </summary>
     public static readonly Coding LysisOfAdhesionsOfUrethra = new Coding
     {
@@ -7869,7 +7869,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sequestrectomy of pelvic bone
     /// </summary>
     public static readonly Coding SequestrectomyOfPelvicBone = new Coding
     {
@@ -7878,7 +7878,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Keratophakia
     /// </summary>
     public static readonly Coding Keratophakia = new Coding
     {
@@ -7887,7 +7887,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fecal fat differential, quantitative
     /// </summary>
     public static readonly Coding FecalFatDifferentialQuantitative = new Coding
     {
@@ -7896,7 +7896,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beta lactamase, chromogenic cephalosporin susceptibility test
     /// </summary>
     public static readonly Coding BetaLactamaseChromogenicCephalosporinSusceptibilityTest = new Coding
     {
@@ -7905,7 +7905,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chart review by physician
     /// </summary>
     public static readonly Coding ChartReviewByPhysician = new Coding
     {
@@ -7914,7 +7914,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligation of aortic arch
     /// </summary>
     public static readonly Coding LigationOfAorticArch = new Coding
     {
@@ -7923,7 +7923,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Conditioning play audiometry
     /// </summary>
     public static readonly Coding ConditioningPlayAudiometry = new Coding
     {
@@ -7932,7 +7932,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Forensic bite mark comparison technique
     /// </summary>
     public static readonly Coding ForensicBiteMarkComparisonTechnique = new Coding
     {
@@ -7941,7 +7941,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mitsuda reaction to lepromin
     /// </summary>
     public static readonly Coding MitsudaReactionToLepromin = new Coding
     {
@@ -7950,7 +7950,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sedimentation rate, Westergren
     /// </summary>
     public static readonly Coding SedimentationRateWestergren = new Coding
     {
@@ -7959,7 +7959,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of internal fixation device of radius
     /// </summary>
     public static readonly Coding RemovalOfInternalFixationDeviceOfRadius = new Coding
     {
@@ -7968,7 +7968,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Capsulorrhaphy of joint
     /// </summary>
     public static readonly Coding CapsulorrhaphyOfJoint = new Coding
     {
@@ -7977,7 +7977,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesia for popliteal thromboendarterectomy
     /// </summary>
     public static readonly Coding AnesthesiaForPoplitealThromboendarterectomy = new Coding
     {
@@ -7986,7 +7986,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dilation of lacrimal punctum with irrigation
     /// </summary>
     public static readonly Coding DilationOfLacrimalPunctumWithIrrigation = new Coding
     {
@@ -7995,7 +7995,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chemosurgery of stomach lesion
     /// </summary>
     public static readonly Coding ChemosurgeryOfStomachLesion = new Coding
     {
@@ -8004,7 +8004,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lysis of adhesions of nose
     /// </summary>
     public static readonly Coding LysisOfAdhesionsOfNose = new Coding
     {
@@ -8013,7 +8013,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of device from digestive system
     /// </summary>
     public static readonly Coding RemovalOfDeviceFromDigestiveSystem = new Coding
     {
@@ -8022,7 +8022,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Exploration of disc space
     /// </summary>
     public static readonly Coding ExplorationOfDiscSpace = new Coding
     {
@@ -8031,7 +8031,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// TdT stain
     /// </summary>
     public static readonly Coding TdTStain = new Coding
     {
@@ -8040,7 +8040,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Galactokinase measurement
     /// </summary>
     public static readonly Coding GalactokinaseMeasurement = new Coding
     {
@@ -8049,7 +8049,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muscular strength development exercise
     /// </summary>
     public static readonly Coding MuscularStrengthDevelopmentExercise = new Coding
     {
@@ -8058,7 +8058,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Division of arteriovenous fistula with ligation
     /// </summary>
     public static readonly Coding DivisionOfArteriovenousFistulaWithLigation = new Coding
     {
@@ -8067,7 +8067,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of common bile duct
     /// </summary>
     public static readonly Coding ExcisionOfCommonBileDuct = new Coding
     {
@@ -8076,7 +8076,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lengthening of muscle of hand
     /// </summary>
     public static readonly Coding LengtheningOfMuscleOfHand = new Coding
     {
@@ -8085,7 +8085,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of tumor from elbow area, deep, subfascial
     /// </summary>
     public static readonly Coding ExcisionOfTumorFromElbowAreaDeepSubfascial = new Coding
     {
@@ -8094,7 +8094,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebral thermography
     /// </summary>
     public static readonly Coding CerebralThermography = new Coding
     {
@@ -8103,7 +8103,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heteroautogenous transplantation
     /// </summary>
     public static readonly Coding HeteroautogenousTransplantation = new Coding
     {
@@ -8112,7 +8112,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed heart valvotomy of mitral valve
     /// </summary>
     public static readonly Coding ClosedHeartValvotomyOfMitralValve = new Coding
     {
@@ -8121,7 +8121,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Seminal fluid detection
     /// </summary>
     public static readonly Coding SeminalFluidDetection = new Coding
     {
@@ -8130,7 +8130,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Exploration of ciliary body
     /// </summary>
     public static readonly Coding ExplorationOfCiliaryBody = new Coding
     {
@@ -8139,7 +8139,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Destruction of lesion of peripheral nerve
     /// </summary>
     public static readonly Coding DestructionOfLesionOfPeripheralNerve = new Coding
     {
@@ -8148,7 +8148,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pontic, porcelain fused to predominantly base metal
     /// </summary>
     public static readonly Coding PonticPorcelainFusedToPredominantlyBaseMetal = new Coding
     {
@@ -8157,7 +8157,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enlargement of eye socket
     /// </summary>
     public static readonly Coding EnlargementOfEyeSocket = new Coding
     {
@@ -8166,7 +8166,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic procedure on vitreous
     /// </summary>
     public static readonly Coding DiagnosticProcedureOnVitreous = new Coding
     {
@@ -8175,7 +8175,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrotomy of glenohumeral joint for infection with drainage
     /// </summary>
     public static readonly Coding ArthrotomyOfGlenohumeralJointForInfectionWithDrainage = new Coding
     {
@@ -8184,7 +8184,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Administration of Rh immune globulin
     /// </summary>
     public static readonly Coding AdministrationOfRhImmuneGlobulin = new Coding
     {
@@ -8193,7 +8193,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of cervix by electroconization
     /// </summary>
     public static readonly Coding ExcisionOfCervixByElectroconization = new Coding
     {
@@ -8202,7 +8202,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laparoamnioscopy
     /// </summary>
     public static readonly Coding Laparoamnioscopy = new Coding
     {
@@ -8211,7 +8211,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suture of old obstetrical laceration of uterus
     /// </summary>
     public static readonly Coding SutureOfOldObstetricalLacerationOfUterus = new Coding
     {
@@ -8220,7 +8220,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urinary bladder residual urine study
     /// </summary>
     public static readonly Coding UrinaryBladderResidualUrineStudy = new Coding
     {
@@ -8229,7 +8229,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Curettage of sclera
     /// </summary>
     public static readonly Coding CurettageOfSclera = new Coding
     {
@@ -8238,7 +8238,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hand tendon pulley reconstruction with tendon prosthesis
     /// </summary>
     public static readonly Coding HandTendonPulleyReconstructionWithTendonProsthesis = new Coding
     {
@@ -8247,7 +8247,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protein S, free assay
     /// </summary>
     public static readonly Coding ProteinSFreeAssay = new Coding
     {
@@ -8256,7 +8256,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tsuge operation on finger for macrodactyly repair
     /// </summary>
     public static readonly Coding TsugeOperationOnFingerForMacrodactylyRepair = new Coding
     {
@@ -8265,7 +8265,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complete lower denture
     /// </summary>
     public static readonly Coding CompleteLowerDenture = new Coding
     {
@@ -8274,7 +8274,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Placing a patient on a bedpan
     /// </summary>
     public static readonly Coding PlacingAPatientOnABedpan = new Coding
     {
@@ -8283,7 +8283,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operation on multiple extraocular muscles with temporary detachment from globe
     /// </summary>
     public static readonly Coding OperationOnMultipleExtraocularMusclesWithTemporaryDetachmentFromGlobe = new Coding
     {
@@ -8292,7 +8292,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polytomography
     /// </summary>
     public static readonly Coding Polytomography = new Coding
     {
@@ -8301,7 +8301,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Uchida fimbriectomy with tubal ligation by endoscopy
     /// </summary>
     public static readonly Coding UchidaFimbriectomyWithTubalLigationByEndoscopy = new Coding
     {
@@ -8310,7 +8310,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of cyst of hand
     /// </summary>
     public static readonly Coding ExcisionOfCystOfHand = new Coding
     {
@@ -8319,7 +8319,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantation of tricuspid valve with tissue graft
     /// </summary>
     public static readonly Coding ImplantationOfTricuspidValveWithTissueGraft = new Coding
     {
@@ -8328,7 +8328,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complicated catheterization of bladder
     /// </summary>
     public static readonly Coding ComplicatedCatheterizationOfBladder = new Coding
     {
@@ -8337,7 +8337,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair with closure of non-surgical wound
     /// </summary>
     public static readonly Coding RepairWithClosureOfNonSurgicalWound = new Coding
     {
@@ -8346,7 +8346,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insertion of infusion pump beneath skin
     /// </summary>
     public static readonly Coding InsertionOfInfusionPumpBeneathSkin = new Coding
     {
@@ -8355,7 +8355,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reticulin antibody measurement
     /// </summary>
     public static readonly Coding ReticulinAntibodyMeasurement = new Coding
     {
@@ -8364,7 +8364,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Destruction of lesion of tongue
     /// </summary>
     public static readonly Coding DestructionOfLesionOfTongue = new Coding
     {
@@ -8373,7 +8373,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transposition of muscle of hand
     /// </summary>
     public static readonly Coding TranspositionOfMuscleOfHand = new Coding
     {
@@ -8382,7 +8382,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary valve commissurotomy by transvenous balloon method
     /// </summary>
     public static readonly Coding PulmonaryValveCommissurotomyByTransvenousBalloonMethod = new Coding
     {
@@ -8391,7 +8391,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic procedure on eyelid
     /// </summary>
     public static readonly Coding DiagnosticProcedureOnEyelid = new Coding
     {
@@ -8400,7 +8400,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operation on bursa
     /// </summary>
     public static readonly Coding OperationOnBursa = new Coding
     {
@@ -8409,7 +8409,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed reduction of fracture of tarsal or metatarsal
     /// </summary>
     public static readonly Coding ClosedReductionOfFractureOfTarsalOrMetatarsal = new Coding
     {
@@ -8418,7 +8418,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antibody titration, high protein
     /// </summary>
     public static readonly Coding AntibodyTitrationHighProtein = new Coding
     {
@@ -8427,7 +8427,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of foreign body from skin of axilla
     /// </summary>
     public static readonly Coding RemovalOfForeignBodyFromSkinOfAxilla = new Coding
     {
@@ -8436,7 +8436,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antibody to single stranded DNA measurement
     /// </summary>
     public static readonly Coding AntibodyToSingleStrandedDNAMeasurement = new Coding
     {
@@ -8445,7 +8445,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electroretinography with medical evaluation
     /// </summary>
     public static readonly Coding ElectroretinographyWithMedicalEvaluation = new Coding
     {
@@ -8454,7 +8454,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Add clasp to existing partial denture
     /// </summary>
     public static readonly Coding AddClaspToExistingPartialDenture = new Coding
     {
@@ -8463,7 +8463,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Destruction of hemorrhoids, internal
     /// </summary>
     public static readonly Coding DestructionOfHemorrhoidsInternal = new Coding
     {
@@ -8472,7 +8472,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Replacement of obstructed valve in shunt system
     /// </summary>
     public static readonly Coding ReplacementOfObstructedValveInShuntSystem = new Coding
     {
@@ -8481,7 +8481,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide lacrimal flow study
     /// </summary>
     public static readonly Coding RadionuclideLacrimalFlowStudy = new Coding
     {
@@ -8490,7 +8490,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Partial meniscectomy of temporomandibular joint
     /// </summary>
     public static readonly Coding PartialMeniscectomyOfTemporomandibularJoint = new Coding
     {
@@ -8499,7 +8499,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acoustic stimulation test
     /// </summary>
     public static readonly Coding AcousticStimulationTest = new Coding
     {
@@ -8508,7 +8508,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maintenance drug therapy for mental disorder
     /// </summary>
     public static readonly Coding MaintenanceDrugTherapyForMentalDisorder = new Coding
     {
@@ -8517,7 +8517,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of foreign body from alveolus
     /// </summary>
     public static readonly Coding RemovalOfForeignBodyFromAlveolus = new Coding
     {
@@ -8526,7 +8526,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// King-Steelquist hindquarter operation
     /// </summary>
     public static readonly Coding KingSteelquistHindquarterOperation = new Coding
     {
@@ -8535,7 +8535,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Restoration, crown, porcelain fused to noble metal
     /// </summary>
     public static readonly Coding RestorationCrownPorcelainFusedToNobleMetal = new Coding
     {
@@ -8544,7 +8544,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibrinogen assay, quantitative
     /// </summary>
     public static readonly Coding FibrinogenAssayQuantitative = new Coding
     {
@@ -8553,7 +8553,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closure of external fistula of trachea
     /// </summary>
     public static readonly Coding ClosureOfExternalFistulaOfTrachea = new Coding
     {
@@ -8562,7 +8562,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrosurgical epilation of eyebrow
     /// </summary>
     public static readonly Coding ElectrosurgicalEpilationOfEyebrow = new Coding
     {
@@ -8571,7 +8571,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transplantation of testis
     /// </summary>
     public static readonly Coding TransplantationOfTestis = new Coding
     {
@@ -8580,7 +8580,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Indirect laryngoscopy
     /// </summary>
     public static readonly Coding IndirectLaryngoscopy = new Coding
     {
@@ -8589,7 +8589,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abduction test
     /// </summary>
     public static readonly Coding AbductionTest = new Coding
     {
@@ -8598,7 +8598,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peritoneal dialysis including cannulation
     /// </summary>
     public static readonly Coding PeritonealDialysisIncludingCannulation = new Coding
     {
@@ -8607,7 +8607,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiation physics consultation
     /// </summary>
     public static readonly Coding RadiationPhysicsConsultation = new Coding
     {
@@ -8616,7 +8616,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Albumin/Globulin ratio
     /// </summary>
     public static readonly Coding AlbuminGlobulinRatio = new Coding
     {
@@ -8625,7 +8625,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Destructive procedure of lesion on skin of trunk
     /// </summary>
     public static readonly Coding DestructiveProcedureOfLesionOnSkinOfTrunk = new Coding
     {
@@ -8634,7 +8634,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepatitis A virus antibody measurement
     /// </summary>
     public static readonly Coding HepatitisAVirusAntibodyMeasurement = new Coding
     {
@@ -8643,7 +8643,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thromboendarterectomy with graft of mesenteric artery
     /// </summary>
     public static readonly Coding ThromboendarterectomyWithGraftOfMesentericArtery = new Coding
     {
@@ -8652,7 +8652,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed chest suction
     /// </summary>
     public static readonly Coding ClosedChestSuction = new Coding
     {
@@ -8661,7 +8661,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical procedure on periurethral tissue
     /// </summary>
     public static readonly Coding MedicalProcedureOnPeriurethralTissue = new Coding
     {
@@ -8670,7 +8670,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fine needle biopsy of thymus
     /// </summary>
     public static readonly Coding FineNeedleBiopsyOfThymus = new Coding
     {
@@ -8679,7 +8679,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pathology consultation, comprehensive, records and specimen with report
     /// </summary>
     public static readonly Coding PathologyConsultationComprehensiveRecordsAndSpecimenWithReport = new Coding
     {
@@ -8688,7 +8688,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision of subcutaneous tissue
     /// </summary>
     public static readonly Coding IncisionOfSubcutaneousTissue = new Coding
     {
@@ -8697,7 +8697,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operation on prostate
     /// </summary>
     public static readonly Coding OperationOnProstate = new Coding
     {
@@ -8706,7 +8706,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chiropractic adjustment of coccyx subluxation
     /// </summary>
     public static readonly Coding ChiropracticAdjustmentOfCoccyxSubluxation = new Coding
     {
@@ -8715,7 +8715,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manipulation of ankle AND foot
     /// </summary>
     public static readonly Coding ManipulationOfAnkleANDFoot = new Coding
     {
@@ -8724,7 +8724,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Total urethrectomy
     /// </summary>
     public static readonly Coding TotalUrethrectomy = new Coding
     {
@@ -8733,7 +8733,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracerebral electroencephalogram
     /// </summary>
     public static readonly Coding IntracerebralElectroencephalogram = new Coding
     {
@@ -8742,7 +8742,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized axial tomography of cervical spine with contrast
     /// </summary>
     public static readonly Coding ComputerizedAxialTomographyOfCervicalSpineWithContrast = new Coding
     {
@@ -8751,7 +8751,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrodesis of interphalangeal joint of great toe
     /// </summary>
     public static readonly Coding ArthrodesisOfInterphalangealJointOfGreatToe = new Coding
     {
@@ -8760,7 +8760,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White blood cell count
     /// </summary>
     public static readonly Coding WhiteBloodCellCount = new Coding
     {
@@ -8769,7 +8769,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cranial decompression, subtemporal, supratentorial
     /// </summary>
     public static readonly Coding CranialDecompressionSubtemporalSupratentorial = new Coding
     {
@@ -8778,7 +8778,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dressing and fixation procedure
     /// </summary>
     public static readonly Coding DressingAndFixationProcedure = new Coding
     {
@@ -8787,7 +8787,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of brain
     /// </summary>
     public static readonly Coding ExcisionOfBrain = new Coding
     {
@@ -8796,7 +8796,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrophoresis measurement
     /// </summary>
     public static readonly Coding ElectrophoresisMeasurement = new Coding
     {
@@ -8805,7 +8805,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of cyst of spleen
     /// </summary>
     public static readonly Coding ExcisionOfCystOfSpleen = new Coding
     {
@@ -8814,7 +8814,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drawer test
     /// </summary>
     public static readonly Coding DrawerTest = new Coding
     {
@@ -8823,7 +8823,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Root canal therapy, molar, excluding final restoration
     /// </summary>
     public static readonly Coding RootCanalTherapyMolarExcludingFinalRestoration = new Coding
     {
@@ -8832,7 +8832,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fecal fat measurement, 72-hour collection
     /// </summary>
     public static readonly Coding FecalFatMeasurement72HourCollection = new Coding
     {
@@ -8841,7 +8841,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Facial-hypoglossal nerve anastomosis
     /// </summary>
     public static readonly Coding FacialHypoglossalNerveAnastomosis = new Coding
     {
@@ -8850,7 +8850,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carbamazepine measurement
     /// </summary>
     public static readonly Coding CarbamazepineMeasurement = new Coding
     {
@@ -8859,7 +8859,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Special blood coagulation test, explain by report
     /// </summary>
     public static readonly Coding SpecialBloodCoagulationTestExplainByReport = new Coding
     {
@@ -8868,7 +8868,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cyclodialysis
     /// </summary>
     public static readonly Coding Cyclodialysis = new Coding
     {
@@ -8877,7 +8877,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor antigen measurement
     /// </summary>
     public static readonly Coding TumorAntigenMeasurement = new Coding
     {
@@ -8886,7 +8886,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radical maxillary antrotomy
     /// </summary>
     public static readonly Coding RadicalMaxillaryAntrotomy = new Coding
     {
@@ -8895,7 +8895,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MHPG measurement, urine
     /// </summary>
     public static readonly Coding MHPGMeasurementUrine = new Coding
     {
@@ -8904,7 +8904,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal of subarachnoid-ureteral shunt
     /// </summary>
     public static readonly Coding RemovalOfSubarachnoidUreteralShunt = new Coding
     {
@@ -8913,7 +8913,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chiropractic patient education and instruction
     /// </summary>
     public static readonly Coding ChiropracticPatientEducationAndInstruction = new Coding
     {
@@ -8922,7 +8922,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Embolectomy with catheter of radial artery by arm incision
     /// </summary>
     public static readonly Coding EmbolectomyWithCatheterOfRadialArteryByArmIncision = new Coding
     {
@@ -8931,7 +8931,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of bulbourethral gland
     /// </summary>
     public static readonly Coding ExcisionOfBulbourethralGland = new Coding
     {
@@ -8940,7 +8940,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endoscopy of pituitary gland
     /// </summary>
     public static readonly Coding EndoscopyOfPituitaryGland = new Coding
     {
@@ -8949,7 +8949,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision of tibia and fibula for graft
     /// </summary>
     public static readonly Coding ExcisionOfTibiaAndFibulaForGraft = new Coding
     {
@@ -8958,7 +8958,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phlebectomy of intracranial varicose vein
     /// </summary>
     public static readonly Coding PhlebectomyOfIntracranialVaricoseVein = new Coding
     {
@@ -8967,7 +8967,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonic guidance for endomyocardial biopsy
     /// </summary>
     public static readonly Coding UltrasonicGuidanceForEndomyocardialBiopsy = new Coding
     {
@@ -8976,7 +8976,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesia for procedure on thoracic esophagus
     /// </summary>
     public static readonly Coding AnesthesiaForProcedureOnThoracicEsophagus = new Coding
     {
@@ -8985,7 +8985,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medication education
     /// </summary>
     public static readonly Coding MedicationEducation = new Coding
     {
@@ -8994,7 +8994,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and exploration of larynx
     /// </summary>
     public static readonly Coding IncisionAndExplorationOfLarynx = new Coding
     {
@@ -9003,7 +9003,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prosthetic construction and fitting
     /// </summary>
     public static readonly Coding ProstheticConstructionAndFitting = new Coding
     {
@@ -9018,9 +9018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCauterizationOfBartholinQuoteSGland = "1001000";
 
     /// <summary>
+    /// Literal for code: NONECauterizationOfBartholinQuoteSGland
+    /// </summary>
+    public const string LiteralNONECauterizationOfBartholinQuoteSGland = "http://snomed.info/sct#1001000";
+
+    /// <summary>
     /// Literal for code: OperationOnNerveGanglion
     /// </summary>
     public const string LiteralOperationOnNerveGanglion = "1008006";
+
+    /// <summary>
+    /// Literal for code: NONEOperationOnNerveGanglion
+    /// </summary>
+    public const string LiteralNONEOperationOnNerveGanglion = "http://snomed.info/sct#1008006";
 
     /// <summary>
     /// Literal for code: RemovalOfCornealEpithelium
@@ -9028,9 +9038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemovalOfCornealEpithelium = "1019009";
 
     /// <summary>
+    /// Literal for code: NONERemovalOfCornealEpithelium
+    /// </summary>
+    public const string LiteralNONERemovalOfCornealEpithelium = "http://snomed.info/sct#1019009";
+
+    /// <summary>
     /// Literal for code: RepairOfScrotum
     /// </summary>
     public const string LiteralRepairOfScrotum = "1021004";
+
+    /// <summary>
+    /// Literal for code: NONERepairOfScrotum
+    /// </summary>
+    public const string LiteralNONERepairOfScrotum = "http://snomed.info/sct#1021004";
 
     /// <summary>
     /// Literal for code: Fetoscopy
@@ -9038,9 +9058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFetoscopy = "1029002";
 
     /// <summary>
+    /// Literal for code: NONEFetoscopy
+    /// </summary>
+    public const string LiteralNONEFetoscopy = "http://snomed.info/sct#1029002";
+
+    /// <summary>
     /// Literal for code: EnucleationOfParotidGlandCyst
     /// </summary>
     public const string LiteralEnucleationOfParotidGlandCyst = "1032004";
+
+    /// <summary>
+    /// Literal for code: NONEEnucleationOfParotidGlandCyst
+    /// </summary>
+    public const string LiteralNONEEnucleationOfParotidGlandCyst = "http://snomed.info/sct#1032004";
 
     /// <summary>
     /// Literal for code: MinimumBactericidalConcentrationTestMicrodilutionMethod
@@ -9048,9 +9078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMinimumBactericidalConcentrationTestMicrodilutionMethod = "1035002";
 
     /// <summary>
+    /// Literal for code: NONEMinimumBactericidalConcentrationTestMicrodilutionMethod
+    /// </summary>
+    public const string LiteralNONEMinimumBactericidalConcentrationTestMicrodilutionMethod = "http://snomed.info/sct#1035002";
+
+    /// <summary>
     /// Literal for code: InsertionOfIntravascularDeviceInCommonIliacVeinComplete
     /// </summary>
     public const string LiteralInsertionOfIntravascularDeviceInCommonIliacVeinComplete = "1036001";
+
+    /// <summary>
+    /// Literal for code: NONEInsertionOfIntravascularDeviceInCommonIliacVeinComplete
+    /// </summary>
+    public const string LiteralNONEInsertionOfIntravascularDeviceInCommonIliacVeinComplete = "http://snomed.info/sct#1036001";
 
     /// <summary>
     /// Literal for code: ExcisionOfLesionOfPatella
@@ -9058,9 +9098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfLesionOfPatella = "104001";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfLesionOfPatella
+    /// </summary>
+    public const string LiteralNONEExcisionOfLesionOfPatella = "http://snomed.info/sct#104001";
+
+    /// <summary>
     /// Literal for code: DebridementOfOpenFractureOfPhalangesOfFoot
     /// </summary>
     public const string LiteralDebridementOfOpenFractureOfPhalangesOfFoot = "1041009";
+
+    /// <summary>
+    /// Literal for code: NONEDebridementOfOpenFractureOfPhalangesOfFoot
+    /// </summary>
+    public const string LiteralNONEDebridementOfOpenFractureOfPhalangesOfFoot = "http://snomed.info/sct#1041009";
 
     /// <summary>
     /// Literal for code: PaternityTesting
@@ -9068,9 +9118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPaternityTesting = "1042002";
 
     /// <summary>
+    /// Literal for code: NONEPaternityTesting
+    /// </summary>
+    public const string LiteralNONEPaternityTesting = "http://snomed.info/sct#1042002";
+
+    /// <summary>
     /// Literal for code: DopplerColorFlowVelocityMapping
     /// </summary>
     public const string LiteralDopplerColorFlowVelocityMapping = "1043007";
+
+    /// <summary>
+    /// Literal for code: NONEDopplerColorFlowVelocityMapping
+    /// </summary>
+    public const string LiteralNONEDopplerColorFlowVelocityMapping = "http://snomed.info/sct#1043007";
 
     /// <summary>
     /// Literal for code: DiagnosticUltrasoundOfAbdomenAndRetroperitoneum
@@ -9078,9 +9138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticUltrasoundOfAbdomenAndRetroperitoneum = "1044001";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticUltrasoundOfAbdomenAndRetroperitoneum
+    /// </summary>
+    public const string LiteralNONEDiagnosticUltrasoundOfAbdomenAndRetroperitoneum = "http://snomed.info/sct#1044001";
+
+    /// <summary>
     /// Literal for code: CapillarySpecimenCollection
     /// </summary>
     public const string LiteralCapillarySpecimenCollection = "1048003";
+
+    /// <summary>
+    /// Literal for code: NONECapillarySpecimenCollection
+    /// </summary>
+    public const string LiteralNONECapillarySpecimenCollection = "http://snomed.info/sct#1048003";
 
     /// <summary>
     /// Literal for code: IncisionOfSphincterOfOddi
@@ -9088,9 +9158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionOfSphincterOfOddi = "1054002";
 
     /// <summary>
+    /// Literal for code: NONEIncisionOfSphincterOfOddi
+    /// </summary>
+    public const string LiteralNONEIncisionOfSphincterOfOddi = "http://snomed.info/sct#1054002";
+
+    /// <summary>
     /// Literal for code: ProximalSplenorenalAnastomosis
     /// </summary>
     public const string LiteralProximalSplenorenalAnastomosis = "1071001";
+
+    /// <summary>
+    /// Literal for code: NONEProximalSplenorenalAnastomosis
+    /// </summary>
+    public const string LiteralNONEProximalSplenorenalAnastomosis = "http://snomed.info/sct#1071001";
 
     /// <summary>
     /// Literal for code: ExcisionOfPerinephricCyst
@@ -9098,9 +9178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfPerinephricCyst = "1084005";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfPerinephricCyst
+    /// </summary>
+    public const string LiteralNONEExcisionOfPerinephricCyst = "http://snomed.info/sct#1084005";
+
+    /// <summary>
     /// Literal for code: ExcisionOfAbdominalVaricoseVein
     /// </summary>
     public const string LiteralExcisionOfAbdominalVaricoseVein = "1093006";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfAbdominalVaricoseVein
+    /// </summary>
+    public const string LiteralNONEExcisionOfAbdominalVaricoseVein = "http://snomed.info/sct#1093006";
 
     /// <summary>
     /// Literal for code: TranscruralMobilizationOfStapes
@@ -9108,9 +9198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTranscruralMobilizationOfStapes = "1103000";
 
     /// <summary>
+    /// Literal for code: NONETranscruralMobilizationOfStapes
+    /// </summary>
+    public const string LiteralNONETranscruralMobilizationOfStapes = "http://snomed.info/sct#1103000";
+
+    /// <summary>
     /// Literal for code: TriadKneeRepair
     /// </summary>
     public const string LiteralTriadKneeRepair = "1104006";
+
+    /// <summary>
+    /// Literal for code: NONETriadKneeRepair
+    /// </summary>
+    public const string LiteralNONETriadKneeRepair = "http://snomed.info/sct#1104006";
 
     /// <summary>
     /// Literal for code: Decortication
@@ -9118,9 +9218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDecortication = "1115001";
 
     /// <summary>
+    /// Literal for code: NONEDecortication
+    /// </summary>
+    public const string LiteralNONEDecortication = "http://snomed.info/sct#1115001";
+
+    /// <summary>
     /// Literal for code: ClosedReductionOfDislocationOfFootAndToe
     /// </summary>
     public const string LiteralClosedReductionOfDislocationOfFootAndToe = "1119007";
+
+    /// <summary>
+    /// Literal for code: NONEClosedReductionOfDislocationOfFootAndToe
+    /// </summary>
+    public const string LiteralNONEClosedReductionOfDislocationOfFootAndToe = "http://snomed.info/sct#1119007";
 
     /// <summary>
     /// Literal for code: KineticActivitiesForRangeOfMotion
@@ -9128,9 +9238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKineticActivitiesForRangeOfMotion = "1121002";
 
     /// <summary>
+    /// Literal for code: NONEKineticActivitiesForRangeOfMotion
+    /// </summary>
+    public const string LiteralNONEKineticActivitiesForRangeOfMotion = "http://snomed.info/sct#1121002";
+
+    /// <summary>
     /// Literal for code: InterstitialRadiumApplication
     /// </summary>
     public const string LiteralInterstitialRadiumApplication = "1127003";
+
+    /// <summary>
+    /// Literal for code: NONEInterstitialRadiumApplication
+    /// </summary>
+    public const string LiteralNONEInterstitialRadiumApplication = "http://snomed.info/sct#1127003";
 
     /// <summary>
     /// Literal for code: RemovalOfIntactMammaryImplantBilateral
@@ -9138,9 +9258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemovalOfIntactMammaryImplantBilateral = "1133007";
 
     /// <summary>
+    /// Literal for code: NONERemovalOfIntactMammaryImplantBilateral
+    /// </summary>
+    public const string LiteralNONERemovalOfIntactMammaryImplantBilateral = "http://snomed.info/sct#1133007";
+
+    /// <summary>
     /// Literal for code: RemovableApplianceTherapy
     /// </summary>
     public const string LiteralRemovableApplianceTherapy = "115006";
+
+    /// <summary>
+    /// Literal for code: NONERemovableApplianceTherapy
+    /// </summary>
+    public const string LiteralNONERemovableApplianceTherapy = "http://snomed.info/sct#115006";
 
     /// <summary>
     /// Literal for code: Ureteroenterostomy
@@ -9148,9 +9278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUreteroenterostomy = "1163003";
 
     /// <summary>
+    /// Literal for code: NONEUreteroenterostomy
+    /// </summary>
+    public const string LiteralNONEUreteroenterostomy = "http://snomed.info/sct#1163003";
+
+    /// <summary>
     /// Literal for code: IncisionOfInguinalRegion
     /// </summary>
     public const string LiteralIncisionOfInguinalRegion = "1176009";
+
+    /// <summary>
+    /// Literal for code: NONEIncisionOfInguinalRegion
+    /// </summary>
+    public const string LiteralNONEIncisionOfInguinalRegion = "http://snomed.info/sct#1176009";
 
     /// <summary>
     /// Literal for code: ExcisionOfTendonForGraft
@@ -9158,9 +9298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfTendonForGraft = "1181000";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfTendonForGraft
+    /// </summary>
+    public const string LiteralNONEExcisionOfTendonForGraft = "http://snomed.info/sct#1181000";
+
+    /// <summary>
     /// Literal for code: AnesthesiaForProcedureOnBonyPelvis
     /// </summary>
     public const string LiteralAnesthesiaForProcedureOnBonyPelvis = "1186005";
+
+    /// <summary>
+    /// Literal for code: NONEAnesthesiaForProcedureOnBonyPelvis
+    /// </summary>
+    public const string LiteralNONEAnesthesiaForProcedureOnBonyPelvis = "http://snomed.info/sct#1186005";
 
     /// <summary>
     /// Literal for code: ThoracoscopicPartialLobectomyOfLung
@@ -9168,9 +9318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThoracoscopicPartialLobectomyOfLung = "119000";
 
     /// <summary>
+    /// Literal for code: NONEThoracoscopicPartialLobectomyOfLung
+    /// </summary>
+    public const string LiteralNONEThoracoscopicPartialLobectomyOfLung = "http://snomed.info/sct#119000";
+
+    /// <summary>
     /// Literal for code: ExcisionalBiopsyOfBoneOfScapula
     /// </summary>
     public const string LiteralExcisionalBiopsyOfBoneOfScapula = "1198000";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionalBiopsyOfBoneOfScapula
+    /// </summary>
+    public const string LiteralNONEExcisionalBiopsyOfBoneOfScapula = "http://snomed.info/sct#1198000";
 
     /// <summary>
     /// Literal for code: ArthroscopyOfKneeWithLateralMeniscusRepair
@@ -9178,9 +9338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArthroscopyOfKneeWithLateralMeniscusRepair = "1209007";
 
     /// <summary>
+    /// Literal for code: NONEArthroscopyOfKneeWithLateralMeniscusRepair
+    /// </summary>
+    public const string LiteralNONEArthroscopyOfKneeWithLateralMeniscusRepair = "http://snomed.info/sct#1209007";
+
+    /// <summary>
     /// Literal for code: RetrobulbarInjectionOfTherapeuticAgent
     /// </summary>
     public const string LiteralRetrobulbarInjectionOfTherapeuticAgent = "121005";
+
+    /// <summary>
+    /// Literal for code: NONERetrobulbarInjectionOfTherapeuticAgent
+    /// </summary>
+    public const string LiteralNONERetrobulbarInjectionOfTherapeuticAgent = "http://snomed.info/sct#121005";
 
     /// <summary>
     /// Literal for code: RadiographyOfHumerus
@@ -9188,9 +9358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfHumerus = "1225002";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfHumerus
+    /// </summary>
+    public const string LiteralNONERadiographyOfHumerus = "http://snomed.info/sct#1225002";
+
+    /// <summary>
     /// Literal for code: IncisionOfSubvalvularTissueForDiscreteSubvalvularAorticStenosis
     /// </summary>
     public const string LiteralIncisionOfSubvalvularTissueForDiscreteSubvalvularAorticStenosis = "1227005";
+
+    /// <summary>
+    /// Literal for code: NONEIncisionOfSubvalvularTissueForDiscreteSubvalvularAorticStenosis
+    /// </summary>
+    public const string LiteralNONEIncisionOfSubvalvularTissueForDiscreteSubvalvularAorticStenosis = "http://snomed.info/sct#1227005";
 
     /// <summary>
     /// Literal for code: MuscleTransfer
@@ -9198,9 +9378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMuscleTransfer = "1235008";
 
     /// <summary>
+    /// Literal for code: NONEMuscleTransfer
+    /// </summary>
+    public const string LiteralNONEMuscleTransfer = "http://snomed.info/sct#1235008";
+
+    /// <summary>
     /// Literal for code: ApplicationOfCastSugarTong
     /// </summary>
     public const string LiteralApplicationOfCastSugarTong = "1237000";
+
+    /// <summary>
+    /// Literal for code: NONEApplicationOfCastSugarTong
+    /// </summary>
+    public const string LiteralNONEApplicationOfCastSugarTong = "http://snomed.info/sct#1237000";
 
     /// <summary>
     /// Literal for code: EpiphysealArrestByStaplingOfDistalRadius
@@ -9208,9 +9398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEpiphysealArrestByStaplingOfDistalRadius = "1238005";
 
     /// <summary>
+    /// Literal for code: NONEEpiphysealArrestByStaplingOfDistalRadius
+    /// </summary>
+    public const string LiteralNONEEpiphysealArrestByStaplingOfDistalRadius = "http://snomed.info/sct#1238005";
+
+    /// <summary>
     /// Literal for code: IncisionalBiopsyOfTestis
     /// </summary>
     public const string LiteralIncisionalBiopsyOfTestis = "1251000";
+
+    /// <summary>
+    /// Literal for code: NONEIncisionalBiopsyOfTestis
+    /// </summary>
+    public const string LiteralNONEIncisionalBiopsyOfTestis = "http://snomed.info/sct#1251000";
 
     /// <summary>
     /// Literal for code: RefusionOfSpine
@@ -9218,9 +9418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRefusionOfSpine = "1253002";
 
     /// <summary>
+    /// Literal for code: NONERefusionOfSpine
+    /// </summary>
+    public const string LiteralNONERefusionOfSpine = "http://snomed.info/sct#1253002";
+
+    /// <summary>
     /// Literal for code: ExcisionOfMeniscusOfWrist
     /// </summary>
     public const string LiteralExcisionOfMeniscusOfWrist = "1258006";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfMeniscusOfWrist
+    /// </summary>
+    public const string LiteralNONEExcisionOfMeniscusOfWrist = "http://snomed.info/sct#1258006";
 
     /// <summary>
     /// Literal for code: ClosureOfFistulaOfEarDrum
@@ -9228,9 +9438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClosureOfFistulaOfEarDrum = "1266002";
 
     /// <summary>
+    /// Literal for code: NONEClosureOfFistulaOfEarDrum
+    /// </summary>
+    public const string LiteralNONEClosureOfFistulaOfEarDrum = "http://snomed.info/sct#1266002";
+
+    /// <summary>
     /// Literal for code: ElectrocoagulationOfLesionOfVagina
     /// </summary>
     public const string LiteralElectrocoagulationOfLesionOfVagina = "1267006";
+
+    /// <summary>
+    /// Literal for code: NONEElectrocoagulationOfLesionOfVagina
+    /// </summary>
+    public const string LiteralNONEElectrocoagulationOfLesionOfVagina = "http://snomed.info/sct#1267006";
 
     /// <summary>
     /// Literal for code: OpenReductionOfClosedShoulderDislocationWithFractureOfGreaterTuberosity
@@ -9238,9 +9458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOpenReductionOfClosedShoulderDislocationWithFractureOfGreaterTuberosity = "1278003";
 
     /// <summary>
+    /// Literal for code: NONEOpenReductionOfClosedShoulderDislocationWithFractureOfGreaterTuberosity
+    /// </summary>
+    public const string LiteralNONEOpenReductionOfClosedShoulderDislocationWithFractureOfGreaterTuberosity = "http://snomed.info/sct#1278003";
+
+    /// <summary>
     /// Literal for code: RepairOfCardiacPacemakerPocketInSkinANDORSubcutaneousTissue
     /// </summary>
     public const string LiteralRepairOfCardiacPacemakerPocketInSkinANDORSubcutaneousTissue = "1279006";
+
+    /// <summary>
+    /// Literal for code: NONERepairOfCardiacPacemakerPocketInSkinANDORSubcutaneousTissue
+    /// </summary>
+    public const string LiteralNONERepairOfCardiacPacemakerPocketInSkinANDORSubcutaneousTissue = "http://snomed.info/sct#1279006";
 
     /// <summary>
     /// Literal for code: HandMicroscopeExaminationOfSkin
@@ -9248,9 +9478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHandMicroscopeExaminationOfSkin = "128004";
 
     /// <summary>
+    /// Literal for code: NONEHandMicroscopeExaminationOfSkin
+    /// </summary>
+    public const string LiteralNONEHandMicroscopeExaminationOfSkin = "http://snomed.info/sct#128004";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingOfUrinaryBladder
     /// </summary>
     public const string LiteralMagneticResonanceImagingOfUrinaryBladder = "1292009";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfUrinaryBladder
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfUrinaryBladder = "http://snomed.info/sct#1292009";
 
     /// <summary>
     /// Literal for code: ExcisionOfAppendicealStump
@@ -9258,9 +9498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfAppendicealStump = "1299000";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfAppendicealStump
+    /// </summary>
+    public const string LiteralNONEExcisionOfAppendicealStump = "http://snomed.info/sct#1299000";
+
+    /// <summary>
     /// Literal for code: ReconstructionOfEyebrow
     /// </summary>
     public const string LiteralReconstructionOfEyebrow = "1315009";
+
+    /// <summary>
+    /// Literal for code: NONEReconstructionOfEyebrow
+    /// </summary>
+    public const string LiteralNONEReconstructionOfEyebrow = "http://snomed.info/sct#1315009";
 
     /// <summary>
     /// Literal for code: UpperPartialDentureCastMetalBaseWithoutResinSaddlesIncludingAnyConventionalClaspsRestsAndTeeth
@@ -9268,9 +9518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUpperPartialDentureCastMetalBaseWithoutResinSaddlesIncludingAnyConventionalClaspsRestsAndTeeth = "1316005";
 
     /// <summary>
+    /// Literal for code: NONEUpperPartialDentureCastMetalBaseWithoutResinSaddlesIncludingAnyConventionalClaspsRestsAndTeeth
+    /// </summary>
+    public const string LiteralNONEUpperPartialDentureCastMetalBaseWithoutResinSaddlesIncludingAnyConventionalClaspsRestsAndTeeth = "http://snomed.info/sct#1316005";
+
+    /// <summary>
     /// Literal for code: CerebrospinalFluidIgGRatioAndIgGIndex
     /// </summary>
     public const string LiteralCerebrospinalFluidIgGRatioAndIgGIndex = "1324000";
+
+    /// <summary>
+    /// Literal for code: NONECerebrospinalFluidIgGRatioAndIgGIndex
+    /// </summary>
+    public const string LiteralNONECerebrospinalFluidIgGRatioAndIgGIndex = "http://snomed.info/sct#1324000";
 
     /// <summary>
     /// Literal for code: ProcedureOnMeckelQuoteSDiverticulum
@@ -9278,9 +9538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProcedureOnMeckelQuoteSDiverticulum = "1327007";
 
     /// <summary>
+    /// Literal for code: NONEProcedureOnMeckelQuoteSDiverticulum
+    /// </summary>
+    public const string LiteralNONEProcedureOnMeckelQuoteSDiverticulum = "http://snomed.info/sct#1327007";
+
+    /// <summary>
     /// Literal for code: IlioiliacShunt
     /// </summary>
     public const string LiteralIlioiliacShunt = "1328002";
+
+    /// <summary>
+    /// Literal for code: NONEIlioiliacShunt
+    /// </summary>
+    public const string LiteralNONEIlioiliacShunt = "http://snomed.info/sct#1328002";
 
     /// <summary>
     /// Literal for code: DivisionOfCongenitalWebOfLarynx
@@ -9288,9 +9558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDivisionOfCongenitalWebOfLarynx = "1329005";
 
     /// <summary>
+    /// Literal for code: NONEDivisionOfCongenitalWebOfLarynx
+    /// </summary>
+    public const string LiteralNONEDivisionOfCongenitalWebOfLarynx = "http://snomed.info/sct#1329005";
+
+    /// <summary>
     /// Literal for code: PercutaneousImplantationOfNeurostimulatorElectrodesIntoNeuromuscularComponent
     /// </summary>
     public const string LiteralPercutaneousImplantationOfNeurostimulatorElectrodesIntoNeuromuscularComponent = "133000";
+
+    /// <summary>
+    /// Literal for code: NONEPercutaneousImplantationOfNeurostimulatorElectrodesIntoNeuromuscularComponent
+    /// </summary>
+    public const string LiteralNONEPercutaneousImplantationOfNeurostimulatorElectrodesIntoNeuromuscularComponent = "http://snomed.info/sct#133000";
 
     /// <summary>
     /// Literal for code: Colosigmoidostomy
@@ -9298,9 +9578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralColosigmoidostomy = "1337002";
 
     /// <summary>
+    /// Literal for code: NONEColosigmoidostomy
+    /// </summary>
+    public const string LiteralNONEColosigmoidostomy = "http://snomed.info/sct#1337002";
+
+    /// <summary>
     /// Literal for code: RemovalOfImpactedFeces
     /// </summary>
     public const string LiteralRemovalOfImpactedFeces = "1339004";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfImpactedFeces
+    /// </summary>
+    public const string LiteralNONERemovalOfImpactedFeces = "http://snomed.info/sct#1339004";
 
     /// <summary>
     /// Literal for code: MedicalProcedureOnPalate
@@ -9308,9 +9598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMedicalProcedureOnPalate = "1347004";
 
     /// <summary>
+    /// Literal for code: NONEMedicalProcedureOnPalate
+    /// </summary>
+    public const string LiteralNONEMedicalProcedureOnPalate = "http://snomed.info/sct#1347004";
+
+    /// <summary>
     /// Literal for code: ArthrotomyOfWristJointWithExplorationAndBiopsy
     /// </summary>
     public const string LiteralArthrotomyOfWristJointWithExplorationAndBiopsy = "135007";
+
+    /// <summary>
+    /// Literal for code: NONEArthrotomyOfWristJointWithExplorationAndBiopsy
+    /// </summary>
+    public const string LiteralNONEArthrotomyOfWristJointWithExplorationAndBiopsy = "http://snomed.info/sct#135007";
 
     /// <summary>
     /// Literal for code: AnteriorSpinalRhizotomy
@@ -9318,9 +9618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnteriorSpinalRhizotomy = "1352009";
 
     /// <summary>
+    /// Literal for code: NONEAnteriorSpinalRhizotomy
+    /// </summary>
+    public const string LiteralNONEAnteriorSpinalRhizotomy = "http://snomed.info/sct#1352009";
+
+    /// <summary>
     /// Literal for code: AntiHumanGlobulinTestEnzymeTechniqueTiter
     /// </summary>
     public const string LiteralAntiHumanGlobulinTestEnzymeTechniqueTiter = "1358008";
+
+    /// <summary>
+    /// Literal for code: NONEAntiHumanGlobulinTestEnzymeTechniqueTiter
+    /// </summary>
+    public const string LiteralNONEAntiHumanGlobulinTestEnzymeTechniqueTiter = "http://snomed.info/sct#1358008";
 
     /// <summary>
     /// Literal for code: InhalationTherapyProcedure
@@ -9328,9 +9638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInhalationTherapyProcedure = "1366004";
 
     /// <summary>
+    /// Literal for code: NONEInhalationTherapyProcedure
+    /// </summary>
+    public const string LiteralNONEInhalationTherapyProcedure = "http://snomed.info/sct#1366004";
+
+    /// <summary>
     /// Literal for code: EchographyScanBModeForFetalAgeDetermination
     /// </summary>
     public const string LiteralEchographyScanBModeForFetalAgeDetermination = "1385001";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyScanBModeForFetalAgeDetermination
+    /// </summary>
+    public const string LiteralNONEEchographyScanBModeForFetalAgeDetermination = "http://snomed.info/sct#1385001";
 
     /// <summary>
     /// Literal for code: LaparoscopicAssistedSigmoidColectomy
@@ -9338,9 +9658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLaparoscopicAssistedSigmoidColectomy = "1390003";
 
     /// <summary>
+    /// Literal for code: NONELaparoscopicAssistedSigmoidColectomy
+    /// </summary>
+    public const string LiteralNONELaparoscopicAssistedSigmoidColectomy = "http://snomed.info/sct#1390003";
+
+    /// <summary>
     /// Literal for code: DirectThrombectomyOfIliacVeinByLegIncision
     /// </summary>
     public const string LiteralDirectThrombectomyOfIliacVeinByLegIncision = "1398005";
+
+    /// <summary>
+    /// Literal for code: NONEDirectThrombectomyOfIliacVeinByLegIncision
+    /// </summary>
+    public const string LiteralNONEDirectThrombectomyOfIliacVeinByLegIncision = "http://snomed.info/sct#1398005";
 
     /// <summary>
     /// Literal for code: IncisionAndExplorationOfUreter
@@ -9348,9 +9678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionAndExplorationOfUreter = "1399002";
 
     /// <summary>
+    /// Literal for code: NONEIncisionAndExplorationOfUreter
+    /// </summary>
+    public const string LiteralNONEIncisionAndExplorationOfUreter = "http://snomed.info/sct#1399002";
+
+    /// <summary>
     /// Literal for code: ApplicationOfLongLegCastBraceType
     /// </summary>
     public const string LiteralApplicationOfLongLegCastBraceType = "1407007";
+
+    /// <summary>
+    /// Literal for code: NONEApplicationOfLongLegCastBraceType
+    /// </summary>
+    public const string LiteralNONEApplicationOfLongLegCastBraceType = "http://snomed.info/sct#1407007";
 
     /// <summary>
     /// Literal for code: AnesthesiaForTympanotomy
@@ -9358,9 +9698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnesthesiaForTympanotomy = "1410000";
 
     /// <summary>
+    /// Literal for code: NONEAnesthesiaForTympanotomy
+    /// </summary>
+    public const string LiteralNONEAnesthesiaForTympanotomy = "http://snomed.info/sct#1410000";
+
+    /// <summary>
     /// Literal for code: OperationOnPapillaryMuscleOfHeart
     /// </summary>
     public const string LiteralOperationOnPapillaryMuscleOfHeart = "1411001";
+
+    /// <summary>
+    /// Literal for code: NONEOperationOnPapillaryMuscleOfHeart
+    /// </summary>
+    public const string LiteralNONEOperationOnPapillaryMuscleOfHeart = "http://snomed.info/sct#1411001";
 
     /// <summary>
     /// Literal for code: PenetratingKeratoplastyWithHomograft
@@ -9368,9 +9718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPenetratingKeratoplastyWithHomograft = "1413003";
 
     /// <summary>
+    /// Literal for code: NONEPenetratingKeratoplastyWithHomograft
+    /// </summary>
+    public const string LiteralNONEPenetratingKeratoplastyWithHomograft = "http://snomed.info/sct#1413003";
+
+    /// <summary>
     /// Literal for code: AngiographyOfArteriovenousShunt
     /// </summary>
     public const string LiteralAngiographyOfArteriovenousShunt = "1414009";
+
+    /// <summary>
+    /// Literal for code: NONEAngiographyOfArteriovenousShunt
+    /// </summary>
+    public const string LiteralNONEAngiographyOfArteriovenousShunt = "http://snomed.info/sct#1414009";
 
     /// <summary>
     /// Literal for code: OperationOnFace
@@ -9378,9 +9738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOperationOnFace = "1417002";
 
     /// <summary>
+    /// Literal for code: NONEOperationOnFace
+    /// </summary>
+    public const string LiteralNONEOperationOnFace = "http://snomed.info/sct#1417002";
+
+    /// <summary>
     /// Literal for code: ExcisionOfTumorFromShoulderAreaDeepIntramuscular
     /// </summary>
     public const string LiteralExcisionOfTumorFromShoulderAreaDeepIntramuscular = "142007";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfTumorFromShoulderAreaDeepIntramuscular
+    /// </summary>
+    public const string LiteralNONEExcisionOfTumorFromShoulderAreaDeepIntramuscular = "http://snomed.info/sct#142007";
 
     /// <summary>
     /// Literal for code: Fixation
@@ -9388,9 +9758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFixation = "1431002";
 
     /// <summary>
+    /// Literal for code: NONEFixation
+    /// </summary>
+    public const string LiteralNONEFixation = "http://snomed.info/sct#1431002";
+
+    /// <summary>
     /// Literal for code: RepairWithResectionRecession
     /// </summary>
     public const string LiteralRepairWithResectionRecession = "1440003";
+
+    /// <summary>
+    /// Literal for code: NONERepairWithResectionRecession
+    /// </summary>
+    public const string LiteralNONERepairWithResectionRecession = "http://snomed.info/sct#1440003";
 
     /// <summary>
     /// Literal for code: Epilation
@@ -9398,9 +9778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEpilation = "1449002";
 
     /// <summary>
+    /// Literal for code: NONEEpilation
+    /// </summary>
+    public const string LiteralNONEEpilation = "http://snomed.info/sct#1449002";
+
+    /// <summary>
     /// Literal for code: BiofeedbackGalvanicSkinResponse
     /// </summary>
     public const string LiteralBiofeedbackGalvanicSkinResponse = "1453000";
+
+    /// <summary>
+    /// Literal for code: NONEBiofeedbackGalvanicSkinResponse
+    /// </summary>
+    public const string LiteralNONEBiofeedbackGalvanicSkinResponse = "http://snomed.info/sct#1453000";
 
     /// <summary>
     /// Literal for code: Cerclage
@@ -9408,9 +9798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCerclage = "1455007";
 
     /// <summary>
+    /// Literal for code: NONECerclage
+    /// </summary>
+    public const string LiteralNONECerclage = "http://snomed.info/sct#1455007";
+
+    /// <summary>
     /// Literal for code: TruncalVagotomyWithPyloroplastyAndGastrostomy
     /// </summary>
     public const string LiteralTruncalVagotomyWithPyloroplastyAndGastrostomy = "1457004";
+
+    /// <summary>
+    /// Literal for code: NONETruncalVagotomyWithPyloroplastyAndGastrostomy
+    /// </summary>
+    public const string LiteralNONETruncalVagotomyWithPyloroplastyAndGastrostomy = "http://snomed.info/sct#1457004";
 
     /// <summary>
     /// Literal for code: RepairOfNonunionOfMetatarsalWithBoneGraft
@@ -9418,9 +9818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepairOfNonunionOfMetatarsalWithBoneGraft = "146005";
 
     /// <summary>
+    /// Literal for code: NONERepairOfNonunionOfMetatarsalWithBoneGraft
+    /// </summary>
+    public const string LiteralNONERepairOfNonunionOfMetatarsalWithBoneGraft = "http://snomed.info/sct#146005";
+
+    /// <summary>
     /// Literal for code: OsmolarityMeasurement
     /// </summary>
     public const string LiteralOsmolarityMeasurement = "1494008";
+
+    /// <summary>
+    /// Literal for code: NONEOsmolarityMeasurement
+    /// </summary>
+    public const string LiteralNONEOsmolarityMeasurement = "http://snomed.info/sct#1494008";
 
     /// <summary>
     /// Literal for code: BilateralEpididymovasostomyWithAnastomosisOfEpididymisToVasDeferens
@@ -9428,9 +9838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBilateralEpididymovasostomyWithAnastomosisOfEpididymisToVasDeferens = "1500007";
 
     /// <summary>
+    /// Literal for code: NONEBilateralEpididymovasostomyWithAnastomosisOfEpididymisToVasDeferens
+    /// </summary>
+    public const string LiteralNONEBilateralEpididymovasostomyWithAnastomosisOfEpididymisToVasDeferens = "http://snomed.info/sct#1500007";
+
+    /// <summary>
     /// Literal for code: AltemeierOperationPerinealRectalPullThrough
     /// </summary>
     public const string LiteralAltemeierOperationPerinealRectalPullThrough = "1501006";
+
+    /// <summary>
+    /// Literal for code: NONEAltemeierOperationPerinealRectalPullThrough
+    /// </summary>
+    public const string LiteralNONEAltemeierOperationPerinealRectalPullThrough = "http://snomed.info/sct#1501006";
 
     /// <summary>
     /// Literal for code: HospitalAdmissionForIsolation
@@ -9438,9 +9858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHospitalAdmissionForIsolation = "1505002";
 
     /// <summary>
+    /// Literal for code: NONEHospitalAdmissionForIsolation
+    /// </summary>
+    public const string LiteralNONEHospitalAdmissionForIsolation = "http://snomed.info/sct#1505002";
+
+    /// <summary>
     /// Literal for code: AspirationOfSoftTissue
     /// </summary>
     public const string LiteralAspirationOfSoftTissue = "1529009";
+
+    /// <summary>
+    /// Literal for code: NONEAspirationOfSoftTissue
+    /// </summary>
+    public const string LiteralNONEAspirationOfSoftTissue = "http://snomed.info/sct#1529009";
 
     /// <summary>
     /// Literal for code: CystourethroscopyWithResectionOfUreterocele
@@ -9448,9 +9878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCystourethroscopyWithResectionOfUreterocele = "153001";
 
     /// <summary>
+    /// Literal for code: NONECystourethroscopyWithResectionOfUreterocele
+    /// </summary>
+    public const string LiteralNONECystourethroscopyWithResectionOfUreterocele = "http://snomed.info/sct#153001";
+
+    /// <summary>
     /// Literal for code: Ureteroplication
     /// </summary>
     public const string LiteralUreteroplication = "1533002";
+
+    /// <summary>
+    /// Literal for code: NONEUreteroplication
+    /// </summary>
+    public const string LiteralNONEUreteroplication = "http://snomed.info/sct#1533002";
 
     /// <summary>
     /// Literal for code: AmikacinMeasurement
@@ -9458,9 +9898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAmikacinMeasurement = "1550000";
 
     /// <summary>
+    /// Literal for code: NONEAmikacinMeasurement
+    /// </summary>
+    public const string LiteralNONEAmikacinMeasurement = "http://snomed.info/sct#1550000";
+
+    /// <summary>
     /// Literal for code: BriefGroupPsychotherapy
     /// </summary>
     public const string LiteralBriefGroupPsychotherapy = "1555005";
+
+    /// <summary>
+    /// Literal for code: NONEBriefGroupPsychotherapy
+    /// </summary>
+    public const string LiteralNONEBriefGroupPsychotherapy = "http://snomed.info/sct#1555005";
 
     /// <summary>
     /// Literal for code: IL2Assay
@@ -9468,9 +9918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIL2Assay = "1559004";
 
     /// <summary>
+    /// Literal for code: NONEIL2Assay
+    /// </summary>
+    public const string LiteralNONEIL2Assay = "http://snomed.info/sct#1559004";
+
+    /// <summary>
     /// Literal for code: RepairOfUteroentericFistula
     /// </summary>
     public const string LiteralRepairOfUteroentericFistula = "1576000";
+
+    /// <summary>
+    /// Literal for code: NONERepairOfUteroentericFistula
+    /// </summary>
+    public const string LiteralNONERepairOfUteroentericFistula = "http://snomed.info/sct#1576000";
 
     /// <summary>
     /// Literal for code: ImplantationOfCardiacSingleChamberDeviceReplacementRateResponsive
@@ -9478,9 +9938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImplantationOfCardiacSingleChamberDeviceReplacementRateResponsive = "1577009";
 
     /// <summary>
+    /// Literal for code: NONEImplantationOfCardiacSingleChamberDeviceReplacementRateResponsive
+    /// </summary>
+    public const string LiteralNONEImplantationOfCardiacSingleChamberDeviceReplacementRateResponsive = "http://snomed.info/sct#1577009";
+
+    /// <summary>
     /// Literal for code: ReconstructionOfOssiclesWithStapedectomy
     /// </summary>
     public const string LiteralReconstructionOfOssiclesWithStapedectomy = "1578004";
+
+    /// <summary>
+    /// Literal for code: NONEReconstructionOfOssiclesWithStapedectomy
+    /// </summary>
+    public const string LiteralNONEReconstructionOfOssiclesWithStapedectomy = "http://snomed.info/sct#1578004";
 
     /// <summary>
     /// Literal for code: TractotomyOfMesencephalon
@@ -9488,9 +9958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTractotomyOfMesencephalon = "1583007";
 
     /// <summary>
+    /// Literal for code: NONETractotomyOfMesencephalon
+    /// </summary>
+    public const string LiteralNONETractotomyOfMesencephalon = "http://snomed.info/sct#1583007";
+
+    /// <summary>
     /// Literal for code: LengtheningOfGastrocnemiusMuscle
     /// </summary>
     public const string LiteralLengtheningOfGastrocnemiusMuscle = "1585000";
+
+    /// <summary>
+    /// Literal for code: NONELengtheningOfGastrocnemiusMuscle
+    /// </summary>
+    public const string LiteralNONELengtheningOfGastrocnemiusMuscle = "http://snomed.info/sct#1585000";
 
     /// <summary>
     /// Literal for code: AnesthesiaForTotalElbowReplacement
@@ -9498,9 +9978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnesthesiaForTotalElbowReplacement = "1596008";
 
     /// <summary>
+    /// Literal for code: NONEAnesthesiaForTotalElbowReplacement
+    /// </summary>
+    public const string LiteralNONEAnesthesiaForTotalElbowReplacement = "http://snomed.info/sct#1596008";
+
+    /// <summary>
     /// Literal for code: SkeletalXRayOfAnkleAndFoot
     /// </summary>
     public const string LiteralSkeletalXRayOfAnkleAndFoot = "1597004";
+
+    /// <summary>
+    /// Literal for code: NONESkeletalXRayOfAnkleAndFoot
+    /// </summary>
+    public const string LiteralNONESkeletalXRayOfAnkleAndFoot = "http://snomed.info/sct#1597004";
 
     /// <summary>
     /// Literal for code: RemovalOfForeignBodyOfTendonAndOrTendonSheath
@@ -9508,9 +9998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemovalOfForeignBodyOfTendonAndOrTendonSheath = "160007";
 
     /// <summary>
+    /// Literal for code: NONERemovalOfForeignBodyOfTendonAndOrTendonSheath
+    /// </summary>
+    public const string LiteralNONERemovalOfForeignBodyOfTendonAndOrTendonSheath = "http://snomed.info/sct#160007";
+
+    /// <summary>
     /// Literal for code: SocialServiceInterviewWithPlanning
     /// </summary>
     public const string LiteralSocialServiceInterviewWithPlanning = "1602006";
+
+    /// <summary>
+    /// Literal for code: NONESocialServiceInterviewWithPlanning
+    /// </summary>
+    public const string LiteralNONESocialServiceInterviewWithPlanning = "http://snomed.info/sct#1602006";
 
     /// <summary>
     /// Literal for code: BilateralRepairOfInguinalHerniaDirect
@@ -9518,9 +10018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBilateralRepairOfInguinalHerniaDirect = "1614003";
 
     /// <summary>
+    /// Literal for code: NONEBilateralRepairOfInguinalHerniaDirect
+    /// </summary>
+    public const string LiteralNONEBilateralRepairOfInguinalHerniaDirect = "http://snomed.info/sct#1614003";
+
+    /// <summary>
     /// Literal for code: RelineUpperPartialDentureChairside
     /// </summary>
     public const string LiteralRelineUpperPartialDentureChairside = "1615002";
+
+    /// <summary>
+    /// Literal for code: NONERelineUpperPartialDentureChairside
+    /// </summary>
+    public const string LiteralNONERelineUpperPartialDentureChairside = "http://snomed.info/sct#1615002";
 
     /// <summary>
     /// Literal for code: GalactosylceramideBetaGalactosidaseMeasurementLeukocytes
@@ -9528,9 +10038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGalactosylceramideBetaGalactosidaseMeasurementLeukocytes = "1616001";
 
     /// <summary>
+    /// Literal for code: NONEGalactosylceramideBetaGalactosidaseMeasurementLeukocytes
+    /// </summary>
+    public const string LiteralNONEGalactosylceramideBetaGalactosidaseMeasurementLeukocytes = "http://snomed.info/sct#1616001";
+
+    /// <summary>
     /// Literal for code: InjectionOfSclerosingAgentInVaricoseVein
     /// </summary>
     public const string LiteralInjectionOfSclerosingAgentInVaricoseVein = "1636000";
+
+    /// <summary>
+    /// Literal for code: NONEInjectionOfSclerosingAgentInVaricoseVein
+    /// </summary>
+    public const string LiteralNONEInjectionOfSclerosingAgentInVaricoseVein = "http://snomed.info/sct#1636000";
 
     /// <summary>
     /// Literal for code: CineplastyWithCineplasticProsthesisOfExtremity
@@ -9538,9 +10058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCineplastyWithCineplasticProsthesisOfExtremity = "1638004";
 
     /// <summary>
+    /// Literal for code: NONECineplastyWithCineplasticProsthesisOfExtremity
+    /// </summary>
+    public const string LiteralNONECineplastyWithCineplasticProsthesisOfExtremity = "http://snomed.info/sct#1638004";
+
+    /// <summary>
     /// Literal for code: HistoryAndPhysicalExaminationInsurance
     /// </summary>
     public const string LiteralHistoryAndPhysicalExaminationInsurance = "1640009";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryAndPhysicalExaminationInsurance
+    /// </summary>
+    public const string LiteralNONEHistoryAndPhysicalExaminationInsurance = "http://snomed.info/sct#1640009";
 
     /// <summary>
     /// Literal for code: TransduodenalSphincterotomy
@@ -9548,9 +10078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTransduodenalSphincterotomy = "1645004";
 
     /// <summary>
+    /// Literal for code: NONETransduodenalSphincterotomy
+    /// </summary>
+    public const string LiteralNONETransduodenalSphincterotomy = "http://snomed.info/sct#1645004";
+
+    /// <summary>
     /// Literal for code: ExcisionOfTendonSheath
     /// </summary>
     public const string LiteralExcisionOfTendonSheath = "1651009";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfTendonSheath
+    /// </summary>
+    public const string LiteralNONEExcisionOfTendonSheath = "http://snomed.info/sct#1651009";
 
     /// <summary>
     /// Literal for code: InternalFixationOfBoneWithoutFractureReduction
@@ -9558,9 +10098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInternalFixationOfBoneWithoutFractureReduction = "1653007";
 
     /// <summary>
+    /// Literal for code: NONEInternalFixationOfBoneWithoutFractureReduction
+    /// </summary>
+    public const string LiteralNONEInternalFixationOfBoneWithoutFractureReduction = "http://snomed.info/sct#1653007";
+
+    /// <summary>
     /// Literal for code: BehavioralTherapy
     /// </summary>
     public const string LiteralBehavioralTherapy = "166001";
+
+    /// <summary>
+    /// Literal for code: NONEBehavioralTherapy
+    /// </summary>
+    public const string LiteralNONEBehavioralTherapy = "http://snomed.info/sct#166001";
 
     /// <summary>
     /// Literal for code: MakingOccupiedBed
@@ -9568,9 +10118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMakingOccupiedBed = "1669000";
 
     /// <summary>
+    /// Literal for code: NONEMakingOccupiedBed
+    /// </summary>
+    public const string LiteralNONEMakingOccupiedBed = "http://snomed.info/sct#1669000";
+
+    /// <summary>
     /// Literal for code: HaagensenTest
     /// </summary>
     public const string LiteralHaagensenTest = "1677001";
+
+    /// <summary>
+    /// Literal for code: NONEHaagensenTest
+    /// </summary>
+    public const string LiteralNONEHaagensenTest = "http://snomed.info/sct#1677001";
 
     /// <summary>
     /// Literal for code: EndoscopicProcedureOfNerve
@@ -9578,9 +10138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEndoscopicProcedureOfNerve = "1678006";
 
     /// <summary>
+    /// Literal for code: NONEEndoscopicProcedureOfNerve
+    /// </summary>
+    public const string LiteralNONEEndoscopicProcedureOfNerve = "http://snomed.info/sct#1678006";
+
+    /// <summary>
     /// Literal for code: SecondaryChemoprophylaxis
     /// </summary>
     public const string LiteralSecondaryChemoprophylaxis = "1680000";
+
+    /// <summary>
+    /// Literal for code: NONESecondaryChemoprophylaxis
+    /// </summary>
+    public const string LiteralNONESecondaryChemoprophylaxis = "http://snomed.info/sct#1680000";
 
     /// <summary>
     /// Literal for code: DirectClosureOfLacerationOfConjunctiva
@@ -9588,9 +10158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDirectClosureOfLacerationOfConjunctiva = "1683003";
 
     /// <summary>
+    /// Literal for code: NONEDirectClosureOfLacerationOfConjunctiva
+    /// </summary>
+    public const string LiteralNONEDirectClosureOfLacerationOfConjunctiva = "http://snomed.info/sct#1683003";
+
+    /// <summary>
     /// Literal for code: LocalExcisionOfOvary
     /// </summary>
     public const string LiteralLocalExcisionOfOvary = "1689004";
+
+    /// <summary>
+    /// Literal for code: NONELocalExcisionOfOvary
+    /// </summary>
+    public const string LiteralNONELocalExcisionOfOvary = "http://snomed.info/sct#1689004";
 
     /// <summary>
     /// Literal for code: DrainageOfAbscessOfTonsil
@@ -9598,9 +10178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrainageOfAbscessOfTonsil = "1691007";
 
     /// <summary>
+    /// Literal for code: NONEDrainageOfAbscessOfTonsil
+    /// </summary>
+    public const string LiteralNONEDrainageOfAbscessOfTonsil = "http://snomed.info/sct#1691007";
+
+    /// <summary>
     /// Literal for code: SpecialDosimetry
     /// </summary>
     public const string LiteralSpecialDosimetry = "1699009";
+
+    /// <summary>
+    /// Literal for code: NONESpecialDosimetry
+    /// </summary>
+    public const string LiteralNONESpecialDosimetry = "http://snomed.info/sct#1699009";
 
     /// <summary>
     /// Literal for code: SpecialPotencyDiskIdentificationVancomycinTest
@@ -9608,9 +10198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpecialPotencyDiskIdentificationVancomycinTest = "170009";
 
     /// <summary>
+    /// Literal for code: NONESpecialPotencyDiskIdentificationVancomycinTest
+    /// </summary>
+    public const string LiteralNONESpecialPotencyDiskIdentificationVancomycinTest = "http://snomed.info/sct#170009";
+
+    /// <summary>
     /// Literal for code: LabialVeneerResinLaminateLaboratory
     /// </summary>
     public const string LiteralLabialVeneerResinLaminateLaboratory = "1702002";
+
+    /// <summary>
+    /// Literal for code: NONELabialVeneerResinLaminateLaboratory
+    /// </summary>
+    public const string LiteralNONELabialVeneerResinLaminateLaboratory = "http://snomed.info/sct#1702002";
 
     /// <summary>
     /// Literal for code: RepairOfCongenitalPseudoarthrosisOfTibia
@@ -9618,9 +10218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepairOfCongenitalPseudoarthrosisOfTibia = "1704001";
 
     /// <summary>
+    /// Literal for code: NONERepairOfCongenitalPseudoarthrosisOfTibia
+    /// </summary>
+    public const string LiteralNONERepairOfCongenitalPseudoarthrosisOfTibia = "http://snomed.info/sct#1704001";
+
+    /// <summary>
     /// Literal for code: BreastReconstructionBilateralWithBilateralPedicleTRAMFlaps
     /// </summary>
     public const string LiteralBreastReconstructionBilateralWithBilateralPedicleTRAMFlaps = "1709006";
+
+    /// <summary>
+    /// Literal for code: NONEBreastReconstructionBilateralWithBilateralPedicleTRAMFlaps
+    /// </summary>
+    public const string LiteralNONEBreastReconstructionBilateralWithBilateralPedicleTRAMFlaps = "http://snomed.info/sct#1709006";
 
     /// <summary>
     /// Literal for code: ImmunoglobulinTypingIgG
@@ -9628,9 +10238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImmunoglobulinTypingIgG = "1712009";
 
     /// <summary>
+    /// Literal for code: NONEImmunoglobulinTypingIgG
+    /// </summary>
+    public const string LiteralNONEImmunoglobulinTypingIgG = "http://snomed.info/sct#1712009";
+
+    /// <summary>
     /// Literal for code: HypothermiaTotalBodyInductionAndMaintenance
     /// </summary>
     public const string LiteralHypothermiaTotalBodyInductionAndMaintenance = "1713004";
+
+    /// <summary>
+    /// Literal for code: NONEHypothermiaTotalBodyInductionAndMaintenance
+    /// </summary>
+    public const string LiteralNONEHypothermiaTotalBodyInductionAndMaintenance = "http://snomed.info/sct#1713004";
 
     /// <summary>
     /// Literal for code: SutureOfSkinWoundOfHindfoot
@@ -9638,9 +10258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSutureOfSkinWoundOfHindfoot = "1730002";
 
     /// <summary>
+    /// Literal for code: NONESutureOfSkinWoundOfHindfoot
+    /// </summary>
+    public const string LiteralNONESutureOfSkinWoundOfHindfoot = "http://snomed.info/sct#1730002";
+
+    /// <summary>
     /// Literal for code: HarrisonRichardsonOperationOnVagina
     /// </summary>
     public const string LiteralHarrisonRichardsonOperationOnVagina = "174000";
+
+    /// <summary>
+    /// Literal for code: NONEHarrisonRichardsonOperationOnVagina
+    /// </summary>
+    public const string LiteralNONEHarrisonRichardsonOperationOnVagina = "http://snomed.info/sct#174000";
 
     /// <summary>
     /// Literal for code: ScleralBucklingWithImplant
@@ -9648,9 +10278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralScleralBucklingWithImplant = "1746005";
 
     /// <summary>
+    /// Literal for code: NONEScleralBucklingWithImplant
+    /// </summary>
+    public const string LiteralNONEScleralBucklingWithImplant = "http://snomed.info/sct#1746005";
+
+    /// <summary>
     /// Literal for code: ReplacementOfSkeletalMuscleStimulator
     /// </summary>
     public const string LiteralReplacementOfSkeletalMuscleStimulator = "1747001";
+
+    /// <summary>
+    /// Literal for code: NONEReplacementOfSkeletalMuscleStimulator
+    /// </summary>
+    public const string LiteralNONEReplacementOfSkeletalMuscleStimulator = "http://snomed.info/sct#1747001";
 
     /// <summary>
     /// Literal for code: ResectionOfUvealTissue
@@ -9658,9 +10298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralResectionOfUvealTissue = "1753001";
 
     /// <summary>
+    /// Literal for code: NONEResectionOfUvealTissue
+    /// </summary>
+    public const string LiteralNONEResectionOfUvealTissue = "http://snomed.info/sct#1753001";
+
+    /// <summary>
     /// Literal for code: ArthroscopyOfWristWithPartialSynovectomy
     /// </summary>
     public const string LiteralArthroscopyOfWristWithPartialSynovectomy = "1757000";
+
+    /// <summary>
+    /// Literal for code: NONEArthroscopyOfWristWithPartialSynovectomy
+    /// </summary>
+    public const string LiteralNONEArthroscopyOfWristWithPartialSynovectomy = "http://snomed.info/sct#1757000";
 
     /// <summary>
     /// Literal for code: AssessmentOfNutritionalStatus
@@ -9668,9 +10318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAssessmentOfNutritionalStatus = "1759002";
 
     /// <summary>
+    /// Literal for code: NONEAssessmentOfNutritionalStatus
+    /// </summary>
+    public const string LiteralNONEAssessmentOfNutritionalStatus = "http://snomed.info/sct#1759002";
+
+    /// <summary>
     /// Literal for code: AnastomosisOfRectum
     /// </summary>
     public const string LiteralAnastomosisOfRectum = "176003";
+
+    /// <summary>
+    /// Literal for code: NONEAnastomosisOfRectum
+    /// </summary>
+    public const string LiteralNONEAnastomosisOfRectum = "http://snomed.info/sct#176003";
 
     /// <summary>
     /// Literal for code: MitralValvotomy
@@ -9678,9 +10338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMitralValvotomy = "1770009";
 
     /// <summary>
+    /// Literal for code: NONEMitralValvotomy
+    /// </summary>
+    public const string LiteralNONEMitralValvotomy = "http://snomed.info/sct#1770009";
+
+    /// <summary>
     /// Literal for code: NasopharyngealRehabilitation
     /// </summary>
     public const string LiteralNasopharyngealRehabilitation = "1774000";
+
+    /// <summary>
+    /// Literal for code: NONENasopharyngealRehabilitation
+    /// </summary>
+    public const string LiteralNONENasopharyngealRehabilitation = "http://snomed.info/sct#1774000";
 
     /// <summary>
     /// Literal for code: SubmaxillaryIncisionWithDrainage
@@ -9688,9 +10358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSubmaxillaryIncisionWithDrainage = "1775004";
 
     /// <summary>
+    /// Literal for code: NONESubmaxillaryIncisionWithDrainage
+    /// </summary>
+    public const string LiteralNONESubmaxillaryIncisionWithDrainage = "http://snomed.info/sct#1775004";
+
+    /// <summary>
     /// Literal for code: FecalStercobilinQualitative
     /// </summary>
     public const string LiteralFecalStercobilinQualitative = "1784004";
+
+    /// <summary>
+    /// Literal for code: NONEFecalStercobilinQualitative
+    /// </summary>
+    public const string LiteralNONEFecalStercobilinQualitative = "http://snomed.info/sct#1784004";
 
     /// <summary>
     /// Literal for code: UltrasonicGuidanceForPericardiocentesis
@@ -9698,9 +10378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonicGuidanceForPericardiocentesis = "1787006";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonicGuidanceForPericardiocentesis
+    /// </summary>
+    public const string LiteralNONEUltrasonicGuidanceForPericardiocentesis = "http://snomed.info/sct#1787006";
+
+    /// <summary>
     /// Literal for code: BloodUnitCollectionForDirectedDonationDonor
     /// </summary>
     public const string LiteralBloodUnitCollectionForDirectedDonationDonor = "1788001";
+
+    /// <summary>
+    /// Literal for code: NONEBloodUnitCollectionForDirectedDonationDonor
+    /// </summary>
+    public const string LiteralNONEBloodUnitCollectionForDirectedDonationDonor = "http://snomed.info/sct#1788001";
 
     /// <summary>
     /// Literal for code: EndoscopicBiopsyOfDuodenum
@@ -9708,9 +10398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEndoscopicBiopsyOfDuodenum = "1801001";
 
     /// <summary>
+    /// Literal for code: NONEEndoscopicBiopsyOfDuodenum
+    /// </summary>
+    public const string LiteralNONEEndoscopicBiopsyOfDuodenum = "http://snomed.info/sct#1801001";
+
+    /// <summary>
     /// Literal for code: SurgicalClosureOfStoma
     /// </summary>
     public const string LiteralSurgicalClosureOfStoma = "1805005";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalClosureOfStoma
+    /// </summary>
+    public const string LiteralNONESurgicalClosureOfStoma = "http://snomed.info/sct#1805005";
 
     /// <summary>
     /// Literal for code: AspirationOfBursaOfHand
@@ -9718,9 +10418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAspirationOfBursaOfHand = "1811008";
 
     /// <summary>
+    /// Literal for code: NONEAspirationOfBursaOfHand
+    /// </summary>
+    public const string LiteralNONEAspirationOfBursaOfHand = "http://snomed.info/sct#1811008";
+
+    /// <summary>
     /// Literal for code: CryotherapyOfGenitalWarts
     /// </summary>
     public const string LiteralCryotherapyOfGenitalWarts = "1813006";
+
+    /// <summary>
+    /// Literal for code: NONECryotherapyOfGenitalWarts
+    /// </summary>
+    public const string LiteralNONECryotherapyOfGenitalWarts = "http://snomed.info/sct#1813006";
 
     /// <summary>
     /// Literal for code: AlcoholMeasurementBreath
@@ -9728,9 +10438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAlcoholMeasurementBreath = "1820004";
 
     /// <summary>
+    /// Literal for code: NONEAlcoholMeasurementBreath
+    /// </summary>
+    public const string LiteralNONEAlcoholMeasurementBreath = "http://snomed.info/sct#1820004";
+
+    /// <summary>
     /// Literal for code: OpenReductionOfOpenSacralFracture
     /// </summary>
     public const string LiteralOpenReductionOfOpenSacralFracture = "1830008";
+
+    /// <summary>
+    /// Literal for code: NONEOpenReductionOfOpenSacralFracture
+    /// </summary>
+    public const string LiteralNONEOpenReductionOfOpenSacralFracture = "http://snomed.info/sct#1830008";
 
     /// <summary>
     /// Literal for code: ExcisionOfDiverticulumOfVentricleOfHeart
@@ -9738,9 +10458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfDiverticulumOfVentricleOfHeart = "1836002";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfDiverticulumOfVentricleOfHeart
+    /// </summary>
+    public const string LiteralNONEExcisionOfDiverticulumOfVentricleOfHeart = "http://snomed.info/sct#1836002";
+
+    /// <summary>
     /// Literal for code: PlicationOfLigament
     /// </summary>
     public const string LiteralPlicationOfLigament = "1844002";
+
+    /// <summary>
+    /// Literal for code: NONEPlicationOfLigament
+    /// </summary>
+    public const string LiteralNONEPlicationOfLigament = "http://snomed.info/sct#1844002";
 
     /// <summary>
     /// Literal for code: IncisionOfNose
@@ -9748,9 +10478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionOfNose = "1854003";
 
     /// <summary>
+    /// Literal for code: NONEIncisionOfNose
+    /// </summary>
+    public const string LiteralNONEIncisionOfNose = "http://snomed.info/sct#1854003";
+
+    /// <summary>
     /// Literal for code: RemovalOfForeignBodyFromTendonOfHand
     /// </summary>
     public const string LiteralRemovalOfForeignBodyFromTendonOfHand = "1859008";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfForeignBodyFromTendonOfHand
+    /// </summary>
+    public const string LiteralNONERemovalOfForeignBodyFromTendonOfHand = "http://snomed.info/sct#1859008";
 
     /// <summary>
     /// Literal for code: AnesthesiaForClosedProcedureOnHumerusAndElbow
@@ -9758,9 +10498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnesthesiaForClosedProcedureOnHumerusAndElbow = "1861004";
 
     /// <summary>
+    /// Literal for code: NONEAnesthesiaForClosedProcedureOnHumerusAndElbow
+    /// </summary>
+    public const string LiteralNONEAnesthesiaForClosedProcedureOnHumerusAndElbow = "http://snomed.info/sct#1861004";
+
+    /// <summary>
     /// Literal for code: ThoracicPhlebectomy
     /// </summary>
     public const string LiteralThoracicPhlebectomy = "1862006";
+
+    /// <summary>
+    /// Literal for code: NONEThoracicPhlebectomy
+    /// </summary>
+    public const string LiteralNONEThoracicPhlebectomy = "http://snomed.info/sct#1862006";
 
     /// <summary>
     /// Literal for code: BilateralNephrectomy
@@ -9768,9 +10518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBilateralNephrectomy = "1866009";
 
     /// <summary>
+    /// Literal for code: NONEBilateralNephrectomy
+    /// </summary>
+    public const string LiteralNONEBilateralNephrectomy = "http://snomed.info/sct#1866009";
+
+    /// <summary>
     /// Literal for code: RemovalOfForeignBodyFromBrain
     /// </summary>
     public const string LiteralRemovalOfForeignBodyFromBrain = "1868005";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfForeignBodyFromBrain
+    /// </summary>
+    public const string LiteralNONERemovalOfForeignBodyFromBrain = "http://snomed.info/sct#1868005";
 
     /// <summary>
     /// Literal for code: InsertionOfHaloDeviceOfSkullWithSynchronousSkeletalTraction
@@ -9778,9 +10538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInsertionOfHaloDeviceOfSkullWithSynchronousSkeletalTraction = "1870001";
 
     /// <summary>
+    /// Literal for code: NONEInsertionOfHaloDeviceOfSkullWithSynchronousSkeletalTraction
+    /// </summary>
+    public const string LiteralNONEInsertionOfHaloDeviceOfSkullWithSynchronousSkeletalTraction = "http://snomed.info/sct#1870001";
+
+    /// <summary>
     /// Literal for code: RepairOfAneurysmOfCoronaryArtery
     /// </summary>
     public const string LiteralRepairOfAneurysmOfCoronaryArtery = "1871002";
+
+    /// <summary>
+    /// Literal for code: NONERepairOfAneurysmOfCoronaryArtery
+    /// </summary>
+    public const string LiteralNONERepairOfAneurysmOfCoronaryArtery = "http://snomed.info/sct#1871002";
 
     /// <summary>
     /// Literal for code: SutureOfMalePerineum
@@ -9788,9 +10558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSutureOfMalePerineum = "1872009";
 
     /// <summary>
+    /// Literal for code: NONESutureOfMalePerineum
+    /// </summary>
+    public const string LiteralNONESutureOfMalePerineum = "http://snomed.info/sct#1872009";
+
+    /// <summary>
     /// Literal for code: RecessionOfPrognathicJaw
     /// </summary>
     public const string LiteralRecessionOfPrognathicJaw = "1876007";
+
+    /// <summary>
+    /// Literal for code: NONERecessionOfPrognathicJaw
+    /// </summary>
+    public const string LiteralNONERecessionOfPrognathicJaw = "http://snomed.info/sct#1876007";
 
     /// <summary>
     /// Literal for code: FluorescentAntigenMeasurement
@@ -9798,9 +10578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluorescentAntigenMeasurement = "1879000";
 
     /// <summary>
+    /// Literal for code: NONEFluorescentAntigenMeasurement
+    /// </summary>
+    public const string LiteralNONEFluorescentAntigenMeasurement = "http://snomed.info/sct#1879000";
+
+    /// <summary>
     /// Literal for code: PatientTransferInHospitalUnitToUnit
     /// </summary>
     public const string LiteralPatientTransferInHospitalUnitToUnit = "1889001";
+
+    /// <summary>
+    /// Literal for code: NONEPatientTransferInHospitalUnitToUnit
+    /// </summary>
+    public const string LiteralNONEPatientTransferInHospitalUnitToUnit = "http://snomed.info/sct#1889001";
 
     /// <summary>
     /// Literal for code: ExcisionOfLesionOfArtery
@@ -9808,9 +10598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfLesionOfArtery = "189009";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfLesionOfArtery
+    /// </summary>
+    public const string LiteralNONEExcisionOfLesionOfArtery = "http://snomed.info/sct#189009";
+
+    /// <summary>
     /// Literal for code: InsertionOfProsthesisOrProstheticDeviceOfArmBioelectricOrCineplastic
     /// </summary>
     public const string LiteralInsertionOfProsthesisOrProstheticDeviceOfArmBioelectricOrCineplastic = "1906007";
+
+    /// <summary>
+    /// Literal for code: NONEInsertionOfProsthesisOrProstheticDeviceOfArmBioelectricOrCineplastic
+    /// </summary>
+    public const string LiteralNONEInsertionOfProsthesisOrProstheticDeviceOfArmBioelectricOrCineplastic = "http://snomed.info/sct#1906007";
 
     /// <summary>
     /// Literal for code: BifurcationOfBone
@@ -9818,9 +10618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBifurcationOfBone = "1907003";
 
     /// <summary>
+    /// Literal for code: NONEBifurcationOfBone
+    /// </summary>
+    public const string LiteralNONEBifurcationOfBone = "http://snomed.info/sct#1907003";
+
+    /// <summary>
     /// Literal for code: PatientDischargeDeceasedMedicolegalCase
     /// </summary>
     public const string LiteralPatientDischargeDeceasedMedicolegalCase = "1917008";
+
+    /// <summary>
+    /// Literal for code: NONEPatientDischargeDeceasedMedicolegalCase
+    /// </summary>
+    public const string LiteralNONEPatientDischargeDeceasedMedicolegalCase = "http://snomed.info/sct#1917008";
 
     /// <summary>
     /// Literal for code: HepaticotomyWithDrainage
@@ -9828,9 +10638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHepaticotomyWithDrainage = "1924009";
 
     /// <summary>
+    /// Literal for code: NONEHepaticotomyWithDrainage
+    /// </summary>
+    public const string LiteralNONEHepaticotomyWithDrainage = "http://snomed.info/sct#1924009";
+
+    /// <summary>
     /// Literal for code: DrainageOfAbscessOfNasalSeptum
     /// </summary>
     public const string LiteralDrainageOfAbscessOfNasalSeptum = "1950008";
+
+    /// <summary>
+    /// Literal for code: NONEDrainageOfAbscessOfNasalSeptum
+    /// </summary>
+    public const string LiteralNONEDrainageOfAbscessOfNasalSeptum = "http://snomed.info/sct#1950008";
 
     /// <summary>
     /// Literal for code: GraftingOfBoneOfThumbWithTransferOfSkinFlap
@@ -9838,9 +10658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGraftingOfBoneOfThumbWithTransferOfSkinFlap = "1958001";
 
     /// <summary>
+    /// Literal for code: NONEGraftingOfBoneOfThumbWithTransferOfSkinFlap
+    /// </summary>
+    public const string LiteralNONEGraftingOfBoneOfThumbWithTransferOfSkinFlap = "http://snomed.info/sct#1958001";
+
+    /// <summary>
     /// Literal for code: CentralBlockAnesthesia
     /// </summary>
     public const string LiteralCentralBlockAnesthesia = "1966005";
+
+    /// <summary>
+    /// Literal for code: NONECentralBlockAnesthesia
+    /// </summary>
+    public const string LiteralNONECentralBlockAnesthesia = "http://snomed.info/sct#1966005";
 
     /// <summary>
     /// Literal for code: MoldToYeastConversionTest
@@ -9848,9 +10678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMoldToYeastConversionTest = "197002";
 
     /// <summary>
+    /// Literal for code: NONEMoldToYeastConversionTest
+    /// </summary>
+    public const string LiteralNONEMoldToYeastConversionTest = "http://snomed.info/sct#197002";
+
+    /// <summary>
     /// Literal for code: TotalUrethrectomyIncludingCystostomyInFemale
     /// </summary>
     public const string LiteralTotalUrethrectomyIncludingCystostomyInFemale = "1983001";
+
+    /// <summary>
+    /// Literal for code: NONETotalUrethrectomyIncludingCystostomyInFemale
+    /// </summary>
+    public const string LiteralNONETotalUrethrectomyIncludingCystostomyInFemale = "http://snomed.info/sct#1983001";
 
     /// <summary>
     /// Literal for code: StrippingOfCerebralMeninges
@@ -9858,9 +10698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStrippingOfCerebralMeninges = "1995001";
 
     /// <summary>
+    /// Literal for code: NONEStrippingOfCerebralMeninges
+    /// </summary>
+    public const string LiteralNONEStrippingOfCerebralMeninges = "http://snomed.info/sct#1995001";
+
+    /// <summary>
     /// Literal for code: PsychologicTest
     /// </summary>
     public const string LiteralPsychologicTest = "1999007";
+
+    /// <summary>
+    /// Literal for code: NONEPsychologicTest
+    /// </summary>
+    public const string LiteralNONEPsychologicTest = "http://snomed.info/sct#1999007";
 
     /// <summary>
     /// Literal for code: ConstructionOfSubcutaneousTunnelWithoutEsophagealAnastomosis
@@ -9868,9 +10718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConstructionOfSubcutaneousTunnelWithoutEsophagealAnastomosis = "2002009";
 
     /// <summary>
+    /// Literal for code: NONEConstructionOfSubcutaneousTunnelWithoutEsophagealAnastomosis
+    /// </summary>
+    public const string LiteralNONEConstructionOfSubcutaneousTunnelWithoutEsophagealAnastomosis = "http://snomed.info/sct#2002009";
+
+    /// <summary>
     /// Literal for code: InternalFixationOfRadiusAndUlnaWithoutFractureReduction
     /// </summary>
     public const string LiteralInternalFixationOfRadiusAndUlnaWithoutFractureReduction = "2021001";
+
+    /// <summary>
+    /// Literal for code: NONEInternalFixationOfRadiusAndUlnaWithoutFractureReduction
+    /// </summary>
+    public const string LiteralNONEInternalFixationOfRadiusAndUlnaWithoutFractureReduction = "http://snomed.info/sct#2021001";
 
     /// <summary>
     /// Literal for code: RedCellIronUtilizationStudy
@@ -9878,9 +10738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRedCellIronUtilizationStudy = "2051007";
 
     /// <summary>
+    /// Literal for code: NONERedCellIronUtilizationStudy
+    /// </summary>
+    public const string LiteralNONERedCellIronUtilizationStudy = "http://snomed.info/sct#2051007";
+
+    /// <summary>
     /// Literal for code: BarbituratesMeasurementQuantitativeAndQualitative
     /// </summary>
     public const string LiteralBarbituratesMeasurementQuantitativeAndQualitative = "2054004";
+
+    /// <summary>
+    /// Literal for code: NONEBarbituratesMeasurementQuantitativeAndQualitative
+    /// </summary>
+    public const string LiteralNONEBarbituratesMeasurementQuantitativeAndQualitative = "http://snomed.info/sct#2054004";
 
     /// <summary>
     /// Literal for code: ImplantationOfElectromagneticHearingAid
@@ -9888,9 +10758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImplantationOfElectromagneticHearingAid = "2067001";
 
     /// <summary>
+    /// Literal for code: NONEImplantationOfElectromagneticHearingAid
+    /// </summary>
+    public const string LiteralNONEImplantationOfElectromagneticHearingAid = "http://snomed.info/sct#2067001";
+
+    /// <summary>
     /// Literal for code: DentalSubperiostealImplant
     /// </summary>
     public const string LiteralDentalSubperiostealImplant = "2069003";
+
+    /// <summary>
+    /// Literal for code: NONEDentalSubperiostealImplant
+    /// </summary>
+    public const string LiteralNONEDentalSubperiostealImplant = "http://snomed.info/sct#2069003";
 
     /// <summary>
     /// Literal for code: PunctureOfBursaOfHand
@@ -9898,9 +10778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPunctureOfBursaOfHand = "2078009";
 
     /// <summary>
+    /// Literal for code: NONEPunctureOfBursaOfHand
+    /// </summary>
+    public const string LiteralNONEPunctureOfBursaOfHand = "http://snomed.info/sct#2078009";
+
+    /// <summary>
     /// Literal for code: ReimplantationOfAnomalousPulmonaryArtery
     /// </summary>
     public const string LiteralReimplantationOfAnomalousPulmonaryArtery = "2079001";
+
+    /// <summary>
+    /// Literal for code: NONEReimplantationOfAnomalousPulmonaryArtery
+    /// </summary>
+    public const string LiteralNONEReimplantationOfAnomalousPulmonaryArtery = "http://snomed.info/sct#2079001";
 
     /// <summary>
     /// Literal for code: AngiectomyWithAnastomosisOfLowerLimbArtery
@@ -9908,9 +10798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngiectomyWithAnastomosisOfLowerLimbArtery = "2080003";
 
     /// <summary>
+    /// Literal for code: NONEAngiectomyWithAnastomosisOfLowerLimbArtery
+    /// </summary>
+    public const string LiteralNONEAngiectomyWithAnastomosisOfLowerLimbArtery = "http://snomed.info/sct#2080003";
+
+    /// <summary>
     /// Literal for code: OpenReductionOfOpenMandibularFractureWithExternalFixation
     /// </summary>
     public const string LiteralOpenReductionOfOpenMandibularFractureWithExternalFixation = "2098004";
+
+    /// <summary>
+    /// Literal for code: NONEOpenReductionOfOpenMandibularFractureWithExternalFixation
+    /// </summary>
+    public const string LiteralNONEOpenReductionOfOpenMandibularFractureWithExternalFixation = "http://snomed.info/sct#2098004";
 
     /// <summary>
     /// Literal for code: DentalProphylaxisChildren
@@ -9918,9 +10818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDentalProphylaxisChildren = "2115003";
 
     /// <summary>
+    /// Literal for code: NONEDentalProphylaxisChildren
+    /// </summary>
+    public const string LiteralNONEDentalProphylaxisChildren = "http://snomed.info/sct#2115003";
+
+    /// <summary>
     /// Literal for code: RepairOfBloodVessel
     /// </summary>
     public const string LiteralRepairOfBloodVessel = "2119009";
+
+    /// <summary>
+    /// Literal for code: NONERepairOfBloodVessel
+    /// </summary>
+    public const string LiteralNONERepairOfBloodVessel = "http://snomed.info/sct#2119009";
 
     /// <summary>
     /// Literal for code: ReductionOfClosedSacralFracture
@@ -9928,9 +10838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReductionOfClosedSacralFracture = "2127000";
 
     /// <summary>
+    /// Literal for code: NONEReductionOfClosedSacralFracture
+    /// </summary>
+    public const string LiteralNONEReductionOfClosedSacralFracture = "http://snomed.info/sct#2127000";
+
+    /// <summary>
     /// Literal for code: ExcisionOfPericardialTumor
     /// </summary>
     public const string LiteralExcisionOfPericardialTumor = "2137005";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfPericardialTumor
+    /// </summary>
+    public const string LiteralNONEExcisionOfPericardialTumor = "http://snomed.info/sct#2137005";
 
     /// <summary>
     /// Literal for code: CardiacCatheterizationEducation
@@ -9938,9 +10858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCardiacCatheterizationEducation = "2153008";
 
     /// <summary>
+    /// Literal for code: NONECardiacCatheterizationEducation
+    /// </summary>
+    public const string LiteralNONECardiacCatheterizationEducation = "http://snomed.info/sct#2153008";
+
+    /// <summary>
     /// Literal for code: OperationOnVulva
     /// </summary>
     public const string LiteralOperationOnVulva = "2161003";
+
+    /// <summary>
+    /// Literal for code: NONEOperationOnVulva
+    /// </summary>
+    public const string LiteralNONEOperationOnVulva = "http://snomed.info/sct#2161003";
 
     /// <summary>
     /// Literal for code: InjectionOfAorta
@@ -9948,9 +10878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInjectionOfAorta = "2164006";
 
     /// <summary>
+    /// Literal for code: NONEInjectionOfAorta
+    /// </summary>
+    public const string LiteralNONEInjectionOfAorta = "http://snomed.info/sct#2164006";
+
+    /// <summary>
     /// Literal for code: BicuspidizationOfAorticValve
     /// </summary>
     public const string LiteralBicuspidizationOfAorticValve = "2166008";
+
+    /// <summary>
+    /// Literal for code: NONEBicuspidizationOfAorticValve
+    /// </summary>
+    public const string LiteralNONEBicuspidizationOfAorticValve = "http://snomed.info/sct#2166008";
 
     /// <summary>
     /// Literal for code: ExcisionOfTonsilTags
@@ -9958,9 +10898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfTonsilTags = "2171001";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfTonsilTags
+    /// </summary>
+    public const string LiteralNONEExcisionOfTonsilTags = "http://snomed.info/sct#2171001";
+
+    /// <summary>
     /// Literal for code: Ureterocentesis
     /// </summary>
     public const string LiteralUreterocentesis = "2178007";
+
+    /// <summary>
+    /// Literal for code: NONEUreterocentesis
+    /// </summary>
+    public const string LiteralNONEUreterocentesis = "http://snomed.info/sct#2178007";
 
     /// <summary>
     /// Literal for code: OperationForBoneInjuryOfTarsalsAndMetatarsals
@@ -9968,9 +10918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOperationForBoneInjuryOfTarsalsAndMetatarsals = "2181002";
 
     /// <summary>
+    /// Literal for code: NONEOperationForBoneInjuryOfTarsalsAndMetatarsals
+    /// </summary>
+    public const string LiteralNONEOperationForBoneInjuryOfTarsalsAndMetatarsals = "http://snomed.info/sct#2181002";
+
+    /// <summary>
     /// Literal for code: SutureOfTendonToSkeletalAttachment
     /// </summary>
     public const string LiteralSutureOfTendonToSkeletalAttachment = "2188008";
+
+    /// <summary>
+    /// Literal for code: NONESutureOfTendonToSkeletalAttachment
+    /// </summary>
+    public const string LiteralNONESutureOfTendonToSkeletalAttachment = "http://snomed.info/sct#2188008";
 
     /// <summary>
     /// Literal for code: RepairOfRupturedAneurysmWithGraftOfCeliacArtery
@@ -9978,9 +10938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepairOfRupturedAneurysmWithGraftOfCeliacArtery = "2193006";
 
     /// <summary>
+    /// Literal for code: NONERepairOfRupturedAneurysmWithGraftOfCeliacArtery
+    /// </summary>
+    public const string LiteralNONERepairOfRupturedAneurysmWithGraftOfCeliacArtery = "http://snomed.info/sct#2193006";
+
+    /// <summary>
     /// Literal for code: GasLiquidChromatographyElectronCaptureType
     /// </summary>
     public const string LiteralGasLiquidChromatographyElectronCaptureType = "2196003";
+
+    /// <summary>
+    /// Literal for code: NONEGasLiquidChromatographyElectronCaptureType
+    /// </summary>
+    public const string LiteralNONEGasLiquidChromatographyElectronCaptureType = "http://snomed.info/sct#2196003";
 
     /// <summary>
     /// Literal for code: ExcisionOfLesionOfCulDeSac
@@ -9988,9 +10958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfLesionOfCulDeSac = "2199005";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfLesionOfCulDeSac
+    /// </summary>
+    public const string LiteralNONEExcisionOfLesionOfCulDeSac = "http://snomed.info/sct#2199005";
+
+    /// <summary>
     /// Literal for code: CuretteTestOfSkin
     /// </summary>
     public const string LiteralCuretteTestOfSkin = "2214008";
+
+    /// <summary>
+    /// Literal for code: NONECuretteTestOfSkin
+    /// </summary>
+    public const string LiteralNONECuretteTestOfSkin = "http://snomed.info/sct#2214008";
 
     /// <summary>
     /// Literal for code: ComplementComponentAssay
@@ -9998,9 +10978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComplementComponentAssay = "2220009";
 
     /// <summary>
+    /// Literal for code: NONEComplementComponentAssay
+    /// </summary>
+    public const string LiteralNONEComplementComponentAssay = "http://snomed.info/sct#2220009";
+
+    /// <summary>
     /// Literal for code: SensititerSystemTest
     /// </summary>
     public const string LiteralSensititerSystemTest = "2225004";
+
+    /// <summary>
+    /// Literal for code: NONESensititerSystemTest
+    /// </summary>
+    public const string LiteralNONESensititerSystemTest = "http://snomed.info/sct#2225004";
 
     /// <summary>
     /// Literal for code: Proctosigmoidopexy
@@ -10008,9 +10998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProctosigmoidopexy = "2234009";
 
     /// <summary>
+    /// Literal for code: NONEProctosigmoidopexy
+    /// </summary>
+    public const string LiteralNONEProctosigmoidopexy = "http://snomed.info/sct#2234009";
+
+    /// <summary>
     /// Literal for code: StoneOperationAnoplasty
     /// </summary>
     public const string LiteralStoneOperationAnoplasty = "2238007";
+
+    /// <summary>
+    /// Literal for code: NONEStoneOperationAnoplasty
+    /// </summary>
+    public const string LiteralNONEStoneOperationAnoplasty = "http://snomed.info/sct#2238007";
 
     /// <summary>
     /// Literal for code: ReconstructionOfEyelid
@@ -10018,9 +11018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReconstructionOfEyelid = "2242005";
 
     /// <summary>
+    /// Literal for code: NONEReconstructionOfEyelid
+    /// </summary>
+    public const string LiteralNONEReconstructionOfEyelid = "http://snomed.info/sct#2242005";
+
+    /// <summary>
     /// Literal for code: ArthroscopyOfWristWithInternalFixationForInstability
     /// </summary>
     public const string LiteralArthroscopyOfWristWithInternalFixationForInstability = "2244006";
+
+    /// <summary>
+    /// Literal for code: NONEArthroscopyOfWristWithInternalFixationForInstability
+    /// </summary>
+    public const string LiteralNONEArthroscopyOfWristWithInternalFixationForInstability = "http://snomed.info/sct#2244006";
 
     /// <summary>
     /// Literal for code: ResectionOfAscendingAortaWithAnastomosis
@@ -10028,9 +11038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralResectionOfAscendingAortaWithAnastomosis = "2250001";
 
     /// <summary>
+    /// Literal for code: NONEResectionOfAscendingAortaWithAnastomosis
+    /// </summary>
+    public const string LiteralNONEResectionOfAscendingAortaWithAnastomosis = "http://snomed.info/sct#2250001";
+
+    /// <summary>
     /// Literal for code: HospitalAdmissionUrgent48Hours
     /// </summary>
     public const string LiteralHospitalAdmissionUrgent48Hours = "2252009";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalAdmissionUrgent48Hours
+    /// </summary>
+    public const string LiteralNONEHospitalAdmissionUrgent48Hours = "http://snomed.info/sct#2252009";
 
     /// <summary>
     /// Literal for code: VenographyOfAdrenalBilateral
@@ -10038,9 +11058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVenographyOfAdrenalBilateral = "2266004";
 
     /// <summary>
+    /// Literal for code: NONEVenographyOfAdrenalBilateral
+    /// </summary>
+    public const string LiteralNONEVenographyOfAdrenalBilateral = "http://snomed.info/sct#2266004";
+
+    /// <summary>
     /// Literal for code: ChangingTracheostomyTube
     /// </summary>
     public const string LiteralChangingTracheostomyTube = "2267008";
+
+    /// <summary>
+    /// Literal for code: NONEChangingTracheostomyTube
+    /// </summary>
+    public const string LiteralNONEChangingTracheostomyTube = "http://snomed.info/sct#2267008";
 
     /// <summary>
     /// Literal for code: RepairOfCleftHand
@@ -10048,9 +11078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepairOfCleftHand = "2270007";
 
     /// <summary>
+    /// Literal for code: NONERepairOfCleftHand
+    /// </summary>
+    public const string LiteralNONERepairOfCleftHand = "http://snomed.info/sct#2270007";
+
+    /// <summary>
     /// Literal for code: ExplorationOfPoplitealArtery
     /// </summary>
     public const string LiteralExplorationOfPoplitealArtery = "2276001";
+
+    /// <summary>
+    /// Literal for code: NONEExplorationOfPoplitealArtery
+    /// </summary>
+    public const string LiteralNONEExplorationOfPoplitealArtery = "http://snomed.info/sct#2276001";
 
     /// <summary>
     /// Literal for code: UrinalysisAutomated
@@ -10058,9 +11098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUrinalysisAutomated = "2278000";
 
     /// <summary>
+    /// Literal for code: NONEUrinalysisAutomated
+    /// </summary>
+    public const string LiteralNONEUrinalysisAutomated = "http://snomed.info/sct#2278000";
+
+    /// <summary>
     /// Literal for code: AntibodyDetectionRBCEnzyme1StageTechniqueIncludingAntiHumanGlobulin
     /// </summary>
     public const string LiteralAntibodyDetectionRBCEnzyme1StageTechniqueIncludingAntiHumanGlobulin = "2279008";
+
+    /// <summary>
+    /// Literal for code: NONEAntibodyDetectionRBCEnzyme1StageTechniqueIncludingAntiHumanGlobulin
+    /// </summary>
+    public const string LiteralNONEAntibodyDetectionRBCEnzyme1StageTechniqueIncludingAntiHumanGlobulin = "http://snomed.info/sct#2279008";
 
     /// <summary>
     /// Literal for code: MicrobialCultureAnaerobicInitialIsolation
@@ -10068,9 +11118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMicrobialCultureAnaerobicInitialIsolation = "2290003";
 
     /// <summary>
+    /// Literal for code: NONEMicrobialCultureAnaerobicInitialIsolation
+    /// </summary>
+    public const string LiteralNONEMicrobialCultureAnaerobicInitialIsolation = "http://snomed.info/sct#2290003";
+
+    /// <summary>
     /// Literal for code: MillerOperationUrethrovesicalSuspension
     /// </summary>
     public const string LiteralMillerOperationUrethrovesicalSuspension = "230009";
+
+    /// <summary>
+    /// Literal for code: NONEMillerOperationUrethrovesicalSuspension
+    /// </summary>
+    public const string LiteralNONEMillerOperationUrethrovesicalSuspension = "http://snomed.info/sct#230009";
 
     /// <summary>
     /// Literal for code: OperationOnCerebralMeninges
@@ -10078,9 +11138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOperationOnCerebralMeninges = "2315006";
 
     /// <summary>
+    /// Literal for code: NONEOperationOnCerebralMeninges
+    /// </summary>
+    public const string LiteralNONEOperationOnCerebralMeninges = "http://snomed.info/sct#2315006";
+
+    /// <summary>
     /// Literal for code: AnesthesiaForCastProcedureOnForearmWristOrHand
     /// </summary>
     public const string LiteralAnesthesiaForCastProcedureOnForearmWristOrHand = "2318008";
+
+    /// <summary>
+    /// Literal for code: NONEAnesthesiaForCastProcedureOnForearmWristOrHand
+    /// </summary>
+    public const string LiteralNONEAnesthesiaForCastProcedureOnForearmWristOrHand = "http://snomed.info/sct#2318008";
 
     /// <summary>
     /// Literal for code: DeliveryByRitgenManeuver
@@ -10088,9 +11158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeliveryByRitgenManeuver = "2321005";
 
     /// <summary>
+    /// Literal for code: NONEDeliveryByRitgenManeuver
+    /// </summary>
+    public const string LiteralNONEDeliveryByRitgenManeuver = "http://snomed.info/sct#2321005";
+
+    /// <summary>
     /// Literal for code: SutureOfRecentWoundOfEyelidDirectClosureFullThickness
     /// </summary>
     public const string LiteralSutureOfRecentWoundOfEyelidDirectClosureFullThickness = "2322003";
+
+    /// <summary>
+    /// Literal for code: NONESutureOfRecentWoundOfEyelidDirectClosureFullThickness
+    /// </summary>
+    public const string LiteralNONESutureOfRecentWoundOfEyelidDirectClosureFullThickness = "http://snomed.info/sct#2322003";
 
     /// <summary>
     /// Literal for code: AdductorTenotomyOfHip
@@ -10098,9 +11178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdductorTenotomyOfHip = "2337004";
 
     /// <summary>
+    /// Literal for code: NONEAdductorTenotomyOfHip
+    /// </summary>
+    public const string LiteralNONEAdductorTenotomyOfHip = "http://snomed.info/sct#2337004";
+
+    /// <summary>
     /// Literal for code: ComplicatedCystorrhaphy
     /// </summary>
     public const string LiteralComplicatedCystorrhaphy = "2344008";
+
+    /// <summary>
+    /// Literal for code: NONEComplicatedCystorrhaphy
+    /// </summary>
+    public const string LiteralNONEComplicatedCystorrhaphy = "http://snomed.info/sct#2344008";
 
     /// <summary>
     /// Literal for code: DiagnosticModelConstruction
@@ -10108,9 +11198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticModelConstruction = "2347001";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticModelConstruction
+    /// </summary>
+    public const string LiteralNONEDiagnosticModelConstruction = "http://snomed.info/sct#2347001";
+
+    /// <summary>
     /// Literal for code: RadicalResectionOfTumorOfSoftTissueOfWristArea
     /// </summary>
     public const string LiteralRadicalResectionOfTumorOfSoftTissueOfWristArea = "2364003";
+
+    /// <summary>
+    /// Literal for code: NONERadicalResectionOfTumorOfSoftTissueOfWristArea
+    /// </summary>
+    public const string LiteralNONERadicalResectionOfTumorOfSoftTissueOfWristArea = "http://snomed.info/sct#2364003";
 
     /// <summary>
     /// Literal for code: TympanoplastyTypeIIWithGraftAgainstIncusOrMalleus
@@ -10118,9 +11218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTympanoplastyTypeIIWithGraftAgainstIncusOrMalleus = "2371008";
 
     /// <summary>
+    /// Literal for code: NONETympanoplastyTypeIIWithGraftAgainstIncusOrMalleus
+    /// </summary>
+    public const string LiteralNONETympanoplastyTypeIIWithGraftAgainstIncusOrMalleus = "http://snomed.info/sct#2371008";
+
+    /// <summary>
     /// Literal for code: BuffyCoatSmearEvaluation
     /// </summary>
     public const string LiteralBuffyCoatSmearEvaluation = "2373006";
+
+    /// <summary>
+    /// Literal for code: NONEBuffyCoatSmearEvaluation
+    /// </summary>
+    public const string LiteralNONEBuffyCoatSmearEvaluation = "http://snomed.info/sct#2373006";
 
     /// <summary>
     /// Literal for code: ApplicationOfManualOrElectricBreastPump
@@ -10128,9 +11238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralApplicationOfManualOrElectricBreastPump = "2382000";
 
     /// <summary>
+    /// Literal for code: NONEApplicationOfManualOrElectricBreastPump
+    /// </summary>
+    public const string LiteralNONEApplicationOfManualOrElectricBreastPump = "http://snomed.info/sct#2382000";
+
+    /// <summary>
     /// Literal for code: ReductionOfClosedPatellarDislocation
     /// </summary>
     public const string LiteralReductionOfClosedPatellarDislocation = "2386002";
+
+    /// <summary>
+    /// Literal for code: NONEReductionOfClosedPatellarDislocation
+    /// </summary>
+    public const string LiteralNONEReductionOfClosedPatellarDislocation = "http://snomed.info/sct#2386002";
 
     /// <summary>
     /// Literal for code: LigationOfVeinOfLowerLimb
@@ -10138,9 +11258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLigationOfVeinOfLowerLimb = "2393003";
 
     /// <summary>
+    /// Literal for code: NONELigationOfVeinOfLowerLimb
+    /// </summary>
+    public const string LiteralNONELigationOfVeinOfLowerLimb = "http://snomed.info/sct#2393003";
+
+    /// <summary>
     /// Literal for code: PeriodonticDentalConsultationAndReport
     /// </summary>
     public const string LiteralPeriodonticDentalConsultationAndReport = "2406000";
+
+    /// <summary>
+    /// Literal for code: NONEPeriodonticDentalConsultationAndReport
+    /// </summary>
+    public const string LiteralNONEPeriodonticDentalConsultationAndReport = "http://snomed.info/sct#2406000";
 
     /// <summary>
     /// Literal for code: ExcisionOfMediastinalTumor
@@ -10148,9 +11278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfMediastinalTumor = "2407009";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfMediastinalTumor
+    /// </summary>
+    public const string LiteralNONEExcisionOfMediastinalTumor = "http://snomed.info/sct#2407009";
+
+    /// <summary>
     /// Literal for code: HexosaminidaseAAndTotalHexosaminidaseMeasurementSerum
     /// </summary>
     public const string LiteralHexosaminidaseAAndTotalHexosaminidaseMeasurementSerum = "2408004";
+
+    /// <summary>
+    /// Literal for code: NONEHexosaminidaseAAndTotalHexosaminidaseMeasurementSerum
+    /// </summary>
+    public const string LiteralNONEHexosaminidaseAAndTotalHexosaminidaseMeasurementSerum = "http://snomed.info/sct#2408004";
 
     /// <summary>
     /// Literal for code: ReattachmentOfExtremityOfFoot
@@ -10158,9 +11298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReattachmentOfExtremityOfFoot = "2409007";
 
     /// <summary>
+    /// Literal for code: NONEReattachmentOfExtremityOfFoot
+    /// </summary>
+    public const string LiteralNONEReattachmentOfExtremityOfFoot = "http://snomed.info/sct#2409007";
+
+    /// <summary>
     /// Literal for code: EpsteinBarrVirusSerologicTest
     /// </summary>
     public const string LiteralEpsteinBarrVirusSerologicTest = "2425002";
+
+    /// <summary>
+    /// Literal for code: NONEEpsteinBarrVirusSerologicTest
+    /// </summary>
+    public const string LiteralNONEEpsteinBarrVirusSerologicTest = "http://snomed.info/sct#2425002";
 
     /// <summary>
     /// Literal for code: ReplacementOfCerebralVentricularTube
@@ -10168,9 +11318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReplacementOfCerebralVentricularTube = "243009";
 
     /// <summary>
+    /// Literal for code: NONEReplacementOfCerebralVentricularTube
+    /// </summary>
+    public const string LiteralNONEReplacementOfCerebralVentricularTube = "http://snomed.info/sct#243009";
+
+    /// <summary>
     /// Literal for code: IncisionOfLacrimalCanaliculus
     /// </summary>
     public const string LiteralIncisionOfLacrimalCanaliculus = "2442008";
+
+    /// <summary>
+    /// Literal for code: NONEIncisionOfLacrimalCanaliculus
+    /// </summary>
+    public const string LiteralNONEIncisionOfLacrimalCanaliculus = "http://snomed.info/sct#2442008";
 
     /// <summary>
     /// Literal for code: CellCountOfSynovialFluidWithDifferentialCount
@@ -10178,9 +11338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCellCountOfSynovialFluidWithDifferentialCount = "2448007";
 
     /// <summary>
+    /// Literal for code: NONECellCountOfSynovialFluidWithDifferentialCount
+    /// </summary>
+    public const string LiteralNONECellCountOfSynovialFluidWithDifferentialCount = "http://snomed.info/sct#2448007";
+
+    /// <summary>
     /// Literal for code: DivisionOfNerveGanglion
     /// </summary>
     public const string LiteralDivisionOfNerveGanglion = "245002";
+
+    /// <summary>
+    /// Literal for code: NONEDivisionOfNerveGanglion
+    /// </summary>
+    public const string LiteralNONEDivisionOfNerveGanglion = "http://snomed.info/sct#245002";
 
     /// <summary>
     /// Literal for code: RevisionOfLumbosubarachnoidShunt
@@ -10188,9 +11358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRevisionOfLumbosubarachnoidShunt = "2455009";
 
     /// <summary>
+    /// Literal for code: NONERevisionOfLumbosubarachnoidShunt
+    /// </summary>
+    public const string LiteralNONERevisionOfLumbosubarachnoidShunt = "http://snomed.info/sct#2455009";
+
+    /// <summary>
     /// Literal for code: BlindRehabilitationTherapy
     /// </summary>
     public const string LiteralBlindRehabilitationTherapy = "2457001";
+
+    /// <summary>
+    /// Literal for code: NONEBlindRehabilitationTherapy
+    /// </summary>
+    public const string LiteralNONEBlindRehabilitationTherapy = "http://snomed.info/sct#2457001";
 
     /// <summary>
     /// Literal for code: EducationalTherapy
@@ -10198,9 +11378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEducationalTherapy = "2458006";
 
     /// <summary>
+    /// Literal for code: NONEEducationalTherapy
+    /// </summary>
+    public const string LiteralNONEEducationalTherapy = "http://snomed.info/sct#2458006";
+
+    /// <summary>
     /// Literal for code: DestructiveProcedureOfArteryOfUpperExtremity
     /// </summary>
     public const string LiteralDestructiveProcedureOfArteryOfUpperExtremity = "2459003";
+
+    /// <summary>
+    /// Literal for code: NONEDestructiveProcedureOfArteryOfUpperExtremity
+    /// </summary>
+    public const string LiteralNONEDestructiveProcedureOfArteryOfUpperExtremity = "http://snomed.info/sct#2459003";
 
     /// <summary>
     /// Literal for code: TennisElbowTest
@@ -10208,9 +11398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTennisElbowTest = "2461007";
 
     /// <summary>
+    /// Literal for code: NONETennisElbowTest
+    /// </summary>
+    public const string LiteralNONETennisElbowTest = "http://snomed.info/sct#2461007";
+
+    /// <summary>
     /// Literal for code: RepairOfMalunionOfMetatarsalBones
     /// </summary>
     public const string LiteralRepairOfMalunionOfMetatarsalBones = "2474001";
+
+    /// <summary>
+    /// Literal for code: NONERepairOfMalunionOfMetatarsalBones
+    /// </summary>
+    public const string LiteralNONERepairOfMalunionOfMetatarsalBones = "http://snomed.info/sct#2474001";
 
     /// <summary>
     /// Literal for code: UrineSpecimenCollection24Hours
@@ -10218,9 +11418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUrineSpecimenCollection24Hours = "2475000";
 
     /// <summary>
+    /// Literal for code: NONEUrineSpecimenCollection24Hours
+    /// </summary>
+    public const string LiteralNONEUrineSpecimenCollection24Hours = "http://snomed.info/sct#2475000";
+
+    /// <summary>
     /// Literal for code: DebridementOfSkinSubcutaneousTissueMuscleAndBone
     /// </summary>
     public const string LiteralDebridementOfSkinSubcutaneousTissueMuscleAndBone = "2480009";
+
+    /// <summary>
+    /// Literal for code: NONEDebridementOfSkinSubcutaneousTissueMuscleAndBone
+    /// </summary>
+    public const string LiteralNONEDebridementOfSkinSubcutaneousTissueMuscleAndBone = "http://snomed.info/sct#2480009";
 
     /// <summary>
     /// Literal for code: DestructionOfTissueOfBreast
@@ -10228,9 +11438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDestructionOfTissueOfBreast = "2486003";
 
     /// <summary>
+    /// Literal for code: NONEDestructionOfTissueOfBreast
+    /// </summary>
+    public const string LiteralNONEDestructionOfTissueOfBreast = "http://snomed.info/sct#2486003";
+
+    /// <summary>
     /// Literal for code: PrescriptionFittingAndDispensingOfContactLens
     /// </summary>
     public const string LiteralPrescriptionFittingAndDispensingOfContactLens = "2488002";
+
+    /// <summary>
+    /// Literal for code: NONEPrescriptionFittingAndDispensingOfContactLens
+    /// </summary>
+    public const string LiteralNONEPrescriptionFittingAndDispensingOfContactLens = "http://snomed.info/sct#2488002";
 
     /// <summary>
     /// Literal for code: NursingConference
@@ -10238,9 +11458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNursingConference = "2494005";
 
     /// <summary>
+    /// Literal for code: NONENursingConference
+    /// </summary>
+    public const string LiteralNONENursingConference = "http://snomed.info/sct#2494005";
+
+    /// <summary>
     /// Literal for code: RebaseOfUpperPartialDenture
     /// </summary>
     public const string LiteralRebaseOfUpperPartialDenture = "2498008";
+
+    /// <summary>
+    /// Literal for code: NONERebaseOfUpperPartialDenture
+    /// </summary>
+    public const string LiteralNONERebaseOfUpperPartialDenture = "http://snomed.info/sct#2498008";
 
     /// <summary>
     /// Literal for code: VAL5QuoteNucleotidaseMeasurement
@@ -10248,9 +11478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVAL5QuoteNucleotidaseMeasurement = "2507007";
 
     /// <summary>
+    /// Literal for code: NONEVAL5QuoteNucleotidaseMeasurement
+    /// </summary>
+    public const string LiteralNONEVAL5QuoteNucleotidaseMeasurement = "http://snomed.info/sct#2507007";
+
+    /// <summary>
     /// Literal for code: RetrogradeUrographyWithKUB
     /// </summary>
     public const string LiteralRetrogradeUrographyWithKUB = "2508002";
+
+    /// <summary>
+    /// Literal for code: NONERetrogradeUrographyWithKUB
+    /// </summary>
+    public const string LiteralNONERetrogradeUrographyWithKUB = "http://snomed.info/sct#2508002";
 
     /// <summary>
     /// Literal for code: ReductionOfClosedHumeralSupracondylarFractureWithManipulationAndTraction
@@ -10258,9 +11498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReductionOfClosedHumeralSupracondylarFractureWithManipulationAndTraction = "2514009";
 
     /// <summary>
+    /// Literal for code: NONEReductionOfClosedHumeralSupracondylarFractureWithManipulationAndTraction
+    /// </summary>
+    public const string LiteralNONEReductionOfClosedHumeralSupracondylarFractureWithManipulationAndTraction = "http://snomed.info/sct#2514009";
+
+    /// <summary>
     /// Literal for code: StrokeRehabilitation
     /// </summary>
     public const string LiteralStrokeRehabilitation = "2517002";
+
+    /// <summary>
+    /// Literal for code: NONEStrokeRehabilitation
+    /// </summary>
+    public const string LiteralNONEStrokeRehabilitation = "http://snomed.info/sct#2517002";
 
     /// <summary>
     /// Literal for code: ChiropracticVisit
@@ -10268,9 +11518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChiropracticVisit = "2530001";
 
     /// <summary>
+    /// Literal for code: NONEChiropracticVisit
+    /// </summary>
+    public const string LiteralNONEChiropracticVisit = "http://snomed.info/sct#2530001";
+
+    /// <summary>
     /// Literal for code: MononuclearCellFunctionAssay
     /// </summary>
     public const string LiteralMononuclearCellFunctionAssay = "2531002";
+
+    /// <summary>
+    /// Literal for code: NONEMononuclearCellFunctionAssay
+    /// </summary>
+    public const string LiteralNONEMononuclearCellFunctionAssay = "http://snomed.info/sct#2531002";
 
     /// <summary>
     /// Literal for code: Pulpectomy
@@ -10278,9 +11538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPulpectomy = "2535006";
 
     /// <summary>
+    /// Literal for code: NONEPulpectomy
+    /// </summary>
+    public const string LiteralNONEPulpectomy = "http://snomed.info/sct#2535006";
+
+    /// <summary>
     /// Literal for code: InjectionOfMedicationInAnteriorChamberOfEye
     /// </summary>
     public const string LiteralInjectionOfMedicationInAnteriorChamberOfEye = "2536007";
+
+    /// <summary>
+    /// Literal for code: NONEInjectionOfMedicationInAnteriorChamberOfEye
+    /// </summary>
+    public const string LiteralNONEInjectionOfMedicationInAnteriorChamberOfEye = "http://snomed.info/sct#2536007";
 
     /// <summary>
     /// Literal for code: ExcisionOfKeloid
@@ -10288,9 +11558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfKeloid = "2547000";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfKeloid
+    /// </summary>
+    public const string LiteralNONEExcisionOfKeloid = "http://snomed.info/sct#2547000";
+
+    /// <summary>
     /// Literal for code: IncisionOfCerebralSubarachnoidSpace
     /// </summary>
     public const string LiteralIncisionOfCerebralSubarachnoidSpace = "2552005";
+
+    /// <summary>
+    /// Literal for code: NONEIncisionOfCerebralSubarachnoidSpace
+    /// </summary>
+    public const string LiteralNONEIncisionOfCerebralSubarachnoidSpace = "http://snomed.info/sct#2552005";
 
     /// <summary>
     /// Literal for code: CreationOfLumbarShuntIncludingLaminectomy
@@ -10298,9 +11578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCreationOfLumbarShuntIncludingLaminectomy = "2564002";
 
     /// <summary>
+    /// Literal for code: NONECreationOfLumbarShuntIncludingLaminectomy
+    /// </summary>
+    public const string LiteralNONECreationOfLumbarShuntIncludingLaminectomy = "http://snomed.info/sct#2564002";
+
+    /// <summary>
     /// Literal for code: OsteoplastyOfRadius
     /// </summary>
     public const string LiteralOsteoplastyOfRadius = "2566000";
+
+    /// <summary>
+    /// Literal for code: NONEOsteoplastyOfRadius
+    /// </summary>
+    public const string LiteralNONEOsteoplastyOfRadius = "http://snomed.info/sct#2566000";
 
     /// <summary>
     /// Literal for code: ResectionOfRibByTransaxillaryApproach
@@ -10308,9 +11598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralResectionOfRibByTransaxillaryApproach = "2567009";
 
     /// <summary>
+    /// Literal for code: NONEResectionOfRibByTransaxillaryApproach
+    /// </summary>
+    public const string LiteralNONEResectionOfRibByTransaxillaryApproach = "http://snomed.info/sct#2567009";
+
+    /// <summary>
     /// Literal for code: TransplantOfHairFolliclesToScalp
     /// </summary>
     public const string LiteralTransplantOfHairFolliclesToScalp = "2580007";
+
+    /// <summary>
+    /// Literal for code: NONETransplantOfHairFolliclesToScalp
+    /// </summary>
+    public const string LiteralNONETransplantOfHairFolliclesToScalp = "http://snomed.info/sct#2580007";
 
     /// <summary>
     /// Literal for code: OpenHeartSurgery
@@ -10318,9 +11618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOpenHeartSurgery = "2598006";
 
     /// <summary>
+    /// Literal for code: NONEOpenHeartSurgery
+    /// </summary>
+    public const string LiteralNONEOpenHeartSurgery = "http://snomed.info/sct#2598006";
+
+    /// <summary>
     /// Literal for code: RemovalOfBoneFlapOfSkull
     /// </summary>
     public const string LiteralRemovalOfBoneFlapOfSkull = "2601001";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfBoneFlapOfSkull
+    /// </summary>
+    public const string LiteralNONERemovalOfBoneFlapOfSkull = "http://snomed.info/sct#2601001";
 
     /// <summary>
     /// Literal for code: OperationOnUterusSupportingStructures
@@ -10328,9 +11638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOperationOnUterusSupportingStructures = "2607002";
 
     /// <summary>
+    /// Literal for code: NONEOperationOnUterusSupportingStructures
+    /// </summary>
+    public const string LiteralNONEOperationOnUterusSupportingStructures = "http://snomed.info/sct#2607002";
+
+    /// <summary>
     /// Literal for code: ImplantationOfProsthesisOrProstheticDeviceOfJointOfHand
     /// </summary>
     public const string LiteralImplantationOfProsthesisOrProstheticDeviceOfJointOfHand = "2613006";
+
+    /// <summary>
+    /// Literal for code: NONEImplantationOfProsthesisOrProstheticDeviceOfJointOfHand
+    /// </summary>
+    public const string LiteralNONEImplantationOfProsthesisOrProstheticDeviceOfJointOfHand = "http://snomed.info/sct#2613006";
 
     /// <summary>
     /// Literal for code: RemovalOfLigatureFromFallopianTube
@@ -10338,9 +11658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemovalOfLigatureFromFallopianTube = "2614000";
 
     /// <summary>
+    /// Literal for code: NONERemovalOfLigatureFromFallopianTube
+    /// </summary>
+    public const string LiteralNONERemovalOfLigatureFromFallopianTube = "http://snomed.info/sct#2614000";
+
+    /// <summary>
     /// Literal for code: RepairOfBifidDigitOfHand
     /// </summary>
     public const string LiteralRepairOfBifidDigitOfHand = "2616003";
+
+    /// <summary>
+    /// Literal for code: NONERepairOfBifidDigitOfHand
+    /// </summary>
+    public const string LiteralNONERepairOfBifidDigitOfHand = "http://snomed.info/sct#2616003";
 
     /// <summary>
     /// Literal for code: PsychiatricInterpretationToFamilyOrParentsOfPatient
@@ -10348,9 +11678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPsychiatricInterpretationToFamilyOrParentsOfPatient = "2619005";
 
     /// <summary>
+    /// Literal for code: NONEPsychiatricInterpretationToFamilyOrParentsOfPatient
+    /// </summary>
+    public const string LiteralNONEPsychiatricInterpretationToFamilyOrParentsOfPatient = "http://snomed.info/sct#2619005";
+
+    /// <summary>
     /// Literal for code: PercutaneousAspirationOfRenalPelvis
     /// </summary>
     public const string LiteralPercutaneousAspirationOfRenalPelvis = "262007";
+
+    /// <summary>
+    /// Literal for code: NONEPercutaneousAspirationOfRenalPelvis
+    /// </summary>
+    public const string LiteralNONEPercutaneousAspirationOfRenalPelvis = "http://snomed.info/sct#262007";
 
     /// <summary>
     /// Literal for code: IntracranialCerebralPerfusionPressureMonitoring
@@ -10358,9 +11698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntracranialCerebralPerfusionPressureMonitoring = "2629003";
 
     /// <summary>
+    /// Literal for code: NONEIntracranialCerebralPerfusionPressureMonitoring
+    /// </summary>
+    public const string LiteralNONEIntracranialCerebralPerfusionPressureMonitoring = "http://snomed.info/sct#2629003";
+
+    /// <summary>
     /// Literal for code: IncisionAndDrainageOfInfectedBursaOfUpperArm
     /// </summary>
     public const string LiteralIncisionAndDrainageOfInfectedBursaOfUpperArm = "2632000";
+
+    /// <summary>
+    /// Literal for code: NONEIncisionAndDrainageOfInfectedBursaOfUpperArm
+    /// </summary>
+    public const string LiteralNONEIncisionAndDrainageOfInfectedBursaOfUpperArm = "http://snomed.info/sct#2632000";
 
     /// <summary>
     /// Literal for code: PrefabricatedPostAndCoreInAdditionToCrown
@@ -10368,9 +11718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrefabricatedPostAndCoreInAdditionToCrown = "2642003";
 
     /// <summary>
+    /// Literal for code: NONEPrefabricatedPostAndCoreInAdditionToCrown
+    /// </summary>
+    public const string LiteralNONEPrefabricatedPostAndCoreInAdditionToCrown = "http://snomed.info/sct#2642003";
+
+    /// <summary>
     /// Literal for code: LigationOfVaricoseVeinOfHeadAndNeck
     /// </summary>
     public const string LiteralLigationOfVaricoseVeinOfHeadAndNeck = "2643008";
+
+    /// <summary>
+    /// Literal for code: NONELigationOfVaricoseVeinOfHeadAndNeck
+    /// </summary>
+    public const string LiteralNONELigationOfVaricoseVeinOfHeadAndNeck = "http://snomed.info/sct#2643008";
 
     /// <summary>
     /// Literal for code: CauterizationOfLiver
@@ -10378,9 +11738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCauterizationOfLiver = "2644002";
 
     /// <summary>
+    /// Literal for code: NONECauterizationOfLiver
+    /// </summary>
+    public const string LiteralNONECauterizationOfLiver = "http://snomed.info/sct#2644002";
+
+    /// <summary>
     /// Literal for code: IntelligenceTestWB1
     /// </summary>
     public const string LiteralIntelligenceTestWB1 = "2645001";
+
+    /// <summary>
+    /// Literal for code: NONEIntelligenceTestWB1
+    /// </summary>
+    public const string LiteralNONEIntelligenceTestWB1 = "http://snomed.info/sct#2645001";
 
     /// <summary>
     /// Literal for code: IncisionAndExplorationOfVasDeferens
@@ -10388,9 +11758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionAndExplorationOfVasDeferens = "2646000";
 
     /// <summary>
+    /// Literal for code: NONEIncisionAndExplorationOfVasDeferens
+    /// </summary>
+    public const string LiteralNONEIncisionAndExplorationOfVasDeferens = "http://snomed.info/sct#2646000";
+
+    /// <summary>
     /// Literal for code: SocialServiceInterviewOfPatient
     /// </summary>
     public const string LiteralSocialServiceInterviewOfPatient = "2658000";
+
+    /// <summary>
+    /// Literal for code: NONESocialServiceInterviewOfPatient
+    /// </summary>
+    public const string LiteralNONESocialServiceInterviewOfPatient = "http://snomed.info/sct#2658000";
 
     /// <summary>
     /// Literal for code: SutureOfLigamentOfLowerExtremity
@@ -10398,9 +11778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSutureOfLigamentOfLowerExtremity = "2659008";
 
     /// <summary>
+    /// Literal for code: NONESutureOfLigamentOfLowerExtremity
+    /// </summary>
+    public const string LiteralNONESutureOfLigamentOfLowerExtremity = "http://snomed.info/sct#2659008";
+
+    /// <summary>
     /// Literal for code: RecementationOfSpaceMaintainer
     /// </summary>
     public const string LiteralRecementationOfSpaceMaintainer = "2668005";
+
+    /// <summary>
+    /// Literal for code: NONERecementationOfSpaceMaintainer
+    /// </summary>
+    public const string LiteralNONERecementationOfSpaceMaintainer = "http://snomed.info/sct#2668005";
 
     /// <summary>
     /// Literal for code: DiagnosticProcedureOnCornea
@@ -10408,9 +11798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticProcedureOnCornea = "2670001";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticProcedureOnCornea
+    /// </summary>
+    public const string LiteralNONEDiagnosticProcedureOnCornea = "http://snomed.info/sct#2670001";
+
+    /// <summary>
     /// Literal for code: AnalFistulectomyMultiple
     /// </summary>
     public const string LiteralAnalFistulectomyMultiple = "267001";
+
+    /// <summary>
+    /// Literal for code: NONEAnalFistulectomyMultiple
+    /// </summary>
+    public const string LiteralNONEAnalFistulectomyMultiple = "http://snomed.info/sct#267001";
 
     /// <summary>
     /// Literal for code: IncisionAndDrainageOfMasticatorSpaceByExtraoralApproach
@@ -10418,9 +11818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionAndDrainageOfMasticatorSpaceByExtraoralApproach = "2673004";
 
     /// <summary>
+    /// Literal for code: NONEIncisionAndDrainageOfMasticatorSpaceByExtraoralApproach
+    /// </summary>
+    public const string LiteralNONEIncisionAndDrainageOfMasticatorSpaceByExtraoralApproach = "http://snomed.info/sct#2673004";
+
+    /// <summary>
     /// Literal for code: Stripping
     /// </summary>
     public const string LiteralStripping = "2677003";
+
+    /// <summary>
+    /// Literal for code: NONEStripping
+    /// </summary>
+    public const string LiteralNONEStripping = "http://snomed.info/sct#2677003";
 
     /// <summary>
     /// Literal for code: MagneticResonanceImagingOfPelvis
@@ -10428,9 +11838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMagneticResonanceImagingOfPelvis = "2690005";
 
     /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfPelvis
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfPelvis = "http://snomed.info/sct#2690005";
+
+    /// <summary>
     /// Literal for code: StoolFatQuantitativeMeasurement
     /// </summary>
     public const string LiteralStoolFatQuantitativeMeasurement = "2693007";
+
+    /// <summary>
+    /// Literal for code: NONEStoolFatQuantitativeMeasurement
+    /// </summary>
+    public const string LiteralNONEStoolFatQuantitativeMeasurement = "http://snomed.info/sct#2693007";
 
     /// <summary>
     /// Literal for code: HepaticVenographyWithHemodynamicEvaluation
@@ -10438,9 +11858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHepaticVenographyWithHemodynamicEvaluation = "2696004";
 
     /// <summary>
+    /// Literal for code: NONEHepaticVenographyWithHemodynamicEvaluation
+    /// </summary>
+    public const string LiteralNONEHepaticVenographyWithHemodynamicEvaluation = "http://snomed.info/sct#2696004";
+
+    /// <summary>
     /// Literal for code: StrippingAndLigationOfSaphenousVein
     /// </summary>
     public const string LiteralStrippingAndLigationOfSaphenousVein = "2697008";
+
+    /// <summary>
+    /// Literal for code: NONEStrippingAndLigationOfSaphenousVein
+    /// </summary>
+    public const string LiteralNONEStrippingAndLigationOfSaphenousVein = "http://snomed.info/sct#2697008";
 
     /// <summary>
     /// Literal for code: DermalFatFasciaGraft
@@ -10448,9 +11878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDermalFatFasciaGraft = "2716009";
 
     /// <summary>
+    /// Literal for code: NONEDermalFatFasciaGraft
+    /// </summary>
+    public const string LiteralNONEDermalFatFasciaGraft = "http://snomed.info/sct#2716009";
+
+    /// <summary>
     /// Literal for code: IL3Assay
     /// </summary>
     public const string LiteralIL3Assay = "2722000";
+
+    /// <summary>
+    /// Literal for code: NONEIL3Assay
+    /// </summary>
+    public const string LiteralNONEIL3Assay = "http://snomed.info/sct#2722000";
 
     /// <summary>
     /// Literal for code: SerologicTestForInfluenzaVirusA
@@ -10458,9 +11898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSerologicTestForInfluenzaVirusA = "2731000";
 
     /// <summary>
+    /// Literal for code: NONESerologicTestForInfluenzaVirusA
+    /// </summary>
+    public const string LiteralNONESerologicTestForInfluenzaVirusA = "http://snomed.info/sct#2731000";
+
+    /// <summary>
     /// Literal for code: RecessionOfTendonOfHand
     /// </summary>
     public const string LiteralRecessionOfTendonOfHand = "2732007";
+
+    /// <summary>
+    /// Literal for code: NONERecessionOfTendonOfHand
+    /// </summary>
+    public const string LiteralNONERecessionOfTendonOfHand = "http://snomed.info/sct#2732007";
 
     /// <summary>
     /// Literal for code: ExploratoryCraniotomyInfratentorial
@@ -10468,9 +11918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExploratoryCraniotomyInfratentorial = "2737001";
 
     /// <summary>
+    /// Literal for code: NONEExploratoryCraniotomyInfratentorial
+    /// </summary>
+    public const string LiteralNONEExploratoryCraniotomyInfratentorial = "http://snomed.info/sct#2737001";
+
+    /// <summary>
     /// Literal for code: DestructionOfBartholinQuoteSGlandOrCyst
     /// </summary>
     public const string LiteralDestructionOfBartholinQuoteSGlandOrCyst = "2742009";
+
+    /// <summary>
+    /// Literal for code: NONEDestructionOfBartholinQuoteSGlandOrCyst
+    /// </summary>
+    public const string LiteralNONEDestructionOfBartholinQuoteSGlandOrCyst = "http://snomed.info/sct#2742009";
 
     /// <summary>
     /// Literal for code: OperativeEndoscopyOfIleum
@@ -10478,9 +11938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOperativeEndoscopyOfIleum = "2743004";
 
     /// <summary>
+    /// Literal for code: NONEOperativeEndoscopyOfIleum
+    /// </summary>
+    public const string LiteralNONEOperativeEndoscopyOfIleum = "http://snomed.info/sct#2743004";
+
+    /// <summary>
     /// Literal for code: Omentopexy
     /// </summary>
     public const string LiteralOmentopexy = "2745006";
+
+    /// <summary>
+    /// Literal for code: NONEOmentopexy
+    /// </summary>
+    public const string LiteralNONEOmentopexy = "http://snomed.info/sct#2745006";
 
     /// <summary>
     /// Literal for code: Incudopexy
@@ -10488,9 +11958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncudopexy = "2752008";
 
     /// <summary>
+    /// Literal for code: NONEIncudopexy
+    /// </summary>
+    public const string LiteralNONEIncudopexy = "http://snomed.info/sct#2752008";
+
+    /// <summary>
     /// Literal for code: OsteoplastyOfFacialBones
     /// </summary>
     public const string LiteralOsteoplastyOfFacialBones = "2780005";
+
+    /// <summary>
+    /// Literal for code: NONEOsteoplastyOfFacialBones
+    /// </summary>
+    public const string LiteralNONEOsteoplastyOfFacialBones = "http://snomed.info/sct#2780005";
 
     /// <summary>
     /// Literal for code: CauterizationOfNavel
@@ -10498,9 +11978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCauterizationOfNavel = "2794006";
 
     /// <summary>
+    /// Literal for code: NONECauterizationOfNavel
+    /// </summary>
+    public const string LiteralNONECauterizationOfNavel = "http://snomed.info/sct#2794006";
+
+    /// <summary>
     /// Literal for code: ManualDilationAndStretching
     /// </summary>
     public const string LiteralManualDilationAndStretching = "2802005";
+
+    /// <summary>
+    /// Literal for code: NONEManualDilationAndStretching
+    /// </summary>
+    public const string LiteralNONEManualDilationAndStretching = "http://snomed.info/sct#2802005";
 
     /// <summary>
     /// Literal for code: CineradiographyOfPharynx
@@ -10508,9 +11998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCineradiographyOfPharynx = "2811005";
 
     /// <summary>
+    /// Literal for code: NONECineradiographyOfPharynx
+    /// </summary>
+    public const string LiteralNONECineradiographyOfPharynx = "http://snomed.info/sct#2811005";
+
+    /// <summary>
     /// Literal for code: Nephroureterocystectomy
     /// </summary>
     public const string LiteralNephroureterocystectomy = "2813008";
+
+    /// <summary>
+    /// Literal for code: NONENephroureterocystectomy
+    /// </summary>
+    public const string LiteralNONENephroureterocystectomy = "http://snomed.info/sct#2813008";
 
     /// <summary>
     /// Literal for code: TranspositionOfUlnarNerveAtElbow
@@ -10518,9 +12018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTranspositionOfUlnarNerveAtElbow = "2837008";
 
     /// <summary>
+    /// Literal for code: NONETranspositionOfUlnarNerveAtElbow
+    /// </summary>
+    public const string LiteralNONETranspositionOfUlnarNerveAtElbow = "http://snomed.info/sct#2837008";
+
+    /// <summary>
     /// Literal for code: GasChromatographyMeasurement
     /// </summary>
     public const string LiteralGasChromatographyMeasurement = "2842000";
+
+    /// <summary>
+    /// Literal for code: NONEGasChromatographyMeasurement
+    /// </summary>
+    public const string LiteralNONEGasChromatographyMeasurement = "http://snomed.info/sct#2842000";
 
     /// <summary>
     /// Literal for code: RevisionOfUrinaryConduit
@@ -10528,9 +12038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRevisionOfUrinaryConduit = "2843005";
 
     /// <summary>
+    /// Literal for code: NONERevisionOfUrinaryConduit
+    /// </summary>
+    public const string LiteralNONERevisionOfUrinaryConduit = "http://snomed.info/sct#2843005";
+
+    /// <summary>
     /// Literal for code: CervicalMyelography
     /// </summary>
     public const string LiteralCervicalMyelography = "2847006";
+
+    /// <summary>
+    /// Literal for code: NONECervicalMyelography
+    /// </summary>
+    public const string LiteralNONECervicalMyelography = "http://snomed.info/sct#2847006";
 
     /// <summary>
     /// Literal for code: IncisionAndDrainageOfVulva
@@ -10538,9 +12058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionAndDrainageOfVulva = "285008";
 
     /// <summary>
+    /// Literal for code: NONEIncisionAndDrainageOfVulva
+    /// </summary>
+    public const string LiteralNONEIncisionAndDrainageOfVulva = "http://snomed.info/sct#285008";
+
+    /// <summary>
     /// Literal for code: ArthrotomyForSynovectomyOfSternoclavicularJoint
     /// </summary>
     public const string LiteralArthrotomyForSynovectomyOfSternoclavicularJoint = "2851008";
+
+    /// <summary>
+    /// Literal for code: NONEArthrotomyForSynovectomyOfSternoclavicularJoint
+    /// </summary>
+    public const string LiteralNONEArthrotomyForSynovectomyOfSternoclavicularJoint = "http://snomed.info/sct#2851008";
 
     /// <summary>
     /// Literal for code: BursectomyOfHand
@@ -10548,9 +12078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBursectomyOfHand = "2854000";
 
     /// <summary>
+    /// Literal for code: NONEBursectomyOfHand
+    /// </summary>
+    public const string LiteralNONEBursectomyOfHand = "http://snomed.info/sct#2854000";
+
+    /// <summary>
     /// Literal for code: Pinealectomy
     /// </summary>
     public const string LiteralPinealectomy = "2857007";
+
+    /// <summary>
+    /// Literal for code: NONEPinealectomy
+    /// </summary>
+    public const string LiteralNONEPinealectomy = "http://snomed.info/sct#2857007";
 
     /// <summary>
     /// Literal for code: ObliterationOfLymphaticStructure
@@ -10558,9 +12098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralObliterationOfLymphaticStructure = "2866006";
 
     /// <summary>
+    /// Literal for code: NONEObliterationOfLymphaticStructure
+    /// </summary>
+    public const string LiteralNONEObliterationOfLymphaticStructure = "http://snomed.info/sct#2866006";
+
+    /// <summary>
     /// Literal for code: ImplantationOfProsthesisOrProstheticDeviceOfElbowJoint
     /// </summary>
     public const string LiteralImplantationOfProsthesisOrProstheticDeviceOfElbowJoint = "2875008";
+
+    /// <summary>
+    /// Literal for code: NONEImplantationOfProsthesisOrProstheticDeviceOfElbowJoint
+    /// </summary>
+    public const string LiteralNONEImplantationOfProsthesisOrProstheticDeviceOfElbowJoint = "http://snomed.info/sct#2875008";
 
     /// <summary>
     /// Literal for code: HospitalAdmissionTypeUnclassifiedExplainByReport
@@ -10568,9 +12118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHospitalAdmissionTypeUnclassifiedExplainByReport = "2876009";
 
     /// <summary>
+    /// Literal for code: NONEHospitalAdmissionTypeUnclassifiedExplainByReport
+    /// </summary>
+    public const string LiteralNONEHospitalAdmissionTypeUnclassifiedExplainByReport = "http://snomed.info/sct#2876009";
+
+    /// <summary>
     /// Literal for code: IntradermalSkinTest
     /// </summary>
     public const string LiteralIntradermalSkinTest = "2885009";
+
+    /// <summary>
+    /// Literal for code: NONEIntradermalSkinTest
+    /// </summary>
+    public const string LiteralNONEIntradermalSkinTest = "http://snomed.info/sct#2885009";
 
     /// <summary>
     /// Literal for code: ArthroscopyOfElbowWithPartialSynovectomy
@@ -10578,9 +12138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArthroscopyOfElbowWithPartialSynovectomy = "2891006";
 
     /// <summary>
+    /// Literal for code: NONEArthroscopyOfElbowWithPartialSynovectomy
+    /// </summary>
+    public const string LiteralNONEArthroscopyOfElbowWithPartialSynovectomy = "http://snomed.info/sct#2891006";
+
+    /// <summary>
     /// Literal for code: DNAAnalysisAntenatalBlood
     /// </summary>
     public const string LiteralDNAAnalysisAntenatalBlood = "2898000";
+
+    /// <summary>
+    /// Literal for code: NONEDNAAnalysisAntenatalBlood
+    /// </summary>
+    public const string LiteralNONEDNAAnalysisAntenatalBlood = "http://snomed.info/sct#2898000";
 
     /// <summary>
     /// Literal for code: DiagnosticProcedureOnAnteriorChamberOfEye
@@ -10588,9 +12158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticProcedureOnAnteriorChamberOfEye = "2903001";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticProcedureOnAnteriorChamberOfEye
+    /// </summary>
+    public const string LiteralNONEDiagnosticProcedureOnAnteriorChamberOfEye = "http://snomed.info/sct#2903001";
+
+    /// <summary>
     /// Literal for code: DestructionOfHemorrhoidsByCryotherapy
     /// </summary>
     public const string LiteralDestructionOfHemorrhoidsByCryotherapy = "2908005";
+
+    /// <summary>
+    /// Literal for code: NONEDestructionOfHemorrhoidsByCryotherapy
+    /// </summary>
+    public const string LiteralNONEDestructionOfHemorrhoidsByCryotherapy = "http://snomed.info/sct#2908005";
 
     /// <summary>
     /// Literal for code: AnteriorSclerotomy
@@ -10598,9 +12178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnteriorSclerotomy = "2914003";
 
     /// <summary>
+    /// Literal for code: NONEAnteriorSclerotomy
+    /// </summary>
+    public const string LiteralNONEAnteriorSclerotomy = "http://snomed.info/sct#2914003";
+
+    /// <summary>
     /// Literal for code: SutureOfCapsuleOfAnkle
     /// </summary>
     public const string LiteralSutureOfCapsuleOfAnkle = "2915002";
+
+    /// <summary>
+    /// Literal for code: NONESutureOfCapsuleOfAnkle
+    /// </summary>
+    public const string LiteralNONESutureOfCapsuleOfAnkle = "http://snomed.info/sct#2915002";
 
     /// <summary>
     /// Literal for code: Pneumogynecography
@@ -10608,9 +12198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPneumogynecography = "2933008";
 
     /// <summary>
+    /// Literal for code: NONEPneumogynecography
+    /// </summary>
+    public const string LiteralNONEPneumogynecography = "http://snomed.info/sct#2933008";
+
+    /// <summary>
     /// Literal for code: ExcisionalBiopsyOfJointStructureOfSpine
     /// </summary>
     public const string LiteralExcisionalBiopsyOfJointStructureOfSpine = "294002";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionalBiopsyOfJointStructureOfSpine
+    /// </summary>
+    public const string LiteralNONEExcisionalBiopsyOfJointStructureOfSpine = "http://snomed.info/sct#294002";
 
     /// <summary>
     /// Literal for code: SuprapubicDiverticulectomyOfBladder
@@ -10618,9 +12218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSuprapubicDiverticulectomyOfBladder = "2945004";
 
     /// <summary>
+    /// Literal for code: NONESuprapubicDiverticulectomyOfBladder
+    /// </summary>
+    public const string LiteralNONESuprapubicDiverticulectomyOfBladder = "http://snomed.info/sct#2945004";
+
+    /// <summary>
     /// Literal for code: TherapeuticCompoundMeasurement
     /// </summary>
     public const string LiteralTherapeuticCompoundMeasurement = "2947007";
+
+    /// <summary>
+    /// Literal for code: NONETherapeuticCompoundMeasurement
+    /// </summary>
+    public const string LiteralNONETherapeuticCompoundMeasurement = "http://snomed.info/sct#2947007";
 
     /// <summary>
     /// Literal for code: NonexcisionalDestructionOfCystOfCiliaryBody
@@ -10628,9 +12238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNonexcisionalDestructionOfCystOfCiliaryBody = "295001";
 
     /// <summary>
+    /// Literal for code: NONENonexcisionalDestructionOfCystOfCiliaryBody
+    /// </summary>
+    public const string LiteralNONENonexcisionalDestructionOfCystOfCiliaryBody = "http://snomed.info/sct#295001";
+
+    /// <summary>
     /// Literal for code: RepairOfFistulaOfCervix
     /// </summary>
     public const string LiteralRepairOfFistulaOfCervix = "2960001";
+
+    /// <summary>
+    /// Literal for code: NONERepairOfFistulaOfCervix
+    /// </summary>
+    public const string LiteralNONERepairOfFistulaOfCervix = "http://snomed.info/sct#2960001";
 
     /// <summary>
     /// Literal for code: CraniectomyWithTreatmentOfPenetratingWoundOfBrain
@@ -10638,9 +12258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCraniectomyWithTreatmentOfPenetratingWoundOfBrain = "2968008";
 
     /// <summary>
+    /// Literal for code: NONECraniectomyWithTreatmentOfPenetratingWoundOfBrain
+    /// </summary>
+    public const string LiteralNONECraniectomyWithTreatmentOfPenetratingWoundOfBrain = "http://snomed.info/sct#2968008";
+
+    /// <summary>
     /// Literal for code: MetacarpalLengtheningAndTransferOfLocalFlap
     /// </summary>
     public const string LiteralMetacarpalLengtheningAndTransferOfLocalFlap = "2970004";
+
+    /// <summary>
+    /// Literal for code: NONEMetacarpalLengtheningAndTransferOfLocalFlap
+    /// </summary>
+    public const string LiteralNONEMetacarpalLengtheningAndTransferOfLocalFlap = "http://snomed.info/sct#2970004";
 
     /// <summary>
     /// Literal for code: ClosureOfUrethrovaginalFistula
@@ -10648,9 +12278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClosureOfUrethrovaginalFistula = "2971000";
 
     /// <summary>
+    /// Literal for code: NONEClosureOfUrethrovaginalFistula
+    /// </summary>
+    public const string LiteralNONEClosureOfUrethrovaginalFistula = "http://snomed.info/sct#2971000";
+
+    /// <summary>
     /// Literal for code: ThrombectomyOfLowerLimbVein
     /// </summary>
     public const string LiteralThrombectomyOfLowerLimbVein = "2977001";
+
+    /// <summary>
+    /// Literal for code: NONEThrombectomyOfLowerLimbVein
+    /// </summary>
+    public const string LiteralNONEThrombectomyOfLowerLimbVein = "http://snomed.info/sct#2977001";
 
     /// <summary>
     /// Literal for code: TotalLobectomyWithBronchoplasty
@@ -10658,9 +12298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTotalLobectomyWithBronchoplasty = "3001009";
 
     /// <summary>
+    /// Literal for code: NONETotalLobectomyWithBronchoplasty
+    /// </summary>
+    public const string LiteralNONETotalLobectomyWithBronchoplasty = "http://snomed.info/sct#3001009";
+
+    /// <summary>
     /// Literal for code: RemovalOfSilasticTubesFromEar
     /// </summary>
     public const string LiteralRemovalOfSilasticTubesFromEar = "3010001";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfSilasticTubesFromEar
+    /// </summary>
+    public const string LiteralNONERemovalOfSilasticTubesFromEar = "http://snomed.info/sct#3010001";
 
     /// <summary>
     /// Literal for code: RemovalOfCrutchfieldTongsFromSkull
@@ -10668,9 +12318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemovalOfCrutchfieldTongsFromSkull = "3016007";
 
     /// <summary>
+    /// Literal for code: NONERemovalOfCrutchfieldTongsFromSkull
+    /// </summary>
+    public const string LiteralNONERemovalOfCrutchfieldTongsFromSkull = "http://snomed.info/sct#3016007";
+
+    /// <summary>
     /// Literal for code: CalcitoninMeasurement
     /// </summary>
     public const string LiteralCalcitoninMeasurement = "3025001";
+
+    /// <summary>
+    /// Literal for code: NONECalcitoninMeasurement
+    /// </summary>
+    public const string LiteralNONECalcitoninMeasurement = "http://snomed.info/sct#3025001";
 
     /// <summary>
     /// Literal for code: TibiotalarArthrodesis
@@ -10678,9 +12338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTibiotalarArthrodesis = "3026000";
 
     /// <summary>
+    /// Literal for code: NONETibiotalarArthrodesis
+    /// </summary>
+    public const string LiteralNONETibiotalarArthrodesis = "http://snomed.info/sct#3026000";
+
+    /// <summary>
     /// Literal for code: PeripheralNervousSystemDiseaseRehabilitation
     /// </summary>
     public const string LiteralPeripheralNervousSystemDiseaseRehabilitation = "3029007";
+
+    /// <summary>
+    /// Literal for code: NONEPeripheralNervousSystemDiseaseRehabilitation
+    /// </summary>
+    public const string LiteralNONEPeripheralNervousSystemDiseaseRehabilitation = "http://snomed.info/sct#3029007";
 
     /// <summary>
     /// Literal for code: RepairOfStomach
@@ -10688,9 +12358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepairOfStomach = "3041000";
 
     /// <summary>
+    /// Literal for code: NONERepairOfStomach
+    /// </summary>
+    public const string LiteralNONERepairOfStomach = "http://snomed.info/sct#3041000";
+
+    /// <summary>
     /// Literal for code: KowaFundusPhotography
     /// </summary>
     public const string LiteralKowaFundusPhotography = "3047001";
+
+    /// <summary>
+    /// Literal for code: NONEKowaFundusPhotography
+    /// </summary>
+    public const string LiteralNONEKowaFundusPhotography = "http://snomed.info/sct#3047001";
 
     /// <summary>
     /// Literal for code: ForequarterAmputationRight
@@ -10698,9 +12378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralForequarterAmputationRight = "3060007";
 
     /// <summary>
+    /// Literal for code: NONEForequarterAmputationRight
+    /// </summary>
+    public const string LiteralNONEForequarterAmputationRight = "http://snomed.info/sct#3060007";
+
+    /// <summary>
     /// Literal for code: EchographyOfKidney
     /// </summary>
     public const string LiteralEchographyOfKidney = "306005";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyOfKidney
+    /// </summary>
+    public const string LiteralNONEEchographyOfKidney = "http://snomed.info/sct#306005";
 
     /// <summary>
     /// Literal for code: CompleteAvulsionOfNail
@@ -10708,9 +12398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCompleteAvulsionOfNail = "3061006";
 
     /// <summary>
+    /// Literal for code: NONECompleteAvulsionOfNail
+    /// </summary>
+    public const string LiteralNONECompleteAvulsionOfNail = "http://snomed.info/sct#3061006";
+
+    /// <summary>
     /// Literal for code: GastroscopyThroughArtificialStoma
     /// </summary>
     public const string LiteralGastroscopyThroughArtificialStoma = "3063009";
+
+    /// <summary>
+    /// Literal for code: NONEGastroscopyThroughArtificialStoma
+    /// </summary>
+    public const string LiteralNONEGastroscopyThroughArtificialStoma = "http://snomed.info/sct#3063009";
 
     /// <summary>
     /// Literal for code: NonoperativeRemovalOfProsthesisOfBileDuct
@@ -10718,9 +12418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNonoperativeRemovalOfProsthesisOfBileDuct = "3075004";
 
     /// <summary>
+    /// Literal for code: NONENonoperativeRemovalOfProsthesisOfBileDuct
+    /// </summary>
+    public const string LiteralNONENonoperativeRemovalOfProsthesisOfBileDuct = "http://snomed.info/sct#3075004";
+
+    /// <summary>
     /// Literal for code: EmbolectomyWithCatheterOfRenalArteryByAbdominalIncision
     /// </summary>
     public const string LiteralEmbolectomyWithCatheterOfRenalArteryByAbdominalIncision = "3078002";
+
+    /// <summary>
+    /// Literal for code: NONEEmbolectomyWithCatheterOfRenalArteryByAbdominalIncision
+    /// </summary>
+    public const string LiteralNONEEmbolectomyWithCatheterOfRenalArteryByAbdominalIncision = "http://snomed.info/sct#3078002";
 
     /// <summary>
     /// Literal for code: RemovalOfDeviceFromThorax
@@ -10728,9 +12438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemovalOfDeviceFromThorax = "3083005";
 
     /// <summary>
+    /// Literal for code: NONERemovalOfDeviceFromThorax
+    /// </summary>
+    public const string LiteralNONERemovalOfDeviceFromThorax = "http://snomed.info/sct#3083005";
+
+    /// <summary>
     /// Literal for code: AnesthesiaForEndoscopicProcedureOnUpperExtremity
     /// </summary>
     public const string LiteralAnesthesiaForEndoscopicProcedureOnUpperExtremity = "3088001";
+
+    /// <summary>
+    /// Literal for code: NONEAnesthesiaForEndoscopicProcedureOnUpperExtremity
+    /// </summary>
+    public const string LiteralNONEAnesthesiaForEndoscopicProcedureOnUpperExtremity = "http://snomed.info/sct#3088001";
 
     /// <summary>
     /// Literal for code: AneurysmectomyWithGraftReplacementOfLowerLimbArtery
@@ -10738,9 +12458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAneurysmectomyWithGraftReplacementOfLowerLimbArtery = "3090000";
 
     /// <summary>
+    /// Literal for code: NONEAneurysmectomyWithGraftReplacementOfLowerLimbArtery
+    /// </summary>
+    public const string LiteralNONEAneurysmectomyWithGraftReplacementOfLowerLimbArtery = "http://snomed.info/sct#3090000";
+
+    /// <summary>
     /// Literal for code: RestraintRemoval
     /// </summary>
     public const string LiteralRestraintRemoval = "3112006";
+
+    /// <summary>
+    /// Literal for code: NONERestraintRemoval
+    /// </summary>
+    public const string LiteralNONERestraintRemoval = "http://snomed.info/sct#3112006";
 
     /// <summary>
     /// Literal for code: BloodCoagulationPanel
@@ -10748,9 +12478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBloodCoagulationPanel = "3116009";
 
     /// <summary>
+    /// Literal for code: NONEBloodCoagulationPanel
+    /// </summary>
+    public const string LiteralNONEBloodCoagulationPanel = "http://snomed.info/sct#3116009";
+
+    /// <summary>
     /// Literal for code: MonitoringOfCardiacOutputByECG
     /// </summary>
     public const string LiteralMonitoringOfCardiacOutputByECG = "3130004";
+
+    /// <summary>
+    /// Literal for code: NONEMonitoringOfCardiacOutputByECG
+    /// </summary>
+    public const string LiteralNONEMonitoringOfCardiacOutputByECG = "http://snomed.info/sct#3130004";
 
     /// <summary>
     /// Literal for code: PatientDischargeDeceasedAutopsy
@@ -10758,9 +12498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientDischargeDeceasedAutopsy = "3133002";
 
     /// <summary>
+    /// Literal for code: NONEPatientDischargeDeceasedAutopsy
+    /// </summary>
+    public const string LiteralNONEPatientDischargeDeceasedAutopsy = "http://snomed.info/sct#3133002";
+
+    /// <summary>
     /// Literal for code: Reimplantation
     /// </summary>
     public const string LiteralReimplantation = "3137001";
+
+    /// <summary>
+    /// Literal for code: NONEReimplantation
+    /// </summary>
+    public const string LiteralNONEReimplantation = "http://snomed.info/sct#3137001";
 
     /// <summary>
     /// Literal for code: VisualFieldExaminationAndEvaluationIntermediate
@@ -10768,9 +12518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVisualFieldExaminationAndEvaluationIntermediate = "3143004";
 
     /// <summary>
+    /// Literal for code: NONEVisualFieldExaminationAndEvaluationIntermediate
+    /// </summary>
+    public const string LiteralNONEVisualFieldExaminationAndEvaluationIntermediate = "http://snomed.info/sct#3143004";
+
+    /// <summary>
     /// Literal for code: PartialDacryocystectomy
     /// </summary>
     public const string LiteralPartialDacryocystectomy = "316002";
+
+    /// <summary>
+    /// Literal for code: NONEPartialDacryocystectomy
+    /// </summary>
+    public const string LiteralNONEPartialDacryocystectomy = "http://snomed.info/sct#316002";
 
     /// <summary>
     /// Literal for code: GadoliniumMeasurement
@@ -10778,9 +12538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGadoliniumMeasurement = "3162001";
 
     /// <summary>
+    /// Literal for code: NONEGadoliniumMeasurement
+    /// </summary>
+    public const string LiteralNONEGadoliniumMeasurement = "http://snomed.info/sct#3162001";
+
+    /// <summary>
     /// Literal for code: OpenReductionOfClosedMandibularFractureWithInterdentalFixation
     /// </summary>
     public const string LiteralOpenReductionOfClosedMandibularFractureWithInterdentalFixation = "3164000";
+
+    /// <summary>
+    /// Literal for code: NONEOpenReductionOfClosedMandibularFractureWithInterdentalFixation
+    /// </summary>
+    public const string LiteralNONEOpenReductionOfClosedMandibularFractureWithInterdentalFixation = "http://snomed.info/sct#3164000";
 
     /// <summary>
     /// Literal for code: IrrigationOfMuscleOfHand
@@ -10788,9 +12558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIrrigationOfMuscleOfHand = "3165004";
 
     /// <summary>
+    /// Literal for code: NONEIrrigationOfMuscleOfHand
+    /// </summary>
+    public const string LiteralNONEIrrigationOfMuscleOfHand = "http://snomed.info/sct#3165004";
+
+    /// <summary>
     /// Literal for code: RepairOfSalivaryGlandFistula
     /// </summary>
     public const string LiteralRepairOfSalivaryGlandFistula = "3166003";
+
+    /// <summary>
+    /// Literal for code: NONERepairOfSalivaryGlandFistula
+    /// </summary>
+    public const string LiteralNONERepairOfSalivaryGlandFistula = "http://snomed.info/sct#3166003";
 
     /// <summary>
     /// Literal for code: InternalObstetricalVersion
@@ -10798,9 +12578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInternalObstetricalVersion = "3177009";
 
     /// <summary>
+    /// Literal for code: NONEInternalObstetricalVersion
+    /// </summary>
+    public const string LiteralNONEInternalObstetricalVersion = "http://snomed.info/sct#3177009";
+
+    /// <summary>
     /// Literal for code: ClosureOfColostomy
     /// </summary>
     public const string LiteralClosureOfColostomy = "3183007";
+
+    /// <summary>
+    /// Literal for code: NONEClosureOfColostomy
+    /// </summary>
+    public const string LiteralNONEClosureOfColostomy = "http://snomed.info/sct#3183007";
 
     /// <summary>
     /// Literal for code: ExcisionOfSkeneQuoteSGland
@@ -10808,9 +12598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfSkeneQuoteSGland = "3186004";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfSkeneQuoteSGland
+    /// </summary>
+    public const string LiteralNONEExcisionOfSkeneQuoteSGland = "http://snomed.info/sct#3186004";
+
+    /// <summary>
     /// Literal for code: EpilationByForceps
     /// </summary>
     public const string LiteralEpilationByForceps = "3190002";
+
+    /// <summary>
+    /// Literal for code: NONEEpilationByForceps
+    /// </summary>
+    public const string LiteralNONEEpilationByForceps = "http://snomed.info/sct#3190002";
 
     /// <summary>
     /// Literal for code: DestructiveProcedureOfNerve
@@ -10818,9 +12618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDestructiveProcedureOfNerve = "3204007";
 
     /// <summary>
+    /// Literal for code: NONEDestructiveProcedureOfNerve
+    /// </summary>
+    public const string LiteralNONEDestructiveProcedureOfNerve = "http://snomed.info/sct#3204007";
+
+    /// <summary>
     /// Literal for code: CorrectionOfChordeeWithMobilizationOfUrethra
     /// </summary>
     public const string LiteralCorrectionOfChordeeWithMobilizationOfUrethra = "3241008";
+
+    /// <summary>
+    /// Literal for code: NONECorrectionOfChordeeWithMobilizationOfUrethra
+    /// </summary>
+    public const string LiteralNONECorrectionOfChordeeWithMobilizationOfUrethra = "http://snomed.info/sct#3241008";
 
     /// <summary>
     /// Literal for code: SurgicalConstructionOfFiltrationBleb
@@ -10828,9 +12638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalConstructionOfFiltrationBleb = "3249005";
 
     /// <summary>
+    /// Literal for code: NONESurgicalConstructionOfFiltrationBleb
+    /// </summary>
+    public const string LiteralNONESurgicalConstructionOfFiltrationBleb = "http://snomed.info/sct#3249005";
+
+    /// <summary>
     /// Literal for code: MayoOperationHerniorrhaphy
     /// </summary>
     public const string LiteralMayoOperationHerniorrhaphy = "3251009";
+
+    /// <summary>
+    /// Literal for code: NONEMayoOperationHerniorrhaphy
+    /// </summary>
+    public const string LiteralNONEMayoOperationHerniorrhaphy = "http://snomed.info/sct#3251009";
 
     /// <summary>
     /// Literal for code: CervicalLymphangiogram
@@ -10838,9 +12658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCervicalLymphangiogram = "3256004";
 
     /// <summary>
+    /// Literal for code: NONECervicalLymphangiogram
+    /// </summary>
+    public const string LiteralNONECervicalLymphangiogram = "http://snomed.info/sct#3256004";
+
+    /// <summary>
     /// Literal for code: EmptyAndMeasurePeritonealDialysisFluid
     /// </summary>
     public const string LiteralEmptyAndMeasurePeritonealDialysisFluid = "3257008";
+
+    /// <summary>
+    /// Literal for code: NONEEmptyAndMeasurePeritonealDialysisFluid
+    /// </summary>
+    public const string LiteralNONEEmptyAndMeasurePeritonealDialysisFluid = "http://snomed.info/sct#3257008";
 
     /// <summary>
     /// Literal for code: ArteriographyOfCerebralArteries
@@ -10848,9 +12678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArteriographyOfCerebralArteries = "3258003";
 
     /// <summary>
+    /// Literal for code: NONEArteriographyOfCerebralArteries
+    /// </summary>
+    public const string LiteralNONEArteriographyOfCerebralArteries = "http://snomed.info/sct#3258003";
+
+    /// <summary>
     /// Literal for code: TransplantationOfTissueOfPelvicRegion
     /// </summary>
     public const string LiteralTransplantationOfTissueOfPelvicRegion = "3268008";
+
+    /// <summary>
+    /// Literal for code: NONETransplantationOfTissueOfPelvicRegion
+    /// </summary>
+    public const string LiteralNONETransplantationOfTissueOfPelvicRegion = "http://snomed.info/sct#3268008";
 
     /// <summary>
     /// Literal for code: ImplantationOfNeurostimulatorInSpine
@@ -10858,9 +12698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImplantationOfNeurostimulatorInSpine = "3270004";
 
     /// <summary>
+    /// Literal for code: NONEImplantationOfNeurostimulatorInSpine
+    /// </summary>
+    public const string LiteralNONEImplantationOfNeurostimulatorInSpine = "http://snomed.info/sct#3270004";
+
+    /// <summary>
     /// Literal for code: LysisOfAdhesionsOfBursaOfHand
     /// </summary>
     public const string LiteralLysisOfAdhesionsOfBursaOfHand = "3278006";
+
+    /// <summary>
+    /// Literal for code: NONELysisOfAdhesionsOfBursaOfHand
+    /// </summary>
+    public const string LiteralNONELysisOfAdhesionsOfBursaOfHand = "http://snomed.info/sct#3278006";
 
     /// <summary>
     /// Literal for code: Cholecystogastrostomy
@@ -10868,9 +12718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCholecystogastrostomy = "3287002";
 
     /// <summary>
+    /// Literal for code: NONECholecystogastrostomy
+    /// </summary>
+    public const string LiteralNONECholecystogastrostomy = "http://snomed.info/sct#3287002";
+
+    /// <summary>
     /// Literal for code: Autotransfusion
     /// </summary>
     public const string LiteralAutotransfusion = "3320000";
+
+    /// <summary>
+    /// Literal for code: NONEAutotransfusion
+    /// </summary>
+    public const string LiteralNONEAutotransfusion = "http://snomed.info/sct#3320000";
 
     /// <summary>
     /// Literal for code: LaserBeamPhotocoagulation
@@ -10878,9 +12738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLaserBeamPhotocoagulation = "3324009";
 
     /// <summary>
+    /// Literal for code: NONELaserBeamPhotocoagulation
+    /// </summary>
+    public const string LiteralNONELaserBeamPhotocoagulation = "http://snomed.info/sct#3324009";
+
+    /// <summary>
     /// Literal for code: ExcisionOfBunionette
     /// </summary>
     public const string LiteralExcisionOfBunionette = "3326006";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfBunionette
+    /// </summary>
+    public const string LiteralNONEExcisionOfBunionette = "http://snomed.info/sct#3326006";
 
     /// <summary>
     /// Literal for code: IncisionOfVeinOfHeadAndNeck
@@ -10888,9 +12758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionOfVeinOfHeadAndNeck = "3328007";
 
     /// <summary>
+    /// Literal for code: NONEIncisionOfVeinOfHeadAndNeck
+    /// </summary>
+    public const string LiteralNONEIncisionOfVeinOfHeadAndNeck = "http://snomed.info/sct#3328007";
+
+    /// <summary>
     /// Literal for code: ApplicationOfShortArmSplintForearmToHandStatic
     /// </summary>
     public const string LiteralApplicationOfShortArmSplintForearmToHandStatic = "3333006";
+
+    /// <summary>
+    /// Literal for code: NONEApplicationOfShortArmSplintForearmToHandStatic
+    /// </summary>
+    public const string LiteralNONEApplicationOfShortArmSplintForearmToHandStatic = "http://snomed.info/sct#3333006";
 
     /// <summary>
     /// Literal for code: OpenReductionOfOpenRadialShaftFracture
@@ -10898,9 +12778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOpenReductionOfOpenRadialShaftFracture = "3338002";
 
     /// <summary>
+    /// Literal for code: NONEOpenReductionOfOpenRadialShaftFracture
+    /// </summary>
+    public const string LiteralNONEOpenReductionOfOpenRadialShaftFracture = "http://snomed.info/sct#3338002";
+
+    /// <summary>
     /// Literal for code: PanorexExaminationOfMandible
     /// </summary>
     public const string LiteralPanorexExaminationOfMandible = "334003";
+
+    /// <summary>
+    /// Literal for code: NONEPanorexExaminationOfMandible
+    /// </summary>
+    public const string LiteralNONEPanorexExaminationOfMandible = "http://snomed.info/sct#334003";
 
     /// <summary>
     /// Literal for code: ParathyroidHormoneMeasurement
@@ -10908,9 +12798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralParathyroidHormoneMeasurement = "3352000";
 
     /// <summary>
+    /// Literal for code: NONEParathyroidHormoneMeasurement
+    /// </summary>
+    public const string LiteralNONEParathyroidHormoneMeasurement = "http://snomed.info/sct#3352000";
+
+    /// <summary>
     /// Literal for code: IronKineticsStudy
     /// </summary>
     public const string LiteralIronKineticsStudy = "3357006";
+
+    /// <summary>
+    /// Literal for code: NONEIronKineticsStudy
+    /// </summary>
+    public const string LiteralNONEIronKineticsStudy = "http://snomed.info/sct#3357006";
 
     /// <summary>
     /// Literal for code: AnastomosisOfBileDucts
@@ -10918,9 +12818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnastomosisOfBileDucts = "3360004";
 
     /// <summary>
+    /// Literal for code: NONEAnastomosisOfBileDucts
+    /// </summary>
+    public const string LiteralNONEAnastomosisOfBileDucts = "http://snomed.info/sct#3360004";
+
+    /// <summary>
     /// Literal for code: VerificationRoutine
     /// </summary>
     public const string LiteralVerificationRoutine = "3390006";
+
+    /// <summary>
+    /// Literal for code: NONEVerificationRoutine
+    /// </summary>
+    public const string LiteralNONEVerificationRoutine = "http://snomed.info/sct#3390006";
 
     /// <summary>
     /// Literal for code: ReductionOfTorsionOfOmentum
@@ -10928,9 +12838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReductionOfTorsionOfOmentum = "3399007";
 
     /// <summary>
+    /// Literal for code: NONEReductionOfTorsionOfOmentum
+    /// </summary>
+    public const string LiteralNONEReductionOfTorsionOfOmentum = "http://snomed.info/sct#3399007";
+
+    /// <summary>
     /// Literal for code: CreationOfLesionOfSpinalCordByPercutaneousMethod
     /// </summary>
     public const string LiteralCreationOfLesionOfSpinalCordByPercutaneousMethod = "3407002";
+
+    /// <summary>
+    /// Literal for code: NONECreationOfLesionOfSpinalCordByPercutaneousMethod
+    /// </summary>
+    public const string LiteralNONECreationOfLesionOfSpinalCordByPercutaneousMethod = "http://snomed.info/sct#3407002";
 
     /// <summary>
     /// Literal for code: BloodCellMorphology
@@ -10938,9 +12858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBloodCellMorphology = "3413006";
 
     /// <summary>
+    /// Literal for code: NONEBloodCellMorphology
+    /// </summary>
+    public const string LiteralNONEBloodCellMorphology = "http://snomed.info/sct#3413006";
+
+    /// <summary>
     /// Literal for code: ChondrectomyOfSpine
     /// </summary>
     public const string LiteralChondrectomyOfSpine = "3418002";
+
+    /// <summary>
+    /// Literal for code: NONEChondrectomyOfSpine
+    /// </summary>
+    public const string LiteralNONEChondrectomyOfSpine = "http://snomed.info/sct#3418002";
 
     /// <summary>
     /// Literal for code: AmobarbitalInterview
@@ -10948,9 +12878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAmobarbitalInterview = "342002";
 
     /// <summary>
+    /// Literal for code: NONEAmobarbitalInterview
+    /// </summary>
+    public const string LiteralNONEAmobarbitalInterview = "http://snomed.info/sct#342002";
+
+    /// <summary>
     /// Literal for code: PreventiveDentalService
     /// </summary>
     public const string LiteralPreventiveDentalService = "3432000";
+
+    /// <summary>
+    /// Literal for code: NONEPreventiveDentalService
+    /// </summary>
+    public const string LiteralNONEPreventiveDentalService = "http://snomed.info/sct#3432000";
 
     /// <summary>
     /// Literal for code: PulpCapDirectExcludingFinalRestoration
@@ -10958,9 +12898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPulpCapDirectExcludingFinalRestoration = "3443008";
 
     /// <summary>
+    /// Literal for code: NONEPulpCapDirectExcludingFinalRestoration
+    /// </summary>
+    public const string LiteralNONEPulpCapDirectExcludingFinalRestoration = "http://snomed.info/sct#3443008";
+
+    /// <summary>
     /// Literal for code: FixationOfContralateralTestis
     /// </summary>
     public const string LiteralFixationOfContralateralTestis = "3448004";
+
+    /// <summary>
+    /// Literal for code: NONEFixationOfContralateralTestis
+    /// </summary>
+    public const string LiteralNONEFixationOfContralateralTestis = "http://snomed.info/sct#3448004";
 
     /// <summary>
     /// Literal for code: LymphocytesTAndBCellEvaluation
@@ -10968,9 +12918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLymphocytesTAndBCellEvaluation = "3450007";
 
     /// <summary>
+    /// Literal for code: NONELymphocytesTAndBCellEvaluation
+    /// </summary>
+    public const string LiteralNONELymphocytesTAndBCellEvaluation = "http://snomed.info/sct#3450007";
+
+    /// <summary>
     /// Literal for code: PatientReferral
     /// </summary>
     public const string LiteralPatientReferral = "3457005";
+
+    /// <summary>
+    /// Literal for code: NONEPatientReferral
+    /// </summary>
+    public const string LiteralNONEPatientReferral = "http://snomed.info/sct#3457005";
 
     /// <summary>
     /// Literal for code: PeriodontalScalingAndRootPlaningPerQuadrant
@@ -10978,9 +12938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPeriodontalScalingAndRootPlaningPerQuadrant = "346004";
 
     /// <summary>
+    /// Literal for code: NONEPeriodontalScalingAndRootPlaningPerQuadrant
+    /// </summary>
+    public const string LiteralNONEPeriodontalScalingAndRootPlaningPerQuadrant = "http://snomed.info/sct#346004";
+
+    /// <summary>
     /// Literal for code: RemovalOfHeartAssistSystemWithReplacement
     /// </summary>
     public const string LiteralRemovalOfHeartAssistSystemWithReplacement = "3479000";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfHeartAssistSystemWithReplacement
+    /// </summary>
+    public const string LiteralNONERemovalOfHeartAssistSystemWithReplacement = "http://snomed.info/sct#3479000";
 
     /// <summary>
     /// Literal for code: RadionuclideDynamicFunctionStudy
@@ -10988,9 +12958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadionuclideDynamicFunctionStudy = "348003";
 
     /// <summary>
+    /// Literal for code: NONERadionuclideDynamicFunctionStudy
+    /// </summary>
+    public const string LiteralNONERadionuclideDynamicFunctionStudy = "http://snomed.info/sct#348003";
+
+    /// <summary>
     /// Literal for code: TotalExcisionOfPituitaryGlandByTranssphenoidalApproach
     /// </summary>
     public const string LiteralTotalExcisionOfPituitaryGlandByTranssphenoidalApproach = "3498003";
+
+    /// <summary>
+    /// Literal for code: NONETotalExcisionOfPituitaryGlandByTranssphenoidalApproach
+    /// </summary>
+    public const string LiteralNONETotalExcisionOfPituitaryGlandByTranssphenoidalApproach = "http://snomed.info/sct#3498003";
 
     /// <summary>
     /// Literal for code: AspirationOfVitreousWithReplacement
@@ -10998,9 +12978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAspirationOfVitreousWithReplacement = "3499006";
 
     /// <summary>
+    /// Literal for code: NONEAspirationOfVitreousWithReplacement
+    /// </summary>
+    public const string LiteralNONEAspirationOfVitreousWithReplacement = "http://snomed.info/sct#3499006";
+
+    /// <summary>
     /// Literal for code: StreptococcusVaccination
     /// </summary>
     public const string LiteralStreptococcusVaccination = "3509001";
+
+    /// <summary>
+    /// Literal for code: NONEStreptococcusVaccination
+    /// </summary>
+    public const string LiteralNONEStreptococcusVaccination = "http://snomed.info/sct#3509001";
 
     /// <summary>
     /// Literal for code: UrinaryUndiversionOfUreteralAnastomosis
@@ -11008,9 +12998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUrinaryUndiversionOfUreteralAnastomosis = "351005";
 
     /// <summary>
+    /// Literal for code: NONEUrinaryUndiversionOfUreteralAnastomosis
+    /// </summary>
+    public const string LiteralNONEUrinaryUndiversionOfUreteralAnastomosis = "http://snomed.info/sct#351005";
+
+    /// <summary>
     /// Literal for code: AngiographyOfArteriesOfExtremity
     /// </summary>
     public const string LiteralAngiographyOfArteriesOfExtremity = "3512003";
+
+    /// <summary>
+    /// Literal for code: NONEAngiographyOfArteriesOfExtremity
+    /// </summary>
+    public const string LiteralNONEAngiographyOfArteriesOfExtremity = "http://snomed.info/sct#3512003";
 
     /// <summary>
     /// Literal for code: ReplacementOfElectronicHeartDevicePulseGenerator
@@ -11018,9 +13018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReplacementOfElectronicHeartDevicePulseGenerator = "3515001";
 
     /// <summary>
+    /// Literal for code: NONEReplacementOfElectronicHeartDevicePulseGenerator
+    /// </summary>
+    public const string LiteralNONEReplacementOfElectronicHeartDevicePulseGenerator = "http://snomed.info/sct#3515001";
+
+    /// <summary>
     /// Literal for code: RemovalOfForeignBodyOfPelvisFromSubcutaneousTissue
     /// </summary>
     public const string LiteralRemovalOfForeignBodyOfPelvisFromSubcutaneousTissue = "3517009";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfForeignBodyOfPelvisFromSubcutaneousTissue
+    /// </summary>
+    public const string LiteralNONERemovalOfForeignBodyOfPelvisFromSubcutaneousTissue = "http://snomed.info/sct#3517009";
 
     /// <summary>
     /// Literal for code: AversivePsychotherapy
@@ -11028,9 +13038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAversivePsychotherapy = "3518004";
 
     /// <summary>
+    /// Literal for code: NONEAversivePsychotherapy
+    /// </summary>
+    public const string LiteralNONEAversivePsychotherapy = "http://snomed.info/sct#3518004";
+
+    /// <summary>
     /// Literal for code: ReagentRBCPreparationAntibodySensitizedPool
     /// </summary>
     public const string LiteralReagentRBCPreparationAntibodySensitizedPool = "352003";
+
+    /// <summary>
+    /// Literal for code: NONEReagentRBCPreparationAntibodySensitizedPool
+    /// </summary>
+    public const string LiteralNONEReagentRBCPreparationAntibodySensitizedPool = "http://snomed.info/sct#352003";
 
     /// <summary>
     /// Literal for code: AntibodyMeasurement
@@ -11038,9 +13058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAntibodyMeasurement = "3527003";
 
     /// <summary>
+    /// Literal for code: NONEAntibodyMeasurement
+    /// </summary>
+    public const string LiteralNONEAntibodyMeasurement = "http://snomed.info/sct#3527003";
+
+    /// <summary>
     /// Literal for code: IVIrrigationMonitoring
     /// </summary>
     public const string LiteralIVIrrigationMonitoring = "353008";
+
+    /// <summary>
+    /// Literal for code: NONEIVIrrigationMonitoring
+    /// </summary>
+    public const string LiteralNONEIVIrrigationMonitoring = "http://snomed.info/sct#353008";
 
     /// <summary>
     /// Literal for code: AortocoronaryArteryBypassGraftWithSaphenousVeinGraft
@@ -11048,9 +13078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAortocoronaryArteryBypassGraftWithSaphenousVeinGraft = "3546002";
 
     /// <summary>
+    /// Literal for code: NONEAortocoronaryArteryBypassGraftWithSaphenousVeinGraft
+    /// </summary>
+    public const string LiteralNONEAortocoronaryArteryBypassGraftWithSaphenousVeinGraft = "http://snomed.info/sct#3546002";
+
+    /// <summary>
     /// Literal for code: InsertionOfUreteralStentWithUreterotomy
     /// </summary>
     public const string LiteralInsertionOfUreteralStentWithUreterotomy = "3559005";
+
+    /// <summary>
+    /// Literal for code: NONEInsertionOfUreteralStentWithUreterotomy
+    /// </summary>
+    public const string LiteralNONEInsertionOfUreteralStentWithUreterotomy = "http://snomed.info/sct#3559005";
 
     /// <summary>
     /// Literal for code: RodneySmithOperationRadicalSubtotalPancreatectomy
@@ -11058,9 +13098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRodneySmithOperationRadicalSubtotalPancreatectomy = "3562008";
 
     /// <summary>
+    /// Literal for code: NONERodneySmithOperationRadicalSubtotalPancreatectomy
+    /// </summary>
+    public const string LiteralNONERodneySmithOperationRadicalSubtotalPancreatectomy = "http://snomed.info/sct#3562008";
+
+    /// <summary>
     /// Literal for code: RemovalOfForeignBodyFromFallopianTube
     /// </summary>
     public const string LiteralRemovalOfForeignBodyFromFallopianTube = "3564009";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfForeignBodyFromFallopianTube
+    /// </summary>
+    public const string LiteralNONERemovalOfForeignBodyFromFallopianTube = "http://snomed.info/sct#3564009";
 
     /// <summary>
     /// Literal for code: RepairOfFasciaWithGraftOfFascia
@@ -11068,9 +13118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepairOfFasciaWithGraftOfFascia = "3575008";
 
     /// <summary>
+    /// Literal for code: NONERepairOfFasciaWithGraftOfFascia
+    /// </summary>
+    public const string LiteralNONERepairOfFasciaWithGraftOfFascia = "http://snomed.info/sct#3575008";
+
+    /// <summary>
     /// Literal for code: RemovalOfCalculusOfPharynx
     /// </summary>
     public const string LiteralRemovalOfCalculusOfPharynx = "3580004";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfCalculusOfPharynx
+    /// </summary>
+    public const string LiteralNONERemovalOfCalculusOfPharynx = "http://snomed.info/sct#3580004";
 
     /// <summary>
     /// Literal for code: ReductionOfCiliaryBody
@@ -11078,9 +13138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReductionOfCiliaryBody = "3605001";
 
     /// <summary>
+    /// Literal for code: NONEReductionOfCiliaryBody
+    /// </summary>
+    public const string LiteralNONEReductionOfCiliaryBody = "http://snomed.info/sct#3605001";
+
+    /// <summary>
     /// Literal for code: TransplantationOfMesentericTissue
     /// </summary>
     public const string LiteralTransplantationOfMesentericTissue = "3607009";
+
+    /// <summary>
+    /// Literal for code: NONETransplantationOfMesentericTissue
+    /// </summary>
+    public const string LiteralNONETransplantationOfMesentericTissue = "http://snomed.info/sct#3607009";
 
     /// <summary>
     /// Literal for code: RedCellSurvivalStudyWithHepaticSequestration
@@ -11088,9 +13158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRedCellSurvivalStudyWithHepaticSequestration = "3620007";
 
     /// <summary>
+    /// Literal for code: NONERedCellSurvivalStudyWithHepaticSequestration
+    /// </summary>
+    public const string LiteralNONERedCellSurvivalStudyWithHepaticSequestration = "http://snomed.info/sct#3620007";
+
+    /// <summary>
     /// Literal for code: AnesthesiaForBrachialArteriogramsRetrograde
     /// </summary>
     public const string LiteralAnesthesiaForBrachialArteriogramsRetrograde = "3625002";
+
+    /// <summary>
+    /// Literal for code: NONEAnesthesiaForBrachialArteriogramsRetrograde
+    /// </summary>
+    public const string LiteralNONEAnesthesiaForBrachialArteriogramsRetrograde = "http://snomed.info/sct#3625002";
 
     /// <summary>
     /// Literal for code: MorphometricAnalysisNerve
@@ -11098,9 +13178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMorphometricAnalysisNerve = "3651000";
 
     /// <summary>
+    /// Literal for code: NONEMorphometricAnalysisNerve
+    /// </summary>
+    public const string LiteralNONEMorphometricAnalysisNerve = "http://snomed.info/sct#3651000";
+
+    /// <summary>
     /// Literal for code: LingulectomyOfLung
     /// </summary>
     public const string LiteralLingulectomyOfLung = "3654008";
+
+    /// <summary>
+    /// Literal for code: NONELingulectomyOfLung
+    /// </summary>
+    public const string LiteralNONELingulectomyOfLung = "http://snomed.info/sct#3654008";
 
     /// <summary>
     /// Literal for code: IncisionOfInnerEar
@@ -11108,9 +13198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionOfInnerEar = "3659003";
 
     /// <summary>
+    /// Literal for code: NONEIncisionOfInnerEar
+    /// </summary>
+    public const string LiteralNONEIncisionOfInnerEar = "http://snomed.info/sct#3659003";
+
+    /// <summary>
     /// Literal for code: RepairOfScleralFistula
     /// </summary>
     public const string LiteralRepairOfScleralFistula = "3664004";
+
+    /// <summary>
+    /// Literal for code: NONERepairOfScleralFistula
+    /// </summary>
+    public const string LiteralNONERepairOfScleralFistula = "http://snomed.info/sct#3664004";
 
     /// <summary>
     /// Literal for code: PeripheralNeurorrhaphy
@@ -11118,9 +13218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPeripheralNeurorrhaphy = "3666002";
 
     /// <summary>
+    /// Literal for code: NONEPeripheralNeurorrhaphy
+    /// </summary>
+    public const string LiteralNONEPeripheralNeurorrhaphy = "http://snomed.info/sct#3666002";
+
+    /// <summary>
     /// Literal for code: FittingOfProsthesisOrProstheticDeviceOfUpperArm
     /// </summary>
     public const string LiteralFittingOfProsthesisOrProstheticDeviceOfUpperArm = "3669009";
+
+    /// <summary>
+    /// Literal for code: NONEFittingOfProsthesisOrProstheticDeviceOfUpperArm
+    /// </summary>
+    public const string LiteralNONEFittingOfProsthesisOrProstheticDeviceOfUpperArm = "http://snomed.info/sct#3669009";
 
     /// <summary>
     /// Literal for code: LeadbetterUrethralReconstruction
@@ -11128,9 +13238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLeadbetterUrethralReconstruction = "3673007";
 
     /// <summary>
+    /// Literal for code: NONELeadbetterUrethralReconstruction
+    /// </summary>
+    public const string LiteralNONELeadbetterUrethralReconstruction = "http://snomed.info/sct#3673007";
+
+    /// <summary>
     /// Literal for code: SeleniumMeasurementUrine
     /// </summary>
     public const string LiteralSeleniumMeasurementUrine = "3683006";
+
+    /// <summary>
+    /// Literal for code: NONESeleniumMeasurementUrine
+    /// </summary>
+    public const string LiteralNONESeleniumMeasurementUrine = "http://snomed.info/sct#3683006";
 
     /// <summary>
     /// Literal for code: ZancolliOperationForTendonTransferOfBiceps
@@ -11138,9 +13258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralZancolliOperationForTendonTransferOfBiceps = "3686003";
 
     /// <summary>
+    /// Literal for code: NONEZancolliOperationForTendonTransferOfBiceps
+    /// </summary>
+    public const string LiteralNONEZancolliOperationForTendonTransferOfBiceps = "http://snomed.info/sct#3686003";
+
+    /// <summary>
     /// Literal for code: AnesthesiaForLensSurgery
     /// </summary>
     public const string LiteralAnesthesiaForLensSurgery = "3688002";
+
+    /// <summary>
+    /// Literal for code: NONEAnesthesiaForLensSurgery
+    /// </summary>
+    public const string LiteralNONEAnesthesiaForLensSurgery = "http://snomed.info/sct#3688002";
 
     /// <summary>
     /// Literal for code: ShuntOfLeftSubclavianToDescendingAortaByBlalockParkOperation
@@ -11148,9 +13278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShuntOfLeftSubclavianToDescendingAortaByBlalockParkOperation = "3690001";
 
     /// <summary>
+    /// Literal for code: NONEShuntOfLeftSubclavianToDescendingAortaByBlalockParkOperation
+    /// </summary>
+    public const string LiteralNONEShuntOfLeftSubclavianToDescendingAortaByBlalockParkOperation = "http://snomed.info/sct#3690001";
+
+    /// <summary>
     /// Literal for code: WedgeOsteotomyOfTarsalsAndMetatarsals
     /// </summary>
     public const string LiteralWedgeOsteotomyOfTarsalsAndMetatarsals = "3691002";
+
+    /// <summary>
+    /// Literal for code: NONEWedgeOsteotomyOfTarsalsAndMetatarsals
+    /// </summary>
+    public const string LiteralNONEWedgeOsteotomyOfTarsalsAndMetatarsals = "http://snomed.info/sct#3691002";
 
     /// <summary>
     /// Literal for code: TissueProcessingTechniqueRoutineEmbedCutAndStainPerAutopsy
@@ -11158,9 +13298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTissueProcessingTechniqueRoutineEmbedCutAndStainPerAutopsy = "3697003";
 
     /// <summary>
+    /// Literal for code: NONETissueProcessingTechniqueRoutineEmbedCutAndStainPerAutopsy
+    /// </summary>
+    public const string LiteralNONETissueProcessingTechniqueRoutineEmbedCutAndStainPerAutopsy = "http://snomed.info/sct#3697003";
+
+    /// <summary>
     /// Literal for code: ErysiphakeExtractionOfCataractByIntracapsularApproach
     /// </summary>
     public const string LiteralErysiphakeExtractionOfCataractByIntracapsularApproach = "3700004";
+
+    /// <summary>
+    /// Literal for code: NONEErysiphakeExtractionOfCataractByIntracapsularApproach
+    /// </summary>
+    public const string LiteralNONEErysiphakeExtractionOfCataractByIntracapsularApproach = "http://snomed.info/sct#3700004";
 
     /// <summary>
     /// Literal for code: RemovalOfForeignBodyOfHipFromSubcutaneousTissue
@@ -11168,9 +13318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemovalOfForeignBodyOfHipFromSubcutaneousTissue = "3701000";
 
     /// <summary>
+    /// Literal for code: NONERemovalOfForeignBodyOfHipFromSubcutaneousTissue
+    /// </summary>
+    public const string LiteralNONERemovalOfForeignBodyOfHipFromSubcutaneousTissue = "http://snomed.info/sct#3701000";
+
+    /// <summary>
     /// Literal for code: ReleaseForDeQuervainQuoteSTenosynovitisOfHand
     /// </summary>
     public const string LiteralReleaseForDeQuervainQuoteSTenosynovitisOfHand = "3713005";
+
+    /// <summary>
+    /// Literal for code: NONEReleaseForDeQuervainQuoteSTenosynovitisOfHand
+    /// </summary>
+    public const string LiteralNONEReleaseForDeQuervainQuoteSTenosynovitisOfHand = "http://snomed.info/sct#3713005";
 
     /// <summary>
     /// Literal for code: DiluteRussellViperVenomTime
@@ -11178,9 +13338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiluteRussellViperVenomTime = "3717006";
 
     /// <summary>
+    /// Literal for code: NONEDiluteRussellViperVenomTime
+    /// </summary>
+    public const string LiteralNONEDiluteRussellViperVenomTime = "http://snomed.info/sct#3717006";
+
+    /// <summary>
     /// Literal for code: PartialThicknessSkinGraft
     /// </summary>
     public const string LiteralPartialThicknessSkinGraft = "3734003";
+
+    /// <summary>
+    /// Literal for code: NONEPartialThicknessSkinGraft
+    /// </summary>
+    public const string LiteralNONEPartialThicknessSkinGraft = "http://snomed.info/sct#3734003";
 
     /// <summary>
     /// Literal for code: CoproporphyrinIIIMeasurement
@@ -11188,9 +13358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCoproporphyrinIIIMeasurement = "3735002";
 
     /// <summary>
+    /// Literal for code: NONECoproporphyrinIIIMeasurement
+    /// </summary>
+    public const string LiteralNONECoproporphyrinIIIMeasurement = "http://snomed.info/sct#3735002";
+
+    /// <summary>
     /// Literal for code: RemovalOfForeignBodyOfCanthusByIncision
     /// </summary>
     public const string LiteralRemovalOfForeignBodyOfCanthusByIncision = "3740005";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfForeignBodyOfCanthusByIncision
+    /// </summary>
+    public const string LiteralNONERemovalOfForeignBodyOfCanthusByIncision = "http://snomed.info/sct#3740005";
 
     /// <summary>
     /// Literal for code: CostosternoplastyForPectusExcavatumRepair
@@ -11198,9 +13378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCostosternoplastyForPectusExcavatumRepair = "374009";
 
     /// <summary>
+    /// Literal for code: NONECostosternoplastyForPectusExcavatumRepair
+    /// </summary>
+    public const string LiteralNONECostosternoplastyForPectusExcavatumRepair = "http://snomed.info/sct#374009";
+
+    /// <summary>
     /// Literal for code: BiopsyOfPerirenalTissue
     /// </summary>
     public const string LiteralBiopsyOfPerirenalTissue = "3748003";
+
+    /// <summary>
+    /// Literal for code: NONEBiopsyOfPerirenalTissue
+    /// </summary>
+    public const string LiteralNONEBiopsyOfPerirenalTissue = "http://snomed.info/sct#3748003";
 
     /// <summary>
     /// Literal for code: ReductionOfClosedIschialFracture
@@ -11208,9 +13398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReductionOfClosedIschialFracture = "3749006";
 
     /// <summary>
+    /// Literal for code: NONEReductionOfClosedIschialFracture
+    /// </summary>
+    public const string LiteralNONEReductionOfClosedIschialFracture = "http://snomed.info/sct#3749006";
+
+    /// <summary>
     /// Literal for code: ThrombectomyWithCatheterOfSubclavianArteryByNeckIncision
     /// </summary>
     public const string LiteralThrombectomyWithCatheterOfSubclavianArteryByNeckIncision = "3758004";
+
+    /// <summary>
+    /// Literal for code: NONEThrombectomyWithCatheterOfSubclavianArteryByNeckIncision
+    /// </summary>
+    public const string LiteralNONEThrombectomyWithCatheterOfSubclavianArteryByNeckIncision = "http://snomed.info/sct#3758004";
 
     /// <summary>
     /// Literal for code: WardUrineDipStickTesting
@@ -11218,9 +13418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWardUrineDipStickTesting = "3770000";
 
     /// <summary>
+    /// Literal for code: NONEWardUrineDipStickTesting
+    /// </summary>
+    public const string LiteralNONEWardUrineDipStickTesting = "http://snomed.info/sct#3770000";
+
+    /// <summary>
     /// Literal for code: ManipulationOfScrotalTissue
     /// </summary>
     public const string LiteralManipulationOfScrotalTissue = "3778007";
+
+    /// <summary>
+    /// Literal for code: NONEManipulationOfScrotalTissue
+    /// </summary>
+    public const string LiteralNONEManipulationOfScrotalTissue = "http://snomed.info/sct#3778007";
 
     /// <summary>
     /// Literal for code: RoutinePatientDispositionNoFollowUpPlanned
@@ -11228,9 +13438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRoutinePatientDispositionNoFollowUpPlanned = "3780001";
 
     /// <summary>
+    /// Literal for code: NONERoutinePatientDispositionNoFollowUpPlanned
+    /// </summary>
+    public const string LiteralNONERoutinePatientDispositionNoFollowUpPlanned = "http://snomed.info/sct#3780001";
+
+    /// <summary>
     /// Literal for code: DelayedHypersensitivitySkinTestForSKSD
     /// </summary>
     public const string LiteralDelayedHypersensitivitySkinTestForSKSD = "3784005";
+
+    /// <summary>
+    /// Literal for code: NONEDelayedHypersensitivitySkinTestForSKSD
+    /// </summary>
+    public const string LiteralNONEDelayedHypersensitivitySkinTestForSKSD = "http://snomed.info/sct#3784005";
 
     /// <summary>
     /// Literal for code: ExcisionOfLesionOfPharynx
@@ -11238,9 +13458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfLesionOfPharynx = "3786007";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfLesionOfPharynx
+    /// </summary>
+    public const string LiteralNONEExcisionOfLesionOfPharynx = "http://snomed.info/sct#3786007";
+
+    /// <summary>
     /// Literal for code: UltrasonicGuidanceForNeedleBiopsy
     /// </summary>
     public const string LiteralUltrasonicGuidanceForNeedleBiopsy = "3787003";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasonicGuidanceForNeedleBiopsy
+    /// </summary>
+    public const string LiteralNONEUltrasonicGuidanceForNeedleBiopsy = "http://snomed.info/sct#3787003";
 
     /// <summary>
     /// Literal for code: PregnanetriolMeasurement
@@ -11248,9 +13478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPregnanetriolMeasurement = "3794000";
 
     /// <summary>
+    /// Literal for code: NONEPregnanetriolMeasurement
+    /// </summary>
+    public const string LiteralNONEPregnanetriolMeasurement = "http://snomed.info/sct#3794000";
+
+    /// <summary>
     /// Literal for code: ExcisionOfRedundantMucosaFromJejunostomy
     /// </summary>
     public const string LiteralExcisionOfRedundantMucosaFromJejunostomy = "3796003";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfRedundantMucosaFromJejunostomy
+    /// </summary>
+    public const string LiteralNONEExcisionOfRedundantMucosaFromJejunostomy = "http://snomed.info/sct#3796003";
 
     /// <summary>
     /// Literal for code: RadiographyOfAdenoids
@@ -11258,9 +13498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographyOfAdenoids = "3799005";
 
     /// <summary>
+    /// Literal for code: NONERadiographyOfAdenoids
+    /// </summary>
+    public const string LiteralNONERadiographyOfAdenoids = "http://snomed.info/sct#3799005";
+
+    /// <summary>
     /// Literal for code: DentalApplicationOfDesensitizingMedicament
     /// </summary>
     public const string LiteralDentalApplicationOfDesensitizingMedicament = "3802001";
+
+    /// <summary>
+    /// Literal for code: NONEDentalApplicationOfDesensitizingMedicament
+    /// </summary>
+    public const string LiteralNONEDentalApplicationOfDesensitizingMedicament = "http://snomed.info/sct#3802001";
 
     /// <summary>
     /// Literal for code: EmbolizationOfThoracicArtery
@@ -11268,9 +13518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEmbolizationOfThoracicArtery = "3819004";
 
     /// <summary>
+    /// Literal for code: NONEEmbolizationOfThoracicArtery
+    /// </summary>
+    public const string LiteralNONEEmbolizationOfThoracicArtery = "http://snomed.info/sct#3819004";
+
+    /// <summary>
     /// Literal for code: BlepharotomyWithDrainageOfAbscessOfEyelid
     /// </summary>
     public const string LiteralBlepharotomyWithDrainageOfAbscessOfEyelid = "3826004";
+
+    /// <summary>
+    /// Literal for code: NONEBlepharotomyWithDrainageOfAbscessOfEyelid
+    /// </summary>
+    public const string LiteralNONEBlepharotomyWithDrainageOfAbscessOfEyelid = "http://snomed.info/sct#3826004";
 
     /// <summary>
     /// Literal for code: OpenBiopsyOfVertebralBodyOfThoracicRegion
@@ -11278,9 +13538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOpenBiopsyOfVertebralBodyOfThoracicRegion = "3828003";
 
     /// <summary>
+    /// Literal for code: NONEOpenBiopsyOfVertebralBodyOfThoracicRegion
+    /// </summary>
+    public const string LiteralNONEOpenBiopsyOfVertebralBodyOfThoracicRegion = "http://snomed.info/sct#3828003";
+
+    /// <summary>
     /// Literal for code: ChiropracticApplicationOfIce
     /// </summary>
     public const string LiteralChiropracticApplicationOfIce = "3831002";
+
+    /// <summary>
+    /// Literal for code: NONEChiropracticApplicationOfIce
+    /// </summary>
+    public const string LiteralNONEChiropracticApplicationOfIce = "http://snomed.info/sct#3831002";
 
     /// <summary>
     /// Literal for code: RemovalOfForeignBodyFromFascia
@@ -11288,9 +13558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemovalOfForeignBodyFromFascia = "3843001";
 
     /// <summary>
+    /// Literal for code: NONERemovalOfForeignBodyFromFascia
+    /// </summary>
+    public const string LiteralNONERemovalOfForeignBodyFromFascia = "http://snomed.info/sct#3843001";
+
+    /// <summary>
     /// Literal for code: EchographyOfThyroidAMode
     /// </summary>
     public const string LiteralEchographyOfThyroidAMode = "3858009";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyOfThyroidAMode
+    /// </summary>
+    public const string LiteralNONEEchographyOfThyroidAMode = "http://snomed.info/sct#3858009";
 
     /// <summary>
     /// Literal for code: AneurysmectomyWithAnastomosisOfLowerLimbArtery
@@ -11298,9 +13578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAneurysmectomyWithAnastomosisOfLowerLimbArtery = "3861005";
 
     /// <summary>
+    /// Literal for code: NONEAneurysmectomyWithAnastomosisOfLowerLimbArtery
+    /// </summary>
+    public const string LiteralNONEAneurysmectomyWithAnastomosisOfLowerLimbArtery = "http://snomed.info/sct#3861005";
+
+    /// <summary>
     /// Literal for code: TotalVitalCapacityMeasurement
     /// </summary>
     public const string LiteralTotalVitalCapacityMeasurement = "3862003";
+
+    /// <summary>
+    /// Literal for code: NONETotalVitalCapacityMeasurement
+    /// </summary>
+    public const string LiteralNONETotalVitalCapacityMeasurement = "http://snomed.info/sct#3862003";
 
     /// <summary>
     /// Literal for code: ExcisionalBiopsyOfScrotum
@@ -11308,9 +13598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionalBiopsyOfScrotum = "3864002";
 
     /// <summary>
+    /// Literal for code: NONEExcisionalBiopsyOfScrotum
+    /// </summary>
+    public const string LiteralNONEExcisionalBiopsyOfScrotum = "http://snomed.info/sct#3864002";
+
+    /// <summary>
     /// Literal for code: ExcisionOfLesionOfFibula
     /// </summary>
     public const string LiteralExcisionOfLesionOfFibula = "3880007";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfLesionOfFibula
+    /// </summary>
+    public const string LiteralNONEExcisionOfLesionOfFibula = "http://snomed.info/sct#3880007";
 
     /// <summary>
     /// Literal for code: Blepharorrhaphy
@@ -11318,9 +13618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBlepharorrhaphy = "388008";
 
     /// <summary>
+    /// Literal for code: NONEBlepharorrhaphy
+    /// </summary>
+    public const string LiteralNONEBlepharorrhaphy = "http://snomed.info/sct#388008";
+
+    /// <summary>
     /// Literal for code: IncisionAndDrainageOfSubmentalSpaceByExtraoralApproach
     /// </summary>
     public const string LiteralIncisionAndDrainageOfSubmentalSpaceByExtraoralApproach = "3881006";
+
+    /// <summary>
+    /// Literal for code: NONEIncisionAndDrainageOfSubmentalSpaceByExtraoralApproach
+    /// </summary>
+    public const string LiteralNONEIncisionAndDrainageOfSubmentalSpaceByExtraoralApproach = "http://snomed.info/sct#3881006";
 
     /// <summary>
     /// Literal for code: LigationOfWart
@@ -11328,9 +13638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLigationOfWart = "3887005";
 
     /// <summary>
+    /// Literal for code: NONELigationOfWart
+    /// </summary>
+    public const string LiteralNONELigationOfWart = "http://snomed.info/sct#3887005";
+
+    /// <summary>
     /// Literal for code: SutureOfLip
     /// </summary>
     public const string LiteralSutureOfLip = "3889008";
+
+    /// <summary>
+    /// Literal for code: NONESutureOfLip
+    /// </summary>
+    public const string LiteralNONESutureOfLip = "http://snomed.info/sct#3889008";
 
     /// <summary>
     /// Literal for code: TobramycinMeasurement
@@ -11338,9 +13658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTobramycinMeasurement = "389000";
 
     /// <summary>
+    /// Literal for code: NONETobramycinMeasurement
+    /// </summary>
+    public const string LiteralNONETobramycinMeasurement = "http://snomed.info/sct#389000";
+
+    /// <summary>
     /// Literal for code: ComprehensiveOrthodonticTreatmentPermanentDentitionForClassIMalocclusion
     /// </summary>
     public const string LiteralComprehensiveOrthodonticTreatmentPermanentDentitionForClassIMalocclusion = "3891000";
+
+    /// <summary>
+    /// Literal for code: NONEComprehensiveOrthodonticTreatmentPermanentDentitionForClassIMalocclusion
+    /// </summary>
+    public const string LiteralNONEComprehensiveOrthodonticTreatmentPermanentDentitionForClassIMalocclusion = "http://snomed.info/sct#3891000";
 
     /// <summary>
     /// Literal for code: ApplicationOfDressing
@@ -11348,9 +13678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralApplicationOfDressing = "3895009";
 
     /// <summary>
+    /// Literal for code: NONEApplicationOfDressing
+    /// </summary>
+    public const string LiteralNONEApplicationOfDressing = "http://snomed.info/sct#3895009";
+
+    /// <summary>
     /// Literal for code: IncisionAndDrainageOfRetroperitonealAbscess
     /// </summary>
     public const string LiteralIncisionAndDrainageOfRetroperitonealAbscess = "3907006";
+
+    /// <summary>
+    /// Literal for code: NONEIncisionAndDrainageOfRetroperitonealAbscess
+    /// </summary>
+    public const string LiteralNONEIncisionAndDrainageOfRetroperitonealAbscess = "http://snomed.info/sct#3907006";
 
     /// <summary>
     /// Literal for code: MuscleTransplantation
@@ -11358,9 +13698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMuscleTransplantation = "3911000";
 
     /// <summary>
+    /// Literal for code: NONEMuscleTransplantation
+    /// </summary>
+    public const string LiteralNONEMuscleTransplantation = "http://snomed.info/sct#3911000";
+
+    /// <summary>
     /// Literal for code: ExcisionOfArteryOfThoraxAndAbdomen
     /// </summary>
     public const string LiteralExcisionOfArteryOfThoraxAndAbdomen = "3915009";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfArteryOfThoraxAndAbdomen
+    /// </summary>
+    public const string LiteralNONEExcisionOfArteryOfThoraxAndAbdomen = "http://snomed.info/sct#3915009";
 
     /// <summary>
     /// Literal for code: ExcisionalBiopsyOfPhalangesOfFoot
@@ -11368,9 +13718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionalBiopsyOfPhalangesOfFoot = "3917001";
 
     /// <summary>
+    /// Literal for code: NONEExcisionalBiopsyOfPhalangesOfFoot
+    /// </summary>
+    public const string LiteralNONEExcisionalBiopsyOfPhalangesOfFoot = "http://snomed.info/sct#3917001";
+
+    /// <summary>
     /// Literal for code: PlasticRepairWithLengthening
     /// </summary>
     public const string LiteralPlasticRepairWithLengthening = "3918006";
+
+    /// <summary>
+    /// Literal for code: NONEPlasticRepairWithLengthening
+    /// </summary>
+    public const string LiteralNONEPlasticRepairWithLengthening = "http://snomed.info/sct#3918006";
 
     /// <summary>
     /// Literal for code: LacticAcidMeasurement
@@ -11378,9 +13738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLacticAcidMeasurement = "3926003";
 
     /// <summary>
+    /// Literal for code: NONELacticAcidMeasurement
+    /// </summary>
+    public const string LiteralNONELacticAcidMeasurement = "http://snomed.info/sct#3926003";
+
+    /// <summary>
     /// Literal for code: PatientTransferInHospitalBedToBed
     /// </summary>
     public const string LiteralPatientTransferInHospitalBedToBed = "3929005";
+
+    /// <summary>
+    /// Literal for code: NONEPatientTransferInHospitalBedToBed
+    /// </summary>
+    public const string LiteralNONEPatientTransferInHospitalBedToBed = "http://snomed.info/sct#3929005";
 
     /// <summary>
     /// Literal for code: MakingFosterBed
@@ -11388,9 +13758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMakingFosterBed = "3936006";
 
     /// <summary>
+    /// Literal for code: NONEMakingFosterBed
+    /// </summary>
+    public const string LiteralNONEMakingFosterBed = "http://snomed.info/sct#3936006";
+
+    /// <summary>
     /// Literal for code: CerclageForRetinalReattachment
     /// </summary>
     public const string LiteralCerclageForRetinalReattachment = "3938007";
+
+    /// <summary>
+    /// Literal for code: NONECerclageForRetinalReattachment
+    /// </summary>
+    public const string LiteralNONECerclageForRetinalReattachment = "http://snomed.info/sct#3938007";
 
     /// <summary>
     /// Literal for code: Cystopexy
@@ -11398,9 +13778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCystopexy = "3942005";
 
     /// <summary>
+    /// Literal for code: NONECystopexy
+    /// </summary>
+    public const string LiteralNONECystopexy = "http://snomed.info/sct#3942005";
+
+    /// <summary>
     /// Literal for code: AntibodyElutionRBC
     /// </summary>
     public const string LiteralAntibodyElutionRBC = "3955006";
+
+    /// <summary>
+    /// Literal for code: NONEAntibodyElutionRBC
+    /// </summary>
+    public const string LiteralNONEAntibodyElutionRBC = "http://snomed.info/sct#3955006";
 
     /// <summary>
     /// Literal for code: ArteriectomyOfThoracoabdominalAorta
@@ -11408,9 +13798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArteriectomyOfThoracoabdominalAorta = "3957003";
 
     /// <summary>
+    /// Literal for code: NONEArteriectomyOfThoracoabdominalAorta
+    /// </summary>
+    public const string LiteralNONEArteriectomyOfThoracoabdominalAorta = "http://snomed.info/sct#3957003";
+
+    /// <summary>
     /// Literal for code: OperationOnSubmaxillaryGland
     /// </summary>
     public const string LiteralOperationOnSubmaxillaryGland = "3963007";
+
+    /// <summary>
+    /// Literal for code: NONEOperationOnSubmaxillaryGland
+    /// </summary>
+    public const string LiteralNONEOperationOnSubmaxillaryGland = "http://snomed.info/sct#3963007";
 
     /// <summary>
     /// Literal for code: FluorescencePolarizationImmunoassay
@@ -11418,9 +13818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluorescencePolarizationImmunoassay = "3967008";
 
     /// <summary>
+    /// Literal for code: NONEFluorescencePolarizationImmunoassay
+    /// </summary>
+    public const string LiteralNONEFluorescencePolarizationImmunoassay = "http://snomed.info/sct#3967008";
+
+    /// <summary>
     /// Literal for code: FacetectomyOfVertebra
     /// </summary>
     public const string LiteralFacetectomyOfVertebra = "3968003";
+
+    /// <summary>
+    /// Literal for code: NONEFacetectomyOfVertebra
+    /// </summary>
+    public const string LiteralNONEFacetectomyOfVertebra = "http://snomed.info/sct#3968003";
 
     /// <summary>
     /// Literal for code: RemovalOfOsteocartilagenousLooseBodyFromJointStructures
@@ -11428,9 +13838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemovalOfOsteocartilagenousLooseBodyFromJointStructures = "3969006";
 
     /// <summary>
+    /// Literal for code: NONERemovalOfOsteocartilagenousLooseBodyFromJointStructures
+    /// </summary>
+    public const string LiteralNONERemovalOfOsteocartilagenousLooseBodyFromJointStructures = "http://snomed.info/sct#3969006";
+
+    /// <summary>
     /// Literal for code: DuchenneMuscularDystrophyCarrierDetection
     /// </summary>
     public const string LiteralDuchenneMuscularDystrophyCarrierDetection = "3971006";
+
+    /// <summary>
+    /// Literal for code: NONEDuchenneMuscularDystrophyCarrierDetection
+    /// </summary>
+    public const string LiteralNONEDuchenneMuscularDystrophyCarrierDetection = "http://snomed.info/sct#3971006";
 
     /// <summary>
     /// Literal for code: SubtotalResectionOfEsophagus
@@ -11438,9 +13858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSubtotalResectionOfEsophagus = "3980006";
 
     /// <summary>
+    /// Literal for code: NONESubtotalResectionOfEsophagus
+    /// </summary>
+    public const string LiteralNONESubtotalResectionOfEsophagus = "http://snomed.info/sct#3980006";
+
+    /// <summary>
     /// Literal for code: CarrierDetectionMolecularGenetics
     /// </summary>
     public const string LiteralCarrierDetectionMolecularGenetics = "3981005";
+
+    /// <summary>
+    /// Literal for code: NONECarrierDetectionMolecularGenetics
+    /// </summary>
+    public const string LiteralNONECarrierDetectionMolecularGenetics = "http://snomed.info/sct#3981005";
 
     /// <summary>
     /// Literal for code: AnesthesiaForProcedureOnArteriesOfLowerLegWithBypassGraft
@@ -11448,9 +13878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnesthesiaForProcedureOnArteriesOfLowerLegWithBypassGraft = "3985001";
 
     /// <summary>
+    /// Literal for code: NONEAnesthesiaForProcedureOnArteriesOfLowerLegWithBypassGraft
+    /// </summary>
+    public const string LiteralNONEAnesthesiaForProcedureOnArteriesOfLowerLegWithBypassGraft = "http://snomed.info/sct#3985001";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingOfPelvisProstateAndBladder
     /// </summary>
     public const string LiteralMagneticResonanceImagingOfPelvisProstateAndBladder = "3991004";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfPelvisProstateAndBladder
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfPelvisProstateAndBladder = "http://snomed.info/sct#3991004";
 
     /// <summary>
     /// Literal for code: BoneImagingOfLimitedArea
@@ -11458,9 +13898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBoneImagingOfLimitedArea = "3998005";
 
     /// <summary>
+    /// Literal for code: NONEBoneImagingOfLimitedArea
+    /// </summary>
+    public const string LiteralNONEBoneImagingOfLimitedArea = "http://snomed.info/sct#3998005";
+
+    /// <summary>
     /// Literal for code: AntiHumanGlobulinTestIndirectTiterNonGamma
     /// </summary>
     public const string LiteralAntiHumanGlobulinTestIndirectTiterNonGamma = "4007002";
+
+    /// <summary>
+    /// Literal for code: NONEAntiHumanGlobulinTestIndirectTiterNonGamma
+    /// </summary>
+    public const string LiteralNONEAntiHumanGlobulinTestIndirectTiterNonGamma = "http://snomed.info/sct#4007002";
 
     /// <summary>
     /// Literal for code: PhlebographyOfNeck
@@ -11468,9 +13918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhlebographyOfNeck = "4008007";
 
     /// <summary>
+    /// Literal for code: NONEPhlebographyOfNeck
+    /// </summary>
+    public const string LiteralNONEPhlebographyOfNeck = "http://snomed.info/sct#4008007";
+
+    /// <summary>
     /// Literal for code: OophorectomyOfRemainingOvaryWithTube
     /// </summary>
     public const string LiteralOophorectomyOfRemainingOvaryWithTube = "4010009";
+
+    /// <summary>
+    /// Literal for code: NONEOophorectomyOfRemainingOvaryWithTube
+    /// </summary>
+    public const string LiteralNONEOophorectomyOfRemainingOvaryWithTube = "http://snomed.info/sct#4010009";
 
     /// <summary>
     /// Literal for code: DistalSubtotalPancreatectomy
@@ -11478,9 +13938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDistalSubtotalPancreatectomy = "401004";
 
     /// <summary>
+    /// Literal for code: NONEDistalSubtotalPancreatectomy
+    /// </summary>
+    public const string LiteralNONEDistalSubtotalPancreatectomy = "http://snomed.info/sct#401004";
+
+    /// <summary>
     /// Literal for code: ImplantationOfElectronicStimulatorIntoPhrenicNerve
     /// </summary>
     public const string LiteralImplantationOfElectronicStimulatorIntoPhrenicNerve = "4027001";
+
+    /// <summary>
+    /// Literal for code: NONEImplantationOfElectronicStimulatorIntoPhrenicNerve
+    /// </summary>
+    public const string LiteralNONEImplantationOfElectronicStimulatorIntoPhrenicNerve = "http://snomed.info/sct#4027001";
 
     /// <summary>
     /// Literal for code: ClosedReductionOfFacialFractureExceptMandible
@@ -11488,9 +13958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClosedReductionOfFacialFractureExceptMandible = "4034004";
 
     /// <summary>
+    /// Literal for code: NONEClosedReductionOfFacialFractureExceptMandible
+    /// </summary>
+    public const string LiteralNONEClosedReductionOfFacialFractureExceptMandible = "http://snomed.info/sct#4034004";
+
+    /// <summary>
     /// Literal for code: RestorationResinTwoSurfacesPosteriorPermanent
     /// </summary>
     public const string LiteralRestorationResinTwoSurfacesPosteriorPermanent = "4035003";
+
+    /// <summary>
+    /// Literal for code: NONERestorationResinTwoSurfacesPosteriorPermanent
+    /// </summary>
+    public const string LiteralNONERestorationResinTwoSurfacesPosteriorPermanent = "http://snomed.info/sct#4035003";
 
     /// <summary>
     /// Literal for code: ArthroscopyOfElbowWithExtensiveDebridement
@@ -11498,9 +13978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArthroscopyOfElbowWithExtensiveDebridement = "4036002";
 
     /// <summary>
+    /// Literal for code: NONEArthroscopyOfElbowWithExtensiveDebridement
+    /// </summary>
+    public const string LiteralNONEArthroscopyOfElbowWithExtensiveDebridement = "http://snomed.info/sct#4036002";
+
+    /// <summary>
     /// Literal for code: RemovalOfVascularGraftOrProsthesis
     /// </summary>
     public const string LiteralRemovalOfVascularGraftOrProsthesis = "4037006";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfVascularGraftOrProsthesis
+    /// </summary>
+    public const string LiteralNONERemovalOfVascularGraftOrProsthesis = "http://snomed.info/sct#4037006";
 
     /// <summary>
     /// Literal for code: PermanentColostomy
@@ -11508,9 +13998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPermanentColostomy = "4044002";
 
     /// <summary>
+    /// Literal for code: NONEPermanentColostomy
+    /// </summary>
+    public const string LiteralNONEPermanentColostomy = "http://snomed.info/sct#4044002";
+
+    /// <summary>
     /// Literal for code: DrainageOfCerebralVentricleByIncision
     /// </summary>
     public const string LiteralDrainageOfCerebralVentricleByIncision = "4045001";
+
+    /// <summary>
+    /// Literal for code: NONEDrainageOfCerebralVentricleByIncision
+    /// </summary>
+    public const string LiteralNONEDrainageOfCerebralVentricleByIncision = "http://snomed.info/sct#4045001";
 
     /// <summary>
     /// Literal for code: PercutaneousAspirationOfSpinalCordCyst
@@ -11518,9 +14018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPercutaneousAspirationOfSpinalCordCyst = "4052004";
 
     /// <summary>
+    /// Literal for code: NONEPercutaneousAspirationOfSpinalCordCyst
+    /// </summary>
+    public const string LiteralNONEPercutaneousAspirationOfSpinalCordCyst = "http://snomed.info/sct#4052004";
+
+    /// <summary>
     /// Literal for code: FulgurationOfStomachLesion
     /// </summary>
     public const string LiteralFulgurationOfStomachLesion = "406009";
+
+    /// <summary>
+    /// Literal for code: NONEFulgurationOfStomachLesion
+    /// </summary>
+    public const string LiteralNONEFulgurationOfStomachLesion = "http://snomed.info/sct#406009";
 
     /// <summary>
     /// Literal for code: SpecimenAliquoting
@@ -11528,9 +14038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpecimenAliquoting = "4064007";
 
     /// <summary>
+    /// Literal for code: NONESpecimenAliquoting
+    /// </summary>
+    public const string LiteralNONESpecimenAliquoting = "http://snomed.info/sct#4064007";
+
+    /// <summary>
     /// Literal for code: RemovalOfVentricularReservoirWithSynchronousReplacement
     /// </summary>
     public const string LiteralRemovalOfVentricularReservoirWithSynchronousReplacement = "4068005";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfVentricularReservoirWithSynchronousReplacement
+    /// </summary>
+    public const string LiteralNONERemovalOfVentricularReservoirWithSynchronousReplacement = "http://snomed.info/sct#4068005";
 
     /// <summary>
     /// Literal for code: FittingOfProsthesisOrProstheticDeviceOfLowerArm
@@ -11538,9 +14058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFittingOfProsthesisOrProstheticDeviceOfLowerArm = "4083000";
 
     /// <summary>
+    /// Literal for code: NONEFittingOfProsthesisOrProstheticDeviceOfLowerArm
+    /// </summary>
+    public const string LiteralNONEFittingOfProsthesisOrProstheticDeviceOfLowerArm = "http://snomed.info/sct#4083000";
+
+    /// <summary>
     /// Literal for code: RepairOfTendonOfHandByGraftOrImplantOfMuscle
     /// </summary>
     public const string LiteralRepairOfTendonOfHandByGraftOrImplantOfMuscle = "4084006";
+
+    /// <summary>
+    /// Literal for code: NONERepairOfTendonOfHandByGraftOrImplantOfMuscle
+    /// </summary>
+    public const string LiteralNONERepairOfTendonOfHandByGraftOrImplantOfMuscle = "http://snomed.info/sct#4084006";
 
     /// <summary>
     /// Literal for code: ReplacementOfTransvenousAtrialAndVentricularPacemakerElectrodeLeads
@@ -11548,9 +14078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReplacementOfTransvenousAtrialAndVentricularPacemakerElectrodeLeads = "4090005";
 
     /// <summary>
+    /// Literal for code: NONEReplacementOfTransvenousAtrialAndVentricularPacemakerElectrodeLeads
+    /// </summary>
+    public const string LiteralNONEReplacementOfTransvenousAtrialAndVentricularPacemakerElectrodeLeads = "http://snomed.info/sct#4090005";
+
+    /// <summary>
     /// Literal for code: ReductionOfRetroversionOfUterusBySuppository
     /// </summary>
     public const string LiteralReductionOfRetroversionOfUterusBySuppository = "4094001";
+
+    /// <summary>
+    /// Literal for code: NONEReductionOfRetroversionOfUterusBySuppository
+    /// </summary>
+    public const string LiteralNONEReductionOfRetroversionOfUterusBySuppository = "http://snomed.info/sct#4094001";
 
     /// <summary>
     /// Literal for code: RevisionOfSpinalPleurothecalShunt
@@ -11558,9 +14098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRevisionOfSpinalPleurothecalShunt = "4101004";
 
     /// <summary>
+    /// Literal for code: NONERevisionOfSpinalPleurothecalShunt
+    /// </summary>
+    public const string LiteralNONERevisionOfSpinalPleurothecalShunt = "http://snomed.info/sct#4101004";
+
+    /// <summary>
     /// Literal for code: RootCanalTherapyAnteriorExcludingFinalRestoration
     /// </summary>
     public const string LiteralRootCanalTherapyAnteriorExcludingFinalRestoration = "4102006";
+
+    /// <summary>
+    /// Literal for code: NONERootCanalTherapyAnteriorExcludingFinalRestoration
+    /// </summary>
+    public const string LiteralNONERootCanalTherapyAnteriorExcludingFinalRestoration = "http://snomed.info/sct#4102006";
 
     /// <summary>
     /// Literal for code: ParenteralChemotherapyForMalignantNeoplasm
@@ -11568,9 +14118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralParenteralChemotherapyForMalignantNeoplasm = "4114003";
 
     /// <summary>
+    /// Literal for code: NONEParenteralChemotherapyForMalignantNeoplasm
+    /// </summary>
+    public const string LiteralNONEParenteralChemotherapyForMalignantNeoplasm = "http://snomed.info/sct#4114003";
+
+    /// <summary>
     /// Literal for code: FenestrationProcedure
     /// </summary>
     public const string LiteralFenestrationProcedure = "4116001";
+
+    /// <summary>
+    /// Literal for code: NONEFenestrationProcedure
+    /// </summary>
+    public const string LiteralNONEFenestrationProcedure = "http://snomed.info/sct#4116001";
 
     /// <summary>
     /// Literal for code: IntracranialPhlebectomyWithAnastomosis
@@ -11578,9 +14138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntracranialPhlebectomyWithAnastomosis = "4119008";
 
     /// <summary>
+    /// Literal for code: NONEIntracranialPhlebectomyWithAnastomosis
+    /// </summary>
+    public const string LiteralNONEIntracranialPhlebectomyWithAnastomosis = "http://snomed.info/sct#4119008";
+
+    /// <summary>
     /// Literal for code: ImplantationIntoPelvicRegion
     /// </summary>
     public const string LiteralImplantationIntoPelvicRegion = "4131005";
+
+    /// <summary>
+    /// Literal for code: NONEImplantationIntoPelvicRegion
+    /// </summary>
+    public const string LiteralNONEImplantationIntoPelvicRegion = "http://snomed.info/sct#4131005";
 
     /// <summary>
     /// Literal for code: OperativeBlockAnesthesia
@@ -11588,9 +14158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOperativeBlockAnesthesia = "4134002";
 
     /// <summary>
+    /// Literal for code: NONEOperativeBlockAnesthesia
+    /// </summary>
+    public const string LiteralNONEOperativeBlockAnesthesia = "http://snomed.info/sct#4134002";
+
+    /// <summary>
     /// Literal for code: PosteriorSpinalCordotomy
     /// </summary>
     public const string LiteralPosteriorSpinalCordotomy = "4139007";
+
+    /// <summary>
+    /// Literal for code: NONEPosteriorSpinalCordotomy
+    /// </summary>
+    public const string LiteralNONEPosteriorSpinalCordotomy = "http://snomed.info/sct#4139007";
 
     /// <summary>
     /// Literal for code: InjectionOfAnteriorChamberOfEye
@@ -11598,9 +14178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInjectionOfAnteriorChamberOfEye = "4143006";
 
     /// <summary>
+    /// Literal for code: NONEInjectionOfAnteriorChamberOfEye
+    /// </summary>
+    public const string LiteralNONEInjectionOfAnteriorChamberOfEye = "http://snomed.info/sct#4143006";
+
+    /// <summary>
     /// Literal for code: BoneHistomorphometryAluminumStain
     /// </summary>
     public const string LiteralBoneHistomorphometryAluminumStain = "4149005";
+
+    /// <summary>
+    /// Literal for code: NONEBoneHistomorphometryAluminumStain
+    /// </summary>
+    public const string LiteralNONEBoneHistomorphometryAluminumStain = "http://snomed.info/sct#4149005";
 
     /// <summary>
     /// Literal for code: IncisionAndDrainageOfPenis
@@ -11608,9 +14198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionAndDrainageOfPenis = "4154001";
 
     /// <summary>
+    /// Literal for code: NONEIncisionAndDrainageOfPenis
+    /// </summary>
+    public const string LiteralNONEIncisionAndDrainageOfPenis = "http://snomed.info/sct#4154001";
+
+    /// <summary>
     /// Literal for code: DelayedHypersensitivitySkinTestForStaphageLysate
     /// </summary>
     public const string LiteralDelayedHypersensitivitySkinTestForStaphageLysate = "4165006";
+
+    /// <summary>
+    /// Literal for code: NONEDelayedHypersensitivitySkinTestForStaphageLysate
+    /// </summary>
+    public const string LiteralNONEDelayedHypersensitivitySkinTestForStaphageLysate = "http://snomed.info/sct#4165006";
 
     /// <summary>
     /// Literal for code: HospitalReAdmission
@@ -11618,9 +14218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHospitalReAdmission = "417005";
 
     /// <summary>
+    /// Literal for code: NONEHospitalReAdmission
+    /// </summary>
+    public const string LiteralNONEHospitalReAdmission = "http://snomed.info/sct#417005";
+
+    /// <summary>
     /// Literal for code: FothergillOperationOnUterus
     /// </summary>
     public const string LiteralFothergillOperationOnUterus = "4176005";
+
+    /// <summary>
+    /// Literal for code: NONEFothergillOperationOnUterus
+    /// </summary>
+    public const string LiteralNONEFothergillOperationOnUterus = "http://snomed.info/sct#4176005";
 
     /// <summary>
     /// Literal for code: ToxicologyTestingForOrganophosphateInsecticide
@@ -11628,9 +14238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralToxicologyTestingForOrganophosphateInsecticide = "4192000";
 
     /// <summary>
+    /// Literal for code: NONEToxicologyTestingForOrganophosphateInsecticide
+    /// </summary>
+    public const string LiteralNONEToxicologyTestingForOrganophosphateInsecticide = "http://snomed.info/sct#4192000";
+
+    /// <summary>
     /// Literal for code: ImplantationOfOmmayaReservoir
     /// </summary>
     public const string LiteralImplantationOfOmmayaReservoir = "4213001";
+
+    /// <summary>
+    /// Literal for code: NONEImplantationOfOmmayaReservoir
+    /// </summary>
+    public const string LiteralNONEImplantationOfOmmayaReservoir = "http://snomed.info/sct#4213001";
 
     /// <summary>
     /// Literal for code: IntracardiacInjectionForCardiacResuscitation
@@ -11638,9 +14258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntracardiacInjectionForCardiacResuscitation = "4214007";
 
     /// <summary>
+    /// Literal for code: NONEIntracardiacInjectionForCardiacResuscitation
+    /// </summary>
+    public const string LiteralNONEIntracardiacInjectionForCardiacResuscitation = "http://snomed.info/sct#4214007";
+
+    /// <summary>
     /// Literal for code: ExcisionOfLesionOfThoracicVein
     /// </summary>
     public const string LiteralExcisionOfLesionOfThoracicVein = "4226002";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfLesionOfThoracicVein
+    /// </summary>
+    public const string LiteralNONEExcisionOfLesionOfThoracicVein = "http://snomed.info/sct#4226002";
 
     /// <summary>
     /// Literal for code: AneurysmectomyWithGraftReplacementByInterposition
@@ -11648,9 +14278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAneurysmectomyWithGraftReplacementByInterposition = "4252008";
 
     /// <summary>
+    /// Literal for code: NONEAneurysmectomyWithGraftReplacementByInterposition
+    /// </summary>
+    public const string LiteralNONEAneurysmectomyWithGraftReplacementByInterposition = "http://snomed.info/sct#4252008";
+
+    /// <summary>
     /// Literal for code: BiopsyOfSoftTissueOfElbowAreaSuperficial
     /// </summary>
     public const string LiteralBiopsyOfSoftTissueOfElbowAreaSuperficial = "4263006";
+
+    /// <summary>
+    /// Literal for code: NONEBiopsyOfSoftTissueOfElbowAreaSuperficial
+    /// </summary>
+    public const string LiteralNONEBiopsyOfSoftTissueOfElbowAreaSuperficial = "http://snomed.info/sct#4263006";
 
     /// <summary>
     /// Literal for code: PatientReferralForDrugAddictionRehabilitation
@@ -11658,9 +14298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientReferralForDrugAddictionRehabilitation = "4266003";
 
     /// <summary>
+    /// Literal for code: NONEPatientReferralForDrugAddictionRehabilitation
+    /// </summary>
+    public const string LiteralNONEPatientReferralForDrugAddictionRehabilitation = "http://snomed.info/sct#4266003";
+
+    /// <summary>
     /// Literal for code: InsertionOfBoneGrowthStimulatorIntoFemur
     /// </summary>
     public const string LiteralInsertionOfBoneGrowthStimulatorIntoFemur = "4285000";
+
+    /// <summary>
+    /// Literal for code: NONEInsertionOfBoneGrowthStimulatorIntoFemur
+    /// </summary>
+    public const string LiteralNONEInsertionOfBoneGrowthStimulatorIntoFemur = "http://snomed.info/sct#4285000";
 
     /// <summary>
     /// Literal for code: ReductionOfIntussusceptionByLaparotomy
@@ -11668,9 +14318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReductionOfIntussusceptionByLaparotomy = "4293000";
 
     /// <summary>
+    /// Literal for code: NONEReductionOfIntussusceptionByLaparotomy
+    /// </summary>
+    public const string LiteralNONEReductionOfIntussusceptionByLaparotomy = "http://snomed.info/sct#4293000";
+
+    /// <summary>
     /// Literal for code: ExcisionOfCuspOfTricuspidValve
     /// </summary>
     public const string LiteralExcisionOfCuspOfTricuspidValve = "4304000";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfCuspOfTricuspidValve
+    /// </summary>
+    public const string LiteralNONEExcisionOfCuspOfTricuspidValve = "http://snomed.info/sct#4304000";
 
     /// <summary>
     /// Literal for code: RebaseOfCompleteLowerDenture
@@ -11678,9 +14338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRebaseOfCompleteLowerDenture = "4319004";
 
     /// <summary>
+    /// Literal for code: NONERebaseOfCompleteLowerDenture
+    /// </summary>
+    public const string LiteralNONERebaseOfCompleteLowerDenture = "http://snomed.info/sct#4319004";
+
+    /// <summary>
     /// Literal for code: AngiographyOfLowerExtremityArteriesBilateral
     /// </summary>
     public const string LiteralAngiographyOfLowerExtremityArteriesBilateral = "4321009";
+
+    /// <summary>
+    /// Literal for code: NONEAngiographyOfLowerExtremityArteriesBilateral
+    /// </summary>
+    public const string LiteralNONEAngiographyOfLowerExtremityArteriesBilateral = "http://snomed.info/sct#4321009";
 
     /// <summary>
     /// Literal for code: DestructionOfLesionOfSclera
@@ -11688,9 +14358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDestructionOfLesionOfSclera = "4323007";
 
     /// <summary>
+    /// Literal for code: NONEDestructionOfLesionOfSclera
+    /// </summary>
+    public const string LiteralNONEDestructionOfLesionOfSclera = "http://snomed.info/sct#4323007";
+
+    /// <summary>
     /// Literal for code: AnesthesiaForHerniaRepairInLowerAbdomen
     /// </summary>
     public const string LiteralAnesthesiaForHerniaRepairInLowerAbdomen = "4331002";
+
+    /// <summary>
+    /// Literal for code: NONEAnesthesiaForHerniaRepairInLowerAbdomen
+    /// </summary>
+    public const string LiteralNONEAnesthesiaForHerniaRepairInLowerAbdomen = "http://snomed.info/sct#4331002";
 
     /// <summary>
     /// Literal for code: IncisionAndDrainageOfPerisplenicSpace
@@ -11698,9 +14378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionAndDrainageOfPerisplenicSpace = "4333004";
 
     /// <summary>
+    /// Literal for code: NONEIncisionAndDrainageOfPerisplenicSpace
+    /// </summary>
+    public const string LiteralNONEIncisionAndDrainageOfPerisplenicSpace = "http://snomed.info/sct#4333004";
+
+    /// <summary>
     /// Literal for code: LloydDaviesOperationAbdominoperinealResection
     /// </summary>
     public const string LiteralLloydDaviesOperationAbdominoperinealResection = "4336007";
+
+    /// <summary>
+    /// Literal for code: NONELloydDaviesOperationAbdominoperinealResection
+    /// </summary>
+    public const string LiteralNONELloydDaviesOperationAbdominoperinealResection = "http://snomed.info/sct#4336007";
 
     /// <summary>
     /// Literal for code: HomogentisicAcidMeasurement
@@ -11708,9 +14398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHomogentisicAcidMeasurement = "4337003";
 
     /// <summary>
+    /// Literal for code: NONEHomogentisicAcidMeasurement
+    /// </summary>
+    public const string LiteralNONEHomogentisicAcidMeasurement = "http://snomed.info/sct#4337003";
+
+    /// <summary>
     /// Literal for code: RepairOfNasolabialFistula
     /// </summary>
     public const string LiteralRepairOfNasolabialFistula = "4339000";
+
+    /// <summary>
+    /// Literal for code: NONERepairOfNasolabialFistula
+    /// </summary>
+    public const string LiteralNONERepairOfNasolabialFistula = "http://snomed.info/sct#4339000";
 
     /// <summary>
     /// Literal for code: CompleteSubmucousResectionOfTurbinate
@@ -11718,9 +14418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCompleteSubmucousResectionOfTurbinate = "4341004";
 
     /// <summary>
+    /// Literal for code: NONECompleteSubmucousResectionOfTurbinate
+    /// </summary>
+    public const string LiteralNONECompleteSubmucousResectionOfTurbinate = "http://snomed.info/sct#4341004";
+
+    /// <summary>
     /// Literal for code: Cryopexy
     /// </summary>
     public const string LiteralCryopexy = "4344007";
+
+    /// <summary>
+    /// Literal for code: NONECryopexy
+    /// </summary>
+    public const string LiteralNONECryopexy = "http://snomed.info/sct#4344007";
 
     /// <summary>
     /// Literal for code: MusculoplastyOfHand
@@ -11728,9 +14438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMusculoplastyOfHand = "4348005";
 
     /// <summary>
+    /// Literal for code: NONEMusculoplastyOfHand
+    /// </summary>
+    public const string LiteralNONEMusculoplastyOfHand = "http://snomed.info/sct#4348005";
+
+    /// <summary>
     /// Literal for code: RemovalOfImplantOfCornea
     /// </summary>
     public const string LiteralRemovalOfImplantOfCornea = "4350002";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfImplantOfCornea
+    /// </summary>
+    public const string LiteralNONERemovalOfImplantOfCornea = "http://snomed.info/sct#4350002";
 
     /// <summary>
     /// Literal for code: PulmonaryInhalationStudy
@@ -11738,9 +14458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPulmonaryInhalationStudy = "435001";
 
     /// <summary>
+    /// Literal for code: NONEPulmonaryInhalationStudy
+    /// </summary>
+    public const string LiteralNONEPulmonaryInhalationStudy = "http://snomed.info/sct#435001";
+
+    /// <summary>
     /// Literal for code: EndoscopicBrushBiopsyOfTrachea
     /// </summary>
     public const string LiteralEndoscopicBrushBiopsyOfTrachea = "4363008";
+
+    /// <summary>
+    /// Literal for code: NONEEndoscopicBrushBiopsyOfTrachea
+    /// </summary>
+    public const string LiteralNONEEndoscopicBrushBiopsyOfTrachea = "http://snomed.info/sct#4363008";
 
     /// <summary>
     /// Literal for code: SurgicalRepair
@@ -11748,9 +14478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalRepair = "4365001";
 
     /// <summary>
+    /// Literal for code: NONESurgicalRepair
+    /// </summary>
+    public const string LiteralNONESurgicalRepair = "http://snomed.info/sct#4365001";
+
+    /// <summary>
     /// Literal for code: TranspositionOfVulvarTissue
     /// </summary>
     public const string LiteralTranspositionOfVulvarTissue = "4380007";
+
+    /// <summary>
+    /// Literal for code: NONETranspositionOfVulvarTissue
+    /// </summary>
+    public const string LiteralNONETranspositionOfVulvarTissue = "http://snomed.info/sct#4380007";
 
     /// <summary>
     /// Literal for code: ValvuloplastyOfPulmonaryValveInTotalRepairOfTetralogyOfFallot
@@ -11758,9 +14498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralValvuloplastyOfPulmonaryValveInTotalRepairOfTetralogyOfFallot = "4387005";
 
     /// <summary>
+    /// Literal for code: NONEValvuloplastyOfPulmonaryValveInTotalRepairOfTetralogyOfFallot
+    /// </summary>
+    public const string LiteralNONEValvuloplastyOfPulmonaryValveInTotalRepairOfTetralogyOfFallot = "http://snomed.info/sct#4387005";
+
+    /// <summary>
     /// Literal for code: RepairOfSplenocolicFistula
     /// </summary>
     public const string LiteralRepairOfSplenocolicFistula = "4388000";
+
+    /// <summary>
+    /// Literal for code: NONERepairOfSplenocolicFistula
+    /// </summary>
+    public const string LiteralNONERepairOfSplenocolicFistula = "http://snomed.info/sct#4388000";
 
     /// <summary>
     /// Literal for code: SlittingOfLacrimalCanaliculusForPassageOfTube
@@ -11768,9 +14518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSlittingOfLacrimalCanaliculusForPassageOfTube = "4407008";
 
     /// <summary>
+    /// Literal for code: NONESlittingOfLacrimalCanaliculusForPassageOfTube
+    /// </summary>
+    public const string LiteralNONESlittingOfLacrimalCanaliculusForPassageOfTube = "http://snomed.info/sct#4407008";
+
+    /// <summary>
     /// Literal for code: RemovalOfDeviceFromFemaleGenitalTract
     /// </summary>
     public const string LiteralRemovalOfDeviceFromFemaleGenitalTract = "4411002";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfDeviceFromFemaleGenitalTract
+    /// </summary>
+    public const string LiteralNONERemovalOfDeviceFromFemaleGenitalTract = "http://snomed.info/sct#4411002";
 
     /// <summary>
     /// Literal for code: IncisionAndDrainageOfParapharyngealAbscessByExternalApproach
@@ -11778,9 +14538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionAndDrainageOfParapharyngealAbscessByExternalApproach = "4420006";
 
     /// <summary>
+    /// Literal for code: NONEIncisionAndDrainageOfParapharyngealAbscessByExternalApproach
+    /// </summary>
+    public const string LiteralNONEIncisionAndDrainageOfParapharyngealAbscessByExternalApproach = "http://snomed.info/sct#4420006";
+
+    /// <summary>
     /// Literal for code: MakingOrthopedicBed
     /// </summary>
     public const string LiteralMakingOrthopedicBed = "4424002";
+
+    /// <summary>
+    /// Literal for code: NONEMakingOrthopedicBed
+    /// </summary>
+    public const string LiteralNONEMakingOrthopedicBed = "http://snomed.info/sct#4424002";
 
     /// <summary>
     /// Literal for code: MCPReceptorMeasurement
@@ -11788,9 +14558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMCPReceptorMeasurement = "4436008";
 
     /// <summary>
+    /// Literal for code: NONEMCPReceptorMeasurement
+    /// </summary>
+    public const string LiteralNONEMCPReceptorMeasurement = "http://snomed.info/sct#4436008";
+
+    /// <summary>
     /// Literal for code: VenographyOfVenaCava
     /// </summary>
     public const string LiteralVenographyOfVenaCava = "4438009";
+
+    /// <summary>
+    /// Literal for code: NONEVenographyOfVenaCava
+    /// </summary>
+    public const string LiteralNONEVenographyOfVenaCava = "http://snomed.info/sct#4438009";
 
     /// <summary>
     /// Literal for code: DecorticationOfOvary
@@ -11798,9 +14578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDecorticationOfOvary = "4443002";
 
     /// <summary>
+    /// Literal for code: NONEDecorticationOfOvary
+    /// </summary>
+    public const string LiteralNONEDecorticationOfOvary = "http://snomed.info/sct#4443002";
+
+    /// <summary>
     /// Literal for code: AutopsyGrossAndMicroscopicExaminationStillbornOrNewbornWithoutCNS
     /// </summary>
     public const string LiteralAutopsyGrossAndMicroscopicExaminationStillbornOrNewbornWithoutCNS = "4447001";
+
+    /// <summary>
+    /// Literal for code: NONEAutopsyGrossAndMicroscopicExaminationStillbornOrNewbornWithoutCNS
+    /// </summary>
+    public const string LiteralNONEAutopsyGrossAndMicroscopicExaminationStillbornOrNewbornWithoutCNS = "http://snomed.info/sct#4447001";
 
     /// <summary>
     /// Literal for code: ManipulationOfSpinalMeninges
@@ -11808,9 +14598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralManipulationOfSpinalMeninges = "4449003";
 
     /// <summary>
+    /// Literal for code: NONEManipulationOfSpinalMeninges
+    /// </summary>
+    public const string LiteralNONEManipulationOfSpinalMeninges = "http://snomed.info/sct#4449003";
+
+    /// <summary>
     /// Literal for code: ApplicationOfKirschnerWire
     /// </summary>
     public const string LiteralApplicationOfKirschnerWire = "4450003";
+
+    /// <summary>
+    /// Literal for code: NONEApplicationOfKirschnerWire
+    /// </summary>
+    public const string LiteralNONEApplicationOfKirschnerWire = "http://snomed.info/sct#4450003";
 
     /// <summary>
     /// Literal for code: RepairOfMalunionOfTibia
@@ -11818,9 +14618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepairOfMalunionOfTibia = "445004";
 
     /// <summary>
+    /// Literal for code: NONERepairOfMalunionOfTibia
+    /// </summary>
+    public const string LiteralNONERepairOfMalunionOfTibia = "http://snomed.info/sct#445004";
+
+    /// <summary>
     /// Literal for code: OpenReductionOfOpenElbowDislocation
     /// </summary>
     public const string LiteralOpenReductionOfOpenElbowDislocation = "4455008";
+
+    /// <summary>
+    /// Literal for code: NONEOpenReductionOfOpenElbowDislocation
+    /// </summary>
+    public const string LiteralNONEOpenReductionOfOpenElbowDislocation = "http://snomed.info/sct#4455008";
 
     /// <summary>
     /// Literal for code: InsertionOfMoldIntoVagina
@@ -11828,9 +14638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInsertionOfMoldIntoVagina = "4457000";
 
     /// <summary>
+    /// Literal for code: NONEInsertionOfMoldIntoVagina
+    /// </summary>
+    public const string LiteralNONEInsertionOfMoldIntoVagina = "http://snomed.info/sct#4457000";
+
+    /// <summary>
     /// Literal for code: ExplorationOfArteryOfUpperLimb
     /// </summary>
     public const string LiteralExplorationOfArteryOfUpperLimb = "4466001";
+
+    /// <summary>
+    /// Literal for code: NONEExplorationOfArteryOfUpperLimb
+    /// </summary>
+    public const string LiteralNONEExplorationOfArteryOfUpperLimb = "http://snomed.info/sct#4466001";
 
     /// <summary>
     /// Literal for code: ExcisionOfTumorOfAnkleAreaDeepIntramuscular
@@ -11838,9 +14658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfTumorOfAnkleAreaDeepIntramuscular = "4467005";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfTumorOfAnkleAreaDeepIntramuscular
+    /// </summary>
+    public const string LiteralNONEExcisionOfTumorOfAnkleAreaDeepIntramuscular = "http://snomed.info/sct#4467005";
+
+    /// <summary>
     /// Literal for code: CyanideMeasurement
     /// </summary>
     public const string LiteralCyanideMeasurement = "4475004";
+
+    /// <summary>
+    /// Literal for code: NONECyanideMeasurement
+    /// </summary>
+    public const string LiteralNONECyanideMeasurement = "http://snomed.info/sct#4475004";
 
     /// <summary>
     /// Literal for code: NorepinephrineMeasurementSupine
@@ -11848,9 +14678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNorepinephrineMeasurementSupine = "4487006";
 
     /// <summary>
+    /// Literal for code: NONENorepinephrineMeasurementSupine
+    /// </summary>
+    public const string LiteralNONENorepinephrineMeasurementSupine = "http://snomed.info/sct#4487006";
+
+    /// <summary>
     /// Literal for code: NeurolysisOfTrigeminalNerve
     /// </summary>
     public const string LiteralNeurolysisOfTrigeminalNerve = "4489009";
+
+    /// <summary>
+    /// Literal for code: NONENeurolysisOfTrigeminalNerve
+    /// </summary>
+    public const string LiteralNONENeurolysisOfTrigeminalNerve = "http://snomed.info/sct#4489009";
 
     /// <summary>
     /// Literal for code: SpecialCareOfMouth
@@ -11858,9 +14698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpecialCareOfMouth = "4496006";
 
     /// <summary>
+    /// Literal for code: NONESpecialCareOfMouth
+    /// </summary>
+    public const string LiteralNONESpecialCareOfMouth = "http://snomed.info/sct#4496006";
+
+    /// <summary>
     /// Literal for code: RemovalOfForeignBodyOfScleraWithoutUseOfMagnet
     /// </summary>
     public const string LiteralRemovalOfForeignBodyOfScleraWithoutUseOfMagnet = "4503005";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfForeignBodyOfScleraWithoutUseOfMagnet
+    /// </summary>
+    public const string LiteralNONERemovalOfForeignBodyOfScleraWithoutUseOfMagnet = "http://snomed.info/sct#4503005";
 
     /// <summary>
     /// Literal for code: PotterQuoteSObstetricalVersionWithExtraction
@@ -11868,9 +14718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPotterQuoteSObstetricalVersionWithExtraction = "4504004";
 
     /// <summary>
+    /// Literal for code: NONEPotterQuoteSObstetricalVersionWithExtraction
+    /// </summary>
+    public const string LiteralNONEPotterQuoteSObstetricalVersionWithExtraction = "http://snomed.info/sct#4504004";
+
+    /// <summary>
     /// Literal for code: TenolysisOfFlexorTendonOfForearm
     /// </summary>
     public const string LiteralTenolysisOfFlexorTendonOfForearm = "4505003";
+
+    /// <summary>
+    /// Literal for code: NONETenolysisOfFlexorTendonOfForearm
+    /// </summary>
+    public const string LiteralNONETenolysisOfFlexorTendonOfForearm = "http://snomed.info/sct#4505003";
 
     /// <summary>
     /// Literal for code: DecompressionFasciotomyOfWristFlexorAndExtensorCompartment
@@ -11878,9 +14738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDecompressionFasciotomyOfWristFlexorAndExtensorCompartment = "4507006";
 
     /// <summary>
+    /// Literal for code: NONEDecompressionFasciotomyOfWristFlexorAndExtensorCompartment
+    /// </summary>
+    public const string LiteralNONEDecompressionFasciotomyOfWristFlexorAndExtensorCompartment = "http://snomed.info/sct#4507006";
+
+    /// <summary>
     /// Literal for code: RestorationInlayCompositeResinOneSurfaceLaboratoryProcessed
     /// </summary>
     public const string LiteralRestorationInlayCompositeResinOneSurfaceLaboratoryProcessed = "4511000";
+
+    /// <summary>
+    /// Literal for code: NONERestorationInlayCompositeResinOneSurfaceLaboratoryProcessed
+    /// </summary>
+    public const string LiteralNONERestorationInlayCompositeResinOneSurfaceLaboratoryProcessed = "http://snomed.info/sct#4511000";
 
     /// <summary>
     /// Literal for code: IridencleisisAndIridotasis
@@ -11888,9 +14758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIridencleisisAndIridotasis = "4516005";
 
     /// <summary>
+    /// Literal for code: NONEIridencleisisAndIridotasis
+    /// </summary>
+    public const string LiteralNONEIridencleisisAndIridotasis = "http://snomed.info/sct#4516005";
+
+    /// <summary>
     /// Literal for code: AnastomosisOfEsophagusAntesternalOrAntethoracicWithInsertionOfProsthesis
     /// </summary>
     public const string LiteralAnastomosisOfEsophagusAntesternalOrAntethoracicWithInsertionOfProsthesis = "4520009";
+
+    /// <summary>
+    /// Literal for code: NONEAnastomosisOfEsophagusAntesternalOrAntethoracicWithInsertionOfProsthesis
+    /// </summary>
+    public const string LiteralNONEAnastomosisOfEsophagusAntesternalOrAntethoracicWithInsertionOfProsthesis = "http://snomed.info/sct#4520009";
 
     /// <summary>
     /// Literal for code: EmergencyDepartmentPatientVisit
@@ -11898,9 +14778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEmergencyDepartmentPatientVisit = "4525004";
 
     /// <summary>
+    /// Literal for code: NONEEmergencyDepartmentPatientVisit
+    /// </summary>
+    public const string LiteralNONEEmergencyDepartmentPatientVisit = "http://snomed.info/sct#4525004";
+
+    /// <summary>
     /// Literal for code: LigationOfArteryOfLowerLimb
     /// </summary>
     public const string LiteralLigationOfArteryOfLowerLimb = "4533003";
+
+    /// <summary>
+    /// Literal for code: NONELigationOfArteryOfLowerLimb
+    /// </summary>
+    public const string LiteralNONELigationOfArteryOfLowerLimb = "http://snomed.info/sct#4533003";
 
     /// <summary>
     /// Literal for code: IncisionOfPelvirectalTissue
@@ -11908,9 +14798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionOfPelvirectalTissue = "4535005";
 
     /// <summary>
+    /// Literal for code: NONEIncisionOfPelvirectalTissue
+    /// </summary>
+    public const string LiteralNONEIncisionOfPelvirectalTissue = "http://snomed.info/sct#4535005";
+
+    /// <summary>
     /// Literal for code: ExcisionOfBronchogenicCyst
     /// </summary>
     public const string LiteralExcisionOfBronchogenicCyst = "4539004";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfBronchogenicCyst
+    /// </summary>
+    public const string LiteralNONEExcisionOfBronchogenicCyst = "http://snomed.info/sct#4539004";
 
     /// <summary>
     /// Literal for code: ClosedReductionOfFractureOfFoot
@@ -11918,9 +14818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClosedReductionOfFractureOfFoot = "4542005";
 
     /// <summary>
+    /// Literal for code: NONEClosedReductionOfFractureOfFoot
+    /// </summary>
+    public const string LiteralNONEClosedReductionOfFractureOfFoot = "http://snomed.info/sct#4542005";
+
+    /// <summary>
     /// Literal for code: ExcisionOfSubcutaneousTumorOfExtremities
     /// </summary>
     public const string LiteralExcisionOfSubcutaneousTumorOfExtremities = "4544006";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfSubcutaneousTumorOfExtremities
+    /// </summary>
+    public const string LiteralNONEExcisionOfSubcutaneousTumorOfExtremities = "http://snomed.info/sct#4544006";
 
     /// <summary>
     /// Literal for code: AnteriorResectionOfRectum
@@ -11928,9 +14838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnteriorResectionOfRectum = "4558008";
 
     /// <summary>
+    /// Literal for code: NONEAnteriorResectionOfRectum
+    /// </summary>
+    public const string LiteralNONEAnteriorResectionOfRectum = "http://snomed.info/sct#4558008";
+
+    /// <summary>
     /// Literal for code: TotalAbdominalColectomyWithIleostomy
     /// </summary>
     public const string LiteralTotalAbdominalColectomyWithIleostomy = "456004";
+
+    /// <summary>
+    /// Literal for code: NONETotalAbdominalColectomyWithIleostomy
+    /// </summary>
+    public const string LiteralNONETotalAbdominalColectomyWithIleostomy = "http://snomed.info/sct#456004";
 
     /// <summary>
     /// Literal for code: HospitalAdmissionTransferFromOtherHospitalOrHealthCareFacility
@@ -11938,9 +14858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHospitalAdmissionTransferFromOtherHospitalOrHealthCareFacility = "4563007";
 
     /// <summary>
+    /// Literal for code: NONEHospitalAdmissionTransferFromOtherHospitalOrHealthCareFacility
+    /// </summary>
+    public const string LiteralNONEHospitalAdmissionTransferFromOtherHospitalOrHealthCareFacility = "http://snomed.info/sct#4563007";
+
+    /// <summary>
     /// Literal for code: Chemopallidectomy
     /// </summary>
     public const string LiteralChemopallidectomy = "4570007";
+
+    /// <summary>
+    /// Literal for code: NONEChemopallidectomy
+    /// </summary>
+    public const string LiteralNONEChemopallidectomy = "http://snomed.info/sct#4570007";
 
     /// <summary>
     /// Literal for code: CreationOfVentriculoAtrialShunt
@@ -11948,9 +14878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCreationOfVentriculoAtrialShunt = "4579008";
 
     /// <summary>
+    /// Literal for code: NONECreationOfVentriculoAtrialShunt
+    /// </summary>
+    public const string LiteralNONECreationOfVentriculoAtrialShunt = "http://snomed.info/sct#4579008";
+
+    /// <summary>
     /// Literal for code: Coreoplasty
     /// </summary>
     public const string LiteralCoreoplasty = "4581005";
+
+    /// <summary>
+    /// Literal for code: NONECoreoplasty
+    /// </summary>
+    public const string LiteralNONECoreoplasty = "http://snomed.info/sct#4581005";
 
     /// <summary>
     /// Literal for code: DecompressionOfTendonOfHand
@@ -11958,9 +14898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDecompressionOfTendonOfHand = "4585001";
 
     /// <summary>
+    /// Literal for code: NONEDecompressionOfTendonOfHand
+    /// </summary>
+    public const string LiteralNONEDecompressionOfTendonOfHand = "http://snomed.info/sct#4585001";
+
+    /// <summary>
     /// Literal for code: EpiphysiodesisOfDistalRadius
     /// </summary>
     public const string LiteralEpiphysiodesisOfDistalRadius = "4587009";
+
+    /// <summary>
+    /// Literal for code: NONEEpiphysiodesisOfDistalRadius
+    /// </summary>
+    public const string LiteralNONEEpiphysiodesisOfDistalRadius = "http://snomed.info/sct#4587009";
 
     /// <summary>
     /// Literal for code: MedicalProcedureRelatedToReproduction
@@ -11968,9 +14918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMedicalProcedureRelatedToReproduction = "4589007";
 
     /// <summary>
+    /// Literal for code: NONEMedicalProcedureRelatedToReproduction
+    /// </summary>
+    public const string LiteralNONEMedicalProcedureRelatedToReproduction = "http://snomed.info/sct#4589007";
+
+    /// <summary>
     /// Literal for code: ClosedCondylotomyOfMandible
     /// </summary>
     public const string LiteralClosedCondylotomyOfMandible = "459006";
+
+    /// <summary>
+    /// Literal for code: NONEClosedCondylotomyOfMandible
+    /// </summary>
+    public const string LiteralNONEClosedCondylotomyOfMandible = "http://snomed.info/sct#459006";
 
     /// <summary>
     /// Literal for code: CauterizationOfScleraWithIridectomy
@@ -11978,9 +14938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCauterizationOfScleraWithIridectomy = "4593001";
 
     /// <summary>
+    /// Literal for code: NONECauterizationOfScleraWithIridectomy
+    /// </summary>
+    public const string LiteralNONECauterizationOfScleraWithIridectomy = "http://snomed.info/sct#4593001";
+
+    /// <summary>
     /// Literal for code: CoproporphyrinIsomersSeriesIAndIIIUrine
     /// </summary>
     public const string LiteralCoproporphyrinIsomersSeriesIAndIIIUrine = "4594007";
+
+    /// <summary>
+    /// Literal for code: NONECoproporphyrinIsomersSeriesIAndIIIUrine
+    /// </summary>
+    public const string LiteralNONECoproporphyrinIsomersSeriesIAndIIIUrine = "http://snomed.info/sct#4594007";
 
     /// <summary>
     /// Literal for code: Radioimmunoassay
@@ -11988,9 +14958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadioimmunoassay = "4613005";
 
     /// <summary>
+    /// Literal for code: NONERadioimmunoassay
+    /// </summary>
+    public const string LiteralNONERadioimmunoassay = "http://snomed.info/sct#4613005";
+
+    /// <summary>
     /// Literal for code: ApicalPulseTaking
     /// </summary>
     public const string LiteralApicalPulseTaking = "4625008";
+
+    /// <summary>
+    /// Literal for code: NONEApicalPulseTaking
+    /// </summary>
+    public const string LiteralNONEApicalPulseTaking = "http://snomed.info/sct#4625008";
 
     /// <summary>
     /// Literal for code: TakeDownOfArterialAnastomosis
@@ -11998,9 +14978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTakeDownOfArterialAnastomosis = "4626009";
 
     /// <summary>
+    /// Literal for code: NONETakeDownOfArterialAnastomosis
+    /// </summary>
+    public const string LiteralNONETakeDownOfArterialAnastomosis = "http://snomed.info/sct#4626009";
+
+    /// <summary>
     /// Literal for code: ClosedReductionOfCoxofemoralJointDislocationWithSplint
     /// </summary>
     public const string LiteralClosedReductionOfCoxofemoralJointDislocationWithSplint = "463004";
+
+    /// <summary>
+    /// Literal for code: NONEClosedReductionOfCoxofemoralJointDislocationWithSplint
+    /// </summary>
+    public const string LiteralNONEClosedReductionOfCoxofemoralJointDislocationWithSplint = "http://snomed.info/sct#463004";
 
     /// <summary>
     /// Literal for code: DenkerOperationForRadicalMaxillaryAntrotomy
@@ -12008,9 +14998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDenkerOperationForRadicalMaxillaryAntrotomy = "4636001";
 
     /// <summary>
+    /// Literal for code: NONEDenkerOperationForRadicalMaxillaryAntrotomy
+    /// </summary>
+    public const string LiteralNONEDenkerOperationForRadicalMaxillaryAntrotomy = "http://snomed.info/sct#4636001";
+
+    /// <summary>
     /// Literal for code: LigationOfFallopianTubesByAbdominalApproach
     /// </summary>
     public const string LiteralLigationOfFallopianTubesByAbdominalApproach = "4640005";
+
+    /// <summary>
+    /// Literal for code: NONELigationOfFallopianTubesByAbdominalApproach
+    /// </summary>
+    public const string LiteralNONELigationOfFallopianTubesByAbdominalApproach = "http://snomed.info/sct#4640005";
 
     /// <summary>
     /// Literal for code: RemovalOfInflatablePenileProsthesisWithPumpReservoirAndCylinders
@@ -12018,9 +15018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemovalOfInflatablePenileProsthesisWithPumpReservoirAndCylinders = "4642002";
 
     /// <summary>
+    /// Literal for code: NONERemovalOfInflatablePenileProsthesisWithPumpReservoirAndCylinders
+    /// </summary>
+    public const string LiteralNONERemovalOfInflatablePenileProsthesisWithPumpReservoirAndCylinders = "http://snomed.info/sct#4642002";
+
+    /// <summary>
     /// Literal for code: DiagnosticProcedureOnPhalangesOfFoot
     /// </summary>
     public const string LiteralDiagnosticProcedureOnPhalangesOfFoot = "4660002";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticProcedureOnPhalangesOfFoot
+    /// </summary>
+    public const string LiteralNONEDiagnosticProcedureOnPhalangesOfFoot = "http://snomed.info/sct#4660002";
 
     /// <summary>
     /// Literal for code: CatheterizationOfBronchus
@@ -12028,9 +15038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterizationOfBronchus = "4670000";
 
     /// <summary>
+    /// Literal for code: NONECatheterizationOfBronchus
+    /// </summary>
+    public const string LiteralNONECatheterizationOfBronchus = "http://snomed.info/sct#4670000";
+
+    /// <summary>
     /// Literal for code: ExcisionOfLesionFromSphenoidSinus
     /// </summary>
     public const string LiteralExcisionOfLesionFromSphenoidSinus = "4671001";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfLesionFromSphenoidSinus
+    /// </summary>
+    public const string LiteralNONEExcisionOfLesionFromSphenoidSinus = "http://snomed.info/sct#4671001";
 
     /// <summary>
     /// Literal for code: MedicalProcedureOnTheNervousSystem
@@ -12038,9 +15058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMedicalProcedureOnTheNervousSystem = "4672008";
 
     /// <summary>
+    /// Literal for code: NONEMedicalProcedureOnTheNervousSystem
+    /// </summary>
+    public const string LiteralNONEMedicalProcedureOnTheNervousSystem = "http://snomed.info/sct#4672008";
+
+    /// <summary>
     /// Literal for code: GlutathioneMeasurement
     /// </summary>
     public const string LiteralGlutathioneMeasurement = "468008";
+
+    /// <summary>
+    /// Literal for code: NONEGlutathioneMeasurement
+    /// </summary>
+    public const string LiteralNONEGlutathioneMeasurement = "http://snomed.info/sct#468008";
 
     /// <summary>
     /// Literal for code: IdentificationOfRotavirusAntigenInFeces
@@ -12048,9 +15078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIdentificationOfRotavirusAntigenInFeces = "4691008";
 
     /// <summary>
+    /// Literal for code: NONEIdentificationOfRotavirusAntigenInFeces
+    /// </summary>
+    public const string LiteralNONEIdentificationOfRotavirusAntigenInFeces = "http://snomed.info/sct#4691008";
+
+    /// <summary>
     /// Literal for code: TransplantationOfArteryOfUpperExtremity
     /// </summary>
     public const string LiteralTransplantationOfArteryOfUpperExtremity = "4692001";
+
+    /// <summary>
+    /// Literal for code: NONETransplantationOfArteryOfUpperExtremity
+    /// </summary>
+    public const string LiteralNONETransplantationOfArteryOfUpperExtremity = "http://snomed.info/sct#4692001";
 
     /// <summary>
     /// Literal for code: PercutaneousNeedleBiopsyOfMuscle
@@ -12058,9 +15098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPercutaneousNeedleBiopsyOfMuscle = "4694000";
 
     /// <summary>
+    /// Literal for code: NONEPercutaneousNeedleBiopsyOfMuscle
+    /// </summary>
+    public const string LiteralNONEPercutaneousNeedleBiopsyOfMuscle = "http://snomed.info/sct#4694000";
+
+    /// <summary>
     /// Literal for code: AlphaNaphthylButyrateStainMethodBloodOrBoneMarrow
     /// </summary>
     public const string LiteralAlphaNaphthylButyrateStainMethodBloodOrBoneMarrow = "4699005";
+
+    /// <summary>
+    /// Literal for code: NONEAlphaNaphthylButyrateStainMethodBloodOrBoneMarrow
+    /// </summary>
+    public const string LiteralNONEAlphaNaphthylButyrateStainMethodBloodOrBoneMarrow = "http://snomed.info/sct#4699005";
 
     /// <summary>
     /// Literal for code: ColonyFormingUnitGranulocyteMonocyteErythroidMegakaryocyteAssay
@@ -12068,9 +15118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralColonyFormingUnitGranulocyteMonocyteErythroidMegakaryocyteAssay = "4701005";
 
     /// <summary>
+    /// Literal for code: NONEColonyFormingUnitGranulocyteMonocyteErythroidMegakaryocyteAssay
+    /// </summary>
+    public const string LiteralNONEColonyFormingUnitGranulocyteMonocyteErythroidMegakaryocyteAssay = "http://snomed.info/sct#4701005";
+
+    /// <summary>
     /// Literal for code: PartialExcisionOfCalcaneus
     /// </summary>
     public const string LiteralPartialExcisionOfCalcaneus = "4707009";
+
+    /// <summary>
+    /// Literal for code: NONEPartialExcisionOfCalcaneus
+    /// </summary>
+    public const string LiteralNONEPartialExcisionOfCalcaneus = "http://snomed.info/sct#4707009";
 
     /// <summary>
     /// Literal for code: RemovalOfGardnerWellsTongsFromSkull
@@ -12078,9 +15138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemovalOfGardnerWellsTongsFromSkull = "4712005";
 
     /// <summary>
+    /// Literal for code: NONERemovalOfGardnerWellsTongsFromSkull
+    /// </summary>
+    public const string LiteralNONERemovalOfGardnerWellsTongsFromSkull = "http://snomed.info/sct#4712005";
+
+    /// <summary>
     /// Literal for code: EndoscopyAndPhotography
     /// </summary>
     public const string LiteralEndoscopyAndPhotography = "4713000";
+
+    /// <summary>
+    /// Literal for code: NONEEndoscopyAndPhotography
+    /// </summary>
+    public const string LiteralNONEEndoscopyAndPhotography = "http://snomed.info/sct#4713000";
 
     /// <summary>
     /// Literal for code: PsychologicCognitiveTestingAndAssessment
@@ -12088,9 +15158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPsychologicCognitiveTestingAndAssessment = "4719001";
 
     /// <summary>
+    /// Literal for code: NONEPsychologicCognitiveTestingAndAssessment
+    /// </summary>
+    public const string LiteralNONEPsychologicCognitiveTestingAndAssessment = "http://snomed.info/sct#4719001";
+
+    /// <summary>
     /// Literal for code: LipoproteinElectrophoresis
     /// </summary>
     public const string LiteralLipoproteinElectrophoresis = "4727005";
+
+    /// <summary>
+    /// Literal for code: NONELipoproteinElectrophoresis
+    /// </summary>
+    public const string LiteralNONELipoproteinElectrophoresis = "http://snomed.info/sct#4727005";
 
     /// <summary>
     /// Literal for code: IrrigationOfWoundCatheterOfIntegument
@@ -12098,9 +15178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIrrigationOfWoundCatheterOfIntegument = "4734007";
 
     /// <summary>
+    /// Literal for code: NONEIrrigationOfWoundCatheterOfIntegument
+    /// </summary>
+    public const string LiteralNONEIrrigationOfWoundCatheterOfIntegument = "http://snomed.info/sct#4734007";
+
+    /// <summary>
     /// Literal for code: MycobacteriaCulture
     /// </summary>
     public const string LiteralMycobacteriaCulture = "4737000";
+
+    /// <summary>
+    /// Literal for code: NONEMycobacteriaCulture
+    /// </summary>
+    public const string LiteralNONEMycobacteriaCulture = "http://snomed.info/sct#4737000";
 
     /// <summary>
     /// Literal for code: EsophagoentericAnastomosisIntrathoracic
@@ -12108,9 +15198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEsophagoentericAnastomosisIntrathoracic = "474008";
 
     /// <summary>
+    /// Literal for code: NONEEsophagoentericAnastomosisIntrathoracic
+    /// </summary>
+    public const string LiteralNONEEsophagoentericAnastomosisIntrathoracic = "http://snomed.info/sct#474008";
+
+    /// <summary>
     /// Literal for code: CryotherapyOfSubcutaneousTissue
     /// </summary>
     public const string LiteralCryotherapyOfSubcutaneousTissue = "4756005";
+
+    /// <summary>
+    /// Literal for code: NONECryotherapyOfSubcutaneousTissue
+    /// </summary>
+    public const string LiteralNONECryotherapyOfSubcutaneousTissue = "http://snomed.info/sct#4756005";
 
     /// <summary>
     /// Literal for code: Incudostapediopexy
@@ -12118,9 +15218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncudostapediopexy = "4758006";
 
     /// <summary>
+    /// Literal for code: NONEIncudostapediopexy
+    /// </summary>
+    public const string LiteralNONEIncudostapediopexy = "http://snomed.info/sct#4758006";
+
+    /// <summary>
     /// Literal for code: JetVentilationProcedure
     /// </summary>
     public const string LiteralJetVentilationProcedure = "4764004";
+
+    /// <summary>
+    /// Literal for code: NONEJetVentilationProcedure
+    /// </summary>
+    public const string LiteralNONEJetVentilationProcedure = "http://snomed.info/sct#4764004";
 
     /// <summary>
     /// Literal for code: InsertionOfOcularImplantFollowingOrSecondaryToEnucleation
@@ -12128,9 +15238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInsertionOfOcularImplantFollowingOrSecondaryToEnucleation = "4765003";
 
     /// <summary>
+    /// Literal for code: NONEInsertionOfOcularImplantFollowingOrSecondaryToEnucleation
+    /// </summary>
+    public const string LiteralNONEInsertionOfOcularImplantFollowingOrSecondaryToEnucleation = "http://snomed.info/sct#4765003";
+
+    /// <summary>
     /// Literal for code: ColporrhaphyForRepairOfUrethrocele
     /// </summary>
     public const string LiteralColporrhaphyForRepairOfUrethrocele = "4770005";
+
+    /// <summary>
+    /// Literal for code: NONEColporrhaphyForRepairOfUrethrocele
+    /// </summary>
+    public const string LiteralNONEColporrhaphyForRepairOfUrethrocele = "http://snomed.info/sct#4770005";
 
     /// <summary>
     /// Literal for code: ReductionOfTorsionOfSpermaticCord
@@ -12138,9 +15258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReductionOfTorsionOfSpermaticCord = "4772002";
 
     /// <summary>
+    /// Literal for code: NONEReductionOfTorsionOfSpermaticCord
+    /// </summary>
+    public const string LiteralNONEReductionOfTorsionOfSpermaticCord = "http://snomed.info/sct#4772002";
+
+    /// <summary>
     /// Literal for code: OperationOnSublingualGland
     /// </summary>
     public const string LiteralOperationOnSublingualGland = "4784000";
+
+    /// <summary>
+    /// Literal for code: NONEOperationOnSublingualGland
+    /// </summary>
+    public const string LiteralNONEOperationOnSublingualGland = "http://snomed.info/sct#4784000";
 
     /// <summary>
     /// Literal for code: MicrobialIdentificationTest
@@ -12148,9 +15278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMicrobialIdentificationTest = "4804005";
 
     /// <summary>
+    /// Literal for code: NONEMicrobialIdentificationTest
+    /// </summary>
+    public const string LiteralNONEMicrobialIdentificationTest = "http://snomed.info/sct#4804005";
+
+    /// <summary>
     /// Literal for code: ReconstructionOfDiaphragm
     /// </summary>
     public const string LiteralReconstructionOfDiaphragm = "4811009";
+
+    /// <summary>
+    /// Literal for code: NONEReconstructionOfDiaphragm
+    /// </summary>
+    public const string LiteralNONEReconstructionOfDiaphragm = "http://snomed.info/sct#4811009";
 
     /// <summary>
     /// Literal for code: AntibodyIdentificationRBCAntibodyPanelEnzyme2StageTechniqueIncludingAntiHumanGlobulin
@@ -12158,9 +15298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAntibodyIdentificationRBCAntibodyPanelEnzyme2StageTechniqueIncludingAntiHumanGlobulin = "4815000";
 
     /// <summary>
+    /// Literal for code: NONEAntibodyIdentificationRBCAntibodyPanelEnzyme2StageTechniqueIncludingAntiHumanGlobulin
+    /// </summary>
+    public const string LiteralNONEAntibodyIdentificationRBCAntibodyPanelEnzyme2StageTechniqueIncludingAntiHumanGlobulin = "http://snomed.info/sct#4815000";
+
+    /// <summary>
     /// Literal for code: IncisionOfLabialFrenum
     /// </summary>
     public const string LiteralIncisionOfLabialFrenum = "4820000";
+
+    /// <summary>
+    /// Literal for code: NONEIncisionOfLabialFrenum
+    /// </summary>
+    public const string LiteralNONEIncisionOfLabialFrenum = "http://snomed.info/sct#4820000";
 
     /// <summary>
     /// Literal for code: ShowerHydrotherapy
@@ -12168,9 +15318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShowerHydrotherapy = "4827002";
 
     /// <summary>
+    /// Literal for code: NONEShowerHydrotherapy
+    /// </summary>
+    public const string LiteralNONEShowerHydrotherapy = "http://snomed.info/sct#4827002";
+
+    /// <summary>
     /// Literal for code: ExcisionOfSmallIntestineForInterposition
     /// </summary>
     public const string LiteralExcisionOfSmallIntestineForInterposition = "4829004";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfSmallIntestineForInterposition
+    /// </summary>
+    public const string LiteralNONEExcisionOfSmallIntestineForInterposition = "http://snomed.info/sct#4829004";
 
     /// <summary>
     /// Literal for code: AnesthesiaForCesareanSection
@@ -12178,9 +15338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnesthesiaForCesareanSection = "4847005";
 
     /// <summary>
+    /// Literal for code: NONEAnesthesiaForCesareanSection
+    /// </summary>
+    public const string LiteralNONEAnesthesiaForCesareanSection = "http://snomed.info/sct#4847005";
+
+    /// <summary>
     /// Literal for code: BiopsyOfOvary
     /// </summary>
     public const string LiteralBiopsyOfOvary = "4849008";
+
+    /// <summary>
+    /// Literal for code: NONEBiopsyOfOvary
+    /// </summary>
+    public const string LiteralNONEBiopsyOfOvary = "http://snomed.info/sct#4849008";
 
     /// <summary>
     /// Literal for code: RevisionOfAnastomosisOfLargeIntestine
@@ -12188,9 +15358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRevisionOfAnastomosisOfLargeIntestine = "4862007";
 
     /// <summary>
+    /// Literal for code: NONERevisionOfAnastomosisOfLargeIntestine
+    /// </summary>
+    public const string LiteralNONERevisionOfAnastomosisOfLargeIntestine = "http://snomed.info/sct#4862007";
+
+    /// <summary>
     /// Literal for code: ExtracapsularExtractionOfLensWithIridectomy
     /// </summary>
     public const string LiteralExtracapsularExtractionOfLensWithIridectomy = "4877004";
+
+    /// <summary>
+    /// Literal for code: NONEExtracapsularExtractionOfLensWithIridectomy
+    /// </summary>
+    public const string LiteralNONEExtracapsularExtractionOfLensWithIridectomy = "http://snomed.info/sct#4877004";
 
     /// <summary>
     /// Literal for code: FerritinMeasurement
@@ -12198,9 +15378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFerritinMeasurement = "489004";
 
     /// <summary>
+    /// Literal for code: NONEFerritinMeasurement
+    /// </summary>
+    public const string LiteralNONEFerritinMeasurement = "http://snomed.info/sct#489004";
+
+    /// <summary>
     /// Literal for code: Proctostomy
     /// </summary>
     public const string LiteralProctostomy = "4891005";
+
+    /// <summary>
+    /// Literal for code: NONEProctostomy
+    /// </summary>
+    public const string LiteralNONEProctostomy = "http://snomed.info/sct#4891005";
 
     /// <summary>
     /// Literal for code: ConstructionOfSigmoidBladder
@@ -12208,9 +15398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConstructionOfSigmoidBladder = "4895001";
 
     /// <summary>
+    /// Literal for code: NONEConstructionOfSigmoidBladder
+    /// </summary>
+    public const string LiteralNONEConstructionOfSigmoidBladder = "http://snomed.info/sct#4895001";
+
+    /// <summary>
     /// Literal for code: EthchlorvynolMeasurement
     /// </summary>
     public const string LiteralEthchlorvynolMeasurement = "4902005";
+
+    /// <summary>
+    /// Literal for code: NONEEthchlorvynolMeasurement
+    /// </summary>
+    public const string LiteralNONEEthchlorvynolMeasurement = "http://snomed.info/sct#4902005";
 
     /// <summary>
     /// Literal for code: SerumProteinElectrophoresis
@@ -12218,9 +15418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSerumProteinElectrophoresis = "4903000";
 
     /// <summary>
+    /// Literal for code: NONESerumProteinElectrophoresis
+    /// </summary>
+    public const string LiteralNONESerumProteinElectrophoresis = "http://snomed.info/sct#4903000";
+
+    /// <summary>
     /// Literal for code: DilationOfAnalSphincterUnderNonlocalAnesthesia
     /// </summary>
     public const string LiteralDilationOfAnalSphincterUnderNonlocalAnesthesia = "4904006";
+
+    /// <summary>
+    /// Literal for code: NONEDilationOfAnalSphincterUnderNonlocalAnesthesia
+    /// </summary>
+    public const string LiteralNONEDilationOfAnalSphincterUnderNonlocalAnesthesia = "http://snomed.info/sct#4904006";
 
     /// <summary>
     /// Literal for code: TreatmentPlanningForTeletherapy
@@ -12228,9 +15438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTreatmentPlanningForTeletherapy = "4914002";
 
     /// <summary>
+    /// Literal for code: NONETreatmentPlanningForTeletherapy
+    /// </summary>
+    public const string LiteralNONETreatmentPlanningForTeletherapy = "http://snomed.info/sct#4914002";
+
+    /// <summary>
     /// Literal for code: LocalPerfusionOfKidney
     /// </summary>
     public const string LiteralLocalPerfusionOfKidney = "4929000";
+
+    /// <summary>
+    /// Literal for code: NONELocalPerfusionOfKidney
+    /// </summary>
+    public const string LiteralNONELocalPerfusionOfKidney = "http://snomed.info/sct#4929000";
 
     /// <summary>
     /// Literal for code: RepairOfThoracogastricFistula
@@ -12238,9 +15458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepairOfThoracogastricFistula = "4930005";
 
     /// <summary>
+    /// Literal for code: NONERepairOfThoracogastricFistula
+    /// </summary>
+    public const string LiteralNONERepairOfThoracogastricFistula = "http://snomed.info/sct#4930005";
+
+    /// <summary>
     /// Literal for code: UrobilinogenMeasurement48HourFeces
     /// </summary>
     public const string LiteralUrobilinogenMeasurement48HourFeces = "493005";
+
+    /// <summary>
+    /// Literal for code: NONEUrobilinogenMeasurement48HourFeces
+    /// </summary>
+    public const string LiteralNONEUrobilinogenMeasurement48HourFeces = "http://snomed.info/sct#493005";
 
     /// <summary>
     /// Literal for code: Salpingography
@@ -12248,9 +15478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSalpingography = "4934001";
 
     /// <summary>
+    /// Literal for code: NONESalpingography
+    /// </summary>
+    public const string LiteralNONESalpingography = "http://snomed.info/sct#4934001";
+
+    /// <summary>
     /// Literal for code: ExcisionOfLesionOfTonsil
     /// </summary>
     public const string LiteralExcisionOfLesionOfTonsil = "494004";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfLesionOfTonsil
+    /// </summary>
+    public const string LiteralNONEExcisionOfLesionOfTonsil = "http://snomed.info/sct#494004";
 
     /// <summary>
     /// Literal for code: CervicalSpinalFusionForPseudoarthrosis
@@ -12258,9 +15498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCervicalSpinalFusionForPseudoarthrosis = "4957007";
 
     /// <summary>
+    /// Literal for code: NONECervicalSpinalFusionForPseudoarthrosis
+    /// </summary>
+    public const string LiteralNONECervicalSpinalFusionForPseudoarthrosis = "http://snomed.info/sct#4957007";
+
+    /// <summary>
     /// Literal for code: ExtracorporealPerfusion
     /// </summary>
     public const string LiteralExtracorporealPerfusion = "4966006";
+
+    /// <summary>
+    /// Literal for code: NONEExtracorporealPerfusion
+    /// </summary>
+    public const string LiteralNONEExtracorporealPerfusion = "http://snomed.info/sct#4966006";
 
     /// <summary>
     /// Literal for code: Venography
@@ -12268,9 +15518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVenography = "4970003";
 
     /// <summary>
+    /// Literal for code: NONEVenography
+    /// </summary>
+    public const string LiteralNONEVenography = "http://snomed.info/sct#4970003";
+
+    /// <summary>
     /// Literal for code: ReplacementOfCochlearProsthesisMultipleChannels
     /// </summary>
     public const string LiteralReplacementOfCochlearProsthesisMultipleChannels = "497006";
+
+    /// <summary>
+    /// Literal for code: NONEReplacementOfCochlearProsthesisMultipleChannels
+    /// </summary>
+    public const string LiteralNONEReplacementOfCochlearProsthesisMultipleChannels = "http://snomed.info/sct#497006";
 
     /// <summary>
     /// Literal for code: OperationOnLiver
@@ -12278,9 +15538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOperationOnLiver = "4974007";
 
     /// <summary>
+    /// Literal for code: NONEOperationOnLiver
+    /// </summary>
+    public const string LiteralNONEOperationOnLiver = "http://snomed.info/sct#4974007";
+
+    /// <summary>
     /// Literal for code: AnesthesiaForEndoscopicProcedureOnLowerExtremity
     /// </summary>
     public const string LiteralAnesthesiaForEndoscopicProcedureOnLowerExtremity = "4976009";
+
+    /// <summary>
+    /// Literal for code: NONEAnesthesiaForEndoscopicProcedureOnLowerExtremity
+    /// </summary>
+    public const string LiteralNONEAnesthesiaForEndoscopicProcedureOnLowerExtremity = "http://snomed.info/sct#4976009";
 
     /// <summary>
     /// Literal for code: OsteoplastyOfCraniumWithFlapOfBone
@@ -12288,9 +15558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOsteoplastyOfCraniumWithFlapOfBone = "4987001";
 
     /// <summary>
+    /// Literal for code: NONEOsteoplastyOfCraniumWithFlapOfBone
+    /// </summary>
+    public const string LiteralNONEOsteoplastyOfCraniumWithFlapOfBone = "http://snomed.info/sct#4987001";
+
+    /// <summary>
     /// Literal for code: CardiacCatheterizationLeftHeartRetrogradePercutaneous
     /// </summary>
     public const string LiteralCardiacCatheterizationLeftHeartRetrogradePercutaneous = "4992004";
+
+    /// <summary>
+    /// Literal for code: NONECardiacCatheterizationLeftHeartRetrogradePercutaneous
+    /// </summary>
+    public const string LiteralNONECardiacCatheterizationLeftHeartRetrogradePercutaneous = "http://snomed.info/sct#4992004";
 
     /// <summary>
     /// Literal for code: IschemicLimbExerciseWithEMGAndLacticAcidDetermination
@@ -12298,9 +15578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIschemicLimbExerciseWithEMGAndLacticAcidDetermination = "4993009";
 
     /// <summary>
+    /// Literal for code: NONEIschemicLimbExerciseWithEMGAndLacticAcidDetermination
+    /// </summary>
+    public const string LiteralNONEIschemicLimbExerciseWithEMGAndLacticAcidDetermination = "http://snomed.info/sct#4993009";
+
+    /// <summary>
     /// Literal for code: PonticResinWithHighNobleMetal
     /// </summary>
     public const string LiteralPonticResinWithHighNobleMetal = "5016005";
+
+    /// <summary>
+    /// Literal for code: NONEPonticResinWithHighNobleMetal
+    /// </summary>
+    public const string LiteralNONEPonticResinWithHighNobleMetal = "http://snomed.info/sct#5016005";
 
     /// <summary>
     /// Literal for code: DirectLaryngoscopyWithBiopsy
@@ -12308,9 +15598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDirectLaryngoscopyWithBiopsy = "5019003";
 
     /// <summary>
+    /// Literal for code: NONEDirectLaryngoscopyWithBiopsy
+    /// </summary>
+    public const string LiteralNONEDirectLaryngoscopyWithBiopsy = "http://snomed.info/sct#5019003";
+
+    /// <summary>
     /// Literal for code: AldosteroneMeasurementStandingNormalSaltDiet
     /// </summary>
     public const string LiteralAldosteroneMeasurementStandingNormalSaltDiet = "5021008";
+
+    /// <summary>
+    /// Literal for code: NONEAldosteroneMeasurementStandingNormalSaltDiet
+    /// </summary>
+    public const string LiteralNONEAldosteroneMeasurementStandingNormalSaltDiet = "http://snomed.info/sct#5021008";
 
     /// <summary>
     /// Literal for code: LysergicAcidDiethylamideMeasurement
@@ -12318,9 +15618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLysergicAcidDiethylamideMeasurement = "5022001";
 
     /// <summary>
+    /// Literal for code: NONELysergicAcidDiethylamideMeasurement
+    /// </summary>
+    public const string LiteralNONELysergicAcidDiethylamideMeasurement = "http://snomed.info/sct#5022001";
+
+    /// <summary>
     /// Literal for code: SemenAnalysisPresenceAndMotilityOfSperm
     /// </summary>
     public const string LiteralSemenAnalysisPresenceAndMotilityOfSperm = "5025004";
+
+    /// <summary>
+    /// Literal for code: NONESemenAnalysisPresenceAndMotilityOfSperm
+    /// </summary>
+    public const string LiteralNONESemenAnalysisPresenceAndMotilityOfSperm = "http://snomed.info/sct#5025004";
 
     /// <summary>
     /// Literal for code: CornealGluing
@@ -12328,9 +15638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCornealGluing = "503003";
 
     /// <summary>
+    /// Literal for code: NONECornealGluing
+    /// </summary>
+    public const string LiteralNONECornealGluing = "http://snomed.info/sct#503003";
+
+    /// <summary>
     /// Literal for code: LabialVeneerPorcelainLaminateLaboratory
     /// </summary>
     public const string LiteralLabialVeneerPorcelainLaminateLaboratory = "5032008";
+
+    /// <summary>
+    /// Literal for code: NONELabialVeneerPorcelainLaminateLaboratory
+    /// </summary>
+    public const string LiteralNONELabialVeneerPorcelainLaminateLaboratory = "http://snomed.info/sct#5032008";
 
     /// <summary>
     /// Literal for code: GraftToHairBearingSkin
@@ -12338,9 +15658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGraftToHairBearingSkin = "5034009";
 
     /// <summary>
+    /// Literal for code: NONEGraftToHairBearingSkin
+    /// </summary>
+    public const string LiteralNONEGraftToHairBearingSkin = "http://snomed.info/sct#5034009";
+
+    /// <summary>
     /// Literal for code: ExternalCephalicVersionWithTocolysis
     /// </summary>
     public const string LiteralExternalCephalicVersionWithTocolysis = "5048009";
+
+    /// <summary>
+    /// Literal for code: NONEExternalCephalicVersionWithTocolysis
+    /// </summary>
+    public const string LiteralNONEExternalCephalicVersionWithTocolysis = "http://snomed.info/sct#5048009";
 
     /// <summary>
     /// Literal for code: UnisceptSystemTest
@@ -12348,9 +15678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnisceptSystemTest = "5055006";
 
     /// <summary>
+    /// Literal for code: NONEUnisceptSystemTest
+    /// </summary>
+    public const string LiteralNONEUnisceptSystemTest = "http://snomed.info/sct#5055006";
+
+    /// <summary>
     /// Literal for code: RadicalOrbitomaxillectomy
     /// </summary>
     public const string LiteralRadicalOrbitomaxillectomy = "5057003";
+
+    /// <summary>
+    /// Literal for code: NONERadicalOrbitomaxillectomy
+    /// </summary>
+    public const string LiteralNONERadicalOrbitomaxillectomy = "http://snomed.info/sct#5057003";
 
     /// <summary>
     /// Literal for code: ReductionOfClosedTraumaticHipDislocationWithAnesthesia
@@ -12358,9 +15698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReductionOfClosedTraumaticHipDislocationWithAnesthesia = "5065000";
 
     /// <summary>
+    /// Literal for code: NONEReductionOfClosedTraumaticHipDislocationWithAnesthesia
+    /// </summary>
+    public const string LiteralNONEReductionOfClosedTraumaticHipDislocationWithAnesthesia = "http://snomed.info/sct#5065000";
+
+    /// <summary>
     /// Literal for code: PeripheralVascularDiseaseStudy
     /// </summary>
     public const string LiteralPeripheralVascularDiseaseStudy = "5091004";
+
+    /// <summary>
+    /// Literal for code: NONEPeripheralVascularDiseaseStudy
+    /// </summary>
+    public const string LiteralNONEPeripheralVascularDiseaseStudy = "http://snomed.info/sct#5091004";
 
     /// <summary>
     /// Literal for code: EndoscopyOfRenalPelvis
@@ -12368,9 +15718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEndoscopyOfRenalPelvis = "5105000";
 
     /// <summary>
+    /// Literal for code: NONEEndoscopyOfRenalPelvis
+    /// </summary>
+    public const string LiteralNONEEndoscopyOfRenalPelvis = "http://snomed.info/sct#5105000";
+
+    /// <summary>
     /// Literal for code: UltrasoundPeripheralImagingRealTimeScan
     /// </summary>
     public const string LiteralUltrasoundPeripheralImagingRealTimeScan = "5110001";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasoundPeripheralImagingRealTimeScan
+    /// </summary>
+    public const string LiteralNONEUltrasoundPeripheralImagingRealTimeScan = "http://snomed.info/sct#5110001";
 
     /// <summary>
     /// Literal for code: T4FreeMeasurement
@@ -12378,9 +15738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralT4FreeMeasurement = "5113004";
 
     /// <summary>
+    /// Literal for code: NONET4FreeMeasurement
+    /// </summary>
+    public const string LiteralNONET4FreeMeasurement = "http://snomed.info/sct#5113004";
+
+    /// <summary>
     /// Literal for code: Epiglottidectomy
     /// </summary>
     public const string LiteralEpiglottidectomy = "5119000";
+
+    /// <summary>
+    /// Literal for code: NONEEpiglottidectomy
+    /// </summary>
+    public const string LiteralNONEEpiglottidectomy = "http://snomed.info/sct#5119000";
 
     /// <summary>
     /// Literal for code: WedgeOsteotomyOfPelvicBone
@@ -12388,9 +15758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWedgeOsteotomyOfPelvicBone = "5121005";
 
     /// <summary>
+    /// Literal for code: NONEWedgeOsteotomyOfPelvicBone
+    /// </summary>
+    public const string LiteralNONEWedgeOsteotomyOfPelvicBone = "http://snomed.info/sct#5121005";
+
+    /// <summary>
     /// Literal for code: AnesthesiaForProcedureOnPericardiumWithPumpOxygenator
     /// </summary>
     public const string LiteralAnesthesiaForProcedureOnPericardiumWithPumpOxygenator = "5123008";
+
+    /// <summary>
+    /// Literal for code: NONEAnesthesiaForProcedureOnPericardiumWithPumpOxygenator
+    /// </summary>
+    public const string LiteralNONEAnesthesiaForProcedureOnPericardiumWithPumpOxygenator = "http://snomed.info/sct#5123008";
 
     /// <summary>
     /// Literal for code: ExtractionOfPrimaryMembranousCataractByDiscission
@@ -12398,9 +15778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExtractionOfPrimaryMembranousCataractByDiscission = "5130002";
 
     /// <summary>
+    /// Literal for code: NONEExtractionOfPrimaryMembranousCataractByDiscission
+    /// </summary>
+    public const string LiteralNONEExtractionOfPrimaryMembranousCataractByDiscission = "http://snomed.info/sct#5130002";
+
+    /// <summary>
     /// Literal for code: RadiographyOfChestWall
     /// </summary>
     public const string LiteralRadiographyOfChestWall = "5131003";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfChestWall
+    /// </summary>
+    public const string LiteralNONERadiographyOfChestWall = "http://snomed.info/sct#5131003";
 
     /// <summary>
     /// Literal for code: DiagnosticProcedureOnScapula
@@ -12408,9 +15798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticProcedureOnScapula = "5135007";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticProcedureOnScapula
+    /// </summary>
+    public const string LiteralNONEDiagnosticProcedureOnScapula = "http://snomed.info/sct#5135007";
+
+    /// <summary>
     /// Literal for code: ExcisionOfLesionOfAnkleJoint
     /// </summary>
     public const string LiteralExcisionOfLesionOfAnkleJoint = "5147001";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfLesionOfAnkleJoint
+    /// </summary>
+    public const string LiteralNONEExcisionOfLesionOfAnkleJoint = "http://snomed.info/sct#5147001";
 
     /// <summary>
     /// Literal for code: ManualReductionOfHemorrhoids
@@ -12418,9 +15818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralManualReductionOfHemorrhoids = "5151004";
 
     /// <summary>
+    /// Literal for code: NONEManualReductionOfHemorrhoids
+    /// </summary>
+    public const string LiteralNONEManualReductionOfHemorrhoids = "http://snomed.info/sct#5151004";
+
+    /// <summary>
     /// Literal for code: SpeechTherapy
     /// </summary>
     public const string LiteralSpeechTherapy = "5154007";
+
+    /// <summary>
+    /// Literal for code: NONESpeechTherapy
+    /// </summary>
+    public const string LiteralNONESpeechTherapy = "http://snomed.info/sct#5154007";
 
     /// <summary>
     /// Literal for code: SpecialtyClinicAdmission
@@ -12428,9 +15838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpecialtyClinicAdmission = "5161006";
 
     /// <summary>
+    /// Literal for code: NONESpecialtyClinicAdmission
+    /// </summary>
+    public const string LiteralNONESpecialtyClinicAdmission = "http://snomed.info/sct#5161006";
+
+    /// <summary>
     /// Literal for code: ExcisionOfPressureUlcer
     /// </summary>
     public const string LiteralExcisionOfPressureUlcer = "5162004";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfPressureUlcer
+    /// </summary>
+    public const string LiteralNONEExcisionOfPressureUlcer = "http://snomed.info/sct#5162004";
 
     /// <summary>
     /// Literal for code: DivisionOfThoracicArtery
@@ -12438,9 +15858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDivisionOfThoracicArtery = "5165002";
 
     /// <summary>
+    /// Literal for code: NONEDivisionOfThoracicArtery
+    /// </summary>
+    public const string LiteralNONEDivisionOfThoracicArtery = "http://snomed.info/sct#5165002";
+
+    /// <summary>
     /// Literal for code: ThromboendarterectomyWithGraftOfRenalArtery
     /// </summary>
     public const string LiteralThromboendarterectomyWithGraftOfRenalArtery = "5176003";
+
+    /// <summary>
+    /// Literal for code: NONEThromboendarterectomyWithGraftOfRenalArtery
+    /// </summary>
+    public const string LiteralNONEThromboendarterectomyWithGraftOfRenalArtery = "http://snomed.info/sct#5176003";
 
     /// <summary>
     /// Literal for code: TotalBodyPerfusion
@@ -12448,9 +15878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTotalBodyPerfusion = "5182000";
 
     /// <summary>
+    /// Literal for code: NONETotalBodyPerfusion
+    /// </summary>
+    public const string LiteralNONETotalBodyPerfusion = "http://snomed.info/sct#5182000";
+
+    /// <summary>
     /// Literal for code: OsteotomyOfShaftOfFemurWithFixation
     /// </summary>
     public const string LiteralOsteotomyOfShaftOfFemurWithFixation = "5184004";
+
+    /// <summary>
+    /// Literal for code: NONEOsteotomyOfShaftOfFemurWithFixation
+    /// </summary>
+    public const string LiteralNONEOsteotomyOfShaftOfFemurWithFixation = "http://snomed.info/sct#5184004";
 
     /// <summary>
     /// Literal for code: ArthrotomyForSynovectomyOfGlenohumeralJoint
@@ -12458,9 +15898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArthrotomyForSynovectomyOfGlenohumeralJoint = "5186002";
 
     /// <summary>
+    /// Literal for code: NONEArthrotomyForSynovectomyOfGlenohumeralJoint
+    /// </summary>
+    public const string LiteralNONEArthrotomyForSynovectomyOfGlenohumeralJoint = "http://snomed.info/sct#5186002";
+
+    /// <summary>
     /// Literal for code: CellFusion
     /// </summary>
     public const string LiteralCellFusion = "5190000";
+
+    /// <summary>
+    /// Literal for code: NONECellFusion
+    /// </summary>
+    public const string LiteralNONECellFusion = "http://snomed.info/sct#5190000";
 
     /// <summary>
     /// Literal for code: SurgicalTreatmentOfMissedAbortionOfSecondTrimester
@@ -12468,9 +15918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalTreatmentOfMissedAbortionOfSecondTrimester = "5191001";
 
     /// <summary>
+    /// Literal for code: NONESurgicalTreatmentOfMissedAbortionOfSecondTrimester
+    /// </summary>
+    public const string LiteralNONESurgicalTreatmentOfMissedAbortionOfSecondTrimester = "http://snomed.info/sct#5191001";
+
+    /// <summary>
     /// Literal for code: ExcisionOfLesionOfLacrimalGlandByFrontalApproach
     /// </summary>
     public const string LiteralExcisionOfLesionOfLacrimalGlandByFrontalApproach = "5212002";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfLesionOfLacrimalGlandByFrontalApproach
+    /// </summary>
+    public const string LiteralNONEExcisionOfLesionOfLacrimalGlandByFrontalApproach = "http://snomed.info/sct#5212002";
 
     /// <summary>
     /// Literal for code: ThreeDimensionalUltrasoundImagingOfHeart
@@ -12478,9 +15938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThreeDimensionalUltrasoundImagingOfHeart = "5216004";
 
     /// <summary>
+    /// Literal for code: NONEThreeDimensionalUltrasoundImagingOfHeart
+    /// </summary>
+    public const string LiteralNONEThreeDimensionalUltrasoundImagingOfHeart = "http://snomed.info/sct#5216004";
+
+    /// <summary>
     /// Literal for code: LateralFasciotomy
     /// </summary>
     public const string LiteralLateralFasciotomy = "5233006";
+
+    /// <summary>
+    /// Literal for code: NONELateralFasciotomy
+    /// </summary>
+    public const string LiteralNONELateralFasciotomy = "http://snomed.info/sct#5233006";
 
     /// <summary>
     /// Literal for code: SutureOfAdenoidFossa
@@ -12488,9 +15958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSutureOfAdenoidFossa = "5243009";
 
     /// <summary>
+    /// Literal for code: NONESutureOfAdenoidFossa
+    /// </summary>
+    public const string LiteralNONESutureOfAdenoidFossa = "http://snomed.info/sct#5243009";
+
+    /// <summary>
     /// Literal for code: TransplantationOfPeripheralVein
     /// </summary>
     public const string LiteralTransplantationOfPeripheralVein = "5245002";
+
+    /// <summary>
+    /// Literal for code: NONETransplantationOfPeripheralVein
+    /// </summary>
+    public const string LiteralNONETransplantationOfPeripheralVein = "http://snomed.info/sct#5245002";
 
     /// <summary>
     /// Literal for code: BreakpointClusterRegionAnalysis
@@ -12498,9 +15978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBreakpointClusterRegionAnalysis = "5246001";
 
     /// <summary>
+    /// Literal for code: NONEBreakpointClusterRegionAnalysis
+    /// </summary>
+    public const string LiteralNONEBreakpointClusterRegionAnalysis = "http://snomed.info/sct#5246001";
+
+    /// <summary>
     /// Literal for code: TotalBileAcidsMeasurement
     /// </summary>
     public const string LiteralTotalBileAcidsMeasurement = "5264008";
+
+    /// <summary>
+    /// Literal for code: NONETotalBileAcidsMeasurement
+    /// </summary>
+    public const string LiteralNONETotalBileAcidsMeasurement = "http://snomed.info/sct#5264008";
 
     /// <summary>
     /// Literal for code: LigationOfAdrenalArtery
@@ -12508,9 +15998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLigationOfAdrenalArtery = "5267001";
 
     /// <summary>
+    /// Literal for code: NONELigationOfAdrenalArtery
+    /// </summary>
+    public const string LiteralNONELigationOfAdrenalArtery = "http://snomed.info/sct#5267001";
+
+    /// <summary>
     /// Literal for code: BilateralDestructionOfFallopianTubes
     /// </summary>
     public const string LiteralBilateralDestructionOfFallopianTubes = "5270002";
+
+    /// <summary>
+    /// Literal for code: NONEBilateralDestructionOfFallopianTubes
+    /// </summary>
+    public const string LiteralNONEBilateralDestructionOfFallopianTubes = "http://snomed.info/sct#5270002";
 
     /// <summary>
     /// Literal for code: ReductionOfClosedFractureOfProximalEndOfUlnaWithManipulation
@@ -12518,9 +16018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReductionOfClosedFractureOfProximalEndOfUlnaWithManipulation = "5273000";
 
     /// <summary>
+    /// Literal for code: NONEReductionOfClosedFractureOfProximalEndOfUlnaWithManipulation
+    /// </summary>
+    public const string LiteralNONEReductionOfClosedFractureOfProximalEndOfUlnaWithManipulation = "http://snomed.info/sct#5273000";
+
+    /// <summary>
     /// Literal for code: OperationOnOropharynx
     /// </summary>
     public const string LiteralOperationOnOropharynx = "5282006";
+
+    /// <summary>
+    /// Literal for code: NONEOperationOnOropharynx
+    /// </summary>
+    public const string LiteralNONEOperationOnOropharynx = "http://snomed.info/sct#5282006";
 
     /// <summary>
     /// Literal for code: IncisionAndDrainageOfLudwigQuoteSAngina
@@ -12528,9 +16038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionAndDrainageOfLudwigQuoteSAngina = "5290006";
 
     /// <summary>
+    /// Literal for code: NONEIncisionAndDrainageOfLudwigQuoteSAngina
+    /// </summary>
+    public const string LiteralNONEIncisionAndDrainageOfLudwigQuoteSAngina = "http://snomed.info/sct#5290006";
+
+    /// <summary>
     /// Literal for code: IncisionAndDrainageOfDeepHematomaOfThighRegion
     /// </summary>
     public const string LiteralIncisionAndDrainageOfDeepHematomaOfThighRegion = "5298004";
+
+    /// <summary>
+    /// Literal for code: NONEIncisionAndDrainageOfDeepHematomaOfThighRegion
+    /// </summary>
+    public const string LiteralNONEIncisionAndDrainageOfDeepHematomaOfThighRegion = "http://snomed.info/sct#5298004";
 
     /// <summary>
     /// Literal for code: DeepRadiationTherapy200300KVP
@@ -12538,9 +16058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeepRadiationTherapy200300KVP = "5304008";
 
     /// <summary>
+    /// Literal for code: NONEDeepRadiationTherapy200300KVP
+    /// </summary>
+    public const string LiteralNONEDeepRadiationTherapy200300KVP = "http://snomed.info/sct#5304008";
+
+    /// <summary>
     /// Literal for code: OpenPulmonaryValveCommissurotomyWithInflowOcclusion
     /// </summary>
     public const string LiteralOpenPulmonaryValveCommissurotomyWithInflowOcclusion = "531007";
+
+    /// <summary>
+    /// Literal for code: NONEOpenPulmonaryValveCommissurotomyWithInflowOcclusion
+    /// </summary>
+    public const string LiteralNONEOpenPulmonaryValveCommissurotomyWithInflowOcclusion = "http://snomed.info/sct#531007";
 
     /// <summary>
     /// Literal for code: ClosedOsteotomyOfMandibularRamus
@@ -12548,9 +16078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClosedOsteotomyOfMandibularRamus = "5316002";
 
     /// <summary>
+    /// Literal for code: NONEClosedOsteotomyOfMandibularRamus
+    /// </summary>
+    public const string LiteralNONEClosedOsteotomyOfMandibularRamus = "http://snomed.info/sct#5316002";
+
+    /// <summary>
     /// Literal for code: RadicalAmputationOfPenisWithBilateralPelvicLymphadenectomy
     /// </summary>
     public const string LiteralRadicalAmputationOfPenisWithBilateralPelvicLymphadenectomy = "5317006";
+
+    /// <summary>
+    /// Literal for code: NONERadicalAmputationOfPenisWithBilateralPelvicLymphadenectomy
+    /// </summary>
+    public const string LiteralNONERadicalAmputationOfPenisWithBilateralPelvicLymphadenectomy = "http://snomed.info/sct#5317006";
 
     /// <summary>
     /// Literal for code: AdministrationOfDermatologicFormulation
@@ -12558,9 +16098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdministrationOfDermatologicFormulation = "5326009";
 
     /// <summary>
+    /// Literal for code: NONEAdministrationOfDermatologicFormulation
+    /// </summary>
+    public const string LiteralNONEAdministrationOfDermatologicFormulation = "http://snomed.info/sct#5326009";
+
+    /// <summary>
     /// Literal for code: ShorteningOfAchillesTendon
     /// </summary>
     public const string LiteralShorteningOfAchillesTendon = "5328005";
+
+    /// <summary>
+    /// Literal for code: NONEShorteningOfAchillesTendon
+    /// </summary>
+    public const string LiteralNONEShorteningOfAchillesTendon = "http://snomed.info/sct#5328005";
 
     /// <summary>
     /// Literal for code: RepairOfVesicocolicFistula
@@ -12568,9 +16118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepairOfVesicocolicFistula = "533005";
 
     /// <summary>
+    /// Literal for code: NONERepairOfVesicocolicFistula
+    /// </summary>
+    public const string LiteralNONERepairOfVesicocolicFistula = "http://snomed.info/sct#533005";
+
+    /// <summary>
     /// Literal for code: TrocarBiopsy
     /// </summary>
     public const string LiteralTrocarBiopsy = "5337005";
+
+    /// <summary>
+    /// Literal for code: NONETrocarBiopsy
+    /// </summary>
+    public const string LiteralNONETrocarBiopsy = "http://snomed.info/sct#5337005";
 
     /// <summary>
     /// Literal for code: NicotineMeasurement
@@ -12578,9 +16138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNicotineMeasurement = "5338000";
 
     /// <summary>
+    /// Literal for code: NONENicotineMeasurement
+    /// </summary>
+    public const string LiteralNONENicotineMeasurement = "http://snomed.info/sct#5338000";
+
+    /// <summary>
     /// Literal for code: ProphylacticTreatmentOfTibiaWithMethylMethacrylate
     /// </summary>
     public const string LiteralProphylacticTreatmentOfTibiaWithMethylMethacrylate = "5342002";
+
+    /// <summary>
+    /// Literal for code: NONEProphylacticTreatmentOfTibiaWithMethylMethacrylate
+    /// </summary>
+    public const string LiteralNONEProphylacticTreatmentOfTibiaWithMethylMethacrylate = "http://snomed.info/sct#5342002";
 
     /// <summary>
     /// Literal for code: RepairOfEndocardialCushionDefect
@@ -12588,9 +16158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepairOfEndocardialCushionDefect = "5348003";
 
     /// <summary>
+    /// Literal for code: NONERepairOfEndocardialCushionDefect
+    /// </summary>
+    public const string LiteralNONERepairOfEndocardialCushionDefect = "http://snomed.info/sct#5348003";
+
+    /// <summary>
     /// Literal for code: ClosureOfUreterovesicovaginalFistula
     /// </summary>
     public const string LiteralClosureOfUreterovesicovaginalFistula = "535003";
+
+    /// <summary>
+    /// Literal for code: NONEClosureOfUreterovesicovaginalFistula
+    /// </summary>
+    public const string LiteralNONEClosureOfUreterovesicovaginalFistula = "http://snomed.info/sct#535003";
 
     /// <summary>
     /// Literal for code: LeukocytePoorBloodPreparation
@@ -12598,9 +16178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLeukocytePoorBloodPreparation = "5357009";
 
     /// <summary>
+    /// Literal for code: NONELeukocytePoorBloodPreparation
+    /// </summary>
+    public const string LiteralNONELeukocytePoorBloodPreparation = "http://snomed.info/sct#5357009";
+
+    /// <summary>
     /// Literal for code: StressBreaker
     /// </summary>
     public const string LiteralStressBreaker = "5373003";
+
+    /// <summary>
+    /// Literal for code: NONEStressBreaker
+    /// </summary>
+    public const string LiteralNONEStressBreaker = "http://snomed.info/sct#5373003";
 
     /// <summary>
     /// Literal for code: ExcisionOfPartOfFrontalCortex
@@ -12608,9 +16198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfPartOfFrontalCortex = "5384005";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfPartOfFrontalCortex
+    /// </summary>
+    public const string LiteralNONEExcisionOfPartOfFrontalCortex = "http://snomed.info/sct#5384005";
+
+    /// <summary>
     /// Literal for code: ArtificialVoiceRehabilitation
     /// </summary>
     public const string LiteralArtificialVoiceRehabilitation = "5391008";
+
+    /// <summary>
+    /// Literal for code: NONEArtificialVoiceRehabilitation
+    /// </summary>
+    public const string LiteralNONEArtificialVoiceRehabilitation = "http://snomed.info/sct#5391008";
 
     /// <summary>
     /// Literal for code: ExplorationOfParathyroidWithMediastinalExplorationBySternalSplitApproach
@@ -12618,9 +16218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExplorationOfParathyroidWithMediastinalExplorationBySternalSplitApproach = "5393006";
 
     /// <summary>
+    /// Literal for code: NONEExplorationOfParathyroidWithMediastinalExplorationBySternalSplitApproach
+    /// </summary>
+    public const string LiteralNONEExplorationOfParathyroidWithMediastinalExplorationBySternalSplitApproach = "http://snomed.info/sct#5393006";
+
+    /// <summary>
     /// Literal for code: AntibodyToSingleAndDoubleStrandedDNAMeasurement
     /// </summary>
     public const string LiteralAntibodyToSingleAndDoubleStrandedDNAMeasurement = "540006";
+
+    /// <summary>
+    /// Literal for code: NONEAntibodyToSingleAndDoubleStrandedDNAMeasurement
+    /// </summary>
+    public const string LiteralNONEAntibodyToSingleAndDoubleStrandedDNAMeasurement = "http://snomed.info/sct#540006";
 
     /// <summary>
     /// Literal for code: ManipulationOfThoracicArtery
@@ -12628,9 +16238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralManipulationOfThoracicArtery = "5402006";
 
     /// <summary>
+    /// Literal for code: NONEManipulationOfThoracicArtery
+    /// </summary>
+    public const string LiteralNONEManipulationOfThoracicArtery = "http://snomed.info/sct#5402006";
+
+    /// <summary>
     /// Literal for code: InjectionOfFallopianTube
     /// </summary>
     public const string LiteralInjectionOfFallopianTube = "5407000";
+
+    /// <summary>
+    /// Literal for code: NONEInjectionOfFallopianTube
+    /// </summary>
+    public const string LiteralNONEInjectionOfFallopianTube = "http://snomed.info/sct#5407000";
 
     /// <summary>
     /// Literal for code: DestructionOfLesionOfLiver
@@ -12638,9 +16258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDestructionOfLesionOfLiver = "5415002";
 
     /// <summary>
+    /// Literal for code: NONEDestructionOfLesionOfLiver
+    /// </summary>
+    public const string LiteralNONEDestructionOfLesionOfLiver = "http://snomed.info/sct#5415002";
+
+    /// <summary>
     /// Literal for code: LysisOfAdhesionsOfTendonOfHand
     /// </summary>
     public const string LiteralLysisOfAdhesionsOfTendonOfHand = "5419008";
+
+    /// <summary>
+    /// Literal for code: NONELysisOfAdhesionsOfTendonOfHand
+    /// </summary>
+    public const string LiteralNONELysisOfAdhesionsOfTendonOfHand = "http://snomed.info/sct#5419008";
 
     /// <summary>
     /// Literal for code: AmylaseMeasurementPeritonealFluid
@@ -12648,9 +16278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAmylaseMeasurementPeritonealFluid = "5422005";
 
     /// <summary>
+    /// Literal for code: NONEAmylaseMeasurementPeritonealFluid
+    /// </summary>
+    public const string LiteralNONEAmylaseMeasurementPeritonealFluid = "http://snomed.info/sct#5422005";
+
+    /// <summary>
     /// Literal for code: DiagnosticProcedureOnNipple
     /// </summary>
     public const string LiteralDiagnosticProcedureOnNipple = "5429001";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticProcedureOnNipple
+    /// </summary>
+    public const string LiteralNONEDiagnosticProcedureOnNipple = "http://snomed.info/sct#5429001";
 
     /// <summary>
     /// Literal for code: CholedochostomyWithTransduodenalSphincteroplasty
@@ -12658,9 +16298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCholedochostomyWithTransduodenalSphincteroplasty = "543008";
 
     /// <summary>
+    /// Literal for code: NONECholedochostomyWithTransduodenalSphincteroplasty
+    /// </summary>
+    public const string LiteralNONECholedochostomyWithTransduodenalSphincteroplasty = "http://snomed.info/sct#543008";
+
+    /// <summary>
     /// Literal for code: PercutaneousTransluminalAngioplasty
     /// </summary>
     public const string LiteralPercutaneousTransluminalAngioplasty = "5431005";
+
+    /// <summary>
+    /// Literal for code: NONEPercutaneousTransluminalAngioplasty
+    /// </summary>
+    public const string LiteralNONEPercutaneousTransluminalAngioplasty = "http://snomed.info/sct#5431005";
 
     /// <summary>
     /// Literal for code: SkeletalXRayOfLowerLimb
@@ -12668,9 +16318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSkeletalXRayOfLowerLimb = "5433008";
 
     /// <summary>
+    /// Literal for code: NONESkeletalXRayOfLowerLimb
+    /// </summary>
+    public const string LiteralNONESkeletalXRayOfLowerLimb = "http://snomed.info/sct#5433008";
+
+    /// <summary>
     /// Literal for code: ExcisionOfCervicalRibForOutletCompressionSyndromeWithSympathectomy
     /// </summary>
     public const string LiteralExcisionOfCervicalRibForOutletCompressionSyndromeWithSympathectomy = "5446003";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfCervicalRibForOutletCompressionSyndromeWithSympathectomy
+    /// </summary>
+    public const string LiteralNONEExcisionOfCervicalRibForOutletCompressionSyndromeWithSympathectomy = "http://snomed.info/sct#5446003";
 
     /// <summary>
     /// Literal for code: Transfusion
@@ -12678,9 +16338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTransfusion = "5447007";
 
     /// <summary>
+    /// Literal for code: NONETransfusion
+    /// </summary>
+    public const string LiteralNONETransfusion = "http://snomed.info/sct#5447007";
+
+    /// <summary>
     /// Literal for code: OperativeProcedureOnLowerLeg
     /// </summary>
     public const string LiteralOperativeProcedureOnLowerLeg = "545001";
+
+    /// <summary>
+    /// Literal for code: NONEOperativeProcedureOnLowerLeg
+    /// </summary>
+    public const string LiteralNONEOperativeProcedureOnLowerLeg = "http://snomed.info/sct#545001";
 
     /// <summary>
     /// Literal for code: CoreNeedleBiopsyOfThymus
@@ -12688,9 +16358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCoreNeedleBiopsyOfThymus = "5452002";
 
     /// <summary>
+    /// Literal for code: NONECoreNeedleBiopsyOfThymus
+    /// </summary>
+    public const string LiteralNONECoreNeedleBiopsyOfThymus = "http://snomed.info/sct#5452002";
+
+    /// <summary>
     /// Literal for code: GraftOfLymphaticStructure
     /// </summary>
     public const string LiteralGraftOfLymphaticStructure = "5456004";
+
+    /// <summary>
+    /// Literal for code: NONEGraftOfLymphaticStructure
+    /// </summary>
+    public const string LiteralNONEGraftOfLymphaticStructure = "http://snomed.info/sct#5456004";
 
     /// <summary>
     /// Literal for code: SerologicTestForRickettsiaConorii
@@ -12698,9 +16378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSerologicTestForRickettsiaConorii = "5457008";
 
     /// <summary>
+    /// Literal for code: NONESerologicTestForRickettsiaConorii
+    /// </summary>
+    public const string LiteralNONESerologicTestForRickettsiaConorii = "http://snomed.info/sct#5457008";
+
+    /// <summary>
     /// Literal for code: RemovalOfProsthesisFromFallopianTube
     /// </summary>
     public const string LiteralRemovalOfProsthesisFromFallopianTube = "5460001";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfProsthesisFromFallopianTube
+    /// </summary>
+    public const string LiteralNONERemovalOfProsthesisFromFallopianTube = "http://snomed.info/sct#5460001";
 
     /// <summary>
     /// Literal for code: SelectPictureAudiometry
@@ -12708,9 +16398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSelectPictureAudiometry = "5479003";
 
     /// <summary>
+    /// Literal for code: NONESelectPictureAudiometry
+    /// </summary>
+    public const string LiteralNONESelectPictureAudiometry = "http://snomed.info/sct#5479003";
+
+    /// <summary>
     /// Literal for code: SerologicTestForBlastomyces
     /// </summary>
     public const string LiteralSerologicTestForBlastomyces = "5482008";
+
+    /// <summary>
+    /// Literal for code: NONESerologicTestForBlastomyces
+    /// </summary>
+    public const string LiteralNONESerologicTestForBlastomyces = "http://snomed.info/sct#5482008";
 
     /// <summary>
     /// Literal for code: DelayedSutureOfTendonOfHand
@@ -12718,9 +16418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDelayedSutureOfTendonOfHand = "5486006";
 
     /// <summary>
+    /// Literal for code: NONEDelayedSutureOfTendonOfHand
+    /// </summary>
+    public const string LiteralNONEDelayedSutureOfTendonOfHand = "http://snomed.info/sct#5486006";
+
+    /// <summary>
     /// Literal for code: DiagnosticProcedureOnRadius
     /// </summary>
     public const string LiteralDiagnosticProcedureOnRadius = "5489004";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticProcedureOnRadius
+    /// </summary>
+    public const string LiteralNONEDiagnosticProcedureOnRadius = "http://snomed.info/sct#5489004";
 
     /// <summary>
     /// Literal for code: IncisionOfIntracranialVein
@@ -12728,9 +16438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionOfIntracranialVein = "549007";
 
     /// <summary>
+    /// Literal for code: NONEIncisionOfIntracranialVein
+    /// </summary>
+    public const string LiteralNONEIncisionOfIntracranialVein = "http://snomed.info/sct#549007";
+
+    /// <summary>
     /// Literal for code: ExcisionOfLesionOfAdenoids
     /// </summary>
     public const string LiteralExcisionOfLesionOfAdenoids = "550007";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfLesionOfAdenoids
+    /// </summary>
+    public const string LiteralNONEExcisionOfLesionOfAdenoids = "http://snomed.info/sct#550007";
 
     /// <summary>
     /// Literal for code: IncisionAndExplorationOfAbdominalWall
@@ -12738,9 +16458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionAndExplorationOfAbdominalWall = "5506006";
 
     /// <summary>
+    /// Literal for code: NONEIncisionAndExplorationOfAbdominalWall
+    /// </summary>
+    public const string LiteralNONEIncisionAndExplorationOfAbdominalWall = "http://snomed.info/sct#5506006";
+
+    /// <summary>
     /// Literal for code: RestorationInlayPorcelainCeramicPerToothInAdditionToInlay
     /// </summary>
     public const string LiteralRestorationInlayPorcelainCeramicPerToothInAdditionToInlay = "5517007";
+
+    /// <summary>
+    /// Literal for code: NONERestorationInlayPorcelainCeramicPerToothInAdditionToInlay
+    /// </summary>
+    public const string LiteralNONERestorationInlayPorcelainCeramicPerToothInAdditionToInlay = "http://snomed.info/sct#5517007";
 
     /// <summary>
     /// Literal for code: OpenReductionOfFractureOfPhalangesOfFoot
@@ -12748,9 +16478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOpenReductionOfFractureOfPhalangesOfFoot = "5521000";
 
     /// <summary>
+    /// Literal for code: NONEOpenReductionOfFractureOfPhalangesOfFoot
+    /// </summary>
+    public const string LiteralNONEOpenReductionOfFractureOfPhalangesOfFoot = "http://snomed.info/sct#5521000";
+
+    /// <summary>
     /// Literal for code: ArthrodesisOfCarpometacarpalJointOfDigitsOtherThanThumb
     /// </summary>
     public const string LiteralArthrodesisOfCarpometacarpalJointOfDigitsOtherThanThumb = "5536002";
+
+    /// <summary>
+    /// Literal for code: NONEArthrodesisOfCarpometacarpalJointOfDigitsOtherThanThumb
+    /// </summary>
+    public const string LiteralNONEArthrodesisOfCarpometacarpalJointOfDigitsOtherThanThumb = "http://snomed.info/sct#5536002";
 
     /// <summary>
     /// Literal for code: RepairOfCarotidBody
@@ -12758,9 +16498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepairOfCarotidBody = "5545001";
 
     /// <summary>
+    /// Literal for code: NONERepairOfCarotidBody
+    /// </summary>
+    public const string LiteralNONERepairOfCarotidBody = "http://snomed.info/sct#5545001";
+
+    /// <summary>
     /// Literal for code: DirectLaryngoscopyWithArytenoidectomyWithOperatingMicroscope
     /// </summary>
     public const string LiteralDirectLaryngoscopyWithArytenoidectomyWithOperatingMicroscope = "5551006";
+
+    /// <summary>
+    /// Literal for code: NONEDirectLaryngoscopyWithArytenoidectomyWithOperatingMicroscope
+    /// </summary>
+    public const string LiteralNONEDirectLaryngoscopyWithArytenoidectomyWithOperatingMicroscope = "http://snomed.info/sct#5551006";
 
     /// <summary>
     /// Literal for code: ManuallyAssistedSpontaneousDelivery
@@ -12768,9 +16518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralManuallyAssistedSpontaneousDelivery = "5556001";
 
     /// <summary>
+    /// Literal for code: NONEManuallyAssistedSpontaneousDelivery
+    /// </summary>
+    public const string LiteralNONEManuallyAssistedSpontaneousDelivery = "http://snomed.info/sct#5556001";
+
+    /// <summary>
     /// Literal for code: ArthrotomyForInfectionWithExplorationAndDrainageOfCarpometacarpalJoint
     /// </summary>
     public const string LiteralArthrotomyForInfectionWithExplorationAndDrainageOfCarpometacarpalJoint = "5570001";
+
+    /// <summary>
+    /// Literal for code: NONEArthrotomyForInfectionWithExplorationAndDrainageOfCarpometacarpalJoint
+    /// </summary>
+    public const string LiteralNONEArthrotomyForInfectionWithExplorationAndDrainageOfCarpometacarpalJoint = "http://snomed.info/sct#5570001";
 
     /// <summary>
     /// Literal for code: ExcisionOfLesionOfAortaWithEndToEndAnastomosis
@@ -12778,9 +16538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfLesionOfAortaWithEndToEndAnastomosis = "5571002";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfLesionOfAortaWithEndToEndAnastomosis
+    /// </summary>
+    public const string LiteralNONEExcisionOfLesionOfAortaWithEndToEndAnastomosis = "http://snomed.info/sct#5571002";
+
+    /// <summary>
     /// Literal for code: IncisionOfKidneyPelvis
     /// </summary>
     public const string LiteralIncisionOfKidneyPelvis = "5572009";
+
+    /// <summary>
+    /// Literal for code: NONEIncisionOfKidneyPelvis
+    /// </summary>
+    public const string LiteralNONEIncisionOfKidneyPelvis = "http://snomed.info/sct#5572009";
 
     /// <summary>
     /// Literal for code: AminolevulinicAcidDehydrataseMeasurement
@@ -12788,9 +16558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAminolevulinicAcidDehydrataseMeasurement = "5586008";
 
     /// <summary>
+    /// Literal for code: NONEAminolevulinicAcidDehydrataseMeasurement
+    /// </summary>
+    public const string LiteralNONEAminolevulinicAcidDehydrataseMeasurement = "http://snomed.info/sct#5586008";
+
+    /// <summary>
     /// Literal for code: ExcisionOfVaricoseVein
     /// </summary>
     public const string LiteralExcisionOfVaricoseVein = "559008";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfVaricoseVein
+    /// </summary>
+    public const string LiteralNONEExcisionOfVaricoseVein = "http://snomed.info/sct#559008";
 
     /// <summary>
     /// Literal for code: ExcretionMeasurement
@@ -12798,9 +16578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcretionMeasurement = "5608002";
 
     /// <summary>
+    /// Literal for code: NONEExcretionMeasurement
+    /// </summary>
+    public const string LiteralNONEExcretionMeasurement = "http://snomed.info/sct#5608002";
+
+    /// <summary>
     /// Literal for code: OsteoplastyOfTibia
     /// </summary>
     public const string LiteralOsteoplastyOfTibia = "5616006";
+
+    /// <summary>
+    /// Literal for code: NONEOsteoplastyOfTibia
+    /// </summary>
+    public const string LiteralNONEOsteoplastyOfTibia = "http://snomed.info/sct#5616006";
 
     /// <summary>
     /// Literal for code: ExcisionOfMalignantLesionOfSkinOfExtremities
@@ -12808,9 +16598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfMalignantLesionOfSkinOfExtremities = "5621009";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfMalignantLesionOfSkinOfExtremities
+    /// </summary>
+    public const string LiteralNONEExcisionOfMalignantLesionOfSkinOfExtremities = "http://snomed.info/sct#5621009";
+
+    /// <summary>
     /// Literal for code: OpenBiopsyOfBronchus
     /// </summary>
     public const string LiteralOpenBiopsyOfBronchus = "5632009";
+
+    /// <summary>
+    /// Literal for code: NONEOpenBiopsyOfBronchus
+    /// </summary>
+    public const string LiteralNONEOpenBiopsyOfBronchus = "http://snomed.info/sct#5632009";
 
     /// <summary>
     /// Literal for code: FistulectomyOfBone
@@ -12818,9 +16618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFistulectomyOfBone = "5636007";
 
     /// <summary>
+    /// Literal for code: NONEFistulectomyOfBone
+    /// </summary>
+    public const string LiteralNONEFistulectomyOfBone = "http://snomed.info/sct#5636007";
+
+    /// <summary>
     /// Literal for code: CarbohydrateMeasurement
     /// </summary>
     public const string LiteralCarbohydrateMeasurement = "5638008";
+
+    /// <summary>
+    /// Literal for code: NONECarbohydrateMeasurement
+    /// </summary>
+    public const string LiteralNONECarbohydrateMeasurement = "http://snomed.info/sct#5638008";
 
     /// <summary>
     /// Literal for code: SurgicalRepairAndRevisionOfShunt
@@ -12828,9 +16638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalRepairAndRevisionOfShunt = "5648005";
 
     /// <summary>
+    /// Literal for code: NONESurgicalRepairAndRevisionOfShunt
+    /// </summary>
+    public const string LiteralNONESurgicalRepairAndRevisionOfShunt = "http://snomed.info/sct#5648005";
+
+    /// <summary>
     /// Literal for code: ArylsulfataseAMeasurement
     /// </summary>
     public const string LiteralArylsulfataseAMeasurement = "5651003";
+
+    /// <summary>
+    /// Literal for code: NONEArylsulfataseAMeasurement
+    /// </summary>
+    public const string LiteralNONEArylsulfataseAMeasurement = "http://snomed.info/sct#5651003";
 
     /// <summary>
     /// Literal for code: PhlebectomyOfVaricoseVeinOfHeadAndNeck
@@ -12838,9 +16658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhlebectomyOfVaricoseVeinOfHeadAndNeck = "5663008";
 
     /// <summary>
+    /// Literal for code: NONEPhlebectomyOfVaricoseVeinOfHeadAndNeck
+    /// </summary>
+    public const string LiteralNONEPhlebectomyOfVaricoseVeinOfHeadAndNeck = "http://snomed.info/sct#5663008";
+
+    /// <summary>
     /// Literal for code: PortableElectroencephalogramAwakeAndAsleepWithStimulation
     /// </summary>
     public const string LiteralPortableElectroencephalogramAwakeAndAsleepWithStimulation = "5669007";
+
+    /// <summary>
+    /// Literal for code: NONEPortableElectroencephalogramAwakeAndAsleepWithStimulation
+    /// </summary>
+    public const string LiteralNONEPortableElectroencephalogramAwakeAndAsleepWithStimulation = "http://snomed.info/sct#5669007";
 
     /// <summary>
     /// Literal for code: MagnetExtractionOfForeignBodyFromCiliaryBody
@@ -12848,9 +16678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMagnetExtractionOfForeignBodyFromCiliaryBody = "5671007";
 
     /// <summary>
+    /// Literal for code: NONEMagnetExtractionOfForeignBodyFromCiliaryBody
+    /// </summary>
+    public const string LiteralNONEMagnetExtractionOfForeignBodyFromCiliaryBody = "http://snomed.info/sct#5671007";
+
+    /// <summary>
     /// Literal for code: RemovalOfForeignBodyFromOvary
     /// </summary>
     public const string LiteralRemovalOfForeignBodyFromOvary = "5687005";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfForeignBodyFromOvary
+    /// </summary>
+    public const string LiteralNONERemovalOfForeignBodyFromOvary = "http://snomed.info/sct#5687005";
 
     /// <summary>
     /// Literal for code: IncisionOfSeminalVesicle
@@ -12858,9 +16698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionOfSeminalVesicle = "5690004";
 
     /// <summary>
+    /// Literal for code: NONEIncisionOfSeminalVesicle
+    /// </summary>
+    public const string LiteralNONEIncisionOfSeminalVesicle = "http://snomed.info/sct#5690004";
+
+    /// <summary>
     /// Literal for code: CrisisInterventionWithFollowUp
     /// </summary>
     public const string LiteralCrisisInterventionWithFollowUp = "5694008";
+
+    /// <summary>
+    /// Literal for code: NONECrisisInterventionWithFollowUp
+    /// </summary>
+    public const string LiteralNONECrisisInterventionWithFollowUp = "http://snomed.info/sct#5694008";
 
     /// <summary>
     /// Literal for code: VaccinationForArthropodBorneViralEncephalitis
@@ -12868,9 +16718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVaccinationForArthropodBorneViralEncephalitis = "570001";
 
     /// <summary>
+    /// Literal for code: NONEVaccinationForArthropodBorneViralEncephalitis
+    /// </summary>
+    public const string LiteralNONEVaccinationForArthropodBorneViralEncephalitis = "http://snomed.info/sct#570001";
+
+    /// <summary>
     /// Literal for code: RepairOfEyebrow
     /// </summary>
     public const string LiteralRepairOfEyebrow = "5721002";
+
+    /// <summary>
+    /// Literal for code: NONERepairOfEyebrow
+    /// </summary>
+    public const string LiteralNONERepairOfEyebrow = "http://snomed.info/sct#5721002";
 
     /// <summary>
     /// Literal for code: SurgicalReanastomosisOfColon
@@ -12878,9 +16738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalReanastomosisOfColon = "5722009";
 
     /// <summary>
+    /// Literal for code: NONESurgicalReanastomosisOfColon
+    /// </summary>
+    public const string LiteralNONESurgicalReanastomosisOfColon = "http://snomed.info/sct#5722009";
+
+    /// <summary>
     /// Literal for code: RemovalOfEpicardialElectrodes
     /// </summary>
     public const string LiteralRemovalOfEpicardialElectrodes = "5726007";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfEpicardialElectrodes
+    /// </summary>
+    public const string LiteralNONERemovalOfEpicardialElectrodes = "http://snomed.info/sct#5726007";
 
     /// <summary>
     /// Literal for code: AnoscopyForRemovalOfForeignBody
@@ -12888,9 +16758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnoscopyForRemovalOfForeignBody = "5728008";
 
     /// <summary>
+    /// Literal for code: NONEAnoscopyForRemovalOfForeignBody
+    /// </summary>
+    public const string LiteralNONEAnoscopyForRemovalOfForeignBody = "http://snomed.info/sct#5728008";
+
+    /// <summary>
     /// Literal for code: HemosiderinQuantitativeMeasurement
     /// </summary>
     public const string LiteralHemosiderinQuantitativeMeasurement = "5731009";
+
+    /// <summary>
+    /// Literal for code: NONEHemosiderinQuantitativeMeasurement
+    /// </summary>
+    public const string LiteralNONEHemosiderinQuantitativeMeasurement = "http://snomed.info/sct#5731009";
 
     /// <summary>
     /// Literal for code: FluorescentIdentificationOfAntiNuclearAntibody
@@ -12898,9 +16778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluorescentIdentificationOfAntiNuclearAntibody = "5733007";
 
     /// <summary>
+    /// Literal for code: NONEFluorescentIdentificationOfAntiNuclearAntibody
+    /// </summary>
+    public const string LiteralNONEFluorescentIdentificationOfAntiNuclearAntibody = "http://snomed.info/sct#5733007";
+
+    /// <summary>
     /// Literal for code: BiopsyOfCulDeSac
     /// </summary>
     public const string LiteralBiopsyOfCulDeSac = "5738003";
+
+    /// <summary>
+    /// Literal for code: NONEBiopsyOfCulDeSac
+    /// </summary>
+    public const string LiteralNONEBiopsyOfCulDeSac = "http://snomed.info/sct#5738003";
 
     /// <summary>
     /// Literal for code: BenzodiazepineMeasurement
@@ -12908,9 +16798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBenzodiazepineMeasurement = "574005";
 
     /// <summary>
+    /// Literal for code: NONEBenzodiazepineMeasurement
+    /// </summary>
+    public const string LiteralNONEBenzodiazepineMeasurement = "http://snomed.info/sct#574005";
+
+    /// <summary>
     /// Literal for code: ExcisionAmpullaOfVaterWithReimplantationOfCommonDuct
     /// </summary>
     public const string LiteralExcisionAmpullaOfVaterWithReimplantationOfCommonDuct = "5745003";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionAmpullaOfVaterWithReimplantationOfCommonDuct
+    /// </summary>
+    public const string LiteralNONEExcisionAmpullaOfVaterWithReimplantationOfCommonDuct = "http://snomed.info/sct#5745003";
 
     /// <summary>
     /// Literal for code: OsteoplastyOfRadiusAndUlnaShortening
@@ -12918,9 +16818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOsteoplastyOfRadiusAndUlnaShortening = "5760000";
 
     /// <summary>
+    /// Literal for code: NONEOsteoplastyOfRadiusAndUlnaShortening
+    /// </summary>
+    public const string LiteralNONEOsteoplastyOfRadiusAndUlnaShortening = "http://snomed.info/sct#5760000";
+
+    /// <summary>
     /// Literal for code: Blepharotomy
     /// </summary>
     public const string LiteralBlepharotomy = "5771004";
+
+    /// <summary>
+    /// Literal for code: NONEBlepharotomy
+    /// </summary>
+    public const string LiteralNONEBlepharotomy = "http://snomed.info/sct#5771004";
 
     /// <summary>
     /// Literal for code: FlexorplastyOfElbow
@@ -12928,9 +16838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFlexorplastyOfElbow = "5777000";
 
     /// <summary>
+    /// Literal for code: NONEFlexorplastyOfElbow
+    /// </summary>
+    public const string LiteralNONEFlexorplastyOfElbow = "http://snomed.info/sct#5777000";
+
+    /// <summary>
     /// Literal for code: OperationOnNasalSeptum
     /// </summary>
     public const string LiteralOperationOnNasalSeptum = "5781000";
+
+    /// <summary>
+    /// Literal for code: NONEOperationOnNasalSeptum
+    /// </summary>
+    public const string LiteralNONEOperationOnNasalSeptum = "http://snomed.info/sct#5781000";
 
     /// <summary>
     /// Literal for code: ForensicAutopsy
@@ -12938,9 +16858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralForensicAutopsy = "5785009";
 
     /// <summary>
+    /// Literal for code: NONEForensicAutopsy
+    /// </summary>
+    public const string LiteralNONEForensicAutopsy = "http://snomed.info/sct#5785009";
+
+    /// <summary>
     /// Literal for code: ElevationOfBoneFragmentsOfOrbitOfSkullWithDebridement
     /// </summary>
     public const string LiteralElevationOfBoneFragmentsOfOrbitOfSkullWithDebridement = "5787001";
+
+    /// <summary>
+    /// Literal for code: NONEElevationOfBoneFragmentsOfOrbitOfSkullWithDebridement
+    /// </summary>
+    public const string LiteralNONEElevationOfBoneFragmentsOfOrbitOfSkullWithDebridement = "http://snomed.info/sct#5787001";
 
     /// <summary>
     /// Literal for code: LysisOfAdhesionsOfIntestines
@@ -12948,9 +16878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLysisOfAdhesionsOfIntestines = "5789003";
 
     /// <summary>
+    /// Literal for code: NONELysisOfAdhesionsOfIntestines
+    /// </summary>
+    public const string LiteralNONELysisOfAdhesionsOfIntestines = "http://snomed.info/sct#5789003";
+
+    /// <summary>
     /// Literal for code: ExcisionOfExternalThromboticHemorrhoid
     /// </summary>
     public const string LiteralExcisionOfExternalThromboticHemorrhoid = "5796001";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfExternalThromboticHemorrhoid
+    /// </summary>
+    public const string LiteralNONEExcisionOfExternalThromboticHemorrhoid = "http://snomed.info/sct#5796001";
 
     /// <summary>
     /// Literal for code: RevisionOfTracheostomyScar
@@ -12958,9 +16898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRevisionOfTracheostomyScar = "5806001";
 
     /// <summary>
+    /// Literal for code: NONERevisionOfTracheostomyScar
+    /// </summary>
+    public const string LiteralNONERevisionOfTracheostomyScar = "http://snomed.info/sct#5806001";
+
+    /// <summary>
     /// Literal for code: FenestrationOfInnerEarInitial
     /// </summary>
     public const string LiteralFenestrationOfInnerEarInitial = "5807005";
+
+    /// <summary>
+    /// Literal for code: NONEFenestrationOfInnerEarInitial
+    /// </summary>
+    public const string LiteralNONEFenestrationOfInnerEarInitial = "http://snomed.info/sct#5807005";
 
     /// <summary>
     /// Literal for code: SelectiveVagotomyWithPyloroplastyAndGastrostomy
@@ -12968,9 +16918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSelectiveVagotomyWithPyloroplastyAndGastrostomy = "5809008";
 
     /// <summary>
+    /// Literal for code: NONESelectiveVagotomyWithPyloroplastyAndGastrostomy
+    /// </summary>
+    public const string LiteralNONESelectiveVagotomyWithPyloroplastyAndGastrostomy = "http://snomed.info/sct#5809008";
+
+    /// <summary>
     /// Literal for code: LaboratoryReportingFax
     /// </summary>
     public const string LiteralLaboratoryReportingFax = "5812006";
+
+    /// <summary>
+    /// Literal for code: NONELaboratoryReportingFax
+    /// </summary>
+    public const string LiteralNONELaboratoryReportingFax = "http://snomed.info/sct#5812006";
 
     /// <summary>
     /// Literal for code: FlocculationTest
@@ -12978,9 +16938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFlocculationTest = "5818005";
 
     /// <summary>
+    /// Literal for code: NONEFlocculationTest
+    /// </summary>
+    public const string LiteralNONEFlocculationTest = "http://snomed.info/sct#5818005";
+
+    /// <summary>
     /// Literal for code: LigationDivisionAndCompleteStrippingOfLongAndShortSaphenousVeins
     /// </summary>
     public const string LiteralLigationDivisionAndCompleteStrippingOfLongAndShortSaphenousVeins = "5821007";
+
+    /// <summary>
+    /// Literal for code: NONELigationDivisionAndCompleteStrippingOfLongAndShortSaphenousVeins
+    /// </summary>
+    public const string LiteralNONELigationDivisionAndCompleteStrippingOfLongAndShortSaphenousVeins = "http://snomed.info/sct#5821007";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiographyLeft
@@ -12988,9 +16958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticRadiographyLeft = "5823005";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyLeft
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyLeft = "http://snomed.info/sct#5823005";
+
+    /// <summary>
     /// Literal for code: PartialOstectomyOfThoraxRibsOrSternum
     /// </summary>
     public const string LiteralPartialOstectomyOfThoraxRibsOrSternum = "5832007";
+
+    /// <summary>
+    /// Literal for code: NONEPartialOstectomyOfThoraxRibsOrSternum
+    /// </summary>
+    public const string LiteralNONEPartialOstectomyOfThoraxRibsOrSternum = "http://snomed.info/sct#5832007";
 
     /// <summary>
     /// Literal for code: EmulsificationProcedure
@@ -12998,9 +16978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEmulsificationProcedure = "5845006";
 
     /// <summary>
+    /// Literal for code: NONEEmulsificationProcedure
+    /// </summary>
+    public const string LiteralNONEEmulsificationProcedure = "http://snomed.info/sct#5845006";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfToes
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfToes = "5846007";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfToes
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfToes = "http://snomed.info/sct#5846007";
 
     /// <summary>
     /// Literal for code: ComplementMediatedCytotoxicityAssay
@@ -13008,9 +16998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComplementMediatedCytotoxicityAssay = "5857002";
 
     /// <summary>
+    /// Literal for code: NONEComplementMediatedCytotoxicityAssay
+    /// </summary>
+    public const string LiteralNONEComplementMediatedCytotoxicityAssay = "http://snomed.info/sct#5857002";
+
+    /// <summary>
     /// Literal for code: OpenReductionOfDislocationOfToe
     /// </summary>
     public const string LiteralOpenReductionOfDislocationOfToe = "5865004";
+
+    /// <summary>
+    /// Literal for code: NONEOpenReductionOfDislocationOfToe
+    /// </summary>
+    public const string LiteralNONEOpenReductionOfDislocationOfToe = "http://snomed.info/sct#5865004";
 
     /// <summary>
     /// Literal for code: TertiaryClosureOfAbdominalWall
@@ -13018,9 +17018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTertiaryClosureOfAbdominalWall = "5870006";
 
     /// <summary>
+    /// Literal for code: NONETertiaryClosureOfAbdominalWall
+    /// </summary>
+    public const string LiteralNONETertiaryClosureOfAbdominalWall = "http://snomed.info/sct#5870006";
+
+    /// <summary>
     /// Literal for code: ClinicalExamination
     /// </summary>
     public const string LiteralClinicalExamination = "5880005";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalExamination
+    /// </summary>
+    public const string LiteralNONEClinicalExamination = "http://snomed.info/sct#5880005";
 
     /// <summary>
     /// Literal for code: MastoidAntrotomy
@@ -13028,9 +17038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMastoidAntrotomy = "5892005";
 
     /// <summary>
+    /// Literal for code: NONEMastoidAntrotomy
+    /// </summary>
+    public const string LiteralNONEMastoidAntrotomy = "http://snomed.info/sct#5892005";
+
+    /// <summary>
     /// Literal for code: MethylRedTest
     /// </summary>
     public const string LiteralMethylRedTest = "5894006";
+
+    /// <summary>
+    /// Literal for code: NONEMethylRedTest
+    /// </summary>
+    public const string LiteralNONEMethylRedTest = "http://snomed.info/sct#5894006";
 
     /// <summary>
     /// Literal for code: RemovalOfScribnerShunt
@@ -13038,9 +17058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemovalOfScribnerShunt = "5897004";
 
     /// <summary>
+    /// Literal for code: NONERemovalOfScribnerShunt
+    /// </summary>
+    public const string LiteralNONERemovalOfScribnerShunt = "http://snomed.info/sct#5897004";
+
+    /// <summary>
     /// Literal for code: HistoryAndPhysicalExaminationComplete
     /// </summary>
     public const string LiteralHistoryAndPhysicalExaminationComplete = "5902003";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryAndPhysicalExaminationComplete
+    /// </summary>
+    public const string LiteralNONEHistoryAndPhysicalExaminationComplete = "http://snomed.info/sct#5902003";
 
     /// <summary>
     /// Literal for code: IncisionAndDrainageOfHematomaOfWrist
@@ -13048,9 +17078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionAndDrainageOfHematomaOfWrist = "5925002";
 
     /// <summary>
+    /// Literal for code: NONEIncisionAndDrainageOfHematomaOfWrist
+    /// </summary>
+    public const string LiteralNONEIncisionAndDrainageOfHematomaOfWrist = "http://snomed.info/sct#5925002";
+
+    /// <summary>
     /// Literal for code: CardiacMonitorRemoval
     /// </summary>
     public const string LiteralCardiacMonitorRemoval = "5930003";
+
+    /// <summary>
+    /// Literal for code: NONECardiacMonitorRemoval
+    /// </summary>
+    public const string LiteralNONECardiacMonitorRemoval = "http://snomed.info/sct#5930003";
 
     /// <summary>
     /// Literal for code: ConsultationForHearingAndOrSpeechProblem
@@ -13058,9 +17098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConsultationForHearingAndOrSpeechProblem = "5947002";
 
     /// <summary>
+    /// Literal for code: NONEConsultationForHearingAndOrSpeechProblem
+    /// </summary>
+    public const string LiteralNONEConsultationForHearingAndOrSpeechProblem = "http://snomed.info/sct#5947002";
+
+    /// <summary>
     /// Literal for code: DivisionOfBloodVesselsOfCornea
     /// </summary>
     public const string LiteralDivisionOfBloodVesselsOfCornea = "5961007";
+
+    /// <summary>
+    /// Literal for code: NONEDivisionOfBloodVesselsOfCornea
+    /// </summary>
+    public const string LiteralNONEDivisionOfBloodVesselsOfCornea = "http://snomed.info/sct#5961007";
 
     /// <summary>
     /// Literal for code: RemovalOfForeignBodyFromElbowAreaDeep
@@ -13068,9 +17118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemovalOfForeignBodyFromElbowAreaDeep = "5966002";
 
     /// <summary>
+    /// Literal for code: NONERemovalOfForeignBodyFromElbowAreaDeep
+    /// </summary>
+    public const string LiteralNONERemovalOfForeignBodyFromElbowAreaDeep = "http://snomed.info/sct#5966002";
+
+    /// <summary>
     /// Literal for code: IncisionAndDrainageOfAxilla
     /// </summary>
     public const string LiteralIncisionAndDrainageOfAxilla = "5971009";
+
+    /// <summary>
+    /// Literal for code: NONEIncisionAndDrainageOfAxilla
+    /// </summary>
+    public const string LiteralNONEIncisionAndDrainageOfAxilla = "http://snomed.info/sct#5971009";
 
     /// <summary>
     /// Literal for code: RepairOfSpermaticCord
@@ -13078,9 +17138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepairOfSpermaticCord = "5983006";
 
     /// <summary>
+    /// Literal for code: NONERepairOfSpermaticCord
+    /// </summary>
+    public const string LiteralNONERepairOfSpermaticCord = "http://snomed.info/sct#5983006";
+
+    /// <summary>
     /// Literal for code: NonSensitizedSpontaneousSheepErythrocyteBindingERosette
     /// </summary>
     public const string LiteralNonSensitizedSpontaneousSheepErythrocyteBindingERosette = "5986003";
+
+    /// <summary>
+    /// Literal for code: NONENonSensitizedSpontaneousSheepErythrocyteBindingERosette
+    /// </summary>
+    public const string LiteralNONENonSensitizedSpontaneousSheepErythrocyteBindingERosette = "http://snomed.info/sct#5986003";
 
     /// <summary>
     /// Literal for code: MidtarsalArthrodesisMultiple
@@ -13088,9 +17158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMidtarsalArthrodesisMultiple = "5992009";
 
     /// <summary>
+    /// Literal for code: NONEMidtarsalArthrodesisMultiple
+    /// </summary>
+    public const string LiteralNONEMidtarsalArthrodesisMultiple = "http://snomed.info/sct#5992009";
+
+    /// <summary>
     /// Literal for code: GasLiquidChromatographyFlamePhotometricType
     /// </summary>
     public const string LiteralGasLiquidChromatographyFlamePhotometricType = "5995006";
+
+    /// <summary>
+    /// Literal for code: NONEGasLiquidChromatographyFlamePhotometricType
+    /// </summary>
+    public const string LiteralNONEGasLiquidChromatographyFlamePhotometricType = "http://snomed.info/sct#5995006";
 
     /// <summary>
     /// Literal for code: DrainageOfCerebralSubarachnoidSpaceByAspiration
@@ -13098,9 +17178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrainageOfCerebralSubarachnoidSpaceByAspiration = "5997003";
 
     /// <summary>
+    /// Literal for code: NONEDrainageOfCerebralSubarachnoidSpaceByAspiration
+    /// </summary>
+    public const string LiteralNONEDrainageOfCerebralSubarachnoidSpaceByAspiration = "http://snomed.info/sct#5997003";
+
+    /// <summary>
     /// Literal for code: RadicalDissectionOfGroin
     /// </summary>
     public const string LiteralRadicalDissectionOfGroin = "5998008";
+
+    /// <summary>
+    /// Literal for code: NONERadicalDissectionOfGroin
+    /// </summary>
+    public const string LiteralNONERadicalDissectionOfGroin = "http://snomed.info/sct#5998008";
 
     /// <summary>
     /// Literal for code: TransplantationOfVitreousByAnteriorApproach
@@ -13108,9 +17198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTransplantationOfVitreousByAnteriorApproach = "6005008";
 
     /// <summary>
+    /// Literal for code: NONETransplantationOfVitreousByAnteriorApproach
+    /// </summary>
+    public const string LiteralNONETransplantationOfVitreousByAnteriorApproach = "http://snomed.info/sct#6005008";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingOfChest
     /// </summary>
     public const string LiteralMagneticResonanceImagingOfChest = "6007000";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfChest
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfChest = "http://snomed.info/sct#6007000";
 
     /// <summary>
     /// Literal for code: EndoscopyOfLargeIntestine
@@ -13118,9 +17218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEndoscopyOfLargeIntestine = "6019008";
 
     /// <summary>
+    /// Literal for code: NONEEndoscopyOfLargeIntestine
+    /// </summary>
+    public const string LiteralNONEEndoscopyOfLargeIntestine = "http://snomed.info/sct#6019008";
+
+    /// <summary>
     /// Literal for code: LaparoscopicAppendectomy
     /// </summary>
     public const string LiteralLaparoscopicAppendectomy = "6025007";
+
+    /// <summary>
+    /// Literal for code: NONELaparoscopicAppendectomy
+    /// </summary>
+    public const string LiteralNONELaparoscopicAppendectomy = "http://snomed.info/sct#6025007";
 
     /// <summary>
     /// Literal for code: RemovalOfCoronaryArteryObstructionByPercutaneousTransluminalBalloonWithThrombolyticAgent
@@ -13128,9 +17238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemovalOfCoronaryArteryObstructionByPercutaneousTransluminalBalloonWithThrombolyticAgent = "6026008";
 
     /// <summary>
+    /// Literal for code: NONERemovalOfCoronaryArteryObstructionByPercutaneousTransluminalBalloonWithThrombolyticAgent
+    /// </summary>
+    public const string LiteralNONERemovalOfCoronaryArteryObstructionByPercutaneousTransluminalBalloonWithThrombolyticAgent = "http://snomed.info/sct#6026008";
+
+    /// <summary>
     /// Literal for code: AugmentationOfOutflowTractOfPulmonaryValve
     /// </summary>
     public const string LiteralAugmentationOfOutflowTractOfPulmonaryValve = "6029001";
+
+    /// <summary>
+    /// Literal for code: NONEAugmentationOfOutflowTractOfPulmonaryValve
+    /// </summary>
+    public const string LiteralNONEAugmentationOfOutflowTractOfPulmonaryValve = "http://snomed.info/sct#6029001";
 
     /// <summary>
     /// Literal for code: Synchondrotomy
@@ -13138,9 +17258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSynchondrotomy = "603006";
 
     /// <summary>
+    /// Literal for code: NONESynchondrotomy
+    /// </summary>
+    public const string LiteralNONESynchondrotomy = "http://snomed.info/sct#603006";
+
+    /// <summary>
     /// Literal for code: ChartAbstracting
     /// </summary>
     public const string LiteralChartAbstracting = "6035001";
+
+    /// <summary>
+    /// Literal for code: NONEChartAbstracting
+    /// </summary>
+    public const string LiteralNONEChartAbstracting = "http://snomed.info/sct#6035001";
 
     /// <summary>
     /// Literal for code: KanamycinMeasurement
@@ -13148,9 +17278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKanamycinMeasurement = "6063004";
 
     /// <summary>
+    /// Literal for code: NONEKanamycinMeasurement
+    /// </summary>
+    public const string LiteralNONEKanamycinMeasurement = "http://snomed.info/sct#6063004";
+
+    /// <summary>
     /// Literal for code: Panniculotomy
     /// </summary>
     public const string LiteralPanniculotomy = "6069000";
+
+    /// <summary>
+    /// Literal for code: NONEPanniculotomy
+    /// </summary>
+    public const string LiteralNONEPanniculotomy = "http://snomed.info/sct#6069000";
 
     /// <summary>
     /// Literal for code: PerforationOfFootplate
@@ -13158,9 +17298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPerforationOfFootplate = "6082008";
 
     /// <summary>
+    /// Literal for code: NONEPerforationOfFootplate
+    /// </summary>
+    public const string LiteralNONEPerforationOfFootplate = "http://snomed.info/sct#6082008";
+
+    /// <summary>
     /// Literal for code: AspirationOfNasalSinusByPuncture
     /// </summary>
     public const string LiteralAspirationOfNasalSinusByPuncture = "6092000";
+
+    /// <summary>
+    /// Literal for code: NONEAspirationOfNasalSinusByPuncture
+    /// </summary>
+    public const string LiteralNONEAspirationOfNasalSinusByPuncture = "http://snomed.info/sct#6092000";
 
     /// <summary>
     /// Literal for code: FenestrationOfStapesFootplateWithVeinGraft
@@ -13168,9 +17318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFenestrationOfStapesFootplateWithVeinGraft = "6100001";
 
     /// <summary>
+    /// Literal for code: NONEFenestrationOfStapesFootplateWithVeinGraft
+    /// </summary>
+    public const string LiteralNONEFenestrationOfStapesFootplateWithVeinGraft = "http://snomed.info/sct#6100001";
+
+    /// <summary>
     /// Literal for code: SubduralTapThroughFontanelInfantInitial
     /// </summary>
     public const string LiteralSubduralTapThroughFontanelInfantInitial = "6108008";
+
+    /// <summary>
+    /// Literal for code: NONESubduralTapThroughFontanelInfantInitial
+    /// </summary>
+    public const string LiteralNONESubduralTapThroughFontanelInfantInitial = "http://snomed.info/sct#6108008";
 
     /// <summary>
     /// Literal for code: LocalDestructionOfLesionOfBonyPalate
@@ -13178,9 +17338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLocalDestructionOfLesionOfBonyPalate = "6119006";
 
     /// <summary>
+    /// Literal for code: NONELocalDestructionOfLesionOfBonyPalate
+    /// </summary>
+    public const string LiteralNONELocalDestructionOfLesionOfBonyPalate = "http://snomed.info/sct#6119006";
+
+    /// <summary>
     /// Literal for code: ChangeOfGastrostomyTube
     /// </summary>
     public const string LiteralChangeOfGastrostomyTube = "6125005";
+
+    /// <summary>
+    /// Literal for code: NONEChangeOfGastrostomyTube
+    /// </summary>
+    public const string LiteralNONEChangeOfGastrostomyTube = "http://snomed.info/sct#6125005";
 
     /// <summary>
     /// Literal for code: FitzgeraldFactorAssay
@@ -13188,9 +17358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFitzgeraldFactorAssay = "6126006";
 
     /// <summary>
+    /// Literal for code: NONEFitzgeraldFactorAssay
+    /// </summary>
+    public const string LiteralNONEFitzgeraldFactorAssay = "http://snomed.info/sct#6126006";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfAbdomenObliqueStandard
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfAbdomenObliqueStandard = "6127002";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfAbdomenObliqueStandard
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfAbdomenObliqueStandard = "http://snomed.info/sct#6127002";
 
     /// <summary>
     /// Literal for code: SurgicalExposureOfImpactedOrUneruptedToothToAidEruption
@@ -13198,9 +17378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalExposureOfImpactedOrUneruptedToothToAidEruption = "6130009";
 
     /// <summary>
+    /// Literal for code: NONESurgicalExposureOfImpactedOrUneruptedToothToAidEruption
+    /// </summary>
+    public const string LiteralNONESurgicalExposureOfImpactedOrUneruptedToothToAidEruption = "http://snomed.info/sct#6130009";
+
+    /// <summary>
     /// Literal for code: LymphokineAssay
     /// </summary>
     public const string LiteralLymphokineAssay = "6133006";
+
+    /// <summary>
+    /// Literal for code: NONELymphokineAssay
+    /// </summary>
+    public const string LiteralNONELymphokineAssay = "http://snomed.info/sct#6133006";
 
     /// <summary>
     /// Literal for code: DiabeticEducation
@@ -13208,9 +17398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiabeticEducation = "6143009";
 
     /// <summary>
+    /// Literal for code: NONEDiabeticEducation
+    /// </summary>
+    public const string LiteralNONEDiabeticEducation = "http://snomed.info/sct#6143009";
+
+    /// <summary>
     /// Literal for code: RepairOfHeartSeptumWithProsthesis
     /// </summary>
     public const string LiteralRepairOfHeartSeptumWithProsthesis = "6146001";
+
+    /// <summary>
+    /// Literal for code: NONERepairOfHeartSeptumWithProsthesis
+    /// </summary>
+    public const string LiteralNONERepairOfHeartSeptumWithProsthesis = "http://snomed.info/sct#6146001";
 
     /// <summary>
     /// Literal for code: ChondrectomyOfSemilunarCartilageOfKnee
@@ -13218,9 +17418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChondrectomyOfSemilunarCartilageOfKnee = "6148000";
 
     /// <summary>
+    /// Literal for code: NONEChondrectomyOfSemilunarCartilageOfKnee
+    /// </summary>
+    public const string LiteralNONEChondrectomyOfSemilunarCartilageOfKnee = "http://snomed.info/sct#6148000";
+
+    /// <summary>
     /// Literal for code: EndoscopicRetrogradeCholangiopancreatographyWithBiopsy
     /// </summary>
     public const string LiteralEndoscopicRetrogradeCholangiopancreatographyWithBiopsy = "6157006";
+
+    /// <summary>
+    /// Literal for code: NONEEndoscopicRetrogradeCholangiopancreatographyWithBiopsy
+    /// </summary>
+    public const string LiteralNONEEndoscopicRetrogradeCholangiopancreatographyWithBiopsy = "http://snomed.info/sct#6157006";
 
     /// <summary>
     /// Literal for code: GalactoseMeasurement
@@ -13228,9 +17438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGalactoseMeasurement = "6159009";
 
     /// <summary>
+    /// Literal for code: NONEGalactoseMeasurement
+    /// </summary>
+    public const string LiteralNONEGalactoseMeasurement = "http://snomed.info/sct#6159009";
+
+    /// <summary>
     /// Literal for code: ExcisionOfLesionOfCapsuleOfToes
     /// </summary>
     public const string LiteralExcisionOfLesionOfCapsuleOfToes = "6161000";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfLesionOfCapsuleOfToes
+    /// </summary>
+    public const string LiteralNONEExcisionOfLesionOfCapsuleOfToes = "http://snomed.info/sct#6161000";
 
     /// <summary>
     /// Literal for code: OsteoclasisOfClavicle
@@ -13238,9 +17458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOsteoclasisOfClavicle = "6164008";
 
     /// <summary>
+    /// Literal for code: NONEOsteoclasisOfClavicle
+    /// </summary>
+    public const string LiteralNONEOsteoclasisOfClavicle = "http://snomed.info/sct#6164008";
+
+    /// <summary>
     /// Literal for code: Nephropyeloureterostomy
     /// </summary>
     public const string LiteralNephropyeloureterostomy = "6166005";
+
+    /// <summary>
+    /// Literal for code: NONENephropyeloureterostomy
+    /// </summary>
+    public const string LiteralNONENephropyeloureterostomy = "http://snomed.info/sct#6166005";
 
     /// <summary>
     /// Literal for code: BoneGraftToMandible
@@ -13248,9 +17478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBoneGraftToMandible = "617002";
 
     /// <summary>
+    /// Literal for code: NONEBoneGraftToMandible
+    /// </summary>
+    public const string LiteralNONEBoneGraftToMandible = "http://snomed.info/sct#617002";
+
+    /// <summary>
     /// Literal for code: SouthernBlotAssay
     /// </summary>
     public const string LiteralSouthernBlotAssay = "6177004";
+
+    /// <summary>
+    /// Literal for code: NONESouthernBlotAssay
+    /// </summary>
+    public const string LiteralNONESouthernBlotAssay = "http://snomed.info/sct#6177004";
 
     /// <summary>
     /// Literal for code: FrontalSinusectomy
@@ -13258,9 +17498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFrontalSinusectomy = "618007";
 
     /// <summary>
+    /// Literal for code: NONEFrontalSinusectomy
+    /// </summary>
+    public const string LiteralNONEFrontalSinusectomy = "http://snomed.info/sct#618007";
+
+    /// <summary>
     /// Literal for code: RepairOfAneurysmWithGraftOfCommonFemoralArtery
     /// </summary>
     public const string LiteralRepairOfAneurysmWithGraftOfCommonFemoralArtery = "6187000";
+
+    /// <summary>
+    /// Literal for code: NONERepairOfAneurysmWithGraftOfCommonFemoralArtery
+    /// </summary>
+    public const string LiteralNONERepairOfAneurysmWithGraftOfCommonFemoralArtery = "http://snomed.info/sct#6187000";
 
     /// <summary>
     /// Literal for code: ArthrotomyOfKnee
@@ -13268,9 +17518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArthrotomyOfKnee = "6188005";
 
     /// <summary>
+    /// Literal for code: NONEArthrotomyOfKnee
+    /// </summary>
+    public const string LiteralNONEArthrotomyOfKnee = "http://snomed.info/sct#6188005";
+
+    /// <summary>
     /// Literal for code: ExcisionOfAberrantTissueOfBreast
     /// </summary>
     public const string LiteralExcisionOfAberrantTissueOfBreast = "6189002";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfAberrantTissueOfBreast
+    /// </summary>
+    public const string LiteralNONEExcisionOfAberrantTissueOfBreast = "http://snomed.info/sct#6189002";
 
     /// <summary>
     /// Literal for code: Colopexy
@@ -13278,9 +17538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralColopexy = "6190006";
 
     /// <summary>
+    /// Literal for code: NONEColopexy
+    /// </summary>
+    public const string LiteralNONEColopexy = "http://snomed.info/sct#6190006";
+
+    /// <summary>
     /// Literal for code: TransurethralDrainageOfProstaticAbscess
     /// </summary>
     public const string LiteralTransurethralDrainageOfProstaticAbscess = "6195001";
+
+    /// <summary>
+    /// Literal for code: NONETransurethralDrainageOfProstaticAbscess
+    /// </summary>
+    public const string LiteralNONETransurethralDrainageOfProstaticAbscess = "http://snomed.info/sct#6195001";
 
     /// <summary>
     /// Literal for code: RepairOfFractureWithSofieldTypeProcedure
@@ -13288,9 +17558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepairOfFractureWithSofieldTypeProcedure = "6198004";
 
     /// <summary>
+    /// Literal for code: NONERepairOfFractureWithSofieldTypeProcedure
+    /// </summary>
+    public const string LiteralNONERepairOfFractureWithSofieldTypeProcedure = "http://snomed.info/sct#6198004";
+
+    /// <summary>
     /// Literal for code: ExcisionOfLesionOfFemalePerineum
     /// </summary>
     public const string LiteralExcisionOfLesionOfFemalePerineum = "6200005";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfLesionOfFemalePerineum
+    /// </summary>
+    public const string LiteralNONEExcisionOfLesionOfFemalePerineum = "http://snomed.info/sct#6200005";
 
     /// <summary>
     /// Literal for code: FluorescentAntigenTiter
@@ -13298,9 +17578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluorescentAntigenTiter = "6205000";
 
     /// <summary>
+    /// Literal for code: NONEFluorescentAntigenTiter
+    /// </summary>
+    public const string LiteralNONEFluorescentAntigenTiter = "http://snomed.info/sct#6205000";
+
+    /// <summary>
     /// Literal for code: PrescribingCorneoscleralContactLens
     /// </summary>
     public const string LiteralPrescribingCorneoscleralContactLens = "6213004";
+
+    /// <summary>
+    /// Literal for code: NONEPrescribingCorneoscleralContactLens
+    /// </summary>
+    public const string LiteralNONEPrescribingCorneoscleralContactLens = "http://snomed.info/sct#6213004";
 
     /// <summary>
     /// Literal for code: SutureOfColon
@@ -13308,9 +17598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSutureOfColon = "6221005";
 
     /// <summary>
+    /// Literal for code: NONESutureOfColon
+    /// </summary>
+    public const string LiteralNONESutureOfColon = "http://snomed.info/sct#6221005";
+
+    /// <summary>
     /// Literal for code: AntibodyDetectionRBCEnzyme2StageTechniqueIncludingAntiHumanGlobulin
     /// </summary>
     public const string LiteralAntibodyDetectionRBCEnzyme2StageTechniqueIncludingAntiHumanGlobulin = "6225001";
+
+    /// <summary>
+    /// Literal for code: NONEAntibodyDetectionRBCEnzyme2StageTechniqueIncludingAntiHumanGlobulin
+    /// </summary>
+    public const string LiteralNONEAntibodyDetectionRBCEnzyme2StageTechniqueIncludingAntiHumanGlobulin = "http://snomed.info/sct#6225001";
 
     /// <summary>
     /// Literal for code: VisualRehabilitationEyeMotionDefect
@@ -13318,9 +17618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVisualRehabilitationEyeMotionDefect = "6226000";
 
     /// <summary>
+    /// Literal for code: NONEVisualRehabilitationEyeMotionDefect
+    /// </summary>
+    public const string LiteralNONEVisualRehabilitationEyeMotionDefect = "http://snomed.info/sct#6226000";
+
+    /// <summary>
     /// Literal for code: RelationshipPsychotherapy
     /// </summary>
     public const string LiteralRelationshipPsychotherapy = "6227009";
+
+    /// <summary>
+    /// Literal for code: NONERelationshipPsychotherapy
+    /// </summary>
+    public const string LiteralNONERelationshipPsychotherapy = "http://snomed.info/sct#6227009";
 
     /// <summary>
     /// Literal for code: GraftOfPalate
@@ -13328,9 +17638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGraftOfPalate = "6231003";
 
     /// <summary>
+    /// Literal for code: NONEGraftOfPalate
+    /// </summary>
+    public const string LiteralNONEGraftOfPalate = "http://snomed.info/sct#6231003";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographyOfSacroiliacJoints
     /// </summary>
     public const string LiteralDiagnosticRadiographyOfSacroiliacJoints = "6238009";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographyOfSacroiliacJoints
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographyOfSacroiliacJoints = "http://snomed.info/sct#6238009";
 
     /// <summary>
     /// Literal for code: OperativeProcedureOnKnee
@@ -13338,9 +17658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOperativeProcedureOnKnee = "6240004";
 
     /// <summary>
+    /// Literal for code: NONEOperativeProcedureOnKnee
+    /// </summary>
+    public const string LiteralNONEOperativeProcedureOnKnee = "http://snomed.info/sct#6240004";
+
+    /// <summary>
     /// Literal for code: RemovalOfSupernumeraryDigit
     /// </summary>
     public const string LiteralRemovalOfSupernumeraryDigit = "625000";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfSupernumeraryDigit
+    /// </summary>
+    public const string LiteralNONERemovalOfSupernumeraryDigit = "http://snomed.info/sct#625000";
 
     /// <summary>
     /// Literal for code: ResectionOfAbdominalArteryWithReplacement
@@ -13348,9 +17678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralResectionOfAbdominalArteryWithReplacement = "6255008";
 
     /// <summary>
+    /// Literal for code: NONEResectionOfAbdominalArteryWithReplacement
+    /// </summary>
+    public const string LiteralNONEResectionOfAbdominalArteryWithReplacement = "http://snomed.info/sct#6255008";
+
+    /// <summary>
     /// Literal for code: EchographyImmersionBScan
     /// </summary>
     public const string LiteralEchographyImmersionBScan = "6271008";
+
+    /// <summary>
+    /// Literal for code: NONEEchographyImmersionBScan
+    /// </summary>
+    public const string LiteralNONEEchographyImmersionBScan = "http://snomed.info/sct#6271008";
 
     /// <summary>
     /// Literal for code: ExcisionOfAuralGlomusTumorExtendedExtratemporal
@@ -13358,9 +17698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfAuralGlomusTumorExtendedExtratemporal = "6274000";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfAuralGlomusTumorExtendedExtratemporal
+    /// </summary>
+    public const string LiteralNONEExcisionOfAuralGlomusTumorExtendedExtratemporal = "http://snomed.info/sct#6274000";
+
+    /// <summary>
     /// Literal for code: SteinmanTest
     /// </summary>
     public const string LiteralSteinmanTest = "628003";
+
+    /// <summary>
+    /// Literal for code: NONESteinmanTest
+    /// </summary>
+    public const string LiteralNONESteinmanTest = "http://snomed.info/sct#628003";
 
     /// <summary>
     /// Literal for code: DestructiveProcedureOnOvariesAndFallopianTubes
@@ -13368,9 +17718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDestructiveProcedureOnOvariesAndFallopianTubes = "6286002";
 
     /// <summary>
+    /// Literal for code: NONEDestructiveProcedureOnOvariesAndFallopianTubes
+    /// </summary>
+    public const string LiteralNONEDestructiveProcedureOnOvariesAndFallopianTubes = "http://snomed.info/sct#6286002";
+
+    /// <summary>
     /// Literal for code: WhiteBloodCellHistogramEvaluation
     /// </summary>
     public const string LiteralWhiteBloodCellHistogramEvaluation = "6289009";
+
+    /// <summary>
+    /// Literal for code: NONEWhiteBloodCellHistogramEvaluation
+    /// </summary>
+    public const string LiteralNONEWhiteBloodCellHistogramEvaluation = "http://snomed.info/sct#6289009";
 
     /// <summary>
     /// Literal for code: LysisOfAdhesionsOfUrethra
@@ -13378,9 +17738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLysisOfAdhesionsOfUrethra = "629006";
 
     /// <summary>
+    /// Literal for code: NONELysisOfAdhesionsOfUrethra
+    /// </summary>
+    public const string LiteralNONELysisOfAdhesionsOfUrethra = "http://snomed.info/sct#629006";
+
+    /// <summary>
     /// Literal for code: SequestrectomyOfPelvicBone
     /// </summary>
     public const string LiteralSequestrectomyOfPelvicBone = "6295005";
+
+    /// <summary>
+    /// Literal for code: NONESequestrectomyOfPelvicBone
+    /// </summary>
+    public const string LiteralNONESequestrectomyOfPelvicBone = "http://snomed.info/sct#6295005";
 
     /// <summary>
     /// Literal for code: Keratophakia
@@ -13388,9 +17758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKeratophakia = "6307005";
 
     /// <summary>
+    /// Literal for code: NONEKeratophakia
+    /// </summary>
+    public const string LiteralNONEKeratophakia = "http://snomed.info/sct#6307005";
+
+    /// <summary>
     /// Literal for code: FecalFatDifferentialQuantitative
     /// </summary>
     public const string LiteralFecalFatDifferentialQuantitative = "6309008";
+
+    /// <summary>
+    /// Literal for code: NONEFecalFatDifferentialQuantitative
+    /// </summary>
+    public const string LiteralNONEFecalFatDifferentialQuantitative = "http://snomed.info/sct#6309008";
 
     /// <summary>
     /// Literal for code: BetaLactamaseChromogenicCephalosporinSusceptibilityTest
@@ -13398,9 +17778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBetaLactamaseChromogenicCephalosporinSusceptibilityTest = "6319002";
 
     /// <summary>
+    /// Literal for code: NONEBetaLactamaseChromogenicCephalosporinSusceptibilityTest
+    /// </summary>
+    public const string LiteralNONEBetaLactamaseChromogenicCephalosporinSusceptibilityTest = "http://snomed.info/sct#6319002";
+
+    /// <summary>
     /// Literal for code: ChartReviewByPhysician
     /// </summary>
     public const string LiteralChartReviewByPhysician = "633004";
+
+    /// <summary>
+    /// Literal for code: NONEChartReviewByPhysician
+    /// </summary>
+    public const string LiteralNONEChartReviewByPhysician = "http://snomed.info/sct#633004";
 
     /// <summary>
     /// Literal for code: LigationOfAorticArch
@@ -13408,9 +17798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLigationOfAorticArch = "6337001";
 
     /// <summary>
+    /// Literal for code: NONELigationOfAorticArch
+    /// </summary>
+    public const string LiteralNONELigationOfAorticArch = "http://snomed.info/sct#6337001";
+
+    /// <summary>
     /// Literal for code: ConditioningPlayAudiometry
     /// </summary>
     public const string LiteralConditioningPlayAudiometry = "6339003";
+
+    /// <summary>
+    /// Literal for code: NONEConditioningPlayAudiometry
+    /// </summary>
+    public const string LiteralNONEConditioningPlayAudiometry = "http://snomed.info/sct#6339003";
 
     /// <summary>
     /// Literal for code: ForensicBiteMarkComparisonTechnique
@@ -13418,9 +17818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralForensicBiteMarkComparisonTechnique = "6343004";
 
     /// <summary>
+    /// Literal for code: NONEForensicBiteMarkComparisonTechnique
+    /// </summary>
+    public const string LiteralNONEForensicBiteMarkComparisonTechnique = "http://snomed.info/sct#6343004";
+
+    /// <summary>
     /// Literal for code: MitsudaReactionToLepromin
     /// </summary>
     public const string LiteralMitsudaReactionToLepromin = "6353003";
+
+    /// <summary>
+    /// Literal for code: NONEMitsudaReactionToLepromin
+    /// </summary>
+    public const string LiteralNONEMitsudaReactionToLepromin = "http://snomed.info/sct#6353003";
 
     /// <summary>
     /// Literal for code: SedimentationRateWestergren
@@ -13428,9 +17838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSedimentationRateWestergren = "6354009";
 
     /// <summary>
+    /// Literal for code: NONESedimentationRateWestergren
+    /// </summary>
+    public const string LiteralNONESedimentationRateWestergren = "http://snomed.info/sct#6354009";
+
+    /// <summary>
     /// Literal for code: RemovalOfInternalFixationDeviceOfRadius
     /// </summary>
     public const string LiteralRemovalOfInternalFixationDeviceOfRadius = "6355005";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfInternalFixationDeviceOfRadius
+    /// </summary>
+    public const string LiteralNONERemovalOfInternalFixationDeviceOfRadius = "http://snomed.info/sct#6355005";
 
     /// <summary>
     /// Literal for code: CapsulorrhaphyOfJoint
@@ -13438,9 +17858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCapsulorrhaphyOfJoint = "6358007";
 
     /// <summary>
+    /// Literal for code: NONECapsulorrhaphyOfJoint
+    /// </summary>
+    public const string LiteralNONECapsulorrhaphyOfJoint = "http://snomed.info/sct#6358007";
+
+    /// <summary>
     /// Literal for code: AnesthesiaForPoplitealThromboendarterectomy
     /// </summary>
     public const string LiteralAnesthesiaForPoplitealThromboendarterectomy = "6361008";
+
+    /// <summary>
+    /// Literal for code: NONEAnesthesiaForPoplitealThromboendarterectomy
+    /// </summary>
+    public const string LiteralNONEAnesthesiaForPoplitealThromboendarterectomy = "http://snomed.info/sct#6361008";
 
     /// <summary>
     /// Literal for code: DilationOfLacrimalPunctumWithIrrigation
@@ -13448,9 +17878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDilationOfLacrimalPunctumWithIrrigation = "6363006";
 
     /// <summary>
+    /// Literal for code: NONEDilationOfLacrimalPunctumWithIrrigation
+    /// </summary>
+    public const string LiteralNONEDilationOfLacrimalPunctumWithIrrigation = "http://snomed.info/sct#6363006";
+
+    /// <summary>
     /// Literal for code: ChemosurgeryOfStomachLesion
     /// </summary>
     public const string LiteralChemosurgeryOfStomachLesion = "6370006";
+
+    /// <summary>
+    /// Literal for code: NONEChemosurgeryOfStomachLesion
+    /// </summary>
+    public const string LiteralNONEChemosurgeryOfStomachLesion = "http://snomed.info/sct#6370006";
 
     /// <summary>
     /// Literal for code: LysisOfAdhesionsOfNose
@@ -13458,9 +17898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLysisOfAdhesionsOfNose = "637003";
 
     /// <summary>
+    /// Literal for code: NONELysisOfAdhesionsOfNose
+    /// </summary>
+    public const string LiteralNONELysisOfAdhesionsOfNose = "http://snomed.info/sct#637003";
+
+    /// <summary>
     /// Literal for code: RemovalOfDeviceFromDigestiveSystem
     /// </summary>
     public const string LiteralRemovalOfDeviceFromDigestiveSystem = "6384001";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfDeviceFromDigestiveSystem
+    /// </summary>
+    public const string LiteralNONERemovalOfDeviceFromDigestiveSystem = "http://snomed.info/sct#6384001";
 
     /// <summary>
     /// Literal for code: ExplorationOfDiscSpace
@@ -13468,9 +17918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExplorationOfDiscSpace = "6385000";
 
     /// <summary>
+    /// Literal for code: NONEExplorationOfDiscSpace
+    /// </summary>
+    public const string LiteralNONEExplorationOfDiscSpace = "http://snomed.info/sct#6385000";
+
+    /// <summary>
     /// Literal for code: TdTStain
     /// </summary>
     public const string LiteralTdTStain = "6388003";
+
+    /// <summary>
+    /// Literal for code: NONETdTStain
+    /// </summary>
+    public const string LiteralNONETdTStain = "http://snomed.info/sct#6388003";
 
     /// <summary>
     /// Literal for code: GalactokinaseMeasurement
@@ -13478,9 +17938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGalactokinaseMeasurement = "6396008";
 
     /// <summary>
+    /// Literal for code: NONEGalactokinaseMeasurement
+    /// </summary>
+    public const string LiteralNONEGalactokinaseMeasurement = "http://snomed.info/sct#6396008";
+
+    /// <summary>
     /// Literal for code: MuscularStrengthDevelopmentExercise
     /// </summary>
     public const string LiteralMuscularStrengthDevelopmentExercise = "6397004";
+
+    /// <summary>
+    /// Literal for code: NONEMuscularStrengthDevelopmentExercise
+    /// </summary>
+    public const string LiteralNONEMuscularStrengthDevelopmentExercise = "http://snomed.info/sct#6397004";
 
     /// <summary>
     /// Literal for code: DivisionOfArteriovenousFistulaWithLigation
@@ -13488,9 +17958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDivisionOfArteriovenousFistulaWithLigation = "6399001";
 
     /// <summary>
+    /// Literal for code: NONEDivisionOfArteriovenousFistulaWithLigation
+    /// </summary>
+    public const string LiteralNONEDivisionOfArteriovenousFistulaWithLigation = "http://snomed.info/sct#6399001";
+
+    /// <summary>
     /// Literal for code: ExcisionOfCommonBileDuct
     /// </summary>
     public const string LiteralExcisionOfCommonBileDuct = "6402000";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfCommonBileDuct
+    /// </summary>
+    public const string LiteralNONEExcisionOfCommonBileDuct = "http://snomed.info/sct#6402000";
 
     /// <summary>
     /// Literal for code: LengtheningOfMuscleOfHand
@@ -13498,9 +17978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLengtheningOfMuscleOfHand = "6403005";
 
     /// <summary>
+    /// Literal for code: NONELengtheningOfMuscleOfHand
+    /// </summary>
+    public const string LiteralNONELengtheningOfMuscleOfHand = "http://snomed.info/sct#6403005";
+
+    /// <summary>
     /// Literal for code: ExcisionOfTumorFromElbowAreaDeepSubfascial
     /// </summary>
     public const string LiteralExcisionOfTumorFromElbowAreaDeepSubfascial = "6419003";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfTumorFromElbowAreaDeepSubfascial
+    /// </summary>
+    public const string LiteralNONEExcisionOfTumorFromElbowAreaDeepSubfascial = "http://snomed.info/sct#6419003";
 
     /// <summary>
     /// Literal for code: CerebralThermography
@@ -13508,9 +17998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCerebralThermography = "642006";
 
     /// <summary>
+    /// Literal for code: NONECerebralThermography
+    /// </summary>
+    public const string LiteralNONECerebralThermography = "http://snomed.info/sct#642006";
+
+    /// <summary>
     /// Literal for code: HeteroautogenousTransplantation
     /// </summary>
     public const string LiteralHeteroautogenousTransplantation = "6429005";
+
+    /// <summary>
+    /// Literal for code: NONEHeteroautogenousTransplantation
+    /// </summary>
+    public const string LiteralNONEHeteroautogenousTransplantation = "http://snomed.info/sct#6429005";
 
     /// <summary>
     /// Literal for code: ClosedHeartValvotomyOfMitralValve
@@ -13518,9 +18018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClosedHeartValvotomyOfMitralValve = "6433003";
 
     /// <summary>
+    /// Literal for code: NONEClosedHeartValvotomyOfMitralValve
+    /// </summary>
+    public const string LiteralNONEClosedHeartValvotomyOfMitralValve = "http://snomed.info/sct#6433003";
+
+    /// <summary>
     /// Literal for code: SeminalFluidDetection
     /// </summary>
     public const string LiteralSeminalFluidDetection = "6434009";
+
+    /// <summary>
+    /// Literal for code: NONESeminalFluidDetection
+    /// </summary>
+    public const string LiteralNONESeminalFluidDetection = "http://snomed.info/sct#6434009";
 
     /// <summary>
     /// Literal for code: ExplorationOfCiliaryBody
@@ -13528,9 +18038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExplorationOfCiliaryBody = "6438007";
 
     /// <summary>
+    /// Literal for code: NONEExplorationOfCiliaryBody
+    /// </summary>
+    public const string LiteralNONEExplorationOfCiliaryBody = "http://snomed.info/sct#6438007";
+
+    /// <summary>
     /// Literal for code: DestructionOfLesionOfPeripheralNerve
     /// </summary>
     public const string LiteralDestructionOfLesionOfPeripheralNerve = "6439004";
+
+    /// <summary>
+    /// Literal for code: NONEDestructionOfLesionOfPeripheralNerve
+    /// </summary>
+    public const string LiteralNONEDestructionOfLesionOfPeripheralNerve = "http://snomed.info/sct#6439004";
 
     /// <summary>
     /// Literal for code: PonticPorcelainFusedToPredominantlyBaseMetal
@@ -13538,9 +18058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPonticPorcelainFusedToPredominantlyBaseMetal = "6443000";
 
     /// <summary>
+    /// Literal for code: NONEPonticPorcelainFusedToPredominantlyBaseMetal
+    /// </summary>
+    public const string LiteralNONEPonticPorcelainFusedToPredominantlyBaseMetal = "http://snomed.info/sct#6443000";
+
+    /// <summary>
     /// Literal for code: EnlargementOfEyeSocket
     /// </summary>
     public const string LiteralEnlargementOfEyeSocket = "6444006";
+
+    /// <summary>
+    /// Literal for code: NONEEnlargementOfEyeSocket
+    /// </summary>
+    public const string LiteralNONEEnlargementOfEyeSocket = "http://snomed.info/sct#6444006";
 
     /// <summary>
     /// Literal for code: DiagnosticProcedureOnVitreous
@@ -13548,9 +18078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticProcedureOnVitreous = "645008";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticProcedureOnVitreous
+    /// </summary>
+    public const string LiteralNONEDiagnosticProcedureOnVitreous = "http://snomed.info/sct#645008";
+
+    /// <summary>
     /// Literal for code: ArthrotomyOfGlenohumeralJointForInfectionWithDrainage
     /// </summary>
     public const string LiteralArthrotomyOfGlenohumeralJointForInfectionWithDrainage = "6465000";
+
+    /// <summary>
+    /// Literal for code: NONEArthrotomyOfGlenohumeralJointForInfectionWithDrainage
+    /// </summary>
+    public const string LiteralNONEArthrotomyOfGlenohumeralJointForInfectionWithDrainage = "http://snomed.info/sct#6465000";
 
     /// <summary>
     /// Literal for code: AdministrationOfRhImmuneGlobulin
@@ -13558,9 +18098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdministrationOfRhImmuneGlobulin = "6466004";
 
     /// <summary>
+    /// Literal for code: NONEAdministrationOfRhImmuneGlobulin
+    /// </summary>
+    public const string LiteralNONEAdministrationOfRhImmuneGlobulin = "http://snomed.info/sct#6466004";
+
+    /// <summary>
     /// Literal for code: ExcisionOfCervixByElectroconization
     /// </summary>
     public const string LiteralExcisionOfCervixByElectroconization = "647000";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfCervixByElectroconization
+    /// </summary>
+    public const string LiteralNONEExcisionOfCervixByElectroconization = "http://snomed.info/sct#647000";
 
     /// <summary>
     /// Literal for code: Laparoamnioscopy
@@ -13568,9 +18118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLaparoamnioscopy = "6470007";
 
     /// <summary>
+    /// Literal for code: NONELaparoamnioscopy
+    /// </summary>
+    public const string LiteralNONELaparoamnioscopy = "http://snomed.info/sct#6470007";
+
+    /// <summary>
     /// Literal for code: SutureOfOldObstetricalLacerationOfUterus
     /// </summary>
     public const string LiteralSutureOfOldObstetricalLacerationOfUterus = "6473009";
+
+    /// <summary>
+    /// Literal for code: NONESutureOfOldObstetricalLacerationOfUterus
+    /// </summary>
+    public const string LiteralNONESutureOfOldObstetricalLacerationOfUterus = "http://snomed.info/sct#6473009";
 
     /// <summary>
     /// Literal for code: UrinaryBladderResidualUrineStudy
@@ -13578,9 +18138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUrinaryBladderResidualUrineStudy = "6480006";
 
     /// <summary>
+    /// Literal for code: NONEUrinaryBladderResidualUrineStudy
+    /// </summary>
+    public const string LiteralNONEUrinaryBladderResidualUrineStudy = "http://snomed.info/sct#6480006";
+
+    /// <summary>
     /// Literal for code: CurettageOfSclera
     /// </summary>
     public const string LiteralCurettageOfSclera = "6486000";
+
+    /// <summary>
+    /// Literal for code: NONECurettageOfSclera
+    /// </summary>
+    public const string LiteralNONECurettageOfSclera = "http://snomed.info/sct#6486000";
 
     /// <summary>
     /// Literal for code: HandTendonPulleyReconstructionWithTendonProsthesis
@@ -13588,9 +18158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHandTendonPulleyReconstructionWithTendonProsthesis = "6487009";
 
     /// <summary>
+    /// Literal for code: NONEHandTendonPulleyReconstructionWithTendonProsthesis
+    /// </summary>
+    public const string LiteralNONEHandTendonPulleyReconstructionWithTendonProsthesis = "http://snomed.info/sct#6487009";
+
+    /// <summary>
     /// Literal for code: ProteinSFreeAssay
     /// </summary>
     public const string LiteralProteinSFreeAssay = "6491004";
+
+    /// <summary>
+    /// Literal for code: NONEProteinSFreeAssay
+    /// </summary>
+    public const string LiteralNONEProteinSFreeAssay = "http://snomed.info/sct#6491004";
 
     /// <summary>
     /// Literal for code: TsugeOperationOnFingerForMacrodactylyRepair
@@ -13598,9 +18178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTsugeOperationOnFingerForMacrodactylyRepair = "6499002";
 
     /// <summary>
+    /// Literal for code: NONETsugeOperationOnFingerForMacrodactylyRepair
+    /// </summary>
+    public const string LiteralNONETsugeOperationOnFingerForMacrodactylyRepair = "http://snomed.info/sct#6499002";
+
+    /// <summary>
     /// Literal for code: CompleteLowerDenture
     /// </summary>
     public const string LiteralCompleteLowerDenture = "6502003";
+
+    /// <summary>
+    /// Literal for code: NONECompleteLowerDenture
+    /// </summary>
+    public const string LiteralNONECompleteLowerDenture = "http://snomed.info/sct#6502003";
 
     /// <summary>
     /// Literal for code: PlacingAPatientOnABedpan
@@ -13608,9 +18198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlacingAPatientOnABedpan = "6506000";
 
     /// <summary>
+    /// Literal for code: NONEPlacingAPatientOnABedpan
+    /// </summary>
+    public const string LiteralNONEPlacingAPatientOnABedpan = "http://snomed.info/sct#6506000";
+
+    /// <summary>
     /// Literal for code: OperationOnMultipleExtraocularMusclesWithTemporaryDetachmentFromGlobe
     /// </summary>
     public const string LiteralOperationOnMultipleExtraocularMusclesWithTemporaryDetachmentFromGlobe = "6519001";
+
+    /// <summary>
+    /// Literal for code: NONEOperationOnMultipleExtraocularMusclesWithTemporaryDetachmentFromGlobe
+    /// </summary>
+    public const string LiteralNONEOperationOnMultipleExtraocularMusclesWithTemporaryDetachmentFromGlobe = "http://snomed.info/sct#6519001";
 
     /// <summary>
     /// Literal for code: Polytomography
@@ -13618,9 +18218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPolytomography = "6521006";
 
     /// <summary>
+    /// Literal for code: NONEPolytomography
+    /// </summary>
+    public const string LiteralNONEPolytomography = "http://snomed.info/sct#6521006";
+
+    /// <summary>
     /// Literal for code: UchidaFimbriectomyWithTubalLigationByEndoscopy
     /// </summary>
     public const string LiteralUchidaFimbriectomyWithTubalLigationByEndoscopy = "6527005";
+
+    /// <summary>
+    /// Literal for code: NONEUchidaFimbriectomyWithTubalLigationByEndoscopy
+    /// </summary>
+    public const string LiteralNONEUchidaFimbriectomyWithTubalLigationByEndoscopy = "http://snomed.info/sct#6527005";
 
     /// <summary>
     /// Literal for code: ExcisionOfCystOfHand
@@ -13628,9 +18238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionOfCystOfHand = "6535008";
 
     /// <summary>
+    /// Literal for code: NONEExcisionOfCystOfHand
+    /// </summary>
+    public const string LiteralNONEExcisionOfCystOfHand = "http://snomed.info/sct#6535008";
+
+    /// <summary>
     /// Literal for code: ImplantationOfTricuspidValveWithTissueGraft
     /// </summary>
     public const string LiteralImplantationOfTricuspidValveWithTissueGraft = "6536009";
+
+    /// <summary>
+    /// Literal for code: NONEImplantationOfTricuspidValveWithTissueGraft
+    /// </summary>
+    public const string LiteralNONEImplantationOfTricuspidValveWithTissueGraft = "http://snomed.info/sct#6536009";
 
     /// <summary>
     /// Literal for code: ComplicatedCatheterizationOfBladder
@@ -13638,9 +18258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComplicatedCatheterizationOfBladder = "6543003";
 
     /// <summary>
+    /// Literal for code: NONEComplicatedCatheterizationOfBladder
+    /// </summary>
+    public const string LiteralNONEComplicatedCatheterizationOfBladder = "http://snomed.info/sct#6543003";
+
+    /// <summary>
     /// Literal for code: RepairWithClosureOfNonSurgicalWound
     /// </summary>
     public const string LiteralRepairWithClosureOfNonSurgicalWound = "6547002";
+
+    /// <summary>
+    /// Literal for code: NONERepairWithClosureOfNonSurgicalWound
+    /// </summary>
+    public const string LiteralNONERepairWithClosureOfNonSurgicalWound = "http://snomed.info/sct#6547002";
 
     /// <summary>
     /// Literal for code: InsertionOfInfusionPumpBeneathSkin
@@ -13648,9 +18278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInsertionOfInfusionPumpBeneathSkin = "6555009";
 
     /// <summary>
+    /// Literal for code: NONEInsertionOfInfusionPumpBeneathSkin
+    /// </summary>
+    public const string LiteralNONEInsertionOfInfusionPumpBeneathSkin = "http://snomed.info/sct#6555009";
+
+    /// <summary>
     /// Literal for code: ReticulinAntibodyMeasurement
     /// </summary>
     public const string LiteralReticulinAntibodyMeasurement = "6556005";
+
+    /// <summary>
+    /// Literal for code: NONEReticulinAntibodyMeasurement
+    /// </summary>
+    public const string LiteralNONEReticulinAntibodyMeasurement = "http://snomed.info/sct#6556005";
 
     /// <summary>
     /// Literal for code: DestructionOfLesionOfTongue
@@ -13658,9 +18298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDestructionOfLesionOfTongue = "6562000";
 
     /// <summary>
+    /// Literal for code: NONEDestructionOfLesionOfTongue
+    /// </summary>
+    public const string LiteralNONEDestructionOfLesionOfTongue = "http://snomed.info/sct#6562000";
+
+    /// <summary>
     /// Literal for code: TranspositionOfMuscleOfHand
     /// </summary>
     public const string LiteralTranspositionOfMuscleOfHand = "6563005";
+
+    /// <summary>
+    /// Literal for code: NONETranspositionOfMuscleOfHand
+    /// </summary>
+    public const string LiteralNONETranspositionOfMuscleOfHand = "http://snomed.info/sct#6563005";
 
     /// <summary>
     /// Literal for code: PulmonaryValveCommissurotomyByTransvenousBalloonMethod
@@ -13668,9 +18318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPulmonaryValveCommissurotomyByTransvenousBalloonMethod = "6567006";
 
     /// <summary>
+    /// Literal for code: NONEPulmonaryValveCommissurotomyByTransvenousBalloonMethod
+    /// </summary>
+    public const string LiteralNONEPulmonaryValveCommissurotomyByTransvenousBalloonMethod = "http://snomed.info/sct#6567006";
+
+    /// <summary>
     /// Literal for code: DiagnosticProcedureOnEyelid
     /// </summary>
     public const string LiteralDiagnosticProcedureOnEyelid = "6568001";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticProcedureOnEyelid
+    /// </summary>
+    public const string LiteralNONEDiagnosticProcedureOnEyelid = "http://snomed.info/sct#6568001";
 
     /// <summary>
     /// Literal for code: OperationOnBursa
@@ -13678,9 +18338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOperationOnBursa = "657004";
 
     /// <summary>
+    /// Literal for code: NONEOperationOnBursa
+    /// </summary>
+    public const string LiteralNONEOperationOnBursa = "http://snomed.info/sct#657004";
+
+    /// <summary>
     /// Literal for code: ClosedReductionOfFractureOfTarsalOrMetatarsal
     /// </summary>
     public const string LiteralClosedReductionOfFractureOfTarsalOrMetatarsal = "6585004";
+
+    /// <summary>
+    /// Literal for code: NONEClosedReductionOfFractureOfTarsalOrMetatarsal
+    /// </summary>
+    public const string LiteralNONEClosedReductionOfFractureOfTarsalOrMetatarsal = "http://snomed.info/sct#6585004";
 
     /// <summary>
     /// Literal for code: AntibodyTitrationHighProtein
@@ -13688,9 +18358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAntibodyTitrationHighProtein = "6589005";
 
     /// <summary>
+    /// Literal for code: NONEAntibodyTitrationHighProtein
+    /// </summary>
+    public const string LiteralNONEAntibodyTitrationHighProtein = "http://snomed.info/sct#6589005";
+
+    /// <summary>
     /// Literal for code: RemovalOfForeignBodyFromSkinOfAxilla
     /// </summary>
     public const string LiteralRemovalOfForeignBodyFromSkinOfAxilla = "6601003";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfForeignBodyFromSkinOfAxilla
+    /// </summary>
+    public const string LiteralNONERemovalOfForeignBodyFromSkinOfAxilla = "http://snomed.info/sct#6601003";
 
     /// <summary>
     /// Literal for code: AntibodyToSingleStrandedDNAMeasurement
@@ -13698,9 +18378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAntibodyToSingleStrandedDNAMeasurement = "6614002";
 
     /// <summary>
+    /// Literal for code: NONEAntibodyToSingleStrandedDNAMeasurement
+    /// </summary>
+    public const string LiteralNONEAntibodyToSingleStrandedDNAMeasurement = "http://snomed.info/sct#6614002";
+
+    /// <summary>
     /// Literal for code: ElectroretinographyWithMedicalEvaluation
     /// </summary>
     public const string LiteralElectroretinographyWithMedicalEvaluation = "6615001";
+
+    /// <summary>
+    /// Literal for code: NONEElectroretinographyWithMedicalEvaluation
+    /// </summary>
+    public const string LiteralNONEElectroretinographyWithMedicalEvaluation = "http://snomed.info/sct#6615001";
 
     /// <summary>
     /// Literal for code: AddClaspToExistingPartialDenture
@@ -13708,9 +18398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAddClaspToExistingPartialDenture = "6622009";
 
     /// <summary>
+    /// Literal for code: NONEAddClaspToExistingPartialDenture
+    /// </summary>
+    public const string LiteralNONEAddClaspToExistingPartialDenture = "http://snomed.info/sct#6622009";
+
+    /// <summary>
     /// Literal for code: DestructionOfHemorrhoidsInternal
     /// </summary>
     public const string LiteralDestructionOfHemorrhoidsInternal = "6634001";
+
+    /// <summary>
+    /// Literal for code: NONEDestructionOfHemorrhoidsInternal
+    /// </summary>
+    public const string LiteralNONEDestructionOfHemorrhoidsInternal = "http://snomed.info/sct#6634001";
 
     /// <summary>
     /// Literal for code: ReplacementOfObstructedValveInShuntSystem
@@ -13718,9 +18418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReplacementOfObstructedValveInShuntSystem = "6639006";
 
     /// <summary>
+    /// Literal for code: NONEReplacementOfObstructedValveInShuntSystem
+    /// </summary>
+    public const string LiteralNONEReplacementOfObstructedValveInShuntSystem = "http://snomed.info/sct#6639006";
+
+    /// <summary>
     /// Literal for code: RadionuclideLacrimalFlowStudy
     /// </summary>
     public const string LiteralRadionuclideLacrimalFlowStudy = "6650009";
+
+    /// <summary>
+    /// Literal for code: NONERadionuclideLacrimalFlowStudy
+    /// </summary>
+    public const string LiteralNONERadionuclideLacrimalFlowStudy = "http://snomed.info/sct#6650009";
 
     /// <summary>
     /// Literal for code: PartialMeniscectomyOfTemporomandibularJoint
@@ -13728,9 +18438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPartialMeniscectomyOfTemporomandibularJoint = "665001";
 
     /// <summary>
+    /// Literal for code: NONEPartialMeniscectomyOfTemporomandibularJoint
+    /// </summary>
+    public const string LiteralNONEPartialMeniscectomyOfTemporomandibularJoint = "http://snomed.info/sct#665001";
+
+    /// <summary>
     /// Literal for code: AcousticStimulationTest
     /// </summary>
     public const string LiteralAcousticStimulationTest = "6656003";
+
+    /// <summary>
+    /// Literal for code: NONEAcousticStimulationTest
+    /// </summary>
+    public const string LiteralNONEAcousticStimulationTest = "http://snomed.info/sct#6656003";
 
     /// <summary>
     /// Literal for code: MaintenanceDrugTherapyForMentalDisorder
@@ -13738,9 +18458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMaintenanceDrugTherapyForMentalDisorder = "6657007";
 
     /// <summary>
+    /// Literal for code: NONEMaintenanceDrugTherapyForMentalDisorder
+    /// </summary>
+    public const string LiteralNONEMaintenanceDrugTherapyForMentalDisorder = "http://snomed.info/sct#6657007";
+
+    /// <summary>
     /// Literal for code: RemovalOfForeignBodyFromAlveolus
     /// </summary>
     public const string LiteralRemovalOfForeignBodyFromAlveolus = "6658002";
+
+    /// <summary>
+    /// Literal for code: NONERemovalOfForeignBodyFromAlveolus
+    /// </summary>
+    public const string LiteralNONERemovalOfForeignBodyFromAlveolus = "http://snomed.info/sct#6658002";
 
     /// <summary>
     /// Literal for code: KingSteelquistHindquarterOperation
@@ -13748,9 +18478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKingSteelquistHindquarterOperation = "6661001";
 
     /// <summary>
+    /// Literal for code: NONEKingSteelquistHindquarterOperation
+    /// </summary>
+    public const string LiteralNONEKingSteelquistHindquarterOperation = "http://snomed.info/sct#6661001";
+
+    /// <summary>
     /// Literal for code: RestorationCrownPorcelainFusedToNobleMetal
     /// </summary>
     public const string LiteralRestorationCrownPorcelainFusedToNobleMetal = "6665005";
+
+    /// <summary>
+    /// Literal for code: NONERestorationCrownPorcelainFusedToNobleMetal
+    /// </summary>
+    public const string LiteralNONERestorationCrownPorcelainFusedToNobleMetal = "http://snomed.info/sct#6665005";
 
     /// <summary>
     /// Literal for code: FibrinogenAssayQuantitative
@@ -13758,9 +18498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFibrinogenAssayQuantitative = "6668007";
 
     /// <summary>
+    /// Literal for code: NONEFibrinogenAssayQuantitative
+    /// </summary>
+    public const string LiteralNONEFibrinogenAssayQuantitative = "http://snomed.info/sct#6668007";
+
+    /// <summary>
     /// Literal for code: ClosureOfExternalFistulaOfTrachea
     /// </summary>
     public const string LiteralClosureOfExternalFistulaOfTrachea = "6670003";
+
+    /// <summary>
+    /// Literal for code: NONEClosureOfExternalFistulaOfTrachea
+    /// </summary>
+    public const string LiteralNONEClosureOfExternalFistulaOfTrachea = "http://snomed.info/sct#6670003";
 
     /// <summary>
     /// Literal for code: ElectrosurgicalEpilationOfEyebrow
@@ -13768,9 +18518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElectrosurgicalEpilationOfEyebrow = "670008";
 
     /// <summary>
+    /// Literal for code: NONEElectrosurgicalEpilationOfEyebrow
+    /// </summary>
+    public const string LiteralNONEElectrosurgicalEpilationOfEyebrow = "http://snomed.info/sct#670008";
+
+    /// <summary>
     /// Literal for code: TransplantationOfTestis
     /// </summary>
     public const string LiteralTransplantationOfTestis = "671007";
+
+    /// <summary>
+    /// Literal for code: NONETransplantationOfTestis
+    /// </summary>
+    public const string LiteralNONETransplantationOfTestis = "http://snomed.info/sct#671007";
 
     /// <summary>
     /// Literal for code: IndirectLaryngoscopy
@@ -13778,9 +18538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIndirectLaryngoscopy = "673005";
 
     /// <summary>
+    /// Literal for code: NONEIndirectLaryngoscopy
+    /// </summary>
+    public const string LiteralNONEIndirectLaryngoscopy = "http://snomed.info/sct#673005";
+
+    /// <summary>
     /// Literal for code: AbductionTest
     /// </summary>
     public const string LiteralAbductionTest = "674004";
+
+    /// <summary>
+    /// Literal for code: NONEAbductionTest
+    /// </summary>
+    public const string LiteralNONEAbductionTest = "http://snomed.info/sct#674004";
 
     /// <summary>
     /// Literal for code: PeritonealDialysisIncludingCannulation
@@ -13788,9 +18558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPeritonealDialysisIncludingCannulation = "676002";
 
     /// <summary>
+    /// Literal for code: NONEPeritonealDialysisIncludingCannulation
+    /// </summary>
+    public const string LiteralNONEPeritonealDialysisIncludingCannulation = "http://snomed.info/sct#676002";
+
+    /// <summary>
     /// Literal for code: RadiationPhysicsConsultation
     /// </summary>
     public const string LiteralRadiationPhysicsConsultation = "680007";
+
+    /// <summary>
+    /// Literal for code: NONERadiationPhysicsConsultation
+    /// </summary>
+    public const string LiteralNONERadiationPhysicsConsultation = "http://snomed.info/sct#680007";
 
     /// <summary>
     /// Literal for code: AlbuminGlobulinRatio
@@ -13798,9 +18578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAlbuminGlobulinRatio = "687005";
 
     /// <summary>
+    /// Literal for code: NONEAlbuminGlobulinRatio
+    /// </summary>
+    public const string LiteralNONEAlbuminGlobulinRatio = "http://snomed.info/sct#687005";
+
+    /// <summary>
     /// Literal for code: DestructiveProcedureOfLesionOnSkinOfTrunk
     /// </summary>
     public const string LiteralDestructiveProcedureOfLesionOnSkinOfTrunk = "695009";
+
+    /// <summary>
+    /// Literal for code: NONEDestructiveProcedureOfLesionOnSkinOfTrunk
+    /// </summary>
+    public const string LiteralNONEDestructiveProcedureOfLesionOnSkinOfTrunk = "http://snomed.info/sct#695009";
 
     /// <summary>
     /// Literal for code: HepatitisAVirusAntibodyMeasurement
@@ -13808,9 +18598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHepatitisAVirusAntibodyMeasurement = "697001";
 
     /// <summary>
+    /// Literal for code: NONEHepatitisAVirusAntibodyMeasurement
+    /// </summary>
+    public const string LiteralNONEHepatitisAVirusAntibodyMeasurement = "http://snomed.info/sct#697001";
+
+    /// <summary>
     /// Literal for code: ThromboendarterectomyWithGraftOfMesentericArtery
     /// </summary>
     public const string LiteralThromboendarterectomyWithGraftOfMesentericArtery = "710006";
+
+    /// <summary>
+    /// Literal for code: NONEThromboendarterectomyWithGraftOfMesentericArtery
+    /// </summary>
+    public const string LiteralNONEThromboendarterectomyWithGraftOfMesentericArtery = "http://snomed.info/sct#710006";
 
     /// <summary>
     /// Literal for code: ClosedChestSuction
@@ -13818,9 +18618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClosedChestSuction = "712003";
 
     /// <summary>
+    /// Literal for code: NONEClosedChestSuction
+    /// </summary>
+    public const string LiteralNONEClosedChestSuction = "http://snomed.info/sct#712003";
+
+    /// <summary>
     /// Literal for code: MedicalProcedureOnPeriurethralTissue
     /// </summary>
     public const string LiteralMedicalProcedureOnPeriurethralTissue = "721002";
+
+    /// <summary>
+    /// Literal for code: NONEMedicalProcedureOnPeriurethralTissue
+    /// </summary>
+    public const string LiteralNONEMedicalProcedureOnPeriurethralTissue = "http://snomed.info/sct#721002";
 
     /// <summary>
     /// Literal for code: FineNeedleBiopsyOfThymus
@@ -13828,9 +18638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFineNeedleBiopsyOfThymus = "722009";
 
     /// <summary>
+    /// Literal for code: NONEFineNeedleBiopsyOfThymus
+    /// </summary>
+    public const string LiteralNONEFineNeedleBiopsyOfThymus = "http://snomed.info/sct#722009";
+
+    /// <summary>
     /// Literal for code: PathologyConsultationComprehensiveRecordsAndSpecimenWithReport
     /// </summary>
     public const string LiteralPathologyConsultationComprehensiveRecordsAndSpecimenWithReport = "726007";
+
+    /// <summary>
+    /// Literal for code: NONEPathologyConsultationComprehensiveRecordsAndSpecimenWithReport
+    /// </summary>
+    public const string LiteralNONEPathologyConsultationComprehensiveRecordsAndSpecimenWithReport = "http://snomed.info/sct#726007";
 
     /// <summary>
     /// Literal for code: IncisionOfSubcutaneousTissue
@@ -13838,9 +18658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionOfSubcutaneousTissue = "730005";
 
     /// <summary>
+    /// Literal for code: NONEIncisionOfSubcutaneousTissue
+    /// </summary>
+    public const string LiteralNONEIncisionOfSubcutaneousTissue = "http://snomed.info/sct#730005";
+
+    /// <summary>
     /// Literal for code: OperationOnProstate
     /// </summary>
     public const string LiteralOperationOnProstate = "741007";
+
+    /// <summary>
+    /// Literal for code: NONEOperationOnProstate
+    /// </summary>
+    public const string LiteralNONEOperationOnProstate = "http://snomed.info/sct#741007";
 
     /// <summary>
     /// Literal for code: ChiropracticAdjustmentOfCoccyxSubluxation
@@ -13848,9 +18678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChiropracticAdjustmentOfCoccyxSubluxation = "746002";
 
     /// <summary>
+    /// Literal for code: NONEChiropracticAdjustmentOfCoccyxSubluxation
+    /// </summary>
+    public const string LiteralNONEChiropracticAdjustmentOfCoccyxSubluxation = "http://snomed.info/sct#746002";
+
+    /// <summary>
     /// Literal for code: ManipulationOfAnkleANDFoot
     /// </summary>
     public const string LiteralManipulationOfAnkleANDFoot = "753006";
+
+    /// <summary>
+    /// Literal for code: NONEManipulationOfAnkleANDFoot
+    /// </summary>
+    public const string LiteralNONEManipulationOfAnkleANDFoot = "http://snomed.info/sct#753006";
 
     /// <summary>
     /// Literal for code: TotalUrethrectomy
@@ -13858,9 +18698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTotalUrethrectomy = "754000";
 
     /// <summary>
+    /// Literal for code: NONETotalUrethrectomy
+    /// </summary>
+    public const string LiteralNONETotalUrethrectomy = "http://snomed.info/sct#754000";
+
+    /// <summary>
     /// Literal for code: IntracerebralElectroencephalogram
     /// </summary>
     public const string LiteralIntracerebralElectroencephalogram = "759005";
+
+    /// <summary>
+    /// Literal for code: NONEIntracerebralElectroencephalogram
+    /// </summary>
+    public const string LiteralNONEIntracerebralElectroencephalogram = "http://snomed.info/sct#759005";
 
     /// <summary>
     /// Literal for code: ComputerizedAxialTomographyOfCervicalSpineWithContrast
@@ -13868,9 +18718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedAxialTomographyOfCervicalSpineWithContrast = "762008";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedAxialTomographyOfCervicalSpineWithContrast
+    /// </summary>
+    public const string LiteralNONEComputerizedAxialTomographyOfCervicalSpineWithContrast = "http://snomed.info/sct#762008";
+
+    /// <summary>
     /// Literal for code: ArthrodesisOfInterphalangealJointOfGreatToe
     /// </summary>
     public const string LiteralArthrodesisOfInterphalangealJointOfGreatToe = "764009";
+
+    /// <summary>
+    /// Literal for code: NONEArthrodesisOfInterphalangealJointOfGreatToe
+    /// </summary>
+    public const string LiteralNONEArthrodesisOfInterphalangealJointOfGreatToe = "http://snomed.info/sct#764009";
 
     /// <summary>
     /// Literal for code: WhiteBloodCellCount
@@ -13878,9 +18738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWhiteBloodCellCount = "767002";
 
     /// <summary>
+    /// Literal for code: NONEWhiteBloodCellCount
+    /// </summary>
+    public const string LiteralNONEWhiteBloodCellCount = "http://snomed.info/sct#767002";
+
+    /// <summary>
     /// Literal for code: CranialDecompressionSubtemporalSupratentorial
     /// </summary>
     public const string LiteralCranialDecompressionSubtemporalSupratentorial = "789003";
+
+    /// <summary>
+    /// Literal for code: NONECranialDecompressionSubtemporalSupratentorial
+    /// </summary>
+    public const string LiteralNONECranialDecompressionSubtemporalSupratentorial = "http://snomed.info/sct#789003";
 
     /// <summary>
     /// Literal for code: DressingAndFixationProcedure
@@ -13888,9 +18758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDressingAndFixationProcedure = "791006";
 
     /// <summary>
+    /// Literal for code: NONEDressingAndFixationProcedure
+    /// </summary>
+    public const string LiteralNONEDressingAndFixationProcedure = "http://snomed.info/sct#791006";
+
+    /// <summary>
     /// Literal for code: ExcisionOfBrain
     /// </summary>
     public const string LiteralExcisionOfBrain = "807005";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfBrain
+    /// </summary>
+    public const string LiteralNONEExcisionOfBrain = "http://snomed.info/sct#807005";
 
     /// <summary>
     /// Literal for code: ElectrophoresisMeasurement
@@ -13898,9 +18778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElectrophoresisMeasurement = "814007";
 
     /// <summary>
+    /// Literal for code: NONEElectrophoresisMeasurement
+    /// </summary>
+    public const string LiteralNONEElectrophoresisMeasurement = "http://snomed.info/sct#814007";
+
+    /// <summary>
     /// Literal for code: ExcisionOfCystOfSpleen
     /// </summary>
     public const string LiteralExcisionOfCystOfSpleen = "817000";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfCystOfSpleen
+    /// </summary>
+    public const string LiteralNONEExcisionOfCystOfSpleen = "http://snomed.info/sct#817000";
 
     /// <summary>
     /// Literal for code: DrawerTest
@@ -13908,9 +18798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrawerTest = "831000";
 
     /// <summary>
+    /// Literal for code: NONEDrawerTest
+    /// </summary>
+    public const string LiteralNONEDrawerTest = "http://snomed.info/sct#831000";
+
+    /// <summary>
     /// Literal for code: RootCanalTherapyMolarExcludingFinalRestoration
     /// </summary>
     public const string LiteralRootCanalTherapyMolarExcludingFinalRestoration = "851001";
+
+    /// <summary>
+    /// Literal for code: NONERootCanalTherapyMolarExcludingFinalRestoration
+    /// </summary>
+    public const string LiteralNONERootCanalTherapyMolarExcludingFinalRestoration = "http://snomed.info/sct#851001";
 
     /// <summary>
     /// Literal for code: FecalFatMeasurement72HourCollection
@@ -13918,9 +18818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFecalFatMeasurement72HourCollection = "853003";
 
     /// <summary>
+    /// Literal for code: NONEFecalFatMeasurement72HourCollection
+    /// </summary>
+    public const string LiteralNONEFecalFatMeasurement72HourCollection = "http://snomed.info/sct#853003";
+
+    /// <summary>
     /// Literal for code: FacialHypoglossalNerveAnastomosis
     /// </summary>
     public const string LiteralFacialHypoglossalNerveAnastomosis = "867007";
+
+    /// <summary>
+    /// Literal for code: NONEFacialHypoglossalNerveAnastomosis
+    /// </summary>
+    public const string LiteralNONEFacialHypoglossalNerveAnastomosis = "http://snomed.info/sct#867007";
 
     /// <summary>
     /// Literal for code: CarbamazepineMeasurement
@@ -13928,9 +18838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCarbamazepineMeasurement = "870006";
 
     /// <summary>
+    /// Literal for code: NONECarbamazepineMeasurement
+    /// </summary>
+    public const string LiteralNONECarbamazepineMeasurement = "http://snomed.info/sct#870006";
+
+    /// <summary>
     /// Literal for code: SpecialBloodCoagulationTestExplainByReport
     /// </summary>
     public const string LiteralSpecialBloodCoagulationTestExplainByReport = "879007";
+
+    /// <summary>
+    /// Literal for code: NONESpecialBloodCoagulationTestExplainByReport
+    /// </summary>
+    public const string LiteralNONESpecialBloodCoagulationTestExplainByReport = "http://snomed.info/sct#879007";
 
     /// <summary>
     /// Literal for code: Cyclodialysis
@@ -13938,9 +18858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCyclodialysis = "881009";
 
     /// <summary>
+    /// Literal for code: NONECyclodialysis
+    /// </summary>
+    public const string LiteralNONECyclodialysis = "http://snomed.info/sct#881009";
+
+    /// <summary>
     /// Literal for code: TumorAntigenMeasurement
     /// </summary>
     public const string LiteralTumorAntigenMeasurement = "893000";
+
+    /// <summary>
+    /// Literal for code: NONETumorAntigenMeasurement
+    /// </summary>
+    public const string LiteralNONETumorAntigenMeasurement = "http://snomed.info/sct#893000";
 
     /// <summary>
     /// Literal for code: RadicalMaxillaryAntrotomy
@@ -13948,9 +18878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadicalMaxillaryAntrotomy = "897004";
 
     /// <summary>
+    /// Literal for code: NONERadicalMaxillaryAntrotomy
+    /// </summary>
+    public const string LiteralNONERadicalMaxillaryAntrotomy = "http://snomed.info/sct#897004";
+
+    /// <summary>
     /// Literal for code: MHPGMeasurementUrine
     /// </summary>
     public const string LiteralMHPGMeasurementUrine = "910002";
+
+    /// <summary>
+    /// Literal for code: NONEMHPGMeasurementUrine
+    /// </summary>
+    public const string LiteralNONEMHPGMeasurementUrine = "http://snomed.info/sct#910002";
 
     /// <summary>
     /// Literal for code: RemovalOfSubarachnoidUreteralShunt
@@ -13958,9 +18898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemovalOfSubarachnoidUreteralShunt = "911003";
 
     /// <summary>
+    /// Literal for code: NONERemovalOfSubarachnoidUreteralShunt
+    /// </summary>
+    public const string LiteralNONERemovalOfSubarachnoidUreteralShunt = "http://snomed.info/sct#911003";
+
+    /// <summary>
     /// Literal for code: ChiropracticPatientEducationAndInstruction
     /// </summary>
     public const string LiteralChiropracticPatientEducationAndInstruction = "913000";
+
+    /// <summary>
+    /// Literal for code: NONEChiropracticPatientEducationAndInstruction
+    /// </summary>
+    public const string LiteralNONEChiropracticPatientEducationAndInstruction = "http://snomed.info/sct#913000";
 
     /// <summary>
     /// Literal for code: EmbolectomyWithCatheterOfRadialArteryByArmIncision
@@ -13968,9 +18918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEmbolectomyWithCatheterOfRadialArteryByArmIncision = "926001";
 
     /// <summary>
+    /// Literal for code: NONEEmbolectomyWithCatheterOfRadialArteryByArmIncision
+    /// </summary>
+    public const string LiteralNONEEmbolectomyWithCatheterOfRadialArteryByArmIncision = "http://snomed.info/sct#926001";
+
+    /// <summary>
     /// Literal for code: ExcisionOfBulbourethralGland
     /// </summary>
     public const string LiteralExcisionOfBulbourethralGland = "935008";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfBulbourethralGland
+    /// </summary>
+    public const string LiteralNONEExcisionOfBulbourethralGland = "http://snomed.info/sct#935008";
 
     /// <summary>
     /// Literal for code: EndoscopyOfPituitaryGland
@@ -13978,9 +18938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEndoscopyOfPituitaryGland = "941001";
 
     /// <summary>
+    /// Literal for code: NONEEndoscopyOfPituitaryGland
+    /// </summary>
+    public const string LiteralNONEEndoscopyOfPituitaryGland = "http://snomed.info/sct#941001";
+
+    /// <summary>
     /// Literal for code: ExcisionOfTibiaAndFibulaForGraft
     /// </summary>
     public const string LiteralExcisionOfTibiaAndFibulaForGraft = "945005";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionOfTibiaAndFibulaForGraft
+    /// </summary>
+    public const string LiteralNONEExcisionOfTibiaAndFibulaForGraft = "http://snomed.info/sct#945005";
 
     /// <summary>
     /// Literal for code: PhlebectomyOfIntracranialVaricoseVein
@@ -13988,9 +18958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhlebectomyOfIntracranialVaricoseVein = "948007";
 
     /// <summary>
+    /// Literal for code: NONEPhlebectomyOfIntracranialVaricoseVein
+    /// </summary>
+    public const string LiteralNONEPhlebectomyOfIntracranialVaricoseVein = "http://snomed.info/sct#948007";
+
+    /// <summary>
     /// Literal for code: UltrasonicGuidanceForEndomyocardialBiopsy
     /// </summary>
     public const string LiteralUltrasonicGuidanceForEndomyocardialBiopsy = "951000";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasonicGuidanceForEndomyocardialBiopsy
+    /// </summary>
+    public const string LiteralNONEUltrasonicGuidanceForEndomyocardialBiopsy = "http://snomed.info/sct#951000";
 
     /// <summary>
     /// Literal for code: AnesthesiaForProcedureOnThoracicEsophagus
@@ -13998,9 +18978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnesthesiaForProcedureOnThoracicEsophagus = "956005";
 
     /// <summary>
+    /// Literal for code: NONEAnesthesiaForProcedureOnThoracicEsophagus
+    /// </summary>
+    public const string LiteralNONEAnesthesiaForProcedureOnThoracicEsophagus = "http://snomed.info/sct#956005";
+
+    /// <summary>
     /// Literal for code: MedicationEducation
     /// </summary>
     public const string LiteralMedicationEducation = "967006";
+
+    /// <summary>
+    /// Literal for code: NONEMedicationEducation
+    /// </summary>
+    public const string LiteralNONEMedicationEducation = "http://snomed.info/sct#967006";
 
     /// <summary>
     /// Literal for code: IncisionAndExplorationOfLarynx
@@ -14008,8 +18998,2024 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionAndExplorationOfLarynx = "969009";
 
     /// <summary>
+    /// Literal for code: NONEIncisionAndExplorationOfLarynx
+    /// </summary>
+    public const string LiteralNONEIncisionAndExplorationOfLarynx = "http://snomed.info/sct#969009";
+
+    /// <summary>
     /// Literal for code: ProstheticConstructionAndFitting
     /// </summary>
     public const string LiteralProstheticConstructionAndFitting = "971009";
+
+    /// <summary>
+    /// Literal for code: NONEProstheticConstructionAndFitting
+    /// </summary>
+    public const string LiteralNONEProstheticConstructionAndFitting = "http://snomed.info/sct#971009";
+
+    /// <summary>
+    /// Dictionary for looking up CarePlanActivity Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1001000", CauterizationOfBartholinQuoteSGland }, 
+      { "http://snomed.info/sct#1001000", CauterizationOfBartholinQuoteSGland }, 
+      { "1008006", OperationOnNerveGanglion }, 
+      { "http://snomed.info/sct#1008006", OperationOnNerveGanglion }, 
+      { "1019009", RemovalOfCornealEpithelium }, 
+      { "http://snomed.info/sct#1019009", RemovalOfCornealEpithelium }, 
+      { "1021004", RepairOfScrotum }, 
+      { "http://snomed.info/sct#1021004", RepairOfScrotum }, 
+      { "1029002", Fetoscopy }, 
+      { "http://snomed.info/sct#1029002", Fetoscopy }, 
+      { "1032004", EnucleationOfParotidGlandCyst }, 
+      { "http://snomed.info/sct#1032004", EnucleationOfParotidGlandCyst }, 
+      { "1035002", MinimumBactericidalConcentrationTestMicrodilutionMethod }, 
+      { "http://snomed.info/sct#1035002", MinimumBactericidalConcentrationTestMicrodilutionMethod }, 
+      { "1036001", InsertionOfIntravascularDeviceInCommonIliacVeinComplete }, 
+      { "http://snomed.info/sct#1036001", InsertionOfIntravascularDeviceInCommonIliacVeinComplete }, 
+      { "104001", ExcisionOfLesionOfPatella }, 
+      { "http://snomed.info/sct#104001", ExcisionOfLesionOfPatella }, 
+      { "1041009", DebridementOfOpenFractureOfPhalangesOfFoot }, 
+      { "http://snomed.info/sct#1041009", DebridementOfOpenFractureOfPhalangesOfFoot }, 
+      { "1042002", PaternityTesting }, 
+      { "http://snomed.info/sct#1042002", PaternityTesting }, 
+      { "1043007", DopplerColorFlowVelocityMapping }, 
+      { "http://snomed.info/sct#1043007", DopplerColorFlowVelocityMapping }, 
+      { "1044001", DiagnosticUltrasoundOfAbdomenAndRetroperitoneum }, 
+      { "http://snomed.info/sct#1044001", DiagnosticUltrasoundOfAbdomenAndRetroperitoneum }, 
+      { "1048003", CapillarySpecimenCollection }, 
+      { "http://snomed.info/sct#1048003", CapillarySpecimenCollection }, 
+      { "1054002", IncisionOfSphincterOfOddi }, 
+      { "http://snomed.info/sct#1054002", IncisionOfSphincterOfOddi }, 
+      { "1071001", ProximalSplenorenalAnastomosis }, 
+      { "http://snomed.info/sct#1071001", ProximalSplenorenalAnastomosis }, 
+      { "1084005", ExcisionOfPerinephricCyst }, 
+      { "http://snomed.info/sct#1084005", ExcisionOfPerinephricCyst }, 
+      { "1093006", ExcisionOfAbdominalVaricoseVein }, 
+      { "http://snomed.info/sct#1093006", ExcisionOfAbdominalVaricoseVein }, 
+      { "1103000", TranscruralMobilizationOfStapes }, 
+      { "http://snomed.info/sct#1103000", TranscruralMobilizationOfStapes }, 
+      { "1104006", TriadKneeRepair }, 
+      { "http://snomed.info/sct#1104006", TriadKneeRepair }, 
+      { "1115001", Decortication }, 
+      { "http://snomed.info/sct#1115001", Decortication }, 
+      { "1119007", ClosedReductionOfDislocationOfFootAndToe }, 
+      { "http://snomed.info/sct#1119007", ClosedReductionOfDislocationOfFootAndToe }, 
+      { "1121002", KineticActivitiesForRangeOfMotion }, 
+      { "http://snomed.info/sct#1121002", KineticActivitiesForRangeOfMotion }, 
+      { "1127003", InterstitialRadiumApplication }, 
+      { "http://snomed.info/sct#1127003", InterstitialRadiumApplication }, 
+      { "1133007", RemovalOfIntactMammaryImplantBilateral }, 
+      { "http://snomed.info/sct#1133007", RemovalOfIntactMammaryImplantBilateral }, 
+      { "115006", RemovableApplianceTherapy }, 
+      { "http://snomed.info/sct#115006", RemovableApplianceTherapy }, 
+      { "1163003", Ureteroenterostomy }, 
+      { "http://snomed.info/sct#1163003", Ureteroenterostomy }, 
+      { "1176009", IncisionOfInguinalRegion }, 
+      { "http://snomed.info/sct#1176009", IncisionOfInguinalRegion }, 
+      { "1181000", ExcisionOfTendonForGraft }, 
+      { "http://snomed.info/sct#1181000", ExcisionOfTendonForGraft }, 
+      { "1186005", AnesthesiaForProcedureOnBonyPelvis }, 
+      { "http://snomed.info/sct#1186005", AnesthesiaForProcedureOnBonyPelvis }, 
+      { "119000", ThoracoscopicPartialLobectomyOfLung }, 
+      { "http://snomed.info/sct#119000", ThoracoscopicPartialLobectomyOfLung }, 
+      { "1198000", ExcisionalBiopsyOfBoneOfScapula }, 
+      { "http://snomed.info/sct#1198000", ExcisionalBiopsyOfBoneOfScapula }, 
+      { "1209007", ArthroscopyOfKneeWithLateralMeniscusRepair }, 
+      { "http://snomed.info/sct#1209007", ArthroscopyOfKneeWithLateralMeniscusRepair }, 
+      { "121005", RetrobulbarInjectionOfTherapeuticAgent }, 
+      { "http://snomed.info/sct#121005", RetrobulbarInjectionOfTherapeuticAgent }, 
+      { "1225002", RadiographyOfHumerus }, 
+      { "http://snomed.info/sct#1225002", RadiographyOfHumerus }, 
+      { "1227005", IncisionOfSubvalvularTissueForDiscreteSubvalvularAorticStenosis }, 
+      { "http://snomed.info/sct#1227005", IncisionOfSubvalvularTissueForDiscreteSubvalvularAorticStenosis }, 
+      { "1235008", MuscleTransfer }, 
+      { "http://snomed.info/sct#1235008", MuscleTransfer }, 
+      { "1237000", ApplicationOfCastSugarTong }, 
+      { "http://snomed.info/sct#1237000", ApplicationOfCastSugarTong }, 
+      { "1238005", EpiphysealArrestByStaplingOfDistalRadius }, 
+      { "http://snomed.info/sct#1238005", EpiphysealArrestByStaplingOfDistalRadius }, 
+      { "1251000", IncisionalBiopsyOfTestis }, 
+      { "http://snomed.info/sct#1251000", IncisionalBiopsyOfTestis }, 
+      { "1253002", RefusionOfSpine }, 
+      { "http://snomed.info/sct#1253002", RefusionOfSpine }, 
+      { "1258006", ExcisionOfMeniscusOfWrist }, 
+      { "http://snomed.info/sct#1258006", ExcisionOfMeniscusOfWrist }, 
+      { "1266002", ClosureOfFistulaOfEarDrum }, 
+      { "http://snomed.info/sct#1266002", ClosureOfFistulaOfEarDrum }, 
+      { "1267006", ElectrocoagulationOfLesionOfVagina }, 
+      { "http://snomed.info/sct#1267006", ElectrocoagulationOfLesionOfVagina }, 
+      { "1278003", OpenReductionOfClosedShoulderDislocationWithFractureOfGreaterTuberosity }, 
+      { "http://snomed.info/sct#1278003", OpenReductionOfClosedShoulderDislocationWithFractureOfGreaterTuberosity }, 
+      { "1279006", RepairOfCardiacPacemakerPocketInSkinANDORSubcutaneousTissue }, 
+      { "http://snomed.info/sct#1279006", RepairOfCardiacPacemakerPocketInSkinANDORSubcutaneousTissue }, 
+      { "128004", HandMicroscopeExaminationOfSkin }, 
+      { "http://snomed.info/sct#128004", HandMicroscopeExaminationOfSkin }, 
+      { "1292009", MagneticResonanceImagingOfUrinaryBladder }, 
+      { "http://snomed.info/sct#1292009", MagneticResonanceImagingOfUrinaryBladder }, 
+      { "1299000", ExcisionOfAppendicealStump }, 
+      { "http://snomed.info/sct#1299000", ExcisionOfAppendicealStump }, 
+      { "1315009", ReconstructionOfEyebrow }, 
+      { "http://snomed.info/sct#1315009", ReconstructionOfEyebrow }, 
+      { "1316005", UpperPartialDentureCastMetalBaseWithoutResinSaddlesIncludingAnyConventionalClaspsRestsAndTeeth }, 
+      { "http://snomed.info/sct#1316005", UpperPartialDentureCastMetalBaseWithoutResinSaddlesIncludingAnyConventionalClaspsRestsAndTeeth }, 
+      { "1324000", CerebrospinalFluidIgGRatioAndIgGIndex }, 
+      { "http://snomed.info/sct#1324000", CerebrospinalFluidIgGRatioAndIgGIndex }, 
+      { "1327007", ProcedureOnMeckelQuoteSDiverticulum }, 
+      { "http://snomed.info/sct#1327007", ProcedureOnMeckelQuoteSDiverticulum }, 
+      { "1328002", IlioiliacShunt }, 
+      { "http://snomed.info/sct#1328002", IlioiliacShunt }, 
+      { "1329005", DivisionOfCongenitalWebOfLarynx }, 
+      { "http://snomed.info/sct#1329005", DivisionOfCongenitalWebOfLarynx }, 
+      { "133000", PercutaneousImplantationOfNeurostimulatorElectrodesIntoNeuromuscularComponent }, 
+      { "http://snomed.info/sct#133000", PercutaneousImplantationOfNeurostimulatorElectrodesIntoNeuromuscularComponent }, 
+      { "1337002", Colosigmoidostomy }, 
+      { "http://snomed.info/sct#1337002", Colosigmoidostomy }, 
+      { "1339004", RemovalOfImpactedFeces }, 
+      { "http://snomed.info/sct#1339004", RemovalOfImpactedFeces }, 
+      { "1347004", MedicalProcedureOnPalate }, 
+      { "http://snomed.info/sct#1347004", MedicalProcedureOnPalate }, 
+      { "135007", ArthrotomyOfWristJointWithExplorationAndBiopsy }, 
+      { "http://snomed.info/sct#135007", ArthrotomyOfWristJointWithExplorationAndBiopsy }, 
+      { "1352009", AnteriorSpinalRhizotomy }, 
+      { "http://snomed.info/sct#1352009", AnteriorSpinalRhizotomy }, 
+      { "1358008", AntiHumanGlobulinTestEnzymeTechniqueTiter }, 
+      { "http://snomed.info/sct#1358008", AntiHumanGlobulinTestEnzymeTechniqueTiter }, 
+      { "1366004", InhalationTherapyProcedure }, 
+      { "http://snomed.info/sct#1366004", InhalationTherapyProcedure }, 
+      { "1385001", EchographyScanBModeForFetalAgeDetermination }, 
+      { "http://snomed.info/sct#1385001", EchographyScanBModeForFetalAgeDetermination }, 
+      { "1390003", LaparoscopicAssistedSigmoidColectomy }, 
+      { "http://snomed.info/sct#1390003", LaparoscopicAssistedSigmoidColectomy }, 
+      { "1398005", DirectThrombectomyOfIliacVeinByLegIncision }, 
+      { "http://snomed.info/sct#1398005", DirectThrombectomyOfIliacVeinByLegIncision }, 
+      { "1399002", IncisionAndExplorationOfUreter }, 
+      { "http://snomed.info/sct#1399002", IncisionAndExplorationOfUreter }, 
+      { "1407007", ApplicationOfLongLegCastBraceType }, 
+      { "http://snomed.info/sct#1407007", ApplicationOfLongLegCastBraceType }, 
+      { "1410000", AnesthesiaForTympanotomy }, 
+      { "http://snomed.info/sct#1410000", AnesthesiaForTympanotomy }, 
+      { "1411001", OperationOnPapillaryMuscleOfHeart }, 
+      { "http://snomed.info/sct#1411001", OperationOnPapillaryMuscleOfHeart }, 
+      { "1413003", PenetratingKeratoplastyWithHomograft }, 
+      { "http://snomed.info/sct#1413003", PenetratingKeratoplastyWithHomograft }, 
+      { "1414009", AngiographyOfArteriovenousShunt }, 
+      { "http://snomed.info/sct#1414009", AngiographyOfArteriovenousShunt }, 
+      { "1417002", OperationOnFace }, 
+      { "http://snomed.info/sct#1417002", OperationOnFace }, 
+      { "142007", ExcisionOfTumorFromShoulderAreaDeepIntramuscular }, 
+      { "http://snomed.info/sct#142007", ExcisionOfTumorFromShoulderAreaDeepIntramuscular }, 
+      { "1431002", Fixation }, 
+      { "http://snomed.info/sct#1431002", Fixation }, 
+      { "1440003", RepairWithResectionRecession }, 
+      { "http://snomed.info/sct#1440003", RepairWithResectionRecession }, 
+      { "1449002", Epilation }, 
+      { "http://snomed.info/sct#1449002", Epilation }, 
+      { "1453000", BiofeedbackGalvanicSkinResponse }, 
+      { "http://snomed.info/sct#1453000", BiofeedbackGalvanicSkinResponse }, 
+      { "1455007", Cerclage }, 
+      { "http://snomed.info/sct#1455007", Cerclage }, 
+      { "1457004", TruncalVagotomyWithPyloroplastyAndGastrostomy }, 
+      { "http://snomed.info/sct#1457004", TruncalVagotomyWithPyloroplastyAndGastrostomy }, 
+      { "146005", RepairOfNonunionOfMetatarsalWithBoneGraft }, 
+      { "http://snomed.info/sct#146005", RepairOfNonunionOfMetatarsalWithBoneGraft }, 
+      { "1494008", OsmolarityMeasurement }, 
+      { "http://snomed.info/sct#1494008", OsmolarityMeasurement }, 
+      { "1500007", BilateralEpididymovasostomyWithAnastomosisOfEpididymisToVasDeferens }, 
+      { "http://snomed.info/sct#1500007", BilateralEpididymovasostomyWithAnastomosisOfEpididymisToVasDeferens }, 
+      { "1501006", AltemeierOperationPerinealRectalPullThrough }, 
+      { "http://snomed.info/sct#1501006", AltemeierOperationPerinealRectalPullThrough }, 
+      { "1505002", HospitalAdmissionForIsolation }, 
+      { "http://snomed.info/sct#1505002", HospitalAdmissionForIsolation }, 
+      { "1529009", AspirationOfSoftTissue }, 
+      { "http://snomed.info/sct#1529009", AspirationOfSoftTissue }, 
+      { "153001", CystourethroscopyWithResectionOfUreterocele }, 
+      { "http://snomed.info/sct#153001", CystourethroscopyWithResectionOfUreterocele }, 
+      { "1533002", Ureteroplication }, 
+      { "http://snomed.info/sct#1533002", Ureteroplication }, 
+      { "1550000", AmikacinMeasurement }, 
+      { "http://snomed.info/sct#1550000", AmikacinMeasurement }, 
+      { "1555005", BriefGroupPsychotherapy }, 
+      { "http://snomed.info/sct#1555005", BriefGroupPsychotherapy }, 
+      { "1559004", IL2Assay }, 
+      { "http://snomed.info/sct#1559004", IL2Assay }, 
+      { "1576000", RepairOfUteroentericFistula }, 
+      { "http://snomed.info/sct#1576000", RepairOfUteroentericFistula }, 
+      { "1577009", ImplantationOfCardiacSingleChamberDeviceReplacementRateResponsive }, 
+      { "http://snomed.info/sct#1577009", ImplantationOfCardiacSingleChamberDeviceReplacementRateResponsive }, 
+      { "1578004", ReconstructionOfOssiclesWithStapedectomy }, 
+      { "http://snomed.info/sct#1578004", ReconstructionOfOssiclesWithStapedectomy }, 
+      { "1583007", TractotomyOfMesencephalon }, 
+      { "http://snomed.info/sct#1583007", TractotomyOfMesencephalon }, 
+      { "1585000", LengtheningOfGastrocnemiusMuscle }, 
+      { "http://snomed.info/sct#1585000", LengtheningOfGastrocnemiusMuscle }, 
+      { "1596008", AnesthesiaForTotalElbowReplacement }, 
+      { "http://snomed.info/sct#1596008", AnesthesiaForTotalElbowReplacement }, 
+      { "1597004", SkeletalXRayOfAnkleAndFoot }, 
+      { "http://snomed.info/sct#1597004", SkeletalXRayOfAnkleAndFoot }, 
+      { "160007", RemovalOfForeignBodyOfTendonAndOrTendonSheath }, 
+      { "http://snomed.info/sct#160007", RemovalOfForeignBodyOfTendonAndOrTendonSheath }, 
+      { "1602006", SocialServiceInterviewWithPlanning }, 
+      { "http://snomed.info/sct#1602006", SocialServiceInterviewWithPlanning }, 
+      { "1614003", BilateralRepairOfInguinalHerniaDirect }, 
+      { "http://snomed.info/sct#1614003", BilateralRepairOfInguinalHerniaDirect }, 
+      { "1615002", RelineUpperPartialDentureChairside }, 
+      { "http://snomed.info/sct#1615002", RelineUpperPartialDentureChairside }, 
+      { "1616001", GalactosylceramideBetaGalactosidaseMeasurementLeukocytes }, 
+      { "http://snomed.info/sct#1616001", GalactosylceramideBetaGalactosidaseMeasurementLeukocytes }, 
+      { "1636000", InjectionOfSclerosingAgentInVaricoseVein }, 
+      { "http://snomed.info/sct#1636000", InjectionOfSclerosingAgentInVaricoseVein }, 
+      { "1638004", CineplastyWithCineplasticProsthesisOfExtremity }, 
+      { "http://snomed.info/sct#1638004", CineplastyWithCineplasticProsthesisOfExtremity }, 
+      { "1640009", HistoryAndPhysicalExaminationInsurance }, 
+      { "http://snomed.info/sct#1640009", HistoryAndPhysicalExaminationInsurance }, 
+      { "1645004", TransduodenalSphincterotomy }, 
+      { "http://snomed.info/sct#1645004", TransduodenalSphincterotomy }, 
+      { "1651009", ExcisionOfTendonSheath }, 
+      { "http://snomed.info/sct#1651009", ExcisionOfTendonSheath }, 
+      { "1653007", InternalFixationOfBoneWithoutFractureReduction }, 
+      { "http://snomed.info/sct#1653007", InternalFixationOfBoneWithoutFractureReduction }, 
+      { "166001", BehavioralTherapy }, 
+      { "http://snomed.info/sct#166001", BehavioralTherapy }, 
+      { "1669000", MakingOccupiedBed }, 
+      { "http://snomed.info/sct#1669000", MakingOccupiedBed }, 
+      { "1677001", HaagensenTest }, 
+      { "http://snomed.info/sct#1677001", HaagensenTest }, 
+      { "1678006", EndoscopicProcedureOfNerve }, 
+      { "http://snomed.info/sct#1678006", EndoscopicProcedureOfNerve }, 
+      { "1680000", SecondaryChemoprophylaxis }, 
+      { "http://snomed.info/sct#1680000", SecondaryChemoprophylaxis }, 
+      { "1683003", DirectClosureOfLacerationOfConjunctiva }, 
+      { "http://snomed.info/sct#1683003", DirectClosureOfLacerationOfConjunctiva }, 
+      { "1689004", LocalExcisionOfOvary }, 
+      { "http://snomed.info/sct#1689004", LocalExcisionOfOvary }, 
+      { "1691007", DrainageOfAbscessOfTonsil }, 
+      { "http://snomed.info/sct#1691007", DrainageOfAbscessOfTonsil }, 
+      { "1699009", SpecialDosimetry }, 
+      { "http://snomed.info/sct#1699009", SpecialDosimetry }, 
+      { "170009", SpecialPotencyDiskIdentificationVancomycinTest }, 
+      { "http://snomed.info/sct#170009", SpecialPotencyDiskIdentificationVancomycinTest }, 
+      { "1702002", LabialVeneerResinLaminateLaboratory }, 
+      { "http://snomed.info/sct#1702002", LabialVeneerResinLaminateLaboratory }, 
+      { "1704001", RepairOfCongenitalPseudoarthrosisOfTibia }, 
+      { "http://snomed.info/sct#1704001", RepairOfCongenitalPseudoarthrosisOfTibia }, 
+      { "1709006", BreastReconstructionBilateralWithBilateralPedicleTRAMFlaps }, 
+      { "http://snomed.info/sct#1709006", BreastReconstructionBilateralWithBilateralPedicleTRAMFlaps }, 
+      { "1712009", ImmunoglobulinTypingIgG }, 
+      { "http://snomed.info/sct#1712009", ImmunoglobulinTypingIgG }, 
+      { "1713004", HypothermiaTotalBodyInductionAndMaintenance }, 
+      { "http://snomed.info/sct#1713004", HypothermiaTotalBodyInductionAndMaintenance }, 
+      { "1730002", SutureOfSkinWoundOfHindfoot }, 
+      { "http://snomed.info/sct#1730002", SutureOfSkinWoundOfHindfoot }, 
+      { "174000", HarrisonRichardsonOperationOnVagina }, 
+      { "http://snomed.info/sct#174000", HarrisonRichardsonOperationOnVagina }, 
+      { "1746005", ScleralBucklingWithImplant }, 
+      { "http://snomed.info/sct#1746005", ScleralBucklingWithImplant }, 
+      { "1747001", ReplacementOfSkeletalMuscleStimulator }, 
+      { "http://snomed.info/sct#1747001", ReplacementOfSkeletalMuscleStimulator }, 
+      { "1753001", ResectionOfUvealTissue }, 
+      { "http://snomed.info/sct#1753001", ResectionOfUvealTissue }, 
+      { "1757000", ArthroscopyOfWristWithPartialSynovectomy }, 
+      { "http://snomed.info/sct#1757000", ArthroscopyOfWristWithPartialSynovectomy }, 
+      { "1759002", AssessmentOfNutritionalStatus }, 
+      { "http://snomed.info/sct#1759002", AssessmentOfNutritionalStatus }, 
+      { "176003", AnastomosisOfRectum }, 
+      { "http://snomed.info/sct#176003", AnastomosisOfRectum }, 
+      { "1770009", MitralValvotomy }, 
+      { "http://snomed.info/sct#1770009", MitralValvotomy }, 
+      { "1774000", NasopharyngealRehabilitation }, 
+      { "http://snomed.info/sct#1774000", NasopharyngealRehabilitation }, 
+      { "1775004", SubmaxillaryIncisionWithDrainage }, 
+      { "http://snomed.info/sct#1775004", SubmaxillaryIncisionWithDrainage }, 
+      { "1784004", FecalStercobilinQualitative }, 
+      { "http://snomed.info/sct#1784004", FecalStercobilinQualitative }, 
+      { "1787006", UltrasonicGuidanceForPericardiocentesis }, 
+      { "http://snomed.info/sct#1787006", UltrasonicGuidanceForPericardiocentesis }, 
+      { "1788001", BloodUnitCollectionForDirectedDonationDonor }, 
+      { "http://snomed.info/sct#1788001", BloodUnitCollectionForDirectedDonationDonor }, 
+      { "1801001", EndoscopicBiopsyOfDuodenum }, 
+      { "http://snomed.info/sct#1801001", EndoscopicBiopsyOfDuodenum }, 
+      { "1805005", SurgicalClosureOfStoma }, 
+      { "http://snomed.info/sct#1805005", SurgicalClosureOfStoma }, 
+      { "1811008", AspirationOfBursaOfHand }, 
+      { "http://snomed.info/sct#1811008", AspirationOfBursaOfHand }, 
+      { "1813006", CryotherapyOfGenitalWarts }, 
+      { "http://snomed.info/sct#1813006", CryotherapyOfGenitalWarts }, 
+      { "1820004", AlcoholMeasurementBreath }, 
+      { "http://snomed.info/sct#1820004", AlcoholMeasurementBreath }, 
+      { "1830008", OpenReductionOfOpenSacralFracture }, 
+      { "http://snomed.info/sct#1830008", OpenReductionOfOpenSacralFracture }, 
+      { "1836002", ExcisionOfDiverticulumOfVentricleOfHeart }, 
+      { "http://snomed.info/sct#1836002", ExcisionOfDiverticulumOfVentricleOfHeart }, 
+      { "1844002", PlicationOfLigament }, 
+      { "http://snomed.info/sct#1844002", PlicationOfLigament }, 
+      { "1854003", IncisionOfNose }, 
+      { "http://snomed.info/sct#1854003", IncisionOfNose }, 
+      { "1859008", RemovalOfForeignBodyFromTendonOfHand }, 
+      { "http://snomed.info/sct#1859008", RemovalOfForeignBodyFromTendonOfHand }, 
+      { "1861004", AnesthesiaForClosedProcedureOnHumerusAndElbow }, 
+      { "http://snomed.info/sct#1861004", AnesthesiaForClosedProcedureOnHumerusAndElbow }, 
+      { "1862006", ThoracicPhlebectomy }, 
+      { "http://snomed.info/sct#1862006", ThoracicPhlebectomy }, 
+      { "1866009", BilateralNephrectomy }, 
+      { "http://snomed.info/sct#1866009", BilateralNephrectomy }, 
+      { "1868005", RemovalOfForeignBodyFromBrain }, 
+      { "http://snomed.info/sct#1868005", RemovalOfForeignBodyFromBrain }, 
+      { "1870001", InsertionOfHaloDeviceOfSkullWithSynchronousSkeletalTraction }, 
+      { "http://snomed.info/sct#1870001", InsertionOfHaloDeviceOfSkullWithSynchronousSkeletalTraction }, 
+      { "1871002", RepairOfAneurysmOfCoronaryArtery }, 
+      { "http://snomed.info/sct#1871002", RepairOfAneurysmOfCoronaryArtery }, 
+      { "1872009", SutureOfMalePerineum }, 
+      { "http://snomed.info/sct#1872009", SutureOfMalePerineum }, 
+      { "1876007", RecessionOfPrognathicJaw }, 
+      { "http://snomed.info/sct#1876007", RecessionOfPrognathicJaw }, 
+      { "1879000", FluorescentAntigenMeasurement }, 
+      { "http://snomed.info/sct#1879000", FluorescentAntigenMeasurement }, 
+      { "1889001", PatientTransferInHospitalUnitToUnit }, 
+      { "http://snomed.info/sct#1889001", PatientTransferInHospitalUnitToUnit }, 
+      { "189009", ExcisionOfLesionOfArtery }, 
+      { "http://snomed.info/sct#189009", ExcisionOfLesionOfArtery }, 
+      { "1906007", InsertionOfProsthesisOrProstheticDeviceOfArmBioelectricOrCineplastic }, 
+      { "http://snomed.info/sct#1906007", InsertionOfProsthesisOrProstheticDeviceOfArmBioelectricOrCineplastic }, 
+      { "1907003", BifurcationOfBone }, 
+      { "http://snomed.info/sct#1907003", BifurcationOfBone }, 
+      { "1917008", PatientDischargeDeceasedMedicolegalCase }, 
+      { "http://snomed.info/sct#1917008", PatientDischargeDeceasedMedicolegalCase }, 
+      { "1924009", HepaticotomyWithDrainage }, 
+      { "http://snomed.info/sct#1924009", HepaticotomyWithDrainage }, 
+      { "1950008", DrainageOfAbscessOfNasalSeptum }, 
+      { "http://snomed.info/sct#1950008", DrainageOfAbscessOfNasalSeptum }, 
+      { "1958001", GraftingOfBoneOfThumbWithTransferOfSkinFlap }, 
+      { "http://snomed.info/sct#1958001", GraftingOfBoneOfThumbWithTransferOfSkinFlap }, 
+      { "1966005", CentralBlockAnesthesia }, 
+      { "http://snomed.info/sct#1966005", CentralBlockAnesthesia }, 
+      { "197002", MoldToYeastConversionTest }, 
+      { "http://snomed.info/sct#197002", MoldToYeastConversionTest }, 
+      { "1983001", TotalUrethrectomyIncludingCystostomyInFemale }, 
+      { "http://snomed.info/sct#1983001", TotalUrethrectomyIncludingCystostomyInFemale }, 
+      { "1995001", StrippingOfCerebralMeninges }, 
+      { "http://snomed.info/sct#1995001", StrippingOfCerebralMeninges }, 
+      { "1999007", PsychologicTest }, 
+      { "http://snomed.info/sct#1999007", PsychologicTest }, 
+      { "2002009", ConstructionOfSubcutaneousTunnelWithoutEsophagealAnastomosis }, 
+      { "http://snomed.info/sct#2002009", ConstructionOfSubcutaneousTunnelWithoutEsophagealAnastomosis }, 
+      { "2021001", InternalFixationOfRadiusAndUlnaWithoutFractureReduction }, 
+      { "http://snomed.info/sct#2021001", InternalFixationOfRadiusAndUlnaWithoutFractureReduction }, 
+      { "2051007", RedCellIronUtilizationStudy }, 
+      { "http://snomed.info/sct#2051007", RedCellIronUtilizationStudy }, 
+      { "2054004", BarbituratesMeasurementQuantitativeAndQualitative }, 
+      { "http://snomed.info/sct#2054004", BarbituratesMeasurementQuantitativeAndQualitative }, 
+      { "2067001", ImplantationOfElectromagneticHearingAid }, 
+      { "http://snomed.info/sct#2067001", ImplantationOfElectromagneticHearingAid }, 
+      { "2069003", DentalSubperiostealImplant }, 
+      { "http://snomed.info/sct#2069003", DentalSubperiostealImplant }, 
+      { "2078009", PunctureOfBursaOfHand }, 
+      { "http://snomed.info/sct#2078009", PunctureOfBursaOfHand }, 
+      { "2079001", ReimplantationOfAnomalousPulmonaryArtery }, 
+      { "http://snomed.info/sct#2079001", ReimplantationOfAnomalousPulmonaryArtery }, 
+      { "2080003", AngiectomyWithAnastomosisOfLowerLimbArtery }, 
+      { "http://snomed.info/sct#2080003", AngiectomyWithAnastomosisOfLowerLimbArtery }, 
+      { "2098004", OpenReductionOfOpenMandibularFractureWithExternalFixation }, 
+      { "http://snomed.info/sct#2098004", OpenReductionOfOpenMandibularFractureWithExternalFixation }, 
+      { "2115003", DentalProphylaxisChildren }, 
+      { "http://snomed.info/sct#2115003", DentalProphylaxisChildren }, 
+      { "2119009", RepairOfBloodVessel }, 
+      { "http://snomed.info/sct#2119009", RepairOfBloodVessel }, 
+      { "2127000", ReductionOfClosedSacralFracture }, 
+      { "http://snomed.info/sct#2127000", ReductionOfClosedSacralFracture }, 
+      { "2137005", ExcisionOfPericardialTumor }, 
+      { "http://snomed.info/sct#2137005", ExcisionOfPericardialTumor }, 
+      { "2153008", CardiacCatheterizationEducation }, 
+      { "http://snomed.info/sct#2153008", CardiacCatheterizationEducation }, 
+      { "2161003", OperationOnVulva }, 
+      { "http://snomed.info/sct#2161003", OperationOnVulva }, 
+      { "2164006", InjectionOfAorta }, 
+      { "http://snomed.info/sct#2164006", InjectionOfAorta }, 
+      { "2166008", BicuspidizationOfAorticValve }, 
+      { "http://snomed.info/sct#2166008", BicuspidizationOfAorticValve }, 
+      { "2171001", ExcisionOfTonsilTags }, 
+      { "http://snomed.info/sct#2171001", ExcisionOfTonsilTags }, 
+      { "2178007", Ureterocentesis }, 
+      { "http://snomed.info/sct#2178007", Ureterocentesis }, 
+      { "2181002", OperationForBoneInjuryOfTarsalsAndMetatarsals }, 
+      { "http://snomed.info/sct#2181002", OperationForBoneInjuryOfTarsalsAndMetatarsals }, 
+      { "2188008", SutureOfTendonToSkeletalAttachment }, 
+      { "http://snomed.info/sct#2188008", SutureOfTendonToSkeletalAttachment }, 
+      { "2193006", RepairOfRupturedAneurysmWithGraftOfCeliacArtery }, 
+      { "http://snomed.info/sct#2193006", RepairOfRupturedAneurysmWithGraftOfCeliacArtery }, 
+      { "2196003", GasLiquidChromatographyElectronCaptureType }, 
+      { "http://snomed.info/sct#2196003", GasLiquidChromatographyElectronCaptureType }, 
+      { "2199005", ExcisionOfLesionOfCulDeSac }, 
+      { "http://snomed.info/sct#2199005", ExcisionOfLesionOfCulDeSac }, 
+      { "2214008", CuretteTestOfSkin }, 
+      { "http://snomed.info/sct#2214008", CuretteTestOfSkin }, 
+      { "2220009", ComplementComponentAssay }, 
+      { "http://snomed.info/sct#2220009", ComplementComponentAssay }, 
+      { "2225004", SensititerSystemTest }, 
+      { "http://snomed.info/sct#2225004", SensititerSystemTest }, 
+      { "2234009", Proctosigmoidopexy }, 
+      { "http://snomed.info/sct#2234009", Proctosigmoidopexy }, 
+      { "2238007", StoneOperationAnoplasty }, 
+      { "http://snomed.info/sct#2238007", StoneOperationAnoplasty }, 
+      { "2242005", ReconstructionOfEyelid }, 
+      { "http://snomed.info/sct#2242005", ReconstructionOfEyelid }, 
+      { "2244006", ArthroscopyOfWristWithInternalFixationForInstability }, 
+      { "http://snomed.info/sct#2244006", ArthroscopyOfWristWithInternalFixationForInstability }, 
+      { "2250001", ResectionOfAscendingAortaWithAnastomosis }, 
+      { "http://snomed.info/sct#2250001", ResectionOfAscendingAortaWithAnastomosis }, 
+      { "2252009", HospitalAdmissionUrgent48Hours }, 
+      { "http://snomed.info/sct#2252009", HospitalAdmissionUrgent48Hours }, 
+      { "2266004", VenographyOfAdrenalBilateral }, 
+      { "http://snomed.info/sct#2266004", VenographyOfAdrenalBilateral }, 
+      { "2267008", ChangingTracheostomyTube }, 
+      { "http://snomed.info/sct#2267008", ChangingTracheostomyTube }, 
+      { "2270007", RepairOfCleftHand }, 
+      { "http://snomed.info/sct#2270007", RepairOfCleftHand }, 
+      { "2276001", ExplorationOfPoplitealArtery }, 
+      { "http://snomed.info/sct#2276001", ExplorationOfPoplitealArtery }, 
+      { "2278000", UrinalysisAutomated }, 
+      { "http://snomed.info/sct#2278000", UrinalysisAutomated }, 
+      { "2279008", AntibodyDetectionRBCEnzyme1StageTechniqueIncludingAntiHumanGlobulin }, 
+      { "http://snomed.info/sct#2279008", AntibodyDetectionRBCEnzyme1StageTechniqueIncludingAntiHumanGlobulin }, 
+      { "2290003", MicrobialCultureAnaerobicInitialIsolation }, 
+      { "http://snomed.info/sct#2290003", MicrobialCultureAnaerobicInitialIsolation }, 
+      { "230009", MillerOperationUrethrovesicalSuspension }, 
+      { "http://snomed.info/sct#230009", MillerOperationUrethrovesicalSuspension }, 
+      { "2315006", OperationOnCerebralMeninges }, 
+      { "http://snomed.info/sct#2315006", OperationOnCerebralMeninges }, 
+      { "2318008", AnesthesiaForCastProcedureOnForearmWristOrHand }, 
+      { "http://snomed.info/sct#2318008", AnesthesiaForCastProcedureOnForearmWristOrHand }, 
+      { "2321005", DeliveryByRitgenManeuver }, 
+      { "http://snomed.info/sct#2321005", DeliveryByRitgenManeuver }, 
+      { "2322003", SutureOfRecentWoundOfEyelidDirectClosureFullThickness }, 
+      { "http://snomed.info/sct#2322003", SutureOfRecentWoundOfEyelidDirectClosureFullThickness }, 
+      { "2337004", AdductorTenotomyOfHip }, 
+      { "http://snomed.info/sct#2337004", AdductorTenotomyOfHip }, 
+      { "2344008", ComplicatedCystorrhaphy }, 
+      { "http://snomed.info/sct#2344008", ComplicatedCystorrhaphy }, 
+      { "2347001", DiagnosticModelConstruction }, 
+      { "http://snomed.info/sct#2347001", DiagnosticModelConstruction }, 
+      { "2364003", RadicalResectionOfTumorOfSoftTissueOfWristArea }, 
+      { "http://snomed.info/sct#2364003", RadicalResectionOfTumorOfSoftTissueOfWristArea }, 
+      { "2371008", TympanoplastyTypeIIWithGraftAgainstIncusOrMalleus }, 
+      { "http://snomed.info/sct#2371008", TympanoplastyTypeIIWithGraftAgainstIncusOrMalleus }, 
+      { "2373006", BuffyCoatSmearEvaluation }, 
+      { "http://snomed.info/sct#2373006", BuffyCoatSmearEvaluation }, 
+      { "2382000", ApplicationOfManualOrElectricBreastPump }, 
+      { "http://snomed.info/sct#2382000", ApplicationOfManualOrElectricBreastPump }, 
+      { "2386002", ReductionOfClosedPatellarDislocation }, 
+      { "http://snomed.info/sct#2386002", ReductionOfClosedPatellarDislocation }, 
+      { "2393003", LigationOfVeinOfLowerLimb }, 
+      { "http://snomed.info/sct#2393003", LigationOfVeinOfLowerLimb }, 
+      { "2406000", PeriodonticDentalConsultationAndReport }, 
+      { "http://snomed.info/sct#2406000", PeriodonticDentalConsultationAndReport }, 
+      { "2407009", ExcisionOfMediastinalTumor }, 
+      { "http://snomed.info/sct#2407009", ExcisionOfMediastinalTumor }, 
+      { "2408004", HexosaminidaseAAndTotalHexosaminidaseMeasurementSerum }, 
+      { "http://snomed.info/sct#2408004", HexosaminidaseAAndTotalHexosaminidaseMeasurementSerum }, 
+      { "2409007", ReattachmentOfExtremityOfFoot }, 
+      { "http://snomed.info/sct#2409007", ReattachmentOfExtremityOfFoot }, 
+      { "2425002", EpsteinBarrVirusSerologicTest }, 
+      { "http://snomed.info/sct#2425002", EpsteinBarrVirusSerologicTest }, 
+      { "243009", ReplacementOfCerebralVentricularTube }, 
+      { "http://snomed.info/sct#243009", ReplacementOfCerebralVentricularTube }, 
+      { "2442008", IncisionOfLacrimalCanaliculus }, 
+      { "http://snomed.info/sct#2442008", IncisionOfLacrimalCanaliculus }, 
+      { "2448007", CellCountOfSynovialFluidWithDifferentialCount }, 
+      { "http://snomed.info/sct#2448007", CellCountOfSynovialFluidWithDifferentialCount }, 
+      { "245002", DivisionOfNerveGanglion }, 
+      { "http://snomed.info/sct#245002", DivisionOfNerveGanglion }, 
+      { "2455009", RevisionOfLumbosubarachnoidShunt }, 
+      { "http://snomed.info/sct#2455009", RevisionOfLumbosubarachnoidShunt }, 
+      { "2457001", BlindRehabilitationTherapy }, 
+      { "http://snomed.info/sct#2457001", BlindRehabilitationTherapy }, 
+      { "2458006", EducationalTherapy }, 
+      { "http://snomed.info/sct#2458006", EducationalTherapy }, 
+      { "2459003", DestructiveProcedureOfArteryOfUpperExtremity }, 
+      { "http://snomed.info/sct#2459003", DestructiveProcedureOfArteryOfUpperExtremity }, 
+      { "2461007", TennisElbowTest }, 
+      { "http://snomed.info/sct#2461007", TennisElbowTest }, 
+      { "2474001", RepairOfMalunionOfMetatarsalBones }, 
+      { "http://snomed.info/sct#2474001", RepairOfMalunionOfMetatarsalBones }, 
+      { "2475000", UrineSpecimenCollection24Hours }, 
+      { "http://snomed.info/sct#2475000", UrineSpecimenCollection24Hours }, 
+      { "2480009", DebridementOfSkinSubcutaneousTissueMuscleAndBone }, 
+      { "http://snomed.info/sct#2480009", DebridementOfSkinSubcutaneousTissueMuscleAndBone }, 
+      { "2486003", DestructionOfTissueOfBreast }, 
+      { "http://snomed.info/sct#2486003", DestructionOfTissueOfBreast }, 
+      { "2488002", PrescriptionFittingAndDispensingOfContactLens }, 
+      { "http://snomed.info/sct#2488002", PrescriptionFittingAndDispensingOfContactLens }, 
+      { "2494005", NursingConference }, 
+      { "http://snomed.info/sct#2494005", NursingConference }, 
+      { "2498008", RebaseOfUpperPartialDenture }, 
+      { "http://snomed.info/sct#2498008", RebaseOfUpperPartialDenture }, 
+      { "2507007", VAL5QuoteNucleotidaseMeasurement }, 
+      { "http://snomed.info/sct#2507007", VAL5QuoteNucleotidaseMeasurement }, 
+      { "2508002", RetrogradeUrographyWithKUB }, 
+      { "http://snomed.info/sct#2508002", RetrogradeUrographyWithKUB }, 
+      { "2514009", ReductionOfClosedHumeralSupracondylarFractureWithManipulationAndTraction }, 
+      { "http://snomed.info/sct#2514009", ReductionOfClosedHumeralSupracondylarFractureWithManipulationAndTraction }, 
+      { "2517002", StrokeRehabilitation }, 
+      { "http://snomed.info/sct#2517002", StrokeRehabilitation }, 
+      { "2530001", ChiropracticVisit }, 
+      { "http://snomed.info/sct#2530001", ChiropracticVisit }, 
+      { "2531002", MononuclearCellFunctionAssay }, 
+      { "http://snomed.info/sct#2531002", MononuclearCellFunctionAssay }, 
+      { "2535006", Pulpectomy }, 
+      { "http://snomed.info/sct#2535006", Pulpectomy }, 
+      { "2536007", InjectionOfMedicationInAnteriorChamberOfEye }, 
+      { "http://snomed.info/sct#2536007", InjectionOfMedicationInAnteriorChamberOfEye }, 
+      { "2547000", ExcisionOfKeloid }, 
+      { "http://snomed.info/sct#2547000", ExcisionOfKeloid }, 
+      { "2552005", IncisionOfCerebralSubarachnoidSpace }, 
+      { "http://snomed.info/sct#2552005", IncisionOfCerebralSubarachnoidSpace }, 
+      { "2564002", CreationOfLumbarShuntIncludingLaminectomy }, 
+      { "http://snomed.info/sct#2564002", CreationOfLumbarShuntIncludingLaminectomy }, 
+      { "2566000", OsteoplastyOfRadius }, 
+      { "http://snomed.info/sct#2566000", OsteoplastyOfRadius }, 
+      { "2567009", ResectionOfRibByTransaxillaryApproach }, 
+      { "http://snomed.info/sct#2567009", ResectionOfRibByTransaxillaryApproach }, 
+      { "2580007", TransplantOfHairFolliclesToScalp }, 
+      { "http://snomed.info/sct#2580007", TransplantOfHairFolliclesToScalp }, 
+      { "2598006", OpenHeartSurgery }, 
+      { "http://snomed.info/sct#2598006", OpenHeartSurgery }, 
+      { "2601001", RemovalOfBoneFlapOfSkull }, 
+      { "http://snomed.info/sct#2601001", RemovalOfBoneFlapOfSkull }, 
+      { "2607002", OperationOnUterusSupportingStructures }, 
+      { "http://snomed.info/sct#2607002", OperationOnUterusSupportingStructures }, 
+      { "2613006", ImplantationOfProsthesisOrProstheticDeviceOfJointOfHand }, 
+      { "http://snomed.info/sct#2613006", ImplantationOfProsthesisOrProstheticDeviceOfJointOfHand }, 
+      { "2614000", RemovalOfLigatureFromFallopianTube }, 
+      { "http://snomed.info/sct#2614000", RemovalOfLigatureFromFallopianTube }, 
+      { "2616003", RepairOfBifidDigitOfHand }, 
+      { "http://snomed.info/sct#2616003", RepairOfBifidDigitOfHand }, 
+      { "2619005", PsychiatricInterpretationToFamilyOrParentsOfPatient }, 
+      { "http://snomed.info/sct#2619005", PsychiatricInterpretationToFamilyOrParentsOfPatient }, 
+      { "262007", PercutaneousAspirationOfRenalPelvis }, 
+      { "http://snomed.info/sct#262007", PercutaneousAspirationOfRenalPelvis }, 
+      { "2629003", IntracranialCerebralPerfusionPressureMonitoring }, 
+      { "http://snomed.info/sct#2629003", IntracranialCerebralPerfusionPressureMonitoring }, 
+      { "2632000", IncisionAndDrainageOfInfectedBursaOfUpperArm }, 
+      { "http://snomed.info/sct#2632000", IncisionAndDrainageOfInfectedBursaOfUpperArm }, 
+      { "2642003", PrefabricatedPostAndCoreInAdditionToCrown }, 
+      { "http://snomed.info/sct#2642003", PrefabricatedPostAndCoreInAdditionToCrown }, 
+      { "2643008", LigationOfVaricoseVeinOfHeadAndNeck }, 
+      { "http://snomed.info/sct#2643008", LigationOfVaricoseVeinOfHeadAndNeck }, 
+      { "2644002", CauterizationOfLiver }, 
+      { "http://snomed.info/sct#2644002", CauterizationOfLiver }, 
+      { "2645001", IntelligenceTestWB1 }, 
+      { "http://snomed.info/sct#2645001", IntelligenceTestWB1 }, 
+      { "2646000", IncisionAndExplorationOfVasDeferens }, 
+      { "http://snomed.info/sct#2646000", IncisionAndExplorationOfVasDeferens }, 
+      { "2658000", SocialServiceInterviewOfPatient }, 
+      { "http://snomed.info/sct#2658000", SocialServiceInterviewOfPatient }, 
+      { "2659008", SutureOfLigamentOfLowerExtremity }, 
+      { "http://snomed.info/sct#2659008", SutureOfLigamentOfLowerExtremity }, 
+      { "2668005", RecementationOfSpaceMaintainer }, 
+      { "http://snomed.info/sct#2668005", RecementationOfSpaceMaintainer }, 
+      { "2670001", DiagnosticProcedureOnCornea }, 
+      { "http://snomed.info/sct#2670001", DiagnosticProcedureOnCornea }, 
+      { "267001", AnalFistulectomyMultiple }, 
+      { "http://snomed.info/sct#267001", AnalFistulectomyMultiple }, 
+      { "2673004", IncisionAndDrainageOfMasticatorSpaceByExtraoralApproach }, 
+      { "http://snomed.info/sct#2673004", IncisionAndDrainageOfMasticatorSpaceByExtraoralApproach }, 
+      { "2677003", Stripping }, 
+      { "http://snomed.info/sct#2677003", Stripping }, 
+      { "2690005", MagneticResonanceImagingOfPelvis }, 
+      { "http://snomed.info/sct#2690005", MagneticResonanceImagingOfPelvis }, 
+      { "2693007", StoolFatQuantitativeMeasurement }, 
+      { "http://snomed.info/sct#2693007", StoolFatQuantitativeMeasurement }, 
+      { "2696004", HepaticVenographyWithHemodynamicEvaluation }, 
+      { "http://snomed.info/sct#2696004", HepaticVenographyWithHemodynamicEvaluation }, 
+      { "2697008", StrippingAndLigationOfSaphenousVein }, 
+      { "http://snomed.info/sct#2697008", StrippingAndLigationOfSaphenousVein }, 
+      { "2716009", DermalFatFasciaGraft }, 
+      { "http://snomed.info/sct#2716009", DermalFatFasciaGraft }, 
+      { "2722000", IL3Assay }, 
+      { "http://snomed.info/sct#2722000", IL3Assay }, 
+      { "2731000", SerologicTestForInfluenzaVirusA }, 
+      { "http://snomed.info/sct#2731000", SerologicTestForInfluenzaVirusA }, 
+      { "2732007", RecessionOfTendonOfHand }, 
+      { "http://snomed.info/sct#2732007", RecessionOfTendonOfHand }, 
+      { "2737001", ExploratoryCraniotomyInfratentorial }, 
+      { "http://snomed.info/sct#2737001", ExploratoryCraniotomyInfratentorial }, 
+      { "2742009", DestructionOfBartholinQuoteSGlandOrCyst }, 
+      { "http://snomed.info/sct#2742009", DestructionOfBartholinQuoteSGlandOrCyst }, 
+      { "2743004", OperativeEndoscopyOfIleum }, 
+      { "http://snomed.info/sct#2743004", OperativeEndoscopyOfIleum }, 
+      { "2745006", Omentopexy }, 
+      { "http://snomed.info/sct#2745006", Omentopexy }, 
+      { "2752008", Incudopexy }, 
+      { "http://snomed.info/sct#2752008", Incudopexy }, 
+      { "2780005", OsteoplastyOfFacialBones }, 
+      { "http://snomed.info/sct#2780005", OsteoplastyOfFacialBones }, 
+      { "2794006", CauterizationOfNavel }, 
+      { "http://snomed.info/sct#2794006", CauterizationOfNavel }, 
+      { "2802005", ManualDilationAndStretching }, 
+      { "http://snomed.info/sct#2802005", ManualDilationAndStretching }, 
+      { "2811005", CineradiographyOfPharynx }, 
+      { "http://snomed.info/sct#2811005", CineradiographyOfPharynx }, 
+      { "2813008", Nephroureterocystectomy }, 
+      { "http://snomed.info/sct#2813008", Nephroureterocystectomy }, 
+      { "2837008", TranspositionOfUlnarNerveAtElbow }, 
+      { "http://snomed.info/sct#2837008", TranspositionOfUlnarNerveAtElbow }, 
+      { "2842000", GasChromatographyMeasurement }, 
+      { "http://snomed.info/sct#2842000", GasChromatographyMeasurement }, 
+      { "2843005", RevisionOfUrinaryConduit }, 
+      { "http://snomed.info/sct#2843005", RevisionOfUrinaryConduit }, 
+      { "2847006", CervicalMyelography }, 
+      { "http://snomed.info/sct#2847006", CervicalMyelography }, 
+      { "285008", IncisionAndDrainageOfVulva }, 
+      { "http://snomed.info/sct#285008", IncisionAndDrainageOfVulva }, 
+      { "2851008", ArthrotomyForSynovectomyOfSternoclavicularJoint }, 
+      { "http://snomed.info/sct#2851008", ArthrotomyForSynovectomyOfSternoclavicularJoint }, 
+      { "2854000", BursectomyOfHand }, 
+      { "http://snomed.info/sct#2854000", BursectomyOfHand }, 
+      { "2857007", Pinealectomy }, 
+      { "http://snomed.info/sct#2857007", Pinealectomy }, 
+      { "2866006", ObliterationOfLymphaticStructure }, 
+      { "http://snomed.info/sct#2866006", ObliterationOfLymphaticStructure }, 
+      { "2875008", ImplantationOfProsthesisOrProstheticDeviceOfElbowJoint }, 
+      { "http://snomed.info/sct#2875008", ImplantationOfProsthesisOrProstheticDeviceOfElbowJoint }, 
+      { "2876009", HospitalAdmissionTypeUnclassifiedExplainByReport }, 
+      { "http://snomed.info/sct#2876009", HospitalAdmissionTypeUnclassifiedExplainByReport }, 
+      { "2885009", IntradermalSkinTest }, 
+      { "http://snomed.info/sct#2885009", IntradermalSkinTest }, 
+      { "2891006", ArthroscopyOfElbowWithPartialSynovectomy }, 
+      { "http://snomed.info/sct#2891006", ArthroscopyOfElbowWithPartialSynovectomy }, 
+      { "2898000", DNAAnalysisAntenatalBlood }, 
+      { "http://snomed.info/sct#2898000", DNAAnalysisAntenatalBlood }, 
+      { "2903001", DiagnosticProcedureOnAnteriorChamberOfEye }, 
+      { "http://snomed.info/sct#2903001", DiagnosticProcedureOnAnteriorChamberOfEye }, 
+      { "2908005", DestructionOfHemorrhoidsByCryotherapy }, 
+      { "http://snomed.info/sct#2908005", DestructionOfHemorrhoidsByCryotherapy }, 
+      { "2914003", AnteriorSclerotomy }, 
+      { "http://snomed.info/sct#2914003", AnteriorSclerotomy }, 
+      { "2915002", SutureOfCapsuleOfAnkle }, 
+      { "http://snomed.info/sct#2915002", SutureOfCapsuleOfAnkle }, 
+      { "2933008", Pneumogynecography }, 
+      { "http://snomed.info/sct#2933008", Pneumogynecography }, 
+      { "294002", ExcisionalBiopsyOfJointStructureOfSpine }, 
+      { "http://snomed.info/sct#294002", ExcisionalBiopsyOfJointStructureOfSpine }, 
+      { "2945004", SuprapubicDiverticulectomyOfBladder }, 
+      { "http://snomed.info/sct#2945004", SuprapubicDiverticulectomyOfBladder }, 
+      { "2947007", TherapeuticCompoundMeasurement }, 
+      { "http://snomed.info/sct#2947007", TherapeuticCompoundMeasurement }, 
+      { "295001", NonexcisionalDestructionOfCystOfCiliaryBody }, 
+      { "http://snomed.info/sct#295001", NonexcisionalDestructionOfCystOfCiliaryBody }, 
+      { "2960001", RepairOfFistulaOfCervix }, 
+      { "http://snomed.info/sct#2960001", RepairOfFistulaOfCervix }, 
+      { "2968008", CraniectomyWithTreatmentOfPenetratingWoundOfBrain }, 
+      { "http://snomed.info/sct#2968008", CraniectomyWithTreatmentOfPenetratingWoundOfBrain }, 
+      { "2970004", MetacarpalLengtheningAndTransferOfLocalFlap }, 
+      { "http://snomed.info/sct#2970004", MetacarpalLengtheningAndTransferOfLocalFlap }, 
+      { "2971000", ClosureOfUrethrovaginalFistula }, 
+      { "http://snomed.info/sct#2971000", ClosureOfUrethrovaginalFistula }, 
+      { "2977001", ThrombectomyOfLowerLimbVein }, 
+      { "http://snomed.info/sct#2977001", ThrombectomyOfLowerLimbVein }, 
+      { "3001009", TotalLobectomyWithBronchoplasty }, 
+      { "http://snomed.info/sct#3001009", TotalLobectomyWithBronchoplasty }, 
+      { "3010001", RemovalOfSilasticTubesFromEar }, 
+      { "http://snomed.info/sct#3010001", RemovalOfSilasticTubesFromEar }, 
+      { "3016007", RemovalOfCrutchfieldTongsFromSkull }, 
+      { "http://snomed.info/sct#3016007", RemovalOfCrutchfieldTongsFromSkull }, 
+      { "3025001", CalcitoninMeasurement }, 
+      { "http://snomed.info/sct#3025001", CalcitoninMeasurement }, 
+      { "3026000", TibiotalarArthrodesis }, 
+      { "http://snomed.info/sct#3026000", TibiotalarArthrodesis }, 
+      { "3029007", PeripheralNervousSystemDiseaseRehabilitation }, 
+      { "http://snomed.info/sct#3029007", PeripheralNervousSystemDiseaseRehabilitation }, 
+      { "3041000", RepairOfStomach }, 
+      { "http://snomed.info/sct#3041000", RepairOfStomach }, 
+      { "3047001", KowaFundusPhotography }, 
+      { "http://snomed.info/sct#3047001", KowaFundusPhotography }, 
+      { "3060007", ForequarterAmputationRight }, 
+      { "http://snomed.info/sct#3060007", ForequarterAmputationRight }, 
+      { "306005", EchographyOfKidney }, 
+      { "http://snomed.info/sct#306005", EchographyOfKidney }, 
+      { "3061006", CompleteAvulsionOfNail }, 
+      { "http://snomed.info/sct#3061006", CompleteAvulsionOfNail }, 
+      { "3063009", GastroscopyThroughArtificialStoma }, 
+      { "http://snomed.info/sct#3063009", GastroscopyThroughArtificialStoma }, 
+      { "3075004", NonoperativeRemovalOfProsthesisOfBileDuct }, 
+      { "http://snomed.info/sct#3075004", NonoperativeRemovalOfProsthesisOfBileDuct }, 
+      { "3078002", EmbolectomyWithCatheterOfRenalArteryByAbdominalIncision }, 
+      { "http://snomed.info/sct#3078002", EmbolectomyWithCatheterOfRenalArteryByAbdominalIncision }, 
+      { "3083005", RemovalOfDeviceFromThorax }, 
+      { "http://snomed.info/sct#3083005", RemovalOfDeviceFromThorax }, 
+      { "3088001", AnesthesiaForEndoscopicProcedureOnUpperExtremity }, 
+      { "http://snomed.info/sct#3088001", AnesthesiaForEndoscopicProcedureOnUpperExtremity }, 
+      { "3090000", AneurysmectomyWithGraftReplacementOfLowerLimbArtery }, 
+      { "http://snomed.info/sct#3090000", AneurysmectomyWithGraftReplacementOfLowerLimbArtery }, 
+      { "3112006", RestraintRemoval }, 
+      { "http://snomed.info/sct#3112006", RestraintRemoval }, 
+      { "3116009", BloodCoagulationPanel }, 
+      { "http://snomed.info/sct#3116009", BloodCoagulationPanel }, 
+      { "3130004", MonitoringOfCardiacOutputByECG }, 
+      { "http://snomed.info/sct#3130004", MonitoringOfCardiacOutputByECG }, 
+      { "3133002", PatientDischargeDeceasedAutopsy }, 
+      { "http://snomed.info/sct#3133002", PatientDischargeDeceasedAutopsy }, 
+      { "3137001", Reimplantation }, 
+      { "http://snomed.info/sct#3137001", Reimplantation }, 
+      { "3143004", VisualFieldExaminationAndEvaluationIntermediate }, 
+      { "http://snomed.info/sct#3143004", VisualFieldExaminationAndEvaluationIntermediate }, 
+      { "316002", PartialDacryocystectomy }, 
+      { "http://snomed.info/sct#316002", PartialDacryocystectomy }, 
+      { "3162001", GadoliniumMeasurement }, 
+      { "http://snomed.info/sct#3162001", GadoliniumMeasurement }, 
+      { "3164000", OpenReductionOfClosedMandibularFractureWithInterdentalFixation }, 
+      { "http://snomed.info/sct#3164000", OpenReductionOfClosedMandibularFractureWithInterdentalFixation }, 
+      { "3165004", IrrigationOfMuscleOfHand }, 
+      { "http://snomed.info/sct#3165004", IrrigationOfMuscleOfHand }, 
+      { "3166003", RepairOfSalivaryGlandFistula }, 
+      { "http://snomed.info/sct#3166003", RepairOfSalivaryGlandFistula }, 
+      { "3177009", InternalObstetricalVersion }, 
+      { "http://snomed.info/sct#3177009", InternalObstetricalVersion }, 
+      { "3183007", ClosureOfColostomy }, 
+      { "http://snomed.info/sct#3183007", ClosureOfColostomy }, 
+      { "3186004", ExcisionOfSkeneQuoteSGland }, 
+      { "http://snomed.info/sct#3186004", ExcisionOfSkeneQuoteSGland }, 
+      { "3190002", EpilationByForceps }, 
+      { "http://snomed.info/sct#3190002", EpilationByForceps }, 
+      { "3204007", DestructiveProcedureOfNerve }, 
+      { "http://snomed.info/sct#3204007", DestructiveProcedureOfNerve }, 
+      { "3241008", CorrectionOfChordeeWithMobilizationOfUrethra }, 
+      { "http://snomed.info/sct#3241008", CorrectionOfChordeeWithMobilizationOfUrethra }, 
+      { "3249005", SurgicalConstructionOfFiltrationBleb }, 
+      { "http://snomed.info/sct#3249005", SurgicalConstructionOfFiltrationBleb }, 
+      { "3251009", MayoOperationHerniorrhaphy }, 
+      { "http://snomed.info/sct#3251009", MayoOperationHerniorrhaphy }, 
+      { "3256004", CervicalLymphangiogram }, 
+      { "http://snomed.info/sct#3256004", CervicalLymphangiogram }, 
+      { "3257008", EmptyAndMeasurePeritonealDialysisFluid }, 
+      { "http://snomed.info/sct#3257008", EmptyAndMeasurePeritonealDialysisFluid }, 
+      { "3258003", ArteriographyOfCerebralArteries }, 
+      { "http://snomed.info/sct#3258003", ArteriographyOfCerebralArteries }, 
+      { "3268008", TransplantationOfTissueOfPelvicRegion }, 
+      { "http://snomed.info/sct#3268008", TransplantationOfTissueOfPelvicRegion }, 
+      { "3270004", ImplantationOfNeurostimulatorInSpine }, 
+      { "http://snomed.info/sct#3270004", ImplantationOfNeurostimulatorInSpine }, 
+      { "3278006", LysisOfAdhesionsOfBursaOfHand }, 
+      { "http://snomed.info/sct#3278006", LysisOfAdhesionsOfBursaOfHand }, 
+      { "3287002", Cholecystogastrostomy }, 
+      { "http://snomed.info/sct#3287002", Cholecystogastrostomy }, 
+      { "3320000", Autotransfusion }, 
+      { "http://snomed.info/sct#3320000", Autotransfusion }, 
+      { "3324009", LaserBeamPhotocoagulation }, 
+      { "http://snomed.info/sct#3324009", LaserBeamPhotocoagulation }, 
+      { "3326006", ExcisionOfBunionette }, 
+      { "http://snomed.info/sct#3326006", ExcisionOfBunionette }, 
+      { "3328007", IncisionOfVeinOfHeadAndNeck }, 
+      { "http://snomed.info/sct#3328007", IncisionOfVeinOfHeadAndNeck }, 
+      { "3333006", ApplicationOfShortArmSplintForearmToHandStatic }, 
+      { "http://snomed.info/sct#3333006", ApplicationOfShortArmSplintForearmToHandStatic }, 
+      { "3338002", OpenReductionOfOpenRadialShaftFracture }, 
+      { "http://snomed.info/sct#3338002", OpenReductionOfOpenRadialShaftFracture }, 
+      { "334003", PanorexExaminationOfMandible }, 
+      { "http://snomed.info/sct#334003", PanorexExaminationOfMandible }, 
+      { "3352000", ParathyroidHormoneMeasurement }, 
+      { "http://snomed.info/sct#3352000", ParathyroidHormoneMeasurement }, 
+      { "3357006", IronKineticsStudy }, 
+      { "http://snomed.info/sct#3357006", IronKineticsStudy }, 
+      { "3360004", AnastomosisOfBileDucts }, 
+      { "http://snomed.info/sct#3360004", AnastomosisOfBileDucts }, 
+      { "3390006", VerificationRoutine }, 
+      { "http://snomed.info/sct#3390006", VerificationRoutine }, 
+      { "3399007", ReductionOfTorsionOfOmentum }, 
+      { "http://snomed.info/sct#3399007", ReductionOfTorsionOfOmentum }, 
+      { "3407002", CreationOfLesionOfSpinalCordByPercutaneousMethod }, 
+      { "http://snomed.info/sct#3407002", CreationOfLesionOfSpinalCordByPercutaneousMethod }, 
+      { "3413006", BloodCellMorphology }, 
+      { "http://snomed.info/sct#3413006", BloodCellMorphology }, 
+      { "3418002", ChondrectomyOfSpine }, 
+      { "http://snomed.info/sct#3418002", ChondrectomyOfSpine }, 
+      { "342002", AmobarbitalInterview }, 
+      { "http://snomed.info/sct#342002", AmobarbitalInterview }, 
+      { "3432000", PreventiveDentalService }, 
+      { "http://snomed.info/sct#3432000", PreventiveDentalService }, 
+      { "3443008", PulpCapDirectExcludingFinalRestoration }, 
+      { "http://snomed.info/sct#3443008", PulpCapDirectExcludingFinalRestoration }, 
+      { "3448004", FixationOfContralateralTestis }, 
+      { "http://snomed.info/sct#3448004", FixationOfContralateralTestis }, 
+      { "3450007", LymphocytesTAndBCellEvaluation }, 
+      { "http://snomed.info/sct#3450007", LymphocytesTAndBCellEvaluation }, 
+      { "3457005", PatientReferral }, 
+      { "http://snomed.info/sct#3457005", PatientReferral }, 
+      { "346004", PeriodontalScalingAndRootPlaningPerQuadrant }, 
+      { "http://snomed.info/sct#346004", PeriodontalScalingAndRootPlaningPerQuadrant }, 
+      { "3479000", RemovalOfHeartAssistSystemWithReplacement }, 
+      { "http://snomed.info/sct#3479000", RemovalOfHeartAssistSystemWithReplacement }, 
+      { "348003", RadionuclideDynamicFunctionStudy }, 
+      { "http://snomed.info/sct#348003", RadionuclideDynamicFunctionStudy }, 
+      { "3498003", TotalExcisionOfPituitaryGlandByTranssphenoidalApproach }, 
+      { "http://snomed.info/sct#3498003", TotalExcisionOfPituitaryGlandByTranssphenoidalApproach }, 
+      { "3499006", AspirationOfVitreousWithReplacement }, 
+      { "http://snomed.info/sct#3499006", AspirationOfVitreousWithReplacement }, 
+      { "3509001", StreptococcusVaccination }, 
+      { "http://snomed.info/sct#3509001", StreptococcusVaccination }, 
+      { "351005", UrinaryUndiversionOfUreteralAnastomosis }, 
+      { "http://snomed.info/sct#351005", UrinaryUndiversionOfUreteralAnastomosis }, 
+      { "3512003", AngiographyOfArteriesOfExtremity }, 
+      { "http://snomed.info/sct#3512003", AngiographyOfArteriesOfExtremity }, 
+      { "3515001", ReplacementOfElectronicHeartDevicePulseGenerator }, 
+      { "http://snomed.info/sct#3515001", ReplacementOfElectronicHeartDevicePulseGenerator }, 
+      { "3517009", RemovalOfForeignBodyOfPelvisFromSubcutaneousTissue }, 
+      { "http://snomed.info/sct#3517009", RemovalOfForeignBodyOfPelvisFromSubcutaneousTissue }, 
+      { "3518004", AversivePsychotherapy }, 
+      { "http://snomed.info/sct#3518004", AversivePsychotherapy }, 
+      { "352003", ReagentRBCPreparationAntibodySensitizedPool }, 
+      { "http://snomed.info/sct#352003", ReagentRBCPreparationAntibodySensitizedPool }, 
+      { "3527003", AntibodyMeasurement }, 
+      { "http://snomed.info/sct#3527003", AntibodyMeasurement }, 
+      { "353008", IVIrrigationMonitoring }, 
+      { "http://snomed.info/sct#353008", IVIrrigationMonitoring }, 
+      { "3546002", AortocoronaryArteryBypassGraftWithSaphenousVeinGraft }, 
+      { "http://snomed.info/sct#3546002", AortocoronaryArteryBypassGraftWithSaphenousVeinGraft }, 
+      { "3559005", InsertionOfUreteralStentWithUreterotomy }, 
+      { "http://snomed.info/sct#3559005", InsertionOfUreteralStentWithUreterotomy }, 
+      { "3562008", RodneySmithOperationRadicalSubtotalPancreatectomy }, 
+      { "http://snomed.info/sct#3562008", RodneySmithOperationRadicalSubtotalPancreatectomy }, 
+      { "3564009", RemovalOfForeignBodyFromFallopianTube }, 
+      { "http://snomed.info/sct#3564009", RemovalOfForeignBodyFromFallopianTube }, 
+      { "3575008", RepairOfFasciaWithGraftOfFascia }, 
+      { "http://snomed.info/sct#3575008", RepairOfFasciaWithGraftOfFascia }, 
+      { "3580004", RemovalOfCalculusOfPharynx }, 
+      { "http://snomed.info/sct#3580004", RemovalOfCalculusOfPharynx }, 
+      { "3605001", ReductionOfCiliaryBody }, 
+      { "http://snomed.info/sct#3605001", ReductionOfCiliaryBody }, 
+      { "3607009", TransplantationOfMesentericTissue }, 
+      { "http://snomed.info/sct#3607009", TransplantationOfMesentericTissue }, 
+      { "3620007", RedCellSurvivalStudyWithHepaticSequestration }, 
+      { "http://snomed.info/sct#3620007", RedCellSurvivalStudyWithHepaticSequestration }, 
+      { "3625002", AnesthesiaForBrachialArteriogramsRetrograde }, 
+      { "http://snomed.info/sct#3625002", AnesthesiaForBrachialArteriogramsRetrograde }, 
+      { "3651000", MorphometricAnalysisNerve }, 
+      { "http://snomed.info/sct#3651000", MorphometricAnalysisNerve }, 
+      { "3654008", LingulectomyOfLung }, 
+      { "http://snomed.info/sct#3654008", LingulectomyOfLung }, 
+      { "3659003", IncisionOfInnerEar }, 
+      { "http://snomed.info/sct#3659003", IncisionOfInnerEar }, 
+      { "3664004", RepairOfScleralFistula }, 
+      { "http://snomed.info/sct#3664004", RepairOfScleralFistula }, 
+      { "3666002", PeripheralNeurorrhaphy }, 
+      { "http://snomed.info/sct#3666002", PeripheralNeurorrhaphy }, 
+      { "3669009", FittingOfProsthesisOrProstheticDeviceOfUpperArm }, 
+      { "http://snomed.info/sct#3669009", FittingOfProsthesisOrProstheticDeviceOfUpperArm }, 
+      { "3673007", LeadbetterUrethralReconstruction }, 
+      { "http://snomed.info/sct#3673007", LeadbetterUrethralReconstruction }, 
+      { "3683006", SeleniumMeasurementUrine }, 
+      { "http://snomed.info/sct#3683006", SeleniumMeasurementUrine }, 
+      { "3686003", ZancolliOperationForTendonTransferOfBiceps }, 
+      { "http://snomed.info/sct#3686003", ZancolliOperationForTendonTransferOfBiceps }, 
+      { "3688002", AnesthesiaForLensSurgery }, 
+      { "http://snomed.info/sct#3688002", AnesthesiaForLensSurgery }, 
+      { "3690001", ShuntOfLeftSubclavianToDescendingAortaByBlalockParkOperation }, 
+      { "http://snomed.info/sct#3690001", ShuntOfLeftSubclavianToDescendingAortaByBlalockParkOperation }, 
+      { "3691002", WedgeOsteotomyOfTarsalsAndMetatarsals }, 
+      { "http://snomed.info/sct#3691002", WedgeOsteotomyOfTarsalsAndMetatarsals }, 
+      { "3697003", TissueProcessingTechniqueRoutineEmbedCutAndStainPerAutopsy }, 
+      { "http://snomed.info/sct#3697003", TissueProcessingTechniqueRoutineEmbedCutAndStainPerAutopsy }, 
+      { "3700004", ErysiphakeExtractionOfCataractByIntracapsularApproach }, 
+      { "http://snomed.info/sct#3700004", ErysiphakeExtractionOfCataractByIntracapsularApproach }, 
+      { "3701000", RemovalOfForeignBodyOfHipFromSubcutaneousTissue }, 
+      { "http://snomed.info/sct#3701000", RemovalOfForeignBodyOfHipFromSubcutaneousTissue }, 
+      { "3713005", ReleaseForDeQuervainQuoteSTenosynovitisOfHand }, 
+      { "http://snomed.info/sct#3713005", ReleaseForDeQuervainQuoteSTenosynovitisOfHand }, 
+      { "3717006", DiluteRussellViperVenomTime }, 
+      { "http://snomed.info/sct#3717006", DiluteRussellViperVenomTime }, 
+      { "3734003", PartialThicknessSkinGraft }, 
+      { "http://snomed.info/sct#3734003", PartialThicknessSkinGraft }, 
+      { "3735002", CoproporphyrinIIIMeasurement }, 
+      { "http://snomed.info/sct#3735002", CoproporphyrinIIIMeasurement }, 
+      { "3740005", RemovalOfForeignBodyOfCanthusByIncision }, 
+      { "http://snomed.info/sct#3740005", RemovalOfForeignBodyOfCanthusByIncision }, 
+      { "374009", CostosternoplastyForPectusExcavatumRepair }, 
+      { "http://snomed.info/sct#374009", CostosternoplastyForPectusExcavatumRepair }, 
+      { "3748003", BiopsyOfPerirenalTissue }, 
+      { "http://snomed.info/sct#3748003", BiopsyOfPerirenalTissue }, 
+      { "3749006", ReductionOfClosedIschialFracture }, 
+      { "http://snomed.info/sct#3749006", ReductionOfClosedIschialFracture }, 
+      { "3758004", ThrombectomyWithCatheterOfSubclavianArteryByNeckIncision }, 
+      { "http://snomed.info/sct#3758004", ThrombectomyWithCatheterOfSubclavianArteryByNeckIncision }, 
+      { "3770000", WardUrineDipStickTesting }, 
+      { "http://snomed.info/sct#3770000", WardUrineDipStickTesting }, 
+      { "3778007", ManipulationOfScrotalTissue }, 
+      { "http://snomed.info/sct#3778007", ManipulationOfScrotalTissue }, 
+      { "3780001", RoutinePatientDispositionNoFollowUpPlanned }, 
+      { "http://snomed.info/sct#3780001", RoutinePatientDispositionNoFollowUpPlanned }, 
+      { "3784005", DelayedHypersensitivitySkinTestForSKSD }, 
+      { "http://snomed.info/sct#3784005", DelayedHypersensitivitySkinTestForSKSD }, 
+      { "3786007", ExcisionOfLesionOfPharynx }, 
+      { "http://snomed.info/sct#3786007", ExcisionOfLesionOfPharynx }, 
+      { "3787003", UltrasonicGuidanceForNeedleBiopsy }, 
+      { "http://snomed.info/sct#3787003", UltrasonicGuidanceForNeedleBiopsy }, 
+      { "3794000", PregnanetriolMeasurement }, 
+      { "http://snomed.info/sct#3794000", PregnanetriolMeasurement }, 
+      { "3796003", ExcisionOfRedundantMucosaFromJejunostomy }, 
+      { "http://snomed.info/sct#3796003", ExcisionOfRedundantMucosaFromJejunostomy }, 
+      { "3799005", RadiographyOfAdenoids }, 
+      { "http://snomed.info/sct#3799005", RadiographyOfAdenoids }, 
+      { "3802001", DentalApplicationOfDesensitizingMedicament }, 
+      { "http://snomed.info/sct#3802001", DentalApplicationOfDesensitizingMedicament }, 
+      { "3819004", EmbolizationOfThoracicArtery }, 
+      { "http://snomed.info/sct#3819004", EmbolizationOfThoracicArtery }, 
+      { "3826004", BlepharotomyWithDrainageOfAbscessOfEyelid }, 
+      { "http://snomed.info/sct#3826004", BlepharotomyWithDrainageOfAbscessOfEyelid }, 
+      { "3828003", OpenBiopsyOfVertebralBodyOfThoracicRegion }, 
+      { "http://snomed.info/sct#3828003", OpenBiopsyOfVertebralBodyOfThoracicRegion }, 
+      { "3831002", ChiropracticApplicationOfIce }, 
+      { "http://snomed.info/sct#3831002", ChiropracticApplicationOfIce }, 
+      { "3843001", RemovalOfForeignBodyFromFascia }, 
+      { "http://snomed.info/sct#3843001", RemovalOfForeignBodyFromFascia }, 
+      { "3858009", EchographyOfThyroidAMode }, 
+      { "http://snomed.info/sct#3858009", EchographyOfThyroidAMode }, 
+      { "3861005", AneurysmectomyWithAnastomosisOfLowerLimbArtery }, 
+      { "http://snomed.info/sct#3861005", AneurysmectomyWithAnastomosisOfLowerLimbArtery }, 
+      { "3862003", TotalVitalCapacityMeasurement }, 
+      { "http://snomed.info/sct#3862003", TotalVitalCapacityMeasurement }, 
+      { "3864002", ExcisionalBiopsyOfScrotum }, 
+      { "http://snomed.info/sct#3864002", ExcisionalBiopsyOfScrotum }, 
+      { "3880007", ExcisionOfLesionOfFibula }, 
+      { "http://snomed.info/sct#3880007", ExcisionOfLesionOfFibula }, 
+      { "388008", Blepharorrhaphy }, 
+      { "http://snomed.info/sct#388008", Blepharorrhaphy }, 
+      { "3881006", IncisionAndDrainageOfSubmentalSpaceByExtraoralApproach }, 
+      { "http://snomed.info/sct#3881006", IncisionAndDrainageOfSubmentalSpaceByExtraoralApproach }, 
+      { "3887005", LigationOfWart }, 
+      { "http://snomed.info/sct#3887005", LigationOfWart }, 
+      { "3889008", SutureOfLip }, 
+      { "http://snomed.info/sct#3889008", SutureOfLip }, 
+      { "389000", TobramycinMeasurement }, 
+      { "http://snomed.info/sct#389000", TobramycinMeasurement }, 
+      { "3891000", ComprehensiveOrthodonticTreatmentPermanentDentitionForClassIMalocclusion }, 
+      { "http://snomed.info/sct#3891000", ComprehensiveOrthodonticTreatmentPermanentDentitionForClassIMalocclusion }, 
+      { "3895009", ApplicationOfDressing }, 
+      { "http://snomed.info/sct#3895009", ApplicationOfDressing }, 
+      { "3907006", IncisionAndDrainageOfRetroperitonealAbscess }, 
+      { "http://snomed.info/sct#3907006", IncisionAndDrainageOfRetroperitonealAbscess }, 
+      { "3911000", MuscleTransplantation }, 
+      { "http://snomed.info/sct#3911000", MuscleTransplantation }, 
+      { "3915009", ExcisionOfArteryOfThoraxAndAbdomen }, 
+      { "http://snomed.info/sct#3915009", ExcisionOfArteryOfThoraxAndAbdomen }, 
+      { "3917001", ExcisionalBiopsyOfPhalangesOfFoot }, 
+      { "http://snomed.info/sct#3917001", ExcisionalBiopsyOfPhalangesOfFoot }, 
+      { "3918006", PlasticRepairWithLengthening }, 
+      { "http://snomed.info/sct#3918006", PlasticRepairWithLengthening }, 
+      { "3926003", LacticAcidMeasurement }, 
+      { "http://snomed.info/sct#3926003", LacticAcidMeasurement }, 
+      { "3929005", PatientTransferInHospitalBedToBed }, 
+      { "http://snomed.info/sct#3929005", PatientTransferInHospitalBedToBed }, 
+      { "3936006", MakingFosterBed }, 
+      { "http://snomed.info/sct#3936006", MakingFosterBed }, 
+      { "3938007", CerclageForRetinalReattachment }, 
+      { "http://snomed.info/sct#3938007", CerclageForRetinalReattachment }, 
+      { "3942005", Cystopexy }, 
+      { "http://snomed.info/sct#3942005", Cystopexy }, 
+      { "3955006", AntibodyElutionRBC }, 
+      { "http://snomed.info/sct#3955006", AntibodyElutionRBC }, 
+      { "3957003", ArteriectomyOfThoracoabdominalAorta }, 
+      { "http://snomed.info/sct#3957003", ArteriectomyOfThoracoabdominalAorta }, 
+      { "3963007", OperationOnSubmaxillaryGland }, 
+      { "http://snomed.info/sct#3963007", OperationOnSubmaxillaryGland }, 
+      { "3967008", FluorescencePolarizationImmunoassay }, 
+      { "http://snomed.info/sct#3967008", FluorescencePolarizationImmunoassay }, 
+      { "3968003", FacetectomyOfVertebra }, 
+      { "http://snomed.info/sct#3968003", FacetectomyOfVertebra }, 
+      { "3969006", RemovalOfOsteocartilagenousLooseBodyFromJointStructures }, 
+      { "http://snomed.info/sct#3969006", RemovalOfOsteocartilagenousLooseBodyFromJointStructures }, 
+      { "3971006", DuchenneMuscularDystrophyCarrierDetection }, 
+      { "http://snomed.info/sct#3971006", DuchenneMuscularDystrophyCarrierDetection }, 
+      { "3980006", SubtotalResectionOfEsophagus }, 
+      { "http://snomed.info/sct#3980006", SubtotalResectionOfEsophagus }, 
+      { "3981005", CarrierDetectionMolecularGenetics }, 
+      { "http://snomed.info/sct#3981005", CarrierDetectionMolecularGenetics }, 
+      { "3985001", AnesthesiaForProcedureOnArteriesOfLowerLegWithBypassGraft }, 
+      { "http://snomed.info/sct#3985001", AnesthesiaForProcedureOnArteriesOfLowerLegWithBypassGraft }, 
+      { "3991004", MagneticResonanceImagingOfPelvisProstateAndBladder }, 
+      { "http://snomed.info/sct#3991004", MagneticResonanceImagingOfPelvisProstateAndBladder }, 
+      { "3998005", BoneImagingOfLimitedArea }, 
+      { "http://snomed.info/sct#3998005", BoneImagingOfLimitedArea }, 
+      { "4007002", AntiHumanGlobulinTestIndirectTiterNonGamma }, 
+      { "http://snomed.info/sct#4007002", AntiHumanGlobulinTestIndirectTiterNonGamma }, 
+      { "4008007", PhlebographyOfNeck }, 
+      { "http://snomed.info/sct#4008007", PhlebographyOfNeck }, 
+      { "4010009", OophorectomyOfRemainingOvaryWithTube }, 
+      { "http://snomed.info/sct#4010009", OophorectomyOfRemainingOvaryWithTube }, 
+      { "401004", DistalSubtotalPancreatectomy }, 
+      { "http://snomed.info/sct#401004", DistalSubtotalPancreatectomy }, 
+      { "4027001", ImplantationOfElectronicStimulatorIntoPhrenicNerve }, 
+      { "http://snomed.info/sct#4027001", ImplantationOfElectronicStimulatorIntoPhrenicNerve }, 
+      { "4034004", ClosedReductionOfFacialFractureExceptMandible }, 
+      { "http://snomed.info/sct#4034004", ClosedReductionOfFacialFractureExceptMandible }, 
+      { "4035003", RestorationResinTwoSurfacesPosteriorPermanent }, 
+      { "http://snomed.info/sct#4035003", RestorationResinTwoSurfacesPosteriorPermanent }, 
+      { "4036002", ArthroscopyOfElbowWithExtensiveDebridement }, 
+      { "http://snomed.info/sct#4036002", ArthroscopyOfElbowWithExtensiveDebridement }, 
+      { "4037006", RemovalOfVascularGraftOrProsthesis }, 
+      { "http://snomed.info/sct#4037006", RemovalOfVascularGraftOrProsthesis }, 
+      { "4044002", PermanentColostomy }, 
+      { "http://snomed.info/sct#4044002", PermanentColostomy }, 
+      { "4045001", DrainageOfCerebralVentricleByIncision }, 
+      { "http://snomed.info/sct#4045001", DrainageOfCerebralVentricleByIncision }, 
+      { "4052004", PercutaneousAspirationOfSpinalCordCyst }, 
+      { "http://snomed.info/sct#4052004", PercutaneousAspirationOfSpinalCordCyst }, 
+      { "406009", FulgurationOfStomachLesion }, 
+      { "http://snomed.info/sct#406009", FulgurationOfStomachLesion }, 
+      { "4064007", SpecimenAliquoting }, 
+      { "http://snomed.info/sct#4064007", SpecimenAliquoting }, 
+      { "4068005", RemovalOfVentricularReservoirWithSynchronousReplacement }, 
+      { "http://snomed.info/sct#4068005", RemovalOfVentricularReservoirWithSynchronousReplacement }, 
+      { "4083000", FittingOfProsthesisOrProstheticDeviceOfLowerArm }, 
+      { "http://snomed.info/sct#4083000", FittingOfProsthesisOrProstheticDeviceOfLowerArm }, 
+      { "4084006", RepairOfTendonOfHandByGraftOrImplantOfMuscle }, 
+      { "http://snomed.info/sct#4084006", RepairOfTendonOfHandByGraftOrImplantOfMuscle }, 
+      { "4090005", ReplacementOfTransvenousAtrialAndVentricularPacemakerElectrodeLeads }, 
+      { "http://snomed.info/sct#4090005", ReplacementOfTransvenousAtrialAndVentricularPacemakerElectrodeLeads }, 
+      { "4094001", ReductionOfRetroversionOfUterusBySuppository }, 
+      { "http://snomed.info/sct#4094001", ReductionOfRetroversionOfUterusBySuppository }, 
+      { "4101004", RevisionOfSpinalPleurothecalShunt }, 
+      { "http://snomed.info/sct#4101004", RevisionOfSpinalPleurothecalShunt }, 
+      { "4102006", RootCanalTherapyAnteriorExcludingFinalRestoration }, 
+      { "http://snomed.info/sct#4102006", RootCanalTherapyAnteriorExcludingFinalRestoration }, 
+      { "4114003", ParenteralChemotherapyForMalignantNeoplasm }, 
+      { "http://snomed.info/sct#4114003", ParenteralChemotherapyForMalignantNeoplasm }, 
+      { "4116001", FenestrationProcedure }, 
+      { "http://snomed.info/sct#4116001", FenestrationProcedure }, 
+      { "4119008", IntracranialPhlebectomyWithAnastomosis }, 
+      { "http://snomed.info/sct#4119008", IntracranialPhlebectomyWithAnastomosis }, 
+      { "4131005", ImplantationIntoPelvicRegion }, 
+      { "http://snomed.info/sct#4131005", ImplantationIntoPelvicRegion }, 
+      { "4134002", OperativeBlockAnesthesia }, 
+      { "http://snomed.info/sct#4134002", OperativeBlockAnesthesia }, 
+      { "4139007", PosteriorSpinalCordotomy }, 
+      { "http://snomed.info/sct#4139007", PosteriorSpinalCordotomy }, 
+      { "4143006", InjectionOfAnteriorChamberOfEye }, 
+      { "http://snomed.info/sct#4143006", InjectionOfAnteriorChamberOfEye }, 
+      { "4149005", BoneHistomorphometryAluminumStain }, 
+      { "http://snomed.info/sct#4149005", BoneHistomorphometryAluminumStain }, 
+      { "4154001", IncisionAndDrainageOfPenis }, 
+      { "http://snomed.info/sct#4154001", IncisionAndDrainageOfPenis }, 
+      { "4165006", DelayedHypersensitivitySkinTestForStaphageLysate }, 
+      { "http://snomed.info/sct#4165006", DelayedHypersensitivitySkinTestForStaphageLysate }, 
+      { "417005", HospitalReAdmission }, 
+      { "http://snomed.info/sct#417005", HospitalReAdmission }, 
+      { "4176005", FothergillOperationOnUterus }, 
+      { "http://snomed.info/sct#4176005", FothergillOperationOnUterus }, 
+      { "4192000", ToxicologyTestingForOrganophosphateInsecticide }, 
+      { "http://snomed.info/sct#4192000", ToxicologyTestingForOrganophosphateInsecticide }, 
+      { "4213001", ImplantationOfOmmayaReservoir }, 
+      { "http://snomed.info/sct#4213001", ImplantationOfOmmayaReservoir }, 
+      { "4214007", IntracardiacInjectionForCardiacResuscitation }, 
+      { "http://snomed.info/sct#4214007", IntracardiacInjectionForCardiacResuscitation }, 
+      { "4226002", ExcisionOfLesionOfThoracicVein }, 
+      { "http://snomed.info/sct#4226002", ExcisionOfLesionOfThoracicVein }, 
+      { "4252008", AneurysmectomyWithGraftReplacementByInterposition }, 
+      { "http://snomed.info/sct#4252008", AneurysmectomyWithGraftReplacementByInterposition }, 
+      { "4263006", BiopsyOfSoftTissueOfElbowAreaSuperficial }, 
+      { "http://snomed.info/sct#4263006", BiopsyOfSoftTissueOfElbowAreaSuperficial }, 
+      { "4266003", PatientReferralForDrugAddictionRehabilitation }, 
+      { "http://snomed.info/sct#4266003", PatientReferralForDrugAddictionRehabilitation }, 
+      { "4285000", InsertionOfBoneGrowthStimulatorIntoFemur }, 
+      { "http://snomed.info/sct#4285000", InsertionOfBoneGrowthStimulatorIntoFemur }, 
+      { "4293000", ReductionOfIntussusceptionByLaparotomy }, 
+      { "http://snomed.info/sct#4293000", ReductionOfIntussusceptionByLaparotomy }, 
+      { "4304000", ExcisionOfCuspOfTricuspidValve }, 
+      { "http://snomed.info/sct#4304000", ExcisionOfCuspOfTricuspidValve }, 
+      { "4319004", RebaseOfCompleteLowerDenture }, 
+      { "http://snomed.info/sct#4319004", RebaseOfCompleteLowerDenture }, 
+      { "4321009", AngiographyOfLowerExtremityArteriesBilateral }, 
+      { "http://snomed.info/sct#4321009", AngiographyOfLowerExtremityArteriesBilateral }, 
+      { "4323007", DestructionOfLesionOfSclera }, 
+      { "http://snomed.info/sct#4323007", DestructionOfLesionOfSclera }, 
+      { "4331002", AnesthesiaForHerniaRepairInLowerAbdomen }, 
+      { "http://snomed.info/sct#4331002", AnesthesiaForHerniaRepairInLowerAbdomen }, 
+      { "4333004", IncisionAndDrainageOfPerisplenicSpace }, 
+      { "http://snomed.info/sct#4333004", IncisionAndDrainageOfPerisplenicSpace }, 
+      { "4336007", LloydDaviesOperationAbdominoperinealResection }, 
+      { "http://snomed.info/sct#4336007", LloydDaviesOperationAbdominoperinealResection }, 
+      { "4337003", HomogentisicAcidMeasurement }, 
+      { "http://snomed.info/sct#4337003", HomogentisicAcidMeasurement }, 
+      { "4339000", RepairOfNasolabialFistula }, 
+      { "http://snomed.info/sct#4339000", RepairOfNasolabialFistula }, 
+      { "4341004", CompleteSubmucousResectionOfTurbinate }, 
+      { "http://snomed.info/sct#4341004", CompleteSubmucousResectionOfTurbinate }, 
+      { "4344007", Cryopexy }, 
+      { "http://snomed.info/sct#4344007", Cryopexy }, 
+      { "4348005", MusculoplastyOfHand }, 
+      { "http://snomed.info/sct#4348005", MusculoplastyOfHand }, 
+      { "4350002", RemovalOfImplantOfCornea }, 
+      { "http://snomed.info/sct#4350002", RemovalOfImplantOfCornea }, 
+      { "435001", PulmonaryInhalationStudy }, 
+      { "http://snomed.info/sct#435001", PulmonaryInhalationStudy }, 
+      { "4363008", EndoscopicBrushBiopsyOfTrachea }, 
+      { "http://snomed.info/sct#4363008", EndoscopicBrushBiopsyOfTrachea }, 
+      { "4365001", SurgicalRepair }, 
+      { "http://snomed.info/sct#4365001", SurgicalRepair }, 
+      { "4380007", TranspositionOfVulvarTissue }, 
+      { "http://snomed.info/sct#4380007", TranspositionOfVulvarTissue }, 
+      { "4387005", ValvuloplastyOfPulmonaryValveInTotalRepairOfTetralogyOfFallot }, 
+      { "http://snomed.info/sct#4387005", ValvuloplastyOfPulmonaryValveInTotalRepairOfTetralogyOfFallot }, 
+      { "4388000", RepairOfSplenocolicFistula }, 
+      { "http://snomed.info/sct#4388000", RepairOfSplenocolicFistula }, 
+      { "4407008", SlittingOfLacrimalCanaliculusForPassageOfTube }, 
+      { "http://snomed.info/sct#4407008", SlittingOfLacrimalCanaliculusForPassageOfTube }, 
+      { "4411002", RemovalOfDeviceFromFemaleGenitalTract }, 
+      { "http://snomed.info/sct#4411002", RemovalOfDeviceFromFemaleGenitalTract }, 
+      { "4420006", IncisionAndDrainageOfParapharyngealAbscessByExternalApproach }, 
+      { "http://snomed.info/sct#4420006", IncisionAndDrainageOfParapharyngealAbscessByExternalApproach }, 
+      { "4424002", MakingOrthopedicBed }, 
+      { "http://snomed.info/sct#4424002", MakingOrthopedicBed }, 
+      { "4436008", MCPReceptorMeasurement }, 
+      { "http://snomed.info/sct#4436008", MCPReceptorMeasurement }, 
+      { "4438009", VenographyOfVenaCava }, 
+      { "http://snomed.info/sct#4438009", VenographyOfVenaCava }, 
+      { "4443002", DecorticationOfOvary }, 
+      { "http://snomed.info/sct#4443002", DecorticationOfOvary }, 
+      { "4447001", AutopsyGrossAndMicroscopicExaminationStillbornOrNewbornWithoutCNS }, 
+      { "http://snomed.info/sct#4447001", AutopsyGrossAndMicroscopicExaminationStillbornOrNewbornWithoutCNS }, 
+      { "4449003", ManipulationOfSpinalMeninges }, 
+      { "http://snomed.info/sct#4449003", ManipulationOfSpinalMeninges }, 
+      { "4450003", ApplicationOfKirschnerWire }, 
+      { "http://snomed.info/sct#4450003", ApplicationOfKirschnerWire }, 
+      { "445004", RepairOfMalunionOfTibia }, 
+      { "http://snomed.info/sct#445004", RepairOfMalunionOfTibia }, 
+      { "4455008", OpenReductionOfOpenElbowDislocation }, 
+      { "http://snomed.info/sct#4455008", OpenReductionOfOpenElbowDislocation }, 
+      { "4457000", InsertionOfMoldIntoVagina }, 
+      { "http://snomed.info/sct#4457000", InsertionOfMoldIntoVagina }, 
+      { "4466001", ExplorationOfArteryOfUpperLimb }, 
+      { "http://snomed.info/sct#4466001", ExplorationOfArteryOfUpperLimb }, 
+      { "4467005", ExcisionOfTumorOfAnkleAreaDeepIntramuscular }, 
+      { "http://snomed.info/sct#4467005", ExcisionOfTumorOfAnkleAreaDeepIntramuscular }, 
+      { "4475004", CyanideMeasurement }, 
+      { "http://snomed.info/sct#4475004", CyanideMeasurement }, 
+      { "4487006", NorepinephrineMeasurementSupine }, 
+      { "http://snomed.info/sct#4487006", NorepinephrineMeasurementSupine }, 
+      { "4489009", NeurolysisOfTrigeminalNerve }, 
+      { "http://snomed.info/sct#4489009", NeurolysisOfTrigeminalNerve }, 
+      { "4496006", SpecialCareOfMouth }, 
+      { "http://snomed.info/sct#4496006", SpecialCareOfMouth }, 
+      { "4503005", RemovalOfForeignBodyOfScleraWithoutUseOfMagnet }, 
+      { "http://snomed.info/sct#4503005", RemovalOfForeignBodyOfScleraWithoutUseOfMagnet }, 
+      { "4504004", PotterQuoteSObstetricalVersionWithExtraction }, 
+      { "http://snomed.info/sct#4504004", PotterQuoteSObstetricalVersionWithExtraction }, 
+      { "4505003", TenolysisOfFlexorTendonOfForearm }, 
+      { "http://snomed.info/sct#4505003", TenolysisOfFlexorTendonOfForearm }, 
+      { "4507006", DecompressionFasciotomyOfWristFlexorAndExtensorCompartment }, 
+      { "http://snomed.info/sct#4507006", DecompressionFasciotomyOfWristFlexorAndExtensorCompartment }, 
+      { "4511000", RestorationInlayCompositeResinOneSurfaceLaboratoryProcessed }, 
+      { "http://snomed.info/sct#4511000", RestorationInlayCompositeResinOneSurfaceLaboratoryProcessed }, 
+      { "4516005", IridencleisisAndIridotasis }, 
+      { "http://snomed.info/sct#4516005", IridencleisisAndIridotasis }, 
+      { "4520009", AnastomosisOfEsophagusAntesternalOrAntethoracicWithInsertionOfProsthesis }, 
+      { "http://snomed.info/sct#4520009", AnastomosisOfEsophagusAntesternalOrAntethoracicWithInsertionOfProsthesis }, 
+      { "4525004", EmergencyDepartmentPatientVisit }, 
+      { "http://snomed.info/sct#4525004", EmergencyDepartmentPatientVisit }, 
+      { "4533003", LigationOfArteryOfLowerLimb }, 
+      { "http://snomed.info/sct#4533003", LigationOfArteryOfLowerLimb }, 
+      { "4535005", IncisionOfPelvirectalTissue }, 
+      { "http://snomed.info/sct#4535005", IncisionOfPelvirectalTissue }, 
+      { "4539004", ExcisionOfBronchogenicCyst }, 
+      { "http://snomed.info/sct#4539004", ExcisionOfBronchogenicCyst }, 
+      { "4542005", ClosedReductionOfFractureOfFoot }, 
+      { "http://snomed.info/sct#4542005", ClosedReductionOfFractureOfFoot }, 
+      { "4544006", ExcisionOfSubcutaneousTumorOfExtremities }, 
+      { "http://snomed.info/sct#4544006", ExcisionOfSubcutaneousTumorOfExtremities }, 
+      { "4558008", AnteriorResectionOfRectum }, 
+      { "http://snomed.info/sct#4558008", AnteriorResectionOfRectum }, 
+      { "456004", TotalAbdominalColectomyWithIleostomy }, 
+      { "http://snomed.info/sct#456004", TotalAbdominalColectomyWithIleostomy }, 
+      { "4563007", HospitalAdmissionTransferFromOtherHospitalOrHealthCareFacility }, 
+      { "http://snomed.info/sct#4563007", HospitalAdmissionTransferFromOtherHospitalOrHealthCareFacility }, 
+      { "4570007", Chemopallidectomy }, 
+      { "http://snomed.info/sct#4570007", Chemopallidectomy }, 
+      { "4579008", CreationOfVentriculoAtrialShunt }, 
+      { "http://snomed.info/sct#4579008", CreationOfVentriculoAtrialShunt }, 
+      { "4581005", Coreoplasty }, 
+      { "http://snomed.info/sct#4581005", Coreoplasty }, 
+      { "4585001", DecompressionOfTendonOfHand }, 
+      { "http://snomed.info/sct#4585001", DecompressionOfTendonOfHand }, 
+      { "4587009", EpiphysiodesisOfDistalRadius }, 
+      { "http://snomed.info/sct#4587009", EpiphysiodesisOfDistalRadius }, 
+      { "4589007", MedicalProcedureRelatedToReproduction }, 
+      { "http://snomed.info/sct#4589007", MedicalProcedureRelatedToReproduction }, 
+      { "459006", ClosedCondylotomyOfMandible }, 
+      { "http://snomed.info/sct#459006", ClosedCondylotomyOfMandible }, 
+      { "4593001", CauterizationOfScleraWithIridectomy }, 
+      { "http://snomed.info/sct#4593001", CauterizationOfScleraWithIridectomy }, 
+      { "4594007", CoproporphyrinIsomersSeriesIAndIIIUrine }, 
+      { "http://snomed.info/sct#4594007", CoproporphyrinIsomersSeriesIAndIIIUrine }, 
+      { "4613005", Radioimmunoassay }, 
+      { "http://snomed.info/sct#4613005", Radioimmunoassay }, 
+      { "4625008", ApicalPulseTaking }, 
+      { "http://snomed.info/sct#4625008", ApicalPulseTaking }, 
+      { "4626009", TakeDownOfArterialAnastomosis }, 
+      { "http://snomed.info/sct#4626009", TakeDownOfArterialAnastomosis }, 
+      { "463004", ClosedReductionOfCoxofemoralJointDislocationWithSplint }, 
+      { "http://snomed.info/sct#463004", ClosedReductionOfCoxofemoralJointDislocationWithSplint }, 
+      { "4636001", DenkerOperationForRadicalMaxillaryAntrotomy }, 
+      { "http://snomed.info/sct#4636001", DenkerOperationForRadicalMaxillaryAntrotomy }, 
+      { "4640005", LigationOfFallopianTubesByAbdominalApproach }, 
+      { "http://snomed.info/sct#4640005", LigationOfFallopianTubesByAbdominalApproach }, 
+      { "4642002", RemovalOfInflatablePenileProsthesisWithPumpReservoirAndCylinders }, 
+      { "http://snomed.info/sct#4642002", RemovalOfInflatablePenileProsthesisWithPumpReservoirAndCylinders }, 
+      { "4660002", DiagnosticProcedureOnPhalangesOfFoot }, 
+      { "http://snomed.info/sct#4660002", DiagnosticProcedureOnPhalangesOfFoot }, 
+      { "4670000", CatheterizationOfBronchus }, 
+      { "http://snomed.info/sct#4670000", CatheterizationOfBronchus }, 
+      { "4671001", ExcisionOfLesionFromSphenoidSinus }, 
+      { "http://snomed.info/sct#4671001", ExcisionOfLesionFromSphenoidSinus }, 
+      { "4672008", MedicalProcedureOnTheNervousSystem }, 
+      { "http://snomed.info/sct#4672008", MedicalProcedureOnTheNervousSystem }, 
+      { "468008", GlutathioneMeasurement }, 
+      { "http://snomed.info/sct#468008", GlutathioneMeasurement }, 
+      { "4691008", IdentificationOfRotavirusAntigenInFeces }, 
+      { "http://snomed.info/sct#4691008", IdentificationOfRotavirusAntigenInFeces }, 
+      { "4692001", TransplantationOfArteryOfUpperExtremity }, 
+      { "http://snomed.info/sct#4692001", TransplantationOfArteryOfUpperExtremity }, 
+      { "4694000", PercutaneousNeedleBiopsyOfMuscle }, 
+      { "http://snomed.info/sct#4694000", PercutaneousNeedleBiopsyOfMuscle }, 
+      { "4699005", AlphaNaphthylButyrateStainMethodBloodOrBoneMarrow }, 
+      { "http://snomed.info/sct#4699005", AlphaNaphthylButyrateStainMethodBloodOrBoneMarrow }, 
+      { "4701005", ColonyFormingUnitGranulocyteMonocyteErythroidMegakaryocyteAssay }, 
+      { "http://snomed.info/sct#4701005", ColonyFormingUnitGranulocyteMonocyteErythroidMegakaryocyteAssay }, 
+      { "4707009", PartialExcisionOfCalcaneus }, 
+      { "http://snomed.info/sct#4707009", PartialExcisionOfCalcaneus }, 
+      { "4712005", RemovalOfGardnerWellsTongsFromSkull }, 
+      { "http://snomed.info/sct#4712005", RemovalOfGardnerWellsTongsFromSkull }, 
+      { "4713000", EndoscopyAndPhotography }, 
+      { "http://snomed.info/sct#4713000", EndoscopyAndPhotography }, 
+      { "4719001", PsychologicCognitiveTestingAndAssessment }, 
+      { "http://snomed.info/sct#4719001", PsychologicCognitiveTestingAndAssessment }, 
+      { "4727005", LipoproteinElectrophoresis }, 
+      { "http://snomed.info/sct#4727005", LipoproteinElectrophoresis }, 
+      { "4734007", IrrigationOfWoundCatheterOfIntegument }, 
+      { "http://snomed.info/sct#4734007", IrrigationOfWoundCatheterOfIntegument }, 
+      { "4737000", MycobacteriaCulture }, 
+      { "http://snomed.info/sct#4737000", MycobacteriaCulture }, 
+      { "474008", EsophagoentericAnastomosisIntrathoracic }, 
+      { "http://snomed.info/sct#474008", EsophagoentericAnastomosisIntrathoracic }, 
+      { "4756005", CryotherapyOfSubcutaneousTissue }, 
+      { "http://snomed.info/sct#4756005", CryotherapyOfSubcutaneousTissue }, 
+      { "4758006", Incudostapediopexy }, 
+      { "http://snomed.info/sct#4758006", Incudostapediopexy }, 
+      { "4764004", JetVentilationProcedure }, 
+      { "http://snomed.info/sct#4764004", JetVentilationProcedure }, 
+      { "4765003", InsertionOfOcularImplantFollowingOrSecondaryToEnucleation }, 
+      { "http://snomed.info/sct#4765003", InsertionOfOcularImplantFollowingOrSecondaryToEnucleation }, 
+      { "4770005", ColporrhaphyForRepairOfUrethrocele }, 
+      { "http://snomed.info/sct#4770005", ColporrhaphyForRepairOfUrethrocele }, 
+      { "4772002", ReductionOfTorsionOfSpermaticCord }, 
+      { "http://snomed.info/sct#4772002", ReductionOfTorsionOfSpermaticCord }, 
+      { "4784000", OperationOnSublingualGland }, 
+      { "http://snomed.info/sct#4784000", OperationOnSublingualGland }, 
+      { "4804005", MicrobialIdentificationTest }, 
+      { "http://snomed.info/sct#4804005", MicrobialIdentificationTest }, 
+      { "4811009", ReconstructionOfDiaphragm }, 
+      { "http://snomed.info/sct#4811009", ReconstructionOfDiaphragm }, 
+      { "4815000", AntibodyIdentificationRBCAntibodyPanelEnzyme2StageTechniqueIncludingAntiHumanGlobulin }, 
+      { "http://snomed.info/sct#4815000", AntibodyIdentificationRBCAntibodyPanelEnzyme2StageTechniqueIncludingAntiHumanGlobulin }, 
+      { "4820000", IncisionOfLabialFrenum }, 
+      { "http://snomed.info/sct#4820000", IncisionOfLabialFrenum }, 
+      { "4827002", ShowerHydrotherapy }, 
+      { "http://snomed.info/sct#4827002", ShowerHydrotherapy }, 
+      { "4829004", ExcisionOfSmallIntestineForInterposition }, 
+      { "http://snomed.info/sct#4829004", ExcisionOfSmallIntestineForInterposition }, 
+      { "4847005", AnesthesiaForCesareanSection }, 
+      { "http://snomed.info/sct#4847005", AnesthesiaForCesareanSection }, 
+      { "4849008", BiopsyOfOvary }, 
+      { "http://snomed.info/sct#4849008", BiopsyOfOvary }, 
+      { "4862007", RevisionOfAnastomosisOfLargeIntestine }, 
+      { "http://snomed.info/sct#4862007", RevisionOfAnastomosisOfLargeIntestine }, 
+      { "4877004", ExtracapsularExtractionOfLensWithIridectomy }, 
+      { "http://snomed.info/sct#4877004", ExtracapsularExtractionOfLensWithIridectomy }, 
+      { "489004", FerritinMeasurement }, 
+      { "http://snomed.info/sct#489004", FerritinMeasurement }, 
+      { "4891005", Proctostomy }, 
+      { "http://snomed.info/sct#4891005", Proctostomy }, 
+      { "4895001", ConstructionOfSigmoidBladder }, 
+      { "http://snomed.info/sct#4895001", ConstructionOfSigmoidBladder }, 
+      { "4902005", EthchlorvynolMeasurement }, 
+      { "http://snomed.info/sct#4902005", EthchlorvynolMeasurement }, 
+      { "4903000", SerumProteinElectrophoresis }, 
+      { "http://snomed.info/sct#4903000", SerumProteinElectrophoresis }, 
+      { "4904006", DilationOfAnalSphincterUnderNonlocalAnesthesia }, 
+      { "http://snomed.info/sct#4904006", DilationOfAnalSphincterUnderNonlocalAnesthesia }, 
+      { "4914002", TreatmentPlanningForTeletherapy }, 
+      { "http://snomed.info/sct#4914002", TreatmentPlanningForTeletherapy }, 
+      { "4929000", LocalPerfusionOfKidney }, 
+      { "http://snomed.info/sct#4929000", LocalPerfusionOfKidney }, 
+      { "4930005", RepairOfThoracogastricFistula }, 
+      { "http://snomed.info/sct#4930005", RepairOfThoracogastricFistula }, 
+      { "493005", UrobilinogenMeasurement48HourFeces }, 
+      { "http://snomed.info/sct#493005", UrobilinogenMeasurement48HourFeces }, 
+      { "4934001", Salpingography }, 
+      { "http://snomed.info/sct#4934001", Salpingography }, 
+      { "494004", ExcisionOfLesionOfTonsil }, 
+      { "http://snomed.info/sct#494004", ExcisionOfLesionOfTonsil }, 
+      { "4957007", CervicalSpinalFusionForPseudoarthrosis }, 
+      { "http://snomed.info/sct#4957007", CervicalSpinalFusionForPseudoarthrosis }, 
+      { "4966006", ExtracorporealPerfusion }, 
+      { "http://snomed.info/sct#4966006", ExtracorporealPerfusion }, 
+      { "4970003", Venography }, 
+      { "http://snomed.info/sct#4970003", Venography }, 
+      { "497006", ReplacementOfCochlearProsthesisMultipleChannels }, 
+      { "http://snomed.info/sct#497006", ReplacementOfCochlearProsthesisMultipleChannels }, 
+      { "4974007", OperationOnLiver }, 
+      { "http://snomed.info/sct#4974007", OperationOnLiver }, 
+      { "4976009", AnesthesiaForEndoscopicProcedureOnLowerExtremity }, 
+      { "http://snomed.info/sct#4976009", AnesthesiaForEndoscopicProcedureOnLowerExtremity }, 
+      { "4987001", OsteoplastyOfCraniumWithFlapOfBone }, 
+      { "http://snomed.info/sct#4987001", OsteoplastyOfCraniumWithFlapOfBone }, 
+      { "4992004", CardiacCatheterizationLeftHeartRetrogradePercutaneous }, 
+      { "http://snomed.info/sct#4992004", CardiacCatheterizationLeftHeartRetrogradePercutaneous }, 
+      { "4993009", IschemicLimbExerciseWithEMGAndLacticAcidDetermination }, 
+      { "http://snomed.info/sct#4993009", IschemicLimbExerciseWithEMGAndLacticAcidDetermination }, 
+      { "5016005", PonticResinWithHighNobleMetal }, 
+      { "http://snomed.info/sct#5016005", PonticResinWithHighNobleMetal }, 
+      { "5019003", DirectLaryngoscopyWithBiopsy }, 
+      { "http://snomed.info/sct#5019003", DirectLaryngoscopyWithBiopsy }, 
+      { "5021008", AldosteroneMeasurementStandingNormalSaltDiet }, 
+      { "http://snomed.info/sct#5021008", AldosteroneMeasurementStandingNormalSaltDiet }, 
+      { "5022001", LysergicAcidDiethylamideMeasurement }, 
+      { "http://snomed.info/sct#5022001", LysergicAcidDiethylamideMeasurement }, 
+      { "5025004", SemenAnalysisPresenceAndMotilityOfSperm }, 
+      { "http://snomed.info/sct#5025004", SemenAnalysisPresenceAndMotilityOfSperm }, 
+      { "503003", CornealGluing }, 
+      { "http://snomed.info/sct#503003", CornealGluing }, 
+      { "5032008", LabialVeneerPorcelainLaminateLaboratory }, 
+      { "http://snomed.info/sct#5032008", LabialVeneerPorcelainLaminateLaboratory }, 
+      { "5034009", GraftToHairBearingSkin }, 
+      { "http://snomed.info/sct#5034009", GraftToHairBearingSkin }, 
+      { "5048009", ExternalCephalicVersionWithTocolysis }, 
+      { "http://snomed.info/sct#5048009", ExternalCephalicVersionWithTocolysis }, 
+      { "5055006", UnisceptSystemTest }, 
+      { "http://snomed.info/sct#5055006", UnisceptSystemTest }, 
+      { "5057003", RadicalOrbitomaxillectomy }, 
+      { "http://snomed.info/sct#5057003", RadicalOrbitomaxillectomy }, 
+      { "5065000", ReductionOfClosedTraumaticHipDislocationWithAnesthesia }, 
+      { "http://snomed.info/sct#5065000", ReductionOfClosedTraumaticHipDislocationWithAnesthesia }, 
+      { "5091004", PeripheralVascularDiseaseStudy }, 
+      { "http://snomed.info/sct#5091004", PeripheralVascularDiseaseStudy }, 
+      { "5105000", EndoscopyOfRenalPelvis }, 
+      { "http://snomed.info/sct#5105000", EndoscopyOfRenalPelvis }, 
+      { "5110001", UltrasoundPeripheralImagingRealTimeScan }, 
+      { "http://snomed.info/sct#5110001", UltrasoundPeripheralImagingRealTimeScan }, 
+      { "5113004", T4FreeMeasurement }, 
+      { "http://snomed.info/sct#5113004", T4FreeMeasurement }, 
+      { "5119000", Epiglottidectomy }, 
+      { "http://snomed.info/sct#5119000", Epiglottidectomy }, 
+      { "5121005", WedgeOsteotomyOfPelvicBone }, 
+      { "http://snomed.info/sct#5121005", WedgeOsteotomyOfPelvicBone }, 
+      { "5123008", AnesthesiaForProcedureOnPericardiumWithPumpOxygenator }, 
+      { "http://snomed.info/sct#5123008", AnesthesiaForProcedureOnPericardiumWithPumpOxygenator }, 
+      { "5130002", ExtractionOfPrimaryMembranousCataractByDiscission }, 
+      { "http://snomed.info/sct#5130002", ExtractionOfPrimaryMembranousCataractByDiscission }, 
+      { "5131003", RadiographyOfChestWall }, 
+      { "http://snomed.info/sct#5131003", RadiographyOfChestWall }, 
+      { "5135007", DiagnosticProcedureOnScapula }, 
+      { "http://snomed.info/sct#5135007", DiagnosticProcedureOnScapula }, 
+      { "5147001", ExcisionOfLesionOfAnkleJoint }, 
+      { "http://snomed.info/sct#5147001", ExcisionOfLesionOfAnkleJoint }, 
+      { "5151004", ManualReductionOfHemorrhoids }, 
+      { "http://snomed.info/sct#5151004", ManualReductionOfHemorrhoids }, 
+      { "5154007", SpeechTherapy }, 
+      { "http://snomed.info/sct#5154007", SpeechTherapy }, 
+      { "5161006", SpecialtyClinicAdmission }, 
+      { "http://snomed.info/sct#5161006", SpecialtyClinicAdmission }, 
+      { "5162004", ExcisionOfPressureUlcer }, 
+      { "http://snomed.info/sct#5162004", ExcisionOfPressureUlcer }, 
+      { "5165002", DivisionOfThoracicArtery }, 
+      { "http://snomed.info/sct#5165002", DivisionOfThoracicArtery }, 
+      { "5176003", ThromboendarterectomyWithGraftOfRenalArtery }, 
+      { "http://snomed.info/sct#5176003", ThromboendarterectomyWithGraftOfRenalArtery }, 
+      { "5182000", TotalBodyPerfusion }, 
+      { "http://snomed.info/sct#5182000", TotalBodyPerfusion }, 
+      { "5184004", OsteotomyOfShaftOfFemurWithFixation }, 
+      { "http://snomed.info/sct#5184004", OsteotomyOfShaftOfFemurWithFixation }, 
+      { "5186002", ArthrotomyForSynovectomyOfGlenohumeralJoint }, 
+      { "http://snomed.info/sct#5186002", ArthrotomyForSynovectomyOfGlenohumeralJoint }, 
+      { "5190000", CellFusion }, 
+      { "http://snomed.info/sct#5190000", CellFusion }, 
+      { "5191001", SurgicalTreatmentOfMissedAbortionOfSecondTrimester }, 
+      { "http://snomed.info/sct#5191001", SurgicalTreatmentOfMissedAbortionOfSecondTrimester }, 
+      { "5212002", ExcisionOfLesionOfLacrimalGlandByFrontalApproach }, 
+      { "http://snomed.info/sct#5212002", ExcisionOfLesionOfLacrimalGlandByFrontalApproach }, 
+      { "5216004", ThreeDimensionalUltrasoundImagingOfHeart }, 
+      { "http://snomed.info/sct#5216004", ThreeDimensionalUltrasoundImagingOfHeart }, 
+      { "5233006", LateralFasciotomy }, 
+      { "http://snomed.info/sct#5233006", LateralFasciotomy }, 
+      { "5243009", SutureOfAdenoidFossa }, 
+      { "http://snomed.info/sct#5243009", SutureOfAdenoidFossa }, 
+      { "5245002", TransplantationOfPeripheralVein }, 
+      { "http://snomed.info/sct#5245002", TransplantationOfPeripheralVein }, 
+      { "5246001", BreakpointClusterRegionAnalysis }, 
+      { "http://snomed.info/sct#5246001", BreakpointClusterRegionAnalysis }, 
+      { "5264008", TotalBileAcidsMeasurement }, 
+      { "http://snomed.info/sct#5264008", TotalBileAcidsMeasurement }, 
+      { "5267001", LigationOfAdrenalArtery }, 
+      { "http://snomed.info/sct#5267001", LigationOfAdrenalArtery }, 
+      { "5270002", BilateralDestructionOfFallopianTubes }, 
+      { "http://snomed.info/sct#5270002", BilateralDestructionOfFallopianTubes }, 
+      { "5273000", ReductionOfClosedFractureOfProximalEndOfUlnaWithManipulation }, 
+      { "http://snomed.info/sct#5273000", ReductionOfClosedFractureOfProximalEndOfUlnaWithManipulation }, 
+      { "5282006", OperationOnOropharynx }, 
+      { "http://snomed.info/sct#5282006", OperationOnOropharynx }, 
+      { "5290006", IncisionAndDrainageOfLudwigQuoteSAngina }, 
+      { "http://snomed.info/sct#5290006", IncisionAndDrainageOfLudwigQuoteSAngina }, 
+      { "5298004", IncisionAndDrainageOfDeepHematomaOfThighRegion }, 
+      { "http://snomed.info/sct#5298004", IncisionAndDrainageOfDeepHematomaOfThighRegion }, 
+      { "5304008", DeepRadiationTherapy200300KVP }, 
+      { "http://snomed.info/sct#5304008", DeepRadiationTherapy200300KVP }, 
+      { "531007", OpenPulmonaryValveCommissurotomyWithInflowOcclusion }, 
+      { "http://snomed.info/sct#531007", OpenPulmonaryValveCommissurotomyWithInflowOcclusion }, 
+      { "5316002", ClosedOsteotomyOfMandibularRamus }, 
+      { "http://snomed.info/sct#5316002", ClosedOsteotomyOfMandibularRamus }, 
+      { "5317006", RadicalAmputationOfPenisWithBilateralPelvicLymphadenectomy }, 
+      { "http://snomed.info/sct#5317006", RadicalAmputationOfPenisWithBilateralPelvicLymphadenectomy }, 
+      { "5326009", AdministrationOfDermatologicFormulation }, 
+      { "http://snomed.info/sct#5326009", AdministrationOfDermatologicFormulation }, 
+      { "5328005", ShorteningOfAchillesTendon }, 
+      { "http://snomed.info/sct#5328005", ShorteningOfAchillesTendon }, 
+      { "533005", RepairOfVesicocolicFistula }, 
+      { "http://snomed.info/sct#533005", RepairOfVesicocolicFistula }, 
+      { "5337005", TrocarBiopsy }, 
+      { "http://snomed.info/sct#5337005", TrocarBiopsy }, 
+      { "5338000", NicotineMeasurement }, 
+      { "http://snomed.info/sct#5338000", NicotineMeasurement }, 
+      { "5342002", ProphylacticTreatmentOfTibiaWithMethylMethacrylate }, 
+      { "http://snomed.info/sct#5342002", ProphylacticTreatmentOfTibiaWithMethylMethacrylate }, 
+      { "5348003", RepairOfEndocardialCushionDefect }, 
+      { "http://snomed.info/sct#5348003", RepairOfEndocardialCushionDefect }, 
+      { "535003", ClosureOfUreterovesicovaginalFistula }, 
+      { "http://snomed.info/sct#535003", ClosureOfUreterovesicovaginalFistula }, 
+      { "5357009", LeukocytePoorBloodPreparation }, 
+      { "http://snomed.info/sct#5357009", LeukocytePoorBloodPreparation }, 
+      { "5373003", StressBreaker }, 
+      { "http://snomed.info/sct#5373003", StressBreaker }, 
+      { "5384005", ExcisionOfPartOfFrontalCortex }, 
+      { "http://snomed.info/sct#5384005", ExcisionOfPartOfFrontalCortex }, 
+      { "5391008", ArtificialVoiceRehabilitation }, 
+      { "http://snomed.info/sct#5391008", ArtificialVoiceRehabilitation }, 
+      { "5393006", ExplorationOfParathyroidWithMediastinalExplorationBySternalSplitApproach }, 
+      { "http://snomed.info/sct#5393006", ExplorationOfParathyroidWithMediastinalExplorationBySternalSplitApproach }, 
+      { "540006", AntibodyToSingleAndDoubleStrandedDNAMeasurement }, 
+      { "http://snomed.info/sct#540006", AntibodyToSingleAndDoubleStrandedDNAMeasurement }, 
+      { "5402006", ManipulationOfThoracicArtery }, 
+      { "http://snomed.info/sct#5402006", ManipulationOfThoracicArtery }, 
+      { "5407000", InjectionOfFallopianTube }, 
+      { "http://snomed.info/sct#5407000", InjectionOfFallopianTube }, 
+      { "5415002", DestructionOfLesionOfLiver }, 
+      { "http://snomed.info/sct#5415002", DestructionOfLesionOfLiver }, 
+      { "5419008", LysisOfAdhesionsOfTendonOfHand }, 
+      { "http://snomed.info/sct#5419008", LysisOfAdhesionsOfTendonOfHand }, 
+      { "5422005", AmylaseMeasurementPeritonealFluid }, 
+      { "http://snomed.info/sct#5422005", AmylaseMeasurementPeritonealFluid }, 
+      { "5429001", DiagnosticProcedureOnNipple }, 
+      { "http://snomed.info/sct#5429001", DiagnosticProcedureOnNipple }, 
+      { "543008", CholedochostomyWithTransduodenalSphincteroplasty }, 
+      { "http://snomed.info/sct#543008", CholedochostomyWithTransduodenalSphincteroplasty }, 
+      { "5431005", PercutaneousTransluminalAngioplasty }, 
+      { "http://snomed.info/sct#5431005", PercutaneousTransluminalAngioplasty }, 
+      { "5433008", SkeletalXRayOfLowerLimb }, 
+      { "http://snomed.info/sct#5433008", SkeletalXRayOfLowerLimb }, 
+      { "5446003", ExcisionOfCervicalRibForOutletCompressionSyndromeWithSympathectomy }, 
+      { "http://snomed.info/sct#5446003", ExcisionOfCervicalRibForOutletCompressionSyndromeWithSympathectomy }, 
+      { "5447007", Transfusion }, 
+      { "http://snomed.info/sct#5447007", Transfusion }, 
+      { "545001", OperativeProcedureOnLowerLeg }, 
+      { "http://snomed.info/sct#545001", OperativeProcedureOnLowerLeg }, 
+      { "5452002", CoreNeedleBiopsyOfThymus }, 
+      { "http://snomed.info/sct#5452002", CoreNeedleBiopsyOfThymus }, 
+      { "5456004", GraftOfLymphaticStructure }, 
+      { "http://snomed.info/sct#5456004", GraftOfLymphaticStructure }, 
+      { "5457008", SerologicTestForRickettsiaConorii }, 
+      { "http://snomed.info/sct#5457008", SerologicTestForRickettsiaConorii }, 
+      { "5460001", RemovalOfProsthesisFromFallopianTube }, 
+      { "http://snomed.info/sct#5460001", RemovalOfProsthesisFromFallopianTube }, 
+      { "5479003", SelectPictureAudiometry }, 
+      { "http://snomed.info/sct#5479003", SelectPictureAudiometry }, 
+      { "5482008", SerologicTestForBlastomyces }, 
+      { "http://snomed.info/sct#5482008", SerologicTestForBlastomyces }, 
+      { "5486006", DelayedSutureOfTendonOfHand }, 
+      { "http://snomed.info/sct#5486006", DelayedSutureOfTendonOfHand }, 
+      { "5489004", DiagnosticProcedureOnRadius }, 
+      { "http://snomed.info/sct#5489004", DiagnosticProcedureOnRadius }, 
+      { "549007", IncisionOfIntracranialVein }, 
+      { "http://snomed.info/sct#549007", IncisionOfIntracranialVein }, 
+      { "550007", ExcisionOfLesionOfAdenoids }, 
+      { "http://snomed.info/sct#550007", ExcisionOfLesionOfAdenoids }, 
+      { "5506006", IncisionAndExplorationOfAbdominalWall }, 
+      { "http://snomed.info/sct#5506006", IncisionAndExplorationOfAbdominalWall }, 
+      { "5517007", RestorationInlayPorcelainCeramicPerToothInAdditionToInlay }, 
+      { "http://snomed.info/sct#5517007", RestorationInlayPorcelainCeramicPerToothInAdditionToInlay }, 
+      { "5521000", OpenReductionOfFractureOfPhalangesOfFoot }, 
+      { "http://snomed.info/sct#5521000", OpenReductionOfFractureOfPhalangesOfFoot }, 
+      { "5536002", ArthrodesisOfCarpometacarpalJointOfDigitsOtherThanThumb }, 
+      { "http://snomed.info/sct#5536002", ArthrodesisOfCarpometacarpalJointOfDigitsOtherThanThumb }, 
+      { "5545001", RepairOfCarotidBody }, 
+      { "http://snomed.info/sct#5545001", RepairOfCarotidBody }, 
+      { "5551006", DirectLaryngoscopyWithArytenoidectomyWithOperatingMicroscope }, 
+      { "http://snomed.info/sct#5551006", DirectLaryngoscopyWithArytenoidectomyWithOperatingMicroscope }, 
+      { "5556001", ManuallyAssistedSpontaneousDelivery }, 
+      { "http://snomed.info/sct#5556001", ManuallyAssistedSpontaneousDelivery }, 
+      { "5570001", ArthrotomyForInfectionWithExplorationAndDrainageOfCarpometacarpalJoint }, 
+      { "http://snomed.info/sct#5570001", ArthrotomyForInfectionWithExplorationAndDrainageOfCarpometacarpalJoint }, 
+      { "5571002", ExcisionOfLesionOfAortaWithEndToEndAnastomosis }, 
+      { "http://snomed.info/sct#5571002", ExcisionOfLesionOfAortaWithEndToEndAnastomosis }, 
+      { "5572009", IncisionOfKidneyPelvis }, 
+      { "http://snomed.info/sct#5572009", IncisionOfKidneyPelvis }, 
+      { "5586008", AminolevulinicAcidDehydrataseMeasurement }, 
+      { "http://snomed.info/sct#5586008", AminolevulinicAcidDehydrataseMeasurement }, 
+      { "559008", ExcisionOfVaricoseVein }, 
+      { "http://snomed.info/sct#559008", ExcisionOfVaricoseVein }, 
+      { "5608002", ExcretionMeasurement }, 
+      { "http://snomed.info/sct#5608002", ExcretionMeasurement }, 
+      { "5616006", OsteoplastyOfTibia }, 
+      { "http://snomed.info/sct#5616006", OsteoplastyOfTibia }, 
+      { "5621009", ExcisionOfMalignantLesionOfSkinOfExtremities }, 
+      { "http://snomed.info/sct#5621009", ExcisionOfMalignantLesionOfSkinOfExtremities }, 
+      { "5632009", OpenBiopsyOfBronchus }, 
+      { "http://snomed.info/sct#5632009", OpenBiopsyOfBronchus }, 
+      { "5636007", FistulectomyOfBone }, 
+      { "http://snomed.info/sct#5636007", FistulectomyOfBone }, 
+      { "5638008", CarbohydrateMeasurement }, 
+      { "http://snomed.info/sct#5638008", CarbohydrateMeasurement }, 
+      { "5648005", SurgicalRepairAndRevisionOfShunt }, 
+      { "http://snomed.info/sct#5648005", SurgicalRepairAndRevisionOfShunt }, 
+      { "5651003", ArylsulfataseAMeasurement }, 
+      { "http://snomed.info/sct#5651003", ArylsulfataseAMeasurement }, 
+      { "5663008", PhlebectomyOfVaricoseVeinOfHeadAndNeck }, 
+      { "http://snomed.info/sct#5663008", PhlebectomyOfVaricoseVeinOfHeadAndNeck }, 
+      { "5669007", PortableElectroencephalogramAwakeAndAsleepWithStimulation }, 
+      { "http://snomed.info/sct#5669007", PortableElectroencephalogramAwakeAndAsleepWithStimulation }, 
+      { "5671007", MagnetExtractionOfForeignBodyFromCiliaryBody }, 
+      { "http://snomed.info/sct#5671007", MagnetExtractionOfForeignBodyFromCiliaryBody }, 
+      { "5687005", RemovalOfForeignBodyFromOvary }, 
+      { "http://snomed.info/sct#5687005", RemovalOfForeignBodyFromOvary }, 
+      { "5690004", IncisionOfSeminalVesicle }, 
+      { "http://snomed.info/sct#5690004", IncisionOfSeminalVesicle }, 
+      { "5694008", CrisisInterventionWithFollowUp }, 
+      { "http://snomed.info/sct#5694008", CrisisInterventionWithFollowUp }, 
+      { "570001", VaccinationForArthropodBorneViralEncephalitis }, 
+      { "http://snomed.info/sct#570001", VaccinationForArthropodBorneViralEncephalitis }, 
+      { "5721002", RepairOfEyebrow }, 
+      { "http://snomed.info/sct#5721002", RepairOfEyebrow }, 
+      { "5722009", SurgicalReanastomosisOfColon }, 
+      { "http://snomed.info/sct#5722009", SurgicalReanastomosisOfColon }, 
+      { "5726007", RemovalOfEpicardialElectrodes }, 
+      { "http://snomed.info/sct#5726007", RemovalOfEpicardialElectrodes }, 
+      { "5728008", AnoscopyForRemovalOfForeignBody }, 
+      { "http://snomed.info/sct#5728008", AnoscopyForRemovalOfForeignBody }, 
+      { "5731009", HemosiderinQuantitativeMeasurement }, 
+      { "http://snomed.info/sct#5731009", HemosiderinQuantitativeMeasurement }, 
+      { "5733007", FluorescentIdentificationOfAntiNuclearAntibody }, 
+      { "http://snomed.info/sct#5733007", FluorescentIdentificationOfAntiNuclearAntibody }, 
+      { "5738003", BiopsyOfCulDeSac }, 
+      { "http://snomed.info/sct#5738003", BiopsyOfCulDeSac }, 
+      { "574005", BenzodiazepineMeasurement }, 
+      { "http://snomed.info/sct#574005", BenzodiazepineMeasurement }, 
+      { "5745003", ExcisionAmpullaOfVaterWithReimplantationOfCommonDuct }, 
+      { "http://snomed.info/sct#5745003", ExcisionAmpullaOfVaterWithReimplantationOfCommonDuct }, 
+      { "5760000", OsteoplastyOfRadiusAndUlnaShortening }, 
+      { "http://snomed.info/sct#5760000", OsteoplastyOfRadiusAndUlnaShortening }, 
+      { "5771004", Blepharotomy }, 
+      { "http://snomed.info/sct#5771004", Blepharotomy }, 
+      { "5777000", FlexorplastyOfElbow }, 
+      { "http://snomed.info/sct#5777000", FlexorplastyOfElbow }, 
+      { "5781000", OperationOnNasalSeptum }, 
+      { "http://snomed.info/sct#5781000", OperationOnNasalSeptum }, 
+      { "5785009", ForensicAutopsy }, 
+      { "http://snomed.info/sct#5785009", ForensicAutopsy }, 
+      { "5787001", ElevationOfBoneFragmentsOfOrbitOfSkullWithDebridement }, 
+      { "http://snomed.info/sct#5787001", ElevationOfBoneFragmentsOfOrbitOfSkullWithDebridement }, 
+      { "5789003", LysisOfAdhesionsOfIntestines }, 
+      { "http://snomed.info/sct#5789003", LysisOfAdhesionsOfIntestines }, 
+      { "5796001", ExcisionOfExternalThromboticHemorrhoid }, 
+      { "http://snomed.info/sct#5796001", ExcisionOfExternalThromboticHemorrhoid }, 
+      { "5806001", RevisionOfTracheostomyScar }, 
+      { "http://snomed.info/sct#5806001", RevisionOfTracheostomyScar }, 
+      { "5807005", FenestrationOfInnerEarInitial }, 
+      { "http://snomed.info/sct#5807005", FenestrationOfInnerEarInitial }, 
+      { "5809008", SelectiveVagotomyWithPyloroplastyAndGastrostomy }, 
+      { "http://snomed.info/sct#5809008", SelectiveVagotomyWithPyloroplastyAndGastrostomy }, 
+      { "5812006", LaboratoryReportingFax }, 
+      { "http://snomed.info/sct#5812006", LaboratoryReportingFax }, 
+      { "5818005", FlocculationTest }, 
+      { "http://snomed.info/sct#5818005", FlocculationTest }, 
+      { "5821007", LigationDivisionAndCompleteStrippingOfLongAndShortSaphenousVeins }, 
+      { "http://snomed.info/sct#5821007", LigationDivisionAndCompleteStrippingOfLongAndShortSaphenousVeins }, 
+      { "5823005", DiagnosticRadiographyLeft }, 
+      { "http://snomed.info/sct#5823005", DiagnosticRadiographyLeft }, 
+      { "5832007", PartialOstectomyOfThoraxRibsOrSternum }, 
+      { "http://snomed.info/sct#5832007", PartialOstectomyOfThoraxRibsOrSternum }, 
+      { "5845006", EmulsificationProcedure }, 
+      { "http://snomed.info/sct#5845006", EmulsificationProcedure }, 
+      { "5846007", DiagnosticRadiographyOfToes }, 
+      { "http://snomed.info/sct#5846007", DiagnosticRadiographyOfToes }, 
+      { "5857002", ComplementMediatedCytotoxicityAssay }, 
+      { "http://snomed.info/sct#5857002", ComplementMediatedCytotoxicityAssay }, 
+      { "5865004", OpenReductionOfDislocationOfToe }, 
+      { "http://snomed.info/sct#5865004", OpenReductionOfDislocationOfToe }, 
+      { "5870006", TertiaryClosureOfAbdominalWall }, 
+      { "http://snomed.info/sct#5870006", TertiaryClosureOfAbdominalWall }, 
+      { "5880005", ClinicalExamination }, 
+      { "http://snomed.info/sct#5880005", ClinicalExamination }, 
+      { "5892005", MastoidAntrotomy }, 
+      { "http://snomed.info/sct#5892005", MastoidAntrotomy }, 
+      { "5894006", MethylRedTest }, 
+      { "http://snomed.info/sct#5894006", MethylRedTest }, 
+      { "5897004", RemovalOfScribnerShunt }, 
+      { "http://snomed.info/sct#5897004", RemovalOfScribnerShunt }, 
+      { "5902003", HistoryAndPhysicalExaminationComplete }, 
+      { "http://snomed.info/sct#5902003", HistoryAndPhysicalExaminationComplete }, 
+      { "5925002", IncisionAndDrainageOfHematomaOfWrist }, 
+      { "http://snomed.info/sct#5925002", IncisionAndDrainageOfHematomaOfWrist }, 
+      { "5930003", CardiacMonitorRemoval }, 
+      { "http://snomed.info/sct#5930003", CardiacMonitorRemoval }, 
+      { "5947002", ConsultationForHearingAndOrSpeechProblem }, 
+      { "http://snomed.info/sct#5947002", ConsultationForHearingAndOrSpeechProblem }, 
+      { "5961007", DivisionOfBloodVesselsOfCornea }, 
+      { "http://snomed.info/sct#5961007", DivisionOfBloodVesselsOfCornea }, 
+      { "5966002", RemovalOfForeignBodyFromElbowAreaDeep }, 
+      { "http://snomed.info/sct#5966002", RemovalOfForeignBodyFromElbowAreaDeep }, 
+      { "5971009", IncisionAndDrainageOfAxilla }, 
+      { "http://snomed.info/sct#5971009", IncisionAndDrainageOfAxilla }, 
+      { "5983006", RepairOfSpermaticCord }, 
+      { "http://snomed.info/sct#5983006", RepairOfSpermaticCord }, 
+      { "5986003", NonSensitizedSpontaneousSheepErythrocyteBindingERosette }, 
+      { "http://snomed.info/sct#5986003", NonSensitizedSpontaneousSheepErythrocyteBindingERosette }, 
+      { "5992009", MidtarsalArthrodesisMultiple }, 
+      { "http://snomed.info/sct#5992009", MidtarsalArthrodesisMultiple }, 
+      { "5995006", GasLiquidChromatographyFlamePhotometricType }, 
+      { "http://snomed.info/sct#5995006", GasLiquidChromatographyFlamePhotometricType }, 
+      { "5997003", DrainageOfCerebralSubarachnoidSpaceByAspiration }, 
+      { "http://snomed.info/sct#5997003", DrainageOfCerebralSubarachnoidSpaceByAspiration }, 
+      { "5998008", RadicalDissectionOfGroin }, 
+      { "http://snomed.info/sct#5998008", RadicalDissectionOfGroin }, 
+      { "6005008", TransplantationOfVitreousByAnteriorApproach }, 
+      { "http://snomed.info/sct#6005008", TransplantationOfVitreousByAnteriorApproach }, 
+      { "6007000", MagneticResonanceImagingOfChest }, 
+      { "http://snomed.info/sct#6007000", MagneticResonanceImagingOfChest }, 
+      { "6019008", EndoscopyOfLargeIntestine }, 
+      { "http://snomed.info/sct#6019008", EndoscopyOfLargeIntestine }, 
+      { "6025007", LaparoscopicAppendectomy }, 
+      { "http://snomed.info/sct#6025007", LaparoscopicAppendectomy }, 
+      { "6026008", RemovalOfCoronaryArteryObstructionByPercutaneousTransluminalBalloonWithThrombolyticAgent }, 
+      { "http://snomed.info/sct#6026008", RemovalOfCoronaryArteryObstructionByPercutaneousTransluminalBalloonWithThrombolyticAgent }, 
+      { "6029001", AugmentationOfOutflowTractOfPulmonaryValve }, 
+      { "http://snomed.info/sct#6029001", AugmentationOfOutflowTractOfPulmonaryValve }, 
+      { "603006", Synchondrotomy }, 
+      { "http://snomed.info/sct#603006", Synchondrotomy }, 
+      { "6035001", ChartAbstracting }, 
+      { "http://snomed.info/sct#6035001", ChartAbstracting }, 
+      { "6063004", KanamycinMeasurement }, 
+      { "http://snomed.info/sct#6063004", KanamycinMeasurement }, 
+      { "6069000", Panniculotomy }, 
+      { "http://snomed.info/sct#6069000", Panniculotomy }, 
+      { "6082008", PerforationOfFootplate }, 
+      { "http://snomed.info/sct#6082008", PerforationOfFootplate }, 
+      { "6092000", AspirationOfNasalSinusByPuncture }, 
+      { "http://snomed.info/sct#6092000", AspirationOfNasalSinusByPuncture }, 
+      { "6100001", FenestrationOfStapesFootplateWithVeinGraft }, 
+      { "http://snomed.info/sct#6100001", FenestrationOfStapesFootplateWithVeinGraft }, 
+      { "6108008", SubduralTapThroughFontanelInfantInitial }, 
+      { "http://snomed.info/sct#6108008", SubduralTapThroughFontanelInfantInitial }, 
+      { "6119006", LocalDestructionOfLesionOfBonyPalate }, 
+      { "http://snomed.info/sct#6119006", LocalDestructionOfLesionOfBonyPalate }, 
+      { "6125005", ChangeOfGastrostomyTube }, 
+      { "http://snomed.info/sct#6125005", ChangeOfGastrostomyTube }, 
+      { "6126006", FitzgeraldFactorAssay }, 
+      { "http://snomed.info/sct#6126006", FitzgeraldFactorAssay }, 
+      { "6127002", DiagnosticRadiographyOfAbdomenObliqueStandard }, 
+      { "http://snomed.info/sct#6127002", DiagnosticRadiographyOfAbdomenObliqueStandard }, 
+      { "6130009", SurgicalExposureOfImpactedOrUneruptedToothToAidEruption }, 
+      { "http://snomed.info/sct#6130009", SurgicalExposureOfImpactedOrUneruptedToothToAidEruption }, 
+      { "6133006", LymphokineAssay }, 
+      { "http://snomed.info/sct#6133006", LymphokineAssay }, 
+      { "6143009", DiabeticEducation }, 
+      { "http://snomed.info/sct#6143009", DiabeticEducation }, 
+      { "6146001", RepairOfHeartSeptumWithProsthesis }, 
+      { "http://snomed.info/sct#6146001", RepairOfHeartSeptumWithProsthesis }, 
+      { "6148000", ChondrectomyOfSemilunarCartilageOfKnee }, 
+      { "http://snomed.info/sct#6148000", ChondrectomyOfSemilunarCartilageOfKnee }, 
+      { "6157006", EndoscopicRetrogradeCholangiopancreatographyWithBiopsy }, 
+      { "http://snomed.info/sct#6157006", EndoscopicRetrogradeCholangiopancreatographyWithBiopsy }, 
+      { "6159009", GalactoseMeasurement }, 
+      { "http://snomed.info/sct#6159009", GalactoseMeasurement }, 
+      { "6161000", ExcisionOfLesionOfCapsuleOfToes }, 
+      { "http://snomed.info/sct#6161000", ExcisionOfLesionOfCapsuleOfToes }, 
+      { "6164008", OsteoclasisOfClavicle }, 
+      { "http://snomed.info/sct#6164008", OsteoclasisOfClavicle }, 
+      { "6166005", Nephropyeloureterostomy }, 
+      { "http://snomed.info/sct#6166005", Nephropyeloureterostomy }, 
+      { "617002", BoneGraftToMandible }, 
+      { "http://snomed.info/sct#617002", BoneGraftToMandible }, 
+      { "6177004", SouthernBlotAssay }, 
+      { "http://snomed.info/sct#6177004", SouthernBlotAssay }, 
+      { "618007", FrontalSinusectomy }, 
+      { "http://snomed.info/sct#618007", FrontalSinusectomy }, 
+      { "6187000", RepairOfAneurysmWithGraftOfCommonFemoralArtery }, 
+      { "http://snomed.info/sct#6187000", RepairOfAneurysmWithGraftOfCommonFemoralArtery }, 
+      { "6188005", ArthrotomyOfKnee }, 
+      { "http://snomed.info/sct#6188005", ArthrotomyOfKnee }, 
+      { "6189002", ExcisionOfAberrantTissueOfBreast }, 
+      { "http://snomed.info/sct#6189002", ExcisionOfAberrantTissueOfBreast }, 
+      { "6190006", Colopexy }, 
+      { "http://snomed.info/sct#6190006", Colopexy }, 
+      { "6195001", TransurethralDrainageOfProstaticAbscess }, 
+      { "http://snomed.info/sct#6195001", TransurethralDrainageOfProstaticAbscess }, 
+      { "6198004", RepairOfFractureWithSofieldTypeProcedure }, 
+      { "http://snomed.info/sct#6198004", RepairOfFractureWithSofieldTypeProcedure }, 
+      { "6200005", ExcisionOfLesionOfFemalePerineum }, 
+      { "http://snomed.info/sct#6200005", ExcisionOfLesionOfFemalePerineum }, 
+      { "6205000", FluorescentAntigenTiter }, 
+      { "http://snomed.info/sct#6205000", FluorescentAntigenTiter }, 
+      { "6213004", PrescribingCorneoscleralContactLens }, 
+      { "http://snomed.info/sct#6213004", PrescribingCorneoscleralContactLens }, 
+      { "6221005", SutureOfColon }, 
+      { "http://snomed.info/sct#6221005", SutureOfColon }, 
+      { "6225001", AntibodyDetectionRBCEnzyme2StageTechniqueIncludingAntiHumanGlobulin }, 
+      { "http://snomed.info/sct#6225001", AntibodyDetectionRBCEnzyme2StageTechniqueIncludingAntiHumanGlobulin }, 
+      { "6226000", VisualRehabilitationEyeMotionDefect }, 
+      { "http://snomed.info/sct#6226000", VisualRehabilitationEyeMotionDefect }, 
+      { "6227009", RelationshipPsychotherapy }, 
+      { "http://snomed.info/sct#6227009", RelationshipPsychotherapy }, 
+      { "6231003", GraftOfPalate }, 
+      { "http://snomed.info/sct#6231003", GraftOfPalate }, 
+      { "6238009", DiagnosticRadiographyOfSacroiliacJoints }, 
+      { "http://snomed.info/sct#6238009", DiagnosticRadiographyOfSacroiliacJoints }, 
+      { "6240004", OperativeProcedureOnKnee }, 
+      { "http://snomed.info/sct#6240004", OperativeProcedureOnKnee }, 
+      { "625000", RemovalOfSupernumeraryDigit }, 
+      { "http://snomed.info/sct#625000", RemovalOfSupernumeraryDigit }, 
+      { "6255008", ResectionOfAbdominalArteryWithReplacement }, 
+      { "http://snomed.info/sct#6255008", ResectionOfAbdominalArteryWithReplacement }, 
+      { "6271008", EchographyImmersionBScan }, 
+      { "http://snomed.info/sct#6271008", EchographyImmersionBScan }, 
+      { "6274000", ExcisionOfAuralGlomusTumorExtendedExtratemporal }, 
+      { "http://snomed.info/sct#6274000", ExcisionOfAuralGlomusTumorExtendedExtratemporal }, 
+      { "628003", SteinmanTest }, 
+      { "http://snomed.info/sct#628003", SteinmanTest }, 
+      { "6286002", DestructiveProcedureOnOvariesAndFallopianTubes }, 
+      { "http://snomed.info/sct#6286002", DestructiveProcedureOnOvariesAndFallopianTubes }, 
+      { "6289009", WhiteBloodCellHistogramEvaluation }, 
+      { "http://snomed.info/sct#6289009", WhiteBloodCellHistogramEvaluation }, 
+      { "629006", LysisOfAdhesionsOfUrethra }, 
+      { "http://snomed.info/sct#629006", LysisOfAdhesionsOfUrethra }, 
+      { "6295005", SequestrectomyOfPelvicBone }, 
+      { "http://snomed.info/sct#6295005", SequestrectomyOfPelvicBone }, 
+      { "6307005", Keratophakia }, 
+      { "http://snomed.info/sct#6307005", Keratophakia }, 
+      { "6309008", FecalFatDifferentialQuantitative }, 
+      { "http://snomed.info/sct#6309008", FecalFatDifferentialQuantitative }, 
+      { "6319002", BetaLactamaseChromogenicCephalosporinSusceptibilityTest }, 
+      { "http://snomed.info/sct#6319002", BetaLactamaseChromogenicCephalosporinSusceptibilityTest }, 
+      { "633004", ChartReviewByPhysician }, 
+      { "http://snomed.info/sct#633004", ChartReviewByPhysician }, 
+      { "6337001", LigationOfAorticArch }, 
+      { "http://snomed.info/sct#6337001", LigationOfAorticArch }, 
+      { "6339003", ConditioningPlayAudiometry }, 
+      { "http://snomed.info/sct#6339003", ConditioningPlayAudiometry }, 
+      { "6343004", ForensicBiteMarkComparisonTechnique }, 
+      { "http://snomed.info/sct#6343004", ForensicBiteMarkComparisonTechnique }, 
+      { "6353003", MitsudaReactionToLepromin }, 
+      { "http://snomed.info/sct#6353003", MitsudaReactionToLepromin }, 
+      { "6354009", SedimentationRateWestergren }, 
+      { "http://snomed.info/sct#6354009", SedimentationRateWestergren }, 
+      { "6355005", RemovalOfInternalFixationDeviceOfRadius }, 
+      { "http://snomed.info/sct#6355005", RemovalOfInternalFixationDeviceOfRadius }, 
+      { "6358007", CapsulorrhaphyOfJoint }, 
+      { "http://snomed.info/sct#6358007", CapsulorrhaphyOfJoint }, 
+      { "6361008", AnesthesiaForPoplitealThromboendarterectomy }, 
+      { "http://snomed.info/sct#6361008", AnesthesiaForPoplitealThromboendarterectomy }, 
+      { "6363006", DilationOfLacrimalPunctumWithIrrigation }, 
+      { "http://snomed.info/sct#6363006", DilationOfLacrimalPunctumWithIrrigation }, 
+      { "6370006", ChemosurgeryOfStomachLesion }, 
+      { "http://snomed.info/sct#6370006", ChemosurgeryOfStomachLesion }, 
+      { "637003", LysisOfAdhesionsOfNose }, 
+      { "http://snomed.info/sct#637003", LysisOfAdhesionsOfNose }, 
+      { "6384001", RemovalOfDeviceFromDigestiveSystem }, 
+      { "http://snomed.info/sct#6384001", RemovalOfDeviceFromDigestiveSystem }, 
+      { "6385000", ExplorationOfDiscSpace }, 
+      { "http://snomed.info/sct#6385000", ExplorationOfDiscSpace }, 
+      { "6388003", TdTStain }, 
+      { "http://snomed.info/sct#6388003", TdTStain }, 
+      { "6396008", GalactokinaseMeasurement }, 
+      { "http://snomed.info/sct#6396008", GalactokinaseMeasurement }, 
+      { "6397004", MuscularStrengthDevelopmentExercise }, 
+      { "http://snomed.info/sct#6397004", MuscularStrengthDevelopmentExercise }, 
+      { "6399001", DivisionOfArteriovenousFistulaWithLigation }, 
+      { "http://snomed.info/sct#6399001", DivisionOfArteriovenousFistulaWithLigation }, 
+      { "6402000", ExcisionOfCommonBileDuct }, 
+      { "http://snomed.info/sct#6402000", ExcisionOfCommonBileDuct }, 
+      { "6403005", LengtheningOfMuscleOfHand }, 
+      { "http://snomed.info/sct#6403005", LengtheningOfMuscleOfHand }, 
+      { "6419003", ExcisionOfTumorFromElbowAreaDeepSubfascial }, 
+      { "http://snomed.info/sct#6419003", ExcisionOfTumorFromElbowAreaDeepSubfascial }, 
+      { "642006", CerebralThermography }, 
+      { "http://snomed.info/sct#642006", CerebralThermography }, 
+      { "6429005", HeteroautogenousTransplantation }, 
+      { "http://snomed.info/sct#6429005", HeteroautogenousTransplantation }, 
+      { "6433003", ClosedHeartValvotomyOfMitralValve }, 
+      { "http://snomed.info/sct#6433003", ClosedHeartValvotomyOfMitralValve }, 
+      { "6434009", SeminalFluidDetection }, 
+      { "http://snomed.info/sct#6434009", SeminalFluidDetection }, 
+      { "6438007", ExplorationOfCiliaryBody }, 
+      { "http://snomed.info/sct#6438007", ExplorationOfCiliaryBody }, 
+      { "6439004", DestructionOfLesionOfPeripheralNerve }, 
+      { "http://snomed.info/sct#6439004", DestructionOfLesionOfPeripheralNerve }, 
+      { "6443000", PonticPorcelainFusedToPredominantlyBaseMetal }, 
+      { "http://snomed.info/sct#6443000", PonticPorcelainFusedToPredominantlyBaseMetal }, 
+      { "6444006", EnlargementOfEyeSocket }, 
+      { "http://snomed.info/sct#6444006", EnlargementOfEyeSocket }, 
+      { "645008", DiagnosticProcedureOnVitreous }, 
+      { "http://snomed.info/sct#645008", DiagnosticProcedureOnVitreous }, 
+      { "6465000", ArthrotomyOfGlenohumeralJointForInfectionWithDrainage }, 
+      { "http://snomed.info/sct#6465000", ArthrotomyOfGlenohumeralJointForInfectionWithDrainage }, 
+      { "6466004", AdministrationOfRhImmuneGlobulin }, 
+      { "http://snomed.info/sct#6466004", AdministrationOfRhImmuneGlobulin }, 
+      { "647000", ExcisionOfCervixByElectroconization }, 
+      { "http://snomed.info/sct#647000", ExcisionOfCervixByElectroconization }, 
+      { "6470007", Laparoamnioscopy }, 
+      { "http://snomed.info/sct#6470007", Laparoamnioscopy }, 
+      { "6473009", SutureOfOldObstetricalLacerationOfUterus }, 
+      { "http://snomed.info/sct#6473009", SutureOfOldObstetricalLacerationOfUterus }, 
+      { "6480006", UrinaryBladderResidualUrineStudy }, 
+      { "http://snomed.info/sct#6480006", UrinaryBladderResidualUrineStudy }, 
+      { "6486000", CurettageOfSclera }, 
+      { "http://snomed.info/sct#6486000", CurettageOfSclera }, 
+      { "6487009", HandTendonPulleyReconstructionWithTendonProsthesis }, 
+      { "http://snomed.info/sct#6487009", HandTendonPulleyReconstructionWithTendonProsthesis }, 
+      { "6491004", ProteinSFreeAssay }, 
+      { "http://snomed.info/sct#6491004", ProteinSFreeAssay }, 
+      { "6499002", TsugeOperationOnFingerForMacrodactylyRepair }, 
+      { "http://snomed.info/sct#6499002", TsugeOperationOnFingerForMacrodactylyRepair }, 
+      { "6502003", CompleteLowerDenture }, 
+      { "http://snomed.info/sct#6502003", CompleteLowerDenture }, 
+      { "6506000", PlacingAPatientOnABedpan }, 
+      { "http://snomed.info/sct#6506000", PlacingAPatientOnABedpan }, 
+      { "6519001", OperationOnMultipleExtraocularMusclesWithTemporaryDetachmentFromGlobe }, 
+      { "http://snomed.info/sct#6519001", OperationOnMultipleExtraocularMusclesWithTemporaryDetachmentFromGlobe }, 
+      { "6521006", Polytomography }, 
+      { "http://snomed.info/sct#6521006", Polytomography }, 
+      { "6527005", UchidaFimbriectomyWithTubalLigationByEndoscopy }, 
+      { "http://snomed.info/sct#6527005", UchidaFimbriectomyWithTubalLigationByEndoscopy }, 
+      { "6535008", ExcisionOfCystOfHand }, 
+      { "http://snomed.info/sct#6535008", ExcisionOfCystOfHand }, 
+      { "6536009", ImplantationOfTricuspidValveWithTissueGraft }, 
+      { "http://snomed.info/sct#6536009", ImplantationOfTricuspidValveWithTissueGraft }, 
+      { "6543003", ComplicatedCatheterizationOfBladder }, 
+      { "http://snomed.info/sct#6543003", ComplicatedCatheterizationOfBladder }, 
+      { "6547002", RepairWithClosureOfNonSurgicalWound }, 
+      { "http://snomed.info/sct#6547002", RepairWithClosureOfNonSurgicalWound }, 
+      { "6555009", InsertionOfInfusionPumpBeneathSkin }, 
+      { "http://snomed.info/sct#6555009", InsertionOfInfusionPumpBeneathSkin }, 
+      { "6556005", ReticulinAntibodyMeasurement }, 
+      { "http://snomed.info/sct#6556005", ReticulinAntibodyMeasurement }, 
+      { "6562000", DestructionOfLesionOfTongue }, 
+      { "http://snomed.info/sct#6562000", DestructionOfLesionOfTongue }, 
+      { "6563005", TranspositionOfMuscleOfHand }, 
+      { "http://snomed.info/sct#6563005", TranspositionOfMuscleOfHand }, 
+      { "6567006", PulmonaryValveCommissurotomyByTransvenousBalloonMethod }, 
+      { "http://snomed.info/sct#6567006", PulmonaryValveCommissurotomyByTransvenousBalloonMethod }, 
+      { "6568001", DiagnosticProcedureOnEyelid }, 
+      { "http://snomed.info/sct#6568001", DiagnosticProcedureOnEyelid }, 
+      { "657004", OperationOnBursa }, 
+      { "http://snomed.info/sct#657004", OperationOnBursa }, 
+      { "6585004", ClosedReductionOfFractureOfTarsalOrMetatarsal }, 
+      { "http://snomed.info/sct#6585004", ClosedReductionOfFractureOfTarsalOrMetatarsal }, 
+      { "6589005", AntibodyTitrationHighProtein }, 
+      { "http://snomed.info/sct#6589005", AntibodyTitrationHighProtein }, 
+      { "6601003", RemovalOfForeignBodyFromSkinOfAxilla }, 
+      { "http://snomed.info/sct#6601003", RemovalOfForeignBodyFromSkinOfAxilla }, 
+      { "6614002", AntibodyToSingleStrandedDNAMeasurement }, 
+      { "http://snomed.info/sct#6614002", AntibodyToSingleStrandedDNAMeasurement }, 
+      { "6615001", ElectroretinographyWithMedicalEvaluation }, 
+      { "http://snomed.info/sct#6615001", ElectroretinographyWithMedicalEvaluation }, 
+      { "6622009", AddClaspToExistingPartialDenture }, 
+      { "http://snomed.info/sct#6622009", AddClaspToExistingPartialDenture }, 
+      { "6634001", DestructionOfHemorrhoidsInternal }, 
+      { "http://snomed.info/sct#6634001", DestructionOfHemorrhoidsInternal }, 
+      { "6639006", ReplacementOfObstructedValveInShuntSystem }, 
+      { "http://snomed.info/sct#6639006", ReplacementOfObstructedValveInShuntSystem }, 
+      { "6650009", RadionuclideLacrimalFlowStudy }, 
+      { "http://snomed.info/sct#6650009", RadionuclideLacrimalFlowStudy }, 
+      { "665001", PartialMeniscectomyOfTemporomandibularJoint }, 
+      { "http://snomed.info/sct#665001", PartialMeniscectomyOfTemporomandibularJoint }, 
+      { "6656003", AcousticStimulationTest }, 
+      { "http://snomed.info/sct#6656003", AcousticStimulationTest }, 
+      { "6657007", MaintenanceDrugTherapyForMentalDisorder }, 
+      { "http://snomed.info/sct#6657007", MaintenanceDrugTherapyForMentalDisorder }, 
+      { "6658002", RemovalOfForeignBodyFromAlveolus }, 
+      { "http://snomed.info/sct#6658002", RemovalOfForeignBodyFromAlveolus }, 
+      { "6661001", KingSteelquistHindquarterOperation }, 
+      { "http://snomed.info/sct#6661001", KingSteelquistHindquarterOperation }, 
+      { "6665005", RestorationCrownPorcelainFusedToNobleMetal }, 
+      { "http://snomed.info/sct#6665005", RestorationCrownPorcelainFusedToNobleMetal }, 
+      { "6668007", FibrinogenAssayQuantitative }, 
+      { "http://snomed.info/sct#6668007", FibrinogenAssayQuantitative }, 
+      { "6670003", ClosureOfExternalFistulaOfTrachea }, 
+      { "http://snomed.info/sct#6670003", ClosureOfExternalFistulaOfTrachea }, 
+      { "670008", ElectrosurgicalEpilationOfEyebrow }, 
+      { "http://snomed.info/sct#670008", ElectrosurgicalEpilationOfEyebrow }, 
+      { "671007", TransplantationOfTestis }, 
+      { "http://snomed.info/sct#671007", TransplantationOfTestis }, 
+      { "673005", IndirectLaryngoscopy }, 
+      { "http://snomed.info/sct#673005", IndirectLaryngoscopy }, 
+      { "674004", AbductionTest }, 
+      { "http://snomed.info/sct#674004", AbductionTest }, 
+      { "676002", PeritonealDialysisIncludingCannulation }, 
+      { "http://snomed.info/sct#676002", PeritonealDialysisIncludingCannulation }, 
+      { "680007", RadiationPhysicsConsultation }, 
+      { "http://snomed.info/sct#680007", RadiationPhysicsConsultation }, 
+      { "687005", AlbuminGlobulinRatio }, 
+      { "http://snomed.info/sct#687005", AlbuminGlobulinRatio }, 
+      { "695009", DestructiveProcedureOfLesionOnSkinOfTrunk }, 
+      { "http://snomed.info/sct#695009", DestructiveProcedureOfLesionOnSkinOfTrunk }, 
+      { "697001", HepatitisAVirusAntibodyMeasurement }, 
+      { "http://snomed.info/sct#697001", HepatitisAVirusAntibodyMeasurement }, 
+      { "710006", ThromboendarterectomyWithGraftOfMesentericArtery }, 
+      { "http://snomed.info/sct#710006", ThromboendarterectomyWithGraftOfMesentericArtery }, 
+      { "712003", ClosedChestSuction }, 
+      { "http://snomed.info/sct#712003", ClosedChestSuction }, 
+      { "721002", MedicalProcedureOnPeriurethralTissue }, 
+      { "http://snomed.info/sct#721002", MedicalProcedureOnPeriurethralTissue }, 
+      { "722009", FineNeedleBiopsyOfThymus }, 
+      { "http://snomed.info/sct#722009", FineNeedleBiopsyOfThymus }, 
+      { "726007", PathologyConsultationComprehensiveRecordsAndSpecimenWithReport }, 
+      { "http://snomed.info/sct#726007", PathologyConsultationComprehensiveRecordsAndSpecimenWithReport }, 
+      { "730005", IncisionOfSubcutaneousTissue }, 
+      { "http://snomed.info/sct#730005", IncisionOfSubcutaneousTissue }, 
+      { "741007", OperationOnProstate }, 
+      { "http://snomed.info/sct#741007", OperationOnProstate }, 
+      { "746002", ChiropracticAdjustmentOfCoccyxSubluxation }, 
+      { "http://snomed.info/sct#746002", ChiropracticAdjustmentOfCoccyxSubluxation }, 
+      { "753006", ManipulationOfAnkleANDFoot }, 
+      { "http://snomed.info/sct#753006", ManipulationOfAnkleANDFoot }, 
+      { "754000", TotalUrethrectomy }, 
+      { "http://snomed.info/sct#754000", TotalUrethrectomy }, 
+      { "759005", IntracerebralElectroencephalogram }, 
+      { "http://snomed.info/sct#759005", IntracerebralElectroencephalogram }, 
+      { "762008", ComputerizedAxialTomographyOfCervicalSpineWithContrast }, 
+      { "http://snomed.info/sct#762008", ComputerizedAxialTomographyOfCervicalSpineWithContrast }, 
+      { "764009", ArthrodesisOfInterphalangealJointOfGreatToe }, 
+      { "http://snomed.info/sct#764009", ArthrodesisOfInterphalangealJointOfGreatToe }, 
+      { "767002", WhiteBloodCellCount }, 
+      { "http://snomed.info/sct#767002", WhiteBloodCellCount }, 
+      { "789003", CranialDecompressionSubtemporalSupratentorial }, 
+      { "http://snomed.info/sct#789003", CranialDecompressionSubtemporalSupratentorial }, 
+      { "791006", DressingAndFixationProcedure }, 
+      { "http://snomed.info/sct#791006", DressingAndFixationProcedure }, 
+      { "807005", ExcisionOfBrain }, 
+      { "http://snomed.info/sct#807005", ExcisionOfBrain }, 
+      { "814007", ElectrophoresisMeasurement }, 
+      { "http://snomed.info/sct#814007", ElectrophoresisMeasurement }, 
+      { "817000", ExcisionOfCystOfSpleen }, 
+      { "http://snomed.info/sct#817000", ExcisionOfCystOfSpleen }, 
+      { "831000", DrawerTest }, 
+      { "http://snomed.info/sct#831000", DrawerTest }, 
+      { "851001", RootCanalTherapyMolarExcludingFinalRestoration }, 
+      { "http://snomed.info/sct#851001", RootCanalTherapyMolarExcludingFinalRestoration }, 
+      { "853003", FecalFatMeasurement72HourCollection }, 
+      { "http://snomed.info/sct#853003", FecalFatMeasurement72HourCollection }, 
+      { "867007", FacialHypoglossalNerveAnastomosis }, 
+      { "http://snomed.info/sct#867007", FacialHypoglossalNerveAnastomosis }, 
+      { "870006", CarbamazepineMeasurement }, 
+      { "http://snomed.info/sct#870006", CarbamazepineMeasurement }, 
+      { "879007", SpecialBloodCoagulationTestExplainByReport }, 
+      { "http://snomed.info/sct#879007", SpecialBloodCoagulationTestExplainByReport }, 
+      { "881009", Cyclodialysis }, 
+      { "http://snomed.info/sct#881009", Cyclodialysis }, 
+      { "893000", TumorAntigenMeasurement }, 
+      { "http://snomed.info/sct#893000", TumorAntigenMeasurement }, 
+      { "897004", RadicalMaxillaryAntrotomy }, 
+      { "http://snomed.info/sct#897004", RadicalMaxillaryAntrotomy }, 
+      { "910002", MHPGMeasurementUrine }, 
+      { "http://snomed.info/sct#910002", MHPGMeasurementUrine }, 
+      { "911003", RemovalOfSubarachnoidUreteralShunt }, 
+      { "http://snomed.info/sct#911003", RemovalOfSubarachnoidUreteralShunt }, 
+      { "913000", ChiropracticPatientEducationAndInstruction }, 
+      { "http://snomed.info/sct#913000", ChiropracticPatientEducationAndInstruction }, 
+      { "926001", EmbolectomyWithCatheterOfRadialArteryByArmIncision }, 
+      { "http://snomed.info/sct#926001", EmbolectomyWithCatheterOfRadialArteryByArmIncision }, 
+      { "935008", ExcisionOfBulbourethralGland }, 
+      { "http://snomed.info/sct#935008", ExcisionOfBulbourethralGland }, 
+      { "941001", EndoscopyOfPituitaryGland }, 
+      { "http://snomed.info/sct#941001", EndoscopyOfPituitaryGland }, 
+      { "945005", ExcisionOfTibiaAndFibulaForGraft }, 
+      { "http://snomed.info/sct#945005", ExcisionOfTibiaAndFibulaForGraft }, 
+      { "948007", PhlebectomyOfIntracranialVaricoseVein }, 
+      { "http://snomed.info/sct#948007", PhlebectomyOfIntracranialVaricoseVein }, 
+      { "951000", UltrasonicGuidanceForEndomyocardialBiopsy }, 
+      { "http://snomed.info/sct#951000", UltrasonicGuidanceForEndomyocardialBiopsy }, 
+      { "956005", AnesthesiaForProcedureOnThoracicEsophagus }, 
+      { "http://snomed.info/sct#956005", AnesthesiaForProcedureOnThoracicEsophagus }, 
+      { "967006", MedicationEducation }, 
+      { "http://snomed.info/sct#967006", MedicationEducation }, 
+      { "969009", IncisionAndExplorationOfLarynx }, 
+      { "http://snomed.info/sct#969009", IncisionAndExplorationOfLarynx }, 
+      { "971009", ProstheticConstructionAndFitting }, 
+      { "http://snomed.info/sct#971009", ProstheticConstructionAndFitting }, 
+    };
   };
 }

@@ -54,9 +54,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralCalculation = "calculation";
 
     /// <summary>
+    /// Literal for code: MetricCategoryCalculation
+    /// </summary>
+    public const string LiteralMetricCategoryCalculation = "http://hl7.org/fhir/metric-category#calculation";
+
+    /// <summary>
     /// Literal for code: Measurement
     /// </summary>
     public const string LiteralMeasurement = "measurement";
+
+    /// <summary>
+    /// Literal for code: MetricCategoryMeasurement
+    /// </summary>
+    public const string LiteralMetricCategoryMeasurement = "http://hl7.org/fhir/metric-category#measurement";
 
     /// <summary>
     /// Literal for code: Setting
@@ -64,8 +74,32 @@ namespace fhirCsR2.ValueSets
     public const string LiteralSetting = "setting";
 
     /// <summary>
+    /// Literal for code: MetricCategorySetting
+    /// </summary>
+    public const string LiteralMetricCategorySetting = "http://hl7.org/fhir/metric-category#setting";
+
+    /// <summary>
     /// Literal for code: Unspecified
     /// </summary>
     public const string LiteralUnspecified = "unspecified";
+
+    /// <summary>
+    /// Literal for code: MetricCategoryUnspecified
+    /// </summary>
+    public const string LiteralMetricCategoryUnspecified = "http://hl7.org/fhir/metric-category#unspecified";
+
+    /// <summary>
+    /// Dictionary for looking up MetricCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "calculation", Calculation }, 
+      { "http://hl7.org/fhir/metric-category#calculation", Calculation }, 
+      { "measurement", Measurement }, 
+      { "http://hl7.org/fhir/metric-category#measurement", Measurement }, 
+      { "setting", Setting }, 
+      { "http://hl7.org/fhir/metric-category#setting", Setting }, 
+      { "unspecified", Unspecified }, 
+      { "http://hl7.org/fhir/metric-category#unspecified", Unspecified }, 
+    };
   };
 }

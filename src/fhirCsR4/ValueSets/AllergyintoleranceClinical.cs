@@ -45,13 +45,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: AllergyintoleranceClinicalActive
+    /// </summary>
+    public const string LiteralAllergyintoleranceClinicalActive = "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical#active";
+
+    /// <summary>
     /// Literal for code: Inactive
     /// </summary>
     public const string LiteralInactive = "inactive";
 
     /// <summary>
+    /// Literal for code: AllergyintoleranceClinicalInactive
+    /// </summary>
+    public const string LiteralAllergyintoleranceClinicalInactive = "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical#inactive";
+
+    /// <summary>
     /// Literal for code: Resolved
     /// </summary>
     public const string LiteralResolved = "resolved";
+
+    /// <summary>
+    /// Literal for code: AllergyintoleranceClinicalResolved
+    /// </summary>
+    public const string LiteralAllergyintoleranceClinicalResolved = "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical#resolved";
+
+    /// <summary>
+    /// Dictionary for looking up AllergyintoleranceClinical Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical#active", Active }, 
+      { "inactive", Inactive }, 
+      { "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical#inactive", Inactive }, 
+      { "resolved", Resolved }, 
+      { "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical#resolved", Resolved }, 
+    };
   };
 }

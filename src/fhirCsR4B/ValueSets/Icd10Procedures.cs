@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPROC1 = "123001";
 
     /// <summary>
+    /// Literal for code: Icd10ProceduresPROC1
+    /// </summary>
+    public const string LiteralIcd10ProceduresPROC1 = "http://hl7.org/fhir/sid/ex-icd-10-procedures#123001";
+
+    /// <summary>
     /// Literal for code: PROC2
     /// </summary>
     public const string LiteralPROC2 = "123002";
 
     /// <summary>
+    /// Literal for code: Icd10ProceduresPROC2
+    /// </summary>
+    public const string LiteralIcd10ProceduresPROC2 = "http://hl7.org/fhir/sid/ex-icd-10-procedures#123002";
+
+    /// <summary>
     /// Literal for code: PROC3
     /// </summary>
     public const string LiteralPROC3 = "123003";
+
+    /// <summary>
+    /// Literal for code: Icd10ProceduresPROC3
+    /// </summary>
+    public const string LiteralIcd10ProceduresPROC3 = "http://hl7.org/fhir/sid/ex-icd-10-procedures#123003";
+
+    /// <summary>
+    /// Dictionary for looking up Icd10Procedures Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "123001", PROC1 }, 
+      { "http://hl7.org/fhir/sid/ex-icd-10-procedures#123001", PROC1 }, 
+      { "123002", PROC2 }, 
+      { "http://hl7.org/fhir/sid/ex-icd-10-procedures#123002", PROC2 }, 
+      { "123003", PROC3 }, 
+      { "http://hl7.org/fhir/sid/ex-icd-10-procedures#123003", PROC3 }, 
+    };
   };
 }

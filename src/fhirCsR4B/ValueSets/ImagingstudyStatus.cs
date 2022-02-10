@@ -63,9 +63,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAvailable = "available";
 
     /// <summary>
+    /// Literal for code: ImagingstudyStatusAvailable
+    /// </summary>
+    public const string LiteralImagingstudyStatusAvailable = "http://hl7.org/fhir/imagingstudy-status#available";
+
+    /// <summary>
     /// Literal for code: Cancelled
     /// </summary>
     public const string LiteralCancelled = "cancelled";
+
+    /// <summary>
+    /// Literal for code: ImagingstudyStatusCancelled
+    /// </summary>
+    public const string LiteralImagingstudyStatusCancelled = "http://hl7.org/fhir/imagingstudy-status#cancelled";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -73,13 +83,44 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: ImagingstudyStatusEnteredInError
+    /// </summary>
+    public const string LiteralImagingstudyStatusEnteredInError = "http://hl7.org/fhir/imagingstudy-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Registered
     /// </summary>
     public const string LiteralRegistered = "registered";
 
     /// <summary>
+    /// Literal for code: ImagingstudyStatusRegistered
+    /// </summary>
+    public const string LiteralImagingstudyStatusRegistered = "http://hl7.org/fhir/imagingstudy-status#registered";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: ImagingstudyStatusUnknown
+    /// </summary>
+    public const string LiteralImagingstudyStatusUnknown = "http://hl7.org/fhir/imagingstudy-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up ImagingstudyStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "available", Available }, 
+      { "http://hl7.org/fhir/imagingstudy-status#available", Available }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/imagingstudy-status#cancelled", Cancelled }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/imagingstudy-status#entered-in-error", EnteredInError }, 
+      { "registered", Registered }, 
+      { "http://hl7.org/fhir/imagingstudy-status#registered", Registered }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/imagingstudy-status#unknown", Unknown }, 
+    };
   };
 }

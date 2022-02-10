@@ -24,6 +24,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public int? Count { get; set; }
     /// <summary>
+    /// Extension container element for Count
+    /// </summary>
+    public Element _Count { get; set; }
+    /// <summary>
     /// The identifier of the population being reported, as defined by the population element of the measure.
     /// </summary>
     public Identifier Identifier { get; set; }
@@ -59,6 +63,12 @@ namespace fhirCsR3.Models
         writer.WriteNumber("count", (int)Count!);
       }
 
+      if (_Count != null)
+      {
+        writer.WritePropertyName("_count");
+        _Count.SerializeJson(writer, options);
+      }
+
       if (Patients != null)
       {
         writer.WritePropertyName("patients");
@@ -84,6 +94,11 @@ namespace fhirCsR3.Models
 
         case "count":
           Count = reader.GetInt32();
+          break;
+
+        case "_count":
+          _Count = new fhirCsR3.Models.Element();
+          _Count.DeserializeJson(ref reader, options);
           break;
 
         case "identifier":
@@ -141,6 +156,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public int? Count { get; set; }
     /// <summary>
+    /// Extension container element for Count
+    /// </summary>
+    public Element _Count { get; set; }
+    /// <summary>
     /// The identifier of the population being reported, as defined by the population element of the measure.
     /// </summary>
     public Identifier Identifier { get; set; }
@@ -176,6 +195,12 @@ namespace fhirCsR3.Models
         writer.WriteNumber("count", (int)Count!);
       }
 
+      if (_Count != null)
+      {
+        writer.WritePropertyName("_count");
+        _Count.SerializeJson(writer, options);
+      }
+
       if (Patients != null)
       {
         writer.WritePropertyName("patients");
@@ -201,6 +226,11 @@ namespace fhirCsR3.Models
 
         case "count":
           Count = reader.GetInt32();
+          break;
+
+        case "_count":
+          _Count = new fhirCsR3.Models.Element();
+          _Count.DeserializeJson(ref reader, options);
           break;
 
         case "identifier":
@@ -1005,6 +1035,11 @@ namespace fhirCsR3.Models
     public const string COMPLETE = "complete";
     public const string PENDING = "pending";
     public const string ERROR = "error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "complete",
+      "pending",
+      "error",
+    };
   }
   /// <summary>
   /// Code Values for the MeasureReport.type field
@@ -1013,5 +1048,10 @@ namespace fhirCsR3.Models
     public const string INDIVIDUAL = "individual";
     public const string PATIENT_LIST = "patient-list";
     public const string SUMMARY = "summary";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "individual",
+      "patient-list",
+      "summary",
+    };
   }
 }

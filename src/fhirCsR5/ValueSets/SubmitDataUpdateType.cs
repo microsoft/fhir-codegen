@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncremental = "incremental";
 
     /// <summary>
+    /// Literal for code: SubmitDataUpdateTypeIncremental
+    /// </summary>
+    public const string LiteralSubmitDataUpdateTypeIncremental = "http://hl7.org/fhir/CodeSystem/submit-data-update-type#incremental";
+
+    /// <summary>
     /// Literal for code: Snapshot
     /// </summary>
     public const string LiteralSnapshot = "snapshot";
+
+    /// <summary>
+    /// Literal for code: SubmitDataUpdateTypeSnapshot
+    /// </summary>
+    public const string LiteralSubmitDataUpdateTypeSnapshot = "http://hl7.org/fhir/CodeSystem/submit-data-update-type#snapshot";
+
+    /// <summary>
+    /// Dictionary for looking up SubmitDataUpdateType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "incremental", Incremental }, 
+      { "http://hl7.org/fhir/CodeSystem/submit-data-update-type#incremental", Incremental }, 
+      { "snapshot", Snapshot }, 
+      { "http://hl7.org/fhir/CodeSystem/submit-data-update-type#snapshot", Snapshot }, 
+    };
   };
 }

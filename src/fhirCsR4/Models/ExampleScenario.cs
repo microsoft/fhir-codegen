@@ -187,6 +187,10 @@ namespace fhirCsR4.Models
   public static class ExampleScenarioActorTypeCodes {
     public const string PERSON = "person";
     public const string ENTITY = "entity";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "person",
+      "entity",
+    };
   }
   /// <summary>
   /// A specific version of the resource.
@@ -703,6 +707,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? InitiatorActive { get; set; }
     /// <summary>
+    /// Extension container element for InitiatorActive
+    /// </summary>
+    public Element _InitiatorActive { get; set; }
+    /// <summary>
     /// The human-friendly name of the interaction.
     /// </summary>
     public string Name { get; set; }
@@ -730,6 +738,10 @@ namespace fhirCsR4.Models
     /// Whether the receiver is deactivated right after the transaction.
     /// </summary>
     public bool? ReceiverActive { get; set; }
+    /// <summary>
+    /// Extension container element for ReceiverActive
+    /// </summary>
+    public Element _ReceiverActive { get; set; }
     /// <summary>
     /// Each resource instance used by the initiator.
     /// </summary>
@@ -828,9 +840,21 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("initiatorActive", (bool)InitiatorActive!);
       }
 
+      if (_InitiatorActive != null)
+      {
+        writer.WritePropertyName("_initiatorActive");
+        _InitiatorActive.SerializeJson(writer, options);
+      }
+
       if (ReceiverActive != null)
       {
         writer.WriteBoolean("receiverActive", (bool)ReceiverActive!);
+      }
+
+      if (_ReceiverActive != null)
+      {
+        writer.WritePropertyName("_receiverActive");
+        _ReceiverActive.SerializeJson(writer, options);
       }
 
       if (Request != null)
@@ -879,6 +903,11 @@ namespace fhirCsR4.Models
           InitiatorActive = reader.GetBoolean();
           break;
 
+        case "_initiatorActive":
+          _InitiatorActive = new fhirCsR4.Models.Element();
+          _InitiatorActive.DeserializeJson(ref reader, options);
+          break;
+
         case "name":
           Name = reader.GetString();
           break;
@@ -908,6 +937,11 @@ namespace fhirCsR4.Models
 
         case "receiverActive":
           ReceiverActive = reader.GetBoolean();
+          break;
+
+        case "_receiverActive":
+          _ReceiverActive = new fhirCsR4.Models.Element();
+          _ReceiverActive.DeserializeJson(ref reader, options);
           break;
 
         case "request":
@@ -1137,6 +1171,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? Pause { get; set; }
     /// <summary>
+    /// Extension container element for Pause
+    /// </summary>
+    public Element _Pause { get; set; }
+    /// <summary>
     /// Nested process.
     /// </summary>
     public List<ExampleScenarioProcess> Process { get; set; }
@@ -1167,6 +1205,12 @@ namespace fhirCsR4.Models
       if (Pause != null)
       {
         writer.WriteBoolean("pause", (bool)Pause!);
+      }
+
+      if (_Pause != null)
+      {
+        writer.WritePropertyName("_pause");
+        _Pause.SerializeJson(writer, options);
       }
 
       if (Operation != null)
@@ -1234,6 +1278,11 @@ namespace fhirCsR4.Models
 
         case "pause":
           Pause = reader.GetBoolean();
+          break;
+
+        case "_pause":
+          _Pause = new fhirCsR4.Models.Element();
+          _Pause.DeserializeJson(ref reader, options);
           break;
 
         case "process":
@@ -1547,6 +1596,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// Typically, this is used for identifiers that can go in an HL7 V3 II (instance identifier) data type, and can then identify this example scenario outside of FHIR, where it is not possible to use the logical URI.
     /// </summary>
     public List<Identifier> Identifier { get; set; }
@@ -1701,6 +1754,12 @@ namespace fhirCsR4.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -1937,6 +1996,11 @@ namespace fhirCsR4.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR4.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "identifier":
@@ -2219,5 +2283,11 @@ namespace fhirCsR4.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

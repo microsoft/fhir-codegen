@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHighQuality = "high";
 
     /// <summary>
+    /// Literal for code: EvidenceQualityHighQuality
+    /// </summary>
+    public const string LiteralEvidenceQualityHighQuality = "http://terminology.hl7.org/CodeSystem/evidence-quality#high";
+
+    /// <summary>
     /// Literal for code: LowQuality
     /// </summary>
     public const string LiteralLowQuality = "low";
+
+    /// <summary>
+    /// Literal for code: EvidenceQualityLowQuality
+    /// </summary>
+    public const string LiteralEvidenceQualityLowQuality = "http://terminology.hl7.org/CodeSystem/evidence-quality#low";
 
     /// <summary>
     /// Literal for code: ModerateQuality
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralModerateQuality = "moderate";
 
     /// <summary>
+    /// Literal for code: EvidenceQualityModerateQuality
+    /// </summary>
+    public const string LiteralEvidenceQualityModerateQuality = "http://terminology.hl7.org/CodeSystem/evidence-quality#moderate";
+
+    /// <summary>
     /// Literal for code: VeryLowQuality
     /// </summary>
     public const string LiteralVeryLowQuality = "very-low";
+
+    /// <summary>
+    /// Literal for code: EvidenceQualityVeryLowQuality
+    /// </summary>
+    public const string LiteralEvidenceQualityVeryLowQuality = "http://terminology.hl7.org/CodeSystem/evidence-quality#very-low";
+
+    /// <summary>
+    /// Dictionary for looking up EvidenceQuality Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "high", HighQuality }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-quality#high", HighQuality }, 
+      { "low", LowQuality }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-quality#low", LowQuality }, 
+      { "moderate", ModerateQuality }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-quality#moderate", ModerateQuality }, 
+      { "very-low", VeryLowQuality }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-quality#very-low", VeryLowQuality }, 
+    };
   };
 }

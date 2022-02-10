@@ -312,6 +312,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public int? Length { get; set; }
     /// <summary>
+    /// Extension container element for Length
+    /// </summary>
+    public Element _Length { get; set; }
+    /// <summary>
     /// The linkages between sugar residues will also be captured.
     /// </summary>
     public List<SubstanceNucleicAcidSubunitLinkage> Linkage { get; set; }
@@ -331,6 +335,10 @@ namespace fhirCsR5.Models
     /// Index of linear sequences of nucleic acids in order of decreasing length. Sequences of the same length will be ordered by molecular weight. Subunits that have identical sequences will be repeated and have sequential subscripts.
     /// </summary>
     public int? Subunit { get; set; }
+    /// <summary>
+    /// Extension container element for Subunit
+    /// </summary>
+    public Element _Subunit { get; set; }
     /// <summary>
     /// 5.3.6.8.1 Sugar ID (Mandatory).
     /// </summary>
@@ -355,6 +363,12 @@ namespace fhirCsR5.Models
         writer.WriteNumber("subunit", (int)Subunit!);
       }
 
+      if (_Subunit != null)
+      {
+        writer.WritePropertyName("_subunit");
+        _Subunit.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Sequence))
       {
         writer.WriteString("sequence", (string)Sequence!);
@@ -369,6 +383,12 @@ namespace fhirCsR5.Models
       if (Length != null)
       {
         writer.WriteNumber("length", (int)Length!);
+      }
+
+      if (_Length != null)
+      {
+        writer.WritePropertyName("_length");
+        _Length.SerializeJson(writer, options);
       }
 
       if (SequenceAttachment != null)
@@ -436,6 +456,11 @@ namespace fhirCsR5.Models
           Length = reader.GetInt32();
           break;
 
+        case "_length":
+          _Length = new fhirCsR5.Models.Element();
+          _Length.DeserializeJson(ref reader, options);
+          break;
+
         case "linkage":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -479,6 +504,11 @@ namespace fhirCsR5.Models
 
         case "subunit":
           Subunit = reader.GetInt32();
+          break;
+
+        case "_subunit":
+          _Subunit = new fhirCsR5.Models.Element();
+          _Subunit.DeserializeJson(ref reader, options);
           break;
 
         case "sugar":
@@ -566,6 +596,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public int? NumberOfSubunits { get; set; }
     /// <summary>
+    /// Extension container element for NumberOfSubunits
+    /// </summary>
+    public Element _NumberOfSubunits { get; set; }
+    /// <summary>
     /// (TBC).
     /// </summary>
     public CodeableConcept OligoNucleotideType { get; set; }
@@ -603,6 +637,12 @@ namespace fhirCsR5.Models
       if (NumberOfSubunits != null)
       {
         writer.WriteNumber("numberOfSubunits", (int)NumberOfSubunits!);
+      }
+
+      if (_NumberOfSubunits != null)
+      {
+        writer.WritePropertyName("_numberOfSubunits");
+        _NumberOfSubunits.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(AreaOfHybridisation))
@@ -658,6 +698,11 @@ namespace fhirCsR5.Models
 
         case "numberOfSubunits":
           NumberOfSubunits = reader.GetInt32();
+          break;
+
+        case "_numberOfSubunits":
+          _NumberOfSubunits = new fhirCsR5.Models.Element();
+          _NumberOfSubunits.DeserializeJson(ref reader, options);
           break;
 
         case "oligoNucleotideType":

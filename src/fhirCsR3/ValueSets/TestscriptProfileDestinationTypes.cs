@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFHIRSDCFormManager = "FHIR-SDC-FormManager";
 
     /// <summary>
+    /// Literal for code: TestscriptProfileDestinationTypesFHIRSDCFormManager
+    /// </summary>
+    public const string LiteralTestscriptProfileDestinationTypesFHIRSDCFormManager = "http://hl7.org/fhir/testscript-profile-destination-types#FHIR-SDC-FormManager";
+
+    /// <summary>
     /// Literal for code: FHIRSDCFormProcessor
     /// </summary>
     public const string LiteralFHIRSDCFormProcessor = "FHIR-SDC-FormProcessor";
+
+    /// <summary>
+    /// Literal for code: TestscriptProfileDestinationTypesFHIRSDCFormProcessor
+    /// </summary>
+    public const string LiteralTestscriptProfileDestinationTypesFHIRSDCFormProcessor = "http://hl7.org/fhir/testscript-profile-destination-types#FHIR-SDC-FormProcessor";
 
     /// <summary>
     /// Literal for code: FHIRSDCFormReceiver
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFHIRSDCFormReceiver = "FHIR-SDC-FormReceiver";
 
     /// <summary>
+    /// Literal for code: TestscriptProfileDestinationTypesFHIRSDCFormReceiver
+    /// </summary>
+    public const string LiteralTestscriptProfileDestinationTypesFHIRSDCFormReceiver = "http://hl7.org/fhir/testscript-profile-destination-types#FHIR-SDC-FormReceiver";
+
+    /// <summary>
     /// Literal for code: FHIRServer
     /// </summary>
     public const string LiteralFHIRServer = "FHIR-Server";
+
+    /// <summary>
+    /// Literal for code: TestscriptProfileDestinationTypesFHIRServer
+    /// </summary>
+    public const string LiteralTestscriptProfileDestinationTypesFHIRServer = "http://hl7.org/fhir/testscript-profile-destination-types#FHIR-Server";
+
+    /// <summary>
+    /// Dictionary for looking up TestscriptProfileDestinationTypes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "FHIR-SDC-FormManager", FHIRSDCFormManager }, 
+      { "http://hl7.org/fhir/testscript-profile-destination-types#FHIR-SDC-FormManager", FHIRSDCFormManager }, 
+      { "FHIR-SDC-FormProcessor", FHIRSDCFormProcessor }, 
+      { "http://hl7.org/fhir/testscript-profile-destination-types#FHIR-SDC-FormProcessor", FHIRSDCFormProcessor }, 
+      { "FHIR-SDC-FormReceiver", FHIRSDCFormReceiver }, 
+      { "http://hl7.org/fhir/testscript-profile-destination-types#FHIR-SDC-FormReceiver", FHIRSDCFormReceiver }, 
+      { "FHIR-Server", FHIRServer }, 
+      { "http://hl7.org/fhir/testscript-profile-destination-types#FHIR-Server", FHIRServer }, 
+    };
   };
 }

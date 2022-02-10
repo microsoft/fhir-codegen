@@ -318,5 +318,9 @@ namespace fhirCsR2.Models
   public static class AccountStatusCodes {
     public const string ACTIVE = "active";
     public const string INACTIVE = "inactive";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "inactive",
+    };
   }
 }

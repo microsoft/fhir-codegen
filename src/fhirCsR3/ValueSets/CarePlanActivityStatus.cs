@@ -81,9 +81,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCancelled = "cancelled";
 
     /// <summary>
+    /// Literal for code: CarePlanActivityStatusCancelled
+    /// </summary>
+    public const string LiteralCarePlanActivityStatusCancelled = "http://hl7.org/fhir/care-plan-activity-status#cancelled";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: CarePlanActivityStatusCompleted
+    /// </summary>
+    public const string LiteralCarePlanActivityStatusCompleted = "http://hl7.org/fhir/care-plan-activity-status#completed";
 
     /// <summary>
     /// Literal for code: InProgress
@@ -91,9 +101,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInProgress = "in-progress";
 
     /// <summary>
+    /// Literal for code: CarePlanActivityStatusInProgress
+    /// </summary>
+    public const string LiteralCarePlanActivityStatusInProgress = "http://hl7.org/fhir/care-plan-activity-status#in-progress";
+
+    /// <summary>
     /// Literal for code: NotStarted
     /// </summary>
     public const string LiteralNotStarted = "not-started";
+
+    /// <summary>
+    /// Literal for code: CarePlanActivityStatusNotStarted
+    /// </summary>
+    public const string LiteralCarePlanActivityStatusNotStarted = "http://hl7.org/fhir/care-plan-activity-status#not-started";
 
     /// <summary>
     /// Literal for code: OnHold
@@ -101,13 +121,48 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOnHold = "on-hold";
 
     /// <summary>
+    /// Literal for code: CarePlanActivityStatusOnHold
+    /// </summary>
+    public const string LiteralCarePlanActivityStatusOnHold = "http://hl7.org/fhir/care-plan-activity-status#on-hold";
+
+    /// <summary>
     /// Literal for code: Scheduled
     /// </summary>
     public const string LiteralScheduled = "scheduled";
 
     /// <summary>
+    /// Literal for code: CarePlanActivityStatusScheduled
+    /// </summary>
+    public const string LiteralCarePlanActivityStatusScheduled = "http://hl7.org/fhir/care-plan-activity-status#scheduled";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: CarePlanActivityStatusUnknown
+    /// </summary>
+    public const string LiteralCarePlanActivityStatusUnknown = "http://hl7.org/fhir/care-plan-activity-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up CarePlanActivityStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/care-plan-activity-status#cancelled", Cancelled }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/care-plan-activity-status#completed", Completed }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/care-plan-activity-status#in-progress", InProgress }, 
+      { "not-started", NotStarted }, 
+      { "http://hl7.org/fhir/care-plan-activity-status#not-started", NotStarted }, 
+      { "on-hold", OnHold }, 
+      { "http://hl7.org/fhir/care-plan-activity-status#on-hold", OnHold }, 
+      { "scheduled", Scheduled }, 
+      { "http://hl7.org/fhir/care-plan-activity-status#scheduled", Scheduled }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/care-plan-activity-status#unknown", Unknown }, 
+    };
   };
 }

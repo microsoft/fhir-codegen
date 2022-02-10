@@ -619,5 +619,17 @@ namespace fhirCsR2.Models
     public const string SUSPENDED = "suspended";
     public const string REJECTED = "rejected";
     public const string FAILED = "failed";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposed",
+      "planned",
+      "requested",
+      "received",
+      "accepted",
+      "in-progress",
+      "completed",
+      "suspended",
+      "rejected",
+      "failed",
+    };
   }
 }

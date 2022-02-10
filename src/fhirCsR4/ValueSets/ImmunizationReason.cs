@@ -34,8 +34,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL281657000 = "281657000";
 
     /// <summary>
+    /// Literal for code: NONEVAL281657000
+    /// </summary>
+    public const string LiteralNONEVAL281657000 = "http://snomed.info/sct#281657000";
+
+    /// <summary>
     /// Literal for code: VAL429060002
     /// </summary>
     public const string LiteralVAL429060002 = "429060002";
+
+    /// <summary>
+    /// Literal for code: NONEVAL429060002
+    /// </summary>
+    public const string LiteralNONEVAL429060002 = "http://snomed.info/sct#429060002";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "281657000", VAL281657000 }, 
+      { "http://snomed.info/sct#281657000", VAL281657000 }, 
+      { "429060002", VAL429060002 }, 
+      { "http://snomed.info/sct#429060002", VAL429060002 }, 
+    };
   };
 }

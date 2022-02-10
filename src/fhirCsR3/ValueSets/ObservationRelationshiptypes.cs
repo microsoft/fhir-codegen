@@ -72,9 +72,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDerivedFrom = "derived-from";
 
     /// <summary>
+    /// Literal for code: ObservationRelationshiptypesDerivedFrom
+    /// </summary>
+    public const string LiteralObservationRelationshiptypesDerivedFrom = "http://hl7.org/fhir/observation-relationshiptypes#derived-from";
+
+    /// <summary>
     /// Literal for code: HasMember
     /// </summary>
     public const string LiteralHasMember = "has-member";
+
+    /// <summary>
+    /// Literal for code: ObservationRelationshiptypesHasMember
+    /// </summary>
+    public const string LiteralObservationRelationshiptypesHasMember = "http://hl7.org/fhir/observation-relationshiptypes#has-member";
 
     /// <summary>
     /// Literal for code: InterferedBy
@@ -82,9 +92,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInterferedBy = "interfered-by";
 
     /// <summary>
+    /// Literal for code: ObservationRelationshiptypesInterferedBy
+    /// </summary>
+    public const string LiteralObservationRelationshiptypesInterferedBy = "http://hl7.org/fhir/observation-relationshiptypes#interfered-by";
+
+    /// <summary>
     /// Literal for code: QualifiedBy
     /// </summary>
     public const string LiteralQualifiedBy = "qualified-by";
+
+    /// <summary>
+    /// Literal for code: ObservationRelationshiptypesQualifiedBy
+    /// </summary>
+    public const string LiteralObservationRelationshiptypesQualifiedBy = "http://hl7.org/fhir/observation-relationshiptypes#qualified-by";
 
     /// <summary>
     /// Literal for code: Replaces
@@ -92,8 +112,36 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReplaces = "replaces";
 
     /// <summary>
+    /// Literal for code: ObservationRelationshiptypesReplaces
+    /// </summary>
+    public const string LiteralObservationRelationshiptypesReplaces = "http://hl7.org/fhir/observation-relationshiptypes#replaces";
+
+    /// <summary>
     /// Literal for code: SequelTo
     /// </summary>
     public const string LiteralSequelTo = "sequel-to";
+
+    /// <summary>
+    /// Literal for code: ObservationRelationshiptypesSequelTo
+    /// </summary>
+    public const string LiteralObservationRelationshiptypesSequelTo = "http://hl7.org/fhir/observation-relationshiptypes#sequel-to";
+
+    /// <summary>
+    /// Dictionary for looking up ObservationRelationshiptypes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "derived-from", DerivedFrom }, 
+      { "http://hl7.org/fhir/observation-relationshiptypes#derived-from", DerivedFrom }, 
+      { "has-member", HasMember }, 
+      { "http://hl7.org/fhir/observation-relationshiptypes#has-member", HasMember }, 
+      { "interfered-by", InterferedBy }, 
+      { "http://hl7.org/fhir/observation-relationshiptypes#interfered-by", InterferedBy }, 
+      { "qualified-by", QualifiedBy }, 
+      { "http://hl7.org/fhir/observation-relationshiptypes#qualified-by", QualifiedBy }, 
+      { "replaces", Replaces }, 
+      { "http://hl7.org/fhir/observation-relationshiptypes#replaces", Replaces }, 
+      { "sequel-to", SequelTo }, 
+      { "http://hl7.org/fhir/observation-relationshiptypes#sequel-to", SequelTo }, 
+    };
   };
 }

@@ -32,6 +32,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public int? DecimalPrecision { get; set; }
     /// <summary>
+    /// Extension container element for DecimalPrecision
+    /// </summary>
+    public Element _DecimalPrecision { get; set; }
+    /// <summary>
     /// Primary unit used to report quantitative results of observations conforming to this ObservationDefinition.
     /// </summary>
     public CodeableConcept Unit { get; set; }
@@ -74,6 +78,12 @@ namespace fhirCsR5.Models
         writer.WriteNumber("decimalPrecision", (int)DecimalPrecision!);
       }
 
+      if (_DecimalPrecision != null)
+      {
+        writer.WritePropertyName("_decimalPrecision");
+        _DecimalPrecision.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -102,6 +112,11 @@ namespace fhirCsR5.Models
 
         case "decimalPrecision":
           DecimalPrecision = reader.GetInt32();
+          break;
+
+        case "_decimalPrecision":
+          _DecimalPrecision = new fhirCsR5.Models.Element();
+          _DecimalPrecision.DeserializeJson(ref reader, options);
           break;
 
         case "unit":
@@ -507,6 +522,12 @@ namespace fhirCsR5.Models
     public const string FEMALE = "female";
     public const string OTHER = "other";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "male",
+      "female",
+      "other",
+      "unknown",
+    };
   }
   /// <summary>
   /// Code Values for the ObservationDefinition.qualifiedValue.rangeCategory field
@@ -515,6 +536,11 @@ namespace fhirCsR5.Models
     public const string REFERENCE = "reference";
     public const string CRITICAL = "critical";
     public const string ABSOLUTE = "absolute";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "reference",
+      "critical",
+      "absolute",
+    };
   }
   /// <summary>
   /// Some observations have multiple component observations, expressed as separate code value pairs.
@@ -750,6 +776,19 @@ namespace fhirCsR5.Models
     public const string TIME = "time";
     public const string DATETIME = "dateTime";
     public const string PERIOD = "Period";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "Quantity",
+      "CodeableConcept",
+      "string",
+      "boolean",
+      "integer",
+      "Range",
+      "Ratio",
+      "SampledData",
+      "time",
+      "dateTime",
+      "Period",
+    };
   }
   /// <summary>
   /// Set of definitional characteristics for a kind of observation or measurement produced or consumed by an orderable health care service.
@@ -842,6 +881,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// This ObservationDefinition defines a group  observation (e.g. a battery, a panel of tests, a set of vital sign measurements) that includes the target as a member of the group.
     /// </summary>
     public List<Reference> HasMember { get; set; }
@@ -870,6 +913,10 @@ namespace fhirCsR5.Models
     /// An example of observation allowing multiple results is "bacteria identified by culture". Conversely, the measurement of a potassium level allows a single result.
     /// </summary>
     public bool? MultipleResultsAllowed { get; set; }
+    /// <summary>
+    /// Extension container element for MultipleResultsAllowed
+    /// </summary>
+    public Element _MultipleResultsAllowed { get; set; }
     /// <summary>
     /// The name is not expected to be globally unique. The name should be a simple alphanumeric type name to ensure that it is machine-processing friendly.
     /// </summary>
@@ -1044,6 +1091,12 @@ namespace fhirCsR5.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -1282,6 +1335,12 @@ namespace fhirCsR5.Models
       if (MultipleResultsAllowed != null)
       {
         writer.WriteBoolean("multipleResultsAllowed", (bool)MultipleResultsAllowed!);
+      }
+
+      if (_MultipleResultsAllowed != null)
+      {
+        writer.WritePropertyName("_multipleResultsAllowed");
+        _MultipleResultsAllowed.SerializeJson(writer, options);
       }
 
       if (BodySite != null)
@@ -1657,6 +1716,11 @@ namespace fhirCsR5.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR5.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "hasMember":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -1732,6 +1796,11 @@ namespace fhirCsR5.Models
 
         case "multipleResultsAllowed":
           MultipleResultsAllowed = reader.GetBoolean();
+          break;
+
+        case "_multipleResultsAllowed":
+          _MultipleResultsAllowed = new fhirCsR5.Models.Element();
+          _MultipleResultsAllowed.DeserializeJson(ref reader, options);
           break;
 
         case "name":
@@ -2018,6 +2087,19 @@ namespace fhirCsR5.Models
     public const string TIME = "time";
     public const string DATETIME = "dateTime";
     public const string PERIOD = "Period";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "Quantity",
+      "CodeableConcept",
+      "string",
+      "boolean",
+      "integer",
+      "Range",
+      "Ratio",
+      "SampledData",
+      "time",
+      "dateTime",
+      "Period",
+    };
   }
   /// <summary>
   /// Code Values for the ObservationDefinition.status field
@@ -2027,5 +2109,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

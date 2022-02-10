@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProcessingComplete = "complete";
 
     /// <summary>
+    /// Literal for code: PaymentOutcomeProcessingComplete
+    /// </summary>
+    public const string LiteralPaymentOutcomeProcessingComplete = "http://hl7.org/fhir/payment-outcome#complete";
+
+    /// <summary>
     /// Literal for code: Error
     /// </summary>
     public const string LiteralError = "error";
+
+    /// <summary>
+    /// Literal for code: PaymentOutcomeError
+    /// </summary>
+    public const string LiteralPaymentOutcomeError = "http://hl7.org/fhir/payment-outcome#error";
 
     /// <summary>
     /// Literal for code: PartialProcessing
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPartialProcessing = "partial";
 
     /// <summary>
+    /// Literal for code: PaymentOutcomePartialProcessing
+    /// </summary>
+    public const string LiteralPaymentOutcomePartialProcessing = "http://hl7.org/fhir/payment-outcome#partial";
+
+    /// <summary>
     /// Literal for code: Queued
     /// </summary>
     public const string LiteralQueued = "queued";
+
+    /// <summary>
+    /// Literal for code: PaymentOutcomeQueued
+    /// </summary>
+    public const string LiteralPaymentOutcomeQueued = "http://hl7.org/fhir/payment-outcome#queued";
+
+    /// <summary>
+    /// Dictionary for looking up PaymentOutcome Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", ProcessingComplete }, 
+      { "http://hl7.org/fhir/payment-outcome#complete", ProcessingComplete }, 
+      { "error", Error }, 
+      { "http://hl7.org/fhir/payment-outcome#error", Error }, 
+      { "partial", PartialProcessing }, 
+      { "http://hl7.org/fhir/payment-outcome#partial", PartialProcessing }, 
+      { "queued", Queued }, 
+      { "http://hl7.org/fhir/payment-outcome#queued", Queued }, 
+    };
   };
 }

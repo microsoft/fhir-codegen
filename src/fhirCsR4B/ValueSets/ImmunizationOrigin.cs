@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtherProvider = "provider";
 
     /// <summary>
+    /// Literal for code: ImmunizationOriginOtherProvider
+    /// </summary>
+    public const string LiteralImmunizationOriginOtherProvider = "http://terminology.hl7.org/CodeSystem/immunization-origin#provider";
+
+    /// <summary>
     /// Literal for code: ParentGuardianPatientRecall
     /// </summary>
     public const string LiteralParentGuardianPatientRecall = "recall";
+
+    /// <summary>
+    /// Literal for code: ImmunizationOriginParentGuardianPatientRecall
+    /// </summary>
+    public const string LiteralImmunizationOriginParentGuardianPatientRecall = "http://terminology.hl7.org/CodeSystem/immunization-origin#recall";
 
     /// <summary>
     /// Literal for code: WrittenRecord
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWrittenRecord = "record";
 
     /// <summary>
+    /// Literal for code: ImmunizationOriginWrittenRecord
+    /// </summary>
+    public const string LiteralImmunizationOriginWrittenRecord = "http://terminology.hl7.org/CodeSystem/immunization-origin#record";
+
+    /// <summary>
     /// Literal for code: SchoolRecord
     /// </summary>
     public const string LiteralSchoolRecord = "school";
+
+    /// <summary>
+    /// Literal for code: ImmunizationOriginSchoolRecord
+    /// </summary>
+    public const string LiteralImmunizationOriginSchoolRecord = "http://terminology.hl7.org/CodeSystem/immunization-origin#school";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationOrigin Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "provider", OtherProvider }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-origin#provider", OtherProvider }, 
+      { "recall", ParentGuardianPatientRecall }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-origin#recall", ParentGuardianPatientRecall }, 
+      { "record", WrittenRecord }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-origin#record", WrittenRecord }, 
+      { "school", SchoolRecord }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-origin#school", SchoolRecord }, 
+    };
   };
 }

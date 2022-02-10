@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAllOf = "all-of";
 
     /// <summary>
+    /// Literal for code: CharacteristicCombinationAllOf
+    /// </summary>
+    public const string LiteralCharacteristicCombinationAllOf = "http://hl7.org/fhir/characteristic-combination#all-of";
+
+    /// <summary>
     /// Literal for code: AnyOf
     /// </summary>
     public const string LiteralAnyOf = "any-of";
+
+    /// <summary>
+    /// Literal for code: CharacteristicCombinationAnyOf
+    /// </summary>
+    public const string LiteralCharacteristicCombinationAnyOf = "http://hl7.org/fhir/characteristic-combination#any-of";
 
     /// <summary>
     /// Literal for code: AtLeast
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAtLeast = "at-least";
 
     /// <summary>
+    /// Literal for code: CharacteristicCombinationAtLeast
+    /// </summary>
+    public const string LiteralCharacteristicCombinationAtLeast = "http://hl7.org/fhir/characteristic-combination#at-least";
+
+    /// <summary>
     /// Literal for code: AtMost
     /// </summary>
     public const string LiteralAtMost = "at-most";
 
     /// <summary>
+    /// Literal for code: CharacteristicCombinationAtMost
+    /// </summary>
+    public const string LiteralCharacteristicCombinationAtMost = "http://hl7.org/fhir/characteristic-combination#at-most";
+
+    /// <summary>
     /// Literal for code: NetEffect
     /// </summary>
     public const string LiteralNetEffect = "net-effect";
+
+    /// <summary>
+    /// Literal for code: CharacteristicCombinationNetEffect
+    /// </summary>
+    public const string LiteralCharacteristicCombinationNetEffect = "http://hl7.org/fhir/characteristic-combination#net-effect";
+
+    /// <summary>
+    /// Dictionary for looking up CharacteristicCombination Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "all-of", AllOf }, 
+      { "http://hl7.org/fhir/characteristic-combination#all-of", AllOf }, 
+      { "any-of", AnyOf }, 
+      { "http://hl7.org/fhir/characteristic-combination#any-of", AnyOf }, 
+      { "at-least", AtLeast }, 
+      { "http://hl7.org/fhir/characteristic-combination#at-least", AtLeast }, 
+      { "at-most", AtMost }, 
+      { "http://hl7.org/fhir/characteristic-combination#at-most", AtMost }, 
+      { "net-effect", NetEffect }, 
+      { "http://hl7.org/fhir/characteristic-combination#net-effect", NetEffect }, 
+    };
   };
 }

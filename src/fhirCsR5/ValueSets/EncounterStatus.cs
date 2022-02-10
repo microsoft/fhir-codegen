@@ -81,9 +81,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCancelled = "cancelled";
 
     /// <summary>
+    /// Literal for code: EncounterStatusCancelled
+    /// </summary>
+    public const string LiteralEncounterStatusCancelled = "http://hl7.org/fhir/encounter-status#cancelled";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: EncounterStatusCompleted
+    /// </summary>
+    public const string LiteralEncounterStatusCompleted = "http://hl7.org/fhir/encounter-status#completed";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -91,9 +101,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: EncounterStatusEnteredInError
+    /// </summary>
+    public const string LiteralEncounterStatusEnteredInError = "http://hl7.org/fhir/encounter-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: InProgress
     /// </summary>
     public const string LiteralInProgress = "in-progress";
+
+    /// <summary>
+    /// Literal for code: EncounterStatusInProgress
+    /// </summary>
+    public const string LiteralEncounterStatusInProgress = "http://hl7.org/fhir/encounter-status#in-progress";
 
     /// <summary>
     /// Literal for code: OnHold
@@ -101,13 +121,48 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOnHold = "onhold";
 
     /// <summary>
+    /// Literal for code: EncounterStatusOnHold
+    /// </summary>
+    public const string LiteralEncounterStatusOnHold = "http://hl7.org/fhir/encounter-status#onhold";
+
+    /// <summary>
     /// Literal for code: Planned
     /// </summary>
     public const string LiteralPlanned = "planned";
 
     /// <summary>
+    /// Literal for code: EncounterStatusPlanned
+    /// </summary>
+    public const string LiteralEncounterStatusPlanned = "http://hl7.org/fhir/encounter-status#planned";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: EncounterStatusUnknown
+    /// </summary>
+    public const string LiteralEncounterStatusUnknown = "http://hl7.org/fhir/encounter-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up EncounterStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/encounter-status#cancelled", Cancelled }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/encounter-status#completed", Completed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/encounter-status#entered-in-error", EnteredInError }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/encounter-status#in-progress", InProgress }, 
+      { "onhold", OnHold }, 
+      { "http://hl7.org/fhir/encounter-status#onhold", OnHold }, 
+      { "planned", Planned }, 
+      { "http://hl7.org/fhir/encounter-status#planned", Planned }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/encounter-status#unknown", Unknown }, 
+    };
   };
 }

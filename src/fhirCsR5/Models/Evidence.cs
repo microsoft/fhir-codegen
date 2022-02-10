@@ -861,6 +861,12 @@ namespace fhirCsR5.Models
     public const string DICHOTOMOUS = "dichotomous";
     public const string ORDINAL = "ordinal";
     public const string POLYCHOTOMOUS = "polychotomous";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "continuous",
+      "dichotomous",
+      "ordinal",
+      "polychotomous",
+    };
   }
   /// <summary>
   /// A component of the method to generate the statistic.
@@ -2535,5 +2541,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

@@ -24,6 +24,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? Preferred { get; set; }
     /// <summary>
+    /// Extension container element for Preferred
+    /// </summary>
+    public Element _Preferred { get; set; }
+    /// <summary>
     /// Serialize to a JSON object
     /// </summary>
     public new void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
@@ -45,6 +49,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("preferred", (bool)Preferred!);
       }
 
+      if (_Preferred != null)
+      {
+        writer.WritePropertyName("_preferred");
+        _Preferred.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -64,6 +74,11 @@ namespace fhirCsR4B.Models
 
         case "preferred":
           Preferred = reader.GetBoolean();
+          break;
+
+        case "_preferred":
+          _Preferred = new fhirCsR4B.Models.Element();
+          _Preferred.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -110,6 +125,10 @@ namespace fhirCsR4B.Models
     /// This element is labeled as a modifier because it may be used to mark that the resource was created in error.
     /// </summary>
     public bool? Active { get; set; }
+    /// <summary>
+    /// Extension container element for Active
+    /// </summary>
+    public Element _Active { get; set; }
     /// <summary>
     /// Address where the related person can be contacted or visited.
     /// </summary>
@@ -195,6 +214,12 @@ namespace fhirCsR4B.Models
       if (Active != null)
       {
         writer.WriteBoolean("active", (bool)Active!);
+      }
+
+      if (_Active != null)
+      {
+        writer.WritePropertyName("_active");
+        _Active.SerializeJson(writer, options);
       }
 
       if (Patient != null)
@@ -323,6 +348,11 @@ namespace fhirCsR4B.Models
       {
         case "active":
           Active = reader.GetBoolean();
+          break;
+
+        case "_active":
+          _Active = new fhirCsR4B.Models.Element();
+          _Active.DeserializeJson(ref reader, options);
           break;
 
         case "address":
@@ -581,5 +611,11 @@ namespace fhirCsR4B.Models
     public const string FEMALE = "female";
     public const string OTHER = "other";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "male",
+      "female",
+      "other",
+      "unknown",
+    };
   }
 }

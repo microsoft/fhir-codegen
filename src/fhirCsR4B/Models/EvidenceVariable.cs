@@ -213,6 +213,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? Exclude { get; set; }
     /// <summary>
+    /// Extension container element for Exclude
+    /// </summary>
+    public Element _Exclude { get; set; }
+    /// <summary>
     /// Indicates how elements are aggregated within the study effective period.
     /// </summary>
     public string GroupMeasure { get; set; }
@@ -296,6 +300,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("exclude", (bool)Exclude!);
       }
 
+      if (_Exclude != null)
+      {
+        writer.WritePropertyName("_exclude");
+        _Exclude.SerializeJson(writer, options);
+      }
+
       if (TimeFromStart != null)
       {
         writer.WritePropertyName("timeFromStart");
@@ -367,6 +377,11 @@ namespace fhirCsR4B.Models
           Exclude = reader.GetBoolean();
           break;
 
+        case "_exclude":
+          _Exclude = new fhirCsR4B.Models.Element();
+          _Exclude.DeserializeJson(ref reader, options);
+          break;
+
         case "groupMeasure":
           GroupMeasure = reader.GetString();
           break;
@@ -427,6 +442,14 @@ namespace fhirCsR4B.Models
     public const string MEAN_OF_MEDIAN = "mean-of-median";
     public const string MEDIAN_OF_MEAN = "median-of-mean";
     public const string MEDIAN_OF_MEDIAN = "median-of-median";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "mean",
+      "median",
+      "mean-of-mean",
+      "mean-of-median",
+      "median-of-mean",
+      "median-of-median",
+    };
   }
   /// <summary>
   /// A grouping (or set of values) described along with other groupings to specify the set of groupings allowed for the variable.
@@ -573,6 +596,10 @@ namespace fhirCsR4B.Models
     /// True if the actual variable measured, false if a conceptual representation of the intended variable.
     /// </summary>
     public bool? Actual { get; set; }
+    /// <summary>
+    /// Extension container element for Actual
+    /// </summary>
+    public Element _Actual { get; set; }
     /// <summary>
     /// Extensions to ContactDetail include: contactReference, contactAddress, and contributionTime (Details at: http://build.fhir.org/clinicalreasoning-module.html).
     /// </summary>
@@ -964,6 +991,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("actual", (bool)Actual!);
       }
 
+      if (_Actual != null)
+      {
+        writer.WritePropertyName("_actual");
+        _Actual.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(CharacteristicCombination))
       {
         writer.WriteString("characteristicCombination", (string)CharacteristicCombination!);
@@ -1026,6 +1059,11 @@ namespace fhirCsR4B.Models
       {
         case "actual":
           Actual = reader.GetBoolean();
+          break;
+
+        case "_actual":
+          _Actual = new fhirCsR4B.Models.Element();
+          _Actual.DeserializeJson(ref reader, options);
           break;
 
         case "author":
@@ -1470,6 +1508,10 @@ namespace fhirCsR4B.Models
   public static class EvidenceVariableCharacteristicCombinationCodes {
     public const string INTERSECTION = "intersection";
     public const string UNION = "union";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "intersection",
+      "union",
+    };
   }
   /// <summary>
   /// Code Values for the EvidenceVariable.handling field
@@ -1479,6 +1521,12 @@ namespace fhirCsR4B.Models
     public const string DICHOTOMOUS = "dichotomous";
     public const string ORDINAL = "ordinal";
     public const string POLYCHOTOMOUS = "polychotomous";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "continuous",
+      "dichotomous",
+      "ordinal",
+      "polychotomous",
+    };
   }
   /// <summary>
   /// Code Values for the EvidenceVariable.status field
@@ -1488,5 +1536,11 @@ namespace fhirCsR4B.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

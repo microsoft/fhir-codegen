@@ -162,9 +162,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAbstract = "abstract";
 
     /// <summary>
+    /// Literal for code: ArticleUrlTypeAbstract
+    /// </summary>
+    public const string LiteralArticleUrlTypeAbstract = "http://terminology.hl7.org/CodeSystem/article-url-type#abstract";
+
+    /// <summary>
     /// Literal for code: AbstractVersion
     /// </summary>
     public const string LiteralAbstractVersion = "abstract-version";
+
+    /// <summary>
+    /// Literal for code: ArticleUrlTypeAbstractVersion
+    /// </summary>
+    public const string LiteralArticleUrlTypeAbstractVersion = "http://terminology.hl7.org/CodeSystem/article-url-type#abstract-version";
 
     /// <summary>
     /// Literal for code: CompressedFile
@@ -172,9 +182,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCompressedFile = "compressed-file";
 
     /// <summary>
+    /// Literal for code: ArticleUrlTypeCompressedFile
+    /// </summary>
+    public const string LiteralArticleUrlTypeCompressedFile = "http://terminology.hl7.org/CodeSystem/article-url-type#compressed-file";
+
+    /// <summary>
     /// Literal for code: DOIBased
     /// </summary>
     public const string LiteralDOIBased = "doi-based";
+
+    /// <summary>
+    /// Literal for code: ArticleUrlTypeDOIBased
+    /// </summary>
+    public const string LiteralArticleUrlTypeDOIBased = "http://terminology.hl7.org/CodeSystem/article-url-type#doi-based";
 
     /// <summary>
     /// Literal for code: FullText
@@ -182,9 +202,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFullText = "full-text";
 
     /// <summary>
+    /// Literal for code: ArticleUrlTypeFullText
+    /// </summary>
+    public const string LiteralArticleUrlTypeFullText = "http://terminology.hl7.org/CodeSystem/article-url-type#full-text";
+
+    /// <summary>
     /// Literal for code: FullTextVersion
     /// </summary>
     public const string LiteralFullTextVersion = "full-text-version";
+
+    /// <summary>
+    /// Literal for code: ArticleUrlTypeFullTextVersion
+    /// </summary>
+    public const string LiteralArticleUrlTypeFullTextVersion = "http://terminology.hl7.org/CodeSystem/article-url-type#full-text-version";
 
     /// <summary>
     /// Literal for code: JSON
@@ -192,9 +222,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralJSON = "json";
 
     /// <summary>
+    /// Literal for code: ArticleUrlTypeJSON
+    /// </summary>
+    public const string LiteralArticleUrlTypeJSON = "http://terminology.hl7.org/CodeSystem/article-url-type#json";
+
+    /// <summary>
     /// Literal for code: JSONVersion
     /// </summary>
     public const string LiteralJSONVersion = "json-version";
+
+    /// <summary>
+    /// Literal for code: ArticleUrlTypeJSONVersion
+    /// </summary>
+    public const string LiteralArticleUrlTypeJSONVersion = "http://terminology.hl7.org/CodeSystem/article-url-type#json-version";
 
     /// <summary>
     /// Literal for code: NotSpecified
@@ -202,9 +242,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNotSpecified = "not-specified";
 
     /// <summary>
+    /// Literal for code: ArticleUrlTypeNotSpecified
+    /// </summary>
+    public const string LiteralArticleUrlTypeNotSpecified = "http://terminology.hl7.org/CodeSystem/article-url-type#not-specified";
+
+    /// <summary>
     /// Literal for code: PDF
     /// </summary>
     public const string LiteralPDF = "pdf";
+
+    /// <summary>
+    /// Literal for code: ArticleUrlTypePDF
+    /// </summary>
+    public const string LiteralArticleUrlTypePDF = "http://terminology.hl7.org/CodeSystem/article-url-type#pdf";
 
     /// <summary>
     /// Literal for code: PDFVersion
@@ -212,9 +262,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPDFVersion = "pdf-version";
 
     /// <summary>
+    /// Literal for code: ArticleUrlTypePDFVersion
+    /// </summary>
+    public const string LiteralArticleUrlTypePDFVersion = "http://terminology.hl7.org/CodeSystem/article-url-type#pdf-version";
+
+    /// <summary>
     /// Literal for code: Supplement
     /// </summary>
     public const string LiteralSupplement = "supplement";
+
+    /// <summary>
+    /// Literal for code: ArticleUrlTypeSupplement
+    /// </summary>
+    public const string LiteralArticleUrlTypeSupplement = "http://terminology.hl7.org/CodeSystem/article-url-type#supplement";
 
     /// <summary>
     /// Literal for code: SupplementaryFileDirectory
@@ -222,9 +282,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSupplementaryFileDirectory = "supplementary-file-directory";
 
     /// <summary>
+    /// Literal for code: ArticleUrlTypeSupplementaryFileDirectory
+    /// </summary>
+    public const string LiteralArticleUrlTypeSupplementaryFileDirectory = "http://terminology.hl7.org/CodeSystem/article-url-type#supplementary-file-directory";
+
+    /// <summary>
     /// Literal for code: Webpage
     /// </summary>
     public const string LiteralWebpage = "webpage";
+
+    /// <summary>
+    /// Literal for code: ArticleUrlTypeWebpage
+    /// </summary>
+    public const string LiteralArticleUrlTypeWebpage = "http://terminology.hl7.org/CodeSystem/article-url-type#webpage";
 
     /// <summary>
     /// Literal for code: XML
@@ -232,8 +302,56 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralXML = "xml";
 
     /// <summary>
+    /// Literal for code: ArticleUrlTypeXML
+    /// </summary>
+    public const string LiteralArticleUrlTypeXML = "http://terminology.hl7.org/CodeSystem/article-url-type#xml";
+
+    /// <summary>
     /// Literal for code: XML_2
     /// </summary>
     public const string LiteralXML_2 = "xml-version";
+
+    /// <summary>
+    /// Literal for code: ArticleUrlTypeXML_2
+    /// </summary>
+    public const string LiteralArticleUrlTypeXML_2 = "http://terminology.hl7.org/CodeSystem/article-url-type#xml-version";
+
+    /// <summary>
+    /// Dictionary for looking up ArticleUrlType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "abstract", Abstract }, 
+      { "http://terminology.hl7.org/CodeSystem/article-url-type#abstract", Abstract }, 
+      { "abstract-version", AbstractVersion }, 
+      { "http://terminology.hl7.org/CodeSystem/article-url-type#abstract-version", AbstractVersion }, 
+      { "compressed-file", CompressedFile }, 
+      { "http://terminology.hl7.org/CodeSystem/article-url-type#compressed-file", CompressedFile }, 
+      { "doi-based", DOIBased }, 
+      { "http://terminology.hl7.org/CodeSystem/article-url-type#doi-based", DOIBased }, 
+      { "full-text", FullText }, 
+      { "http://terminology.hl7.org/CodeSystem/article-url-type#full-text", FullText }, 
+      { "full-text-version", FullTextVersion }, 
+      { "http://terminology.hl7.org/CodeSystem/article-url-type#full-text-version", FullTextVersion }, 
+      { "json", JSON }, 
+      { "http://terminology.hl7.org/CodeSystem/article-url-type#json", JSON }, 
+      { "json-version", JSONVersion }, 
+      { "http://terminology.hl7.org/CodeSystem/article-url-type#json-version", JSONVersion }, 
+      { "not-specified", NotSpecified }, 
+      { "http://terminology.hl7.org/CodeSystem/article-url-type#not-specified", NotSpecified }, 
+      { "pdf", PDF }, 
+      { "http://terminology.hl7.org/CodeSystem/article-url-type#pdf", PDF }, 
+      { "pdf-version", PDFVersion }, 
+      { "http://terminology.hl7.org/CodeSystem/article-url-type#pdf-version", PDFVersion }, 
+      { "supplement", Supplement }, 
+      { "http://terminology.hl7.org/CodeSystem/article-url-type#supplement", Supplement }, 
+      { "supplementary-file-directory", SupplementaryFileDirectory }, 
+      { "http://terminology.hl7.org/CodeSystem/article-url-type#supplementary-file-directory", SupplementaryFileDirectory }, 
+      { "webpage", Webpage }, 
+      { "http://terminology.hl7.org/CodeSystem/article-url-type#webpage", Webpage }, 
+      { "xml", XML }, 
+      { "http://terminology.hl7.org/CodeSystem/article-url-type#xml", XML }, 
+      { "xml-version", XML_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/article-url-type#xml-version", XML_2 }, 
+    };
   };
 }

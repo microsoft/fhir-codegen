@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCustom = "custom";
 
     /// <summary>
+    /// Literal for code: GraphCompartmentRuleCustom
+    /// </summary>
+    public const string LiteralGraphCompartmentRuleCustom = "http://hl7.org/fhir/graph-compartment-rule#custom";
+
+    /// <summary>
     /// Literal for code: Different
     /// </summary>
     public const string LiteralDifferent = "different";
+
+    /// <summary>
+    /// Literal for code: GraphCompartmentRuleDifferent
+    /// </summary>
+    public const string LiteralGraphCompartmentRuleDifferent = "http://hl7.org/fhir/graph-compartment-rule#different";
 
     /// <summary>
     /// Literal for code: Identical
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIdentical = "identical";
 
     /// <summary>
+    /// Literal for code: GraphCompartmentRuleIdentical
+    /// </summary>
+    public const string LiteralGraphCompartmentRuleIdentical = "http://hl7.org/fhir/graph-compartment-rule#identical";
+
+    /// <summary>
     /// Literal for code: Matching
     /// </summary>
     public const string LiteralMatching = "matching";
+
+    /// <summary>
+    /// Literal for code: GraphCompartmentRuleMatching
+    /// </summary>
+    public const string LiteralGraphCompartmentRuleMatching = "http://hl7.org/fhir/graph-compartment-rule#matching";
+
+    /// <summary>
+    /// Dictionary for looking up GraphCompartmentRule Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "custom", Custom }, 
+      { "http://hl7.org/fhir/graph-compartment-rule#custom", Custom }, 
+      { "different", Different }, 
+      { "http://hl7.org/fhir/graph-compartment-rule#different", Different }, 
+      { "identical", Identical }, 
+      { "http://hl7.org/fhir/graph-compartment-rule#identical", Identical }, 
+      { "matching", Matching }, 
+      { "http://hl7.org/fhir/graph-compartment-rule#matching", Matching }, 
+    };
   };
 }

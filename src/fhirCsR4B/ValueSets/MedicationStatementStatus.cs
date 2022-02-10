@@ -90,9 +90,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: MedicationStatementStatusActive
+    /// </summary>
+    public const string LiteralMedicationStatementStatusActive = "http://hl7.org/fhir/CodeSystem/medication-statement-status#active";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: MedicationStatementStatusCompleted
+    /// </summary>
+    public const string LiteralMedicationStatementStatusCompleted = "http://hl7.org/fhir/CodeSystem/medication-statement-status#completed";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -100,9 +110,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: MedicationStatementStatusEnteredInError
+    /// </summary>
+    public const string LiteralMedicationStatementStatusEnteredInError = "http://hl7.org/fhir/CodeSystem/medication-statement-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Intended
     /// </summary>
     public const string LiteralIntended = "intended";
+
+    /// <summary>
+    /// Literal for code: MedicationStatementStatusIntended
+    /// </summary>
+    public const string LiteralMedicationStatementStatusIntended = "http://hl7.org/fhir/CodeSystem/medication-statement-status#intended";
 
     /// <summary>
     /// Literal for code: NotTaken
@@ -110,9 +130,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNotTaken = "not-taken";
 
     /// <summary>
+    /// Literal for code: MedicationStatementStatusNotTaken
+    /// </summary>
+    public const string LiteralMedicationStatementStatusNotTaken = "http://hl7.org/fhir/CodeSystem/medication-statement-status#not-taken";
+
+    /// <summary>
     /// Literal for code: OnHold
     /// </summary>
     public const string LiteralOnHold = "on-hold";
+
+    /// <summary>
+    /// Literal for code: MedicationStatementStatusOnHold
+    /// </summary>
+    public const string LiteralMedicationStatementStatusOnHold = "http://hl7.org/fhir/CodeSystem/medication-statement-status#on-hold";
 
     /// <summary>
     /// Literal for code: Stopped
@@ -120,8 +150,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStopped = "stopped";
 
     /// <summary>
+    /// Literal for code: MedicationStatementStatusStopped
+    /// </summary>
+    public const string LiteralMedicationStatementStatusStopped = "http://hl7.org/fhir/CodeSystem/medication-statement-status#stopped";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: MedicationStatementStatusUnknown
+    /// </summary>
+    public const string LiteralMedicationStatementStatusUnknown = "http://hl7.org/fhir/CodeSystem/medication-statement-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationStatementStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-statement-status#active", Active }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-statement-status#completed", Completed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-statement-status#entered-in-error", EnteredInError }, 
+      { "intended", Intended }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-statement-status#intended", Intended }, 
+      { "not-taken", NotTaken }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-statement-status#not-taken", NotTaken }, 
+      { "on-hold", OnHold }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-statement-status#on-hold", OnHold }, 
+      { "stopped", Stopped }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-statement-status#stopped", Stopped }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-statement-status#unknown", Unknown }, 
+    };
   };
 }

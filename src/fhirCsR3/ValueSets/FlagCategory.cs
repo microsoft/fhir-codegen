@@ -63,9 +63,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdministrative = "admin";
 
     /// <summary>
+    /// Literal for code: FlagCategoryAdministrative
+    /// </summary>
+    public const string LiteralFlagCategoryAdministrative = "http://hl7.org/fhir/flag-category#admin";
+
+    /// <summary>
     /// Literal for code: SubjectContact
     /// </summary>
     public const string LiteralSubjectContact = "contact";
+
+    /// <summary>
+    /// Literal for code: FlagCategorySubjectContact
+    /// </summary>
+    public const string LiteralFlagCategorySubjectContact = "http://hl7.org/fhir/flag-category#contact";
 
     /// <summary>
     /// Literal for code: Diet
@@ -73,13 +83,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiet = "diet";
 
     /// <summary>
+    /// Literal for code: FlagCategoryDiet
+    /// </summary>
+    public const string LiteralFlagCategoryDiet = "http://hl7.org/fhir/flag-category#diet";
+
+    /// <summary>
     /// Literal for code: Drug
     /// </summary>
     public const string LiteralDrug = "drug";
 
     /// <summary>
+    /// Literal for code: FlagCategoryDrug
+    /// </summary>
+    public const string LiteralFlagCategoryDrug = "http://hl7.org/fhir/flag-category#drug";
+
+    /// <summary>
     /// Literal for code: Lab
     /// </summary>
     public const string LiteralLab = "lab";
+
+    /// <summary>
+    /// Literal for code: FlagCategoryLab
+    /// </summary>
+    public const string LiteralFlagCategoryLab = "http://hl7.org/fhir/flag-category#lab";
+
+    /// <summary>
+    /// Dictionary for looking up FlagCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "admin", Administrative }, 
+      { "http://hl7.org/fhir/flag-category#admin", Administrative }, 
+      { "contact", SubjectContact }, 
+      { "http://hl7.org/fhir/flag-category#contact", SubjectContact }, 
+      { "diet", Diet }, 
+      { "http://hl7.org/fhir/flag-category#diet", Diet }, 
+      { "drug", Drug }, 
+      { "http://hl7.org/fhir/flag-category#drug", Drug }, 
+      { "lab", Lab }, 
+      { "http://hl7.org/fhir/flag-category#lab", Lab }, 
+    };
   };
 }

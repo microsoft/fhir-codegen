@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class ObservationMethodsCodes
   {
     /// <summary>
-    /// 
+    /// Fetoscopy
     /// </summary>
     public static readonly Coding Fetoscopy = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Minimum bactericidal concentration test, microdilution method
     /// </summary>
     public static readonly Coding MinimumBactericidalConcentrationTestMicrodilutionMethod = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doppler color flow velocity mapping
     /// </summary>
     public static readonly Coding DopplerColorFlowVelocityMapping = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic ultrasound of abdomen and retroperitoneum
     /// </summary>
     public static readonly Coding DiagnosticUltrasoundOfAbdomenAndRetroperitoneum = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Total measurement
     /// </summary>
     public static readonly Coding TotalMeasurement = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiography of humerus
     /// </summary>
     public static readonly Coding RadiographyOfHumerus = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hand microscope examination of skin
     /// </summary>
     public static readonly Coding HandMicroscopeExaminationOfSkin = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of urinary bladder
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfUrinaryBladder = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evaluation - action
     /// </summary>
     public static readonly Coding EvaluationAction = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Measurement - action
     /// </summary>
     public static readonly Coding MeasurementAction = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Administrative action
     /// </summary>
     public static readonly Coding AdministrativeAction = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Observation - action
     /// </summary>
     public static readonly Coding ObservationAction = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assisting - action
     /// </summary>
     public static readonly Coding AssistingAction = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Management - action
     /// </summary>
     public static readonly Coding ManagementAction = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stimulation - action
     /// </summary>
     public static readonly Coding StimulationAction = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Admission - action
     /// </summary>
     public static readonly Coding AdmissionAction = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Discharge - action
     /// </summary>
     public static readonly Coding DischargeAction = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Administrative transfer - action
     /// </summary>
     public static readonly Coding AdministrativeTransferAction = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Referral - action
     /// </summary>
     public static readonly Coding ReferralAction = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Administrative disposition - action
     /// </summary>
     public static readonly Coding AdministrativeDispositionAction = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Audit - action
     /// </summary>
     public static readonly Coding AuditAction = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicolegal action
     /// </summary>
     public static readonly Coding MedicolegalAction = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medicolegal testimony - action
     /// </summary>
     public static readonly Coding MedicolegalTestimonyAction = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Training - action
     /// </summary>
     public static readonly Coding TrainingAction = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical action
     /// </summary>
     public static readonly Coding SurgicalAction = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microsurgery - action
     /// </summary>
     public static readonly Coding MicrosurgeryAction = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision - action
     /// </summary>
     public static readonly Coding IncisionAction = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Exploratory incision - action
     /// </summary>
     public static readonly Coding ExploratoryIncisionAction = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drainage - action
     /// </summary>
     public static readonly Coding DrainageAction = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drilling - action
     /// </summary>
     public static readonly Coding DrillingAction = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evacuation - action
     /// </summary>
     public static readonly Coding EvacuationAction = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dissection - action
     /// </summary>
     public static readonly Coding DissectionAction = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Discission - action
     /// </summary>
     public static readonly Coding DiscissionAction = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Slitting - action
     /// </summary>
     public static readonly Coding SlittingAction = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bisection - action
     /// </summary>
     public static readonly Coding BisectionAction = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bifurcation - action
     /// </summary>
     public static readonly Coding BifurcationAction = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Division - action
     /// </summary>
     public static readonly Coding DivisionAction = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Release - action
     /// </summary>
     public static readonly Coding ReleaseAction = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Puncture - action
     /// </summary>
     public static readonly Coding PunctureAction = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scarification - action
     /// </summary>
     public static readonly Coding ScarificationAction = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removal - action
     /// </summary>
     public static readonly Coding RemovalAction = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision - action
     /// </summary>
     public static readonly Coding ExcisionAction = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wedge resection - action
     /// </summary>
     public static readonly Coding WedgeResectionAction = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical removal - action
     /// </summary>
     public static readonly Coding SurgicalRemovalAction = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Expulsion - action
     /// </summary>
     public static readonly Coding ExpulsionAction = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reexcision - action
     /// </summary>
     public static readonly Coding ReexcisionAction = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amputation - action
     /// </summary>
     public static readonly Coding AmputationAction = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transfixion - action
     /// </summary>
     public static readonly Coding TransfixionAction = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evisceration - action
     /// </summary>
     public static readonly Coding EviscerationAction = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enucleation - action
     /// </summary>
     public static readonly Coding EnucleationAction = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trephination - action
     /// </summary>
     public static readonly Coding TrephinationAction = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biopsy - action
     /// </summary>
     public static readonly Coding BiopsyAction = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incisional biopsy - action
     /// </summary>
     public static readonly Coding IncisionalBiopsyAction = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aspiration - action
     /// </summary>
     public static readonly Coding AspirationAction = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Debridement - action
     /// </summary>
     public static readonly Coding DebridementAction = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Saucerization - action
     /// </summary>
     public static readonly Coding SaucerizationAction = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Curettage - action
     /// </summary>
     public static readonly Coding CurettageAction = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trimming - action
     /// </summary>
     public static readonly Coding TrimmingAction = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shaving - action
     /// </summary>
     public static readonly Coding ShavingAction = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scraping - action
     /// </summary>
     public static readonly Coding ScrapingAction = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Filleting - action
     /// </summary>
     public static readonly Coding FilletingAction = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Introduction - action
     /// </summary>
     public static readonly Coding IntroductionAction = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injection - action
     /// </summary>
     public static readonly Coding InjectionAction = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tattooing - action
     /// </summary>
     public static readonly Coding TattooingAction = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inflation - action
     /// </summary>
     public static readonly Coding InflationAction = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infusion - action
     /// </summary>
     public static readonly Coding InfusionAction = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Perfusion - action
     /// </summary>
     public static readonly Coding PerfusionAction = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Irrigation - action
     /// </summary>
     public static readonly Coding IrrigationAction = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insufflation - action
     /// </summary>
     public static readonly Coding InsufflationAction = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Instillation - action
     /// </summary>
     public static readonly Coding InstillationAction = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Embolization - action
     /// </summary>
     public static readonly Coding EmbolizationAction = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reimplantation - action
     /// </summary>
     public static readonly Coding ReimplantationAction = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intubation - action
     /// </summary>
     public static readonly Coding IntubationAction = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sounding - action
     /// </summary>
     public static readonly Coding SoundingAction = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical recession - action
     /// </summary>
     public static readonly Coding SurgicalRecessionAction = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Resection-recession - action
     /// </summary>
     public static readonly Coding ResectionRecessionAction = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radial incision - action
     /// </summary>
     public static readonly Coding RadialIncisionAction = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical transfer - action
     /// </summary>
     public static readonly Coding SurgicalTransferAction = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Z-plasty - action
     /// </summary>
     public static readonly Coding ZPlastyAction = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical lengthening - action
     /// </summary>
     public static readonly Coding SurgicalLengtheningAction = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical shortening - action
     /// </summary>
     public static readonly Coding SurgicalShorteningAction = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical augmentation - action
     /// </summary>
     public static readonly Coding SurgicalAugmentationAction = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical advancement - action
     /// </summary>
     public static readonly Coding SurgicalAdvancementAction = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suspension and fixation - action
     /// </summary>
     public static readonly Coding SuspensionAndFixationAction = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Exteriorization - action
     /// </summary>
     public static readonly Coding ExteriorizationAction = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Marsupialization - action
     /// </summary>
     public static readonly Coding MarsupializationAction = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reinforcement - action
     /// </summary>
     public static readonly Coding ReinforcementAction = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closure - action
     /// </summary>
     public static readonly Coding ClosureAction = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Layered closure - action
     /// </summary>
     public static readonly Coding LayeredClosureAction = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oversewing - action
     /// </summary>
     public static readonly Coding OversewingAction = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closure by buckling - action
     /// </summary>
     public static readonly Coding ClosureByBucklingAction = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerclage - action
     /// </summary>
     public static readonly Coding CerclageAction = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligation - action
     /// </summary>
     public static readonly Coding LigationAction = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fixation - action
     /// </summary>
     public static readonly Coding FixationAction = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cryopexy - action
     /// </summary>
     public static readonly Coding CryopexyAction = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plication - action
     /// </summary>
     public static readonly Coding PlicationAction = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Imbrication - action
     /// </summary>
     public static readonly Coding ImbricationAction = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Construction - action
     /// </summary>
     public static readonly Coding ConstructionAction = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reconstruction - action
     /// </summary>
     public static readonly Coding ReconstructionAction = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stabilization - action
     /// </summary>
     public static readonly Coding StabilizationAction = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fusion - action
     /// </summary>
     public static readonly Coding FusionAction = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anchoring - action
     /// </summary>
     public static readonly Coding AnchoringAction = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enlargement - action
     /// </summary>
     public static readonly Coding EnlargementAction = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Destruction - action
     /// </summary>
     public static readonly Coding DestructionAction = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Avulsion - action
     /// </summary>
     public static readonly Coding AvulsionAction = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decortication - action
     /// </summary>
     public static readonly Coding DecorticationAction = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stripping - action
     /// </summary>
     public static readonly Coding StrippingAction = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stripping and ligation - action
     /// </summary>
     public static readonly Coding StrippingAndLigationAction = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abrasion - action
     /// </summary>
     public static readonly Coding AbrasionAction = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salabrasion - action
     /// </summary>
     public static readonly Coding SalabrasionAction = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grinding - action
     /// </summary>
     public static readonly Coding GrindingAction = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coagulation - action
     /// </summary>
     public static readonly Coding CoagulationAction = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obliteration - action
     /// </summary>
     public static readonly Coding ObliterationAction = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cauterization - action
     /// </summary>
     public static readonly Coding CauterizationAction = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cryosurgery - action
     /// </summary>
     public static readonly Coding CryosurgeryAction = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thermocautery - action
     /// </summary>
     public static readonly Coding ThermocauteryAction = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fulguration - action
     /// </summary>
     public static readonly Coding FulgurationAction = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrodesiccation - action
     /// </summary>
     public static readonly Coding ElectrodesiccationAction = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrocoagulation - action
     /// </summary>
     public static readonly Coding ElectrocoagulationAction = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Galvanocauterization - action
     /// </summary>
     public static readonly Coding GalvanocauterizationAction = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrodestruction - action
     /// </summary>
     public static readonly Coding ElectrodestructionAction = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crushing - action
     /// </summary>
     public static readonly Coding CrushingAction = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fragmentation - action
     /// </summary>
     public static readonly Coding FragmentationAction = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Emulsification - action
     /// </summary>
     public static readonly Coding EmulsificationAction = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chemosurgery - action
     /// </summary>
     public static readonly Coding ChemosurgeryAction = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chemocautery - action
     /// </summary>
     public static readonly Coding ChemocauteryAction = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Photocoagulation - action
     /// </summary>
     public static readonly Coding PhotocoagulationAction = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transplantation - action
     /// </summary>
     public static readonly Coding TransplantationAction = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grafting - action
     /// </summary>
     public static readonly Coding GraftingAction = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manipulation - action
     /// </summary>
     public static readonly Coding ManipulationAction = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mobilization - action
     /// </summary>
     public static readonly Coding MobilizationAction = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Remobilization - action
     /// </summary>
     public static readonly Coding RemobilizationAction = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Traction - action
     /// </summary>
     public static readonly Coding TractionAction = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manual reduction - action
     /// </summary>
     public static readonly Coding ManualReductionAction = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elevation - action
     /// </summary>
     public static readonly Coding ElevationAction = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Instrumental elevation - action
     /// </summary>
     public static readonly Coding InstrumentalElevationAction = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extraction - action
     /// </summary>
     public static readonly Coding ExtractionAction = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical extraction - action
     /// </summary>
     public static readonly Coding SurgicalExtractionAction = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Expression - action
     /// </summary>
     public static readonly Coding ExpressionAction = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dilation - action
     /// </summary>
     public static readonly Coding DilationAction = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stretching - action
     /// </summary>
     public static readonly Coding StretchingAction = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dilation and stretching - action
     /// </summary>
     public static readonly Coding DilationAndStretchingAction = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bougienage - action
     /// </summary>
     public static readonly Coding BougienageAction = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fitting - action
     /// </summary>
     public static readonly Coding FittingAction = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Application - action
     /// </summary>
     public static readonly Coding ApplicationAction = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adjustment - action
     /// </summary>
     public static readonly Coding AdjustmentAction = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reduction - action
     /// </summary>
     public static readonly Coding ReductionAction = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Consultation - action
     /// </summary>
     public static readonly Coding ConsultationAction = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// History taking - action
     /// </summary>
     public static readonly Coding HistoryTakingAction = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inspection - action
     /// </summary>
     public static readonly Coding InspectionAction = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Palpation - action
     /// </summary>
     public static readonly Coding PalpationAction = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percussion - action
     /// </summary>
     public static readonly Coding PercussionAction = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Auscultation - action
     /// </summary>
     public static readonly Coding AuscultationAction = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Optical transillumination - action
     /// </summary>
     public static readonly Coding OpticalTransilluminationAction = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prescription - action
     /// </summary>
     public static readonly Coding PrescriptionAction = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Counseling - action
     /// </summary>
     public static readonly Coding CounselingAction = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iontophoresis - action
     /// </summary>
     public static readonly Coding IontophoresisAction = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrolysis - action
     /// </summary>
     public static readonly Coding ElectrolysisAction = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical galvanism - action
     /// </summary>
     public static readonly Coding SurgicalGalvanismAction = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Administration - action
     /// </summary>
     public static readonly Coding AdministrationAction = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Functional assessment - action
     /// </summary>
     public static readonly Coding FunctionalAssessmentAction = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebrospinal fluid IgG ratio and IgG index
     /// </summary>
     public static readonly Coding CerebrospinalFluidIgGRatioAndIgGIndex = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthrotomy of wrist joint with exploration and biopsy
     /// </summary>
     public static readonly Coding ArthrotomyOfWristJointWithExplorationAndBiopsy = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anti-human globulin test, enzyme technique, titer
     /// </summary>
     public static readonly Coding AntiHumanGlobulinTestEnzymeTechniqueTiter = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography, scan B-mode for fetal age determination
     /// </summary>
     public static readonly Coding EchographyScanBModeForFetalAgeDetermination = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and exploration of ureter
     /// </summary>
     public static readonly Coding IncisionAndExplorationOfUreter = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography of arteriovenous shunt
     /// </summary>
     public static readonly Coding AngiographyOfArteriovenousShunt = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osmolarity measurement
     /// </summary>
     public static readonly Coding OsmolarityMeasurement = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cystourethroscopy with resection of ureterocele
     /// </summary>
     public static readonly Coding CystourethroscopyWithResectionOfUreterocele = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amikacin measurement
     /// </summary>
     public static readonly Coding AmikacinMeasurement = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// IL-2 assay
     /// </summary>
     public static readonly Coding IL2Assay = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skeletal X-ray of ankle and foot
     /// </summary>
     public static readonly Coding SkeletalXRayOfAnkleAndFoot = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Galactosylceramide beta-galactosidase measurement, leukocytes
     /// </summary>
     public static readonly Coding GalactosylceramideBetaGalactosidaseMeasurementLeukocytes = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// History and physical examination, insurance
     /// </summary>
     public static readonly Coding HistoryAndPhysicalExaminationInsurance = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Haagensen test
     /// </summary>
     public static readonly Coding HaagensenTest = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Special potency disk identification, vancomycin test
     /// </summary>
     public static readonly Coding SpecialPotencyDiskIdentificationVancomycinTest = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immunoglobulin typing, IgG
     /// </summary>
     public static readonly Coding ImmunoglobulinTypingIgG = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthroscopy of wrist with partial synovectomy
     /// </summary>
     public static readonly Coding ArthroscopyOfWristWithPartialSynovectomy = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assessment of nutritional status
     /// </summary>
     public static readonly Coding AssessmentOfNutritionalStatus = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fecal stercobilin, qualitative
     /// </summary>
     public static readonly Coding FecalStercobilinQualitative = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonic guidance for pericardiocentesis
     /// </summary>
     public static readonly Coding UltrasonicGuidanceForPericardiocentesis = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alcohol measurement, breath
     /// </summary>
     public static readonly Coding AlcoholMeasurementBreath = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long-term assistance
     /// </summary>
     public static readonly Coding LongTermAssistance = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluorescent antigen measurement
     /// </summary>
     public static readonly Coding FluorescentAntigenMeasurement = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mold to yeast conversion test
     /// </summary>
     public static readonly Coding MoldToYeastConversionTest = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Barbiturates measurement, quantitative and qualitative
     /// </summary>
     public static readonly Coding BarbituratesMeasurementQuantitativeAndQualitative = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gas liquid chromatography, electron capture type
     /// </summary>
     public static readonly Coding GasLiquidChromatographyElectronCaptureType = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Curette test of skin
     /// </summary>
     public static readonly Coding CuretteTestOfSkin = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complement component assay
     /// </summary>
     public static readonly Coding ComplementComponentAssay = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sensititer system test
     /// </summary>
     public static readonly Coding SensititerSystemTest = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthroscopy of wrist with internal fixation for instability
     /// </summary>
     public static readonly Coding ArthroscopyOfWristWithInternalFixationForInstability = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venography of adrenal, bilateral
     /// </summary>
     public static readonly Coding VenographyOfAdrenalBilateral = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Exploration of popliteal artery
     /// </summary>
     public static readonly Coding ExplorationOfPoplitealArtery = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urinalysis, automated
     /// </summary>
     public static readonly Coding UrinalysisAutomated = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antibody detection, RBC, enzyme, 1 stage technique, including anti-human globulin
     /// </summary>
     public static readonly Coding AntibodyDetectionRBCEnzyme1StageTechniqueIncludingAntiHumanGlobulin = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microbial culture, anaerobic, initial isolation
     /// </summary>
     public static readonly Coding MicrobialCultureAnaerobicInitialIsolation = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic model construction
     /// </summary>
     public static readonly Coding DiagnosticModelConstruction = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Buffy coat smear evaluation
     /// </summary>
     public static readonly Coding BuffyCoatSmearEvaluation = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hexosaminidase A and total hexosaminidase measurement, serum
     /// </summary>
     public static readonly Coding HexosaminidaseAAndTotalHexosaminidaseMeasurementSerum = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epstein-Barr virus serologic test
     /// </summary>
     public static readonly Coding EpsteinBarrVirusSerologicTest = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cell count of synovial fluid with differential count
     /// </summary>
     public static readonly Coding CellCountOfSynovialFluidWithDifferentialCount = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Proximal anastomosis
     /// </summary>
     public static readonly Coding ProximalAnastomosis = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Distal anastomosis
     /// </summary>
     public static readonly Coding DistalAnastomosis = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tennis elbow test
     /// </summary>
     public static readonly Coding TennisElbowTest = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acquisition technique
     /// </summary>
     public static readonly Coding AcquisitionTechnique = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bladder filling technique
     /// </summary>
     public static readonly Coding BladderFillingTechnique = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Catheter movement technique
     /// </summary>
     public static readonly Coding CatheterMovementTechnique = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Near reading technique
     /// </summary>
     public static readonly Coding NearReadingTechnique = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Photon detection technique
     /// </summary>
     public static readonly Coding PhotonDetectionTechnique = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Provocation technique
     /// </summary>
     public static readonly Coding ProvocationTechnique = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stimulation technique
     /// </summary>
     public static readonly Coding StimulationTechnique = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 5' Nucleotidase measurement
     /// </summary>
     public static readonly Coding VAL5QuoteNucleotidaseMeasurement = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retrograde urography with KUB
     /// </summary>
     public static readonly Coding RetrogradeUrographyWithKUB = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mononuclear cell function assay
     /// </summary>
     public static readonly Coding MononuclearCellFunctionAssay = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flash
     /// </summary>
     public static readonly Coding Flash = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Single tetany technique
     /// </summary>
     public static readonly Coding SingleTetanyTechnique = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retruded jaw relation technique
     /// </summary>
     public static readonly Coding RetrudedJawRelationTechnique = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Debulking - action
     /// </summary>
     public static readonly Coding DebulkingAction = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rectally infused saline solution
     /// </summary>
     public static readonly Coding RectallyInfusedSalineSolution = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Darning - action
     /// </summary>
     public static readonly Coding DarningAction = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult N types
     /// </summary>
     public static readonly Coding AdultNTypes = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bright field
     /// </summary>
     public static readonly Coding BrightField = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dent sleeve technique
     /// </summary>
     public static readonly Coding DentSleeveTechnique = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sbisa bar
     /// </summary>
     public static readonly Coding SbisaBar = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Solid sphere technique
     /// </summary>
     public static readonly Coding SolidSphereTechnique = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swept spatial frequency bars
     /// </summary>
     public static readonly Coding SweptSpatialFrequencyBars = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wax wafer technique
     /// </summary>
     public static readonly Coding WaxWaferTechnique = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ablation
     /// </summary>
     public static readonly Coding Ablation = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chemical destruction
     /// </summary>
     public static readonly Coding ChemicalDestruction = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open adjustment
     /// </summary>
     public static readonly Coding OpenAdjustment = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// V-Y advancement technique
     /// </summary>
     public static readonly Coding VYAdvancementTechnique = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anastomosis
     /// </summary>
     public static readonly Coding Anastomosis = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Direct anastomosis - action
     /// </summary>
     public static readonly Coding DirectAnastomosisAction = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lecompte maneuver
     /// </summary>
     public static readonly Coding LecompteManeuver = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// End-to-end anastomosis
     /// </summary>
     public static readonly Coding EndToEndAnastomosis = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Double barrelled end-to-end anastomosis
     /// </summary>
     public static readonly Coding DoubleBarrelledEndToEndAnastomosis = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// End-to-side anastomosis
     /// </summary>
     public static readonly Coding EndToSideAnastomosis = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roux-en-Y
     /// </summary>
     public static readonly Coding RouxEnY = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// End-to-side anastomosis without tunnel
     /// </summary>
     public static readonly Coding EndToSideAnastomosisWithoutTunnel = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// End-to-side anastomosis with tunnel
     /// </summary>
     public static readonly Coding EndToSideAnastomosisWithTunnel = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Side-to-side anastomosis
     /// </summary>
     public static readonly Coding SideToSideAnastomosis = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wallace "69" side-to-end anastomosis
     /// </summary>
     public static readonly Coding WallaceQuotation69QuotationSideToEndAnastomosis = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FNA - Fine needle aspiration
     /// </summary>
     public static readonly Coding FNAFineNeedleAspiration = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Binding - action
     /// </summary>
     public static readonly Coding BindingAction = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cementing
     /// </summary>
     public static readonly Coding Cementing = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cementing with normal viscosity cement
     /// </summary>
     public static readonly Coding CementingWithNormalViscosityCement = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cementing with low viscosity cement
     /// </summary>
     public static readonly Coding CementingWithLowViscosityCement = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cementing with normal viscosity cement containing antibiotic
     /// </summary>
     public static readonly Coding CementingWithNormalViscosityCementContainingAntibiotic = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cementing with low viscosity cement containing antibiotic
     /// </summary>
     public static readonly Coding CementingWithLowViscosityCementContainingAntibiotic = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chemical inactivation
     /// </summary>
     public static readonly Coding ChemicalInactivation = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chemodissolution
     /// </summary>
     public static readonly Coding Chemodissolution = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mass closure
     /// </summary>
     public static readonly Coding MassClosure = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interrupted mass closure
     /// </summary>
     public static readonly Coding InterruptedMassClosure = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Continuous mass closure
     /// </summary>
     public static readonly Coding ContinuousMassClosure = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thermocoagulation
     /// </summary>
     public static readonly Coding Thermocoagulation = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Semm thermal coagulation
     /// </summary>
     public static readonly Coding SemmThermalCoagulation = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wolf thermal coagulation
     /// </summary>
     public static readonly Coding WolfThermalCoagulation = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cryotherapy - action
     /// </summary>
     public static readonly Coding CryotherapyAction = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delamination
     /// </summary>
     public static readonly Coding Delamination = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydrodelamination
     /// </summary>
     public static readonly Coding Hydrodelamination = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Desiccation - action
     /// </summary>
     public static readonly Coding DesiccationAction = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior displacement
     /// </summary>
     public static readonly Coding AnteriorDisplacement = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior displacement
     /// </summary>
     public static readonly Coding PosteriorDisplacement = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral displacement
     /// </summary>
     public static readonly Coding LateralDisplacement = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medial displacement
     /// </summary>
     public static readonly Coding MedialDisplacement = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Close rectal dissection
     /// </summary>
     public static readonly Coding CloseRectalDissection = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonic dissection
     /// </summary>
     public static readonly Coding UltrasonicDissection = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// External drainage
     /// </summary>
     public static readonly Coding ExternalDrainage = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Digital evacuation
     /// </summary>
     public static readonly Coding DigitalEvacuation = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manual expression
     /// </summary>
     public static readonly Coding ManualExpression = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extracapsular extraction
     /// </summary>
     public static readonly Coding ExtracapsularExtraction = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracapsular extraction
     /// </summary>
     public static readonly Coding IntracapsularExtraction = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fenestration - action
     /// </summary>
     public static readonly Coding FenestrationAction = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Press-fit component fixation
     /// </summary>
     public static readonly Coding PressFitComponentFixation = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ballistic fragmentation
     /// </summary>
     public static readonly Coding BallisticFragmentation = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mechanical fragmentation
     /// </summary>
     public static readonly Coding MechanicalFragmentation = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electromagnetic pulse fragmentation
     /// </summary>
     public static readonly Coding ElectromagneticPulseFragmentation = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Galvanism
     /// </summary>
     public static readonly Coding Galvanism = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// High intensity focused ultrasound
     /// </summary>
     public static readonly Coding HighIntensityFocusedUltrasound = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioactive destruction
     /// </summary>
     public static readonly Coding RadioactiveDestruction = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insertion - action
     /// </summary>
     public static readonly Coding InsertionAction = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Keeling - action
     /// </summary>
     public static readonly Coding KeelingAction = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Localization
     /// </summary>
     public static readonly Coding Localization = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immobilization - action
     /// </summary>
     public static readonly Coding ImmobilizationAction = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occlusion
     /// </summary>
     public static readonly Coding Occlusion = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operative ultrasound
     /// </summary>
     public static readonly Coding OperativeUltrasound = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Padding
     /// </summary>
     public static readonly Coding Padding = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peeling - action
     /// </summary>
     public static readonly Coding PeelingAction = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pressure
     /// </summary>
     public static readonly Coding Pressure = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// One handed pressure
     /// </summary>
     public static readonly Coding OneHandedPressure = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Two handed pressure
     /// </summary>
     public static readonly Coding TwoHandedPressure = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Realignment - action
     /// </summary>
     public static readonly Coding RealignmentAction = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair - action
     /// </summary>
     public static readonly Coding RepairAction = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Keel repair
     /// </summary>
     public static readonly Coding KeelRepair = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mayo repair
     /// </summary>
     public static readonly Coding MayoRepair = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patching - action
     /// </summary>
     public static readonly Coding PatchingAction = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repair of recurrence
     /// </summary>
     public static readonly Coding RepairOfRecurrence = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rotation - action
     /// </summary>
     public static readonly Coding RotationAction = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// IR - Internal rotation
     /// </summary>
     public static readonly Coding IRInternalRotation = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// External rotation
     /// </summary>
     public static readonly Coding ExternalRotation = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sampling
     /// </summary>
     public static readonly Coding Sampling = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral sampling
     /// </summary>
     public static readonly Coding BilateralSampling = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral sequential sampling
     /// </summary>
     public static readonly Coding BilateralSequentialSampling = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral simultaneous sampling
     /// </summary>
     public static readonly Coding BilateralSimultaneousSampling = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sampling without trap
     /// </summary>
     public static readonly Coding SamplingWithoutTrap = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Unilateral sampling
     /// </summary>
     public static readonly Coding UnilateralSampling = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Segmentation
     /// </summary>
     public static readonly Coding Segmentation = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Direct suturing technique
     /// </summary>
     public static readonly Coding DirectSuturingTechnique = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tamponade - action
     /// </summary>
     public static readonly Coding TamponadeAction = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tapering - action
     /// </summary>
     public static readonly Coding TaperingAction = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft tissue transfer
     /// </summary>
     public static readonly Coding SoftTissueTransfer = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transfer of bone block
     /// </summary>
     public static readonly Coding TransferOfBoneBlock = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transposition - action
     /// </summary>
     public static readonly Coding TranspositionAction = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Accelerometry
     /// </summary>
     public static readonly Coding Accelerometry = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acidometric method
     /// </summary>
     public static readonly Coding AcidometricMethod = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boyden chamber technique
     /// </summary>
     public static readonly Coding BoydenChamberTechnique = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Catheter tip manometry
     /// </summary>
     public static readonly Coding CatheterTipManometry = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chessboard method
     /// </summary>
     public static readonly Coding ChessboardMethod = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Confocal laser scanning fluorescence
     /// </summary>
     public static readonly Coding ConfocalLaserScanningFluorescence = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Conventional manometry
     /// </summary>
     public static readonly Coding ConventionalManometry = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dilution and colorimetry
     /// </summary>
     public static readonly Coding DilutionAndColorimetry = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Double sampling dye-dilution test
     /// </summary>
     public static readonly Coding DoubleSamplingDyeDilutionTest = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drainage bottle measurement
     /// </summary>
     public static readonly Coding DrainageBottleMeasurement = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drainage measurement
     /// </summary>
     public static readonly Coding DrainageMeasurement = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dye dilution technique
     /// </summary>
     public static readonly Coding DyeDilutionTechnique = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dye test
     /// </summary>
     public static readonly Coding DyeTest = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// E test
     /// </summary>
     public static readonly Coding ETest = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enzyme-mediated immunotransferase assay
     /// </summary>
     public static readonly Coding EnzymeMediatedImmunotransferaseAssay = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enzyme method
     /// </summary>
     public static readonly Coding EnzymeMethod = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Equilibration method
     /// </summary>
     public static readonly Coding EquilibrationMethod = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gradient method
     /// </summary>
     public static readonly Coding GradientMethod = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Helium single breath technique
     /// </summary>
     public static readonly Coding HeliumSingleBreathTechnique = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Helium steady state technique
     /// </summary>
     public static readonly Coding HeliumSteadyStateTechnique = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Helium dilution
     /// </summary>
     public static readonly Coding HeliumDilution = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// High pressure liquid chromatography
     /// </summary>
     public static readonly Coding HighPressureLiquidChromatography = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immunoblotting
     /// </summary>
     public static readonly Coding Immunoblotting = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immunoradiometry
     /// </summary>
     public static readonly Coding Immunoradiometry = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Indicator dilution technique
     /// </summary>
     public static readonly Coding IndicatorDilutionTechnique = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iodometric method
     /// </summary>
     public static readonly Coding IodometricMethod = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isoenzyme typing
     /// </summary>
     public static readonly Coding IsoenzymeTyping = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lectin typing
     /// </summary>
     public static readonly Coding LectinTyping = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lipopolysaccharide typing
     /// </summary>
     public static readonly Coding LipopolysaccharideTyping = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metabolic inhibition test
     /// </summary>
     public static readonly Coding MetabolicInhibitionTest = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microbiological method
     /// </summary>
     public static readonly Coding MicrobiologicalMethod = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Moorfields reading book test
     /// </summary>
     public static readonly Coding MoorfieldsReadingBookTest = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Natural filling
     /// </summary>
     public static readonly Coding NaturalFilling = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nitrocefin method
     /// </summary>
     public static readonly Coding NitrocefinMethod = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nitrogen washout
     /// </summary>
     public static readonly Coding NitrogenWashout = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pharmacological stimulation
     /// </summary>
     public static readonly Coding PharmacologicalStimulation = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phenotyping
     /// </summary>
     public static readonly Coding Phenotyping = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Photic stimulation
     /// </summary>
     public static readonly Coding PhoticStimulation = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pneumatic otoscopy
     /// </summary>
     public static readonly Coding PneumaticOtoscopy = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polyethylene glycol precipitation
     /// </summary>
     public static readonly Coding PolyethyleneGlycolPrecipitation = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polymerase chain reaction
     /// </summary>
     public static readonly Coding PolymeraseChainReaction = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Post-tetanic count stimulation
     /// </summary>
     public static readonly Coding PostTetanicCountStimulation = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protein profiling
     /// </summary>
     public static readonly Coding ProteinProfiling = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pyrolysis mass spectrometry
     /// </summary>
     public static readonly Coding PyrolysisMassSpectrometry = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rapid-pull through
     /// </summary>
     public static readonly Coding RapidPullThrough = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rebreathing method
     /// </summary>
     public static readonly Coding RebreathingMethod = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serotyping
     /// </summary>
     public static readonly Coding Serotyping = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sham feed technique
     /// </summary>
     public static readonly Coding ShamFeedTechnique = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sheridan Gardiner technique
     /// </summary>
     public static readonly Coding SheridanGardinerTechnique = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Station pull-through
     /// </summary>
     public static readonly Coding StationPullThrough = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thermodilution technique
     /// </summary>
     public static readonly Coding ThermodilutionTechnique = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultraviolet absorption
     /// </summary>
     public static readonly Coding UltravioletAbsorption = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vector volume analysis
     /// </summary>
     public static readonly Coding VectorVolumeAnalysis = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Visual estimation
     /// </summary>
     public static readonly Coding VisualEstimation = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Weighing of swabs
     /// </summary>
     public static readonly Coding WeighingOfSwabs = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zymodeme typing
     /// </summary>
     public static readonly Coding ZymodemeTyping = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Agar dilution
     /// </summary>
     public static readonly Coding AgarDilution = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dark ground
     /// </summary>
     public static readonly Coding DarkGround = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluorescence
     /// </summary>
     public static readonly Coding Fluorescence = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heterophoria method
     /// </summary>
     public static readonly Coding HeterophoriaMethod = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intermittent withdrawal technique
     /// </summary>
     public static readonly Coding IntermittentWithdrawalTechnique = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Restriction fragment length polymorphism
     /// </summary>
     public static readonly Coding RestrictionFragmentLengthPolymorphism = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Saline method
     /// </summary>
     public static readonly Coding SalineMethod = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sequence specific oligonucleotide probe
     /// </summary>
     public static readonly Coding SequenceSpecificOligonucleotideProbe = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sequence specific primers-polymerase chain reaction
     /// </summary>
     public static readonly Coding SequenceSpecificPrimersPolymeraseChainReaction = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// SRH - Single radial hemolysis
     /// </summary>
     public static readonly Coding SRHSingleRadialHemolysis = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suction drainage measurement
     /// </summary>
     public static readonly Coding SuctionDrainageMeasurement = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thermal test
     /// </summary>
     public static readonly Coding ThermalTest = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vapor pressure depression
     /// </summary>
     public static readonly Coding VaporPressureDepression = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ungated equilibrium
     /// </summary>
     public static readonly Coding UngatedEquilibrium = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whole cell long chain fatty acid methyl ester analysis
     /// </summary>
     public static readonly Coding WholeCellLongChainFattyAcidMethylEsterAnalysis = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// ECG gated technique
     /// </summary>
     public static readonly Coding ECGGatedTechnique = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gated equilibrium
     /// </summary>
     public static readonly Coding GatedEquilibrium = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Freezing point depression
     /// </summary>
     public static readonly Coding FreezingPointDepression = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phase contrast
     /// </summary>
     public static readonly Coding PhaseContrast = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sjogren hand technique
     /// </summary>
     public static readonly Coding SjogrenHandTechnique = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Snellen technique
     /// </summary>
     public static readonly Coding SnellenTechnique = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sucrose density gradient separation
     /// </summary>
     public static readonly Coding SucroseDensityGradientSeparation = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plate assay
     /// </summary>
     public static readonly Coding PlateAssay = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Position change
     /// </summary>
     public static readonly Coding PositionChange = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transmission
     /// </summary>
     public static readonly Coding Transmission = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Slime production typing
     /// </summary>
     public static readonly Coding SlimeProductionTyping = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Seldinger technique
     /// </summary>
     public static readonly Coding SeldingerTechnique = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Remodeled pouch method
     /// </summary>
     public static readonly Coding RemodeledPouchMethod = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blind technique
     /// </summary>
     public static readonly Coding BlindTechnique = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Direct vision technique
     /// </summary>
     public static readonly Coding DirectVisionTechnique = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood aspiration technique
     /// </summary>
     public static readonly Coding BloodAspirationTechnique = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood flashback technique
     /// </summary>
     public static readonly Coding BloodFlashbackTechnique = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pressure waveform analysis
     /// </summary>
     public static readonly Coding PressureWaveformAnalysis = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// ECG analysis
     /// </summary>
     public static readonly Coding ECGAnalysis = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cold light transillumination
     /// </summary>
     public static readonly Coding ColdLightTransillumination = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gas injection and auscultation
     /// </summary>
     public static readonly Coding GasInjectionAndAuscultation = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// SPECT
     /// </summary>
     public static readonly Coding SPECT = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maximum intercuspation technique
     /// </summary>
     public static readonly Coding MaximumIntercuspationTechnique = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Solid phase immune technique
     /// </summary>
     public static readonly Coding SolidPhaseImmuneTechnique = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Van Slyke technique
     /// </summary>
     public static readonly Coding VanSlykeTechnique = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obturation technique
     /// </summary>
     public static readonly Coding ObturationTechnique = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Post-processing
     /// </summary>
     public static readonly Coding PostProcessing = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anticurvature technique
     /// </summary>
     public static readonly Coding AnticurvatureTechnique = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Digital X-ray
     /// </summary>
     public static readonly Coding DigitalXRay = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dual cure method
     /// </summary>
     public static readonly Coding DualCureMethod = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mechanical
     /// </summary>
     public static readonly Coding Mechanical = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sequential anastomosis
     /// </summary>
     public static readonly Coding SequentialAnastomosis = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Turnover
     /// </summary>
     public static readonly Coding Turnover = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonic endodontic technique
     /// </summary>
     public static readonly Coding UltrasonicEndodonticTechnique = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Valsalva maneuvre
     /// </summary>
     public static readonly Coding ValsalvaManeuvre = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Double contrast technique
     /// </summary>
     public static readonly Coding DoubleContrastTechnique = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Double flare technique
     /// </summary>
     public static readonly Coding DoubleFlareTechnique = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dautrey method
     /// </summary>
     public static readonly Coding DautreyMethod = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open extraction
     /// </summary>
     public static readonly Coding OpenExtraction = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Balanced force technique
     /// </summary>
     public static readonly Coding BalancedForceTechnique = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cine study
     /// </summary>
     public static readonly Coding CineStudy = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Direct application technique
     /// </summary>
     public static readonly Coding DirectApplicationTechnique = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doppler color flow
     /// </summary>
     public static readonly Coding DopplerColorFlow = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doppler continuous wave
     /// </summary>
     public static readonly Coding DopplerContinuousWave = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doppler pulsed
     /// </summary>
     public static readonly Coding DopplerPulsed = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intermittent administration
     /// </summary>
     public static readonly Coding IntermittentAdministration = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nipple sharing technique
     /// </summary>
     public static readonly Coding NippleSharingTechnique = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous with automated instrumentation
     /// </summary>
     public static readonly Coding PercutaneousWithAutomatedInstrumentation = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous with endoscopic instrumentation
     /// </summary>
     public static readonly Coding PercutaneousWithEndoscopicInstrumentation = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous with laser instrumentation
     /// </summary>
     public static readonly Coding PercutaneousWithLaserInstrumentation = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous with manual instrumentation
     /// </summary>
     public static readonly Coding PercutaneousWithManualInstrumentation = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide plethysmography
     /// </summary>
     public static readonly Coding RadionuclidePlethysmography = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thermal plastic technique
     /// </summary>
     public static readonly Coding ThermalPlasticTechnique = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thermal solid technique
     /// </summary>
     public static readonly Coding ThermalSolidTechnique = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adhesive with supplementary suture technique
     /// </summary>
     public static readonly Coding AdhesiveWithSupplementarySutureTechnique = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implant technique
     /// </summary>
     public static readonly Coding ImplantTechnique = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Resurfacing - action
     /// </summary>
     public static readonly Coding ResurfacingAction = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alloplastic grafting
     /// </summary>
     public static readonly Coding AlloplasticGrafting = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone-patellar tendon-bone reconstruction
     /// </summary>
     public static readonly Coding BonePatellarTendonBoneReconstruction = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Braided prosthetic ligament reconstruction
     /// </summary>
     public static readonly Coding BraidedProstheticLigamentReconstruction = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Close rectal dissection technique
     /// </summary>
     public static readonly Coding CloseRectalDissectionTechnique = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Conventional angiography
     /// </summary>
     public static readonly Coding ConventionalAngiography = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cystodiathermy
     /// </summary>
     public static readonly Coding Cystodiathermy = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diathermy excision
     /// </summary>
     public static readonly Coding DiathermyExcision = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diathermy snare - action
     /// </summary>
     public static readonly Coding DiathermySnareAction = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electromagnetic fragmentation
     /// </summary>
     public static readonly Coding ElectromagneticFragmentation = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Loop diathermy excision
     /// </summary>
     public static readonly Coding LoopDiathermyExcision = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Periarticular osteotomy
     /// </summary>
     public static readonly Coding PeriarticularOsteotomy = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// REDY - Regeneration of dialysate
     /// </summary>
     public static readonly Coding REDYRegenerationOfDialysate = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shelf technique
     /// </summary>
     public static readonly Coding ShelfTechnique = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thermal injection technique
     /// </summary>
     public static readonly Coding ThermalInjectionTechnique = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thermocompaction
     /// </summary>
     public static readonly Coding Thermocompaction = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thyrotrophin releasing hormone stimulation
     /// </summary>
     public static readonly Coding ThyrotrophinReleasingHormoneStimulation = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound fragmentation
     /// </summary>
     public static readonly Coding UltrasoundFragmentation = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Air contrast technique
     /// </summary>
     public static readonly Coding AirContrastTechnique = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Before the filter
     /// </summary>
     public static readonly Coding BeforeTheFilter = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Benchekroun technique
     /// </summary>
     public static readonly Coding BenchekrounTechnique = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biochemical bond component fixation
     /// </summary>
     public static readonly Coding BiochemicalBondComponentFixation = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bisecting angle technique
     /// </summary>
     public static readonly Coding BisectingAngleTechnique = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone ingrowth system
     /// </summary>
     public static readonly Coding BoneIngrowthSystem = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corticotrophin releasing hormone stimulation
     /// </summary>
     public static readonly Coding CorticotrophinReleasingHormoneStimulation = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Continuous infusion
     /// </summary>
     public static readonly Coding ContinuousInfusion = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Explant technique
     /// </summary>
     public static readonly Coding ExplantTechnique = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extra-high resolution technique
     /// </summary>
     public static readonly Coding ExtraHighResolutionTechnique = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flow-directed technique
     /// </summary>
     public static readonly Coding FlowDirectedTechnique = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isaacs technique
     /// </summary>
     public static readonly Coding IsaacsTechnique = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Light cure method
     /// </summary>
     public static readonly Coding LightCureMethod = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mechanical grab method
     /// </summary>
     public static readonly Coding MechanicalGrabMethod = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mitrofanoff technique
     /// </summary>
     public static readonly Coding MitrofanoffTechnique = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Modified double flare technique
     /// </summary>
     public static readonly Coding ModifiedDoubleFlareTechnique = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multiplanar reconstruction
     /// </summary>
     public static readonly Coding MultiplanarReconstruction = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neutral zone
     /// </summary>
     public static readonly Coding NeutralZone = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paralleling technique
     /// </summary>
     public static readonly Coding ParallelingTechnique = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient cycled method
     /// </summary>
     public static readonly Coding PatientCycledMethod = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Power output
     /// </summary>
     public static readonly Coding PowerOutput = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powered method
     /// </summary>
     public static readonly Coding PoweredMethod = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powered flexible method
     /// </summary>
     public static readonly Coding PoweredFlexibleMethod = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Powered rigid method
     /// </summary>
     public static readonly Coding PoweredRigidMethod = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pressure controlled method
     /// </summary>
     public static readonly Coding PressureControlledMethod = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reciprocal mechanical technique
     /// </summary>
     public static readonly Coding ReciprocalMechanicalTechnique = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Remaining connected
     /// </summary>
     public static readonly Coding RemainingConnected = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rotary mechanical endodontic technique
     /// </summary>
     public static readonly Coding RotaryMechanicalEndodonticTechnique = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Self-cure method
     /// </summary>
     public static readonly Coding SelfCureMethod = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Side-to-end anastomosis
     /// </summary>
     public static readonly Coding SideToEndAnastomosis = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Single contrast technique
     /// </summary>
     public static readonly Coding SingleContrastTechnique = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sonic endodontic technique
     /// </summary>
     public static readonly Coding SonicEndodonticTechnique = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Standardized technique
     /// </summary>
     public static readonly Coding StandardizedTechnique = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stepback technique
     /// </summary>
     public static readonly Coding StepbackTechnique = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stepdown technique
     /// </summary>
     public static readonly Coding StepdownTechnique = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thallium uptake method
     /// </summary>
     public static readonly Coding ThalliumUptakeMethod = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Time cycled method
     /// </summary>
     public static readonly Coding TimeCycledMethod = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Volume controlled method
     /// </summary>
     public static readonly Coding VolumeControlledMethod = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Warming intravenous fluid technique
     /// </summary>
     public static readonly Coding WarmingIntravenousFluidTechnique = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wire guided technique
     /// </summary>
     public static readonly Coding WireGuidedTechnique = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// With clearance measurement
     /// </summary>
     public static readonly Coding WithClearanceMeasurement = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cross-compression technique
     /// </summary>
     public static readonly Coding CrossCompressionTechnique = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// With GFR
     /// </summary>
     public static readonly Coding WithGFR = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// With separation
     /// </summary>
     public static readonly Coding WithSeparation = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// With ureteric peristalsis analysis
     /// </summary>
     public static readonly Coding WithUretericPeristalsisAnalysis = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Without remount
     /// </summary>
     public static readonly Coding WithoutRemount = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Xenon clearance method
     /// </summary>
     public static readonly Coding XenonClearanceMethod = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// After the filter
     /// </summary>
     public static readonly Coding AfterTheFilter = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracranial/cerebral perfusion pressure monitoring
     /// </summary>
     public static readonly Coding IntracranialCerebralPerfusionPressureMonitoring = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Altered cast technique
     /// </summary>
     public static readonly Coding AlteredCastTechnique = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Broth dilution
     /// </summary>
     public static readonly Coding BrothDilution = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Compression
     /// </summary>
     public static readonly Coding Compression = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Constant acceleration technique
     /// </summary>
     public static readonly Coding ConstantAccelerationTechnique = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrosensitivity technique
     /// </summary>
     public static readonly Coding ElectrosensitivityTechnique = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Impulse
     /// </summary>
     public static readonly Coding Impulse = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microvascular
     /// </summary>
     public static readonly Coding Microvascular = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transcutaneous method
     /// </summary>
     public static readonly Coding TranscutaneousMethod = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior pedicle technique
     /// </summary>
     public static readonly Coding SuperiorPedicleTechnique = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Agarose technique
     /// </summary>
     public static readonly Coding AgaroseTechnique = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amino acid signature pattern analysis
     /// </summary>
     public static readonly Coding AminoAcidSignaturePatternAnalysis = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Central pedicle technique
     /// </summary>
     public static readonly Coding CentralPedicleTechnique = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complement component 1q binding assay
     /// </summary>
     public static readonly Coding ComplementComponent1qBindingAssay = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Conductivity technique
     /// </summary>
     public static readonly Coding ConductivityTechnique = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Continuous withdrawal technique
     /// </summary>
     public static readonly Coding ContinuousWithdrawalTechnique = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluorescence polarization immunoassay
     /// </summary>
     public static readonly Coding FluorescencePolarizationImmunoassay = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Half chessboard method
     /// </summary>
     public static readonly Coding HalfChessboardMethod = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heel bounce
     /// </summary>
     public static readonly Coding HeelBounce = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydroxylamine method
     /// </summary>
     public static readonly Coding HydroxylamineMethod = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inferior pedicle technique
     /// </summary>
     public static readonly Coding InferiorPedicleTechnique = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dufourmental technique
     /// </summary>
     public static readonly Coding DufourmentalTechnique = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maclure N test
     /// </summary>
     public static readonly Coding MaclureNTest = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multiple-breath technique
     /// </summary>
     public static readonly Coding MultipleBreathTechnique = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Single-breath technique
     /// </summary>
     public static readonly Coding SingleBreathTechnique = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ffooks technique
     /// </summary>
     public static readonly Coding FfooksTechnique = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antibiogram typing
     /// </summary>
     public static readonly Coding AntibiogramTyping = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Auxotyping
     /// </summary>
     public static readonly Coding Auxotyping = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bacteriocin typing
     /// </summary>
     public static readonly Coding BacteriocinTyping = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypothalamic stimulation
     /// </summary>
     public static readonly Coding HypothalamicStimulation = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravesical drug therapy
     /// </summary>
     public static readonly Coding IntravesicalDrugTherapy = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laser - action
     /// </summary>
     public static readonly Coding LaserAction = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and exploration of vas deferens
     /// </summary>
     public static readonly Coding IncisionAndExplorationOfVasDeferens = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 100 hue technique
     /// </summary>
     public static readonly Coding VAL100HueTechnique = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral rotation
     /// </summary>
     public static readonly Coding LateralRotation = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medial rotation
     /// </summary>
     public static readonly Coding MedialRotation = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dienes typing
     /// </summary>
     public static readonly Coding DienesTyping = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// AMBER
     /// </summary>
     public static readonly Coding AMBER = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biotyping
     /// </summary>
     public static readonly Coding Biotyping = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Children's N tests
     /// </summary>
     public static readonly Coding ChildrenQuoteSNTests = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// City University technique
     /// </summary>
     public static readonly Coding CityUniversityTechnique = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maclure technique
     /// </summary>
     public static readonly Coding MaclureTechnique = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Morphotyping
     /// </summary>
     public static readonly Coding Morphotyping = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nucleic acid analysis
     /// </summary>
     public static readonly Coding NucleicAcidAnalysis = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pattern onset/offset stimulation technique
     /// </summary>
     public static readonly Coding PatternOnsetOffsetStimulationTechnique = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thomas tank engine test
     /// </summary>
     public static readonly Coding ThomasTankEngineTest = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toxin typing
     /// </summary>
     public static readonly Coding ToxinTyping = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transluminal prosthetic method
     /// </summary>
     public static readonly Coding TransluminalProstheticMethod = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White noise masking of opposite ear
     /// </summary>
     public static readonly Coding WhiteNoiseMaskingOfOppositeEar = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prescription of optical aid
     /// </summary>
     public static readonly Coding PrescriptionOfOpticalAid = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging of pelvis
     /// </summary>
     public static readonly Coding MagneticResonanceImagingOfPelvis = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stool fat, quantitative measurement
     /// </summary>
     public static readonly Coding StoolFatQuantitativeMeasurement = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepatic venography with hemodynamic evaluation
     /// </summary>
     public static readonly Coding HepaticVenographyWithHemodynamicEvaluation = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// IL-3 assay
     /// </summary>
     public static readonly Coding IL3Assay = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microvascular anastomosis - action
     /// </summary>
     public static readonly Coding MicrovascularAnastomosisAction = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Analysis
     /// </summary>
     public static readonly Coding Analysis = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dilution
     /// </summary>
     public static readonly Coding Dilution = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Measurement
     /// </summary>
     public static readonly Coding Measurement = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assay
     /// </summary>
     public static readonly Coding Assay = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tests
     /// </summary>
     public static readonly Coding Tests = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Typings
     /// </summary>
     public static readonly Coding Typings = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serologic test for influenza virus A
     /// </summary>
     public static readonly Coding SerologicTestForInfluenzaVirusA = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Exploratory craniotomy, infratentorial
     /// </summary>
     public static readonly Coding ExploratoryCraniotomyInfratentorial = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operative endoscopy of ileum
     /// </summary>
     public static readonly Coding OperativeEndoscopyOfIleum = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// EUA - Examination under anesthetic
     /// </summary>
     public static readonly Coding EUAExaminationUnderAnesthetic = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mechanical assistance
     /// </summary>
     public static readonly Coding MechanicalAssistance = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracic impedance
     /// </summary>
     public static readonly Coding ThoracicImpedance = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision biopsy
     /// </summary>
     public static readonly Coding ExcisionBiopsy = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surface landmark technique
     /// </summary>
     public static readonly Coding SurfaceLandmarkTechnique = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suturing techniques
     /// </summary>
     public static readonly Coding SuturingTechniques = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Digital removal
     /// </summary>
     public static readonly Coding DigitalRemoval = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental techniques
     /// </summary>
     public static readonly Coding DentalTechniques = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refashioning
     /// </summary>
     public static readonly Coding Refashioning = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Automated endodontic technique
     /// </summary>
     public static readonly Coding AutomatedEndodonticTechnique = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hand technique
     /// </summary>
     public static readonly Coding HandTechnique = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flap valve technique
     /// </summary>
     public static readonly Coding FlapValveTechnique = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Conduit anastomosis
     /// </summary>
     public static readonly Coding ConduitAnastomosis = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reservoir anastomosis
     /// </summary>
     public static readonly Coding ReservoirAnastomosis = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Submucosal tunnel technique
     /// </summary>
     public static readonly Coding SubmucosalTunnelTechnique = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Washing of swabs
     /// </summary>
     public static readonly Coding WashingOfSwabs = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiographic imaging
     /// </summary>
     public static readonly Coding RadiographicImaging = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous techniques
     /// </summary>
     public static readonly Coding PercutaneousTechniques = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microscopy technique
     /// </summary>
     public static readonly Coding MicroscopyTechnique = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound imaging
     /// </summary>
     public static readonly Coding UltrasoundImaging = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pull-through technique
     /// </summary>
     public static readonly Coding PullThroughTechnique = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reattachment - action
     /// </summary>
     public static readonly Coding ReattachmentAction = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Regeneration
     /// </summary>
     public static readonly Coding Regeneration = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluid replacement technique
     /// </summary>
     public static readonly Coding FluidReplacementTechnique = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Imaging technique
     /// </summary>
     public static readonly Coding ImagingTechnique = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sealing
     /// </summary>
     public static readonly Coding Sealing = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Copy denture technique
     /// </summary>
     public static readonly Coding CopyDentureTechnique = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cineradiography of pharynx
     /// </summary>
     public static readonly Coding CineradiographyOfPharynx = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flow triggering
     /// </summary>
     public static readonly Coding FlowTriggering = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pressure triggering
     /// </summary>
     public static readonly Coding PressureTriggering = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Differential lung ventilation
     /// </summary>
     public static readonly Coding DifferentialLungVentilation = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// One lung ventilation
     /// </summary>
     public static readonly Coding OneLungVentilation = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left lung ventilation
     /// </summary>
     public static readonly Coding LeftLungVentilation = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right lung ventilation
     /// </summary>
     public static readonly Coding RightLungVentilation = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral lung ventilation
     /// </summary>
     public static readonly Coding BilateralLungVentilation = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cryoablation - action
     /// </summary>
     public static readonly Coding CryoablationAction = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decompression - action
     /// </summary>
     public static readonly Coding DecompressionAction = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Exploration - action
     /// </summary>
     public static readonly Coding ExplorationAction = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cryocautery - action
     /// </summary>
     public static readonly Coding CryocauteryAction = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manual dilatation
     /// </summary>
     public static readonly Coding ManualDilatation = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disarticulation - action
     /// </summary>
     public static readonly Coding DisarticulationAction = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Exenteration
     /// </summary>
     public static readonly Coding Exenteration = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shave biopsy - action
     /// </summary>
     public static readonly Coding ShaveBiopsyAction = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Replacement - action
     /// </summary>
     public static readonly Coding ReplacementAction = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound destruction
     /// </summary>
     public static readonly Coding UltrasoundDestruction = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gas chromatography measurement
     /// </summary>
     public static readonly Coding GasChromatographyMeasurement = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anger management technique
     /// </summary>
     public static readonly Coding AngerManagementTechnique = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Relaxation technique
     /// </summary>
     public static readonly Coding RelaxationTechnique = new Coding
     {
@@ -5574,7 +5574,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cervical myelography
     /// </summary>
     public static readonly Coding CervicalMyelography = new Coding
     {
@@ -5583,7 +5583,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plastic operation
     /// </summary>
     public static readonly Coding PlasticOperation = new Coding
     {
@@ -5592,7 +5592,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Block dissection
     /// </summary>
     public static readonly Coding BlockDissection = new Coding
     {
@@ -5601,7 +5601,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Denervation
     /// </summary>
     public static readonly Coding Denervation = new Coding
     {
@@ -5610,7 +5610,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pressure limited cycling method
     /// </summary>
     public static readonly Coding PressureLimitedCyclingMethod = new Coding
     {
@@ -5619,7 +5619,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Application of caustics
     /// </summary>
     public static readonly Coding ApplicationOfCaustics = new Coding
     {
@@ -5628,7 +5628,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eversion - action
     /// </summary>
     public static readonly Coding EversionAction = new Coding
     {
@@ -5637,7 +5637,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diathermy incision
     /// </summary>
     public static readonly Coding DiathermyIncision = new Coding
     {
@@ -5646,7 +5646,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disimpaction - action
     /// </summary>
     public static readonly Coding DisimpactionAction = new Coding
     {
@@ -5655,7 +5655,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intradermal skin test
     /// </summary>
     public static readonly Coding IntradermalSkinTest = new Coding
     {
@@ -5664,7 +5664,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthroscopy of elbow with partial synovectomy
     /// </summary>
     public static readonly Coding ArthroscopyOfElbowWithPartialSynovectomy = new Coding
     {
@@ -5673,7 +5673,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// DNA analysis, antenatal, blood
     /// </summary>
     public static readonly Coding DNAAnalysisAntenatalBlood = new Coding
     {
@@ -5682,7 +5682,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reduction plasty
     /// </summary>
     public static readonly Coding ReductionPlasty = new Coding
     {
@@ -5691,7 +5691,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enzyme destruction
     /// </summary>
     public static readonly Coding EnzymeDestruction = new Coding
     {
@@ -5700,7 +5700,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shave excision
     /// </summary>
     public static readonly Coding ShaveExcision = new Coding
     {
@@ -5709,7 +5709,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microsurgical repair
     /// </summary>
     public static readonly Coding MicrosurgicalRepair = new Coding
     {
@@ -5718,7 +5718,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Recession - action
     /// </summary>
     public static readonly Coding RecessionAction = new Coding
     {
@@ -5727,7 +5727,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microsurgical anastomosis
     /// </summary>
     public static readonly Coding MicrosurgicalAnastomosis = new Coding
     {
@@ -5736,7 +5736,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Revascularization
     /// </summary>
     public static readonly Coding Revascularization = new Coding
     {
@@ -5745,7 +5745,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Devascularization - action
     /// </summary>
     public static readonly Coding DevascularizationAction = new Coding
     {
@@ -5754,7 +5754,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Application of substance
     /// </summary>
     public static readonly Coding ApplicationOfSubstance = new Coding
     {
@@ -5763,7 +5763,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteoclasis - action
     /// </summary>
     public static readonly Coding OsteoclasisAction = new Coding
     {
@@ -5772,7 +5772,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteotomy - action
     /// </summary>
     public static readonly Coding OsteotomyAction = new Coding
     {
@@ -5781,7 +5781,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interposition anastomosis - action
     /// </summary>
     public static readonly Coding InterpositionAnastomosisAction = new Coding
     {
@@ -5790,7 +5790,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Actions by modality
     /// </summary>
     public static readonly Coding ActionsByModality = new Coding
     {
@@ -5799,7 +5799,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Freeing - action
     /// </summary>
     public static readonly Coding FreeingAction = new Coding
     {
@@ -5808,7 +5808,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Examination - action
     /// </summary>
     public static readonly Coding ExaminationAction = new Coding
     {
@@ -5817,7 +5817,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasound - action
     /// </summary>
     public static readonly Coding UltrasoundAction = new Coding
     {
@@ -5826,7 +5826,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microwave - action
     /// </summary>
     public static readonly Coding MicrowaveAction = new Coding
     {
@@ -5835,7 +5835,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contrast imaging technique
     /// </summary>
     public static readonly Coding ContrastImagingTechnique = new Coding
     {
@@ -5844,7 +5844,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Functional modification
     /// </summary>
     public static readonly Coding FunctionalModification = new Coding
     {
@@ -5853,7 +5853,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structural modification
     /// </summary>
     public static readonly Coding StructuralModification = new Coding
     {
@@ -5862,7 +5862,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transfusion - action
     /// </summary>
     public static readonly Coding TransfusionAction = new Coding
     {
@@ -5871,7 +5871,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Terminalization
     /// </summary>
     public static readonly Coding Terminalization = new Coding
     {
@@ -5880,7 +5880,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Unused action values
     /// </summary>
     public static readonly Coding UnusedActionValues = new Coding
     {
@@ -5889,7 +5889,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specific stimulation technique
     /// </summary>
     public static readonly Coding SpecificStimulationTechnique = new Coding
     {
@@ -5898,7 +5898,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Structural support - action
     /// </summary>
     public static readonly Coding StructuralSupportAction = new Coding
     {
@@ -5907,7 +5907,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fixation of prosthetic joint component
     /// </summary>
     public static readonly Coding FixationOfProstheticJointComponent = new Coding
     {
@@ -5916,7 +5916,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Uncemented component fixation
     /// </summary>
     public static readonly Coding UncementedComponentFixation = new Coding
     {
@@ -5925,7 +5925,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manual evacuation
     /// </summary>
     public static readonly Coding ManualEvacuation = new Coding
     {
@@ -5934,7 +5934,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Echography of kidney
     /// </summary>
     public static readonly Coding EchographyOfKidney = new Coding
     {
@@ -5943,7 +5943,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Loss of resistance technique
     /// </summary>
     public static readonly Coding LossOfResistanceTechnique = new Coding
     {
@@ -5952,7 +5952,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Loss of resistance to air
     /// </summary>
     public static readonly Coding LossOfResistanceToAir = new Coding
     {
@@ -5961,7 +5961,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Loss of resistance to saline
     /// </summary>
     public static readonly Coding LossOfResistanceToSaline = new Coding
     {
@@ -5970,7 +5970,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Duplex ultrasound
     /// </summary>
     public static readonly Coding DuplexUltrasound = new Coding
     {
@@ -5979,7 +5979,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiography technique
     /// </summary>
     public static readonly Coding AngiographyTechnique = new Coding
     {
@@ -5988,7 +5988,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Digital subtraction angiography
     /// </summary>
     public static readonly Coding DigitalSubtractionAngiography = new Coding
     {
@@ -5997,7 +5997,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging
     /// </summary>
     public static readonly Coding MagneticResonanceImaging = new Coding
     {
@@ -6006,7 +6006,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computed tomography technique
     /// </summary>
     public static readonly Coding ComputedTomographyTechnique = new Coding
     {
@@ -6015,7 +6015,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plain X-ray imaging
     /// </summary>
     public static readonly Coding PlainXRayImaging = new Coding
     {
@@ -6024,7 +6024,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoroscopic imaging
     /// </summary>
     public static readonly Coding FluoroscopicImaging = new Coding
     {
@@ -6033,7 +6033,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Opening - action
     /// </summary>
     public static readonly Coding OpeningAction = new Coding
     {
@@ -6042,7 +6042,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thermography imaging
     /// </summary>
     public static readonly Coding ThermographyImaging = new Coding
     {
@@ -6051,7 +6051,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Image post-processing
     /// </summary>
     public static readonly Coding ImagePostProcessing = new Coding
     {
@@ -6060,7 +6060,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radionuclide imaging
     /// </summary>
     public static readonly Coding RadionuclideImaging = new Coding
     {
@@ -6069,7 +6069,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Desensitization - action
     /// </summary>
     public static readonly Coding DesensitizationAction = new Coding
     {
@@ -6078,7 +6078,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brachytherapy - action
     /// </summary>
     public static readonly Coding BrachytherapyAction = new Coding
     {
@@ -6087,7 +6087,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flap transfer technique
     /// </summary>
     public static readonly Coding FlapTransferTechnique = new Coding
     {
@@ -6096,7 +6096,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Advancement technique
     /// </summary>
     public static readonly Coding AdvancementTechnique = new Coding
     {
@@ -6105,7 +6105,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Simple suture technique
     /// </summary>
     public static readonly Coding SimpleSutureTechnique = new Coding
     {
@@ -6114,7 +6114,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Z-plasty technique
     /// </summary>
     public static readonly Coding ZPlastyTechnique = new Coding
     {
@@ -6123,7 +6123,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Forward sliding
     /// </summary>
     public static readonly Coding ForwardSliding = new Coding
     {
@@ -6132,7 +6132,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Panorex examination of mandible
     /// </summary>
     public static readonly Coding PanorexExaminationOfMandible = new Coding
     {
@@ -6141,7 +6141,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reagent RBC, preparation antibody sensitized pool
     /// </summary>
     public static readonly Coding ReagentRBCPreparationAntibodySensitizedPool = new Coding
     {
@@ -6150,7 +6150,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// IV/irrigation monitoring
     /// </summary>
     public static readonly Coding IVIrrigationMonitoring = new Coding
     {
@@ -6159,7 +6159,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clipping - action
     /// </summary>
     public static readonly Coding ClippingAction = new Coding
     {
@@ -6168,7 +6168,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stimulus dosing technique
     /// </summary>
     public static readonly Coding StimulusDosingTechnique = new Coding
     {
@@ -6177,7 +6177,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extirpation - action
     /// </summary>
     public static readonly Coding ExtirpationAction = new Coding
     {
@@ -6186,7 +6186,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bypass - action
     /// </summary>
     public static readonly Coding BypassAction = new Coding
     {
@@ -6195,7 +6195,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Harvesting - action
     /// </summary>
     public static readonly Coding HarvestingAction = new Coding
     {
@@ -6204,7 +6204,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interposition - action
     /// </summary>
     public static readonly Coding InterpositionAction = new Coding
     {
@@ -6213,7 +6213,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical biopsy - action
     /// </summary>
     public static readonly Coding SurgicalBiopsyAction = new Coding
     {
@@ -6222,7 +6222,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nonsurgical biopsy - action
     /// </summary>
     public static readonly Coding NonsurgicalBiopsyAction = new Coding
     {
@@ -6231,7 +6231,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flap reconstruction - action
     /// </summary>
     public static readonly Coding FlapReconstructionAction = new Coding
     {
@@ -6240,7 +6240,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Imaging - action
     /// </summary>
     public static readonly Coding ImagingAction = new Coding
     {
@@ -6249,7 +6249,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gluing - action
     /// </summary>
     public static readonly Coding GluingAction = new Coding
     {
@@ -6258,7 +6258,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical toilet
     /// </summary>
     public static readonly Coding SurgicalToilet = new Coding
     {
@@ -6267,7 +6267,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Approximation - action
     /// </summary>
     public static readonly Coding ApproximationAction = new Coding
     {
@@ -6276,7 +6276,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apposition - action
     /// </summary>
     public static readonly Coding AppositionAction = new Coding
     {
@@ -6285,7 +6285,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Septation - action
     /// </summary>
     public static readonly Coding SeptationAction = new Coding
     {
@@ -6294,7 +6294,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Indirect anastomosis - action
     /// </summary>
     public static readonly Coding IndirectAnastomosisAction = new Coding
     {
@@ -6303,7 +6303,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repositioning - action
     /// </summary>
     public static readonly Coding RepositioningAction = new Coding
     {
@@ -6312,7 +6312,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Attention - action
     /// </summary>
     public static readonly Coding AttentionAction = new Coding
     {
@@ -6321,7 +6321,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obstetric action
     /// </summary>
     public static readonly Coding ObstetricAction = new Coding
     {
@@ -6330,7 +6330,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delivery - action
     /// </summary>
     public static readonly Coding DeliveryAction = new Coding
     {
@@ -6339,7 +6339,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inlay replacement - action
     /// </summary>
     public static readonly Coding InlayReplacementAction = new Coding
     {
@@ -6348,7 +6348,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monitoring - action
     /// </summary>
     public static readonly Coding MonitoringAction = new Coding
     {
@@ -6357,7 +6357,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Take impression - action
     /// </summary>
     public static readonly Coding TakeImpressionAction = new Coding
     {
@@ -6366,7 +6366,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Try-in of device - action
     /// </summary>
     public static readonly Coding TryInOfDeviceAction = new Coding
     {
@@ -6375,7 +6375,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Checking - action
     /// </summary>
     public static readonly Coding CheckingAction = new Coding
     {
@@ -6384,7 +6384,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Induction - action
     /// </summary>
     public static readonly Coding InductionAction = new Coding
     {
@@ -6393,7 +6393,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infiltration - action
     /// </summary>
     public static readonly Coding InfiltrationAction = new Coding
     {
@@ -6402,7 +6402,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apheresis - action
     /// </summary>
     public static readonly Coding ApheresisAction = new Coding
     {
@@ -6411,7 +6411,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Filtration - action
     /// </summary>
     public static readonly Coding FiltrationAction = new Coding
     {
@@ -6420,7 +6420,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mapping - action
     /// </summary>
     public static readonly Coding MappingAction = new Coding
     {
@@ -6429,7 +6429,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Massage - action
     /// </summary>
     public static readonly Coding MassageAction = new Coding
     {
@@ -6438,7 +6438,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cine imaging - action
     /// </summary>
     public static readonly Coding CineImagingAction = new Coding
     {
@@ -6447,7 +6447,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrical discharge - action
     /// </summary>
     public static readonly Coding ElectricalDischargeAction = new Coding
     {
@@ -6456,7 +6456,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Video imaging - action
     /// </summary>
     public static readonly Coding VideoImagingAction = new Coding
     {
@@ -6465,7 +6465,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spectroscopy - action
     /// </summary>
     public static readonly Coding SpectroscopyAction = new Coding
     {
@@ -6474,7 +6474,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Termination - action
     /// </summary>
     public static readonly Coding TerminationAction = new Coding
     {
@@ -6483,7 +6483,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Connection - action
     /// </summary>
     public static readonly Coding ConnectionAction = new Coding
     {
@@ -6492,7 +6492,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Therapy - action
     /// </summary>
     public static readonly Coding TherapyAction = new Coding
     {
@@ -6501,7 +6501,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Discussion - action
     /// </summary>
     public static readonly Coding DiscussionAction = new Coding
     {
@@ -6510,7 +6510,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Provision - action
     /// </summary>
     public static readonly Coding ProvisionAction = new Coding
     {
@@ -6519,7 +6519,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutting - action
     /// </summary>
     public static readonly Coding CuttingAction = new Coding
     {
@@ -6528,7 +6528,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Filing - action
     /// </summary>
     public static readonly Coding FilingAction = new Coding
     {
@@ -6537,7 +6537,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Restore - action
     /// </summary>
     public static readonly Coding RestoreAction = new Coding
     {
@@ -6546,7 +6546,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obturation - action
     /// </summary>
     public static readonly Coding ObturationAction = new Coding
     {
@@ -6555,7 +6555,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Simple removal - action
     /// </summary>
     public static readonly Coding SimpleRemovalAction = new Coding
     {
@@ -6564,7 +6564,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disinsertion - action
     /// </summary>
     public static readonly Coding DisinsertionAction = new Coding
     {
@@ -6573,7 +6573,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dissolution - action
     /// </summary>
     public static readonly Coding DissolutionAction = new Coding
     {
@@ -6582,7 +6582,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manual method
     /// </summary>
     public static readonly Coding ManualMethod = new Coding
     {
@@ -6591,7 +6591,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pacing - action
     /// </summary>
     public static readonly Coding PacingAction = new Coding
     {
@@ -6600,7 +6600,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Positron emission tomographic imaging
     /// </summary>
     public static readonly Coding PositronEmissionTomographicImaging = new Coding
     {
@@ -6609,7 +6609,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lending - action
     /// </summary>
     public static readonly Coding LendingAction = new Coding
     {
@@ -6618,7 +6618,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contouring - action
     /// </summary>
     public static readonly Coding ContouringAction = new Coding
     {
@@ -6627,7 +6627,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Preparation - action
     /// </summary>
     public static readonly Coding PreparationAction = new Coding
     {
@@ -6636,7 +6636,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Buckling - action
     /// </summary>
     public static readonly Coding BucklingAction = new Coding
     {
@@ -6645,7 +6645,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inversion - action
     /// </summary>
     public static readonly Coding InversionAction = new Coding
     {
@@ -6654,7 +6654,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suspension - action
     /// </summary>
     public static readonly Coding SuspensionAction = new Coding
     {
@@ -6663,7 +6663,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyfrecation - action
     /// </summary>
     public static readonly Coding HyfrecationAction = new Coding
     {
@@ -6672,7 +6672,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Single beats - numeric estimation technique
     /// </summary>
     public static readonly Coding SingleBeatsNumericEstimationTechnique = new Coding
     {
@@ -6681,7 +6681,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Best value
     /// </summary>
     public static readonly Coding BestValue = new Coding
     {
@@ -6690,7 +6690,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Point source - numeric estimation technique
     /// </summary>
     public static readonly Coding PointSourceNumericEstimationTechnique = new Coding
     {
@@ -6699,7 +6699,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peak to peak - numeric estimation technique
     /// </summary>
     public static readonly Coding PeakToPeakNumericEstimationTechnique = new Coding
     {
@@ -6708,7 +6708,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Representative - numeric estimation technique
     /// </summary>
     public static readonly Coding RepresentativeNumericEstimationTechnique = new Coding
     {
@@ -6717,7 +6717,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Averaged - numeric estimation technique
     /// </summary>
     public static readonly Coding AveragedNumericEstimationTechnique = new Coding
     {
@@ -6726,7 +6726,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mean - numeric estimation technique
     /// </summary>
     public static readonly Coding MeanNumericEstimationTechnique = new Coding
     {
@@ -6735,7 +6735,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Median - numeric estimation technique
     /// </summary>
     public static readonly Coding MedianNumericEstimationTechnique = new Coding
     {
@@ -6744,7 +6744,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mode - numeric estimation technique
     /// </summary>
     public static readonly Coding ModeNumericEstimationTechnique = new Coding
     {
@@ -6753,7 +6753,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Routine - numeric estimation technique
     /// </summary>
     public static readonly Coding RoutineNumericEstimationTechnique = new Coding
     {
@@ -6762,7 +6762,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maintenance - action
     /// </summary>
     public static readonly Coding MaintenanceAction = new Coding
     {
@@ -6771,7 +6771,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tobramycin measurement
     /// </summary>
     public static readonly Coding TobramycinMeasurement = new Coding
     {
@@ -6780,7 +6780,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Single bolus
     /// </summary>
     public static readonly Coding SingleBolus = new Coding
     {
@@ -6789,7 +6789,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravascular confirmation method
     /// </summary>
     public static readonly Coding IntravascularConfirmationMethod = new Coding
     {
@@ -6798,7 +6798,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intermittent bolus
     /// </summary>
     public static readonly Coding IntermittentBolus = new Coding
     {
@@ -6807,7 +6807,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Loss of resistance technique - other fluid
     /// </summary>
     public static readonly Coding LossOfResistanceTechniqueOtherFluid = new Coding
     {
@@ -6816,7 +6816,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vessel location technique
     /// </summary>
     public static readonly Coding VesselLocationTechnique = new Coding
     {
@@ -6825,7 +6825,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Loss of resistance technique - both saline and air
     /// </summary>
     public static readonly Coding LossOfResistanceTechniqueBothSalineAndAir = new Coding
     {
@@ -6834,7 +6834,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Finder needle technique
     /// </summary>
     public static readonly Coding FinderNeedleTechnique = new Coding
     {
@@ -6843,7 +6843,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// B mode ultrasound
     /// </summary>
     public static readonly Coding BModeUltrasound = new Coding
     {
@@ -6852,7 +6852,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tomographic imaging, plain radiologic - action
     /// </summary>
     public static readonly Coding TomographicImagingPlainRadiologicAction = new Coding
     {
@@ -6861,7 +6861,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tomographic imaging - action
     /// </summary>
     public static readonly Coding TomographicImagingAction = new Coding
     {
@@ -6870,7 +6870,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 2D mode ultrasound
     /// </summary>
     public static readonly Coding VAL2DModeUltrasound = new Coding
     {
@@ -6879,7 +6879,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// M-mode ultrasound
     /// </summary>
     public static readonly Coding MModeUltrasound = new Coding
     {
@@ -6888,7 +6888,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Autofluorescence
     /// </summary>
     public static readonly Coding Autofluorescence = new Coding
     {
@@ -6897,7 +6897,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Illumination
     /// </summary>
     public static readonly Coding Illumination = new Coding
     {
@@ -6906,7 +6906,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dual diffuse direct illumination
     /// </summary>
     public static readonly Coding DualDiffuseDirectIllumination = new Coding
     {
@@ -6915,7 +6915,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fine slit beam direct illumination
     /// </summary>
     public static readonly Coding FineSlitBeamDirectIllumination = new Coding
     {
@@ -6924,7 +6924,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Broad tangential direct illumination
     /// </summary>
     public static readonly Coding BroadTangentialDirectIllumination = new Coding
     {
@@ -6933,7 +6933,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Indirect sclerotic scatter illumination
     /// </summary>
     public static readonly Coding IndirectScleroticScatterIllumination = new Coding
     {
@@ -6942,7 +6942,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Indirect retroillumination from the iris
     /// </summary>
     public static readonly Coding IndirectRetroilluminationFromTheIris = new Coding
     {
@@ -6951,7 +6951,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Indirect retroillumination from the retina
     /// </summary>
     public static readonly Coding IndirectRetroilluminationFromTheRetina = new Coding
     {
@@ -6960,7 +6960,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Indirect iris transillumination
     /// </summary>
     public static readonly Coding IndirectIrisTransillumination = new Coding
     {
@@ -6969,7 +6969,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical decompression - action
     /// </summary>
     public static readonly Coding SurgicalDecompressionAction = new Coding
     {
@@ -6978,7 +6978,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decompressive excision - action
     /// </summary>
     public static readonly Coding DecompressiveExcisionAction = new Coding
     {
@@ -6987,7 +6987,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decompressive incision - action
     /// </summary>
     public static readonly Coding DecompressiveIncisionAction = new Coding
     {
@@ -6996,7 +6996,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decompressive division - action
     /// </summary>
     public static readonly Coding DecompressiveDivisionAction = new Coding
     {
@@ -7005,7 +7005,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elevation reduction - action
     /// </summary>
     public static readonly Coding ElevationReductionAction = new Coding
     {
@@ -7014,7 +7014,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical reduction - action
     /// </summary>
     public static readonly Coding SurgicalReductionAction = new Coding
     {
@@ -7023,7 +7023,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dilation repair - action
     /// </summary>
     public static readonly Coding DilationRepairAction = new Coding
     {
@@ -7032,7 +7032,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical transplantation - action
     /// </summary>
     public static readonly Coding SurgicalTransplantationAction = new Coding
     {
@@ -7041,7 +7041,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hanging drop technique
     /// </summary>
     public static readonly Coding HangingDropTechnique = new Coding
     {
@@ -7050,7 +7050,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Imaging guidance technique
     /// </summary>
     public static readonly Coding ImagingGuidanceTechnique = new Coding
     {
@@ -7059,7 +7059,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Line placement technique
     /// </summary>
     public static readonly Coding LinePlacementTechnique = new Coding
     {
@@ -7068,7 +7068,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paresthesia technique
     /// </summary>
     public static readonly Coding ParesthesiaTechnique = new Coding
     {
@@ -7077,7 +7077,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Proximal illumination - action
     /// </summary>
     public static readonly Coding ProximalIlluminationAction = new Coding
     {
@@ -7086,7 +7086,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transarterial technique
     /// </summary>
     public static readonly Coding TransarterialTechnique = new Coding
     {
@@ -7095,7 +7095,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intubation technique
     /// </summary>
     public static readonly Coding IntubationTechnique = new Coding
     {
@@ -7104,7 +7104,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tracheal intubation technique
     /// </summary>
     public static readonly Coding TrachealIntubationTechnique = new Coding
     {
@@ -7113,7 +7113,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Internal drainage - action
     /// </summary>
     public static readonly Coding InternalDrainageAction = new Coding
     {
@@ -7122,7 +7122,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bronchial intubation technique
     /// </summary>
     public static readonly Coding BronchialIntubationTechnique = new Coding
     {
@@ -7131,7 +7131,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gently
     /// </summary>
     public static readonly Coding Gently = new Coding
     {
@@ -7140,7 +7140,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rapidly
     /// </summary>
     public static readonly Coding Rapidly = new Coding
     {
@@ -7149,7 +7149,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liberally
     /// </summary>
     public static readonly Coding Liberally = new Coding
     {
@@ -7158,7 +7158,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Use
     /// </summary>
     public static readonly Coding Use = new Coding
     {
@@ -7167,7 +7167,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Slowly
     /// </summary>
     public static readonly Coding Slowly = new Coding
     {
@@ -7176,7 +7176,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Take
     /// </summary>
     public static readonly Coding Take = new Coding
     {
@@ -7185,7 +7185,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Examination AND/OR history taking - action
     /// </summary>
     public static readonly Coding ExaminationANDORHistoryTakingAction = new Coding
     {
@@ -7194,7 +7194,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vigorously
     /// </summary>
     public static readonly Coding Vigorously = new Coding
     {
@@ -7203,7 +7203,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Action of drug administration
     /// </summary>
     public static readonly Coding ActionOfDrugAdministration = new Coding
     {
@@ -7212,7 +7212,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swallowed whole
     /// </summary>
     public static readonly Coding SwallowedWhole = new Coding
     {
@@ -7221,7 +7221,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shunt - action
     /// </summary>
     public static readonly Coding ShuntAction = new Coding
     {
@@ -7230,7 +7230,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrathecal confirmation technique
     /// </summary>
     public static readonly Coding IntrathecalConfirmationTechnique = new Coding
     {
@@ -7239,7 +7239,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical introduction - action
     /// </summary>
     public static readonly Coding SurgicalIntroductionAction = new Coding
     {
@@ -7248,7 +7248,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Recommendation - action
     /// </summary>
     public static readonly Coding RecommendationAction = new Coding
     {
@@ -7257,7 +7257,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical insertion - action
     /// </summary>
     public static readonly Coding SurgicalInsertionAction = new Coding
     {
@@ -7266,7 +7266,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Teaching - action
     /// </summary>
     public static readonly Coding TeachingAction = new Coding
     {
@@ -7275,7 +7275,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Power doppler ultrasound
     /// </summary>
     public static readonly Coding PowerDopplerUltrasound = new Coding
     {
@@ -7284,7 +7284,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transection - action
     /// </summary>
     public static readonly Coding TransectionAction = new Coding
     {
@@ -7293,7 +7293,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed reduction - action
     /// </summary>
     public static readonly Coding ClosedReductionAction = new Coding
     {
@@ -7302,7 +7302,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open reduction - action
     /// </summary>
     public static readonly Coding OpenReductionAction = new Coding
     {
@@ -7311,7 +7311,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 3D mode ultrasound
     /// </summary>
     public static readonly Coding VAL3DModeUltrasound = new Coding
     {
@@ -7320,7 +7320,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open embolization - action
     /// </summary>
     public static readonly Coding OpenEmbolizationAction = new Coding
     {
@@ -7329,7 +7329,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diathermy - action
     /// </summary>
     public static readonly Coding DiathermyAction = new Coding
     {
@@ -7338,7 +7338,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical piercing - action
     /// </summary>
     public static readonly Coding SurgicalPiercingAction = new Coding
     {
@@ -7347,7 +7347,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary inhalation study
     /// </summary>
     public static readonly Coding PulmonaryInhalationStudy = new Coding
     {
@@ -7356,7 +7356,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical cataract aspiration - action
     /// </summary>
     public static readonly Coding SurgicalCataractAspirationAction = new Coding
     {
@@ -7365,7 +7365,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mechanical repair - action
     /// </summary>
     public static readonly Coding MechanicalRepairAction = new Coding
     {
@@ -7374,7 +7374,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wedge osteotomy - action
     /// </summary>
     public static readonly Coding WedgeOsteotomyAction = new Coding
     {
@@ -7383,7 +7383,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed manual reduction - action
     /// </summary>
     public static readonly Coding ClosedManualReductionAction = new Coding
     {
@@ -7392,7 +7392,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical size reduction - action
     /// </summary>
     public static readonly Coding SurgicalSizeReductionAction = new Coding
     {
@@ -7401,7 +7401,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dispensing - action
     /// </summary>
     public static readonly Coding DispensingAction = new Coding
     {
@@ -7410,7 +7410,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mechanical construction - action
     /// </summary>
     public static readonly Coding MechanicalConstructionAction = new Coding
     {
@@ -7419,7 +7419,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical manipulation - action
     /// </summary>
     public static readonly Coding SurgicalManipulationAction = new Coding
     {
@@ -7428,7 +7428,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excision debridement - action
     /// </summary>
     public static readonly Coding ExcisionDebridementAction = new Coding
     {
@@ -7437,7 +7437,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fixation by wedging - action
     /// </summary>
     public static readonly Coding FixationByWedgingAction = new Coding
     {
@@ -7446,7 +7446,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extracorporeal technique
     /// </summary>
     public static readonly Coding ExtracorporealTechnique = new Coding
     {
@@ -7455,7 +7455,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemodialysis technique
     /// </summary>
     public static readonly Coding HemodialysisTechnique = new Coding
     {
@@ -7464,7 +7464,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhalation technique
     /// </summary>
     public static readonly Coding InhalationTechnique = new Coding
     {
@@ -7473,7 +7473,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electroosmosis technique
     /// </summary>
     public static readonly Coding ElectroosmosisTechnique = new Coding
     {
@@ -7482,7 +7482,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Irrigation technique
     /// </summary>
     public static readonly Coding IrrigationTechnique = new Coding
     {
@@ -7491,7 +7491,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occlusive dressing technique
     /// </summary>
     public static readonly Coding OcclusiveDressingTechnique = new Coding
     {
@@ -7500,7 +7500,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injection technique
     /// </summary>
     public static readonly Coding InjectionTechnique = new Coding
     {
@@ -7509,7 +7509,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous gastrostomy (button) technique
     /// </summary>
     public static readonly Coding PercutaneousGastrostomyButtonTechnique = new Coding
     {
@@ -7518,7 +7518,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peritoneal dialysis technique
     /// </summary>
     public static readonly Coding PeritonealDialysisTechnique = new Coding
     {
@@ -7527,7 +7527,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infusion technique
     /// </summary>
     public static readonly Coding InfusionTechnique = new Coding
     {
@@ -7536,7 +7536,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravenous push technique
     /// </summary>
     public static readonly Coding IntravenousPushTechnique = new Coding
     {
@@ -7545,7 +7545,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iontophoresis technique
     /// </summary>
     public static readonly Coding IontophoresisTechnique = new Coding
     {
@@ -7554,7 +7554,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravenous piggyback technique
     /// </summary>
     public static readonly Coding IntravenousPiggybackTechnique = new Coding
     {
@@ -7563,7 +7563,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemodiafiltration technique
     /// </summary>
     public static readonly Coding HemodiafiltrationTechnique = new Coding
     {
@@ -7572,7 +7572,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glutathione measurement
     /// </summary>
     public static readonly Coding GlutathioneMeasurement = new Coding
     {
@@ -7581,7 +7581,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ferritin measurement
     /// </summary>
     public static readonly Coding FerritinMeasurement = new Coding
     {
@@ -7590,7 +7590,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urobilinogen measurement, 48-hour, feces
     /// </summary>
     public static readonly Coding UrobilinogenMeasurement48HourFeces = new Coding
     {
@@ -7599,7 +7599,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antibody to single and double stranded DNA measurement
     /// </summary>
     public static readonly Coding AntibodyToSingleAndDoubleStrandedDNAMeasurement = new Coding
     {
@@ -7608,7 +7608,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Benzodiazepine measurement
     /// </summary>
     public static readonly Coding BenzodiazepineMeasurement = new Coding
     {
@@ -7617,7 +7617,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Competitive protein binding assay
     /// </summary>
     public static readonly Coding CompetitiveProteinBindingAssay = new Coding
     {
@@ -7626,7 +7626,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Steinman test
     /// </summary>
     public static readonly Coding SteinmanTest = new Coding
     {
@@ -7635,7 +7635,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebral thermography
     /// </summary>
     public static readonly Coding CerebralThermography = new Coding
     {
@@ -7644,7 +7644,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Indirect laryngoscopy
     /// </summary>
     public static readonly Coding IndirectLaryngoscopy = new Coding
     {
@@ -7653,7 +7653,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abduction test
     /// </summary>
     public static readonly Coding AbductionTest = new Coding
     {
@@ -7662,7 +7662,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Albumin/Globulin ratio
     /// </summary>
     public static readonly Coding AlbuminGlobulinRatio = new Coding
     {
@@ -7671,7 +7671,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepatitis A virus antibody measurement
     /// </summary>
     public static readonly Coding HepatitisAVirusAntibodyMeasurement = new Coding
     {
@@ -7680,7 +7680,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transmission illumination
     /// </summary>
     public static readonly Coding TransmissionIllumination = new Coding
     {
@@ -7689,7 +7689,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reflection illumination
     /// </summary>
     public static readonly Coding ReflectionIllumination = new Coding
     {
@@ -7698,7 +7698,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epifluorescence illumination
     /// </summary>
     public static readonly Coding EpifluorescenceIllumination = new Coding
     {
@@ -7707,7 +7707,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brightfield illumination
     /// </summary>
     public static readonly Coding BrightfieldIllumination = new Coding
     {
@@ -7716,7 +7716,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Darkfield illumination
     /// </summary>
     public static readonly Coding DarkfieldIllumination = new Coding
     {
@@ -7725,7 +7725,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oblique illumination
     /// </summary>
     public static readonly Coding ObliqueIllumination = new Coding
     {
@@ -7734,7 +7734,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phase contrast illumination
     /// </summary>
     public static readonly Coding PhaseContrastIllumination = new Coding
     {
@@ -7743,7 +7743,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Differential interference contrast
     /// </summary>
     public static readonly Coding DifferentialInterferenceContrast = new Coding
     {
@@ -7752,7 +7752,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Total internal reflection fluorescence
     /// </summary>
     public static readonly Coding TotalInternalReflectionFluorescence = new Coding
     {
@@ -7761,7 +7761,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cone beam computed tomography imaging - action
     /// </summary>
     public static readonly Coding ConeBeamComputedTomographyImagingAction = new Coding
     {
@@ -7770,7 +7770,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microbial culture
     /// </summary>
     public static readonly Coding MicrobialCulture = new Coding
     {
@@ -7779,7 +7779,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Automated count
     /// </summary>
     public static readonly Coding AutomatedCount = new Coding
     {
@@ -7788,7 +7788,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Test strip
     /// </summary>
     public static readonly Coding TestStrip = new Coding
     {
@@ -7797,7 +7797,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Light microscopy
     /// </summary>
     public static readonly Coding LightMicroscopy = new Coding
     {
@@ -7806,7 +7806,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// High power field light microscopy
     /// </summary>
     public static readonly Coding HighPowerFieldLightMicroscopy = new Coding
     {
@@ -7815,7 +7815,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manual count
     /// </summary>
     public static readonly Coding ManualCount = new Coding
     {
@@ -7824,7 +7824,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immunological method
     /// </summary>
     public static readonly Coding ImmunologicalMethod = new Coding
     {
@@ -7833,7 +7833,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cytology stain
     /// </summary>
     public static readonly Coding CytologyStain = new Coding
     {
@@ -7842,7 +7842,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cytology
     /// </summary>
     public static readonly Coding Cytology = new Coding
     {
@@ -7851,7 +7851,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clearance calculation formula
     /// </summary>
     public static readonly Coding ClearanceCalculationFormula = new Coding
     {
@@ -7860,7 +7860,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Modification of diet in renal disease formula
     /// </summary>
     public static readonly Coding ModificationOfDietInRenalDiseaseFormula = new Coding
     {
@@ -7869,7 +7869,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Direct assay
     /// </summary>
     public static readonly Coding DirectAssay = new Coding
     {
@@ -7878,7 +7878,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deoxyribonucleic acid probe
     /// </summary>
     public static readonly Coding DeoxyribonucleicAcidProbe = new Coding
     {
@@ -7887,7 +7887,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nucleic acid hybridization probe
     /// </summary>
     public static readonly Coding NucleicAcidHybridizationProbe = new Coding
     {
@@ -7896,7 +7896,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Probe with target amplification
     /// </summary>
     public static readonly Coding ProbeWithTargetAmplification = new Coding
     {
@@ -7905,7 +7905,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Detection limit equal to or less than 20 mg/L
     /// </summary>
     public static readonly Coding DetectionLimitEqualToOrLessThan20MgL = new Coding
     {
@@ -7914,7 +7914,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calculation technique
     /// </summary>
     public static readonly Coding CalculationTechnique = new Coding
     {
@@ -7923,7 +7923,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Filtration
     /// </summary>
     public static readonly Coding Filtration = new Coding
     {
@@ -7932,7 +7932,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paraffin embedding
     /// </summary>
     public static readonly Coding ParaffinEmbedding = new Coding
     {
@@ -7941,7 +7941,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Concentration
     /// </summary>
     public static readonly Coding Concentration = new Coding
     {
@@ -7950,7 +7950,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// DNA extraction
     /// </summary>
     public static readonly Coding DNAExtraction = new Coding
     {
@@ -7959,7 +7959,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// RNA extraction
     /// </summary>
     public static readonly Coding RNAExtraction = new Coding
     {
@@ -7968,7 +7968,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Estimated from glycated hemoglobin
     /// </summary>
     public static readonly Coding EstimatedFromGlycatedHemoglobin = new Coding
     {
@@ -7977,7 +7977,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coagulation technique
     /// </summary>
     public static readonly Coding CoagulationTechnique = new Coding
     {
@@ -7986,7 +7986,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corrected for nucleated erythrocytes
     /// </summary>
     public static readonly Coding CorrectedForNucleatedErythrocytes = new Coding
     {
@@ -7995,7 +7995,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Detection limit equal to or less than 0.005 mIU/L
     /// </summary>
     public static readonly Coding DetectionLimitEqualToOrLessThan0005MIUL = new Coding
     {
@@ -8004,7 +8004,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Detection limit equal to or less than 0.01 ng/mL
     /// </summary>
     public static readonly Coding DetectionLimitEqualToOrLessThan001NgML = new Coding
     {
@@ -8013,7 +8013,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Detection limit equal to or less than 0.05 mIU/L
     /// </summary>
     public static readonly Coding DetectionLimitEqualToOrLessThan005MIUL = new Coding
     {
@@ -8022,7 +8022,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Detection limit equal to or less than 1.0 ng/dL
     /// </summary>
     public static readonly Coding DetectionLimitEqualToOrLessThan10NgDL = new Coding
     {
@@ -8031,7 +8031,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Detection limit equal to or less than 3.47 pmol/L
     /// </summary>
     public static readonly Coding DetectionLimitEqualToOrLessThan347PmolL = new Coding
     {
@@ -8040,7 +8040,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wright stain method
     /// </summary>
     public static readonly Coding WrightStainMethod = new Coding
     {
@@ -8049,7 +8049,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gradient strip susceptibility test
     /// </summary>
     public static readonly Coding GradientStripSusceptibilityTest = new Coding
     {
@@ -8058,7 +8058,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fungus stain method
     /// </summary>
     public static readonly Coding FungusStainMethod = new Coding
     {
@@ -8067,7 +8067,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluorescent immunoassay
     /// </summary>
     public static readonly Coding FluorescentImmunoassay = new Coding
     {
@@ -8076,7 +8076,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ion selective electrode measurement
     /// </summary>
     public static readonly Coding IonSelectiveElectrodeMeasurement = new Coding
     {
@@ -8085,7 +8085,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immunoblot assay
     /// </summary>
     public static readonly Coding ImmunoblotAssay = new Coding
     {
@@ -8094,7 +8094,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// EIA technique
     /// </summary>
     public static readonly Coding EIATechnique = new Coding
     {
@@ -8103,7 +8103,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Latex agglutination test
     /// </summary>
     public static readonly Coding LatexAgglutinationTest = new Coding
     {
@@ -8112,7 +8112,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioimmunoassay
     /// </summary>
     public static readonly Coding Radioimmunoassay = new Coding
     {
@@ -8121,7 +8121,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrophoresis
     /// </summary>
     public static readonly Coding Electrophoresis = new Coding
     {
@@ -8130,7 +8130,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low power field light microscopy
     /// </summary>
     public static readonly Coding LowPowerFieldLightMicroscopy = new Coding
     {
@@ -8139,7 +8139,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrical impedance technique
     /// </summary>
     public static readonly Coding ElectricalImpedanceTechnique = new Coding
     {
@@ -8148,7 +8148,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Centrifugation technique
     /// </summary>
     public static readonly Coding CentrifugationTechnique = new Coding
     {
@@ -8157,7 +8157,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rapid Plasma Reagin technique
     /// </summary>
     public static readonly Coding RapidPlasmaReaginTechnique = new Coding
     {
@@ -8166,7 +8166,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Venereal Disease Research Laboratory technique
     /// </summary>
     public static readonly Coding VenerealDiseaseResearchLaboratoryTechnique = new Coding
     {
@@ -8175,7 +8175,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wet preparation technique
     /// </summary>
     public static readonly Coding WetPreparationTechnique = new Coding
     {
@@ -8184,7 +8184,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neutralization method
     /// </summary>
     public static readonly Coding NeutralizationMethod = new Coding
     {
@@ -8193,7 +8193,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Westergren technique
     /// </summary>
     public static readonly Coding WestergrenTechnique = new Coding
     {
@@ -8202,7 +8202,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wintrobe technique
     /// </summary>
     public static readonly Coding WintrobeTechnique = new Coding
     {
@@ -8211,7 +8211,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Concentration of parasites method
     /// </summary>
     public static readonly Coding ConcentrationOfParasitesMethod = new Coding
     {
@@ -8220,7 +8220,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cockcroft-Gault formula
     /// </summary>
     public static readonly Coding CockcroftGaultFormula = new Coding
     {
@@ -8229,7 +8229,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calculated from oxygen partial pressure
     /// </summary>
     public static readonly Coding CalculatedFromOxygenPartialPressure = new Coding
     {
@@ -8238,7 +8238,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coagulation 1:1 saline mixture technique
     /// </summary>
     public static readonly Coding Coagulation11SalineMixtureTechnique = new Coding
     {
@@ -8247,7 +8247,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transcutaneous CO2 monitor
     /// </summary>
     public static readonly Coding TranscutaneousCO2Monitor = new Coding
     {
@@ -8256,7 +8256,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transcutaneous O2 monitor
     /// </summary>
     public static readonly Coding TranscutaneousO2Monitor = new Coding
     {
@@ -8265,7 +8265,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calculated from signal to cutoff ratio
     /// </summary>
     public static readonly Coding CalculatedFromSignalToCutoffRatio = new Coding
     {
@@ -8274,7 +8274,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toxicology screening technique
     /// </summary>
     public static readonly Coding ToxicologyScreeningTechnique = new Coding
     {
@@ -8283,7 +8283,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clearance calculation relative to 1.73 square meters body surface area
     /// </summary>
     public static readonly Coding ClearanceCalculationRelativeTo173SquareMetersBodySurfaceArea = new Coding
     {
@@ -8292,7 +8292,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clearance calculation relative to 1.73 square meters body surface area and adjusted for African race
     /// </summary>
     public static readonly Coding ClearanceCalculationRelativeTo173SquareMetersBodySurfaceAreaAndAdjustedForAfricanRace = new Coding
     {
@@ -8301,7 +8301,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clearance calculation relative to 1.73 square meters body surface area and adjusted for non-African race
     /// </summary>
     public static readonly Coding ClearanceCalculationRelativeTo173SquareMetersBodySurfaceAreaAndAdjustedForNonAfricanRace = new Coding
     {
@@ -8310,7 +8310,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// High sensitivity method for C-reactive protein
     /// </summary>
     public static readonly Coding HighSensitivityMethodForCReactiveProtein = new Coding
     {
@@ -8319,7 +8319,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Confirmatory technique
     /// </summary>
     public static readonly Coding ConfirmatoryTechnique = new Coding
     {
@@ -8328,7 +8328,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// High sensitivity method for estradiol
     /// </summary>
     public static readonly Coding HighSensitivityMethodForEstradiol = new Coding
     {
@@ -8337,7 +8337,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Culture
     /// </summary>
     public static readonly Coding Culture = new Coding
     {
@@ -8346,7 +8346,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aerobic culture
     /// </summary>
     public static readonly Coding AerobicCulture = new Coding
     {
@@ -8355,7 +8355,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anaerobic culture
     /// </summary>
     public static readonly Coding AnaerobicCulture = new Coding
     {
@@ -8364,7 +8364,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Organism specific culture
     /// </summary>
     public static readonly Coding OrganismSpecificCulture = new Coding
     {
@@ -8373,7 +8373,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Detecting without classifying
     /// </summary>
     public static readonly Coding DetectingWithoutClassifying = new Coding
     {
@@ -8382,7 +8382,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Detecting by light microscopy without classifying
     /// </summary>
     public static readonly Coding DetectingByLightMicroscopyWithoutClassifying = new Coding
     {
@@ -8391,7 +8391,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Organism staining technique
     /// </summary>
     public static readonly Coding OrganismStainingTechnique = new Coding
     {
@@ -8400,7 +8400,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Staining technique
     /// </summary>
     public static readonly Coding StainingTechnique = new Coding
     {
@@ -8409,7 +8409,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Numeric estimation technique
     /// </summary>
     public static readonly Coding NumericEstimationTechnique = new Coding
     {
@@ -8418,7 +8418,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// High sensitivity method for bioavailable testosterone
     /// </summary>
     public static readonly Coding HighSensitivityMethodForBioavailableTestosterone = new Coding
     {
@@ -8427,7 +8427,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adjusted measurement technique
     /// </summary>
     public static readonly Coding AdjustedMeasurementTechnique = new Coding
     {
@@ -8436,7 +8436,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adjusted for diabetes technique
     /// </summary>
     public static readonly Coding AdjustedForDiabetesTechnique = new Coding
     {
@@ -8445,7 +8445,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adjusted for multiple gestations technique
     /// </summary>
     public static readonly Coding AdjustedForMultipleGestationsTechnique = new Coding
     {
@@ -8454,7 +8454,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adjusted for sex hormone binding globulin technique
     /// </summary>
     public static readonly Coding AdjustedForSexHormoneBindingGlobulinTechnique = new Coding
     {
@@ -8463,7 +8463,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adjusted for weight technique
     /// </summary>
     public static readonly Coding AdjustedForWeightTechnique = new Coding
     {
@@ -8472,7 +8472,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adjusted to patients actual temperature technique
     /// </summary>
     public static readonly Coding AdjustedToPatientsActualTemperatureTechnique = new Coding
     {
@@ -8481,7 +8481,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adjusted to pH 7.4 technique
     /// </summary>
     public static readonly Coding AdjustedToPH74Technique = new Coding
     {
@@ -8490,7 +8490,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corrected for albumin technique
     /// </summary>
     public static readonly Coding CorrectedForAlbuminTechnique = new Coding
     {
@@ -8499,7 +8499,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corrected for background technique
     /// </summary>
     public static readonly Coding CorrectedForBackgroundTechnique = new Coding
     {
@@ -8508,7 +8508,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corrected for glucose technique
     /// </summary>
     public static readonly Coding CorrectedForGlucoseTechnique = new Coding
     {
@@ -8517,7 +8517,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corrected for total protein technique
     /// </summary>
     public static readonly Coding CorrectedForTotalProteinTechnique = new Coding
     {
@@ -8526,7 +8526,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Saturation adjusted to 0.5 technique
     /// </summary>
     public static readonly Coding SaturationAdjustedTo05Technique = new Coding
     {
@@ -8535,7 +8535,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Standard base excess technique
     /// </summary>
     public static readonly Coding StandardBaseExcessTechnique = new Coding
     {
@@ -8544,7 +8544,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Standard base excess adjusted for oxygen saturation technique
     /// </summary>
     public static readonly Coding StandardBaseExcessAdjustedForOxygenSaturationTechnique = new Coding
     {
@@ -8553,7 +8553,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ion selective membrane electrode output adjusted to pH 7.4
     /// </summary>
     public static readonly Coding IonSelectiveMembraneElectrodeOutputAdjustedToPH74 = new Coding
     {
@@ -8562,7 +8562,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Helium single breath output adjusted for hemoglobin
     /// </summary>
     public static readonly Coding HeliumSingleBreathOutputAdjustedForHemoglobin = new Coding
     {
@@ -8571,7 +8571,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Automated count output corrected for nucleated erythrocytes
     /// </summary>
     public static readonly Coding AutomatedCountOutputCorrectedForNucleatedErythrocytes = new Coding
     {
@@ -8580,7 +8580,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calculated and adjusted for body weight
     /// </summary>
     public static readonly Coding CalculatedAndAdjustedForBodyWeight = new Coding
     {
@@ -8589,7 +8589,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calculated output adjusted to standard
     /// </summary>
     public static readonly Coding CalculatedOutputAdjustedToStandard = new Coding
     {
@@ -8598,7 +8598,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acid fast stain
     /// </summary>
     public static readonly Coding AcidFastStain = new Coding
     {
@@ -8607,7 +8607,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flow cytometry
     /// </summary>
     public static readonly Coding FlowCytometry = new Coding
     {
@@ -8616,7 +8616,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Genotype determination
     /// </summary>
     public static readonly Coding GenotypeDetermination = new Coding
     {
@@ -8625,7 +8625,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gram stain
     /// </summary>
     public static readonly Coding GramStain = new Coding
     {
@@ -8634,7 +8634,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immunodiffusion
     /// </summary>
     public static readonly Coding Immunodiffusion = new Coding
     {
@@ -8643,7 +8643,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immunoelectrophoresis
     /// </summary>
     public static readonly Coding Immunoelectrophoresis = new Coding
     {
@@ -8652,7 +8652,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immunofixation
     /// </summary>
     public static readonly Coding Immunofixation = new Coding
     {
@@ -8661,7 +8661,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulse oximetry
     /// </summary>
     public static readonly Coding PulseOximetry = new Coding
     {
@@ -8670,7 +8670,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trichrome stain
     /// </summary>
     public static readonly Coding TrichromeStain = new Coding
     {
@@ -8679,7 +8679,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wright-Giemsa stain
     /// </summary>
     public static readonly Coding WrightGiemsaStain = new Coding
     {
@@ -8688,7 +8688,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Molecular genetics
     /// </summary>
     public static readonly Coding MolecularGenetics = new Coding
     {
@@ -8697,7 +8697,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chromogenic technique
     /// </summary>
     public static readonly Coding ChromogenicTechnique = new Coding
     {
@@ -8706,7 +8706,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Solubility test
     /// </summary>
     public static readonly Coding SolubilityTest = new Coding
     {
@@ -8715,7 +8715,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Smearing technique
     /// </summary>
     public static readonly Coding SmearingTechnique = new Coding
     {
@@ -8724,7 +8724,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multiple allergen-bearing disc
     /// </summary>
     public static readonly Coding MultipleAllergenBearingDisc = new Coding
     {
@@ -8733,7 +8733,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Minimum inhibitory concentration susceptibility test
     /// </summary>
     public static readonly Coding MinimumInhibitoryConcentrationSusceptibilityTest = new Coding
     {
@@ -8742,7 +8742,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// LISS
     /// </summary>
     public static readonly Coding LISS = new Coding
     {
@@ -8751,7 +8751,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// KOH preparation
     /// </summary>
     public static readonly Coding KOHPreparation = new Coding
     {
@@ -8760,7 +8760,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kleihauer-Betke technique
     /// </summary>
     public static readonly Coding KleihauerBetkeTechnique = new Coding
     {
@@ -8769,7 +8769,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infrared spectroscopy
     /// </summary>
     public static readonly Coding InfraredSpectroscopy = new Coding
     {
@@ -8778,7 +8778,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// India ink staining technique
     /// </summary>
     public static readonly Coding IndiaInkStainingTechnique = new Coding
     {
@@ -8787,7 +8787,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immunohistochemistry
     /// </summary>
     public static readonly Coding Immunohistochemistry = new Coding
     {
@@ -8796,7 +8796,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rapid immunoassay
     /// </summary>
     public static readonly Coding RapidImmunoassay = new Coding
     {
@@ -8805,7 +8805,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Agglutination technique
     /// </summary>
     public static readonly Coding AgglutinationTechnique = new Coding
     {
@@ -8814,7 +8814,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cold incubation, 24 hours
     /// </summary>
     public static readonly Coding ColdIncubation24Hours = new Coding
     {
@@ -8823,7 +8823,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acid fast Kinyoun's cold carbolfuchsin stain
     /// </summary>
     public static readonly Coding AcidFastKinyounQuoteSColdCarbolfuchsinStain = new Coding
     {
@@ -8832,7 +8832,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coombs test
     /// </summary>
     public static readonly Coding CoombsTest = new Coding
     {
@@ -8841,7 +8841,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anti human globulin test, direct
     /// </summary>
     public static readonly Coding AntiHumanGlobulinTestDirect = new Coding
     {
@@ -8850,7 +8850,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anti human globulin test, indirect
     /// </summary>
     public static readonly Coding AntiHumanGlobulinTestIndirect = new Coding
     {
@@ -8859,7 +8859,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complement fixation
     /// </summary>
     public static readonly Coding ComplementFixation = new Coding
     {
@@ -8868,7 +8868,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Platelet aggregation technique
     /// </summary>
     public static readonly Coding PlateletAggregationTechnique = new Coding
     {
@@ -8877,7 +8877,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical replacement - action
     /// </summary>
     public static readonly Coding SurgicalReplacementAction = new Coding
     {
@@ -8886,7 +8886,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bacterial bacteriophage typing
     /// </summary>
     public static readonly Coding BacterialBacteriophageTyping = new Coding
     {
@@ -8895,7 +8895,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracerebral electroencephalogram
     /// </summary>
     public static readonly Coding IntracerebralElectroencephalogram = new Coding
     {
@@ -8904,7 +8904,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized axial tomography of cervical spine with contrast
     /// </summary>
     public static readonly Coding ComputerizedAxialTomographyOfCervicalSpineWithContrast = new Coding
     {
@@ -8913,7 +8913,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// White blood cell count
     /// </summary>
     public static readonly Coding WhiteBloodCellCount = new Coding
     {
@@ -8922,7 +8922,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrophoresis measurement
     /// </summary>
     public static readonly Coding ElectrophoresisMeasurement = new Coding
     {
@@ -8931,7 +8931,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drawer test
     /// </summary>
     public static readonly Coding DrawerTest = new Coding
     {
@@ -8940,7 +8940,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fecal fat measurement, 72-hour collection
     /// </summary>
     public static readonly Coding FecalFatMeasurement72HourCollection = new Coding
     {
@@ -8949,7 +8949,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carbamazepine measurement
     /// </summary>
     public static readonly Coding CarbamazepineMeasurement = new Coding
     {
@@ -8958,7 +8958,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Special blood coagulation test, explain by report
     /// </summary>
     public static readonly Coding SpecialBloodCoagulationTestExplainByReport = new Coding
     {
@@ -8967,7 +8967,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor antigen measurement
     /// </summary>
     public static readonly Coding TumorAntigenMeasurement = new Coding
     {
@@ -8976,7 +8976,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MHPG measurement, urine
     /// </summary>
     public static readonly Coding MHPGMeasurementUrine = new Coding
     {
@@ -8985,7 +8985,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endoscopy of pituitary gland
     /// </summary>
     public static readonly Coding EndoscopyOfPituitaryGland = new Coding
     {
@@ -8994,7 +8994,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ultrasonic guidance for endomyocardial biopsy
     /// </summary>
     public static readonly Coding UltrasonicGuidanceForEndomyocardialBiopsy = new Coding
     {
@@ -9003,7 +9003,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incision and exploration of larynx
     /// </summary>
     public static readonly Coding IncisionAndExplorationOfLarynx = new Coding
     {
@@ -9018,9 +9018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFetoscopy = "1029002";
 
     /// <summary>
+    /// Literal for code: NONEFetoscopy
+    /// </summary>
+    public const string LiteralNONEFetoscopy = "http://snomed.info/sct#1029002";
+
+    /// <summary>
     /// Literal for code: MinimumBactericidalConcentrationTestMicrodilutionMethod
     /// </summary>
     public const string LiteralMinimumBactericidalConcentrationTestMicrodilutionMethod = "1035002";
+
+    /// <summary>
+    /// Literal for code: NONEMinimumBactericidalConcentrationTestMicrodilutionMethod
+    /// </summary>
+    public const string LiteralNONEMinimumBactericidalConcentrationTestMicrodilutionMethod = "http://snomed.info/sct#1035002";
 
     /// <summary>
     /// Literal for code: DopplerColorFlowVelocityMapping
@@ -9028,9 +9038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDopplerColorFlowVelocityMapping = "1043007";
 
     /// <summary>
+    /// Literal for code: NONEDopplerColorFlowVelocityMapping
+    /// </summary>
+    public const string LiteralNONEDopplerColorFlowVelocityMapping = "http://snomed.info/sct#1043007";
+
+    /// <summary>
     /// Literal for code: DiagnosticUltrasoundOfAbdomenAndRetroperitoneum
     /// </summary>
     public const string LiteralDiagnosticUltrasoundOfAbdomenAndRetroperitoneum = "1044001";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticUltrasoundOfAbdomenAndRetroperitoneum
+    /// </summary>
+    public const string LiteralNONEDiagnosticUltrasoundOfAbdomenAndRetroperitoneum = "http://snomed.info/sct#1044001";
 
     /// <summary>
     /// Literal for code: TotalMeasurement
@@ -9038,9 +9058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTotalMeasurement = "115341008";
 
     /// <summary>
+    /// Literal for code: NONETotalMeasurement
+    /// </summary>
+    public const string LiteralNONETotalMeasurement = "http://snomed.info/sct#115341008";
+
+    /// <summary>
     /// Literal for code: RadiographyOfHumerus
     /// </summary>
     public const string LiteralRadiographyOfHumerus = "1225002";
+
+    /// <summary>
+    /// Literal for code: NONERadiographyOfHumerus
+    /// </summary>
+    public const string LiteralNONERadiographyOfHumerus = "http://snomed.info/sct#1225002";
 
     /// <summary>
     /// Literal for code: HandMicroscopeExaminationOfSkin
@@ -9048,9 +9078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHandMicroscopeExaminationOfSkin = "128004";
 
     /// <summary>
+    /// Literal for code: NONEHandMicroscopeExaminationOfSkin
+    /// </summary>
+    public const string LiteralNONEHandMicroscopeExaminationOfSkin = "http://snomed.info/sct#128004";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingOfUrinaryBladder
     /// </summary>
     public const string LiteralMagneticResonanceImagingOfUrinaryBladder = "1292009";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfUrinaryBladder
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfUrinaryBladder = "http://snomed.info/sct#1292009";
 
     /// <summary>
     /// Literal for code: EvaluationAction
@@ -9058,9 +9098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEvaluationAction = "129265001";
 
     /// <summary>
+    /// Literal for code: NONEEvaluationAction
+    /// </summary>
+    public const string LiteralNONEEvaluationAction = "http://snomed.info/sct#129265001";
+
+    /// <summary>
     /// Literal for code: MeasurementAction
     /// </summary>
     public const string LiteralMeasurementAction = "129266000";
+
+    /// <summary>
+    /// Literal for code: NONEMeasurementAction
+    /// </summary>
+    public const string LiteralNONEMeasurementAction = "http://snomed.info/sct#129266000";
 
     /// <summary>
     /// Literal for code: AdministrativeAction
@@ -9068,9 +9118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdministrativeAction = "129267009";
 
     /// <summary>
+    /// Literal for code: NONEAdministrativeAction
+    /// </summary>
+    public const string LiteralNONEAdministrativeAction = "http://snomed.info/sct#129267009";
+
+    /// <summary>
     /// Literal for code: ObservationAction
     /// </summary>
     public const string LiteralObservationAction = "129268004";
+
+    /// <summary>
+    /// Literal for code: NONEObservationAction
+    /// </summary>
+    public const string LiteralNONEObservationAction = "http://snomed.info/sct#129268004";
 
     /// <summary>
     /// Literal for code: AssistingAction
@@ -9078,9 +9138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAssistingAction = "129269007";
 
     /// <summary>
+    /// Literal for code: NONEAssistingAction
+    /// </summary>
+    public const string LiteralNONEAssistingAction = "http://snomed.info/sct#129269007";
+
+    /// <summary>
     /// Literal for code: ManagementAction
     /// </summary>
     public const string LiteralManagementAction = "129271007";
+
+    /// <summary>
+    /// Literal for code: NONEManagementAction
+    /// </summary>
+    public const string LiteralNONEManagementAction = "http://snomed.info/sct#129271007";
 
     /// <summary>
     /// Literal for code: StimulationAction
@@ -9088,9 +9158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStimulationAction = "129272000";
 
     /// <summary>
+    /// Literal for code: NONEStimulationAction
+    /// </summary>
+    public const string LiteralNONEStimulationAction = "http://snomed.info/sct#129272000";
+
+    /// <summary>
     /// Literal for code: AdmissionAction
     /// </summary>
     public const string LiteralAdmissionAction = "129273005";
+
+    /// <summary>
+    /// Literal for code: NONEAdmissionAction
+    /// </summary>
+    public const string LiteralNONEAdmissionAction = "http://snomed.info/sct#129273005";
 
     /// <summary>
     /// Literal for code: DischargeAction
@@ -9098,9 +9178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDischargeAction = "129274004";
 
     /// <summary>
+    /// Literal for code: NONEDischargeAction
+    /// </summary>
+    public const string LiteralNONEDischargeAction = "http://snomed.info/sct#129274004";
+
+    /// <summary>
     /// Literal for code: AdministrativeTransferAction
     /// </summary>
     public const string LiteralAdministrativeTransferAction = "129275003";
+
+    /// <summary>
+    /// Literal for code: NONEAdministrativeTransferAction
+    /// </summary>
+    public const string LiteralNONEAdministrativeTransferAction = "http://snomed.info/sct#129275003";
 
     /// <summary>
     /// Literal for code: ReferralAction
@@ -9108,9 +9198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReferralAction = "129276002";
 
     /// <summary>
+    /// Literal for code: NONEReferralAction
+    /// </summary>
+    public const string LiteralNONEReferralAction = "http://snomed.info/sct#129276002";
+
+    /// <summary>
     /// Literal for code: AdministrativeDispositionAction
     /// </summary>
     public const string LiteralAdministrativeDispositionAction = "129277006";
+
+    /// <summary>
+    /// Literal for code: NONEAdministrativeDispositionAction
+    /// </summary>
+    public const string LiteralNONEAdministrativeDispositionAction = "http://snomed.info/sct#129277006";
 
     /// <summary>
     /// Literal for code: AuditAction
@@ -9118,9 +9218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAuditAction = "129278001";
 
     /// <summary>
+    /// Literal for code: NONEAuditAction
+    /// </summary>
+    public const string LiteralNONEAuditAction = "http://snomed.info/sct#129278001";
+
+    /// <summary>
     /// Literal for code: MedicolegalAction
     /// </summary>
     public const string LiteralMedicolegalAction = "129279009";
+
+    /// <summary>
+    /// Literal for code: NONEMedicolegalAction
+    /// </summary>
+    public const string LiteralNONEMedicolegalAction = "http://snomed.info/sct#129279009";
 
     /// <summary>
     /// Literal for code: MedicolegalTestimonyAction
@@ -9128,9 +9238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMedicolegalTestimonyAction = "129280007";
 
     /// <summary>
+    /// Literal for code: NONEMedicolegalTestimonyAction
+    /// </summary>
+    public const string LiteralNONEMedicolegalTestimonyAction = "http://snomed.info/sct#129280007";
+
+    /// <summary>
     /// Literal for code: TrainingAction
     /// </summary>
     public const string LiteralTrainingAction = "129283009";
+
+    /// <summary>
+    /// Literal for code: NONETrainingAction
+    /// </summary>
+    public const string LiteralNONETrainingAction = "http://snomed.info/sct#129283009";
 
     /// <summary>
     /// Literal for code: SurgicalAction
@@ -9138,9 +9258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalAction = "129284003";
 
     /// <summary>
+    /// Literal for code: NONESurgicalAction
+    /// </summary>
+    public const string LiteralNONESurgicalAction = "http://snomed.info/sct#129284003";
+
+    /// <summary>
     /// Literal for code: MicrosurgeryAction
     /// </summary>
     public const string LiteralMicrosurgeryAction = "129286001";
+
+    /// <summary>
+    /// Literal for code: NONEMicrosurgeryAction
+    /// </summary>
+    public const string LiteralNONEMicrosurgeryAction = "http://snomed.info/sct#129286001";
 
     /// <summary>
     /// Literal for code: IncisionAction
@@ -9148,9 +9278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionAction = "129287005";
 
     /// <summary>
+    /// Literal for code: NONEIncisionAction
+    /// </summary>
+    public const string LiteralNONEIncisionAction = "http://snomed.info/sct#129287005";
+
+    /// <summary>
     /// Literal for code: ExploratoryIncisionAction
     /// </summary>
     public const string LiteralExploratoryIncisionAction = "129288000";
+
+    /// <summary>
+    /// Literal for code: NONEExploratoryIncisionAction
+    /// </summary>
+    public const string LiteralNONEExploratoryIncisionAction = "http://snomed.info/sct#129288000";
 
     /// <summary>
     /// Literal for code: DrainageAction
@@ -9158,9 +9298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrainageAction = "129289008";
 
     /// <summary>
+    /// Literal for code: NONEDrainageAction
+    /// </summary>
+    public const string LiteralNONEDrainageAction = "http://snomed.info/sct#129289008";
+
+    /// <summary>
     /// Literal for code: DrillingAction
     /// </summary>
     public const string LiteralDrillingAction = "129291000";
+
+    /// <summary>
+    /// Literal for code: NONEDrillingAction
+    /// </summary>
+    public const string LiteralNONEDrillingAction = "http://snomed.info/sct#129291000";
 
     /// <summary>
     /// Literal for code: EvacuationAction
@@ -9168,9 +9318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEvacuationAction = "129292007";
 
     /// <summary>
+    /// Literal for code: NONEEvacuationAction
+    /// </summary>
+    public const string LiteralNONEEvacuationAction = "http://snomed.info/sct#129292007";
+
+    /// <summary>
     /// Literal for code: DissectionAction
     /// </summary>
     public const string LiteralDissectionAction = "129293002";
+
+    /// <summary>
+    /// Literal for code: NONEDissectionAction
+    /// </summary>
+    public const string LiteralNONEDissectionAction = "http://snomed.info/sct#129293002";
 
     /// <summary>
     /// Literal for code: DiscissionAction
@@ -9178,9 +9338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiscissionAction = "129294008";
 
     /// <summary>
+    /// Literal for code: NONEDiscissionAction
+    /// </summary>
+    public const string LiteralNONEDiscissionAction = "http://snomed.info/sct#129294008";
+
+    /// <summary>
     /// Literal for code: SlittingAction
     /// </summary>
     public const string LiteralSlittingAction = "129295009";
+
+    /// <summary>
+    /// Literal for code: NONESlittingAction
+    /// </summary>
+    public const string LiteralNONESlittingAction = "http://snomed.info/sct#129295009";
 
     /// <summary>
     /// Literal for code: BisectionAction
@@ -9188,9 +9358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBisectionAction = "129296005";
 
     /// <summary>
+    /// Literal for code: NONEBisectionAction
+    /// </summary>
+    public const string LiteralNONEBisectionAction = "http://snomed.info/sct#129296005";
+
+    /// <summary>
     /// Literal for code: BifurcationAction
     /// </summary>
     public const string LiteralBifurcationAction = "129297001";
+
+    /// <summary>
+    /// Literal for code: NONEBifurcationAction
+    /// </summary>
+    public const string LiteralNONEBifurcationAction = "http://snomed.info/sct#129297001";
 
     /// <summary>
     /// Literal for code: DivisionAction
@@ -9198,9 +9378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDivisionAction = "129298006";
 
     /// <summary>
+    /// Literal for code: NONEDivisionAction
+    /// </summary>
+    public const string LiteralNONEDivisionAction = "http://snomed.info/sct#129298006";
+
+    /// <summary>
     /// Literal for code: ReleaseAction
     /// </summary>
     public const string LiteralReleaseAction = "129299003";
+
+    /// <summary>
+    /// Literal for code: NONEReleaseAction
+    /// </summary>
+    public const string LiteralNONEReleaseAction = "http://snomed.info/sct#129299003";
 
     /// <summary>
     /// Literal for code: PunctureAction
@@ -9208,9 +9398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPunctureAction = "129300006";
 
     /// <summary>
+    /// Literal for code: NONEPunctureAction
+    /// </summary>
+    public const string LiteralNONEPunctureAction = "http://snomed.info/sct#129300006";
+
+    /// <summary>
     /// Literal for code: ScarificationAction
     /// </summary>
     public const string LiteralScarificationAction = "129301005";
+
+    /// <summary>
+    /// Literal for code: NONEScarificationAction
+    /// </summary>
+    public const string LiteralNONEScarificationAction = "http://snomed.info/sct#129301005";
 
     /// <summary>
     /// Literal for code: RemovalAction
@@ -9218,9 +9418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemovalAction = "129303008";
 
     /// <summary>
+    /// Literal for code: NONERemovalAction
+    /// </summary>
+    public const string LiteralNONERemovalAction = "http://snomed.info/sct#129303008";
+
+    /// <summary>
     /// Literal for code: ExcisionAction
     /// </summary>
     public const string LiteralExcisionAction = "129304002";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionAction
+    /// </summary>
+    public const string LiteralNONEExcisionAction = "http://snomed.info/sct#129304002";
 
     /// <summary>
     /// Literal for code: WedgeResectionAction
@@ -9228,9 +9438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWedgeResectionAction = "129305001";
 
     /// <summary>
+    /// Literal for code: NONEWedgeResectionAction
+    /// </summary>
+    public const string LiteralNONEWedgeResectionAction = "http://snomed.info/sct#129305001";
+
+    /// <summary>
     /// Literal for code: SurgicalRemovalAction
     /// </summary>
     public const string LiteralSurgicalRemovalAction = "129306000";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalRemovalAction
+    /// </summary>
+    public const string LiteralNONESurgicalRemovalAction = "http://snomed.info/sct#129306000";
 
     /// <summary>
     /// Literal for code: ExpulsionAction
@@ -9238,9 +9458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExpulsionAction = "129307009";
 
     /// <summary>
+    /// Literal for code: NONEExpulsionAction
+    /// </summary>
+    public const string LiteralNONEExpulsionAction = "http://snomed.info/sct#129307009";
+
+    /// <summary>
     /// Literal for code: ReexcisionAction
     /// </summary>
     public const string LiteralReexcisionAction = "129308004";
+
+    /// <summary>
+    /// Literal for code: NONEReexcisionAction
+    /// </summary>
+    public const string LiteralNONEReexcisionAction = "http://snomed.info/sct#129308004";
 
     /// <summary>
     /// Literal for code: AmputationAction
@@ -9248,9 +9478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAmputationAction = "129309007";
 
     /// <summary>
+    /// Literal for code: NONEAmputationAction
+    /// </summary>
+    public const string LiteralNONEAmputationAction = "http://snomed.info/sct#129309007";
+
+    /// <summary>
     /// Literal for code: TransfixionAction
     /// </summary>
     public const string LiteralTransfixionAction = "129310002";
+
+    /// <summary>
+    /// Literal for code: NONETransfixionAction
+    /// </summary>
+    public const string LiteralNONETransfixionAction = "http://snomed.info/sct#129310002";
 
     /// <summary>
     /// Literal for code: EviscerationAction
@@ -9258,9 +9498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEviscerationAction = "129311003";
 
     /// <summary>
+    /// Literal for code: NONEEviscerationAction
+    /// </summary>
+    public const string LiteralNONEEviscerationAction = "http://snomed.info/sct#129311003";
+
+    /// <summary>
     /// Literal for code: EnucleationAction
     /// </summary>
     public const string LiteralEnucleationAction = "129312005";
+
+    /// <summary>
+    /// Literal for code: NONEEnucleationAction
+    /// </summary>
+    public const string LiteralNONEEnucleationAction = "http://snomed.info/sct#129312005";
 
     /// <summary>
     /// Literal for code: TrephinationAction
@@ -9268,9 +9518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTrephinationAction = "129313000";
 
     /// <summary>
+    /// Literal for code: NONETrephinationAction
+    /// </summary>
+    public const string LiteralNONETrephinationAction = "http://snomed.info/sct#129313000";
+
+    /// <summary>
     /// Literal for code: BiopsyAction
     /// </summary>
     public const string LiteralBiopsyAction = "129314006";
+
+    /// <summary>
+    /// Literal for code: NONEBiopsyAction
+    /// </summary>
+    public const string LiteralNONEBiopsyAction = "http://snomed.info/sct#129314006";
 
     /// <summary>
     /// Literal for code: IncisionalBiopsyAction
@@ -9278,9 +9538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionalBiopsyAction = "129315007";
 
     /// <summary>
+    /// Literal for code: NONEIncisionalBiopsyAction
+    /// </summary>
+    public const string LiteralNONEIncisionalBiopsyAction = "http://snomed.info/sct#129315007";
+
+    /// <summary>
     /// Literal for code: AspirationAction
     /// </summary>
     public const string LiteralAspirationAction = "129316008";
+
+    /// <summary>
+    /// Literal for code: NONEAspirationAction
+    /// </summary>
+    public const string LiteralNONEAspirationAction = "http://snomed.info/sct#129316008";
 
     /// <summary>
     /// Literal for code: DebridementAction
@@ -9288,9 +9558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDebridementAction = "129317004";
 
     /// <summary>
+    /// Literal for code: NONEDebridementAction
+    /// </summary>
+    public const string LiteralNONEDebridementAction = "http://snomed.info/sct#129317004";
+
+    /// <summary>
     /// Literal for code: SaucerizationAction
     /// </summary>
     public const string LiteralSaucerizationAction = "129318009";
+
+    /// <summary>
+    /// Literal for code: NONESaucerizationAction
+    /// </summary>
+    public const string LiteralNONESaucerizationAction = "http://snomed.info/sct#129318009";
 
     /// <summary>
     /// Literal for code: CurettageAction
@@ -9298,9 +9578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCurettageAction = "129319001";
 
     /// <summary>
+    /// Literal for code: NONECurettageAction
+    /// </summary>
+    public const string LiteralNONECurettageAction = "http://snomed.info/sct#129319001";
+
+    /// <summary>
     /// Literal for code: TrimmingAction
     /// </summary>
     public const string LiteralTrimmingAction = "129321006";
+
+    /// <summary>
+    /// Literal for code: NONETrimmingAction
+    /// </summary>
+    public const string LiteralNONETrimmingAction = "http://snomed.info/sct#129321006";
 
     /// <summary>
     /// Literal for code: ShavingAction
@@ -9308,9 +9598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShavingAction = "129322004";
 
     /// <summary>
+    /// Literal for code: NONEShavingAction
+    /// </summary>
+    public const string LiteralNONEShavingAction = "http://snomed.info/sct#129322004";
+
+    /// <summary>
     /// Literal for code: ScrapingAction
     /// </summary>
     public const string LiteralScrapingAction = "129323009";
+
+    /// <summary>
+    /// Literal for code: NONEScrapingAction
+    /// </summary>
+    public const string LiteralNONEScrapingAction = "http://snomed.info/sct#129323009";
 
     /// <summary>
     /// Literal for code: FilletingAction
@@ -9318,9 +9618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFilletingAction = "129324003";
 
     /// <summary>
+    /// Literal for code: NONEFilletingAction
+    /// </summary>
+    public const string LiteralNONEFilletingAction = "http://snomed.info/sct#129324003";
+
+    /// <summary>
     /// Literal for code: IntroductionAction
     /// </summary>
     public const string LiteralIntroductionAction = "129325002";
+
+    /// <summary>
+    /// Literal for code: NONEIntroductionAction
+    /// </summary>
+    public const string LiteralNONEIntroductionAction = "http://snomed.info/sct#129325002";
 
     /// <summary>
     /// Literal for code: InjectionAction
@@ -9328,9 +9638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInjectionAction = "129326001";
 
     /// <summary>
+    /// Literal for code: NONEInjectionAction
+    /// </summary>
+    public const string LiteralNONEInjectionAction = "http://snomed.info/sct#129326001";
+
+    /// <summary>
     /// Literal for code: TattooingAction
     /// </summary>
     public const string LiteralTattooingAction = "129327005";
+
+    /// <summary>
+    /// Literal for code: NONETattooingAction
+    /// </summary>
+    public const string LiteralNONETattooingAction = "http://snomed.info/sct#129327005";
 
     /// <summary>
     /// Literal for code: InflationAction
@@ -9338,9 +9658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInflationAction = "129328000";
 
     /// <summary>
+    /// Literal for code: NONEInflationAction
+    /// </summary>
+    public const string LiteralNONEInflationAction = "http://snomed.info/sct#129328000";
+
+    /// <summary>
     /// Literal for code: InfusionAction
     /// </summary>
     public const string LiteralInfusionAction = "129330003";
+
+    /// <summary>
+    /// Literal for code: NONEInfusionAction
+    /// </summary>
+    public const string LiteralNONEInfusionAction = "http://snomed.info/sct#129330003";
 
     /// <summary>
     /// Literal for code: PerfusionAction
@@ -9348,9 +9678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPerfusionAction = "129331004";
 
     /// <summary>
+    /// Literal for code: NONEPerfusionAction
+    /// </summary>
+    public const string LiteralNONEPerfusionAction = "http://snomed.info/sct#129331004";
+
+    /// <summary>
     /// Literal for code: IrrigationAction
     /// </summary>
     public const string LiteralIrrigationAction = "129332006";
+
+    /// <summary>
+    /// Literal for code: NONEIrrigationAction
+    /// </summary>
+    public const string LiteralNONEIrrigationAction = "http://snomed.info/sct#129332006";
 
     /// <summary>
     /// Literal for code: InsufflationAction
@@ -9358,9 +9698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInsufflationAction = "129333001";
 
     /// <summary>
+    /// Literal for code: NONEInsufflationAction
+    /// </summary>
+    public const string LiteralNONEInsufflationAction = "http://snomed.info/sct#129333001";
+
+    /// <summary>
     /// Literal for code: InstillationAction
     /// </summary>
     public const string LiteralInstillationAction = "129334007";
+
+    /// <summary>
+    /// Literal for code: NONEInstillationAction
+    /// </summary>
+    public const string LiteralNONEInstillationAction = "http://snomed.info/sct#129334007";
 
     /// <summary>
     /// Literal for code: EmbolizationAction
@@ -9368,9 +9718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEmbolizationAction = "129335008";
 
     /// <summary>
+    /// Literal for code: NONEEmbolizationAction
+    /// </summary>
+    public const string LiteralNONEEmbolizationAction = "http://snomed.info/sct#129335008";
+
+    /// <summary>
     /// Literal for code: ReimplantationAction
     /// </summary>
     public const string LiteralReimplantationAction = "129337000";
+
+    /// <summary>
+    /// Literal for code: NONEReimplantationAction
+    /// </summary>
+    public const string LiteralNONEReimplantationAction = "http://snomed.info/sct#129337000";
 
     /// <summary>
     /// Literal for code: IntubationAction
@@ -9378,9 +9738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntubationAction = "129339002";
 
     /// <summary>
+    /// Literal for code: NONEIntubationAction
+    /// </summary>
+    public const string LiteralNONEIntubationAction = "http://snomed.info/sct#129339002";
+
+    /// <summary>
     /// Literal for code: SoundingAction
     /// </summary>
     public const string LiteralSoundingAction = "129340000";
+
+    /// <summary>
+    /// Literal for code: NONESoundingAction
+    /// </summary>
+    public const string LiteralNONESoundingAction = "http://snomed.info/sct#129340000";
 
     /// <summary>
     /// Literal for code: SurgicalRecessionAction
@@ -9388,9 +9758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalRecessionAction = "129344009";
 
     /// <summary>
+    /// Literal for code: NONESurgicalRecessionAction
+    /// </summary>
+    public const string LiteralNONESurgicalRecessionAction = "http://snomed.info/sct#129344009";
+
+    /// <summary>
     /// Literal for code: ResectionRecessionAction
     /// </summary>
     public const string LiteralResectionRecessionAction = "129345005";
+
+    /// <summary>
+    /// Literal for code: NONEResectionRecessionAction
+    /// </summary>
+    public const string LiteralNONEResectionRecessionAction = "http://snomed.info/sct#129345005";
 
     /// <summary>
     /// Literal for code: RadialIncisionAction
@@ -9398,9 +9778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadialIncisionAction = "129346006";
 
     /// <summary>
+    /// Literal for code: NONERadialIncisionAction
+    /// </summary>
+    public const string LiteralNONERadialIncisionAction = "http://snomed.info/sct#129346006";
+
+    /// <summary>
     /// Literal for code: SurgicalTransferAction
     /// </summary>
     public const string LiteralSurgicalTransferAction = "129347002";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalTransferAction
+    /// </summary>
+    public const string LiteralNONESurgicalTransferAction = "http://snomed.info/sct#129347002";
 
     /// <summary>
     /// Literal for code: ZPlastyAction
@@ -9408,9 +9798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralZPlastyAction = "129348007";
 
     /// <summary>
+    /// Literal for code: NONEZPlastyAction
+    /// </summary>
+    public const string LiteralNONEZPlastyAction = "http://snomed.info/sct#129348007";
+
+    /// <summary>
     /// Literal for code: SurgicalLengtheningAction
     /// </summary>
     public const string LiteralSurgicalLengtheningAction = "129349004";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalLengtheningAction
+    /// </summary>
+    public const string LiteralNONESurgicalLengtheningAction = "http://snomed.info/sct#129349004";
 
     /// <summary>
     /// Literal for code: SurgicalShorteningAction
@@ -9418,9 +9818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalShorteningAction = "129350004";
 
     /// <summary>
+    /// Literal for code: NONESurgicalShorteningAction
+    /// </summary>
+    public const string LiteralNONESurgicalShorteningAction = "http://snomed.info/sct#129350004";
+
+    /// <summary>
     /// Literal for code: SurgicalAugmentationAction
     /// </summary>
     public const string LiteralSurgicalAugmentationAction = "129351000";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalAugmentationAction
+    /// </summary>
+    public const string LiteralNONESurgicalAugmentationAction = "http://snomed.info/sct#129351000";
 
     /// <summary>
     /// Literal for code: SurgicalAdvancementAction
@@ -9428,9 +9838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalAdvancementAction = "129352007";
 
     /// <summary>
+    /// Literal for code: NONESurgicalAdvancementAction
+    /// </summary>
+    public const string LiteralNONESurgicalAdvancementAction = "http://snomed.info/sct#129352007";
+
+    /// <summary>
     /// Literal for code: SuspensionAndFixationAction
     /// </summary>
     public const string LiteralSuspensionAndFixationAction = "129353002";
+
+    /// <summary>
+    /// Literal for code: NONESuspensionAndFixationAction
+    /// </summary>
+    public const string LiteralNONESuspensionAndFixationAction = "http://snomed.info/sct#129353002";
 
     /// <summary>
     /// Literal for code: ExteriorizationAction
@@ -9438,9 +9858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExteriorizationAction = "129354008";
 
     /// <summary>
+    /// Literal for code: NONEExteriorizationAction
+    /// </summary>
+    public const string LiteralNONEExteriorizationAction = "http://snomed.info/sct#129354008";
+
+    /// <summary>
     /// Literal for code: MarsupializationAction
     /// </summary>
     public const string LiteralMarsupializationAction = "129355009";
+
+    /// <summary>
+    /// Literal for code: NONEMarsupializationAction
+    /// </summary>
+    public const string LiteralNONEMarsupializationAction = "http://snomed.info/sct#129355009";
 
     /// <summary>
     /// Literal for code: ReinforcementAction
@@ -9448,9 +9878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReinforcementAction = "129356005";
 
     /// <summary>
+    /// Literal for code: NONEReinforcementAction
+    /// </summary>
+    public const string LiteralNONEReinforcementAction = "http://snomed.info/sct#129356005";
+
+    /// <summary>
     /// Literal for code: ClosureAction
     /// </summary>
     public const string LiteralClosureAction = "129357001";
+
+    /// <summary>
+    /// Literal for code: NONEClosureAction
+    /// </summary>
+    public const string LiteralNONEClosureAction = "http://snomed.info/sct#129357001";
 
     /// <summary>
     /// Literal for code: LayeredClosureAction
@@ -9458,9 +9898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLayeredClosureAction = "129358006";
 
     /// <summary>
+    /// Literal for code: NONELayeredClosureAction
+    /// </summary>
+    public const string LiteralNONELayeredClosureAction = "http://snomed.info/sct#129358006";
+
+    /// <summary>
     /// Literal for code: OversewingAction
     /// </summary>
     public const string LiteralOversewingAction = "129360008";
+
+    /// <summary>
+    /// Literal for code: NONEOversewingAction
+    /// </summary>
+    public const string LiteralNONEOversewingAction = "http://snomed.info/sct#129360008";
 
     /// <summary>
     /// Literal for code: ClosureByBucklingAction
@@ -9468,9 +9918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClosureByBucklingAction = "129366002";
 
     /// <summary>
+    /// Literal for code: NONEClosureByBucklingAction
+    /// </summary>
+    public const string LiteralNONEClosureByBucklingAction = "http://snomed.info/sct#129366002";
+
+    /// <summary>
     /// Literal for code: CerclageAction
     /// </summary>
     public const string LiteralCerclageAction = "129368001";
+
+    /// <summary>
+    /// Literal for code: NONECerclageAction
+    /// </summary>
+    public const string LiteralNONECerclageAction = "http://snomed.info/sct#129368001";
 
     /// <summary>
     /// Literal for code: LigationAction
@@ -9478,9 +9938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLigationAction = "129369009";
 
     /// <summary>
+    /// Literal for code: NONELigationAction
+    /// </summary>
+    public const string LiteralNONELigationAction = "http://snomed.info/sct#129369009";
+
+    /// <summary>
     /// Literal for code: FixationAction
     /// </summary>
     public const string LiteralFixationAction = "129371009";
+
+    /// <summary>
+    /// Literal for code: NONEFixationAction
+    /// </summary>
+    public const string LiteralNONEFixationAction = "http://snomed.info/sct#129371009";
 
     /// <summary>
     /// Literal for code: CryopexyAction
@@ -9488,9 +9958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCryopexyAction = "129372002";
 
     /// <summary>
+    /// Literal for code: NONECryopexyAction
+    /// </summary>
+    public const string LiteralNONECryopexyAction = "http://snomed.info/sct#129372002";
+
+    /// <summary>
     /// Literal for code: PlicationAction
     /// </summary>
     public const string LiteralPlicationAction = "129373007";
+
+    /// <summary>
+    /// Literal for code: NONEPlicationAction
+    /// </summary>
+    public const string LiteralNONEPlicationAction = "http://snomed.info/sct#129373007";
 
     /// <summary>
     /// Literal for code: ImbricationAction
@@ -9498,9 +9978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImbricationAction = "129374001";
 
     /// <summary>
+    /// Literal for code: NONEImbricationAction
+    /// </summary>
+    public const string LiteralNONEImbricationAction = "http://snomed.info/sct#129374001";
+
+    /// <summary>
     /// Literal for code: ConstructionAction
     /// </summary>
     public const string LiteralConstructionAction = "129376004";
+
+    /// <summary>
+    /// Literal for code: NONEConstructionAction
+    /// </summary>
+    public const string LiteralNONEConstructionAction = "http://snomed.info/sct#129376004";
 
     /// <summary>
     /// Literal for code: ReconstructionAction
@@ -9508,9 +9998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReconstructionAction = "129377008";
 
     /// <summary>
+    /// Literal for code: NONEReconstructionAction
+    /// </summary>
+    public const string LiteralNONEReconstructionAction = "http://snomed.info/sct#129377008";
+
+    /// <summary>
     /// Literal for code: StabilizationAction
     /// </summary>
     public const string LiteralStabilizationAction = "129378003";
+
+    /// <summary>
+    /// Literal for code: NONEStabilizationAction
+    /// </summary>
+    public const string LiteralNONEStabilizationAction = "http://snomed.info/sct#129378003";
 
     /// <summary>
     /// Literal for code: FusionAction
@@ -9518,9 +10018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFusionAction = "129379006";
 
     /// <summary>
+    /// Literal for code: NONEFusionAction
+    /// </summary>
+    public const string LiteralNONEFusionAction = "http://snomed.info/sct#129379006";
+
+    /// <summary>
     /// Literal for code: AnchoringAction
     /// </summary>
     public const string LiteralAnchoringAction = "129380009";
+
+    /// <summary>
+    /// Literal for code: NONEAnchoringAction
+    /// </summary>
+    public const string LiteralNONEAnchoringAction = "http://snomed.info/sct#129380009";
 
     /// <summary>
     /// Literal for code: EnlargementAction
@@ -9528,9 +10038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnlargementAction = "129381008";
 
     /// <summary>
+    /// Literal for code: NONEEnlargementAction
+    /// </summary>
+    public const string LiteralNONEEnlargementAction = "http://snomed.info/sct#129381008";
+
+    /// <summary>
     /// Literal for code: DestructionAction
     /// </summary>
     public const string LiteralDestructionAction = "129382001";
+
+    /// <summary>
+    /// Literal for code: NONEDestructionAction
+    /// </summary>
+    public const string LiteralNONEDestructionAction = "http://snomed.info/sct#129382001";
 
     /// <summary>
     /// Literal for code: AvulsionAction
@@ -9538,9 +10058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAvulsionAction = "129383006";
 
     /// <summary>
+    /// Literal for code: NONEAvulsionAction
+    /// </summary>
+    public const string LiteralNONEAvulsionAction = "http://snomed.info/sct#129383006";
+
+    /// <summary>
     /// Literal for code: DecorticationAction
     /// </summary>
     public const string LiteralDecorticationAction = "129384000";
+
+    /// <summary>
+    /// Literal for code: NONEDecorticationAction
+    /// </summary>
+    public const string LiteralNONEDecorticationAction = "http://snomed.info/sct#129384000";
 
     /// <summary>
     /// Literal for code: StrippingAction
@@ -9548,9 +10078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStrippingAction = "129385004";
 
     /// <summary>
+    /// Literal for code: NONEStrippingAction
+    /// </summary>
+    public const string LiteralNONEStrippingAction = "http://snomed.info/sct#129385004";
+
+    /// <summary>
     /// Literal for code: StrippingAndLigationAction
     /// </summary>
     public const string LiteralStrippingAndLigationAction = "129386003";
+
+    /// <summary>
+    /// Literal for code: NONEStrippingAndLigationAction
+    /// </summary>
+    public const string LiteralNONEStrippingAndLigationAction = "http://snomed.info/sct#129386003";
 
     /// <summary>
     /// Literal for code: AbrasionAction
@@ -9558,9 +10098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbrasionAction = "129387007";
 
     /// <summary>
+    /// Literal for code: NONEAbrasionAction
+    /// </summary>
+    public const string LiteralNONEAbrasionAction = "http://snomed.info/sct#129387007";
+
+    /// <summary>
     /// Literal for code: SalabrasionAction
     /// </summary>
     public const string LiteralSalabrasionAction = "129388002";
+
+    /// <summary>
+    /// Literal for code: NONESalabrasionAction
+    /// </summary>
+    public const string LiteralNONESalabrasionAction = "http://snomed.info/sct#129388002";
 
     /// <summary>
     /// Literal for code: GrindingAction
@@ -9568,9 +10118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGrindingAction = "129389005";
 
     /// <summary>
+    /// Literal for code: NONEGrindingAction
+    /// </summary>
+    public const string LiteralNONEGrindingAction = "http://snomed.info/sct#129389005";
+
+    /// <summary>
     /// Literal for code: CoagulationAction
     /// </summary>
     public const string LiteralCoagulationAction = "129390001";
+
+    /// <summary>
+    /// Literal for code: NONECoagulationAction
+    /// </summary>
+    public const string LiteralNONECoagulationAction = "http://snomed.info/sct#129390001";
 
     /// <summary>
     /// Literal for code: ObliterationAction
@@ -9578,9 +10138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralObliterationAction = "129391002";
 
     /// <summary>
+    /// Literal for code: NONEObliterationAction
+    /// </summary>
+    public const string LiteralNONEObliterationAction = "http://snomed.info/sct#129391002";
+
+    /// <summary>
     /// Literal for code: CauterizationAction
     /// </summary>
     public const string LiteralCauterizationAction = "129392009";
+
+    /// <summary>
+    /// Literal for code: NONECauterizationAction
+    /// </summary>
+    public const string LiteralNONECauterizationAction = "http://snomed.info/sct#129392009";
 
     /// <summary>
     /// Literal for code: CryosurgeryAction
@@ -9588,9 +10158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCryosurgeryAction = "129393004";
 
     /// <summary>
+    /// Literal for code: NONECryosurgeryAction
+    /// </summary>
+    public const string LiteralNONECryosurgeryAction = "http://snomed.info/sct#129393004";
+
+    /// <summary>
     /// Literal for code: ThermocauteryAction
     /// </summary>
     public const string LiteralThermocauteryAction = "129394005";
+
+    /// <summary>
+    /// Literal for code: NONEThermocauteryAction
+    /// </summary>
+    public const string LiteralNONEThermocauteryAction = "http://snomed.info/sct#129394005";
 
     /// <summary>
     /// Literal for code: FulgurationAction
@@ -9598,9 +10178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFulgurationAction = "129395006";
 
     /// <summary>
+    /// Literal for code: NONEFulgurationAction
+    /// </summary>
+    public const string LiteralNONEFulgurationAction = "http://snomed.info/sct#129395006";
+
+    /// <summary>
     /// Literal for code: ElectrodesiccationAction
     /// </summary>
     public const string LiteralElectrodesiccationAction = "129396007";
+
+    /// <summary>
+    /// Literal for code: NONEElectrodesiccationAction
+    /// </summary>
+    public const string LiteralNONEElectrodesiccationAction = "http://snomed.info/sct#129396007";
 
     /// <summary>
     /// Literal for code: ElectrocoagulationAction
@@ -9608,9 +10198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElectrocoagulationAction = "129397003";
 
     /// <summary>
+    /// Literal for code: NONEElectrocoagulationAction
+    /// </summary>
+    public const string LiteralNONEElectrocoagulationAction = "http://snomed.info/sct#129397003";
+
+    /// <summary>
     /// Literal for code: GalvanocauterizationAction
     /// </summary>
     public const string LiteralGalvanocauterizationAction = "129398008";
+
+    /// <summary>
+    /// Literal for code: NONEGalvanocauterizationAction
+    /// </summary>
+    public const string LiteralNONEGalvanocauterizationAction = "http://snomed.info/sct#129398008";
 
     /// <summary>
     /// Literal for code: ElectrodestructionAction
@@ -9618,9 +10218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElectrodestructionAction = "129399000";
 
     /// <summary>
+    /// Literal for code: NONEElectrodestructionAction
+    /// </summary>
+    public const string LiteralNONEElectrodestructionAction = "http://snomed.info/sct#129399000";
+
+    /// <summary>
     /// Literal for code: CrushingAction
     /// </summary>
     public const string LiteralCrushingAction = "129400007";
+
+    /// <summary>
+    /// Literal for code: NONECrushingAction
+    /// </summary>
+    public const string LiteralNONECrushingAction = "http://snomed.info/sct#129400007";
 
     /// <summary>
     /// Literal for code: FragmentationAction
@@ -9628,9 +10238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFragmentationAction = "129401006";
 
     /// <summary>
+    /// Literal for code: NONEFragmentationAction
+    /// </summary>
+    public const string LiteralNONEFragmentationAction = "http://snomed.info/sct#129401006";
+
+    /// <summary>
     /// Literal for code: EmulsificationAction
     /// </summary>
     public const string LiteralEmulsificationAction = "129402004";
+
+    /// <summary>
+    /// Literal for code: NONEEmulsificationAction
+    /// </summary>
+    public const string LiteralNONEEmulsificationAction = "http://snomed.info/sct#129402004";
 
     /// <summary>
     /// Literal for code: ChemosurgeryAction
@@ -9638,9 +10258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChemosurgeryAction = "129403009";
 
     /// <summary>
+    /// Literal for code: NONEChemosurgeryAction
+    /// </summary>
+    public const string LiteralNONEChemosurgeryAction = "http://snomed.info/sct#129403009";
+
+    /// <summary>
     /// Literal for code: ChemocauteryAction
     /// </summary>
     public const string LiteralChemocauteryAction = "129404003";
+
+    /// <summary>
+    /// Literal for code: NONEChemocauteryAction
+    /// </summary>
+    public const string LiteralNONEChemocauteryAction = "http://snomed.info/sct#129404003";
 
     /// <summary>
     /// Literal for code: PhotocoagulationAction
@@ -9648,9 +10278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhotocoagulationAction = "129405002";
 
     /// <summary>
+    /// Literal for code: NONEPhotocoagulationAction
+    /// </summary>
+    public const string LiteralNONEPhotocoagulationAction = "http://snomed.info/sct#129405002";
+
+    /// <summary>
     /// Literal for code: TransplantationAction
     /// </summary>
     public const string LiteralTransplantationAction = "129406001";
+
+    /// <summary>
+    /// Literal for code: NONETransplantationAction
+    /// </summary>
+    public const string LiteralNONETransplantationAction = "http://snomed.info/sct#129406001";
 
     /// <summary>
     /// Literal for code: GraftingAction
@@ -9658,9 +10298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGraftingAction = "129407005";
 
     /// <summary>
+    /// Literal for code: NONEGraftingAction
+    /// </summary>
+    public const string LiteralNONEGraftingAction = "http://snomed.info/sct#129407005";
+
+    /// <summary>
     /// Literal for code: ManipulationAction
     /// </summary>
     public const string LiteralManipulationAction = "129408000";
+
+    /// <summary>
+    /// Literal for code: NONEManipulationAction
+    /// </summary>
+    public const string LiteralNONEManipulationAction = "http://snomed.info/sct#129408000";
 
     /// <summary>
     /// Literal for code: MobilizationAction
@@ -9668,9 +10318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMobilizationAction = "129409008";
 
     /// <summary>
+    /// Literal for code: NONEMobilizationAction
+    /// </summary>
+    public const string LiteralNONEMobilizationAction = "http://snomed.info/sct#129409008";
+
+    /// <summary>
     /// Literal for code: RemobilizationAction
     /// </summary>
     public const string LiteralRemobilizationAction = "129410003";
+
+    /// <summary>
+    /// Literal for code: NONERemobilizationAction
+    /// </summary>
+    public const string LiteralNONERemobilizationAction = "http://snomed.info/sct#129410003";
 
     /// <summary>
     /// Literal for code: TractionAction
@@ -9678,9 +10338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTractionAction = "129411004";
 
     /// <summary>
+    /// Literal for code: NONETractionAction
+    /// </summary>
+    public const string LiteralNONETractionAction = "http://snomed.info/sct#129411004";
+
+    /// <summary>
     /// Literal for code: ManualReductionAction
     /// </summary>
     public const string LiteralManualReductionAction = "129412006";
+
+    /// <summary>
+    /// Literal for code: NONEManualReductionAction
+    /// </summary>
+    public const string LiteralNONEManualReductionAction = "http://snomed.info/sct#129412006";
 
     /// <summary>
     /// Literal for code: ElevationAction
@@ -9688,9 +10358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElevationAction = "129413001";
 
     /// <summary>
+    /// Literal for code: NONEElevationAction
+    /// </summary>
+    public const string LiteralNONEElevationAction = "http://snomed.info/sct#129413001";
+
+    /// <summary>
     /// Literal for code: InstrumentalElevationAction
     /// </summary>
     public const string LiteralInstrumentalElevationAction = "129414007";
+
+    /// <summary>
+    /// Literal for code: NONEInstrumentalElevationAction
+    /// </summary>
+    public const string LiteralNONEInstrumentalElevationAction = "http://snomed.info/sct#129414007";
 
     /// <summary>
     /// Literal for code: ExtractionAction
@@ -9698,9 +10378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExtractionAction = "129415008";
 
     /// <summary>
+    /// Literal for code: NONEExtractionAction
+    /// </summary>
+    public const string LiteralNONEExtractionAction = "http://snomed.info/sct#129415008";
+
+    /// <summary>
     /// Literal for code: SurgicalExtractionAction
     /// </summary>
     public const string LiteralSurgicalExtractionAction = "129416009";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalExtractionAction
+    /// </summary>
+    public const string LiteralNONESurgicalExtractionAction = "http://snomed.info/sct#129416009";
 
     /// <summary>
     /// Literal for code: ExpressionAction
@@ -9708,9 +10398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExpressionAction = "129418005";
 
     /// <summary>
+    /// Literal for code: NONEExpressionAction
+    /// </summary>
+    public const string LiteralNONEExpressionAction = "http://snomed.info/sct#129418005";
+
+    /// <summary>
     /// Literal for code: DilationAction
     /// </summary>
     public const string LiteralDilationAction = "129419002";
+
+    /// <summary>
+    /// Literal for code: NONEDilationAction
+    /// </summary>
+    public const string LiteralNONEDilationAction = "http://snomed.info/sct#129419002";
 
     /// <summary>
     /// Literal for code: StretchingAction
@@ -9718,9 +10418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStretchingAction = "129420008";
 
     /// <summary>
+    /// Literal for code: NONEStretchingAction
+    /// </summary>
+    public const string LiteralNONEStretchingAction = "http://snomed.info/sct#129420008";
+
+    /// <summary>
     /// Literal for code: DilationAndStretchingAction
     /// </summary>
     public const string LiteralDilationAndStretchingAction = "129421007";
+
+    /// <summary>
+    /// Literal for code: NONEDilationAndStretchingAction
+    /// </summary>
+    public const string LiteralNONEDilationAndStretchingAction = "http://snomed.info/sct#129421007";
 
     /// <summary>
     /// Literal for code: BougienageAction
@@ -9728,9 +10438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBougienageAction = "129423005";
 
     /// <summary>
+    /// Literal for code: NONEBougienageAction
+    /// </summary>
+    public const string LiteralNONEBougienageAction = "http://snomed.info/sct#129423005";
+
+    /// <summary>
     /// Literal for code: FittingAction
     /// </summary>
     public const string LiteralFittingAction = "129424004";
+
+    /// <summary>
+    /// Literal for code: NONEFittingAction
+    /// </summary>
+    public const string LiteralNONEFittingAction = "http://snomed.info/sct#129424004";
 
     /// <summary>
     /// Literal for code: ApplicationAction
@@ -9738,9 +10458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralApplicationAction = "129425003";
 
     /// <summary>
+    /// Literal for code: NONEApplicationAction
+    /// </summary>
+    public const string LiteralNONEApplicationAction = "http://snomed.info/sct#129425003";
+
+    /// <summary>
     /// Literal for code: AdjustmentAction
     /// </summary>
     public const string LiteralAdjustmentAction = "129426002";
+
+    /// <summary>
+    /// Literal for code: NONEAdjustmentAction
+    /// </summary>
+    public const string LiteralNONEAdjustmentAction = "http://snomed.info/sct#129426002";
 
     /// <summary>
     /// Literal for code: ReductionAction
@@ -9748,9 +10478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReductionAction = "129427006";
 
     /// <summary>
+    /// Literal for code: NONEReductionAction
+    /// </summary>
+    public const string LiteralNONEReductionAction = "http://snomed.info/sct#129427006";
+
+    /// <summary>
     /// Literal for code: ConsultationAction
     /// </summary>
     public const string LiteralConsultationAction = "129430004";
+
+    /// <summary>
+    /// Literal for code: NONEConsultationAction
+    /// </summary>
+    public const string LiteralNONEConsultationAction = "http://snomed.info/sct#129430004";
 
     /// <summary>
     /// Literal for code: HistoryTakingAction
@@ -9758,9 +10498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHistoryTakingAction = "129431000";
 
     /// <summary>
+    /// Literal for code: NONEHistoryTakingAction
+    /// </summary>
+    public const string LiteralNONEHistoryTakingAction = "http://snomed.info/sct#129431000";
+
+    /// <summary>
     /// Literal for code: InspectionAction
     /// </summary>
     public const string LiteralInspectionAction = "129433002";
+
+    /// <summary>
+    /// Literal for code: NONEInspectionAction
+    /// </summary>
+    public const string LiteralNONEInspectionAction = "http://snomed.info/sct#129433002";
 
     /// <summary>
     /// Literal for code: PalpationAction
@@ -9768,9 +10518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPalpationAction = "129434008";
 
     /// <summary>
+    /// Literal for code: NONEPalpationAction
+    /// </summary>
+    public const string LiteralNONEPalpationAction = "http://snomed.info/sct#129434008";
+
+    /// <summary>
     /// Literal for code: PercussionAction
     /// </summary>
     public const string LiteralPercussionAction = "129435009";
+
+    /// <summary>
+    /// Literal for code: NONEPercussionAction
+    /// </summary>
+    public const string LiteralNONEPercussionAction = "http://snomed.info/sct#129435009";
 
     /// <summary>
     /// Literal for code: AuscultationAction
@@ -9778,9 +10538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAuscultationAction = "129436005";
 
     /// <summary>
+    /// Literal for code: NONEAuscultationAction
+    /// </summary>
+    public const string LiteralNONEAuscultationAction = "http://snomed.info/sct#129436005";
+
+    /// <summary>
     /// Literal for code: OpticalTransilluminationAction
     /// </summary>
     public const string LiteralOpticalTransilluminationAction = "129437001";
+
+    /// <summary>
+    /// Literal for code: NONEOpticalTransilluminationAction
+    /// </summary>
+    public const string LiteralNONEOpticalTransilluminationAction = "http://snomed.info/sct#129437001";
 
     /// <summary>
     /// Literal for code: PrescriptionAction
@@ -9788,9 +10558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrescriptionAction = "129438006";
 
     /// <summary>
+    /// Literal for code: NONEPrescriptionAction
+    /// </summary>
+    public const string LiteralNONEPrescriptionAction = "http://snomed.info/sct#129438006";
+
+    /// <summary>
     /// Literal for code: CounselingAction
     /// </summary>
     public const string LiteralCounselingAction = "129441002";
+
+    /// <summary>
+    /// Literal for code: NONECounselingAction
+    /// </summary>
+    public const string LiteralNONECounselingAction = "http://snomed.info/sct#129441002";
 
     /// <summary>
     /// Literal for code: IontophoresisAction
@@ -9798,9 +10578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIontophoresisAction = "129442009";
 
     /// <summary>
+    /// Literal for code: NONEIontophoresisAction
+    /// </summary>
+    public const string LiteralNONEIontophoresisAction = "http://snomed.info/sct#129442009";
+
+    /// <summary>
     /// Literal for code: ElectrolysisAction
     /// </summary>
     public const string LiteralElectrolysisAction = "129443004";
+
+    /// <summary>
+    /// Literal for code: NONEElectrolysisAction
+    /// </summary>
+    public const string LiteralNONEElectrolysisAction = "http://snomed.info/sct#129443004";
 
     /// <summary>
     /// Literal for code: SurgicalGalvanismAction
@@ -9808,9 +10598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalGalvanismAction = "129444005";
 
     /// <summary>
+    /// Literal for code: NONESurgicalGalvanismAction
+    /// </summary>
+    public const string LiteralNONESurgicalGalvanismAction = "http://snomed.info/sct#129444005";
+
+    /// <summary>
     /// Literal for code: AdministrationAction
     /// </summary>
     public const string LiteralAdministrationAction = "129445006";
+
+    /// <summary>
+    /// Literal for code: NONEAdministrationAction
+    /// </summary>
+    public const string LiteralNONEAdministrationAction = "http://snomed.info/sct#129445006";
 
     /// <summary>
     /// Literal for code: FunctionalAssessmentAction
@@ -9818,9 +10618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFunctionalAssessmentAction = "129449000";
 
     /// <summary>
+    /// Literal for code: NONEFunctionalAssessmentAction
+    /// </summary>
+    public const string LiteralNONEFunctionalAssessmentAction = "http://snomed.info/sct#129449000";
+
+    /// <summary>
     /// Literal for code: CerebrospinalFluidIgGRatioAndIgGIndex
     /// </summary>
     public const string LiteralCerebrospinalFluidIgGRatioAndIgGIndex = "1324000";
+
+    /// <summary>
+    /// Literal for code: NONECerebrospinalFluidIgGRatioAndIgGIndex
+    /// </summary>
+    public const string LiteralNONECerebrospinalFluidIgGRatioAndIgGIndex = "http://snomed.info/sct#1324000";
 
     /// <summary>
     /// Literal for code: ArthrotomyOfWristJointWithExplorationAndBiopsy
@@ -9828,9 +10638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArthrotomyOfWristJointWithExplorationAndBiopsy = "135007";
 
     /// <summary>
+    /// Literal for code: NONEArthrotomyOfWristJointWithExplorationAndBiopsy
+    /// </summary>
+    public const string LiteralNONEArthrotomyOfWristJointWithExplorationAndBiopsy = "http://snomed.info/sct#135007";
+
+    /// <summary>
     /// Literal for code: AntiHumanGlobulinTestEnzymeTechniqueTiter
     /// </summary>
     public const string LiteralAntiHumanGlobulinTestEnzymeTechniqueTiter = "1358008";
+
+    /// <summary>
+    /// Literal for code: NONEAntiHumanGlobulinTestEnzymeTechniqueTiter
+    /// </summary>
+    public const string LiteralNONEAntiHumanGlobulinTestEnzymeTechniqueTiter = "http://snomed.info/sct#1358008";
 
     /// <summary>
     /// Literal for code: EchographyScanBModeForFetalAgeDetermination
@@ -9838,9 +10658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchographyScanBModeForFetalAgeDetermination = "1385001";
 
     /// <summary>
+    /// Literal for code: NONEEchographyScanBModeForFetalAgeDetermination
+    /// </summary>
+    public const string LiteralNONEEchographyScanBModeForFetalAgeDetermination = "http://snomed.info/sct#1385001";
+
+    /// <summary>
     /// Literal for code: IncisionAndExplorationOfUreter
     /// </summary>
     public const string LiteralIncisionAndExplorationOfUreter = "1399002";
+
+    /// <summary>
+    /// Literal for code: NONEIncisionAndExplorationOfUreter
+    /// </summary>
+    public const string LiteralNONEIncisionAndExplorationOfUreter = "http://snomed.info/sct#1399002";
 
     /// <summary>
     /// Literal for code: AngiographyOfArteriovenousShunt
@@ -9848,9 +10678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngiographyOfArteriovenousShunt = "1414009";
 
     /// <summary>
+    /// Literal for code: NONEAngiographyOfArteriovenousShunt
+    /// </summary>
+    public const string LiteralNONEAngiographyOfArteriovenousShunt = "http://snomed.info/sct#1414009";
+
+    /// <summary>
     /// Literal for code: OsmolarityMeasurement
     /// </summary>
     public const string LiteralOsmolarityMeasurement = "1494008";
+
+    /// <summary>
+    /// Literal for code: NONEOsmolarityMeasurement
+    /// </summary>
+    public const string LiteralNONEOsmolarityMeasurement = "http://snomed.info/sct#1494008";
 
     /// <summary>
     /// Literal for code: CystourethroscopyWithResectionOfUreterocele
@@ -9858,9 +10698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCystourethroscopyWithResectionOfUreterocele = "153001";
 
     /// <summary>
+    /// Literal for code: NONECystourethroscopyWithResectionOfUreterocele
+    /// </summary>
+    public const string LiteralNONECystourethroscopyWithResectionOfUreterocele = "http://snomed.info/sct#153001";
+
+    /// <summary>
     /// Literal for code: AmikacinMeasurement
     /// </summary>
     public const string LiteralAmikacinMeasurement = "1550000";
+
+    /// <summary>
+    /// Literal for code: NONEAmikacinMeasurement
+    /// </summary>
+    public const string LiteralNONEAmikacinMeasurement = "http://snomed.info/sct#1550000";
 
     /// <summary>
     /// Literal for code: IL2Assay
@@ -9868,9 +10718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIL2Assay = "1559004";
 
     /// <summary>
+    /// Literal for code: NONEIL2Assay
+    /// </summary>
+    public const string LiteralNONEIL2Assay = "http://snomed.info/sct#1559004";
+
+    /// <summary>
     /// Literal for code: SkeletalXRayOfAnkleAndFoot
     /// </summary>
     public const string LiteralSkeletalXRayOfAnkleAndFoot = "1597004";
+
+    /// <summary>
+    /// Literal for code: NONESkeletalXRayOfAnkleAndFoot
+    /// </summary>
+    public const string LiteralNONESkeletalXRayOfAnkleAndFoot = "http://snomed.info/sct#1597004";
 
     /// <summary>
     /// Literal for code: GalactosylceramideBetaGalactosidaseMeasurementLeukocytes
@@ -9878,9 +10738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGalactosylceramideBetaGalactosidaseMeasurementLeukocytes = "1616001";
 
     /// <summary>
+    /// Literal for code: NONEGalactosylceramideBetaGalactosidaseMeasurementLeukocytes
+    /// </summary>
+    public const string LiteralNONEGalactosylceramideBetaGalactosidaseMeasurementLeukocytes = "http://snomed.info/sct#1616001";
+
+    /// <summary>
     /// Literal for code: HistoryAndPhysicalExaminationInsurance
     /// </summary>
     public const string LiteralHistoryAndPhysicalExaminationInsurance = "1640009";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryAndPhysicalExaminationInsurance
+    /// </summary>
+    public const string LiteralNONEHistoryAndPhysicalExaminationInsurance = "http://snomed.info/sct#1640009";
 
     /// <summary>
     /// Literal for code: HaagensenTest
@@ -9888,9 +10758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHaagensenTest = "1677001";
 
     /// <summary>
+    /// Literal for code: NONEHaagensenTest
+    /// </summary>
+    public const string LiteralNONEHaagensenTest = "http://snomed.info/sct#1677001";
+
+    /// <summary>
     /// Literal for code: SpecialPotencyDiskIdentificationVancomycinTest
     /// </summary>
     public const string LiteralSpecialPotencyDiskIdentificationVancomycinTest = "170009";
+
+    /// <summary>
+    /// Literal for code: NONESpecialPotencyDiskIdentificationVancomycinTest
+    /// </summary>
+    public const string LiteralNONESpecialPotencyDiskIdentificationVancomycinTest = "http://snomed.info/sct#170009";
 
     /// <summary>
     /// Literal for code: ImmunoglobulinTypingIgG
@@ -9898,9 +10778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImmunoglobulinTypingIgG = "1712009";
 
     /// <summary>
+    /// Literal for code: NONEImmunoglobulinTypingIgG
+    /// </summary>
+    public const string LiteralNONEImmunoglobulinTypingIgG = "http://snomed.info/sct#1712009";
+
+    /// <summary>
     /// Literal for code: ArthroscopyOfWristWithPartialSynovectomy
     /// </summary>
     public const string LiteralArthroscopyOfWristWithPartialSynovectomy = "1757000";
+
+    /// <summary>
+    /// Literal for code: NONEArthroscopyOfWristWithPartialSynovectomy
+    /// </summary>
+    public const string LiteralNONEArthroscopyOfWristWithPartialSynovectomy = "http://snomed.info/sct#1757000";
 
     /// <summary>
     /// Literal for code: AssessmentOfNutritionalStatus
@@ -9908,9 +10798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAssessmentOfNutritionalStatus = "1759002";
 
     /// <summary>
+    /// Literal for code: NONEAssessmentOfNutritionalStatus
+    /// </summary>
+    public const string LiteralNONEAssessmentOfNutritionalStatus = "http://snomed.info/sct#1759002";
+
+    /// <summary>
     /// Literal for code: FecalStercobilinQualitative
     /// </summary>
     public const string LiteralFecalStercobilinQualitative = "1784004";
+
+    /// <summary>
+    /// Literal for code: NONEFecalStercobilinQualitative
+    /// </summary>
+    public const string LiteralNONEFecalStercobilinQualitative = "http://snomed.info/sct#1784004";
 
     /// <summary>
     /// Literal for code: UltrasonicGuidanceForPericardiocentesis
@@ -9918,9 +10818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonicGuidanceForPericardiocentesis = "1787006";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonicGuidanceForPericardiocentesis
+    /// </summary>
+    public const string LiteralNONEUltrasonicGuidanceForPericardiocentesis = "http://snomed.info/sct#1787006";
+
+    /// <summary>
     /// Literal for code: AlcoholMeasurementBreath
     /// </summary>
     public const string LiteralAlcoholMeasurementBreath = "1820004";
+
+    /// <summary>
+    /// Literal for code: NONEAlcoholMeasurementBreath
+    /// </summary>
+    public const string LiteralNONEAlcoholMeasurementBreath = "http://snomed.info/sct#1820004";
 
     /// <summary>
     /// Literal for code: LongTermAssistance
@@ -9928,9 +10838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLongTermAssistance = "183648002";
 
     /// <summary>
+    /// Literal for code: NONELongTermAssistance
+    /// </summary>
+    public const string LiteralNONELongTermAssistance = "http://snomed.info/sct#183648002";
+
+    /// <summary>
     /// Literal for code: FluorescentAntigenMeasurement
     /// </summary>
     public const string LiteralFluorescentAntigenMeasurement = "1879000";
+
+    /// <summary>
+    /// Literal for code: NONEFluorescentAntigenMeasurement
+    /// </summary>
+    public const string LiteralNONEFluorescentAntigenMeasurement = "http://snomed.info/sct#1879000";
 
     /// <summary>
     /// Literal for code: MoldToYeastConversionTest
@@ -9938,9 +10858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMoldToYeastConversionTest = "197002";
 
     /// <summary>
+    /// Literal for code: NONEMoldToYeastConversionTest
+    /// </summary>
+    public const string LiteralNONEMoldToYeastConversionTest = "http://snomed.info/sct#197002";
+
+    /// <summary>
     /// Literal for code: BarbituratesMeasurementQuantitativeAndQualitative
     /// </summary>
     public const string LiteralBarbituratesMeasurementQuantitativeAndQualitative = "2054004";
+
+    /// <summary>
+    /// Literal for code: NONEBarbituratesMeasurementQuantitativeAndQualitative
+    /// </summary>
+    public const string LiteralNONEBarbituratesMeasurementQuantitativeAndQualitative = "http://snomed.info/sct#2054004";
 
     /// <summary>
     /// Literal for code: GasLiquidChromatographyElectronCaptureType
@@ -9948,9 +10878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGasLiquidChromatographyElectronCaptureType = "2196003";
 
     /// <summary>
+    /// Literal for code: NONEGasLiquidChromatographyElectronCaptureType
+    /// </summary>
+    public const string LiteralNONEGasLiquidChromatographyElectronCaptureType = "http://snomed.info/sct#2196003";
+
+    /// <summary>
     /// Literal for code: CuretteTestOfSkin
     /// </summary>
     public const string LiteralCuretteTestOfSkin = "2214008";
+
+    /// <summary>
+    /// Literal for code: NONECuretteTestOfSkin
+    /// </summary>
+    public const string LiteralNONECuretteTestOfSkin = "http://snomed.info/sct#2214008";
 
     /// <summary>
     /// Literal for code: ComplementComponentAssay
@@ -9958,9 +10898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComplementComponentAssay = "2220009";
 
     /// <summary>
+    /// Literal for code: NONEComplementComponentAssay
+    /// </summary>
+    public const string LiteralNONEComplementComponentAssay = "http://snomed.info/sct#2220009";
+
+    /// <summary>
     /// Literal for code: SensititerSystemTest
     /// </summary>
     public const string LiteralSensititerSystemTest = "2225004";
+
+    /// <summary>
+    /// Literal for code: NONESensititerSystemTest
+    /// </summary>
+    public const string LiteralNONESensititerSystemTest = "http://snomed.info/sct#2225004";
 
     /// <summary>
     /// Literal for code: ArthroscopyOfWristWithInternalFixationForInstability
@@ -9968,9 +10918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArthroscopyOfWristWithInternalFixationForInstability = "2244006";
 
     /// <summary>
+    /// Literal for code: NONEArthroscopyOfWristWithInternalFixationForInstability
+    /// </summary>
+    public const string LiteralNONEArthroscopyOfWristWithInternalFixationForInstability = "http://snomed.info/sct#2244006";
+
+    /// <summary>
     /// Literal for code: VenographyOfAdrenalBilateral
     /// </summary>
     public const string LiteralVenographyOfAdrenalBilateral = "2266004";
+
+    /// <summary>
+    /// Literal for code: NONEVenographyOfAdrenalBilateral
+    /// </summary>
+    public const string LiteralNONEVenographyOfAdrenalBilateral = "http://snomed.info/sct#2266004";
 
     /// <summary>
     /// Literal for code: ExplorationOfPoplitealArtery
@@ -9978,9 +10938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExplorationOfPoplitealArtery = "2276001";
 
     /// <summary>
+    /// Literal for code: NONEExplorationOfPoplitealArtery
+    /// </summary>
+    public const string LiteralNONEExplorationOfPoplitealArtery = "http://snomed.info/sct#2276001";
+
+    /// <summary>
     /// Literal for code: UrinalysisAutomated
     /// </summary>
     public const string LiteralUrinalysisAutomated = "2278000";
+
+    /// <summary>
+    /// Literal for code: NONEUrinalysisAutomated
+    /// </summary>
+    public const string LiteralNONEUrinalysisAutomated = "http://snomed.info/sct#2278000";
 
     /// <summary>
     /// Literal for code: AntibodyDetectionRBCEnzyme1StageTechniqueIncludingAntiHumanGlobulin
@@ -9988,9 +10958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAntibodyDetectionRBCEnzyme1StageTechniqueIncludingAntiHumanGlobulin = "2279008";
 
     /// <summary>
+    /// Literal for code: NONEAntibodyDetectionRBCEnzyme1StageTechniqueIncludingAntiHumanGlobulin
+    /// </summary>
+    public const string LiteralNONEAntibodyDetectionRBCEnzyme1StageTechniqueIncludingAntiHumanGlobulin = "http://snomed.info/sct#2279008";
+
+    /// <summary>
     /// Literal for code: MicrobialCultureAnaerobicInitialIsolation
     /// </summary>
     public const string LiteralMicrobialCultureAnaerobicInitialIsolation = "2290003";
+
+    /// <summary>
+    /// Literal for code: NONEMicrobialCultureAnaerobicInitialIsolation
+    /// </summary>
+    public const string LiteralNONEMicrobialCultureAnaerobicInitialIsolation = "http://snomed.info/sct#2290003";
 
     /// <summary>
     /// Literal for code: DiagnosticModelConstruction
@@ -9998,9 +10978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticModelConstruction = "2347001";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticModelConstruction
+    /// </summary>
+    public const string LiteralNONEDiagnosticModelConstruction = "http://snomed.info/sct#2347001";
+
+    /// <summary>
     /// Literal for code: BuffyCoatSmearEvaluation
     /// </summary>
     public const string LiteralBuffyCoatSmearEvaluation = "2373006";
+
+    /// <summary>
+    /// Literal for code: NONEBuffyCoatSmearEvaluation
+    /// </summary>
+    public const string LiteralNONEBuffyCoatSmearEvaluation = "http://snomed.info/sct#2373006";
 
     /// <summary>
     /// Literal for code: HexosaminidaseAAndTotalHexosaminidaseMeasurementSerum
@@ -10008,9 +10998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHexosaminidaseAAndTotalHexosaminidaseMeasurementSerum = "2408004";
 
     /// <summary>
+    /// Literal for code: NONEHexosaminidaseAAndTotalHexosaminidaseMeasurementSerum
+    /// </summary>
+    public const string LiteralNONEHexosaminidaseAAndTotalHexosaminidaseMeasurementSerum = "http://snomed.info/sct#2408004";
+
+    /// <summary>
     /// Literal for code: EpsteinBarrVirusSerologicTest
     /// </summary>
     public const string LiteralEpsteinBarrVirusSerologicTest = "2425002";
+
+    /// <summary>
+    /// Literal for code: NONEEpsteinBarrVirusSerologicTest
+    /// </summary>
+    public const string LiteralNONEEpsteinBarrVirusSerologicTest = "http://snomed.info/sct#2425002";
 
     /// <summary>
     /// Literal for code: CellCountOfSynovialFluidWithDifferentialCount
@@ -10018,9 +11018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCellCountOfSynovialFluidWithDifferentialCount = "2448007";
 
     /// <summary>
+    /// Literal for code: NONECellCountOfSynovialFluidWithDifferentialCount
+    /// </summary>
+    public const string LiteralNONECellCountOfSynovialFluidWithDifferentialCount = "http://snomed.info/sct#2448007";
+
+    /// <summary>
     /// Literal for code: ProximalAnastomosis
     /// </summary>
     public const string LiteralProximalAnastomosis = "245854003";
+
+    /// <summary>
+    /// Literal for code: NONEProximalAnastomosis
+    /// </summary>
+    public const string LiteralNONEProximalAnastomosis = "http://snomed.info/sct#245854003";
 
     /// <summary>
     /// Literal for code: DistalAnastomosis
@@ -10028,9 +11038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDistalAnastomosis = "245855002";
 
     /// <summary>
+    /// Literal for code: NONEDistalAnastomosis
+    /// </summary>
+    public const string LiteralNONEDistalAnastomosis = "http://snomed.info/sct#245855002";
+
+    /// <summary>
     /// Literal for code: TennisElbowTest
     /// </summary>
     public const string LiteralTennisElbowTest = "2461007";
+
+    /// <summary>
+    /// Literal for code: NONETennisElbowTest
+    /// </summary>
+    public const string LiteralNONETennisElbowTest = "http://snomed.info/sct#2461007";
 
     /// <summary>
     /// Literal for code: AcquisitionTechnique
@@ -10038,9 +11058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAcquisitionTechnique = "246363001";
 
     /// <summary>
+    /// Literal for code: NONEAcquisitionTechnique
+    /// </summary>
+    public const string LiteralNONEAcquisitionTechnique = "http://snomed.info/sct#246363001";
+
+    /// <summary>
     /// Literal for code: BladderFillingTechnique
     /// </summary>
     public const string LiteralBladderFillingTechnique = "246502009";
+
+    /// <summary>
+    /// Literal for code: NONEBladderFillingTechnique
+    /// </summary>
+    public const string LiteralNONEBladderFillingTechnique = "http://snomed.info/sct#246502009";
 
     /// <summary>
     /// Literal for code: CatheterMovementTechnique
@@ -10048,9 +11078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterMovementTechnique = "246503004";
 
     /// <summary>
+    /// Literal for code: NONECatheterMovementTechnique
+    /// </summary>
+    public const string LiteralNONECatheterMovementTechnique = "http://snomed.info/sct#246503004";
+
+    /// <summary>
     /// Literal for code: NearReadingTechnique
     /// </summary>
     public const string LiteralNearReadingTechnique = "246504005";
+
+    /// <summary>
+    /// Literal for code: NONENearReadingTechnique
+    /// </summary>
+    public const string LiteralNONENearReadingTechnique = "http://snomed.info/sct#246504005";
 
     /// <summary>
     /// Literal for code: PhotonDetectionTechnique
@@ -10058,9 +11098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhotonDetectionTechnique = "246505006";
 
     /// <summary>
+    /// Literal for code: NONEPhotonDetectionTechnique
+    /// </summary>
+    public const string LiteralNONEPhotonDetectionTechnique = "http://snomed.info/sct#246505006";
+
+    /// <summary>
     /// Literal for code: ProvocationTechnique
     /// </summary>
     public const string LiteralProvocationTechnique = "246506007";
+
+    /// <summary>
+    /// Literal for code: NONEProvocationTechnique
+    /// </summary>
+    public const string LiteralNONEProvocationTechnique = "http://snomed.info/sct#246506007";
 
     /// <summary>
     /// Literal for code: StimulationTechnique
@@ -10068,9 +11118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStimulationTechnique = "246507003";
 
     /// <summary>
+    /// Literal for code: NONEStimulationTechnique
+    /// </summary>
+    public const string LiteralNONEStimulationTechnique = "http://snomed.info/sct#246507003";
+
+    /// <summary>
     /// Literal for code: VAL5QuoteNucleotidaseMeasurement
     /// </summary>
     public const string LiteralVAL5QuoteNucleotidaseMeasurement = "2507007";
+
+    /// <summary>
+    /// Literal for code: NONEVAL5QuoteNucleotidaseMeasurement
+    /// </summary>
+    public const string LiteralNONEVAL5QuoteNucleotidaseMeasurement = "http://snomed.info/sct#2507007";
 
     /// <summary>
     /// Literal for code: RetrogradeUrographyWithKUB
@@ -10078,9 +11138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRetrogradeUrographyWithKUB = "2508002";
 
     /// <summary>
+    /// Literal for code: NONERetrogradeUrographyWithKUB
+    /// </summary>
+    public const string LiteralNONERetrogradeUrographyWithKUB = "http://snomed.info/sct#2508002";
+
+    /// <summary>
     /// Literal for code: MononuclearCellFunctionAssay
     /// </summary>
     public const string LiteralMononuclearCellFunctionAssay = "2531002";
+
+    /// <summary>
+    /// Literal for code: NONEMononuclearCellFunctionAssay
+    /// </summary>
+    public const string LiteralNONEMononuclearCellFunctionAssay = "http://snomed.info/sct#2531002";
 
     /// <summary>
     /// Literal for code: Flash
@@ -10088,9 +11158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFlash = "255459008";
 
     /// <summary>
+    /// Literal for code: NONEFlash
+    /// </summary>
+    public const string LiteralNONEFlash = "http://snomed.info/sct#255459008";
+
+    /// <summary>
     /// Literal for code: SingleTetanyTechnique
     /// </summary>
     public const string LiteralSingleTetanyTechnique = "255463001";
+
+    /// <summary>
+    /// Literal for code: NONESingleTetanyTechnique
+    /// </summary>
+    public const string LiteralNONESingleTetanyTechnique = "http://snomed.info/sct#255463001";
 
     /// <summary>
     /// Literal for code: RetrudedJawRelationTechnique
@@ -10098,9 +11178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRetrudedJawRelationTechnique = "255583002";
 
     /// <summary>
+    /// Literal for code: NONERetrudedJawRelationTechnique
+    /// </summary>
+    public const string LiteralNONERetrudedJawRelationTechnique = "http://snomed.info/sct#255583002";
+
+    /// <summary>
     /// Literal for code: DebulkingAction
     /// </summary>
     public const string LiteralDebulkingAction = "255595002";
+
+    /// <summary>
+    /// Literal for code: NONEDebulkingAction
+    /// </summary>
+    public const string LiteralNONEDebulkingAction = "http://snomed.info/sct#255595002";
 
     /// <summary>
     /// Literal for code: RectallyInfusedSalineSolution
@@ -10108,9 +11198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRectallyInfusedSalineSolution = "256233002";
 
     /// <summary>
+    /// Literal for code: NONERectallyInfusedSalineSolution
+    /// </summary>
+    public const string LiteralNONERectallyInfusedSalineSolution = "http://snomed.info/sct#256233002";
+
+    /// <summary>
     /// Literal for code: DarningAction
     /// </summary>
     public const string LiteralDarningAction = "256644001";
+
+    /// <summary>
+    /// Literal for code: NONEDarningAction
+    /// </summary>
+    public const string LiteralNONEDarningAction = "http://snomed.info/sct#256644001";
 
     /// <summary>
     /// Literal for code: AdultNTypes
@@ -10118,9 +11218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdultNTypes = "257414001";
 
     /// <summary>
+    /// Literal for code: NONEAdultNTypes
+    /// </summary>
+    public const string LiteralNONEAdultNTypes = "http://snomed.info/sct#257414001";
+
+    /// <summary>
     /// Literal for code: BrightField
     /// </summary>
     public const string LiteralBrightField = "257425005";
+
+    /// <summary>
+    /// Literal for code: NONEBrightField
+    /// </summary>
+    public const string LiteralNONEBrightField = "http://snomed.info/sct#257425005";
 
     /// <summary>
     /// Literal for code: DentSleeveTechnique
@@ -10128,9 +11238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDentSleeveTechnique = "257428007";
 
     /// <summary>
+    /// Literal for code: NONEDentSleeveTechnique
+    /// </summary>
+    public const string LiteralNONEDentSleeveTechnique = "http://snomed.info/sct#257428007";
+
+    /// <summary>
     /// Literal for code: SbisaBar
     /// </summary>
     public const string LiteralSbisaBar = "257452000";
+
+    /// <summary>
+    /// Literal for code: NONESbisaBar
+    /// </summary>
+    public const string LiteralNONESbisaBar = "http://snomed.info/sct#257452000";
 
     /// <summary>
     /// Literal for code: SolidSphereTechnique
@@ -10138,9 +11258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSolidSphereTechnique = "257456002";
 
     /// <summary>
+    /// Literal for code: NONESolidSphereTechnique
+    /// </summary>
+    public const string LiteralNONESolidSphereTechnique = "http://snomed.info/sct#257456002";
+
+    /// <summary>
     /// Literal for code: SweptSpatialFrequencyBars
     /// </summary>
     public const string LiteralSweptSpatialFrequencyBars = "257460004";
+
+    /// <summary>
+    /// Literal for code: NONESweptSpatialFrequencyBars
+    /// </summary>
+    public const string LiteralNONESweptSpatialFrequencyBars = "http://snomed.info/sct#257460004";
 
     /// <summary>
     /// Literal for code: WaxWaferTechnique
@@ -10148,9 +11278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWaxWaferTechnique = "257465009";
 
     /// <summary>
+    /// Literal for code: NONEWaxWaferTechnique
+    /// </summary>
+    public const string LiteralNONEWaxWaferTechnique = "http://snomed.info/sct#257465009";
+
+    /// <summary>
     /// Literal for code: Ablation
     /// </summary>
     public const string LiteralAblation = "257729003";
+
+    /// <summary>
+    /// Literal for code: NONEAblation
+    /// </summary>
+    public const string LiteralNONEAblation = "http://snomed.info/sct#257729003";
 
     /// <summary>
     /// Literal for code: ChemicalDestruction
@@ -10158,9 +11298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChemicalDestruction = "257730008";
 
     /// <summary>
+    /// Literal for code: NONEChemicalDestruction
+    /// </summary>
+    public const string LiteralNONEChemicalDestruction = "http://snomed.info/sct#257730008";
+
+    /// <summary>
     /// Literal for code: OpenAdjustment
     /// </summary>
     public const string LiteralOpenAdjustment = "257739009";
+
+    /// <summary>
+    /// Literal for code: NONEOpenAdjustment
+    /// </summary>
+    public const string LiteralNONEOpenAdjustment = "http://snomed.info/sct#257739009";
 
     /// <summary>
     /// Literal for code: VYAdvancementTechnique
@@ -10168,9 +11318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVYAdvancementTechnique = "257740006";
 
     /// <summary>
+    /// Literal for code: NONEVYAdvancementTechnique
+    /// </summary>
+    public const string LiteralNONEVYAdvancementTechnique = "http://snomed.info/sct#257740006";
+
+    /// <summary>
     /// Literal for code: Anastomosis
     /// </summary>
     public const string LiteralAnastomosis = "257741005";
+
+    /// <summary>
+    /// Literal for code: NONEAnastomosis
+    /// </summary>
+    public const string LiteralNONEAnastomosis = "http://snomed.info/sct#257741005";
 
     /// <summary>
     /// Literal for code: DirectAnastomosisAction
@@ -10178,9 +11338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDirectAnastomosisAction = "257742003";
 
     /// <summary>
+    /// Literal for code: NONEDirectAnastomosisAction
+    /// </summary>
+    public const string LiteralNONEDirectAnastomosisAction = "http://snomed.info/sct#257742003";
+
+    /// <summary>
     /// Literal for code: LecompteManeuver
     /// </summary>
     public const string LiteralLecompteManeuver = "257743008";
+
+    /// <summary>
+    /// Literal for code: NONELecompteManeuver
+    /// </summary>
+    public const string LiteralNONELecompteManeuver = "http://snomed.info/sct#257743008";
 
     /// <summary>
     /// Literal for code: EndToEndAnastomosis
@@ -10188,9 +11358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEndToEndAnastomosis = "257744002";
 
     /// <summary>
+    /// Literal for code: NONEEndToEndAnastomosis
+    /// </summary>
+    public const string LiteralNONEEndToEndAnastomosis = "http://snomed.info/sct#257744002";
+
+    /// <summary>
     /// Literal for code: DoubleBarrelledEndToEndAnastomosis
     /// </summary>
     public const string LiteralDoubleBarrelledEndToEndAnastomosis = "257745001";
+
+    /// <summary>
+    /// Literal for code: NONEDoubleBarrelledEndToEndAnastomosis
+    /// </summary>
+    public const string LiteralNONEDoubleBarrelledEndToEndAnastomosis = "http://snomed.info/sct#257745001";
 
     /// <summary>
     /// Literal for code: EndToSideAnastomosis
@@ -10198,9 +11378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEndToSideAnastomosis = "257746000";
 
     /// <summary>
+    /// Literal for code: NONEEndToSideAnastomosis
+    /// </summary>
+    public const string LiteralNONEEndToSideAnastomosis = "http://snomed.info/sct#257746000";
+
+    /// <summary>
     /// Literal for code: RouxEnY
     /// </summary>
     public const string LiteralRouxEnY = "257747009";
+
+    /// <summary>
+    /// Literal for code: NONERouxEnY
+    /// </summary>
+    public const string LiteralNONERouxEnY = "http://snomed.info/sct#257747009";
 
     /// <summary>
     /// Literal for code: EndToSideAnastomosisWithoutTunnel
@@ -10208,9 +11398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEndToSideAnastomosisWithoutTunnel = "257748004";
 
     /// <summary>
+    /// Literal for code: NONEEndToSideAnastomosisWithoutTunnel
+    /// </summary>
+    public const string LiteralNONEEndToSideAnastomosisWithoutTunnel = "http://snomed.info/sct#257748004";
+
+    /// <summary>
     /// Literal for code: EndToSideAnastomosisWithTunnel
     /// </summary>
     public const string LiteralEndToSideAnastomosisWithTunnel = "257749007";
+
+    /// <summary>
+    /// Literal for code: NONEEndToSideAnastomosisWithTunnel
+    /// </summary>
+    public const string LiteralNONEEndToSideAnastomosisWithTunnel = "http://snomed.info/sct#257749007";
 
     /// <summary>
     /// Literal for code: SideToSideAnastomosis
@@ -10218,9 +11418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSideToSideAnastomosis = "257750007";
 
     /// <summary>
+    /// Literal for code: NONESideToSideAnastomosis
+    /// </summary>
+    public const string LiteralNONESideToSideAnastomosis = "http://snomed.info/sct#257750007";
+
+    /// <summary>
     /// Literal for code: WallaceQuotation69QuotationSideToEndAnastomosis
     /// </summary>
     public const string LiteralWallaceQuotation69QuotationSideToEndAnastomosis = "257751006";
+
+    /// <summary>
+    /// Literal for code: NONEWallaceQuotation69QuotationSideToEndAnastomosis
+    /// </summary>
+    public const string LiteralNONEWallaceQuotation69QuotationSideToEndAnastomosis = "http://snomed.info/sct#257751006";
 
     /// <summary>
     /// Literal for code: FNAFineNeedleAspiration
@@ -10228,9 +11438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFNAFineNeedleAspiration = "257759008";
 
     /// <summary>
+    /// Literal for code: NONEFNAFineNeedleAspiration
+    /// </summary>
+    public const string LiteralNONEFNAFineNeedleAspiration = "http://snomed.info/sct#257759008";
+
+    /// <summary>
     /// Literal for code: BindingAction
     /// </summary>
     public const string LiteralBindingAction = "257768005";
+
+    /// <summary>
+    /// Literal for code: NONEBindingAction
+    /// </summary>
+    public const string LiteralNONEBindingAction = "http://snomed.info/sct#257768005";
 
     /// <summary>
     /// Literal for code: Cementing
@@ -10238,9 +11458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCementing = "257771002";
 
     /// <summary>
+    /// Literal for code: NONECementing
+    /// </summary>
+    public const string LiteralNONECementing = "http://snomed.info/sct#257771002";
+
+    /// <summary>
     /// Literal for code: CementingWithNormalViscosityCement
     /// </summary>
     public const string LiteralCementingWithNormalViscosityCement = "257772009";
+
+    /// <summary>
+    /// Literal for code: NONECementingWithNormalViscosityCement
+    /// </summary>
+    public const string LiteralNONECementingWithNormalViscosityCement = "http://snomed.info/sct#257772009";
 
     /// <summary>
     /// Literal for code: CementingWithLowViscosityCement
@@ -10248,9 +11478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCementingWithLowViscosityCement = "257774005";
 
     /// <summary>
+    /// Literal for code: NONECementingWithLowViscosityCement
+    /// </summary>
+    public const string LiteralNONECementingWithLowViscosityCement = "http://snomed.info/sct#257774005";
+
+    /// <summary>
     /// Literal for code: CementingWithNormalViscosityCementContainingAntibiotic
     /// </summary>
     public const string LiteralCementingWithNormalViscosityCementContainingAntibiotic = "257775006";
+
+    /// <summary>
+    /// Literal for code: NONECementingWithNormalViscosityCementContainingAntibiotic
+    /// </summary>
+    public const string LiteralNONECementingWithNormalViscosityCementContainingAntibiotic = "http://snomed.info/sct#257775006";
 
     /// <summary>
     /// Literal for code: CementingWithLowViscosityCementContainingAntibiotic
@@ -10258,9 +11498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCementingWithLowViscosityCementContainingAntibiotic = "257776007";
 
     /// <summary>
+    /// Literal for code: NONECementingWithLowViscosityCementContainingAntibiotic
+    /// </summary>
+    public const string LiteralNONECementingWithLowViscosityCementContainingAntibiotic = "http://snomed.info/sct#257776007";
+
+    /// <summary>
     /// Literal for code: ChemicalInactivation
     /// </summary>
     public const string LiteralChemicalInactivation = "257777003";
+
+    /// <summary>
+    /// Literal for code: NONEChemicalInactivation
+    /// </summary>
+    public const string LiteralNONEChemicalInactivation = "http://snomed.info/sct#257777003";
 
     /// <summary>
     /// Literal for code: Chemodissolution
@@ -10268,9 +11518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChemodissolution = "257778008";
 
     /// <summary>
+    /// Literal for code: NONEChemodissolution
+    /// </summary>
+    public const string LiteralNONEChemodissolution = "http://snomed.info/sct#257778008";
+
+    /// <summary>
     /// Literal for code: MassClosure
     /// </summary>
     public const string LiteralMassClosure = "257780002";
+
+    /// <summary>
+    /// Literal for code: NONEMassClosure
+    /// </summary>
+    public const string LiteralNONEMassClosure = "http://snomed.info/sct#257780002";
 
     /// <summary>
     /// Literal for code: InterruptedMassClosure
@@ -10278,9 +11538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInterruptedMassClosure = "257781003";
 
     /// <summary>
+    /// Literal for code: NONEInterruptedMassClosure
+    /// </summary>
+    public const string LiteralNONEInterruptedMassClosure = "http://snomed.info/sct#257781003";
+
+    /// <summary>
     /// Literal for code: ContinuousMassClosure
     /// </summary>
     public const string LiteralContinuousMassClosure = "257782005";
+
+    /// <summary>
+    /// Literal for code: NONEContinuousMassClosure
+    /// </summary>
+    public const string LiteralNONEContinuousMassClosure = "http://snomed.info/sct#257782005";
 
     /// <summary>
     /// Literal for code: Thermocoagulation
@@ -10288,9 +11558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThermocoagulation = "257783000";
 
     /// <summary>
+    /// Literal for code: NONEThermocoagulation
+    /// </summary>
+    public const string LiteralNONEThermocoagulation = "http://snomed.info/sct#257783000";
+
+    /// <summary>
     /// Literal for code: SemmThermalCoagulation
     /// </summary>
     public const string LiteralSemmThermalCoagulation = "257784006";
+
+    /// <summary>
+    /// Literal for code: NONESemmThermalCoagulation
+    /// </summary>
+    public const string LiteralNONESemmThermalCoagulation = "http://snomed.info/sct#257784006";
 
     /// <summary>
     /// Literal for code: WolfThermalCoagulation
@@ -10298,9 +11578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWolfThermalCoagulation = "257785007";
 
     /// <summary>
+    /// Literal for code: NONEWolfThermalCoagulation
+    /// </summary>
+    public const string LiteralNONEWolfThermalCoagulation = "http://snomed.info/sct#257785007";
+
+    /// <summary>
     /// Literal for code: CryotherapyAction
     /// </summary>
     public const string LiteralCryotherapyAction = "257786008";
+
+    /// <summary>
+    /// Literal for code: NONECryotherapyAction
+    /// </summary>
+    public const string LiteralNONECryotherapyAction = "http://snomed.info/sct#257786008";
 
     /// <summary>
     /// Literal for code: Delamination
@@ -10308,9 +11598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDelamination = "257788009";
 
     /// <summary>
+    /// Literal for code: NONEDelamination
+    /// </summary>
+    public const string LiteralNONEDelamination = "http://snomed.info/sct#257788009";
+
+    /// <summary>
     /// Literal for code: Hydrodelamination
     /// </summary>
     public const string LiteralHydrodelamination = "257789001";
+
+    /// <summary>
+    /// Literal for code: NONEHydrodelamination
+    /// </summary>
+    public const string LiteralNONEHydrodelamination = "http://snomed.info/sct#257789001";
 
     /// <summary>
     /// Literal for code: DesiccationAction
@@ -10318,9 +11618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDesiccationAction = "257791009";
 
     /// <summary>
+    /// Literal for code: NONEDesiccationAction
+    /// </summary>
+    public const string LiteralNONEDesiccationAction = "http://snomed.info/sct#257791009";
+
+    /// <summary>
     /// Literal for code: AnteriorDisplacement
     /// </summary>
     public const string LiteralAnteriorDisplacement = "257802002";
+
+    /// <summary>
+    /// Literal for code: NONEAnteriorDisplacement
+    /// </summary>
+    public const string LiteralNONEAnteriorDisplacement = "http://snomed.info/sct#257802002";
 
     /// <summary>
     /// Literal for code: PosteriorDisplacement
@@ -10328,9 +11638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPosteriorDisplacement = "257803007";
 
     /// <summary>
+    /// Literal for code: NONEPosteriorDisplacement
+    /// </summary>
+    public const string LiteralNONEPosteriorDisplacement = "http://snomed.info/sct#257803007";
+
+    /// <summary>
     /// Literal for code: LateralDisplacement
     /// </summary>
     public const string LiteralLateralDisplacement = "257804001";
+
+    /// <summary>
+    /// Literal for code: NONELateralDisplacement
+    /// </summary>
+    public const string LiteralNONELateralDisplacement = "http://snomed.info/sct#257804001";
 
     /// <summary>
     /// Literal for code: MedialDisplacement
@@ -10338,9 +11658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMedialDisplacement = "257805000";
 
     /// <summary>
+    /// Literal for code: NONEMedialDisplacement
+    /// </summary>
+    public const string LiteralNONEMedialDisplacement = "http://snomed.info/sct#257805000";
+
+    /// <summary>
     /// Literal for code: CloseRectalDissection
     /// </summary>
     public const string LiteralCloseRectalDissection = "257806004";
+
+    /// <summary>
+    /// Literal for code: NONECloseRectalDissection
+    /// </summary>
+    public const string LiteralNONECloseRectalDissection = "http://snomed.info/sct#257806004";
 
     /// <summary>
     /// Literal for code: UltrasonicDissection
@@ -10348,9 +11678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonicDissection = "257808003";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonicDissection
+    /// </summary>
+    public const string LiteralNONEUltrasonicDissection = "http://snomed.info/sct#257808003";
+
+    /// <summary>
     /// Literal for code: ExternalDrainage
     /// </summary>
     public const string LiteralExternalDrainage = "257811002";
+
+    /// <summary>
+    /// Literal for code: NONEExternalDrainage
+    /// </summary>
+    public const string LiteralNONEExternalDrainage = "http://snomed.info/sct#257811002";
 
     /// <summary>
     /// Literal for code: DigitalEvacuation
@@ -10358,9 +11698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDigitalEvacuation = "257817003";
 
     /// <summary>
+    /// Literal for code: NONEDigitalEvacuation
+    /// </summary>
+    public const string LiteralNONEDigitalEvacuation = "http://snomed.info/sct#257817003";
+
+    /// <summary>
     /// Literal for code: ManualExpression
     /// </summary>
     public const string LiteralManualExpression = "257821005";
+
+    /// <summary>
+    /// Literal for code: NONEManualExpression
+    /// </summary>
+    public const string LiteralNONEManualExpression = "http://snomed.info/sct#257821005";
 
     /// <summary>
     /// Literal for code: ExtracapsularExtraction
@@ -10368,9 +11718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExtracapsularExtraction = "257822003";
 
     /// <summary>
+    /// Literal for code: NONEExtracapsularExtraction
+    /// </summary>
+    public const string LiteralNONEExtracapsularExtraction = "http://snomed.info/sct#257822003";
+
+    /// <summary>
     /// Literal for code: IntracapsularExtraction
     /// </summary>
     public const string LiteralIntracapsularExtraction = "257824002";
+
+    /// <summary>
+    /// Literal for code: NONEIntracapsularExtraction
+    /// </summary>
+    public const string LiteralNONEIntracapsularExtraction = "http://snomed.info/sct#257824002";
 
     /// <summary>
     /// Literal for code: FenestrationAction
@@ -10378,9 +11738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFenestrationAction = "257825001";
 
     /// <summary>
+    /// Literal for code: NONEFenestrationAction
+    /// </summary>
+    public const string LiteralNONEFenestrationAction = "http://snomed.info/sct#257825001";
+
+    /// <summary>
     /// Literal for code: PressFitComponentFixation
     /// </summary>
     public const string LiteralPressFitComponentFixation = "257827009";
+
+    /// <summary>
+    /// Literal for code: NONEPressFitComponentFixation
+    /// </summary>
+    public const string LiteralNONEPressFitComponentFixation = "http://snomed.info/sct#257827009";
 
     /// <summary>
     /// Literal for code: BallisticFragmentation
@@ -10388,9 +11758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBallisticFragmentation = "257846005";
 
     /// <summary>
+    /// Literal for code: NONEBallisticFragmentation
+    /// </summary>
+    public const string LiteralNONEBallisticFragmentation = "http://snomed.info/sct#257846005";
+
+    /// <summary>
     /// Literal for code: MechanicalFragmentation
     /// </summary>
     public const string LiteralMechanicalFragmentation = "257850003";
+
+    /// <summary>
+    /// Literal for code: NONEMechanicalFragmentation
+    /// </summary>
+    public const string LiteralNONEMechanicalFragmentation = "http://snomed.info/sct#257850003";
 
     /// <summary>
     /// Literal for code: ElectromagneticPulseFragmentation
@@ -10398,9 +11778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElectromagneticPulseFragmentation = "257855008";
 
     /// <summary>
+    /// Literal for code: NONEElectromagneticPulseFragmentation
+    /// </summary>
+    public const string LiteralNONEElectromagneticPulseFragmentation = "http://snomed.info/sct#257855008";
+
+    /// <summary>
     /// Literal for code: Galvanism
     /// </summary>
     public const string LiteralGalvanism = "257857000";
+
+    /// <summary>
+    /// Literal for code: NONEGalvanism
+    /// </summary>
+    public const string LiteralNONEGalvanism = "http://snomed.info/sct#257857000";
 
     /// <summary>
     /// Literal for code: HighIntensityFocusedUltrasound
@@ -10408,9 +11798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHighIntensityFocusedUltrasound = "257859002";
 
     /// <summary>
+    /// Literal for code: NONEHighIntensityFocusedUltrasound
+    /// </summary>
+    public const string LiteralNONEHighIntensityFocusedUltrasound = "http://snomed.info/sct#257859002";
+
+    /// <summary>
     /// Literal for code: RadioactiveDestruction
     /// </summary>
     public const string LiteralRadioactiveDestruction = "257863009";
+
+    /// <summary>
+    /// Literal for code: NONERadioactiveDestruction
+    /// </summary>
+    public const string LiteralNONERadioactiveDestruction = "http://snomed.info/sct#257863009";
 
     /// <summary>
     /// Literal for code: InsertionAction
@@ -10418,9 +11818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInsertionAction = "257867005";
 
     /// <summary>
+    /// Literal for code: NONEInsertionAction
+    /// </summary>
+    public const string LiteralNONEInsertionAction = "http://snomed.info/sct#257867005";
+
+    /// <summary>
     /// Literal for code: KeelingAction
     /// </summary>
     public const string LiteralKeelingAction = "257878002";
+
+    /// <summary>
+    /// Literal for code: NONEKeelingAction
+    /// </summary>
+    public const string LiteralNONEKeelingAction = "http://snomed.info/sct#257878002";
 
     /// <summary>
     /// Literal for code: Localization
@@ -10428,9 +11838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLocalization = "257880008";
 
     /// <summary>
+    /// Literal for code: NONELocalization
+    /// </summary>
+    public const string LiteralNONELocalization = "http://snomed.info/sct#257880008";
+
+    /// <summary>
     /// Literal for code: ImmobilizationAction
     /// </summary>
     public const string LiteralImmobilizationAction = "257884004";
+
+    /// <summary>
+    /// Literal for code: NONEImmobilizationAction
+    /// </summary>
+    public const string LiteralNONEImmobilizationAction = "http://snomed.info/sct#257884004";
 
     /// <summary>
     /// Literal for code: Occlusion
@@ -10438,9 +11858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOcclusion = "257885003";
 
     /// <summary>
+    /// Literal for code: NONEOcclusion
+    /// </summary>
+    public const string LiteralNONEOcclusion = "http://snomed.info/sct#257885003";
+
+    /// <summary>
     /// Literal for code: OperativeUltrasound
     /// </summary>
     public const string LiteralOperativeUltrasound = "257886002";
+
+    /// <summary>
+    /// Literal for code: NONEOperativeUltrasound
+    /// </summary>
+    public const string LiteralNONEOperativeUltrasound = "http://snomed.info/sct#257886002";
 
     /// <summary>
     /// Literal for code: Padding
@@ -10448,9 +11878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPadding = "257889009";
 
     /// <summary>
+    /// Literal for code: NONEPadding
+    /// </summary>
+    public const string LiteralNONEPadding = "http://snomed.info/sct#257889009";
+
+    /// <summary>
     /// Literal for code: PeelingAction
     /// </summary>
     public const string LiteralPeelingAction = "257890000";
+
+    /// <summary>
+    /// Literal for code: NONEPeelingAction
+    /// </summary>
+    public const string LiteralNONEPeelingAction = "http://snomed.info/sct#257890000";
 
     /// <summary>
     /// Literal for code: Pressure
@@ -10458,9 +11898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPressure = "257893003";
 
     /// <summary>
+    /// Literal for code: NONEPressure
+    /// </summary>
+    public const string LiteralNONEPressure = "http://snomed.info/sct#257893003";
+
+    /// <summary>
     /// Literal for code: OneHandedPressure
     /// </summary>
     public const string LiteralOneHandedPressure = "257894009";
+
+    /// <summary>
+    /// Literal for code: NONEOneHandedPressure
+    /// </summary>
+    public const string LiteralNONEOneHandedPressure = "http://snomed.info/sct#257894009";
 
     /// <summary>
     /// Literal for code: TwoHandedPressure
@@ -10468,9 +11918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTwoHandedPressure = "257895005";
 
     /// <summary>
+    /// Literal for code: NONETwoHandedPressure
+    /// </summary>
+    public const string LiteralNONETwoHandedPressure = "http://snomed.info/sct#257895005";
+
+    /// <summary>
     /// Literal for code: RealignmentAction
     /// </summary>
     public const string LiteralRealignmentAction = "257897002";
+
+    /// <summary>
+    /// Literal for code: NONERealignmentAction
+    /// </summary>
+    public const string LiteralNONERealignmentAction = "http://snomed.info/sct#257897002";
 
     /// <summary>
     /// Literal for code: RepairAction
@@ -10478,9 +11938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepairAction = "257903006";
 
     /// <summary>
+    /// Literal for code: NONERepairAction
+    /// </summary>
+    public const string LiteralNONERepairAction = "http://snomed.info/sct#257903006";
+
+    /// <summary>
     /// Literal for code: KeelRepair
     /// </summary>
     public const string LiteralKeelRepair = "257905004";
+
+    /// <summary>
+    /// Literal for code: NONEKeelRepair
+    /// </summary>
+    public const string LiteralNONEKeelRepair = "http://snomed.info/sct#257905004";
 
     /// <summary>
     /// Literal for code: MayoRepair
@@ -10488,9 +11958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMayoRepair = "257906003";
 
     /// <summary>
+    /// Literal for code: NONEMayoRepair
+    /// </summary>
+    public const string LiteralNONEMayoRepair = "http://snomed.info/sct#257906003";
+
+    /// <summary>
     /// Literal for code: PatchingAction
     /// </summary>
     public const string LiteralPatchingAction = "257907007";
+
+    /// <summary>
+    /// Literal for code: NONEPatchingAction
+    /// </summary>
+    public const string LiteralNONEPatchingAction = "http://snomed.info/sct#257907007";
 
     /// <summary>
     /// Literal for code: RepairOfRecurrence
@@ -10498,9 +11978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepairOfRecurrence = "257911001";
 
     /// <summary>
+    /// Literal for code: NONERepairOfRecurrence
+    /// </summary>
+    public const string LiteralNONERepairOfRecurrence = "http://snomed.info/sct#257911001";
+
+    /// <summary>
     /// Literal for code: RotationAction
     /// </summary>
     public const string LiteralRotationAction = "257912008";
+
+    /// <summary>
+    /// Literal for code: NONERotationAction
+    /// </summary>
+    public const string LiteralNONERotationAction = "http://snomed.info/sct#257912008";
 
     /// <summary>
     /// Literal for code: IRInternalRotation
@@ -10508,9 +11998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIRInternalRotation = "257913003";
 
     /// <summary>
+    /// Literal for code: NONEIRInternalRotation
+    /// </summary>
+    public const string LiteralNONEIRInternalRotation = "http://snomed.info/sct#257913003";
+
+    /// <summary>
     /// Literal for code: ExternalRotation
     /// </summary>
     public const string LiteralExternalRotation = "257914009";
+
+    /// <summary>
+    /// Literal for code: NONEExternalRotation
+    /// </summary>
+    public const string LiteralNONEExternalRotation = "http://snomed.info/sct#257914009";
 
     /// <summary>
     /// Literal for code: Sampling
@@ -10518,9 +12018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSampling = "257915005";
 
     /// <summary>
+    /// Literal for code: NONESampling
+    /// </summary>
+    public const string LiteralNONESampling = "http://snomed.info/sct#257915005";
+
+    /// <summary>
     /// Literal for code: BilateralSampling
     /// </summary>
     public const string LiteralBilateralSampling = "257916006";
+
+    /// <summary>
+    /// Literal for code: NONEBilateralSampling
+    /// </summary>
+    public const string LiteralNONEBilateralSampling = "http://snomed.info/sct#257916006";
 
     /// <summary>
     /// Literal for code: BilateralSequentialSampling
@@ -10528,9 +12038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBilateralSequentialSampling = "257917002";
 
     /// <summary>
+    /// Literal for code: NONEBilateralSequentialSampling
+    /// </summary>
+    public const string LiteralNONEBilateralSequentialSampling = "http://snomed.info/sct#257917002";
+
+    /// <summary>
     /// Literal for code: BilateralSimultaneousSampling
     /// </summary>
     public const string LiteralBilateralSimultaneousSampling = "257918007";
+
+    /// <summary>
+    /// Literal for code: NONEBilateralSimultaneousSampling
+    /// </summary>
+    public const string LiteralNONEBilateralSimultaneousSampling = "http://snomed.info/sct#257918007";
 
     /// <summary>
     /// Literal for code: SamplingWithoutTrap
@@ -10538,9 +12058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSamplingWithoutTrap = "257923007";
 
     /// <summary>
+    /// Literal for code: NONESamplingWithoutTrap
+    /// </summary>
+    public const string LiteralNONESamplingWithoutTrap = "http://snomed.info/sct#257923007";
+
+    /// <summary>
     /// Literal for code: UnilateralSampling
     /// </summary>
     public const string LiteralUnilateralSampling = "257926004";
+
+    /// <summary>
+    /// Literal for code: NONEUnilateralSampling
+    /// </summary>
+    public const string LiteralNONEUnilateralSampling = "http://snomed.info/sct#257926004";
 
     /// <summary>
     /// Literal for code: Segmentation
@@ -10548,9 +12078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSegmentation = "257928003";
 
     /// <summary>
+    /// Literal for code: NONESegmentation
+    /// </summary>
+    public const string LiteralNONESegmentation = "http://snomed.info/sct#257928003";
+
+    /// <summary>
     /// Literal for code: DirectSuturingTechnique
     /// </summary>
     public const string LiteralDirectSuturingTechnique = "257932009";
+
+    /// <summary>
+    /// Literal for code: NONEDirectSuturingTechnique
+    /// </summary>
+    public const string LiteralNONEDirectSuturingTechnique = "http://snomed.info/sct#257932009";
 
     /// <summary>
     /// Literal for code: TamponadeAction
@@ -10558,9 +12098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTamponadeAction = "257933004";
 
     /// <summary>
+    /// Literal for code: NONETamponadeAction
+    /// </summary>
+    public const string LiteralNONETamponadeAction = "http://snomed.info/sct#257933004";
+
+    /// <summary>
     /// Literal for code: TaperingAction
     /// </summary>
     public const string LiteralTaperingAction = "257935006";
+
+    /// <summary>
+    /// Literal for code: NONETaperingAction
+    /// </summary>
+    public const string LiteralNONETaperingAction = "http://snomed.info/sct#257935006";
 
     /// <summary>
     /// Literal for code: SoftTissueTransfer
@@ -10568,9 +12118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSoftTissueTransfer = "257937003";
 
     /// <summary>
+    /// Literal for code: NONESoftTissueTransfer
+    /// </summary>
+    public const string LiteralNONESoftTissueTransfer = "http://snomed.info/sct#257937003";
+
+    /// <summary>
     /// Literal for code: TransferOfBoneBlock
     /// </summary>
     public const string LiteralTransferOfBoneBlock = "257938008";
+
+    /// <summary>
+    /// Literal for code: NONETransferOfBoneBlock
+    /// </summary>
+    public const string LiteralNONETransferOfBoneBlock = "http://snomed.info/sct#257938008";
 
     /// <summary>
     /// Literal for code: TranspositionAction
@@ -10578,9 +12138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTranspositionAction = "257940003";
 
     /// <summary>
+    /// Literal for code: NONETranspositionAction
+    /// </summary>
+    public const string LiteralNONETranspositionAction = "http://snomed.info/sct#257940003";
+
+    /// <summary>
     /// Literal for code: Accelerometry
     /// </summary>
     public const string LiteralAccelerometry = "258005004";
+
+    /// <summary>
+    /// Literal for code: NONEAccelerometry
+    /// </summary>
+    public const string LiteralNONEAccelerometry = "http://snomed.info/sct#258005004";
 
     /// <summary>
     /// Literal for code: AcidometricMethod
@@ -10588,9 +12158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAcidometricMethod = "258006003";
 
     /// <summary>
+    /// Literal for code: NONEAcidometricMethod
+    /// </summary>
+    public const string LiteralNONEAcidometricMethod = "http://snomed.info/sct#258006003";
+
+    /// <summary>
     /// Literal for code: BoydenChamberTechnique
     /// </summary>
     public const string LiteralBoydenChamberTechnique = "258009005";
+
+    /// <summary>
+    /// Literal for code: NONEBoydenChamberTechnique
+    /// </summary>
+    public const string LiteralNONEBoydenChamberTechnique = "http://snomed.info/sct#258009005";
 
     /// <summary>
     /// Literal for code: CatheterTipManometry
@@ -10598,9 +12178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterTipManometry = "258010000";
 
     /// <summary>
+    /// Literal for code: NONECatheterTipManometry
+    /// </summary>
+    public const string LiteralNONECatheterTipManometry = "http://snomed.info/sct#258010000";
+
+    /// <summary>
     /// Literal for code: ChessboardMethod
     /// </summary>
     public const string LiteralChessboardMethod = "258011001";
+
+    /// <summary>
+    /// Literal for code: NONEChessboardMethod
+    /// </summary>
+    public const string LiteralNONEChessboardMethod = "http://snomed.info/sct#258011001";
 
     /// <summary>
     /// Literal for code: ConfocalLaserScanningFluorescence
@@ -10608,9 +12198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConfocalLaserScanningFluorescence = "258012008";
 
     /// <summary>
+    /// Literal for code: NONEConfocalLaserScanningFluorescence
+    /// </summary>
+    public const string LiteralNONEConfocalLaserScanningFluorescence = "http://snomed.info/sct#258012008";
+
+    /// <summary>
     /// Literal for code: ConventionalManometry
     /// </summary>
     public const string LiteralConventionalManometry = "258013003";
+
+    /// <summary>
+    /// Literal for code: NONEConventionalManometry
+    /// </summary>
+    public const string LiteralNONEConventionalManometry = "http://snomed.info/sct#258013003";
 
     /// <summary>
     /// Literal for code: DilutionAndColorimetry
@@ -10618,9 +12218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDilutionAndColorimetry = "258014009";
 
     /// <summary>
+    /// Literal for code: NONEDilutionAndColorimetry
+    /// </summary>
+    public const string LiteralNONEDilutionAndColorimetry = "http://snomed.info/sct#258014009";
+
+    /// <summary>
     /// Literal for code: DoubleSamplingDyeDilutionTest
     /// </summary>
     public const string LiteralDoubleSamplingDyeDilutionTest = "258017002";
+
+    /// <summary>
+    /// Literal for code: NONEDoubleSamplingDyeDilutionTest
+    /// </summary>
+    public const string LiteralNONEDoubleSamplingDyeDilutionTest = "http://snomed.info/sct#258017002";
 
     /// <summary>
     /// Literal for code: DrainageBottleMeasurement
@@ -10628,9 +12238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrainageBottleMeasurement = "258018007";
 
     /// <summary>
+    /// Literal for code: NONEDrainageBottleMeasurement
+    /// </summary>
+    public const string LiteralNONEDrainageBottleMeasurement = "http://snomed.info/sct#258018007";
+
+    /// <summary>
     /// Literal for code: DrainageMeasurement
     /// </summary>
     public const string LiteralDrainageMeasurement = "258019004";
+
+    /// <summary>
+    /// Literal for code: NONEDrainageMeasurement
+    /// </summary>
+    public const string LiteralNONEDrainageMeasurement = "http://snomed.info/sct#258019004";
 
     /// <summary>
     /// Literal for code: DyeDilutionTechnique
@@ -10638,9 +12258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDyeDilutionTechnique = "258020005";
 
     /// <summary>
+    /// Literal for code: NONEDyeDilutionTechnique
+    /// </summary>
+    public const string LiteralNONEDyeDilutionTechnique = "http://snomed.info/sct#258020005";
+
+    /// <summary>
     /// Literal for code: DyeTest
     /// </summary>
     public const string LiteralDyeTest = "258021009";
+
+    /// <summary>
+    /// Literal for code: NONEDyeTest
+    /// </summary>
+    public const string LiteralNONEDyeTest = "http://snomed.info/sct#258021009";
 
     /// <summary>
     /// Literal for code: ETest
@@ -10648,9 +12278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralETest = "258022002";
 
     /// <summary>
+    /// Literal for code: NONEETest
+    /// </summary>
+    public const string LiteralNONEETest = "http://snomed.info/sct#258022002";
+
+    /// <summary>
     /// Literal for code: EnzymeMediatedImmunotransferaseAssay
     /// </summary>
     public const string LiteralEnzymeMediatedImmunotransferaseAssay = "258025000";
+
+    /// <summary>
+    /// Literal for code: NONEEnzymeMediatedImmunotransferaseAssay
+    /// </summary>
+    public const string LiteralNONEEnzymeMediatedImmunotransferaseAssay = "http://snomed.info/sct#258025000";
 
     /// <summary>
     /// Literal for code: EnzymeMethod
@@ -10658,9 +12298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnzymeMethod = "258026004";
 
     /// <summary>
+    /// Literal for code: NONEEnzymeMethod
+    /// </summary>
+    public const string LiteralNONEEnzymeMethod = "http://snomed.info/sct#258026004";
+
+    /// <summary>
     /// Literal for code: EquilibrationMethod
     /// </summary>
     public const string LiteralEquilibrationMethod = "258027008";
+
+    /// <summary>
+    /// Literal for code: NONEEquilibrationMethod
+    /// </summary>
+    public const string LiteralNONEEquilibrationMethod = "http://snomed.info/sct#258027008";
 
     /// <summary>
     /// Literal for code: GradientMethod
@@ -10668,9 +12318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGradientMethod = "258030001";
 
     /// <summary>
+    /// Literal for code: NONEGradientMethod
+    /// </summary>
+    public const string LiteralNONEGradientMethod = "http://snomed.info/sct#258030001";
+
+    /// <summary>
     /// Literal for code: HeliumSingleBreathTechnique
     /// </summary>
     public const string LiteralHeliumSingleBreathTechnique = "258031002";
+
+    /// <summary>
+    /// Literal for code: NONEHeliumSingleBreathTechnique
+    /// </summary>
+    public const string LiteralNONEHeliumSingleBreathTechnique = "http://snomed.info/sct#258031002";
 
     /// <summary>
     /// Literal for code: HeliumSteadyStateTechnique
@@ -10678,9 +12338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeliumSteadyStateTechnique = "258033004";
 
     /// <summary>
+    /// Literal for code: NONEHeliumSteadyStateTechnique
+    /// </summary>
+    public const string LiteralNONEHeliumSteadyStateTechnique = "http://snomed.info/sct#258033004";
+
+    /// <summary>
     /// Literal for code: HeliumDilution
     /// </summary>
     public const string LiteralHeliumDilution = "258034005";
+
+    /// <summary>
+    /// Literal for code: NONEHeliumDilution
+    /// </summary>
+    public const string LiteralNONEHeliumDilution = "http://snomed.info/sct#258034005";
 
     /// <summary>
     /// Literal for code: HighPressureLiquidChromatography
@@ -10688,9 +12358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHighPressureLiquidChromatography = "258035006";
 
     /// <summary>
+    /// Literal for code: NONEHighPressureLiquidChromatography
+    /// </summary>
+    public const string LiteralNONEHighPressureLiquidChromatography = "http://snomed.info/sct#258035006";
+
+    /// <summary>
     /// Literal for code: Immunoblotting
     /// </summary>
     public const string LiteralImmunoblotting = "258036007";
+
+    /// <summary>
+    /// Literal for code: NONEImmunoblotting
+    /// </summary>
+    public const string LiteralNONEImmunoblotting = "http://snomed.info/sct#258036007";
 
     /// <summary>
     /// Literal for code: Immunoradiometry
@@ -10698,9 +12378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImmunoradiometry = "258037003";
 
     /// <summary>
+    /// Literal for code: NONEImmunoradiometry
+    /// </summary>
+    public const string LiteralNONEImmunoradiometry = "http://snomed.info/sct#258037003";
+
+    /// <summary>
     /// Literal for code: IndicatorDilutionTechnique
     /// </summary>
     public const string LiteralIndicatorDilutionTechnique = "258038008";
+
+    /// <summary>
+    /// Literal for code: NONEIndicatorDilutionTechnique
+    /// </summary>
+    public const string LiteralNONEIndicatorDilutionTechnique = "http://snomed.info/sct#258038008";
 
     /// <summary>
     /// Literal for code: IodometricMethod
@@ -10708,9 +12398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIodometricMethod = "258039000";
 
     /// <summary>
+    /// Literal for code: NONEIodometricMethod
+    /// </summary>
+    public const string LiteralNONEIodometricMethod = "http://snomed.info/sct#258039000";
+
+    /// <summary>
     /// Literal for code: IsoenzymeTyping
     /// </summary>
     public const string LiteralIsoenzymeTyping = "258041004";
+
+    /// <summary>
+    /// Literal for code: NONEIsoenzymeTyping
+    /// </summary>
+    public const string LiteralNONEIsoenzymeTyping = "http://snomed.info/sct#258041004";
 
     /// <summary>
     /// Literal for code: LectinTyping
@@ -10718,9 +12418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLectinTyping = "258044007";
 
     /// <summary>
+    /// Literal for code: NONELectinTyping
+    /// </summary>
+    public const string LiteralNONELectinTyping = "http://snomed.info/sct#258044007";
+
+    /// <summary>
     /// Literal for code: LipopolysaccharideTyping
     /// </summary>
     public const string LiteralLipopolysaccharideTyping = "258045008";
+
+    /// <summary>
+    /// Literal for code: NONELipopolysaccharideTyping
+    /// </summary>
+    public const string LiteralNONELipopolysaccharideTyping = "http://snomed.info/sct#258045008";
 
     /// <summary>
     /// Literal for code: MetabolicInhibitionTest
@@ -10728,9 +12438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMetabolicInhibitionTest = "258047000";
 
     /// <summary>
+    /// Literal for code: NONEMetabolicInhibitionTest
+    /// </summary>
+    public const string LiteralNONEMetabolicInhibitionTest = "http://snomed.info/sct#258047000";
+
+    /// <summary>
     /// Literal for code: MicrobiologicalMethod
     /// </summary>
     public const string LiteralMicrobiologicalMethod = "258048005";
+
+    /// <summary>
+    /// Literal for code: NONEMicrobiologicalMethod
+    /// </summary>
+    public const string LiteralNONEMicrobiologicalMethod = "http://snomed.info/sct#258048005";
 
     /// <summary>
     /// Literal for code: MoorfieldsReadingBookTest
@@ -10738,9 +12458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMoorfieldsReadingBookTest = "258053000";
 
     /// <summary>
+    /// Literal for code: NONEMoorfieldsReadingBookTest
+    /// </summary>
+    public const string LiteralNONEMoorfieldsReadingBookTest = "http://snomed.info/sct#258053000";
+
+    /// <summary>
     /// Literal for code: NaturalFilling
     /// </summary>
     public const string LiteralNaturalFilling = "258054006";
+
+    /// <summary>
+    /// Literal for code: NONENaturalFilling
+    /// </summary>
+    public const string LiteralNONENaturalFilling = "http://snomed.info/sct#258054006";
 
     /// <summary>
     /// Literal for code: NitrocefinMethod
@@ -10748,9 +12478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNitrocefinMethod = "258055007";
 
     /// <summary>
+    /// Literal for code: NONENitrocefinMethod
+    /// </summary>
+    public const string LiteralNONENitrocefinMethod = "http://snomed.info/sct#258055007";
+
+    /// <summary>
     /// Literal for code: NitrogenWashout
     /// </summary>
     public const string LiteralNitrogenWashout = "258056008";
+
+    /// <summary>
+    /// Literal for code: NONENitrogenWashout
+    /// </summary>
+    public const string LiteralNONENitrogenWashout = "http://snomed.info/sct#258056008";
 
     /// <summary>
     /// Literal for code: PharmacologicalStimulation
@@ -10758,9 +12498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPharmacologicalStimulation = "258059001";
 
     /// <summary>
+    /// Literal for code: NONEPharmacologicalStimulation
+    /// </summary>
+    public const string LiteralNONEPharmacologicalStimulation = "http://snomed.info/sct#258059001";
+
+    /// <summary>
     /// Literal for code: Phenotyping
     /// </summary>
     public const string LiteralPhenotyping = "258060006";
+
+    /// <summary>
+    /// Literal for code: NONEPhenotyping
+    /// </summary>
+    public const string LiteralNONEPhenotyping = "http://snomed.info/sct#258060006";
 
     /// <summary>
     /// Literal for code: PhoticStimulation
@@ -10768,9 +12518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhoticStimulation = "258061005";
 
     /// <summary>
+    /// Literal for code: NONEPhoticStimulation
+    /// </summary>
+    public const string LiteralNONEPhoticStimulation = "http://snomed.info/sct#258061005";
+
+    /// <summary>
     /// Literal for code: PneumaticOtoscopy
     /// </summary>
     public const string LiteralPneumaticOtoscopy = "258063008";
+
+    /// <summary>
+    /// Literal for code: NONEPneumaticOtoscopy
+    /// </summary>
+    public const string LiteralNONEPneumaticOtoscopy = "http://snomed.info/sct#258063008";
 
     /// <summary>
     /// Literal for code: PolyethyleneGlycolPrecipitation
@@ -10778,9 +12538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPolyethyleneGlycolPrecipitation = "258065001";
 
     /// <summary>
+    /// Literal for code: NONEPolyethyleneGlycolPrecipitation
+    /// </summary>
+    public const string LiteralNONEPolyethyleneGlycolPrecipitation = "http://snomed.info/sct#258065001";
+
+    /// <summary>
     /// Literal for code: PolymeraseChainReaction
     /// </summary>
     public const string LiteralPolymeraseChainReaction = "258066000";
+
+    /// <summary>
+    /// Literal for code: NONEPolymeraseChainReaction
+    /// </summary>
+    public const string LiteralNONEPolymeraseChainReaction = "http://snomed.info/sct#258066000";
 
     /// <summary>
     /// Literal for code: PostTetanicCountStimulation
@@ -10788,9 +12558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPostTetanicCountStimulation = "258067009";
 
     /// <summary>
+    /// Literal for code: NONEPostTetanicCountStimulation
+    /// </summary>
+    public const string LiteralNONEPostTetanicCountStimulation = "http://snomed.info/sct#258067009";
+
+    /// <summary>
     /// Literal for code: ProteinProfiling
     /// </summary>
     public const string LiteralProteinProfiling = "258068004";
+
+    /// <summary>
+    /// Literal for code: NONEProteinProfiling
+    /// </summary>
+    public const string LiteralNONEProteinProfiling = "http://snomed.info/sct#258068004";
 
     /// <summary>
     /// Literal for code: PyrolysisMassSpectrometry
@@ -10798,9 +12578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPyrolysisMassSpectrometry = "258069007";
 
     /// <summary>
+    /// Literal for code: NONEPyrolysisMassSpectrometry
+    /// </summary>
+    public const string LiteralNONEPyrolysisMassSpectrometry = "http://snomed.info/sct#258069007";
+
+    /// <summary>
     /// Literal for code: RapidPullThrough
     /// </summary>
     public const string LiteralRapidPullThrough = "258070008";
+
+    /// <summary>
+    /// Literal for code: NONERapidPullThrough
+    /// </summary>
+    public const string LiteralNONERapidPullThrough = "http://snomed.info/sct#258070008";
 
     /// <summary>
     /// Literal for code: RebreathingMethod
@@ -10808,9 +12598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRebreathingMethod = "258071007";
 
     /// <summary>
+    /// Literal for code: NONERebreathingMethod
+    /// </summary>
+    public const string LiteralNONERebreathingMethod = "http://snomed.info/sct#258071007";
+
+    /// <summary>
     /// Literal for code: Serotyping
     /// </summary>
     public const string LiteralSerotyping = "258075003";
+
+    /// <summary>
+    /// Literal for code: NONESerotyping
+    /// </summary>
+    public const string LiteralNONESerotyping = "http://snomed.info/sct#258075003";
 
     /// <summary>
     /// Literal for code: ShamFeedTechnique
@@ -10818,9 +12618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShamFeedTechnique = "258076002";
 
     /// <summary>
+    /// Literal for code: NONEShamFeedTechnique
+    /// </summary>
+    public const string LiteralNONEShamFeedTechnique = "http://snomed.info/sct#258076002";
+
+    /// <summary>
     /// Literal for code: SheridanGardinerTechnique
     /// </summary>
     public const string LiteralSheridanGardinerTechnique = "258077006";
+
+    /// <summary>
+    /// Literal for code: NONESheridanGardinerTechnique
+    /// </summary>
+    public const string LiteralNONESheridanGardinerTechnique = "http://snomed.info/sct#258077006";
 
     /// <summary>
     /// Literal for code: StationPullThrough
@@ -10828,9 +12638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStationPullThrough = "258078001";
 
     /// <summary>
+    /// Literal for code: NONEStationPullThrough
+    /// </summary>
+    public const string LiteralNONEStationPullThrough = "http://snomed.info/sct#258078001";
+
+    /// <summary>
     /// Literal for code: ThermodilutionTechnique
     /// </summary>
     public const string LiteralThermodilutionTechnique = "258080007";
+
+    /// <summary>
+    /// Literal for code: NONEThermodilutionTechnique
+    /// </summary>
+    public const string LiteralNONEThermodilutionTechnique = "http://snomed.info/sct#258080007";
 
     /// <summary>
     /// Literal for code: UltravioletAbsorption
@@ -10838,9 +12658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltravioletAbsorption = "258081006";
 
     /// <summary>
+    /// Literal for code: NONEUltravioletAbsorption
+    /// </summary>
+    public const string LiteralNONEUltravioletAbsorption = "http://snomed.info/sct#258081006";
+
+    /// <summary>
     /// Literal for code: VectorVolumeAnalysis
     /// </summary>
     public const string LiteralVectorVolumeAnalysis = "258082004";
+
+    /// <summary>
+    /// Literal for code: NONEVectorVolumeAnalysis
+    /// </summary>
+    public const string LiteralNONEVectorVolumeAnalysis = "http://snomed.info/sct#258082004";
 
     /// <summary>
     /// Literal for code: VisualEstimation
@@ -10848,9 +12678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVisualEstimation = "258083009";
 
     /// <summary>
+    /// Literal for code: NONEVisualEstimation
+    /// </summary>
+    public const string LiteralNONEVisualEstimation = "http://snomed.info/sct#258083009";
+
+    /// <summary>
     /// Literal for code: WeighingOfSwabs
     /// </summary>
     public const string LiteralWeighingOfSwabs = "258084003";
+
+    /// <summary>
+    /// Literal for code: NONEWeighingOfSwabs
+    /// </summary>
+    public const string LiteralNONEWeighingOfSwabs = "http://snomed.info/sct#258084003";
 
     /// <summary>
     /// Literal for code: ZymodemeTyping
@@ -10858,9 +12698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralZymodemeTyping = "258086001";
 
     /// <summary>
+    /// Literal for code: NONEZymodemeTyping
+    /// </summary>
+    public const string LiteralNONEZymodemeTyping = "http://snomed.info/sct#258086001";
+
+    /// <summary>
     /// Literal for code: AgarDilution
     /// </summary>
     public const string LiteralAgarDilution = "258087005";
+
+    /// <summary>
+    /// Literal for code: NONEAgarDilution
+    /// </summary>
+    public const string LiteralNONEAgarDilution = "http://snomed.info/sct#258087005";
 
     /// <summary>
     /// Literal for code: DarkGround
@@ -10868,9 +12718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDarkGround = "258094008";
 
     /// <summary>
+    /// Literal for code: NONEDarkGround
+    /// </summary>
+    public const string LiteralNONEDarkGround = "http://snomed.info/sct#258094008";
+
+    /// <summary>
     /// Literal for code: Fluorescence
     /// </summary>
     public const string LiteralFluorescence = "258099003";
+
+    /// <summary>
+    /// Literal for code: NONEFluorescence
+    /// </summary>
+    public const string LiteralNONEFluorescence = "http://snomed.info/sct#258099003";
 
     /// <summary>
     /// Literal for code: HeterophoriaMethod
@@ -10878,9 +12738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeterophoriaMethod = "258100006";
 
     /// <summary>
+    /// Literal for code: NONEHeterophoriaMethod
+    /// </summary>
+    public const string LiteralNONEHeterophoriaMethod = "http://snomed.info/sct#258100006";
+
+    /// <summary>
     /// Literal for code: IntermittentWithdrawalTechnique
     /// </summary>
     public const string LiteralIntermittentWithdrawalTechnique = "258102003";
+
+    /// <summary>
+    /// Literal for code: NONEIntermittentWithdrawalTechnique
+    /// </summary>
+    public const string LiteralNONEIntermittentWithdrawalTechnique = "http://snomed.info/sct#258102003";
 
     /// <summary>
     /// Literal for code: RestrictionFragmentLengthPolymorphism
@@ -10888,9 +12758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRestrictionFragmentLengthPolymorphism = "258109007";
 
     /// <summary>
+    /// Literal for code: NONERestrictionFragmentLengthPolymorphism
+    /// </summary>
+    public const string LiteralNONERestrictionFragmentLengthPolymorphism = "http://snomed.info/sct#258109007";
+
+    /// <summary>
     /// Literal for code: SalineMethod
     /// </summary>
     public const string LiteralSalineMethod = "258110002";
+
+    /// <summary>
+    /// Literal for code: NONESalineMethod
+    /// </summary>
+    public const string LiteralNONESalineMethod = "http://snomed.info/sct#258110002";
 
     /// <summary>
     /// Literal for code: SequenceSpecificOligonucleotideProbe
@@ -10898,9 +12778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSequenceSpecificOligonucleotideProbe = "258112005";
 
     /// <summary>
+    /// Literal for code: NONESequenceSpecificOligonucleotideProbe
+    /// </summary>
+    public const string LiteralNONESequenceSpecificOligonucleotideProbe = "http://snomed.info/sct#258112005";
+
+    /// <summary>
     /// Literal for code: SequenceSpecificPrimersPolymeraseChainReaction
     /// </summary>
     public const string LiteralSequenceSpecificPrimersPolymeraseChainReaction = "258113000";
+
+    /// <summary>
+    /// Literal for code: NONESequenceSpecificPrimersPolymeraseChainReaction
+    /// </summary>
+    public const string LiteralNONESequenceSpecificPrimersPolymeraseChainReaction = "http://snomed.info/sct#258113000";
 
     /// <summary>
     /// Literal for code: SRHSingleRadialHemolysis
@@ -10908,9 +12798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSRHSingleRadialHemolysis = "258114006";
 
     /// <summary>
+    /// Literal for code: NONESRHSingleRadialHemolysis
+    /// </summary>
+    public const string LiteralNONESRHSingleRadialHemolysis = "http://snomed.info/sct#258114006";
+
+    /// <summary>
     /// Literal for code: SuctionDrainageMeasurement
     /// </summary>
     public const string LiteralSuctionDrainageMeasurement = "258118009";
+
+    /// <summary>
+    /// Literal for code: NONESuctionDrainageMeasurement
+    /// </summary>
+    public const string LiteralNONESuctionDrainageMeasurement = "http://snomed.info/sct#258118009";
 
     /// <summary>
     /// Literal for code: ThermalTest
@@ -10918,9 +12818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThermalTest = "258119001";
 
     /// <summary>
+    /// Literal for code: NONEThermalTest
+    /// </summary>
+    public const string LiteralNONEThermalTest = "http://snomed.info/sct#258119001";
+
+    /// <summary>
     /// Literal for code: VaporPressureDepression
     /// </summary>
     public const string LiteralVaporPressureDepression = "258120007";
+
+    /// <summary>
+    /// Literal for code: NONEVaporPressureDepression
+    /// </summary>
+    public const string LiteralNONEVaporPressureDepression = "http://snomed.info/sct#258120007";
 
     /// <summary>
     /// Literal for code: UngatedEquilibrium
@@ -10928,9 +12838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUngatedEquilibrium = "258121006";
 
     /// <summary>
+    /// Literal for code: NONEUngatedEquilibrium
+    /// </summary>
+    public const string LiteralNONEUngatedEquilibrium = "http://snomed.info/sct#258121006";
+
+    /// <summary>
     /// Literal for code: WholeCellLongChainFattyAcidMethylEsterAnalysis
     /// </summary>
     public const string LiteralWholeCellLongChainFattyAcidMethylEsterAnalysis = "258122004";
+
+    /// <summary>
+    /// Literal for code: NONEWholeCellLongChainFattyAcidMethylEsterAnalysis
+    /// </summary>
+    public const string LiteralNONEWholeCellLongChainFattyAcidMethylEsterAnalysis = "http://snomed.info/sct#258122004";
 
     /// <summary>
     /// Literal for code: ECGGatedTechnique
@@ -10938,9 +12858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralECGGatedTechnique = "258123009";
 
     /// <summary>
+    /// Literal for code: NONEECGGatedTechnique
+    /// </summary>
+    public const string LiteralNONEECGGatedTechnique = "http://snomed.info/sct#258123009";
+
+    /// <summary>
     /// Literal for code: GatedEquilibrium
     /// </summary>
     public const string LiteralGatedEquilibrium = "258124003";
+
+    /// <summary>
+    /// Literal for code: NONEGatedEquilibrium
+    /// </summary>
+    public const string LiteralNONEGatedEquilibrium = "http://snomed.info/sct#258124003";
 
     /// <summary>
     /// Literal for code: FreezingPointDepression
@@ -10948,9 +12878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFreezingPointDepression = "258125002";
 
     /// <summary>
+    /// Literal for code: NONEFreezingPointDepression
+    /// </summary>
+    public const string LiteralNONEFreezingPointDepression = "http://snomed.info/sct#258125002";
+
+    /// <summary>
     /// Literal for code: PhaseContrast
     /// </summary>
     public const string LiteralPhaseContrast = "258126001";
+
+    /// <summary>
+    /// Literal for code: NONEPhaseContrast
+    /// </summary>
+    public const string LiteralNONEPhaseContrast = "http://snomed.info/sct#258126001";
 
     /// <summary>
     /// Literal for code: SjogrenHandTechnique
@@ -10958,9 +12898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSjogrenHandTechnique = "258128000";
 
     /// <summary>
+    /// Literal for code: NONESjogrenHandTechnique
+    /// </summary>
+    public const string LiteralNONESjogrenHandTechnique = "http://snomed.info/sct#258128000";
+
+    /// <summary>
     /// Literal for code: SnellenTechnique
     /// </summary>
     public const string LiteralSnellenTechnique = "258129008";
+
+    /// <summary>
+    /// Literal for code: NONESnellenTechnique
+    /// </summary>
+    public const string LiteralNONESnellenTechnique = "http://snomed.info/sct#258129008";
 
     /// <summary>
     /// Literal for code: SucroseDensityGradientSeparation
@@ -10968,9 +12918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSucroseDensityGradientSeparation = "258131004";
 
     /// <summary>
+    /// Literal for code: NONESucroseDensityGradientSeparation
+    /// </summary>
+    public const string LiteralNONESucroseDensityGradientSeparation = "http://snomed.info/sct#258131004";
+
+    /// <summary>
     /// Literal for code: PlateAssay
     /// </summary>
     public const string LiteralPlateAssay = "258133001";
+
+    /// <summary>
+    /// Literal for code: NONEPlateAssay
+    /// </summary>
+    public const string LiteralNONEPlateAssay = "http://snomed.info/sct#258133001";
 
     /// <summary>
     /// Literal for code: PositionChange
@@ -10978,9 +12938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPositionChange = "258144009";
 
     /// <summary>
+    /// Literal for code: NONEPositionChange
+    /// </summary>
+    public const string LiteralNONEPositionChange = "http://snomed.info/sct#258144009";
+
+    /// <summary>
     /// Literal for code: Transmission
     /// </summary>
     public const string LiteralTransmission = "258150004";
+
+    /// <summary>
+    /// Literal for code: NONETransmission
+    /// </summary>
+    public const string LiteralNONETransmission = "http://snomed.info/sct#258150004";
 
     /// <summary>
     /// Literal for code: SlimeProductionTyping
@@ -10988,9 +12958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSlimeProductionTyping = "258159003";
 
     /// <summary>
+    /// Literal for code: NONESlimeProductionTyping
+    /// </summary>
+    public const string LiteralNONESlimeProductionTyping = "http://snomed.info/sct#258159003";
+
+    /// <summary>
     /// Literal for code: SeldingerTechnique
     /// </summary>
     public const string LiteralSeldingerTechnique = "258164004";
+
+    /// <summary>
+    /// Literal for code: NONESeldingerTechnique
+    /// </summary>
+    public const string LiteralNONESeldingerTechnique = "http://snomed.info/sct#258164004";
 
     /// <summary>
     /// Literal for code: RemodeledPouchMethod
@@ -10998,9 +12978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemodeledPouchMethod = "258169009";
 
     /// <summary>
+    /// Literal for code: NONERemodeledPouchMethod
+    /// </summary>
+    public const string LiteralNONERemodeledPouchMethod = "http://snomed.info/sct#258169009";
+
+    /// <summary>
     /// Literal for code: BlindTechnique
     /// </summary>
     public const string LiteralBlindTechnique = "258171009";
+
+    /// <summary>
+    /// Literal for code: NONEBlindTechnique
+    /// </summary>
+    public const string LiteralNONEBlindTechnique = "http://snomed.info/sct#258171009";
 
     /// <summary>
     /// Literal for code: DirectVisionTechnique
@@ -11008,9 +12998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDirectVisionTechnique = "258173007";
 
     /// <summary>
+    /// Literal for code: NONEDirectVisionTechnique
+    /// </summary>
+    public const string LiteralNONEDirectVisionTechnique = "http://snomed.info/sct#258173007";
+
+    /// <summary>
     /// Literal for code: BloodAspirationTechnique
     /// </summary>
     public const string LiteralBloodAspirationTechnique = "258178003";
+
+    /// <summary>
+    /// Literal for code: NONEBloodAspirationTechnique
+    /// </summary>
+    public const string LiteralNONEBloodAspirationTechnique = "http://snomed.info/sct#258178003";
 
     /// <summary>
     /// Literal for code: BloodFlashbackTechnique
@@ -11018,9 +13018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBloodFlashbackTechnique = "258179006";
 
     /// <summary>
+    /// Literal for code: NONEBloodFlashbackTechnique
+    /// </summary>
+    public const string LiteralNONEBloodFlashbackTechnique = "http://snomed.info/sct#258179006";
+
+    /// <summary>
     /// Literal for code: PressureWaveformAnalysis
     /// </summary>
     public const string LiteralPressureWaveformAnalysis = "258180009";
+
+    /// <summary>
+    /// Literal for code: NONEPressureWaveformAnalysis
+    /// </summary>
+    public const string LiteralNONEPressureWaveformAnalysis = "http://snomed.info/sct#258180009";
 
     /// <summary>
     /// Literal for code: ECGAnalysis
@@ -11028,9 +13038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralECGAnalysis = "258181008";
 
     /// <summary>
+    /// Literal for code: NONEECGAnalysis
+    /// </summary>
+    public const string LiteralNONEECGAnalysis = "http://snomed.info/sct#258181008";
+
+    /// <summary>
     /// Literal for code: ColdLightTransillumination
     /// </summary>
     public const string LiteralColdLightTransillumination = "258182001";
+
+    /// <summary>
+    /// Literal for code: NONEColdLightTransillumination
+    /// </summary>
+    public const string LiteralNONEColdLightTransillumination = "http://snomed.info/sct#258182001";
 
     /// <summary>
     /// Literal for code: GasInjectionAndAuscultation
@@ -11038,9 +13058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGasInjectionAndAuscultation = "258183006";
 
     /// <summary>
+    /// Literal for code: NONEGasInjectionAndAuscultation
+    /// </summary>
+    public const string LiteralNONEGasInjectionAndAuscultation = "http://snomed.info/sct#258183006";
+
+    /// <summary>
     /// Literal for code: SPECT
     /// </summary>
     public const string LiteralSPECT = "260222006";
+
+    /// <summary>
+    /// Literal for code: NONESPECT
+    /// </summary>
+    public const string LiteralNONESPECT = "http://snomed.info/sct#260222006";
 
     /// <summary>
     /// Literal for code: MaximumIntercuspationTechnique
@@ -11048,9 +13078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMaximumIntercuspationTechnique = "260223001";
 
     /// <summary>
+    /// Literal for code: NONEMaximumIntercuspationTechnique
+    /// </summary>
+    public const string LiteralNONEMaximumIntercuspationTechnique = "http://snomed.info/sct#260223001";
+
+    /// <summary>
     /// Literal for code: SolidPhaseImmuneTechnique
     /// </summary>
     public const string LiteralSolidPhaseImmuneTechnique = "260227000";
+
+    /// <summary>
+    /// Literal for code: NONESolidPhaseImmuneTechnique
+    /// </summary>
+    public const string LiteralNONESolidPhaseImmuneTechnique = "http://snomed.info/sct#260227000";
 
     /// <summary>
     /// Literal for code: VanSlykeTechnique
@@ -11058,9 +13098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVanSlykeTechnique = "260231006";
 
     /// <summary>
+    /// Literal for code: NONEVanSlykeTechnique
+    /// </summary>
+    public const string LiteralNONEVanSlykeTechnique = "http://snomed.info/sct#260231006";
+
+    /// <summary>
     /// Literal for code: ObturationTechnique
     /// </summary>
     public const string LiteralObturationTechnique = "260710009";
+
+    /// <summary>
+    /// Literal for code: NONEObturationTechnique
+    /// </summary>
+    public const string LiteralNONEObturationTechnique = "http://snomed.info/sct#260710009";
 
     /// <summary>
     /// Literal for code: PostProcessing
@@ -11068,9 +13118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPostProcessing = "260931002";
 
     /// <summary>
+    /// Literal for code: NONEPostProcessing
+    /// </summary>
+    public const string LiteralNONEPostProcessing = "http://snomed.info/sct#260931002";
+
+    /// <summary>
     /// Literal for code: AnticurvatureTechnique
     /// </summary>
     public const string LiteralAnticurvatureTechnique = "260982004";
+
+    /// <summary>
+    /// Literal for code: NONEAnticurvatureTechnique
+    /// </summary>
+    public const string LiteralNONEAnticurvatureTechnique = "http://snomed.info/sct#260982004";
 
     /// <summary>
     /// Literal for code: DigitalXRay
@@ -11078,9 +13138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDigitalXRay = "261006005";
 
     /// <summary>
+    /// Literal for code: NONEDigitalXRay
+    /// </summary>
+    public const string LiteralNONEDigitalXRay = "http://snomed.info/sct#261006005";
+
+    /// <summary>
     /// Literal for code: DualCureMethod
     /// </summary>
     public const string LiteralDualCureMethod = "261009003";
+
+    /// <summary>
+    /// Literal for code: NONEDualCureMethod
+    /// </summary>
+    public const string LiteralNONEDualCureMethod = "http://snomed.info/sct#261009003";
 
     /// <summary>
     /// Literal for code: Mechanical
@@ -11088,9 +13158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMechanical = "261018001";
 
     /// <summary>
+    /// Literal for code: NONEMechanical
+    /// </summary>
+    public const string LiteralNONEMechanical = "http://snomed.info/sct#261018001";
+
+    /// <summary>
     /// Literal for code: SequentialAnastomosis
     /// </summary>
     public const string LiteralSequentialAnastomosis = "261027000";
+
+    /// <summary>
+    /// Literal for code: NONESequentialAnastomosis
+    /// </summary>
+    public const string LiteralNONESequentialAnastomosis = "http://snomed.info/sct#261027000";
 
     /// <summary>
     /// Literal for code: Turnover
@@ -11098,9 +13178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTurnover = "261032004";
 
     /// <summary>
+    /// Literal for code: NONETurnover
+    /// </summary>
+    public const string LiteralNONETurnover = "http://snomed.info/sct#261032004";
+
+    /// <summary>
     /// Literal for code: UltrasonicEndodonticTechnique
     /// </summary>
     public const string LiteralUltrasonicEndodonticTechnique = "261033009";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasonicEndodonticTechnique
+    /// </summary>
+    public const string LiteralNONEUltrasonicEndodonticTechnique = "http://snomed.info/sct#261033009";
 
     /// <summary>
     /// Literal for code: ValsalvaManeuvre
@@ -11108,9 +13198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralValsalvaManeuvre = "261039008";
 
     /// <summary>
+    /// Literal for code: NONEValsalvaManeuvre
+    /// </summary>
+    public const string LiteralNONEValsalvaManeuvre = "http://snomed.info/sct#261039008";
+
+    /// <summary>
     /// Literal for code: DoubleContrastTechnique
     /// </summary>
     public const string LiteralDoubleContrastTechnique = "261069001";
+
+    /// <summary>
+    /// Literal for code: NONEDoubleContrastTechnique
+    /// </summary>
+    public const string LiteralNONEDoubleContrastTechnique = "http://snomed.info/sct#261069001";
 
     /// <summary>
     /// Literal for code: DoubleFlareTechnique
@@ -11118,9 +13218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDoubleFlareTechnique = "261070000";
 
     /// <summary>
+    /// Literal for code: NONEDoubleFlareTechnique
+    /// </summary>
+    public const string LiteralNONEDoubleFlareTechnique = "http://snomed.info/sct#261070000";
+
+    /// <summary>
     /// Literal for code: DautreyMethod
     /// </summary>
     public const string LiteralDautreyMethod = "261190007";
+
+    /// <summary>
+    /// Literal for code: NONEDautreyMethod
+    /// </summary>
+    public const string LiteralNONEDautreyMethod = "http://snomed.info/sct#261190007";
 
     /// <summary>
     /// Literal for code: OpenExtraction
@@ -11128,9 +13238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOpenExtraction = "261191006";
 
     /// <summary>
+    /// Literal for code: NONEOpenExtraction
+    /// </summary>
+    public const string LiteralNONEOpenExtraction = "http://snomed.info/sct#261191006";
+
+    /// <summary>
     /// Literal for code: BalancedForceTechnique
     /// </summary>
     public const string LiteralBalancedForceTechnique = "261192004";
+
+    /// <summary>
+    /// Literal for code: NONEBalancedForceTechnique
+    /// </summary>
+    public const string LiteralNONEBalancedForceTechnique = "http://snomed.info/sct#261192004";
 
     /// <summary>
     /// Literal for code: CineStudy
@@ -11138,9 +13258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCineStudy = "261194003";
 
     /// <summary>
+    /// Literal for code: NONECineStudy
+    /// </summary>
+    public const string LiteralNONECineStudy = "http://snomed.info/sct#261194003";
+
+    /// <summary>
     /// Literal for code: DirectApplicationTechnique
     /// </summary>
     public const string LiteralDirectApplicationTechnique = "261196001";
+
+    /// <summary>
+    /// Literal for code: NONEDirectApplicationTechnique
+    /// </summary>
+    public const string LiteralNONEDirectApplicationTechnique = "http://snomed.info/sct#261196001";
 
     /// <summary>
     /// Literal for code: DopplerColorFlow
@@ -11148,9 +13278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDopplerColorFlow = "261197005";
 
     /// <summary>
+    /// Literal for code: NONEDopplerColorFlow
+    /// </summary>
+    public const string LiteralNONEDopplerColorFlow = "http://snomed.info/sct#261197005";
+
+    /// <summary>
     /// Literal for code: DopplerContinuousWave
     /// </summary>
     public const string LiteralDopplerContinuousWave = "261198000";
+
+    /// <summary>
+    /// Literal for code: NONEDopplerContinuousWave
+    /// </summary>
+    public const string LiteralNONEDopplerContinuousWave = "http://snomed.info/sct#261198000";
 
     /// <summary>
     /// Literal for code: DopplerPulsed
@@ -11158,9 +13298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDopplerPulsed = "261199008";
 
     /// <summary>
+    /// Literal for code: NONEDopplerPulsed
+    /// </summary>
+    public const string LiteralNONEDopplerPulsed = "http://snomed.info/sct#261199008";
+
+    /// <summary>
     /// Literal for code: IntermittentAdministration
     /// </summary>
     public const string LiteralIntermittentAdministration = "261208004";
+
+    /// <summary>
+    /// Literal for code: NONEIntermittentAdministration
+    /// </summary>
+    public const string LiteralNONEIntermittentAdministration = "http://snomed.info/sct#261208004";
 
     /// <summary>
     /// Literal for code: NippleSharingTechnique
@@ -11168,9 +13318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNippleSharingTechnique = "261209007";
 
     /// <summary>
+    /// Literal for code: NONENippleSharingTechnique
+    /// </summary>
+    public const string LiteralNONENippleSharingTechnique = "http://snomed.info/sct#261209007";
+
+    /// <summary>
     /// Literal for code: PercutaneousWithAutomatedInstrumentation
     /// </summary>
     public const string LiteralPercutaneousWithAutomatedInstrumentation = "261212005";
+
+    /// <summary>
+    /// Literal for code: NONEPercutaneousWithAutomatedInstrumentation
+    /// </summary>
+    public const string LiteralNONEPercutaneousWithAutomatedInstrumentation = "http://snomed.info/sct#261212005";
 
     /// <summary>
     /// Literal for code: PercutaneousWithEndoscopicInstrumentation
@@ -11178,9 +13338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPercutaneousWithEndoscopicInstrumentation = "261213000";
 
     /// <summary>
+    /// Literal for code: NONEPercutaneousWithEndoscopicInstrumentation
+    /// </summary>
+    public const string LiteralNONEPercutaneousWithEndoscopicInstrumentation = "http://snomed.info/sct#261213000";
+
+    /// <summary>
     /// Literal for code: PercutaneousWithLaserInstrumentation
     /// </summary>
     public const string LiteralPercutaneousWithLaserInstrumentation = "261214006";
+
+    /// <summary>
+    /// Literal for code: NONEPercutaneousWithLaserInstrumentation
+    /// </summary>
+    public const string LiteralNONEPercutaneousWithLaserInstrumentation = "http://snomed.info/sct#261214006";
 
     /// <summary>
     /// Literal for code: PercutaneousWithManualInstrumentation
@@ -11188,9 +13358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPercutaneousWithManualInstrumentation = "261215007";
 
     /// <summary>
+    /// Literal for code: NONEPercutaneousWithManualInstrumentation
+    /// </summary>
+    public const string LiteralNONEPercutaneousWithManualInstrumentation = "http://snomed.info/sct#261215007";
+
+    /// <summary>
     /// Literal for code: RadionuclidePlethysmography
     /// </summary>
     public const string LiteralRadionuclidePlethysmography = "261216008";
+
+    /// <summary>
+    /// Literal for code: NONERadionuclidePlethysmography
+    /// </summary>
+    public const string LiteralNONERadionuclidePlethysmography = "http://snomed.info/sct#261216008";
 
     /// <summary>
     /// Literal for code: ThermalPlasticTechnique
@@ -11198,9 +13378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThermalPlasticTechnique = "261271009";
 
     /// <summary>
+    /// Literal for code: NONEThermalPlasticTechnique
+    /// </summary>
+    public const string LiteralNONEThermalPlasticTechnique = "http://snomed.info/sct#261271009";
+
+    /// <summary>
     /// Literal for code: ThermalSolidTechnique
     /// </summary>
     public const string LiteralThermalSolidTechnique = "261272002";
+
+    /// <summary>
+    /// Literal for code: NONEThermalSolidTechnique
+    /// </summary>
+    public const string LiteralNONEThermalSolidTechnique = "http://snomed.info/sct#261272002";
 
     /// <summary>
     /// Literal for code: AdhesiveWithSupplementarySutureTechnique
@@ -11208,9 +13398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdhesiveWithSupplementarySutureTechnique = "261338007";
 
     /// <summary>
+    /// Literal for code: NONEAdhesiveWithSupplementarySutureTechnique
+    /// </summary>
+    public const string LiteralNONEAdhesiveWithSupplementarySutureTechnique = "http://snomed.info/sct#261338007";
+
+    /// <summary>
     /// Literal for code: ImplantTechnique
     /// </summary>
     public const string LiteralImplantTechnique = "261373009";
+
+    /// <summary>
+    /// Literal for code: NONEImplantTechnique
+    /// </summary>
+    public const string LiteralNONEImplantTechnique = "http://snomed.info/sct#261373009";
 
     /// <summary>
     /// Literal for code: ResurfacingAction
@@ -11218,9 +13418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralResurfacingAction = "261391004";
 
     /// <summary>
+    /// Literal for code: NONEResurfacingAction
+    /// </summary>
+    public const string LiteralNONEResurfacingAction = "http://snomed.info/sct#261391004";
+
+    /// <summary>
     /// Literal for code: AlloplasticGrafting
     /// </summary>
     public const string LiteralAlloplasticGrafting = "261398005";
+
+    /// <summary>
+    /// Literal for code: NONEAlloplasticGrafting
+    /// </summary>
+    public const string LiteralNONEAlloplasticGrafting = "http://snomed.info/sct#261398005";
 
     /// <summary>
     /// Literal for code: BonePatellarTendonBoneReconstruction
@@ -11228,9 +13438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBonePatellarTendonBoneReconstruction = "261498006";
 
     /// <summary>
+    /// Literal for code: NONEBonePatellarTendonBoneReconstruction
+    /// </summary>
+    public const string LiteralNONEBonePatellarTendonBoneReconstruction = "http://snomed.info/sct#261498006";
+
+    /// <summary>
     /// Literal for code: BraidedProstheticLigamentReconstruction
     /// </summary>
     public const string LiteralBraidedProstheticLigamentReconstruction = "261499003";
+
+    /// <summary>
+    /// Literal for code: NONEBraidedProstheticLigamentReconstruction
+    /// </summary>
+    public const string LiteralNONEBraidedProstheticLigamentReconstruction = "http://snomed.info/sct#261499003";
 
     /// <summary>
     /// Literal for code: CloseRectalDissectionTechnique
@@ -11238,9 +13458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCloseRectalDissectionTechnique = "261504003";
 
     /// <summary>
+    /// Literal for code: NONECloseRectalDissectionTechnique
+    /// </summary>
+    public const string LiteralNONECloseRectalDissectionTechnique = "http://snomed.info/sct#261504003";
+
+    /// <summary>
     /// Literal for code: ConventionalAngiography
     /// </summary>
     public const string LiteralConventionalAngiography = "261510003";
+
+    /// <summary>
+    /// Literal for code: NONEConventionalAngiography
+    /// </summary>
+    public const string LiteralNONEConventionalAngiography = "http://snomed.info/sct#261510003";
 
     /// <summary>
     /// Literal for code: Cystodiathermy
@@ -11248,9 +13478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCystodiathermy = "261518005";
 
     /// <summary>
+    /// Literal for code: NONECystodiathermy
+    /// </summary>
+    public const string LiteralNONECystodiathermy = "http://snomed.info/sct#261518005";
+
+    /// <summary>
     /// Literal for code: DiathermyExcision
     /// </summary>
     public const string LiteralDiathermyExcision = "261519002";
+
+    /// <summary>
+    /// Literal for code: NONEDiathermyExcision
+    /// </summary>
+    public const string LiteralNONEDiathermyExcision = "http://snomed.info/sct#261519002";
 
     /// <summary>
     /// Literal for code: DiathermySnareAction
@@ -11258,9 +13498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiathermySnareAction = "261520008";
 
     /// <summary>
+    /// Literal for code: NONEDiathermySnareAction
+    /// </summary>
+    public const string LiteralNONEDiathermySnareAction = "http://snomed.info/sct#261520008";
+
+    /// <summary>
     /// Literal for code: ElectromagneticFragmentation
     /// </summary>
     public const string LiteralElectromagneticFragmentation = "261526002";
+
+    /// <summary>
+    /// Literal for code: NONEElectromagneticFragmentation
+    /// </summary>
+    public const string LiteralNONEElectromagneticFragmentation = "http://snomed.info/sct#261526002";
 
     /// <summary>
     /// Literal for code: LoopDiathermyExcision
@@ -11268,9 +13518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLoopDiathermyExcision = "261545006";
 
     /// <summary>
+    /// Literal for code: NONELoopDiathermyExcision
+    /// </summary>
+    public const string LiteralNONELoopDiathermyExcision = "http://snomed.info/sct#261545006";
+
+    /// <summary>
     /// Literal for code: PeriarticularOsteotomy
     /// </summary>
     public const string LiteralPeriarticularOsteotomy = "261548008";
+
+    /// <summary>
+    /// Literal for code: NONEPeriarticularOsteotomy
+    /// </summary>
+    public const string LiteralNONEPeriarticularOsteotomy = "http://snomed.info/sct#261548008";
 
     /// <summary>
     /// Literal for code: REDYRegenerationOfDialysate
@@ -11278,9 +13538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralREDYRegenerationOfDialysate = "261553003";
 
     /// <summary>
+    /// Literal for code: NONEREDYRegenerationOfDialysate
+    /// </summary>
+    public const string LiteralNONEREDYRegenerationOfDialysate = "http://snomed.info/sct#261553003";
+
+    /// <summary>
     /// Literal for code: ShelfTechnique
     /// </summary>
     public const string LiteralShelfTechnique = "261561008";
+
+    /// <summary>
+    /// Literal for code: NONEShelfTechnique
+    /// </summary>
+    public const string LiteralNONEShelfTechnique = "http://snomed.info/sct#261561008";
 
     /// <summary>
     /// Literal for code: ThermalInjectionTechnique
@@ -11288,9 +13558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThermalInjectionTechnique = "261567007";
 
     /// <summary>
+    /// Literal for code: NONEThermalInjectionTechnique
+    /// </summary>
+    public const string LiteralNONEThermalInjectionTechnique = "http://snomed.info/sct#261567007";
+
+    /// <summary>
     /// Literal for code: Thermocompaction
     /// </summary>
     public const string LiteralThermocompaction = "261569005";
+
+    /// <summary>
+    /// Literal for code: NONEThermocompaction
+    /// </summary>
+    public const string LiteralNONEThermocompaction = "http://snomed.info/sct#261569005";
 
     /// <summary>
     /// Literal for code: ThyrotrophinReleasingHormoneStimulation
@@ -11298,9 +13578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThyrotrophinReleasingHormoneStimulation = "261573008";
 
     /// <summary>
+    /// Literal for code: NONEThyrotrophinReleasingHormoneStimulation
+    /// </summary>
+    public const string LiteralNONEThyrotrophinReleasingHormoneStimulation = "http://snomed.info/sct#261573008";
+
+    /// <summary>
     /// Literal for code: UltrasoundFragmentation
     /// </summary>
     public const string LiteralUltrasoundFragmentation = "261576000";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasoundFragmentation
+    /// </summary>
+    public const string LiteralNONEUltrasoundFragmentation = "http://snomed.info/sct#261576000";
 
     /// <summary>
     /// Literal for code: AirContrastTechnique
@@ -11308,9 +13598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAirContrastTechnique = "261671000";
 
     /// <summary>
+    /// Literal for code: NONEAirContrastTechnique
+    /// </summary>
+    public const string LiteralNONEAirContrastTechnique = "http://snomed.info/sct#261671000";
+
+    /// <summary>
     /// Literal for code: BeforeTheFilter
     /// </summary>
     public const string LiteralBeforeTheFilter = "261699009";
+
+    /// <summary>
+    /// Literal for code: NONEBeforeTheFilter
+    /// </summary>
+    public const string LiteralNONEBeforeTheFilter = "http://snomed.info/sct#261699009";
 
     /// <summary>
     /// Literal for code: BenchekrounTechnique
@@ -11318,9 +13618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBenchekrounTechnique = "261700005";
 
     /// <summary>
+    /// Literal for code: NONEBenchekrounTechnique
+    /// </summary>
+    public const string LiteralNONEBenchekrounTechnique = "http://snomed.info/sct#261700005";
+
+    /// <summary>
     /// Literal for code: BiochemicalBondComponentFixation
     /// </summary>
     public const string LiteralBiochemicalBondComponentFixation = "261708003";
+
+    /// <summary>
+    /// Literal for code: NONEBiochemicalBondComponentFixation
+    /// </summary>
+    public const string LiteralNONEBiochemicalBondComponentFixation = "http://snomed.info/sct#261708003";
 
     /// <summary>
     /// Literal for code: BisectingAngleTechnique
@@ -11328,9 +13638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBisectingAngleTechnique = "261710001";
 
     /// <summary>
+    /// Literal for code: NONEBisectingAngleTechnique
+    /// </summary>
+    public const string LiteralNONEBisectingAngleTechnique = "http://snomed.info/sct#261710001";
+
+    /// <summary>
     /// Literal for code: BoneIngrowthSystem
     /// </summary>
     public const string LiteralBoneIngrowthSystem = "261714005";
+
+    /// <summary>
+    /// Literal for code: NONEBoneIngrowthSystem
+    /// </summary>
+    public const string LiteralNONEBoneIngrowthSystem = "http://snomed.info/sct#261714005";
 
     /// <summary>
     /// Literal for code: CorticotrophinReleasingHormoneStimulation
@@ -11338,9 +13658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCorticotrophinReleasingHormoneStimulation = "261732005";
 
     /// <summary>
+    /// Literal for code: NONECorticotrophinReleasingHormoneStimulation
+    /// </summary>
+    public const string LiteralNONECorticotrophinReleasingHormoneStimulation = "http://snomed.info/sct#261732005";
+
+    /// <summary>
     /// Literal for code: ContinuousInfusion
     /// </summary>
     public const string LiteralContinuousInfusion = "261754007";
+
+    /// <summary>
+    /// Literal for code: NONEContinuousInfusion
+    /// </summary>
+    public const string LiteralNONEContinuousInfusion = "http://snomed.info/sct#261754007";
 
     /// <summary>
     /// Literal for code: ExplantTechnique
@@ -11348,9 +13678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExplantTechnique = "261787006";
 
     /// <summary>
+    /// Literal for code: NONEExplantTechnique
+    /// </summary>
+    public const string LiteralNONEExplantTechnique = "http://snomed.info/sct#261787006";
+
+    /// <summary>
     /// Literal for code: ExtraHighResolutionTechnique
     /// </summary>
     public const string LiteralExtraHighResolutionTechnique = "261790000";
+
+    /// <summary>
+    /// Literal for code: NONEExtraHighResolutionTechnique
+    /// </summary>
+    public const string LiteralNONEExtraHighResolutionTechnique = "http://snomed.info/sct#261790000";
 
     /// <summary>
     /// Literal for code: FlowDirectedTechnique
@@ -11358,9 +13698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFlowDirectedTechnique = "261793003";
 
     /// <summary>
+    /// Literal for code: NONEFlowDirectedTechnique
+    /// </summary>
+    public const string LiteralNONEFlowDirectedTechnique = "http://snomed.info/sct#261793003";
+
+    /// <summary>
     /// Literal for code: IsaacsTechnique
     /// </summary>
     public const string LiteralIsaacsTechnique = "261856001";
+
+    /// <summary>
+    /// Literal for code: NONEIsaacsTechnique
+    /// </summary>
+    public const string LiteralNONEIsaacsTechnique = "http://snomed.info/sct#261856001";
 
     /// <summary>
     /// Literal for code: LightCureMethod
@@ -11368,9 +13718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLightCureMethod = "261909000";
 
     /// <summary>
+    /// Literal for code: NONELightCureMethod
+    /// </summary>
+    public const string LiteralNONELightCureMethod = "http://snomed.info/sct#261909000";
+
+    /// <summary>
     /// Literal for code: MechanicalGrabMethod
     /// </summary>
     public const string LiteralMechanicalGrabMethod = "261940007";
+
+    /// <summary>
+    /// Literal for code: NONEMechanicalGrabMethod
+    /// </summary>
+    public const string LiteralNONEMechanicalGrabMethod = "http://snomed.info/sct#261940007";
 
     /// <summary>
     /// Literal for code: MitrofanoffTechnique
@@ -11378,9 +13738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMitrofanoffTechnique = "261943009";
 
     /// <summary>
+    /// Literal for code: NONEMitrofanoffTechnique
+    /// </summary>
+    public const string LiteralNONEMitrofanoffTechnique = "http://snomed.info/sct#261943009";
+
+    /// <summary>
     /// Literal for code: ModifiedDoubleFlareTechnique
     /// </summary>
     public const string LiteralModifiedDoubleFlareTechnique = "261947005";
+
+    /// <summary>
+    /// Literal for code: NONEModifiedDoubleFlareTechnique
+    /// </summary>
+    public const string LiteralNONEModifiedDoubleFlareTechnique = "http://snomed.info/sct#261947005";
 
     /// <summary>
     /// Literal for code: MultiplanarReconstruction
@@ -11388,9 +13758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMultiplanarReconstruction = "261958001";
 
     /// <summary>
+    /// Literal for code: NONEMultiplanarReconstruction
+    /// </summary>
+    public const string LiteralNONEMultiplanarReconstruction = "http://snomed.info/sct#261958001";
+
+    /// <summary>
     /// Literal for code: NeutralZone
     /// </summary>
     public const string LiteralNeutralZone = "261981004";
+
+    /// <summary>
+    /// Literal for code: NONENeutralZone
+    /// </summary>
+    public const string LiteralNONENeutralZone = "http://snomed.info/sct#261981004";
 
     /// <summary>
     /// Literal for code: ParallelingTechnique
@@ -11398,9 +13778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralParallelingTechnique = "262041006";
 
     /// <summary>
+    /// Literal for code: NONEParallelingTechnique
+    /// </summary>
+    public const string LiteralNONEParallelingTechnique = "http://snomed.info/sct#262041006";
+
+    /// <summary>
     /// Literal for code: PatientCycledMethod
     /// </summary>
     public const string LiteralPatientCycledMethod = "262048000";
+
+    /// <summary>
+    /// Literal for code: NONEPatientCycledMethod
+    /// </summary>
+    public const string LiteralNONEPatientCycledMethod = "http://snomed.info/sct#262048000";
 
     /// <summary>
     /// Literal for code: PowerOutput
@@ -11408,9 +13798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPowerOutput = "262062007";
 
     /// <summary>
+    /// Literal for code: NONEPowerOutput
+    /// </summary>
+    public const string LiteralNONEPowerOutput = "http://snomed.info/sct#262062007";
+
+    /// <summary>
     /// Literal for code: PoweredMethod
     /// </summary>
     public const string LiteralPoweredMethod = "262063002";
+
+    /// <summary>
+    /// Literal for code: NONEPoweredMethod
+    /// </summary>
+    public const string LiteralNONEPoweredMethod = "http://snomed.info/sct#262063002";
 
     /// <summary>
     /// Literal for code: PoweredFlexibleMethod
@@ -11418,9 +13818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPoweredFlexibleMethod = "262064008";
 
     /// <summary>
+    /// Literal for code: NONEPoweredFlexibleMethod
+    /// </summary>
+    public const string LiteralNONEPoweredFlexibleMethod = "http://snomed.info/sct#262064008";
+
+    /// <summary>
     /// Literal for code: PoweredRigidMethod
     /// </summary>
     public const string LiteralPoweredRigidMethod = "262065009";
+
+    /// <summary>
+    /// Literal for code: NONEPoweredRigidMethod
+    /// </summary>
+    public const string LiteralNONEPoweredRigidMethod = "http://snomed.info/sct#262065009";
 
     /// <summary>
     /// Literal for code: PressureControlledMethod
@@ -11428,9 +13838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPressureControlledMethod = "262069003";
 
     /// <summary>
+    /// Literal for code: NONEPressureControlledMethod
+    /// </summary>
+    public const string LiteralNONEPressureControlledMethod = "http://snomed.info/sct#262069003";
+
+    /// <summary>
     /// Literal for code: ReciprocalMechanicalTechnique
     /// </summary>
     public const string LiteralReciprocalMechanicalTechnique = "262092003";
+
+    /// <summary>
+    /// Literal for code: NONEReciprocalMechanicalTechnique
+    /// </summary>
+    public const string LiteralNONEReciprocalMechanicalTechnique = "http://snomed.info/sct#262092003";
 
     /// <summary>
     /// Literal for code: RemainingConnected
@@ -11438,9 +13858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRemainingConnected = "262095001";
 
     /// <summary>
+    /// Literal for code: NONERemainingConnected
+    /// </summary>
+    public const string LiteralNONERemainingConnected = "http://snomed.info/sct#262095001";
+
+    /// <summary>
     /// Literal for code: RotaryMechanicalEndodonticTechnique
     /// </summary>
     public const string LiteralRotaryMechanicalEndodonticTechnique = "262110008";
+
+    /// <summary>
+    /// Literal for code: NONERotaryMechanicalEndodonticTechnique
+    /// </summary>
+    public const string LiteralNONERotaryMechanicalEndodonticTechnique = "http://snomed.info/sct#262110008";
 
     /// <summary>
     /// Literal for code: SelfCureMethod
@@ -11448,9 +13878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSelfCureMethod = "262136001";
 
     /// <summary>
+    /// Literal for code: NONESelfCureMethod
+    /// </summary>
+    public const string LiteralNONESelfCureMethod = "http://snomed.info/sct#262136001";
+
+    /// <summary>
     /// Literal for code: SideToEndAnastomosis
     /// </summary>
     public const string LiteralSideToEndAnastomosis = "262143007";
+
+    /// <summary>
+    /// Literal for code: NONESideToEndAnastomosis
+    /// </summary>
+    public const string LiteralNONESideToEndAnastomosis = "http://snomed.info/sct#262143007";
 
     /// <summary>
     /// Literal for code: SingleContrastTechnique
@@ -11458,9 +13898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSingleContrastTechnique = "262148003";
 
     /// <summary>
+    /// Literal for code: NONESingleContrastTechnique
+    /// </summary>
+    public const string LiteralNONESingleContrastTechnique = "http://snomed.info/sct#262148003";
+
+    /// <summary>
     /// Literal for code: SonicEndodonticTechnique
     /// </summary>
     public const string LiteralSonicEndodonticTechnique = "262162005";
+
+    /// <summary>
+    /// Literal for code: NONESonicEndodonticTechnique
+    /// </summary>
+    public const string LiteralNONESonicEndodonticTechnique = "http://snomed.info/sct#262162005";
 
     /// <summary>
     /// Literal for code: StandardizedTechnique
@@ -11468,9 +13918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStandardizedTechnique = "262174009";
 
     /// <summary>
+    /// Literal for code: NONEStandardizedTechnique
+    /// </summary>
+    public const string LiteralNONEStandardizedTechnique = "http://snomed.info/sct#262174009";
+
+    /// <summary>
     /// Literal for code: StepbackTechnique
     /// </summary>
     public const string LiteralStepbackTechnique = "262180001";
+
+    /// <summary>
+    /// Literal for code: NONEStepbackTechnique
+    /// </summary>
+    public const string LiteralNONEStepbackTechnique = "http://snomed.info/sct#262180001";
 
     /// <summary>
     /// Literal for code: StepdownTechnique
@@ -11478,9 +13938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStepdownTechnique = "262181002";
 
     /// <summary>
+    /// Literal for code: NONEStepdownTechnique
+    /// </summary>
+    public const string LiteralNONEStepdownTechnique = "http://snomed.info/sct#262181002";
+
+    /// <summary>
     /// Literal for code: ThalliumUptakeMethod
     /// </summary>
     public const string LiteralThalliumUptakeMethod = "262201007";
+
+    /// <summary>
+    /// Literal for code: NONEThalliumUptakeMethod
+    /// </summary>
+    public const string LiteralNONEThalliumUptakeMethod = "http://snomed.info/sct#262201007";
 
     /// <summary>
     /// Literal for code: TimeCycledMethod
@@ -11488,9 +13958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTimeCycledMethod = "262207006";
 
     /// <summary>
+    /// Literal for code: NONETimeCycledMethod
+    /// </summary>
+    public const string LiteralNONETimeCycledMethod = "http://snomed.info/sct#262207006";
+
+    /// <summary>
     /// Literal for code: VolumeControlledMethod
     /// </summary>
     public const string LiteralVolumeControlledMethod = "262265000";
+
+    /// <summary>
+    /// Literal for code: NONEVolumeControlledMethod
+    /// </summary>
+    public const string LiteralNONEVolumeControlledMethod = "http://snomed.info/sct#262265000";
 
     /// <summary>
     /// Literal for code: WarmingIntravenousFluidTechnique
@@ -11498,9 +13978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWarmingIntravenousFluidTechnique = "262278000";
 
     /// <summary>
+    /// Literal for code: NONEWarmingIntravenousFluidTechnique
+    /// </summary>
+    public const string LiteralNONEWarmingIntravenousFluidTechnique = "http://snomed.info/sct#262278000";
+
+    /// <summary>
     /// Literal for code: WireGuidedTechnique
     /// </summary>
     public const string LiteralWireGuidedTechnique = "262293001";
+
+    /// <summary>
+    /// Literal for code: NONEWireGuidedTechnique
+    /// </summary>
+    public const string LiteralNONEWireGuidedTechnique = "http://snomed.info/sct#262293001";
 
     /// <summary>
     /// Literal for code: WithClearanceMeasurement
@@ -11508,9 +13998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWithClearanceMeasurement = "262295008";
 
     /// <summary>
+    /// Literal for code: NONEWithClearanceMeasurement
+    /// </summary>
+    public const string LiteralNONEWithClearanceMeasurement = "http://snomed.info/sct#262295008";
+
+    /// <summary>
     /// Literal for code: CrossCompressionTechnique
     /// </summary>
     public const string LiteralCrossCompressionTechnique = "262296009";
+
+    /// <summary>
+    /// Literal for code: NONECrossCompressionTechnique
+    /// </summary>
+    public const string LiteralNONECrossCompressionTechnique = "http://snomed.info/sct#262296009";
 
     /// <summary>
     /// Literal for code: WithGFR
@@ -11518,9 +14018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWithGFR = "262300005";
 
     /// <summary>
+    /// Literal for code: NONEWithGFR
+    /// </summary>
+    public const string LiteralNONEWithGFR = "http://snomed.info/sct#262300005";
+
+    /// <summary>
     /// Literal for code: WithSeparation
     /// </summary>
     public const string LiteralWithSeparation = "262305000";
+
+    /// <summary>
+    /// Literal for code: NONEWithSeparation
+    /// </summary>
+    public const string LiteralNONEWithSeparation = "http://snomed.info/sct#262305000";
 
     /// <summary>
     /// Literal for code: WithUretericPeristalsisAnalysis
@@ -11528,9 +14038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWithUretericPeristalsisAnalysis = "262310001";
 
     /// <summary>
+    /// Literal for code: NONEWithUretericPeristalsisAnalysis
+    /// </summary>
+    public const string LiteralNONEWithUretericPeristalsisAnalysis = "http://snomed.info/sct#262310001";
+
+    /// <summary>
     /// Literal for code: WithoutRemount
     /// </summary>
     public const string LiteralWithoutRemount = "262313004";
+
+    /// <summary>
+    /// Literal for code: NONEWithoutRemount
+    /// </summary>
+    public const string LiteralNONEWithoutRemount = "http://snomed.info/sct#262313004";
 
     /// <summary>
     /// Literal for code: XenonClearanceMethod
@@ -11538,9 +14058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralXenonClearanceMethod = "262320006";
 
     /// <summary>
+    /// Literal for code: NONEXenonClearanceMethod
+    /// </summary>
+    public const string LiteralNONEXenonClearanceMethod = "http://snomed.info/sct#262320006";
+
+    /// <summary>
     /// Literal for code: AfterTheFilter
     /// </summary>
     public const string LiteralAfterTheFilter = "262323008";
+
+    /// <summary>
+    /// Literal for code: NONEAfterTheFilter
+    /// </summary>
+    public const string LiteralNONEAfterTheFilter = "http://snomed.info/sct#262323008";
 
     /// <summary>
     /// Literal for code: IntracranialCerebralPerfusionPressureMonitoring
@@ -11548,9 +14078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntracranialCerebralPerfusionPressureMonitoring = "2629003";
 
     /// <summary>
+    /// Literal for code: NONEIntracranialCerebralPerfusionPressureMonitoring
+    /// </summary>
+    public const string LiteralNONEIntracranialCerebralPerfusionPressureMonitoring = "http://snomed.info/sct#2629003";
+
+    /// <summary>
     /// Literal for code: AlteredCastTechnique
     /// </summary>
     public const string LiteralAlteredCastTechnique = "263664004";
+
+    /// <summary>
+    /// Literal for code: NONEAlteredCastTechnique
+    /// </summary>
+    public const string LiteralNONEAlteredCastTechnique = "http://snomed.info/sct#263664004";
 
     /// <summary>
     /// Literal for code: BrothDilution
@@ -11558,9 +14098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrothDilution = "263696007";
 
     /// <summary>
+    /// Literal for code: NONEBrothDilution
+    /// </summary>
+    public const string LiteralNONEBrothDilution = "http://snomed.info/sct#263696007";
+
+    /// <summary>
     /// Literal for code: Compression
     /// </summary>
     public const string LiteralCompression = "263720003";
+
+    /// <summary>
+    /// Literal for code: NONECompression
+    /// </summary>
+    public const string LiteralNONECompression = "http://snomed.info/sct#263720003";
 
     /// <summary>
     /// Literal for code: ConstantAccelerationTechnique
@@ -11568,9 +14118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConstantAccelerationTechnique = "263725008";
 
     /// <summary>
+    /// Literal for code: NONEConstantAccelerationTechnique
+    /// </summary>
+    public const string LiteralNONEConstantAccelerationTechnique = "http://snomed.info/sct#263725008";
+
+    /// <summary>
     /// Literal for code: ElectrosensitivityTechnique
     /// </summary>
     public const string LiteralElectrosensitivityTechnique = "263746004";
+
+    /// <summary>
+    /// Literal for code: NONEElectrosensitivityTechnique
+    /// </summary>
+    public const string LiteralNONEElectrosensitivityTechnique = "http://snomed.info/sct#263746004";
 
     /// <summary>
     /// Literal for code: Impulse
@@ -11578,9 +14138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImpulse = "263781002";
 
     /// <summary>
+    /// Literal for code: NONEImpulse
+    /// </summary>
+    public const string LiteralNONEImpulse = "http://snomed.info/sct#263781002";
+
+    /// <summary>
     /// Literal for code: Microvascular
     /// </summary>
     public const string LiteralMicrovascular = "263809005";
+
+    /// <summary>
+    /// Literal for code: NONEMicrovascular
+    /// </summary>
+    public const string LiteralNONEMicrovascular = "http://snomed.info/sct#263809005";
 
     /// <summary>
     /// Literal for code: TranscutaneousMethod
@@ -11588,9 +14158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTranscutaneousMethod = "263902000";
 
     /// <summary>
+    /// Literal for code: NONETranscutaneousMethod
+    /// </summary>
+    public const string LiteralNONETranscutaneousMethod = "http://snomed.info/sct#263902000";
+
+    /// <summary>
     /// Literal for code: SuperiorPedicleTechnique
     /// </summary>
     public const string LiteralSuperiorPedicleTechnique = "264220008";
+
+    /// <summary>
+    /// Literal for code: NONESuperiorPedicleTechnique
+    /// </summary>
+    public const string LiteralNONESuperiorPedicleTechnique = "http://snomed.info/sct#264220008";
 
     /// <summary>
     /// Literal for code: AgaroseTechnique
@@ -11598,9 +14178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAgaroseTechnique = "264268002";
 
     /// <summary>
+    /// Literal for code: NONEAgaroseTechnique
+    /// </summary>
+    public const string LiteralNONEAgaroseTechnique = "http://snomed.info/sct#264268002";
+
+    /// <summary>
     /// Literal for code: AminoAcidSignaturePatternAnalysis
     /// </summary>
     public const string LiteralAminoAcidSignaturePatternAnalysis = "264269005";
+
+    /// <summary>
+    /// Literal for code: NONEAminoAcidSignaturePatternAnalysis
+    /// </summary>
+    public const string LiteralNONEAminoAcidSignaturePatternAnalysis = "http://snomed.info/sct#264269005";
 
     /// <summary>
     /// Literal for code: CentralPedicleTechnique
@@ -11608,9 +14198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCentralPedicleTechnique = "264270006";
 
     /// <summary>
+    /// Literal for code: NONECentralPedicleTechnique
+    /// </summary>
+    public const string LiteralNONECentralPedicleTechnique = "http://snomed.info/sct#264270006";
+
+    /// <summary>
     /// Literal for code: ComplementComponent1qBindingAssay
     /// </summary>
     public const string LiteralComplementComponent1qBindingAssay = "264271005";
+
+    /// <summary>
+    /// Literal for code: NONEComplementComponent1qBindingAssay
+    /// </summary>
+    public const string LiteralNONEComplementComponent1qBindingAssay = "http://snomed.info/sct#264271005";
 
     /// <summary>
     /// Literal for code: ConductivityTechnique
@@ -11618,9 +14218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConductivityTechnique = "264272003";
 
     /// <summary>
+    /// Literal for code: NONEConductivityTechnique
+    /// </summary>
+    public const string LiteralNONEConductivityTechnique = "http://snomed.info/sct#264272003";
+
+    /// <summary>
     /// Literal for code: ContinuousWithdrawalTechnique
     /// </summary>
     public const string LiteralContinuousWithdrawalTechnique = "264273008";
+
+    /// <summary>
+    /// Literal for code: NONEContinuousWithdrawalTechnique
+    /// </summary>
+    public const string LiteralNONEContinuousWithdrawalTechnique = "http://snomed.info/sct#264273008";
 
     /// <summary>
     /// Literal for code: FluorescencePolarizationImmunoassay
@@ -11628,9 +14238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluorescencePolarizationImmunoassay = "264275001";
 
     /// <summary>
+    /// Literal for code: NONEFluorescencePolarizationImmunoassay
+    /// </summary>
+    public const string LiteralNONEFluorescencePolarizationImmunoassay = "http://snomed.info/sct#264275001";
+
+    /// <summary>
     /// Literal for code: HalfChessboardMethod
     /// </summary>
     public const string LiteralHalfChessboardMethod = "264276000";
+
+    /// <summary>
+    /// Literal for code: NONEHalfChessboardMethod
+    /// </summary>
+    public const string LiteralNONEHalfChessboardMethod = "http://snomed.info/sct#264276000";
 
     /// <summary>
     /// Literal for code: HeelBounce
@@ -11638,9 +14258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeelBounce = "264277009";
 
     /// <summary>
+    /// Literal for code: NONEHeelBounce
+    /// </summary>
+    public const string LiteralNONEHeelBounce = "http://snomed.info/sct#264277009";
+
+    /// <summary>
     /// Literal for code: HydroxylamineMethod
     /// </summary>
     public const string LiteralHydroxylamineMethod = "264279007";
+
+    /// <summary>
+    /// Literal for code: NONEHydroxylamineMethod
+    /// </summary>
+    public const string LiteralNONEHydroxylamineMethod = "http://snomed.info/sct#264279007";
 
     /// <summary>
     /// Literal for code: InferiorPedicleTechnique
@@ -11648,9 +14278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInferiorPedicleTechnique = "264280005";
 
     /// <summary>
+    /// Literal for code: NONEInferiorPedicleTechnique
+    /// </summary>
+    public const string LiteralNONEInferiorPedicleTechnique = "http://snomed.info/sct#264280005";
+
+    /// <summary>
     /// Literal for code: DufourmentalTechnique
     /// </summary>
     public const string LiteralDufourmentalTechnique = "264281009";
+
+    /// <summary>
+    /// Literal for code: NONEDufourmentalTechnique
+    /// </summary>
+    public const string LiteralNONEDufourmentalTechnique = "http://snomed.info/sct#264281009";
 
     /// <summary>
     /// Literal for code: MaclureNTest
@@ -11658,9 +14298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMaclureNTest = "264282002";
 
     /// <summary>
+    /// Literal for code: NONEMaclureNTest
+    /// </summary>
+    public const string LiteralNONEMaclureNTest = "http://snomed.info/sct#264282002";
+
+    /// <summary>
     /// Literal for code: MultipleBreathTechnique
     /// </summary>
     public const string LiteralMultipleBreathTechnique = "264283007";
+
+    /// <summary>
+    /// Literal for code: NONEMultipleBreathTechnique
+    /// </summary>
+    public const string LiteralNONEMultipleBreathTechnique = "http://snomed.info/sct#264283007";
 
     /// <summary>
     /// Literal for code: SingleBreathTechnique
@@ -11668,9 +14318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSingleBreathTechnique = "264284001";
 
     /// <summary>
+    /// Literal for code: NONESingleBreathTechnique
+    /// </summary>
+    public const string LiteralNONESingleBreathTechnique = "http://snomed.info/sct#264284001";
+
+    /// <summary>
     /// Literal for code: FfooksTechnique
     /// </summary>
     public const string LiteralFfooksTechnique = "264355007";
+
+    /// <summary>
+    /// Literal for code: NONEFfooksTechnique
+    /// </summary>
+    public const string LiteralNONEFfooksTechnique = "http://snomed.info/sct#264355007";
 
     /// <summary>
     /// Literal for code: AntibiogramTyping
@@ -11678,9 +14338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAntibiogramTyping = "264582003";
 
     /// <summary>
+    /// Literal for code: NONEAntibiogramTyping
+    /// </summary>
+    public const string LiteralNONEAntibiogramTyping = "http://snomed.info/sct#264582003";
+
+    /// <summary>
     /// Literal for code: Auxotyping
     /// </summary>
     public const string LiteralAuxotyping = "264583008";
+
+    /// <summary>
+    /// Literal for code: NONEAuxotyping
+    /// </summary>
+    public const string LiteralNONEAuxotyping = "http://snomed.info/sct#264583008";
 
     /// <summary>
     /// Literal for code: BacteriocinTyping
@@ -11688,9 +14358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBacteriocinTyping = "264584002";
 
     /// <summary>
+    /// Literal for code: NONEBacteriocinTyping
+    /// </summary>
+    public const string LiteralNONEBacteriocinTyping = "http://snomed.info/sct#264584002";
+
+    /// <summary>
     /// Literal for code: HypothalamicStimulation
     /// </summary>
     public const string LiteralHypothalamicStimulation = "264590003";
+
+    /// <summary>
+    /// Literal for code: NONEHypothalamicStimulation
+    /// </summary>
+    public const string LiteralNONEHypothalamicStimulation = "http://snomed.info/sct#264590003";
 
     /// <summary>
     /// Literal for code: IntravesicalDrugTherapy
@@ -11698,9 +14378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntravesicalDrugTherapy = "264592006";
 
     /// <summary>
+    /// Literal for code: NONEIntravesicalDrugTherapy
+    /// </summary>
+    public const string LiteralNONEIntravesicalDrugTherapy = "http://snomed.info/sct#264592006";
+
+    /// <summary>
     /// Literal for code: LaserAction
     /// </summary>
     public const string LiteralLaserAction = "264594007";
+
+    /// <summary>
+    /// Literal for code: NONELaserAction
+    /// </summary>
+    public const string LiteralNONELaserAction = "http://snomed.info/sct#264594007";
 
     /// <summary>
     /// Literal for code: IncisionAndExplorationOfVasDeferens
@@ -11708,9 +14398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisionAndExplorationOfVasDeferens = "2646000";
 
     /// <summary>
+    /// Literal for code: NONEIncisionAndExplorationOfVasDeferens
+    /// </summary>
+    public const string LiteralNONEIncisionAndExplorationOfVasDeferens = "http://snomed.info/sct#2646000";
+
+    /// <summary>
     /// Literal for code: VAL100HueTechnique
     /// </summary>
     public const string LiteralVAL100HueTechnique = "264619009";
+
+    /// <summary>
+    /// Literal for code: NONEVAL100HueTechnique
+    /// </summary>
+    public const string LiteralNONEVAL100HueTechnique = "http://snomed.info/sct#264619009";
 
     /// <summary>
     /// Literal for code: LateralRotation
@@ -11718,9 +14418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLateralRotation = "264730003";
 
     /// <summary>
+    /// Literal for code: NONELateralRotation
+    /// </summary>
+    public const string LiteralNONELateralRotation = "http://snomed.info/sct#264730003";
+
+    /// <summary>
     /// Literal for code: MedialRotation
     /// </summary>
     public const string LiteralMedialRotation = "264739002";
+
+    /// <summary>
+    /// Literal for code: NONEMedialRotation
+    /// </summary>
+    public const string LiteralNONEMedialRotation = "http://snomed.info/sct#264739002";
 
     /// <summary>
     /// Literal for code: DienesTyping
@@ -11728,9 +14438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDienesTyping = "264773007";
 
     /// <summary>
+    /// Literal for code: NONEDienesTyping
+    /// </summary>
+    public const string LiteralNONEDienesTyping = "http://snomed.info/sct#264773007";
+
+    /// <summary>
     /// Literal for code: AMBER
     /// </summary>
     public const string LiteralAMBER = "264782001";
+
+    /// <summary>
+    /// Literal for code: NONEAMBER
+    /// </summary>
+    public const string LiteralNONEAMBER = "http://snomed.info/sct#264782001";
 
     /// <summary>
     /// Literal for code: Biotyping
@@ -11738,9 +14458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBiotyping = "264788002";
 
     /// <summary>
+    /// Literal for code: NONEBiotyping
+    /// </summary>
+    public const string LiteralNONEBiotyping = "http://snomed.info/sct#264788002";
+
+    /// <summary>
     /// Literal for code: ChildrenQuoteSNTests
     /// </summary>
     public const string LiteralChildrenQuoteSNTests = "264826006";
+
+    /// <summary>
+    /// Literal for code: NONEChildrenQuoteSNTests
+    /// </summary>
+    public const string LiteralNONEChildrenQuoteSNTests = "http://snomed.info/sct#264826006";
 
     /// <summary>
     /// Literal for code: CityUniversityTechnique
@@ -11748,9 +14478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCityUniversityTechnique = "264828007";
 
     /// <summary>
+    /// Literal for code: NONECityUniversityTechnique
+    /// </summary>
+    public const string LiteralNONECityUniversityTechnique = "http://snomed.info/sct#264828007";
+
+    /// <summary>
     /// Literal for code: MaclureTechnique
     /// </summary>
     public const string LiteralMaclureTechnique = "264859009";
+
+    /// <summary>
+    /// Literal for code: NONEMaclureTechnique
+    /// </summary>
+    public const string LiteralNONEMaclureTechnique = "http://snomed.info/sct#264859009";
 
     /// <summary>
     /// Literal for code: Morphotyping
@@ -11758,9 +14498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMorphotyping = "264863002";
 
     /// <summary>
+    /// Literal for code: NONEMorphotyping
+    /// </summary>
+    public const string LiteralNONEMorphotyping = "http://snomed.info/sct#264863002";
+
+    /// <summary>
     /// Literal for code: NucleicAcidAnalysis
     /// </summary>
     public const string LiteralNucleicAcidAnalysis = "264896000";
+
+    /// <summary>
+    /// Literal for code: NONENucleicAcidAnalysis
+    /// </summary>
+    public const string LiteralNONENucleicAcidAnalysis = "http://snomed.info/sct#264896000";
 
     /// <summary>
     /// Literal for code: PatternOnsetOffsetStimulationTechnique
@@ -11768,9 +14518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatternOnsetOffsetStimulationTechnique = "264903000";
 
     /// <summary>
+    /// Literal for code: NONEPatternOnsetOffsetStimulationTechnique
+    /// </summary>
+    public const string LiteralNONEPatternOnsetOffsetStimulationTechnique = "http://snomed.info/sct#264903000";
+
+    /// <summary>
     /// Literal for code: ThomasTankEngineTest
     /// </summary>
     public const string LiteralThomasTankEngineTest = "264933007";
+
+    /// <summary>
+    /// Literal for code: NONEThomasTankEngineTest
+    /// </summary>
+    public const string LiteralNONEThomasTankEngineTest = "http://snomed.info/sct#264933007";
 
     /// <summary>
     /// Literal for code: ToxinTyping
@@ -11778,9 +14538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralToxinTyping = "264934001";
 
     /// <summary>
+    /// Literal for code: NONEToxinTyping
+    /// </summary>
+    public const string LiteralNONEToxinTyping = "http://snomed.info/sct#264934001";
+
+    /// <summary>
     /// Literal for code: TransluminalProstheticMethod
     /// </summary>
     public const string LiteralTransluminalProstheticMethod = "264935000";
+
+    /// <summary>
+    /// Literal for code: NONETransluminalProstheticMethod
+    /// </summary>
+    public const string LiteralNONETransluminalProstheticMethod = "http://snomed.info/sct#264935000";
 
     /// <summary>
     /// Literal for code: WhiteNoiseMaskingOfOppositeEar
@@ -11788,9 +14558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWhiteNoiseMaskingOfOppositeEar = "264946002";
 
     /// <summary>
+    /// Literal for code: NONEWhiteNoiseMaskingOfOppositeEar
+    /// </summary>
+    public const string LiteralNONEWhiteNoiseMaskingOfOppositeEar = "http://snomed.info/sct#264946002";
+
+    /// <summary>
     /// Literal for code: PrescriptionOfOpticalAid
     /// </summary>
     public const string LiteralPrescriptionOfOpticalAid = "264947006";
+
+    /// <summary>
+    /// Literal for code: NONEPrescriptionOfOpticalAid
+    /// </summary>
+    public const string LiteralNONEPrescriptionOfOpticalAid = "http://snomed.info/sct#264947006";
 
     /// <summary>
     /// Literal for code: MagneticResonanceImagingOfPelvis
@@ -11798,9 +14578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMagneticResonanceImagingOfPelvis = "2690005";
 
     /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingOfPelvis
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingOfPelvis = "http://snomed.info/sct#2690005";
+
+    /// <summary>
     /// Literal for code: StoolFatQuantitativeMeasurement
     /// </summary>
     public const string LiteralStoolFatQuantitativeMeasurement = "2693007";
+
+    /// <summary>
+    /// Literal for code: NONEStoolFatQuantitativeMeasurement
+    /// </summary>
+    public const string LiteralNONEStoolFatQuantitativeMeasurement = "http://snomed.info/sct#2693007";
 
     /// <summary>
     /// Literal for code: HepaticVenographyWithHemodynamicEvaluation
@@ -11808,9 +14598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHepaticVenographyWithHemodynamicEvaluation = "2696004";
 
     /// <summary>
+    /// Literal for code: NONEHepaticVenographyWithHemodynamicEvaluation
+    /// </summary>
+    public const string LiteralNONEHepaticVenographyWithHemodynamicEvaluation = "http://snomed.info/sct#2696004";
+
+    /// <summary>
     /// Literal for code: IL3Assay
     /// </summary>
     public const string LiteralIL3Assay = "2722000";
+
+    /// <summary>
+    /// Literal for code: NONEIL3Assay
+    /// </summary>
+    public const string LiteralNONEIL3Assay = "http://snomed.info/sct#2722000";
 
     /// <summary>
     /// Literal for code: MicrovascularAnastomosisAction
@@ -11818,9 +14618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMicrovascularAnastomosisAction = "272381008";
 
     /// <summary>
+    /// Literal for code: NONEMicrovascularAnastomosisAction
+    /// </summary>
+    public const string LiteralNONEMicrovascularAnastomosisAction = "http://snomed.info/sct#272381008";
+
+    /// <summary>
     /// Literal for code: Analysis
     /// </summary>
     public const string LiteralAnalysis = "272389005";
+
+    /// <summary>
+    /// Literal for code: NONEAnalysis
+    /// </summary>
+    public const string LiteralNONEAnalysis = "http://snomed.info/sct#272389005";
 
     /// <summary>
     /// Literal for code: Dilution
@@ -11828,9 +14638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDilution = "272390001";
 
     /// <summary>
+    /// Literal for code: NONEDilution
+    /// </summary>
+    public const string LiteralNONEDilution = "http://snomed.info/sct#272390001";
+
+    /// <summary>
     /// Literal for code: Measurement
     /// </summary>
     public const string LiteralMeasurement = "272391002";
+
+    /// <summary>
+    /// Literal for code: NONEMeasurement
+    /// </summary>
+    public const string LiteralNONEMeasurement = "http://snomed.info/sct#272391002";
 
     /// <summary>
     /// Literal for code: Assay
@@ -11838,9 +14658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAssay = "272392009";
 
     /// <summary>
+    /// Literal for code: NONEAssay
+    /// </summary>
+    public const string LiteralNONEAssay = "http://snomed.info/sct#272392009";
+
+    /// <summary>
     /// Literal for code: Tests
     /// </summary>
     public const string LiteralTests = "272393004";
+
+    /// <summary>
+    /// Literal for code: NONETests
+    /// </summary>
+    public const string LiteralNONETests = "http://snomed.info/sct#272393004";
 
     /// <summary>
     /// Literal for code: Typings
@@ -11848,9 +14678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTypings = "272395006";
 
     /// <summary>
+    /// Literal for code: NONETypings
+    /// </summary>
+    public const string LiteralNONETypings = "http://snomed.info/sct#272395006";
+
+    /// <summary>
     /// Literal for code: SerologicTestForInfluenzaVirusA
     /// </summary>
     public const string LiteralSerologicTestForInfluenzaVirusA = "2731000";
+
+    /// <summary>
+    /// Literal for code: NONESerologicTestForInfluenzaVirusA
+    /// </summary>
+    public const string LiteralNONESerologicTestForInfluenzaVirusA = "http://snomed.info/sct#2731000";
 
     /// <summary>
     /// Literal for code: ExploratoryCraniotomyInfratentorial
@@ -11858,9 +14698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExploratoryCraniotomyInfratentorial = "2737001";
 
     /// <summary>
+    /// Literal for code: NONEExploratoryCraniotomyInfratentorial
+    /// </summary>
+    public const string LiteralNONEExploratoryCraniotomyInfratentorial = "http://snomed.info/sct#2737001";
+
+    /// <summary>
     /// Literal for code: OperativeEndoscopyOfIleum
     /// </summary>
     public const string LiteralOperativeEndoscopyOfIleum = "2743004";
+
+    /// <summary>
+    /// Literal for code: NONEOperativeEndoscopyOfIleum
+    /// </summary>
+    public const string LiteralNONEOperativeEndoscopyOfIleum = "http://snomed.info/sct#2743004";
 
     /// <summary>
     /// Literal for code: EUAExaminationUnderAnesthetic
@@ -11868,9 +14718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEUAExaminationUnderAnesthetic = "274392008";
 
     /// <summary>
+    /// Literal for code: NONEEUAExaminationUnderAnesthetic
+    /// </summary>
+    public const string LiteralNONEEUAExaminationUnderAnesthetic = "http://snomed.info/sct#274392008";
+
+    /// <summary>
     /// Literal for code: MechanicalAssistance
     /// </summary>
     public const string LiteralMechanicalAssistance = "276734006";
+
+    /// <summary>
+    /// Literal for code: NONEMechanicalAssistance
+    /// </summary>
+    public const string LiteralNONEMechanicalAssistance = "http://snomed.info/sct#276734006";
 
     /// <summary>
     /// Literal for code: ThoracicImpedance
@@ -11878,9 +14738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThoracicImpedance = "276857005";
 
     /// <summary>
+    /// Literal for code: NONEThoracicImpedance
+    /// </summary>
+    public const string LiteralNONEThoracicImpedance = "http://snomed.info/sct#276857005";
+
+    /// <summary>
     /// Literal for code: ExcisionBiopsy
     /// </summary>
     public const string LiteralExcisionBiopsy = "277261002";
+
+    /// <summary>
+    /// Literal for code: NONEExcisionBiopsy
+    /// </summary>
+    public const string LiteralNONEExcisionBiopsy = "http://snomed.info/sct#277261002";
 
     /// <summary>
     /// Literal for code: SurfaceLandmarkTechnique
@@ -11888,9 +14758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurfaceLandmarkTechnique = "277337007";
 
     /// <summary>
+    /// Literal for code: NONESurfaceLandmarkTechnique
+    /// </summary>
+    public const string LiteralNONESurfaceLandmarkTechnique = "http://snomed.info/sct#277337007";
+
+    /// <summary>
     /// Literal for code: SuturingTechniques
     /// </summary>
     public const string LiteralSuturingTechniques = "277581000";
+
+    /// <summary>
+    /// Literal for code: NONESuturingTechniques
+    /// </summary>
+    public const string LiteralNONESuturingTechniques = "http://snomed.info/sct#277581000";
 
     /// <summary>
     /// Literal for code: DigitalRemoval
@@ -11898,9 +14778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDigitalRemoval = "277607009";
 
     /// <summary>
+    /// Literal for code: NONEDigitalRemoval
+    /// </summary>
+    public const string LiteralNONEDigitalRemoval = "http://snomed.info/sct#277607009";
+
+    /// <summary>
     /// Literal for code: DentalTechniques
     /// </summary>
     public const string LiteralDentalTechniques = "277620007";
+
+    /// <summary>
+    /// Literal for code: NONEDentalTechniques
+    /// </summary>
+    public const string LiteralNONEDentalTechniques = "http://snomed.info/sct#277620007";
 
     /// <summary>
     /// Literal for code: Refashioning
@@ -11908,9 +14798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRefashioning = "277763000";
 
     /// <summary>
+    /// Literal for code: NONERefashioning
+    /// </summary>
+    public const string LiteralNONERefashioning = "http://snomed.info/sct#277763000";
+
+    /// <summary>
     /// Literal for code: AutomatedEndodonticTechnique
     /// </summary>
     public const string LiteralAutomatedEndodonticTechnique = "277768009";
+
+    /// <summary>
+    /// Literal for code: NONEAutomatedEndodonticTechnique
+    /// </summary>
+    public const string LiteralNONEAutomatedEndodonticTechnique = "http://snomed.info/sct#277768009";
 
     /// <summary>
     /// Literal for code: HandTechnique
@@ -11918,9 +14818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHandTechnique = "277769001";
 
     /// <summary>
+    /// Literal for code: NONEHandTechnique
+    /// </summary>
+    public const string LiteralNONEHandTechnique = "http://snomed.info/sct#277769001";
+
+    /// <summary>
     /// Literal for code: FlapValveTechnique
     /// </summary>
     public const string LiteralFlapValveTechnique = "277835006";
+
+    /// <summary>
+    /// Literal for code: NONEFlapValveTechnique
+    /// </summary>
+    public const string LiteralNONEFlapValveTechnique = "http://snomed.info/sct#277835006";
 
     /// <summary>
     /// Literal for code: ConduitAnastomosis
@@ -11928,9 +14838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConduitAnastomosis = "277851003";
 
     /// <summary>
+    /// Literal for code: NONEConduitAnastomosis
+    /// </summary>
+    public const string LiteralNONEConduitAnastomosis = "http://snomed.info/sct#277851003";
+
+    /// <summary>
     /// Literal for code: ReservoirAnastomosis
     /// </summary>
     public const string LiteralReservoirAnastomosis = "277852005";
+
+    /// <summary>
+    /// Literal for code: NONEReservoirAnastomosis
+    /// </summary>
+    public const string LiteralNONEReservoirAnastomosis = "http://snomed.info/sct#277852005";
 
     /// <summary>
     /// Literal for code: SubmucosalTunnelTechnique
@@ -11938,9 +14858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSubmucosalTunnelTechnique = "277853000";
 
     /// <summary>
+    /// Literal for code: NONESubmucosalTunnelTechnique
+    /// </summary>
+    public const string LiteralNONESubmucosalTunnelTechnique = "http://snomed.info/sct#277853000";
+
+    /// <summary>
     /// Literal for code: WashingOfSwabs
     /// </summary>
     public const string LiteralWashingOfSwabs = "277913002";
+
+    /// <summary>
+    /// Literal for code: NONEWashingOfSwabs
+    /// </summary>
+    public const string LiteralNONEWashingOfSwabs = "http://snomed.info/sct#277913002";
 
     /// <summary>
     /// Literal for code: RadiographicImaging
@@ -11948,9 +14878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographicImaging = "278110001";
 
     /// <summary>
+    /// Literal for code: NONERadiographicImaging
+    /// </summary>
+    public const string LiteralNONERadiographicImaging = "http://snomed.info/sct#278110001";
+
+    /// <summary>
     /// Literal for code: PercutaneousTechniques
     /// </summary>
     public const string LiteralPercutaneousTechniques = "278283001";
+
+    /// <summary>
+    /// Literal for code: NONEPercutaneousTechniques
+    /// </summary>
+    public const string LiteralNONEPercutaneousTechniques = "http://snomed.info/sct#278283001";
 
     /// <summary>
     /// Literal for code: MicroscopyTechnique
@@ -11958,9 +14898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMicroscopyTechnique = "278289002";
 
     /// <summary>
+    /// Literal for code: NONEMicroscopyTechnique
+    /// </summary>
+    public const string LiteralNONEMicroscopyTechnique = "http://snomed.info/sct#278289002";
+
+    /// <summary>
     /// Literal for code: UltrasoundImaging
     /// </summary>
     public const string LiteralUltrasoundImaging = "278292003";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasoundImaging
+    /// </summary>
+    public const string LiteralNONEUltrasoundImaging = "http://snomed.info/sct#278292003";
 
     /// <summary>
     /// Literal for code: PullThroughTechnique
@@ -11968,9 +14918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPullThroughTechnique = "278300004";
 
     /// <summary>
+    /// Literal for code: NONEPullThroughTechnique
+    /// </summary>
+    public const string LiteralNONEPullThroughTechnique = "http://snomed.info/sct#278300004";
+
+    /// <summary>
     /// Literal for code: ReattachmentAction
     /// </summary>
     public const string LiteralReattachmentAction = "278312000";
+
+    /// <summary>
+    /// Literal for code: NONEReattachmentAction
+    /// </summary>
+    public const string LiteralNONEReattachmentAction = "http://snomed.info/sct#278312000";
 
     /// <summary>
     /// Literal for code: Regeneration
@@ -11978,9 +14938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRegeneration = "278313005";
 
     /// <summary>
+    /// Literal for code: NONERegeneration
+    /// </summary>
+    public const string LiteralNONERegeneration = "http://snomed.info/sct#278313005";
+
+    /// <summary>
     /// Literal for code: FluidReplacementTechnique
     /// </summary>
     public const string LiteralFluidReplacementTechnique = "278394000";
+
+    /// <summary>
+    /// Literal for code: NONEFluidReplacementTechnique
+    /// </summary>
+    public const string LiteralNONEFluidReplacementTechnique = "http://snomed.info/sct#278394000";
 
     /// <summary>
     /// Literal for code: ImagingTechnique
@@ -11988,9 +14958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImagingTechnique = "278395004";
 
     /// <summary>
+    /// Literal for code: NONEImagingTechnique
+    /// </summary>
+    public const string LiteralNONEImagingTechnique = "http://snomed.info/sct#278395004";
+
+    /// <summary>
     /// Literal for code: Sealing
     /// </summary>
     public const string LiteralSealing = "278420002";
+
+    /// <summary>
+    /// Literal for code: NONESealing
+    /// </summary>
+    public const string LiteralNONESealing = "http://snomed.info/sct#278420002";
 
     /// <summary>
     /// Literal for code: CopyDentureTechnique
@@ -11998,9 +14978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCopyDentureTechnique = "278440009";
 
     /// <summary>
+    /// Literal for code: NONECopyDentureTechnique
+    /// </summary>
+    public const string LiteralNONECopyDentureTechnique = "http://snomed.info/sct#278440009";
+
+    /// <summary>
     /// Literal for code: CineradiographyOfPharynx
     /// </summary>
     public const string LiteralCineradiographyOfPharynx = "2811005";
+
+    /// <summary>
+    /// Literal for code: NONECineradiographyOfPharynx
+    /// </summary>
+    public const string LiteralNONECineradiographyOfPharynx = "http://snomed.info/sct#2811005";
 
     /// <summary>
     /// Literal for code: FlowTriggering
@@ -12008,9 +14998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFlowTriggering = "281408006";
 
     /// <summary>
+    /// Literal for code: NONEFlowTriggering
+    /// </summary>
+    public const string LiteralNONEFlowTriggering = "http://snomed.info/sct#281408006";
+
+    /// <summary>
     /// Literal for code: PressureTriggering
     /// </summary>
     public const string LiteralPressureTriggering = "281409003";
+
+    /// <summary>
+    /// Literal for code: NONEPressureTriggering
+    /// </summary>
+    public const string LiteralNONEPressureTriggering = "http://snomed.info/sct#281409003";
 
     /// <summary>
     /// Literal for code: DifferentialLungVentilation
@@ -12018,9 +15018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDifferentialLungVentilation = "281410008";
 
     /// <summary>
+    /// Literal for code: NONEDifferentialLungVentilation
+    /// </summary>
+    public const string LiteralNONEDifferentialLungVentilation = "http://snomed.info/sct#281410008";
+
+    /// <summary>
     /// Literal for code: OneLungVentilation
     /// </summary>
     public const string LiteralOneLungVentilation = "281417006";
+
+    /// <summary>
+    /// Literal for code: NONEOneLungVentilation
+    /// </summary>
+    public const string LiteralNONEOneLungVentilation = "http://snomed.info/sct#281417006";
 
     /// <summary>
     /// Literal for code: LeftLungVentilation
@@ -12028,9 +15038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLeftLungVentilation = "281418001";
 
     /// <summary>
+    /// Literal for code: NONELeftLungVentilation
+    /// </summary>
+    public const string LiteralNONELeftLungVentilation = "http://snomed.info/sct#281418001";
+
+    /// <summary>
     /// Literal for code: RightLungVentilation
     /// </summary>
     public const string LiteralRightLungVentilation = "281419009";
+
+    /// <summary>
+    /// Literal for code: NONERightLungVentilation
+    /// </summary>
+    public const string LiteralNONERightLungVentilation = "http://snomed.info/sct#281419009";
 
     /// <summary>
     /// Literal for code: BilateralLungVentilation
@@ -12038,9 +15058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBilateralLungVentilation = "281420003";
 
     /// <summary>
+    /// Literal for code: NONEBilateralLungVentilation
+    /// </summary>
+    public const string LiteralNONEBilateralLungVentilation = "http://snomed.info/sct#281420003";
+
+    /// <summary>
     /// Literal for code: CryoablationAction
     /// </summary>
     public const string LiteralCryoablationAction = "281609006";
+
+    /// <summary>
+    /// Literal for code: NONECryoablationAction
+    /// </summary>
+    public const string LiteralNONECryoablationAction = "http://snomed.info/sct#281609006";
 
     /// <summary>
     /// Literal for code: DecompressionAction
@@ -12048,9 +15078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDecompressionAction = "281613004";
 
     /// <summary>
+    /// Literal for code: NONEDecompressionAction
+    /// </summary>
+    public const string LiteralNONEDecompressionAction = "http://snomed.info/sct#281613004";
+
+    /// <summary>
     /// Literal for code: ExplorationAction
     /// </summary>
     public const string LiteralExplorationAction = "281615006";
+
+    /// <summary>
+    /// Literal for code: NONEExplorationAction
+    /// </summary>
+    public const string LiteralNONEExplorationAction = "http://snomed.info/sct#281615006";
 
     /// <summary>
     /// Literal for code: CryocauteryAction
@@ -12058,9 +15098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCryocauteryAction = "281698007";
 
     /// <summary>
+    /// Literal for code: NONECryocauteryAction
+    /// </summary>
+    public const string LiteralNONECryocauteryAction = "http://snomed.info/sct#281698007";
+
+    /// <summary>
     /// Literal for code: ManualDilatation
     /// </summary>
     public const string LiteralManualDilatation = "281767003";
+
+    /// <summary>
+    /// Literal for code: NONEManualDilatation
+    /// </summary>
+    public const string LiteralNONEManualDilatation = "http://snomed.info/sct#281767003";
 
     /// <summary>
     /// Literal for code: DisarticulationAction
@@ -12068,9 +15118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDisarticulationAction = "281838007";
 
     /// <summary>
+    /// Literal for code: NONEDisarticulationAction
+    /// </summary>
+    public const string LiteralNONEDisarticulationAction = "http://snomed.info/sct#281838007";
+
+    /// <summary>
     /// Literal for code: Exenteration
     /// </summary>
     public const string LiteralExenteration = "281839004";
+
+    /// <summary>
+    /// Literal for code: NONEExenteration
+    /// </summary>
+    public const string LiteralNONEExenteration = "http://snomed.info/sct#281839004";
 
     /// <summary>
     /// Literal for code: ShaveBiopsyAction
@@ -12078,9 +15138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShaveBiopsyAction = "282015008";
 
     /// <summary>
+    /// Literal for code: NONEShaveBiopsyAction
+    /// </summary>
+    public const string LiteralNONEShaveBiopsyAction = "http://snomed.info/sct#282015008";
+
+    /// <summary>
     /// Literal for code: ReplacementAction
     /// </summary>
     public const string LiteralReplacementAction = "282089006";
+
+    /// <summary>
+    /// Literal for code: NONEReplacementAction
+    /// </summary>
+    public const string LiteralNONEReplacementAction = "http://snomed.info/sct#282089006";
 
     /// <summary>
     /// Literal for code: UltrasoundDestruction
@@ -12088,9 +15158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasoundDestruction = "282722008";
 
     /// <summary>
+    /// Literal for code: NONEUltrasoundDestruction
+    /// </summary>
+    public const string LiteralNONEUltrasoundDestruction = "http://snomed.info/sct#282722008";
+
+    /// <summary>
     /// Literal for code: GasChromatographyMeasurement
     /// </summary>
     public const string LiteralGasChromatographyMeasurement = "2842000";
+
+    /// <summary>
+    /// Literal for code: NONEGasChromatographyMeasurement
+    /// </summary>
+    public const string LiteralNONEGasChromatographyMeasurement = "http://snomed.info/sct#2842000";
 
     /// <summary>
     /// Literal for code: AngerManagementTechnique
@@ -12098,9 +15178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAngerManagementTechnique = "284466007";
 
     /// <summary>
+    /// Literal for code: NONEAngerManagementTechnique
+    /// </summary>
+    public const string LiteralNONEAngerManagementTechnique = "http://snomed.info/sct#284466007";
+
+    /// <summary>
     /// Literal for code: RelaxationTechnique
     /// </summary>
     public const string LiteralRelaxationTechnique = "284467003";
+
+    /// <summary>
+    /// Literal for code: NONERelaxationTechnique
+    /// </summary>
+    public const string LiteralNONERelaxationTechnique = "http://snomed.info/sct#284467003";
 
     /// <summary>
     /// Literal for code: CervicalMyelography
@@ -12108,9 +15198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCervicalMyelography = "2847006";
 
     /// <summary>
+    /// Literal for code: NONECervicalMyelography
+    /// </summary>
+    public const string LiteralNONECervicalMyelography = "http://snomed.info/sct#2847006";
+
+    /// <summary>
     /// Literal for code: PlasticOperation
     /// </summary>
     public const string LiteralPlasticOperation = "286553006";
+
+    /// <summary>
+    /// Literal for code: NONEPlasticOperation
+    /// </summary>
+    public const string LiteralNONEPlasticOperation = "http://snomed.info/sct#286553006";
 
     /// <summary>
     /// Literal for code: BlockDissection
@@ -12118,9 +15218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBlockDissection = "286637000";
 
     /// <summary>
+    /// Literal for code: NONEBlockDissection
+    /// </summary>
+    public const string LiteralNONEBlockDissection = "http://snomed.info/sct#286637000";
+
+    /// <summary>
     /// Literal for code: Denervation
     /// </summary>
     public const string LiteralDenervation = "286792001";
+
+    /// <summary>
+    /// Literal for code: NONEDenervation
+    /// </summary>
+    public const string LiteralNONEDenervation = "http://snomed.info/sct#286792001";
 
     /// <summary>
     /// Literal for code: PressureLimitedCyclingMethod
@@ -12128,9 +15238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPressureLimitedCyclingMethod = "286811001";
 
     /// <summary>
+    /// Literal for code: NONEPressureLimitedCyclingMethod
+    /// </summary>
+    public const string LiteralNONEPressureLimitedCyclingMethod = "http://snomed.info/sct#286811001";
+
+    /// <summary>
     /// Literal for code: ApplicationOfCaustics
     /// </summary>
     public const string LiteralApplicationOfCaustics = "287682008";
+
+    /// <summary>
+    /// Literal for code: NONEApplicationOfCaustics
+    /// </summary>
+    public const string LiteralNONEApplicationOfCaustics = "http://snomed.info/sct#287682008";
 
     /// <summary>
     /// Literal for code: EversionAction
@@ -12138,9 +15258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEversionAction = "288324002";
 
     /// <summary>
+    /// Literal for code: NONEEversionAction
+    /// </summary>
+    public const string LiteralNONEEversionAction = "http://snomed.info/sct#288324002";
+
+    /// <summary>
     /// Literal for code: DiathermyIncision
     /// </summary>
     public const string LiteralDiathermyIncision = "288466002";
+
+    /// <summary>
+    /// Literal for code: NONEDiathermyIncision
+    /// </summary>
+    public const string LiteralNONEDiathermyIncision = "http://snomed.info/sct#288466002";
 
     /// <summary>
     /// Literal for code: DisimpactionAction
@@ -12148,9 +15278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDisimpactionAction = "288468001";
 
     /// <summary>
+    /// Literal for code: NONEDisimpactionAction
+    /// </summary>
+    public const string LiteralNONEDisimpactionAction = "http://snomed.info/sct#288468001";
+
+    /// <summary>
     /// Literal for code: IntradermalSkinTest
     /// </summary>
     public const string LiteralIntradermalSkinTest = "2885009";
+
+    /// <summary>
+    /// Literal for code: NONEIntradermalSkinTest
+    /// </summary>
+    public const string LiteralNONEIntradermalSkinTest = "http://snomed.info/sct#2885009";
 
     /// <summary>
     /// Literal for code: ArthroscopyOfElbowWithPartialSynovectomy
@@ -12158,9 +15298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArthroscopyOfElbowWithPartialSynovectomy = "2891006";
 
     /// <summary>
+    /// Literal for code: NONEArthroscopyOfElbowWithPartialSynovectomy
+    /// </summary>
+    public const string LiteralNONEArthroscopyOfElbowWithPartialSynovectomy = "http://snomed.info/sct#2891006";
+
+    /// <summary>
     /// Literal for code: DNAAnalysisAntenatalBlood
     /// </summary>
     public const string LiteralDNAAnalysisAntenatalBlood = "2898000";
+
+    /// <summary>
+    /// Literal for code: NONEDNAAnalysisAntenatalBlood
+    /// </summary>
+    public const string LiteralNONEDNAAnalysisAntenatalBlood = "http://snomed.info/sct#2898000";
 
     /// <summary>
     /// Literal for code: ReductionPlasty
@@ -12168,9 +15318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReductionPlasty = "289928003";
 
     /// <summary>
+    /// Literal for code: NONEReductionPlasty
+    /// </summary>
+    public const string LiteralNONEReductionPlasty = "http://snomed.info/sct#289928003";
+
+    /// <summary>
     /// Literal for code: EnzymeDestruction
     /// </summary>
     public const string LiteralEnzymeDestruction = "289930001";
+
+    /// <summary>
+    /// Literal for code: NONEEnzymeDestruction
+    /// </summary>
+    public const string LiteralNONEEnzymeDestruction = "http://snomed.info/sct#289930001";
 
     /// <summary>
     /// Literal for code: ShaveExcision
@@ -12178,9 +15338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShaveExcision = "289936007";
 
     /// <summary>
+    /// Literal for code: NONEShaveExcision
+    /// </summary>
+    public const string LiteralNONEShaveExcision = "http://snomed.info/sct#289936007";
+
+    /// <summary>
     /// Literal for code: MicrosurgicalRepair
     /// </summary>
     public const string LiteralMicrosurgicalRepair = "289938008";
+
+    /// <summary>
+    /// Literal for code: NONEMicrosurgicalRepair
+    /// </summary>
+    public const string LiteralNONEMicrosurgicalRepair = "http://snomed.info/sct#289938008";
 
     /// <summary>
     /// Literal for code: RecessionAction
@@ -12188,9 +15358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRecessionAction = "290001001";
 
     /// <summary>
+    /// Literal for code: NONERecessionAction
+    /// </summary>
+    public const string LiteralNONERecessionAction = "http://snomed.info/sct#290001001";
+
+    /// <summary>
     /// Literal for code: MicrosurgicalAnastomosis
     /// </summary>
     public const string LiteralMicrosurgicalAnastomosis = "297179000";
+
+    /// <summary>
+    /// Literal for code: NONEMicrosurgicalAnastomosis
+    /// </summary>
+    public const string LiteralNONEMicrosurgicalAnastomosis = "http://snomed.info/sct#297179000";
 
     /// <summary>
     /// Literal for code: Revascularization
@@ -12198,9 +15378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRevascularization = "297183000";
 
     /// <summary>
+    /// Literal for code: NONERevascularization
+    /// </summary>
+    public const string LiteralNONERevascularization = "http://snomed.info/sct#297183000";
+
+    /// <summary>
     /// Literal for code: DevascularizationAction
     /// </summary>
     public const string LiteralDevascularizationAction = "298053008";
+
+    /// <summary>
+    /// Literal for code: NONEDevascularizationAction
+    /// </summary>
+    public const string LiteralNONEDevascularizationAction = "http://snomed.info/sct#298053008";
 
     /// <summary>
     /// Literal for code: ApplicationOfSubstance
@@ -12208,9 +15398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralApplicationOfSubstance = "298116000";
 
     /// <summary>
+    /// Literal for code: NONEApplicationOfSubstance
+    /// </summary>
+    public const string LiteralNONEApplicationOfSubstance = "http://snomed.info/sct#298116000";
+
+    /// <summary>
     /// Literal for code: OsteoclasisAction
     /// </summary>
     public const string LiteralOsteoclasisAction = "299712004";
+
+    /// <summary>
+    /// Literal for code: NONEOsteoclasisAction
+    /// </summary>
+    public const string LiteralNONEOsteoclasisAction = "http://snomed.info/sct#299712004";
 
     /// <summary>
     /// Literal for code: OsteotomyAction
@@ -12218,9 +15418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOsteotomyAction = "299713009";
 
     /// <summary>
+    /// Literal for code: NONEOsteotomyAction
+    /// </summary>
+    public const string LiteralNONEOsteotomyAction = "http://snomed.info/sct#299713009";
+
+    /// <summary>
     /// Literal for code: InterpositionAnastomosisAction
     /// </summary>
     public const string LiteralInterpositionAnastomosisAction = "299893001";
+
+    /// <summary>
+    /// Literal for code: NONEInterpositionAnastomosisAction
+    /// </summary>
+    public const string LiteralNONEInterpositionAnastomosisAction = "http://snomed.info/sct#299893001";
 
     /// <summary>
     /// Literal for code: ActionsByModality
@@ -12228,9 +15438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralActionsByModality = "302193003";
 
     /// <summary>
+    /// Literal for code: NONEActionsByModality
+    /// </summary>
+    public const string LiteralNONEActionsByModality = "http://snomed.info/sct#302193003";
+
+    /// <summary>
     /// Literal for code: FreeingAction
     /// </summary>
     public const string LiteralFreeingAction = "302196006";
+
+    /// <summary>
+    /// Literal for code: NONEFreeingAction
+    /// </summary>
+    public const string LiteralNONEFreeingAction = "http://snomed.info/sct#302196006";
 
     /// <summary>
     /// Literal for code: ExaminationAction
@@ -12238,9 +15458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExaminationAction = "302199004";
 
     /// <summary>
+    /// Literal for code: NONEExaminationAction
+    /// </summary>
+    public const string LiteralNONEExaminationAction = "http://snomed.info/sct#302199004";
+
+    /// <summary>
     /// Literal for code: UltrasoundAction
     /// </summary>
     public const string LiteralUltrasoundAction = "302204005";
+
+    /// <summary>
+    /// Literal for code: NONEUltrasoundAction
+    /// </summary>
+    public const string LiteralNONEUltrasoundAction = "http://snomed.info/sct#302204005";
 
     /// <summary>
     /// Literal for code: MicrowaveAction
@@ -12248,9 +15478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMicrowaveAction = "302205006";
 
     /// <summary>
+    /// Literal for code: NONEMicrowaveAction
+    /// </summary>
+    public const string LiteralNONEMicrowaveAction = "http://snomed.info/sct#302205006";
+
+    /// <summary>
     /// Literal for code: ContrastImagingTechnique
     /// </summary>
     public const string LiteralContrastImagingTechnique = "302554003";
+
+    /// <summary>
+    /// Literal for code: NONEContrastImagingTechnique
+    /// </summary>
+    public const string LiteralNONEContrastImagingTechnique = "http://snomed.info/sct#302554003";
 
     /// <summary>
     /// Literal for code: FunctionalModification
@@ -12258,9 +15498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFunctionalModification = "303893007";
 
     /// <summary>
+    /// Literal for code: NONEFunctionalModification
+    /// </summary>
+    public const string LiteralNONEFunctionalModification = "http://snomed.info/sct#303893007";
+
+    /// <summary>
     /// Literal for code: StructuralModification
     /// </summary>
     public const string LiteralStructuralModification = "303894001";
+
+    /// <summary>
+    /// Literal for code: NONEStructuralModification
+    /// </summary>
+    public const string LiteralNONEStructuralModification = "http://snomed.info/sct#303894001";
 
     /// <summary>
     /// Literal for code: TransfusionAction
@@ -12268,9 +15518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTransfusionAction = "303955003";
 
     /// <summary>
+    /// Literal for code: NONETransfusionAction
+    /// </summary>
+    public const string LiteralNONETransfusionAction = "http://snomed.info/sct#303955003";
+
+    /// <summary>
     /// Literal for code: Terminalization
     /// </summary>
     public const string LiteralTerminalization = "303996000";
+
+    /// <summary>
+    /// Literal for code: NONETerminalization
+    /// </summary>
+    public const string LiteralNONETerminalization = "http://snomed.info/sct#303996000";
 
     /// <summary>
     /// Literal for code: UnusedActionValues
@@ -12278,9 +15538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnusedActionValues = "303998004";
 
     /// <summary>
+    /// Literal for code: NONEUnusedActionValues
+    /// </summary>
+    public const string LiteralNONEUnusedActionValues = "http://snomed.info/sct#303998004";
+
+    /// <summary>
     /// Literal for code: SpecificStimulationTechnique
     /// </summary>
     public const string LiteralSpecificStimulationTechnique = "304033004";
+
+    /// <summary>
+    /// Literal for code: NONESpecificStimulationTechnique
+    /// </summary>
+    public const string LiteralNONESpecificStimulationTechnique = "http://snomed.info/sct#304033004";
 
     /// <summary>
     /// Literal for code: StructuralSupportAction
@@ -12288,9 +15558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStructuralSupportAction = "304054006";
 
     /// <summary>
+    /// Literal for code: NONEStructuralSupportAction
+    /// </summary>
+    public const string LiteralNONEStructuralSupportAction = "http://snomed.info/sct#304054006";
+
+    /// <summary>
     /// Literal for code: FixationOfProstheticJointComponent
     /// </summary>
     public const string LiteralFixationOfProstheticJointComponent = "304364007";
+
+    /// <summary>
+    /// Literal for code: NONEFixationOfProstheticJointComponent
+    /// </summary>
+    public const string LiteralNONEFixationOfProstheticJointComponent = "http://snomed.info/sct#304364007";
 
     /// <summary>
     /// Literal for code: UncementedComponentFixation
@@ -12298,9 +15578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUncementedComponentFixation = "304367000";
 
     /// <summary>
+    /// Literal for code: NONEUncementedComponentFixation
+    /// </summary>
+    public const string LiteralNONEUncementedComponentFixation = "http://snomed.info/sct#304367000";
+
+    /// <summary>
     /// Literal for code: ManualEvacuation
     /// </summary>
     public const string LiteralManualEvacuation = "304904003";
+
+    /// <summary>
+    /// Literal for code: NONEManualEvacuation
+    /// </summary>
+    public const string LiteralNONEManualEvacuation = "http://snomed.info/sct#304904003";
 
     /// <summary>
     /// Literal for code: EchographyOfKidney
@@ -12308,9 +15598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEchographyOfKidney = "306005";
 
     /// <summary>
+    /// Literal for code: NONEEchographyOfKidney
+    /// </summary>
+    public const string LiteralNONEEchographyOfKidney = "http://snomed.info/sct#306005";
+
+    /// <summary>
     /// Literal for code: LossOfResistanceTechnique
     /// </summary>
     public const string LiteralLossOfResistanceTechnique = "309796000";
+
+    /// <summary>
+    /// Literal for code: NONELossOfResistanceTechnique
+    /// </summary>
+    public const string LiteralNONELossOfResistanceTechnique = "http://snomed.info/sct#309796000";
 
     /// <summary>
     /// Literal for code: LossOfResistanceToAir
@@ -12318,9 +15618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLossOfResistanceToAir = "309797009";
 
     /// <summary>
+    /// Literal for code: NONELossOfResistanceToAir
+    /// </summary>
+    public const string LiteralNONELossOfResistanceToAir = "http://snomed.info/sct#309797009";
+
+    /// <summary>
     /// Literal for code: LossOfResistanceToSaline
     /// </summary>
     public const string LiteralLossOfResistanceToSaline = "309798004";
+
+    /// <summary>
+    /// Literal for code: NONELossOfResistanceToSaline
+    /// </summary>
+    public const string LiteralNONELossOfResistanceToSaline = "http://snomed.info/sct#309798004";
 
     /// <summary>
     /// Literal for code: DuplexUltrasound
@@ -12328,9 +15638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDuplexUltrasound = "312236008";
 
     /// <summary>
+    /// Literal for code: NONEDuplexUltrasound
+    /// </summary>
+    public const string LiteralNONEDuplexUltrasound = "http://snomed.info/sct#312236008";
+
+    /// <summary>
     /// Literal for code: AngiographyTechnique
     /// </summary>
     public const string LiteralAngiographyTechnique = "312245009";
+
+    /// <summary>
+    /// Literal for code: NONEAngiographyTechnique
+    /// </summary>
+    public const string LiteralNONEAngiographyTechnique = "http://snomed.info/sct#312245009";
 
     /// <summary>
     /// Literal for code: DigitalSubtractionAngiography
@@ -12338,9 +15658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDigitalSubtractionAngiography = "312246005";
 
     /// <summary>
+    /// Literal for code: NONEDigitalSubtractionAngiography
+    /// </summary>
+    public const string LiteralNONEDigitalSubtractionAngiography = "http://snomed.info/sct#312246005";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImaging
     /// </summary>
     public const string LiteralMagneticResonanceImaging = "312250003";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImaging
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImaging = "http://snomed.info/sct#312250003";
 
     /// <summary>
     /// Literal for code: ComputedTomographyTechnique
@@ -12348,9 +15678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputedTomographyTechnique = "312251004";
 
     /// <summary>
+    /// Literal for code: NONEComputedTomographyTechnique
+    /// </summary>
+    public const string LiteralNONEComputedTomographyTechnique = "http://snomed.info/sct#312251004";
+
+    /// <summary>
     /// Literal for code: PlainXRayImaging
     /// </summary>
     public const string LiteralPlainXRayImaging = "312254007";
+
+    /// <summary>
+    /// Literal for code: NONEPlainXRayImaging
+    /// </summary>
+    public const string LiteralNONEPlainXRayImaging = "http://snomed.info/sct#312254007";
 
     /// <summary>
     /// Literal for code: FluoroscopicImaging
@@ -12358,9 +15698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluoroscopicImaging = "312275004";
 
     /// <summary>
+    /// Literal for code: NONEFluoroscopicImaging
+    /// </summary>
+    public const string LiteralNONEFluoroscopicImaging = "http://snomed.info/sct#312275004";
+
+    /// <summary>
     /// Literal for code: OpeningAction
     /// </summary>
     public const string LiteralOpeningAction = "312336005";
+
+    /// <summary>
+    /// Literal for code: NONEOpeningAction
+    /// </summary>
+    public const string LiteralNONEOpeningAction = "http://snomed.info/sct#312336005";
 
     /// <summary>
     /// Literal for code: ThermographyImaging
@@ -12368,9 +15718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThermographyImaging = "312337001";
 
     /// <summary>
+    /// Literal for code: NONEThermographyImaging
+    /// </summary>
+    public const string LiteralNONEThermographyImaging = "http://snomed.info/sct#312337001";
+
+    /// <summary>
     /// Literal for code: ImagePostProcessing
     /// </summary>
     public const string LiteralImagePostProcessing = "312348008";
+
+    /// <summary>
+    /// Literal for code: NONEImagePostProcessing
+    /// </summary>
+    public const string LiteralNONEImagePostProcessing = "http://snomed.info/sct#312348008";
 
     /// <summary>
     /// Literal for code: RadionuclideImaging
@@ -12378,9 +15738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadionuclideImaging = "312421008";
 
     /// <summary>
+    /// Literal for code: NONERadionuclideImaging
+    /// </summary>
+    public const string LiteralNONERadionuclideImaging = "http://snomed.info/sct#312421008";
+
+    /// <summary>
     /// Literal for code: DesensitizationAction
     /// </summary>
     public const string LiteralDesensitizationAction = "312883004";
+
+    /// <summary>
+    /// Literal for code: NONEDesensitizationAction
+    /// </summary>
+    public const string LiteralNONEDesensitizationAction = "http://snomed.info/sct#312883004";
 
     /// <summary>
     /// Literal for code: BrachytherapyAction
@@ -12388,9 +15758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrachytherapyAction = "313029009";
 
     /// <summary>
+    /// Literal for code: NONEBrachytherapyAction
+    /// </summary>
+    public const string LiteralNONEBrachytherapyAction = "http://snomed.info/sct#313029009";
+
+    /// <summary>
     /// Literal for code: FlapTransferTechnique
     /// </summary>
     public const string LiteralFlapTransferTechnique = "313115005";
+
+    /// <summary>
+    /// Literal for code: NONEFlapTransferTechnique
+    /// </summary>
+    public const string LiteralNONEFlapTransferTechnique = "http://snomed.info/sct#313115005";
 
     /// <summary>
     /// Literal for code: AdvancementTechnique
@@ -12398,9 +15778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdvancementTechnique = "313116006";
 
     /// <summary>
+    /// Literal for code: NONEAdvancementTechnique
+    /// </summary>
+    public const string LiteralNONEAdvancementTechnique = "http://snomed.info/sct#313116006";
+
+    /// <summary>
     /// Literal for code: SimpleSutureTechnique
     /// </summary>
     public const string LiteralSimpleSutureTechnique = "313201001";
+
+    /// <summary>
+    /// Literal for code: NONESimpleSutureTechnique
+    /// </summary>
+    public const string LiteralNONESimpleSutureTechnique = "http://snomed.info/sct#313201001";
 
     /// <summary>
     /// Literal for code: ZPlastyTechnique
@@ -12408,9 +15798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralZPlastyTechnique = "313202008";
 
     /// <summary>
+    /// Literal for code: NONEZPlastyTechnique
+    /// </summary>
+    public const string LiteralNONEZPlastyTechnique = "http://snomed.info/sct#313202008";
+
+    /// <summary>
     /// Literal for code: ForwardSliding
     /// </summary>
     public const string LiteralForwardSliding = "313281003";
+
+    /// <summary>
+    /// Literal for code: NONEForwardSliding
+    /// </summary>
+    public const string LiteralNONEForwardSliding = "http://snomed.info/sct#313281003";
 
     /// <summary>
     /// Literal for code: PanorexExaminationOfMandible
@@ -12418,9 +15818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPanorexExaminationOfMandible = "334003";
 
     /// <summary>
+    /// Literal for code: NONEPanorexExaminationOfMandible
+    /// </summary>
+    public const string LiteralNONEPanorexExaminationOfMandible = "http://snomed.info/sct#334003";
+
+    /// <summary>
     /// Literal for code: ReagentRBCPreparationAntibodySensitizedPool
     /// </summary>
     public const string LiteralReagentRBCPreparationAntibodySensitizedPool = "352003";
+
+    /// <summary>
+    /// Literal for code: NONEReagentRBCPreparationAntibodySensitizedPool
+    /// </summary>
+    public const string LiteralNONEReagentRBCPreparationAntibodySensitizedPool = "http://snomed.info/sct#352003";
 
     /// <summary>
     /// Literal for code: IVIrrigationMonitoring
@@ -12428,9 +15838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIVIrrigationMonitoring = "353008";
 
     /// <summary>
+    /// Literal for code: NONEIVIrrigationMonitoring
+    /// </summary>
+    public const string LiteralNONEIVIrrigationMonitoring = "http://snomed.info/sct#353008";
+
+    /// <summary>
     /// Literal for code: ClippingAction
     /// </summary>
     public const string LiteralClippingAction = "360017003";
+
+    /// <summary>
+    /// Literal for code: NONEClippingAction
+    /// </summary>
+    public const string LiteralNONEClippingAction = "http://snomed.info/sct#360017003";
 
     /// <summary>
     /// Literal for code: StimulusDosingTechnique
@@ -12438,9 +15858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStimulusDosingTechnique = "360018008";
 
     /// <summary>
+    /// Literal for code: NONEStimulusDosingTechnique
+    /// </summary>
+    public const string LiteralNONEStimulusDosingTechnique = "http://snomed.info/sct#360018008";
+
+    /// <summary>
     /// Literal for code: ExtirpationAction
     /// </summary>
     public const string LiteralExtirpationAction = "360020006";
+
+    /// <summary>
+    /// Literal for code: NONEExtirpationAction
+    /// </summary>
+    public const string LiteralNONEExtirpationAction = "http://snomed.info/sct#360020006";
 
     /// <summary>
     /// Literal for code: BypassAction
@@ -12448,9 +15878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBypassAction = "360021005";
 
     /// <summary>
+    /// Literal for code: NONEBypassAction
+    /// </summary>
+    public const string LiteralNONEBypassAction = "http://snomed.info/sct#360021005";
+
+    /// <summary>
     /// Literal for code: HarvestingAction
     /// </summary>
     public const string LiteralHarvestingAction = "360025001";
+
+    /// <summary>
+    /// Literal for code: NONEHarvestingAction
+    /// </summary>
+    public const string LiteralNONEHarvestingAction = "http://snomed.info/sct#360025001";
 
     /// <summary>
     /// Literal for code: InterpositionAction
@@ -12458,9 +15898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInterpositionAction = "360027009";
 
     /// <summary>
+    /// Literal for code: NONEInterpositionAction
+    /// </summary>
+    public const string LiteralNONEInterpositionAction = "http://snomed.info/sct#360027009";
+
+    /// <summary>
     /// Literal for code: SurgicalBiopsyAction
     /// </summary>
     public const string LiteralSurgicalBiopsyAction = "360028004";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalBiopsyAction
+    /// </summary>
+    public const string LiteralNONESurgicalBiopsyAction = "http://snomed.info/sct#360028004";
 
     /// <summary>
     /// Literal for code: NonsurgicalBiopsyAction
@@ -12468,9 +15918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNonsurgicalBiopsyAction = "360029007";
 
     /// <summary>
+    /// Literal for code: NONENonsurgicalBiopsyAction
+    /// </summary>
+    public const string LiteralNONENonsurgicalBiopsyAction = "http://snomed.info/sct#360029007";
+
+    /// <summary>
     /// Literal for code: FlapReconstructionAction
     /// </summary>
     public const string LiteralFlapReconstructionAction = "360032005";
+
+    /// <summary>
+    /// Literal for code: NONEFlapReconstructionAction
+    /// </summary>
+    public const string LiteralNONEFlapReconstructionAction = "http://snomed.info/sct#360032005";
 
     /// <summary>
     /// Literal for code: ImagingAction
@@ -12478,9 +15938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImagingAction = "360037004";
 
     /// <summary>
+    /// Literal for code: NONEImagingAction
+    /// </summary>
+    public const string LiteralNONEImagingAction = "http://snomed.info/sct#360037004";
+
+    /// <summary>
     /// Literal for code: GluingAction
     /// </summary>
     public const string LiteralGluingAction = "360038009";
+
+    /// <summary>
+    /// Literal for code: NONEGluingAction
+    /// </summary>
+    public const string LiteralNONEGluingAction = "http://snomed.info/sct#360038009";
 
     /// <summary>
     /// Literal for code: SurgicalToilet
@@ -12488,9 +15958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalToilet = "360051004";
 
     /// <summary>
+    /// Literal for code: NONESurgicalToilet
+    /// </summary>
+    public const string LiteralNONESurgicalToilet = "http://snomed.info/sct#360051004";
+
+    /// <summary>
     /// Literal for code: ApproximationAction
     /// </summary>
     public const string LiteralApproximationAction = "360060007";
+
+    /// <summary>
+    /// Literal for code: NONEApproximationAction
+    /// </summary>
+    public const string LiteralNONEApproximationAction = "http://snomed.info/sct#360060007";
 
     /// <summary>
     /// Literal for code: AppositionAction
@@ -12498,9 +15978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAppositionAction = "360082000";
 
     /// <summary>
+    /// Literal for code: NONEAppositionAction
+    /// </summary>
+    public const string LiteralNONEAppositionAction = "http://snomed.info/sct#360082000";
+
+    /// <summary>
     /// Literal for code: SeptationAction
     /// </summary>
     public const string LiteralSeptationAction = "360084004";
+
+    /// <summary>
+    /// Literal for code: NONESeptationAction
+    /// </summary>
+    public const string LiteralNONESeptationAction = "http://snomed.info/sct#360084004";
 
     /// <summary>
     /// Literal for code: IndirectAnastomosisAction
@@ -12508,9 +15998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIndirectAnastomosisAction = "360087006";
 
     /// <summary>
+    /// Literal for code: NONEIndirectAnastomosisAction
+    /// </summary>
+    public const string LiteralNONEIndirectAnastomosisAction = "http://snomed.info/sct#360087006";
+
+    /// <summary>
     /// Literal for code: RepositioningAction
     /// </summary>
     public const string LiteralRepositioningAction = "360146007";
+
+    /// <summary>
+    /// Literal for code: NONERepositioningAction
+    /// </summary>
+    public const string LiteralNONERepositioningAction = "http://snomed.info/sct#360146007";
 
     /// <summary>
     /// Literal for code: AttentionAction
@@ -12518,9 +16018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAttentionAction = "360147003";
 
     /// <summary>
+    /// Literal for code: NONEAttentionAction
+    /// </summary>
+    public const string LiteralNONEAttentionAction = "http://snomed.info/sct#360147003";
+
+    /// <summary>
     /// Literal for code: ObstetricAction
     /// </summary>
     public const string LiteralObstetricAction = "360148008";
+
+    /// <summary>
+    /// Literal for code: NONEObstetricAction
+    /// </summary>
+    public const string LiteralNONEObstetricAction = "http://snomed.info/sct#360148008";
 
     /// <summary>
     /// Literal for code: DeliveryAction
@@ -12528,9 +16038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeliveryAction = "360149000";
 
     /// <summary>
+    /// Literal for code: NONEDeliveryAction
+    /// </summary>
+    public const string LiteralNONEDeliveryAction = "http://snomed.info/sct#360149000";
+
+    /// <summary>
     /// Literal for code: InlayReplacementAction
     /// </summary>
     public const string LiteralInlayReplacementAction = "360150000";
+
+    /// <summary>
+    /// Literal for code: NONEInlayReplacementAction
+    /// </summary>
+    public const string LiteralNONEInlayReplacementAction = "http://snomed.info/sct#360150000";
 
     /// <summary>
     /// Literal for code: MonitoringAction
@@ -12538,9 +16058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMonitoringAction = "360152008";
 
     /// <summary>
+    /// Literal for code: NONEMonitoringAction
+    /// </summary>
+    public const string LiteralNONEMonitoringAction = "http://snomed.info/sct#360152008";
+
+    /// <summary>
     /// Literal for code: TakeImpressionAction
     /// </summary>
     public const string LiteralTakeImpressionAction = "360153003";
+
+    /// <summary>
+    /// Literal for code: NONETakeImpressionAction
+    /// </summary>
+    public const string LiteralNONETakeImpressionAction = "http://snomed.info/sct#360153003";
 
     /// <summary>
     /// Literal for code: TryInOfDeviceAction
@@ -12548,9 +16078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTryInOfDeviceAction = "360154009";
 
     /// <summary>
+    /// Literal for code: NONETryInOfDeviceAction
+    /// </summary>
+    public const string LiteralNONETryInOfDeviceAction = "http://snomed.info/sct#360154009";
+
+    /// <summary>
     /// Literal for code: CheckingAction
     /// </summary>
     public const string LiteralCheckingAction = "360160009";
+
+    /// <summary>
+    /// Literal for code: NONECheckingAction
+    /// </summary>
+    public const string LiteralNONECheckingAction = "http://snomed.info/sct#360160009";
 
     /// <summary>
     /// Literal for code: InductionAction
@@ -12558,9 +16098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInductionAction = "360161008";
 
     /// <summary>
+    /// Literal for code: NONEInductionAction
+    /// </summary>
+    public const string LiteralNONEInductionAction = "http://snomed.info/sct#360161008";
+
+    /// <summary>
     /// Literal for code: InfiltrationAction
     /// </summary>
     public const string LiteralInfiltrationAction = "360163006";
+
+    /// <summary>
+    /// Literal for code: NONEInfiltrationAction
+    /// </summary>
+    public const string LiteralNONEInfiltrationAction = "http://snomed.info/sct#360163006";
 
     /// <summary>
     /// Literal for code: ApheresisAction
@@ -12568,9 +16118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralApheresisAction = "360165004";
 
     /// <summary>
+    /// Literal for code: NONEApheresisAction
+    /// </summary>
+    public const string LiteralNONEApheresisAction = "http://snomed.info/sct#360165004";
+
+    /// <summary>
     /// Literal for code: FiltrationAction
     /// </summary>
     public const string LiteralFiltrationAction = "360166003";
+
+    /// <summary>
+    /// Literal for code: NONEFiltrationAction
+    /// </summary>
+    public const string LiteralNONEFiltrationAction = "http://snomed.info/sct#360166003";
 
     /// <summary>
     /// Literal for code: MappingAction
@@ -12578,9 +16138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMappingAction = "360220002";
 
     /// <summary>
+    /// Literal for code: NONEMappingAction
+    /// </summary>
+    public const string LiteralNONEMappingAction = "http://snomed.info/sct#360220002";
+
+    /// <summary>
     /// Literal for code: MassageAction
     /// </summary>
     public const string LiteralMassageAction = "360222005";
+
+    /// <summary>
+    /// Literal for code: NONEMassageAction
+    /// </summary>
+    public const string LiteralNONEMassageAction = "http://snomed.info/sct#360222005";
 
     /// <summary>
     /// Literal for code: CineImagingAction
@@ -12588,9 +16158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCineImagingAction = "360223000";
 
     /// <summary>
+    /// Literal for code: NONECineImagingAction
+    /// </summary>
+    public const string LiteralNONECineImagingAction = "http://snomed.info/sct#360223000";
+
+    /// <summary>
     /// Literal for code: ElectricalDischargeAction
     /// </summary>
     public const string LiteralElectricalDischargeAction = "360226008";
+
+    /// <summary>
+    /// Literal for code: NONEElectricalDischargeAction
+    /// </summary>
+    public const string LiteralNONEElectricalDischargeAction = "http://snomed.info/sct#360226008";
 
     /// <summary>
     /// Literal for code: VideoImagingAction
@@ -12598,9 +16178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVideoImagingAction = "360231005";
 
     /// <summary>
+    /// Literal for code: NONEVideoImagingAction
+    /// </summary>
+    public const string LiteralNONEVideoImagingAction = "http://snomed.info/sct#360231005";
+
+    /// <summary>
     /// Literal for code: SpectroscopyAction
     /// </summary>
     public const string LiteralSpectroscopyAction = "360232003";
+
+    /// <summary>
+    /// Literal for code: NONESpectroscopyAction
+    /// </summary>
+    public const string LiteralNONESpectroscopyAction = "http://snomed.info/sct#360232003";
 
     /// <summary>
     /// Literal for code: TerminationAction
@@ -12608,9 +16198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTerminationAction = "360239007";
 
     /// <summary>
+    /// Literal for code: NONETerminationAction
+    /// </summary>
+    public const string LiteralNONETerminationAction = "http://snomed.info/sct#360239007";
+
+    /// <summary>
     /// Literal for code: ConnectionAction
     /// </summary>
     public const string LiteralConnectionAction = "360240009";
+
+    /// <summary>
+    /// Literal for code: NONEConnectionAction
+    /// </summary>
+    public const string LiteralNONEConnectionAction = "http://snomed.info/sct#360240009";
 
     /// <summary>
     /// Literal for code: TherapyAction
@@ -12618,9 +16218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTherapyAction = "360270004";
 
     /// <summary>
+    /// Literal for code: NONETherapyAction
+    /// </summary>
+    public const string LiteralNONETherapyAction = "http://snomed.info/sct#360270004";
+
+    /// <summary>
     /// Literal for code: DiscussionAction
     /// </summary>
     public const string LiteralDiscussionAction = "360272007";
+
+    /// <summary>
+    /// Literal for code: NONEDiscussionAction
+    /// </summary>
+    public const string LiteralNONEDiscussionAction = "http://snomed.info/sct#360272007";
 
     /// <summary>
     /// Literal for code: ProvisionAction
@@ -12628,9 +16238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProvisionAction = "360273002";
 
     /// <summary>
+    /// Literal for code: NONEProvisionAction
+    /// </summary>
+    public const string LiteralNONEProvisionAction = "http://snomed.info/sct#360273002";
+
+    /// <summary>
     /// Literal for code: CuttingAction
     /// </summary>
     public const string LiteralCuttingAction = "360314001";
+
+    /// <summary>
+    /// Literal for code: NONECuttingAction
+    /// </summary>
+    public const string LiteralNONECuttingAction = "http://snomed.info/sct#360314001";
 
     /// <summary>
     /// Literal for code: FilingAction
@@ -12638,9 +16258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFilingAction = "360315000";
 
     /// <summary>
+    /// Literal for code: NONEFilingAction
+    /// </summary>
+    public const string LiteralNONEFilingAction = "http://snomed.info/sct#360315000";
+
+    /// <summary>
     /// Literal for code: RestoreAction
     /// </summary>
     public const string LiteralRestoreAction = "360323003";
+
+    /// <summary>
+    /// Literal for code: NONERestoreAction
+    /// </summary>
+    public const string LiteralNONERestoreAction = "http://snomed.info/sct#360323003";
 
     /// <summary>
     /// Literal for code: ObturationAction
@@ -12648,9 +16278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralObturationAction = "360324009";
 
     /// <summary>
+    /// Literal for code: NONEObturationAction
+    /// </summary>
+    public const string LiteralNONEObturationAction = "http://snomed.info/sct#360324009";
+
+    /// <summary>
     /// Literal for code: SimpleRemovalAction
     /// </summary>
     public const string LiteralSimpleRemovalAction = "360325005";
+
+    /// <summary>
+    /// Literal for code: NONESimpleRemovalAction
+    /// </summary>
+    public const string LiteralNONESimpleRemovalAction = "http://snomed.info/sct#360325005";
 
     /// <summary>
     /// Literal for code: DisinsertionAction
@@ -12658,9 +16298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDisinsertionAction = "360393008";
 
     /// <summary>
+    /// Literal for code: NONEDisinsertionAction
+    /// </summary>
+    public const string LiteralNONEDisinsertionAction = "http://snomed.info/sct#360393008";
+
+    /// <summary>
     /// Literal for code: DissolutionAction
     /// </summary>
     public const string LiteralDissolutionAction = "362939006";
+
+    /// <summary>
+    /// Literal for code: NONEDissolutionAction
+    /// </summary>
+    public const string LiteralNONEDissolutionAction = "http://snomed.info/sct#362939006";
 
     /// <summary>
     /// Literal for code: ManualMethod
@@ -12668,9 +16318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralManualMethod = "362943005";
 
     /// <summary>
+    /// Literal for code: NONEManualMethod
+    /// </summary>
+    public const string LiteralNONEManualMethod = "http://snomed.info/sct#362943005";
+
+    /// <summary>
     /// Literal for code: PacingAction
     /// </summary>
     public const string LiteralPacingAction = "363659002";
+
+    /// <summary>
+    /// Literal for code: NONEPacingAction
+    /// </summary>
+    public const string LiteralNONEPacingAction = "http://snomed.info/sct#363659002";
 
     /// <summary>
     /// Literal for code: PositronEmissionTomographicImaging
@@ -12678,9 +16338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPositronEmissionTomographicImaging = "363678002";
 
     /// <summary>
+    /// Literal for code: NONEPositronEmissionTomographicImaging
+    /// </summary>
+    public const string LiteralNONEPositronEmissionTomographicImaging = "http://snomed.info/sct#363678002";
+
+    /// <summary>
     /// Literal for code: LendingAction
     /// </summary>
     public const string LiteralLendingAction = "367529003";
+
+    /// <summary>
+    /// Literal for code: NONELendingAction
+    /// </summary>
+    public const string LiteralNONELendingAction = "http://snomed.info/sct#367529003";
 
     /// <summary>
     /// Literal for code: ContouringAction
@@ -12688,9 +16358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralContouringAction = "367558000";
 
     /// <summary>
+    /// Literal for code: NONEContouringAction
+    /// </summary>
+    public const string LiteralNONEContouringAction = "http://snomed.info/sct#367558000";
+
+    /// <summary>
     /// Literal for code: PreparationAction
     /// </summary>
     public const string LiteralPreparationAction = "367559008";
+
+    /// <summary>
+    /// Literal for code: NONEPreparationAction
+    /// </summary>
+    public const string LiteralNONEPreparationAction = "http://snomed.info/sct#367559008";
 
     /// <summary>
     /// Literal for code: BucklingAction
@@ -12698,9 +16378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBucklingAction = "367560003";
 
     /// <summary>
+    /// Literal for code: NONEBucklingAction
+    /// </summary>
+    public const string LiteralNONEBucklingAction = "http://snomed.info/sct#367560003";
+
+    /// <summary>
     /// Literal for code: InversionAction
     /// </summary>
     public const string LiteralInversionAction = "367642006";
+
+    /// <summary>
+    /// Literal for code: NONEInversionAction
+    /// </summary>
+    public const string LiteralNONEInversionAction = "http://snomed.info/sct#367642006";
 
     /// <summary>
     /// Literal for code: SuspensionAction
@@ -12708,9 +16398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSuspensionAction = "367740008";
 
     /// <summary>
+    /// Literal for code: NONESuspensionAction
+    /// </summary>
+    public const string LiteralNONESuspensionAction = "http://snomed.info/sct#367740008";
+
+    /// <summary>
     /// Literal for code: HyfrecationAction
     /// </summary>
     public const string LiteralHyfrecationAction = "369242005";
+
+    /// <summary>
+    /// Literal for code: NONEHyfrecationAction
+    /// </summary>
+    public const string LiteralNONEHyfrecationAction = "http://snomed.info/sct#369242005";
 
     /// <summary>
     /// Literal for code: SingleBeatsNumericEstimationTechnique
@@ -12718,9 +16418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSingleBeatsNumericEstimationTechnique = "371871002";
 
     /// <summary>
+    /// Literal for code: NONESingleBeatsNumericEstimationTechnique
+    /// </summary>
+    public const string LiteralNONESingleBeatsNumericEstimationTechnique = "http://snomed.info/sct#371871002";
+
+    /// <summary>
     /// Literal for code: BestValue
     /// </summary>
     public const string LiteralBestValue = "371912002";
+
+    /// <summary>
+    /// Literal for code: NONEBestValue
+    /// </summary>
+    public const string LiteralNONEBestValue = "http://snomed.info/sct#371912002";
 
     /// <summary>
     /// Literal for code: PointSourceNumericEstimationTechnique
@@ -12728,9 +16438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPointSourceNumericEstimationTechnique = "371913007";
 
     /// <summary>
+    /// Literal for code: NONEPointSourceNumericEstimationTechnique
+    /// </summary>
+    public const string LiteralNONEPointSourceNumericEstimationTechnique = "http://snomed.info/sct#371913007";
+
+    /// <summary>
     /// Literal for code: PeakToPeakNumericEstimationTechnique
     /// </summary>
     public const string LiteralPeakToPeakNumericEstimationTechnique = "371914001";
+
+    /// <summary>
+    /// Literal for code: NONEPeakToPeakNumericEstimationTechnique
+    /// </summary>
+    public const string LiteralNONEPeakToPeakNumericEstimationTechnique = "http://snomed.info/sct#371914001";
 
     /// <summary>
     /// Literal for code: RepresentativeNumericEstimationTechnique
@@ -12738,9 +16458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepresentativeNumericEstimationTechnique = "371916004";
 
     /// <summary>
+    /// Literal for code: NONERepresentativeNumericEstimationTechnique
+    /// </summary>
+    public const string LiteralNONERepresentativeNumericEstimationTechnique = "http://snomed.info/sct#371916004";
+
+    /// <summary>
     /// Literal for code: AveragedNumericEstimationTechnique
     /// </summary>
     public const string LiteralAveragedNumericEstimationTechnique = "371921001";
+
+    /// <summary>
+    /// Literal for code: NONEAveragedNumericEstimationTechnique
+    /// </summary>
+    public const string LiteralNONEAveragedNumericEstimationTechnique = "http://snomed.info/sct#371921001";
 
     /// <summary>
     /// Literal for code: MeanNumericEstimationTechnique
@@ -12748,9 +16478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMeanNumericEstimationTechnique = "373098007";
 
     /// <summary>
+    /// Literal for code: NONEMeanNumericEstimationTechnique
+    /// </summary>
+    public const string LiteralNONEMeanNumericEstimationTechnique = "http://snomed.info/sct#373098007";
+
+    /// <summary>
     /// Literal for code: MedianNumericEstimationTechnique
     /// </summary>
     public const string LiteralMedianNumericEstimationTechnique = "373099004";
+
+    /// <summary>
+    /// Literal for code: NONEMedianNumericEstimationTechnique
+    /// </summary>
+    public const string LiteralNONEMedianNumericEstimationTechnique = "http://snomed.info/sct#373099004";
 
     /// <summary>
     /// Literal for code: ModeNumericEstimationTechnique
@@ -12758,9 +16498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralModeNumericEstimationTechnique = "373100007";
 
     /// <summary>
+    /// Literal for code: NONEModeNumericEstimationTechnique
+    /// </summary>
+    public const string LiteralNONEModeNumericEstimationTechnique = "http://snomed.info/sct#373100007";
+
+    /// <summary>
     /// Literal for code: RoutineNumericEstimationTechnique
     /// </summary>
     public const string LiteralRoutineNumericEstimationTechnique = "373115008";
+
+    /// <summary>
+    /// Literal for code: NONERoutineNumericEstimationTechnique
+    /// </summary>
+    public const string LiteralNONERoutineNumericEstimationTechnique = "http://snomed.info/sct#373115008";
 
     /// <summary>
     /// Literal for code: MaintenanceAction
@@ -12768,9 +16518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMaintenanceAction = "386746003";
 
     /// <summary>
+    /// Literal for code: NONEMaintenanceAction
+    /// </summary>
+    public const string LiteralNONEMaintenanceAction = "http://snomed.info/sct#386746003";
+
+    /// <summary>
     /// Literal for code: TobramycinMeasurement
     /// </summary>
     public const string LiteralTobramycinMeasurement = "389000";
+
+    /// <summary>
+    /// Literal for code: NONETobramycinMeasurement
+    /// </summary>
+    public const string LiteralNONETobramycinMeasurement = "http://snomed.info/sct#389000";
 
     /// <summary>
     /// Literal for code: SingleBolus
@@ -12778,9 +16538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSingleBolus = "397801003";
 
     /// <summary>
+    /// Literal for code: NONESingleBolus
+    /// </summary>
+    public const string LiteralNONESingleBolus = "http://snomed.info/sct#397801003";
+
+    /// <summary>
     /// Literal for code: IntravascularConfirmationMethod
     /// </summary>
     public const string LiteralIntravascularConfirmationMethod = "397850009";
+
+    /// <summary>
+    /// Literal for code: NONEIntravascularConfirmationMethod
+    /// </summary>
+    public const string LiteralNONEIntravascularConfirmationMethod = "http://snomed.info/sct#397850009";
 
     /// <summary>
     /// Literal for code: IntermittentBolus
@@ -12788,9 +16558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntermittentBolus = "397884008";
 
     /// <summary>
+    /// Literal for code: NONEIntermittentBolus
+    /// </summary>
+    public const string LiteralNONEIntermittentBolus = "http://snomed.info/sct#397884008";
+
+    /// <summary>
     /// Literal for code: LossOfResistanceTechniqueOtherFluid
     /// </summary>
     public const string LiteralLossOfResistanceTechniqueOtherFluid = "397916001";
+
+    /// <summary>
+    /// Literal for code: NONELossOfResistanceTechniqueOtherFluid
+    /// </summary>
+    public const string LiteralNONELossOfResistanceTechniqueOtherFluid = "http://snomed.info/sct#397916001";
 
     /// <summary>
     /// Literal for code: VesselLocationTechnique
@@ -12798,9 +16578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVesselLocationTechnique = "398037009";
 
     /// <summary>
+    /// Literal for code: NONEVesselLocationTechnique
+    /// </summary>
+    public const string LiteralNONEVesselLocationTechnique = "http://snomed.info/sct#398037009";
+
+    /// <summary>
     /// Literal for code: LossOfResistanceTechniqueBothSalineAndAir
     /// </summary>
     public const string LiteralLossOfResistanceTechniqueBothSalineAndAir = "398129004";
+
+    /// <summary>
+    /// Literal for code: NONELossOfResistanceTechniqueBothSalineAndAir
+    /// </summary>
+    public const string LiteralNONELossOfResistanceTechniqueBothSalineAndAir = "http://snomed.info/sct#398129004";
 
     /// <summary>
     /// Literal for code: FinderNeedleTechnique
@@ -12808,9 +16598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFinderNeedleTechnique = "398317000";
 
     /// <summary>
+    /// Literal for code: NONEFinderNeedleTechnique
+    /// </summary>
+    public const string LiteralNONEFinderNeedleTechnique = "http://snomed.info/sct#398317000";
+
+    /// <summary>
     /// Literal for code: BModeUltrasound
     /// </summary>
     public const string LiteralBModeUltrasound = "399009009";
+
+    /// <summary>
+    /// Literal for code: NONEBModeUltrasound
+    /// </summary>
+    public const string LiteralNONEBModeUltrasound = "http://snomed.info/sct#399009009";
 
     /// <summary>
     /// Literal for code: TomographicImagingPlainRadiologicAction
@@ -12818,9 +16618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTomographicImagingPlainRadiologicAction = "399015009";
 
     /// <summary>
+    /// Literal for code: NONETomographicImagingPlainRadiologicAction
+    /// </summary>
+    public const string LiteralNONETomographicImagingPlainRadiologicAction = "http://snomed.info/sct#399015009";
+
+    /// <summary>
     /// Literal for code: TomographicImagingAction
     /// </summary>
     public const string LiteralTomographicImagingAction = "399035005";
+
+    /// <summary>
+    /// Literal for code: NONETomographicImagingAction
+    /// </summary>
+    public const string LiteralNONETomographicImagingAction = "http://snomed.info/sct#399035005";
 
     /// <summary>
     /// Literal for code: VAL2DModeUltrasound
@@ -12828,9 +16638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVAL2DModeUltrasound = "399064001";
 
     /// <summary>
+    /// Literal for code: NONEVAL2DModeUltrasound
+    /// </summary>
+    public const string LiteralNONEVAL2DModeUltrasound = "http://snomed.info/sct#399064001";
+
+    /// <summary>
     /// Literal for code: MModeUltrasound
     /// </summary>
     public const string LiteralMModeUltrasound = "399155008";
+
+    /// <summary>
+    /// Literal for code: NONEMModeUltrasound
+    /// </summary>
+    public const string LiteralNONEMModeUltrasound = "http://snomed.info/sct#399155008";
 
     /// <summary>
     /// Literal for code: Autofluorescence
@@ -12838,9 +16658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAutofluorescence = "404655007";
 
     /// <summary>
+    /// Literal for code: NONEAutofluorescence
+    /// </summary>
+    public const string LiteralNONEAutofluorescence = "http://snomed.info/sct#404655007";
+
+    /// <summary>
     /// Literal for code: Illumination
     /// </summary>
     public const string LiteralIllumination = "410460000";
+
+    /// <summary>
+    /// Literal for code: NONEIllumination
+    /// </summary>
+    public const string LiteralNONEIllumination = "http://snomed.info/sct#410460000";
 
     /// <summary>
     /// Literal for code: DualDiffuseDirectIllumination
@@ -12848,9 +16678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDualDiffuseDirectIllumination = "410461001";
 
     /// <summary>
+    /// Literal for code: NONEDualDiffuseDirectIllumination
+    /// </summary>
+    public const string LiteralNONEDualDiffuseDirectIllumination = "http://snomed.info/sct#410461001";
+
+    /// <summary>
     /// Literal for code: FineSlitBeamDirectIllumination
     /// </summary>
     public const string LiteralFineSlitBeamDirectIllumination = "410462008";
+
+    /// <summary>
+    /// Literal for code: NONEFineSlitBeamDirectIllumination
+    /// </summary>
+    public const string LiteralNONEFineSlitBeamDirectIllumination = "http://snomed.info/sct#410462008";
 
     /// <summary>
     /// Literal for code: BroadTangentialDirectIllumination
@@ -12858,9 +16698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBroadTangentialDirectIllumination = "410463003";
 
     /// <summary>
+    /// Literal for code: NONEBroadTangentialDirectIllumination
+    /// </summary>
+    public const string LiteralNONEBroadTangentialDirectIllumination = "http://snomed.info/sct#410463003";
+
+    /// <summary>
     /// Literal for code: IndirectScleroticScatterIllumination
     /// </summary>
     public const string LiteralIndirectScleroticScatterIllumination = "410464009";
+
+    /// <summary>
+    /// Literal for code: NONEIndirectScleroticScatterIllumination
+    /// </summary>
+    public const string LiteralNONEIndirectScleroticScatterIllumination = "http://snomed.info/sct#410464009";
 
     /// <summary>
     /// Literal for code: IndirectRetroilluminationFromTheIris
@@ -12868,9 +16718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIndirectRetroilluminationFromTheIris = "410465005";
 
     /// <summary>
+    /// Literal for code: NONEIndirectRetroilluminationFromTheIris
+    /// </summary>
+    public const string LiteralNONEIndirectRetroilluminationFromTheIris = "http://snomed.info/sct#410465005";
+
+    /// <summary>
     /// Literal for code: IndirectRetroilluminationFromTheRetina
     /// </summary>
     public const string LiteralIndirectRetroilluminationFromTheRetina = "410466006";
+
+    /// <summary>
+    /// Literal for code: NONEIndirectRetroilluminationFromTheRetina
+    /// </summary>
+    public const string LiteralNONEIndirectRetroilluminationFromTheRetina = "http://snomed.info/sct#410466006";
 
     /// <summary>
     /// Literal for code: IndirectIrisTransillumination
@@ -12878,9 +16738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIndirectIrisTransillumination = "410467002";
 
     /// <summary>
+    /// Literal for code: NONEIndirectIrisTransillumination
+    /// </summary>
+    public const string LiteralNONEIndirectIrisTransillumination = "http://snomed.info/sct#410467002";
+
+    /// <summary>
     /// Literal for code: SurgicalDecompressionAction
     /// </summary>
     public const string LiteralSurgicalDecompressionAction = "410756002";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalDecompressionAction
+    /// </summary>
+    public const string LiteralNONESurgicalDecompressionAction = "http://snomed.info/sct#410756002";
 
     /// <summary>
     /// Literal for code: DecompressiveExcisionAction
@@ -12888,9 +16758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDecompressiveExcisionAction = "410757006";
 
     /// <summary>
+    /// Literal for code: NONEDecompressiveExcisionAction
+    /// </summary>
+    public const string LiteralNONEDecompressiveExcisionAction = "http://snomed.info/sct#410757006";
+
+    /// <summary>
     /// Literal for code: DecompressiveIncisionAction
     /// </summary>
     public const string LiteralDecompressiveIncisionAction = "410758001";
+
+    /// <summary>
+    /// Literal for code: NONEDecompressiveIncisionAction
+    /// </summary>
+    public const string LiteralNONEDecompressiveIncisionAction = "http://snomed.info/sct#410758001";
 
     /// <summary>
     /// Literal for code: DecompressiveDivisionAction
@@ -12898,9 +16778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDecompressiveDivisionAction = "410759009";
 
     /// <summary>
+    /// Literal for code: NONEDecompressiveDivisionAction
+    /// </summary>
+    public const string LiteralNONEDecompressiveDivisionAction = "http://snomed.info/sct#410759009";
+
+    /// <summary>
     /// Literal for code: ElevationReductionAction
     /// </summary>
     public const string LiteralElevationReductionAction = "410769003";
+
+    /// <summary>
+    /// Literal for code: NONEElevationReductionAction
+    /// </summary>
+    public const string LiteralNONEElevationReductionAction = "http://snomed.info/sct#410769003";
 
     /// <summary>
     /// Literal for code: SurgicalReductionAction
@@ -12908,9 +16798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalReductionAction = "410814006";
 
     /// <summary>
+    /// Literal for code: NONESurgicalReductionAction
+    /// </summary>
+    public const string LiteralNONESurgicalReductionAction = "http://snomed.info/sct#410814006";
+
+    /// <summary>
     /// Literal for code: DilationRepairAction
     /// </summary>
     public const string LiteralDilationRepairAction = "410817004";
+
+    /// <summary>
+    /// Literal for code: NONEDilationRepairAction
+    /// </summary>
+    public const string LiteralNONEDilationRepairAction = "http://snomed.info/sct#410817004";
 
     /// <summary>
     /// Literal for code: SurgicalTransplantationAction
@@ -12918,9 +16818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalTransplantationAction = "410820007";
 
     /// <summary>
+    /// Literal for code: NONESurgicalTransplantationAction
+    /// </summary>
+    public const string LiteralNONESurgicalTransplantationAction = "http://snomed.info/sct#410820007";
+
+    /// <summary>
     /// Literal for code: HangingDropTechnique
     /// </summary>
     public const string LiteralHangingDropTechnique = "414378002";
+
+    /// <summary>
+    /// Literal for code: NONEHangingDropTechnique
+    /// </summary>
+    public const string LiteralNONEHangingDropTechnique = "http://snomed.info/sct#414378002";
 
     /// <summary>
     /// Literal for code: ImagingGuidanceTechnique
@@ -12928,9 +16838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImagingGuidanceTechnique = "414456005";
 
     /// <summary>
+    /// Literal for code: NONEImagingGuidanceTechnique
+    /// </summary>
+    public const string LiteralNONEImagingGuidanceTechnique = "http://snomed.info/sct#414456005";
+
+    /// <summary>
     /// Literal for code: LinePlacementTechnique
     /// </summary>
     public const string LiteralLinePlacementTechnique = "414611008";
+
+    /// <summary>
+    /// Literal for code: NONELinePlacementTechnique
+    /// </summary>
+    public const string LiteralNONELinePlacementTechnique = "http://snomed.info/sct#414611008";
 
     /// <summary>
     /// Literal for code: ParesthesiaTechnique
@@ -12938,9 +16858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralParesthesiaTechnique = "415037003";
 
     /// <summary>
+    /// Literal for code: NONEParesthesiaTechnique
+    /// </summary>
+    public const string LiteralNONEParesthesiaTechnique = "http://snomed.info/sct#415037003";
+
+    /// <summary>
     /// Literal for code: ProximalIlluminationAction
     /// </summary>
     public const string LiteralProximalIlluminationAction = "415186003";
+
+    /// <summary>
+    /// Literal for code: NONEProximalIlluminationAction
+    /// </summary>
+    public const string LiteralNONEProximalIlluminationAction = "http://snomed.info/sct#415186003";
 
     /// <summary>
     /// Literal for code: TransarterialTechnique
@@ -12948,9 +16878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTransarterialTechnique = "415741008";
 
     /// <summary>
+    /// Literal for code: NONETransarterialTechnique
+    /// </summary>
+    public const string LiteralNONETransarterialTechnique = "http://snomed.info/sct#415741008";
+
+    /// <summary>
     /// Literal for code: IntubationTechnique
     /// </summary>
     public const string LiteralIntubationTechnique = "416238005";
+
+    /// <summary>
+    /// Literal for code: NONEIntubationTechnique
+    /// </summary>
+    public const string LiteralNONEIntubationTechnique = "http://snomed.info/sct#416238005";
 
     /// <summary>
     /// Literal for code: TrachealIntubationTechnique
@@ -12958,9 +16898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTrachealIntubationTechnique = "416423007";
 
     /// <summary>
+    /// Literal for code: NONETrachealIntubationTechnique
+    /// </summary>
+    public const string LiteralNONETrachealIntubationTechnique = "http://snomed.info/sct#416423007";
+
+    /// <summary>
     /// Literal for code: InternalDrainageAction
     /// </summary>
     public const string LiteralInternalDrainageAction = "416677001";
+
+    /// <summary>
+    /// Literal for code: NONEInternalDrainageAction
+    /// </summary>
+    public const string LiteralNONEInternalDrainageAction = "http://snomed.info/sct#416677001";
 
     /// <summary>
     /// Literal for code: BronchialIntubationTechnique
@@ -12968,9 +16918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBronchialIntubationTechnique = "417453009";
 
     /// <summary>
+    /// Literal for code: NONEBronchialIntubationTechnique
+    /// </summary>
+    public const string LiteralNONEBronchialIntubationTechnique = "http://snomed.info/sct#417453009";
+
+    /// <summary>
     /// Literal for code: Gently
     /// </summary>
     public const string LiteralGently = "418449005";
+
+    /// <summary>
+    /// Literal for code: NONEGently
+    /// </summary>
+    public const string LiteralNONEGently = "http://snomed.info/sct#418449005";
 
     /// <summary>
     /// Literal for code: Rapidly
@@ -12978,9 +16938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRapidly = "418694008";
 
     /// <summary>
+    /// Literal for code: NONERapidly
+    /// </summary>
+    public const string LiteralNONERapidly = "http://snomed.info/sct#418694008";
+
+    /// <summary>
     /// Literal for code: Liberally
     /// </summary>
     public const string LiteralLiberally = "419125005";
+
+    /// <summary>
+    /// Literal for code: NONELiberally
+    /// </summary>
+    public const string LiteralNONELiberally = "http://snomed.info/sct#419125005";
 
     /// <summary>
     /// Literal for code: Use
@@ -12988,9 +16958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUse = "419385000";
 
     /// <summary>
+    /// Literal for code: NONEUse
+    /// </summary>
+    public const string LiteralNONEUse = "http://snomed.info/sct#419385000";
+
+    /// <summary>
     /// Literal for code: Slowly
     /// </summary>
     public const string LiteralSlowly = "419443000";
+
+    /// <summary>
+    /// Literal for code: NONESlowly
+    /// </summary>
+    public const string LiteralNONESlowly = "http://snomed.info/sct#419443000";
 
     /// <summary>
     /// Literal for code: Take
@@ -12998,9 +16978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTake = "419652001";
 
     /// <summary>
+    /// Literal for code: NONETake
+    /// </summary>
+    public const string LiteralNONETake = "http://snomed.info/sct#419652001";
+
+    /// <summary>
     /// Literal for code: ExaminationANDORHistoryTakingAction
     /// </summary>
     public const string LiteralExaminationANDORHistoryTakingAction = "419656003";
+
+    /// <summary>
+    /// Literal for code: NONEExaminationANDORHistoryTakingAction
+    /// </summary>
+    public const string LiteralNONEExaminationANDORHistoryTakingAction = "http://snomed.info/sct#419656003";
 
     /// <summary>
     /// Literal for code: Vigorously
@@ -13008,9 +16998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVigorously = "419913006";
 
     /// <summary>
+    /// Literal for code: NONEVigorously
+    /// </summary>
+    public const string LiteralNONEVigorously = "http://snomed.info/sct#419913006";
+
+    /// <summary>
     /// Literal for code: ActionOfDrugAdministration
     /// </summary>
     public const string LiteralActionOfDrugAdministration = "419988009";
+
+    /// <summary>
+    /// Literal for code: NONEActionOfDrugAdministration
+    /// </summary>
+    public const string LiteralNONEActionOfDrugAdministration = "http://snomed.info/sct#419988009";
 
     /// <summary>
     /// Literal for code: SwallowedWhole
@@ -13018,9 +17018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSwallowedWhole = "420004004";
 
     /// <summary>
+    /// Literal for code: NONESwallowedWhole
+    /// </summary>
+    public const string LiteralNONESwallowedWhole = "http://snomed.info/sct#420004004";
+
+    /// <summary>
     /// Literal for code: ShuntAction
     /// </summary>
     public const string LiteralShuntAction = "424208002";
+
+    /// <summary>
+    /// Literal for code: NONEShuntAction
+    /// </summary>
+    public const string LiteralNONEShuntAction = "http://snomed.info/sct#424208002";
 
     /// <summary>
     /// Literal for code: IntrathecalConfirmationTechnique
@@ -13028,9 +17038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntrathecalConfirmationTechnique = "424457002";
 
     /// <summary>
+    /// Literal for code: NONEIntrathecalConfirmationTechnique
+    /// </summary>
+    public const string LiteralNONEIntrathecalConfirmationTechnique = "http://snomed.info/sct#424457002";
+
+    /// <summary>
     /// Literal for code: SurgicalIntroductionAction
     /// </summary>
     public const string LiteralSurgicalIntroductionAction = "424832003";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalIntroductionAction
+    /// </summary>
+    public const string LiteralNONESurgicalIntroductionAction = "http://snomed.info/sct#424832003";
 
     /// <summary>
     /// Literal for code: RecommendationAction
@@ -13038,9 +17058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRecommendationAction = "424900004";
 
     /// <summary>
+    /// Literal for code: NONERecommendationAction
+    /// </summary>
+    public const string LiteralNONERecommendationAction = "http://snomed.info/sct#424900004";
+
+    /// <summary>
     /// Literal for code: SurgicalInsertionAction
     /// </summary>
     public const string LiteralSurgicalInsertionAction = "425362007";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalInsertionAction
+    /// </summary>
+    public const string LiteralNONESurgicalInsertionAction = "http://snomed.info/sct#425362007";
 
     /// <summary>
     /// Literal for code: TeachingAction
@@ -13048,9 +17078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTeachingAction = "425689005";
 
     /// <summary>
+    /// Literal for code: NONETeachingAction
+    /// </summary>
+    public const string LiteralNONETeachingAction = "http://snomed.info/sct#425689005";
+
+    /// <summary>
     /// Literal for code: PowerDopplerUltrasound
     /// </summary>
     public const string LiteralPowerDopplerUltrasound = "425704008";
+
+    /// <summary>
+    /// Literal for code: NONEPowerDopplerUltrasound
+    /// </summary>
+    public const string LiteralNONEPowerDopplerUltrasound = "http://snomed.info/sct#425704008";
 
     /// <summary>
     /// Literal for code: TransectionAction
@@ -13058,9 +17098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTransectionAction = "425764006";
 
     /// <summary>
+    /// Literal for code: NONETransectionAction
+    /// </summary>
+    public const string LiteralNONETransectionAction = "http://snomed.info/sct#425764006";
+
+    /// <summary>
     /// Literal for code: ClosedReductionAction
     /// </summary>
     public const string LiteralClosedReductionAction = "426413004";
+
+    /// <summary>
+    /// Literal for code: NONEClosedReductionAction
+    /// </summary>
+    public const string LiteralNONEClosedReductionAction = "http://snomed.info/sct#426413004";
 
     /// <summary>
     /// Literal for code: OpenReductionAction
@@ -13068,9 +17118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOpenReductionAction = "426530000";
 
     /// <summary>
+    /// Literal for code: NONEOpenReductionAction
+    /// </summary>
+    public const string LiteralNONEOpenReductionAction = "http://snomed.info/sct#426530000";
+
+    /// <summary>
     /// Literal for code: VAL3DModeUltrasound
     /// </summary>
     public const string LiteralVAL3DModeUltrasound = "426865009";
+
+    /// <summary>
+    /// Literal for code: NONEVAL3DModeUltrasound
+    /// </summary>
+    public const string LiteralNONEVAL3DModeUltrasound = "http://snomed.info/sct#426865009";
 
     /// <summary>
     /// Literal for code: OpenEmbolizationAction
@@ -13078,9 +17138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOpenEmbolizationAction = "428010000";
 
     /// <summary>
+    /// Literal for code: NONEOpenEmbolizationAction
+    /// </summary>
+    public const string LiteralNONEOpenEmbolizationAction = "http://snomed.info/sct#428010000";
+
+    /// <summary>
     /// Literal for code: DiathermyAction
     /// </summary>
     public const string LiteralDiathermyAction = "428381003";
+
+    /// <summary>
+    /// Literal for code: NONEDiathermyAction
+    /// </summary>
+    public const string LiteralNONEDiathermyAction = "http://snomed.info/sct#428381003";
 
     /// <summary>
     /// Literal for code: SurgicalPiercingAction
@@ -13088,9 +17158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalPiercingAction = "430975009";
 
     /// <summary>
+    /// Literal for code: NONESurgicalPiercingAction
+    /// </summary>
+    public const string LiteralNONESurgicalPiercingAction = "http://snomed.info/sct#430975009";
+
+    /// <summary>
     /// Literal for code: PulmonaryInhalationStudy
     /// </summary>
     public const string LiteralPulmonaryInhalationStudy = "435001";
+
+    /// <summary>
+    /// Literal for code: NONEPulmonaryInhalationStudy
+    /// </summary>
+    public const string LiteralNONEPulmonaryInhalationStudy = "http://snomed.info/sct#435001";
 
     /// <summary>
     /// Literal for code: SurgicalCataractAspirationAction
@@ -13098,9 +17178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalCataractAspirationAction = "439054007";
 
     /// <summary>
+    /// Literal for code: NONESurgicalCataractAspirationAction
+    /// </summary>
+    public const string LiteralNONESurgicalCataractAspirationAction = "http://snomed.info/sct#439054007";
+
+    /// <summary>
     /// Literal for code: MechanicalRepairAction
     /// </summary>
     public const string LiteralMechanicalRepairAction = "439237009";
+
+    /// <summary>
+    /// Literal for code: NONEMechanicalRepairAction
+    /// </summary>
+    public const string LiteralNONEMechanicalRepairAction = "http://snomed.info/sct#439237009";
 
     /// <summary>
     /// Literal for code: WedgeOsteotomyAction
@@ -13108,9 +17198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWedgeOsteotomyAction = "439315000";
 
     /// <summary>
+    /// Literal for code: NONEWedgeOsteotomyAction
+    /// </summary>
+    public const string LiteralNONEWedgeOsteotomyAction = "http://snomed.info/sct#439315000";
+
+    /// <summary>
     /// Literal for code: ClosedManualReductionAction
     /// </summary>
     public const string LiteralClosedManualReductionAction = "439417007";
+
+    /// <summary>
+    /// Literal for code: NONEClosedManualReductionAction
+    /// </summary>
+    public const string LiteralNONEClosedManualReductionAction = "http://snomed.info/sct#439417007";
 
     /// <summary>
     /// Literal for code: SurgicalSizeReductionAction
@@ -13118,9 +17218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgicalSizeReductionAction = "439513008";
 
     /// <summary>
+    /// Literal for code: NONESurgicalSizeReductionAction
+    /// </summary>
+    public const string LiteralNONESurgicalSizeReductionAction = "http://snomed.info/sct#439513008";
+
+    /// <summary>
     /// Literal for code: DispensingAction
     /// </summary>
     public const string LiteralDispensingAction = "440338007";
+
+    /// <summary>
+    /// Literal for code: NONEDispensingAction
+    /// </summary>
+    public const string LiteralNONEDispensingAction = "http://snomed.info/sct#440338007";
 
     /// <summary>
     /// Literal for code: MechanicalConstructionAction
@@ -13128,9 +17238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMechanicalConstructionAction = "440647007";
 
     /// <summary>
+    /// Literal for code: NONEMechanicalConstructionAction
+    /// </summary>
+    public const string LiteralNONEMechanicalConstructionAction = "http://snomed.info/sct#440647007";
+
+    /// <summary>
     /// Literal for code: SurgicalManipulationAction
     /// </summary>
     public const string LiteralSurgicalManipulationAction = "441504007";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalManipulationAction
+    /// </summary>
+    public const string LiteralNONESurgicalManipulationAction = "http://snomed.info/sct#441504007";
 
     /// <summary>
     /// Literal for code: ExcisionDebridementAction
@@ -13138,9 +17258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExcisionDebridementAction = "442837002";
 
     /// <summary>
+    /// Literal for code: NONEExcisionDebridementAction
+    /// </summary>
+    public const string LiteralNONEExcisionDebridementAction = "http://snomed.info/sct#442837002";
+
+    /// <summary>
     /// Literal for code: FixationByWedgingAction
     /// </summary>
     public const string LiteralFixationByWedgingAction = "445103003";
+
+    /// <summary>
+    /// Literal for code: NONEFixationByWedgingAction
+    /// </summary>
+    public const string LiteralNONEFixationByWedgingAction = "http://snomed.info/sct#445103003";
 
     /// <summary>
     /// Literal for code: ExtracorporealTechnique
@@ -13148,9 +17278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExtracorporealTechnique = "445911007";
 
     /// <summary>
+    /// Literal for code: NONEExtracorporealTechnique
+    /// </summary>
+    public const string LiteralNONEExtracorporealTechnique = "http://snomed.info/sct#445911007";
+
+    /// <summary>
     /// Literal for code: HemodialysisTechnique
     /// </summary>
     public const string LiteralHemodialysisTechnique = "446402005";
+
+    /// <summary>
+    /// Literal for code: NONEHemodialysisTechnique
+    /// </summary>
+    public const string LiteralNONEHemodialysisTechnique = "http://snomed.info/sct#446402005";
 
     /// <summary>
     /// Literal for code: InhalationTechnique
@@ -13158,9 +17298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInhalationTechnique = "446406008";
 
     /// <summary>
+    /// Literal for code: NONEInhalationTechnique
+    /// </summary>
+    public const string LiteralNONEInhalationTechnique = "http://snomed.info/sct#446406008";
+
+    /// <summary>
     /// Literal for code: ElectroosmosisTechnique
     /// </summary>
     public const string LiteralElectroosmosisTechnique = "446947001";
+
+    /// <summary>
+    /// Literal for code: NONEElectroosmosisTechnique
+    /// </summary>
+    public const string LiteralNONEElectroosmosisTechnique = "http://snomed.info/sct#446947001";
 
     /// <summary>
     /// Literal for code: IrrigationTechnique
@@ -13168,9 +17318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIrrigationTechnique = "447027002";
 
     /// <summary>
+    /// Literal for code: NONEIrrigationTechnique
+    /// </summary>
+    public const string LiteralNONEIrrigationTechnique = "http://snomed.info/sct#447027002";
+
+    /// <summary>
     /// Literal for code: OcclusiveDressingTechnique
     /// </summary>
     public const string LiteralOcclusiveDressingTechnique = "447056002";
+
+    /// <summary>
+    /// Literal for code: NONEOcclusiveDressingTechnique
+    /// </summary>
+    public const string LiteralNONEOcclusiveDressingTechnique = "http://snomed.info/sct#447056002";
 
     /// <summary>
     /// Literal for code: InjectionTechnique
@@ -13178,9 +17338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInjectionTechnique = "447120003";
 
     /// <summary>
+    /// Literal for code: NONEInjectionTechnique
+    /// </summary>
+    public const string LiteralNONEInjectionTechnique = "http://snomed.info/sct#447120003";
+
+    /// <summary>
     /// Literal for code: PercutaneousGastrostomyButtonTechnique
     /// </summary>
     public const string LiteralPercutaneousGastrostomyButtonTechnique = "447692002";
+
+    /// <summary>
+    /// Literal for code: NONEPercutaneousGastrostomyButtonTechnique
+    /// </summary>
+    public const string LiteralNONEPercutaneousGastrostomyButtonTechnique = "http://snomed.info/sct#447692002";
 
     /// <summary>
     /// Literal for code: PeritonealDialysisTechnique
@@ -13188,9 +17358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPeritonealDialysisTechnique = "447693007";
 
     /// <summary>
+    /// Literal for code: NONEPeritonealDialysisTechnique
+    /// </summary>
+    public const string LiteralNONEPeritonealDialysisTechnique = "http://snomed.info/sct#447693007";
+
+    /// <summary>
     /// Literal for code: InfusionTechnique
     /// </summary>
     public const string LiteralInfusionTechnique = "447826007";
+
+    /// <summary>
+    /// Literal for code: NONEInfusionTechnique
+    /// </summary>
+    public const string LiteralNONEInfusionTechnique = "http://snomed.info/sct#447826007";
 
     /// <summary>
     /// Literal for code: IntravenousPushTechnique
@@ -13198,9 +17378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntravenousPushTechnique = "447963004";
 
     /// <summary>
+    /// Literal for code: NONEIntravenousPushTechnique
+    /// </summary>
+    public const string LiteralNONEIntravenousPushTechnique = "http://snomed.info/sct#447963004";
+
+    /// <summary>
     /// Literal for code: IontophoresisTechnique
     /// </summary>
     public const string LiteralIontophoresisTechnique = "448076005";
+
+    /// <summary>
+    /// Literal for code: NONEIontophoresisTechnique
+    /// </summary>
+    public const string LiteralNONEIontophoresisTechnique = "http://snomed.info/sct#448076005";
 
     /// <summary>
     /// Literal for code: IntravenousPiggybackTechnique
@@ -13208,9 +17398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntravenousPiggybackTechnique = "449137004";
 
     /// <summary>
+    /// Literal for code: NONEIntravenousPiggybackTechnique
+    /// </summary>
+    public const string LiteralNONEIntravenousPiggybackTechnique = "http://snomed.info/sct#449137004";
+
+    /// <summary>
     /// Literal for code: HemodiafiltrationTechnique
     /// </summary>
     public const string LiteralHemodiafiltrationTechnique = "449225005";
+
+    /// <summary>
+    /// Literal for code: NONEHemodiafiltrationTechnique
+    /// </summary>
+    public const string LiteralNONEHemodiafiltrationTechnique = "http://snomed.info/sct#449225005";
 
     /// <summary>
     /// Literal for code: GlutathioneMeasurement
@@ -13218,9 +17418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGlutathioneMeasurement = "468008";
 
     /// <summary>
+    /// Literal for code: NONEGlutathioneMeasurement
+    /// </summary>
+    public const string LiteralNONEGlutathioneMeasurement = "http://snomed.info/sct#468008";
+
+    /// <summary>
     /// Literal for code: FerritinMeasurement
     /// </summary>
     public const string LiteralFerritinMeasurement = "489004";
+
+    /// <summary>
+    /// Literal for code: NONEFerritinMeasurement
+    /// </summary>
+    public const string LiteralNONEFerritinMeasurement = "http://snomed.info/sct#489004";
 
     /// <summary>
     /// Literal for code: UrobilinogenMeasurement48HourFeces
@@ -13228,9 +17438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUrobilinogenMeasurement48HourFeces = "493005";
 
     /// <summary>
+    /// Literal for code: NONEUrobilinogenMeasurement48HourFeces
+    /// </summary>
+    public const string LiteralNONEUrobilinogenMeasurement48HourFeces = "http://snomed.info/sct#493005";
+
+    /// <summary>
     /// Literal for code: AntibodyToSingleAndDoubleStrandedDNAMeasurement
     /// </summary>
     public const string LiteralAntibodyToSingleAndDoubleStrandedDNAMeasurement = "540006";
+
+    /// <summary>
+    /// Literal for code: NONEAntibodyToSingleAndDoubleStrandedDNAMeasurement
+    /// </summary>
+    public const string LiteralNONEAntibodyToSingleAndDoubleStrandedDNAMeasurement = "http://snomed.info/sct#540006";
 
     /// <summary>
     /// Literal for code: BenzodiazepineMeasurement
@@ -13238,9 +17458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBenzodiazepineMeasurement = "574005";
 
     /// <summary>
+    /// Literal for code: NONEBenzodiazepineMeasurement
+    /// </summary>
+    public const string LiteralNONEBenzodiazepineMeasurement = "http://snomed.info/sct#574005";
+
+    /// <summary>
     /// Literal for code: CompetitiveProteinBindingAssay
     /// </summary>
     public const string LiteralCompetitiveProteinBindingAssay = "58207001";
+
+    /// <summary>
+    /// Literal for code: NONECompetitiveProteinBindingAssay
+    /// </summary>
+    public const string LiteralNONECompetitiveProteinBindingAssay = "http://snomed.info/sct#58207001";
 
     /// <summary>
     /// Literal for code: SteinmanTest
@@ -13248,9 +17478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSteinmanTest = "628003";
 
     /// <summary>
+    /// Literal for code: NONESteinmanTest
+    /// </summary>
+    public const string LiteralNONESteinmanTest = "http://snomed.info/sct#628003";
+
+    /// <summary>
     /// Literal for code: CerebralThermography
     /// </summary>
     public const string LiteralCerebralThermography = "642006";
+
+    /// <summary>
+    /// Literal for code: NONECerebralThermography
+    /// </summary>
+    public const string LiteralNONECerebralThermography = "http://snomed.info/sct#642006";
 
     /// <summary>
     /// Literal for code: IndirectLaryngoscopy
@@ -13258,9 +17498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIndirectLaryngoscopy = "673005";
 
     /// <summary>
+    /// Literal for code: NONEIndirectLaryngoscopy
+    /// </summary>
+    public const string LiteralNONEIndirectLaryngoscopy = "http://snomed.info/sct#673005";
+
+    /// <summary>
     /// Literal for code: AbductionTest
     /// </summary>
     public const string LiteralAbductionTest = "674004";
+
+    /// <summary>
+    /// Literal for code: NONEAbductionTest
+    /// </summary>
+    public const string LiteralNONEAbductionTest = "http://snomed.info/sct#674004";
 
     /// <summary>
     /// Literal for code: AlbuminGlobulinRatio
@@ -13268,9 +17518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAlbuminGlobulinRatio = "687005";
 
     /// <summary>
+    /// Literal for code: NONEAlbuminGlobulinRatio
+    /// </summary>
+    public const string LiteralNONEAlbuminGlobulinRatio = "http://snomed.info/sct#687005";
+
+    /// <summary>
     /// Literal for code: HepatitisAVirusAntibodyMeasurement
     /// </summary>
     public const string LiteralHepatitisAVirusAntibodyMeasurement = "697001";
+
+    /// <summary>
+    /// Literal for code: NONEHepatitisAVirusAntibodyMeasurement
+    /// </summary>
+    public const string LiteralNONEHepatitisAVirusAntibodyMeasurement = "http://snomed.info/sct#697001";
 
     /// <summary>
     /// Literal for code: TransmissionIllumination
@@ -13278,9 +17538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTransmissionIllumination = "698788008";
 
     /// <summary>
+    /// Literal for code: NONETransmissionIllumination
+    /// </summary>
+    public const string LiteralNONETransmissionIllumination = "http://snomed.info/sct#698788008";
+
+    /// <summary>
     /// Literal for code: ReflectionIllumination
     /// </summary>
     public const string LiteralReflectionIllumination = "698789000";
+
+    /// <summary>
+    /// Literal for code: NONEReflectionIllumination
+    /// </summary>
+    public const string LiteralNONEReflectionIllumination = "http://snomed.info/sct#698789000";
 
     /// <summary>
     /// Literal for code: EpifluorescenceIllumination
@@ -13288,9 +17558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEpifluorescenceIllumination = "698790009";
 
     /// <summary>
+    /// Literal for code: NONEEpifluorescenceIllumination
+    /// </summary>
+    public const string LiteralNONEEpifluorescenceIllumination = "http://snomed.info/sct#698790009";
+
+    /// <summary>
     /// Literal for code: BrightfieldIllumination
     /// </summary>
     public const string LiteralBrightfieldIllumination = "698792001";
+
+    /// <summary>
+    /// Literal for code: NONEBrightfieldIllumination
+    /// </summary>
+    public const string LiteralNONEBrightfieldIllumination = "http://snomed.info/sct#698792001";
 
     /// <summary>
     /// Literal for code: DarkfieldIllumination
@@ -13298,9 +17578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDarkfieldIllumination = "698793006";
 
     /// <summary>
+    /// Literal for code: NONEDarkfieldIllumination
+    /// </summary>
+    public const string LiteralNONEDarkfieldIllumination = "http://snomed.info/sct#698793006";
+
+    /// <summary>
     /// Literal for code: ObliqueIllumination
     /// </summary>
     public const string LiteralObliqueIllumination = "698794000";
+
+    /// <summary>
+    /// Literal for code: NONEObliqueIllumination
+    /// </summary>
+    public const string LiteralNONEObliqueIllumination = "http://snomed.info/sct#698794000";
 
     /// <summary>
     /// Literal for code: PhaseContrastIllumination
@@ -13308,9 +17598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhaseContrastIllumination = "698796003";
 
     /// <summary>
+    /// Literal for code: NONEPhaseContrastIllumination
+    /// </summary>
+    public const string LiteralNONEPhaseContrastIllumination = "http://snomed.info/sct#698796003";
+
+    /// <summary>
     /// Literal for code: DifferentialInterferenceContrast
     /// </summary>
     public const string LiteralDifferentialInterferenceContrast = "698797007";
+
+    /// <summary>
+    /// Literal for code: NONEDifferentialInterferenceContrast
+    /// </summary>
+    public const string LiteralNONEDifferentialInterferenceContrast = "http://snomed.info/sct#698797007";
 
     /// <summary>
     /// Literal for code: TotalInternalReflectionFluorescence
@@ -13318,9 +17618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTotalInternalReflectionFluorescence = "698798002";
 
     /// <summary>
+    /// Literal for code: NONETotalInternalReflectionFluorescence
+    /// </summary>
+    public const string LiteralNONETotalInternalReflectionFluorescence = "http://snomed.info/sct#698798002";
+
+    /// <summary>
     /// Literal for code: ConeBeamComputedTomographyImagingAction
     /// </summary>
     public const string LiteralConeBeamComputedTomographyImagingAction = "702569007";
+
+    /// <summary>
+    /// Literal for code: NONEConeBeamComputedTomographyImagingAction
+    /// </summary>
+    public const string LiteralNONEConeBeamComputedTomographyImagingAction = "http://snomed.info/sct#702569007";
 
     /// <summary>
     /// Literal for code: MicrobialCulture
@@ -13328,9 +17638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMicrobialCulture = "702658000";
 
     /// <summary>
+    /// Literal for code: NONEMicrobialCulture
+    /// </summary>
+    public const string LiteralNONEMicrobialCulture = "http://snomed.info/sct#702658000";
+
+    /// <summary>
     /// Literal for code: AutomatedCount
     /// </summary>
     public const string LiteralAutomatedCount = "702659008";
+
+    /// <summary>
+    /// Literal for code: NONEAutomatedCount
+    /// </summary>
+    public const string LiteralNONEAutomatedCount = "http://snomed.info/sct#702659008";
 
     /// <summary>
     /// Literal for code: TestStrip
@@ -13338,9 +17658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTestStrip = "702660003";
 
     /// <summary>
+    /// Literal for code: NONETestStrip
+    /// </summary>
+    public const string LiteralNONETestStrip = "http://snomed.info/sct#702660003";
+
+    /// <summary>
     /// Literal for code: LightMicroscopy
     /// </summary>
     public const string LiteralLightMicroscopy = "702661004";
+
+    /// <summary>
+    /// Literal for code: NONELightMicroscopy
+    /// </summary>
+    public const string LiteralNONELightMicroscopy = "http://snomed.info/sct#702661004";
 
     /// <summary>
     /// Literal for code: HighPowerFieldLightMicroscopy
@@ -13348,9 +17678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHighPowerFieldLightMicroscopy = "702662006";
 
     /// <summary>
+    /// Literal for code: NONEHighPowerFieldLightMicroscopy
+    /// </summary>
+    public const string LiteralNONEHighPowerFieldLightMicroscopy = "http://snomed.info/sct#702662006";
+
+    /// <summary>
     /// Literal for code: ManualCount
     /// </summary>
     public const string LiteralManualCount = "702663001";
+
+    /// <summary>
+    /// Literal for code: NONEManualCount
+    /// </summary>
+    public const string LiteralNONEManualCount = "http://snomed.info/sct#702663001";
 
     /// <summary>
     /// Literal for code: ImmunologicalMethod
@@ -13358,9 +17698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImmunologicalMethod = "702664007";
 
     /// <summary>
+    /// Literal for code: NONEImmunologicalMethod
+    /// </summary>
+    public const string LiteralNONEImmunologicalMethod = "http://snomed.info/sct#702664007";
+
+    /// <summary>
     /// Literal for code: CytologyStain
     /// </summary>
     public const string LiteralCytologyStain = "702665008";
+
+    /// <summary>
+    /// Literal for code: NONECytologyStain
+    /// </summary>
+    public const string LiteralNONECytologyStain = "http://snomed.info/sct#702665008";
 
     /// <summary>
     /// Literal for code: Cytology
@@ -13368,9 +17718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCytology = "702666009";
 
     /// <summary>
+    /// Literal for code: NONECytology
+    /// </summary>
+    public const string LiteralNONECytology = "http://snomed.info/sct#702666009";
+
+    /// <summary>
     /// Literal for code: ClearanceCalculationFormula
     /// </summary>
     public const string LiteralClearanceCalculationFormula = "702667000";
+
+    /// <summary>
+    /// Literal for code: NONEClearanceCalculationFormula
+    /// </summary>
+    public const string LiteralNONEClearanceCalculationFormula = "http://snomed.info/sct#702667000";
 
     /// <summary>
     /// Literal for code: ModificationOfDietInRenalDiseaseFormula
@@ -13378,9 +17738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralModificationOfDietInRenalDiseaseFormula = "702668005";
 
     /// <summary>
+    /// Literal for code: NONEModificationOfDietInRenalDiseaseFormula
+    /// </summary>
+    public const string LiteralNONEModificationOfDietInRenalDiseaseFormula = "http://snomed.info/sct#702668005";
+
+    /// <summary>
     /// Literal for code: DirectAssay
     /// </summary>
     public const string LiteralDirectAssay = "702669002";
+
+    /// <summary>
+    /// Literal for code: NONEDirectAssay
+    /// </summary>
+    public const string LiteralNONEDirectAssay = "http://snomed.info/sct#702669002";
 
     /// <summary>
     /// Literal for code: DeoxyribonucleicAcidProbe
@@ -13388,9 +17758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeoxyribonucleicAcidProbe = "702673004";
 
     /// <summary>
+    /// Literal for code: NONEDeoxyribonucleicAcidProbe
+    /// </summary>
+    public const string LiteralNONEDeoxyribonucleicAcidProbe = "http://snomed.info/sct#702673004";
+
+    /// <summary>
     /// Literal for code: NucleicAcidHybridizationProbe
     /// </summary>
     public const string LiteralNucleicAcidHybridizationProbe = "702674005";
+
+    /// <summary>
+    /// Literal for code: NONENucleicAcidHybridizationProbe
+    /// </summary>
+    public const string LiteralNONENucleicAcidHybridizationProbe = "http://snomed.info/sct#702674005";
 
     /// <summary>
     /// Literal for code: ProbeWithTargetAmplification
@@ -13398,9 +17778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProbeWithTargetAmplification = "702675006";
 
     /// <summary>
+    /// Literal for code: NONEProbeWithTargetAmplification
+    /// </summary>
+    public const string LiteralNONEProbeWithTargetAmplification = "http://snomed.info/sct#702675006";
+
+    /// <summary>
     /// Literal for code: DetectionLimitEqualToOrLessThan20MgL
     /// </summary>
     public const string LiteralDetectionLimitEqualToOrLessThan20MgL = "702872006";
+
+    /// <summary>
+    /// Literal for code: NONEDetectionLimitEqualToOrLessThan20MgL
+    /// </summary>
+    public const string LiteralNONEDetectionLimitEqualToOrLessThan20MgL = "http://snomed.info/sct#702872006";
 
     /// <summary>
     /// Literal for code: CalculationTechnique
@@ -13408,9 +17798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCalculationTechnique = "702873001";
 
     /// <summary>
+    /// Literal for code: NONECalculationTechnique
+    /// </summary>
+    public const string LiteralNONECalculationTechnique = "http://snomed.info/sct#702873001";
+
+    /// <summary>
     /// Literal for code: Filtration
     /// </summary>
     public const string LiteralFiltration = "702940009";
+
+    /// <summary>
+    /// Literal for code: NONEFiltration
+    /// </summary>
+    public const string LiteralNONEFiltration = "http://snomed.info/sct#702940009";
 
     /// <summary>
     /// Literal for code: ParaffinEmbedding
@@ -13418,9 +17818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralParaffinEmbedding = "702941008";
 
     /// <summary>
+    /// Literal for code: NONEParaffinEmbedding
+    /// </summary>
+    public const string LiteralNONEParaffinEmbedding = "http://snomed.info/sct#702941008";
+
+    /// <summary>
     /// Literal for code: Concentration
     /// </summary>
     public const string LiteralConcentration = "702942001";
+
+    /// <summary>
+    /// Literal for code: NONEConcentration
+    /// </summary>
+    public const string LiteralNONEConcentration = "http://snomed.info/sct#702942001";
 
     /// <summary>
     /// Literal for code: DNAExtraction
@@ -13428,9 +17838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDNAExtraction = "702943006";
 
     /// <summary>
+    /// Literal for code: NONEDNAExtraction
+    /// </summary>
+    public const string LiteralNONEDNAExtraction = "http://snomed.info/sct#702943006";
+
+    /// <summary>
     /// Literal for code: RNAExtraction
     /// </summary>
     public const string LiteralRNAExtraction = "702944000";
+
+    /// <summary>
+    /// Literal for code: NONERNAExtraction
+    /// </summary>
+    public const string LiteralNONERNAExtraction = "http://snomed.info/sct#702944000";
 
     /// <summary>
     /// Literal for code: EstimatedFromGlycatedHemoglobin
@@ -13438,9 +17858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEstimatedFromGlycatedHemoglobin = "702945004";
 
     /// <summary>
+    /// Literal for code: NONEEstimatedFromGlycatedHemoglobin
+    /// </summary>
+    public const string LiteralNONEEstimatedFromGlycatedHemoglobin = "http://snomed.info/sct#702945004";
+
+    /// <summary>
     /// Literal for code: CoagulationTechnique
     /// </summary>
     public const string LiteralCoagulationTechnique = "702946003";
+
+    /// <summary>
+    /// Literal for code: NONECoagulationTechnique
+    /// </summary>
+    public const string LiteralNONECoagulationTechnique = "http://snomed.info/sct#702946003";
 
     /// <summary>
     /// Literal for code: CorrectedForNucleatedErythrocytes
@@ -13448,9 +17878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCorrectedForNucleatedErythrocytes = "702947007";
 
     /// <summary>
+    /// Literal for code: NONECorrectedForNucleatedErythrocytes
+    /// </summary>
+    public const string LiteralNONECorrectedForNucleatedErythrocytes = "http://snomed.info/sct#702947007";
+
+    /// <summary>
     /// Literal for code: DetectionLimitEqualToOrLessThan0005MIUL
     /// </summary>
     public const string LiteralDetectionLimitEqualToOrLessThan0005MIUL = "703436002";
+
+    /// <summary>
+    /// Literal for code: NONEDetectionLimitEqualToOrLessThan0005MIUL
+    /// </summary>
+    public const string LiteralNONEDetectionLimitEqualToOrLessThan0005MIUL = "http://snomed.info/sct#703436002";
 
     /// <summary>
     /// Literal for code: DetectionLimitEqualToOrLessThan001NgML
@@ -13458,9 +17898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDetectionLimitEqualToOrLessThan001NgML = "703437006";
 
     /// <summary>
+    /// Literal for code: NONEDetectionLimitEqualToOrLessThan001NgML
+    /// </summary>
+    public const string LiteralNONEDetectionLimitEqualToOrLessThan001NgML = "http://snomed.info/sct#703437006";
+
+    /// <summary>
     /// Literal for code: DetectionLimitEqualToOrLessThan005MIUL
     /// </summary>
     public const string LiteralDetectionLimitEqualToOrLessThan005MIUL = "703438001";
+
+    /// <summary>
+    /// Literal for code: NONEDetectionLimitEqualToOrLessThan005MIUL
+    /// </summary>
+    public const string LiteralNONEDetectionLimitEqualToOrLessThan005MIUL = "http://snomed.info/sct#703438001";
 
     /// <summary>
     /// Literal for code: DetectionLimitEqualToOrLessThan10NgDL
@@ -13468,9 +17918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDetectionLimitEqualToOrLessThan10NgDL = "703439009";
 
     /// <summary>
+    /// Literal for code: NONEDetectionLimitEqualToOrLessThan10NgDL
+    /// </summary>
+    public const string LiteralNONEDetectionLimitEqualToOrLessThan10NgDL = "http://snomed.info/sct#703439009";
+
+    /// <summary>
     /// Literal for code: DetectionLimitEqualToOrLessThan347PmolL
     /// </summary>
     public const string LiteralDetectionLimitEqualToOrLessThan347PmolL = "703440006";
+
+    /// <summary>
+    /// Literal for code: NONEDetectionLimitEqualToOrLessThan347PmolL
+    /// </summary>
+    public const string LiteralNONEDetectionLimitEqualToOrLessThan347PmolL = "http://snomed.info/sct#703440006";
 
     /// <summary>
     /// Literal for code: WrightStainMethod
@@ -13478,9 +17938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWrightStainMethod = "703441005";
 
     /// <summary>
+    /// Literal for code: NONEWrightStainMethod
+    /// </summary>
+    public const string LiteralNONEWrightStainMethod = "http://snomed.info/sct#703441005";
+
+    /// <summary>
     /// Literal for code: GradientStripSusceptibilityTest
     /// </summary>
     public const string LiteralGradientStripSusceptibilityTest = "703442003";
+
+    /// <summary>
+    /// Literal for code: NONEGradientStripSusceptibilityTest
+    /// </summary>
+    public const string LiteralNONEGradientStripSusceptibilityTest = "http://snomed.info/sct#703442003";
 
     /// <summary>
     /// Literal for code: FungusStainMethod
@@ -13488,9 +17958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFungusStainMethod = "703443008";
 
     /// <summary>
+    /// Literal for code: NONEFungusStainMethod
+    /// </summary>
+    public const string LiteralNONEFungusStainMethod = "http://snomed.info/sct#703443008";
+
+    /// <summary>
     /// Literal for code: FluorescentImmunoassay
     /// </summary>
     public const string LiteralFluorescentImmunoassay = "703444002";
+
+    /// <summary>
+    /// Literal for code: NONEFluorescentImmunoassay
+    /// </summary>
+    public const string LiteralNONEFluorescentImmunoassay = "http://snomed.info/sct#703444002";
 
     /// <summary>
     /// Literal for code: IonSelectiveElectrodeMeasurement
@@ -13498,9 +17978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIonSelectiveElectrodeMeasurement = "703445001";
 
     /// <summary>
+    /// Literal for code: NONEIonSelectiveElectrodeMeasurement
+    /// </summary>
+    public const string LiteralNONEIonSelectiveElectrodeMeasurement = "http://snomed.info/sct#703445001";
+
+    /// <summary>
     /// Literal for code: ImmunoblotAssay
     /// </summary>
     public const string LiteralImmunoblotAssay = "703446000";
+
+    /// <summary>
+    /// Literal for code: NONEImmunoblotAssay
+    /// </summary>
+    public const string LiteralNONEImmunoblotAssay = "http://snomed.info/sct#703446000";
 
     /// <summary>
     /// Literal for code: EIATechnique
@@ -13508,9 +17998,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEIATechnique = "703447009";
 
     /// <summary>
+    /// Literal for code: NONEEIATechnique
+    /// </summary>
+    public const string LiteralNONEEIATechnique = "http://snomed.info/sct#703447009";
+
+    /// <summary>
     /// Literal for code: LatexAgglutinationTest
     /// </summary>
     public const string LiteralLatexAgglutinationTest = "703448004";
+
+    /// <summary>
+    /// Literal for code: NONELatexAgglutinationTest
+    /// </summary>
+    public const string LiteralNONELatexAgglutinationTest = "http://snomed.info/sct#703448004";
 
     /// <summary>
     /// Literal for code: Radioimmunoassay
@@ -13518,9 +18018,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadioimmunoassay = "703449007";
 
     /// <summary>
+    /// Literal for code: NONERadioimmunoassay
+    /// </summary>
+    public const string LiteralNONERadioimmunoassay = "http://snomed.info/sct#703449007";
+
+    /// <summary>
     /// Literal for code: Electrophoresis
     /// </summary>
     public const string LiteralElectrophoresis = "703450007";
+
+    /// <summary>
+    /// Literal for code: NONEElectrophoresis
+    /// </summary>
+    public const string LiteralNONEElectrophoresis = "http://snomed.info/sct#703450007";
 
     /// <summary>
     /// Literal for code: LowPowerFieldLightMicroscopy
@@ -13528,9 +18038,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLowPowerFieldLightMicroscopy = "703451006";
 
     /// <summary>
+    /// Literal for code: NONELowPowerFieldLightMicroscopy
+    /// </summary>
+    public const string LiteralNONELowPowerFieldLightMicroscopy = "http://snomed.info/sct#703451006";
+
+    /// <summary>
     /// Literal for code: ElectricalImpedanceTechnique
     /// </summary>
     public const string LiteralElectricalImpedanceTechnique = "703452004";
+
+    /// <summary>
+    /// Literal for code: NONEElectricalImpedanceTechnique
+    /// </summary>
+    public const string LiteralNONEElectricalImpedanceTechnique = "http://snomed.info/sct#703452004";
 
     /// <summary>
     /// Literal for code: CentrifugationTechnique
@@ -13538,9 +18058,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCentrifugationTechnique = "703454003";
 
     /// <summary>
+    /// Literal for code: NONECentrifugationTechnique
+    /// </summary>
+    public const string LiteralNONECentrifugationTechnique = "http://snomed.info/sct#703454003";
+
+    /// <summary>
     /// Literal for code: RapidPlasmaReaginTechnique
     /// </summary>
     public const string LiteralRapidPlasmaReaginTechnique = "703455002";
+
+    /// <summary>
+    /// Literal for code: NONERapidPlasmaReaginTechnique
+    /// </summary>
+    public const string LiteralNONERapidPlasmaReaginTechnique = "http://snomed.info/sct#703455002";
 
     /// <summary>
     /// Literal for code: VenerealDiseaseResearchLaboratoryTechnique
@@ -13548,9 +18078,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVenerealDiseaseResearchLaboratoryTechnique = "703456001";
 
     /// <summary>
+    /// Literal for code: NONEVenerealDiseaseResearchLaboratoryTechnique
+    /// </summary>
+    public const string LiteralNONEVenerealDiseaseResearchLaboratoryTechnique = "http://snomed.info/sct#703456001";
+
+    /// <summary>
     /// Literal for code: WetPreparationTechnique
     /// </summary>
     public const string LiteralWetPreparationTechnique = "703457005";
+
+    /// <summary>
+    /// Literal for code: NONEWetPreparationTechnique
+    /// </summary>
+    public const string LiteralNONEWetPreparationTechnique = "http://snomed.info/sct#703457005";
 
     /// <summary>
     /// Literal for code: NeutralizationMethod
@@ -13558,9 +18098,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNeutralizationMethod = "703458000";
 
     /// <summary>
+    /// Literal for code: NONENeutralizationMethod
+    /// </summary>
+    public const string LiteralNONENeutralizationMethod = "http://snomed.info/sct#703458000";
+
+    /// <summary>
     /// Literal for code: WestergrenTechnique
     /// </summary>
     public const string LiteralWestergrenTechnique = "703459008";
+
+    /// <summary>
+    /// Literal for code: NONEWestergrenTechnique
+    /// </summary>
+    public const string LiteralNONEWestergrenTechnique = "http://snomed.info/sct#703459008";
 
     /// <summary>
     /// Literal for code: WintrobeTechnique
@@ -13568,9 +18118,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWintrobeTechnique = "703460003";
 
     /// <summary>
+    /// Literal for code: NONEWintrobeTechnique
+    /// </summary>
+    public const string LiteralNONEWintrobeTechnique = "http://snomed.info/sct#703460003";
+
+    /// <summary>
     /// Literal for code: ConcentrationOfParasitesMethod
     /// </summary>
     public const string LiteralConcentrationOfParasitesMethod = "703461004";
+
+    /// <summary>
+    /// Literal for code: NONEConcentrationOfParasitesMethod
+    /// </summary>
+    public const string LiteralNONEConcentrationOfParasitesMethod = "http://snomed.info/sct#703461004";
 
     /// <summary>
     /// Literal for code: CockcroftGaultFormula
@@ -13578,9 +18138,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCockcroftGaultFormula = "703462006";
 
     /// <summary>
+    /// Literal for code: NONECockcroftGaultFormula
+    /// </summary>
+    public const string LiteralNONECockcroftGaultFormula = "http://snomed.info/sct#703462006";
+
+    /// <summary>
     /// Literal for code: CalculatedFromOxygenPartialPressure
     /// </summary>
     public const string LiteralCalculatedFromOxygenPartialPressure = "703463001";
+
+    /// <summary>
+    /// Literal for code: NONECalculatedFromOxygenPartialPressure
+    /// </summary>
+    public const string LiteralNONECalculatedFromOxygenPartialPressure = "http://snomed.info/sct#703463001";
 
     /// <summary>
     /// Literal for code: Coagulation11SalineMixtureTechnique
@@ -13588,9 +18158,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCoagulation11SalineMixtureTechnique = "703488009";
 
     /// <summary>
+    /// Literal for code: NONECoagulation11SalineMixtureTechnique
+    /// </summary>
+    public const string LiteralNONECoagulation11SalineMixtureTechnique = "http://snomed.info/sct#703488009";
+
+    /// <summary>
     /// Literal for code: TranscutaneousCO2Monitor
     /// </summary>
     public const string LiteralTranscutaneousCO2Monitor = "703490005";
+
+    /// <summary>
+    /// Literal for code: NONETranscutaneousCO2Monitor
+    /// </summary>
+    public const string LiteralNONETranscutaneousCO2Monitor = "http://snomed.info/sct#703490005";
 
     /// <summary>
     /// Literal for code: TranscutaneousO2Monitor
@@ -13598,9 +18178,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTranscutaneousO2Monitor = "703492002";
 
     /// <summary>
+    /// Literal for code: NONETranscutaneousO2Monitor
+    /// </summary>
+    public const string LiteralNONETranscutaneousO2Monitor = "http://snomed.info/sct#703492002";
+
+    /// <summary>
     /// Literal for code: CalculatedFromSignalToCutoffRatio
     /// </summary>
     public const string LiteralCalculatedFromSignalToCutoffRatio = "703497008";
+
+    /// <summary>
+    /// Literal for code: NONECalculatedFromSignalToCutoffRatio
+    /// </summary>
+    public const string LiteralNONECalculatedFromSignalToCutoffRatio = "http://snomed.info/sct#703497008";
 
     /// <summary>
     /// Literal for code: ToxicologyScreeningTechnique
@@ -13608,9 +18198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralToxicologyScreeningTechnique = "703501003";
 
     /// <summary>
+    /// Literal for code: NONEToxicologyScreeningTechnique
+    /// </summary>
+    public const string LiteralNONEToxicologyScreeningTechnique = "http://snomed.info/sct#703501003";
+
+    /// <summary>
     /// Literal for code: ClearanceCalculationRelativeTo173SquareMetersBodySurfaceArea
     /// </summary>
     public const string LiteralClearanceCalculationRelativeTo173SquareMetersBodySurfaceArea = "703505007";
+
+    /// <summary>
+    /// Literal for code: NONEClearanceCalculationRelativeTo173SquareMetersBodySurfaceArea
+    /// </summary>
+    public const string LiteralNONEClearanceCalculationRelativeTo173SquareMetersBodySurfaceArea = "http://snomed.info/sct#703505007";
 
     /// <summary>
     /// Literal for code: ClearanceCalculationRelativeTo173SquareMetersBodySurfaceAreaAndAdjustedForAfricanRace
@@ -13618,9 +18218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClearanceCalculationRelativeTo173SquareMetersBodySurfaceAreaAndAdjustedForAfricanRace = "703506008";
 
     /// <summary>
+    /// Literal for code: NONEClearanceCalculationRelativeTo173SquareMetersBodySurfaceAreaAndAdjustedForAfricanRace
+    /// </summary>
+    public const string LiteralNONEClearanceCalculationRelativeTo173SquareMetersBodySurfaceAreaAndAdjustedForAfricanRace = "http://snomed.info/sct#703506008";
+
+    /// <summary>
     /// Literal for code: ClearanceCalculationRelativeTo173SquareMetersBodySurfaceAreaAndAdjustedForNonAfricanRace
     /// </summary>
     public const string LiteralClearanceCalculationRelativeTo173SquareMetersBodySurfaceAreaAndAdjustedForNonAfricanRace = "703507004";
+
+    /// <summary>
+    /// Literal for code: NONEClearanceCalculationRelativeTo173SquareMetersBodySurfaceAreaAndAdjustedForNonAfricanRace
+    /// </summary>
+    public const string LiteralNONEClearanceCalculationRelativeTo173SquareMetersBodySurfaceAreaAndAdjustedForNonAfricanRace = "http://snomed.info/sct#703507004";
 
     /// <summary>
     /// Literal for code: HighSensitivityMethodForCReactiveProtein
@@ -13628,9 +18238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHighSensitivityMethodForCReactiveProtein = "703689005";
 
     /// <summary>
+    /// Literal for code: NONEHighSensitivityMethodForCReactiveProtein
+    /// </summary>
+    public const string LiteralNONEHighSensitivityMethodForCReactiveProtein = "http://snomed.info/sct#703689005";
+
+    /// <summary>
     /// Literal for code: ConfirmatoryTechnique
     /// </summary>
     public const string LiteralConfirmatoryTechnique = "703690001";
+
+    /// <summary>
+    /// Literal for code: NONEConfirmatoryTechnique
+    /// </summary>
+    public const string LiteralNONEConfirmatoryTechnique = "http://snomed.info/sct#703690001";
 
     /// <summary>
     /// Literal for code: HighSensitivityMethodForEstradiol
@@ -13638,9 +18258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHighSensitivityMethodForEstradiol = "703724007";
 
     /// <summary>
+    /// Literal for code: NONEHighSensitivityMethodForEstradiol
+    /// </summary>
+    public const string LiteralNONEHighSensitivityMethodForEstradiol = "http://snomed.info/sct#703724007";
+
+    /// <summary>
     /// Literal for code: Culture
     /// </summary>
     public const string LiteralCulture = "703725008";
+
+    /// <summary>
+    /// Literal for code: NONECulture
+    /// </summary>
+    public const string LiteralNONECulture = "http://snomed.info/sct#703725008";
 
     /// <summary>
     /// Literal for code: AerobicCulture
@@ -13648,9 +18278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAerobicCulture = "703750006";
 
     /// <summary>
+    /// Literal for code: NONEAerobicCulture
+    /// </summary>
+    public const string LiteralNONEAerobicCulture = "http://snomed.info/sct#703750006";
+
+    /// <summary>
     /// Literal for code: AnaerobicCulture
     /// </summary>
     public const string LiteralAnaerobicCulture = "703751005";
+
+    /// <summary>
+    /// Literal for code: NONEAnaerobicCulture
+    /// </summary>
+    public const string LiteralNONEAnaerobicCulture = "http://snomed.info/sct#703751005";
 
     /// <summary>
     /// Literal for code: OrganismSpecificCulture
@@ -13658,9 +18298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOrganismSpecificCulture = "703752003";
 
     /// <summary>
+    /// Literal for code: NONEOrganismSpecificCulture
+    /// </summary>
+    public const string LiteralNONEOrganismSpecificCulture = "http://snomed.info/sct#703752003";
+
+    /// <summary>
     /// Literal for code: DetectingWithoutClassifying
     /// </summary>
     public const string LiteralDetectingWithoutClassifying = "703753008";
+
+    /// <summary>
+    /// Literal for code: NONEDetectingWithoutClassifying
+    /// </summary>
+    public const string LiteralNONEDetectingWithoutClassifying = "http://snomed.info/sct#703753008";
 
     /// <summary>
     /// Literal for code: DetectingByLightMicroscopyWithoutClassifying
@@ -13668,9 +18318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDetectingByLightMicroscopyWithoutClassifying = "703754002";
 
     /// <summary>
+    /// Literal for code: NONEDetectingByLightMicroscopyWithoutClassifying
+    /// </summary>
+    public const string LiteralNONEDetectingByLightMicroscopyWithoutClassifying = "http://snomed.info/sct#703754002";
+
+    /// <summary>
     /// Literal for code: OrganismStainingTechnique
     /// </summary>
     public const string LiteralOrganismStainingTechnique = "703856008";
+
+    /// <summary>
+    /// Literal for code: NONEOrganismStainingTechnique
+    /// </summary>
+    public const string LiteralNONEOrganismStainingTechnique = "http://snomed.info/sct#703856008";
 
     /// <summary>
     /// Literal for code: StainingTechnique
@@ -13678,9 +18338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStainingTechnique = "703857004";
 
     /// <summary>
+    /// Literal for code: NONEStainingTechnique
+    /// </summary>
+    public const string LiteralNONEStainingTechnique = "http://snomed.info/sct#703857004";
+
+    /// <summary>
     /// Literal for code: NumericEstimationTechnique
     /// </summary>
     public const string LiteralNumericEstimationTechnique = "703858009";
+
+    /// <summary>
+    /// Literal for code: NONENumericEstimationTechnique
+    /// </summary>
+    public const string LiteralNONENumericEstimationTechnique = "http://snomed.info/sct#703858009";
 
     /// <summary>
     /// Literal for code: HighSensitivityMethodForBioavailableTestosterone
@@ -13688,9 +18358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHighSensitivityMethodForBioavailableTestosterone = "703950001";
 
     /// <summary>
+    /// Literal for code: NONEHighSensitivityMethodForBioavailableTestosterone
+    /// </summary>
+    public const string LiteralNONEHighSensitivityMethodForBioavailableTestosterone = "http://snomed.info/sct#703950001";
+
+    /// <summary>
     /// Literal for code: AdjustedMeasurementTechnique
     /// </summary>
     public const string LiteralAdjustedMeasurementTechnique = "707682000";
+
+    /// <summary>
+    /// Literal for code: NONEAdjustedMeasurementTechnique
+    /// </summary>
+    public const string LiteralNONEAdjustedMeasurementTechnique = "http://snomed.info/sct#707682000";
 
     /// <summary>
     /// Literal for code: AdjustedForDiabetesTechnique
@@ -13698,9 +18378,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdjustedForDiabetesTechnique = "707683005";
 
     /// <summary>
+    /// Literal for code: NONEAdjustedForDiabetesTechnique
+    /// </summary>
+    public const string LiteralNONEAdjustedForDiabetesTechnique = "http://snomed.info/sct#707683005";
+
+    /// <summary>
     /// Literal for code: AdjustedForMultipleGestationsTechnique
     /// </summary>
     public const string LiteralAdjustedForMultipleGestationsTechnique = "707684004";
+
+    /// <summary>
+    /// Literal for code: NONEAdjustedForMultipleGestationsTechnique
+    /// </summary>
+    public const string LiteralNONEAdjustedForMultipleGestationsTechnique = "http://snomed.info/sct#707684004";
 
     /// <summary>
     /// Literal for code: AdjustedForSexHormoneBindingGlobulinTechnique
@@ -13708,9 +18398,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdjustedForSexHormoneBindingGlobulinTechnique = "707685003";
 
     /// <summary>
+    /// Literal for code: NONEAdjustedForSexHormoneBindingGlobulinTechnique
+    /// </summary>
+    public const string LiteralNONEAdjustedForSexHormoneBindingGlobulinTechnique = "http://snomed.info/sct#707685003";
+
+    /// <summary>
     /// Literal for code: AdjustedForWeightTechnique
     /// </summary>
     public const string LiteralAdjustedForWeightTechnique = "707687006";
+
+    /// <summary>
+    /// Literal for code: NONEAdjustedForWeightTechnique
+    /// </summary>
+    public const string LiteralNONEAdjustedForWeightTechnique = "http://snomed.info/sct#707687006";
 
     /// <summary>
     /// Literal for code: AdjustedToPatientsActualTemperatureTechnique
@@ -13718,9 +18418,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdjustedToPatientsActualTemperatureTechnique = "707688001";
 
     /// <summary>
+    /// Literal for code: NONEAdjustedToPatientsActualTemperatureTechnique
+    /// </summary>
+    public const string LiteralNONEAdjustedToPatientsActualTemperatureTechnique = "http://snomed.info/sct#707688001";
+
+    /// <summary>
     /// Literal for code: AdjustedToPH74Technique
     /// </summary>
     public const string LiteralAdjustedToPH74Technique = "707689009";
+
+    /// <summary>
+    /// Literal for code: NONEAdjustedToPH74Technique
+    /// </summary>
+    public const string LiteralNONEAdjustedToPH74Technique = "http://snomed.info/sct#707689009";
 
     /// <summary>
     /// Literal for code: CorrectedForAlbuminTechnique
@@ -13728,9 +18438,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCorrectedForAlbuminTechnique = "707690000";
 
     /// <summary>
+    /// Literal for code: NONECorrectedForAlbuminTechnique
+    /// </summary>
+    public const string LiteralNONECorrectedForAlbuminTechnique = "http://snomed.info/sct#707690000";
+
+    /// <summary>
     /// Literal for code: CorrectedForBackgroundTechnique
     /// </summary>
     public const string LiteralCorrectedForBackgroundTechnique = "707691001";
+
+    /// <summary>
+    /// Literal for code: NONECorrectedForBackgroundTechnique
+    /// </summary>
+    public const string LiteralNONECorrectedForBackgroundTechnique = "http://snomed.info/sct#707691001";
 
     /// <summary>
     /// Literal for code: CorrectedForGlucoseTechnique
@@ -13738,9 +18458,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCorrectedForGlucoseTechnique = "707692008";
 
     /// <summary>
+    /// Literal for code: NONECorrectedForGlucoseTechnique
+    /// </summary>
+    public const string LiteralNONECorrectedForGlucoseTechnique = "http://snomed.info/sct#707692008";
+
+    /// <summary>
     /// Literal for code: CorrectedForTotalProteinTechnique
     /// </summary>
     public const string LiteralCorrectedForTotalProteinTechnique = "707693003";
+
+    /// <summary>
+    /// Literal for code: NONECorrectedForTotalProteinTechnique
+    /// </summary>
+    public const string LiteralNONECorrectedForTotalProteinTechnique = "http://snomed.info/sct#707693003";
 
     /// <summary>
     /// Literal for code: SaturationAdjustedTo05Technique
@@ -13748,9 +18478,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSaturationAdjustedTo05Technique = "707694009";
 
     /// <summary>
+    /// Literal for code: NONESaturationAdjustedTo05Technique
+    /// </summary>
+    public const string LiteralNONESaturationAdjustedTo05Technique = "http://snomed.info/sct#707694009";
+
+    /// <summary>
     /// Literal for code: StandardBaseExcessTechnique
     /// </summary>
     public const string LiteralStandardBaseExcessTechnique = "707695005";
+
+    /// <summary>
+    /// Literal for code: NONEStandardBaseExcessTechnique
+    /// </summary>
+    public const string LiteralNONEStandardBaseExcessTechnique = "http://snomed.info/sct#707695005";
 
     /// <summary>
     /// Literal for code: StandardBaseExcessAdjustedForOxygenSaturationTechnique
@@ -13758,9 +18498,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStandardBaseExcessAdjustedForOxygenSaturationTechnique = "707696006";
 
     /// <summary>
+    /// Literal for code: NONEStandardBaseExcessAdjustedForOxygenSaturationTechnique
+    /// </summary>
+    public const string LiteralNONEStandardBaseExcessAdjustedForOxygenSaturationTechnique = "http://snomed.info/sct#707696006";
+
+    /// <summary>
     /// Literal for code: IonSelectiveMembraneElectrodeOutputAdjustedToPH74
     /// </summary>
     public const string LiteralIonSelectiveMembraneElectrodeOutputAdjustedToPH74 = "707698007";
+
+    /// <summary>
+    /// Literal for code: NONEIonSelectiveMembraneElectrodeOutputAdjustedToPH74
+    /// </summary>
+    public const string LiteralNONEIonSelectiveMembraneElectrodeOutputAdjustedToPH74 = "http://snomed.info/sct#707698007";
 
     /// <summary>
     /// Literal for code: HeliumSingleBreathOutputAdjustedForHemoglobin
@@ -13768,9 +18518,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeliumSingleBreathOutputAdjustedForHemoglobin = "707699004";
 
     /// <summary>
+    /// Literal for code: NONEHeliumSingleBreathOutputAdjustedForHemoglobin
+    /// </summary>
+    public const string LiteralNONEHeliumSingleBreathOutputAdjustedForHemoglobin = "http://snomed.info/sct#707699004";
+
+    /// <summary>
     /// Literal for code: AutomatedCountOutputCorrectedForNucleatedErythrocytes
     /// </summary>
     public const string LiteralAutomatedCountOutputCorrectedForNucleatedErythrocytes = "707700003";
+
+    /// <summary>
+    /// Literal for code: NONEAutomatedCountOutputCorrectedForNucleatedErythrocytes
+    /// </summary>
+    public const string LiteralNONEAutomatedCountOutputCorrectedForNucleatedErythrocytes = "http://snomed.info/sct#707700003";
 
     /// <summary>
     /// Literal for code: CalculatedAndAdjustedForBodyWeight
@@ -13778,9 +18538,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCalculatedAndAdjustedForBodyWeight = "707701004";
 
     /// <summary>
+    /// Literal for code: NONECalculatedAndAdjustedForBodyWeight
+    /// </summary>
+    public const string LiteralNONECalculatedAndAdjustedForBodyWeight = "http://snomed.info/sct#707701004";
+
+    /// <summary>
     /// Literal for code: CalculatedOutputAdjustedToStandard
     /// </summary>
     public const string LiteralCalculatedOutputAdjustedToStandard = "707702006";
+
+    /// <summary>
+    /// Literal for code: NONECalculatedOutputAdjustedToStandard
+    /// </summary>
+    public const string LiteralNONECalculatedOutputAdjustedToStandard = "http://snomed.info/sct#707702006";
 
     /// <summary>
     /// Literal for code: AcidFastStain
@@ -13788,9 +18558,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAcidFastStain = "708056006";
 
     /// <summary>
+    /// Literal for code: NONEAcidFastStain
+    /// </summary>
+    public const string LiteralNONEAcidFastStain = "http://snomed.info/sct#708056006";
+
+    /// <summary>
     /// Literal for code: FlowCytometry
     /// </summary>
     public const string LiteralFlowCytometry = "708058007";
+
+    /// <summary>
+    /// Literal for code: NONEFlowCytometry
+    /// </summary>
+    public const string LiteralNONEFlowCytometry = "http://snomed.info/sct#708058007";
 
     /// <summary>
     /// Literal for code: GenotypeDetermination
@@ -13798,9 +18578,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGenotypeDetermination = "708060009";
 
     /// <summary>
+    /// Literal for code: NONEGenotypeDetermination
+    /// </summary>
+    public const string LiteralNONEGenotypeDetermination = "http://snomed.info/sct#708060009";
+
+    /// <summary>
     /// Literal for code: GramStain
     /// </summary>
     public const string LiteralGramStain = "708061008";
+
+    /// <summary>
+    /// Literal for code: NONEGramStain
+    /// </summary>
+    public const string LiteralNONEGramStain = "http://snomed.info/sct#708061008";
 
     /// <summary>
     /// Literal for code: Immunodiffusion
@@ -13808,9 +18598,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImmunodiffusion = "708062001";
 
     /// <summary>
+    /// Literal for code: NONEImmunodiffusion
+    /// </summary>
+    public const string LiteralNONEImmunodiffusion = "http://snomed.info/sct#708062001";
+
+    /// <summary>
     /// Literal for code: Immunoelectrophoresis
     /// </summary>
     public const string LiteralImmunoelectrophoresis = "708063006";
+
+    /// <summary>
+    /// Literal for code: NONEImmunoelectrophoresis
+    /// </summary>
+    public const string LiteralNONEImmunoelectrophoresis = "http://snomed.info/sct#708063006";
 
     /// <summary>
     /// Literal for code: Immunofixation
@@ -13818,9 +18618,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImmunofixation = "708064000";
 
     /// <summary>
+    /// Literal for code: NONEImmunofixation
+    /// </summary>
+    public const string LiteralNONEImmunofixation = "http://snomed.info/sct#708064000";
+
+    /// <summary>
     /// Literal for code: PulseOximetry
     /// </summary>
     public const string LiteralPulseOximetry = "708065004";
+
+    /// <summary>
+    /// Literal for code: NONEPulseOximetry
+    /// </summary>
+    public const string LiteralNONEPulseOximetry = "http://snomed.info/sct#708065004";
 
     /// <summary>
     /// Literal for code: TrichromeStain
@@ -13828,9 +18638,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTrichromeStain = "708066003";
 
     /// <summary>
+    /// Literal for code: NONETrichromeStain
+    /// </summary>
+    public const string LiteralNONETrichromeStain = "http://snomed.info/sct#708066003";
+
+    /// <summary>
     /// Literal for code: WrightGiemsaStain
     /// </summary>
     public const string LiteralWrightGiemsaStain = "708067007";
+
+    /// <summary>
+    /// Literal for code: NONEWrightGiemsaStain
+    /// </summary>
+    public const string LiteralNONEWrightGiemsaStain = "http://snomed.info/sct#708067007";
 
     /// <summary>
     /// Literal for code: MolecularGenetics
@@ -13838,9 +18658,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMolecularGenetics = "708068002";
 
     /// <summary>
+    /// Literal for code: NONEMolecularGenetics
+    /// </summary>
+    public const string LiteralNONEMolecularGenetics = "http://snomed.info/sct#708068002";
+
+    /// <summary>
     /// Literal for code: ChromogenicTechnique
     /// </summary>
     public const string LiteralChromogenicTechnique = "708069005";
+
+    /// <summary>
+    /// Literal for code: NONEChromogenicTechnique
+    /// </summary>
+    public const string LiteralNONEChromogenicTechnique = "http://snomed.info/sct#708069005";
 
     /// <summary>
     /// Literal for code: SolubilityTest
@@ -13848,9 +18678,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSolubilityTest = "708070006";
 
     /// <summary>
+    /// Literal for code: NONESolubilityTest
+    /// </summary>
+    public const string LiteralNONESolubilityTest = "http://snomed.info/sct#708070006";
+
+    /// <summary>
     /// Literal for code: SmearingTechnique
     /// </summary>
     public const string LiteralSmearingTechnique = "708071005";
+
+    /// <summary>
+    /// Literal for code: NONESmearingTechnique
+    /// </summary>
+    public const string LiteralNONESmearingTechnique = "http://snomed.info/sct#708071005";
 
     /// <summary>
     /// Literal for code: MultipleAllergenBearingDisc
@@ -13858,9 +18698,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMultipleAllergenBearingDisc = "708072003";
 
     /// <summary>
+    /// Literal for code: NONEMultipleAllergenBearingDisc
+    /// </summary>
+    public const string LiteralNONEMultipleAllergenBearingDisc = "http://snomed.info/sct#708072003";
+
+    /// <summary>
     /// Literal for code: MinimumInhibitoryConcentrationSusceptibilityTest
     /// </summary>
     public const string LiteralMinimumInhibitoryConcentrationSusceptibilityTest = "708073008";
+
+    /// <summary>
+    /// Literal for code: NONEMinimumInhibitoryConcentrationSusceptibilityTest
+    /// </summary>
+    public const string LiteralNONEMinimumInhibitoryConcentrationSusceptibilityTest = "http://snomed.info/sct#708073008";
 
     /// <summary>
     /// Literal for code: LISS
@@ -13868,9 +18718,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLISS = "708074002";
 
     /// <summary>
+    /// Literal for code: NONELISS
+    /// </summary>
+    public const string LiteralNONELISS = "http://snomed.info/sct#708074002";
+
+    /// <summary>
     /// Literal for code: KOHPreparation
     /// </summary>
     public const string LiteralKOHPreparation = "708075001";
+
+    /// <summary>
+    /// Literal for code: NONEKOHPreparation
+    /// </summary>
+    public const string LiteralNONEKOHPreparation = "http://snomed.info/sct#708075001";
 
     /// <summary>
     /// Literal for code: KleihauerBetkeTechnique
@@ -13878,9 +18738,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKleihauerBetkeTechnique = "708076000";
 
     /// <summary>
+    /// Literal for code: NONEKleihauerBetkeTechnique
+    /// </summary>
+    public const string LiteralNONEKleihauerBetkeTechnique = "http://snomed.info/sct#708076000";
+
+    /// <summary>
     /// Literal for code: InfraredSpectroscopy
     /// </summary>
     public const string LiteralInfraredSpectroscopy = "708077009";
+
+    /// <summary>
+    /// Literal for code: NONEInfraredSpectroscopy
+    /// </summary>
+    public const string LiteralNONEInfraredSpectroscopy = "http://snomed.info/sct#708077009";
 
     /// <summary>
     /// Literal for code: IndiaInkStainingTechnique
@@ -13888,9 +18758,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIndiaInkStainingTechnique = "708078004";
 
     /// <summary>
+    /// Literal for code: NONEIndiaInkStainingTechnique
+    /// </summary>
+    public const string LiteralNONEIndiaInkStainingTechnique = "http://snomed.info/sct#708078004";
+
+    /// <summary>
     /// Literal for code: Immunohistochemistry
     /// </summary>
     public const string LiteralImmunohistochemistry = "708097004";
+
+    /// <summary>
+    /// Literal for code: NONEImmunohistochemistry
+    /// </summary>
+    public const string LiteralNONEImmunohistochemistry = "http://snomed.info/sct#708097004";
 
     /// <summary>
     /// Literal for code: RapidImmunoassay
@@ -13898,9 +18778,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRapidImmunoassay = "708099001";
 
     /// <summary>
+    /// Literal for code: NONERapidImmunoassay
+    /// </summary>
+    public const string LiteralNONERapidImmunoassay = "http://snomed.info/sct#708099001";
+
+    /// <summary>
     /// Literal for code: AgglutinationTechnique
     /// </summary>
     public const string LiteralAgglutinationTechnique = "708104000";
+
+    /// <summary>
+    /// Literal for code: NONEAgglutinationTechnique
+    /// </summary>
+    public const string LiteralNONEAgglutinationTechnique = "http://snomed.info/sct#708104000";
 
     /// <summary>
     /// Literal for code: ColdIncubation24Hours
@@ -13908,9 +18798,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralColdIncubation24Hours = "708125000";
 
     /// <summary>
+    /// Literal for code: NONEColdIncubation24Hours
+    /// </summary>
+    public const string LiteralNONEColdIncubation24Hours = "http://snomed.info/sct#708125000";
+
+    /// <summary>
     /// Literal for code: AcidFastKinyounQuoteSColdCarbolfuchsinStain
     /// </summary>
     public const string LiteralAcidFastKinyounQuoteSColdCarbolfuchsinStain = "708128003";
+
+    /// <summary>
+    /// Literal for code: NONEAcidFastKinyounQuoteSColdCarbolfuchsinStain
+    /// </summary>
+    public const string LiteralNONEAcidFastKinyounQuoteSColdCarbolfuchsinStain = "http://snomed.info/sct#708128003";
 
     /// <summary>
     /// Literal for code: CoombsTest
@@ -13918,9 +18818,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCoombsTest = "708130001";
 
     /// <summary>
+    /// Literal for code: NONECoombsTest
+    /// </summary>
+    public const string LiteralNONECoombsTest = "http://snomed.info/sct#708130001";
+
+    /// <summary>
     /// Literal for code: AntiHumanGlobulinTestDirect
     /// </summary>
     public const string LiteralAntiHumanGlobulinTestDirect = "708131002";
+
+    /// <summary>
+    /// Literal for code: NONEAntiHumanGlobulinTestDirect
+    /// </summary>
+    public const string LiteralNONEAntiHumanGlobulinTestDirect = "http://snomed.info/sct#708131002";
 
     /// <summary>
     /// Literal for code: AntiHumanGlobulinTestIndirect
@@ -13928,9 +18838,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAntiHumanGlobulinTestIndirect = "708132009";
 
     /// <summary>
+    /// Literal for code: NONEAntiHumanGlobulinTestIndirect
+    /// </summary>
+    public const string LiteralNONEAntiHumanGlobulinTestIndirect = "http://snomed.info/sct#708132009";
+
+    /// <summary>
     /// Literal for code: ComplementFixation
     /// </summary>
     public const string LiteralComplementFixation = "708133004";
+
+    /// <summary>
+    /// Literal for code: NONEComplementFixation
+    /// </summary>
+    public const string LiteralNONEComplementFixation = "http://snomed.info/sct#708133004";
 
     /// <summary>
     /// Literal for code: PlateletAggregationTechnique
@@ -13938,9 +18858,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlateletAggregationTechnique = "708532004";
 
     /// <summary>
+    /// Literal for code: NONEPlateletAggregationTechnique
+    /// </summary>
+    public const string LiteralNONEPlateletAggregationTechnique = "http://snomed.info/sct#708532004";
+
+    /// <summary>
     /// Literal for code: SurgicalReplacementAction
     /// </summary>
     public const string LiteralSurgicalReplacementAction = "713295009";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalReplacementAction
+    /// </summary>
+    public const string LiteralNONESurgicalReplacementAction = "http://snomed.info/sct#713295009";
 
     /// <summary>
     /// Literal for code: BacterialBacteriophageTyping
@@ -13948,9 +18878,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBacterialBacteriophageTyping = "718496006";
 
     /// <summary>
+    /// Literal for code: NONEBacterialBacteriophageTyping
+    /// </summary>
+    public const string LiteralNONEBacterialBacteriophageTyping = "http://snomed.info/sct#718496006";
+
+    /// <summary>
     /// Literal for code: IntracerebralElectroencephalogram
     /// </summary>
     public const string LiteralIntracerebralElectroencephalogram = "759005";
+
+    /// <summary>
+    /// Literal for code: NONEIntracerebralElectroencephalogram
+    /// </summary>
+    public const string LiteralNONEIntracerebralElectroencephalogram = "http://snomed.info/sct#759005";
 
     /// <summary>
     /// Literal for code: ComputerizedAxialTomographyOfCervicalSpineWithContrast
@@ -13958,9 +18898,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputerizedAxialTomographyOfCervicalSpineWithContrast = "762008";
 
     /// <summary>
+    /// Literal for code: NONEComputerizedAxialTomographyOfCervicalSpineWithContrast
+    /// </summary>
+    public const string LiteralNONEComputerizedAxialTomographyOfCervicalSpineWithContrast = "http://snomed.info/sct#762008";
+
+    /// <summary>
     /// Literal for code: WhiteBloodCellCount
     /// </summary>
     public const string LiteralWhiteBloodCellCount = "767002";
+
+    /// <summary>
+    /// Literal for code: NONEWhiteBloodCellCount
+    /// </summary>
+    public const string LiteralNONEWhiteBloodCellCount = "http://snomed.info/sct#767002";
 
     /// <summary>
     /// Literal for code: ElectrophoresisMeasurement
@@ -13968,9 +18918,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElectrophoresisMeasurement = "814007";
 
     /// <summary>
+    /// Literal for code: NONEElectrophoresisMeasurement
+    /// </summary>
+    public const string LiteralNONEElectrophoresisMeasurement = "http://snomed.info/sct#814007";
+
+    /// <summary>
     /// Literal for code: DrawerTest
     /// </summary>
     public const string LiteralDrawerTest = "831000";
+
+    /// <summary>
+    /// Literal for code: NONEDrawerTest
+    /// </summary>
+    public const string LiteralNONEDrawerTest = "http://snomed.info/sct#831000";
 
     /// <summary>
     /// Literal for code: FecalFatMeasurement72HourCollection
@@ -13978,9 +18938,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFecalFatMeasurement72HourCollection = "853003";
 
     /// <summary>
+    /// Literal for code: NONEFecalFatMeasurement72HourCollection
+    /// </summary>
+    public const string LiteralNONEFecalFatMeasurement72HourCollection = "http://snomed.info/sct#853003";
+
+    /// <summary>
     /// Literal for code: CarbamazepineMeasurement
     /// </summary>
     public const string LiteralCarbamazepineMeasurement = "870006";
+
+    /// <summary>
+    /// Literal for code: NONECarbamazepineMeasurement
+    /// </summary>
+    public const string LiteralNONECarbamazepineMeasurement = "http://snomed.info/sct#870006";
 
     /// <summary>
     /// Literal for code: SpecialBloodCoagulationTestExplainByReport
@@ -13988,9 +18958,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpecialBloodCoagulationTestExplainByReport = "879007";
 
     /// <summary>
+    /// Literal for code: NONESpecialBloodCoagulationTestExplainByReport
+    /// </summary>
+    public const string LiteralNONESpecialBloodCoagulationTestExplainByReport = "http://snomed.info/sct#879007";
+
+    /// <summary>
     /// Literal for code: TumorAntigenMeasurement
     /// </summary>
     public const string LiteralTumorAntigenMeasurement = "893000";
+
+    /// <summary>
+    /// Literal for code: NONETumorAntigenMeasurement
+    /// </summary>
+    public const string LiteralNONETumorAntigenMeasurement = "http://snomed.info/sct#893000";
 
     /// <summary>
     /// Literal for code: MHPGMeasurementUrine
@@ -13998,9 +18978,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMHPGMeasurementUrine = "910002";
 
     /// <summary>
+    /// Literal for code: NONEMHPGMeasurementUrine
+    /// </summary>
+    public const string LiteralNONEMHPGMeasurementUrine = "http://snomed.info/sct#910002";
+
+    /// <summary>
     /// Literal for code: EndoscopyOfPituitaryGland
     /// </summary>
     public const string LiteralEndoscopyOfPituitaryGland = "941001";
+
+    /// <summary>
+    /// Literal for code: NONEEndoscopyOfPituitaryGland
+    /// </summary>
+    public const string LiteralNONEEndoscopyOfPituitaryGland = "http://snomed.info/sct#941001";
 
     /// <summary>
     /// Literal for code: UltrasonicGuidanceForEndomyocardialBiopsy
@@ -14008,8 +18998,2024 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUltrasonicGuidanceForEndomyocardialBiopsy = "951000";
 
     /// <summary>
+    /// Literal for code: NONEUltrasonicGuidanceForEndomyocardialBiopsy
+    /// </summary>
+    public const string LiteralNONEUltrasonicGuidanceForEndomyocardialBiopsy = "http://snomed.info/sct#951000";
+
+    /// <summary>
     /// Literal for code: IncisionAndExplorationOfLarynx
     /// </summary>
     public const string LiteralIncisionAndExplorationOfLarynx = "969009";
+
+    /// <summary>
+    /// Literal for code: NONEIncisionAndExplorationOfLarynx
+    /// </summary>
+    public const string LiteralNONEIncisionAndExplorationOfLarynx = "http://snomed.info/sct#969009";
+
+    /// <summary>
+    /// Dictionary for looking up ObservationMethods Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1029002", Fetoscopy }, 
+      { "http://snomed.info/sct#1029002", Fetoscopy }, 
+      { "1035002", MinimumBactericidalConcentrationTestMicrodilutionMethod }, 
+      { "http://snomed.info/sct#1035002", MinimumBactericidalConcentrationTestMicrodilutionMethod }, 
+      { "1043007", DopplerColorFlowVelocityMapping }, 
+      { "http://snomed.info/sct#1043007", DopplerColorFlowVelocityMapping }, 
+      { "1044001", DiagnosticUltrasoundOfAbdomenAndRetroperitoneum }, 
+      { "http://snomed.info/sct#1044001", DiagnosticUltrasoundOfAbdomenAndRetroperitoneum }, 
+      { "115341008", TotalMeasurement }, 
+      { "http://snomed.info/sct#115341008", TotalMeasurement }, 
+      { "1225002", RadiographyOfHumerus }, 
+      { "http://snomed.info/sct#1225002", RadiographyOfHumerus }, 
+      { "128004", HandMicroscopeExaminationOfSkin }, 
+      { "http://snomed.info/sct#128004", HandMicroscopeExaminationOfSkin }, 
+      { "1292009", MagneticResonanceImagingOfUrinaryBladder }, 
+      { "http://snomed.info/sct#1292009", MagneticResonanceImagingOfUrinaryBladder }, 
+      { "129265001", EvaluationAction }, 
+      { "http://snomed.info/sct#129265001", EvaluationAction }, 
+      { "129266000", MeasurementAction }, 
+      { "http://snomed.info/sct#129266000", MeasurementAction }, 
+      { "129267009", AdministrativeAction }, 
+      { "http://snomed.info/sct#129267009", AdministrativeAction }, 
+      { "129268004", ObservationAction }, 
+      { "http://snomed.info/sct#129268004", ObservationAction }, 
+      { "129269007", AssistingAction }, 
+      { "http://snomed.info/sct#129269007", AssistingAction }, 
+      { "129271007", ManagementAction }, 
+      { "http://snomed.info/sct#129271007", ManagementAction }, 
+      { "129272000", StimulationAction }, 
+      { "http://snomed.info/sct#129272000", StimulationAction }, 
+      { "129273005", AdmissionAction }, 
+      { "http://snomed.info/sct#129273005", AdmissionAction }, 
+      { "129274004", DischargeAction }, 
+      { "http://snomed.info/sct#129274004", DischargeAction }, 
+      { "129275003", AdministrativeTransferAction }, 
+      { "http://snomed.info/sct#129275003", AdministrativeTransferAction }, 
+      { "129276002", ReferralAction }, 
+      { "http://snomed.info/sct#129276002", ReferralAction }, 
+      { "129277006", AdministrativeDispositionAction }, 
+      { "http://snomed.info/sct#129277006", AdministrativeDispositionAction }, 
+      { "129278001", AuditAction }, 
+      { "http://snomed.info/sct#129278001", AuditAction }, 
+      { "129279009", MedicolegalAction }, 
+      { "http://snomed.info/sct#129279009", MedicolegalAction }, 
+      { "129280007", MedicolegalTestimonyAction }, 
+      { "http://snomed.info/sct#129280007", MedicolegalTestimonyAction }, 
+      { "129283009", TrainingAction }, 
+      { "http://snomed.info/sct#129283009", TrainingAction }, 
+      { "129284003", SurgicalAction }, 
+      { "http://snomed.info/sct#129284003", SurgicalAction }, 
+      { "129286001", MicrosurgeryAction }, 
+      { "http://snomed.info/sct#129286001", MicrosurgeryAction }, 
+      { "129287005", IncisionAction }, 
+      { "http://snomed.info/sct#129287005", IncisionAction }, 
+      { "129288000", ExploratoryIncisionAction }, 
+      { "http://snomed.info/sct#129288000", ExploratoryIncisionAction }, 
+      { "129289008", DrainageAction }, 
+      { "http://snomed.info/sct#129289008", DrainageAction }, 
+      { "129291000", DrillingAction }, 
+      { "http://snomed.info/sct#129291000", DrillingAction }, 
+      { "129292007", EvacuationAction }, 
+      { "http://snomed.info/sct#129292007", EvacuationAction }, 
+      { "129293002", DissectionAction }, 
+      { "http://snomed.info/sct#129293002", DissectionAction }, 
+      { "129294008", DiscissionAction }, 
+      { "http://snomed.info/sct#129294008", DiscissionAction }, 
+      { "129295009", SlittingAction }, 
+      { "http://snomed.info/sct#129295009", SlittingAction }, 
+      { "129296005", BisectionAction }, 
+      { "http://snomed.info/sct#129296005", BisectionAction }, 
+      { "129297001", BifurcationAction }, 
+      { "http://snomed.info/sct#129297001", BifurcationAction }, 
+      { "129298006", DivisionAction }, 
+      { "http://snomed.info/sct#129298006", DivisionAction }, 
+      { "129299003", ReleaseAction }, 
+      { "http://snomed.info/sct#129299003", ReleaseAction }, 
+      { "129300006", PunctureAction }, 
+      { "http://snomed.info/sct#129300006", PunctureAction }, 
+      { "129301005", ScarificationAction }, 
+      { "http://snomed.info/sct#129301005", ScarificationAction }, 
+      { "129303008", RemovalAction }, 
+      { "http://snomed.info/sct#129303008", RemovalAction }, 
+      { "129304002", ExcisionAction }, 
+      { "http://snomed.info/sct#129304002", ExcisionAction }, 
+      { "129305001", WedgeResectionAction }, 
+      { "http://snomed.info/sct#129305001", WedgeResectionAction }, 
+      { "129306000", SurgicalRemovalAction }, 
+      { "http://snomed.info/sct#129306000", SurgicalRemovalAction }, 
+      { "129307009", ExpulsionAction }, 
+      { "http://snomed.info/sct#129307009", ExpulsionAction }, 
+      { "129308004", ReexcisionAction }, 
+      { "http://snomed.info/sct#129308004", ReexcisionAction }, 
+      { "129309007", AmputationAction }, 
+      { "http://snomed.info/sct#129309007", AmputationAction }, 
+      { "129310002", TransfixionAction }, 
+      { "http://snomed.info/sct#129310002", TransfixionAction }, 
+      { "129311003", EviscerationAction }, 
+      { "http://snomed.info/sct#129311003", EviscerationAction }, 
+      { "129312005", EnucleationAction }, 
+      { "http://snomed.info/sct#129312005", EnucleationAction }, 
+      { "129313000", TrephinationAction }, 
+      { "http://snomed.info/sct#129313000", TrephinationAction }, 
+      { "129314006", BiopsyAction }, 
+      { "http://snomed.info/sct#129314006", BiopsyAction }, 
+      { "129315007", IncisionalBiopsyAction }, 
+      { "http://snomed.info/sct#129315007", IncisionalBiopsyAction }, 
+      { "129316008", AspirationAction }, 
+      { "http://snomed.info/sct#129316008", AspirationAction }, 
+      { "129317004", DebridementAction }, 
+      { "http://snomed.info/sct#129317004", DebridementAction }, 
+      { "129318009", SaucerizationAction }, 
+      { "http://snomed.info/sct#129318009", SaucerizationAction }, 
+      { "129319001", CurettageAction }, 
+      { "http://snomed.info/sct#129319001", CurettageAction }, 
+      { "129321006", TrimmingAction }, 
+      { "http://snomed.info/sct#129321006", TrimmingAction }, 
+      { "129322004", ShavingAction }, 
+      { "http://snomed.info/sct#129322004", ShavingAction }, 
+      { "129323009", ScrapingAction }, 
+      { "http://snomed.info/sct#129323009", ScrapingAction }, 
+      { "129324003", FilletingAction }, 
+      { "http://snomed.info/sct#129324003", FilletingAction }, 
+      { "129325002", IntroductionAction }, 
+      { "http://snomed.info/sct#129325002", IntroductionAction }, 
+      { "129326001", InjectionAction }, 
+      { "http://snomed.info/sct#129326001", InjectionAction }, 
+      { "129327005", TattooingAction }, 
+      { "http://snomed.info/sct#129327005", TattooingAction }, 
+      { "129328000", InflationAction }, 
+      { "http://snomed.info/sct#129328000", InflationAction }, 
+      { "129330003", InfusionAction }, 
+      { "http://snomed.info/sct#129330003", InfusionAction }, 
+      { "129331004", PerfusionAction }, 
+      { "http://snomed.info/sct#129331004", PerfusionAction }, 
+      { "129332006", IrrigationAction }, 
+      { "http://snomed.info/sct#129332006", IrrigationAction }, 
+      { "129333001", InsufflationAction }, 
+      { "http://snomed.info/sct#129333001", InsufflationAction }, 
+      { "129334007", InstillationAction }, 
+      { "http://snomed.info/sct#129334007", InstillationAction }, 
+      { "129335008", EmbolizationAction }, 
+      { "http://snomed.info/sct#129335008", EmbolizationAction }, 
+      { "129337000", ReimplantationAction }, 
+      { "http://snomed.info/sct#129337000", ReimplantationAction }, 
+      { "129339002", IntubationAction }, 
+      { "http://snomed.info/sct#129339002", IntubationAction }, 
+      { "129340000", SoundingAction }, 
+      { "http://snomed.info/sct#129340000", SoundingAction }, 
+      { "129344009", SurgicalRecessionAction }, 
+      { "http://snomed.info/sct#129344009", SurgicalRecessionAction }, 
+      { "129345005", ResectionRecessionAction }, 
+      { "http://snomed.info/sct#129345005", ResectionRecessionAction }, 
+      { "129346006", RadialIncisionAction }, 
+      { "http://snomed.info/sct#129346006", RadialIncisionAction }, 
+      { "129347002", SurgicalTransferAction }, 
+      { "http://snomed.info/sct#129347002", SurgicalTransferAction }, 
+      { "129348007", ZPlastyAction }, 
+      { "http://snomed.info/sct#129348007", ZPlastyAction }, 
+      { "129349004", SurgicalLengtheningAction }, 
+      { "http://snomed.info/sct#129349004", SurgicalLengtheningAction }, 
+      { "129350004", SurgicalShorteningAction }, 
+      { "http://snomed.info/sct#129350004", SurgicalShorteningAction }, 
+      { "129351000", SurgicalAugmentationAction }, 
+      { "http://snomed.info/sct#129351000", SurgicalAugmentationAction }, 
+      { "129352007", SurgicalAdvancementAction }, 
+      { "http://snomed.info/sct#129352007", SurgicalAdvancementAction }, 
+      { "129353002", SuspensionAndFixationAction }, 
+      { "http://snomed.info/sct#129353002", SuspensionAndFixationAction }, 
+      { "129354008", ExteriorizationAction }, 
+      { "http://snomed.info/sct#129354008", ExteriorizationAction }, 
+      { "129355009", MarsupializationAction }, 
+      { "http://snomed.info/sct#129355009", MarsupializationAction }, 
+      { "129356005", ReinforcementAction }, 
+      { "http://snomed.info/sct#129356005", ReinforcementAction }, 
+      { "129357001", ClosureAction }, 
+      { "http://snomed.info/sct#129357001", ClosureAction }, 
+      { "129358006", LayeredClosureAction }, 
+      { "http://snomed.info/sct#129358006", LayeredClosureAction }, 
+      { "129360008", OversewingAction }, 
+      { "http://snomed.info/sct#129360008", OversewingAction }, 
+      { "129366002", ClosureByBucklingAction }, 
+      { "http://snomed.info/sct#129366002", ClosureByBucklingAction }, 
+      { "129368001", CerclageAction }, 
+      { "http://snomed.info/sct#129368001", CerclageAction }, 
+      { "129369009", LigationAction }, 
+      { "http://snomed.info/sct#129369009", LigationAction }, 
+      { "129371009", FixationAction }, 
+      { "http://snomed.info/sct#129371009", FixationAction }, 
+      { "129372002", CryopexyAction }, 
+      { "http://snomed.info/sct#129372002", CryopexyAction }, 
+      { "129373007", PlicationAction }, 
+      { "http://snomed.info/sct#129373007", PlicationAction }, 
+      { "129374001", ImbricationAction }, 
+      { "http://snomed.info/sct#129374001", ImbricationAction }, 
+      { "129376004", ConstructionAction }, 
+      { "http://snomed.info/sct#129376004", ConstructionAction }, 
+      { "129377008", ReconstructionAction }, 
+      { "http://snomed.info/sct#129377008", ReconstructionAction }, 
+      { "129378003", StabilizationAction }, 
+      { "http://snomed.info/sct#129378003", StabilizationAction }, 
+      { "129379006", FusionAction }, 
+      { "http://snomed.info/sct#129379006", FusionAction }, 
+      { "129380009", AnchoringAction }, 
+      { "http://snomed.info/sct#129380009", AnchoringAction }, 
+      { "129381008", EnlargementAction }, 
+      { "http://snomed.info/sct#129381008", EnlargementAction }, 
+      { "129382001", DestructionAction }, 
+      { "http://snomed.info/sct#129382001", DestructionAction }, 
+      { "129383006", AvulsionAction }, 
+      { "http://snomed.info/sct#129383006", AvulsionAction }, 
+      { "129384000", DecorticationAction }, 
+      { "http://snomed.info/sct#129384000", DecorticationAction }, 
+      { "129385004", StrippingAction }, 
+      { "http://snomed.info/sct#129385004", StrippingAction }, 
+      { "129386003", StrippingAndLigationAction }, 
+      { "http://snomed.info/sct#129386003", StrippingAndLigationAction }, 
+      { "129387007", AbrasionAction }, 
+      { "http://snomed.info/sct#129387007", AbrasionAction }, 
+      { "129388002", SalabrasionAction }, 
+      { "http://snomed.info/sct#129388002", SalabrasionAction }, 
+      { "129389005", GrindingAction }, 
+      { "http://snomed.info/sct#129389005", GrindingAction }, 
+      { "129390001", CoagulationAction }, 
+      { "http://snomed.info/sct#129390001", CoagulationAction }, 
+      { "129391002", ObliterationAction }, 
+      { "http://snomed.info/sct#129391002", ObliterationAction }, 
+      { "129392009", CauterizationAction }, 
+      { "http://snomed.info/sct#129392009", CauterizationAction }, 
+      { "129393004", CryosurgeryAction }, 
+      { "http://snomed.info/sct#129393004", CryosurgeryAction }, 
+      { "129394005", ThermocauteryAction }, 
+      { "http://snomed.info/sct#129394005", ThermocauteryAction }, 
+      { "129395006", FulgurationAction }, 
+      { "http://snomed.info/sct#129395006", FulgurationAction }, 
+      { "129396007", ElectrodesiccationAction }, 
+      { "http://snomed.info/sct#129396007", ElectrodesiccationAction }, 
+      { "129397003", ElectrocoagulationAction }, 
+      { "http://snomed.info/sct#129397003", ElectrocoagulationAction }, 
+      { "129398008", GalvanocauterizationAction }, 
+      { "http://snomed.info/sct#129398008", GalvanocauterizationAction }, 
+      { "129399000", ElectrodestructionAction }, 
+      { "http://snomed.info/sct#129399000", ElectrodestructionAction }, 
+      { "129400007", CrushingAction }, 
+      { "http://snomed.info/sct#129400007", CrushingAction }, 
+      { "129401006", FragmentationAction }, 
+      { "http://snomed.info/sct#129401006", FragmentationAction }, 
+      { "129402004", EmulsificationAction }, 
+      { "http://snomed.info/sct#129402004", EmulsificationAction }, 
+      { "129403009", ChemosurgeryAction }, 
+      { "http://snomed.info/sct#129403009", ChemosurgeryAction }, 
+      { "129404003", ChemocauteryAction }, 
+      { "http://snomed.info/sct#129404003", ChemocauteryAction }, 
+      { "129405002", PhotocoagulationAction }, 
+      { "http://snomed.info/sct#129405002", PhotocoagulationAction }, 
+      { "129406001", TransplantationAction }, 
+      { "http://snomed.info/sct#129406001", TransplantationAction }, 
+      { "129407005", GraftingAction }, 
+      { "http://snomed.info/sct#129407005", GraftingAction }, 
+      { "129408000", ManipulationAction }, 
+      { "http://snomed.info/sct#129408000", ManipulationAction }, 
+      { "129409008", MobilizationAction }, 
+      { "http://snomed.info/sct#129409008", MobilizationAction }, 
+      { "129410003", RemobilizationAction }, 
+      { "http://snomed.info/sct#129410003", RemobilizationAction }, 
+      { "129411004", TractionAction }, 
+      { "http://snomed.info/sct#129411004", TractionAction }, 
+      { "129412006", ManualReductionAction }, 
+      { "http://snomed.info/sct#129412006", ManualReductionAction }, 
+      { "129413001", ElevationAction }, 
+      { "http://snomed.info/sct#129413001", ElevationAction }, 
+      { "129414007", InstrumentalElevationAction }, 
+      { "http://snomed.info/sct#129414007", InstrumentalElevationAction }, 
+      { "129415008", ExtractionAction }, 
+      { "http://snomed.info/sct#129415008", ExtractionAction }, 
+      { "129416009", SurgicalExtractionAction }, 
+      { "http://snomed.info/sct#129416009", SurgicalExtractionAction }, 
+      { "129418005", ExpressionAction }, 
+      { "http://snomed.info/sct#129418005", ExpressionAction }, 
+      { "129419002", DilationAction }, 
+      { "http://snomed.info/sct#129419002", DilationAction }, 
+      { "129420008", StretchingAction }, 
+      { "http://snomed.info/sct#129420008", StretchingAction }, 
+      { "129421007", DilationAndStretchingAction }, 
+      { "http://snomed.info/sct#129421007", DilationAndStretchingAction }, 
+      { "129423005", BougienageAction }, 
+      { "http://snomed.info/sct#129423005", BougienageAction }, 
+      { "129424004", FittingAction }, 
+      { "http://snomed.info/sct#129424004", FittingAction }, 
+      { "129425003", ApplicationAction }, 
+      { "http://snomed.info/sct#129425003", ApplicationAction }, 
+      { "129426002", AdjustmentAction }, 
+      { "http://snomed.info/sct#129426002", AdjustmentAction }, 
+      { "129427006", ReductionAction }, 
+      { "http://snomed.info/sct#129427006", ReductionAction }, 
+      { "129430004", ConsultationAction }, 
+      { "http://snomed.info/sct#129430004", ConsultationAction }, 
+      { "129431000", HistoryTakingAction }, 
+      { "http://snomed.info/sct#129431000", HistoryTakingAction }, 
+      { "129433002", InspectionAction }, 
+      { "http://snomed.info/sct#129433002", InspectionAction }, 
+      { "129434008", PalpationAction }, 
+      { "http://snomed.info/sct#129434008", PalpationAction }, 
+      { "129435009", PercussionAction }, 
+      { "http://snomed.info/sct#129435009", PercussionAction }, 
+      { "129436005", AuscultationAction }, 
+      { "http://snomed.info/sct#129436005", AuscultationAction }, 
+      { "129437001", OpticalTransilluminationAction }, 
+      { "http://snomed.info/sct#129437001", OpticalTransilluminationAction }, 
+      { "129438006", PrescriptionAction }, 
+      { "http://snomed.info/sct#129438006", PrescriptionAction }, 
+      { "129441002", CounselingAction }, 
+      { "http://snomed.info/sct#129441002", CounselingAction }, 
+      { "129442009", IontophoresisAction }, 
+      { "http://snomed.info/sct#129442009", IontophoresisAction }, 
+      { "129443004", ElectrolysisAction }, 
+      { "http://snomed.info/sct#129443004", ElectrolysisAction }, 
+      { "129444005", SurgicalGalvanismAction }, 
+      { "http://snomed.info/sct#129444005", SurgicalGalvanismAction }, 
+      { "129445006", AdministrationAction }, 
+      { "http://snomed.info/sct#129445006", AdministrationAction }, 
+      { "129449000", FunctionalAssessmentAction }, 
+      { "http://snomed.info/sct#129449000", FunctionalAssessmentAction }, 
+      { "1324000", CerebrospinalFluidIgGRatioAndIgGIndex }, 
+      { "http://snomed.info/sct#1324000", CerebrospinalFluidIgGRatioAndIgGIndex }, 
+      { "135007", ArthrotomyOfWristJointWithExplorationAndBiopsy }, 
+      { "http://snomed.info/sct#135007", ArthrotomyOfWristJointWithExplorationAndBiopsy }, 
+      { "1358008", AntiHumanGlobulinTestEnzymeTechniqueTiter }, 
+      { "http://snomed.info/sct#1358008", AntiHumanGlobulinTestEnzymeTechniqueTiter }, 
+      { "1385001", EchographyScanBModeForFetalAgeDetermination }, 
+      { "http://snomed.info/sct#1385001", EchographyScanBModeForFetalAgeDetermination }, 
+      { "1399002", IncisionAndExplorationOfUreter }, 
+      { "http://snomed.info/sct#1399002", IncisionAndExplorationOfUreter }, 
+      { "1414009", AngiographyOfArteriovenousShunt }, 
+      { "http://snomed.info/sct#1414009", AngiographyOfArteriovenousShunt }, 
+      { "1494008", OsmolarityMeasurement }, 
+      { "http://snomed.info/sct#1494008", OsmolarityMeasurement }, 
+      { "153001", CystourethroscopyWithResectionOfUreterocele }, 
+      { "http://snomed.info/sct#153001", CystourethroscopyWithResectionOfUreterocele }, 
+      { "1550000", AmikacinMeasurement }, 
+      { "http://snomed.info/sct#1550000", AmikacinMeasurement }, 
+      { "1559004", IL2Assay }, 
+      { "http://snomed.info/sct#1559004", IL2Assay }, 
+      { "1597004", SkeletalXRayOfAnkleAndFoot }, 
+      { "http://snomed.info/sct#1597004", SkeletalXRayOfAnkleAndFoot }, 
+      { "1616001", GalactosylceramideBetaGalactosidaseMeasurementLeukocytes }, 
+      { "http://snomed.info/sct#1616001", GalactosylceramideBetaGalactosidaseMeasurementLeukocytes }, 
+      { "1640009", HistoryAndPhysicalExaminationInsurance }, 
+      { "http://snomed.info/sct#1640009", HistoryAndPhysicalExaminationInsurance }, 
+      { "1677001", HaagensenTest }, 
+      { "http://snomed.info/sct#1677001", HaagensenTest }, 
+      { "170009", SpecialPotencyDiskIdentificationVancomycinTest }, 
+      { "http://snomed.info/sct#170009", SpecialPotencyDiskIdentificationVancomycinTest }, 
+      { "1712009", ImmunoglobulinTypingIgG }, 
+      { "http://snomed.info/sct#1712009", ImmunoglobulinTypingIgG }, 
+      { "1757000", ArthroscopyOfWristWithPartialSynovectomy }, 
+      { "http://snomed.info/sct#1757000", ArthroscopyOfWristWithPartialSynovectomy }, 
+      { "1759002", AssessmentOfNutritionalStatus }, 
+      { "http://snomed.info/sct#1759002", AssessmentOfNutritionalStatus }, 
+      { "1784004", FecalStercobilinQualitative }, 
+      { "http://snomed.info/sct#1784004", FecalStercobilinQualitative }, 
+      { "1787006", UltrasonicGuidanceForPericardiocentesis }, 
+      { "http://snomed.info/sct#1787006", UltrasonicGuidanceForPericardiocentesis }, 
+      { "1820004", AlcoholMeasurementBreath }, 
+      { "http://snomed.info/sct#1820004", AlcoholMeasurementBreath }, 
+      { "183648002", LongTermAssistance }, 
+      { "http://snomed.info/sct#183648002", LongTermAssistance }, 
+      { "1879000", FluorescentAntigenMeasurement }, 
+      { "http://snomed.info/sct#1879000", FluorescentAntigenMeasurement }, 
+      { "197002", MoldToYeastConversionTest }, 
+      { "http://snomed.info/sct#197002", MoldToYeastConversionTest }, 
+      { "2054004", BarbituratesMeasurementQuantitativeAndQualitative }, 
+      { "http://snomed.info/sct#2054004", BarbituratesMeasurementQuantitativeAndQualitative }, 
+      { "2196003", GasLiquidChromatographyElectronCaptureType }, 
+      { "http://snomed.info/sct#2196003", GasLiquidChromatographyElectronCaptureType }, 
+      { "2214008", CuretteTestOfSkin }, 
+      { "http://snomed.info/sct#2214008", CuretteTestOfSkin }, 
+      { "2220009", ComplementComponentAssay }, 
+      { "http://snomed.info/sct#2220009", ComplementComponentAssay }, 
+      { "2225004", SensititerSystemTest }, 
+      { "http://snomed.info/sct#2225004", SensititerSystemTest }, 
+      { "2244006", ArthroscopyOfWristWithInternalFixationForInstability }, 
+      { "http://snomed.info/sct#2244006", ArthroscopyOfWristWithInternalFixationForInstability }, 
+      { "2266004", VenographyOfAdrenalBilateral }, 
+      { "http://snomed.info/sct#2266004", VenographyOfAdrenalBilateral }, 
+      { "2276001", ExplorationOfPoplitealArtery }, 
+      { "http://snomed.info/sct#2276001", ExplorationOfPoplitealArtery }, 
+      { "2278000", UrinalysisAutomated }, 
+      { "http://snomed.info/sct#2278000", UrinalysisAutomated }, 
+      { "2279008", AntibodyDetectionRBCEnzyme1StageTechniqueIncludingAntiHumanGlobulin }, 
+      { "http://snomed.info/sct#2279008", AntibodyDetectionRBCEnzyme1StageTechniqueIncludingAntiHumanGlobulin }, 
+      { "2290003", MicrobialCultureAnaerobicInitialIsolation }, 
+      { "http://snomed.info/sct#2290003", MicrobialCultureAnaerobicInitialIsolation }, 
+      { "2347001", DiagnosticModelConstruction }, 
+      { "http://snomed.info/sct#2347001", DiagnosticModelConstruction }, 
+      { "2373006", BuffyCoatSmearEvaluation }, 
+      { "http://snomed.info/sct#2373006", BuffyCoatSmearEvaluation }, 
+      { "2408004", HexosaminidaseAAndTotalHexosaminidaseMeasurementSerum }, 
+      { "http://snomed.info/sct#2408004", HexosaminidaseAAndTotalHexosaminidaseMeasurementSerum }, 
+      { "2425002", EpsteinBarrVirusSerologicTest }, 
+      { "http://snomed.info/sct#2425002", EpsteinBarrVirusSerologicTest }, 
+      { "2448007", CellCountOfSynovialFluidWithDifferentialCount }, 
+      { "http://snomed.info/sct#2448007", CellCountOfSynovialFluidWithDifferentialCount }, 
+      { "245854003", ProximalAnastomosis }, 
+      { "http://snomed.info/sct#245854003", ProximalAnastomosis }, 
+      { "245855002", DistalAnastomosis }, 
+      { "http://snomed.info/sct#245855002", DistalAnastomosis }, 
+      { "2461007", TennisElbowTest }, 
+      { "http://snomed.info/sct#2461007", TennisElbowTest }, 
+      { "246363001", AcquisitionTechnique }, 
+      { "http://snomed.info/sct#246363001", AcquisitionTechnique }, 
+      { "246502009", BladderFillingTechnique }, 
+      { "http://snomed.info/sct#246502009", BladderFillingTechnique }, 
+      { "246503004", CatheterMovementTechnique }, 
+      { "http://snomed.info/sct#246503004", CatheterMovementTechnique }, 
+      { "246504005", NearReadingTechnique }, 
+      { "http://snomed.info/sct#246504005", NearReadingTechnique }, 
+      { "246505006", PhotonDetectionTechnique }, 
+      { "http://snomed.info/sct#246505006", PhotonDetectionTechnique }, 
+      { "246506007", ProvocationTechnique }, 
+      { "http://snomed.info/sct#246506007", ProvocationTechnique }, 
+      { "246507003", StimulationTechnique }, 
+      { "http://snomed.info/sct#246507003", StimulationTechnique }, 
+      { "2507007", VAL5QuoteNucleotidaseMeasurement }, 
+      { "http://snomed.info/sct#2507007", VAL5QuoteNucleotidaseMeasurement }, 
+      { "2508002", RetrogradeUrographyWithKUB }, 
+      { "http://snomed.info/sct#2508002", RetrogradeUrographyWithKUB }, 
+      { "2531002", MononuclearCellFunctionAssay }, 
+      { "http://snomed.info/sct#2531002", MononuclearCellFunctionAssay }, 
+      { "255459008", Flash }, 
+      { "http://snomed.info/sct#255459008", Flash }, 
+      { "255463001", SingleTetanyTechnique }, 
+      { "http://snomed.info/sct#255463001", SingleTetanyTechnique }, 
+      { "255583002", RetrudedJawRelationTechnique }, 
+      { "http://snomed.info/sct#255583002", RetrudedJawRelationTechnique }, 
+      { "255595002", DebulkingAction }, 
+      { "http://snomed.info/sct#255595002", DebulkingAction }, 
+      { "256233002", RectallyInfusedSalineSolution }, 
+      { "http://snomed.info/sct#256233002", RectallyInfusedSalineSolution }, 
+      { "256644001", DarningAction }, 
+      { "http://snomed.info/sct#256644001", DarningAction }, 
+      { "257414001", AdultNTypes }, 
+      { "http://snomed.info/sct#257414001", AdultNTypes }, 
+      { "257425005", BrightField }, 
+      { "http://snomed.info/sct#257425005", BrightField }, 
+      { "257428007", DentSleeveTechnique }, 
+      { "http://snomed.info/sct#257428007", DentSleeveTechnique }, 
+      { "257452000", SbisaBar }, 
+      { "http://snomed.info/sct#257452000", SbisaBar }, 
+      { "257456002", SolidSphereTechnique }, 
+      { "http://snomed.info/sct#257456002", SolidSphereTechnique }, 
+      { "257460004", SweptSpatialFrequencyBars }, 
+      { "http://snomed.info/sct#257460004", SweptSpatialFrequencyBars }, 
+      { "257465009", WaxWaferTechnique }, 
+      { "http://snomed.info/sct#257465009", WaxWaferTechnique }, 
+      { "257729003", Ablation }, 
+      { "http://snomed.info/sct#257729003", Ablation }, 
+      { "257730008", ChemicalDestruction }, 
+      { "http://snomed.info/sct#257730008", ChemicalDestruction }, 
+      { "257739009", OpenAdjustment }, 
+      { "http://snomed.info/sct#257739009", OpenAdjustment }, 
+      { "257740006", VYAdvancementTechnique }, 
+      { "http://snomed.info/sct#257740006", VYAdvancementTechnique }, 
+      { "257741005", Anastomosis }, 
+      { "http://snomed.info/sct#257741005", Anastomosis }, 
+      { "257742003", DirectAnastomosisAction }, 
+      { "http://snomed.info/sct#257742003", DirectAnastomosisAction }, 
+      { "257743008", LecompteManeuver }, 
+      { "http://snomed.info/sct#257743008", LecompteManeuver }, 
+      { "257744002", EndToEndAnastomosis }, 
+      { "http://snomed.info/sct#257744002", EndToEndAnastomosis }, 
+      { "257745001", DoubleBarrelledEndToEndAnastomosis }, 
+      { "http://snomed.info/sct#257745001", DoubleBarrelledEndToEndAnastomosis }, 
+      { "257746000", EndToSideAnastomosis }, 
+      { "http://snomed.info/sct#257746000", EndToSideAnastomosis }, 
+      { "257747009", RouxEnY }, 
+      { "http://snomed.info/sct#257747009", RouxEnY }, 
+      { "257748004", EndToSideAnastomosisWithoutTunnel }, 
+      { "http://snomed.info/sct#257748004", EndToSideAnastomosisWithoutTunnel }, 
+      { "257749007", EndToSideAnastomosisWithTunnel }, 
+      { "http://snomed.info/sct#257749007", EndToSideAnastomosisWithTunnel }, 
+      { "257750007", SideToSideAnastomosis }, 
+      { "http://snomed.info/sct#257750007", SideToSideAnastomosis }, 
+      { "257751006", WallaceQuotation69QuotationSideToEndAnastomosis }, 
+      { "http://snomed.info/sct#257751006", WallaceQuotation69QuotationSideToEndAnastomosis }, 
+      { "257759008", FNAFineNeedleAspiration }, 
+      { "http://snomed.info/sct#257759008", FNAFineNeedleAspiration }, 
+      { "257768005", BindingAction }, 
+      { "http://snomed.info/sct#257768005", BindingAction }, 
+      { "257771002", Cementing }, 
+      { "http://snomed.info/sct#257771002", Cementing }, 
+      { "257772009", CementingWithNormalViscosityCement }, 
+      { "http://snomed.info/sct#257772009", CementingWithNormalViscosityCement }, 
+      { "257774005", CementingWithLowViscosityCement }, 
+      { "http://snomed.info/sct#257774005", CementingWithLowViscosityCement }, 
+      { "257775006", CementingWithNormalViscosityCementContainingAntibiotic }, 
+      { "http://snomed.info/sct#257775006", CementingWithNormalViscosityCementContainingAntibiotic }, 
+      { "257776007", CementingWithLowViscosityCementContainingAntibiotic }, 
+      { "http://snomed.info/sct#257776007", CementingWithLowViscosityCementContainingAntibiotic }, 
+      { "257777003", ChemicalInactivation }, 
+      { "http://snomed.info/sct#257777003", ChemicalInactivation }, 
+      { "257778008", Chemodissolution }, 
+      { "http://snomed.info/sct#257778008", Chemodissolution }, 
+      { "257780002", MassClosure }, 
+      { "http://snomed.info/sct#257780002", MassClosure }, 
+      { "257781003", InterruptedMassClosure }, 
+      { "http://snomed.info/sct#257781003", InterruptedMassClosure }, 
+      { "257782005", ContinuousMassClosure }, 
+      { "http://snomed.info/sct#257782005", ContinuousMassClosure }, 
+      { "257783000", Thermocoagulation }, 
+      { "http://snomed.info/sct#257783000", Thermocoagulation }, 
+      { "257784006", SemmThermalCoagulation }, 
+      { "http://snomed.info/sct#257784006", SemmThermalCoagulation }, 
+      { "257785007", WolfThermalCoagulation }, 
+      { "http://snomed.info/sct#257785007", WolfThermalCoagulation }, 
+      { "257786008", CryotherapyAction }, 
+      { "http://snomed.info/sct#257786008", CryotherapyAction }, 
+      { "257788009", Delamination }, 
+      { "http://snomed.info/sct#257788009", Delamination }, 
+      { "257789001", Hydrodelamination }, 
+      { "http://snomed.info/sct#257789001", Hydrodelamination }, 
+      { "257791009", DesiccationAction }, 
+      { "http://snomed.info/sct#257791009", DesiccationAction }, 
+      { "257802002", AnteriorDisplacement }, 
+      { "http://snomed.info/sct#257802002", AnteriorDisplacement }, 
+      { "257803007", PosteriorDisplacement }, 
+      { "http://snomed.info/sct#257803007", PosteriorDisplacement }, 
+      { "257804001", LateralDisplacement }, 
+      { "http://snomed.info/sct#257804001", LateralDisplacement }, 
+      { "257805000", MedialDisplacement }, 
+      { "http://snomed.info/sct#257805000", MedialDisplacement }, 
+      { "257806004", CloseRectalDissection }, 
+      { "http://snomed.info/sct#257806004", CloseRectalDissection }, 
+      { "257808003", UltrasonicDissection }, 
+      { "http://snomed.info/sct#257808003", UltrasonicDissection }, 
+      { "257811002", ExternalDrainage }, 
+      { "http://snomed.info/sct#257811002", ExternalDrainage }, 
+      { "257817003", DigitalEvacuation }, 
+      { "http://snomed.info/sct#257817003", DigitalEvacuation }, 
+      { "257821005", ManualExpression }, 
+      { "http://snomed.info/sct#257821005", ManualExpression }, 
+      { "257822003", ExtracapsularExtraction }, 
+      { "http://snomed.info/sct#257822003", ExtracapsularExtraction }, 
+      { "257824002", IntracapsularExtraction }, 
+      { "http://snomed.info/sct#257824002", IntracapsularExtraction }, 
+      { "257825001", FenestrationAction }, 
+      { "http://snomed.info/sct#257825001", FenestrationAction }, 
+      { "257827009", PressFitComponentFixation }, 
+      { "http://snomed.info/sct#257827009", PressFitComponentFixation }, 
+      { "257846005", BallisticFragmentation }, 
+      { "http://snomed.info/sct#257846005", BallisticFragmentation }, 
+      { "257850003", MechanicalFragmentation }, 
+      { "http://snomed.info/sct#257850003", MechanicalFragmentation }, 
+      { "257855008", ElectromagneticPulseFragmentation }, 
+      { "http://snomed.info/sct#257855008", ElectromagneticPulseFragmentation }, 
+      { "257857000", Galvanism }, 
+      { "http://snomed.info/sct#257857000", Galvanism }, 
+      { "257859002", HighIntensityFocusedUltrasound }, 
+      { "http://snomed.info/sct#257859002", HighIntensityFocusedUltrasound }, 
+      { "257863009", RadioactiveDestruction }, 
+      { "http://snomed.info/sct#257863009", RadioactiveDestruction }, 
+      { "257867005", InsertionAction }, 
+      { "http://snomed.info/sct#257867005", InsertionAction }, 
+      { "257878002", KeelingAction }, 
+      { "http://snomed.info/sct#257878002", KeelingAction }, 
+      { "257880008", Localization }, 
+      { "http://snomed.info/sct#257880008", Localization }, 
+      { "257884004", ImmobilizationAction }, 
+      { "http://snomed.info/sct#257884004", ImmobilizationAction }, 
+      { "257885003", Occlusion }, 
+      { "http://snomed.info/sct#257885003", Occlusion }, 
+      { "257886002", OperativeUltrasound }, 
+      { "http://snomed.info/sct#257886002", OperativeUltrasound }, 
+      { "257889009", Padding }, 
+      { "http://snomed.info/sct#257889009", Padding }, 
+      { "257890000", PeelingAction }, 
+      { "http://snomed.info/sct#257890000", PeelingAction }, 
+      { "257893003", Pressure }, 
+      { "http://snomed.info/sct#257893003", Pressure }, 
+      { "257894009", OneHandedPressure }, 
+      { "http://snomed.info/sct#257894009", OneHandedPressure }, 
+      { "257895005", TwoHandedPressure }, 
+      { "http://snomed.info/sct#257895005", TwoHandedPressure }, 
+      { "257897002", RealignmentAction }, 
+      { "http://snomed.info/sct#257897002", RealignmentAction }, 
+      { "257903006", RepairAction }, 
+      { "http://snomed.info/sct#257903006", RepairAction }, 
+      { "257905004", KeelRepair }, 
+      { "http://snomed.info/sct#257905004", KeelRepair }, 
+      { "257906003", MayoRepair }, 
+      { "http://snomed.info/sct#257906003", MayoRepair }, 
+      { "257907007", PatchingAction }, 
+      { "http://snomed.info/sct#257907007", PatchingAction }, 
+      { "257911001", RepairOfRecurrence }, 
+      { "http://snomed.info/sct#257911001", RepairOfRecurrence }, 
+      { "257912008", RotationAction }, 
+      { "http://snomed.info/sct#257912008", RotationAction }, 
+      { "257913003", IRInternalRotation }, 
+      { "http://snomed.info/sct#257913003", IRInternalRotation }, 
+      { "257914009", ExternalRotation }, 
+      { "http://snomed.info/sct#257914009", ExternalRotation }, 
+      { "257915005", Sampling }, 
+      { "http://snomed.info/sct#257915005", Sampling }, 
+      { "257916006", BilateralSampling }, 
+      { "http://snomed.info/sct#257916006", BilateralSampling }, 
+      { "257917002", BilateralSequentialSampling }, 
+      { "http://snomed.info/sct#257917002", BilateralSequentialSampling }, 
+      { "257918007", BilateralSimultaneousSampling }, 
+      { "http://snomed.info/sct#257918007", BilateralSimultaneousSampling }, 
+      { "257923007", SamplingWithoutTrap }, 
+      { "http://snomed.info/sct#257923007", SamplingWithoutTrap }, 
+      { "257926004", UnilateralSampling }, 
+      { "http://snomed.info/sct#257926004", UnilateralSampling }, 
+      { "257928003", Segmentation }, 
+      { "http://snomed.info/sct#257928003", Segmentation }, 
+      { "257932009", DirectSuturingTechnique }, 
+      { "http://snomed.info/sct#257932009", DirectSuturingTechnique }, 
+      { "257933004", TamponadeAction }, 
+      { "http://snomed.info/sct#257933004", TamponadeAction }, 
+      { "257935006", TaperingAction }, 
+      { "http://snomed.info/sct#257935006", TaperingAction }, 
+      { "257937003", SoftTissueTransfer }, 
+      { "http://snomed.info/sct#257937003", SoftTissueTransfer }, 
+      { "257938008", TransferOfBoneBlock }, 
+      { "http://snomed.info/sct#257938008", TransferOfBoneBlock }, 
+      { "257940003", TranspositionAction }, 
+      { "http://snomed.info/sct#257940003", TranspositionAction }, 
+      { "258005004", Accelerometry }, 
+      { "http://snomed.info/sct#258005004", Accelerometry }, 
+      { "258006003", AcidometricMethod }, 
+      { "http://snomed.info/sct#258006003", AcidometricMethod }, 
+      { "258009005", BoydenChamberTechnique }, 
+      { "http://snomed.info/sct#258009005", BoydenChamberTechnique }, 
+      { "258010000", CatheterTipManometry }, 
+      { "http://snomed.info/sct#258010000", CatheterTipManometry }, 
+      { "258011001", ChessboardMethod }, 
+      { "http://snomed.info/sct#258011001", ChessboardMethod }, 
+      { "258012008", ConfocalLaserScanningFluorescence }, 
+      { "http://snomed.info/sct#258012008", ConfocalLaserScanningFluorescence }, 
+      { "258013003", ConventionalManometry }, 
+      { "http://snomed.info/sct#258013003", ConventionalManometry }, 
+      { "258014009", DilutionAndColorimetry }, 
+      { "http://snomed.info/sct#258014009", DilutionAndColorimetry }, 
+      { "258017002", DoubleSamplingDyeDilutionTest }, 
+      { "http://snomed.info/sct#258017002", DoubleSamplingDyeDilutionTest }, 
+      { "258018007", DrainageBottleMeasurement }, 
+      { "http://snomed.info/sct#258018007", DrainageBottleMeasurement }, 
+      { "258019004", DrainageMeasurement }, 
+      { "http://snomed.info/sct#258019004", DrainageMeasurement }, 
+      { "258020005", DyeDilutionTechnique }, 
+      { "http://snomed.info/sct#258020005", DyeDilutionTechnique }, 
+      { "258021009", DyeTest }, 
+      { "http://snomed.info/sct#258021009", DyeTest }, 
+      { "258022002", ETest }, 
+      { "http://snomed.info/sct#258022002", ETest }, 
+      { "258025000", EnzymeMediatedImmunotransferaseAssay }, 
+      { "http://snomed.info/sct#258025000", EnzymeMediatedImmunotransferaseAssay }, 
+      { "258026004", EnzymeMethod }, 
+      { "http://snomed.info/sct#258026004", EnzymeMethod }, 
+      { "258027008", EquilibrationMethod }, 
+      { "http://snomed.info/sct#258027008", EquilibrationMethod }, 
+      { "258030001", GradientMethod }, 
+      { "http://snomed.info/sct#258030001", GradientMethod }, 
+      { "258031002", HeliumSingleBreathTechnique }, 
+      { "http://snomed.info/sct#258031002", HeliumSingleBreathTechnique }, 
+      { "258033004", HeliumSteadyStateTechnique }, 
+      { "http://snomed.info/sct#258033004", HeliumSteadyStateTechnique }, 
+      { "258034005", HeliumDilution }, 
+      { "http://snomed.info/sct#258034005", HeliumDilution }, 
+      { "258035006", HighPressureLiquidChromatography }, 
+      { "http://snomed.info/sct#258035006", HighPressureLiquidChromatography }, 
+      { "258036007", Immunoblotting }, 
+      { "http://snomed.info/sct#258036007", Immunoblotting }, 
+      { "258037003", Immunoradiometry }, 
+      { "http://snomed.info/sct#258037003", Immunoradiometry }, 
+      { "258038008", IndicatorDilutionTechnique }, 
+      { "http://snomed.info/sct#258038008", IndicatorDilutionTechnique }, 
+      { "258039000", IodometricMethod }, 
+      { "http://snomed.info/sct#258039000", IodometricMethod }, 
+      { "258041004", IsoenzymeTyping }, 
+      { "http://snomed.info/sct#258041004", IsoenzymeTyping }, 
+      { "258044007", LectinTyping }, 
+      { "http://snomed.info/sct#258044007", LectinTyping }, 
+      { "258045008", LipopolysaccharideTyping }, 
+      { "http://snomed.info/sct#258045008", LipopolysaccharideTyping }, 
+      { "258047000", MetabolicInhibitionTest }, 
+      { "http://snomed.info/sct#258047000", MetabolicInhibitionTest }, 
+      { "258048005", MicrobiologicalMethod }, 
+      { "http://snomed.info/sct#258048005", MicrobiologicalMethod }, 
+      { "258053000", MoorfieldsReadingBookTest }, 
+      { "http://snomed.info/sct#258053000", MoorfieldsReadingBookTest }, 
+      { "258054006", NaturalFilling }, 
+      { "http://snomed.info/sct#258054006", NaturalFilling }, 
+      { "258055007", NitrocefinMethod }, 
+      { "http://snomed.info/sct#258055007", NitrocefinMethod }, 
+      { "258056008", NitrogenWashout }, 
+      { "http://snomed.info/sct#258056008", NitrogenWashout }, 
+      { "258059001", PharmacologicalStimulation }, 
+      { "http://snomed.info/sct#258059001", PharmacologicalStimulation }, 
+      { "258060006", Phenotyping }, 
+      { "http://snomed.info/sct#258060006", Phenotyping }, 
+      { "258061005", PhoticStimulation }, 
+      { "http://snomed.info/sct#258061005", PhoticStimulation }, 
+      { "258063008", PneumaticOtoscopy }, 
+      { "http://snomed.info/sct#258063008", PneumaticOtoscopy }, 
+      { "258065001", PolyethyleneGlycolPrecipitation }, 
+      { "http://snomed.info/sct#258065001", PolyethyleneGlycolPrecipitation }, 
+      { "258066000", PolymeraseChainReaction }, 
+      { "http://snomed.info/sct#258066000", PolymeraseChainReaction }, 
+      { "258067009", PostTetanicCountStimulation }, 
+      { "http://snomed.info/sct#258067009", PostTetanicCountStimulation }, 
+      { "258068004", ProteinProfiling }, 
+      { "http://snomed.info/sct#258068004", ProteinProfiling }, 
+      { "258069007", PyrolysisMassSpectrometry }, 
+      { "http://snomed.info/sct#258069007", PyrolysisMassSpectrometry }, 
+      { "258070008", RapidPullThrough }, 
+      { "http://snomed.info/sct#258070008", RapidPullThrough }, 
+      { "258071007", RebreathingMethod }, 
+      { "http://snomed.info/sct#258071007", RebreathingMethod }, 
+      { "258075003", Serotyping }, 
+      { "http://snomed.info/sct#258075003", Serotyping }, 
+      { "258076002", ShamFeedTechnique }, 
+      { "http://snomed.info/sct#258076002", ShamFeedTechnique }, 
+      { "258077006", SheridanGardinerTechnique }, 
+      { "http://snomed.info/sct#258077006", SheridanGardinerTechnique }, 
+      { "258078001", StationPullThrough }, 
+      { "http://snomed.info/sct#258078001", StationPullThrough }, 
+      { "258080007", ThermodilutionTechnique }, 
+      { "http://snomed.info/sct#258080007", ThermodilutionTechnique }, 
+      { "258081006", UltravioletAbsorption }, 
+      { "http://snomed.info/sct#258081006", UltravioletAbsorption }, 
+      { "258082004", VectorVolumeAnalysis }, 
+      { "http://snomed.info/sct#258082004", VectorVolumeAnalysis }, 
+      { "258083009", VisualEstimation }, 
+      { "http://snomed.info/sct#258083009", VisualEstimation }, 
+      { "258084003", WeighingOfSwabs }, 
+      { "http://snomed.info/sct#258084003", WeighingOfSwabs }, 
+      { "258086001", ZymodemeTyping }, 
+      { "http://snomed.info/sct#258086001", ZymodemeTyping }, 
+      { "258087005", AgarDilution }, 
+      { "http://snomed.info/sct#258087005", AgarDilution }, 
+      { "258094008", DarkGround }, 
+      { "http://snomed.info/sct#258094008", DarkGround }, 
+      { "258099003", Fluorescence }, 
+      { "http://snomed.info/sct#258099003", Fluorescence }, 
+      { "258100006", HeterophoriaMethod }, 
+      { "http://snomed.info/sct#258100006", HeterophoriaMethod }, 
+      { "258102003", IntermittentWithdrawalTechnique }, 
+      { "http://snomed.info/sct#258102003", IntermittentWithdrawalTechnique }, 
+      { "258109007", RestrictionFragmentLengthPolymorphism }, 
+      { "http://snomed.info/sct#258109007", RestrictionFragmentLengthPolymorphism }, 
+      { "258110002", SalineMethod }, 
+      { "http://snomed.info/sct#258110002", SalineMethod }, 
+      { "258112005", SequenceSpecificOligonucleotideProbe }, 
+      { "http://snomed.info/sct#258112005", SequenceSpecificOligonucleotideProbe }, 
+      { "258113000", SequenceSpecificPrimersPolymeraseChainReaction }, 
+      { "http://snomed.info/sct#258113000", SequenceSpecificPrimersPolymeraseChainReaction }, 
+      { "258114006", SRHSingleRadialHemolysis }, 
+      { "http://snomed.info/sct#258114006", SRHSingleRadialHemolysis }, 
+      { "258118009", SuctionDrainageMeasurement }, 
+      { "http://snomed.info/sct#258118009", SuctionDrainageMeasurement }, 
+      { "258119001", ThermalTest }, 
+      { "http://snomed.info/sct#258119001", ThermalTest }, 
+      { "258120007", VaporPressureDepression }, 
+      { "http://snomed.info/sct#258120007", VaporPressureDepression }, 
+      { "258121006", UngatedEquilibrium }, 
+      { "http://snomed.info/sct#258121006", UngatedEquilibrium }, 
+      { "258122004", WholeCellLongChainFattyAcidMethylEsterAnalysis }, 
+      { "http://snomed.info/sct#258122004", WholeCellLongChainFattyAcidMethylEsterAnalysis }, 
+      { "258123009", ECGGatedTechnique }, 
+      { "http://snomed.info/sct#258123009", ECGGatedTechnique }, 
+      { "258124003", GatedEquilibrium }, 
+      { "http://snomed.info/sct#258124003", GatedEquilibrium }, 
+      { "258125002", FreezingPointDepression }, 
+      { "http://snomed.info/sct#258125002", FreezingPointDepression }, 
+      { "258126001", PhaseContrast }, 
+      { "http://snomed.info/sct#258126001", PhaseContrast }, 
+      { "258128000", SjogrenHandTechnique }, 
+      { "http://snomed.info/sct#258128000", SjogrenHandTechnique }, 
+      { "258129008", SnellenTechnique }, 
+      { "http://snomed.info/sct#258129008", SnellenTechnique }, 
+      { "258131004", SucroseDensityGradientSeparation }, 
+      { "http://snomed.info/sct#258131004", SucroseDensityGradientSeparation }, 
+      { "258133001", PlateAssay }, 
+      { "http://snomed.info/sct#258133001", PlateAssay }, 
+      { "258144009", PositionChange }, 
+      { "http://snomed.info/sct#258144009", PositionChange }, 
+      { "258150004", Transmission }, 
+      { "http://snomed.info/sct#258150004", Transmission }, 
+      { "258159003", SlimeProductionTyping }, 
+      { "http://snomed.info/sct#258159003", SlimeProductionTyping }, 
+      { "258164004", SeldingerTechnique }, 
+      { "http://snomed.info/sct#258164004", SeldingerTechnique }, 
+      { "258169009", RemodeledPouchMethod }, 
+      { "http://snomed.info/sct#258169009", RemodeledPouchMethod }, 
+      { "258171009", BlindTechnique }, 
+      { "http://snomed.info/sct#258171009", BlindTechnique }, 
+      { "258173007", DirectVisionTechnique }, 
+      { "http://snomed.info/sct#258173007", DirectVisionTechnique }, 
+      { "258178003", BloodAspirationTechnique }, 
+      { "http://snomed.info/sct#258178003", BloodAspirationTechnique }, 
+      { "258179006", BloodFlashbackTechnique }, 
+      { "http://snomed.info/sct#258179006", BloodFlashbackTechnique }, 
+      { "258180009", PressureWaveformAnalysis }, 
+      { "http://snomed.info/sct#258180009", PressureWaveformAnalysis }, 
+      { "258181008", ECGAnalysis }, 
+      { "http://snomed.info/sct#258181008", ECGAnalysis }, 
+      { "258182001", ColdLightTransillumination }, 
+      { "http://snomed.info/sct#258182001", ColdLightTransillumination }, 
+      { "258183006", GasInjectionAndAuscultation }, 
+      { "http://snomed.info/sct#258183006", GasInjectionAndAuscultation }, 
+      { "260222006", SPECT }, 
+      { "http://snomed.info/sct#260222006", SPECT }, 
+      { "260223001", MaximumIntercuspationTechnique }, 
+      { "http://snomed.info/sct#260223001", MaximumIntercuspationTechnique }, 
+      { "260227000", SolidPhaseImmuneTechnique }, 
+      { "http://snomed.info/sct#260227000", SolidPhaseImmuneTechnique }, 
+      { "260231006", VanSlykeTechnique }, 
+      { "http://snomed.info/sct#260231006", VanSlykeTechnique }, 
+      { "260710009", ObturationTechnique }, 
+      { "http://snomed.info/sct#260710009", ObturationTechnique }, 
+      { "260931002", PostProcessing }, 
+      { "http://snomed.info/sct#260931002", PostProcessing }, 
+      { "260982004", AnticurvatureTechnique }, 
+      { "http://snomed.info/sct#260982004", AnticurvatureTechnique }, 
+      { "261006005", DigitalXRay }, 
+      { "http://snomed.info/sct#261006005", DigitalXRay }, 
+      { "261009003", DualCureMethod }, 
+      { "http://snomed.info/sct#261009003", DualCureMethod }, 
+      { "261018001", Mechanical }, 
+      { "http://snomed.info/sct#261018001", Mechanical }, 
+      { "261027000", SequentialAnastomosis }, 
+      { "http://snomed.info/sct#261027000", SequentialAnastomosis }, 
+      { "261032004", Turnover }, 
+      { "http://snomed.info/sct#261032004", Turnover }, 
+      { "261033009", UltrasonicEndodonticTechnique }, 
+      { "http://snomed.info/sct#261033009", UltrasonicEndodonticTechnique }, 
+      { "261039008", ValsalvaManeuvre }, 
+      { "http://snomed.info/sct#261039008", ValsalvaManeuvre }, 
+      { "261069001", DoubleContrastTechnique }, 
+      { "http://snomed.info/sct#261069001", DoubleContrastTechnique }, 
+      { "261070000", DoubleFlareTechnique }, 
+      { "http://snomed.info/sct#261070000", DoubleFlareTechnique }, 
+      { "261190007", DautreyMethod }, 
+      { "http://snomed.info/sct#261190007", DautreyMethod }, 
+      { "261191006", OpenExtraction }, 
+      { "http://snomed.info/sct#261191006", OpenExtraction }, 
+      { "261192004", BalancedForceTechnique }, 
+      { "http://snomed.info/sct#261192004", BalancedForceTechnique }, 
+      { "261194003", CineStudy }, 
+      { "http://snomed.info/sct#261194003", CineStudy }, 
+      { "261196001", DirectApplicationTechnique }, 
+      { "http://snomed.info/sct#261196001", DirectApplicationTechnique }, 
+      { "261197005", DopplerColorFlow }, 
+      { "http://snomed.info/sct#261197005", DopplerColorFlow }, 
+      { "261198000", DopplerContinuousWave }, 
+      { "http://snomed.info/sct#261198000", DopplerContinuousWave }, 
+      { "261199008", DopplerPulsed }, 
+      { "http://snomed.info/sct#261199008", DopplerPulsed }, 
+      { "261208004", IntermittentAdministration }, 
+      { "http://snomed.info/sct#261208004", IntermittentAdministration }, 
+      { "261209007", NippleSharingTechnique }, 
+      { "http://snomed.info/sct#261209007", NippleSharingTechnique }, 
+      { "261212005", PercutaneousWithAutomatedInstrumentation }, 
+      { "http://snomed.info/sct#261212005", PercutaneousWithAutomatedInstrumentation }, 
+      { "261213000", PercutaneousWithEndoscopicInstrumentation }, 
+      { "http://snomed.info/sct#261213000", PercutaneousWithEndoscopicInstrumentation }, 
+      { "261214006", PercutaneousWithLaserInstrumentation }, 
+      { "http://snomed.info/sct#261214006", PercutaneousWithLaserInstrumentation }, 
+      { "261215007", PercutaneousWithManualInstrumentation }, 
+      { "http://snomed.info/sct#261215007", PercutaneousWithManualInstrumentation }, 
+      { "261216008", RadionuclidePlethysmography }, 
+      { "http://snomed.info/sct#261216008", RadionuclidePlethysmography }, 
+      { "261271009", ThermalPlasticTechnique }, 
+      { "http://snomed.info/sct#261271009", ThermalPlasticTechnique }, 
+      { "261272002", ThermalSolidTechnique }, 
+      { "http://snomed.info/sct#261272002", ThermalSolidTechnique }, 
+      { "261338007", AdhesiveWithSupplementarySutureTechnique }, 
+      { "http://snomed.info/sct#261338007", AdhesiveWithSupplementarySutureTechnique }, 
+      { "261373009", ImplantTechnique }, 
+      { "http://snomed.info/sct#261373009", ImplantTechnique }, 
+      { "261391004", ResurfacingAction }, 
+      { "http://snomed.info/sct#261391004", ResurfacingAction }, 
+      { "261398005", AlloplasticGrafting }, 
+      { "http://snomed.info/sct#261398005", AlloplasticGrafting }, 
+      { "261498006", BonePatellarTendonBoneReconstruction }, 
+      { "http://snomed.info/sct#261498006", BonePatellarTendonBoneReconstruction }, 
+      { "261499003", BraidedProstheticLigamentReconstruction }, 
+      { "http://snomed.info/sct#261499003", BraidedProstheticLigamentReconstruction }, 
+      { "261504003", CloseRectalDissectionTechnique }, 
+      { "http://snomed.info/sct#261504003", CloseRectalDissectionTechnique }, 
+      { "261510003", ConventionalAngiography }, 
+      { "http://snomed.info/sct#261510003", ConventionalAngiography }, 
+      { "261518005", Cystodiathermy }, 
+      { "http://snomed.info/sct#261518005", Cystodiathermy }, 
+      { "261519002", DiathermyExcision }, 
+      { "http://snomed.info/sct#261519002", DiathermyExcision }, 
+      { "261520008", DiathermySnareAction }, 
+      { "http://snomed.info/sct#261520008", DiathermySnareAction }, 
+      { "261526002", ElectromagneticFragmentation }, 
+      { "http://snomed.info/sct#261526002", ElectromagneticFragmentation }, 
+      { "261545006", LoopDiathermyExcision }, 
+      { "http://snomed.info/sct#261545006", LoopDiathermyExcision }, 
+      { "261548008", PeriarticularOsteotomy }, 
+      { "http://snomed.info/sct#261548008", PeriarticularOsteotomy }, 
+      { "261553003", REDYRegenerationOfDialysate }, 
+      { "http://snomed.info/sct#261553003", REDYRegenerationOfDialysate }, 
+      { "261561008", ShelfTechnique }, 
+      { "http://snomed.info/sct#261561008", ShelfTechnique }, 
+      { "261567007", ThermalInjectionTechnique }, 
+      { "http://snomed.info/sct#261567007", ThermalInjectionTechnique }, 
+      { "261569005", Thermocompaction }, 
+      { "http://snomed.info/sct#261569005", Thermocompaction }, 
+      { "261573008", ThyrotrophinReleasingHormoneStimulation }, 
+      { "http://snomed.info/sct#261573008", ThyrotrophinReleasingHormoneStimulation }, 
+      { "261576000", UltrasoundFragmentation }, 
+      { "http://snomed.info/sct#261576000", UltrasoundFragmentation }, 
+      { "261671000", AirContrastTechnique }, 
+      { "http://snomed.info/sct#261671000", AirContrastTechnique }, 
+      { "261699009", BeforeTheFilter }, 
+      { "http://snomed.info/sct#261699009", BeforeTheFilter }, 
+      { "261700005", BenchekrounTechnique }, 
+      { "http://snomed.info/sct#261700005", BenchekrounTechnique }, 
+      { "261708003", BiochemicalBondComponentFixation }, 
+      { "http://snomed.info/sct#261708003", BiochemicalBondComponentFixation }, 
+      { "261710001", BisectingAngleTechnique }, 
+      { "http://snomed.info/sct#261710001", BisectingAngleTechnique }, 
+      { "261714005", BoneIngrowthSystem }, 
+      { "http://snomed.info/sct#261714005", BoneIngrowthSystem }, 
+      { "261732005", CorticotrophinReleasingHormoneStimulation }, 
+      { "http://snomed.info/sct#261732005", CorticotrophinReleasingHormoneStimulation }, 
+      { "261754007", ContinuousInfusion }, 
+      { "http://snomed.info/sct#261754007", ContinuousInfusion }, 
+      { "261787006", ExplantTechnique }, 
+      { "http://snomed.info/sct#261787006", ExplantTechnique }, 
+      { "261790000", ExtraHighResolutionTechnique }, 
+      { "http://snomed.info/sct#261790000", ExtraHighResolutionTechnique }, 
+      { "261793003", FlowDirectedTechnique }, 
+      { "http://snomed.info/sct#261793003", FlowDirectedTechnique }, 
+      { "261856001", IsaacsTechnique }, 
+      { "http://snomed.info/sct#261856001", IsaacsTechnique }, 
+      { "261909000", LightCureMethod }, 
+      { "http://snomed.info/sct#261909000", LightCureMethod }, 
+      { "261940007", MechanicalGrabMethod }, 
+      { "http://snomed.info/sct#261940007", MechanicalGrabMethod }, 
+      { "261943009", MitrofanoffTechnique }, 
+      { "http://snomed.info/sct#261943009", MitrofanoffTechnique }, 
+      { "261947005", ModifiedDoubleFlareTechnique }, 
+      { "http://snomed.info/sct#261947005", ModifiedDoubleFlareTechnique }, 
+      { "261958001", MultiplanarReconstruction }, 
+      { "http://snomed.info/sct#261958001", MultiplanarReconstruction }, 
+      { "261981004", NeutralZone }, 
+      { "http://snomed.info/sct#261981004", NeutralZone }, 
+      { "262041006", ParallelingTechnique }, 
+      { "http://snomed.info/sct#262041006", ParallelingTechnique }, 
+      { "262048000", PatientCycledMethod }, 
+      { "http://snomed.info/sct#262048000", PatientCycledMethod }, 
+      { "262062007", PowerOutput }, 
+      { "http://snomed.info/sct#262062007", PowerOutput }, 
+      { "262063002", PoweredMethod }, 
+      { "http://snomed.info/sct#262063002", PoweredMethod }, 
+      { "262064008", PoweredFlexibleMethod }, 
+      { "http://snomed.info/sct#262064008", PoweredFlexibleMethod }, 
+      { "262065009", PoweredRigidMethod }, 
+      { "http://snomed.info/sct#262065009", PoweredRigidMethod }, 
+      { "262069003", PressureControlledMethod }, 
+      { "http://snomed.info/sct#262069003", PressureControlledMethod }, 
+      { "262092003", ReciprocalMechanicalTechnique }, 
+      { "http://snomed.info/sct#262092003", ReciprocalMechanicalTechnique }, 
+      { "262095001", RemainingConnected }, 
+      { "http://snomed.info/sct#262095001", RemainingConnected }, 
+      { "262110008", RotaryMechanicalEndodonticTechnique }, 
+      { "http://snomed.info/sct#262110008", RotaryMechanicalEndodonticTechnique }, 
+      { "262136001", SelfCureMethod }, 
+      { "http://snomed.info/sct#262136001", SelfCureMethod }, 
+      { "262143007", SideToEndAnastomosis }, 
+      { "http://snomed.info/sct#262143007", SideToEndAnastomosis }, 
+      { "262148003", SingleContrastTechnique }, 
+      { "http://snomed.info/sct#262148003", SingleContrastTechnique }, 
+      { "262162005", SonicEndodonticTechnique }, 
+      { "http://snomed.info/sct#262162005", SonicEndodonticTechnique }, 
+      { "262174009", StandardizedTechnique }, 
+      { "http://snomed.info/sct#262174009", StandardizedTechnique }, 
+      { "262180001", StepbackTechnique }, 
+      { "http://snomed.info/sct#262180001", StepbackTechnique }, 
+      { "262181002", StepdownTechnique }, 
+      { "http://snomed.info/sct#262181002", StepdownTechnique }, 
+      { "262201007", ThalliumUptakeMethod }, 
+      { "http://snomed.info/sct#262201007", ThalliumUptakeMethod }, 
+      { "262207006", TimeCycledMethod }, 
+      { "http://snomed.info/sct#262207006", TimeCycledMethod }, 
+      { "262265000", VolumeControlledMethod }, 
+      { "http://snomed.info/sct#262265000", VolumeControlledMethod }, 
+      { "262278000", WarmingIntravenousFluidTechnique }, 
+      { "http://snomed.info/sct#262278000", WarmingIntravenousFluidTechnique }, 
+      { "262293001", WireGuidedTechnique }, 
+      { "http://snomed.info/sct#262293001", WireGuidedTechnique }, 
+      { "262295008", WithClearanceMeasurement }, 
+      { "http://snomed.info/sct#262295008", WithClearanceMeasurement }, 
+      { "262296009", CrossCompressionTechnique }, 
+      { "http://snomed.info/sct#262296009", CrossCompressionTechnique }, 
+      { "262300005", WithGFR }, 
+      { "http://snomed.info/sct#262300005", WithGFR }, 
+      { "262305000", WithSeparation }, 
+      { "http://snomed.info/sct#262305000", WithSeparation }, 
+      { "262310001", WithUretericPeristalsisAnalysis }, 
+      { "http://snomed.info/sct#262310001", WithUretericPeristalsisAnalysis }, 
+      { "262313004", WithoutRemount }, 
+      { "http://snomed.info/sct#262313004", WithoutRemount }, 
+      { "262320006", XenonClearanceMethod }, 
+      { "http://snomed.info/sct#262320006", XenonClearanceMethod }, 
+      { "262323008", AfterTheFilter }, 
+      { "http://snomed.info/sct#262323008", AfterTheFilter }, 
+      { "2629003", IntracranialCerebralPerfusionPressureMonitoring }, 
+      { "http://snomed.info/sct#2629003", IntracranialCerebralPerfusionPressureMonitoring }, 
+      { "263664004", AlteredCastTechnique }, 
+      { "http://snomed.info/sct#263664004", AlteredCastTechnique }, 
+      { "263696007", BrothDilution }, 
+      { "http://snomed.info/sct#263696007", BrothDilution }, 
+      { "263720003", Compression }, 
+      { "http://snomed.info/sct#263720003", Compression }, 
+      { "263725008", ConstantAccelerationTechnique }, 
+      { "http://snomed.info/sct#263725008", ConstantAccelerationTechnique }, 
+      { "263746004", ElectrosensitivityTechnique }, 
+      { "http://snomed.info/sct#263746004", ElectrosensitivityTechnique }, 
+      { "263781002", Impulse }, 
+      { "http://snomed.info/sct#263781002", Impulse }, 
+      { "263809005", Microvascular }, 
+      { "http://snomed.info/sct#263809005", Microvascular }, 
+      { "263902000", TranscutaneousMethod }, 
+      { "http://snomed.info/sct#263902000", TranscutaneousMethod }, 
+      { "264220008", SuperiorPedicleTechnique }, 
+      { "http://snomed.info/sct#264220008", SuperiorPedicleTechnique }, 
+      { "264268002", AgaroseTechnique }, 
+      { "http://snomed.info/sct#264268002", AgaroseTechnique }, 
+      { "264269005", AminoAcidSignaturePatternAnalysis }, 
+      { "http://snomed.info/sct#264269005", AminoAcidSignaturePatternAnalysis }, 
+      { "264270006", CentralPedicleTechnique }, 
+      { "http://snomed.info/sct#264270006", CentralPedicleTechnique }, 
+      { "264271005", ComplementComponent1qBindingAssay }, 
+      { "http://snomed.info/sct#264271005", ComplementComponent1qBindingAssay }, 
+      { "264272003", ConductivityTechnique }, 
+      { "http://snomed.info/sct#264272003", ConductivityTechnique }, 
+      { "264273008", ContinuousWithdrawalTechnique }, 
+      { "http://snomed.info/sct#264273008", ContinuousWithdrawalTechnique }, 
+      { "264275001", FluorescencePolarizationImmunoassay }, 
+      { "http://snomed.info/sct#264275001", FluorescencePolarizationImmunoassay }, 
+      { "264276000", HalfChessboardMethod }, 
+      { "http://snomed.info/sct#264276000", HalfChessboardMethod }, 
+      { "264277009", HeelBounce }, 
+      { "http://snomed.info/sct#264277009", HeelBounce }, 
+      { "264279007", HydroxylamineMethod }, 
+      { "http://snomed.info/sct#264279007", HydroxylamineMethod }, 
+      { "264280005", InferiorPedicleTechnique }, 
+      { "http://snomed.info/sct#264280005", InferiorPedicleTechnique }, 
+      { "264281009", DufourmentalTechnique }, 
+      { "http://snomed.info/sct#264281009", DufourmentalTechnique }, 
+      { "264282002", MaclureNTest }, 
+      { "http://snomed.info/sct#264282002", MaclureNTest }, 
+      { "264283007", MultipleBreathTechnique }, 
+      { "http://snomed.info/sct#264283007", MultipleBreathTechnique }, 
+      { "264284001", SingleBreathTechnique }, 
+      { "http://snomed.info/sct#264284001", SingleBreathTechnique }, 
+      { "264355007", FfooksTechnique }, 
+      { "http://snomed.info/sct#264355007", FfooksTechnique }, 
+      { "264582003", AntibiogramTyping }, 
+      { "http://snomed.info/sct#264582003", AntibiogramTyping }, 
+      { "264583008", Auxotyping }, 
+      { "http://snomed.info/sct#264583008", Auxotyping }, 
+      { "264584002", BacteriocinTyping }, 
+      { "http://snomed.info/sct#264584002", BacteriocinTyping }, 
+      { "264590003", HypothalamicStimulation }, 
+      { "http://snomed.info/sct#264590003", HypothalamicStimulation }, 
+      { "264592006", IntravesicalDrugTherapy }, 
+      { "http://snomed.info/sct#264592006", IntravesicalDrugTherapy }, 
+      { "264594007", LaserAction }, 
+      { "http://snomed.info/sct#264594007", LaserAction }, 
+      { "2646000", IncisionAndExplorationOfVasDeferens }, 
+      { "http://snomed.info/sct#2646000", IncisionAndExplorationOfVasDeferens }, 
+      { "264619009", VAL100HueTechnique }, 
+      { "http://snomed.info/sct#264619009", VAL100HueTechnique }, 
+      { "264730003", LateralRotation }, 
+      { "http://snomed.info/sct#264730003", LateralRotation }, 
+      { "264739002", MedialRotation }, 
+      { "http://snomed.info/sct#264739002", MedialRotation }, 
+      { "264773007", DienesTyping }, 
+      { "http://snomed.info/sct#264773007", DienesTyping }, 
+      { "264782001", AMBER }, 
+      { "http://snomed.info/sct#264782001", AMBER }, 
+      { "264788002", Biotyping }, 
+      { "http://snomed.info/sct#264788002", Biotyping }, 
+      { "264826006", ChildrenQuoteSNTests }, 
+      { "http://snomed.info/sct#264826006", ChildrenQuoteSNTests }, 
+      { "264828007", CityUniversityTechnique }, 
+      { "http://snomed.info/sct#264828007", CityUniversityTechnique }, 
+      { "264859009", MaclureTechnique }, 
+      { "http://snomed.info/sct#264859009", MaclureTechnique }, 
+      { "264863002", Morphotyping }, 
+      { "http://snomed.info/sct#264863002", Morphotyping }, 
+      { "264896000", NucleicAcidAnalysis }, 
+      { "http://snomed.info/sct#264896000", NucleicAcidAnalysis }, 
+      { "264903000", PatternOnsetOffsetStimulationTechnique }, 
+      { "http://snomed.info/sct#264903000", PatternOnsetOffsetStimulationTechnique }, 
+      { "264933007", ThomasTankEngineTest }, 
+      { "http://snomed.info/sct#264933007", ThomasTankEngineTest }, 
+      { "264934001", ToxinTyping }, 
+      { "http://snomed.info/sct#264934001", ToxinTyping }, 
+      { "264935000", TransluminalProstheticMethod }, 
+      { "http://snomed.info/sct#264935000", TransluminalProstheticMethod }, 
+      { "264946002", WhiteNoiseMaskingOfOppositeEar }, 
+      { "http://snomed.info/sct#264946002", WhiteNoiseMaskingOfOppositeEar }, 
+      { "264947006", PrescriptionOfOpticalAid }, 
+      { "http://snomed.info/sct#264947006", PrescriptionOfOpticalAid }, 
+      { "2690005", MagneticResonanceImagingOfPelvis }, 
+      { "http://snomed.info/sct#2690005", MagneticResonanceImagingOfPelvis }, 
+      { "2693007", StoolFatQuantitativeMeasurement }, 
+      { "http://snomed.info/sct#2693007", StoolFatQuantitativeMeasurement }, 
+      { "2696004", HepaticVenographyWithHemodynamicEvaluation }, 
+      { "http://snomed.info/sct#2696004", HepaticVenographyWithHemodynamicEvaluation }, 
+      { "2722000", IL3Assay }, 
+      { "http://snomed.info/sct#2722000", IL3Assay }, 
+      { "272381008", MicrovascularAnastomosisAction }, 
+      { "http://snomed.info/sct#272381008", MicrovascularAnastomosisAction }, 
+      { "272389005", Analysis }, 
+      { "http://snomed.info/sct#272389005", Analysis }, 
+      { "272390001", Dilution }, 
+      { "http://snomed.info/sct#272390001", Dilution }, 
+      { "272391002", Measurement }, 
+      { "http://snomed.info/sct#272391002", Measurement }, 
+      { "272392009", Assay }, 
+      { "http://snomed.info/sct#272392009", Assay }, 
+      { "272393004", Tests }, 
+      { "http://snomed.info/sct#272393004", Tests }, 
+      { "272395006", Typings }, 
+      { "http://snomed.info/sct#272395006", Typings }, 
+      { "2731000", SerologicTestForInfluenzaVirusA }, 
+      { "http://snomed.info/sct#2731000", SerologicTestForInfluenzaVirusA }, 
+      { "2737001", ExploratoryCraniotomyInfratentorial }, 
+      { "http://snomed.info/sct#2737001", ExploratoryCraniotomyInfratentorial }, 
+      { "2743004", OperativeEndoscopyOfIleum }, 
+      { "http://snomed.info/sct#2743004", OperativeEndoscopyOfIleum }, 
+      { "274392008", EUAExaminationUnderAnesthetic }, 
+      { "http://snomed.info/sct#274392008", EUAExaminationUnderAnesthetic }, 
+      { "276734006", MechanicalAssistance }, 
+      { "http://snomed.info/sct#276734006", MechanicalAssistance }, 
+      { "276857005", ThoracicImpedance }, 
+      { "http://snomed.info/sct#276857005", ThoracicImpedance }, 
+      { "277261002", ExcisionBiopsy }, 
+      { "http://snomed.info/sct#277261002", ExcisionBiopsy }, 
+      { "277337007", SurfaceLandmarkTechnique }, 
+      { "http://snomed.info/sct#277337007", SurfaceLandmarkTechnique }, 
+      { "277581000", SuturingTechniques }, 
+      { "http://snomed.info/sct#277581000", SuturingTechniques }, 
+      { "277607009", DigitalRemoval }, 
+      { "http://snomed.info/sct#277607009", DigitalRemoval }, 
+      { "277620007", DentalTechniques }, 
+      { "http://snomed.info/sct#277620007", DentalTechniques }, 
+      { "277763000", Refashioning }, 
+      { "http://snomed.info/sct#277763000", Refashioning }, 
+      { "277768009", AutomatedEndodonticTechnique }, 
+      { "http://snomed.info/sct#277768009", AutomatedEndodonticTechnique }, 
+      { "277769001", HandTechnique }, 
+      { "http://snomed.info/sct#277769001", HandTechnique }, 
+      { "277835006", FlapValveTechnique }, 
+      { "http://snomed.info/sct#277835006", FlapValveTechnique }, 
+      { "277851003", ConduitAnastomosis }, 
+      { "http://snomed.info/sct#277851003", ConduitAnastomosis }, 
+      { "277852005", ReservoirAnastomosis }, 
+      { "http://snomed.info/sct#277852005", ReservoirAnastomosis }, 
+      { "277853000", SubmucosalTunnelTechnique }, 
+      { "http://snomed.info/sct#277853000", SubmucosalTunnelTechnique }, 
+      { "277913002", WashingOfSwabs }, 
+      { "http://snomed.info/sct#277913002", WashingOfSwabs }, 
+      { "278110001", RadiographicImaging }, 
+      { "http://snomed.info/sct#278110001", RadiographicImaging }, 
+      { "278283001", PercutaneousTechniques }, 
+      { "http://snomed.info/sct#278283001", PercutaneousTechniques }, 
+      { "278289002", MicroscopyTechnique }, 
+      { "http://snomed.info/sct#278289002", MicroscopyTechnique }, 
+      { "278292003", UltrasoundImaging }, 
+      { "http://snomed.info/sct#278292003", UltrasoundImaging }, 
+      { "278300004", PullThroughTechnique }, 
+      { "http://snomed.info/sct#278300004", PullThroughTechnique }, 
+      { "278312000", ReattachmentAction }, 
+      { "http://snomed.info/sct#278312000", ReattachmentAction }, 
+      { "278313005", Regeneration }, 
+      { "http://snomed.info/sct#278313005", Regeneration }, 
+      { "278394000", FluidReplacementTechnique }, 
+      { "http://snomed.info/sct#278394000", FluidReplacementTechnique }, 
+      { "278395004", ImagingTechnique }, 
+      { "http://snomed.info/sct#278395004", ImagingTechnique }, 
+      { "278420002", Sealing }, 
+      { "http://snomed.info/sct#278420002", Sealing }, 
+      { "278440009", CopyDentureTechnique }, 
+      { "http://snomed.info/sct#278440009", CopyDentureTechnique }, 
+      { "2811005", CineradiographyOfPharynx }, 
+      { "http://snomed.info/sct#2811005", CineradiographyOfPharynx }, 
+      { "281408006", FlowTriggering }, 
+      { "http://snomed.info/sct#281408006", FlowTriggering }, 
+      { "281409003", PressureTriggering }, 
+      { "http://snomed.info/sct#281409003", PressureTriggering }, 
+      { "281410008", DifferentialLungVentilation }, 
+      { "http://snomed.info/sct#281410008", DifferentialLungVentilation }, 
+      { "281417006", OneLungVentilation }, 
+      { "http://snomed.info/sct#281417006", OneLungVentilation }, 
+      { "281418001", LeftLungVentilation }, 
+      { "http://snomed.info/sct#281418001", LeftLungVentilation }, 
+      { "281419009", RightLungVentilation }, 
+      { "http://snomed.info/sct#281419009", RightLungVentilation }, 
+      { "281420003", BilateralLungVentilation }, 
+      { "http://snomed.info/sct#281420003", BilateralLungVentilation }, 
+      { "281609006", CryoablationAction }, 
+      { "http://snomed.info/sct#281609006", CryoablationAction }, 
+      { "281613004", DecompressionAction }, 
+      { "http://snomed.info/sct#281613004", DecompressionAction }, 
+      { "281615006", ExplorationAction }, 
+      { "http://snomed.info/sct#281615006", ExplorationAction }, 
+      { "281698007", CryocauteryAction }, 
+      { "http://snomed.info/sct#281698007", CryocauteryAction }, 
+      { "281767003", ManualDilatation }, 
+      { "http://snomed.info/sct#281767003", ManualDilatation }, 
+      { "281838007", DisarticulationAction }, 
+      { "http://snomed.info/sct#281838007", DisarticulationAction }, 
+      { "281839004", Exenteration }, 
+      { "http://snomed.info/sct#281839004", Exenteration }, 
+      { "282015008", ShaveBiopsyAction }, 
+      { "http://snomed.info/sct#282015008", ShaveBiopsyAction }, 
+      { "282089006", ReplacementAction }, 
+      { "http://snomed.info/sct#282089006", ReplacementAction }, 
+      { "282722008", UltrasoundDestruction }, 
+      { "http://snomed.info/sct#282722008", UltrasoundDestruction }, 
+      { "2842000", GasChromatographyMeasurement }, 
+      { "http://snomed.info/sct#2842000", GasChromatographyMeasurement }, 
+      { "284466007", AngerManagementTechnique }, 
+      { "http://snomed.info/sct#284466007", AngerManagementTechnique }, 
+      { "284467003", RelaxationTechnique }, 
+      { "http://snomed.info/sct#284467003", RelaxationTechnique }, 
+      { "2847006", CervicalMyelography }, 
+      { "http://snomed.info/sct#2847006", CervicalMyelography }, 
+      { "286553006", PlasticOperation }, 
+      { "http://snomed.info/sct#286553006", PlasticOperation }, 
+      { "286637000", BlockDissection }, 
+      { "http://snomed.info/sct#286637000", BlockDissection }, 
+      { "286792001", Denervation }, 
+      { "http://snomed.info/sct#286792001", Denervation }, 
+      { "286811001", PressureLimitedCyclingMethod }, 
+      { "http://snomed.info/sct#286811001", PressureLimitedCyclingMethod }, 
+      { "287682008", ApplicationOfCaustics }, 
+      { "http://snomed.info/sct#287682008", ApplicationOfCaustics }, 
+      { "288324002", EversionAction }, 
+      { "http://snomed.info/sct#288324002", EversionAction }, 
+      { "288466002", DiathermyIncision }, 
+      { "http://snomed.info/sct#288466002", DiathermyIncision }, 
+      { "288468001", DisimpactionAction }, 
+      { "http://snomed.info/sct#288468001", DisimpactionAction }, 
+      { "2885009", IntradermalSkinTest }, 
+      { "http://snomed.info/sct#2885009", IntradermalSkinTest }, 
+      { "2891006", ArthroscopyOfElbowWithPartialSynovectomy }, 
+      { "http://snomed.info/sct#2891006", ArthroscopyOfElbowWithPartialSynovectomy }, 
+      { "2898000", DNAAnalysisAntenatalBlood }, 
+      { "http://snomed.info/sct#2898000", DNAAnalysisAntenatalBlood }, 
+      { "289928003", ReductionPlasty }, 
+      { "http://snomed.info/sct#289928003", ReductionPlasty }, 
+      { "289930001", EnzymeDestruction }, 
+      { "http://snomed.info/sct#289930001", EnzymeDestruction }, 
+      { "289936007", ShaveExcision }, 
+      { "http://snomed.info/sct#289936007", ShaveExcision }, 
+      { "289938008", MicrosurgicalRepair }, 
+      { "http://snomed.info/sct#289938008", MicrosurgicalRepair }, 
+      { "290001001", RecessionAction }, 
+      { "http://snomed.info/sct#290001001", RecessionAction }, 
+      { "297179000", MicrosurgicalAnastomosis }, 
+      { "http://snomed.info/sct#297179000", MicrosurgicalAnastomosis }, 
+      { "297183000", Revascularization }, 
+      { "http://snomed.info/sct#297183000", Revascularization }, 
+      { "298053008", DevascularizationAction }, 
+      { "http://snomed.info/sct#298053008", DevascularizationAction }, 
+      { "298116000", ApplicationOfSubstance }, 
+      { "http://snomed.info/sct#298116000", ApplicationOfSubstance }, 
+      { "299712004", OsteoclasisAction }, 
+      { "http://snomed.info/sct#299712004", OsteoclasisAction }, 
+      { "299713009", OsteotomyAction }, 
+      { "http://snomed.info/sct#299713009", OsteotomyAction }, 
+      { "299893001", InterpositionAnastomosisAction }, 
+      { "http://snomed.info/sct#299893001", InterpositionAnastomosisAction }, 
+      { "302193003", ActionsByModality }, 
+      { "http://snomed.info/sct#302193003", ActionsByModality }, 
+      { "302196006", FreeingAction }, 
+      { "http://snomed.info/sct#302196006", FreeingAction }, 
+      { "302199004", ExaminationAction }, 
+      { "http://snomed.info/sct#302199004", ExaminationAction }, 
+      { "302204005", UltrasoundAction }, 
+      { "http://snomed.info/sct#302204005", UltrasoundAction }, 
+      { "302205006", MicrowaveAction }, 
+      { "http://snomed.info/sct#302205006", MicrowaveAction }, 
+      { "302554003", ContrastImagingTechnique }, 
+      { "http://snomed.info/sct#302554003", ContrastImagingTechnique }, 
+      { "303893007", FunctionalModification }, 
+      { "http://snomed.info/sct#303893007", FunctionalModification }, 
+      { "303894001", StructuralModification }, 
+      { "http://snomed.info/sct#303894001", StructuralModification }, 
+      { "303955003", TransfusionAction }, 
+      { "http://snomed.info/sct#303955003", TransfusionAction }, 
+      { "303996000", Terminalization }, 
+      { "http://snomed.info/sct#303996000", Terminalization }, 
+      { "303998004", UnusedActionValues }, 
+      { "http://snomed.info/sct#303998004", UnusedActionValues }, 
+      { "304033004", SpecificStimulationTechnique }, 
+      { "http://snomed.info/sct#304033004", SpecificStimulationTechnique }, 
+      { "304054006", StructuralSupportAction }, 
+      { "http://snomed.info/sct#304054006", StructuralSupportAction }, 
+      { "304364007", FixationOfProstheticJointComponent }, 
+      { "http://snomed.info/sct#304364007", FixationOfProstheticJointComponent }, 
+      { "304367000", UncementedComponentFixation }, 
+      { "http://snomed.info/sct#304367000", UncementedComponentFixation }, 
+      { "304904003", ManualEvacuation }, 
+      { "http://snomed.info/sct#304904003", ManualEvacuation }, 
+      { "306005", EchographyOfKidney }, 
+      { "http://snomed.info/sct#306005", EchographyOfKidney }, 
+      { "309796000", LossOfResistanceTechnique }, 
+      { "http://snomed.info/sct#309796000", LossOfResistanceTechnique }, 
+      { "309797009", LossOfResistanceToAir }, 
+      { "http://snomed.info/sct#309797009", LossOfResistanceToAir }, 
+      { "309798004", LossOfResistanceToSaline }, 
+      { "http://snomed.info/sct#309798004", LossOfResistanceToSaline }, 
+      { "312236008", DuplexUltrasound }, 
+      { "http://snomed.info/sct#312236008", DuplexUltrasound }, 
+      { "312245009", AngiographyTechnique }, 
+      { "http://snomed.info/sct#312245009", AngiographyTechnique }, 
+      { "312246005", DigitalSubtractionAngiography }, 
+      { "http://snomed.info/sct#312246005", DigitalSubtractionAngiography }, 
+      { "312250003", MagneticResonanceImaging }, 
+      { "http://snomed.info/sct#312250003", MagneticResonanceImaging }, 
+      { "312251004", ComputedTomographyTechnique }, 
+      { "http://snomed.info/sct#312251004", ComputedTomographyTechnique }, 
+      { "312254007", PlainXRayImaging }, 
+      { "http://snomed.info/sct#312254007", PlainXRayImaging }, 
+      { "312275004", FluoroscopicImaging }, 
+      { "http://snomed.info/sct#312275004", FluoroscopicImaging }, 
+      { "312336005", OpeningAction }, 
+      { "http://snomed.info/sct#312336005", OpeningAction }, 
+      { "312337001", ThermographyImaging }, 
+      { "http://snomed.info/sct#312337001", ThermographyImaging }, 
+      { "312348008", ImagePostProcessing }, 
+      { "http://snomed.info/sct#312348008", ImagePostProcessing }, 
+      { "312421008", RadionuclideImaging }, 
+      { "http://snomed.info/sct#312421008", RadionuclideImaging }, 
+      { "312883004", DesensitizationAction }, 
+      { "http://snomed.info/sct#312883004", DesensitizationAction }, 
+      { "313029009", BrachytherapyAction }, 
+      { "http://snomed.info/sct#313029009", BrachytherapyAction }, 
+      { "313115005", FlapTransferTechnique }, 
+      { "http://snomed.info/sct#313115005", FlapTransferTechnique }, 
+      { "313116006", AdvancementTechnique }, 
+      { "http://snomed.info/sct#313116006", AdvancementTechnique }, 
+      { "313201001", SimpleSutureTechnique }, 
+      { "http://snomed.info/sct#313201001", SimpleSutureTechnique }, 
+      { "313202008", ZPlastyTechnique }, 
+      { "http://snomed.info/sct#313202008", ZPlastyTechnique }, 
+      { "313281003", ForwardSliding }, 
+      { "http://snomed.info/sct#313281003", ForwardSliding }, 
+      { "334003", PanorexExaminationOfMandible }, 
+      { "http://snomed.info/sct#334003", PanorexExaminationOfMandible }, 
+      { "352003", ReagentRBCPreparationAntibodySensitizedPool }, 
+      { "http://snomed.info/sct#352003", ReagentRBCPreparationAntibodySensitizedPool }, 
+      { "353008", IVIrrigationMonitoring }, 
+      { "http://snomed.info/sct#353008", IVIrrigationMonitoring }, 
+      { "360017003", ClippingAction }, 
+      { "http://snomed.info/sct#360017003", ClippingAction }, 
+      { "360018008", StimulusDosingTechnique }, 
+      { "http://snomed.info/sct#360018008", StimulusDosingTechnique }, 
+      { "360020006", ExtirpationAction }, 
+      { "http://snomed.info/sct#360020006", ExtirpationAction }, 
+      { "360021005", BypassAction }, 
+      { "http://snomed.info/sct#360021005", BypassAction }, 
+      { "360025001", HarvestingAction }, 
+      { "http://snomed.info/sct#360025001", HarvestingAction }, 
+      { "360027009", InterpositionAction }, 
+      { "http://snomed.info/sct#360027009", InterpositionAction }, 
+      { "360028004", SurgicalBiopsyAction }, 
+      { "http://snomed.info/sct#360028004", SurgicalBiopsyAction }, 
+      { "360029007", NonsurgicalBiopsyAction }, 
+      { "http://snomed.info/sct#360029007", NonsurgicalBiopsyAction }, 
+      { "360032005", FlapReconstructionAction }, 
+      { "http://snomed.info/sct#360032005", FlapReconstructionAction }, 
+      { "360037004", ImagingAction }, 
+      { "http://snomed.info/sct#360037004", ImagingAction }, 
+      { "360038009", GluingAction }, 
+      { "http://snomed.info/sct#360038009", GluingAction }, 
+      { "360051004", SurgicalToilet }, 
+      { "http://snomed.info/sct#360051004", SurgicalToilet }, 
+      { "360060007", ApproximationAction }, 
+      { "http://snomed.info/sct#360060007", ApproximationAction }, 
+      { "360082000", AppositionAction }, 
+      { "http://snomed.info/sct#360082000", AppositionAction }, 
+      { "360084004", SeptationAction }, 
+      { "http://snomed.info/sct#360084004", SeptationAction }, 
+      { "360087006", IndirectAnastomosisAction }, 
+      { "http://snomed.info/sct#360087006", IndirectAnastomosisAction }, 
+      { "360146007", RepositioningAction }, 
+      { "http://snomed.info/sct#360146007", RepositioningAction }, 
+      { "360147003", AttentionAction }, 
+      { "http://snomed.info/sct#360147003", AttentionAction }, 
+      { "360148008", ObstetricAction }, 
+      { "http://snomed.info/sct#360148008", ObstetricAction }, 
+      { "360149000", DeliveryAction }, 
+      { "http://snomed.info/sct#360149000", DeliveryAction }, 
+      { "360150000", InlayReplacementAction }, 
+      { "http://snomed.info/sct#360150000", InlayReplacementAction }, 
+      { "360152008", MonitoringAction }, 
+      { "http://snomed.info/sct#360152008", MonitoringAction }, 
+      { "360153003", TakeImpressionAction }, 
+      { "http://snomed.info/sct#360153003", TakeImpressionAction }, 
+      { "360154009", TryInOfDeviceAction }, 
+      { "http://snomed.info/sct#360154009", TryInOfDeviceAction }, 
+      { "360160009", CheckingAction }, 
+      { "http://snomed.info/sct#360160009", CheckingAction }, 
+      { "360161008", InductionAction }, 
+      { "http://snomed.info/sct#360161008", InductionAction }, 
+      { "360163006", InfiltrationAction }, 
+      { "http://snomed.info/sct#360163006", InfiltrationAction }, 
+      { "360165004", ApheresisAction }, 
+      { "http://snomed.info/sct#360165004", ApheresisAction }, 
+      { "360166003", FiltrationAction }, 
+      { "http://snomed.info/sct#360166003", FiltrationAction }, 
+      { "360220002", MappingAction }, 
+      { "http://snomed.info/sct#360220002", MappingAction }, 
+      { "360222005", MassageAction }, 
+      { "http://snomed.info/sct#360222005", MassageAction }, 
+      { "360223000", CineImagingAction }, 
+      { "http://snomed.info/sct#360223000", CineImagingAction }, 
+      { "360226008", ElectricalDischargeAction }, 
+      { "http://snomed.info/sct#360226008", ElectricalDischargeAction }, 
+      { "360231005", VideoImagingAction }, 
+      { "http://snomed.info/sct#360231005", VideoImagingAction }, 
+      { "360232003", SpectroscopyAction }, 
+      { "http://snomed.info/sct#360232003", SpectroscopyAction }, 
+      { "360239007", TerminationAction }, 
+      { "http://snomed.info/sct#360239007", TerminationAction }, 
+      { "360240009", ConnectionAction }, 
+      { "http://snomed.info/sct#360240009", ConnectionAction }, 
+      { "360270004", TherapyAction }, 
+      { "http://snomed.info/sct#360270004", TherapyAction }, 
+      { "360272007", DiscussionAction }, 
+      { "http://snomed.info/sct#360272007", DiscussionAction }, 
+      { "360273002", ProvisionAction }, 
+      { "http://snomed.info/sct#360273002", ProvisionAction }, 
+      { "360314001", CuttingAction }, 
+      { "http://snomed.info/sct#360314001", CuttingAction }, 
+      { "360315000", FilingAction }, 
+      { "http://snomed.info/sct#360315000", FilingAction }, 
+      { "360323003", RestoreAction }, 
+      { "http://snomed.info/sct#360323003", RestoreAction }, 
+      { "360324009", ObturationAction }, 
+      { "http://snomed.info/sct#360324009", ObturationAction }, 
+      { "360325005", SimpleRemovalAction }, 
+      { "http://snomed.info/sct#360325005", SimpleRemovalAction }, 
+      { "360393008", DisinsertionAction }, 
+      { "http://snomed.info/sct#360393008", DisinsertionAction }, 
+      { "362939006", DissolutionAction }, 
+      { "http://snomed.info/sct#362939006", DissolutionAction }, 
+      { "362943005", ManualMethod }, 
+      { "http://snomed.info/sct#362943005", ManualMethod }, 
+      { "363659002", PacingAction }, 
+      { "http://snomed.info/sct#363659002", PacingAction }, 
+      { "363678002", PositronEmissionTomographicImaging }, 
+      { "http://snomed.info/sct#363678002", PositronEmissionTomographicImaging }, 
+      { "367529003", LendingAction }, 
+      { "http://snomed.info/sct#367529003", LendingAction }, 
+      { "367558000", ContouringAction }, 
+      { "http://snomed.info/sct#367558000", ContouringAction }, 
+      { "367559008", PreparationAction }, 
+      { "http://snomed.info/sct#367559008", PreparationAction }, 
+      { "367560003", BucklingAction }, 
+      { "http://snomed.info/sct#367560003", BucklingAction }, 
+      { "367642006", InversionAction }, 
+      { "http://snomed.info/sct#367642006", InversionAction }, 
+      { "367740008", SuspensionAction }, 
+      { "http://snomed.info/sct#367740008", SuspensionAction }, 
+      { "369242005", HyfrecationAction }, 
+      { "http://snomed.info/sct#369242005", HyfrecationAction }, 
+      { "371871002", SingleBeatsNumericEstimationTechnique }, 
+      { "http://snomed.info/sct#371871002", SingleBeatsNumericEstimationTechnique }, 
+      { "371912002", BestValue }, 
+      { "http://snomed.info/sct#371912002", BestValue }, 
+      { "371913007", PointSourceNumericEstimationTechnique }, 
+      { "http://snomed.info/sct#371913007", PointSourceNumericEstimationTechnique }, 
+      { "371914001", PeakToPeakNumericEstimationTechnique }, 
+      { "http://snomed.info/sct#371914001", PeakToPeakNumericEstimationTechnique }, 
+      { "371916004", RepresentativeNumericEstimationTechnique }, 
+      { "http://snomed.info/sct#371916004", RepresentativeNumericEstimationTechnique }, 
+      { "371921001", AveragedNumericEstimationTechnique }, 
+      { "http://snomed.info/sct#371921001", AveragedNumericEstimationTechnique }, 
+      { "373098007", MeanNumericEstimationTechnique }, 
+      { "http://snomed.info/sct#373098007", MeanNumericEstimationTechnique }, 
+      { "373099004", MedianNumericEstimationTechnique }, 
+      { "http://snomed.info/sct#373099004", MedianNumericEstimationTechnique }, 
+      { "373100007", ModeNumericEstimationTechnique }, 
+      { "http://snomed.info/sct#373100007", ModeNumericEstimationTechnique }, 
+      { "373115008", RoutineNumericEstimationTechnique }, 
+      { "http://snomed.info/sct#373115008", RoutineNumericEstimationTechnique }, 
+      { "386746003", MaintenanceAction }, 
+      { "http://snomed.info/sct#386746003", MaintenanceAction }, 
+      { "389000", TobramycinMeasurement }, 
+      { "http://snomed.info/sct#389000", TobramycinMeasurement }, 
+      { "397801003", SingleBolus }, 
+      { "http://snomed.info/sct#397801003", SingleBolus }, 
+      { "397850009", IntravascularConfirmationMethod }, 
+      { "http://snomed.info/sct#397850009", IntravascularConfirmationMethod }, 
+      { "397884008", IntermittentBolus }, 
+      { "http://snomed.info/sct#397884008", IntermittentBolus }, 
+      { "397916001", LossOfResistanceTechniqueOtherFluid }, 
+      { "http://snomed.info/sct#397916001", LossOfResistanceTechniqueOtherFluid }, 
+      { "398037009", VesselLocationTechnique }, 
+      { "http://snomed.info/sct#398037009", VesselLocationTechnique }, 
+      { "398129004", LossOfResistanceTechniqueBothSalineAndAir }, 
+      { "http://snomed.info/sct#398129004", LossOfResistanceTechniqueBothSalineAndAir }, 
+      { "398317000", FinderNeedleTechnique }, 
+      { "http://snomed.info/sct#398317000", FinderNeedleTechnique }, 
+      { "399009009", BModeUltrasound }, 
+      { "http://snomed.info/sct#399009009", BModeUltrasound }, 
+      { "399015009", TomographicImagingPlainRadiologicAction }, 
+      { "http://snomed.info/sct#399015009", TomographicImagingPlainRadiologicAction }, 
+      { "399035005", TomographicImagingAction }, 
+      { "http://snomed.info/sct#399035005", TomographicImagingAction }, 
+      { "399064001", VAL2DModeUltrasound }, 
+      { "http://snomed.info/sct#399064001", VAL2DModeUltrasound }, 
+      { "399155008", MModeUltrasound }, 
+      { "http://snomed.info/sct#399155008", MModeUltrasound }, 
+      { "404655007", Autofluorescence }, 
+      { "http://snomed.info/sct#404655007", Autofluorescence }, 
+      { "410460000", Illumination }, 
+      { "http://snomed.info/sct#410460000", Illumination }, 
+      { "410461001", DualDiffuseDirectIllumination }, 
+      { "http://snomed.info/sct#410461001", DualDiffuseDirectIllumination }, 
+      { "410462008", FineSlitBeamDirectIllumination }, 
+      { "http://snomed.info/sct#410462008", FineSlitBeamDirectIllumination }, 
+      { "410463003", BroadTangentialDirectIllumination }, 
+      { "http://snomed.info/sct#410463003", BroadTangentialDirectIllumination }, 
+      { "410464009", IndirectScleroticScatterIllumination }, 
+      { "http://snomed.info/sct#410464009", IndirectScleroticScatterIllumination }, 
+      { "410465005", IndirectRetroilluminationFromTheIris }, 
+      { "http://snomed.info/sct#410465005", IndirectRetroilluminationFromTheIris }, 
+      { "410466006", IndirectRetroilluminationFromTheRetina }, 
+      { "http://snomed.info/sct#410466006", IndirectRetroilluminationFromTheRetina }, 
+      { "410467002", IndirectIrisTransillumination }, 
+      { "http://snomed.info/sct#410467002", IndirectIrisTransillumination }, 
+      { "410756002", SurgicalDecompressionAction }, 
+      { "http://snomed.info/sct#410756002", SurgicalDecompressionAction }, 
+      { "410757006", DecompressiveExcisionAction }, 
+      { "http://snomed.info/sct#410757006", DecompressiveExcisionAction }, 
+      { "410758001", DecompressiveIncisionAction }, 
+      { "http://snomed.info/sct#410758001", DecompressiveIncisionAction }, 
+      { "410759009", DecompressiveDivisionAction }, 
+      { "http://snomed.info/sct#410759009", DecompressiveDivisionAction }, 
+      { "410769003", ElevationReductionAction }, 
+      { "http://snomed.info/sct#410769003", ElevationReductionAction }, 
+      { "410814006", SurgicalReductionAction }, 
+      { "http://snomed.info/sct#410814006", SurgicalReductionAction }, 
+      { "410817004", DilationRepairAction }, 
+      { "http://snomed.info/sct#410817004", DilationRepairAction }, 
+      { "410820007", SurgicalTransplantationAction }, 
+      { "http://snomed.info/sct#410820007", SurgicalTransplantationAction }, 
+      { "414378002", HangingDropTechnique }, 
+      { "http://snomed.info/sct#414378002", HangingDropTechnique }, 
+      { "414456005", ImagingGuidanceTechnique }, 
+      { "http://snomed.info/sct#414456005", ImagingGuidanceTechnique }, 
+      { "414611008", LinePlacementTechnique }, 
+      { "http://snomed.info/sct#414611008", LinePlacementTechnique }, 
+      { "415037003", ParesthesiaTechnique }, 
+      { "http://snomed.info/sct#415037003", ParesthesiaTechnique }, 
+      { "415186003", ProximalIlluminationAction }, 
+      { "http://snomed.info/sct#415186003", ProximalIlluminationAction }, 
+      { "415741008", TransarterialTechnique }, 
+      { "http://snomed.info/sct#415741008", TransarterialTechnique }, 
+      { "416238005", IntubationTechnique }, 
+      { "http://snomed.info/sct#416238005", IntubationTechnique }, 
+      { "416423007", TrachealIntubationTechnique }, 
+      { "http://snomed.info/sct#416423007", TrachealIntubationTechnique }, 
+      { "416677001", InternalDrainageAction }, 
+      { "http://snomed.info/sct#416677001", InternalDrainageAction }, 
+      { "417453009", BronchialIntubationTechnique }, 
+      { "http://snomed.info/sct#417453009", BronchialIntubationTechnique }, 
+      { "418449005", Gently }, 
+      { "http://snomed.info/sct#418449005", Gently }, 
+      { "418694008", Rapidly }, 
+      { "http://snomed.info/sct#418694008", Rapidly }, 
+      { "419125005", Liberally }, 
+      { "http://snomed.info/sct#419125005", Liberally }, 
+      { "419385000", Use }, 
+      { "http://snomed.info/sct#419385000", Use }, 
+      { "419443000", Slowly }, 
+      { "http://snomed.info/sct#419443000", Slowly }, 
+      { "419652001", Take }, 
+      { "http://snomed.info/sct#419652001", Take }, 
+      { "419656003", ExaminationANDORHistoryTakingAction }, 
+      { "http://snomed.info/sct#419656003", ExaminationANDORHistoryTakingAction }, 
+      { "419913006", Vigorously }, 
+      { "http://snomed.info/sct#419913006", Vigorously }, 
+      { "419988009", ActionOfDrugAdministration }, 
+      { "http://snomed.info/sct#419988009", ActionOfDrugAdministration }, 
+      { "420004004", SwallowedWhole }, 
+      { "http://snomed.info/sct#420004004", SwallowedWhole }, 
+      { "424208002", ShuntAction }, 
+      { "http://snomed.info/sct#424208002", ShuntAction }, 
+      { "424457002", IntrathecalConfirmationTechnique }, 
+      { "http://snomed.info/sct#424457002", IntrathecalConfirmationTechnique }, 
+      { "424832003", SurgicalIntroductionAction }, 
+      { "http://snomed.info/sct#424832003", SurgicalIntroductionAction }, 
+      { "424900004", RecommendationAction }, 
+      { "http://snomed.info/sct#424900004", RecommendationAction }, 
+      { "425362007", SurgicalInsertionAction }, 
+      { "http://snomed.info/sct#425362007", SurgicalInsertionAction }, 
+      { "425689005", TeachingAction }, 
+      { "http://snomed.info/sct#425689005", TeachingAction }, 
+      { "425704008", PowerDopplerUltrasound }, 
+      { "http://snomed.info/sct#425704008", PowerDopplerUltrasound }, 
+      { "425764006", TransectionAction }, 
+      { "http://snomed.info/sct#425764006", TransectionAction }, 
+      { "426413004", ClosedReductionAction }, 
+      { "http://snomed.info/sct#426413004", ClosedReductionAction }, 
+      { "426530000", OpenReductionAction }, 
+      { "http://snomed.info/sct#426530000", OpenReductionAction }, 
+      { "426865009", VAL3DModeUltrasound }, 
+      { "http://snomed.info/sct#426865009", VAL3DModeUltrasound }, 
+      { "428010000", OpenEmbolizationAction }, 
+      { "http://snomed.info/sct#428010000", OpenEmbolizationAction }, 
+      { "428381003", DiathermyAction }, 
+      { "http://snomed.info/sct#428381003", DiathermyAction }, 
+      { "430975009", SurgicalPiercingAction }, 
+      { "http://snomed.info/sct#430975009", SurgicalPiercingAction }, 
+      { "435001", PulmonaryInhalationStudy }, 
+      { "http://snomed.info/sct#435001", PulmonaryInhalationStudy }, 
+      { "439054007", SurgicalCataractAspirationAction }, 
+      { "http://snomed.info/sct#439054007", SurgicalCataractAspirationAction }, 
+      { "439237009", MechanicalRepairAction }, 
+      { "http://snomed.info/sct#439237009", MechanicalRepairAction }, 
+      { "439315000", WedgeOsteotomyAction }, 
+      { "http://snomed.info/sct#439315000", WedgeOsteotomyAction }, 
+      { "439417007", ClosedManualReductionAction }, 
+      { "http://snomed.info/sct#439417007", ClosedManualReductionAction }, 
+      { "439513008", SurgicalSizeReductionAction }, 
+      { "http://snomed.info/sct#439513008", SurgicalSizeReductionAction }, 
+      { "440338007", DispensingAction }, 
+      { "http://snomed.info/sct#440338007", DispensingAction }, 
+      { "440647007", MechanicalConstructionAction }, 
+      { "http://snomed.info/sct#440647007", MechanicalConstructionAction }, 
+      { "441504007", SurgicalManipulationAction }, 
+      { "http://snomed.info/sct#441504007", SurgicalManipulationAction }, 
+      { "442837002", ExcisionDebridementAction }, 
+      { "http://snomed.info/sct#442837002", ExcisionDebridementAction }, 
+      { "445103003", FixationByWedgingAction }, 
+      { "http://snomed.info/sct#445103003", FixationByWedgingAction }, 
+      { "445911007", ExtracorporealTechnique }, 
+      { "http://snomed.info/sct#445911007", ExtracorporealTechnique }, 
+      { "446402005", HemodialysisTechnique }, 
+      { "http://snomed.info/sct#446402005", HemodialysisTechnique }, 
+      { "446406008", InhalationTechnique }, 
+      { "http://snomed.info/sct#446406008", InhalationTechnique }, 
+      { "446947001", ElectroosmosisTechnique }, 
+      { "http://snomed.info/sct#446947001", ElectroosmosisTechnique }, 
+      { "447027002", IrrigationTechnique }, 
+      { "http://snomed.info/sct#447027002", IrrigationTechnique }, 
+      { "447056002", OcclusiveDressingTechnique }, 
+      { "http://snomed.info/sct#447056002", OcclusiveDressingTechnique }, 
+      { "447120003", InjectionTechnique }, 
+      { "http://snomed.info/sct#447120003", InjectionTechnique }, 
+      { "447692002", PercutaneousGastrostomyButtonTechnique }, 
+      { "http://snomed.info/sct#447692002", PercutaneousGastrostomyButtonTechnique }, 
+      { "447693007", PeritonealDialysisTechnique }, 
+      { "http://snomed.info/sct#447693007", PeritonealDialysisTechnique }, 
+      { "447826007", InfusionTechnique }, 
+      { "http://snomed.info/sct#447826007", InfusionTechnique }, 
+      { "447963004", IntravenousPushTechnique }, 
+      { "http://snomed.info/sct#447963004", IntravenousPushTechnique }, 
+      { "448076005", IontophoresisTechnique }, 
+      { "http://snomed.info/sct#448076005", IontophoresisTechnique }, 
+      { "449137004", IntravenousPiggybackTechnique }, 
+      { "http://snomed.info/sct#449137004", IntravenousPiggybackTechnique }, 
+      { "449225005", HemodiafiltrationTechnique }, 
+      { "http://snomed.info/sct#449225005", HemodiafiltrationTechnique }, 
+      { "468008", GlutathioneMeasurement }, 
+      { "http://snomed.info/sct#468008", GlutathioneMeasurement }, 
+      { "489004", FerritinMeasurement }, 
+      { "http://snomed.info/sct#489004", FerritinMeasurement }, 
+      { "493005", UrobilinogenMeasurement48HourFeces }, 
+      { "http://snomed.info/sct#493005", UrobilinogenMeasurement48HourFeces }, 
+      { "540006", AntibodyToSingleAndDoubleStrandedDNAMeasurement }, 
+      { "http://snomed.info/sct#540006", AntibodyToSingleAndDoubleStrandedDNAMeasurement }, 
+      { "574005", BenzodiazepineMeasurement }, 
+      { "http://snomed.info/sct#574005", BenzodiazepineMeasurement }, 
+      { "58207001", CompetitiveProteinBindingAssay }, 
+      { "http://snomed.info/sct#58207001", CompetitiveProteinBindingAssay }, 
+      { "628003", SteinmanTest }, 
+      { "http://snomed.info/sct#628003", SteinmanTest }, 
+      { "642006", CerebralThermography }, 
+      { "http://snomed.info/sct#642006", CerebralThermography }, 
+      { "673005", IndirectLaryngoscopy }, 
+      { "http://snomed.info/sct#673005", IndirectLaryngoscopy }, 
+      { "674004", AbductionTest }, 
+      { "http://snomed.info/sct#674004", AbductionTest }, 
+      { "687005", AlbuminGlobulinRatio }, 
+      { "http://snomed.info/sct#687005", AlbuminGlobulinRatio }, 
+      { "697001", HepatitisAVirusAntibodyMeasurement }, 
+      { "http://snomed.info/sct#697001", HepatitisAVirusAntibodyMeasurement }, 
+      { "698788008", TransmissionIllumination }, 
+      { "http://snomed.info/sct#698788008", TransmissionIllumination }, 
+      { "698789000", ReflectionIllumination }, 
+      { "http://snomed.info/sct#698789000", ReflectionIllumination }, 
+      { "698790009", EpifluorescenceIllumination }, 
+      { "http://snomed.info/sct#698790009", EpifluorescenceIllumination }, 
+      { "698792001", BrightfieldIllumination }, 
+      { "http://snomed.info/sct#698792001", BrightfieldIllumination }, 
+      { "698793006", DarkfieldIllumination }, 
+      { "http://snomed.info/sct#698793006", DarkfieldIllumination }, 
+      { "698794000", ObliqueIllumination }, 
+      { "http://snomed.info/sct#698794000", ObliqueIllumination }, 
+      { "698796003", PhaseContrastIllumination }, 
+      { "http://snomed.info/sct#698796003", PhaseContrastIllumination }, 
+      { "698797007", DifferentialInterferenceContrast }, 
+      { "http://snomed.info/sct#698797007", DifferentialInterferenceContrast }, 
+      { "698798002", TotalInternalReflectionFluorescence }, 
+      { "http://snomed.info/sct#698798002", TotalInternalReflectionFluorescence }, 
+      { "702569007", ConeBeamComputedTomographyImagingAction }, 
+      { "http://snomed.info/sct#702569007", ConeBeamComputedTomographyImagingAction }, 
+      { "702658000", MicrobialCulture }, 
+      { "http://snomed.info/sct#702658000", MicrobialCulture }, 
+      { "702659008", AutomatedCount }, 
+      { "http://snomed.info/sct#702659008", AutomatedCount }, 
+      { "702660003", TestStrip }, 
+      { "http://snomed.info/sct#702660003", TestStrip }, 
+      { "702661004", LightMicroscopy }, 
+      { "http://snomed.info/sct#702661004", LightMicroscopy }, 
+      { "702662006", HighPowerFieldLightMicroscopy }, 
+      { "http://snomed.info/sct#702662006", HighPowerFieldLightMicroscopy }, 
+      { "702663001", ManualCount }, 
+      { "http://snomed.info/sct#702663001", ManualCount }, 
+      { "702664007", ImmunologicalMethod }, 
+      { "http://snomed.info/sct#702664007", ImmunologicalMethod }, 
+      { "702665008", CytologyStain }, 
+      { "http://snomed.info/sct#702665008", CytologyStain }, 
+      { "702666009", Cytology }, 
+      { "http://snomed.info/sct#702666009", Cytology }, 
+      { "702667000", ClearanceCalculationFormula }, 
+      { "http://snomed.info/sct#702667000", ClearanceCalculationFormula }, 
+      { "702668005", ModificationOfDietInRenalDiseaseFormula }, 
+      { "http://snomed.info/sct#702668005", ModificationOfDietInRenalDiseaseFormula }, 
+      { "702669002", DirectAssay }, 
+      { "http://snomed.info/sct#702669002", DirectAssay }, 
+      { "702673004", DeoxyribonucleicAcidProbe }, 
+      { "http://snomed.info/sct#702673004", DeoxyribonucleicAcidProbe }, 
+      { "702674005", NucleicAcidHybridizationProbe }, 
+      { "http://snomed.info/sct#702674005", NucleicAcidHybridizationProbe }, 
+      { "702675006", ProbeWithTargetAmplification }, 
+      { "http://snomed.info/sct#702675006", ProbeWithTargetAmplification }, 
+      { "702872006", DetectionLimitEqualToOrLessThan20MgL }, 
+      { "http://snomed.info/sct#702872006", DetectionLimitEqualToOrLessThan20MgL }, 
+      { "702873001", CalculationTechnique }, 
+      { "http://snomed.info/sct#702873001", CalculationTechnique }, 
+      { "702940009", Filtration }, 
+      { "http://snomed.info/sct#702940009", Filtration }, 
+      { "702941008", ParaffinEmbedding }, 
+      { "http://snomed.info/sct#702941008", ParaffinEmbedding }, 
+      { "702942001", Concentration }, 
+      { "http://snomed.info/sct#702942001", Concentration }, 
+      { "702943006", DNAExtraction }, 
+      { "http://snomed.info/sct#702943006", DNAExtraction }, 
+      { "702944000", RNAExtraction }, 
+      { "http://snomed.info/sct#702944000", RNAExtraction }, 
+      { "702945004", EstimatedFromGlycatedHemoglobin }, 
+      { "http://snomed.info/sct#702945004", EstimatedFromGlycatedHemoglobin }, 
+      { "702946003", CoagulationTechnique }, 
+      { "http://snomed.info/sct#702946003", CoagulationTechnique }, 
+      { "702947007", CorrectedForNucleatedErythrocytes }, 
+      { "http://snomed.info/sct#702947007", CorrectedForNucleatedErythrocytes }, 
+      { "703436002", DetectionLimitEqualToOrLessThan0005MIUL }, 
+      { "http://snomed.info/sct#703436002", DetectionLimitEqualToOrLessThan0005MIUL }, 
+      { "703437006", DetectionLimitEqualToOrLessThan001NgML }, 
+      { "http://snomed.info/sct#703437006", DetectionLimitEqualToOrLessThan001NgML }, 
+      { "703438001", DetectionLimitEqualToOrLessThan005MIUL }, 
+      { "http://snomed.info/sct#703438001", DetectionLimitEqualToOrLessThan005MIUL }, 
+      { "703439009", DetectionLimitEqualToOrLessThan10NgDL }, 
+      { "http://snomed.info/sct#703439009", DetectionLimitEqualToOrLessThan10NgDL }, 
+      { "703440006", DetectionLimitEqualToOrLessThan347PmolL }, 
+      { "http://snomed.info/sct#703440006", DetectionLimitEqualToOrLessThan347PmolL }, 
+      { "703441005", WrightStainMethod }, 
+      { "http://snomed.info/sct#703441005", WrightStainMethod }, 
+      { "703442003", GradientStripSusceptibilityTest }, 
+      { "http://snomed.info/sct#703442003", GradientStripSusceptibilityTest }, 
+      { "703443008", FungusStainMethod }, 
+      { "http://snomed.info/sct#703443008", FungusStainMethod }, 
+      { "703444002", FluorescentImmunoassay }, 
+      { "http://snomed.info/sct#703444002", FluorescentImmunoassay }, 
+      { "703445001", IonSelectiveElectrodeMeasurement }, 
+      { "http://snomed.info/sct#703445001", IonSelectiveElectrodeMeasurement }, 
+      { "703446000", ImmunoblotAssay }, 
+      { "http://snomed.info/sct#703446000", ImmunoblotAssay }, 
+      { "703447009", EIATechnique }, 
+      { "http://snomed.info/sct#703447009", EIATechnique }, 
+      { "703448004", LatexAgglutinationTest }, 
+      { "http://snomed.info/sct#703448004", LatexAgglutinationTest }, 
+      { "703449007", Radioimmunoassay }, 
+      { "http://snomed.info/sct#703449007", Radioimmunoassay }, 
+      { "703450007", Electrophoresis }, 
+      { "http://snomed.info/sct#703450007", Electrophoresis }, 
+      { "703451006", LowPowerFieldLightMicroscopy }, 
+      { "http://snomed.info/sct#703451006", LowPowerFieldLightMicroscopy }, 
+      { "703452004", ElectricalImpedanceTechnique }, 
+      { "http://snomed.info/sct#703452004", ElectricalImpedanceTechnique }, 
+      { "703454003", CentrifugationTechnique }, 
+      { "http://snomed.info/sct#703454003", CentrifugationTechnique }, 
+      { "703455002", RapidPlasmaReaginTechnique }, 
+      { "http://snomed.info/sct#703455002", RapidPlasmaReaginTechnique }, 
+      { "703456001", VenerealDiseaseResearchLaboratoryTechnique }, 
+      { "http://snomed.info/sct#703456001", VenerealDiseaseResearchLaboratoryTechnique }, 
+      { "703457005", WetPreparationTechnique }, 
+      { "http://snomed.info/sct#703457005", WetPreparationTechnique }, 
+      { "703458000", NeutralizationMethod }, 
+      { "http://snomed.info/sct#703458000", NeutralizationMethod }, 
+      { "703459008", WestergrenTechnique }, 
+      { "http://snomed.info/sct#703459008", WestergrenTechnique }, 
+      { "703460003", WintrobeTechnique }, 
+      { "http://snomed.info/sct#703460003", WintrobeTechnique }, 
+      { "703461004", ConcentrationOfParasitesMethod }, 
+      { "http://snomed.info/sct#703461004", ConcentrationOfParasitesMethod }, 
+      { "703462006", CockcroftGaultFormula }, 
+      { "http://snomed.info/sct#703462006", CockcroftGaultFormula }, 
+      { "703463001", CalculatedFromOxygenPartialPressure }, 
+      { "http://snomed.info/sct#703463001", CalculatedFromOxygenPartialPressure }, 
+      { "703488009", Coagulation11SalineMixtureTechnique }, 
+      { "http://snomed.info/sct#703488009", Coagulation11SalineMixtureTechnique }, 
+      { "703490005", TranscutaneousCO2Monitor }, 
+      { "http://snomed.info/sct#703490005", TranscutaneousCO2Monitor }, 
+      { "703492002", TranscutaneousO2Monitor }, 
+      { "http://snomed.info/sct#703492002", TranscutaneousO2Monitor }, 
+      { "703497008", CalculatedFromSignalToCutoffRatio }, 
+      { "http://snomed.info/sct#703497008", CalculatedFromSignalToCutoffRatio }, 
+      { "703501003", ToxicologyScreeningTechnique }, 
+      { "http://snomed.info/sct#703501003", ToxicologyScreeningTechnique }, 
+      { "703505007", ClearanceCalculationRelativeTo173SquareMetersBodySurfaceArea }, 
+      { "http://snomed.info/sct#703505007", ClearanceCalculationRelativeTo173SquareMetersBodySurfaceArea }, 
+      { "703506008", ClearanceCalculationRelativeTo173SquareMetersBodySurfaceAreaAndAdjustedForAfricanRace }, 
+      { "http://snomed.info/sct#703506008", ClearanceCalculationRelativeTo173SquareMetersBodySurfaceAreaAndAdjustedForAfricanRace }, 
+      { "703507004", ClearanceCalculationRelativeTo173SquareMetersBodySurfaceAreaAndAdjustedForNonAfricanRace }, 
+      { "http://snomed.info/sct#703507004", ClearanceCalculationRelativeTo173SquareMetersBodySurfaceAreaAndAdjustedForNonAfricanRace }, 
+      { "703689005", HighSensitivityMethodForCReactiveProtein }, 
+      { "http://snomed.info/sct#703689005", HighSensitivityMethodForCReactiveProtein }, 
+      { "703690001", ConfirmatoryTechnique }, 
+      { "http://snomed.info/sct#703690001", ConfirmatoryTechnique }, 
+      { "703724007", HighSensitivityMethodForEstradiol }, 
+      { "http://snomed.info/sct#703724007", HighSensitivityMethodForEstradiol }, 
+      { "703725008", Culture }, 
+      { "http://snomed.info/sct#703725008", Culture }, 
+      { "703750006", AerobicCulture }, 
+      { "http://snomed.info/sct#703750006", AerobicCulture }, 
+      { "703751005", AnaerobicCulture }, 
+      { "http://snomed.info/sct#703751005", AnaerobicCulture }, 
+      { "703752003", OrganismSpecificCulture }, 
+      { "http://snomed.info/sct#703752003", OrganismSpecificCulture }, 
+      { "703753008", DetectingWithoutClassifying }, 
+      { "http://snomed.info/sct#703753008", DetectingWithoutClassifying }, 
+      { "703754002", DetectingByLightMicroscopyWithoutClassifying }, 
+      { "http://snomed.info/sct#703754002", DetectingByLightMicroscopyWithoutClassifying }, 
+      { "703856008", OrganismStainingTechnique }, 
+      { "http://snomed.info/sct#703856008", OrganismStainingTechnique }, 
+      { "703857004", StainingTechnique }, 
+      { "http://snomed.info/sct#703857004", StainingTechnique }, 
+      { "703858009", NumericEstimationTechnique }, 
+      { "http://snomed.info/sct#703858009", NumericEstimationTechnique }, 
+      { "703950001", HighSensitivityMethodForBioavailableTestosterone }, 
+      { "http://snomed.info/sct#703950001", HighSensitivityMethodForBioavailableTestosterone }, 
+      { "707682000", AdjustedMeasurementTechnique }, 
+      { "http://snomed.info/sct#707682000", AdjustedMeasurementTechnique }, 
+      { "707683005", AdjustedForDiabetesTechnique }, 
+      { "http://snomed.info/sct#707683005", AdjustedForDiabetesTechnique }, 
+      { "707684004", AdjustedForMultipleGestationsTechnique }, 
+      { "http://snomed.info/sct#707684004", AdjustedForMultipleGestationsTechnique }, 
+      { "707685003", AdjustedForSexHormoneBindingGlobulinTechnique }, 
+      { "http://snomed.info/sct#707685003", AdjustedForSexHormoneBindingGlobulinTechnique }, 
+      { "707687006", AdjustedForWeightTechnique }, 
+      { "http://snomed.info/sct#707687006", AdjustedForWeightTechnique }, 
+      { "707688001", AdjustedToPatientsActualTemperatureTechnique }, 
+      { "http://snomed.info/sct#707688001", AdjustedToPatientsActualTemperatureTechnique }, 
+      { "707689009", AdjustedToPH74Technique }, 
+      { "http://snomed.info/sct#707689009", AdjustedToPH74Technique }, 
+      { "707690000", CorrectedForAlbuminTechnique }, 
+      { "http://snomed.info/sct#707690000", CorrectedForAlbuminTechnique }, 
+      { "707691001", CorrectedForBackgroundTechnique }, 
+      { "http://snomed.info/sct#707691001", CorrectedForBackgroundTechnique }, 
+      { "707692008", CorrectedForGlucoseTechnique }, 
+      { "http://snomed.info/sct#707692008", CorrectedForGlucoseTechnique }, 
+      { "707693003", CorrectedForTotalProteinTechnique }, 
+      { "http://snomed.info/sct#707693003", CorrectedForTotalProteinTechnique }, 
+      { "707694009", SaturationAdjustedTo05Technique }, 
+      { "http://snomed.info/sct#707694009", SaturationAdjustedTo05Technique }, 
+      { "707695005", StandardBaseExcessTechnique }, 
+      { "http://snomed.info/sct#707695005", StandardBaseExcessTechnique }, 
+      { "707696006", StandardBaseExcessAdjustedForOxygenSaturationTechnique }, 
+      { "http://snomed.info/sct#707696006", StandardBaseExcessAdjustedForOxygenSaturationTechnique }, 
+      { "707698007", IonSelectiveMembraneElectrodeOutputAdjustedToPH74 }, 
+      { "http://snomed.info/sct#707698007", IonSelectiveMembraneElectrodeOutputAdjustedToPH74 }, 
+      { "707699004", HeliumSingleBreathOutputAdjustedForHemoglobin }, 
+      { "http://snomed.info/sct#707699004", HeliumSingleBreathOutputAdjustedForHemoglobin }, 
+      { "707700003", AutomatedCountOutputCorrectedForNucleatedErythrocytes }, 
+      { "http://snomed.info/sct#707700003", AutomatedCountOutputCorrectedForNucleatedErythrocytes }, 
+      { "707701004", CalculatedAndAdjustedForBodyWeight }, 
+      { "http://snomed.info/sct#707701004", CalculatedAndAdjustedForBodyWeight }, 
+      { "707702006", CalculatedOutputAdjustedToStandard }, 
+      { "http://snomed.info/sct#707702006", CalculatedOutputAdjustedToStandard }, 
+      { "708056006", AcidFastStain }, 
+      { "http://snomed.info/sct#708056006", AcidFastStain }, 
+      { "708058007", FlowCytometry }, 
+      { "http://snomed.info/sct#708058007", FlowCytometry }, 
+      { "708060009", GenotypeDetermination }, 
+      { "http://snomed.info/sct#708060009", GenotypeDetermination }, 
+      { "708061008", GramStain }, 
+      { "http://snomed.info/sct#708061008", GramStain }, 
+      { "708062001", Immunodiffusion }, 
+      { "http://snomed.info/sct#708062001", Immunodiffusion }, 
+      { "708063006", Immunoelectrophoresis }, 
+      { "http://snomed.info/sct#708063006", Immunoelectrophoresis }, 
+      { "708064000", Immunofixation }, 
+      { "http://snomed.info/sct#708064000", Immunofixation }, 
+      { "708065004", PulseOximetry }, 
+      { "http://snomed.info/sct#708065004", PulseOximetry }, 
+      { "708066003", TrichromeStain }, 
+      { "http://snomed.info/sct#708066003", TrichromeStain }, 
+      { "708067007", WrightGiemsaStain }, 
+      { "http://snomed.info/sct#708067007", WrightGiemsaStain }, 
+      { "708068002", MolecularGenetics }, 
+      { "http://snomed.info/sct#708068002", MolecularGenetics }, 
+      { "708069005", ChromogenicTechnique }, 
+      { "http://snomed.info/sct#708069005", ChromogenicTechnique }, 
+      { "708070006", SolubilityTest }, 
+      { "http://snomed.info/sct#708070006", SolubilityTest }, 
+      { "708071005", SmearingTechnique }, 
+      { "http://snomed.info/sct#708071005", SmearingTechnique }, 
+      { "708072003", MultipleAllergenBearingDisc }, 
+      { "http://snomed.info/sct#708072003", MultipleAllergenBearingDisc }, 
+      { "708073008", MinimumInhibitoryConcentrationSusceptibilityTest }, 
+      { "http://snomed.info/sct#708073008", MinimumInhibitoryConcentrationSusceptibilityTest }, 
+      { "708074002", LISS }, 
+      { "http://snomed.info/sct#708074002", LISS }, 
+      { "708075001", KOHPreparation }, 
+      { "http://snomed.info/sct#708075001", KOHPreparation }, 
+      { "708076000", KleihauerBetkeTechnique }, 
+      { "http://snomed.info/sct#708076000", KleihauerBetkeTechnique }, 
+      { "708077009", InfraredSpectroscopy }, 
+      { "http://snomed.info/sct#708077009", InfraredSpectroscopy }, 
+      { "708078004", IndiaInkStainingTechnique }, 
+      { "http://snomed.info/sct#708078004", IndiaInkStainingTechnique }, 
+      { "708097004", Immunohistochemistry }, 
+      { "http://snomed.info/sct#708097004", Immunohistochemistry }, 
+      { "708099001", RapidImmunoassay }, 
+      { "http://snomed.info/sct#708099001", RapidImmunoassay }, 
+      { "708104000", AgglutinationTechnique }, 
+      { "http://snomed.info/sct#708104000", AgglutinationTechnique }, 
+      { "708125000", ColdIncubation24Hours }, 
+      { "http://snomed.info/sct#708125000", ColdIncubation24Hours }, 
+      { "708128003", AcidFastKinyounQuoteSColdCarbolfuchsinStain }, 
+      { "http://snomed.info/sct#708128003", AcidFastKinyounQuoteSColdCarbolfuchsinStain }, 
+      { "708130001", CoombsTest }, 
+      { "http://snomed.info/sct#708130001", CoombsTest }, 
+      { "708131002", AntiHumanGlobulinTestDirect }, 
+      { "http://snomed.info/sct#708131002", AntiHumanGlobulinTestDirect }, 
+      { "708132009", AntiHumanGlobulinTestIndirect }, 
+      { "http://snomed.info/sct#708132009", AntiHumanGlobulinTestIndirect }, 
+      { "708133004", ComplementFixation }, 
+      { "http://snomed.info/sct#708133004", ComplementFixation }, 
+      { "708532004", PlateletAggregationTechnique }, 
+      { "http://snomed.info/sct#708532004", PlateletAggregationTechnique }, 
+      { "713295009", SurgicalReplacementAction }, 
+      { "http://snomed.info/sct#713295009", SurgicalReplacementAction }, 
+      { "718496006", BacterialBacteriophageTyping }, 
+      { "http://snomed.info/sct#718496006", BacterialBacteriophageTyping }, 
+      { "759005", IntracerebralElectroencephalogram }, 
+      { "http://snomed.info/sct#759005", IntracerebralElectroencephalogram }, 
+      { "762008", ComputerizedAxialTomographyOfCervicalSpineWithContrast }, 
+      { "http://snomed.info/sct#762008", ComputerizedAxialTomographyOfCervicalSpineWithContrast }, 
+      { "767002", WhiteBloodCellCount }, 
+      { "http://snomed.info/sct#767002", WhiteBloodCellCount }, 
+      { "814007", ElectrophoresisMeasurement }, 
+      { "http://snomed.info/sct#814007", ElectrophoresisMeasurement }, 
+      { "831000", DrawerTest }, 
+      { "http://snomed.info/sct#831000", DrawerTest }, 
+      { "853003", FecalFatMeasurement72HourCollection }, 
+      { "http://snomed.info/sct#853003", FecalFatMeasurement72HourCollection }, 
+      { "870006", CarbamazepineMeasurement }, 
+      { "http://snomed.info/sct#870006", CarbamazepineMeasurement }, 
+      { "879007", SpecialBloodCoagulationTestExplainByReport }, 
+      { "http://snomed.info/sct#879007", SpecialBloodCoagulationTestExplainByReport }, 
+      { "893000", TumorAntigenMeasurement }, 
+      { "http://snomed.info/sct#893000", TumorAntigenMeasurement }, 
+      { "910002", MHPGMeasurementUrine }, 
+      { "http://snomed.info/sct#910002", MHPGMeasurementUrine }, 
+      { "941001", EndoscopyOfPituitaryGland }, 
+      { "http://snomed.info/sct#941001", EndoscopyOfPituitaryGland }, 
+      { "951000", UltrasonicGuidanceForEndomyocardialBiopsy }, 
+      { "http://snomed.info/sct#951000", UltrasonicGuidanceForEndomyocardialBiopsy }, 
+      { "969009", IncisionAndExplorationOfLarynx }, 
+      { "http://snomed.info/sct#969009", IncisionAndExplorationOfLarynx }, 
+    };
   };
 }

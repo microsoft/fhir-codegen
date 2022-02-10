@@ -108,9 +108,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralApplyMetadataValue = "apply";
 
     /// <summary>
+    /// Literal for code: GuideParameterCodeApplyMetadataValue
+    /// </summary>
+    public const string LiteralGuideParameterCodeApplyMetadataValue = "http://hl7.org/fhir/guide-parameter-code#apply";
+
+    /// <summary>
     /// Literal for code: ExpansionProfile
     /// </summary>
     public const string LiteralExpansionProfile = "expansion-parameter";
+
+    /// <summary>
+    /// Literal for code: GuideParameterCodeExpansionProfile
+    /// </summary>
+    public const string LiteralGuideParameterCodeExpansionProfile = "http://hl7.org/fhir/guide-parameter-code#expansion-parameter";
 
     /// <summary>
     /// Literal for code: GenerateJSON
@@ -118,9 +128,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGenerateJSON = "generate-json";
 
     /// <summary>
+    /// Literal for code: GuideParameterCodeGenerateJSON
+    /// </summary>
+    public const string LiteralGuideParameterCodeGenerateJSON = "http://hl7.org/fhir/guide-parameter-code#generate-json";
+
+    /// <summary>
     /// Literal for code: GenerateTurtle
     /// </summary>
     public const string LiteralGenerateTurtle = "generate-turtle";
+
+    /// <summary>
+    /// Literal for code: GuideParameterCodeGenerateTurtle
+    /// </summary>
+    public const string LiteralGuideParameterCodeGenerateTurtle = "http://hl7.org/fhir/guide-parameter-code#generate-turtle";
 
     /// <summary>
     /// Literal for code: GenerateXML
@@ -128,9 +148,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGenerateXML = "generate-xml";
 
     /// <summary>
+    /// Literal for code: GuideParameterCodeGenerateXML
+    /// </summary>
+    public const string LiteralGuideParameterCodeGenerateXML = "http://hl7.org/fhir/guide-parameter-code#generate-xml";
+
+    /// <summary>
     /// Literal for code: HTMLTemplate
     /// </summary>
     public const string LiteralHTMLTemplate = "html-template";
+
+    /// <summary>
+    /// Literal for code: GuideParameterCodeHTMLTemplate
+    /// </summary>
+    public const string LiteralGuideParameterCodeHTMLTemplate = "http://hl7.org/fhir/guide-parameter-code#html-template";
 
     /// <summary>
     /// Literal for code: PagesPath
@@ -138,9 +168,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPagesPath = "path-pages";
 
     /// <summary>
+    /// Literal for code: GuideParameterCodePagesPath
+    /// </summary>
+    public const string LiteralGuideParameterCodePagesPath = "http://hl7.org/fhir/guide-parameter-code#path-pages";
+
+    /// <summary>
     /// Literal for code: ResourcePath
     /// </summary>
     public const string LiteralResourcePath = "path-resource";
+
+    /// <summary>
+    /// Literal for code: GuideParameterCodeResourcePath
+    /// </summary>
+    public const string LiteralGuideParameterCodeResourcePath = "http://hl7.org/fhir/guide-parameter-code#path-resource";
 
     /// <summary>
     /// Literal for code: TerminologyCachePath
@@ -148,8 +188,44 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTerminologyCachePath = "path-tx-cache";
 
     /// <summary>
+    /// Literal for code: GuideParameterCodeTerminologyCachePath
+    /// </summary>
+    public const string LiteralGuideParameterCodeTerminologyCachePath = "http://hl7.org/fhir/guide-parameter-code#path-tx-cache";
+
+    /// <summary>
     /// Literal for code: BrokenLinksRule
     /// </summary>
     public const string LiteralBrokenLinksRule = "rule-broken-links";
+
+    /// <summary>
+    /// Literal for code: GuideParameterCodeBrokenLinksRule
+    /// </summary>
+    public const string LiteralGuideParameterCodeBrokenLinksRule = "http://hl7.org/fhir/guide-parameter-code#rule-broken-links";
+
+    /// <summary>
+    /// Dictionary for looking up GuideParameterCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "apply", ApplyMetadataValue }, 
+      { "http://hl7.org/fhir/guide-parameter-code#apply", ApplyMetadataValue }, 
+      { "expansion-parameter", ExpansionProfile }, 
+      { "http://hl7.org/fhir/guide-parameter-code#expansion-parameter", ExpansionProfile }, 
+      { "generate-json", GenerateJSON }, 
+      { "http://hl7.org/fhir/guide-parameter-code#generate-json", GenerateJSON }, 
+      { "generate-turtle", GenerateTurtle }, 
+      { "http://hl7.org/fhir/guide-parameter-code#generate-turtle", GenerateTurtle }, 
+      { "generate-xml", GenerateXML }, 
+      { "http://hl7.org/fhir/guide-parameter-code#generate-xml", GenerateXML }, 
+      { "html-template", HTMLTemplate }, 
+      { "http://hl7.org/fhir/guide-parameter-code#html-template", HTMLTemplate }, 
+      { "path-pages", PagesPath }, 
+      { "http://hl7.org/fhir/guide-parameter-code#path-pages", PagesPath }, 
+      { "path-resource", ResourcePath }, 
+      { "http://hl7.org/fhir/guide-parameter-code#path-resource", ResourcePath }, 
+      { "path-tx-cache", TerminologyCachePath }, 
+      { "http://hl7.org/fhir/guide-parameter-code#path-tx-cache", TerminologyCachePath }, 
+      { "rule-broken-links", BrokenLinksRule }, 
+      { "http://hl7.org/fhir/guide-parameter-code#rule-broken-links", BrokenLinksRule }, 
+    };
   };
 }

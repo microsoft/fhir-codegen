@@ -28,6 +28,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? Deleted { get; set; }
     /// <summary>
+    /// Extension container element for Deleted
+    /// </summary>
+    public Element _Deleted { get; set; }
+    /// <summary>
     /// The flag can only be understood in the context of the List.code. If the flag means that the entry has actually been deleted from the list, the deleted element SHALL be true. Deleted can only be used if the List.mode is "changes".
     /// </summary>
     public CodeableConcept Flag { get; set; }
@@ -55,6 +59,12 @@ namespace fhirCsR4.Models
       if (Deleted != null)
       {
         writer.WriteBoolean("deleted", (bool)Deleted!);
+      }
+
+      if (_Deleted != null)
+      {
+        writer.WritePropertyName("_deleted");
+        _Deleted.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -97,6 +107,11 @@ namespace fhirCsR4.Models
 
         case "deleted":
           Deleted = reader.GetBoolean();
+          break;
+
+        case "_deleted":
+          _Deleted = new fhirCsR4.Models.Element();
+          _Deleted.DeserializeJson(ref reader, options);
           break;
 
         case "flag":
@@ -550,6 +565,11 @@ namespace fhirCsR4.Models
     public const string WORKING = "working";
     public const string SNAPSHOT = "snapshot";
     public const string CHANGES = "changes";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "working",
+      "snapshot",
+      "changes",
+    };
   }
   /// <summary>
   /// Code Values for the List.status field
@@ -558,5 +578,10 @@ namespace fhirCsR4.Models
     public const string CURRENT = "current";
     public const string RETIRED = "retired";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "current",
+      "retired",
+      "entered-in-error",
+    };
   }
 }

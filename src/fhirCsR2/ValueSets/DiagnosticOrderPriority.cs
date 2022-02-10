@@ -54,9 +54,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralASAP = "asap";
 
     /// <summary>
+    /// Literal for code: DiagnosticOrderPriorityASAP
+    /// </summary>
+    public const string LiteralDiagnosticOrderPriorityASAP = "http://hl7.org/fhir/diagnostic-order-priority#asap";
+
+    /// <summary>
     /// Literal for code: Routine
     /// </summary>
     public const string LiteralRoutine = "routine";
+
+    /// <summary>
+    /// Literal for code: DiagnosticOrderPriorityRoutine
+    /// </summary>
+    public const string LiteralDiagnosticOrderPriorityRoutine = "http://hl7.org/fhir/diagnostic-order-priority#routine";
 
     /// <summary>
     /// Literal for code: Stat
@@ -64,8 +74,32 @@ namespace fhirCsR2.ValueSets
     public const string LiteralStat = "stat";
 
     /// <summary>
+    /// Literal for code: DiagnosticOrderPriorityStat
+    /// </summary>
+    public const string LiteralDiagnosticOrderPriorityStat = "http://hl7.org/fhir/diagnostic-order-priority#stat";
+
+    /// <summary>
     /// Literal for code: Urgent
     /// </summary>
     public const string LiteralUrgent = "urgent";
+
+    /// <summary>
+    /// Literal for code: DiagnosticOrderPriorityUrgent
+    /// </summary>
+    public const string LiteralDiagnosticOrderPriorityUrgent = "http://hl7.org/fhir/diagnostic-order-priority#urgent";
+
+    /// <summary>
+    /// Dictionary for looking up DiagnosticOrderPriority Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "asap", ASAP }, 
+      { "http://hl7.org/fhir/diagnostic-order-priority#asap", ASAP }, 
+      { "routine", Routine }, 
+      { "http://hl7.org/fhir/diagnostic-order-priority#routine", Routine }, 
+      { "stat", Stat }, 
+      { "http://hl7.org/fhir/diagnostic-order-priority#stat", Stat }, 
+      { "urgent", Urgent }, 
+      { "http://hl7.org/fhir/diagnostic-order-priority#urgent", Urgent }, 
+    };
   };
 }

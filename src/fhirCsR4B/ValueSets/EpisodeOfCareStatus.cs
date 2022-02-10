@@ -81,9 +81,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: EpisodeOfCareStatusActive
+    /// </summary>
+    public const string LiteralEpisodeOfCareStatusActive = "http://hl7.org/fhir/episode-of-care-status#active";
+
+    /// <summary>
     /// Literal for code: Cancelled
     /// </summary>
     public const string LiteralCancelled = "cancelled";
+
+    /// <summary>
+    /// Literal for code: EpisodeOfCareStatusCancelled
+    /// </summary>
+    public const string LiteralEpisodeOfCareStatusCancelled = "http://hl7.org/fhir/episode-of-care-status#cancelled";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -91,9 +101,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: EpisodeOfCareStatusEnteredInError
+    /// </summary>
+    public const string LiteralEpisodeOfCareStatusEnteredInError = "http://hl7.org/fhir/episode-of-care-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Finished
     /// </summary>
     public const string LiteralFinished = "finished";
+
+    /// <summary>
+    /// Literal for code: EpisodeOfCareStatusFinished
+    /// </summary>
+    public const string LiteralEpisodeOfCareStatusFinished = "http://hl7.org/fhir/episode-of-care-status#finished";
 
     /// <summary>
     /// Literal for code: OnHold
@@ -101,13 +121,48 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOnHold = "onhold";
 
     /// <summary>
+    /// Literal for code: EpisodeOfCareStatusOnHold
+    /// </summary>
+    public const string LiteralEpisodeOfCareStatusOnHold = "http://hl7.org/fhir/episode-of-care-status#onhold";
+
+    /// <summary>
     /// Literal for code: Planned
     /// </summary>
     public const string LiteralPlanned = "planned";
 
     /// <summary>
+    /// Literal for code: EpisodeOfCareStatusPlanned
+    /// </summary>
+    public const string LiteralEpisodeOfCareStatusPlanned = "http://hl7.org/fhir/episode-of-care-status#planned";
+
+    /// <summary>
     /// Literal for code: Waitlist
     /// </summary>
     public const string LiteralWaitlist = "waitlist";
+
+    /// <summary>
+    /// Literal for code: EpisodeOfCareStatusWaitlist
+    /// </summary>
+    public const string LiteralEpisodeOfCareStatusWaitlist = "http://hl7.org/fhir/episode-of-care-status#waitlist";
+
+    /// <summary>
+    /// Dictionary for looking up EpisodeOfCareStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/episode-of-care-status#active", Active }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/episode-of-care-status#cancelled", Cancelled }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/episode-of-care-status#entered-in-error", EnteredInError }, 
+      { "finished", Finished }, 
+      { "http://hl7.org/fhir/episode-of-care-status#finished", Finished }, 
+      { "onhold", OnHold }, 
+      { "http://hl7.org/fhir/episode-of-care-status#onhold", OnHold }, 
+      { "planned", Planned }, 
+      { "http://hl7.org/fhir/episode-of-care-status#planned", Planned }, 
+      { "waitlist", Waitlist }, 
+      { "http://hl7.org/fhir/episode-of-care-status#waitlist", Waitlist }, 
+    };
   };
 }

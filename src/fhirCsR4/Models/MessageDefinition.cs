@@ -352,6 +352,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// Identifies the resource (or resources) that are being addressed by the event.  For example, the Encounter for an admit message or two Account records for a merge.
     /// </summary>
     public List<MessageDefinitionFocus> Focus { get; set; }
@@ -571,6 +575,12 @@ namespace fhirCsR4.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -922,6 +932,11 @@ namespace fhirCsR4.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR4.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "focus":
@@ -1298,6 +1313,11 @@ namespace fhirCsR4.Models
     public const string CONSEQUENCE = "consequence";
     public const string CURRENCY = "currency";
     public const string NOTIFICATION = "notification";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "consequence",
+      "currency",
+      "notification",
+    };
   }
   /// <summary>
   /// Code Values for the MessageDefinition.responseRequired field
@@ -1307,6 +1327,12 @@ namespace fhirCsR4.Models
     public const string ON_ERROR = "on-error";
     public const string NEVER = "never";
     public const string ON_SUCCESS = "on-success";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "always",
+      "on-error",
+      "never",
+      "on-success",
+    };
   }
   /// <summary>
   /// Code Values for the MessageDefinition.status field
@@ -1316,5 +1342,11 @@ namespace fhirCsR4.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

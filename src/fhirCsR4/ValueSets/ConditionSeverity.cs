@@ -42,13 +42,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL24484000 = "24484000";
 
     /// <summary>
+    /// Literal for code: NONEVAL24484000
+    /// </summary>
+    public const string LiteralNONEVAL24484000 = "http://snomed.info/sct#24484000";
+
+    /// <summary>
     /// Literal for code: VAL255604002
     /// </summary>
     public const string LiteralVAL255604002 = "255604002";
 
     /// <summary>
+    /// Literal for code: NONEVAL255604002
+    /// </summary>
+    public const string LiteralNONEVAL255604002 = "http://snomed.info/sct#255604002";
+
+    /// <summary>
     /// Literal for code: VAL6736007
     /// </summary>
     public const string LiteralVAL6736007 = "6736007";
+
+    /// <summary>
+    /// Literal for code: NONEVAL6736007
+    /// </summary>
+    public const string LiteralNONEVAL6736007 = "http://snomed.info/sct#6736007";
+
+    /// <summary>
+    /// Dictionary for looking up ConditionSeverity Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "24484000", VAL24484000 }, 
+      { "http://snomed.info/sct#24484000", VAL24484000 }, 
+      { "255604002", VAL255604002 }, 
+      { "http://snomed.info/sct#255604002", VAL255604002 }, 
+      { "6736007", VAL6736007 }, 
+      { "http://snomed.info/sct#6736007", VAL6736007 }, 
+    };
   };
 }

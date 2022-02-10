@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class AppointmentCancellationReasonCodes
   {
     /// <summary>
-    /// 
+    /// Equipment Maintenance/Repair
     /// </summary>
     public static readonly Coding EquipmentMaintenanceRepair = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Prep/Med Incomplete
     /// </summary>
     public static readonly Coding PrepMedIncomplete = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Other: CMS Therapy Cap Service Not Authorized
     /// </summary>
     public static readonly Coding OtherCMSTherapyCapServiceNotAuthorized = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Other: Error
     /// </summary>
     public static readonly Coding OtherError = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Other: Financial
     /// </summary>
     public static readonly Coding OtherFinancial = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Other: No Interpreter Available
     /// </summary>
     public static readonly Coding OtherNoInterpreterAvailable = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Other: Improper IV Access/Infiltrate IV
     /// </summary>
     public static readonly Coding OtherImproperIVAccessInfiltrateIV = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Other: Prep/Med/Results Unavailable
     /// </summary>
     public static readonly Coding OtherPrepMedResultsUnavailable = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Other: Schedule Order Error
     /// </summary>
     public static readonly Coding OtherScheduleOrderError = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Other: Room/Resource Maintenance
     /// </summary>
     public static readonly Coding OtherRoomResourceMaintenance = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Other: Silent Walk In Error
     /// </summary>
     public static readonly Coding OtherSilentWalkInError = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Other: Weather
     /// </summary>
     public static readonly Coding OtherWeather = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Other
     /// </summary>
     public static readonly Coding Other = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Patient
     /// </summary>
     public static readonly Coding Patient = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Patient: Canceled via Patient Portal
     /// </summary>
     public static readonly Coding PatientCanceledViaPatientPortal = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Patient: Canceled via automated reminder system
     /// </summary>
     public static readonly Coding PatientCanceledViaAutomatedReminderSystem = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Patient: Deceased
     /// </summary>
     public static readonly Coding PatientDeceased = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Patient: Feeling Better
     /// </summary>
     public static readonly Coding PatientFeelingBetter = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Patient: Lack of Transportation
     /// </summary>
     public static readonly Coding PatientLackOfTransportation = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Patient: Member Terminated
     /// </summary>
     public static readonly Coding PatientMemberTerminated = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Patient: Moved
     /// </summary>
     public static readonly Coding PatientMoved = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Patient: Pregnant
     /// </summary>
     public static readonly Coding PatientPregnant = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Patient: Scheduled from Wait List
     /// </summary>
     public static readonly Coding PatientScheduledFromWaitList = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Patient: Unhappy/Changed Provider
     /// </summary>
     public static readonly Coding PatientUnhappyChangedProvider = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Provider
     /// </summary>
     public static readonly Coding Provider = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Provider: Discharged
     /// </summary>
     public static readonly Coding ProviderDischarged = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Provider: Edu/Meeting
     /// </summary>
     public static readonly Coding ProviderEduMeeting = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Provider: Hospitalized
     /// </summary>
     public static readonly Coding ProviderHospitalized = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Provider: Labs Out of Acceptable Range
     /// </summary>
     public static readonly Coding ProviderLabsOutOfAcceptableRange = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Provider: MRI Screening Form Marked Do Not Proceed
     /// </summary>
     public static readonly Coding ProviderMRIScreeningFormMarkedDoNotProceed = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Provider: Oncology Treatment Plan Changes
     /// </summary>
     public static readonly Coding ProviderOncologyTreatmentPlanChanges = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason"
     };
     /// <summary>
-    /// 
+    /// Provider: Personal
     /// </summary>
     public static readonly Coding ProviderPersonal = new Coding
     {
@@ -306,9 +306,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEquipmentMaintenanceRepair = "maint";
 
     /// <summary>
+    /// Literal for code: AppointmentCancellationReasonEquipmentMaintenanceRepair
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonEquipmentMaintenanceRepair = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#maint";
+
+    /// <summary>
     /// Literal for code: PrepMedIncomplete
     /// </summary>
     public const string LiteralPrepMedIncomplete = "meds-inc";
+
+    /// <summary>
+    /// Literal for code: AppointmentCancellationReasonPrepMedIncomplete
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonPrepMedIncomplete = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#meds-inc";
 
     /// <summary>
     /// Literal for code: OtherCMSTherapyCapServiceNotAuthorized
@@ -316,9 +326,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOtherCMSTherapyCapServiceNotAuthorized = "oth-cms";
 
     /// <summary>
+    /// Literal for code: AppointmentCancellationReasonOtherCMSTherapyCapServiceNotAuthorized
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonOtherCMSTherapyCapServiceNotAuthorized = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-cms";
+
+    /// <summary>
     /// Literal for code: OtherError
     /// </summary>
     public const string LiteralOtherError = "oth-err";
+
+    /// <summary>
+    /// Literal for code: AppointmentCancellationReasonOtherError
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonOtherError = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-err";
 
     /// <summary>
     /// Literal for code: OtherFinancial
@@ -326,9 +346,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOtherFinancial = "oth-fin";
 
     /// <summary>
+    /// Literal for code: AppointmentCancellationReasonOtherFinancial
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonOtherFinancial = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-fin";
+
+    /// <summary>
     /// Literal for code: OtherNoInterpreterAvailable
     /// </summary>
     public const string LiteralOtherNoInterpreterAvailable = "oth-int";
+
+    /// <summary>
+    /// Literal for code: AppointmentCancellationReasonOtherNoInterpreterAvailable
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonOtherNoInterpreterAvailable = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-int";
 
     /// <summary>
     /// Literal for code: OtherImproperIVAccessInfiltrateIV
@@ -336,9 +366,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOtherImproperIVAccessInfiltrateIV = "oth-iv";
 
     /// <summary>
+    /// Literal for code: AppointmentCancellationReasonOtherImproperIVAccessInfiltrateIV
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonOtherImproperIVAccessInfiltrateIV = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-iv";
+
+    /// <summary>
     /// Literal for code: OtherPrepMedResultsUnavailable
     /// </summary>
     public const string LiteralOtherPrepMedResultsUnavailable = "oth-mu";
+
+    /// <summary>
+    /// Literal for code: AppointmentCancellationReasonOtherPrepMedResultsUnavailable
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonOtherPrepMedResultsUnavailable = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-mu";
 
     /// <summary>
     /// Literal for code: OtherScheduleOrderError
@@ -346,9 +386,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOtherScheduleOrderError = "oth-oerr";
 
     /// <summary>
+    /// Literal for code: AppointmentCancellationReasonOtherScheduleOrderError
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonOtherScheduleOrderError = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-oerr";
+
+    /// <summary>
     /// Literal for code: OtherRoomResourceMaintenance
     /// </summary>
     public const string LiteralOtherRoomResourceMaintenance = "oth-room";
+
+    /// <summary>
+    /// Literal for code: AppointmentCancellationReasonOtherRoomResourceMaintenance
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonOtherRoomResourceMaintenance = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-room";
 
     /// <summary>
     /// Literal for code: OtherSilentWalkInError
@@ -356,9 +406,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOtherSilentWalkInError = "oth-swie";
 
     /// <summary>
+    /// Literal for code: AppointmentCancellationReasonOtherSilentWalkInError
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonOtherSilentWalkInError = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-swie";
+
+    /// <summary>
     /// Literal for code: OtherWeather
     /// </summary>
     public const string LiteralOtherWeather = "oth-weath";
+
+    /// <summary>
+    /// Literal for code: AppointmentCancellationReasonOtherWeather
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonOtherWeather = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-weath";
 
     /// <summary>
     /// Literal for code: Other
@@ -366,9 +426,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOther = "other";
 
     /// <summary>
+    /// Literal for code: AppointmentCancellationReasonOther
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonOther = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#other";
+
+    /// <summary>
     /// Literal for code: Patient
     /// </summary>
     public const string LiteralPatient = "pat";
+
+    /// <summary>
+    /// Literal for code: AppointmentCancellationReasonPatient
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonPatient = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat";
 
     /// <summary>
     /// Literal for code: PatientCanceledViaPatientPortal
@@ -376,9 +446,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPatientCanceledViaPatientPortal = "pat-cpp";
 
     /// <summary>
+    /// Literal for code: AppointmentCancellationReasonPatientCanceledViaPatientPortal
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonPatientCanceledViaPatientPortal = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-cpp";
+
+    /// <summary>
     /// Literal for code: PatientCanceledViaAutomatedReminderSystem
     /// </summary>
     public const string LiteralPatientCanceledViaAutomatedReminderSystem = "pat-crs";
+
+    /// <summary>
+    /// Literal for code: AppointmentCancellationReasonPatientCanceledViaAutomatedReminderSystem
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonPatientCanceledViaAutomatedReminderSystem = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-crs";
 
     /// <summary>
     /// Literal for code: PatientDeceased
@@ -386,9 +466,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPatientDeceased = "pat-dec";
 
     /// <summary>
+    /// Literal for code: AppointmentCancellationReasonPatientDeceased
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonPatientDeceased = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-dec";
+
+    /// <summary>
     /// Literal for code: PatientFeelingBetter
     /// </summary>
     public const string LiteralPatientFeelingBetter = "pat-fb";
+
+    /// <summary>
+    /// Literal for code: AppointmentCancellationReasonPatientFeelingBetter
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonPatientFeelingBetter = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-fb";
 
     /// <summary>
     /// Literal for code: PatientLackOfTransportation
@@ -396,9 +486,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPatientLackOfTransportation = "pat-lt";
 
     /// <summary>
+    /// Literal for code: AppointmentCancellationReasonPatientLackOfTransportation
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonPatientLackOfTransportation = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-lt";
+
+    /// <summary>
     /// Literal for code: PatientMemberTerminated
     /// </summary>
     public const string LiteralPatientMemberTerminated = "pat-mt";
+
+    /// <summary>
+    /// Literal for code: AppointmentCancellationReasonPatientMemberTerminated
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonPatientMemberTerminated = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-mt";
 
     /// <summary>
     /// Literal for code: PatientMoved
@@ -406,9 +506,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPatientMoved = "pat-mv";
 
     /// <summary>
+    /// Literal for code: AppointmentCancellationReasonPatientMoved
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonPatientMoved = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-mv";
+
+    /// <summary>
     /// Literal for code: PatientPregnant
     /// </summary>
     public const string LiteralPatientPregnant = "pat-preg";
+
+    /// <summary>
+    /// Literal for code: AppointmentCancellationReasonPatientPregnant
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonPatientPregnant = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-preg";
 
     /// <summary>
     /// Literal for code: PatientScheduledFromWaitList
@@ -416,9 +526,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPatientScheduledFromWaitList = "pat-swl";
 
     /// <summary>
+    /// Literal for code: AppointmentCancellationReasonPatientScheduledFromWaitList
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonPatientScheduledFromWaitList = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-swl";
+
+    /// <summary>
     /// Literal for code: PatientUnhappyChangedProvider
     /// </summary>
     public const string LiteralPatientUnhappyChangedProvider = "pat-ucp";
+
+    /// <summary>
+    /// Literal for code: AppointmentCancellationReasonPatientUnhappyChangedProvider
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonPatientUnhappyChangedProvider = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-ucp";
 
     /// <summary>
     /// Literal for code: Provider
@@ -426,9 +546,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProvider = "prov";
 
     /// <summary>
+    /// Literal for code: AppointmentCancellationReasonProvider
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonProvider = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#prov";
+
+    /// <summary>
     /// Literal for code: ProviderDischarged
     /// </summary>
     public const string LiteralProviderDischarged = "prov-dch";
+
+    /// <summary>
+    /// Literal for code: AppointmentCancellationReasonProviderDischarged
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonProviderDischarged = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#prov-dch";
 
     /// <summary>
     /// Literal for code: ProviderEduMeeting
@@ -436,9 +566,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProviderEduMeeting = "prov-edu";
 
     /// <summary>
+    /// Literal for code: AppointmentCancellationReasonProviderEduMeeting
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonProviderEduMeeting = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#prov-edu";
+
+    /// <summary>
     /// Literal for code: ProviderHospitalized
     /// </summary>
     public const string LiteralProviderHospitalized = "prov-hosp";
+
+    /// <summary>
+    /// Literal for code: AppointmentCancellationReasonProviderHospitalized
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonProviderHospitalized = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#prov-hosp";
 
     /// <summary>
     /// Literal for code: ProviderLabsOutOfAcceptableRange
@@ -446,9 +586,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProviderLabsOutOfAcceptableRange = "prov-labs";
 
     /// <summary>
+    /// Literal for code: AppointmentCancellationReasonProviderLabsOutOfAcceptableRange
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonProviderLabsOutOfAcceptableRange = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#prov-labs";
+
+    /// <summary>
     /// Literal for code: ProviderMRIScreeningFormMarkedDoNotProceed
     /// </summary>
     public const string LiteralProviderMRIScreeningFormMarkedDoNotProceed = "prov-mri";
+
+    /// <summary>
+    /// Literal for code: AppointmentCancellationReasonProviderMRIScreeningFormMarkedDoNotProceed
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonProviderMRIScreeningFormMarkedDoNotProceed = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#prov-mri";
 
     /// <summary>
     /// Literal for code: ProviderOncologyTreatmentPlanChanges
@@ -456,8 +606,88 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProviderOncologyTreatmentPlanChanges = "prov-onc";
 
     /// <summary>
+    /// Literal for code: AppointmentCancellationReasonProviderOncologyTreatmentPlanChanges
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonProviderOncologyTreatmentPlanChanges = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#prov-onc";
+
+    /// <summary>
     /// Literal for code: ProviderPersonal
     /// </summary>
     public const string LiteralProviderPersonal = "prov-pers";
+
+    /// <summary>
+    /// Literal for code: AppointmentCancellationReasonProviderPersonal
+    /// </summary>
+    public const string LiteralAppointmentCancellationReasonProviderPersonal = "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#prov-pers";
+
+    /// <summary>
+    /// Dictionary for looking up AppointmentCancellationReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "maint", EquipmentMaintenanceRepair }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#maint", EquipmentMaintenanceRepair }, 
+      { "meds-inc", PrepMedIncomplete }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#meds-inc", PrepMedIncomplete }, 
+      { "oth-cms", OtherCMSTherapyCapServiceNotAuthorized }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-cms", OtherCMSTherapyCapServiceNotAuthorized }, 
+      { "oth-err", OtherError }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-err", OtherError }, 
+      { "oth-fin", OtherFinancial }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-fin", OtherFinancial }, 
+      { "oth-int", OtherNoInterpreterAvailable }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-int", OtherNoInterpreterAvailable }, 
+      { "oth-iv", OtherImproperIVAccessInfiltrateIV }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-iv", OtherImproperIVAccessInfiltrateIV }, 
+      { "oth-mu", OtherPrepMedResultsUnavailable }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-mu", OtherPrepMedResultsUnavailable }, 
+      { "oth-oerr", OtherScheduleOrderError }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-oerr", OtherScheduleOrderError }, 
+      { "oth-room", OtherRoomResourceMaintenance }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-room", OtherRoomResourceMaintenance }, 
+      { "oth-swie", OtherSilentWalkInError }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-swie", OtherSilentWalkInError }, 
+      { "oth-weath", OtherWeather }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#oth-weath", OtherWeather }, 
+      { "other", Other }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#other", Other }, 
+      { "pat", Patient }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat", Patient }, 
+      { "pat-cpp", PatientCanceledViaPatientPortal }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-cpp", PatientCanceledViaPatientPortal }, 
+      { "pat-crs", PatientCanceledViaAutomatedReminderSystem }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-crs", PatientCanceledViaAutomatedReminderSystem }, 
+      { "pat-dec", PatientDeceased }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-dec", PatientDeceased }, 
+      { "pat-fb", PatientFeelingBetter }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-fb", PatientFeelingBetter }, 
+      { "pat-lt", PatientLackOfTransportation }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-lt", PatientLackOfTransportation }, 
+      { "pat-mt", PatientMemberTerminated }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-mt", PatientMemberTerminated }, 
+      { "pat-mv", PatientMoved }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-mv", PatientMoved }, 
+      { "pat-preg", PatientPregnant }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-preg", PatientPregnant }, 
+      { "pat-swl", PatientScheduledFromWaitList }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-swl", PatientScheduledFromWaitList }, 
+      { "pat-ucp", PatientUnhappyChangedProvider }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#pat-ucp", PatientUnhappyChangedProvider }, 
+      { "prov", Provider }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#prov", Provider }, 
+      { "prov-dch", ProviderDischarged }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#prov-dch", ProviderDischarged }, 
+      { "prov-edu", ProviderEduMeeting }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#prov-edu", ProviderEduMeeting }, 
+      { "prov-hosp", ProviderHospitalized }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#prov-hosp", ProviderHospitalized }, 
+      { "prov-labs", ProviderLabsOutOfAcceptableRange }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#prov-labs", ProviderLabsOutOfAcceptableRange }, 
+      { "prov-mri", ProviderMRIScreeningFormMarkedDoNotProceed }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#prov-mri", ProviderMRIScreeningFormMarkedDoNotProceed }, 
+      { "prov-onc", ProviderOncologyTreatmentPlanChanges }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#prov-onc", ProviderOncologyTreatmentPlanChanges }, 
+      { "prov-pers", ProviderPersonal }, 
+      { "http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason#prov-pers", ProviderPersonal }, 
+    };
   };
 }

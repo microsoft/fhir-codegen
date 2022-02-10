@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDevice = "Device";
 
     /// <summary>
+    /// Literal for code: ResourceTypesDevice
+    /// </summary>
+    public const string LiteralResourceTypesDevice = "http://hl7.org/fhir/resource-types#Device";
+
+    /// <summary>
     /// Literal for code: Location
     /// </summary>
     public const string LiteralLocation = "Location";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesLocation
+    /// </summary>
+    public const string LiteralResourceTypesLocation = "http://hl7.org/fhir/resource-types#Location";
 
     /// <summary>
     /// Literal for code: Organization
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOrganization = "Organization";
 
     /// <summary>
+    /// Literal for code: ResourceTypesOrganization
+    /// </summary>
+    public const string LiteralResourceTypesOrganization = "http://hl7.org/fhir/resource-types#Organization";
+
+    /// <summary>
     /// Literal for code: Patient
     /// </summary>
     public const string LiteralPatient = "Patient";
 
     /// <summary>
+    /// Literal for code: ResourceTypesPatient
+    /// </summary>
+    public const string LiteralResourceTypesPatient = "http://hl7.org/fhir/resource-types#Patient";
+
+    /// <summary>
     /// Literal for code: Practitioner
     /// </summary>
     public const string LiteralPractitioner = "Practitioner";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesPractitioner
+    /// </summary>
+    public const string LiteralResourceTypesPractitioner = "http://hl7.org/fhir/resource-types#Practitioner";
+
+    /// <summary>
+    /// Dictionary for looking up SubjectType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "Device", Device }, 
+      { "http://hl7.org/fhir/resource-types#Device", Device }, 
+      { "Location", Location }, 
+      { "http://hl7.org/fhir/resource-types#Location", Location }, 
+      { "Organization", Organization }, 
+      { "http://hl7.org/fhir/resource-types#Organization", Organization }, 
+      { "Patient", Patient }, 
+      { "http://hl7.org/fhir/resource-types#Patient", Patient }, 
+      { "Practitioner", Practitioner }, 
+      { "http://hl7.org/fhir/resource-types#Practitioner", Practitioner }, 
+    };
   };
 }

@@ -63,9 +63,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReferenceIntegrityEnforced = "enforced";
 
     /// <summary>
+    /// Literal for code: ReferenceHandlingPolicyReferenceIntegrityEnforced
+    /// </summary>
+    public const string LiteralReferenceHandlingPolicyReferenceIntegrityEnforced = "http://hl7.org/fhir/reference-handling-policy#enforced";
+
+    /// <summary>
     /// Literal for code: LiteralReferences
     /// </summary>
     public const string LiteralLiteralReferences = "literal";
+
+    /// <summary>
+    /// Literal for code: ReferenceHandlingPolicyLiteralReferences
+    /// </summary>
+    public const string LiteralReferenceHandlingPolicyLiteralReferences = "http://hl7.org/fhir/reference-handling-policy#literal";
 
     /// <summary>
     /// Literal for code: LocalReferencesOnly
@@ -73,13 +83,44 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLocalReferencesOnly = "local";
 
     /// <summary>
+    /// Literal for code: ReferenceHandlingPolicyLocalReferencesOnly
+    /// </summary>
+    public const string LiteralReferenceHandlingPolicyLocalReferencesOnly = "http://hl7.org/fhir/reference-handling-policy#local";
+
+    /// <summary>
     /// Literal for code: LogicalReferences
     /// </summary>
     public const string LiteralLogicalReferences = "logical";
 
     /// <summary>
+    /// Literal for code: ReferenceHandlingPolicyLogicalReferences
+    /// </summary>
+    public const string LiteralReferenceHandlingPolicyLogicalReferences = "http://hl7.org/fhir/reference-handling-policy#logical";
+
+    /// <summary>
     /// Literal for code: ResolvesReferences
     /// </summary>
     public const string LiteralResolvesReferences = "resolves";
+
+    /// <summary>
+    /// Literal for code: ReferenceHandlingPolicyResolvesReferences
+    /// </summary>
+    public const string LiteralReferenceHandlingPolicyResolvesReferences = "http://hl7.org/fhir/reference-handling-policy#resolves";
+
+    /// <summary>
+    /// Dictionary for looking up ReferenceHandlingPolicy Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "enforced", ReferenceIntegrityEnforced }, 
+      { "http://hl7.org/fhir/reference-handling-policy#enforced", ReferenceIntegrityEnforced }, 
+      { "literal", LiteralReferences }, 
+      { "http://hl7.org/fhir/reference-handling-policy#literal", LiteralReferences }, 
+      { "local", LocalReferencesOnly }, 
+      { "http://hl7.org/fhir/reference-handling-policy#local", LocalReferencesOnly }, 
+      { "logical", LogicalReferences }, 
+      { "http://hl7.org/fhir/reference-handling-policy#logical", LogicalReferences }, 
+      { "resolves", ResolvesReferences }, 
+      { "http://hl7.org/fhir/reference-handling-policy#resolves", ResolvesReferences }, 
+    };
   };
 }

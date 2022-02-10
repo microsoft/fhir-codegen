@@ -422,6 +422,11 @@ namespace fhirCsR5.Models
     public const string REGISTERED_NAME = "registered-name";
     public const string USER_FRIENDLY_NAME = "user-friendly-name";
     public const string PATIENT_REPORTED_NAME = "patient-reported-name";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "registered-name",
+      "user-friendly-name",
+      "patient-reported-name",
+    };
   }
   /// <summary>
   /// In this element various classifications can be used, such as GMDN, EMDN, SNOMED CT, risk classes, national product codes.
@@ -551,6 +556,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public int? Count { get; set; }
     /// <summary>
+    /// Extension container element for Count
+    /// </summary>
+    public Element _Count { get; set; }
+    /// <summary>
     /// Reference to the device that is part of the current device.
     /// </summary>
     public Reference Reference { get; set; }
@@ -576,6 +585,12 @@ namespace fhirCsR5.Models
         writer.WriteNumber("count", (int)Count!);
       }
 
+      if (_Count != null)
+      {
+        writer.WritePropertyName("_count");
+        _Count.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -590,6 +605,11 @@ namespace fhirCsR5.Models
       {
         case "count":
           Count = reader.GetInt32();
+          break;
+
+        case "_count":
+          _Count = new fhirCsR5.Models.Element();
+          _Count.DeserializeJson(ref reader, options);
           break;
 
         case "reference":
@@ -1029,6 +1049,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public int? Count { get; set; }
     /// <summary>
+    /// Extension container element for Count
+    /// </summary>
+    public Element _Count { get; set; }
+    /// <summary>
     /// An organization that distributes the packaged device.
     /// </summary>
     public List<DeviceDefinitionPackagingDistributor> Distributor { get; set; }
@@ -1074,6 +1098,12 @@ namespace fhirCsR5.Models
       if (Count != null)
       {
         writer.WriteNumber("count", (int)Count!);
+      }
+
+      if (_Count != null)
+      {
+        writer.WritePropertyName("_count");
+        _Count.SerializeJson(writer, options);
       }
 
       if ((Distributor != null) && (Distributor.Count != 0))
@@ -1129,6 +1159,11 @@ namespace fhirCsR5.Models
       {
         case "count":
           Count = reader.GetInt32();
+          break;
+
+        case "_count":
+          _Count = new fhirCsR5.Models.Element();
+          _Count.DeserializeJson(ref reader, options);
           break;
 
         case "distributor":
@@ -1400,9 +1435,17 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// The usage of CodeableConcept is for concepts that are normally coded but for which a code is not available - for example a device implant size that is not standardized. The property string is for text characteristics, e.g. long descriptions, warnings, etc.
     /// </summary>
     public int? ValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
     /// <summary>
     /// The usage of CodeableConcept is for concepts that are normally coded but for which a code is not available - for example a device implant size that is not standardized. The property string is for text characteristics, e.g. long descriptions, warnings, etc.
     /// </summary>
@@ -1456,9 +1499,21 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (ValueRange != null)
@@ -1513,8 +1568,18 @@ namespace fhirCsR5.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR5.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR5.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueRange":
@@ -1657,9 +1722,17 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? AllergenicIndicator { get; set; }
     /// <summary>
+    /// Extension container element for AllergenicIndicator
+    /// </summary>
+    public Element _AllergenicIndicator { get; set; }
+    /// <summary>
     /// Indicates an alternative material of the device.
     /// </summary>
     public bool? Alternate { get; set; }
+    /// <summary>
+    /// Extension container element for Alternate
+    /// </summary>
+    public Element _Alternate { get; set; }
     /// <summary>
     /// A substance that the device contains, may contain, or is made of - for example latex - to be used to determine patient compatibility. This is not intended to represent the composition of the device, only the clinically relevant materials.
     /// </summary>
@@ -1686,9 +1759,21 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("alternate", (bool)Alternate!);
       }
 
+      if (_Alternate != null)
+      {
+        writer.WritePropertyName("_alternate");
+        _Alternate.SerializeJson(writer, options);
+      }
+
       if (AllergenicIndicator != null)
       {
         writer.WriteBoolean("allergenicIndicator", (bool)AllergenicIndicator!);
+      }
+
+      if (_AllergenicIndicator != null)
+      {
+        writer.WritePropertyName("_allergenicIndicator");
+        _AllergenicIndicator.SerializeJson(writer, options);
       }
 
       if (includeStartObject)
@@ -1707,8 +1792,18 @@ namespace fhirCsR5.Models
           AllergenicIndicator = reader.GetBoolean();
           break;
 
+        case "_allergenicIndicator":
+          _AllergenicIndicator = new fhirCsR5.Models.Element();
+          _AllergenicIndicator.DeserializeJson(ref reader, options);
+          break;
+
         case "alternate":
           Alternate = reader.GetBoolean();
+          break;
+
+        case "_alternate":
+          _Alternate = new fhirCsR5.Models.Element();
+          _Alternate.DeserializeJson(ref reader, options);
           break;
 
         case "substance":
@@ -2096,6 +2191,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool Recall { get; set; }
     /// <summary>
+    /// Extension container element for Recall
+    /// </summary>
+    public Element _Recall { get; set; }
+    /// <summary>
     /// The scope of the corrective action - whether the action targeted all units of a given device model, or only a specific set of batches identified by lot numbers, or individually identified devices identified by the serial name.
     /// </summary>
     public string Scope { get; set; }
@@ -2115,6 +2214,12 @@ namespace fhirCsR5.Models
       ((fhirCsR5.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
       writer.WriteBoolean("recall", Recall);
+
+      if (_Recall != null)
+      {
+        writer.WritePropertyName("_recall");
+        _Recall.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Scope))
       {
@@ -2152,6 +2257,11 @@ namespace fhirCsR5.Models
 
         case "recall":
           Recall = reader.GetBoolean();
+          break;
+
+        case "_recall":
+          _Recall = new fhirCsR5.Models.Element();
+          _Recall.DeserializeJson(ref reader, options);
           break;
 
         case "scope":
@@ -2201,6 +2311,11 @@ namespace fhirCsR5.Models
     public const string MODEL = "model";
     public const string LOT_NUMBERS = "lot-numbers";
     public const string SERIAL_NUMBERS = "serial-numbers";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "model",
+      "lot-numbers",
+      "serial-numbers",
+    };
   }
   /// <summary>
   /// Billing code or reference associated with the device.
@@ -3450,5 +3565,13 @@ namespace fhirCsR5.Models
     public const string EXPIRATION_DATE = "expiration-date";
     public const string BIOLOGICAL_SOURCE = "biological-source";
     public const string SOFTWARE_VERSION = "software-version";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "lot-number",
+      "manufactured-date",
+      "serial-number",
+      "expiration-date",
+      "biological-source",
+      "software-version",
+    };
   }
 }

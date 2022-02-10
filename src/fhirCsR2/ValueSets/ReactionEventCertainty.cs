@@ -45,13 +45,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralConfirmed = "confirmed";
 
     /// <summary>
+    /// Literal for code: ReactionEventCertaintyConfirmed
+    /// </summary>
+    public const string LiteralReactionEventCertaintyConfirmed = "http://hl7.org/fhir/reaction-event-certainty#confirmed";
+
+    /// <summary>
     /// Literal for code: Likely
     /// </summary>
     public const string LiteralLikely = "likely";
 
     /// <summary>
+    /// Literal for code: ReactionEventCertaintyLikely
+    /// </summary>
+    public const string LiteralReactionEventCertaintyLikely = "http://hl7.org/fhir/reaction-event-certainty#likely";
+
+    /// <summary>
     /// Literal for code: Unlikely
     /// </summary>
     public const string LiteralUnlikely = "unlikely";
+
+    /// <summary>
+    /// Literal for code: ReactionEventCertaintyUnlikely
+    /// </summary>
+    public const string LiteralReactionEventCertaintyUnlikely = "http://hl7.org/fhir/reaction-event-certainty#unlikely";
+
+    /// <summary>
+    /// Dictionary for looking up ReactionEventCertainty Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "confirmed", Confirmed }, 
+      { "http://hl7.org/fhir/reaction-event-certainty#confirmed", Confirmed }, 
+      { "likely", Likely }, 
+      { "http://hl7.org/fhir/reaction-event-certainty#likely", Likely }, 
+      { "unlikely", Unlikely }, 
+      { "http://hl7.org/fhir/reaction-event-certainty#unlikely", Unlikely }, 
+    };
   };
 }

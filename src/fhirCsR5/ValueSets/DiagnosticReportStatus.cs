@@ -108,9 +108,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAmended = "amended";
 
     /// <summary>
+    /// Literal for code: DiagnosticReportStatusAmended
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusAmended = "http://hl7.org/fhir/diagnostic-report-status#amended";
+
+    /// <summary>
     /// Literal for code: Appended
     /// </summary>
     public const string LiteralAppended = "appended";
+
+    /// <summary>
+    /// Literal for code: DiagnosticReportStatusAppended
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusAppended = "http://hl7.org/fhir/diagnostic-report-status#appended";
 
     /// <summary>
     /// Literal for code: Cancelled
@@ -118,9 +128,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCancelled = "cancelled";
 
     /// <summary>
+    /// Literal for code: DiagnosticReportStatusCancelled
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusCancelled = "http://hl7.org/fhir/diagnostic-report-status#cancelled";
+
+    /// <summary>
     /// Literal for code: Corrected
     /// </summary>
     public const string LiteralCorrected = "corrected";
+
+    /// <summary>
+    /// Literal for code: DiagnosticReportStatusCorrected
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusCorrected = "http://hl7.org/fhir/diagnostic-report-status#corrected";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -128,9 +148,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: DiagnosticReportStatusEnteredInError
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusEnteredInError = "http://hl7.org/fhir/diagnostic-report-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Final
     /// </summary>
     public const string LiteralFinal = "final";
+
+    /// <summary>
+    /// Literal for code: DiagnosticReportStatusFinal
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusFinal = "http://hl7.org/fhir/diagnostic-report-status#final";
 
     /// <summary>
     /// Literal for code: Partial
@@ -138,9 +168,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPartial = "partial";
 
     /// <summary>
+    /// Literal for code: DiagnosticReportStatusPartial
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusPartial = "http://hl7.org/fhir/diagnostic-report-status#partial";
+
+    /// <summary>
     /// Literal for code: Preliminary
     /// </summary>
     public const string LiteralPreliminary = "preliminary";
+
+    /// <summary>
+    /// Literal for code: DiagnosticReportStatusPreliminary
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusPreliminary = "http://hl7.org/fhir/diagnostic-report-status#preliminary";
 
     /// <summary>
     /// Literal for code: Registered
@@ -148,8 +188,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRegistered = "registered";
 
     /// <summary>
+    /// Literal for code: DiagnosticReportStatusRegistered
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusRegistered = "http://hl7.org/fhir/diagnostic-report-status#registered";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: DiagnosticReportStatusUnknown
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusUnknown = "http://hl7.org/fhir/diagnostic-report-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up DiagnosticReportStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "amended", Amended }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#amended", Amended }, 
+      { "appended", Appended }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#appended", Appended }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#cancelled", Cancelled }, 
+      { "corrected", Corrected }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#corrected", Corrected }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#entered-in-error", EnteredInError }, 
+      { "final", Final }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#final", Final }, 
+      { "partial", Partial }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#partial", Partial }, 
+      { "preliminary", Preliminary }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#preliminary", Preliminary }, 
+      { "registered", Registered }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#registered", Registered }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#unknown", Unknown }, 
+    };
   };
 }

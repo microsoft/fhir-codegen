@@ -584,9 +584,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnnuityPolicy_v3_ActCode = "ANNU";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAnnuityPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAnnuityPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ANNU";
+
+    /// <summary>
     /// Literal for code: Automobile_v3_ActCode
     /// </summary>
     public const string LiteralAutomobile_v3_ActCode = "AUTOPOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAutomobile_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAutomobile_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#AUTOPOL";
 
     /// <summary>
     /// Literal for code: WomenQuoteSCancerDetectionProgram_v3_ActCode
@@ -594,9 +604,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWomenQuoteSCancerDetectionProgram_v3_ActCode = "CANPRG";
 
     /// <summary>
+    /// Literal for code: V3ActCodeWomenQuoteSCancerDetectionProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeWomenQuoteSCancerDetectionProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#CANPRG";
+
+    /// <summary>
     /// Literal for code: CharityProgram_v3_ActCode
     /// </summary>
     public const string LiteralCharityProgram_v3_ActCode = "CHAR";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCharityProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeCharityProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#CHAR";
 
     /// <summary>
     /// Literal for code: CollisionCoveragePolicy_v3_ActCode
@@ -604,9 +624,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCollisionCoveragePolicy_v3_ActCode = "COL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeCollisionCoveragePolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeCollisionCoveragePolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#COL";
+
+    /// <summary>
     /// Literal for code: CrimeVictimProgram_v3_ActCode
     /// </summary>
     public const string LiteralCrimeVictimProgram_v3_ActCode = "CRIME";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCrimeVictimProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeCrimeVictimProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#CRIME";
 
     /// <summary>
     /// Literal for code: DentalCarePolicy_v3_ActCode
@@ -614,9 +644,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDentalCarePolicy_v3_ActCode = "DENTAL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDentalCarePolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDentalCarePolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DENTAL";
+
+    /// <summary>
     /// Literal for code: DentalProgram_v3_ActCode
     /// </summary>
     public const string LiteralDentalProgram_v3_ActCode = "DENTPRG";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDentalProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDentalProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DENTPRG";
 
     /// <summary>
     /// Literal for code: DisabilityInsurancePolicy_v3_ActCode
@@ -624,9 +664,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDisabilityInsurancePolicy_v3_ActCode = "DIS";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDisabilityInsurancePolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDisabilityInsurancePolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DIS";
+
+    /// <summary>
     /// Literal for code: DiseaseSpecificPolicy_v3_ActCode
     /// </summary>
     public const string LiteralDiseaseSpecificPolicy_v3_ActCode = "DISEASE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDiseaseSpecificPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDiseaseSpecificPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DISEASE";
 
     /// <summary>
     /// Literal for code: PublicHealthProgram_v3_ActCode
@@ -634,9 +684,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPublicHealthProgram_v3_ActCode = "DISEASEPRG";
 
     /// <summary>
+    /// Literal for code: V3ActCodePublicHealthProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodePublicHealthProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DISEASEPRG";
+
+    /// <summary>
     /// Literal for code: DrugPolicy_v3_ActCode
     /// </summary>
     public const string LiteralDrugPolicy_v3_ActCode = "DRUGPOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDrugPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDrugPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DRUGPOL";
 
     /// <summary>
     /// Literal for code: EmployeeAssistanceProgram_v3_ActCode
@@ -644,9 +704,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEmployeeAssistanceProgram_v3_ActCode = "EAP";
 
     /// <summary>
+    /// Literal for code: V3ActCodeEmployeeAssistanceProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeEmployeeAssistanceProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#EAP";
+
+    /// <summary>
     /// Literal for code: ExtendedHealthcare_v3_ActCode
     /// </summary>
     public const string LiteralExtendedHealthcare_v3_ActCode = "EHCPOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeExtendedHealthcare_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeExtendedHealthcare_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#EHCPOL";
 
     /// <summary>
     /// Literal for code: EndRenalProgram_v3_ActCode
@@ -654,9 +724,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEndRenalProgram_v3_ActCode = "ENDRENAL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeEndRenalProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeEndRenalProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ENDRENAL";
+
+    /// <summary>
     /// Literal for code: EmployeeWelfareBenefitPlanPolicy_v3_ActCode
     /// </summary>
     public const string LiteralEmployeeWelfareBenefitPlanPolicy_v3_ActCode = "EWB";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEmployeeWelfareBenefitPlanPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeEmployeeWelfareBenefitPlanPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#EWB";
 
     /// <summary>
     /// Literal for code: FlexibleBenefitPlanPolicy_v3_ActCode
@@ -664,9 +744,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFlexibleBenefitPlanPolicy_v3_ActCode = "FLEXP";
 
     /// <summary>
+    /// Literal for code: V3ActCodeFlexibleBenefitPlanPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeFlexibleBenefitPlanPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#FLEXP";
+
+    /// <summary>
     /// Literal for code: GovernmentEmployeeHealthProgram_v3_ActCode
     /// </summary>
     public const string LiteralGovernmentEmployeeHealthProgram_v3_ActCode = "GOVEMP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeGovernmentEmployeeHealthProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeGovernmentEmployeeHealthProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#GOVEMP";
 
     /// <summary>
     /// Literal for code: HealthInsurancePlanPolicy_v3_ActCode
@@ -674,9 +764,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHealthInsurancePlanPolicy_v3_ActCode = "HIP";
 
     /// <summary>
+    /// Literal for code: V3ActCodeHealthInsurancePlanPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeHealthInsurancePlanPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#HIP";
+
+    /// <summary>
     /// Literal for code: HighRiskPoolProgram_v3_ActCode
     /// </summary>
     public const string LiteralHighRiskPoolProgram_v3_ActCode = "HIRISK";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeHighRiskPoolProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeHighRiskPoolProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#HIRISK";
 
     /// <summary>
     /// Literal for code: HIVAIDSProgram_v3_ActCode
@@ -684,9 +784,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHIVAIDSProgram_v3_ActCode = "HIVAIDS";
 
     /// <summary>
+    /// Literal for code: V3ActCodeHIVAIDSProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeHIVAIDSProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#HIVAIDS";
+
+    /// <summary>
     /// Literal for code: HealthMaintenanceOrganizationPolicy_v3_ActCode
     /// </summary>
     public const string LiteralHealthMaintenanceOrganizationPolicy_v3_ActCode = "HMO";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeHealthMaintenanceOrganizationPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeHealthMaintenanceOrganizationPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#HMO";
 
     /// <summary>
     /// Literal for code: HealthSpendingAccount_v3_ActCode
@@ -694,9 +804,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHealthSpendingAccount_v3_ActCode = "HSAPOL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeHealthSpendingAccount_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeHealthSpendingAccount_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#HSAPOL";
+
+    /// <summary>
     /// Literal for code: IndigenousPeoplesHealthProgram_v3_ActCode
     /// </summary>
     public const string LiteralIndigenousPeoplesHealthProgram_v3_ActCode = "IND";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeIndigenousPeoplesHealthProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeIndigenousPeoplesHealthProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#IND";
 
     /// <summary>
     /// Literal for code: LifeInsurancePolicy_v3_ActCode
@@ -704,9 +824,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLifeInsurancePolicy_v3_ActCode = "LIFE";
 
     /// <summary>
+    /// Literal for code: V3ActCodeLifeInsurancePolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeLifeInsurancePolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#LIFE";
+
+    /// <summary>
     /// Literal for code: LongTermCarePolicy_v3_ActCode
     /// </summary>
     public const string LiteralLongTermCarePolicy_v3_ActCode = "LTC";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeLongTermCarePolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeLongTermCarePolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#LTC";
 
     /// <summary>
     /// Literal for code: MandatoryHealthProgram_v3_ActCode
@@ -714,9 +844,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMandatoryHealthProgram_v3_ActCode = "MANDPOL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeMandatoryHealthProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeMandatoryHealthProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#MANDPOL";
+
+    /// <summary>
     /// Literal for code: ManagedCarePolicy_v3_ActCode
     /// </summary>
     public const string LiteralManagedCarePolicy_v3_ActCode = "MCPOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeManagedCarePolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeManagedCarePolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#MCPOL";
 
     /// <summary>
     /// Literal for code: MentalHealthPolicy_v3_ActCode
@@ -724,9 +864,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMentalHealthPolicy_v3_ActCode = "MENTPOL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeMentalHealthPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeMentalHealthPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#MENTPOL";
+
+    /// <summary>
     /// Literal for code: MentalHealthProgram_v3_ActCode
     /// </summary>
     public const string LiteralMentalHealthProgram_v3_ActCode = "MENTPRG";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeMentalHealthProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeMentalHealthProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#MENTPRG";
 
     /// <summary>
     /// Literal for code: MilitaryHealthProgram_v3_ActCode
@@ -734,9 +884,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMilitaryHealthProgram_v3_ActCode = "MILITARY";
 
     /// <summary>
+    /// Literal for code: V3ActCodeMilitaryHealthProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeMilitaryHealthProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#MILITARY";
+
+    /// <summary>
     /// Literal for code: Pay_coverage_selfpay
     /// </summary>
     public const string LiteralPay_coverage_selfpay = "pay";
+
+    /// <summary>
+    /// Literal for code: CoverageSelfpayPay_coverage_selfpay
+    /// </summary>
+    public const string LiteralCoverageSelfpayPay_coverage_selfpay = "http://hl7.org/fhir/coverage-selfpay#pay";
 
     /// <summary>
     /// Literal for code: PropertyAndCasualtyInsurancePolicy_v3_ActCode
@@ -744,9 +904,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPropertyAndCasualtyInsurancePolicy_v3_ActCode = "PNC";
 
     /// <summary>
+    /// Literal for code: V3ActCodePropertyAndCasualtyInsurancePolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodePropertyAndCasualtyInsurancePolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#PNC";
+
+    /// <summary>
     /// Literal for code: PointOfServicePolicy_v3_ActCode
     /// </summary>
     public const string LiteralPointOfServicePolicy_v3_ActCode = "POS";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePointOfServicePolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodePointOfServicePolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#POS";
 
     /// <summary>
     /// Literal for code: PreferredProviderOrganizationPolicy_v3_ActCode
@@ -754,9 +924,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPreferredProviderOrganizationPolicy_v3_ActCode = "PPO";
 
     /// <summary>
+    /// Literal for code: V3ActCodePreferredProviderOrganizationPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodePreferredProviderOrganizationPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#PPO";
+
+    /// <summary>
     /// Literal for code: PublicHealthcare_v3_ActCode
     /// </summary>
     public const string LiteralPublicHealthcare_v3_ActCode = "PUBLICPOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePublicHealthcare_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodePublicHealthcare_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#PUBLICPOL";
 
     /// <summary>
     /// Literal for code: ReinsurancePolicy_v3_ActCode
@@ -764,9 +944,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReinsurancePolicy_v3_ActCode = "REI";
 
     /// <summary>
+    /// Literal for code: V3ActCodeReinsurancePolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeReinsurancePolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#REI";
+
+    /// <summary>
     /// Literal for code: RetireeHealthProgram_v3_ActCode
     /// </summary>
     public const string LiteralRetireeHealthProgram_v3_ActCode = "RETIRE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeRetireeHealthProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeRetireeHealthProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#RETIRE";
 
     /// <summary>
     /// Literal for code: SafetyNetClinicProgram_v3_ActCode
@@ -774,9 +964,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSafetyNetClinicProgram_v3_ActCode = "SAFNET";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSafetyNetClinicProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSafetyNetClinicProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#SAFNET";
+
+    /// <summary>
     /// Literal for code: SocialServiceProgram_v3_ActCode
     /// </summary>
     public const string LiteralSocialServiceProgram_v3_ActCode = "SOCIAL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSocialServiceProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSocialServiceProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#SOCIAL";
 
     /// <summary>
     /// Literal for code: SubstanceUsePolicy_v3_ActCode
@@ -784,9 +984,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSubstanceUsePolicy_v3_ActCode = "SUBPOL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSubstanceUsePolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSubstanceUsePolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#SUBPOL";
+
+    /// <summary>
     /// Literal for code: SubstanceUseProgram_v3_ActCode
     /// </summary>
     public const string LiteralSubstanceUseProgram_v3_ActCode = "SUBPRG";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSubstanceUseProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSubstanceUseProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#SUBPRG";
 
     /// <summary>
     /// Literal for code: SubsidizedHealthProgram_v3_ActCode
@@ -794,9 +1004,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSubsidizedHealthProgram_v3_ActCode = "SUBSIDIZ";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSubsidizedHealthProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSubsidizedHealthProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#SUBSIDIZ";
+
+    /// <summary>
     /// Literal for code: SubsidizedManagedCareProgram_v3_ActCode
     /// </summary>
     public const string LiteralSubsidizedManagedCareProgram_v3_ActCode = "SUBSIDMC";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSubsidizedManagedCareProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSubsidizedManagedCareProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#SUBSIDMC";
 
     /// <summary>
     /// Literal for code: SubsidizedSupplementalHealthProgram_v3_ActCode
@@ -804,9 +1024,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSubsidizedSupplementalHealthProgram_v3_ActCode = "SUBSUPP";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSubsidizedSupplementalHealthProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSubsidizedSupplementalHealthProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#SUBSUPP";
+
+    /// <summary>
     /// Literal for code: SurplusLineInsurancePolicy_v3_ActCode
     /// </summary>
     public const string LiteralSurplusLineInsurancePolicy_v3_ActCode = "SURPL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSurplusLineInsurancePolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeSurplusLineInsurancePolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#SURPL";
 
     /// <summary>
     /// Literal for code: TermLifeInsurancePolicy_v3_ActCode
@@ -814,9 +1044,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTermLifeInsurancePolicy_v3_ActCode = "TLIFE";
 
     /// <summary>
+    /// Literal for code: V3ActCodeTermLifeInsurancePolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeTermLifeInsurancePolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#TLIFE";
+
+    /// <summary>
     /// Literal for code: UniversalLifeInsurancePolicy_v3_ActCode
     /// </summary>
     public const string LiteralUniversalLifeInsurancePolicy_v3_ActCode = "ULIFE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeUniversalLifeInsurancePolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeUniversalLifeInsurancePolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ULIFE";
 
     /// <summary>
     /// Literal for code: UmbrellaLiabilityInsurancePolicy_v3_ActCode
@@ -824,9 +1064,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUmbrellaLiabilityInsurancePolicy_v3_ActCode = "UMBRL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeUmbrellaLiabilityInsurancePolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeUmbrellaLiabilityInsurancePolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#UMBRL";
+
+    /// <summary>
     /// Literal for code: UninsuredMotoristPolicy_v3_ActCode
     /// </summary>
     public const string LiteralUninsuredMotoristPolicy_v3_ActCode = "UNINSMOT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeUninsuredMotoristPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeUninsuredMotoristPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#UNINSMOT";
 
     /// <summary>
     /// Literal for code: VeteranHealthProgram_v3_ActCode
@@ -834,13 +1084,140 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVeteranHealthProgram_v3_ActCode = "VET";
 
     /// <summary>
+    /// Literal for code: V3ActCodeVeteranHealthProgram_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeVeteranHealthProgram_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#VET";
+
+    /// <summary>
     /// Literal for code: VisionCarePolicy_v3_ActCode
     /// </summary>
     public const string LiteralVisionCarePolicy_v3_ActCode = "VISPOL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeVisionCarePolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeVisionCarePolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#VISPOL";
+
+    /// <summary>
     /// Literal for code: WorkerQuoteSCompensation_v3_ActCode
     /// </summary>
     public const string LiteralWorkerQuoteSCompensation_v3_ActCode = "WCBPOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeWorkerQuoteSCompensation_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeWorkerQuoteSCompensation_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#WCBPOL";
+
+    /// <summary>
+    /// Dictionary for looking up CoverageType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ANNU", AnnuityPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ANNU", AnnuityPolicy_v3_ActCode }, 
+      { "AUTOPOL", Automobile_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#AUTOPOL", Automobile_v3_ActCode }, 
+      { "CANPRG", WomenQuoteSCancerDetectionProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#CANPRG", WomenQuoteSCancerDetectionProgram_v3_ActCode }, 
+      { "CHAR", CharityProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#CHAR", CharityProgram_v3_ActCode }, 
+      { "COL", CollisionCoveragePolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#COL", CollisionCoveragePolicy_v3_ActCode }, 
+      { "CRIME", CrimeVictimProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#CRIME", CrimeVictimProgram_v3_ActCode }, 
+      { "DENTAL", DentalCarePolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DENTAL", DentalCarePolicy_v3_ActCode }, 
+      { "DENTPRG", DentalProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DENTPRG", DentalProgram_v3_ActCode }, 
+      { "DIS", DisabilityInsurancePolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DIS", DisabilityInsurancePolicy_v3_ActCode }, 
+      { "DISEASE", DiseaseSpecificPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DISEASE", DiseaseSpecificPolicy_v3_ActCode }, 
+      { "DISEASEPRG", PublicHealthProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DISEASEPRG", PublicHealthProgram_v3_ActCode }, 
+      { "DRUGPOL", DrugPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DRUGPOL", DrugPolicy_v3_ActCode }, 
+      { "EAP", EmployeeAssistanceProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#EAP", EmployeeAssistanceProgram_v3_ActCode }, 
+      { "EHCPOL", ExtendedHealthcare_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#EHCPOL", ExtendedHealthcare_v3_ActCode }, 
+      { "ENDRENAL", EndRenalProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ENDRENAL", EndRenalProgram_v3_ActCode }, 
+      { "EWB", EmployeeWelfareBenefitPlanPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#EWB", EmployeeWelfareBenefitPlanPolicy_v3_ActCode }, 
+      { "FLEXP", FlexibleBenefitPlanPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#FLEXP", FlexibleBenefitPlanPolicy_v3_ActCode }, 
+      { "GOVEMP", GovernmentEmployeeHealthProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#GOVEMP", GovernmentEmployeeHealthProgram_v3_ActCode }, 
+      { "HIP", HealthInsurancePlanPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#HIP", HealthInsurancePlanPolicy_v3_ActCode }, 
+      { "HIRISK", HighRiskPoolProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#HIRISK", HighRiskPoolProgram_v3_ActCode }, 
+      { "HIVAIDS", HIVAIDSProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#HIVAIDS", HIVAIDSProgram_v3_ActCode }, 
+      { "HMO", HealthMaintenanceOrganizationPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#HMO", HealthMaintenanceOrganizationPolicy_v3_ActCode }, 
+      { "HSAPOL", HealthSpendingAccount_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#HSAPOL", HealthSpendingAccount_v3_ActCode }, 
+      { "IND", IndigenousPeoplesHealthProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#IND", IndigenousPeoplesHealthProgram_v3_ActCode }, 
+      { "LIFE", LifeInsurancePolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#LIFE", LifeInsurancePolicy_v3_ActCode }, 
+      { "LTC", LongTermCarePolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#LTC", LongTermCarePolicy_v3_ActCode }, 
+      { "MANDPOL", MandatoryHealthProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#MANDPOL", MandatoryHealthProgram_v3_ActCode }, 
+      { "MCPOL", ManagedCarePolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#MCPOL", ManagedCarePolicy_v3_ActCode }, 
+      { "MENTPOL", MentalHealthPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#MENTPOL", MentalHealthPolicy_v3_ActCode }, 
+      { "MENTPRG", MentalHealthProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#MENTPRG", MentalHealthProgram_v3_ActCode }, 
+      { "MILITARY", MilitaryHealthProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#MILITARY", MilitaryHealthProgram_v3_ActCode }, 
+      { "pay", Pay_coverage_selfpay }, 
+      { "http://hl7.org/fhir/coverage-selfpay#pay", Pay_coverage_selfpay }, 
+      { "PNC", PropertyAndCasualtyInsurancePolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#PNC", PropertyAndCasualtyInsurancePolicy_v3_ActCode }, 
+      { "POS", PointOfServicePolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#POS", PointOfServicePolicy_v3_ActCode }, 
+      { "PPO", PreferredProviderOrganizationPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#PPO", PreferredProviderOrganizationPolicy_v3_ActCode }, 
+      { "PUBLICPOL", PublicHealthcare_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#PUBLICPOL", PublicHealthcare_v3_ActCode }, 
+      { "REI", ReinsurancePolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#REI", ReinsurancePolicy_v3_ActCode }, 
+      { "RETIRE", RetireeHealthProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#RETIRE", RetireeHealthProgram_v3_ActCode }, 
+      { "SAFNET", SafetyNetClinicProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#SAFNET", SafetyNetClinicProgram_v3_ActCode }, 
+      { "SOCIAL", SocialServiceProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#SOCIAL", SocialServiceProgram_v3_ActCode }, 
+      { "SUBPOL", SubstanceUsePolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#SUBPOL", SubstanceUsePolicy_v3_ActCode }, 
+      { "SUBPRG", SubstanceUseProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#SUBPRG", SubstanceUseProgram_v3_ActCode }, 
+      { "SUBSIDIZ", SubsidizedHealthProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#SUBSIDIZ", SubsidizedHealthProgram_v3_ActCode }, 
+      { "SUBSIDMC", SubsidizedManagedCareProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#SUBSIDMC", SubsidizedManagedCareProgram_v3_ActCode }, 
+      { "SUBSUPP", SubsidizedSupplementalHealthProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#SUBSUPP", SubsidizedSupplementalHealthProgram_v3_ActCode }, 
+      { "SURPL", SurplusLineInsurancePolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#SURPL", SurplusLineInsurancePolicy_v3_ActCode }, 
+      { "TLIFE", TermLifeInsurancePolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#TLIFE", TermLifeInsurancePolicy_v3_ActCode }, 
+      { "ULIFE", UniversalLifeInsurancePolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ULIFE", UniversalLifeInsurancePolicy_v3_ActCode }, 
+      { "UMBRL", UmbrellaLiabilityInsurancePolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#UMBRL", UmbrellaLiabilityInsurancePolicy_v3_ActCode }, 
+      { "UNINSMOT", UninsuredMotoristPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#UNINSMOT", UninsuredMotoristPolicy_v3_ActCode }, 
+      { "VET", VeteranHealthProgram_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#VET", VeteranHealthProgram_v3_ActCode }, 
+      { "VISPOL", VisionCarePolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#VISPOL", VisionCarePolicy_v3_ActCode }, 
+      { "WCBPOL", WorkerQuoteSCompensation_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#WCBPOL", WorkerQuoteSCompensation_v3_ActCode }, 
+    };
   };
 }

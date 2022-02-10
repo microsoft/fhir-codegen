@@ -25,5 +25,18 @@ namespace fhirCsR4B.ValueSets
     /// Literal for code: Policy
     /// </summary>
     public const string LiteralPolicy = "policy";
+
+    /// <summary>
+    /// Literal for code: ContractSecurityClassificationPolicy
+    /// </summary>
+    public const string LiteralContractSecurityClassificationPolicy = "http://hl7.org/fhir/contract-security-classification#policy";
+
+    /// <summary>
+    /// Dictionary for looking up ContractSecurityClassification Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "policy", Policy }, 
+      { "http://hl7.org/fhir/contract-security-classification#policy", Policy }, 
+    };
   };
 }

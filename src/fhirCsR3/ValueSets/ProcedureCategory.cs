@@ -66,9 +66,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVAL103693007 = "103693007";
 
     /// <summary>
+    /// Literal for code: NONEVAL103693007
+    /// </summary>
+    public const string LiteralNONEVAL103693007 = "http://snomed.info/sct#103693007";
+
+    /// <summary>
     /// Literal for code: VAL24642003
     /// </summary>
     public const string LiteralVAL24642003 = "24642003";
+
+    /// <summary>
+    /// Literal for code: NONEVAL24642003
+    /// </summary>
+    public const string LiteralNONEVAL24642003 = "http://snomed.info/sct#24642003";
 
     /// <summary>
     /// Literal for code: VAL387713003
@@ -76,9 +86,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVAL387713003 = "387713003";
 
     /// <summary>
+    /// Literal for code: NONEVAL387713003
+    /// </summary>
+    public const string LiteralNONEVAL387713003 = "http://snomed.info/sct#387713003";
+
+    /// <summary>
     /// Literal for code: VAL409063005
     /// </summary>
     public const string LiteralVAL409063005 = "409063005";
+
+    /// <summary>
+    /// Literal for code: NONEVAL409063005
+    /// </summary>
+    public const string LiteralNONEVAL409063005 = "http://snomed.info/sct#409063005";
 
     /// <summary>
     /// Literal for code: VAL409073007
@@ -86,8 +106,36 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVAL409073007 = "409073007";
 
     /// <summary>
+    /// Literal for code: NONEVAL409073007
+    /// </summary>
+    public const string LiteralNONEVAL409073007 = "http://snomed.info/sct#409073007";
+
+    /// <summary>
     /// Literal for code: VAL46947000
     /// </summary>
     public const string LiteralVAL46947000 = "46947000";
+
+    /// <summary>
+    /// Literal for code: NONEVAL46947000
+    /// </summary>
+    public const string LiteralNONEVAL46947000 = "http://snomed.info/sct#46947000";
+
+    /// <summary>
+    /// Dictionary for looking up ProcedureCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "103693007", VAL103693007 }, 
+      { "http://snomed.info/sct#103693007", VAL103693007 }, 
+      { "24642003", VAL24642003 }, 
+      { "http://snomed.info/sct#24642003", VAL24642003 }, 
+      { "387713003", VAL387713003 }, 
+      { "http://snomed.info/sct#387713003", VAL387713003 }, 
+      { "409063005", VAL409063005 }, 
+      { "http://snomed.info/sct#409063005", VAL409063005 }, 
+      { "409073007", VAL409073007 }, 
+      { "http://snomed.info/sct#409073007", VAL409073007 }, 
+      { "46947000", VAL46947000 }, 
+      { "http://snomed.info/sct#46947000", VAL46947000 }, 
+    };
   };
 }

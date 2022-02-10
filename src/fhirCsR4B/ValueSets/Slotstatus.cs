@@ -63,9 +63,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBusy = "busy";
 
     /// <summary>
+    /// Literal for code: SlotstatusBusy
+    /// </summary>
+    public const string LiteralSlotstatusBusy = "http://hl7.org/fhir/slotstatus#busy";
+
+    /// <summary>
     /// Literal for code: BusyTentative
     /// </summary>
     public const string LiteralBusyTentative = "busy-tentative";
+
+    /// <summary>
+    /// Literal for code: SlotstatusBusyTentative
+    /// </summary>
+    public const string LiteralSlotstatusBusyTentative = "http://hl7.org/fhir/slotstatus#busy-tentative";
 
     /// <summary>
     /// Literal for code: BusyUnavailable
@@ -73,13 +83,44 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBusyUnavailable = "busy-unavailable";
 
     /// <summary>
+    /// Literal for code: SlotstatusBusyUnavailable
+    /// </summary>
+    public const string LiteralSlotstatusBusyUnavailable = "http://hl7.org/fhir/slotstatus#busy-unavailable";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: SlotstatusEnteredInError
+    /// </summary>
+    public const string LiteralSlotstatusEnteredInError = "http://hl7.org/fhir/slotstatus#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Free
     /// </summary>
     public const string LiteralFree = "free";
+
+    /// <summary>
+    /// Literal for code: SlotstatusFree
+    /// </summary>
+    public const string LiteralSlotstatusFree = "http://hl7.org/fhir/slotstatus#free";
+
+    /// <summary>
+    /// Dictionary for looking up Slotstatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "busy", Busy }, 
+      { "http://hl7.org/fhir/slotstatus#busy", Busy }, 
+      { "busy-tentative", BusyTentative }, 
+      { "http://hl7.org/fhir/slotstatus#busy-tentative", BusyTentative }, 
+      { "busy-unavailable", BusyUnavailable }, 
+      { "http://hl7.org/fhir/slotstatus#busy-unavailable", BusyUnavailable }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/slotstatus#entered-in-error", EnteredInError }, 
+      { "free", Free }, 
+      { "http://hl7.org/fhir/slotstatus#free", Free }, 
+    };
   };
 }

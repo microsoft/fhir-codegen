@@ -72,9 +72,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralConfirmed = "confirmed";
 
     /// <summary>
+    /// Literal for code: ConditionVerStatusConfirmed
+    /// </summary>
+    public const string LiteralConditionVerStatusConfirmed = "http://hl7.org/fhir/condition-ver-status#confirmed";
+
+    /// <summary>
     /// Literal for code: Differential
     /// </summary>
     public const string LiteralDifferential = "differential";
+
+    /// <summary>
+    /// Literal for code: ConditionVerStatusDifferential
+    /// </summary>
+    public const string LiteralConditionVerStatusDifferential = "http://hl7.org/fhir/condition-ver-status#differential";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -82,9 +92,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: ConditionVerStatusEnteredInError
+    /// </summary>
+    public const string LiteralConditionVerStatusEnteredInError = "http://hl7.org/fhir/condition-ver-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Provisional
     /// </summary>
     public const string LiteralProvisional = "provisional";
+
+    /// <summary>
+    /// Literal for code: ConditionVerStatusProvisional
+    /// </summary>
+    public const string LiteralConditionVerStatusProvisional = "http://hl7.org/fhir/condition-ver-status#provisional";
 
     /// <summary>
     /// Literal for code: Refuted
@@ -92,8 +112,36 @@ namespace fhirCsR2.ValueSets
     public const string LiteralRefuted = "refuted";
 
     /// <summary>
+    /// Literal for code: ConditionVerStatusRefuted
+    /// </summary>
+    public const string LiteralConditionVerStatusRefuted = "http://hl7.org/fhir/condition-ver-status#refuted";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: ConditionVerStatusUnknown
+    /// </summary>
+    public const string LiteralConditionVerStatusUnknown = "http://hl7.org/fhir/condition-ver-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up ConditionVerStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "confirmed", Confirmed }, 
+      { "http://hl7.org/fhir/condition-ver-status#confirmed", Confirmed }, 
+      { "differential", Differential }, 
+      { "http://hl7.org/fhir/condition-ver-status#differential", Differential }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/condition-ver-status#entered-in-error", EnteredInError }, 
+      { "provisional", Provisional }, 
+      { "http://hl7.org/fhir/condition-ver-status#provisional", Provisional }, 
+      { "refuted", Refuted }, 
+      { "http://hl7.org/fhir/condition-ver-status#refuted", Refuted }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/condition-ver-status#unknown", Unknown }, 
+    };
   };
 }

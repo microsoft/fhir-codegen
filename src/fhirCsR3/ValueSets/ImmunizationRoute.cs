@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInjectionIntramuscular = "IM";
 
     /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInjectionIntramuscular
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInjectionIntramuscular = "http://hl7.org/fhir/v3/RouteOfAdministration#IM";
+
+    /// <summary>
     /// Literal for code: InhalationNasal
     /// </summary>
     public const string LiteralInhalationNasal = "NASINHL";
 
     /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInhalationNasal
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInhalationNasal = "http://hl7.org/fhir/v3/RouteOfAdministration#NASINHL";
+
+    /// <summary>
     /// Literal for code: SwallowOral
     /// </summary>
     public const string LiteralSwallowOral = "PO";
+
+    /// <summary>
+    /// Literal for code: V3RouteOfAdministrationSwallowOral
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationSwallowOral = "http://hl7.org/fhir/v3/RouteOfAdministration#PO";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationRoute Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "IM", InjectionIntramuscular }, 
+      { "http://hl7.org/fhir/v3/RouteOfAdministration#IM", InjectionIntramuscular }, 
+      { "NASINHL", InhalationNasal }, 
+      { "http://hl7.org/fhir/v3/RouteOfAdministration#NASINHL", InhalationNasal }, 
+      { "PO", SwallowOral }, 
+      { "http://hl7.org/fhir/v3/RouteOfAdministration#PO", SwallowOral }, 
+    };
   };
 }

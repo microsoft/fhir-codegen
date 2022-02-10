@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class MedicationAdminLocationCodes
   {
     /// <summary>
-    /// 
+    /// Community
     /// </summary>
     public static readonly Coding Community = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/medication-admin-location"
     };
     /// <summary>
-    /// 
+    /// Inpatient
     /// </summary>
     public static readonly Coding Inpatient = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/medication-admin-location"
     };
     /// <summary>
-    /// 
+    /// Outpatient
     /// </summary>
     public static readonly Coding Outpatient = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCommunity = "community";
 
     /// <summary>
+    /// Literal for code: MedicationAdminLocationCommunity
+    /// </summary>
+    public const string LiteralMedicationAdminLocationCommunity = "http://terminology.hl7.org/CodeSystem/medication-admin-location#community";
+
+    /// <summary>
     /// Literal for code: Inpatient
     /// </summary>
     public const string LiteralInpatient = "inpatient";
 
     /// <summary>
+    /// Literal for code: MedicationAdminLocationInpatient
+    /// </summary>
+    public const string LiteralMedicationAdminLocationInpatient = "http://terminology.hl7.org/CodeSystem/medication-admin-location#inpatient";
+
+    /// <summary>
     /// Literal for code: Outpatient
     /// </summary>
     public const string LiteralOutpatient = "outpatient";
+
+    /// <summary>
+    /// Literal for code: MedicationAdminLocationOutpatient
+    /// </summary>
+    public const string LiteralMedicationAdminLocationOutpatient = "http://terminology.hl7.org/CodeSystem/medication-admin-location#outpatient";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationAdminLocation Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "community", Community }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-admin-location#community", Community }, 
+      { "inpatient", Inpatient }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-admin-location#inpatient", Inpatient }, 
+      { "outpatient", Outpatient }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-admin-location#outpatient", Outpatient }, 
+    };
   };
 }

@@ -261,9 +261,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAC_v3_TimingEvent = "AC";
 
     /// <summary>
+    /// Literal for code: V3TimingEventAC_v3_TimingEvent
+    /// </summary>
+    public const string LiteralV3TimingEventAC_v3_TimingEvent = "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#AC";
+
+    /// <summary>
     /// Literal for code: ACD_v3_TimingEvent
     /// </summary>
     public const string LiteralACD_v3_TimingEvent = "ACD";
+
+    /// <summary>
+    /// Literal for code: V3TimingEventACD_v3_TimingEvent
+    /// </summary>
+    public const string LiteralV3TimingEventACD_v3_TimingEvent = "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#ACD";
 
     /// <summary>
     /// Literal for code: ACM_v3_TimingEvent
@@ -271,9 +281,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralACM_v3_TimingEvent = "ACM";
 
     /// <summary>
+    /// Literal for code: V3TimingEventACM_v3_TimingEvent
+    /// </summary>
+    public const string LiteralV3TimingEventACM_v3_TimingEvent = "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#ACM";
+
+    /// <summary>
     /// Literal for code: ACV_v3_TimingEvent
     /// </summary>
     public const string LiteralACV_v3_TimingEvent = "ACV";
+
+    /// <summary>
+    /// Literal for code: V3TimingEventACV_v3_TimingEvent
+    /// </summary>
+    public const string LiteralV3TimingEventACV_v3_TimingEvent = "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#ACV";
 
     /// <summary>
     /// Literal for code: Afternoon_event_timing
@@ -281,9 +301,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAfternoon_event_timing = "AFT";
 
     /// <summary>
+    /// Literal for code: EventTimingAfternoon_event_timing
+    /// </summary>
+    public const string LiteralEventTimingAfternoon_event_timing = "http://hl7.org/fhir/event-timing#AFT";
+
+    /// <summary>
     /// Literal for code: EarlyAfternoon_event_timing
     /// </summary>
     public const string LiteralEarlyAfternoon_event_timing = "AFT.early";
+
+    /// <summary>
+    /// Literal for code: EventTimingEarlyAfternoon_event_timing
+    /// </summary>
+    public const string LiteralEventTimingEarlyAfternoon_event_timing = "http://hl7.org/fhir/event-timing#AFT.early";
 
     /// <summary>
     /// Literal for code: LateAfternoon_event_timing
@@ -291,9 +321,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLateAfternoon_event_timing = "AFT.late";
 
     /// <summary>
+    /// Literal for code: EventTimingLateAfternoon_event_timing
+    /// </summary>
+    public const string LiteralEventTimingLateAfternoon_event_timing = "http://hl7.org/fhir/event-timing#AFT.late";
+
+    /// <summary>
     /// Literal for code: C_v3_TimingEvent
     /// </summary>
     public const string LiteralC_v3_TimingEvent = "C";
+
+    /// <summary>
+    /// Literal for code: V3TimingEventC_v3_TimingEvent
+    /// </summary>
+    public const string LiteralV3TimingEventC_v3_TimingEvent = "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#C";
 
     /// <summary>
     /// Literal for code: CD_v3_TimingEvent
@@ -301,9 +341,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCD_v3_TimingEvent = "CD";
 
     /// <summary>
+    /// Literal for code: V3TimingEventCD_v3_TimingEvent
+    /// </summary>
+    public const string LiteralV3TimingEventCD_v3_TimingEvent = "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#CD";
+
+    /// <summary>
     /// Literal for code: CM_v3_TimingEvent
     /// </summary>
     public const string LiteralCM_v3_TimingEvent = "CM";
+
+    /// <summary>
+    /// Literal for code: V3TimingEventCM_v3_TimingEvent
+    /// </summary>
+    public const string LiteralV3TimingEventCM_v3_TimingEvent = "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#CM";
 
     /// <summary>
     /// Literal for code: CV_v3_TimingEvent
@@ -311,9 +361,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCV_v3_TimingEvent = "CV";
 
     /// <summary>
+    /// Literal for code: V3TimingEventCV_v3_TimingEvent
+    /// </summary>
+    public const string LiteralV3TimingEventCV_v3_TimingEvent = "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#CV";
+
+    /// <summary>
     /// Literal for code: Evening_event_timing
     /// </summary>
     public const string LiteralEvening_event_timing = "EVE";
+
+    /// <summary>
+    /// Literal for code: EventTimingEvening_event_timing
+    /// </summary>
+    public const string LiteralEventTimingEvening_event_timing = "http://hl7.org/fhir/event-timing#EVE";
 
     /// <summary>
     /// Literal for code: EarlyEvening_event_timing
@@ -321,9 +381,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEarlyEvening_event_timing = "EVE.early";
 
     /// <summary>
+    /// Literal for code: EventTimingEarlyEvening_event_timing
+    /// </summary>
+    public const string LiteralEventTimingEarlyEvening_event_timing = "http://hl7.org/fhir/event-timing#EVE.early";
+
+    /// <summary>
     /// Literal for code: LateEvening_event_timing
     /// </summary>
     public const string LiteralLateEvening_event_timing = "EVE.late";
+
+    /// <summary>
+    /// Literal for code: EventTimingLateEvening_event_timing
+    /// </summary>
+    public const string LiteralEventTimingLateEvening_event_timing = "http://hl7.org/fhir/event-timing#EVE.late";
 
     /// <summary>
     /// Literal for code: HS_v3_TimingEvent
@@ -331,9 +401,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHS_v3_TimingEvent = "HS";
 
     /// <summary>
+    /// Literal for code: V3TimingEventHS_v3_TimingEvent
+    /// </summary>
+    public const string LiteralV3TimingEventHS_v3_TimingEvent = "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#HS";
+
+    /// <summary>
     /// Literal for code: Morning_event_timing
     /// </summary>
     public const string LiteralMorning_event_timing = "MORN";
+
+    /// <summary>
+    /// Literal for code: EventTimingMorning_event_timing
+    /// </summary>
+    public const string LiteralEventTimingMorning_event_timing = "http://hl7.org/fhir/event-timing#MORN";
 
     /// <summary>
     /// Literal for code: EarlyMorning_event_timing
@@ -341,9 +421,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEarlyMorning_event_timing = "MORN.early";
 
     /// <summary>
+    /// Literal for code: EventTimingEarlyMorning_event_timing
+    /// </summary>
+    public const string LiteralEventTimingEarlyMorning_event_timing = "http://hl7.org/fhir/event-timing#MORN.early";
+
+    /// <summary>
     /// Literal for code: LateMorning_event_timing
     /// </summary>
     public const string LiteralLateMorning_event_timing = "MORN.late";
+
+    /// <summary>
+    /// Literal for code: EventTimingLateMorning_event_timing
+    /// </summary>
+    public const string LiteralEventTimingLateMorning_event_timing = "http://hl7.org/fhir/event-timing#MORN.late";
 
     /// <summary>
     /// Literal for code: Night_event_timing
@@ -351,9 +441,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNight_event_timing = "NIGHT";
 
     /// <summary>
+    /// Literal for code: EventTimingNight_event_timing
+    /// </summary>
+    public const string LiteralEventTimingNight_event_timing = "http://hl7.org/fhir/event-timing#NIGHT";
+
+    /// <summary>
     /// Literal for code: Noon_event_timing
     /// </summary>
     public const string LiteralNoon_event_timing = "NOON";
+
+    /// <summary>
+    /// Literal for code: EventTimingNoon_event_timing
+    /// </summary>
+    public const string LiteralEventTimingNoon_event_timing = "http://hl7.org/fhir/event-timing#NOON";
 
     /// <summary>
     /// Literal for code: PC_v3_TimingEvent
@@ -361,9 +461,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPC_v3_TimingEvent = "PC";
 
     /// <summary>
+    /// Literal for code: V3TimingEventPC_v3_TimingEvent
+    /// </summary>
+    public const string LiteralV3TimingEventPC_v3_TimingEvent = "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#PC";
+
+    /// <summary>
     /// Literal for code: PCD_v3_TimingEvent
     /// </summary>
     public const string LiteralPCD_v3_TimingEvent = "PCD";
+
+    /// <summary>
+    /// Literal for code: V3TimingEventPCD_v3_TimingEvent
+    /// </summary>
+    public const string LiteralV3TimingEventPCD_v3_TimingEvent = "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#PCD";
 
     /// <summary>
     /// Literal for code: PCM_v3_TimingEvent
@@ -371,9 +481,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPCM_v3_TimingEvent = "PCM";
 
     /// <summary>
+    /// Literal for code: V3TimingEventPCM_v3_TimingEvent
+    /// </summary>
+    public const string LiteralV3TimingEventPCM_v3_TimingEvent = "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#PCM";
+
+    /// <summary>
     /// Literal for code: PCV_v3_TimingEvent
     /// </summary>
     public const string LiteralPCV_v3_TimingEvent = "PCV";
+
+    /// <summary>
+    /// Literal for code: V3TimingEventPCV_v3_TimingEvent
+    /// </summary>
+    public const string LiteralV3TimingEventPCV_v3_TimingEvent = "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#PCV";
 
     /// <summary>
     /// Literal for code: AfterSleep_event_timing
@@ -381,8 +501,76 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAfterSleep_event_timing = "PHS";
 
     /// <summary>
+    /// Literal for code: EventTimingAfterSleep_event_timing
+    /// </summary>
+    public const string LiteralEventTimingAfterSleep_event_timing = "http://hl7.org/fhir/event-timing#PHS";
+
+    /// <summary>
     /// Literal for code: WAKE_v3_TimingEvent
     /// </summary>
     public const string LiteralWAKE_v3_TimingEvent = "WAKE";
+
+    /// <summary>
+    /// Literal for code: V3TimingEventWAKE_v3_TimingEvent
+    /// </summary>
+    public const string LiteralV3TimingEventWAKE_v3_TimingEvent = "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#WAKE";
+
+    /// <summary>
+    /// Dictionary for looking up EventTiming Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "AC", AC_v3_TimingEvent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#AC", AC_v3_TimingEvent }, 
+      { "ACD", ACD_v3_TimingEvent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#ACD", ACD_v3_TimingEvent }, 
+      { "ACM", ACM_v3_TimingEvent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#ACM", ACM_v3_TimingEvent }, 
+      { "ACV", ACV_v3_TimingEvent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#ACV", ACV_v3_TimingEvent }, 
+      { "AFT", Afternoon_event_timing }, 
+      { "http://hl7.org/fhir/event-timing#AFT", Afternoon_event_timing }, 
+      { "AFT.early", EarlyAfternoon_event_timing }, 
+      { "http://hl7.org/fhir/event-timing#AFT.early", EarlyAfternoon_event_timing }, 
+      { "AFT.late", LateAfternoon_event_timing }, 
+      { "http://hl7.org/fhir/event-timing#AFT.late", LateAfternoon_event_timing }, 
+      { "C", C_v3_TimingEvent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#C", C_v3_TimingEvent }, 
+      { "CD", CD_v3_TimingEvent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#CD", CD_v3_TimingEvent }, 
+      { "CM", CM_v3_TimingEvent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#CM", CM_v3_TimingEvent }, 
+      { "CV", CV_v3_TimingEvent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#CV", CV_v3_TimingEvent }, 
+      { "EVE", Evening_event_timing }, 
+      { "http://hl7.org/fhir/event-timing#EVE", Evening_event_timing }, 
+      { "EVE.early", EarlyEvening_event_timing }, 
+      { "http://hl7.org/fhir/event-timing#EVE.early", EarlyEvening_event_timing }, 
+      { "EVE.late", LateEvening_event_timing }, 
+      { "http://hl7.org/fhir/event-timing#EVE.late", LateEvening_event_timing }, 
+      { "HS", HS_v3_TimingEvent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#HS", HS_v3_TimingEvent }, 
+      { "MORN", Morning_event_timing }, 
+      { "http://hl7.org/fhir/event-timing#MORN", Morning_event_timing }, 
+      { "MORN.early", EarlyMorning_event_timing }, 
+      { "http://hl7.org/fhir/event-timing#MORN.early", EarlyMorning_event_timing }, 
+      { "MORN.late", LateMorning_event_timing }, 
+      { "http://hl7.org/fhir/event-timing#MORN.late", LateMorning_event_timing }, 
+      { "NIGHT", Night_event_timing }, 
+      { "http://hl7.org/fhir/event-timing#NIGHT", Night_event_timing }, 
+      { "NOON", Noon_event_timing }, 
+      { "http://hl7.org/fhir/event-timing#NOON", Noon_event_timing }, 
+      { "PC", PC_v3_TimingEvent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#PC", PC_v3_TimingEvent }, 
+      { "PCD", PCD_v3_TimingEvent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#PCD", PCD_v3_TimingEvent }, 
+      { "PCM", PCM_v3_TimingEvent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#PCM", PCM_v3_TimingEvent }, 
+      { "PCV", PCV_v3_TimingEvent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#PCV", PCV_v3_TimingEvent }, 
+      { "PHS", AfterSleep_event_timing }, 
+      { "http://hl7.org/fhir/event-timing#PHS", AfterSleep_event_timing }, 
+      { "WAKE", WAKE_v3_TimingEvent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-TimingEvent#WAKE", WAKE_v3_TimingEvent }, 
+    };
   };
 }

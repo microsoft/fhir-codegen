@@ -25,5 +25,18 @@ namespace fhirCsR5.ValueSets
     /// Literal for code: Complete
     /// </summary>
     public const string LiteralComplete = "complete";
+
+    /// <summary>
+    /// Literal for code: ContractActionstatusComplete
+    /// </summary>
+    public const string LiteralContractActionstatusComplete = "http://hl7.org/fhir/contract-action-status#complete";
+
+    /// <summary>
+    /// Dictionary for looking up ContractActionstatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", Complete }, 
+      { "http://hl7.org/fhir/contract-action-status#complete", Complete }, 
+    };
   };
 }

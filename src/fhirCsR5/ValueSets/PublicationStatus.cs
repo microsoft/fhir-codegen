@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: PublicationStatusActive
+    /// </summary>
+    public const string LiteralPublicationStatusActive = "http://hl7.org/fhir/publication-status#active";
+
+    /// <summary>
     /// Literal for code: Draft
     /// </summary>
     public const string LiteralDraft = "draft";
+
+    /// <summary>
+    /// Literal for code: PublicationStatusDraft
+    /// </summary>
+    public const string LiteralPublicationStatusDraft = "http://hl7.org/fhir/publication-status#draft";
 
     /// <summary>
     /// Literal for code: Retired
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRetired = "retired";
 
     /// <summary>
+    /// Literal for code: PublicationStatusRetired
+    /// </summary>
+    public const string LiteralPublicationStatusRetired = "http://hl7.org/fhir/publication-status#retired";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: PublicationStatusUnknown
+    /// </summary>
+    public const string LiteralPublicationStatusUnknown = "http://hl7.org/fhir/publication-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up PublicationStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/publication-status#active", Active }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/publication-status#draft", Draft }, 
+      { "retired", Retired }, 
+      { "http://hl7.org/fhir/publication-status#retired", Retired }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/publication-status#unknown", Unknown }, 
+    };
   };
 }

@@ -90,9 +90,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralComposite = "composite";
 
     /// <summary>
+    /// Literal for code: SearchParamTypeComposite
+    /// </summary>
+    public const string LiteralSearchParamTypeComposite = "http://hl7.org/fhir/search-param-type#composite";
+
+    /// <summary>
     /// Literal for code: DateDateTime
     /// </summary>
     public const string LiteralDateDateTime = "date";
+
+    /// <summary>
+    /// Literal for code: SearchParamTypeDateDateTime
+    /// </summary>
+    public const string LiteralSearchParamTypeDateDateTime = "http://hl7.org/fhir/search-param-type#date";
 
     /// <summary>
     /// Literal for code: Number
@@ -100,9 +110,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralNumber = "number";
 
     /// <summary>
+    /// Literal for code: SearchParamTypeNumber
+    /// </summary>
+    public const string LiteralSearchParamTypeNumber = "http://hl7.org/fhir/search-param-type#number";
+
+    /// <summary>
     /// Literal for code: Quantity
     /// </summary>
     public const string LiteralQuantity = "quantity";
+
+    /// <summary>
+    /// Literal for code: SearchParamTypeQuantity
+    /// </summary>
+    public const string LiteralSearchParamTypeQuantity = "http://hl7.org/fhir/search-param-type#quantity";
 
     /// <summary>
     /// Literal for code: Reference
@@ -110,9 +130,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralReference = "reference";
 
     /// <summary>
+    /// Literal for code: SearchParamTypeReference
+    /// </summary>
+    public const string LiteralSearchParamTypeReference = "http://hl7.org/fhir/search-param-type#reference";
+
+    /// <summary>
     /// Literal for code: String
     /// </summary>
     public const string LiteralString = "string";
+
+    /// <summary>
+    /// Literal for code: SearchParamTypeString
+    /// </summary>
+    public const string LiteralSearchParamTypeString = "http://hl7.org/fhir/search-param-type#string";
 
     /// <summary>
     /// Literal for code: Token
@@ -120,8 +150,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralToken = "token";
 
     /// <summary>
+    /// Literal for code: SearchParamTypeToken
+    /// </summary>
+    public const string LiteralSearchParamTypeToken = "http://hl7.org/fhir/search-param-type#token";
+
+    /// <summary>
     /// Literal for code: URI
     /// </summary>
     public const string LiteralURI = "uri";
+
+    /// <summary>
+    /// Literal for code: SearchParamTypeURI
+    /// </summary>
+    public const string LiteralSearchParamTypeURI = "http://hl7.org/fhir/search-param-type#uri";
+
+    /// <summary>
+    /// Dictionary for looking up SearchParamType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "composite", Composite }, 
+      { "http://hl7.org/fhir/search-param-type#composite", Composite }, 
+      { "date", DateDateTime }, 
+      { "http://hl7.org/fhir/search-param-type#date", DateDateTime }, 
+      { "number", Number }, 
+      { "http://hl7.org/fhir/search-param-type#number", Number }, 
+      { "quantity", Quantity }, 
+      { "http://hl7.org/fhir/search-param-type#quantity", Quantity }, 
+      { "reference", Reference }, 
+      { "http://hl7.org/fhir/search-param-type#reference", Reference }, 
+      { "string", String }, 
+      { "http://hl7.org/fhir/search-param-type#string", String }, 
+      { "token", Token }, 
+      { "http://hl7.org/fhir/search-param-type#token", Token }, 
+      { "uri", URI }, 
+      { "http://hl7.org/fhir/search-param-type#uri", URI }, 
+    };
   };
 }

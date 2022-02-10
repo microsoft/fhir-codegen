@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAssessment = "assessment";
 
     /// <summary>
+    /// Literal for code: DefinitionTopicAssessment
+    /// </summary>
+    public const string LiteralDefinitionTopicAssessment = "http://hl7.org/fhir/definition-topic#assessment";
+
+    /// <summary>
     /// Literal for code: Education
     /// </summary>
     public const string LiteralEducation = "education";
 
     /// <summary>
+    /// Literal for code: DefinitionTopicEducation
+    /// </summary>
+    public const string LiteralDefinitionTopicEducation = "http://hl7.org/fhir/definition-topic#education";
+
+    /// <summary>
     /// Literal for code: Treatment
     /// </summary>
     public const string LiteralTreatment = "treatment";
+
+    /// <summary>
+    /// Literal for code: DefinitionTopicTreatment
+    /// </summary>
+    public const string LiteralDefinitionTopicTreatment = "http://hl7.org/fhir/definition-topic#treatment";
+
+    /// <summary>
+    /// Dictionary for looking up DefinitionTopic Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "assessment", Assessment }, 
+      { "http://hl7.org/fhir/definition-topic#assessment", Assessment }, 
+      { "education", Education }, 
+      { "http://hl7.org/fhir/definition-topic#education", Education }, 
+      { "treatment", Treatment }, 
+      { "http://hl7.org/fhir/definition-topic#treatment", Treatment }, 
+    };
   };
 }

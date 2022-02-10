@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOption = "option";
 
     /// <summary>
+    /// Literal for code: RequestIntentOption
+    /// </summary>
+    public const string LiteralRequestIntentOption = "http://hl7.org/fhir/request-intent#option";
+
+    /// <summary>
     /// Literal for code: Order
     /// </summary>
     public const string LiteralOrder = "order";
+
+    /// <summary>
+    /// Literal for code: RequestIntentOrder
+    /// </summary>
+    public const string LiteralRequestIntentOrder = "http://hl7.org/fhir/request-intent#order";
 
     /// <summary>
     /// Literal for code: Plan
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlan = "plan";
 
     /// <summary>
+    /// Literal for code: RequestIntentPlan
+    /// </summary>
+    public const string LiteralRequestIntentPlan = "http://hl7.org/fhir/request-intent#plan";
+
+    /// <summary>
     /// Literal for code: Proposal
     /// </summary>
     public const string LiteralProposal = "proposal";
+
+    /// <summary>
+    /// Literal for code: RequestIntentProposal
+    /// </summary>
+    public const string LiteralRequestIntentProposal = "http://hl7.org/fhir/request-intent#proposal";
+
+    /// <summary>
+    /// Dictionary for looking up CarePlanIntent Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "option", Option }, 
+      { "http://hl7.org/fhir/request-intent#option", Option }, 
+      { "order", Order }, 
+      { "http://hl7.org/fhir/request-intent#order", Order }, 
+      { "plan", Plan }, 
+      { "http://hl7.org/fhir/request-intent#plan", Plan }, 
+      { "proposal", Proposal }, 
+      { "http://hl7.org/fhir/request-intent#proposal", Proposal }, 
+    };
   };
 }

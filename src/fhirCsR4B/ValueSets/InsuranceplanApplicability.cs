@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class InsuranceplanApplicabilityCodes
   {
     /// <summary>
-    /// 
+    /// In Network
     /// </summary>
     public static readonly Coding InNetwork = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/applicability"
     };
     /// <summary>
-    /// 
+    /// Other
     /// </summary>
     public static readonly Coding Other = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/applicability"
     };
     /// <summary>
-    /// 
+    /// Out of Network
     /// </summary>
     public static readonly Coding OutOfNetwork = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInNetwork = "in-network";
 
     /// <summary>
+    /// Literal for code: ApplicabilityInNetwork
+    /// </summary>
+    public const string LiteralApplicabilityInNetwork = "http://terminology.hl7.org/CodeSystem/applicability#in-network";
+
+    /// <summary>
     /// Literal for code: Other
     /// </summary>
     public const string LiteralOther = "other";
 
     /// <summary>
+    /// Literal for code: ApplicabilityOther
+    /// </summary>
+    public const string LiteralApplicabilityOther = "http://terminology.hl7.org/CodeSystem/applicability#other";
+
+    /// <summary>
     /// Literal for code: OutOfNetwork
     /// </summary>
     public const string LiteralOutOfNetwork = "out-of-network";
+
+    /// <summary>
+    /// Literal for code: ApplicabilityOutOfNetwork
+    /// </summary>
+    public const string LiteralApplicabilityOutOfNetwork = "http://terminology.hl7.org/CodeSystem/applicability#out-of-network";
+
+    /// <summary>
+    /// Dictionary for looking up InsuranceplanApplicability Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "in-network", InNetwork }, 
+      { "http://terminology.hl7.org/CodeSystem/applicability#in-network", InNetwork }, 
+      { "other", Other }, 
+      { "http://terminology.hl7.org/CodeSystem/applicability#other", Other }, 
+      { "out-of-network", OutOfNetwork }, 
+      { "http://terminology.hl7.org/CodeSystem/applicability#out-of-network", OutOfNetwork }, 
+    };
   };
 }

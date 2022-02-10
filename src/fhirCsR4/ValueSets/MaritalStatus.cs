@@ -124,9 +124,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnnulled_v3_MaritalStatus = "A";
 
     /// <summary>
+    /// Literal for code: V3MaritalStatusAnnulled_v3_MaritalStatus
+    /// </summary>
+    public const string LiteralV3MaritalStatusAnnulled_v3_MaritalStatus = "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#A";
+
+    /// <summary>
     /// Literal for code: Divorced_v3_MaritalStatus
     /// </summary>
     public const string LiteralDivorced_v3_MaritalStatus = "D";
+
+    /// <summary>
+    /// Literal for code: V3MaritalStatusDivorced_v3_MaritalStatus
+    /// </summary>
+    public const string LiteralV3MaritalStatusDivorced_v3_MaritalStatus = "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#D";
 
     /// <summary>
     /// Literal for code: Interlocutory_v3_MaritalStatus
@@ -134,9 +144,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInterlocutory_v3_MaritalStatus = "I";
 
     /// <summary>
+    /// Literal for code: V3MaritalStatusInterlocutory_v3_MaritalStatus
+    /// </summary>
+    public const string LiteralV3MaritalStatusInterlocutory_v3_MaritalStatus = "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#I";
+
+    /// <summary>
     /// Literal for code: LegallySeparated_v3_MaritalStatus
     /// </summary>
     public const string LiteralLegallySeparated_v3_MaritalStatus = "L";
+
+    /// <summary>
+    /// Literal for code: V3MaritalStatusLegallySeparated_v3_MaritalStatus
+    /// </summary>
+    public const string LiteralV3MaritalStatusLegallySeparated_v3_MaritalStatus = "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#L";
 
     /// <summary>
     /// Literal for code: Married_v3_MaritalStatus
@@ -144,9 +164,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMarried_v3_MaritalStatus = "M";
 
     /// <summary>
+    /// Literal for code: V3MaritalStatusMarried_v3_MaritalStatus
+    /// </summary>
+    public const string LiteralV3MaritalStatusMarried_v3_MaritalStatus = "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#M";
+
+    /// <summary>
     /// Literal for code: Polygamous_v3_MaritalStatus
     /// </summary>
     public const string LiteralPolygamous_v3_MaritalStatus = "P";
+
+    /// <summary>
+    /// Literal for code: V3MaritalStatusPolygamous_v3_MaritalStatus
+    /// </summary>
+    public const string LiteralV3MaritalStatusPolygamous_v3_MaritalStatus = "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#P";
 
     /// <summary>
     /// Literal for code: NeverMarried_v3_MaritalStatus
@@ -154,9 +184,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeverMarried_v3_MaritalStatus = "S";
 
     /// <summary>
+    /// Literal for code: V3MaritalStatusNeverMarried_v3_MaritalStatus
+    /// </summary>
+    public const string LiteralV3MaritalStatusNeverMarried_v3_MaritalStatus = "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#S";
+
+    /// <summary>
     /// Literal for code: DomesticPartner_v3_MaritalStatus
     /// </summary>
     public const string LiteralDomesticPartner_v3_MaritalStatus = "T";
+
+    /// <summary>
+    /// Literal for code: V3MaritalStatusDomesticPartner_v3_MaritalStatus
+    /// </summary>
+    public const string LiteralV3MaritalStatusDomesticPartner_v3_MaritalStatus = "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#T";
 
     /// <summary>
     /// Literal for code: Unmarried_v3_MaritalStatus
@@ -164,13 +204,56 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnmarried_v3_MaritalStatus = "U";
 
     /// <summary>
+    /// Literal for code: V3MaritalStatusUnmarried_v3_MaritalStatus
+    /// </summary>
+    public const string LiteralV3MaritalStatusUnmarried_v3_MaritalStatus = "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#U";
+
+    /// <summary>
     /// Literal for code: Unknown_v3_NullFlavor
     /// </summary>
     public const string LiteralUnknown_v3_NullFlavor = "UNK";
 
     /// <summary>
+    /// Literal for code: V3NullFlavorUnknown_v3_NullFlavor
+    /// </summary>
+    public const string LiteralV3NullFlavorUnknown_v3_NullFlavor = "http://terminology.hl7.org/CodeSystem/v3-NullFlavor#UNK";
+
+    /// <summary>
     /// Literal for code: Widowed_v3_MaritalStatus
     /// </summary>
     public const string LiteralWidowed_v3_MaritalStatus = "W";
+
+    /// <summary>
+    /// Literal for code: V3MaritalStatusWidowed_v3_MaritalStatus
+    /// </summary>
+    public const string LiteralV3MaritalStatusWidowed_v3_MaritalStatus = "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#W";
+
+    /// <summary>
+    /// Dictionary for looking up MaritalStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "A", Annulled_v3_MaritalStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#A", Annulled_v3_MaritalStatus }, 
+      { "D", Divorced_v3_MaritalStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#D", Divorced_v3_MaritalStatus }, 
+      { "I", Interlocutory_v3_MaritalStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#I", Interlocutory_v3_MaritalStatus }, 
+      { "L", LegallySeparated_v3_MaritalStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#L", LegallySeparated_v3_MaritalStatus }, 
+      { "M", Married_v3_MaritalStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#M", Married_v3_MaritalStatus }, 
+      { "P", Polygamous_v3_MaritalStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#P", Polygamous_v3_MaritalStatus }, 
+      { "S", NeverMarried_v3_MaritalStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#S", NeverMarried_v3_MaritalStatus }, 
+      { "T", DomesticPartner_v3_MaritalStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#T", DomesticPartner_v3_MaritalStatus }, 
+      { "U", Unmarried_v3_MaritalStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#U", Unmarried_v3_MaritalStatus }, 
+      { "UNK", Unknown_v3_NullFlavor }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-NullFlavor#UNK", Unknown_v3_NullFlavor }, 
+      { "W", Widowed_v3_MaritalStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus#W", Widowed_v3_MaritalStatus }, 
+    };
   };
 }

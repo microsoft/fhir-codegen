@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdjustment = "adjustment";
 
     /// <summary>
+    /// Literal for code: PaymentTypeAdjustment
+    /// </summary>
+    public const string LiteralPaymentTypeAdjustment = "http://hl7.org/fhir/payment-type#adjustment";
+
+    /// <summary>
     /// Literal for code: Advance
     /// </summary>
     public const string LiteralAdvance = "advance";
 
     /// <summary>
+    /// Literal for code: PaymentTypeAdvance
+    /// </summary>
+    public const string LiteralPaymentTypeAdvance = "http://hl7.org/fhir/payment-type#advance";
+
+    /// <summary>
     /// Literal for code: Payment
     /// </summary>
     public const string LiteralPayment = "payment";
+
+    /// <summary>
+    /// Literal for code: PaymentTypePayment
+    /// </summary>
+    public const string LiteralPaymentTypePayment = "http://hl7.org/fhir/payment-type#payment";
+
+    /// <summary>
+    /// Dictionary for looking up PaymentType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "adjustment", Adjustment }, 
+      { "http://hl7.org/fhir/payment-type#adjustment", Adjustment }, 
+      { "advance", Advance }, 
+      { "http://hl7.org/fhir/payment-type#advance", Advance }, 
+      { "payment", Payment }, 
+      { "http://hl7.org/fhir/payment-type#payment", Payment }, 
+    };
   };
 }

@@ -498,5 +498,14 @@ namespace fhirCsR2.Models
     public const string ACCEPTED = "accepted";
     public const string REJECTED = "rejected";
     public const string COMPLETED = "completed";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "requested",
+      "active",
+      "cancelled",
+      "accepted",
+      "rejected",
+      "completed",
+    };
   }
 }

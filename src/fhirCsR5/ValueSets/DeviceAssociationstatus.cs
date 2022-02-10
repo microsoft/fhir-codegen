@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAttached = "attached";
 
     /// <summary>
+    /// Literal for code: DeviceAssociationstatusAttached
+    /// </summary>
+    public const string LiteralDeviceAssociationstatusAttached = "http://hl7.org/fhir/device-associationstatus#attached";
+
+    /// <summary>
     /// Literal for code: Explanted
     /// </summary>
     public const string LiteralExplanted = "explanted";
+
+    /// <summary>
+    /// Literal for code: DeviceAssociationstatusExplanted
+    /// </summary>
+    public const string LiteralDeviceAssociationstatusExplanted = "http://hl7.org/fhir/device-associationstatus#explanted";
 
     /// <summary>
     /// Literal for code: Implanted
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralImplanted = "implanted";
 
     /// <summary>
+    /// Literal for code: DeviceAssociationstatusImplanted
+    /// </summary>
+    public const string LiteralDeviceAssociationstatusImplanted = "http://hl7.org/fhir/device-associationstatus#implanted";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: DeviceAssociationstatusUnknown
+    /// </summary>
+    public const string LiteralDeviceAssociationstatusUnknown = "http://hl7.org/fhir/device-associationstatus#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up DeviceAssociationstatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "attached", Attached }, 
+      { "http://hl7.org/fhir/device-associationstatus#attached", Attached }, 
+      { "explanted", Explanted }, 
+      { "http://hl7.org/fhir/device-associationstatus#explanted", Explanted }, 
+      { "implanted", Implanted }, 
+      { "http://hl7.org/fhir/device-associationstatus#implanted", Implanted }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/device-associationstatus#unknown", Unknown }, 
+    };
   };
 }

@@ -36,8 +36,28 @@ namespace fhirCsR2.ValueSets
     public const string LiteralIn = "in";
 
     /// <summary>
+    /// Literal for code: OperationParameterUseIn
+    /// </summary>
+    public const string LiteralOperationParameterUseIn = "http://hl7.org/fhir/operation-parameter-use#in";
+
+    /// <summary>
     /// Literal for code: Out
     /// </summary>
     public const string LiteralOut = "out";
+
+    /// <summary>
+    /// Literal for code: OperationParameterUseOut
+    /// </summary>
+    public const string LiteralOperationParameterUseOut = "http://hl7.org/fhir/operation-parameter-use#out";
+
+    /// <summary>
+    /// Dictionary for looking up OperationParameterUse Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "in", In }, 
+      { "http://hl7.org/fhir/operation-parameter-use#in", In }, 
+      { "out", Out }, 
+      { "http://hl7.org/fhir/operation-parameter-use#out", Out }, 
+    };
   };
 }

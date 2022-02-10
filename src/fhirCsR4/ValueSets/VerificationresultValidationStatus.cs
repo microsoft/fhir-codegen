@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class VerificationresultValidationStatusCodes
   {
     /// <summary>
-    /// 
+    /// Failed
     /// </summary>
     public static readonly Coding Failed = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/validation-status"
     };
     /// <summary>
-    /// 
+    /// Successful
     /// </summary>
     public static readonly Coding Successful = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFailed = "failed";
 
     /// <summary>
+    /// Literal for code: VerificationresultValidationStatusFailed
+    /// </summary>
+    public const string LiteralVerificationresultValidationStatusFailed = "http://terminology.hl7.org/CodeSystem/validation-status#failed";
+
+    /// <summary>
     /// Literal for code: Successful
     /// </summary>
     public const string LiteralSuccessful = "successful";
 
     /// <summary>
+    /// Literal for code: VerificationresultValidationStatusSuccessful
+    /// </summary>
+    public const string LiteralVerificationresultValidationStatusSuccessful = "http://terminology.hl7.org/CodeSystem/validation-status#successful";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: VerificationresultValidationStatusUnknown
+    /// </summary>
+    public const string LiteralVerificationresultValidationStatusUnknown = "http://terminology.hl7.org/CodeSystem/validation-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up VerificationresultValidationStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "failed", Failed }, 
+      { "http://terminology.hl7.org/CodeSystem/validation-status#failed", Failed }, 
+      { "successful", Successful }, 
+      { "http://terminology.hl7.org/CodeSystem/validation-status#successful", Successful }, 
+      { "unknown", Unknown }, 
+      { "http://terminology.hl7.org/CodeSystem/validation-status#unknown", Unknown }, 
+    };
   };
 }

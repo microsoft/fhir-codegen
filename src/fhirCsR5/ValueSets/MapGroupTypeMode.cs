@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDefaultForTypePlusCombination = "type-and-types";
 
     /// <summary>
+    /// Literal for code: MapGroupTypeModeDefaultForTypePlusCombination
+    /// </summary>
+    public const string LiteralMapGroupTypeModeDefaultForTypePlusCombination = "http://hl7.org/fhir/map-group-type-mode#type-and-types";
+
+    /// <summary>
     /// Literal for code: DefaultForTypeCombination
     /// </summary>
     public const string LiteralDefaultForTypeCombination = "types";
+
+    /// <summary>
+    /// Literal for code: MapGroupTypeModeDefaultForTypeCombination
+    /// </summary>
+    public const string LiteralMapGroupTypeModeDefaultForTypeCombination = "http://hl7.org/fhir/map-group-type-mode#types";
+
+    /// <summary>
+    /// Dictionary for looking up MapGroupTypeMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "type-and-types", DefaultForTypePlusCombination }, 
+      { "http://hl7.org/fhir/map-group-type-mode#type-and-types", DefaultForTypePlusCombination }, 
+      { "types", DefaultForTypeCombination }, 
+      { "http://hl7.org/fhir/map-group-type-mode#types", DefaultForTypeCombination }, 
+    };
   };
 }

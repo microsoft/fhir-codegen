@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class ReasonMedicationStatusCodesCodes
   {
     /// <summary>
-    /// 
+    /// Long-term current use of mycophenolate
     /// </summary>
     public static readonly Coding LongTermCurrentUseOfMycophenolate = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long-term current use of cyclophosphamide
     /// </summary>
     public static readonly Coding LongTermCurrentUseOfCyclophosphamide = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long-term current use of infliximab
     /// </summary>
     public static readonly Coding LongTermCurrentUseOfInfliximab = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long-term current use of etanercept
     /// </summary>
     public static readonly Coding LongTermCurrentUseOfEtanercept = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long term current use of non-steroidal anti-inflammatory drug
     /// </summary>
     public static readonly Coding LongTermCurrentUseOfNonSteroidalAntiInflammatoryDrug = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiotensin converting enzyme inhibitor not indicated
     /// </summary>
     public static readonly Coding AngiotensinConvertingEnzymeInhibitorNotIndicated = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiotensin converting enzyme inhibitor declined
     /// </summary>
     public static readonly Coding AngiotensinConvertingEnzymeInhibitorDeclined = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// History of estrogen therapy
     /// </summary>
     public static readonly Coding HistoryOfEstrogenTherapy = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// History of systemic steroid therapy
     /// </summary>
     public static readonly Coding HistoryOfSystemicSteroidTherapy = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiotensin converting enzyme inhibitor indicated
     /// </summary>
     public static readonly Coding AngiotensinConvertingEnzymeInhibitorIndicated = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long-term current use of azathioprine
     /// </summary>
     public static readonly Coding LongTermCurrentUseOfAzathioprine = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// H/O: high risk medication
     /// </summary>
     public static readonly Coding HOHighRiskMedication = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// H/O: anticoagulant therapy
     /// </summary>
     public static readonly Coding HOAnticoagulantTherapy = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// H/O: steroid therapy
     /// </summary>
     public static readonly Coding HOSteroidTherapy = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// H/O: insulin therapy
     /// </summary>
     public static readonly Coding HOInsulinTherapy = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// H/O: anticonvulsant therapy
     /// </summary>
     public static readonly Coding HOAnticonvulsantTherapy = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// H/O: hormone replacement (HRT)
     /// </summary>
     public static readonly Coding HOHormoneReplacementHRT = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// H/O: chemotherapy
     /// </summary>
     public static readonly Coding HOChemotherapy = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral steroids started
     /// </summary>
     public static readonly Coding OralSteroidsStarted = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral steroids stopped
     /// </summary>
     public static readonly Coding OralSteroidsStopped = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lithium stopped
     /// </summary>
     public static readonly Coding LithiumStopped = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injectable phenothiazine stopped
     /// </summary>
     public static readonly Coding InjectablePhenothiazineStopped = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// B12 injections started
     /// </summary>
     public static readonly Coding B12InjectionsStarted = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// B12 injections stopped
     /// </summary>
     public static readonly Coding B12InjectionsStopped = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Warfarin therapy stopped
     /// </summary>
     public static readonly Coding WarfarinTherapyStopped = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hormone replacement therapy (HRT) contraindicated
     /// </summary>
     public static readonly Coding HormoneReplacementTherapyHRTContraindicated = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hormone replacement therapy (HRT) started
     /// </summary>
     public static readonly Coding HormoneReplacementTherapyHRTStarted = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hormonal replacement therapy (HRT) stopped
     /// </summary>
     public static readonly Coding HormonalReplacementTherapyHRTStopped = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug course completed
     /// </summary>
     public static readonly Coding DrugCourseCompleted = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug treatment stopped - medical advice
     /// </summary>
     public static readonly Coding DrugTreatmentStoppedMedicalAdvice = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dr stopped drugs - ineffective
     /// </summary>
     public static readonly Coding DrStoppedDrugsIneffective = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doctor stopped drugs - side effect
     /// </summary>
     public static readonly Coding DoctorStoppedDrugsSideEffect = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dr stopped drugs -inconvenient
     /// </summary>
     public static readonly Coding DrStoppedDrugsInconvenient = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doctor stopped drugs - patient dislikes
     /// </summary>
     public static readonly Coding DoctorStoppedDrugsPatientDislikes = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doctor stopped drugs - avoid interaction
     /// </summary>
     public static readonly Coding DoctorStoppedDrugsAvoidInteraction = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doctor stopped drugs - medical aim achieved
     /// </summary>
     public static readonly Coding DoctorStoppedDrugsMedicalAimAchieved = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug not taken - dislike taste
     /// </summary>
     public static readonly Coding DrugNotTakenDislikeTaste = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug not taken - dislike form
     /// </summary>
     public static readonly Coding DrugNotTakenDislikeForm = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug not taken - side-effects
     /// </summary>
     public static readonly Coding DrugNotTakenSideEffects = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug not taken - inconvenient
     /// </summary>
     public static readonly Coding DrugNotTakenInconvenient = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug not taken - pat disbelief
     /// </summary>
     public static readonly Coding DrugNotTakenPatDisbelief = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Treatment stopped - alternative therapy undertaken
     /// </summary>
     public static readonly Coding TreatmentStoppedAlternativeTherapyUndertaken = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug not taken - patient lost tablets
     /// </summary>
     public static readonly Coding DrugNotTakenPatientLostTablets = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug discontinued - reason unknown
     /// </summary>
     public static readonly Coding DrugDiscontinuedReasonUnknown = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug discontinued - patient fear/risk
     /// </summary>
     public static readonly Coding DrugDiscontinuedPatientFearRisk = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug discontinued - too expensive
     /// </summary>
     public static readonly Coding DrugDiscontinuedTooExpensive = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug treatment stopped - patient ran out of tablets
     /// </summary>
     public static readonly Coding DrugTreatmentStoppedPatientRanOutOfTablets = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Treatment stopped - patient unable to concentrate
     /// </summary>
     public static readonly Coding TreatmentStoppedPatientUnableToConcentrate = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug not taken - problem swallowing
     /// </summary>
     public static readonly Coding DrugNotTakenProblemSwallowing = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug therapy discontinued
     /// </summary>
     public static readonly Coding DrugTherapyDiscontinued = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tablets too large to swallow
     /// </summary>
     public static readonly Coding TabletsTooLargeToSwallow = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thyroxine treatment stopped
     /// </summary>
     public static readonly Coding ThyroxineTreatmentStopped = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aspirin prophylaxis contra-indicated
     /// </summary>
     public static readonly Coding AspirinProphylaxisContraIndicated = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aspirin prophylaxis refused
     /// </summary>
     public static readonly Coding AspirinProphylaxisRefused = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beta blocker contraindicated
     /// </summary>
     public static readonly Coding BetaBlockerContraindicated = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiotensin converting enzyme inhibitors contraindicated
     /// </summary>
     public static readonly Coding AngiotensinConvertingEnzymeInhibitorsContraindicated = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thrombolytic therapy refused
     /// </summary>
     public static readonly Coding ThrombolyticTherapyRefused = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antibiotic prophylaxis recommended
     /// </summary>
     public static readonly Coding AntibioticProphylaxisRecommended = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antibiotic prophylaxis not recommended
     /// </summary>
     public static readonly Coding AntibioticProphylaxisNotRecommended = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hormone replacement therapy requested
     /// </summary>
     public static readonly Coding HormoneReplacementTherapyRequested = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiotensin II receptor antagonists contraindicated
     /// </summary>
     public static readonly Coding AngiotensinIIReceptorAntagonistsContraindicated = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medication stopped - interaction
     /// </summary>
     public static readonly Coding MedicationStoppedInteraction = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medication stopped - ineffective
     /// </summary>
     public static readonly Coding MedicationStoppedIneffective = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medication stopped - contra-indication
     /// </summary>
     public static readonly Coding MedicationStoppedContraIndication = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medication stopped - side effect
     /// </summary>
     public static readonly Coding MedicationStoppedSideEffect = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiotensin II receptor antagonist declined
     /// </summary>
     public static readonly Coding AngiotensinIIReceptorAntagonistDeclined = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// H/O: prolonged corticosteroid therapy
     /// </summary>
     public static readonly Coding HOProlongedCorticosteroidTherapy = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiotensin II receptor antagonist not indicated
     /// </summary>
     public static readonly Coding AngiotensinIIReceptorAntagonistNotIndicated = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thrombolysis therapy not indicated
     /// </summary>
     public static readonly Coding ThrombolysisTherapyNotIndicated = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug treatment still needed
     /// </summary>
     public static readonly Coding DrugTreatmentStillNeeded = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug treatment no longer needed
     /// </summary>
     public static readonly Coding DrugTreatmentNoLongerNeeded = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inappropriate medication stopped
     /// </summary>
     public static readonly Coding InappropriateMedicationStopped = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antibiotic prophylaxis indicated
     /// </summary>
     public static readonly Coding AntibioticProphylaxisIndicated = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anticoagulation contraindicated
     /// </summary>
     public static readonly Coding AnticoagulationContraindicated = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anticoagulation declined
     /// </summary>
     public static readonly Coding AnticoagulationDeclined = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anticoagulation not indicated
     /// </summary>
     public static readonly Coding AnticoagulationNotIndicated = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiotensin converting enzyme inhibitor target dose not achieved
     /// </summary>
     public static readonly Coding AngiotensinConvertingEnzymeInhibitorTargetDoseNotAchieved = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deferred antibiotic therapy
     /// </summary>
     public static readonly Coding DeferredAntibioticTherapy = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug treatment stopped at end of clinical trial
     /// </summary>
     public static readonly Coding DrugTreatmentStoppedAtEndOfClinicalTrial = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// H/O: drug therapy
     /// </summary>
     public static readonly Coding HODrugTherapy = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// H/O: statin therapy
     /// </summary>
     public static readonly Coding HOStatinTherapy = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// H/O: beta blocker therapy
     /// </summary>
     public static readonly Coding HOBetaBlockerTherapy = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// H/O: nitrate therapy
     /// </summary>
     public static readonly Coding HONitrateTherapy = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// H/O: antiplatelet agent therapy
     /// </summary>
     public static readonly Coding HOAntiplateletAgentTherapy = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// H/O: angiotensin converting enzyme (ACE) inhibitor therapy
     /// </summary>
     public static readonly Coding HOAngiotensinConvertingEnzymeACEInhibitorTherapy = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// H/O: angiotensin II receptor antagonist therapy
     /// </summary>
     public static readonly Coding HOAngiotensinIIReceptorAntagonistTherapy = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// History of therapy with ototoxic medication
     /// </summary>
     public static readonly Coding HistoryOfTherapyWithOtotoxicMedication = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// History of tuberculosis chemotherapy
     /// </summary>
     public static readonly Coding HistoryOfTuberculosisChemotherapy = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiotensin II receptor antagonist indicated
     /// </summary>
     public static readonly Coding AngiotensinIIReceptorAntagonistIndicated = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antibiotic therapy indicated
     /// </summary>
     public static readonly Coding AntibioticTherapyIndicated = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antidepressant drug treatment stopped
     /// </summary>
     public static readonly Coding AntidepressantDrugTreatmentStopped = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antiviral therapy declined
     /// </summary>
     public static readonly Coding AntiviralTherapyDeclined = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bisoprolol contraindicated
     /// </summary>
     public static readonly Coding BisoprololContraindicated = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nebivolol therapy refused
     /// </summary>
     public static readonly Coding NebivololTherapyRefused = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long term dual antiplatelet drug therapy indicated
     /// </summary>
     public static readonly Coding LongTermDualAntiplateletDrugTherapyIndicated = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// History of fenfluramine therapy
     /// </summary>
     public static readonly Coding HistoryOfFenfluramineTherapy = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carvedilol therapy declined
     /// </summary>
     public static readonly Coding CarvedilolTherapyDeclined = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bisphosphonate prophylaxis suspended
     /// </summary>
     public static readonly Coding BisphosphonateProphylaxisSuspended = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antibiotic prophylaxis not indicated
     /// </summary>
     public static readonly Coding AntibioticProphylaxisNotIndicated = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incretin mimetic therapy started
     /// </summary>
     public static readonly Coding IncretinMimeticTherapyStarted = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Teriparatide therapy declined
     /// </summary>
     public static readonly Coding TeriparatideTherapyDeclined = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Raloxifene therapy declined
     /// </summary>
     public static readonly Coding RaloxifeneTherapyDeclined = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Teriparatide not indicated
     /// </summary>
     public static readonly Coding TeriparatideNotIndicated = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Teriparatide contraindicated
     /// </summary>
     public static readonly Coding TeriparatideContraindicated = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Raloxifene contraindicated
     /// </summary>
     public static readonly Coding RaloxifeneContraindicated = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Raloxifene not indicated
     /// </summary>
     public static readonly Coding RaloxifeneNotIndicated = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phosphodiesterase 5 inhibitor not indicated
     /// </summary>
     public static readonly Coding Phosphodiesterase5InhibitorNotIndicated = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phosphodiesterase 5 inhibitor declined
     /// </summary>
     public static readonly Coding Phosphodiesterase5InhibitorDeclined = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phosphodiesterase-5 inhibitor contraindicated
     /// </summary>
     public static readonly Coding Phosphodiesterase5InhibitorContraindicated = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insulin treatment stopped
     /// </summary>
     public static readonly Coding InsulinTreatmentStopped = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long-term current use of immunosuppressive drug
     /// </summary>
     public static readonly Coding LongTermCurrentUseOfImmunosuppressiveDrug = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long-term current use of drug therapy
     /// </summary>
     public static readonly Coding LongTermCurrentUseOfDrugTherapy = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long-term current use of insulin
     /// </summary>
     public static readonly Coding LongTermCurrentUseOfInsulin = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long-term current use of steroid
     /// </summary>
     public static readonly Coding LongTermCurrentUseOfSteroid = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long-term current use of inhaled steroid
     /// </summary>
     public static readonly Coding LongTermCurrentUseOfInhaledSteroid = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long-term current use of antibiotic
     /// </summary>
     public static readonly Coding LongTermCurrentUseOfAntibiotic = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long-term current use of anticoagulant
     /// </summary>
     public static readonly Coding LongTermCurrentUseOfAnticoagulant = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral steroids used since last encounter
     /// </summary>
     public static readonly Coding OralSteroidsUsedSinceLastEncounter = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhaled steroids used daily
     /// </summary>
     public static readonly Coding InhaledSteroidsUsedDaily = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chemotherapy not done
     /// </summary>
     public static readonly Coding ChemotherapyNotDone = new Coding
     {
@@ -1098,9 +1098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLongTermCurrentUseOfMycophenolate = "106511000119106";
 
     /// <summary>
+    /// Literal for code: NONELongTermCurrentUseOfMycophenolate
+    /// </summary>
+    public const string LiteralNONELongTermCurrentUseOfMycophenolate = "http://snomed.info/sct#106511000119106";
+
+    /// <summary>
     /// Literal for code: LongTermCurrentUseOfCyclophosphamide
     /// </summary>
     public const string LiteralLongTermCurrentUseOfCyclophosphamide = "106521000119104";
+
+    /// <summary>
+    /// Literal for code: NONELongTermCurrentUseOfCyclophosphamide
+    /// </summary>
+    public const string LiteralNONELongTermCurrentUseOfCyclophosphamide = "http://snomed.info/sct#106521000119104";
 
     /// <summary>
     /// Literal for code: LongTermCurrentUseOfInfliximab
@@ -1108,9 +1118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLongTermCurrentUseOfInfliximab = "106631000119102";
 
     /// <summary>
+    /// Literal for code: NONELongTermCurrentUseOfInfliximab
+    /// </summary>
+    public const string LiteralNONELongTermCurrentUseOfInfliximab = "http://snomed.info/sct#106631000119102";
+
+    /// <summary>
     /// Literal for code: LongTermCurrentUseOfEtanercept
     /// </summary>
     public const string LiteralLongTermCurrentUseOfEtanercept = "106691000119103";
+
+    /// <summary>
+    /// Literal for code: NONELongTermCurrentUseOfEtanercept
+    /// </summary>
+    public const string LiteralNONELongTermCurrentUseOfEtanercept = "http://snomed.info/sct#106691000119103";
 
     /// <summary>
     /// Literal for code: LongTermCurrentUseOfNonSteroidalAntiInflammatoryDrug
@@ -1118,9 +1138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLongTermCurrentUseOfNonSteroidalAntiInflammatoryDrug = "133621000119103";
 
     /// <summary>
+    /// Literal for code: NONELongTermCurrentUseOfNonSteroidalAntiInflammatoryDrug
+    /// </summary>
+    public const string LiteralNONELongTermCurrentUseOfNonSteroidalAntiInflammatoryDrug = "http://snomed.info/sct#133621000119103";
+
+    /// <summary>
     /// Literal for code: AngiotensinConvertingEnzymeInhibitorNotIndicated
     /// </summary>
     public const string LiteralAngiotensinConvertingEnzymeInhibitorNotIndicated = "134390006";
+
+    /// <summary>
+    /// Literal for code: NONEAngiotensinConvertingEnzymeInhibitorNotIndicated
+    /// </summary>
+    public const string LiteralNONEAngiotensinConvertingEnzymeInhibitorNotIndicated = "http://snomed.info/sct#134390006";
 
     /// <summary>
     /// Literal for code: AngiotensinConvertingEnzymeInhibitorDeclined
@@ -1128,9 +1158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAngiotensinConvertingEnzymeInhibitorDeclined = "134397009";
 
     /// <summary>
+    /// Literal for code: NONEAngiotensinConvertingEnzymeInhibitorDeclined
+    /// </summary>
+    public const string LiteralNONEAngiotensinConvertingEnzymeInhibitorDeclined = "http://snomed.info/sct#134397009";
+
+    /// <summary>
     /// Literal for code: HistoryOfEstrogenTherapy
     /// </summary>
     public const string LiteralHistoryOfEstrogenTherapy = "134651000119108";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfEstrogenTherapy
+    /// </summary>
+    public const string LiteralNONEHistoryOfEstrogenTherapy = "http://snomed.info/sct#134651000119108";
 
     /// <summary>
     /// Literal for code: HistoryOfSystemicSteroidTherapy
@@ -1138,9 +1178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistoryOfSystemicSteroidTherapy = "134671000119104";
 
     /// <summary>
+    /// Literal for code: NONEHistoryOfSystemicSteroidTherapy
+    /// </summary>
+    public const string LiteralNONEHistoryOfSystemicSteroidTherapy = "http://snomed.info/sct#134671000119104";
+
+    /// <summary>
     /// Literal for code: AngiotensinConvertingEnzymeInhibitorIndicated
     /// </summary>
     public const string LiteralAngiotensinConvertingEnzymeInhibitorIndicated = "135799002";
+
+    /// <summary>
+    /// Literal for code: NONEAngiotensinConvertingEnzymeInhibitorIndicated
+    /// </summary>
+    public const string LiteralNONEAngiotensinConvertingEnzymeInhibitorIndicated = "http://snomed.info/sct#135799002";
 
     /// <summary>
     /// Literal for code: LongTermCurrentUseOfAzathioprine
@@ -1148,9 +1198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLongTermCurrentUseOfAzathioprine = "140561000119102";
 
     /// <summary>
+    /// Literal for code: NONELongTermCurrentUseOfAzathioprine
+    /// </summary>
+    public const string LiteralNONELongTermCurrentUseOfAzathioprine = "http://snomed.info/sct#140561000119102";
+
+    /// <summary>
     /// Literal for code: HOHighRiskMedication
     /// </summary>
     public const string LiteralHOHighRiskMedication = "161646004";
+
+    /// <summary>
+    /// Literal for code: NONEHOHighRiskMedication
+    /// </summary>
+    public const string LiteralNONEHOHighRiskMedication = "http://snomed.info/sct#161646004";
 
     /// <summary>
     /// Literal for code: HOAnticoagulantTherapy
@@ -1158,9 +1218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHOAnticoagulantTherapy = "161647008";
 
     /// <summary>
+    /// Literal for code: NONEHOAnticoagulantTherapy
+    /// </summary>
+    public const string LiteralNONEHOAnticoagulantTherapy = "http://snomed.info/sct#161647008";
+
+    /// <summary>
     /// Literal for code: HOSteroidTherapy
     /// </summary>
     public const string LiteralHOSteroidTherapy = "161648003";
+
+    /// <summary>
+    /// Literal for code: NONEHOSteroidTherapy
+    /// </summary>
+    public const string LiteralNONEHOSteroidTherapy = "http://snomed.info/sct#161648003";
 
     /// <summary>
     /// Literal for code: HOInsulinTherapy
@@ -1168,9 +1238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHOInsulinTherapy = "161649006";
 
     /// <summary>
+    /// Literal for code: NONEHOInsulinTherapy
+    /// </summary>
+    public const string LiteralNONEHOInsulinTherapy = "http://snomed.info/sct#161649006";
+
+    /// <summary>
     /// Literal for code: HOAnticonvulsantTherapy
     /// </summary>
     public const string LiteralHOAnticonvulsantTherapy = "161650006";
+
+    /// <summary>
+    /// Literal for code: NONEHOAnticonvulsantTherapy
+    /// </summary>
+    public const string LiteralNONEHOAnticonvulsantTherapy = "http://snomed.info/sct#161650006";
 
     /// <summary>
     /// Literal for code: HOHormoneReplacementHRT
@@ -1178,9 +1258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHOHormoneReplacementHRT = "161652003";
 
     /// <summary>
+    /// Literal for code: NONEHOHormoneReplacementHRT
+    /// </summary>
+    public const string LiteralNONEHOHormoneReplacementHRT = "http://snomed.info/sct#161652003";
+
+    /// <summary>
     /// Literal for code: HOChemotherapy
     /// </summary>
     public const string LiteralHOChemotherapy = "161653008";
+
+    /// <summary>
+    /// Literal for code: NONEHOChemotherapy
+    /// </summary>
+    public const string LiteralNONEHOChemotherapy = "http://snomed.info/sct#161653008";
 
     /// <summary>
     /// Literal for code: OralSteroidsStarted
@@ -1188,9 +1278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOralSteroidsStarted = "170622002";
 
     /// <summary>
+    /// Literal for code: NONEOralSteroidsStarted
+    /// </summary>
+    public const string LiteralNONEOralSteroidsStarted = "http://snomed.info/sct#170622002";
+
+    /// <summary>
     /// Literal for code: OralSteroidsStopped
     /// </summary>
     public const string LiteralOralSteroidsStopped = "170624001";
+
+    /// <summary>
+    /// Literal for code: NONEOralSteroidsStopped
+    /// </summary>
+    public const string LiteralNONEOralSteroidsStopped = "http://snomed.info/sct#170624001";
 
     /// <summary>
     /// Literal for code: LithiumStopped
@@ -1198,9 +1298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLithiumStopped = "170688000";
 
     /// <summary>
+    /// Literal for code: NONELithiumStopped
+    /// </summary>
+    public const string LiteralNONELithiumStopped = "http://snomed.info/sct#170688000";
+
+    /// <summary>
     /// Literal for code: InjectablePhenothiazineStopped
     /// </summary>
     public const string LiteralInjectablePhenothiazineStopped = "170689008";
+
+    /// <summary>
+    /// Literal for code: NONEInjectablePhenothiazineStopped
+    /// </summary>
+    public const string LiteralNONEInjectablePhenothiazineStopped = "http://snomed.info/sct#170689008";
 
     /// <summary>
     /// Literal for code: B12InjectionsStarted
@@ -1208,9 +1318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralB12InjectionsStarted = "170821007";
 
     /// <summary>
+    /// Literal for code: NONEB12InjectionsStarted
+    /// </summary>
+    public const string LiteralNONEB12InjectionsStarted = "http://snomed.info/sct#170821007";
+
+    /// <summary>
     /// Literal for code: B12InjectionsStopped
     /// </summary>
     public const string LiteralB12InjectionsStopped = "170826002";
+
+    /// <summary>
+    /// Literal for code: NONEB12InjectionsStopped
+    /// </summary>
+    public const string LiteralNONEB12InjectionsStopped = "http://snomed.info/sct#170826002";
 
     /// <summary>
     /// Literal for code: WarfarinTherapyStopped
@@ -1218,9 +1338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWarfarinTherapyStopped = "170919001";
 
     /// <summary>
+    /// Literal for code: NONEWarfarinTherapyStopped
+    /// </summary>
+    public const string LiteralNONEWarfarinTherapyStopped = "http://snomed.info/sct#170919001";
+
+    /// <summary>
     /// Literal for code: HormoneReplacementTherapyHRTContraindicated
     /// </summary>
     public const string LiteralHormoneReplacementTherapyHRTContraindicated = "170954008";
+
+    /// <summary>
+    /// Literal for code: NONEHormoneReplacementTherapyHRTContraindicated
+    /// </summary>
+    public const string LiteralNONEHormoneReplacementTherapyHRTContraindicated = "http://snomed.info/sct#170954008";
 
     /// <summary>
     /// Literal for code: HormoneReplacementTherapyHRTStarted
@@ -1228,9 +1358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHormoneReplacementTherapyHRTStarted = "170955009";
 
     /// <summary>
+    /// Literal for code: NONEHormoneReplacementTherapyHRTStarted
+    /// </summary>
+    public const string LiteralNONEHormoneReplacementTherapyHRTStarted = "http://snomed.info/sct#170955009";
+
+    /// <summary>
     /// Literal for code: HormonalReplacementTherapyHRTStopped
     /// </summary>
     public const string LiteralHormonalReplacementTherapyHRTStopped = "170958006";
+
+    /// <summary>
+    /// Literal for code: NONEHormonalReplacementTherapyHRTStopped
+    /// </summary>
+    public const string LiteralNONEHormonalReplacementTherapyHRTStopped = "http://snomed.info/sct#170958006";
 
     /// <summary>
     /// Literal for code: DrugCourseCompleted
@@ -1238,9 +1378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrugCourseCompleted = "182834008";
 
     /// <summary>
+    /// Literal for code: NONEDrugCourseCompleted
+    /// </summary>
+    public const string LiteralNONEDrugCourseCompleted = "http://snomed.info/sct#182834008";
+
+    /// <summary>
     /// Literal for code: DrugTreatmentStoppedMedicalAdvice
     /// </summary>
     public const string LiteralDrugTreatmentStoppedMedicalAdvice = "182840001";
+
+    /// <summary>
+    /// Literal for code: NONEDrugTreatmentStoppedMedicalAdvice
+    /// </summary>
+    public const string LiteralNONEDrugTreatmentStoppedMedicalAdvice = "http://snomed.info/sct#182840001";
 
     /// <summary>
     /// Literal for code: DrStoppedDrugsIneffective
@@ -1248,9 +1398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrStoppedDrugsIneffective = "182841002";
 
     /// <summary>
+    /// Literal for code: NONEDrStoppedDrugsIneffective
+    /// </summary>
+    public const string LiteralNONEDrStoppedDrugsIneffective = "http://snomed.info/sct#182841002";
+
+    /// <summary>
     /// Literal for code: DoctorStoppedDrugsSideEffect
     /// </summary>
     public const string LiteralDoctorStoppedDrugsSideEffect = "182842009";
+
+    /// <summary>
+    /// Literal for code: NONEDoctorStoppedDrugsSideEffect
+    /// </summary>
+    public const string LiteralNONEDoctorStoppedDrugsSideEffect = "http://snomed.info/sct#182842009";
 
     /// <summary>
     /// Literal for code: DrStoppedDrugsInconvenient
@@ -1258,9 +1418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrStoppedDrugsInconvenient = "182843004";
 
     /// <summary>
+    /// Literal for code: NONEDrStoppedDrugsInconvenient
+    /// </summary>
+    public const string LiteralNONEDrStoppedDrugsInconvenient = "http://snomed.info/sct#182843004";
+
+    /// <summary>
     /// Literal for code: DoctorStoppedDrugsPatientDislikes
     /// </summary>
     public const string LiteralDoctorStoppedDrugsPatientDislikes = "182844005";
+
+    /// <summary>
+    /// Literal for code: NONEDoctorStoppedDrugsPatientDislikes
+    /// </summary>
+    public const string LiteralNONEDoctorStoppedDrugsPatientDislikes = "http://snomed.info/sct#182844005";
 
     /// <summary>
     /// Literal for code: DoctorStoppedDrugsAvoidInteraction
@@ -1268,9 +1438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDoctorStoppedDrugsAvoidInteraction = "182845006";
 
     /// <summary>
+    /// Literal for code: NONEDoctorStoppedDrugsAvoidInteraction
+    /// </summary>
+    public const string LiteralNONEDoctorStoppedDrugsAvoidInteraction = "http://snomed.info/sct#182845006";
+
+    /// <summary>
     /// Literal for code: DoctorStoppedDrugsMedicalAimAchieved
     /// </summary>
     public const string LiteralDoctorStoppedDrugsMedicalAimAchieved = "182846007";
+
+    /// <summary>
+    /// Literal for code: NONEDoctorStoppedDrugsMedicalAimAchieved
+    /// </summary>
+    public const string LiteralNONEDoctorStoppedDrugsMedicalAimAchieved = "http://snomed.info/sct#182846007";
 
     /// <summary>
     /// Literal for code: DrugNotTakenDislikeTaste
@@ -1278,9 +1458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrugNotTakenDislikeTaste = "182862001";
 
     /// <summary>
+    /// Literal for code: NONEDrugNotTakenDislikeTaste
+    /// </summary>
+    public const string LiteralNONEDrugNotTakenDislikeTaste = "http://snomed.info/sct#182862001";
+
+    /// <summary>
     /// Literal for code: DrugNotTakenDislikeForm
     /// </summary>
     public const string LiteralDrugNotTakenDislikeForm = "182863006";
+
+    /// <summary>
+    /// Literal for code: NONEDrugNotTakenDislikeForm
+    /// </summary>
+    public const string LiteralNONEDrugNotTakenDislikeForm = "http://snomed.info/sct#182863006";
 
     /// <summary>
     /// Literal for code: DrugNotTakenSideEffects
@@ -1288,9 +1478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrugNotTakenSideEffects = "182864000";
 
     /// <summary>
+    /// Literal for code: NONEDrugNotTakenSideEffects
+    /// </summary>
+    public const string LiteralNONEDrugNotTakenSideEffects = "http://snomed.info/sct#182864000";
+
+    /// <summary>
     /// Literal for code: DrugNotTakenInconvenient
     /// </summary>
     public const string LiteralDrugNotTakenInconvenient = "182865004";
+
+    /// <summary>
+    /// Literal for code: NONEDrugNotTakenInconvenient
+    /// </summary>
+    public const string LiteralNONEDrugNotTakenInconvenient = "http://snomed.info/sct#182865004";
 
     /// <summary>
     /// Literal for code: DrugNotTakenPatDisbelief
@@ -1298,9 +1498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrugNotTakenPatDisbelief = "182867007";
 
     /// <summary>
+    /// Literal for code: NONEDrugNotTakenPatDisbelief
+    /// </summary>
+    public const string LiteralNONEDrugNotTakenPatDisbelief = "http://snomed.info/sct#182867007";
+
+    /// <summary>
     /// Literal for code: TreatmentStoppedAlternativeTherapyUndertaken
     /// </summary>
     public const string LiteralTreatmentStoppedAlternativeTherapyUndertaken = "182868002";
+
+    /// <summary>
+    /// Literal for code: NONETreatmentStoppedAlternativeTherapyUndertaken
+    /// </summary>
+    public const string LiteralNONETreatmentStoppedAlternativeTherapyUndertaken = "http://snomed.info/sct#182868002";
 
     /// <summary>
     /// Literal for code: DrugNotTakenPatientLostTablets
@@ -1308,9 +1518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrugNotTakenPatientLostTablets = "182869005";
 
     /// <summary>
+    /// Literal for code: NONEDrugNotTakenPatientLostTablets
+    /// </summary>
+    public const string LiteralNONEDrugNotTakenPatientLostTablets = "http://snomed.info/sct#182869005";
+
+    /// <summary>
     /// Literal for code: DrugDiscontinuedReasonUnknown
     /// </summary>
     public const string LiteralDrugDiscontinuedReasonUnknown = "182870006";
+
+    /// <summary>
+    /// Literal for code: NONEDrugDiscontinuedReasonUnknown
+    /// </summary>
+    public const string LiteralNONEDrugDiscontinuedReasonUnknown = "http://snomed.info/sct#182870006";
 
     /// <summary>
     /// Literal for code: DrugDiscontinuedPatientFearRisk
@@ -1318,9 +1538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrugDiscontinuedPatientFearRisk = "182871005";
 
     /// <summary>
+    /// Literal for code: NONEDrugDiscontinuedPatientFearRisk
+    /// </summary>
+    public const string LiteralNONEDrugDiscontinuedPatientFearRisk = "http://snomed.info/sct#182871005";
+
+    /// <summary>
     /// Literal for code: DrugDiscontinuedTooExpensive
     /// </summary>
     public const string LiteralDrugDiscontinuedTooExpensive = "182872003";
+
+    /// <summary>
+    /// Literal for code: NONEDrugDiscontinuedTooExpensive
+    /// </summary>
+    public const string LiteralNONEDrugDiscontinuedTooExpensive = "http://snomed.info/sct#182872003";
 
     /// <summary>
     /// Literal for code: DrugTreatmentStoppedPatientRanOutOfTablets
@@ -1328,9 +1558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrugTreatmentStoppedPatientRanOutOfTablets = "182873008";
 
     /// <summary>
+    /// Literal for code: NONEDrugTreatmentStoppedPatientRanOutOfTablets
+    /// </summary>
+    public const string LiteralNONEDrugTreatmentStoppedPatientRanOutOfTablets = "http://snomed.info/sct#182873008";
+
+    /// <summary>
     /// Literal for code: TreatmentStoppedPatientUnableToConcentrate
     /// </summary>
     public const string LiteralTreatmentStoppedPatientUnableToConcentrate = "182874002";
+
+    /// <summary>
+    /// Literal for code: NONETreatmentStoppedPatientUnableToConcentrate
+    /// </summary>
+    public const string LiteralNONETreatmentStoppedPatientUnableToConcentrate = "http://snomed.info/sct#182874002";
 
     /// <summary>
     /// Literal for code: DrugNotTakenProblemSwallowing
@@ -1338,9 +1578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrugNotTakenProblemSwallowing = "266711001";
 
     /// <summary>
+    /// Literal for code: NONEDrugNotTakenProblemSwallowing
+    /// </summary>
+    public const string LiteralNONEDrugNotTakenProblemSwallowing = "http://snomed.info/sct#266711001";
+
+    /// <summary>
     /// Literal for code: DrugTherapyDiscontinued
     /// </summary>
     public const string LiteralDrugTherapyDiscontinued = "274512008";
+
+    /// <summary>
+    /// Literal for code: NONEDrugTherapyDiscontinued
+    /// </summary>
+    public const string LiteralNONEDrugTherapyDiscontinued = "http://snomed.info/sct#274512008";
 
     /// <summary>
     /// Literal for code: TabletsTooLargeToSwallow
@@ -1348,9 +1598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTabletsTooLargeToSwallow = "275929009";
 
     /// <summary>
+    /// Literal for code: NONETabletsTooLargeToSwallow
+    /// </summary>
+    public const string LiteralNONETabletsTooLargeToSwallow = "http://snomed.info/sct#275929009";
+
+    /// <summary>
     /// Literal for code: ThyroxineTreatmentStopped
     /// </summary>
     public const string LiteralThyroxineTreatmentStopped = "309841001";
+
+    /// <summary>
+    /// Literal for code: NONEThyroxineTreatmentStopped
+    /// </summary>
+    public const string LiteralNONEThyroxineTreatmentStopped = "http://snomed.info/sct#309841001";
 
     /// <summary>
     /// Literal for code: AspirinProphylaxisContraIndicated
@@ -1358,9 +1618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAspirinProphylaxisContraIndicated = "312451002";
 
     /// <summary>
+    /// Literal for code: NONEAspirinProphylaxisContraIndicated
+    /// </summary>
+    public const string LiteralNONEAspirinProphylaxisContraIndicated = "http://snomed.info/sct#312451002";
+
+    /// <summary>
     /// Literal for code: AspirinProphylaxisRefused
     /// </summary>
     public const string LiteralAspirinProphylaxisRefused = "315023008";
+
+    /// <summary>
+    /// Literal for code: NONEAspirinProphylaxisRefused
+    /// </summary>
+    public const string LiteralNONEAspirinProphylaxisRefused = "http://snomed.info/sct#315023008";
 
     /// <summary>
     /// Literal for code: BetaBlockerContraindicated
@@ -1368,9 +1638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBetaBlockerContraindicated = "315062004";
 
     /// <summary>
+    /// Literal for code: NONEBetaBlockerContraindicated
+    /// </summary>
+    public const string LiteralNONEBetaBlockerContraindicated = "http://snomed.info/sct#315062004";
+
+    /// <summary>
     /// Literal for code: AngiotensinConvertingEnzymeInhibitorsContraindicated
     /// </summary>
     public const string LiteralAngiotensinConvertingEnzymeInhibitorsContraindicated = "315364008";
+
+    /// <summary>
+    /// Literal for code: NONEAngiotensinConvertingEnzymeInhibitorsContraindicated
+    /// </summary>
+    public const string LiteralNONEAngiotensinConvertingEnzymeInhibitorsContraindicated = "http://snomed.info/sct#315364008";
 
     /// <summary>
     /// Literal for code: ThrombolyticTherapyRefused
@@ -1378,9 +1658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThrombolyticTherapyRefused = "390914001";
 
     /// <summary>
+    /// Literal for code: NONEThrombolyticTherapyRefused
+    /// </summary>
+    public const string LiteralNONEThrombolyticTherapyRefused = "http://snomed.info/sct#390914001";
+
+    /// <summary>
     /// Literal for code: AntibioticProphylaxisRecommended
     /// </summary>
     public const string LiteralAntibioticProphylaxisRecommended = "391158008";
+
+    /// <summary>
+    /// Literal for code: NONEAntibioticProphylaxisRecommended
+    /// </summary>
+    public const string LiteralNONEAntibioticProphylaxisRecommended = "http://snomed.info/sct#391158008";
 
     /// <summary>
     /// Literal for code: AntibioticProphylaxisNotRecommended
@@ -1388,9 +1678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAntibioticProphylaxisNotRecommended = "391159000";
 
     /// <summary>
+    /// Literal for code: NONEAntibioticProphylaxisNotRecommended
+    /// </summary>
+    public const string LiteralNONEAntibioticProphylaxisNotRecommended = "http://snomed.info/sct#391159000";
+
+    /// <summary>
     /// Literal for code: HormoneReplacementTherapyRequested
     /// </summary>
     public const string LiteralHormoneReplacementTherapyRequested = "394888000";
+
+    /// <summary>
+    /// Literal for code: NONEHormoneReplacementTherapyRequested
+    /// </summary>
+    public const string LiteralNONEHormoneReplacementTherapyRequested = "http://snomed.info/sct#394888000";
 
     /// <summary>
     /// Literal for code: AngiotensinIIReceptorAntagonistsContraindicated
@@ -1398,9 +1698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAngiotensinIIReceptorAntagonistsContraindicated = "394987009";
 
     /// <summary>
+    /// Literal for code: NONEAngiotensinIIReceptorAntagonistsContraindicated
+    /// </summary>
+    public const string LiteralNONEAngiotensinIIReceptorAntagonistsContraindicated = "http://snomed.info/sct#394987009";
+
+    /// <summary>
     /// Literal for code: MedicationStoppedInteraction
     /// </summary>
     public const string LiteralMedicationStoppedInteraction = "395006008";
+
+    /// <summary>
+    /// Literal for code: NONEMedicationStoppedInteraction
+    /// </summary>
+    public const string LiteralNONEMedicationStoppedInteraction = "http://snomed.info/sct#395006008";
 
     /// <summary>
     /// Literal for code: MedicationStoppedIneffective
@@ -1408,9 +1718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicationStoppedIneffective = "395007004";
 
     /// <summary>
+    /// Literal for code: NONEMedicationStoppedIneffective
+    /// </summary>
+    public const string LiteralNONEMedicationStoppedIneffective = "http://snomed.info/sct#395007004";
+
+    /// <summary>
     /// Literal for code: MedicationStoppedContraIndication
     /// </summary>
     public const string LiteralMedicationStoppedContraIndication = "395008009";
+
+    /// <summary>
+    /// Literal for code: NONEMedicationStoppedContraIndication
+    /// </summary>
+    public const string LiteralNONEMedicationStoppedContraIndication = "http://snomed.info/sct#395008009";
 
     /// <summary>
     /// Literal for code: MedicationStoppedSideEffect
@@ -1418,9 +1738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicationStoppedSideEffect = "395009001";
 
     /// <summary>
+    /// Literal for code: NONEMedicationStoppedSideEffect
+    /// </summary>
+    public const string LiteralNONEMedicationStoppedSideEffect = "http://snomed.info/sct#395009001";
+
+    /// <summary>
     /// Literal for code: AngiotensinIIReceptorAntagonistDeclined
     /// </summary>
     public const string LiteralAngiotensinIIReceptorAntagonistDeclined = "401084003";
+
+    /// <summary>
+    /// Literal for code: NONEAngiotensinIIReceptorAntagonistDeclined
+    /// </summary>
+    public const string LiteralNONEAngiotensinIIReceptorAntagonistDeclined = "http://snomed.info/sct#401084003";
 
     /// <summary>
     /// Literal for code: HOProlongedCorticosteroidTherapy
@@ -1428,9 +1758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHOProlongedCorticosteroidTherapy = "401244004";
 
     /// <summary>
+    /// Literal for code: NONEHOProlongedCorticosteroidTherapy
+    /// </summary>
+    public const string LiteralNONEHOProlongedCorticosteroidTherapy = "http://snomed.info/sct#401244004";
+
+    /// <summary>
     /// Literal for code: AngiotensinIIReceptorAntagonistNotIndicated
     /// </summary>
     public const string LiteralAngiotensinIIReceptorAntagonistNotIndicated = "407572003";
+
+    /// <summary>
+    /// Literal for code: NONEAngiotensinIIReceptorAntagonistNotIndicated
+    /// </summary>
+    public const string LiteralNONEAngiotensinIIReceptorAntagonistNotIndicated = "http://snomed.info/sct#407572003";
 
     /// <summary>
     /// Literal for code: ThrombolysisTherapyNotIndicated
@@ -1438,9 +1778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThrombolysisTherapyNotIndicated = "408339001";
 
     /// <summary>
+    /// Literal for code: NONEThrombolysisTherapyNotIndicated
+    /// </summary>
+    public const string LiteralNONEThrombolysisTherapyNotIndicated = "http://snomed.info/sct#408339001";
+
+    /// <summary>
     /// Literal for code: DrugTreatmentStillNeeded
     /// </summary>
     public const string LiteralDrugTreatmentStillNeeded = "408354007";
+
+    /// <summary>
+    /// Literal for code: NONEDrugTreatmentStillNeeded
+    /// </summary>
+    public const string LiteralNONEDrugTreatmentStillNeeded = "http://snomed.info/sct#408354007";
 
     /// <summary>
     /// Literal for code: DrugTreatmentNoLongerNeeded
@@ -1448,9 +1798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrugTreatmentNoLongerNeeded = "408355008";
 
     /// <summary>
+    /// Literal for code: NONEDrugTreatmentNoLongerNeeded
+    /// </summary>
+    public const string LiteralNONEDrugTreatmentNoLongerNeeded = "http://snomed.info/sct#408355008";
+
+    /// <summary>
     /// Literal for code: InappropriateMedicationStopped
     /// </summary>
     public const string LiteralInappropriateMedicationStopped = "412782003";
+
+    /// <summary>
+    /// Literal for code: NONEInappropriateMedicationStopped
+    /// </summary>
+    public const string LiteralNONEInappropriateMedicationStopped = "http://snomed.info/sct#412782003";
 
     /// <summary>
     /// Literal for code: AntibioticProphylaxisIndicated
@@ -1458,9 +1818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAntibioticProphylaxisIndicated = "413555000";
 
     /// <summary>
+    /// Literal for code: NONEAntibioticProphylaxisIndicated
+    /// </summary>
+    public const string LiteralNONEAntibioticProphylaxisIndicated = "http://snomed.info/sct#413555000";
+
+    /// <summary>
     /// Literal for code: AnticoagulationContraindicated
     /// </summary>
     public const string LiteralAnticoagulationContraindicated = "413558003";
+
+    /// <summary>
+    /// Literal for code: NONEAnticoagulationContraindicated
+    /// </summary>
+    public const string LiteralNONEAnticoagulationContraindicated = "http://snomed.info/sct#413558003";
 
     /// <summary>
     /// Literal for code: AnticoagulationDeclined
@@ -1468,9 +1838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnticoagulationDeclined = "413559006";
 
     /// <summary>
+    /// Literal for code: NONEAnticoagulationDeclined
+    /// </summary>
+    public const string LiteralNONEAnticoagulationDeclined = "http://snomed.info/sct#413559006";
+
+    /// <summary>
     /// Literal for code: AnticoagulationNotIndicated
     /// </summary>
     public const string LiteralAnticoagulationNotIndicated = "413560001";
+
+    /// <summary>
+    /// Literal for code: NONEAnticoagulationNotIndicated
+    /// </summary>
+    public const string LiteralNONEAnticoagulationNotIndicated = "http://snomed.info/sct#413560001";
 
     /// <summary>
     /// Literal for code: AngiotensinConvertingEnzymeInhibitorTargetDoseNotAchieved
@@ -1478,9 +1858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAngiotensinConvertingEnzymeInhibitorTargetDoseNotAchieved = "416404000";
 
     /// <summary>
+    /// Literal for code: NONEAngiotensinConvertingEnzymeInhibitorTargetDoseNotAchieved
+    /// </summary>
+    public const string LiteralNONEAngiotensinConvertingEnzymeInhibitorTargetDoseNotAchieved = "http://snomed.info/sct#416404000";
+
+    /// <summary>
     /// Literal for code: DeferredAntibioticTherapy
     /// </summary>
     public const string LiteralDeferredAntibioticTherapy = "417576009";
+
+    /// <summary>
+    /// Literal for code: NONEDeferredAntibioticTherapy
+    /// </summary>
+    public const string LiteralNONEDeferredAntibioticTherapy = "http://snomed.info/sct#417576009";
 
     /// <summary>
     /// Literal for code: DrugTreatmentStoppedAtEndOfClinicalTrial
@@ -1488,9 +1878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrugTreatmentStoppedAtEndOfClinicalTrial = "430279008";
 
     /// <summary>
+    /// Literal for code: NONEDrugTreatmentStoppedAtEndOfClinicalTrial
+    /// </summary>
+    public const string LiteralNONEDrugTreatmentStoppedAtEndOfClinicalTrial = "http://snomed.info/sct#430279008";
+
+    /// <summary>
     /// Literal for code: HODrugTherapy
     /// </summary>
     public const string LiteralHODrugTherapy = "438553004";
+
+    /// <summary>
+    /// Literal for code: NONEHODrugTherapy
+    /// </summary>
+    public const string LiteralNONEHODrugTherapy = "http://snomed.info/sct#438553004";
 
     /// <summary>
     /// Literal for code: HOStatinTherapy
@@ -1498,9 +1898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHOStatinTherapy = "439631004";
 
     /// <summary>
+    /// Literal for code: NONEHOStatinTherapy
+    /// </summary>
+    public const string LiteralNONEHOStatinTherapy = "http://snomed.info/sct#439631004";
+
+    /// <summary>
     /// Literal for code: HOBetaBlockerTherapy
     /// </summary>
     public const string LiteralHOBetaBlockerTherapy = "440935004";
+
+    /// <summary>
+    /// Literal for code: NONEHOBetaBlockerTherapy
+    /// </summary>
+    public const string LiteralNONEHOBetaBlockerTherapy = "http://snomed.info/sct#440935004";
 
     /// <summary>
     /// Literal for code: HONitrateTherapy
@@ -1508,9 +1918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHONitrateTherapy = "440991005";
 
     /// <summary>
+    /// Literal for code: NONEHONitrateTherapy
+    /// </summary>
+    public const string LiteralNONEHONitrateTherapy = "http://snomed.info/sct#440991005";
+
+    /// <summary>
     /// Literal for code: HOAntiplateletAgentTherapy
     /// </summary>
     public const string LiteralHOAntiplateletAgentTherapy = "441186000";
+
+    /// <summary>
+    /// Literal for code: NONEHOAntiplateletAgentTherapy
+    /// </summary>
+    public const string LiteralNONEHOAntiplateletAgentTherapy = "http://snomed.info/sct#441186000";
 
     /// <summary>
     /// Literal for code: HOAngiotensinConvertingEnzymeACEInhibitorTherapy
@@ -1518,9 +1938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHOAngiotensinConvertingEnzymeACEInhibitorTherapy = "441195008";
 
     /// <summary>
+    /// Literal for code: NONEHOAngiotensinConvertingEnzymeACEInhibitorTherapy
+    /// </summary>
+    public const string LiteralNONEHOAngiotensinConvertingEnzymeACEInhibitorTherapy = "http://snomed.info/sct#441195008";
+
+    /// <summary>
     /// Literal for code: HOAngiotensinIIReceptorAntagonistTherapy
     /// </summary>
     public const string LiteralHOAngiotensinIIReceptorAntagonistTherapy = "441196009";
+
+    /// <summary>
+    /// Literal for code: NONEHOAngiotensinIIReceptorAntagonistTherapy
+    /// </summary>
+    public const string LiteralNONEHOAngiotensinIIReceptorAntagonistTherapy = "http://snomed.info/sct#441196009";
 
     /// <summary>
     /// Literal for code: HistoryOfTherapyWithOtotoxicMedication
@@ -1528,9 +1958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistoryOfTherapyWithOtotoxicMedication = "441899004";
 
     /// <summary>
+    /// Literal for code: NONEHistoryOfTherapyWithOtotoxicMedication
+    /// </summary>
+    public const string LiteralNONEHistoryOfTherapyWithOtotoxicMedication = "http://snomed.info/sct#441899004";
+
+    /// <summary>
     /// Literal for code: HistoryOfTuberculosisChemotherapy
     /// </summary>
     public const string LiteralHistoryOfTuberculosisChemotherapy = "473151000";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfTuberculosisChemotherapy
+    /// </summary>
+    public const string LiteralNONEHistoryOfTuberculosisChemotherapy = "http://snomed.info/sct#473151000";
 
     /// <summary>
     /// Literal for code: AngiotensinIIReceptorAntagonistIndicated
@@ -1538,9 +1978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAngiotensinIIReceptorAntagonistIndicated = "698428006";
 
     /// <summary>
+    /// Literal for code: NONEAngiotensinIIReceptorAntagonistIndicated
+    /// </summary>
+    public const string LiteralNONEAngiotensinIIReceptorAntagonistIndicated = "http://snomed.info/sct#698428006";
+
+    /// <summary>
     /// Literal for code: AntibioticTherapyIndicated
     /// </summary>
     public const string LiteralAntibioticTherapyIndicated = "698449007";
+
+    /// <summary>
+    /// Literal for code: NONEAntibioticTherapyIndicated
+    /// </summary>
+    public const string LiteralNONEAntibioticTherapyIndicated = "http://snomed.info/sct#698449007";
 
     /// <summary>
     /// Literal for code: AntidepressantDrugTreatmentStopped
@@ -1548,9 +1998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAntidepressantDrugTreatmentStopped = "698459008";
 
     /// <summary>
+    /// Literal for code: NONEAntidepressantDrugTreatmentStopped
+    /// </summary>
+    public const string LiteralNONEAntidepressantDrugTreatmentStopped = "http://snomed.info/sct#698459008";
+
+    /// <summary>
     /// Literal for code: AntiviralTherapyDeclined
     /// </summary>
     public const string LiteralAntiviralTherapyDeclined = "698460003";
+
+    /// <summary>
+    /// Literal for code: NONEAntiviralTherapyDeclined
+    /// </summary>
+    public const string LiteralNONEAntiviralTherapyDeclined = "http://snomed.info/sct#698460003";
 
     /// <summary>
     /// Literal for code: BisoprololContraindicated
@@ -1558,9 +2018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBisoprololContraindicated = "698468005";
 
     /// <summary>
+    /// Literal for code: NONEBisoprololContraindicated
+    /// </summary>
+    public const string LiteralNONEBisoprololContraindicated = "http://snomed.info/sct#698468005";
+
+    /// <summary>
     /// Literal for code: NebivololTherapyRefused
     /// </summary>
     public const string LiteralNebivololTherapyRefused = "698758004";
+
+    /// <summary>
+    /// Literal for code: NONENebivololTherapyRefused
+    /// </summary>
+    public const string LiteralNONENebivololTherapyRefused = "http://snomed.info/sct#698758004";
 
     /// <summary>
     /// Literal for code: LongTermDualAntiplateletDrugTherapyIndicated
@@ -1568,9 +2038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLongTermDualAntiplateletDrugTherapyIndicated = "698985001";
 
     /// <summary>
+    /// Literal for code: NONELongTermDualAntiplateletDrugTherapyIndicated
+    /// </summary>
+    public const string LiteralNONELongTermDualAntiplateletDrugTherapyIndicated = "http://snomed.info/sct#698985001";
+
+    /// <summary>
     /// Literal for code: HistoryOfFenfluramineTherapy
     /// </summary>
     public const string LiteralHistoryOfFenfluramineTherapy = "699008007";
+
+    /// <summary>
+    /// Literal for code: NONEHistoryOfFenfluramineTherapy
+    /// </summary>
+    public const string LiteralNONEHistoryOfFenfluramineTherapy = "http://snomed.info/sct#699008007";
 
     /// <summary>
     /// Literal for code: CarvedilolTherapyDeclined
@@ -1578,9 +2058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCarvedilolTherapyDeclined = "699137009";
 
     /// <summary>
+    /// Literal for code: NONECarvedilolTherapyDeclined
+    /// </summary>
+    public const string LiteralNONECarvedilolTherapyDeclined = "http://snomed.info/sct#699137009";
+
+    /// <summary>
     /// Literal for code: BisphosphonateProphylaxisSuspended
     /// </summary>
     public const string LiteralBisphosphonateProphylaxisSuspended = "700110004";
+
+    /// <summary>
+    /// Literal for code: NONEBisphosphonateProphylaxisSuspended
+    /// </summary>
+    public const string LiteralNONEBisphosphonateProphylaxisSuspended = "http://snomed.info/sct#700110004";
 
     /// <summary>
     /// Literal for code: AntibioticProphylaxisNotIndicated
@@ -1588,9 +2078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAntibioticProphylaxisNotIndicated = "700384008";
 
     /// <summary>
+    /// Literal for code: NONEAntibioticProphylaxisNotIndicated
+    /// </summary>
+    public const string LiteralNONEAntibioticProphylaxisNotIndicated = "http://snomed.info/sct#700384008";
+
+    /// <summary>
     /// Literal for code: IncretinMimeticTherapyStarted
     /// </summary>
     public const string LiteralIncretinMimeticTherapyStarted = "702542006";
+
+    /// <summary>
+    /// Literal for code: NONEIncretinMimeticTherapyStarted
+    /// </summary>
+    public const string LiteralNONEIncretinMimeticTherapyStarted = "http://snomed.info/sct#702542006";
 
     /// <summary>
     /// Literal for code: TeriparatideTherapyDeclined
@@ -1598,9 +2098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTeriparatideTherapyDeclined = "703989007";
 
     /// <summary>
+    /// Literal for code: NONETeriparatideTherapyDeclined
+    /// </summary>
+    public const string LiteralNONETeriparatideTherapyDeclined = "http://snomed.info/sct#703989007";
+
+    /// <summary>
     /// Literal for code: RaloxifeneTherapyDeclined
     /// </summary>
     public const string LiteralRaloxifeneTherapyDeclined = "703991004";
+
+    /// <summary>
+    /// Literal for code: NONERaloxifeneTherapyDeclined
+    /// </summary>
+    public const string LiteralNONERaloxifeneTherapyDeclined = "http://snomed.info/sct#703991004";
 
     /// <summary>
     /// Literal for code: TeriparatideNotIndicated
@@ -1608,9 +2118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTeriparatideNotIndicated = "703996009";
 
     /// <summary>
+    /// Literal for code: NONETeriparatideNotIndicated
+    /// </summary>
+    public const string LiteralNONETeriparatideNotIndicated = "http://snomed.info/sct#703996009";
+
+    /// <summary>
     /// Literal for code: TeriparatideContraindicated
     /// </summary>
     public const string LiteralTeriparatideContraindicated = "703997000";
+
+    /// <summary>
+    /// Literal for code: NONETeriparatideContraindicated
+    /// </summary>
+    public const string LiteralNONETeriparatideContraindicated = "http://snomed.info/sct#703997000";
 
     /// <summary>
     /// Literal for code: RaloxifeneContraindicated
@@ -1618,9 +2138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRaloxifeneContraindicated = "703999002";
 
     /// <summary>
+    /// Literal for code: NONERaloxifeneContraindicated
+    /// </summary>
+    public const string LiteralNONERaloxifeneContraindicated = "http://snomed.info/sct#703999002";
+
+    /// <summary>
     /// Literal for code: RaloxifeneNotIndicated
     /// </summary>
     public const string LiteralRaloxifeneNotIndicated = "704000000";
+
+    /// <summary>
+    /// Literal for code: NONERaloxifeneNotIndicated
+    /// </summary>
+    public const string LiteralNONERaloxifeneNotIndicated = "http://snomed.info/sct#704000000";
 
     /// <summary>
     /// Literal for code: Phosphodiesterase5InhibitorNotIndicated
@@ -1628,9 +2158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhosphodiesterase5InhibitorNotIndicated = "704033005";
 
     /// <summary>
+    /// Literal for code: NONEPhosphodiesterase5InhibitorNotIndicated
+    /// </summary>
+    public const string LiteralNONEPhosphodiesterase5InhibitorNotIndicated = "http://snomed.info/sct#704033005";
+
+    /// <summary>
     /// Literal for code: Phosphodiesterase5InhibitorDeclined
     /// </summary>
     public const string LiteralPhosphodiesterase5InhibitorDeclined = "704047009";
+
+    /// <summary>
+    /// Literal for code: NONEPhosphodiesterase5InhibitorDeclined
+    /// </summary>
+    public const string LiteralNONEPhosphodiesterase5InhibitorDeclined = "http://snomed.info/sct#704047009";
 
     /// <summary>
     /// Literal for code: Phosphodiesterase5InhibitorContraindicated
@@ -1638,9 +2178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhosphodiesterase5InhibitorContraindicated = "707298000";
 
     /// <summary>
+    /// Literal for code: NONEPhosphodiesterase5InhibitorContraindicated
+    /// </summary>
+    public const string LiteralNONEPhosphodiesterase5InhibitorContraindicated = "http://snomed.info/sct#707298000";
+
+    /// <summary>
     /// Literal for code: InsulinTreatmentStopped
     /// </summary>
     public const string LiteralInsulinTreatmentStopped = "708000007";
+
+    /// <summary>
+    /// Literal for code: NONEInsulinTreatmentStopped
+    /// </summary>
+    public const string LiteralNONEInsulinTreatmentStopped = "http://snomed.info/sct#708000007";
 
     /// <summary>
     /// Literal for code: LongTermCurrentUseOfImmunosuppressiveDrug
@@ -1648,9 +2198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLongTermCurrentUseOfImmunosuppressiveDrug = "710159007";
 
     /// <summary>
+    /// Literal for code: NONELongTermCurrentUseOfImmunosuppressiveDrug
+    /// </summary>
+    public const string LiteralNONELongTermCurrentUseOfImmunosuppressiveDrug = "http://snomed.info/sct#710159007";
+
+    /// <summary>
     /// Literal for code: LongTermCurrentUseOfDrugTherapy
     /// </summary>
     public const string LiteralLongTermCurrentUseOfDrugTherapy = "710814002";
+
+    /// <summary>
+    /// Literal for code: NONELongTermCurrentUseOfDrugTherapy
+    /// </summary>
+    public const string LiteralNONELongTermCurrentUseOfDrugTherapy = "http://snomed.info/sct#710814002";
 
     /// <summary>
     /// Literal for code: LongTermCurrentUseOfInsulin
@@ -1658,9 +2218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLongTermCurrentUseOfInsulin = "710815001";
 
     /// <summary>
+    /// Literal for code: NONELongTermCurrentUseOfInsulin
+    /// </summary>
+    public const string LiteralNONELongTermCurrentUseOfInsulin = "http://snomed.info/sct#710815001";
+
+    /// <summary>
     /// Literal for code: LongTermCurrentUseOfSteroid
     /// </summary>
     public const string LiteralLongTermCurrentUseOfSteroid = "710816000";
+
+    /// <summary>
+    /// Literal for code: NONELongTermCurrentUseOfSteroid
+    /// </summary>
+    public const string LiteralNONELongTermCurrentUseOfSteroid = "http://snomed.info/sct#710816000";
 
     /// <summary>
     /// Literal for code: LongTermCurrentUseOfInhaledSteroid
@@ -1668,9 +2238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLongTermCurrentUseOfInhaledSteroid = "710817009";
 
     /// <summary>
+    /// Literal for code: NONELongTermCurrentUseOfInhaledSteroid
+    /// </summary>
+    public const string LiteralNONELongTermCurrentUseOfInhaledSteroid = "http://snomed.info/sct#710817009";
+
+    /// <summary>
     /// Literal for code: LongTermCurrentUseOfAntibiotic
     /// </summary>
     public const string LiteralLongTermCurrentUseOfAntibiotic = "711149003";
+
+    /// <summary>
+    /// Literal for code: NONELongTermCurrentUseOfAntibiotic
+    /// </summary>
+    public const string LiteralNONELongTermCurrentUseOfAntibiotic = "http://snomed.info/sct#711149003";
 
     /// <summary>
     /// Literal for code: LongTermCurrentUseOfAnticoagulant
@@ -1678,9 +2258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLongTermCurrentUseOfAnticoagulant = "711150003";
 
     /// <summary>
+    /// Literal for code: NONELongTermCurrentUseOfAnticoagulant
+    /// </summary>
+    public const string LiteralNONELongTermCurrentUseOfAnticoagulant = "http://snomed.info/sct#711150003";
+
+    /// <summary>
     /// Literal for code: OralSteroidsUsedSinceLastEncounter
     /// </summary>
     public const string LiteralOralSteroidsUsedSinceLastEncounter = "711370000";
+
+    /// <summary>
+    /// Literal for code: NONEOralSteroidsUsedSinceLastEncounter
+    /// </summary>
+    public const string LiteralNONEOralSteroidsUsedSinceLastEncounter = "http://snomed.info/sct#711370000";
 
     /// <summary>
     /// Literal for code: InhaledSteroidsUsedDaily
@@ -1688,8 +2278,264 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInhaledSteroidsUsedDaily = "711436000";
 
     /// <summary>
+    /// Literal for code: NONEInhaledSteroidsUsedDaily
+    /// </summary>
+    public const string LiteralNONEInhaledSteroidsUsedDaily = "http://snomed.info/sct#711436000";
+
+    /// <summary>
     /// Literal for code: ChemotherapyNotDone
     /// </summary>
     public const string LiteralChemotherapyNotDone = "712985002";
+
+    /// <summary>
+    /// Literal for code: NONEChemotherapyNotDone
+    /// </summary>
+    public const string LiteralNONEChemotherapyNotDone = "http://snomed.info/sct#712985002";
+
+    /// <summary>
+    /// Dictionary for looking up ReasonMedicationStatusCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "106511000119106", LongTermCurrentUseOfMycophenolate }, 
+      { "http://snomed.info/sct#106511000119106", LongTermCurrentUseOfMycophenolate }, 
+      { "106521000119104", LongTermCurrentUseOfCyclophosphamide }, 
+      { "http://snomed.info/sct#106521000119104", LongTermCurrentUseOfCyclophosphamide }, 
+      { "106631000119102", LongTermCurrentUseOfInfliximab }, 
+      { "http://snomed.info/sct#106631000119102", LongTermCurrentUseOfInfliximab }, 
+      { "106691000119103", LongTermCurrentUseOfEtanercept }, 
+      { "http://snomed.info/sct#106691000119103", LongTermCurrentUseOfEtanercept }, 
+      { "133621000119103", LongTermCurrentUseOfNonSteroidalAntiInflammatoryDrug }, 
+      { "http://snomed.info/sct#133621000119103", LongTermCurrentUseOfNonSteroidalAntiInflammatoryDrug }, 
+      { "134390006", AngiotensinConvertingEnzymeInhibitorNotIndicated }, 
+      { "http://snomed.info/sct#134390006", AngiotensinConvertingEnzymeInhibitorNotIndicated }, 
+      { "134397009", AngiotensinConvertingEnzymeInhibitorDeclined }, 
+      { "http://snomed.info/sct#134397009", AngiotensinConvertingEnzymeInhibitorDeclined }, 
+      { "134651000119108", HistoryOfEstrogenTherapy }, 
+      { "http://snomed.info/sct#134651000119108", HistoryOfEstrogenTherapy }, 
+      { "134671000119104", HistoryOfSystemicSteroidTherapy }, 
+      { "http://snomed.info/sct#134671000119104", HistoryOfSystemicSteroidTherapy }, 
+      { "135799002", AngiotensinConvertingEnzymeInhibitorIndicated }, 
+      { "http://snomed.info/sct#135799002", AngiotensinConvertingEnzymeInhibitorIndicated }, 
+      { "140561000119102", LongTermCurrentUseOfAzathioprine }, 
+      { "http://snomed.info/sct#140561000119102", LongTermCurrentUseOfAzathioprine }, 
+      { "161646004", HOHighRiskMedication }, 
+      { "http://snomed.info/sct#161646004", HOHighRiskMedication }, 
+      { "161647008", HOAnticoagulantTherapy }, 
+      { "http://snomed.info/sct#161647008", HOAnticoagulantTherapy }, 
+      { "161648003", HOSteroidTherapy }, 
+      { "http://snomed.info/sct#161648003", HOSteroidTherapy }, 
+      { "161649006", HOInsulinTherapy }, 
+      { "http://snomed.info/sct#161649006", HOInsulinTherapy }, 
+      { "161650006", HOAnticonvulsantTherapy }, 
+      { "http://snomed.info/sct#161650006", HOAnticonvulsantTherapy }, 
+      { "161652003", HOHormoneReplacementHRT }, 
+      { "http://snomed.info/sct#161652003", HOHormoneReplacementHRT }, 
+      { "161653008", HOChemotherapy }, 
+      { "http://snomed.info/sct#161653008", HOChemotherapy }, 
+      { "170622002", OralSteroidsStarted }, 
+      { "http://snomed.info/sct#170622002", OralSteroidsStarted }, 
+      { "170624001", OralSteroidsStopped }, 
+      { "http://snomed.info/sct#170624001", OralSteroidsStopped }, 
+      { "170688000", LithiumStopped }, 
+      { "http://snomed.info/sct#170688000", LithiumStopped }, 
+      { "170689008", InjectablePhenothiazineStopped }, 
+      { "http://snomed.info/sct#170689008", InjectablePhenothiazineStopped }, 
+      { "170821007", B12InjectionsStarted }, 
+      { "http://snomed.info/sct#170821007", B12InjectionsStarted }, 
+      { "170826002", B12InjectionsStopped }, 
+      { "http://snomed.info/sct#170826002", B12InjectionsStopped }, 
+      { "170919001", WarfarinTherapyStopped }, 
+      { "http://snomed.info/sct#170919001", WarfarinTherapyStopped }, 
+      { "170954008", HormoneReplacementTherapyHRTContraindicated }, 
+      { "http://snomed.info/sct#170954008", HormoneReplacementTherapyHRTContraindicated }, 
+      { "170955009", HormoneReplacementTherapyHRTStarted }, 
+      { "http://snomed.info/sct#170955009", HormoneReplacementTherapyHRTStarted }, 
+      { "170958006", HormonalReplacementTherapyHRTStopped }, 
+      { "http://snomed.info/sct#170958006", HormonalReplacementTherapyHRTStopped }, 
+      { "182834008", DrugCourseCompleted }, 
+      { "http://snomed.info/sct#182834008", DrugCourseCompleted }, 
+      { "182840001", DrugTreatmentStoppedMedicalAdvice }, 
+      { "http://snomed.info/sct#182840001", DrugTreatmentStoppedMedicalAdvice }, 
+      { "182841002", DrStoppedDrugsIneffective }, 
+      { "http://snomed.info/sct#182841002", DrStoppedDrugsIneffective }, 
+      { "182842009", DoctorStoppedDrugsSideEffect }, 
+      { "http://snomed.info/sct#182842009", DoctorStoppedDrugsSideEffect }, 
+      { "182843004", DrStoppedDrugsInconvenient }, 
+      { "http://snomed.info/sct#182843004", DrStoppedDrugsInconvenient }, 
+      { "182844005", DoctorStoppedDrugsPatientDislikes }, 
+      { "http://snomed.info/sct#182844005", DoctorStoppedDrugsPatientDislikes }, 
+      { "182845006", DoctorStoppedDrugsAvoidInteraction }, 
+      { "http://snomed.info/sct#182845006", DoctorStoppedDrugsAvoidInteraction }, 
+      { "182846007", DoctorStoppedDrugsMedicalAimAchieved }, 
+      { "http://snomed.info/sct#182846007", DoctorStoppedDrugsMedicalAimAchieved }, 
+      { "182862001", DrugNotTakenDislikeTaste }, 
+      { "http://snomed.info/sct#182862001", DrugNotTakenDislikeTaste }, 
+      { "182863006", DrugNotTakenDislikeForm }, 
+      { "http://snomed.info/sct#182863006", DrugNotTakenDislikeForm }, 
+      { "182864000", DrugNotTakenSideEffects }, 
+      { "http://snomed.info/sct#182864000", DrugNotTakenSideEffects }, 
+      { "182865004", DrugNotTakenInconvenient }, 
+      { "http://snomed.info/sct#182865004", DrugNotTakenInconvenient }, 
+      { "182867007", DrugNotTakenPatDisbelief }, 
+      { "http://snomed.info/sct#182867007", DrugNotTakenPatDisbelief }, 
+      { "182868002", TreatmentStoppedAlternativeTherapyUndertaken }, 
+      { "http://snomed.info/sct#182868002", TreatmentStoppedAlternativeTherapyUndertaken }, 
+      { "182869005", DrugNotTakenPatientLostTablets }, 
+      { "http://snomed.info/sct#182869005", DrugNotTakenPatientLostTablets }, 
+      { "182870006", DrugDiscontinuedReasonUnknown }, 
+      { "http://snomed.info/sct#182870006", DrugDiscontinuedReasonUnknown }, 
+      { "182871005", DrugDiscontinuedPatientFearRisk }, 
+      { "http://snomed.info/sct#182871005", DrugDiscontinuedPatientFearRisk }, 
+      { "182872003", DrugDiscontinuedTooExpensive }, 
+      { "http://snomed.info/sct#182872003", DrugDiscontinuedTooExpensive }, 
+      { "182873008", DrugTreatmentStoppedPatientRanOutOfTablets }, 
+      { "http://snomed.info/sct#182873008", DrugTreatmentStoppedPatientRanOutOfTablets }, 
+      { "182874002", TreatmentStoppedPatientUnableToConcentrate }, 
+      { "http://snomed.info/sct#182874002", TreatmentStoppedPatientUnableToConcentrate }, 
+      { "266711001", DrugNotTakenProblemSwallowing }, 
+      { "http://snomed.info/sct#266711001", DrugNotTakenProblemSwallowing }, 
+      { "274512008", DrugTherapyDiscontinued }, 
+      { "http://snomed.info/sct#274512008", DrugTherapyDiscontinued }, 
+      { "275929009", TabletsTooLargeToSwallow }, 
+      { "http://snomed.info/sct#275929009", TabletsTooLargeToSwallow }, 
+      { "309841001", ThyroxineTreatmentStopped }, 
+      { "http://snomed.info/sct#309841001", ThyroxineTreatmentStopped }, 
+      { "312451002", AspirinProphylaxisContraIndicated }, 
+      { "http://snomed.info/sct#312451002", AspirinProphylaxisContraIndicated }, 
+      { "315023008", AspirinProphylaxisRefused }, 
+      { "http://snomed.info/sct#315023008", AspirinProphylaxisRefused }, 
+      { "315062004", BetaBlockerContraindicated }, 
+      { "http://snomed.info/sct#315062004", BetaBlockerContraindicated }, 
+      { "315364008", AngiotensinConvertingEnzymeInhibitorsContraindicated }, 
+      { "http://snomed.info/sct#315364008", AngiotensinConvertingEnzymeInhibitorsContraindicated }, 
+      { "390914001", ThrombolyticTherapyRefused }, 
+      { "http://snomed.info/sct#390914001", ThrombolyticTherapyRefused }, 
+      { "391158008", AntibioticProphylaxisRecommended }, 
+      { "http://snomed.info/sct#391158008", AntibioticProphylaxisRecommended }, 
+      { "391159000", AntibioticProphylaxisNotRecommended }, 
+      { "http://snomed.info/sct#391159000", AntibioticProphylaxisNotRecommended }, 
+      { "394888000", HormoneReplacementTherapyRequested }, 
+      { "http://snomed.info/sct#394888000", HormoneReplacementTherapyRequested }, 
+      { "394987009", AngiotensinIIReceptorAntagonistsContraindicated }, 
+      { "http://snomed.info/sct#394987009", AngiotensinIIReceptorAntagonistsContraindicated }, 
+      { "395006008", MedicationStoppedInteraction }, 
+      { "http://snomed.info/sct#395006008", MedicationStoppedInteraction }, 
+      { "395007004", MedicationStoppedIneffective }, 
+      { "http://snomed.info/sct#395007004", MedicationStoppedIneffective }, 
+      { "395008009", MedicationStoppedContraIndication }, 
+      { "http://snomed.info/sct#395008009", MedicationStoppedContraIndication }, 
+      { "395009001", MedicationStoppedSideEffect }, 
+      { "http://snomed.info/sct#395009001", MedicationStoppedSideEffect }, 
+      { "401084003", AngiotensinIIReceptorAntagonistDeclined }, 
+      { "http://snomed.info/sct#401084003", AngiotensinIIReceptorAntagonistDeclined }, 
+      { "401244004", HOProlongedCorticosteroidTherapy }, 
+      { "http://snomed.info/sct#401244004", HOProlongedCorticosteroidTherapy }, 
+      { "407572003", AngiotensinIIReceptorAntagonistNotIndicated }, 
+      { "http://snomed.info/sct#407572003", AngiotensinIIReceptorAntagonistNotIndicated }, 
+      { "408339001", ThrombolysisTherapyNotIndicated }, 
+      { "http://snomed.info/sct#408339001", ThrombolysisTherapyNotIndicated }, 
+      { "408354007", DrugTreatmentStillNeeded }, 
+      { "http://snomed.info/sct#408354007", DrugTreatmentStillNeeded }, 
+      { "408355008", DrugTreatmentNoLongerNeeded }, 
+      { "http://snomed.info/sct#408355008", DrugTreatmentNoLongerNeeded }, 
+      { "412782003", InappropriateMedicationStopped }, 
+      { "http://snomed.info/sct#412782003", InappropriateMedicationStopped }, 
+      { "413555000", AntibioticProphylaxisIndicated }, 
+      { "http://snomed.info/sct#413555000", AntibioticProphylaxisIndicated }, 
+      { "413558003", AnticoagulationContraindicated }, 
+      { "http://snomed.info/sct#413558003", AnticoagulationContraindicated }, 
+      { "413559006", AnticoagulationDeclined }, 
+      { "http://snomed.info/sct#413559006", AnticoagulationDeclined }, 
+      { "413560001", AnticoagulationNotIndicated }, 
+      { "http://snomed.info/sct#413560001", AnticoagulationNotIndicated }, 
+      { "416404000", AngiotensinConvertingEnzymeInhibitorTargetDoseNotAchieved }, 
+      { "http://snomed.info/sct#416404000", AngiotensinConvertingEnzymeInhibitorTargetDoseNotAchieved }, 
+      { "417576009", DeferredAntibioticTherapy }, 
+      { "http://snomed.info/sct#417576009", DeferredAntibioticTherapy }, 
+      { "430279008", DrugTreatmentStoppedAtEndOfClinicalTrial }, 
+      { "http://snomed.info/sct#430279008", DrugTreatmentStoppedAtEndOfClinicalTrial }, 
+      { "438553004", HODrugTherapy }, 
+      { "http://snomed.info/sct#438553004", HODrugTherapy }, 
+      { "439631004", HOStatinTherapy }, 
+      { "http://snomed.info/sct#439631004", HOStatinTherapy }, 
+      { "440935004", HOBetaBlockerTherapy }, 
+      { "http://snomed.info/sct#440935004", HOBetaBlockerTherapy }, 
+      { "440991005", HONitrateTherapy }, 
+      { "http://snomed.info/sct#440991005", HONitrateTherapy }, 
+      { "441186000", HOAntiplateletAgentTherapy }, 
+      { "http://snomed.info/sct#441186000", HOAntiplateletAgentTherapy }, 
+      { "441195008", HOAngiotensinConvertingEnzymeACEInhibitorTherapy }, 
+      { "http://snomed.info/sct#441195008", HOAngiotensinConvertingEnzymeACEInhibitorTherapy }, 
+      { "441196009", HOAngiotensinIIReceptorAntagonistTherapy }, 
+      { "http://snomed.info/sct#441196009", HOAngiotensinIIReceptorAntagonistTherapy }, 
+      { "441899004", HistoryOfTherapyWithOtotoxicMedication }, 
+      { "http://snomed.info/sct#441899004", HistoryOfTherapyWithOtotoxicMedication }, 
+      { "473151000", HistoryOfTuberculosisChemotherapy }, 
+      { "http://snomed.info/sct#473151000", HistoryOfTuberculosisChemotherapy }, 
+      { "698428006", AngiotensinIIReceptorAntagonistIndicated }, 
+      { "http://snomed.info/sct#698428006", AngiotensinIIReceptorAntagonistIndicated }, 
+      { "698449007", AntibioticTherapyIndicated }, 
+      { "http://snomed.info/sct#698449007", AntibioticTherapyIndicated }, 
+      { "698459008", AntidepressantDrugTreatmentStopped }, 
+      { "http://snomed.info/sct#698459008", AntidepressantDrugTreatmentStopped }, 
+      { "698460003", AntiviralTherapyDeclined }, 
+      { "http://snomed.info/sct#698460003", AntiviralTherapyDeclined }, 
+      { "698468005", BisoprololContraindicated }, 
+      { "http://snomed.info/sct#698468005", BisoprololContraindicated }, 
+      { "698758004", NebivololTherapyRefused }, 
+      { "http://snomed.info/sct#698758004", NebivololTherapyRefused }, 
+      { "698985001", LongTermDualAntiplateletDrugTherapyIndicated }, 
+      { "http://snomed.info/sct#698985001", LongTermDualAntiplateletDrugTherapyIndicated }, 
+      { "699008007", HistoryOfFenfluramineTherapy }, 
+      { "http://snomed.info/sct#699008007", HistoryOfFenfluramineTherapy }, 
+      { "699137009", CarvedilolTherapyDeclined }, 
+      { "http://snomed.info/sct#699137009", CarvedilolTherapyDeclined }, 
+      { "700110004", BisphosphonateProphylaxisSuspended }, 
+      { "http://snomed.info/sct#700110004", BisphosphonateProphylaxisSuspended }, 
+      { "700384008", AntibioticProphylaxisNotIndicated }, 
+      { "http://snomed.info/sct#700384008", AntibioticProphylaxisNotIndicated }, 
+      { "702542006", IncretinMimeticTherapyStarted }, 
+      { "http://snomed.info/sct#702542006", IncretinMimeticTherapyStarted }, 
+      { "703989007", TeriparatideTherapyDeclined }, 
+      { "http://snomed.info/sct#703989007", TeriparatideTherapyDeclined }, 
+      { "703991004", RaloxifeneTherapyDeclined }, 
+      { "http://snomed.info/sct#703991004", RaloxifeneTherapyDeclined }, 
+      { "703996009", TeriparatideNotIndicated }, 
+      { "http://snomed.info/sct#703996009", TeriparatideNotIndicated }, 
+      { "703997000", TeriparatideContraindicated }, 
+      { "http://snomed.info/sct#703997000", TeriparatideContraindicated }, 
+      { "703999002", RaloxifeneContraindicated }, 
+      { "http://snomed.info/sct#703999002", RaloxifeneContraindicated }, 
+      { "704000000", RaloxifeneNotIndicated }, 
+      { "http://snomed.info/sct#704000000", RaloxifeneNotIndicated }, 
+      { "704033005", Phosphodiesterase5InhibitorNotIndicated }, 
+      { "http://snomed.info/sct#704033005", Phosphodiesterase5InhibitorNotIndicated }, 
+      { "704047009", Phosphodiesterase5InhibitorDeclined }, 
+      { "http://snomed.info/sct#704047009", Phosphodiesterase5InhibitorDeclined }, 
+      { "707298000", Phosphodiesterase5InhibitorContraindicated }, 
+      { "http://snomed.info/sct#707298000", Phosphodiesterase5InhibitorContraindicated }, 
+      { "708000007", InsulinTreatmentStopped }, 
+      { "http://snomed.info/sct#708000007", InsulinTreatmentStopped }, 
+      { "710159007", LongTermCurrentUseOfImmunosuppressiveDrug }, 
+      { "http://snomed.info/sct#710159007", LongTermCurrentUseOfImmunosuppressiveDrug }, 
+      { "710814002", LongTermCurrentUseOfDrugTherapy }, 
+      { "http://snomed.info/sct#710814002", LongTermCurrentUseOfDrugTherapy }, 
+      { "710815001", LongTermCurrentUseOfInsulin }, 
+      { "http://snomed.info/sct#710815001", LongTermCurrentUseOfInsulin }, 
+      { "710816000", LongTermCurrentUseOfSteroid }, 
+      { "http://snomed.info/sct#710816000", LongTermCurrentUseOfSteroid }, 
+      { "710817009", LongTermCurrentUseOfInhaledSteroid }, 
+      { "http://snomed.info/sct#710817009", LongTermCurrentUseOfInhaledSteroid }, 
+      { "711149003", LongTermCurrentUseOfAntibiotic }, 
+      { "http://snomed.info/sct#711149003", LongTermCurrentUseOfAntibiotic }, 
+      { "711150003", LongTermCurrentUseOfAnticoagulant }, 
+      { "http://snomed.info/sct#711150003", LongTermCurrentUseOfAnticoagulant }, 
+      { "711370000", OralSteroidsUsedSinceLastEncounter }, 
+      { "http://snomed.info/sct#711370000", OralSteroidsUsedSinceLastEncounter }, 
+      { "711436000", InhaledSteroidsUsedDaily }, 
+      { "http://snomed.info/sct#711436000", InhaledSteroidsUsedDaily }, 
+      { "712985002", ChemotherapyNotDone }, 
+      { "http://snomed.info/sct#712985002", ChemotherapyNotDone }, 
+    };
   };
 }

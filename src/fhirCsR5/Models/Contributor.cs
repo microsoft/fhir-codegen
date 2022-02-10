@@ -177,5 +177,11 @@ namespace fhirCsR5.Models
     public const string EDITOR = "editor";
     public const string REVIEWER = "reviewer";
     public const string ENDORSER = "endorser";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "author",
+      "editor",
+      "reviewer",
+      "endorser",
+    };
   }
 }

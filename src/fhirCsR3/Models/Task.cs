@@ -248,6 +248,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// The value of the input parameter as a basic type.
     /// </summary>
     public string ValueCode { get; set; }
@@ -299,6 +303,10 @@ namespace fhirCsR3.Models
     /// The value of the input parameter as a basic type.
     /// </summary>
     public int? ValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
     /// <summary>
     /// The value of the input parameter as a basic type.
     /// </summary>
@@ -462,6 +470,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(ValueCode))
       {
         writer.WriteString("valueCode", (string)ValueCode!);
@@ -531,6 +545,12 @@ namespace fhirCsR3.Models
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(ValueMarkdown))
@@ -755,6 +775,11 @@ namespace fhirCsR3.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR3.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueCode":
           ValueCode = reader.GetString();
           break;
@@ -811,6 +836,11 @@ namespace fhirCsR3.Models
 
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR3.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueMarkdown":
@@ -1025,6 +1055,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// The value of the Output parameter as a basic type.
     /// </summary>
     public string ValueCode { get; set; }
@@ -1076,6 +1110,10 @@ namespace fhirCsR3.Models
     /// The value of the Output parameter as a basic type.
     /// </summary>
     public int? ValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
     /// <summary>
     /// The value of the Output parameter as a basic type.
     /// </summary>
@@ -1239,6 +1277,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(ValueCode))
       {
         writer.WriteString("valueCode", (string)ValueCode!);
@@ -1308,6 +1352,12 @@ namespace fhirCsR3.Models
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(ValueMarkdown))
@@ -1532,6 +1582,11 @@ namespace fhirCsR3.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR3.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueCode":
           ValueCode = reader.GetString();
           break;
@@ -1588,6 +1643,11 @@ namespace fhirCsR3.Models
 
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR3.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueMarkdown":
@@ -2609,6 +2669,16 @@ namespace fhirCsR3.Models
     public const string FILLER_ORDER = "filler-order";
     public const string INSTANCE_ORDER = "instance-order";
     public const string OPTION = "option";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposal",
+      "plan",
+      "order",
+      "original-order",
+      "reflex-order",
+      "filler-order",
+      "instance-order",
+      "option",
+    };
   }
   /// <summary>
   /// Code Values for the Task.priority field
@@ -2618,6 +2688,12 @@ namespace fhirCsR3.Models
     public const string URGENT = "urgent";
     public const string ASAP = "asap";
     public const string STAT = "stat";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "routine",
+      "urgent",
+      "asap",
+      "stat",
+    };
   }
   /// <summary>
   /// Code Values for the Task.status field
@@ -2635,5 +2711,19 @@ namespace fhirCsR3.Models
     public const string FAILED = "failed";
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "requested",
+      "received",
+      "accepted",
+      "rejected",
+      "ready",
+      "cancelled",
+      "in-progress",
+      "on-hold",
+      "failed",
+      "completed",
+      "entered-in-error",
+    };
   }
 }

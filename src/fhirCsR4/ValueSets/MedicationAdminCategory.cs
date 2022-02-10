@@ -45,13 +45,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommunity = "community";
 
     /// <summary>
+    /// Literal for code: MedicationAdminCategoryCommunity
+    /// </summary>
+    public const string LiteralMedicationAdminCategoryCommunity = "http://terminology.hl7.org/CodeSystem/medication-admin-category#community";
+
+    /// <summary>
     /// Literal for code: Inpatient
     /// </summary>
     public const string LiteralInpatient = "inpatient";
 
     /// <summary>
+    /// Literal for code: MedicationAdminCategoryInpatient
+    /// </summary>
+    public const string LiteralMedicationAdminCategoryInpatient = "http://terminology.hl7.org/CodeSystem/medication-admin-category#inpatient";
+
+    /// <summary>
     /// Literal for code: Outpatient
     /// </summary>
     public const string LiteralOutpatient = "outpatient";
+
+    /// <summary>
+    /// Literal for code: MedicationAdminCategoryOutpatient
+    /// </summary>
+    public const string LiteralMedicationAdminCategoryOutpatient = "http://terminology.hl7.org/CodeSystem/medication-admin-category#outpatient";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationAdminCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "community", Community }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-admin-category#community", Community }, 
+      { "inpatient", Inpatient }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-admin-category#inpatient", Inpatient }, 
+      { "outpatient", Outpatient }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-admin-category#outpatient", Outpatient }, 
+    };
   };
 }

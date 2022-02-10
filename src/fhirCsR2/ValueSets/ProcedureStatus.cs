@@ -54,9 +54,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralAboted = "aborted";
 
     /// <summary>
+    /// Literal for code: ProcedureStatusAboted
+    /// </summary>
+    public const string LiteralProcedureStatusAboted = "http://hl7.org/fhir/procedure-status#aborted";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: ProcedureStatusCompleted
+    /// </summary>
+    public const string LiteralProcedureStatusCompleted = "http://hl7.org/fhir/procedure-status#completed";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -64,8 +74,32 @@ namespace fhirCsR2.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: ProcedureStatusEnteredInError
+    /// </summary>
+    public const string LiteralProcedureStatusEnteredInError = "http://hl7.org/fhir/procedure-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: InProgress
     /// </summary>
     public const string LiteralInProgress = "in-progress";
+
+    /// <summary>
+    /// Literal for code: ProcedureStatusInProgress
+    /// </summary>
+    public const string LiteralProcedureStatusInProgress = "http://hl7.org/fhir/procedure-status#in-progress";
+
+    /// <summary>
+    /// Dictionary for looking up ProcedureStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "aborted", Aboted }, 
+      { "http://hl7.org/fhir/procedure-status#aborted", Aboted }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/procedure-status#completed", Completed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/procedure-status#entered-in-error", EnteredInError }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/procedure-status#in-progress", InProgress }, 
+    };
   };
 }

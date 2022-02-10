@@ -72,9 +72,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralConfounder = "confounder";
 
     /// <summary>
+    /// Literal for code: VariableRoleConfounder
+    /// </summary>
+    public const string LiteralVariableRoleConfounder = "http://terminology.hl7.org/CodeSystem/variable-role#confounder";
+
+    /// <summary>
     /// Literal for code: Exposure
     /// </summary>
     public const string LiteralExposure = "exposure";
+
+    /// <summary>
+    /// Literal for code: VariableRoleExposure
+    /// </summary>
+    public const string LiteralVariableRoleExposure = "http://terminology.hl7.org/CodeSystem/variable-role#exposure";
 
     /// <summary>
     /// Literal for code: MeasuredVariable
@@ -82,9 +92,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMeasuredVariable = "measuredVariable";
 
     /// <summary>
+    /// Literal for code: VariableRoleMeasuredVariable
+    /// </summary>
+    public const string LiteralVariableRoleMeasuredVariable = "http://terminology.hl7.org/CodeSystem/variable-role#measuredVariable";
+
+    /// <summary>
     /// Literal for code: Population
     /// </summary>
     public const string LiteralPopulation = "population";
+
+    /// <summary>
+    /// Literal for code: VariableRolePopulation
+    /// </summary>
+    public const string LiteralVariableRolePopulation = "http://terminology.hl7.org/CodeSystem/variable-role#population";
 
     /// <summary>
     /// Literal for code: ReferenceExposure
@@ -92,8 +112,36 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralReferenceExposure = "referenceExposure";
 
     /// <summary>
+    /// Literal for code: VariableRoleReferenceExposure
+    /// </summary>
+    public const string LiteralVariableRoleReferenceExposure = "http://terminology.hl7.org/CodeSystem/variable-role#referenceExposure";
+
+    /// <summary>
     /// Literal for code: Subpopulation
     /// </summary>
     public const string LiteralSubpopulation = "subpopulation";
+
+    /// <summary>
+    /// Literal for code: VariableRoleSubpopulation
+    /// </summary>
+    public const string LiteralVariableRoleSubpopulation = "http://terminology.hl7.org/CodeSystem/variable-role#subpopulation";
+
+    /// <summary>
+    /// Dictionary for looking up VariableRole Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "confounder", Confounder }, 
+      { "http://terminology.hl7.org/CodeSystem/variable-role#confounder", Confounder }, 
+      { "exposure", Exposure }, 
+      { "http://terminology.hl7.org/CodeSystem/variable-role#exposure", Exposure }, 
+      { "measuredVariable", MeasuredVariable }, 
+      { "http://terminology.hl7.org/CodeSystem/variable-role#measuredVariable", MeasuredVariable }, 
+      { "population", Population }, 
+      { "http://terminology.hl7.org/CodeSystem/variable-role#population", Population }, 
+      { "referenceExposure", ReferenceExposure }, 
+      { "http://terminology.hl7.org/CodeSystem/variable-role#referenceExposure", ReferenceExposure }, 
+      { "subpopulation", Subpopulation }, 
+      { "http://terminology.hl7.org/CodeSystem/variable-role#subpopulation", Subpopulation }, 
+    };
   };
 }

@@ -1029,6 +1029,14 @@ namespace fhirCsR2.Models
     public const string REGEX = "regex";
     public const string VAL_IN = "in";
     public const string NOT_IN = "not-in";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "=",
+      "is-a",
+      "is-not-a",
+      "regex",
+      "in",
+      "not-in",
+    };
   }
   /// <summary>
   /// Include one or more codes from a code system.
@@ -2811,5 +2819,10 @@ namespace fhirCsR2.Models
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+    };
   }
 }

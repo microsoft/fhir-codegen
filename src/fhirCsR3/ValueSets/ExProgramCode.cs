@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChildAsthma = "as";
 
     /// <summary>
+    /// Literal for code: ExProgramCodeChildAsthma
+    /// </summary>
+    public const string LiteralExProgramCodeChildAsthma = "http://hl7.org/fhir/ex-programcode#as";
+
+    /// <summary>
     /// Literal for code: AutismScreening
     /// </summary>
     public const string LiteralAutismScreening = "auscr";
+
+    /// <summary>
+    /// Literal for code: ExProgramCodeAutismScreening
+    /// </summary>
+    public const string LiteralExProgramCodeAutismScreening = "http://hl7.org/fhir/ex-programcode#auscr";
 
     /// <summary>
     /// Literal for code: Heamodialisis
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeamodialisis = "hd";
 
     /// <summary>
+    /// Literal for code: ExProgramCodeHeamodialisis
+    /// </summary>
+    public const string LiteralExProgramCodeHeamodialisis = "http://hl7.org/fhir/ex-programcode#hd";
+
+    /// <summary>
     /// Literal for code: None
     /// </summary>
     public const string LiteralNone = "none";
+
+    /// <summary>
+    /// Literal for code: ExProgramCodeNone
+    /// </summary>
+    public const string LiteralExProgramCodeNone = "http://hl7.org/fhir/ex-programcode#none";
+
+    /// <summary>
+    /// Dictionary for looking up ExProgramCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "as", ChildAsthma }, 
+      { "http://hl7.org/fhir/ex-programcode#as", ChildAsthma }, 
+      { "auscr", AutismScreening }, 
+      { "http://hl7.org/fhir/ex-programcode#auscr", AutismScreening }, 
+      { "hd", Heamodialisis }, 
+      { "http://hl7.org/fhir/ex-programcode#hd", Heamodialisis }, 
+      { "none", None }, 
+      { "http://hl7.org/fhir/ex-programcode#none", None }, 
+    };
   };
 }

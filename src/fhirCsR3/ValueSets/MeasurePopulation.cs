@@ -99,9 +99,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDenominator = "denominator";
 
     /// <summary>
+    /// Literal for code: MeasurePopulationDenominator
+    /// </summary>
+    public const string LiteralMeasurePopulationDenominator = "http://hl7.org/fhir/measure-population#denominator";
+
+    /// <summary>
     /// Literal for code: DenominatorException
     /// </summary>
     public const string LiteralDenominatorException = "denominator-exception";
+
+    /// <summary>
+    /// Literal for code: MeasurePopulationDenominatorException
+    /// </summary>
+    public const string LiteralMeasurePopulationDenominatorException = "http://hl7.org/fhir/measure-population#denominator-exception";
 
     /// <summary>
     /// Literal for code: DenominatorExclusion
@@ -109,9 +119,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDenominatorExclusion = "denominator-exclusion";
 
     /// <summary>
+    /// Literal for code: MeasurePopulationDenominatorExclusion
+    /// </summary>
+    public const string LiteralMeasurePopulationDenominatorExclusion = "http://hl7.org/fhir/measure-population#denominator-exclusion";
+
+    /// <summary>
     /// Literal for code: InitialPopulation
     /// </summary>
     public const string LiteralInitialPopulation = "initial-population";
+
+    /// <summary>
+    /// Literal for code: MeasurePopulationInitialPopulation
+    /// </summary>
+    public const string LiteralMeasurePopulationInitialPopulation = "http://hl7.org/fhir/measure-population#initial-population";
 
     /// <summary>
     /// Literal for code: MeasureObservation
@@ -119,9 +139,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMeasureObservation = "measure-observation";
 
     /// <summary>
+    /// Literal for code: MeasurePopulationMeasureObservation
+    /// </summary>
+    public const string LiteralMeasurePopulationMeasureObservation = "http://hl7.org/fhir/measure-population#measure-observation";
+
+    /// <summary>
     /// Literal for code: MeasurePopulation
     /// </summary>
     public const string LiteralMeasurePopulation = "measure-population";
+
+    /// <summary>
+    /// Literal for code: MeasurePopulationMeasurePopulation
+    /// </summary>
+    public const string LiteralMeasurePopulationMeasurePopulation = "http://hl7.org/fhir/measure-population#measure-population";
 
     /// <summary>
     /// Literal for code: MeasurePopulationExclusion
@@ -129,13 +159,52 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMeasurePopulationExclusion = "measure-population-exclusion";
 
     /// <summary>
+    /// Literal for code: MeasurePopulationMeasurePopulationExclusion
+    /// </summary>
+    public const string LiteralMeasurePopulationMeasurePopulationExclusion = "http://hl7.org/fhir/measure-population#measure-population-exclusion";
+
+    /// <summary>
     /// Literal for code: Numerator
     /// </summary>
     public const string LiteralNumerator = "numerator";
 
     /// <summary>
+    /// Literal for code: MeasurePopulationNumerator
+    /// </summary>
+    public const string LiteralMeasurePopulationNumerator = "http://hl7.org/fhir/measure-population#numerator";
+
+    /// <summary>
     /// Literal for code: NumeratorExclusion
     /// </summary>
     public const string LiteralNumeratorExclusion = "numerator-exclusion";
+
+    /// <summary>
+    /// Literal for code: MeasurePopulationNumeratorExclusion
+    /// </summary>
+    public const string LiteralMeasurePopulationNumeratorExclusion = "http://hl7.org/fhir/measure-population#numerator-exclusion";
+
+    /// <summary>
+    /// Dictionary for looking up MeasurePopulation Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "denominator", Denominator }, 
+      { "http://hl7.org/fhir/measure-population#denominator", Denominator }, 
+      { "denominator-exception", DenominatorException }, 
+      { "http://hl7.org/fhir/measure-population#denominator-exception", DenominatorException }, 
+      { "denominator-exclusion", DenominatorExclusion }, 
+      { "http://hl7.org/fhir/measure-population#denominator-exclusion", DenominatorExclusion }, 
+      { "initial-population", InitialPopulation }, 
+      { "http://hl7.org/fhir/measure-population#initial-population", InitialPopulation }, 
+      { "measure-observation", MeasureObservation }, 
+      { "http://hl7.org/fhir/measure-population#measure-observation", MeasureObservation }, 
+      { "measure-population", MeasurePopulation }, 
+      { "http://hl7.org/fhir/measure-population#measure-population", MeasurePopulation }, 
+      { "measure-population-exclusion", MeasurePopulationExclusion }, 
+      { "http://hl7.org/fhir/measure-population#measure-population-exclusion", MeasurePopulationExclusion }, 
+      { "numerator", Numerator }, 
+      { "http://hl7.org/fhir/measure-population#numerator", Numerator }, 
+      { "numerator-exclusion", NumeratorExclusion }, 
+      { "http://hl7.org/fhir/measure-population#numerator-exclusion", NumeratorExclusion }, 
+    };
   };
 }

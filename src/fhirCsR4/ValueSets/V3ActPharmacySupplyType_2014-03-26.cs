@@ -216,9 +216,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDailyFill = "DF";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDailyFill
+    /// </summary>
+    public const string LiteralV3ActCodeDailyFill = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DF";
+
+    /// <summary>
     /// Literal for code: EmergencySupply
     /// </summary>
     public const string LiteralEmergencySupply = "EM";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEmergencySupply
+    /// </summary>
+    public const string LiteralV3ActCodeEmergencySupply = "http://terminology.hl7.org/CodeSystem/v3-ActCode#EM";
 
     /// <summary>
     /// Literal for code: FirstFill
@@ -226,9 +236,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFirstFill = "FF";
 
     /// <summary>
+    /// Literal for code: V3ActCodeFirstFill
+    /// </summary>
+    public const string LiteralV3ActCodeFirstFill = "http://terminology.hl7.org/CodeSystem/v3-ActCode#FF";
+
+    /// <summary>
     /// Literal for code: FirstFillComplete
     /// </summary>
     public const string LiteralFirstFillComplete = "FFC";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeFirstFillComplete
+    /// </summary>
+    public const string LiteralV3ActCodeFirstFillComplete = "http://terminology.hl7.org/CodeSystem/v3-ActCode#FFC";
 
     /// <summary>
     /// Literal for code: FirstFillPartFill
@@ -236,9 +256,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFirstFillPartFill = "FFP";
 
     /// <summary>
+    /// Literal for code: V3ActCodeFirstFillPartFill
+    /// </summary>
+    public const string LiteralV3ActCodeFirstFillPartFill = "http://terminology.hl7.org/CodeSystem/v3-ActCode#FFP";
+
+    /// <summary>
     /// Literal for code: FirstFillPartialStrength
     /// </summary>
     public const string LiteralFirstFillPartialStrength = "FFSS";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeFirstFillPartialStrength
+    /// </summary>
+    public const string LiteralV3ActCodeFirstFillPartialStrength = "http://terminology.hl7.org/CodeSystem/v3-ActCode#FFSS";
 
     /// <summary>
     /// Literal for code: FloorStock
@@ -246,9 +276,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFloorStock = "FS";
 
     /// <summary>
+    /// Literal for code: V3ActCodeFloorStock
+    /// </summary>
+    public const string LiteralV3ActCodeFloorStock = "http://terminology.hl7.org/CodeSystem/v3-ActCode#FS";
+
+    /// <summary>
     /// Literal for code: ManufacturerSample
     /// </summary>
     public const string LiteralManufacturerSample = "MS";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeManufacturerSample
+    /// </summary>
+    public const string LiteralV3ActCodeManufacturerSample = "http://terminology.hl7.org/CodeSystem/v3-ActCode#MS";
 
     /// <summary>
     /// Literal for code: Refill
@@ -256,9 +296,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRefill = "RF";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRefill
+    /// </summary>
+    public const string LiteralV3ActCodeRefill = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RF";
+
+    /// <summary>
     /// Literal for code: RefillComplete
     /// </summary>
     public const string LiteralRefillComplete = "RFC";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeRefillComplete
+    /// </summary>
+    public const string LiteralV3ActCodeRefillComplete = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RFC";
 
     /// <summary>
     /// Literal for code: RefillCompletePartialStrength
@@ -266,9 +316,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRefillCompletePartialStrength = "RFCS";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRefillCompletePartialStrength
+    /// </summary>
+    public const string LiteralV3ActCodeRefillCompletePartialStrength = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RFCS";
+
+    /// <summary>
     /// Literal for code: RefillFirstFillThisFacility
     /// </summary>
     public const string LiteralRefillFirstFillThisFacility = "RFF";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeRefillFirstFillThisFacility
+    /// </summary>
+    public const string LiteralV3ActCodeRefillFirstFillThisFacility = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RFF";
 
     /// <summary>
     /// Literal for code: RefillPartialStrengthFirstFillThisFacility
@@ -276,9 +336,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRefillPartialStrengthFirstFillThisFacility = "RFFS";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRefillPartialStrengthFirstFillThisFacility
+    /// </summary>
+    public const string LiteralV3ActCodeRefillPartialStrengthFirstFillThisFacility = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RFFS";
+
+    /// <summary>
     /// Literal for code: RefillPartFill
     /// </summary>
     public const string LiteralRefillPartFill = "RFP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeRefillPartFill
+    /// </summary>
+    public const string LiteralV3ActCodeRefillPartFill = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RFP";
 
     /// <summary>
     /// Literal for code: RefillPartFillPartialStrength
@@ -286,9 +356,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRefillPartFillPartialStrength = "RFPS";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRefillPartFillPartialStrength
+    /// </summary>
+    public const string LiteralV3ActCodeRefillPartFillPartialStrength = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RFPS";
+
+    /// <summary>
     /// Literal for code: RefillPartialStrength
     /// </summary>
     public const string LiteralRefillPartialStrength = "RFS";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeRefillPartialStrength
+    /// </summary>
+    public const string LiteralV3ActCodeRefillPartialStrength = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RFS";
 
     /// <summary>
     /// Literal for code: ScriptOwing
@@ -296,9 +376,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralScriptOwing = "SO";
 
     /// <summary>
+    /// Literal for code: V3ActCodeScriptOwing
+    /// </summary>
+    public const string LiteralV3ActCodeScriptOwing = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SO";
+
+    /// <summary>
     /// Literal for code: TrialBalance
     /// </summary>
     public const string LiteralTrialBalance = "TB";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeTrialBalance
+    /// </summary>
+    public const string LiteralV3ActCodeTrialBalance = "http://terminology.hl7.org/CodeSystem/v3-ActCode#TB";
 
     /// <summary>
     /// Literal for code: TrialBalancePartialStrength
@@ -306,9 +396,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrialBalancePartialStrength = "TBS";
 
     /// <summary>
+    /// Literal for code: V3ActCodeTrialBalancePartialStrength
+    /// </summary>
+    public const string LiteralV3ActCodeTrialBalancePartialStrength = "http://terminology.hl7.org/CodeSystem/v3-ActCode#TBS";
+
+    /// <summary>
     /// Literal for code: TrialFill
     /// </summary>
     public const string LiteralTrialFill = "TF";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeTrialFill
+    /// </summary>
+    public const string LiteralV3ActCodeTrialFill = "http://terminology.hl7.org/CodeSystem/v3-ActCode#TF";
 
     /// <summary>
     /// Literal for code: UnitDose
@@ -316,8 +416,68 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnitDose = "UD";
 
     /// <summary>
+    /// Literal for code: V3ActCodeUnitDose
+    /// </summary>
+    public const string LiteralV3ActCodeUnitDose = "http://terminology.hl7.org/CodeSystem/v3-ActCode#UD";
+
+    /// <summary>
     /// Literal for code: UnitDoseEquivalent
     /// </summary>
     public const string LiteralUnitDoseEquivalent = "UDE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeUnitDoseEquivalent
+    /// </summary>
+    public const string LiteralV3ActCodeUnitDoseEquivalent = "http://terminology.hl7.org/CodeSystem/v3-ActCode#UDE";
+
+    /// <summary>
+    /// Dictionary for looking up V3ActPharmacySupplyType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "DF", DailyFill }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DF", DailyFill }, 
+      { "EM", EmergencySupply }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#EM", EmergencySupply }, 
+      { "FF", FirstFill }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#FF", FirstFill }, 
+      { "FFC", FirstFillComplete }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#FFC", FirstFillComplete }, 
+      { "FFP", FirstFillPartFill }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#FFP", FirstFillPartFill }, 
+      { "FFSS", FirstFillPartialStrength }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#FFSS", FirstFillPartialStrength }, 
+      { "FS", FloorStock }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#FS", FloorStock }, 
+      { "MS", ManufacturerSample }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#MS", ManufacturerSample }, 
+      { "RF", Refill }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RF", Refill }, 
+      { "RFC", RefillComplete }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RFC", RefillComplete }, 
+      { "RFCS", RefillCompletePartialStrength }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RFCS", RefillCompletePartialStrength }, 
+      { "RFF", RefillFirstFillThisFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RFF", RefillFirstFillThisFacility }, 
+      { "RFFS", RefillPartialStrengthFirstFillThisFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RFFS", RefillPartialStrengthFirstFillThisFacility }, 
+      { "RFP", RefillPartFill }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RFP", RefillPartFill }, 
+      { "RFPS", RefillPartFillPartialStrength }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RFPS", RefillPartFillPartialStrength }, 
+      { "RFS", RefillPartialStrength }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RFS", RefillPartialStrength }, 
+      { "SO", ScriptOwing }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SO", ScriptOwing }, 
+      { "TB", TrialBalance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#TB", TrialBalance }, 
+      { "TBS", TrialBalancePartialStrength }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#TBS", TrialBalancePartialStrength }, 
+      { "TF", TrialFill }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#TF", TrialFill }, 
+      { "UD", UnitDose }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#UD", UnitDose }, 
+      { "UDE", UnitDoseEquivalent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#UDE", UnitDoseEquivalent }, 
+    };
   };
 }

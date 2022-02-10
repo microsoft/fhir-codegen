@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class V20916Codes
   {
     /// <summary>
-    /// 
+    /// Patient was fasting prior to the procedure.
     /// </summary>
     public static readonly Coding PatientWasFastingPriorToTheProcedure = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0916"
     };
     /// <summary>
-    /// 
+    /// Fasting not asked of the patient at time of procedure.
     /// </summary>
     public static readonly Coding FastingNotAskedOfThePatientAtTimeOfProcedure = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0916"
     };
     /// <summary>
-    /// 
+    /// The patient indicated they did not fast prior to the procedure.
     /// </summary>
     public static readonly Coding ThePatientIndicatedTheyDidNotFastPriorToTheProcedure = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0916"
     };
     /// <summary>
-    /// 
+    /// Not Given - Patient was not asked at the time of the procedure.
     /// </summary>
     public static readonly Coding NotGivenPatientWasNotAskedAtTheTimeOfTheProcedure = new Coding
     {
@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatientWasFastingPriorToTheProcedure = "F";
 
     /// <summary>
+    /// Literal for code: V20916PatientWasFastingPriorToTheProcedure
+    /// </summary>
+    public const string LiteralV20916PatientWasFastingPriorToTheProcedure = "http://terminology.hl7.org/CodeSystem/v2-0916#F";
+
+    /// <summary>
     /// Literal for code: FastingNotAskedOfThePatientAtTimeOfProcedure
     /// </summary>
     public const string LiteralFastingNotAskedOfThePatientAtTimeOfProcedure = "FNA";
+
+    /// <summary>
+    /// Literal for code: V20916FastingNotAskedOfThePatientAtTimeOfProcedure
+    /// </summary>
+    public const string LiteralV20916FastingNotAskedOfThePatientAtTimeOfProcedure = "http://terminology.hl7.org/CodeSystem/v2-0916#FNA";
 
     /// <summary>
     /// Literal for code: ThePatientIndicatedTheyDidNotFastPriorToTheProcedure
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralThePatientIndicatedTheyDidNotFastPriorToTheProcedure = "NF";
 
     /// <summary>
+    /// Literal for code: V20916ThePatientIndicatedTheyDidNotFastPriorToTheProcedure
+    /// </summary>
+    public const string LiteralV20916ThePatientIndicatedTheyDidNotFastPriorToTheProcedure = "http://terminology.hl7.org/CodeSystem/v2-0916#NF";
+
+    /// <summary>
     /// Literal for code: NotGivenPatientWasNotAskedAtTheTimeOfTheProcedure
     /// </summary>
     public const string LiteralNotGivenPatientWasNotAskedAtTheTimeOfTheProcedure = "NG";
+
+    /// <summary>
+    /// Literal for code: V20916NotGivenPatientWasNotAskedAtTheTimeOfTheProcedure
+    /// </summary>
+    public const string LiteralV20916NotGivenPatientWasNotAskedAtTheTimeOfTheProcedure = "http://terminology.hl7.org/CodeSystem/v2-0916#NG";
+
+    /// <summary>
+    /// Dictionary for looking up V20916 Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "F", PatientWasFastingPriorToTheProcedure }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0916#F", PatientWasFastingPriorToTheProcedure }, 
+      { "FNA", FastingNotAskedOfThePatientAtTimeOfProcedure }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0916#FNA", FastingNotAskedOfThePatientAtTimeOfProcedure }, 
+      { "NF", ThePatientIndicatedTheyDidNotFastPriorToTheProcedure }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0916#NF", ThePatientIndicatedTheyDidNotFastPriorToTheProcedure }, 
+      { "NG", NotGivenPatientWasNotAskedAtTheTimeOfTheProcedure }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0916#NG", NotGivenPatientWasNotAskedAtTheTimeOfTheProcedure }, 
+    };
   };
 }

@@ -206,6 +206,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? AuthorizationRequired { get; set; }
     /// <summary>
+    /// Extension container element for AuthorizationRequired
+    /// </summary>
+    public Element _AuthorizationRequired { get; set; }
+    /// <summary>
     /// Codes or comments regarding information or actions associated with the preauthorization.
     /// </summary>
     public List<CodeableConcept> AuthorizationSupporting { get; set; }
@@ -237,6 +241,10 @@ namespace fhirCsR5.Models
     /// True if the indicated class of service is excluded from the plan, missing or False indicates the product or service is included in the coverage.
     /// </summary>
     public bool? Excluded { get; set; }
+    /// <summary>
+    /// Extension container element for Excluded
+    /// </summary>
+    public Element _Excluded { get; set; }
     /// <summary>
     /// For example in Oral whether the treatment is cosmetic or associated with TMJ, or for Medical whether the treatment was outside the clinic or out of office hours.
     /// </summary>
@@ -316,6 +324,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("excluded", (bool)Excluded!);
       }
 
+      if (_Excluded != null)
+      {
+        writer.WritePropertyName("_excluded");
+        _Excluded.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Name))
       {
         writer.WriteString("name", (string)Name!);
@@ -374,6 +388,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("authorizationRequired", (bool)AuthorizationRequired!);
       }
 
+      if (_AuthorizationRequired != null)
+      {
+        writer.WritePropertyName("_authorizationRequired");
+        _AuthorizationRequired.SerializeJson(writer, options);
+      }
+
       if ((AuthorizationSupporting != null) && (AuthorizationSupporting.Count != 0))
       {
         writer.WritePropertyName("authorizationSupporting");
@@ -412,6 +432,11 @@ namespace fhirCsR5.Models
       {
         case "authorizationRequired":
           AuthorizationRequired = reader.GetBoolean();
+          break;
+
+        case "_authorizationRequired":
+          _AuthorizationRequired = new fhirCsR5.Models.Element();
+          _AuthorizationRequired.DeserializeJson(ref reader, options);
           break;
 
         case "authorizationSupporting":
@@ -493,6 +518,11 @@ namespace fhirCsR5.Models
 
         case "excluded":
           Excluded = reader.GetBoolean();
+          break;
+
+        case "_excluded":
+          _Excluded = new fhirCsR5.Models.Element();
+          _Excluded.DeserializeJson(ref reader, options);
           break;
 
         case "modifier":
@@ -605,6 +635,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Inforce { get; set; }
     /// <summary>
+    /// Extension container element for Inforce
+    /// </summary>
+    public Element _Inforce { get; set; }
+    /// <summary>
     /// Benefits and optionally current balances, and authorization details by category or service.
     /// </summary>
     public List<CoverageEligibilityResponseInsuranceItem> Item { get; set; }
@@ -628,6 +662,12 @@ namespace fhirCsR5.Models
       if (Inforce != null)
       {
         writer.WriteBoolean("inforce", (bool)Inforce!);
+      }
+
+      if (_Inforce != null)
+      {
+        writer.WritePropertyName("_inforce");
+        _Inforce.SerializeJson(writer, options);
       }
 
       if (BenefitPeriod != null)
@@ -673,6 +713,11 @@ namespace fhirCsR5.Models
 
         case "inforce":
           Inforce = reader.GetBoolean();
+          break;
+
+        case "_inforce":
+          _Inforce = new fhirCsR5.Models.Element();
+          _Inforce.DeserializeJson(ref reader, options);
           break;
 
         case "item":
@@ -1360,6 +1405,12 @@ namespace fhirCsR5.Models
     public const string COMPLETE = "complete";
     public const string ERROR = "error";
     public const string PARTIAL = "partial";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "queued",
+      "complete",
+      "error",
+      "partial",
+    };
   }
   /// <summary>
   /// Code Values for the CoverageEligibilityResponse.purpose field
@@ -1369,6 +1420,12 @@ namespace fhirCsR5.Models
     public const string BENEFITS = "benefits";
     public const string DISCOVERY = "discovery";
     public const string VALIDATION = "validation";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "auth-requirements",
+      "benefits",
+      "discovery",
+      "validation",
+    };
   }
   /// <summary>
   /// Code Values for the CoverageEligibilityResponse.status field
@@ -1378,5 +1435,11 @@ namespace fhirCsR5.Models
     public const string CANCELLED = "cancelled";
     public const string DRAFT = "draft";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "cancelled",
+      "draft",
+      "entered-in-error",
+    };
   }
 }

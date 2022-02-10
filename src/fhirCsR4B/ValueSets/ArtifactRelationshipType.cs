@@ -234,9 +234,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAmendedWith = "amended-with";
 
     /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeAmendedWith
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeAmendedWith = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#amended-with";
+
+    /// <summary>
     /// Literal for code: Amends
     /// </summary>
     public const string LiteralAmends = "amends";
+
+    /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeAmends
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeAmends = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#amends";
 
     /// <summary>
     /// Literal for code: AppendedWith
@@ -244,9 +254,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAppendedWith = "appended-with";
 
     /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeAppendedWith
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeAppendedWith = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#appended-with";
+
+    /// <summary>
     /// Literal for code: Appends
     /// </summary>
     public const string LiteralAppends = "appends";
+
+    /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeAppends
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeAppends = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#appends";
 
     /// <summary>
     /// Literal for code: CitedBy
@@ -254,9 +274,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCitedBy = "cited-by";
 
     /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeCitedBy
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeCitedBy = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#cited-by";
+
+    /// <summary>
     /// Literal for code: Cites
     /// </summary>
     public const string LiteralCites = "cites";
+
+    /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeCites
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeCites = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#cites";
 
     /// <summary>
     /// Literal for code: CommentIn
@@ -264,9 +294,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCommentIn = "comment-in";
 
     /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeCommentIn
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeCommentIn = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#comment-in";
+
+    /// <summary>
     /// Literal for code: CommentsOn
     /// </summary>
     public const string LiteralCommentsOn = "comments-on";
+
+    /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeCommentsOn
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeCommentsOn = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#comments-on";
 
     /// <summary>
     /// Literal for code: ComposedOf
@@ -274,9 +314,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralComposedOf = "composed-of";
 
     /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeComposedOf
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeComposedOf = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#composed-of";
+
+    /// <summary>
     /// Literal for code: CorrectionIn
     /// </summary>
     public const string LiteralCorrectionIn = "correction-in";
+
+    /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeCorrectionIn
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeCorrectionIn = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#correction-in";
 
     /// <summary>
     /// Literal for code: Corrects
@@ -284,9 +334,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCorrects = "corrects";
 
     /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeCorrects
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeCorrects = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#corrects";
+
+    /// <summary>
     /// Literal for code: DependsOn
     /// </summary>
     public const string LiteralDependsOn = "depends-on";
+
+    /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeDependsOn
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeDependsOn = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#depends-on";
 
     /// <summary>
     /// Literal for code: DerivedFrom
@@ -294,9 +354,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDerivedFrom = "derived-from";
 
     /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeDerivedFrom
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeDerivedFrom = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#derived-from";
+
+    /// <summary>
     /// Literal for code: PartOf
     /// </summary>
     public const string LiteralPartOf = "part-of";
+
+    /// <summary>
+    /// Literal for code: ArtifactRelationshipTypePartOf
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypePartOf = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#part-of";
 
     /// <summary>
     /// Literal for code: ReplacedWith
@@ -304,9 +374,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralReplacedWith = "replaced-with";
 
     /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeReplacedWith
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeReplacedWith = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#replaced-with";
+
+    /// <summary>
     /// Literal for code: Replaces
     /// </summary>
     public const string LiteralReplaces = "replaces";
+
+    /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeReplaces
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeReplaces = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#replaces";
 
     /// <summary>
     /// Literal for code: RetractedBy
@@ -314,9 +394,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRetractedBy = "retracted-by";
 
     /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeRetractedBy
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeRetractedBy = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#retracted-by";
+
+    /// <summary>
     /// Literal for code: Retracts
     /// </summary>
     public const string LiteralRetracts = "retracts";
+
+    /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeRetracts
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeRetracts = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#retracts";
 
     /// <summary>
     /// Literal for code: SimilarTo
@@ -324,9 +414,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSimilarTo = "similar-to";
 
     /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeSimilarTo
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeSimilarTo = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#similar-to";
+
+    /// <summary>
     /// Literal for code: SupportedWith
     /// </summary>
     public const string LiteralSupportedWith = "supported-with";
+
+    /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeSupportedWith
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeSupportedWith = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#supported-with";
 
     /// <summary>
     /// Literal for code: Supports
@@ -334,9 +434,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSupports = "supports";
 
     /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeSupports
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeSupports = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#supports";
+
+    /// <summary>
     /// Literal for code: TransformedInto
     /// </summary>
     public const string LiteralTransformedInto = "transformed-into";
+
+    /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeTransformedInto
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeTransformedInto = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#transformed-into";
 
     /// <summary>
     /// Literal for code: TransformedWith
@@ -344,8 +454,72 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTransformedWith = "transformed-with";
 
     /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeTransformedWith
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeTransformedWith = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#transformed-with";
+
+    /// <summary>
     /// Literal for code: Transforms
     /// </summary>
     public const string LiteralTransforms = "transforms";
+
+    /// <summary>
+    /// Literal for code: ArtifactRelationshipTypeTransforms
+    /// </summary>
+    public const string LiteralArtifactRelationshipTypeTransforms = "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#transforms";
+
+    /// <summary>
+    /// Dictionary for looking up ArtifactRelationshipType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "amended-with", AmendedWith }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#amended-with", AmendedWith }, 
+      { "amends", Amends }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#amends", Amends }, 
+      { "appended-with", AppendedWith }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#appended-with", AppendedWith }, 
+      { "appends", Appends }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#appends", Appends }, 
+      { "cited-by", CitedBy }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#cited-by", CitedBy }, 
+      { "cites", Cites }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#cites", Cites }, 
+      { "comment-in", CommentIn }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#comment-in", CommentIn }, 
+      { "comments-on", CommentsOn }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#comments-on", CommentsOn }, 
+      { "composed-of", ComposedOf }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#composed-of", ComposedOf }, 
+      { "correction-in", CorrectionIn }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#correction-in", CorrectionIn }, 
+      { "corrects", Corrects }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#corrects", Corrects }, 
+      { "depends-on", DependsOn }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#depends-on", DependsOn }, 
+      { "derived-from", DerivedFrom }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#derived-from", DerivedFrom }, 
+      { "part-of", PartOf }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#part-of", PartOf }, 
+      { "replaced-with", ReplacedWith }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#replaced-with", ReplacedWith }, 
+      { "replaces", Replaces }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#replaces", Replaces }, 
+      { "retracted-by", RetractedBy }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#retracted-by", RetractedBy }, 
+      { "retracts", Retracts }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#retracts", Retracts }, 
+      { "similar-to", SimilarTo }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#similar-to", SimilarTo }, 
+      { "supported-with", SupportedWith }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#supported-with", SupportedWith }, 
+      { "supports", Supports }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#supports", Supports }, 
+      { "transformed-into", TransformedInto }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#transformed-into", TransformedInto }, 
+      { "transformed-with", TransformedWith }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#transformed-with", TransformedWith }, 
+      { "transforms", Transforms }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-relationship-type#transforms", Transforms }, 
+    };
   };
 }

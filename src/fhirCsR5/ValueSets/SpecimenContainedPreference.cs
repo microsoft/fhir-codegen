@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAlternate = "alternate";
 
     /// <summary>
+    /// Literal for code: SpecimenContainedPreferenceAlternate
+    /// </summary>
+    public const string LiteralSpecimenContainedPreferenceAlternate = "http://hl7.org/fhir/specimen-contained-preference#alternate";
+
+    /// <summary>
     /// Literal for code: Preferred
     /// </summary>
     public const string LiteralPreferred = "preferred";
+
+    /// <summary>
+    /// Literal for code: SpecimenContainedPreferencePreferred
+    /// </summary>
+    public const string LiteralSpecimenContainedPreferencePreferred = "http://hl7.org/fhir/specimen-contained-preference#preferred";
+
+    /// <summary>
+    /// Dictionary for looking up SpecimenContainedPreference Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "alternate", Alternate }, 
+      { "http://hl7.org/fhir/specimen-contained-preference#alternate", Alternate }, 
+      { "preferred", Preferred }, 
+      { "http://hl7.org/fhir/specimen-contained-preference#preferred", Preferred }, 
+    };
   };
 }

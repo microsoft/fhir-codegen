@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class DietTypeCodes
   {
     /// <summary>
-    /// 
+    /// Dietary Approaches to Stop Hypertension diet (regime/therapy)
     /// </summary>
     public static readonly Coding DietaryApproachesToStopHypertensionDietRegimeTherapy = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dietary regime
     /// </summary>
     public static readonly Coding DietaryRegime = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dietary prophylaxis
     /// </summary>
     public static readonly Coding DietaryProphylaxis = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low carbohydrate diet - prophylaxis
     /// </summary>
     public static readonly Coding LowCarbohydrateDietProphylaxis = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low calorie diet - prophylaxis
     /// </summary>
     public static readonly Coding LowCalorieDietProphylaxis = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low salt diet - prophylaxis
     /// </summary>
     public static readonly Coding LowSaltDietProphylaxis = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salt free diet - prophylaxis
     /// </summary>
     public static readonly Coding SaltFreeDietProphylaxis = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low protein diet - prophylaxis
     /// </summary>
     public static readonly Coding LowProteinDietProphylaxis = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Unsaturated fat diet - prophylaxis
     /// </summary>
     public static readonly Coding UnsaturatedFatDietProphylaxis = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal tube feeding
     /// </summary>
     public static readonly Coding NasalTubeFeeding = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Provision of a special diet
     /// </summary>
     public static readonly Coding ProvisionOfASpecialDiet = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PEG - Percutaneous endoscopic gastrostomy feeding
     /// </summary>
     public static readonly Coding PEGPercutaneousEndoscopicGastrostomyFeeding = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jejunostomy feeding
     /// </summary>
     public static readonly Coding JejunostomyFeeding = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enteral feeding
     /// </summary>
     public static readonly Coding EnteralFeeding = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral tube feeding
     /// </summary>
     public static readonly Coding OralTubeFeeding = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasogastric feeding
     /// </summary>
     public static readonly Coding NasogastricFeeding = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasoduodenal feeding
     /// </summary>
     public static readonly Coding NasoduodenalFeeding = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Esophagostomy feeding
     /// </summary>
     public static readonly Coding EsophagostomyFeeding = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastrostomy feeding
     /// </summary>
     public static readonly Coding GastrostomyFeeding = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dietary treatment for disorder
     /// </summary>
     public static readonly Coding DietaryTreatmentForDisorder = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Button gastrostomy feeding
     /// </summary>
     public static readonly Coding ButtonGastrostomyFeeding = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasojejunal feeding
     /// </summary>
     public static readonly Coding NasojejunalFeeding = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prescribed dietary intake
     /// </summary>
     public static readonly Coding PrescribedDietaryIntake = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diet staging (regime/therapy)
     /// </summary>
     public static readonly Coding DietStagingRegimeTherapy = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tube feeding by syringe method
     /// </summary>
     public static readonly Coding TubeFeedingBySyringeMethod = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wheat-free diet
     /// </summary>
     public static readonly Coding WheatFreeDiet = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Advance diet as tolerated (regime/therapy)
     /// </summary>
     public static readonly Coding AdvanceDietAsToleratedRegimeTherapy = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lactose-free diet (regime/therapy)
     /// </summary>
     public static readonly Coding LactoseFreeDietRegimeTherapy = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carbohydrate modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding CarbohydrateModifiedDietRegimeTherapy = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Consistent carbohydrate diet (regime/therapy)
     /// </summary>
     public static readonly Coding ConsistentCarbohydrateDietRegimeTherapy = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Galactose modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding GalactoseModifiedDietRegimeTherapy = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cholesterol modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding CholesterolModifiedDietRegimeTherapy = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dietary liquid consistency diet (regime/therapy)
     /// </summary>
     public static readonly Coding DietaryLiquidConsistencyDietRegimeTherapy = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diet modified for specific foods or ingredients (regime/therapy)
     /// </summary>
     public static readonly Coding DietModifiedForSpecificFoodsOrIngredientsRegimeTherapy = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Energy modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding EnergyModifiedDietRegimeTherapy = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fat modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding FatModifiedDietRegimeTherapy = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fiber modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding FiberModifiedDietRegimeTherapy = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liquid diet (regime/therapy)
     /// </summary>
     public static readonly Coding LiquidDietRegimeTherapy = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clear liquid diet (regime/therapy)
     /// </summary>
     public static readonly Coding ClearLiquidDietRegimeTherapy = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Full liquid diet (regime/therapy)
     /// </summary>
     public static readonly Coding FullLiquidDietRegimeTherapy = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General healthful diet (regime/therapy)
     /// </summary>
     public static readonly Coding GeneralHealthfulDietRegimeTherapy = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mineral modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding MineralModifiedDietRegimeTherapy = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protein modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding ProteinModifiedDietRegimeTherapy = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Texture modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding TextureModifiedDietRegimeTherapy = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding VitaminModifiedDietRegimeTherapy = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lactose modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding LactoseModifiedDietRegimeTherapy = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased lactose diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedLactoseDietRegimeTherapy = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased carbohydrate diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedCarbohydrateDietRegimeTherapy = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased carbohydrate diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedCarbohydrateDietRegimeTherapy = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased galactose diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedGalactoseDietRegimeTherapy = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased cholesterol diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedCholesterolDietRegimeTherapy = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased energy diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedEnergyDietRegimeTherapy = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased energy diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedEnergyDietRegimeTherapy = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased fat diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedFatDietRegimeTherapy = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased fat diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedFatDietRegimeTherapy = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monounsaturated fat modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding MonounsaturatedFatModifiedDietRegimeTherapy = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polyunsaturated fat modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding PolyunsaturatedFatModifiedDietRegimeTherapy = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Saturated fat modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding SaturatedFatModifiedDietRegimeTherapy = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trans fat modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding TransFatModifiedDietRegimeTherapy = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased monounsaturated fat diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedMonounsaturatedFatDietRegimeTherapy = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased monounsaturated fat diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedMonounsaturatedFatDietRegimeTherapy = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased polyunsaturated fat diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedPolyunsaturatedFatDietRegimeTherapy = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased polyunsaturated fat diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedPolyunsaturatedFatDietRegimeTherapy = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased saturated fat diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedSaturatedFatDietRegimeTherapy = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased trans fat diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedTransFatDietRegimeTherapy = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased fiber diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedFiberDietRegimeTherapy = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased fiber diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedFiberDietRegimeTherapy = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soluble fiber modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding SolubleFiberModifiedDietRegimeTherapy = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insoluble fiber modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding InsolubleFiberModifiedDietRegimeTherapy = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased soluble fiber diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedSolubleFiberDietRegimeTherapy = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased soluble fiber diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedSolubleFiberDietRegimeTherapy = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased insoluble fiber diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedInsolubleFiberDietRegimeTherapy = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased insoluble fiber diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedInsolubleFiberDietRegimeTherapy = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boron modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding BoronModifiedDietRegimeTherapy = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calcium modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding CalciumModifiedDietRegimeTherapy = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chloride modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding ChlorideModifiedDietRegimeTherapy = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chromium modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding ChromiumModifiedDietRegimeTherapy = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cobalt modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding CobaltModifiedDietRegimeTherapy = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Copper modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding CopperModifiedDietRegimeTherapy = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluoride modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding FluorideModifiedDietRegimeTherapy = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iodine modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding IodineModifiedDietRegimeTherapy = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Iron modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding IronModifiedDietRegimeTherapy = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnesium modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding MagnesiumModifiedDietRegimeTherapy = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manganese modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding ManganeseModifiedDietRegimeTherapy = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Molybdenum modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding MolybdenumModifiedDietRegimeTherapy = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phosphorus modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding PhosphorusModifiedDietRegimeTherapy = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Potassium modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding PotassiumModifiedDietRegimeTherapy = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Selenium modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding SeleniumModifiedDietRegimeTherapy = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sodium modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding SodiumModifiedDietRegimeTherapy = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sulfur modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding SulfurModifiedDietRegimeTherapy = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zinc modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding ZincModifiedDietRegimeTherapy = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased calcium diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedCalciumDietRegimeTherapy = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased calcium diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedCalciumDietRegimeTherapy = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased chromium diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedChromiumDietRegimeTherapy = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased copper diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedCopperDietRegimeTherapy = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased copper diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedCopperDietRegimeTherapy = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased iodine diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedIodineDietRegimeTherapy = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased iodine diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedIodineDietRegimeTherapy = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased iron diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedIronDietRegimeTherapy = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased iron diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedIronDietRegimeTherapy = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased magnesium diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedMagnesiumDietRegimeTherapy = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased magnesium diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedMagnesiumDietRegimeTherapy = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased phosphorus diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedPhosphorusDietRegimeTherapy = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased phosphorus diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedPhosphorusDietRegimeTherapy = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// High potassium diet
     /// </summary>
     public static readonly Coding HighPotassiumDiet = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased potassium diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedPotassiumDietRegimeTherapy = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased sodium diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedSodiumDietRegimeTherapy = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased sodium diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedSodiumDietRegimeTherapy = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased zinc diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedZincDietRegimeTherapy = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased zinc diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedZincDietRegimeTherapy = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Consistent protein diet (regime/therapy)
     /// </summary>
     public static readonly Coding ConsistentProteinDietRegimeTherapy = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased protein diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedProteinDietRegimeTherapy = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased protein diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedProteinDietRegimeTherapy = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amino acid modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding AminoAcidModifiedDietRegimeTherapy = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arginine modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding ArginineModifiedDietRegimeTherapy = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glutamine modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding GlutamineModifiedDietRegimeTherapy = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Histidine modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding HistidineModifiedDietRegimeTherapy = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased homocysteine diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedHomocysteineDietRegimeTherapy = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isoleucine modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding IsoleucineModifiedDietRegimeTherapy = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leucine modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding LeucineModifiedDietRegimeTherapy = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lysine modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding LysineModifiedDietRegimeTherapy = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Methionine modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding MethionineModifiedDietRegimeTherapy = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased phenylalanine diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedPhenylalanineDietRegimeTherapy = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Threonine modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding ThreonineModifiedDietRegimeTherapy = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tryptophan modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding TryptophanModifiedDietRegimeTherapy = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased tyramine diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedTyramineDietRegimeTherapy = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tyrosine modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding TyrosineModifiedDietRegimeTherapy = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Valine modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding ValineModifiedDietRegimeTherapy = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased casein diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedCaseinDietRegimeTherapy = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased gluten diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedGlutenDietRegimeTherapy = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gluten free diet (regime/therapy)
     /// </summary>
     public static readonly Coding GlutenFreeDietRegimeTherapy = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased arginine diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedArginineDietRegimeTherapy = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased arginine diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedArginineDietRegimeTherapy = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased glutamine diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedGlutamineDietRegimeTherapy = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased glutamine diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedGlutamineDietRegimeTherapy = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased histidine diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedHistidineDietRegimeTherapy = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased histidine diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedHistidineDietRegimeTherapy = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased isoleucine diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedIsoleucineDietRegimeTherapy = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased isoleucine diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedIsoleucineDietRegimeTherapy = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased leucine diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedLeucineDietRegimeTherapy = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased leucine diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedLeucineDietRegimeTherapy = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased lysine diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedLysineDietRegimeTherapy = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased lysine diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedLysineDietRegimeTherapy = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased methionine diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedMethionineDietRegimeTherapy = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased methionine diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedMethionineDietRegimeTherapy = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased threonine diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedThreonineDietRegimeTherapy = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased threonine diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedThreonineDietRegimeTherapy = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased tryptophan diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedTryptophanDietRegimeTherapy = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased tryptophan diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedTryptophanDietRegimeTherapy = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased tyrosine diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedTyrosineDietRegimeTherapy = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased tyrosine diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedTyrosineDietRegimeTherapy = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased valine diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedValineDietRegimeTherapy = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased valine diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedValineDietRegimeTherapy = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biotin modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding BiotinModifiedDietRegimeTherapy = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Folic acid modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding FolicAcidModifiedDietRegimeTherapy = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Niacin modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding NiacinModifiedDietRegimeTherapy = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pantothenic acid modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding PantothenicAcidModifiedDietRegimeTherapy = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Riboflavin modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding RiboflavinModifiedDietRegimeTherapy = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thiamine modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding ThiamineModifiedDietRegimeTherapy = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin A modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding VitaminAModifiedDietRegimeTherapy = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin B6 modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding VitaminB6ModifiedDietRegimeTherapy = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin B12 modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding VitaminB12ModifiedDietRegimeTherapy = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin C modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding VitaminCModifiedDietRegimeTherapy = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin D modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding VitaminDModifiedDietRegimeTherapy = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin E modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding VitaminEModifiedDietRegimeTherapy = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vitamin K modified diet (regime/therapy)
     /// </summary>
     public static readonly Coding VitaminKModifiedDietRegimeTherapy = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased biotin diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedBiotinDietRegimeTherapy = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased biotin diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedBiotinDietRegimeTherapy = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased folic acid diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedFolicAcidDietRegimeTherapy = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased folic acid diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedFolicAcidDietRegimeTherapy = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased niacin diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedNiacinDietRegimeTherapy = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased niacin diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedNiacinDietRegimeTherapy = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased pantothenic acid diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedPantothenicAcidDietRegimeTherapy = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased pantothenic acid diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedPantothenicAcidDietRegimeTherapy = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased riboflavin diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedRiboflavinDietRegimeTherapy = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased riboflavin diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedRiboflavinDietRegimeTherapy = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased thiamine diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedThiamineDietRegimeTherapy = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased thiamine diet
     /// </summary>
     public static readonly Coding DecreasedThiamineDiet = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased vitamin A diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedVitaminADietRegimeTherapy = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased vitamin A diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedVitaminADietRegimeTherapy = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased vitamin B12 diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedVitaminB12DietRegimeTherapy = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased vitamin B12 diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedVitaminB12DietRegimeTherapy = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased vitamin B6 diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedVitaminB6DietRegimeTherapy = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased vitamin B6 diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedVitaminB6DietRegimeTherapy = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased vitamin C diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedVitaminCDietRegimeTherapy = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased vitamin C diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedVitaminCDietRegimeTherapy = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased vitamin D diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedVitaminDDietRegimeTherapy = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased vitamin D diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedVitaminDDietRegimeTherapy = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased vitamin E diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedVitaminEDietRegimeTherapy = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased vitamin E diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedVitaminEDietRegimeTherapy = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased vitamin K diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedVitaminKDietRegimeTherapy = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased vitamin K diet (regime/therapy)
     /// </summary>
     public static readonly Coding DecreasedVitaminKDietRegimeTherapy = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dietary liquid consistency - nectar thick liquid (regime/therapy)
     /// </summary>
     public static readonly Coding DietaryLiquidConsistencyNectarThickLiquidRegimeTherapy = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dietary liquid consistency - honey thick liquid (regime/therapy)
     /// </summary>
     public static readonly Coding DietaryLiquidConsistencyHoneyThickLiquidRegimeTherapy = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dietary liquid consistency - spoon thick liquid (regime/therapy)
     /// </summary>
     public static readonly Coding DietaryLiquidConsistencySpoonThickLiquidRegimeTherapy = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluid restricted diet (regime/therapy)
     /// </summary>
     public static readonly Coding FluidRestrictedDietRegimeTherapy = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased fluid diet (regime/therapy)
     /// </summary>
     public static readonly Coding IncreasedFluidDietRegimeTherapy = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dietary liquid consistency - thin liquid (regime/therapy)
     /// </summary>
     public static readonly Coding DietaryLiquidConsistencyThinLiquidRegimeTherapy = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Easy to chew diet (regime/therapy)
     /// </summary>
     public static readonly Coding EasyToChewDietRegimeTherapy = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mechanically altered diet (regime/therapy)
     /// </summary>
     public static readonly Coding MechanicallyAlteredDietRegimeTherapy = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pureed diet (regime/therapy)
     /// </summary>
     public static readonly Coding PureedDietRegimeTherapy = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Modification of nutritional regime (regime/therapy)
     /// </summary>
     public static readonly Coding ModificationOfNutritionalRegimeRegimeTherapy = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Modification of schedule of oral intake (regime/therapy)
     /// </summary>
     public static readonly Coding ModificationOfScheduleOfOralIntakeRegimeTherapy = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tube feeding by Barron pump
     /// </summary>
     public static readonly Coding TubeFeedingByBarronPump = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tube feeding by drip method
     /// </summary>
     public static readonly Coding TubeFeedingByDripMethod = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tube feeding of patient
     /// </summary>
     public static readonly Coding TubeFeedingOfPatient = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Modified fluid diet (regime/therapy)
     /// </summary>
     public static readonly Coding ModifiedFluidDietRegimeTherapy = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vegetarian diet (regime/therapy)
     /// </summary>
     public static readonly Coding VegetarianDietRegimeTherapy = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lacto-vegetarian diet
     /// </summary>
     public static readonly Coding LactoVegetarianDiet = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lacto-ovo-vegetarian diet
     /// </summary>
     public static readonly Coding LactoOvoVegetarianDiet = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atkins diet
     /// </summary>
     public static readonly Coding AtkinsDiet = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kosher diet
     /// </summary>
     public static readonly Coding KosherDiet = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hindu diet (regime/therapy)
     /// </summary>
     public static readonly Coding HinduDietRegimeTherapy = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low fructose diet (regime/therapy)
     /// </summary>
     public static readonly Coding LowFructoseDietRegimeTherapy = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ketogenic diet
     /// </summary>
     public static readonly Coding KetogenicDiet = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cantonese diet
     /// </summary>
     public static readonly Coding CantoneseDiet = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fasting
     /// </summary>
     public static readonly Coding Fasting = new Coding
     {
@@ -1971,9 +1971,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDietaryApproachesToStopHypertensionDietRegimeTherapy = "1151000175103";
 
     /// <summary>
+    /// Literal for code: NONEDietaryApproachesToStopHypertensionDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDietaryApproachesToStopHypertensionDietRegimeTherapy = "http://snomed.info/sct#1151000175103";
+
+    /// <summary>
     /// Literal for code: DietaryRegime
     /// </summary>
     public const string LiteralDietaryRegime = "182922004";
+
+    /// <summary>
+    /// Literal for code: NONEDietaryRegime
+    /// </summary>
+    public const string LiteralNONEDietaryRegime = "http://snomed.info/sct#182922004";
 
     /// <summary>
     /// Literal for code: DietaryProphylaxis
@@ -1981,9 +1991,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDietaryProphylaxis = "182954008";
 
     /// <summary>
+    /// Literal for code: NONEDietaryProphylaxis
+    /// </summary>
+    public const string LiteralNONEDietaryProphylaxis = "http://snomed.info/sct#182954008";
+
+    /// <summary>
     /// Literal for code: LowCarbohydrateDietProphylaxis
     /// </summary>
     public const string LiteralLowCarbohydrateDietProphylaxis = "182955009";
+
+    /// <summary>
+    /// Literal for code: NONELowCarbohydrateDietProphylaxis
+    /// </summary>
+    public const string LiteralNONELowCarbohydrateDietProphylaxis = "http://snomed.info/sct#182955009";
 
     /// <summary>
     /// Literal for code: LowCalorieDietProphylaxis
@@ -1991,9 +2011,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLowCalorieDietProphylaxis = "182956005";
 
     /// <summary>
+    /// Literal for code: NONELowCalorieDietProphylaxis
+    /// </summary>
+    public const string LiteralNONELowCalorieDietProphylaxis = "http://snomed.info/sct#182956005";
+
+    /// <summary>
     /// Literal for code: LowSaltDietProphylaxis
     /// </summary>
     public const string LiteralLowSaltDietProphylaxis = "182957001";
+
+    /// <summary>
+    /// Literal for code: NONELowSaltDietProphylaxis
+    /// </summary>
+    public const string LiteralNONELowSaltDietProphylaxis = "http://snomed.info/sct#182957001";
 
     /// <summary>
     /// Literal for code: SaltFreeDietProphylaxis
@@ -2001,9 +2031,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSaltFreeDietProphylaxis = "182958006";
 
     /// <summary>
+    /// Literal for code: NONESaltFreeDietProphylaxis
+    /// </summary>
+    public const string LiteralNONESaltFreeDietProphylaxis = "http://snomed.info/sct#182958006";
+
+    /// <summary>
     /// Literal for code: LowProteinDietProphylaxis
     /// </summary>
     public const string LiteralLowProteinDietProphylaxis = "182959003";
+
+    /// <summary>
+    /// Literal for code: NONELowProteinDietProphylaxis
+    /// </summary>
+    public const string LiteralNONELowProteinDietProphylaxis = "http://snomed.info/sct#182959003";
 
     /// <summary>
     /// Literal for code: UnsaturatedFatDietProphylaxis
@@ -2011,9 +2051,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUnsaturatedFatDietProphylaxis = "182960008";
 
     /// <summary>
+    /// Literal for code: NONEUnsaturatedFatDietProphylaxis
+    /// </summary>
+    public const string LiteralNONEUnsaturatedFatDietProphylaxis = "http://snomed.info/sct#182960008";
+
+    /// <summary>
     /// Literal for code: NasalTubeFeeding
     /// </summary>
     public const string LiteralNasalTubeFeeding = "183028005";
+
+    /// <summary>
+    /// Literal for code: NONENasalTubeFeeding
+    /// </summary>
+    public const string LiteralNONENasalTubeFeeding = "http://snomed.info/sct#183028005";
 
     /// <summary>
     /// Literal for code: ProvisionOfASpecialDiet
@@ -2021,9 +2071,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProvisionOfASpecialDiet = "223456000";
 
     /// <summary>
+    /// Literal for code: NONEProvisionOfASpecialDiet
+    /// </summary>
+    public const string LiteralNONEProvisionOfASpecialDiet = "http://snomed.info/sct#223456000";
+
+    /// <summary>
     /// Literal for code: PEGPercutaneousEndoscopicGastrostomyFeeding
     /// </summary>
     public const string LiteralPEGPercutaneousEndoscopicGastrostomyFeeding = "225373002";
+
+    /// <summary>
+    /// Literal for code: NONEPEGPercutaneousEndoscopicGastrostomyFeeding
+    /// </summary>
+    public const string LiteralNONEPEGPercutaneousEndoscopicGastrostomyFeeding = "http://snomed.info/sct#225373002";
 
     /// <summary>
     /// Literal for code: JejunostomyFeeding
@@ -2031,9 +2091,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralJejunostomyFeeding = "225374008";
 
     /// <summary>
+    /// Literal for code: NONEJejunostomyFeeding
+    /// </summary>
+    public const string LiteralNONEJejunostomyFeeding = "http://snomed.info/sct#225374008";
+
+    /// <summary>
     /// Literal for code: EnteralFeeding
     /// </summary>
     public const string LiteralEnteralFeeding = "229912004";
+
+    /// <summary>
+    /// Literal for code: NONEEnteralFeeding
+    /// </summary>
+    public const string LiteralNONEEnteralFeeding = "http://snomed.info/sct#229912004";
 
     /// <summary>
     /// Literal for code: OralTubeFeeding
@@ -2041,9 +2111,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOralTubeFeeding = "229913009";
 
     /// <summary>
+    /// Literal for code: NONEOralTubeFeeding
+    /// </summary>
+    public const string LiteralNONEOralTubeFeeding = "http://snomed.info/sct#229913009";
+
+    /// <summary>
     /// Literal for code: NasogastricFeeding
     /// </summary>
     public const string LiteralNasogastricFeeding = "229914003";
+
+    /// <summary>
+    /// Literal for code: NONENasogastricFeeding
+    /// </summary>
+    public const string LiteralNONENasogastricFeeding = "http://snomed.info/sct#229914003";
 
     /// <summary>
     /// Literal for code: NasoduodenalFeeding
@@ -2051,9 +2131,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNasoduodenalFeeding = "229915002";
 
     /// <summary>
+    /// Literal for code: NONENasoduodenalFeeding
+    /// </summary>
+    public const string LiteralNONENasoduodenalFeeding = "http://snomed.info/sct#229915002";
+
+    /// <summary>
     /// Literal for code: EsophagostomyFeeding
     /// </summary>
     public const string LiteralEsophagostomyFeeding = "229916001";
+
+    /// <summary>
+    /// Literal for code: NONEEsophagostomyFeeding
+    /// </summary>
+    public const string LiteralNONEEsophagostomyFeeding = "http://snomed.info/sct#229916001";
 
     /// <summary>
     /// Literal for code: GastrostomyFeeding
@@ -2061,9 +2151,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGastrostomyFeeding = "229917005";
 
     /// <summary>
+    /// Literal for code: NONEGastrostomyFeeding
+    /// </summary>
+    public const string LiteralNONEGastrostomyFeeding = "http://snomed.info/sct#229917005";
+
+    /// <summary>
     /// Literal for code: DietaryTreatmentForDisorder
     /// </summary>
     public const string LiteralDietaryTreatmentForDisorder = "284071006";
+
+    /// <summary>
+    /// Literal for code: NONEDietaryTreatmentForDisorder
+    /// </summary>
+    public const string LiteralNONEDietaryTreatmentForDisorder = "http://snomed.info/sct#284071006";
 
     /// <summary>
     /// Literal for code: ButtonGastrostomyFeeding
@@ -2071,9 +2171,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralButtonGastrostomyFeeding = "289133003";
 
     /// <summary>
+    /// Literal for code: NONEButtonGastrostomyFeeding
+    /// </summary>
+    public const string LiteralNONEButtonGastrostomyFeeding = "http://snomed.info/sct#289133003";
+
+    /// <summary>
     /// Literal for code: NasojejunalFeeding
     /// </summary>
     public const string LiteralNasojejunalFeeding = "310244003";
+
+    /// <summary>
+    /// Literal for code: NONENasojejunalFeeding
+    /// </summary>
+    public const string LiteralNONENasojejunalFeeding = "http://snomed.info/sct#310244003";
 
     /// <summary>
     /// Literal for code: PrescribedDietaryIntake
@@ -2081,9 +2191,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPrescribedDietaryIntake = "361231003";
 
     /// <summary>
+    /// Literal for code: NONEPrescribedDietaryIntake
+    /// </summary>
+    public const string LiteralNONEPrescribedDietaryIntake = "http://snomed.info/sct#361231003";
+
+    /// <summary>
     /// Literal for code: DietStagingRegimeTherapy
     /// </summary>
     public const string LiteralDietStagingRegimeTherapy = "386261001";
+
+    /// <summary>
+    /// Literal for code: NONEDietStagingRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDietStagingRegimeTherapy = "http://snomed.info/sct#386261001";
 
     /// <summary>
     /// Literal for code: TubeFeedingBySyringeMethod
@@ -2091,9 +2211,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTubeFeedingBySyringeMethod = "38903004";
 
     /// <summary>
+    /// Literal for code: NONETubeFeedingBySyringeMethod
+    /// </summary>
+    public const string LiteralNONETubeFeedingBySyringeMethod = "http://snomed.info/sct#38903004";
+
+    /// <summary>
     /// Literal for code: WheatFreeDiet
     /// </summary>
     public const string LiteralWheatFreeDiet = "404919001";
+
+    /// <summary>
+    /// Literal for code: NONEWheatFreeDiet
+    /// </summary>
+    public const string LiteralNONEWheatFreeDiet = "http://snomed.info/sct#404919001";
 
     /// <summary>
     /// Literal for code: AdvanceDietAsToleratedRegimeTherapy
@@ -2101,9 +2231,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAdvanceDietAsToleratedRegimeTherapy = "422972009";
 
     /// <summary>
+    /// Literal for code: NONEAdvanceDietAsToleratedRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEAdvanceDietAsToleratedRegimeTherapy = "http://snomed.info/sct#422972009";
+
+    /// <summary>
     /// Literal for code: LactoseFreeDietRegimeTherapy
     /// </summary>
     public const string LiteralLactoseFreeDietRegimeTherapy = "425458000";
+
+    /// <summary>
+    /// Literal for code: NONELactoseFreeDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONELactoseFreeDietRegimeTherapy = "http://snomed.info/sct#425458000";
 
     /// <summary>
     /// Literal for code: CarbohydrateModifiedDietRegimeTherapy
@@ -2111,9 +2251,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCarbohydrateModifiedDietRegimeTherapy = "435581000124102";
 
     /// <summary>
+    /// Literal for code: NONECarbohydrateModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONECarbohydrateModifiedDietRegimeTherapy = "http://snomed.info/sct#435581000124102";
+
+    /// <summary>
     /// Literal for code: ConsistentCarbohydrateDietRegimeTherapy
     /// </summary>
     public const string LiteralConsistentCarbohydrateDietRegimeTherapy = "435651000124106";
+
+    /// <summary>
+    /// Literal for code: NONEConsistentCarbohydrateDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEConsistentCarbohydrateDietRegimeTherapy = "http://snomed.info/sct#435651000124106";
 
     /// <summary>
     /// Literal for code: GalactoseModifiedDietRegimeTherapy
@@ -2121,9 +2271,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGalactoseModifiedDietRegimeTherapy = "435661000124108";
 
     /// <summary>
+    /// Literal for code: NONEGalactoseModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEGalactoseModifiedDietRegimeTherapy = "http://snomed.info/sct#435661000124108";
+
+    /// <summary>
     /// Literal for code: CholesterolModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralCholesterolModifiedDietRegimeTherapy = "435671000124101";
+
+    /// <summary>
+    /// Literal for code: NONECholesterolModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONECholesterolModifiedDietRegimeTherapy = "http://snomed.info/sct#435671000124101";
 
     /// <summary>
     /// Literal for code: DietaryLiquidConsistencyDietRegimeTherapy
@@ -2131,9 +2291,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDietaryLiquidConsistencyDietRegimeTherapy = "435681000124103";
 
     /// <summary>
+    /// Literal for code: NONEDietaryLiquidConsistencyDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDietaryLiquidConsistencyDietRegimeTherapy = "http://snomed.info/sct#435681000124103";
+
+    /// <summary>
     /// Literal for code: DietModifiedForSpecificFoodsOrIngredientsRegimeTherapy
     /// </summary>
     public const string LiteralDietModifiedForSpecificFoodsOrIngredientsRegimeTherapy = "435691000124100";
+
+    /// <summary>
+    /// Literal for code: NONEDietModifiedForSpecificFoodsOrIngredientsRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDietModifiedForSpecificFoodsOrIngredientsRegimeTherapy = "http://snomed.info/sct#435691000124100";
 
     /// <summary>
     /// Literal for code: EnergyModifiedDietRegimeTherapy
@@ -2141,9 +2311,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEnergyModifiedDietRegimeTherapy = "435701000124100";
 
     /// <summary>
+    /// Literal for code: NONEEnergyModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEEnergyModifiedDietRegimeTherapy = "http://snomed.info/sct#435701000124100";
+
+    /// <summary>
     /// Literal for code: FatModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralFatModifiedDietRegimeTherapy = "435711000124102";
+
+    /// <summary>
+    /// Literal for code: NONEFatModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEFatModifiedDietRegimeTherapy = "http://snomed.info/sct#435711000124102";
 
     /// <summary>
     /// Literal for code: FiberModifiedDietRegimeTherapy
@@ -2151,9 +2331,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFiberModifiedDietRegimeTherapy = "435721000124105";
 
     /// <summary>
+    /// Literal for code: NONEFiberModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEFiberModifiedDietRegimeTherapy = "http://snomed.info/sct#435721000124105";
+
+    /// <summary>
     /// Literal for code: LiquidDietRegimeTherapy
     /// </summary>
     public const string LiteralLiquidDietRegimeTherapy = "435731000124108";
+
+    /// <summary>
+    /// Literal for code: NONELiquidDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONELiquidDietRegimeTherapy = "http://snomed.info/sct#435731000124108";
 
     /// <summary>
     /// Literal for code: ClearLiquidDietRegimeTherapy
@@ -2161,9 +2351,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClearLiquidDietRegimeTherapy = "435741000124103";
 
     /// <summary>
+    /// Literal for code: NONEClearLiquidDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEClearLiquidDietRegimeTherapy = "http://snomed.info/sct#435741000124103";
+
+    /// <summary>
     /// Literal for code: FullLiquidDietRegimeTherapy
     /// </summary>
     public const string LiteralFullLiquidDietRegimeTherapy = "435751000124101";
+
+    /// <summary>
+    /// Literal for code: NONEFullLiquidDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEFullLiquidDietRegimeTherapy = "http://snomed.info/sct#435751000124101";
 
     /// <summary>
     /// Literal for code: GeneralHealthfulDietRegimeTherapy
@@ -2171,9 +2371,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGeneralHealthfulDietRegimeTherapy = "435771000124106";
 
     /// <summary>
+    /// Literal for code: NONEGeneralHealthfulDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEGeneralHealthfulDietRegimeTherapy = "http://snomed.info/sct#435771000124106";
+
+    /// <summary>
     /// Literal for code: MineralModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralMineralModifiedDietRegimeTherapy = "435781000124109";
+
+    /// <summary>
+    /// Literal for code: NONEMineralModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEMineralModifiedDietRegimeTherapy = "http://snomed.info/sct#435781000124109";
 
     /// <summary>
     /// Literal for code: ProteinModifiedDietRegimeTherapy
@@ -2181,9 +2391,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProteinModifiedDietRegimeTherapy = "435791000124107";
 
     /// <summary>
+    /// Literal for code: NONEProteinModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEProteinModifiedDietRegimeTherapy = "http://snomed.info/sct#435791000124107";
+
+    /// <summary>
     /// Literal for code: TextureModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralTextureModifiedDietRegimeTherapy = "435801000124108";
+
+    /// <summary>
+    /// Literal for code: NONETextureModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONETextureModifiedDietRegimeTherapy = "http://snomed.info/sct#435801000124108";
 
     /// <summary>
     /// Literal for code: VitaminModifiedDietRegimeTherapy
@@ -2191,9 +2411,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVitaminModifiedDietRegimeTherapy = "435811000124106";
 
     /// <summary>
+    /// Literal for code: NONEVitaminModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEVitaminModifiedDietRegimeTherapy = "http://snomed.info/sct#435811000124106";
+
+    /// <summary>
     /// Literal for code: LactoseModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralLactoseModifiedDietRegimeTherapy = "436661000124100";
+
+    /// <summary>
+    /// Literal for code: NONELactoseModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONELactoseModifiedDietRegimeTherapy = "http://snomed.info/sct#436661000124100";
 
     /// <summary>
     /// Literal for code: DecreasedLactoseDietRegimeTherapy
@@ -2201,9 +2431,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedLactoseDietRegimeTherapy = "436671000124107";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedLactoseDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedLactoseDietRegimeTherapy = "http://snomed.info/sct#436671000124107";
+
+    /// <summary>
     /// Literal for code: IncreasedCarbohydrateDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedCarbohydrateDietRegimeTherapy = "436681000124105";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedCarbohydrateDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedCarbohydrateDietRegimeTherapy = "http://snomed.info/sct#436681000124105";
 
     /// <summary>
     /// Literal for code: DecreasedCarbohydrateDietRegimeTherapy
@@ -2211,9 +2451,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedCarbohydrateDietRegimeTherapy = "436691000124108";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedCarbohydrateDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedCarbohydrateDietRegimeTherapy = "http://snomed.info/sct#436691000124108";
+
+    /// <summary>
     /// Literal for code: DecreasedGalactoseDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedGalactoseDietRegimeTherapy = "436701000124108";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedGalactoseDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedGalactoseDietRegimeTherapy = "http://snomed.info/sct#436701000124108";
 
     /// <summary>
     /// Literal for code: DecreasedCholesterolDietRegimeTherapy
@@ -2221,9 +2471,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedCholesterolDietRegimeTherapy = "436711000124106";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedCholesterolDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedCholesterolDietRegimeTherapy = "http://snomed.info/sct#436711000124106";
+
+    /// <summary>
     /// Literal for code: IncreasedEnergyDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedEnergyDietRegimeTherapy = "436721000124103";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedEnergyDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedEnergyDietRegimeTherapy = "http://snomed.info/sct#436721000124103";
 
     /// <summary>
     /// Literal for code: DecreasedEnergyDietRegimeTherapy
@@ -2231,9 +2491,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedEnergyDietRegimeTherapy = "436731000124100";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedEnergyDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedEnergyDietRegimeTherapy = "http://snomed.info/sct#436731000124100";
+
+    /// <summary>
     /// Literal for code: IncreasedFatDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedFatDietRegimeTherapy = "436851000124101";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedFatDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedFatDietRegimeTherapy = "http://snomed.info/sct#436851000124101";
 
     /// <summary>
     /// Literal for code: DecreasedFatDietRegimeTherapy
@@ -2241,9 +2511,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedFatDietRegimeTherapy = "436861000124104";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedFatDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedFatDietRegimeTherapy = "http://snomed.info/sct#436861000124104";
+
+    /// <summary>
     /// Literal for code: MonounsaturatedFatModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralMonounsaturatedFatModifiedDietRegimeTherapy = "436871000124106";
+
+    /// <summary>
+    /// Literal for code: NONEMonounsaturatedFatModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEMonounsaturatedFatModifiedDietRegimeTherapy = "http://snomed.info/sct#436871000124106";
 
     /// <summary>
     /// Literal for code: PolyunsaturatedFatModifiedDietRegimeTherapy
@@ -2251,9 +2531,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPolyunsaturatedFatModifiedDietRegimeTherapy = "436881000124109";
 
     /// <summary>
+    /// Literal for code: NONEPolyunsaturatedFatModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEPolyunsaturatedFatModifiedDietRegimeTherapy = "http://snomed.info/sct#436881000124109";
+
+    /// <summary>
     /// Literal for code: SaturatedFatModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralSaturatedFatModifiedDietRegimeTherapy = "436891000124107";
+
+    /// <summary>
+    /// Literal for code: NONESaturatedFatModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONESaturatedFatModifiedDietRegimeTherapy = "http://snomed.info/sct#436891000124107";
 
     /// <summary>
     /// Literal for code: TransFatModifiedDietRegimeTherapy
@@ -2261,9 +2551,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTransFatModifiedDietRegimeTherapy = "436901000124106";
 
     /// <summary>
+    /// Literal for code: NONETransFatModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONETransFatModifiedDietRegimeTherapy = "http://snomed.info/sct#436901000124106";
+
+    /// <summary>
     /// Literal for code: IncreasedMonounsaturatedFatDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedMonounsaturatedFatDietRegimeTherapy = "436911000124109";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedMonounsaturatedFatDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedMonounsaturatedFatDietRegimeTherapy = "http://snomed.info/sct#436911000124109";
 
     /// <summary>
     /// Literal for code: DecreasedMonounsaturatedFatDietRegimeTherapy
@@ -2271,9 +2571,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedMonounsaturatedFatDietRegimeTherapy = "436921000124101";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedMonounsaturatedFatDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedMonounsaturatedFatDietRegimeTherapy = "http://snomed.info/sct#436921000124101";
+
+    /// <summary>
     /// Literal for code: IncreasedPolyunsaturatedFatDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedPolyunsaturatedFatDietRegimeTherapy = "436931000124103";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedPolyunsaturatedFatDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedPolyunsaturatedFatDietRegimeTherapy = "http://snomed.info/sct#436931000124103";
 
     /// <summary>
     /// Literal for code: DecreasedPolyunsaturatedFatDietRegimeTherapy
@@ -2281,9 +2591,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedPolyunsaturatedFatDietRegimeTherapy = "436941000124108";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedPolyunsaturatedFatDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedPolyunsaturatedFatDietRegimeTherapy = "http://snomed.info/sct#436941000124108";
+
+    /// <summary>
     /// Literal for code: DecreasedSaturatedFatDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedSaturatedFatDietRegimeTherapy = "436951000124105";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedSaturatedFatDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedSaturatedFatDietRegimeTherapy = "http://snomed.info/sct#436951000124105";
 
     /// <summary>
     /// Literal for code: DecreasedTransFatDietRegimeTherapy
@@ -2291,9 +2611,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedTransFatDietRegimeTherapy = "436961000124107";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedTransFatDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedTransFatDietRegimeTherapy = "http://snomed.info/sct#436961000124107";
+
+    /// <summary>
     /// Literal for code: IncreasedFiberDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedFiberDietRegimeTherapy = "436991000124104";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedFiberDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedFiberDietRegimeTherapy = "http://snomed.info/sct#436991000124104";
 
     /// <summary>
     /// Literal for code: DecreasedFiberDietRegimeTherapy
@@ -2301,9 +2631,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedFiberDietRegimeTherapy = "437001000124107";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedFiberDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedFiberDietRegimeTherapy = "http://snomed.info/sct#437001000124107";
+
+    /// <summary>
     /// Literal for code: SolubleFiberModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralSolubleFiberModifiedDietRegimeTherapy = "437011000124105";
+
+    /// <summary>
+    /// Literal for code: NONESolubleFiberModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONESolubleFiberModifiedDietRegimeTherapy = "http://snomed.info/sct#437011000124105";
 
     /// <summary>
     /// Literal for code: InsolubleFiberModifiedDietRegimeTherapy
@@ -2311,9 +2651,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInsolubleFiberModifiedDietRegimeTherapy = "437021000124102";
 
     /// <summary>
+    /// Literal for code: NONEInsolubleFiberModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEInsolubleFiberModifiedDietRegimeTherapy = "http://snomed.info/sct#437021000124102";
+
+    /// <summary>
     /// Literal for code: IncreasedSolubleFiberDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedSolubleFiberDietRegimeTherapy = "437031000124104";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedSolubleFiberDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedSolubleFiberDietRegimeTherapy = "http://snomed.info/sct#437031000124104";
 
     /// <summary>
     /// Literal for code: DecreasedSolubleFiberDietRegimeTherapy
@@ -2321,9 +2671,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedSolubleFiberDietRegimeTherapy = "437041000124109";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedSolubleFiberDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedSolubleFiberDietRegimeTherapy = "http://snomed.info/sct#437041000124109";
+
+    /// <summary>
     /// Literal for code: IncreasedInsolubleFiberDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedInsolubleFiberDietRegimeTherapy = "437051000124106";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedInsolubleFiberDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedInsolubleFiberDietRegimeTherapy = "http://snomed.info/sct#437051000124106";
 
     /// <summary>
     /// Literal for code: DecreasedInsolubleFiberDietRegimeTherapy
@@ -2331,9 +2691,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedInsolubleFiberDietRegimeTherapy = "437061000124108";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedInsolubleFiberDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedInsolubleFiberDietRegimeTherapy = "http://snomed.info/sct#437061000124108";
+
+    /// <summary>
     /// Literal for code: BoronModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralBoronModifiedDietRegimeTherapy = "437081000124103";
+
+    /// <summary>
+    /// Literal for code: NONEBoronModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEBoronModifiedDietRegimeTherapy = "http://snomed.info/sct#437081000124103";
 
     /// <summary>
     /// Literal for code: CalciumModifiedDietRegimeTherapy
@@ -2341,9 +2711,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCalciumModifiedDietRegimeTherapy = "437091000124100";
 
     /// <summary>
+    /// Literal for code: NONECalciumModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONECalciumModifiedDietRegimeTherapy = "http://snomed.info/sct#437091000124100";
+
+    /// <summary>
     /// Literal for code: ChlorideModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralChlorideModifiedDietRegimeTherapy = "437101000124106";
+
+    /// <summary>
+    /// Literal for code: NONEChlorideModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEChlorideModifiedDietRegimeTherapy = "http://snomed.info/sct#437101000124106";
 
     /// <summary>
     /// Literal for code: ChromiumModifiedDietRegimeTherapy
@@ -2351,9 +2731,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChromiumModifiedDietRegimeTherapy = "437111000124109";
 
     /// <summary>
+    /// Literal for code: NONEChromiumModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEChromiumModifiedDietRegimeTherapy = "http://snomed.info/sct#437111000124109";
+
+    /// <summary>
     /// Literal for code: CobaltModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralCobaltModifiedDietRegimeTherapy = "437121000124101";
+
+    /// <summary>
+    /// Literal for code: NONECobaltModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONECobaltModifiedDietRegimeTherapy = "http://snomed.info/sct#437121000124101";
 
     /// <summary>
     /// Literal for code: CopperModifiedDietRegimeTherapy
@@ -2361,9 +2751,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCopperModifiedDietRegimeTherapy = "437131000124103";
 
     /// <summary>
+    /// Literal for code: NONECopperModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONECopperModifiedDietRegimeTherapy = "http://snomed.info/sct#437131000124103";
+
+    /// <summary>
     /// Literal for code: FluorideModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralFluorideModifiedDietRegimeTherapy = "437141000124108";
+
+    /// <summary>
+    /// Literal for code: NONEFluorideModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEFluorideModifiedDietRegimeTherapy = "http://snomed.info/sct#437141000124108";
 
     /// <summary>
     /// Literal for code: IodineModifiedDietRegimeTherapy
@@ -2371,9 +2771,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIodineModifiedDietRegimeTherapy = "437151000124105";
 
     /// <summary>
+    /// Literal for code: NONEIodineModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIodineModifiedDietRegimeTherapy = "http://snomed.info/sct#437151000124105";
+
+    /// <summary>
     /// Literal for code: IronModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralIronModifiedDietRegimeTherapy = "437161000124107";
+
+    /// <summary>
+    /// Literal for code: NONEIronModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIronModifiedDietRegimeTherapy = "http://snomed.info/sct#437161000124107";
 
     /// <summary>
     /// Literal for code: MagnesiumModifiedDietRegimeTherapy
@@ -2381,9 +2791,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMagnesiumModifiedDietRegimeTherapy = "437171000124100";
 
     /// <summary>
+    /// Literal for code: NONEMagnesiumModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEMagnesiumModifiedDietRegimeTherapy = "http://snomed.info/sct#437171000124100";
+
+    /// <summary>
     /// Literal for code: ManganeseModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralManganeseModifiedDietRegimeTherapy = "437181000124102";
+
+    /// <summary>
+    /// Literal for code: NONEManganeseModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEManganeseModifiedDietRegimeTherapy = "http://snomed.info/sct#437181000124102";
 
     /// <summary>
     /// Literal for code: MolybdenumModifiedDietRegimeTherapy
@@ -2391,9 +2811,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMolybdenumModifiedDietRegimeTherapy = "437191000124104";
 
     /// <summary>
+    /// Literal for code: NONEMolybdenumModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEMolybdenumModifiedDietRegimeTherapy = "http://snomed.info/sct#437191000124104";
+
+    /// <summary>
     /// Literal for code: PhosphorusModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralPhosphorusModifiedDietRegimeTherapy = "437201000124101";
+
+    /// <summary>
+    /// Literal for code: NONEPhosphorusModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEPhosphorusModifiedDietRegimeTherapy = "http://snomed.info/sct#437201000124101";
 
     /// <summary>
     /// Literal for code: PotassiumModifiedDietRegimeTherapy
@@ -2401,9 +2831,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPotassiumModifiedDietRegimeTherapy = "437211000124103";
 
     /// <summary>
+    /// Literal for code: NONEPotassiumModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEPotassiumModifiedDietRegimeTherapy = "http://snomed.info/sct#437211000124103";
+
+    /// <summary>
     /// Literal for code: SeleniumModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralSeleniumModifiedDietRegimeTherapy = "437221000124106";
+
+    /// <summary>
+    /// Literal for code: NONESeleniumModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONESeleniumModifiedDietRegimeTherapy = "http://snomed.info/sct#437221000124106";
 
     /// <summary>
     /// Literal for code: SodiumModifiedDietRegimeTherapy
@@ -2411,9 +2851,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSodiumModifiedDietRegimeTherapy = "437231000124109";
 
     /// <summary>
+    /// Literal for code: NONESodiumModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONESodiumModifiedDietRegimeTherapy = "http://snomed.info/sct#437231000124109";
+
+    /// <summary>
     /// Literal for code: SulfurModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralSulfurModifiedDietRegimeTherapy = "437241000124104";
+
+    /// <summary>
+    /// Literal for code: NONESulfurModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONESulfurModifiedDietRegimeTherapy = "http://snomed.info/sct#437241000124104";
 
     /// <summary>
     /// Literal for code: ZincModifiedDietRegimeTherapy
@@ -2421,9 +2871,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralZincModifiedDietRegimeTherapy = "437251000124102";
 
     /// <summary>
+    /// Literal for code: NONEZincModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEZincModifiedDietRegimeTherapy = "http://snomed.info/sct#437251000124102";
+
+    /// <summary>
     /// Literal for code: IncreasedCalciumDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedCalciumDietRegimeTherapy = "437261000124100";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedCalciumDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedCalciumDietRegimeTherapy = "http://snomed.info/sct#437261000124100";
 
     /// <summary>
     /// Literal for code: DecreasedCalciumDietRegimeTherapy
@@ -2431,9 +2891,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedCalciumDietRegimeTherapy = "437271000124107";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedCalciumDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedCalciumDietRegimeTherapy = "http://snomed.info/sct#437271000124107";
+
+    /// <summary>
     /// Literal for code: IncreasedChromiumDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedChromiumDietRegimeTherapy = "437281000124105";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedChromiumDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedChromiumDietRegimeTherapy = "http://snomed.info/sct#437281000124105";
 
     /// <summary>
     /// Literal for code: IncreasedCopperDietRegimeTherapy
@@ -2441,9 +2911,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedCopperDietRegimeTherapy = "437291000124108";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedCopperDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedCopperDietRegimeTherapy = "http://snomed.info/sct#437291000124108";
+
+    /// <summary>
     /// Literal for code: DecreasedCopperDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedCopperDietRegimeTherapy = "437301000124109";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedCopperDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedCopperDietRegimeTherapy = "http://snomed.info/sct#437301000124109";
 
     /// <summary>
     /// Literal for code: IncreasedIodineDietRegimeTherapy
@@ -2451,9 +2931,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedIodineDietRegimeTherapy = "437311000124107";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedIodineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedIodineDietRegimeTherapy = "http://snomed.info/sct#437311000124107";
+
+    /// <summary>
     /// Literal for code: DecreasedIodineDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedIodineDietRegimeTherapy = "437321000124104";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedIodineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedIodineDietRegimeTherapy = "http://snomed.info/sct#437321000124104";
 
     /// <summary>
     /// Literal for code: IncreasedIronDietRegimeTherapy
@@ -2461,9 +2951,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedIronDietRegimeTherapy = "437331000124101";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedIronDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedIronDietRegimeTherapy = "http://snomed.info/sct#437331000124101";
+
+    /// <summary>
     /// Literal for code: DecreasedIronDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedIronDietRegimeTherapy = "437341000124106";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedIronDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedIronDietRegimeTherapy = "http://snomed.info/sct#437341000124106";
 
     /// <summary>
     /// Literal for code: IncreasedMagnesiumDietRegimeTherapy
@@ -2471,9 +2971,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedMagnesiumDietRegimeTherapy = "437351000124108";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedMagnesiumDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedMagnesiumDietRegimeTherapy = "http://snomed.info/sct#437351000124108";
+
+    /// <summary>
     /// Literal for code: DecreasedMagnesiumDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedMagnesiumDietRegimeTherapy = "437361000124105";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedMagnesiumDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedMagnesiumDietRegimeTherapy = "http://snomed.info/sct#437361000124105";
 
     /// <summary>
     /// Literal for code: IncreasedPhosphorusDietRegimeTherapy
@@ -2481,9 +2991,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedPhosphorusDietRegimeTherapy = "437371000124103";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedPhosphorusDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedPhosphorusDietRegimeTherapy = "http://snomed.info/sct#437371000124103";
+
+    /// <summary>
     /// Literal for code: DecreasedPhosphorusDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedPhosphorusDietRegimeTherapy = "437381000124100";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedPhosphorusDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedPhosphorusDietRegimeTherapy = "http://snomed.info/sct#437381000124100";
 
     /// <summary>
     /// Literal for code: HighPotassiumDiet
@@ -2491,9 +3011,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHighPotassiumDiet = "437391000124102";
 
     /// <summary>
+    /// Literal for code: NONEHighPotassiumDiet
+    /// </summary>
+    public const string LiteralNONEHighPotassiumDiet = "http://snomed.info/sct#437391000124102";
+
+    /// <summary>
     /// Literal for code: DecreasedPotassiumDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedPotassiumDietRegimeTherapy = "437401000124100";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedPotassiumDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedPotassiumDietRegimeTherapy = "http://snomed.info/sct#437401000124100";
 
     /// <summary>
     /// Literal for code: IncreasedSodiumDietRegimeTherapy
@@ -2501,9 +3031,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedSodiumDietRegimeTherapy = "437411000124102";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedSodiumDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedSodiumDietRegimeTherapy = "http://snomed.info/sct#437411000124102";
+
+    /// <summary>
     /// Literal for code: DecreasedSodiumDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedSodiumDietRegimeTherapy = "437421000124105";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedSodiumDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedSodiumDietRegimeTherapy = "http://snomed.info/sct#437421000124105";
 
     /// <summary>
     /// Literal for code: IncreasedZincDietRegimeTherapy
@@ -2511,9 +3051,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedZincDietRegimeTherapy = "437431000124108";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedZincDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedZincDietRegimeTherapy = "http://snomed.info/sct#437431000124108";
+
+    /// <summary>
     /// Literal for code: DecreasedZincDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedZincDietRegimeTherapy = "437441000124103";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedZincDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedZincDietRegimeTherapy = "http://snomed.info/sct#437441000124103";
 
     /// <summary>
     /// Literal for code: ConsistentProteinDietRegimeTherapy
@@ -2521,9 +3071,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralConsistentProteinDietRegimeTherapy = "437451000124101";
 
     /// <summary>
+    /// Literal for code: NONEConsistentProteinDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEConsistentProteinDietRegimeTherapy = "http://snomed.info/sct#437451000124101";
+
+    /// <summary>
     /// Literal for code: IncreasedProteinDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedProteinDietRegimeTherapy = "437461000124104";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedProteinDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedProteinDietRegimeTherapy = "http://snomed.info/sct#437461000124104";
 
     /// <summary>
     /// Literal for code: DecreasedProteinDietRegimeTherapy
@@ -2531,9 +3091,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedProteinDietRegimeTherapy = "437471000124106";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedProteinDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedProteinDietRegimeTherapy = "http://snomed.info/sct#437471000124106";
+
+    /// <summary>
     /// Literal for code: AminoAcidModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralAminoAcidModifiedDietRegimeTherapy = "437481000124109";
+
+    /// <summary>
+    /// Literal for code: NONEAminoAcidModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEAminoAcidModifiedDietRegimeTherapy = "http://snomed.info/sct#437481000124109";
 
     /// <summary>
     /// Literal for code: ArginineModifiedDietRegimeTherapy
@@ -2541,9 +3111,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralArginineModifiedDietRegimeTherapy = "437491000124107";
 
     /// <summary>
+    /// Literal for code: NONEArginineModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEArginineModifiedDietRegimeTherapy = "http://snomed.info/sct#437491000124107";
+
+    /// <summary>
     /// Literal for code: GlutamineModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralGlutamineModifiedDietRegimeTherapy = "437501000124104";
+
+    /// <summary>
+    /// Literal for code: NONEGlutamineModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEGlutamineModifiedDietRegimeTherapy = "http://snomed.info/sct#437501000124104";
 
     /// <summary>
     /// Literal for code: HistidineModifiedDietRegimeTherapy
@@ -2551,9 +3131,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHistidineModifiedDietRegimeTherapy = "437511000124101";
 
     /// <summary>
+    /// Literal for code: NONEHistidineModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEHistidineModifiedDietRegimeTherapy = "http://snomed.info/sct#437511000124101";
+
+    /// <summary>
     /// Literal for code: IncreasedHomocysteineDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedHomocysteineDietRegimeTherapy = "437521000124109";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedHomocysteineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedHomocysteineDietRegimeTherapy = "http://snomed.info/sct#437521000124109";
 
     /// <summary>
     /// Literal for code: IsoleucineModifiedDietRegimeTherapy
@@ -2561,9 +3151,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIsoleucineModifiedDietRegimeTherapy = "437531000124107";
 
     /// <summary>
+    /// Literal for code: NONEIsoleucineModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIsoleucineModifiedDietRegimeTherapy = "http://snomed.info/sct#437531000124107";
+
+    /// <summary>
     /// Literal for code: LeucineModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralLeucineModifiedDietRegimeTherapy = "437541000124102";
+
+    /// <summary>
+    /// Literal for code: NONELeucineModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONELeucineModifiedDietRegimeTherapy = "http://snomed.info/sct#437541000124102";
 
     /// <summary>
     /// Literal for code: LysineModifiedDietRegimeTherapy
@@ -2571,9 +3171,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLysineModifiedDietRegimeTherapy = "437551000124100";
 
     /// <summary>
+    /// Literal for code: NONELysineModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONELysineModifiedDietRegimeTherapy = "http://snomed.info/sct#437551000124100";
+
+    /// <summary>
     /// Literal for code: MethionineModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralMethionineModifiedDietRegimeTherapy = "437561000124103";
+
+    /// <summary>
+    /// Literal for code: NONEMethionineModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEMethionineModifiedDietRegimeTherapy = "http://snomed.info/sct#437561000124103";
 
     /// <summary>
     /// Literal for code: DecreasedPhenylalanineDietRegimeTherapy
@@ -2581,9 +3191,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedPhenylalanineDietRegimeTherapy = "437571000124105";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedPhenylalanineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedPhenylalanineDietRegimeTherapy = "http://snomed.info/sct#437571000124105";
+
+    /// <summary>
     /// Literal for code: ThreonineModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralThreonineModifiedDietRegimeTherapy = "437581000124108";
+
+    /// <summary>
+    /// Literal for code: NONEThreonineModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEThreonineModifiedDietRegimeTherapy = "http://snomed.info/sct#437581000124108";
 
     /// <summary>
     /// Literal for code: TryptophanModifiedDietRegimeTherapy
@@ -2591,9 +3211,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTryptophanModifiedDietRegimeTherapy = "437591000124106";
 
     /// <summary>
+    /// Literal for code: NONETryptophanModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONETryptophanModifiedDietRegimeTherapy = "http://snomed.info/sct#437591000124106";
+
+    /// <summary>
     /// Literal for code: DecreasedTyramineDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedTyramineDietRegimeTherapy = "437601000124103";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedTyramineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedTyramineDietRegimeTherapy = "http://snomed.info/sct#437601000124103";
 
     /// <summary>
     /// Literal for code: TyrosineModifiedDietRegimeTherapy
@@ -2601,9 +3231,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTyrosineModifiedDietRegimeTherapy = "437611000124100";
 
     /// <summary>
+    /// Literal for code: NONETyrosineModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONETyrosineModifiedDietRegimeTherapy = "http://snomed.info/sct#437611000124100";
+
+    /// <summary>
     /// Literal for code: ValineModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralValineModifiedDietRegimeTherapy = "437621000124108";
+
+    /// <summary>
+    /// Literal for code: NONEValineModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEValineModifiedDietRegimeTherapy = "http://snomed.info/sct#437621000124108";
 
     /// <summary>
     /// Literal for code: DecreasedCaseinDietRegimeTherapy
@@ -2611,9 +3251,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedCaseinDietRegimeTherapy = "437631000124106";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedCaseinDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedCaseinDietRegimeTherapy = "http://snomed.info/sct#437631000124106";
+
+    /// <summary>
     /// Literal for code: DecreasedGlutenDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedGlutenDietRegimeTherapy = "437641000124101";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedGlutenDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedGlutenDietRegimeTherapy = "http://snomed.info/sct#437641000124101";
 
     /// <summary>
     /// Literal for code: GlutenFreeDietRegimeTherapy
@@ -2621,9 +3271,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGlutenFreeDietRegimeTherapy = "437651000124104";
 
     /// <summary>
+    /// Literal for code: NONEGlutenFreeDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEGlutenFreeDietRegimeTherapy = "http://snomed.info/sct#437651000124104";
+
+    /// <summary>
     /// Literal for code: IncreasedArginineDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedArginineDietRegimeTherapy = "437661000124102";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedArginineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedArginineDietRegimeTherapy = "http://snomed.info/sct#437661000124102";
 
     /// <summary>
     /// Literal for code: DecreasedArginineDietRegimeTherapy
@@ -2631,9 +3291,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedArginineDietRegimeTherapy = "437671000124109";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedArginineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedArginineDietRegimeTherapy = "http://snomed.info/sct#437671000124109";
+
+    /// <summary>
     /// Literal for code: IncreasedGlutamineDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedGlutamineDietRegimeTherapy = "437681000124107";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedGlutamineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedGlutamineDietRegimeTherapy = "http://snomed.info/sct#437681000124107";
 
     /// <summary>
     /// Literal for code: DecreasedGlutamineDietRegimeTherapy
@@ -2641,9 +3311,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedGlutamineDietRegimeTherapy = "437691000124105";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedGlutamineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedGlutamineDietRegimeTherapy = "http://snomed.info/sct#437691000124105";
+
+    /// <summary>
     /// Literal for code: IncreasedHistidineDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedHistidineDietRegimeTherapy = "437701000124105";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedHistidineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedHistidineDietRegimeTherapy = "http://snomed.info/sct#437701000124105";
 
     /// <summary>
     /// Literal for code: DecreasedHistidineDietRegimeTherapy
@@ -2651,9 +3331,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedHistidineDietRegimeTherapy = "437711000124108";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedHistidineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedHistidineDietRegimeTherapy = "http://snomed.info/sct#437711000124108";
+
+    /// <summary>
     /// Literal for code: IncreasedIsoleucineDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedIsoleucineDietRegimeTherapy = "437721000124100";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedIsoleucineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedIsoleucineDietRegimeTherapy = "http://snomed.info/sct#437721000124100";
 
     /// <summary>
     /// Literal for code: DecreasedIsoleucineDietRegimeTherapy
@@ -2661,9 +3351,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedIsoleucineDietRegimeTherapy = "437731000124102";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedIsoleucineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedIsoleucineDietRegimeTherapy = "http://snomed.info/sct#437731000124102";
+
+    /// <summary>
     /// Literal for code: IncreasedLeucineDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedLeucineDietRegimeTherapy = "437741000124107";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedLeucineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedLeucineDietRegimeTherapy = "http://snomed.info/sct#437741000124107";
 
     /// <summary>
     /// Literal for code: DecreasedLeucineDietRegimeTherapy
@@ -2671,9 +3371,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedLeucineDietRegimeTherapy = "437751000124109";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedLeucineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedLeucineDietRegimeTherapy = "http://snomed.info/sct#437751000124109";
+
+    /// <summary>
     /// Literal for code: IncreasedLysineDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedLysineDietRegimeTherapy = "437761000124106";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedLysineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedLysineDietRegimeTherapy = "http://snomed.info/sct#437761000124106";
 
     /// <summary>
     /// Literal for code: DecreasedLysineDietRegimeTherapy
@@ -2681,9 +3391,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedLysineDietRegimeTherapy = "437771000124104";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedLysineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedLysineDietRegimeTherapy = "http://snomed.info/sct#437771000124104";
+
+    /// <summary>
     /// Literal for code: IncreasedMethionineDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedMethionineDietRegimeTherapy = "437781000124101";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedMethionineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedMethionineDietRegimeTherapy = "http://snomed.info/sct#437781000124101";
 
     /// <summary>
     /// Literal for code: DecreasedMethionineDietRegimeTherapy
@@ -2691,9 +3411,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedMethionineDietRegimeTherapy = "437791000124103";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedMethionineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedMethionineDietRegimeTherapy = "http://snomed.info/sct#437791000124103";
+
+    /// <summary>
     /// Literal for code: IncreasedThreonineDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedThreonineDietRegimeTherapy = "437801000124102";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedThreonineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedThreonineDietRegimeTherapy = "http://snomed.info/sct#437801000124102";
 
     /// <summary>
     /// Literal for code: DecreasedThreonineDietRegimeTherapy
@@ -2701,9 +3431,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedThreonineDietRegimeTherapy = "437811000124104";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedThreonineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedThreonineDietRegimeTherapy = "http://snomed.info/sct#437811000124104";
+
+    /// <summary>
     /// Literal for code: IncreasedTryptophanDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedTryptophanDietRegimeTherapy = "437821000124107";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedTryptophanDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedTryptophanDietRegimeTherapy = "http://snomed.info/sct#437821000124107";
 
     /// <summary>
     /// Literal for code: DecreasedTryptophanDietRegimeTherapy
@@ -2711,9 +3451,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedTryptophanDietRegimeTherapy = "437831000124105";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedTryptophanDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedTryptophanDietRegimeTherapy = "http://snomed.info/sct#437831000124105";
+
+    /// <summary>
     /// Literal for code: IncreasedTyrosineDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedTyrosineDietRegimeTherapy = "437841000124100";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedTyrosineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedTyrosineDietRegimeTherapy = "http://snomed.info/sct#437841000124100";
 
     /// <summary>
     /// Literal for code: DecreasedTyrosineDietRegimeTherapy
@@ -2721,9 +3471,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedTyrosineDietRegimeTherapy = "437851000124103";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedTyrosineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedTyrosineDietRegimeTherapy = "http://snomed.info/sct#437851000124103";
+
+    /// <summary>
     /// Literal for code: IncreasedValineDietRegimeTherapy
     /// </summary>
     public const string LiteralIncreasedValineDietRegimeTherapy = "437861000124101";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedValineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedValineDietRegimeTherapy = "http://snomed.info/sct#437861000124101";
 
     /// <summary>
     /// Literal for code: DecreasedValineDietRegimeTherapy
@@ -2731,9 +3491,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecreasedValineDietRegimeTherapy = "437871000124108";
 
     /// <summary>
+    /// Literal for code: NONEDecreasedValineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedValineDietRegimeTherapy = "http://snomed.info/sct#437871000124108";
+
+    /// <summary>
     /// Literal for code: BiotinModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralBiotinModifiedDietRegimeTherapy = "438001000124106";
+
+    /// <summary>
+    /// Literal for code: NONEBiotinModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEBiotinModifiedDietRegimeTherapy = "http://snomed.info/sct#438001000124106";
 
     /// <summary>
     /// Literal for code: FolicAcidModifiedDietRegimeTherapy
@@ -2741,9 +3511,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFolicAcidModifiedDietRegimeTherapy = "438011000124109";
 
     /// <summary>
+    /// Literal for code: NONEFolicAcidModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEFolicAcidModifiedDietRegimeTherapy = "http://snomed.info/sct#438011000124109";
+
+    /// <summary>
     /// Literal for code: NiacinModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralNiacinModifiedDietRegimeTherapy = "438021000124101";
+
+    /// <summary>
+    /// Literal for code: NONENiacinModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONENiacinModifiedDietRegimeTherapy = "http://snomed.info/sct#438021000124101";
 
     /// <summary>
     /// Literal for code: PantothenicAcidModifiedDietRegimeTherapy
@@ -2751,9 +3531,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPantothenicAcidModifiedDietRegimeTherapy = "438031000124103";
 
     /// <summary>
+    /// Literal for code: NONEPantothenicAcidModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEPantothenicAcidModifiedDietRegimeTherapy = "http://snomed.info/sct#438031000124103";
+
+    /// <summary>
     /// Literal for code: RiboflavinModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralRiboflavinModifiedDietRegimeTherapy = "438041000124108";
+
+    /// <summary>
+    /// Literal for code: NONERiboflavinModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONERiboflavinModifiedDietRegimeTherapy = "http://snomed.info/sct#438041000124108";
 
     /// <summary>
     /// Literal for code: ThiamineModifiedDietRegimeTherapy
@@ -2761,9 +3551,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralThiamineModifiedDietRegimeTherapy = "438051000124105";
 
     /// <summary>
+    /// Literal for code: NONEThiamineModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEThiamineModifiedDietRegimeTherapy = "http://snomed.info/sct#438051000124105";
+
+    /// <summary>
     /// Literal for code: VitaminAModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralVitaminAModifiedDietRegimeTherapy = "438061000124107";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminAModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEVitaminAModifiedDietRegimeTherapy = "http://snomed.info/sct#438061000124107";
 
     /// <summary>
     /// Literal for code: VitaminB6ModifiedDietRegimeTherapy
@@ -2771,9 +3571,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVitaminB6ModifiedDietRegimeTherapy = "438071000124100";
 
     /// <summary>
+    /// Literal for code: NONEVitaminB6ModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEVitaminB6ModifiedDietRegimeTherapy = "http://snomed.info/sct#438071000124100";
+
+    /// <summary>
     /// Literal for code: VitaminB12ModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralVitaminB12ModifiedDietRegimeTherapy = "438081000124102";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminB12ModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEVitaminB12ModifiedDietRegimeTherapy = "http://snomed.info/sct#438081000124102";
 
     /// <summary>
     /// Literal for code: VitaminCModifiedDietRegimeTherapy
@@ -2781,9 +3591,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVitaminCModifiedDietRegimeTherapy = "438091000124104";
 
     /// <summary>
+    /// Literal for code: NONEVitaminCModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEVitaminCModifiedDietRegimeTherapy = "http://snomed.info/sct#438091000124104";
+
+    /// <summary>
     /// Literal for code: VitaminDModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralVitaminDModifiedDietRegimeTherapy = "438101000124105";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminDModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEVitaminDModifiedDietRegimeTherapy = "http://snomed.info/sct#438101000124105";
 
     /// <summary>
     /// Literal for code: VitaminEModifiedDietRegimeTherapy
@@ -2791,9 +3611,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVitaminEModifiedDietRegimeTherapy = "438111000124108";
 
     /// <summary>
+    /// Literal for code: NONEVitaminEModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEVitaminEModifiedDietRegimeTherapy = "http://snomed.info/sct#438111000124108";
+
+    /// <summary>
     /// Literal for code: VitaminKModifiedDietRegimeTherapy
     /// </summary>
     public const string LiteralVitaminKModifiedDietRegimeTherapy = "438121000124100";
+
+    /// <summary>
+    /// Literal for code: NONEVitaminKModifiedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEVitaminKModifiedDietRegimeTherapy = "http://snomed.info/sct#438121000124100";
 
     /// <summary>
     /// Literal for code: IncreasedBiotinDietRegimeTherapy
@@ -2801,9 +3631,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedBiotinDietRegimeTherapy = "438131000124102";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedBiotinDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedBiotinDietRegimeTherapy = "http://snomed.info/sct#438131000124102";
+
+    /// <summary>
     /// Literal for code: DecreasedBiotinDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedBiotinDietRegimeTherapy = "438141000124107";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedBiotinDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedBiotinDietRegimeTherapy = "http://snomed.info/sct#438141000124107";
 
     /// <summary>
     /// Literal for code: IncreasedFolicAcidDietRegimeTherapy
@@ -2811,9 +3651,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedFolicAcidDietRegimeTherapy = "438151000124109";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedFolicAcidDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedFolicAcidDietRegimeTherapy = "http://snomed.info/sct#438151000124109";
+
+    /// <summary>
     /// Literal for code: DecreasedFolicAcidDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedFolicAcidDietRegimeTherapy = "438161000124106";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedFolicAcidDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedFolicAcidDietRegimeTherapy = "http://snomed.info/sct#438161000124106";
 
     /// <summary>
     /// Literal for code: IncreasedNiacinDietRegimeTherapy
@@ -2821,9 +3671,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedNiacinDietRegimeTherapy = "438171000124104";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedNiacinDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedNiacinDietRegimeTherapy = "http://snomed.info/sct#438171000124104";
+
+    /// <summary>
     /// Literal for code: DecreasedNiacinDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedNiacinDietRegimeTherapy = "438181000124101";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedNiacinDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedNiacinDietRegimeTherapy = "http://snomed.info/sct#438181000124101";
 
     /// <summary>
     /// Literal for code: IncreasedPantothenicAcidDietRegimeTherapy
@@ -2831,9 +3691,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedPantothenicAcidDietRegimeTherapy = "438191000124103";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedPantothenicAcidDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedPantothenicAcidDietRegimeTherapy = "http://snomed.info/sct#438191000124103";
+
+    /// <summary>
     /// Literal for code: DecreasedPantothenicAcidDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedPantothenicAcidDietRegimeTherapy = "438201000124100";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedPantothenicAcidDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedPantothenicAcidDietRegimeTherapy = "http://snomed.info/sct#438201000124100";
 
     /// <summary>
     /// Literal for code: IncreasedRiboflavinDietRegimeTherapy
@@ -2841,9 +3711,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedRiboflavinDietRegimeTherapy = "438211000124102";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedRiboflavinDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedRiboflavinDietRegimeTherapy = "http://snomed.info/sct#438211000124102";
+
+    /// <summary>
     /// Literal for code: DecreasedRiboflavinDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedRiboflavinDietRegimeTherapy = "438221000124105";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedRiboflavinDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedRiboflavinDietRegimeTherapy = "http://snomed.info/sct#438221000124105";
 
     /// <summary>
     /// Literal for code: IncreasedThiamineDietRegimeTherapy
@@ -2851,9 +3731,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedThiamineDietRegimeTherapy = "438231000124108";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedThiamineDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedThiamineDietRegimeTherapy = "http://snomed.info/sct#438231000124108";
+
+    /// <summary>
     /// Literal for code: DecreasedThiamineDiet
     /// </summary>
     public const string LiteralDecreasedThiamineDiet = "438241000124103";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedThiamineDiet
+    /// </summary>
+    public const string LiteralNONEDecreasedThiamineDiet = "http://snomed.info/sct#438241000124103";
 
     /// <summary>
     /// Literal for code: IncreasedVitaminADietRegimeTherapy
@@ -2861,9 +3751,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedVitaminADietRegimeTherapy = "438251000124101";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedVitaminADietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedVitaminADietRegimeTherapy = "http://snomed.info/sct#438251000124101";
+
+    /// <summary>
     /// Literal for code: DecreasedVitaminADietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedVitaminADietRegimeTherapy = "438261000124104";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedVitaminADietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedVitaminADietRegimeTherapy = "http://snomed.info/sct#438261000124104";
 
     /// <summary>
     /// Literal for code: IncreasedVitaminB12DietRegimeTherapy
@@ -2871,9 +3771,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedVitaminB12DietRegimeTherapy = "438271000124106";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedVitaminB12DietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedVitaminB12DietRegimeTherapy = "http://snomed.info/sct#438271000124106";
+
+    /// <summary>
     /// Literal for code: DecreasedVitaminB12DietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedVitaminB12DietRegimeTherapy = "438281000124109";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedVitaminB12DietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedVitaminB12DietRegimeTherapy = "http://snomed.info/sct#438281000124109";
 
     /// <summary>
     /// Literal for code: IncreasedVitaminB6DietRegimeTherapy
@@ -2881,9 +3791,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedVitaminB6DietRegimeTherapy = "438291000124107";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedVitaminB6DietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedVitaminB6DietRegimeTherapy = "http://snomed.info/sct#438291000124107";
+
+    /// <summary>
     /// Literal for code: DecreasedVitaminB6DietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedVitaminB6DietRegimeTherapy = "438301000124108";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedVitaminB6DietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedVitaminB6DietRegimeTherapy = "http://snomed.info/sct#438301000124108";
 
     /// <summary>
     /// Literal for code: IncreasedVitaminCDietRegimeTherapy
@@ -2891,9 +3811,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedVitaminCDietRegimeTherapy = "438311000124106";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedVitaminCDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedVitaminCDietRegimeTherapy = "http://snomed.info/sct#438311000124106";
+
+    /// <summary>
     /// Literal for code: DecreasedVitaminCDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedVitaminCDietRegimeTherapy = "438321000124103";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedVitaminCDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedVitaminCDietRegimeTherapy = "http://snomed.info/sct#438321000124103";
 
     /// <summary>
     /// Literal for code: IncreasedVitaminDDietRegimeTherapy
@@ -2901,9 +3831,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedVitaminDDietRegimeTherapy = "438331000124100";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedVitaminDDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedVitaminDDietRegimeTherapy = "http://snomed.info/sct#438331000124100";
+
+    /// <summary>
     /// Literal for code: DecreasedVitaminDDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedVitaminDDietRegimeTherapy = "438341000124105";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedVitaminDDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedVitaminDDietRegimeTherapy = "http://snomed.info/sct#438341000124105";
 
     /// <summary>
     /// Literal for code: IncreasedVitaminEDietRegimeTherapy
@@ -2911,9 +3851,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedVitaminEDietRegimeTherapy = "438351000124107";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedVitaminEDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedVitaminEDietRegimeTherapy = "http://snomed.info/sct#438351000124107";
+
+    /// <summary>
     /// Literal for code: DecreasedVitaminEDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedVitaminEDietRegimeTherapy = "438361000124109";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedVitaminEDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedVitaminEDietRegimeTherapy = "http://snomed.info/sct#438361000124109";
 
     /// <summary>
     /// Literal for code: IncreasedVitaminKDietRegimeTherapy
@@ -2921,9 +3871,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedVitaminKDietRegimeTherapy = "438371000124102";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedVitaminKDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedVitaminKDietRegimeTherapy = "http://snomed.info/sct#438371000124102";
+
+    /// <summary>
     /// Literal for code: DecreasedVitaminKDietRegimeTherapy
     /// </summary>
     public const string LiteralDecreasedVitaminKDietRegimeTherapy = "438381000124104";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedVitaminKDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDecreasedVitaminKDietRegimeTherapy = "http://snomed.info/sct#438381000124104";
 
     /// <summary>
     /// Literal for code: DietaryLiquidConsistencyNectarThickLiquidRegimeTherapy
@@ -2931,9 +3891,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDietaryLiquidConsistencyNectarThickLiquidRegimeTherapy = "439021000124105";
 
     /// <summary>
+    /// Literal for code: NONEDietaryLiquidConsistencyNectarThickLiquidRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDietaryLiquidConsistencyNectarThickLiquidRegimeTherapy = "http://snomed.info/sct#439021000124105";
+
+    /// <summary>
     /// Literal for code: DietaryLiquidConsistencyHoneyThickLiquidRegimeTherapy
     /// </summary>
     public const string LiteralDietaryLiquidConsistencyHoneyThickLiquidRegimeTherapy = "439031000124108";
+
+    /// <summary>
+    /// Literal for code: NONEDietaryLiquidConsistencyHoneyThickLiquidRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDietaryLiquidConsistencyHoneyThickLiquidRegimeTherapy = "http://snomed.info/sct#439031000124108";
 
     /// <summary>
     /// Literal for code: DietaryLiquidConsistencySpoonThickLiquidRegimeTherapy
@@ -2941,9 +3911,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDietaryLiquidConsistencySpoonThickLiquidRegimeTherapy = "439041000124103";
 
     /// <summary>
+    /// Literal for code: NONEDietaryLiquidConsistencySpoonThickLiquidRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDietaryLiquidConsistencySpoonThickLiquidRegimeTherapy = "http://snomed.info/sct#439041000124103";
+
+    /// <summary>
     /// Literal for code: FluidRestrictedDietRegimeTherapy
     /// </summary>
     public const string LiteralFluidRestrictedDietRegimeTherapy = "439061000124104";
+
+    /// <summary>
+    /// Literal for code: NONEFluidRestrictedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEFluidRestrictedDietRegimeTherapy = "http://snomed.info/sct#439061000124104";
 
     /// <summary>
     /// Literal for code: IncreasedFluidDietRegimeTherapy
@@ -2951,9 +3931,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreasedFluidDietRegimeTherapy = "439071000124106";
 
     /// <summary>
+    /// Literal for code: NONEIncreasedFluidDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEIncreasedFluidDietRegimeTherapy = "http://snomed.info/sct#439071000124106";
+
+    /// <summary>
     /// Literal for code: DietaryLiquidConsistencyThinLiquidRegimeTherapy
     /// </summary>
     public const string LiteralDietaryLiquidConsistencyThinLiquidRegimeTherapy = "439081000124109";
+
+    /// <summary>
+    /// Literal for code: NONEDietaryLiquidConsistencyThinLiquidRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEDietaryLiquidConsistencyThinLiquidRegimeTherapy = "http://snomed.info/sct#439081000124109";
 
     /// <summary>
     /// Literal for code: EasyToChewDietRegimeTherapy
@@ -2961,9 +3951,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEasyToChewDietRegimeTherapy = "439101000124101";
 
     /// <summary>
+    /// Literal for code: NONEEasyToChewDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEEasyToChewDietRegimeTherapy = "http://snomed.info/sct#439101000124101";
+
+    /// <summary>
     /// Literal for code: MechanicallyAlteredDietRegimeTherapy
     /// </summary>
     public const string LiteralMechanicallyAlteredDietRegimeTherapy = "439111000124103";
+
+    /// <summary>
+    /// Literal for code: NONEMechanicallyAlteredDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEMechanicallyAlteredDietRegimeTherapy = "http://snomed.info/sct#439111000124103";
 
     /// <summary>
     /// Literal for code: PureedDietRegimeTherapy
@@ -2971,9 +3971,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPureedDietRegimeTherapy = "439121000124106";
 
     /// <summary>
+    /// Literal for code: NONEPureedDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEPureedDietRegimeTherapy = "http://snomed.info/sct#439121000124106";
+
+    /// <summary>
     /// Literal for code: ModificationOfNutritionalRegimeRegimeTherapy
     /// </summary>
     public const string LiteralModificationOfNutritionalRegimeRegimeTherapy = "445341000124100";
+
+    /// <summary>
+    /// Literal for code: NONEModificationOfNutritionalRegimeRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEModificationOfNutritionalRegimeRegimeTherapy = "http://snomed.info/sct#445341000124100";
 
     /// <summary>
     /// Literal for code: ModificationOfScheduleOfOralIntakeRegimeTherapy
@@ -2981,9 +3991,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralModificationOfScheduleOfOralIntakeRegimeTherapy = "445351000124103";
 
     /// <summary>
+    /// Literal for code: NONEModificationOfScheduleOfOralIntakeRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEModificationOfScheduleOfOralIntakeRegimeTherapy = "http://snomed.info/sct#445351000124103";
+
+    /// <summary>
     /// Literal for code: TubeFeedingByBarronPump
     /// </summary>
     public const string LiteralTubeFeedingByBarronPump = "50712000";
+
+    /// <summary>
+    /// Literal for code: NONETubeFeedingByBarronPump
+    /// </summary>
+    public const string LiteralNONETubeFeedingByBarronPump = "http://snomed.info/sct#50712000";
 
     /// <summary>
     /// Literal for code: TubeFeedingByDripMethod
@@ -2991,9 +4011,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTubeFeedingByDripMethod = "56948003";
 
     /// <summary>
+    /// Literal for code: NONETubeFeedingByDripMethod
+    /// </summary>
+    public const string LiteralNONETubeFeedingByDripMethod = "http://snomed.info/sct#56948003";
+
+    /// <summary>
     /// Literal for code: TubeFeedingOfPatient
     /// </summary>
     public const string LiteralTubeFeedingOfPatient = "61420007";
+
+    /// <summary>
+    /// Literal for code: NONETubeFeedingOfPatient
+    /// </summary>
+    public const string LiteralNONETubeFeedingOfPatient = "http://snomed.info/sct#61420007";
 
     /// <summary>
     /// Literal for code: ModifiedFluidDietRegimeTherapy
@@ -3001,9 +4031,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralModifiedFluidDietRegimeTherapy = "762104002";
 
     /// <summary>
+    /// Literal for code: NONEModifiedFluidDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEModifiedFluidDietRegimeTherapy = "http://snomed.info/sct#762104002";
+
+    /// <summary>
     /// Literal for code: VegetarianDietRegimeTherapy
     /// </summary>
     public const string LiteralVegetarianDietRegimeTherapy = "765021002";
+
+    /// <summary>
+    /// Literal for code: NONEVegetarianDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEVegetarianDietRegimeTherapy = "http://snomed.info/sct#765021002";
 
     /// <summary>
     /// Literal for code: LactoVegetarianDiet
@@ -3011,9 +4051,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLactoVegetarianDiet = "765022009";
 
     /// <summary>
+    /// Literal for code: NONELactoVegetarianDiet
+    /// </summary>
+    public const string LiteralNONELactoVegetarianDiet = "http://snomed.info/sct#765022009";
+
+    /// <summary>
     /// Literal for code: LactoOvoVegetarianDiet
     /// </summary>
     public const string LiteralLactoOvoVegetarianDiet = "765023004";
+
+    /// <summary>
+    /// Literal for code: NONELactoOvoVegetarianDiet
+    /// </summary>
+    public const string LiteralNONELactoOvoVegetarianDiet = "http://snomed.info/sct#765023004";
 
     /// <summary>
     /// Literal for code: AtkinsDiet
@@ -3021,9 +4071,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAtkinsDiet = "765024005";
 
     /// <summary>
+    /// Literal for code: NONEAtkinsDiet
+    /// </summary>
+    public const string LiteralNONEAtkinsDiet = "http://snomed.info/sct#765024005";
+
+    /// <summary>
     /// Literal for code: KosherDiet
     /// </summary>
     public const string LiteralKosherDiet = "765025006";
+
+    /// <summary>
+    /// Literal for code: NONEKosherDiet
+    /// </summary>
+    public const string LiteralNONEKosherDiet = "http://snomed.info/sct#765025006";
 
     /// <summary>
     /// Literal for code: HinduDietRegimeTherapy
@@ -3031,9 +4091,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHinduDietRegimeTherapy = "765052001";
 
     /// <summary>
+    /// Literal for code: NONEHinduDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONEHinduDietRegimeTherapy = "http://snomed.info/sct#765052001";
+
+    /// <summary>
     /// Literal for code: LowFructoseDietRegimeTherapy
     /// </summary>
     public const string LiteralLowFructoseDietRegimeTherapy = "765053006";
+
+    /// <summary>
+    /// Literal for code: NONELowFructoseDietRegimeTherapy
+    /// </summary>
+    public const string LiteralNONELowFructoseDietRegimeTherapy = "http://snomed.info/sct#765053006";
 
     /// <summary>
     /// Literal for code: KetogenicDiet
@@ -3041,13 +4111,468 @@ namespace fhirCsR5.ValueSets
     public const string LiteralKetogenicDiet = "765060000";
 
     /// <summary>
+    /// Literal for code: NONEKetogenicDiet
+    /// </summary>
+    public const string LiteralNONEKetogenicDiet = "http://snomed.info/sct#765060000";
+
+    /// <summary>
     /// Literal for code: CantoneseDiet
     /// </summary>
     public const string LiteralCantoneseDiet = "765063003";
 
     /// <summary>
+    /// Literal for code: NONECantoneseDiet
+    /// </summary>
+    public const string LiteralNONECantoneseDiet = "http://snomed.info/sct#765063003";
+
+    /// <summary>
     /// Literal for code: Fasting
     /// </summary>
     public const string LiteralFasting = "792805006";
+
+    /// <summary>
+    /// Literal for code: NONEFasting
+    /// </summary>
+    public const string LiteralNONEFasting = "http://snomed.info/sct#792805006";
+
+    /// <summary>
+    /// Dictionary for looking up DietType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1151000175103", DietaryApproachesToStopHypertensionDietRegimeTherapy }, 
+      { "http://snomed.info/sct#1151000175103", DietaryApproachesToStopHypertensionDietRegimeTherapy }, 
+      { "182922004", DietaryRegime }, 
+      { "http://snomed.info/sct#182922004", DietaryRegime }, 
+      { "182954008", DietaryProphylaxis }, 
+      { "http://snomed.info/sct#182954008", DietaryProphylaxis }, 
+      { "182955009", LowCarbohydrateDietProphylaxis }, 
+      { "http://snomed.info/sct#182955009", LowCarbohydrateDietProphylaxis }, 
+      { "182956005", LowCalorieDietProphylaxis }, 
+      { "http://snomed.info/sct#182956005", LowCalorieDietProphylaxis }, 
+      { "182957001", LowSaltDietProphylaxis }, 
+      { "http://snomed.info/sct#182957001", LowSaltDietProphylaxis }, 
+      { "182958006", SaltFreeDietProphylaxis }, 
+      { "http://snomed.info/sct#182958006", SaltFreeDietProphylaxis }, 
+      { "182959003", LowProteinDietProphylaxis }, 
+      { "http://snomed.info/sct#182959003", LowProteinDietProphylaxis }, 
+      { "182960008", UnsaturatedFatDietProphylaxis }, 
+      { "http://snomed.info/sct#182960008", UnsaturatedFatDietProphylaxis }, 
+      { "183028005", NasalTubeFeeding }, 
+      { "http://snomed.info/sct#183028005", NasalTubeFeeding }, 
+      { "223456000", ProvisionOfASpecialDiet }, 
+      { "http://snomed.info/sct#223456000", ProvisionOfASpecialDiet }, 
+      { "225373002", PEGPercutaneousEndoscopicGastrostomyFeeding }, 
+      { "http://snomed.info/sct#225373002", PEGPercutaneousEndoscopicGastrostomyFeeding }, 
+      { "225374008", JejunostomyFeeding }, 
+      { "http://snomed.info/sct#225374008", JejunostomyFeeding }, 
+      { "229912004", EnteralFeeding }, 
+      { "http://snomed.info/sct#229912004", EnteralFeeding }, 
+      { "229913009", OralTubeFeeding }, 
+      { "http://snomed.info/sct#229913009", OralTubeFeeding }, 
+      { "229914003", NasogastricFeeding }, 
+      { "http://snomed.info/sct#229914003", NasogastricFeeding }, 
+      { "229915002", NasoduodenalFeeding }, 
+      { "http://snomed.info/sct#229915002", NasoduodenalFeeding }, 
+      { "229916001", EsophagostomyFeeding }, 
+      { "http://snomed.info/sct#229916001", EsophagostomyFeeding }, 
+      { "229917005", GastrostomyFeeding }, 
+      { "http://snomed.info/sct#229917005", GastrostomyFeeding }, 
+      { "284071006", DietaryTreatmentForDisorder }, 
+      { "http://snomed.info/sct#284071006", DietaryTreatmentForDisorder }, 
+      { "289133003", ButtonGastrostomyFeeding }, 
+      { "http://snomed.info/sct#289133003", ButtonGastrostomyFeeding }, 
+      { "310244003", NasojejunalFeeding }, 
+      { "http://snomed.info/sct#310244003", NasojejunalFeeding }, 
+      { "361231003", PrescribedDietaryIntake }, 
+      { "http://snomed.info/sct#361231003", PrescribedDietaryIntake }, 
+      { "386261001", DietStagingRegimeTherapy }, 
+      { "http://snomed.info/sct#386261001", DietStagingRegimeTherapy }, 
+      { "38903004", TubeFeedingBySyringeMethod }, 
+      { "http://snomed.info/sct#38903004", TubeFeedingBySyringeMethod }, 
+      { "404919001", WheatFreeDiet }, 
+      { "http://snomed.info/sct#404919001", WheatFreeDiet }, 
+      { "422972009", AdvanceDietAsToleratedRegimeTherapy }, 
+      { "http://snomed.info/sct#422972009", AdvanceDietAsToleratedRegimeTherapy }, 
+      { "425458000", LactoseFreeDietRegimeTherapy }, 
+      { "http://snomed.info/sct#425458000", LactoseFreeDietRegimeTherapy }, 
+      { "435581000124102", CarbohydrateModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#435581000124102", CarbohydrateModifiedDietRegimeTherapy }, 
+      { "435651000124106", ConsistentCarbohydrateDietRegimeTherapy }, 
+      { "http://snomed.info/sct#435651000124106", ConsistentCarbohydrateDietRegimeTherapy }, 
+      { "435661000124108", GalactoseModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#435661000124108", GalactoseModifiedDietRegimeTherapy }, 
+      { "435671000124101", CholesterolModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#435671000124101", CholesterolModifiedDietRegimeTherapy }, 
+      { "435681000124103", DietaryLiquidConsistencyDietRegimeTherapy }, 
+      { "http://snomed.info/sct#435681000124103", DietaryLiquidConsistencyDietRegimeTherapy }, 
+      { "435691000124100", DietModifiedForSpecificFoodsOrIngredientsRegimeTherapy }, 
+      { "http://snomed.info/sct#435691000124100", DietModifiedForSpecificFoodsOrIngredientsRegimeTherapy }, 
+      { "435701000124100", EnergyModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#435701000124100", EnergyModifiedDietRegimeTherapy }, 
+      { "435711000124102", FatModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#435711000124102", FatModifiedDietRegimeTherapy }, 
+      { "435721000124105", FiberModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#435721000124105", FiberModifiedDietRegimeTherapy }, 
+      { "435731000124108", LiquidDietRegimeTherapy }, 
+      { "http://snomed.info/sct#435731000124108", LiquidDietRegimeTherapy }, 
+      { "435741000124103", ClearLiquidDietRegimeTherapy }, 
+      { "http://snomed.info/sct#435741000124103", ClearLiquidDietRegimeTherapy }, 
+      { "435751000124101", FullLiquidDietRegimeTherapy }, 
+      { "http://snomed.info/sct#435751000124101", FullLiquidDietRegimeTherapy }, 
+      { "435771000124106", GeneralHealthfulDietRegimeTherapy }, 
+      { "http://snomed.info/sct#435771000124106", GeneralHealthfulDietRegimeTherapy }, 
+      { "435781000124109", MineralModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#435781000124109", MineralModifiedDietRegimeTherapy }, 
+      { "435791000124107", ProteinModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#435791000124107", ProteinModifiedDietRegimeTherapy }, 
+      { "435801000124108", TextureModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#435801000124108", TextureModifiedDietRegimeTherapy }, 
+      { "435811000124106", VitaminModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#435811000124106", VitaminModifiedDietRegimeTherapy }, 
+      { "436661000124100", LactoseModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436661000124100", LactoseModifiedDietRegimeTherapy }, 
+      { "436671000124107", DecreasedLactoseDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436671000124107", DecreasedLactoseDietRegimeTherapy }, 
+      { "436681000124105", IncreasedCarbohydrateDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436681000124105", IncreasedCarbohydrateDietRegimeTherapy }, 
+      { "436691000124108", DecreasedCarbohydrateDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436691000124108", DecreasedCarbohydrateDietRegimeTherapy }, 
+      { "436701000124108", DecreasedGalactoseDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436701000124108", DecreasedGalactoseDietRegimeTherapy }, 
+      { "436711000124106", DecreasedCholesterolDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436711000124106", DecreasedCholesterolDietRegimeTherapy }, 
+      { "436721000124103", IncreasedEnergyDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436721000124103", IncreasedEnergyDietRegimeTherapy }, 
+      { "436731000124100", DecreasedEnergyDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436731000124100", DecreasedEnergyDietRegimeTherapy }, 
+      { "436851000124101", IncreasedFatDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436851000124101", IncreasedFatDietRegimeTherapy }, 
+      { "436861000124104", DecreasedFatDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436861000124104", DecreasedFatDietRegimeTherapy }, 
+      { "436871000124106", MonounsaturatedFatModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436871000124106", MonounsaturatedFatModifiedDietRegimeTherapy }, 
+      { "436881000124109", PolyunsaturatedFatModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436881000124109", PolyunsaturatedFatModifiedDietRegimeTherapy }, 
+      { "436891000124107", SaturatedFatModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436891000124107", SaturatedFatModifiedDietRegimeTherapy }, 
+      { "436901000124106", TransFatModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436901000124106", TransFatModifiedDietRegimeTherapy }, 
+      { "436911000124109", IncreasedMonounsaturatedFatDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436911000124109", IncreasedMonounsaturatedFatDietRegimeTherapy }, 
+      { "436921000124101", DecreasedMonounsaturatedFatDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436921000124101", DecreasedMonounsaturatedFatDietRegimeTherapy }, 
+      { "436931000124103", IncreasedPolyunsaturatedFatDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436931000124103", IncreasedPolyunsaturatedFatDietRegimeTherapy }, 
+      { "436941000124108", DecreasedPolyunsaturatedFatDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436941000124108", DecreasedPolyunsaturatedFatDietRegimeTherapy }, 
+      { "436951000124105", DecreasedSaturatedFatDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436951000124105", DecreasedSaturatedFatDietRegimeTherapy }, 
+      { "436961000124107", DecreasedTransFatDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436961000124107", DecreasedTransFatDietRegimeTherapy }, 
+      { "436991000124104", IncreasedFiberDietRegimeTherapy }, 
+      { "http://snomed.info/sct#436991000124104", IncreasedFiberDietRegimeTherapy }, 
+      { "437001000124107", DecreasedFiberDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437001000124107", DecreasedFiberDietRegimeTherapy }, 
+      { "437011000124105", SolubleFiberModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437011000124105", SolubleFiberModifiedDietRegimeTherapy }, 
+      { "437021000124102", InsolubleFiberModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437021000124102", InsolubleFiberModifiedDietRegimeTherapy }, 
+      { "437031000124104", IncreasedSolubleFiberDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437031000124104", IncreasedSolubleFiberDietRegimeTherapy }, 
+      { "437041000124109", DecreasedSolubleFiberDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437041000124109", DecreasedSolubleFiberDietRegimeTherapy }, 
+      { "437051000124106", IncreasedInsolubleFiberDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437051000124106", IncreasedInsolubleFiberDietRegimeTherapy }, 
+      { "437061000124108", DecreasedInsolubleFiberDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437061000124108", DecreasedInsolubleFiberDietRegimeTherapy }, 
+      { "437081000124103", BoronModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437081000124103", BoronModifiedDietRegimeTherapy }, 
+      { "437091000124100", CalciumModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437091000124100", CalciumModifiedDietRegimeTherapy }, 
+      { "437101000124106", ChlorideModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437101000124106", ChlorideModifiedDietRegimeTherapy }, 
+      { "437111000124109", ChromiumModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437111000124109", ChromiumModifiedDietRegimeTherapy }, 
+      { "437121000124101", CobaltModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437121000124101", CobaltModifiedDietRegimeTherapy }, 
+      { "437131000124103", CopperModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437131000124103", CopperModifiedDietRegimeTherapy }, 
+      { "437141000124108", FluorideModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437141000124108", FluorideModifiedDietRegimeTherapy }, 
+      { "437151000124105", IodineModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437151000124105", IodineModifiedDietRegimeTherapy }, 
+      { "437161000124107", IronModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437161000124107", IronModifiedDietRegimeTherapy }, 
+      { "437171000124100", MagnesiumModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437171000124100", MagnesiumModifiedDietRegimeTherapy }, 
+      { "437181000124102", ManganeseModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437181000124102", ManganeseModifiedDietRegimeTherapy }, 
+      { "437191000124104", MolybdenumModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437191000124104", MolybdenumModifiedDietRegimeTherapy }, 
+      { "437201000124101", PhosphorusModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437201000124101", PhosphorusModifiedDietRegimeTherapy }, 
+      { "437211000124103", PotassiumModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437211000124103", PotassiumModifiedDietRegimeTherapy }, 
+      { "437221000124106", SeleniumModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437221000124106", SeleniumModifiedDietRegimeTherapy }, 
+      { "437231000124109", SodiumModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437231000124109", SodiumModifiedDietRegimeTherapy }, 
+      { "437241000124104", SulfurModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437241000124104", SulfurModifiedDietRegimeTherapy }, 
+      { "437251000124102", ZincModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437251000124102", ZincModifiedDietRegimeTherapy }, 
+      { "437261000124100", IncreasedCalciumDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437261000124100", IncreasedCalciumDietRegimeTherapy }, 
+      { "437271000124107", DecreasedCalciumDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437271000124107", DecreasedCalciumDietRegimeTherapy }, 
+      { "437281000124105", IncreasedChromiumDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437281000124105", IncreasedChromiumDietRegimeTherapy }, 
+      { "437291000124108", IncreasedCopperDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437291000124108", IncreasedCopperDietRegimeTherapy }, 
+      { "437301000124109", DecreasedCopperDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437301000124109", DecreasedCopperDietRegimeTherapy }, 
+      { "437311000124107", IncreasedIodineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437311000124107", IncreasedIodineDietRegimeTherapy }, 
+      { "437321000124104", DecreasedIodineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437321000124104", DecreasedIodineDietRegimeTherapy }, 
+      { "437331000124101", IncreasedIronDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437331000124101", IncreasedIronDietRegimeTherapy }, 
+      { "437341000124106", DecreasedIronDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437341000124106", DecreasedIronDietRegimeTherapy }, 
+      { "437351000124108", IncreasedMagnesiumDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437351000124108", IncreasedMagnesiumDietRegimeTherapy }, 
+      { "437361000124105", DecreasedMagnesiumDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437361000124105", DecreasedMagnesiumDietRegimeTherapy }, 
+      { "437371000124103", IncreasedPhosphorusDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437371000124103", IncreasedPhosphorusDietRegimeTherapy }, 
+      { "437381000124100", DecreasedPhosphorusDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437381000124100", DecreasedPhosphorusDietRegimeTherapy }, 
+      { "437391000124102", HighPotassiumDiet }, 
+      { "http://snomed.info/sct#437391000124102", HighPotassiumDiet }, 
+      { "437401000124100", DecreasedPotassiumDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437401000124100", DecreasedPotassiumDietRegimeTherapy }, 
+      { "437411000124102", IncreasedSodiumDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437411000124102", IncreasedSodiumDietRegimeTherapy }, 
+      { "437421000124105", DecreasedSodiumDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437421000124105", DecreasedSodiumDietRegimeTherapy }, 
+      { "437431000124108", IncreasedZincDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437431000124108", IncreasedZincDietRegimeTherapy }, 
+      { "437441000124103", DecreasedZincDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437441000124103", DecreasedZincDietRegimeTherapy }, 
+      { "437451000124101", ConsistentProteinDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437451000124101", ConsistentProteinDietRegimeTherapy }, 
+      { "437461000124104", IncreasedProteinDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437461000124104", IncreasedProteinDietRegimeTherapy }, 
+      { "437471000124106", DecreasedProteinDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437471000124106", DecreasedProteinDietRegimeTherapy }, 
+      { "437481000124109", AminoAcidModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437481000124109", AminoAcidModifiedDietRegimeTherapy }, 
+      { "437491000124107", ArginineModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437491000124107", ArginineModifiedDietRegimeTherapy }, 
+      { "437501000124104", GlutamineModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437501000124104", GlutamineModifiedDietRegimeTherapy }, 
+      { "437511000124101", HistidineModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437511000124101", HistidineModifiedDietRegimeTherapy }, 
+      { "437521000124109", IncreasedHomocysteineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437521000124109", IncreasedHomocysteineDietRegimeTherapy }, 
+      { "437531000124107", IsoleucineModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437531000124107", IsoleucineModifiedDietRegimeTherapy }, 
+      { "437541000124102", LeucineModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437541000124102", LeucineModifiedDietRegimeTherapy }, 
+      { "437551000124100", LysineModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437551000124100", LysineModifiedDietRegimeTherapy }, 
+      { "437561000124103", MethionineModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437561000124103", MethionineModifiedDietRegimeTherapy }, 
+      { "437571000124105", DecreasedPhenylalanineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437571000124105", DecreasedPhenylalanineDietRegimeTherapy }, 
+      { "437581000124108", ThreonineModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437581000124108", ThreonineModifiedDietRegimeTherapy }, 
+      { "437591000124106", TryptophanModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437591000124106", TryptophanModifiedDietRegimeTherapy }, 
+      { "437601000124103", DecreasedTyramineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437601000124103", DecreasedTyramineDietRegimeTherapy }, 
+      { "437611000124100", TyrosineModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437611000124100", TyrosineModifiedDietRegimeTherapy }, 
+      { "437621000124108", ValineModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437621000124108", ValineModifiedDietRegimeTherapy }, 
+      { "437631000124106", DecreasedCaseinDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437631000124106", DecreasedCaseinDietRegimeTherapy }, 
+      { "437641000124101", DecreasedGlutenDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437641000124101", DecreasedGlutenDietRegimeTherapy }, 
+      { "437651000124104", GlutenFreeDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437651000124104", GlutenFreeDietRegimeTherapy }, 
+      { "437661000124102", IncreasedArginineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437661000124102", IncreasedArginineDietRegimeTherapy }, 
+      { "437671000124109", DecreasedArginineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437671000124109", DecreasedArginineDietRegimeTherapy }, 
+      { "437681000124107", IncreasedGlutamineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437681000124107", IncreasedGlutamineDietRegimeTherapy }, 
+      { "437691000124105", DecreasedGlutamineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437691000124105", DecreasedGlutamineDietRegimeTherapy }, 
+      { "437701000124105", IncreasedHistidineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437701000124105", IncreasedHistidineDietRegimeTherapy }, 
+      { "437711000124108", DecreasedHistidineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437711000124108", DecreasedHistidineDietRegimeTherapy }, 
+      { "437721000124100", IncreasedIsoleucineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437721000124100", IncreasedIsoleucineDietRegimeTherapy }, 
+      { "437731000124102", DecreasedIsoleucineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437731000124102", DecreasedIsoleucineDietRegimeTherapy }, 
+      { "437741000124107", IncreasedLeucineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437741000124107", IncreasedLeucineDietRegimeTherapy }, 
+      { "437751000124109", DecreasedLeucineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437751000124109", DecreasedLeucineDietRegimeTherapy }, 
+      { "437761000124106", IncreasedLysineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437761000124106", IncreasedLysineDietRegimeTherapy }, 
+      { "437771000124104", DecreasedLysineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437771000124104", DecreasedLysineDietRegimeTherapy }, 
+      { "437781000124101", IncreasedMethionineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437781000124101", IncreasedMethionineDietRegimeTherapy }, 
+      { "437791000124103", DecreasedMethionineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437791000124103", DecreasedMethionineDietRegimeTherapy }, 
+      { "437801000124102", IncreasedThreonineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437801000124102", IncreasedThreonineDietRegimeTherapy }, 
+      { "437811000124104", DecreasedThreonineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437811000124104", DecreasedThreonineDietRegimeTherapy }, 
+      { "437821000124107", IncreasedTryptophanDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437821000124107", IncreasedTryptophanDietRegimeTherapy }, 
+      { "437831000124105", DecreasedTryptophanDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437831000124105", DecreasedTryptophanDietRegimeTherapy }, 
+      { "437841000124100", IncreasedTyrosineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437841000124100", IncreasedTyrosineDietRegimeTherapy }, 
+      { "437851000124103", DecreasedTyrosineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437851000124103", DecreasedTyrosineDietRegimeTherapy }, 
+      { "437861000124101", IncreasedValineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437861000124101", IncreasedValineDietRegimeTherapy }, 
+      { "437871000124108", DecreasedValineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#437871000124108", DecreasedValineDietRegimeTherapy }, 
+      { "438001000124106", BiotinModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438001000124106", BiotinModifiedDietRegimeTherapy }, 
+      { "438011000124109", FolicAcidModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438011000124109", FolicAcidModifiedDietRegimeTherapy }, 
+      { "438021000124101", NiacinModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438021000124101", NiacinModifiedDietRegimeTherapy }, 
+      { "438031000124103", PantothenicAcidModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438031000124103", PantothenicAcidModifiedDietRegimeTherapy }, 
+      { "438041000124108", RiboflavinModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438041000124108", RiboflavinModifiedDietRegimeTherapy }, 
+      { "438051000124105", ThiamineModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438051000124105", ThiamineModifiedDietRegimeTherapy }, 
+      { "438061000124107", VitaminAModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438061000124107", VitaminAModifiedDietRegimeTherapy }, 
+      { "438071000124100", VitaminB6ModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438071000124100", VitaminB6ModifiedDietRegimeTherapy }, 
+      { "438081000124102", VitaminB12ModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438081000124102", VitaminB12ModifiedDietRegimeTherapy }, 
+      { "438091000124104", VitaminCModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438091000124104", VitaminCModifiedDietRegimeTherapy }, 
+      { "438101000124105", VitaminDModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438101000124105", VitaminDModifiedDietRegimeTherapy }, 
+      { "438111000124108", VitaminEModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438111000124108", VitaminEModifiedDietRegimeTherapy }, 
+      { "438121000124100", VitaminKModifiedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438121000124100", VitaminKModifiedDietRegimeTherapy }, 
+      { "438131000124102", IncreasedBiotinDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438131000124102", IncreasedBiotinDietRegimeTherapy }, 
+      { "438141000124107", DecreasedBiotinDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438141000124107", DecreasedBiotinDietRegimeTherapy }, 
+      { "438151000124109", IncreasedFolicAcidDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438151000124109", IncreasedFolicAcidDietRegimeTherapy }, 
+      { "438161000124106", DecreasedFolicAcidDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438161000124106", DecreasedFolicAcidDietRegimeTherapy }, 
+      { "438171000124104", IncreasedNiacinDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438171000124104", IncreasedNiacinDietRegimeTherapy }, 
+      { "438181000124101", DecreasedNiacinDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438181000124101", DecreasedNiacinDietRegimeTherapy }, 
+      { "438191000124103", IncreasedPantothenicAcidDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438191000124103", IncreasedPantothenicAcidDietRegimeTherapy }, 
+      { "438201000124100", DecreasedPantothenicAcidDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438201000124100", DecreasedPantothenicAcidDietRegimeTherapy }, 
+      { "438211000124102", IncreasedRiboflavinDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438211000124102", IncreasedRiboflavinDietRegimeTherapy }, 
+      { "438221000124105", DecreasedRiboflavinDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438221000124105", DecreasedRiboflavinDietRegimeTherapy }, 
+      { "438231000124108", IncreasedThiamineDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438231000124108", IncreasedThiamineDietRegimeTherapy }, 
+      { "438241000124103", DecreasedThiamineDiet }, 
+      { "http://snomed.info/sct#438241000124103", DecreasedThiamineDiet }, 
+      { "438251000124101", IncreasedVitaminADietRegimeTherapy }, 
+      { "http://snomed.info/sct#438251000124101", IncreasedVitaminADietRegimeTherapy }, 
+      { "438261000124104", DecreasedVitaminADietRegimeTherapy }, 
+      { "http://snomed.info/sct#438261000124104", DecreasedVitaminADietRegimeTherapy }, 
+      { "438271000124106", IncreasedVitaminB12DietRegimeTherapy }, 
+      { "http://snomed.info/sct#438271000124106", IncreasedVitaminB12DietRegimeTherapy }, 
+      { "438281000124109", DecreasedVitaminB12DietRegimeTherapy }, 
+      { "http://snomed.info/sct#438281000124109", DecreasedVitaminB12DietRegimeTherapy }, 
+      { "438291000124107", IncreasedVitaminB6DietRegimeTherapy }, 
+      { "http://snomed.info/sct#438291000124107", IncreasedVitaminB6DietRegimeTherapy }, 
+      { "438301000124108", DecreasedVitaminB6DietRegimeTherapy }, 
+      { "http://snomed.info/sct#438301000124108", DecreasedVitaminB6DietRegimeTherapy }, 
+      { "438311000124106", IncreasedVitaminCDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438311000124106", IncreasedVitaminCDietRegimeTherapy }, 
+      { "438321000124103", DecreasedVitaminCDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438321000124103", DecreasedVitaminCDietRegimeTherapy }, 
+      { "438331000124100", IncreasedVitaminDDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438331000124100", IncreasedVitaminDDietRegimeTherapy }, 
+      { "438341000124105", DecreasedVitaminDDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438341000124105", DecreasedVitaminDDietRegimeTherapy }, 
+      { "438351000124107", IncreasedVitaminEDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438351000124107", IncreasedVitaminEDietRegimeTherapy }, 
+      { "438361000124109", DecreasedVitaminEDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438361000124109", DecreasedVitaminEDietRegimeTherapy }, 
+      { "438371000124102", IncreasedVitaminKDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438371000124102", IncreasedVitaminKDietRegimeTherapy }, 
+      { "438381000124104", DecreasedVitaminKDietRegimeTherapy }, 
+      { "http://snomed.info/sct#438381000124104", DecreasedVitaminKDietRegimeTherapy }, 
+      { "439021000124105", DietaryLiquidConsistencyNectarThickLiquidRegimeTherapy }, 
+      { "http://snomed.info/sct#439021000124105", DietaryLiquidConsistencyNectarThickLiquidRegimeTherapy }, 
+      { "439031000124108", DietaryLiquidConsistencyHoneyThickLiquidRegimeTherapy }, 
+      { "http://snomed.info/sct#439031000124108", DietaryLiquidConsistencyHoneyThickLiquidRegimeTherapy }, 
+      { "439041000124103", DietaryLiquidConsistencySpoonThickLiquidRegimeTherapy }, 
+      { "http://snomed.info/sct#439041000124103", DietaryLiquidConsistencySpoonThickLiquidRegimeTherapy }, 
+      { "439061000124104", FluidRestrictedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#439061000124104", FluidRestrictedDietRegimeTherapy }, 
+      { "439071000124106", IncreasedFluidDietRegimeTherapy }, 
+      { "http://snomed.info/sct#439071000124106", IncreasedFluidDietRegimeTherapy }, 
+      { "439081000124109", DietaryLiquidConsistencyThinLiquidRegimeTherapy }, 
+      { "http://snomed.info/sct#439081000124109", DietaryLiquidConsistencyThinLiquidRegimeTherapy }, 
+      { "439101000124101", EasyToChewDietRegimeTherapy }, 
+      { "http://snomed.info/sct#439101000124101", EasyToChewDietRegimeTherapy }, 
+      { "439111000124103", MechanicallyAlteredDietRegimeTherapy }, 
+      { "http://snomed.info/sct#439111000124103", MechanicallyAlteredDietRegimeTherapy }, 
+      { "439121000124106", PureedDietRegimeTherapy }, 
+      { "http://snomed.info/sct#439121000124106", PureedDietRegimeTherapy }, 
+      { "445341000124100", ModificationOfNutritionalRegimeRegimeTherapy }, 
+      { "http://snomed.info/sct#445341000124100", ModificationOfNutritionalRegimeRegimeTherapy }, 
+      { "445351000124103", ModificationOfScheduleOfOralIntakeRegimeTherapy }, 
+      { "http://snomed.info/sct#445351000124103", ModificationOfScheduleOfOralIntakeRegimeTherapy }, 
+      { "50712000", TubeFeedingByBarronPump }, 
+      { "http://snomed.info/sct#50712000", TubeFeedingByBarronPump }, 
+      { "56948003", TubeFeedingByDripMethod }, 
+      { "http://snomed.info/sct#56948003", TubeFeedingByDripMethod }, 
+      { "61420007", TubeFeedingOfPatient }, 
+      { "http://snomed.info/sct#61420007", TubeFeedingOfPatient }, 
+      { "762104002", ModifiedFluidDietRegimeTherapy }, 
+      { "http://snomed.info/sct#762104002", ModifiedFluidDietRegimeTherapy }, 
+      { "765021002", VegetarianDietRegimeTherapy }, 
+      { "http://snomed.info/sct#765021002", VegetarianDietRegimeTherapy }, 
+      { "765022009", LactoVegetarianDiet }, 
+      { "http://snomed.info/sct#765022009", LactoVegetarianDiet }, 
+      { "765023004", LactoOvoVegetarianDiet }, 
+      { "http://snomed.info/sct#765023004", LactoOvoVegetarianDiet }, 
+      { "765024005", AtkinsDiet }, 
+      { "http://snomed.info/sct#765024005", AtkinsDiet }, 
+      { "765025006", KosherDiet }, 
+      { "http://snomed.info/sct#765025006", KosherDiet }, 
+      { "765052001", HinduDietRegimeTherapy }, 
+      { "http://snomed.info/sct#765052001", HinduDietRegimeTherapy }, 
+      { "765053006", LowFructoseDietRegimeTherapy }, 
+      { "http://snomed.info/sct#765053006", LowFructoseDietRegimeTherapy }, 
+      { "765060000", KetogenicDiet }, 
+      { "http://snomed.info/sct#765060000", KetogenicDiet }, 
+      { "765063003", CantoneseDiet }, 
+      { "http://snomed.info/sct#765063003", CantoneseDiet }, 
+      { "792805006", Fasting }, 
+      { "http://snomed.info/sct#792805006", Fasting }, 
+    };
   };
 }

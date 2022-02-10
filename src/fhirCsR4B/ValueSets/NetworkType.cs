@@ -63,9 +63,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMachineName = "1";
 
     /// <summary>
+    /// Literal for code: NetworkTypeMachineName
+    /// </summary>
+    public const string LiteralNetworkTypeMachineName = "http://hl7.org/fhir/network-type#1";
+
+    /// <summary>
     /// Literal for code: IPAddress
     /// </summary>
     public const string LiteralIPAddress = "2";
+
+    /// <summary>
+    /// Literal for code: NetworkTypeIPAddress
+    /// </summary>
+    public const string LiteralNetworkTypeIPAddress = "http://hl7.org/fhir/network-type#2";
 
     /// <summary>
     /// Literal for code: TelephoneNumber
@@ -73,13 +83,44 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTelephoneNumber = "3";
 
     /// <summary>
+    /// Literal for code: NetworkTypeTelephoneNumber
+    /// </summary>
+    public const string LiteralNetworkTypeTelephoneNumber = "http://hl7.org/fhir/network-type#3";
+
+    /// <summary>
     /// Literal for code: EmailAddress
     /// </summary>
     public const string LiteralEmailAddress = "4";
 
     /// <summary>
+    /// Literal for code: NetworkTypeEmailAddress
+    /// </summary>
+    public const string LiteralNetworkTypeEmailAddress = "http://hl7.org/fhir/network-type#4";
+
+    /// <summary>
     /// Literal for code: URI
     /// </summary>
     public const string LiteralURI = "5";
+
+    /// <summary>
+    /// Literal for code: NetworkTypeURI
+    /// </summary>
+    public const string LiteralNetworkTypeURI = "http://hl7.org/fhir/network-type#5";
+
+    /// <summary>
+    /// Dictionary for looking up NetworkType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1", MachineName }, 
+      { "http://hl7.org/fhir/network-type#1", MachineName }, 
+      { "2", IPAddress }, 
+      { "http://hl7.org/fhir/network-type#2", IPAddress }, 
+      { "3", TelephoneNumber }, 
+      { "http://hl7.org/fhir/network-type#3", TelephoneNumber }, 
+      { "4", EmailAddress }, 
+      { "http://hl7.org/fhir/network-type#4", EmailAddress }, 
+      { "5", URI }, 
+      { "http://hl7.org/fhir/network-type#5", URI }, 
+    };
   };
 }

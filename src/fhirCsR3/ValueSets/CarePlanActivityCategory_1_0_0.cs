@@ -81,9 +81,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiet = "diet";
 
     /// <summary>
+    /// Literal for code: CarePlanActivityCategoryDiet
+    /// </summary>
+    public const string LiteralCarePlanActivityCategoryDiet = "http://hl7.org/fhir/care-plan-activity-category#diet";
+
+    /// <summary>
     /// Literal for code: Drug
     /// </summary>
     public const string LiteralDrug = "drug";
+
+    /// <summary>
+    /// Literal for code: CarePlanActivityCategoryDrug
+    /// </summary>
+    public const string LiteralCarePlanActivityCategoryDrug = "http://hl7.org/fhir/care-plan-activity-category#drug";
 
     /// <summary>
     /// Literal for code: Encounter
@@ -91,9 +101,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEncounter = "encounter";
 
     /// <summary>
+    /// Literal for code: CarePlanActivityCategoryEncounter
+    /// </summary>
+    public const string LiteralCarePlanActivityCategoryEncounter = "http://hl7.org/fhir/care-plan-activity-category#encounter";
+
+    /// <summary>
     /// Literal for code: Observation
     /// </summary>
     public const string LiteralObservation = "observation";
+
+    /// <summary>
+    /// Literal for code: CarePlanActivityCategoryObservation
+    /// </summary>
+    public const string LiteralCarePlanActivityCategoryObservation = "http://hl7.org/fhir/care-plan-activity-category#observation";
 
     /// <summary>
     /// Literal for code: Other
@@ -101,13 +121,48 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOther = "other";
 
     /// <summary>
+    /// Literal for code: CarePlanActivityCategoryOther
+    /// </summary>
+    public const string LiteralCarePlanActivityCategoryOther = "http://hl7.org/fhir/care-plan-activity-category#other";
+
+    /// <summary>
     /// Literal for code: Procedure
     /// </summary>
     public const string LiteralProcedure = "procedure";
 
     /// <summary>
+    /// Literal for code: CarePlanActivityCategoryProcedure
+    /// </summary>
+    public const string LiteralCarePlanActivityCategoryProcedure = "http://hl7.org/fhir/care-plan-activity-category#procedure";
+
+    /// <summary>
     /// Literal for code: Supply
     /// </summary>
     public const string LiteralSupply = "supply";
+
+    /// <summary>
+    /// Literal for code: CarePlanActivityCategorySupply
+    /// </summary>
+    public const string LiteralCarePlanActivityCategorySupply = "http://hl7.org/fhir/care-plan-activity-category#supply";
+
+    /// <summary>
+    /// Dictionary for looking up CarePlanActivityCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "diet", Diet }, 
+      { "http://hl7.org/fhir/care-plan-activity-category#diet", Diet }, 
+      { "drug", Drug }, 
+      { "http://hl7.org/fhir/care-plan-activity-category#drug", Drug }, 
+      { "encounter", Encounter }, 
+      { "http://hl7.org/fhir/care-plan-activity-category#encounter", Encounter }, 
+      { "observation", Observation }, 
+      { "http://hl7.org/fhir/care-plan-activity-category#observation", Observation }, 
+      { "other", Other }, 
+      { "http://hl7.org/fhir/care-plan-activity-category#other", Other }, 
+      { "procedure", Procedure }, 
+      { "http://hl7.org/fhir/care-plan-activity-category#procedure", Procedure }, 
+      { "supply", Supply }, 
+      { "http://hl7.org/fhir/care-plan-activity-category#supply", Supply }, 
+    };
   };
 }

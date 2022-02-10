@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatientReportedName = "patient-reported-name";
 
     /// <summary>
+    /// Literal for code: DeviceNametypePatientReportedName
+    /// </summary>
+    public const string LiteralDeviceNametypePatientReportedName = "http://hl7.org/fhir/device-nametype#patient-reported-name";
+
+    /// <summary>
     /// Literal for code: RegisteredName
     /// </summary>
     public const string LiteralRegisteredName = "registered-name";
 
     /// <summary>
+    /// Literal for code: DeviceNametypeRegisteredName
+    /// </summary>
+    public const string LiteralDeviceNametypeRegisteredName = "http://hl7.org/fhir/device-nametype#registered-name";
+
+    /// <summary>
     /// Literal for code: UserFriendlyName
     /// </summary>
     public const string LiteralUserFriendlyName = "user-friendly-name";
+
+    /// <summary>
+    /// Literal for code: DeviceNametypeUserFriendlyName
+    /// </summary>
+    public const string LiteralDeviceNametypeUserFriendlyName = "http://hl7.org/fhir/device-nametype#user-friendly-name";
+
+    /// <summary>
+    /// Dictionary for looking up DeviceNametype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "patient-reported-name", PatientReportedName }, 
+      { "http://hl7.org/fhir/device-nametype#patient-reported-name", PatientReportedName }, 
+      { "registered-name", RegisteredName }, 
+      { "http://hl7.org/fhir/device-nametype#registered-name", RegisteredName }, 
+      { "user-friendly-name", UserFriendlyName }, 
+      { "http://hl7.org/fhir/device-nametype#user-friendly-name", UserFriendlyName }, 
+    };
   };
 }

@@ -99,9 +99,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUserDevice = "1";
 
     /// <summary>
+    /// Literal for code: AuditSourceTypeUserDevice
+    /// </summary>
+    public const string LiteralAuditSourceTypeUserDevice = "http://hl7.org/fhir/security-source-type#1";
+
+    /// <summary>
     /// Literal for code: DataInterface
     /// </summary>
     public const string LiteralDataInterface = "2";
+
+    /// <summary>
+    /// Literal for code: AuditSourceTypeDataInterface
+    /// </summary>
+    public const string LiteralAuditSourceTypeDataInterface = "http://hl7.org/fhir/security-source-type#2";
 
     /// <summary>
     /// Literal for code: WebServer
@@ -109,9 +119,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWebServer = "3";
 
     /// <summary>
+    /// Literal for code: AuditSourceTypeWebServer
+    /// </summary>
+    public const string LiteralAuditSourceTypeWebServer = "http://hl7.org/fhir/security-source-type#3";
+
+    /// <summary>
     /// Literal for code: ApplicationServer
     /// </summary>
     public const string LiteralApplicationServer = "4";
+
+    /// <summary>
+    /// Literal for code: AuditSourceTypeApplicationServer
+    /// </summary>
+    public const string LiteralAuditSourceTypeApplicationServer = "http://hl7.org/fhir/security-source-type#4";
 
     /// <summary>
     /// Literal for code: DatabaseServer
@@ -119,9 +139,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDatabaseServer = "5";
 
     /// <summary>
+    /// Literal for code: AuditSourceTypeDatabaseServer
+    /// </summary>
+    public const string LiteralAuditSourceTypeDatabaseServer = "http://hl7.org/fhir/security-source-type#5";
+
+    /// <summary>
     /// Literal for code: SecurityServer
     /// </summary>
     public const string LiteralSecurityServer = "6";
+
+    /// <summary>
+    /// Literal for code: AuditSourceTypeSecurityServer
+    /// </summary>
+    public const string LiteralAuditSourceTypeSecurityServer = "http://hl7.org/fhir/security-source-type#6";
 
     /// <summary>
     /// Literal for code: NetworkDevice
@@ -129,13 +159,52 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNetworkDevice = "7";
 
     /// <summary>
+    /// Literal for code: AuditSourceTypeNetworkDevice
+    /// </summary>
+    public const string LiteralAuditSourceTypeNetworkDevice = "http://hl7.org/fhir/security-source-type#7";
+
+    /// <summary>
     /// Literal for code: NetworkRouter
     /// </summary>
     public const string LiteralNetworkRouter = "8";
 
     /// <summary>
+    /// Literal for code: AuditSourceTypeNetworkRouter
+    /// </summary>
+    public const string LiteralAuditSourceTypeNetworkRouter = "http://hl7.org/fhir/security-source-type#8";
+
+    /// <summary>
     /// Literal for code: Other
     /// </summary>
     public const string LiteralOther = "9";
+
+    /// <summary>
+    /// Literal for code: AuditSourceTypeOther
+    /// </summary>
+    public const string LiteralAuditSourceTypeOther = "http://hl7.org/fhir/security-source-type#9";
+
+    /// <summary>
+    /// Dictionary for looking up AuditSourceType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1", UserDevice }, 
+      { "http://hl7.org/fhir/security-source-type#1", UserDevice }, 
+      { "2", DataInterface }, 
+      { "http://hl7.org/fhir/security-source-type#2", DataInterface }, 
+      { "3", WebServer }, 
+      { "http://hl7.org/fhir/security-source-type#3", WebServer }, 
+      { "4", ApplicationServer }, 
+      { "http://hl7.org/fhir/security-source-type#4", ApplicationServer }, 
+      { "5", DatabaseServer }, 
+      { "http://hl7.org/fhir/security-source-type#5", DatabaseServer }, 
+      { "6", SecurityServer }, 
+      { "http://hl7.org/fhir/security-source-type#6", SecurityServer }, 
+      { "7", NetworkDevice }, 
+      { "http://hl7.org/fhir/security-source-type#7", NetworkDevice }, 
+      { "8", NetworkRouter }, 
+      { "http://hl7.org/fhir/security-source-type#8", NetworkRouter }, 
+      { "9", Other }, 
+      { "http://hl7.org/fhir/security-source-type#9", Other }, 
+    };
   };
 }

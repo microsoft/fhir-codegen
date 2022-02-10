@@ -48,13 +48,25 @@ namespace fhirCsR3.Models
     /// </summary>
     public int? Strand { get; set; }
     /// <summary>
+    /// Extension container element for Strand
+    /// </summary>
+    public Element _Strand { get; set; }
+    /// <summary>
     /// End position of the window on the reference sequence. If the coordinate system is 0-based then end is is exclusive and does not include the last position. If the coordinate system is 1-base, then end is inclusive and includes the last position.
     /// </summary>
     public int WindowEnd { get; set; }
     /// <summary>
+    /// Extension container element for WindowEnd
+    /// </summary>
+    public Element _WindowEnd { get; set; }
+    /// <summary>
     /// Start position of the window on the reference sequence. If the coordinate system is either 0-based or 1-based, then start position is inclusive.
     /// </summary>
     public int WindowStart { get; set; }
+    /// <summary>
+    /// Extension container element for WindowStart
+    /// </summary>
+    public Element _WindowStart { get; set; }
     /// <summary>
     /// Serialize to a JSON object
     /// </summary>
@@ -111,9 +123,27 @@ namespace fhirCsR3.Models
         writer.WriteNumber("strand", (int)Strand!);
       }
 
+      if (_Strand != null)
+      {
+        writer.WritePropertyName("_strand");
+        _Strand.SerializeJson(writer, options);
+      }
+
       writer.WriteNumber("windowStart", WindowStart);
 
+      if (_WindowStart != null)
+      {
+        writer.WritePropertyName("_windowStart");
+        _WindowStart.SerializeJson(writer, options);
+      }
+
       writer.WriteNumber("windowEnd", WindowEnd);
+
+      if (_WindowEnd != null)
+      {
+        writer.WritePropertyName("_windowEnd");
+        _WindowEnd.SerializeJson(writer, options);
+      }
 
       if (includeStartObject)
       {
@@ -164,12 +194,27 @@ namespace fhirCsR3.Models
           Strand = reader.GetInt32();
           break;
 
+        case "_strand":
+          _Strand = new fhirCsR3.Models.Element();
+          _Strand.DeserializeJson(ref reader, options);
+          break;
+
         case "windowEnd":
           WindowEnd = reader.GetInt32();
           break;
 
+        case "_windowEnd":
+          _WindowEnd = new fhirCsR3.Models.Element();
+          _WindowEnd.DeserializeJson(ref reader, options);
+          break;
+
         case "windowStart":
           WindowStart = reader.GetInt32();
+          break;
+
+        case "_windowStart":
+          _WindowStart = new fhirCsR3.Models.Element();
+          _WindowStart.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -221,6 +266,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public int? End { get; set; }
     /// <summary>
+    /// Extension container element for End
+    /// </summary>
+    public Element _End { get; set; }
+    /// <summary>
     /// An allele is one of a set of coexisting sequence variants of a gene ([SO:0001023](http://www.sequenceontology.org/browser/current_svn/term/SO:0001023)).  Nucleotide(s)/amino acids from start position of sequence to stop position of sequence on the positive (+) strand of the observed  sequence. When the sequence  type is DNA, it should be the sequence on the positive (+) strand. This will lay in the range between variant.start and variant.end.
     /// </summary>
     public string ObservedAllele { get; set; }
@@ -241,6 +290,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public int? Start { get; set; }
     /// <summary>
+    /// Extension container element for Start
+    /// </summary>
+    public Element _Start { get; set; }
+    /// <summary>
     /// A pointer to an Observation containing variant information.
     /// </summary>
     public Reference VariantPointer { get; set; }
@@ -260,9 +313,21 @@ namespace fhirCsR3.Models
         writer.WriteNumber("start", (int)Start!);
       }
 
+      if (_Start != null)
+      {
+        writer.WritePropertyName("_start");
+        _Start.SerializeJson(writer, options);
+      }
+
       if (End != null)
       {
         writer.WriteNumber("end", (int)End!);
+      }
+
+      if (_End != null)
+      {
+        writer.WritePropertyName("_end");
+        _End.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(ObservedAllele))
@@ -329,6 +394,11 @@ namespace fhirCsR3.Models
           End = reader.GetInt32();
           break;
 
+        case "_end":
+          _End = new fhirCsR3.Models.Element();
+          _End.DeserializeJson(ref reader, options);
+          break;
+
         case "observedAllele":
           ObservedAllele = reader.GetString();
           break;
@@ -349,6 +419,11 @@ namespace fhirCsR3.Models
 
         case "start":
           Start = reader.GetInt32();
+          break;
+
+        case "_start":
+          _Start = new fhirCsR3.Models.Element();
+          _Start.DeserializeJson(ref reader, options);
           break;
 
         case "variantPointer":
@@ -396,6 +471,10 @@ namespace fhirCsR3.Models
     /// End position of the sequence.If the coordinate system is 0-based then end is is exclusive and does not include the last position. If the coordinate system is 1-base, then end is inclusive and includes the last position.
     /// </summary>
     public int? End { get; set; }
+    /// <summary>
+    /// Extension container element for End
+    /// </summary>
+    public Element _End { get; set; }
     /// <summary>
     /// Harmonic mean of Recall and Precision, computed as: 2 * precision * recall / (precision + recall).
     /// </summary>
@@ -461,6 +540,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public int? Start { get; set; }
     /// <summary>
+    /// Extension container element for Start
+    /// </summary>
+    public Element _Start { get; set; }
+    /// <summary>
     /// False negatives, i.e. the number of sites in the Truth Call Set for which there is no path through the Query Call Set that is consistent with all of the alleles at this site, or sites for which there is an inaccurate genotype call for the event. Sites with correct variant but incorrect genotype are counted here.
     /// </summary>
     public decimal? TruthFN { get; set; }
@@ -517,9 +600,21 @@ namespace fhirCsR3.Models
         writer.WriteNumber("start", (int)Start!);
       }
 
+      if (_Start != null)
+      {
+        writer.WritePropertyName("_start");
+        _Start.SerializeJson(writer, options);
+      }
+
       if (End != null)
       {
         writer.WriteNumber("end", (int)End!);
+      }
+
+      if (_End != null)
+      {
+        writer.WritePropertyName("_end");
+        _End.SerializeJson(writer, options);
       }
 
       if (Score != null)
@@ -638,6 +733,11 @@ namespace fhirCsR3.Models
           End = reader.GetInt32();
           break;
 
+        case "_end":
+          _End = new fhirCsR3.Models.Element();
+          _End.DeserializeJson(ref reader, options);
+          break;
+
         case "fScore":
           FScore = reader.GetDecimal();
           break;
@@ -711,6 +811,11 @@ namespace fhirCsR3.Models
           Start = reader.GetInt32();
           break;
 
+        case "_start":
+          _Start = new fhirCsR3.Models.Element();
+          _Start.DeserializeJson(ref reader, options);
+          break;
+
         case "truthFN":
           TruthFN = reader.GetDecimal();
           break;
@@ -776,6 +881,11 @@ namespace fhirCsR3.Models
     public const string INDEL = "indel";
     public const string SNP = "snp";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "indel",
+      "snp",
+      "unknown",
+    };
   }
   /// <summary>
   /// Configurations of the external repository. The repository shall store target's observedSeq or records related with target's observedSeq.
@@ -1013,6 +1123,13 @@ namespace fhirCsR3.Models
     public const string LOGIN = "login";
     public const string OAUTH = "oauth";
     public const string OTHER = "other";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "directlink",
+      "openapi",
+      "login",
+      "oauth",
+      "other",
+    };
   }
   /// <summary>
   /// Raw data describing a biological sequence.
@@ -1027,6 +1144,10 @@ namespace fhirCsR3.Models
     /// Whether the sequence is numbered starting at 0 (0-based numbering or coordinates, inclusive start, exclusive end) or starting at 1 (1-based numbering, inclusive start and inclusive end).
     /// </summary>
     public int CoordinateSystem { get; set; }
+    /// <summary>
+    /// Extension container element for CoordinateSystem
+    /// </summary>
+    public Element _CoordinateSystem { get; set; }
     /// <summary>
     /// The method for sequencing, for example, chip information.
     /// </summary>
@@ -1067,6 +1188,10 @@ namespace fhirCsR3.Models
     /// Coverage (read depth or depth) is the average number of reads representing a given nucleotide in the reconstructed sequence.
     /// </summary>
     public int? ReadCoverage { get; set; }
+    /// <summary>
+    /// Extension container element for ReadCoverage
+    /// </summary>
+    public Element _ReadCoverage { get; set; }
     /// <summary>
     /// A sequence that is used as a reference to describe variants that are present in a sequence analyzed.
     /// </summary>
@@ -1133,6 +1258,12 @@ namespace fhirCsR3.Models
       }
 
       writer.WriteNumber("coordinateSystem", CoordinateSystem);
+
+      if (_CoordinateSystem != null)
+      {
+        writer.WritePropertyName("_coordinateSystem");
+        _CoordinateSystem.SerializeJson(writer, options);
+      }
 
       if (Patient != null)
       {
@@ -1212,6 +1343,12 @@ namespace fhirCsR3.Models
         writer.WriteNumber("readCoverage", (int)ReadCoverage!);
       }
 
+      if (_ReadCoverage != null)
+      {
+        writer.WritePropertyName("_readCoverage");
+        _ReadCoverage.SerializeJson(writer, options);
+      }
+
       if ((Repository != null) && (Repository.Count != 0))
       {
         writer.WritePropertyName("repository");
@@ -1252,6 +1389,11 @@ namespace fhirCsR3.Models
       {
         case "coordinateSystem":
           CoordinateSystem = reader.GetInt32();
+          break;
+
+        case "_coordinateSystem":
+          _CoordinateSystem = new fhirCsR3.Models.Element();
+          _CoordinateSystem.DeserializeJson(ref reader, options);
           break;
 
         case "device":
@@ -1368,6 +1510,11 @@ namespace fhirCsR3.Models
           ReadCoverage = reader.GetInt32();
           break;
 
+        case "_readCoverage":
+          _ReadCoverage = new fhirCsR3.Models.Element();
+          _ReadCoverage.DeserializeJson(ref reader, options);
+          break;
+
         case "referenceSeq":
           ReferenceSeq = new fhirCsR3.Models.SequenceReferenceSeq();
           ReferenceSeq.DeserializeJson(ref reader, options);
@@ -1479,5 +1626,10 @@ namespace fhirCsR3.Models
     public const string AA = "aa";
     public const string DNA = "dna";
     public const string RNA = "rna";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "aa",
+      "dna",
+      "rna",
+    };
   }
 }

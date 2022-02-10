@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEventNotification = "event-notification";
 
     /// <summary>
+    /// Literal for code: SubscriptionNotificationTypeEventNotification
+    /// </summary>
+    public const string LiteralSubscriptionNotificationTypeEventNotification = "http://hl7.org/fhir/subscription-notification-type#event-notification";
+
+    /// <summary>
     /// Literal for code: Handshake
     /// </summary>
     public const string LiteralHandshake = "handshake";
+
+    /// <summary>
+    /// Literal for code: SubscriptionNotificationTypeHandshake
+    /// </summary>
+    public const string LiteralSubscriptionNotificationTypeHandshake = "http://hl7.org/fhir/subscription-notification-type#handshake";
 
     /// <summary>
     /// Literal for code: Heartbeat
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHeartbeat = "heartbeat";
 
     /// <summary>
+    /// Literal for code: SubscriptionNotificationTypeHeartbeat
+    /// </summary>
+    public const string LiteralSubscriptionNotificationTypeHeartbeat = "http://hl7.org/fhir/subscription-notification-type#heartbeat";
+
+    /// <summary>
     /// Literal for code: QueryEvent
     /// </summary>
     public const string LiteralQueryEvent = "query-event";
 
     /// <summary>
+    /// Literal for code: SubscriptionNotificationTypeQueryEvent
+    /// </summary>
+    public const string LiteralSubscriptionNotificationTypeQueryEvent = "http://hl7.org/fhir/subscription-notification-type#query-event";
+
+    /// <summary>
     /// Literal for code: QueryStatus
     /// </summary>
     public const string LiteralQueryStatus = "query-status";
+
+    /// <summary>
+    /// Literal for code: SubscriptionNotificationTypeQueryStatus
+    /// </summary>
+    public const string LiteralSubscriptionNotificationTypeQueryStatus = "http://hl7.org/fhir/subscription-notification-type#query-status";
+
+    /// <summary>
+    /// Dictionary for looking up SubscriptionNotificationType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "event-notification", EventNotification }, 
+      { "http://hl7.org/fhir/subscription-notification-type#event-notification", EventNotification }, 
+      { "handshake", Handshake }, 
+      { "http://hl7.org/fhir/subscription-notification-type#handshake", Handshake }, 
+      { "heartbeat", Heartbeat }, 
+      { "http://hl7.org/fhir/subscription-notification-type#heartbeat", Heartbeat }, 
+      { "query-event", QueryEvent }, 
+      { "http://hl7.org/fhir/subscription-notification-type#query-event", QueryEvent }, 
+      { "query-status", QueryStatus }, 
+      { "http://hl7.org/fhir/subscription-notification-type#query-status", QueryStatus }, 
+    };
   };
 }

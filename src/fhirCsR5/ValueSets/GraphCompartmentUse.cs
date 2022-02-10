@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCondition = "condition";
 
     /// <summary>
+    /// Literal for code: GraphCompartmentUseCondition
+    /// </summary>
+    public const string LiteralGraphCompartmentUseCondition = "http://hl7.org/fhir/graph-compartment-use#condition";
+
+    /// <summary>
     /// Literal for code: Requirement
     /// </summary>
     public const string LiteralRequirement = "requirement";
+
+    /// <summary>
+    /// Literal for code: GraphCompartmentUseRequirement
+    /// </summary>
+    public const string LiteralGraphCompartmentUseRequirement = "http://hl7.org/fhir/graph-compartment-use#requirement";
+
+    /// <summary>
+    /// Dictionary for looking up GraphCompartmentUse Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "condition", Condition }, 
+      { "http://hl7.org/fhir/graph-compartment-use#condition", Condition }, 
+      { "requirement", Requirement }, 
+      { "http://hl7.org/fhir/graph-compartment-use#requirement", Requirement }, 
+    };
   };
 }

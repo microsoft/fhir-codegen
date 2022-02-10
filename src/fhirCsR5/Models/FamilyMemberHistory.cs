@@ -24,6 +24,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ContributedToDeath { get; set; }
     /// <summary>
+    /// Extension container element for ContributedToDeath
+    /// </summary>
+    public Element _ContributedToDeath { get; set; }
+    /// <summary>
     /// An area where general notes can be placed about this specific condition.
     /// </summary>
     public List<Annotation> Note { get; set; }
@@ -77,6 +81,12 @@ namespace fhirCsR5.Models
       if (ContributedToDeath != null)
       {
         writer.WriteBoolean("contributedToDeath", (bool)ContributedToDeath!);
+      }
+
+      if (_ContributedToDeath != null)
+      {
+        writer.WritePropertyName("_contributedToDeath");
+        _ContributedToDeath.SerializeJson(writer, options);
       }
 
       if (OnsetAge != null)
@@ -140,6 +150,11 @@ namespace fhirCsR5.Models
 
         case "contributedToDeath":
           ContributedToDeath = reader.GetBoolean();
+          break;
+
+        case "_contributedToDeath":
+          _ContributedToDeath = new fhirCsR5.Models.Element();
+          _ContributedToDeath.DeserializeJson(ref reader, options);
           break;
 
         case "note":
@@ -243,6 +258,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ContributedToDeath { get; set; }
     /// <summary>
+    /// Extension container element for ContributedToDeath
+    /// </summary>
+    public Element _ContributedToDeath { get; set; }
+    /// <summary>
     /// An area where general notes can be placed about this specific procedure.
     /// </summary>
     public List<Annotation> Note { get; set; }
@@ -304,6 +323,12 @@ namespace fhirCsR5.Models
       if (ContributedToDeath != null)
       {
         writer.WriteBoolean("contributedToDeath", (bool)ContributedToDeath!);
+      }
+
+      if (_ContributedToDeath != null)
+      {
+        writer.WritePropertyName("_contributedToDeath");
+        _ContributedToDeath.SerializeJson(writer, options);
       }
 
       if (PerformedAge != null)
@@ -378,6 +403,11 @@ namespace fhirCsR5.Models
 
         case "contributedToDeath":
           ContributedToDeath = reader.GetBoolean();
+          break;
+
+        case "_contributedToDeath":
+          _ContributedToDeath = new fhirCsR5.Models.Element();
+          _ContributedToDeath.DeserializeJson(ref reader, options);
           break;
 
         case "note":
@@ -542,6 +572,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? DeceasedBoolean { get; set; }
     /// <summary>
+    /// Extension container element for DeceasedBoolean
+    /// </summary>
+    public Element _DeceasedBoolean { get; set; }
+    /// <summary>
     /// Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record.
     /// </summary>
     public Age DeceasedAge { get; set; }
@@ -569,6 +603,10 @@ namespace fhirCsR5.Models
     /// This element is labeled as a modifier because the fact that age is estimated can/should change the results of any algorithm that calculates based on the specified age.
     /// </summary>
     public bool? EstimatedAge { get; set; }
+    /// <summary>
+    /// Extension container element for EstimatedAge
+    /// </summary>
+    public Element _EstimatedAge { get; set; }
     /// <summary>
     /// This is a business identifier, not a resource identifier (see [discussion](resource.html#identifiers)).  It is best practice for the identifier to only appear on a single resource instance, however business practices may occasionally dictate that multiple resource instances with the same identifier can exist - possibly even with different resource types.  For example, multiple Patient and a Person resource instance might share the same social insurance number.
     /// </summary>
@@ -824,9 +862,21 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("estimatedAge", (bool)EstimatedAge!);
       }
 
+      if (_EstimatedAge != null)
+      {
+        writer.WritePropertyName("_estimatedAge");
+        _EstimatedAge.SerializeJson(writer, options);
+      }
+
       if (DeceasedBoolean != null)
       {
         writer.WriteBoolean("deceasedBoolean", (bool)DeceasedBoolean!);
+      }
+
+      if (_DeceasedBoolean != null)
+      {
+        writer.WritePropertyName("_deceasedBoolean");
+        _DeceasedBoolean.SerializeJson(writer, options);
       }
 
       if (DeceasedAge != null)
@@ -1014,6 +1064,11 @@ namespace fhirCsR5.Models
           DeceasedBoolean = reader.GetBoolean();
           break;
 
+        case "_deceasedBoolean":
+          _DeceasedBoolean = new fhirCsR5.Models.Element();
+          _DeceasedBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "deceasedAge":
           DeceasedAge = new fhirCsR5.Models.Age();
           DeceasedAge.DeserializeJson(ref reader, options);
@@ -1044,6 +1099,11 @@ namespace fhirCsR5.Models
 
         case "estimatedAge":
           EstimatedAge = reader.GetBoolean();
+          break;
+
+        case "_estimatedAge":
+          _EstimatedAge = new fhirCsR5.Models.Element();
+          _EstimatedAge.DeserializeJson(ref reader, options);
           break;
 
         case "identifier":
@@ -1330,5 +1390,11 @@ namespace fhirCsR5.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string HEALTH_UNKNOWN = "health-unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "partial",
+      "completed",
+      "entered-in-error",
+      "health-unknown",
+    };
   }
 }

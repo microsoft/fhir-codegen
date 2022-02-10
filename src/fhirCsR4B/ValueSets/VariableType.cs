@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralContinuous = "continuous";
 
     /// <summary>
+    /// Literal for code: VariableTypeContinuous
+    /// </summary>
+    public const string LiteralVariableTypeContinuous = "http://hl7.org/fhir/variable-type#continuous";
+
+    /// <summary>
     /// Literal for code: Descriptive
     /// </summary>
     public const string LiteralDescriptive = "descriptive";
 
     /// <summary>
+    /// Literal for code: VariableTypeDescriptive
+    /// </summary>
+    public const string LiteralVariableTypeDescriptive = "http://hl7.org/fhir/variable-type#descriptive";
+
+    /// <summary>
     /// Literal for code: Dichotomous
     /// </summary>
     public const string LiteralDichotomous = "dichotomous";
+
+    /// <summary>
+    /// Literal for code: VariableTypeDichotomous
+    /// </summary>
+    public const string LiteralVariableTypeDichotomous = "http://hl7.org/fhir/variable-type#dichotomous";
+
+    /// <summary>
+    /// Dictionary for looking up VariableType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "continuous", Continuous }, 
+      { "http://hl7.org/fhir/variable-type#continuous", Continuous }, 
+      { "descriptive", Descriptive }, 
+      { "http://hl7.org/fhir/variable-type#descriptive", Descriptive }, 
+      { "dichotomous", Dichotomous }, 
+      { "http://hl7.org/fhir/variable-type#dichotomous", Dichotomous }, 
+    };
   };
 }

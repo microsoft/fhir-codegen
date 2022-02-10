@@ -405,6 +405,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ExampleBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ExampleBoolean
+    /// </summary>
+    public Element _ExampleBoolean { get; set; }
+    /// <summary>
     /// Examples: 
     /// * StructureDefinition -&gt; Any 
     /// * ValueSet -&gt; expansion 
@@ -514,6 +518,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("exampleBoolean", (bool)ExampleBoolean!);
       }
 
+      if (_ExampleBoolean != null)
+      {
+        writer.WritePropertyName("_exampleBoolean");
+        _ExampleBoolean.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(ExampleCanonical))
       {
         writer.WriteString("exampleCanonical", (string)ExampleCanonical!);
@@ -559,6 +569,11 @@ namespace fhirCsR5.Models
 
         case "exampleBoolean":
           ExampleBoolean = reader.GetBoolean();
+          break;
+
+        case "_exampleBoolean":
+          _ExampleBoolean = new fhirCsR5.Models.Element();
+          _ExampleBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "exampleCanonical":
@@ -886,6 +901,12 @@ namespace fhirCsR5.Models
     public const string MARKDOWN = "markdown";
     public const string XML = "xml";
     public const string GENERATED = "generated";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "html",
+      "markdown",
+      "xml",
+      "generated",
+    };
   }
   /// <summary>
   /// see [confluence](https://confluence.hl7.org/display/FHIR/Implementation+Guide+Parameters) for the parameters defined by the HL7 IG publisher.
@@ -1405,6 +1426,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ExampleBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ExampleBoolean
+    /// </summary>
+    public Element _ExampleBoolean { get; set; }
+    /// <summary>
     /// Typically, conformance resources and knowledge resources are directly part of the implementation guide, with their normal meaning, and patient linked resources are usually examples. However this is not always true.
     /// </summary>
     public string ExampleCanonical { get; set; }
@@ -1446,6 +1471,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("exampleBoolean", (bool)ExampleBoolean!);
       }
 
+      if (_ExampleBoolean != null)
+      {
+        writer.WritePropertyName("_exampleBoolean");
+        _ExampleBoolean.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(ExampleCanonical))
       {
         writer.WriteString("exampleCanonical", (string)ExampleCanonical!);
@@ -1482,6 +1513,11 @@ namespace fhirCsR5.Models
       {
         case "exampleBoolean":
           ExampleBoolean = reader.GetBoolean();
+          break;
+
+        case "_exampleBoolean":
+          _ExampleBoolean = new fhirCsR5.Models.Element();
+          _ExampleBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "exampleCanonical":
@@ -2136,6 +2172,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// Most implementation guides target a single version - e.g. they describe how to use a particular version, and the profiles and examples etc are valid for that version. But some implementation guides describe how to use multiple different versions of FHIR to solve the same problem, or in concert with each other. Typically, the requirement to support multiple versions arises as implementation matures and different implementation communities are stuck at different versions by regulation or market dynamics.
     /// </summary>
     public List<string> FhirVersion { get; set; }
@@ -2300,6 +2340,12 @@ namespace fhirCsR5.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -2573,6 +2619,11 @@ namespace fhirCsR5.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR5.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "fhirVersion":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -2822,5 +2873,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

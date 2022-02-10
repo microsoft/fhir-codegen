@@ -505,5 +505,10 @@ namespace fhirCsR3.Models
     public const string PHOTO = "photo";
     public const string VIDEO = "video";
     public const string AUDIO = "audio";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "photo",
+      "video",
+      "audio",
+    };
   }
 }

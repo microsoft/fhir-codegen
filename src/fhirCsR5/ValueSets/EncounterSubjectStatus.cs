@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class EncounterSubjectStatusCodes
   {
     /// <summary>
-    /// 
+    /// Arrived
     /// </summary>
     public static readonly Coding Arrived = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/encounter-subject-status"
     };
     /// <summary>
-    /// 
+    /// Departed
     /// </summary>
     public static readonly Coding Departed = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/encounter-subject-status"
     };
     /// <summary>
-    /// 
+    /// On Leave
     /// </summary>
     public static readonly Coding OnLeave = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/encounter-subject-status"
     };
     /// <summary>
-    /// 
+    /// Triaged
     /// </summary>
     public static readonly Coding Triaged = new Coding
     {
@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralArrived = "arrived";
 
     /// <summary>
+    /// Literal for code: EncounterSubjectStatusArrived
+    /// </summary>
+    public const string LiteralEncounterSubjectStatusArrived = "http://terminology.hl7.org/CodeSystem/encounter-subject-status#arrived";
+
+    /// <summary>
     /// Literal for code: Departed
     /// </summary>
     public const string LiteralDeparted = "departed";
+
+    /// <summary>
+    /// Literal for code: EncounterSubjectStatusDeparted
+    /// </summary>
+    public const string LiteralEncounterSubjectStatusDeparted = "http://terminology.hl7.org/CodeSystem/encounter-subject-status#departed";
 
     /// <summary>
     /// Literal for code: OnLeave
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOnLeave = "on-leave";
 
     /// <summary>
+    /// Literal for code: EncounterSubjectStatusOnLeave
+    /// </summary>
+    public const string LiteralEncounterSubjectStatusOnLeave = "http://terminology.hl7.org/CodeSystem/encounter-subject-status#on-leave";
+
+    /// <summary>
     /// Literal for code: Triaged
     /// </summary>
     public const string LiteralTriaged = "triaged";
+
+    /// <summary>
+    /// Literal for code: EncounterSubjectStatusTriaged
+    /// </summary>
+    public const string LiteralEncounterSubjectStatusTriaged = "http://terminology.hl7.org/CodeSystem/encounter-subject-status#triaged";
+
+    /// <summary>
+    /// Dictionary for looking up EncounterSubjectStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "arrived", Arrived }, 
+      { "http://terminology.hl7.org/CodeSystem/encounter-subject-status#arrived", Arrived }, 
+      { "departed", Departed }, 
+      { "http://terminology.hl7.org/CodeSystem/encounter-subject-status#departed", Departed }, 
+      { "on-leave", OnLeave }, 
+      { "http://terminology.hl7.org/CodeSystem/encounter-subject-status#on-leave", OnLeave }, 
+      { "triaged", Triaged }, 
+      { "http://terminology.hl7.org/CodeSystem/encounter-subject-status#triaged", Triaged }, 
+    };
   };
 }

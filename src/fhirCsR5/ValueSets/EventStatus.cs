@@ -90,9 +90,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: EventStatusCompleted
+    /// </summary>
+    public const string LiteralEventStatusCompleted = "http://hl7.org/fhir/event-status#completed";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: EventStatusEnteredInError
+    /// </summary>
+    public const string LiteralEventStatusEnteredInError = "http://hl7.org/fhir/event-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: InProgress
@@ -100,9 +110,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInProgress = "in-progress";
 
     /// <summary>
+    /// Literal for code: EventStatusInProgress
+    /// </summary>
+    public const string LiteralEventStatusInProgress = "http://hl7.org/fhir/event-status#in-progress";
+
+    /// <summary>
     /// Literal for code: NotDone
     /// </summary>
     public const string LiteralNotDone = "not-done";
+
+    /// <summary>
+    /// Literal for code: EventStatusNotDone
+    /// </summary>
+    public const string LiteralEventStatusNotDone = "http://hl7.org/fhir/event-status#not-done";
 
     /// <summary>
     /// Literal for code: OnHold
@@ -110,9 +130,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOnHold = "on-hold";
 
     /// <summary>
+    /// Literal for code: EventStatusOnHold
+    /// </summary>
+    public const string LiteralEventStatusOnHold = "http://hl7.org/fhir/event-status#on-hold";
+
+    /// <summary>
     /// Literal for code: Preparation
     /// </summary>
     public const string LiteralPreparation = "preparation";
+
+    /// <summary>
+    /// Literal for code: EventStatusPreparation
+    /// </summary>
+    public const string LiteralEventStatusPreparation = "http://hl7.org/fhir/event-status#preparation";
 
     /// <summary>
     /// Literal for code: Stopped
@@ -120,8 +150,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStopped = "stopped";
 
     /// <summary>
+    /// Literal for code: EventStatusStopped
+    /// </summary>
+    public const string LiteralEventStatusStopped = "http://hl7.org/fhir/event-status#stopped";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: EventStatusUnknown
+    /// </summary>
+    public const string LiteralEventStatusUnknown = "http://hl7.org/fhir/event-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up EventStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/event-status#completed", Completed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/event-status#entered-in-error", EnteredInError }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/event-status#in-progress", InProgress }, 
+      { "not-done", NotDone }, 
+      { "http://hl7.org/fhir/event-status#not-done", NotDone }, 
+      { "on-hold", OnHold }, 
+      { "http://hl7.org/fhir/event-status#on-hold", OnHold }, 
+      { "preparation", Preparation }, 
+      { "http://hl7.org/fhir/event-status#preparation", Preparation }, 
+      { "stopped", Stopped }, 
+      { "http://hl7.org/fhir/event-status#stopped", Stopped }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/event-status#unknown", Unknown }, 
+    };
   };
 }

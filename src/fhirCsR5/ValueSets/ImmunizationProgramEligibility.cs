@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ImmunizationProgramEligibilityCodes
   {
     /// <summary>
-    /// 
+    /// Not Eligible
     /// </summary>
     public static readonly Coding NotEligible = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/immunization-program-eligibility"
     };
     /// <summary>
-    /// 
+    /// Uninsured
     /// </summary>
     public static readonly Coding Uninsured = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotEligible = "ineligible";
 
     /// <summary>
+    /// Literal for code: ImmunizationProgramEligibilityNotEligible
+    /// </summary>
+    public const string LiteralImmunizationProgramEligibilityNotEligible = "http://terminology.hl7.org/CodeSystem/immunization-program-eligibility#ineligible";
+
+    /// <summary>
     /// Literal for code: Uninsured
     /// </summary>
     public const string LiteralUninsured = "uninsured";
+
+    /// <summary>
+    /// Literal for code: ImmunizationProgramEligibilityUninsured
+    /// </summary>
+    public const string LiteralImmunizationProgramEligibilityUninsured = "http://terminology.hl7.org/CodeSystem/immunization-program-eligibility#uninsured";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationProgramEligibility Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ineligible", NotEligible }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-program-eligibility#ineligible", NotEligible }, 
+      { "uninsured", Uninsured }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-program-eligibility#uninsured", Uninsured }, 
+    };
   };
 }

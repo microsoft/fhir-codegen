@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnnual = "annual";
 
     /// <summary>
+    /// Literal for code: BenefitTermAnnual
+    /// </summary>
+    public const string LiteralBenefitTermAnnual = "http://hl7.org/fhir/benefit-term#annual";
+
+    /// <summary>
     /// Literal for code: Day
     /// </summary>
     public const string LiteralDay = "day";
 
     /// <summary>
+    /// Literal for code: BenefitTermDay
+    /// </summary>
+    public const string LiteralBenefitTermDay = "http://hl7.org/fhir/benefit-term#day";
+
+    /// <summary>
     /// Literal for code: Lifetime
     /// </summary>
     public const string LiteralLifetime = "lifetime";
+
+    /// <summary>
+    /// Literal for code: BenefitTermLifetime
+    /// </summary>
+    public const string LiteralBenefitTermLifetime = "http://hl7.org/fhir/benefit-term#lifetime";
+
+    /// <summary>
+    /// Dictionary for looking up BenefitTerm Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "annual", Annual }, 
+      { "http://hl7.org/fhir/benefit-term#annual", Annual }, 
+      { "day", Day }, 
+      { "http://hl7.org/fhir/benefit-term#day", Day }, 
+      { "lifetime", Lifetime }, 
+      { "http://hl7.org/fhir/benefit-term#lifetime", Lifetime }, 
+    };
   };
 }

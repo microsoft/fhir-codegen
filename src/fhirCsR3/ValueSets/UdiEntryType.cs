@@ -72,9 +72,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBarCode = "barcode";
 
     /// <summary>
+    /// Literal for code: UdiEntryTypeBarCode
+    /// </summary>
+    public const string LiteralUdiEntryTypeBarCode = "http://hl7.org/fhir/udi-entry-type#barcode";
+
+    /// <summary>
     /// Literal for code: Card
     /// </summary>
     public const string LiteralCard = "card";
+
+    /// <summary>
+    /// Literal for code: UdiEntryTypeCard
+    /// </summary>
+    public const string LiteralUdiEntryTypeCard = "http://hl7.org/fhir/udi-entry-type#card";
 
     /// <summary>
     /// Literal for code: Manual
@@ -82,9 +92,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralManual = "manual";
 
     /// <summary>
+    /// Literal for code: UdiEntryTypeManual
+    /// </summary>
+    public const string LiteralUdiEntryTypeManual = "http://hl7.org/fhir/udi-entry-type#manual";
+
+    /// <summary>
     /// Literal for code: RFID
     /// </summary>
     public const string LiteralRFID = "rfid";
+
+    /// <summary>
+    /// Literal for code: UdiEntryTypeRFID
+    /// </summary>
+    public const string LiteralUdiEntryTypeRFID = "http://hl7.org/fhir/udi-entry-type#rfid";
 
     /// <summary>
     /// Literal for code: SelfReported
@@ -92,8 +112,36 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSelfReported = "self-reported";
 
     /// <summary>
+    /// Literal for code: UdiEntryTypeSelfReported
+    /// </summary>
+    public const string LiteralUdiEntryTypeSelfReported = "http://hl7.org/fhir/udi-entry-type#self-reported";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: UdiEntryTypeUnknown
+    /// </summary>
+    public const string LiteralUdiEntryTypeUnknown = "http://hl7.org/fhir/udi-entry-type#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up UdiEntryType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "barcode", BarCode }, 
+      { "http://hl7.org/fhir/udi-entry-type#barcode", BarCode }, 
+      { "card", Card }, 
+      { "http://hl7.org/fhir/udi-entry-type#card", Card }, 
+      { "manual", Manual }, 
+      { "http://hl7.org/fhir/udi-entry-type#manual", Manual }, 
+      { "rfid", RFID }, 
+      { "http://hl7.org/fhir/udi-entry-type#rfid", RFID }, 
+      { "self-reported", SelfReported }, 
+      { "http://hl7.org/fhir/udi-entry-type#self-reported", SelfReported }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/udi-entry-type#unknown", Unknown }, 
+    };
   };
 }

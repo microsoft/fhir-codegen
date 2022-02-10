@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAuthoredBy = "authoredby";
 
     /// <summary>
+    /// Literal for code: ConsentDataMeaningAuthoredBy
+    /// </summary>
+    public const string LiteralConsentDataMeaningAuthoredBy = "http://hl7.org/fhir/consent-data-meaning#authoredby";
+
+    /// <summary>
     /// Literal for code: Dependents
     /// </summary>
     public const string LiteralDependents = "dependents";
+
+    /// <summary>
+    /// Literal for code: ConsentDataMeaningDependents
+    /// </summary>
+    public const string LiteralConsentDataMeaningDependents = "http://hl7.org/fhir/consent-data-meaning#dependents";
 
     /// <summary>
     /// Literal for code: Instance
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInstance = "instance";
 
     /// <summary>
+    /// Literal for code: ConsentDataMeaningInstance
+    /// </summary>
+    public const string LiteralConsentDataMeaningInstance = "http://hl7.org/fhir/consent-data-meaning#instance";
+
+    /// <summary>
     /// Literal for code: Related
     /// </summary>
     public const string LiteralRelated = "related";
+
+    /// <summary>
+    /// Literal for code: ConsentDataMeaningRelated
+    /// </summary>
+    public const string LiteralConsentDataMeaningRelated = "http://hl7.org/fhir/consent-data-meaning#related";
+
+    /// <summary>
+    /// Dictionary for looking up ConsentDataMeaning Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "authoredby", AuthoredBy }, 
+      { "http://hl7.org/fhir/consent-data-meaning#authoredby", AuthoredBy }, 
+      { "dependents", Dependents }, 
+      { "http://hl7.org/fhir/consent-data-meaning#dependents", Dependents }, 
+      { "instance", Instance }, 
+      { "http://hl7.org/fhir/consent-data-meaning#instance", Instance }, 
+      { "related", Related }, 
+      { "http://hl7.org/fhir/consent-data-meaning#related", Related }, 
+    };
   };
 }

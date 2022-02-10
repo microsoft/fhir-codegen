@@ -939,5 +939,12 @@ namespace fhirCsR2.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string STOPPED = "stopped";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "in-progress",
+      "on-hold",
+      "completed",
+      "entered-in-error",
+      "stopped",
+    };
   }
 }

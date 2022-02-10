@@ -45,13 +45,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralCapability = "capability";
 
     /// <summary>
+    /// Literal for code: ConformanceStatementKindCapability
+    /// </summary>
+    public const string LiteralConformanceStatementKindCapability = "http://hl7.org/fhir/conformance-statement-kind#capability";
+
+    /// <summary>
     /// Literal for code: Instance
     /// </summary>
     public const string LiteralInstance = "instance";
 
     /// <summary>
+    /// Literal for code: ConformanceStatementKindInstance
+    /// </summary>
+    public const string LiteralConformanceStatementKindInstance = "http://hl7.org/fhir/conformance-statement-kind#instance";
+
+    /// <summary>
     /// Literal for code: Requirements
     /// </summary>
     public const string LiteralRequirements = "requirements";
+
+    /// <summary>
+    /// Literal for code: ConformanceStatementKindRequirements
+    /// </summary>
+    public const string LiteralConformanceStatementKindRequirements = "http://hl7.org/fhir/conformance-statement-kind#requirements";
+
+    /// <summary>
+    /// Dictionary for looking up ConformanceStatementKind Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "capability", Capability }, 
+      { "http://hl7.org/fhir/conformance-statement-kind#capability", Capability }, 
+      { "instance", Instance }, 
+      { "http://hl7.org/fhir/conformance-statement-kind#instance", Instance }, 
+      { "requirements", Requirements }, 
+      { "http://hl7.org/fhir/conformance-statement-kind#requirements", Requirements }, 
+    };
   };
 }

@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDevice = "device";
 
     /// <summary>
+    /// Literal for code: SupplydeliveryTypeDevice
+    /// </summary>
+    public const string LiteralSupplydeliveryTypeDevice = "http://hl7.org/fhir/supply-item-type#device";
+
+    /// <summary>
     /// Literal for code: Medication
     /// </summary>
     public const string LiteralMedication = "medication";
+
+    /// <summary>
+    /// Literal for code: SupplydeliveryTypeMedication
+    /// </summary>
+    public const string LiteralSupplydeliveryTypeMedication = "http://hl7.org/fhir/supply-item-type#medication";
+
+    /// <summary>
+    /// Dictionary for looking up SupplydeliveryType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "device", Device }, 
+      { "http://hl7.org/fhir/supply-item-type#device", Device }, 
+      { "medication", Medication }, 
+      { "http://hl7.org/fhir/supply-item-type#medication", Medication }, 
+    };
   };
 }

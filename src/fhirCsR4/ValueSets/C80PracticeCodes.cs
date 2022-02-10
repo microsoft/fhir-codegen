@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class C80PracticeCodesCodes
   {
     /// <summary>
-    /// 
+    /// Pediatric surgery
     /// </summary>
     public static readonly Coding PediatricSurgery = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical-Accident &amp; emergency
     /// </summary>
     public static readonly Coding SurgicalAccidentAndEmergency = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthetics
     /// </summary>
     public static readonly Coding Anesthetics = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Audiological medicine
     /// </summary>
     public static readonly Coding AudiologicalMedicine = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiology
     /// </summary>
     public static readonly Coding Cardiology = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical genetics
     /// </summary>
     public static readonly Coding ClinicalGenetics = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community medicine
     /// </summary>
     public static readonly Coding CommunityMedicine = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dermatology
     /// </summary>
     public static readonly Coding Dermatology = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endocrinology
     /// </summary>
     public static readonly Coding Endocrinology = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastroenterology
     /// </summary>
     public static readonly Coding Gastroenterology = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obstetrics and gynecology
     /// </summary>
     public static readonly Coding ObstetricsAndGynecology = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gynecology
     /// </summary>
     public static readonly Coding Gynecology = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychiatry
     /// </summary>
     public static readonly Coding Psychiatry = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric (Child and adolescent) psychiatry
     /// </summary>
     public static readonly Coding PediatricChildAndAdolescentPsychiatry = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nephrology
     /// </summary>
     public static readonly Coding Nephrology = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracic medicine
     /// </summary>
     public static readonly Coding ThoracicMedicine = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neurology
     /// </summary>
     public static readonly Coding Neurology = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical oncology
     /// </summary>
     public static readonly Coding ClinicalOncology = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical oncology
     /// </summary>
     public static readonly Coding MedicalOncology = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmology
     /// </summary>
     public static readonly Coding Ophthalmology = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Histopathology
     /// </summary>
     public static readonly Coding Histopathology = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immunopathology
     /// </summary>
     public static readonly Coding Immunopathology = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neuropathology
     /// </summary>
     public static readonly Coding Neuropathology = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical pharmacology
     /// </summary>
     public static readonly Coding ClinicalPharmacology = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical physiology
     /// </summary>
     public static readonly Coding ClinicalPhysiology = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rehabilitation
     /// </summary>
     public static readonly Coding Rehabilitation = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Ear, nose and throat surgery
     /// </summary>
     public static readonly Coding SurgeryEarNoseAndThroatSurgery = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Dental-Oral surgery
     /// </summary>
     public static readonly Coding SurgeryDentalOralSurgery = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Dentistry-Restorative dentistry
     /// </summary>
     public static readonly Coding SurgeryDentistryRestorativeDentistry = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric dentistry
     /// </summary>
     public static readonly Coding PediatricDentistry = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Dental-Orthodontics
     /// </summary>
     public static readonly Coding SurgeryDentalOrthodontics = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-general
     /// </summary>
     public static readonly Coding SurgeryGeneral = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Neurosurgery
     /// </summary>
     public static readonly Coding SurgeryNeurosurgery = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Plastic surgery
     /// </summary>
     public static readonly Coding SurgeryPlasticSurgery = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urology
     /// </summary>
     public static readonly Coding Urology = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nuclear medicine
     /// </summary>
     public static readonly Coding NuclearMedicine = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical specialty--OTHER-NOT LISTED
     /// </summary>
     public static readonly Coding SurgicalSpecialtyOTHERNOTLISTED = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical specialty--OTHER--NOT LISTED
     /// </summary>
     public static readonly Coding MedicalSpecialtyOTHERNOTLISTED = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Trauma and orthopedics
     /// </summary>
     public static readonly Coding SurgeryTraumaAndOrthopedics = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General medicine
     /// </summary>
     public static readonly Coding GeneralMedicine = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical hematology
     /// </summary>
     public static readonly Coding ClinicalHematology = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical cytogenetics and molecular genetics
     /// </summary>
     public static readonly Coding ClinicalCytogeneticsAndMolecularGenetics = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Palliative medicine
     /// </summary>
     public static readonly Coding PalliativeMedicine = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infectious diseases
     /// </summary>
     public static readonly Coding InfectiousDiseases = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Genito-urinary medicine
     /// </summary>
     public static readonly Coding GenitoUrinaryMedicine = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical neuro-physiology
     /// </summary>
     public static readonly Coding ClinicalNeuroPhysiology = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rheumatology
     /// </summary>
     public static readonly Coding Rheumatology = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Geriatric medicine
     /// </summary>
     public static readonly Coding GeriatricMedicine = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental medicine specialties
     /// </summary>
     public static readonly Coding DentalMedicineSpecialties = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical ophthalmology
     /// </summary>
     public static readonly Coding MedicalOphthalmology = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General practice
     /// </summary>
     public static readonly Coding GeneralPractice = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupational medicine
     /// </summary>
     public static readonly Coding OccupationalMedicine = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pain management
     /// </summary>
     public static readonly Coding PainManagement = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychotherapy
     /// </summary>
     public static readonly Coding Psychotherapy = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiology
     /// </summary>
     public static readonly Coding Radiology = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General pathology
     /// </summary>
     public static readonly Coding GeneralPathology = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hematopathology
     /// </summary>
     public static readonly Coding Hematopathology = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Public health medicine
     /// </summary>
     public static readonly Coding PublicHealthMedicine = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Dental-Endodontics
     /// </summary>
     public static readonly Coding SurgeryDentalEndodontics = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General medical practice
     /// </summary>
     public static readonly Coding GeneralMedicalPractice = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental-General dental practice
     /// </summary>
     public static readonly Coding DentalGeneralDentalPractice = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gynecological oncology
     /// </summary>
     public static readonly Coding GynecologicalOncology = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Respite care
     /// </summary>
     public static readonly Coding RespiteCare = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tropical medicine
     /// </summary>
     public static readonly Coding TropicalMedicine = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Dentistry--surgical
     /// </summary>
     public static readonly Coding SurgeryDentistrySurgical = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sleep studies
     /// </summary>
     public static readonly Coding SleepStudies = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical microbiology
     /// </summary>
     public static readonly Coding ClinicalMicrobiology = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiology-Interventional radiology
     /// </summary>
     public static readonly Coding RadiologyInterventionalRadiology = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric cardiology
     /// </summary>
     public static readonly Coding PediatricCardiology = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Dental-Prosthetic dentistry (Prosthodontics)
     /// </summary>
     public static readonly Coding SurgeryDentalProstheticDentistryProsthodontics = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Dental-Periodontal surgery
     /// </summary>
     public static readonly Coding SurgeryDentalPeriodontalSurgery = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Burns care
     /// </summary>
     public static readonly Coding BurnsCare = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Vascular
     /// </summary>
     public static readonly Coding SurgeryVascular = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Colorectal surgery
     /// </summary>
     public static readonly Coding SurgeryColorectalSurgery = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Dental-Oral and maxillofacial surgery
     /// </summary>
     public static readonly Coding SurgeryDentalOralAndMaxillofacialSurgery = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Cardiac surgery
     /// </summary>
     public static readonly Coding SurgeryCardiacSurgery = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult mental illness
     /// </summary>
     public static readonly Coding AdultMentalIllness = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Learning disability
     /// </summary>
     public static readonly Coding LearningDisability = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Breast surgery
     /// </summary>
     public static readonly Coding SurgeryBreastSurgery = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obstetrics
     /// </summary>
     public static readonly Coding Obstetrics = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Cardiothoracic transplantation
     /// </summary>
     public static readonly Coding SurgeryCardiothoracicTransplantation = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepatology
     /// </summary>
     public static readonly Coding Hepatology = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Hepatobiliary and pancreatic surgery
     /// </summary>
     public static readonly Coding SurgeryHepatobiliaryAndPancreaticSurgery = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diabetic medicine
     /// </summary>
     public static readonly Coding DiabeticMedicine = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Bone and marrow transplantation
     /// </summary>
     public static readonly Coding SurgeryBoneAndMarrowTransplantation = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Transplantation surgery
     /// </summary>
     public static readonly Coding SurgeryTransplantationSurgery = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Critical care medicine
     /// </summary>
     public static readonly Coding CriticalCareMedicine = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical immunology
     /// </summary>
     public static readonly Coding ClinicalImmunology = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toxicology
     /// </summary>
     public static readonly Coding Toxicology = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Preventive medicine
     /// </summary>
     public static readonly Coding PreventiveMedicine = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Military medicine
     /// </summary>
     public static readonly Coding MilitaryMedicine = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dive medicine
     /// </summary>
     public static readonly Coding DiveMedicine = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteopathic manipulative medicine
     /// </summary>
     public static readonly Coding OsteopathicManipulativeMedicine = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric oncology
     /// </summary>
     public static readonly Coding PediatricOncology = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgery-Dermatologic surgery
     /// </summary>
     public static readonly Coding SurgeryDermatologicSurgery = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric gastroenterology
     /// </summary>
     public static readonly Coding PediatricGastroenterology = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary medicine
     /// </summary>
     public static readonly Coding PulmonaryMedicine = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric immunology
     /// </summary>
     public static readonly Coding PediatricImmunology = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric hematology
     /// </summary>
     public static readonly Coding PediatricHematology = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric infectious diseases
     /// </summary>
     public static readonly Coding PediatricInfectiousDiseases = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Otolaryngology
     /// </summary>
     public static readonly Coding Otolaryngology = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urological oncology
     /// </summary>
     public static readonly Coding UrologicalOncology = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric pulmonology
     /// </summary>
     public static readonly Coding PediatricPulmonology = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Internal medicine
     /// </summary>
     public static readonly Coding InternalMedicine = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical oncology
     /// </summary>
     public static readonly Coding SurgicalOncology = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric nephrology
     /// </summary>
     public static readonly Coding PediatricNephrology = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric rheumatology
     /// </summary>
     public static readonly Coding PediatricRheumatology = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric endocrinology
     /// </summary>
     public static readonly Coding PediatricEndocrinology = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Family practice
     /// </summary>
     public static readonly Coding FamilyPractice = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiation oncology
     /// </summary>
     public static readonly Coding RadiationOncology = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric ophthalmology
     /// </summary>
     public static readonly Coding PediatricOphthalmology = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric surgery-bone marrow transplantation
     /// </summary>
     public static readonly Coding PediatricSurgeryBoneMarrowTransplantation = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric genetics
     /// </summary>
     public static readonly Coding PediatricGenetics = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood banking and transfusion medicine
     /// </summary>
     public static readonly Coding BloodBankingAndTransfusionMedicine = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmic surgery
     /// </summary>
     public static readonly Coding OphthalmicSurgery = new Coding
     {
@@ -1053,9 +1053,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricSurgery = "394539006";
 
     /// <summary>
+    /// Literal for code: NONEPediatricSurgery
+    /// </summary>
+    public const string LiteralNONEPediatricSurgery = "http://snomed.info/sct#394539006";
+
+    /// <summary>
     /// Literal for code: SurgicalAccidentAndEmergency
     /// </summary>
     public const string LiteralSurgicalAccidentAndEmergency = "394576009";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalAccidentAndEmergency
+    /// </summary>
+    public const string LiteralNONESurgicalAccidentAndEmergency = "http://snomed.info/sct#394576009";
 
     /// <summary>
     /// Literal for code: Anesthetics
@@ -1063,9 +1073,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnesthetics = "394577000";
 
     /// <summary>
+    /// Literal for code: NONEAnesthetics
+    /// </summary>
+    public const string LiteralNONEAnesthetics = "http://snomed.info/sct#394577000";
+
+    /// <summary>
     /// Literal for code: AudiologicalMedicine
     /// </summary>
     public const string LiteralAudiologicalMedicine = "394578005";
+
+    /// <summary>
+    /// Literal for code: NONEAudiologicalMedicine
+    /// </summary>
+    public const string LiteralNONEAudiologicalMedicine = "http://snomed.info/sct#394578005";
 
     /// <summary>
     /// Literal for code: Cardiology
@@ -1073,9 +1093,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCardiology = "394579002";
 
     /// <summary>
+    /// Literal for code: NONECardiology
+    /// </summary>
+    public const string LiteralNONECardiology = "http://snomed.info/sct#394579002";
+
+    /// <summary>
     /// Literal for code: ClinicalGenetics
     /// </summary>
     public const string LiteralClinicalGenetics = "394580004";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalGenetics
+    /// </summary>
+    public const string LiteralNONEClinicalGenetics = "http://snomed.info/sct#394580004";
 
     /// <summary>
     /// Literal for code: CommunityMedicine
@@ -1083,9 +1113,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommunityMedicine = "394581000";
 
     /// <summary>
+    /// Literal for code: NONECommunityMedicine
+    /// </summary>
+    public const string LiteralNONECommunityMedicine = "http://snomed.info/sct#394581000";
+
+    /// <summary>
     /// Literal for code: Dermatology
     /// </summary>
     public const string LiteralDermatology = "394582007";
+
+    /// <summary>
+    /// Literal for code: NONEDermatology
+    /// </summary>
+    public const string LiteralNONEDermatology = "http://snomed.info/sct#394582007";
 
     /// <summary>
     /// Literal for code: Endocrinology
@@ -1093,9 +1133,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndocrinology = "394583002";
 
     /// <summary>
+    /// Literal for code: NONEEndocrinology
+    /// </summary>
+    public const string LiteralNONEEndocrinology = "http://snomed.info/sct#394583002";
+
+    /// <summary>
     /// Literal for code: Gastroenterology
     /// </summary>
     public const string LiteralGastroenterology = "394584008";
+
+    /// <summary>
+    /// Literal for code: NONEGastroenterology
+    /// </summary>
+    public const string LiteralNONEGastroenterology = "http://snomed.info/sct#394584008";
 
     /// <summary>
     /// Literal for code: ObstetricsAndGynecology
@@ -1103,9 +1153,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralObstetricsAndGynecology = "394585009";
 
     /// <summary>
+    /// Literal for code: NONEObstetricsAndGynecology
+    /// </summary>
+    public const string LiteralNONEObstetricsAndGynecology = "http://snomed.info/sct#394585009";
+
+    /// <summary>
     /// Literal for code: Gynecology
     /// </summary>
     public const string LiteralGynecology = "394586005";
+
+    /// <summary>
+    /// Literal for code: NONEGynecology
+    /// </summary>
+    public const string LiteralNONEGynecology = "http://snomed.info/sct#394586005";
 
     /// <summary>
     /// Literal for code: Psychiatry
@@ -1113,9 +1173,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPsychiatry = "394587001";
 
     /// <summary>
+    /// Literal for code: NONEPsychiatry
+    /// </summary>
+    public const string LiteralNONEPsychiatry = "http://snomed.info/sct#394587001";
+
+    /// <summary>
     /// Literal for code: PediatricChildAndAdolescentPsychiatry
     /// </summary>
     public const string LiteralPediatricChildAndAdolescentPsychiatry = "394588006";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricChildAndAdolescentPsychiatry
+    /// </summary>
+    public const string LiteralNONEPediatricChildAndAdolescentPsychiatry = "http://snomed.info/sct#394588006";
 
     /// <summary>
     /// Literal for code: Nephrology
@@ -1123,9 +1193,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNephrology = "394589003";
 
     /// <summary>
+    /// Literal for code: NONENephrology
+    /// </summary>
+    public const string LiteralNONENephrology = "http://snomed.info/sct#394589003";
+
+    /// <summary>
     /// Literal for code: ThoracicMedicine
     /// </summary>
     public const string LiteralThoracicMedicine = "394590007";
+
+    /// <summary>
+    /// Literal for code: NONEThoracicMedicine
+    /// </summary>
+    public const string LiteralNONEThoracicMedicine = "http://snomed.info/sct#394590007";
 
     /// <summary>
     /// Literal for code: Neurology
@@ -1133,9 +1213,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeurology = "394591006";
 
     /// <summary>
+    /// Literal for code: NONENeurology
+    /// </summary>
+    public const string LiteralNONENeurology = "http://snomed.info/sct#394591006";
+
+    /// <summary>
     /// Literal for code: ClinicalOncology
     /// </summary>
     public const string LiteralClinicalOncology = "394592004";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalOncology
+    /// </summary>
+    public const string LiteralNONEClinicalOncology = "http://snomed.info/sct#394592004";
 
     /// <summary>
     /// Literal for code: MedicalOncology
@@ -1143,9 +1233,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalOncology = "394593009";
 
     /// <summary>
+    /// Literal for code: NONEMedicalOncology
+    /// </summary>
+    public const string LiteralNONEMedicalOncology = "http://snomed.info/sct#394593009";
+
+    /// <summary>
     /// Literal for code: Ophthalmology
     /// </summary>
     public const string LiteralOphthalmology = "394594003";
+
+    /// <summary>
+    /// Literal for code: NONEOphthalmology
+    /// </summary>
+    public const string LiteralNONEOphthalmology = "http://snomed.info/sct#394594003";
 
     /// <summary>
     /// Literal for code: Histopathology
@@ -1153,9 +1253,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistopathology = "394597005";
 
     /// <summary>
+    /// Literal for code: NONEHistopathology
+    /// </summary>
+    public const string LiteralNONEHistopathology = "http://snomed.info/sct#394597005";
+
+    /// <summary>
     /// Literal for code: Immunopathology
     /// </summary>
     public const string LiteralImmunopathology = "394598000";
+
+    /// <summary>
+    /// Literal for code: NONEImmunopathology
+    /// </summary>
+    public const string LiteralNONEImmunopathology = "http://snomed.info/sct#394598000";
 
     /// <summary>
     /// Literal for code: Neuropathology
@@ -1163,9 +1273,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeuropathology = "394599008";
 
     /// <summary>
+    /// Literal for code: NONENeuropathology
+    /// </summary>
+    public const string LiteralNONENeuropathology = "http://snomed.info/sct#394599008";
+
+    /// <summary>
     /// Literal for code: ClinicalPharmacology
     /// </summary>
     public const string LiteralClinicalPharmacology = "394600006";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalPharmacology
+    /// </summary>
+    public const string LiteralNONEClinicalPharmacology = "http://snomed.info/sct#394600006";
 
     /// <summary>
     /// Literal for code: ClinicalPhysiology
@@ -1173,9 +1293,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalPhysiology = "394601005";
 
     /// <summary>
+    /// Literal for code: NONEClinicalPhysiology
+    /// </summary>
+    public const string LiteralNONEClinicalPhysiology = "http://snomed.info/sct#394601005";
+
+    /// <summary>
     /// Literal for code: Rehabilitation
     /// </summary>
     public const string LiteralRehabilitation = "394602003";
+
+    /// <summary>
+    /// Literal for code: NONERehabilitation
+    /// </summary>
+    public const string LiteralNONERehabilitation = "http://snomed.info/sct#394602003";
 
     /// <summary>
     /// Literal for code: SurgeryEarNoseAndThroatSurgery
@@ -1183,9 +1313,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgeryEarNoseAndThroatSurgery = "394604002";
 
     /// <summary>
+    /// Literal for code: NONESurgeryEarNoseAndThroatSurgery
+    /// </summary>
+    public const string LiteralNONESurgeryEarNoseAndThroatSurgery = "http://snomed.info/sct#394604002";
+
+    /// <summary>
     /// Literal for code: SurgeryDentalOralSurgery
     /// </summary>
     public const string LiteralSurgeryDentalOralSurgery = "394605001";
+
+    /// <summary>
+    /// Literal for code: NONESurgeryDentalOralSurgery
+    /// </summary>
+    public const string LiteralNONESurgeryDentalOralSurgery = "http://snomed.info/sct#394605001";
 
     /// <summary>
     /// Literal for code: SurgeryDentistryRestorativeDentistry
@@ -1193,9 +1333,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgeryDentistryRestorativeDentistry = "394606000";
 
     /// <summary>
+    /// Literal for code: NONESurgeryDentistryRestorativeDentistry
+    /// </summary>
+    public const string LiteralNONESurgeryDentistryRestorativeDentistry = "http://snomed.info/sct#394606000";
+
+    /// <summary>
     /// Literal for code: PediatricDentistry
     /// </summary>
     public const string LiteralPediatricDentistry = "394607009";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricDentistry
+    /// </summary>
+    public const string LiteralNONEPediatricDentistry = "http://snomed.info/sct#394607009";
 
     /// <summary>
     /// Literal for code: SurgeryDentalOrthodontics
@@ -1203,9 +1353,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgeryDentalOrthodontics = "394608004";
 
     /// <summary>
+    /// Literal for code: NONESurgeryDentalOrthodontics
+    /// </summary>
+    public const string LiteralNONESurgeryDentalOrthodontics = "http://snomed.info/sct#394608004";
+
+    /// <summary>
     /// Literal for code: SurgeryGeneral
     /// </summary>
     public const string LiteralSurgeryGeneral = "394609007";
+
+    /// <summary>
+    /// Literal for code: NONESurgeryGeneral
+    /// </summary>
+    public const string LiteralNONESurgeryGeneral = "http://snomed.info/sct#394609007";
 
     /// <summary>
     /// Literal for code: SurgeryNeurosurgery
@@ -1213,9 +1373,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgeryNeurosurgery = "394610002";
 
     /// <summary>
+    /// Literal for code: NONESurgeryNeurosurgery
+    /// </summary>
+    public const string LiteralNONESurgeryNeurosurgery = "http://snomed.info/sct#394610002";
+
+    /// <summary>
     /// Literal for code: SurgeryPlasticSurgery
     /// </summary>
     public const string LiteralSurgeryPlasticSurgery = "394611003";
+
+    /// <summary>
+    /// Literal for code: NONESurgeryPlasticSurgery
+    /// </summary>
+    public const string LiteralNONESurgeryPlasticSurgery = "http://snomed.info/sct#394611003";
 
     /// <summary>
     /// Literal for code: Urology
@@ -1223,9 +1393,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUrology = "394612005";
 
     /// <summary>
+    /// Literal for code: NONEUrology
+    /// </summary>
+    public const string LiteralNONEUrology = "http://snomed.info/sct#394612005";
+
+    /// <summary>
     /// Literal for code: NuclearMedicine
     /// </summary>
     public const string LiteralNuclearMedicine = "394649004";
+
+    /// <summary>
+    /// Literal for code: NONENuclearMedicine
+    /// </summary>
+    public const string LiteralNONENuclearMedicine = "http://snomed.info/sct#394649004";
 
     /// <summary>
     /// Literal for code: SurgicalSpecialtyOTHERNOTLISTED
@@ -1233,9 +1413,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgicalSpecialtyOTHERNOTLISTED = "394732004";
 
     /// <summary>
+    /// Literal for code: NONESurgicalSpecialtyOTHERNOTLISTED
+    /// </summary>
+    public const string LiteralNONESurgicalSpecialtyOTHERNOTLISTED = "http://snomed.info/sct#394732004";
+
+    /// <summary>
     /// Literal for code: MedicalSpecialtyOTHERNOTLISTED
     /// </summary>
     public const string LiteralMedicalSpecialtyOTHERNOTLISTED = "394733009";
+
+    /// <summary>
+    /// Literal for code: NONEMedicalSpecialtyOTHERNOTLISTED
+    /// </summary>
+    public const string LiteralNONEMedicalSpecialtyOTHERNOTLISTED = "http://snomed.info/sct#394733009";
 
     /// <summary>
     /// Literal for code: SurgeryTraumaAndOrthopedics
@@ -1243,9 +1433,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgeryTraumaAndOrthopedics = "394801008";
 
     /// <summary>
+    /// Literal for code: NONESurgeryTraumaAndOrthopedics
+    /// </summary>
+    public const string LiteralNONESurgeryTraumaAndOrthopedics = "http://snomed.info/sct#394801008";
+
+    /// <summary>
     /// Literal for code: GeneralMedicine
     /// </summary>
     public const string LiteralGeneralMedicine = "394802001";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralMedicine
+    /// </summary>
+    public const string LiteralNONEGeneralMedicine = "http://snomed.info/sct#394802001";
 
     /// <summary>
     /// Literal for code: ClinicalHematology
@@ -1253,9 +1453,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalHematology = "394803006";
 
     /// <summary>
+    /// Literal for code: NONEClinicalHematology
+    /// </summary>
+    public const string LiteralNONEClinicalHematology = "http://snomed.info/sct#394803006";
+
+    /// <summary>
     /// Literal for code: ClinicalCytogeneticsAndMolecularGenetics
     /// </summary>
     public const string LiteralClinicalCytogeneticsAndMolecularGenetics = "394804000";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalCytogeneticsAndMolecularGenetics
+    /// </summary>
+    public const string LiteralNONEClinicalCytogeneticsAndMolecularGenetics = "http://snomed.info/sct#394804000";
 
     /// <summary>
     /// Literal for code: PalliativeMedicine
@@ -1263,9 +1473,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPalliativeMedicine = "394806003";
 
     /// <summary>
+    /// Literal for code: NONEPalliativeMedicine
+    /// </summary>
+    public const string LiteralNONEPalliativeMedicine = "http://snomed.info/sct#394806003";
+
+    /// <summary>
     /// Literal for code: InfectiousDiseases
     /// </summary>
     public const string LiteralInfectiousDiseases = "394807007";
+
+    /// <summary>
+    /// Literal for code: NONEInfectiousDiseases
+    /// </summary>
+    public const string LiteralNONEInfectiousDiseases = "http://snomed.info/sct#394807007";
 
     /// <summary>
     /// Literal for code: GenitoUrinaryMedicine
@@ -1273,9 +1493,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGenitoUrinaryMedicine = "394808002";
 
     /// <summary>
+    /// Literal for code: NONEGenitoUrinaryMedicine
+    /// </summary>
+    public const string LiteralNONEGenitoUrinaryMedicine = "http://snomed.info/sct#394808002";
+
+    /// <summary>
     /// Literal for code: ClinicalNeuroPhysiology
     /// </summary>
     public const string LiteralClinicalNeuroPhysiology = "394809005";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalNeuroPhysiology
+    /// </summary>
+    public const string LiteralNONEClinicalNeuroPhysiology = "http://snomed.info/sct#394809005";
 
     /// <summary>
     /// Literal for code: Rheumatology
@@ -1283,9 +1513,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRheumatology = "394810000";
 
     /// <summary>
+    /// Literal for code: NONERheumatology
+    /// </summary>
+    public const string LiteralNONERheumatology = "http://snomed.info/sct#394810000";
+
+    /// <summary>
     /// Literal for code: GeriatricMedicine
     /// </summary>
     public const string LiteralGeriatricMedicine = "394811001";
+
+    /// <summary>
+    /// Literal for code: NONEGeriatricMedicine
+    /// </summary>
+    public const string LiteralNONEGeriatricMedicine = "http://snomed.info/sct#394811001";
 
     /// <summary>
     /// Literal for code: DentalMedicineSpecialties
@@ -1293,9 +1533,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDentalMedicineSpecialties = "394812008";
 
     /// <summary>
+    /// Literal for code: NONEDentalMedicineSpecialties
+    /// </summary>
+    public const string LiteralNONEDentalMedicineSpecialties = "http://snomed.info/sct#394812008";
+
+    /// <summary>
     /// Literal for code: MedicalOphthalmology
     /// </summary>
     public const string LiteralMedicalOphthalmology = "394813003";
+
+    /// <summary>
+    /// Literal for code: NONEMedicalOphthalmology
+    /// </summary>
+    public const string LiteralNONEMedicalOphthalmology = "http://snomed.info/sct#394813003";
 
     /// <summary>
     /// Literal for code: GeneralPractice
@@ -1303,9 +1553,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGeneralPractice = "394814009";
 
     /// <summary>
+    /// Literal for code: NONEGeneralPractice
+    /// </summary>
+    public const string LiteralNONEGeneralPractice = "http://snomed.info/sct#394814009";
+
+    /// <summary>
     /// Literal for code: OccupationalMedicine
     /// </summary>
     public const string LiteralOccupationalMedicine = "394821009";
+
+    /// <summary>
+    /// Literal for code: NONEOccupationalMedicine
+    /// </summary>
+    public const string LiteralNONEOccupationalMedicine = "http://snomed.info/sct#394821009";
 
     /// <summary>
     /// Literal for code: PainManagement
@@ -1313,9 +1573,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPainManagement = "394882004";
 
     /// <summary>
+    /// Literal for code: NONEPainManagement
+    /// </summary>
+    public const string LiteralNONEPainManagement = "http://snomed.info/sct#394882004";
+
+    /// <summary>
     /// Literal for code: Psychotherapy
     /// </summary>
     public const string LiteralPsychotherapy = "394913002";
+
+    /// <summary>
+    /// Literal for code: NONEPsychotherapy
+    /// </summary>
+    public const string LiteralNONEPsychotherapy = "http://snomed.info/sct#394913002";
 
     /// <summary>
     /// Literal for code: Radiology
@@ -1323,9 +1593,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRadiology = "394914008";
 
     /// <summary>
+    /// Literal for code: NONERadiology
+    /// </summary>
+    public const string LiteralNONERadiology = "http://snomed.info/sct#394914008";
+
+    /// <summary>
     /// Literal for code: GeneralPathology
     /// </summary>
     public const string LiteralGeneralPathology = "394915009";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralPathology
+    /// </summary>
+    public const string LiteralNONEGeneralPathology = "http://snomed.info/sct#394915009";
 
     /// <summary>
     /// Literal for code: Hematopathology
@@ -1333,9 +1613,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHematopathology = "394916005";
 
     /// <summary>
+    /// Literal for code: NONEHematopathology
+    /// </summary>
+    public const string LiteralNONEHematopathology = "http://snomed.info/sct#394916005";
+
+    /// <summary>
     /// Literal for code: PublicHealthMedicine
     /// </summary>
     public const string LiteralPublicHealthMedicine = "408440000";
+
+    /// <summary>
+    /// Literal for code: NONEPublicHealthMedicine
+    /// </summary>
+    public const string LiteralNONEPublicHealthMedicine = "http://snomed.info/sct#408440000";
 
     /// <summary>
     /// Literal for code: SurgeryDentalEndodontics
@@ -1343,9 +1633,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgeryDentalEndodontics = "408441001";
 
     /// <summary>
+    /// Literal for code: NONESurgeryDentalEndodontics
+    /// </summary>
+    public const string LiteralNONESurgeryDentalEndodontics = "http://snomed.info/sct#408441001";
+
+    /// <summary>
     /// Literal for code: GeneralMedicalPractice
     /// </summary>
     public const string LiteralGeneralMedicalPractice = "408443003";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralMedicalPractice
+    /// </summary>
+    public const string LiteralNONEGeneralMedicalPractice = "http://snomed.info/sct#408443003";
 
     /// <summary>
     /// Literal for code: DentalGeneralDentalPractice
@@ -1353,9 +1653,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDentalGeneralDentalPractice = "408444009";
 
     /// <summary>
+    /// Literal for code: NONEDentalGeneralDentalPractice
+    /// </summary>
+    public const string LiteralNONEDentalGeneralDentalPractice = "http://snomed.info/sct#408444009";
+
+    /// <summary>
     /// Literal for code: GynecologicalOncology
     /// </summary>
     public const string LiteralGynecologicalOncology = "408446006";
+
+    /// <summary>
+    /// Literal for code: NONEGynecologicalOncology
+    /// </summary>
+    public const string LiteralNONEGynecologicalOncology = "http://snomed.info/sct#408446006";
 
     /// <summary>
     /// Literal for code: RespiteCare
@@ -1363,9 +1673,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRespiteCare = "408447002";
 
     /// <summary>
+    /// Literal for code: NONERespiteCare
+    /// </summary>
+    public const string LiteralNONERespiteCare = "http://snomed.info/sct#408447002";
+
+    /// <summary>
     /// Literal for code: TropicalMedicine
     /// </summary>
     public const string LiteralTropicalMedicine = "408448007";
+
+    /// <summary>
+    /// Literal for code: NONETropicalMedicine
+    /// </summary>
+    public const string LiteralNONETropicalMedicine = "http://snomed.info/sct#408448007";
 
     /// <summary>
     /// Literal for code: SurgeryDentistrySurgical
@@ -1373,9 +1693,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgeryDentistrySurgical = "408449004";
 
     /// <summary>
+    /// Literal for code: NONESurgeryDentistrySurgical
+    /// </summary>
+    public const string LiteralNONESurgeryDentistrySurgical = "http://snomed.info/sct#408449004";
+
+    /// <summary>
     /// Literal for code: SleepStudies
     /// </summary>
     public const string LiteralSleepStudies = "408450004";
+
+    /// <summary>
+    /// Literal for code: NONESleepStudies
+    /// </summary>
+    public const string LiteralNONESleepStudies = "http://snomed.info/sct#408450004";
 
     /// <summary>
     /// Literal for code: ClinicalMicrobiology
@@ -1383,9 +1713,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalMicrobiology = "408454008";
 
     /// <summary>
+    /// Literal for code: NONEClinicalMicrobiology
+    /// </summary>
+    public const string LiteralNONEClinicalMicrobiology = "http://snomed.info/sct#408454008";
+
+    /// <summary>
     /// Literal for code: RadiologyInterventionalRadiology
     /// </summary>
     public const string LiteralRadiologyInterventionalRadiology = "408455009";
+
+    /// <summary>
+    /// Literal for code: NONERadiologyInterventionalRadiology
+    /// </summary>
+    public const string LiteralNONERadiologyInterventionalRadiology = "http://snomed.info/sct#408455009";
 
     /// <summary>
     /// Literal for code: PediatricCardiology
@@ -1393,9 +1733,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricCardiology = "408459003";
 
     /// <summary>
+    /// Literal for code: NONEPediatricCardiology
+    /// </summary>
+    public const string LiteralNONEPediatricCardiology = "http://snomed.info/sct#408459003";
+
+    /// <summary>
     /// Literal for code: SurgeryDentalProstheticDentistryProsthodontics
     /// </summary>
     public const string LiteralSurgeryDentalProstheticDentistryProsthodontics = "408460008";
+
+    /// <summary>
+    /// Literal for code: NONESurgeryDentalProstheticDentistryProsthodontics
+    /// </summary>
+    public const string LiteralNONESurgeryDentalProstheticDentistryProsthodontics = "http://snomed.info/sct#408460008";
 
     /// <summary>
     /// Literal for code: SurgeryDentalPeriodontalSurgery
@@ -1403,9 +1753,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgeryDentalPeriodontalSurgery = "408461007";
 
     /// <summary>
+    /// Literal for code: NONESurgeryDentalPeriodontalSurgery
+    /// </summary>
+    public const string LiteralNONESurgeryDentalPeriodontalSurgery = "http://snomed.info/sct#408461007";
+
+    /// <summary>
     /// Literal for code: BurnsCare
     /// </summary>
     public const string LiteralBurnsCare = "408462000";
+
+    /// <summary>
+    /// Literal for code: NONEBurnsCare
+    /// </summary>
+    public const string LiteralNONEBurnsCare = "http://snomed.info/sct#408462000";
 
     /// <summary>
     /// Literal for code: SurgeryVascular
@@ -1413,9 +1773,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgeryVascular = "408463005";
 
     /// <summary>
+    /// Literal for code: NONESurgeryVascular
+    /// </summary>
+    public const string LiteralNONESurgeryVascular = "http://snomed.info/sct#408463005";
+
+    /// <summary>
     /// Literal for code: SurgeryColorectalSurgery
     /// </summary>
     public const string LiteralSurgeryColorectalSurgery = "408464004";
+
+    /// <summary>
+    /// Literal for code: NONESurgeryColorectalSurgery
+    /// </summary>
+    public const string LiteralNONESurgeryColorectalSurgery = "http://snomed.info/sct#408464004";
 
     /// <summary>
     /// Literal for code: SurgeryDentalOralAndMaxillofacialSurgery
@@ -1423,9 +1793,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgeryDentalOralAndMaxillofacialSurgery = "408465003";
 
     /// <summary>
+    /// Literal for code: NONESurgeryDentalOralAndMaxillofacialSurgery
+    /// </summary>
+    public const string LiteralNONESurgeryDentalOralAndMaxillofacialSurgery = "http://snomed.info/sct#408465003";
+
+    /// <summary>
     /// Literal for code: SurgeryCardiacSurgery
     /// </summary>
     public const string LiteralSurgeryCardiacSurgery = "408466002";
+
+    /// <summary>
+    /// Literal for code: NONESurgeryCardiacSurgery
+    /// </summary>
+    public const string LiteralNONESurgeryCardiacSurgery = "http://snomed.info/sct#408466002";
 
     /// <summary>
     /// Literal for code: AdultMentalIllness
@@ -1433,9 +1813,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdultMentalIllness = "408467006";
 
     /// <summary>
+    /// Literal for code: NONEAdultMentalIllness
+    /// </summary>
+    public const string LiteralNONEAdultMentalIllness = "http://snomed.info/sct#408467006";
+
+    /// <summary>
     /// Literal for code: LearningDisability
     /// </summary>
     public const string LiteralLearningDisability = "408468001";
+
+    /// <summary>
+    /// Literal for code: NONELearningDisability
+    /// </summary>
+    public const string LiteralNONELearningDisability = "http://snomed.info/sct#408468001";
 
     /// <summary>
     /// Literal for code: SurgeryBreastSurgery
@@ -1443,9 +1833,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgeryBreastSurgery = "408469009";
 
     /// <summary>
+    /// Literal for code: NONESurgeryBreastSurgery
+    /// </summary>
+    public const string LiteralNONESurgeryBreastSurgery = "http://snomed.info/sct#408469009";
+
+    /// <summary>
     /// Literal for code: Obstetrics
     /// </summary>
     public const string LiteralObstetrics = "408470005";
+
+    /// <summary>
+    /// Literal for code: NONEObstetrics
+    /// </summary>
+    public const string LiteralNONEObstetrics = "http://snomed.info/sct#408470005";
 
     /// <summary>
     /// Literal for code: SurgeryCardiothoracicTransplantation
@@ -1453,9 +1853,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgeryCardiothoracicTransplantation = "408471009";
 
     /// <summary>
+    /// Literal for code: NONESurgeryCardiothoracicTransplantation
+    /// </summary>
+    public const string LiteralNONESurgeryCardiothoracicTransplantation = "http://snomed.info/sct#408471009";
+
+    /// <summary>
     /// Literal for code: Hepatology
     /// </summary>
     public const string LiteralHepatology = "408472002";
+
+    /// <summary>
+    /// Literal for code: NONEHepatology
+    /// </summary>
+    public const string LiteralNONEHepatology = "http://snomed.info/sct#408472002";
 
     /// <summary>
     /// Literal for code: SurgeryHepatobiliaryAndPancreaticSurgery
@@ -1463,9 +1873,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgeryHepatobiliaryAndPancreaticSurgery = "408474001";
 
     /// <summary>
+    /// Literal for code: NONESurgeryHepatobiliaryAndPancreaticSurgery
+    /// </summary>
+    public const string LiteralNONESurgeryHepatobiliaryAndPancreaticSurgery = "http://snomed.info/sct#408474001";
+
+    /// <summary>
     /// Literal for code: DiabeticMedicine
     /// </summary>
     public const string LiteralDiabeticMedicine = "408475000";
+
+    /// <summary>
+    /// Literal for code: NONEDiabeticMedicine
+    /// </summary>
+    public const string LiteralNONEDiabeticMedicine = "http://snomed.info/sct#408475000";
 
     /// <summary>
     /// Literal for code: SurgeryBoneAndMarrowTransplantation
@@ -1473,9 +1893,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgeryBoneAndMarrowTransplantation = "408476004";
 
     /// <summary>
+    /// Literal for code: NONESurgeryBoneAndMarrowTransplantation
+    /// </summary>
+    public const string LiteralNONESurgeryBoneAndMarrowTransplantation = "http://snomed.info/sct#408476004";
+
+    /// <summary>
     /// Literal for code: SurgeryTransplantationSurgery
     /// </summary>
     public const string LiteralSurgeryTransplantationSurgery = "408477008";
+
+    /// <summary>
+    /// Literal for code: NONESurgeryTransplantationSurgery
+    /// </summary>
+    public const string LiteralNONESurgeryTransplantationSurgery = "http://snomed.info/sct#408477008";
 
     /// <summary>
     /// Literal for code: CriticalCareMedicine
@@ -1483,9 +1913,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCriticalCareMedicine = "408478003";
 
     /// <summary>
+    /// Literal for code: NONECriticalCareMedicine
+    /// </summary>
+    public const string LiteralNONECriticalCareMedicine = "http://snomed.info/sct#408478003";
+
+    /// <summary>
     /// Literal for code: ClinicalImmunology
     /// </summary>
     public const string LiteralClinicalImmunology = "408480009";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalImmunology
+    /// </summary>
+    public const string LiteralNONEClinicalImmunology = "http://snomed.info/sct#408480009";
 
     /// <summary>
     /// Literal for code: Toxicology
@@ -1493,9 +1933,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralToxicology = "409967009";
 
     /// <summary>
+    /// Literal for code: NONEToxicology
+    /// </summary>
+    public const string LiteralNONEToxicology = "http://snomed.info/sct#409967009";
+
+    /// <summary>
     /// Literal for code: PreventiveMedicine
     /// </summary>
     public const string LiteralPreventiveMedicine = "409968004";
+
+    /// <summary>
+    /// Literal for code: NONEPreventiveMedicine
+    /// </summary>
+    public const string LiteralNONEPreventiveMedicine = "http://snomed.info/sct#409968004";
 
     /// <summary>
     /// Literal for code: MilitaryMedicine
@@ -1503,9 +1953,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMilitaryMedicine = "410001006";
 
     /// <summary>
+    /// Literal for code: NONEMilitaryMedicine
+    /// </summary>
+    public const string LiteralNONEMilitaryMedicine = "http://snomed.info/sct#410001006";
+
+    /// <summary>
     /// Literal for code: DiveMedicine
     /// </summary>
     public const string LiteralDiveMedicine = "410005002";
+
+    /// <summary>
+    /// Literal for code: NONEDiveMedicine
+    /// </summary>
+    public const string LiteralNONEDiveMedicine = "http://snomed.info/sct#410005002";
 
     /// <summary>
     /// Literal for code: OsteopathicManipulativeMedicine
@@ -1513,9 +1973,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOsteopathicManipulativeMedicine = "416304004";
 
     /// <summary>
+    /// Literal for code: NONEOsteopathicManipulativeMedicine
+    /// </summary>
+    public const string LiteralNONEOsteopathicManipulativeMedicine = "http://snomed.info/sct#416304004";
+
+    /// <summary>
     /// Literal for code: PediatricOncology
     /// </summary>
     public const string LiteralPediatricOncology = "418002000";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricOncology
+    /// </summary>
+    public const string LiteralNONEPediatricOncology = "http://snomed.info/sct#418002000";
 
     /// <summary>
     /// Literal for code: SurgeryDermatologicSurgery
@@ -1523,9 +1993,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgeryDermatologicSurgery = "418018006";
 
     /// <summary>
+    /// Literal for code: NONESurgeryDermatologicSurgery
+    /// </summary>
+    public const string LiteralNONESurgeryDermatologicSurgery = "http://snomed.info/sct#418018006";
+
+    /// <summary>
     /// Literal for code: PediatricGastroenterology
     /// </summary>
     public const string LiteralPediatricGastroenterology = "418058008";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricGastroenterology
+    /// </summary>
+    public const string LiteralNONEPediatricGastroenterology = "http://snomed.info/sct#418058008";
 
     /// <summary>
     /// Literal for code: PulmonaryMedicine
@@ -1533,9 +2013,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPulmonaryMedicine = "418112009";
 
     /// <summary>
+    /// Literal for code: NONEPulmonaryMedicine
+    /// </summary>
+    public const string LiteralNONEPulmonaryMedicine = "http://snomed.info/sct#418112009";
+
+    /// <summary>
     /// Literal for code: PediatricImmunology
     /// </summary>
     public const string LiteralPediatricImmunology = "418535003";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricImmunology
+    /// </summary>
+    public const string LiteralNONEPediatricImmunology = "http://snomed.info/sct#418535003";
 
     /// <summary>
     /// Literal for code: PediatricHematology
@@ -1543,9 +2033,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricHematology = "418652005";
 
     /// <summary>
+    /// Literal for code: NONEPediatricHematology
+    /// </summary>
+    public const string LiteralNONEPediatricHematology = "http://snomed.info/sct#418652005";
+
+    /// <summary>
     /// Literal for code: PediatricInfectiousDiseases
     /// </summary>
     public const string LiteralPediatricInfectiousDiseases = "418862001";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricInfectiousDiseases
+    /// </summary>
+    public const string LiteralNONEPediatricInfectiousDiseases = "http://snomed.info/sct#418862001";
 
     /// <summary>
     /// Literal for code: Otolaryngology
@@ -1553,9 +2053,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOtolaryngology = "418960008";
 
     /// <summary>
+    /// Literal for code: NONEOtolaryngology
+    /// </summary>
+    public const string LiteralNONEOtolaryngology = "http://snomed.info/sct#418960008";
+
+    /// <summary>
     /// Literal for code: UrologicalOncology
     /// </summary>
     public const string LiteralUrologicalOncology = "419043006";
+
+    /// <summary>
+    /// Literal for code: NONEUrologicalOncology
+    /// </summary>
+    public const string LiteralNONEUrologicalOncology = "http://snomed.info/sct#419043006";
 
     /// <summary>
     /// Literal for code: PediatricPulmonology
@@ -1563,9 +2073,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricPulmonology = "419170002";
 
     /// <summary>
+    /// Literal for code: NONEPediatricPulmonology
+    /// </summary>
+    public const string LiteralNONEPediatricPulmonology = "http://snomed.info/sct#419170002";
+
+    /// <summary>
     /// Literal for code: InternalMedicine
     /// </summary>
     public const string LiteralInternalMedicine = "419192003";
+
+    /// <summary>
+    /// Literal for code: NONEInternalMedicine
+    /// </summary>
+    public const string LiteralNONEInternalMedicine = "http://snomed.info/sct#419192003";
 
     /// <summary>
     /// Literal for code: SurgicalOncology
@@ -1573,9 +2093,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgicalOncology = "419321007";
 
     /// <summary>
+    /// Literal for code: NONESurgicalOncology
+    /// </summary>
+    public const string LiteralNONESurgicalOncology = "http://snomed.info/sct#419321007";
+
+    /// <summary>
     /// Literal for code: PediatricNephrology
     /// </summary>
     public const string LiteralPediatricNephrology = "419365004";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricNephrology
+    /// </summary>
+    public const string LiteralNONEPediatricNephrology = "http://snomed.info/sct#419365004";
 
     /// <summary>
     /// Literal for code: PediatricRheumatology
@@ -1583,9 +2113,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricRheumatology = "419472004";
 
     /// <summary>
+    /// Literal for code: NONEPediatricRheumatology
+    /// </summary>
+    public const string LiteralNONEPediatricRheumatology = "http://snomed.info/sct#419472004";
+
+    /// <summary>
     /// Literal for code: PediatricEndocrinology
     /// </summary>
     public const string LiteralPediatricEndocrinology = "419610006";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricEndocrinology
+    /// </summary>
+    public const string LiteralNONEPediatricEndocrinology = "http://snomed.info/sct#419610006";
 
     /// <summary>
     /// Literal for code: FamilyPractice
@@ -1593,9 +2133,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFamilyPractice = "419772000";
 
     /// <summary>
+    /// Literal for code: NONEFamilyPractice
+    /// </summary>
+    public const string LiteralNONEFamilyPractice = "http://snomed.info/sct#419772000";
+
+    /// <summary>
     /// Literal for code: RadiationOncology
     /// </summary>
     public const string LiteralRadiationOncology = "419815003";
+
+    /// <summary>
+    /// Literal for code: NONERadiationOncology
+    /// </summary>
+    public const string LiteralNONERadiationOncology = "http://snomed.info/sct#419815003";
 
     /// <summary>
     /// Literal for code: PediatricOphthalmology
@@ -1603,9 +2153,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricOphthalmology = "419983000";
 
     /// <summary>
+    /// Literal for code: NONEPediatricOphthalmology
+    /// </summary>
+    public const string LiteralNONEPediatricOphthalmology = "http://snomed.info/sct#419983000";
+
+    /// <summary>
     /// Literal for code: PediatricSurgeryBoneMarrowTransplantation
     /// </summary>
     public const string LiteralPediatricSurgeryBoneMarrowTransplantation = "420112009";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricSurgeryBoneMarrowTransplantation
+    /// </summary>
+    public const string LiteralNONEPediatricSurgeryBoneMarrowTransplantation = "http://snomed.info/sct#420112009";
 
     /// <summary>
     /// Literal for code: PediatricGenetics
@@ -1613,13 +2173,264 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricGenetics = "420208008";
 
     /// <summary>
+    /// Literal for code: NONEPediatricGenetics
+    /// </summary>
+    public const string LiteralNONEPediatricGenetics = "http://snomed.info/sct#420208008";
+
+    /// <summary>
     /// Literal for code: BloodBankingAndTransfusionMedicine
     /// </summary>
     public const string LiteralBloodBankingAndTransfusionMedicine = "421661004";
 
     /// <summary>
+    /// Literal for code: NONEBloodBankingAndTransfusionMedicine
+    /// </summary>
+    public const string LiteralNONEBloodBankingAndTransfusionMedicine = "http://snomed.info/sct#421661004";
+
+    /// <summary>
     /// Literal for code: OphthalmicSurgery
     /// </summary>
     public const string LiteralOphthalmicSurgery = "422191005";
+
+    /// <summary>
+    /// Literal for code: NONEOphthalmicSurgery
+    /// </summary>
+    public const string LiteralNONEOphthalmicSurgery = "http://snomed.info/sct#422191005";
+
+    /// <summary>
+    /// Dictionary for looking up C80PracticeCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "394539006", PediatricSurgery }, 
+      { "http://snomed.info/sct#394539006", PediatricSurgery }, 
+      { "394576009", SurgicalAccidentAndEmergency }, 
+      { "http://snomed.info/sct#394576009", SurgicalAccidentAndEmergency }, 
+      { "394577000", Anesthetics }, 
+      { "http://snomed.info/sct#394577000", Anesthetics }, 
+      { "394578005", AudiologicalMedicine }, 
+      { "http://snomed.info/sct#394578005", AudiologicalMedicine }, 
+      { "394579002", Cardiology }, 
+      { "http://snomed.info/sct#394579002", Cardiology }, 
+      { "394580004", ClinicalGenetics }, 
+      { "http://snomed.info/sct#394580004", ClinicalGenetics }, 
+      { "394581000", CommunityMedicine }, 
+      { "http://snomed.info/sct#394581000", CommunityMedicine }, 
+      { "394582007", Dermatology }, 
+      { "http://snomed.info/sct#394582007", Dermatology }, 
+      { "394583002", Endocrinology }, 
+      { "http://snomed.info/sct#394583002", Endocrinology }, 
+      { "394584008", Gastroenterology }, 
+      { "http://snomed.info/sct#394584008", Gastroenterology }, 
+      { "394585009", ObstetricsAndGynecology }, 
+      { "http://snomed.info/sct#394585009", ObstetricsAndGynecology }, 
+      { "394586005", Gynecology }, 
+      { "http://snomed.info/sct#394586005", Gynecology }, 
+      { "394587001", Psychiatry }, 
+      { "http://snomed.info/sct#394587001", Psychiatry }, 
+      { "394588006", PediatricChildAndAdolescentPsychiatry }, 
+      { "http://snomed.info/sct#394588006", PediatricChildAndAdolescentPsychiatry }, 
+      { "394589003", Nephrology }, 
+      { "http://snomed.info/sct#394589003", Nephrology }, 
+      { "394590007", ThoracicMedicine }, 
+      { "http://snomed.info/sct#394590007", ThoracicMedicine }, 
+      { "394591006", Neurology }, 
+      { "http://snomed.info/sct#394591006", Neurology }, 
+      { "394592004", ClinicalOncology }, 
+      { "http://snomed.info/sct#394592004", ClinicalOncology }, 
+      { "394593009", MedicalOncology }, 
+      { "http://snomed.info/sct#394593009", MedicalOncology }, 
+      { "394594003", Ophthalmology }, 
+      { "http://snomed.info/sct#394594003", Ophthalmology }, 
+      { "394597005", Histopathology }, 
+      { "http://snomed.info/sct#394597005", Histopathology }, 
+      { "394598000", Immunopathology }, 
+      { "http://snomed.info/sct#394598000", Immunopathology }, 
+      { "394599008", Neuropathology }, 
+      { "http://snomed.info/sct#394599008", Neuropathology }, 
+      { "394600006", ClinicalPharmacology }, 
+      { "http://snomed.info/sct#394600006", ClinicalPharmacology }, 
+      { "394601005", ClinicalPhysiology }, 
+      { "http://snomed.info/sct#394601005", ClinicalPhysiology }, 
+      { "394602003", Rehabilitation }, 
+      { "http://snomed.info/sct#394602003", Rehabilitation }, 
+      { "394604002", SurgeryEarNoseAndThroatSurgery }, 
+      { "http://snomed.info/sct#394604002", SurgeryEarNoseAndThroatSurgery }, 
+      { "394605001", SurgeryDentalOralSurgery }, 
+      { "http://snomed.info/sct#394605001", SurgeryDentalOralSurgery }, 
+      { "394606000", SurgeryDentistryRestorativeDentistry }, 
+      { "http://snomed.info/sct#394606000", SurgeryDentistryRestorativeDentistry }, 
+      { "394607009", PediatricDentistry }, 
+      { "http://snomed.info/sct#394607009", PediatricDentistry }, 
+      { "394608004", SurgeryDentalOrthodontics }, 
+      { "http://snomed.info/sct#394608004", SurgeryDentalOrthodontics }, 
+      { "394609007", SurgeryGeneral }, 
+      { "http://snomed.info/sct#394609007", SurgeryGeneral }, 
+      { "394610002", SurgeryNeurosurgery }, 
+      { "http://snomed.info/sct#394610002", SurgeryNeurosurgery }, 
+      { "394611003", SurgeryPlasticSurgery }, 
+      { "http://snomed.info/sct#394611003", SurgeryPlasticSurgery }, 
+      { "394612005", Urology }, 
+      { "http://snomed.info/sct#394612005", Urology }, 
+      { "394649004", NuclearMedicine }, 
+      { "http://snomed.info/sct#394649004", NuclearMedicine }, 
+      { "394732004", SurgicalSpecialtyOTHERNOTLISTED }, 
+      { "http://snomed.info/sct#394732004", SurgicalSpecialtyOTHERNOTLISTED }, 
+      { "394733009", MedicalSpecialtyOTHERNOTLISTED }, 
+      { "http://snomed.info/sct#394733009", MedicalSpecialtyOTHERNOTLISTED }, 
+      { "394801008", SurgeryTraumaAndOrthopedics }, 
+      { "http://snomed.info/sct#394801008", SurgeryTraumaAndOrthopedics }, 
+      { "394802001", GeneralMedicine }, 
+      { "http://snomed.info/sct#394802001", GeneralMedicine }, 
+      { "394803006", ClinicalHematology }, 
+      { "http://snomed.info/sct#394803006", ClinicalHematology }, 
+      { "394804000", ClinicalCytogeneticsAndMolecularGenetics }, 
+      { "http://snomed.info/sct#394804000", ClinicalCytogeneticsAndMolecularGenetics }, 
+      { "394806003", PalliativeMedicine }, 
+      { "http://snomed.info/sct#394806003", PalliativeMedicine }, 
+      { "394807007", InfectiousDiseases }, 
+      { "http://snomed.info/sct#394807007", InfectiousDiseases }, 
+      { "394808002", GenitoUrinaryMedicine }, 
+      { "http://snomed.info/sct#394808002", GenitoUrinaryMedicine }, 
+      { "394809005", ClinicalNeuroPhysiology }, 
+      { "http://snomed.info/sct#394809005", ClinicalNeuroPhysiology }, 
+      { "394810000", Rheumatology }, 
+      { "http://snomed.info/sct#394810000", Rheumatology }, 
+      { "394811001", GeriatricMedicine }, 
+      { "http://snomed.info/sct#394811001", GeriatricMedicine }, 
+      { "394812008", DentalMedicineSpecialties }, 
+      { "http://snomed.info/sct#394812008", DentalMedicineSpecialties }, 
+      { "394813003", MedicalOphthalmology }, 
+      { "http://snomed.info/sct#394813003", MedicalOphthalmology }, 
+      { "394814009", GeneralPractice }, 
+      { "http://snomed.info/sct#394814009", GeneralPractice }, 
+      { "394821009", OccupationalMedicine }, 
+      { "http://snomed.info/sct#394821009", OccupationalMedicine }, 
+      { "394882004", PainManagement }, 
+      { "http://snomed.info/sct#394882004", PainManagement }, 
+      { "394913002", Psychotherapy }, 
+      { "http://snomed.info/sct#394913002", Psychotherapy }, 
+      { "394914008", Radiology }, 
+      { "http://snomed.info/sct#394914008", Radiology }, 
+      { "394915009", GeneralPathology }, 
+      { "http://snomed.info/sct#394915009", GeneralPathology }, 
+      { "394916005", Hematopathology }, 
+      { "http://snomed.info/sct#394916005", Hematopathology }, 
+      { "408440000", PublicHealthMedicine }, 
+      { "http://snomed.info/sct#408440000", PublicHealthMedicine }, 
+      { "408441001", SurgeryDentalEndodontics }, 
+      { "http://snomed.info/sct#408441001", SurgeryDentalEndodontics }, 
+      { "408443003", GeneralMedicalPractice }, 
+      { "http://snomed.info/sct#408443003", GeneralMedicalPractice }, 
+      { "408444009", DentalGeneralDentalPractice }, 
+      { "http://snomed.info/sct#408444009", DentalGeneralDentalPractice }, 
+      { "408446006", GynecologicalOncology }, 
+      { "http://snomed.info/sct#408446006", GynecologicalOncology }, 
+      { "408447002", RespiteCare }, 
+      { "http://snomed.info/sct#408447002", RespiteCare }, 
+      { "408448007", TropicalMedicine }, 
+      { "http://snomed.info/sct#408448007", TropicalMedicine }, 
+      { "408449004", SurgeryDentistrySurgical }, 
+      { "http://snomed.info/sct#408449004", SurgeryDentistrySurgical }, 
+      { "408450004", SleepStudies }, 
+      { "http://snomed.info/sct#408450004", SleepStudies }, 
+      { "408454008", ClinicalMicrobiology }, 
+      { "http://snomed.info/sct#408454008", ClinicalMicrobiology }, 
+      { "408455009", RadiologyInterventionalRadiology }, 
+      { "http://snomed.info/sct#408455009", RadiologyInterventionalRadiology }, 
+      { "408459003", PediatricCardiology }, 
+      { "http://snomed.info/sct#408459003", PediatricCardiology }, 
+      { "408460008", SurgeryDentalProstheticDentistryProsthodontics }, 
+      { "http://snomed.info/sct#408460008", SurgeryDentalProstheticDentistryProsthodontics }, 
+      { "408461007", SurgeryDentalPeriodontalSurgery }, 
+      { "http://snomed.info/sct#408461007", SurgeryDentalPeriodontalSurgery }, 
+      { "408462000", BurnsCare }, 
+      { "http://snomed.info/sct#408462000", BurnsCare }, 
+      { "408463005", SurgeryVascular }, 
+      { "http://snomed.info/sct#408463005", SurgeryVascular }, 
+      { "408464004", SurgeryColorectalSurgery }, 
+      { "http://snomed.info/sct#408464004", SurgeryColorectalSurgery }, 
+      { "408465003", SurgeryDentalOralAndMaxillofacialSurgery }, 
+      { "http://snomed.info/sct#408465003", SurgeryDentalOralAndMaxillofacialSurgery }, 
+      { "408466002", SurgeryCardiacSurgery }, 
+      { "http://snomed.info/sct#408466002", SurgeryCardiacSurgery }, 
+      { "408467006", AdultMentalIllness }, 
+      { "http://snomed.info/sct#408467006", AdultMentalIllness }, 
+      { "408468001", LearningDisability }, 
+      { "http://snomed.info/sct#408468001", LearningDisability }, 
+      { "408469009", SurgeryBreastSurgery }, 
+      { "http://snomed.info/sct#408469009", SurgeryBreastSurgery }, 
+      { "408470005", Obstetrics }, 
+      { "http://snomed.info/sct#408470005", Obstetrics }, 
+      { "408471009", SurgeryCardiothoracicTransplantation }, 
+      { "http://snomed.info/sct#408471009", SurgeryCardiothoracicTransplantation }, 
+      { "408472002", Hepatology }, 
+      { "http://snomed.info/sct#408472002", Hepatology }, 
+      { "408474001", SurgeryHepatobiliaryAndPancreaticSurgery }, 
+      { "http://snomed.info/sct#408474001", SurgeryHepatobiliaryAndPancreaticSurgery }, 
+      { "408475000", DiabeticMedicine }, 
+      { "http://snomed.info/sct#408475000", DiabeticMedicine }, 
+      { "408476004", SurgeryBoneAndMarrowTransplantation }, 
+      { "http://snomed.info/sct#408476004", SurgeryBoneAndMarrowTransplantation }, 
+      { "408477008", SurgeryTransplantationSurgery }, 
+      { "http://snomed.info/sct#408477008", SurgeryTransplantationSurgery }, 
+      { "408478003", CriticalCareMedicine }, 
+      { "http://snomed.info/sct#408478003", CriticalCareMedicine }, 
+      { "408480009", ClinicalImmunology }, 
+      { "http://snomed.info/sct#408480009", ClinicalImmunology }, 
+      { "409967009", Toxicology }, 
+      { "http://snomed.info/sct#409967009", Toxicology }, 
+      { "409968004", PreventiveMedicine }, 
+      { "http://snomed.info/sct#409968004", PreventiveMedicine }, 
+      { "410001006", MilitaryMedicine }, 
+      { "http://snomed.info/sct#410001006", MilitaryMedicine }, 
+      { "410005002", DiveMedicine }, 
+      { "http://snomed.info/sct#410005002", DiveMedicine }, 
+      { "416304004", OsteopathicManipulativeMedicine }, 
+      { "http://snomed.info/sct#416304004", OsteopathicManipulativeMedicine }, 
+      { "418002000", PediatricOncology }, 
+      { "http://snomed.info/sct#418002000", PediatricOncology }, 
+      { "418018006", SurgeryDermatologicSurgery }, 
+      { "http://snomed.info/sct#418018006", SurgeryDermatologicSurgery }, 
+      { "418058008", PediatricGastroenterology }, 
+      { "http://snomed.info/sct#418058008", PediatricGastroenterology }, 
+      { "418112009", PulmonaryMedicine }, 
+      { "http://snomed.info/sct#418112009", PulmonaryMedicine }, 
+      { "418535003", PediatricImmunology }, 
+      { "http://snomed.info/sct#418535003", PediatricImmunology }, 
+      { "418652005", PediatricHematology }, 
+      { "http://snomed.info/sct#418652005", PediatricHematology }, 
+      { "418862001", PediatricInfectiousDiseases }, 
+      { "http://snomed.info/sct#418862001", PediatricInfectiousDiseases }, 
+      { "418960008", Otolaryngology }, 
+      { "http://snomed.info/sct#418960008", Otolaryngology }, 
+      { "419043006", UrologicalOncology }, 
+      { "http://snomed.info/sct#419043006", UrologicalOncology }, 
+      { "419170002", PediatricPulmonology }, 
+      { "http://snomed.info/sct#419170002", PediatricPulmonology }, 
+      { "419192003", InternalMedicine }, 
+      { "http://snomed.info/sct#419192003", InternalMedicine }, 
+      { "419321007", SurgicalOncology }, 
+      { "http://snomed.info/sct#419321007", SurgicalOncology }, 
+      { "419365004", PediatricNephrology }, 
+      { "http://snomed.info/sct#419365004", PediatricNephrology }, 
+      { "419472004", PediatricRheumatology }, 
+      { "http://snomed.info/sct#419472004", PediatricRheumatology }, 
+      { "419610006", PediatricEndocrinology }, 
+      { "http://snomed.info/sct#419610006", PediatricEndocrinology }, 
+      { "419772000", FamilyPractice }, 
+      { "http://snomed.info/sct#419772000", FamilyPractice }, 
+      { "419815003", RadiationOncology }, 
+      { "http://snomed.info/sct#419815003", RadiationOncology }, 
+      { "419983000", PediatricOphthalmology }, 
+      { "http://snomed.info/sct#419983000", PediatricOphthalmology }, 
+      { "420112009", PediatricSurgeryBoneMarrowTransplantation }, 
+      { "http://snomed.info/sct#420112009", PediatricSurgeryBoneMarrowTransplantation }, 
+      { "420208008", PediatricGenetics }, 
+      { "http://snomed.info/sct#420208008", PediatricGenetics }, 
+      { "421661004", BloodBankingAndTransfusionMedicine }, 
+      { "http://snomed.info/sct#421661004", BloodBankingAndTransfusionMedicine }, 
+      { "422191005", OphthalmicSurgery }, 
+      { "http://snomed.info/sct#422191005", OphthalmicSurgery }, 
+    };
   };
 }

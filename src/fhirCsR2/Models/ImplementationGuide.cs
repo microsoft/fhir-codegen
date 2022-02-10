@@ -262,6 +262,10 @@ namespace fhirCsR2.Models
   public static class ImplementationGuideDependencyTypeCodes {
     public const string REFERENCE = "reference";
     public const string INCLUSION = "inclusion";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "reference",
+      "inclusion",
+    };
   }
   /// <summary>
   /// A resource that is part of the implementation guide. Conformance resources (value set, structure definition, conformance statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.
@@ -502,6 +506,14 @@ namespace fhirCsR2.Models
     public const string EXTENSION = "extension";
     public const string DICTIONARY = "dictionary";
     public const string LOGICAL = "logical";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "example",
+      "terminology",
+      "profile",
+      "extension",
+      "dictionary",
+      "logical",
+    };
   }
   /// <summary>
   /// A logical group of resources. Logical groups can be used when building pages.
@@ -1163,6 +1175,16 @@ namespace fhirCsR2.Models
     public const string DICTIONARY = "dictionary";
     public const string TOC = "toc";
     public const string RESOURCE = "resource";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "page",
+      "example",
+      "list",
+      "include",
+      "directory",
+      "dictionary",
+      "toc",
+      "resource",
+    };
   }
   /// <summary>
   /// A set of rules or how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole, and to publish a computable definition of all the parts.
@@ -1841,5 +1863,10 @@ namespace fhirCsR2.Models
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+    };
   }
 }

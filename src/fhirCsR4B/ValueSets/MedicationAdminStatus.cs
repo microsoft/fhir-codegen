@@ -81,9 +81,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: MedicationAdminStatusCompleted
+    /// </summary>
+    public const string LiteralMedicationAdminStatusCompleted = "http://terminology.hl7.org/CodeSystem/medication-admin-status#completed";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: MedicationAdminStatusEnteredInError
+    /// </summary>
+    public const string LiteralMedicationAdminStatusEnteredInError = "http://terminology.hl7.org/CodeSystem/medication-admin-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: InProgress
@@ -91,9 +101,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInProgress = "in-progress";
 
     /// <summary>
+    /// Literal for code: MedicationAdminStatusInProgress
+    /// </summary>
+    public const string LiteralMedicationAdminStatusInProgress = "http://terminology.hl7.org/CodeSystem/medication-admin-status#in-progress";
+
+    /// <summary>
     /// Literal for code: NotDone
     /// </summary>
     public const string LiteralNotDone = "not-done";
+
+    /// <summary>
+    /// Literal for code: MedicationAdminStatusNotDone
+    /// </summary>
+    public const string LiteralMedicationAdminStatusNotDone = "http://terminology.hl7.org/CodeSystem/medication-admin-status#not-done";
 
     /// <summary>
     /// Literal for code: OnHold
@@ -101,13 +121,48 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOnHold = "on-hold";
 
     /// <summary>
+    /// Literal for code: MedicationAdminStatusOnHold
+    /// </summary>
+    public const string LiteralMedicationAdminStatusOnHold = "http://terminology.hl7.org/CodeSystem/medication-admin-status#on-hold";
+
+    /// <summary>
     /// Literal for code: Stopped
     /// </summary>
     public const string LiteralStopped = "stopped";
 
     /// <summary>
+    /// Literal for code: MedicationAdminStatusStopped
+    /// </summary>
+    public const string LiteralMedicationAdminStatusStopped = "http://terminology.hl7.org/CodeSystem/medication-admin-status#stopped";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: MedicationAdminStatusUnknown
+    /// </summary>
+    public const string LiteralMedicationAdminStatusUnknown = "http://terminology.hl7.org/CodeSystem/medication-admin-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationAdminStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "completed", Completed }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-admin-status#completed", Completed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-admin-status#entered-in-error", EnteredInError }, 
+      { "in-progress", InProgress }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-admin-status#in-progress", InProgress }, 
+      { "not-done", NotDone }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-admin-status#not-done", NotDone }, 
+      { "on-hold", OnHold }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-admin-status#on-hold", OnHold }, 
+      { "stopped", Stopped }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-admin-status#stopped", Stopped }, 
+      { "unknown", Unknown }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-admin-status#unknown", Unknown }, 
+    };
   };
 }

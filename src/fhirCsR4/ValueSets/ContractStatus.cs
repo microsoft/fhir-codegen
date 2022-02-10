@@ -153,9 +153,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAmended = "amended";
 
     /// <summary>
+    /// Literal for code: ContractStatusAmended
+    /// </summary>
+    public const string LiteralContractStatusAmended = "http://hl7.org/fhir/contract-status#amended";
+
+    /// <summary>
     /// Literal for code: Appended
     /// </summary>
     public const string LiteralAppended = "appended";
+
+    /// <summary>
+    /// Literal for code: ContractStatusAppended
+    /// </summary>
+    public const string LiteralContractStatusAppended = "http://hl7.org/fhir/contract-status#appended";
 
     /// <summary>
     /// Literal for code: Cancelled
@@ -163,9 +173,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCancelled = "cancelled";
 
     /// <summary>
+    /// Literal for code: ContractStatusCancelled
+    /// </summary>
+    public const string LiteralContractStatusCancelled = "http://hl7.org/fhir/contract-status#cancelled";
+
+    /// <summary>
     /// Literal for code: Disputed
     /// </summary>
     public const string LiteralDisputed = "disputed";
+
+    /// <summary>
+    /// Literal for code: ContractStatusDisputed
+    /// </summary>
+    public const string LiteralContractStatusDisputed = "http://hl7.org/fhir/contract-status#disputed";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -173,9 +193,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: ContractStatusEnteredInError
+    /// </summary>
+    public const string LiteralContractStatusEnteredInError = "http://hl7.org/fhir/contract-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Executable
     /// </summary>
     public const string LiteralExecutable = "executable";
+
+    /// <summary>
+    /// Literal for code: ContractStatusExecutable
+    /// </summary>
+    public const string LiteralContractStatusExecutable = "http://hl7.org/fhir/contract-status#executable";
 
     /// <summary>
     /// Literal for code: Executed
@@ -183,9 +213,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExecuted = "executed";
 
     /// <summary>
+    /// Literal for code: ContractStatusExecuted
+    /// </summary>
+    public const string LiteralContractStatusExecuted = "http://hl7.org/fhir/contract-status#executed";
+
+    /// <summary>
     /// Literal for code: Negotiable
     /// </summary>
     public const string LiteralNegotiable = "negotiable";
+
+    /// <summary>
+    /// Literal for code: ContractStatusNegotiable
+    /// </summary>
+    public const string LiteralContractStatusNegotiable = "http://hl7.org/fhir/contract-status#negotiable";
 
     /// <summary>
     /// Literal for code: Offered
@@ -193,9 +233,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOffered = "offered";
 
     /// <summary>
+    /// Literal for code: ContractStatusOffered
+    /// </summary>
+    public const string LiteralContractStatusOffered = "http://hl7.org/fhir/contract-status#offered";
+
+    /// <summary>
     /// Literal for code: Policy
     /// </summary>
     public const string LiteralPolicy = "policy";
+
+    /// <summary>
+    /// Literal for code: ContractStatusPolicy
+    /// </summary>
+    public const string LiteralContractStatusPolicy = "http://hl7.org/fhir/contract-status#policy";
 
     /// <summary>
     /// Literal for code: Rejected
@@ -203,9 +253,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRejected = "rejected";
 
     /// <summary>
+    /// Literal for code: ContractStatusRejected
+    /// </summary>
+    public const string LiteralContractStatusRejected = "http://hl7.org/fhir/contract-status#rejected";
+
+    /// <summary>
     /// Literal for code: Renewed
     /// </summary>
     public const string LiteralRenewed = "renewed";
+
+    /// <summary>
+    /// Literal for code: ContractStatusRenewed
+    /// </summary>
+    public const string LiteralContractStatusRenewed = "http://hl7.org/fhir/contract-status#renewed";
 
     /// <summary>
     /// Literal for code: Resolved
@@ -213,13 +273,64 @@ namespace fhirCsR4.ValueSets
     public const string LiteralResolved = "resolved";
 
     /// <summary>
+    /// Literal for code: ContractStatusResolved
+    /// </summary>
+    public const string LiteralContractStatusResolved = "http://hl7.org/fhir/contract-status#resolved";
+
+    /// <summary>
     /// Literal for code: Revoked
     /// </summary>
     public const string LiteralRevoked = "revoked";
 
     /// <summary>
+    /// Literal for code: ContractStatusRevoked
+    /// </summary>
+    public const string LiteralContractStatusRevoked = "http://hl7.org/fhir/contract-status#revoked";
+
+    /// <summary>
     /// Literal for code: Terminated
     /// </summary>
     public const string LiteralTerminated = "terminated";
+
+    /// <summary>
+    /// Literal for code: ContractStatusTerminated
+    /// </summary>
+    public const string LiteralContractStatusTerminated = "http://hl7.org/fhir/contract-status#terminated";
+
+    /// <summary>
+    /// Dictionary for looking up ContractStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "amended", Amended }, 
+      { "http://hl7.org/fhir/contract-status#amended", Amended }, 
+      { "appended", Appended }, 
+      { "http://hl7.org/fhir/contract-status#appended", Appended }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/contract-status#cancelled", Cancelled }, 
+      { "disputed", Disputed }, 
+      { "http://hl7.org/fhir/contract-status#disputed", Disputed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/contract-status#entered-in-error", EnteredInError }, 
+      { "executable", Executable }, 
+      { "http://hl7.org/fhir/contract-status#executable", Executable }, 
+      { "executed", Executed }, 
+      { "http://hl7.org/fhir/contract-status#executed", Executed }, 
+      { "negotiable", Negotiable }, 
+      { "http://hl7.org/fhir/contract-status#negotiable", Negotiable }, 
+      { "offered", Offered }, 
+      { "http://hl7.org/fhir/contract-status#offered", Offered }, 
+      { "policy", Policy }, 
+      { "http://hl7.org/fhir/contract-status#policy", Policy }, 
+      { "rejected", Rejected }, 
+      { "http://hl7.org/fhir/contract-status#rejected", Rejected }, 
+      { "renewed", Renewed }, 
+      { "http://hl7.org/fhir/contract-status#renewed", Renewed }, 
+      { "resolved", Resolved }, 
+      { "http://hl7.org/fhir/contract-status#resolved", Resolved }, 
+      { "revoked", Revoked }, 
+      { "http://hl7.org/fhir/contract-status#revoked", Revoked }, 
+      { "terminated", Terminated }, 
+      { "http://hl7.org/fhir/contract-status#terminated", Terminated }, 
+    };
   };
 }

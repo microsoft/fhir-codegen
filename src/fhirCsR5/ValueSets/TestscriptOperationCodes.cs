@@ -171,9 +171,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBatch = "batch";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionBatch
+    /// </summary>
+    public const string LiteralRestfulInteractionBatch = "http://hl7.org/fhir/restful-interaction#batch";
+
+    /// <summary>
     /// Literal for code: Capabilities
     /// </summary>
     public const string LiteralCapabilities = "capabilities";
+
+    /// <summary>
+    /// Literal for code: RestfulInteractionCapabilities
+    /// </summary>
+    public const string LiteralRestfulInteractionCapabilities = "http://hl7.org/fhir/restful-interaction#capabilities";
 
     /// <summary>
     /// Literal for code: Create
@@ -181,9 +191,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCreate = "create";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionCreate
+    /// </summary>
+    public const string LiteralRestfulInteractionCreate = "http://hl7.org/fhir/restful-interaction#create";
+
+    /// <summary>
     /// Literal for code: Delete
     /// </summary>
     public const string LiteralDelete = "delete";
+
+    /// <summary>
+    /// Literal for code: RestfulInteractionDelete
+    /// </summary>
+    public const string LiteralRestfulInteractionDelete = "http://hl7.org/fhir/restful-interaction#delete";
 
     /// <summary>
     /// Literal for code: History
@@ -191,9 +211,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHistory = "history";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionHistory
+    /// </summary>
+    public const string LiteralRestfulInteractionHistory = "http://hl7.org/fhir/restful-interaction#history";
+
+    /// <summary>
     /// Literal for code: HistoryInstance
     /// </summary>
     public const string LiteralHistoryInstance = "history-instance";
+
+    /// <summary>
+    /// Literal for code: RestfulInteractionHistoryInstance
+    /// </summary>
+    public const string LiteralRestfulInteractionHistoryInstance = "http://hl7.org/fhir/restful-interaction#history-instance";
 
     /// <summary>
     /// Literal for code: HistorySystem
@@ -201,9 +231,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHistorySystem = "history-system";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionHistorySystem
+    /// </summary>
+    public const string LiteralRestfulInteractionHistorySystem = "http://hl7.org/fhir/restful-interaction#history-system";
+
+    /// <summary>
     /// Literal for code: HistoryType
     /// </summary>
     public const string LiteralHistoryType = "history-type";
+
+    /// <summary>
+    /// Literal for code: RestfulInteractionHistoryType
+    /// </summary>
+    public const string LiteralRestfulInteractionHistoryType = "http://hl7.org/fhir/restful-interaction#history-type";
 
     /// <summary>
     /// Literal for code: Operation
@@ -211,9 +251,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOperation = "operation";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionOperation
+    /// </summary>
+    public const string LiteralRestfulInteractionOperation = "http://hl7.org/fhir/restful-interaction#operation";
+
+    /// <summary>
     /// Literal for code: Patch
     /// </summary>
     public const string LiteralPatch = "patch";
+
+    /// <summary>
+    /// Literal for code: RestfulInteractionPatch
+    /// </summary>
+    public const string LiteralRestfulInteractionPatch = "http://hl7.org/fhir/restful-interaction#patch";
 
     /// <summary>
     /// Literal for code: Read
@@ -221,9 +271,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRead = "read";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionRead
+    /// </summary>
+    public const string LiteralRestfulInteractionRead = "http://hl7.org/fhir/restful-interaction#read";
+
+    /// <summary>
     /// Literal for code: Search
     /// </summary>
     public const string LiteralSearch = "search";
+
+    /// <summary>
+    /// Literal for code: RestfulInteractionSearch
+    /// </summary>
+    public const string LiteralRestfulInteractionSearch = "http://hl7.org/fhir/restful-interaction#search";
 
     /// <summary>
     /// Literal for code: SearchSystem
@@ -231,9 +291,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSearchSystem = "search-system";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionSearchSystem
+    /// </summary>
+    public const string LiteralRestfulInteractionSearchSystem = "http://hl7.org/fhir/restful-interaction#search-system";
+
+    /// <summary>
     /// Literal for code: SearchType
     /// </summary>
     public const string LiteralSearchType = "search-type";
+
+    /// <summary>
+    /// Literal for code: RestfulInteractionSearchType
+    /// </summary>
+    public const string LiteralRestfulInteractionSearchType = "http://hl7.org/fhir/restful-interaction#search-type";
 
     /// <summary>
     /// Literal for code: Transaction
@@ -241,13 +311,68 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTransaction = "transaction";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionTransaction
+    /// </summary>
+    public const string LiteralRestfulInteractionTransaction = "http://hl7.org/fhir/restful-interaction#transaction";
+
+    /// <summary>
     /// Literal for code: Update
     /// </summary>
     public const string LiteralUpdate = "update";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionUpdate
+    /// </summary>
+    public const string LiteralRestfulInteractionUpdate = "http://hl7.org/fhir/restful-interaction#update";
+
+    /// <summary>
     /// Literal for code: Vread
     /// </summary>
     public const string LiteralVread = "vread";
+
+    /// <summary>
+    /// Literal for code: RestfulInteractionVread
+    /// </summary>
+    public const string LiteralRestfulInteractionVread = "http://hl7.org/fhir/restful-interaction#vread";
+
+    /// <summary>
+    /// Dictionary for looking up TestscriptOperationCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "batch", Batch }, 
+      { "http://hl7.org/fhir/restful-interaction#batch", Batch }, 
+      { "capabilities", Capabilities }, 
+      { "http://hl7.org/fhir/restful-interaction#capabilities", Capabilities }, 
+      { "create", Create }, 
+      { "http://hl7.org/fhir/restful-interaction#create", Create }, 
+      { "delete", Delete }, 
+      { "http://hl7.org/fhir/restful-interaction#delete", Delete }, 
+      { "history", History }, 
+      { "http://hl7.org/fhir/restful-interaction#history", History }, 
+      { "history-instance", HistoryInstance }, 
+      { "http://hl7.org/fhir/restful-interaction#history-instance", HistoryInstance }, 
+      { "history-system", HistorySystem }, 
+      { "http://hl7.org/fhir/restful-interaction#history-system", HistorySystem }, 
+      { "history-type", HistoryType }, 
+      { "http://hl7.org/fhir/restful-interaction#history-type", HistoryType }, 
+      { "operation", Operation }, 
+      { "http://hl7.org/fhir/restful-interaction#operation", Operation }, 
+      { "patch", Patch }, 
+      { "http://hl7.org/fhir/restful-interaction#patch", Patch }, 
+      { "read", Read }, 
+      { "http://hl7.org/fhir/restful-interaction#read", Read }, 
+      { "search", Search }, 
+      { "http://hl7.org/fhir/restful-interaction#search", Search }, 
+      { "search-system", SearchSystem }, 
+      { "http://hl7.org/fhir/restful-interaction#search-system", SearchSystem }, 
+      { "search-type", SearchType }, 
+      { "http://hl7.org/fhir/restful-interaction#search-type", SearchType }, 
+      { "transaction", Transaction }, 
+      { "http://hl7.org/fhir/restful-interaction#transaction", Transaction }, 
+      { "update", Update }, 
+      { "http://hl7.org/fhir/restful-interaction#update", Update }, 
+      { "vread", Vread }, 
+      { "http://hl7.org/fhir/restful-interaction#vread", Vread }, 
+    };
   };
 }

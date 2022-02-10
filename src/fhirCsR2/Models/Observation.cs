@@ -269,6 +269,14 @@ namespace fhirCsR2.Models
     public const string REPLACES = "replaces";
     public const string QUALIFIED_BY = "qualified-by";
     public const string INTERFERED_BY = "interfered-by";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "has-member",
+      "derived-from",
+      "sequel-to",
+      "replaces",
+      "qualified-by",
+      "interfered-by",
+    };
   }
   /// <summary>
   /// Component observations share the same attributes in the Observation resource as the primary observation and are always treated a part of a single observation (they are not separable).   However, the reference range for the primary observation value is not inherited by the component values and is required when appropriate for each component observation.
@@ -1358,5 +1366,14 @@ namespace fhirCsR2.Models
     public const string CANCELLED = "cancelled";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "registered",
+      "preliminary",
+      "final",
+      "amended",
+      "cancelled",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

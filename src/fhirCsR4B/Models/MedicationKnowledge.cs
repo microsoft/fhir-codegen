@@ -227,6 +227,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? IsActive { get; set; }
     /// <summary>
+    /// Extension container element for IsActive
+    /// </summary>
+    public Element _IsActive { get; set; }
+    /// <summary>
     /// The actual ingredient - either a substance (simple ingredient) or another medication.
     /// </summary>
     public CodeableConcept ItemCodeableConcept { get; set; }
@@ -266,6 +270,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("isActive", (bool)IsActive!);
       }
 
+      if (_IsActive != null)
+      {
+        writer.WritePropertyName("_isActive");
+        _IsActive.SerializeJson(writer, options);
+      }
+
       if (Strength != null)
       {
         writer.WritePropertyName("strength");
@@ -286,6 +296,11 @@ namespace fhirCsR4B.Models
       {
         case "isActive":
           IsActive = reader.GetBoolean();
+          break;
+
+        case "_isActive":
+          _IsActive = new fhirCsR4B.Models.Element();
+          _IsActive.DeserializeJson(ref reader, options);
           break;
 
         case "itemCodeableConcept":
@@ -1385,6 +1400,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool Allowed { get; set; }
     /// <summary>
+    /// Extension container element for Allowed
+    /// </summary>
+    public Element _Allowed { get; set; }
+    /// <summary>
     /// Specifies the type of substitution allowed.
     /// </summary>
     public CodeableConcept Type { get; set; }
@@ -1407,6 +1426,12 @@ namespace fhirCsR4B.Models
 
       writer.WriteBoolean("allowed", Allowed);
 
+      if (_Allowed != null)
+      {
+        writer.WritePropertyName("_allowed");
+        _Allowed.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -1421,6 +1446,11 @@ namespace fhirCsR4B.Models
       {
         case "allowed":
           Allowed = reader.GetBoolean();
+          break;
+
+        case "_allowed":
+          _Allowed = new fhirCsR4B.Models.Element();
+          _Allowed.DeserializeJson(ref reader, options);
           break;
 
         case "type":
@@ -2870,5 +2900,10 @@ namespace fhirCsR4B.Models
     public const string ACTIVE = "active";
     public const string INACTIVE = "inactive";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "inactive",
+      "entered-in-error",
+    };
   }
 }

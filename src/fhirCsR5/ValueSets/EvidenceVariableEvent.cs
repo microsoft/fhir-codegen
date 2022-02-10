@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHospitalAdmission = "hospital-admission";
 
     /// <summary>
+    /// Literal for code: EvidenceVariableEventHospitalAdmission
+    /// </summary>
+    public const string LiteralEvidenceVariableEventHospitalAdmission = "http://hl7.org/fhir/evidence-variable-event#hospital-admission";
+
+    /// <summary>
     /// Literal for code: HospitalDischarge
     /// </summary>
     public const string LiteralHospitalDischarge = "hospital-discharge";
+
+    /// <summary>
+    /// Literal for code: EvidenceVariableEventHospitalDischarge
+    /// </summary>
+    public const string LiteralEvidenceVariableEventHospitalDischarge = "http://hl7.org/fhir/evidence-variable-event#hospital-discharge";
 
     /// <summary>
     /// Literal for code: OperativeProcedure
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOperativeProcedure = "operative-procedure";
 
     /// <summary>
+    /// Literal for code: EvidenceVariableEventOperativeProcedure
+    /// </summary>
+    public const string LiteralEvidenceVariableEventOperativeProcedure = "http://hl7.org/fhir/evidence-variable-event#operative-procedure";
+
+    /// <summary>
     /// Literal for code: StudyStart
     /// </summary>
     public const string LiteralStudyStart = "study-start";
+
+    /// <summary>
+    /// Literal for code: EvidenceVariableEventStudyStart
+    /// </summary>
+    public const string LiteralEvidenceVariableEventStudyStart = "http://hl7.org/fhir/evidence-variable-event#study-start";
+
+    /// <summary>
+    /// Dictionary for looking up EvidenceVariableEvent Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "hospital-admission", HospitalAdmission }, 
+      { "http://hl7.org/fhir/evidence-variable-event#hospital-admission", HospitalAdmission }, 
+      { "hospital-discharge", HospitalDischarge }, 
+      { "http://hl7.org/fhir/evidence-variable-event#hospital-discharge", HospitalDischarge }, 
+      { "operative-procedure", OperativeProcedure }, 
+      { "http://hl7.org/fhir/evidence-variable-event#operative-procedure", OperativeProcedure }, 
+      { "study-start", StudyStart }, 
+      { "http://hl7.org/fhir/evidence-variable-event#study-start", StudyStart }, 
+    };
   };
 }

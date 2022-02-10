@@ -45,13 +45,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralHighRisk = "CRITH";
 
     /// <summary>
+    /// Literal for code: AllergyIntoleranceCriticalityHighRisk
+    /// </summary>
+    public const string LiteralAllergyIntoleranceCriticalityHighRisk = "http://hl7.org/fhir/allergy-intolerance-criticality#CRITH";
+
+    /// <summary>
     /// Literal for code: LowRisk
     /// </summary>
     public const string LiteralLowRisk = "CRITL";
 
     /// <summary>
+    /// Literal for code: AllergyIntoleranceCriticalityLowRisk
+    /// </summary>
+    public const string LiteralAllergyIntoleranceCriticalityLowRisk = "http://hl7.org/fhir/allergy-intolerance-criticality#CRITL";
+
+    /// <summary>
     /// Literal for code: UnableToDetermine
     /// </summary>
     public const string LiteralUnableToDetermine = "CRITU";
+
+    /// <summary>
+    /// Literal for code: AllergyIntoleranceCriticalityUnableToDetermine
+    /// </summary>
+    public const string LiteralAllergyIntoleranceCriticalityUnableToDetermine = "http://hl7.org/fhir/allergy-intolerance-criticality#CRITU";
+
+    /// <summary>
+    /// Dictionary for looking up AllergyIntoleranceCriticality Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "CRITH", HighRisk }, 
+      { "http://hl7.org/fhir/allergy-intolerance-criticality#CRITH", HighRisk }, 
+      { "CRITL", LowRisk }, 
+      { "http://hl7.org/fhir/allergy-intolerance-criticality#CRITL", LowRisk }, 
+      { "CRITU", UnableToDetermine }, 
+      { "http://hl7.org/fhir/allergy-intolerance-criticality#CRITU", UnableToDetermine }, 
+    };
   };
 }

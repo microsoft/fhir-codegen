@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: SubscriptionStateActive
+    /// </summary>
+    public const string LiteralSubscriptionStateActive = "http://terminology.hl7.org/CodeSystem/subscription-state#active";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: SubscriptionStateEnteredInError
+    /// </summary>
+    public const string LiteralSubscriptionStateEnteredInError = "http://terminology.hl7.org/CodeSystem/subscription-state#entered-in-error";
 
     /// <summary>
     /// Literal for code: Error
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralError = "error";
 
     /// <summary>
+    /// Literal for code: SubscriptionStateError
+    /// </summary>
+    public const string LiteralSubscriptionStateError = "http://terminology.hl7.org/CodeSystem/subscription-state#error";
+
+    /// <summary>
     /// Literal for code: Off
     /// </summary>
     public const string LiteralOff = "off";
 
     /// <summary>
+    /// Literal for code: SubscriptionStateOff
+    /// </summary>
+    public const string LiteralSubscriptionStateOff = "http://terminology.hl7.org/CodeSystem/subscription-state#off";
+
+    /// <summary>
     /// Literal for code: Requested
     /// </summary>
     public const string LiteralRequested = "requested";
+
+    /// <summary>
+    /// Literal for code: SubscriptionStateRequested
+    /// </summary>
+    public const string LiteralSubscriptionStateRequested = "http://terminology.hl7.org/CodeSystem/subscription-state#requested";
+
+    /// <summary>
+    /// Dictionary for looking up SubscriptionState Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-state#active", Active }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-state#entered-in-error", EnteredInError }, 
+      { "error", Error }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-state#error", Error }, 
+      { "off", Off }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-state#off", Off }, 
+      { "requested", Requested }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-state#requested", Requested }, 
+    };
   };
 }

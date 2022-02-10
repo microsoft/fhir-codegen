@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComplete = "complete";
 
     /// <summary>
+    /// Literal for code: ProcessOutcomeComplete
+    /// </summary>
+    public const string LiteralProcessOutcomeComplete = "http://hl7.org/fhir/processoutcomecodes#complete";
+
+    /// <summary>
     /// Literal for code: Error
     /// </summary>
     public const string LiteralError = "error";
 
     /// <summary>
+    /// Literal for code: ProcessOutcomeError
+    /// </summary>
+    public const string LiteralProcessOutcomeError = "http://hl7.org/fhir/processoutcomecodes#error";
+
+    /// <summary>
     /// Literal for code: Pended
     /// </summary>
     public const string LiteralPended = "pended";
+
+    /// <summary>
+    /// Literal for code: ProcessOutcomePended
+    /// </summary>
+    public const string LiteralProcessOutcomePended = "http://hl7.org/fhir/processoutcomecodes#pended";
+
+    /// <summary>
+    /// Dictionary for looking up ProcessOutcome Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", Complete }, 
+      { "http://hl7.org/fhir/processoutcomecodes#complete", Complete }, 
+      { "error", Error }, 
+      { "http://hl7.org/fhir/processoutcomecodes#error", Error }, 
+      { "pended", Pended }, 
+      { "http://hl7.org/fhir/processoutcomecodes#pended", Pended }, 
+    };
   };
 }

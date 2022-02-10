@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRiskAdjustmentFactor = "risk-adjustment-factor";
 
     /// <summary>
+    /// Literal for code: MeasureDataUsageRiskAdjustmentFactor
+    /// </summary>
+    public const string LiteralMeasureDataUsageRiskAdjustmentFactor = "http://terminology.hl7.org/CodeSystem/measure-data-usage#risk-adjustment-factor";
+
+    /// <summary>
     /// Literal for code: SupplementalData
     /// </summary>
     public const string LiteralSupplementalData = "supplemental-data";
+
+    /// <summary>
+    /// Literal for code: MeasureDataUsageSupplementalData
+    /// </summary>
+    public const string LiteralMeasureDataUsageSupplementalData = "http://terminology.hl7.org/CodeSystem/measure-data-usage#supplemental-data";
+
+    /// <summary>
+    /// Dictionary for looking up MeasureDataUsage Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "risk-adjustment-factor", RiskAdjustmentFactor }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-data-usage#risk-adjustment-factor", RiskAdjustmentFactor }, 
+      { "supplemental-data", SupplementalData }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-data-usage#supplemental-data", SupplementalData }, 
+    };
   };
 }

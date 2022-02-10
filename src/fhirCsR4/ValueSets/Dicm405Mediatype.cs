@@ -108,9 +108,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFilm = "110010";
 
     /// <summary>
+    /// Literal for code: DicomDcimFilm
+    /// </summary>
+    public const string LiteralDicomDcimFilm = "http://dicom.nema.org/resources/ontology/DCM#110010";
+
+    /// <summary>
     /// Literal for code: USBDiskEmulation
     /// </summary>
     public const string LiteralUSBDiskEmulation = "110030";
+
+    /// <summary>
+    /// Literal for code: DicomDcimUSBDiskEmulation
+    /// </summary>
+    public const string LiteralDicomDcimUSBDiskEmulation = "http://dicom.nema.org/resources/ontology/DCM#110030";
 
     /// <summary>
     /// Literal for code: Email
@@ -118,9 +128,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmail = "110031";
 
     /// <summary>
+    /// Literal for code: DicomDcimEmail
+    /// </summary>
+    public const string LiteralDicomDcimEmail = "http://dicom.nema.org/resources/ontology/DCM#110031";
+
+    /// <summary>
     /// Literal for code: CD
     /// </summary>
     public const string LiteralCD = "110032";
+
+    /// <summary>
+    /// Literal for code: DicomDcimCD
+    /// </summary>
+    public const string LiteralDicomDcimCD = "http://dicom.nema.org/resources/ontology/DCM#110032";
 
     /// <summary>
     /// Literal for code: DVD
@@ -128,9 +148,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDVD = "110033";
 
     /// <summary>
+    /// Literal for code: DicomDcimDVD
+    /// </summary>
+    public const string LiteralDicomDcimDVD = "http://dicom.nema.org/resources/ontology/DCM#110033";
+
+    /// <summary>
     /// Literal for code: CompactFlash
     /// </summary>
     public const string LiteralCompactFlash = "110034";
+
+    /// <summary>
+    /// Literal for code: DicomDcimCompactFlash
+    /// </summary>
+    public const string LiteralDicomDcimCompactFlash = "http://dicom.nema.org/resources/ontology/DCM#110034";
 
     /// <summary>
     /// Literal for code: MultiMediaCard
@@ -138,9 +168,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMultiMediaCard = "110035";
 
     /// <summary>
+    /// Literal for code: DicomDcimMultiMediaCard
+    /// </summary>
+    public const string LiteralDicomDcimMultiMediaCard = "http://dicom.nema.org/resources/ontology/DCM#110035";
+
+    /// <summary>
     /// Literal for code: SecureDigitalCard
     /// </summary>
     public const string LiteralSecureDigitalCard = "110036";
+
+    /// <summary>
+    /// Literal for code: DicomDcimSecureDigitalCard
+    /// </summary>
+    public const string LiteralDicomDcimSecureDigitalCard = "http://dicom.nema.org/resources/ontology/DCM#110036";
 
     /// <summary>
     /// Literal for code: URI
@@ -148,8 +188,44 @@ namespace fhirCsR4.ValueSets
     public const string LiteralURI = "110037";
 
     /// <summary>
+    /// Literal for code: DicomDcimURI
+    /// </summary>
+    public const string LiteralDicomDcimURI = "http://dicom.nema.org/resources/ontology/DCM#110037";
+
+    /// <summary>
     /// Literal for code: PaperDocument
     /// </summary>
     public const string LiteralPaperDocument = "110038";
+
+    /// <summary>
+    /// Literal for code: DicomDcimPaperDocument
+    /// </summary>
+    public const string LiteralDicomDcimPaperDocument = "http://dicom.nema.org/resources/ontology/DCM#110038";
+
+    /// <summary>
+    /// Dictionary for looking up Dicm405Mediatype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "110010", Film }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110010", Film }, 
+      { "110030", USBDiskEmulation }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110030", USBDiskEmulation }, 
+      { "110031", Email }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110031", Email }, 
+      { "110032", CD }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110032", CD }, 
+      { "110033", DVD }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110033", DVD }, 
+      { "110034", CompactFlash }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110034", CompactFlash }, 
+      { "110035", MultiMediaCard }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110035", MultiMediaCard }, 
+      { "110036", SecureDigitalCard }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110036", SecureDigitalCard }, 
+      { "110037", URI }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110037", URI }, 
+      { "110038", PaperDocument }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110038", PaperDocument }, 
+    };
   };
 }

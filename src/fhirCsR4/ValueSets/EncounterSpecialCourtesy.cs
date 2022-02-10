@@ -79,9 +79,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExtendedCourtesy_v3_EncounterSpecialCourtesy = "EXT";
 
     /// <summary>
+    /// Literal for code: V3EncounterSpecialCourtesyExtendedCourtesy_v3_EncounterSpecialCourtesy
+    /// </summary>
+    public const string LiteralV3EncounterSpecialCourtesyExtendedCourtesy_v3_EncounterSpecialCourtesy = "http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy#EXT";
+
+    /// <summary>
     /// Literal for code: NormalCourtesy_v3_EncounterSpecialCourtesy
     /// </summary>
     public const string LiteralNormalCourtesy_v3_EncounterSpecialCourtesy = "NRM";
+
+    /// <summary>
+    /// Literal for code: V3EncounterSpecialCourtesyNormalCourtesy_v3_EncounterSpecialCourtesy
+    /// </summary>
+    public const string LiteralV3EncounterSpecialCourtesyNormalCourtesy_v3_EncounterSpecialCourtesy = "http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy#NRM";
 
     /// <summary>
     /// Literal for code: ProfessionalCourtesy_v3_EncounterSpecialCourtesy
@@ -89,9 +99,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProfessionalCourtesy_v3_EncounterSpecialCourtesy = "PRF";
 
     /// <summary>
+    /// Literal for code: V3EncounterSpecialCourtesyProfessionalCourtesy_v3_EncounterSpecialCourtesy
+    /// </summary>
+    public const string LiteralV3EncounterSpecialCourtesyProfessionalCourtesy_v3_EncounterSpecialCourtesy = "http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy#PRF";
+
+    /// <summary>
     /// Literal for code: Staff_v3_EncounterSpecialCourtesy
     /// </summary>
     public const string LiteralStaff_v3_EncounterSpecialCourtesy = "STF";
+
+    /// <summary>
+    /// Literal for code: V3EncounterSpecialCourtesyStaff_v3_EncounterSpecialCourtesy
+    /// </summary>
+    public const string LiteralV3EncounterSpecialCourtesyStaff_v3_EncounterSpecialCourtesy = "http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy#STF";
 
     /// <summary>
     /// Literal for code: Unknown_v3_NullFlavor
@@ -99,8 +119,36 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnknown_v3_NullFlavor = "UNK";
 
     /// <summary>
+    /// Literal for code: V3NullFlavorUnknown_v3_NullFlavor
+    /// </summary>
+    public const string LiteralV3NullFlavorUnknown_v3_NullFlavor = "http://terminology.hl7.org/CodeSystem/v3-NullFlavor#UNK";
+
+    /// <summary>
     /// Literal for code: VeryImportantPerson_v3_EncounterSpecialCourtesy
     /// </summary>
     public const string LiteralVeryImportantPerson_v3_EncounterSpecialCourtesy = "VIP";
+
+    /// <summary>
+    /// Literal for code: V3EncounterSpecialCourtesyVeryImportantPerson_v3_EncounterSpecialCourtesy
+    /// </summary>
+    public const string LiteralV3EncounterSpecialCourtesyVeryImportantPerson_v3_EncounterSpecialCourtesy = "http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy#VIP";
+
+    /// <summary>
+    /// Dictionary for looking up EncounterSpecialCourtesy Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "EXT", ExtendedCourtesy_v3_EncounterSpecialCourtesy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy#EXT", ExtendedCourtesy_v3_EncounterSpecialCourtesy }, 
+      { "NRM", NormalCourtesy_v3_EncounterSpecialCourtesy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy#NRM", NormalCourtesy_v3_EncounterSpecialCourtesy }, 
+      { "PRF", ProfessionalCourtesy_v3_EncounterSpecialCourtesy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy#PRF", ProfessionalCourtesy_v3_EncounterSpecialCourtesy }, 
+      { "STF", Staff_v3_EncounterSpecialCourtesy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy#STF", Staff_v3_EncounterSpecialCourtesy }, 
+      { "UNK", Unknown_v3_NullFlavor }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-NullFlavor#UNK", Unknown_v3_NullFlavor }, 
+      { "VIP", VeryImportantPerson_v3_EncounterSpecialCourtesy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy#VIP", VeryImportantPerson_v3_EncounterSpecialCourtesy }, 
+    };
   };
 }

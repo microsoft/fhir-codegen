@@ -217,5 +217,11 @@ namespace fhirCsR5.Models
     public const string TEXT_FHIRPATH = "text/fhirpath";
     public const string TEXT_X_FHIR_QUERY = "text/x-fhir-query";
     public const string TEXT_CQL_IDENTIFIER = "text/cql.identifier";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "text/cql",
+      "text/fhirpath",
+      "text/x-fhir-query",
+      "text/cql.identifier",
+    };
   }
 }

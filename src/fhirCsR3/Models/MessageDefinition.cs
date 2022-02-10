@@ -317,6 +317,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// Identifies the resource (or resources) that are being addressed by the event.  For example, the Encounter for an admit message or two Account records for a merge.
     /// </summary>
     public List<MessageDefinitionFocus> Focus { get; set; }
@@ -364,6 +368,10 @@ namespace fhirCsR3.Models
     /// Indicates whether a response is required for this message.
     /// </summary>
     public bool? ResponseRequired { get; set; }
+    /// <summary>
+    /// Extension container element for ResponseRequired
+    /// </summary>
+    public Element _ResponseRequired { get; set; }
     /// <summary>
     /// Allows filtering of message definitions that are appropriate for use vs. not.  
     /// This is labeled as "Is Modifier" because applications should not use a retired message definition without due consideration.
@@ -482,6 +490,12 @@ namespace fhirCsR3.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -645,6 +659,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("responseRequired", (bool)ResponseRequired!);
       }
 
+      if (_ResponseRequired != null)
+      {
+        writer.WritePropertyName("_responseRequired");
+        _ResponseRequired.SerializeJson(writer, options);
+      }
+
       if ((AllowedResponse != null) && (AllowedResponse.Count != 0))
       {
         writer.WritePropertyName("allowedResponse");
@@ -772,6 +792,11 @@ namespace fhirCsR3.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR3.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "focus":
@@ -918,6 +943,11 @@ namespace fhirCsR3.Models
           ResponseRequired = reader.GetBoolean();
           break;
 
+        case "_responseRequired":
+          _ResponseRequired = new fhirCsR3.Models.Element();
+          _ResponseRequired.DeserializeJson(ref reader, options);
+          break;
+
         case "status":
           Status = reader.GetString();
           break;
@@ -1019,6 +1049,11 @@ namespace fhirCsR3.Models
     public const string CONSEQUENCE = "Consequence";
     public const string CURRENCY = "Currency";
     public const string NOTIFICATION = "Notification";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "Consequence",
+      "Currency",
+      "Notification",
+    };
   }
   /// <summary>
   /// Code Values for the MessageDefinition.status field
@@ -1028,5 +1063,11 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAssetCollection = "asset-collection";
 
     /// <summary>
+    /// Literal for code: LibraryTypeAssetCollection
+    /// </summary>
+    public const string LiteralLibraryTypeAssetCollection = "http://hl7.org/fhir/library-type#asset-collection";
+
+    /// <summary>
     /// Literal for code: LogicLibrary
     /// </summary>
     public const string LiteralLogicLibrary = "logic-library";
+
+    /// <summary>
+    /// Literal for code: LibraryTypeLogicLibrary
+    /// </summary>
+    public const string LiteralLibraryTypeLogicLibrary = "http://hl7.org/fhir/library-type#logic-library";
 
     /// <summary>
     /// Literal for code: ModelDefinition
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralModelDefinition = "model-definition";
 
     /// <summary>
+    /// Literal for code: LibraryTypeModelDefinition
+    /// </summary>
+    public const string LiteralLibraryTypeModelDefinition = "http://hl7.org/fhir/library-type#model-definition";
+
+    /// <summary>
     /// Literal for code: ModuleDefinition
     /// </summary>
     public const string LiteralModuleDefinition = "module-definition";
+
+    /// <summary>
+    /// Literal for code: LibraryTypeModuleDefinition
+    /// </summary>
+    public const string LiteralLibraryTypeModuleDefinition = "http://hl7.org/fhir/library-type#module-definition";
+
+    /// <summary>
+    /// Dictionary for looking up LibraryType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "asset-collection", AssetCollection }, 
+      { "http://hl7.org/fhir/library-type#asset-collection", AssetCollection }, 
+      { "logic-library", LogicLibrary }, 
+      { "http://hl7.org/fhir/library-type#logic-library", LogicLibrary }, 
+      { "model-definition", ModelDefinition }, 
+      { "http://hl7.org/fhir/library-type#model-definition", ModelDefinition }, 
+      { "module-definition", ModuleDefinition }, 
+      { "http://hl7.org/fhir/library-type#module-definition", ModuleDefinition }, 
+    };
   };
 }

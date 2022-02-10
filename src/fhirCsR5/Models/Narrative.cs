@@ -133,5 +133,11 @@ namespace fhirCsR5.Models
     public const string EXTENSIONS = "extensions";
     public const string ADDITIONAL = "additional";
     public const string EMPTY = "empty";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "generated",
+      "extensions",
+      "additional",
+      "empty",
+    };
   }
 }

@@ -81,9 +81,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAborted = "aborted";
 
     /// <summary>
+    /// Literal for code: EventStatusAborted
+    /// </summary>
+    public const string LiteralEventStatusAborted = "http://hl7.org/fhir/event-status#aborted";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: EventStatusCompleted
+    /// </summary>
+    public const string LiteralEventStatusCompleted = "http://hl7.org/fhir/event-status#completed";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -91,9 +101,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: EventStatusEnteredInError
+    /// </summary>
+    public const string LiteralEventStatusEnteredInError = "http://hl7.org/fhir/event-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: InProgress
     /// </summary>
     public const string LiteralInProgress = "in-progress";
+
+    /// <summary>
+    /// Literal for code: EventStatusInProgress
+    /// </summary>
+    public const string LiteralEventStatusInProgress = "http://hl7.org/fhir/event-status#in-progress";
 
     /// <summary>
     /// Literal for code: Preparation
@@ -101,13 +121,48 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPreparation = "preparation";
 
     /// <summary>
+    /// Literal for code: EventStatusPreparation
+    /// </summary>
+    public const string LiteralEventStatusPreparation = "http://hl7.org/fhir/event-status#preparation";
+
+    /// <summary>
     /// Literal for code: Suspended
     /// </summary>
     public const string LiteralSuspended = "suspended";
 
     /// <summary>
+    /// Literal for code: EventStatusSuspended
+    /// </summary>
+    public const string LiteralEventStatusSuspended = "http://hl7.org/fhir/event-status#suspended";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: EventStatusUnknown
+    /// </summary>
+    public const string LiteralEventStatusUnknown = "http://hl7.org/fhir/event-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up EventStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "aborted", Aborted }, 
+      { "http://hl7.org/fhir/event-status#aborted", Aborted }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/event-status#completed", Completed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/event-status#entered-in-error", EnteredInError }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/event-status#in-progress", InProgress }, 
+      { "preparation", Preparation }, 
+      { "http://hl7.org/fhir/event-status#preparation", Preparation }, 
+      { "suspended", Suspended }, 
+      { "http://hl7.org/fhir/event-status#suspended", Suspended }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/event-status#unknown", Unknown }, 
+    };
   };
 }

@@ -81,9 +81,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAbsoluteRiskDifference = "absolute-ARD";
 
     /// <summary>
+    /// Literal for code: EffectEstimateTypeAbsoluteRiskDifference
+    /// </summary>
+    public const string LiteralEffectEstimateTypeAbsoluteRiskDifference = "http://terminology.hl7.org/CodeSystem/effect-estimate-type#absolute-ARD";
+
+    /// <summary>
     /// Literal for code: MeanDifference
     /// </summary>
     public const string LiteralMeanDifference = "absolute-MeanDiff";
+
+    /// <summary>
+    /// Literal for code: EffectEstimateTypeMeanDifference
+    /// </summary>
+    public const string LiteralEffectEstimateTypeMeanDifference = "http://terminology.hl7.org/CodeSystem/effect-estimate-type#absolute-MeanDiff";
 
     /// <summary>
     /// Literal for code: MedianDifference
@@ -91,9 +101,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedianDifference = "absolute-MedianDiff";
 
     /// <summary>
+    /// Literal for code: EffectEstimateTypeMedianDifference
+    /// </summary>
+    public const string LiteralEffectEstimateTypeMedianDifference = "http://terminology.hl7.org/CodeSystem/effect-estimate-type#absolute-MedianDiff";
+
+    /// <summary>
     /// Literal for code: StandardizedMeanDifference
     /// </summary>
     public const string LiteralStandardizedMeanDifference = "absolute-SMD";
+
+    /// <summary>
+    /// Literal for code: EffectEstimateTypeStandardizedMeanDifference
+    /// </summary>
+    public const string LiteralEffectEstimateTypeStandardizedMeanDifference = "http://terminology.hl7.org/CodeSystem/effect-estimate-type#absolute-SMD";
 
     /// <summary>
     /// Literal for code: HazardRatio
@@ -101,13 +121,48 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHazardRatio = "relative-HR";
 
     /// <summary>
+    /// Literal for code: EffectEstimateTypeHazardRatio
+    /// </summary>
+    public const string LiteralEffectEstimateTypeHazardRatio = "http://terminology.hl7.org/CodeSystem/effect-estimate-type#relative-HR";
+
+    /// <summary>
     /// Literal for code: OddsRatio
     /// </summary>
     public const string LiteralOddsRatio = "relative-OR";
 
     /// <summary>
+    /// Literal for code: EffectEstimateTypeOddsRatio
+    /// </summary>
+    public const string LiteralEffectEstimateTypeOddsRatio = "http://terminology.hl7.org/CodeSystem/effect-estimate-type#relative-OR";
+
+    /// <summary>
     /// Literal for code: RelativeRisk
     /// </summary>
     public const string LiteralRelativeRisk = "relative-RR";
+
+    /// <summary>
+    /// Literal for code: EffectEstimateTypeRelativeRisk
+    /// </summary>
+    public const string LiteralEffectEstimateTypeRelativeRisk = "http://terminology.hl7.org/CodeSystem/effect-estimate-type#relative-RR";
+
+    /// <summary>
+    /// Dictionary for looking up EffectEstimateType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "absolute-ARD", AbsoluteRiskDifference }, 
+      { "http://terminology.hl7.org/CodeSystem/effect-estimate-type#absolute-ARD", AbsoluteRiskDifference }, 
+      { "absolute-MeanDiff", MeanDifference }, 
+      { "http://terminology.hl7.org/CodeSystem/effect-estimate-type#absolute-MeanDiff", MeanDifference }, 
+      { "absolute-MedianDiff", MedianDifference }, 
+      { "http://terminology.hl7.org/CodeSystem/effect-estimate-type#absolute-MedianDiff", MedianDifference }, 
+      { "absolute-SMD", StandardizedMeanDifference }, 
+      { "http://terminology.hl7.org/CodeSystem/effect-estimate-type#absolute-SMD", StandardizedMeanDifference }, 
+      { "relative-HR", HazardRatio }, 
+      { "http://terminology.hl7.org/CodeSystem/effect-estimate-type#relative-HR", HazardRatio }, 
+      { "relative-OR", OddsRatio }, 
+      { "http://terminology.hl7.org/CodeSystem/effect-estimate-type#relative-OR", OddsRatio }, 
+      { "relative-RR", RelativeRisk }, 
+      { "http://terminology.hl7.org/CodeSystem/effect-estimate-type#relative-RR", RelativeRisk }, 
+    };
   };
 }

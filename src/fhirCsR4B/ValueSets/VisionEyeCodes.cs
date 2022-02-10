@@ -36,8 +36,28 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLeftEye = "left";
 
     /// <summary>
+    /// Literal for code: VisionEyeCodesLeftEye
+    /// </summary>
+    public const string LiteralVisionEyeCodesLeftEye = "http://hl7.org/fhir/vision-eye-codes#left";
+
+    /// <summary>
     /// Literal for code: RightEye
     /// </summary>
     public const string LiteralRightEye = "right";
+
+    /// <summary>
+    /// Literal for code: VisionEyeCodesRightEye
+    /// </summary>
+    public const string LiteralVisionEyeCodesRightEye = "http://hl7.org/fhir/vision-eye-codes#right";
+
+    /// <summary>
+    /// Dictionary for looking up VisionEyeCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "left", LeftEye }, 
+      { "http://hl7.org/fhir/vision-eye-codes#left", LeftEye }, 
+      { "right", RightEye }, 
+      { "http://hl7.org/fhir/vision-eye-codes#right", RightEye }, 
+    };
   };
 }

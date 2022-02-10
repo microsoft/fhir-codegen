@@ -440,5 +440,13 @@ namespace fhirCsR3.Models
     public const string IN_PROGRESS = "in-progress";
     public const string FAILURE = "failure";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "success",
+      "data-requested",
+      "data-required",
+      "in-progress",
+      "failure",
+      "entered-in-error",
+    };
   }
 }

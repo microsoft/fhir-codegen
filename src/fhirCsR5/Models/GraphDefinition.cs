@@ -218,6 +218,13 @@ namespace fhirCsR5.Models
     public const string RELATEDPERSON = "RelatedPerson";
     public const string PRACTITIONER = "Practitioner";
     public const string DEVICE = "Device";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "Patient",
+      "Encounter",
+      "RelatedPerson",
+      "Practitioner",
+      "Device",
+    };
   }
   /// <summary>
   /// Code Values for the GraphDefinition.link.target.compartment.rule field
@@ -227,6 +234,12 @@ namespace fhirCsR5.Models
     public const string MATCHING = "matching";
     public const string DIFFERENT = "different";
     public const string CUSTOM = "custom";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "identical",
+      "matching",
+      "different",
+      "custom",
+    };
   }
   /// <summary>
   /// Code Values for the GraphDefinition.link.target.compartment.use field
@@ -234,6 +247,10 @@ namespace fhirCsR5.Models
   public static class GraphDefinitionLinkTargetCompartmentUseCodes {
     public const string CONDITION = "condition";
     public const string REQUIREMENT = "requirement";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "condition",
+      "requirement",
+    };
   }
   /// <summary>
   /// Potential target for the link.
@@ -492,6 +509,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public int? Min { get; set; }
     /// <summary>
+    /// Extension container element for Min
+    /// </summary>
+    public Element _Min { get; set; }
+    /// <summary>
     /// The path expression cannot contain a resolve() function. If there is no path, the link is a reverse lookup, using target.params. If the path is "*" then this means all references in the resource.
     /// </summary>
     public string Path { get; set; }
@@ -547,6 +568,12 @@ namespace fhirCsR5.Models
       if (Min != null)
       {
         writer.WriteNumber("min", (int)Min!);
+      }
+
+      if (_Min != null)
+      {
+        writer.WritePropertyName("_min");
+        _Min.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Max))
@@ -616,6 +643,11 @@ namespace fhirCsR5.Models
 
         case "min":
           Min = reader.GetInt32();
+          break;
+
+        case "_min":
+          _Min = new fhirCsR5.Models.Element();
+          _Min.DeserializeJson(ref reader, options);
           break;
 
         case "path":
@@ -727,6 +759,10 @@ namespace fhirCsR5.Models
     /// Allows filtering of graph definitions that are appropriate for use versus not.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// It may be possible for the graph definition to be used in jurisdictions other than those for which it was originally designed or intended.
     /// </summary>
@@ -869,6 +905,12 @@ namespace fhirCsR5.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -1048,6 +1090,11 @@ namespace fhirCsR5.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR5.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "jurisdiction":
@@ -1242,5 +1289,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

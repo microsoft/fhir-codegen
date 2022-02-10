@@ -423,9 +423,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralApply = "apply";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesApply
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesApply = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#apply";
+
+    /// <summary>
     /// Literal for code: Batch
     /// </summary>
     public const string LiteralBatch = "batch";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesBatch
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesBatch = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#batch";
 
     /// <summary>
     /// Literal for code: Capabilities
@@ -433,9 +443,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCapabilities = "capabilities";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesCapabilities
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesCapabilities = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#capabilities";
+
+    /// <summary>
     /// Literal for code: Closure
     /// </summary>
     public const string LiteralClosure = "closure";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesClosure
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesClosure = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#closure";
 
     /// <summary>
     /// Literal for code: Conforms
@@ -443,9 +463,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConforms = "conforms";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesConforms
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesConforms = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#conforms";
+
+    /// <summary>
     /// Literal for code: Create
     /// </summary>
     public const string LiteralCreate = "create";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesCreate
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesCreate = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#create";
 
     /// <summary>
     /// Literal for code: DataRequirements
@@ -453,9 +483,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDataRequirements = "data-requirements";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDataRequirements
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDataRequirements = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#data-requirements";
+
+    /// <summary>
     /// Literal for code: Delete
     /// </summary>
     public const string LiteralDelete = "delete";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDelete
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDelete = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#delete";
 
     /// <summary>
     /// Literal for code: DeleteCondMultiple
@@ -463,9 +503,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeleteCondMultiple = "deleteCondMultiple";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDeleteCondMultiple
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDeleteCondMultiple = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#deleteCondMultiple";
+
+    /// <summary>
     /// Literal for code: DeleteCondSingle
     /// </summary>
     public const string LiteralDeleteCondSingle = "deleteCondSingle";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDeleteCondSingle
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDeleteCondSingle = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#deleteCondSingle";
 
     /// <summary>
     /// Literal for code: Document
@@ -473,9 +523,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDocument = "document";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDocument
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDocument = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#document";
+
+    /// <summary>
     /// Literal for code: Evaluate
     /// </summary>
     public const string LiteralEvaluate = "evaluate";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesEvaluate
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesEvaluate = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#evaluate";
 
     /// <summary>
     /// Literal for code: EvaluateMeasure
@@ -483,9 +543,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEvaluateMeasure = "evaluate-measure";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesEvaluateMeasure
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesEvaluateMeasure = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#evaluate-measure";
+
+    /// <summary>
     /// Literal for code: Everything
     /// </summary>
     public const string LiteralEverything = "everything";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesEverything
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesEverything = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#everything";
 
     /// <summary>
     /// Literal for code: Expand
@@ -493,9 +563,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExpand = "expand";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesExpand
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesExpand = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#expand";
+
+    /// <summary>
     /// Literal for code: Find
     /// </summary>
     public const string LiteralFind = "find";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesFind
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesFind = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#find";
 
     /// <summary>
     /// Literal for code: FindMatches
@@ -503,9 +583,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFindMatches = "find-matches";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesFindMatches
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesFindMatches = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#find-matches";
+
+    /// <summary>
     /// Literal for code: Graphql
     /// </summary>
     public const string LiteralGraphql = "graphql";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesGraphql
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesGraphql = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#graphql";
 
     /// <summary>
     /// Literal for code: History
@@ -513,9 +603,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistory = "history";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesHistory
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesHistory = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#history";
+
+    /// <summary>
     /// Literal for code: Implements
     /// </summary>
     public const string LiteralImplements = "implements";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesImplements
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesImplements = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#implements";
 
     /// <summary>
     /// Literal for code: Lastn
@@ -523,9 +623,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLastn = "lastn";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesLastn
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesLastn = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#lastn";
+
+    /// <summary>
     /// Literal for code: Lookup
     /// </summary>
     public const string LiteralLookup = "lookup";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesLookup
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesLookup = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#lookup";
 
     /// <summary>
     /// Literal for code: Match
@@ -533,9 +643,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMatch = "match";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesMatch
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesMatch = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#match";
+
+    /// <summary>
     /// Literal for code: Meta
     /// </summary>
     public const string LiteralMeta = "meta";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesMeta
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesMeta = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#meta";
 
     /// <summary>
     /// Literal for code: MetaAdd
@@ -543,9 +663,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMetaAdd = "meta-add";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesMetaAdd
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesMetaAdd = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#meta-add";
+
+    /// <summary>
     /// Literal for code: MetaDelete
     /// </summary>
     public const string LiteralMetaDelete = "meta-delete";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesMetaDelete
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesMetaDelete = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#meta-delete";
 
     /// <summary>
     /// Literal for code: Patch
@@ -553,9 +683,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPatch = "patch";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesPatch
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesPatch = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#patch";
+
+    /// <summary>
     /// Literal for code: Populate
     /// </summary>
     public const string LiteralPopulate = "populate";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesPopulate
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesPopulate = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#populate";
 
     /// <summary>
     /// Literal for code: Populatehtml
@@ -563,9 +703,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPopulatehtml = "populatehtml";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesPopulatehtml
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesPopulatehtml = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#populatehtml";
+
+    /// <summary>
     /// Literal for code: Populatelink
     /// </summary>
     public const string LiteralPopulatelink = "populatelink";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesPopulatelink
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesPopulatelink = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#populatelink";
 
     /// <summary>
     /// Literal for code: ProcessMessage
@@ -573,9 +723,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProcessMessage = "process-message";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesProcessMessage
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesProcessMessage = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#process-message";
+
+    /// <summary>
     /// Literal for code: Questionnaire
     /// </summary>
     public const string LiteralQuestionnaire = "questionnaire";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesQuestionnaire
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesQuestionnaire = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#questionnaire";
 
     /// <summary>
     /// Literal for code: Read
@@ -583,9 +743,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRead = "read";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesRead
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesRead = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#read";
+
+    /// <summary>
     /// Literal for code: Search
     /// </summary>
     public const string LiteralSearch = "search";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesSearch
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesSearch = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#search";
 
     /// <summary>
     /// Literal for code: Stats
@@ -593,9 +763,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStats = "stats";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesStats
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesStats = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#stats";
+
+    /// <summary>
     /// Literal for code: Subset
     /// </summary>
     public const string LiteralSubset = "subset";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesSubset
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesSubset = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#subset";
 
     /// <summary>
     /// Literal for code: Subsumes
@@ -603,9 +783,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubsumes = "subsumes";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesSubsumes
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesSubsumes = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#subsumes";
+
+    /// <summary>
     /// Literal for code: Transaction
     /// </summary>
     public const string LiteralTransaction = "transaction";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesTransaction
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesTransaction = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#transaction";
 
     /// <summary>
     /// Literal for code: Transform
@@ -613,9 +803,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransform = "transform";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesTransform
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesTransform = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#transform";
+
+    /// <summary>
     /// Literal for code: Translate
     /// </summary>
     public const string LiteralTranslate = "translate";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesTranslate
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesTranslate = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#translate";
 
     /// <summary>
     /// Literal for code: Update
@@ -623,9 +823,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUpdate = "update";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesUpdate
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesUpdate = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#update";
+
+    /// <summary>
     /// Literal for code: UpdateCreate
     /// </summary>
     public const string LiteralUpdateCreate = "updateCreate";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesUpdateCreate
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesUpdateCreate = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#updateCreate";
 
     /// <summary>
     /// Literal for code: Validate
@@ -633,13 +843,124 @@ namespace fhirCsR4.ValueSets
     public const string LiteralValidate = "validate";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesValidate
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesValidate = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#validate";
+
+    /// <summary>
     /// Literal for code: ValidateCode
     /// </summary>
     public const string LiteralValidateCode = "validate-code";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesValidateCode
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesValidateCode = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#validate-code";
+
+    /// <summary>
     /// Literal for code: Vread
     /// </summary>
     public const string LiteralVread = "vread";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesVread
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesVread = "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#vread";
+
+    /// <summary>
+    /// Dictionary for looking up TestscriptOperationCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "apply", Apply }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#apply", Apply }, 
+      { "batch", Batch }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#batch", Batch }, 
+      { "capabilities", Capabilities }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#capabilities", Capabilities }, 
+      { "closure", Closure }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#closure", Closure }, 
+      { "conforms", Conforms }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#conforms", Conforms }, 
+      { "create", Create }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#create", Create }, 
+      { "data-requirements", DataRequirements }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#data-requirements", DataRequirements }, 
+      { "delete", Delete }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#delete", Delete }, 
+      { "deleteCondMultiple", DeleteCondMultiple }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#deleteCondMultiple", DeleteCondMultiple }, 
+      { "deleteCondSingle", DeleteCondSingle }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#deleteCondSingle", DeleteCondSingle }, 
+      { "document", Document }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#document", Document }, 
+      { "evaluate", Evaluate }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#evaluate", Evaluate }, 
+      { "evaluate-measure", EvaluateMeasure }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#evaluate-measure", EvaluateMeasure }, 
+      { "everything", Everything }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#everything", Everything }, 
+      { "expand", Expand }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#expand", Expand }, 
+      { "find", Find }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#find", Find }, 
+      { "find-matches", FindMatches }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#find-matches", FindMatches }, 
+      { "graphql", Graphql }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#graphql", Graphql }, 
+      { "history", History }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#history", History }, 
+      { "implements", Implements }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#implements", Implements }, 
+      { "lastn", Lastn }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#lastn", Lastn }, 
+      { "lookup", Lookup }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#lookup", Lookup }, 
+      { "match", Match }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#match", Match }, 
+      { "meta", Meta }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#meta", Meta }, 
+      { "meta-add", MetaAdd }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#meta-add", MetaAdd }, 
+      { "meta-delete", MetaDelete }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#meta-delete", MetaDelete }, 
+      { "patch", Patch }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#patch", Patch }, 
+      { "populate", Populate }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#populate", Populate }, 
+      { "populatehtml", Populatehtml }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#populatehtml", Populatehtml }, 
+      { "populatelink", Populatelink }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#populatelink", Populatelink }, 
+      { "process-message", ProcessMessage }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#process-message", ProcessMessage }, 
+      { "questionnaire", Questionnaire }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#questionnaire", Questionnaire }, 
+      { "read", Read }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#read", Read }, 
+      { "search", Search }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#search", Search }, 
+      { "stats", Stats }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#stats", Stats }, 
+      { "subset", Subset }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#subset", Subset }, 
+      { "subsumes", Subsumes }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#subsumes", Subsumes }, 
+      { "transaction", Transaction }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#transaction", Transaction }, 
+      { "transform", Transform }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#transform", Transform }, 
+      { "translate", Translate }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#translate", Translate }, 
+      { "update", Update }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#update", Update }, 
+      { "updateCreate", UpdateCreate }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#updateCreate", UpdateCreate }, 
+      { "validate", Validate }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#validate", Validate }, 
+      { "validate-code", ValidateCode }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#validate-code", ValidateCode }, 
+      { "vread", Vread }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-operation-codes#vread", Vread }, 
+    };
   };
 }

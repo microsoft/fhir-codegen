@@ -24,6 +24,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool Exclude { get; set; }
     /// <summary>
+    /// Extension container element for Exclude
+    /// </summary>
+    public Element _Exclude { get; set; }
+    /// <summary>
     /// The period over which the characteristic is tested; e.g. the patient had an operation during the month of June.
     /// </summary>
     public Period Period { get; set; }
@@ -35,6 +39,10 @@ namespace fhirCsR3.Models
     /// For Range, it means members of the group have a value that falls somewhere within the specified range.
     /// </summary>
     public bool? ValueBoolean { get; set; }
+    /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
     /// <summary>
     /// For Range, it means members of the group have a value that falls somewhere within the specified range.
     /// </summary>
@@ -71,6 +79,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (ValueQuantity != null)
       {
         writer.WritePropertyName("valueQuantity");
@@ -84,6 +98,12 @@ namespace fhirCsR3.Models
       }
 
       writer.WriteBoolean("exclude", Exclude);
+
+      if (_Exclude != null)
+      {
+        writer.WritePropertyName("_exclude");
+        _Exclude.SerializeJson(writer, options);
+      }
 
       if (Period != null)
       {
@@ -112,6 +132,11 @@ namespace fhirCsR3.Models
           Exclude = reader.GetBoolean();
           break;
 
+        case "_exclude":
+          _Exclude = new fhirCsR3.Models.Element();
+          _Exclude.DeserializeJson(ref reader, options);
+          break;
+
         case "period":
           Period = new fhirCsR3.Models.Period();
           Period.DeserializeJson(ref reader, options);
@@ -124,6 +149,11 @@ namespace fhirCsR3.Models
 
         case "valueBoolean":
           ValueBoolean = reader.GetBoolean();
+          break;
+
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR3.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "valueQuantity":
@@ -181,6 +211,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? Inactive { get; set; }
     /// <summary>
+    /// Extension container element for Inactive
+    /// </summary>
+    public Element _Inactive { get; set; }
+    /// <summary>
     /// The period that the member was in the group, if known.
     /// </summary>
     public Period Period { get; set; }
@@ -212,6 +246,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("inactive", (bool)Inactive!);
       }
 
+      if (_Inactive != null)
+      {
+        writer.WritePropertyName("_inactive");
+        _Inactive.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -231,6 +271,11 @@ namespace fhirCsR3.Models
 
         case "inactive":
           Inactive = reader.GetBoolean();
+          break;
+
+        case "_inactive":
+          _Inactive = new fhirCsR3.Models.Element();
+          _Inactive.DeserializeJson(ref reader, options);
           break;
 
         case "period":
@@ -283,9 +328,17 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? Active { get; set; }
     /// <summary>
+    /// Extension container element for Active
+    /// </summary>
+    public Element _Active { get; set; }
+    /// <summary>
     /// If true, indicates that the resource refers to a specific group of real individuals.  If false, the group defines a set of intended individuals.
     /// </summary>
     public bool Actual { get; set; }
+    /// <summary>
+    /// Extension container element for Actual
+    /// </summary>
+    public Element _Actual { get; set; }
     /// <summary>
     /// All the identified characteristics must be true for an entity to a member of the group.
     /// </summary>
@@ -357,6 +410,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("active", (bool)Active!);
       }
 
+      if (_Active != null)
+      {
+        writer.WritePropertyName("_active");
+        _Active.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Type))
       {
         writer.WriteString("type", (string)Type!);
@@ -369,6 +428,12 @@ namespace fhirCsR3.Models
       }
 
       writer.WriteBoolean("actual", Actual);
+
+      if (_Actual != null)
+      {
+        writer.WritePropertyName("_actual");
+        _Actual.SerializeJson(writer, options);
+      }
 
       if (Code != null)
       {
@@ -434,8 +499,18 @@ namespace fhirCsR3.Models
           Active = reader.GetBoolean();
           break;
 
+        case "_active":
+          _Active = new fhirCsR3.Models.Element();
+          _Active.DeserializeJson(ref reader, options);
+          break;
+
         case "actual":
           Actual = reader.GetBoolean();
+          break;
+
+        case "_actual":
+          _Actual = new fhirCsR3.Models.Element();
+          _Actual.DeserializeJson(ref reader, options);
           break;
 
         case "characteristic":
@@ -587,5 +662,13 @@ namespace fhirCsR3.Models
     public const string DEVICE = "device";
     public const string MEDICATION = "medication";
     public const string SUBSTANCE = "substance";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "person",
+      "animal",
+      "practitioner",
+      "device",
+      "medication",
+      "substance",
+    };
   }
 }

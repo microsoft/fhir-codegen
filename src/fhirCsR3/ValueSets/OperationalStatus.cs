@@ -81,9 +81,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: OperationalStatusEnteredInError
+    /// </summary>
+    public const string LiteralOperationalStatusEnteredInError = "http://hl7.org/fhir/operational-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: HardwareDisconnectd
     /// </summary>
     public const string LiteralHardwareDisconnectd = "hw-discon";
+
+    /// <summary>
+    /// Literal for code: OperationalStatusHardwareDisconnectd
+    /// </summary>
+    public const string LiteralOperationalStatusHardwareDisconnectd = "http://hl7.org/fhir/operational-status#hw-discon";
 
     /// <summary>
     /// Literal for code: NotReady
@@ -91,9 +101,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNotReady = "not-ready";
 
     /// <summary>
+    /// Literal for code: OperationalStatusNotReady
+    /// </summary>
+    public const string LiteralOperationalStatusNotReady = "http://hl7.org/fhir/operational-status#not-ready";
+
+    /// <summary>
     /// Literal for code: Off
     /// </summary>
     public const string LiteralOff = "off";
+
+    /// <summary>
+    /// Literal for code: OperationalStatusOff
+    /// </summary>
+    public const string LiteralOperationalStatusOff = "http://hl7.org/fhir/operational-status#off";
 
     /// <summary>
     /// Literal for code: On
@@ -101,13 +121,48 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOn = "on";
 
     /// <summary>
+    /// Literal for code: OperationalStatusOn
+    /// </summary>
+    public const string LiteralOperationalStatusOn = "http://hl7.org/fhir/operational-status#on";
+
+    /// <summary>
     /// Literal for code: Standby
     /// </summary>
     public const string LiteralStandby = "standby";
 
     /// <summary>
+    /// Literal for code: OperationalStatusStandby
+    /// </summary>
+    public const string LiteralOperationalStatusStandby = "http://hl7.org/fhir/operational-status#standby";
+
+    /// <summary>
     /// Literal for code: TransducerDiconnected
     /// </summary>
     public const string LiteralTransducerDiconnected = "transduc-discon";
+
+    /// <summary>
+    /// Literal for code: OperationalStatusTransducerDiconnected
+    /// </summary>
+    public const string LiteralOperationalStatusTransducerDiconnected = "http://hl7.org/fhir/operational-status#transduc-discon";
+
+    /// <summary>
+    /// Dictionary for looking up OperationalStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/operational-status#entered-in-error", EnteredInError }, 
+      { "hw-discon", HardwareDisconnectd }, 
+      { "http://hl7.org/fhir/operational-status#hw-discon", HardwareDisconnectd }, 
+      { "not-ready", NotReady }, 
+      { "http://hl7.org/fhir/operational-status#not-ready", NotReady }, 
+      { "off", Off }, 
+      { "http://hl7.org/fhir/operational-status#off", Off }, 
+      { "on", On }, 
+      { "http://hl7.org/fhir/operational-status#on", On }, 
+      { "standby", Standby }, 
+      { "http://hl7.org/fhir/operational-status#standby", Standby }, 
+      { "transduc-discon", TransducerDiconnected }, 
+      { "http://hl7.org/fhir/operational-status#transduc-discon", TransducerDiconnected }, 
+    };
   };
 }

@@ -471,6 +471,12 @@ namespace fhirCsR2.Models
     public const string DOWN = "down";
     public const string VAL_IN = "in";
     public const string VAL_OUT = "out";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "up",
+      "down",
+      "in",
+      "out",
+    };
   }
   /// <summary>
   /// Code Values for the VisionPrescription.dispense.eye field
@@ -478,6 +484,10 @@ namespace fhirCsR2.Models
   public static class VisionPrescriptionDispenseEyeCodes {
     public const string RIGHT = "right";
     public const string LEFT = "left";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "right",
+      "left",
+    };
   }
   /// <summary>
   /// An authorization for the supply of glasses and/or contact lenses to a patient.

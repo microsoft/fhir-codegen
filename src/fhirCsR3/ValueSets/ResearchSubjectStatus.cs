@@ -72,9 +72,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: ResearchSubjectStatusActive
+    /// </summary>
+    public const string LiteralResearchSubjectStatusActive = "http://hl7.org/fhir/research-subject-status#active";
+
+    /// <summary>
     /// Literal for code: Candidate
     /// </summary>
     public const string LiteralCandidate = "candidate";
+
+    /// <summary>
+    /// Literal for code: ResearchSubjectStatusCandidate
+    /// </summary>
+    public const string LiteralResearchSubjectStatusCandidate = "http://hl7.org/fhir/research-subject-status#candidate";
 
     /// <summary>
     /// Literal for code: Completed
@@ -82,9 +92,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: ResearchSubjectStatusCompleted
+    /// </summary>
+    public const string LiteralResearchSubjectStatusCompleted = "http://hl7.org/fhir/research-subject-status#completed";
+
+    /// <summary>
     /// Literal for code: Enrolled
     /// </summary>
     public const string LiteralEnrolled = "enrolled";
+
+    /// <summary>
+    /// Literal for code: ResearchSubjectStatusEnrolled
+    /// </summary>
+    public const string LiteralResearchSubjectStatusEnrolled = "http://hl7.org/fhir/research-subject-status#enrolled";
 
     /// <summary>
     /// Literal for code: Suspended
@@ -92,8 +112,36 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSuspended = "suspended";
 
     /// <summary>
+    /// Literal for code: ResearchSubjectStatusSuspended
+    /// </summary>
+    public const string LiteralResearchSubjectStatusSuspended = "http://hl7.org/fhir/research-subject-status#suspended";
+
+    /// <summary>
     /// Literal for code: Withdrawn
     /// </summary>
     public const string LiteralWithdrawn = "withdrawn";
+
+    /// <summary>
+    /// Literal for code: ResearchSubjectStatusWithdrawn
+    /// </summary>
+    public const string LiteralResearchSubjectStatusWithdrawn = "http://hl7.org/fhir/research-subject-status#withdrawn";
+
+    /// <summary>
+    /// Dictionary for looking up ResearchSubjectStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/research-subject-status#active", Active }, 
+      { "candidate", Candidate }, 
+      { "http://hl7.org/fhir/research-subject-status#candidate", Candidate }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/research-subject-status#completed", Completed }, 
+      { "enrolled", Enrolled }, 
+      { "http://hl7.org/fhir/research-subject-status#enrolled", Enrolled }, 
+      { "suspended", Suspended }, 
+      { "http://hl7.org/fhir/research-subject-status#suspended", Suspended }, 
+      { "withdrawn", Withdrawn }, 
+      { "http://hl7.org/fhir/research-subject-status#withdrawn", Withdrawn }, 
+    };
   };
 }

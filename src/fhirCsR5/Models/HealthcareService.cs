@@ -122,6 +122,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? AllDay { get; set; }
     /// <summary>
+    /// Extension container element for AllDay
+    /// </summary>
+    public Element _AllDay { get; set; }
+    /// <summary>
     /// The time zone is expected to be for where this HealthcareService is provided at.
     /// </summary>
     public string AvailableEndTime { get; set; }
@@ -187,6 +191,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("allDay", (bool)AllDay!);
       }
 
+      if (_AllDay != null)
+      {
+        writer.WritePropertyName("_allDay");
+        _AllDay.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(AvailableStartTime))
       {
         writer.WriteString("availableStartTime", (string)AvailableStartTime!);
@@ -223,6 +233,11 @@ namespace fhirCsR5.Models
       {
         case "allDay":
           AllDay = reader.GetBoolean();
+          break;
+
+        case "_allDay":
+          _AllDay = new fhirCsR5.Models.Element();
+          _AllDay.DeserializeJson(ref reader, options);
           break;
 
         case "availableEndTime":
@@ -337,6 +352,15 @@ namespace fhirCsR5.Models
     public const string FRI = "fri";
     public const string SAT = "sat";
     public const string SUN = "sun";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
+      "sat",
+      "sun",
+    };
   }
   /// <summary>
   /// The HealthcareService is not available during this period of time due to the provided reason.
@@ -454,9 +478,17 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Active { get; set; }
     /// <summary>
+    /// Extension container element for Active
+    /// </summary>
+    public Element _Active { get; set; }
+    /// <summary>
     /// Indicates whether or not a prospective consumer will require an appointment for a particular service at a site to be provided by the Organization. Indicates if an appointment is required for access to this service.
     /// </summary>
     public bool? AppointmentRequired { get; set; }
+    /// <summary>
+    /// Extension container element for AppointmentRequired
+    /// </summary>
+    public Element _AppointmentRequired { get; set; }
     /// <summary>
     /// A description of site availability exceptions, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as details in the available Times and not available Times.
     /// </summary>
@@ -594,6 +626,12 @@ namespace fhirCsR5.Models
       if (Active != null)
       {
         writer.WriteBoolean("active", (bool)Active!);
+      }
+
+      if (_Active != null)
+      {
+        writer.WritePropertyName("_active");
+        _Active.SerializeJson(writer, options);
       }
 
       if (ProvidedBy != null)
@@ -802,6 +840,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("appointmentRequired", (bool)AppointmentRequired!);
       }
 
+      if (_AppointmentRequired != null)
+      {
+        writer.WritePropertyName("_appointmentRequired");
+        _AppointmentRequired.SerializeJson(writer, options);
+      }
+
       if ((AvailableTime != null) && (AvailableTime.Count != 0))
       {
         writer.WritePropertyName("availableTime");
@@ -868,8 +912,18 @@ namespace fhirCsR5.Models
           Active = reader.GetBoolean();
           break;
 
+        case "_active":
+          _Active = new fhirCsR5.Models.Element();
+          _Active.DeserializeJson(ref reader, options);
+          break;
+
         case "appointmentRequired":
           AppointmentRequired = reader.GetBoolean();
+          break;
+
+        case "_appointmentRequired":
+          _AppointmentRequired = new fhirCsR5.Models.Element();
+          _AppointmentRequired.DeserializeJson(ref reader, options);
           break;
 
         case "availabilityExceptions":

@@ -72,9 +72,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAttested = "attested";
 
     /// <summary>
+    /// Literal for code: VerificationresultStatusAttested
+    /// </summary>
+    public const string LiteralVerificationresultStatusAttested = "http://hl7.org/fhir/CodeSystem/verificationresult-status#attested";
+
+    /// <summary>
     /// Literal for code: InProcess
     /// </summary>
     public const string LiteralInProcess = "in-process";
+
+    /// <summary>
+    /// Literal for code: VerificationresultStatusInProcess
+    /// </summary>
+    public const string LiteralVerificationresultStatusInProcess = "http://hl7.org/fhir/CodeSystem/verificationresult-status#in-process";
 
     /// <summary>
     /// Literal for code: RequiresRevalidation
@@ -82,9 +92,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRequiresRevalidation = "req-revalid";
 
     /// <summary>
+    /// Literal for code: VerificationresultStatusRequiresRevalidation
+    /// </summary>
+    public const string LiteralVerificationresultStatusRequiresRevalidation = "http://hl7.org/fhir/CodeSystem/verificationresult-status#req-revalid";
+
+    /// <summary>
     /// Literal for code: ReValidationFailed
     /// </summary>
     public const string LiteralReValidationFailed = "reval-fail";
+
+    /// <summary>
+    /// Literal for code: VerificationresultStatusReValidationFailed
+    /// </summary>
+    public const string LiteralVerificationresultStatusReValidationFailed = "http://hl7.org/fhir/CodeSystem/verificationresult-status#reval-fail";
 
     /// <summary>
     /// Literal for code: ValidationFailed
@@ -92,8 +112,36 @@ namespace fhirCsR5.ValueSets
     public const string LiteralValidationFailed = "val-fail";
 
     /// <summary>
+    /// Literal for code: VerificationresultStatusValidationFailed
+    /// </summary>
+    public const string LiteralVerificationresultStatusValidationFailed = "http://hl7.org/fhir/CodeSystem/verificationresult-status#val-fail";
+
+    /// <summary>
     /// Literal for code: Validated
     /// </summary>
     public const string LiteralValidated = "validated";
+
+    /// <summary>
+    /// Literal for code: VerificationresultStatusValidated
+    /// </summary>
+    public const string LiteralVerificationresultStatusValidated = "http://hl7.org/fhir/CodeSystem/verificationresult-status#validated";
+
+    /// <summary>
+    /// Dictionary for looking up VerificationresultStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "attested", Attested }, 
+      { "http://hl7.org/fhir/CodeSystem/verificationresult-status#attested", Attested }, 
+      { "in-process", InProcess }, 
+      { "http://hl7.org/fhir/CodeSystem/verificationresult-status#in-process", InProcess }, 
+      { "req-revalid", RequiresRevalidation }, 
+      { "http://hl7.org/fhir/CodeSystem/verificationresult-status#req-revalid", RequiresRevalidation }, 
+      { "reval-fail", ReValidationFailed }, 
+      { "http://hl7.org/fhir/CodeSystem/verificationresult-status#reval-fail", ReValidationFailed }, 
+      { "val-fail", ValidationFailed }, 
+      { "http://hl7.org/fhir/CodeSystem/verificationresult-status#val-fail", ValidationFailed }, 
+      { "validated", Validated }, 
+      { "http://hl7.org/fhir/CodeSystem/verificationresult-status#validated", Validated }, 
+    };
   };
 }

@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAntisenseOrientationOfReferenceSeq = "antisense";
 
     /// <summary>
+    /// Literal for code: OrientationTypeAntisenseOrientationOfReferenceSeq
+    /// </summary>
+    public const string LiteralOrientationTypeAntisenseOrientationOfReferenceSeq = "http://hl7.org/fhir/orientation-type#antisense";
+
+    /// <summary>
     /// Literal for code: SenseOrientationOfReferenceSeq
     /// </summary>
     public const string LiteralSenseOrientationOfReferenceSeq = "sense";
+
+    /// <summary>
+    /// Literal for code: OrientationTypeSenseOrientationOfReferenceSeq
+    /// </summary>
+    public const string LiteralOrientationTypeSenseOrientationOfReferenceSeq = "http://hl7.org/fhir/orientation-type#sense";
+
+    /// <summary>
+    /// Dictionary for looking up OrientationType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "antisense", AntisenseOrientationOfReferenceSeq }, 
+      { "http://hl7.org/fhir/orientation-type#antisense", AntisenseOrientationOfReferenceSeq }, 
+      { "sense", SenseOrientationOfReferenceSeq }, 
+      { "http://hl7.org/fhir/orientation-type#sense", SenseOrientationOfReferenceSeq }, 
+    };
   };
 }

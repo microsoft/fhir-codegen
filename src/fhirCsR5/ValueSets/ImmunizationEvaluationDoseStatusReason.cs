@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ImmunizationEvaluationDoseStatusReasonCodes
   {
     /// <summary>
-    /// 
+    /// Adverse Storage
     /// </summary>
     public static readonly Coding AdverseStorage = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason"
     };
     /// <summary>
-    /// 
+    /// Cold Chain Break
     /// </summary>
     public static readonly Coding ColdChainBreak = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason"
     };
     /// <summary>
-    /// 
+    /// Expired Product
     /// </summary>
     public static readonly Coding ExpiredProduct = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason"
     };
     /// <summary>
-    /// 
+    /// Outside Schedule
     /// </summary>
     public static readonly Coding OutsideSchedule = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason"
     };
     /// <summary>
-    /// 
+    /// Partial Dose
     /// </summary>
     public static readonly Coding PartialDose = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason"
     };
     /// <summary>
-    /// 
+    /// Manufacturer Recall
     /// </summary>
     public static readonly Coding ManufacturerRecall = new Coding
     {
@@ -72,9 +72,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAdverseStorage = "adversestorage";
 
     /// <summary>
+    /// Literal for code: ImmunizationEvaluationDoseStatusReasonAdverseStorage
+    /// </summary>
+    public const string LiteralImmunizationEvaluationDoseStatusReasonAdverseStorage = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#adversestorage";
+
+    /// <summary>
     /// Literal for code: ColdChainBreak
     /// </summary>
     public const string LiteralColdChainBreak = "coldchainbreak";
+
+    /// <summary>
+    /// Literal for code: ImmunizationEvaluationDoseStatusReasonColdChainBreak
+    /// </summary>
+    public const string LiteralImmunizationEvaluationDoseStatusReasonColdChainBreak = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#coldchainbreak";
 
     /// <summary>
     /// Literal for code: ExpiredProduct
@@ -82,9 +92,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralExpiredProduct = "expired";
 
     /// <summary>
+    /// Literal for code: ImmunizationEvaluationDoseStatusReasonExpiredProduct
+    /// </summary>
+    public const string LiteralImmunizationEvaluationDoseStatusReasonExpiredProduct = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#expired";
+
+    /// <summary>
     /// Literal for code: OutsideSchedule
     /// </summary>
     public const string LiteralOutsideSchedule = "outsideschedule";
+
+    /// <summary>
+    /// Literal for code: ImmunizationEvaluationDoseStatusReasonOutsideSchedule
+    /// </summary>
+    public const string LiteralImmunizationEvaluationDoseStatusReasonOutsideSchedule = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#outsideschedule";
 
     /// <summary>
     /// Literal for code: PartialDose
@@ -92,8 +112,36 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPartialDose = "partialdose";
 
     /// <summary>
+    /// Literal for code: ImmunizationEvaluationDoseStatusReasonPartialDose
+    /// </summary>
+    public const string LiteralImmunizationEvaluationDoseStatusReasonPartialDose = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#partialdose";
+
+    /// <summary>
     /// Literal for code: ManufacturerRecall
     /// </summary>
     public const string LiteralManufacturerRecall = "recall";
+
+    /// <summary>
+    /// Literal for code: ImmunizationEvaluationDoseStatusReasonManufacturerRecall
+    /// </summary>
+    public const string LiteralImmunizationEvaluationDoseStatusReasonManufacturerRecall = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#recall";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationEvaluationDoseStatusReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "adversestorage", AdverseStorage }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#adversestorage", AdverseStorage }, 
+      { "coldchainbreak", ColdChainBreak }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#coldchainbreak", ColdChainBreak }, 
+      { "expired", ExpiredProduct }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#expired", ExpiredProduct }, 
+      { "outsideschedule", OutsideSchedule }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#outsideschedule", OutsideSchedule }, 
+      { "partialdose", PartialDose }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#partialdose", PartialDose }, 
+      { "recall", ManufacturerRecall }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason#recall", ManufacturerRecall }, 
+    };
   };
 }

@@ -327,7 +327,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/data-types"
     };
     /// <summary>
-    /// 
+    /// MoneyQuantity
     /// </summary>
     public static readonly Coding MoneyQuantity = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/data-types"
     };
     /// <summary>
-    /// 
+    /// SimpleQuantity
     /// </summary>
     public static readonly Coding SimpleQuantity = new Coding
     {
@@ -585,9 +585,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAddress = "Address";
 
     /// <summary>
+    /// Literal for code: DataTypesAddress
+    /// </summary>
+    public const string LiteralDataTypesAddress = "http://hl7.org/fhir/data-types#Address";
+
+    /// <summary>
     /// Literal for code: Age
     /// </summary>
     public const string LiteralAge = "Age";
+
+    /// <summary>
+    /// Literal for code: DataTypesAge
+    /// </summary>
+    public const string LiteralDataTypesAge = "http://hl7.org/fhir/data-types#Age";
 
     /// <summary>
     /// Literal for code: Annotation
@@ -595,9 +605,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnnotation = "Annotation";
 
     /// <summary>
+    /// Literal for code: DataTypesAnnotation
+    /// </summary>
+    public const string LiteralDataTypesAnnotation = "http://hl7.org/fhir/data-types#Annotation";
+
+    /// <summary>
     /// Literal for code: Attachment
     /// </summary>
     public const string LiteralAttachment = "Attachment";
+
+    /// <summary>
+    /// Literal for code: DataTypesAttachment
+    /// </summary>
+    public const string LiteralDataTypesAttachment = "http://hl7.org/fhir/data-types#Attachment";
 
     /// <summary>
     /// Literal for code: BackboneElement
@@ -605,9 +625,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBackboneElement = "BackboneElement";
 
     /// <summary>
+    /// Literal for code: DataTypesBackboneElement
+    /// </summary>
+    public const string LiteralDataTypesBackboneElement = "http://hl7.org/fhir/data-types#BackboneElement";
+
+    /// <summary>
     /// Literal for code: Base64Binary
     /// </summary>
     public const string LiteralBase64Binary = "base64Binary";
+
+    /// <summary>
+    /// Literal for code: DataTypesBase64Binary
+    /// </summary>
+    public const string LiteralDataTypesBase64Binary = "http://hl7.org/fhir/data-types#base64Binary";
 
     /// <summary>
     /// Literal for code: Boolean
@@ -615,9 +645,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBoolean = "boolean";
 
     /// <summary>
+    /// Literal for code: DataTypesBoolean
+    /// </summary>
+    public const string LiteralDataTypesBoolean = "http://hl7.org/fhir/data-types#boolean";
+
+    /// <summary>
     /// Literal for code: Canonical
     /// </summary>
     public const string LiteralCanonical = "canonical";
+
+    /// <summary>
+    /// Literal for code: DataTypesCanonical
+    /// </summary>
+    public const string LiteralDataTypesCanonical = "http://hl7.org/fhir/data-types#canonical";
 
     /// <summary>
     /// Literal for code: Code
@@ -625,9 +665,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCode = "code";
 
     /// <summary>
+    /// Literal for code: DataTypesCode
+    /// </summary>
+    public const string LiteralDataTypesCode = "http://hl7.org/fhir/data-types#code";
+
+    /// <summary>
     /// Literal for code: CodeableConcept
     /// </summary>
     public const string LiteralCodeableConcept = "CodeableConcept";
+
+    /// <summary>
+    /// Literal for code: DataTypesCodeableConcept
+    /// </summary>
+    public const string LiteralDataTypesCodeableConcept = "http://hl7.org/fhir/data-types#CodeableConcept";
 
     /// <summary>
     /// Literal for code: Coding
@@ -635,9 +685,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoding = "Coding";
 
     /// <summary>
+    /// Literal for code: DataTypesCoding
+    /// </summary>
+    public const string LiteralDataTypesCoding = "http://hl7.org/fhir/data-types#Coding";
+
+    /// <summary>
     /// Literal for code: ContactDetail
     /// </summary>
     public const string LiteralContactDetail = "ContactDetail";
+
+    /// <summary>
+    /// Literal for code: DataTypesContactDetail
+    /// </summary>
+    public const string LiteralDataTypesContactDetail = "http://hl7.org/fhir/data-types#ContactDetail";
 
     /// <summary>
     /// Literal for code: ContactPoint
@@ -645,9 +705,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralContactPoint = "ContactPoint";
 
     /// <summary>
+    /// Literal for code: DataTypesContactPoint
+    /// </summary>
+    public const string LiteralDataTypesContactPoint = "http://hl7.org/fhir/data-types#ContactPoint";
+
+    /// <summary>
     /// Literal for code: Contributor
     /// </summary>
     public const string LiteralContributor = "Contributor";
+
+    /// <summary>
+    /// Literal for code: DataTypesContributor
+    /// </summary>
+    public const string LiteralDataTypesContributor = "http://hl7.org/fhir/data-types#Contributor";
 
     /// <summary>
     /// Literal for code: Count
@@ -655,9 +725,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCount = "Count";
 
     /// <summary>
+    /// Literal for code: DataTypesCount
+    /// </summary>
+    public const string LiteralDataTypesCount = "http://hl7.org/fhir/data-types#Count";
+
+    /// <summary>
     /// Literal for code: DataRequirement
     /// </summary>
     public const string LiteralDataRequirement = "DataRequirement";
+
+    /// <summary>
+    /// Literal for code: DataTypesDataRequirement
+    /// </summary>
+    public const string LiteralDataTypesDataRequirement = "http://hl7.org/fhir/data-types#DataRequirement";
 
     /// <summary>
     /// Literal for code: Date
@@ -665,9 +745,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDate = "date";
 
     /// <summary>
+    /// Literal for code: DataTypesDate
+    /// </summary>
+    public const string LiteralDataTypesDate = "http://hl7.org/fhir/data-types#date";
+
+    /// <summary>
     /// Literal for code: DateTime
     /// </summary>
     public const string LiteralDateTime = "dateTime";
+
+    /// <summary>
+    /// Literal for code: DataTypesDateTime
+    /// </summary>
+    public const string LiteralDataTypesDateTime = "http://hl7.org/fhir/data-types#dateTime";
 
     /// <summary>
     /// Literal for code: VALDecimal
@@ -675,9 +765,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVALDecimal = "decimal";
 
     /// <summary>
+    /// Literal for code: DataTypesVALDecimal
+    /// </summary>
+    public const string LiteralDataTypesVALDecimal = "http://hl7.org/fhir/data-types#decimal";
+
+    /// <summary>
     /// Literal for code: Distance
     /// </summary>
     public const string LiteralDistance = "Distance";
+
+    /// <summary>
+    /// Literal for code: DataTypesDistance
+    /// </summary>
+    public const string LiteralDataTypesDistance = "http://hl7.org/fhir/data-types#Distance";
 
     /// <summary>
     /// Literal for code: Dosage
@@ -685,9 +785,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDosage = "Dosage";
 
     /// <summary>
+    /// Literal for code: DataTypesDosage
+    /// </summary>
+    public const string LiteralDataTypesDosage = "http://hl7.org/fhir/data-types#Dosage";
+
+    /// <summary>
     /// Literal for code: Duration
     /// </summary>
     public const string LiteralDuration = "Duration";
+
+    /// <summary>
+    /// Literal for code: DataTypesDuration
+    /// </summary>
+    public const string LiteralDataTypesDuration = "http://hl7.org/fhir/data-types#Duration";
 
     /// <summary>
     /// Literal for code: Element
@@ -695,9 +805,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralElement = "Element";
 
     /// <summary>
+    /// Literal for code: DataTypesElement
+    /// </summary>
+    public const string LiteralDataTypesElement = "http://hl7.org/fhir/data-types#Element";
+
+    /// <summary>
     /// Literal for code: ElementDefinition
     /// </summary>
     public const string LiteralElementDefinition = "ElementDefinition";
+
+    /// <summary>
+    /// Literal for code: DataTypesElementDefinition
+    /// </summary>
+    public const string LiteralDataTypesElementDefinition = "http://hl7.org/fhir/data-types#ElementDefinition";
 
     /// <summary>
     /// Literal for code: Expression
@@ -705,9 +825,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExpression = "Expression";
 
     /// <summary>
+    /// Literal for code: DataTypesExpression
+    /// </summary>
+    public const string LiteralDataTypesExpression = "http://hl7.org/fhir/data-types#Expression";
+
+    /// <summary>
     /// Literal for code: Extension
     /// </summary>
     public const string LiteralExtension = "Extension";
+
+    /// <summary>
+    /// Literal for code: DataTypesExtension
+    /// </summary>
+    public const string LiteralDataTypesExtension = "http://hl7.org/fhir/data-types#Extension";
 
     /// <summary>
     /// Literal for code: HumanName
@@ -715,9 +845,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHumanName = "HumanName";
 
     /// <summary>
+    /// Literal for code: DataTypesHumanName
+    /// </summary>
+    public const string LiteralDataTypesHumanName = "http://hl7.org/fhir/data-types#HumanName";
+
+    /// <summary>
     /// Literal for code: Id
     /// </summary>
     public const string LiteralId = "id";
+
+    /// <summary>
+    /// Literal for code: DataTypesId
+    /// </summary>
+    public const string LiteralDataTypesId = "http://hl7.org/fhir/data-types#id";
 
     /// <summary>
     /// Literal for code: Identifier
@@ -725,9 +865,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIdentifier = "Identifier";
 
     /// <summary>
+    /// Literal for code: DataTypesIdentifier
+    /// </summary>
+    public const string LiteralDataTypesIdentifier = "http://hl7.org/fhir/data-types#Identifier";
+
+    /// <summary>
     /// Literal for code: Instant
     /// </summary>
     public const string LiteralInstant = "instant";
+
+    /// <summary>
+    /// Literal for code: DataTypesInstant
+    /// </summary>
+    public const string LiteralDataTypesInstant = "http://hl7.org/fhir/data-types#instant";
 
     /// <summary>
     /// Literal for code: Integer
@@ -735,9 +885,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInteger = "integer";
 
     /// <summary>
+    /// Literal for code: DataTypesInteger
+    /// </summary>
+    public const string LiteralDataTypesInteger = "http://hl7.org/fhir/data-types#integer";
+
+    /// <summary>
     /// Literal for code: Markdown
     /// </summary>
     public const string LiteralMarkdown = "markdown";
+
+    /// <summary>
+    /// Literal for code: DataTypesMarkdown
+    /// </summary>
+    public const string LiteralDataTypesMarkdown = "http://hl7.org/fhir/data-types#markdown";
 
     /// <summary>
     /// Literal for code: MarketingStatus
@@ -745,9 +905,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMarketingStatus = "MarketingStatus";
 
     /// <summary>
+    /// Literal for code: DataTypesMarketingStatus
+    /// </summary>
+    public const string LiteralDataTypesMarketingStatus = "http://hl7.org/fhir/data-types#MarketingStatus";
+
+    /// <summary>
     /// Literal for code: Meta
     /// </summary>
     public const string LiteralMeta = "Meta";
+
+    /// <summary>
+    /// Literal for code: DataTypesMeta
+    /// </summary>
+    public const string LiteralDataTypesMeta = "http://hl7.org/fhir/data-types#Meta";
 
     /// <summary>
     /// Literal for code: Money
@@ -755,9 +925,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMoney = "Money";
 
     /// <summary>
+    /// Literal for code: DataTypesMoney
+    /// </summary>
+    public const string LiteralDataTypesMoney = "http://hl7.org/fhir/data-types#Money";
+
+    /// <summary>
     /// Literal for code: MoneyQuantity
     /// </summary>
     public const string LiteralMoneyQuantity = "MoneyQuantity";
+
+    /// <summary>
+    /// Literal for code: DataTypesMoneyQuantity
+    /// </summary>
+    public const string LiteralDataTypesMoneyQuantity = "http://hl7.org/fhir/data-types#MoneyQuantity";
 
     /// <summary>
     /// Literal for code: Narrative
@@ -765,9 +945,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNarrative = "Narrative";
 
     /// <summary>
+    /// Literal for code: DataTypesNarrative
+    /// </summary>
+    public const string LiteralDataTypesNarrative = "http://hl7.org/fhir/data-types#Narrative";
+
+    /// <summary>
     /// Literal for code: Oid
     /// </summary>
     public const string LiteralOid = "oid";
+
+    /// <summary>
+    /// Literal for code: DataTypesOid
+    /// </summary>
+    public const string LiteralDataTypesOid = "http://hl7.org/fhir/data-types#oid";
 
     /// <summary>
     /// Literal for code: ParameterDefinition
@@ -775,9 +965,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParameterDefinition = "ParameterDefinition";
 
     /// <summary>
+    /// Literal for code: DataTypesParameterDefinition
+    /// </summary>
+    public const string LiteralDataTypesParameterDefinition = "http://hl7.org/fhir/data-types#ParameterDefinition";
+
+    /// <summary>
     /// Literal for code: Period
     /// </summary>
     public const string LiteralPeriod = "Period";
+
+    /// <summary>
+    /// Literal for code: DataTypesPeriod
+    /// </summary>
+    public const string LiteralDataTypesPeriod = "http://hl7.org/fhir/data-types#Period";
 
     /// <summary>
     /// Literal for code: Population
@@ -785,9 +985,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPopulation = "Population";
 
     /// <summary>
+    /// Literal for code: DataTypesPopulation
+    /// </summary>
+    public const string LiteralDataTypesPopulation = "http://hl7.org/fhir/data-types#Population";
+
+    /// <summary>
     /// Literal for code: PositiveInt
     /// </summary>
     public const string LiteralPositiveInt = "positiveInt";
+
+    /// <summary>
+    /// Literal for code: DataTypesPositiveInt
+    /// </summary>
+    public const string LiteralDataTypesPositiveInt = "http://hl7.org/fhir/data-types#positiveInt";
 
     /// <summary>
     /// Literal for code: ProdCharacteristic
@@ -795,9 +1005,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProdCharacteristic = "ProdCharacteristic";
 
     /// <summary>
+    /// Literal for code: DataTypesProdCharacteristic
+    /// </summary>
+    public const string LiteralDataTypesProdCharacteristic = "http://hl7.org/fhir/data-types#ProdCharacteristic";
+
+    /// <summary>
     /// Literal for code: ProductShelfLife
     /// </summary>
     public const string LiteralProductShelfLife = "ProductShelfLife";
+
+    /// <summary>
+    /// Literal for code: DataTypesProductShelfLife
+    /// </summary>
+    public const string LiteralDataTypesProductShelfLife = "http://hl7.org/fhir/data-types#ProductShelfLife";
 
     /// <summary>
     /// Literal for code: Quantity
@@ -805,9 +1025,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralQuantity = "Quantity";
 
     /// <summary>
+    /// Literal for code: DataTypesQuantity
+    /// </summary>
+    public const string LiteralDataTypesQuantity = "http://hl7.org/fhir/data-types#Quantity";
+
+    /// <summary>
     /// Literal for code: Range
     /// </summary>
     public const string LiteralRange = "Range";
+
+    /// <summary>
+    /// Literal for code: DataTypesRange
+    /// </summary>
+    public const string LiteralDataTypesRange = "http://hl7.org/fhir/data-types#Range";
 
     /// <summary>
     /// Literal for code: Ratio
@@ -815,9 +1045,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRatio = "Ratio";
 
     /// <summary>
+    /// Literal for code: DataTypesRatio
+    /// </summary>
+    public const string LiteralDataTypesRatio = "http://hl7.org/fhir/data-types#Ratio";
+
+    /// <summary>
     /// Literal for code: Reference
     /// </summary>
     public const string LiteralReference = "Reference";
+
+    /// <summary>
+    /// Literal for code: DataTypesReference
+    /// </summary>
+    public const string LiteralDataTypesReference = "http://hl7.org/fhir/data-types#Reference";
 
     /// <summary>
     /// Literal for code: RelatedArtifact
@@ -825,9 +1065,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRelatedArtifact = "RelatedArtifact";
 
     /// <summary>
+    /// Literal for code: DataTypesRelatedArtifact
+    /// </summary>
+    public const string LiteralDataTypesRelatedArtifact = "http://hl7.org/fhir/data-types#RelatedArtifact";
+
+    /// <summary>
     /// Literal for code: SampledData
     /// </summary>
     public const string LiteralSampledData = "SampledData";
+
+    /// <summary>
+    /// Literal for code: DataTypesSampledData
+    /// </summary>
+    public const string LiteralDataTypesSampledData = "http://hl7.org/fhir/data-types#SampledData";
 
     /// <summary>
     /// Literal for code: Signature
@@ -835,9 +1085,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSignature = "Signature";
 
     /// <summary>
+    /// Literal for code: DataTypesSignature
+    /// </summary>
+    public const string LiteralDataTypesSignature = "http://hl7.org/fhir/data-types#Signature";
+
+    /// <summary>
     /// Literal for code: SimpleQuantity
     /// </summary>
     public const string LiteralSimpleQuantity = "SimpleQuantity";
+
+    /// <summary>
+    /// Literal for code: DataTypesSimpleQuantity
+    /// </summary>
+    public const string LiteralDataTypesSimpleQuantity = "http://hl7.org/fhir/data-types#SimpleQuantity";
 
     /// <summary>
     /// Literal for code: VALString
@@ -845,9 +1105,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVALString = "string";
 
     /// <summary>
+    /// Literal for code: DataTypesVALString
+    /// </summary>
+    public const string LiteralDataTypesVALString = "http://hl7.org/fhir/data-types#string";
+
+    /// <summary>
     /// Literal for code: SubstanceAmount
     /// </summary>
     public const string LiteralSubstanceAmount = "SubstanceAmount";
+
+    /// <summary>
+    /// Literal for code: DataTypesSubstanceAmount
+    /// </summary>
+    public const string LiteralDataTypesSubstanceAmount = "http://hl7.org/fhir/data-types#SubstanceAmount";
 
     /// <summary>
     /// Literal for code: Time
@@ -855,9 +1125,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTime = "time";
 
     /// <summary>
+    /// Literal for code: DataTypesTime
+    /// </summary>
+    public const string LiteralDataTypesTime = "http://hl7.org/fhir/data-types#time";
+
+    /// <summary>
     /// Literal for code: Timing
     /// </summary>
     public const string LiteralTiming = "Timing";
+
+    /// <summary>
+    /// Literal for code: DataTypesTiming
+    /// </summary>
+    public const string LiteralDataTypesTiming = "http://hl7.org/fhir/data-types#Timing";
 
     /// <summary>
     /// Literal for code: TriggerDefinition
@@ -865,9 +1145,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTriggerDefinition = "TriggerDefinition";
 
     /// <summary>
+    /// Literal for code: DataTypesTriggerDefinition
+    /// </summary>
+    public const string LiteralDataTypesTriggerDefinition = "http://hl7.org/fhir/data-types#TriggerDefinition";
+
+    /// <summary>
     /// Literal for code: UnsignedInt
     /// </summary>
     public const string LiteralUnsignedInt = "unsignedInt";
+
+    /// <summary>
+    /// Literal for code: DataTypesUnsignedInt
+    /// </summary>
+    public const string LiteralDataTypesUnsignedInt = "http://hl7.org/fhir/data-types#unsignedInt";
 
     /// <summary>
     /// Literal for code: Uri
@@ -875,9 +1165,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUri = "uri";
 
     /// <summary>
+    /// Literal for code: DataTypesUri
+    /// </summary>
+    public const string LiteralDataTypesUri = "http://hl7.org/fhir/data-types#uri";
+
+    /// <summary>
     /// Literal for code: Url
     /// </summary>
     public const string LiteralUrl = "url";
+
+    /// <summary>
+    /// Literal for code: DataTypesUrl
+    /// </summary>
+    public const string LiteralDataTypesUrl = "http://hl7.org/fhir/data-types#url";
 
     /// <summary>
     /// Literal for code: UsageContext
@@ -885,13 +1185,160 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUsageContext = "UsageContext";
 
     /// <summary>
+    /// Literal for code: DataTypesUsageContext
+    /// </summary>
+    public const string LiteralDataTypesUsageContext = "http://hl7.org/fhir/data-types#UsageContext";
+
+    /// <summary>
     /// Literal for code: Uuid
     /// </summary>
     public const string LiteralUuid = "uuid";
 
     /// <summary>
+    /// Literal for code: DataTypesUuid
+    /// </summary>
+    public const string LiteralDataTypesUuid = "http://hl7.org/fhir/data-types#uuid";
+
+    /// <summary>
     /// Literal for code: XHTML
     /// </summary>
     public const string LiteralXHTML = "xhtml";
+
+    /// <summary>
+    /// Literal for code: DataTypesXHTML
+    /// </summary>
+    public const string LiteralDataTypesXHTML = "http://hl7.org/fhir/data-types#xhtml";
+
+    /// <summary>
+    /// Dictionary for looking up DataTypes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "Address", Address }, 
+      { "http://hl7.org/fhir/data-types#Address", Address }, 
+      { "Age", Age }, 
+      { "http://hl7.org/fhir/data-types#Age", Age }, 
+      { "Annotation", Annotation }, 
+      { "http://hl7.org/fhir/data-types#Annotation", Annotation }, 
+      { "Attachment", Attachment }, 
+      { "http://hl7.org/fhir/data-types#Attachment", Attachment }, 
+      { "BackboneElement", BackboneElement }, 
+      { "http://hl7.org/fhir/data-types#BackboneElement", BackboneElement }, 
+      { "base64Binary", Base64Binary }, 
+      { "http://hl7.org/fhir/data-types#base64Binary", Base64Binary }, 
+      { "boolean", Boolean }, 
+      { "http://hl7.org/fhir/data-types#boolean", Boolean }, 
+      { "canonical", Canonical }, 
+      { "http://hl7.org/fhir/data-types#canonical", Canonical }, 
+      { "code", Code }, 
+      { "http://hl7.org/fhir/data-types#code", Code }, 
+      { "CodeableConcept", CodeableConcept }, 
+      { "http://hl7.org/fhir/data-types#CodeableConcept", CodeableConcept }, 
+      { "Coding", Coding }, 
+      { "http://hl7.org/fhir/data-types#Coding", Coding }, 
+      { "ContactDetail", ContactDetail }, 
+      { "http://hl7.org/fhir/data-types#ContactDetail", ContactDetail }, 
+      { "ContactPoint", ContactPoint }, 
+      { "http://hl7.org/fhir/data-types#ContactPoint", ContactPoint }, 
+      { "Contributor", Contributor }, 
+      { "http://hl7.org/fhir/data-types#Contributor", Contributor }, 
+      { "Count", Count }, 
+      { "http://hl7.org/fhir/data-types#Count", Count }, 
+      { "DataRequirement", DataRequirement }, 
+      { "http://hl7.org/fhir/data-types#DataRequirement", DataRequirement }, 
+      { "date", Date }, 
+      { "http://hl7.org/fhir/data-types#date", Date }, 
+      { "dateTime", DateTime }, 
+      { "http://hl7.org/fhir/data-types#dateTime", DateTime }, 
+      { "decimal", VALDecimal }, 
+      { "http://hl7.org/fhir/data-types#decimal", VALDecimal }, 
+      { "Distance", Distance }, 
+      { "http://hl7.org/fhir/data-types#Distance", Distance }, 
+      { "Dosage", Dosage }, 
+      { "http://hl7.org/fhir/data-types#Dosage", Dosage }, 
+      { "Duration", Duration }, 
+      { "http://hl7.org/fhir/data-types#Duration", Duration }, 
+      { "Element", Element }, 
+      { "http://hl7.org/fhir/data-types#Element", Element }, 
+      { "ElementDefinition", ElementDefinition }, 
+      { "http://hl7.org/fhir/data-types#ElementDefinition", ElementDefinition }, 
+      { "Expression", Expression }, 
+      { "http://hl7.org/fhir/data-types#Expression", Expression }, 
+      { "Extension", Extension }, 
+      { "http://hl7.org/fhir/data-types#Extension", Extension }, 
+      { "HumanName", HumanName }, 
+      { "http://hl7.org/fhir/data-types#HumanName", HumanName }, 
+      { "id", Id }, 
+      { "http://hl7.org/fhir/data-types#id", Id }, 
+      { "Identifier", Identifier }, 
+      { "http://hl7.org/fhir/data-types#Identifier", Identifier }, 
+      { "instant", Instant }, 
+      { "http://hl7.org/fhir/data-types#instant", Instant }, 
+      { "integer", Integer }, 
+      { "http://hl7.org/fhir/data-types#integer", Integer }, 
+      { "markdown", Markdown }, 
+      { "http://hl7.org/fhir/data-types#markdown", Markdown }, 
+      { "MarketingStatus", MarketingStatus }, 
+      { "http://hl7.org/fhir/data-types#MarketingStatus", MarketingStatus }, 
+      { "Meta", Meta }, 
+      { "http://hl7.org/fhir/data-types#Meta", Meta }, 
+      { "Money", Money }, 
+      { "http://hl7.org/fhir/data-types#Money", Money }, 
+      { "MoneyQuantity", MoneyQuantity }, 
+      { "http://hl7.org/fhir/data-types#MoneyQuantity", MoneyQuantity }, 
+      { "Narrative", Narrative }, 
+      { "http://hl7.org/fhir/data-types#Narrative", Narrative }, 
+      { "oid", Oid }, 
+      { "http://hl7.org/fhir/data-types#oid", Oid }, 
+      { "ParameterDefinition", ParameterDefinition }, 
+      { "http://hl7.org/fhir/data-types#ParameterDefinition", ParameterDefinition }, 
+      { "Period", Period }, 
+      { "http://hl7.org/fhir/data-types#Period", Period }, 
+      { "Population", Population }, 
+      { "http://hl7.org/fhir/data-types#Population", Population }, 
+      { "positiveInt", PositiveInt }, 
+      { "http://hl7.org/fhir/data-types#positiveInt", PositiveInt }, 
+      { "ProdCharacteristic", ProdCharacteristic }, 
+      { "http://hl7.org/fhir/data-types#ProdCharacteristic", ProdCharacteristic }, 
+      { "ProductShelfLife", ProductShelfLife }, 
+      { "http://hl7.org/fhir/data-types#ProductShelfLife", ProductShelfLife }, 
+      { "Quantity", Quantity }, 
+      { "http://hl7.org/fhir/data-types#Quantity", Quantity }, 
+      { "Range", Range }, 
+      { "http://hl7.org/fhir/data-types#Range", Range }, 
+      { "Ratio", Ratio }, 
+      { "http://hl7.org/fhir/data-types#Ratio", Ratio }, 
+      { "Reference", Reference }, 
+      { "http://hl7.org/fhir/data-types#Reference", Reference }, 
+      { "RelatedArtifact", RelatedArtifact }, 
+      { "http://hl7.org/fhir/data-types#RelatedArtifact", RelatedArtifact }, 
+      { "SampledData", SampledData }, 
+      { "http://hl7.org/fhir/data-types#SampledData", SampledData }, 
+      { "Signature", Signature }, 
+      { "http://hl7.org/fhir/data-types#Signature", Signature }, 
+      { "SimpleQuantity", SimpleQuantity }, 
+      { "http://hl7.org/fhir/data-types#SimpleQuantity", SimpleQuantity }, 
+      { "string", VALString }, 
+      { "http://hl7.org/fhir/data-types#string", VALString }, 
+      { "SubstanceAmount", SubstanceAmount }, 
+      { "http://hl7.org/fhir/data-types#SubstanceAmount", SubstanceAmount }, 
+      { "time", Time }, 
+      { "http://hl7.org/fhir/data-types#time", Time }, 
+      { "Timing", Timing }, 
+      { "http://hl7.org/fhir/data-types#Timing", Timing }, 
+      { "TriggerDefinition", TriggerDefinition }, 
+      { "http://hl7.org/fhir/data-types#TriggerDefinition", TriggerDefinition }, 
+      { "unsignedInt", UnsignedInt }, 
+      { "http://hl7.org/fhir/data-types#unsignedInt", UnsignedInt }, 
+      { "uri", Uri }, 
+      { "http://hl7.org/fhir/data-types#uri", Uri }, 
+      { "url", Url }, 
+      { "http://hl7.org/fhir/data-types#url", Url }, 
+      { "UsageContext", UsageContext }, 
+      { "http://hl7.org/fhir/data-types#UsageContext", UsageContext }, 
+      { "uuid", Uuid }, 
+      { "http://hl7.org/fhir/data-types#uuid", Uuid }, 
+      { "xhtml", XHTML }, 
+      { "http://hl7.org/fhir/data-types#xhtml", XHTML }, 
+    };
   };
 }

@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCommunity = "community";
 
     /// <summary>
+    /// Literal for code: MedicationDispenseCategoryCommunity
+    /// </summary>
+    public const string LiteralMedicationDispenseCategoryCommunity = "http://hl7.org/fhir/medication-dispense-category#community";
+
+    /// <summary>
     /// Literal for code: Inpatient
     /// </summary>
     public const string LiteralInpatient = "inpatient";
 
     /// <summary>
+    /// Literal for code: MedicationDispenseCategoryInpatient
+    /// </summary>
+    public const string LiteralMedicationDispenseCategoryInpatient = "http://hl7.org/fhir/medication-dispense-category#inpatient";
+
+    /// <summary>
     /// Literal for code: Outpatient
     /// </summary>
     public const string LiteralOutpatient = "outpatient";
+
+    /// <summary>
+    /// Literal for code: MedicationDispenseCategoryOutpatient
+    /// </summary>
+    public const string LiteralMedicationDispenseCategoryOutpatient = "http://hl7.org/fhir/medication-dispense-category#outpatient";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationDispenseCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "community", Community }, 
+      { "http://hl7.org/fhir/medication-dispense-category#community", Community }, 
+      { "inpatient", Inpatient }, 
+      { "http://hl7.org/fhir/medication-dispense-category#inpatient", Inpatient }, 
+      { "outpatient", Outpatient }, 
+      { "http://hl7.org/fhir/medication-dispense-category#outpatient", Outpatient }, 
+    };
   };
 }

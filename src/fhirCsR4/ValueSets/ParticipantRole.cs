@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class ParticipantRoleCodes
   {
     /// <summary>
-    /// 
+    /// Maternal aunt
     /// </summary>
     public static readonly Coding MaternalAunt = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Homosexual parents
     /// </summary>
     public static readonly Coding HomosexualParents = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elderly parents
     /// </summary>
     public static readonly Coding ElderlyParents = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adopted person
     /// </summary>
     public static readonly Coding AdoptedPerson = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elderly person
     /// </summary>
     public static readonly Coding ElderlyPerson = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elderly man
     /// </summary>
     public static readonly Coding ElderlyMan = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elderly woman
     /// </summary>
     public static readonly Coding ElderlyWoman = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sick relative
     /// </summary>
     public static readonly Coding SickRelative = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alcoholic relative
     /// </summary>
     public static readonly Coding AlcoholicRelative = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Demented relative
     /// </summary>
     public static readonly Coding DementedRelative = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diabetic relative
     /// </summary>
     public static readonly Coding DiabeticRelative = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Schizophrenic relative
     /// </summary>
     public static readonly Coding SchizophrenicRelative = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Disabled relative
     /// </summary>
     public static readonly Coding DisabledRelative = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Donor for medical or surgical procedure
     /// </summary>
     public static readonly Coding DonorForMedicalOrSurgicalProcedure = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Live donor
     /// </summary>
     public static readonly Coding LiveDonor = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cadaver donor
     /// </summary>
     public static readonly Coding CadaverDonor = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Candidate donor
     /// </summary>
     public static readonly Coding CandidateDonor = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Accepted donor
     /// </summary>
     public static readonly Coding AcceptedDonor = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rejected donor
     /// </summary>
     public static readonly Coding RejectedDonor = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Organ donor
     /// </summary>
     public static readonly Coding OrganDonor = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Donor of kidney for transplant
     /// </summary>
     public static readonly Coding DonorOfKidneyForTransplant = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Donor for liver transplant
     /// </summary>
     public static readonly Coding DonorForLiverTransplant = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eye donor for corneal transplant
     /// </summary>
     public static readonly Coding EyeDonorForCornealTransplant = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Donor for heart transplant
     /// </summary>
     public static readonly Coding DonorForHeartTransplant = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Donor for lung transplant
     /// </summary>
     public static readonly Coding DonorForLungTransplant = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Donor for heart-lung transplant
     /// </summary>
     public static readonly Coding DonorForHeartLungTransplant = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tissue donor
     /// </summary>
     public static readonly Coding TissueDonor = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone tissue donor
     /// </summary>
     public static readonly Coding BoneTissueDonor = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood donor
     /// </summary>
     public static readonly Coding BloodDonor = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone marrow donor
     /// </summary>
     public static readonly Coding BoneMarrowDonor = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sperm donor for artificial insemination
     /// </summary>
     public static readonly Coding SpermDonorForArtificialInsemination = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Husband sperm donor for artificial insemination
     /// </summary>
     public static readonly Coding HusbandSpermDonorForArtificialInsemination = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Related sperm donor for artificial insemination
     /// </summary>
     public static readonly Coding RelatedSpermDonorForArtificialInsemination = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental surgeon
     /// </summary>
     public static readonly Coding DentalSurgeon = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dietician AND/OR public health nutritionist
     /// </summary>
     public static readonly Coding DieticianANDORPublicHealthNutritionist = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nurse
     /// </summary>
     public static readonly Coding Nurse = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nursing personnel
     /// </summary>
     public static readonly Coding NursingPersonnel = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Midwifery personnel
     /// </summary>
     public static readonly Coding MidwiferyPersonnel = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physiotherapist AND/OR occupational therapist
     /// </summary>
     public static readonly Coding PhysiotherapistANDOROccupationalTherapist = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Philologist, translator AND/OR interpreter
     /// </summary>
     public static readonly Coding PhilologistTranslatorANDORInterpreter = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Identical twin sibling
     /// </summary>
     public static readonly Coding IdenticalTwinSibling = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Working father
     /// </summary>
     public static readonly Coding WorkingFather = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical doctor
     /// </summary>
     public static readonly Coding MedicalDoctor = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Twin sibling
     /// </summary>
     public static readonly Coding TwinSibling = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grandmother
     /// </summary>
     public static readonly Coding Grandmother = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fraternal twin sibling
     /// </summary>
     public static readonly Coding FraternalTwinSibling = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Legal daughter
     /// </summary>
     public static readonly Coding LegalDaughter = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Natural son
     /// </summary>
     public static readonly Coding NaturalSon = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Female fiance
     /// </summary>
     public static readonly Coding FemaleFiance = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Friend
     /// </summary>
     public static readonly Coding Friend = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Great-great grand child
     /// </summary>
     public static readonly Coding GreatGreatGrandChild = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Male second cousin
     /// </summary>
     public static readonly Coding MaleSecondCousin = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Donor of control material
     /// </summary>
     public static readonly Coding DonorOfControlMaterial = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient
     /// </summary>
     public static readonly Coding Patient = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neuropathologist
     /// </summary>
     public static readonly Coding Neuropathologist = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Legal brother
     /// </summary>
     public static readonly Coding LegalBrother = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nephrologist
     /// </summary>
     public static readonly Coding Nephrologist = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obstetrician
     /// </summary>
     public static readonly Coding Obstetrician = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Male first cousin
     /// </summary>
     public static readonly Coding MaleFirstCousin = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foster son
     /// </summary>
     public static readonly Coding FosterSon = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Relative
     /// </summary>
     public static readonly Coding Relative = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// First degree blood relative
     /// </summary>
     public static readonly Coding FirstDegreeBloodRelative = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood relative
     /// </summary>
     public static readonly Coding BloodRelative = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Single mother
     /// </summary>
     public static readonly Coding SingleMother = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spouse
     /// </summary>
     public static readonly Coding Spouse = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Husband
     /// </summary>
     public static readonly Coding Husband = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wife
     /// </summary>
     public static readonly Coding Wife = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fiance
     /// </summary>
     public static readonly Coding Fiance = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Older brother
     /// </summary>
     public static readonly Coding OlderBrother = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Older sibling
     /// </summary>
     public static readonly Coding OlderSibling = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infant
     /// </summary>
     public static readonly Coding Infant = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Caregiver
     /// </summary>
     public static readonly Coding Caregiver = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Newborn
     /// </summary>
     public static readonly Coding Newborn = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult
     /// </summary>
     public static readonly Coding Adult = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adolescent
     /// </summary>
     public static readonly Coding Adolescent = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Second cousin
     /// </summary>
     public static readonly Coding SecondCousin = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orphan female
     /// </summary>
     public static readonly Coding OrphanFemale = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// School dental assistant
     /// </summary>
     public static readonly Coding SchoolDentalAssistant = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Natural parent
     /// </summary>
     public static readonly Coding NaturalParent = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specialized surgeon
     /// </summary>
     public static readonly Coding SpecializedSurgeon = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Legal child
     /// </summary>
     public static readonly Coding LegalChild = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical microbiologist
     /// </summary>
     public static readonly Coding MedicalMicrobiologist = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surrogate parent
     /// </summary>
     public static readonly Coding SurrogateParent = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical practitioner
     /// </summary>
     public static readonly Coding MedicalPractitioner = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical administrator - national
     /// </summary>
     public static readonly Coding MedicalAdministratorNational = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Consultant physician
     /// </summary>
     public static readonly Coding ConsultantPhysician = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Consultant surgeon
     /// </summary>
     public static readonly Coding ConsultantSurgeon = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Consultant gynecology and obstetrics
     /// </summary>
     public static readonly Coding ConsultantGynecologyAndObstetrics = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthetist
     /// </summary>
     public static readonly Coding Anesthetist = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital registrar
     /// </summary>
     public static readonly Coding HospitalRegistrar = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// House officer
     /// </summary>
     public static readonly Coding HouseOfficer = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupational physician
     /// </summary>
     public static readonly Coding OccupationalPhysician = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical medical officer
     /// </summary>
     public static readonly Coding ClinicalMedicalOfficer = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical practitioner - teaching
     /// </summary>
     public static readonly Coding MedicalPractitionerTeaching = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental administrator
     /// </summary>
     public static readonly Coding DentalAdministrator = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental consultant
     /// </summary>
     public static readonly Coding DentalConsultant = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental general practitioner
     /// </summary>
     public static readonly Coding DentalGeneralPractitioner = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental practitioner - teaching
     /// </summary>
     public static readonly Coding DentalPractitionerTeaching = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nurse administrator - national
     /// </summary>
     public static readonly Coding NurseAdministratorNational = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nursing officer - region
     /// </summary>
     public static readonly Coding NursingOfficerRegion = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nursing officer - district
     /// </summary>
     public static readonly Coding NursingOfficerDistrict = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nursing administrator - professional body
     /// </summary>
     public static readonly Coding NursingAdministratorProfessionalBody = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nursing officer - division
     /// </summary>
     public static readonly Coding NursingOfficerDivision = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nurse education director
     /// </summary>
     public static readonly Coding NurseEducationDirector = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupational health nursing officer
     /// </summary>
     public static readonly Coding OccupationalHealthNursingOfficer = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nursing officer
     /// </summary>
     public static readonly Coding NursingOfficer = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Midwifery sister
     /// </summary>
     public static readonly Coding MidwiferySister = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nursing sister (theatre)
     /// </summary>
     public static readonly Coding NursingSisterTheatre = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Staff nurse
     /// </summary>
     public static readonly Coding StaffNurse = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Staff midwife
     /// </summary>
     public static readonly Coding StaffMidwife = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// State enrolled nurse
     /// </summary>
     public static readonly Coding StateEnrolledNurse = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// District nurse
     /// </summary>
     public static readonly Coding DistrictNurse = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private nurse
     /// </summary>
     public static readonly Coding PrivateNurse = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community midwife
     /// </summary>
     public static readonly Coding CommunityMidwife = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinic nurse
     /// </summary>
     public static readonly Coding ClinicNurse = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Practice nurse
     /// </summary>
     public static readonly Coding PracticeNurse = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// School nurse
     /// </summary>
     public static readonly Coding SchoolNurse = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nurse - teaching
     /// </summary>
     public static readonly Coding NurseTeaching = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Student nurse
     /// </summary>
     public static readonly Coding StudentNurse = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental nurse
     /// </summary>
     public static readonly Coding DentalNurse = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community pediatric nurse
     /// </summary>
     public static readonly Coding CommunityPediatricNurse = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital pharmacist
     /// </summary>
     public static readonly Coding HospitalPharmacist = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retail pharmacist
     /// </summary>
     public static readonly Coding RetailPharmacist = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Industrial pharmacist
     /// </summary>
     public static readonly Coding IndustrialPharmacist = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pharmaceutical officer H.A.
     /// </summary>
     public static readonly Coding PharmaceuticalOfficerHA = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trainee pharmacist
     /// </summary>
     public static readonly Coding TraineePharmacist = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical radiographer
     /// </summary>
     public static readonly Coding MedicalRadiographer = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiographer
     /// </summary>
     public static readonly Coding DiagnosticRadiographer = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Therapeutic radiographer
     /// </summary>
     public static readonly Coding TherapeuticRadiographer = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trainee radiographer
     /// </summary>
     public static readonly Coding TraineeRadiographer = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmic optician
     /// </summary>
     public static readonly Coding OphthalmicOptician = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trainee optician
     /// </summary>
     public static readonly Coding TraineeOptician = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Remedial gymnast
     /// </summary>
     public static readonly Coding RemedialGymnast = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Speech and language therapist
     /// </summary>
     public static readonly Coding SpeechAndLanguageTherapist = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthoptist
     /// </summary>
     public static readonly Coding Orthoptist = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trainee remedial therapist
     /// </summary>
     public static readonly Coding TraineeRemedialTherapist = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dietician
     /// </summary>
     public static readonly Coding Dietician = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Podiatrist
     /// </summary>
     public static readonly Coding Podiatrist = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental auxiliary
     /// </summary>
     public static readonly Coding DentalAuxiliary = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// ECG technician
     /// </summary>
     public static readonly Coding ECGTechnician = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// EEG technician
     /// </summary>
     public static readonly Coding EEGTechnician = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Artificial limb fitter
     /// </summary>
     public static readonly Coding ArtificialLimbFitter = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// AT - Audiology technician
     /// </summary>
     public static readonly Coding ATAudiologyTechnician = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pharmacy technician
     /// </summary>
     public static readonly Coding PharmacyTechnician = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trainee medical technician
     /// </summary>
     public static readonly Coding TraineeMedicalTechnician = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Geneticist
     /// </summary>
     public static readonly Coding Geneticist = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical corset fitter
     /// </summary>
     public static readonly Coding SurgicalCorsetFitter = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental technician
     /// </summary>
     public static readonly Coding DentalTechnician = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Salvation Army member
     /// </summary>
     public static readonly Coding SalvationArmyMember = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// School child
     /// </summary>
     public static readonly Coding SchoolChild = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Common-law husband
     /// </summary>
     public static readonly Coding CommonLawHusband = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Common-law wife
     /// </summary>
     public static readonly Coding CommonLawWife = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roman Catholic
     /// </summary>
     public static readonly Coding RomanCatholic = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atheist
     /// </summary>
     public static readonly Coding Atheist = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jew
     /// </summary>
     public static readonly Coding Jew = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Christian Science Church
     /// </summary>
     public static readonly Coding ChristianScienceChurch = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hindu
     /// </summary>
     public static readonly Coding Hindu = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Christian
     /// </summary>
     public static readonly Coding Christian = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Baptist
     /// </summary>
     public static readonly Coding Baptist = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Methodist
     /// </summary>
     public static readonly Coding Methodist = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Presbyterian
     /// </summary>
     public static readonly Coding Presbyterian = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pentecostal
     /// </summary>
     public static readonly Coding Pentecostal = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evangelist
     /// </summary>
     public static readonly Coding Evangelist = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Christadelphian
     /// </summary>
     public static readonly Coding Christadelphian = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Agnostic
     /// </summary>
     public static readonly Coding Agnostic = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Voluntary worker
     /// </summary>
     public static readonly Coding VoluntaryWorker = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immigrant
     /// </summary>
     public static readonly Coding Immigrant = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maternal great grand-father
     /// </summary>
     public static readonly Coding MaternalGreatGrandFather = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Male fiance
     /// </summary>
     public static readonly Coding MaleFiance = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paternal first cousin
     /// </summary>
     public static readonly Coding PaternalFirstCousin = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiologist
     /// </summary>
     public static readonly Coding Cardiologist = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adoptive brother
     /// </summary>
     public static readonly Coding AdoptiveBrother = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Natural grandmother
     /// </summary>
     public static readonly Coding NaturalGrandmother = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wesleyan Methodist, follower of religion
     /// </summary>
     public static readonly Coding WesleyanMethodistFollowerOfReligion = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ministry of Health Saskatchewan
     /// </summary>
     public static readonly Coding MinistryOfHealthSaskatchewan = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dermatologist
     /// </summary>
     public static readonly Coding Dermatologist = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laboratory hematologist
     /// </summary>
     public static readonly Coding LaboratoryHematologist = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foster sibling
     /// </summary>
     public static readonly Coding FosterSibling = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ministry of Health Quebec
     /// </summary>
     public static readonly Coding MinistryOfHealthQuebec = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gerodontist
     /// </summary>
     public static readonly Coding Gerodontist = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Twin sister
     /// </summary>
     public static readonly Coding TwinSister = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maternal great grand-mother
     /// </summary>
     public static readonly Coding MaternalGreatGrandMother = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Younger sister
     /// </summary>
     public static readonly Coding YoungerSister = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Removable prosthodontist
     /// </summary>
     public static readonly Coding RemovableProsthodontist = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Half-sibling
     /// </summary>
     public static readonly Coding HalfSibling = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specialized dentist
     /// </summary>
     public static readonly Coding SpecializedDentist = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neuropsychiatrist
     /// </summary>
     public static readonly Coding Neuropsychiatrist = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adoptive mother
     /// </summary>
     public static readonly Coding AdoptiveMother = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Female second cousin
     /// </summary>
     public static readonly Coding FemaleSecondCousin = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paternal great grand-mother
     /// </summary>
     public static readonly Coding PaternalGreatGrandMother = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surrogate child
     /// </summary>
     public static readonly Coding SurrogateChild = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Committed Christian, follower of religion
     /// </summary>
     public static readonly Coding CommittedChristianFollowerOfReligion = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Woman
     /// </summary>
     public static readonly Coding Woman = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person in the work environment
     /// </summary>
     public static readonly Coding PersonInTheWorkEnvironment = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Employee
     /// </summary>
     public static readonly Coding Employee = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical assistant
     /// </summary>
     public static readonly Coding ClinicalAssistant = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Senior registrar
     /// </summary>
     public static readonly Coding SeniorRegistrar = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Registrar
     /// </summary>
     public static readonly Coding Registrar = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Senior house officer
     /// </summary>
     public static readonly Coding SeniorHouseOfficer = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MO - Medical officer
     /// </summary>
     public static readonly Coding MOMedicalOfficer = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health visitor, nurse/midwife
     /// </summary>
     public static readonly Coding HealthVisitorNurseMidwife = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Registered nurse
     /// </summary>
     public static readonly Coding RegisteredNurse = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Midwifery tutor
     /// </summary>
     public static readonly Coding MidwiferyTutor = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Accident and Emergency nurse
     /// </summary>
     public static readonly Coding AccidentAndEmergencyNurse = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Triage nurse
     /// </summary>
     public static readonly Coding TriageNurse = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community nurse
     /// </summary>
     public static readonly Coding CommunityNurse = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nursing continence advisor
     /// </summary>
     public static readonly Coding NursingContinenceAdvisor = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coronary care nurse
     /// </summary>
     public static readonly Coding CoronaryCareNurse = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diabetic nurse
     /// </summary>
     public static readonly Coding DiabeticNurse = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Family planning nurse
     /// </summary>
     public static readonly Coding FamilyPlanningNurse = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Care of the elderly nurse
     /// </summary>
     public static readonly Coding CareOfTheElderlyNurse = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// ICN - Infection control nurse
     /// </summary>
     public static readonly Coding ICNInfectionControlNurse = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intensive therapy nurse
     /// </summary>
     public static readonly Coding IntensiveTherapyNurse = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Learning disabilities nurse
     /// </summary>
     public static readonly Coding LearningDisabilitiesNurse = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neonatal nurse
     /// </summary>
     public static readonly Coding NeonatalNurse = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neurology nurse
     /// </summary>
     public static readonly Coding NeurologyNurse = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Industrial nurse
     /// </summary>
     public static readonly Coding IndustrialNurse = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oncology nurse
     /// </summary>
     public static readonly Coding OncologyNurse = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macmillan nurse
     /// </summary>
     public static readonly Coding MacmillanNurse = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Marie Curie nurse
     /// </summary>
     public static readonly Coding MarieCurieNurse = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pain control nurse
     /// </summary>
     public static readonly Coding PainControlNurse = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Palliative care nurse
     /// </summary>
     public static readonly Coding PalliativeCareNurse = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chemotherapy nurse
     /// </summary>
     public static readonly Coding ChemotherapyNurse = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiotherapy nurse
     /// </summary>
     public static readonly Coding RadiotherapyNurse = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PACU nurse
     /// </summary>
     public static readonly Coding PACUNurse = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stomatherapist
     /// </summary>
     public static readonly Coding Stomatherapist = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Theatre nurse
     /// </summary>
     public static readonly Coding TheatreNurse = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric nurse
     /// </summary>
     public static readonly Coding PediatricNurse = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychiatric nurse
     /// </summary>
     public static readonly Coding PsychiatricNurse = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community mental health nurse
     /// </summary>
     public static readonly Coding CommunityMentalHealthNurse = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Renal nurse
     /// </summary>
     public static readonly Coding RenalNurse = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemodialysis nurse
     /// </summary>
     public static readonly Coding HemodialysisNurse = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wound care nurse
     /// </summary>
     public static readonly Coding WoundCareNurse = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nurse grade
     /// </summary>
     public static readonly Coding NurseGrade = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical nurse specialist
     /// </summary>
     public static readonly Coding ClinicalNurseSpecialist = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nurse practitioner
     /// </summary>
     public static readonly Coding NursePractitioner = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nursing sister
     /// </summary>
     public static readonly Coding NursingSister = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CN - Charge nurse
     /// </summary>
     public static readonly Coding CNChargeNurse = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ward manager
     /// </summary>
     public static readonly Coding WardManager = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nursing team leader
     /// </summary>
     public static readonly Coding NursingTeamLeader = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nursing assistant
     /// </summary>
     public static readonly Coding NursingAssistant = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Healthcare assistant
     /// </summary>
     public static readonly Coding HealthcareAssistant = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nursery nurse
     /// </summary>
     public static readonly Coding NurseryNurse = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Healthcare service manager
     /// </summary>
     public static readonly Coding HealthcareServiceManager = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupational health service manager
     /// </summary>
     public static readonly Coding OccupationalHealthServiceManager = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community nurse manager
     /// </summary>
     public static readonly Coding CommunityNurseManager = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Behavior therapist
     /// </summary>
     public static readonly Coding BehaviorTherapist = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Behavior therapy assistant
     /// </summary>
     public static readonly Coding BehaviorTherapyAssistant = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drama therapist
     /// </summary>
     public static readonly Coding DramaTherapist = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Domiciliary occupational therapist
     /// </summary>
     public static readonly Coding DomiciliaryOccupationalTherapist = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupational therapy helper
     /// </summary>
     public static readonly Coding OccupationalTherapyHelper = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychotherapist
     /// </summary>
     public static readonly Coding Psychotherapist = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community-based physiotherapist
     /// </summary>
     public static readonly Coding CommunityBasedPhysiotherapist = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Play therapist
     /// </summary>
     public static readonly Coding PlayTherapist = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Play specialist
     /// </summary>
     public static readonly Coding PlaySpecialist = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Play leader
     /// </summary>
     public static readonly Coding PlayLeader = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community-based speech/language therapist
     /// </summary>
     public static readonly Coding CommunityBasedSpeechLanguageTherapist = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Speech/language assistant
     /// </summary>
     public static readonly Coding SpeechLanguageAssistant = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Professional counselor
     /// </summary>
     public static readonly Coding ProfessionalCounselor = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Marriage guidance counselor
     /// </summary>
     public static readonly Coding MarriageGuidanceCounselor = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trained nurse counselor
     /// </summary>
     public static readonly Coding TrainedNurseCounselor = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trained social worker counselor
     /// </summary>
     public static readonly Coding TrainedSocialWorkerCounselor = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trained personnel counselor
     /// </summary>
     public static readonly Coding TrainedPersonnelCounselor = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychoanalyst
     /// </summary>
     public static readonly Coding Psychoanalyst = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assistant psychologist
     /// </summary>
     public static readonly Coding AssistantPsychologist = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community-based podiatrist
     /// </summary>
     public static readonly Coding CommunityBasedPodiatrist = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foot care worker
     /// </summary>
     public static readonly Coding FootCareWorker = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Audiometrician
     /// </summary>
     public static readonly Coding Audiometrician = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Audiometrist
     /// </summary>
     public static readonly Coding Audiometrist = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Technical healthcare occupation
     /// </summary>
     public static readonly Coding TechnicalHealthcareOccupation = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupational therapy technical instructor
     /// </summary>
     public static readonly Coding OccupationalTherapyTechnicalInstructor = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Administrative healthcare staff
     /// </summary>
     public static readonly Coding AdministrativeHealthcareStaff = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complementary health worker
     /// </summary>
     public static readonly Coding ComplementaryHealthWorker = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Supporting services personnel
     /// </summary>
     public static readonly Coding SupportingServicesPersonnel = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Research associate
     /// </summary>
     public static readonly Coding ResearchAssociate = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Research nurse
     /// </summary>
     public static readonly Coding ResearchNurse = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Migrant
     /// </summary>
     public static readonly Coding Migrant = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Human aid to communication
     /// </summary>
     public static readonly Coding HumanAidToCommunication = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Palantypist
     /// </summary>
     public static readonly Coding Palantypist = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Note taker
     /// </summary>
     public static readonly Coding NoteTaker = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cuer
     /// </summary>
     public static readonly Coding Cuer = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lipspeaker
     /// </summary>
     public static readonly Coding Lipspeaker = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interpreter for British sign language
     /// </summary>
     public static readonly Coding InterpreterForBritishSignLanguage = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interpreter for Signs supporting English
     /// </summary>
     public static readonly Coding InterpreterForSignsSupportingEnglish = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General category of person
     /// </summary>
     public static readonly Coding GeneralCategoryOfPerson = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General practitioner locum
     /// </summary>
     public static readonly Coding GeneralPractitionerLocum = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical assistant
     /// </summary>
     public static readonly Coding MedicalAssistant = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lactation consultant
     /// </summary>
     public static readonly Coding LactationConsultant = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Midwife counselor
     /// </summary>
     public static readonly Coding MidwifeCounselor = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stepdaughter
     /// </summary>
     public static readonly Coding Stepdaughter = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adoptive grandparent
     /// </summary>
     public static readonly Coding AdoptiveGrandparent = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Half-sister
     /// </summary>
     public static readonly Coding HalfSister = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthopedic surgeon
     /// </summary>
     public static readonly Coding OrthopedicSurgeon = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Legal sister
     /// </summary>
     public static readonly Coding LegalSister = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracic surgeon
     /// </summary>
     public static readonly Coding ThoracicSurgeon = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Naturopath
     /// </summary>
     public static readonly Coding Naturopath = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adoptive son
     /// </summary>
     public static readonly Coding AdoptiveSon = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community health physician
     /// </summary>
     public static readonly Coding CommunityHealthPhysician = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prosthetist
     /// </summary>
     public static readonly Coding Prosthetist = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Great-great grandmother
     /// </summary>
     public static readonly Coding GreatGreatGrandmother = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physical medicine specialist
     /// </summary>
     public static readonly Coding PhysicalMedicineSpecialist = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urologist
     /// </summary>
     public static readonly Coding Urologist = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Working mother
     /// </summary>
     public static readonly Coding WorkingMother = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rastafarian, follower of religion
     /// </summary>
     public static readonly Coding RastafarianFollowerOfReligion = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community health center
     /// </summary>
     public static readonly Coding CommunityHealthCenter = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nova Scotia Department of Health and Wellness
     /// </summary>
     public static readonly Coding NovaScotiaDepartmentOfHealthAndWellness = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aunt
     /// </summary>
     public static readonly Coding Aunt = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nunavut Department of Health and Social Services
     /// </summary>
     public static readonly Coding NunavutDepartmentOfHealthAndSocialServices = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pregnant woman
     /// </summary>
     public static readonly Coding PregnantWoman = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Animal rider
     /// </summary>
     public static readonly Coding AnimalRider = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rider of motorcycle
     /// </summary>
     public static readonly Coding RiderOfMotorcycle = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pedal cyclist
     /// </summary>
     public static readonly Coding PedalCyclist = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Passenger
     /// </summary>
     public static readonly Coding Passenger = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupant of motor vehicle
     /// </summary>
     public static readonly Coding OccupantOfMotorVehicle = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupant of tram
     /// </summary>
     public static readonly Coding OccupantOfTram = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pillion passenger
     /// </summary>
     public static readonly Coding PillionPassenger = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person riding on outside of vehicle
     /// </summary>
     public static readonly Coding PersonRidingOnOutsideOfVehicle = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person travelling on outside of train
     /// </summary>
     public static readonly Coding PersonTravellingOnOutsideOfTrain = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Front seat passenger
     /// </summary>
     public static readonly Coding FrontSeatPassenger = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Back seat passenger
     /// </summary>
     public static readonly Coding BackSeatPassenger = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupant of animal-drawn vehicle
     /// </summary>
     public static readonly Coding OccupantOfAnimalDrawnVehicle = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Passenger on commercial watercraft
     /// </summary>
     public static readonly Coding PassengerOnCommercialWatercraft = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Passenger on station
     /// </summary>
     public static readonly Coding PassengerOnStation = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Passenger on train
     /// </summary>
     public static readonly Coding PassengerOnTrain = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Member of public
     /// </summary>
     public static readonly Coding MemberOfPublic = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Member of public involved incidentally
     /// </summary>
     public static readonly Coding MemberOfPublicInvolvedIncidentally = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Member of public on ground
     /// </summary>
     public static readonly Coding MemberOfPublicOnGround = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupant of nonmotor vehicle
     /// </summary>
     public static readonly Coding OccupantOfNonmotorVehicle = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pedestrian
     /// </summary>
     public static readonly Coding Pedestrian = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person trespassing on railway line
     /// </summary>
     public static readonly Coding PersonTrespassingOnRailwayLine = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Railway employee on train
     /// </summary>
     public static readonly Coding RailwayEmployeeOnTrain = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Recreational watercraft user
     /// </summary>
     public static readonly Coding RecreationalWatercraftUser = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swimmer
     /// </summary>
     public static readonly Coding Swimmer = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// User of animal-drawn vehicle
     /// </summary>
     public static readonly Coding UserOfAnimalDrawnVehicle = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Watercraft dweller
     /// </summary>
     public static readonly Coding WatercraftDweller = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Waterskier
     /// </summary>
     public static readonly Coding Waterskier = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hip and knee surgeon
     /// </summary>
     public static readonly Coding HipAndKneeSurgeon = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electroencephalography specialist
     /// </summary>
     public static readonly Coding ElectroencephalographySpecialist = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental hygienist
     /// </summary>
     public static readonly Coding DentalHygienist = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepatologist
     /// </summary>
     public static readonly Coding Hepatologist = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Companion
     /// </summary>
     public static readonly Coding Companion = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Public health nurse
     /// </summary>
     public static readonly Coding PublicHealthNurse = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nursing occupation
     /// </summary>
     public static readonly Coding NursingOccupation = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical/dental technicians
     /// </summary>
     public static readonly Coding MedicalDentalTechnicians = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Single parent
     /// </summary>
     public static readonly Coding SingleParent = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sportsman
     /// </summary>
     public static readonly Coding Sportsman = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Female first cousin
     /// </summary>
     public static readonly Coding FemaleFirstCousin = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anglican, follower of religion
     /// </summary>
     public static readonly Coding AnglicanFollowerOfReligion = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surrogate mother
     /// </summary>
     public static readonly Coding SurrogateMother = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Voluntary helper
     /// </summary>
     public static readonly Coding VoluntaryHelper = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Voluntary visitor
     /// </summary>
     public static readonly Coding VoluntaryVisitor = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Volunteer helper
     /// </summary>
     public static readonly Coding VolunteerHelper = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nonconformist
     /// </summary>
     public static readonly Coding Nonconformist = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sr - Sister
     /// </summary>
     public static readonly Coding SrSister = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shiite muslim, follower of religion
     /// </summary>
     public static readonly Coding ShiiteMuslimFollowerOfReligion = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Optometrist
     /// </summary>
     public static readonly Coding Optometrist = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parkinson disease nurse
     /// </summary>
     public static readonly Coding ParkinsonDiseaseNurse = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neonatologist
     /// </summary>
     public static readonly Coding Neonatologist = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chemical pathologist
     /// </summary>
     public static readonly Coding ChemicalPathologist = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shoulder surgeon
     /// </summary>
     public static readonly Coding ShoulderSurgeon = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maternal cousin
     /// </summary>
     public static readonly Coding MaternalCousin = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Provider billing number
     /// </summary>
     public static readonly Coding ProviderBillingNumber = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interventional radiologist
     /// </summary>
     public static readonly Coding InterventionalRadiologist = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Younger sibling
     /// </summary>
     public static readonly Coding YoungerSibling = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Female cousin
     /// </summary>
     public static readonly Coding FemaleCousin = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fraternal twin sister
     /// </summary>
     public static readonly Coding FraternalTwinSister = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foster brother
     /// </summary>
     public static readonly Coding FosterBrother = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specialist registrar
     /// </summary>
     public static readonly Coding SpecialistRegistrar = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person in the transport environment
     /// </summary>
     public static readonly Coding PersonInTheTransportEnvironment = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person in the family
     /// </summary>
     public static readonly Coding PersonInTheFamily = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person in the home environment
     /// </summary>
     public static readonly Coding PersonInTheHomeEnvironment = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person in the religious environment
     /// </summary>
     public static readonly Coding PersonInTheReligiousEnvironment = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person in the healthcare environment
     /// </summary>
     public static readonly Coding PersonInTheHealthcareEnvironment = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person in the community environment
     /// </summary>
     public static readonly Coding PersonInTheCommunityEnvironment = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person in the recreational environment
     /// </summary>
     public static readonly Coding PersonInTheRecreationalEnvironment = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person in the educational environment
     /// </summary>
     public static readonly Coding PersonInTheEducationalEnvironment = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crewmember
     /// </summary>
     public static readonly Coding Crewmember = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Member of mental health review tribunal
     /// </summary>
     public static readonly Coding MemberOfMentalHealthReviewTribunal = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital manager
     /// </summary>
     public static readonly Coding HospitalManager = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Responsible medical officer
     /// </summary>
     public static readonly Coding ResponsibleMedicalOfficer = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Independent doctor
     /// </summary>
     public static readonly Coding IndependentDoctor = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupant of railway vehicle
     /// </summary>
     public static readonly Coding OccupantOfRailwayVehicle = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Driver of motor vehicle
     /// </summary>
     public static readonly Coding DriverOfMotorVehicle = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Driver of animal-drawn vehicle
     /// </summary>
     public static readonly Coding DriverOfAnimalDrawnVehicle = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Passenger of animal-drawn vehicle
     /// </summary>
     public static readonly Coding PassengerOfAnimalDrawnVehicle = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Passenger on pedal cycle
     /// </summary>
     public static readonly Coding PassengerOnPedalCycle = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupant of watercraft
     /// </summary>
     public static readonly Coding OccupantOfWatercraft = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupant of aircraft
     /// </summary>
     public static readonly Coding OccupantOfAircraft = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Horse rider
     /// </summary>
     public static readonly Coding HorseRider = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Passenger on aircraft
     /// </summary>
     public static readonly Coding PassengerOnAircraft = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crewmember on aircraft
     /// </summary>
     public static readonly Coding CrewmemberOnAircraft = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Passenger of motor vehicle
     /// </summary>
     public static readonly Coding PassengerOfMotorVehicle = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trespasser
     /// </summary>
     public static readonly Coding Trespasser = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Car passenger
     /// </summary>
     public static readonly Coding CarPassenger = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coach passenger
     /// </summary>
     public static readonly Coding CoachPassenger = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bereavement counselor
     /// </summary>
     public static readonly Coding BereavementCounselor = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgeon
     /// </summary>
     public static readonly Coding Surgeon = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stepfather
     /// </summary>
     public static readonly Coding Stepfather = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical technician
     /// </summary>
     public static readonly Coding MedicalTechnician = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Remedial therapist
     /// </summary>
     public static readonly Coding RemedialTherapist = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Accident and Emergency doctor
     /// </summary>
     public static readonly Coding AccidentAndEmergencyDoctor = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical oncologist
     /// </summary>
     public static readonly Coding ClinicalOncologist = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Family planning doctor
     /// </summary>
     public static readonly Coding FamilyPlanningDoctor = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Associate general practitioner
     /// </summary>
     public static readonly Coding AssociateGeneralPractitioner = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Partner of general practitioner
     /// </summary>
     public static readonly Coding PartnerOfGeneralPractitioner = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assistant GP
     /// </summary>
     public static readonly Coding AssistantGP = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deputizing general practitioner
     /// </summary>
     public static readonly Coding DeputizingGeneralPractitioner = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General practitioner registrar
     /// </summary>
     public static readonly Coding GeneralPractitionerRegistrar = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ambulatory pediatrician
     /// </summary>
     public static readonly Coding AmbulatoryPediatrician = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community pediatrician
     /// </summary>
     public static readonly Coding CommunityPediatrician = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric cardiologist
     /// </summary>
     public static readonly Coding PediatricCardiologist = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric endocrinologist
     /// </summary>
     public static readonly Coding PediatricEndocrinologist = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric gastroenterologist
     /// </summary>
     public static readonly Coding PediatricGastroenterologist = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric nephrologist
     /// </summary>
     public static readonly Coding PediatricNephrologist = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric neurologist
     /// </summary>
     public static readonly Coding PediatricNeurologist = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric rheumatologist
     /// </summary>
     public static readonly Coding PediatricRheumatologist = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric oncologist
     /// </summary>
     public static readonly Coding PediatricOncologist = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pain management specialist
     /// </summary>
     public static readonly Coding PainManagementSpecialist = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intensive care specialist
     /// </summary>
     public static readonly Coding IntensiveCareSpecialist = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult intensive care specialist
     /// </summary>
     public static readonly Coding AdultIntensiveCareSpecialist = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric intensive care specialist
     /// </summary>
     public static readonly Coding PediatricIntensiveCareSpecialist = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood transfusion doctor
     /// </summary>
     public static readonly Coding BloodTransfusionDoctor = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Histopathologist
     /// </summary>
     public static readonly Coding Histopathologist = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physician
     /// </summary>
     public static readonly Coding Physician = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chest physician
     /// </summary>
     public static readonly Coding ChestPhysician = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoracic physician
     /// </summary>
     public static readonly Coding ThoracicPhysician = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical hematologist
     /// </summary>
     public static readonly Coding ClinicalHematologist = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical neurophysiologist
     /// </summary>
     public static readonly Coding ClinicalNeurophysiologist = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical physiologist
     /// </summary>
     public static readonly Coding ClinicalPhysiologist = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diabetologist
     /// </summary>
     public static readonly Coding Diabetologist = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Andrologist
     /// </summary>
     public static readonly Coding Andrologist = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neuroendocrinologist
     /// </summary>
     public static readonly Coding Neuroendocrinologist = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reproductive endocrinologist
     /// </summary>
     public static readonly Coding ReproductiveEndocrinologist = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thyroidologist
     /// </summary>
     public static readonly Coding Thyroidologist = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical geneticist
     /// </summary>
     public static readonly Coding ClinicalGeneticist = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical cytogeneticist
     /// </summary>
     public static readonly Coding ClinicalCytogeneticist = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical molecular geneticist
     /// </summary>
     public static readonly Coding ClinicalMolecularGeneticist = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Genitourinary medicine physician
     /// </summary>
     public static readonly Coding GenitourinaryMedicinePhysician = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Palliative care physician
     /// </summary>
     public static readonly Coding PalliativeCarePhysician = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rehabilitation physician
     /// </summary>
     public static readonly Coding RehabilitationPhysician = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child and adolescent psychiatrist
     /// </summary>
     public static readonly Coding ChildAndAdolescentPsychiatrist = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Forensic psychiatrist
     /// </summary>
     public static readonly Coding ForensicPsychiatrist = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liaison psychiatrist
     /// </summary>
     public static readonly Coding LiaisonPsychiatrist = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychogeriatrician
     /// </summary>
     public static readonly Coding Psychogeriatrician = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychiatrist for mental handicap
     /// </summary>
     public static readonly Coding PsychiatristForMentalHandicap = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rehabilitation psychiatrist
     /// </summary>
     public static readonly Coding RehabilitationPsychiatrist = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obstetrician and gynecologist
     /// </summary>
     public static readonly Coding ObstetricianAndGynecologist = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breast surgeon
     /// </summary>
     public static readonly Coding BreastSurgeon = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiothoracic surgeon
     /// </summary>
     public static readonly Coding CardiothoracicSurgeon = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac surgeon
     /// </summary>
     public static readonly Coding CardiacSurgeon = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear, nose and throat surgeon
     /// </summary>
     public static readonly Coding EarNoseAndThroatSurgeon = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endocrine surgeon
     /// </summary>
     public static readonly Coding EndocrineSurgeon = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thyroid surgeon
     /// </summary>
     public static readonly Coding ThyroidSurgeon = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pituitary surgeon
     /// </summary>
     public static readonly Coding PituitarySurgeon = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastrointestinal surgeon
     /// </summary>
     public static readonly Coding GastrointestinalSurgeon = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General gastrointestinal surgeon
     /// </summary>
     public static readonly Coding GeneralGastrointestinalSurgeon = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Upper gastrointestinal surgeon
     /// </summary>
     public static readonly Coding UpperGastrointestinalSurgeon = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Colorectal surgeon
     /// </summary>
     public static readonly Coding ColorectalSurgeon = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hand surgeon
     /// </summary>
     public static readonly Coding HandSurgeon = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepatobiliary surgeon
     /// </summary>
     public static readonly Coding HepatobiliarySurgeon = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmic surgeon
     /// </summary>
     public static readonly Coding OphthalmicSurgeon = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric surgeon
     /// </summary>
     public static readonly Coding PediatricSurgeon = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pancreatic surgeon
     /// </summary>
     public static readonly Coding PancreaticSurgeon = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transplant surgeon
     /// </summary>
     public static readonly Coding TransplantSurgeon = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trauma surgeon
     /// </summary>
     public static readonly Coding TraumaSurgeon = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vascular surgeon
     /// </summary>
     public static readonly Coding VascularSurgeon = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical practitioner grade
     /// </summary>
     public static readonly Coding MedicalPractitionerGrade = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital consultant
     /// </summary>
     public static readonly Coding HospitalConsultant = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Visiting specialist registrar
     /// </summary>
     public static readonly Coding VisitingSpecialistRegistrar = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Research registrar
     /// </summary>
     public static readonly Coding ResearchRegistrar = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General practitioner grade
     /// </summary>
     public static readonly Coding GeneralPractitionerGrade = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General practitioner principal
     /// </summary>
     public static readonly Coding GeneralPractitionerPrincipal = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital specialist
     /// </summary>
     public static readonly Coding HospitalSpecialist = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Associate specialist
     /// </summary>
     public static readonly Coding AssociateSpecialist = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Research fellow
     /// </summary>
     public static readonly Coding ResearchFellow = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Allied health professional
     /// </summary>
     public static readonly Coding AlliedHealthProfessional = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital dietitian
     /// </summary>
     public static readonly Coding HospitalDietitian = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Domiciliary physiotherapist
     /// </summary>
     public static readonly Coding DomiciliaryPhysiotherapist = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General practitioner-based physiotherapist
     /// </summary>
     public static readonly Coding GeneralPractitionerBasedPhysiotherapist = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital-based physiotherapist
     /// </summary>
     public static readonly Coding HospitalBasedPhysiotherapist = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private physiotherapist
     /// </summary>
     public static readonly Coding PrivatePhysiotherapist = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physiotherapy assistant
     /// </summary>
     public static readonly Coding PhysiotherapyAssistant = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital-based speech and language therapist
     /// </summary>
     public static readonly Coding HospitalBasedSpeechAndLanguageTherapist = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arts therapist
     /// </summary>
     public static readonly Coding ArtsTherapist = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dance therapist
     /// </summary>
     public static readonly Coding DanceTherapist = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Music therapist
     /// </summary>
     public static readonly Coding MusicTherapist = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Renal dietitian
     /// </summary>
     public static readonly Coding RenalDietitian = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liver dietitian
     /// </summary>
     public static readonly Coding LiverDietitian = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oncology dietitian
     /// </summary>
     public static readonly Coding OncologyDietitian = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric dietitian
     /// </summary>
     public static readonly Coding PediatricDietitian = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diabetes dietitian
     /// </summary>
     public static readonly Coding DiabetesDietitian = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Audiologist
     /// </summary>
     public static readonly Coding Audiologist = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hearing therapist
     /// </summary>
     public static readonly Coding HearingTherapist = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Audiological scientist
     /// </summary>
     public static readonly Coding AudiologicalScientist = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hearing aid dispenser
     /// </summary>
     public static readonly Coding HearingAidDispenser = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community-based occupational therapist
     /// </summary>
     public static readonly Coding CommunityBasedOccupationalTherapist = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital occupational therapist
     /// </summary>
     public static readonly Coding HospitalOccupationalTherapist = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Social services occupational therapist
     /// </summary>
     public static readonly Coding SocialServicesOccupationalTherapist = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthotist
     /// </summary>
     public static readonly Coding Orthotist = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical fitter
     /// </summary>
     public static readonly Coding SurgicalFitter = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital-based podiatrist
     /// </summary>
     public static readonly Coding HospitalBasedPodiatrist = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Podiatry assistant
     /// </summary>
     public static readonly Coding PodiatryAssistant = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphedema nurse
     /// </summary>
     public static readonly Coding LymphedemaNurse = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community learning disabilities nurse
     /// </summary>
     public static readonly Coding CommunityLearningDisabilitiesNurse = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical nurse teacher
     /// </summary>
     public static readonly Coding ClinicalNurseTeacher = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community practice nurse teacher
     /// </summary>
     public static readonly Coding CommunityPracticeNurseTeacher = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nurse tutor
     /// </summary>
     public static readonly Coding NurseTutor = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nurse teacher practitioner
     /// </summary>
     public static readonly Coding NurseTeacherPractitioner = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nurse lecturer practitioner
     /// </summary>
     public static readonly Coding NurseLecturerPractitioner = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Outreach nurse
     /// </summary>
     public static readonly Coding OutreachNurse = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthetic nurse
     /// </summary>
     public static readonly Coding AnestheticNurse = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nurse manager
     /// </summary>
     public static readonly Coding NurseManager = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nurse administrator
     /// </summary>
     public static readonly Coding NurseAdministrator = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Midwifery grade
     /// </summary>
     public static readonly Coding MidwiferyGrade = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Midwife
     /// </summary>
     public static readonly Coding Midwife = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Student midwife
     /// </summary>
     public static readonly Coding StudentMidwife = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parentcraft sister
     /// </summary>
     public static readonly Coding ParentcraftSister = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clergy
     /// </summary>
     public static readonly Coding Clergy = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Healthcare professional grade
     /// </summary>
     public static readonly Coding HealthcareProfessionalGrade = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Restorative dentist
     /// </summary>
     public static readonly Coding RestorativeDentist = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Buddhist, follower of religion
     /// </summary>
     public static readonly Coding BuddhistFollowerOfReligion = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muslim, follower of religion
     /// </summary>
     public static readonly Coding MuslimFollowerOfReligion = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protestant, follower of religion
     /// </summary>
     public static readonly Coding ProtestantFollowerOfReligion = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Quaker, follower of religion
     /// </summary>
     public static readonly Coding QuakerFollowerOfReligion = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric audiologist
     /// </summary>
     public static readonly Coding PediatricAudiologist = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immunopathologist
     /// </summary>
     public static readonly Coding Immunopathologist = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Audiological physician
     /// </summary>
     public static readonly Coding AudiologicalPhysician = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical pharmacologist
     /// </summary>
     public static readonly Coding ClinicalPharmacologist = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Private doctor
     /// </summary>
     public static readonly Coding PrivateDoctor = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Agency nurse
     /// </summary>
     public static readonly Coding AgencyNurse = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Behavioral therapist nurse
     /// </summary>
     public static readonly Coding BehavioralTherapistNurse = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac rehabilitation nurse
     /// </summary>
     public static readonly Coding CardiacRehabilitationNurse = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Genitourinary nurse
     /// </summary>
     public static readonly Coding GenitourinaryNurse = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rheumatology nurse specialist
     /// </summary>
     public static readonly Coding RheumatologyNurseSpecialist = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Continence nurse
     /// </summary>
     public static readonly Coding ContinenceNurse = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contact tracing nurse
     /// </summary>
     public static readonly Coding ContactTracingNurse = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General nurse
     /// </summary>
     public static readonly Coding GeneralNurse = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nurse for the mentally handicapped
     /// </summary>
     public static readonly Coding NurseForTheMentallyHandicapped = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liaison nurse
     /// </summary>
     public static readonly Coding LiaisonNurse = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diabetic liaison nurse
     /// </summary>
     public static readonly Coding DiabeticLiaisonNurse = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nurse psychotherapist
     /// </summary>
     public static readonly Coding NursePsychotherapist = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Company nurse
     /// </summary>
     public static readonly Coding CompanyNurse = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital midwife
     /// </summary>
     public static readonly Coding HospitalMidwife = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Genetic counselor
     /// </summary>
     public static readonly Coding GeneticCounselor = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mental health counselor
     /// </summary>
     public static readonly Coding MentalHealthCounselor = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical psychologist
     /// </summary>
     public static readonly Coding ClinicalPsychologist = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Educational psychologist
     /// </summary>
     public static readonly Coding EducationalPsychologist = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coroner
     /// </summary>
     public static readonly Coding Coroner = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Appliance officer
     /// </summary>
     public static readonly Coding ApplianceOfficer = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical oncologist
     /// </summary>
     public static readonly Coding MedicalOncologist = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Graduate
     /// </summary>
     public static readonly Coding Graduate = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// School medical officer
     /// </summary>
     public static readonly Coding SchoolMedicalOfficer = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Integrated midwife
     /// </summary>
     public static readonly Coding IntegratedMidwife = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Identical twin
     /// </summary>
     public static readonly Coding IdenticalTwin = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heterozygous twin
     /// </summary>
     public static readonly Coding HeterozygousTwin = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parachutist
     /// </summary>
     public static readonly Coding Parachutist = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bird fancier
     /// </summary>
     public static readonly Coding BirdFancier = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adoptive grandmother
     /// </summary>
     public static readonly Coding AdoptiveGrandmother = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Independent health care facility
     /// </summary>
     public static readonly Coding IndependentHealthCareFacility = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foster daughter
     /// </summary>
     public static readonly Coding FosterDaughter = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Great-grandparent
     /// </summary>
     public static readonly Coding GreatGrandparent = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Man
     /// </summary>
     public static readonly Coding Man = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric radiologist
     /// </summary>
     public static readonly Coding PediatricRadiologist = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oldest daughter
     /// </summary>
     public static readonly Coding OldestDaughter = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiation therapist
     /// </summary>
     public static readonly Coding RadiationTherapist = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Niece
     /// </summary>
     public static readonly Coding Niece = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grandfather
     /// </summary>
     public static readonly Coding Grandfather = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Only daughter
     /// </summary>
     public static readonly Coding OnlyDaughter = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for occupational therapists
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForOccupationalTherapists = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bum
     /// </summary>
     public static readonly Coding Bum = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beggar
     /// </summary>
     public static readonly Coding Beggar = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hasidic Jew, follower of religion
     /// </summary>
     public static readonly Coding HasidicJewFollowerOfReligion = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sikh, follower of religion
     /// </summary>
     public static readonly Coding SikhFollowerOfReligion = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PT - Physiotherapist
     /// </summary>
     public static readonly Coding PTPhysiotherapist = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Emergency medicine specialist
     /// </summary>
     public static readonly Coding EmergencyMedicineSpecialist = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for physiotherapists
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForPhysiotherapists = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Periodontist
     /// </summary>
     public static readonly Coding Periodontist = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// RN First Assist
     /// </summary>
     public static readonly Coding RNFirstAssist = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Outpatient
     /// </summary>
     public static readonly Coding Outpatient = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orphan child
     /// </summary>
     public static readonly Coding OrphanChild = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sibling
     /// </summary>
     public static readonly Coding Sibling = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthodontist
     /// </summary>
     public static readonly Coding Orthodontist = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Uncle
     /// </summary>
     public static readonly Coding Uncle = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oldest son
     /// </summary>
     public static readonly Coding OldestSon = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foster mother
     /// </summary>
     public static readonly Coding FosterMother = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grandparent
     /// </summary>
     public static readonly Coding Grandparent = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chiropractor
     /// </summary>
     public static readonly Coding Chiropractor = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surrogate daughter
     /// </summary>
     public static readonly Coding SurrogateDaughter = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Individual
     /// </summary>
     public static readonly Coding Individual = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Optician
     /// </summary>
     public static readonly Coding Optician = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foster child
     /// </summary>
     public static readonly Coding FosterChild = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Asylum seeker
     /// </summary>
     public static readonly Coding AsylumSeeker = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for dental hygienists
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForDentalHygienists = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Great-grandson
     /// </summary>
     public static readonly Coding GreatGrandson = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Great-granddaughter
     /// </summary>
     public static readonly Coding GreatGranddaughter = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extended family member
     /// </summary>
     public static readonly Coding ExtendedFamilyMember = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Employer
     /// </summary>
     public static readonly Coding Employer = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical secretary
     /// </summary>
     public static readonly Coding MedicalSecretary = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital nurse
     /// </summary>
     public static readonly Coding HospitalNurse = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Guardian
     /// </summary>
     public static readonly Coding Guardian = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Other related persons
     /// </summary>
     public static readonly Coding OtherRelatedPersons = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General practice (organisation)
     /// </summary>
     public static readonly Coding GeneralPracticeOrganisation = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Regional office
     /// </summary>
     public static readonly Coding RegionalOffice = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health Authority
     /// </summary>
     public static readonly Coding HealthAuthority = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Primary Care Group
     /// </summary>
     public static readonly Coding PrimaryCareGroup = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Primary Care Trust
     /// </summary>
     public static readonly Coding PrimaryCareTrust = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Special Health Authority
     /// </summary>
     public static readonly Coding SpecialHealthAuthority = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospice - independent
     /// </summary>
     public static readonly Coding HospiceIndependent = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Independent provider
     /// </summary>
     public static readonly Coding IndependentProvider = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// GP practice
     /// </summary>
     public static readonly Coding GPPractice = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// GDP practice
     /// </summary>
     public static readonly Coding GDPPractice = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MoD practice
     /// </summary>
     public static readonly Coding MoDPractice = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MoD hospital
     /// </summary>
     public static readonly Coding MoDHospital = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prison practice
     /// </summary>
     public static readonly Coding PrisonPractice = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immediate family member
     /// </summary>
     public static readonly Coding ImmediateFamilyMember = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-immediate family member
     /// </summary>
     public static readonly Coding NonImmediateFamilyMember = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paternal grand-father
     /// </summary>
     public static readonly Coding PaternalGrandFather = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maternal grand-father
     /// </summary>
     public static readonly Coding MaternalGrandFather = new Coding
     {
@@ -5574,7 +5574,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paternal grand-mother
     /// </summary>
     public static readonly Coding PaternalGrandMother = new Coding
     {
@@ -5583,7 +5583,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maternal grand-mother
     /// </summary>
     public static readonly Coding MaternalGrandMother = new Coding
     {
@@ -5592,7 +5592,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Distant relative
     /// </summary>
     public static readonly Coding DistantRelative = new Coding
     {
@@ -5601,7 +5601,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Great-uncle
     /// </summary>
     public static readonly Coding GreatUncle = new Coding
     {
@@ -5610,7 +5610,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Great-aunt
     /// </summary>
     public static readonly Coding GreatAunt = new Coding
     {
@@ -5619,7 +5619,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-family member
     /// </summary>
     public static readonly Coding NonFamilyMember = new Coding
     {
@@ -5628,7 +5628,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cohabitee
     /// </summary>
     public static readonly Coding Cohabitee = new Coding
     {
@@ -5637,7 +5637,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paternal cousin
     /// </summary>
     public static readonly Coding PaternalCousin = new Coding
     {
@@ -5646,7 +5646,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Internal medicine specialist
     /// </summary>
     public static readonly Coding InternalMedicineSpecialist = new Coding
     {
@@ -5655,7 +5655,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Consultant anesthetist
     /// </summary>
     public static readonly Coding ConsultantAnesthetist = new Coding
     {
@@ -5664,7 +5664,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paramedic
     /// </summary>
     public static readonly Coding Paramedic = new Coding
     {
@@ -5673,7 +5673,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Staff grade obstetrician
     /// </summary>
     public static readonly Coding StaffGradeObstetrician = new Coding
     {
@@ -5682,7 +5682,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Staff grade practitioner
     /// </summary>
     public static readonly Coding StaffGradePractitioner = new Coding
     {
@@ -5691,7 +5691,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nurse complex case manager
     /// </summary>
     public static readonly Coding NurseComplexCaseManager = new Coding
     {
@@ -5700,7 +5700,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical student
     /// </summary>
     public static readonly Coding MedicalStudent = new Coding
     {
@@ -5709,7 +5709,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Quality Improvement Template Task Force
     /// </summary>
     public static readonly Coding QualityImprovementTemplateTaskForce = new Coding
     {
@@ -5718,7 +5718,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acting obstetric registrar
     /// </summary>
     public static readonly Coding ActingObstetricRegistrar = new Coding
     {
@@ -5727,7 +5727,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Association of anesthesia clinical directors
     /// </summary>
     public static readonly Coding AssociationOfAnesthesiaClinicalDirectors = new Coding
     {
@@ -5736,7 +5736,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Family medicine specialist - palliative care
     /// </summary>
     public static readonly Coding FamilyMedicineSpecialistPalliativeCare = new Coding
     {
@@ -5745,7 +5745,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paternal great grand-father
     /// </summary>
     public static readonly Coding PaternalGreatGrandFather = new Coding
     {
@@ -5754,7 +5754,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dietitian (general)
     /// </summary>
     public static readonly Coding DietitianGeneral = new Coding
     {
@@ -5763,7 +5763,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hematologist
     /// </summary>
     public static readonly Coding Hematologist = new Coding
     {
@@ -5772,7 +5772,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physiotherapist technical instructor
     /// </summary>
     public static readonly Coding PhysiotherapistTechnicalInstructor = new Coding
     {
@@ -5781,7 +5781,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Resident physician
     /// </summary>
     public static readonly Coding ResidentPhysician = new Coding
     {
@@ -5790,7 +5790,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Certified registered nurse anesthetist
     /// </summary>
     public static readonly Coding CertifiedRegisteredNurseAnesthetist = new Coding
     {
@@ -5799,7 +5799,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Attending physician
     /// </summary>
     public static readonly Coding AttendingPhysician = new Coding
     {
@@ -5808,7 +5808,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assigned practitioner
     /// </summary>
     public static readonly Coding AssignedPractitioner = new Coding
     {
@@ -5817,7 +5817,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Professional initiating surgical case
     /// </summary>
     public static readonly Coding ProfessionalInitiatingSurgicalCase = new Coding
     {
@@ -5826,7 +5826,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Professional providing staff relief during surgical procedure
     /// </summary>
     public static readonly Coding ProfessionalProvidingStaffReliefDuringSurgicalProcedure = new Coding
     {
@@ -5835,7 +5835,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interpreter
     /// </summary>
     public static readonly Coding Interpreter = new Coding
     {
@@ -5844,7 +5844,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parent
     /// </summary>
     public static readonly Coding Parent = new Coding
     {
@@ -5853,7 +5853,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Informal carer
     /// </summary>
     public static readonly Coding InformalCarer = new Coding
     {
@@ -5862,7 +5862,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Primary carer
     /// </summary>
     public static readonly Coding PrimaryCarer = new Coding
     {
@@ -5871,7 +5871,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Consultant pediatrician
     /// </summary>
     public static readonly Coding ConsultantPediatrician = new Coding
     {
@@ -5880,7 +5880,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Consultant neonatologist
     /// </summary>
     public static readonly Coding ConsultantNeonatologist = new Coding
     {
@@ -5889,7 +5889,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health educator
     /// </summary>
     public static readonly Coding HealthEducator = new Coding
     {
@@ -5898,7 +5898,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Certified health education specialist
     /// </summary>
     public static readonly Coding CertifiedHealthEducationSpecialist = new Coding
     {
@@ -5907,7 +5907,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surrogate son
     /// </summary>
     public static readonly Coding SurrogateSon = new Coding
     {
@@ -5916,7 +5916,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person categorized by religious affiliation
     /// </summary>
     public static readonly Coding PersonCategorizedByReligiousAffiliation = new Coding
     {
@@ -5925,7 +5925,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person categorized by age
     /// </summary>
     public static readonly Coding PersonCategorizedByAge = new Coding
     {
@@ -5934,7 +5934,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Minor
     /// </summary>
     public static readonly Coding Minor = new Coding
     {
@@ -5943,7 +5943,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pre-teen
     /// </summary>
     public static readonly Coding PreTeen = new Coding
     {
@@ -5952,7 +5952,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child
     /// </summary>
     public static readonly Coding Child = new Coding
     {
@@ -5961,7 +5961,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Preschool child
     /// </summary>
     public static readonly Coding PreschoolChild = new Coding
     {
@@ -5970,7 +5970,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person in the legal environment
     /// </summary>
     public static readonly Coding PersonInTheLegalEnvironment = new Coding
     {
@@ -5979,7 +5979,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subject of record
     /// </summary>
     public static readonly Coding SubjectOfRecord = new Coding
     {
@@ -5988,7 +5988,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Student in full time education
     /// </summary>
     public static readonly Coding StudentInFullTimeEducation = new Coding
     {
@@ -5997,7 +5997,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Circulating nurse
     /// </summary>
     public static readonly Coding CirculatingNurse = new Coding
     {
@@ -6006,7 +6006,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Domestic partner
     /// </summary>
     public static readonly Coding DomesticPartner = new Coding
     {
@@ -6015,7 +6015,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Perioperative nurse
     /// </summary>
     public static readonly Coding PerioperativeNurse = new Coding
     {
@@ -6024,7 +6024,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scrub nurse
     /// </summary>
     public static readonly Coding ScrubNurse = new Coding
     {
@@ -6033,7 +6033,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Primary screener
     /// </summary>
     public static readonly Coding PrimaryScreener = new Coding
     {
@@ -6042,7 +6042,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Secondary screener
     /// </summary>
     public static readonly Coding SecondaryScreener = new Coding
     {
@@ -6051,7 +6051,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fellow of American Academy of Osteopathy
     /// </summary>
     public static readonly Coding FellowOfAmericanAcademyOfOsteopathy = new Coding
     {
@@ -6060,7 +6060,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical oncologist
     /// </summary>
     public static readonly Coding SurgicalOncologist = new Coding
     {
@@ -6069,7 +6069,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental assistant
     /// </summary>
     public static readonly Coding DentalAssistant = new Coding
     {
@@ -6078,7 +6078,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Family reunion immigrant
     /// </summary>
     public static readonly Coding FamilyReunionImmigrant = new Coding
     {
@@ -6087,7 +6087,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Respiratory physician
     /// </summary>
     public static readonly Coding RespiratoryPhysician = new Coding
     {
@@ -6096,7 +6096,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inpatient
     /// </summary>
     public static readonly Coding Inpatient = new Coding
     {
@@ -6105,7 +6105,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Legal son
     /// </summary>
     public static readonly Coding LegalSon = new Coding
     {
@@ -6114,7 +6114,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infant child
     /// </summary>
     public static readonly Coding InfantChild = new Coding
     {
@@ -6123,7 +6123,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical X-ray technician
     /// </summary>
     public static readonly Coding MedicalXRayTechnician = new Coding
     {
@@ -6132,7 +6132,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subject of record or other provider of history
     /// </summary>
     public static readonly Coding SubjectOfRecordOrOtherProviderOfHistory = new Coding
     {
@@ -6141,7 +6141,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adoptive parent
     /// </summary>
     public static readonly Coding AdoptiveParent = new Coding
     {
@@ -6150,7 +6150,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Provider of history other than subject
     /// </summary>
     public static readonly Coding ProviderOfHistoryOtherThanSubject = new Coding
     {
@@ -6159,7 +6159,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Performer of method
     /// </summary>
     public static readonly Coding PerformerOfMethod = new Coding
     {
@@ -6168,7 +6168,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for massage therapists
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForMassageTherapists = new Coding
     {
@@ -6177,7 +6177,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oculoplastic surgeon
     /// </summary>
     public static readonly Coding OculoplasticSurgeon = new Coding
     {
@@ -6186,7 +6186,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retinal surgeon
     /// </summary>
     public static readonly Coding RetinalSurgeon = new Coding
     {
@@ -6195,7 +6195,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Admitting physician
     /// </summary>
     public static readonly Coding AdmittingPhysician = new Coding
     {
@@ -6204,7 +6204,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical ophthalmologist
     /// </summary>
     public static readonly Coding MedicalOphthalmologist = new Coding
     {
@@ -6213,7 +6213,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmologist
     /// </summary>
     public static readonly Coding Ophthalmologist = new Coding
     {
@@ -6222,7 +6222,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neighbor
     /// </summary>
     public static readonly Coding Neighbor = new Coding
     {
@@ -6231,7 +6231,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elim Pentecostalist, follower of religion
     /// </summary>
     public static readonly Coding ElimPentecostalistFollowerOfReligion = new Coding
     {
@@ -6240,7 +6240,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liberal Jew
     /// </summary>
     public static readonly Coding LiberalJew = new Coding
     {
@@ -6249,7 +6249,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lutheran, follower of religion
     /// </summary>
     public static readonly Coding LutheranFollowerOfReligion = new Coding
     {
@@ -6258,7 +6258,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congregationalist, follower of religion
     /// </summary>
     public static readonly Coding CongregationalistFollowerOfReligion = new Coding
     {
@@ -6267,7 +6267,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Haredi Jew
     /// </summary>
     public static readonly Coding HarediJew = new Coding
     {
@@ -6276,7 +6276,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Advaitin Hindu, follower of religion
     /// </summary>
     public static readonly Coding AdvaitinHinduFollowerOfReligion = new Coding
     {
@@ -6285,7 +6285,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zen Buddhist
     /// </summary>
     public static readonly Coding ZenBuddhist = new Coding
     {
@@ -6294,7 +6294,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical trial participant
     /// </summary>
     public static readonly Coding ClinicalTrialParticipant = new Coding
     {
@@ -6303,7 +6303,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anabaptist, follower of religion
     /// </summary>
     public static readonly Coding AnabaptistFollowerOfReligion = new Coding
     {
@@ -6312,7 +6312,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arya Samaj Hindu
     /// </summary>
     public static readonly Coding AryaSamajHindu = new Coding
     {
@@ -6321,7 +6321,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coptic Orthodox, follower of religion
     /// </summary>
     public static readonly Coding CopticOrthodoxFollowerOfReligion = new Coding
     {
@@ -6330,7 +6330,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eastern Catholic
     /// </summary>
     public static readonly Coding EasternCatholic = new Coding
     {
@@ -6339,7 +6339,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ethiopian Orthodox Tewahedo, follower of religion
     /// </summary>
     public static readonly Coding EthiopianOrthodoxTewahedoFollowerOfReligion = new Coding
     {
@@ -6348,7 +6348,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Theravada Buddhist
     /// </summary>
     public static readonly Coding TheravadaBuddhist = new Coding
     {
@@ -6357,7 +6357,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wiccan
     /// </summary>
     public static readonly Coding Wiccan = new Coding
     {
@@ -6366,7 +6366,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shakti Hindu
     /// </summary>
     public static readonly Coding ShaktiHindu = new Coding
     {
@@ -6375,7 +6375,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tibetan Buddhist, follower of religion
     /// </summary>
     public static readonly Coding TibetanBuddhistFollowerOfReligion = new Coding
     {
@@ -6384,7 +6384,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthodox Christian
     /// </summary>
     public static readonly Coding OrthodoxChristian = new Coding
     {
@@ -6393,7 +6393,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Christian Spiritualist, follower of religion
     /// </summary>
     public static readonly Coding ChristianSpiritualistFollowerOfReligion = new Coding
     {
@@ -6402,7 +6402,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Druid, follower of religion
     /// </summary>
     public static readonly Coding DruidFollowerOfReligion = new Coding
     {
@@ -6411,7 +6411,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Smarta Hindu
     /// </summary>
     public static readonly Coding SmartaHindu = new Coding
     {
@@ -6420,7 +6420,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nichiren Buddhist
     /// </summary>
     public static readonly Coding NichirenBuddhist = new Coding
     {
@@ -6429,7 +6429,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Case contact
     /// </summary>
     public static readonly Coding CaseContact = new Coding
     {
@@ -6438,7 +6438,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ismaili Muslim
     /// </summary>
     public static readonly Coding IsmailiMuslim = new Coding
     {
@@ -6447,7 +6447,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ahmadi, follower of religion
     /// </summary>
     public static readonly Coding AhmadiFollowerOfReligion = new Coding
     {
@@ -6456,7 +6456,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Armenian Catholic
     /// </summary>
     public static readonly Coding ArmenianCatholic = new Coding
     {
@@ -6465,7 +6465,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pure Land Buddhist, follower of religion
     /// </summary>
     public static readonly Coding PureLandBuddhistFollowerOfReligion = new Coding
     {
@@ -6474,7 +6474,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Seventh Day Adventist
     /// </summary>
     public static readonly Coding SeventhDayAdventist = new Coding
     {
@@ -6483,7 +6483,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Greek Orthodox
     /// </summary>
     public static readonly Coding GreekOrthodox = new Coding
     {
@@ -6492,7 +6492,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spiritualist
     /// </summary>
     public static readonly Coding Spiritualist = new Coding
     {
@@ -6501,7 +6501,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shiva Hindu, follower of religion
     /// </summary>
     public static readonly Coding ShivaHinduFollowerOfReligion = new Coding
     {
@@ -6510,7 +6510,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reform Jew, follower of religion
     /// </summary>
     public static readonly Coding ReformJewFollowerOfReligion = new Coding
     {
@@ -6519,7 +6519,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaishnava Hindu
     /// </summary>
     public static readonly Coding VaishnavaHindu = new Coding
     {
@@ -6528,7 +6528,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// New Kadampa Tradition Buddhist
     /// </summary>
     public static readonly Coding NewKadampaTraditionBuddhist = new Coding
     {
@@ -6537,7 +6537,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mahayana Buddhist
     /// </summary>
     public static readonly Coding MahayanaBuddhist = new Coding
     {
@@ -6546,7 +6546,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Masorti Jew, follower of religion
     /// </summary>
     public static readonly Coding MasortiJewFollowerOfReligion = new Coding
     {
@@ -6555,7 +6555,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calvinist
     /// </summary>
     public static readonly Coding Calvinist = new Coding
     {
@@ -6564,7 +6564,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Taoist, follower of religion
     /// </summary>
     public static readonly Coding TaoistFollowerOfReligion = new Coding
     {
@@ -6573,7 +6573,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Russian Orthodox, follower of religion
     /// </summary>
     public static readonly Coding RussianOrthodoxFollowerOfReligion = new Coding
     {
@@ -6582,7 +6582,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sanatana Dharma follower
     /// </summary>
     public static readonly Coding SanatanaDharmaFollower = new Coding
     {
@@ -6591,7 +6591,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shinto
     /// </summary>
     public static readonly Coding Shinto = new Coding
     {
@@ -6600,7 +6600,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient advocate
     /// </summary>
     public static readonly Coding PatientAdvocate = new Coding
     {
@@ -6609,7 +6609,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthodox Jew, follower of religion
     /// </summary>
     public static readonly Coding OrthodoxJewFollowerOfReligion = new Coding
     {
@@ -6618,7 +6618,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Unitarian, follower of religion
     /// </summary>
     public static readonly Coding UnitarianFollowerOfReligion = new Coding
     {
@@ -6627,7 +6627,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Baha'i
     /// </summary>
     public static readonly Coding BahaQuoteI = new Coding
     {
@@ -6636,7 +6636,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jain, follower of religion
     /// </summary>
     public static readonly Coding JainFollowerOfReligion = new Coding
     {
@@ -6645,7 +6645,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zoroastrian, follower of religion
     /// </summary>
     public static readonly Coding ZoroastrianFollowerOfReligion = new Coding
     {
@@ -6654,7 +6654,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Donor for intestine transplant
     /// </summary>
     public static readonly Coding DonorForIntestineTransplant = new Coding
     {
@@ -6663,7 +6663,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whole blood donor
     /// </summary>
     public static readonly Coding WholeBloodDonor = new Coding
     {
@@ -6672,7 +6672,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stem cell donor
     /// </summary>
     public static readonly Coding StemCellDonor = new Coding
     {
@@ -6681,7 +6681,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Egg donor
     /// </summary>
     public static readonly Coding EggDonor = new Coding
     {
@@ -6690,7 +6690,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Female child
     /// </summary>
     public static readonly Coding FemaleChild = new Coding
     {
@@ -6699,7 +6699,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health coach
     /// </summary>
     public static readonly Coding HealthCoach = new Coding
     {
@@ -6708,7 +6708,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jurisdictional health number
     /// </summary>
     public static readonly Coding JurisdictionalHealthNumber = new Coding
     {
@@ -6717,7 +6717,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boy
     /// </summary>
     public static readonly Coding Boy = new Coding
     {
@@ -6726,7 +6726,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Human oocyte donor, age 35 and older
     /// </summary>
     public static readonly Coding HumanOocyteDonorAge35AndOlder = new Coding
     {
@@ -6735,7 +6735,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupational health nurse
     /// </summary>
     public static readonly Coding OccupationalHealthNurse = new Coding
     {
@@ -6744,7 +6744,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Provincial and/or territorial government plan - out of jurisdiction
     /// </summary>
     public static readonly Coding ProvincialAndOrTerritorialGovernmentPlanOutOfJurisdiction = new Coding
     {
@@ -6753,7 +6753,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person categorized by affiliation with belief system
     /// </summary>
     public static readonly Coding PersonCategorizedByAffiliationWithBeliefSystem = new Coding
     {
@@ -6762,7 +6762,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Provider number issued by third party
     /// </summary>
     public static readonly Coding ProviderNumberIssuedByThirdParty = new Coding
     {
@@ -6771,7 +6771,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for physicians and surgeons
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForPhysiciansAndSurgeons = new Coding
     {
@@ -6780,7 +6780,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sperm donor
     /// </summary>
     public static readonly Coding SpermDonor = new Coding
     {
@@ -6789,7 +6789,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stranger is sperm donor for artificial insemination
     /// </summary>
     public static readonly Coding StrangerIsSpermDonorForArtificialInsemination = new Coding
     {
@@ -6798,7 +6798,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Unrelated known sperm donor for artificial insemination
     /// </summary>
     public static readonly Coding UnrelatedKnownSpermDonorForArtificialInsemination = new Coding
     {
@@ -6807,7 +6807,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Granddaughter
     /// </summary>
     public static readonly Coding Granddaughter = new Coding
     {
@@ -6816,7 +6816,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Respiratory therapist
     /// </summary>
     public static readonly Coding RespiratoryTherapist = new Coding
     {
@@ -6825,7 +6825,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Podiatric surgeon
     /// </summary>
     public static readonly Coding PodiatricSurgeon = new Coding
     {
@@ -6834,7 +6834,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ministry of health
     /// </summary>
     public static readonly Coding MinistryOfHealth = new Coding
     {
@@ -6843,7 +6843,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Legal sibling
     /// </summary>
     public static readonly Coding LegalSibling = new Coding
     {
@@ -6852,7 +6852,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person with characteristic related to subject of record
     /// </summary>
     public static readonly Coding PersonWithCharacteristicRelatedToSubjectOfRecord = new Coding
     {
@@ -6861,7 +6861,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spouse of subject
     /// </summary>
     public static readonly Coding SpouseOfSubject = new Coding
     {
@@ -6870,7 +6870,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Husband of subject
     /// </summary>
     public static readonly Coding HusbandOfSubject = new Coding
     {
@@ -6879,7 +6879,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wife of subject
     /// </summary>
     public static readonly Coding WifeOfSubject = new Coding
     {
@@ -6888,7 +6888,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Uncle of subject
     /// </summary>
     public static readonly Coding UncleOfSubject = new Coding
     {
@@ -6897,7 +6897,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Partner in relationship with subject
     /// </summary>
     public static readonly Coding PartnerInRelationshipWithSubject = new Coding
     {
@@ -6906,7 +6906,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boyfriend of subject
     /// </summary>
     public static readonly Coding BoyfriendOfSubject = new Coding
     {
@@ -6915,7 +6915,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Girlfriend of subject
     /// </summary>
     public static readonly Coding GirlfriendOfSubject = new Coding
     {
@@ -6924,7 +6924,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Person in family of subject
     /// </summary>
     public static readonly Coding PersonInFamilyOfSubject = new Coding
     {
@@ -6933,7 +6933,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Homemaker
     /// </summary>
     public static readonly Coding Homemaker = new Coding
     {
@@ -6942,7 +6942,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// House husband
     /// </summary>
     public static readonly Coding HouseHusband = new Coding
     {
@@ -6951,7 +6951,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aunt of subject
     /// </summary>
     public static readonly Coding AuntOfSubject = new Coding
     {
@@ -6960,7 +6960,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child of subject
     /// </summary>
     public static readonly Coding ChildOfSubject = new Coding
     {
@@ -6969,7 +6969,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// First degree blood relative of subject
     /// </summary>
     public static readonly Coding FirstDegreeBloodRelativeOfSubject = new Coding
     {
@@ -6978,7 +6978,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Daughter of subject
     /// </summary>
     public static readonly Coding DaughterOfSubject = new Coding
     {
@@ -6987,7 +6987,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Friend of subject
     /// </summary>
     public static readonly Coding FriendOfSubject = new Coding
     {
@@ -6996,7 +6996,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cohabitee in relationship with subject
     /// </summary>
     public static readonly Coding CohabiteeInRelationshipWithSubject = new Coding
     {
@@ -7005,7 +7005,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Common law husband of subject
     /// </summary>
     public static readonly Coding CommonLawHusbandOfSubject = new Coding
     {
@@ -7014,7 +7014,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Common law wife of subject
     /// </summary>
     public static readonly Coding CommonLawWifeOfSubject = new Coding
     {
@@ -7023,7 +7023,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Domestic partner of subject
     /// </summary>
     public static readonly Coding DomesticPartnerOfSubject = new Coding
     {
@@ -7032,7 +7032,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Son of subject
     /// </summary>
     public static readonly Coding SonOfSubject = new Coding
     {
@@ -7041,7 +7041,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grandparent of subject
     /// </summary>
     public static readonly Coding GrandparentOfSubject = new Coding
     {
@@ -7050,7 +7050,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maternal grandfather of subject
     /// </summary>
     public static readonly Coding MaternalGrandfatherOfSubject = new Coding
     {
@@ -7059,7 +7059,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maternal grandmother of subject
     /// </summary>
     public static readonly Coding MaternalGrandmotherOfSubject = new Coding
     {
@@ -7068,7 +7068,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fiance of subject
     /// </summary>
     public static readonly Coding FianceOfSubject = new Coding
     {
@@ -7077,7 +7077,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Female fiance of subject
     /// </summary>
     public static readonly Coding FemaleFianceOfSubject = new Coding
     {
@@ -7086,7 +7086,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Male fiance of subject
     /// </summary>
     public static readonly Coding MaleFianceOfSubject = new Coding
     {
@@ -7095,7 +7095,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paternal grandfather of subject
     /// </summary>
     public static readonly Coding PaternalGrandfatherOfSubject = new Coding
     {
@@ -7104,7 +7104,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paternal grandmother of subject
     /// </summary>
     public static readonly Coding PaternalGrandmotherOfSubject = new Coding
     {
@@ -7113,7 +7113,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parent of subject
     /// </summary>
     public static readonly Coding ParentOfSubject = new Coding
     {
@@ -7122,7 +7122,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Father of subject
     /// </summary>
     public static readonly Coding FatherOfSubject = new Coding
     {
@@ -7131,7 +7131,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mother of subject
     /// </summary>
     public static readonly Coding MotherOfSubject = new Coding
     {
@@ -7140,7 +7140,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sibling of subject
     /// </summary>
     public static readonly Coding SiblingOfSubject = new Coding
     {
@@ -7149,7 +7149,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brother of subject
     /// </summary>
     public static readonly Coding BrotherOfSubject = new Coding
     {
@@ -7158,7 +7158,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sister of subject
     /// </summary>
     public static readonly Coding SisterOfSubject = new Coding
     {
@@ -7167,7 +7167,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Recipient of biological material from subject
     /// </summary>
     public static readonly Coding RecipientOfBiologicalMaterialFromSubject = new Coding
     {
@@ -7176,7 +7176,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apostolic Pentecostalist, follower of religion
     /// </summary>
     public static readonly Coding ApostolicPentecostalistFollowerOfReligion = new Coding
     {
@@ -7185,7 +7185,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypnotherapist
     /// </summary>
     public static readonly Coding Hypnotherapist = new Coding
     {
@@ -7194,7 +7194,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Asthma nurse specialist
     /// </summary>
     public static readonly Coding AsthmaNurseSpecialist = new Coding
     {
@@ -7203,7 +7203,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nurse case manager
     /// </summary>
     public static readonly Coding NurseCaseManager = new Coding
     {
@@ -7212,7 +7212,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PCP - Primary care physician
     /// </summary>
     public static readonly Coding PCPPrimaryCarePhysician = new Coding
     {
@@ -7221,7 +7221,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pharmaceutical assistant
     /// </summary>
     public static readonly Coding PharmaceuticalAssistant = new Coding
     {
@@ -7230,7 +7230,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refugee
     /// </summary>
     public static readonly Coding Refugee = new Coding
     {
@@ -7239,7 +7239,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Addiction medicine specialist
     /// </summary>
     public static readonly Coding AddictionMedicineSpecialist = new Coding
     {
@@ -7248,7 +7248,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PA - physician assistant
     /// </summary>
     public static readonly Coding PAPhysicianAssistant = new Coding
     {
@@ -7257,7 +7257,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acupuncturist
     /// </summary>
     public static readonly Coding Acupuncturist = new Coding
     {
@@ -7266,7 +7266,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// International student
     /// </summary>
     public static readonly Coding InternationalStudent = new Coding
     {
@@ -7275,7 +7275,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Masseur
     /// </summary>
     public static readonly Coding Masseur = new Coding
     {
@@ -7284,7 +7284,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rheumatologist
     /// </summary>
     public static readonly Coding Rheumatologist = new Coding
     {
@@ -7293,7 +7293,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neurosurgeon
     /// </summary>
     public static readonly Coding Neurosurgeon = new Coding
     {
@@ -7302,7 +7302,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// First cousin
     /// </summary>
     public static readonly Coding FirstCousin = new Coding
     {
@@ -7311,7 +7311,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Half-brother
     /// </summary>
     public static readonly Coding HalfBrother = new Coding
     {
@@ -7320,7 +7320,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sanitarian
     /// </summary>
     public static readonly Coding Sanitarian = new Coding
     {
@@ -7329,7 +7329,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// New Brunswick Department of Health
     /// </summary>
     public static readonly Coding NewBrunswickDepartmentOfHealth = new Coding
     {
@@ -7338,7 +7338,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pharmacist
     /// </summary>
     public static readonly Coding Pharmacist = new Coding
     {
@@ -7347,7 +7347,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stepsister
     /// </summary>
     public static readonly Coding Stepsister = new Coding
     {
@@ -7356,7 +7356,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric orthopedic surgeon
     /// </summary>
     public static readonly Coding PediatricOrthopedicSurgeon = new Coding
     {
@@ -7365,7 +7365,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multi-organ donor
     /// </summary>
     public static readonly Coding MultiOrganDonor = new Coding
     {
@@ -7374,7 +7374,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Government midwife
     /// </summary>
     public static readonly Coding GovernmentMidwife = new Coding
     {
@@ -7383,7 +7383,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Male cousin
     /// </summary>
     public static readonly Coding MaleCousin = new Coding
     {
@@ -7392,7 +7392,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acquaintance
     /// </summary>
     public static readonly Coding Acquaintance = new Coding
     {
@@ -7401,7 +7401,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adoptive child
     /// </summary>
     public static readonly Coding AdoptiveChild = new Coding
     {
@@ -7410,7 +7410,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Philologist
     /// </summary>
     public static readonly Coding Philologist = new Coding
     {
@@ -7419,7 +7419,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dispensing optometrist
     /// </summary>
     public static readonly Coding DispensingOptometrist = new Coding
     {
@@ -7428,7 +7428,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric hematologist
     /// </summary>
     public static readonly Coding PediatricHematologist = new Coding
     {
@@ -7437,7 +7437,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maxillofacial surgeon
     /// </summary>
     public static readonly Coding MaxillofacialSurgeon = new Coding
     {
@@ -7446,7 +7446,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Identical twin sister
     /// </summary>
     public static readonly Coding IdenticalTwinSister = new Coding
     {
@@ -7455,7 +7455,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endodontist
     /// </summary>
     public static readonly Coding Endodontist = new Coding
     {
@@ -7464,7 +7464,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Great-grandfather
     /// </summary>
     public static readonly Coding GreatGrandfather = new Coding
     {
@@ -7473,7 +7473,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sephardic Jew, follower of religion
     /// </summary>
     public static readonly Coding SephardicJewFollowerOfReligion = new Coding
     {
@@ -7482,7 +7482,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// NA - Nursing auxiliary
     /// </summary>
     public static readonly Coding NANursingAuxiliary = new Coding
     {
@@ -7491,7 +7491,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Older sister
     /// </summary>
     public static readonly Coding OlderSister = new Coding
     {
@@ -7500,7 +7500,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alberta Health and Wellness
     /// </summary>
     public static readonly Coding AlbertaHealthAndWellness = new Coding
     {
@@ -7509,7 +7509,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trustee
     /// </summary>
     public static readonly Coding Trustee = new Coding
     {
@@ -7518,7 +7518,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Faith healer
     /// </summary>
     public static readonly Coding FaithHealer = new Coding
     {
@@ -7527,7 +7527,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for denturists
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForDenturists = new Coding
     {
@@ -7536,7 +7536,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for chiropractors
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForChiropractors = new Coding
     {
@@ -7545,7 +7545,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Newfoundland and Labrador Department of Health and Community Services
     /// </summary>
     public static readonly Coding NewfoundlandAndLabradorDepartmentOfHealthAndCommunityServices = new Coding
     {
@@ -7554,7 +7554,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cousin
     /// </summary>
     public static readonly Coding Cousin = new Coding
     {
@@ -7563,7 +7563,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canadian jurisdiction-based
     /// </summary>
     public static readonly Coding CanadianJurisdictionBased = new Coding
     {
@@ -7572,7 +7572,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neurologist
     /// </summary>
     public static readonly Coding Neurologist = new Coding
     {
@@ -7581,7 +7581,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community physician
     /// </summary>
     public static readonly Coding CommunityPhysician = new Coding
     {
@@ -7590,7 +7590,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical record administrator
     /// </summary>
     public static readonly Coding MedicalRecordAdministrator = new Coding
     {
@@ -7599,7 +7599,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiovascular surgeon
     /// </summary>
     public static readonly Coding CardiovascularSurgeon = new Coding
     {
@@ -7608,7 +7608,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cancer Plan (Saskatchewan) and Sexually Transmitted Diseases Plan
     /// </summary>
     public static readonly Coding CancerPlanSaskatchewanAndSexuallyTransmittedDiseasesPlan = new Coding
     {
@@ -7617,7 +7617,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Yukon Department of Health and Social Services
     /// </summary>
     public static readonly Coding YukonDepartmentOfHealthAndSocialServices = new Coding
     {
@@ -7626,7 +7626,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fixed prosthodontist
     /// </summary>
     public static readonly Coding FixedProsthodontist = new Coding
     {
@@ -7635,7 +7635,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foster sister
     /// </summary>
     public static readonly Coding FosterSister = new Coding
     {
@@ -7644,7 +7644,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maternal uncle
     /// </summary>
     public static readonly Coding MaternalUncle = new Coding
     {
@@ -7653,7 +7653,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Legal guardian
     /// </summary>
     public static readonly Coding LegalGuardian = new Coding
     {
@@ -7662,7 +7662,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paternal uncle
     /// </summary>
     public static readonly Coding PaternalUncle = new Coding
     {
@@ -7671,7 +7671,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General physician
     /// </summary>
     public static readonly Coding GeneralPhysician = new Coding
     {
@@ -7680,7 +7680,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthopedic technician
     /// </summary>
     public static readonly Coding OrthopedicTechnician = new Coding
     {
@@ -7689,7 +7689,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychologist
     /// </summary>
     public static readonly Coding Psychologist = new Coding
     {
@@ -7698,7 +7698,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Community-based dietitian
     /// </summary>
     public static readonly Coding CommunityBasedDietitian = new Coding
     {
@@ -7707,7 +7707,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Natural brother
     /// </summary>
     public static readonly Coding NaturalBrother = new Coding
     {
@@ -7716,7 +7716,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adoptive father
     /// </summary>
     public static readonly Coding AdoptiveFather = new Coding
     {
@@ -7725,7 +7725,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for pharmacists
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForPharmacists = new Coding
     {
@@ -7734,7 +7734,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical pathologist
     /// </summary>
     public static readonly Coding MedicalPathologist = new Coding
     {
@@ -7743,7 +7743,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laboratory medicine specialist
     /// </summary>
     public static readonly Coding LaboratoryMedicineSpecialist = new Coding
     {
@@ -7752,7 +7752,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Otorhinolaryngologist
     /// </summary>
     public static readonly Coding Otorhinolaryngologist = new Coding
     {
@@ -7761,7 +7761,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endocrinologist
     /// </summary>
     public static readonly Coding Endocrinologist = new Coding
     {
@@ -7770,7 +7770,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neuroradiologist
     /// </summary>
     public static readonly Coding Neuroradiologist = new Coding
     {
@@ -7779,7 +7779,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Legal mother
     /// </summary>
     public static readonly Coding LegalMother = new Coding
     {
@@ -7788,7 +7788,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Family medicine specialist
     /// </summary>
     public static readonly Coding FamilyMedicineSpecialist = new Coding
     {
@@ -7797,7 +7797,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Natural grand-father
     /// </summary>
     public static readonly Coding NaturalGrandFather = new Coding
     {
@@ -7806,7 +7806,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Family medicine specialist - anesthetist
     /// </summary>
     public static readonly Coding FamilyMedicineSpecialistAnesthetist = new Coding
     {
@@ -7815,7 +7815,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical immunologist
     /// </summary>
     public static readonly Coding ClinicalImmunologist = new Coding
     {
@@ -7824,7 +7824,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for social workers
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForSocialWorkers = new Coding
     {
@@ -7833,7 +7833,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ministry of Health and Long-Term Care Ontario
     /// </summary>
     public static readonly Coding MinistryOfHealthAndLongTermCareOntario = new Coding
     {
@@ -7842,7 +7842,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sunni muslim, follower of religion
     /// </summary>
     public static readonly Coding SunniMuslimFollowerOfReligion = new Coding
     {
@@ -7851,7 +7851,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Step-mother
     /// </summary>
     public static readonly Coding StepMother = new Coding
     {
@@ -7860,7 +7860,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Son
     /// </summary>
     public static readonly Coding Son = new Coding
     {
@@ -7869,7 +7869,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Natural mother
     /// </summary>
     public static readonly Coding NaturalMother = new Coding
     {
@@ -7878,7 +7878,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Student
     /// </summary>
     public static readonly Coding Student = new Coding
     {
@@ -7887,7 +7887,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Daughter
     /// </summary>
     public static readonly Coding Daughter = new Coding
     {
@@ -7896,7 +7896,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral pathologist
     /// </summary>
     public static readonly Coding OralPathologist = new Coding
     {
@@ -7905,7 +7905,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for midwives
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForMidwives = new Coding
     {
@@ -7914,7 +7914,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doula
     /// </summary>
     public static readonly Coding Doula = new Coding
     {
@@ -7923,7 +7923,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Youngest daughter
     /// </summary>
     public static readonly Coding YoungestDaughter = new Coding
     {
@@ -7932,7 +7932,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Father
     /// </summary>
     public static readonly Coding Father = new Coding
     {
@@ -7941,7 +7941,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiologist
     /// </summary>
     public static readonly Coding Radiologist = new Coding
     {
@@ -7950,7 +7950,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adoptive daughter
     /// </summary>
     public static readonly Coding AdoptiveDaughter = new Coding
     {
@@ -7959,7 +7959,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Legal father
     /// </summary>
     public static readonly Coding LegalFather = new Coding
     {
@@ -7968,7 +7968,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Provider registration number
     /// </summary>
     public static readonly Coding ProviderRegistrationNumber = new Coding
     {
@@ -7977,7 +7977,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Traditional herbal medicine specialist
     /// </summary>
     public static readonly Coding TraditionalHerbalMedicineSpecialist = new Coding
     {
@@ -7986,7 +7986,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Child
     /// </summary>
     public static readonly Coding Child_2 = new Coding
     {
@@ -7995,7 +7995,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Great-great grand-parent
     /// </summary>
     public static readonly Coding GreatGreatGrandParent = new Coding
     {
@@ -8004,7 +8004,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specialized nurse
     /// </summary>
     public static readonly Coding SpecializedNurse = new Coding
     {
@@ -8013,7 +8013,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occupational medicine specialist
     /// </summary>
     public static readonly Coding OccupationalMedicineSpecialist = new Coding
     {
@@ -8022,7 +8022,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital administrator
     /// </summary>
     public static readonly Coding HospitalAdministrator = new Coding
     {
@@ -8031,7 +8031,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Public health dentist
     /// </summary>
     public static readonly Coding PublicHealthDentist = new Coding
     {
@@ -8040,7 +8040,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prosthodontist
     /// </summary>
     public static readonly Coding Prosthodontist = new Coding
     {
@@ -8049,7 +8049,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paternal aunt
     /// </summary>
     public static readonly Coding PaternalAunt = new Coding
     {
@@ -8058,7 +8058,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specialized physician
     /// </summary>
     public static readonly Coding SpecializedPhysician = new Coding
     {
@@ -8067,7 +8067,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Second degree blood relative
     /// </summary>
     public static readonly Coding SecondDegreeBloodRelative = new Coding
     {
@@ -8076,7 +8076,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Second degree blood relative of subject
     /// </summary>
     public static readonly Coding SecondDegreeBloodRelativeOfSubject = new Coding
     {
@@ -8085,7 +8085,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grand son
     /// </summary>
     public static readonly Coding GrandSon = new Coding
     {
@@ -8094,7 +8094,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contact person
     /// </summary>
     public static readonly Coding ContactPerson = new Coding
     {
@@ -8103,7 +8103,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brother
     /// </summary>
     public static readonly Coding Brother = new Coding
     {
@@ -8112,7 +8112,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cadaver donor for lung transplant
     /// </summary>
     public static readonly Coding CadaverDonorForLungTransplant = new Coding
     {
@@ -8121,7 +8121,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cadaver donor for heart transplant
     /// </summary>
     public static readonly Coding CadaverDonorForHeartTransplant = new Coding
     {
@@ -8130,7 +8130,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cadaver donor for liver transplant
     /// </summary>
     public static readonly Coding CadaverDonorForLiverTransplant = new Coding
     {
@@ -8139,7 +8139,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cadaver donor for corneal transplant
     /// </summary>
     public static readonly Coding CadaverDonorForCornealTransplant = new Coding
     {
@@ -8148,7 +8148,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cadaver donor for kidney transplant
     /// </summary>
     public static readonly Coding CadaverDonorForKidneyTransplant = new Coding
     {
@@ -8157,7 +8157,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood product donor
     /// </summary>
     public static readonly Coding BloodProductDonor = new Coding
     {
@@ -8166,7 +8166,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skin donor
     /// </summary>
     public static readonly Coding SkinDonor = new Coding
     {
@@ -8175,7 +8175,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Live related liver donor
     /// </summary>
     public static readonly Coding LiveRelatedLiverDonor = new Coding
     {
@@ -8184,7 +8184,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Live related kidney donor
     /// </summary>
     public static readonly Coding LiveRelatedKidneyDonor = new Coding
     {
@@ -8193,7 +8193,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open Episcopal Church follower of religion
     /// </summary>
     public static readonly Coding OpenEpiscopalChurchFollowerOfReligion = new Coding
     {
@@ -8202,7 +8202,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastroenterologist
     /// </summary>
     public static readonly Coding Gastroenterologist = new Coding
     {
@@ -8211,7 +8211,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Great grand child
     /// </summary>
     public static readonly Coding GreatGrandChild = new Coding
     {
@@ -8220,7 +8220,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for respiratory therapists
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForRespiratoryTherapists = new Coding
     {
@@ -8229,7 +8229,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric emergency medicine specialist
     /// </summary>
     public static readonly Coding PediatricEmergencyMedicineSpecialist = new Coding
     {
@@ -8238,7 +8238,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Provincial and/or territorial government plan - resident
     /// </summary>
     public static readonly Coding ProvincialAndOrTerritorialGovernmentPlanResident = new Coding
     {
@@ -8247,7 +8247,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mother
     /// </summary>
     public static readonly Coding Mother = new Coding
     {
@@ -8256,7 +8256,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nursing aid
     /// </summary>
     public static readonly Coding NursingAid = new Coding
     {
@@ -8265,7 +8265,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Natural sister
     /// </summary>
     public static readonly Coding NaturalSister = new Coding
     {
@@ -8274,7 +8274,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Step parent
     /// </summary>
     public static readonly Coding StepParent = new Coding
     {
@@ -8283,7 +8283,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Younger child
     /// </summary>
     public static readonly Coding YoungerChild = new Coding
     {
@@ -8292,7 +8292,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Workers' Compensation number
     /// </summary>
     public static readonly Coding WorkersQuoteCompensationNumber = new Coding
     {
@@ -8301,7 +8301,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Family medicine specialist - care of the elderly
     /// </summary>
     public static readonly Coding FamilyMedicineSpecialistCareOfTheElderly = new Coding
     {
@@ -8310,7 +8310,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Natural child
     /// </summary>
     public static readonly Coding NaturalChild = new Coding
     {
@@ -8319,7 +8319,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MW - Midwife
     /// </summary>
     public static readonly Coding MWMidwife = new Coding
     {
@@ -8328,7 +8328,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ministry of Health Northwest Territories
     /// </summary>
     public static readonly Coding MinistryOfHealthNorthwestTerritories = new Coding
     {
@@ -8337,7 +8337,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surrogate father
     /// </summary>
     public static readonly Coding SurrogateFather = new Coding
     {
@@ -8346,7 +8346,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adoptive sister
     /// </summary>
     public static readonly Coding AdoptiveSister = new Coding
     {
@@ -8355,7 +8355,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Step brother
     /// </summary>
     public static readonly Coding StepBrother = new Coding
     {
@@ -8364,7 +8364,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Practical aid (pharmacy)
     /// </summary>
     public static readonly Coding PracticalAidPharmacy = new Coding
     {
@@ -8373,7 +8373,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteopath
     /// </summary>
     public static readonly Coding Osteopath = new Coding
     {
@@ -8382,7 +8382,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for audiologists and speech-language pathologists
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForAudiologistsAndSpeechLanguagePathologists = new Coding
     {
@@ -8391,7 +8391,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Travel medicine specialist
     /// </summary>
     public static readonly Coding TravelMedicineSpecialist = new Coding
     {
@@ -8400,7 +8400,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spine surgeon
     /// </summary>
     public static readonly Coding SpineSurgeon = new Coding
     {
@@ -8409,7 +8409,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infectious diseases physician
     /// </summary>
     public static readonly Coding InfectiousDiseasesPhysician = new Coding
     {
@@ -8418,7 +8418,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Identical twin brother
     /// </summary>
     public static readonly Coding IdenticalTwinBrother = new Coding
     {
@@ -8427,7 +8427,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Natural grand-parent
     /// </summary>
     public static readonly Coding NaturalGrandParent = new Coding
     {
@@ -8436,7 +8436,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Great grand-mother
     /// </summary>
     public static readonly Coding GreatGrandMother = new Coding
     {
@@ -8445,7 +8445,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General surgeon
     /// </summary>
     public static readonly Coding GeneralSurgeon = new Coding
     {
@@ -8454,7 +8454,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic radiologist
     /// </summary>
     public static readonly Coding DiagnosticRadiologist = new Coding
     {
@@ -8463,7 +8463,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orphan male
     /// </summary>
     public static readonly Coding OrphanMale = new Coding
     {
@@ -8472,7 +8472,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adoptive sibling
     /// </summary>
     public static readonly Coding AdoptiveSibling = new Coding
     {
@@ -8481,7 +8481,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boyfriend
     /// </summary>
     public static readonly Coding Boyfriend = new Coding
     {
@@ -8490,7 +8490,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Auxiliary midwife
     /// </summary>
     public static readonly Coding AuxiliaryMidwife = new Coding
     {
@@ -8499,7 +8499,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Great-great grand-father
     /// </summary>
     public static readonly Coding GreatGreatGrandFather = new Coding
     {
@@ -8508,7 +8508,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Translator
     /// </summary>
     public static readonly Coding Translator = new Coding
     {
@@ -8517,7 +8517,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jurisdiction driver license number
     /// </summary>
     public static readonly Coding JurisdictionDriverLicenseNumber = new Coding
     {
@@ -8526,7 +8526,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// OT - Occupational therapist
     /// </summary>
     public static readonly Coding OTOccupationalTherapist = new Coding
     {
@@ -8535,7 +8535,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psychiatrist
     /// </summary>
     public static readonly Coding Psychiatrist = new Coding
     {
@@ -8544,7 +8544,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jehovah's Witness, follower of religion
     /// </summary>
     public static readonly Coding JehovahQuoteSWitnessFollowerOfReligion = new Coding
     {
@@ -8553,7 +8553,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jurisdictional birth certificate registration number
     /// </summary>
     public static readonly Coding JurisdictionalBirthCertificateRegistrationNumber = new Coding
     {
@@ -8562,7 +8562,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interim health program certificate number
     /// </summary>
     public static readonly Coding InterimHealthProgramCertificateNumber = new Coding
     {
@@ -8571,7 +8571,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nuclear medicine physician
     /// </summary>
     public static readonly Coding NuclearMedicinePhysician = new Coding
     {
@@ -8580,7 +8580,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Only son
     /// </summary>
     public static readonly Coding OnlySon = new Coding
     {
@@ -8589,7 +8589,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Twin brother
     /// </summary>
     public static readonly Coding TwinBrother = new Coding
     {
@@ -8598,7 +8598,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maternal or fetal medicine specialist
     /// </summary>
     public static readonly Coding MaternalOrFetalMedicineSpecialist = new Coding
     {
@@ -8607,7 +8607,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical pathologist
     /// </summary>
     public static readonly Coding ClinicalPathologist = new Coding
     {
@@ -8616,7 +8616,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fraternal twin brother
     /// </summary>
     public static readonly Coding FraternalTwinBrother = new Coding
     {
@@ -8625,7 +8625,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ashkenazi Jew
     /// </summary>
     public static readonly Coding AshkenaziJew = new Coding
     {
@@ -8634,7 +8634,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Natural sibling
     /// </summary>
     public static readonly Coding NaturalSibling = new Coding
     {
@@ -8643,7 +8643,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Massage therapist
     /// </summary>
     public static readonly Coding MassageTherapist = new Coding
     {
@@ -8652,7 +8652,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatrician
     /// </summary>
     public static readonly Coding Pediatrician = new Coding
     {
@@ -8661,7 +8661,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Other professional nurse
     /// </summary>
     public static readonly Coding OtherProfessionalNurse = new Coding
     {
@@ -8670,7 +8670,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anatomic pathologist
     /// </summary>
     public static readonly Coding AnatomicPathologist = new Coding
     {
@@ -8679,7 +8679,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Working parent
     /// </summary>
     public static readonly Coding WorkingParent = new Coding
     {
@@ -8688,7 +8688,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Natural daughter
     /// </summary>
     public static readonly Coding NaturalDaughter = new Coding
     {
@@ -8697,7 +8697,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nephew
     /// </summary>
     public static readonly Coding Nephew = new Coding
     {
@@ -8706,7 +8706,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gynecologist
     /// </summary>
     public static readonly Coding Gynecologist = new Coding
     {
@@ -8715,7 +8715,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Girlfriend
     /// </summary>
     public static readonly Coding Girlfriend = new Coding
     {
@@ -8724,7 +8724,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maternal first cousin
     /// </summary>
     public static readonly Coding MaternalFirstCousin = new Coding
     {
@@ -8733,7 +8733,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foster father
     /// </summary>
     public static readonly Coding FosterFather = new Coding
     {
@@ -8742,7 +8742,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospitalist
     /// </summary>
     public static readonly Coding Hospitalist = new Coding
     {
@@ -8751,7 +8751,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adoptive grandfather
     /// </summary>
     public static readonly Coding AdoptiveGrandfather = new Coding
     {
@@ -8760,7 +8760,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sports medicine specialist
     /// </summary>
     public static readonly Coding SportsMedicineSpecialist = new Coding
     {
@@ -8769,7 +8769,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Younger brother
     /// </summary>
     public static readonly Coding YoungerBrother = new Coding
     {
@@ -8778,7 +8778,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Single father
     /// </summary>
     public static readonly Coding SingleFather = new Coding
     {
@@ -8787,7 +8787,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General pathologist
     /// </summary>
     public static readonly Coding GeneralPathologist = new Coding
     {
@@ -8796,7 +8796,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical Care Plan - Hospital Technical Services (Quebec)
     /// </summary>
     public static readonly Coding MedicalCarePlanHospitalTechnicalServicesQuebec = new Coding
     {
@@ -8805,7 +8805,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grand child
     /// </summary>
     public static readonly Coding GrandChild = new Coding
     {
@@ -8814,7 +8814,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Step son
     /// </summary>
     public static readonly Coding StepSon = new Coding
     {
@@ -8823,7 +8823,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Step child
     /// </summary>
     public static readonly Coding StepChild = new Coding
     {
@@ -8832,7 +8832,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plastic surgeon
     /// </summary>
     public static readonly Coding PlasticSurgeon = new Coding
     {
@@ -8841,7 +8841,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for nurses
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForNurses = new Coding
     {
@@ -8850,7 +8850,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for paramedics
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForParamedics = new Coding
     {
@@ -8859,7 +8859,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesiologist
     /// </summary>
     public static readonly Coding Anesthesiologist = new Coding
     {
@@ -8868,7 +8868,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ministry of Health British Columbia
     /// </summary>
     public static readonly Coding MinistryOfHealthBritishColumbia = new Coding
     {
@@ -8877,7 +8877,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Other dietitians and public health nutritionists
     /// </summary>
     public static readonly Coding OtherDietitiansAndPublicHealthNutritionists = new Coding
     {
@@ -8886,7 +8886,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Step sibling
     /// </summary>
     public static readonly Coding StepSibling = new Coding
     {
@@ -8895,7 +8895,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Youngest son
     /// </summary>
     public static readonly Coding YoungestSon = new Coding
     {
@@ -8904,7 +8904,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric dentist
     /// </summary>
     public static readonly Coding PediatricDentist = new Coding
     {
@@ -8913,7 +8913,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Care of the elderly physician
     /// </summary>
     public static readonly Coding CareOfTheElderlyPhysician = new Coding
     {
@@ -8922,7 +8922,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foster parent
     /// </summary>
     public static readonly Coding FosterParent = new Coding
     {
@@ -8931,7 +8931,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for practical nurses
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForPracticalNurses = new Coding
     {
@@ -8940,7 +8940,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric respirologist
     /// </summary>
     public static readonly Coding PediatricRespirologist = new Coding
     {
@@ -8949,7 +8949,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for dietitians
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForDietitians = new Coding
     {
@@ -8958,7 +8958,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Legal parent
     /// </summary>
     public static readonly Coding LegalParent = new Coding
     {
@@ -8967,7 +8967,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Homeopath
     /// </summary>
     public static readonly Coding Homeopath = new Coding
     {
@@ -8976,7 +8976,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Family medicine specialist - emergency medicine
     /// </summary>
     public static readonly Coding FamilyMedicineSpecialistEmergencyMedicine = new Coding
     {
@@ -8985,7 +8985,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric hematologist or oncologist
     /// </summary>
     public static readonly Coding PediatricHematologistOrOncologist = new Coding
     {
@@ -8994,7 +8994,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foot and ankle surgeon
     /// </summary>
     public static readonly Coding FootAndAnkleSurgeon = new Coding
     {
@@ -9003,7 +9003,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Invasive cardiologist
     /// </summary>
     public static readonly Coding InvasiveCardiologist = new Coding
     {
@@ -9012,7 +9012,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Natural father
     /// </summary>
     public static readonly Coding NaturalFather = new Coding
     {
@@ -9021,7 +9021,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health PEI
     /// </summary>
     public static readonly Coding HealthPEI = new Coding
     {
@@ -9030,7 +9030,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manitoba Health
     /// </summary>
     public static readonly Coding ManitobaHealth = new Coding
     {
@@ -9039,7 +9039,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Case manager
     /// </summary>
     public static readonly Coding CaseManager = new Coding
     {
@@ -9048,7 +9048,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kinesthesiologist
     /// </summary>
     public static readonly Coding Kinesthesiologist = new Coding
     {
@@ -9057,7 +9057,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Health regulatory body for naturopathic practitioners
     /// </summary>
     public static readonly Coding HealthRegulatoryBodyForNaturopathicPractitioners = new Coding
     {
@@ -9072,9 +9072,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaternalAunt = "100217091000087103";
 
     /// <summary>
+    /// Literal for code: NONEMaternalAunt
+    /// </summary>
+    public const string LiteralNONEMaternalAunt = "http://snomed.info/sct#100217091000087103";
+
+    /// <summary>
     /// Literal for code: HomosexualParents
     /// </summary>
     public const string LiteralHomosexualParents = "105428002";
+
+    /// <summary>
+    /// Literal for code: NONEHomosexualParents
+    /// </summary>
+    public const string LiteralNONEHomosexualParents = "http://snomed.info/sct#105428002";
 
     /// <summary>
     /// Literal for code: ElderlyParents
@@ -9082,9 +9092,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralElderlyParents = "105429005";
 
     /// <summary>
+    /// Literal for code: NONEElderlyParents
+    /// </summary>
+    public const string LiteralNONEElderlyParents = "http://snomed.info/sct#105429005";
+
+    /// <summary>
     /// Literal for code: AdoptedPerson
     /// </summary>
     public const string LiteralAdoptedPerson = "105431001";
+
+    /// <summary>
+    /// Literal for code: NONEAdoptedPerson
+    /// </summary>
+    public const string LiteralNONEAdoptedPerson = "http://snomed.info/sct#105431001";
 
     /// <summary>
     /// Literal for code: ElderlyPerson
@@ -9092,9 +9112,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralElderlyPerson = "105436006";
 
     /// <summary>
+    /// Literal for code: NONEElderlyPerson
+    /// </summary>
+    public const string LiteralNONEElderlyPerson = "http://snomed.info/sct#105436006";
+
+    /// <summary>
     /// Literal for code: ElderlyMan
     /// </summary>
     public const string LiteralElderlyMan = "105437002";
+
+    /// <summary>
+    /// Literal for code: NONEElderlyMan
+    /// </summary>
+    public const string LiteralNONEElderlyMan = "http://snomed.info/sct#105437002";
 
     /// <summary>
     /// Literal for code: ElderlyWoman
@@ -9102,9 +9132,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralElderlyWoman = "105438007";
 
     /// <summary>
+    /// Literal for code: NONEElderlyWoman
+    /// </summary>
+    public const string LiteralNONEElderlyWoman = "http://snomed.info/sct#105438007";
+
+    /// <summary>
     /// Literal for code: SickRelative
     /// </summary>
     public const string LiteralSickRelative = "105449001";
+
+    /// <summary>
+    /// Literal for code: NONESickRelative
+    /// </summary>
+    public const string LiteralNONESickRelative = "http://snomed.info/sct#105449001";
 
     /// <summary>
     /// Literal for code: AlcoholicRelative
@@ -9112,9 +9152,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlcoholicRelative = "105450001";
 
     /// <summary>
+    /// Literal for code: NONEAlcoholicRelative
+    /// </summary>
+    public const string LiteralNONEAlcoholicRelative = "http://snomed.info/sct#105450001";
+
+    /// <summary>
     /// Literal for code: DementedRelative
     /// </summary>
     public const string LiteralDementedRelative = "105451002";
+
+    /// <summary>
+    /// Literal for code: NONEDementedRelative
+    /// </summary>
+    public const string LiteralNONEDementedRelative = "http://snomed.info/sct#105451002";
 
     /// <summary>
     /// Literal for code: DiabeticRelative
@@ -9122,9 +9172,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiabeticRelative = "105452009";
 
     /// <summary>
+    /// Literal for code: NONEDiabeticRelative
+    /// </summary>
+    public const string LiteralNONEDiabeticRelative = "http://snomed.info/sct#105452009";
+
+    /// <summary>
     /// Literal for code: SchizophrenicRelative
     /// </summary>
     public const string LiteralSchizophrenicRelative = "105453004";
+
+    /// <summary>
+    /// Literal for code: NONESchizophrenicRelative
+    /// </summary>
+    public const string LiteralNONESchizophrenicRelative = "http://snomed.info/sct#105453004";
 
     /// <summary>
     /// Literal for code: DisabledRelative
@@ -9132,9 +9192,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDisabledRelative = "105454005";
 
     /// <summary>
+    /// Literal for code: NONEDisabledRelative
+    /// </summary>
+    public const string LiteralNONEDisabledRelative = "http://snomed.info/sct#105454005";
+
+    /// <summary>
     /// Literal for code: DonorForMedicalOrSurgicalProcedure
     /// </summary>
     public const string LiteralDonorForMedicalOrSurgicalProcedure = "105455006";
+
+    /// <summary>
+    /// Literal for code: NONEDonorForMedicalOrSurgicalProcedure
+    /// </summary>
+    public const string LiteralNONEDonorForMedicalOrSurgicalProcedure = "http://snomed.info/sct#105455006";
 
     /// <summary>
     /// Literal for code: LiveDonor
@@ -9142,9 +9212,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLiveDonor = "105456007";
 
     /// <summary>
+    /// Literal for code: NONELiveDonor
+    /// </summary>
+    public const string LiteralNONELiveDonor = "http://snomed.info/sct#105456007";
+
+    /// <summary>
     /// Literal for code: CadaverDonor
     /// </summary>
     public const string LiteralCadaverDonor = "105457003";
+
+    /// <summary>
+    /// Literal for code: NONECadaverDonor
+    /// </summary>
+    public const string LiteralNONECadaverDonor = "http://snomed.info/sct#105457003";
 
     /// <summary>
     /// Literal for code: CandidateDonor
@@ -9152,9 +9232,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCandidateDonor = "105458008";
 
     /// <summary>
+    /// Literal for code: NONECandidateDonor
+    /// </summary>
+    public const string LiteralNONECandidateDonor = "http://snomed.info/sct#105458008";
+
+    /// <summary>
     /// Literal for code: AcceptedDonor
     /// </summary>
     public const string LiteralAcceptedDonor = "105459000";
+
+    /// <summary>
+    /// Literal for code: NONEAcceptedDonor
+    /// </summary>
+    public const string LiteralNONEAcceptedDonor = "http://snomed.info/sct#105459000";
 
     /// <summary>
     /// Literal for code: RejectedDonor
@@ -9162,9 +9252,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRejectedDonor = "105460005";
 
     /// <summary>
+    /// Literal for code: NONERejectedDonor
+    /// </summary>
+    public const string LiteralNONERejectedDonor = "http://snomed.info/sct#105460005";
+
+    /// <summary>
     /// Literal for code: OrganDonor
     /// </summary>
     public const string LiteralOrganDonor = "105461009";
+
+    /// <summary>
+    /// Literal for code: NONEOrganDonor
+    /// </summary>
+    public const string LiteralNONEOrganDonor = "http://snomed.info/sct#105461009";
 
     /// <summary>
     /// Literal for code: DonorOfKidneyForTransplant
@@ -9172,9 +9272,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDonorOfKidneyForTransplant = "105462002";
 
     /// <summary>
+    /// Literal for code: NONEDonorOfKidneyForTransplant
+    /// </summary>
+    public const string LiteralNONEDonorOfKidneyForTransplant = "http://snomed.info/sct#105462002";
+
+    /// <summary>
     /// Literal for code: DonorForLiverTransplant
     /// </summary>
     public const string LiteralDonorForLiverTransplant = "105463007";
+
+    /// <summary>
+    /// Literal for code: NONEDonorForLiverTransplant
+    /// </summary>
+    public const string LiteralNONEDonorForLiverTransplant = "http://snomed.info/sct#105463007";
 
     /// <summary>
     /// Literal for code: EyeDonorForCornealTransplant
@@ -9182,9 +9292,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEyeDonorForCornealTransplant = "105464001";
 
     /// <summary>
+    /// Literal for code: NONEEyeDonorForCornealTransplant
+    /// </summary>
+    public const string LiteralNONEEyeDonorForCornealTransplant = "http://snomed.info/sct#105464001";
+
+    /// <summary>
     /// Literal for code: DonorForHeartTransplant
     /// </summary>
     public const string LiteralDonorForHeartTransplant = "105465000";
+
+    /// <summary>
+    /// Literal for code: NONEDonorForHeartTransplant
+    /// </summary>
+    public const string LiteralNONEDonorForHeartTransplant = "http://snomed.info/sct#105465000";
 
     /// <summary>
     /// Literal for code: DonorForLungTransplant
@@ -9192,9 +9312,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDonorForLungTransplant = "105466004";
 
     /// <summary>
+    /// Literal for code: NONEDonorForLungTransplant
+    /// </summary>
+    public const string LiteralNONEDonorForLungTransplant = "http://snomed.info/sct#105466004";
+
+    /// <summary>
     /// Literal for code: DonorForHeartLungTransplant
     /// </summary>
     public const string LiteralDonorForHeartLungTransplant = "105467008";
+
+    /// <summary>
+    /// Literal for code: NONEDonorForHeartLungTransplant
+    /// </summary>
+    public const string LiteralNONEDonorForHeartLungTransplant = "http://snomed.info/sct#105467008";
 
     /// <summary>
     /// Literal for code: TissueDonor
@@ -9202,9 +9332,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTissueDonor = "105468003";
 
     /// <summary>
+    /// Literal for code: NONETissueDonor
+    /// </summary>
+    public const string LiteralNONETissueDonor = "http://snomed.info/sct#105468003";
+
+    /// <summary>
     /// Literal for code: BoneTissueDonor
     /// </summary>
     public const string LiteralBoneTissueDonor = "105469006";
+
+    /// <summary>
+    /// Literal for code: NONEBoneTissueDonor
+    /// </summary>
+    public const string LiteralNONEBoneTissueDonor = "http://snomed.info/sct#105469006";
 
     /// <summary>
     /// Literal for code: BloodDonor
@@ -9212,9 +9352,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBloodDonor = "105470007";
 
     /// <summary>
+    /// Literal for code: NONEBloodDonor
+    /// </summary>
+    public const string LiteralNONEBloodDonor = "http://snomed.info/sct#105470007";
+
+    /// <summary>
     /// Literal for code: BoneMarrowDonor
     /// </summary>
     public const string LiteralBoneMarrowDonor = "105471006";
+
+    /// <summary>
+    /// Literal for code: NONEBoneMarrowDonor
+    /// </summary>
+    public const string LiteralNONEBoneMarrowDonor = "http://snomed.info/sct#105471006";
 
     /// <summary>
     /// Literal for code: SpermDonorForArtificialInsemination
@@ -9222,9 +9372,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermDonorForArtificialInsemination = "105472004";
 
     /// <summary>
+    /// Literal for code: NONESpermDonorForArtificialInsemination
+    /// </summary>
+    public const string LiteralNONESpermDonorForArtificialInsemination = "http://snomed.info/sct#105472004";
+
+    /// <summary>
     /// Literal for code: HusbandSpermDonorForArtificialInsemination
     /// </summary>
     public const string LiteralHusbandSpermDonorForArtificialInsemination = "105473009";
+
+    /// <summary>
+    /// Literal for code: NONEHusbandSpermDonorForArtificialInsemination
+    /// </summary>
+    public const string LiteralNONEHusbandSpermDonorForArtificialInsemination = "http://snomed.info/sct#105473009";
 
     /// <summary>
     /// Literal for code: RelatedSpermDonorForArtificialInsemination
@@ -9232,9 +9392,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRelatedSpermDonorForArtificialInsemination = "105474003";
 
     /// <summary>
+    /// Literal for code: NONERelatedSpermDonorForArtificialInsemination
+    /// </summary>
+    public const string LiteralNONERelatedSpermDonorForArtificialInsemination = "http://snomed.info/sct#105474003";
+
+    /// <summary>
     /// Literal for code: DentalSurgeon
     /// </summary>
     public const string LiteralDentalSurgeon = "106289002";
+
+    /// <summary>
+    /// Literal for code: NONEDentalSurgeon
+    /// </summary>
+    public const string LiteralNONEDentalSurgeon = "http://snomed.info/sct#106289002";
 
     /// <summary>
     /// Literal for code: DieticianANDORPublicHealthNutritionist
@@ -9242,9 +9412,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDieticianANDORPublicHealthNutritionist = "106291005";
 
     /// <summary>
+    /// Literal for code: NONEDieticianANDORPublicHealthNutritionist
+    /// </summary>
+    public const string LiteralNONEDieticianANDORPublicHealthNutritionist = "http://snomed.info/sct#106291005";
+
+    /// <summary>
     /// Literal for code: Nurse
     /// </summary>
     public const string LiteralNurse = "106292003";
+
+    /// <summary>
+    /// Literal for code: NONENurse
+    /// </summary>
+    public const string LiteralNONENurse = "http://snomed.info/sct#106292003";
 
     /// <summary>
     /// Literal for code: NursingPersonnel
@@ -9252,9 +9432,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNursingPersonnel = "106293008";
 
     /// <summary>
+    /// Literal for code: NONENursingPersonnel
+    /// </summary>
+    public const string LiteralNONENursingPersonnel = "http://snomed.info/sct#106293008";
+
+    /// <summary>
     /// Literal for code: MidwiferyPersonnel
     /// </summary>
     public const string LiteralMidwiferyPersonnel = "106294002";
+
+    /// <summary>
+    /// Literal for code: NONEMidwiferyPersonnel
+    /// </summary>
+    public const string LiteralNONEMidwiferyPersonnel = "http://snomed.info/sct#106294002";
 
     /// <summary>
     /// Literal for code: PhysiotherapistANDOROccupationalTherapist
@@ -9262,9 +9452,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysiotherapistANDOROccupationalTherapist = "106296000";
 
     /// <summary>
+    /// Literal for code: NONEPhysiotherapistANDOROccupationalTherapist
+    /// </summary>
+    public const string LiteralNONEPhysiotherapistANDOROccupationalTherapist = "http://snomed.info/sct#106296000";
+
+    /// <summary>
     /// Literal for code: PhilologistTranslatorANDORInterpreter
     /// </summary>
     public const string LiteralPhilologistTranslatorANDORInterpreter = "106330007";
+
+    /// <summary>
+    /// Literal for code: NONEPhilologistTranslatorANDORInterpreter
+    /// </summary>
+    public const string LiteralNONEPhilologistTranslatorANDORInterpreter = "http://snomed.info/sct#106330007";
 
     /// <summary>
     /// Literal for code: IdenticalTwinSibling
@@ -9272,9 +9472,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIdenticalTwinSibling = "10896006";
 
     /// <summary>
+    /// Literal for code: NONEIdenticalTwinSibling
+    /// </summary>
+    public const string LiteralNONEIdenticalTwinSibling = "http://snomed.info/sct#10896006";
+
+    /// <summary>
     /// Literal for code: WorkingFather
     /// </summary>
     public const string LiteralWorkingFather = "10960006";
+
+    /// <summary>
+    /// Literal for code: NONEWorkingFather
+    /// </summary>
+    public const string LiteralNONEWorkingFather = "http://snomed.info/sct#10960006";
 
     /// <summary>
     /// Literal for code: MedicalDoctor
@@ -9282,9 +9492,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalDoctor = "112247003";
 
     /// <summary>
+    /// Literal for code: NONEMedicalDoctor
+    /// </summary>
+    public const string LiteralNONEMedicalDoctor = "http://snomed.info/sct#112247003";
+
+    /// <summary>
     /// Literal for code: TwinSibling
     /// </summary>
     public const string LiteralTwinSibling = "11286003";
+
+    /// <summary>
+    /// Literal for code: NONETwinSibling
+    /// </summary>
+    public const string LiteralNONETwinSibling = "http://snomed.info/sct#11286003";
 
     /// <summary>
     /// Literal for code: Grandmother
@@ -9292,9 +9512,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGrandmother = "113157001";
 
     /// <summary>
+    /// Literal for code: NONEGrandmother
+    /// </summary>
+    public const string LiteralNONEGrandmother = "http://snomed.info/sct#113157001";
+
+    /// <summary>
     /// Literal for code: FraternalTwinSibling
     /// </summary>
     public const string LiteralFraternalTwinSibling = "113158006";
+
+    /// <summary>
+    /// Literal for code: NONEFraternalTwinSibling
+    /// </summary>
+    public const string LiteralNONEFraternalTwinSibling = "http://snomed.info/sct#113158006";
 
     /// <summary>
     /// Literal for code: LegalDaughter
@@ -9302,9 +9532,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLegalDaughter = "113159003";
 
     /// <summary>
+    /// Literal for code: NONELegalDaughter
+    /// </summary>
+    public const string LiteralNONELegalDaughter = "http://snomed.info/sct#113159003";
+
+    /// <summary>
     /// Literal for code: NaturalSon
     /// </summary>
     public const string LiteralNaturalSon = "113160008";
+
+    /// <summary>
+    /// Literal for code: NONENaturalSon
+    /// </summary>
+    public const string LiteralNONENaturalSon = "http://snomed.info/sct#113160008";
 
     /// <summary>
     /// Literal for code: FemaleFiance
@@ -9312,9 +9552,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFemaleFiance = "113161007";
 
     /// <summary>
+    /// Literal for code: NONEFemaleFiance
+    /// </summary>
+    public const string LiteralNONEFemaleFiance = "http://snomed.info/sct#113161007";
+
+    /// <summary>
     /// Literal for code: Friend
     /// </summary>
     public const string LiteralFriend = "113163005";
+
+    /// <summary>
+    /// Literal for code: NONEFriend
+    /// </summary>
+    public const string LiteralNONEFriend = "http://snomed.info/sct#113163005";
 
     /// <summary>
     /// Literal for code: GreatGreatGrandChild
@@ -9322,9 +9572,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGreatGreatGrandChild = "11393001";
 
     /// <summary>
+    /// Literal for code: NONEGreatGreatGrandChild
+    /// </summary>
+    public const string LiteralNONEGreatGreatGrandChild = "http://snomed.info/sct#11393001";
+
+    /// <summary>
     /// Literal for code: MaleSecondCousin
     /// </summary>
     public const string LiteralMaleSecondCousin = "11434005";
+
+    /// <summary>
+    /// Literal for code: NONEMaleSecondCousin
+    /// </summary>
+    public const string LiteralNONEMaleSecondCousin = "http://snomed.info/sct#11434005";
 
     /// <summary>
     /// Literal for code: DonorOfControlMaterial
@@ -9332,9 +9592,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDonorOfControlMaterial = "116153009";
 
     /// <summary>
+    /// Literal for code: NONEDonorOfControlMaterial
+    /// </summary>
+    public const string LiteralNONEDonorOfControlMaterial = "http://snomed.info/sct#116153009";
+
+    /// <summary>
     /// Literal for code: Patient
     /// </summary>
     public const string LiteralPatient = "116154003";
+
+    /// <summary>
+    /// Literal for code: NONEPatient
+    /// </summary>
+    public const string LiteralNONEPatient = "http://snomed.info/sct#116154003";
 
     /// <summary>
     /// Literal for code: Neuropathologist
@@ -9342,9 +9612,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeuropathologist = "11661002";
 
     /// <summary>
+    /// Literal for code: NONENeuropathologist
+    /// </summary>
+    public const string LiteralNONENeuropathologist = "http://snomed.info/sct#11661002";
+
+    /// <summary>
     /// Literal for code: LegalBrother
     /// </summary>
     public const string LiteralLegalBrother = "11773006";
+
+    /// <summary>
+    /// Literal for code: NONELegalBrother
+    /// </summary>
+    public const string LiteralNONELegalBrother = "http://snomed.info/sct#11773006";
 
     /// <summary>
     /// Literal for code: Nephrologist
@@ -9352,9 +9632,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNephrologist = "11911009";
 
     /// <summary>
+    /// Literal for code: NONENephrologist
+    /// </summary>
+    public const string LiteralNONENephrologist = "http://snomed.info/sct#11911009";
+
+    /// <summary>
     /// Literal for code: Obstetrician
     /// </summary>
     public const string LiteralObstetrician = "11935004";
+
+    /// <summary>
+    /// Literal for code: NONEObstetrician
+    /// </summary>
+    public const string LiteralNONEObstetrician = "http://snomed.info/sct#11935004";
 
     /// <summary>
     /// Literal for code: MaleFirstCousin
@@ -9362,9 +9652,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaleFirstCousin = "11993008";
 
     /// <summary>
+    /// Literal for code: NONEMaleFirstCousin
+    /// </summary>
+    public const string LiteralNONEMaleFirstCousin = "http://snomed.info/sct#11993008";
+
+    /// <summary>
     /// Literal for code: FosterSon
     /// </summary>
     public const string LiteralFosterSon = "12241003";
+
+    /// <summary>
+    /// Literal for code: NONEFosterSon
+    /// </summary>
+    public const string LiteralNONEFosterSon = "http://snomed.info/sct#12241003";
 
     /// <summary>
     /// Literal for code: Relative
@@ -9372,9 +9672,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRelative = "125677006";
 
     /// <summary>
+    /// Literal for code: NONERelative
+    /// </summary>
+    public const string LiteralNONERelative = "http://snomed.info/sct#125677006";
+
+    /// <summary>
     /// Literal for code: FirstDegreeBloodRelative
     /// </summary>
     public const string LiteralFirstDegreeBloodRelative = "125678001";
+
+    /// <summary>
+    /// Literal for code: NONEFirstDegreeBloodRelative
+    /// </summary>
+    public const string LiteralNONEFirstDegreeBloodRelative = "http://snomed.info/sct#125678001";
 
     /// <summary>
     /// Literal for code: BloodRelative
@@ -9382,9 +9692,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBloodRelative = "125679009";
 
     /// <summary>
+    /// Literal for code: NONEBloodRelative
+    /// </summary>
+    public const string LiteralNONEBloodRelative = "http://snomed.info/sct#125679009";
+
+    /// <summary>
     /// Literal for code: SingleMother
     /// </summary>
     public const string LiteralSingleMother = "12629003";
+
+    /// <summary>
+    /// Literal for code: NONESingleMother
+    /// </summary>
+    public const string LiteralNONESingleMother = "http://snomed.info/sct#12629003";
 
     /// <summary>
     /// Literal for code: Spouse
@@ -9392,9 +9712,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpouse = "127848009";
 
     /// <summary>
+    /// Literal for code: NONESpouse
+    /// </summary>
+    public const string LiteralNONESpouse = "http://snomed.info/sct#127848009";
+
+    /// <summary>
     /// Literal for code: Husband
     /// </summary>
     public const string LiteralHusband = "127849001";
+
+    /// <summary>
+    /// Literal for code: NONEHusband
+    /// </summary>
+    public const string LiteralNONEHusband = "http://snomed.info/sct#127849001";
 
     /// <summary>
     /// Literal for code: Wife
@@ -9402,9 +9732,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWife = "127850001";
 
     /// <summary>
+    /// Literal for code: NONEWife
+    /// </summary>
+    public const string LiteralNONEWife = "http://snomed.info/sct#127850001";
+
+    /// <summary>
     /// Literal for code: Fiance
     /// </summary>
     public const string LiteralFiance = "127851002";
+
+    /// <summary>
+    /// Literal for code: NONEFiance
+    /// </summary>
+    public const string LiteralNONEFiance = "http://snomed.info/sct#127851002";
 
     /// <summary>
     /// Literal for code: OlderBrother
@@ -9412,9 +9752,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOlderBrother = "13038009";
 
     /// <summary>
+    /// Literal for code: NONEOlderBrother
+    /// </summary>
+    public const string LiteralNONEOlderBrother = "http://snomed.info/sct#13038009";
+
+    /// <summary>
     /// Literal for code: OlderSibling
     /// </summary>
     public const string LiteralOlderSibling = "13157002";
+
+    /// <summary>
+    /// Literal for code: NONEOlderSibling
+    /// </summary>
+    public const string LiteralNONEOlderSibling = "http://snomed.info/sct#13157002";
 
     /// <summary>
     /// Literal for code: Infant
@@ -9422,9 +9772,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfant = "133931009";
 
     /// <summary>
+    /// Literal for code: NONEInfant
+    /// </summary>
+    public const string LiteralNONEInfant = "http://snomed.info/sct#133931009";
+
+    /// <summary>
     /// Literal for code: Caregiver
     /// </summary>
     public const string LiteralCaregiver = "133932002";
+
+    /// <summary>
+    /// Literal for code: NONECaregiver
+    /// </summary>
+    public const string LiteralNONECaregiver = "http://snomed.info/sct#133932002";
 
     /// <summary>
     /// Literal for code: Newborn
@@ -9432,9 +9792,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNewborn = "133933007";
 
     /// <summary>
+    /// Literal for code: NONENewborn
+    /// </summary>
+    public const string LiteralNONENewborn = "http://snomed.info/sct#133933007";
+
+    /// <summary>
     /// Literal for code: Adult
     /// </summary>
     public const string LiteralAdult = "133936004";
+
+    /// <summary>
+    /// Literal for code: NONEAdult
+    /// </summary>
+    public const string LiteralNONEAdult = "http://snomed.info/sct#133936004";
 
     /// <summary>
     /// Literal for code: Adolescent
@@ -9442,9 +9812,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdolescent = "133937008";
 
     /// <summary>
+    /// Literal for code: NONEAdolescent
+    /// </summary>
+    public const string LiteralNONEAdolescent = "http://snomed.info/sct#133937008";
+
+    /// <summary>
     /// Literal for code: SecondCousin
     /// </summary>
     public const string LiteralSecondCousin = "13443008";
+
+    /// <summary>
+    /// Literal for code: NONESecondCousin
+    /// </summary>
+    public const string LiteralNONESecondCousin = "http://snomed.info/sct#13443008";
 
     /// <summary>
     /// Literal for code: OrphanFemale
@@ -9452,9 +9832,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOrphanFemale = "1354005";
 
     /// <summary>
+    /// Literal for code: NONEOrphanFemale
+    /// </summary>
+    public const string LiteralNONEOrphanFemale = "http://snomed.info/sct#1354005";
+
+    /// <summary>
     /// Literal for code: SchoolDentalAssistant
     /// </summary>
     public const string LiteralSchoolDentalAssistant = "13580004";
+
+    /// <summary>
+    /// Literal for code: NONESchoolDentalAssistant
+    /// </summary>
+    public const string LiteralNONESchoolDentalAssistant = "http://snomed.info/sct#13580004";
 
     /// <summary>
     /// Literal for code: NaturalParent
@@ -9462,9 +9852,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNaturalParent = "13646006";
 
     /// <summary>
+    /// Literal for code: NONENaturalParent
+    /// </summary>
+    public const string LiteralNONENaturalParent = "http://snomed.info/sct#13646006";
+
+    /// <summary>
     /// Literal for code: SpecializedSurgeon
     /// </summary>
     public const string LiteralSpecializedSurgeon = "1421009";
+
+    /// <summary>
+    /// Literal for code: NONESpecializedSurgeon
+    /// </summary>
+    public const string LiteralNONESpecializedSurgeon = "http://snomed.info/sct#1421009";
 
     /// <summary>
     /// Literal for code: LegalChild
@@ -9472,9 +9872,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLegalChild = "14469008";
 
     /// <summary>
+    /// Literal for code: NONELegalChild
+    /// </summary>
+    public const string LiteralNONELegalChild = "http://snomed.info/sct#14469008";
+
+    /// <summary>
     /// Literal for code: MedicalMicrobiologist
     /// </summary>
     public const string LiteralMedicalMicrobiologist = "14698002";
+
+    /// <summary>
+    /// Literal for code: NONEMedicalMicrobiologist
+    /// </summary>
+    public const string LiteralNONEMedicalMicrobiologist = "http://snomed.info/sct#14698002";
 
     /// <summary>
     /// Literal for code: SurrogateParent
@@ -9482,9 +9892,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurrogateParent = "15130002";
 
     /// <summary>
+    /// Literal for code: NONESurrogateParent
+    /// </summary>
+    public const string LiteralNONESurrogateParent = "http://snomed.info/sct#15130002";
+
+    /// <summary>
     /// Literal for code: MedicalPractitioner
     /// </summary>
     public const string LiteralMedicalPractitioner = "158965000";
+
+    /// <summary>
+    /// Literal for code: NONEMedicalPractitioner
+    /// </summary>
+    public const string LiteralNONEMedicalPractitioner = "http://snomed.info/sct#158965000";
 
     /// <summary>
     /// Literal for code: MedicalAdministratorNational
@@ -9492,9 +9912,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalAdministratorNational = "158966004";
 
     /// <summary>
+    /// Literal for code: NONEMedicalAdministratorNational
+    /// </summary>
+    public const string LiteralNONEMedicalAdministratorNational = "http://snomed.info/sct#158966004";
+
+    /// <summary>
     /// Literal for code: ConsultantPhysician
     /// </summary>
     public const string LiteralConsultantPhysician = "158967008";
+
+    /// <summary>
+    /// Literal for code: NONEConsultantPhysician
+    /// </summary>
+    public const string LiteralNONEConsultantPhysician = "http://snomed.info/sct#158967008";
 
     /// <summary>
     /// Literal for code: ConsultantSurgeon
@@ -9502,9 +9932,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConsultantSurgeon = "158968003";
 
     /// <summary>
+    /// Literal for code: NONEConsultantSurgeon
+    /// </summary>
+    public const string LiteralNONEConsultantSurgeon = "http://snomed.info/sct#158968003";
+
+    /// <summary>
     /// Literal for code: ConsultantGynecologyAndObstetrics
     /// </summary>
     public const string LiteralConsultantGynecologyAndObstetrics = "158969006";
+
+    /// <summary>
+    /// Literal for code: NONEConsultantGynecologyAndObstetrics
+    /// </summary>
+    public const string LiteralNONEConsultantGynecologyAndObstetrics = "http://snomed.info/sct#158969006";
 
     /// <summary>
     /// Literal for code: Anesthetist
@@ -9512,9 +9952,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnesthetist = "158970007";
 
     /// <summary>
+    /// Literal for code: NONEAnesthetist
+    /// </summary>
+    public const string LiteralNONEAnesthetist = "http://snomed.info/sct#158970007";
+
+    /// <summary>
     /// Literal for code: HospitalRegistrar
     /// </summary>
     public const string LiteralHospitalRegistrar = "158971006";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalRegistrar
+    /// </summary>
+    public const string LiteralNONEHospitalRegistrar = "http://snomed.info/sct#158971006";
 
     /// <summary>
     /// Literal for code: HouseOfficer
@@ -9522,9 +9972,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHouseOfficer = "158972004";
 
     /// <summary>
+    /// Literal for code: NONEHouseOfficer
+    /// </summary>
+    public const string LiteralNONEHouseOfficer = "http://snomed.info/sct#158972004";
+
+    /// <summary>
     /// Literal for code: OccupationalPhysician
     /// </summary>
     public const string LiteralOccupationalPhysician = "158973009";
+
+    /// <summary>
+    /// Literal for code: NONEOccupationalPhysician
+    /// </summary>
+    public const string LiteralNONEOccupationalPhysician = "http://snomed.info/sct#158973009";
 
     /// <summary>
     /// Literal for code: ClinicalMedicalOfficer
@@ -9532,9 +9992,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalMedicalOfficer = "158974003";
 
     /// <summary>
+    /// Literal for code: NONEClinicalMedicalOfficer
+    /// </summary>
+    public const string LiteralNONEClinicalMedicalOfficer = "http://snomed.info/sct#158974003";
+
+    /// <summary>
     /// Literal for code: MedicalPractitionerTeaching
     /// </summary>
     public const string LiteralMedicalPractitionerTeaching = "158975002";
+
+    /// <summary>
+    /// Literal for code: NONEMedicalPractitionerTeaching
+    /// </summary>
+    public const string LiteralNONEMedicalPractitionerTeaching = "http://snomed.info/sct#158975002";
 
     /// <summary>
     /// Literal for code: DentalAdministrator
@@ -9542,9 +10012,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDentalAdministrator = "158977005";
 
     /// <summary>
+    /// Literal for code: NONEDentalAdministrator
+    /// </summary>
+    public const string LiteralNONEDentalAdministrator = "http://snomed.info/sct#158977005";
+
+    /// <summary>
     /// Literal for code: DentalConsultant
     /// </summary>
     public const string LiteralDentalConsultant = "158978000";
+
+    /// <summary>
+    /// Literal for code: NONEDentalConsultant
+    /// </summary>
+    public const string LiteralNONEDentalConsultant = "http://snomed.info/sct#158978000";
 
     /// <summary>
     /// Literal for code: DentalGeneralPractitioner
@@ -9552,9 +10032,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDentalGeneralPractitioner = "158979008";
 
     /// <summary>
+    /// Literal for code: NONEDentalGeneralPractitioner
+    /// </summary>
+    public const string LiteralNONEDentalGeneralPractitioner = "http://snomed.info/sct#158979008";
+
+    /// <summary>
     /// Literal for code: DentalPractitionerTeaching
     /// </summary>
     public const string LiteralDentalPractitionerTeaching = "158980006";
+
+    /// <summary>
+    /// Literal for code: NONEDentalPractitionerTeaching
+    /// </summary>
+    public const string LiteralNONEDentalPractitionerTeaching = "http://snomed.info/sct#158980006";
 
     /// <summary>
     /// Literal for code: NurseAdministratorNational
@@ -9562,9 +10052,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNurseAdministratorNational = "158983008";
 
     /// <summary>
+    /// Literal for code: NONENurseAdministratorNational
+    /// </summary>
+    public const string LiteralNONENurseAdministratorNational = "http://snomed.info/sct#158983008";
+
+    /// <summary>
     /// Literal for code: NursingOfficerRegion
     /// </summary>
     public const string LiteralNursingOfficerRegion = "158984002";
+
+    /// <summary>
+    /// Literal for code: NONENursingOfficerRegion
+    /// </summary>
+    public const string LiteralNONENursingOfficerRegion = "http://snomed.info/sct#158984002";
 
     /// <summary>
     /// Literal for code: NursingOfficerDistrict
@@ -9572,9 +10072,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNursingOfficerDistrict = "158985001";
 
     /// <summary>
+    /// Literal for code: NONENursingOfficerDistrict
+    /// </summary>
+    public const string LiteralNONENursingOfficerDistrict = "http://snomed.info/sct#158985001";
+
+    /// <summary>
     /// Literal for code: NursingAdministratorProfessionalBody
     /// </summary>
     public const string LiteralNursingAdministratorProfessionalBody = "158986000";
+
+    /// <summary>
+    /// Literal for code: NONENursingAdministratorProfessionalBody
+    /// </summary>
+    public const string LiteralNONENursingAdministratorProfessionalBody = "http://snomed.info/sct#158986000";
 
     /// <summary>
     /// Literal for code: NursingOfficerDivision
@@ -9582,9 +10092,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNursingOfficerDivision = "158987009";
 
     /// <summary>
+    /// Literal for code: NONENursingOfficerDivision
+    /// </summary>
+    public const string LiteralNONENursingOfficerDivision = "http://snomed.info/sct#158987009";
+
+    /// <summary>
     /// Literal for code: NurseEducationDirector
     /// </summary>
     public const string LiteralNurseEducationDirector = "158988004";
+
+    /// <summary>
+    /// Literal for code: NONENurseEducationDirector
+    /// </summary>
+    public const string LiteralNONENurseEducationDirector = "http://snomed.info/sct#158988004";
 
     /// <summary>
     /// Literal for code: OccupationalHealthNursingOfficer
@@ -9592,9 +10112,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOccupationalHealthNursingOfficer = "158989007";
 
     /// <summary>
+    /// Literal for code: NONEOccupationalHealthNursingOfficer
+    /// </summary>
+    public const string LiteralNONEOccupationalHealthNursingOfficer = "http://snomed.info/sct#158989007";
+
+    /// <summary>
     /// Literal for code: NursingOfficer
     /// </summary>
     public const string LiteralNursingOfficer = "158990003";
+
+    /// <summary>
+    /// Literal for code: NONENursingOfficer
+    /// </summary>
+    public const string LiteralNONENursingOfficer = "http://snomed.info/sct#158990003";
 
     /// <summary>
     /// Literal for code: MidwiferySister
@@ -9602,9 +10132,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMidwiferySister = "158992006";
 
     /// <summary>
+    /// Literal for code: NONEMidwiferySister
+    /// </summary>
+    public const string LiteralNONEMidwiferySister = "http://snomed.info/sct#158992006";
+
+    /// <summary>
     /// Literal for code: NursingSisterTheatre
     /// </summary>
     public const string LiteralNursingSisterTheatre = "158993001";
+
+    /// <summary>
+    /// Literal for code: NONENursingSisterTheatre
+    /// </summary>
+    public const string LiteralNONENursingSisterTheatre = "http://snomed.info/sct#158993001";
 
     /// <summary>
     /// Literal for code: StaffNurse
@@ -9612,9 +10152,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStaffNurse = "158994007";
 
     /// <summary>
+    /// Literal for code: NONEStaffNurse
+    /// </summary>
+    public const string LiteralNONEStaffNurse = "http://snomed.info/sct#158994007";
+
+    /// <summary>
     /// Literal for code: StaffMidwife
     /// </summary>
     public const string LiteralStaffMidwife = "158995008";
+
+    /// <summary>
+    /// Literal for code: NONEStaffMidwife
+    /// </summary>
+    public const string LiteralNONEStaffMidwife = "http://snomed.info/sct#158995008";
 
     /// <summary>
     /// Literal for code: StateEnrolledNurse
@@ -9622,9 +10172,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStateEnrolledNurse = "158996009";
 
     /// <summary>
+    /// Literal for code: NONEStateEnrolledNurse
+    /// </summary>
+    public const string LiteralNONEStateEnrolledNurse = "http://snomed.info/sct#158996009";
+
+    /// <summary>
     /// Literal for code: DistrictNurse
     /// </summary>
     public const string LiteralDistrictNurse = "158997000";
+
+    /// <summary>
+    /// Literal for code: NONEDistrictNurse
+    /// </summary>
+    public const string LiteralNONEDistrictNurse = "http://snomed.info/sct#158997000";
 
     /// <summary>
     /// Literal for code: PrivateNurse
@@ -9632,9 +10192,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrivateNurse = "158998005";
 
     /// <summary>
+    /// Literal for code: NONEPrivateNurse
+    /// </summary>
+    public const string LiteralNONEPrivateNurse = "http://snomed.info/sct#158998005";
+
+    /// <summary>
     /// Literal for code: CommunityMidwife
     /// </summary>
     public const string LiteralCommunityMidwife = "158999002";
+
+    /// <summary>
+    /// Literal for code: NONECommunityMidwife
+    /// </summary>
+    public const string LiteralNONECommunityMidwife = "http://snomed.info/sct#158999002";
 
     /// <summary>
     /// Literal for code: ClinicNurse
@@ -9642,9 +10212,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicNurse = "159001001";
 
     /// <summary>
+    /// Literal for code: NONEClinicNurse
+    /// </summary>
+    public const string LiteralNONEClinicNurse = "http://snomed.info/sct#159001001";
+
+    /// <summary>
     /// Literal for code: PracticeNurse
     /// </summary>
     public const string LiteralPracticeNurse = "159002008";
+
+    /// <summary>
+    /// Literal for code: NONEPracticeNurse
+    /// </summary>
+    public const string LiteralNONEPracticeNurse = "http://snomed.info/sct#159002008";
 
     /// <summary>
     /// Literal for code: SchoolNurse
@@ -9652,9 +10232,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSchoolNurse = "159003003";
 
     /// <summary>
+    /// Literal for code: NONESchoolNurse
+    /// </summary>
+    public const string LiteralNONESchoolNurse = "http://snomed.info/sct#159003003";
+
+    /// <summary>
     /// Literal for code: NurseTeaching
     /// </summary>
     public const string LiteralNurseTeaching = "159004009";
+
+    /// <summary>
+    /// Literal for code: NONENurseTeaching
+    /// </summary>
+    public const string LiteralNONENurseTeaching = "http://snomed.info/sct#159004009";
 
     /// <summary>
     /// Literal for code: StudentNurse
@@ -9662,9 +10252,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStudentNurse = "159005005";
 
     /// <summary>
+    /// Literal for code: NONEStudentNurse
+    /// </summary>
+    public const string LiteralNONEStudentNurse = "http://snomed.info/sct#159005005";
+
+    /// <summary>
     /// Literal for code: DentalNurse
     /// </summary>
     public const string LiteralDentalNurse = "159006006";
+
+    /// <summary>
+    /// Literal for code: NONEDentalNurse
+    /// </summary>
+    public const string LiteralNONEDentalNurse = "http://snomed.info/sct#159006006";
 
     /// <summary>
     /// Literal for code: CommunityPediatricNurse
@@ -9672,9 +10272,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommunityPediatricNurse = "159007002";
 
     /// <summary>
+    /// Literal for code: NONECommunityPediatricNurse
+    /// </summary>
+    public const string LiteralNONECommunityPediatricNurse = "http://snomed.info/sct#159007002";
+
+    /// <summary>
     /// Literal for code: HospitalPharmacist
     /// </summary>
     public const string LiteralHospitalPharmacist = "159010009";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalPharmacist
+    /// </summary>
+    public const string LiteralNONEHospitalPharmacist = "http://snomed.info/sct#159010009";
 
     /// <summary>
     /// Literal for code: RetailPharmacist
@@ -9682,9 +10292,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRetailPharmacist = "159011008";
 
     /// <summary>
+    /// Literal for code: NONERetailPharmacist
+    /// </summary>
+    public const string LiteralNONERetailPharmacist = "http://snomed.info/sct#159011008";
+
+    /// <summary>
     /// Literal for code: IndustrialPharmacist
     /// </summary>
     public const string LiteralIndustrialPharmacist = "159012001";
+
+    /// <summary>
+    /// Literal for code: NONEIndustrialPharmacist
+    /// </summary>
+    public const string LiteralNONEIndustrialPharmacist = "http://snomed.info/sct#159012001";
 
     /// <summary>
     /// Literal for code: PharmaceuticalOfficerHA
@@ -9692,9 +10312,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPharmaceuticalOfficerHA = "159013006";
 
     /// <summary>
+    /// Literal for code: NONEPharmaceuticalOfficerHA
+    /// </summary>
+    public const string LiteralNONEPharmaceuticalOfficerHA = "http://snomed.info/sct#159013006";
+
+    /// <summary>
     /// Literal for code: TraineePharmacist
     /// </summary>
     public const string LiteralTraineePharmacist = "159014000";
+
+    /// <summary>
+    /// Literal for code: NONETraineePharmacist
+    /// </summary>
+    public const string LiteralNONETraineePharmacist = "http://snomed.info/sct#159014000";
 
     /// <summary>
     /// Literal for code: MedicalRadiographer
@@ -9702,9 +10332,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalRadiographer = "159016003";
 
     /// <summary>
+    /// Literal for code: NONEMedicalRadiographer
+    /// </summary>
+    public const string LiteralNONEMedicalRadiographer = "http://snomed.info/sct#159016003";
+
+    /// <summary>
     /// Literal for code: DiagnosticRadiographer
     /// </summary>
     public const string LiteralDiagnosticRadiographer = "159017007";
+
+    /// <summary>
+    /// Literal for code: NONEDiagnosticRadiographer
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiographer = "http://snomed.info/sct#159017007";
 
     /// <summary>
     /// Literal for code: TherapeuticRadiographer
@@ -9712,9 +10352,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTherapeuticRadiographer = "159018002";
 
     /// <summary>
+    /// Literal for code: NONETherapeuticRadiographer
+    /// </summary>
+    public const string LiteralNONETherapeuticRadiographer = "http://snomed.info/sct#159018002";
+
+    /// <summary>
     /// Literal for code: TraineeRadiographer
     /// </summary>
     public const string LiteralTraineeRadiographer = "159019005";
+
+    /// <summary>
+    /// Literal for code: NONETraineeRadiographer
+    /// </summary>
+    public const string LiteralNONETraineeRadiographer = "http://snomed.info/sct#159019005";
 
     /// <summary>
     /// Literal for code: OphthalmicOptician
@@ -9722,9 +10372,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOphthalmicOptician = "159021000";
 
     /// <summary>
+    /// Literal for code: NONEOphthalmicOptician
+    /// </summary>
+    public const string LiteralNONEOphthalmicOptician = "http://snomed.info/sct#159021000";
+
+    /// <summary>
     /// Literal for code: TraineeOptician
     /// </summary>
     public const string LiteralTraineeOptician = "159022007";
+
+    /// <summary>
+    /// Literal for code: NONETraineeOptician
+    /// </summary>
+    public const string LiteralNONETraineeOptician = "http://snomed.info/sct#159022007";
 
     /// <summary>
     /// Literal for code: RemedialGymnast
@@ -9732,9 +10392,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRemedialGymnast = "159025009";
 
     /// <summary>
+    /// Literal for code: NONERemedialGymnast
+    /// </summary>
+    public const string LiteralNONERemedialGymnast = "http://snomed.info/sct#159025009";
+
+    /// <summary>
     /// Literal for code: SpeechAndLanguageTherapist
     /// </summary>
     public const string LiteralSpeechAndLanguageTherapist = "159026005";
+
+    /// <summary>
+    /// Literal for code: NONESpeechAndLanguageTherapist
+    /// </summary>
+    public const string LiteralNONESpeechAndLanguageTherapist = "http://snomed.info/sct#159026005";
 
     /// <summary>
     /// Literal for code: Orthoptist
@@ -9742,9 +10412,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOrthoptist = "159027001";
 
     /// <summary>
+    /// Literal for code: NONEOrthoptist
+    /// </summary>
+    public const string LiteralNONEOrthoptist = "http://snomed.info/sct#159027001";
+
+    /// <summary>
     /// Literal for code: TraineeRemedialTherapist
     /// </summary>
     public const string LiteralTraineeRemedialTherapist = "159028006";
+
+    /// <summary>
+    /// Literal for code: NONETraineeRemedialTherapist
+    /// </summary>
+    public const string LiteralNONETraineeRemedialTherapist = "http://snomed.info/sct#159028006";
 
     /// <summary>
     /// Literal for code: Dietician
@@ -9752,9 +10432,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDietician = "159033005";
 
     /// <summary>
+    /// Literal for code: NONEDietician
+    /// </summary>
+    public const string LiteralNONEDietician = "http://snomed.info/sct#159033005";
+
+    /// <summary>
     /// Literal for code: Podiatrist
     /// </summary>
     public const string LiteralPodiatrist = "159034004";
+
+    /// <summary>
+    /// Literal for code: NONEPodiatrist
+    /// </summary>
+    public const string LiteralNONEPodiatrist = "http://snomed.info/sct#159034004";
 
     /// <summary>
     /// Literal for code: DentalAuxiliary
@@ -9762,9 +10452,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDentalAuxiliary = "159035003";
 
     /// <summary>
+    /// Literal for code: NONEDentalAuxiliary
+    /// </summary>
+    public const string LiteralNONEDentalAuxiliary = "http://snomed.info/sct#159035003";
+
+    /// <summary>
     /// Literal for code: ECGTechnician
     /// </summary>
     public const string LiteralECGTechnician = "159036002";
+
+    /// <summary>
+    /// Literal for code: NONEECGTechnician
+    /// </summary>
+    public const string LiteralNONEECGTechnician = "http://snomed.info/sct#159036002";
 
     /// <summary>
     /// Literal for code: EEGTechnician
@@ -9772,9 +10472,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEEGTechnician = "159037006";
 
     /// <summary>
+    /// Literal for code: NONEEEGTechnician
+    /// </summary>
+    public const string LiteralNONEEEGTechnician = "http://snomed.info/sct#159037006";
+
+    /// <summary>
     /// Literal for code: ArtificialLimbFitter
     /// </summary>
     public const string LiteralArtificialLimbFitter = "159038001";
+
+    /// <summary>
+    /// Literal for code: NONEArtificialLimbFitter
+    /// </summary>
+    public const string LiteralNONEArtificialLimbFitter = "http://snomed.info/sct#159038001";
 
     /// <summary>
     /// Literal for code: ATAudiologyTechnician
@@ -9782,9 +10492,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralATAudiologyTechnician = "159039009";
 
     /// <summary>
+    /// Literal for code: NONEATAudiologyTechnician
+    /// </summary>
+    public const string LiteralNONEATAudiologyTechnician = "http://snomed.info/sct#159039009";
+
+    /// <summary>
     /// Literal for code: PharmacyTechnician
     /// </summary>
     public const string LiteralPharmacyTechnician = "159040006";
+
+    /// <summary>
+    /// Literal for code: NONEPharmacyTechnician
+    /// </summary>
+    public const string LiteralNONEPharmacyTechnician = "http://snomed.info/sct#159040006";
 
     /// <summary>
     /// Literal for code: TraineeMedicalTechnician
@@ -9792,9 +10512,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTraineeMedicalTechnician = "159041005";
 
     /// <summary>
+    /// Literal for code: NONETraineeMedicalTechnician
+    /// </summary>
+    public const string LiteralNONETraineeMedicalTechnician = "http://snomed.info/sct#159041005";
+
+    /// <summary>
     /// Literal for code: Geneticist
     /// </summary>
     public const string LiteralGeneticist = "159141008";
+
+    /// <summary>
+    /// Literal for code: NONEGeneticist
+    /// </summary>
+    public const string LiteralNONEGeneticist = "http://snomed.info/sct#159141008";
 
     /// <summary>
     /// Literal for code: SurgicalCorsetFitter
@@ -9802,9 +10532,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgicalCorsetFitter = "159972006";
 
     /// <summary>
+    /// Literal for code: NONESurgicalCorsetFitter
+    /// </summary>
+    public const string LiteralNONESurgicalCorsetFitter = "http://snomed.info/sct#159972006";
+
+    /// <summary>
     /// Literal for code: DentalTechnician
     /// </summary>
     public const string LiteralDentalTechnician = "160008000";
+
+    /// <summary>
+    /// Literal for code: NONEDentalTechnician
+    /// </summary>
+    public const string LiteralNONEDentalTechnician = "http://snomed.info/sct#160008000";
 
     /// <summary>
     /// Literal for code: SalvationArmyMember
@@ -9812,9 +10552,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSalvationArmyMember = "160234004";
 
     /// <summary>
+    /// Literal for code: NONESalvationArmyMember
+    /// </summary>
+    public const string LiteralNONESalvationArmyMember = "http://snomed.info/sct#160234004";
+
+    /// <summary>
     /// Literal for code: SchoolChild
     /// </summary>
     public const string LiteralSchoolChild = "160498000";
+
+    /// <summary>
+    /// Literal for code: NONESchoolChild
+    /// </summary>
+    public const string LiteralNONESchoolChild = "http://snomed.info/sct#160498000";
 
     /// <summary>
     /// Literal for code: CommonLawHusband
@@ -9822,9 +10572,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommonLawHusband = "160505009";
 
     /// <summary>
+    /// Literal for code: NONECommonLawHusband
+    /// </summary>
+    public const string LiteralNONECommonLawHusband = "http://snomed.info/sct#160505009";
+
+    /// <summary>
     /// Literal for code: CommonLawWife
     /// </summary>
     public const string LiteralCommonLawWife = "160506005";
+
+    /// <summary>
+    /// Literal for code: NONECommonLawWife
+    /// </summary>
+    public const string LiteralNONECommonLawWife = "http://snomed.info/sct#160506005";
 
     /// <summary>
     /// Literal for code: RomanCatholic
@@ -9832,9 +10592,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRomanCatholic = "160540005";
 
     /// <summary>
+    /// Literal for code: NONERomanCatholic
+    /// </summary>
+    public const string LiteralNONERomanCatholic = "http://snomed.info/sct#160540005";
+
+    /// <summary>
     /// Literal for code: Atheist
     /// </summary>
     public const string LiteralAtheist = "160542002";
+
+    /// <summary>
+    /// Literal for code: NONEAtheist
+    /// </summary>
+    public const string LiteralNONEAtheist = "http://snomed.info/sct#160542002";
 
     /// <summary>
     /// Literal for code: Jew
@@ -9842,9 +10612,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJew = "160543007";
 
     /// <summary>
+    /// Literal for code: NONEJew
+    /// </summary>
+    public const string LiteralNONEJew = "http://snomed.info/sct#160543007";
+
+    /// <summary>
     /// Literal for code: ChristianScienceChurch
     /// </summary>
     public const string LiteralChristianScienceChurch = "160544001";
+
+    /// <summary>
+    /// Literal for code: NONEChristianScienceChurch
+    /// </summary>
+    public const string LiteralNONEChristianScienceChurch = "http://snomed.info/sct#160544001";
 
     /// <summary>
     /// Literal for code: Hindu
@@ -9852,9 +10632,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHindu = "160545000";
 
     /// <summary>
+    /// Literal for code: NONEHindu
+    /// </summary>
+    public const string LiteralNONEHindu = "http://snomed.info/sct#160545000";
+
+    /// <summary>
     /// Literal for code: Christian
     /// </summary>
     public const string LiteralChristian = "160549006";
+
+    /// <summary>
+    /// Literal for code: NONEChristian
+    /// </summary>
+    public const string LiteralNONEChristian = "http://snomed.info/sct#160549006";
 
     /// <summary>
     /// Literal for code: Baptist
@@ -9862,9 +10652,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBaptist = "160557009";
 
     /// <summary>
+    /// Literal for code: NONEBaptist
+    /// </summary>
+    public const string LiteralNONEBaptist = "http://snomed.info/sct#160557009";
+
+    /// <summary>
     /// Literal for code: Methodist
     /// </summary>
     public const string LiteralMethodist = "160558004";
+
+    /// <summary>
+    /// Literal for code: NONEMethodist
+    /// </summary>
+    public const string LiteralNONEMethodist = "http://snomed.info/sct#160558004";
 
     /// <summary>
     /// Literal for code: Presbyterian
@@ -9872,9 +10672,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPresbyterian = "160560002";
 
     /// <summary>
+    /// Literal for code: NONEPresbyterian
+    /// </summary>
+    public const string LiteralNONEPresbyterian = "http://snomed.info/sct#160560002";
+
+    /// <summary>
     /// Literal for code: Pentecostal
     /// </summary>
     public const string LiteralPentecostal = "160562005";
+
+    /// <summary>
+    /// Literal for code: NONEPentecostal
+    /// </summary>
+    public const string LiteralNONEPentecostal = "http://snomed.info/sct#160562005";
 
     /// <summary>
     /// Literal for code: Evangelist
@@ -9882,9 +10692,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEvangelist = "160563000";
 
     /// <summary>
+    /// Literal for code: NONEEvangelist
+    /// </summary>
+    public const string LiteralNONEEvangelist = "http://snomed.info/sct#160563000";
+
+    /// <summary>
     /// Literal for code: Christadelphian
     /// </summary>
     public const string LiteralChristadelphian = "160566008";
+
+    /// <summary>
+    /// Literal for code: NONEChristadelphian
+    /// </summary>
+    public const string LiteralNONEChristadelphian = "http://snomed.info/sct#160566008";
 
     /// <summary>
     /// Literal for code: Agnostic
@@ -9892,9 +10712,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAgnostic = "160567004";
 
     /// <summary>
+    /// Literal for code: NONEAgnostic
+    /// </summary>
+    public const string LiteralNONEAgnostic = "http://snomed.info/sct#160567004";
+
+    /// <summary>
     /// Literal for code: VoluntaryWorker
     /// </summary>
     public const string LiteralVoluntaryWorker = "160772005";
+
+    /// <summary>
+    /// Literal for code: NONEVoluntaryWorker
+    /// </summary>
+    public const string LiteralNONEVoluntaryWorker = "http://snomed.info/sct#160772005";
 
     /// <summary>
     /// Literal for code: Immigrant
@@ -9902,9 +10732,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImmigrant = "161158003";
 
     /// <summary>
+    /// Literal for code: NONEImmigrant
+    /// </summary>
+    public const string LiteralNONEImmigrant = "http://snomed.info/sct#161158003";
+
+    /// <summary>
     /// Literal for code: MaternalGreatGrandFather
     /// </summary>
     public const string LiteralMaternalGreatGrandFather = "166557991000087101";
+
+    /// <summary>
+    /// Literal for code: NONEMaternalGreatGrandFather
+    /// </summary>
+    public const string LiteralNONEMaternalGreatGrandFather = "http://snomed.info/sct#166557991000087101";
 
     /// <summary>
     /// Literal for code: MaleFiance
@@ -9912,9 +10752,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaleFiance = "17219007";
 
     /// <summary>
+    /// Literal for code: NONEMaleFiance
+    /// </summary>
+    public const string LiteralNONEMaleFiance = "http://snomed.info/sct#17219007";
+
+    /// <summary>
     /// Literal for code: PaternalFirstCousin
     /// </summary>
     public const string LiteralPaternalFirstCousin = "173704201000087107";
+
+    /// <summary>
+    /// Literal for code: NONEPaternalFirstCousin
+    /// </summary>
+    public const string LiteralNONEPaternalFirstCousin = "http://snomed.info/sct#173704201000087107";
 
     /// <summary>
     /// Literal for code: Cardiologist
@@ -9922,9 +10772,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCardiologist = "17561000";
 
     /// <summary>
+    /// Literal for code: NONECardiologist
+    /// </summary>
+    public const string LiteralNONECardiologist = "http://snomed.info/sct#17561000";
+
+    /// <summary>
     /// Literal for code: AdoptiveBrother
     /// </summary>
     public const string LiteralAdoptiveBrother = "17925003";
+
+    /// <summary>
+    /// Literal for code: NONEAdoptiveBrother
+    /// </summary>
+    public const string LiteralNONEAdoptiveBrother = "http://snomed.info/sct#17925003";
 
     /// <summary>
     /// Literal for code: NaturalGrandmother
@@ -9932,9 +10792,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNaturalGrandmother = "17945006";
 
     /// <summary>
+    /// Literal for code: NONENaturalGrandmother
+    /// </summary>
+    public const string LiteralNONENaturalGrandmother = "http://snomed.info/sct#17945006";
+
+    /// <summary>
     /// Literal for code: WesleyanMethodistFollowerOfReligion
     /// </summary>
     public const string LiteralWesleyanMethodistFollowerOfReligion = "18205005";
+
+    /// <summary>
+    /// Literal for code: NONEWesleyanMethodistFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEWesleyanMethodistFollowerOfReligion = "http://snomed.info/sct#18205005";
 
     /// <summary>
     /// Literal for code: MinistryOfHealthSaskatchewan
@@ -9942,9 +10812,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMinistryOfHealthSaskatchewan = "183033871000087106";
 
     /// <summary>
+    /// Literal for code: NONEMinistryOfHealthSaskatchewan
+    /// </summary>
+    public const string LiteralNONEMinistryOfHealthSaskatchewan = "http://snomed.info/sct#183033871000087106";
+
+    /// <summary>
     /// Literal for code: Dermatologist
     /// </summary>
     public const string LiteralDermatologist = "18803008";
+
+    /// <summary>
+    /// Literal for code: NONEDermatologist
+    /// </summary>
+    public const string LiteralNONEDermatologist = "http://snomed.info/sct#18803008";
 
     /// <summary>
     /// Literal for code: LaboratoryHematologist
@@ -9952,9 +10832,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLaboratoryHematologist = "18850004";
 
     /// <summary>
+    /// Literal for code: NONELaboratoryHematologist
+    /// </summary>
+    public const string LiteralNONELaboratoryHematologist = "http://snomed.info/sct#18850004";
+
+    /// <summary>
     /// Literal for code: FosterSibling
     /// </summary>
     public const string LiteralFosterSibling = "18906004";
+
+    /// <summary>
+    /// Literal for code: NONEFosterSibling
+    /// </summary>
+    public const string LiteralNONEFosterSibling = "http://snomed.info/sct#18906004";
 
     /// <summary>
     /// Literal for code: MinistryOfHealthQuebec
@@ -9962,9 +10852,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMinistryOfHealthQuebec = "189542671000087101";
 
     /// <summary>
+    /// Literal for code: NONEMinistryOfHealthQuebec
+    /// </summary>
+    public const string LiteralNONEMinistryOfHealthQuebec = "http://snomed.info/sct#189542671000087101";
+
+    /// <summary>
     /// Literal for code: Gerodontist
     /// </summary>
     public const string LiteralGerodontist = "19244007";
+
+    /// <summary>
+    /// Literal for code: NONEGerodontist
+    /// </summary>
+    public const string LiteralNONEGerodontist = "http://snomed.info/sct#19244007";
 
     /// <summary>
     /// Literal for code: TwinSister
@@ -9972,9 +10872,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTwinSister = "19343003";
 
     /// <summary>
+    /// Literal for code: NONETwinSister
+    /// </summary>
+    public const string LiteralNONETwinSister = "http://snomed.info/sct#19343003";
+
+    /// <summary>
     /// Literal for code: MaternalGreatGrandMother
     /// </summary>
     public const string LiteralMaternalGreatGrandMother = "194907391000087109";
+
+    /// <summary>
+    /// Literal for code: NONEMaternalGreatGrandMother
+    /// </summary>
+    public const string LiteralNONEMaternalGreatGrandMother = "http://snomed.info/sct#194907391000087109";
 
     /// <summary>
     /// Literal for code: YoungerSister
@@ -9982,9 +10892,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralYoungerSister = "19686009";
 
     /// <summary>
+    /// Literal for code: NONEYoungerSister
+    /// </summary>
+    public const string LiteralNONEYoungerSister = "http://snomed.info/sct#19686009";
+
+    /// <summary>
     /// Literal for code: RemovableProsthodontist
     /// </summary>
     public const string LiteralRemovableProsthodontist = "20145008";
+
+    /// <summary>
+    /// Literal for code: NONERemovableProsthodontist
+    /// </summary>
+    public const string LiteralNONERemovableProsthodontist = "http://snomed.info/sct#20145008";
 
     /// <summary>
     /// Literal for code: HalfSibling
@@ -9992,9 +10912,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHalfSibling = "21093007";
 
     /// <summary>
+    /// Literal for code: NONEHalfSibling
+    /// </summary>
+    public const string LiteralNONEHalfSibling = "http://snomed.info/sct#21093007";
+
+    /// <summary>
     /// Literal for code: SpecializedDentist
     /// </summary>
     public const string LiteralSpecializedDentist = "21365001";
+
+    /// <summary>
+    /// Literal for code: NONESpecializedDentist
+    /// </summary>
+    public const string LiteralNONESpecializedDentist = "http://snomed.info/sct#21365001";
 
     /// <summary>
     /// Literal for code: Neuropsychiatrist
@@ -10002,9 +10932,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeuropsychiatrist = "21450003";
 
     /// <summary>
+    /// Literal for code: NONENeuropsychiatrist
+    /// </summary>
+    public const string LiteralNONENeuropsychiatrist = "http://snomed.info/sct#21450003";
+
+    /// <summary>
     /// Literal for code: AdoptiveMother
     /// </summary>
     public const string LiteralAdoptiveMother = "21464003";
+
+    /// <summary>
+    /// Literal for code: NONEAdoptiveMother
+    /// </summary>
+    public const string LiteralNONEAdoptiveMother = "http://snomed.info/sct#21464003";
 
     /// <summary>
     /// Literal for code: FemaleSecondCousin
@@ -10012,9 +10952,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFemaleSecondCousin = "21506002";
 
     /// <summary>
+    /// Literal for code: NONEFemaleSecondCousin
+    /// </summary>
+    public const string LiteralNONEFemaleSecondCousin = "http://snomed.info/sct#21506002";
+
+    /// <summary>
     /// Literal for code: PaternalGreatGrandMother
     /// </summary>
     public const string LiteralPaternalGreatGrandMother = "215424891000087101";
+
+    /// <summary>
+    /// Literal for code: NONEPaternalGreatGrandMother
+    /// </summary>
+    public const string LiteralNONEPaternalGreatGrandMother = "http://snomed.info/sct#215424891000087101";
 
     /// <summary>
     /// Literal for code: SurrogateChild
@@ -10022,9 +10972,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurrogateChild = "22387007";
 
     /// <summary>
+    /// Literal for code: NONESurrogateChild
+    /// </summary>
+    public const string LiteralNONESurrogateChild = "http://snomed.info/sct#22387007";
+
+    /// <summary>
     /// Literal for code: CommittedChristianFollowerOfReligion
     /// </summary>
     public const string LiteralCommittedChristianFollowerOfReligion = "224080001";
+
+    /// <summary>
+    /// Literal for code: NONECommittedChristianFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONECommittedChristianFollowerOfReligion = "http://snomed.info/sct#224080001";
 
     /// <summary>
     /// Literal for code: Woman
@@ -10032,9 +10992,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWoman = "224526002";
 
     /// <summary>
+    /// Literal for code: NONEWoman
+    /// </summary>
+    public const string LiteralNONEWoman = "http://snomed.info/sct#224526002";
+
+    /// <summary>
     /// Literal for code: PersonInTheWorkEnvironment
     /// </summary>
     public const string LiteralPersonInTheWorkEnvironment = "224527006";
+
+    /// <summary>
+    /// Literal for code: NONEPersonInTheWorkEnvironment
+    /// </summary>
+    public const string LiteralNONEPersonInTheWorkEnvironment = "http://snomed.info/sct#224527006";
 
     /// <summary>
     /// Literal for code: Employee
@@ -10042,9 +11012,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmployee = "224528001";
 
     /// <summary>
+    /// Literal for code: NONEEmployee
+    /// </summary>
+    public const string LiteralNONEEmployee = "http://snomed.info/sct#224528001";
+
+    /// <summary>
     /// Literal for code: ClinicalAssistant
     /// </summary>
     public const string LiteralClinicalAssistant = "224529009";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalAssistant
+    /// </summary>
+    public const string LiteralNONEClinicalAssistant = "http://snomed.info/sct#224529009";
 
     /// <summary>
     /// Literal for code: SeniorRegistrar
@@ -10052,9 +11032,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSeniorRegistrar = "224530004";
 
     /// <summary>
+    /// Literal for code: NONESeniorRegistrar
+    /// </summary>
+    public const string LiteralNONESeniorRegistrar = "http://snomed.info/sct#224530004";
+
+    /// <summary>
     /// Literal for code: Registrar
     /// </summary>
     public const string LiteralRegistrar = "224531000";
+
+    /// <summary>
+    /// Literal for code: NONERegistrar
+    /// </summary>
+    public const string LiteralNONERegistrar = "http://snomed.info/sct#224531000";
 
     /// <summary>
     /// Literal for code: SeniorHouseOfficer
@@ -10062,9 +11052,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSeniorHouseOfficer = "224532007";
 
     /// <summary>
+    /// Literal for code: NONESeniorHouseOfficer
+    /// </summary>
+    public const string LiteralNONESeniorHouseOfficer = "http://snomed.info/sct#224532007";
+
+    /// <summary>
     /// Literal for code: MOMedicalOfficer
     /// </summary>
     public const string LiteralMOMedicalOfficer = "224533002";
+
+    /// <summary>
+    /// Literal for code: NONEMOMedicalOfficer
+    /// </summary>
+    public const string LiteralNONEMOMedicalOfficer = "http://snomed.info/sct#224533002";
 
     /// <summary>
     /// Literal for code: HealthVisitorNurseMidwife
@@ -10072,9 +11072,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthVisitorNurseMidwife = "224534008";
 
     /// <summary>
+    /// Literal for code: NONEHealthVisitorNurseMidwife
+    /// </summary>
+    public const string LiteralNONEHealthVisitorNurseMidwife = "http://snomed.info/sct#224534008";
+
+    /// <summary>
     /// Literal for code: RegisteredNurse
     /// </summary>
     public const string LiteralRegisteredNurse = "224535009";
+
+    /// <summary>
+    /// Literal for code: NONERegisteredNurse
+    /// </summary>
+    public const string LiteralNONERegisteredNurse = "http://snomed.info/sct#224535009";
 
     /// <summary>
     /// Literal for code: MidwiferyTutor
@@ -10082,9 +11092,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMidwiferyTutor = "224536005";
 
     /// <summary>
+    /// Literal for code: NONEMidwiferyTutor
+    /// </summary>
+    public const string LiteralNONEMidwiferyTutor = "http://snomed.info/sct#224536005";
+
+    /// <summary>
     /// Literal for code: AccidentAndEmergencyNurse
     /// </summary>
     public const string LiteralAccidentAndEmergencyNurse = "224537001";
+
+    /// <summary>
+    /// Literal for code: NONEAccidentAndEmergencyNurse
+    /// </summary>
+    public const string LiteralNONEAccidentAndEmergencyNurse = "http://snomed.info/sct#224537001";
 
     /// <summary>
     /// Literal for code: TriageNurse
@@ -10092,9 +11112,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTriageNurse = "224538006";
 
     /// <summary>
+    /// Literal for code: NONETriageNurse
+    /// </summary>
+    public const string LiteralNONETriageNurse = "http://snomed.info/sct#224538006";
+
+    /// <summary>
     /// Literal for code: CommunityNurse
     /// </summary>
     public const string LiteralCommunityNurse = "224540001";
+
+    /// <summary>
+    /// Literal for code: NONECommunityNurse
+    /// </summary>
+    public const string LiteralNONECommunityNurse = "http://snomed.info/sct#224540001";
 
     /// <summary>
     /// Literal for code: NursingContinenceAdvisor
@@ -10102,9 +11132,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNursingContinenceAdvisor = "224541002";
 
     /// <summary>
+    /// Literal for code: NONENursingContinenceAdvisor
+    /// </summary>
+    public const string LiteralNONENursingContinenceAdvisor = "http://snomed.info/sct#224541002";
+
+    /// <summary>
     /// Literal for code: CoronaryCareNurse
     /// </summary>
     public const string LiteralCoronaryCareNurse = "224542009";
+
+    /// <summary>
+    /// Literal for code: NONECoronaryCareNurse
+    /// </summary>
+    public const string LiteralNONECoronaryCareNurse = "http://snomed.info/sct#224542009";
 
     /// <summary>
     /// Literal for code: DiabeticNurse
@@ -10112,9 +11152,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiabeticNurse = "224543004";
 
     /// <summary>
+    /// Literal for code: NONEDiabeticNurse
+    /// </summary>
+    public const string LiteralNONEDiabeticNurse = "http://snomed.info/sct#224543004";
+
+    /// <summary>
     /// Literal for code: FamilyPlanningNurse
     /// </summary>
     public const string LiteralFamilyPlanningNurse = "224544005";
+
+    /// <summary>
+    /// Literal for code: NONEFamilyPlanningNurse
+    /// </summary>
+    public const string LiteralNONEFamilyPlanningNurse = "http://snomed.info/sct#224544005";
 
     /// <summary>
     /// Literal for code: CareOfTheElderlyNurse
@@ -10122,9 +11172,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCareOfTheElderlyNurse = "224545006";
 
     /// <summary>
+    /// Literal for code: NONECareOfTheElderlyNurse
+    /// </summary>
+    public const string LiteralNONECareOfTheElderlyNurse = "http://snomed.info/sct#224545006";
+
+    /// <summary>
     /// Literal for code: ICNInfectionControlNurse
     /// </summary>
     public const string LiteralICNInfectionControlNurse = "224546007";
+
+    /// <summary>
+    /// Literal for code: NONEICNInfectionControlNurse
+    /// </summary>
+    public const string LiteralNONEICNInfectionControlNurse = "http://snomed.info/sct#224546007";
 
     /// <summary>
     /// Literal for code: IntensiveTherapyNurse
@@ -10132,9 +11192,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntensiveTherapyNurse = "224547003";
 
     /// <summary>
+    /// Literal for code: NONEIntensiveTherapyNurse
+    /// </summary>
+    public const string LiteralNONEIntensiveTherapyNurse = "http://snomed.info/sct#224547003";
+
+    /// <summary>
     /// Literal for code: LearningDisabilitiesNurse
     /// </summary>
     public const string LiteralLearningDisabilitiesNurse = "224548008";
+
+    /// <summary>
+    /// Literal for code: NONELearningDisabilitiesNurse
+    /// </summary>
+    public const string LiteralNONELearningDisabilitiesNurse = "http://snomed.info/sct#224548008";
 
     /// <summary>
     /// Literal for code: NeonatalNurse
@@ -10142,9 +11212,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeonatalNurse = "224549000";
 
     /// <summary>
+    /// Literal for code: NONENeonatalNurse
+    /// </summary>
+    public const string LiteralNONENeonatalNurse = "http://snomed.info/sct#224549000";
+
+    /// <summary>
     /// Literal for code: NeurologyNurse
     /// </summary>
     public const string LiteralNeurologyNurse = "224550000";
+
+    /// <summary>
+    /// Literal for code: NONENeurologyNurse
+    /// </summary>
+    public const string LiteralNONENeurologyNurse = "http://snomed.info/sct#224550000";
 
     /// <summary>
     /// Literal for code: IndustrialNurse
@@ -10152,9 +11232,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIndustrialNurse = "224551001";
 
     /// <summary>
+    /// Literal for code: NONEIndustrialNurse
+    /// </summary>
+    public const string LiteralNONEIndustrialNurse = "http://snomed.info/sct#224551001";
+
+    /// <summary>
     /// Literal for code: OncologyNurse
     /// </summary>
     public const string LiteralOncologyNurse = "224552008";
+
+    /// <summary>
+    /// Literal for code: NONEOncologyNurse
+    /// </summary>
+    public const string LiteralNONEOncologyNurse = "http://snomed.info/sct#224552008";
 
     /// <summary>
     /// Literal for code: MacmillanNurse
@@ -10162,9 +11252,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMacmillanNurse = "224553003";
 
     /// <summary>
+    /// Literal for code: NONEMacmillanNurse
+    /// </summary>
+    public const string LiteralNONEMacmillanNurse = "http://snomed.info/sct#224553003";
+
+    /// <summary>
     /// Literal for code: MarieCurieNurse
     /// </summary>
     public const string LiteralMarieCurieNurse = "224554009";
+
+    /// <summary>
+    /// Literal for code: NONEMarieCurieNurse
+    /// </summary>
+    public const string LiteralNONEMarieCurieNurse = "http://snomed.info/sct#224554009";
 
     /// <summary>
     /// Literal for code: PainControlNurse
@@ -10172,9 +11272,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPainControlNurse = "224555005";
 
     /// <summary>
+    /// Literal for code: NONEPainControlNurse
+    /// </summary>
+    public const string LiteralNONEPainControlNurse = "http://snomed.info/sct#224555005";
+
+    /// <summary>
     /// Literal for code: PalliativeCareNurse
     /// </summary>
     public const string LiteralPalliativeCareNurse = "224556006";
+
+    /// <summary>
+    /// Literal for code: NONEPalliativeCareNurse
+    /// </summary>
+    public const string LiteralNONEPalliativeCareNurse = "http://snomed.info/sct#224556006";
 
     /// <summary>
     /// Literal for code: ChemotherapyNurse
@@ -10182,9 +11292,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChemotherapyNurse = "224557002";
 
     /// <summary>
+    /// Literal for code: NONEChemotherapyNurse
+    /// </summary>
+    public const string LiteralNONEChemotherapyNurse = "http://snomed.info/sct#224557002";
+
+    /// <summary>
     /// Literal for code: RadiotherapyNurse
     /// </summary>
     public const string LiteralRadiotherapyNurse = "224558007";
+
+    /// <summary>
+    /// Literal for code: NONERadiotherapyNurse
+    /// </summary>
+    public const string LiteralNONERadiotherapyNurse = "http://snomed.info/sct#224558007";
 
     /// <summary>
     /// Literal for code: PACUNurse
@@ -10192,9 +11312,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPACUNurse = "224559004";
 
     /// <summary>
+    /// Literal for code: NONEPACUNurse
+    /// </summary>
+    public const string LiteralNONEPACUNurse = "http://snomed.info/sct#224559004";
+
+    /// <summary>
     /// Literal for code: Stomatherapist
     /// </summary>
     public const string LiteralStomatherapist = "224560009";
+
+    /// <summary>
+    /// Literal for code: NONEStomatherapist
+    /// </summary>
+    public const string LiteralNONEStomatherapist = "http://snomed.info/sct#224560009";
 
     /// <summary>
     /// Literal for code: TheatreNurse
@@ -10202,9 +11332,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTheatreNurse = "224561008";
 
     /// <summary>
+    /// Literal for code: NONETheatreNurse
+    /// </summary>
+    public const string LiteralNONETheatreNurse = "http://snomed.info/sct#224561008";
+
+    /// <summary>
     /// Literal for code: PediatricNurse
     /// </summary>
     public const string LiteralPediatricNurse = "224562001";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricNurse
+    /// </summary>
+    public const string LiteralNONEPediatricNurse = "http://snomed.info/sct#224562001";
 
     /// <summary>
     /// Literal for code: PsychiatricNurse
@@ -10212,9 +11352,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPsychiatricNurse = "224563006";
 
     /// <summary>
+    /// Literal for code: NONEPsychiatricNurse
+    /// </summary>
+    public const string LiteralNONEPsychiatricNurse = "http://snomed.info/sct#224563006";
+
+    /// <summary>
     /// Literal for code: CommunityMentalHealthNurse
     /// </summary>
     public const string LiteralCommunityMentalHealthNurse = "224564000";
+
+    /// <summary>
+    /// Literal for code: NONECommunityMentalHealthNurse
+    /// </summary>
+    public const string LiteralNONECommunityMentalHealthNurse = "http://snomed.info/sct#224564000";
 
     /// <summary>
     /// Literal for code: RenalNurse
@@ -10222,9 +11372,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRenalNurse = "224565004";
 
     /// <summary>
+    /// Literal for code: NONERenalNurse
+    /// </summary>
+    public const string LiteralNONERenalNurse = "http://snomed.info/sct#224565004";
+
+    /// <summary>
     /// Literal for code: HemodialysisNurse
     /// </summary>
     public const string LiteralHemodialysisNurse = "224566003";
+
+    /// <summary>
+    /// Literal for code: NONEHemodialysisNurse
+    /// </summary>
+    public const string LiteralNONEHemodialysisNurse = "http://snomed.info/sct#224566003";
 
     /// <summary>
     /// Literal for code: WoundCareNurse
@@ -10232,9 +11392,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWoundCareNurse = "224567007";
 
     /// <summary>
+    /// Literal for code: NONEWoundCareNurse
+    /// </summary>
+    public const string LiteralNONEWoundCareNurse = "http://snomed.info/sct#224567007";
+
+    /// <summary>
     /// Literal for code: NurseGrade
     /// </summary>
     public const string LiteralNurseGrade = "224569005";
+
+    /// <summary>
+    /// Literal for code: NONENurseGrade
+    /// </summary>
+    public const string LiteralNONENurseGrade = "http://snomed.info/sct#224569005";
 
     /// <summary>
     /// Literal for code: ClinicalNurseSpecialist
@@ -10242,9 +11412,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalNurseSpecialist = "224570006";
 
     /// <summary>
+    /// Literal for code: NONEClinicalNurseSpecialist
+    /// </summary>
+    public const string LiteralNONEClinicalNurseSpecialist = "http://snomed.info/sct#224570006";
+
+    /// <summary>
     /// Literal for code: NursePractitioner
     /// </summary>
     public const string LiteralNursePractitioner = "224571005";
+
+    /// <summary>
+    /// Literal for code: NONENursePractitioner
+    /// </summary>
+    public const string LiteralNONENursePractitioner = "http://snomed.info/sct#224571005";
 
     /// <summary>
     /// Literal for code: NursingSister
@@ -10252,9 +11432,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNursingSister = "224572003";
 
     /// <summary>
+    /// Literal for code: NONENursingSister
+    /// </summary>
+    public const string LiteralNONENursingSister = "http://snomed.info/sct#224572003";
+
+    /// <summary>
     /// Literal for code: CNChargeNurse
     /// </summary>
     public const string LiteralCNChargeNurse = "224573008";
+
+    /// <summary>
+    /// Literal for code: NONECNChargeNurse
+    /// </summary>
+    public const string LiteralNONECNChargeNurse = "http://snomed.info/sct#224573008";
 
     /// <summary>
     /// Literal for code: WardManager
@@ -10262,9 +11452,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWardManager = "224574002";
 
     /// <summary>
+    /// Literal for code: NONEWardManager
+    /// </summary>
+    public const string LiteralNONEWardManager = "http://snomed.info/sct#224574002";
+
+    /// <summary>
     /// Literal for code: NursingTeamLeader
     /// </summary>
     public const string LiteralNursingTeamLeader = "224575001";
+
+    /// <summary>
+    /// Literal for code: NONENursingTeamLeader
+    /// </summary>
+    public const string LiteralNONENursingTeamLeader = "http://snomed.info/sct#224575001";
 
     /// <summary>
     /// Literal for code: NursingAssistant
@@ -10272,9 +11472,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNursingAssistant = "224576000";
 
     /// <summary>
+    /// Literal for code: NONENursingAssistant
+    /// </summary>
+    public const string LiteralNONENursingAssistant = "http://snomed.info/sct#224576000";
+
+    /// <summary>
     /// Literal for code: HealthcareAssistant
     /// </summary>
     public const string LiteralHealthcareAssistant = "224577009";
+
+    /// <summary>
+    /// Literal for code: NONEHealthcareAssistant
+    /// </summary>
+    public const string LiteralNONEHealthcareAssistant = "http://snomed.info/sct#224577009";
 
     /// <summary>
     /// Literal for code: NurseryNurse
@@ -10282,9 +11492,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNurseryNurse = "224578004";
 
     /// <summary>
+    /// Literal for code: NONENurseryNurse
+    /// </summary>
+    public const string LiteralNONENurseryNurse = "http://snomed.info/sct#224578004";
+
+    /// <summary>
     /// Literal for code: HealthcareServiceManager
     /// </summary>
     public const string LiteralHealthcareServiceManager = "224579007";
+
+    /// <summary>
+    /// Literal for code: NONEHealthcareServiceManager
+    /// </summary>
+    public const string LiteralNONEHealthcareServiceManager = "http://snomed.info/sct#224579007";
 
     /// <summary>
     /// Literal for code: OccupationalHealthServiceManager
@@ -10292,9 +11512,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOccupationalHealthServiceManager = "224580005";
 
     /// <summary>
+    /// Literal for code: NONEOccupationalHealthServiceManager
+    /// </summary>
+    public const string LiteralNONEOccupationalHealthServiceManager = "http://snomed.info/sct#224580005";
+
+    /// <summary>
     /// Literal for code: CommunityNurseManager
     /// </summary>
     public const string LiteralCommunityNurseManager = "224581009";
+
+    /// <summary>
+    /// Literal for code: NONECommunityNurseManager
+    /// </summary>
+    public const string LiteralNONECommunityNurseManager = "http://snomed.info/sct#224581009";
 
     /// <summary>
     /// Literal for code: BehaviorTherapist
@@ -10302,9 +11532,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBehaviorTherapist = "224583007";
 
     /// <summary>
+    /// Literal for code: NONEBehaviorTherapist
+    /// </summary>
+    public const string LiteralNONEBehaviorTherapist = "http://snomed.info/sct#224583007";
+
+    /// <summary>
     /// Literal for code: BehaviorTherapyAssistant
     /// </summary>
     public const string LiteralBehaviorTherapyAssistant = "224584001";
+
+    /// <summary>
+    /// Literal for code: NONEBehaviorTherapyAssistant
+    /// </summary>
+    public const string LiteralNONEBehaviorTherapyAssistant = "http://snomed.info/sct#224584001";
 
     /// <summary>
     /// Literal for code: DramaTherapist
@@ -10312,9 +11552,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDramaTherapist = "224585000";
 
     /// <summary>
+    /// Literal for code: NONEDramaTherapist
+    /// </summary>
+    public const string LiteralNONEDramaTherapist = "http://snomed.info/sct#224585000";
+
+    /// <summary>
     /// Literal for code: DomiciliaryOccupationalTherapist
     /// </summary>
     public const string LiteralDomiciliaryOccupationalTherapist = "224586004";
+
+    /// <summary>
+    /// Literal for code: NONEDomiciliaryOccupationalTherapist
+    /// </summary>
+    public const string LiteralNONEDomiciliaryOccupationalTherapist = "http://snomed.info/sct#224586004";
 
     /// <summary>
     /// Literal for code: OccupationalTherapyHelper
@@ -10322,9 +11572,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOccupationalTherapyHelper = "224587008";
 
     /// <summary>
+    /// Literal for code: NONEOccupationalTherapyHelper
+    /// </summary>
+    public const string LiteralNONEOccupationalTherapyHelper = "http://snomed.info/sct#224587008";
+
+    /// <summary>
     /// Literal for code: Psychotherapist
     /// </summary>
     public const string LiteralPsychotherapist = "224588003";
+
+    /// <summary>
+    /// Literal for code: NONEPsychotherapist
+    /// </summary>
+    public const string LiteralNONEPsychotherapist = "http://snomed.info/sct#224588003";
 
     /// <summary>
     /// Literal for code: CommunityBasedPhysiotherapist
@@ -10332,9 +11592,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommunityBasedPhysiotherapist = "224589006";
 
     /// <summary>
+    /// Literal for code: NONECommunityBasedPhysiotherapist
+    /// </summary>
+    public const string LiteralNONECommunityBasedPhysiotherapist = "http://snomed.info/sct#224589006";
+
+    /// <summary>
     /// Literal for code: PlayTherapist
     /// </summary>
     public const string LiteralPlayTherapist = "224590002";
+
+    /// <summary>
+    /// Literal for code: NONEPlayTherapist
+    /// </summary>
+    public const string LiteralNONEPlayTherapist = "http://snomed.info/sct#224590002";
 
     /// <summary>
     /// Literal for code: PlaySpecialist
@@ -10342,9 +11612,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPlaySpecialist = "224591003";
 
     /// <summary>
+    /// Literal for code: NONEPlaySpecialist
+    /// </summary>
+    public const string LiteralNONEPlaySpecialist = "http://snomed.info/sct#224591003";
+
+    /// <summary>
     /// Literal for code: PlayLeader
     /// </summary>
     public const string LiteralPlayLeader = "224592005";
+
+    /// <summary>
+    /// Literal for code: NONEPlayLeader
+    /// </summary>
+    public const string LiteralNONEPlayLeader = "http://snomed.info/sct#224592005";
 
     /// <summary>
     /// Literal for code: CommunityBasedSpeechLanguageTherapist
@@ -10352,9 +11632,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommunityBasedSpeechLanguageTherapist = "224593000";
 
     /// <summary>
+    /// Literal for code: NONECommunityBasedSpeechLanguageTherapist
+    /// </summary>
+    public const string LiteralNONECommunityBasedSpeechLanguageTherapist = "http://snomed.info/sct#224593000";
+
+    /// <summary>
     /// Literal for code: SpeechLanguageAssistant
     /// </summary>
     public const string LiteralSpeechLanguageAssistant = "224594006";
+
+    /// <summary>
+    /// Literal for code: NONESpeechLanguageAssistant
+    /// </summary>
+    public const string LiteralNONESpeechLanguageAssistant = "http://snomed.info/sct#224594006";
 
     /// <summary>
     /// Literal for code: ProfessionalCounselor
@@ -10362,9 +11652,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProfessionalCounselor = "224595007";
 
     /// <summary>
+    /// Literal for code: NONEProfessionalCounselor
+    /// </summary>
+    public const string LiteralNONEProfessionalCounselor = "http://snomed.info/sct#224595007";
+
+    /// <summary>
     /// Literal for code: MarriageGuidanceCounselor
     /// </summary>
     public const string LiteralMarriageGuidanceCounselor = "224596008";
+
+    /// <summary>
+    /// Literal for code: NONEMarriageGuidanceCounselor
+    /// </summary>
+    public const string LiteralNONEMarriageGuidanceCounselor = "http://snomed.info/sct#224596008";
 
     /// <summary>
     /// Literal for code: TrainedNurseCounselor
@@ -10372,9 +11672,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrainedNurseCounselor = "224597004";
 
     /// <summary>
+    /// Literal for code: NONETrainedNurseCounselor
+    /// </summary>
+    public const string LiteralNONETrainedNurseCounselor = "http://snomed.info/sct#224597004";
+
+    /// <summary>
     /// Literal for code: TrainedSocialWorkerCounselor
     /// </summary>
     public const string LiteralTrainedSocialWorkerCounselor = "224598009";
+
+    /// <summary>
+    /// Literal for code: NONETrainedSocialWorkerCounselor
+    /// </summary>
+    public const string LiteralNONETrainedSocialWorkerCounselor = "http://snomed.info/sct#224598009";
 
     /// <summary>
     /// Literal for code: TrainedPersonnelCounselor
@@ -10382,9 +11692,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrainedPersonnelCounselor = "224599001";
 
     /// <summary>
+    /// Literal for code: NONETrainedPersonnelCounselor
+    /// </summary>
+    public const string LiteralNONETrainedPersonnelCounselor = "http://snomed.info/sct#224599001";
+
+    /// <summary>
     /// Literal for code: Psychoanalyst
     /// </summary>
     public const string LiteralPsychoanalyst = "224600003";
+
+    /// <summary>
+    /// Literal for code: NONEPsychoanalyst
+    /// </summary>
+    public const string LiteralNONEPsychoanalyst = "http://snomed.info/sct#224600003";
 
     /// <summary>
     /// Literal for code: AssistantPsychologist
@@ -10392,9 +11712,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAssistantPsychologist = "224601004";
 
     /// <summary>
+    /// Literal for code: NONEAssistantPsychologist
+    /// </summary>
+    public const string LiteralNONEAssistantPsychologist = "http://snomed.info/sct#224601004";
+
+    /// <summary>
     /// Literal for code: CommunityBasedPodiatrist
     /// </summary>
     public const string LiteralCommunityBasedPodiatrist = "224602006";
+
+    /// <summary>
+    /// Literal for code: NONECommunityBasedPodiatrist
+    /// </summary>
+    public const string LiteralNONECommunityBasedPodiatrist = "http://snomed.info/sct#224602006";
 
     /// <summary>
     /// Literal for code: FootCareWorker
@@ -10402,9 +11732,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFootCareWorker = "224603001";
 
     /// <summary>
+    /// Literal for code: NONEFootCareWorker
+    /// </summary>
+    public const string LiteralNONEFootCareWorker = "http://snomed.info/sct#224603001";
+
+    /// <summary>
     /// Literal for code: Audiometrician
     /// </summary>
     public const string LiteralAudiometrician = "224604007";
+
+    /// <summary>
+    /// Literal for code: NONEAudiometrician
+    /// </summary>
+    public const string LiteralNONEAudiometrician = "http://snomed.info/sct#224604007";
 
     /// <summary>
     /// Literal for code: Audiometrist
@@ -10412,9 +11752,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAudiometrist = "224605008";
 
     /// <summary>
+    /// Literal for code: NONEAudiometrist
+    /// </summary>
+    public const string LiteralNONEAudiometrist = "http://snomed.info/sct#224605008";
+
+    /// <summary>
     /// Literal for code: TechnicalHealthcareOccupation
     /// </summary>
     public const string LiteralTechnicalHealthcareOccupation = "224606009";
+
+    /// <summary>
+    /// Literal for code: NONETechnicalHealthcareOccupation
+    /// </summary>
+    public const string LiteralNONETechnicalHealthcareOccupation = "http://snomed.info/sct#224606009";
 
     /// <summary>
     /// Literal for code: OccupationalTherapyTechnicalInstructor
@@ -10422,9 +11772,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOccupationalTherapyTechnicalInstructor = "224607000";
 
     /// <summary>
+    /// Literal for code: NONEOccupationalTherapyTechnicalInstructor
+    /// </summary>
+    public const string LiteralNONEOccupationalTherapyTechnicalInstructor = "http://snomed.info/sct#224607000";
+
+    /// <summary>
     /// Literal for code: AdministrativeHealthcareStaff
     /// </summary>
     public const string LiteralAdministrativeHealthcareStaff = "224608005";
+
+    /// <summary>
+    /// Literal for code: NONEAdministrativeHealthcareStaff
+    /// </summary>
+    public const string LiteralNONEAdministrativeHealthcareStaff = "http://snomed.info/sct#224608005";
 
     /// <summary>
     /// Literal for code: ComplementaryHealthWorker
@@ -10432,9 +11792,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralComplementaryHealthWorker = "224609002";
 
     /// <summary>
+    /// Literal for code: NONEComplementaryHealthWorker
+    /// </summary>
+    public const string LiteralNONEComplementaryHealthWorker = "http://snomed.info/sct#224609002";
+
+    /// <summary>
     /// Literal for code: SupportingServicesPersonnel
     /// </summary>
     public const string LiteralSupportingServicesPersonnel = "224610007";
+
+    /// <summary>
+    /// Literal for code: NONESupportingServicesPersonnel
+    /// </summary>
+    public const string LiteralNONESupportingServicesPersonnel = "http://snomed.info/sct#224610007";
 
     /// <summary>
     /// Literal for code: ResearchAssociate
@@ -10442,9 +11812,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralResearchAssociate = "224614003";
 
     /// <summary>
+    /// Literal for code: NONEResearchAssociate
+    /// </summary>
+    public const string LiteralNONEResearchAssociate = "http://snomed.info/sct#224614003";
+
+    /// <summary>
     /// Literal for code: ResearchNurse
     /// </summary>
     public const string LiteralResearchNurse = "224615002";
+
+    /// <summary>
+    /// Literal for code: NONEResearchNurse
+    /// </summary>
+    public const string LiteralNONEResearchNurse = "http://snomed.info/sct#224615002";
 
     /// <summary>
     /// Literal for code: Migrant
@@ -10452,9 +11832,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMigrant = "224619008";
 
     /// <summary>
+    /// Literal for code: NONEMigrant
+    /// </summary>
+    public const string LiteralNONEMigrant = "http://snomed.info/sct#224619008";
+
+    /// <summary>
     /// Literal for code: HumanAidToCommunication
     /// </summary>
     public const string LiteralHumanAidToCommunication = "224620002";
+
+    /// <summary>
+    /// Literal for code: NONEHumanAidToCommunication
+    /// </summary>
+    public const string LiteralNONEHumanAidToCommunication = "http://snomed.info/sct#224620002";
 
     /// <summary>
     /// Literal for code: Palantypist
@@ -10462,9 +11852,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPalantypist = "224621003";
 
     /// <summary>
+    /// Literal for code: NONEPalantypist
+    /// </summary>
+    public const string LiteralNONEPalantypist = "http://snomed.info/sct#224621003";
+
+    /// <summary>
     /// Literal for code: NoteTaker
     /// </summary>
     public const string LiteralNoteTaker = "224622005";
+
+    /// <summary>
+    /// Literal for code: NONENoteTaker
+    /// </summary>
+    public const string LiteralNONENoteTaker = "http://snomed.info/sct#224622005";
 
     /// <summary>
     /// Literal for code: Cuer
@@ -10472,9 +11872,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCuer = "224623000";
 
     /// <summary>
+    /// Literal for code: NONECuer
+    /// </summary>
+    public const string LiteralNONECuer = "http://snomed.info/sct#224623000";
+
+    /// <summary>
     /// Literal for code: Lipspeaker
     /// </summary>
     public const string LiteralLipspeaker = "224624006";
+
+    /// <summary>
+    /// Literal for code: NONELipspeaker
+    /// </summary>
+    public const string LiteralNONELipspeaker = "http://snomed.info/sct#224624006";
 
     /// <summary>
     /// Literal for code: InterpreterForBritishSignLanguage
@@ -10482,9 +11892,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInterpreterForBritishSignLanguage = "224625007";
 
     /// <summary>
+    /// Literal for code: NONEInterpreterForBritishSignLanguage
+    /// </summary>
+    public const string LiteralNONEInterpreterForBritishSignLanguage = "http://snomed.info/sct#224625007";
+
+    /// <summary>
     /// Literal for code: InterpreterForSignsSupportingEnglish
     /// </summary>
     public const string LiteralInterpreterForSignsSupportingEnglish = "224626008";
+
+    /// <summary>
+    /// Literal for code: NONEInterpreterForSignsSupportingEnglish
+    /// </summary>
+    public const string LiteralNONEInterpreterForSignsSupportingEnglish = "http://snomed.info/sct#224626008";
 
     /// <summary>
     /// Literal for code: GeneralCategoryOfPerson
@@ -10492,9 +11912,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGeneralCategoryOfPerson = "224627004";
 
     /// <summary>
+    /// Literal for code: NONEGeneralCategoryOfPerson
+    /// </summary>
+    public const string LiteralNONEGeneralCategoryOfPerson = "http://snomed.info/sct#224627004";
+
+    /// <summary>
     /// Literal for code: GeneralPractitionerLocum
     /// </summary>
     public const string LiteralGeneralPractitionerLocum = "224936003";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralPractitionerLocum
+    /// </summary>
+    public const string LiteralNONEGeneralPractitionerLocum = "http://snomed.info/sct#224936003";
 
     /// <summary>
     /// Literal for code: MedicalAssistant
@@ -10502,9 +11932,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalAssistant = "22515006";
 
     /// <summary>
+    /// Literal for code: NONEMedicalAssistant
+    /// </summary>
+    public const string LiteralNONEMedicalAssistant = "http://snomed.info/sct#22515006";
+
+    /// <summary>
     /// Literal for code: LactationConsultant
     /// </summary>
     public const string LiteralLactationConsultant = "225726006";
+
+    /// <summary>
+    /// Literal for code: NONELactationConsultant
+    /// </summary>
+    public const string LiteralNONELactationConsultant = "http://snomed.info/sct#225726006";
 
     /// <summary>
     /// Literal for code: MidwifeCounselor
@@ -10512,9 +11952,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMidwifeCounselor = "225727002";
 
     /// <summary>
+    /// Literal for code: NONEMidwifeCounselor
+    /// </summary>
+    public const string LiteralNONEMidwifeCounselor = "http://snomed.info/sct#225727002";
+
+    /// <summary>
     /// Literal for code: Stepdaughter
     /// </summary>
     public const string LiteralStepdaughter = "22573006";
+
+    /// <summary>
+    /// Literal for code: NONEStepdaughter
+    /// </summary>
+    public const string LiteralNONEStepdaughter = "http://snomed.info/sct#22573006";
 
     /// <summary>
     /// Literal for code: AdoptiveGrandparent
@@ -10522,9 +11972,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdoptiveGrandparent = "22609000";
 
     /// <summary>
+    /// Literal for code: NONEAdoptiveGrandparent
+    /// </summary>
+    public const string LiteralNONEAdoptiveGrandparent = "http://snomed.info/sct#22609000";
+
+    /// <summary>
     /// Literal for code: HalfSister
     /// </summary>
     public const string LiteralHalfSister = "2272004";
+
+    /// <summary>
+    /// Literal for code: NONEHalfSister
+    /// </summary>
+    public const string LiteralNONEHalfSister = "http://snomed.info/sct#2272004";
 
     /// <summary>
     /// Literal for code: OrthopedicSurgeon
@@ -10532,9 +11992,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOrthopedicSurgeon = "22731001";
 
     /// <summary>
+    /// Literal for code: NONEOrthopedicSurgeon
+    /// </summary>
+    public const string LiteralNONEOrthopedicSurgeon = "http://snomed.info/sct#22731001";
+
+    /// <summary>
     /// Literal for code: LegalSister
     /// </summary>
     public const string LiteralLegalSister = "22963000";
+
+    /// <summary>
+    /// Literal for code: NONELegalSister
+    /// </summary>
+    public const string LiteralNONELegalSister = "http://snomed.info/sct#22963000";
 
     /// <summary>
     /// Literal for code: ThoracicSurgeon
@@ -10542,9 +12012,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThoracicSurgeon = "22983004";
 
     /// <summary>
+    /// Literal for code: NONEThoracicSurgeon
+    /// </summary>
+    public const string LiteralNONEThoracicSurgeon = "http://snomed.info/sct#22983004";
+
+    /// <summary>
     /// Literal for code: Naturopath
     /// </summary>
     public const string LiteralNaturopath = "231189271000087109";
+
+    /// <summary>
+    /// Literal for code: NONENaturopath
+    /// </summary>
+    public const string LiteralNONENaturopath = "http://snomed.info/sct#231189271000087109";
 
     /// <summary>
     /// Literal for code: AdoptiveSon
@@ -10552,9 +12032,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdoptiveSon = "2316007";
 
     /// <summary>
+    /// Literal for code: NONEAdoptiveSon
+    /// </summary>
+    public const string LiteralNONEAdoptiveSon = "http://snomed.info/sct#2316007";
+
+    /// <summary>
     /// Literal for code: CommunityHealthPhysician
     /// </summary>
     public const string LiteralCommunityHealthPhysician = "23278007";
+
+    /// <summary>
+    /// Literal for code: NONECommunityHealthPhysician
+    /// </summary>
+    public const string LiteralNONECommunityHealthPhysician = "http://snomed.info/sct#23278007";
 
     /// <summary>
     /// Literal for code: Prosthetist
@@ -10562,9 +12052,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProsthetist = "236749831000087105";
 
     /// <summary>
+    /// Literal for code: NONEProsthetist
+    /// </summary>
+    public const string LiteralNONEProsthetist = "http://snomed.info/sct#236749831000087105";
+
+    /// <summary>
     /// Literal for code: GreatGreatGrandmother
     /// </summary>
     public const string LiteralGreatGreatGrandmother = "2368000";
+
+    /// <summary>
+    /// Literal for code: NONEGreatGreatGrandmother
+    /// </summary>
+    public const string LiteralNONEGreatGreatGrandmother = "http://snomed.info/sct#2368000";
 
     /// <summary>
     /// Literal for code: PhysicalMedicineSpecialist
@@ -10572,9 +12072,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysicalMedicineSpecialist = "24430003";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalMedicineSpecialist
+    /// </summary>
+    public const string LiteralNONEPhysicalMedicineSpecialist = "http://snomed.info/sct#24430003";
+
+    /// <summary>
     /// Literal for code: Urologist
     /// </summary>
     public const string LiteralUrologist = "24590004";
+
+    /// <summary>
+    /// Literal for code: NONEUrologist
+    /// </summary>
+    public const string LiteralNONEUrologist = "http://snomed.info/sct#24590004";
 
     /// <summary>
     /// Literal for code: WorkingMother
@@ -10582,9 +12092,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWorkingMother = "2481008";
 
     /// <summary>
+    /// Literal for code: NONEWorkingMother
+    /// </summary>
+    public const string LiteralNONEWorkingMother = "http://snomed.info/sct#2481008";
+
+    /// <summary>
     /// Literal for code: RastafarianFollowerOfReligion
     /// </summary>
     public const string LiteralRastafarianFollowerOfReligion = "248544006";
+
+    /// <summary>
+    /// Literal for code: NONERastafarianFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONERastafarianFollowerOfReligion = "http://snomed.info/sct#248544006";
 
     /// <summary>
     /// Literal for code: CommunityHealthCenter
@@ -10592,9 +12112,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommunityHealthCenter = "249236551000087105";
 
     /// <summary>
+    /// Literal for code: NONECommunityHealthCenter
+    /// </summary>
+    public const string LiteralNONECommunityHealthCenter = "http://snomed.info/sct#249236551000087105";
+
+    /// <summary>
     /// Literal for code: NovaScotiaDepartmentOfHealthAndWellness
     /// </summary>
     public const string LiteralNovaScotiaDepartmentOfHealthAndWellness = "250624661000087107";
+
+    /// <summary>
+    /// Literal for code: NONENovaScotiaDepartmentOfHealthAndWellness
+    /// </summary>
+    public const string LiteralNONENovaScotiaDepartmentOfHealthAndWellness = "http://snomed.info/sct#250624661000087107";
 
     /// <summary>
     /// Literal for code: Aunt
@@ -10602,9 +12132,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAunt = "25211005";
 
     /// <summary>
+    /// Literal for code: NONEAunt
+    /// </summary>
+    public const string LiteralNONEAunt = "http://snomed.info/sct#25211005";
+
+    /// <summary>
     /// Literal for code: NunavutDepartmentOfHealthAndSocialServices
     /// </summary>
     public const string LiteralNunavutDepartmentOfHealthAndSocialServices = "254693751000087105";
+
+    /// <summary>
+    /// Literal for code: NONENunavutDepartmentOfHealthAndSocialServices
+    /// </summary>
+    public const string LiteralNONENunavutDepartmentOfHealthAndSocialServices = "http://snomed.info/sct#254693751000087105";
 
     /// <summary>
     /// Literal for code: PregnantWoman
@@ -10612,9 +12152,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPregnantWoman = "255409004";
 
     /// <summary>
+    /// Literal for code: NONEPregnantWoman
+    /// </summary>
+    public const string LiteralNONEPregnantWoman = "http://snomed.info/sct#255409004";
+
+    /// <summary>
     /// Literal for code: AnimalRider
     /// </summary>
     public const string LiteralAnimalRider = "257497009";
+
+    /// <summary>
+    /// Literal for code: NONEAnimalRider
+    /// </summary>
+    public const string LiteralNONEAnimalRider = "http://snomed.info/sct#257497009";
 
     /// <summary>
     /// Literal for code: RiderOfMotorcycle
@@ -10622,9 +12172,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRiderOfMotorcycle = "257498004";
 
     /// <summary>
+    /// Literal for code: NONERiderOfMotorcycle
+    /// </summary>
+    public const string LiteralNONERiderOfMotorcycle = "http://snomed.info/sct#257498004";
+
+    /// <summary>
     /// Literal for code: PedalCyclist
     /// </summary>
     public const string LiteralPedalCyclist = "257499007";
+
+    /// <summary>
+    /// Literal for code: NONEPedalCyclist
+    /// </summary>
+    public const string LiteralNONEPedalCyclist = "http://snomed.info/sct#257499007";
 
     /// <summary>
     /// Literal for code: Passenger
@@ -10632,9 +12192,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPassenger = "257500003";
 
     /// <summary>
+    /// Literal for code: NONEPassenger
+    /// </summary>
+    public const string LiteralNONEPassenger = "http://snomed.info/sct#257500003";
+
+    /// <summary>
     /// Literal for code: OccupantOfMotorVehicle
     /// </summary>
     public const string LiteralOccupantOfMotorVehicle = "257501004";
+
+    /// <summary>
+    /// Literal for code: NONEOccupantOfMotorVehicle
+    /// </summary>
+    public const string LiteralNONEOccupantOfMotorVehicle = "http://snomed.info/sct#257501004";
 
     /// <summary>
     /// Literal for code: OccupantOfTram
@@ -10642,9 +12212,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOccupantOfTram = "257502006";
 
     /// <summary>
+    /// Literal for code: NONEOccupantOfTram
+    /// </summary>
+    public const string LiteralNONEOccupantOfTram = "http://snomed.info/sct#257502006";
+
+    /// <summary>
     /// Literal for code: PillionPassenger
     /// </summary>
     public const string LiteralPillionPassenger = "257503001";
+
+    /// <summary>
+    /// Literal for code: NONEPillionPassenger
+    /// </summary>
+    public const string LiteralNONEPillionPassenger = "http://snomed.info/sct#257503001";
 
     /// <summary>
     /// Literal for code: PersonRidingOnOutsideOfVehicle
@@ -10652,9 +12232,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPersonRidingOnOutsideOfVehicle = "257504007";
 
     /// <summary>
+    /// Literal for code: NONEPersonRidingOnOutsideOfVehicle
+    /// </summary>
+    public const string LiteralNONEPersonRidingOnOutsideOfVehicle = "http://snomed.info/sct#257504007";
+
+    /// <summary>
     /// Literal for code: PersonTravellingOnOutsideOfTrain
     /// </summary>
     public const string LiteralPersonTravellingOnOutsideOfTrain = "257505008";
+
+    /// <summary>
+    /// Literal for code: NONEPersonTravellingOnOutsideOfTrain
+    /// </summary>
+    public const string LiteralNONEPersonTravellingOnOutsideOfTrain = "http://snomed.info/sct#257505008";
 
     /// <summary>
     /// Literal for code: FrontSeatPassenger
@@ -10662,9 +12252,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFrontSeatPassenger = "257506009";
 
     /// <summary>
+    /// Literal for code: NONEFrontSeatPassenger
+    /// </summary>
+    public const string LiteralNONEFrontSeatPassenger = "http://snomed.info/sct#257506009";
+
+    /// <summary>
     /// Literal for code: BackSeatPassenger
     /// </summary>
     public const string LiteralBackSeatPassenger = "257508005";
+
+    /// <summary>
+    /// Literal for code: NONEBackSeatPassenger
+    /// </summary>
+    public const string LiteralNONEBackSeatPassenger = "http://snomed.info/sct#257508005";
 
     /// <summary>
     /// Literal for code: OccupantOfAnimalDrawnVehicle
@@ -10672,9 +12272,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOccupantOfAnimalDrawnVehicle = "257509002";
 
     /// <summary>
+    /// Literal for code: NONEOccupantOfAnimalDrawnVehicle
+    /// </summary>
+    public const string LiteralNONEOccupantOfAnimalDrawnVehicle = "http://snomed.info/sct#257509002";
+
+    /// <summary>
     /// Literal for code: PassengerOnCommercialWatercraft
     /// </summary>
     public const string LiteralPassengerOnCommercialWatercraft = "257510007";
+
+    /// <summary>
+    /// Literal for code: NONEPassengerOnCommercialWatercraft
+    /// </summary>
+    public const string LiteralNONEPassengerOnCommercialWatercraft = "http://snomed.info/sct#257510007";
 
     /// <summary>
     /// Literal for code: PassengerOnStation
@@ -10682,9 +12292,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPassengerOnStation = "257511006";
 
     /// <summary>
+    /// Literal for code: NONEPassengerOnStation
+    /// </summary>
+    public const string LiteralNONEPassengerOnStation = "http://snomed.info/sct#257511006";
+
+    /// <summary>
     /// Literal for code: PassengerOnTrain
     /// </summary>
     public const string LiteralPassengerOnTrain = "257512004";
+
+    /// <summary>
+    /// Literal for code: NONEPassengerOnTrain
+    /// </summary>
+    public const string LiteralNONEPassengerOnTrain = "http://snomed.info/sct#257512004";
 
     /// <summary>
     /// Literal for code: MemberOfPublic
@@ -10692,9 +12312,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMemberOfPublic = "257513009";
 
     /// <summary>
+    /// Literal for code: NONEMemberOfPublic
+    /// </summary>
+    public const string LiteralNONEMemberOfPublic = "http://snomed.info/sct#257513009";
+
+    /// <summary>
     /// Literal for code: MemberOfPublicInvolvedIncidentally
     /// </summary>
     public const string LiteralMemberOfPublicInvolvedIncidentally = "257514003";
+
+    /// <summary>
+    /// Literal for code: NONEMemberOfPublicInvolvedIncidentally
+    /// </summary>
+    public const string LiteralNONEMemberOfPublicInvolvedIncidentally = "http://snomed.info/sct#257514003";
 
     /// <summary>
     /// Literal for code: MemberOfPublicOnGround
@@ -10702,9 +12332,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMemberOfPublicOnGround = "257516001";
 
     /// <summary>
+    /// Literal for code: NONEMemberOfPublicOnGround
+    /// </summary>
+    public const string LiteralNONEMemberOfPublicOnGround = "http://snomed.info/sct#257516001";
+
+    /// <summary>
     /// Literal for code: OccupantOfNonmotorVehicle
     /// </summary>
     public const string LiteralOccupantOfNonmotorVehicle = "257517005";
+
+    /// <summary>
+    /// Literal for code: NONEOccupantOfNonmotorVehicle
+    /// </summary>
+    public const string LiteralNONEOccupantOfNonmotorVehicle = "http://snomed.info/sct#257517005";
 
     /// <summary>
     /// Literal for code: Pedestrian
@@ -10712,9 +12352,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPedestrian = "257518000";
 
     /// <summary>
+    /// Literal for code: NONEPedestrian
+    /// </summary>
+    public const string LiteralNONEPedestrian = "http://snomed.info/sct#257518000";
+
+    /// <summary>
     /// Literal for code: PersonTrespassingOnRailwayLine
     /// </summary>
     public const string LiteralPersonTrespassingOnRailwayLine = "257519008";
+
+    /// <summary>
+    /// Literal for code: NONEPersonTrespassingOnRailwayLine
+    /// </summary>
+    public const string LiteralNONEPersonTrespassingOnRailwayLine = "http://snomed.info/sct#257519008";
 
     /// <summary>
     /// Literal for code: RailwayEmployeeOnTrain
@@ -10722,9 +12372,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRailwayEmployeeOnTrain = "257521003";
 
     /// <summary>
+    /// Literal for code: NONERailwayEmployeeOnTrain
+    /// </summary>
+    public const string LiteralNONERailwayEmployeeOnTrain = "http://snomed.info/sct#257521003";
+
+    /// <summary>
     /// Literal for code: RecreationalWatercraftUser
     /// </summary>
     public const string LiteralRecreationalWatercraftUser = "257522005";
+
+    /// <summary>
+    /// Literal for code: NONERecreationalWatercraftUser
+    /// </summary>
+    public const string LiteralNONERecreationalWatercraftUser = "http://snomed.info/sct#257522005";
 
     /// <summary>
     /// Literal for code: Swimmer
@@ -10732,9 +12392,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSwimmer = "257523000";
 
     /// <summary>
+    /// Literal for code: NONESwimmer
+    /// </summary>
+    public const string LiteralNONESwimmer = "http://snomed.info/sct#257523000";
+
+    /// <summary>
     /// Literal for code: UserOfAnimalDrawnVehicle
     /// </summary>
     public const string LiteralUserOfAnimalDrawnVehicle = "257524006";
+
+    /// <summary>
+    /// Literal for code: NONEUserOfAnimalDrawnVehicle
+    /// </summary>
+    public const string LiteralNONEUserOfAnimalDrawnVehicle = "http://snomed.info/sct#257524006";
 
     /// <summary>
     /// Literal for code: WatercraftDweller
@@ -10742,9 +12412,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWatercraftDweller = "257525007";
 
     /// <summary>
+    /// Literal for code: NONEWatercraftDweller
+    /// </summary>
+    public const string LiteralNONEWatercraftDweller = "http://snomed.info/sct#257525007";
+
+    /// <summary>
     /// Literal for code: Waterskier
     /// </summary>
     public const string LiteralWaterskier = "257526008";
+
+    /// <summary>
+    /// Literal for code: NONEWaterskier
+    /// </summary>
+    public const string LiteralNONEWaterskier = "http://snomed.info/sct#257526008";
 
     /// <summary>
     /// Literal for code: HipAndKneeSurgeon
@@ -10752,9 +12432,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHipAndKneeSurgeon = "258508741000087105";
 
     /// <summary>
+    /// Literal for code: NONEHipAndKneeSurgeon
+    /// </summary>
+    public const string LiteralNONEHipAndKneeSurgeon = "http://snomed.info/sct#258508741000087105";
+
+    /// <summary>
     /// Literal for code: ElectroencephalographySpecialist
     /// </summary>
     public const string LiteralElectroencephalographySpecialist = "25961008";
+
+    /// <summary>
+    /// Literal for code: NONEElectroencephalographySpecialist
+    /// </summary>
+    public const string LiteralNONEElectroencephalographySpecialist = "http://snomed.info/sct#25961008";
 
     /// <summary>
     /// Literal for code: DentalHygienist
@@ -10762,9 +12452,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDentalHygienist = "26042002";
 
     /// <summary>
+    /// Literal for code: NONEDentalHygienist
+    /// </summary>
+    public const string LiteralNONEDentalHygienist = "http://snomed.info/sct#26042002";
+
+    /// <summary>
     /// Literal for code: Hepatologist
     /// </summary>
     public const string LiteralHepatologist = "260767431000087107";
+
+    /// <summary>
+    /// Literal for code: NONEHepatologist
+    /// </summary>
+    public const string LiteralNONEHepatologist = "http://snomed.info/sct#260767431000087107";
 
     /// <summary>
     /// Literal for code: Companion
@@ -10772,9 +12472,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCompanion = "262043009";
 
     /// <summary>
+    /// Literal for code: NONECompanion
+    /// </summary>
+    public const string LiteralNONECompanion = "http://snomed.info/sct#262043009";
+
+    /// <summary>
     /// Literal for code: PublicHealthNurse
     /// </summary>
     public const string LiteralPublicHealthNurse = "26369006";
+
+    /// <summary>
+    /// Literal for code: NONEPublicHealthNurse
+    /// </summary>
+    public const string LiteralNONEPublicHealthNurse = "http://snomed.info/sct#26369006";
 
     /// <summary>
     /// Literal for code: NursingOccupation
@@ -10782,9 +12492,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNursingOccupation = "265937000";
 
     /// <summary>
+    /// Literal for code: NONENursingOccupation
+    /// </summary>
+    public const string LiteralNONENursingOccupation = "http://snomed.info/sct#265937000";
+
+    /// <summary>
     /// Literal for code: MedicalDentalTechnicians
     /// </summary>
     public const string LiteralMedicalDentalTechnicians = "265939002";
+
+    /// <summary>
+    /// Literal for code: NONEMedicalDentalTechnicians
+    /// </summary>
+    public const string LiteralNONEMedicalDentalTechnicians = "http://snomed.info/sct#265939002";
 
     /// <summary>
     /// Literal for code: SingleParent
@@ -10792,9 +12512,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSingleParent = "266943008";
 
     /// <summary>
+    /// Literal for code: NONESingleParent
+    /// </summary>
+    public const string LiteralNONESingleParent = "http://snomed.info/sct#266943008";
+
+    /// <summary>
     /// Literal for code: Sportsman
     /// </summary>
     public const string LiteralSportsman = "268557009";
+
+    /// <summary>
+    /// Literal for code: NONESportsman
+    /// </summary>
+    public const string LiteralNONESportsman = "http://snomed.info/sct#268557009";
 
     /// <summary>
     /// Literal for code: FemaleFirstCousin
@@ -10802,9 +12532,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFemaleFirstCousin = "270002";
 
     /// <summary>
+    /// Literal for code: NONEFemaleFirstCousin
+    /// </summary>
+    public const string LiteralNONEFemaleFirstCousin = "http://snomed.info/sct#270002";
+
+    /// <summary>
     /// Literal for code: AnglicanFollowerOfReligion
     /// </summary>
     public const string LiteralAnglicanFollowerOfReligion = "271448006";
+
+    /// <summary>
+    /// Literal for code: NONEAnglicanFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEAnglicanFollowerOfReligion = "http://snomed.info/sct#271448006";
 
     /// <summary>
     /// Literal for code: SurrogateMother
@@ -10812,9 +12552,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurrogateMother = "27508009";
 
     /// <summary>
+    /// Literal for code: NONESurrogateMother
+    /// </summary>
+    public const string LiteralNONESurrogateMother = "http://snomed.info/sct#27508009";
+
+    /// <summary>
     /// Literal for code: VoluntaryHelper
     /// </summary>
     public const string LiteralVoluntaryHelper = "276035002";
+
+    /// <summary>
+    /// Literal for code: NONEVoluntaryHelper
+    /// </summary>
+    public const string LiteralNONEVoluntaryHelper = "http://snomed.info/sct#276035002";
 
     /// <summary>
     /// Literal for code: VoluntaryVisitor
@@ -10822,9 +12572,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVoluntaryVisitor = "276036001";
 
     /// <summary>
+    /// Literal for code: NONEVoluntaryVisitor
+    /// </summary>
+    public const string LiteralNONEVoluntaryVisitor = "http://snomed.info/sct#276036001";
+
+    /// <summary>
     /// Literal for code: VolunteerHelper
     /// </summary>
     public const string LiteralVolunteerHelper = "276037005";
+
+    /// <summary>
+    /// Literal for code: NONEVolunteerHelper
+    /// </summary>
+    public const string LiteralNONEVolunteerHelper = "http://snomed.info/sct#276037005";
 
     /// <summary>
     /// Literal for code: Nonconformist
@@ -10832,9 +12592,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonconformist = "276119007";
 
     /// <summary>
+    /// Literal for code: NONENonconformist
+    /// </summary>
+    public const string LiteralNONENonconformist = "http://snomed.info/sct#276119007";
+
+    /// <summary>
     /// Literal for code: SrSister
     /// </summary>
     public const string LiteralSrSister = "27733009";
+
+    /// <summary>
+    /// Literal for code: NONESrSister
+    /// </summary>
+    public const string LiteralNONESrSister = "http://snomed.info/sct#27733009";
 
     /// <summary>
     /// Literal for code: ShiiteMuslimFollowerOfReligion
@@ -10842,9 +12612,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralShiiteMuslimFollowerOfReligion = "28010004";
 
     /// <summary>
+    /// Literal for code: NONEShiiteMuslimFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEShiiteMuslimFollowerOfReligion = "http://snomed.info/sct#28010004";
+
+    /// <summary>
     /// Literal for code: Optometrist
     /// </summary>
     public const string LiteralOptometrist = "28229004";
+
+    /// <summary>
+    /// Literal for code: NONEOptometrist
+    /// </summary>
+    public const string LiteralNONEOptometrist = "http://snomed.info/sct#28229004";
 
     /// <summary>
     /// Literal for code: ParkinsonDiseaseNurse
@@ -10852,9 +12632,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParkinsonDiseaseNurse = "283875005";
 
     /// <summary>
+    /// Literal for code: NONEParkinsonDiseaseNurse
+    /// </summary>
+    public const string LiteralNONEParkinsonDiseaseNurse = "http://snomed.info/sct#283875005";
+
+    /// <summary>
     /// Literal for code: Neonatologist
     /// </summary>
     public const string LiteralNeonatologist = "28411006";
+
+    /// <summary>
+    /// Literal for code: NONENeonatologist
+    /// </summary>
+    public const string LiteralNONENeonatologist = "http://snomed.info/sct#28411006";
 
     /// <summary>
     /// Literal for code: ChemicalPathologist
@@ -10862,9 +12652,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChemicalPathologist = "28544002";
 
     /// <summary>
+    /// Literal for code: NONEChemicalPathologist
+    /// </summary>
+    public const string LiteralNONEChemicalPathologist = "http://snomed.info/sct#28544002";
+
+    /// <summary>
     /// Literal for code: ShoulderSurgeon
     /// </summary>
     public const string LiteralShoulderSurgeon = "285631911000087106";
+
+    /// <summary>
+    /// Literal for code: NONEShoulderSurgeon
+    /// </summary>
+    public const string LiteralNONEShoulderSurgeon = "http://snomed.info/sct#285631911000087106";
 
     /// <summary>
     /// Literal for code: MaternalCousin
@@ -10872,9 +12672,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaternalCousin = "286864561000087100";
 
     /// <summary>
+    /// Literal for code: NONEMaternalCousin
+    /// </summary>
+    public const string LiteralNONEMaternalCousin = "http://snomed.info/sct#286864561000087100";
+
+    /// <summary>
     /// Literal for code: ProviderBillingNumber
     /// </summary>
     public const string LiteralProviderBillingNumber = "287697331000087102";
+
+    /// <summary>
+    /// Literal for code: NONEProviderBillingNumber
+    /// </summary>
+    public const string LiteralNONEProviderBillingNumber = "http://snomed.info/sct#287697331000087102";
 
     /// <summary>
     /// Literal for code: InterventionalRadiologist
@@ -10882,9 +12692,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInterventionalRadiologist = "291705421000087106";
 
     /// <summary>
+    /// Literal for code: NONEInterventionalRadiologist
+    /// </summary>
+    public const string LiteralNONEInterventionalRadiologist = "http://snomed.info/sct#291705421000087106";
+
+    /// <summary>
     /// Literal for code: YoungerSibling
     /// </summary>
     public const string LiteralYoungerSibling = "29539002";
+
+    /// <summary>
+    /// Literal for code: NONEYoungerSibling
+    /// </summary>
+    public const string LiteralNONEYoungerSibling = "http://snomed.info/sct#29539002";
 
     /// <summary>
     /// Literal for code: FemaleCousin
@@ -10892,9 +12712,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFemaleCousin = "2959006";
 
     /// <summary>
+    /// Literal for code: NONEFemaleCousin
+    /// </summary>
+    public const string LiteralNONEFemaleCousin = "http://snomed.info/sct#2959006";
+
+    /// <summary>
     /// Literal for code: FraternalTwinSister
     /// </summary>
     public const string LiteralFraternalTwinSister = "29644004";
+
+    /// <summary>
+    /// Literal for code: NONEFraternalTwinSister
+    /// </summary>
+    public const string LiteralNONEFraternalTwinSister = "http://snomed.info/sct#29644004";
 
     /// <summary>
     /// Literal for code: FosterBrother
@@ -10902,9 +12732,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFosterBrother = "29787005";
 
     /// <summary>
+    /// Literal for code: NONEFosterBrother
+    /// </summary>
+    public const string LiteralNONEFosterBrother = "http://snomed.info/sct#29787005";
+
+    /// <summary>
     /// Literal for code: SpecialistRegistrar
     /// </summary>
     public const string LiteralSpecialistRegistrar = "302211009";
+
+    /// <summary>
+    /// Literal for code: NONESpecialistRegistrar
+    /// </summary>
+    public const string LiteralNONESpecialistRegistrar = "http://snomed.info/sct#302211009";
 
     /// <summary>
     /// Literal for code: PersonInTheTransportEnvironment
@@ -10912,9 +12752,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPersonInTheTransportEnvironment = "303069001";
 
     /// <summary>
+    /// Literal for code: NONEPersonInTheTransportEnvironment
+    /// </summary>
+    public const string LiteralNONEPersonInTheTransportEnvironment = "http://snomed.info/sct#303069001";
+
+    /// <summary>
     /// Literal for code: PersonInTheFamily
     /// </summary>
     public const string LiteralPersonInTheFamily = "303071001";
+
+    /// <summary>
+    /// Literal for code: NONEPersonInTheFamily
+    /// </summary>
+    public const string LiteralNONEPersonInTheFamily = "http://snomed.info/sct#303071001";
 
     /// <summary>
     /// Literal for code: PersonInTheHomeEnvironment
@@ -10922,9 +12772,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPersonInTheHomeEnvironment = "303072008";
 
     /// <summary>
+    /// Literal for code: NONEPersonInTheHomeEnvironment
+    /// </summary>
+    public const string LiteralNONEPersonInTheHomeEnvironment = "http://snomed.info/sct#303072008";
+
+    /// <summary>
     /// Literal for code: PersonInTheReligiousEnvironment
     /// </summary>
     public const string LiteralPersonInTheReligiousEnvironment = "303073003";
+
+    /// <summary>
+    /// Literal for code: NONEPersonInTheReligiousEnvironment
+    /// </summary>
+    public const string LiteralNONEPersonInTheReligiousEnvironment = "http://snomed.info/sct#303073003";
 
     /// <summary>
     /// Literal for code: PersonInTheHealthcareEnvironment
@@ -10932,9 +12792,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPersonInTheHealthcareEnvironment = "303118004";
 
     /// <summary>
+    /// Literal for code: NONEPersonInTheHealthcareEnvironment
+    /// </summary>
+    public const string LiteralNONEPersonInTheHealthcareEnvironment = "http://snomed.info/sct#303118004";
+
+    /// <summary>
     /// Literal for code: PersonInTheCommunityEnvironment
     /// </summary>
     public const string LiteralPersonInTheCommunityEnvironment = "303119007";
+
+    /// <summary>
+    /// Literal for code: NONEPersonInTheCommunityEnvironment
+    /// </summary>
+    public const string LiteralNONEPersonInTheCommunityEnvironment = "http://snomed.info/sct#303119007";
 
     /// <summary>
     /// Literal for code: PersonInTheRecreationalEnvironment
@@ -10942,9 +12812,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPersonInTheRecreationalEnvironment = "303120001";
 
     /// <summary>
+    /// Literal for code: NONEPersonInTheRecreationalEnvironment
+    /// </summary>
+    public const string LiteralNONEPersonInTheRecreationalEnvironment = "http://snomed.info/sct#303120001";
+
+    /// <summary>
     /// Literal for code: PersonInTheEducationalEnvironment
     /// </summary>
     public const string LiteralPersonInTheEducationalEnvironment = "303121002";
+
+    /// <summary>
+    /// Literal for code: NONEPersonInTheEducationalEnvironment
+    /// </summary>
+    public const string LiteralNONEPersonInTheEducationalEnvironment = "http://snomed.info/sct#303121002";
 
     /// <summary>
     /// Literal for code: Crewmember
@@ -10952,9 +12832,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCrewmember = "303122009";
 
     /// <summary>
+    /// Literal for code: NONECrewmember
+    /// </summary>
+    public const string LiteralNONECrewmember = "http://snomed.info/sct#303122009";
+
+    /// <summary>
     /// Literal for code: MemberOfMentalHealthReviewTribunal
     /// </summary>
     public const string LiteralMemberOfMentalHealthReviewTribunal = "303124005";
+
+    /// <summary>
+    /// Literal for code: NONEMemberOfMentalHealthReviewTribunal
+    /// </summary>
+    public const string LiteralNONEMemberOfMentalHealthReviewTribunal = "http://snomed.info/sct#303124005";
 
     /// <summary>
     /// Literal for code: HospitalManager
@@ -10962,9 +12852,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospitalManager = "303129000";
 
     /// <summary>
+    /// Literal for code: NONEHospitalManager
+    /// </summary>
+    public const string LiteralNONEHospitalManager = "http://snomed.info/sct#303129000";
+
+    /// <summary>
     /// Literal for code: ResponsibleMedicalOfficer
     /// </summary>
     public const string LiteralResponsibleMedicalOfficer = "303133007";
+
+    /// <summary>
+    /// Literal for code: NONEResponsibleMedicalOfficer
+    /// </summary>
+    public const string LiteralNONEResponsibleMedicalOfficer = "http://snomed.info/sct#303133007";
 
     /// <summary>
     /// Literal for code: IndependentDoctor
@@ -10972,9 +12872,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIndependentDoctor = "303134001";
 
     /// <summary>
+    /// Literal for code: NONEIndependentDoctor
+    /// </summary>
+    public const string LiteralNONEIndependentDoctor = "http://snomed.info/sct#303134001";
+
+    /// <summary>
     /// Literal for code: OccupantOfRailwayVehicle
     /// </summary>
     public const string LiteralOccupantOfRailwayVehicle = "303977004";
+
+    /// <summary>
+    /// Literal for code: NONEOccupantOfRailwayVehicle
+    /// </summary>
+    public const string LiteralNONEOccupantOfRailwayVehicle = "http://snomed.info/sct#303977004";
 
     /// <summary>
     /// Literal for code: DriverOfMotorVehicle
@@ -10982,9 +12892,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDriverOfMotorVehicle = "303980003";
 
     /// <summary>
+    /// Literal for code: NONEDriverOfMotorVehicle
+    /// </summary>
+    public const string LiteralNONEDriverOfMotorVehicle = "http://snomed.info/sct#303980003";
+
+    /// <summary>
     /// Literal for code: DriverOfAnimalDrawnVehicle
     /// </summary>
     public const string LiteralDriverOfAnimalDrawnVehicle = "303981004";
+
+    /// <summary>
+    /// Literal for code: NONEDriverOfAnimalDrawnVehicle
+    /// </summary>
+    public const string LiteralNONEDriverOfAnimalDrawnVehicle = "http://snomed.info/sct#303981004";
 
     /// <summary>
     /// Literal for code: PassengerOfAnimalDrawnVehicle
@@ -10992,9 +12912,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPassengerOfAnimalDrawnVehicle = "303983001";
 
     /// <summary>
+    /// Literal for code: NONEPassengerOfAnimalDrawnVehicle
+    /// </summary>
+    public const string LiteralNONEPassengerOfAnimalDrawnVehicle = "http://snomed.info/sct#303983001";
+
+    /// <summary>
     /// Literal for code: PassengerOnPedalCycle
     /// </summary>
     public const string LiteralPassengerOnPedalCycle = "303984007";
+
+    /// <summary>
+    /// Literal for code: NONEPassengerOnPedalCycle
+    /// </summary>
+    public const string LiteralNONEPassengerOnPedalCycle = "http://snomed.info/sct#303984007";
 
     /// <summary>
     /// Literal for code: OccupantOfWatercraft
@@ -11002,9 +12932,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOccupantOfWatercraft = "303985008";
 
     /// <summary>
+    /// Literal for code: NONEOccupantOfWatercraft
+    /// </summary>
+    public const string LiteralNONEOccupantOfWatercraft = "http://snomed.info/sct#303985008";
+
+    /// <summary>
     /// Literal for code: OccupantOfAircraft
     /// </summary>
     public const string LiteralOccupantOfAircraft = "303986009";
+
+    /// <summary>
+    /// Literal for code: NONEOccupantOfAircraft
+    /// </summary>
+    public const string LiteralNONEOccupantOfAircraft = "http://snomed.info/sct#303986009";
 
     /// <summary>
     /// Literal for code: HorseRider
@@ -11012,9 +12952,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHorseRider = "303987000";
 
     /// <summary>
+    /// Literal for code: NONEHorseRider
+    /// </summary>
+    public const string LiteralNONEHorseRider = "http://snomed.info/sct#303987000";
+
+    /// <summary>
     /// Literal for code: PassengerOnAircraft
     /// </summary>
     public const string LiteralPassengerOnAircraft = "303988005";
+
+    /// <summary>
+    /// Literal for code: NONEPassengerOnAircraft
+    /// </summary>
+    public const string LiteralNONEPassengerOnAircraft = "http://snomed.info/sct#303988005";
 
     /// <summary>
     /// Literal for code: CrewmemberOnAircraft
@@ -11022,9 +12972,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCrewmemberOnAircraft = "303989002";
 
     /// <summary>
+    /// Literal for code: NONECrewmemberOnAircraft
+    /// </summary>
+    public const string LiteralNONECrewmemberOnAircraft = "http://snomed.info/sct#303989002";
+
+    /// <summary>
     /// Literal for code: PassengerOfMotorVehicle
     /// </summary>
     public const string LiteralPassengerOfMotorVehicle = "303990006";
+
+    /// <summary>
+    /// Literal for code: NONEPassengerOfMotorVehicle
+    /// </summary>
+    public const string LiteralNONEPassengerOfMotorVehicle = "http://snomed.info/sct#303990006";
 
     /// <summary>
     /// Literal for code: Trespasser
@@ -11032,9 +12992,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrespasser = "303991005";
 
     /// <summary>
+    /// Literal for code: NONETrespasser
+    /// </summary>
+    public const string LiteralNONETrespasser = "http://snomed.info/sct#303991005";
+
+    /// <summary>
     /// Literal for code: CarPassenger
     /// </summary>
     public const string LiteralCarPassenger = "303992003";
+
+    /// <summary>
+    /// Literal for code: NONECarPassenger
+    /// </summary>
+    public const string LiteralNONECarPassenger = "http://snomed.info/sct#303992003";
 
     /// <summary>
     /// Literal for code: CoachPassenger
@@ -11042,9 +13012,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoachPassenger = "303993008";
 
     /// <summary>
+    /// Literal for code: NONECoachPassenger
+    /// </summary>
+    public const string LiteralNONECoachPassenger = "http://snomed.info/sct#303993008";
+
+    /// <summary>
     /// Literal for code: BereavementCounselor
     /// </summary>
     public const string LiteralBereavementCounselor = "304291006";
+
+    /// <summary>
+    /// Literal for code: NONEBereavementCounselor
+    /// </summary>
+    public const string LiteralNONEBereavementCounselor = "http://snomed.info/sct#304291006";
 
     /// <summary>
     /// Literal for code: Surgeon
@@ -11052,9 +13032,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgeon = "304292004";
 
     /// <summary>
+    /// Literal for code: NONESurgeon
+    /// </summary>
+    public const string LiteralNONESurgeon = "http://snomed.info/sct#304292004";
+
+    /// <summary>
     /// Literal for code: Stepfather
     /// </summary>
     public const string LiteralStepfather = "30578000";
+
+    /// <summary>
+    /// Literal for code: NONEStepfather
+    /// </summary>
+    public const string LiteralNONEStepfather = "http://snomed.info/sct#30578000";
 
     /// <summary>
     /// Literal for code: MedicalTechnician
@@ -11062,9 +13052,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalTechnician = "307988006";
 
     /// <summary>
+    /// Literal for code: NONEMedicalTechnician
+    /// </summary>
+    public const string LiteralNONEMedicalTechnician = "http://snomed.info/sct#307988006";
+
+    /// <summary>
     /// Literal for code: RemedialTherapist
     /// </summary>
     public const string LiteralRemedialTherapist = "308002005";
+
+    /// <summary>
+    /// Literal for code: NONERemedialTherapist
+    /// </summary>
+    public const string LiteralNONERemedialTherapist = "http://snomed.info/sct#308002005";
 
     /// <summary>
     /// Literal for code: AccidentAndEmergencyDoctor
@@ -11072,9 +13072,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAccidentAndEmergencyDoctor = "309294001";
 
     /// <summary>
+    /// Literal for code: NONEAccidentAndEmergencyDoctor
+    /// </summary>
+    public const string LiteralNONEAccidentAndEmergencyDoctor = "http://snomed.info/sct#309294001";
+
+    /// <summary>
     /// Literal for code: ClinicalOncologist
     /// </summary>
     public const string LiteralClinicalOncologist = "309295000";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalOncologist
+    /// </summary>
+    public const string LiteralNONEClinicalOncologist = "http://snomed.info/sct#309295000";
 
     /// <summary>
     /// Literal for code: FamilyPlanningDoctor
@@ -11082,9 +13092,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFamilyPlanningDoctor = "309296004";
 
     /// <summary>
+    /// Literal for code: NONEFamilyPlanningDoctor
+    /// </summary>
+    public const string LiteralNONEFamilyPlanningDoctor = "http://snomed.info/sct#309296004";
+
+    /// <summary>
     /// Literal for code: AssociateGeneralPractitioner
     /// </summary>
     public const string LiteralAssociateGeneralPractitioner = "309322005";
+
+    /// <summary>
+    /// Literal for code: NONEAssociateGeneralPractitioner
+    /// </summary>
+    public const string LiteralNONEAssociateGeneralPractitioner = "http://snomed.info/sct#309322005";
 
     /// <summary>
     /// Literal for code: PartnerOfGeneralPractitioner
@@ -11092,9 +13112,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPartnerOfGeneralPractitioner = "309323000";
 
     /// <summary>
+    /// Literal for code: NONEPartnerOfGeneralPractitioner
+    /// </summary>
+    public const string LiteralNONEPartnerOfGeneralPractitioner = "http://snomed.info/sct#309323000";
+
+    /// <summary>
     /// Literal for code: AssistantGP
     /// </summary>
     public const string LiteralAssistantGP = "309324006";
+
+    /// <summary>
+    /// Literal for code: NONEAssistantGP
+    /// </summary>
+    public const string LiteralNONEAssistantGP = "http://snomed.info/sct#309324006";
 
     /// <summary>
     /// Literal for code: DeputizingGeneralPractitioner
@@ -11102,9 +13132,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeputizingGeneralPractitioner = "309326008";
 
     /// <summary>
+    /// Literal for code: NONEDeputizingGeneralPractitioner
+    /// </summary>
+    public const string LiteralNONEDeputizingGeneralPractitioner = "http://snomed.info/sct#309326008";
+
+    /// <summary>
     /// Literal for code: GeneralPractitionerRegistrar
     /// </summary>
     public const string LiteralGeneralPractitionerRegistrar = "309327004";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralPractitionerRegistrar
+    /// </summary>
+    public const string LiteralNONEGeneralPractitionerRegistrar = "http://snomed.info/sct#309327004";
 
     /// <summary>
     /// Literal for code: AmbulatoryPediatrician
@@ -11112,9 +13152,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAmbulatoryPediatrician = "309328009";
 
     /// <summary>
+    /// Literal for code: NONEAmbulatoryPediatrician
+    /// </summary>
+    public const string LiteralNONEAmbulatoryPediatrician = "http://snomed.info/sct#309328009";
+
+    /// <summary>
     /// Literal for code: CommunityPediatrician
     /// </summary>
     public const string LiteralCommunityPediatrician = "309329001";
+
+    /// <summary>
+    /// Literal for code: NONECommunityPediatrician
+    /// </summary>
+    public const string LiteralNONECommunityPediatrician = "http://snomed.info/sct#309329001";
 
     /// <summary>
     /// Literal for code: PediatricCardiologist
@@ -11122,9 +13172,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricCardiologist = "309330006";
 
     /// <summary>
+    /// Literal for code: NONEPediatricCardiologist
+    /// </summary>
+    public const string LiteralNONEPediatricCardiologist = "http://snomed.info/sct#309330006";
+
+    /// <summary>
     /// Literal for code: PediatricEndocrinologist
     /// </summary>
     public const string LiteralPediatricEndocrinologist = "309331005";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricEndocrinologist
+    /// </summary>
+    public const string LiteralNONEPediatricEndocrinologist = "http://snomed.info/sct#309331005";
 
     /// <summary>
     /// Literal for code: PediatricGastroenterologist
@@ -11132,9 +13192,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricGastroenterologist = "309332003";
 
     /// <summary>
+    /// Literal for code: NONEPediatricGastroenterologist
+    /// </summary>
+    public const string LiteralNONEPediatricGastroenterologist = "http://snomed.info/sct#309332003";
+
+    /// <summary>
     /// Literal for code: PediatricNephrologist
     /// </summary>
     public const string LiteralPediatricNephrologist = "309333008";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricNephrologist
+    /// </summary>
+    public const string LiteralNONEPediatricNephrologist = "http://snomed.info/sct#309333008";
 
     /// <summary>
     /// Literal for code: PediatricNeurologist
@@ -11142,9 +13212,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricNeurologist = "309334002";
 
     /// <summary>
+    /// Literal for code: NONEPediatricNeurologist
+    /// </summary>
+    public const string LiteralNONEPediatricNeurologist = "http://snomed.info/sct#309334002";
+
+    /// <summary>
     /// Literal for code: PediatricRheumatologist
     /// </summary>
     public const string LiteralPediatricRheumatologist = "309335001";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricRheumatologist
+    /// </summary>
+    public const string LiteralNONEPediatricRheumatologist = "http://snomed.info/sct#309335001";
 
     /// <summary>
     /// Literal for code: PediatricOncologist
@@ -11152,9 +13232,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricOncologist = "309336000";
 
     /// <summary>
+    /// Literal for code: NONEPediatricOncologist
+    /// </summary>
+    public const string LiteralNONEPediatricOncologist = "http://snomed.info/sct#309336000";
+
+    /// <summary>
     /// Literal for code: PainManagementSpecialist
     /// </summary>
     public const string LiteralPainManagementSpecialist = "309337009";
+
+    /// <summary>
+    /// Literal for code: NONEPainManagementSpecialist
+    /// </summary>
+    public const string LiteralNONEPainManagementSpecialist = "http://snomed.info/sct#309337009";
 
     /// <summary>
     /// Literal for code: IntensiveCareSpecialist
@@ -11162,9 +13252,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntensiveCareSpecialist = "309338004";
 
     /// <summary>
+    /// Literal for code: NONEIntensiveCareSpecialist
+    /// </summary>
+    public const string LiteralNONEIntensiveCareSpecialist = "http://snomed.info/sct#309338004";
+
+    /// <summary>
     /// Literal for code: AdultIntensiveCareSpecialist
     /// </summary>
     public const string LiteralAdultIntensiveCareSpecialist = "309339007";
+
+    /// <summary>
+    /// Literal for code: NONEAdultIntensiveCareSpecialist
+    /// </summary>
+    public const string LiteralNONEAdultIntensiveCareSpecialist = "http://snomed.info/sct#309339007";
 
     /// <summary>
     /// Literal for code: PediatricIntensiveCareSpecialist
@@ -11172,9 +13272,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricIntensiveCareSpecialist = "309340009";
 
     /// <summary>
+    /// Literal for code: NONEPediatricIntensiveCareSpecialist
+    /// </summary>
+    public const string LiteralNONEPediatricIntensiveCareSpecialist = "http://snomed.info/sct#309340009";
+
+    /// <summary>
     /// Literal for code: BloodTransfusionDoctor
     /// </summary>
     public const string LiteralBloodTransfusionDoctor = "309341008";
+
+    /// <summary>
+    /// Literal for code: NONEBloodTransfusionDoctor
+    /// </summary>
+    public const string LiteralNONEBloodTransfusionDoctor = "http://snomed.info/sct#309341008";
 
     /// <summary>
     /// Literal for code: Histopathologist
@@ -11182,9 +13292,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistopathologist = "309342001";
 
     /// <summary>
+    /// Literal for code: NONEHistopathologist
+    /// </summary>
+    public const string LiteralNONEHistopathologist = "http://snomed.info/sct#309342001";
+
+    /// <summary>
     /// Literal for code: Physician
     /// </summary>
     public const string LiteralPhysician = "309343006";
+
+    /// <summary>
+    /// Literal for code: NONEPhysician
+    /// </summary>
+    public const string LiteralNONEPhysician = "http://snomed.info/sct#309343006";
 
     /// <summary>
     /// Literal for code: ChestPhysician
@@ -11192,9 +13312,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChestPhysician = "309345004";
 
     /// <summary>
+    /// Literal for code: NONEChestPhysician
+    /// </summary>
+    public const string LiteralNONEChestPhysician = "http://snomed.info/sct#309345004";
+
+    /// <summary>
     /// Literal for code: ThoracicPhysician
     /// </summary>
     public const string LiteralThoracicPhysician = "309346003";
+
+    /// <summary>
+    /// Literal for code: NONEThoracicPhysician
+    /// </summary>
+    public const string LiteralNONEThoracicPhysician = "http://snomed.info/sct#309346003";
 
     /// <summary>
     /// Literal for code: ClinicalHematologist
@@ -11202,9 +13332,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalHematologist = "309347007";
 
     /// <summary>
+    /// Literal for code: NONEClinicalHematologist
+    /// </summary>
+    public const string LiteralNONEClinicalHematologist = "http://snomed.info/sct#309347007";
+
+    /// <summary>
     /// Literal for code: ClinicalNeurophysiologist
     /// </summary>
     public const string LiteralClinicalNeurophysiologist = "309348002";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalNeurophysiologist
+    /// </summary>
+    public const string LiteralNONEClinicalNeurophysiologist = "http://snomed.info/sct#309348002";
 
     /// <summary>
     /// Literal for code: ClinicalPhysiologist
@@ -11212,9 +13352,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalPhysiologist = "309349005";
 
     /// <summary>
+    /// Literal for code: NONEClinicalPhysiologist
+    /// </summary>
+    public const string LiteralNONEClinicalPhysiologist = "http://snomed.info/sct#309349005";
+
+    /// <summary>
     /// Literal for code: Diabetologist
     /// </summary>
     public const string LiteralDiabetologist = "309350005";
+
+    /// <summary>
+    /// Literal for code: NONEDiabetologist
+    /// </summary>
+    public const string LiteralNONEDiabetologist = "http://snomed.info/sct#309350005";
 
     /// <summary>
     /// Literal for code: Andrologist
@@ -11222,9 +13372,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAndrologist = "309351009";
 
     /// <summary>
+    /// Literal for code: NONEAndrologist
+    /// </summary>
+    public const string LiteralNONEAndrologist = "http://snomed.info/sct#309351009";
+
+    /// <summary>
     /// Literal for code: Neuroendocrinologist
     /// </summary>
     public const string LiteralNeuroendocrinologist = "309352002";
+
+    /// <summary>
+    /// Literal for code: NONENeuroendocrinologist
+    /// </summary>
+    public const string LiteralNONENeuroendocrinologist = "http://snomed.info/sct#309352002";
 
     /// <summary>
     /// Literal for code: ReproductiveEndocrinologist
@@ -11232,9 +13392,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReproductiveEndocrinologist = "309353007";
 
     /// <summary>
+    /// Literal for code: NONEReproductiveEndocrinologist
+    /// </summary>
+    public const string LiteralNONEReproductiveEndocrinologist = "http://snomed.info/sct#309353007";
+
+    /// <summary>
     /// Literal for code: Thyroidologist
     /// </summary>
     public const string LiteralThyroidologist = "309354001";
+
+    /// <summary>
+    /// Literal for code: NONEThyroidologist
+    /// </summary>
+    public const string LiteralNONEThyroidologist = "http://snomed.info/sct#309354001";
 
     /// <summary>
     /// Literal for code: ClinicalGeneticist
@@ -11242,9 +13412,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalGeneticist = "309355000";
 
     /// <summary>
+    /// Literal for code: NONEClinicalGeneticist
+    /// </summary>
+    public const string LiteralNONEClinicalGeneticist = "http://snomed.info/sct#309355000";
+
+    /// <summary>
     /// Literal for code: ClinicalCytogeneticist
     /// </summary>
     public const string LiteralClinicalCytogeneticist = "309356004";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalCytogeneticist
+    /// </summary>
+    public const string LiteralNONEClinicalCytogeneticist = "http://snomed.info/sct#309356004";
 
     /// <summary>
     /// Literal for code: ClinicalMolecularGeneticist
@@ -11252,9 +13432,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalMolecularGeneticist = "309357008";
 
     /// <summary>
+    /// Literal for code: NONEClinicalMolecularGeneticist
+    /// </summary>
+    public const string LiteralNONEClinicalMolecularGeneticist = "http://snomed.info/sct#309357008";
+
+    /// <summary>
     /// Literal for code: GenitourinaryMedicinePhysician
     /// </summary>
     public const string LiteralGenitourinaryMedicinePhysician = "309358003";
+
+    /// <summary>
+    /// Literal for code: NONEGenitourinaryMedicinePhysician
+    /// </summary>
+    public const string LiteralNONEGenitourinaryMedicinePhysician = "http://snomed.info/sct#309358003";
 
     /// <summary>
     /// Literal for code: PalliativeCarePhysician
@@ -11262,9 +13452,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPalliativeCarePhysician = "309359006";
 
     /// <summary>
+    /// Literal for code: NONEPalliativeCarePhysician
+    /// </summary>
+    public const string LiteralNONEPalliativeCarePhysician = "http://snomed.info/sct#309359006";
+
+    /// <summary>
     /// Literal for code: RehabilitationPhysician
     /// </summary>
     public const string LiteralRehabilitationPhysician = "309360001";
+
+    /// <summary>
+    /// Literal for code: NONERehabilitationPhysician
+    /// </summary>
+    public const string LiteralNONERehabilitationPhysician = "http://snomed.info/sct#309360001";
 
     /// <summary>
     /// Literal for code: ChildAndAdolescentPsychiatrist
@@ -11272,9 +13472,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChildAndAdolescentPsychiatrist = "309361002";
 
     /// <summary>
+    /// Literal for code: NONEChildAndAdolescentPsychiatrist
+    /// </summary>
+    public const string LiteralNONEChildAndAdolescentPsychiatrist = "http://snomed.info/sct#309361002";
+
+    /// <summary>
     /// Literal for code: ForensicPsychiatrist
     /// </summary>
     public const string LiteralForensicPsychiatrist = "309362009";
+
+    /// <summary>
+    /// Literal for code: NONEForensicPsychiatrist
+    /// </summary>
+    public const string LiteralNONEForensicPsychiatrist = "http://snomed.info/sct#309362009";
 
     /// <summary>
     /// Literal for code: LiaisonPsychiatrist
@@ -11282,9 +13492,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLiaisonPsychiatrist = "309363004";
 
     /// <summary>
+    /// Literal for code: NONELiaisonPsychiatrist
+    /// </summary>
+    public const string LiteralNONELiaisonPsychiatrist = "http://snomed.info/sct#309363004";
+
+    /// <summary>
     /// Literal for code: Psychogeriatrician
     /// </summary>
     public const string LiteralPsychogeriatrician = "309364005";
+
+    /// <summary>
+    /// Literal for code: NONEPsychogeriatrician
+    /// </summary>
+    public const string LiteralNONEPsychogeriatrician = "http://snomed.info/sct#309364005";
 
     /// <summary>
     /// Literal for code: PsychiatristForMentalHandicap
@@ -11292,9 +13512,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPsychiatristForMentalHandicap = "309365006";
 
     /// <summary>
+    /// Literal for code: NONEPsychiatristForMentalHandicap
+    /// </summary>
+    public const string LiteralNONEPsychiatristForMentalHandicap = "http://snomed.info/sct#309365006";
+
+    /// <summary>
     /// Literal for code: RehabilitationPsychiatrist
     /// </summary>
     public const string LiteralRehabilitationPsychiatrist = "309366007";
+
+    /// <summary>
+    /// Literal for code: NONERehabilitationPsychiatrist
+    /// </summary>
+    public const string LiteralNONERehabilitationPsychiatrist = "http://snomed.info/sct#309366007";
 
     /// <summary>
     /// Literal for code: ObstetricianAndGynecologist
@@ -11302,9 +13532,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralObstetricianAndGynecologist = "309367003";
 
     /// <summary>
+    /// Literal for code: NONEObstetricianAndGynecologist
+    /// </summary>
+    public const string LiteralNONEObstetricianAndGynecologist = "http://snomed.info/sct#309367003";
+
+    /// <summary>
     /// Literal for code: BreastSurgeon
     /// </summary>
     public const string LiteralBreastSurgeon = "309368008";
+
+    /// <summary>
+    /// Literal for code: NONEBreastSurgeon
+    /// </summary>
+    public const string LiteralNONEBreastSurgeon = "http://snomed.info/sct#309368008";
 
     /// <summary>
     /// Literal for code: CardiothoracicSurgeon
@@ -11312,9 +13552,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCardiothoracicSurgeon = "309369000";
 
     /// <summary>
+    /// Literal for code: NONECardiothoracicSurgeon
+    /// </summary>
+    public const string LiteralNONECardiothoracicSurgeon = "http://snomed.info/sct#309369000";
+
+    /// <summary>
     /// Literal for code: CardiacSurgeon
     /// </summary>
     public const string LiteralCardiacSurgeon = "309371000";
+
+    /// <summary>
+    /// Literal for code: NONECardiacSurgeon
+    /// </summary>
+    public const string LiteralNONECardiacSurgeon = "http://snomed.info/sct#309371000";
 
     /// <summary>
     /// Literal for code: EarNoseAndThroatSurgeon
@@ -11322,9 +13572,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEarNoseAndThroatSurgeon = "309372007";
 
     /// <summary>
+    /// Literal for code: NONEEarNoseAndThroatSurgeon
+    /// </summary>
+    public const string LiteralNONEEarNoseAndThroatSurgeon = "http://snomed.info/sct#309372007";
+
+    /// <summary>
     /// Literal for code: EndocrineSurgeon
     /// </summary>
     public const string LiteralEndocrineSurgeon = "309373002";
+
+    /// <summary>
+    /// Literal for code: NONEEndocrineSurgeon
+    /// </summary>
+    public const string LiteralNONEEndocrineSurgeon = "http://snomed.info/sct#309373002";
 
     /// <summary>
     /// Literal for code: ThyroidSurgeon
@@ -11332,9 +13592,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThyroidSurgeon = "309374008";
 
     /// <summary>
+    /// Literal for code: NONEThyroidSurgeon
+    /// </summary>
+    public const string LiteralNONEThyroidSurgeon = "http://snomed.info/sct#309374008";
+
+    /// <summary>
     /// Literal for code: PituitarySurgeon
     /// </summary>
     public const string LiteralPituitarySurgeon = "309375009";
+
+    /// <summary>
+    /// Literal for code: NONEPituitarySurgeon
+    /// </summary>
+    public const string LiteralNONEPituitarySurgeon = "http://snomed.info/sct#309375009";
 
     /// <summary>
     /// Literal for code: GastrointestinalSurgeon
@@ -11342,9 +13612,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGastrointestinalSurgeon = "309376005";
 
     /// <summary>
+    /// Literal for code: NONEGastrointestinalSurgeon
+    /// </summary>
+    public const string LiteralNONEGastrointestinalSurgeon = "http://snomed.info/sct#309376005";
+
+    /// <summary>
     /// Literal for code: GeneralGastrointestinalSurgeon
     /// </summary>
     public const string LiteralGeneralGastrointestinalSurgeon = "309377001";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralGastrointestinalSurgeon
+    /// </summary>
+    public const string LiteralNONEGeneralGastrointestinalSurgeon = "http://snomed.info/sct#309377001";
 
     /// <summary>
     /// Literal for code: UpperGastrointestinalSurgeon
@@ -11352,9 +13632,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUpperGastrointestinalSurgeon = "309378006";
 
     /// <summary>
+    /// Literal for code: NONEUpperGastrointestinalSurgeon
+    /// </summary>
+    public const string LiteralNONEUpperGastrointestinalSurgeon = "http://snomed.info/sct#309378006";
+
+    /// <summary>
     /// Literal for code: ColorectalSurgeon
     /// </summary>
     public const string LiteralColorectalSurgeon = "309379003";
+
+    /// <summary>
+    /// Literal for code: NONEColorectalSurgeon
+    /// </summary>
+    public const string LiteralNONEColorectalSurgeon = "http://snomed.info/sct#309379003";
 
     /// <summary>
     /// Literal for code: HandSurgeon
@@ -11362,9 +13652,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHandSurgeon = "309380000";
 
     /// <summary>
+    /// Literal for code: NONEHandSurgeon
+    /// </summary>
+    public const string LiteralNONEHandSurgeon = "http://snomed.info/sct#309380000";
+
+    /// <summary>
     /// Literal for code: HepatobiliarySurgeon
     /// </summary>
     public const string LiteralHepatobiliarySurgeon = "309381001";
+
+    /// <summary>
+    /// Literal for code: NONEHepatobiliarySurgeon
+    /// </summary>
+    public const string LiteralNONEHepatobiliarySurgeon = "http://snomed.info/sct#309381001";
 
     /// <summary>
     /// Literal for code: OphthalmicSurgeon
@@ -11372,9 +13672,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOphthalmicSurgeon = "309382008";
 
     /// <summary>
+    /// Literal for code: NONEOphthalmicSurgeon
+    /// </summary>
+    public const string LiteralNONEOphthalmicSurgeon = "http://snomed.info/sct#309382008";
+
+    /// <summary>
     /// Literal for code: PediatricSurgeon
     /// </summary>
     public const string LiteralPediatricSurgeon = "309383003";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricSurgeon
+    /// </summary>
+    public const string LiteralNONEPediatricSurgeon = "http://snomed.info/sct#309383003";
 
     /// <summary>
     /// Literal for code: PancreaticSurgeon
@@ -11382,9 +13692,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPancreaticSurgeon = "309384009";
 
     /// <summary>
+    /// Literal for code: NONEPancreaticSurgeon
+    /// </summary>
+    public const string LiteralNONEPancreaticSurgeon = "http://snomed.info/sct#309384009";
+
+    /// <summary>
     /// Literal for code: TransplantSurgeon
     /// </summary>
     public const string LiteralTransplantSurgeon = "309385005";
+
+    /// <summary>
+    /// Literal for code: NONETransplantSurgeon
+    /// </summary>
+    public const string LiteralNONETransplantSurgeon = "http://snomed.info/sct#309385005";
 
     /// <summary>
     /// Literal for code: TraumaSurgeon
@@ -11392,9 +13712,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTraumaSurgeon = "309386006";
 
     /// <summary>
+    /// Literal for code: NONETraumaSurgeon
+    /// </summary>
+    public const string LiteralNONETraumaSurgeon = "http://snomed.info/sct#309386006";
+
+    /// <summary>
     /// Literal for code: VascularSurgeon
     /// </summary>
     public const string LiteralVascularSurgeon = "309388007";
+
+    /// <summary>
+    /// Literal for code: NONEVascularSurgeon
+    /// </summary>
+    public const string LiteralNONEVascularSurgeon = "http://snomed.info/sct#309388007";
 
     /// <summary>
     /// Literal for code: MedicalPractitionerGrade
@@ -11402,9 +13732,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalPractitionerGrade = "309389004";
 
     /// <summary>
+    /// Literal for code: NONEMedicalPractitionerGrade
+    /// </summary>
+    public const string LiteralNONEMedicalPractitionerGrade = "http://snomed.info/sct#309389004";
+
+    /// <summary>
     /// Literal for code: HospitalConsultant
     /// </summary>
     public const string LiteralHospitalConsultant = "309390008";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalConsultant
+    /// </summary>
+    public const string LiteralNONEHospitalConsultant = "http://snomed.info/sct#309390008";
 
     /// <summary>
     /// Literal for code: VisitingSpecialistRegistrar
@@ -11412,9 +13752,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVisitingSpecialistRegistrar = "309391007";
 
     /// <summary>
+    /// Literal for code: NONEVisitingSpecialistRegistrar
+    /// </summary>
+    public const string LiteralNONEVisitingSpecialistRegistrar = "http://snomed.info/sct#309391007";
+
+    /// <summary>
     /// Literal for code: ResearchRegistrar
     /// </summary>
     public const string LiteralResearchRegistrar = "309392000";
+
+    /// <summary>
+    /// Literal for code: NONEResearchRegistrar
+    /// </summary>
+    public const string LiteralNONEResearchRegistrar = "http://snomed.info/sct#309392000";
 
     /// <summary>
     /// Literal for code: GeneralPractitionerGrade
@@ -11422,9 +13772,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGeneralPractitionerGrade = "309393005";
 
     /// <summary>
+    /// Literal for code: NONEGeneralPractitionerGrade
+    /// </summary>
+    public const string LiteralNONEGeneralPractitionerGrade = "http://snomed.info/sct#309393005";
+
+    /// <summary>
     /// Literal for code: GeneralPractitionerPrincipal
     /// </summary>
     public const string LiteralGeneralPractitionerPrincipal = "309394004";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralPractitionerPrincipal
+    /// </summary>
+    public const string LiteralNONEGeneralPractitionerPrincipal = "http://snomed.info/sct#309394004";
 
     /// <summary>
     /// Literal for code: HospitalSpecialist
@@ -11432,9 +13792,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospitalSpecialist = "309395003";
 
     /// <summary>
+    /// Literal for code: NONEHospitalSpecialist
+    /// </summary>
+    public const string LiteralNONEHospitalSpecialist = "http://snomed.info/sct#309395003";
+
+    /// <summary>
     /// Literal for code: AssociateSpecialist
     /// </summary>
     public const string LiteralAssociateSpecialist = "309396002";
+
+    /// <summary>
+    /// Literal for code: NONEAssociateSpecialist
+    /// </summary>
+    public const string LiteralNONEAssociateSpecialist = "http://snomed.info/sct#309396002";
 
     /// <summary>
     /// Literal for code: ResearchFellow
@@ -11442,9 +13812,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralResearchFellow = "309397006";
 
     /// <summary>
+    /// Literal for code: NONEResearchFellow
+    /// </summary>
+    public const string LiteralNONEResearchFellow = "http://snomed.info/sct#309397006";
+
+    /// <summary>
     /// Literal for code: AlliedHealthProfessional
     /// </summary>
     public const string LiteralAlliedHealthProfessional = "309398001";
+
+    /// <summary>
+    /// Literal for code: NONEAlliedHealthProfessional
+    /// </summary>
+    public const string LiteralNONEAlliedHealthProfessional = "http://snomed.info/sct#309398001";
 
     /// <summary>
     /// Literal for code: HospitalDietitian
@@ -11452,9 +13832,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospitalDietitian = "309399009";
 
     /// <summary>
+    /// Literal for code: NONEHospitalDietitian
+    /// </summary>
+    public const string LiteralNONEHospitalDietitian = "http://snomed.info/sct#309399009";
+
+    /// <summary>
     /// Literal for code: DomiciliaryPhysiotherapist
     /// </summary>
     public const string LiteralDomiciliaryPhysiotherapist = "309400002";
+
+    /// <summary>
+    /// Literal for code: NONEDomiciliaryPhysiotherapist
+    /// </summary>
+    public const string LiteralNONEDomiciliaryPhysiotherapist = "http://snomed.info/sct#309400002";
 
     /// <summary>
     /// Literal for code: GeneralPractitionerBasedPhysiotherapist
@@ -11462,9 +13852,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGeneralPractitionerBasedPhysiotherapist = "309401003";
 
     /// <summary>
+    /// Literal for code: NONEGeneralPractitionerBasedPhysiotherapist
+    /// </summary>
+    public const string LiteralNONEGeneralPractitionerBasedPhysiotherapist = "http://snomed.info/sct#309401003";
+
+    /// <summary>
     /// Literal for code: HospitalBasedPhysiotherapist
     /// </summary>
     public const string LiteralHospitalBasedPhysiotherapist = "309402005";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalBasedPhysiotherapist
+    /// </summary>
+    public const string LiteralNONEHospitalBasedPhysiotherapist = "http://snomed.info/sct#309402005";
 
     /// <summary>
     /// Literal for code: PrivatePhysiotherapist
@@ -11472,9 +13872,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrivatePhysiotherapist = "309403000";
 
     /// <summary>
+    /// Literal for code: NONEPrivatePhysiotherapist
+    /// </summary>
+    public const string LiteralNONEPrivatePhysiotherapist = "http://snomed.info/sct#309403000";
+
+    /// <summary>
     /// Literal for code: PhysiotherapyAssistant
     /// </summary>
     public const string LiteralPhysiotherapyAssistant = "309404006";
+
+    /// <summary>
+    /// Literal for code: NONEPhysiotherapyAssistant
+    /// </summary>
+    public const string LiteralNONEPhysiotherapyAssistant = "http://snomed.info/sct#309404006";
 
     /// <summary>
     /// Literal for code: HospitalBasedSpeechAndLanguageTherapist
@@ -11482,9 +13892,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospitalBasedSpeechAndLanguageTherapist = "309409001";
 
     /// <summary>
+    /// Literal for code: NONEHospitalBasedSpeechAndLanguageTherapist
+    /// </summary>
+    public const string LiteralNONEHospitalBasedSpeechAndLanguageTherapist = "http://snomed.info/sct#309409001";
+
+    /// <summary>
     /// Literal for code: ArtsTherapist
     /// </summary>
     public const string LiteralArtsTherapist = "309410006";
+
+    /// <summary>
+    /// Literal for code: NONEArtsTherapist
+    /// </summary>
+    public const string LiteralNONEArtsTherapist = "http://snomed.info/sct#309410006";
 
     /// <summary>
     /// Literal for code: DanceTherapist
@@ -11492,9 +13912,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDanceTherapist = "309411005";
 
     /// <summary>
+    /// Literal for code: NONEDanceTherapist
+    /// </summary>
+    public const string LiteralNONEDanceTherapist = "http://snomed.info/sct#309411005";
+
+    /// <summary>
     /// Literal for code: MusicTherapist
     /// </summary>
     public const string LiteralMusicTherapist = "309412003";
+
+    /// <summary>
+    /// Literal for code: NONEMusicTherapist
+    /// </summary>
+    public const string LiteralNONEMusicTherapist = "http://snomed.info/sct#309412003";
 
     /// <summary>
     /// Literal for code: RenalDietitian
@@ -11502,9 +13932,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRenalDietitian = "309413008";
 
     /// <summary>
+    /// Literal for code: NONERenalDietitian
+    /// </summary>
+    public const string LiteralNONERenalDietitian = "http://snomed.info/sct#309413008";
+
+    /// <summary>
     /// Literal for code: LiverDietitian
     /// </summary>
     public const string LiteralLiverDietitian = "309414002";
+
+    /// <summary>
+    /// Literal for code: NONELiverDietitian
+    /// </summary>
+    public const string LiteralNONELiverDietitian = "http://snomed.info/sct#309414002";
 
     /// <summary>
     /// Literal for code: OncologyDietitian
@@ -11512,9 +13952,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOncologyDietitian = "309415001";
 
     /// <summary>
+    /// Literal for code: NONEOncologyDietitian
+    /// </summary>
+    public const string LiteralNONEOncologyDietitian = "http://snomed.info/sct#309415001";
+
+    /// <summary>
     /// Literal for code: PediatricDietitian
     /// </summary>
     public const string LiteralPediatricDietitian = "309416000";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricDietitian
+    /// </summary>
+    public const string LiteralNONEPediatricDietitian = "http://snomed.info/sct#309416000";
 
     /// <summary>
     /// Literal for code: DiabetesDietitian
@@ -11522,9 +13972,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiabetesDietitian = "309417009";
 
     /// <summary>
+    /// Literal for code: NONEDiabetesDietitian
+    /// </summary>
+    public const string LiteralNONEDiabetesDietitian = "http://snomed.info/sct#309417009";
+
+    /// <summary>
     /// Literal for code: Audiologist
     /// </summary>
     public const string LiteralAudiologist = "309418004";
+
+    /// <summary>
+    /// Literal for code: NONEAudiologist
+    /// </summary>
+    public const string LiteralNONEAudiologist = "http://snomed.info/sct#309418004";
 
     /// <summary>
     /// Literal for code: HearingTherapist
@@ -11532,9 +13992,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHearingTherapist = "309419007";
 
     /// <summary>
+    /// Literal for code: NONEHearingTherapist
+    /// </summary>
+    public const string LiteralNONEHearingTherapist = "http://snomed.info/sct#309419007";
+
+    /// <summary>
     /// Literal for code: AudiologicalScientist
     /// </summary>
     public const string LiteralAudiologicalScientist = "309420001";
+
+    /// <summary>
+    /// Literal for code: NONEAudiologicalScientist
+    /// </summary>
+    public const string LiteralNONEAudiologicalScientist = "http://snomed.info/sct#309420001";
 
     /// <summary>
     /// Literal for code: HearingAidDispenser
@@ -11542,9 +14012,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHearingAidDispenser = "309421002";
 
     /// <summary>
+    /// Literal for code: NONEHearingAidDispenser
+    /// </summary>
+    public const string LiteralNONEHearingAidDispenser = "http://snomed.info/sct#309421002";
+
+    /// <summary>
     /// Literal for code: CommunityBasedOccupationalTherapist
     /// </summary>
     public const string LiteralCommunityBasedOccupationalTherapist = "309422009";
+
+    /// <summary>
+    /// Literal for code: NONECommunityBasedOccupationalTherapist
+    /// </summary>
+    public const string LiteralNONECommunityBasedOccupationalTherapist = "http://snomed.info/sct#309422009";
 
     /// <summary>
     /// Literal for code: HospitalOccupationalTherapist
@@ -11552,9 +14032,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospitalOccupationalTherapist = "309423004";
 
     /// <summary>
+    /// Literal for code: NONEHospitalOccupationalTherapist
+    /// </summary>
+    public const string LiteralNONEHospitalOccupationalTherapist = "http://snomed.info/sct#309423004";
+
+    /// <summary>
     /// Literal for code: SocialServicesOccupationalTherapist
     /// </summary>
     public const string LiteralSocialServicesOccupationalTherapist = "309427003";
+
+    /// <summary>
+    /// Literal for code: NONESocialServicesOccupationalTherapist
+    /// </summary>
+    public const string LiteralNONESocialServicesOccupationalTherapist = "http://snomed.info/sct#309427003";
 
     /// <summary>
     /// Literal for code: Orthotist
@@ -11562,9 +14052,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOrthotist = "309428008";
 
     /// <summary>
+    /// Literal for code: NONEOrthotist
+    /// </summary>
+    public const string LiteralNONEOrthotist = "http://snomed.info/sct#309428008";
+
+    /// <summary>
     /// Literal for code: SurgicalFitter
     /// </summary>
     public const string LiteralSurgicalFitter = "309429000";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalFitter
+    /// </summary>
+    public const string LiteralNONESurgicalFitter = "http://snomed.info/sct#309429000";
 
     /// <summary>
     /// Literal for code: HospitalBasedPodiatrist
@@ -11572,9 +14072,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospitalBasedPodiatrist = "309434001";
 
     /// <summary>
+    /// Literal for code: NONEHospitalBasedPodiatrist
+    /// </summary>
+    public const string LiteralNONEHospitalBasedPodiatrist = "http://snomed.info/sct#309434001";
+
+    /// <summary>
     /// Literal for code: PodiatryAssistant
     /// </summary>
     public const string LiteralPodiatryAssistant = "309435000";
+
+    /// <summary>
+    /// Literal for code: NONEPodiatryAssistant
+    /// </summary>
+    public const string LiteralNONEPodiatryAssistant = "http://snomed.info/sct#309435000";
 
     /// <summary>
     /// Literal for code: LymphedemaNurse
@@ -11582,9 +14092,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLymphedemaNurse = "309436004";
 
     /// <summary>
+    /// Literal for code: NONELymphedemaNurse
+    /// </summary>
+    public const string LiteralNONELymphedemaNurse = "http://snomed.info/sct#309436004";
+
+    /// <summary>
     /// Literal for code: CommunityLearningDisabilitiesNurse
     /// </summary>
     public const string LiteralCommunityLearningDisabilitiesNurse = "309437008";
+
+    /// <summary>
+    /// Literal for code: NONECommunityLearningDisabilitiesNurse
+    /// </summary>
+    public const string LiteralNONECommunityLearningDisabilitiesNurse = "http://snomed.info/sct#309437008";
 
     /// <summary>
     /// Literal for code: ClinicalNurseTeacher
@@ -11592,9 +14112,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalNurseTeacher = "309439006";
 
     /// <summary>
+    /// Literal for code: NONEClinicalNurseTeacher
+    /// </summary>
+    public const string LiteralNONEClinicalNurseTeacher = "http://snomed.info/sct#309439006";
+
+    /// <summary>
     /// Literal for code: CommunityPracticeNurseTeacher
     /// </summary>
     public const string LiteralCommunityPracticeNurseTeacher = "309440008";
+
+    /// <summary>
+    /// Literal for code: NONECommunityPracticeNurseTeacher
+    /// </summary>
+    public const string LiteralNONECommunityPracticeNurseTeacher = "http://snomed.info/sct#309440008";
 
     /// <summary>
     /// Literal for code: NurseTutor
@@ -11602,9 +14132,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNurseTutor = "309441007";
 
     /// <summary>
+    /// Literal for code: NONENurseTutor
+    /// </summary>
+    public const string LiteralNONENurseTutor = "http://snomed.info/sct#309441007";
+
+    /// <summary>
     /// Literal for code: NurseTeacherPractitioner
     /// </summary>
     public const string LiteralNurseTeacherPractitioner = "309442000";
+
+    /// <summary>
+    /// Literal for code: NONENurseTeacherPractitioner
+    /// </summary>
+    public const string LiteralNONENurseTeacherPractitioner = "http://snomed.info/sct#309442000";
 
     /// <summary>
     /// Literal for code: NurseLecturerPractitioner
@@ -11612,9 +14152,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNurseLecturerPractitioner = "309443005";
 
     /// <summary>
+    /// Literal for code: NONENurseLecturerPractitioner
+    /// </summary>
+    public const string LiteralNONENurseLecturerPractitioner = "http://snomed.info/sct#309443005";
+
+    /// <summary>
     /// Literal for code: OutreachNurse
     /// </summary>
     public const string LiteralOutreachNurse = "309444004";
+
+    /// <summary>
+    /// Literal for code: NONEOutreachNurse
+    /// </summary>
+    public const string LiteralNONEOutreachNurse = "http://snomed.info/sct#309444004";
 
     /// <summary>
     /// Literal for code: AnestheticNurse
@@ -11622,9 +14172,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnestheticNurse = "309445003";
 
     /// <summary>
+    /// Literal for code: NONEAnestheticNurse
+    /// </summary>
+    public const string LiteralNONEAnestheticNurse = "http://snomed.info/sct#309445003";
+
+    /// <summary>
     /// Literal for code: NurseManager
     /// </summary>
     public const string LiteralNurseManager = "309446002";
+
+    /// <summary>
+    /// Literal for code: NONENurseManager
+    /// </summary>
+    public const string LiteralNONENurseManager = "http://snomed.info/sct#309446002";
 
     /// <summary>
     /// Literal for code: NurseAdministrator
@@ -11632,9 +14192,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNurseAdministrator = "309450009";
 
     /// <summary>
+    /// Literal for code: NONENurseAdministrator
+    /// </summary>
+    public const string LiteralNONENurseAdministrator = "http://snomed.info/sct#309450009";
+
+    /// <summary>
     /// Literal for code: MidwiferyGrade
     /// </summary>
     public const string LiteralMidwiferyGrade = "309452001";
+
+    /// <summary>
+    /// Literal for code: NONEMidwiferyGrade
+    /// </summary>
+    public const string LiteralNONEMidwiferyGrade = "http://snomed.info/sct#309452001";
 
     /// <summary>
     /// Literal for code: Midwife
@@ -11642,9 +14212,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMidwife = "309453006";
 
     /// <summary>
+    /// Literal for code: NONEMidwife
+    /// </summary>
+    public const string LiteralNONEMidwife = "http://snomed.info/sct#309453006";
+
+    /// <summary>
     /// Literal for code: StudentMidwife
     /// </summary>
     public const string LiteralStudentMidwife = "309454000";
+
+    /// <summary>
+    /// Literal for code: NONEStudentMidwife
+    /// </summary>
+    public const string LiteralNONEStudentMidwife = "http://snomed.info/sct#309454000";
 
     /// <summary>
     /// Literal for code: ParentcraftSister
@@ -11652,9 +14232,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParentcraftSister = "309455004";
 
     /// <summary>
+    /// Literal for code: NONEParentcraftSister
+    /// </summary>
+    public const string LiteralNONEParentcraftSister = "http://snomed.info/sct#309455004";
+
+    /// <summary>
     /// Literal for code: Clergy
     /// </summary>
     public const string LiteralClergy = "309456003";
+
+    /// <summary>
+    /// Literal for code: NONEClergy
+    /// </summary>
+    public const string LiteralNONEClergy = "http://snomed.info/sct#309456003";
 
     /// <summary>
     /// Literal for code: HealthcareProfessionalGrade
@@ -11662,9 +14252,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthcareProfessionalGrade = "309459005";
 
     /// <summary>
+    /// Literal for code: NONEHealthcareProfessionalGrade
+    /// </summary>
+    public const string LiteralNONEHealthcareProfessionalGrade = "http://snomed.info/sct#309459005";
+
+    /// <summary>
     /// Literal for code: RestorativeDentist
     /// </summary>
     public const string LiteralRestorativeDentist = "309460000";
+
+    /// <summary>
+    /// Literal for code: NONERestorativeDentist
+    /// </summary>
+    public const string LiteralNONERestorativeDentist = "http://snomed.info/sct#309460000";
 
     /// <summary>
     /// Literal for code: BuddhistFollowerOfReligion
@@ -11672,9 +14272,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBuddhistFollowerOfReligion = "309687009";
 
     /// <summary>
+    /// Literal for code: NONEBuddhistFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEBuddhistFollowerOfReligion = "http://snomed.info/sct#309687009";
+
+    /// <summary>
     /// Literal for code: MuslimFollowerOfReligion
     /// </summary>
     public const string LiteralMuslimFollowerOfReligion = "309884000";
+
+    /// <summary>
+    /// Literal for code: NONEMuslimFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEMuslimFollowerOfReligion = "http://snomed.info/sct#309884000";
 
     /// <summary>
     /// Literal for code: ProtestantFollowerOfReligion
@@ -11682,9 +14292,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProtestantFollowerOfReligion = "309885004";
 
     /// <summary>
+    /// Literal for code: NONEProtestantFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEProtestantFollowerOfReligion = "http://snomed.info/sct#309885004";
+
+    /// <summary>
     /// Literal for code: QuakerFollowerOfReligion
     /// </summary>
     public const string LiteralQuakerFollowerOfReligion = "309886003";
+
+    /// <summary>
+    /// Literal for code: NONEQuakerFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEQuakerFollowerOfReligion = "http://snomed.info/sct#309886003";
 
     /// <summary>
     /// Literal for code: PediatricAudiologist
@@ -11692,9 +14312,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricAudiologist = "310170009";
 
     /// <summary>
+    /// Literal for code: NONEPediatricAudiologist
+    /// </summary>
+    public const string LiteralNONEPediatricAudiologist = "http://snomed.info/sct#310170009";
+
+    /// <summary>
     /// Literal for code: Immunopathologist
     /// </summary>
     public const string LiteralImmunopathologist = "310171008";
+
+    /// <summary>
+    /// Literal for code: NONEImmunopathologist
+    /// </summary>
+    public const string LiteralNONEImmunopathologist = "http://snomed.info/sct#310171008";
 
     /// <summary>
     /// Literal for code: AudiologicalPhysician
@@ -11702,9 +14332,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAudiologicalPhysician = "310172001";
 
     /// <summary>
+    /// Literal for code: NONEAudiologicalPhysician
+    /// </summary>
+    public const string LiteralNONEAudiologicalPhysician = "http://snomed.info/sct#310172001";
+
+    /// <summary>
     /// Literal for code: ClinicalPharmacologist
     /// </summary>
     public const string LiteralClinicalPharmacologist = "310173006";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalPharmacologist
+    /// </summary>
+    public const string LiteralNONEClinicalPharmacologist = "http://snomed.info/sct#310173006";
 
     /// <summary>
     /// Literal for code: PrivateDoctor
@@ -11712,9 +14352,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrivateDoctor = "310174000";
 
     /// <summary>
+    /// Literal for code: NONEPrivateDoctor
+    /// </summary>
+    public const string LiteralNONEPrivateDoctor = "http://snomed.info/sct#310174000";
+
+    /// <summary>
     /// Literal for code: AgencyNurse
     /// </summary>
     public const string LiteralAgencyNurse = "310175004";
+
+    /// <summary>
+    /// Literal for code: NONEAgencyNurse
+    /// </summary>
+    public const string LiteralNONEAgencyNurse = "http://snomed.info/sct#310175004";
 
     /// <summary>
     /// Literal for code: BehavioralTherapistNurse
@@ -11722,9 +14372,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBehavioralTherapistNurse = "310176003";
 
     /// <summary>
+    /// Literal for code: NONEBehavioralTherapistNurse
+    /// </summary>
+    public const string LiteralNONEBehavioralTherapistNurse = "http://snomed.info/sct#310176003";
+
+    /// <summary>
     /// Literal for code: CardiacRehabilitationNurse
     /// </summary>
     public const string LiteralCardiacRehabilitationNurse = "310177007";
+
+    /// <summary>
+    /// Literal for code: NONECardiacRehabilitationNurse
+    /// </summary>
+    public const string LiteralNONECardiacRehabilitationNurse = "http://snomed.info/sct#310177007";
 
     /// <summary>
     /// Literal for code: GenitourinaryNurse
@@ -11732,9 +14392,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGenitourinaryNurse = "310178002";
 
     /// <summary>
+    /// Literal for code: NONEGenitourinaryNurse
+    /// </summary>
+    public const string LiteralNONEGenitourinaryNurse = "http://snomed.info/sct#310178002";
+
+    /// <summary>
     /// Literal for code: RheumatologyNurseSpecialist
     /// </summary>
     public const string LiteralRheumatologyNurseSpecialist = "310179005";
+
+    /// <summary>
+    /// Literal for code: NONERheumatologyNurseSpecialist
+    /// </summary>
+    public const string LiteralNONERheumatologyNurseSpecialist = "http://snomed.info/sct#310179005";
 
     /// <summary>
     /// Literal for code: ContinenceNurse
@@ -11742,9 +14412,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralContinenceNurse = "310180008";
 
     /// <summary>
+    /// Literal for code: NONEContinenceNurse
+    /// </summary>
+    public const string LiteralNONEContinenceNurse = "http://snomed.info/sct#310180008";
+
+    /// <summary>
     /// Literal for code: ContactTracingNurse
     /// </summary>
     public const string LiteralContactTracingNurse = "310181007";
+
+    /// <summary>
+    /// Literal for code: NONEContactTracingNurse
+    /// </summary>
+    public const string LiteralNONEContactTracingNurse = "http://snomed.info/sct#310181007";
 
     /// <summary>
     /// Literal for code: GeneralNurse
@@ -11752,9 +14432,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGeneralNurse = "310182000";
 
     /// <summary>
+    /// Literal for code: NONEGeneralNurse
+    /// </summary>
+    public const string LiteralNONEGeneralNurse = "http://snomed.info/sct#310182000";
+
+    /// <summary>
     /// Literal for code: NurseForTheMentallyHandicapped
     /// </summary>
     public const string LiteralNurseForTheMentallyHandicapped = "310183005";
+
+    /// <summary>
+    /// Literal for code: NONENurseForTheMentallyHandicapped
+    /// </summary>
+    public const string LiteralNONENurseForTheMentallyHandicapped = "http://snomed.info/sct#310183005";
 
     /// <summary>
     /// Literal for code: LiaisonNurse
@@ -11762,9 +14452,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLiaisonNurse = "310184004";
 
     /// <summary>
+    /// Literal for code: NONELiaisonNurse
+    /// </summary>
+    public const string LiteralNONELiaisonNurse = "http://snomed.info/sct#310184004";
+
+    /// <summary>
     /// Literal for code: DiabeticLiaisonNurse
     /// </summary>
     public const string LiteralDiabeticLiaisonNurse = "310185003";
+
+    /// <summary>
+    /// Literal for code: NONEDiabeticLiaisonNurse
+    /// </summary>
+    public const string LiteralNONEDiabeticLiaisonNurse = "http://snomed.info/sct#310185003";
 
     /// <summary>
     /// Literal for code: NursePsychotherapist
@@ -11772,9 +14472,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNursePsychotherapist = "310186002";
 
     /// <summary>
+    /// Literal for code: NONENursePsychotherapist
+    /// </summary>
+    public const string LiteralNONENursePsychotherapist = "http://snomed.info/sct#310186002";
+
+    /// <summary>
     /// Literal for code: CompanyNurse
     /// </summary>
     public const string LiteralCompanyNurse = "310187006";
+
+    /// <summary>
+    /// Literal for code: NONECompanyNurse
+    /// </summary>
+    public const string LiteralNONECompanyNurse = "http://snomed.info/sct#310187006";
 
     /// <summary>
     /// Literal for code: HospitalMidwife
@@ -11782,9 +14492,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospitalMidwife = "310188001";
 
     /// <summary>
+    /// Literal for code: NONEHospitalMidwife
+    /// </summary>
+    public const string LiteralNONEHospitalMidwife = "http://snomed.info/sct#310188001";
+
+    /// <summary>
     /// Literal for code: GeneticCounselor
     /// </summary>
     public const string LiteralGeneticCounselor = "310189009";
+
+    /// <summary>
+    /// Literal for code: NONEGeneticCounselor
+    /// </summary>
+    public const string LiteralNONEGeneticCounselor = "http://snomed.info/sct#310189009";
 
     /// <summary>
     /// Literal for code: MentalHealthCounselor
@@ -11792,9 +14512,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMentalHealthCounselor = "310190000";
 
     /// <summary>
+    /// Literal for code: NONEMentalHealthCounselor
+    /// </summary>
+    public const string LiteralNONEMentalHealthCounselor = "http://snomed.info/sct#310190000";
+
+    /// <summary>
     /// Literal for code: ClinicalPsychologist
     /// </summary>
     public const string LiteralClinicalPsychologist = "310191001";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalPsychologist
+    /// </summary>
+    public const string LiteralNONEClinicalPsychologist = "http://snomed.info/sct#310191001";
 
     /// <summary>
     /// Literal for code: EducationalPsychologist
@@ -11802,9 +14532,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEducationalPsychologist = "310192008";
 
     /// <summary>
+    /// Literal for code: NONEEducationalPsychologist
+    /// </summary>
+    public const string LiteralNONEEducationalPsychologist = "http://snomed.info/sct#310192008";
+
+    /// <summary>
     /// Literal for code: Coroner
     /// </summary>
     public const string LiteralCoroner = "310193003";
+
+    /// <summary>
+    /// Literal for code: NONECoroner
+    /// </summary>
+    public const string LiteralNONECoroner = "http://snomed.info/sct#310193003";
 
     /// <summary>
     /// Literal for code: ApplianceOfficer
@@ -11812,9 +14552,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralApplianceOfficer = "310194009";
 
     /// <summary>
+    /// Literal for code: NONEApplianceOfficer
+    /// </summary>
+    public const string LiteralNONEApplianceOfficer = "http://snomed.info/sct#310194009";
+
+    /// <summary>
     /// Literal for code: MedicalOncologist
     /// </summary>
     public const string LiteralMedicalOncologist = "310512001";
+
+    /// <summary>
+    /// Literal for code: NONEMedicalOncologist
+    /// </summary>
+    public const string LiteralNONEMedicalOncologist = "http://snomed.info/sct#310512001";
 
     /// <summary>
     /// Literal for code: Graduate
@@ -11822,9 +14572,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGraduate = "310543008";
 
     /// <summary>
+    /// Literal for code: NONEGraduate
+    /// </summary>
+    public const string LiteralNONEGraduate = "http://snomed.info/sct#310543008";
+
+    /// <summary>
     /// Literal for code: SchoolMedicalOfficer
     /// </summary>
     public const string LiteralSchoolMedicalOfficer = "311441001";
+
+    /// <summary>
+    /// Literal for code: NONESchoolMedicalOfficer
+    /// </summary>
+    public const string LiteralNONESchoolMedicalOfficer = "http://snomed.info/sct#311441001";
 
     /// <summary>
     /// Literal for code: IntegratedMidwife
@@ -11832,9 +14592,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntegratedMidwife = "312485001";
 
     /// <summary>
+    /// Literal for code: NONEIntegratedMidwife
+    /// </summary>
+    public const string LiteralNONEIntegratedMidwife = "http://snomed.info/sct#312485001";
+
+    /// <summary>
     /// Literal for code: IdenticalTwin
     /// </summary>
     public const string LiteralIdenticalTwin = "313415001";
+
+    /// <summary>
+    /// Literal for code: NONEIdenticalTwin
+    /// </summary>
+    public const string LiteralNONEIdenticalTwin = "http://snomed.info/sct#313415001";
 
     /// <summary>
     /// Literal for code: HeterozygousTwin
@@ -11842,9 +14612,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHeterozygousTwin = "313416000";
 
     /// <summary>
+    /// Literal for code: NONEHeterozygousTwin
+    /// </summary>
+    public const string LiteralNONEHeterozygousTwin = "http://snomed.info/sct#313416000";
+
+    /// <summary>
     /// Literal for code: Parachutist
     /// </summary>
     public const string LiteralParachutist = "314712007";
+
+    /// <summary>
+    /// Literal for code: NONEParachutist
+    /// </summary>
+    public const string LiteralNONEParachutist = "http://snomed.info/sct#314712007";
 
     /// <summary>
     /// Literal for code: BirdFancier
@@ -11852,9 +14632,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBirdFancier = "314767008";
 
     /// <summary>
+    /// Literal for code: NONEBirdFancier
+    /// </summary>
+    public const string LiteralNONEBirdFancier = "http://snomed.info/sct#314767008";
+
+    /// <summary>
     /// Literal for code: AdoptiveGrandmother
     /// </summary>
     public const string LiteralAdoptiveGrandmother = "31656007";
+
+    /// <summary>
+    /// Literal for code: NONEAdoptiveGrandmother
+    /// </summary>
+    public const string LiteralNONEAdoptiveGrandmother = "http://snomed.info/sct#31656007";
 
     /// <summary>
     /// Literal for code: IndependentHealthCareFacility
@@ -11862,9 +14652,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIndependentHealthCareFacility = "317817411000087104";
 
     /// <summary>
+    /// Literal for code: NONEIndependentHealthCareFacility
+    /// </summary>
+    public const string LiteralNONEIndependentHealthCareFacility = "http://snomed.info/sct#317817411000087104";
+
+    /// <summary>
     /// Literal for code: FosterDaughter
     /// </summary>
     public const string LiteralFosterDaughter = "31831004";
+
+    /// <summary>
+    /// Literal for code: NONEFosterDaughter
+    /// </summary>
+    public const string LiteralNONEFosterDaughter = "http://snomed.info/sct#31831004";
 
     /// <summary>
     /// Literal for code: GreatGrandparent
@@ -11872,9 +14672,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGreatGrandparent = "33969000";
 
     /// <summary>
+    /// Literal for code: NONEGreatGrandparent
+    /// </summary>
+    public const string LiteralNONEGreatGrandparent = "http://snomed.info/sct#33969000";
+
+    /// <summary>
     /// Literal for code: Man
     /// </summary>
     public const string LiteralMan = "339947000";
+
+    /// <summary>
+    /// Literal for code: NONEMan
+    /// </summary>
+    public const string LiteralNONEMan = "http://snomed.info/sct#339947000";
 
     /// <summary>
     /// Literal for code: PediatricRadiologist
@@ -11882,9 +14692,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricRadiologist = "341320851000087105";
 
     /// <summary>
+    /// Literal for code: NONEPediatricRadiologist
+    /// </summary>
+    public const string LiteralNONEPediatricRadiologist = "http://snomed.info/sct#341320851000087105";
+
+    /// <summary>
     /// Literal for code: OldestDaughter
     /// </summary>
     public const string LiteralOldestDaughter = "3425009";
+
+    /// <summary>
+    /// Literal for code: NONEOldestDaughter
+    /// </summary>
+    public const string LiteralNONEOldestDaughter = "http://snomed.info/sct#3425009";
 
     /// <summary>
     /// Literal for code: RadiationTherapist
@@ -11892,9 +14712,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRadiationTherapist = "3430008";
 
     /// <summary>
+    /// Literal for code: NONERadiationTherapist
+    /// </summary>
+    public const string LiteralNONERadiationTherapist = "http://snomed.info/sct#3430008";
+
+    /// <summary>
     /// Literal for code: Niece
     /// </summary>
     public const string LiteralNiece = "34581001";
+
+    /// <summary>
+    /// Literal for code: NONENiece
+    /// </summary>
+    public const string LiteralNONENiece = "http://snomed.info/sct#34581001";
 
     /// <summary>
     /// Literal for code: Grandfather
@@ -11902,9 +14732,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGrandfather = "34871008";
 
     /// <summary>
+    /// Literal for code: NONEGrandfather
+    /// </summary>
+    public const string LiteralNONEGrandfather = "http://snomed.info/sct#34871008";
+
+    /// <summary>
     /// Literal for code: OnlyDaughter
     /// </summary>
     public const string LiteralOnlyDaughter = "34972000";
+
+    /// <summary>
+    /// Literal for code: NONEOnlyDaughter
+    /// </summary>
+    public const string LiteralNONEOnlyDaughter = "http://snomed.info/sct#34972000";
 
     /// <summary>
     /// Literal for code: HealthRegulatoryBodyForOccupationalTherapists
@@ -11912,9 +14752,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthRegulatoryBodyForOccupationalTherapists = "357174231000087105";
 
     /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForOccupationalTherapists
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForOccupationalTherapists = "http://snomed.info/sct#357174231000087105";
+
+    /// <summary>
     /// Literal for code: Bum
     /// </summary>
     public const string LiteralBum = "360852005";
+
+    /// <summary>
+    /// Literal for code: NONEBum
+    /// </summary>
+    public const string LiteralNONEBum = "http://snomed.info/sct#360852005";
 
     /// <summary>
     /// Literal for code: Beggar
@@ -11922,9 +14772,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBeggar = "360863008";
 
     /// <summary>
+    /// Literal for code: NONEBeggar
+    /// </summary>
+    public const string LiteralNONEBeggar = "http://snomed.info/sct#360863008";
+
+    /// <summary>
     /// Literal for code: HasidicJewFollowerOfReligion
     /// </summary>
     public const string LiteralHasidicJewFollowerOfReligion = "360984002";
+
+    /// <summary>
+    /// Literal for code: NONEHasidicJewFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEHasidicJewFollowerOfReligion = "http://snomed.info/sct#360984002";
 
     /// <summary>
     /// Literal for code: SikhFollowerOfReligion
@@ -11932,9 +14792,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSikhFollowerOfReligion = "366740002";
 
     /// <summary>
+    /// Literal for code: NONESikhFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONESikhFollowerOfReligion = "http://snomed.info/sct#366740002";
+
+    /// <summary>
     /// Literal for code: PTPhysiotherapist
     /// </summary>
     public const string LiteralPTPhysiotherapist = "36682004";
+
+    /// <summary>
+    /// Literal for code: NONEPTPhysiotherapist
+    /// </summary>
+    public const string LiteralNONEPTPhysiotherapist = "http://snomed.info/sct#36682004";
 
     /// <summary>
     /// Literal for code: EmergencyMedicineSpecialist
@@ -11942,9 +14812,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmergencyMedicineSpecialist = "368890881000087105";
 
     /// <summary>
+    /// Literal for code: NONEEmergencyMedicineSpecialist
+    /// </summary>
+    public const string LiteralNONEEmergencyMedicineSpecialist = "http://snomed.info/sct#368890881000087105";
+
+    /// <summary>
     /// Literal for code: HealthRegulatoryBodyForPhysiotherapists
     /// </summary>
     public const string LiteralHealthRegulatoryBodyForPhysiotherapists = "371439331000087102";
+
+    /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForPhysiotherapists
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForPhysiotherapists = "http://snomed.info/sct#371439331000087102";
 
     /// <summary>
     /// Literal for code: Periodontist
@@ -11952,9 +14832,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeriodontist = "37154003";
 
     /// <summary>
+    /// Literal for code: NONEPeriodontist
+    /// </summary>
+    public const string LiteralNONEPeriodontist = "http://snomed.info/sct#37154003";
+
+    /// <summary>
     /// Literal for code: RNFirstAssist
     /// </summary>
     public const string LiteralRNFirstAssist = "372102007";
+
+    /// <summary>
+    /// Literal for code: NONERNFirstAssist
+    /// </summary>
+    public const string LiteralNONERNFirstAssist = "http://snomed.info/sct#372102007";
 
     /// <summary>
     /// Literal for code: Outpatient
@@ -11962,9 +14852,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOutpatient = "373864002";
 
     /// <summary>
+    /// Literal for code: NONEOutpatient
+    /// </summary>
+    public const string LiteralNONEOutpatient = "http://snomed.info/sct#373864002";
+
+    /// <summary>
     /// Literal for code: OrphanChild
     /// </summary>
     public const string LiteralOrphanChild = "373929005";
+
+    /// <summary>
+    /// Literal for code: NONEOrphanChild
+    /// </summary>
+    public const string LiteralNONEOrphanChild = "http://snomed.info/sct#373929005";
 
     /// <summary>
     /// Literal for code: Sibling
@@ -11972,9 +14872,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSibling = "375005";
 
     /// <summary>
+    /// Literal for code: NONESibling
+    /// </summary>
+    public const string LiteralNONESibling = "http://snomed.info/sct#375005";
+
+    /// <summary>
     /// Literal for code: Orthodontist
     /// </summary>
     public const string LiteralOrthodontist = "37504001";
+
+    /// <summary>
+    /// Literal for code: NONEOrthodontist
+    /// </summary>
+    public const string LiteralNONEOrthodontist = "http://snomed.info/sct#37504001";
 
     /// <summary>
     /// Literal for code: Uncle
@@ -11982,9 +14892,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUncle = "38048003";
 
     /// <summary>
+    /// Literal for code: NONEUncle
+    /// </summary>
+    public const string LiteralNONEUncle = "http://snomed.info/sct#38048003";
+
+    /// <summary>
     /// Literal for code: OldestSon
     /// </summary>
     public const string LiteralOldestSon = "38248007";
+
+    /// <summary>
+    /// Literal for code: NONEOldestSon
+    /// </summary>
+    public const string LiteralNONEOldestSon = "http://snomed.info/sct#38248007";
 
     /// <summary>
     /// Literal for code: FosterMother
@@ -11992,9 +14912,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFosterMother = "38265003";
 
     /// <summary>
+    /// Literal for code: NONEFosterMother
+    /// </summary>
+    public const string LiteralNONEFosterMother = "http://snomed.info/sct#38265003";
+
+    /// <summary>
     /// Literal for code: Grandparent
     /// </summary>
     public const string LiteralGrandparent = "38312007";
+
+    /// <summary>
+    /// Literal for code: NONEGrandparent
+    /// </summary>
+    public const string LiteralNONEGrandparent = "http://snomed.info/sct#38312007";
 
     /// <summary>
     /// Literal for code: Chiropractor
@@ -12002,9 +14932,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChiropractor = "3842006";
 
     /// <summary>
+    /// Literal for code: NONEChiropractor
+    /// </summary>
+    public const string LiteralNONEChiropractor = "http://snomed.info/sct#3842006";
+
+    /// <summary>
     /// Literal for code: SurrogateDaughter
     /// </summary>
     public const string LiteralSurrogateDaughter = "3851003";
+
+    /// <summary>
+    /// Literal for code: NONESurrogateDaughter
+    /// </summary>
+    public const string LiteralNONESurrogateDaughter = "http://snomed.info/sct#3851003";
 
     /// <summary>
     /// Literal for code: Individual
@@ -12012,9 +14952,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIndividual = "385435006";
 
     /// <summary>
+    /// Literal for code: NONEIndividual
+    /// </summary>
+    public const string LiteralNONEIndividual = "http://snomed.info/sct#385435006";
+
+    /// <summary>
     /// Literal for code: Optician
     /// </summary>
     public const string LiteralOptician = "387619007";
+
+    /// <summary>
+    /// Literal for code: NONEOptician
+    /// </summary>
+    public const string LiteralNONEOptician = "http://snomed.info/sct#387619007";
 
     /// <summary>
     /// Literal for code: FosterChild
@@ -12022,9 +14972,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFosterChild = "39062003";
 
     /// <summary>
+    /// Literal for code: NONEFosterChild
+    /// </summary>
+    public const string LiteralNONEFosterChild = "http://snomed.info/sct#39062003";
+
+    /// <summary>
     /// Literal for code: AsylumSeeker
     /// </summary>
     public const string LiteralAsylumSeeker = "390790000";
+
+    /// <summary>
+    /// Literal for code: NONEAsylumSeeker
+    /// </summary>
+    public const string LiteralNONEAsylumSeeker = "http://snomed.info/sct#390790000";
 
     /// <summary>
     /// Literal for code: HealthRegulatoryBodyForDentalHygienists
@@ -12032,9 +14992,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthRegulatoryBodyForDentalHygienists = "392685081000087107";
 
     /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForDentalHygienists
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForDentalHygienists = "http://snomed.info/sct#392685081000087107";
+
+    /// <summary>
     /// Literal for code: GreatGrandson
     /// </summary>
     public const string LiteralGreatGrandson = "394566006";
+
+    /// <summary>
+    /// Literal for code: NONEGreatGrandson
+    /// </summary>
+    public const string LiteralNONEGreatGrandson = "http://snomed.info/sct#394566006";
 
     /// <summary>
     /// Literal for code: GreatGranddaughter
@@ -12042,9 +15012,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGreatGranddaughter = "394567002";
 
     /// <summary>
+    /// Literal for code: NONEGreatGranddaughter
+    /// </summary>
+    public const string LiteralNONEGreatGranddaughter = "http://snomed.info/sct#394567002";
+
+    /// <summary>
     /// Literal for code: ExtendedFamilyMember
     /// </summary>
     public const string LiteralExtendedFamilyMember = "394568007";
+
+    /// <summary>
+    /// Literal for code: NONEExtendedFamilyMember
+    /// </summary>
+    public const string LiteralNONEExtendedFamilyMember = "http://snomed.info/sct#394568007";
 
     /// <summary>
     /// Literal for code: Employer
@@ -12052,9 +15032,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmployer = "394571004";
 
     /// <summary>
+    /// Literal for code: NONEEmployer
+    /// </summary>
+    public const string LiteralNONEEmployer = "http://snomed.info/sct#394571004";
+
+    /// <summary>
     /// Literal for code: MedicalSecretary
     /// </summary>
     public const string LiteralMedicalSecretary = "394572006";
+
+    /// <summary>
+    /// Literal for code: NONEMedicalSecretary
+    /// </summary>
+    public const string LiteralNONEMedicalSecretary = "http://snomed.info/sct#394572006";
 
     /// <summary>
     /// Literal for code: HospitalNurse
@@ -12062,9 +15052,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospitalNurse = "394618009";
 
     /// <summary>
+    /// Literal for code: NONEHospitalNurse
+    /// </summary>
+    public const string LiteralNONEHospitalNurse = "http://snomed.info/sct#394618009";
+
+    /// <summary>
     /// Literal for code: Guardian
     /// </summary>
     public const string LiteralGuardian = "394619001";
+
+    /// <summary>
+    /// Literal for code: NONEGuardian
+    /// </summary>
+    public const string LiteralNONEGuardian = "http://snomed.info/sct#394619001";
 
     /// <summary>
     /// Literal for code: OtherRelatedPersons
@@ -12072,9 +15072,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOtherRelatedPersons = "394738000";
 
     /// <summary>
+    /// Literal for code: NONEOtherRelatedPersons
+    /// </summary>
+    public const string LiteralNONEOtherRelatedPersons = "http://snomed.info/sct#394738000";
+
+    /// <summary>
     /// Literal for code: GeneralPracticeOrganisation
     /// </summary>
     public const string LiteralGeneralPracticeOrganisation = "394745000";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralPracticeOrganisation
+    /// </summary>
+    public const string LiteralNONEGeneralPracticeOrganisation = "http://snomed.info/sct#394745000";
 
     /// <summary>
     /// Literal for code: RegionalOffice
@@ -12082,9 +15092,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRegionalOffice = "394746004";
 
     /// <summary>
+    /// Literal for code: NONERegionalOffice
+    /// </summary>
+    public const string LiteralNONERegionalOffice = "http://snomed.info/sct#394746004";
+
+    /// <summary>
     /// Literal for code: HealthAuthority
     /// </summary>
     public const string LiteralHealthAuthority = "394747008";
+
+    /// <summary>
+    /// Literal for code: NONEHealthAuthority
+    /// </summary>
+    public const string LiteralNONEHealthAuthority = "http://snomed.info/sct#394747008";
 
     /// <summary>
     /// Literal for code: PrimaryCareGroup
@@ -12092,9 +15112,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrimaryCareGroup = "394748003";
 
     /// <summary>
+    /// Literal for code: NONEPrimaryCareGroup
+    /// </summary>
+    public const string LiteralNONEPrimaryCareGroup = "http://snomed.info/sct#394748003";
+
+    /// <summary>
     /// Literal for code: PrimaryCareTrust
     /// </summary>
     public const string LiteralPrimaryCareTrust = "394749006";
+
+    /// <summary>
+    /// Literal for code: NONEPrimaryCareTrust
+    /// </summary>
+    public const string LiteralNONEPrimaryCareTrust = "http://snomed.info/sct#394749006";
 
     /// <summary>
     /// Literal for code: SpecialHealthAuthority
@@ -12102,9 +15132,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpecialHealthAuthority = "394751005";
 
     /// <summary>
+    /// Literal for code: NONESpecialHealthAuthority
+    /// </summary>
+    public const string LiteralNONESpecialHealthAuthority = "http://snomed.info/sct#394751005";
+
+    /// <summary>
     /// Literal for code: HospiceIndependent
     /// </summary>
     public const string LiteralHospiceIndependent = "394757009";
+
+    /// <summary>
+    /// Literal for code: NONEHospiceIndependent
+    /// </summary>
+    public const string LiteralNONEHospiceIndependent = "http://snomed.info/sct#394757009";
 
     /// <summary>
     /// Literal for code: IndependentProvider
@@ -12112,9 +15152,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIndependentProvider = "394758004";
 
     /// <summary>
+    /// Literal for code: NONEIndependentProvider
+    /// </summary>
+    public const string LiteralNONEIndependentProvider = "http://snomed.info/sct#394758004";
+
+    /// <summary>
     /// Literal for code: GPPractice
     /// </summary>
     public const string LiteralGPPractice = "394760002";
+
+    /// <summary>
+    /// Literal for code: NONEGPPractice
+    /// </summary>
+    public const string LiteralNONEGPPractice = "http://snomed.info/sct#394760002";
 
     /// <summary>
     /// Literal for code: GDPPractice
@@ -12122,9 +15172,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGDPPractice = "394762005";
 
     /// <summary>
+    /// Literal for code: NONEGDPPractice
+    /// </summary>
+    public const string LiteralNONEGDPPractice = "http://snomed.info/sct#394762005";
+
+    /// <summary>
     /// Literal for code: MoDPractice
     /// </summary>
     public const string LiteralMoDPractice = "394763000";
+
+    /// <summary>
+    /// Literal for code: NONEMoDPractice
+    /// </summary>
+    public const string LiteralNONEMoDPractice = "http://snomed.info/sct#394763000";
 
     /// <summary>
     /// Literal for code: MoDHospital
@@ -12132,9 +15192,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMoDHospital = "394764006";
 
     /// <summary>
+    /// Literal for code: NONEMoDHospital
+    /// </summary>
+    public const string LiteralNONEMoDHospital = "http://snomed.info/sct#394764006";
+
+    /// <summary>
     /// Literal for code: PrisonPractice
     /// </summary>
     public const string LiteralPrisonPractice = "394765007";
+
+    /// <summary>
+    /// Literal for code: NONEPrisonPractice
+    /// </summary>
+    public const string LiteralNONEPrisonPractice = "http://snomed.info/sct#394765007";
 
     /// <summary>
     /// Literal for code: ImmediateFamilyMember
@@ -12142,9 +15212,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImmediateFamilyMember = "394854006";
 
     /// <summary>
+    /// Literal for code: NONEImmediateFamilyMember
+    /// </summary>
+    public const string LiteralNONEImmediateFamilyMember = "http://snomed.info/sct#394854006";
+
+    /// <summary>
     /// Literal for code: NonImmediateFamilyMember
     /// </summary>
     public const string LiteralNonImmediateFamilyMember = "394855007";
+
+    /// <summary>
+    /// Literal for code: NONENonImmediateFamilyMember
+    /// </summary>
+    public const string LiteralNONENonImmediateFamilyMember = "http://snomed.info/sct#394855007";
 
     /// <summary>
     /// Literal for code: PaternalGrandFather
@@ -12152,9 +15232,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPaternalGrandFather = "394856008";
 
     /// <summary>
+    /// Literal for code: NONEPaternalGrandFather
+    /// </summary>
+    public const string LiteralNONEPaternalGrandFather = "http://snomed.info/sct#394856008";
+
+    /// <summary>
     /// Literal for code: MaternalGrandFather
     /// </summary>
     public const string LiteralMaternalGrandFather = "394857004";
+
+    /// <summary>
+    /// Literal for code: NONEMaternalGrandFather
+    /// </summary>
+    public const string LiteralNONEMaternalGrandFather = "http://snomed.info/sct#394857004";
 
     /// <summary>
     /// Literal for code: PaternalGrandMother
@@ -12162,9 +15252,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPaternalGrandMother = "394858009";
 
     /// <summary>
+    /// Literal for code: NONEPaternalGrandMother
+    /// </summary>
+    public const string LiteralNONEPaternalGrandMother = "http://snomed.info/sct#394858009";
+
+    /// <summary>
     /// Literal for code: MaternalGrandMother
     /// </summary>
     public const string LiteralMaternalGrandMother = "394859001";
+
+    /// <summary>
+    /// Literal for code: NONEMaternalGrandMother
+    /// </summary>
+    public const string LiteralNONEMaternalGrandMother = "http://snomed.info/sct#394859001";
 
     /// <summary>
     /// Literal for code: DistantRelative
@@ -12172,9 +15272,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDistantRelative = "394860006";
 
     /// <summary>
+    /// Literal for code: NONEDistantRelative
+    /// </summary>
+    public const string LiteralNONEDistantRelative = "http://snomed.info/sct#394860006";
+
+    /// <summary>
     /// Literal for code: GreatUncle
     /// </summary>
     public const string LiteralGreatUncle = "394861005";
+
+    /// <summary>
+    /// Literal for code: NONEGreatUncle
+    /// </summary>
+    public const string LiteralNONEGreatUncle = "http://snomed.info/sct#394861005";
 
     /// <summary>
     /// Literal for code: GreatAunt
@@ -12182,9 +15292,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGreatAunt = "394862003";
 
     /// <summary>
+    /// Literal for code: NONEGreatAunt
+    /// </summary>
+    public const string LiteralNONEGreatAunt = "http://snomed.info/sct#394862003";
+
+    /// <summary>
     /// Literal for code: NonFamilyMember
     /// </summary>
     public const string LiteralNonFamilyMember = "394863008";
+
+    /// <summary>
+    /// Literal for code: NONENonFamilyMember
+    /// </summary>
+    public const string LiteralNONENonFamilyMember = "http://snomed.info/sct#394863008";
 
     /// <summary>
     /// Literal for code: Cohabitee
@@ -12192,9 +15312,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCohabitee = "394921008";
 
     /// <summary>
+    /// Literal for code: NONECohabitee
+    /// </summary>
+    public const string LiteralNONECohabitee = "http://snomed.info/sct#394921008";
+
+    /// <summary>
     /// Literal for code: PaternalCousin
     /// </summary>
     public const string LiteralPaternalCousin = "396762341000087100";
+
+    /// <summary>
+    /// Literal for code: NONEPaternalCousin
+    /// </summary>
+    public const string LiteralNONEPaternalCousin = "http://snomed.info/sct#396762341000087100";
 
     /// <summary>
     /// Literal for code: InternalMedicineSpecialist
@@ -12202,9 +15332,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInternalMedicineSpecialist = "39677007";
 
     /// <summary>
+    /// Literal for code: NONEInternalMedicineSpecialist
+    /// </summary>
+    public const string LiteralNONEInternalMedicineSpecialist = "http://snomed.info/sct#39677007";
+
+    /// <summary>
     /// Literal for code: ConsultantAnesthetist
     /// </summary>
     public const string LiteralConsultantAnesthetist = "397824005";
+
+    /// <summary>
+    /// Literal for code: NONEConsultantAnesthetist
+    /// </summary>
+    public const string LiteralNONEConsultantAnesthetist = "http://snomed.info/sct#397824005";
 
     /// <summary>
     /// Literal for code: Paramedic
@@ -12212,9 +15352,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParamedic = "397897005";
 
     /// <summary>
+    /// Literal for code: NONEParamedic
+    /// </summary>
+    public const string LiteralNONEParamedic = "http://snomed.info/sct#397897005";
+
+    /// <summary>
     /// Literal for code: StaffGradeObstetrician
     /// </summary>
     public const string LiteralStaffGradeObstetrician = "397903001";
+
+    /// <summary>
+    /// Literal for code: NONEStaffGradeObstetrician
+    /// </summary>
+    public const string LiteralNONEStaffGradeObstetrician = "http://snomed.info/sct#397903001";
 
     /// <summary>
     /// Literal for code: StaffGradePractitioner
@@ -12222,9 +15372,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStaffGradePractitioner = "397908005";
 
     /// <summary>
+    /// Literal for code: NONEStaffGradePractitioner
+    /// </summary>
+    public const string LiteralNONEStaffGradePractitioner = "http://snomed.info/sct#397908005";
+
+    /// <summary>
     /// Literal for code: NurseComplexCaseManager
     /// </summary>
     public const string LiteralNurseComplexCaseManager = "3981000175106";
+
+    /// <summary>
+    /// Literal for code: NONENurseComplexCaseManager
+    /// </summary>
+    public const string LiteralNONENurseComplexCaseManager = "http://snomed.info/sct#3981000175106";
 
     /// <summary>
     /// Literal for code: MedicalStudent
@@ -12232,9 +15392,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalStudent = "398130009";
 
     /// <summary>
+    /// Literal for code: NONEMedicalStudent
+    /// </summary>
+    public const string LiteralNONEMedicalStudent = "http://snomed.info/sct#398130009";
+
+    /// <summary>
     /// Literal for code: QualityImprovementTemplateTaskForce
     /// </summary>
     public const string LiteralQualityImprovementTemplateTaskForce = "398154004";
+
+    /// <summary>
+    /// Literal for code: NONEQualityImprovementTemplateTaskForce
+    /// </summary>
+    public const string LiteralNONEQualityImprovementTemplateTaskForce = "http://snomed.info/sct#398154004";
 
     /// <summary>
     /// Literal for code: ActingObstetricRegistrar
@@ -12242,9 +15412,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralActingObstetricRegistrar = "398238009";
 
     /// <summary>
+    /// Literal for code: NONEActingObstetricRegistrar
+    /// </summary>
+    public const string LiteralNONEActingObstetricRegistrar = "http://snomed.info/sct#398238009";
+
+    /// <summary>
     /// Literal for code: AssociationOfAnesthesiaClinicalDirectors
     /// </summary>
     public const string LiteralAssociationOfAnesthesiaClinicalDirectors = "398255008";
+
+    /// <summary>
+    /// Literal for code: NONEAssociationOfAnesthesiaClinicalDirectors
+    /// </summary>
+    public const string LiteralNONEAssociationOfAnesthesiaClinicalDirectors = "http://snomed.info/sct#398255008";
 
     /// <summary>
     /// Literal for code: FamilyMedicineSpecialistPalliativeCare
@@ -12252,9 +15432,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFamilyMedicineSpecialistPalliativeCare = "398480381000087106";
 
     /// <summary>
+    /// Literal for code: NONEFamilyMedicineSpecialistPalliativeCare
+    /// </summary>
+    public const string LiteralNONEFamilyMedicineSpecialistPalliativeCare = "http://snomed.info/sct#398480381000087106";
+
+    /// <summary>
     /// Literal for code: PaternalGreatGrandFather
     /// </summary>
     public const string LiteralPaternalGreatGrandFather = "398524981000087101";
+
+    /// <summary>
+    /// Literal for code: NONEPaternalGreatGrandFather
+    /// </summary>
+    public const string LiteralNONEPaternalGreatGrandFather = "http://snomed.info/sct#398524981000087101";
 
     /// <summary>
     /// Literal for code: DietitianGeneral
@@ -12262,9 +15452,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDietitianGeneral = "40127002";
 
     /// <summary>
+    /// Literal for code: NONEDietitianGeneral
+    /// </summary>
+    public const string LiteralNONEDietitianGeneral = "http://snomed.info/sct#40127002";
+
+    /// <summary>
     /// Literal for code: Hematologist
     /// </summary>
     public const string LiteralHematologist = "40204001";
+
+    /// <summary>
+    /// Literal for code: NONEHematologist
+    /// </summary>
+    public const string LiteralNONEHematologist = "http://snomed.info/sct#40204001";
 
     /// <summary>
     /// Literal for code: PhysiotherapistTechnicalInstructor
@@ -12272,9 +15472,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhysiotherapistTechnicalInstructor = "404940000";
 
     /// <summary>
+    /// Literal for code: NONEPhysiotherapistTechnicalInstructor
+    /// </summary>
+    public const string LiteralNONEPhysiotherapistTechnicalInstructor = "http://snomed.info/sct#404940000";
+
+    /// <summary>
     /// Literal for code: ResidentPhysician
     /// </summary>
     public const string LiteralResidentPhysician = "405277009";
+
+    /// <summary>
+    /// Literal for code: NONEResidentPhysician
+    /// </summary>
+    public const string LiteralNONEResidentPhysician = "http://snomed.info/sct#405277009";
 
     /// <summary>
     /// Literal for code: CertifiedRegisteredNurseAnesthetist
@@ -12282,9 +15492,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCertifiedRegisteredNurseAnesthetist = "405278004";
 
     /// <summary>
+    /// Literal for code: NONECertifiedRegisteredNurseAnesthetist
+    /// </summary>
+    public const string LiteralNONECertifiedRegisteredNurseAnesthetist = "http://snomed.info/sct#405278004";
+
+    /// <summary>
     /// Literal for code: AttendingPhysician
     /// </summary>
     public const string LiteralAttendingPhysician = "405279007";
+
+    /// <summary>
+    /// Literal for code: NONEAttendingPhysician
+    /// </summary>
+    public const string LiteralNONEAttendingPhysician = "http://snomed.info/sct#405279007";
 
     /// <summary>
     /// Literal for code: AssignedPractitioner
@@ -12292,9 +15512,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAssignedPractitioner = "405623001";
 
     /// <summary>
+    /// Literal for code: NONEAssignedPractitioner
+    /// </summary>
+    public const string LiteralNONEAssignedPractitioner = "http://snomed.info/sct#405623001";
+
+    /// <summary>
     /// Literal for code: ProfessionalInitiatingSurgicalCase
     /// </summary>
     public const string LiteralProfessionalInitiatingSurgicalCase = "405684005";
+
+    /// <summary>
+    /// Literal for code: NONEProfessionalInitiatingSurgicalCase
+    /// </summary>
+    public const string LiteralNONEProfessionalInitiatingSurgicalCase = "http://snomed.info/sct#405684005";
 
     /// <summary>
     /// Literal for code: ProfessionalProvidingStaffReliefDuringSurgicalProcedure
@@ -12302,9 +15532,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProfessionalProvidingStaffReliefDuringSurgicalProcedure = "405685006";
 
     /// <summary>
+    /// Literal for code: NONEProfessionalProvidingStaffReliefDuringSurgicalProcedure
+    /// </summary>
+    public const string LiteralNONEProfessionalProvidingStaffReliefDuringSurgicalProcedure = "http://snomed.info/sct#405685006";
+
+    /// <summary>
     /// Literal for code: Interpreter
     /// </summary>
     public const string LiteralInterpreter = "40570005";
+
+    /// <summary>
+    /// Literal for code: NONEInterpreter
+    /// </summary>
+    public const string LiteralNONEInterpreter = "http://snomed.info/sct#40570005";
 
     /// <summary>
     /// Literal for code: Parent
@@ -12312,9 +15552,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParent = "40683002";
 
     /// <summary>
+    /// Literal for code: NONEParent
+    /// </summary>
+    public const string LiteralNONEParent = "http://snomed.info/sct#40683002";
+
+    /// <summary>
     /// Literal for code: InformalCarer
     /// </summary>
     public const string LiteralInformalCarer = "407542009";
+
+    /// <summary>
+    /// Literal for code: NONEInformalCarer
+    /// </summary>
+    public const string LiteralNONEInformalCarer = "http://snomed.info/sct#407542009";
 
     /// <summary>
     /// Literal for code: PrimaryCarer
@@ -12322,9 +15572,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrimaryCarer = "407543004";
 
     /// <summary>
+    /// Literal for code: NONEPrimaryCarer
+    /// </summary>
+    public const string LiteralNONEPrimaryCarer = "http://snomed.info/sct#407543004";
+
+    /// <summary>
     /// Literal for code: ConsultantPediatrician
     /// </summary>
     public const string LiteralConsultantPediatrician = "408798009";
+
+    /// <summary>
+    /// Literal for code: NONEConsultantPediatrician
+    /// </summary>
+    public const string LiteralNONEConsultantPediatrician = "http://snomed.info/sct#408798009";
 
     /// <summary>
     /// Literal for code: ConsultantNeonatologist
@@ -12332,9 +15592,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConsultantNeonatologist = "408799001";
 
     /// <summary>
+    /// Literal for code: NONEConsultantNeonatologist
+    /// </summary>
+    public const string LiteralNONEConsultantNeonatologist = "http://snomed.info/sct#408799001";
+
+    /// <summary>
     /// Literal for code: HealthEducator
     /// </summary>
     public const string LiteralHealthEducator = "409974004";
+
+    /// <summary>
+    /// Literal for code: NONEHealthEducator
+    /// </summary>
+    public const string LiteralNONEHealthEducator = "http://snomed.info/sct#409974004";
 
     /// <summary>
     /// Literal for code: CertifiedHealthEducationSpecialist
@@ -12342,9 +15612,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCertifiedHealthEducationSpecialist = "409975003";
 
     /// <summary>
+    /// Literal for code: NONECertifiedHealthEducationSpecialist
+    /// </summary>
+    public const string LiteralNONECertifiedHealthEducationSpecialist = "http://snomed.info/sct#409975003";
+
+    /// <summary>
     /// Literal for code: SurrogateSon
     /// </summary>
     public const string LiteralSurrogateSon = "41057000";
+
+    /// <summary>
+    /// Literal for code: NONESurrogateSon
+    /// </summary>
+    public const string LiteralNONESurrogateSon = "http://snomed.info/sct#41057000";
 
     /// <summary>
     /// Literal for code: PersonCategorizedByReligiousAffiliation
@@ -12352,9 +15632,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPersonCategorizedByReligiousAffiliation = "410597007";
 
     /// <summary>
+    /// Literal for code: NONEPersonCategorizedByReligiousAffiliation
+    /// </summary>
+    public const string LiteralNONEPersonCategorizedByReligiousAffiliation = "http://snomed.info/sct#410597007";
+
+    /// <summary>
     /// Literal for code: PersonCategorizedByAge
     /// </summary>
     public const string LiteralPersonCategorizedByAge = "410598002";
+
+    /// <summary>
+    /// Literal for code: NONEPersonCategorizedByAge
+    /// </summary>
+    public const string LiteralNONEPersonCategorizedByAge = "http://snomed.info/sct#410598002";
 
     /// <summary>
     /// Literal for code: Minor
@@ -12362,9 +15652,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMinor = "410599005";
 
     /// <summary>
+    /// Literal for code: NONEMinor
+    /// </summary>
+    public const string LiteralNONEMinor = "http://snomed.info/sct#410599005";
+
+    /// <summary>
     /// Literal for code: PreTeen
     /// </summary>
     public const string LiteralPreTeen = "410600008";
+
+    /// <summary>
+    /// Literal for code: NONEPreTeen
+    /// </summary>
+    public const string LiteralNONEPreTeen = "http://snomed.info/sct#410600008";
 
     /// <summary>
     /// Literal for code: Child
@@ -12372,9 +15672,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChild = "410601007";
 
     /// <summary>
+    /// Literal for code: NONEChild
+    /// </summary>
+    public const string LiteralNONEChild = "http://snomed.info/sct#410601007";
+
+    /// <summary>
     /// Literal for code: PreschoolChild
     /// </summary>
     public const string LiteralPreschoolChild = "410602000";
+
+    /// <summary>
+    /// Literal for code: NONEPreschoolChild
+    /// </summary>
+    public const string LiteralNONEPreschoolChild = "http://snomed.info/sct#410602000";
 
     /// <summary>
     /// Literal for code: PersonInTheLegalEnvironment
@@ -12382,9 +15692,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPersonInTheLegalEnvironment = "410603005";
 
     /// <summary>
+    /// Literal for code: NONEPersonInTheLegalEnvironment
+    /// </summary>
+    public const string LiteralNONEPersonInTheLegalEnvironment = "http://snomed.info/sct#410603005";
+
+    /// <summary>
     /// Literal for code: SubjectOfRecord
     /// </summary>
     public const string LiteralSubjectOfRecord = "410604004";
+
+    /// <summary>
+    /// Literal for code: NONESubjectOfRecord
+    /// </summary>
+    public const string LiteralNONESubjectOfRecord = "http://snomed.info/sct#410604004";
 
     /// <summary>
     /// Literal for code: StudentInFullTimeEducation
@@ -12392,9 +15712,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStudentInFullTimeEducation = "413327003";
 
     /// <summary>
+    /// Literal for code: NONEStudentInFullTimeEducation
+    /// </summary>
+    public const string LiteralNONEStudentInFullTimeEducation = "http://snomed.info/sct#413327003";
+
+    /// <summary>
     /// Literal for code: CirculatingNurse
     /// </summary>
     public const string LiteralCirculatingNurse = "413854007";
+
+    /// <summary>
+    /// Literal for code: NONECirculatingNurse
+    /// </summary>
+    public const string LiteralNONECirculatingNurse = "http://snomed.info/sct#413854007";
 
     /// <summary>
     /// Literal for code: DomesticPartner
@@ -12402,9 +15732,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDomesticPartner = "414043009";
 
     /// <summary>
+    /// Literal for code: NONEDomesticPartner
+    /// </summary>
+    public const string LiteralNONEDomesticPartner = "http://snomed.info/sct#414043009";
+
+    /// <summary>
     /// Literal for code: PerioperativeNurse
     /// </summary>
     public const string LiteralPerioperativeNurse = "415075003";
+
+    /// <summary>
+    /// Literal for code: NONEPerioperativeNurse
+    /// </summary>
+    public const string LiteralNONEPerioperativeNurse = "http://snomed.info/sct#415075003";
 
     /// <summary>
     /// Literal for code: ScrubNurse
@@ -12412,9 +15752,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralScrubNurse = "415506007";
 
     /// <summary>
+    /// Literal for code: NONEScrubNurse
+    /// </summary>
+    public const string LiteralNONEScrubNurse = "http://snomed.info/sct#415506007";
+
+    /// <summary>
     /// Literal for code: PrimaryScreener
     /// </summary>
     public const string LiteralPrimaryScreener = "416034003";
+
+    /// <summary>
+    /// Literal for code: NONEPrimaryScreener
+    /// </summary>
+    public const string LiteralNONEPrimaryScreener = "http://snomed.info/sct#416034003";
 
     /// <summary>
     /// Literal for code: SecondaryScreener
@@ -12422,9 +15772,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSecondaryScreener = "416035002";
 
     /// <summary>
+    /// Literal for code: NONESecondaryScreener
+    /// </summary>
+    public const string LiteralNONESecondaryScreener = "http://snomed.info/sct#416035002";
+
+    /// <summary>
     /// Literal for code: FellowOfAmericanAcademyOfOsteopathy
     /// </summary>
     public const string LiteralFellowOfAmericanAcademyOfOsteopathy = "416160000";
+
+    /// <summary>
+    /// Literal for code: NONEFellowOfAmericanAcademyOfOsteopathy
+    /// </summary>
+    public const string LiteralNONEFellowOfAmericanAcademyOfOsteopathy = "http://snomed.info/sct#416160000";
 
     /// <summary>
     /// Literal for code: SurgicalOncologist
@@ -12432,9 +15792,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgicalOncologist = "416186861000087101";
 
     /// <summary>
+    /// Literal for code: NONESurgicalOncologist
+    /// </summary>
+    public const string LiteralNONESurgicalOncologist = "http://snomed.info/sct#416186861000087101";
+
+    /// <summary>
     /// Literal for code: DentalAssistant
     /// </summary>
     public const string LiteralDentalAssistant = "4162009";
+
+    /// <summary>
+    /// Literal for code: NONEDentalAssistant
+    /// </summary>
+    public const string LiteralNONEDentalAssistant = "http://snomed.info/sct#4162009";
 
     /// <summary>
     /// Literal for code: FamilyReunionImmigrant
@@ -12442,9 +15812,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFamilyReunionImmigrant = "416625007";
 
     /// <summary>
+    /// Literal for code: NONEFamilyReunionImmigrant
+    /// </summary>
+    public const string LiteralNONEFamilyReunionImmigrant = "http://snomed.info/sct#416625007";
+
+    /// <summary>
     /// Literal for code: RespiratoryPhysician
     /// </summary>
     public const string LiteralRespiratoryPhysician = "41672002";
+
+    /// <summary>
+    /// Literal for code: NONERespiratoryPhysician
+    /// </summary>
+    public const string LiteralNONERespiratoryPhysician = "http://snomed.info/sct#41672002";
 
     /// <summary>
     /// Literal for code: Inpatient
@@ -12452,9 +15832,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInpatient = "416800000";
 
     /// <summary>
+    /// Literal for code: NONEInpatient
+    /// </summary>
+    public const string LiteralNONEInpatient = "http://snomed.info/sct#416800000";
+
+    /// <summary>
     /// Literal for code: LegalSon
     /// </summary>
     public const string LiteralLegalSon = "41795004";
+
+    /// <summary>
+    /// Literal for code: NONELegalSon
+    /// </summary>
+    public const string LiteralNONELegalSon = "http://snomed.info/sct#41795004";
 
     /// <summary>
     /// Literal for code: InfantChild
@@ -12462,9 +15852,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfantChild = "418119000";
 
     /// <summary>
+    /// Literal for code: NONEInfantChild
+    /// </summary>
+    public const string LiteralNONEInfantChild = "http://snomed.info/sct#418119000";
+
+    /// <summary>
     /// Literal for code: MedicalXRayTechnician
     /// </summary>
     public const string LiteralMedicalXRayTechnician = "41904004";
+
+    /// <summary>
+    /// Literal for code: NONEMedicalXRayTechnician
+    /// </summary>
+    public const string LiteralNONEMedicalXRayTechnician = "http://snomed.info/sct#41904004";
 
     /// <summary>
     /// Literal for code: SubjectOfRecordOrOtherProviderOfHistory
@@ -12472,9 +15872,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubjectOfRecordOrOtherProviderOfHistory = "419358007";
 
     /// <summary>
+    /// Literal for code: NONESubjectOfRecordOrOtherProviderOfHistory
+    /// </summary>
+    public const string LiteralNONESubjectOfRecordOrOtherProviderOfHistory = "http://snomed.info/sct#419358007";
+
+    /// <summary>
     /// Literal for code: AdoptiveParent
     /// </summary>
     public const string LiteralAdoptiveParent = "41953004";
+
+    /// <summary>
+    /// Literal for code: NONEAdoptiveParent
+    /// </summary>
+    public const string LiteralNONEAdoptiveParent = "http://snomed.info/sct#41953004";
 
     /// <summary>
     /// Literal for code: ProviderOfHistoryOtherThanSubject
@@ -12482,9 +15892,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProviderOfHistoryOtherThanSubject = "420058008";
 
     /// <summary>
+    /// Literal for code: NONEProviderOfHistoryOtherThanSubject
+    /// </summary>
+    public const string LiteralNONEProviderOfHistoryOtherThanSubject = "http://snomed.info/sct#420058008";
+
+    /// <summary>
     /// Literal for code: PerformerOfMethod
     /// </summary>
     public const string LiteralPerformerOfMethod = "420158005";
+
+    /// <summary>
+    /// Literal for code: NONEPerformerOfMethod
+    /// </summary>
+    public const string LiteralNONEPerformerOfMethod = "http://snomed.info/sct#420158005";
 
     /// <summary>
     /// Literal for code: HealthRegulatoryBodyForMassageTherapists
@@ -12492,9 +15912,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthRegulatoryBodyForMassageTherapists = "420314821000087103";
 
     /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForMassageTherapists
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForMassageTherapists = "http://snomed.info/sct#420314821000087103";
+
+    /// <summary>
     /// Literal for code: OculoplasticSurgeon
     /// </summary>
     public const string LiteralOculoplasticSurgeon = "420409002";
+
+    /// <summary>
+    /// Literal for code: NONEOculoplasticSurgeon
+    /// </summary>
+    public const string LiteralNONEOculoplasticSurgeon = "http://snomed.info/sct#420409002";
 
     /// <summary>
     /// Literal for code: RetinalSurgeon
@@ -12502,9 +15932,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRetinalSurgeon = "420678001";
 
     /// <summary>
+    /// Literal for code: NONERetinalSurgeon
+    /// </summary>
+    public const string LiteralNONERetinalSurgeon = "http://snomed.info/sct#420678001";
+
+    /// <summary>
     /// Literal for code: AdmittingPhysician
     /// </summary>
     public const string LiteralAdmittingPhysician = "421841007";
+
+    /// <summary>
+    /// Literal for code: NONEAdmittingPhysician
+    /// </summary>
+    public const string LiteralNONEAdmittingPhysician = "http://snomed.info/sct#421841007";
 
     /// <summary>
     /// Literal for code: MedicalOphthalmologist
@@ -12512,9 +15952,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalOphthalmologist = "422140007";
 
     /// <summary>
+    /// Literal for code: NONEMedicalOphthalmologist
+    /// </summary>
+    public const string LiteralNONEMedicalOphthalmologist = "http://snomed.info/sct#422140007";
+
+    /// <summary>
     /// Literal for code: Ophthalmologist
     /// </summary>
     public const string LiteralOphthalmologist = "422234006";
+
+    /// <summary>
+    /// Literal for code: NONEOphthalmologist
+    /// </summary>
+    public const string LiteralNONEOphthalmologist = "http://snomed.info/sct#422234006";
 
     /// <summary>
     /// Literal for code: Neighbor
@@ -12522,9 +15972,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeighbor = "427568008";
 
     /// <summary>
+    /// Literal for code: NONENeighbor
+    /// </summary>
+    public const string LiteralNONENeighbor = "http://snomed.info/sct#427568008";
+
+    /// <summary>
     /// Literal for code: ElimPentecostalistFollowerOfReligion
     /// </summary>
     public const string LiteralElimPentecostalistFollowerOfReligion = "427729003";
+
+    /// <summary>
+    /// Literal for code: NONEElimPentecostalistFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEElimPentecostalistFollowerOfReligion = "http://snomed.info/sct#427729003";
 
     /// <summary>
     /// Literal for code: LiberalJew
@@ -12532,9 +15992,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLiberalJew = "427754003";
 
     /// <summary>
+    /// Literal for code: NONELiberalJew
+    /// </summary>
+    public const string LiteralNONELiberalJew = "http://snomed.info/sct#427754003";
+
+    /// <summary>
     /// Literal for code: LutheranFollowerOfReligion
     /// </summary>
     public const string LiteralLutheranFollowerOfReligion = "427755002";
+
+    /// <summary>
+    /// Literal for code: NONELutheranFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONELutheranFollowerOfReligion = "http://snomed.info/sct#427755002";
 
     /// <summary>
     /// Literal for code: CongregationalistFollowerOfReligion
@@ -12542,9 +16012,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongregationalistFollowerOfReligion = "427874000";
 
     /// <summary>
+    /// Literal for code: NONECongregationalistFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONECongregationalistFollowerOfReligion = "http://snomed.info/sct#427874000";
+
+    /// <summary>
     /// Literal for code: HarediJew
     /// </summary>
     public const string LiteralHarediJew = "427950002";
+
+    /// <summary>
+    /// Literal for code: NONEHarediJew
+    /// </summary>
+    public const string LiteralNONEHarediJew = "http://snomed.info/sct#427950002";
 
     /// <summary>
     /// Literal for code: AdvaitinHinduFollowerOfReligion
@@ -12552,9 +16032,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdvaitinHinduFollowerOfReligion = "427963008";
 
     /// <summary>
+    /// Literal for code: NONEAdvaitinHinduFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEAdvaitinHinduFollowerOfReligion = "http://snomed.info/sct#427963008";
+
+    /// <summary>
     /// Literal for code: ZenBuddhist
     /// </summary>
     public const string LiteralZenBuddhist = "427981006";
+
+    /// <summary>
+    /// Literal for code: NONEZenBuddhist
+    /// </summary>
+    public const string LiteralNONEZenBuddhist = "http://snomed.info/sct#427981006";
 
     /// <summary>
     /// Literal for code: ClinicalTrialParticipant
@@ -12562,9 +16052,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalTrialParticipant = "428024001";
 
     /// <summary>
+    /// Literal for code: NONEClinicalTrialParticipant
+    /// </summary>
+    public const string LiteralNONEClinicalTrialParticipant = "http://snomed.info/sct#428024001";
+
+    /// <summary>
     /// Literal for code: AnabaptistFollowerOfReligion
     /// </summary>
     public const string LiteralAnabaptistFollowerOfReligion = "428315004";
+
+    /// <summary>
+    /// Literal for code: NONEAnabaptistFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEAnabaptistFollowerOfReligion = "http://snomed.info/sct#428315004";
 
     /// <summary>
     /// Literal for code: AryaSamajHindu
@@ -12572,9 +16072,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAryaSamajHindu = "428347009";
 
     /// <summary>
+    /// Literal for code: NONEAryaSamajHindu
+    /// </summary>
+    public const string LiteralNONEAryaSamajHindu = "http://snomed.info/sct#428347009";
+
+    /// <summary>
     /// Literal for code: CopticOrthodoxFollowerOfReligion
     /// </summary>
     public const string LiteralCopticOrthodoxFollowerOfReligion = "428373004";
+
+    /// <summary>
+    /// Literal for code: NONECopticOrthodoxFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONECopticOrthodoxFollowerOfReligion = "http://snomed.info/sct#428373004";
 
     /// <summary>
     /// Literal for code: EasternCatholic
@@ -12582,9 +16092,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEasternCatholic = "428376007";
 
     /// <summary>
+    /// Literal for code: NONEEasternCatholic
+    /// </summary>
+    public const string LiteralNONEEasternCatholic = "http://snomed.info/sct#428376007";
+
+    /// <summary>
     /// Literal for code: EthiopianOrthodoxTewahedoFollowerOfReligion
     /// </summary>
     public const string LiteralEthiopianOrthodoxTewahedoFollowerOfReligion = "428378008";
+
+    /// <summary>
+    /// Literal for code: NONEEthiopianOrthodoxTewahedoFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEEthiopianOrthodoxTewahedoFollowerOfReligion = "http://snomed.info/sct#428378008";
 
     /// <summary>
     /// Literal for code: TheravadaBuddhist
@@ -12592,9 +16112,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTheravadaBuddhist = "428407001";
 
     /// <summary>
+    /// Literal for code: NONETheravadaBuddhist
+    /// </summary>
+    public const string LiteralNONETheravadaBuddhist = "http://snomed.info/sct#428407001";
+
+    /// <summary>
     /// Literal for code: Wiccan
     /// </summary>
     public const string LiteralWiccan = "428408006";
+
+    /// <summary>
+    /// Literal for code: NONEWiccan
+    /// </summary>
+    public const string LiteralNONEWiccan = "http://snomed.info/sct#428408006";
 
     /// <summary>
     /// Literal for code: ShaktiHindu
@@ -12602,9 +16132,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralShaktiHindu = "428410008";
 
     /// <summary>
+    /// Literal for code: NONEShaktiHindu
+    /// </summary>
+    public const string LiteralNONEShaktiHindu = "http://snomed.info/sct#428410008";
+
+    /// <summary>
     /// Literal for code: TibetanBuddhistFollowerOfReligion
     /// </summary>
     public const string LiteralTibetanBuddhistFollowerOfReligion = "428496003";
+
+    /// <summary>
+    /// Literal for code: NONETibetanBuddhistFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONETibetanBuddhistFollowerOfReligion = "http://snomed.info/sct#428496003";
 
     /// <summary>
     /// Literal for code: OrthodoxChristian
@@ -12612,9 +16152,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOrthodoxChristian = "428503004";
 
     /// <summary>
+    /// Literal for code: NONEOrthodoxChristian
+    /// </summary>
+    public const string LiteralNONEOrthodoxChristian = "http://snomed.info/sct#428503004";
+
+    /// <summary>
     /// Literal for code: ChristianSpiritualistFollowerOfReligion
     /// </summary>
     public const string LiteralChristianSpiritualistFollowerOfReligion = "428504005";
+
+    /// <summary>
+    /// Literal for code: NONEChristianSpiritualistFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEChristianSpiritualistFollowerOfReligion = "http://snomed.info/sct#428504005";
 
     /// <summary>
     /// Literal for code: DruidFollowerOfReligion
@@ -12622,9 +16172,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDruidFollowerOfReligion = "428506007";
 
     /// <summary>
+    /// Literal for code: NONEDruidFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEDruidFollowerOfReligion = "http://snomed.info/sct#428506007";
+
+    /// <summary>
     /// Literal for code: SmartaHindu
     /// </summary>
     public const string LiteralSmartaHindu = "428620006";
+
+    /// <summary>
+    /// Literal for code: NONESmartaHindu
+    /// </summary>
+    public const string LiteralNONESmartaHindu = "http://snomed.info/sct#428620006";
 
     /// <summary>
     /// Literal for code: NichirenBuddhist
@@ -12632,9 +16192,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNichirenBuddhist = "428666001";
 
     /// <summary>
+    /// Literal for code: NONENichirenBuddhist
+    /// </summary>
+    public const string LiteralNONENichirenBuddhist = "http://snomed.info/sct#428666001";
+
+    /// <summary>
     /// Literal for code: CaseContact
     /// </summary>
     public const string LiteralCaseContact = "428792000";
+
+    /// <summary>
+    /// Literal for code: NONECaseContact
+    /// </summary>
+    public const string LiteralNONECaseContact = "http://snomed.info/sct#428792000";
 
     /// <summary>
     /// Literal for code: IsmailiMuslim
@@ -12642,9 +16212,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIsmailiMuslim = "428801007";
 
     /// <summary>
+    /// Literal for code: NONEIsmailiMuslim
+    /// </summary>
+    public const string LiteralNONEIsmailiMuslim = "http://snomed.info/sct#428801007";
+
+    /// <summary>
     /// Literal for code: AhmadiFollowerOfReligion
     /// </summary>
     public const string LiteralAhmadiFollowerOfReligion = "428815009";
+
+    /// <summary>
+    /// Literal for code: NONEAhmadiFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEAhmadiFollowerOfReligion = "http://snomed.info/sct#428815009";
 
     /// <summary>
     /// Literal for code: ArmenianCatholic
@@ -12652,9 +16232,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArmenianCatholic = "428816005";
 
     /// <summary>
+    /// Literal for code: NONEArmenianCatholic
+    /// </summary>
+    public const string LiteralNONEArmenianCatholic = "http://snomed.info/sct#428816005";
+
+    /// <summary>
     /// Literal for code: PureLandBuddhistFollowerOfReligion
     /// </summary>
     public const string LiteralPureLandBuddhistFollowerOfReligion = "428820009";
+
+    /// <summary>
+    /// Literal for code: NONEPureLandBuddhistFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEPureLandBuddhistFollowerOfReligion = "http://snomed.info/sct#428820009";
 
     /// <summary>
     /// Literal for code: SeventhDayAdventist
@@ -12662,9 +16252,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSeventhDayAdventist = "428821008";
 
     /// <summary>
+    /// Literal for code: NONESeventhDayAdventist
+    /// </summary>
+    public const string LiteralNONESeventhDayAdventist = "http://snomed.info/sct#428821008";
+
+    /// <summary>
     /// Literal for code: GreekOrthodox
     /// </summary>
     public const string LiteralGreekOrthodox = "429158002";
+
+    /// <summary>
+    /// Literal for code: NONEGreekOrthodox
+    /// </summary>
+    public const string LiteralNONEGreekOrthodox = "http://snomed.info/sct#429158002";
 
     /// <summary>
     /// Literal for code: Spiritualist
@@ -12672,9 +16272,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpiritualist = "429171004";
 
     /// <summary>
+    /// Literal for code: NONESpiritualist
+    /// </summary>
+    public const string LiteralNONESpiritualist = "http://snomed.info/sct#429171004";
+
+    /// <summary>
     /// Literal for code: ShivaHinduFollowerOfReligion
     /// </summary>
     public const string LiteralShivaHinduFollowerOfReligion = "429379008";
+
+    /// <summary>
+    /// Literal for code: NONEShivaHinduFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEShivaHinduFollowerOfReligion = "http://snomed.info/sct#429379008";
 
     /// <summary>
     /// Literal for code: ReformJewFollowerOfReligion
@@ -12682,9 +16292,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReformJewFollowerOfReligion = "429509008";
 
     /// <summary>
+    /// Literal for code: NONEReformJewFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEReformJewFollowerOfReligion = "http://snomed.info/sct#429509008";
+
+    /// <summary>
     /// Literal for code: VaishnavaHindu
     /// </summary>
     public const string LiteralVaishnavaHindu = "429511004";
+
+    /// <summary>
+    /// Literal for code: NONEVaishnavaHindu
+    /// </summary>
+    public const string LiteralNONEVaishnavaHindu = "http://snomed.info/sct#429511004";
 
     /// <summary>
     /// Literal for code: NewKadampaTraditionBuddhist
@@ -12692,9 +16312,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNewKadampaTraditionBuddhist = "429527006";
 
     /// <summary>
+    /// Literal for code: NONENewKadampaTraditionBuddhist
+    /// </summary>
+    public const string LiteralNONENewKadampaTraditionBuddhist = "http://snomed.info/sct#429527006";
+
+    /// <summary>
     /// Literal for code: MahayanaBuddhist
     /// </summary>
     public const string LiteralMahayanaBuddhist = "429533002";
+
+    /// <summary>
+    /// Literal for code: NONEMahayanaBuddhist
+    /// </summary>
+    public const string LiteralNONEMahayanaBuddhist = "http://snomed.info/sct#429533002";
 
     /// <summary>
     /// Literal for code: MasortiJewFollowerOfReligion
@@ -12702,9 +16332,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMasortiJewFollowerOfReligion = "429534008";
 
     /// <summary>
+    /// Literal for code: NONEMasortiJewFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEMasortiJewFollowerOfReligion = "http://snomed.info/sct#429534008";
+
+    /// <summary>
     /// Literal for code: Calvinist
     /// </summary>
     public const string LiteralCalvinist = "429539003";
+
+    /// <summary>
+    /// Literal for code: NONECalvinist
+    /// </summary>
+    public const string LiteralNONECalvinist = "http://snomed.info/sct#429539003";
 
     /// <summary>
     /// Literal for code: TaoistFollowerOfReligion
@@ -12712,9 +16352,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTaoistFollowerOfReligion = "429543004";
 
     /// <summary>
+    /// Literal for code: NONETaoistFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONETaoistFollowerOfReligion = "http://snomed.info/sct#429543004";
+
+    /// <summary>
     /// Literal for code: RussianOrthodoxFollowerOfReligion
     /// </summary>
     public const string LiteralRussianOrthodoxFollowerOfReligion = "429544005";
+
+    /// <summary>
+    /// Literal for code: NONERussianOrthodoxFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONERussianOrthodoxFollowerOfReligion = "http://snomed.info/sct#429544005";
 
     /// <summary>
     /// Literal for code: SanatanaDharmaFollower
@@ -12722,9 +16372,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSanatanaDharmaFollower = "429545006";
 
     /// <summary>
+    /// Literal for code: NONESanatanaDharmaFollower
+    /// </summary>
+    public const string LiteralNONESanatanaDharmaFollower = "http://snomed.info/sct#429545006";
+
+    /// <summary>
     /// Literal for code: Shinto
     /// </summary>
     public const string LiteralShinto = "429547003";
+
+    /// <summary>
+    /// Literal for code: NONEShinto
+    /// </summary>
+    public const string LiteralNONEShinto = "http://snomed.info/sct#429547003";
 
     /// <summary>
     /// Literal for code: PatientAdvocate
@@ -12732,9 +16392,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPatientAdvocate = "429577009";
 
     /// <summary>
+    /// Literal for code: NONEPatientAdvocate
+    /// </summary>
+    public const string LiteralNONEPatientAdvocate = "http://snomed.info/sct#429577009";
+
+    /// <summary>
     /// Literal for code: OrthodoxJewFollowerOfReligion
     /// </summary>
     public const string LiteralOrthodoxJewFollowerOfReligion = "429644000";
+
+    /// <summary>
+    /// Literal for code: NONEOrthodoxJewFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEOrthodoxJewFollowerOfReligion = "http://snomed.info/sct#429644000";
 
     /// <summary>
     /// Literal for code: UnitarianFollowerOfReligion
@@ -12742,9 +16412,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnitarianFollowerOfReligion = "429708003";
 
     /// <summary>
+    /// Literal for code: NONEUnitarianFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEUnitarianFollowerOfReligion = "http://snomed.info/sct#429708003";
+
+    /// <summary>
     /// Literal for code: BahaQuoteI
     /// </summary>
     public const string LiteralBahaQuoteI = "429732005";
+
+    /// <summary>
+    /// Literal for code: NONEBahaQuoteI
+    /// </summary>
+    public const string LiteralNONEBahaQuoteI = "http://snomed.info/sct#429732005";
 
     /// <summary>
     /// Literal for code: JainFollowerOfReligion
@@ -12752,9 +16432,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJainFollowerOfReligion = "429787006";
 
     /// <summary>
+    /// Literal for code: NONEJainFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEJainFollowerOfReligion = "http://snomed.info/sct#429787006";
+
+    /// <summary>
     /// Literal for code: ZoroastrianFollowerOfReligion
     /// </summary>
     public const string LiteralZoroastrianFollowerOfReligion = "429790000";
+
+    /// <summary>
+    /// Literal for code: NONEZoroastrianFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEZoroastrianFollowerOfReligion = "http://snomed.info/sct#429790000";
 
     /// <summary>
     /// Literal for code: DonorForIntestineTransplant
@@ -12762,9 +16452,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDonorForIntestineTransplant = "430098004";
 
     /// <summary>
+    /// Literal for code: NONEDonorForIntestineTransplant
+    /// </summary>
+    public const string LiteralNONEDonorForIntestineTransplant = "http://snomed.info/sct#430098004";
+
+    /// <summary>
     /// Literal for code: WholeBloodDonor
     /// </summary>
     public const string LiteralWholeBloodDonor = "430101000";
+
+    /// <summary>
+    /// Literal for code: NONEWholeBloodDonor
+    /// </summary>
+    public const string LiteralNONEWholeBloodDonor = "http://snomed.info/sct#430101000";
 
     /// <summary>
     /// Literal for code: StemCellDonor
@@ -12772,9 +16472,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStemCellDonor = "430792005";
 
     /// <summary>
+    /// Literal for code: NONEStemCellDonor
+    /// </summary>
+    public const string LiteralNONEStemCellDonor = "http://snomed.info/sct#430792005";
+
+    /// <summary>
     /// Literal for code: EggDonor
     /// </summary>
     public const string LiteralEggDonor = "430882007";
+
+    /// <summary>
+    /// Literal for code: NONEEggDonor
+    /// </summary>
+    public const string LiteralNONEEggDonor = "http://snomed.info/sct#430882007";
 
     /// <summary>
     /// Literal for code: FemaleChild
@@ -12782,9 +16492,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFemaleChild = "431549007";
 
     /// <summary>
+    /// Literal for code: NONEFemaleChild
+    /// </summary>
+    public const string LiteralNONEFemaleChild = "http://snomed.info/sct#431549007";
+
+    /// <summary>
     /// Literal for code: HealthCoach
     /// </summary>
     public const string LiteralHealthCoach = "432100008";
+
+    /// <summary>
+    /// Literal for code: NONEHealthCoach
+    /// </summary>
+    public const string LiteralNONEHealthCoach = "http://snomed.info/sct#432100008";
 
     /// <summary>
     /// Literal for code: JurisdictionalHealthNumber
@@ -12792,9 +16512,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJurisdictionalHealthNumber = "432233171000087103";
 
     /// <summary>
+    /// Literal for code: NONEJurisdictionalHealthNumber
+    /// </summary>
+    public const string LiteralNONEJurisdictionalHealthNumber = "http://snomed.info/sct#432233171000087103";
+
+    /// <summary>
     /// Literal for code: Boy
     /// </summary>
     public const string LiteralBoy = "433152004";
+
+    /// <summary>
+    /// Literal for code: NONEBoy
+    /// </summary>
+    public const string LiteralNONEBoy = "http://snomed.info/sct#433152004";
 
     /// <summary>
     /// Literal for code: HumanOocyteDonorAge35AndOlder
@@ -12802,9 +16532,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHumanOocyteDonorAge35AndOlder = "433475001";
 
     /// <summary>
+    /// Literal for code: NONEHumanOocyteDonorAge35AndOlder
+    /// </summary>
+    public const string LiteralNONEHumanOocyteDonorAge35AndOlder = "http://snomed.info/sct#433475001";
+
+    /// <summary>
     /// Literal for code: OccupationalHealthNurse
     /// </summary>
     public const string LiteralOccupationalHealthNurse = "43702002";
+
+    /// <summary>
+    /// Literal for code: NONEOccupationalHealthNurse
+    /// </summary>
+    public const string LiteralNONEOccupationalHealthNurse = "http://snomed.info/sct#43702002";
 
     /// <summary>
     /// Literal for code: ProvincialAndOrTerritorialGovernmentPlanOutOfJurisdiction
@@ -12812,9 +16552,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProvincialAndOrTerritorialGovernmentPlanOutOfJurisdiction = "437208901000087109";
 
     /// <summary>
+    /// Literal for code: NONEProvincialAndOrTerritorialGovernmentPlanOutOfJurisdiction
+    /// </summary>
+    public const string LiteralNONEProvincialAndOrTerritorialGovernmentPlanOutOfJurisdiction = "http://snomed.info/sct#437208901000087109";
+
+    /// <summary>
     /// Literal for code: PersonCategorizedByAffiliationWithBeliefSystem
     /// </summary>
     public const string LiteralPersonCategorizedByAffiliationWithBeliefSystem = "438347000";
+
+    /// <summary>
+    /// Literal for code: NONEPersonCategorizedByAffiliationWithBeliefSystem
+    /// </summary>
+    public const string LiteralNONEPersonCategorizedByAffiliationWithBeliefSystem = "http://snomed.info/sct#438347000";
 
     /// <summary>
     /// Literal for code: ProviderNumberIssuedByThirdParty
@@ -12822,9 +16572,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProviderNumberIssuedByThirdParty = "439182891000087102";
 
     /// <summary>
+    /// Literal for code: NONEProviderNumberIssuedByThirdParty
+    /// </summary>
+    public const string LiteralNONEProviderNumberIssuedByThirdParty = "http://snomed.info/sct#439182891000087102";
+
+    /// <summary>
     /// Literal for code: HealthRegulatoryBodyForPhysiciansAndSurgeons
     /// </summary>
     public const string LiteralHealthRegulatoryBodyForPhysiciansAndSurgeons = "441144831000087108";
+
+    /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForPhysiciansAndSurgeons
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForPhysiciansAndSurgeons = "http://snomed.info/sct#441144831000087108";
 
     /// <summary>
     /// Literal for code: SpermDonor
@@ -12832,9 +16592,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpermDonor = "441463002";
 
     /// <summary>
+    /// Literal for code: NONESpermDonor
+    /// </summary>
+    public const string LiteralNONESpermDonor = "http://snomed.info/sct#441463002";
+
+    /// <summary>
     /// Literal for code: StrangerIsSpermDonorForArtificialInsemination
     /// </summary>
     public const string LiteralStrangerIsSpermDonorForArtificialInsemination = "441465009";
+
+    /// <summary>
+    /// Literal for code: NONEStrangerIsSpermDonorForArtificialInsemination
+    /// </summary>
+    public const string LiteralNONEStrangerIsSpermDonorForArtificialInsemination = "http://snomed.info/sct#441465009";
 
     /// <summary>
     /// Literal for code: UnrelatedKnownSpermDonorForArtificialInsemination
@@ -12842,9 +16612,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnrelatedKnownSpermDonorForArtificialInsemination = "441468006";
 
     /// <summary>
+    /// Literal for code: NONEUnrelatedKnownSpermDonorForArtificialInsemination
+    /// </summary>
+    public const string LiteralNONEUnrelatedKnownSpermDonorForArtificialInsemination = "http://snomed.info/sct#441468006";
+
+    /// <summary>
     /// Literal for code: Granddaughter
     /// </summary>
     public const string LiteralGranddaughter = "44181008";
+
+    /// <summary>
+    /// Literal for code: NONEGranddaughter
+    /// </summary>
+    public const string LiteralNONEGranddaughter = "http://snomed.info/sct#44181008";
 
     /// <summary>
     /// Literal for code: RespiratoryTherapist
@@ -12852,9 +16632,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRespiratoryTherapist = "442867008";
 
     /// <summary>
+    /// Literal for code: NONERespiratoryTherapist
+    /// </summary>
+    public const string LiteralNONERespiratoryTherapist = "http://snomed.info/sct#442867008";
+
+    /// <summary>
     /// Literal for code: PodiatricSurgeon
     /// </summary>
     public const string LiteralPodiatricSurgeon = "443090005";
+
+    /// <summary>
+    /// Literal for code: NONEPodiatricSurgeon
+    /// </summary>
+    public const string LiteralNONEPodiatricSurgeon = "http://snomed.info/sct#443090005";
 
     /// <summary>
     /// Literal for code: MinistryOfHealth
@@ -12862,9 +16652,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMinistryOfHealth = "443470051000087109";
 
     /// <summary>
+    /// Literal for code: NONEMinistryOfHealth
+    /// </summary>
+    public const string LiteralNONEMinistryOfHealth = "http://snomed.info/sct#443470051000087109";
+
+    /// <summary>
     /// Literal for code: LegalSibling
     /// </summary>
     public const string LiteralLegalSibling = "444000";
+
+    /// <summary>
+    /// Literal for code: NONELegalSibling
+    /// </summary>
+    public const string LiteralNONELegalSibling = "http://snomed.info/sct#444000";
 
     /// <summary>
     /// Literal for code: PersonWithCharacteristicRelatedToSubjectOfRecord
@@ -12872,9 +16672,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPersonWithCharacteristicRelatedToSubjectOfRecord = "444018008";
 
     /// <summary>
+    /// Literal for code: NONEPersonWithCharacteristicRelatedToSubjectOfRecord
+    /// </summary>
+    public const string LiteralNONEPersonWithCharacteristicRelatedToSubjectOfRecord = "http://snomed.info/sct#444018008";
+
+    /// <summary>
     /// Literal for code: SpouseOfSubject
     /// </summary>
     public const string LiteralSpouseOfSubject = "444052006";
+
+    /// <summary>
+    /// Literal for code: NONESpouseOfSubject
+    /// </summary>
+    public const string LiteralNONESpouseOfSubject = "http://snomed.info/sct#444052006";
 
     /// <summary>
     /// Literal for code: HusbandOfSubject
@@ -12882,9 +16692,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHusbandOfSubject = "444053001";
 
     /// <summary>
+    /// Literal for code: NONEHusbandOfSubject
+    /// </summary>
+    public const string LiteralNONEHusbandOfSubject = "http://snomed.info/sct#444053001";
+
+    /// <summary>
     /// Literal for code: WifeOfSubject
     /// </summary>
     public const string LiteralWifeOfSubject = "444054007";
+
+    /// <summary>
+    /// Literal for code: NONEWifeOfSubject
+    /// </summary>
+    public const string LiteralNONEWifeOfSubject = "http://snomed.info/sct#444054007";
 
     /// <summary>
     /// Literal for code: UncleOfSubject
@@ -12892,9 +16712,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUncleOfSubject = "444055008";
 
     /// <summary>
+    /// Literal for code: NONEUncleOfSubject
+    /// </summary>
+    public const string LiteralNONEUncleOfSubject = "http://snomed.info/sct#444055008";
+
+    /// <summary>
     /// Literal for code: PartnerInRelationshipWithSubject
     /// </summary>
     public const string LiteralPartnerInRelationshipWithSubject = "444145006";
+
+    /// <summary>
+    /// Literal for code: NONEPartnerInRelationshipWithSubject
+    /// </summary>
+    public const string LiteralNONEPartnerInRelationshipWithSubject = "http://snomed.info/sct#444145006";
 
     /// <summary>
     /// Literal for code: BoyfriendOfSubject
@@ -12902,9 +16732,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBoyfriendOfSubject = "444146007";
 
     /// <summary>
+    /// Literal for code: NONEBoyfriendOfSubject
+    /// </summary>
+    public const string LiteralNONEBoyfriendOfSubject = "http://snomed.info/sct#444146007";
+
+    /// <summary>
     /// Literal for code: GirlfriendOfSubject
     /// </summary>
     public const string LiteralGirlfriendOfSubject = "444147003";
+
+    /// <summary>
+    /// Literal for code: NONEGirlfriendOfSubject
+    /// </summary>
+    public const string LiteralNONEGirlfriendOfSubject = "http://snomed.info/sct#444147003";
 
     /// <summary>
     /// Literal for code: PersonInFamilyOfSubject
@@ -12912,9 +16752,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPersonInFamilyOfSubject = "444148008";
 
     /// <summary>
+    /// Literal for code: NONEPersonInFamilyOfSubject
+    /// </summary>
+    public const string LiteralNONEPersonInFamilyOfSubject = "http://snomed.info/sct#444148008";
+
+    /// <summary>
     /// Literal for code: Homemaker
     /// </summary>
     public const string LiteralHomemaker = "444168002";
+
+    /// <summary>
+    /// Literal for code: NONEHomemaker
+    /// </summary>
+    public const string LiteralNONEHomemaker = "http://snomed.info/sct#444168002";
 
     /// <summary>
     /// Literal for code: HouseHusband
@@ -12922,9 +16772,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHouseHusband = "444169005";
 
     /// <summary>
+    /// Literal for code: NONEHouseHusband
+    /// </summary>
+    public const string LiteralNONEHouseHusband = "http://snomed.info/sct#444169005";
+
+    /// <summary>
     /// Literal for code: AuntOfSubject
     /// </summary>
     public const string LiteralAuntOfSubject = "444191003";
+
+    /// <summary>
+    /// Literal for code: NONEAuntOfSubject
+    /// </summary>
+    public const string LiteralNONEAuntOfSubject = "http://snomed.info/sct#444191003";
 
     /// <summary>
     /// Literal for code: ChildOfSubject
@@ -12932,9 +16792,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChildOfSubject = "444192005";
 
     /// <summary>
+    /// Literal for code: NONEChildOfSubject
+    /// </summary>
+    public const string LiteralNONEChildOfSubject = "http://snomed.info/sct#444192005";
+
+    /// <summary>
     /// Literal for code: FirstDegreeBloodRelativeOfSubject
     /// </summary>
     public const string LiteralFirstDegreeBloodRelativeOfSubject = "444193000";
+
+    /// <summary>
+    /// Literal for code: NONEFirstDegreeBloodRelativeOfSubject
+    /// </summary>
+    public const string LiteralNONEFirstDegreeBloodRelativeOfSubject = "http://snomed.info/sct#444193000";
 
     /// <summary>
     /// Literal for code: DaughterOfSubject
@@ -12942,9 +16812,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDaughterOfSubject = "444194006";
 
     /// <summary>
+    /// Literal for code: NONEDaughterOfSubject
+    /// </summary>
+    public const string LiteralNONEDaughterOfSubject = "http://snomed.info/sct#444194006";
+
+    /// <summary>
     /// Literal for code: FriendOfSubject
     /// </summary>
     public const string LiteralFriendOfSubject = "444199001";
+
+    /// <summary>
+    /// Literal for code: NONEFriendOfSubject
+    /// </summary>
+    public const string LiteralNONEFriendOfSubject = "http://snomed.info/sct#444199001";
 
     /// <summary>
     /// Literal for code: CohabiteeInRelationshipWithSubject
@@ -12952,9 +16832,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCohabiteeInRelationshipWithSubject = "444210007";
 
     /// <summary>
+    /// Literal for code: NONECohabiteeInRelationshipWithSubject
+    /// </summary>
+    public const string LiteralNONECohabiteeInRelationshipWithSubject = "http://snomed.info/sct#444210007";
+
+    /// <summary>
     /// Literal for code: CommonLawHusbandOfSubject
     /// </summary>
     public const string LiteralCommonLawHusbandOfSubject = "444211006";
+
+    /// <summary>
+    /// Literal for code: NONECommonLawHusbandOfSubject
+    /// </summary>
+    public const string LiteralNONECommonLawHusbandOfSubject = "http://snomed.info/sct#444211006";
 
     /// <summary>
     /// Literal for code: CommonLawWifeOfSubject
@@ -12962,9 +16852,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommonLawWifeOfSubject = "444212004";
 
     /// <summary>
+    /// Literal for code: NONECommonLawWifeOfSubject
+    /// </summary>
+    public const string LiteralNONECommonLawWifeOfSubject = "http://snomed.info/sct#444212004";
+
+    /// <summary>
     /// Literal for code: DomesticPartnerOfSubject
     /// </summary>
     public const string LiteralDomesticPartnerOfSubject = "444213009";
+
+    /// <summary>
+    /// Literal for code: NONEDomesticPartnerOfSubject
+    /// </summary>
+    public const string LiteralNONEDomesticPartnerOfSubject = "http://snomed.info/sct#444213009";
 
     /// <summary>
     /// Literal for code: SonOfSubject
@@ -12972,9 +16872,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSonOfSubject = "444241008";
 
     /// <summary>
+    /// Literal for code: NONESonOfSubject
+    /// </summary>
+    public const string LiteralNONESonOfSubject = "http://snomed.info/sct#444241008";
+
+    /// <summary>
     /// Literal for code: GrandparentOfSubject
     /// </summary>
     public const string LiteralGrandparentOfSubject = "444242001";
+
+    /// <summary>
+    /// Literal for code: NONEGrandparentOfSubject
+    /// </summary>
+    public const string LiteralNONEGrandparentOfSubject = "http://snomed.info/sct#444242001";
 
     /// <summary>
     /// Literal for code: MaternalGrandfatherOfSubject
@@ -12982,9 +16892,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaternalGrandfatherOfSubject = "444243006";
 
     /// <summary>
+    /// Literal for code: NONEMaternalGrandfatherOfSubject
+    /// </summary>
+    public const string LiteralNONEMaternalGrandfatherOfSubject = "http://snomed.info/sct#444243006";
+
+    /// <summary>
     /// Literal for code: MaternalGrandmotherOfSubject
     /// </summary>
     public const string LiteralMaternalGrandmotherOfSubject = "444244000";
+
+    /// <summary>
+    /// Literal for code: NONEMaternalGrandmotherOfSubject
+    /// </summary>
+    public const string LiteralNONEMaternalGrandmotherOfSubject = "http://snomed.info/sct#444244000";
 
     /// <summary>
     /// Literal for code: FianceOfSubject
@@ -12992,9 +16912,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFianceOfSubject = "444278006";
 
     /// <summary>
+    /// Literal for code: NONEFianceOfSubject
+    /// </summary>
+    public const string LiteralNONEFianceOfSubject = "http://snomed.info/sct#444278006";
+
+    /// <summary>
     /// Literal for code: FemaleFianceOfSubject
     /// </summary>
     public const string LiteralFemaleFianceOfSubject = "444279003";
+
+    /// <summary>
+    /// Literal for code: NONEFemaleFianceOfSubject
+    /// </summary>
+    public const string LiteralNONEFemaleFianceOfSubject = "http://snomed.info/sct#444279003";
 
     /// <summary>
     /// Literal for code: MaleFianceOfSubject
@@ -13002,9 +16932,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaleFianceOfSubject = "444280000";
 
     /// <summary>
+    /// Literal for code: NONEMaleFianceOfSubject
+    /// </summary>
+    public const string LiteralNONEMaleFianceOfSubject = "http://snomed.info/sct#444280000";
+
+    /// <summary>
     /// Literal for code: PaternalGrandfatherOfSubject
     /// </summary>
     public const string LiteralPaternalGrandfatherOfSubject = "444292000";
+
+    /// <summary>
+    /// Literal for code: NONEPaternalGrandfatherOfSubject
+    /// </summary>
+    public const string LiteralNONEPaternalGrandfatherOfSubject = "http://snomed.info/sct#444292000";
 
     /// <summary>
     /// Literal for code: PaternalGrandmotherOfSubject
@@ -13012,9 +16952,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPaternalGrandmotherOfSubject = "444293005";
 
     /// <summary>
+    /// Literal for code: NONEPaternalGrandmotherOfSubject
+    /// </summary>
+    public const string LiteralNONEPaternalGrandmotherOfSubject = "http://snomed.info/sct#444293005";
+
+    /// <summary>
     /// Literal for code: ParentOfSubject
     /// </summary>
     public const string LiteralParentOfSubject = "444294004";
+
+    /// <summary>
+    /// Literal for code: NONEParentOfSubject
+    /// </summary>
+    public const string LiteralNONEParentOfSubject = "http://snomed.info/sct#444294004";
 
     /// <summary>
     /// Literal for code: FatherOfSubject
@@ -13022,9 +16972,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFatherOfSubject = "444295003";
 
     /// <summary>
+    /// Literal for code: NONEFatherOfSubject
+    /// </summary>
+    public const string LiteralNONEFatherOfSubject = "http://snomed.info/sct#444295003";
+
+    /// <summary>
     /// Literal for code: MotherOfSubject
     /// </summary>
     public const string LiteralMotherOfSubject = "444301002";
+
+    /// <summary>
+    /// Literal for code: NONEMotherOfSubject
+    /// </summary>
+    public const string LiteralNONEMotherOfSubject = "http://snomed.info/sct#444301002";
 
     /// <summary>
     /// Literal for code: SiblingOfSubject
@@ -13032,9 +16992,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSiblingOfSubject = "444302009";
 
     /// <summary>
+    /// Literal for code: NONESiblingOfSubject
+    /// </summary>
+    public const string LiteralNONESiblingOfSubject = "http://snomed.info/sct#444302009";
+
+    /// <summary>
     /// Literal for code: BrotherOfSubject
     /// </summary>
     public const string LiteralBrotherOfSubject = "444303004";
+
+    /// <summary>
+    /// Literal for code: NONEBrotherOfSubject
+    /// </summary>
+    public const string LiteralNONEBrotherOfSubject = "http://snomed.info/sct#444303004";
 
     /// <summary>
     /// Literal for code: SisterOfSubject
@@ -13042,9 +17012,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSisterOfSubject = "444304005";
 
     /// <summary>
+    /// Literal for code: NONESisterOfSubject
+    /// </summary>
+    public const string LiteralNONESisterOfSubject = "http://snomed.info/sct#444304005";
+
+    /// <summary>
     /// Literal for code: RecipientOfBiologicalMaterialFromSubject
     /// </summary>
     public const string LiteralRecipientOfBiologicalMaterialFromSubject = "444464007";
+
+    /// <summary>
+    /// Literal for code: NONERecipientOfBiologicalMaterialFromSubject
+    /// </summary>
+    public const string LiteralNONERecipientOfBiologicalMaterialFromSubject = "http://snomed.info/sct#444464007";
 
     /// <summary>
     /// Literal for code: ApostolicPentecostalistFollowerOfReligion
@@ -13052,9 +17032,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralApostolicPentecostalistFollowerOfReligion = "444870008";
 
     /// <summary>
+    /// Literal for code: NONEApostolicPentecostalistFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEApostolicPentecostalistFollowerOfReligion = "http://snomed.info/sct#444870008";
+
+    /// <summary>
     /// Literal for code: Hypnotherapist
     /// </summary>
     public const string LiteralHypnotherapist = "444912007";
+
+    /// <summary>
+    /// Literal for code: NONEHypnotherapist
+    /// </summary>
+    public const string LiteralNONEHypnotherapist = "http://snomed.info/sct#444912007";
 
     /// <summary>
     /// Literal for code: AsthmaNurseSpecialist
@@ -13062,9 +17052,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAsthmaNurseSpecialist = "445313000";
 
     /// <summary>
+    /// Literal for code: NONEAsthmaNurseSpecialist
+    /// </summary>
+    public const string LiteralNONEAsthmaNurseSpecialist = "http://snomed.info/sct#445313000";
+
+    /// <summary>
     /// Literal for code: NurseCaseManager
     /// </summary>
     public const string LiteralNurseCaseManager = "445451001";
+
+    /// <summary>
+    /// Literal for code: NONENurseCaseManager
+    /// </summary>
+    public const string LiteralNONENurseCaseManager = "http://snomed.info/sct#445451001";
 
     /// <summary>
     /// Literal for code: PCPPrimaryCarePhysician
@@ -13072,9 +17072,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPCPPrimaryCarePhysician = "446050000";
 
     /// <summary>
+    /// Literal for code: NONEPCPPrimaryCarePhysician
+    /// </summary>
+    public const string LiteralNONEPCPPrimaryCarePhysician = "http://snomed.info/sct#446050000";
+
+    /// <summary>
     /// Literal for code: PharmaceuticalAssistant
     /// </summary>
     public const string LiteralPharmaceuticalAssistant = "44652006";
+
+    /// <summary>
+    /// Literal for code: NONEPharmaceuticalAssistant
+    /// </summary>
+    public const string LiteralNONEPharmaceuticalAssistant = "http://snomed.info/sct#44652006";
 
     /// <summary>
     /// Literal for code: Refugee
@@ -13082,9 +17092,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRefugee = "446654005";
 
     /// <summary>
+    /// Literal for code: NONERefugee
+    /// </summary>
+    public const string LiteralNONERefugee = "http://snomed.info/sct#446654005";
+
+    /// <summary>
     /// Literal for code: AddictionMedicineSpecialist
     /// </summary>
     public const string LiteralAddictionMedicineSpecialist = "446701002";
+
+    /// <summary>
+    /// Literal for code: NONEAddictionMedicineSpecialist
+    /// </summary>
+    public const string LiteralNONEAddictionMedicineSpecialist = "http://snomed.info/sct#446701002";
 
     /// <summary>
     /// Literal for code: PAPhysicianAssistant
@@ -13092,9 +17112,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPAPhysicianAssistant = "449161006";
 
     /// <summary>
+    /// Literal for code: NONEPAPhysicianAssistant
+    /// </summary>
+    public const string LiteralNONEPAPhysicianAssistant = "http://snomed.info/sct#449161006";
+
+    /// <summary>
     /// Literal for code: Acupuncturist
     /// </summary>
     public const string LiteralAcupuncturist = "450044741000087104";
+
+    /// <summary>
+    /// Literal for code: NONEAcupuncturist
+    /// </summary>
+    public const string LiteralNONEAcupuncturist = "http://snomed.info/sct#450044741000087104";
 
     /// <summary>
     /// Literal for code: InternationalStudent
@@ -13102,9 +17132,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInternationalStudent = "450768005";
 
     /// <summary>
+    /// Literal for code: NONEInternationalStudent
+    /// </summary>
+    public const string LiteralNONEInternationalStudent = "http://snomed.info/sct#450768005";
+
+    /// <summary>
     /// Literal for code: Masseur
     /// </summary>
     public const string LiteralMasseur = "45419001";
+
+    /// <summary>
+    /// Literal for code: NONEMasseur
+    /// </summary>
+    public const string LiteralNONEMasseur = "http://snomed.info/sct#45419001";
 
     /// <summary>
     /// Literal for code: Rheumatologist
@@ -13112,9 +17152,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRheumatologist = "45440000";
 
     /// <summary>
+    /// Literal for code: NONERheumatologist
+    /// </summary>
+    public const string LiteralNONERheumatologist = "http://snomed.info/sct#45440000";
+
+    /// <summary>
     /// Literal for code: Neurosurgeon
     /// </summary>
     public const string LiteralNeurosurgeon = "45544007";
+
+    /// <summary>
+    /// Literal for code: NONENeurosurgeon
+    /// </summary>
+    public const string LiteralNONENeurosurgeon = "http://snomed.info/sct#45544007";
 
     /// <summary>
     /// Literal for code: FirstCousin
@@ -13122,9 +17172,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFirstCousin = "4577005";
 
     /// <summary>
+    /// Literal for code: NONEFirstCousin
+    /// </summary>
+    public const string LiteralNONEFirstCousin = "http://snomed.info/sct#4577005";
+
+    /// <summary>
     /// Literal for code: HalfBrother
     /// </summary>
     public const string LiteralHalfBrother = "45929001";
+
+    /// <summary>
+    /// Literal for code: NONEHalfBrother
+    /// </summary>
+    public const string LiteralNONEHalfBrother = "http://snomed.info/sct#45929001";
 
     /// <summary>
     /// Literal for code: Sanitarian
@@ -13132,9 +17192,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSanitarian = "45956004";
 
     /// <summary>
+    /// Literal for code: NONESanitarian
+    /// </summary>
+    public const string LiteralNONESanitarian = "http://snomed.info/sct#45956004";
+
+    /// <summary>
     /// Literal for code: NewBrunswickDepartmentOfHealth
     /// </summary>
     public const string LiteralNewBrunswickDepartmentOfHealth = "460276491000087102";
+
+    /// <summary>
+    /// Literal for code: NONENewBrunswickDepartmentOfHealth
+    /// </summary>
+    public const string LiteralNONENewBrunswickDepartmentOfHealth = "http://snomed.info/sct#460276491000087102";
 
     /// <summary>
     /// Literal for code: Pharmacist
@@ -13142,9 +17212,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPharmacist = "46255001";
 
     /// <summary>
+    /// Literal for code: NONEPharmacist
+    /// </summary>
+    public const string LiteralNONEPharmacist = "http://snomed.info/sct#46255001";
+
+    /// <summary>
     /// Literal for code: Stepsister
     /// </summary>
     public const string LiteralStepsister = "46363003";
+
+    /// <summary>
+    /// Literal for code: NONEStepsister
+    /// </summary>
+    public const string LiteralNONEStepsister = "http://snomed.info/sct#46363003";
 
     /// <summary>
     /// Literal for code: PediatricOrthopedicSurgeon
@@ -13152,9 +17232,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricOrthopedicSurgeon = "465511991000087105";
 
     /// <summary>
+    /// Literal for code: NONEPediatricOrthopedicSurgeon
+    /// </summary>
+    public const string LiteralNONEPediatricOrthopedicSurgeon = "http://snomed.info/sct#465511991000087105";
+
+    /// <summary>
     /// Literal for code: MultiOrganDonor
     /// </summary>
     public const string LiteralMultiOrganDonor = "471000122100";
+
+    /// <summary>
+    /// Literal for code: NONEMultiOrganDonor
+    /// </summary>
+    public const string LiteralNONEMultiOrganDonor = "http://snomed.info/sct#471000122100";
 
     /// <summary>
     /// Literal for code: GovernmentMidwife
@@ -13162,9 +17252,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGovernmentMidwife = "471302004";
 
     /// <summary>
+    /// Literal for code: NONEGovernmentMidwife
+    /// </summary>
+    public const string LiteralNONEGovernmentMidwife = "http://snomed.info/sct#471302004";
+
+    /// <summary>
     /// Literal for code: MaleCousin
     /// </summary>
     public const string LiteralMaleCousin = "47801002";
+
+    /// <summary>
+    /// Literal for code: NONEMaleCousin
+    /// </summary>
+    public const string LiteralNONEMaleCousin = "http://snomed.info/sct#47801002";
 
     /// <summary>
     /// Literal for code: Acquaintance
@@ -13172,9 +17272,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcquaintance = "48385004";
 
     /// <summary>
+    /// Literal for code: NONEAcquaintance
+    /// </summary>
+    public const string LiteralNONEAcquaintance = "http://snomed.info/sct#48385004";
+
+    /// <summary>
     /// Literal for code: AdoptiveChild
     /// </summary>
     public const string LiteralAdoptiveChild = "48673000";
+
+    /// <summary>
+    /// Literal for code: NONEAdoptiveChild
+    /// </summary>
+    public const string LiteralNONEAdoptiveChild = "http://snomed.info/sct#48673000";
 
     /// <summary>
     /// Literal for code: Philologist
@@ -13182,9 +17292,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhilologist = "48740002";
 
     /// <summary>
+    /// Literal for code: NONEPhilologist
+    /// </summary>
+    public const string LiteralNONEPhilologist = "http://snomed.info/sct#48740002";
+
+    /// <summary>
     /// Literal for code: DispensingOptometrist
     /// </summary>
     public const string LiteralDispensingOptometrist = "49203003";
+
+    /// <summary>
+    /// Literal for code: NONEDispensingOptometrist
+    /// </summary>
+    public const string LiteralNONEDispensingOptometrist = "http://snomed.info/sct#49203003";
 
     /// <summary>
     /// Literal for code: PediatricHematologist
@@ -13192,9 +17312,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricHematologist = "494782281000087101";
 
     /// <summary>
+    /// Literal for code: NONEPediatricHematologist
+    /// </summary>
+    public const string LiteralNONEPediatricHematologist = "http://snomed.info/sct#494782281000087101";
+
+    /// <summary>
     /// Literal for code: MaxillofacialSurgeon
     /// </summary>
     public const string LiteralMaxillofacialSurgeon = "49993003";
+
+    /// <summary>
+    /// Literal for code: NONEMaxillofacialSurgeon
+    /// </summary>
+    public const string LiteralNONEMaxillofacialSurgeon = "http://snomed.info/sct#49993003";
 
     /// <summary>
     /// Literal for code: IdenticalTwinSister
@@ -13202,9 +17332,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIdenticalTwinSister = "50058005";
 
     /// <summary>
+    /// Literal for code: NONEIdenticalTwinSister
+    /// </summary>
+    public const string LiteralNONEIdenticalTwinSister = "http://snomed.info/sct#50058005";
+
+    /// <summary>
     /// Literal for code: Endodontist
     /// </summary>
     public const string LiteralEndodontist = "50149000";
+
+    /// <summary>
+    /// Literal for code: NONEEndodontist
+    /// </summary>
+    public const string LiteralNONEEndodontist = "http://snomed.info/sct#50149000";
 
     /// <summary>
     /// Literal for code: GreatGrandfather
@@ -13212,9 +17352,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGreatGrandfather = "50261002";
 
     /// <summary>
+    /// Literal for code: NONEGreatGrandfather
+    /// </summary>
+    public const string LiteralNONEGreatGrandfather = "http://snomed.info/sct#50261002";
+
+    /// <summary>
     /// Literal for code: SephardicJewFollowerOfReligion
     /// </summary>
     public const string LiteralSephardicJewFollowerOfReligion = "51616000";
+
+    /// <summary>
+    /// Literal for code: NONESephardicJewFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONESephardicJewFollowerOfReligion = "http://snomed.info/sct#51616000";
 
     /// <summary>
     /// Literal for code: NANursingAuxiliary
@@ -13222,9 +17372,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNANursingAuxiliary = "5275007";
 
     /// <summary>
+    /// Literal for code: NONENANursingAuxiliary
+    /// </summary>
+    public const string LiteralNONENANursingAuxiliary = "http://snomed.info/sct#5275007";
+
+    /// <summary>
     /// Literal for code: OlderSister
     /// </summary>
     public const string LiteralOlderSister = "53201003";
+
+    /// <summary>
+    /// Literal for code: NONEOlderSister
+    /// </summary>
+    public const string LiteralNONEOlderSister = "http://snomed.info/sct#53201003";
 
     /// <summary>
     /// Literal for code: AlbertaHealthAndWellness
@@ -13232,9 +17392,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlbertaHealthAndWellness = "539773351000087101";
 
     /// <summary>
+    /// Literal for code: NONEAlbertaHealthAndWellness
+    /// </summary>
+    public const string LiteralNONEAlbertaHealthAndWellness = "http://snomed.info/sct#539773351000087101";
+
+    /// <summary>
     /// Literal for code: Trustee
     /// </summary>
     public const string LiteralTrustee = "54056000";
+
+    /// <summary>
+    /// Literal for code: NONETrustee
+    /// </summary>
+    public const string LiteralNONETrustee = "http://snomed.info/sct#54056000";
 
     /// <summary>
     /// Literal for code: FaithHealer
@@ -13242,9 +17412,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFaithHealer = "54503009";
 
     /// <summary>
+    /// Literal for code: NONEFaithHealer
+    /// </summary>
+    public const string LiteralNONEFaithHealer = "http://snomed.info/sct#54503009";
+
+    /// <summary>
     /// Literal for code: HealthRegulatoryBodyForDenturists
     /// </summary>
     public const string LiteralHealthRegulatoryBodyForDenturists = "548886741000087101";
+
+    /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForDenturists
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForDenturists = "http://snomed.info/sct#548886741000087101";
 
     /// <summary>
     /// Literal for code: HealthRegulatoryBodyForChiropractors
@@ -13252,9 +17432,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthRegulatoryBodyForChiropractors = "549577861000087101";
 
     /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForChiropractors
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForChiropractors = "http://snomed.info/sct#549577861000087101";
+
+    /// <summary>
     /// Literal for code: NewfoundlandAndLabradorDepartmentOfHealthAndCommunityServices
     /// </summary>
     public const string LiteralNewfoundlandAndLabradorDepartmentOfHealthAndCommunityServices = "553641311000087101";
+
+    /// <summary>
+    /// Literal for code: NONENewfoundlandAndLabradorDepartmentOfHealthAndCommunityServices
+    /// </summary>
+    public const string LiteralNONENewfoundlandAndLabradorDepartmentOfHealthAndCommunityServices = "http://snomed.info/sct#553641311000087101";
 
     /// <summary>
     /// Literal for code: Cousin
@@ -13262,9 +17452,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCousin = "55538000";
 
     /// <summary>
+    /// Literal for code: NONECousin
+    /// </summary>
+    public const string LiteralNONECousin = "http://snomed.info/sct#55538000";
+
+    /// <summary>
     /// Literal for code: CanadianJurisdictionBased
     /// </summary>
     public const string LiteralCanadianJurisdictionBased = "5581000087108";
+
+    /// <summary>
+    /// Literal for code: NONECanadianJurisdictionBased
+    /// </summary>
+    public const string LiteralNONECanadianJurisdictionBased = "http://snomed.info/sct#5581000087108";
 
     /// <summary>
     /// Literal for code: Neurologist
@@ -13272,9 +17472,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeurologist = "56397003";
 
     /// <summary>
+    /// Literal for code: NONENeurologist
+    /// </summary>
+    public const string LiteralNONENeurologist = "http://snomed.info/sct#56397003";
+
+    /// <summary>
     /// Literal for code: CommunityPhysician
     /// </summary>
     public const string LiteralCommunityPhysician = "56466003";
+
+    /// <summary>
+    /// Literal for code: NONECommunityPhysician
+    /// </summary>
+    public const string LiteralNONECommunityPhysician = "http://snomed.info/sct#56466003";
 
     /// <summary>
     /// Literal for code: MedicalRecordAdministrator
@@ -13282,9 +17492,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalRecordAdministrator = "56542007";
 
     /// <summary>
+    /// Literal for code: NONEMedicalRecordAdministrator
+    /// </summary>
+    public const string LiteralNONEMedicalRecordAdministrator = "http://snomed.info/sct#56542007";
+
+    /// <summary>
     /// Literal for code: CardiovascularSurgeon
     /// </summary>
     public const string LiteralCardiovascularSurgeon = "56545009";
+
+    /// <summary>
+    /// Literal for code: NONECardiovascularSurgeon
+    /// </summary>
+    public const string LiteralNONECardiovascularSurgeon = "http://snomed.info/sct#56545009";
 
     /// <summary>
     /// Literal for code: CancerPlanSaskatchewanAndSexuallyTransmittedDiseasesPlan
@@ -13292,9 +17512,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCancerPlanSaskatchewanAndSexuallyTransmittedDiseasesPlan = "567496441000087102";
 
     /// <summary>
+    /// Literal for code: NONECancerPlanSaskatchewanAndSexuallyTransmittedDiseasesPlan
+    /// </summary>
+    public const string LiteralNONECancerPlanSaskatchewanAndSexuallyTransmittedDiseasesPlan = "http://snomed.info/sct#567496441000087102";
+
+    /// <summary>
     /// Literal for code: YukonDepartmentOfHealthAndSocialServices
     /// </summary>
     public const string LiteralYukonDepartmentOfHealthAndSocialServices = "569232871000087107";
+
+    /// <summary>
+    /// Literal for code: NONEYukonDepartmentOfHealthAndSocialServices
+    /// </summary>
+    public const string LiteralNONEYukonDepartmentOfHealthAndSocialServices = "http://snomed.info/sct#569232871000087107";
 
     /// <summary>
     /// Literal for code: FixedProsthodontist
@@ -13302,9 +17532,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFixedProsthodontist = "57654006";
 
     /// <summary>
+    /// Literal for code: NONEFixedProsthodontist
+    /// </summary>
+    public const string LiteralNONEFixedProsthodontist = "http://snomed.info/sct#57654006";
+
+    /// <summary>
     /// Literal for code: FosterSister
     /// </summary>
     public const string LiteralFosterSister = "58293006";
+
+    /// <summary>
+    /// Literal for code: NONEFosterSister
+    /// </summary>
+    public const string LiteralNONEFosterSister = "http://snomed.info/sct#58293006";
 
     /// <summary>
     /// Literal for code: MaternalUncle
@@ -13312,9 +17552,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaternalUncle = "583114651000087104";
 
     /// <summary>
+    /// Literal for code: NONEMaternalUncle
+    /// </summary>
+    public const string LiteralNONEMaternalUncle = "http://snomed.info/sct#583114651000087104";
+
+    /// <summary>
     /// Literal for code: LegalGuardian
     /// </summary>
     public const string LiteralLegalGuardian = "58626002";
+
+    /// <summary>
+    /// Literal for code: NONELegalGuardian
+    /// </summary>
+    public const string LiteralNONELegalGuardian = "http://snomed.info/sct#58626002";
 
     /// <summary>
     /// Literal for code: PaternalUncle
@@ -13322,9 +17572,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPaternalUncle = "589612571000087102";
 
     /// <summary>
+    /// Literal for code: NONEPaternalUncle
+    /// </summary>
+    public const string LiteralNONEPaternalUncle = "http://snomed.info/sct#589612571000087102";
+
+    /// <summary>
     /// Literal for code: GeneralPhysician
     /// </summary>
     public const string LiteralGeneralPhysician = "59058001";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralPhysician
+    /// </summary>
+    public const string LiteralNONEGeneralPhysician = "http://snomed.info/sct#59058001";
 
     /// <summary>
     /// Literal for code: OrthopedicTechnician
@@ -13332,9 +17592,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOrthopedicTechnician = "59169001";
 
     /// <summary>
+    /// Literal for code: NONEOrthopedicTechnician
+    /// </summary>
+    public const string LiteralNONEOrthopedicTechnician = "http://snomed.info/sct#59169001";
+
+    /// <summary>
     /// Literal for code: Psychologist
     /// </summary>
     public const string LiteralPsychologist = "59944000";
+
+    /// <summary>
+    /// Literal for code: NONEPsychologist
+    /// </summary>
+    public const string LiteralNONEPsychologist = "http://snomed.info/sct#59944000";
 
     /// <summary>
     /// Literal for code: CommunityBasedDietitian
@@ -13342,9 +17612,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommunityBasedDietitian = "60008001";
 
     /// <summary>
+    /// Literal for code: NONECommunityBasedDietitian
+    /// </summary>
+    public const string LiteralNONECommunityBasedDietitian = "http://snomed.info/sct#60008001";
+
+    /// <summary>
     /// Literal for code: NaturalBrother
     /// </summary>
     public const string LiteralNaturalBrother = "60614009";
+
+    /// <summary>
+    /// Literal for code: NONENaturalBrother
+    /// </summary>
+    public const string LiteralNONENaturalBrother = "http://snomed.info/sct#60614009";
 
     /// <summary>
     /// Literal for code: AdoptiveFather
@@ -13352,9 +17632,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdoptiveFather = "609005";
 
     /// <summary>
+    /// Literal for code: NONEAdoptiveFather
+    /// </summary>
+    public const string LiteralNONEAdoptiveFather = "http://snomed.info/sct#609005";
+
+    /// <summary>
     /// Literal for code: HealthRegulatoryBodyForPharmacists
     /// </summary>
     public const string LiteralHealthRegulatoryBodyForPharmacists = "609564621000087104";
+
+    /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForPharmacists
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForPharmacists = "http://snomed.info/sct#609564621000087104";
 
     /// <summary>
     /// Literal for code: MedicalPathologist
@@ -13362,9 +17652,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalPathologist = "61207006";
 
     /// <summary>
+    /// Literal for code: NONEMedicalPathologist
+    /// </summary>
+    public const string LiteralNONEMedicalPathologist = "http://snomed.info/sct#61207006";
+
+    /// <summary>
     /// Literal for code: LaboratoryMedicineSpecialist
     /// </summary>
     public const string LiteralLaboratoryMedicineSpecialist = "61246008";
+
+    /// <summary>
+    /// Literal for code: NONELaboratoryMedicineSpecialist
+    /// </summary>
+    public const string LiteralNONELaboratoryMedicineSpecialist = "http://snomed.info/sct#61246008";
 
     /// <summary>
     /// Literal for code: Otorhinolaryngologist
@@ -13372,9 +17672,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOtorhinolaryngologist = "61345009";
 
     /// <summary>
+    /// Literal for code: NONEOtorhinolaryngologist
+    /// </summary>
+    public const string LiteralNONEOtorhinolaryngologist = "http://snomed.info/sct#61345009";
+
+    /// <summary>
     /// Literal for code: Endocrinologist
     /// </summary>
     public const string LiteralEndocrinologist = "61894003";
+
+    /// <summary>
+    /// Literal for code: NONEEndocrinologist
+    /// </summary>
+    public const string LiteralNONEEndocrinologist = "http://snomed.info/sct#61894003";
 
     /// <summary>
     /// Literal for code: Neuroradiologist
@@ -13382,9 +17692,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeuroradiologist = "619197631000087102";
 
     /// <summary>
+    /// Literal for code: NONENeuroradiologist
+    /// </summary>
+    public const string LiteralNONENeuroradiologist = "http://snomed.info/sct#619197631000087102";
+
+    /// <summary>
     /// Literal for code: LegalMother
     /// </summary>
     public const string LiteralLegalMother = "62090008";
+
+    /// <summary>
+    /// Literal for code: NONELegalMother
+    /// </summary>
+    public const string LiteralNONELegalMother = "http://snomed.info/sct#62090008";
 
     /// <summary>
     /// Literal for code: FamilyMedicineSpecialist
@@ -13392,9 +17712,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFamilyMedicineSpecialist = "62247001";
 
     /// <summary>
+    /// Literal for code: NONEFamilyMedicineSpecialist
+    /// </summary>
+    public const string LiteralNONEFamilyMedicineSpecialist = "http://snomed.info/sct#62247001";
+
+    /// <summary>
     /// Literal for code: NaturalGrandFather
     /// </summary>
     public const string LiteralNaturalGrandFather = "62296006";
+
+    /// <summary>
+    /// Literal for code: NONENaturalGrandFather
+    /// </summary>
+    public const string LiteralNONENaturalGrandFather = "http://snomed.info/sct#62296006";
 
     /// <summary>
     /// Literal for code: FamilyMedicineSpecialistAnesthetist
@@ -13402,9 +17732,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFamilyMedicineSpecialistAnesthetist = "623630151000087105";
 
     /// <summary>
+    /// Literal for code: NONEFamilyMedicineSpecialistAnesthetist
+    /// </summary>
+    public const string LiteralNONEFamilyMedicineSpecialistAnesthetist = "http://snomed.info/sct#623630151000087105";
+
+    /// <summary>
     /// Literal for code: ClinicalImmunologist
     /// </summary>
     public const string LiteralClinicalImmunologist = "63098009";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalImmunologist
+    /// </summary>
+    public const string LiteralNONEClinicalImmunologist = "http://snomed.info/sct#63098009";
 
     /// <summary>
     /// Literal for code: HealthRegulatoryBodyForSocialWorkers
@@ -13412,9 +17752,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthRegulatoryBodyForSocialWorkers = "643545671000087106";
 
     /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForSocialWorkers
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForSocialWorkers = "http://snomed.info/sct#643545671000087106";
+
+    /// <summary>
     /// Literal for code: MinistryOfHealthAndLongTermCareOntario
     /// </summary>
     public const string LiteralMinistryOfHealthAndLongTermCareOntario = "644191431000087105";
+
+    /// <summary>
+    /// Literal for code: NONEMinistryOfHealthAndLongTermCareOntario
+    /// </summary>
+    public const string LiteralNONEMinistryOfHealthAndLongTermCareOntario = "http://snomed.info/sct#644191431000087105";
 
     /// <summary>
     /// Literal for code: SunniMuslimFollowerOfReligion
@@ -13422,9 +17772,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSunniMuslimFollowerOfReligion = "64988008";
 
     /// <summary>
+    /// Literal for code: NONESunniMuslimFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONESunniMuslimFollowerOfReligion = "http://snomed.info/sct#64988008";
+
+    /// <summary>
     /// Literal for code: StepMother
     /// </summary>
     public const string LiteralStepMother = "65412001";
+
+    /// <summary>
+    /// Literal for code: NONEStepMother
+    /// </summary>
+    public const string LiteralNONEStepMother = "http://snomed.info/sct#65412001";
 
     /// <summary>
     /// Literal for code: Son
@@ -13432,9 +17792,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSon = "65616008";
 
     /// <summary>
+    /// Literal for code: NONESon
+    /// </summary>
+    public const string LiteralNONESon = "http://snomed.info/sct#65616008";
+
+    /// <summary>
     /// Literal for code: NaturalMother
     /// </summary>
     public const string LiteralNaturalMother = "65656005";
+
+    /// <summary>
+    /// Literal for code: NONENaturalMother
+    /// </summary>
+    public const string LiteralNONENaturalMother = "http://snomed.info/sct#65656005";
 
     /// <summary>
     /// Literal for code: Student
@@ -13442,9 +17812,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStudent = "65853000";
 
     /// <summary>
+    /// Literal for code: NONEStudent
+    /// </summary>
+    public const string LiteralNONEStudent = "http://snomed.info/sct#65853000";
+
+    /// <summary>
     /// Literal for code: Daughter
     /// </summary>
     public const string LiteralDaughter = "66089001";
+
+    /// <summary>
+    /// Literal for code: NONEDaughter
+    /// </summary>
+    public const string LiteralNONEDaughter = "http://snomed.info/sct#66089001";
 
     /// <summary>
     /// Literal for code: OralPathologist
@@ -13452,9 +17832,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOralPathologist = "66476003";
 
     /// <summary>
+    /// Literal for code: NONEOralPathologist
+    /// </summary>
+    public const string LiteralNONEOralPathologist = "http://snomed.info/sct#66476003";
+
+    /// <summary>
     /// Literal for code: HealthRegulatoryBodyForMidwives
     /// </summary>
     public const string LiteralHealthRegulatoryBodyForMidwives = "666298511000087107";
+
+    /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForMidwives
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForMidwives = "http://snomed.info/sct#666298511000087107";
 
     /// <summary>
     /// Literal for code: Doula
@@ -13462,9 +17852,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDoula = "666997781000087107";
 
     /// <summary>
+    /// Literal for code: NONEDoula
+    /// </summary>
+    public const string LiteralNONEDoula = "http://snomed.info/sct#666997781000087107";
+
+    /// <summary>
     /// Literal for code: YoungestDaughter
     /// </summary>
     public const string LiteralYoungestDaughter = "6676009";
+
+    /// <summary>
+    /// Literal for code: NONEYoungestDaughter
+    /// </summary>
+    public const string LiteralNONEYoungestDaughter = "http://snomed.info/sct#6676009";
 
     /// <summary>
     /// Literal for code: Father
@@ -13472,9 +17872,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFather = "66839005";
 
     /// <summary>
+    /// Literal for code: NONEFather
+    /// </summary>
+    public const string LiteralNONEFather = "http://snomed.info/sct#66839005";
+
+    /// <summary>
     /// Literal for code: Radiologist
     /// </summary>
     public const string LiteralRadiologist = "66862007";
+
+    /// <summary>
+    /// Literal for code: NONERadiologist
+    /// </summary>
+    public const string LiteralNONERadiologist = "http://snomed.info/sct#66862007";
 
     /// <summary>
     /// Literal for code: AdoptiveDaughter
@@ -13482,9 +17892,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdoptiveDaughter = "67005001";
 
     /// <summary>
+    /// Literal for code: NONEAdoptiveDaughter
+    /// </summary>
+    public const string LiteralNONEAdoptiveDaughter = "http://snomed.info/sct#67005001";
+
+    /// <summary>
     /// Literal for code: LegalFather
     /// </summary>
     public const string LiteralLegalFather = "67147004";
+
+    /// <summary>
+    /// Literal for code: NONELegalFather
+    /// </summary>
+    public const string LiteralNONELegalFather = "http://snomed.info/sct#67147004";
 
     /// <summary>
     /// Literal for code: ProviderRegistrationNumber
@@ -13492,9 +17912,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProviderRegistrationNumber = "673433971000087102";
 
     /// <summary>
+    /// Literal for code: NONEProviderRegistrationNumber
+    /// </summary>
+    public const string LiteralNONEProviderRegistrationNumber = "http://snomed.info/sct#673433971000087102";
+
+    /// <summary>
     /// Literal for code: TraditionalHerbalMedicineSpecialist
     /// </summary>
     public const string LiteralTraditionalHerbalMedicineSpecialist = "673825031000087109";
+
+    /// <summary>
+    /// Literal for code: NONETraditionalHerbalMedicineSpecialist
+    /// </summary>
+    public const string LiteralNONETraditionalHerbalMedicineSpecialist = "http://snomed.info/sct#673825031000087109";
 
     /// <summary>
     /// Literal for code: Child_2
@@ -13502,9 +17932,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChild_2 = "67822003";
 
     /// <summary>
+    /// Literal for code: NONEChild_2
+    /// </summary>
+    public const string LiteralNONEChild_2 = "http://snomed.info/sct#67822003";
+
+    /// <summary>
     /// Literal for code: GreatGreatGrandParent
     /// </summary>
     public const string LiteralGreatGreatGrandParent = "68021009";
+
+    /// <summary>
+    /// Literal for code: NONEGreatGreatGrandParent
+    /// </summary>
+    public const string LiteralNONEGreatGreatGrandParent = "http://snomed.info/sct#68021009";
 
     /// <summary>
     /// Literal for code: SpecializedNurse
@@ -13512,9 +17952,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpecializedNurse = "6816002";
 
     /// <summary>
+    /// Literal for code: NONESpecializedNurse
+    /// </summary>
+    public const string LiteralNONESpecializedNurse = "http://snomed.info/sct#6816002";
+
+    /// <summary>
     /// Literal for code: OccupationalMedicineSpecialist
     /// </summary>
     public const string LiteralOccupationalMedicineSpecialist = "682131381000087105";
+
+    /// <summary>
+    /// Literal for code: NONEOccupationalMedicineSpecialist
+    /// </summary>
+    public const string LiteralNONEOccupationalMedicineSpecialist = "http://snomed.info/sct#682131381000087105";
 
     /// <summary>
     /// Literal for code: HospitalAdministrator
@@ -13522,9 +17972,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospitalAdministrator = "6868009";
 
     /// <summary>
+    /// Literal for code: NONEHospitalAdministrator
+    /// </summary>
+    public const string LiteralNONEHospitalAdministrator = "http://snomed.info/sct#6868009";
+
+    /// <summary>
     /// Literal for code: PublicHealthDentist
     /// </summary>
     public const string LiteralPublicHealthDentist = "68867008";
+
+    /// <summary>
+    /// Literal for code: NONEPublicHealthDentist
+    /// </summary>
+    public const string LiteralNONEPublicHealthDentist = "http://snomed.info/sct#68867008";
 
     /// <summary>
     /// Literal for code: Prosthodontist
@@ -13532,9 +17992,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProsthodontist = "68950000";
 
     /// <summary>
+    /// Literal for code: NONEProsthodontist
+    /// </summary>
+    public const string LiteralNONEProsthodontist = "http://snomed.info/sct#68950000";
+
+    /// <summary>
     /// Literal for code: PaternalAunt
     /// </summary>
     public const string LiteralPaternalAunt = "691349461000087102";
+
+    /// <summary>
+    /// Literal for code: NONEPaternalAunt
+    /// </summary>
+    public const string LiteralNONEPaternalAunt = "http://snomed.info/sct#691349461000087102";
 
     /// <summary>
     /// Literal for code: SpecializedPhysician
@@ -13542,9 +18012,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpecializedPhysician = "69280009";
 
     /// <summary>
+    /// Literal for code: NONESpecializedPhysician
+    /// </summary>
+    public const string LiteralNONESpecializedPhysician = "http://snomed.info/sct#69280009";
+
+    /// <summary>
     /// Literal for code: SecondDegreeBloodRelative
     /// </summary>
     public const string LiteralSecondDegreeBloodRelative = "699110007";
+
+    /// <summary>
+    /// Literal for code: NONESecondDegreeBloodRelative
+    /// </summary>
+    public const string LiteralNONESecondDegreeBloodRelative = "http://snomed.info/sct#699110007";
 
     /// <summary>
     /// Literal for code: SecondDegreeBloodRelativeOfSubject
@@ -13552,9 +18032,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSecondDegreeBloodRelativeOfSubject = "699111006";
 
     /// <summary>
+    /// Literal for code: NONESecondDegreeBloodRelativeOfSubject
+    /// </summary>
+    public const string LiteralNONESecondDegreeBloodRelativeOfSubject = "http://snomed.info/sct#699111006";
+
+    /// <summary>
     /// Literal for code: GrandSon
     /// </summary>
     public const string LiteralGrandSon = "70578009";
+
+    /// <summary>
+    /// Literal for code: NONEGrandSon
+    /// </summary>
+    public const string LiteralNONEGrandSon = "http://snomed.info/sct#70578009";
 
     /// <summary>
     /// Literal for code: ContactPerson
@@ -13562,9 +18052,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralContactPerson = "70862002";
 
     /// <summary>
+    /// Literal for code: NONEContactPerson
+    /// </summary>
+    public const string LiteralNONEContactPerson = "http://snomed.info/sct#70862002";
+
+    /// <summary>
     /// Literal for code: Brother
     /// </summary>
     public const string LiteralBrother = "70924004";
+
+    /// <summary>
+    /// Literal for code: NONEBrother
+    /// </summary>
+    public const string LiteralNONEBrother = "http://snomed.info/sct#70924004";
 
     /// <summary>
     /// Literal for code: CadaverDonorForLungTransplant
@@ -13572,9 +18072,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCadaverDonorForLungTransplant = "713176007";
 
     /// <summary>
+    /// Literal for code: NONECadaverDonorForLungTransplant
+    /// </summary>
+    public const string LiteralNONECadaverDonorForLungTransplant = "http://snomed.info/sct#713176007";
+
+    /// <summary>
     /// Literal for code: CadaverDonorForHeartTransplant
     /// </summary>
     public const string LiteralCadaverDonorForHeartTransplant = "713177003";
+
+    /// <summary>
+    /// Literal for code: NONECadaverDonorForHeartTransplant
+    /// </summary>
+    public const string LiteralNONECadaverDonorForHeartTransplant = "http://snomed.info/sct#713177003";
 
     /// <summary>
     /// Literal for code: CadaverDonorForLiverTransplant
@@ -13582,9 +18092,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCadaverDonorForLiverTransplant = "713178008";
 
     /// <summary>
+    /// Literal for code: NONECadaverDonorForLiverTransplant
+    /// </summary>
+    public const string LiteralNONECadaverDonorForLiverTransplant = "http://snomed.info/sct#713178008";
+
+    /// <summary>
     /// Literal for code: CadaverDonorForCornealTransplant
     /// </summary>
     public const string LiteralCadaverDonorForCornealTransplant = "713179000";
+
+    /// <summary>
+    /// Literal for code: NONECadaverDonorForCornealTransplant
+    /// </summary>
+    public const string LiteralNONECadaverDonorForCornealTransplant = "http://snomed.info/sct#713179000";
 
     /// <summary>
     /// Literal for code: CadaverDonorForKidneyTransplant
@@ -13592,9 +18112,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCadaverDonorForKidneyTransplant = "713183000";
 
     /// <summary>
+    /// Literal for code: NONECadaverDonorForKidneyTransplant
+    /// </summary>
+    public const string LiteralNONECadaverDonorForKidneyTransplant = "http://snomed.info/sct#713183000";
+
+    /// <summary>
     /// Literal for code: BloodProductDonor
     /// </summary>
     public const string LiteralBloodProductDonor = "713184006";
+
+    /// <summary>
+    /// Literal for code: NONEBloodProductDonor
+    /// </summary>
+    public const string LiteralNONEBloodProductDonor = "http://snomed.info/sct#713184006";
 
     /// <summary>
     /// Literal for code: SkinDonor
@@ -13602,9 +18132,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSkinDonor = "713352007";
 
     /// <summary>
+    /// Literal for code: NONESkinDonor
+    /// </summary>
+    public const string LiteralNONESkinDonor = "http://snomed.info/sct#713352007";
+
+    /// <summary>
     /// Literal for code: LiveRelatedLiverDonor
     /// </summary>
     public const string LiteralLiveRelatedLiverDonor = "713353002";
+
+    /// <summary>
+    /// Literal for code: NONELiveRelatedLiverDonor
+    /// </summary>
+    public const string LiteralNONELiveRelatedLiverDonor = "http://snomed.info/sct#713353002";
 
     /// <summary>
     /// Literal for code: LiveRelatedKidneyDonor
@@ -13612,9 +18152,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLiveRelatedKidneyDonor = "713369009";
 
     /// <summary>
+    /// Literal for code: NONELiveRelatedKidneyDonor
+    /// </summary>
+    public const string LiteralNONELiveRelatedKidneyDonor = "http://snomed.info/sct#713369009";
+
+    /// <summary>
     /// Literal for code: OpenEpiscopalChurchFollowerOfReligion
     /// </summary>
     public const string LiteralOpenEpiscopalChurchFollowerOfReligion = "715167002";
+
+    /// <summary>
+    /// Literal for code: NONEOpenEpiscopalChurchFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEOpenEpiscopalChurchFollowerOfReligion = "http://snomed.info/sct#715167002";
 
     /// <summary>
     /// Literal for code: Gastroenterologist
@@ -13622,9 +18172,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGastroenterologist = "71838004";
 
     /// <summary>
+    /// Literal for code: NONEGastroenterologist
+    /// </summary>
+    public const string LiteralNONEGastroenterologist = "http://snomed.info/sct#71838004";
+
+    /// <summary>
     /// Literal for code: GreatGrandChild
     /// </summary>
     public const string LiteralGreatGrandChild = "72012000";
+
+    /// <summary>
+    /// Literal for code: NONEGreatGrandChild
+    /// </summary>
+    public const string LiteralNONEGreatGrandChild = "http://snomed.info/sct#72012000";
 
     /// <summary>
     /// Literal for code: HealthRegulatoryBodyForRespiratoryTherapists
@@ -13632,9 +18192,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthRegulatoryBodyForRespiratoryTherapists = "724022191000087108";
 
     /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForRespiratoryTherapists
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForRespiratoryTherapists = "http://snomed.info/sct#724022191000087108";
+
+    /// <summary>
     /// Literal for code: PediatricEmergencyMedicineSpecialist
     /// </summary>
     public const string LiteralPediatricEmergencyMedicineSpecialist = "724111801000087104";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricEmergencyMedicineSpecialist
+    /// </summary>
+    public const string LiteralNONEPediatricEmergencyMedicineSpecialist = "http://snomed.info/sct#724111801000087104";
 
     /// <summary>
     /// Literal for code: ProvincialAndOrTerritorialGovernmentPlanResident
@@ -13642,9 +18212,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProvincialAndOrTerritorialGovernmentPlanResident = "726220521000087101";
 
     /// <summary>
+    /// Literal for code: NONEProvincialAndOrTerritorialGovernmentPlanResident
+    /// </summary>
+    public const string LiteralNONEProvincialAndOrTerritorialGovernmentPlanResident = "http://snomed.info/sct#726220521000087101";
+
+    /// <summary>
     /// Literal for code: Mother
     /// </summary>
     public const string LiteralMother = "72705000";
+
+    /// <summary>
+    /// Literal for code: NONEMother
+    /// </summary>
+    public const string LiteralNONEMother = "http://snomed.info/sct#72705000";
 
     /// <summary>
     /// Literal for code: NursingAid
@@ -13652,9 +18232,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNursingAid = "73265009";
 
     /// <summary>
+    /// Literal for code: NONENursingAid
+    /// </summary>
+    public const string LiteralNONENursingAid = "http://snomed.info/sct#73265009";
+
+    /// <summary>
     /// Literal for code: NaturalSister
     /// </summary>
     public const string LiteralNaturalSister = "73678001";
+
+    /// <summary>
+    /// Literal for code: NONENaturalSister
+    /// </summary>
+    public const string LiteralNONENaturalSister = "http://snomed.info/sct#73678001";
 
     /// <summary>
     /// Literal for code: StepParent
@@ -13662,9 +18252,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStepParent = "74128007";
 
     /// <summary>
+    /// Literal for code: NONEStepParent
+    /// </summary>
+    public const string LiteralNONEStepParent = "http://snomed.info/sct#74128007";
+
+    /// <summary>
     /// Literal for code: YoungerChild
     /// </summary>
     public const string LiteralYoungerChild = "74489007";
+
+    /// <summary>
+    /// Literal for code: NONEYoungerChild
+    /// </summary>
+    public const string LiteralNONEYoungerChild = "http://snomed.info/sct#74489007";
 
     /// <summary>
     /// Literal for code: WorkersQuoteCompensationNumber
@@ -13672,9 +18272,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWorkersQuoteCompensationNumber = "745424761000087106";
 
     /// <summary>
+    /// Literal for code: NONEWorkersQuoteCompensationNumber
+    /// </summary>
+    public const string LiteralNONEWorkersQuoteCompensationNumber = "http://snomed.info/sct#745424761000087106";
+
+    /// <summary>
     /// Literal for code: FamilyMedicineSpecialistCareOfTheElderly
     /// </summary>
     public const string LiteralFamilyMedicineSpecialistCareOfTheElderly = "747936471000087102";
+
+    /// <summary>
+    /// Literal for code: NONEFamilyMedicineSpecialistCareOfTheElderly
+    /// </summary>
+    public const string LiteralNONEFamilyMedicineSpecialistCareOfTheElderly = "http://snomed.info/sct#747936471000087102";
 
     /// <summary>
     /// Literal for code: NaturalChild
@@ -13682,9 +18292,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNaturalChild = "75226009";
 
     /// <summary>
+    /// Literal for code: NONENaturalChild
+    /// </summary>
+    public const string LiteralNONENaturalChild = "http://snomed.info/sct#75226009";
+
+    /// <summary>
     /// Literal for code: MWMidwife
     /// </summary>
     public const string LiteralMWMidwife = "75271001";
+
+    /// <summary>
+    /// Literal for code: NONEMWMidwife
+    /// </summary>
+    public const string LiteralNONEMWMidwife = "http://snomed.info/sct#75271001";
 
     /// <summary>
     /// Literal for code: MinistryOfHealthNorthwestTerritories
@@ -13692,9 +18312,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMinistryOfHealthNorthwestTerritories = "753977441000087109";
 
     /// <summary>
+    /// Literal for code: NONEMinistryOfHealthNorthwestTerritories
+    /// </summary>
+    public const string LiteralNONEMinistryOfHealthNorthwestTerritories = "http://snomed.info/sct#753977441000087109";
+
+    /// <summary>
     /// Literal for code: SurrogateFather
     /// </summary>
     public const string LiteralSurrogateFather = "75615008";
+
+    /// <summary>
+    /// Literal for code: NONESurrogateFather
+    /// </summary>
+    public const string LiteralNONESurrogateFather = "http://snomed.info/sct#75615008";
 
     /// <summary>
     /// Literal for code: AdoptiveSister
@@ -13702,9 +18332,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdoptiveSister = "76022008";
 
     /// <summary>
+    /// Literal for code: NONEAdoptiveSister
+    /// </summary>
+    public const string LiteralNONEAdoptiveSister = "http://snomed.info/sct#76022008";
+
+    /// <summary>
     /// Literal for code: StepBrother
     /// </summary>
     public const string LiteralStepBrother = "76087000";
+
+    /// <summary>
+    /// Literal for code: NONEStepBrother
+    /// </summary>
+    public const string LiteralNONEStepBrother = "http://snomed.info/sct#76087000";
 
     /// <summary>
     /// Literal for code: PracticalAidPharmacy
@@ -13712,9 +18352,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPracticalAidPharmacy = "76166008";
 
     /// <summary>
+    /// Literal for code: NONEPracticalAidPharmacy
+    /// </summary>
+    public const string LiteralNONEPracticalAidPharmacy = "http://snomed.info/sct#76166008";
+
+    /// <summary>
     /// Literal for code: Osteopath
     /// </summary>
     public const string LiteralOsteopath = "76231001";
+
+    /// <summary>
+    /// Literal for code: NONEOsteopath
+    /// </summary>
+    public const string LiteralNONEOsteopath = "http://snomed.info/sct#76231001";
 
     /// <summary>
     /// Literal for code: HealthRegulatoryBodyForAudiologistsAndSpeechLanguagePathologists
@@ -13722,9 +18372,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthRegulatoryBodyForAudiologistsAndSpeechLanguagePathologists = "762510691000087106";
 
     /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForAudiologistsAndSpeechLanguagePathologists
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForAudiologistsAndSpeechLanguagePathologists = "http://snomed.info/sct#762510691000087106";
+
+    /// <summary>
     /// Literal for code: TravelMedicineSpecialist
     /// </summary>
     public const string LiteralTravelMedicineSpecialist = "766788081000087100";
+
+    /// <summary>
+    /// Literal for code: NONETravelMedicineSpecialist
+    /// </summary>
+    public const string LiteralNONETravelMedicineSpecialist = "http://snomed.info/sct#766788081000087100";
 
     /// <summary>
     /// Literal for code: SpineSurgeon
@@ -13732,9 +18392,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpineSurgeon = "767205061000087108";
 
     /// <summary>
+    /// Literal for code: NONESpineSurgeon
+    /// </summary>
+    public const string LiteralNONESpineSurgeon = "http://snomed.info/sct#767205061000087108";
+
+    /// <summary>
     /// Literal for code: InfectiousDiseasesPhysician
     /// </summary>
     public const string LiteralInfectiousDiseasesPhysician = "76899008";
+
+    /// <summary>
+    /// Literal for code: NONEInfectiousDiseasesPhysician
+    /// </summary>
+    public const string LiteralNONEInfectiousDiseasesPhysician = "http://snomed.info/sct#76899008";
 
     /// <summary>
     /// Literal for code: IdenticalTwinBrother
@@ -13742,9 +18412,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIdenticalTwinBrother = "78194006";
 
     /// <summary>
+    /// Literal for code: NONEIdenticalTwinBrother
+    /// </summary>
+    public const string LiteralNONEIdenticalTwinBrother = "http://snomed.info/sct#78194006";
+
+    /// <summary>
     /// Literal for code: NaturalGrandParent
     /// </summary>
     public const string LiteralNaturalGrandParent = "78272007";
+
+    /// <summary>
+    /// Literal for code: NONENaturalGrandParent
+    /// </summary>
+    public const string LiteralNONENaturalGrandParent = "http://snomed.info/sct#78272007";
 
     /// <summary>
     /// Literal for code: GreatGrandMother
@@ -13752,9 +18432,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGreatGrandMother = "78652007";
 
     /// <summary>
+    /// Literal for code: NONEGreatGrandMother
+    /// </summary>
+    public const string LiteralNONEGreatGrandMother = "http://snomed.info/sct#78652007";
+
+    /// <summary>
     /// Literal for code: GeneralSurgeon
     /// </summary>
     public const string LiteralGeneralSurgeon = "78703002";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralSurgeon
+    /// </summary>
+    public const string LiteralNONEGeneralSurgeon = "http://snomed.info/sct#78703002";
 
     /// <summary>
     /// Literal for code: DiagnosticRadiologist
@@ -13762,9 +18452,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiagnosticRadiologist = "78729002";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticRadiologist
+    /// </summary>
+    public const string LiteralNONEDiagnosticRadiologist = "http://snomed.info/sct#78729002";
+
+    /// <summary>
     /// Literal for code: OrphanMale
     /// </summary>
     public const string LiteralOrphanMale = "78872000";
+
+    /// <summary>
+    /// Literal for code: NONEOrphanMale
+    /// </summary>
+    public const string LiteralNONEOrphanMale = "http://snomed.info/sct#78872000";
 
     /// <summary>
     /// Literal for code: AdoptiveSibling
@@ -13772,9 +18472,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdoptiveSibling = "79508001";
 
     /// <summary>
+    /// Literal for code: NONEAdoptiveSibling
+    /// </summary>
+    public const string LiteralNONEAdoptiveSibling = "http://snomed.info/sct#79508001";
+
+    /// <summary>
     /// Literal for code: Boyfriend
     /// </summary>
     public const string LiteralBoyfriend = "79756005";
+
+    /// <summary>
+    /// Literal for code: NONEBoyfriend
+    /// </summary>
+    public const string LiteralNONEBoyfriend = "http://snomed.info/sct#79756005";
 
     /// <summary>
     /// Literal for code: AuxiliaryMidwife
@@ -13782,9 +18492,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAuxiliaryMidwife = "79898004";
 
     /// <summary>
+    /// Literal for code: NONEAuxiliaryMidwife
+    /// </summary>
+    public const string LiteralNONEAuxiliaryMidwife = "http://snomed.info/sct#79898004";
+
+    /// <summary>
     /// Literal for code: GreatGreatGrandFather
     /// </summary>
     public const string LiteralGreatGreatGrandFather = "80386000";
+
+    /// <summary>
+    /// Literal for code: NONEGreatGreatGrandFather
+    /// </summary>
+    public const string LiteralNONEGreatGreatGrandFather = "http://snomed.info/sct#80386000";
 
     /// <summary>
     /// Literal for code: Translator
@@ -13792,9 +18512,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTranslator = "80409005";
 
     /// <summary>
+    /// Literal for code: NONETranslator
+    /// </summary>
+    public const string LiteralNONETranslator = "http://snomed.info/sct#80409005";
+
+    /// <summary>
     /// Literal for code: JurisdictionDriverLicenseNumber
     /// </summary>
     public const string LiteralJurisdictionDriverLicenseNumber = "8051000087100";
+
+    /// <summary>
+    /// Literal for code: NONEJurisdictionDriverLicenseNumber
+    /// </summary>
+    public const string LiteralNONEJurisdictionDriverLicenseNumber = "http://snomed.info/sct#8051000087100";
 
     /// <summary>
     /// Literal for code: OTOccupationalTherapist
@@ -13802,9 +18532,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOTOccupationalTherapist = "80546007";
 
     /// <summary>
+    /// Literal for code: NONEOTOccupationalTherapist
+    /// </summary>
+    public const string LiteralNONEOTOccupationalTherapist = "http://snomed.info/sct#80546007";
+
+    /// <summary>
     /// Literal for code: Psychiatrist
     /// </summary>
     public const string LiteralPsychiatrist = "80584001";
+
+    /// <summary>
+    /// Literal for code: NONEPsychiatrist
+    /// </summary>
+    public const string LiteralNONEPsychiatrist = "http://snomed.info/sct#80584001";
 
     /// <summary>
     /// Literal for code: JehovahQuoteSWitnessFollowerOfReligion
@@ -13812,9 +18552,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJehovahQuoteSWitnessFollowerOfReligion = "80587008";
 
     /// <summary>
+    /// Literal for code: NONEJehovahQuoteSWitnessFollowerOfReligion
+    /// </summary>
+    public const string LiteralNONEJehovahQuoteSWitnessFollowerOfReligion = "http://snomed.info/sct#80587008";
+
+    /// <summary>
     /// Literal for code: JurisdictionalBirthCertificateRegistrationNumber
     /// </summary>
     public const string LiteralJurisdictionalBirthCertificateRegistrationNumber = "8061000087102";
+
+    /// <summary>
+    /// Literal for code: NONEJurisdictionalBirthCertificateRegistrationNumber
+    /// </summary>
+    public const string LiteralNONEJurisdictionalBirthCertificateRegistrationNumber = "http://snomed.info/sct#8061000087102";
 
     /// <summary>
     /// Literal for code: InterimHealthProgramCertificateNumber
@@ -13822,9 +18572,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInterimHealthProgramCertificateNumber = "8071000087106";
 
     /// <summary>
+    /// Literal for code: NONEInterimHealthProgramCertificateNumber
+    /// </summary>
+    public const string LiteralNONEInterimHealthProgramCertificateNumber = "http://snomed.info/sct#8071000087106";
+
+    /// <summary>
     /// Literal for code: NuclearMedicinePhysician
     /// </summary>
     public const string LiteralNuclearMedicinePhysician = "80933006";
+
+    /// <summary>
+    /// Literal for code: NONENuclearMedicinePhysician
+    /// </summary>
+    public const string LiteralNONENuclearMedicinePhysician = "http://snomed.info/sct#80933006";
 
     /// <summary>
     /// Literal for code: OnlySon
@@ -13832,9 +18592,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOnlySon = "81173009";
 
     /// <summary>
+    /// Literal for code: NONEOnlySon
+    /// </summary>
+    public const string LiteralNONEOnlySon = "http://snomed.info/sct#81173009";
+
+    /// <summary>
     /// Literal for code: TwinBrother
     /// </summary>
     public const string LiteralTwinBrother = "81276006";
+
+    /// <summary>
+    /// Literal for code: NONETwinBrother
+    /// </summary>
+    public const string LiteralNONETwinBrother = "http://snomed.info/sct#81276006";
 
     /// <summary>
     /// Literal for code: MaternalOrFetalMedicineSpecialist
@@ -13842,9 +18612,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaternalOrFetalMedicineSpecialist = "813758161000087106";
 
     /// <summary>
+    /// Literal for code: NONEMaternalOrFetalMedicineSpecialist
+    /// </summary>
+    public const string LiteralNONEMaternalOrFetalMedicineSpecialist = "http://snomed.info/sct#813758161000087106";
+
+    /// <summary>
     /// Literal for code: ClinicalPathologist
     /// </summary>
     public const string LiteralClinicalPathologist = "81464008";
+
+    /// <summary>
+    /// Literal for code: NONEClinicalPathologist
+    /// </summary>
+    public const string LiteralNONEClinicalPathologist = "http://snomed.info/sct#81464008";
 
     /// <summary>
     /// Literal for code: FraternalTwinBrother
@@ -13852,9 +18632,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFraternalTwinBrother = "81467001";
 
     /// <summary>
+    /// Literal for code: NONEFraternalTwinBrother
+    /// </summary>
+    public const string LiteralNONEFraternalTwinBrother = "http://snomed.info/sct#81467001";
+
+    /// <summary>
     /// Literal for code: AshkenaziJew
     /// </summary>
     public const string LiteralAshkenaziJew = "81706006";
+
+    /// <summary>
+    /// Literal for code: NONEAshkenaziJew
+    /// </summary>
+    public const string LiteralNONEAshkenaziJew = "http://snomed.info/sct#81706006";
 
     /// <summary>
     /// Literal for code: NaturalSibling
@@ -13862,9 +18652,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNaturalSibling = "82101005";
 
     /// <summary>
+    /// Literal for code: NONENaturalSibling
+    /// </summary>
+    public const string LiteralNONENaturalSibling = "http://snomed.info/sct#82101005";
+
+    /// <summary>
     /// Literal for code: MassageTherapist
     /// </summary>
     public const string LiteralMassageTherapist = "822410621000087104";
+
+    /// <summary>
+    /// Literal for code: NONEMassageTherapist
+    /// </summary>
+    public const string LiteralNONEMassageTherapist = "http://snomed.info/sct#822410621000087104";
 
     /// <summary>
     /// Literal for code: Pediatrician
@@ -13872,9 +18672,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatrician = "82296001";
 
     /// <summary>
+    /// Literal for code: NONEPediatrician
+    /// </summary>
+    public const string LiteralNONEPediatrician = "http://snomed.info/sct#82296001";
+
+    /// <summary>
     /// Literal for code: OtherProfessionalNurse
     /// </summary>
     public const string LiteralOtherProfessionalNurse = "83189004";
+
+    /// <summary>
+    /// Literal for code: NONEOtherProfessionalNurse
+    /// </summary>
+    public const string LiteralNONEOtherProfessionalNurse = "http://snomed.info/sct#83189004";
 
     /// <summary>
     /// Literal for code: AnatomicPathologist
@@ -13882,9 +18692,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnatomicPathologist = "83273008";
 
     /// <summary>
+    /// Literal for code: NONEAnatomicPathologist
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologist = "http://snomed.info/sct#83273008";
+
+    /// <summary>
     /// Literal for code: WorkingParent
     /// </summary>
     public const string LiteralWorkingParent = "83408003";
+
+    /// <summary>
+    /// Literal for code: NONEWorkingParent
+    /// </summary>
+    public const string LiteralNONEWorkingParent = "http://snomed.info/sct#83408003";
 
     /// <summary>
     /// Literal for code: NaturalDaughter
@@ -13892,9 +18712,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNaturalDaughter = "83420006";
 
     /// <summary>
+    /// Literal for code: NONENaturalDaughter
+    /// </summary>
+    public const string LiteralNONENaturalDaughter = "http://snomed.info/sct#83420006";
+
+    /// <summary>
     /// Literal for code: Nephew
     /// </summary>
     public const string LiteralNephew = "83559000";
+
+    /// <summary>
+    /// Literal for code: NONENephew
+    /// </summary>
+    public const string LiteralNONENephew = "http://snomed.info/sct#83559000";
 
     /// <summary>
     /// Literal for code: Gynecologist
@@ -13902,9 +18732,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGynecologist = "83685006";
 
     /// <summary>
+    /// Literal for code: NONEGynecologist
+    /// </summary>
+    public const string LiteralNONEGynecologist = "http://snomed.info/sct#83685006";
+
+    /// <summary>
     /// Literal for code: Girlfriend
     /// </summary>
     public const string LiteralGirlfriend = "84390006";
+
+    /// <summary>
+    /// Literal for code: NONEGirlfriend
+    /// </summary>
+    public const string LiteralNONEGirlfriend = "http://snomed.info/sct#84390006";
 
     /// <summary>
     /// Literal for code: MaternalFirstCousin
@@ -13912,9 +18752,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaternalFirstCousin = "844670641000087109";
 
     /// <summary>
+    /// Literal for code: NONEMaternalFirstCousin
+    /// </summary>
+    public const string LiteralNONEMaternalFirstCousin = "http://snomed.info/sct#844670641000087109";
+
+    /// <summary>
     /// Literal for code: FosterFather
     /// </summary>
     public const string LiteralFosterFather = "8458002";
+
+    /// <summary>
+    /// Literal for code: NONEFosterFather
+    /// </summary>
+    public const string LiteralNONEFosterFather = "http://snomed.info/sct#8458002";
 
     /// <summary>
     /// Literal for code: Hospitalist
@@ -13922,9 +18772,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospitalist = "847240411000087102";
 
     /// <summary>
+    /// Literal for code: NONEHospitalist
+    /// </summary>
+    public const string LiteralNONEHospitalist = "http://snomed.info/sct#847240411000087102";
+
+    /// <summary>
     /// Literal for code: AdoptiveGrandfather
     /// </summary>
     public const string LiteralAdoptiveGrandfather = "85058002";
+
+    /// <summary>
+    /// Literal for code: NONEAdoptiveGrandfather
+    /// </summary>
+    public const string LiteralNONEAdoptiveGrandfather = "http://snomed.info/sct#85058002";
 
     /// <summary>
     /// Literal for code: SportsMedicineSpecialist
@@ -13932,9 +18792,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSportsMedicineSpecialist = "853827051000087104";
 
     /// <summary>
+    /// Literal for code: NONESportsMedicineSpecialist
+    /// </summary>
+    public const string LiteralNONESportsMedicineSpecialist = "http://snomed.info/sct#853827051000087104";
+
+    /// <summary>
     /// Literal for code: YoungerBrother
     /// </summary>
     public const string LiteralYoungerBrother = "85411004";
+
+    /// <summary>
+    /// Literal for code: NONEYoungerBrother
+    /// </summary>
+    public const string LiteralNONEYoungerBrother = "http://snomed.info/sct#85411004";
 
     /// <summary>
     /// Literal for code: SingleFather
@@ -13942,9 +18812,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSingleFather = "85683001";
 
     /// <summary>
+    /// Literal for code: NONESingleFather
+    /// </summary>
+    public const string LiteralNONESingleFather = "http://snomed.info/sct#85683001";
+
+    /// <summary>
     /// Literal for code: GeneralPathologist
     /// </summary>
     public const string LiteralGeneralPathologist = "85733003";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralPathologist
+    /// </summary>
+    public const string LiteralNONEGeneralPathologist = "http://snomed.info/sct#85733003";
 
     /// <summary>
     /// Literal for code: MedicalCarePlanHospitalTechnicalServicesQuebec
@@ -13952,9 +18832,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalCarePlanHospitalTechnicalServicesQuebec = "859430851000087100";
 
     /// <summary>
+    /// Literal for code: NONEMedicalCarePlanHospitalTechnicalServicesQuebec
+    /// </summary>
+    public const string LiteralNONEMedicalCarePlanHospitalTechnicalServicesQuebec = "http://snomed.info/sct#859430851000087100";
+
+    /// <summary>
     /// Literal for code: GrandChild
     /// </summary>
     public const string LiteralGrandChild = "86372007";
+
+    /// <summary>
+    /// Literal for code: NONEGrandChild
+    /// </summary>
+    public const string LiteralNONEGrandChild = "http://snomed.info/sct#86372007";
 
     /// <summary>
     /// Literal for code: StepSon
@@ -13962,9 +18852,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStepSon = "8674003";
 
     /// <summary>
+    /// Literal for code: NONEStepSon
+    /// </summary>
+    public const string LiteralNONEStepSon = "http://snomed.info/sct#8674003";
+
+    /// <summary>
     /// Literal for code: StepChild
     /// </summary>
     public const string LiteralStepChild = "86764008";
+
+    /// <summary>
+    /// Literal for code: NONEStepChild
+    /// </summary>
+    public const string LiteralNONEStepChild = "http://snomed.info/sct#86764008";
 
     /// <summary>
     /// Literal for code: PlasticSurgeon
@@ -13972,9 +18872,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPlasticSurgeon = "8724009";
 
     /// <summary>
+    /// Literal for code: NONEPlasticSurgeon
+    /// </summary>
+    public const string LiteralNONEPlasticSurgeon = "http://snomed.info/sct#8724009";
+
+    /// <summary>
     /// Literal for code: HealthRegulatoryBodyForNurses
     /// </summary>
     public const string LiteralHealthRegulatoryBodyForNurses = "874107021000087108";
+
+    /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForNurses
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForNurses = "http://snomed.info/sct#874107021000087108";
 
     /// <summary>
     /// Literal for code: HealthRegulatoryBodyForParamedics
@@ -13982,9 +18892,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealthRegulatoryBodyForParamedics = "876612791000087101";
 
     /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForParamedics
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForParamedics = "http://snomed.info/sct#876612791000087101";
+
+    /// <summary>
     /// Literal for code: Anesthesiologist
     /// </summary>
     public const string LiteralAnesthesiologist = "88189002";
+
+    /// <summary>
+    /// Literal for code: NONEAnesthesiologist
+    /// </summary>
+    public const string LiteralNONEAnesthesiologist = "http://snomed.info/sct#88189002";
 
     /// <summary>
     /// Literal for code: MinistryOfHealthBritishColumbia
@@ -13992,9 +18912,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMinistryOfHealthBritishColumbia = "882121321000087100";
 
     /// <summary>
+    /// Literal for code: NONEMinistryOfHealthBritishColumbia
+    /// </summary>
+    public const string LiteralNONEMinistryOfHealthBritishColumbia = "http://snomed.info/sct#882121321000087100";
+
+    /// <summary>
     /// Literal for code: OtherDietitiansAndPublicHealthNutritionists
     /// </summary>
     public const string LiteralOtherDietitiansAndPublicHealthNutritionists = "88475002";
+
+    /// <summary>
+    /// Literal for code: NONEOtherDietitiansAndPublicHealthNutritionists
+    /// </summary>
+    public const string LiteralNONEOtherDietitiansAndPublicHealthNutritionists = "http://snomed.info/sct#88475002";
 
     /// <summary>
     /// Literal for code: StepSibling
@@ -14002,9 +18932,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStepSibling = "88510002";
 
     /// <summary>
+    /// Literal for code: NONEStepSibling
+    /// </summary>
+    public const string LiteralNONEStepSibling = "http://snomed.info/sct#88510002";
+
+    /// <summary>
     /// Literal for code: YoungestSon
     /// </summary>
     public const string LiteralYoungestSon = "89681006";
+
+    /// <summary>
+    /// Literal for code: NONEYoungestSon
+    /// </summary>
+    public const string LiteralNONEYoungestSon = "http://snomed.info/sct#89681006";
 
     /// <summary>
     /// Literal for code: PediatricDentist
@@ -14012,9 +18952,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricDentist = "90201008";
 
     /// <summary>
+    /// Literal for code: NONEPediatricDentist
+    /// </summary>
+    public const string LiteralNONEPediatricDentist = "http://snomed.info/sct#90201008";
+
+    /// <summary>
     /// Literal for code: CareOfTheElderlyPhysician
     /// </summary>
     public const string LiteralCareOfTheElderlyPhysician = "90655003";
+
+    /// <summary>
+    /// Literal for code: NONECareOfTheElderlyPhysician
+    /// </summary>
+    public const string LiteralNONECareOfTheElderlyPhysician = "http://snomed.info/sct#90655003";
 
     /// <summary>
     /// Literal for code: FosterParent
@@ -14022,9 +18972,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFosterParent = "90921004";
 
     /// <summary>
+    /// Literal for code: NONEFosterParent
+    /// </summary>
+    public const string LiteralNONEFosterParent = "http://snomed.info/sct#90921004";
+
+    /// <summary>
     /// Literal for code: HealthRegulatoryBodyForPracticalNurses
     /// </summary>
     public const string LiteralHealthRegulatoryBodyForPracticalNurses = "912320101000087109";
+
+    /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForPracticalNurses
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForPracticalNurses = "http://snomed.info/sct#912320101000087109";
 
     /// <summary>
     /// Literal for code: PediatricRespirologist
@@ -14032,9 +18992,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPediatricRespirologist = "926871431000087103";
 
     /// <summary>
+    /// Literal for code: NONEPediatricRespirologist
+    /// </summary>
+    public const string LiteralNONEPediatricRespirologist = "http://snomed.info/sct#926871431000087103";
+
+    /// <summary>
     /// Literal for code: HealthRegulatoryBodyForDietitians
     /// </summary>
     public const string LiteralHealthRegulatoryBodyForDietitians = "930012821000087105";
+
+    /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForDietitians
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForDietitians = "http://snomed.info/sct#930012821000087105";
 
     /// <summary>
     /// Literal for code: LegalParent
@@ -14042,9 +19012,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLegalParent = "9306000";
 
     /// <summary>
+    /// Literal for code: NONELegalParent
+    /// </summary>
+    public const string LiteralNONELegalParent = "http://snomed.info/sct#9306000";
+
+    /// <summary>
     /// Literal for code: Homeopath
     /// </summary>
     public const string LiteralHomeopath = "954544641000087107";
+
+    /// <summary>
+    /// Literal for code: NONEHomeopath
+    /// </summary>
+    public const string LiteralNONEHomeopath = "http://snomed.info/sct#954544641000087107";
 
     /// <summary>
     /// Literal for code: FamilyMedicineSpecialistEmergencyMedicine
@@ -14052,9 +19032,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFamilyMedicineSpecialistEmergencyMedicine = "956387501000087102";
 
     /// <summary>
+    /// Literal for code: NONEFamilyMedicineSpecialistEmergencyMedicine
+    /// </summary>
+    public const string LiteralNONEFamilyMedicineSpecialistEmergencyMedicine = "http://snomed.info/sct#956387501000087102";
+
+    /// <summary>
     /// Literal for code: PediatricHematologistOrOncologist
     /// </summary>
     public const string LiteralPediatricHematologistOrOncologist = "969118571000087109";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricHematologistOrOncologist
+    /// </summary>
+    public const string LiteralNONEPediatricHematologistOrOncologist = "http://snomed.info/sct#969118571000087109";
 
     /// <summary>
     /// Literal for code: FootAndAnkleSurgeon
@@ -14062,9 +19052,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFootAndAnkleSurgeon = "984095901000087105";
 
     /// <summary>
+    /// Literal for code: NONEFootAndAnkleSurgeon
+    /// </summary>
+    public const string LiteralNONEFootAndAnkleSurgeon = "http://snomed.info/sct#984095901000087105";
+
+    /// <summary>
     /// Literal for code: InvasiveCardiologist
     /// </summary>
     public const string LiteralInvasiveCardiologist = "990928611000087105";
+
+    /// <summary>
+    /// Literal for code: NONEInvasiveCardiologist
+    /// </summary>
+    public const string LiteralNONEInvasiveCardiologist = "http://snomed.info/sct#990928611000087105";
 
     /// <summary>
     /// Literal for code: NaturalFather
@@ -14072,9 +19072,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNaturalFather = "9947008";
 
     /// <summary>
+    /// Literal for code: NONENaturalFather
+    /// </summary>
+    public const string LiteralNONENaturalFather = "http://snomed.info/sct#9947008";
+
+    /// <summary>
     /// Literal for code: HealthPEI
     /// </summary>
     public const string LiteralHealthPEI = "998711551000087102";
+
+    /// <summary>
+    /// Literal for code: NONEHealthPEI
+    /// </summary>
+    public const string LiteralNONEHealthPEI = "http://snomed.info/sct#998711551000087102";
 
     /// <summary>
     /// Literal for code: ManitobaHealth
@@ -14082,9 +19092,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralManitobaHealth = "998820271000087109";
 
     /// <summary>
+    /// Literal for code: NONEManitobaHealth
+    /// </summary>
+    public const string LiteralNONEManitobaHealth = "http://snomed.info/sct#998820271000087109";
+
+    /// <summary>
     /// Literal for code: CaseManager
     /// </summary>
     public const string LiteralCaseManager = "999480451000087102";
+
+    /// <summary>
+    /// Literal for code: NONECaseManager
+    /// </summary>
+    public const string LiteralNONECaseManager = "http://snomed.info/sct#999480451000087102";
 
     /// <summary>
     /// Literal for code: Kinesthesiologist
@@ -14092,8 +19112,2036 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKinesthesiologist = "999480461000087104";
 
     /// <summary>
+    /// Literal for code: NONEKinesthesiologist
+    /// </summary>
+    public const string LiteralNONEKinesthesiologist = "http://snomed.info/sct#999480461000087104";
+
+    /// <summary>
     /// Literal for code: HealthRegulatoryBodyForNaturopathicPractitioners
     /// </summary>
     public const string LiteralHealthRegulatoryBodyForNaturopathicPractitioners = "999483971000087108";
+
+    /// <summary>
+    /// Literal for code: NONEHealthRegulatoryBodyForNaturopathicPractitioners
+    /// </summary>
+    public const string LiteralNONEHealthRegulatoryBodyForNaturopathicPractitioners = "http://snomed.info/sct#999483971000087108";
+
+    /// <summary>
+    /// Dictionary for looking up ParticipantRole Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "100217091000087103", MaternalAunt }, 
+      { "http://snomed.info/sct#100217091000087103", MaternalAunt }, 
+      { "105428002", HomosexualParents }, 
+      { "http://snomed.info/sct#105428002", HomosexualParents }, 
+      { "105429005", ElderlyParents }, 
+      { "http://snomed.info/sct#105429005", ElderlyParents }, 
+      { "105431001", AdoptedPerson }, 
+      { "http://snomed.info/sct#105431001", AdoptedPerson }, 
+      { "105436006", ElderlyPerson }, 
+      { "http://snomed.info/sct#105436006", ElderlyPerson }, 
+      { "105437002", ElderlyMan }, 
+      { "http://snomed.info/sct#105437002", ElderlyMan }, 
+      { "105438007", ElderlyWoman }, 
+      { "http://snomed.info/sct#105438007", ElderlyWoman }, 
+      { "105449001", SickRelative }, 
+      { "http://snomed.info/sct#105449001", SickRelative }, 
+      { "105450001", AlcoholicRelative }, 
+      { "http://snomed.info/sct#105450001", AlcoholicRelative }, 
+      { "105451002", DementedRelative }, 
+      { "http://snomed.info/sct#105451002", DementedRelative }, 
+      { "105452009", DiabeticRelative }, 
+      { "http://snomed.info/sct#105452009", DiabeticRelative }, 
+      { "105453004", SchizophrenicRelative }, 
+      { "http://snomed.info/sct#105453004", SchizophrenicRelative }, 
+      { "105454005", DisabledRelative }, 
+      { "http://snomed.info/sct#105454005", DisabledRelative }, 
+      { "105455006", DonorForMedicalOrSurgicalProcedure }, 
+      { "http://snomed.info/sct#105455006", DonorForMedicalOrSurgicalProcedure }, 
+      { "105456007", LiveDonor }, 
+      { "http://snomed.info/sct#105456007", LiveDonor }, 
+      { "105457003", CadaverDonor }, 
+      { "http://snomed.info/sct#105457003", CadaverDonor }, 
+      { "105458008", CandidateDonor }, 
+      { "http://snomed.info/sct#105458008", CandidateDonor }, 
+      { "105459000", AcceptedDonor }, 
+      { "http://snomed.info/sct#105459000", AcceptedDonor }, 
+      { "105460005", RejectedDonor }, 
+      { "http://snomed.info/sct#105460005", RejectedDonor }, 
+      { "105461009", OrganDonor }, 
+      { "http://snomed.info/sct#105461009", OrganDonor }, 
+      { "105462002", DonorOfKidneyForTransplant }, 
+      { "http://snomed.info/sct#105462002", DonorOfKidneyForTransplant }, 
+      { "105463007", DonorForLiverTransplant }, 
+      { "http://snomed.info/sct#105463007", DonorForLiverTransplant }, 
+      { "105464001", EyeDonorForCornealTransplant }, 
+      { "http://snomed.info/sct#105464001", EyeDonorForCornealTransplant }, 
+      { "105465000", DonorForHeartTransplant }, 
+      { "http://snomed.info/sct#105465000", DonorForHeartTransplant }, 
+      { "105466004", DonorForLungTransplant }, 
+      { "http://snomed.info/sct#105466004", DonorForLungTransplant }, 
+      { "105467008", DonorForHeartLungTransplant }, 
+      { "http://snomed.info/sct#105467008", DonorForHeartLungTransplant }, 
+      { "105468003", TissueDonor }, 
+      { "http://snomed.info/sct#105468003", TissueDonor }, 
+      { "105469006", BoneTissueDonor }, 
+      { "http://snomed.info/sct#105469006", BoneTissueDonor }, 
+      { "105470007", BloodDonor }, 
+      { "http://snomed.info/sct#105470007", BloodDonor }, 
+      { "105471006", BoneMarrowDonor }, 
+      { "http://snomed.info/sct#105471006", BoneMarrowDonor }, 
+      { "105472004", SpermDonorForArtificialInsemination }, 
+      { "http://snomed.info/sct#105472004", SpermDonorForArtificialInsemination }, 
+      { "105473009", HusbandSpermDonorForArtificialInsemination }, 
+      { "http://snomed.info/sct#105473009", HusbandSpermDonorForArtificialInsemination }, 
+      { "105474003", RelatedSpermDonorForArtificialInsemination }, 
+      { "http://snomed.info/sct#105474003", RelatedSpermDonorForArtificialInsemination }, 
+      { "106289002", DentalSurgeon }, 
+      { "http://snomed.info/sct#106289002", DentalSurgeon }, 
+      { "106291005", DieticianANDORPublicHealthNutritionist }, 
+      { "http://snomed.info/sct#106291005", DieticianANDORPublicHealthNutritionist }, 
+      { "106292003", Nurse }, 
+      { "http://snomed.info/sct#106292003", Nurse }, 
+      { "106293008", NursingPersonnel }, 
+      { "http://snomed.info/sct#106293008", NursingPersonnel }, 
+      { "106294002", MidwiferyPersonnel }, 
+      { "http://snomed.info/sct#106294002", MidwiferyPersonnel }, 
+      { "106296000", PhysiotherapistANDOROccupationalTherapist }, 
+      { "http://snomed.info/sct#106296000", PhysiotherapistANDOROccupationalTherapist }, 
+      { "106330007", PhilologistTranslatorANDORInterpreter }, 
+      { "http://snomed.info/sct#106330007", PhilologistTranslatorANDORInterpreter }, 
+      { "10896006", IdenticalTwinSibling }, 
+      { "http://snomed.info/sct#10896006", IdenticalTwinSibling }, 
+      { "10960006", WorkingFather }, 
+      { "http://snomed.info/sct#10960006", WorkingFather }, 
+      { "112247003", MedicalDoctor }, 
+      { "http://snomed.info/sct#112247003", MedicalDoctor }, 
+      { "11286003", TwinSibling }, 
+      { "http://snomed.info/sct#11286003", TwinSibling }, 
+      { "113157001", Grandmother }, 
+      { "http://snomed.info/sct#113157001", Grandmother }, 
+      { "113158006", FraternalTwinSibling }, 
+      { "http://snomed.info/sct#113158006", FraternalTwinSibling }, 
+      { "113159003", LegalDaughter }, 
+      { "http://snomed.info/sct#113159003", LegalDaughter }, 
+      { "113160008", NaturalSon }, 
+      { "http://snomed.info/sct#113160008", NaturalSon }, 
+      { "113161007", FemaleFiance }, 
+      { "http://snomed.info/sct#113161007", FemaleFiance }, 
+      { "113163005", Friend }, 
+      { "http://snomed.info/sct#113163005", Friend }, 
+      { "11393001", GreatGreatGrandChild }, 
+      { "http://snomed.info/sct#11393001", GreatGreatGrandChild }, 
+      { "11434005", MaleSecondCousin }, 
+      { "http://snomed.info/sct#11434005", MaleSecondCousin }, 
+      { "116153009", DonorOfControlMaterial }, 
+      { "http://snomed.info/sct#116153009", DonorOfControlMaterial }, 
+      { "116154003", Patient }, 
+      { "http://snomed.info/sct#116154003", Patient }, 
+      { "11661002", Neuropathologist }, 
+      { "http://snomed.info/sct#11661002", Neuropathologist }, 
+      { "11773006", LegalBrother }, 
+      { "http://snomed.info/sct#11773006", LegalBrother }, 
+      { "11911009", Nephrologist }, 
+      { "http://snomed.info/sct#11911009", Nephrologist }, 
+      { "11935004", Obstetrician }, 
+      { "http://snomed.info/sct#11935004", Obstetrician }, 
+      { "11993008", MaleFirstCousin }, 
+      { "http://snomed.info/sct#11993008", MaleFirstCousin }, 
+      { "12241003", FosterSon }, 
+      { "http://snomed.info/sct#12241003", FosterSon }, 
+      { "125677006", Relative }, 
+      { "http://snomed.info/sct#125677006", Relative }, 
+      { "125678001", FirstDegreeBloodRelative }, 
+      { "http://snomed.info/sct#125678001", FirstDegreeBloodRelative }, 
+      { "125679009", BloodRelative }, 
+      { "http://snomed.info/sct#125679009", BloodRelative }, 
+      { "12629003", SingleMother }, 
+      { "http://snomed.info/sct#12629003", SingleMother }, 
+      { "127848009", Spouse }, 
+      { "http://snomed.info/sct#127848009", Spouse }, 
+      { "127849001", Husband }, 
+      { "http://snomed.info/sct#127849001", Husband }, 
+      { "127850001", Wife }, 
+      { "http://snomed.info/sct#127850001", Wife }, 
+      { "127851002", Fiance }, 
+      { "http://snomed.info/sct#127851002", Fiance }, 
+      { "13038009", OlderBrother }, 
+      { "http://snomed.info/sct#13038009", OlderBrother }, 
+      { "13157002", OlderSibling }, 
+      { "http://snomed.info/sct#13157002", OlderSibling }, 
+      { "133931009", Infant }, 
+      { "http://snomed.info/sct#133931009", Infant }, 
+      { "133932002", Caregiver }, 
+      { "http://snomed.info/sct#133932002", Caregiver }, 
+      { "133933007", Newborn }, 
+      { "http://snomed.info/sct#133933007", Newborn }, 
+      { "133936004", Adult }, 
+      { "http://snomed.info/sct#133936004", Adult }, 
+      { "133937008", Adolescent }, 
+      { "http://snomed.info/sct#133937008", Adolescent }, 
+      { "13443008", SecondCousin }, 
+      { "http://snomed.info/sct#13443008", SecondCousin }, 
+      { "1354005", OrphanFemale }, 
+      { "http://snomed.info/sct#1354005", OrphanFemale }, 
+      { "13580004", SchoolDentalAssistant }, 
+      { "http://snomed.info/sct#13580004", SchoolDentalAssistant }, 
+      { "13646006", NaturalParent }, 
+      { "http://snomed.info/sct#13646006", NaturalParent }, 
+      { "1421009", SpecializedSurgeon }, 
+      { "http://snomed.info/sct#1421009", SpecializedSurgeon }, 
+      { "14469008", LegalChild }, 
+      { "http://snomed.info/sct#14469008", LegalChild }, 
+      { "14698002", MedicalMicrobiologist }, 
+      { "http://snomed.info/sct#14698002", MedicalMicrobiologist }, 
+      { "15130002", SurrogateParent }, 
+      { "http://snomed.info/sct#15130002", SurrogateParent }, 
+      { "158965000", MedicalPractitioner }, 
+      { "http://snomed.info/sct#158965000", MedicalPractitioner }, 
+      { "158966004", MedicalAdministratorNational }, 
+      { "http://snomed.info/sct#158966004", MedicalAdministratorNational }, 
+      { "158967008", ConsultantPhysician }, 
+      { "http://snomed.info/sct#158967008", ConsultantPhysician }, 
+      { "158968003", ConsultantSurgeon }, 
+      { "http://snomed.info/sct#158968003", ConsultantSurgeon }, 
+      { "158969006", ConsultantGynecologyAndObstetrics }, 
+      { "http://snomed.info/sct#158969006", ConsultantGynecologyAndObstetrics }, 
+      { "158970007", Anesthetist }, 
+      { "http://snomed.info/sct#158970007", Anesthetist }, 
+      { "158971006", HospitalRegistrar }, 
+      { "http://snomed.info/sct#158971006", HospitalRegistrar }, 
+      { "158972004", HouseOfficer }, 
+      { "http://snomed.info/sct#158972004", HouseOfficer }, 
+      { "158973009", OccupationalPhysician }, 
+      { "http://snomed.info/sct#158973009", OccupationalPhysician }, 
+      { "158974003", ClinicalMedicalOfficer }, 
+      { "http://snomed.info/sct#158974003", ClinicalMedicalOfficer }, 
+      { "158975002", MedicalPractitionerTeaching }, 
+      { "http://snomed.info/sct#158975002", MedicalPractitionerTeaching }, 
+      { "158977005", DentalAdministrator }, 
+      { "http://snomed.info/sct#158977005", DentalAdministrator }, 
+      { "158978000", DentalConsultant }, 
+      { "http://snomed.info/sct#158978000", DentalConsultant }, 
+      { "158979008", DentalGeneralPractitioner }, 
+      { "http://snomed.info/sct#158979008", DentalGeneralPractitioner }, 
+      { "158980006", DentalPractitionerTeaching }, 
+      { "http://snomed.info/sct#158980006", DentalPractitionerTeaching }, 
+      { "158983008", NurseAdministratorNational }, 
+      { "http://snomed.info/sct#158983008", NurseAdministratorNational }, 
+      { "158984002", NursingOfficerRegion }, 
+      { "http://snomed.info/sct#158984002", NursingOfficerRegion }, 
+      { "158985001", NursingOfficerDistrict }, 
+      { "http://snomed.info/sct#158985001", NursingOfficerDistrict }, 
+      { "158986000", NursingAdministratorProfessionalBody }, 
+      { "http://snomed.info/sct#158986000", NursingAdministratorProfessionalBody }, 
+      { "158987009", NursingOfficerDivision }, 
+      { "http://snomed.info/sct#158987009", NursingOfficerDivision }, 
+      { "158988004", NurseEducationDirector }, 
+      { "http://snomed.info/sct#158988004", NurseEducationDirector }, 
+      { "158989007", OccupationalHealthNursingOfficer }, 
+      { "http://snomed.info/sct#158989007", OccupationalHealthNursingOfficer }, 
+      { "158990003", NursingOfficer }, 
+      { "http://snomed.info/sct#158990003", NursingOfficer }, 
+      { "158992006", MidwiferySister }, 
+      { "http://snomed.info/sct#158992006", MidwiferySister }, 
+      { "158993001", NursingSisterTheatre }, 
+      { "http://snomed.info/sct#158993001", NursingSisterTheatre }, 
+      { "158994007", StaffNurse }, 
+      { "http://snomed.info/sct#158994007", StaffNurse }, 
+      { "158995008", StaffMidwife }, 
+      { "http://snomed.info/sct#158995008", StaffMidwife }, 
+      { "158996009", StateEnrolledNurse }, 
+      { "http://snomed.info/sct#158996009", StateEnrolledNurse }, 
+      { "158997000", DistrictNurse }, 
+      { "http://snomed.info/sct#158997000", DistrictNurse }, 
+      { "158998005", PrivateNurse }, 
+      { "http://snomed.info/sct#158998005", PrivateNurse }, 
+      { "158999002", CommunityMidwife }, 
+      { "http://snomed.info/sct#158999002", CommunityMidwife }, 
+      { "159001001", ClinicNurse }, 
+      { "http://snomed.info/sct#159001001", ClinicNurse }, 
+      { "159002008", PracticeNurse }, 
+      { "http://snomed.info/sct#159002008", PracticeNurse }, 
+      { "159003003", SchoolNurse }, 
+      { "http://snomed.info/sct#159003003", SchoolNurse }, 
+      { "159004009", NurseTeaching }, 
+      { "http://snomed.info/sct#159004009", NurseTeaching }, 
+      { "159005005", StudentNurse }, 
+      { "http://snomed.info/sct#159005005", StudentNurse }, 
+      { "159006006", DentalNurse }, 
+      { "http://snomed.info/sct#159006006", DentalNurse }, 
+      { "159007002", CommunityPediatricNurse }, 
+      { "http://snomed.info/sct#159007002", CommunityPediatricNurse }, 
+      { "159010009", HospitalPharmacist }, 
+      { "http://snomed.info/sct#159010009", HospitalPharmacist }, 
+      { "159011008", RetailPharmacist }, 
+      { "http://snomed.info/sct#159011008", RetailPharmacist }, 
+      { "159012001", IndustrialPharmacist }, 
+      { "http://snomed.info/sct#159012001", IndustrialPharmacist }, 
+      { "159013006", PharmaceuticalOfficerHA }, 
+      { "http://snomed.info/sct#159013006", PharmaceuticalOfficerHA }, 
+      { "159014000", TraineePharmacist }, 
+      { "http://snomed.info/sct#159014000", TraineePharmacist }, 
+      { "159016003", MedicalRadiographer }, 
+      { "http://snomed.info/sct#159016003", MedicalRadiographer }, 
+      { "159017007", DiagnosticRadiographer }, 
+      { "http://snomed.info/sct#159017007", DiagnosticRadiographer }, 
+      { "159018002", TherapeuticRadiographer }, 
+      { "http://snomed.info/sct#159018002", TherapeuticRadiographer }, 
+      { "159019005", TraineeRadiographer }, 
+      { "http://snomed.info/sct#159019005", TraineeRadiographer }, 
+      { "159021000", OphthalmicOptician }, 
+      { "http://snomed.info/sct#159021000", OphthalmicOptician }, 
+      { "159022007", TraineeOptician }, 
+      { "http://snomed.info/sct#159022007", TraineeOptician }, 
+      { "159025009", RemedialGymnast }, 
+      { "http://snomed.info/sct#159025009", RemedialGymnast }, 
+      { "159026005", SpeechAndLanguageTherapist }, 
+      { "http://snomed.info/sct#159026005", SpeechAndLanguageTherapist }, 
+      { "159027001", Orthoptist }, 
+      { "http://snomed.info/sct#159027001", Orthoptist }, 
+      { "159028006", TraineeRemedialTherapist }, 
+      { "http://snomed.info/sct#159028006", TraineeRemedialTherapist }, 
+      { "159033005", Dietician }, 
+      { "http://snomed.info/sct#159033005", Dietician }, 
+      { "159034004", Podiatrist }, 
+      { "http://snomed.info/sct#159034004", Podiatrist }, 
+      { "159035003", DentalAuxiliary }, 
+      { "http://snomed.info/sct#159035003", DentalAuxiliary }, 
+      { "159036002", ECGTechnician }, 
+      { "http://snomed.info/sct#159036002", ECGTechnician }, 
+      { "159037006", EEGTechnician }, 
+      { "http://snomed.info/sct#159037006", EEGTechnician }, 
+      { "159038001", ArtificialLimbFitter }, 
+      { "http://snomed.info/sct#159038001", ArtificialLimbFitter }, 
+      { "159039009", ATAudiologyTechnician }, 
+      { "http://snomed.info/sct#159039009", ATAudiologyTechnician }, 
+      { "159040006", PharmacyTechnician }, 
+      { "http://snomed.info/sct#159040006", PharmacyTechnician }, 
+      { "159041005", TraineeMedicalTechnician }, 
+      { "http://snomed.info/sct#159041005", TraineeMedicalTechnician }, 
+      { "159141008", Geneticist }, 
+      { "http://snomed.info/sct#159141008", Geneticist }, 
+      { "159972006", SurgicalCorsetFitter }, 
+      { "http://snomed.info/sct#159972006", SurgicalCorsetFitter }, 
+      { "160008000", DentalTechnician }, 
+      { "http://snomed.info/sct#160008000", DentalTechnician }, 
+      { "160234004", SalvationArmyMember }, 
+      { "http://snomed.info/sct#160234004", SalvationArmyMember }, 
+      { "160498000", SchoolChild }, 
+      { "http://snomed.info/sct#160498000", SchoolChild }, 
+      { "160505009", CommonLawHusband }, 
+      { "http://snomed.info/sct#160505009", CommonLawHusband }, 
+      { "160506005", CommonLawWife }, 
+      { "http://snomed.info/sct#160506005", CommonLawWife }, 
+      { "160540005", RomanCatholic }, 
+      { "http://snomed.info/sct#160540005", RomanCatholic }, 
+      { "160542002", Atheist }, 
+      { "http://snomed.info/sct#160542002", Atheist }, 
+      { "160543007", Jew }, 
+      { "http://snomed.info/sct#160543007", Jew }, 
+      { "160544001", ChristianScienceChurch }, 
+      { "http://snomed.info/sct#160544001", ChristianScienceChurch }, 
+      { "160545000", Hindu }, 
+      { "http://snomed.info/sct#160545000", Hindu }, 
+      { "160549006", Christian }, 
+      { "http://snomed.info/sct#160549006", Christian }, 
+      { "160557009", Baptist }, 
+      { "http://snomed.info/sct#160557009", Baptist }, 
+      { "160558004", Methodist }, 
+      { "http://snomed.info/sct#160558004", Methodist }, 
+      { "160560002", Presbyterian }, 
+      { "http://snomed.info/sct#160560002", Presbyterian }, 
+      { "160562005", Pentecostal }, 
+      { "http://snomed.info/sct#160562005", Pentecostal }, 
+      { "160563000", Evangelist }, 
+      { "http://snomed.info/sct#160563000", Evangelist }, 
+      { "160566008", Christadelphian }, 
+      { "http://snomed.info/sct#160566008", Christadelphian }, 
+      { "160567004", Agnostic }, 
+      { "http://snomed.info/sct#160567004", Agnostic }, 
+      { "160772005", VoluntaryWorker }, 
+      { "http://snomed.info/sct#160772005", VoluntaryWorker }, 
+      { "161158003", Immigrant }, 
+      { "http://snomed.info/sct#161158003", Immigrant }, 
+      { "166557991000087101", MaternalGreatGrandFather }, 
+      { "http://snomed.info/sct#166557991000087101", MaternalGreatGrandFather }, 
+      { "17219007", MaleFiance }, 
+      { "http://snomed.info/sct#17219007", MaleFiance }, 
+      { "173704201000087107", PaternalFirstCousin }, 
+      { "http://snomed.info/sct#173704201000087107", PaternalFirstCousin }, 
+      { "17561000", Cardiologist }, 
+      { "http://snomed.info/sct#17561000", Cardiologist }, 
+      { "17925003", AdoptiveBrother }, 
+      { "http://snomed.info/sct#17925003", AdoptiveBrother }, 
+      { "17945006", NaturalGrandmother }, 
+      { "http://snomed.info/sct#17945006", NaturalGrandmother }, 
+      { "18205005", WesleyanMethodistFollowerOfReligion }, 
+      { "http://snomed.info/sct#18205005", WesleyanMethodistFollowerOfReligion }, 
+      { "183033871000087106", MinistryOfHealthSaskatchewan }, 
+      { "http://snomed.info/sct#183033871000087106", MinistryOfHealthSaskatchewan }, 
+      { "18803008", Dermatologist }, 
+      { "http://snomed.info/sct#18803008", Dermatologist }, 
+      { "18850004", LaboratoryHematologist }, 
+      { "http://snomed.info/sct#18850004", LaboratoryHematologist }, 
+      { "18906004", FosterSibling }, 
+      { "http://snomed.info/sct#18906004", FosterSibling }, 
+      { "189542671000087101", MinistryOfHealthQuebec }, 
+      { "http://snomed.info/sct#189542671000087101", MinistryOfHealthQuebec }, 
+      { "19244007", Gerodontist }, 
+      { "http://snomed.info/sct#19244007", Gerodontist }, 
+      { "19343003", TwinSister }, 
+      { "http://snomed.info/sct#19343003", TwinSister }, 
+      { "194907391000087109", MaternalGreatGrandMother }, 
+      { "http://snomed.info/sct#194907391000087109", MaternalGreatGrandMother }, 
+      { "19686009", YoungerSister }, 
+      { "http://snomed.info/sct#19686009", YoungerSister }, 
+      { "20145008", RemovableProsthodontist }, 
+      { "http://snomed.info/sct#20145008", RemovableProsthodontist }, 
+      { "21093007", HalfSibling }, 
+      { "http://snomed.info/sct#21093007", HalfSibling }, 
+      { "21365001", SpecializedDentist }, 
+      { "http://snomed.info/sct#21365001", SpecializedDentist }, 
+      { "21450003", Neuropsychiatrist }, 
+      { "http://snomed.info/sct#21450003", Neuropsychiatrist }, 
+      { "21464003", AdoptiveMother }, 
+      { "http://snomed.info/sct#21464003", AdoptiveMother }, 
+      { "21506002", FemaleSecondCousin }, 
+      { "http://snomed.info/sct#21506002", FemaleSecondCousin }, 
+      { "215424891000087101", PaternalGreatGrandMother }, 
+      { "http://snomed.info/sct#215424891000087101", PaternalGreatGrandMother }, 
+      { "22387007", SurrogateChild }, 
+      { "http://snomed.info/sct#22387007", SurrogateChild }, 
+      { "224080001", CommittedChristianFollowerOfReligion }, 
+      { "http://snomed.info/sct#224080001", CommittedChristianFollowerOfReligion }, 
+      { "224526002", Woman }, 
+      { "http://snomed.info/sct#224526002", Woman }, 
+      { "224527006", PersonInTheWorkEnvironment }, 
+      { "http://snomed.info/sct#224527006", PersonInTheWorkEnvironment }, 
+      { "224528001", Employee }, 
+      { "http://snomed.info/sct#224528001", Employee }, 
+      { "224529009", ClinicalAssistant }, 
+      { "http://snomed.info/sct#224529009", ClinicalAssistant }, 
+      { "224530004", SeniorRegistrar }, 
+      { "http://snomed.info/sct#224530004", SeniorRegistrar }, 
+      { "224531000", Registrar }, 
+      { "http://snomed.info/sct#224531000", Registrar }, 
+      { "224532007", SeniorHouseOfficer }, 
+      { "http://snomed.info/sct#224532007", SeniorHouseOfficer }, 
+      { "224533002", MOMedicalOfficer }, 
+      { "http://snomed.info/sct#224533002", MOMedicalOfficer }, 
+      { "224534008", HealthVisitorNurseMidwife }, 
+      { "http://snomed.info/sct#224534008", HealthVisitorNurseMidwife }, 
+      { "224535009", RegisteredNurse }, 
+      { "http://snomed.info/sct#224535009", RegisteredNurse }, 
+      { "224536005", MidwiferyTutor }, 
+      { "http://snomed.info/sct#224536005", MidwiferyTutor }, 
+      { "224537001", AccidentAndEmergencyNurse }, 
+      { "http://snomed.info/sct#224537001", AccidentAndEmergencyNurse }, 
+      { "224538006", TriageNurse }, 
+      { "http://snomed.info/sct#224538006", TriageNurse }, 
+      { "224540001", CommunityNurse }, 
+      { "http://snomed.info/sct#224540001", CommunityNurse }, 
+      { "224541002", NursingContinenceAdvisor }, 
+      { "http://snomed.info/sct#224541002", NursingContinenceAdvisor }, 
+      { "224542009", CoronaryCareNurse }, 
+      { "http://snomed.info/sct#224542009", CoronaryCareNurse }, 
+      { "224543004", DiabeticNurse }, 
+      { "http://snomed.info/sct#224543004", DiabeticNurse }, 
+      { "224544005", FamilyPlanningNurse }, 
+      { "http://snomed.info/sct#224544005", FamilyPlanningNurse }, 
+      { "224545006", CareOfTheElderlyNurse }, 
+      { "http://snomed.info/sct#224545006", CareOfTheElderlyNurse }, 
+      { "224546007", ICNInfectionControlNurse }, 
+      { "http://snomed.info/sct#224546007", ICNInfectionControlNurse }, 
+      { "224547003", IntensiveTherapyNurse }, 
+      { "http://snomed.info/sct#224547003", IntensiveTherapyNurse }, 
+      { "224548008", LearningDisabilitiesNurse }, 
+      { "http://snomed.info/sct#224548008", LearningDisabilitiesNurse }, 
+      { "224549000", NeonatalNurse }, 
+      { "http://snomed.info/sct#224549000", NeonatalNurse }, 
+      { "224550000", NeurologyNurse }, 
+      { "http://snomed.info/sct#224550000", NeurologyNurse }, 
+      { "224551001", IndustrialNurse }, 
+      { "http://snomed.info/sct#224551001", IndustrialNurse }, 
+      { "224552008", OncologyNurse }, 
+      { "http://snomed.info/sct#224552008", OncologyNurse }, 
+      { "224553003", MacmillanNurse }, 
+      { "http://snomed.info/sct#224553003", MacmillanNurse }, 
+      { "224554009", MarieCurieNurse }, 
+      { "http://snomed.info/sct#224554009", MarieCurieNurse }, 
+      { "224555005", PainControlNurse }, 
+      { "http://snomed.info/sct#224555005", PainControlNurse }, 
+      { "224556006", PalliativeCareNurse }, 
+      { "http://snomed.info/sct#224556006", PalliativeCareNurse }, 
+      { "224557002", ChemotherapyNurse }, 
+      { "http://snomed.info/sct#224557002", ChemotherapyNurse }, 
+      { "224558007", RadiotherapyNurse }, 
+      { "http://snomed.info/sct#224558007", RadiotherapyNurse }, 
+      { "224559004", PACUNurse }, 
+      { "http://snomed.info/sct#224559004", PACUNurse }, 
+      { "224560009", Stomatherapist }, 
+      { "http://snomed.info/sct#224560009", Stomatherapist }, 
+      { "224561008", TheatreNurse }, 
+      { "http://snomed.info/sct#224561008", TheatreNurse }, 
+      { "224562001", PediatricNurse }, 
+      { "http://snomed.info/sct#224562001", PediatricNurse }, 
+      { "224563006", PsychiatricNurse }, 
+      { "http://snomed.info/sct#224563006", PsychiatricNurse }, 
+      { "224564000", CommunityMentalHealthNurse }, 
+      { "http://snomed.info/sct#224564000", CommunityMentalHealthNurse }, 
+      { "224565004", RenalNurse }, 
+      { "http://snomed.info/sct#224565004", RenalNurse }, 
+      { "224566003", HemodialysisNurse }, 
+      { "http://snomed.info/sct#224566003", HemodialysisNurse }, 
+      { "224567007", WoundCareNurse }, 
+      { "http://snomed.info/sct#224567007", WoundCareNurse }, 
+      { "224569005", NurseGrade }, 
+      { "http://snomed.info/sct#224569005", NurseGrade }, 
+      { "224570006", ClinicalNurseSpecialist }, 
+      { "http://snomed.info/sct#224570006", ClinicalNurseSpecialist }, 
+      { "224571005", NursePractitioner }, 
+      { "http://snomed.info/sct#224571005", NursePractitioner }, 
+      { "224572003", NursingSister }, 
+      { "http://snomed.info/sct#224572003", NursingSister }, 
+      { "224573008", CNChargeNurse }, 
+      { "http://snomed.info/sct#224573008", CNChargeNurse }, 
+      { "224574002", WardManager }, 
+      { "http://snomed.info/sct#224574002", WardManager }, 
+      { "224575001", NursingTeamLeader }, 
+      { "http://snomed.info/sct#224575001", NursingTeamLeader }, 
+      { "224576000", NursingAssistant }, 
+      { "http://snomed.info/sct#224576000", NursingAssistant }, 
+      { "224577009", HealthcareAssistant }, 
+      { "http://snomed.info/sct#224577009", HealthcareAssistant }, 
+      { "224578004", NurseryNurse }, 
+      { "http://snomed.info/sct#224578004", NurseryNurse }, 
+      { "224579007", HealthcareServiceManager }, 
+      { "http://snomed.info/sct#224579007", HealthcareServiceManager }, 
+      { "224580005", OccupationalHealthServiceManager }, 
+      { "http://snomed.info/sct#224580005", OccupationalHealthServiceManager }, 
+      { "224581009", CommunityNurseManager }, 
+      { "http://snomed.info/sct#224581009", CommunityNurseManager }, 
+      { "224583007", BehaviorTherapist }, 
+      { "http://snomed.info/sct#224583007", BehaviorTherapist }, 
+      { "224584001", BehaviorTherapyAssistant }, 
+      { "http://snomed.info/sct#224584001", BehaviorTherapyAssistant }, 
+      { "224585000", DramaTherapist }, 
+      { "http://snomed.info/sct#224585000", DramaTherapist }, 
+      { "224586004", DomiciliaryOccupationalTherapist }, 
+      { "http://snomed.info/sct#224586004", DomiciliaryOccupationalTherapist }, 
+      { "224587008", OccupationalTherapyHelper }, 
+      { "http://snomed.info/sct#224587008", OccupationalTherapyHelper }, 
+      { "224588003", Psychotherapist }, 
+      { "http://snomed.info/sct#224588003", Psychotherapist }, 
+      { "224589006", CommunityBasedPhysiotherapist }, 
+      { "http://snomed.info/sct#224589006", CommunityBasedPhysiotherapist }, 
+      { "224590002", PlayTherapist }, 
+      { "http://snomed.info/sct#224590002", PlayTherapist }, 
+      { "224591003", PlaySpecialist }, 
+      { "http://snomed.info/sct#224591003", PlaySpecialist }, 
+      { "224592005", PlayLeader }, 
+      { "http://snomed.info/sct#224592005", PlayLeader }, 
+      { "224593000", CommunityBasedSpeechLanguageTherapist }, 
+      { "http://snomed.info/sct#224593000", CommunityBasedSpeechLanguageTherapist }, 
+      { "224594006", SpeechLanguageAssistant }, 
+      { "http://snomed.info/sct#224594006", SpeechLanguageAssistant }, 
+      { "224595007", ProfessionalCounselor }, 
+      { "http://snomed.info/sct#224595007", ProfessionalCounselor }, 
+      { "224596008", MarriageGuidanceCounselor }, 
+      { "http://snomed.info/sct#224596008", MarriageGuidanceCounselor }, 
+      { "224597004", TrainedNurseCounselor }, 
+      { "http://snomed.info/sct#224597004", TrainedNurseCounselor }, 
+      { "224598009", TrainedSocialWorkerCounselor }, 
+      { "http://snomed.info/sct#224598009", TrainedSocialWorkerCounselor }, 
+      { "224599001", TrainedPersonnelCounselor }, 
+      { "http://snomed.info/sct#224599001", TrainedPersonnelCounselor }, 
+      { "224600003", Psychoanalyst }, 
+      { "http://snomed.info/sct#224600003", Psychoanalyst }, 
+      { "224601004", AssistantPsychologist }, 
+      { "http://snomed.info/sct#224601004", AssistantPsychologist }, 
+      { "224602006", CommunityBasedPodiatrist }, 
+      { "http://snomed.info/sct#224602006", CommunityBasedPodiatrist }, 
+      { "224603001", FootCareWorker }, 
+      { "http://snomed.info/sct#224603001", FootCareWorker }, 
+      { "224604007", Audiometrician }, 
+      { "http://snomed.info/sct#224604007", Audiometrician }, 
+      { "224605008", Audiometrist }, 
+      { "http://snomed.info/sct#224605008", Audiometrist }, 
+      { "224606009", TechnicalHealthcareOccupation }, 
+      { "http://snomed.info/sct#224606009", TechnicalHealthcareOccupation }, 
+      { "224607000", OccupationalTherapyTechnicalInstructor }, 
+      { "http://snomed.info/sct#224607000", OccupationalTherapyTechnicalInstructor }, 
+      { "224608005", AdministrativeHealthcareStaff }, 
+      { "http://snomed.info/sct#224608005", AdministrativeHealthcareStaff }, 
+      { "224609002", ComplementaryHealthWorker }, 
+      { "http://snomed.info/sct#224609002", ComplementaryHealthWorker }, 
+      { "224610007", SupportingServicesPersonnel }, 
+      { "http://snomed.info/sct#224610007", SupportingServicesPersonnel }, 
+      { "224614003", ResearchAssociate }, 
+      { "http://snomed.info/sct#224614003", ResearchAssociate }, 
+      { "224615002", ResearchNurse }, 
+      { "http://snomed.info/sct#224615002", ResearchNurse }, 
+      { "224619008", Migrant }, 
+      { "http://snomed.info/sct#224619008", Migrant }, 
+      { "224620002", HumanAidToCommunication }, 
+      { "http://snomed.info/sct#224620002", HumanAidToCommunication }, 
+      { "224621003", Palantypist }, 
+      { "http://snomed.info/sct#224621003", Palantypist }, 
+      { "224622005", NoteTaker }, 
+      { "http://snomed.info/sct#224622005", NoteTaker }, 
+      { "224623000", Cuer }, 
+      { "http://snomed.info/sct#224623000", Cuer }, 
+      { "224624006", Lipspeaker }, 
+      { "http://snomed.info/sct#224624006", Lipspeaker }, 
+      { "224625007", InterpreterForBritishSignLanguage }, 
+      { "http://snomed.info/sct#224625007", InterpreterForBritishSignLanguage }, 
+      { "224626008", InterpreterForSignsSupportingEnglish }, 
+      { "http://snomed.info/sct#224626008", InterpreterForSignsSupportingEnglish }, 
+      { "224627004", GeneralCategoryOfPerson }, 
+      { "http://snomed.info/sct#224627004", GeneralCategoryOfPerson }, 
+      { "224936003", GeneralPractitionerLocum }, 
+      { "http://snomed.info/sct#224936003", GeneralPractitionerLocum }, 
+      { "22515006", MedicalAssistant }, 
+      { "http://snomed.info/sct#22515006", MedicalAssistant }, 
+      { "225726006", LactationConsultant }, 
+      { "http://snomed.info/sct#225726006", LactationConsultant }, 
+      { "225727002", MidwifeCounselor }, 
+      { "http://snomed.info/sct#225727002", MidwifeCounselor }, 
+      { "22573006", Stepdaughter }, 
+      { "http://snomed.info/sct#22573006", Stepdaughter }, 
+      { "22609000", AdoptiveGrandparent }, 
+      { "http://snomed.info/sct#22609000", AdoptiveGrandparent }, 
+      { "2272004", HalfSister }, 
+      { "http://snomed.info/sct#2272004", HalfSister }, 
+      { "22731001", OrthopedicSurgeon }, 
+      { "http://snomed.info/sct#22731001", OrthopedicSurgeon }, 
+      { "22963000", LegalSister }, 
+      { "http://snomed.info/sct#22963000", LegalSister }, 
+      { "22983004", ThoracicSurgeon }, 
+      { "http://snomed.info/sct#22983004", ThoracicSurgeon }, 
+      { "231189271000087109", Naturopath }, 
+      { "http://snomed.info/sct#231189271000087109", Naturopath }, 
+      { "2316007", AdoptiveSon }, 
+      { "http://snomed.info/sct#2316007", AdoptiveSon }, 
+      { "23278007", CommunityHealthPhysician }, 
+      { "http://snomed.info/sct#23278007", CommunityHealthPhysician }, 
+      { "236749831000087105", Prosthetist }, 
+      { "http://snomed.info/sct#236749831000087105", Prosthetist }, 
+      { "2368000", GreatGreatGrandmother }, 
+      { "http://snomed.info/sct#2368000", GreatGreatGrandmother }, 
+      { "24430003", PhysicalMedicineSpecialist }, 
+      { "http://snomed.info/sct#24430003", PhysicalMedicineSpecialist }, 
+      { "24590004", Urologist }, 
+      { "http://snomed.info/sct#24590004", Urologist }, 
+      { "2481008", WorkingMother }, 
+      { "http://snomed.info/sct#2481008", WorkingMother }, 
+      { "248544006", RastafarianFollowerOfReligion }, 
+      { "http://snomed.info/sct#248544006", RastafarianFollowerOfReligion }, 
+      { "249236551000087105", CommunityHealthCenter }, 
+      { "http://snomed.info/sct#249236551000087105", CommunityHealthCenter }, 
+      { "250624661000087107", NovaScotiaDepartmentOfHealthAndWellness }, 
+      { "http://snomed.info/sct#250624661000087107", NovaScotiaDepartmentOfHealthAndWellness }, 
+      { "25211005", Aunt }, 
+      { "http://snomed.info/sct#25211005", Aunt }, 
+      { "254693751000087105", NunavutDepartmentOfHealthAndSocialServices }, 
+      { "http://snomed.info/sct#254693751000087105", NunavutDepartmentOfHealthAndSocialServices }, 
+      { "255409004", PregnantWoman }, 
+      { "http://snomed.info/sct#255409004", PregnantWoman }, 
+      { "257497009", AnimalRider }, 
+      { "http://snomed.info/sct#257497009", AnimalRider }, 
+      { "257498004", RiderOfMotorcycle }, 
+      { "http://snomed.info/sct#257498004", RiderOfMotorcycle }, 
+      { "257499007", PedalCyclist }, 
+      { "http://snomed.info/sct#257499007", PedalCyclist }, 
+      { "257500003", Passenger }, 
+      { "http://snomed.info/sct#257500003", Passenger }, 
+      { "257501004", OccupantOfMotorVehicle }, 
+      { "http://snomed.info/sct#257501004", OccupantOfMotorVehicle }, 
+      { "257502006", OccupantOfTram }, 
+      { "http://snomed.info/sct#257502006", OccupantOfTram }, 
+      { "257503001", PillionPassenger }, 
+      { "http://snomed.info/sct#257503001", PillionPassenger }, 
+      { "257504007", PersonRidingOnOutsideOfVehicle }, 
+      { "http://snomed.info/sct#257504007", PersonRidingOnOutsideOfVehicle }, 
+      { "257505008", PersonTravellingOnOutsideOfTrain }, 
+      { "http://snomed.info/sct#257505008", PersonTravellingOnOutsideOfTrain }, 
+      { "257506009", FrontSeatPassenger }, 
+      { "http://snomed.info/sct#257506009", FrontSeatPassenger }, 
+      { "257508005", BackSeatPassenger }, 
+      { "http://snomed.info/sct#257508005", BackSeatPassenger }, 
+      { "257509002", OccupantOfAnimalDrawnVehicle }, 
+      { "http://snomed.info/sct#257509002", OccupantOfAnimalDrawnVehicle }, 
+      { "257510007", PassengerOnCommercialWatercraft }, 
+      { "http://snomed.info/sct#257510007", PassengerOnCommercialWatercraft }, 
+      { "257511006", PassengerOnStation }, 
+      { "http://snomed.info/sct#257511006", PassengerOnStation }, 
+      { "257512004", PassengerOnTrain }, 
+      { "http://snomed.info/sct#257512004", PassengerOnTrain }, 
+      { "257513009", MemberOfPublic }, 
+      { "http://snomed.info/sct#257513009", MemberOfPublic }, 
+      { "257514003", MemberOfPublicInvolvedIncidentally }, 
+      { "http://snomed.info/sct#257514003", MemberOfPublicInvolvedIncidentally }, 
+      { "257516001", MemberOfPublicOnGround }, 
+      { "http://snomed.info/sct#257516001", MemberOfPublicOnGround }, 
+      { "257517005", OccupantOfNonmotorVehicle }, 
+      { "http://snomed.info/sct#257517005", OccupantOfNonmotorVehicle }, 
+      { "257518000", Pedestrian }, 
+      { "http://snomed.info/sct#257518000", Pedestrian }, 
+      { "257519008", PersonTrespassingOnRailwayLine }, 
+      { "http://snomed.info/sct#257519008", PersonTrespassingOnRailwayLine }, 
+      { "257521003", RailwayEmployeeOnTrain }, 
+      { "http://snomed.info/sct#257521003", RailwayEmployeeOnTrain }, 
+      { "257522005", RecreationalWatercraftUser }, 
+      { "http://snomed.info/sct#257522005", RecreationalWatercraftUser }, 
+      { "257523000", Swimmer }, 
+      { "http://snomed.info/sct#257523000", Swimmer }, 
+      { "257524006", UserOfAnimalDrawnVehicle }, 
+      { "http://snomed.info/sct#257524006", UserOfAnimalDrawnVehicle }, 
+      { "257525007", WatercraftDweller }, 
+      { "http://snomed.info/sct#257525007", WatercraftDweller }, 
+      { "257526008", Waterskier }, 
+      { "http://snomed.info/sct#257526008", Waterskier }, 
+      { "258508741000087105", HipAndKneeSurgeon }, 
+      { "http://snomed.info/sct#258508741000087105", HipAndKneeSurgeon }, 
+      { "25961008", ElectroencephalographySpecialist }, 
+      { "http://snomed.info/sct#25961008", ElectroencephalographySpecialist }, 
+      { "26042002", DentalHygienist }, 
+      { "http://snomed.info/sct#26042002", DentalHygienist }, 
+      { "260767431000087107", Hepatologist }, 
+      { "http://snomed.info/sct#260767431000087107", Hepatologist }, 
+      { "262043009", Companion }, 
+      { "http://snomed.info/sct#262043009", Companion }, 
+      { "26369006", PublicHealthNurse }, 
+      { "http://snomed.info/sct#26369006", PublicHealthNurse }, 
+      { "265937000", NursingOccupation }, 
+      { "http://snomed.info/sct#265937000", NursingOccupation }, 
+      { "265939002", MedicalDentalTechnicians }, 
+      { "http://snomed.info/sct#265939002", MedicalDentalTechnicians }, 
+      { "266943008", SingleParent }, 
+      { "http://snomed.info/sct#266943008", SingleParent }, 
+      { "268557009", Sportsman }, 
+      { "http://snomed.info/sct#268557009", Sportsman }, 
+      { "270002", FemaleFirstCousin }, 
+      { "http://snomed.info/sct#270002", FemaleFirstCousin }, 
+      { "271448006", AnglicanFollowerOfReligion }, 
+      { "http://snomed.info/sct#271448006", AnglicanFollowerOfReligion }, 
+      { "27508009", SurrogateMother }, 
+      { "http://snomed.info/sct#27508009", SurrogateMother }, 
+      { "276035002", VoluntaryHelper }, 
+      { "http://snomed.info/sct#276035002", VoluntaryHelper }, 
+      { "276036001", VoluntaryVisitor }, 
+      { "http://snomed.info/sct#276036001", VoluntaryVisitor }, 
+      { "276037005", VolunteerHelper }, 
+      { "http://snomed.info/sct#276037005", VolunteerHelper }, 
+      { "276119007", Nonconformist }, 
+      { "http://snomed.info/sct#276119007", Nonconformist }, 
+      { "27733009", SrSister }, 
+      { "http://snomed.info/sct#27733009", SrSister }, 
+      { "28010004", ShiiteMuslimFollowerOfReligion }, 
+      { "http://snomed.info/sct#28010004", ShiiteMuslimFollowerOfReligion }, 
+      { "28229004", Optometrist }, 
+      { "http://snomed.info/sct#28229004", Optometrist }, 
+      { "283875005", ParkinsonDiseaseNurse }, 
+      { "http://snomed.info/sct#283875005", ParkinsonDiseaseNurse }, 
+      { "28411006", Neonatologist }, 
+      { "http://snomed.info/sct#28411006", Neonatologist }, 
+      { "28544002", ChemicalPathologist }, 
+      { "http://snomed.info/sct#28544002", ChemicalPathologist }, 
+      { "285631911000087106", ShoulderSurgeon }, 
+      { "http://snomed.info/sct#285631911000087106", ShoulderSurgeon }, 
+      { "286864561000087100", MaternalCousin }, 
+      { "http://snomed.info/sct#286864561000087100", MaternalCousin }, 
+      { "287697331000087102", ProviderBillingNumber }, 
+      { "http://snomed.info/sct#287697331000087102", ProviderBillingNumber }, 
+      { "291705421000087106", InterventionalRadiologist }, 
+      { "http://snomed.info/sct#291705421000087106", InterventionalRadiologist }, 
+      { "29539002", YoungerSibling }, 
+      { "http://snomed.info/sct#29539002", YoungerSibling }, 
+      { "2959006", FemaleCousin }, 
+      { "http://snomed.info/sct#2959006", FemaleCousin }, 
+      { "29644004", FraternalTwinSister }, 
+      { "http://snomed.info/sct#29644004", FraternalTwinSister }, 
+      { "29787005", FosterBrother }, 
+      { "http://snomed.info/sct#29787005", FosterBrother }, 
+      { "302211009", SpecialistRegistrar }, 
+      { "http://snomed.info/sct#302211009", SpecialistRegistrar }, 
+      { "303069001", PersonInTheTransportEnvironment }, 
+      { "http://snomed.info/sct#303069001", PersonInTheTransportEnvironment }, 
+      { "303071001", PersonInTheFamily }, 
+      { "http://snomed.info/sct#303071001", PersonInTheFamily }, 
+      { "303072008", PersonInTheHomeEnvironment }, 
+      { "http://snomed.info/sct#303072008", PersonInTheHomeEnvironment }, 
+      { "303073003", PersonInTheReligiousEnvironment }, 
+      { "http://snomed.info/sct#303073003", PersonInTheReligiousEnvironment }, 
+      { "303118004", PersonInTheHealthcareEnvironment }, 
+      { "http://snomed.info/sct#303118004", PersonInTheHealthcareEnvironment }, 
+      { "303119007", PersonInTheCommunityEnvironment }, 
+      { "http://snomed.info/sct#303119007", PersonInTheCommunityEnvironment }, 
+      { "303120001", PersonInTheRecreationalEnvironment }, 
+      { "http://snomed.info/sct#303120001", PersonInTheRecreationalEnvironment }, 
+      { "303121002", PersonInTheEducationalEnvironment }, 
+      { "http://snomed.info/sct#303121002", PersonInTheEducationalEnvironment }, 
+      { "303122009", Crewmember }, 
+      { "http://snomed.info/sct#303122009", Crewmember }, 
+      { "303124005", MemberOfMentalHealthReviewTribunal }, 
+      { "http://snomed.info/sct#303124005", MemberOfMentalHealthReviewTribunal }, 
+      { "303129000", HospitalManager }, 
+      { "http://snomed.info/sct#303129000", HospitalManager }, 
+      { "303133007", ResponsibleMedicalOfficer }, 
+      { "http://snomed.info/sct#303133007", ResponsibleMedicalOfficer }, 
+      { "303134001", IndependentDoctor }, 
+      { "http://snomed.info/sct#303134001", IndependentDoctor }, 
+      { "303977004", OccupantOfRailwayVehicle }, 
+      { "http://snomed.info/sct#303977004", OccupantOfRailwayVehicle }, 
+      { "303980003", DriverOfMotorVehicle }, 
+      { "http://snomed.info/sct#303980003", DriverOfMotorVehicle }, 
+      { "303981004", DriverOfAnimalDrawnVehicle }, 
+      { "http://snomed.info/sct#303981004", DriverOfAnimalDrawnVehicle }, 
+      { "303983001", PassengerOfAnimalDrawnVehicle }, 
+      { "http://snomed.info/sct#303983001", PassengerOfAnimalDrawnVehicle }, 
+      { "303984007", PassengerOnPedalCycle }, 
+      { "http://snomed.info/sct#303984007", PassengerOnPedalCycle }, 
+      { "303985008", OccupantOfWatercraft }, 
+      { "http://snomed.info/sct#303985008", OccupantOfWatercraft }, 
+      { "303986009", OccupantOfAircraft }, 
+      { "http://snomed.info/sct#303986009", OccupantOfAircraft }, 
+      { "303987000", HorseRider }, 
+      { "http://snomed.info/sct#303987000", HorseRider }, 
+      { "303988005", PassengerOnAircraft }, 
+      { "http://snomed.info/sct#303988005", PassengerOnAircraft }, 
+      { "303989002", CrewmemberOnAircraft }, 
+      { "http://snomed.info/sct#303989002", CrewmemberOnAircraft }, 
+      { "303990006", PassengerOfMotorVehicle }, 
+      { "http://snomed.info/sct#303990006", PassengerOfMotorVehicle }, 
+      { "303991005", Trespasser }, 
+      { "http://snomed.info/sct#303991005", Trespasser }, 
+      { "303992003", CarPassenger }, 
+      { "http://snomed.info/sct#303992003", CarPassenger }, 
+      { "303993008", CoachPassenger }, 
+      { "http://snomed.info/sct#303993008", CoachPassenger }, 
+      { "304291006", BereavementCounselor }, 
+      { "http://snomed.info/sct#304291006", BereavementCounselor }, 
+      { "304292004", Surgeon }, 
+      { "http://snomed.info/sct#304292004", Surgeon }, 
+      { "30578000", Stepfather }, 
+      { "http://snomed.info/sct#30578000", Stepfather }, 
+      { "307988006", MedicalTechnician }, 
+      { "http://snomed.info/sct#307988006", MedicalTechnician }, 
+      { "308002005", RemedialTherapist }, 
+      { "http://snomed.info/sct#308002005", RemedialTherapist }, 
+      { "309294001", AccidentAndEmergencyDoctor }, 
+      { "http://snomed.info/sct#309294001", AccidentAndEmergencyDoctor }, 
+      { "309295000", ClinicalOncologist }, 
+      { "http://snomed.info/sct#309295000", ClinicalOncologist }, 
+      { "309296004", FamilyPlanningDoctor }, 
+      { "http://snomed.info/sct#309296004", FamilyPlanningDoctor }, 
+      { "309322005", AssociateGeneralPractitioner }, 
+      { "http://snomed.info/sct#309322005", AssociateGeneralPractitioner }, 
+      { "309323000", PartnerOfGeneralPractitioner }, 
+      { "http://snomed.info/sct#309323000", PartnerOfGeneralPractitioner }, 
+      { "309324006", AssistantGP }, 
+      { "http://snomed.info/sct#309324006", AssistantGP }, 
+      { "309326008", DeputizingGeneralPractitioner }, 
+      { "http://snomed.info/sct#309326008", DeputizingGeneralPractitioner }, 
+      { "309327004", GeneralPractitionerRegistrar }, 
+      { "http://snomed.info/sct#309327004", GeneralPractitionerRegistrar }, 
+      { "309328009", AmbulatoryPediatrician }, 
+      { "http://snomed.info/sct#309328009", AmbulatoryPediatrician }, 
+      { "309329001", CommunityPediatrician }, 
+      { "http://snomed.info/sct#309329001", CommunityPediatrician }, 
+      { "309330006", PediatricCardiologist }, 
+      { "http://snomed.info/sct#309330006", PediatricCardiologist }, 
+      { "309331005", PediatricEndocrinologist }, 
+      { "http://snomed.info/sct#309331005", PediatricEndocrinologist }, 
+      { "309332003", PediatricGastroenterologist }, 
+      { "http://snomed.info/sct#309332003", PediatricGastroenterologist }, 
+      { "309333008", PediatricNephrologist }, 
+      { "http://snomed.info/sct#309333008", PediatricNephrologist }, 
+      { "309334002", PediatricNeurologist }, 
+      { "http://snomed.info/sct#309334002", PediatricNeurologist }, 
+      { "309335001", PediatricRheumatologist }, 
+      { "http://snomed.info/sct#309335001", PediatricRheumatologist }, 
+      { "309336000", PediatricOncologist }, 
+      { "http://snomed.info/sct#309336000", PediatricOncologist }, 
+      { "309337009", PainManagementSpecialist }, 
+      { "http://snomed.info/sct#309337009", PainManagementSpecialist }, 
+      { "309338004", IntensiveCareSpecialist }, 
+      { "http://snomed.info/sct#309338004", IntensiveCareSpecialist }, 
+      { "309339007", AdultIntensiveCareSpecialist }, 
+      { "http://snomed.info/sct#309339007", AdultIntensiveCareSpecialist }, 
+      { "309340009", PediatricIntensiveCareSpecialist }, 
+      { "http://snomed.info/sct#309340009", PediatricIntensiveCareSpecialist }, 
+      { "309341008", BloodTransfusionDoctor }, 
+      { "http://snomed.info/sct#309341008", BloodTransfusionDoctor }, 
+      { "309342001", Histopathologist }, 
+      { "http://snomed.info/sct#309342001", Histopathologist }, 
+      { "309343006", Physician }, 
+      { "http://snomed.info/sct#309343006", Physician }, 
+      { "309345004", ChestPhysician }, 
+      { "http://snomed.info/sct#309345004", ChestPhysician }, 
+      { "309346003", ThoracicPhysician }, 
+      { "http://snomed.info/sct#309346003", ThoracicPhysician }, 
+      { "309347007", ClinicalHematologist }, 
+      { "http://snomed.info/sct#309347007", ClinicalHematologist }, 
+      { "309348002", ClinicalNeurophysiologist }, 
+      { "http://snomed.info/sct#309348002", ClinicalNeurophysiologist }, 
+      { "309349005", ClinicalPhysiologist }, 
+      { "http://snomed.info/sct#309349005", ClinicalPhysiologist }, 
+      { "309350005", Diabetologist }, 
+      { "http://snomed.info/sct#309350005", Diabetologist }, 
+      { "309351009", Andrologist }, 
+      { "http://snomed.info/sct#309351009", Andrologist }, 
+      { "309352002", Neuroendocrinologist }, 
+      { "http://snomed.info/sct#309352002", Neuroendocrinologist }, 
+      { "309353007", ReproductiveEndocrinologist }, 
+      { "http://snomed.info/sct#309353007", ReproductiveEndocrinologist }, 
+      { "309354001", Thyroidologist }, 
+      { "http://snomed.info/sct#309354001", Thyroidologist }, 
+      { "309355000", ClinicalGeneticist }, 
+      { "http://snomed.info/sct#309355000", ClinicalGeneticist }, 
+      { "309356004", ClinicalCytogeneticist }, 
+      { "http://snomed.info/sct#309356004", ClinicalCytogeneticist }, 
+      { "309357008", ClinicalMolecularGeneticist }, 
+      { "http://snomed.info/sct#309357008", ClinicalMolecularGeneticist }, 
+      { "309358003", GenitourinaryMedicinePhysician }, 
+      { "http://snomed.info/sct#309358003", GenitourinaryMedicinePhysician }, 
+      { "309359006", PalliativeCarePhysician }, 
+      { "http://snomed.info/sct#309359006", PalliativeCarePhysician }, 
+      { "309360001", RehabilitationPhysician }, 
+      { "http://snomed.info/sct#309360001", RehabilitationPhysician }, 
+      { "309361002", ChildAndAdolescentPsychiatrist }, 
+      { "http://snomed.info/sct#309361002", ChildAndAdolescentPsychiatrist }, 
+      { "309362009", ForensicPsychiatrist }, 
+      { "http://snomed.info/sct#309362009", ForensicPsychiatrist }, 
+      { "309363004", LiaisonPsychiatrist }, 
+      { "http://snomed.info/sct#309363004", LiaisonPsychiatrist }, 
+      { "309364005", Psychogeriatrician }, 
+      { "http://snomed.info/sct#309364005", Psychogeriatrician }, 
+      { "309365006", PsychiatristForMentalHandicap }, 
+      { "http://snomed.info/sct#309365006", PsychiatristForMentalHandicap }, 
+      { "309366007", RehabilitationPsychiatrist }, 
+      { "http://snomed.info/sct#309366007", RehabilitationPsychiatrist }, 
+      { "309367003", ObstetricianAndGynecologist }, 
+      { "http://snomed.info/sct#309367003", ObstetricianAndGynecologist }, 
+      { "309368008", BreastSurgeon }, 
+      { "http://snomed.info/sct#309368008", BreastSurgeon }, 
+      { "309369000", CardiothoracicSurgeon }, 
+      { "http://snomed.info/sct#309369000", CardiothoracicSurgeon }, 
+      { "309371000", CardiacSurgeon }, 
+      { "http://snomed.info/sct#309371000", CardiacSurgeon }, 
+      { "309372007", EarNoseAndThroatSurgeon }, 
+      { "http://snomed.info/sct#309372007", EarNoseAndThroatSurgeon }, 
+      { "309373002", EndocrineSurgeon }, 
+      { "http://snomed.info/sct#309373002", EndocrineSurgeon }, 
+      { "309374008", ThyroidSurgeon }, 
+      { "http://snomed.info/sct#309374008", ThyroidSurgeon }, 
+      { "309375009", PituitarySurgeon }, 
+      { "http://snomed.info/sct#309375009", PituitarySurgeon }, 
+      { "309376005", GastrointestinalSurgeon }, 
+      { "http://snomed.info/sct#309376005", GastrointestinalSurgeon }, 
+      { "309377001", GeneralGastrointestinalSurgeon }, 
+      { "http://snomed.info/sct#309377001", GeneralGastrointestinalSurgeon }, 
+      { "309378006", UpperGastrointestinalSurgeon }, 
+      { "http://snomed.info/sct#309378006", UpperGastrointestinalSurgeon }, 
+      { "309379003", ColorectalSurgeon }, 
+      { "http://snomed.info/sct#309379003", ColorectalSurgeon }, 
+      { "309380000", HandSurgeon }, 
+      { "http://snomed.info/sct#309380000", HandSurgeon }, 
+      { "309381001", HepatobiliarySurgeon }, 
+      { "http://snomed.info/sct#309381001", HepatobiliarySurgeon }, 
+      { "309382008", OphthalmicSurgeon }, 
+      { "http://snomed.info/sct#309382008", OphthalmicSurgeon }, 
+      { "309383003", PediatricSurgeon }, 
+      { "http://snomed.info/sct#309383003", PediatricSurgeon }, 
+      { "309384009", PancreaticSurgeon }, 
+      { "http://snomed.info/sct#309384009", PancreaticSurgeon }, 
+      { "309385005", TransplantSurgeon }, 
+      { "http://snomed.info/sct#309385005", TransplantSurgeon }, 
+      { "309386006", TraumaSurgeon }, 
+      { "http://snomed.info/sct#309386006", TraumaSurgeon }, 
+      { "309388007", VascularSurgeon }, 
+      { "http://snomed.info/sct#309388007", VascularSurgeon }, 
+      { "309389004", MedicalPractitionerGrade }, 
+      { "http://snomed.info/sct#309389004", MedicalPractitionerGrade }, 
+      { "309390008", HospitalConsultant }, 
+      { "http://snomed.info/sct#309390008", HospitalConsultant }, 
+      { "309391007", VisitingSpecialistRegistrar }, 
+      { "http://snomed.info/sct#309391007", VisitingSpecialistRegistrar }, 
+      { "309392000", ResearchRegistrar }, 
+      { "http://snomed.info/sct#309392000", ResearchRegistrar }, 
+      { "309393005", GeneralPractitionerGrade }, 
+      { "http://snomed.info/sct#309393005", GeneralPractitionerGrade }, 
+      { "309394004", GeneralPractitionerPrincipal }, 
+      { "http://snomed.info/sct#309394004", GeneralPractitionerPrincipal }, 
+      { "309395003", HospitalSpecialist }, 
+      { "http://snomed.info/sct#309395003", HospitalSpecialist }, 
+      { "309396002", AssociateSpecialist }, 
+      { "http://snomed.info/sct#309396002", AssociateSpecialist }, 
+      { "309397006", ResearchFellow }, 
+      { "http://snomed.info/sct#309397006", ResearchFellow }, 
+      { "309398001", AlliedHealthProfessional }, 
+      { "http://snomed.info/sct#309398001", AlliedHealthProfessional }, 
+      { "309399009", HospitalDietitian }, 
+      { "http://snomed.info/sct#309399009", HospitalDietitian }, 
+      { "309400002", DomiciliaryPhysiotherapist }, 
+      { "http://snomed.info/sct#309400002", DomiciliaryPhysiotherapist }, 
+      { "309401003", GeneralPractitionerBasedPhysiotherapist }, 
+      { "http://snomed.info/sct#309401003", GeneralPractitionerBasedPhysiotherapist }, 
+      { "309402005", HospitalBasedPhysiotherapist }, 
+      { "http://snomed.info/sct#309402005", HospitalBasedPhysiotherapist }, 
+      { "309403000", PrivatePhysiotherapist }, 
+      { "http://snomed.info/sct#309403000", PrivatePhysiotherapist }, 
+      { "309404006", PhysiotherapyAssistant }, 
+      { "http://snomed.info/sct#309404006", PhysiotherapyAssistant }, 
+      { "309409001", HospitalBasedSpeechAndLanguageTherapist }, 
+      { "http://snomed.info/sct#309409001", HospitalBasedSpeechAndLanguageTherapist }, 
+      { "309410006", ArtsTherapist }, 
+      { "http://snomed.info/sct#309410006", ArtsTherapist }, 
+      { "309411005", DanceTherapist }, 
+      { "http://snomed.info/sct#309411005", DanceTherapist }, 
+      { "309412003", MusicTherapist }, 
+      { "http://snomed.info/sct#309412003", MusicTherapist }, 
+      { "309413008", RenalDietitian }, 
+      { "http://snomed.info/sct#309413008", RenalDietitian }, 
+      { "309414002", LiverDietitian }, 
+      { "http://snomed.info/sct#309414002", LiverDietitian }, 
+      { "309415001", OncologyDietitian }, 
+      { "http://snomed.info/sct#309415001", OncologyDietitian }, 
+      { "309416000", PediatricDietitian }, 
+      { "http://snomed.info/sct#309416000", PediatricDietitian }, 
+      { "309417009", DiabetesDietitian }, 
+      { "http://snomed.info/sct#309417009", DiabetesDietitian }, 
+      { "309418004", Audiologist }, 
+      { "http://snomed.info/sct#309418004", Audiologist }, 
+      { "309419007", HearingTherapist }, 
+      { "http://snomed.info/sct#309419007", HearingTherapist }, 
+      { "309420001", AudiologicalScientist }, 
+      { "http://snomed.info/sct#309420001", AudiologicalScientist }, 
+      { "309421002", HearingAidDispenser }, 
+      { "http://snomed.info/sct#309421002", HearingAidDispenser }, 
+      { "309422009", CommunityBasedOccupationalTherapist }, 
+      { "http://snomed.info/sct#309422009", CommunityBasedOccupationalTherapist }, 
+      { "309423004", HospitalOccupationalTherapist }, 
+      { "http://snomed.info/sct#309423004", HospitalOccupationalTherapist }, 
+      { "309427003", SocialServicesOccupationalTherapist }, 
+      { "http://snomed.info/sct#309427003", SocialServicesOccupationalTherapist }, 
+      { "309428008", Orthotist }, 
+      { "http://snomed.info/sct#309428008", Orthotist }, 
+      { "309429000", SurgicalFitter }, 
+      { "http://snomed.info/sct#309429000", SurgicalFitter }, 
+      { "309434001", HospitalBasedPodiatrist }, 
+      { "http://snomed.info/sct#309434001", HospitalBasedPodiatrist }, 
+      { "309435000", PodiatryAssistant }, 
+      { "http://snomed.info/sct#309435000", PodiatryAssistant }, 
+      { "309436004", LymphedemaNurse }, 
+      { "http://snomed.info/sct#309436004", LymphedemaNurse }, 
+      { "309437008", CommunityLearningDisabilitiesNurse }, 
+      { "http://snomed.info/sct#309437008", CommunityLearningDisabilitiesNurse }, 
+      { "309439006", ClinicalNurseTeacher }, 
+      { "http://snomed.info/sct#309439006", ClinicalNurseTeacher }, 
+      { "309440008", CommunityPracticeNurseTeacher }, 
+      { "http://snomed.info/sct#309440008", CommunityPracticeNurseTeacher }, 
+      { "309441007", NurseTutor }, 
+      { "http://snomed.info/sct#309441007", NurseTutor }, 
+      { "309442000", NurseTeacherPractitioner }, 
+      { "http://snomed.info/sct#309442000", NurseTeacherPractitioner }, 
+      { "309443005", NurseLecturerPractitioner }, 
+      { "http://snomed.info/sct#309443005", NurseLecturerPractitioner }, 
+      { "309444004", OutreachNurse }, 
+      { "http://snomed.info/sct#309444004", OutreachNurse }, 
+      { "309445003", AnestheticNurse }, 
+      { "http://snomed.info/sct#309445003", AnestheticNurse }, 
+      { "309446002", NurseManager }, 
+      { "http://snomed.info/sct#309446002", NurseManager }, 
+      { "309450009", NurseAdministrator }, 
+      { "http://snomed.info/sct#309450009", NurseAdministrator }, 
+      { "309452001", MidwiferyGrade }, 
+      { "http://snomed.info/sct#309452001", MidwiferyGrade }, 
+      { "309453006", Midwife }, 
+      { "http://snomed.info/sct#309453006", Midwife }, 
+      { "309454000", StudentMidwife }, 
+      { "http://snomed.info/sct#309454000", StudentMidwife }, 
+      { "309455004", ParentcraftSister }, 
+      { "http://snomed.info/sct#309455004", ParentcraftSister }, 
+      { "309456003", Clergy }, 
+      { "http://snomed.info/sct#309456003", Clergy }, 
+      { "309459005", HealthcareProfessionalGrade }, 
+      { "http://snomed.info/sct#309459005", HealthcareProfessionalGrade }, 
+      { "309460000", RestorativeDentist }, 
+      { "http://snomed.info/sct#309460000", RestorativeDentist }, 
+      { "309687009", BuddhistFollowerOfReligion }, 
+      { "http://snomed.info/sct#309687009", BuddhistFollowerOfReligion }, 
+      { "309884000", MuslimFollowerOfReligion }, 
+      { "http://snomed.info/sct#309884000", MuslimFollowerOfReligion }, 
+      { "309885004", ProtestantFollowerOfReligion }, 
+      { "http://snomed.info/sct#309885004", ProtestantFollowerOfReligion }, 
+      { "309886003", QuakerFollowerOfReligion }, 
+      { "http://snomed.info/sct#309886003", QuakerFollowerOfReligion }, 
+      { "310170009", PediatricAudiologist }, 
+      { "http://snomed.info/sct#310170009", PediatricAudiologist }, 
+      { "310171008", Immunopathologist }, 
+      { "http://snomed.info/sct#310171008", Immunopathologist }, 
+      { "310172001", AudiologicalPhysician }, 
+      { "http://snomed.info/sct#310172001", AudiologicalPhysician }, 
+      { "310173006", ClinicalPharmacologist }, 
+      { "http://snomed.info/sct#310173006", ClinicalPharmacologist }, 
+      { "310174000", PrivateDoctor }, 
+      { "http://snomed.info/sct#310174000", PrivateDoctor }, 
+      { "310175004", AgencyNurse }, 
+      { "http://snomed.info/sct#310175004", AgencyNurse }, 
+      { "310176003", BehavioralTherapistNurse }, 
+      { "http://snomed.info/sct#310176003", BehavioralTherapistNurse }, 
+      { "310177007", CardiacRehabilitationNurse }, 
+      { "http://snomed.info/sct#310177007", CardiacRehabilitationNurse }, 
+      { "310178002", GenitourinaryNurse }, 
+      { "http://snomed.info/sct#310178002", GenitourinaryNurse }, 
+      { "310179005", RheumatologyNurseSpecialist }, 
+      { "http://snomed.info/sct#310179005", RheumatologyNurseSpecialist }, 
+      { "310180008", ContinenceNurse }, 
+      { "http://snomed.info/sct#310180008", ContinenceNurse }, 
+      { "310181007", ContactTracingNurse }, 
+      { "http://snomed.info/sct#310181007", ContactTracingNurse }, 
+      { "310182000", GeneralNurse }, 
+      { "http://snomed.info/sct#310182000", GeneralNurse }, 
+      { "310183005", NurseForTheMentallyHandicapped }, 
+      { "http://snomed.info/sct#310183005", NurseForTheMentallyHandicapped }, 
+      { "310184004", LiaisonNurse }, 
+      { "http://snomed.info/sct#310184004", LiaisonNurse }, 
+      { "310185003", DiabeticLiaisonNurse }, 
+      { "http://snomed.info/sct#310185003", DiabeticLiaisonNurse }, 
+      { "310186002", NursePsychotherapist }, 
+      { "http://snomed.info/sct#310186002", NursePsychotherapist }, 
+      { "310187006", CompanyNurse }, 
+      { "http://snomed.info/sct#310187006", CompanyNurse }, 
+      { "310188001", HospitalMidwife }, 
+      { "http://snomed.info/sct#310188001", HospitalMidwife }, 
+      { "310189009", GeneticCounselor }, 
+      { "http://snomed.info/sct#310189009", GeneticCounselor }, 
+      { "310190000", MentalHealthCounselor }, 
+      { "http://snomed.info/sct#310190000", MentalHealthCounselor }, 
+      { "310191001", ClinicalPsychologist }, 
+      { "http://snomed.info/sct#310191001", ClinicalPsychologist }, 
+      { "310192008", EducationalPsychologist }, 
+      { "http://snomed.info/sct#310192008", EducationalPsychologist }, 
+      { "310193003", Coroner }, 
+      { "http://snomed.info/sct#310193003", Coroner }, 
+      { "310194009", ApplianceOfficer }, 
+      { "http://snomed.info/sct#310194009", ApplianceOfficer }, 
+      { "310512001", MedicalOncologist }, 
+      { "http://snomed.info/sct#310512001", MedicalOncologist }, 
+      { "310543008", Graduate }, 
+      { "http://snomed.info/sct#310543008", Graduate }, 
+      { "311441001", SchoolMedicalOfficer }, 
+      { "http://snomed.info/sct#311441001", SchoolMedicalOfficer }, 
+      { "312485001", IntegratedMidwife }, 
+      { "http://snomed.info/sct#312485001", IntegratedMidwife }, 
+      { "313415001", IdenticalTwin }, 
+      { "http://snomed.info/sct#313415001", IdenticalTwin }, 
+      { "313416000", HeterozygousTwin }, 
+      { "http://snomed.info/sct#313416000", HeterozygousTwin }, 
+      { "314712007", Parachutist }, 
+      { "http://snomed.info/sct#314712007", Parachutist }, 
+      { "314767008", BirdFancier }, 
+      { "http://snomed.info/sct#314767008", BirdFancier }, 
+      { "31656007", AdoptiveGrandmother }, 
+      { "http://snomed.info/sct#31656007", AdoptiveGrandmother }, 
+      { "317817411000087104", IndependentHealthCareFacility }, 
+      { "http://snomed.info/sct#317817411000087104", IndependentHealthCareFacility }, 
+      { "31831004", FosterDaughter }, 
+      { "http://snomed.info/sct#31831004", FosterDaughter }, 
+      { "33969000", GreatGrandparent }, 
+      { "http://snomed.info/sct#33969000", GreatGrandparent }, 
+      { "339947000", Man }, 
+      { "http://snomed.info/sct#339947000", Man }, 
+      { "341320851000087105", PediatricRadiologist }, 
+      { "http://snomed.info/sct#341320851000087105", PediatricRadiologist }, 
+      { "3425009", OldestDaughter }, 
+      { "http://snomed.info/sct#3425009", OldestDaughter }, 
+      { "3430008", RadiationTherapist }, 
+      { "http://snomed.info/sct#3430008", RadiationTherapist }, 
+      { "34581001", Niece }, 
+      { "http://snomed.info/sct#34581001", Niece }, 
+      { "34871008", Grandfather }, 
+      { "http://snomed.info/sct#34871008", Grandfather }, 
+      { "34972000", OnlyDaughter }, 
+      { "http://snomed.info/sct#34972000", OnlyDaughter }, 
+      { "357174231000087105", HealthRegulatoryBodyForOccupationalTherapists }, 
+      { "http://snomed.info/sct#357174231000087105", HealthRegulatoryBodyForOccupationalTherapists }, 
+      { "360852005", Bum }, 
+      { "http://snomed.info/sct#360852005", Bum }, 
+      { "360863008", Beggar }, 
+      { "http://snomed.info/sct#360863008", Beggar }, 
+      { "360984002", HasidicJewFollowerOfReligion }, 
+      { "http://snomed.info/sct#360984002", HasidicJewFollowerOfReligion }, 
+      { "366740002", SikhFollowerOfReligion }, 
+      { "http://snomed.info/sct#366740002", SikhFollowerOfReligion }, 
+      { "36682004", PTPhysiotherapist }, 
+      { "http://snomed.info/sct#36682004", PTPhysiotherapist }, 
+      { "368890881000087105", EmergencyMedicineSpecialist }, 
+      { "http://snomed.info/sct#368890881000087105", EmergencyMedicineSpecialist }, 
+      { "371439331000087102", HealthRegulatoryBodyForPhysiotherapists }, 
+      { "http://snomed.info/sct#371439331000087102", HealthRegulatoryBodyForPhysiotherapists }, 
+      { "37154003", Periodontist }, 
+      { "http://snomed.info/sct#37154003", Periodontist }, 
+      { "372102007", RNFirstAssist }, 
+      { "http://snomed.info/sct#372102007", RNFirstAssist }, 
+      { "373864002", Outpatient }, 
+      { "http://snomed.info/sct#373864002", Outpatient }, 
+      { "373929005", OrphanChild }, 
+      { "http://snomed.info/sct#373929005", OrphanChild }, 
+      { "375005", Sibling }, 
+      { "http://snomed.info/sct#375005", Sibling }, 
+      { "37504001", Orthodontist }, 
+      { "http://snomed.info/sct#37504001", Orthodontist }, 
+      { "38048003", Uncle }, 
+      { "http://snomed.info/sct#38048003", Uncle }, 
+      { "38248007", OldestSon }, 
+      { "http://snomed.info/sct#38248007", OldestSon }, 
+      { "38265003", FosterMother }, 
+      { "http://snomed.info/sct#38265003", FosterMother }, 
+      { "38312007", Grandparent }, 
+      { "http://snomed.info/sct#38312007", Grandparent }, 
+      { "3842006", Chiropractor }, 
+      { "http://snomed.info/sct#3842006", Chiropractor }, 
+      { "3851003", SurrogateDaughter }, 
+      { "http://snomed.info/sct#3851003", SurrogateDaughter }, 
+      { "385435006", Individual }, 
+      { "http://snomed.info/sct#385435006", Individual }, 
+      { "387619007", Optician }, 
+      { "http://snomed.info/sct#387619007", Optician }, 
+      { "39062003", FosterChild }, 
+      { "http://snomed.info/sct#39062003", FosterChild }, 
+      { "390790000", AsylumSeeker }, 
+      { "http://snomed.info/sct#390790000", AsylumSeeker }, 
+      { "392685081000087107", HealthRegulatoryBodyForDentalHygienists }, 
+      { "http://snomed.info/sct#392685081000087107", HealthRegulatoryBodyForDentalHygienists }, 
+      { "394566006", GreatGrandson }, 
+      { "http://snomed.info/sct#394566006", GreatGrandson }, 
+      { "394567002", GreatGranddaughter }, 
+      { "http://snomed.info/sct#394567002", GreatGranddaughter }, 
+      { "394568007", ExtendedFamilyMember }, 
+      { "http://snomed.info/sct#394568007", ExtendedFamilyMember }, 
+      { "394571004", Employer }, 
+      { "http://snomed.info/sct#394571004", Employer }, 
+      { "394572006", MedicalSecretary }, 
+      { "http://snomed.info/sct#394572006", MedicalSecretary }, 
+      { "394618009", HospitalNurse }, 
+      { "http://snomed.info/sct#394618009", HospitalNurse }, 
+      { "394619001", Guardian }, 
+      { "http://snomed.info/sct#394619001", Guardian }, 
+      { "394738000", OtherRelatedPersons }, 
+      { "http://snomed.info/sct#394738000", OtherRelatedPersons }, 
+      { "394745000", GeneralPracticeOrganisation }, 
+      { "http://snomed.info/sct#394745000", GeneralPracticeOrganisation }, 
+      { "394746004", RegionalOffice }, 
+      { "http://snomed.info/sct#394746004", RegionalOffice }, 
+      { "394747008", HealthAuthority }, 
+      { "http://snomed.info/sct#394747008", HealthAuthority }, 
+      { "394748003", PrimaryCareGroup }, 
+      { "http://snomed.info/sct#394748003", PrimaryCareGroup }, 
+      { "394749006", PrimaryCareTrust }, 
+      { "http://snomed.info/sct#394749006", PrimaryCareTrust }, 
+      { "394751005", SpecialHealthAuthority }, 
+      { "http://snomed.info/sct#394751005", SpecialHealthAuthority }, 
+      { "394757009", HospiceIndependent }, 
+      { "http://snomed.info/sct#394757009", HospiceIndependent }, 
+      { "394758004", IndependentProvider }, 
+      { "http://snomed.info/sct#394758004", IndependentProvider }, 
+      { "394760002", GPPractice }, 
+      { "http://snomed.info/sct#394760002", GPPractice }, 
+      { "394762005", GDPPractice }, 
+      { "http://snomed.info/sct#394762005", GDPPractice }, 
+      { "394763000", MoDPractice }, 
+      { "http://snomed.info/sct#394763000", MoDPractice }, 
+      { "394764006", MoDHospital }, 
+      { "http://snomed.info/sct#394764006", MoDHospital }, 
+      { "394765007", PrisonPractice }, 
+      { "http://snomed.info/sct#394765007", PrisonPractice }, 
+      { "394854006", ImmediateFamilyMember }, 
+      { "http://snomed.info/sct#394854006", ImmediateFamilyMember }, 
+      { "394855007", NonImmediateFamilyMember }, 
+      { "http://snomed.info/sct#394855007", NonImmediateFamilyMember }, 
+      { "394856008", PaternalGrandFather }, 
+      { "http://snomed.info/sct#394856008", PaternalGrandFather }, 
+      { "394857004", MaternalGrandFather }, 
+      { "http://snomed.info/sct#394857004", MaternalGrandFather }, 
+      { "394858009", PaternalGrandMother }, 
+      { "http://snomed.info/sct#394858009", PaternalGrandMother }, 
+      { "394859001", MaternalGrandMother }, 
+      { "http://snomed.info/sct#394859001", MaternalGrandMother }, 
+      { "394860006", DistantRelative }, 
+      { "http://snomed.info/sct#394860006", DistantRelative }, 
+      { "394861005", GreatUncle }, 
+      { "http://snomed.info/sct#394861005", GreatUncle }, 
+      { "394862003", GreatAunt }, 
+      { "http://snomed.info/sct#394862003", GreatAunt }, 
+      { "394863008", NonFamilyMember }, 
+      { "http://snomed.info/sct#394863008", NonFamilyMember }, 
+      { "394921008", Cohabitee }, 
+      { "http://snomed.info/sct#394921008", Cohabitee }, 
+      { "396762341000087100", PaternalCousin }, 
+      { "http://snomed.info/sct#396762341000087100", PaternalCousin }, 
+      { "39677007", InternalMedicineSpecialist }, 
+      { "http://snomed.info/sct#39677007", InternalMedicineSpecialist }, 
+      { "397824005", ConsultantAnesthetist }, 
+      { "http://snomed.info/sct#397824005", ConsultantAnesthetist }, 
+      { "397897005", Paramedic }, 
+      { "http://snomed.info/sct#397897005", Paramedic }, 
+      { "397903001", StaffGradeObstetrician }, 
+      { "http://snomed.info/sct#397903001", StaffGradeObstetrician }, 
+      { "397908005", StaffGradePractitioner }, 
+      { "http://snomed.info/sct#397908005", StaffGradePractitioner }, 
+      { "3981000175106", NurseComplexCaseManager }, 
+      { "http://snomed.info/sct#3981000175106", NurseComplexCaseManager }, 
+      { "398130009", MedicalStudent }, 
+      { "http://snomed.info/sct#398130009", MedicalStudent }, 
+      { "398154004", QualityImprovementTemplateTaskForce }, 
+      { "http://snomed.info/sct#398154004", QualityImprovementTemplateTaskForce }, 
+      { "398238009", ActingObstetricRegistrar }, 
+      { "http://snomed.info/sct#398238009", ActingObstetricRegistrar }, 
+      { "398255008", AssociationOfAnesthesiaClinicalDirectors }, 
+      { "http://snomed.info/sct#398255008", AssociationOfAnesthesiaClinicalDirectors }, 
+      { "398480381000087106", FamilyMedicineSpecialistPalliativeCare }, 
+      { "http://snomed.info/sct#398480381000087106", FamilyMedicineSpecialistPalliativeCare }, 
+      { "398524981000087101", PaternalGreatGrandFather }, 
+      { "http://snomed.info/sct#398524981000087101", PaternalGreatGrandFather }, 
+      { "40127002", DietitianGeneral }, 
+      { "http://snomed.info/sct#40127002", DietitianGeneral }, 
+      { "40204001", Hematologist }, 
+      { "http://snomed.info/sct#40204001", Hematologist }, 
+      { "404940000", PhysiotherapistTechnicalInstructor }, 
+      { "http://snomed.info/sct#404940000", PhysiotherapistTechnicalInstructor }, 
+      { "405277009", ResidentPhysician }, 
+      { "http://snomed.info/sct#405277009", ResidentPhysician }, 
+      { "405278004", CertifiedRegisteredNurseAnesthetist }, 
+      { "http://snomed.info/sct#405278004", CertifiedRegisteredNurseAnesthetist }, 
+      { "405279007", AttendingPhysician }, 
+      { "http://snomed.info/sct#405279007", AttendingPhysician }, 
+      { "405623001", AssignedPractitioner }, 
+      { "http://snomed.info/sct#405623001", AssignedPractitioner }, 
+      { "405684005", ProfessionalInitiatingSurgicalCase }, 
+      { "http://snomed.info/sct#405684005", ProfessionalInitiatingSurgicalCase }, 
+      { "405685006", ProfessionalProvidingStaffReliefDuringSurgicalProcedure }, 
+      { "http://snomed.info/sct#405685006", ProfessionalProvidingStaffReliefDuringSurgicalProcedure }, 
+      { "40570005", Interpreter }, 
+      { "http://snomed.info/sct#40570005", Interpreter }, 
+      { "40683002", Parent }, 
+      { "http://snomed.info/sct#40683002", Parent }, 
+      { "407542009", InformalCarer }, 
+      { "http://snomed.info/sct#407542009", InformalCarer }, 
+      { "407543004", PrimaryCarer }, 
+      { "http://snomed.info/sct#407543004", PrimaryCarer }, 
+      { "408798009", ConsultantPediatrician }, 
+      { "http://snomed.info/sct#408798009", ConsultantPediatrician }, 
+      { "408799001", ConsultantNeonatologist }, 
+      { "http://snomed.info/sct#408799001", ConsultantNeonatologist }, 
+      { "409974004", HealthEducator }, 
+      { "http://snomed.info/sct#409974004", HealthEducator }, 
+      { "409975003", CertifiedHealthEducationSpecialist }, 
+      { "http://snomed.info/sct#409975003", CertifiedHealthEducationSpecialist }, 
+      { "41057000", SurrogateSon }, 
+      { "http://snomed.info/sct#41057000", SurrogateSon }, 
+      { "410597007", PersonCategorizedByReligiousAffiliation }, 
+      { "http://snomed.info/sct#410597007", PersonCategorizedByReligiousAffiliation }, 
+      { "410598002", PersonCategorizedByAge }, 
+      { "http://snomed.info/sct#410598002", PersonCategorizedByAge }, 
+      { "410599005", Minor }, 
+      { "http://snomed.info/sct#410599005", Minor }, 
+      { "410600008", PreTeen }, 
+      { "http://snomed.info/sct#410600008", PreTeen }, 
+      { "410601007", Child }, 
+      { "http://snomed.info/sct#410601007", Child }, 
+      { "410602000", PreschoolChild }, 
+      { "http://snomed.info/sct#410602000", PreschoolChild }, 
+      { "410603005", PersonInTheLegalEnvironment }, 
+      { "http://snomed.info/sct#410603005", PersonInTheLegalEnvironment }, 
+      { "410604004", SubjectOfRecord }, 
+      { "http://snomed.info/sct#410604004", SubjectOfRecord }, 
+      { "413327003", StudentInFullTimeEducation }, 
+      { "http://snomed.info/sct#413327003", StudentInFullTimeEducation }, 
+      { "413854007", CirculatingNurse }, 
+      { "http://snomed.info/sct#413854007", CirculatingNurse }, 
+      { "414043009", DomesticPartner }, 
+      { "http://snomed.info/sct#414043009", DomesticPartner }, 
+      { "415075003", PerioperativeNurse }, 
+      { "http://snomed.info/sct#415075003", PerioperativeNurse }, 
+      { "415506007", ScrubNurse }, 
+      { "http://snomed.info/sct#415506007", ScrubNurse }, 
+      { "416034003", PrimaryScreener }, 
+      { "http://snomed.info/sct#416034003", PrimaryScreener }, 
+      { "416035002", SecondaryScreener }, 
+      { "http://snomed.info/sct#416035002", SecondaryScreener }, 
+      { "416160000", FellowOfAmericanAcademyOfOsteopathy }, 
+      { "http://snomed.info/sct#416160000", FellowOfAmericanAcademyOfOsteopathy }, 
+      { "416186861000087101", SurgicalOncologist }, 
+      { "http://snomed.info/sct#416186861000087101", SurgicalOncologist }, 
+      { "4162009", DentalAssistant }, 
+      { "http://snomed.info/sct#4162009", DentalAssistant }, 
+      { "416625007", FamilyReunionImmigrant }, 
+      { "http://snomed.info/sct#416625007", FamilyReunionImmigrant }, 
+      { "41672002", RespiratoryPhysician }, 
+      { "http://snomed.info/sct#41672002", RespiratoryPhysician }, 
+      { "416800000", Inpatient }, 
+      { "http://snomed.info/sct#416800000", Inpatient }, 
+      { "41795004", LegalSon }, 
+      { "http://snomed.info/sct#41795004", LegalSon }, 
+      { "418119000", InfantChild }, 
+      { "http://snomed.info/sct#418119000", InfantChild }, 
+      { "41904004", MedicalXRayTechnician }, 
+      { "http://snomed.info/sct#41904004", MedicalXRayTechnician }, 
+      { "419358007", SubjectOfRecordOrOtherProviderOfHistory }, 
+      { "http://snomed.info/sct#419358007", SubjectOfRecordOrOtherProviderOfHistory }, 
+      { "41953004", AdoptiveParent }, 
+      { "http://snomed.info/sct#41953004", AdoptiveParent }, 
+      { "420058008", ProviderOfHistoryOtherThanSubject }, 
+      { "http://snomed.info/sct#420058008", ProviderOfHistoryOtherThanSubject }, 
+      { "420158005", PerformerOfMethod }, 
+      { "http://snomed.info/sct#420158005", PerformerOfMethod }, 
+      { "420314821000087103", HealthRegulatoryBodyForMassageTherapists }, 
+      { "http://snomed.info/sct#420314821000087103", HealthRegulatoryBodyForMassageTherapists }, 
+      { "420409002", OculoplasticSurgeon }, 
+      { "http://snomed.info/sct#420409002", OculoplasticSurgeon }, 
+      { "420678001", RetinalSurgeon }, 
+      { "http://snomed.info/sct#420678001", RetinalSurgeon }, 
+      { "421841007", AdmittingPhysician }, 
+      { "http://snomed.info/sct#421841007", AdmittingPhysician }, 
+      { "422140007", MedicalOphthalmologist }, 
+      { "http://snomed.info/sct#422140007", MedicalOphthalmologist }, 
+      { "422234006", Ophthalmologist }, 
+      { "http://snomed.info/sct#422234006", Ophthalmologist }, 
+      { "427568008", Neighbor }, 
+      { "http://snomed.info/sct#427568008", Neighbor }, 
+      { "427729003", ElimPentecostalistFollowerOfReligion }, 
+      { "http://snomed.info/sct#427729003", ElimPentecostalistFollowerOfReligion }, 
+      { "427754003", LiberalJew }, 
+      { "http://snomed.info/sct#427754003", LiberalJew }, 
+      { "427755002", LutheranFollowerOfReligion }, 
+      { "http://snomed.info/sct#427755002", LutheranFollowerOfReligion }, 
+      { "427874000", CongregationalistFollowerOfReligion }, 
+      { "http://snomed.info/sct#427874000", CongregationalistFollowerOfReligion }, 
+      { "427950002", HarediJew }, 
+      { "http://snomed.info/sct#427950002", HarediJew }, 
+      { "427963008", AdvaitinHinduFollowerOfReligion }, 
+      { "http://snomed.info/sct#427963008", AdvaitinHinduFollowerOfReligion }, 
+      { "427981006", ZenBuddhist }, 
+      { "http://snomed.info/sct#427981006", ZenBuddhist }, 
+      { "428024001", ClinicalTrialParticipant }, 
+      { "http://snomed.info/sct#428024001", ClinicalTrialParticipant }, 
+      { "428315004", AnabaptistFollowerOfReligion }, 
+      { "http://snomed.info/sct#428315004", AnabaptistFollowerOfReligion }, 
+      { "428347009", AryaSamajHindu }, 
+      { "http://snomed.info/sct#428347009", AryaSamajHindu }, 
+      { "428373004", CopticOrthodoxFollowerOfReligion }, 
+      { "http://snomed.info/sct#428373004", CopticOrthodoxFollowerOfReligion }, 
+      { "428376007", EasternCatholic }, 
+      { "http://snomed.info/sct#428376007", EasternCatholic }, 
+      { "428378008", EthiopianOrthodoxTewahedoFollowerOfReligion }, 
+      { "http://snomed.info/sct#428378008", EthiopianOrthodoxTewahedoFollowerOfReligion }, 
+      { "428407001", TheravadaBuddhist }, 
+      { "http://snomed.info/sct#428407001", TheravadaBuddhist }, 
+      { "428408006", Wiccan }, 
+      { "http://snomed.info/sct#428408006", Wiccan }, 
+      { "428410008", ShaktiHindu }, 
+      { "http://snomed.info/sct#428410008", ShaktiHindu }, 
+      { "428496003", TibetanBuddhistFollowerOfReligion }, 
+      { "http://snomed.info/sct#428496003", TibetanBuddhistFollowerOfReligion }, 
+      { "428503004", OrthodoxChristian }, 
+      { "http://snomed.info/sct#428503004", OrthodoxChristian }, 
+      { "428504005", ChristianSpiritualistFollowerOfReligion }, 
+      { "http://snomed.info/sct#428504005", ChristianSpiritualistFollowerOfReligion }, 
+      { "428506007", DruidFollowerOfReligion }, 
+      { "http://snomed.info/sct#428506007", DruidFollowerOfReligion }, 
+      { "428620006", SmartaHindu }, 
+      { "http://snomed.info/sct#428620006", SmartaHindu }, 
+      { "428666001", NichirenBuddhist }, 
+      { "http://snomed.info/sct#428666001", NichirenBuddhist }, 
+      { "428792000", CaseContact }, 
+      { "http://snomed.info/sct#428792000", CaseContact }, 
+      { "428801007", IsmailiMuslim }, 
+      { "http://snomed.info/sct#428801007", IsmailiMuslim }, 
+      { "428815009", AhmadiFollowerOfReligion }, 
+      { "http://snomed.info/sct#428815009", AhmadiFollowerOfReligion }, 
+      { "428816005", ArmenianCatholic }, 
+      { "http://snomed.info/sct#428816005", ArmenianCatholic }, 
+      { "428820009", PureLandBuddhistFollowerOfReligion }, 
+      { "http://snomed.info/sct#428820009", PureLandBuddhistFollowerOfReligion }, 
+      { "428821008", SeventhDayAdventist }, 
+      { "http://snomed.info/sct#428821008", SeventhDayAdventist }, 
+      { "429158002", GreekOrthodox }, 
+      { "http://snomed.info/sct#429158002", GreekOrthodox }, 
+      { "429171004", Spiritualist }, 
+      { "http://snomed.info/sct#429171004", Spiritualist }, 
+      { "429379008", ShivaHinduFollowerOfReligion }, 
+      { "http://snomed.info/sct#429379008", ShivaHinduFollowerOfReligion }, 
+      { "429509008", ReformJewFollowerOfReligion }, 
+      { "http://snomed.info/sct#429509008", ReformJewFollowerOfReligion }, 
+      { "429511004", VaishnavaHindu }, 
+      { "http://snomed.info/sct#429511004", VaishnavaHindu }, 
+      { "429527006", NewKadampaTraditionBuddhist }, 
+      { "http://snomed.info/sct#429527006", NewKadampaTraditionBuddhist }, 
+      { "429533002", MahayanaBuddhist }, 
+      { "http://snomed.info/sct#429533002", MahayanaBuddhist }, 
+      { "429534008", MasortiJewFollowerOfReligion }, 
+      { "http://snomed.info/sct#429534008", MasortiJewFollowerOfReligion }, 
+      { "429539003", Calvinist }, 
+      { "http://snomed.info/sct#429539003", Calvinist }, 
+      { "429543004", TaoistFollowerOfReligion }, 
+      { "http://snomed.info/sct#429543004", TaoistFollowerOfReligion }, 
+      { "429544005", RussianOrthodoxFollowerOfReligion }, 
+      { "http://snomed.info/sct#429544005", RussianOrthodoxFollowerOfReligion }, 
+      { "429545006", SanatanaDharmaFollower }, 
+      { "http://snomed.info/sct#429545006", SanatanaDharmaFollower }, 
+      { "429547003", Shinto }, 
+      { "http://snomed.info/sct#429547003", Shinto }, 
+      { "429577009", PatientAdvocate }, 
+      { "http://snomed.info/sct#429577009", PatientAdvocate }, 
+      { "429644000", OrthodoxJewFollowerOfReligion }, 
+      { "http://snomed.info/sct#429644000", OrthodoxJewFollowerOfReligion }, 
+      { "429708003", UnitarianFollowerOfReligion }, 
+      { "http://snomed.info/sct#429708003", UnitarianFollowerOfReligion }, 
+      { "429732005", BahaQuoteI }, 
+      { "http://snomed.info/sct#429732005", BahaQuoteI }, 
+      { "429787006", JainFollowerOfReligion }, 
+      { "http://snomed.info/sct#429787006", JainFollowerOfReligion }, 
+      { "429790000", ZoroastrianFollowerOfReligion }, 
+      { "http://snomed.info/sct#429790000", ZoroastrianFollowerOfReligion }, 
+      { "430098004", DonorForIntestineTransplant }, 
+      { "http://snomed.info/sct#430098004", DonorForIntestineTransplant }, 
+      { "430101000", WholeBloodDonor }, 
+      { "http://snomed.info/sct#430101000", WholeBloodDonor }, 
+      { "430792005", StemCellDonor }, 
+      { "http://snomed.info/sct#430792005", StemCellDonor }, 
+      { "430882007", EggDonor }, 
+      { "http://snomed.info/sct#430882007", EggDonor }, 
+      { "431549007", FemaleChild }, 
+      { "http://snomed.info/sct#431549007", FemaleChild }, 
+      { "432100008", HealthCoach }, 
+      { "http://snomed.info/sct#432100008", HealthCoach }, 
+      { "432233171000087103", JurisdictionalHealthNumber }, 
+      { "http://snomed.info/sct#432233171000087103", JurisdictionalHealthNumber }, 
+      { "433152004", Boy }, 
+      { "http://snomed.info/sct#433152004", Boy }, 
+      { "433475001", HumanOocyteDonorAge35AndOlder }, 
+      { "http://snomed.info/sct#433475001", HumanOocyteDonorAge35AndOlder }, 
+      { "43702002", OccupationalHealthNurse }, 
+      { "http://snomed.info/sct#43702002", OccupationalHealthNurse }, 
+      { "437208901000087109", ProvincialAndOrTerritorialGovernmentPlanOutOfJurisdiction }, 
+      { "http://snomed.info/sct#437208901000087109", ProvincialAndOrTerritorialGovernmentPlanOutOfJurisdiction }, 
+      { "438347000", PersonCategorizedByAffiliationWithBeliefSystem }, 
+      { "http://snomed.info/sct#438347000", PersonCategorizedByAffiliationWithBeliefSystem }, 
+      { "439182891000087102", ProviderNumberIssuedByThirdParty }, 
+      { "http://snomed.info/sct#439182891000087102", ProviderNumberIssuedByThirdParty }, 
+      { "441144831000087108", HealthRegulatoryBodyForPhysiciansAndSurgeons }, 
+      { "http://snomed.info/sct#441144831000087108", HealthRegulatoryBodyForPhysiciansAndSurgeons }, 
+      { "441463002", SpermDonor }, 
+      { "http://snomed.info/sct#441463002", SpermDonor }, 
+      { "441465009", StrangerIsSpermDonorForArtificialInsemination }, 
+      { "http://snomed.info/sct#441465009", StrangerIsSpermDonorForArtificialInsemination }, 
+      { "441468006", UnrelatedKnownSpermDonorForArtificialInsemination }, 
+      { "http://snomed.info/sct#441468006", UnrelatedKnownSpermDonorForArtificialInsemination }, 
+      { "44181008", Granddaughter }, 
+      { "http://snomed.info/sct#44181008", Granddaughter }, 
+      { "442867008", RespiratoryTherapist }, 
+      { "http://snomed.info/sct#442867008", RespiratoryTherapist }, 
+      { "443090005", PodiatricSurgeon }, 
+      { "http://snomed.info/sct#443090005", PodiatricSurgeon }, 
+      { "443470051000087109", MinistryOfHealth }, 
+      { "http://snomed.info/sct#443470051000087109", MinistryOfHealth }, 
+      { "444000", LegalSibling }, 
+      { "http://snomed.info/sct#444000", LegalSibling }, 
+      { "444018008", PersonWithCharacteristicRelatedToSubjectOfRecord }, 
+      { "http://snomed.info/sct#444018008", PersonWithCharacteristicRelatedToSubjectOfRecord }, 
+      { "444052006", SpouseOfSubject }, 
+      { "http://snomed.info/sct#444052006", SpouseOfSubject }, 
+      { "444053001", HusbandOfSubject }, 
+      { "http://snomed.info/sct#444053001", HusbandOfSubject }, 
+      { "444054007", WifeOfSubject }, 
+      { "http://snomed.info/sct#444054007", WifeOfSubject }, 
+      { "444055008", UncleOfSubject }, 
+      { "http://snomed.info/sct#444055008", UncleOfSubject }, 
+      { "444145006", PartnerInRelationshipWithSubject }, 
+      { "http://snomed.info/sct#444145006", PartnerInRelationshipWithSubject }, 
+      { "444146007", BoyfriendOfSubject }, 
+      { "http://snomed.info/sct#444146007", BoyfriendOfSubject }, 
+      { "444147003", GirlfriendOfSubject }, 
+      { "http://snomed.info/sct#444147003", GirlfriendOfSubject }, 
+      { "444148008", PersonInFamilyOfSubject }, 
+      { "http://snomed.info/sct#444148008", PersonInFamilyOfSubject }, 
+      { "444168002", Homemaker }, 
+      { "http://snomed.info/sct#444168002", Homemaker }, 
+      { "444169005", HouseHusband }, 
+      { "http://snomed.info/sct#444169005", HouseHusband }, 
+      { "444191003", AuntOfSubject }, 
+      { "http://snomed.info/sct#444191003", AuntOfSubject }, 
+      { "444192005", ChildOfSubject }, 
+      { "http://snomed.info/sct#444192005", ChildOfSubject }, 
+      { "444193000", FirstDegreeBloodRelativeOfSubject }, 
+      { "http://snomed.info/sct#444193000", FirstDegreeBloodRelativeOfSubject }, 
+      { "444194006", DaughterOfSubject }, 
+      { "http://snomed.info/sct#444194006", DaughterOfSubject }, 
+      { "444199001", FriendOfSubject }, 
+      { "http://snomed.info/sct#444199001", FriendOfSubject }, 
+      { "444210007", CohabiteeInRelationshipWithSubject }, 
+      { "http://snomed.info/sct#444210007", CohabiteeInRelationshipWithSubject }, 
+      { "444211006", CommonLawHusbandOfSubject }, 
+      { "http://snomed.info/sct#444211006", CommonLawHusbandOfSubject }, 
+      { "444212004", CommonLawWifeOfSubject }, 
+      { "http://snomed.info/sct#444212004", CommonLawWifeOfSubject }, 
+      { "444213009", DomesticPartnerOfSubject }, 
+      { "http://snomed.info/sct#444213009", DomesticPartnerOfSubject }, 
+      { "444241008", SonOfSubject }, 
+      { "http://snomed.info/sct#444241008", SonOfSubject }, 
+      { "444242001", GrandparentOfSubject }, 
+      { "http://snomed.info/sct#444242001", GrandparentOfSubject }, 
+      { "444243006", MaternalGrandfatherOfSubject }, 
+      { "http://snomed.info/sct#444243006", MaternalGrandfatherOfSubject }, 
+      { "444244000", MaternalGrandmotherOfSubject }, 
+      { "http://snomed.info/sct#444244000", MaternalGrandmotherOfSubject }, 
+      { "444278006", FianceOfSubject }, 
+      { "http://snomed.info/sct#444278006", FianceOfSubject }, 
+      { "444279003", FemaleFianceOfSubject }, 
+      { "http://snomed.info/sct#444279003", FemaleFianceOfSubject }, 
+      { "444280000", MaleFianceOfSubject }, 
+      { "http://snomed.info/sct#444280000", MaleFianceOfSubject }, 
+      { "444292000", PaternalGrandfatherOfSubject }, 
+      { "http://snomed.info/sct#444292000", PaternalGrandfatherOfSubject }, 
+      { "444293005", PaternalGrandmotherOfSubject }, 
+      { "http://snomed.info/sct#444293005", PaternalGrandmotherOfSubject }, 
+      { "444294004", ParentOfSubject }, 
+      { "http://snomed.info/sct#444294004", ParentOfSubject }, 
+      { "444295003", FatherOfSubject }, 
+      { "http://snomed.info/sct#444295003", FatherOfSubject }, 
+      { "444301002", MotherOfSubject }, 
+      { "http://snomed.info/sct#444301002", MotherOfSubject }, 
+      { "444302009", SiblingOfSubject }, 
+      { "http://snomed.info/sct#444302009", SiblingOfSubject }, 
+      { "444303004", BrotherOfSubject }, 
+      { "http://snomed.info/sct#444303004", BrotherOfSubject }, 
+      { "444304005", SisterOfSubject }, 
+      { "http://snomed.info/sct#444304005", SisterOfSubject }, 
+      { "444464007", RecipientOfBiologicalMaterialFromSubject }, 
+      { "http://snomed.info/sct#444464007", RecipientOfBiologicalMaterialFromSubject }, 
+      { "444870008", ApostolicPentecostalistFollowerOfReligion }, 
+      { "http://snomed.info/sct#444870008", ApostolicPentecostalistFollowerOfReligion }, 
+      { "444912007", Hypnotherapist }, 
+      { "http://snomed.info/sct#444912007", Hypnotherapist }, 
+      { "445313000", AsthmaNurseSpecialist }, 
+      { "http://snomed.info/sct#445313000", AsthmaNurseSpecialist }, 
+      { "445451001", NurseCaseManager }, 
+      { "http://snomed.info/sct#445451001", NurseCaseManager }, 
+      { "446050000", PCPPrimaryCarePhysician }, 
+      { "http://snomed.info/sct#446050000", PCPPrimaryCarePhysician }, 
+      { "44652006", PharmaceuticalAssistant }, 
+      { "http://snomed.info/sct#44652006", PharmaceuticalAssistant }, 
+      { "446654005", Refugee }, 
+      { "http://snomed.info/sct#446654005", Refugee }, 
+      { "446701002", AddictionMedicineSpecialist }, 
+      { "http://snomed.info/sct#446701002", AddictionMedicineSpecialist }, 
+      { "449161006", PAPhysicianAssistant }, 
+      { "http://snomed.info/sct#449161006", PAPhysicianAssistant }, 
+      { "450044741000087104", Acupuncturist }, 
+      { "http://snomed.info/sct#450044741000087104", Acupuncturist }, 
+      { "450768005", InternationalStudent }, 
+      { "http://snomed.info/sct#450768005", InternationalStudent }, 
+      { "45419001", Masseur }, 
+      { "http://snomed.info/sct#45419001", Masseur }, 
+      { "45440000", Rheumatologist }, 
+      { "http://snomed.info/sct#45440000", Rheumatologist }, 
+      { "45544007", Neurosurgeon }, 
+      { "http://snomed.info/sct#45544007", Neurosurgeon }, 
+      { "4577005", FirstCousin }, 
+      { "http://snomed.info/sct#4577005", FirstCousin }, 
+      { "45929001", HalfBrother }, 
+      { "http://snomed.info/sct#45929001", HalfBrother }, 
+      { "45956004", Sanitarian }, 
+      { "http://snomed.info/sct#45956004", Sanitarian }, 
+      { "460276491000087102", NewBrunswickDepartmentOfHealth }, 
+      { "http://snomed.info/sct#460276491000087102", NewBrunswickDepartmentOfHealth }, 
+      { "46255001", Pharmacist }, 
+      { "http://snomed.info/sct#46255001", Pharmacist }, 
+      { "46363003", Stepsister }, 
+      { "http://snomed.info/sct#46363003", Stepsister }, 
+      { "465511991000087105", PediatricOrthopedicSurgeon }, 
+      { "http://snomed.info/sct#465511991000087105", PediatricOrthopedicSurgeon }, 
+      { "471000122100", MultiOrganDonor }, 
+      { "http://snomed.info/sct#471000122100", MultiOrganDonor }, 
+      { "471302004", GovernmentMidwife }, 
+      { "http://snomed.info/sct#471302004", GovernmentMidwife }, 
+      { "47801002", MaleCousin }, 
+      { "http://snomed.info/sct#47801002", MaleCousin }, 
+      { "48385004", Acquaintance }, 
+      { "http://snomed.info/sct#48385004", Acquaintance }, 
+      { "48673000", AdoptiveChild }, 
+      { "http://snomed.info/sct#48673000", AdoptiveChild }, 
+      { "48740002", Philologist }, 
+      { "http://snomed.info/sct#48740002", Philologist }, 
+      { "49203003", DispensingOptometrist }, 
+      { "http://snomed.info/sct#49203003", DispensingOptometrist }, 
+      { "494782281000087101", PediatricHematologist }, 
+      { "http://snomed.info/sct#494782281000087101", PediatricHematologist }, 
+      { "49993003", MaxillofacialSurgeon }, 
+      { "http://snomed.info/sct#49993003", MaxillofacialSurgeon }, 
+      { "50058005", IdenticalTwinSister }, 
+      { "http://snomed.info/sct#50058005", IdenticalTwinSister }, 
+      { "50149000", Endodontist }, 
+      { "http://snomed.info/sct#50149000", Endodontist }, 
+      { "50261002", GreatGrandfather }, 
+      { "http://snomed.info/sct#50261002", GreatGrandfather }, 
+      { "51616000", SephardicJewFollowerOfReligion }, 
+      { "http://snomed.info/sct#51616000", SephardicJewFollowerOfReligion }, 
+      { "5275007", NANursingAuxiliary }, 
+      { "http://snomed.info/sct#5275007", NANursingAuxiliary }, 
+      { "53201003", OlderSister }, 
+      { "http://snomed.info/sct#53201003", OlderSister }, 
+      { "539773351000087101", AlbertaHealthAndWellness }, 
+      { "http://snomed.info/sct#539773351000087101", AlbertaHealthAndWellness }, 
+      { "54056000", Trustee }, 
+      { "http://snomed.info/sct#54056000", Trustee }, 
+      { "54503009", FaithHealer }, 
+      { "http://snomed.info/sct#54503009", FaithHealer }, 
+      { "548886741000087101", HealthRegulatoryBodyForDenturists }, 
+      { "http://snomed.info/sct#548886741000087101", HealthRegulatoryBodyForDenturists }, 
+      { "549577861000087101", HealthRegulatoryBodyForChiropractors }, 
+      { "http://snomed.info/sct#549577861000087101", HealthRegulatoryBodyForChiropractors }, 
+      { "553641311000087101", NewfoundlandAndLabradorDepartmentOfHealthAndCommunityServices }, 
+      { "http://snomed.info/sct#553641311000087101", NewfoundlandAndLabradorDepartmentOfHealthAndCommunityServices }, 
+      { "55538000", Cousin }, 
+      { "http://snomed.info/sct#55538000", Cousin }, 
+      { "5581000087108", CanadianJurisdictionBased }, 
+      { "http://snomed.info/sct#5581000087108", CanadianJurisdictionBased }, 
+      { "56397003", Neurologist }, 
+      { "http://snomed.info/sct#56397003", Neurologist }, 
+      { "56466003", CommunityPhysician }, 
+      { "http://snomed.info/sct#56466003", CommunityPhysician }, 
+      { "56542007", MedicalRecordAdministrator }, 
+      { "http://snomed.info/sct#56542007", MedicalRecordAdministrator }, 
+      { "56545009", CardiovascularSurgeon }, 
+      { "http://snomed.info/sct#56545009", CardiovascularSurgeon }, 
+      { "567496441000087102", CancerPlanSaskatchewanAndSexuallyTransmittedDiseasesPlan }, 
+      { "http://snomed.info/sct#567496441000087102", CancerPlanSaskatchewanAndSexuallyTransmittedDiseasesPlan }, 
+      { "569232871000087107", YukonDepartmentOfHealthAndSocialServices }, 
+      { "http://snomed.info/sct#569232871000087107", YukonDepartmentOfHealthAndSocialServices }, 
+      { "57654006", FixedProsthodontist }, 
+      { "http://snomed.info/sct#57654006", FixedProsthodontist }, 
+      { "58293006", FosterSister }, 
+      { "http://snomed.info/sct#58293006", FosterSister }, 
+      { "583114651000087104", MaternalUncle }, 
+      { "http://snomed.info/sct#583114651000087104", MaternalUncle }, 
+      { "58626002", LegalGuardian }, 
+      { "http://snomed.info/sct#58626002", LegalGuardian }, 
+      { "589612571000087102", PaternalUncle }, 
+      { "http://snomed.info/sct#589612571000087102", PaternalUncle }, 
+      { "59058001", GeneralPhysician }, 
+      { "http://snomed.info/sct#59058001", GeneralPhysician }, 
+      { "59169001", OrthopedicTechnician }, 
+      { "http://snomed.info/sct#59169001", OrthopedicTechnician }, 
+      { "59944000", Psychologist }, 
+      { "http://snomed.info/sct#59944000", Psychologist }, 
+      { "60008001", CommunityBasedDietitian }, 
+      { "http://snomed.info/sct#60008001", CommunityBasedDietitian }, 
+      { "60614009", NaturalBrother }, 
+      { "http://snomed.info/sct#60614009", NaturalBrother }, 
+      { "609005", AdoptiveFather }, 
+      { "http://snomed.info/sct#609005", AdoptiveFather }, 
+      { "609564621000087104", HealthRegulatoryBodyForPharmacists }, 
+      { "http://snomed.info/sct#609564621000087104", HealthRegulatoryBodyForPharmacists }, 
+      { "61207006", MedicalPathologist }, 
+      { "http://snomed.info/sct#61207006", MedicalPathologist }, 
+      { "61246008", LaboratoryMedicineSpecialist }, 
+      { "http://snomed.info/sct#61246008", LaboratoryMedicineSpecialist }, 
+      { "61345009", Otorhinolaryngologist }, 
+      { "http://snomed.info/sct#61345009", Otorhinolaryngologist }, 
+      { "61894003", Endocrinologist }, 
+      { "http://snomed.info/sct#61894003", Endocrinologist }, 
+      { "619197631000087102", Neuroradiologist }, 
+      { "http://snomed.info/sct#619197631000087102", Neuroradiologist }, 
+      { "62090008", LegalMother }, 
+      { "http://snomed.info/sct#62090008", LegalMother }, 
+      { "62247001", FamilyMedicineSpecialist }, 
+      { "http://snomed.info/sct#62247001", FamilyMedicineSpecialist }, 
+      { "62296006", NaturalGrandFather }, 
+      { "http://snomed.info/sct#62296006", NaturalGrandFather }, 
+      { "623630151000087105", FamilyMedicineSpecialistAnesthetist }, 
+      { "http://snomed.info/sct#623630151000087105", FamilyMedicineSpecialistAnesthetist }, 
+      { "63098009", ClinicalImmunologist }, 
+      { "http://snomed.info/sct#63098009", ClinicalImmunologist }, 
+      { "643545671000087106", HealthRegulatoryBodyForSocialWorkers }, 
+      { "http://snomed.info/sct#643545671000087106", HealthRegulatoryBodyForSocialWorkers }, 
+      { "644191431000087105", MinistryOfHealthAndLongTermCareOntario }, 
+      { "http://snomed.info/sct#644191431000087105", MinistryOfHealthAndLongTermCareOntario }, 
+      { "64988008", SunniMuslimFollowerOfReligion }, 
+      { "http://snomed.info/sct#64988008", SunniMuslimFollowerOfReligion }, 
+      { "65412001", StepMother }, 
+      { "http://snomed.info/sct#65412001", StepMother }, 
+      { "65616008", Son }, 
+      { "http://snomed.info/sct#65616008", Son }, 
+      { "65656005", NaturalMother }, 
+      { "http://snomed.info/sct#65656005", NaturalMother }, 
+      { "65853000", Student }, 
+      { "http://snomed.info/sct#65853000", Student }, 
+      { "66089001", Daughter }, 
+      { "http://snomed.info/sct#66089001", Daughter }, 
+      { "66476003", OralPathologist }, 
+      { "http://snomed.info/sct#66476003", OralPathologist }, 
+      { "666298511000087107", HealthRegulatoryBodyForMidwives }, 
+      { "http://snomed.info/sct#666298511000087107", HealthRegulatoryBodyForMidwives }, 
+      { "666997781000087107", Doula }, 
+      { "http://snomed.info/sct#666997781000087107", Doula }, 
+      { "6676009", YoungestDaughter }, 
+      { "http://snomed.info/sct#6676009", YoungestDaughter }, 
+      { "66839005", Father }, 
+      { "http://snomed.info/sct#66839005", Father }, 
+      { "66862007", Radiologist }, 
+      { "http://snomed.info/sct#66862007", Radiologist }, 
+      { "67005001", AdoptiveDaughter }, 
+      { "http://snomed.info/sct#67005001", AdoptiveDaughter }, 
+      { "67147004", LegalFather }, 
+      { "http://snomed.info/sct#67147004", LegalFather }, 
+      { "673433971000087102", ProviderRegistrationNumber }, 
+      { "http://snomed.info/sct#673433971000087102", ProviderRegistrationNumber }, 
+      { "673825031000087109", TraditionalHerbalMedicineSpecialist }, 
+      { "http://snomed.info/sct#673825031000087109", TraditionalHerbalMedicineSpecialist }, 
+      { "67822003", Child_2 }, 
+      { "http://snomed.info/sct#67822003", Child_2 }, 
+      { "68021009", GreatGreatGrandParent }, 
+      { "http://snomed.info/sct#68021009", GreatGreatGrandParent }, 
+      { "6816002", SpecializedNurse }, 
+      { "http://snomed.info/sct#6816002", SpecializedNurse }, 
+      { "682131381000087105", OccupationalMedicineSpecialist }, 
+      { "http://snomed.info/sct#682131381000087105", OccupationalMedicineSpecialist }, 
+      { "6868009", HospitalAdministrator }, 
+      { "http://snomed.info/sct#6868009", HospitalAdministrator }, 
+      { "68867008", PublicHealthDentist }, 
+      { "http://snomed.info/sct#68867008", PublicHealthDentist }, 
+      { "68950000", Prosthodontist }, 
+      { "http://snomed.info/sct#68950000", Prosthodontist }, 
+      { "691349461000087102", PaternalAunt }, 
+      { "http://snomed.info/sct#691349461000087102", PaternalAunt }, 
+      { "69280009", SpecializedPhysician }, 
+      { "http://snomed.info/sct#69280009", SpecializedPhysician }, 
+      { "699110007", SecondDegreeBloodRelative }, 
+      { "http://snomed.info/sct#699110007", SecondDegreeBloodRelative }, 
+      { "699111006", SecondDegreeBloodRelativeOfSubject }, 
+      { "http://snomed.info/sct#699111006", SecondDegreeBloodRelativeOfSubject }, 
+      { "70578009", GrandSon }, 
+      { "http://snomed.info/sct#70578009", GrandSon }, 
+      { "70862002", ContactPerson }, 
+      { "http://snomed.info/sct#70862002", ContactPerson }, 
+      { "70924004", Brother }, 
+      { "http://snomed.info/sct#70924004", Brother }, 
+      { "713176007", CadaverDonorForLungTransplant }, 
+      { "http://snomed.info/sct#713176007", CadaverDonorForLungTransplant }, 
+      { "713177003", CadaverDonorForHeartTransplant }, 
+      { "http://snomed.info/sct#713177003", CadaverDonorForHeartTransplant }, 
+      { "713178008", CadaverDonorForLiverTransplant }, 
+      { "http://snomed.info/sct#713178008", CadaverDonorForLiverTransplant }, 
+      { "713179000", CadaverDonorForCornealTransplant }, 
+      { "http://snomed.info/sct#713179000", CadaverDonorForCornealTransplant }, 
+      { "713183000", CadaverDonorForKidneyTransplant }, 
+      { "http://snomed.info/sct#713183000", CadaverDonorForKidneyTransplant }, 
+      { "713184006", BloodProductDonor }, 
+      { "http://snomed.info/sct#713184006", BloodProductDonor }, 
+      { "713352007", SkinDonor }, 
+      { "http://snomed.info/sct#713352007", SkinDonor }, 
+      { "713353002", LiveRelatedLiverDonor }, 
+      { "http://snomed.info/sct#713353002", LiveRelatedLiverDonor }, 
+      { "713369009", LiveRelatedKidneyDonor }, 
+      { "http://snomed.info/sct#713369009", LiveRelatedKidneyDonor }, 
+      { "715167002", OpenEpiscopalChurchFollowerOfReligion }, 
+      { "http://snomed.info/sct#715167002", OpenEpiscopalChurchFollowerOfReligion }, 
+      { "71838004", Gastroenterologist }, 
+      { "http://snomed.info/sct#71838004", Gastroenterologist }, 
+      { "72012000", GreatGrandChild }, 
+      { "http://snomed.info/sct#72012000", GreatGrandChild }, 
+      { "724022191000087108", HealthRegulatoryBodyForRespiratoryTherapists }, 
+      { "http://snomed.info/sct#724022191000087108", HealthRegulatoryBodyForRespiratoryTherapists }, 
+      { "724111801000087104", PediatricEmergencyMedicineSpecialist }, 
+      { "http://snomed.info/sct#724111801000087104", PediatricEmergencyMedicineSpecialist }, 
+      { "726220521000087101", ProvincialAndOrTerritorialGovernmentPlanResident }, 
+      { "http://snomed.info/sct#726220521000087101", ProvincialAndOrTerritorialGovernmentPlanResident }, 
+      { "72705000", Mother }, 
+      { "http://snomed.info/sct#72705000", Mother }, 
+      { "73265009", NursingAid }, 
+      { "http://snomed.info/sct#73265009", NursingAid }, 
+      { "73678001", NaturalSister }, 
+      { "http://snomed.info/sct#73678001", NaturalSister }, 
+      { "74128007", StepParent }, 
+      { "http://snomed.info/sct#74128007", StepParent }, 
+      { "74489007", YoungerChild }, 
+      { "http://snomed.info/sct#74489007", YoungerChild }, 
+      { "745424761000087106", WorkersQuoteCompensationNumber }, 
+      { "http://snomed.info/sct#745424761000087106", WorkersQuoteCompensationNumber }, 
+      { "747936471000087102", FamilyMedicineSpecialistCareOfTheElderly }, 
+      { "http://snomed.info/sct#747936471000087102", FamilyMedicineSpecialistCareOfTheElderly }, 
+      { "75226009", NaturalChild }, 
+      { "http://snomed.info/sct#75226009", NaturalChild }, 
+      { "75271001", MWMidwife }, 
+      { "http://snomed.info/sct#75271001", MWMidwife }, 
+      { "753977441000087109", MinistryOfHealthNorthwestTerritories }, 
+      { "http://snomed.info/sct#753977441000087109", MinistryOfHealthNorthwestTerritories }, 
+      { "75615008", SurrogateFather }, 
+      { "http://snomed.info/sct#75615008", SurrogateFather }, 
+      { "76022008", AdoptiveSister }, 
+      { "http://snomed.info/sct#76022008", AdoptiveSister }, 
+      { "76087000", StepBrother }, 
+      { "http://snomed.info/sct#76087000", StepBrother }, 
+      { "76166008", PracticalAidPharmacy }, 
+      { "http://snomed.info/sct#76166008", PracticalAidPharmacy }, 
+      { "76231001", Osteopath }, 
+      { "http://snomed.info/sct#76231001", Osteopath }, 
+      { "762510691000087106", HealthRegulatoryBodyForAudiologistsAndSpeechLanguagePathologists }, 
+      { "http://snomed.info/sct#762510691000087106", HealthRegulatoryBodyForAudiologistsAndSpeechLanguagePathologists }, 
+      { "766788081000087100", TravelMedicineSpecialist }, 
+      { "http://snomed.info/sct#766788081000087100", TravelMedicineSpecialist }, 
+      { "767205061000087108", SpineSurgeon }, 
+      { "http://snomed.info/sct#767205061000087108", SpineSurgeon }, 
+      { "76899008", InfectiousDiseasesPhysician }, 
+      { "http://snomed.info/sct#76899008", InfectiousDiseasesPhysician }, 
+      { "78194006", IdenticalTwinBrother }, 
+      { "http://snomed.info/sct#78194006", IdenticalTwinBrother }, 
+      { "78272007", NaturalGrandParent }, 
+      { "http://snomed.info/sct#78272007", NaturalGrandParent }, 
+      { "78652007", GreatGrandMother }, 
+      { "http://snomed.info/sct#78652007", GreatGrandMother }, 
+      { "78703002", GeneralSurgeon }, 
+      { "http://snomed.info/sct#78703002", GeneralSurgeon }, 
+      { "78729002", DiagnosticRadiologist }, 
+      { "http://snomed.info/sct#78729002", DiagnosticRadiologist }, 
+      { "78872000", OrphanMale }, 
+      { "http://snomed.info/sct#78872000", OrphanMale }, 
+      { "79508001", AdoptiveSibling }, 
+      { "http://snomed.info/sct#79508001", AdoptiveSibling }, 
+      { "79756005", Boyfriend }, 
+      { "http://snomed.info/sct#79756005", Boyfriend }, 
+      { "79898004", AuxiliaryMidwife }, 
+      { "http://snomed.info/sct#79898004", AuxiliaryMidwife }, 
+      { "80386000", GreatGreatGrandFather }, 
+      { "http://snomed.info/sct#80386000", GreatGreatGrandFather }, 
+      { "80409005", Translator }, 
+      { "http://snomed.info/sct#80409005", Translator }, 
+      { "8051000087100", JurisdictionDriverLicenseNumber }, 
+      { "http://snomed.info/sct#8051000087100", JurisdictionDriverLicenseNumber }, 
+      { "80546007", OTOccupationalTherapist }, 
+      { "http://snomed.info/sct#80546007", OTOccupationalTherapist }, 
+      { "80584001", Psychiatrist }, 
+      { "http://snomed.info/sct#80584001", Psychiatrist }, 
+      { "80587008", JehovahQuoteSWitnessFollowerOfReligion }, 
+      { "http://snomed.info/sct#80587008", JehovahQuoteSWitnessFollowerOfReligion }, 
+      { "8061000087102", JurisdictionalBirthCertificateRegistrationNumber }, 
+      { "http://snomed.info/sct#8061000087102", JurisdictionalBirthCertificateRegistrationNumber }, 
+      { "8071000087106", InterimHealthProgramCertificateNumber }, 
+      { "http://snomed.info/sct#8071000087106", InterimHealthProgramCertificateNumber }, 
+      { "80933006", NuclearMedicinePhysician }, 
+      { "http://snomed.info/sct#80933006", NuclearMedicinePhysician }, 
+      { "81173009", OnlySon }, 
+      { "http://snomed.info/sct#81173009", OnlySon }, 
+      { "81276006", TwinBrother }, 
+      { "http://snomed.info/sct#81276006", TwinBrother }, 
+      { "813758161000087106", MaternalOrFetalMedicineSpecialist }, 
+      { "http://snomed.info/sct#813758161000087106", MaternalOrFetalMedicineSpecialist }, 
+      { "81464008", ClinicalPathologist }, 
+      { "http://snomed.info/sct#81464008", ClinicalPathologist }, 
+      { "81467001", FraternalTwinBrother }, 
+      { "http://snomed.info/sct#81467001", FraternalTwinBrother }, 
+      { "81706006", AshkenaziJew }, 
+      { "http://snomed.info/sct#81706006", AshkenaziJew }, 
+      { "82101005", NaturalSibling }, 
+      { "http://snomed.info/sct#82101005", NaturalSibling }, 
+      { "822410621000087104", MassageTherapist }, 
+      { "http://snomed.info/sct#822410621000087104", MassageTherapist }, 
+      { "82296001", Pediatrician }, 
+      { "http://snomed.info/sct#82296001", Pediatrician }, 
+      { "83189004", OtherProfessionalNurse }, 
+      { "http://snomed.info/sct#83189004", OtherProfessionalNurse }, 
+      { "83273008", AnatomicPathologist }, 
+      { "http://snomed.info/sct#83273008", AnatomicPathologist }, 
+      { "83408003", WorkingParent }, 
+      { "http://snomed.info/sct#83408003", WorkingParent }, 
+      { "83420006", NaturalDaughter }, 
+      { "http://snomed.info/sct#83420006", NaturalDaughter }, 
+      { "83559000", Nephew }, 
+      { "http://snomed.info/sct#83559000", Nephew }, 
+      { "83685006", Gynecologist }, 
+      { "http://snomed.info/sct#83685006", Gynecologist }, 
+      { "84390006", Girlfriend }, 
+      { "http://snomed.info/sct#84390006", Girlfriend }, 
+      { "844670641000087109", MaternalFirstCousin }, 
+      { "http://snomed.info/sct#844670641000087109", MaternalFirstCousin }, 
+      { "8458002", FosterFather }, 
+      { "http://snomed.info/sct#8458002", FosterFather }, 
+      { "847240411000087102", Hospitalist }, 
+      { "http://snomed.info/sct#847240411000087102", Hospitalist }, 
+      { "85058002", AdoptiveGrandfather }, 
+      { "http://snomed.info/sct#85058002", AdoptiveGrandfather }, 
+      { "853827051000087104", SportsMedicineSpecialist }, 
+      { "http://snomed.info/sct#853827051000087104", SportsMedicineSpecialist }, 
+      { "85411004", YoungerBrother }, 
+      { "http://snomed.info/sct#85411004", YoungerBrother }, 
+      { "85683001", SingleFather }, 
+      { "http://snomed.info/sct#85683001", SingleFather }, 
+      { "85733003", GeneralPathologist }, 
+      { "http://snomed.info/sct#85733003", GeneralPathologist }, 
+      { "859430851000087100", MedicalCarePlanHospitalTechnicalServicesQuebec }, 
+      { "http://snomed.info/sct#859430851000087100", MedicalCarePlanHospitalTechnicalServicesQuebec }, 
+      { "86372007", GrandChild }, 
+      { "http://snomed.info/sct#86372007", GrandChild }, 
+      { "8674003", StepSon }, 
+      { "http://snomed.info/sct#8674003", StepSon }, 
+      { "86764008", StepChild }, 
+      { "http://snomed.info/sct#86764008", StepChild }, 
+      { "8724009", PlasticSurgeon }, 
+      { "http://snomed.info/sct#8724009", PlasticSurgeon }, 
+      { "874107021000087108", HealthRegulatoryBodyForNurses }, 
+      { "http://snomed.info/sct#874107021000087108", HealthRegulatoryBodyForNurses }, 
+      { "876612791000087101", HealthRegulatoryBodyForParamedics }, 
+      { "http://snomed.info/sct#876612791000087101", HealthRegulatoryBodyForParamedics }, 
+      { "88189002", Anesthesiologist }, 
+      { "http://snomed.info/sct#88189002", Anesthesiologist }, 
+      { "882121321000087100", MinistryOfHealthBritishColumbia }, 
+      { "http://snomed.info/sct#882121321000087100", MinistryOfHealthBritishColumbia }, 
+      { "88475002", OtherDietitiansAndPublicHealthNutritionists }, 
+      { "http://snomed.info/sct#88475002", OtherDietitiansAndPublicHealthNutritionists }, 
+      { "88510002", StepSibling }, 
+      { "http://snomed.info/sct#88510002", StepSibling }, 
+      { "89681006", YoungestSon }, 
+      { "http://snomed.info/sct#89681006", YoungestSon }, 
+      { "90201008", PediatricDentist }, 
+      { "http://snomed.info/sct#90201008", PediatricDentist }, 
+      { "90655003", CareOfTheElderlyPhysician }, 
+      { "http://snomed.info/sct#90655003", CareOfTheElderlyPhysician }, 
+      { "90921004", FosterParent }, 
+      { "http://snomed.info/sct#90921004", FosterParent }, 
+      { "912320101000087109", HealthRegulatoryBodyForPracticalNurses }, 
+      { "http://snomed.info/sct#912320101000087109", HealthRegulatoryBodyForPracticalNurses }, 
+      { "926871431000087103", PediatricRespirologist }, 
+      { "http://snomed.info/sct#926871431000087103", PediatricRespirologist }, 
+      { "930012821000087105", HealthRegulatoryBodyForDietitians }, 
+      { "http://snomed.info/sct#930012821000087105", HealthRegulatoryBodyForDietitians }, 
+      { "9306000", LegalParent }, 
+      { "http://snomed.info/sct#9306000", LegalParent }, 
+      { "954544641000087107", Homeopath }, 
+      { "http://snomed.info/sct#954544641000087107", Homeopath }, 
+      { "956387501000087102", FamilyMedicineSpecialistEmergencyMedicine }, 
+      { "http://snomed.info/sct#956387501000087102", FamilyMedicineSpecialistEmergencyMedicine }, 
+      { "969118571000087109", PediatricHematologistOrOncologist }, 
+      { "http://snomed.info/sct#969118571000087109", PediatricHematologistOrOncologist }, 
+      { "984095901000087105", FootAndAnkleSurgeon }, 
+      { "http://snomed.info/sct#984095901000087105", FootAndAnkleSurgeon }, 
+      { "990928611000087105", InvasiveCardiologist }, 
+      { "http://snomed.info/sct#990928611000087105", InvasiveCardiologist }, 
+      { "9947008", NaturalFather }, 
+      { "http://snomed.info/sct#9947008", NaturalFather }, 
+      { "998711551000087102", HealthPEI }, 
+      { "http://snomed.info/sct#998711551000087102", HealthPEI }, 
+      { "998820271000087109", ManitobaHealth }, 
+      { "http://snomed.info/sct#998820271000087109", ManitobaHealth }, 
+      { "999480451000087102", CaseManager }, 
+      { "http://snomed.info/sct#999480451000087102", CaseManager }, 
+      { "999480461000087104", Kinesthesiologist }, 
+      { "http://snomed.info/sct#999480461000087104", Kinesthesiologist }, 
+      { "999483971000087108", HealthRegulatoryBodyForNaturopathicPractitioners }, 
+      { "http://snomed.info/sct#999483971000087108", HealthRegulatoryBodyForNaturopathicPractitioners }, 
+    };
   };
 }

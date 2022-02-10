@@ -511,6 +511,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? IsDerived { get; set; }
     /// <summary>
+    /// Extension container element for IsDerived
+    /// </summary>
+    public Element _IsDerived { get; set; }
+    /// <summary>
     /// The preference for this type of conditioned specimen.
     /// </summary>
     public string Preference { get; set; }
@@ -552,6 +556,12 @@ namespace fhirCsR4B.Models
       if (IsDerived != null)
       {
         writer.WriteBoolean("isDerived", (bool)IsDerived!);
+      }
+
+      if (_IsDerived != null)
+      {
+        writer.WritePropertyName("_isDerived");
+        _IsDerived.SerializeJson(writer, options);
       }
 
       if (Type != null)
@@ -668,6 +678,11 @@ namespace fhirCsR4B.Models
           IsDerived = reader.GetBoolean();
           break;
 
+        case "_isDerived":
+          _IsDerived = new fhirCsR4B.Models.Element();
+          _IsDerived.DeserializeJson(ref reader, options);
+          break;
+
         case "preference":
           Preference = reader.GetString();
           break;
@@ -760,6 +775,10 @@ namespace fhirCsR4B.Models
   public static class SpecimenDefinitionTypeTestedPreferenceCodes {
     public const string PREFERRED = "preferred";
     public const string ALTERNATE = "alternate";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "preferred",
+      "alternate",
+    };
   }
   /// <summary>
   /// A kind of specimen with associated set of requirements.

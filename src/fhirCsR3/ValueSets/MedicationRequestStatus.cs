@@ -90,9 +90,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: MedicationRequestStatusActive
+    /// </summary>
+    public const string LiteralMedicationRequestStatusActive = "http://hl7.org/fhir/medication-request-status#active";
+
+    /// <summary>
     /// Literal for code: Cancelled
     /// </summary>
     public const string LiteralCancelled = "cancelled";
+
+    /// <summary>
+    /// Literal for code: MedicationRequestStatusCancelled
+    /// </summary>
+    public const string LiteralMedicationRequestStatusCancelled = "http://hl7.org/fhir/medication-request-status#cancelled";
 
     /// <summary>
     /// Literal for code: Completed
@@ -100,9 +110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: MedicationRequestStatusCompleted
+    /// </summary>
+    public const string LiteralMedicationRequestStatusCompleted = "http://hl7.org/fhir/medication-request-status#completed";
+
+    /// <summary>
     /// Literal for code: Draft
     /// </summary>
     public const string LiteralDraft = "draft";
+
+    /// <summary>
+    /// Literal for code: MedicationRequestStatusDraft
+    /// </summary>
+    public const string LiteralMedicationRequestStatusDraft = "http://hl7.org/fhir/medication-request-status#draft";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -110,9 +130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: MedicationRequestStatusEnteredInError
+    /// </summary>
+    public const string LiteralMedicationRequestStatusEnteredInError = "http://hl7.org/fhir/medication-request-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: OnHold
     /// </summary>
     public const string LiteralOnHold = "on-hold";
+
+    /// <summary>
+    /// Literal for code: MedicationRequestStatusOnHold
+    /// </summary>
+    public const string LiteralMedicationRequestStatusOnHold = "http://hl7.org/fhir/medication-request-status#on-hold";
 
     /// <summary>
     /// Literal for code: Stopped
@@ -120,8 +150,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStopped = "stopped";
 
     /// <summary>
+    /// Literal for code: MedicationRequestStatusStopped
+    /// </summary>
+    public const string LiteralMedicationRequestStatusStopped = "http://hl7.org/fhir/medication-request-status#stopped";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: MedicationRequestStatusUnknown
+    /// </summary>
+    public const string LiteralMedicationRequestStatusUnknown = "http://hl7.org/fhir/medication-request-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationRequestStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/medication-request-status#active", Active }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/medication-request-status#cancelled", Cancelled }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/medication-request-status#completed", Completed }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/medication-request-status#draft", Draft }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/medication-request-status#entered-in-error", EnteredInError }, 
+      { "on-hold", OnHold }, 
+      { "http://hl7.org/fhir/medication-request-status#on-hold", OnHold }, 
+      { "stopped", Stopped }, 
+      { "http://hl7.org/fhir/medication-request-status#stopped", Stopped }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/medication-request-status#unknown", Unknown }, 
+    };
   };
 }

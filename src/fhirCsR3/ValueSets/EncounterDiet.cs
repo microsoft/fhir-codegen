@@ -81,9 +81,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDairyFree = "dairy-free";
 
     /// <summary>
+    /// Literal for code: EncounterDietDairyFree
+    /// </summary>
+    public const string LiteralEncounterDietDairyFree = "http://hl7.org/fhir/diet#dairy-free";
+
+    /// <summary>
     /// Literal for code: GlutenFree
     /// </summary>
     public const string LiteralGlutenFree = "gluten-free";
+
+    /// <summary>
+    /// Literal for code: EncounterDietGlutenFree
+    /// </summary>
+    public const string LiteralEncounterDietGlutenFree = "http://hl7.org/fhir/diet#gluten-free";
 
     /// <summary>
     /// Literal for code: Halal
@@ -91,9 +101,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHalal = "halal";
 
     /// <summary>
+    /// Literal for code: EncounterDietHalal
+    /// </summary>
+    public const string LiteralEncounterDietHalal = "http://hl7.org/fhir/diet#halal";
+
+    /// <summary>
     /// Literal for code: Kosher
     /// </summary>
     public const string LiteralKosher = "kosher";
+
+    /// <summary>
+    /// Literal for code: EncounterDietKosher
+    /// </summary>
+    public const string LiteralEncounterDietKosher = "http://hl7.org/fhir/diet#kosher";
 
     /// <summary>
     /// Literal for code: NutFree
@@ -101,13 +121,48 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNutFree = "nut-free";
 
     /// <summary>
+    /// Literal for code: EncounterDietNutFree
+    /// </summary>
+    public const string LiteralEncounterDietNutFree = "http://hl7.org/fhir/diet#nut-free";
+
+    /// <summary>
     /// Literal for code: Vegan
     /// </summary>
     public const string LiteralVegan = "vegan";
 
     /// <summary>
+    /// Literal for code: EncounterDietVegan
+    /// </summary>
+    public const string LiteralEncounterDietVegan = "http://hl7.org/fhir/diet#vegan";
+
+    /// <summary>
     /// Literal for code: Vegetarian
     /// </summary>
     public const string LiteralVegetarian = "vegetarian";
+
+    /// <summary>
+    /// Literal for code: EncounterDietVegetarian
+    /// </summary>
+    public const string LiteralEncounterDietVegetarian = "http://hl7.org/fhir/diet#vegetarian";
+
+    /// <summary>
+    /// Dictionary for looking up EncounterDiet Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "dairy-free", DairyFree }, 
+      { "http://hl7.org/fhir/diet#dairy-free", DairyFree }, 
+      { "gluten-free", GlutenFree }, 
+      { "http://hl7.org/fhir/diet#gluten-free", GlutenFree }, 
+      { "halal", Halal }, 
+      { "http://hl7.org/fhir/diet#halal", Halal }, 
+      { "kosher", Kosher }, 
+      { "http://hl7.org/fhir/diet#kosher", Kosher }, 
+      { "nut-free", NutFree }, 
+      { "http://hl7.org/fhir/diet#nut-free", NutFree }, 
+      { "vegan", Vegan }, 
+      { "http://hl7.org/fhir/diet#vegan", Vegan }, 
+      { "vegetarian", Vegetarian }, 
+      { "http://hl7.org/fhir/diet#vegetarian", Vegetarian }, 
+    };
   };
 }

@@ -781,9 +781,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbort_v3_DataOperation = "ABORT";
 
     /// <summary>
+    /// Literal for code: V3DataOperationAbort_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationAbort_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#ABORT";
+
+    /// <summary>
     /// Literal for code: Aborted_v3_ActStatus
     /// </summary>
     public const string LiteralAborted_v3_ActStatus = "aborted";
+
+    /// <summary>
+    /// Literal for code: V3ActStatusAborted_v3_ActStatus
+    /// </summary>
+    public const string LiteralV3ActStatusAborted_v3_ActStatus = "http://hl7.org/fhir/v3/ActStatus#aborted";
 
     /// <summary>
     /// Literal for code: Activate_v3_DataOperation
@@ -791,9 +801,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralActivate_v3_DataOperation = "ACTIVATE";
 
     /// <summary>
+    /// Literal for code: V3DataOperationActivate_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationActivate_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#ACTIVATE";
+
+    /// <summary>
     /// Literal for code: Active_v3_ActStatus
     /// </summary>
     public const string LiteralActive_v3_ActStatus = "active";
+
+    /// <summary>
+    /// Literal for code: V3ActStatusActive_v3_ActStatus
+    /// </summary>
+    public const string LiteralV3ActStatusActive_v3_ActStatus = "http://hl7.org/fhir/v3/ActStatus#active";
 
     /// <summary>
     /// Literal for code: Aggregate_extra_activity_type
@@ -801,9 +821,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAggregate_extra_activity_type = "aggregate";
 
     /// <summary>
+    /// Literal for code: ExtraActivityTypeAggregate_extra_activity_type
+    /// </summary>
+    public const string LiteralExtraActivityTypeAggregate_extra_activity_type = "http://hl7.org/fhir/extra-activity-type#aggregate";
+
+    /// <summary>
     /// Literal for code: Anonymize_v3_ActCode
     /// </summary>
     public const string LiteralAnonymize_v3_ActCode = "ANONY";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAnonymize_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAnonymize_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ANONY";
 
     /// <summary>
     /// Literal for code: AccountingOfDisclosure_v3_ActCode
@@ -811,9 +841,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAccountingOfDisclosure_v3_ActCode = "AOD";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAccountingOfDisclosure_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAccountingOfDisclosure_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#AOD";
+
+    /// <summary>
     /// Literal for code: Append_v3_DataOperation
     /// </summary>
     public const string LiteralAppend_v3_DataOperation = "APPEND";
+
+    /// <summary>
+    /// Literal for code: V3DataOperationAppend_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationAppend_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#APPEND";
 
     /// <summary>
     /// Literal for code: WasAttributedTo_w3c_provenance_activity_type
@@ -821,9 +861,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWasAttributedTo_w3c_provenance_activity_type = "Attribution";
 
     /// <summary>
+    /// Literal for code: W3cProvenanceActivityTypeWasAttributedTo_w3c_provenance_activity_type
+    /// </summary>
+    public const string LiteralW3cProvenanceActivityTypeWasAttributedTo_w3c_provenance_activity_type = "http://hl7.org/fhir/w3c-provenance-activity-type#Attribution";
+
+    /// <summary>
     /// Literal for code: Authenticated_v3_DocumentCompletion
     /// </summary>
     public const string LiteralAuthenticated_v3_DocumentCompletion = "AU";
+
+    /// <summary>
+    /// Literal for code: V3DocumentCompletionAuthenticated_v3_DocumentCompletion
+    /// </summary>
+    public const string LiteralV3DocumentCompletionAuthenticated_v3_DocumentCompletion = "http://hl7.org/fhir/v3/DocumentCompletion#AU";
 
     /// <summary>
     /// Literal for code: Audit_v3_ActCode
@@ -831,9 +881,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAudit_v3_ActCode = "AUDIT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAudit_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAudit_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#AUDIT";
+
+    /// <summary>
     /// Literal for code: AuditTrail_v3_ActCode
     /// </summary>
     public const string LiteralAuditTrail_v3_ActCode = "AUDTR";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAuditTrail_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAuditTrail_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#AUDTR";
 
     /// <summary>
     /// Literal for code: Cancel_v3_DataOperation
@@ -841,9 +901,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCancel_v3_DataOperation = "CANCEL";
 
     /// <summary>
+    /// Literal for code: V3DataOperationCancel_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationCancel_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#CANCEL";
+
+    /// <summary>
     /// Literal for code: Cancelled_v3_ActStatus
     /// </summary>
     public const string LiteralCancelled_v3_ActStatus = "cancelled";
+
+    /// <summary>
+    /// Literal for code: V3ActStatusCancelled_v3_ActStatus
+    /// </summary>
+    public const string LiteralV3ActStatusCancelled_v3_ActStatus = "http://hl7.org/fhir/v3/ActStatus#cancelled";
 
     /// <summary>
     /// Literal for code: IsCollectionOf_w3c_provenance_activity_type
@@ -851,9 +921,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIsCollectionOf_w3c_provenance_activity_type = "Collection";
 
     /// <summary>
+    /// Literal for code: W3cProvenanceActivityTypeIsCollectionOf_w3c_provenance_activity_type
+    /// </summary>
+    public const string LiteralW3cProvenanceActivityTypeIsCollectionOf_w3c_provenance_activity_type = "http://hl7.org/fhir/w3c-provenance-activity-type#Collection";
+
+    /// <summary>
     /// Literal for code: WasInformedBy_w3c_provenance_activity_type
     /// </summary>
     public const string LiteralWasInformedBy_w3c_provenance_activity_type = "Communication";
+
+    /// <summary>
+    /// Literal for code: W3cProvenanceActivityTypeWasInformedBy_w3c_provenance_activity_type
+    /// </summary>
+    public const string LiteralW3cProvenanceActivityTypeWasInformedBy_w3c_provenance_activity_type = "http://hl7.org/fhir/w3c-provenance-activity-type#Communication";
 
     /// <summary>
     /// Literal for code: Complete_v3_DataOperation
@@ -861,9 +941,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComplete_v3_DataOperation = "COMPLETE";
 
     /// <summary>
+    /// Literal for code: V3DataOperationComplete_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationComplete_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#COMPLETE";
+
+    /// <summary>
     /// Literal for code: Completed_v3_ActStatus
     /// </summary>
     public const string LiteralCompleted_v3_ActStatus = "completed";
+
+    /// <summary>
+    /// Literal for code: V3ActStatusCompleted_v3_ActStatus
+    /// </summary>
+    public const string LiteralV3ActStatusCompleted_v3_ActStatus = "http://hl7.org/fhir/v3/ActStatus#completed";
 
     /// <summary>
     /// Literal for code: Compose_extra_activity_type
@@ -871,9 +961,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCompose_extra_activity_type = "compose";
 
     /// <summary>
+    /// Literal for code: ExtraActivityTypeCompose_extra_activity_type
+    /// </summary>
+    public const string LiteralExtraActivityTypeCompose_extra_activity_type = "http://hl7.org/fhir/extra-activity-type#compose";
+
+    /// <summary>
     /// Literal for code: ComplyWithConfidentialityCode_v3_ActCode
     /// </summary>
     public const string LiteralComplyWithConfidentialityCode_v3_ActCode = "CPLYCC";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeComplyWithConfidentialityCode_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithConfidentialityCode_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#CPLYCC";
 
     /// <summary>
     /// Literal for code: ComplyWithConsentDirective_v3_ActCode
@@ -881,9 +981,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComplyWithConsentDirective_v3_ActCode = "CPLYCD";
 
     /// <summary>
+    /// Literal for code: V3ActCodeComplyWithConsentDirective_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithConsentDirective_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#CPLYCD";
+
+    /// <summary>
     /// Literal for code: ComplyWithJurisdictionalPrivacyPolicy_v3_ActCode
     /// </summary>
     public const string LiteralComplyWithJurisdictionalPrivacyPolicy_v3_ActCode = "CPLYJPP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeComplyWithJurisdictionalPrivacyPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithJurisdictionalPrivacyPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#CPLYJPP";
 
     /// <summary>
     /// Literal for code: ComplyWithOrganizationalPrivacyPolicy_v3_ActCode
@@ -891,9 +1001,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComplyWithOrganizationalPrivacyPolicy_v3_ActCode = "CPLYOPP";
 
     /// <summary>
+    /// Literal for code: V3ActCodeComplyWithOrganizationalPrivacyPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithOrganizationalPrivacyPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#CPLYOPP";
+
+    /// <summary>
     /// Literal for code: ComplyWithOrganizationalSecurityPolicy_v3_ActCode
     /// </summary>
     public const string LiteralComplyWithOrganizationalSecurityPolicy_v3_ActCode = "CPLYOSP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeComplyWithOrganizationalSecurityPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithOrganizationalSecurityPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#CPLYOSP";
 
     /// <summary>
     /// Literal for code: ComplyWithPolicy_v3_ActCode
@@ -901,9 +1021,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComplyWithPolicy_v3_ActCode = "CPLYPOL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeComplyWithPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#CPLYPOL";
+
+    /// <summary>
     /// Literal for code: Create_v3_DataOperation
     /// </summary>
     public const string LiteralCreate_v3_DataOperation = "CREATE";
+
+    /// <summary>
+    /// Literal for code: V3DataOperationCreate_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationCreate_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#CREATE";
 
     /// <summary>
     /// Literal for code: DeclassifySecurityLabel_v3_ActCode
@@ -911,9 +1041,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeclassifySecurityLabel_v3_ActCode = "DECLASSIFYLABEL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDeclassifySecurityLabel_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDeclassifySecurityLabel_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DECLASSIFYLABEL";
+
+    /// <summary>
     /// Literal for code: Deidentify_v3_ActCode
     /// </summary>
     public const string LiteralDeidentify_v3_ActCode = "DEID";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDeidentify_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDeidentify_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DEID";
 
     /// <summary>
     /// Literal for code: DeleteAfterUse_v3_ActCode
@@ -921,9 +1061,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeleteAfterUse_v3_ActCode = "DELAU";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDeleteAfterUse_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDeleteAfterUse_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DELAU";
+
+    /// <summary>
     /// Literal for code: Delete_v3_DataOperation
     /// </summary>
     public const string LiteralDelete_v3_DataOperation = "DELETE";
+
+    /// <summary>
+    /// Literal for code: V3DataOperationDelete_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationDelete_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#DELETE";
 
     /// <summary>
     /// Literal for code: WasDerivedFrom_w3c_provenance_activity_type
@@ -931,9 +1081,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWasDerivedFrom_w3c_provenance_activity_type = "Derivation";
 
     /// <summary>
+    /// Literal for code: W3cProvenanceActivityTypeWasDerivedFrom_w3c_provenance_activity_type
+    /// </summary>
+    public const string LiteralW3cProvenanceActivityTypeWasDerivedFrom_w3c_provenance_activity_type = "http://hl7.org/fhir/w3c-provenance-activity-type#Derivation";
+
+    /// <summary>
     /// Literal for code: Dictated_v3_DocumentCompletion
     /// </summary>
     public const string LiteralDictated_v3_DocumentCompletion = "DI";
+
+    /// <summary>
+    /// Literal for code: V3DocumentCompletionDictated_v3_DocumentCompletion
+    /// </summary>
+    public const string LiteralV3DocumentCompletionDictated_v3_DocumentCompletion = "http://hl7.org/fhir/v3/DocumentCompletion#DI";
 
     /// <summary>
     /// Literal for code: Documented_v3_DocumentCompletion
@@ -941,9 +1101,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDocumented_v3_DocumentCompletion = "DO";
 
     /// <summary>
+    /// Literal for code: V3DocumentCompletionDocumented_v3_DocumentCompletion
+    /// </summary>
+    public const string LiteralV3DocumentCompletionDocumented_v3_DocumentCompletion = "http://hl7.org/fhir/v3/DocumentCompletion#DO";
+
+    /// <summary>
     /// Literal for code: DowngradeSecurityLabel_v3_ActCode
     /// </summary>
     public const string LiteralDowngradeSecurityLabel_v3_ActCode = "DOWNGRDLABEL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDowngradeSecurityLabel_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDowngradeSecurityLabel_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DOWNGRDLABEL";
 
     /// <summary>
     /// Literal for code: DeriveSecurityLabel_v3_ActCode
@@ -951,9 +1121,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeriveSecurityLabel_v3_ActCode = "DRIVLABEL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDeriveSecurityLabel_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDeriveSecurityLabel_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#DRIVLABEL";
+
+    /// <summary>
     /// Literal for code: Encrypt_v3_ActCode
     /// </summary>
     public const string LiteralEncrypt_v3_ActCode = "ENCRYPT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEncrypt_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeEncrypt_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ENCRYPT";
 
     /// <summary>
     /// Literal for code: EncryptAtRest_v3_ActCode
@@ -961,9 +1141,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEncryptAtRest_v3_ActCode = "ENCRYPTR";
 
     /// <summary>
+    /// Literal for code: V3ActCodeEncryptAtRest_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeEncryptAtRest_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ENCRYPTR";
+
+    /// <summary>
     /// Literal for code: EncryptInTransit_v3_ActCode
     /// </summary>
     public const string LiteralEncryptInTransit_v3_ActCode = "ENCRYPTT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEncryptInTransit_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeEncryptInTransit_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ENCRYPTT";
 
     /// <summary>
     /// Literal for code: EncryptInUse_v3_ActCode
@@ -971,9 +1161,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEncryptInUse_v3_ActCode = "ENCRYPTU";
 
     /// <summary>
+    /// Literal for code: V3ActCodeEncryptInUse_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeEncryptInUse_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ENCRYPTU";
+
+    /// <summary>
     /// Literal for code: WasEndedBy_w3c_provenance_activity_type
     /// </summary>
     public const string LiteralWasEndedBy_w3c_provenance_activity_type = "End";
+
+    /// <summary>
+    /// Literal for code: W3cProvenanceActivityTypeWasEndedBy_w3c_provenance_activity_type
+    /// </summary>
+    public const string LiteralW3cProvenanceActivityTypeWasEndedBy_w3c_provenance_activity_type = "http://hl7.org/fhir/w3c-provenance-activity-type#End";
 
     /// <summary>
     /// Literal for code: Execute_v3_DataOperation
@@ -981,9 +1181,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExecute_v3_DataOperation = "EXECUTE";
 
     /// <summary>
+    /// Literal for code: V3DataOperationExecute_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationExecute_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#EXECUTE";
+
+    /// <summary>
     /// Literal for code: WasGeneratedBy_w3c_provenance_activity_type
     /// </summary>
     public const string LiteralWasGeneratedBy_w3c_provenance_activity_type = "Generation";
+
+    /// <summary>
+    /// Literal for code: W3cProvenanceActivityTypeWasGeneratedBy_w3c_provenance_activity_type
+    /// </summary>
+    public const string LiteralW3cProvenanceActivityTypeWasGeneratedBy_w3c_provenance_activity_type = "http://hl7.org/fhir/w3c-provenance-activity-type#Generation";
 
     /// <summary>
     /// Literal for code: Held_v3_ActStatus
@@ -991,9 +1201,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeld_v3_ActStatus = "held";
 
     /// <summary>
+    /// Literal for code: V3ActStatusHeld_v3_ActStatus
+    /// </summary>
+    public const string LiteralV3ActStatusHeld_v3_ActStatus = "http://hl7.org/fhir/v3/ActStatus#held";
+
+    /// <summary>
     /// Literal for code: Hold_v3_DataOperation
     /// </summary>
     public const string LiteralHold_v3_DataOperation = "HOLD";
+
+    /// <summary>
+    /// Literal for code: V3DataOperationHold_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationHold_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#HOLD";
 
     /// <summary>
     /// Literal for code: HumanApproval_v3_ActCode
@@ -1001,9 +1221,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHumanApproval_v3_ActCode = "HUAPRV";
 
     /// <summary>
+    /// Literal for code: V3ActCodeHumanApproval_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeHumanApproval_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#HUAPRV";
+
+    /// <summary>
     /// Literal for code: Incomplete_v3_DocumentCompletion
     /// </summary>
     public const string LiteralIncomplete_v3_DocumentCompletion = "IN";
+
+    /// <summary>
+    /// Literal for code: V3DocumentCompletionIncomplete_v3_DocumentCompletion
+    /// </summary>
+    public const string LiteralV3DocumentCompletionIncomplete_v3_DocumentCompletion = "http://hl7.org/fhir/v3/DocumentCompletion#IN";
 
     /// <summary>
     /// Literal for code: WasInvalidatedBy_w3c_provenance_activity_type
@@ -1011,9 +1241,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWasInvalidatedBy_w3c_provenance_activity_type = "Invalidation";
 
     /// <summary>
+    /// Literal for code: W3cProvenanceActivityTypeWasInvalidatedBy_w3c_provenance_activity_type
+    /// </summary>
+    public const string LiteralW3cProvenanceActivityTypeWasInvalidatedBy_w3c_provenance_activity_type = "http://hl7.org/fhir/w3c-provenance-activity-type#Invalidation";
+
+    /// <summary>
     /// Literal for code: InProgress_v3_DocumentCompletion
     /// </summary>
     public const string LiteralInProgress_v3_DocumentCompletion = "IP";
+
+    /// <summary>
+    /// Literal for code: V3DocumentCompletionInProgress_v3_DocumentCompletion
+    /// </summary>
+    public const string LiteralV3DocumentCompletionInProgress_v3_DocumentCompletion = "http://hl7.org/fhir/v3/DocumentCompletion#IP";
 
     /// <summary>
     /// Literal for code: Jump_v3_DataOperation
@@ -1021,9 +1261,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralJump_v3_DataOperation = "JUMP";
 
     /// <summary>
+    /// Literal for code: V3DataOperationJump_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationJump_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#JUMP";
+
+    /// <summary>
     /// Literal for code: LegallyAuthenticated_v3_DocumentCompletion
     /// </summary>
     public const string LiteralLegallyAuthenticated_v3_DocumentCompletion = "LA";
+
+    /// <summary>
+    /// Literal for code: V3DocumentCompletionLegallyAuthenticated_v3_DocumentCompletion
+    /// </summary>
+    public const string LiteralV3DocumentCompletionLegallyAuthenticated_v3_DocumentCompletion = "http://hl7.org/fhir/v3/DocumentCompletion#LA";
 
     /// <summary>
     /// Literal for code: Label_extra_activity_type
@@ -1031,9 +1281,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLabel_extra_activity_type = "label";
 
     /// <summary>
+    /// Literal for code: ExtraActivityTypeLabel_extra_activity_type
+    /// </summary>
+    public const string LiteralExtraActivityTypeLabel_extra_activity_type = "http://hl7.org/fhir/extra-activity-type#label";
+
+    /// <summary>
     /// Literal for code: AssignSecurityLabel_v3_ActCode
     /// </summary>
     public const string LiteralAssignSecurityLabel_v3_ActCode = "LABEL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAssignSecurityLabel_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAssignSecurityLabel_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#LABEL";
 
     /// <summary>
     /// Literal for code: Mask_v3_ActCode
@@ -1041,9 +1301,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMask_v3_ActCode = "MASK";
 
     /// <summary>
+    /// Literal for code: V3ActCodeMask_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeMask_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#MASK";
+
+    /// <summary>
     /// Literal for code: MinimumNecessary_v3_ActCode
     /// </summary>
     public const string LiteralMinimumNecessary_v3_ActCode = "MINEC";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeMinimumNecessary_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeMinimumNecessary_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#MINEC";
 
     /// <summary>
     /// Literal for code: ModifyStatus_v3_DataOperation
@@ -1051,9 +1321,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralModifyStatus_v3_DataOperation = "MODIFYSTATUS";
 
     /// <summary>
+    /// Literal for code: V3DataOperationModifyStatus_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationModifyStatus_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#MODIFYSTATUS";
+
+    /// <summary>
     /// Literal for code: VALNew_v3_ActStatus
     /// </summary>
     public const string LiteralVALNew_v3_ActStatus = "new";
+
+    /// <summary>
+    /// Literal for code: V3ActStatusVALNew_v3_ActStatus
+    /// </summary>
+    public const string LiteralV3ActStatusVALNew_v3_ActStatus = "http://hl7.org/fhir/v3/ActStatus#new";
 
     /// <summary>
     /// Literal for code: Normal_v3_ActStatus
@@ -1061,9 +1341,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNormal_v3_ActStatus = "normal";
 
     /// <summary>
+    /// Literal for code: V3ActStatusNormal_v3_ActStatus
+    /// </summary>
+    public const string LiteralV3ActStatusNormal_v3_ActStatus = "http://hl7.org/fhir/v3/ActStatus#normal";
+
+    /// <summary>
     /// Literal for code: NullifiedDocument_v3_DocumentCompletion
     /// </summary>
     public const string LiteralNullifiedDocument_v3_DocumentCompletion = "NU";
+
+    /// <summary>
+    /// Literal for code: V3DocumentCompletionNullifiedDocument_v3_DocumentCompletion
+    /// </summary>
+    public const string LiteralV3DocumentCompletionNullifiedDocument_v3_DocumentCompletion = "http://hl7.org/fhir/v3/DocumentCompletion#NU";
 
     /// <summary>
     /// Literal for code: Nullified_v3_ActStatus
@@ -1071,9 +1361,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNullified_v3_ActStatus = "nullified";
 
     /// <summary>
+    /// Literal for code: V3ActStatusNullified_v3_ActStatus
+    /// </summary>
+    public const string LiteralV3ActStatusNullified_v3_ActStatus = "http://hl7.org/fhir/v3/ActStatus#nullified";
+
+    /// <summary>
     /// Literal for code: Nullify_v3_DataOperation
     /// </summary>
     public const string LiteralNullify_v3_DataOperation = "NULLIFY";
+
+    /// <summary>
+    /// Literal for code: V3DataOperationNullify_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationNullify_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#NULLIFY";
 
     /// <summary>
     /// Literal for code: ObligationPolicy_v3_ActCode
@@ -1081,9 +1381,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralObligationPolicy_v3_ActCode = "ObligationPolicy";
 
     /// <summary>
+    /// Literal for code: V3ActCodeObligationPolicy_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeObligationPolicy_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ObligationPolicy";
+
+    /// <summary>
     /// Literal for code: Obsolete_v3_ActStatus
     /// </summary>
     public const string LiteralObsolete_v3_ActStatus = "obsolete";
+
+    /// <summary>
+    /// Literal for code: V3ActStatusObsolete_v3_ActStatus
+    /// </summary>
+    public const string LiteralV3ActStatusObsolete_v3_ActStatus = "http://hl7.org/fhir/v3/ActStatus#obsolete";
 
     /// <summary>
     /// Literal for code: Obsolete_v3_DataOperation
@@ -1091,9 +1401,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralObsolete_v3_DataOperation = "OBSOLETE";
 
     /// <summary>
+    /// Literal for code: V3DataOperationObsolete_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationObsolete_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#OBSOLETE";
+
+    /// <summary>
     /// Literal for code: Operate_v3_DataOperation
     /// </summary>
     public const string LiteralOperate_v3_DataOperation = "OPERATE";
+
+    /// <summary>
+    /// Literal for code: V3DataOperationOperate_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationOperate_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#OPERATE";
 
     /// <summary>
     /// Literal for code: PreAuthenticated_v3_DocumentCompletion
@@ -1101,9 +1421,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPreAuthenticated_v3_DocumentCompletion = "PA";
 
     /// <summary>
+    /// Literal for code: V3DocumentCompletionPreAuthenticated_v3_DocumentCompletion
+    /// </summary>
+    public const string LiteralV3DocumentCompletionPreAuthenticated_v3_DocumentCompletion = "http://hl7.org/fhir/v3/DocumentCompletion#PA";
+
+    /// <summary>
     /// Literal for code: PersistSecurityLabel_v3_ActCode
     /// </summary>
     public const string LiteralPersistSecurityLabel_v3_ActCode = "PERSISTLABEL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePersistSecurityLabel_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodePersistSecurityLabel_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#PERSISTLABEL";
 
     /// <summary>
     /// Literal for code: WasPrimarySourceOf_w3c_provenance_activity_type
@@ -1111,9 +1441,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWasPrimarySourceOf_w3c_provenance_activity_type = "Primary-Source";
 
     /// <summary>
+    /// Literal for code: W3cProvenanceActivityTypeWasPrimarySourceOf_w3c_provenance_activity_type
+    /// </summary>
+    public const string LiteralW3cProvenanceActivityTypeWasPrimarySourceOf_w3c_provenance_activity_type = "http://hl7.org/fhir/w3c-provenance-activity-type#Primary-Source";
+
+    /// <summary>
     /// Literal for code: PrivacyMark_v3_ActCode
     /// </summary>
     public const string LiteralPrivacyMark_v3_ActCode = "PRIVMARK";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePrivacyMark_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodePrivacyMark_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#PRIVMARK";
 
     /// <summary>
     /// Literal for code: Pseudonymize_v3_ActCode
@@ -1121,9 +1461,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPseudonymize_v3_ActCode = "PSEUD";
 
     /// <summary>
+    /// Literal for code: V3ActCodePseudonymize_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodePseudonymize_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#PSEUD";
+
+    /// <summary>
     /// Literal for code: WasQuotedFrom_w3c_provenance_activity_type
     /// </summary>
     public const string LiteralWasQuotedFrom_w3c_provenance_activity_type = "Quotation";
+
+    /// <summary>
+    /// Literal for code: W3cProvenanceActivityTypeWasQuotedFrom_w3c_provenance_activity_type
+    /// </summary>
+    public const string LiteralW3cProvenanceActivityTypeWasQuotedFrom_w3c_provenance_activity_type = "http://hl7.org/fhir/w3c-provenance-activity-type#Quotation";
 
     /// <summary>
     /// Literal for code: Reactivate_v3_DataOperation
@@ -1131,9 +1481,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReactivate_v3_DataOperation = "REACTIVATE";
 
     /// <summary>
+    /// Literal for code: V3DataOperationReactivate_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationReactivate_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#REACTIVATE";
+
+    /// <summary>
     /// Literal for code: Read_v3_DataOperation
     /// </summary>
     public const string LiteralRead_v3_DataOperation = "READ";
+
+    /// <summary>
+    /// Literal for code: V3DataOperationRead_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationRead_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#READ";
 
     /// <summary>
     /// Literal for code: Redact_v3_ActCode
@@ -1141,9 +1501,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRedact_v3_ActCode = "REDACT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRedact_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeRedact_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#REDACT";
+
+    /// <summary>
     /// Literal for code: Release_v3_DataOperation
     /// </summary>
     public const string LiteralRelease_v3_DataOperation = "RELEASE";
+
+    /// <summary>
+    /// Literal for code: V3DataOperationRelease_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationRelease_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#RELEASE";
 
     /// <summary>
     /// Literal for code: Resume_v3_DataOperation
@@ -1151,9 +1521,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralResume_v3_DataOperation = "RESUME";
 
     /// <summary>
+    /// Literal for code: V3DataOperationResume_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationResume_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#RESUME";
+
+    /// <summary>
     /// Literal for code: WasRevisionOf_w3c_provenance_activity_type
     /// </summary>
     public const string LiteralWasRevisionOf_w3c_provenance_activity_type = "Revision";
+
+    /// <summary>
+    /// Literal for code: W3cProvenanceActivityTypeWasRevisionOf_w3c_provenance_activity_type
+    /// </summary>
+    public const string LiteralW3cProvenanceActivityTypeWasRevisionOf_w3c_provenance_activity_type = "http://hl7.org/fhir/w3c-provenance-activity-type#Revision";
 
     /// <summary>
     /// Literal for code: WasStartedBy_w3c_provenance_activity_type
@@ -1161,9 +1541,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWasStartedBy_w3c_provenance_activity_type = "Start";
 
     /// <summary>
+    /// Literal for code: W3cProvenanceActivityTypeWasStartedBy_w3c_provenance_activity_type
+    /// </summary>
+    public const string LiteralW3cProvenanceActivityTypeWasStartedBy_w3c_provenance_activity_type = "http://hl7.org/fhir/w3c-provenance-activity-type#Start";
+
+    /// <summary>
     /// Literal for code: Suspend_v3_DataOperation
     /// </summary>
     public const string LiteralSuspend_v3_DataOperation = "SUSPEND";
+
+    /// <summary>
+    /// Literal for code: V3DataOperationSuspend_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationSuspend_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#SUSPEND";
 
     /// <summary>
     /// Literal for code: Suspended_v3_ActStatus
@@ -1171,9 +1561,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSuspended_v3_ActStatus = "suspended";
 
     /// <summary>
+    /// Literal for code: V3ActStatusSuspended_v3_ActStatus
+    /// </summary>
+    public const string LiteralV3ActStatusSuspended_v3_ActStatus = "http://hl7.org/fhir/v3/ActStatus#suspended";
+
+    /// <summary>
     /// Literal for code: UnsignedCompletedDocument_v3_DocumentCompletion
     /// </summary>
     public const string LiteralUnsignedCompletedDocument_v3_DocumentCompletion = "UC";
+
+    /// <summary>
+    /// Literal for code: V3DocumentCompletionUnsignedCompletedDocument_v3_DocumentCompletion
+    /// </summary>
+    public const string LiteralV3DocumentCompletionUnsignedCompletedDocument_v3_DocumentCompletion = "http://hl7.org/fhir/v3/DocumentCompletion#UC";
 
     /// <summary>
     /// Literal for code: Revise_v3_DataOperation
@@ -1181,13 +1581,200 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRevise_v3_DataOperation = "UPDATE";
 
     /// <summary>
+    /// Literal for code: V3DataOperationRevise_v3_DataOperation
+    /// </summary>
+    public const string LiteralV3DataOperationRevise_v3_DataOperation = "http://hl7.org/fhir/v3/DataOperation#UPDATE";
+
+    /// <summary>
     /// Literal for code: UpgradeSecurityLabel_v3_ActCode
     /// </summary>
     public const string LiteralUpgradeSecurityLabel_v3_ActCode = "UPGRDLABEL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeUpgradeSecurityLabel_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeUpgradeSecurityLabel_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#UPGRDLABEL";
+
+    /// <summary>
     /// Literal for code: Used_w3c_provenance_activity_type
     /// </summary>
     public const string LiteralUsed_w3c_provenance_activity_type = "Usage";
+
+    /// <summary>
+    /// Literal for code: W3cProvenanceActivityTypeUsed_w3c_provenance_activity_type
+    /// </summary>
+    public const string LiteralW3cProvenanceActivityTypeUsed_w3c_provenance_activity_type = "http://hl7.org/fhir/w3c-provenance-activity-type#Usage";
+
+    /// <summary>
+    /// Dictionary for looking up ProvenanceActivityType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ABORT", Abort_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#ABORT", Abort_v3_DataOperation }, 
+      { "aborted", Aborted_v3_ActStatus }, 
+      { "http://hl7.org/fhir/v3/ActStatus#aborted", Aborted_v3_ActStatus }, 
+      { "ACTIVATE", Activate_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#ACTIVATE", Activate_v3_DataOperation }, 
+      { "active", Active_v3_ActStatus }, 
+      { "http://hl7.org/fhir/v3/ActStatus#active", Active_v3_ActStatus }, 
+      { "aggregate", Aggregate_extra_activity_type }, 
+      { "http://hl7.org/fhir/extra-activity-type#aggregate", Aggregate_extra_activity_type }, 
+      { "ANONY", Anonymize_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ANONY", Anonymize_v3_ActCode }, 
+      { "AOD", AccountingOfDisclosure_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#AOD", AccountingOfDisclosure_v3_ActCode }, 
+      { "APPEND", Append_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#APPEND", Append_v3_DataOperation }, 
+      { "Attribution", WasAttributedTo_w3c_provenance_activity_type }, 
+      { "http://hl7.org/fhir/w3c-provenance-activity-type#Attribution", WasAttributedTo_w3c_provenance_activity_type }, 
+      { "AU", Authenticated_v3_DocumentCompletion }, 
+      { "http://hl7.org/fhir/v3/DocumentCompletion#AU", Authenticated_v3_DocumentCompletion }, 
+      { "AUDIT", Audit_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#AUDIT", Audit_v3_ActCode }, 
+      { "AUDTR", AuditTrail_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#AUDTR", AuditTrail_v3_ActCode }, 
+      { "CANCEL", Cancel_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#CANCEL", Cancel_v3_DataOperation }, 
+      { "cancelled", Cancelled_v3_ActStatus }, 
+      { "http://hl7.org/fhir/v3/ActStatus#cancelled", Cancelled_v3_ActStatus }, 
+      { "Collection", IsCollectionOf_w3c_provenance_activity_type }, 
+      { "http://hl7.org/fhir/w3c-provenance-activity-type#Collection", IsCollectionOf_w3c_provenance_activity_type }, 
+      { "Communication", WasInformedBy_w3c_provenance_activity_type }, 
+      { "http://hl7.org/fhir/w3c-provenance-activity-type#Communication", WasInformedBy_w3c_provenance_activity_type }, 
+      { "COMPLETE", Complete_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#COMPLETE", Complete_v3_DataOperation }, 
+      { "completed", Completed_v3_ActStatus }, 
+      { "http://hl7.org/fhir/v3/ActStatus#completed", Completed_v3_ActStatus }, 
+      { "compose", Compose_extra_activity_type }, 
+      { "http://hl7.org/fhir/extra-activity-type#compose", Compose_extra_activity_type }, 
+      { "CPLYCC", ComplyWithConfidentialityCode_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#CPLYCC", ComplyWithConfidentialityCode_v3_ActCode }, 
+      { "CPLYCD", ComplyWithConsentDirective_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#CPLYCD", ComplyWithConsentDirective_v3_ActCode }, 
+      { "CPLYJPP", ComplyWithJurisdictionalPrivacyPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#CPLYJPP", ComplyWithJurisdictionalPrivacyPolicy_v3_ActCode }, 
+      { "CPLYOPP", ComplyWithOrganizationalPrivacyPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#CPLYOPP", ComplyWithOrganizationalPrivacyPolicy_v3_ActCode }, 
+      { "CPLYOSP", ComplyWithOrganizationalSecurityPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#CPLYOSP", ComplyWithOrganizationalSecurityPolicy_v3_ActCode }, 
+      { "CPLYPOL", ComplyWithPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#CPLYPOL", ComplyWithPolicy_v3_ActCode }, 
+      { "CREATE", Create_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#CREATE", Create_v3_DataOperation }, 
+      { "DECLASSIFYLABEL", DeclassifySecurityLabel_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DECLASSIFYLABEL", DeclassifySecurityLabel_v3_ActCode }, 
+      { "DEID", Deidentify_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DEID", Deidentify_v3_ActCode }, 
+      { "DELAU", DeleteAfterUse_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DELAU", DeleteAfterUse_v3_ActCode }, 
+      { "DELETE", Delete_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#DELETE", Delete_v3_DataOperation }, 
+      { "Derivation", WasDerivedFrom_w3c_provenance_activity_type }, 
+      { "http://hl7.org/fhir/w3c-provenance-activity-type#Derivation", WasDerivedFrom_w3c_provenance_activity_type }, 
+      { "DI", Dictated_v3_DocumentCompletion }, 
+      { "http://hl7.org/fhir/v3/DocumentCompletion#DI", Dictated_v3_DocumentCompletion }, 
+      { "DO", Documented_v3_DocumentCompletion }, 
+      { "http://hl7.org/fhir/v3/DocumentCompletion#DO", Documented_v3_DocumentCompletion }, 
+      { "DOWNGRDLABEL", DowngradeSecurityLabel_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DOWNGRDLABEL", DowngradeSecurityLabel_v3_ActCode }, 
+      { "DRIVLABEL", DeriveSecurityLabel_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#DRIVLABEL", DeriveSecurityLabel_v3_ActCode }, 
+      { "ENCRYPT", Encrypt_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ENCRYPT", Encrypt_v3_ActCode }, 
+      { "ENCRYPTR", EncryptAtRest_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ENCRYPTR", EncryptAtRest_v3_ActCode }, 
+      { "ENCRYPTT", EncryptInTransit_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ENCRYPTT", EncryptInTransit_v3_ActCode }, 
+      { "ENCRYPTU", EncryptInUse_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ENCRYPTU", EncryptInUse_v3_ActCode }, 
+      { "End", WasEndedBy_w3c_provenance_activity_type }, 
+      { "http://hl7.org/fhir/w3c-provenance-activity-type#End", WasEndedBy_w3c_provenance_activity_type }, 
+      { "EXECUTE", Execute_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#EXECUTE", Execute_v3_DataOperation }, 
+      { "Generation", WasGeneratedBy_w3c_provenance_activity_type }, 
+      { "http://hl7.org/fhir/w3c-provenance-activity-type#Generation", WasGeneratedBy_w3c_provenance_activity_type }, 
+      { "held", Held_v3_ActStatus }, 
+      { "http://hl7.org/fhir/v3/ActStatus#held", Held_v3_ActStatus }, 
+      { "HOLD", Hold_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#HOLD", Hold_v3_DataOperation }, 
+      { "HUAPRV", HumanApproval_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#HUAPRV", HumanApproval_v3_ActCode }, 
+      { "IN", Incomplete_v3_DocumentCompletion }, 
+      { "http://hl7.org/fhir/v3/DocumentCompletion#IN", Incomplete_v3_DocumentCompletion }, 
+      { "Invalidation", WasInvalidatedBy_w3c_provenance_activity_type }, 
+      { "http://hl7.org/fhir/w3c-provenance-activity-type#Invalidation", WasInvalidatedBy_w3c_provenance_activity_type }, 
+      { "IP", InProgress_v3_DocumentCompletion }, 
+      { "http://hl7.org/fhir/v3/DocumentCompletion#IP", InProgress_v3_DocumentCompletion }, 
+      { "JUMP", Jump_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#JUMP", Jump_v3_DataOperation }, 
+      { "LA", LegallyAuthenticated_v3_DocumentCompletion }, 
+      { "http://hl7.org/fhir/v3/DocumentCompletion#LA", LegallyAuthenticated_v3_DocumentCompletion }, 
+      { "label", Label_extra_activity_type }, 
+      { "http://hl7.org/fhir/extra-activity-type#label", Label_extra_activity_type }, 
+      { "LABEL", AssignSecurityLabel_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#LABEL", AssignSecurityLabel_v3_ActCode }, 
+      { "MASK", Mask_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#MASK", Mask_v3_ActCode }, 
+      { "MINEC", MinimumNecessary_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#MINEC", MinimumNecessary_v3_ActCode }, 
+      { "MODIFYSTATUS", ModifyStatus_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#MODIFYSTATUS", ModifyStatus_v3_DataOperation }, 
+      { "new", VALNew_v3_ActStatus }, 
+      { "http://hl7.org/fhir/v3/ActStatus#new", VALNew_v3_ActStatus }, 
+      { "normal", Normal_v3_ActStatus }, 
+      { "http://hl7.org/fhir/v3/ActStatus#normal", Normal_v3_ActStatus }, 
+      { "NU", NullifiedDocument_v3_DocumentCompletion }, 
+      { "http://hl7.org/fhir/v3/DocumentCompletion#NU", NullifiedDocument_v3_DocumentCompletion }, 
+      { "nullified", Nullified_v3_ActStatus }, 
+      { "http://hl7.org/fhir/v3/ActStatus#nullified", Nullified_v3_ActStatus }, 
+      { "NULLIFY", Nullify_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#NULLIFY", Nullify_v3_DataOperation }, 
+      { "ObligationPolicy", ObligationPolicy_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ObligationPolicy", ObligationPolicy_v3_ActCode }, 
+      { "obsolete", Obsolete_v3_ActStatus }, 
+      { "http://hl7.org/fhir/v3/ActStatus#obsolete", Obsolete_v3_ActStatus }, 
+      { "OBSOLETE", Obsolete_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#OBSOLETE", Obsolete_v3_DataOperation }, 
+      { "OPERATE", Operate_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#OPERATE", Operate_v3_DataOperation }, 
+      { "PA", PreAuthenticated_v3_DocumentCompletion }, 
+      { "http://hl7.org/fhir/v3/DocumentCompletion#PA", PreAuthenticated_v3_DocumentCompletion }, 
+      { "PERSISTLABEL", PersistSecurityLabel_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#PERSISTLABEL", PersistSecurityLabel_v3_ActCode }, 
+      { "Primary-Source", WasPrimarySourceOf_w3c_provenance_activity_type }, 
+      { "http://hl7.org/fhir/w3c-provenance-activity-type#Primary-Source", WasPrimarySourceOf_w3c_provenance_activity_type }, 
+      { "PRIVMARK", PrivacyMark_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#PRIVMARK", PrivacyMark_v3_ActCode }, 
+      { "PSEUD", Pseudonymize_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#PSEUD", Pseudonymize_v3_ActCode }, 
+      { "Quotation", WasQuotedFrom_w3c_provenance_activity_type }, 
+      { "http://hl7.org/fhir/w3c-provenance-activity-type#Quotation", WasQuotedFrom_w3c_provenance_activity_type }, 
+      { "REACTIVATE", Reactivate_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#REACTIVATE", Reactivate_v3_DataOperation }, 
+      { "READ", Read_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#READ", Read_v3_DataOperation }, 
+      { "REDACT", Redact_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#REDACT", Redact_v3_ActCode }, 
+      { "RELEASE", Release_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#RELEASE", Release_v3_DataOperation }, 
+      { "RESUME", Resume_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#RESUME", Resume_v3_DataOperation }, 
+      { "Revision", WasRevisionOf_w3c_provenance_activity_type }, 
+      { "http://hl7.org/fhir/w3c-provenance-activity-type#Revision", WasRevisionOf_w3c_provenance_activity_type }, 
+      { "Start", WasStartedBy_w3c_provenance_activity_type }, 
+      { "http://hl7.org/fhir/w3c-provenance-activity-type#Start", WasStartedBy_w3c_provenance_activity_type }, 
+      { "SUSPEND", Suspend_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#SUSPEND", Suspend_v3_DataOperation }, 
+      { "suspended", Suspended_v3_ActStatus }, 
+      { "http://hl7.org/fhir/v3/ActStatus#suspended", Suspended_v3_ActStatus }, 
+      { "UC", UnsignedCompletedDocument_v3_DocumentCompletion }, 
+      { "http://hl7.org/fhir/v3/DocumentCompletion#UC", UnsignedCompletedDocument_v3_DocumentCompletion }, 
+      { "UPDATE", Revise_v3_DataOperation }, 
+      { "http://hl7.org/fhir/v3/DataOperation#UPDATE", Revise_v3_DataOperation }, 
+      { "UPGRDLABEL", UpgradeSecurityLabel_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#UPGRDLABEL", UpgradeSecurityLabel_v3_ActCode }, 
+      { "Usage", Used_w3c_provenance_activity_type }, 
+      { "http://hl7.org/fhir/w3c-provenance-activity-type#Usage", Used_w3c_provenance_activity_type }, 
+    };
   };
 }

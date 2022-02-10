@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class VerificationresultValidationProcessCodes
   {
     /// <summary>
-    /// 
+    /// edit check
     /// </summary>
     public static readonly Coding EditCheck = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/validation-process"
     };
     /// <summary>
-    /// 
+    /// in context
     /// </summary>
     public static readonly Coding InContext = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/validation-process"
     };
     /// <summary>
-    /// 
+    /// multiple sources
     /// </summary>
     public static readonly Coding MultipleSources = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/validation-process"
     };
     /// <summary>
-    /// 
+    /// primary source
     /// </summary>
     public static readonly Coding PrimarySource = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/validation-process"
     };
     /// <summary>
-    /// 
+    /// standalone
     /// </summary>
     public static readonly Coding Standalone = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/validation-process"
     };
     /// <summary>
-    /// 
+    /// value set
     /// </summary>
     public static readonly Coding ValueSet = new Coding
     {
@@ -72,9 +72,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEditCheck = "edit-check";
 
     /// <summary>
+    /// Literal for code: VerificationresultValidationProcessEditCheck
+    /// </summary>
+    public const string LiteralVerificationresultValidationProcessEditCheck = "http://terminology.hl7.org/CodeSystem/validation-process#edit-check";
+
+    /// <summary>
     /// Literal for code: InContext
     /// </summary>
     public const string LiteralInContext = "in-context";
+
+    /// <summary>
+    /// Literal for code: VerificationresultValidationProcessInContext
+    /// </summary>
+    public const string LiteralVerificationresultValidationProcessInContext = "http://terminology.hl7.org/CodeSystem/validation-process#in-context";
 
     /// <summary>
     /// Literal for code: MultipleSources
@@ -82,9 +92,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMultipleSources = "multi";
 
     /// <summary>
+    /// Literal for code: VerificationresultValidationProcessMultipleSources
+    /// </summary>
+    public const string LiteralVerificationresultValidationProcessMultipleSources = "http://terminology.hl7.org/CodeSystem/validation-process#multi";
+
+    /// <summary>
     /// Literal for code: PrimarySource
     /// </summary>
     public const string LiteralPrimarySource = "primary";
+
+    /// <summary>
+    /// Literal for code: VerificationresultValidationProcessPrimarySource
+    /// </summary>
+    public const string LiteralVerificationresultValidationProcessPrimarySource = "http://terminology.hl7.org/CodeSystem/validation-process#primary";
 
     /// <summary>
     /// Literal for code: Standalone
@@ -92,8 +112,36 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStandalone = "standalone";
 
     /// <summary>
+    /// Literal for code: VerificationresultValidationProcessStandalone
+    /// </summary>
+    public const string LiteralVerificationresultValidationProcessStandalone = "http://terminology.hl7.org/CodeSystem/validation-process#standalone";
+
+    /// <summary>
     /// Literal for code: ValueSet
     /// </summary>
     public const string LiteralValueSet = "valueset";
+
+    /// <summary>
+    /// Literal for code: VerificationresultValidationProcessValueSet
+    /// </summary>
+    public const string LiteralVerificationresultValidationProcessValueSet = "http://terminology.hl7.org/CodeSystem/validation-process#valueset";
+
+    /// <summary>
+    /// Dictionary for looking up VerificationresultValidationProcess Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "edit-check", EditCheck }, 
+      { "http://terminology.hl7.org/CodeSystem/validation-process#edit-check", EditCheck }, 
+      { "in-context", InContext }, 
+      { "http://terminology.hl7.org/CodeSystem/validation-process#in-context", InContext }, 
+      { "multi", MultipleSources }, 
+      { "http://terminology.hl7.org/CodeSystem/validation-process#multi", MultipleSources }, 
+      { "primary", PrimarySource }, 
+      { "http://terminology.hl7.org/CodeSystem/validation-process#primary", PrimarySource }, 
+      { "standalone", Standalone }, 
+      { "http://terminology.hl7.org/CodeSystem/validation-process#standalone", Standalone }, 
+      { "valueset", ValueSet }, 
+      { "http://terminology.hl7.org/CodeSystem/validation-process#valueset", ValueSet }, 
+    };
   };
 }

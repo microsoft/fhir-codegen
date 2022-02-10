@@ -72,9 +72,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAbsent = "absent";
 
     /// <summary>
+    /// Literal for code: MessageReasonEncounterAbsent
+    /// </summary>
+    public const string LiteralMessageReasonEncounterAbsent = "http://terminology.hl7.org/CodeSystem/message-reasons-encounter#absent";
+
+    /// <summary>
     /// Literal for code: Admit
     /// </summary>
     public const string LiteralAdmit = "admit";
+
+    /// <summary>
+    /// Literal for code: MessageReasonEncounterAdmit
+    /// </summary>
+    public const string LiteralMessageReasonEncounterAdmit = "http://terminology.hl7.org/CodeSystem/message-reasons-encounter#admit";
 
     /// <summary>
     /// Literal for code: Discharge
@@ -82,9 +92,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDischarge = "discharge";
 
     /// <summary>
+    /// Literal for code: MessageReasonEncounterDischarge
+    /// </summary>
+    public const string LiteralMessageReasonEncounterDischarge = "http://terminology.hl7.org/CodeSystem/message-reasons-encounter#discharge";
+
+    /// <summary>
     /// Literal for code: Edit
     /// </summary>
     public const string LiteralEdit = "edit";
+
+    /// <summary>
+    /// Literal for code: MessageReasonEncounterEdit
+    /// </summary>
+    public const string LiteralMessageReasonEncounterEdit = "http://terminology.hl7.org/CodeSystem/message-reasons-encounter#edit";
 
     /// <summary>
     /// Literal for code: Moved
@@ -92,8 +112,36 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMoved = "moved";
 
     /// <summary>
+    /// Literal for code: MessageReasonEncounterMoved
+    /// </summary>
+    public const string LiteralMessageReasonEncounterMoved = "http://terminology.hl7.org/CodeSystem/message-reasons-encounter#moved";
+
+    /// <summary>
     /// Literal for code: Returned
     /// </summary>
     public const string LiteralReturned = "return";
+
+    /// <summary>
+    /// Literal for code: MessageReasonEncounterReturned
+    /// </summary>
+    public const string LiteralMessageReasonEncounterReturned = "http://terminology.hl7.org/CodeSystem/message-reasons-encounter#return";
+
+    /// <summary>
+    /// Dictionary for looking up MessageReasonEncounter Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "absent", Absent }, 
+      { "http://terminology.hl7.org/CodeSystem/message-reasons-encounter#absent", Absent }, 
+      { "admit", Admit }, 
+      { "http://terminology.hl7.org/CodeSystem/message-reasons-encounter#admit", Admit }, 
+      { "discharge", Discharge }, 
+      { "http://terminology.hl7.org/CodeSystem/message-reasons-encounter#discharge", Discharge }, 
+      { "edit", Edit }, 
+      { "http://terminology.hl7.org/CodeSystem/message-reasons-encounter#edit", Edit }, 
+      { "moved", Moved }, 
+      { "http://terminology.hl7.org/CodeSystem/message-reasons-encounter#moved", Moved }, 
+      { "return", Returned }, 
+      { "http://terminology.hl7.org/CodeSystem/message-reasons-encounter#return", Returned }, 
+    };
   };
 }

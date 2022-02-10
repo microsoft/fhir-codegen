@@ -2503,6 +2503,13 @@ namespace fhirCsR2.Models
     public const string PHARMACY = "pharmacy";
     public const string PROFESSIONAL = "professional";
     public const string VISION = "vision";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "institutional",
+      "oral",
+      "pharmacy",
+      "professional",
+      "vision",
+    };
   }
   /// <summary>
   /// Code Values for the Claim.use field
@@ -2512,5 +2519,11 @@ namespace fhirCsR2.Models
     public const string PROPOSED = "proposed";
     public const string EXPLORATORY = "exploratory";
     public const string OTHER = "other";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "complete",
+      "proposed",
+      "exploratory",
+      "other",
+    };
   }
 }

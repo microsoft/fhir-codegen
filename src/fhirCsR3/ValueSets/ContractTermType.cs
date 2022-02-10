@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStatutory = "statutory";
 
     /// <summary>
+    /// Literal for code: ContractTermTypeStatutory
+    /// </summary>
+    public const string LiteralContractTermTypeStatutory = "http://hl7.org/fhir/contracttermtypecodes#statutory";
+
+    /// <summary>
     /// Literal for code: SubjectTo
     /// </summary>
     public const string LiteralSubjectTo = "subject-to";
+
+    /// <summary>
+    /// Literal for code: ContractTermTypeSubjectTo
+    /// </summary>
+    public const string LiteralContractTermTypeSubjectTo = "http://hl7.org/fhir/contracttermtypecodes#subject-to";
+
+    /// <summary>
+    /// Dictionary for looking up ContractTermType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "statutory", Statutory }, 
+      { "http://hl7.org/fhir/contracttermtypecodes#statutory", Statutory }, 
+      { "subject-to", SubjectTo }, 
+      { "http://hl7.org/fhir/contracttermtypecodes#subject-to", SubjectTo }, 
+    };
   };
 }

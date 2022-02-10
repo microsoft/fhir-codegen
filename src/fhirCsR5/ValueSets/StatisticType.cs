@@ -216,9 +216,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStandardizedMeanDifference = "0000100";
 
     /// <summary>
+    /// Literal for code: StatisticTypeStandardizedMeanDifference
+    /// </summary>
+    public const string LiteralStatisticTypeStandardizedMeanDifference = "http://terminology.hl7.org/CodeSystem/statistic-type#0000100";
+
+    /// <summary>
     /// Literal for code: Covariance
     /// </summary>
     public const string LiteralCovariance = "0000301";
+
+    /// <summary>
+    /// Literal for code: StatisticTypeCovariance
+    /// </summary>
+    public const string LiteralStatisticTypeCovariance = "http://terminology.hl7.org/CodeSystem/statistic-type#0000301";
 
     /// <summary>
     /// Literal for code: RiskDifference
@@ -226,9 +236,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRiskDifference = "0000424";
 
     /// <summary>
+    /// Literal for code: StatisticTypeRiskDifference
+    /// </summary>
+    public const string LiteralStatisticTypeRiskDifference = "http://terminology.hl7.org/CodeSystem/statistic-type#0000424";
+
+    /// <summary>
     /// Literal for code: MeanDifference
     /// </summary>
     public const string LiteralMeanDifference = "0000457";
+
+    /// <summary>
+    /// Literal for code: StatisticTypeMeanDifference
+    /// </summary>
+    public const string LiteralStatisticTypeMeanDifference = "http://terminology.hl7.org/CodeSystem/statistic-type#0000457";
 
     /// <summary>
     /// Literal for code: RegressionCoefficient
@@ -236,9 +256,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRegressionCoefficient = "0000565";
 
     /// <summary>
+    /// Literal for code: StatisticTypeRegressionCoefficient
+    /// </summary>
+    public const string LiteralStatisticTypeRegressionCoefficient = "http://terminology.hl7.org/CodeSystem/statistic-type#0000565";
+
+    /// <summary>
     /// Literal for code: AbsoluteMedianDifference
     /// </summary>
     public const string LiteralAbsoluteMedianDifference = "absolute-MedianDiff";
+
+    /// <summary>
+    /// Literal for code: StatisticTypeAbsoluteMedianDifference
+    /// </summary>
+    public const string LiteralStatisticTypeAbsoluteMedianDifference = "http://terminology.hl7.org/CodeSystem/statistic-type#absolute-MedianDiff";
 
     /// <summary>
     /// Literal for code: Incidence
@@ -246,9 +276,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncidence = "C16726";
 
     /// <summary>
+    /// Literal for code: StatisticTypeIncidence
+    /// </summary>
+    public const string LiteralStatisticTypeIncidence = "http://terminology.hl7.org/CodeSystem/statistic-type#C16726";
+
+    /// <summary>
     /// Literal for code: OddsRatio
     /// </summary>
     public const string LiteralOddsRatio = "C16932";
+
+    /// <summary>
+    /// Literal for code: StatisticTypeOddsRatio
+    /// </summary>
+    public const string LiteralStatisticTypeOddsRatio = "http://terminology.hl7.org/CodeSystem/statistic-type#C16932";
 
     /// <summary>
     /// Literal for code: Prevalence
@@ -256,9 +296,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPrevalence = "C17010";
 
     /// <summary>
+    /// Literal for code: StatisticTypePrevalence
+    /// </summary>
+    public const string LiteralStatisticTypePrevalence = "http://terminology.hl7.org/CodeSystem/statistic-type#C17010";
+
+    /// <summary>
     /// Literal for code: Count
     /// </summary>
     public const string LiteralCount = "C25463";
+
+    /// <summary>
+    /// Literal for code: StatisticTypeCount
+    /// </summary>
+    public const string LiteralStatisticTypeCount = "http://terminology.hl7.org/CodeSystem/statistic-type#C25463";
 
     /// <summary>
     /// Literal for code: Maximum
@@ -266,9 +316,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMaximum = "C25564";
 
     /// <summary>
+    /// Literal for code: StatisticTypeMaximum
+    /// </summary>
+    public const string LiteralStatisticTypeMaximum = "http://terminology.hl7.org/CodeSystem/statistic-type#C25564";
+
+    /// <summary>
     /// Literal for code: Minimum
     /// </summary>
     public const string LiteralMinimum = "C25570";
+
+    /// <summary>
+    /// Literal for code: StatisticTypeMinimum
+    /// </summary>
+    public const string LiteralStatisticTypeMinimum = "http://terminology.hl7.org/CodeSystem/statistic-type#C25570";
 
     /// <summary>
     /// Literal for code: Median
@@ -276,9 +336,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedian = "C28007";
 
     /// <summary>
+    /// Literal for code: StatisticTypeMedian
+    /// </summary>
+    public const string LiteralStatisticTypeMedian = "http://terminology.hl7.org/CodeSystem/statistic-type#C28007";
+
+    /// <summary>
     /// Literal for code: Proportion
     /// </summary>
     public const string LiteralProportion = "C44256";
+
+    /// <summary>
+    /// Literal for code: StatisticTypeProportion
+    /// </summary>
+    public const string LiteralStatisticTypeProportion = "http://terminology.hl7.org/CodeSystem/statistic-type#C44256";
 
     /// <summary>
     /// Literal for code: Mean
@@ -286,9 +356,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMean = "C53319";
 
     /// <summary>
+    /// Literal for code: StatisticTypeMean
+    /// </summary>
+    public const string LiteralStatisticTypeMean = "http://terminology.hl7.org/CodeSystem/statistic-type#C53319";
+
+    /// <summary>
     /// Literal for code: SpearmanRankOrderCorrelation
     /// </summary>
     public const string LiteralSpearmanRankOrderCorrelation = "C65171";
+
+    /// <summary>
+    /// Literal for code: StatisticTypeSpearmanRankOrderCorrelation
+    /// </summary>
+    public const string LiteralStatisticTypeSpearmanRankOrderCorrelation = "http://terminology.hl7.org/CodeSystem/statistic-type#C65171";
 
     /// <summary>
     /// Literal for code: PearsonCorrelationCoefficient
@@ -296,9 +376,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPearsonCorrelationCoefficient = "C65172";
 
     /// <summary>
+    /// Literal for code: StatisticTypePearsonCorrelationCoefficient
+    /// </summary>
+    public const string LiteralStatisticTypePearsonCorrelationCoefficient = "http://terminology.hl7.org/CodeSystem/statistic-type#C65172";
+
+    /// <summary>
     /// Literal for code: HazardRatio
     /// </summary>
     public const string LiteralHazardRatio = "C93150";
+
+    /// <summary>
+    /// Literal for code: StatisticTypeHazardRatio
+    /// </summary>
+    public const string LiteralStatisticTypeHazardRatio = "http://terminology.hl7.org/CodeSystem/statistic-type#C93150";
 
     /// <summary>
     /// Literal for code: RelativeRisk
@@ -306,9 +396,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRelativeRisk = "C93152";
 
     /// <summary>
+    /// Literal for code: StatisticTypeRelativeRisk
+    /// </summary>
+    public const string LiteralStatisticTypeRelativeRisk = "http://terminology.hl7.org/CodeSystem/statistic-type#C93152";
+
+    /// <summary>
     /// Literal for code: Descriptive
     /// </summary>
     public const string LiteralDescriptive = "descriptive";
+
+    /// <summary>
+    /// Literal for code: StatisticTypeDescriptive
+    /// </summary>
+    public const string LiteralStatisticTypeDescriptive = "http://terminology.hl7.org/CodeSystem/statistic-type#descriptive";
 
     /// <summary>
     /// Literal for code: PredictedRisk
@@ -316,8 +416,68 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPredictedRisk = "predictedRisk";
 
     /// <summary>
+    /// Literal for code: StatisticTypePredictedRisk
+    /// </summary>
+    public const string LiteralStatisticTypePredictedRisk = "http://terminology.hl7.org/CodeSystem/statistic-type#predictedRisk";
+
+    /// <summary>
     /// Literal for code: IncidenceRateRatio
     /// </summary>
     public const string LiteralIncidenceRateRatio = "rate-ratio";
+
+    /// <summary>
+    /// Literal for code: StatisticTypeIncidenceRateRatio
+    /// </summary>
+    public const string LiteralStatisticTypeIncidenceRateRatio = "http://terminology.hl7.org/CodeSystem/statistic-type#rate-ratio";
+
+    /// <summary>
+    /// Dictionary for looking up StatisticType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "0000100", StandardizedMeanDifference }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#0000100", StandardizedMeanDifference }, 
+      { "0000301", Covariance }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#0000301", Covariance }, 
+      { "0000424", RiskDifference }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#0000424", RiskDifference }, 
+      { "0000457", MeanDifference }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#0000457", MeanDifference }, 
+      { "0000565", RegressionCoefficient }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#0000565", RegressionCoefficient }, 
+      { "absolute-MedianDiff", AbsoluteMedianDifference }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#absolute-MedianDiff", AbsoluteMedianDifference }, 
+      { "C16726", Incidence }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#C16726", Incidence }, 
+      { "C16932", OddsRatio }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#C16932", OddsRatio }, 
+      { "C17010", Prevalence }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#C17010", Prevalence }, 
+      { "C25463", Count }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#C25463", Count }, 
+      { "C25564", Maximum }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#C25564", Maximum }, 
+      { "C25570", Minimum }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#C25570", Minimum }, 
+      { "C28007", Median }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#C28007", Median }, 
+      { "C44256", Proportion }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#C44256", Proportion }, 
+      { "C53319", Mean }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#C53319", Mean }, 
+      { "C65171", SpearmanRankOrderCorrelation }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#C65171", SpearmanRankOrderCorrelation }, 
+      { "C65172", PearsonCorrelationCoefficient }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#C65172", PearsonCorrelationCoefficient }, 
+      { "C93150", HazardRatio }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#C93150", HazardRatio }, 
+      { "C93152", RelativeRisk }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#C93152", RelativeRisk }, 
+      { "descriptive", Descriptive }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#descriptive", Descriptive }, 
+      { "predictedRisk", PredictedRisk }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#predictedRisk", PredictedRisk }, 
+      { "rate-ratio", IncidenceRateRatio }, 
+      { "http://terminology.hl7.org/CodeSystem/statistic-type#rate-ratio", IncidenceRateRatio }, 
+    };
   };
 }

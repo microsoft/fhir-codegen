@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class IdentifierTypeCodes
   {
     /// <summary>
-    /// 
+    /// Accession ID
     /// </summary>
     public static readonly Coding AccessionID_v2_0203 = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0203"
     };
     /// <summary>
-    /// 
+    /// Breed Registry Number
     /// </summary>
     public static readonly Coding BreedRegistryNumber_v2_0203 = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0203"
     };
     /// <summary>
-    /// 
+    /// Driver's license number
     /// </summary>
     public static readonly Coding DriverQuoteSLicenseNumber_v2_0203 = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0203"
     };
     /// <summary>
-    /// 
+    /// Donor Registration Number
     /// </summary>
     public static readonly Coding DonorRegistrationNumber_v2_0203 = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0203"
     };
     /// <summary>
-    /// 
+    /// Employer number
     /// </summary>
     public static readonly Coding EmployerNumber_v2_0203 = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/identifier-type"
     };
     /// <summary>
-    /// 
+    /// Microchip Number
     /// </summary>
     public static readonly Coding MicrochipNumber_v2_0203 = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0203"
     };
     /// <summary>
-    /// 
+    /// Medical License number
     /// </summary>
     public static readonly Coding MedicalLicenseNumber_v2_0203 = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0203"
     };
     /// <summary>
-    /// 
+    /// Medical record number
     /// </summary>
     public static readonly Coding MedicalRecordNumber_v2_0203 = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0203"
     };
     /// <summary>
-    /// 
+    /// National Insurance Payor Identifier (Payor)
     /// </summary>
     public static readonly Coding NationalInsurancePayorIdentifierPayor_v2_0203 = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/identifier-type"
     };
     /// <summary>
-    /// 
+    /// Passport number
     /// </summary>
     public static readonly Coding PassportNumber_v2_0203 = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0203"
     };
     /// <summary>
-    /// 
+    /// Provider number
     /// </summary>
     public static readonly Coding ProviderNumber_v2_0203 = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/identifier-type"
     };
     /// <summary>
-    /// 
+    /// Tax ID number
     /// </summary>
     public static readonly Coding TaxIDNumber_v2_0203 = new Coding
     {
@@ -171,9 +171,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAccessionID_v2_0203 = "ACSN";
 
     /// <summary>
+    /// Literal for code: V20203AccessionID_v2_0203
+    /// </summary>
+    public const string LiteralV20203AccessionID_v2_0203 = "http://hl7.org/fhir/v2/0203#ACSN";
+
+    /// <summary>
     /// Literal for code: BreedRegistryNumber_v2_0203
     /// </summary>
     public const string LiteralBreedRegistryNumber_v2_0203 = "BRN";
+
+    /// <summary>
+    /// Literal for code: V20203BreedRegistryNumber_v2_0203
+    /// </summary>
+    public const string LiteralV20203BreedRegistryNumber_v2_0203 = "http://hl7.org/fhir/v2/0203#BRN";
 
     /// <summary>
     /// Literal for code: DriverQuoteSLicenseNumber_v2_0203
@@ -181,9 +191,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDriverQuoteSLicenseNumber_v2_0203 = "DL";
 
     /// <summary>
+    /// Literal for code: V20203DriverQuoteSLicenseNumber_v2_0203
+    /// </summary>
+    public const string LiteralV20203DriverQuoteSLicenseNumber_v2_0203 = "http://hl7.org/fhir/v2/0203#DL";
+
+    /// <summary>
     /// Literal for code: DonorRegistrationNumber_v2_0203
     /// </summary>
     public const string LiteralDonorRegistrationNumber_v2_0203 = "DR";
+
+    /// <summary>
+    /// Literal for code: V20203DonorRegistrationNumber_v2_0203
+    /// </summary>
+    public const string LiteralV20203DonorRegistrationNumber_v2_0203 = "http://hl7.org/fhir/v2/0203#DR";
 
     /// <summary>
     /// Literal for code: EmployerNumber_v2_0203
@@ -191,9 +211,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEmployerNumber_v2_0203 = "EN";
 
     /// <summary>
+    /// Literal for code: V20203EmployerNumber_v2_0203
+    /// </summary>
+    public const string LiteralV20203EmployerNumber_v2_0203 = "http://hl7.org/fhir/v2/0203#EN";
+
+    /// <summary>
     /// Literal for code: FillerIdentifier_identifier_type
     /// </summary>
     public const string LiteralFillerIdentifier_identifier_type = "FILL";
+
+    /// <summary>
+    /// Literal for code: IdentifierTypeFillerIdentifier_identifier_type
+    /// </summary>
+    public const string LiteralIdentifierTypeFillerIdentifier_identifier_type = "http://hl7.org/fhir/identifier-type#FILL";
 
     /// <summary>
     /// Literal for code: MicrochipNumber_v2_0203
@@ -201,9 +231,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMicrochipNumber_v2_0203 = "MCN";
 
     /// <summary>
+    /// Literal for code: V20203MicrochipNumber_v2_0203
+    /// </summary>
+    public const string LiteralV20203MicrochipNumber_v2_0203 = "http://hl7.org/fhir/v2/0203#MCN";
+
+    /// <summary>
     /// Literal for code: MedicalLicenseNumber_v2_0203
     /// </summary>
     public const string LiteralMedicalLicenseNumber_v2_0203 = "MD";
+
+    /// <summary>
+    /// Literal for code: V20203MedicalLicenseNumber_v2_0203
+    /// </summary>
+    public const string LiteralV20203MedicalLicenseNumber_v2_0203 = "http://hl7.org/fhir/v2/0203#MD";
 
     /// <summary>
     /// Literal for code: MedicalRecordNumber_v2_0203
@@ -211,9 +251,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMedicalRecordNumber_v2_0203 = "MR";
 
     /// <summary>
+    /// Literal for code: V20203MedicalRecordNumber_v2_0203
+    /// </summary>
+    public const string LiteralV20203MedicalRecordNumber_v2_0203 = "http://hl7.org/fhir/v2/0203#MR";
+
+    /// <summary>
     /// Literal for code: NationalInsurancePayorIdentifierPayor_v2_0203
     /// </summary>
     public const string LiteralNationalInsurancePayorIdentifierPayor_v2_0203 = "NIIP";
+
+    /// <summary>
+    /// Literal for code: V20203NationalInsurancePayorIdentifierPayor_v2_0203
+    /// </summary>
+    public const string LiteralV20203NationalInsurancePayorIdentifierPayor_v2_0203 = "http://hl7.org/fhir/v2/0203#NIIP";
 
     /// <summary>
     /// Literal for code: PlacerIdentifier_identifier_type
@@ -221,9 +271,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlacerIdentifier_identifier_type = "PLAC";
 
     /// <summary>
+    /// Literal for code: IdentifierTypePlacerIdentifier_identifier_type
+    /// </summary>
+    public const string LiteralIdentifierTypePlacerIdentifier_identifier_type = "http://hl7.org/fhir/identifier-type#PLAC";
+
+    /// <summary>
     /// Literal for code: PassportNumber_v2_0203
     /// </summary>
     public const string LiteralPassportNumber_v2_0203 = "PPN";
+
+    /// <summary>
+    /// Literal for code: V20203PassportNumber_v2_0203
+    /// </summary>
+    public const string LiteralV20203PassportNumber_v2_0203 = "http://hl7.org/fhir/v2/0203#PPN";
 
     /// <summary>
     /// Literal for code: ProviderNumber_v2_0203
@@ -231,9 +291,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProviderNumber_v2_0203 = "PRN";
 
     /// <summary>
+    /// Literal for code: V20203ProviderNumber_v2_0203
+    /// </summary>
+    public const string LiteralV20203ProviderNumber_v2_0203 = "http://hl7.org/fhir/v2/0203#PRN";
+
+    /// <summary>
     /// Literal for code: SocialBeneficiaryIdentifier_identifier_type
     /// </summary>
     public const string LiteralSocialBeneficiaryIdentifier_identifier_type = "SB";
+
+    /// <summary>
+    /// Literal for code: IdentifierTypeSocialBeneficiaryIdentifier_identifier_type
+    /// </summary>
+    public const string LiteralIdentifierTypeSocialBeneficiaryIdentifier_identifier_type = "http://hl7.org/fhir/identifier-type#SB";
 
     /// <summary>
     /// Literal for code: SerialNumber_identifier_type
@@ -241,13 +311,68 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSerialNumber_identifier_type = "SNO";
 
     /// <summary>
+    /// Literal for code: IdentifierTypeSerialNumber_identifier_type
+    /// </summary>
+    public const string LiteralIdentifierTypeSerialNumber_identifier_type = "http://hl7.org/fhir/identifier-type#SNO";
+
+    /// <summary>
     /// Literal for code: TaxIDNumber_v2_0203
     /// </summary>
     public const string LiteralTaxIDNumber_v2_0203 = "TAX";
 
     /// <summary>
+    /// Literal for code: V20203TaxIDNumber_v2_0203
+    /// </summary>
+    public const string LiteralV20203TaxIDNumber_v2_0203 = "http://hl7.org/fhir/v2/0203#TAX";
+
+    /// <summary>
     /// Literal for code: UniversalDeviceIdentifier_identifier_type
     /// </summary>
     public const string LiteralUniversalDeviceIdentifier_identifier_type = "UDI";
+
+    /// <summary>
+    /// Literal for code: IdentifierTypeUniversalDeviceIdentifier_identifier_type
+    /// </summary>
+    public const string LiteralIdentifierTypeUniversalDeviceIdentifier_identifier_type = "http://hl7.org/fhir/identifier-type#UDI";
+
+    /// <summary>
+    /// Dictionary for looking up IdentifierType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ACSN", AccessionID_v2_0203 }, 
+      { "http://hl7.org/fhir/v2/0203#ACSN", AccessionID_v2_0203 }, 
+      { "BRN", BreedRegistryNumber_v2_0203 }, 
+      { "http://hl7.org/fhir/v2/0203#BRN", BreedRegistryNumber_v2_0203 }, 
+      { "DL", DriverQuoteSLicenseNumber_v2_0203 }, 
+      { "http://hl7.org/fhir/v2/0203#DL", DriverQuoteSLicenseNumber_v2_0203 }, 
+      { "DR", DonorRegistrationNumber_v2_0203 }, 
+      { "http://hl7.org/fhir/v2/0203#DR", DonorRegistrationNumber_v2_0203 }, 
+      { "EN", EmployerNumber_v2_0203 }, 
+      { "http://hl7.org/fhir/v2/0203#EN", EmployerNumber_v2_0203 }, 
+      { "FILL", FillerIdentifier_identifier_type }, 
+      { "http://hl7.org/fhir/identifier-type#FILL", FillerIdentifier_identifier_type }, 
+      { "MCN", MicrochipNumber_v2_0203 }, 
+      { "http://hl7.org/fhir/v2/0203#MCN", MicrochipNumber_v2_0203 }, 
+      { "MD", MedicalLicenseNumber_v2_0203 }, 
+      { "http://hl7.org/fhir/v2/0203#MD", MedicalLicenseNumber_v2_0203 }, 
+      { "MR", MedicalRecordNumber_v2_0203 }, 
+      { "http://hl7.org/fhir/v2/0203#MR", MedicalRecordNumber_v2_0203 }, 
+      { "NIIP", NationalInsurancePayorIdentifierPayor_v2_0203 }, 
+      { "http://hl7.org/fhir/v2/0203#NIIP", NationalInsurancePayorIdentifierPayor_v2_0203 }, 
+      { "PLAC", PlacerIdentifier_identifier_type }, 
+      { "http://hl7.org/fhir/identifier-type#PLAC", PlacerIdentifier_identifier_type }, 
+      { "PPN", PassportNumber_v2_0203 }, 
+      { "http://hl7.org/fhir/v2/0203#PPN", PassportNumber_v2_0203 }, 
+      { "PRN", ProviderNumber_v2_0203 }, 
+      { "http://hl7.org/fhir/v2/0203#PRN", ProviderNumber_v2_0203 }, 
+      { "SB", SocialBeneficiaryIdentifier_identifier_type }, 
+      { "http://hl7.org/fhir/identifier-type#SB", SocialBeneficiaryIdentifier_identifier_type }, 
+      { "SNO", SerialNumber_identifier_type }, 
+      { "http://hl7.org/fhir/identifier-type#SNO", SerialNumber_identifier_type }, 
+      { "TAX", TaxIDNumber_v2_0203 }, 
+      { "http://hl7.org/fhir/v2/0203#TAX", TaxIDNumber_v2_0203 }, 
+      { "UDI", UniversalDeviceIdentifier_identifier_type }, 
+      { "http://hl7.org/fhir/identifier-type#UDI", UniversalDeviceIdentifier_identifier_type }, 
+    };
   };
 }

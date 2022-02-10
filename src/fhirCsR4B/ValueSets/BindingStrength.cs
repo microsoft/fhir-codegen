@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExample = "example";
 
     /// <summary>
+    /// Literal for code: BindingStrengthExample
+    /// </summary>
+    public const string LiteralBindingStrengthExample = "http://hl7.org/fhir/binding-strength#example";
+
+    /// <summary>
     /// Literal for code: Extensible
     /// </summary>
     public const string LiteralExtensible = "extensible";
+
+    /// <summary>
+    /// Literal for code: BindingStrengthExtensible
+    /// </summary>
+    public const string LiteralBindingStrengthExtensible = "http://hl7.org/fhir/binding-strength#extensible";
 
     /// <summary>
     /// Literal for code: Preferred
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPreferred = "preferred";
 
     /// <summary>
+    /// Literal for code: BindingStrengthPreferred
+    /// </summary>
+    public const string LiteralBindingStrengthPreferred = "http://hl7.org/fhir/binding-strength#preferred";
+
+    /// <summary>
     /// Literal for code: Required
     /// </summary>
     public const string LiteralRequired = "required";
+
+    /// <summary>
+    /// Literal for code: BindingStrengthRequired
+    /// </summary>
+    public const string LiteralBindingStrengthRequired = "http://hl7.org/fhir/binding-strength#required";
+
+    /// <summary>
+    /// Dictionary for looking up BindingStrength Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "example", Example }, 
+      { "http://hl7.org/fhir/binding-strength#example", Example }, 
+      { "extensible", Extensible }, 
+      { "http://hl7.org/fhir/binding-strength#extensible", Extensible }, 
+      { "preferred", Preferred }, 
+      { "http://hl7.org/fhir/binding-strength#preferred", Preferred }, 
+      { "required", Required }, 
+      { "http://hl7.org/fhir/binding-strength#required", Required }, 
+    };
   };
 }

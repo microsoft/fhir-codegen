@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInformationOnly = "information-only";
 
     /// <summary>
+    /// Literal for code: ParticipantrequiredInformationOnly
+    /// </summary>
+    public const string LiteralParticipantrequiredInformationOnly = "http://hl7.org/fhir/participantrequired#information-only";
+
+    /// <summary>
     /// Literal for code: Optional
     /// </summary>
     public const string LiteralOptional = "optional";
 
     /// <summary>
+    /// Literal for code: ParticipantrequiredOptional
+    /// </summary>
+    public const string LiteralParticipantrequiredOptional = "http://hl7.org/fhir/participantrequired#optional";
+
+    /// <summary>
     /// Literal for code: Required
     /// </summary>
     public const string LiteralRequired = "required";
+
+    /// <summary>
+    /// Literal for code: ParticipantrequiredRequired
+    /// </summary>
+    public const string LiteralParticipantrequiredRequired = "http://hl7.org/fhir/participantrequired#required";
+
+    /// <summary>
+    /// Dictionary for looking up Participantrequired Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "information-only", InformationOnly }, 
+      { "http://hl7.org/fhir/participantrequired#information-only", InformationOnly }, 
+      { "optional", Optional }, 
+      { "http://hl7.org/fhir/participantrequired#optional", Optional }, 
+      { "required", Required }, 
+      { "http://hl7.org/fhir/participantrequired#required", Required }, 
+    };
   };
 }

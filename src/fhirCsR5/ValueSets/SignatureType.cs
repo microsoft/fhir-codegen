@@ -234,9 +234,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAuthorQuoteSSignature_astm_signature_type = "1.2.840.10065.1.12.1.1";
 
     /// <summary>
+    /// Literal for code: AstmSignatureTypeAuthorQuoteSSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeAuthorQuoteSSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.1";
+
+    /// <summary>
     /// Literal for code: IdentityWitnessSignature_astm_signature_type
     /// </summary>
     public const string LiteralIdentityWitnessSignature_astm_signature_type = "1.2.840.10065.1.12.1.10";
+
+    /// <summary>
+    /// Literal for code: AstmSignatureTypeIdentityWitnessSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeIdentityWitnessSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.10";
 
     /// <summary>
     /// Literal for code: ConsentWitnessSignature_astm_signature_type
@@ -244,9 +254,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralConsentWitnessSignature_astm_signature_type = "1.2.840.10065.1.12.1.11";
 
     /// <summary>
+    /// Literal for code: AstmSignatureTypeConsentWitnessSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeConsentWitnessSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.11";
+
+    /// <summary>
     /// Literal for code: InterpreterSignature_astm_signature_type
     /// </summary>
     public const string LiteralInterpreterSignature_astm_signature_type = "1.2.840.10065.1.12.1.12";
+
+    /// <summary>
+    /// Literal for code: AstmSignatureTypeInterpreterSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeInterpreterSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.12";
 
     /// <summary>
     /// Literal for code: ReviewSignature_astm_signature_type
@@ -254,9 +274,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralReviewSignature_astm_signature_type = "1.2.840.10065.1.12.1.13";
 
     /// <summary>
+    /// Literal for code: AstmSignatureTypeReviewSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeReviewSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.13";
+
+    /// <summary>
     /// Literal for code: SourceSignature_astm_signature_type
     /// </summary>
     public const string LiteralSourceSignature_astm_signature_type = "1.2.840.10065.1.12.1.14";
+
+    /// <summary>
+    /// Literal for code: AstmSignatureTypeSourceSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeSourceSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.14";
 
     /// <summary>
     /// Literal for code: AddendumSignature_astm_signature_type
@@ -264,9 +294,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAddendumSignature_astm_signature_type = "1.2.840.10065.1.12.1.15";
 
     /// <summary>
+    /// Literal for code: AstmSignatureTypeAddendumSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeAddendumSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.15";
+
+    /// <summary>
     /// Literal for code: ModificationSignature_astm_signature_type
     /// </summary>
     public const string LiteralModificationSignature_astm_signature_type = "1.2.840.10065.1.12.1.16";
+
+    /// <summary>
+    /// Literal for code: AstmSignatureTypeModificationSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeModificationSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.16";
 
     /// <summary>
     /// Literal for code: AdministrativeErrorEditSignature_astm_signature_type
@@ -274,9 +314,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAdministrativeErrorEditSignature_astm_signature_type = "1.2.840.10065.1.12.1.17";
 
     /// <summary>
+    /// Literal for code: AstmSignatureTypeAdministrativeErrorEditSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeAdministrativeErrorEditSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.17";
+
+    /// <summary>
     /// Literal for code: TimestampSignature_astm_signature_type
     /// </summary>
     public const string LiteralTimestampSignature_astm_signature_type = "1.2.840.10065.1.12.1.18";
+
+    /// <summary>
+    /// Literal for code: AstmSignatureTypeTimestampSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeTimestampSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.18";
 
     /// <summary>
     /// Literal for code: CoauthorQuoteSSignature_astm_signature_type
@@ -284,9 +334,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCoauthorQuoteSSignature_astm_signature_type = "1.2.840.10065.1.12.1.2";
 
     /// <summary>
+    /// Literal for code: AstmSignatureTypeCoauthorQuoteSSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeCoauthorQuoteSSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.2";
+
+    /// <summary>
     /// Literal for code: CoParticipantQuoteSSignature_astm_signature_type
     /// </summary>
     public const string LiteralCoParticipantQuoteSSignature_astm_signature_type = "1.2.840.10065.1.12.1.3";
+
+    /// <summary>
+    /// Literal for code: AstmSignatureTypeCoParticipantQuoteSSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeCoParticipantQuoteSSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.3";
 
     /// <summary>
     /// Literal for code: TranscriptionistRecorderSignature_astm_signature_type
@@ -294,9 +354,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTranscriptionistRecorderSignature_astm_signature_type = "1.2.840.10065.1.12.1.4";
 
     /// <summary>
+    /// Literal for code: AstmSignatureTypeTranscriptionistRecorderSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeTranscriptionistRecorderSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.4";
+
+    /// <summary>
     /// Literal for code: VerificationSignature_astm_signature_type
     /// </summary>
     public const string LiteralVerificationSignature_astm_signature_type = "1.2.840.10065.1.12.1.5";
+
+    /// <summary>
+    /// Literal for code: AstmSignatureTypeVerificationSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeVerificationSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.5";
 
     /// <summary>
     /// Literal for code: ValidationSignature_astm_signature_type
@@ -304,9 +374,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralValidationSignature_astm_signature_type = "1.2.840.10065.1.12.1.6";
 
     /// <summary>
+    /// Literal for code: AstmSignatureTypeValidationSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeValidationSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.6";
+
+    /// <summary>
     /// Literal for code: ConsentSignature_astm_signature_type
     /// </summary>
     public const string LiteralConsentSignature_astm_signature_type = "1.2.840.10065.1.12.1.7";
+
+    /// <summary>
+    /// Literal for code: AstmSignatureTypeConsentSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeConsentSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.7";
 
     /// <summary>
     /// Literal for code: SignatureWitnessSignature_astm_signature_type
@@ -314,9 +394,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSignatureWitnessSignature_astm_signature_type = "1.2.840.10065.1.12.1.8";
 
     /// <summary>
+    /// Literal for code: AstmSignatureTypeSignatureWitnessSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeSignatureWitnessSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.8";
+
+    /// <summary>
     /// Literal for code: EventWitnessSignature_astm_signature_type
     /// </summary>
     public const string LiteralEventWitnessSignature_astm_signature_type = "1.2.840.10065.1.12.1.9";
+
+    /// <summary>
+    /// Literal for code: AstmSignatureTypeEventWitnessSignature_astm_signature_type
+    /// </summary>
+    public const string LiteralAstmSignatureTypeEventWitnessSignature_astm_signature_type = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.9";
 
     /// <summary>
     /// Literal for code: ProofOfApproval_etsi_signature_type
@@ -324,9 +414,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProofOfApproval_etsi_signature_type = "ProofOfapproval";
 
     /// <summary>
+    /// Literal for code: EtsiSignatureTypeProofOfApproval_etsi_signature_type
+    /// </summary>
+    public const string LiteralEtsiSignatureTypeProofOfApproval_etsi_signature_type = "http://uri.etsi.org/01903/v1.2.2#ProofOfapproval";
+
+    /// <summary>
     /// Literal for code: ProofOfCreation_etsi_signature_type
     /// </summary>
     public const string LiteralProofOfCreation_etsi_signature_type = "ProofOfCreation";
+
+    /// <summary>
+    /// Literal for code: EtsiSignatureTypeProofOfCreation_etsi_signature_type
+    /// </summary>
+    public const string LiteralEtsiSignatureTypeProofOfCreation_etsi_signature_type = "http://uri.etsi.org/01903/v1.2.2#ProofOfCreation";
 
     /// <summary>
     /// Literal for code: ProofOfDelivery_etsi_signature_type
@@ -334,9 +434,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProofOfDelivery_etsi_signature_type = "ProofOfDelivery";
 
     /// <summary>
+    /// Literal for code: EtsiSignatureTypeProofOfDelivery_etsi_signature_type
+    /// </summary>
+    public const string LiteralEtsiSignatureTypeProofOfDelivery_etsi_signature_type = "http://uri.etsi.org/01903/v1.2.2#ProofOfDelivery";
+
+    /// <summary>
     /// Literal for code: ProofOfOrigin_etsi_signature_type
     /// </summary>
     public const string LiteralProofOfOrigin_etsi_signature_type = "ProofOfOrigin";
+
+    /// <summary>
+    /// Literal for code: EtsiSignatureTypeProofOfOrigin_etsi_signature_type
+    /// </summary>
+    public const string LiteralEtsiSignatureTypeProofOfOrigin_etsi_signature_type = "http://uri.etsi.org/01903/v1.2.2#ProofOfOrigin";
 
     /// <summary>
     /// Literal for code: ProofOfReceipt_etsi_signature_type
@@ -344,8 +454,72 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProofOfReceipt_etsi_signature_type = "ProofOfReceipt";
 
     /// <summary>
+    /// Literal for code: EtsiSignatureTypeProofOfReceipt_etsi_signature_type
+    /// </summary>
+    public const string LiteralEtsiSignatureTypeProofOfReceipt_etsi_signature_type = "http://uri.etsi.org/01903/v1.2.2#ProofOfReceipt";
+
+    /// <summary>
     /// Literal for code: ProofOfSender_etsi_signature_type
     /// </summary>
     public const string LiteralProofOfSender_etsi_signature_type = "ProofOfSender";
+
+    /// <summary>
+    /// Literal for code: EtsiSignatureTypeProofOfSender_etsi_signature_type
+    /// </summary>
+    public const string LiteralEtsiSignatureTypeProofOfSender_etsi_signature_type = "http://uri.etsi.org/01903/v1.2.2#ProofOfSender";
+
+    /// <summary>
+    /// Dictionary for looking up SignatureType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1.2.840.10065.1.12.1.1", AuthorQuoteSSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.1", AuthorQuoteSSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.10", IdentityWitnessSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.10", IdentityWitnessSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.11", ConsentWitnessSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.11", ConsentWitnessSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.12", InterpreterSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.12", InterpreterSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.13", ReviewSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.13", ReviewSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.14", SourceSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.14", SourceSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.15", AddendumSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.15", AddendumSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.16", ModificationSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.16", ModificationSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.17", AdministrativeErrorEditSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.17", AdministrativeErrorEditSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.18", TimestampSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.18", TimestampSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.2", CoauthorQuoteSSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.2", CoauthorQuoteSSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.3", CoParticipantQuoteSSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.3", CoParticipantQuoteSSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.4", TranscriptionistRecorderSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.4", TranscriptionistRecorderSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.5", VerificationSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.5", VerificationSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.6", ValidationSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.6", ValidationSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.7", ConsentSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.7", ConsentSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.8", SignatureWitnessSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.8", SignatureWitnessSignature_astm_signature_type }, 
+      { "1.2.840.10065.1.12.1.9", EventWitnessSignature_astm_signature_type }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.9", EventWitnessSignature_astm_signature_type }, 
+      { "ProofOfapproval", ProofOfApproval_etsi_signature_type }, 
+      { "http://uri.etsi.org/01903/v1.2.2#ProofOfapproval", ProofOfApproval_etsi_signature_type }, 
+      { "ProofOfCreation", ProofOfCreation_etsi_signature_type }, 
+      { "http://uri.etsi.org/01903/v1.2.2#ProofOfCreation", ProofOfCreation_etsi_signature_type }, 
+      { "ProofOfDelivery", ProofOfDelivery_etsi_signature_type }, 
+      { "http://uri.etsi.org/01903/v1.2.2#ProofOfDelivery", ProofOfDelivery_etsi_signature_type }, 
+      { "ProofOfOrigin", ProofOfOrigin_etsi_signature_type }, 
+      { "http://uri.etsi.org/01903/v1.2.2#ProofOfOrigin", ProofOfOrigin_etsi_signature_type }, 
+      { "ProofOfReceipt", ProofOfReceipt_etsi_signature_type }, 
+      { "http://uri.etsi.org/01903/v1.2.2#ProofOfReceipt", ProofOfReceipt_etsi_signature_type }, 
+      { "ProofOfSender", ProofOfSender_etsi_signature_type }, 
+      { "http://uri.etsi.org/01903/v1.2.2#ProofOfSender", ProofOfSender_etsi_signature_type }, 
+    };
   };
 }

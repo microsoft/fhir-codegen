@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComplete = "complete";
 
     /// <summary>
+    /// Literal for code: ExPaymenttypeComplete
+    /// </summary>
+    public const string LiteralExPaymenttypeComplete = "http://hl7.org/fhir/ex-paymenttype#complete";
+
+    /// <summary>
     /// Literal for code: Partial
     /// </summary>
     public const string LiteralPartial = "partial";
+
+    /// <summary>
+    /// Literal for code: ExPaymenttypePartial
+    /// </summary>
+    public const string LiteralExPaymenttypePartial = "http://hl7.org/fhir/ex-paymenttype#partial";
+
+    /// <summary>
+    /// Dictionary for looking up ExPaymenttype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", Complete }, 
+      { "http://hl7.org/fhir/ex-paymenttype#complete", Complete }, 
+      { "partial", Partial }, 
+      { "http://hl7.org/fhir/ex-paymenttype#partial", Partial }, 
+    };
   };
 }

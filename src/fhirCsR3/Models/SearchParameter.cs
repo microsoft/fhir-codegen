@@ -190,6 +190,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// Note that the elements returned by the expression are sometimes complex elements where logic is required to determine quite how to handle them; e.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system. For composite search parameters, the outcome of the expression must a collection of base elements from which the composites are derived.
     /// </summary>
     public string Expression { get; set; }
@@ -358,6 +362,12 @@ namespace fhirCsR3.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -914,6 +924,11 @@ namespace fhirCsR3.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR3.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "expression":
           Expression = reader.GetString();
           break;
@@ -1206,6 +1221,17 @@ namespace fhirCsR3.Models
     public const string SA = "sa";
     public const string EB = "eb";
     public const string AP = "ap";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "eq",
+      "ne",
+      "gt",
+      "lt",
+      "ge",
+      "le",
+      "sa",
+      "eb",
+      "ap",
+    };
   }
   /// <summary>
   /// Code Values for the SearchParameter.modifier field
@@ -1221,6 +1247,18 @@ namespace fhirCsR3.Models
     public const string BELOW = "below";
     public const string ABOVE = "above";
     public const string TYPE = "type";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "missing",
+      "exact",
+      "contains",
+      "not",
+      "text",
+      "in",
+      "not-in",
+      "below",
+      "above",
+      "type",
+    };
   }
   /// <summary>
   /// Code Values for the SearchParameter.status field
@@ -1230,6 +1268,12 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
   /// <summary>
   /// Code Values for the SearchParameter.type field
@@ -1243,6 +1287,16 @@ namespace fhirCsR3.Models
     public const string COMPOSITE = "composite";
     public const string QUANTITY = "quantity";
     public const string URI = "uri";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "number",
+      "date",
+      "string",
+      "token",
+      "reference",
+      "composite",
+      "quantity",
+      "uri",
+    };
   }
   /// <summary>
   /// Code Values for the SearchParameter.xpathUsage field
@@ -1253,5 +1307,12 @@ namespace fhirCsR3.Models
     public const string NEARBY = "nearby";
     public const string DISTANCE = "distance";
     public const string OTHER = "other";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "normal",
+      "phonetic",
+      "nearby",
+      "distance",
+      "other",
+    };
   }
 }

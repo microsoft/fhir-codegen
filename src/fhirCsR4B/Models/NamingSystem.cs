@@ -32,6 +32,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? Preferred { get; set; }
     /// <summary>
+    /// Extension container element for Preferred
+    /// </summary>
+    public Element _Preferred { get; set; }
+    /// <summary>
     /// Different identifier types may be used in different types of communications (OIDs for v3, URIs for FHIR, etc.).  Other includes RUIDs from v3, standard v2 code name strings, etc.
     /// </summary>
     public string Type { get; set; }
@@ -85,6 +89,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("preferred", (bool)Preferred!);
       }
 
+      if (_Preferred != null)
+      {
+        writer.WritePropertyName("_preferred");
+        _Preferred.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Comment))
       {
         writer.WriteString("comment", (string)Comment!);
@@ -130,6 +140,11 @@ namespace fhirCsR4B.Models
 
         case "preferred":
           Preferred = reader.GetBoolean();
+          break;
+
+        case "_preferred":
+          _Preferred = new fhirCsR4B.Models.Element();
+          _Preferred.DeserializeJson(ref reader, options);
           break;
 
         case "type":
@@ -189,6 +204,12 @@ namespace fhirCsR4B.Models
     public const string UUID = "uuid";
     public const string URI = "uri";
     public const string OTHER = "other";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "oid",
+      "uuid",
+      "uri",
+      "other",
+    };
   }
   /// <summary>
   /// A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a "System" used within the Identifier and Coding data types.
@@ -681,6 +702,11 @@ namespace fhirCsR4B.Models
     public const string CODESYSTEM = "codesystem";
     public const string IDENTIFIER = "identifier";
     public const string ROOT = "root";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "codesystem",
+      "identifier",
+      "root",
+    };
   }
   /// <summary>
   /// Code Values for the NamingSystem.status field
@@ -690,5 +716,11 @@ namespace fhirCsR4B.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

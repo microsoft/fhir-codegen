@@ -271,6 +271,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? AllowedBoolean { get; set; }
     /// <summary>
+    /// Extension container element for AllowedBoolean
+    /// </summary>
+    public Element _AllowedBoolean { get; set; }
+    /// <summary>
     /// This element is labeled as a modifier because whether substitution is allow or not, it cannot be ignored.
     /// </summary>
     public CodeableConcept AllowedCodeableConcept { get; set; }
@@ -292,6 +296,12 @@ namespace fhirCsR4.Models
       if (AllowedBoolean != null)
       {
         writer.WriteBoolean("allowedBoolean", (bool)AllowedBoolean!);
+      }
+
+      if (_AllowedBoolean != null)
+      {
+        writer.WritePropertyName("_allowedBoolean");
+        _AllowedBoolean.SerializeJson(writer, options);
       }
 
       if (AllowedCodeableConcept != null)
@@ -320,6 +330,11 @@ namespace fhirCsR4.Models
       {
         case "allowedBoolean":
           AllowedBoolean = reader.GetBoolean();
+          break;
+
+        case "_allowedBoolean":
+          _AllowedBoolean = new fhirCsR4.Models.Element();
+          _AllowedBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "allowedCodeableConcept":
@@ -404,6 +419,10 @@ namespace fhirCsR4.Models
     /// If do not perform is not specified, the request is a positive request e.g. "do perform".
     /// </summary>
     public bool? DoNotPerform { get; set; }
+    /// <summary>
+    /// Extension container element for DoNotPerform
+    /// </summary>
+    public Element _DoNotPerform { get; set; }
     /// <summary>
     /// There are examples where a medication request may include the option of an oral dose or an Intravenous or Intramuscular dose.  For example, "Ondansetron 8mg orally or IV twice a day as needed for nausea" or "Compazine® (prochlorperazine) 5-10mg PO or 25mg PR bid prn nausea or vomiting".  In these cases, two medication requests would be created that could be grouped together.  The decision on which dose and route of administration to use is based on the patient's condition at the time the dose is needed.
     /// </summary>
@@ -502,6 +521,10 @@ namespace fhirCsR4.Models
     /// Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.
     /// </summary>
     public bool? ReportedBoolean { get; set; }
+    /// <summary>
+    /// Extension container element for ReportedBoolean
+    /// </summary>
+    public Element _ReportedBoolean { get; set; }
     /// <summary>
     /// Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.
     /// </summary>
@@ -621,9 +644,21 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("doNotPerform", (bool)DoNotPerform!);
       }
 
+      if (_DoNotPerform != null)
+      {
+        writer.WritePropertyName("_doNotPerform");
+        _DoNotPerform.SerializeJson(writer, options);
+      }
+
       if (ReportedBoolean != null)
       {
         writer.WriteBoolean("reportedBoolean", (bool)ReportedBoolean!);
+      }
+
+      if (_ReportedBoolean != null)
+      {
+        writer.WritePropertyName("_reportedBoolean");
+        _ReportedBoolean.SerializeJson(writer, options);
       }
 
       if (ReportedReference != null)
@@ -1006,6 +1041,11 @@ namespace fhirCsR4.Models
           DoNotPerform = reader.GetBoolean();
           break;
 
+        case "_doNotPerform":
+          _DoNotPerform = new fhirCsR4.Models.Element();
+          _DoNotPerform.DeserializeJson(ref reader, options);
+          break;
+
         case "dosageInstruction":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -1361,6 +1401,11 @@ namespace fhirCsR4.Models
           ReportedBoolean = reader.GetBoolean();
           break;
 
+        case "_reportedBoolean":
+          _ReportedBoolean = new fhirCsR4.Models.Element();
+          _ReportedBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "reportedReference":
           ReportedReference = new fhirCsR4.Models.Reference();
           ReportedReference.DeserializeJson(ref reader, options);
@@ -1465,6 +1510,16 @@ namespace fhirCsR4.Models
     public const string FILLER_ORDER = "filler-order";
     public const string INSTANCE_ORDER = "instance-order";
     public const string OPTION = "option";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposal",
+      "plan",
+      "order",
+      "original-order",
+      "reflex-order",
+      "filler-order",
+      "instance-order",
+      "option",
+    };
   }
   /// <summary>
   /// Code Values for the MedicationRequest.priority field
@@ -1474,6 +1529,12 @@ namespace fhirCsR4.Models
     public const string URGENT = "urgent";
     public const string ASAP = "asap";
     public const string STAT = "stat";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "routine",
+      "urgent",
+      "asap",
+      "stat",
+    };
   }
   /// <summary>
   /// Code Values for the MedicationRequest.status field
@@ -1487,5 +1548,15 @@ namespace fhirCsR4.Models
     public const string STOPPED = "stopped";
     public const string DRAFT = "draft";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "on-hold",
+      "cancelled",
+      "completed",
+      "entered-in-error",
+      "stopped",
+      "draft",
+      "unknown",
+    };
   }
 }

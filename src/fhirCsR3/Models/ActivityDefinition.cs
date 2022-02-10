@@ -119,6 +119,11 @@ namespace fhirCsR3.Models
     public const string PATIENT = "patient";
     public const string PRACTITIONER = "practitioner";
     public const string RELATED_PERSON = "related-person";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "patient",
+      "practitioner",
+      "related-person",
+    };
   }
   /// <summary>
   /// Dynamic values that will be evaluated to produce values for elements of the resulting resource. For example, if the dosage of a medication must be computed based on the patient's weight, a dynamic value would be used to specify an expression that calculated the weight, and the path on the intent resource that would contain the result.
@@ -365,6 +370,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// Typically, this is used for identifiers that can go in an HL7 V3 II (instance identifier) data type, e.g., to identify this activity definition outside of FHIR, where it is not possible to use the logical URI.
     /// </summary>
     public List<Identifier> Identifier { get; set; }
@@ -601,6 +610,12 @@ namespace fhirCsR3.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -1113,6 +1128,11 @@ namespace fhirCsR3.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR3.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "identifier":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -1480,5 +1500,11 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class BenefitTermCodes
   {
     /// <summary>
-    /// 
+    /// Annual
     /// </summary>
     public static readonly Coding Annual = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/benefit-term"
     };
     /// <summary>
-    /// 
+    /// Day
     /// </summary>
     public static readonly Coding Day = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/benefit-term"
     };
     /// <summary>
-    /// 
+    /// Lifetime
     /// </summary>
     public static readonly Coding Lifetime = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAnnual = "annual";
 
     /// <summary>
+    /// Literal for code: BenefitTermAnnual
+    /// </summary>
+    public const string LiteralBenefitTermAnnual = "http://terminology.hl7.org/CodeSystem/benefit-term#annual";
+
+    /// <summary>
     /// Literal for code: Day
     /// </summary>
     public const string LiteralDay = "day";
 
     /// <summary>
+    /// Literal for code: BenefitTermDay
+    /// </summary>
+    public const string LiteralBenefitTermDay = "http://terminology.hl7.org/CodeSystem/benefit-term#day";
+
+    /// <summary>
     /// Literal for code: Lifetime
     /// </summary>
     public const string LiteralLifetime = "lifetime";
+
+    /// <summary>
+    /// Literal for code: BenefitTermLifetime
+    /// </summary>
+    public const string LiteralBenefitTermLifetime = "http://terminology.hl7.org/CodeSystem/benefit-term#lifetime";
+
+    /// <summary>
+    /// Dictionary for looking up BenefitTerm Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "annual", Annual }, 
+      { "http://terminology.hl7.org/CodeSystem/benefit-term#annual", Annual }, 
+      { "day", Day }, 
+      { "http://terminology.hl7.org/CodeSystem/benefit-term#day", Day }, 
+      { "lifetime", Lifetime }, 
+      { "http://terminology.hl7.org/CodeSystem/benefit-term#lifetime", Lifetime }, 
+    };
   };
 }

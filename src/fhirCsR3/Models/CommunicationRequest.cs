@@ -982,5 +982,14 @@ namespace fhirCsR3.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "suspended",
+      "cancelled",
+      "completed",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

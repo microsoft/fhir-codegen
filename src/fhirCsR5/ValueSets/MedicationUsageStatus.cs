@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDraft = "draft";
 
     /// <summary>
+    /// Literal for code: MedicationUsageStatusDraft
+    /// </summary>
+    public const string LiteralMedicationUsageStatusDraft = "http://hl7.org/fhir/CodeSystem/medication-usage-status#draft";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: MedicationUsageStatusEnteredInError
+    /// </summary>
+    public const string LiteralMedicationUsageStatusEnteredInError = "http://hl7.org/fhir/CodeSystem/medication-usage-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Recorded
     /// </summary>
     public const string LiteralRecorded = "recorded";
+
+    /// <summary>
+    /// Literal for code: MedicationUsageStatusRecorded
+    /// </summary>
+    public const string LiteralMedicationUsageStatusRecorded = "http://hl7.org/fhir/CodeSystem/medication-usage-status#recorded";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationUsageStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-usage-status#draft", Draft }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-usage-status#entered-in-error", EnteredInError }, 
+      { "recorded", Recorded }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-usage-status#recorded", Recorded }, 
+    };
   };
 }

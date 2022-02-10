@@ -63,9 +63,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: ReportStatusCodesCompleted
+    /// </summary>
+    public const string LiteralReportStatusCodesCompleted = "http://hl7.org/fhir/report-status-codes#completed";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: ReportStatusCodesEnteredInError
+    /// </summary>
+    public const string LiteralReportStatusCodesEnteredInError = "http://hl7.org/fhir/report-status-codes#entered-in-error";
 
     /// <summary>
     /// Literal for code: InProgress
@@ -73,13 +83,44 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInProgress = "in-progress";
 
     /// <summary>
+    /// Literal for code: ReportStatusCodesInProgress
+    /// </summary>
+    public const string LiteralReportStatusCodesInProgress = "http://hl7.org/fhir/report-status-codes#in-progress";
+
+    /// <summary>
     /// Literal for code: Stopped
     /// </summary>
     public const string LiteralStopped = "stopped";
 
     /// <summary>
+    /// Literal for code: ReportStatusCodesStopped
+    /// </summary>
+    public const string LiteralReportStatusCodesStopped = "http://hl7.org/fhir/report-status-codes#stopped";
+
+    /// <summary>
     /// Literal for code: Waiting
     /// </summary>
     public const string LiteralWaiting = "waiting";
+
+    /// <summary>
+    /// Literal for code: ReportStatusCodesWaiting
+    /// </summary>
+    public const string LiteralReportStatusCodesWaiting = "http://hl7.org/fhir/report-status-codes#waiting";
+
+    /// <summary>
+    /// Dictionary for looking up ReportStatusCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/report-status-codes#completed", Completed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/report-status-codes#entered-in-error", EnteredInError }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/report-status-codes#in-progress", InProgress }, 
+      { "stopped", Stopped }, 
+      { "http://hl7.org/fhir/report-status-codes#stopped", Stopped }, 
+      { "waiting", Waiting }, 
+      { "http://hl7.org/fhir/report-status-codes#waiting", Waiting }, 
+    };
   };
 }

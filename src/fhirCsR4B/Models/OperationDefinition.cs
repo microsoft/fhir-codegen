@@ -133,6 +133,12 @@ namespace fhirCsR4B.Models
     public const string EXTENSIBLE = "extensible";
     public const string PREFERRED = "preferred";
     public const string EXAMPLE = "example";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "required",
+      "extensible",
+      "preferred",
+      "example",
+    };
   }
   /// <summary>
   /// Resolution applies if the referenced parameter exists.
@@ -279,6 +285,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public int Min { get; set; }
     /// <summary>
+    /// Extension container element for Min
+    /// </summary>
+    public Element _Min { get; set; }
+    /// <summary>
     /// This name must be a token (start with a letter in a..z, and only contain letters, numerals, and underscore. Note that for search parameters (type = string, with a search type), the name may be altered by the search modifiers.
     /// </summary>
     public string Name { get; set; }
@@ -360,6 +370,12 @@ namespace fhirCsR4B.Models
       }
 
       writer.WriteNumber("min", Min);
+
+      if (_Min != null)
+      {
+        writer.WritePropertyName("_min");
+        _Min.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Max))
       {
@@ -500,6 +516,11 @@ namespace fhirCsR4B.Models
 
         case "min":
           Min = reader.GetInt32();
+          break;
+
+        case "_min":
+          _Min = new fhirCsR4B.Models.Element();
+          _Min.DeserializeJson(ref reader, options);
           break;
 
         case "name":
@@ -688,6 +709,17 @@ namespace fhirCsR4B.Models
     public const string QUANTITY = "quantity";
     public const string URI = "uri";
     public const string SPECIAL = "special";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "number",
+      "date",
+      "string",
+      "token",
+      "reference",
+      "composite",
+      "quantity",
+      "uri",
+      "special",
+    };
   }
   /// <summary>
   /// Code Values for the OperationDefinition.parameter.use field
@@ -695,6 +727,10 @@ namespace fhirCsR4B.Models
   public static class OperationDefinitionParameterUseCodes {
     public const string VAL_IN = "in";
     public const string VAL_OUT = "out";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "in",
+      "out",
+    };
   }
   /// <summary>
   /// The combinations are suggestions as to which sets of parameters to use together, but the combinations are not intended to be authoritative.
@@ -885,6 +921,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? AffectsState { get; set; }
     /// <summary>
+    /// Extension container element for AffectsState
+    /// </summary>
+    public Element _AffectsState { get; set; }
+    /// <summary>
     /// A constrained profile can make optional parameters required or not used and clarify documentation.
     /// </summary>
     public string Base { get; set; }
@@ -933,6 +973,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// If present the profile shall not conflict with what is specified in the parameters in the operation definition (max/min etc.), though it may provide additional constraints. The constraints expressed in the profile apply whether the operation is invoked by a POST wih parameters or not.
     /// </summary>
     public string InputProfile { get; set; }
@@ -944,6 +988,10 @@ namespace fhirCsR4B.Models
     /// Indicates whether this operation can be invoked on a particular instance of one of the given types.
     /// </summary>
     public bool Instance { get; set; }
+    /// <summary>
+    /// Extension container element for Instance
+    /// </summary>
+    public Element _Instance { get; set; }
     /// <summary>
     /// It may be possible for the operation definition to be used in jurisdictions other than those for which it was originally designed or intended.
     /// </summary>
@@ -1017,6 +1065,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool System { get; set; }
     /// <summary>
+    /// Extension container element for System
+    /// </summary>
+    public Element _System { get; set; }
+    /// <summary>
     /// This name does not need to be machine-processing friendly and may contain punctuation, white-space, etc.
     /// </summary>
     public string Title { get; set; }
@@ -1028,6 +1080,10 @@ namespace fhirCsR4B.Models
     /// Indicates whether this operation or named query can be invoked at the resource type level for any given resource type level (e.g. without needing to choose a specific resource id for the context).
     /// </summary>
     public bool Type { get; set; }
+    /// <summary>
+    /// Extension container element for Type
+    /// </summary>
+    public Element _Type { get; set; }
     /// <summary>
     /// Can be a urn:uuid: or a urn:oid: but real http: addresses are preferred.  Multiple instances may share the same URL if they have a distinct version.
     /// The determination of when to create a new version of a resource (same url, new version) vs. defining a new artifact is up to the author.  Considerations for making this decision are found in [Technical and Business Versions](resource.html#versions). 
@@ -1138,6 +1194,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("experimental", (bool)Experimental!);
       }
 
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Date))
       {
         writer.WriteString("date", (string)Date!);
@@ -1226,6 +1288,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("affectsState", (bool)AffectsState!);
       }
 
+      if (_AffectsState != null)
+      {
+        writer.WritePropertyName("_affectsState");
+        _AffectsState.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Code))
       {
         writer.WriteString("code", (string)Code!);
@@ -1287,9 +1355,27 @@ namespace fhirCsR4B.Models
 
       writer.WriteBoolean("system", System);
 
+      if (_System != null)
+      {
+        writer.WritePropertyName("_system");
+        _System.SerializeJson(writer, options);
+      }
+
       writer.WriteBoolean("type", Type);
 
+      if (_Type != null)
+      {
+        writer.WritePropertyName("_type");
+        _Type.SerializeJson(writer, options);
+      }
+
       writer.WriteBoolean("instance", Instance);
+
+      if (_Instance != null)
+      {
+        writer.WritePropertyName("_instance");
+        _Instance.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(InputProfile))
       {
@@ -1353,6 +1439,11 @@ namespace fhirCsR4B.Models
       {
         case "affectsState":
           AffectsState = reader.GetBoolean();
+          break;
+
+        case "_affectsState":
+          _AffectsState = new fhirCsR4B.Models.Element();
+          _AffectsState.DeserializeJson(ref reader, options);
           break;
 
         case "base":
@@ -1431,6 +1522,11 @@ namespace fhirCsR4B.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR4B.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "inputProfile":
           InputProfile = reader.GetString();
           break;
@@ -1442,6 +1538,11 @@ namespace fhirCsR4B.Models
 
         case "instance":
           Instance = reader.GetBoolean();
+          break;
+
+        case "_instance":
+          _Instance = new fhirCsR4B.Models.Element();
+          _Instance.DeserializeJson(ref reader, options);
           break;
 
         case "jurisdiction":
@@ -1635,6 +1736,11 @@ namespace fhirCsR4B.Models
           System = reader.GetBoolean();
           break;
 
+        case "_system":
+          _System = new fhirCsR4B.Models.Element();
+          _System.DeserializeJson(ref reader, options);
+          break;
+
         case "title":
           Title = reader.GetString();
           break;
@@ -1646,6 +1752,11 @@ namespace fhirCsR4B.Models
 
         case "type":
           Type = reader.GetBoolean();
+          break;
+
+        case "_type":
+          _Type = new fhirCsR4B.Models.Element();
+          _Type.DeserializeJson(ref reader, options);
           break;
 
         case "url":
@@ -1730,6 +1841,10 @@ namespace fhirCsR4B.Models
   public static class OperationDefinitionKindCodes {
     public const string OPERATION = "operation";
     public const string QUERY = "query";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "operation",
+      "query",
+    };
   }
   /// <summary>
   /// Code Values for the OperationDefinition.status field
@@ -1739,5 +1854,11 @@ namespace fhirCsR4B.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

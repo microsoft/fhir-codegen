@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ConsentPolicyCodes
   {
     /// <summary>
-    /// 
+    /// AT ELGA Opt-in Consent
     /// </summary>
     public static readonly Coding ATELGAOptInConsent = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// Common Rule Informed Consent
     /// </summary>
     public static readonly Coding CommonRuleInformedConsent = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// Michigan behavior and mental health consent
     /// </summary>
     public static readonly Coding MichiganBehaviorAndMentalHealthConsent = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// Population origins and ancestry research consent
     /// </summary>
     public static readonly Coding PopulationOriginsAndAncestryResearchConsent = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// HIPAA Authorization
     /// </summary>
     public static readonly Coding HIPAAAuthorization = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// HIPAA Notice of Privacy Practices
     /// </summary>
     public static readonly Coding HIPAANoticeOfPrivacyPractices = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// HIPAA Research Authorization
     /// </summary>
     public static readonly Coding HIPAAResearchAuthorization = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// HIPAA Restrictions
     /// </summary>
     public static readonly Coding HIPAARestrictions = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// HIPAA Self-Pay Restriction
     /// </summary>
     public static readonly Coding HIPAASelfPayRestriction = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// Illinois Consent by Minors to Medical Procedures
     /// </summary>
     public static readonly Coding IllinoisConsentByMinorsToMedicalProcedures = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// Michigan MDHHS-5515 Consent to Share Behavioral Health Information for Care Coordination Purposes
     /// </summary>
     public static readonly Coding MichiganMDHHS5515ConsentToShareBehavioralHealthInformationForCareCoordinationPurposes = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// NCI Cancer Clinical Trial consent
     /// </summary>
     public static readonly Coding NCICancerClinicalTrialConsent = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// NIH Authorization for the Release of Medical Information
     /// </summary>
     public static readonly Coding NIHAuthorizationForTheReleaseOfMedicalInformation = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// NIH Global Rare Disease Patient Registry and Data Repository consent
     /// </summary>
     public static readonly Coding NIHGlobalRareDiseasePatientRegistryAndDataRepositoryConsent = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// HHS NIH HIPAA Research Authorization
     /// </summary>
     public static readonly Coding HHSNIHHIPAAResearchAuthorization = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// NL LSP Permission
     /// </summary>
     public static readonly Coding NLLSPPermission = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// New York State Surgical and Invasive Procedure Protocol
     /// </summary>
     public static readonly Coding NewYorkStateSurgicalAndInvasiveProcedureProtocol = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// Squaxin Indian behavioral health and HIPAA consent
     /// </summary>
     public static readonly Coding SquaxinIndianBehavioralHealthAndHIPAAConsent = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// SSA Authorization to Disclose
     /// </summary>
     public static readonly Coding SSAAuthorizationToDisclose = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// VA Form 10-0484
     /// </summary>
     public static readonly Coding VAForm100484 = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// VA Form 10-0485
     /// </summary>
     public static readonly Coding VAForm100485 = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// VA Form 10-10-10116
     /// </summary>
     public static readonly Coding VAForm101010116 = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// VA Form 10-5345
     /// </summary>
     public static readonly Coding VAForm105345 = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// VA Form 10-5345a
     /// </summary>
     public static readonly Coding VAForm105345a = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// VA Form 10-5345a-MHV
     /// </summary>
     public static readonly Coding VAForm105345aMHV = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentpolicycodes"
     };
     /// <summary>
-    /// 
+    /// VA Form 21-4142
     /// </summary>
     public static readonly Coding VAForm214142 = new Coding
     {
@@ -252,9 +252,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralATELGAOptInConsent = "at-elga";
 
     /// <summary>
+    /// Literal for code: ConsentpolicycodesATELGAOptInConsent
+    /// </summary>
+    public const string LiteralConsentpolicycodesATELGAOptInConsent = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#at-elga";
+
+    /// <summary>
     /// Literal for code: CommonRuleInformedConsent
     /// </summary>
     public const string LiteralCommonRuleInformedConsent = "cric";
+
+    /// <summary>
+    /// Literal for code: ConsentpolicycodesCommonRuleInformedConsent
+    /// </summary>
+    public const string LiteralConsentpolicycodesCommonRuleInformedConsent = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#cric";
 
     /// <summary>
     /// Literal for code: MichiganBehaviorAndMentalHealthConsent
@@ -262,9 +272,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMichiganBehaviorAndMentalHealthConsent = "dch-3927";
 
     /// <summary>
+    /// Literal for code: ConsentpolicycodesMichiganBehaviorAndMentalHealthConsent
+    /// </summary>
+    public const string LiteralConsentpolicycodesMichiganBehaviorAndMentalHealthConsent = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#dch-3927";
+
+    /// <summary>
     /// Literal for code: PopulationOriginsAndAncestryResearchConsent
     /// </summary>
     public const string LiteralPopulationOriginsAndAncestryResearchConsent = "ga4gh";
+
+    /// <summary>
+    /// Literal for code: ConsentpolicycodesPopulationOriginsAndAncestryResearchConsent
+    /// </summary>
+    public const string LiteralConsentpolicycodesPopulationOriginsAndAncestryResearchConsent = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#ga4gh";
 
     /// <summary>
     /// Literal for code: HIPAAAuthorization
@@ -272,9 +292,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHIPAAAuthorization = "hipaa-auth";
 
     /// <summary>
+    /// Literal for code: ConsentpolicycodesHIPAAAuthorization
+    /// </summary>
+    public const string LiteralConsentpolicycodesHIPAAAuthorization = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#hipaa-auth";
+
+    /// <summary>
     /// Literal for code: HIPAANoticeOfPrivacyPractices
     /// </summary>
     public const string LiteralHIPAANoticeOfPrivacyPractices = "hipaa-npp";
+
+    /// <summary>
+    /// Literal for code: ConsentpolicycodesHIPAANoticeOfPrivacyPractices
+    /// </summary>
+    public const string LiteralConsentpolicycodesHIPAANoticeOfPrivacyPractices = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#hipaa-npp";
 
     /// <summary>
     /// Literal for code: HIPAAResearchAuthorization
@@ -282,9 +312,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHIPAAResearchAuthorization = "hipaa-research";
 
     /// <summary>
+    /// Literal for code: ConsentpolicycodesHIPAAResearchAuthorization
+    /// </summary>
+    public const string LiteralConsentpolicycodesHIPAAResearchAuthorization = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#hipaa-research";
+
+    /// <summary>
     /// Literal for code: HIPAARestrictions
     /// </summary>
     public const string LiteralHIPAARestrictions = "hipaa-restrictions";
+
+    /// <summary>
+    /// Literal for code: ConsentpolicycodesHIPAARestrictions
+    /// </summary>
+    public const string LiteralConsentpolicycodesHIPAARestrictions = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#hipaa-restrictions";
 
     /// <summary>
     /// Literal for code: HIPAASelfPayRestriction
@@ -292,9 +332,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHIPAASelfPayRestriction = "hipaa-self-pay";
 
     /// <summary>
+    /// Literal for code: ConsentpolicycodesHIPAASelfPayRestriction
+    /// </summary>
+    public const string LiteralConsentpolicycodesHIPAASelfPayRestriction = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#hipaa-self-pay";
+
+    /// <summary>
     /// Literal for code: IllinoisConsentByMinorsToMedicalProcedures
     /// </summary>
     public const string LiteralIllinoisConsentByMinorsToMedicalProcedures = "illinois-minor-procedure";
+
+    /// <summary>
+    /// Literal for code: ConsentpolicycodesIllinoisConsentByMinorsToMedicalProcedures
+    /// </summary>
+    public const string LiteralConsentpolicycodesIllinoisConsentByMinorsToMedicalProcedures = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#illinois-minor-procedure";
 
     /// <summary>
     /// Literal for code: MichiganMDHHS5515ConsentToShareBehavioralHealthInformationForCareCoordinationPurposes
@@ -302,9 +352,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMichiganMDHHS5515ConsentToShareBehavioralHealthInformationForCareCoordinationPurposes = "mdhhs-5515";
 
     /// <summary>
+    /// Literal for code: ConsentpolicycodesMichiganMDHHS5515ConsentToShareBehavioralHealthInformationForCareCoordinationPurposes
+    /// </summary>
+    public const string LiteralConsentpolicycodesMichiganMDHHS5515ConsentToShareBehavioralHealthInformationForCareCoordinationPurposes = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#mdhhs-5515";
+
+    /// <summary>
     /// Literal for code: NCICancerClinicalTrialConsent
     /// </summary>
     public const string LiteralNCICancerClinicalTrialConsent = "nci";
+
+    /// <summary>
+    /// Literal for code: ConsentpolicycodesNCICancerClinicalTrialConsent
+    /// </summary>
+    public const string LiteralConsentpolicycodesNCICancerClinicalTrialConsent = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#nci";
 
     /// <summary>
     /// Literal for code: NIHAuthorizationForTheReleaseOfMedicalInformation
@@ -312,9 +372,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNIHAuthorizationForTheReleaseOfMedicalInformation = "nih-527";
 
     /// <summary>
+    /// Literal for code: ConsentpolicycodesNIHAuthorizationForTheReleaseOfMedicalInformation
+    /// </summary>
+    public const string LiteralConsentpolicycodesNIHAuthorizationForTheReleaseOfMedicalInformation = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#nih-527";
+
+    /// <summary>
     /// Literal for code: NIHGlobalRareDiseasePatientRegistryAndDataRepositoryConsent
     /// </summary>
     public const string LiteralNIHGlobalRareDiseasePatientRegistryAndDataRepositoryConsent = "nih-grdr";
+
+    /// <summary>
+    /// Literal for code: ConsentpolicycodesNIHGlobalRareDiseasePatientRegistryAndDataRepositoryConsent
+    /// </summary>
+    public const string LiteralConsentpolicycodesNIHGlobalRareDiseasePatientRegistryAndDataRepositoryConsent = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#nih-grdr";
 
     /// <summary>
     /// Literal for code: HHSNIHHIPAAResearchAuthorization
@@ -322,9 +392,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHHSNIHHIPAAResearchAuthorization = "nih-hipaa";
 
     /// <summary>
+    /// Literal for code: ConsentpolicycodesHHSNIHHIPAAResearchAuthorization
+    /// </summary>
+    public const string LiteralConsentpolicycodesHHSNIHHIPAAResearchAuthorization = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#nih-hipaa";
+
+    /// <summary>
     /// Literal for code: NLLSPPermission
     /// </summary>
     public const string LiteralNLLSPPermission = "nl-lsp";
+
+    /// <summary>
+    /// Literal for code: ConsentpolicycodesNLLSPPermission
+    /// </summary>
+    public const string LiteralConsentpolicycodesNLLSPPermission = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#nl-lsp";
 
     /// <summary>
     /// Literal for code: NewYorkStateSurgicalAndInvasiveProcedureProtocol
@@ -332,9 +412,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNewYorkStateSurgicalAndInvasiveProcedureProtocol = "nyssipp";
 
     /// <summary>
+    /// Literal for code: ConsentpolicycodesNewYorkStateSurgicalAndInvasiveProcedureProtocol
+    /// </summary>
+    public const string LiteralConsentpolicycodesNewYorkStateSurgicalAndInvasiveProcedureProtocol = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#nyssipp";
+
+    /// <summary>
     /// Literal for code: SquaxinIndianBehavioralHealthAndHIPAAConsent
     /// </summary>
     public const string LiteralSquaxinIndianBehavioralHealthAndHIPAAConsent = "squaxin";
+
+    /// <summary>
+    /// Literal for code: ConsentpolicycodesSquaxinIndianBehavioralHealthAndHIPAAConsent
+    /// </summary>
+    public const string LiteralConsentpolicycodesSquaxinIndianBehavioralHealthAndHIPAAConsent = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#squaxin";
 
     /// <summary>
     /// Literal for code: SSAAuthorizationToDisclose
@@ -342,9 +432,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSSAAuthorizationToDisclose = "ssa-827";
 
     /// <summary>
+    /// Literal for code: ConsentpolicycodesSSAAuthorizationToDisclose
+    /// </summary>
+    public const string LiteralConsentpolicycodesSSAAuthorizationToDisclose = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#ssa-827";
+
+    /// <summary>
     /// Literal for code: VAForm100484
     /// </summary>
     public const string LiteralVAForm100484 = "va-10-0484";
+
+    /// <summary>
+    /// Literal for code: ConsentpolicycodesVAForm100484
+    /// </summary>
+    public const string LiteralConsentpolicycodesVAForm100484 = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#va-10-0484";
 
     /// <summary>
     /// Literal for code: VAForm100485
@@ -352,9 +452,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAForm100485 = "va-10-0485";
 
     /// <summary>
+    /// Literal for code: ConsentpolicycodesVAForm100485
+    /// </summary>
+    public const string LiteralConsentpolicycodesVAForm100485 = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#va-10-0485";
+
+    /// <summary>
     /// Literal for code: VAForm101010116
     /// </summary>
     public const string LiteralVAForm101010116 = "va-10-10116";
+
+    /// <summary>
+    /// Literal for code: ConsentpolicycodesVAForm101010116
+    /// </summary>
+    public const string LiteralConsentpolicycodesVAForm101010116 = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#va-10-10116";
 
     /// <summary>
     /// Literal for code: VAForm105345
@@ -362,9 +472,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAForm105345 = "va-10-5345";
 
     /// <summary>
+    /// Literal for code: ConsentpolicycodesVAForm105345
+    /// </summary>
+    public const string LiteralConsentpolicycodesVAForm105345 = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#va-10-5345";
+
+    /// <summary>
     /// Literal for code: VAForm105345a
     /// </summary>
     public const string LiteralVAForm105345a = "va-10-5345a";
+
+    /// <summary>
+    /// Literal for code: ConsentpolicycodesVAForm105345a
+    /// </summary>
+    public const string LiteralConsentpolicycodesVAForm105345a = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#va-10-5345a";
 
     /// <summary>
     /// Literal for code: VAForm105345aMHV
@@ -372,8 +492,76 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAForm105345aMHV = "va-10-5345a-mhv";
 
     /// <summary>
+    /// Literal for code: ConsentpolicycodesVAForm105345aMHV
+    /// </summary>
+    public const string LiteralConsentpolicycodesVAForm105345aMHV = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#va-10-5345a-mhv";
+
+    /// <summary>
     /// Literal for code: VAForm214142
     /// </summary>
     public const string LiteralVAForm214142 = "va-21-4142";
+
+    /// <summary>
+    /// Literal for code: ConsentpolicycodesVAForm214142
+    /// </summary>
+    public const string LiteralConsentpolicycodesVAForm214142 = "http://terminology.hl7.org/CodeSystem/consentpolicycodes#va-21-4142";
+
+    /// <summary>
+    /// Dictionary for looking up ConsentPolicy Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "at-elga", ATELGAOptInConsent }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#at-elga", ATELGAOptInConsent }, 
+      { "cric", CommonRuleInformedConsent }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#cric", CommonRuleInformedConsent }, 
+      { "dch-3927", MichiganBehaviorAndMentalHealthConsent }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#dch-3927", MichiganBehaviorAndMentalHealthConsent }, 
+      { "ga4gh", PopulationOriginsAndAncestryResearchConsent }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#ga4gh", PopulationOriginsAndAncestryResearchConsent }, 
+      { "hipaa-auth", HIPAAAuthorization }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#hipaa-auth", HIPAAAuthorization }, 
+      { "hipaa-npp", HIPAANoticeOfPrivacyPractices }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#hipaa-npp", HIPAANoticeOfPrivacyPractices }, 
+      { "hipaa-research", HIPAAResearchAuthorization }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#hipaa-research", HIPAAResearchAuthorization }, 
+      { "hipaa-restrictions", HIPAARestrictions }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#hipaa-restrictions", HIPAARestrictions }, 
+      { "hipaa-self-pay", HIPAASelfPayRestriction }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#hipaa-self-pay", HIPAASelfPayRestriction }, 
+      { "illinois-minor-procedure", IllinoisConsentByMinorsToMedicalProcedures }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#illinois-minor-procedure", IllinoisConsentByMinorsToMedicalProcedures }, 
+      { "mdhhs-5515", MichiganMDHHS5515ConsentToShareBehavioralHealthInformationForCareCoordinationPurposes }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#mdhhs-5515", MichiganMDHHS5515ConsentToShareBehavioralHealthInformationForCareCoordinationPurposes }, 
+      { "nci", NCICancerClinicalTrialConsent }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#nci", NCICancerClinicalTrialConsent }, 
+      { "nih-527", NIHAuthorizationForTheReleaseOfMedicalInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#nih-527", NIHAuthorizationForTheReleaseOfMedicalInformation }, 
+      { "nih-grdr", NIHGlobalRareDiseasePatientRegistryAndDataRepositoryConsent }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#nih-grdr", NIHGlobalRareDiseasePatientRegistryAndDataRepositoryConsent }, 
+      { "nih-hipaa", HHSNIHHIPAAResearchAuthorization }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#nih-hipaa", HHSNIHHIPAAResearchAuthorization }, 
+      { "nl-lsp", NLLSPPermission }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#nl-lsp", NLLSPPermission }, 
+      { "nyssipp", NewYorkStateSurgicalAndInvasiveProcedureProtocol }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#nyssipp", NewYorkStateSurgicalAndInvasiveProcedureProtocol }, 
+      { "squaxin", SquaxinIndianBehavioralHealthAndHIPAAConsent }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#squaxin", SquaxinIndianBehavioralHealthAndHIPAAConsent }, 
+      { "ssa-827", SSAAuthorizationToDisclose }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#ssa-827", SSAAuthorizationToDisclose }, 
+      { "va-10-0484", VAForm100484 }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#va-10-0484", VAForm100484 }, 
+      { "va-10-0485", VAForm100485 }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#va-10-0485", VAForm100485 }, 
+      { "va-10-10116", VAForm101010116 }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#va-10-10116", VAForm101010116 }, 
+      { "va-10-5345", VAForm105345 }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#va-10-5345", VAForm105345 }, 
+      { "va-10-5345a", VAForm105345a }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#va-10-5345a", VAForm105345a }, 
+      { "va-10-5345a-mhv", VAForm105345aMHV }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#va-10-5345a-mhv", VAForm105345aMHV }, 
+      { "va-21-4142", VAForm214142 }, 
+      { "http://terminology.hl7.org/CodeSystem/consentpolicycodes#va-21-4142", VAForm214142 }, 
+    };
   };
 }

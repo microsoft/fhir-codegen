@@ -25,5 +25,18 @@ namespace fhirCsR4.ValueSets
     /// Literal for code: Custodian
     /// </summary>
     public const string LiteralCustodian = "custodian";
+
+    /// <summary>
+    /// Literal for code: ContractAssetcontextCustodian
+    /// </summary>
+    public const string LiteralContractAssetcontextCustodian = "http://hl7.org/fhir/contract-asset-context#custodian";
+
+    /// <summary>
+    /// Dictionary for looking up ContractAssetcontext Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "custodian", Custodian }, 
+      { "http://hl7.org/fhir/contract-asset-context#custodian", Custodian }, 
+    };
   };
 }

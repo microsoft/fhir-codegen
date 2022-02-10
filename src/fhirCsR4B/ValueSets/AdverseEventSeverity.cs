@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class AdverseEventSeverityCodes
   {
     /// <summary>
-    /// 
+    /// Mild
     /// </summary>
     public static readonly Coding Mild = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/adverse-event-severity"
     };
     /// <summary>
-    /// 
+    /// Moderate
     /// </summary>
     public static readonly Coding Moderate = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/adverse-event-severity"
     };
     /// <summary>
-    /// 
+    /// Severe
     /// </summary>
     public static readonly Coding Severe = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMild = "mild";
 
     /// <summary>
+    /// Literal for code: AdverseEventSeverityMild
+    /// </summary>
+    public const string LiteralAdverseEventSeverityMild = "http://terminology.hl7.org/CodeSystem/adverse-event-severity#mild";
+
+    /// <summary>
     /// Literal for code: Moderate
     /// </summary>
     public const string LiteralModerate = "moderate";
 
     /// <summary>
+    /// Literal for code: AdverseEventSeverityModerate
+    /// </summary>
+    public const string LiteralAdverseEventSeverityModerate = "http://terminology.hl7.org/CodeSystem/adverse-event-severity#moderate";
+
+    /// <summary>
     /// Literal for code: Severe
     /// </summary>
     public const string LiteralSevere = "severe";
+
+    /// <summary>
+    /// Literal for code: AdverseEventSeveritySevere
+    /// </summary>
+    public const string LiteralAdverseEventSeveritySevere = "http://terminology.hl7.org/CodeSystem/adverse-event-severity#severe";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventSeverity Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "mild", Mild }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-severity#mild", Mild }, 
+      { "moderate", Moderate }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-severity#moderate", Moderate }, 
+      { "severe", Severe }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-severity#severe", Severe }, 
+    };
   };
 }

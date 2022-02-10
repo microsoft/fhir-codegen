@@ -56,6 +56,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? Exclude { get; set; }
     /// <summary>
+    /// Extension container element for Exclude
+    /// </summary>
+    public Element _Exclude { get; set; }
+    /// <summary>
     /// Indicates how elements are aggregated within the study effective period.
     /// </summary>
     public string GroupMeasure { get; set; }
@@ -172,6 +176,12 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("exclude", (bool)Exclude!);
       }
 
+      if (_Exclude != null)
+      {
+        writer.WritePropertyName("_exclude");
+        _Exclude.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(ParticipantEffectiveDateTime))
       {
         writer.WriteString("participantEffectiveDateTime", (string)ParticipantEffectiveDateTime!);
@@ -275,6 +285,11 @@ namespace fhirCsR4.Models
 
         case "exclude":
           Exclude = reader.GetBoolean();
+          break;
+
+        case "_exclude":
+          _Exclude = new fhirCsR4.Models.Element();
+          _Exclude.DeserializeJson(ref reader, options);
           break;
 
         case "groupMeasure":
@@ -383,6 +398,14 @@ namespace fhirCsR4.Models
     public const string MEAN_OF_MEDIAN = "mean-of-median";
     public const string MEDIAN_OF_MEAN = "median-of-mean";
     public const string MEDIAN_OF_MEDIAN = "median-of-median";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "mean",
+      "median",
+      "mean-of-mean",
+      "mean-of-median",
+      "median-of-mean",
+      "median-of-median",
+    };
   }
   /// <summary>
   /// The EvidenceVariable resource describes a "PICO" element that knowledge (evidence, assertion, recommendation) is about.
@@ -1398,6 +1421,12 @@ namespace fhirCsR4.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
   /// <summary>
   /// Code Values for the EvidenceVariable.type field
@@ -1406,5 +1435,10 @@ namespace fhirCsR4.Models
     public const string DICHOTOMOUS = "dichotomous";
     public const string CONTINUOUS = "continuous";
     public const string DESCRIPTIVE = "descriptive";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "dichotomous",
+      "continuous",
+      "descriptive",
+    };
   }
 }

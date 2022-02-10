@@ -99,9 +99,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCancelled = "cancelled";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseStatusCancelled
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusCancelled = "http://terminology.hl7.org/CodeSystem/medicationdispense-status#cancelled";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: MedicationdispenseStatusCompleted
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusCompleted = "http://terminology.hl7.org/CodeSystem/medicationdispense-status#completed";
 
     /// <summary>
     /// Literal for code: Declined
@@ -109,9 +119,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeclined = "declined";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseStatusDeclined
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusDeclined = "http://terminology.hl7.org/CodeSystem/medicationdispense-status#declined";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: MedicationdispenseStatusEnteredInError
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusEnteredInError = "http://terminology.hl7.org/CodeSystem/medicationdispense-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: InProgress
@@ -119,9 +139,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInProgress = "in-progress";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseStatusInProgress
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusInProgress = "http://terminology.hl7.org/CodeSystem/medicationdispense-status#in-progress";
+
+    /// <summary>
     /// Literal for code: OnHold
     /// </summary>
     public const string LiteralOnHold = "on-hold";
+
+    /// <summary>
+    /// Literal for code: MedicationdispenseStatusOnHold
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusOnHold = "http://terminology.hl7.org/CodeSystem/medicationdispense-status#on-hold";
 
     /// <summary>
     /// Literal for code: Preparation
@@ -129,13 +159,52 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPreparation = "preparation";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseStatusPreparation
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusPreparation = "http://terminology.hl7.org/CodeSystem/medicationdispense-status#preparation";
+
+    /// <summary>
     /// Literal for code: Stopped
     /// </summary>
     public const string LiteralStopped = "stopped";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseStatusStopped
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusStopped = "http://terminology.hl7.org/CodeSystem/medicationdispense-status#stopped";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: MedicationdispenseStatusUnknown
+    /// </summary>
+    public const string LiteralMedicationdispenseStatusUnknown = "http://terminology.hl7.org/CodeSystem/medicationdispense-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationdispenseStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "cancelled", Cancelled }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationdispense-status#cancelled", Cancelled }, 
+      { "completed", Completed }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationdispense-status#completed", Completed }, 
+      { "declined", Declined }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationdispense-status#declined", Declined }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationdispense-status#entered-in-error", EnteredInError }, 
+      { "in-progress", InProgress }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationdispense-status#in-progress", InProgress }, 
+      { "on-hold", OnHold }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationdispense-status#on-hold", OnHold }, 
+      { "preparation", Preparation }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationdispense-status#preparation", Preparation }, 
+      { "stopped", Stopped }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationdispense-status#stopped", Stopped }, 
+      { "unknown", Unknown }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationdispense-status#unknown", Unknown }, 
+    };
   };
 }

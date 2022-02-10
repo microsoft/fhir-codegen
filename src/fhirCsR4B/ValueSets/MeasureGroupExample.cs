@@ -36,8 +36,28 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrimaryRate = "primary-rate";
 
     /// <summary>
+    /// Literal for code: MeasureGroupExamplePrimaryRate
+    /// </summary>
+    public const string LiteralMeasureGroupExamplePrimaryRate = "http://terminology.hl7.org/CodeSystem/measure-group-example#primary-rate";
+
+    /// <summary>
     /// Literal for code: SecondaryRate
     /// </summary>
     public const string LiteralSecondaryRate = "secondary-rate";
+
+    /// <summary>
+    /// Literal for code: MeasureGroupExampleSecondaryRate
+    /// </summary>
+    public const string LiteralMeasureGroupExampleSecondaryRate = "http://terminology.hl7.org/CodeSystem/measure-group-example#secondary-rate";
+
+    /// <summary>
+    /// Dictionary for looking up MeasureGroupExample Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "primary-rate", PrimaryRate }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-group-example#primary-rate", PrimaryRate }, 
+      { "secondary-rate", SecondaryRate }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-group-example#secondary-rate", SecondaryRate }, 
+    };
   };
 }

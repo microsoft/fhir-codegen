@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHumanUse = "Human";
 
     /// <summary>
+    /// Literal for code: MedicinalProductDomainHumanUse
+    /// </summary>
+    public const string LiteralMedicinalProductDomainHumanUse = "http://hl7.org/fhir/medicinal-product-domain#Human";
+
+    /// <summary>
     /// Literal for code: HumanAndVeterinaryUse
     /// </summary>
     public const string LiteralHumanAndVeterinaryUse = "HumanAndVeterinary";
 
     /// <summary>
+    /// Literal for code: MedicinalProductDomainHumanAndVeterinaryUse
+    /// </summary>
+    public const string LiteralMedicinalProductDomainHumanAndVeterinaryUse = "http://hl7.org/fhir/medicinal-product-domain#HumanAndVeterinary";
+
+    /// <summary>
     /// Literal for code: VeterinaryUse
     /// </summary>
     public const string LiteralVeterinaryUse = "Veterinary";
+
+    /// <summary>
+    /// Literal for code: MedicinalProductDomainVeterinaryUse
+    /// </summary>
+    public const string LiteralMedicinalProductDomainVeterinaryUse = "http://hl7.org/fhir/medicinal-product-domain#Veterinary";
+
+    /// <summary>
+    /// Dictionary for looking up MedicinalProductDomain Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "Human", HumanUse }, 
+      { "http://hl7.org/fhir/medicinal-product-domain#Human", HumanUse }, 
+      { "HumanAndVeterinary", HumanAndVeterinaryUse }, 
+      { "http://hl7.org/fhir/medicinal-product-domain#HumanAndVeterinary", HumanAndVeterinaryUse }, 
+      { "Veterinary", VeterinaryUse }, 
+      { "http://hl7.org/fhir/medicinal-product-domain#Veterinary", VeterinaryUse }, 
+    };
   };
 }

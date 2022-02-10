@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class SurfaceCodes
   {
     /// <summary>
-    /// 
+    /// Buccal
     /// </summary>
     public static readonly Coding Buccal = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/FDI-surface"
     };
     /// <summary>
-    /// 
+    /// Distal
     /// </summary>
     public static readonly Coding Distal = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/FDI-surface"
     };
     /// <summary>
-    /// 
+    /// Distoincisal
     /// </summary>
     public static readonly Coding Distoincisal = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/FDI-surface"
     };
     /// <summary>
-    /// 
+    /// Distoclusal
     /// </summary>
     public static readonly Coding Distoclusal = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/FDI-surface"
     };
     /// <summary>
-    /// 
+    /// Incisal
     /// </summary>
     public static readonly Coding Incisal = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/FDI-surface"
     };
     /// <summary>
-    /// 
+    /// Lingual
     /// </summary>
     public static readonly Coding Lingual = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/FDI-surface"
     };
     /// <summary>
-    /// 
+    /// Mesial
     /// </summary>
     public static readonly Coding Mesial = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/FDI-surface"
     };
     /// <summary>
-    /// 
+    /// Mesioclusal
     /// </summary>
     public static readonly Coding Mesioclusal = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/FDI-surface"
     };
     /// <summary>
-    /// 
+    /// Mesioclusodistal
     /// </summary>
     public static readonly Coding Mesioclusodistal = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/FDI-surface"
     };
     /// <summary>
-    /// 
+    /// Occlusal
     /// </summary>
     public static readonly Coding Occlusal = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/FDI-surface"
     };
     /// <summary>
-    /// 
+    /// Ventral
     /// </summary>
     public static readonly Coding Ventral = new Coding
     {
@@ -117,9 +117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBuccal = "B";
 
     /// <summary>
+    /// Literal for code: FDISurfaceBuccal
+    /// </summary>
+    public const string LiteralFDISurfaceBuccal = "http://terminology.hl7.org/CodeSystem/FDI-surface#B";
+
+    /// <summary>
     /// Literal for code: Distal
     /// </summary>
     public const string LiteralDistal = "D";
+
+    /// <summary>
+    /// Literal for code: FDISurfaceDistal
+    /// </summary>
+    public const string LiteralFDISurfaceDistal = "http://terminology.hl7.org/CodeSystem/FDI-surface#D";
 
     /// <summary>
     /// Literal for code: Distoincisal
@@ -127,9 +137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDistoincisal = "DI";
 
     /// <summary>
+    /// Literal for code: FDISurfaceDistoincisal
+    /// </summary>
+    public const string LiteralFDISurfaceDistoincisal = "http://terminology.hl7.org/CodeSystem/FDI-surface#DI";
+
+    /// <summary>
     /// Literal for code: Distoclusal
     /// </summary>
     public const string LiteralDistoclusal = "DO";
+
+    /// <summary>
+    /// Literal for code: FDISurfaceDistoclusal
+    /// </summary>
+    public const string LiteralFDISurfaceDistoclusal = "http://terminology.hl7.org/CodeSystem/FDI-surface#DO";
 
     /// <summary>
     /// Literal for code: Incisal
@@ -137,9 +157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncisal = "I";
 
     /// <summary>
+    /// Literal for code: FDISurfaceIncisal
+    /// </summary>
+    public const string LiteralFDISurfaceIncisal = "http://terminology.hl7.org/CodeSystem/FDI-surface#I";
+
+    /// <summary>
     /// Literal for code: Lingual
     /// </summary>
     public const string LiteralLingual = "L";
+
+    /// <summary>
+    /// Literal for code: FDISurfaceLingual
+    /// </summary>
+    public const string LiteralFDISurfaceLingual = "http://terminology.hl7.org/CodeSystem/FDI-surface#L";
 
     /// <summary>
     /// Literal for code: Mesial
@@ -147,9 +177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMesial = "M";
 
     /// <summary>
+    /// Literal for code: FDISurfaceMesial
+    /// </summary>
+    public const string LiteralFDISurfaceMesial = "http://terminology.hl7.org/CodeSystem/FDI-surface#M";
+
+    /// <summary>
     /// Literal for code: Mesioclusal
     /// </summary>
     public const string LiteralMesioclusal = "MO";
+
+    /// <summary>
+    /// Literal for code: FDISurfaceMesioclusal
+    /// </summary>
+    public const string LiteralFDISurfaceMesioclusal = "http://terminology.hl7.org/CodeSystem/FDI-surface#MO";
 
     /// <summary>
     /// Literal for code: Mesioclusodistal
@@ -157,13 +197,56 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMesioclusodistal = "MOD";
 
     /// <summary>
+    /// Literal for code: FDISurfaceMesioclusodistal
+    /// </summary>
+    public const string LiteralFDISurfaceMesioclusodistal = "http://terminology.hl7.org/CodeSystem/FDI-surface#MOD";
+
+    /// <summary>
     /// Literal for code: Occlusal
     /// </summary>
     public const string LiteralOcclusal = "O";
 
     /// <summary>
+    /// Literal for code: FDISurfaceOcclusal
+    /// </summary>
+    public const string LiteralFDISurfaceOcclusal = "http://terminology.hl7.org/CodeSystem/FDI-surface#O";
+
+    /// <summary>
     /// Literal for code: Ventral
     /// </summary>
     public const string LiteralVentral = "V";
+
+    /// <summary>
+    /// Literal for code: FDISurfaceVentral
+    /// </summary>
+    public const string LiteralFDISurfaceVentral = "http://terminology.hl7.org/CodeSystem/FDI-surface#V";
+
+    /// <summary>
+    /// Dictionary for looking up Surface Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "B", Buccal }, 
+      { "http://terminology.hl7.org/CodeSystem/FDI-surface#B", Buccal }, 
+      { "D", Distal }, 
+      { "http://terminology.hl7.org/CodeSystem/FDI-surface#D", Distal }, 
+      { "DI", Distoincisal }, 
+      { "http://terminology.hl7.org/CodeSystem/FDI-surface#DI", Distoincisal }, 
+      { "DO", Distoclusal }, 
+      { "http://terminology.hl7.org/CodeSystem/FDI-surface#DO", Distoclusal }, 
+      { "I", Incisal }, 
+      { "http://terminology.hl7.org/CodeSystem/FDI-surface#I", Incisal }, 
+      { "L", Lingual }, 
+      { "http://terminology.hl7.org/CodeSystem/FDI-surface#L", Lingual }, 
+      { "M", Mesial }, 
+      { "http://terminology.hl7.org/CodeSystem/FDI-surface#M", Mesial }, 
+      { "MO", Mesioclusal }, 
+      { "http://terminology.hl7.org/CodeSystem/FDI-surface#MO", Mesioclusal }, 
+      { "MOD", Mesioclusodistal }, 
+      { "http://terminology.hl7.org/CodeSystem/FDI-surface#MOD", Mesioclusodistal }, 
+      { "O", Occlusal }, 
+      { "http://terminology.hl7.org/CodeSystem/FDI-surface#O", Occlusal }, 
+      { "V", Ventral }, 
+      { "http://terminology.hl7.org/CodeSystem/FDI-surface#V", Ventral }, 
+    };
   };
 }

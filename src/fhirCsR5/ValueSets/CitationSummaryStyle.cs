@@ -144,9 +144,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAmericanChemicalSociety = "acs";
 
     /// <summary>
+    /// Literal for code: CitationSummaryStyleAmericanChemicalSociety
+    /// </summary>
+    public const string LiteralCitationSummaryStyleAmericanChemicalSociety = "http://terminology.hl7.org/CodeSystem/citation-summary-style#acs";
+
+    /// <summary>
     /// Literal for code: AmericanMedicalAssociation11thEdition
     /// </summary>
     public const string LiteralAmericanMedicalAssociation11thEdition = "ama11";
+
+    /// <summary>
+    /// Literal for code: CitationSummaryStyleAmericanMedicalAssociation11thEdition
+    /// </summary>
+    public const string LiteralCitationSummaryStyleAmericanMedicalAssociation11thEdition = "http://terminology.hl7.org/CodeSystem/citation-summary-style#ama11";
 
     /// <summary>
     /// Literal for code: AmericanPsychologicalAssociation6thEdition
@@ -154,9 +164,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAmericanPsychologicalAssociation6thEdition = "apa6";
 
     /// <summary>
+    /// Literal for code: CitationSummaryStyleAmericanPsychologicalAssociation6thEdition
+    /// </summary>
+    public const string LiteralCitationSummaryStyleAmericanPsychologicalAssociation6thEdition = "http://terminology.hl7.org/CodeSystem/citation-summary-style#apa6";
+
+    /// <summary>
     /// Literal for code: AmericanPsychologicalAssociation7thEdition
     /// </summary>
     public const string LiteralAmericanPsychologicalAssociation7thEdition = "apa7";
+
+    /// <summary>
+    /// Literal for code: CitationSummaryStyleAmericanPsychologicalAssociation7thEdition
+    /// </summary>
+    public const string LiteralCitationSummaryStyleAmericanPsychologicalAssociation7thEdition = "http://terminology.hl7.org/CodeSystem/citation-summary-style#apa7";
 
     /// <summary>
     /// Literal for code: AmericanSociologicalAssociation6thEdition
@@ -164,9 +184,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAmericanSociologicalAssociation6thEdition = "asa6";
 
     /// <summary>
+    /// Literal for code: CitationSummaryStyleAmericanSociologicalAssociation6thEdition
+    /// </summary>
+    public const string LiteralCitationSummaryStyleAmericanSociologicalAssociation6thEdition = "http://terminology.hl7.org/CodeSystem/citation-summary-style#asa6";
+
+    /// <summary>
     /// Literal for code: ChicagoStyleVersion17AuthorDate
     /// </summary>
     public const string LiteralChicagoStyleVersion17AuthorDate = "chicago-a-17";
+
+    /// <summary>
+    /// Literal for code: CitationSummaryStyleChicagoStyleVersion17AuthorDate
+    /// </summary>
+    public const string LiteralCitationSummaryStyleChicagoStyleVersion17AuthorDate = "http://terminology.hl7.org/CodeSystem/citation-summary-style#chicago-a-17";
 
     /// <summary>
     /// Literal for code: ChicagoStyleVersion17FullNote
@@ -174,9 +204,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChicagoStyleVersion17FullNote = "chicago-b-17";
 
     /// <summary>
+    /// Literal for code: CitationSummaryStyleChicagoStyleVersion17FullNote
+    /// </summary>
+    public const string LiteralCitationSummaryStyleChicagoStyleVersion17FullNote = "http://terminology.hl7.org/CodeSystem/citation-summary-style#chicago-b-17";
+
+    /// <summary>
     /// Literal for code: CochraneStyle
     /// </summary>
     public const string LiteralCochraneStyle = "cochrane";
+
+    /// <summary>
+    /// Literal for code: CitationSummaryStyleCochraneStyle
+    /// </summary>
+    public const string LiteralCitationSummaryStyleCochraneStyle = "http://terminology.hl7.org/CodeSystem/citation-summary-style#cochrane";
 
     /// <summary>
     /// Literal for code: ComputablePublishing
@@ -184,9 +224,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralComputablePublishing = "comppub";
 
     /// <summary>
+    /// Literal for code: CitationSummaryStyleComputablePublishing
+    /// </summary>
+    public const string LiteralCitationSummaryStyleComputablePublishing = "http://terminology.hl7.org/CodeSystem/citation-summary-style#comppub";
+
+    /// <summary>
     /// Literal for code: ElsevierHarvardStyle
     /// </summary>
     public const string LiteralElsevierHarvardStyle = "elsevier-harvard";
+
+    /// <summary>
+    /// Literal for code: CitationSummaryStyleElsevierHarvardStyle
+    /// </summary>
+    public const string LiteralCitationSummaryStyleElsevierHarvardStyle = "http://terminology.hl7.org/CodeSystem/citation-summary-style#elsevier-harvard";
 
     /// <summary>
     /// Literal for code: InstituteOfElectricalAndElectronicsEngineers
@@ -194,9 +244,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInstituteOfElectricalAndElectronicsEngineers = "ieee";
 
     /// <summary>
+    /// Literal for code: CitationSummaryStyleInstituteOfElectricalAndElectronicsEngineers
+    /// </summary>
+    public const string LiteralCitationSummaryStyleInstituteOfElectricalAndElectronicsEngineers = "http://terminology.hl7.org/CodeSystem/citation-summary-style#ieee";
+
+    /// <summary>
     /// Literal for code: ModernLanguageAssociation8thEdition
     /// </summary>
     public const string LiteralModernLanguageAssociation8thEdition = "mla8";
+
+    /// <summary>
+    /// Literal for code: CitationSummaryStyleModernLanguageAssociation8thEdition
+    /// </summary>
+    public const string LiteralCitationSummaryStyleModernLanguageAssociation8thEdition = "http://terminology.hl7.org/CodeSystem/citation-summary-style#mla8";
 
     /// <summary>
     /// Literal for code: NatureReferencingStyle
@@ -204,8 +264,52 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNatureReferencingStyle = "nature";
 
     /// <summary>
+    /// Literal for code: CitationSummaryStyleNatureReferencingStyle
+    /// </summary>
+    public const string LiteralCitationSummaryStyleNatureReferencingStyle = "http://terminology.hl7.org/CodeSystem/citation-summary-style#nature";
+
+    /// <summary>
     /// Literal for code: VancouverStyle
     /// </summary>
     public const string LiteralVancouverStyle = "vancouver";
+
+    /// <summary>
+    /// Literal for code: CitationSummaryStyleVancouverStyle
+    /// </summary>
+    public const string LiteralCitationSummaryStyleVancouverStyle = "http://terminology.hl7.org/CodeSystem/citation-summary-style#vancouver";
+
+    /// <summary>
+    /// Dictionary for looking up CitationSummaryStyle Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "acs", AmericanChemicalSociety }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-summary-style#acs", AmericanChemicalSociety }, 
+      { "ama11", AmericanMedicalAssociation11thEdition }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-summary-style#ama11", AmericanMedicalAssociation11thEdition }, 
+      { "apa6", AmericanPsychologicalAssociation6thEdition }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-summary-style#apa6", AmericanPsychologicalAssociation6thEdition }, 
+      { "apa7", AmericanPsychologicalAssociation7thEdition }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-summary-style#apa7", AmericanPsychologicalAssociation7thEdition }, 
+      { "asa6", AmericanSociologicalAssociation6thEdition }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-summary-style#asa6", AmericanSociologicalAssociation6thEdition }, 
+      { "chicago-a-17", ChicagoStyleVersion17AuthorDate }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-summary-style#chicago-a-17", ChicagoStyleVersion17AuthorDate }, 
+      { "chicago-b-17", ChicagoStyleVersion17FullNote }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-summary-style#chicago-b-17", ChicagoStyleVersion17FullNote }, 
+      { "cochrane", CochraneStyle }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-summary-style#cochrane", CochraneStyle }, 
+      { "comppub", ComputablePublishing }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-summary-style#comppub", ComputablePublishing }, 
+      { "elsevier-harvard", ElsevierHarvardStyle }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-summary-style#elsevier-harvard", ElsevierHarvardStyle }, 
+      { "ieee", InstituteOfElectricalAndElectronicsEngineers }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-summary-style#ieee", InstituteOfElectricalAndElectronicsEngineers }, 
+      { "mla8", ModernLanguageAssociation8thEdition }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-summary-style#mla8", ModernLanguageAssociation8thEdition }, 
+      { "nature", NatureReferencingStyle }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-summary-style#nature", NatureReferencingStyle }, 
+      { "vancouver", VancouverStyle }, 
+      { "http://terminology.hl7.org/CodeSystem/citation-summary-style#vancouver", VancouverStyle }, 
+    };
   };
 }

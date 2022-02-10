@@ -1158,5 +1158,11 @@ namespace fhirCsR5.Models
     public const string UNAVAILABLE = "unavailable";
     public const string UNSATISFACTORY = "unsatisfactory";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "available",
+      "unavailable",
+      "unsatisfactory",
+      "entered-in-error",
+    };
   }
 }

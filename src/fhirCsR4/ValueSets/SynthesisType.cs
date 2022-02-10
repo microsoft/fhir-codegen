@@ -72,9 +72,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClassifcationOfResults = "classification";
 
     /// <summary>
+    /// Literal for code: SynthesisTypeClassifcationOfResults
+    /// </summary>
+    public const string LiteralSynthesisTypeClassifcationOfResults = "http://terminology.hl7.org/CodeSystem/synthesis-type#classification";
+
+    /// <summary>
     /// Literal for code: CombinedDirectPlusIndirectNetworkMetaAnalysis
     /// </summary>
     public const string LiteralCombinedDirectPlusIndirectNetworkMetaAnalysis = "combined-NMA";
+
+    /// <summary>
+    /// Literal for code: SynthesisTypeCombinedDirectPlusIndirectNetworkMetaAnalysis
+    /// </summary>
+    public const string LiteralSynthesisTypeCombinedDirectPlusIndirectNetworkMetaAnalysis = "http://terminology.hl7.org/CodeSystem/synthesis-type#combined-NMA";
 
     /// <summary>
     /// Literal for code: IndirectNetworkMetaAnalysis
@@ -82,9 +92,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIndirectNetworkMetaAnalysis = "indirect-NMA";
 
     /// <summary>
+    /// Literal for code: SynthesisTypeIndirectNetworkMetaAnalysis
+    /// </summary>
+    public const string LiteralSynthesisTypeIndirectNetworkMetaAnalysis = "http://terminology.hl7.org/CodeSystem/synthesis-type#indirect-NMA";
+
+    /// <summary>
     /// Literal for code: IndividualPatientDataMetaAnalysis
     /// </summary>
     public const string LiteralIndividualPatientDataMetaAnalysis = "IPD-MA";
+
+    /// <summary>
+    /// Literal for code: SynthesisTypeIndividualPatientDataMetaAnalysis
+    /// </summary>
+    public const string LiteralSynthesisTypeIndividualPatientDataMetaAnalysis = "http://terminology.hl7.org/CodeSystem/synthesis-type#IPD-MA";
 
     /// <summary>
     /// Literal for code: RangeOfResults
@@ -92,8 +112,36 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRangeOfResults = "range";
 
     /// <summary>
+    /// Literal for code: SynthesisTypeRangeOfResults
+    /// </summary>
+    public const string LiteralSynthesisTypeRangeOfResults = "http://terminology.hl7.org/CodeSystem/synthesis-type#range";
+
+    /// <summary>
     /// Literal for code: SummaryDataMetaAnalysis
     /// </summary>
     public const string LiteralSummaryDataMetaAnalysis = "std-MA";
+
+    /// <summary>
+    /// Literal for code: SynthesisTypeSummaryDataMetaAnalysis
+    /// </summary>
+    public const string LiteralSynthesisTypeSummaryDataMetaAnalysis = "http://terminology.hl7.org/CodeSystem/synthesis-type#std-MA";
+
+    /// <summary>
+    /// Dictionary for looking up SynthesisType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "classification", ClassifcationOfResults }, 
+      { "http://terminology.hl7.org/CodeSystem/synthesis-type#classification", ClassifcationOfResults }, 
+      { "combined-NMA", CombinedDirectPlusIndirectNetworkMetaAnalysis }, 
+      { "http://terminology.hl7.org/CodeSystem/synthesis-type#combined-NMA", CombinedDirectPlusIndirectNetworkMetaAnalysis }, 
+      { "indirect-NMA", IndirectNetworkMetaAnalysis }, 
+      { "http://terminology.hl7.org/CodeSystem/synthesis-type#indirect-NMA", IndirectNetworkMetaAnalysis }, 
+      { "IPD-MA", IndividualPatientDataMetaAnalysis }, 
+      { "http://terminology.hl7.org/CodeSystem/synthesis-type#IPD-MA", IndividualPatientDataMetaAnalysis }, 
+      { "range", RangeOfResults }, 
+      { "http://terminology.hl7.org/CodeSystem/synthesis-type#range", RangeOfResults }, 
+      { "std-MA", SummaryDataMetaAnalysis }, 
+      { "http://terminology.hl7.org/CodeSystem/synthesis-type#std-MA", SummaryDataMetaAnalysis }, 
+    };
   };
 }

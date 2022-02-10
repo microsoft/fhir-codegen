@@ -117,9 +117,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChemical = "chemical";
 
     /// <summary>
+    /// Literal for code: CitedArtifactClassificationTypeChemical
+    /// </summary>
+    public const string LiteralCitedArtifactClassificationTypeChemical = "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#chemical";
+
+    /// <summary>
     /// Literal for code: CitationSubset
     /// </summary>
     public const string LiteralCitationSubset = "citation-subset";
+
+    /// <summary>
+    /// Literal for code: CitedArtifactClassificationTypeCitationSubset
+    /// </summary>
+    public const string LiteralCitedArtifactClassificationTypeCitationSubset = "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#citation-subset";
 
     /// <summary>
     /// Literal for code: Coverage
@@ -127,9 +137,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCoverage = "coverage";
 
     /// <summary>
+    /// Literal for code: CitedArtifactClassificationTypeCoverage
+    /// </summary>
+    public const string LiteralCitedArtifactClassificationTypeCoverage = "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#coverage";
+
+    /// <summary>
     /// Literal for code: Keyword
     /// </summary>
     public const string LiteralKeyword = "keyword";
+
+    /// <summary>
+    /// Literal for code: CitedArtifactClassificationTypeKeyword
+    /// </summary>
+    public const string LiteralCitedArtifactClassificationTypeKeyword = "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#keyword";
 
     /// <summary>
     /// Literal for code: KnowledgeArtifactType
@@ -137,9 +157,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralKnowledgeArtifactType = "knowledge-artifact-type";
 
     /// <summary>
+    /// Literal for code: CitedArtifactClassificationTypeKnowledgeArtifactType
+    /// </summary>
+    public const string LiteralCitedArtifactClassificationTypeKnowledgeArtifactType = "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#knowledge-artifact-type";
+
+    /// <summary>
     /// Literal for code: MeSHHeading
     /// </summary>
     public const string LiteralMeSHHeading = "mesh-heading";
+
+    /// <summary>
+    /// Literal for code: CitedArtifactClassificationTypeMeSHHeading
+    /// </summary>
+    public const string LiteralCitedArtifactClassificationTypeMeSHHeading = "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#mesh-heading";
 
     /// <summary>
     /// Literal for code: PublicationType
@@ -147,9 +177,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPublicationType = "publication-type";
 
     /// <summary>
+    /// Literal for code: CitedArtifactClassificationTypePublicationType
+    /// </summary>
+    public const string LiteralCitedArtifactClassificationTypePublicationType = "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#publication-type";
+
+    /// <summary>
     /// Literal for code: PublishingModel
     /// </summary>
     public const string LiteralPublishingModel = "publishing-model";
+
+    /// <summary>
+    /// Literal for code: CitedArtifactClassificationTypePublishingModel
+    /// </summary>
+    public const string LiteralCitedArtifactClassificationTypePublishingModel = "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#publishing-model";
 
     /// <summary>
     /// Literal for code: SupplementalMeSHForDisease
@@ -157,13 +197,56 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSupplementalMeSHForDisease = "supplemental-mesh-disease";
 
     /// <summary>
+    /// Literal for code: CitedArtifactClassificationTypeSupplementalMeSHForDisease
+    /// </summary>
+    public const string LiteralCitedArtifactClassificationTypeSupplementalMeSHForDisease = "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#supplemental-mesh-disease";
+
+    /// <summary>
     /// Literal for code: SupplementalMeSHForOrganism
     /// </summary>
     public const string LiteralSupplementalMeSHForOrganism = "supplemental-mesh-organism";
 
     /// <summary>
+    /// Literal for code: CitedArtifactClassificationTypeSupplementalMeSHForOrganism
+    /// </summary>
+    public const string LiteralCitedArtifactClassificationTypeSupplementalMeSHForOrganism = "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#supplemental-mesh-organism";
+
+    /// <summary>
     /// Literal for code: SupplementalMeSHForProtocol
     /// </summary>
     public const string LiteralSupplementalMeSHForProtocol = "supplemental-mesh-protocol";
+
+    /// <summary>
+    /// Literal for code: CitedArtifactClassificationTypeSupplementalMeSHForProtocol
+    /// </summary>
+    public const string LiteralCitedArtifactClassificationTypeSupplementalMeSHForProtocol = "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#supplemental-mesh-protocol";
+
+    /// <summary>
+    /// Dictionary for looking up CitedArtifactClassificationType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "chemical", Chemical }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#chemical", Chemical }, 
+      { "citation-subset", CitationSubset }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#citation-subset", CitationSubset }, 
+      { "coverage", Coverage }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#coverage", Coverage }, 
+      { "keyword", Keyword }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#keyword", Keyword }, 
+      { "knowledge-artifact-type", KnowledgeArtifactType }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#knowledge-artifact-type", KnowledgeArtifactType }, 
+      { "mesh-heading", MeSHHeading }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#mesh-heading", MeSHHeading }, 
+      { "publication-type", PublicationType }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#publication-type", PublicationType }, 
+      { "publishing-model", PublishingModel }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#publishing-model", PublishingModel }, 
+      { "supplemental-mesh-disease", SupplementalMeSHForDisease }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#supplemental-mesh-disease", SupplementalMeSHForDisease }, 
+      { "supplemental-mesh-organism", SupplementalMeSHForOrganism }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#supplemental-mesh-organism", SupplementalMeSHForOrganism }, 
+      { "supplemental-mesh-protocol", SupplementalMeSHForProtocol }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-classification-type#supplemental-mesh-protocol", SupplementalMeSHForProtocol }, 
+    };
   };
 }

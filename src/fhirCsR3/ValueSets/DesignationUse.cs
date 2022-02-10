@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class DesignationUseCodes
   {
     /// <summary>
-    /// 
+    /// Fully specified name
     /// </summary>
     public static readonly Coding FullySpecifiedName = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Synonym
     /// </summary>
     public static readonly Coding Synonym = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Definition
     /// </summary>
     public static readonly Coding Definition = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFullySpecifiedName = "900000000000003001";
 
     /// <summary>
+    /// Literal for code: NONEFullySpecifiedName
+    /// </summary>
+    public const string LiteralNONEFullySpecifiedName = "http://snomed.info/sct#900000000000003001";
+
+    /// <summary>
     /// Literal for code: Synonym
     /// </summary>
     public const string LiteralSynonym = "900000000000013009";
 
     /// <summary>
+    /// Literal for code: NONESynonym
+    /// </summary>
+    public const string LiteralNONESynonym = "http://snomed.info/sct#900000000000013009";
+
+    /// <summary>
     /// Literal for code: Definition
     /// </summary>
     public const string LiteralDefinition = "900000000000550004";
+
+    /// <summary>
+    /// Literal for code: NONEDefinition
+    /// </summary>
+    public const string LiteralNONEDefinition = "http://snomed.info/sct#900000000000550004";
+
+    /// <summary>
+    /// Dictionary for looking up DesignationUse Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "900000000000003001", FullySpecifiedName }, 
+      { "http://snomed.info/sct#900000000000003001", FullySpecifiedName }, 
+      { "900000000000013009", Synonym }, 
+      { "http://snomed.info/sct#900000000000013009", Synonym }, 
+      { "900000000000550004", Definition }, 
+      { "http://snomed.info/sct#900000000000550004", Definition }, 
+    };
   };
 }

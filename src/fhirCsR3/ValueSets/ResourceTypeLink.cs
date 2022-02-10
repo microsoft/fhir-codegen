@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOrganization = "organization";
 
     /// <summary>
+    /// Literal for code: ResourceTypeLinkOrganization
+    /// </summary>
+    public const string LiteralResourceTypeLinkOrganization = "http://hl7.org/fhir/resource-type-link#organization";
+
+    /// <summary>
     /// Literal for code: Patient
     /// </summary>
     public const string LiteralPatient = "patient";
+
+    /// <summary>
+    /// Literal for code: ResourceTypeLinkPatient
+    /// </summary>
+    public const string LiteralResourceTypeLinkPatient = "http://hl7.org/fhir/resource-type-link#patient";
 
     /// <summary>
     /// Literal for code: Practitioner
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPractitioner = "practitioner";
 
     /// <summary>
+    /// Literal for code: ResourceTypeLinkPractitioner
+    /// </summary>
+    public const string LiteralResourceTypeLinkPractitioner = "http://hl7.org/fhir/resource-type-link#practitioner";
+
+    /// <summary>
     /// Literal for code: RelatedPerson
     /// </summary>
     public const string LiteralRelatedPerson = "relatedperson";
+
+    /// <summary>
+    /// Literal for code: ResourceTypeLinkRelatedPerson
+    /// </summary>
+    public const string LiteralResourceTypeLinkRelatedPerson = "http://hl7.org/fhir/resource-type-link#relatedperson";
+
+    /// <summary>
+    /// Dictionary for looking up ResourceTypeLink Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "organization", Organization }, 
+      { "http://hl7.org/fhir/resource-type-link#organization", Organization }, 
+      { "patient", Patient }, 
+      { "http://hl7.org/fhir/resource-type-link#patient", Patient }, 
+      { "practitioner", Practitioner }, 
+      { "http://hl7.org/fhir/resource-type-link#practitioner", Practitioner }, 
+      { "relatedperson", RelatedPerson }, 
+      { "http://hl7.org/fhir/resource-type-link#relatedperson", RelatedPerson }, 
+    };
   };
 }

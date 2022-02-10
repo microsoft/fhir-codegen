@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class ObservationInterpretationCodes
   {
     /// <summary>
-    /// 
+    /// Off scale low
     /// </summary>
     public static readonly Coding OffScaleLow = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Off scale high
     /// </summary>
     public static readonly Coding OffScaleHigh = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Abnormal
     /// </summary>
     public static readonly Coding Abnormal = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Critically abnormal
     /// </summary>
     public static readonly Coding CriticallyAbnormal = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Anti-complementary substances present
     /// </summary>
     public static readonly Coding AntiComplementarySubstancesPresent = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Better
     /// </summary>
     public static readonly Coding Better = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Significant change down
     /// </summary>
     public static readonly Coding SignificantChangeDown = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Detected
     /// </summary>
     public static readonly Coding Detected = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// High
     /// </summary>
     public static readonly Coding High = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Critically high
     /// </summary>
     public static readonly Coding CriticallyHigh = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Hold for Medical Review
     /// </summary>
     public static readonly Coding HoldForMedicalReview = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Very high
     /// </summary>
     public static readonly Coding VeryHigh = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Intermediate
     /// </summary>
     public static readonly Coding Intermediate = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Insufficient evidence
     /// </summary>
     public static readonly Coding InsufficientEvidence = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Indeterminate
     /// </summary>
     public static readonly Coding Indeterminate = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Low
     /// </summary>
     public static readonly Coding Low = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Critically low
     /// </summary>
     public static readonly Coding CriticallyLow = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Very low
     /// </summary>
     public static readonly Coding VeryLow = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Moderately susceptible. Indicates for microbiology susceptibilities only.
     /// </summary>
     public static readonly Coding ModeratelySusceptibleIndicatesForMicrobiologySusceptibilitiesOnly = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Normal
     /// </summary>
     public static readonly Coding Normal = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Not Detected
     /// </summary>
     public static readonly Coding NotDetected = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Negative
     /// </summary>
     public static readonly Coding Negative = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Non-reactive
     /// </summary>
     public static readonly Coding NonReactive = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Non-susceptible
     /// </summary>
     public static readonly Coding NonSusceptible = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// No range defined, or normal ranges don't apply
     /// </summary>
     public static readonly Coding NoRangeDefinedOrNormalRangesDonQuoteTApply = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Interpretation qualifiers in separate OBX segments
     /// </summary>
     public static readonly Coding InterpretationQualifiersInSeparateOBXSegments = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Positive
     /// </summary>
     public static readonly Coding Positive = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Quality Control Failure
     /// </summary>
     public static readonly Coding QualityControlFailure = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Resistant
     /// </summary>
     public static readonly Coding Resistant = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Reactive
     /// </summary>
     public static readonly Coding Reactive = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Susceptible
     /// </summary>
     public static readonly Coding Susceptible = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Susceptible-dose dependent
     /// </summary>
     public static readonly Coding SusceptibleDoseDependent = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Synergy - resistant
     /// </summary>
     public static readonly Coding SynergyResistant = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Synergy - susceptible
     /// </summary>
     public static readonly Coding SynergySusceptible = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Cytotoxic substance present
     /// </summary>
     public static readonly Coding CytotoxicSubstancePresent = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Significant change up
     /// </summary>
     public static readonly Coding SignificantChangeUp = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Very susceptible. Indicates for microbiology susceptibilities only.
     /// </summary>
     public static readonly Coding VerySusceptibleIndicatesForMicrobiologySusceptibilitiesOnly = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Worse
     /// </summary>
     public static readonly Coding Worse = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0078"
     };
     /// <summary>
-    /// 
+    /// Weakly reactive
     /// </summary>
     public static readonly Coding WeaklyReactive = new Coding
     {
@@ -369,9 +369,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOffScaleLow = "<";
 
     /// <summary>
+    /// Literal for code: V20078OffScaleLow
+    /// </summary>
+    public const string LiteralV20078OffScaleLow = "http://hl7.org/fhir/v2/0078#<";
+
+    /// <summary>
     /// Literal for code: OffScaleHigh
     /// </summary>
     public const string LiteralOffScaleHigh = ">";
+
+    /// <summary>
+    /// Literal for code: V20078OffScaleHigh
+    /// </summary>
+    public const string LiteralV20078OffScaleHigh = "http://hl7.org/fhir/v2/0078#>";
 
     /// <summary>
     /// Literal for code: Abnormal
@@ -379,9 +389,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbnormal = "A";
 
     /// <summary>
+    /// Literal for code: V20078Abnormal
+    /// </summary>
+    public const string LiteralV20078Abnormal = "http://hl7.org/fhir/v2/0078#A";
+
+    /// <summary>
     /// Literal for code: CriticallyAbnormal
     /// </summary>
     public const string LiteralCriticallyAbnormal = "AA";
+
+    /// <summary>
+    /// Literal for code: V20078CriticallyAbnormal
+    /// </summary>
+    public const string LiteralV20078CriticallyAbnormal = "http://hl7.org/fhir/v2/0078#AA";
 
     /// <summary>
     /// Literal for code: AntiComplementarySubstancesPresent
@@ -389,9 +409,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAntiComplementarySubstancesPresent = "AC";
 
     /// <summary>
+    /// Literal for code: V20078AntiComplementarySubstancesPresent
+    /// </summary>
+    public const string LiteralV20078AntiComplementarySubstancesPresent = "http://hl7.org/fhir/v2/0078#AC";
+
+    /// <summary>
     /// Literal for code: Better
     /// </summary>
     public const string LiteralBetter = "B";
+
+    /// <summary>
+    /// Literal for code: V20078Better
+    /// </summary>
+    public const string LiteralV20078Better = "http://hl7.org/fhir/v2/0078#B";
 
     /// <summary>
     /// Literal for code: SignificantChangeDown
@@ -399,9 +429,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSignificantChangeDown = "D";
 
     /// <summary>
+    /// Literal for code: V20078SignificantChangeDown
+    /// </summary>
+    public const string LiteralV20078SignificantChangeDown = "http://hl7.org/fhir/v2/0078#D";
+
+    /// <summary>
     /// Literal for code: Detected
     /// </summary>
     public const string LiteralDetected = "DET";
+
+    /// <summary>
+    /// Literal for code: V20078Detected
+    /// </summary>
+    public const string LiteralV20078Detected = "http://hl7.org/fhir/v2/0078#DET";
 
     /// <summary>
     /// Literal for code: High
@@ -409,9 +449,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHigh = "H";
 
     /// <summary>
+    /// Literal for code: V20078High
+    /// </summary>
+    public const string LiteralV20078High = "http://hl7.org/fhir/v2/0078#H";
+
+    /// <summary>
     /// Literal for code: CriticallyHigh
     /// </summary>
     public const string LiteralCriticallyHigh = "HH";
+
+    /// <summary>
+    /// Literal for code: V20078CriticallyHigh
+    /// </summary>
+    public const string LiteralV20078CriticallyHigh = "http://hl7.org/fhir/v2/0078#HH";
 
     /// <summary>
     /// Literal for code: HoldForMedicalReview
@@ -419,9 +469,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHoldForMedicalReview = "HM";
 
     /// <summary>
+    /// Literal for code: V20078HoldForMedicalReview
+    /// </summary>
+    public const string LiteralV20078HoldForMedicalReview = "http://hl7.org/fhir/v2/0078#HM";
+
+    /// <summary>
     /// Literal for code: VeryHigh
     /// </summary>
     public const string LiteralVeryHigh = "HU";
+
+    /// <summary>
+    /// Literal for code: V20078VeryHigh
+    /// </summary>
+    public const string LiteralV20078VeryHigh = "http://hl7.org/fhir/v2/0078#HU";
 
     /// <summary>
     /// Literal for code: Intermediate
@@ -429,9 +489,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntermediate = "I";
 
     /// <summary>
+    /// Literal for code: V20078Intermediate
+    /// </summary>
+    public const string LiteralV20078Intermediate = "http://hl7.org/fhir/v2/0078#I";
+
+    /// <summary>
     /// Literal for code: InsufficientEvidence
     /// </summary>
     public const string LiteralInsufficientEvidence = "IE";
+
+    /// <summary>
+    /// Literal for code: V20078InsufficientEvidence
+    /// </summary>
+    public const string LiteralV20078InsufficientEvidence = "http://hl7.org/fhir/v2/0078#IE";
 
     /// <summary>
     /// Literal for code: Indeterminate
@@ -439,9 +509,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIndeterminate = "IND";
 
     /// <summary>
+    /// Literal for code: V20078Indeterminate
+    /// </summary>
+    public const string LiteralV20078Indeterminate = "http://hl7.org/fhir/v2/0078#IND";
+
+    /// <summary>
     /// Literal for code: Low
     /// </summary>
     public const string LiteralLow = "L";
+
+    /// <summary>
+    /// Literal for code: V20078Low
+    /// </summary>
+    public const string LiteralV20078Low = "http://hl7.org/fhir/v2/0078#L";
 
     /// <summary>
     /// Literal for code: CriticallyLow
@@ -449,9 +529,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCriticallyLow = "LL";
 
     /// <summary>
+    /// Literal for code: V20078CriticallyLow
+    /// </summary>
+    public const string LiteralV20078CriticallyLow = "http://hl7.org/fhir/v2/0078#LL";
+
+    /// <summary>
     /// Literal for code: VeryLow
     /// </summary>
     public const string LiteralVeryLow = "LU";
+
+    /// <summary>
+    /// Literal for code: V20078VeryLow
+    /// </summary>
+    public const string LiteralV20078VeryLow = "http://hl7.org/fhir/v2/0078#LU";
 
     /// <summary>
     /// Literal for code: ModeratelySusceptibleIndicatesForMicrobiologySusceptibilitiesOnly
@@ -459,9 +549,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralModeratelySusceptibleIndicatesForMicrobiologySusceptibilitiesOnly = "MS";
 
     /// <summary>
+    /// Literal for code: V20078ModeratelySusceptibleIndicatesForMicrobiologySusceptibilitiesOnly
+    /// </summary>
+    public const string LiteralV20078ModeratelySusceptibleIndicatesForMicrobiologySusceptibilitiesOnly = "http://hl7.org/fhir/v2/0078#MS";
+
+    /// <summary>
     /// Literal for code: Normal
     /// </summary>
     public const string LiteralNormal = "N";
+
+    /// <summary>
+    /// Literal for code: V20078Normal
+    /// </summary>
+    public const string LiteralV20078Normal = "http://hl7.org/fhir/v2/0078#N";
 
     /// <summary>
     /// Literal for code: NotDetected
@@ -469,9 +569,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNotDetected = "ND";
 
     /// <summary>
+    /// Literal for code: V20078NotDetected
+    /// </summary>
+    public const string LiteralV20078NotDetected = "http://hl7.org/fhir/v2/0078#ND";
+
+    /// <summary>
     /// Literal for code: Negative
     /// </summary>
     public const string LiteralNegative = "NEG";
+
+    /// <summary>
+    /// Literal for code: V20078Negative
+    /// </summary>
+    public const string LiteralV20078Negative = "http://hl7.org/fhir/v2/0078#NEG";
 
     /// <summary>
     /// Literal for code: NonReactive
@@ -479,9 +589,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNonReactive = "NR";
 
     /// <summary>
+    /// Literal for code: V20078NonReactive
+    /// </summary>
+    public const string LiteralV20078NonReactive = "http://hl7.org/fhir/v2/0078#NR";
+
+    /// <summary>
     /// Literal for code: NonSusceptible
     /// </summary>
     public const string LiteralNonSusceptible = "NS";
+
+    /// <summary>
+    /// Literal for code: V20078NonSusceptible
+    /// </summary>
+    public const string LiteralV20078NonSusceptible = "http://hl7.org/fhir/v2/0078#NS";
 
     /// <summary>
     /// Literal for code: NoRangeDefinedOrNormalRangesDonQuoteTApply
@@ -489,9 +609,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoRangeDefinedOrNormalRangesDonQuoteTApply = "null";
 
     /// <summary>
+    /// Literal for code: V20078NoRangeDefinedOrNormalRangesDonQuoteTApply
+    /// </summary>
+    public const string LiteralV20078NoRangeDefinedOrNormalRangesDonQuoteTApply = "http://hl7.org/fhir/v2/0078#null";
+
+    /// <summary>
     /// Literal for code: InterpretationQualifiersInSeparateOBXSegments
     /// </summary>
     public const string LiteralInterpretationQualifiersInSeparateOBXSegments = "OBX";
+
+    /// <summary>
+    /// Literal for code: V20078InterpretationQualifiersInSeparateOBXSegments
+    /// </summary>
+    public const string LiteralV20078InterpretationQualifiersInSeparateOBXSegments = "http://hl7.org/fhir/v2/0078#OBX";
 
     /// <summary>
     /// Literal for code: Positive
@@ -499,9 +629,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPositive = "POS";
 
     /// <summary>
+    /// Literal for code: V20078Positive
+    /// </summary>
+    public const string LiteralV20078Positive = "http://hl7.org/fhir/v2/0078#POS";
+
+    /// <summary>
     /// Literal for code: QualityControlFailure
     /// </summary>
     public const string LiteralQualityControlFailure = "QCF";
+
+    /// <summary>
+    /// Literal for code: V20078QualityControlFailure
+    /// </summary>
+    public const string LiteralV20078QualityControlFailure = "http://hl7.org/fhir/v2/0078#QCF";
 
     /// <summary>
     /// Literal for code: Resistant
@@ -509,9 +649,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralResistant = "R";
 
     /// <summary>
+    /// Literal for code: V20078Resistant
+    /// </summary>
+    public const string LiteralV20078Resistant = "http://hl7.org/fhir/v2/0078#R";
+
+    /// <summary>
     /// Literal for code: Reactive
     /// </summary>
     public const string LiteralReactive = "RR";
+
+    /// <summary>
+    /// Literal for code: V20078Reactive
+    /// </summary>
+    public const string LiteralV20078Reactive = "http://hl7.org/fhir/v2/0078#RR";
 
     /// <summary>
     /// Literal for code: Susceptible
@@ -519,9 +669,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSusceptible = "S";
 
     /// <summary>
+    /// Literal for code: V20078Susceptible
+    /// </summary>
+    public const string LiteralV20078Susceptible = "http://hl7.org/fhir/v2/0078#S";
+
+    /// <summary>
     /// Literal for code: SusceptibleDoseDependent
     /// </summary>
     public const string LiteralSusceptibleDoseDependent = "SDD";
+
+    /// <summary>
+    /// Literal for code: V20078SusceptibleDoseDependent
+    /// </summary>
+    public const string LiteralV20078SusceptibleDoseDependent = "http://hl7.org/fhir/v2/0078#SDD";
 
     /// <summary>
     /// Literal for code: SynergyResistant
@@ -529,9 +689,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSynergyResistant = "SYN-R";
 
     /// <summary>
+    /// Literal for code: V20078SynergyResistant
+    /// </summary>
+    public const string LiteralV20078SynergyResistant = "http://hl7.org/fhir/v2/0078#SYN-R";
+
+    /// <summary>
     /// Literal for code: SynergySusceptible
     /// </summary>
     public const string LiteralSynergySusceptible = "SYN-S";
+
+    /// <summary>
+    /// Literal for code: V20078SynergySusceptible
+    /// </summary>
+    public const string LiteralV20078SynergySusceptible = "http://hl7.org/fhir/v2/0078#SYN-S";
 
     /// <summary>
     /// Literal for code: CytotoxicSubstancePresent
@@ -539,9 +709,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCytotoxicSubstancePresent = "TOX";
 
     /// <summary>
+    /// Literal for code: V20078CytotoxicSubstancePresent
+    /// </summary>
+    public const string LiteralV20078CytotoxicSubstancePresent = "http://hl7.org/fhir/v2/0078#TOX";
+
+    /// <summary>
     /// Literal for code: SignificantChangeUp
     /// </summary>
     public const string LiteralSignificantChangeUp = "U";
+
+    /// <summary>
+    /// Literal for code: V20078SignificantChangeUp
+    /// </summary>
+    public const string LiteralV20078SignificantChangeUp = "http://hl7.org/fhir/v2/0078#U";
 
     /// <summary>
     /// Literal for code: VerySusceptibleIndicatesForMicrobiologySusceptibilitiesOnly
@@ -549,13 +729,112 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVerySusceptibleIndicatesForMicrobiologySusceptibilitiesOnly = "VS";
 
     /// <summary>
+    /// Literal for code: V20078VerySusceptibleIndicatesForMicrobiologySusceptibilitiesOnly
+    /// </summary>
+    public const string LiteralV20078VerySusceptibleIndicatesForMicrobiologySusceptibilitiesOnly = "http://hl7.org/fhir/v2/0078#VS";
+
+    /// <summary>
     /// Literal for code: Worse
     /// </summary>
     public const string LiteralWorse = "W";
 
     /// <summary>
+    /// Literal for code: V20078Worse
+    /// </summary>
+    public const string LiteralV20078Worse = "http://hl7.org/fhir/v2/0078#W";
+
+    /// <summary>
     /// Literal for code: WeaklyReactive
     /// </summary>
     public const string LiteralWeaklyReactive = "WR";
+
+    /// <summary>
+    /// Literal for code: V20078WeaklyReactive
+    /// </summary>
+    public const string LiteralV20078WeaklyReactive = "http://hl7.org/fhir/v2/0078#WR";
+
+    /// <summary>
+    /// Dictionary for looking up ObservationInterpretation Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "<", OffScaleLow }, 
+      { "http://hl7.org/fhir/v2/0078#<", OffScaleLow }, 
+      { ">", OffScaleHigh }, 
+      { "http://hl7.org/fhir/v2/0078#>", OffScaleHigh }, 
+      { "A", Abnormal }, 
+      { "http://hl7.org/fhir/v2/0078#A", Abnormal }, 
+      { "AA", CriticallyAbnormal }, 
+      { "http://hl7.org/fhir/v2/0078#AA", CriticallyAbnormal }, 
+      { "AC", AntiComplementarySubstancesPresent }, 
+      { "http://hl7.org/fhir/v2/0078#AC", AntiComplementarySubstancesPresent }, 
+      { "B", Better }, 
+      { "http://hl7.org/fhir/v2/0078#B", Better }, 
+      { "D", SignificantChangeDown }, 
+      { "http://hl7.org/fhir/v2/0078#D", SignificantChangeDown }, 
+      { "DET", Detected }, 
+      { "http://hl7.org/fhir/v2/0078#DET", Detected }, 
+      { "H", High }, 
+      { "http://hl7.org/fhir/v2/0078#H", High }, 
+      { "HH", CriticallyHigh }, 
+      { "http://hl7.org/fhir/v2/0078#HH", CriticallyHigh }, 
+      { "HM", HoldForMedicalReview }, 
+      { "http://hl7.org/fhir/v2/0078#HM", HoldForMedicalReview }, 
+      { "HU", VeryHigh }, 
+      { "http://hl7.org/fhir/v2/0078#HU", VeryHigh }, 
+      { "I", Intermediate }, 
+      { "http://hl7.org/fhir/v2/0078#I", Intermediate }, 
+      { "IE", InsufficientEvidence }, 
+      { "http://hl7.org/fhir/v2/0078#IE", InsufficientEvidence }, 
+      { "IND", Indeterminate }, 
+      { "http://hl7.org/fhir/v2/0078#IND", Indeterminate }, 
+      { "L", Low }, 
+      { "http://hl7.org/fhir/v2/0078#L", Low }, 
+      { "LL", CriticallyLow }, 
+      { "http://hl7.org/fhir/v2/0078#LL", CriticallyLow }, 
+      { "LU", VeryLow }, 
+      { "http://hl7.org/fhir/v2/0078#LU", VeryLow }, 
+      { "MS", ModeratelySusceptibleIndicatesForMicrobiologySusceptibilitiesOnly }, 
+      { "http://hl7.org/fhir/v2/0078#MS", ModeratelySusceptibleIndicatesForMicrobiologySusceptibilitiesOnly }, 
+      { "N", Normal }, 
+      { "http://hl7.org/fhir/v2/0078#N", Normal }, 
+      { "ND", NotDetected }, 
+      { "http://hl7.org/fhir/v2/0078#ND", NotDetected }, 
+      { "NEG", Negative }, 
+      { "http://hl7.org/fhir/v2/0078#NEG", Negative }, 
+      { "NR", NonReactive }, 
+      { "http://hl7.org/fhir/v2/0078#NR", NonReactive }, 
+      { "NS", NonSusceptible }, 
+      { "http://hl7.org/fhir/v2/0078#NS", NonSusceptible }, 
+      { "null", NoRangeDefinedOrNormalRangesDonQuoteTApply }, 
+      { "http://hl7.org/fhir/v2/0078#null", NoRangeDefinedOrNormalRangesDonQuoteTApply }, 
+      { "OBX", InterpretationQualifiersInSeparateOBXSegments }, 
+      { "http://hl7.org/fhir/v2/0078#OBX", InterpretationQualifiersInSeparateOBXSegments }, 
+      { "POS", Positive }, 
+      { "http://hl7.org/fhir/v2/0078#POS", Positive }, 
+      { "QCF", QualityControlFailure }, 
+      { "http://hl7.org/fhir/v2/0078#QCF", QualityControlFailure }, 
+      { "R", Resistant }, 
+      { "http://hl7.org/fhir/v2/0078#R", Resistant }, 
+      { "RR", Reactive }, 
+      { "http://hl7.org/fhir/v2/0078#RR", Reactive }, 
+      { "S", Susceptible }, 
+      { "http://hl7.org/fhir/v2/0078#S", Susceptible }, 
+      { "SDD", SusceptibleDoseDependent }, 
+      { "http://hl7.org/fhir/v2/0078#SDD", SusceptibleDoseDependent }, 
+      { "SYN-R", SynergyResistant }, 
+      { "http://hl7.org/fhir/v2/0078#SYN-R", SynergyResistant }, 
+      { "SYN-S", SynergySusceptible }, 
+      { "http://hl7.org/fhir/v2/0078#SYN-S", SynergySusceptible }, 
+      { "TOX", CytotoxicSubstancePresent }, 
+      { "http://hl7.org/fhir/v2/0078#TOX", CytotoxicSubstancePresent }, 
+      { "U", SignificantChangeUp }, 
+      { "http://hl7.org/fhir/v2/0078#U", SignificantChangeUp }, 
+      { "VS", VerySusceptibleIndicatesForMicrobiologySusceptibilitiesOnly }, 
+      { "http://hl7.org/fhir/v2/0078#VS", VerySusceptibleIndicatesForMicrobiologySusceptibilitiesOnly }, 
+      { "W", Worse }, 
+      { "http://hl7.org/fhir/v2/0078#W", Worse }, 
+      { "WR", WeaklyReactive }, 
+      { "http://hl7.org/fhir/v2/0078#WR", WeaklyReactive }, 
+    };
   };
 }

@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ExProgramCodeCodes
   {
     /// <summary>
-    /// 
+    /// Child Asthma
     /// </summary>
     public static readonly Coding ChildAsthma = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-programcode"
     };
     /// <summary>
-    /// 
+    /// Autism Screening
     /// </summary>
     public static readonly Coding AutismScreening = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-programcode"
     };
     /// <summary>
-    /// 
+    /// Hemodialysis
     /// </summary>
     public static readonly Coding Hemodialysis = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-programcode"
     };
     /// <summary>
-    /// 
+    /// None
     /// </summary>
     public static readonly Coding None = new Coding
     {
@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChildAsthma = "as";
 
     /// <summary>
+    /// Literal for code: ExProgramcodeChildAsthma
+    /// </summary>
+    public const string LiteralExProgramcodeChildAsthma = "http://terminology.hl7.org/CodeSystem/ex-programcode#as";
+
+    /// <summary>
     /// Literal for code: AutismScreening
     /// </summary>
     public const string LiteralAutismScreening = "auscr";
+
+    /// <summary>
+    /// Literal for code: ExProgramcodeAutismScreening
+    /// </summary>
+    public const string LiteralExProgramcodeAutismScreening = "http://terminology.hl7.org/CodeSystem/ex-programcode#auscr";
 
     /// <summary>
     /// Literal for code: Hemodialysis
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHemodialysis = "hd";
 
     /// <summary>
+    /// Literal for code: ExProgramcodeHemodialysis
+    /// </summary>
+    public const string LiteralExProgramcodeHemodialysis = "http://terminology.hl7.org/CodeSystem/ex-programcode#hd";
+
+    /// <summary>
     /// Literal for code: None
     /// </summary>
     public const string LiteralNone = "none";
+
+    /// <summary>
+    /// Literal for code: ExProgramcodeNone
+    /// </summary>
+    public const string LiteralExProgramcodeNone = "http://terminology.hl7.org/CodeSystem/ex-programcode#none";
+
+    /// <summary>
+    /// Dictionary for looking up ExProgramCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "as", ChildAsthma }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-programcode#as", ChildAsthma }, 
+      { "auscr", AutismScreening }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-programcode#auscr", AutismScreening }, 
+      { "hd", Hemodialysis }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-programcode#hd", Hemodialysis }, 
+      { "none", None }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-programcode#none", None }, 
+    };
   };
 }

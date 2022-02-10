@@ -495,9 +495,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarApply = "apply";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarApply
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarApply = "http://hl7.org/fhir/testscript-operation-codes#apply";
+
+    /// <summary>
     /// Literal for code: Batch
     /// </summary>
     public const string LiteralBatch = "batch";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesBatch
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesBatch = "http://hl7.org/fhir/testscript-operation-codes#batch";
 
     /// <summary>
     /// Literal for code: DollarCancel
@@ -505,9 +515,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarCancel = "cancel";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarCancel
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarCancel = "http://hl7.org/fhir/testscript-operation-codes#cancel";
+
+    /// <summary>
     /// Literal for code: Capabilities
     /// </summary>
     public const string LiteralCapabilities = "capabilities";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesCapabilities
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesCapabilities = "http://hl7.org/fhir/testscript-operation-codes#capabilities";
 
     /// <summary>
     /// Literal for code: DollarClosure
@@ -515,9 +535,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarClosure = "closure";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarClosure
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarClosure = "http://hl7.org/fhir/testscript-operation-codes#closure";
+
+    /// <summary>
     /// Literal for code: DollarCompose
     /// </summary>
     public const string LiteralDollarCompose = "compose";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarCompose
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarCompose = "http://hl7.org/fhir/testscript-operation-codes#compose";
 
     /// <summary>
     /// Literal for code: DollarConforms
@@ -525,9 +555,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarConforms = "conforms";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarConforms
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarConforms = "http://hl7.org/fhir/testscript-operation-codes#conforms";
+
+    /// <summary>
     /// Literal for code: Create
     /// </summary>
     public const string LiteralCreate = "create";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesCreate
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesCreate = "http://hl7.org/fhir/testscript-operation-codes#create";
 
     /// <summary>
     /// Literal for code: DollarDataRequirements
@@ -535,9 +575,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarDataRequirements = "data-requirements";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarDataRequirements
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarDataRequirements = "http://hl7.org/fhir/testscript-operation-codes#data-requirements";
+
+    /// <summary>
     /// Literal for code: Delete
     /// </summary>
     public const string LiteralDelete = "delete";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDelete
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDelete = "http://hl7.org/fhir/testscript-operation-codes#delete";
 
     /// <summary>
     /// Literal for code: ConditionalDeleteMultiple
@@ -545,9 +595,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConditionalDeleteMultiple = "deleteCondMultiple";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesConditionalDeleteMultiple
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesConditionalDeleteMultiple = "http://hl7.org/fhir/testscript-operation-codes#deleteCondMultiple";
+
+    /// <summary>
     /// Literal for code: ConditionalDeleteSingle
     /// </summary>
     public const string LiteralConditionalDeleteSingle = "deleteCondSingle";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesConditionalDeleteSingle
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesConditionalDeleteSingle = "http://hl7.org/fhir/testscript-operation-codes#deleteCondSingle";
 
     /// <summary>
     /// Literal for code: DollarDocument
@@ -555,9 +615,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarDocument = "document";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarDocument
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarDocument = "http://hl7.org/fhir/testscript-operation-codes#document";
+
+    /// <summary>
     /// Literal for code: DollarEvaluate
     /// </summary>
     public const string LiteralDollarEvaluate = "evaluate";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarEvaluate
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarEvaluate = "http://hl7.org/fhir/testscript-operation-codes#evaluate";
 
     /// <summary>
     /// Literal for code: DollarEvaluateMeasure
@@ -565,9 +635,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarEvaluateMeasure = "evaluate-measure";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarEvaluateMeasure
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarEvaluateMeasure = "http://hl7.org/fhir/testscript-operation-codes#evaluate-measure";
+
+    /// <summary>
     /// Literal for code: DollarEverything
     /// </summary>
     public const string LiteralDollarEverything = "everything";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarEverything
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarEverything = "http://hl7.org/fhir/testscript-operation-codes#everything";
 
     /// <summary>
     /// Literal for code: DollarExpand
@@ -575,9 +655,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarExpand = "expand";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarExpand
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarExpand = "http://hl7.org/fhir/testscript-operation-codes#expand";
+
+    /// <summary>
     /// Literal for code: DollarFail
     /// </summary>
     public const string LiteralDollarFail = "fail";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarFail
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarFail = "http://hl7.org/fhir/testscript-operation-codes#fail";
 
     /// <summary>
     /// Literal for code: DollarFind
@@ -585,9 +675,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarFind = "find";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarFind
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarFind = "http://hl7.org/fhir/testscript-operation-codes#find";
+
+    /// <summary>
     /// Literal for code: DollarFinish
     /// </summary>
     public const string LiteralDollarFinish = "finish";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarFinish
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarFinish = "http://hl7.org/fhir/testscript-operation-codes#finish";
 
     /// <summary>
     /// Literal for code: History
@@ -595,9 +695,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHistory = "history";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesHistory
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesHistory = "http://hl7.org/fhir/testscript-operation-codes#history";
+
+    /// <summary>
     /// Literal for code: DollarImplements
     /// </summary>
     public const string LiteralDollarImplements = "implements";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarImplements
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarImplements = "http://hl7.org/fhir/testscript-operation-codes#implements";
 
     /// <summary>
     /// Literal for code: DollarLookup
@@ -605,9 +715,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarLookup = "lookup";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarLookup
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarLookup = "http://hl7.org/fhir/testscript-operation-codes#lookup";
+
+    /// <summary>
     /// Literal for code: DollarMatch
     /// </summary>
     public const string LiteralDollarMatch = "match";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarMatch
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarMatch = "http://hl7.org/fhir/testscript-operation-codes#match";
 
     /// <summary>
     /// Literal for code: DollarMeta
@@ -615,9 +735,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarMeta = "meta";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarMeta
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarMeta = "http://hl7.org/fhir/testscript-operation-codes#meta";
+
+    /// <summary>
     /// Literal for code: DollarMetaAdd
     /// </summary>
     public const string LiteralDollarMetaAdd = "meta-add";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarMetaAdd
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarMetaAdd = "http://hl7.org/fhir/testscript-operation-codes#meta-add";
 
     /// <summary>
     /// Literal for code: DollarMetaDelete
@@ -625,9 +755,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarMetaDelete = "meta-delete";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarMetaDelete
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarMetaDelete = "http://hl7.org/fhir/testscript-operation-codes#meta-delete";
+
+    /// <summary>
     /// Literal for code: DollarPopulate
     /// </summary>
     public const string LiteralDollarPopulate = "populate";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarPopulate
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarPopulate = "http://hl7.org/fhir/testscript-operation-codes#populate";
 
     /// <summary>
     /// Literal for code: DollarPopulatehtml
@@ -635,9 +775,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarPopulatehtml = "populatehtml";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarPopulatehtml
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarPopulatehtml = "http://hl7.org/fhir/testscript-operation-codes#populatehtml";
+
+    /// <summary>
     /// Literal for code: DollarPopulatelink
     /// </summary>
     public const string LiteralDollarPopulatelink = "populatelink";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarPopulatelink
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarPopulatelink = "http://hl7.org/fhir/testscript-operation-codes#populatelink";
 
     /// <summary>
     /// Literal for code: DollarProcessMessage
@@ -645,9 +795,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarProcessMessage = "process-message";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarProcessMessage
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarProcessMessage = "http://hl7.org/fhir/testscript-operation-codes#process-message";
+
+    /// <summary>
     /// Literal for code: DollarQuestionnaire
     /// </summary>
     public const string LiteralDollarQuestionnaire = "questionnaire";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarQuestionnaire
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarQuestionnaire = "http://hl7.org/fhir/testscript-operation-codes#questionnaire";
 
     /// <summary>
     /// Literal for code: Read
@@ -655,9 +815,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRead = "read";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesRead
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesRead = "http://hl7.org/fhir/testscript-operation-codes#read";
+
+    /// <summary>
     /// Literal for code: DollarRelease
     /// </summary>
     public const string LiteralDollarRelease = "release";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarRelease
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarRelease = "http://hl7.org/fhir/testscript-operation-codes#release";
 
     /// <summary>
     /// Literal for code: DollarReserve
@@ -665,9 +835,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarReserve = "reserve";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarReserve
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarReserve = "http://hl7.org/fhir/testscript-operation-codes#reserve";
+
+    /// <summary>
     /// Literal for code: DollarResume
     /// </summary>
     public const string LiteralDollarResume = "resume";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarResume
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarResume = "http://hl7.org/fhir/testscript-operation-codes#resume";
 
     /// <summary>
     /// Literal for code: Search
@@ -675,9 +855,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSearch = "search";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesSearch
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesSearch = "http://hl7.org/fhir/testscript-operation-codes#search";
+
+    /// <summary>
     /// Literal for code: DollarSetInput
     /// </summary>
     public const string LiteralDollarSetInput = "set-input";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarSetInput
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarSetInput = "http://hl7.org/fhir/testscript-operation-codes#set-input";
 
     /// <summary>
     /// Literal for code: DollarSetOutput
@@ -685,9 +875,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarSetOutput = "set-output";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarSetOutput
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarSetOutput = "http://hl7.org/fhir/testscript-operation-codes#set-output";
+
+    /// <summary>
     /// Literal for code: DollarStart
     /// </summary>
     public const string LiteralDollarStart = "start";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarStart
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarStart = "http://hl7.org/fhir/testscript-operation-codes#start";
 
     /// <summary>
     /// Literal for code: DollarStats
@@ -695,9 +895,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarStats = "stats";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarStats
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarStats = "http://hl7.org/fhir/testscript-operation-codes#stats";
+
+    /// <summary>
     /// Literal for code: DollarStop
     /// </summary>
     public const string LiteralDollarStop = "stop";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarStop
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarStop = "http://hl7.org/fhir/testscript-operation-codes#stop";
 
     /// <summary>
     /// Literal for code: DollarSubset
@@ -705,9 +915,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarSubset = "subset";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarSubset
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarSubset = "http://hl7.org/fhir/testscript-operation-codes#subset";
+
+    /// <summary>
     /// Literal for code: DollarSubsumes
     /// </summary>
     public const string LiteralDollarSubsumes = "subsumes";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarSubsumes
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarSubsumes = "http://hl7.org/fhir/testscript-operation-codes#subsumes";
 
     /// <summary>
     /// Literal for code: DollarSuspend
@@ -715,9 +935,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarSuspend = "suspend";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarSuspend
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarSuspend = "http://hl7.org/fhir/testscript-operation-codes#suspend";
+
+    /// <summary>
     /// Literal for code: Transaction
     /// </summary>
     public const string LiteralTransaction = "transaction";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesTransaction
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesTransaction = "http://hl7.org/fhir/testscript-operation-codes#transaction";
 
     /// <summary>
     /// Literal for code: DollarTransform
@@ -725,9 +955,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarTransform = "transform";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarTransform
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarTransform = "http://hl7.org/fhir/testscript-operation-codes#transform";
+
+    /// <summary>
     /// Literal for code: DollarTranslate
     /// </summary>
     public const string LiteralDollarTranslate = "translate";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarTranslate
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarTranslate = "http://hl7.org/fhir/testscript-operation-codes#translate";
 
     /// <summary>
     /// Literal for code: Update
@@ -735,9 +975,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUpdate = "update";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesUpdate
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesUpdate = "http://hl7.org/fhir/testscript-operation-codes#update";
+
+    /// <summary>
     /// Literal for code: CreateUsingUpdate
     /// </summary>
     public const string LiteralCreateUsingUpdate = "updateCreate";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesCreateUsingUpdate
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesCreateUsingUpdate = "http://hl7.org/fhir/testscript-operation-codes#updateCreate";
 
     /// <summary>
     /// Literal for code: DollarValidate
@@ -745,13 +995,140 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDollarValidate = "validate";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarValidate
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarValidate = "http://hl7.org/fhir/testscript-operation-codes#validate";
+
+    /// <summary>
     /// Literal for code: DollarValidateCode
     /// </summary>
     public const string LiteralDollarValidateCode = "validate-code";
 
     /// <summary>
+    /// Literal for code: TestscriptOperationCodesDollarValidateCode
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesDollarValidateCode = "http://hl7.org/fhir/testscript-operation-codes#validate-code";
+
+    /// <summary>
     /// Literal for code: VersionRead
     /// </summary>
     public const string LiteralVersionRead = "vread";
+
+    /// <summary>
+    /// Literal for code: TestscriptOperationCodesVersionRead
+    /// </summary>
+    public const string LiteralTestscriptOperationCodesVersionRead = "http://hl7.org/fhir/testscript-operation-codes#vread";
+
+    /// <summary>
+    /// Dictionary for looking up TestscriptOperationCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "apply", DollarApply }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#apply", DollarApply }, 
+      { "batch", Batch }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#batch", Batch }, 
+      { "cancel", DollarCancel }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#cancel", DollarCancel }, 
+      { "capabilities", Capabilities }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#capabilities", Capabilities }, 
+      { "closure", DollarClosure }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#closure", DollarClosure }, 
+      { "compose", DollarCompose }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#compose", DollarCompose }, 
+      { "conforms", DollarConforms }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#conforms", DollarConforms }, 
+      { "create", Create }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#create", Create }, 
+      { "data-requirements", DollarDataRequirements }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#data-requirements", DollarDataRequirements }, 
+      { "delete", Delete }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#delete", Delete }, 
+      { "deleteCondMultiple", ConditionalDeleteMultiple }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#deleteCondMultiple", ConditionalDeleteMultiple }, 
+      { "deleteCondSingle", ConditionalDeleteSingle }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#deleteCondSingle", ConditionalDeleteSingle }, 
+      { "document", DollarDocument }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#document", DollarDocument }, 
+      { "evaluate", DollarEvaluate }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#evaluate", DollarEvaluate }, 
+      { "evaluate-measure", DollarEvaluateMeasure }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#evaluate-measure", DollarEvaluateMeasure }, 
+      { "everything", DollarEverything }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#everything", DollarEverything }, 
+      { "expand", DollarExpand }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#expand", DollarExpand }, 
+      { "fail", DollarFail }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#fail", DollarFail }, 
+      { "find", DollarFind }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#find", DollarFind }, 
+      { "finish", DollarFinish }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#finish", DollarFinish }, 
+      { "history", History }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#history", History }, 
+      { "implements", DollarImplements }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#implements", DollarImplements }, 
+      { "lookup", DollarLookup }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#lookup", DollarLookup }, 
+      { "match", DollarMatch }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#match", DollarMatch }, 
+      { "meta", DollarMeta }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#meta", DollarMeta }, 
+      { "meta-add", DollarMetaAdd }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#meta-add", DollarMetaAdd }, 
+      { "meta-delete", DollarMetaDelete }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#meta-delete", DollarMetaDelete }, 
+      { "populate", DollarPopulate }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#populate", DollarPopulate }, 
+      { "populatehtml", DollarPopulatehtml }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#populatehtml", DollarPopulatehtml }, 
+      { "populatelink", DollarPopulatelink }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#populatelink", DollarPopulatelink }, 
+      { "process-message", DollarProcessMessage }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#process-message", DollarProcessMessage }, 
+      { "questionnaire", DollarQuestionnaire }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#questionnaire", DollarQuestionnaire }, 
+      { "read", Read }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#read", Read }, 
+      { "release", DollarRelease }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#release", DollarRelease }, 
+      { "reserve", DollarReserve }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#reserve", DollarReserve }, 
+      { "resume", DollarResume }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#resume", DollarResume }, 
+      { "search", Search }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#search", Search }, 
+      { "set-input", DollarSetInput }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#set-input", DollarSetInput }, 
+      { "set-output", DollarSetOutput }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#set-output", DollarSetOutput }, 
+      { "start", DollarStart }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#start", DollarStart }, 
+      { "stats", DollarStats }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#stats", DollarStats }, 
+      { "stop", DollarStop }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#stop", DollarStop }, 
+      { "subset", DollarSubset }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#subset", DollarSubset }, 
+      { "subsumes", DollarSubsumes }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#subsumes", DollarSubsumes }, 
+      { "suspend", DollarSuspend }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#suspend", DollarSuspend }, 
+      { "transaction", Transaction }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#transaction", Transaction }, 
+      { "transform", DollarTransform }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#transform", DollarTransform }, 
+      { "translate", DollarTranslate }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#translate", DollarTranslate }, 
+      { "update", Update }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#update", Update }, 
+      { "updateCreate", CreateUsingUpdate }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#updateCreate", CreateUsingUpdate }, 
+      { "validate", DollarValidate }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#validate", DollarValidate }, 
+      { "validate-code", DollarValidateCode }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#validate-code", DollarValidateCode }, 
+      { "vread", VersionRead }, 
+      { "http://hl7.org/fhir/testscript-operation-codes#vread", VersionRead }, 
+    };
   };
 }

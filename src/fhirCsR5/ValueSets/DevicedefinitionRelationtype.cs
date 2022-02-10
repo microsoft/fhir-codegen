@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralContainer = "container";
 
     /// <summary>
+    /// Literal for code: DevicedefinitionRelationtypeContainer
+    /// </summary>
+    public const string LiteralDevicedefinitionRelationtypeContainer = "http://hl7.org/fhir/devicedefinition-relationtype#container";
+
+    /// <summary>
     /// Literal for code: Gateway
     /// </summary>
     public const string LiteralGateway = "gateway";
+
+    /// <summary>
+    /// Literal for code: DevicedefinitionRelationtypeGateway
+    /// </summary>
+    public const string LiteralDevicedefinitionRelationtypeGateway = "http://hl7.org/fhir/devicedefinition-relationtype#gateway";
 
     /// <summary>
     /// Literal for code: Previous
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPrevious = "previous";
 
     /// <summary>
+    /// Literal for code: DevicedefinitionRelationtypePrevious
+    /// </summary>
+    public const string LiteralDevicedefinitionRelationtypePrevious = "http://hl7.org/fhir/devicedefinition-relationtype#previous";
+
+    /// <summary>
     /// Literal for code: Replaces
     /// </summary>
     public const string LiteralReplaces = "replaces";
 
     /// <summary>
+    /// Literal for code: DevicedefinitionRelationtypeReplaces
+    /// </summary>
+    public const string LiteralDevicedefinitionRelationtypeReplaces = "http://hl7.org/fhir/devicedefinition-relationtype#replaces";
+
+    /// <summary>
     /// Literal for code: Supported
     /// </summary>
     public const string LiteralSupported = "supported";
+
+    /// <summary>
+    /// Literal for code: DevicedefinitionRelationtypeSupported
+    /// </summary>
+    public const string LiteralDevicedefinitionRelationtypeSupported = "http://hl7.org/fhir/devicedefinition-relationtype#supported";
+
+    /// <summary>
+    /// Dictionary for looking up DevicedefinitionRelationtype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "container", Container }, 
+      { "http://hl7.org/fhir/devicedefinition-relationtype#container", Container }, 
+      { "gateway", Gateway }, 
+      { "http://hl7.org/fhir/devicedefinition-relationtype#gateway", Gateway }, 
+      { "previous", Previous }, 
+      { "http://hl7.org/fhir/devicedefinition-relationtype#previous", Previous }, 
+      { "replaces", Replaces }, 
+      { "http://hl7.org/fhir/devicedefinition-relationtype#replaces", Replaces }, 
+      { "supported", Supported }, 
+      { "http://hl7.org/fhir/devicedefinition-relationtype#supported", Supported }, 
+    };
   };
 }

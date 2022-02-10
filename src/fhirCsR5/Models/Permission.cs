@@ -776,5 +776,11 @@ namespace fhirCsR5.Models
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string DRAFT = "draft";
     public const string REJECTED = "rejected";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "entered-in-error",
+      "draft",
+      "rejected",
+    };
   }
 }

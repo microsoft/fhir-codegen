@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralComplete = "complete";
 
     /// <summary>
+    /// Literal for code: ExPaymenttypeComplete
+    /// </summary>
+    public const string LiteralExPaymenttypeComplete = "http://terminology.hl7.org/CodeSystem/ex-paymenttype#complete";
+
+    /// <summary>
     /// Literal for code: Partial
     /// </summary>
     public const string LiteralPartial = "partial";
+
+    /// <summary>
+    /// Literal for code: ExPaymenttypePartial
+    /// </summary>
+    public const string LiteralExPaymenttypePartial = "http://terminology.hl7.org/CodeSystem/ex-paymenttype#partial";
+
+    /// <summary>
+    /// Dictionary for looking up ExPaymenttype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", Complete }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-paymenttype#complete", Complete }, 
+      { "partial", Partial }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-paymenttype#partial", Partial }, 
+    };
   };
 }

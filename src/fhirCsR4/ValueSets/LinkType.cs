@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRefer = "refer";
 
     /// <summary>
+    /// Literal for code: LinkTypeRefer
+    /// </summary>
+    public const string LiteralLinkTypeRefer = "http://hl7.org/fhir/link-type#refer";
+
+    /// <summary>
     /// Literal for code: ReplacedBy
     /// </summary>
     public const string LiteralReplacedBy = "replaced-by";
+
+    /// <summary>
+    /// Literal for code: LinkTypeReplacedBy
+    /// </summary>
+    public const string LiteralLinkTypeReplacedBy = "http://hl7.org/fhir/link-type#replaced-by";
 
     /// <summary>
     /// Literal for code: Replaces
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReplaces = "replaces";
 
     /// <summary>
+    /// Literal for code: LinkTypeReplaces
+    /// </summary>
+    public const string LiteralLinkTypeReplaces = "http://hl7.org/fhir/link-type#replaces";
+
+    /// <summary>
     /// Literal for code: SeeAlso
     /// </summary>
     public const string LiteralSeeAlso = "seealso";
+
+    /// <summary>
+    /// Literal for code: LinkTypeSeeAlso
+    /// </summary>
+    public const string LiteralLinkTypeSeeAlso = "http://hl7.org/fhir/link-type#seealso";
+
+    /// <summary>
+    /// Dictionary for looking up LinkType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "refer", Refer }, 
+      { "http://hl7.org/fhir/link-type#refer", Refer }, 
+      { "replaced-by", ReplacedBy }, 
+      { "http://hl7.org/fhir/link-type#replaced-by", ReplacedBy }, 
+      { "replaces", Replaces }, 
+      { "http://hl7.org/fhir/link-type#replaces", Replaces }, 
+      { "seealso", SeeAlso }, 
+      { "http://hl7.org/fhir/link-type#seealso", SeeAlso }, 
+    };
   };
 }

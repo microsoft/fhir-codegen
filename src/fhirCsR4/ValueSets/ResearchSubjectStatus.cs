@@ -137,9 +137,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCandidate = "candidate";
 
     /// <summary>
+    /// Literal for code: ResearchSubjectStatusCandidate
+    /// </summary>
+    public const string LiteralResearchSubjectStatusCandidate = "http://hl7.org/fhir/research-subject-status#candidate";
+
+    /// <summary>
     /// Literal for code: Eligible
     /// </summary>
     public const string LiteralEligible = "eligible";
+
+    /// <summary>
+    /// Literal for code: ResearchSubjectStatusEligible
+    /// </summary>
+    public const string LiteralResearchSubjectStatusEligible = "http://hl7.org/fhir/research-subject-status#eligible";
 
     /// <summary>
     /// Literal for code: FollowUp
@@ -147,9 +157,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFollowUp = "follow-up";
 
     /// <summary>
+    /// Literal for code: ResearchSubjectStatusFollowUp
+    /// </summary>
+    public const string LiteralResearchSubjectStatusFollowUp = "http://hl7.org/fhir/research-subject-status#follow-up";
+
+    /// <summary>
     /// Literal for code: Ineligible
     /// </summary>
     public const string LiteralIneligible = "ineligible";
+
+    /// <summary>
+    /// Literal for code: ResearchSubjectStatusIneligible
+    /// </summary>
+    public const string LiteralResearchSubjectStatusIneligible = "http://hl7.org/fhir/research-subject-status#ineligible";
 
     /// <summary>
     /// Literal for code: NotRegistered
@@ -157,9 +177,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNotRegistered = "not-registered";
 
     /// <summary>
+    /// Literal for code: ResearchSubjectStatusNotRegistered
+    /// </summary>
+    public const string LiteralResearchSubjectStatusNotRegistered = "http://hl7.org/fhir/research-subject-status#not-registered";
+
+    /// <summary>
     /// Literal for code: OffStudy
     /// </summary>
     public const string LiteralOffStudy = "off-study";
+
+    /// <summary>
+    /// Literal for code: ResearchSubjectStatusOffStudy
+    /// </summary>
+    public const string LiteralResearchSubjectStatusOffStudy = "http://hl7.org/fhir/research-subject-status#off-study";
 
     /// <summary>
     /// Literal for code: OnStudy
@@ -167,9 +197,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOnStudy = "on-study";
 
     /// <summary>
+    /// Literal for code: ResearchSubjectStatusOnStudy
+    /// </summary>
+    public const string LiteralResearchSubjectStatusOnStudy = "http://hl7.org/fhir/research-subject-status#on-study";
+
+    /// <summary>
     /// Literal for code: OnStudyIntervention
     /// </summary>
     public const string LiteralOnStudyIntervention = "on-study-intervention";
+
+    /// <summary>
+    /// Literal for code: ResearchSubjectStatusOnStudyIntervention
+    /// </summary>
+    public const string LiteralResearchSubjectStatusOnStudyIntervention = "http://hl7.org/fhir/research-subject-status#on-study-intervention";
 
     /// <summary>
     /// Literal for code: OnStudyObservation
@@ -177,9 +217,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOnStudyObservation = "on-study-observation";
 
     /// <summary>
+    /// Literal for code: ResearchSubjectStatusOnStudyObservation
+    /// </summary>
+    public const string LiteralResearchSubjectStatusOnStudyObservation = "http://hl7.org/fhir/research-subject-status#on-study-observation";
+
+    /// <summary>
     /// Literal for code: PendingOnStudy
     /// </summary>
     public const string LiteralPendingOnStudy = "pending-on-study";
+
+    /// <summary>
+    /// Literal for code: ResearchSubjectStatusPendingOnStudy
+    /// </summary>
+    public const string LiteralResearchSubjectStatusPendingOnStudy = "http://hl7.org/fhir/research-subject-status#pending-on-study";
 
     /// <summary>
     /// Literal for code: PotentialCandidate
@@ -187,13 +237,60 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPotentialCandidate = "potential-candidate";
 
     /// <summary>
+    /// Literal for code: ResearchSubjectStatusPotentialCandidate
+    /// </summary>
+    public const string LiteralResearchSubjectStatusPotentialCandidate = "http://hl7.org/fhir/research-subject-status#potential-candidate";
+
+    /// <summary>
     /// Literal for code: Screening
     /// </summary>
     public const string LiteralScreening = "screening";
 
     /// <summary>
+    /// Literal for code: ResearchSubjectStatusScreening
+    /// </summary>
+    public const string LiteralResearchSubjectStatusScreening = "http://hl7.org/fhir/research-subject-status#screening";
+
+    /// <summary>
     /// Literal for code: Withdrawn
     /// </summary>
     public const string LiteralWithdrawn = "withdrawn";
+
+    /// <summary>
+    /// Literal for code: ResearchSubjectStatusWithdrawn
+    /// </summary>
+    public const string LiteralResearchSubjectStatusWithdrawn = "http://hl7.org/fhir/research-subject-status#withdrawn";
+
+    /// <summary>
+    /// Dictionary for looking up ResearchSubjectStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "candidate", Candidate }, 
+      { "http://hl7.org/fhir/research-subject-status#candidate", Candidate }, 
+      { "eligible", Eligible }, 
+      { "http://hl7.org/fhir/research-subject-status#eligible", Eligible }, 
+      { "follow-up", FollowUp }, 
+      { "http://hl7.org/fhir/research-subject-status#follow-up", FollowUp }, 
+      { "ineligible", Ineligible }, 
+      { "http://hl7.org/fhir/research-subject-status#ineligible", Ineligible }, 
+      { "not-registered", NotRegistered }, 
+      { "http://hl7.org/fhir/research-subject-status#not-registered", NotRegistered }, 
+      { "off-study", OffStudy }, 
+      { "http://hl7.org/fhir/research-subject-status#off-study", OffStudy }, 
+      { "on-study", OnStudy }, 
+      { "http://hl7.org/fhir/research-subject-status#on-study", OnStudy }, 
+      { "on-study-intervention", OnStudyIntervention }, 
+      { "http://hl7.org/fhir/research-subject-status#on-study-intervention", OnStudyIntervention }, 
+      { "on-study-observation", OnStudyObservation }, 
+      { "http://hl7.org/fhir/research-subject-status#on-study-observation", OnStudyObservation }, 
+      { "pending-on-study", PendingOnStudy }, 
+      { "http://hl7.org/fhir/research-subject-status#pending-on-study", PendingOnStudy }, 
+      { "potential-candidate", PotentialCandidate }, 
+      { "http://hl7.org/fhir/research-subject-status#potential-candidate", PotentialCandidate }, 
+      { "screening", Screening }, 
+      { "http://hl7.org/fhir/research-subject-status#screening", Screening }, 
+      { "withdrawn", Withdrawn }, 
+      { "http://hl7.org/fhir/research-subject-status#withdrawn", Withdrawn }, 
+    };
   };
 }

@@ -219,9 +219,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralActInvoiceInterGroupCode = "_ActInvoiceInterGroupCode";
 
     /// <summary>
+    /// Literal for code: V3ActCodeActInvoiceInterGroupCode
+    /// </summary>
+    public const string LiteralV3ActCodeActInvoiceInterGroupCode = "http://hl7.org/fhir/v3/ActCode#_ActInvoiceInterGroupCode";
+
+    /// <summary>
     /// Literal for code: ActInvoiceRootGroupCode
     /// </summary>
     public const string LiteralActInvoiceRootGroupCode = "_ActInvoiceRootGroupCode";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeActInvoiceRootGroupCode
+    /// </summary>
+    public const string LiteralV3ActCodeActInvoiceRootGroupCode = "http://hl7.org/fhir/v3/ActCode#_ActInvoiceRootGroupCode";
 
     /// <summary>
     /// Literal for code: ClinicalProductInvoice
@@ -229,9 +239,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClinicalProductInvoice = "CPINV";
 
     /// <summary>
+    /// Literal for code: V3ActCodeClinicalProductInvoice
+    /// </summary>
+    public const string LiteralV3ActCodeClinicalProductInvoice = "http://hl7.org/fhir/v3/ActCode#CPINV";
+
+    /// <summary>
     /// Literal for code: CompoundDrugInvoiceGroup
     /// </summary>
     public const string LiteralCompoundDrugInvoiceGroup = "CPNDDRGING";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCompoundDrugInvoiceGroup
+    /// </summary>
+    public const string LiteralV3ActCodeCompoundDrugInvoiceGroup = "http://hl7.org/fhir/v3/ActCode#CPNDDRGING";
 
     /// <summary>
     /// Literal for code: CompoundIngredientInvoiceGroup
@@ -239,9 +259,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCompoundIngredientInvoiceGroup = "CPNDINDING";
 
     /// <summary>
+    /// Literal for code: V3ActCodeCompoundIngredientInvoiceGroup
+    /// </summary>
+    public const string LiteralV3ActCodeCompoundIngredientInvoiceGroup = "http://hl7.org/fhir/v3/ActCode#CPNDINDING";
+
+    /// <summary>
     /// Literal for code: CompoundSupplyInvoiceGroup
     /// </summary>
     public const string LiteralCompoundSupplyInvoiceGroup = "CPNDSUPING";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCompoundSupplyInvoiceGroup
+    /// </summary>
+    public const string LiteralV3ActCodeCompoundSupplyInvoiceGroup = "http://hl7.org/fhir/v3/ActCode#CPNDSUPING";
 
     /// <summary>
     /// Literal for code: ClinicalServiceInvoice
@@ -249,9 +279,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClinicalServiceInvoice = "CSINV";
 
     /// <summary>
+    /// Literal for code: V3ActCodeClinicalServiceInvoice
+    /// </summary>
+    public const string LiteralV3ActCodeClinicalServiceInvoice = "http://hl7.org/fhir/v3/ActCode#CSINV";
+
+    /// <summary>
     /// Literal for code: ClinicalServiceAndProduct
     /// </summary>
     public const string LiteralClinicalServiceAndProduct = "CSPINV";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeClinicalServiceAndProduct
+    /// </summary>
+    public const string LiteralV3ActCodeClinicalServiceAndProduct = "http://hl7.org/fhir/v3/ActCode#CSPINV";
 
     /// <summary>
     /// Literal for code: DrugInvoiceGroup
@@ -259,9 +299,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrugInvoiceGroup = "DRUGING";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDrugInvoiceGroup
+    /// </summary>
+    public const string LiteralV3ActCodeDrugInvoiceGroup = "http://hl7.org/fhir/v3/ActCode#DRUGING";
+
+    /// <summary>
     /// Literal for code: FinancialInvoice
     /// </summary>
     public const string LiteralFinancialInvoice = "FININV";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeFinancialInvoice
+    /// </summary>
+    public const string LiteralV3ActCodeFinancialInvoice = "http://hl7.org/fhir/v3/ActCode#FININV";
 
     /// <summary>
     /// Literal for code: FrameInvoiceGroup
@@ -269,9 +319,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFrameInvoiceGroup = "FRAMEING";
 
     /// <summary>
+    /// Literal for code: V3ActCodeFrameInvoiceGroup
+    /// </summary>
+    public const string LiteralV3ActCodeFrameInvoiceGroup = "http://hl7.org/fhir/v3/ActCode#FRAMEING";
+
+    /// <summary>
     /// Literal for code: LensInvoiceGroup
     /// </summary>
     public const string LiteralLensInvoiceGroup = "LENSING";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeLensInvoiceGroup
+    /// </summary>
+    public const string LiteralV3ActCodeLensInvoiceGroup = "http://hl7.org/fhir/v3/ActCode#LENSING";
 
     /// <summary>
     /// Literal for code: OralHealthService
@@ -279,9 +339,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOralHealthService = "OHSINV";
 
     /// <summary>
+    /// Literal for code: V3ActCodeOralHealthService
+    /// </summary>
+    public const string LiteralV3ActCodeOralHealthService = "http://hl7.org/fhir/v3/ActCode#OHSINV";
+
+    /// <summary>
     /// Literal for code: PreferredAccommodationInvoice
     /// </summary>
     public const string LiteralPreferredAccommodationInvoice = "PAINV";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePreferredAccommodationInvoice
+    /// </summary>
+    public const string LiteralV3ActCodePreferredAccommodationInvoice = "http://hl7.org/fhir/v3/ActCode#PAINV";
 
     /// <summary>
     /// Literal for code: ProductInvoiceGroup
@@ -289,9 +359,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProductInvoiceGroup = "PRDING";
 
     /// <summary>
+    /// Literal for code: V3ActCodeProductInvoiceGroup
+    /// </summary>
+    public const string LiteralV3ActCodeProductInvoiceGroup = "http://hl7.org/fhir/v3/ActCode#PRDING";
+
+    /// <summary>
     /// Literal for code: RxCompoundInvoice
     /// </summary>
     public const string LiteralRxCompoundInvoice = "RXCINV";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeRxCompoundInvoice
+    /// </summary>
+    public const string LiteralV3ActCodeRxCompoundInvoice = "http://hl7.org/fhir/v3/ActCode#RXCINV";
 
     /// <summary>
     /// Literal for code: RxDispenseInvoice
@@ -299,13 +379,72 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRxDispenseInvoice = "RXDINV";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRxDispenseInvoice
+    /// </summary>
+    public const string LiteralV3ActCodeRxDispenseInvoice = "http://hl7.org/fhir/v3/ActCode#RXDINV";
+
+    /// <summary>
     /// Literal for code: SessionalOrBlockFeeInvoice
     /// </summary>
     public const string LiteralSessionalOrBlockFeeInvoice = "SBFINV";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSessionalOrBlockFeeInvoice
+    /// </summary>
+    public const string LiteralV3ActCodeSessionalOrBlockFeeInvoice = "http://hl7.org/fhir/v3/ActCode#SBFINV";
+
+    /// <summary>
     /// Literal for code: VisionDispenseInvoice
     /// </summary>
     public const string LiteralVisionDispenseInvoice = "VRXINV";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeVisionDispenseInvoice
+    /// </summary>
+    public const string LiteralV3ActCodeVisionDispenseInvoice = "http://hl7.org/fhir/v3/ActCode#VRXINV";
+
+    /// <summary>
+    /// Dictionary for looking up V3ActInvoiceGroupCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "_ActInvoiceInterGroupCode", ActInvoiceInterGroupCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#_ActInvoiceInterGroupCode", ActInvoiceInterGroupCode }, 
+      { "_ActInvoiceRootGroupCode", ActInvoiceRootGroupCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#_ActInvoiceRootGroupCode", ActInvoiceRootGroupCode }, 
+      { "CPINV", ClinicalProductInvoice }, 
+      { "http://hl7.org/fhir/v3/ActCode#CPINV", ClinicalProductInvoice }, 
+      { "CPNDDRGING", CompoundDrugInvoiceGroup }, 
+      { "http://hl7.org/fhir/v3/ActCode#CPNDDRGING", CompoundDrugInvoiceGroup }, 
+      { "CPNDINDING", CompoundIngredientInvoiceGroup }, 
+      { "http://hl7.org/fhir/v3/ActCode#CPNDINDING", CompoundIngredientInvoiceGroup }, 
+      { "CPNDSUPING", CompoundSupplyInvoiceGroup }, 
+      { "http://hl7.org/fhir/v3/ActCode#CPNDSUPING", CompoundSupplyInvoiceGroup }, 
+      { "CSINV", ClinicalServiceInvoice }, 
+      { "http://hl7.org/fhir/v3/ActCode#CSINV", ClinicalServiceInvoice }, 
+      { "CSPINV", ClinicalServiceAndProduct }, 
+      { "http://hl7.org/fhir/v3/ActCode#CSPINV", ClinicalServiceAndProduct }, 
+      { "DRUGING", DrugInvoiceGroup }, 
+      { "http://hl7.org/fhir/v3/ActCode#DRUGING", DrugInvoiceGroup }, 
+      { "FININV", FinancialInvoice }, 
+      { "http://hl7.org/fhir/v3/ActCode#FININV", FinancialInvoice }, 
+      { "FRAMEING", FrameInvoiceGroup }, 
+      { "http://hl7.org/fhir/v3/ActCode#FRAMEING", FrameInvoiceGroup }, 
+      { "LENSING", LensInvoiceGroup }, 
+      { "http://hl7.org/fhir/v3/ActCode#LENSING", LensInvoiceGroup }, 
+      { "OHSINV", OralHealthService }, 
+      { "http://hl7.org/fhir/v3/ActCode#OHSINV", OralHealthService }, 
+      { "PAINV", PreferredAccommodationInvoice }, 
+      { "http://hl7.org/fhir/v3/ActCode#PAINV", PreferredAccommodationInvoice }, 
+      { "PRDING", ProductInvoiceGroup }, 
+      { "http://hl7.org/fhir/v3/ActCode#PRDING", ProductInvoiceGroup }, 
+      { "RXCINV", RxCompoundInvoice }, 
+      { "http://hl7.org/fhir/v3/ActCode#RXCINV", RxCompoundInvoice }, 
+      { "RXDINV", RxDispenseInvoice }, 
+      { "http://hl7.org/fhir/v3/ActCode#RXDINV", RxDispenseInvoice }, 
+      { "SBFINV", SessionalOrBlockFeeInvoice }, 
+      { "http://hl7.org/fhir/v3/ActCode#SBFINV", SessionalOrBlockFeeInvoice }, 
+      { "VRXINV", VisionDispenseInvoice }, 
+      { "http://hl7.org/fhir/v3/ActCode#VRXINV", VisionDispenseInvoice }, 
+    };
   };
 }

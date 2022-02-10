@@ -63,9 +63,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInstitutional = "institutional";
 
     /// <summary>
+    /// Literal for code: ClaimTypeInstitutional
+    /// </summary>
+    public const string LiteralClaimTypeInstitutional = "http://hl7.org/fhir/ex-claimtype#institutional";
+
+    /// <summary>
     /// Literal for code: Oral
     /// </summary>
     public const string LiteralOral = "oral";
+
+    /// <summary>
+    /// Literal for code: ClaimTypeOral
+    /// </summary>
+    public const string LiteralClaimTypeOral = "http://hl7.org/fhir/ex-claimtype#oral";
 
     /// <summary>
     /// Literal for code: Pharmacy
@@ -73,13 +83,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPharmacy = "pharmacy";
 
     /// <summary>
+    /// Literal for code: ClaimTypePharmacy
+    /// </summary>
+    public const string LiteralClaimTypePharmacy = "http://hl7.org/fhir/ex-claimtype#pharmacy";
+
+    /// <summary>
     /// Literal for code: Professional
     /// </summary>
     public const string LiteralProfessional = "professional";
 
     /// <summary>
+    /// Literal for code: ClaimTypeProfessional
+    /// </summary>
+    public const string LiteralClaimTypeProfessional = "http://hl7.org/fhir/ex-claimtype#professional";
+
+    /// <summary>
     /// Literal for code: Vision
     /// </summary>
     public const string LiteralVision = "vision";
+
+    /// <summary>
+    /// Literal for code: ClaimTypeVision
+    /// </summary>
+    public const string LiteralClaimTypeVision = "http://hl7.org/fhir/ex-claimtype#vision";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "institutional", Institutional }, 
+      { "http://hl7.org/fhir/ex-claimtype#institutional", Institutional }, 
+      { "oral", Oral }, 
+      { "http://hl7.org/fhir/ex-claimtype#oral", Oral }, 
+      { "pharmacy", Pharmacy }, 
+      { "http://hl7.org/fhir/ex-claimtype#pharmacy", Pharmacy }, 
+      { "professional", Professional }, 
+      { "http://hl7.org/fhir/ex-claimtype#professional", Professional }, 
+      { "vision", Vision }, 
+      { "http://hl7.org/fhir/ex-claimtype#vision", Vision }, 
+    };
   };
 }

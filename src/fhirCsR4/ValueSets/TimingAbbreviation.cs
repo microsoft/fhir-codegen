@@ -162,9 +162,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAM = "AM";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationAM
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationAM = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#AM";
+
+    /// <summary>
     /// Literal for code: AtBedtime
     /// </summary>
     public const string LiteralAtBedtime = "BED";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationAtBedtime
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationAtBedtime = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#BED";
 
     /// <summary>
     /// Literal for code: BID
@@ -172,9 +182,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBID = "BID";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationBID
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationBID = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#BID";
+
+    /// <summary>
     /// Literal for code: Monthly
     /// </summary>
     public const string LiteralMonthly = "MO";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationMonthly
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationMonthly = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#MO";
 
     /// <summary>
     /// Literal for code: PM
@@ -182,9 +202,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPM = "PM";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationPM
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationPM = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#PM";
+
+    /// <summary>
     /// Literal for code: EveryHour
     /// </summary>
     public const string LiteralEveryHour = "Q1H";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationEveryHour
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationEveryHour = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q1H";
 
     /// <summary>
     /// Literal for code: Every2Hours
@@ -192,9 +222,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEvery2Hours = "Q2H";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationEvery2Hours
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationEvery2Hours = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q2H";
+
+    /// <summary>
     /// Literal for code: Every3Hours
     /// </summary>
     public const string LiteralEvery3Hours = "Q3H";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationEvery3Hours
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationEvery3Hours = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q3H";
 
     /// <summary>
     /// Literal for code: Q4H
@@ -202,9 +242,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralQ4H = "Q4H";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationQ4H
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationQ4H = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q4H";
+
+    /// <summary>
     /// Literal for code: Q6H
     /// </summary>
     public const string LiteralQ6H = "Q6H";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationQ6H
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationQ6H = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q6H";
 
     /// <summary>
     /// Literal for code: Every8Hours
@@ -212,9 +262,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEvery8Hours = "Q8H";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationEvery8Hours
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationEvery8Hours = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q8H";
+
+    /// <summary>
     /// Literal for code: QD
     /// </summary>
     public const string LiteralQD = "QD";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationQD
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationQD = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#QD";
 
     /// <summary>
     /// Literal for code: QID
@@ -222,9 +282,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralQID = "QID";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationQID
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationQID = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#QID";
+
+    /// <summary>
     /// Literal for code: QOD
     /// </summary>
     public const string LiteralQOD = "QOD";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationQOD
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationQOD = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#QOD";
 
     /// <summary>
     /// Literal for code: TID
@@ -232,8 +302,56 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTID = "TID";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationTID
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationTID = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#TID";
+
+    /// <summary>
     /// Literal for code: Weekly
     /// </summary>
     public const string LiteralWeekly = "WK";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationWeekly
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationWeekly = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#WK";
+
+    /// <summary>
+    /// Dictionary for looking up TimingAbbreviation Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "AM", AM }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#AM", AM }, 
+      { "BED", AtBedtime }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#BED", AtBedtime }, 
+      { "BID", BID }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#BID", BID }, 
+      { "MO", Monthly }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#MO", Monthly }, 
+      { "PM", PM }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#PM", PM }, 
+      { "Q1H", EveryHour }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q1H", EveryHour }, 
+      { "Q2H", Every2Hours }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q2H", Every2Hours }, 
+      { "Q3H", Every3Hours }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q3H", Every3Hours }, 
+      { "Q4H", Q4H }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q4H", Q4H }, 
+      { "Q6H", Q6H }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q6H", Q6H }, 
+      { "Q8H", Every8Hours }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q8H", Every8Hours }, 
+      { "QD", QD }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#QD", QD }, 
+      { "QID", QID }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#QID", QID }, 
+      { "QOD", QOD }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#QOD", QOD }, 
+      { "TID", TID }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#TID", TID }, 
+      { "WK", Weekly }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#WK", Weekly }, 
+    };
   };
 }

@@ -556,6 +556,17 @@ namespace fhirCsR2.Models
     public const string INEXACT = "inexact";
     public const string UNMATCHED = "unmatched";
     public const string DISJOINT = "disjoint";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "equivalent",
+      "equal",
+      "wider",
+      "subsumes",
+      "narrower",
+      "specializes",
+      "inexact",
+      "unmatched",
+      "disjoint",
+    };
   }
   /// <summary>
   /// Mappings for an individual concept in the source to one or more concepts in the target.
@@ -1305,5 +1316,10 @@ namespace fhirCsR2.Models
     public const string DRAFT = "draft";
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+    };
   }
 }

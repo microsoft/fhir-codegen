@@ -36,8 +36,28 @@ namespace fhirCsR2.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: AccountStatusActive
+    /// </summary>
+    public const string LiteralAccountStatusActive = "http://hl7.org/fhir/account-status#active";
+
+    /// <summary>
     /// Literal for code: Inactive
     /// </summary>
     public const string LiteralInactive = "inactive";
+
+    /// <summary>
+    /// Literal for code: AccountStatusInactive
+    /// </summary>
+    public const string LiteralAccountStatusInactive = "http://hl7.org/fhir/account-status#inactive";
+
+    /// <summary>
+    /// Dictionary for looking up AccountStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/account-status#active", Active }, 
+      { "inactive", Inactive }, 
+      { "http://hl7.org/fhir/account-status#inactive", Inactive }, 
+    };
   };
 }

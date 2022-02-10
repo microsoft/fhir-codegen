@@ -36,6 +36,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? DoNotPerform { get; set; }
     /// <summary>
+    /// Extension container element for DoNotPerform
+    /// </summary>
+    public Element _DoNotPerform { get; set; }
+    /// <summary>
     /// Internal reference that identifies the goals that this activity is intended to contribute towards meeting.
     /// </summary>
     public List<Reference> Goal { get; set; }
@@ -261,6 +265,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("doNotPerform", (bool)DoNotPerform!);
       }
 
+      if (_DoNotPerform != null)
+      {
+        writer.WritePropertyName("_doNotPerform");
+        _DoNotPerform.SerializeJson(writer, options);
+      }
+
       if (ScheduledTiming != null)
       {
         writer.WritePropertyName("scheduledTiming");
@@ -371,6 +381,11 @@ namespace fhirCsR4B.Models
 
         case "doNotPerform":
           DoNotPerform = reader.GetBoolean();
+          break;
+
+        case "_doNotPerform":
+          _DoNotPerform = new fhirCsR4B.Models.Element();
+          _DoNotPerform.DeserializeJson(ref reader, options);
           break;
 
         case "goal":
@@ -690,6 +705,16 @@ namespace fhirCsR4B.Models
     public const string TASK = "Task";
     public const string SERVICEREQUEST = "ServiceRequest";
     public const string VISIONPRESCRIPTION = "VisionPrescription";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "Appointment",
+      "CommunicationRequest",
+      "DeviceRequest",
+      "MedicationRequest",
+      "NutritionOrder",
+      "Task",
+      "ServiceRequest",
+      "VisionPrescription",
+    };
   }
   /// <summary>
   /// Code Values for the CarePlan.activity.detail.status field
@@ -704,6 +729,17 @@ namespace fhirCsR4B.Models
     public const string STOPPED = "stopped";
     public const string UNKNOWN = "unknown";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "not-started",
+      "scheduled",
+      "in-progress",
+      "on-hold",
+      "completed",
+      "cancelled",
+      "stopped",
+      "unknown",
+      "entered-in-error",
+    };
   }
   /// <summary>
   /// Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.
@@ -1905,6 +1941,12 @@ namespace fhirCsR4B.Models
     public const string PLAN = "plan";
     public const string ORDER = "order";
     public const string OPTION = "option";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposal",
+      "plan",
+      "order",
+      "option",
+    };
   }
   /// <summary>
   /// Code Values for the CarePlan.status field
@@ -1917,5 +1959,14 @@ namespace fhirCsR4B.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "on-hold",
+      "revoked",
+      "completed",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

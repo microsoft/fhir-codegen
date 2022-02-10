@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComplete = "complete";
 
     /// <summary>
+    /// Literal for code: ClaimUseComplete
+    /// </summary>
+    public const string LiteralClaimUseComplete = "http://hl7.org/fhir/claim-use#complete";
+
+    /// <summary>
     /// Literal for code: Exploratory
     /// </summary>
     public const string LiteralExploratory = "exploratory";
+
+    /// <summary>
+    /// Literal for code: ClaimUseExploratory
+    /// </summary>
+    public const string LiteralClaimUseExploratory = "http://hl7.org/fhir/claim-use#exploratory";
 
     /// <summary>
     /// Literal for code: Other
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOther = "other";
 
     /// <summary>
+    /// Literal for code: ClaimUseOther
+    /// </summary>
+    public const string LiteralClaimUseOther = "http://hl7.org/fhir/claim-use#other";
+
+    /// <summary>
     /// Literal for code: Proposed
     /// </summary>
     public const string LiteralProposed = "proposed";
+
+    /// <summary>
+    /// Literal for code: ClaimUseProposed
+    /// </summary>
+    public const string LiteralClaimUseProposed = "http://hl7.org/fhir/claim-use#proposed";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimUse Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", Complete }, 
+      { "http://hl7.org/fhir/claim-use#complete", Complete }, 
+      { "exploratory", Exploratory }, 
+      { "http://hl7.org/fhir/claim-use#exploratory", Exploratory }, 
+      { "other", Other }, 
+      { "http://hl7.org/fhir/claim-use#other", Other }, 
+      { "proposed", Proposed }, 
+      { "http://hl7.org/fhir/claim-use#proposed", Proposed }, 
+    };
   };
 }

@@ -117,9 +117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEquals = "=";
 
     /// <summary>
+    /// Literal for code: FilterOperatorEquals
+    /// </summary>
+    public const string LiteralFilterOperatorEquals = "http://hl7.org/fhir/filter-operator#=";
+
+    /// <summary>
     /// Literal for code: ChildOf
     /// </summary>
     public const string LiteralChildOf = "child-of";
+
+    /// <summary>
+    /// Literal for code: FilterOperatorChildOf
+    /// </summary>
+    public const string LiteralFilterOperatorChildOf = "http://hl7.org/fhir/filter-operator#child-of";
 
     /// <summary>
     /// Literal for code: DescendentLeaf
@@ -127,9 +137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDescendentLeaf = "descendent-leaf";
 
     /// <summary>
+    /// Literal for code: FilterOperatorDescendentLeaf
+    /// </summary>
+    public const string LiteralFilterOperatorDescendentLeaf = "http://hl7.org/fhir/filter-operator#descendent-leaf";
+
+    /// <summary>
     /// Literal for code: DescendentOfBySubsumption
     /// </summary>
     public const string LiteralDescendentOfBySubsumption = "descendent-of";
+
+    /// <summary>
+    /// Literal for code: FilterOperatorDescendentOfBySubsumption
+    /// </summary>
+    public const string LiteralFilterOperatorDescendentOfBySubsumption = "http://hl7.org/fhir/filter-operator#descendent-of";
 
     /// <summary>
     /// Literal for code: Exists
@@ -137,9 +157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralExists = "exists";
 
     /// <summary>
+    /// Literal for code: FilterOperatorExists
+    /// </summary>
+    public const string LiteralFilterOperatorExists = "http://hl7.org/fhir/filter-operator#exists";
+
+    /// <summary>
     /// Literal for code: GeneralizesBySubsumption
     /// </summary>
     public const string LiteralGeneralizesBySubsumption = "generalizes";
+
+    /// <summary>
+    /// Literal for code: FilterOperatorGeneralizesBySubsumption
+    /// </summary>
+    public const string LiteralFilterOperatorGeneralizesBySubsumption = "http://hl7.org/fhir/filter-operator#generalizes";
 
     /// <summary>
     /// Literal for code: InSet
@@ -147,9 +177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInSet = "in";
 
     /// <summary>
+    /// Literal for code: FilterOperatorInSet
+    /// </summary>
+    public const string LiteralFilterOperatorInSet = "http://hl7.org/fhir/filter-operator#in";
+
+    /// <summary>
     /// Literal for code: IsABySubsumption
     /// </summary>
     public const string LiteralIsABySubsumption = "is-a";
+
+    /// <summary>
+    /// Literal for code: FilterOperatorIsABySubsumption
+    /// </summary>
+    public const string LiteralFilterOperatorIsABySubsumption = "http://hl7.org/fhir/filter-operator#is-a";
 
     /// <summary>
     /// Literal for code: NotIsABySubsumption
@@ -157,13 +197,56 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotIsABySubsumption = "is-not-a";
 
     /// <summary>
+    /// Literal for code: FilterOperatorNotIsABySubsumption
+    /// </summary>
+    public const string LiteralFilterOperatorNotIsABySubsumption = "http://hl7.org/fhir/filter-operator#is-not-a";
+
+    /// <summary>
     /// Literal for code: NotInSet
     /// </summary>
     public const string LiteralNotInSet = "not-in";
 
     /// <summary>
+    /// Literal for code: FilterOperatorNotInSet
+    /// </summary>
+    public const string LiteralFilterOperatorNotInSet = "http://hl7.org/fhir/filter-operator#not-in";
+
+    /// <summary>
     /// Literal for code: RegularExpression
     /// </summary>
     public const string LiteralRegularExpression = "regex";
+
+    /// <summary>
+    /// Literal for code: FilterOperatorRegularExpression
+    /// </summary>
+    public const string LiteralFilterOperatorRegularExpression = "http://hl7.org/fhir/filter-operator#regex";
+
+    /// <summary>
+    /// Dictionary for looking up FilterOperator Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "=", Equals }, 
+      { "http://hl7.org/fhir/filter-operator#=", Equals }, 
+      { "child-of", ChildOf }, 
+      { "http://hl7.org/fhir/filter-operator#child-of", ChildOf }, 
+      { "descendent-leaf", DescendentLeaf }, 
+      { "http://hl7.org/fhir/filter-operator#descendent-leaf", DescendentLeaf }, 
+      { "descendent-of", DescendentOfBySubsumption }, 
+      { "http://hl7.org/fhir/filter-operator#descendent-of", DescendentOfBySubsumption }, 
+      { "exists", Exists }, 
+      { "http://hl7.org/fhir/filter-operator#exists", Exists }, 
+      { "generalizes", GeneralizesBySubsumption }, 
+      { "http://hl7.org/fhir/filter-operator#generalizes", GeneralizesBySubsumption }, 
+      { "in", InSet }, 
+      { "http://hl7.org/fhir/filter-operator#in", InSet }, 
+      { "is-a", IsABySubsumption }, 
+      { "http://hl7.org/fhir/filter-operator#is-a", IsABySubsumption }, 
+      { "is-not-a", NotIsABySubsumption }, 
+      { "http://hl7.org/fhir/filter-operator#is-not-a", NotIsABySubsumption }, 
+      { "not-in", NotInSet }, 
+      { "http://hl7.org/fhir/filter-operator#not-in", NotInSet }, 
+      { "regex", RegularExpression }, 
+      { "http://hl7.org/fhir/filter-operator#regex", RegularExpression }, 
+    };
   };
 }

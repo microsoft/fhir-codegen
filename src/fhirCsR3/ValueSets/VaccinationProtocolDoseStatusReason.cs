@@ -63,9 +63,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdverseStorageCondition = "advstorage";
 
     /// <summary>
+    /// Literal for code: VaccinationProtocolDoseStatusReasonAdverseStorageCondition
+    /// </summary>
+    public const string LiteralVaccinationProtocolDoseStatusReasonAdverseStorageCondition = "http://hl7.org/fhir/vaccination-protocol-dose-status-reason#advstorage";
+
+    /// <summary>
     /// Literal for code: ColdChainBreak
     /// </summary>
     public const string LiteralColdChainBreak = "coldchbrk";
+
+    /// <summary>
+    /// Literal for code: VaccinationProtocolDoseStatusReasonColdChainBreak
+    /// </summary>
+    public const string LiteralVaccinationProtocolDoseStatusReasonColdChainBreak = "http://hl7.org/fhir/vaccination-protocol-dose-status-reason#coldchbrk";
 
     /// <summary>
     /// Literal for code: ExpiredLot
@@ -73,13 +83,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExpiredLot = "explot";
 
     /// <summary>
+    /// Literal for code: VaccinationProtocolDoseStatusReasonExpiredLot
+    /// </summary>
+    public const string LiteralVaccinationProtocolDoseStatusReasonExpiredLot = "http://hl7.org/fhir/vaccination-protocol-dose-status-reason#explot";
+
+    /// <summary>
     /// Literal for code: AdministeredOutsideRecommendedSchedule
     /// </summary>
     public const string LiteralAdministeredOutsideRecommendedSchedule = "outsidesched";
 
     /// <summary>
+    /// Literal for code: VaccinationProtocolDoseStatusReasonAdministeredOutsideRecommendedSchedule
+    /// </summary>
+    public const string LiteralVaccinationProtocolDoseStatusReasonAdministeredOutsideRecommendedSchedule = "http://hl7.org/fhir/vaccination-protocol-dose-status-reason#outsidesched";
+
+    /// <summary>
     /// Literal for code: ProductRecall
     /// </summary>
     public const string LiteralProductRecall = "prodrecall";
+
+    /// <summary>
+    /// Literal for code: VaccinationProtocolDoseStatusReasonProductRecall
+    /// </summary>
+    public const string LiteralVaccinationProtocolDoseStatusReasonProductRecall = "http://hl7.org/fhir/vaccination-protocol-dose-status-reason#prodrecall";
+
+    /// <summary>
+    /// Dictionary for looking up VaccinationProtocolDoseStatusReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "advstorage", AdverseStorageCondition }, 
+      { "http://hl7.org/fhir/vaccination-protocol-dose-status-reason#advstorage", AdverseStorageCondition }, 
+      { "coldchbrk", ColdChainBreak }, 
+      { "http://hl7.org/fhir/vaccination-protocol-dose-status-reason#coldchbrk", ColdChainBreak }, 
+      { "explot", ExpiredLot }, 
+      { "http://hl7.org/fhir/vaccination-protocol-dose-status-reason#explot", ExpiredLot }, 
+      { "outsidesched", AdministeredOutsideRecommendedSchedule }, 
+      { "http://hl7.org/fhir/vaccination-protocol-dose-status-reason#outsidesched", AdministeredOutsideRecommendedSchedule }, 
+      { "prodrecall", ProductRecall }, 
+      { "http://hl7.org/fhir/vaccination-protocol-dose-status-reason#prodrecall", ProductRecall }, 
+    };
   };
 }

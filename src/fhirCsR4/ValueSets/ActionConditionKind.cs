@@ -45,13 +45,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralApplicability = "applicability";
 
     /// <summary>
+    /// Literal for code: ActionConditionKindApplicability
+    /// </summary>
+    public const string LiteralActionConditionKindApplicability = "http://hl7.org/fhir/action-condition-kind#applicability";
+
+    /// <summary>
     /// Literal for code: Start
     /// </summary>
     public const string LiteralStart = "start";
 
     /// <summary>
+    /// Literal for code: ActionConditionKindStart
+    /// </summary>
+    public const string LiteralActionConditionKindStart = "http://hl7.org/fhir/action-condition-kind#start";
+
+    /// <summary>
     /// Literal for code: Stop
     /// </summary>
     public const string LiteralStop = "stop";
+
+    /// <summary>
+    /// Literal for code: ActionConditionKindStop
+    /// </summary>
+    public const string LiteralActionConditionKindStop = "http://hl7.org/fhir/action-condition-kind#stop";
+
+    /// <summary>
+    /// Dictionary for looking up ActionConditionKind Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "applicability", Applicability }, 
+      { "http://hl7.org/fhir/action-condition-kind#applicability", Applicability }, 
+      { "start", Start }, 
+      { "http://hl7.org/fhir/action-condition-kind#start", Start }, 
+      { "stop", Stop }, 
+      { "http://hl7.org/fhir/action-condition-kind#stop", Stop }, 
+    };
   };
 }

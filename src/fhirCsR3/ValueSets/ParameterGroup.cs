@@ -99,9 +99,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBloodChemistryParameterGroup = "blood-chemistry";
 
     /// <summary>
+    /// Literal for code: ParameterGroupBloodChemistryParameterGroup
+    /// </summary>
+    public const string LiteralParameterGroupBloodChemistryParameterGroup = "http://hl7.org/fhir/parameter-group#blood-chemistry";
+
+    /// <summary>
     /// Literal for code: DrugDeliveryParameterGroup
     /// </summary>
     public const string LiteralDrugDeliveryParameterGroup = "drug-delivery";
+
+    /// <summary>
+    /// Literal for code: ParameterGroupDrugDeliveryParameterGroup
+    /// </summary>
+    public const string LiteralParameterGroupDrugDeliveryParameterGroup = "http://hl7.org/fhir/parameter-group#drug-delivery";
 
     /// <summary>
     /// Literal for code: ECGParameterGroup
@@ -109,9 +119,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralECGParameterGroup = "ecg";
 
     /// <summary>
+    /// Literal for code: ParameterGroupECGParameterGroup
+    /// </summary>
+    public const string LiteralParameterGroupECGParameterGroup = "http://hl7.org/fhir/parameter-group#ecg";
+
+    /// <summary>
     /// Literal for code: FluidChemistryParameterGroup
     /// </summary>
     public const string LiteralFluidChemistryParameterGroup = "fluid-chemistry";
+
+    /// <summary>
+    /// Literal for code: ParameterGroupFluidChemistryParameterGroup
+    /// </summary>
+    public const string LiteralParameterGroupFluidChemistryParameterGroup = "http://hl7.org/fhir/parameter-group#fluid-chemistry";
 
     /// <summary>
     /// Literal for code: HaemodynamicParameterGroup
@@ -119,9 +139,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHaemodynamicParameterGroup = "haemodynamic";
 
     /// <summary>
+    /// Literal for code: ParameterGroupHaemodynamicParameterGroup
+    /// </summary>
+    public const string LiteralParameterGroupHaemodynamicParameterGroup = "http://hl7.org/fhir/parameter-group#haemodynamic";
+
+    /// <summary>
     /// Literal for code: MiscellaneousParameterGroup
     /// </summary>
     public const string LiteralMiscellaneousParameterGroup = "miscellaneous";
+
+    /// <summary>
+    /// Literal for code: ParameterGroupMiscellaneousParameterGroup
+    /// </summary>
+    public const string LiteralParameterGroupMiscellaneousParameterGroup = "http://hl7.org/fhir/parameter-group#miscellaneous";
 
     /// <summary>
     /// Literal for code: NeurologicalParameterGroup
@@ -129,13 +159,52 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNeurologicalParameterGroup = "neurological";
 
     /// <summary>
+    /// Literal for code: ParameterGroupNeurologicalParameterGroup
+    /// </summary>
+    public const string LiteralParameterGroupNeurologicalParameterGroup = "http://hl7.org/fhir/parameter-group#neurological";
+
+    /// <summary>
     /// Literal for code: RespiratoryParameterGroup
     /// </summary>
     public const string LiteralRespiratoryParameterGroup = "respiratory";
 
     /// <summary>
+    /// Literal for code: ParameterGroupRespiratoryParameterGroup
+    /// </summary>
+    public const string LiteralParameterGroupRespiratoryParameterGroup = "http://hl7.org/fhir/parameter-group#respiratory";
+
+    /// <summary>
     /// Literal for code: VentilationParameterGroup
     /// </summary>
     public const string LiteralVentilationParameterGroup = "ventilation";
+
+    /// <summary>
+    /// Literal for code: ParameterGroupVentilationParameterGroup
+    /// </summary>
+    public const string LiteralParameterGroupVentilationParameterGroup = "http://hl7.org/fhir/parameter-group#ventilation";
+
+    /// <summary>
+    /// Dictionary for looking up ParameterGroup Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "blood-chemistry", BloodChemistryParameterGroup }, 
+      { "http://hl7.org/fhir/parameter-group#blood-chemistry", BloodChemistryParameterGroup }, 
+      { "drug-delivery", DrugDeliveryParameterGroup }, 
+      { "http://hl7.org/fhir/parameter-group#drug-delivery", DrugDeliveryParameterGroup }, 
+      { "ecg", ECGParameterGroup }, 
+      { "http://hl7.org/fhir/parameter-group#ecg", ECGParameterGroup }, 
+      { "fluid-chemistry", FluidChemistryParameterGroup }, 
+      { "http://hl7.org/fhir/parameter-group#fluid-chemistry", FluidChemistryParameterGroup }, 
+      { "haemodynamic", HaemodynamicParameterGroup }, 
+      { "http://hl7.org/fhir/parameter-group#haemodynamic", HaemodynamicParameterGroup }, 
+      { "miscellaneous", MiscellaneousParameterGroup }, 
+      { "http://hl7.org/fhir/parameter-group#miscellaneous", MiscellaneousParameterGroup }, 
+      { "neurological", NeurologicalParameterGroup }, 
+      { "http://hl7.org/fhir/parameter-group#neurological", NeurologicalParameterGroup }, 
+      { "respiratory", RespiratoryParameterGroup }, 
+      { "http://hl7.org/fhir/parameter-group#respiratory", RespiratoryParameterGroup }, 
+      { "ventilation", VentilationParameterGroup }, 
+      { "http://hl7.org/fhir/parameter-group#ventilation", VentilationParameterGroup }, 
+    };
   };
 }

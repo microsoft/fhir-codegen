@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class ClinicalimpressionPrognosisCodes
   {
     /// <summary>
-    /// 
+    /// Prognosis good
     /// </summary>
     public static readonly Coding PrognosisGood = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prognosis bad
     /// </summary>
     public static readonly Coding PrognosisBad = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prognosis uncertain
     /// </summary>
     public static readonly Coding PrognosisUncertain = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prognosis/outlook finding
     /// </summary>
     public static readonly Coding PrognosisOutlookFinding = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Conditional prognosis
     /// </summary>
     public static readonly Coding ConditionalPrognosis = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fair prognosis
     /// </summary>
     public static readonly Coding FairPrognosis = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Guarded prognosis
     /// </summary>
     public static readonly Coding GuardedPrognosis = new Coding
     {
@@ -81,9 +81,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrognosisGood = "170968001";
 
     /// <summary>
+    /// Literal for code: NONEPrognosisGood
+    /// </summary>
+    public const string LiteralNONEPrognosisGood = "http://snomed.info/sct#170968001";
+
+    /// <summary>
     /// Literal for code: PrognosisBad
     /// </summary>
     public const string LiteralPrognosisBad = "170969009";
+
+    /// <summary>
+    /// Literal for code: NONEPrognosisBad
+    /// </summary>
+    public const string LiteralNONEPrognosisBad = "http://snomed.info/sct#170969009";
 
     /// <summary>
     /// Literal for code: PrognosisUncertain
@@ -91,9 +101,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrognosisUncertain = "170970005";
 
     /// <summary>
+    /// Literal for code: NONEPrognosisUncertain
+    /// </summary>
+    public const string LiteralNONEPrognosisUncertain = "http://snomed.info/sct#170970005";
+
+    /// <summary>
     /// Literal for code: PrognosisOutlookFinding
     /// </summary>
     public const string LiteralPrognosisOutlookFinding = "365858006";
+
+    /// <summary>
+    /// Literal for code: NONEPrognosisOutlookFinding
+    /// </summary>
+    public const string LiteralNONEPrognosisOutlookFinding = "http://snomed.info/sct#365858006";
 
     /// <summary>
     /// Literal for code: ConditionalPrognosis
@@ -101,13 +121,48 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralConditionalPrognosis = "60484009";
 
     /// <summary>
+    /// Literal for code: NONEConditionalPrognosis
+    /// </summary>
+    public const string LiteralNONEConditionalPrognosis = "http://snomed.info/sct#60484009";
+
+    /// <summary>
     /// Literal for code: FairPrognosis
     /// </summary>
     public const string LiteralFairPrognosis = "65872000";
 
     /// <summary>
+    /// Literal for code: NONEFairPrognosis
+    /// </summary>
+    public const string LiteralNONEFairPrognosis = "http://snomed.info/sct#65872000";
+
+    /// <summary>
     /// Literal for code: GuardedPrognosis
     /// </summary>
     public const string LiteralGuardedPrognosis = "67334001";
+
+    /// <summary>
+    /// Literal for code: NONEGuardedPrognosis
+    /// </summary>
+    public const string LiteralNONEGuardedPrognosis = "http://snomed.info/sct#67334001";
+
+    /// <summary>
+    /// Dictionary for looking up ClinicalimpressionPrognosis Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "170968001", PrognosisGood }, 
+      { "http://snomed.info/sct#170968001", PrognosisGood }, 
+      { "170969009", PrognosisBad }, 
+      { "http://snomed.info/sct#170969009", PrognosisBad }, 
+      { "170970005", PrognosisUncertain }, 
+      { "http://snomed.info/sct#170970005", PrognosisUncertain }, 
+      { "365858006", PrognosisOutlookFinding }, 
+      { "http://snomed.info/sct#365858006", PrognosisOutlookFinding }, 
+      { "60484009", ConditionalPrognosis }, 
+      { "http://snomed.info/sct#60484009", ConditionalPrognosis }, 
+      { "65872000", FairPrognosis }, 
+      { "http://snomed.info/sct#65872000", FairPrognosis }, 
+      { "67334001", GuardedPrognosis }, 
+      { "http://snomed.info/sct#67334001", GuardedPrognosis }, 
+    };
   };
 }

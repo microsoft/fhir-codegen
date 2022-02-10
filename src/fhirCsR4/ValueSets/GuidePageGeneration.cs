@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGenerated = "generated";
 
     /// <summary>
+    /// Literal for code: GuidePageGenerationGenerated
+    /// </summary>
+    public const string LiteralGuidePageGenerationGenerated = "http://hl7.org/fhir/guide-page-generation#generated";
+
+    /// <summary>
     /// Literal for code: HTML
     /// </summary>
     public const string LiteralHTML = "html";
+
+    /// <summary>
+    /// Literal for code: GuidePageGenerationHTML
+    /// </summary>
+    public const string LiteralGuidePageGenerationHTML = "http://hl7.org/fhir/guide-page-generation#html";
 
     /// <summary>
     /// Literal for code: Markdown
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMarkdown = "markdown";
 
     /// <summary>
+    /// Literal for code: GuidePageGenerationMarkdown
+    /// </summary>
+    public const string LiteralGuidePageGenerationMarkdown = "http://hl7.org/fhir/guide-page-generation#markdown";
+
+    /// <summary>
     /// Literal for code: XML
     /// </summary>
     public const string LiteralXML = "xml";
+
+    /// <summary>
+    /// Literal for code: GuidePageGenerationXML
+    /// </summary>
+    public const string LiteralGuidePageGenerationXML = "http://hl7.org/fhir/guide-page-generation#xml";
+
+    /// <summary>
+    /// Dictionary for looking up GuidePageGeneration Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "generated", Generated }, 
+      { "http://hl7.org/fhir/guide-page-generation#generated", Generated }, 
+      { "html", HTML }, 
+      { "http://hl7.org/fhir/guide-page-generation#html", HTML }, 
+      { "markdown", Markdown }, 
+      { "http://hl7.org/fhir/guide-page-generation#markdown", Markdown }, 
+      { "xml", XML }, 
+      { "http://hl7.org/fhir/guide-page-generation#xml", XML }, 
+    };
   };
 }

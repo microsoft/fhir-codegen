@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class AdministrationMethodCodesCodes
   {
     /// <summary>
-    /// 
+    /// Apply
     /// </summary>
     public static readonly Coding Apply = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Administer
     /// </summary>
     public static readonly Coding Administer = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Use
     /// </summary>
     public static readonly Coding Use = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Give
     /// </summary>
     public static readonly Coding Give = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Take
     /// </summary>
     public static readonly Coding Take = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chew
     /// </summary>
     public static readonly Coding Chew = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suck
     /// </summary>
     public static readonly Coding Suck = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// At
     /// </summary>
     public static readonly Coding At = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dosing instruction imperative
     /// </summary>
     public static readonly Coding DosingInstructionImperative = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Only
     /// </summary>
     public static readonly Coding Only = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Constant
     /// </summary>
     public static readonly Coding Constant = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sniff
     /// </summary>
     public static readonly Coding Sniff = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subtract - dosing instruction fragment
     /// </summary>
     public static readonly Coding SubtractDosingInstructionFragment = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// As
     /// </summary>
     public static readonly Coding As = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Or
     /// </summary>
     public static readonly Coding Or = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Finish
     /// </summary>
     public static readonly Coding Finish = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shampoo
     /// </summary>
     public static readonly Coding Shampoo = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Push
     /// </summary>
     public static readonly Coding Push = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Until gone
     /// </summary>
     public static readonly Coding UntilGone = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Upon
     /// </summary>
     public static readonly Coding Upon = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Per
     /// </summary>
     public static readonly Coding Per = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sparingly
     /// </summary>
     public static readonly Coding Sparingly = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Call
     /// </summary>
     public static readonly Coding Call = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// When
     /// </summary>
     public static readonly Coding When = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// To
     /// </summary>
     public static readonly Coding To = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Place
     /// </summary>
     public static readonly Coding Place = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Then
     /// </summary>
     public static readonly Coding Then = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhale
     /// </summary>
     public static readonly Coding Inhale = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hold
     /// </summary>
     public static readonly Coding Hold = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multiply
     /// </summary>
     public static readonly Coding Multiply = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insert
     /// </summary>
     public static readonly Coding Insert = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Discontinue
     /// </summary>
     public static readonly Coding Discontinue = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swish and swallow
     /// </summary>
     public static readonly Coding SwishAndSwallow = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dilute
     /// </summary>
     public static readonly Coding Dilute = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// With
     /// </summary>
     public static readonly Coding With = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Then discontinue
     /// </summary>
     public static readonly Coding ThenDiscontinue = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swallow
     /// </summary>
     public static readonly Coding Swallow = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Instill
     /// </summary>
     public static readonly Coding Instill = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Until
     /// </summary>
     public static readonly Coding Until = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Every
     /// </summary>
     public static readonly Coding Every = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dissolve
     /// </summary>
     public static readonly Coding Dissolve = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Before
     /// </summary>
     public static readonly Coding Before = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Now
     /// </summary>
     public static readonly Coding Now = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Follow directions
     /// </summary>
     public static readonly Coding FollowDirections = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// If
     /// </summary>
     public static readonly Coding If = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swish
     /// </summary>
     public static readonly Coding Swish = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// And
     /// </summary>
     public static readonly Coding And = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Twice
     /// </summary>
     public static readonly Coding Twice = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Follow
     /// </summary>
     public static readonly Coding Follow = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Until finished
     /// </summary>
     public static readonly Coding UntilFinished = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// During
     /// </summary>
     public static readonly Coding During = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Divide
     /// </summary>
     public static readonly Coding Divide = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Add
     /// </summary>
     public static readonly Coding Add = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Once
     /// </summary>
     public static readonly Coding Once = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inject
     /// </summary>
     public static readonly Coding Inject = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wash
     /// </summary>
     public static readonly Coding Wash = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sprinkle
     /// </summary>
     public static readonly Coding Sprinkle = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Then stop
     /// </summary>
     public static readonly Coding ThenStop = new Coding
     {
@@ -540,9 +540,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralApply = "417924000";
 
     /// <summary>
+    /// Literal for code: NONEApply
+    /// </summary>
+    public const string LiteralNONEApply = "http://snomed.info/sct#417924000";
+
+    /// <summary>
     /// Literal for code: Administer
     /// </summary>
     public const string LiteralAdminister = "418283001";
+
+    /// <summary>
+    /// Literal for code: NONEAdminister
+    /// </summary>
+    public const string LiteralNONEAdminister = "http://snomed.info/sct#418283001";
 
     /// <summary>
     /// Literal for code: Use
@@ -550,9 +560,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUse = "419385000";
 
     /// <summary>
+    /// Literal for code: NONEUse
+    /// </summary>
+    public const string LiteralNONEUse = "http://snomed.info/sct#419385000";
+
+    /// <summary>
     /// Literal for code: Give
     /// </summary>
     public const string LiteralGive = "419582001";
+
+    /// <summary>
+    /// Literal for code: NONEGive
+    /// </summary>
+    public const string LiteralNONEGive = "http://snomed.info/sct#419582001";
 
     /// <summary>
     /// Literal for code: Take
@@ -560,9 +580,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTake = "419652001";
 
     /// <summary>
+    /// Literal for code: NONETake
+    /// </summary>
+    public const string LiteralNONETake = "http://snomed.info/sct#419652001";
+
+    /// <summary>
     /// Literal for code: Chew
     /// </summary>
     public const string LiteralChew = "419747000";
+
+    /// <summary>
+    /// Literal for code: NONEChew
+    /// </summary>
+    public const string LiteralNONEChew = "http://snomed.info/sct#419747000";
 
     /// <summary>
     /// Literal for code: Suck
@@ -570,9 +600,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSuck = "420045007";
 
     /// <summary>
+    /// Literal for code: NONESuck
+    /// </summary>
+    public const string LiteralNONESuck = "http://snomed.info/sct#420045007";
+
+    /// <summary>
     /// Literal for code: At
     /// </summary>
     public const string LiteralAt = "420246001";
+
+    /// <summary>
+    /// Literal for code: NONEAt
+    /// </summary>
+    public const string LiteralNONEAt = "http://snomed.info/sct#420246001";
 
     /// <summary>
     /// Literal for code: DosingInstructionImperative
@@ -580,9 +620,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDosingInstructionImperative = "420247005";
 
     /// <summary>
+    /// Literal for code: NONEDosingInstructionImperative
+    /// </summary>
+    public const string LiteralNONEDosingInstructionImperative = "http://snomed.info/sct#420247005";
+
+    /// <summary>
     /// Literal for code: Only
     /// </summary>
     public const string LiteralOnly = "420295001";
+
+    /// <summary>
+    /// Literal for code: NONEOnly
+    /// </summary>
+    public const string LiteralNONEOnly = "http://snomed.info/sct#420295001";
 
     /// <summary>
     /// Literal for code: Constant
@@ -590,9 +640,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConstant = "420341009";
 
     /// <summary>
+    /// Literal for code: NONEConstant
+    /// </summary>
+    public const string LiteralNONEConstant = "http://snomed.info/sct#420341009";
+
+    /// <summary>
     /// Literal for code: Sniff
     /// </summary>
     public const string LiteralSniff = "420360002";
+
+    /// <summary>
+    /// Literal for code: NONESniff
+    /// </summary>
+    public const string LiteralNONESniff = "http://snomed.info/sct#420360002";
 
     /// <summary>
     /// Literal for code: SubtractDosingInstructionFragment
@@ -600,9 +660,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSubtractDosingInstructionFragment = "420484009";
 
     /// <summary>
+    /// Literal for code: NONESubtractDosingInstructionFragment
+    /// </summary>
+    public const string LiteralNONESubtractDosingInstructionFragment = "http://snomed.info/sct#420484009";
+
+    /// <summary>
     /// Literal for code: As
     /// </summary>
     public const string LiteralAs = "420503003";
+
+    /// <summary>
+    /// Literal for code: NONEAs
+    /// </summary>
+    public const string LiteralNONEAs = "http://snomed.info/sct#420503003";
 
     /// <summary>
     /// Literal for code: Or
@@ -610,9 +680,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOr = "420561004";
 
     /// <summary>
+    /// Literal for code: NONEOr
+    /// </summary>
+    public const string LiteralNONEOr = "http://snomed.info/sct#420561004";
+
+    /// <summary>
     /// Literal for code: Finish
     /// </summary>
     public const string LiteralFinish = "420604000";
+
+    /// <summary>
+    /// Literal for code: NONEFinish
+    /// </summary>
+    public const string LiteralNONEFinish = "http://snomed.info/sct#420604000";
 
     /// <summary>
     /// Literal for code: Shampoo
@@ -620,9 +700,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShampoo = "420606003";
 
     /// <summary>
+    /// Literal for code: NONEShampoo
+    /// </summary>
+    public const string LiteralNONEShampoo = "http://snomed.info/sct#420606003";
+
+    /// <summary>
     /// Literal for code: Push
     /// </summary>
     public const string LiteralPush = "420620005";
+
+    /// <summary>
+    /// Literal for code: NONEPush
+    /// </summary>
+    public const string LiteralNONEPush = "http://snomed.info/sct#420620005";
 
     /// <summary>
     /// Literal for code: UntilGone
@@ -630,9 +720,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUntilGone = "420652005";
 
     /// <summary>
+    /// Literal for code: NONEUntilGone
+    /// </summary>
+    public const string LiteralNONEUntilGone = "http://snomed.info/sct#420652005";
+
+    /// <summary>
     /// Literal for code: Upon
     /// </summary>
     public const string LiteralUpon = "420771004";
+
+    /// <summary>
+    /// Literal for code: NONEUpon
+    /// </summary>
+    public const string LiteralNONEUpon = "http://snomed.info/sct#420771004";
 
     /// <summary>
     /// Literal for code: Per
@@ -640,9 +740,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPer = "420806001";
 
     /// <summary>
+    /// Literal for code: NONEPer
+    /// </summary>
+    public const string LiteralNONEPer = "http://snomed.info/sct#420806001";
+
+    /// <summary>
     /// Literal for code: Sparingly
     /// </summary>
     public const string LiteralSparingly = "420883007";
+
+    /// <summary>
+    /// Literal for code: NONESparingly
+    /// </summary>
+    public const string LiteralNONESparingly = "http://snomed.info/sct#420883007";
 
     /// <summary>
     /// Literal for code: Call
@@ -650,9 +760,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCall = "420942008";
 
     /// <summary>
+    /// Literal for code: NONECall
+    /// </summary>
+    public const string LiteralNONECall = "http://snomed.info/sct#420942008";
+
+    /// <summary>
     /// Literal for code: When
     /// </summary>
     public const string LiteralWhen = "420974001";
+
+    /// <summary>
+    /// Literal for code: NONEWhen
+    /// </summary>
+    public const string LiteralNONEWhen = "http://snomed.info/sct#420974001";
 
     /// <summary>
     /// Literal for code: To
@@ -660,9 +780,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTo = "421035004";
 
     /// <summary>
+    /// Literal for code: NONETo
+    /// </summary>
+    public const string LiteralNONETo = "http://snomed.info/sct#421035004";
+
+    /// <summary>
     /// Literal for code: Place
     /// </summary>
     public const string LiteralPlace = "421066005";
+
+    /// <summary>
+    /// Literal for code: NONEPlace
+    /// </summary>
+    public const string LiteralNONEPlace = "http://snomed.info/sct#421066005";
 
     /// <summary>
     /// Literal for code: Then
@@ -670,9 +800,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralThen = "421067001";
 
     /// <summary>
+    /// Literal for code: NONEThen
+    /// </summary>
+    public const string LiteralNONEThen = "http://snomed.info/sct#421067001";
+
+    /// <summary>
     /// Literal for code: Inhale
     /// </summary>
     public const string LiteralInhale = "421134003";
+
+    /// <summary>
+    /// Literal for code: NONEInhale
+    /// </summary>
+    public const string LiteralNONEInhale = "http://snomed.info/sct#421134003";
 
     /// <summary>
     /// Literal for code: Hold
@@ -680,9 +820,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHold = "421139008";
 
     /// <summary>
+    /// Literal for code: NONEHold
+    /// </summary>
+    public const string LiteralNONEHold = "http://snomed.info/sct#421139008";
+
+    /// <summary>
     /// Literal for code: Multiply
     /// </summary>
     public const string LiteralMultiply = "421206002";
+
+    /// <summary>
+    /// Literal for code: NONEMultiply
+    /// </summary>
+    public const string LiteralNONEMultiply = "http://snomed.info/sct#421206002";
 
     /// <summary>
     /// Literal for code: Insert
@@ -690,9 +840,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInsert = "421257003";
 
     /// <summary>
+    /// Literal for code: NONEInsert
+    /// </summary>
+    public const string LiteralNONEInsert = "http://snomed.info/sct#421257003";
+
+    /// <summary>
     /// Literal for code: Discontinue
     /// </summary>
     public const string LiteralDiscontinue = "421286000";
+
+    /// <summary>
+    /// Literal for code: NONEDiscontinue
+    /// </summary>
+    public const string LiteralNONEDiscontinue = "http://snomed.info/sct#421286000";
 
     /// <summary>
     /// Literal for code: SwishAndSwallow
@@ -700,9 +860,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSwishAndSwallow = "421298005";
 
     /// <summary>
+    /// Literal for code: NONESwishAndSwallow
+    /// </summary>
+    public const string LiteralNONESwishAndSwallow = "http://snomed.info/sct#421298005";
+
+    /// <summary>
     /// Literal for code: Dilute
     /// </summary>
     public const string LiteralDilute = "421399004";
+
+    /// <summary>
+    /// Literal for code: NONEDilute
+    /// </summary>
+    public const string LiteralNONEDilute = "http://snomed.info/sct#421399004";
 
     /// <summary>
     /// Literal for code: With
@@ -710,9 +880,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWith = "421463005";
 
     /// <summary>
+    /// Literal for code: NONEWith
+    /// </summary>
+    public const string LiteralNONEWith = "http://snomed.info/sct#421463005";
+
+    /// <summary>
     /// Literal for code: ThenDiscontinue
     /// </summary>
     public const string LiteralThenDiscontinue = "421484000";
+
+    /// <summary>
+    /// Literal for code: NONEThenDiscontinue
+    /// </summary>
+    public const string LiteralNONEThenDiscontinue = "http://snomed.info/sct#421484000";
 
     /// <summary>
     /// Literal for code: Swallow
@@ -720,9 +900,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSwallow = "421521009";
 
     /// <summary>
+    /// Literal for code: NONESwallow
+    /// </summary>
+    public const string LiteralNONESwallow = "http://snomed.info/sct#421521009";
+
+    /// <summary>
     /// Literal for code: Instill
     /// </summary>
     public const string LiteralInstill = "421538008";
+
+    /// <summary>
+    /// Literal for code: NONEInstill
+    /// </summary>
+    public const string LiteralNONEInstill = "http://snomed.info/sct#421538008";
 
     /// <summary>
     /// Literal for code: Until
@@ -730,9 +920,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUntil = "421548005";
 
     /// <summary>
+    /// Literal for code: NONEUntil
+    /// </summary>
+    public const string LiteralNONEUntil = "http://snomed.info/sct#421548005";
+
+    /// <summary>
     /// Literal for code: Every
     /// </summary>
     public const string LiteralEvery = "421612001";
+
+    /// <summary>
+    /// Literal for code: NONEEvery
+    /// </summary>
+    public const string LiteralNONEEvery = "http://snomed.info/sct#421612001";
 
     /// <summary>
     /// Literal for code: Dissolve
@@ -740,9 +940,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDissolve = "421682005";
 
     /// <summary>
+    /// Literal for code: NONEDissolve
+    /// </summary>
+    public const string LiteralNONEDissolve = "http://snomed.info/sct#421682005";
+
+    /// <summary>
     /// Literal for code: Before
     /// </summary>
     public const string LiteralBefore = "421718005";
+
+    /// <summary>
+    /// Literal for code: NONEBefore
+    /// </summary>
+    public const string LiteralNONEBefore = "http://snomed.info/sct#421718005";
 
     /// <summary>
     /// Literal for code: Now
@@ -750,9 +960,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNow = "421723005";
 
     /// <summary>
+    /// Literal for code: NONENow
+    /// </summary>
+    public const string LiteralNONENow = "http://snomed.info/sct#421723005";
+
+    /// <summary>
     /// Literal for code: FollowDirections
     /// </summary>
     public const string LiteralFollowDirections = "421769005";
+
+    /// <summary>
+    /// Literal for code: NONEFollowDirections
+    /// </summary>
+    public const string LiteralNONEFollowDirections = "http://snomed.info/sct#421769005";
 
     /// <summary>
     /// Literal for code: If
@@ -760,9 +980,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIf = "421803000";
 
     /// <summary>
+    /// Literal for code: NONEIf
+    /// </summary>
+    public const string LiteralNONEIf = "http://snomed.info/sct#421803000";
+
+    /// <summary>
     /// Literal for code: Swish
     /// </summary>
     public const string LiteralSwish = "421805007";
+
+    /// <summary>
+    /// Literal for code: NONESwish
+    /// </summary>
+    public const string LiteralNONESwish = "http://snomed.info/sct#421805007";
 
     /// <summary>
     /// Literal for code: And
@@ -770,9 +1000,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAnd = "421829000";
 
     /// <summary>
+    /// Literal for code: NONEAnd
+    /// </summary>
+    public const string LiteralNONEAnd = "http://snomed.info/sct#421829000";
+
+    /// <summary>
     /// Literal for code: Twice
     /// </summary>
     public const string LiteralTwice = "421832002";
+
+    /// <summary>
+    /// Literal for code: NONETwice
+    /// </summary>
+    public const string LiteralNONETwice = "http://snomed.info/sct#421832002";
 
     /// <summary>
     /// Literal for code: Follow
@@ -780,9 +1020,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFollow = "421939007";
 
     /// <summary>
+    /// Literal for code: NONEFollow
+    /// </summary>
+    public const string LiteralNONEFollow = "http://snomed.info/sct#421939007";
+
+    /// <summary>
     /// Literal for code: UntilFinished
     /// </summary>
     public const string LiteralUntilFinished = "421984009";
+
+    /// <summary>
+    /// Literal for code: NONEUntilFinished
+    /// </summary>
+    public const string LiteralNONEUntilFinished = "http://snomed.info/sct#421984009";
 
     /// <summary>
     /// Literal for code: During
@@ -790,9 +1040,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDuring = "421994004";
 
     /// <summary>
+    /// Literal for code: NONEDuring
+    /// </summary>
+    public const string LiteralNONEDuring = "http://snomed.info/sct#421994004";
+
+    /// <summary>
     /// Literal for code: Divide
     /// </summary>
     public const string LiteralDivide = "422033008";
+
+    /// <summary>
+    /// Literal for code: NONEDivide
+    /// </summary>
+    public const string LiteralNONEDivide = "http://snomed.info/sct#422033008";
 
     /// <summary>
     /// Literal for code: Add
@@ -800,9 +1060,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdd = "422106007";
 
     /// <summary>
+    /// Literal for code: NONEAdd
+    /// </summary>
+    public const string LiteralNONEAdd = "http://snomed.info/sct#422106007";
+
+    /// <summary>
     /// Literal for code: Once
     /// </summary>
     public const string LiteralOnce = "422114001";
+
+    /// <summary>
+    /// Literal for code: NONEOnce
+    /// </summary>
+    public const string LiteralNONEOnce = "http://snomed.info/sct#422114001";
 
     /// <summary>
     /// Literal for code: Inject
@@ -810,9 +1080,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInject = "422145002";
 
     /// <summary>
+    /// Literal for code: NONEInject
+    /// </summary>
+    public const string LiteralNONEInject = "http://snomed.info/sct#422145002";
+
+    /// <summary>
     /// Literal for code: Wash
     /// </summary>
     public const string LiteralWash = "422152000";
+
+    /// <summary>
+    /// Literal for code: NONEWash
+    /// </summary>
+    public const string LiteralNONEWash = "http://snomed.info/sct#422152000";
 
     /// <summary>
     /// Literal for code: Sprinkle
@@ -820,8 +1100,140 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSprinkle = "422219000";
 
     /// <summary>
+    /// Literal for code: NONESprinkle
+    /// </summary>
+    public const string LiteralNONESprinkle = "http://snomed.info/sct#422219000";
+
+    /// <summary>
     /// Literal for code: ThenStop
     /// </summary>
     public const string LiteralThenStop = "422327006";
+
+    /// <summary>
+    /// Literal for code: NONEThenStop
+    /// </summary>
+    public const string LiteralNONEThenStop = "http://snomed.info/sct#422327006";
+
+    /// <summary>
+    /// Dictionary for looking up AdministrationMethodCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "417924000", Apply }, 
+      { "http://snomed.info/sct#417924000", Apply }, 
+      { "418283001", Administer }, 
+      { "http://snomed.info/sct#418283001", Administer }, 
+      { "419385000", Use }, 
+      { "http://snomed.info/sct#419385000", Use }, 
+      { "419582001", Give }, 
+      { "http://snomed.info/sct#419582001", Give }, 
+      { "419652001", Take }, 
+      { "http://snomed.info/sct#419652001", Take }, 
+      { "419747000", Chew }, 
+      { "http://snomed.info/sct#419747000", Chew }, 
+      { "420045007", Suck }, 
+      { "http://snomed.info/sct#420045007", Suck }, 
+      { "420246001", At }, 
+      { "http://snomed.info/sct#420246001", At }, 
+      { "420247005", DosingInstructionImperative }, 
+      { "http://snomed.info/sct#420247005", DosingInstructionImperative }, 
+      { "420295001", Only }, 
+      { "http://snomed.info/sct#420295001", Only }, 
+      { "420341009", Constant }, 
+      { "http://snomed.info/sct#420341009", Constant }, 
+      { "420360002", Sniff }, 
+      { "http://snomed.info/sct#420360002", Sniff }, 
+      { "420484009", SubtractDosingInstructionFragment }, 
+      { "http://snomed.info/sct#420484009", SubtractDosingInstructionFragment }, 
+      { "420503003", As }, 
+      { "http://snomed.info/sct#420503003", As }, 
+      { "420561004", Or }, 
+      { "http://snomed.info/sct#420561004", Or }, 
+      { "420604000", Finish }, 
+      { "http://snomed.info/sct#420604000", Finish }, 
+      { "420606003", Shampoo }, 
+      { "http://snomed.info/sct#420606003", Shampoo }, 
+      { "420620005", Push }, 
+      { "http://snomed.info/sct#420620005", Push }, 
+      { "420652005", UntilGone }, 
+      { "http://snomed.info/sct#420652005", UntilGone }, 
+      { "420771004", Upon }, 
+      { "http://snomed.info/sct#420771004", Upon }, 
+      { "420806001", Per }, 
+      { "http://snomed.info/sct#420806001", Per }, 
+      { "420883007", Sparingly }, 
+      { "http://snomed.info/sct#420883007", Sparingly }, 
+      { "420942008", Call }, 
+      { "http://snomed.info/sct#420942008", Call }, 
+      { "420974001", When }, 
+      { "http://snomed.info/sct#420974001", When }, 
+      { "421035004", To }, 
+      { "http://snomed.info/sct#421035004", To }, 
+      { "421066005", Place }, 
+      { "http://snomed.info/sct#421066005", Place }, 
+      { "421067001", Then }, 
+      { "http://snomed.info/sct#421067001", Then }, 
+      { "421134003", Inhale }, 
+      { "http://snomed.info/sct#421134003", Inhale }, 
+      { "421139008", Hold }, 
+      { "http://snomed.info/sct#421139008", Hold }, 
+      { "421206002", Multiply }, 
+      { "http://snomed.info/sct#421206002", Multiply }, 
+      { "421257003", Insert }, 
+      { "http://snomed.info/sct#421257003", Insert }, 
+      { "421286000", Discontinue }, 
+      { "http://snomed.info/sct#421286000", Discontinue }, 
+      { "421298005", SwishAndSwallow }, 
+      { "http://snomed.info/sct#421298005", SwishAndSwallow }, 
+      { "421399004", Dilute }, 
+      { "http://snomed.info/sct#421399004", Dilute }, 
+      { "421463005", With }, 
+      { "http://snomed.info/sct#421463005", With }, 
+      { "421484000", ThenDiscontinue }, 
+      { "http://snomed.info/sct#421484000", ThenDiscontinue }, 
+      { "421521009", Swallow }, 
+      { "http://snomed.info/sct#421521009", Swallow }, 
+      { "421538008", Instill }, 
+      { "http://snomed.info/sct#421538008", Instill }, 
+      { "421548005", Until }, 
+      { "http://snomed.info/sct#421548005", Until }, 
+      { "421612001", Every }, 
+      { "http://snomed.info/sct#421612001", Every }, 
+      { "421682005", Dissolve }, 
+      { "http://snomed.info/sct#421682005", Dissolve }, 
+      { "421718005", Before }, 
+      { "http://snomed.info/sct#421718005", Before }, 
+      { "421723005", Now }, 
+      { "http://snomed.info/sct#421723005", Now }, 
+      { "421769005", FollowDirections }, 
+      { "http://snomed.info/sct#421769005", FollowDirections }, 
+      { "421803000", If }, 
+      { "http://snomed.info/sct#421803000", If }, 
+      { "421805007", Swish }, 
+      { "http://snomed.info/sct#421805007", Swish }, 
+      { "421829000", And }, 
+      { "http://snomed.info/sct#421829000", And }, 
+      { "421832002", Twice }, 
+      { "http://snomed.info/sct#421832002", Twice }, 
+      { "421939007", Follow }, 
+      { "http://snomed.info/sct#421939007", Follow }, 
+      { "421984009", UntilFinished }, 
+      { "http://snomed.info/sct#421984009", UntilFinished }, 
+      { "421994004", During }, 
+      { "http://snomed.info/sct#421994004", During }, 
+      { "422033008", Divide }, 
+      { "http://snomed.info/sct#422033008", Divide }, 
+      { "422106007", Add }, 
+      { "http://snomed.info/sct#422106007", Add }, 
+      { "422114001", Once }, 
+      { "http://snomed.info/sct#422114001", Once }, 
+      { "422145002", Inject }, 
+      { "http://snomed.info/sct#422145002", Inject }, 
+      { "422152000", Wash }, 
+      { "http://snomed.info/sct#422152000", Wash }, 
+      { "422219000", Sprinkle }, 
+      { "http://snomed.info/sct#422219000", Sprinkle }, 
+      { "422327006", ThenStop }, 
+      { "http://snomed.info/sct#422327006", ThenStop }, 
+    };
   };
 }

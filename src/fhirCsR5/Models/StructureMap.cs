@@ -189,6 +189,12 @@ namespace fhirCsR5.Models
     public const string QUERIED = "queried";
     public const string TARGET = "target";
     public const string PRODUCED = "produced";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "source",
+      "queried",
+      "target",
+      "produced",
+    };
   }
   /// <summary>
   /// If no inputs are named, then the entry mappings are type based.
@@ -367,6 +373,10 @@ namespace fhirCsR5.Models
   public static class StructureMapGroupInputModeCodes {
     public const string SOURCE = "source";
     public const string TARGET = "target";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "source",
+      "target",
+    };
   }
   /// <summary>
   /// Source inputs to the mapping.
@@ -442,6 +452,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public int? Min { get; set; }
     /// <summary>
+    /// Extension container element for Min
+    /// </summary>
+    public Element _Min { get; set; }
+    /// <summary>
     /// Specified type for the element. This works as a condition on the mapping - use for polymorphic elements.
     /// </summary>
     public string Type { get; set; }
@@ -482,6 +496,12 @@ namespace fhirCsR5.Models
       if (Min != null)
       {
         writer.WriteNumber("min", (int)Min!);
+      }
+
+      if (_Min != null)
+      {
+        writer.WritePropertyName("_min");
+        _Min.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Max))
@@ -671,6 +691,11 @@ namespace fhirCsR5.Models
           Min = reader.GetInt32();
           break;
 
+        case "_min":
+          _Min = new fhirCsR5.Models.Element();
+          _Min.DeserializeJson(ref reader, options);
+          break;
+
         case "type":
           Type = reader.GetString();
           break;
@@ -729,6 +754,13 @@ namespace fhirCsR5.Models
     public const string LAST = "last";
     public const string NOT_LAST = "not_last";
     public const string ONLY_ONE = "only_one";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "first",
+      "not_first",
+      "last",
+      "not_last",
+      "only_one",
+    };
   }
   /// <summary>
   /// Parameters to the transform.
@@ -756,9 +788,17 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// Parameter value - variable or literal.
     /// </summary>
     public int? ValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
     /// <summary>
     /// Parameter value - variable or literal.
     /// </summary>
@@ -829,9 +869,21 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (ValueDecimal != null)
@@ -912,8 +964,18 @@ namespace fhirCsR5.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR5.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR5.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueDecimal":
@@ -1320,6 +1382,12 @@ namespace fhirCsR5.Models
     public const string SHARE = "share";
     public const string LAST = "last";
     public const string COLLATE = "collate";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "first",
+      "share",
+      "last",
+      "collate",
+    };
   }
   /// <summary>
   /// Code Values for the StructureMap.group.rule.target.transform field
@@ -1342,6 +1410,25 @@ namespace fhirCsR5.Models
     public const string QTY = "qty";
     public const string ID = "id";
     public const string CP = "cp";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "create",
+      "copy",
+      "truncate",
+      "escape",
+      "cast",
+      "append",
+      "translate",
+      "reference",
+      "dateOp",
+      "uuid",
+      "pointer",
+      "evaluate",
+      "cc",
+      "c",
+      "qty",
+      "id",
+      "cp",
+    };
   }
   /// <summary>
   /// Which other rules to apply in the context of this rule.
@@ -2030,6 +2117,10 @@ namespace fhirCsR5.Models
   public static class StructureMapGroupTypeModeCodes {
     public const string TYPES = "types";
     public const string TYPE_AND_TYPES = "type-and-types";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "types",
+      "type-and-types",
+    };
   }
   /// <summary>
   /// A Map of relationships between 2 structures that can be used to transform data.
@@ -2072,6 +2163,10 @@ namespace fhirCsR5.Models
     /// Allows filtering of structure maps that are appropriate for use versus not.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// Organizes the mapping into manageable chunks for human review/ease of maintenance.
     /// </summary>
@@ -2246,6 +2341,12 @@ namespace fhirCsR5.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -2462,6 +2563,11 @@ namespace fhirCsR5.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR5.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "group":
@@ -2753,5 +2859,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

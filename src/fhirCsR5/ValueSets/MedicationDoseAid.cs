@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBlisterPack = "blisterpack";
 
     /// <summary>
+    /// Literal for code: MedicationDoseAidBlisterPack
+    /// </summary>
+    public const string LiteralMedicationDoseAidBlisterPack = "http://hl7.org/fhir/CodeSystem/medication-dose-aid#blisterpack";
+
+    /// <summary>
     /// Literal for code: Dosette
     /// </summary>
     public const string LiteralDosette = "dosette";
 
     /// <summary>
+    /// Literal for code: MedicationDoseAidDosette
+    /// </summary>
+    public const string LiteralMedicationDoseAidDosette = "http://hl7.org/fhir/CodeSystem/medication-dose-aid#dosette";
+
+    /// <summary>
     /// Literal for code: Sachets
     /// </summary>
     public const string LiteralSachets = "sachets";
+
+    /// <summary>
+    /// Literal for code: MedicationDoseAidSachets
+    /// </summary>
+    public const string LiteralMedicationDoseAidSachets = "http://hl7.org/fhir/CodeSystem/medication-dose-aid#sachets";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationDoseAid Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "blisterpack", BlisterPack }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-dose-aid#blisterpack", BlisterPack }, 
+      { "dosette", Dosette }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-dose-aid#dosette", Dosette }, 
+      { "sachets", Sachets }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-dose-aid#sachets", Sachets }, 
+    };
   };
 }

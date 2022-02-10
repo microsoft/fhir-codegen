@@ -148,6 +148,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool Verified { get; set; }
     /// <summary>
+    /// Extension container element for Verified
+    /// </summary>
+    public Element _Verified { get; set; }
+    /// <summary>
     /// The person who conducted the verification/validation of the Grantee decision.
     /// </summary>
     public Reference VerifiedBy { get; set; }
@@ -167,6 +171,12 @@ namespace fhirCsR5.Models
       ((fhirCsR5.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
       writer.WriteBoolean("verified", Verified);
+
+      if (_Verified != null)
+      {
+        writer.WritePropertyName("_verified");
+        _Verified.SerializeJson(writer, options);
+      }
 
       if (VerificationType != null)
       {
@@ -283,6 +293,11 @@ namespace fhirCsR5.Models
 
         case "verified":
           Verified = reader.GetBoolean();
+          break;
+
+        case "_verified":
+          _Verified = new fhirCsR5.Models.Element();
+          _Verified.DeserializeJson(ref reader, options);
           break;
 
         case "verifiedBy":
@@ -525,6 +540,12 @@ namespace fhirCsR5.Models
     public const string RELATED = "related";
     public const string DEPENDENTS = "dependents";
     public const string AUTHOREDBY = "authoredby";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "instance",
+      "related",
+      "dependents",
+      "authoredby",
+    };
   }
   /// <summary>
   /// An exception to the base policy of this consent. An exception can be an addition or removal of access permissions.
@@ -1016,6 +1037,10 @@ namespace fhirCsR5.Models
   public static class ConsentProvisionTypeCodes {
     public const string DENY = "deny";
     public const string PERMIT = "permit";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "deny",
+      "permit",
+    };
   }
   /// <summary>
   /// A record of a healthcare consumer’s  choices  or choices made on their behalf by a third party, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
@@ -1637,5 +1662,12 @@ namespace fhirCsR5.Models
     public const string INACTIVE = "inactive";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "inactive",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

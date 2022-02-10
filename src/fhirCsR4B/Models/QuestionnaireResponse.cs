@@ -24,6 +24,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions. Must match the datatype specified by Questionnaire.item.type in the corresponding Questionnaire.
     /// </summary>
     public decimal? ValueDecimal { get; set; }
@@ -35,6 +39,10 @@ namespace fhirCsR4B.Models
     /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions. Must match the datatype specified by Questionnaire.item.type in the corresponding Questionnaire.
     /// </summary>
     public int? ValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
     /// <summary>
     /// More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions. Must match the datatype specified by Questionnaire.item.type in the corresponding Questionnaire.
     /// </summary>
@@ -107,6 +115,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (ValueDecimal != null)
       {
         writer.WriteNumber("valueDecimal", (decimal)ValueDecimal!);
@@ -121,6 +135,12 @@ namespace fhirCsR4B.Models
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(ValueDate))
@@ -258,6 +278,11 @@ namespace fhirCsR4B.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR4B.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueDecimal":
           ValueDecimal = reader.GetDecimal();
           break;
@@ -269,6 +294,11 @@ namespace fhirCsR4B.Models
 
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR4B.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueDate":
@@ -969,5 +999,12 @@ namespace fhirCsR4B.Models
     public const string AMENDED = "amended";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string STOPPED = "stopped";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "in-progress",
+      "completed",
+      "amended",
+      "entered-in-error",
+      "stopped",
+    };
   }
 }

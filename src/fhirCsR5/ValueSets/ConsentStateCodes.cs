@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: ConsentStateCodesActive
+    /// </summary>
+    public const string LiteralConsentStateCodesActive = "http://hl7.org/fhir/consent-state-codes#active";
+
+    /// <summary>
     /// Literal for code: Pending
     /// </summary>
     public const string LiteralPending = "draft";
+
+    /// <summary>
+    /// Literal for code: ConsentStateCodesPending
+    /// </summary>
+    public const string LiteralConsentStateCodesPending = "http://hl7.org/fhir/consent-state-codes#draft";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: ConsentStateCodesEnteredInError
+    /// </summary>
+    public const string LiteralConsentStateCodesEnteredInError = "http://hl7.org/fhir/consent-state-codes#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Inactive
     /// </summary>
     public const string LiteralInactive = "inactive";
 
     /// <summary>
+    /// Literal for code: ConsentStateCodesInactive
+    /// </summary>
+    public const string LiteralConsentStateCodesInactive = "http://hl7.org/fhir/consent-state-codes#inactive";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: ConsentStateCodesUnknown
+    /// </summary>
+    public const string LiteralConsentStateCodesUnknown = "http://hl7.org/fhir/consent-state-codes#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up ConsentStateCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/consent-state-codes#active", Active }, 
+      { "draft", Pending }, 
+      { "http://hl7.org/fhir/consent-state-codes#draft", Pending }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/consent-state-codes#entered-in-error", EnteredInError }, 
+      { "inactive", Inactive }, 
+      { "http://hl7.org/fhir/consent-state-codes#inactive", Inactive }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/consent-state-codes#unknown", Unknown }, 
+    };
   };
 }

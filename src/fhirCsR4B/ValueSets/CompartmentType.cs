@@ -63,9 +63,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDevice = "Device";
 
     /// <summary>
+    /// Literal for code: CompartmentTypeDevice
+    /// </summary>
+    public const string LiteralCompartmentTypeDevice = "http://hl7.org/fhir/compartment-type#Device";
+
+    /// <summary>
     /// Literal for code: Encounter
     /// </summary>
     public const string LiteralEncounter = "Encounter";
+
+    /// <summary>
+    /// Literal for code: CompartmentTypeEncounter
+    /// </summary>
+    public const string LiteralCompartmentTypeEncounter = "http://hl7.org/fhir/compartment-type#Encounter";
 
     /// <summary>
     /// Literal for code: Patient
@@ -73,13 +83,44 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPatient = "Patient";
 
     /// <summary>
+    /// Literal for code: CompartmentTypePatient
+    /// </summary>
+    public const string LiteralCompartmentTypePatient = "http://hl7.org/fhir/compartment-type#Patient";
+
+    /// <summary>
     /// Literal for code: Practitioner
     /// </summary>
     public const string LiteralPractitioner = "Practitioner";
 
     /// <summary>
+    /// Literal for code: CompartmentTypePractitioner
+    /// </summary>
+    public const string LiteralCompartmentTypePractitioner = "http://hl7.org/fhir/compartment-type#Practitioner";
+
+    /// <summary>
     /// Literal for code: RelatedPerson
     /// </summary>
     public const string LiteralRelatedPerson = "RelatedPerson";
+
+    /// <summary>
+    /// Literal for code: CompartmentTypeRelatedPerson
+    /// </summary>
+    public const string LiteralCompartmentTypeRelatedPerson = "http://hl7.org/fhir/compartment-type#RelatedPerson";
+
+    /// <summary>
+    /// Dictionary for looking up CompartmentType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "Device", Device }, 
+      { "http://hl7.org/fhir/compartment-type#Device", Device }, 
+      { "Encounter", Encounter }, 
+      { "http://hl7.org/fhir/compartment-type#Encounter", Encounter }, 
+      { "Patient", Patient }, 
+      { "http://hl7.org/fhir/compartment-type#Patient", Patient }, 
+      { "Practitioner", Practitioner }, 
+      { "http://hl7.org/fhir/compartment-type#Practitioner", Practitioner }, 
+      { "RelatedPerson", RelatedPerson }, 
+      { "http://hl7.org/fhir/compartment-type#RelatedPerson", RelatedPerson }, 
+    };
   };
 }

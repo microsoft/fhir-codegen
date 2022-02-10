@@ -351,9 +351,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAutorefraction = "AR";
 
     /// <summary>
+    /// Literal for code: DicomDcimAutorefraction
+    /// </summary>
+    public const string LiteralDicomDcimAutorefraction = "http://dicom.nema.org/resources/ontology/DCM#AR";
+
+    /// <summary>
     /// Literal for code: UltrasoundBoneDensitometry
     /// </summary>
     public const string LiteralUltrasoundBoneDensitometry = "BDUS";
+
+    /// <summary>
+    /// Literal for code: DicomDcimUltrasoundBoneDensitometry
+    /// </summary>
+    public const string LiteralDicomDcimUltrasoundBoneDensitometry = "http://dicom.nema.org/resources/ontology/DCM#BDUS";
 
     /// <summary>
     /// Literal for code: BoneMineralDensitometry
@@ -361,9 +371,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBoneMineralDensitometry = "BMD";
 
     /// <summary>
+    /// Literal for code: DicomDcimBoneMineralDensitometry
+    /// </summary>
+    public const string LiteralDicomDcimBoneMineralDensitometry = "http://dicom.nema.org/resources/ontology/DCM#BMD";
+
+    /// <summary>
     /// Literal for code: ComputedRadiography
     /// </summary>
     public const string LiteralComputedRadiography = "CR";
+
+    /// <summary>
+    /// Literal for code: DicomDcimComputedRadiography
+    /// </summary>
+    public const string LiteralDicomDcimComputedRadiography = "http://dicom.nema.org/resources/ontology/DCM#CR";
 
     /// <summary>
     /// Literal for code: ComputedTomography
@@ -371,9 +391,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralComputedTomography = "CT";
 
     /// <summary>
+    /// Literal for code: DicomDcimComputedTomography
+    /// </summary>
+    public const string LiteralDicomDcimComputedTomography = "http://dicom.nema.org/resources/ontology/DCM#CT";
+
+    /// <summary>
     /// Literal for code: DigitalRadiography
     /// </summary>
     public const string LiteralDigitalRadiography = "DX";
+
+    /// <summary>
+    /// Literal for code: DicomDcimDigitalRadiography
+    /// </summary>
+    public const string LiteralDicomDcimDigitalRadiography = "http://dicom.nema.org/resources/ontology/DCM#DX";
 
     /// <summary>
     /// Literal for code: Electrocardiography
@@ -381,9 +411,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralElectrocardiography = "ECG";
 
     /// <summary>
+    /// Literal for code: DicomDcimElectrocardiography
+    /// </summary>
+    public const string LiteralDicomDcimElectrocardiography = "http://dicom.nema.org/resources/ontology/DCM#ECG";
+
+    /// <summary>
     /// Literal for code: CardiacElectrophysiology
     /// </summary>
     public const string LiteralCardiacElectrophysiology = "EPS";
+
+    /// <summary>
+    /// Literal for code: DicomDcimCardiacElectrophysiology
+    /// </summary>
+    public const string LiteralDicomDcimCardiacElectrophysiology = "http://dicom.nema.org/resources/ontology/DCM#EPS";
 
     /// <summary>
     /// Literal for code: Endoscopy
@@ -391,9 +431,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEndoscopy = "ES";
 
     /// <summary>
+    /// Literal for code: DicomDcimEndoscopy
+    /// </summary>
+    public const string LiteralDicomDcimEndoscopy = "http://dicom.nema.org/resources/ontology/DCM#ES";
+
+    /// <summary>
     /// Literal for code: GeneralMicroscopy
     /// </summary>
     public const string LiteralGeneralMicroscopy = "GM";
+
+    /// <summary>
+    /// Literal for code: DicomDcimGeneralMicroscopy
+    /// </summary>
+    public const string LiteralDicomDcimGeneralMicroscopy = "http://dicom.nema.org/resources/ontology/DCM#GM";
 
     /// <summary>
     /// Literal for code: HemodynamicWaveform
@@ -401,9 +451,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHemodynamicWaveform = "HD";
 
     /// <summary>
+    /// Literal for code: DicomDcimHemodynamicWaveform
+    /// </summary>
+    public const string LiteralDicomDcimHemodynamicWaveform = "http://dicom.nema.org/resources/ontology/DCM#HD";
+
+    /// <summary>
     /// Literal for code: IntraOralRadiography
     /// </summary>
     public const string LiteralIntraOralRadiography = "IO";
+
+    /// <summary>
+    /// Literal for code: DicomDcimIntraOralRadiography
+    /// </summary>
+    public const string LiteralDicomDcimIntraOralRadiography = "http://dicom.nema.org/resources/ontology/DCM#IO";
 
     /// <summary>
     /// Literal for code: IntravascularOpticalCoherenceTomography
@@ -411,9 +471,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntravascularOpticalCoherenceTomography = "IVOCT";
 
     /// <summary>
+    /// Literal for code: DicomDcimIntravascularOpticalCoherenceTomography
+    /// </summary>
+    public const string LiteralDicomDcimIntravascularOpticalCoherenceTomography = "http://dicom.nema.org/resources/ontology/DCM#IVOCT";
+
+    /// <summary>
     /// Literal for code: IntravascularUltrasound
     /// </summary>
     public const string LiteralIntravascularUltrasound = "IVUS";
+
+    /// <summary>
+    /// Literal for code: DicomDcimIntravascularUltrasound
+    /// </summary>
+    public const string LiteralDicomDcimIntravascularUltrasound = "http://dicom.nema.org/resources/ontology/DCM#IVUS";
 
     /// <summary>
     /// Literal for code: Keratometry
@@ -421,9 +491,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKeratometry = "KER";
 
     /// <summary>
+    /// Literal for code: DicomDcimKeratometry
+    /// </summary>
+    public const string LiteralDicomDcimKeratometry = "http://dicom.nema.org/resources/ontology/DCM#KER";
+
+    /// <summary>
     /// Literal for code: Lensometry
     /// </summary>
     public const string LiteralLensometry = "LEN";
+
+    /// <summary>
+    /// Literal for code: DicomDcimLensometry
+    /// </summary>
+    public const string LiteralDicomDcimLensometry = "http://dicom.nema.org/resources/ontology/DCM#LEN";
 
     /// <summary>
     /// Literal for code: Mammography
@@ -431,9 +511,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMammography = "MG";
 
     /// <summary>
+    /// Literal for code: DicomDcimMammography
+    /// </summary>
+    public const string LiteralDicomDcimMammography = "http://dicom.nema.org/resources/ontology/DCM#MG";
+
+    /// <summary>
     /// Literal for code: MagneticResonance
     /// </summary>
     public const string LiteralMagneticResonance = "MR";
+
+    /// <summary>
+    /// Literal for code: DicomDcimMagneticResonance
+    /// </summary>
+    public const string LiteralDicomDcimMagneticResonance = "http://dicom.nema.org/resources/ontology/DCM#MR";
 
     /// <summary>
     /// Literal for code: NuclearMedicine
@@ -441,9 +531,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNuclearMedicine = "NM";
 
     /// <summary>
+    /// Literal for code: DicomDcimNuclearMedicine
+    /// </summary>
+    public const string LiteralDicomDcimNuclearMedicine = "http://dicom.nema.org/resources/ontology/DCM#NM";
+
+    /// <summary>
     /// Literal for code: OphthalmicAxialMeasurements
     /// </summary>
     public const string LiteralOphthalmicAxialMeasurements = "OAM";
+
+    /// <summary>
+    /// Literal for code: DicomDcimOphthalmicAxialMeasurements
+    /// </summary>
+    public const string LiteralDicomDcimOphthalmicAxialMeasurements = "http://dicom.nema.org/resources/ontology/DCM#OAM";
 
     /// <summary>
     /// Literal for code: OpticalCoherenceTomography
@@ -451,9 +551,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOpticalCoherenceTomography = "OCT";
 
     /// <summary>
+    /// Literal for code: DicomDcimOpticalCoherenceTomography
+    /// </summary>
+    public const string LiteralDicomDcimOpticalCoherenceTomography = "http://dicom.nema.org/resources/ontology/DCM#OCT";
+
+    /// <summary>
     /// Literal for code: OphthalmicPhotography
     /// </summary>
     public const string LiteralOphthalmicPhotography = "OP";
+
+    /// <summary>
+    /// Literal for code: DicomDcimOphthalmicPhotography
+    /// </summary>
+    public const string LiteralDicomDcimOphthalmicPhotography = "http://dicom.nema.org/resources/ontology/DCM#OP";
 
     /// <summary>
     /// Literal for code: OphthalmicMapping
@@ -461,9 +571,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOphthalmicMapping = "OPM";
 
     /// <summary>
+    /// Literal for code: DicomDcimOphthalmicMapping
+    /// </summary>
+    public const string LiteralDicomDcimOphthalmicMapping = "http://dicom.nema.org/resources/ontology/DCM#OPM";
+
+    /// <summary>
     /// Literal for code: OphthalmicRefraction
     /// </summary>
     public const string LiteralOphthalmicRefraction = "OPR";
+
+    /// <summary>
+    /// Literal for code: DicomDcimOphthalmicRefraction
+    /// </summary>
+    public const string LiteralDicomDcimOphthalmicRefraction = "http://dicom.nema.org/resources/ontology/DCM#OPR";
 
     /// <summary>
     /// Literal for code: OphthalmicTomography
@@ -471,9 +591,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOphthalmicTomography = "OPT";
 
     /// <summary>
+    /// Literal for code: DicomDcimOphthalmicTomography
+    /// </summary>
+    public const string LiteralDicomDcimOphthalmicTomography = "http://dicom.nema.org/resources/ontology/DCM#OPT";
+
+    /// <summary>
     /// Literal for code: OphthalmicVisualField
     /// </summary>
     public const string LiteralOphthalmicVisualField = "OPV";
+
+    /// <summary>
+    /// Literal for code: DicomDcimOphthalmicVisualField
+    /// </summary>
+    public const string LiteralDicomDcimOphthalmicVisualField = "http://dicom.nema.org/resources/ontology/DCM#OPV";
 
     /// <summary>
     /// Literal for code: OpticalSurvaceScanner
@@ -481,9 +611,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOpticalSurvaceScanner = "OSS";
 
     /// <summary>
+    /// Literal for code: DicomDcimOpticalSurvaceScanner
+    /// </summary>
+    public const string LiteralDicomDcimOpticalSurvaceScanner = "http://dicom.nema.org/resources/ontology/DCM#OSS";
+
+    /// <summary>
     /// Literal for code: PositronEmissionTomography
     /// </summary>
     public const string LiteralPositronEmissionTomography = "PT";
+
+    /// <summary>
+    /// Literal for code: DicomDcimPositronEmissionTomography
+    /// </summary>
+    public const string LiteralDicomDcimPositronEmissionTomography = "http://dicom.nema.org/resources/ontology/DCM#PT";
 
     /// <summary>
     /// Literal for code: PanoramicXRay
@@ -491,9 +631,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPanoramicXRay = "PX";
 
     /// <summary>
+    /// Literal for code: DicomDcimPanoramicXRay
+    /// </summary>
+    public const string LiteralDicomDcimPanoramicXRay = "http://dicom.nema.org/resources/ontology/DCM#PX";
+
+    /// <summary>
     /// Literal for code: Radiofluoroscopy
     /// </summary>
     public const string LiteralRadiofluoroscopy = "RF";
+
+    /// <summary>
+    /// Literal for code: DicomDcimRadiofluoroscopy
+    /// </summary>
+    public const string LiteralDicomDcimRadiofluoroscopy = "http://dicom.nema.org/resources/ontology/DCM#RF";
 
     /// <summary>
     /// Literal for code: RadiographicImaging
@@ -501,9 +651,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographicImaging = "RG";
 
     /// <summary>
+    /// Literal for code: DicomDcimRadiographicImaging
+    /// </summary>
+    public const string LiteralDicomDcimRadiographicImaging = "http://dicom.nema.org/resources/ontology/DCM#RG";
+
+    /// <summary>
     /// Literal for code: SlideMicroscopy
     /// </summary>
     public const string LiteralSlideMicroscopy = "SM";
+
+    /// <summary>
+    /// Literal for code: DicomDcimSlideMicroscopy
+    /// </summary>
+    public const string LiteralDicomDcimSlideMicroscopy = "http://dicom.nema.org/resources/ontology/DCM#SM";
 
     /// <summary>
     /// Literal for code: SubjectiveRefraction
@@ -511,9 +671,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSubjectiveRefraction = "SRF";
 
     /// <summary>
+    /// Literal for code: DicomDcimSubjectiveRefraction
+    /// </summary>
+    public const string LiteralDicomDcimSubjectiveRefraction = "http://dicom.nema.org/resources/ontology/DCM#SRF";
+
+    /// <summary>
     /// Literal for code: Ultrasound
     /// </summary>
     public const string LiteralUltrasound = "US";
+
+    /// <summary>
+    /// Literal for code: DicomDcimUltrasound
+    /// </summary>
+    public const string LiteralDicomDcimUltrasound = "http://dicom.nema.org/resources/ontology/DCM#US";
 
     /// <summary>
     /// Literal for code: VisualAcuity
@@ -521,13 +691,108 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVisualAcuity = "VA";
 
     /// <summary>
+    /// Literal for code: DicomDcimVisualAcuity
+    /// </summary>
+    public const string LiteralDicomDcimVisualAcuity = "http://dicom.nema.org/resources/ontology/DCM#VA";
+
+    /// <summary>
     /// Literal for code: XRayAngiography
     /// </summary>
     public const string LiteralXRayAngiography = "XA";
 
     /// <summary>
+    /// Literal for code: DicomDcimXRayAngiography
+    /// </summary>
+    public const string LiteralDicomDcimXRayAngiography = "http://dicom.nema.org/resources/ontology/DCM#XA";
+
+    /// <summary>
     /// Literal for code: ExternalCameraPhotography
     /// </summary>
     public const string LiteralExternalCameraPhotography = "XC";
+
+    /// <summary>
+    /// Literal for code: DicomDcimExternalCameraPhotography
+    /// </summary>
+    public const string LiteralDicomDcimExternalCameraPhotography = "http://dicom.nema.org/resources/ontology/DCM#XC";
+
+    /// <summary>
+    /// Dictionary for looking up DicomCid29 Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "AR", Autorefraction }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#AR", Autorefraction }, 
+      { "BDUS", UltrasoundBoneDensitometry }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#BDUS", UltrasoundBoneDensitometry }, 
+      { "BMD", BoneMineralDensitometry }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#BMD", BoneMineralDensitometry }, 
+      { "CR", ComputedRadiography }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#CR", ComputedRadiography }, 
+      { "CT", ComputedTomography }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#CT", ComputedTomography }, 
+      { "DX", DigitalRadiography }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#DX", DigitalRadiography }, 
+      { "ECG", Electrocardiography }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#ECG", Electrocardiography }, 
+      { "EPS", CardiacElectrophysiology }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#EPS", CardiacElectrophysiology }, 
+      { "ES", Endoscopy }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#ES", Endoscopy }, 
+      { "GM", GeneralMicroscopy }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#GM", GeneralMicroscopy }, 
+      { "HD", HemodynamicWaveform }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#HD", HemodynamicWaveform }, 
+      { "IO", IntraOralRadiography }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#IO", IntraOralRadiography }, 
+      { "IVOCT", IntravascularOpticalCoherenceTomography }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#IVOCT", IntravascularOpticalCoherenceTomography }, 
+      { "IVUS", IntravascularUltrasound }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#IVUS", IntravascularUltrasound }, 
+      { "KER", Keratometry }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#KER", Keratometry }, 
+      { "LEN", Lensometry }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#LEN", Lensometry }, 
+      { "MG", Mammography }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#MG", Mammography }, 
+      { "MR", MagneticResonance }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#MR", MagneticResonance }, 
+      { "NM", NuclearMedicine }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#NM", NuclearMedicine }, 
+      { "OAM", OphthalmicAxialMeasurements }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#OAM", OphthalmicAxialMeasurements }, 
+      { "OCT", OpticalCoherenceTomography }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#OCT", OpticalCoherenceTomography }, 
+      { "OP", OphthalmicPhotography }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#OP", OphthalmicPhotography }, 
+      { "OPM", OphthalmicMapping }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#OPM", OphthalmicMapping }, 
+      { "OPR", OphthalmicRefraction }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#OPR", OphthalmicRefraction }, 
+      { "OPT", OphthalmicTomography }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#OPT", OphthalmicTomography }, 
+      { "OPV", OphthalmicVisualField }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#OPV", OphthalmicVisualField }, 
+      { "OSS", OpticalSurvaceScanner }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#OSS", OpticalSurvaceScanner }, 
+      { "PT", PositronEmissionTomography }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#PT", PositronEmissionTomography }, 
+      { "PX", PanoramicXRay }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#PX", PanoramicXRay }, 
+      { "RF", Radiofluoroscopy }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#RF", Radiofluoroscopy }, 
+      { "RG", RadiographicImaging }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#RG", RadiographicImaging }, 
+      { "SM", SlideMicroscopy }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#SM", SlideMicroscopy }, 
+      { "SRF", SubjectiveRefraction }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#SRF", SubjectiveRefraction }, 
+      { "US", Ultrasound }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#US", Ultrasound }, 
+      { "VA", VisualAcuity }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#VA", VisualAcuity }, 
+      { "XA", XRayAngiography }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#XA", XRayAngiography }, 
+      { "XC", ExternalCameraPhotography }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#XC", ExternalCameraPhotography }, 
+    };
   };
 }

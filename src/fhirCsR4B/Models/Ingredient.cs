@@ -698,6 +698,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? AllergenicIndicator { get; set; }
     /// <summary>
+    /// Extension container element for AllergenicIndicator
+    /// </summary>
+    public Element _AllergenicIndicator { get; set; }
+    /// <summary>
     /// The product which this ingredient is a constituent part of.
     /// </summary>
     public List<Reference> For { get; set; }
@@ -800,6 +804,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("allergenicIndicator", (bool)AllergenicIndicator!);
       }
 
+      if (_AllergenicIndicator != null)
+      {
+        writer.WritePropertyName("_allergenicIndicator");
+        _AllergenicIndicator.SerializeJson(writer, options);
+      }
+
       if ((Manufacturer != null) && (Manufacturer.Count != 0))
       {
         writer.WritePropertyName("manufacturer");
@@ -833,6 +843,11 @@ namespace fhirCsR4B.Models
       {
         case "allergenicIndicator":
           AllergenicIndicator = reader.GetBoolean();
+          break;
+
+        case "_allergenicIndicator":
+          _AllergenicIndicator = new fhirCsR4B.Models.Element();
+          _AllergenicIndicator.DeserializeJson(ref reader, options);
           break;
 
         case "for":
@@ -979,5 +994,11 @@ namespace fhirCsR4B.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

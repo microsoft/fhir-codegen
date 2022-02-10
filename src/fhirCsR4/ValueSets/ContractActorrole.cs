@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPatient = "patient";
 
     /// <summary>
+    /// Literal for code: ContractActorrolePatient
+    /// </summary>
+    public const string LiteralContractActorrolePatient = "http://terminology.hl7.org/CodeSystem/contractactorrole#patient";
+
+    /// <summary>
     /// Literal for code: Practitioner
     /// </summary>
     public const string LiteralPractitioner = "practitioner";
+
+    /// <summary>
+    /// Literal for code: ContractActorrolePractitioner
+    /// </summary>
+    public const string LiteralContractActorrolePractitioner = "http://terminology.hl7.org/CodeSystem/contractactorrole#practitioner";
+
+    /// <summary>
+    /// Dictionary for looking up ContractActorrole Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "patient", Patient }, 
+      { "http://terminology.hl7.org/CodeSystem/contractactorrole#patient", Patient }, 
+      { "practitioner", Practitioner }, 
+      { "http://terminology.hl7.org/CodeSystem/contractactorrole#practitioner", Practitioner }, 
+    };
   };
 }

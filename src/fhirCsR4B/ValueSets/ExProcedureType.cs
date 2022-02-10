@@ -36,8 +36,28 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrimaryProcedure = "primary";
 
     /// <summary>
+    /// Literal for code: ExProcedureTypePrimaryProcedure
+    /// </summary>
+    public const string LiteralExProcedureTypePrimaryProcedure = "http://terminology.hl7.org/CodeSystem/ex-procedure-type#primary";
+
+    /// <summary>
     /// Literal for code: SecondaryProcedure
     /// </summary>
     public const string LiteralSecondaryProcedure = "secondary";
+
+    /// <summary>
+    /// Literal for code: ExProcedureTypeSecondaryProcedure
+    /// </summary>
+    public const string LiteralExProcedureTypeSecondaryProcedure = "http://terminology.hl7.org/CodeSystem/ex-procedure-type#secondary";
+
+    /// <summary>
+    /// Dictionary for looking up ExProcedureType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "primary", PrimaryProcedure }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-procedure-type#primary", PrimaryProcedure }, 
+      { "secondary", SecondaryProcedure }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-procedure-type#secondary", SecondaryProcedure }, 
+    };
   };
 }

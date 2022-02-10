@@ -144,9 +144,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDICOMQIDORS = "dicom-qido-rs";
 
     /// <summary>
+    /// Literal for code: EndpointConnectionTypeDICOMQIDORS
+    /// </summary>
+    public const string LiteralEndpointConnectionTypeDICOMQIDORS = "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#dicom-qido-rs";
+
+    /// <summary>
     /// Literal for code: DICOMSTOWRS
     /// </summary>
     public const string LiteralDICOMSTOWRS = "dicom-stow-rs";
+
+    /// <summary>
+    /// Literal for code: EndpointConnectionTypeDICOMSTOWRS
+    /// </summary>
+    public const string LiteralEndpointConnectionTypeDICOMSTOWRS = "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#dicom-stow-rs";
 
     /// <summary>
     /// Literal for code: DICOMWADORS
@@ -154,9 +164,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDICOMWADORS = "dicom-wado-rs";
 
     /// <summary>
+    /// Literal for code: EndpointConnectionTypeDICOMWADORS
+    /// </summary>
+    public const string LiteralEndpointConnectionTypeDICOMWADORS = "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#dicom-wado-rs";
+
+    /// <summary>
     /// Literal for code: DICOMWADOURI
     /// </summary>
     public const string LiteralDICOMWADOURI = "dicom-wado-uri";
+
+    /// <summary>
+    /// Literal for code: EndpointConnectionTypeDICOMWADOURI
+    /// </summary>
+    public const string LiteralEndpointConnectionTypeDICOMWADOURI = "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#dicom-wado-uri";
 
     /// <summary>
     /// Literal for code: DirectProject
@@ -164,9 +184,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDirectProject = "direct-project";
 
     /// <summary>
+    /// Literal for code: EndpointConnectionTypeDirectProject
+    /// </summary>
+    public const string LiteralEndpointConnectionTypeDirectProject = "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#direct-project";
+
+    /// <summary>
     /// Literal for code: HL7FHIRMessaging
     /// </summary>
     public const string LiteralHL7FHIRMessaging = "hl7-fhir-msg";
+
+    /// <summary>
+    /// Literal for code: EndpointConnectionTypeHL7FHIRMessaging
+    /// </summary>
+    public const string LiteralEndpointConnectionTypeHL7FHIRMessaging = "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#hl7-fhir-msg";
 
     /// <summary>
     /// Literal for code: HL7FHIR
@@ -174,9 +204,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHL7FHIR = "hl7-fhir-rest";
 
     /// <summary>
+    /// Literal for code: EndpointConnectionTypeHL7FHIR
+    /// </summary>
+    public const string LiteralEndpointConnectionTypeHL7FHIR = "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#hl7-fhir-rest";
+
+    /// <summary>
     /// Literal for code: HL7V2MLLP
     /// </summary>
     public const string LiteralHL7V2MLLP = "hl7v2-mllp";
+
+    /// <summary>
+    /// Literal for code: EndpointConnectionTypeHL7V2MLLP
+    /// </summary>
+    public const string LiteralEndpointConnectionTypeHL7V2MLLP = "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#hl7v2-mllp";
 
     /// <summary>
     /// Literal for code: IHEIID
@@ -184,9 +224,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIHEIID = "ihe-iid";
 
     /// <summary>
+    /// Literal for code: EndpointConnectionTypeIHEIID
+    /// </summary>
+    public const string LiteralEndpointConnectionTypeIHEIID = "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#ihe-iid";
+
+    /// <summary>
     /// Literal for code: IHEXCA
     /// </summary>
     public const string LiteralIHEXCA = "ihe-xca";
+
+    /// <summary>
+    /// Literal for code: EndpointConnectionTypeIHEXCA
+    /// </summary>
+    public const string LiteralEndpointConnectionTypeIHEXCA = "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#ihe-xca";
 
     /// <summary>
     /// Literal for code: IHEXCPD
@@ -194,9 +244,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIHEXCPD = "ihe-xcpd";
 
     /// <summary>
+    /// Literal for code: EndpointConnectionTypeIHEXCPD
+    /// </summary>
+    public const string LiteralEndpointConnectionTypeIHEXCPD = "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#ihe-xcpd";
+
+    /// <summary>
     /// Literal for code: IHEXDR
     /// </summary>
     public const string LiteralIHEXDR = "ihe-xdr";
+
+    /// <summary>
+    /// Literal for code: EndpointConnectionTypeIHEXDR
+    /// </summary>
+    public const string LiteralEndpointConnectionTypeIHEXDR = "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#ihe-xdr";
 
     /// <summary>
     /// Literal for code: IHEXDS
@@ -204,8 +264,52 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIHEXDS = "ihe-xds";
 
     /// <summary>
+    /// Literal for code: EndpointConnectionTypeIHEXDS
+    /// </summary>
+    public const string LiteralEndpointConnectionTypeIHEXDS = "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#ihe-xds";
+
+    /// <summary>
     /// Literal for code: SecureEmail
     /// </summary>
     public const string LiteralSecureEmail = "secure-email";
+
+    /// <summary>
+    /// Literal for code: EndpointConnectionTypeSecureEmail
+    /// </summary>
+    public const string LiteralEndpointConnectionTypeSecureEmail = "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#secure-email";
+
+    /// <summary>
+    /// Dictionary for looking up EndpointConnectionType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "dicom-qido-rs", DICOMQIDORS }, 
+      { "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#dicom-qido-rs", DICOMQIDORS }, 
+      { "dicom-stow-rs", DICOMSTOWRS }, 
+      { "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#dicom-stow-rs", DICOMSTOWRS }, 
+      { "dicom-wado-rs", DICOMWADORS }, 
+      { "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#dicom-wado-rs", DICOMWADORS }, 
+      { "dicom-wado-uri", DICOMWADOURI }, 
+      { "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#dicom-wado-uri", DICOMWADOURI }, 
+      { "direct-project", DirectProject }, 
+      { "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#direct-project", DirectProject }, 
+      { "hl7-fhir-msg", HL7FHIRMessaging }, 
+      { "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#hl7-fhir-msg", HL7FHIRMessaging }, 
+      { "hl7-fhir-rest", HL7FHIR }, 
+      { "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#hl7-fhir-rest", HL7FHIR }, 
+      { "hl7v2-mllp", HL7V2MLLP }, 
+      { "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#hl7v2-mllp", HL7V2MLLP }, 
+      { "ihe-iid", IHEIID }, 
+      { "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#ihe-iid", IHEIID }, 
+      { "ihe-xca", IHEXCA }, 
+      { "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#ihe-xca", IHEXCA }, 
+      { "ihe-xcpd", IHEXCPD }, 
+      { "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#ihe-xcpd", IHEXCPD }, 
+      { "ihe-xdr", IHEXDR }, 
+      { "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#ihe-xdr", IHEXDR }, 
+      { "ihe-xds", IHEXDS }, 
+      { "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#ihe-xds", IHEXDS }, 
+      { "secure-email", SecureEmail }, 
+      { "http://terminology.hl7.org/CodeSystem/endpoint-connection-type#secure-email", SecureEmail }, 
+    };
   };
 }

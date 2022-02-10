@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNortheast = "northeast";
 
     /// <summary>
+    /// Literal for code: MeasurereportStratifierValueExampleNortheast
+    /// </summary>
+    public const string LiteralMeasurereportStratifierValueExampleNortheast = "http://terminology.hl7.org/CodeSystem/measurereport-stratifier-value-example#northeast";
+
+    /// <summary>
     /// Literal for code: Northwest
     /// </summary>
     public const string LiteralNorthwest = "northwest";
+
+    /// <summary>
+    /// Literal for code: MeasurereportStratifierValueExampleNorthwest
+    /// </summary>
+    public const string LiteralMeasurereportStratifierValueExampleNorthwest = "http://terminology.hl7.org/CodeSystem/measurereport-stratifier-value-example#northwest";
 
     /// <summary>
     /// Literal for code: Southeast
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSoutheast = "southeast";
 
     /// <summary>
+    /// Literal for code: MeasurereportStratifierValueExampleSoutheast
+    /// </summary>
+    public const string LiteralMeasurereportStratifierValueExampleSoutheast = "http://terminology.hl7.org/CodeSystem/measurereport-stratifier-value-example#southeast";
+
+    /// <summary>
     /// Literal for code: Soutwest
     /// </summary>
     public const string LiteralSoutwest = "southwest";
+
+    /// <summary>
+    /// Literal for code: MeasurereportStratifierValueExampleSoutwest
+    /// </summary>
+    public const string LiteralMeasurereportStratifierValueExampleSoutwest = "http://terminology.hl7.org/CodeSystem/measurereport-stratifier-value-example#southwest";
+
+    /// <summary>
+    /// Dictionary for looking up MeasurereportStratifierValueExample Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "northeast", Northeast }, 
+      { "http://terminology.hl7.org/CodeSystem/measurereport-stratifier-value-example#northeast", Northeast }, 
+      { "northwest", Northwest }, 
+      { "http://terminology.hl7.org/CodeSystem/measurereport-stratifier-value-example#northwest", Northwest }, 
+      { "southeast", Southeast }, 
+      { "http://terminology.hl7.org/CodeSystem/measurereport-stratifier-value-example#southeast", Southeast }, 
+      { "southwest", Soutwest }, 
+      { "http://terminology.hl7.org/CodeSystem/measurereport-stratifier-value-example#southwest", Soutwest }, 
+    };
   };
 }

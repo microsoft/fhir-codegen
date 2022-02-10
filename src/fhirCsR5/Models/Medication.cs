@@ -20,6 +20,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? IsActive { get; set; }
     /// <summary>
+    /// Extension container element for IsActive
+    /// </summary>
+    public Element _IsActive { get; set; }
+    /// <summary>
     /// The ingredient (substance or medication) that the ingredient.strength relates to.  This is represented as a concept from a code system or described in another resource (Substance or Medication).
     /// </summary>
     public CodeableReference Item { get; set; }
@@ -57,6 +61,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("isActive", (bool)IsActive!);
       }
 
+      if (_IsActive != null)
+      {
+        writer.WritePropertyName("_isActive");
+        _IsActive.SerializeJson(writer, options);
+      }
+
       if (StrengthRatio != null)
       {
         writer.WritePropertyName("strengthRatio");
@@ -89,6 +99,11 @@ namespace fhirCsR5.Models
       {
         case "isActive":
           IsActive = reader.GetBoolean();
+          break;
+
+        case "_isActive":
+          _IsActive = new fhirCsR5.Models.Element();
+          _IsActive.DeserializeJson(ref reader, options);
           break;
 
         case "item":
@@ -524,5 +539,10 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string INACTIVE = "inactive";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "inactive",
+      "entered-in-error",
+    };
   }
 }

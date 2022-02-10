@@ -375,6 +375,23 @@ namespace fhirCsR2.Models
     public const string ATTACHMENT = "attachment";
     public const string REFERENCE = "reference";
     public const string QUANTITY = "quantity";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "boolean",
+      "decimal",
+      "integer",
+      "date",
+      "dateTime",
+      "instant",
+      "time",
+      "string",
+      "text",
+      "url",
+      "choice",
+      "open-choice",
+      "attachment",
+      "reference",
+      "quantity",
+    };
   }
   /// <summary>
   /// Need to be able to logically group answers to grouped questions.
@@ -1084,5 +1101,10 @@ namespace fhirCsR2.Models
     public const string DRAFT = "draft";
     public const string PUBLISHED = "published";
     public const string RETIRED = "retired";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "published",
+      "retired",
+    };
   }
 }

@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDatatype = "datatype";
 
     /// <summary>
+    /// Literal for code: ExtensionContextDatatype
+    /// </summary>
+    public const string LiteralExtensionContextDatatype = "http://hl7.org/fhir/extension-context#datatype";
+
+    /// <summary>
     /// Literal for code: Extension
     /// </summary>
     public const string LiteralExtension = "extension";
 
     /// <summary>
+    /// Literal for code: ExtensionContextExtension
+    /// </summary>
+    public const string LiteralExtensionContextExtension = "http://hl7.org/fhir/extension-context#extension";
+
+    /// <summary>
     /// Literal for code: Resource
     /// </summary>
     public const string LiteralResource = "resource";
+
+    /// <summary>
+    /// Literal for code: ExtensionContextResource
+    /// </summary>
+    public const string LiteralExtensionContextResource = "http://hl7.org/fhir/extension-context#resource";
+
+    /// <summary>
+    /// Dictionary for looking up ExtensionContext Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "datatype", Datatype }, 
+      { "http://hl7.org/fhir/extension-context#datatype", Datatype }, 
+      { "extension", Extension }, 
+      { "http://hl7.org/fhir/extension-context#extension", Extension }, 
+      { "resource", Resource }, 
+      { "http://hl7.org/fhir/extension-context#resource", Resource }, 
+    };
   };
 }

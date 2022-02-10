@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeftArm = "LA";
 
     /// <summary>
+    /// Literal for code: V3ActSiteLeftArm
+    /// </summary>
+    public const string LiteralV3ActSiteLeftArm = "http://terminology.hl7.org/CodeSystem/v3-ActSite#LA";
+
+    /// <summary>
     /// Literal for code: RightArm
     /// </summary>
     public const string LiteralRightArm = "RA";
+
+    /// <summary>
+    /// Literal for code: V3ActSiteRightArm
+    /// </summary>
+    public const string LiteralV3ActSiteRightArm = "http://terminology.hl7.org/CodeSystem/v3-ActSite#RA";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationSite Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "LA", LeftArm }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActSite#LA", LeftArm }, 
+      { "RA", RightArm }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActSite#RA", RightArm }, 
+    };
   };
 }

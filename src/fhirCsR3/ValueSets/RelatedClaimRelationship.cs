@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAssociatedClaim = "associated";
 
     /// <summary>
+    /// Literal for code: RelatedClaimRelationshipAssociatedClaim
+    /// </summary>
+    public const string LiteralRelatedClaimRelationshipAssociatedClaim = "http://hl7.org/fhir/ex-relatedclaimrelationship#associated";
+
+    /// <summary>
     /// Literal for code: PriorClaim
     /// </summary>
     public const string LiteralPriorClaim = "prior";
+
+    /// <summary>
+    /// Literal for code: RelatedClaimRelationshipPriorClaim
+    /// </summary>
+    public const string LiteralRelatedClaimRelationshipPriorClaim = "http://hl7.org/fhir/ex-relatedclaimrelationship#prior";
+
+    /// <summary>
+    /// Dictionary for looking up RelatedClaimRelationship Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "associated", AssociatedClaim }, 
+      { "http://hl7.org/fhir/ex-relatedclaimrelationship#associated", AssociatedClaim }, 
+      { "prior", PriorClaim }, 
+      { "http://hl7.org/fhir/ex-relatedclaimrelationship#prior", PriorClaim }, 
+    };
   };
 }

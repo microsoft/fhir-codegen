@@ -32,6 +32,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).
     /// </summary>
     public string ValueCode { get; set; }
@@ -83,6 +87,10 @@ namespace fhirCsR3.Models
     /// Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).
     /// </summary>
     public int? ValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
     /// <summary>
     /// Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).
     /// </summary>
@@ -251,6 +259,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(ValueCode))
       {
         writer.WriteString("valueCode", (string)ValueCode!);
@@ -320,6 +334,12 @@ namespace fhirCsR3.Models
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(ValueMarkdown))
@@ -548,6 +568,11 @@ namespace fhirCsR3.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR3.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueCode":
           ValueCode = reader.GetString();
           break;
@@ -604,6 +629,11 @@ namespace fhirCsR3.Models
 
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR3.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueMarkdown":

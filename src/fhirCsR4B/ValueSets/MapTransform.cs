@@ -171,9 +171,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAppend = "append";
 
     /// <summary>
+    /// Literal for code: MapTransformAppend
+    /// </summary>
+    public const string LiteralMapTransformAppend = "http://hl7.org/fhir/map-transform#append";
+
+    /// <summary>
     /// Literal for code: C
     /// </summary>
     public const string LiteralC = "c";
+
+    /// <summary>
+    /// Literal for code: MapTransformC
+    /// </summary>
+    public const string LiteralMapTransformC = "http://hl7.org/fhir/map-transform#c";
 
     /// <summary>
     /// Literal for code: Cast
@@ -181,9 +191,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCast = "cast";
 
     /// <summary>
+    /// Literal for code: MapTransformCast
+    /// </summary>
+    public const string LiteralMapTransformCast = "http://hl7.org/fhir/map-transform#cast";
+
+    /// <summary>
     /// Literal for code: Cc
     /// </summary>
     public const string LiteralCc = "cc";
+
+    /// <summary>
+    /// Literal for code: MapTransformCc
+    /// </summary>
+    public const string LiteralMapTransformCc = "http://hl7.org/fhir/map-transform#cc";
 
     /// <summary>
     /// Literal for code: Copy
@@ -191,9 +211,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCopy = "copy";
 
     /// <summary>
+    /// Literal for code: MapTransformCopy
+    /// </summary>
+    public const string LiteralMapTransformCopy = "http://hl7.org/fhir/map-transform#copy";
+
+    /// <summary>
     /// Literal for code: Cp
     /// </summary>
     public const string LiteralCp = "cp";
+
+    /// <summary>
+    /// Literal for code: MapTransformCp
+    /// </summary>
+    public const string LiteralMapTransformCp = "http://hl7.org/fhir/map-transform#cp";
 
     /// <summary>
     /// Literal for code: Create
@@ -201,9 +231,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCreate = "create";
 
     /// <summary>
+    /// Literal for code: MapTransformCreate
+    /// </summary>
+    public const string LiteralMapTransformCreate = "http://hl7.org/fhir/map-transform#create";
+
+    /// <summary>
     /// Literal for code: DateOp
     /// </summary>
     public const string LiteralDateOp = "dateOp";
+
+    /// <summary>
+    /// Literal for code: MapTransformDateOp
+    /// </summary>
+    public const string LiteralMapTransformDateOp = "http://hl7.org/fhir/map-transform#dateOp";
 
     /// <summary>
     /// Literal for code: Escape
@@ -211,9 +251,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEscape = "escape";
 
     /// <summary>
+    /// Literal for code: MapTransformEscape
+    /// </summary>
+    public const string LiteralMapTransformEscape = "http://hl7.org/fhir/map-transform#escape";
+
+    /// <summary>
     /// Literal for code: Evaluate
     /// </summary>
     public const string LiteralEvaluate = "evaluate";
+
+    /// <summary>
+    /// Literal for code: MapTransformEvaluate
+    /// </summary>
+    public const string LiteralMapTransformEvaluate = "http://hl7.org/fhir/map-transform#evaluate";
 
     /// <summary>
     /// Literal for code: Id
@@ -221,9 +271,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralId = "id";
 
     /// <summary>
+    /// Literal for code: MapTransformId
+    /// </summary>
+    public const string LiteralMapTransformId = "http://hl7.org/fhir/map-transform#id";
+
+    /// <summary>
     /// Literal for code: Pointer
     /// </summary>
     public const string LiteralPointer = "pointer";
+
+    /// <summary>
+    /// Literal for code: MapTransformPointer
+    /// </summary>
+    public const string LiteralMapTransformPointer = "http://hl7.org/fhir/map-transform#pointer";
 
     /// <summary>
     /// Literal for code: Qty
@@ -231,9 +291,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQty = "qty";
 
     /// <summary>
+    /// Literal for code: MapTransformQty
+    /// </summary>
+    public const string LiteralMapTransformQty = "http://hl7.org/fhir/map-transform#qty";
+
+    /// <summary>
     /// Literal for code: Reference
     /// </summary>
     public const string LiteralReference = "reference";
+
+    /// <summary>
+    /// Literal for code: MapTransformReference
+    /// </summary>
+    public const string LiteralMapTransformReference = "http://hl7.org/fhir/map-transform#reference";
 
     /// <summary>
     /// Literal for code: Translate
@@ -241,13 +311,68 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTranslate = "translate";
 
     /// <summary>
+    /// Literal for code: MapTransformTranslate
+    /// </summary>
+    public const string LiteralMapTransformTranslate = "http://hl7.org/fhir/map-transform#translate";
+
+    /// <summary>
     /// Literal for code: Truncate
     /// </summary>
     public const string LiteralTruncate = "truncate";
 
     /// <summary>
+    /// Literal for code: MapTransformTruncate
+    /// </summary>
+    public const string LiteralMapTransformTruncate = "http://hl7.org/fhir/map-transform#truncate";
+
+    /// <summary>
     /// Literal for code: Uuid
     /// </summary>
     public const string LiteralUuid = "uuid";
+
+    /// <summary>
+    /// Literal for code: MapTransformUuid
+    /// </summary>
+    public const string LiteralMapTransformUuid = "http://hl7.org/fhir/map-transform#uuid";
+
+    /// <summary>
+    /// Dictionary for looking up MapTransform Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "append", Append }, 
+      { "http://hl7.org/fhir/map-transform#append", Append }, 
+      { "c", C }, 
+      { "http://hl7.org/fhir/map-transform#c", C }, 
+      { "cast", Cast }, 
+      { "http://hl7.org/fhir/map-transform#cast", Cast }, 
+      { "cc", Cc }, 
+      { "http://hl7.org/fhir/map-transform#cc", Cc }, 
+      { "copy", Copy }, 
+      { "http://hl7.org/fhir/map-transform#copy", Copy }, 
+      { "cp", Cp }, 
+      { "http://hl7.org/fhir/map-transform#cp", Cp }, 
+      { "create", Create }, 
+      { "http://hl7.org/fhir/map-transform#create", Create }, 
+      { "dateOp", DateOp }, 
+      { "http://hl7.org/fhir/map-transform#dateOp", DateOp }, 
+      { "escape", Escape }, 
+      { "http://hl7.org/fhir/map-transform#escape", Escape }, 
+      { "evaluate", Evaluate }, 
+      { "http://hl7.org/fhir/map-transform#evaluate", Evaluate }, 
+      { "id", Id }, 
+      { "http://hl7.org/fhir/map-transform#id", Id }, 
+      { "pointer", Pointer }, 
+      { "http://hl7.org/fhir/map-transform#pointer", Pointer }, 
+      { "qty", Qty }, 
+      { "http://hl7.org/fhir/map-transform#qty", Qty }, 
+      { "reference", Reference }, 
+      { "http://hl7.org/fhir/map-transform#reference", Reference }, 
+      { "translate", Translate }, 
+      { "http://hl7.org/fhir/map-transform#translate", Translate }, 
+      { "truncate", Truncate }, 
+      { "http://hl7.org/fhir/map-transform#truncate", Truncate }, 
+      { "uuid", Uuid }, 
+      { "http://hl7.org/fhir/map-transform#uuid", Uuid }, 
+    };
   };
 }

@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPriorPaymentReversal = "a001";
 
     /// <summary>
+    /// Literal for code: PaymentAdjustmentReasonPriorPaymentReversal
+    /// </summary>
+    public const string LiteralPaymentAdjustmentReasonPriorPaymentReversal = "http://hl7.org/fhir/payment-adjustment-reason#a001";
+
+    /// <summary>
     /// Literal for code: PriorOverpayment
     /// </summary>
     public const string LiteralPriorOverpayment = "a002";
+
+    /// <summary>
+    /// Literal for code: PaymentAdjustmentReasonPriorOverpayment
+    /// </summary>
+    public const string LiteralPaymentAdjustmentReasonPriorOverpayment = "http://hl7.org/fhir/payment-adjustment-reason#a002";
+
+    /// <summary>
+    /// Dictionary for looking up PaymentAdjustmentReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "a001", PriorPaymentReversal }, 
+      { "http://hl7.org/fhir/payment-adjustment-reason#a001", PriorPaymentReversal }, 
+      { "a002", PriorOverpayment }, 
+      { "http://hl7.org/fhir/payment-adjustment-reason#a002", PriorOverpayment }, 
+    };
   };
 }

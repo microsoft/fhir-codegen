@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNormalVaginalDelivery = "100";
 
     /// <summary>
+    /// Literal for code: ExDiagnosisrelatedgroupNormalVaginalDelivery
+    /// </summary>
+    public const string LiteralExDiagnosisrelatedgroupNormalVaginalDelivery = "http://hl7.org/fhir/ex-diagnosisrelatedgroup#100";
+
+    /// <summary>
     /// Literal for code: AppendectomyUncomplicated
     /// </summary>
     public const string LiteralAppendectomyUncomplicated = "101";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosisrelatedgroupAppendectomyUncomplicated
+    /// </summary>
+    public const string LiteralExDiagnosisrelatedgroupAppendectomyUncomplicated = "http://hl7.org/fhir/ex-diagnosisrelatedgroup#101";
 
     /// <summary>
     /// Literal for code: ToothAbcess
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralToothAbcess = "300";
 
     /// <summary>
+    /// Literal for code: ExDiagnosisrelatedgroupToothAbcess
+    /// </summary>
+    public const string LiteralExDiagnosisrelatedgroupToothAbcess = "http://hl7.org/fhir/ex-diagnosisrelatedgroup#300";
+
+    /// <summary>
     /// Literal for code: HeadTraumaConcussion
     /// </summary>
     public const string LiteralHeadTraumaConcussion = "400";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosisrelatedgroupHeadTraumaConcussion
+    /// </summary>
+    public const string LiteralExDiagnosisrelatedgroupHeadTraumaConcussion = "http://hl7.org/fhir/ex-diagnosisrelatedgroup#400";
+
+    /// <summary>
+    /// Dictionary for looking up ExDiagnosisrelatedgroup Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "100", NormalVaginalDelivery }, 
+      { "http://hl7.org/fhir/ex-diagnosisrelatedgroup#100", NormalVaginalDelivery }, 
+      { "101", AppendectomyUncomplicated }, 
+      { "http://hl7.org/fhir/ex-diagnosisrelatedgroup#101", AppendectomyUncomplicated }, 
+      { "300", ToothAbcess }, 
+      { "http://hl7.org/fhir/ex-diagnosisrelatedgroup#300", ToothAbcess }, 
+      { "400", HeadTraumaConcussion }, 
+      { "http://hl7.org/fhir/ex-diagnosisrelatedgroup#400", HeadTraumaConcussion }, 
+    };
   };
 }

@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHighPriority = "high-priority";
 
     /// <summary>
+    /// Literal for code: GoalPriorityHighPriority
+    /// </summary>
+    public const string LiteralGoalPriorityHighPriority = "http://hl7.org/fhir/goal-priority#high-priority";
+
+    /// <summary>
     /// Literal for code: LowPriority
     /// </summary>
     public const string LiteralLowPriority = "low-priority";
 
     /// <summary>
+    /// Literal for code: GoalPriorityLowPriority
+    /// </summary>
+    public const string LiteralGoalPriorityLowPriority = "http://hl7.org/fhir/goal-priority#low-priority";
+
+    /// <summary>
     /// Literal for code: MediumPriority
     /// </summary>
     public const string LiteralMediumPriority = "medium-priority";
+
+    /// <summary>
+    /// Literal for code: GoalPriorityMediumPriority
+    /// </summary>
+    public const string LiteralGoalPriorityMediumPriority = "http://hl7.org/fhir/goal-priority#medium-priority";
+
+    /// <summary>
+    /// Dictionary for looking up GoalPriority Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "high-priority", HighPriority }, 
+      { "http://hl7.org/fhir/goal-priority#high-priority", HighPriority }, 
+      { "low-priority", LowPriority }, 
+      { "http://hl7.org/fhir/goal-priority#low-priority", LowPriority }, 
+      { "medium-priority", MediumPriority }, 
+      { "http://hl7.org/fhir/goal-priority#medium-priority", MediumPriority }, 
+    };
   };
 }

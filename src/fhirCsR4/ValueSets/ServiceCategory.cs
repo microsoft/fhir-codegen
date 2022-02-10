@@ -360,9 +360,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdoption = "1";
 
     /// <summary>
+    /// Literal for code: ServiceCategoryAdoption
+    /// </summary>
+    public const string LiteralServiceCategoryAdoption = "http://terminology.hl7.org/CodeSystem/service-category#1";
+
+    /// <summary>
     /// Literal for code: Dental
     /// </summary>
     public const string LiteralDental = "10";
+
+    /// <summary>
+    /// Literal for code: ServiceCategoryDental
+    /// </summary>
+    public const string LiteralServiceCategoryDental = "http://terminology.hl7.org/CodeSystem/service-category#10";
 
     /// <summary>
     /// Literal for code: DisabilitySupport
@@ -370,9 +380,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDisabilitySupport = "11";
 
     /// <summary>
+    /// Literal for code: ServiceCategoryDisabilitySupport
+    /// </summary>
+    public const string LiteralServiceCategoryDisabilitySupport = "http://terminology.hl7.org/CodeSystem/service-category#11";
+
+    /// <summary>
     /// Literal for code: DrugAlcohol
     /// </summary>
     public const string LiteralDrugAlcohol = "12";
+
+    /// <summary>
+    /// Literal for code: ServiceCategoryDrugAlcohol
+    /// </summary>
+    public const string LiteralServiceCategoryDrugAlcohol = "http://terminology.hl7.org/CodeSystem/service-category#12";
 
     /// <summary>
     /// Literal for code: EducationAndLearning
@@ -380,9 +400,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEducationAndLearning = "13";
 
     /// <summary>
+    /// Literal for code: ServiceCategoryEducationAndLearning
+    /// </summary>
+    public const string LiteralServiceCategoryEducationAndLearning = "http://terminology.hl7.org/CodeSystem/service-category#13";
+
+    /// <summary>
     /// Literal for code: EmergencyDepartment
     /// </summary>
     public const string LiteralEmergencyDepartment = "14";
+
+    /// <summary>
+    /// Literal for code: ServiceCategoryEmergencyDepartment
+    /// </summary>
+    public const string LiteralServiceCategoryEmergencyDepartment = "http://terminology.hl7.org/CodeSystem/service-category#14";
 
     /// <summary>
     /// Literal for code: Employment
@@ -390,9 +420,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmployment = "15";
 
     /// <summary>
+    /// Literal for code: ServiceCategoryEmployment
+    /// </summary>
+    public const string LiteralServiceCategoryEmployment = "http://terminology.hl7.org/CodeSystem/service-category#15";
+
+    /// <summary>
     /// Literal for code: FinancialAndMaterialAid
     /// </summary>
     public const string LiteralFinancialAndMaterialAid = "16";
+
+    /// <summary>
+    /// Literal for code: ServiceCategoryFinancialAndMaterialAid
+    /// </summary>
+    public const string LiteralServiceCategoryFinancialAndMaterialAid = "http://terminology.hl7.org/CodeSystem/service-category#16";
 
     /// <summary>
     /// Literal for code: GeneralPractice
@@ -400,9 +440,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGeneralPractice = "17";
 
     /// <summary>
+    /// Literal for code: ServiceCategoryGeneralPractice
+    /// </summary>
+    public const string LiteralServiceCategoryGeneralPractice = "http://terminology.hl7.org/CodeSystem/service-category#17";
+
+    /// <summary>
     /// Literal for code: HousingHomelessness
     /// </summary>
     public const string LiteralHousingHomelessness = "18";
+
+    /// <summary>
+    /// Literal for code: ServiceCategoryHousingHomelessness
+    /// </summary>
+    public const string LiteralServiceCategoryHousingHomelessness = "http://terminology.hl7.org/CodeSystem/service-category#18";
 
     /// <summary>
     /// Literal for code: Interpreting
@@ -410,9 +460,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInterpreting = "19";
 
     /// <summary>
+    /// Literal for code: ServiceCategoryInterpreting
+    /// </summary>
+    public const string LiteralServiceCategoryInterpreting = "http://terminology.hl7.org/CodeSystem/service-category#19";
+
+    /// <summary>
     /// Literal for code: AgedCare
     /// </summary>
     public const string LiteralAgedCare = "2";
+
+    /// <summary>
+    /// Literal for code: ServiceCategoryAgedCare
+    /// </summary>
+    public const string LiteralServiceCategoryAgedCare = "http://terminology.hl7.org/CodeSystem/service-category#2";
 
     /// <summary>
     /// Literal for code: Justice
@@ -420,9 +480,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJustice = "20";
 
     /// <summary>
+    /// Literal for code: ServiceCategoryJustice
+    /// </summary>
+    public const string LiteralServiceCategoryJustice = "http://terminology.hl7.org/CodeSystem/service-category#20";
+
+    /// <summary>
     /// Literal for code: Legal
     /// </summary>
     public const string LiteralLegal = "21";
+
+    /// <summary>
+    /// Literal for code: ServiceCategoryLegal
+    /// </summary>
+    public const string LiteralServiceCategoryLegal = "http://terminology.hl7.org/CodeSystem/service-category#21";
 
     /// <summary>
     /// Literal for code: MentalHealth
@@ -430,9 +500,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMentalHealth = "22";
 
     /// <summary>
+    /// Literal for code: ServiceCategoryMentalHealth
+    /// </summary>
+    public const string LiteralServiceCategoryMentalHealth = "http://terminology.hl7.org/CodeSystem/service-category#22";
+
+    /// <summary>
     /// Literal for code: PhysicalActivityAndRecreation
     /// </summary>
     public const string LiteralPhysicalActivityAndRecreation = "23";
+
+    /// <summary>
+    /// Literal for code: ServiceCategoryPhysicalActivityAndRecreation
+    /// </summary>
+    public const string LiteralServiceCategoryPhysicalActivityAndRecreation = "http://terminology.hl7.org/CodeSystem/service-category#23";
 
     /// <summary>
     /// Literal for code: Regulation
@@ -440,9 +520,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRegulation = "24";
 
     /// <summary>
+    /// Literal for code: ServiceCategoryRegulation
+    /// </summary>
+    public const string LiteralServiceCategoryRegulation = "http://terminology.hl7.org/CodeSystem/service-category#24";
+
+    /// <summary>
     /// Literal for code: RespiteCarerSupport
     /// </summary>
     public const string LiteralRespiteCarerSupport = "25";
+
+    /// <summary>
+    /// Literal for code: ServiceCategoryRespiteCarerSupport
+    /// </summary>
+    public const string LiteralServiceCategoryRespiteCarerSupport = "http://terminology.hl7.org/CodeSystem/service-category#25";
 
     /// <summary>
     /// Literal for code: SpecialistClinicalPathology
@@ -450,9 +540,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpecialistClinicalPathology = "26";
 
     /// <summary>
+    /// Literal for code: ServiceCategorySpecialistClinicalPathology
+    /// </summary>
+    public const string LiteralServiceCategorySpecialistClinicalPathology = "http://terminology.hl7.org/CodeSystem/service-category#26";
+
+    /// <summary>
     /// Literal for code: SpecialistMedical
     /// </summary>
     public const string LiteralSpecialistMedical = "27";
+
+    /// <summary>
+    /// Literal for code: ServiceCategorySpecialistMedical
+    /// </summary>
+    public const string LiteralServiceCategorySpecialistMedical = "http://terminology.hl7.org/CodeSystem/service-category#27";
 
     /// <summary>
     /// Literal for code: SpecialistObstetricsAndGynecology
@@ -460,9 +560,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpecialistObstetricsAndGynecology = "28";
 
     /// <summary>
+    /// Literal for code: ServiceCategorySpecialistObstetricsAndGynecology
+    /// </summary>
+    public const string LiteralServiceCategorySpecialistObstetricsAndGynecology = "http://terminology.hl7.org/CodeSystem/service-category#28";
+
+    /// <summary>
     /// Literal for code: SpecialistPaediatric
     /// </summary>
     public const string LiteralSpecialistPaediatric = "29";
+
+    /// <summary>
+    /// Literal for code: ServiceCategorySpecialistPaediatric
+    /// </summary>
+    public const string LiteralServiceCategorySpecialistPaediatric = "http://terminology.hl7.org/CodeSystem/service-category#29";
 
     /// <summary>
     /// Literal for code: AlternativeComplementaryTherapies
@@ -470,9 +580,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlternativeComplementaryTherapies = "3";
 
     /// <summary>
+    /// Literal for code: ServiceCategoryAlternativeComplementaryTherapies
+    /// </summary>
+    public const string LiteralServiceCategoryAlternativeComplementaryTherapies = "http://terminology.hl7.org/CodeSystem/service-category#3";
+
+    /// <summary>
     /// Literal for code: SpecialistRadiologyImaging
     /// </summary>
     public const string LiteralSpecialistRadiologyImaging = "30";
+
+    /// <summary>
+    /// Literal for code: ServiceCategorySpecialistRadiologyImaging
+    /// </summary>
+    public const string LiteralServiceCategorySpecialistRadiologyImaging = "http://terminology.hl7.org/CodeSystem/service-category#30";
 
     /// <summary>
     /// Literal for code: SpecialistSurgical
@@ -480,9 +600,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpecialistSurgical = "31";
 
     /// <summary>
+    /// Literal for code: ServiceCategorySpecialistSurgical
+    /// </summary>
+    public const string LiteralServiceCategorySpecialistSurgical = "http://terminology.hl7.org/CodeSystem/service-category#31";
+
+    /// <summary>
     /// Literal for code: SupportGroupS
     /// </summary>
     public const string LiteralSupportGroupS = "32";
+
+    /// <summary>
+    /// Literal for code: ServiceCategorySupportGroupS
+    /// </summary>
+    public const string LiteralServiceCategorySupportGroupS = "http://terminology.hl7.org/CodeSystem/service-category#32";
 
     /// <summary>
     /// Literal for code: Transport
@@ -490,9 +620,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransport = "33";
 
     /// <summary>
+    /// Literal for code: ServiceCategoryTransport
+    /// </summary>
+    public const string LiteralServiceCategoryTransport = "http://terminology.hl7.org/CodeSystem/service-category#33";
+
+    /// <summary>
     /// Literal for code: AlliedHealth
     /// </summary>
     public const string LiteralAlliedHealth = "34";
+
+    /// <summary>
+    /// Literal for code: ServiceCategoryAlliedHealth
+    /// </summary>
+    public const string LiteralServiceCategoryAlliedHealth = "http://terminology.hl7.org/CodeSystem/service-category#34";
 
     /// <summary>
     /// Literal for code: Hospital
@@ -500,9 +640,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospital = "35";
 
     /// <summary>
+    /// Literal for code: ServiceCategoryHospital
+    /// </summary>
+    public const string LiteralServiceCategoryHospital = "http://terminology.hl7.org/CodeSystem/service-category#35";
+
+    /// <summary>
     /// Literal for code: CrisisLineGPAHUseOnly
     /// </summary>
     public const string LiteralCrisisLineGPAHUseOnly = "36";
+
+    /// <summary>
+    /// Literal for code: ServiceCategoryCrisisLineGPAHUseOnly
+    /// </summary>
+    public const string LiteralServiceCategoryCrisisLineGPAHUseOnly = "http://terminology.hl7.org/CodeSystem/service-category#36";
 
     /// <summary>
     /// Literal for code: TestMessageHSDAdmin
@@ -510,9 +660,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTestMessageHSDAdmin = "37";
 
     /// <summary>
+    /// Literal for code: ServiceCategoryTestMessageHSDAdmin
+    /// </summary>
+    public const string LiteralServiceCategoryTestMessageHSDAdmin = "http://terminology.hl7.org/CodeSystem/service-category#37";
+
+    /// <summary>
     /// Literal for code: NDIA
     /// </summary>
     public const string LiteralNDIA = "38";
+
+    /// <summary>
+    /// Literal for code: ServiceCategoryNDIA
+    /// </summary>
+    public const string LiteralServiceCategoryNDIA = "http://terminology.hl7.org/CodeSystem/service-category#38";
 
     /// <summary>
     /// Literal for code: ChildCareKindergarten
@@ -520,9 +680,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChildCareKindergarten = "4";
 
     /// <summary>
+    /// Literal for code: ServiceCategoryChildCareKindergarten
+    /// </summary>
+    public const string LiteralServiceCategoryChildCareKindergarten = "http://terminology.hl7.org/CodeSystem/service-category#4";
+
+    /// <summary>
     /// Literal for code: ChildDevelopment
     /// </summary>
     public const string LiteralChildDevelopment = "5";
+
+    /// <summary>
+    /// Literal for code: ServiceCategoryChildDevelopment
+    /// </summary>
+    public const string LiteralServiceCategoryChildDevelopment = "http://terminology.hl7.org/CodeSystem/service-category#5";
 
     /// <summary>
     /// Literal for code: ChildProtectionAndFamilyServices
@@ -530,9 +700,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChildProtectionAndFamilyServices = "6";
 
     /// <summary>
+    /// Literal for code: ServiceCategoryChildProtectionAndFamilyServices
+    /// </summary>
+    public const string LiteralServiceCategoryChildProtectionAndFamilyServices = "http://terminology.hl7.org/CodeSystem/service-category#6";
+
+    /// <summary>
     /// Literal for code: CommunityHealthCare
     /// </summary>
     public const string LiteralCommunityHealthCare = "7";
+
+    /// <summary>
+    /// Literal for code: ServiceCategoryCommunityHealthCare
+    /// </summary>
+    public const string LiteralServiceCategoryCommunityHealthCare = "http://terminology.hl7.org/CodeSystem/service-category#7";
 
     /// <summary>
     /// Literal for code: Counselling
@@ -540,8 +720,100 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCounselling = "8";
 
     /// <summary>
+    /// Literal for code: ServiceCategoryCounselling
+    /// </summary>
+    public const string LiteralServiceCategoryCounselling = "http://terminology.hl7.org/CodeSystem/service-category#8";
+
+    /// <summary>
     /// Literal for code: DeathServices
     /// </summary>
     public const string LiteralDeathServices = "9";
+
+    /// <summary>
+    /// Literal for code: ServiceCategoryDeathServices
+    /// </summary>
+    public const string LiteralServiceCategoryDeathServices = "http://terminology.hl7.org/CodeSystem/service-category#9";
+
+    /// <summary>
+    /// Dictionary for looking up ServiceCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1", Adoption }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#1", Adoption }, 
+      { "10", Dental }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#10", Dental }, 
+      { "11", DisabilitySupport }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#11", DisabilitySupport }, 
+      { "12", DrugAlcohol }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#12", DrugAlcohol }, 
+      { "13", EducationAndLearning }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#13", EducationAndLearning }, 
+      { "14", EmergencyDepartment }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#14", EmergencyDepartment }, 
+      { "15", Employment }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#15", Employment }, 
+      { "16", FinancialAndMaterialAid }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#16", FinancialAndMaterialAid }, 
+      { "17", GeneralPractice }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#17", GeneralPractice }, 
+      { "18", HousingHomelessness }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#18", HousingHomelessness }, 
+      { "19", Interpreting }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#19", Interpreting }, 
+      { "2", AgedCare }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#2", AgedCare }, 
+      { "20", Justice }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#20", Justice }, 
+      { "21", Legal }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#21", Legal }, 
+      { "22", MentalHealth }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#22", MentalHealth }, 
+      { "23", PhysicalActivityAndRecreation }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#23", PhysicalActivityAndRecreation }, 
+      { "24", Regulation }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#24", Regulation }, 
+      { "25", RespiteCarerSupport }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#25", RespiteCarerSupport }, 
+      { "26", SpecialistClinicalPathology }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#26", SpecialistClinicalPathology }, 
+      { "27", SpecialistMedical }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#27", SpecialistMedical }, 
+      { "28", SpecialistObstetricsAndGynecology }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#28", SpecialistObstetricsAndGynecology }, 
+      { "29", SpecialistPaediatric }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#29", SpecialistPaediatric }, 
+      { "3", AlternativeComplementaryTherapies }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#3", AlternativeComplementaryTherapies }, 
+      { "30", SpecialistRadiologyImaging }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#30", SpecialistRadiologyImaging }, 
+      { "31", SpecialistSurgical }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#31", SpecialistSurgical }, 
+      { "32", SupportGroupS }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#32", SupportGroupS }, 
+      { "33", Transport }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#33", Transport }, 
+      { "34", AlliedHealth }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#34", AlliedHealth }, 
+      { "35", Hospital }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#35", Hospital }, 
+      { "36", CrisisLineGPAHUseOnly }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#36", CrisisLineGPAHUseOnly }, 
+      { "37", TestMessageHSDAdmin }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#37", TestMessageHSDAdmin }, 
+      { "38", NDIA }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#38", NDIA }, 
+      { "4", ChildCareKindergarten }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#4", ChildCareKindergarten }, 
+      { "5", ChildDevelopment }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#5", ChildDevelopment }, 
+      { "6", ChildProtectionAndFamilyServices }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#6", ChildProtectionAndFamilyServices }, 
+      { "7", CommunityHealthCare }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#7", CommunityHealthCare }, 
+      { "8", Counselling }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#8", Counselling }, 
+      { "9", DeathServices }, 
+      { "http://terminology.hl7.org/CodeSystem/service-category#9", DeathServices }, 
+    };
   };
 }

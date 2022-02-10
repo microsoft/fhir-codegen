@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAmended = "amended";
 
     /// <summary>
+    /// Literal for code: CompositionStatusAmended
+    /// </summary>
+    public const string LiteralCompositionStatusAmended = "http://hl7.org/fhir/composition-status#amended";
+
+    /// <summary>
     /// Literal for code: Deprecated
     /// </summary>
     public const string LiteralDeprecated = "deprecated";
+
+    /// <summary>
+    /// Literal for code: CompositionStatusDeprecated
+    /// </summary>
+    public const string LiteralCompositionStatusDeprecated = "http://hl7.org/fhir/composition-status#deprecated";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: CompositionStatusEnteredInError
+    /// </summary>
+    public const string LiteralCompositionStatusEnteredInError = "http://hl7.org/fhir/composition-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Final
     /// </summary>
     public const string LiteralFinal = "final";
 
     /// <summary>
+    /// Literal for code: CompositionStatusFinal
+    /// </summary>
+    public const string LiteralCompositionStatusFinal = "http://hl7.org/fhir/composition-status#final";
+
+    /// <summary>
     /// Literal for code: Preliminary
     /// </summary>
     public const string LiteralPreliminary = "preliminary";
+
+    /// <summary>
+    /// Literal for code: CompositionStatusPreliminary
+    /// </summary>
+    public const string LiteralCompositionStatusPreliminary = "http://hl7.org/fhir/composition-status#preliminary";
+
+    /// <summary>
+    /// Dictionary for looking up CompositionStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "amended", Amended }, 
+      { "http://hl7.org/fhir/composition-status#amended", Amended }, 
+      { "deprecated", Deprecated }, 
+      { "http://hl7.org/fhir/composition-status#deprecated", Deprecated }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/composition-status#entered-in-error", EnteredInError }, 
+      { "final", Final }, 
+      { "http://hl7.org/fhir/composition-status#final", Final }, 
+      { "preliminary", Preliminary }, 
+      { "http://hl7.org/fhir/composition-status#preliminary", Preliminary }, 
+    };
   };
 }

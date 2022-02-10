@@ -54,9 +54,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralBatchesSupported = "batch";
 
     /// <summary>
+    /// Literal for code: TransactionModeBatchesSupported
+    /// </summary>
+    public const string LiteralTransactionModeBatchesSupported = "http://hl7.org/fhir/transaction-mode#batch";
+
+    /// <summary>
     /// Literal for code: BatchesAndTransactions
     /// </summary>
     public const string LiteralBatchesAndTransactions = "both";
+
+    /// <summary>
+    /// Literal for code: TransactionModeBatchesAndTransactions
+    /// </summary>
+    public const string LiteralTransactionModeBatchesAndTransactions = "http://hl7.org/fhir/transaction-mode#both";
 
     /// <summary>
     /// Literal for code: None
@@ -64,8 +74,32 @@ namespace fhirCsR2.ValueSets
     public const string LiteralNone = "not-supported";
 
     /// <summary>
+    /// Literal for code: TransactionModeNone
+    /// </summary>
+    public const string LiteralTransactionModeNone = "http://hl7.org/fhir/transaction-mode#not-supported";
+
+    /// <summary>
     /// Literal for code: TransactionsSupported
     /// </summary>
     public const string LiteralTransactionsSupported = "transaction";
+
+    /// <summary>
+    /// Literal for code: TransactionModeTransactionsSupported
+    /// </summary>
+    public const string LiteralTransactionModeTransactionsSupported = "http://hl7.org/fhir/transaction-mode#transaction";
+
+    /// <summary>
+    /// Dictionary for looking up TransactionMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "batch", BatchesSupported }, 
+      { "http://hl7.org/fhir/transaction-mode#batch", BatchesSupported }, 
+      { "both", BatchesAndTransactions }, 
+      { "http://hl7.org/fhir/transaction-mode#both", BatchesAndTransactions }, 
+      { "not-supported", None }, 
+      { "http://hl7.org/fhir/transaction-mode#not-supported", None }, 
+      { "transaction", TransactionsSupported }, 
+      { "http://hl7.org/fhir/transaction-mode#transaction", TransactionsSupported }, 
+    };
   };
 }

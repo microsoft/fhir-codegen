@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class BenefitUnitCodes
   {
     /// <summary>
-    /// 
+    /// Family
     /// </summary>
     public static readonly Coding Family = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/benefit-unit"
     };
     /// <summary>
-    /// 
+    /// Individual
     /// </summary>
     public static readonly Coding Individual = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFamily = "family";
 
     /// <summary>
+    /// Literal for code: BenefitUnitFamily
+    /// </summary>
+    public const string LiteralBenefitUnitFamily = "http://terminology.hl7.org/CodeSystem/benefit-unit#family";
+
+    /// <summary>
     /// Literal for code: Individual
     /// </summary>
     public const string LiteralIndividual = "individual";
+
+    /// <summary>
+    /// Literal for code: BenefitUnitIndividual
+    /// </summary>
+    public const string LiteralBenefitUnitIndividual = "http://terminology.hl7.org/CodeSystem/benefit-unit#individual";
+
+    /// <summary>
+    /// Dictionary for looking up BenefitUnit Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "family", Family }, 
+      { "http://terminology.hl7.org/CodeSystem/benefit-unit#family", Family }, 
+      { "individual", Individual }, 
+      { "http://terminology.hl7.org/CodeSystem/benefit-unit#individual", Individual }, 
+    };
   };
 }

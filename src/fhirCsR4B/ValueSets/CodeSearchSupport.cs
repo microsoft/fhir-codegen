@@ -36,8 +36,28 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralImplicitCodes = "all";
 
     /// <summary>
+    /// Literal for code: CodeSearchSupportImplicitCodes
+    /// </summary>
+    public const string LiteralCodeSearchSupportImplicitCodes = "http://hl7.org/fhir/code-search-support#all";
+
+    /// <summary>
     /// Literal for code: ExplicitCodes
     /// </summary>
     public const string LiteralExplicitCodes = "explicit";
+
+    /// <summary>
+    /// Literal for code: CodeSearchSupportExplicitCodes
+    /// </summary>
+    public const string LiteralCodeSearchSupportExplicitCodes = "http://hl7.org/fhir/code-search-support#explicit";
+
+    /// <summary>
+    /// Dictionary for looking up CodeSearchSupport Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "all", ImplicitCodes }, 
+      { "http://hl7.org/fhir/code-search-support#all", ImplicitCodes }, 
+      { "explicit", ExplicitCodes }, 
+      { "http://hl7.org/fhir/code-search-support#explicit", ExplicitCodes }, 
+    };
   };
 }

@@ -44,6 +44,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// A value for the characteristic.
     /// </summary>
     public Attachment ValueAttachment { get; set; }
@@ -90,6 +94,12 @@ namespace fhirCsR5.Models
       if (ValueBoolean != null)
       {
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
+
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
       }
 
       if (ValueAttachment != null)
@@ -147,6 +157,11 @@ namespace fhirCsR5.Models
 
         case "valueBoolean":
           ValueBoolean = reader.GetBoolean();
+          break;
+
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR5.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "valueAttachment":
@@ -1027,5 +1042,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

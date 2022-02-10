@@ -72,9 +72,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralANCCDS = "anc-cds";
 
     /// <summary>
+    /// Literal for code: GuidanceModuleCodeANCCDS
+    /// </summary>
+    public const string LiteralGuidanceModuleCodeANCCDS = "http://hl7.org/fhir/guidance-module-code#anc-cds";
+
+    /// <summary>
     /// Literal for code: BMICalculator
     /// </summary>
     public const string LiteralBMICalculator = "bmi-calculator";
+
+    /// <summary>
+    /// Literal for code: GuidanceModuleCodeBMICalculator
+    /// </summary>
+    public const string LiteralGuidanceModuleCodeBMICalculator = "http://hl7.org/fhir/guidance-module-code#bmi-calculator";
 
     /// <summary>
     /// Literal for code: CHFPathway
@@ -82,9 +92,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCHFPathway = "chf-pathway";
 
     /// <summary>
+    /// Literal for code: GuidanceModuleCodeCHFPathway
+    /// </summary>
+    public const string LiteralGuidanceModuleCodeCHFPathway = "http://hl7.org/fhir/guidance-module-code#chf-pathway";
+
+    /// <summary>
     /// Literal for code: COVID19SeverityScore
     /// </summary>
     public const string LiteralCOVID19SeverityScore = "covid-19-severity";
+
+    /// <summary>
+    /// Literal for code: GuidanceModuleCodeCOVID19SeverityScore
+    /// </summary>
+    public const string LiteralGuidanceModuleCodeCOVID19SeverityScore = "http://hl7.org/fhir/guidance-module-code#covid-19-severity";
 
     /// <summary>
     /// Literal for code: MMECalculator
@@ -92,8 +112,36 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMMECalculator = "mme-calculator";
 
     /// <summary>
+    /// Literal for code: GuidanceModuleCodeMMECalculator
+    /// </summary>
+    public const string LiteralGuidanceModuleCodeMMECalculator = "http://hl7.org/fhir/guidance-module-code#mme-calculator";
+
+    /// <summary>
     /// Literal for code: OpioidCDS
     /// </summary>
     public const string LiteralOpioidCDS = "opioid-cds";
+
+    /// <summary>
+    /// Literal for code: GuidanceModuleCodeOpioidCDS
+    /// </summary>
+    public const string LiteralGuidanceModuleCodeOpioidCDS = "http://hl7.org/fhir/guidance-module-code#opioid-cds";
+
+    /// <summary>
+    /// Dictionary for looking up GuidanceModuleCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "anc-cds", ANCCDS }, 
+      { "http://hl7.org/fhir/guidance-module-code#anc-cds", ANCCDS }, 
+      { "bmi-calculator", BMICalculator }, 
+      { "http://hl7.org/fhir/guidance-module-code#bmi-calculator", BMICalculator }, 
+      { "chf-pathway", CHFPathway }, 
+      { "http://hl7.org/fhir/guidance-module-code#chf-pathway", CHFPathway }, 
+      { "covid-19-severity", COVID19SeverityScore }, 
+      { "http://hl7.org/fhir/guidance-module-code#covid-19-severity", COVID19SeverityScore }, 
+      { "mme-calculator", MMECalculator }, 
+      { "http://hl7.org/fhir/guidance-module-code#mme-calculator", MMECalculator }, 
+      { "opioid-cds", OpioidCDS }, 
+      { "http://hl7.org/fhir/guidance-module-code#opioid-cds", OpioidCDS }, 
+    };
   };
 }

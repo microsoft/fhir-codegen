@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMissingIdentifier = "a001";
 
     /// <summary>
+    /// Literal for code: AdjudicationErrorMissingIdentifier
+    /// </summary>
+    public const string LiteralAdjudicationErrorMissingIdentifier = "http://hl7.org/fhir/adjudication-error#a001";
+
+    /// <summary>
     /// Literal for code: MissingCreationDate
     /// </summary>
     public const string LiteralMissingCreationDate = "a002";
+
+    /// <summary>
+    /// Literal for code: AdjudicationErrorMissingCreationDate
+    /// </summary>
+    public const string LiteralAdjudicationErrorMissingCreationDate = "http://hl7.org/fhir/adjudication-error#a002";
+
+    /// <summary>
+    /// Dictionary for looking up AdjudicationError Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "a001", MissingIdentifier }, 
+      { "http://hl7.org/fhir/adjudication-error#a001", MissingIdentifier }, 
+      { "a002", MissingCreationDate }, 
+      { "http://hl7.org/fhir/adjudication-error#a002", MissingCreationDate }, 
+    };
   };
 }

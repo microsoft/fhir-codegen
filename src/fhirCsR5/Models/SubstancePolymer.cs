@@ -32,6 +32,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? IsDefining { get; set; }
     /// <summary>
+    /// Extension container element for IsDefining
+    /// </summary>
+    public Element _IsDefining { get; set; }
+    /// <summary>
     /// Serialize to a JSON object
     /// </summary>
     public new void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
@@ -57,6 +61,12 @@ namespace fhirCsR5.Models
       if (IsDefining != null)
       {
         writer.WriteBoolean("isDefining", (bool)IsDefining!);
+      }
+
+      if (_IsDefining != null)
+      {
+        writer.WritePropertyName("_isDefining");
+        _IsDefining.SerializeJson(writer, options);
       }
 
       if (Amount != null)
@@ -94,6 +104,11 @@ namespace fhirCsR5.Models
 
         case "isDefining":
           IsDefining = reader.GetBoolean();
+          break;
+
+        case "_isDefining":
+          _IsDefining = new fhirCsR5.Models.Element();
+          _IsDefining.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -255,13 +270,25 @@ namespace fhirCsR5.Models
     /// </summary>
     public int? Average { get; set; }
     /// <summary>
+    /// Extension container element for Average
+    /// </summary>
+    public Element _Average { get; set; }
+    /// <summary>
     /// A high expected limit of the amount.
     /// </summary>
     public int? High { get; set; }
     /// <summary>
+    /// Extension container element for High
+    /// </summary>
+    public Element _High { get; set; }
+    /// <summary>
     /// A low expected limit of the amount.
     /// </summary>
     public int? Low { get; set; }
+    /// <summary>
+    /// Extension container element for Low
+    /// </summary>
+    public Element _Low { get; set; }
     /// <summary>
     /// The type of the degree of polymerisation shall be described, e.g. SRU/Polymer Ratio.
     /// </summary>
@@ -288,14 +315,32 @@ namespace fhirCsR5.Models
         writer.WriteNumber("average", (int)Average!);
       }
 
+      if (_Average != null)
+      {
+        writer.WritePropertyName("_average");
+        _Average.SerializeJson(writer, options);
+      }
+
       if (Low != null)
       {
         writer.WriteNumber("low", (int)Low!);
       }
 
+      if (_Low != null)
+      {
+        writer.WritePropertyName("_low");
+        _Low.SerializeJson(writer, options);
+      }
+
       if (High != null)
       {
         writer.WriteNumber("high", (int)High!);
+      }
+
+      if (_High != null)
+      {
+        writer.WritePropertyName("_high");
+        _High.SerializeJson(writer, options);
       }
 
       if (includeStartObject)
@@ -314,12 +359,27 @@ namespace fhirCsR5.Models
           Average = reader.GetInt32();
           break;
 
+        case "_average":
+          _Average = new fhirCsR5.Models.Element();
+          _Average.DeserializeJson(ref reader, options);
+          break;
+
         case "high":
           High = reader.GetInt32();
           break;
 
+        case "_high":
+          _High = new fhirCsR5.Models.Element();
+          _High.DeserializeJson(ref reader, options);
+          break;
+
         case "low":
           Low = reader.GetInt32();
+          break;
+
+        case "_low":
+          _Low = new fhirCsR5.Models.Element();
+          _Low.DeserializeJson(ref reader, options);
           break;
 
         case "type":
@@ -500,6 +560,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public int? Amount { get; set; }
     /// <summary>
+    /// Extension container element for Amount
+    /// </summary>
+    public Element _Amount { get; set; }
+    /// <summary>
     /// Applies to homopolymer and block co-polymers where the degree of polymerisation within a block can be described.
     /// </summary>
     public List<SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation> DegreeOfPolymerisation { get; set; }
@@ -552,6 +616,12 @@ namespace fhirCsR5.Models
         writer.WriteNumber("amount", (int)Amount!);
       }
 
+      if (_Amount != null)
+      {
+        writer.WritePropertyName("_amount");
+        _Amount.SerializeJson(writer, options);
+      }
+
       if ((DegreeOfPolymerisation != null) && (DegreeOfPolymerisation.Count != 0))
       {
         writer.WritePropertyName("degreeOfPolymerisation");
@@ -592,6 +662,11 @@ namespace fhirCsR5.Models
       {
         case "amount":
           Amount = reader.GetInt32();
+          break;
+
+        case "_amount":
+          _Amount = new fhirCsR5.Models.Element();
+          _Amount.DeserializeJson(ref reader, options);
           break;
 
         case "degreeOfPolymerisation":

@@ -241,6 +241,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool Allowed { get; set; }
     /// <summary>
+    /// Extension container element for Allowed
+    /// </summary>
+    public Element _Allowed { get; set; }
+    /// <summary>
     /// Indicates the reason for the substitution, or why substitution must or must not be performed.
     /// </summary>
     public CodeableConcept Reason { get; set; }
@@ -256,6 +260,12 @@ namespace fhirCsR3.Models
       ((fhirCsR3.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
       writer.WriteBoolean("allowed", Allowed);
+
+      if (_Allowed != null)
+      {
+        writer.WritePropertyName("_allowed");
+        _Allowed.SerializeJson(writer, options);
+      }
 
       if (Reason != null)
       {
@@ -277,6 +287,11 @@ namespace fhirCsR3.Models
       {
         case "allowed":
           Allowed = reader.GetBoolean();
+          break;
+
+        case "_allowed":
+          _Allowed = new fhirCsR3.Models.Element();
+          _Allowed.DeserializeJson(ref reader, options);
           break;
 
         case "reason":
@@ -1111,6 +1126,12 @@ namespace fhirCsR3.Models
     public const string PLAN = "plan";
     public const string ORDER = "order";
     public const string INSTANCE_ORDER = "instance-order";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposal",
+      "plan",
+      "order",
+      "instance-order",
+    };
   }
   /// <summary>
   /// Code Values for the MedicationRequest.priority field
@@ -1120,6 +1141,12 @@ namespace fhirCsR3.Models
     public const string URGENT = "urgent";
     public const string STAT = "stat";
     public const string ASAP = "asap";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "routine",
+      "urgent",
+      "stat",
+      "asap",
+    };
   }
   /// <summary>
   /// Code Values for the MedicationRequest.status field
@@ -1133,5 +1160,15 @@ namespace fhirCsR3.Models
     public const string STOPPED = "stopped";
     public const string DRAFT = "draft";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "on-hold",
+      "cancelled",
+      "completed",
+      "entered-in-error",
+      "stopped",
+      "draft",
+      "unknown",
+    };
   }
 }

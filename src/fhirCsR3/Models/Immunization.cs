@@ -268,6 +268,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? Reported { get; set; }
     /// <summary>
+    /// Extension container element for Reported
+    /// </summary>
+    public Element _Reported { get; set; }
+    /// <summary>
     /// Serialize to a JSON object
     /// </summary>
     public new void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
@@ -300,6 +304,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("reported", (bool)Reported!);
       }
 
+      if (_Reported != null)
+      {
+        writer.WritePropertyName("_reported");
+        _Reported.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -328,6 +338,11 @@ namespace fhirCsR3.Models
 
         case "reported":
           Reported = reader.GetBoolean();
+          break;
+
+        case "_reported":
+          _Reported = new fhirCsR3.Models.Element();
+          _Reported.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -657,6 +672,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool NotGiven { get; set; }
     /// <summary>
+    /// Extension container element for NotGiven
+    /// </summary>
+    public Element _NotGiven { get; set; }
+    /// <summary>
     /// The patient who either received or did not receive the immunization.
     /// </summary>
     public Reference Patient { get; set; }
@@ -668,6 +687,10 @@ namespace fhirCsR3.Models
     /// Reflects the “reliability” of the content.
     /// </summary>
     public bool PrimarySource { get; set; }
+    /// <summary>
+    /// Extension container element for PrimarySource
+    /// </summary>
+    public Element _PrimarySource { get; set; }
     /// <summary>
     /// A reaction may be an indication of an allergy or intolerance and, if this is determined to be the case,  it should be recorded as a new [AllergyIntolerance](allergyintolerance.html) resource instance as most systems will not query against  past Immunization.reaction elements.
     /// </summary>
@@ -744,6 +767,12 @@ namespace fhirCsR3.Models
 
       writer.WriteBoolean("notGiven", NotGiven);
 
+      if (_NotGiven != null)
+      {
+        writer.WritePropertyName("_notGiven");
+        _NotGiven.SerializeJson(writer, options);
+      }
+
       if (VaccineCode != null)
       {
         writer.WritePropertyName("vaccineCode");
@@ -774,6 +803,12 @@ namespace fhirCsR3.Models
       }
 
       writer.WriteBoolean("primarySource", PrimarySource);
+
+      if (_PrimarySource != null)
+      {
+        writer.WritePropertyName("_primarySource");
+        _PrimarySource.SerializeJson(writer, options);
+      }
 
       if (ReportOrigin != null)
       {
@@ -1013,6 +1048,11 @@ namespace fhirCsR3.Models
           NotGiven = reader.GetBoolean();
           break;
 
+        case "_notGiven":
+          _NotGiven = new fhirCsR3.Models.Element();
+          _NotGiven.DeserializeJson(ref reader, options);
+          break;
+
         case "patient":
           Patient = new fhirCsR3.Models.Reference();
           Patient.DeserializeJson(ref reader, options);
@@ -1047,6 +1087,11 @@ namespace fhirCsR3.Models
 
         case "primarySource":
           PrimarySource = reader.GetBoolean();
+          break;
+
+        case "_primarySource":
+          _PrimarySource = new fhirCsR3.Models.Element();
+          _PrimarySource.DeserializeJson(ref reader, options);
           break;
 
         case "reaction":
@@ -1169,5 +1214,9 @@ namespace fhirCsR3.Models
   public static class ImmunizationStatusCodes {
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "completed",
+      "entered-in-error",
+    };
   }
 }

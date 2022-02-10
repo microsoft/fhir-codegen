@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFamily = "family";
 
     /// <summary>
+    /// Literal for code: BenefitUnitFamily
+    /// </summary>
+    public const string LiteralBenefitUnitFamily = "http://hl7.org/fhir/benefit-unit#family";
+
+    /// <summary>
     /// Literal for code: Individual
     /// </summary>
     public const string LiteralIndividual = "individual";
+
+    /// <summary>
+    /// Literal for code: BenefitUnitIndividual
+    /// </summary>
+    public const string LiteralBenefitUnitIndividual = "http://hl7.org/fhir/benefit-unit#individual";
+
+    /// <summary>
+    /// Dictionary for looking up BenefitUnit Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "family", Family }, 
+      { "http://hl7.org/fhir/benefit-unit#family", Family }, 
+      { "individual", Individual }, 
+      { "http://hl7.org/fhir/benefit-unit#individual", Individual }, 
+    };
   };
 }

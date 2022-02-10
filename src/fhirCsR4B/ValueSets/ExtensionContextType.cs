@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralElementID = "element";
 
     /// <summary>
+    /// Literal for code: ExtensionContextTypeElementID
+    /// </summary>
+    public const string LiteralExtensionContextTypeElementID = "http://hl7.org/fhir/extension-context-type#element";
+
+    /// <summary>
     /// Literal for code: ExtensionURL
     /// </summary>
     public const string LiteralExtensionURL = "extension";
 
     /// <summary>
+    /// Literal for code: ExtensionContextTypeExtensionURL
+    /// </summary>
+    public const string LiteralExtensionContextTypeExtensionURL = "http://hl7.org/fhir/extension-context-type#extension";
+
+    /// <summary>
     /// Literal for code: FHIRPath
     /// </summary>
     public const string LiteralFHIRPath = "fhirpath";
+
+    /// <summary>
+    /// Literal for code: ExtensionContextTypeFHIRPath
+    /// </summary>
+    public const string LiteralExtensionContextTypeFHIRPath = "http://hl7.org/fhir/extension-context-type#fhirpath";
+
+    /// <summary>
+    /// Dictionary for looking up ExtensionContextType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "element", ElementID }, 
+      { "http://hl7.org/fhir/extension-context-type#element", ElementID }, 
+      { "extension", ExtensionURL }, 
+      { "http://hl7.org/fhir/extension-context-type#extension", ExtensionURL }, 
+      { "fhirpath", FHIRPath }, 
+      { "http://hl7.org/fhir/extension-context-type#fhirpath", FHIRPath }, 
+    };
   };
 }

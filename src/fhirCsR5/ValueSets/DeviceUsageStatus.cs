@@ -81,9 +81,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: DeviceUsageStatusActive
+    /// </summary>
+    public const string LiteralDeviceUsageStatusActive = "http://hl7.org/fhir/device-usage-status#active";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: DeviceUsageStatusCompleted
+    /// </summary>
+    public const string LiteralDeviceUsageStatusCompleted = "http://hl7.org/fhir/device-usage-status#completed";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -91,9 +101,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: DeviceUsageStatusEnteredInError
+    /// </summary>
+    public const string LiteralDeviceUsageStatusEnteredInError = "http://hl7.org/fhir/device-usage-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Intended
     /// </summary>
     public const string LiteralIntended = "intended";
+
+    /// <summary>
+    /// Literal for code: DeviceUsageStatusIntended
+    /// </summary>
+    public const string LiteralDeviceUsageStatusIntended = "http://hl7.org/fhir/device-usage-status#intended";
 
     /// <summary>
     /// Literal for code: NotDone
@@ -101,13 +121,48 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotDone = "not-done";
 
     /// <summary>
+    /// Literal for code: DeviceUsageStatusNotDone
+    /// </summary>
+    public const string LiteralDeviceUsageStatusNotDone = "http://hl7.org/fhir/device-usage-status#not-done";
+
+    /// <summary>
     /// Literal for code: OnHold
     /// </summary>
     public const string LiteralOnHold = "on-hold";
 
     /// <summary>
+    /// Literal for code: DeviceUsageStatusOnHold
+    /// </summary>
+    public const string LiteralDeviceUsageStatusOnHold = "http://hl7.org/fhir/device-usage-status#on-hold";
+
+    /// <summary>
     /// Literal for code: Stopped
     /// </summary>
     public const string LiteralStopped = "stopped";
+
+    /// <summary>
+    /// Literal for code: DeviceUsageStatusStopped
+    /// </summary>
+    public const string LiteralDeviceUsageStatusStopped = "http://hl7.org/fhir/device-usage-status#stopped";
+
+    /// <summary>
+    /// Dictionary for looking up DeviceUsageStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/device-usage-status#active", Active }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/device-usage-status#completed", Completed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/device-usage-status#entered-in-error", EnteredInError }, 
+      { "intended", Intended }, 
+      { "http://hl7.org/fhir/device-usage-status#intended", Intended }, 
+      { "not-done", NotDone }, 
+      { "http://hl7.org/fhir/device-usage-status#not-done", NotDone }, 
+      { "on-hold", OnHold }, 
+      { "http://hl7.org/fhir/device-usage-status#on-hold", OnHold }, 
+      { "stopped", Stopped }, 
+      { "http://hl7.org/fhir/device-usage-status#stopped", Stopped }, 
+    };
   };
 }

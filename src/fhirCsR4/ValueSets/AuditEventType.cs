@@ -405,9 +405,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralApplicationActivity_dicom_dcim = "110100";
 
     /// <summary>
+    /// Literal for code: DicomDcimApplicationActivity_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimApplicationActivity_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110100";
+
+    /// <summary>
     /// Literal for code: AuditLogUsed_dicom_dcim
     /// </summary>
     public const string LiteralAuditLogUsed_dicom_dcim = "110101";
+
+    /// <summary>
+    /// Literal for code: DicomDcimAuditLogUsed_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimAuditLogUsed_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110101";
 
     /// <summary>
     /// Literal for code: BeginTransferringDICOMInstances_dicom_dcim
@@ -415,9 +425,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBeginTransferringDICOMInstances_dicom_dcim = "110102";
 
     /// <summary>
+    /// Literal for code: DicomDcimBeginTransferringDICOMInstances_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimBeginTransferringDICOMInstances_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110102";
+
+    /// <summary>
     /// Literal for code: DICOMInstancesAccessed_dicom_dcim
     /// </summary>
     public const string LiteralDICOMInstancesAccessed_dicom_dcim = "110103";
+
+    /// <summary>
+    /// Literal for code: DicomDcimDICOMInstancesAccessed_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimDICOMInstancesAccessed_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110103";
 
     /// <summary>
     /// Literal for code: DICOMInstancesTransferred_dicom_dcim
@@ -425,9 +445,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDICOMInstancesTransferred_dicom_dcim = "110104";
 
     /// <summary>
+    /// Literal for code: DicomDcimDICOMInstancesTransferred_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimDICOMInstancesTransferred_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110104";
+
+    /// <summary>
     /// Literal for code: DICOMStudyDeleted_dicom_dcim
     /// </summary>
     public const string LiteralDICOMStudyDeleted_dicom_dcim = "110105";
+
+    /// <summary>
+    /// Literal for code: DicomDcimDICOMStudyDeleted_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimDICOMStudyDeleted_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110105";
 
     /// <summary>
     /// Literal for code: Export_dicom_dcim
@@ -435,9 +465,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExport_dicom_dcim = "110106";
 
     /// <summary>
+    /// Literal for code: DicomDcimExport_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimExport_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110106";
+
+    /// <summary>
     /// Literal for code: Import_dicom_dcim
     /// </summary>
     public const string LiteralImport_dicom_dcim = "110107";
+
+    /// <summary>
+    /// Literal for code: DicomDcimImport_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimImport_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110107";
 
     /// <summary>
     /// Literal for code: NetworkEntry_dicom_dcim
@@ -445,9 +485,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNetworkEntry_dicom_dcim = "110108";
 
     /// <summary>
+    /// Literal for code: DicomDcimNetworkEntry_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimNetworkEntry_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110108";
+
+    /// <summary>
     /// Literal for code: OrderRecord_dicom_dcim
     /// </summary>
     public const string LiteralOrderRecord_dicom_dcim = "110109";
+
+    /// <summary>
+    /// Literal for code: DicomDcimOrderRecord_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimOrderRecord_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110109";
 
     /// <summary>
     /// Literal for code: PatientRecord_dicom_dcim
@@ -455,9 +505,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPatientRecord_dicom_dcim = "110110";
 
     /// <summary>
+    /// Literal for code: DicomDcimPatientRecord_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimPatientRecord_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110110";
+
+    /// <summary>
     /// Literal for code: ProcedureRecord_dicom_dcim
     /// </summary>
     public const string LiteralProcedureRecord_dicom_dcim = "110111";
+
+    /// <summary>
+    /// Literal for code: DicomDcimProcedureRecord_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimProcedureRecord_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110111";
 
     /// <summary>
     /// Literal for code: Query_dicom_dcim
@@ -465,9 +525,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralQuery_dicom_dcim = "110112";
 
     /// <summary>
+    /// Literal for code: DicomDcimQuery_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimQuery_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110112";
+
+    /// <summary>
     /// Literal for code: SecurityAlert_dicom_dcim
     /// </summary>
     public const string LiteralSecurityAlert_dicom_dcim = "110113";
+
+    /// <summary>
+    /// Literal for code: DicomDcimSecurityAlert_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimSecurityAlert_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110113";
 
     /// <summary>
     /// Literal for code: UserAuthentication_dicom_dcim
@@ -475,9 +545,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUserAuthentication_dicom_dcim = "110114";
 
     /// <summary>
+    /// Literal for code: DicomDcimUserAuthentication_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimUserAuthentication_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110114";
+
+    /// <summary>
     /// Literal for code: AccessViewRecordLifecycleEvent_iso_21089_lifecycle
     /// </summary>
     public const string LiteralAccessViewRecordLifecycleEvent_iso_21089_lifecycle = "access";
+
+    /// <summary>
+    /// Literal for code: Iso21089LifecycleAccessViewRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleAccessViewRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#access";
 
     /// <summary>
     /// Literal for code: AmendUpdateRecordLifecycleEvent_iso_21089_lifecycle
@@ -485,9 +565,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAmendUpdateRecordLifecycleEvent_iso_21089_lifecycle = "amend";
 
     /// <summary>
+    /// Literal for code: Iso21089LifecycleAmendUpdateRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleAmendUpdateRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#amend";
+
+    /// <summary>
     /// Literal for code: ArchiveRecordLifecycleEvent_iso_21089_lifecycle
     /// </summary>
     public const string LiteralArchiveRecordLifecycleEvent_iso_21089_lifecycle = "archive";
+
+    /// <summary>
+    /// Literal for code: Iso21089LifecycleArchiveRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleArchiveRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#archive";
 
     /// <summary>
     /// Literal for code: AttestRecordLifecycleEvent_iso_21089_lifecycle
@@ -495,9 +585,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAttestRecordLifecycleEvent_iso_21089_lifecycle = "attest";
 
     /// <summary>
+    /// Literal for code: Iso21089LifecycleAttestRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleAttestRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#attest";
+
+    /// <summary>
     /// Literal for code: DecryptRecordLifecycleEvent_iso_21089_lifecycle
     /// </summary>
     public const string LiteralDecryptRecordLifecycleEvent_iso_21089_lifecycle = "decrypt";
+
+    /// <summary>
+    /// Literal for code: Iso21089LifecycleDecryptRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleDecryptRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#decrypt";
 
     /// <summary>
     /// Literal for code: DeIdentifyAnononymizeRecordLifecycleEvent_iso_21089_lifecycle
@@ -505,9 +605,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeIdentifyAnononymizeRecordLifecycleEvent_iso_21089_lifecycle = "deidentify";
 
     /// <summary>
+    /// Literal for code: Iso21089LifecycleDeIdentifyAnononymizeRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleDeIdentifyAnononymizeRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#deidentify";
+
+    /// <summary>
     /// Literal for code: DeprecateRecordLifecycleEvent_iso_21089_lifecycle
     /// </summary>
     public const string LiteralDeprecateRecordLifecycleEvent_iso_21089_lifecycle = "deprecate";
+
+    /// <summary>
+    /// Literal for code: Iso21089LifecycleDeprecateRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleDeprecateRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#deprecate";
 
     /// <summary>
     /// Literal for code: DestroyDeleteRecordLifecycleEvent_iso_21089_lifecycle
@@ -515,9 +625,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDestroyDeleteRecordLifecycleEvent_iso_21089_lifecycle = "destroy";
 
     /// <summary>
+    /// Literal for code: Iso21089LifecycleDestroyDeleteRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleDestroyDeleteRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#destroy";
+
+    /// <summary>
     /// Literal for code: DiscloseRecordLifecycleEvent_iso_21089_lifecycle
     /// </summary>
     public const string LiteralDiscloseRecordLifecycleEvent_iso_21089_lifecycle = "disclose";
+
+    /// <summary>
+    /// Literal for code: Iso21089LifecycleDiscloseRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleDiscloseRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#disclose";
 
     /// <summary>
     /// Literal for code: EncryptRecordLifecycleEvent_iso_21089_lifecycle
@@ -525,9 +645,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEncryptRecordLifecycleEvent_iso_21089_lifecycle = "encrypt";
 
     /// <summary>
+    /// Literal for code: Iso21089LifecycleEncryptRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleEncryptRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#encrypt";
+
+    /// <summary>
     /// Literal for code: ExtractRecordLifecycleEvent_iso_21089_lifecycle
     /// </summary>
     public const string LiteralExtractRecordLifecycleEvent_iso_21089_lifecycle = "extract";
+
+    /// <summary>
+    /// Literal for code: Iso21089LifecycleExtractRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleExtractRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#extract";
 
     /// <summary>
     /// Literal for code: AddLegalHoldRecordLifecycleEvent_iso_21089_lifecycle
@@ -535,9 +665,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAddLegalHoldRecordLifecycleEvent_iso_21089_lifecycle = "hold";
 
     /// <summary>
+    /// Literal for code: Iso21089LifecycleAddLegalHoldRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleAddLegalHoldRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#hold";
+
+    /// <summary>
     /// Literal for code: LinkRecordLifecycleEvent_iso_21089_lifecycle
     /// </summary>
     public const string LiteralLinkRecordLifecycleEvent_iso_21089_lifecycle = "link";
+
+    /// <summary>
+    /// Literal for code: Iso21089LifecycleLinkRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleLinkRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#link";
 
     /// <summary>
     /// Literal for code: MergeRecordLifecycleEvent_iso_21089_lifecycle
@@ -545,9 +685,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMergeRecordLifecycleEvent_iso_21089_lifecycle = "merge";
 
     /// <summary>
+    /// Literal for code: Iso21089LifecycleMergeRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleMergeRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#merge";
+
+    /// <summary>
     /// Literal for code: OriginateRetainRecordLifecycleEvent_iso_21089_lifecycle
     /// </summary>
     public const string LiteralOriginateRetainRecordLifecycleEvent_iso_21089_lifecycle = "originate";
+
+    /// <summary>
+    /// Literal for code: Iso21089LifecycleOriginateRetainRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleOriginateRetainRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#originate";
 
     /// <summary>
     /// Literal for code: PseudonymizeRecordLifecycleEvent_iso_21089_lifecycle
@@ -555,9 +705,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPseudonymizeRecordLifecycleEvent_iso_21089_lifecycle = "pseudonymize";
 
     /// <summary>
+    /// Literal for code: Iso21089LifecyclePseudonymizeRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecyclePseudonymizeRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#pseudonymize";
+
+    /// <summary>
     /// Literal for code: ReActivateRecordLifecycleEvent_iso_21089_lifecycle
     /// </summary>
     public const string LiteralReActivateRecordLifecycleEvent_iso_21089_lifecycle = "reactivate";
+
+    /// <summary>
+    /// Literal for code: Iso21089LifecycleReActivateRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleReActivateRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#reactivate";
 
     /// <summary>
     /// Literal for code: ReceiveRetainRecordLifecycleEvent_iso_21089_lifecycle
@@ -565,9 +725,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReceiveRetainRecordLifecycleEvent_iso_21089_lifecycle = "receive";
 
     /// <summary>
+    /// Literal for code: Iso21089LifecycleReceiveRetainRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleReceiveRetainRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#receive";
+
+    /// <summary>
     /// Literal for code: ReIdentifyRecordLifecycleEvent_iso_21089_lifecycle
     /// </summary>
     public const string LiteralReIdentifyRecordLifecycleEvent_iso_21089_lifecycle = "reidentify";
+
+    /// <summary>
+    /// Literal for code: Iso21089LifecycleReIdentifyRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleReIdentifyRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#reidentify";
 
     /// <summary>
     /// Literal for code: ReportOutputRecordLifecycleEvent_iso_21089_lifecycle
@@ -575,9 +745,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReportOutputRecordLifecycleEvent_iso_21089_lifecycle = "report";
 
     /// <summary>
+    /// Literal for code: Iso21089LifecycleReportOutputRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleReportOutputRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#report";
+
+    /// <summary>
     /// Literal for code: RESTfulOperation_audit_event_type
     /// </summary>
     public const string LiteralRESTfulOperation_audit_event_type = "rest";
+
+    /// <summary>
+    /// Literal for code: AuditEventTypeRESTfulOperation_audit_event_type
+    /// </summary>
+    public const string LiteralAuditEventTypeRESTfulOperation_audit_event_type = "http://terminology.hl7.org/CodeSystem/audit-event-type#rest";
 
     /// <summary>
     /// Literal for code: RestoreRecordLifecycleEvent_iso_21089_lifecycle
@@ -585,9 +765,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRestoreRecordLifecycleEvent_iso_21089_lifecycle = "restore";
 
     /// <summary>
+    /// Literal for code: Iso21089LifecycleRestoreRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleRestoreRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#restore";
+
+    /// <summary>
     /// Literal for code: TransformTranslateRecordLifecycleEvent_iso_21089_lifecycle
     /// </summary>
     public const string LiteralTransformTranslateRecordLifecycleEvent_iso_21089_lifecycle = "transform";
+
+    /// <summary>
+    /// Literal for code: Iso21089LifecycleTransformTranslateRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleTransformTranslateRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#transform";
 
     /// <summary>
     /// Literal for code: TransmitRecordLifecycleEvent_iso_21089_lifecycle
@@ -595,9 +785,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransmitRecordLifecycleEvent_iso_21089_lifecycle = "transmit";
 
     /// <summary>
+    /// Literal for code: Iso21089LifecycleTransmitRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleTransmitRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#transmit";
+
+    /// <summary>
     /// Literal for code: RemoveLegalHoldRecordLifecycleEvent_iso_21089_lifecycle
     /// </summary>
     public const string LiteralRemoveLegalHoldRecordLifecycleEvent_iso_21089_lifecycle = "unhold";
+
+    /// <summary>
+    /// Literal for code: Iso21089LifecycleRemoveLegalHoldRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleRemoveLegalHoldRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#unhold";
 
     /// <summary>
     /// Literal for code: UnlinkRecordLifecycleEvent_iso_21089_lifecycle
@@ -605,13 +805,120 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnlinkRecordLifecycleEvent_iso_21089_lifecycle = "unlink";
 
     /// <summary>
+    /// Literal for code: Iso21089LifecycleUnlinkRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleUnlinkRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#unlink";
+
+    /// <summary>
     /// Literal for code: UnmergeRecordLifecycleEvent_iso_21089_lifecycle
     /// </summary>
     public const string LiteralUnmergeRecordLifecycleEvent_iso_21089_lifecycle = "unmerge";
 
     /// <summary>
+    /// Literal for code: Iso21089LifecycleUnmergeRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleUnmergeRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#unmerge";
+
+    /// <summary>
     /// Literal for code: VerifyRecordLifecycleEvent_iso_21089_lifecycle
     /// </summary>
     public const string LiteralVerifyRecordLifecycleEvent_iso_21089_lifecycle = "verify";
+
+    /// <summary>
+    /// Literal for code: Iso21089LifecycleVerifyRecordLifecycleEvent_iso_21089_lifecycle
+    /// </summary>
+    public const string LiteralIso21089LifecycleVerifyRecordLifecycleEvent_iso_21089_lifecycle = "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#verify";
+
+    /// <summary>
+    /// Dictionary for looking up AuditEventType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "110100", ApplicationActivity_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110100", ApplicationActivity_dicom_dcim }, 
+      { "110101", AuditLogUsed_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110101", AuditLogUsed_dicom_dcim }, 
+      { "110102", BeginTransferringDICOMInstances_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110102", BeginTransferringDICOMInstances_dicom_dcim }, 
+      { "110103", DICOMInstancesAccessed_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110103", DICOMInstancesAccessed_dicom_dcim }, 
+      { "110104", DICOMInstancesTransferred_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110104", DICOMInstancesTransferred_dicom_dcim }, 
+      { "110105", DICOMStudyDeleted_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110105", DICOMStudyDeleted_dicom_dcim }, 
+      { "110106", Export_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110106", Export_dicom_dcim }, 
+      { "110107", Import_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110107", Import_dicom_dcim }, 
+      { "110108", NetworkEntry_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110108", NetworkEntry_dicom_dcim }, 
+      { "110109", OrderRecord_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110109", OrderRecord_dicom_dcim }, 
+      { "110110", PatientRecord_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110110", PatientRecord_dicom_dcim }, 
+      { "110111", ProcedureRecord_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110111", ProcedureRecord_dicom_dcim }, 
+      { "110112", Query_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110112", Query_dicom_dcim }, 
+      { "110113", SecurityAlert_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110113", SecurityAlert_dicom_dcim }, 
+      { "110114", UserAuthentication_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110114", UserAuthentication_dicom_dcim }, 
+      { "access", AccessViewRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#access", AccessViewRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "amend", AmendUpdateRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#amend", AmendUpdateRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "archive", ArchiveRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#archive", ArchiveRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "attest", AttestRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#attest", AttestRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "decrypt", DecryptRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#decrypt", DecryptRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "deidentify", DeIdentifyAnononymizeRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#deidentify", DeIdentifyAnononymizeRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "deprecate", DeprecateRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#deprecate", DeprecateRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "destroy", DestroyDeleteRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#destroy", DestroyDeleteRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "disclose", DiscloseRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#disclose", DiscloseRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "encrypt", EncryptRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#encrypt", EncryptRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "extract", ExtractRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#extract", ExtractRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "hold", AddLegalHoldRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#hold", AddLegalHoldRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "link", LinkRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#link", LinkRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "merge", MergeRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#merge", MergeRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "originate", OriginateRetainRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#originate", OriginateRetainRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "pseudonymize", PseudonymizeRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#pseudonymize", PseudonymizeRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "reactivate", ReActivateRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#reactivate", ReActivateRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "receive", ReceiveRetainRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#receive", ReceiveRetainRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "reidentify", ReIdentifyRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#reidentify", ReIdentifyRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "report", ReportOutputRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#report", ReportOutputRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "rest", RESTfulOperation_audit_event_type }, 
+      { "http://terminology.hl7.org/CodeSystem/audit-event-type#rest", RESTfulOperation_audit_event_type }, 
+      { "restore", RestoreRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#restore", RestoreRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "transform", TransformTranslateRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#transform", TransformTranslateRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "transmit", TransmitRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#transmit", TransmitRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "unhold", RemoveLegalHoldRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#unhold", RemoveLegalHoldRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "unlink", UnlinkRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#unlink", UnlinkRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "unmerge", UnmergeRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#unmerge", UnmergeRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "verify", VerifyRecordLifecycleEvent_iso_21089_lifecycle }, 
+      { "http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle#verify", VerifyRecordLifecycleEvent_iso_21089_lifecycle }, 
+    };
   };
 }

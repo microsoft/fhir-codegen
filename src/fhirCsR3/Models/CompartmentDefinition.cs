@@ -253,6 +253,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// It may be possible for the compartment definition to be used in jurisdictions other than those for which it was originally designed or intended.
     /// </summary>
     public List<CodeableConcept> Jurisdiction { get; set; }
@@ -288,6 +292,10 @@ namespace fhirCsR3.Models
     /// Servers may define and use compartments to manage logical access without implementing the compartment related syntax.
     /// </summary>
     public bool Search { get; set; }
+    /// <summary>
+    /// Extension container element for Search
+    /// </summary>
+    public Element _Search { get; set; }
     /// <summary>
     /// Allows filtering of compartment definitions that are appropriate for use vs. not.  
     /// This is labeled as "Is Modifier" because applications should not use a retired compartment definition without due consideration.
@@ -381,6 +389,12 @@ namespace fhirCsR3.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -479,6 +493,12 @@ namespace fhirCsR3.Models
 
       writer.WriteBoolean("search", Search);
 
+      if (_Search != null)
+      {
+        writer.WritePropertyName("_search");
+        _Search.SerializeJson(writer, options);
+      }
+
       if ((Resource != null) && (Resource.Count != 0))
       {
         writer.WritePropertyName("resource");
@@ -560,6 +580,11 @@ namespace fhirCsR3.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR3.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "jurisdiction":
@@ -645,6 +670,11 @@ namespace fhirCsR3.Models
 
         case "search":
           Search = reader.GetBoolean();
+          break;
+
+        case "_search":
+          _Search = new fhirCsR3.Models.Element();
+          _Search.DeserializeJson(ref reader, options);
           break;
 
         case "status":
@@ -741,6 +771,13 @@ namespace fhirCsR3.Models
     public const string RELATEDPERSON = "RelatedPerson";
     public const string PRACTITIONER = "Practitioner";
     public const string DEVICE = "Device";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "Patient",
+      "Encounter",
+      "RelatedPerson",
+      "Practitioner",
+      "Device",
+    };
   }
   /// <summary>
   /// Code Values for the CompartmentDefinition.status field
@@ -750,5 +787,11 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

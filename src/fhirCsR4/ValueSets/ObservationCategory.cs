@@ -99,9 +99,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralActivity = "activity";
 
     /// <summary>
+    /// Literal for code: ObservationCategoryActivity
+    /// </summary>
+    public const string LiteralObservationCategoryActivity = "http://terminology.hl7.org/CodeSystem/observation-category#activity";
+
+    /// <summary>
     /// Literal for code: Exam
     /// </summary>
     public const string LiteralExam = "exam";
+
+    /// <summary>
+    /// Literal for code: ObservationCategoryExam
+    /// </summary>
+    public const string LiteralObservationCategoryExam = "http://terminology.hl7.org/CodeSystem/observation-category#exam";
 
     /// <summary>
     /// Literal for code: Imaging
@@ -109,9 +119,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImaging = "imaging";
 
     /// <summary>
+    /// Literal for code: ObservationCategoryImaging
+    /// </summary>
+    public const string LiteralObservationCategoryImaging = "http://terminology.hl7.org/CodeSystem/observation-category#imaging";
+
+    /// <summary>
     /// Literal for code: Laboratory
     /// </summary>
     public const string LiteralLaboratory = "laboratory";
+
+    /// <summary>
+    /// Literal for code: ObservationCategoryLaboratory
+    /// </summary>
+    public const string LiteralObservationCategoryLaboratory = "http://terminology.hl7.org/CodeSystem/observation-category#laboratory";
 
     /// <summary>
     /// Literal for code: Procedure
@@ -119,9 +139,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProcedure = "procedure";
 
     /// <summary>
+    /// Literal for code: ObservationCategoryProcedure
+    /// </summary>
+    public const string LiteralObservationCategoryProcedure = "http://terminology.hl7.org/CodeSystem/observation-category#procedure";
+
+    /// <summary>
     /// Literal for code: SocialHistory
     /// </summary>
     public const string LiteralSocialHistory = "social-history";
+
+    /// <summary>
+    /// Literal for code: ObservationCategorySocialHistory
+    /// </summary>
+    public const string LiteralObservationCategorySocialHistory = "http://terminology.hl7.org/CodeSystem/observation-category#social-history";
 
     /// <summary>
     /// Literal for code: Survey
@@ -129,13 +159,52 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurvey = "survey";
 
     /// <summary>
+    /// Literal for code: ObservationCategorySurvey
+    /// </summary>
+    public const string LiteralObservationCategorySurvey = "http://terminology.hl7.org/CodeSystem/observation-category#survey";
+
+    /// <summary>
     /// Literal for code: Therapy
     /// </summary>
     public const string LiteralTherapy = "therapy";
 
     /// <summary>
+    /// Literal for code: ObservationCategoryTherapy
+    /// </summary>
+    public const string LiteralObservationCategoryTherapy = "http://terminology.hl7.org/CodeSystem/observation-category#therapy";
+
+    /// <summary>
     /// Literal for code: VitalSigns
     /// </summary>
     public const string LiteralVitalSigns = "vital-signs";
+
+    /// <summary>
+    /// Literal for code: ObservationCategoryVitalSigns
+    /// </summary>
+    public const string LiteralObservationCategoryVitalSigns = "http://terminology.hl7.org/CodeSystem/observation-category#vital-signs";
+
+    /// <summary>
+    /// Dictionary for looking up ObservationCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "activity", Activity }, 
+      { "http://terminology.hl7.org/CodeSystem/observation-category#activity", Activity }, 
+      { "exam", Exam }, 
+      { "http://terminology.hl7.org/CodeSystem/observation-category#exam", Exam }, 
+      { "imaging", Imaging }, 
+      { "http://terminology.hl7.org/CodeSystem/observation-category#imaging", Imaging }, 
+      { "laboratory", Laboratory }, 
+      { "http://terminology.hl7.org/CodeSystem/observation-category#laboratory", Laboratory }, 
+      { "procedure", Procedure }, 
+      { "http://terminology.hl7.org/CodeSystem/observation-category#procedure", Procedure }, 
+      { "social-history", SocialHistory }, 
+      { "http://terminology.hl7.org/CodeSystem/observation-category#social-history", SocialHistory }, 
+      { "survey", Survey }, 
+      { "http://terminology.hl7.org/CodeSystem/observation-category#survey", Survey }, 
+      { "therapy", Therapy }, 
+      { "http://terminology.hl7.org/CodeSystem/observation-category#therapy", Therapy }, 
+      { "vital-signs", VitalSigns }, 
+      { "http://terminology.hl7.org/CodeSystem/observation-category#vital-signs", VitalSigns }, 
+    };
   };
 }

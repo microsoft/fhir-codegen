@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class DocClasscodesCodes
   {
     /// <summary>
-    /// 
+    /// Photographic image
     /// </summary>
     public static readonly Coding PhotographicImage = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Discharge instructions
     /// </summary>
     public static readonly Coding DischargeInstructions = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Administrative note
     /// </summary>
     public static readonly Coding AdministrativeNote = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Against medical advice note
     /// </summary>
     public static readonly Coding AgainstMedicalAdviceNote = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Agreement
     /// </summary>
     public static readonly Coding Agreement = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Certificate
     /// </summary>
     public static readonly Coding Certificate = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Consent
     /// </summary>
     public static readonly Coding Consent = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Contract
     /// </summary>
     public static readonly Coding Contract = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Health insurance card
     /// </summary>
     public static readonly Coding HealthInsuranceCard = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Health insurance-related form
     /// </summary>
     public static readonly Coding HealthInsuranceRelatedForm = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Health record cover sheet
     /// </summary>
     public static readonly Coding HealthRecordCoverSheet = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Legal document
     /// </summary>
     public static readonly Coding LegalDocument = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Advance directive
     /// </summary>
     public static readonly Coding AdvanceDirective = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Do not resuscitate
     /// </summary>
     public static readonly Coding DoNotResuscitate = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Living will
     /// </summary>
     public static readonly Coding LivingWill = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Rescinded advance directive
     /// </summary>
     public static readonly Coding RescindedAdvanceDirective = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Diagram
     /// </summary>
     public static readonly Coding Diagram = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Flowsheet
     /// </summary>
     public static readonly Coding Flowsheet = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Legal
     /// </summary>
     public static readonly Coding Legal = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Letter
     /// </summary>
     public static readonly Coding Letter = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Note
     /// </summary>
     public static readonly Coding Note = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Adverse event note
     /// </summary>
     public static readonly Coding AdverseEventNote = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Alert
     /// </summary>
     public static readonly Coding Alert = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Report
     /// </summary>
     public static readonly Coding Report = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Request
     /// </summary>
     public static readonly Coding Request = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Form
     /// </summary>
     public static readonly Coding Form = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Instructions
     /// </summary>
     public static readonly Coding Instructions = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Action plan
     /// </summary>
     public static readonly Coding ActionPlan = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Prescription
     /// </summary>
     public static readonly Coding Prescription = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Order
     /// </summary>
     public static readonly Coding Order = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Registry report
     /// </summary>
     public static readonly Coding RegistryReport = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Case report
     /// </summary>
     public static readonly Coding CaseReport = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Driver license
     /// </summary>
     public static readonly Coding DriverLicense = new Coding
     {
@@ -315,9 +315,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhotographicImage = "LP156982-3";
 
     /// <summary>
+    /// Literal for code: NONEPhotographicImage
+    /// </summary>
+    public const string LiteralNONEPhotographicImage = "http://loinc.org#LP156982-3";
+
+    /// <summary>
     /// Literal for code: DischargeInstructions
     /// </summary>
     public const string LiteralDischargeInstructions = "LP173118-3";
+
+    /// <summary>
+    /// Literal for code: NONEDischargeInstructions
+    /// </summary>
+    public const string LiteralNONEDischargeInstructions = "http://loinc.org#LP173118-3";
 
     /// <summary>
     /// Literal for code: AdministrativeNote
@@ -325,9 +335,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdministrativeNote = "LP173387-4";
 
     /// <summary>
+    /// Literal for code: NONEAdministrativeNote
+    /// </summary>
+    public const string LiteralNONEAdministrativeNote = "http://loinc.org#LP173387-4";
+
+    /// <summary>
     /// Literal for code: AgainstMedicalAdviceNote
     /// </summary>
     public const string LiteralAgainstMedicalAdviceNote = "LP173388-2";
+
+    /// <summary>
+    /// Literal for code: NONEAgainstMedicalAdviceNote
+    /// </summary>
+    public const string LiteralNONEAgainstMedicalAdviceNote = "http://loinc.org#LP173388-2";
 
     /// <summary>
     /// Literal for code: Agreement
@@ -335,9 +355,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAgreement = "LP173389-0";
 
     /// <summary>
+    /// Literal for code: NONEAgreement
+    /// </summary>
+    public const string LiteralNONEAgreement = "http://loinc.org#LP173389-0";
+
+    /// <summary>
     /// Literal for code: Certificate
     /// </summary>
     public const string LiteralCertificate = "LP173390-8";
+
+    /// <summary>
+    /// Literal for code: NONECertificate
+    /// </summary>
+    public const string LiteralNONECertificate = "http://loinc.org#LP173390-8";
 
     /// <summary>
     /// Literal for code: Consent
@@ -345,9 +375,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConsent = "LP173394-0";
 
     /// <summary>
+    /// Literal for code: NONEConsent
+    /// </summary>
+    public const string LiteralNONEConsent = "http://loinc.org#LP173394-0";
+
+    /// <summary>
     /// Literal for code: Contract
     /// </summary>
     public const string LiteralContract = "LP173403-9";
+
+    /// <summary>
+    /// Literal for code: NONEContract
+    /// </summary>
+    public const string LiteralNONEContract = "http://loinc.org#LP173403-9";
 
     /// <summary>
     /// Literal for code: HealthInsuranceCard
@@ -355,9 +395,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHealthInsuranceCard = "LP173404-7";
 
     /// <summary>
+    /// Literal for code: NONEHealthInsuranceCard
+    /// </summary>
+    public const string LiteralNONEHealthInsuranceCard = "http://loinc.org#LP173404-7";
+
+    /// <summary>
     /// Literal for code: HealthInsuranceRelatedForm
     /// </summary>
     public const string LiteralHealthInsuranceRelatedForm = "LP173405-4";
+
+    /// <summary>
+    /// Literal for code: NONEHealthInsuranceRelatedForm
+    /// </summary>
+    public const string LiteralNONEHealthInsuranceRelatedForm = "http://loinc.org#LP173405-4";
 
     /// <summary>
     /// Literal for code: HealthRecordCoverSheet
@@ -365,9 +415,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHealthRecordCoverSheet = "LP173406-2";
 
     /// <summary>
+    /// Literal for code: NONEHealthRecordCoverSheet
+    /// </summary>
+    public const string LiteralNONEHealthRecordCoverSheet = "http://loinc.org#LP173406-2";
+
+    /// <summary>
     /// Literal for code: LegalDocument
     /// </summary>
     public const string LiteralLegalDocument = "LP173407-0";
+
+    /// <summary>
+    /// Literal for code: NONELegalDocument
+    /// </summary>
+    public const string LiteralNONELegalDocument = "http://loinc.org#LP173407-0";
 
     /// <summary>
     /// Literal for code: AdvanceDirective
@@ -375,9 +435,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdvanceDirective = "LP173409-6";
 
     /// <summary>
+    /// Literal for code: NONEAdvanceDirective
+    /// </summary>
+    public const string LiteralNONEAdvanceDirective = "http://loinc.org#LP173409-6";
+
+    /// <summary>
     /// Literal for code: DoNotResuscitate
     /// </summary>
     public const string LiteralDoNotResuscitate = "LP173410-4";
+
+    /// <summary>
+    /// Literal for code: NONEDoNotResuscitate
+    /// </summary>
+    public const string LiteralNONEDoNotResuscitate = "http://loinc.org#LP173410-4";
 
     /// <summary>
     /// Literal for code: LivingWill
@@ -385,9 +455,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLivingWill = "LP173412-0";
 
     /// <summary>
+    /// Literal for code: NONELivingWill
+    /// </summary>
+    public const string LiteralNONELivingWill = "http://loinc.org#LP173412-0";
+
+    /// <summary>
     /// Literal for code: RescindedAdvanceDirective
     /// </summary>
     public const string LiteralRescindedAdvanceDirective = "LP173413-8";
+
+    /// <summary>
+    /// Literal for code: NONERescindedAdvanceDirective
+    /// </summary>
+    public const string LiteralNONERescindedAdvanceDirective = "http://loinc.org#LP173413-8";
 
     /// <summary>
     /// Literal for code: Diagram
@@ -395,9 +475,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagram = "LP173414-6";
 
     /// <summary>
+    /// Literal for code: NONEDiagram
+    /// </summary>
+    public const string LiteralNONEDiagram = "http://loinc.org#LP173414-6";
+
+    /// <summary>
     /// Literal for code: Flowsheet
     /// </summary>
     public const string LiteralFlowsheet = "LP173415-3";
+
+    /// <summary>
+    /// Literal for code: NONEFlowsheet
+    /// </summary>
+    public const string LiteralNONEFlowsheet = "http://loinc.org#LP173415-3";
 
     /// <summary>
     /// Literal for code: Legal
@@ -405,9 +495,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLegal = "LP173416-1";
 
     /// <summary>
+    /// Literal for code: NONELegal
+    /// </summary>
+    public const string LiteralNONELegal = "http://loinc.org#LP173416-1";
+
+    /// <summary>
     /// Literal for code: Letter
     /// </summary>
     public const string LiteralLetter = "LP173417-9";
+
+    /// <summary>
+    /// Literal for code: NONELetter
+    /// </summary>
+    public const string LiteralNONELetter = "http://loinc.org#LP173417-9";
 
     /// <summary>
     /// Literal for code: Note
@@ -415,9 +515,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNote = "LP173418-7";
 
     /// <summary>
+    /// Literal for code: NONENote
+    /// </summary>
+    public const string LiteralNONENote = "http://loinc.org#LP173418-7";
+
+    /// <summary>
     /// Literal for code: AdverseEventNote
     /// </summary>
     public const string LiteralAdverseEventNote = "LP173419-5";
+
+    /// <summary>
+    /// Literal for code: NONEAdverseEventNote
+    /// </summary>
+    public const string LiteralNONEAdverseEventNote = "http://loinc.org#LP173419-5";
 
     /// <summary>
     /// Literal for code: Alert
@@ -425,9 +535,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAlert = "LP173420-3";
 
     /// <summary>
+    /// Literal for code: NONEAlert
+    /// </summary>
+    public const string LiteralNONEAlert = "http://loinc.org#LP173420-3";
+
+    /// <summary>
     /// Literal for code: Report
     /// </summary>
     public const string LiteralReport = "LP173421-1";
+
+    /// <summary>
+    /// Literal for code: NONEReport
+    /// </summary>
+    public const string LiteralNONEReport = "http://loinc.org#LP173421-1";
 
     /// <summary>
     /// Literal for code: Request
@@ -435,9 +555,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRequest = "LP181089-6";
 
     /// <summary>
+    /// Literal for code: NONERequest
+    /// </summary>
+    public const string LiteralNONERequest = "http://loinc.org#LP181089-6";
+
+    /// <summary>
     /// Literal for code: Form
     /// </summary>
     public const string LiteralForm = "LP181112-6";
+
+    /// <summary>
+    /// Literal for code: NONEForm
+    /// </summary>
+    public const string LiteralNONEForm = "http://loinc.org#LP181112-6";
 
     /// <summary>
     /// Literal for code: Instructions
@@ -445,9 +575,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInstructions = "LP181116-7";
 
     /// <summary>
+    /// Literal for code: NONEInstructions
+    /// </summary>
+    public const string LiteralNONEInstructions = "http://loinc.org#LP181116-7";
+
+    /// <summary>
     /// Literal for code: ActionPlan
     /// </summary>
     public const string LiteralActionPlan = "LP181119-1";
+
+    /// <summary>
+    /// Literal for code: NONEActionPlan
+    /// </summary>
+    public const string LiteralNONEActionPlan = "http://loinc.org#LP181119-1";
 
     /// <summary>
     /// Literal for code: Prescription
@@ -455,9 +595,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrescription = "LP181204-1";
 
     /// <summary>
+    /// Literal for code: NONEPrescription
+    /// </summary>
+    public const string LiteralNONEPrescription = "http://loinc.org#LP181204-1";
+
+    /// <summary>
     /// Literal for code: Order
     /// </summary>
     public const string LiteralOrder = "LP181207-4";
+
+    /// <summary>
+    /// Literal for code: NONEOrder
+    /// </summary>
+    public const string LiteralNONEOrder = "http://loinc.org#LP181207-4";
 
     /// <summary>
     /// Literal for code: RegistryReport
@@ -465,13 +615,100 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRegistryReport = "LP183502-6";
 
     /// <summary>
+    /// Literal for code: NONERegistryReport
+    /// </summary>
+    public const string LiteralNONERegistryReport = "http://loinc.org#LP183502-6";
+
+    /// <summary>
     /// Literal for code: CaseReport
     /// </summary>
     public const string LiteralCaseReport = "LP183503-4";
 
     /// <summary>
+    /// Literal for code: NONECaseReport
+    /// </summary>
+    public const string LiteralNONECaseReport = "http://loinc.org#LP183503-4";
+
+    /// <summary>
     /// Literal for code: DriverLicense
     /// </summary>
     public const string LiteralDriverLicense = "LP193873-9";
+
+    /// <summary>
+    /// Literal for code: NONEDriverLicense
+    /// </summary>
+    public const string LiteralNONEDriverLicense = "http://loinc.org#LP193873-9";
+
+    /// <summary>
+    /// Dictionary for looking up DocClasscodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "LP156982-3", PhotographicImage }, 
+      { "http://loinc.org#LP156982-3", PhotographicImage }, 
+      { "LP173118-3", DischargeInstructions }, 
+      { "http://loinc.org#LP173118-3", DischargeInstructions }, 
+      { "LP173387-4", AdministrativeNote }, 
+      { "http://loinc.org#LP173387-4", AdministrativeNote }, 
+      { "LP173388-2", AgainstMedicalAdviceNote }, 
+      { "http://loinc.org#LP173388-2", AgainstMedicalAdviceNote }, 
+      { "LP173389-0", Agreement }, 
+      { "http://loinc.org#LP173389-0", Agreement }, 
+      { "LP173390-8", Certificate }, 
+      { "http://loinc.org#LP173390-8", Certificate }, 
+      { "LP173394-0", Consent }, 
+      { "http://loinc.org#LP173394-0", Consent }, 
+      { "LP173403-9", Contract }, 
+      { "http://loinc.org#LP173403-9", Contract }, 
+      { "LP173404-7", HealthInsuranceCard }, 
+      { "http://loinc.org#LP173404-7", HealthInsuranceCard }, 
+      { "LP173405-4", HealthInsuranceRelatedForm }, 
+      { "http://loinc.org#LP173405-4", HealthInsuranceRelatedForm }, 
+      { "LP173406-2", HealthRecordCoverSheet }, 
+      { "http://loinc.org#LP173406-2", HealthRecordCoverSheet }, 
+      { "LP173407-0", LegalDocument }, 
+      { "http://loinc.org#LP173407-0", LegalDocument }, 
+      { "LP173409-6", AdvanceDirective }, 
+      { "http://loinc.org#LP173409-6", AdvanceDirective }, 
+      { "LP173410-4", DoNotResuscitate }, 
+      { "http://loinc.org#LP173410-4", DoNotResuscitate }, 
+      { "LP173412-0", LivingWill }, 
+      { "http://loinc.org#LP173412-0", LivingWill }, 
+      { "LP173413-8", RescindedAdvanceDirective }, 
+      { "http://loinc.org#LP173413-8", RescindedAdvanceDirective }, 
+      { "LP173414-6", Diagram }, 
+      { "http://loinc.org#LP173414-6", Diagram }, 
+      { "LP173415-3", Flowsheet }, 
+      { "http://loinc.org#LP173415-3", Flowsheet }, 
+      { "LP173416-1", Legal }, 
+      { "http://loinc.org#LP173416-1", Legal }, 
+      { "LP173417-9", Letter }, 
+      { "http://loinc.org#LP173417-9", Letter }, 
+      { "LP173418-7", Note }, 
+      { "http://loinc.org#LP173418-7", Note }, 
+      { "LP173419-5", AdverseEventNote }, 
+      { "http://loinc.org#LP173419-5", AdverseEventNote }, 
+      { "LP173420-3", Alert }, 
+      { "http://loinc.org#LP173420-3", Alert }, 
+      { "LP173421-1", Report }, 
+      { "http://loinc.org#LP173421-1", Report }, 
+      { "LP181089-6", Request }, 
+      { "http://loinc.org#LP181089-6", Request }, 
+      { "LP181112-6", Form }, 
+      { "http://loinc.org#LP181112-6", Form }, 
+      { "LP181116-7", Instructions }, 
+      { "http://loinc.org#LP181116-7", Instructions }, 
+      { "LP181119-1", ActionPlan }, 
+      { "http://loinc.org#LP181119-1", ActionPlan }, 
+      { "LP181204-1", Prescription }, 
+      { "http://loinc.org#LP181204-1", Prescription }, 
+      { "LP181207-4", Order }, 
+      { "http://loinc.org#LP181207-4", Order }, 
+      { "LP183502-6", RegistryReport }, 
+      { "http://loinc.org#LP183502-6", RegistryReport }, 
+      { "LP183503-4", CaseReport }, 
+      { "http://loinc.org#LP183503-4", CaseReport }, 
+      { "LP193873-9", DriverLicense }, 
+      { "http://loinc.org#LP193873-9", DriverLicense }, 
+    };
   };
 }

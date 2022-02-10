@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class PreparePatientPriorSpecimenCollectionCodes
   {
     /// <summary>
-    /// 
+    /// 1H post 50 g glucose PO
     /// </summary>
     public static readonly Coding VAL1HPost50GGlucosePO = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 2H post 75 g glucose PO
     /// </summary>
     public static readonly Coding VAL2HPost75GGlucosePO = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 1H post 100 g glucose PO
     /// </summary>
     public static readonly Coding VAL1HPost100GGlucosePO = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// At time of peak level
     /// </summary>
     public static readonly Coding AtTimeOfPeakLevel = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// At time of trough level
     /// </summary>
     public static readonly Coding AtTimeOfTroughLevel = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 1H post 75 g glucose PO
     /// </summary>
     public static readonly Coding VAL1HPost75GGlucosePO = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// One hour after a meal
     /// </summary>
     public static readonly Coding OneHourAfterAMeal = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Two hours after a meal
     /// </summary>
     public static readonly Coding TwoHoursAfterAMeal = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 1H post dose glucose
     /// </summary>
     public static readonly Coding VAL1HPostDoseGlucose = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Two hours after glucose dose
     /// </summary>
     public static readonly Coding TwoHoursAfterGlucoseDose = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// pre 100 g glucose PO
     /// </summary>
     public static readonly Coding Pre100GGlucosePO = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 2H post 100 g glucose PO
     /// </summary>
     public static readonly Coding VAL2HPost100GGlucosePO = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Three hours after glucose dose
     /// </summary>
     public static readonly Coding ThreeHoursAfterGlucoseDose = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 3H post 100 g glucose PO
     /// </summary>
     public static readonly Coding VAL3HPost100GGlucosePO = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 30M post 75 g glucose PO
     /// </summary>
     public static readonly Coding VAL30MPost75GGlucosePO = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thirty minutes after resting
     /// </summary>
     public static readonly Coding ThirtyMinutesAfterResting = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// One hour after resting
     /// </summary>
     public static readonly Coding OneHourAfterResting = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ninety minutes after resting
     /// </summary>
     public static readonly Coding NinetyMinutesAfterResting = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Twenty minutes after incubation
     /// </summary>
     public static readonly Coding TwentyMinutesAfterIncubation = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thirty minutes after incubation
     /// </summary>
     public static readonly Coding ThirtyMinutesAfterIncubation = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// One hour after incubation
     /// </summary>
     public static readonly Coding OneHourAfterIncubation = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Two hours after incubation
     /// </summary>
     public static readonly Coding TwoHoursAfterIncubation = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Three hours after incubation
     /// </summary>
     public static readonly Coding ThreeHoursAfterIncubation = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Four hours after incubation
     /// </summary>
     public static readonly Coding FourHoursAfterIncubation = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// One day after incubation
     /// </summary>
     public static readonly Coding OneDayAfterIncubation = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Seven days after incubation
     /// </summary>
     public static readonly Coding SevenDaysAfterIncubation = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Two hours after peritoneal dialysis
     /// </summary>
     public static readonly Coding TwoHoursAfterPeritonealDialysis = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Four hours after peritoneal dialysis
     /// </summary>
     public static readonly Coding FourHoursAfterPeritonealDialysis = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Twelve hours after peritoneal dialysis
     /// </summary>
     public static readonly Coding TwelveHoursAfterPeritonealDialysis = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Twenty four hours after peritoneal dialysis
     /// </summary>
     public static readonly Coding TwentyFourHoursAfterPeritonealDialysis = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 30M post dose corticotropin
     /// </summary>
     public static readonly Coding VAL30MPostDoseCorticotropin = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 1H post dose corticotropin
     /// </summary>
     public static readonly Coding VAL1HPostDoseCorticotropin = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 15M pre dose ornithine
     /// </summary>
     public static readonly Coding VAL15MPreDoseOrnithine = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// After urea dose
     /// </summary>
     public static readonly Coding AfterUreaDose = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pre contrast
     /// </summary>
     public static readonly Coding PreContrast = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pre washing
     /// </summary>
     public static readonly Coding PreWashing = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// After precipitation
     /// </summary>
     public static readonly Coding AfterPrecipitation = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Post transfusion reaction
     /// </summary>
     public static readonly Coding PostTransfusionReaction = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// On ventilator
     /// </summary>
     public static readonly Coding OnVentilator = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immediately after addition of normal plasma
     /// </summary>
     public static readonly Coding ImmediatelyAfterAdditionOfNormalPlasma = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immediately after addition of protamine sulfate
     /// </summary>
     public static readonly Coding ImmediatelyAfterAdditionOfProtamineSulfate = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// On menstrual cycle day 10
     /// </summary>
     public static readonly Coding OnMenstrualCycleDay10 = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// On menstrual cycle day 11
     /// </summary>
     public static readonly Coding OnMenstrualCycleDay11 = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// On menstrual cycle day 21
     /// </summary>
     public static readonly Coding OnMenstrualCycleDay21 = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// On menstrual cycle day 3
     /// </summary>
     public static readonly Coding OnMenstrualCycleDay3 = new Coding
     {
@@ -423,9 +423,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL1HPost50GGlucosePO = "703760002";
 
     /// <summary>
+    /// Literal for code: NONEVAL1HPost50GGlucosePO
+    /// </summary>
+    public const string LiteralNONEVAL1HPost50GGlucosePO = "http://snomed.info/sct#703760002";
+
+    /// <summary>
     /// Literal for code: VAL2HPost75GGlucosePO
     /// </summary>
     public const string LiteralVAL2HPost75GGlucosePO = "703761003";
+
+    /// <summary>
+    /// Literal for code: NONEVAL2HPost75GGlucosePO
+    /// </summary>
+    public const string LiteralNONEVAL2HPost75GGlucosePO = "http://snomed.info/sct#703761003";
 
     /// <summary>
     /// Literal for code: VAL1HPost100GGlucosePO
@@ -433,9 +443,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL1HPost100GGlucosePO = "703762005";
 
     /// <summary>
+    /// Literal for code: NONEVAL1HPost100GGlucosePO
+    /// </summary>
+    public const string LiteralNONEVAL1HPost100GGlucosePO = "http://snomed.info/sct#703762005";
+
+    /// <summary>
     /// Literal for code: AtTimeOfPeakLevel
     /// </summary>
     public const string LiteralAtTimeOfPeakLevel = "703764006";
+
+    /// <summary>
+    /// Literal for code: NONEAtTimeOfPeakLevel
+    /// </summary>
+    public const string LiteralNONEAtTimeOfPeakLevel = "http://snomed.info/sct#703764006";
 
     /// <summary>
     /// Literal for code: AtTimeOfTroughLevel
@@ -443,9 +463,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAtTimeOfTroughLevel = "703765007";
 
     /// <summary>
+    /// Literal for code: NONEAtTimeOfTroughLevel
+    /// </summary>
+    public const string LiteralNONEAtTimeOfTroughLevel = "http://snomed.info/sct#703765007";
+
+    /// <summary>
     /// Literal for code: VAL1HPost75GGlucosePO
     /// </summary>
     public const string LiteralVAL1HPost75GGlucosePO = "703766008";
+
+    /// <summary>
+    /// Literal for code: NONEVAL1HPost75GGlucosePO
+    /// </summary>
+    public const string LiteralNONEVAL1HPost75GGlucosePO = "http://snomed.info/sct#703766008";
 
     /// <summary>
     /// Literal for code: OneHourAfterAMeal
@@ -453,9 +483,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOneHourAfterAMeal = "703767004";
 
     /// <summary>
+    /// Literal for code: NONEOneHourAfterAMeal
+    /// </summary>
+    public const string LiteralNONEOneHourAfterAMeal = "http://snomed.info/sct#703767004";
+
+    /// <summary>
     /// Literal for code: TwoHoursAfterAMeal
     /// </summary>
     public const string LiteralTwoHoursAfterAMeal = "703768009";
+
+    /// <summary>
+    /// Literal for code: NONETwoHoursAfterAMeal
+    /// </summary>
+    public const string LiteralNONETwoHoursAfterAMeal = "http://snomed.info/sct#703768009";
 
     /// <summary>
     /// Literal for code: VAL1HPostDoseGlucose
@@ -463,9 +503,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL1HPostDoseGlucose = "703769001";
 
     /// <summary>
+    /// Literal for code: NONEVAL1HPostDoseGlucose
+    /// </summary>
+    public const string LiteralNONEVAL1HPostDoseGlucose = "http://snomed.info/sct#703769001";
+
+    /// <summary>
     /// Literal for code: TwoHoursAfterGlucoseDose
     /// </summary>
     public const string LiteralTwoHoursAfterGlucoseDose = "703770000";
+
+    /// <summary>
+    /// Literal for code: NONETwoHoursAfterGlucoseDose
+    /// </summary>
+    public const string LiteralNONETwoHoursAfterGlucoseDose = "http://snomed.info/sct#703770000";
 
     /// <summary>
     /// Literal for code: Pre100GGlucosePO
@@ -473,9 +523,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPre100GGlucosePO = "703771001";
 
     /// <summary>
+    /// Literal for code: NONEPre100GGlucosePO
+    /// </summary>
+    public const string LiteralNONEPre100GGlucosePO = "http://snomed.info/sct#703771001";
+
+    /// <summary>
     /// Literal for code: VAL2HPost100GGlucosePO
     /// </summary>
     public const string LiteralVAL2HPost100GGlucosePO = "703772008";
+
+    /// <summary>
+    /// Literal for code: NONEVAL2HPost100GGlucosePO
+    /// </summary>
+    public const string LiteralNONEVAL2HPost100GGlucosePO = "http://snomed.info/sct#703772008";
 
     /// <summary>
     /// Literal for code: ThreeHoursAfterGlucoseDose
@@ -483,9 +543,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThreeHoursAfterGlucoseDose = "703773003";
 
     /// <summary>
+    /// Literal for code: NONEThreeHoursAfterGlucoseDose
+    /// </summary>
+    public const string LiteralNONEThreeHoursAfterGlucoseDose = "http://snomed.info/sct#703773003";
+
+    /// <summary>
     /// Literal for code: VAL3HPost100GGlucosePO
     /// </summary>
     public const string LiteralVAL3HPost100GGlucosePO = "703774009";
+
+    /// <summary>
+    /// Literal for code: NONEVAL3HPost100GGlucosePO
+    /// </summary>
+    public const string LiteralNONEVAL3HPost100GGlucosePO = "http://snomed.info/sct#703774009";
 
     /// <summary>
     /// Literal for code: VAL30MPost75GGlucosePO
@@ -493,9 +563,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL30MPost75GGlucosePO = "703775005";
 
     /// <summary>
+    /// Literal for code: NONEVAL30MPost75GGlucosePO
+    /// </summary>
+    public const string LiteralNONEVAL30MPost75GGlucosePO = "http://snomed.info/sct#703775005";
+
+    /// <summary>
     /// Literal for code: ThirtyMinutesAfterResting
     /// </summary>
     public const string LiteralThirtyMinutesAfterResting = "707707000";
+
+    /// <summary>
+    /// Literal for code: NONEThirtyMinutesAfterResting
+    /// </summary>
+    public const string LiteralNONEThirtyMinutesAfterResting = "http://snomed.info/sct#707707000";
 
     /// <summary>
     /// Literal for code: OneHourAfterResting
@@ -503,9 +583,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOneHourAfterResting = "707708005";
 
     /// <summary>
+    /// Literal for code: NONEOneHourAfterResting
+    /// </summary>
+    public const string LiteralNONEOneHourAfterResting = "http://snomed.info/sct#707708005";
+
+    /// <summary>
     /// Literal for code: NinetyMinutesAfterResting
     /// </summary>
     public const string LiteralNinetyMinutesAfterResting = "707709002";
+
+    /// <summary>
+    /// Literal for code: NONENinetyMinutesAfterResting
+    /// </summary>
+    public const string LiteralNONENinetyMinutesAfterResting = "http://snomed.info/sct#707709002";
 
     /// <summary>
     /// Literal for code: TwentyMinutesAfterIncubation
@@ -513,9 +603,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTwentyMinutesAfterIncubation = "707710007";
 
     /// <summary>
+    /// Literal for code: NONETwentyMinutesAfterIncubation
+    /// </summary>
+    public const string LiteralNONETwentyMinutesAfterIncubation = "http://snomed.info/sct#707710007";
+
+    /// <summary>
     /// Literal for code: ThirtyMinutesAfterIncubation
     /// </summary>
     public const string LiteralThirtyMinutesAfterIncubation = "707712004";
+
+    /// <summary>
+    /// Literal for code: NONEThirtyMinutesAfterIncubation
+    /// </summary>
+    public const string LiteralNONEThirtyMinutesAfterIncubation = "http://snomed.info/sct#707712004";
 
     /// <summary>
     /// Literal for code: OneHourAfterIncubation
@@ -523,9 +623,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOneHourAfterIncubation = "707714003";
 
     /// <summary>
+    /// Literal for code: NONEOneHourAfterIncubation
+    /// </summary>
+    public const string LiteralNONEOneHourAfterIncubation = "http://snomed.info/sct#707714003";
+
+    /// <summary>
     /// Literal for code: TwoHoursAfterIncubation
     /// </summary>
     public const string LiteralTwoHoursAfterIncubation = "707715002";
+
+    /// <summary>
+    /// Literal for code: NONETwoHoursAfterIncubation
+    /// </summary>
+    public const string LiteralNONETwoHoursAfterIncubation = "http://snomed.info/sct#707715002";
 
     /// <summary>
     /// Literal for code: ThreeHoursAfterIncubation
@@ -533,9 +643,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThreeHoursAfterIncubation = "707716001";
 
     /// <summary>
+    /// Literal for code: NONEThreeHoursAfterIncubation
+    /// </summary>
+    public const string LiteralNONEThreeHoursAfterIncubation = "http://snomed.info/sct#707716001";
+
+    /// <summary>
     /// Literal for code: FourHoursAfterIncubation
     /// </summary>
     public const string LiteralFourHoursAfterIncubation = "707717005";
+
+    /// <summary>
+    /// Literal for code: NONEFourHoursAfterIncubation
+    /// </summary>
+    public const string LiteralNONEFourHoursAfterIncubation = "http://snomed.info/sct#707717005";
 
     /// <summary>
     /// Literal for code: OneDayAfterIncubation
@@ -543,9 +663,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOneDayAfterIncubation = "707718000";
 
     /// <summary>
+    /// Literal for code: NONEOneDayAfterIncubation
+    /// </summary>
+    public const string LiteralNONEOneDayAfterIncubation = "http://snomed.info/sct#707718000";
+
+    /// <summary>
     /// Literal for code: SevenDaysAfterIncubation
     /// </summary>
     public const string LiteralSevenDaysAfterIncubation = "707719008";
+
+    /// <summary>
+    /// Literal for code: NONESevenDaysAfterIncubation
+    /// </summary>
+    public const string LiteralNONESevenDaysAfterIncubation = "http://snomed.info/sct#707719008";
 
     /// <summary>
     /// Literal for code: TwoHoursAfterPeritonealDialysis
@@ -553,9 +683,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTwoHoursAfterPeritonealDialysis = "707720002";
 
     /// <summary>
+    /// Literal for code: NONETwoHoursAfterPeritonealDialysis
+    /// </summary>
+    public const string LiteralNONETwoHoursAfterPeritonealDialysis = "http://snomed.info/sct#707720002";
+
+    /// <summary>
     /// Literal for code: FourHoursAfterPeritonealDialysis
     /// </summary>
     public const string LiteralFourHoursAfterPeritonealDialysis = "707721003";
+
+    /// <summary>
+    /// Literal for code: NONEFourHoursAfterPeritonealDialysis
+    /// </summary>
+    public const string LiteralNONEFourHoursAfterPeritonealDialysis = "http://snomed.info/sct#707721003";
 
     /// <summary>
     /// Literal for code: TwelveHoursAfterPeritonealDialysis
@@ -563,9 +703,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTwelveHoursAfterPeritonealDialysis = "707722005";
 
     /// <summary>
+    /// Literal for code: NONETwelveHoursAfterPeritonealDialysis
+    /// </summary>
+    public const string LiteralNONETwelveHoursAfterPeritonealDialysis = "http://snomed.info/sct#707722005";
+
+    /// <summary>
     /// Literal for code: TwentyFourHoursAfterPeritonealDialysis
     /// </summary>
     public const string LiteralTwentyFourHoursAfterPeritonealDialysis = "707723000";
+
+    /// <summary>
+    /// Literal for code: NONETwentyFourHoursAfterPeritonealDialysis
+    /// </summary>
+    public const string LiteralNONETwentyFourHoursAfterPeritonealDialysis = "http://snomed.info/sct#707723000";
 
     /// <summary>
     /// Literal for code: VAL30MPostDoseCorticotropin
@@ -573,9 +723,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL30MPostDoseCorticotropin = "707757008";
 
     /// <summary>
+    /// Literal for code: NONEVAL30MPostDoseCorticotropin
+    /// </summary>
+    public const string LiteralNONEVAL30MPostDoseCorticotropin = "http://snomed.info/sct#707757008";
+
+    /// <summary>
     /// Literal for code: VAL1HPostDoseCorticotropin
     /// </summary>
     public const string LiteralVAL1HPostDoseCorticotropin = "707758003";
+
+    /// <summary>
+    /// Literal for code: NONEVAL1HPostDoseCorticotropin
+    /// </summary>
+    public const string LiteralNONEVAL1HPostDoseCorticotropin = "http://snomed.info/sct#707758003";
 
     /// <summary>
     /// Literal for code: VAL15MPreDoseOrnithine
@@ -583,9 +743,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL15MPreDoseOrnithine = "707759006";
 
     /// <summary>
+    /// Literal for code: NONEVAL15MPreDoseOrnithine
+    /// </summary>
+    public const string LiteralNONEVAL15MPreDoseOrnithine = "http://snomed.info/sct#707759006";
+
+    /// <summary>
     /// Literal for code: AfterUreaDose
     /// </summary>
     public const string LiteralAfterUreaDose = "707760001";
+
+    /// <summary>
+    /// Literal for code: NONEAfterUreaDose
+    /// </summary>
+    public const string LiteralNONEAfterUreaDose = "http://snomed.info/sct#707760001";
 
     /// <summary>
     /// Literal for code: PreContrast
@@ -593,9 +763,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPreContrast = "707761002";
 
     /// <summary>
+    /// Literal for code: NONEPreContrast
+    /// </summary>
+    public const string LiteralNONEPreContrast = "http://snomed.info/sct#707761002";
+
+    /// <summary>
     /// Literal for code: PreWashing
     /// </summary>
     public const string LiteralPreWashing = "707762009";
+
+    /// <summary>
+    /// Literal for code: NONEPreWashing
+    /// </summary>
+    public const string LiteralNONEPreWashing = "http://snomed.info/sct#707762009";
 
     /// <summary>
     /// Literal for code: AfterPrecipitation
@@ -603,9 +783,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAfterPrecipitation = "707763004";
 
     /// <summary>
+    /// Literal for code: NONEAfterPrecipitation
+    /// </summary>
+    public const string LiteralNONEAfterPrecipitation = "http://snomed.info/sct#707763004";
+
+    /// <summary>
     /// Literal for code: PostTransfusionReaction
     /// </summary>
     public const string LiteralPostTransfusionReaction = "707764005";
+
+    /// <summary>
+    /// Literal for code: NONEPostTransfusionReaction
+    /// </summary>
+    public const string LiteralNONEPostTransfusionReaction = "http://snomed.info/sct#707764005";
 
     /// <summary>
     /// Literal for code: OnVentilator
@@ -613,9 +803,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOnVentilator = "707765006";
 
     /// <summary>
+    /// Literal for code: NONEOnVentilator
+    /// </summary>
+    public const string LiteralNONEOnVentilator = "http://snomed.info/sct#707765006";
+
+    /// <summary>
     /// Literal for code: ImmediatelyAfterAdditionOfNormalPlasma
     /// </summary>
     public const string LiteralImmediatelyAfterAdditionOfNormalPlasma = "707815009";
+
+    /// <summary>
+    /// Literal for code: NONEImmediatelyAfterAdditionOfNormalPlasma
+    /// </summary>
+    public const string LiteralNONEImmediatelyAfterAdditionOfNormalPlasma = "http://snomed.info/sct#707815009";
 
     /// <summary>
     /// Literal for code: ImmediatelyAfterAdditionOfProtamineSulfate
@@ -623,9 +823,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImmediatelyAfterAdditionOfProtamineSulfate = "707816005";
 
     /// <summary>
+    /// Literal for code: NONEImmediatelyAfterAdditionOfProtamineSulfate
+    /// </summary>
+    public const string LiteralNONEImmediatelyAfterAdditionOfProtamineSulfate = "http://snomed.info/sct#707816005";
+
+    /// <summary>
     /// Literal for code: OnMenstrualCycleDay10
     /// </summary>
     public const string LiteralOnMenstrualCycleDay10 = "707817001";
+
+    /// <summary>
+    /// Literal for code: NONEOnMenstrualCycleDay10
+    /// </summary>
+    public const string LiteralNONEOnMenstrualCycleDay10 = "http://snomed.info/sct#707817001";
 
     /// <summary>
     /// Literal for code: OnMenstrualCycleDay11
@@ -633,13 +843,124 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOnMenstrualCycleDay11 = "707818006";
 
     /// <summary>
+    /// Literal for code: NONEOnMenstrualCycleDay11
+    /// </summary>
+    public const string LiteralNONEOnMenstrualCycleDay11 = "http://snomed.info/sct#707818006";
+
+    /// <summary>
     /// Literal for code: OnMenstrualCycleDay21
     /// </summary>
     public const string LiteralOnMenstrualCycleDay21 = "707819003";
 
     /// <summary>
+    /// Literal for code: NONEOnMenstrualCycleDay21
+    /// </summary>
+    public const string LiteralNONEOnMenstrualCycleDay21 = "http://snomed.info/sct#707819003";
+
+    /// <summary>
     /// Literal for code: OnMenstrualCycleDay3
     /// </summary>
     public const string LiteralOnMenstrualCycleDay3 = "707820009";
+
+    /// <summary>
+    /// Literal for code: NONEOnMenstrualCycleDay3
+    /// </summary>
+    public const string LiteralNONEOnMenstrualCycleDay3 = "http://snomed.info/sct#707820009";
+
+    /// <summary>
+    /// Dictionary for looking up PreparePatientPriorSpecimenCollection Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "703760002", VAL1HPost50GGlucosePO }, 
+      { "http://snomed.info/sct#703760002", VAL1HPost50GGlucosePO }, 
+      { "703761003", VAL2HPost75GGlucosePO }, 
+      { "http://snomed.info/sct#703761003", VAL2HPost75GGlucosePO }, 
+      { "703762005", VAL1HPost100GGlucosePO }, 
+      { "http://snomed.info/sct#703762005", VAL1HPost100GGlucosePO }, 
+      { "703764006", AtTimeOfPeakLevel }, 
+      { "http://snomed.info/sct#703764006", AtTimeOfPeakLevel }, 
+      { "703765007", AtTimeOfTroughLevel }, 
+      { "http://snomed.info/sct#703765007", AtTimeOfTroughLevel }, 
+      { "703766008", VAL1HPost75GGlucosePO }, 
+      { "http://snomed.info/sct#703766008", VAL1HPost75GGlucosePO }, 
+      { "703767004", OneHourAfterAMeal }, 
+      { "http://snomed.info/sct#703767004", OneHourAfterAMeal }, 
+      { "703768009", TwoHoursAfterAMeal }, 
+      { "http://snomed.info/sct#703768009", TwoHoursAfterAMeal }, 
+      { "703769001", VAL1HPostDoseGlucose }, 
+      { "http://snomed.info/sct#703769001", VAL1HPostDoseGlucose }, 
+      { "703770000", TwoHoursAfterGlucoseDose }, 
+      { "http://snomed.info/sct#703770000", TwoHoursAfterGlucoseDose }, 
+      { "703771001", Pre100GGlucosePO }, 
+      { "http://snomed.info/sct#703771001", Pre100GGlucosePO }, 
+      { "703772008", VAL2HPost100GGlucosePO }, 
+      { "http://snomed.info/sct#703772008", VAL2HPost100GGlucosePO }, 
+      { "703773003", ThreeHoursAfterGlucoseDose }, 
+      { "http://snomed.info/sct#703773003", ThreeHoursAfterGlucoseDose }, 
+      { "703774009", VAL3HPost100GGlucosePO }, 
+      { "http://snomed.info/sct#703774009", VAL3HPost100GGlucosePO }, 
+      { "703775005", VAL30MPost75GGlucosePO }, 
+      { "http://snomed.info/sct#703775005", VAL30MPost75GGlucosePO }, 
+      { "707707000", ThirtyMinutesAfterResting }, 
+      { "http://snomed.info/sct#707707000", ThirtyMinutesAfterResting }, 
+      { "707708005", OneHourAfterResting }, 
+      { "http://snomed.info/sct#707708005", OneHourAfterResting }, 
+      { "707709002", NinetyMinutesAfterResting }, 
+      { "http://snomed.info/sct#707709002", NinetyMinutesAfterResting }, 
+      { "707710007", TwentyMinutesAfterIncubation }, 
+      { "http://snomed.info/sct#707710007", TwentyMinutesAfterIncubation }, 
+      { "707712004", ThirtyMinutesAfterIncubation }, 
+      { "http://snomed.info/sct#707712004", ThirtyMinutesAfterIncubation }, 
+      { "707714003", OneHourAfterIncubation }, 
+      { "http://snomed.info/sct#707714003", OneHourAfterIncubation }, 
+      { "707715002", TwoHoursAfterIncubation }, 
+      { "http://snomed.info/sct#707715002", TwoHoursAfterIncubation }, 
+      { "707716001", ThreeHoursAfterIncubation }, 
+      { "http://snomed.info/sct#707716001", ThreeHoursAfterIncubation }, 
+      { "707717005", FourHoursAfterIncubation }, 
+      { "http://snomed.info/sct#707717005", FourHoursAfterIncubation }, 
+      { "707718000", OneDayAfterIncubation }, 
+      { "http://snomed.info/sct#707718000", OneDayAfterIncubation }, 
+      { "707719008", SevenDaysAfterIncubation }, 
+      { "http://snomed.info/sct#707719008", SevenDaysAfterIncubation }, 
+      { "707720002", TwoHoursAfterPeritonealDialysis }, 
+      { "http://snomed.info/sct#707720002", TwoHoursAfterPeritonealDialysis }, 
+      { "707721003", FourHoursAfterPeritonealDialysis }, 
+      { "http://snomed.info/sct#707721003", FourHoursAfterPeritonealDialysis }, 
+      { "707722005", TwelveHoursAfterPeritonealDialysis }, 
+      { "http://snomed.info/sct#707722005", TwelveHoursAfterPeritonealDialysis }, 
+      { "707723000", TwentyFourHoursAfterPeritonealDialysis }, 
+      { "http://snomed.info/sct#707723000", TwentyFourHoursAfterPeritonealDialysis }, 
+      { "707757008", VAL30MPostDoseCorticotropin }, 
+      { "http://snomed.info/sct#707757008", VAL30MPostDoseCorticotropin }, 
+      { "707758003", VAL1HPostDoseCorticotropin }, 
+      { "http://snomed.info/sct#707758003", VAL1HPostDoseCorticotropin }, 
+      { "707759006", VAL15MPreDoseOrnithine }, 
+      { "http://snomed.info/sct#707759006", VAL15MPreDoseOrnithine }, 
+      { "707760001", AfterUreaDose }, 
+      { "http://snomed.info/sct#707760001", AfterUreaDose }, 
+      { "707761002", PreContrast }, 
+      { "http://snomed.info/sct#707761002", PreContrast }, 
+      { "707762009", PreWashing }, 
+      { "http://snomed.info/sct#707762009", PreWashing }, 
+      { "707763004", AfterPrecipitation }, 
+      { "http://snomed.info/sct#707763004", AfterPrecipitation }, 
+      { "707764005", PostTransfusionReaction }, 
+      { "http://snomed.info/sct#707764005", PostTransfusionReaction }, 
+      { "707765006", OnVentilator }, 
+      { "http://snomed.info/sct#707765006", OnVentilator }, 
+      { "707815009", ImmediatelyAfterAdditionOfNormalPlasma }, 
+      { "http://snomed.info/sct#707815009", ImmediatelyAfterAdditionOfNormalPlasma }, 
+      { "707816005", ImmediatelyAfterAdditionOfProtamineSulfate }, 
+      { "http://snomed.info/sct#707816005", ImmediatelyAfterAdditionOfProtamineSulfate }, 
+      { "707817001", OnMenstrualCycleDay10 }, 
+      { "http://snomed.info/sct#707817001", OnMenstrualCycleDay10 }, 
+      { "707818006", OnMenstrualCycleDay11 }, 
+      { "http://snomed.info/sct#707818006", OnMenstrualCycleDay11 }, 
+      { "707819003", OnMenstrualCycleDay21 }, 
+      { "http://snomed.info/sct#707819003", OnMenstrualCycleDay21 }, 
+      { "707820009", OnMenstrualCycleDay3 }, 
+      { "http://snomed.info/sct#707820009", OnMenstrualCycleDay3 }, 
+    };
   };
 }

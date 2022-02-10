@@ -45,13 +45,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInNetwork = "in-network";
 
     /// <summary>
+    /// Literal for code: InsuranceplanApplicabilityInNetwork
+    /// </summary>
+    public const string LiteralInsuranceplanApplicabilityInNetwork = "http://terminology.hl7.org/CodeSystem/applicability#in-network";
+
+    /// <summary>
     /// Literal for code: Other
     /// </summary>
     public const string LiteralOther = "other";
 
     /// <summary>
+    /// Literal for code: InsuranceplanApplicabilityOther
+    /// </summary>
+    public const string LiteralInsuranceplanApplicabilityOther = "http://terminology.hl7.org/CodeSystem/applicability#other";
+
+    /// <summary>
     /// Literal for code: OutOfNetwork
     /// </summary>
     public const string LiteralOutOfNetwork = "out-of-network";
+
+    /// <summary>
+    /// Literal for code: InsuranceplanApplicabilityOutOfNetwork
+    /// </summary>
+    public const string LiteralInsuranceplanApplicabilityOutOfNetwork = "http://terminology.hl7.org/CodeSystem/applicability#out-of-network";
+
+    /// <summary>
+    /// Dictionary for looking up InsuranceplanApplicability Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "in-network", InNetwork }, 
+      { "http://terminology.hl7.org/CodeSystem/applicability#in-network", InNetwork }, 
+      { "other", Other }, 
+      { "http://terminology.hl7.org/CodeSystem/applicability#other", Other }, 
+      { "out-of-network", OutOfNetwork }, 
+      { "http://terminology.hl7.org/CodeSystem/applicability#out-of-network", OutOfNetwork }, 
+    };
   };
 }

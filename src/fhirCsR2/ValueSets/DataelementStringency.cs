@@ -72,9 +72,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralComparable = "comparable";
 
     /// <summary>
+    /// Literal for code: DataelementStringencyComparable
+    /// </summary>
+    public const string LiteralDataelementStringencyComparable = "http://hl7.org/fhir/dataelement-stringency#comparable";
+
+    /// <summary>
     /// Literal for code: Convertable
     /// </summary>
     public const string LiteralConvertable = "convertable";
+
+    /// <summary>
+    /// Literal for code: DataelementStringencyConvertable
+    /// </summary>
+    public const string LiteralDataelementStringencyConvertable = "http://hl7.org/fhir/dataelement-stringency#convertable";
 
     /// <summary>
     /// Literal for code: Equivalent
@@ -82,9 +92,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralEquivalent = "equivalent";
 
     /// <summary>
+    /// Literal for code: DataelementStringencyEquivalent
+    /// </summary>
+    public const string LiteralDataelementStringencyEquivalent = "http://hl7.org/fhir/dataelement-stringency#equivalent";
+
+    /// <summary>
     /// Literal for code: Flexible
     /// </summary>
     public const string LiteralFlexible = "flexible";
+
+    /// <summary>
+    /// Literal for code: DataelementStringencyFlexible
+    /// </summary>
+    public const string LiteralDataelementStringencyFlexible = "http://hl7.org/fhir/dataelement-stringency#flexible";
 
     /// <summary>
     /// Literal for code: FullySpecified
@@ -92,8 +112,36 @@ namespace fhirCsR2.ValueSets
     public const string LiteralFullySpecified = "fully-specified";
 
     /// <summary>
+    /// Literal for code: DataelementStringencyFullySpecified
+    /// </summary>
+    public const string LiteralDataelementStringencyFullySpecified = "http://hl7.org/fhir/dataelement-stringency#fully-specified";
+
+    /// <summary>
     /// Literal for code: Scaleable
     /// </summary>
     public const string LiteralScaleable = "scaleable";
+
+    /// <summary>
+    /// Literal for code: DataelementStringencyScaleable
+    /// </summary>
+    public const string LiteralDataelementStringencyScaleable = "http://hl7.org/fhir/dataelement-stringency#scaleable";
+
+    /// <summary>
+    /// Dictionary for looking up DataelementStringency Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "comparable", Comparable }, 
+      { "http://hl7.org/fhir/dataelement-stringency#comparable", Comparable }, 
+      { "convertable", Convertable }, 
+      { "http://hl7.org/fhir/dataelement-stringency#convertable", Convertable }, 
+      { "equivalent", Equivalent }, 
+      { "http://hl7.org/fhir/dataelement-stringency#equivalent", Equivalent }, 
+      { "flexible", Flexible }, 
+      { "http://hl7.org/fhir/dataelement-stringency#flexible", Flexible }, 
+      { "fully-specified", FullySpecified }, 
+      { "http://hl7.org/fhir/dataelement-stringency#fully-specified", FullySpecified }, 
+      { "scaleable", Scaleable }, 
+      { "http://hl7.org/fhir/dataelement-stringency#scaleable", Scaleable }, 
+    };
   };
 }

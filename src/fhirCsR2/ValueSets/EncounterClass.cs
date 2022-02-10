@@ -99,9 +99,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralAmbulatory = "ambulatory";
 
     /// <summary>
+    /// Literal for code: EncounterClassAmbulatory
+    /// </summary>
+    public const string LiteralEncounterClassAmbulatory = "http://hl7.org/fhir/encounter-class#ambulatory";
+
+    /// <summary>
     /// Literal for code: Daytime
     /// </summary>
     public const string LiteralDaytime = "daytime";
+
+    /// <summary>
+    /// Literal for code: EncounterClassDaytime
+    /// </summary>
+    public const string LiteralEncounterClassDaytime = "http://hl7.org/fhir/encounter-class#daytime";
 
     /// <summary>
     /// Literal for code: Emergency
@@ -109,9 +119,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralEmergency = "emergency";
 
     /// <summary>
+    /// Literal for code: EncounterClassEmergency
+    /// </summary>
+    public const string LiteralEncounterClassEmergency = "http://hl7.org/fhir/encounter-class#emergency";
+
+    /// <summary>
     /// Literal for code: Field
     /// </summary>
     public const string LiteralField = "field";
+
+    /// <summary>
+    /// Literal for code: EncounterClassField
+    /// </summary>
+    public const string LiteralEncounterClassField = "http://hl7.org/fhir/encounter-class#field";
 
     /// <summary>
     /// Literal for code: Home
@@ -119,9 +139,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralHome = "home";
 
     /// <summary>
+    /// Literal for code: EncounterClassHome
+    /// </summary>
+    public const string LiteralEncounterClassHome = "http://hl7.org/fhir/encounter-class#home";
+
+    /// <summary>
     /// Literal for code: Inpatient
     /// </summary>
     public const string LiteralInpatient = "inpatient";
+
+    /// <summary>
+    /// Literal for code: EncounterClassInpatient
+    /// </summary>
+    public const string LiteralEncounterClassInpatient = "http://hl7.org/fhir/encounter-class#inpatient";
 
     /// <summary>
     /// Literal for code: Other
@@ -129,13 +159,52 @@ namespace fhirCsR2.ValueSets
     public const string LiteralOther = "other";
 
     /// <summary>
+    /// Literal for code: EncounterClassOther
+    /// </summary>
+    public const string LiteralEncounterClassOther = "http://hl7.org/fhir/encounter-class#other";
+
+    /// <summary>
     /// Literal for code: Outpatient
     /// </summary>
     public const string LiteralOutpatient = "outpatient";
 
     /// <summary>
+    /// Literal for code: EncounterClassOutpatient
+    /// </summary>
+    public const string LiteralEncounterClassOutpatient = "http://hl7.org/fhir/encounter-class#outpatient";
+
+    /// <summary>
     /// Literal for code: Virtual
     /// </summary>
     public const string LiteralVirtual = "virtual";
+
+    /// <summary>
+    /// Literal for code: EncounterClassVirtual
+    /// </summary>
+    public const string LiteralEncounterClassVirtual = "http://hl7.org/fhir/encounter-class#virtual";
+
+    /// <summary>
+    /// Dictionary for looking up EncounterClass Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ambulatory", Ambulatory }, 
+      { "http://hl7.org/fhir/encounter-class#ambulatory", Ambulatory }, 
+      { "daytime", Daytime }, 
+      { "http://hl7.org/fhir/encounter-class#daytime", Daytime }, 
+      { "emergency", Emergency }, 
+      { "http://hl7.org/fhir/encounter-class#emergency", Emergency }, 
+      { "field", Field }, 
+      { "http://hl7.org/fhir/encounter-class#field", Field }, 
+      { "home", Home }, 
+      { "http://hl7.org/fhir/encounter-class#home", Home }, 
+      { "inpatient", Inpatient }, 
+      { "http://hl7.org/fhir/encounter-class#inpatient", Inpatient }, 
+      { "other", Other }, 
+      { "http://hl7.org/fhir/encounter-class#other", Other }, 
+      { "outpatient", Outpatient }, 
+      { "http://hl7.org/fhir/encounter-class#outpatient", Outpatient }, 
+      { "virtual", Virtual }, 
+      { "http://hl7.org/fhir/encounter-class#virtual", Virtual }, 
+    };
   };
 }

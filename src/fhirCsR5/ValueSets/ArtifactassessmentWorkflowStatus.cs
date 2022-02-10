@@ -99,9 +99,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralApplied = "applied";
 
     /// <summary>
+    /// Literal for code: ArtifactassessmentWorkflowStatusApplied
+    /// </summary>
+    public const string LiteralArtifactassessmentWorkflowStatusApplied = "http://hl7.org/fhir/artifactassessment-workflow-status#applied";
+
+    /// <summary>
     /// Literal for code: Deferred
     /// </summary>
     public const string LiteralDeferred = "deferred";
+
+    /// <summary>
+    /// Literal for code: ArtifactassessmentWorkflowStatusDeferred
+    /// </summary>
+    public const string LiteralArtifactassessmentWorkflowStatusDeferred = "http://hl7.org/fhir/artifactassessment-workflow-status#deferred";
 
     /// <summary>
     /// Literal for code: Duplicate
@@ -109,9 +119,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDuplicate = "duplicate";
 
     /// <summary>
+    /// Literal for code: ArtifactassessmentWorkflowStatusDuplicate
+    /// </summary>
+    public const string LiteralArtifactassessmentWorkflowStatusDuplicate = "http://hl7.org/fhir/artifactassessment-workflow-status#duplicate";
+
+    /// <summary>
     /// Literal for code: Published
     /// </summary>
     public const string LiteralPublished = "published";
+
+    /// <summary>
+    /// Literal for code: ArtifactassessmentWorkflowStatusPublished
+    /// </summary>
+    public const string LiteralArtifactassessmentWorkflowStatusPublished = "http://hl7.org/fhir/artifactassessment-workflow-status#published";
 
     /// <summary>
     /// Literal for code: ResolvedChangeRequired
@@ -119,9 +139,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralResolvedChangeRequired = "resolved-change-required";
 
     /// <summary>
+    /// Literal for code: ArtifactassessmentWorkflowStatusResolvedChangeRequired
+    /// </summary>
+    public const string LiteralArtifactassessmentWorkflowStatusResolvedChangeRequired = "http://hl7.org/fhir/artifactassessment-workflow-status#resolved-change-required";
+
+    /// <summary>
     /// Literal for code: ResolvedNoChange
     /// </summary>
     public const string LiteralResolvedNoChange = "resolved-no-change";
+
+    /// <summary>
+    /// Literal for code: ArtifactassessmentWorkflowStatusResolvedNoChange
+    /// </summary>
+    public const string LiteralArtifactassessmentWorkflowStatusResolvedNoChange = "http://hl7.org/fhir/artifactassessment-workflow-status#resolved-no-change";
 
     /// <summary>
     /// Literal for code: Submitted
@@ -129,13 +159,52 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSubmitted = "submitted";
 
     /// <summary>
+    /// Literal for code: ArtifactassessmentWorkflowStatusSubmitted
+    /// </summary>
+    public const string LiteralArtifactassessmentWorkflowStatusSubmitted = "http://hl7.org/fhir/artifactassessment-workflow-status#submitted";
+
+    /// <summary>
     /// Literal for code: Triaged
     /// </summary>
     public const string LiteralTriaged = "triaged";
 
     /// <summary>
+    /// Literal for code: ArtifactassessmentWorkflowStatusTriaged
+    /// </summary>
+    public const string LiteralArtifactassessmentWorkflowStatusTriaged = "http://hl7.org/fhir/artifactassessment-workflow-status#triaged";
+
+    /// <summary>
     /// Literal for code: WaitingForInput
     /// </summary>
     public const string LiteralWaitingForInput = "waiting-for-input";
+
+    /// <summary>
+    /// Literal for code: ArtifactassessmentWorkflowStatusWaitingForInput
+    /// </summary>
+    public const string LiteralArtifactassessmentWorkflowStatusWaitingForInput = "http://hl7.org/fhir/artifactassessment-workflow-status#waiting-for-input";
+
+    /// <summary>
+    /// Dictionary for looking up ArtifactassessmentWorkflowStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "applied", Applied }, 
+      { "http://hl7.org/fhir/artifactassessment-workflow-status#applied", Applied }, 
+      { "deferred", Deferred }, 
+      { "http://hl7.org/fhir/artifactassessment-workflow-status#deferred", Deferred }, 
+      { "duplicate", Duplicate }, 
+      { "http://hl7.org/fhir/artifactassessment-workflow-status#duplicate", Duplicate }, 
+      { "published", Published }, 
+      { "http://hl7.org/fhir/artifactassessment-workflow-status#published", Published }, 
+      { "resolved-change-required", ResolvedChangeRequired }, 
+      { "http://hl7.org/fhir/artifactassessment-workflow-status#resolved-change-required", ResolvedChangeRequired }, 
+      { "resolved-no-change", ResolvedNoChange }, 
+      { "http://hl7.org/fhir/artifactassessment-workflow-status#resolved-no-change", ResolvedNoChange }, 
+      { "submitted", Submitted }, 
+      { "http://hl7.org/fhir/artifactassessment-workflow-status#submitted", Submitted }, 
+      { "triaged", Triaged }, 
+      { "http://hl7.org/fhir/artifactassessment-workflow-status#triaged", Triaged }, 
+      { "waiting-for-input", WaitingForInput }, 
+      { "http://hl7.org/fhir/artifactassessment-workflow-status#waiting-for-input", WaitingForInput }, 
+    };
   };
 }

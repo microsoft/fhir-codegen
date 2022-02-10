@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class V20360Codes
   {
     /// <summary>
-    /// 
+    /// Associate of Arts
     /// </summary>
     public static readonly Coding AssociateOfArts = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Associate of Applied Science
     /// </summary>
     public static readonly Coding AssociateOfAppliedScience = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Associate of Business Administration
     /// </summary>
     public static readonly Coding AssociateOfBusinessAdministration = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Associate of Engineering
     /// </summary>
     public static readonly Coding AssociateOfEngineering = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Associate of Science
     /// </summary>
     public static readonly Coding AssociateOfScience = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Bachelor of Arts
     /// </summary>
     public static readonly Coding BachelorOfArts = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Bachelor of Business Administration
     /// </summary>
     public static readonly Coding BachelorOfBusinessAdministration = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Bachelor or Engineering
     /// </summary>
     public static readonly Coding BachelorOrEngineering = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Bachelor of Fine Arts
     /// </summary>
     public static readonly Coding BachelorOfFineArts = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Bachelor of Nursing
     /// </summary>
     public static readonly Coding BachelorOfNursing = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Bachelor of Science
     /// </summary>
     public static readonly Coding BachelorOfScience = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Bachelor of Science - Law
     /// </summary>
     public static readonly Coding BachelorOfScienceLaw = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Bachelor on Science - Nursing
     /// </summary>
     public static readonly Coding BachelorOnScienceNursing = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Bachelor of Theology
     /// </summary>
     public static readonly Coding BachelorOfTheology = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Certified Adult Nurse Practitioner
     /// </summary>
     public static readonly Coding CertifiedAdultNursePractitioner = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Certificate
     /// </summary>
     public static readonly Coding Certificate = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Certified Medical Assistant
     /// </summary>
     public static readonly Coding CertifiedMedicalAssistant = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Certified Nurse Midwife
     /// </summary>
     public static readonly Coding CertifiedNurseMidwife = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Certified Nurse Practitioner
     /// </summary>
     public static readonly Coding CertifiedNursePractitioner = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Certified Nurse Specialist
     /// </summary>
     public static readonly Coding CertifiedNurseSpecialist = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Certified Pediatric Nurse Practitioner
     /// </summary>
     public static readonly Coding CertifiedPediatricNursePractitioner = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Certified Registered Nurse
     /// </summary>
     public static readonly Coding CertifiedRegisteredNurse = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Certified Tumor Registrar
     /// </summary>
     public static readonly Coding CertifiedTumorRegistrar = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Doctor of Business Administration
     /// </summary>
     public static readonly Coding DoctorOfBusinessAdministration = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Doctor of Education
     /// </summary>
     public static readonly Coding DoctorOfEducation = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Diploma
     /// </summary>
     public static readonly Coding Diploma = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Doctor of Osteopathy
     /// </summary>
     public static readonly Coding DoctorOfOsteopathy = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Emergency Medical Technician
     /// </summary>
     public static readonly Coding EmergencyMedicalTechnician = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Emergency Medical Technician - Paramedic
     /// </summary>
     public static readonly Coding EmergencyMedicalTechnicianParamedic = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Family Practice Nurse Practitioner
     /// </summary>
     public static readonly Coding FamilyPracticeNursePractitioner = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// High School Graduate
     /// </summary>
     public static readonly Coding HighSchoolGraduate = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Juris Doctor
     /// </summary>
     public static readonly Coding JurisDoctor = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Master of Arts
     /// </summary>
     public static readonly Coding MasterOfArts = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Master of Business Administration
     /// </summary>
     public static readonly Coding MasterOfBusinessAdministration = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Master of Civil Engineering
     /// </summary>
     public static readonly Coding MasterOfCivilEngineering = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Doctor of Medicine
     /// </summary>
     public static readonly Coding DoctorOfMedicine = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Medical Assistant
     /// </summary>
     public static readonly Coding MedicalAssistant = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Master of Divinity
     /// </summary>
     public static readonly Coding MasterOfDivinity = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Master of Engineering
     /// </summary>
     public static readonly Coding MasterOfEngineering = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Master of Education
     /// </summary>
     public static readonly Coding MasterOfEducation = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Master of Electrical Engineering
     /// </summary>
     public static readonly Coding MasterOfElectricalEngineering = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Master of Fine Arts
     /// </summary>
     public static readonly Coding MasterOfFineArts = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Master of Mechanical Engineering
     /// </summary>
     public static readonly Coding MasterOfMechanicalEngineering = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Master of Science
     /// </summary>
     public static readonly Coding MasterOfScience = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Master of Science - Law
     /// </summary>
     public static readonly Coding MasterOfScienceLaw = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Master of Science - Nursing
     /// </summary>
     public static readonly Coding MasterOfScienceNursing = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Medical Technician
     /// </summary>
     public static readonly Coding MedicalTechnician = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Master of Theology
     /// </summary>
     public static readonly Coding MasterOfTheology = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Non-Graduate
     /// </summary>
     public static readonly Coding NonGraduate = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Nurse Practitioner
     /// </summary>
     public static readonly Coding NursePractitioner = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Physician Assistant
     /// </summary>
     public static readonly Coding PhysicianAssistant = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Doctor of Pharmacy
     /// </summary>
     public static readonly Coding DoctorOfPharmacy = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Doctor of Philosophy
     /// </summary>
     public static readonly Coding DoctorOfPhilosophy = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Doctor of Engineering
     /// </summary>
     public static readonly Coding DoctorOfEngineering = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Doctor of Science
     /// </summary>
     public static readonly Coding DoctorOfScience = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Advanced Practice Nurse
     /// </summary>
     public static readonly Coding AdvancedPracticeNurse = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Registered Medical Assistant
     /// </summary>
     public static readonly Coding RegisteredMedicalAssistant = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Registered Nurse
     /// </summary>
     public static readonly Coding RegisteredNurse = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Registered Pharmacist
     /// </summary>
     public static readonly Coding RegisteredPharmacist = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Secretarial Certificate
     /// </summary>
     public static readonly Coding SecretarialCertificate = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0360"
     };
     /// <summary>
-    /// 
+    /// Trade School Graduate
     /// </summary>
     public static readonly Coding TradeSchoolGraduate = new Coding
     {
@@ -567,9 +567,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAssociateOfArts = "AA";
 
     /// <summary>
+    /// Literal for code: V20360AssociateOfArts
+    /// </summary>
+    public const string LiteralV20360AssociateOfArts = "http://terminology.hl7.org/CodeSystem/v2-0360#AA";
+
+    /// <summary>
     /// Literal for code: AssociateOfAppliedScience
     /// </summary>
     public const string LiteralAssociateOfAppliedScience = "AAS";
+
+    /// <summary>
+    /// Literal for code: V20360AssociateOfAppliedScience
+    /// </summary>
+    public const string LiteralV20360AssociateOfAppliedScience = "http://terminology.hl7.org/CodeSystem/v2-0360#AAS";
 
     /// <summary>
     /// Literal for code: AssociateOfBusinessAdministration
@@ -577,9 +587,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAssociateOfBusinessAdministration = "ABA";
 
     /// <summary>
+    /// Literal for code: V20360AssociateOfBusinessAdministration
+    /// </summary>
+    public const string LiteralV20360AssociateOfBusinessAdministration = "http://terminology.hl7.org/CodeSystem/v2-0360#ABA";
+
+    /// <summary>
     /// Literal for code: AssociateOfEngineering
     /// </summary>
     public const string LiteralAssociateOfEngineering = "AE";
+
+    /// <summary>
+    /// Literal for code: V20360AssociateOfEngineering
+    /// </summary>
+    public const string LiteralV20360AssociateOfEngineering = "http://terminology.hl7.org/CodeSystem/v2-0360#AE";
 
     /// <summary>
     /// Literal for code: AssociateOfScience
@@ -587,9 +607,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAssociateOfScience = "AS";
 
     /// <summary>
+    /// Literal for code: V20360AssociateOfScience
+    /// </summary>
+    public const string LiteralV20360AssociateOfScience = "http://terminology.hl7.org/CodeSystem/v2-0360#AS";
+
+    /// <summary>
     /// Literal for code: BachelorOfArts
     /// </summary>
     public const string LiteralBachelorOfArts = "BA";
+
+    /// <summary>
+    /// Literal for code: V20360BachelorOfArts
+    /// </summary>
+    public const string LiteralV20360BachelorOfArts = "http://terminology.hl7.org/CodeSystem/v2-0360#BA";
 
     /// <summary>
     /// Literal for code: BachelorOfBusinessAdministration
@@ -597,9 +627,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBachelorOfBusinessAdministration = "BBA";
 
     /// <summary>
+    /// Literal for code: V20360BachelorOfBusinessAdministration
+    /// </summary>
+    public const string LiteralV20360BachelorOfBusinessAdministration = "http://terminology.hl7.org/CodeSystem/v2-0360#BBA";
+
+    /// <summary>
     /// Literal for code: BachelorOrEngineering
     /// </summary>
     public const string LiteralBachelorOrEngineering = "BE";
+
+    /// <summary>
+    /// Literal for code: V20360BachelorOrEngineering
+    /// </summary>
+    public const string LiteralV20360BachelorOrEngineering = "http://terminology.hl7.org/CodeSystem/v2-0360#BE";
 
     /// <summary>
     /// Literal for code: BachelorOfFineArts
@@ -607,9 +647,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBachelorOfFineArts = "BFA";
 
     /// <summary>
+    /// Literal for code: V20360BachelorOfFineArts
+    /// </summary>
+    public const string LiteralV20360BachelorOfFineArts = "http://terminology.hl7.org/CodeSystem/v2-0360#BFA";
+
+    /// <summary>
     /// Literal for code: BachelorOfNursing
     /// </summary>
     public const string LiteralBachelorOfNursing = "BN";
+
+    /// <summary>
+    /// Literal for code: V20360BachelorOfNursing
+    /// </summary>
+    public const string LiteralV20360BachelorOfNursing = "http://terminology.hl7.org/CodeSystem/v2-0360#BN";
 
     /// <summary>
     /// Literal for code: BachelorOfScience
@@ -617,9 +667,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBachelorOfScience = "BS";
 
     /// <summary>
+    /// Literal for code: V20360BachelorOfScience
+    /// </summary>
+    public const string LiteralV20360BachelorOfScience = "http://terminology.hl7.org/CodeSystem/v2-0360#BS";
+
+    /// <summary>
     /// Literal for code: BachelorOfScienceLaw
     /// </summary>
     public const string LiteralBachelorOfScienceLaw = "BSL";
+
+    /// <summary>
+    /// Literal for code: V20360BachelorOfScienceLaw
+    /// </summary>
+    public const string LiteralV20360BachelorOfScienceLaw = "http://terminology.hl7.org/CodeSystem/v2-0360#BSL";
 
     /// <summary>
     /// Literal for code: BachelorOnScienceNursing
@@ -627,9 +687,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBachelorOnScienceNursing = "BSN";
 
     /// <summary>
+    /// Literal for code: V20360BachelorOnScienceNursing
+    /// </summary>
+    public const string LiteralV20360BachelorOnScienceNursing = "http://terminology.hl7.org/CodeSystem/v2-0360#BSN";
+
+    /// <summary>
     /// Literal for code: BachelorOfTheology
     /// </summary>
     public const string LiteralBachelorOfTheology = "BT";
+
+    /// <summary>
+    /// Literal for code: V20360BachelorOfTheology
+    /// </summary>
+    public const string LiteralV20360BachelorOfTheology = "http://terminology.hl7.org/CodeSystem/v2-0360#BT";
 
     /// <summary>
     /// Literal for code: CertifiedAdultNursePractitioner
@@ -637,9 +707,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCertifiedAdultNursePractitioner = "CANP";
 
     /// <summary>
+    /// Literal for code: V20360CertifiedAdultNursePractitioner
+    /// </summary>
+    public const string LiteralV20360CertifiedAdultNursePractitioner = "http://terminology.hl7.org/CodeSystem/v2-0360#CANP";
+
+    /// <summary>
     /// Literal for code: Certificate
     /// </summary>
     public const string LiteralCertificate = "CER";
+
+    /// <summary>
+    /// Literal for code: V20360Certificate
+    /// </summary>
+    public const string LiteralV20360Certificate = "http://terminology.hl7.org/CodeSystem/v2-0360#CER";
 
     /// <summary>
     /// Literal for code: CertifiedMedicalAssistant
@@ -647,9 +727,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCertifiedMedicalAssistant = "CMA";
 
     /// <summary>
+    /// Literal for code: V20360CertifiedMedicalAssistant
+    /// </summary>
+    public const string LiteralV20360CertifiedMedicalAssistant = "http://terminology.hl7.org/CodeSystem/v2-0360#CMA";
+
+    /// <summary>
     /// Literal for code: CertifiedNurseMidwife
     /// </summary>
     public const string LiteralCertifiedNurseMidwife = "CNM";
+
+    /// <summary>
+    /// Literal for code: V20360CertifiedNurseMidwife
+    /// </summary>
+    public const string LiteralV20360CertifiedNurseMidwife = "http://terminology.hl7.org/CodeSystem/v2-0360#CNM";
 
     /// <summary>
     /// Literal for code: CertifiedNursePractitioner
@@ -657,9 +747,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCertifiedNursePractitioner = "CNP";
 
     /// <summary>
+    /// Literal for code: V20360CertifiedNursePractitioner
+    /// </summary>
+    public const string LiteralV20360CertifiedNursePractitioner = "http://terminology.hl7.org/CodeSystem/v2-0360#CNP";
+
+    /// <summary>
     /// Literal for code: CertifiedNurseSpecialist
     /// </summary>
     public const string LiteralCertifiedNurseSpecialist = "CNS";
+
+    /// <summary>
+    /// Literal for code: V20360CertifiedNurseSpecialist
+    /// </summary>
+    public const string LiteralV20360CertifiedNurseSpecialist = "http://terminology.hl7.org/CodeSystem/v2-0360#CNS";
 
     /// <summary>
     /// Literal for code: CertifiedPediatricNursePractitioner
@@ -667,9 +767,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCertifiedPediatricNursePractitioner = "CPNP";
 
     /// <summary>
+    /// Literal for code: V20360CertifiedPediatricNursePractitioner
+    /// </summary>
+    public const string LiteralV20360CertifiedPediatricNursePractitioner = "http://terminology.hl7.org/CodeSystem/v2-0360#CPNP";
+
+    /// <summary>
     /// Literal for code: CertifiedRegisteredNurse
     /// </summary>
     public const string LiteralCertifiedRegisteredNurse = "CRN";
+
+    /// <summary>
+    /// Literal for code: V20360CertifiedRegisteredNurse
+    /// </summary>
+    public const string LiteralV20360CertifiedRegisteredNurse = "http://terminology.hl7.org/CodeSystem/v2-0360#CRN";
 
     /// <summary>
     /// Literal for code: CertifiedTumorRegistrar
@@ -677,9 +787,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCertifiedTumorRegistrar = "CTR";
 
     /// <summary>
+    /// Literal for code: V20360CertifiedTumorRegistrar
+    /// </summary>
+    public const string LiteralV20360CertifiedTumorRegistrar = "http://terminology.hl7.org/CodeSystem/v2-0360#CTR";
+
+    /// <summary>
     /// Literal for code: DoctorOfBusinessAdministration
     /// </summary>
     public const string LiteralDoctorOfBusinessAdministration = "DBA";
+
+    /// <summary>
+    /// Literal for code: V20360DoctorOfBusinessAdministration
+    /// </summary>
+    public const string LiteralV20360DoctorOfBusinessAdministration = "http://terminology.hl7.org/CodeSystem/v2-0360#DBA";
 
     /// <summary>
     /// Literal for code: DoctorOfEducation
@@ -687,9 +807,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDoctorOfEducation = "DED";
 
     /// <summary>
+    /// Literal for code: V20360DoctorOfEducation
+    /// </summary>
+    public const string LiteralV20360DoctorOfEducation = "http://terminology.hl7.org/CodeSystem/v2-0360#DED";
+
+    /// <summary>
     /// Literal for code: Diploma
     /// </summary>
     public const string LiteralDiploma = "DIP";
+
+    /// <summary>
+    /// Literal for code: V20360Diploma
+    /// </summary>
+    public const string LiteralV20360Diploma = "http://terminology.hl7.org/CodeSystem/v2-0360#DIP";
 
     /// <summary>
     /// Literal for code: DoctorOfOsteopathy
@@ -697,9 +827,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDoctorOfOsteopathy = "DO";
 
     /// <summary>
+    /// Literal for code: V20360DoctorOfOsteopathy
+    /// </summary>
+    public const string LiteralV20360DoctorOfOsteopathy = "http://terminology.hl7.org/CodeSystem/v2-0360#DO";
+
+    /// <summary>
     /// Literal for code: EmergencyMedicalTechnician
     /// </summary>
     public const string LiteralEmergencyMedicalTechnician = "EMT";
+
+    /// <summary>
+    /// Literal for code: V20360EmergencyMedicalTechnician
+    /// </summary>
+    public const string LiteralV20360EmergencyMedicalTechnician = "http://terminology.hl7.org/CodeSystem/v2-0360#EMT";
 
     /// <summary>
     /// Literal for code: EmergencyMedicalTechnicianParamedic
@@ -707,9 +847,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmergencyMedicalTechnicianParamedic = "EMTP";
 
     /// <summary>
+    /// Literal for code: V20360EmergencyMedicalTechnicianParamedic
+    /// </summary>
+    public const string LiteralV20360EmergencyMedicalTechnicianParamedic = "http://terminology.hl7.org/CodeSystem/v2-0360#EMTP";
+
+    /// <summary>
     /// Literal for code: FamilyPracticeNursePractitioner
     /// </summary>
     public const string LiteralFamilyPracticeNursePractitioner = "FPNP";
+
+    /// <summary>
+    /// Literal for code: V20360FamilyPracticeNursePractitioner
+    /// </summary>
+    public const string LiteralV20360FamilyPracticeNursePractitioner = "http://terminology.hl7.org/CodeSystem/v2-0360#FPNP";
 
     /// <summary>
     /// Literal for code: HighSchoolGraduate
@@ -717,9 +867,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHighSchoolGraduate = "HS";
 
     /// <summary>
+    /// Literal for code: V20360HighSchoolGraduate
+    /// </summary>
+    public const string LiteralV20360HighSchoolGraduate = "http://terminology.hl7.org/CodeSystem/v2-0360#HS";
+
+    /// <summary>
     /// Literal for code: JurisDoctor
     /// </summary>
     public const string LiteralJurisDoctor = "JD";
+
+    /// <summary>
+    /// Literal for code: V20360JurisDoctor
+    /// </summary>
+    public const string LiteralV20360JurisDoctor = "http://terminology.hl7.org/CodeSystem/v2-0360#JD";
 
     /// <summary>
     /// Literal for code: MasterOfArts
@@ -727,9 +887,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMasterOfArts = "MA";
 
     /// <summary>
+    /// Literal for code: V20360MasterOfArts
+    /// </summary>
+    public const string LiteralV20360MasterOfArts = "http://terminology.hl7.org/CodeSystem/v2-0360#MA";
+
+    /// <summary>
     /// Literal for code: MasterOfBusinessAdministration
     /// </summary>
     public const string LiteralMasterOfBusinessAdministration = "MBA";
+
+    /// <summary>
+    /// Literal for code: V20360MasterOfBusinessAdministration
+    /// </summary>
+    public const string LiteralV20360MasterOfBusinessAdministration = "http://terminology.hl7.org/CodeSystem/v2-0360#MBA";
 
     /// <summary>
     /// Literal for code: MasterOfCivilEngineering
@@ -737,9 +907,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMasterOfCivilEngineering = "MCE";
 
     /// <summary>
+    /// Literal for code: V20360MasterOfCivilEngineering
+    /// </summary>
+    public const string LiteralV20360MasterOfCivilEngineering = "http://terminology.hl7.org/CodeSystem/v2-0360#MCE";
+
+    /// <summary>
     /// Literal for code: DoctorOfMedicine
     /// </summary>
     public const string LiteralDoctorOfMedicine = "MD";
+
+    /// <summary>
+    /// Literal for code: V20360DoctorOfMedicine
+    /// </summary>
+    public const string LiteralV20360DoctorOfMedicine = "http://terminology.hl7.org/CodeSystem/v2-0360#MD";
 
     /// <summary>
     /// Literal for code: MedicalAssistant
@@ -747,9 +927,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicalAssistant = "MDA";
 
     /// <summary>
+    /// Literal for code: V20360MedicalAssistant
+    /// </summary>
+    public const string LiteralV20360MedicalAssistant = "http://terminology.hl7.org/CodeSystem/v2-0360#MDA";
+
+    /// <summary>
     /// Literal for code: MasterOfDivinity
     /// </summary>
     public const string LiteralMasterOfDivinity = "MDI";
+
+    /// <summary>
+    /// Literal for code: V20360MasterOfDivinity
+    /// </summary>
+    public const string LiteralV20360MasterOfDivinity = "http://terminology.hl7.org/CodeSystem/v2-0360#MDI";
 
     /// <summary>
     /// Literal for code: MasterOfEngineering
@@ -757,9 +947,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMasterOfEngineering = "ME";
 
     /// <summary>
+    /// Literal for code: V20360MasterOfEngineering
+    /// </summary>
+    public const string LiteralV20360MasterOfEngineering = "http://terminology.hl7.org/CodeSystem/v2-0360#ME";
+
+    /// <summary>
     /// Literal for code: MasterOfEducation
     /// </summary>
     public const string LiteralMasterOfEducation = "MED";
+
+    /// <summary>
+    /// Literal for code: V20360MasterOfEducation
+    /// </summary>
+    public const string LiteralV20360MasterOfEducation = "http://terminology.hl7.org/CodeSystem/v2-0360#MED";
 
     /// <summary>
     /// Literal for code: MasterOfElectricalEngineering
@@ -767,9 +967,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMasterOfElectricalEngineering = "MEE";
 
     /// <summary>
+    /// Literal for code: V20360MasterOfElectricalEngineering
+    /// </summary>
+    public const string LiteralV20360MasterOfElectricalEngineering = "http://terminology.hl7.org/CodeSystem/v2-0360#MEE";
+
+    /// <summary>
     /// Literal for code: MasterOfFineArts
     /// </summary>
     public const string LiteralMasterOfFineArts = "MFA";
+
+    /// <summary>
+    /// Literal for code: V20360MasterOfFineArts
+    /// </summary>
+    public const string LiteralV20360MasterOfFineArts = "http://terminology.hl7.org/CodeSystem/v2-0360#MFA";
 
     /// <summary>
     /// Literal for code: MasterOfMechanicalEngineering
@@ -777,9 +987,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMasterOfMechanicalEngineering = "MME";
 
     /// <summary>
+    /// Literal for code: V20360MasterOfMechanicalEngineering
+    /// </summary>
+    public const string LiteralV20360MasterOfMechanicalEngineering = "http://terminology.hl7.org/CodeSystem/v2-0360#MME";
+
+    /// <summary>
     /// Literal for code: MasterOfScience
     /// </summary>
     public const string LiteralMasterOfScience = "MS";
+
+    /// <summary>
+    /// Literal for code: V20360MasterOfScience
+    /// </summary>
+    public const string LiteralV20360MasterOfScience = "http://terminology.hl7.org/CodeSystem/v2-0360#MS";
 
     /// <summary>
     /// Literal for code: MasterOfScienceLaw
@@ -787,9 +1007,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMasterOfScienceLaw = "MSL";
 
     /// <summary>
+    /// Literal for code: V20360MasterOfScienceLaw
+    /// </summary>
+    public const string LiteralV20360MasterOfScienceLaw = "http://terminology.hl7.org/CodeSystem/v2-0360#MSL";
+
+    /// <summary>
     /// Literal for code: MasterOfScienceNursing
     /// </summary>
     public const string LiteralMasterOfScienceNursing = "MSN";
+
+    /// <summary>
+    /// Literal for code: V20360MasterOfScienceNursing
+    /// </summary>
+    public const string LiteralV20360MasterOfScienceNursing = "http://terminology.hl7.org/CodeSystem/v2-0360#MSN";
 
     /// <summary>
     /// Literal for code: MedicalTechnician
@@ -797,9 +1027,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicalTechnician = "MT";
 
     /// <summary>
+    /// Literal for code: V20360MedicalTechnician
+    /// </summary>
+    public const string LiteralV20360MedicalTechnician = "http://terminology.hl7.org/CodeSystem/v2-0360#MT";
+
+    /// <summary>
     /// Literal for code: MasterOfTheology
     /// </summary>
     public const string LiteralMasterOfTheology = "MTH";
+
+    /// <summary>
+    /// Literal for code: V20360MasterOfTheology
+    /// </summary>
+    public const string LiteralV20360MasterOfTheology = "http://terminology.hl7.org/CodeSystem/v2-0360#MTH";
 
     /// <summary>
     /// Literal for code: NonGraduate
@@ -807,9 +1047,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNonGraduate = "NG";
 
     /// <summary>
+    /// Literal for code: V20360NonGraduate
+    /// </summary>
+    public const string LiteralV20360NonGraduate = "http://terminology.hl7.org/CodeSystem/v2-0360#NG";
+
+    /// <summary>
     /// Literal for code: NursePractitioner
     /// </summary>
     public const string LiteralNursePractitioner = "NP";
+
+    /// <summary>
+    /// Literal for code: V20360NursePractitioner
+    /// </summary>
+    public const string LiteralV20360NursePractitioner = "http://terminology.hl7.org/CodeSystem/v2-0360#NP";
 
     /// <summary>
     /// Literal for code: PhysicianAssistant
@@ -817,9 +1067,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPhysicianAssistant = "PA";
 
     /// <summary>
+    /// Literal for code: V20360PhysicianAssistant
+    /// </summary>
+    public const string LiteralV20360PhysicianAssistant = "http://terminology.hl7.org/CodeSystem/v2-0360#PA";
+
+    /// <summary>
     /// Literal for code: DoctorOfPharmacy
     /// </summary>
     public const string LiteralDoctorOfPharmacy = "PharmD";
+
+    /// <summary>
+    /// Literal for code: V20360DoctorOfPharmacy
+    /// </summary>
+    public const string LiteralV20360DoctorOfPharmacy = "http://terminology.hl7.org/CodeSystem/v2-0360#PharmD";
 
     /// <summary>
     /// Literal for code: DoctorOfPhilosophy
@@ -827,9 +1087,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDoctorOfPhilosophy = "PHD";
 
     /// <summary>
+    /// Literal for code: V20360DoctorOfPhilosophy
+    /// </summary>
+    public const string LiteralV20360DoctorOfPhilosophy = "http://terminology.hl7.org/CodeSystem/v2-0360#PHD";
+
+    /// <summary>
     /// Literal for code: DoctorOfEngineering
     /// </summary>
     public const string LiteralDoctorOfEngineering = "PHE";
+
+    /// <summary>
+    /// Literal for code: V20360DoctorOfEngineering
+    /// </summary>
+    public const string LiteralV20360DoctorOfEngineering = "http://terminology.hl7.org/CodeSystem/v2-0360#PHE";
 
     /// <summary>
     /// Literal for code: DoctorOfScience
@@ -837,9 +1107,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDoctorOfScience = "PHS";
 
     /// <summary>
+    /// Literal for code: V20360DoctorOfScience
+    /// </summary>
+    public const string LiteralV20360DoctorOfScience = "http://terminology.hl7.org/CodeSystem/v2-0360#PHS";
+
+    /// <summary>
     /// Literal for code: AdvancedPracticeNurse
     /// </summary>
     public const string LiteralAdvancedPracticeNurse = "PN";
+
+    /// <summary>
+    /// Literal for code: V20360AdvancedPracticeNurse
+    /// </summary>
+    public const string LiteralV20360AdvancedPracticeNurse = "http://terminology.hl7.org/CodeSystem/v2-0360#PN";
 
     /// <summary>
     /// Literal for code: RegisteredMedicalAssistant
@@ -847,9 +1127,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRegisteredMedicalAssistant = "RMA";
 
     /// <summary>
+    /// Literal for code: V20360RegisteredMedicalAssistant
+    /// </summary>
+    public const string LiteralV20360RegisteredMedicalAssistant = "http://terminology.hl7.org/CodeSystem/v2-0360#RMA";
+
+    /// <summary>
     /// Literal for code: RegisteredNurse
     /// </summary>
     public const string LiteralRegisteredNurse = "RN";
+
+    /// <summary>
+    /// Literal for code: V20360RegisteredNurse
+    /// </summary>
+    public const string LiteralV20360RegisteredNurse = "http://terminology.hl7.org/CodeSystem/v2-0360#RN";
 
     /// <summary>
     /// Literal for code: RegisteredPharmacist
@@ -857,13 +1147,156 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRegisteredPharmacist = "RPH";
 
     /// <summary>
+    /// Literal for code: V20360RegisteredPharmacist
+    /// </summary>
+    public const string LiteralV20360RegisteredPharmacist = "http://terminology.hl7.org/CodeSystem/v2-0360#RPH";
+
+    /// <summary>
     /// Literal for code: SecretarialCertificate
     /// </summary>
     public const string LiteralSecretarialCertificate = "SEC";
 
     /// <summary>
+    /// Literal for code: V20360SecretarialCertificate
+    /// </summary>
+    public const string LiteralV20360SecretarialCertificate = "http://terminology.hl7.org/CodeSystem/v2-0360#SEC";
+
+    /// <summary>
     /// Literal for code: TradeSchoolGraduate
     /// </summary>
     public const string LiteralTradeSchoolGraduate = "TS";
+
+    /// <summary>
+    /// Literal for code: V20360TradeSchoolGraduate
+    /// </summary>
+    public const string LiteralV20360TradeSchoolGraduate = "http://terminology.hl7.org/CodeSystem/v2-0360#TS";
+
+    /// <summary>
+    /// Dictionary for looking up V20360 Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "AA", AssociateOfArts }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#AA", AssociateOfArts }, 
+      { "AAS", AssociateOfAppliedScience }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#AAS", AssociateOfAppliedScience }, 
+      { "ABA", AssociateOfBusinessAdministration }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#ABA", AssociateOfBusinessAdministration }, 
+      { "AE", AssociateOfEngineering }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#AE", AssociateOfEngineering }, 
+      { "AS", AssociateOfScience }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#AS", AssociateOfScience }, 
+      { "BA", BachelorOfArts }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#BA", BachelorOfArts }, 
+      { "BBA", BachelorOfBusinessAdministration }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#BBA", BachelorOfBusinessAdministration }, 
+      { "BE", BachelorOrEngineering }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#BE", BachelorOrEngineering }, 
+      { "BFA", BachelorOfFineArts }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#BFA", BachelorOfFineArts }, 
+      { "BN", BachelorOfNursing }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#BN", BachelorOfNursing }, 
+      { "BS", BachelorOfScience }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#BS", BachelorOfScience }, 
+      { "BSL", BachelorOfScienceLaw }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#BSL", BachelorOfScienceLaw }, 
+      { "BSN", BachelorOnScienceNursing }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#BSN", BachelorOnScienceNursing }, 
+      { "BT", BachelorOfTheology }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#BT", BachelorOfTheology }, 
+      { "CANP", CertifiedAdultNursePractitioner }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#CANP", CertifiedAdultNursePractitioner }, 
+      { "CER", Certificate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#CER", Certificate }, 
+      { "CMA", CertifiedMedicalAssistant }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#CMA", CertifiedMedicalAssistant }, 
+      { "CNM", CertifiedNurseMidwife }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#CNM", CertifiedNurseMidwife }, 
+      { "CNP", CertifiedNursePractitioner }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#CNP", CertifiedNursePractitioner }, 
+      { "CNS", CertifiedNurseSpecialist }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#CNS", CertifiedNurseSpecialist }, 
+      { "CPNP", CertifiedPediatricNursePractitioner }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#CPNP", CertifiedPediatricNursePractitioner }, 
+      { "CRN", CertifiedRegisteredNurse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#CRN", CertifiedRegisteredNurse }, 
+      { "CTR", CertifiedTumorRegistrar }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#CTR", CertifiedTumorRegistrar }, 
+      { "DBA", DoctorOfBusinessAdministration }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#DBA", DoctorOfBusinessAdministration }, 
+      { "DED", DoctorOfEducation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#DED", DoctorOfEducation }, 
+      { "DIP", Diploma }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#DIP", Diploma }, 
+      { "DO", DoctorOfOsteopathy }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#DO", DoctorOfOsteopathy }, 
+      { "EMT", EmergencyMedicalTechnician }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#EMT", EmergencyMedicalTechnician }, 
+      { "EMTP", EmergencyMedicalTechnicianParamedic }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#EMTP", EmergencyMedicalTechnicianParamedic }, 
+      { "FPNP", FamilyPracticeNursePractitioner }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#FPNP", FamilyPracticeNursePractitioner }, 
+      { "HS", HighSchoolGraduate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#HS", HighSchoolGraduate }, 
+      { "JD", JurisDoctor }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#JD", JurisDoctor }, 
+      { "MA", MasterOfArts }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#MA", MasterOfArts }, 
+      { "MBA", MasterOfBusinessAdministration }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#MBA", MasterOfBusinessAdministration }, 
+      { "MCE", MasterOfCivilEngineering }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#MCE", MasterOfCivilEngineering }, 
+      { "MD", DoctorOfMedicine }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#MD", DoctorOfMedicine }, 
+      { "MDA", MedicalAssistant }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#MDA", MedicalAssistant }, 
+      { "MDI", MasterOfDivinity }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#MDI", MasterOfDivinity }, 
+      { "ME", MasterOfEngineering }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#ME", MasterOfEngineering }, 
+      { "MED", MasterOfEducation }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#MED", MasterOfEducation }, 
+      { "MEE", MasterOfElectricalEngineering }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#MEE", MasterOfElectricalEngineering }, 
+      { "MFA", MasterOfFineArts }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#MFA", MasterOfFineArts }, 
+      { "MME", MasterOfMechanicalEngineering }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#MME", MasterOfMechanicalEngineering }, 
+      { "MS", MasterOfScience }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#MS", MasterOfScience }, 
+      { "MSL", MasterOfScienceLaw }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#MSL", MasterOfScienceLaw }, 
+      { "MSN", MasterOfScienceNursing }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#MSN", MasterOfScienceNursing }, 
+      { "MT", MedicalTechnician }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#MT", MedicalTechnician }, 
+      { "MTH", MasterOfTheology }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#MTH", MasterOfTheology }, 
+      { "NG", NonGraduate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#NG", NonGraduate }, 
+      { "NP", NursePractitioner }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#NP", NursePractitioner }, 
+      { "PA", PhysicianAssistant }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#PA", PhysicianAssistant }, 
+      { "PharmD", DoctorOfPharmacy }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#PharmD", DoctorOfPharmacy }, 
+      { "PHD", DoctorOfPhilosophy }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#PHD", DoctorOfPhilosophy }, 
+      { "PHE", DoctorOfEngineering }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#PHE", DoctorOfEngineering }, 
+      { "PHS", DoctorOfScience }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#PHS", DoctorOfScience }, 
+      { "PN", AdvancedPracticeNurse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#PN", AdvancedPracticeNurse }, 
+      { "RMA", RegisteredMedicalAssistant }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#RMA", RegisteredMedicalAssistant }, 
+      { "RN", RegisteredNurse }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#RN", RegisteredNurse }, 
+      { "RPH", RegisteredPharmacist }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#RPH", RegisteredPharmacist }, 
+      { "SEC", SecretarialCertificate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#SEC", SecretarialCertificate }, 
+      { "TS", TradeSchoolGraduate }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0360#TS", TradeSchoolGraduate }, 
+    };
   };
 }

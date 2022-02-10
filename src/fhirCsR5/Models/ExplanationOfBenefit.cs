@@ -221,6 +221,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Responsible { get; set; }
     /// <summary>
+    /// Extension container element for Responsible
+    /// </summary>
+    public Element _Responsible { get; set; }
+    /// <summary>
     /// Role might not be required when there is only a single provider listed.
     /// </summary>
     public CodeableConcept Role { get; set; }
@@ -250,6 +254,12 @@ namespace fhirCsR5.Models
       if (Responsible != null)
       {
         writer.WriteBoolean("responsible", (bool)Responsible!);
+      }
+
+      if (_Responsible != null)
+      {
+        writer.WritePropertyName("_responsible");
+        _Responsible.SerializeJson(writer, options);
       }
 
       if (Role != null)
@@ -288,6 +298,11 @@ namespace fhirCsR5.Models
 
         case "responsible":
           Responsible = reader.GetBoolean();
+          break;
+
+        case "_responsible":
+          _Responsible = new fhirCsR5.Models.Element();
+          _Responsible.DeserializeJson(ref reader, options);
           break;
 
         case "role":
@@ -368,6 +383,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// Could be used to provide references to other resources, document. For example, could contain a PDF in an Attachment of the Police Report for an Accident.
     /// </summary>
     public string ValueString { get; set; }
@@ -432,6 +451,12 @@ namespace fhirCsR5.Models
       if (ValueBoolean != null)
       {
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
+
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(ValueString))
@@ -516,6 +541,11 @@ namespace fhirCsR5.Models
 
         case "valueBoolean":
           ValueBoolean = reader.GetBoolean();
+          break;
+
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR5.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "valueString":
@@ -975,6 +1005,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool Focal { get; set; }
     /// <summary>
+    /// Extension container element for Focal
+    /// </summary>
+    public Element _Focal { get; set; }
+    /// <summary>
     /// This value is an alphanumeric string that may be provided over the phone, via text, via paper, or within a ClaimResponse resource and is not a FHIR Identifier.
     /// </summary>
     public List<string> PreAuthRef { get; set; }
@@ -994,6 +1028,12 @@ namespace fhirCsR5.Models
       ((fhirCsR5.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
       writer.WriteBoolean("focal", Focal);
+
+      if (_Focal != null)
+      {
+        writer.WritePropertyName("_focal");
+        _Focal.SerializeJson(writer, options);
+      }
 
       if (Coverage != null)
       {
@@ -1046,6 +1086,11 @@ namespace fhirCsR5.Models
 
         case "focal":
           Focal = reader.GetBoolean();
+          break;
+
+        case "_focal":
+          _Focal = new fhirCsR5.Models.Element();
+          _Focal.DeserializeJson(ref reader, options);
           break;
 
         case "preAuthRef":
@@ -4738,6 +4783,11 @@ namespace fhirCsR5.Models
     public const string DISPLAY = "display";
     public const string PRINT = "print";
     public const string PRINTOPER = "printoper";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "display",
+      "print",
+      "printoper",
+    };
   }
   /// <summary>
   /// Benefits Used to date.
@@ -4919,6 +4969,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Excluded { get; set; }
     /// <summary>
+    /// Extension container element for Excluded
+    /// </summary>
+    public Element _Excluded { get; set; }
+    /// <summary>
     /// Benefits Used to date.
     /// </summary>
     public List<ExplanationOfBenefitBenefitBalanceFinancial> Financial { get; set; }
@@ -4962,6 +5016,12 @@ namespace fhirCsR5.Models
       if (Excluded != null)
       {
         writer.WriteBoolean("excluded", (bool)Excluded!);
+      }
+
+      if (_Excluded != null)
+      {
+        writer.WritePropertyName("_excluded");
+        _Excluded.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Name))
@@ -5045,6 +5105,11 @@ namespace fhirCsR5.Models
 
         case "excluded":
           Excluded = reader.GetBoolean();
+          break;
+
+        case "_excluded":
+          _Excluded = new fhirCsR5.Models.Element();
+          _Excluded.DeserializeJson(ref reader, options);
           break;
 
         case "financial":
@@ -6391,6 +6456,12 @@ namespace fhirCsR5.Models
     public const string COMPLETE = "complete";
     public const string ERROR = "error";
     public const string PARTIAL = "partial";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "queued",
+      "complete",
+      "error",
+      "partial",
+    };
   }
   /// <summary>
   /// Code Values for the ExplanationOfBenefit.status field
@@ -6400,6 +6471,12 @@ namespace fhirCsR5.Models
     public const string CANCELLED = "cancelled";
     public const string DRAFT = "draft";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "cancelled",
+      "draft",
+      "entered-in-error",
+    };
   }
   /// <summary>
   /// Code Values for the ExplanationOfBenefit.use field
@@ -6408,5 +6485,10 @@ namespace fhirCsR5.Models
     public const string CLAIM = "claim";
     public const string PREAUTHORIZATION = "preauthorization";
     public const string PREDETERMINATION = "predetermination";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "claim",
+      "preauthorization",
+      "predetermination",
+    };
   }
 }

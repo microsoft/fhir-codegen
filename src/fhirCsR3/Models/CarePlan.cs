@@ -64,6 +64,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? Prohibited { get; set; }
     /// <summary>
+    /// Extension container element for Prohibited
+    /// </summary>
+    public Element _Prohibited { get; set; }
+    /// <summary>
     /// Identifies the quantity expected to be supplied, administered or consumed by the subject.
     /// </summary>
     public Quantity Quantity { get; set; }
@@ -201,6 +205,12 @@ namespace fhirCsR3.Models
       if (Prohibited != null)
       {
         writer.WriteBoolean("prohibited", (bool)Prohibited!);
+      }
+
+      if (_Prohibited != null)
+      {
+        writer.WritePropertyName("_prohibited");
+        _Prohibited.SerializeJson(writer, options);
       }
 
       if (ScheduledTiming != null)
@@ -394,6 +404,11 @@ namespace fhirCsR3.Models
           Prohibited = reader.GetBoolean();
           break;
 
+        case "_prohibited":
+          _Prohibited = new fhirCsR3.Models.Element();
+          _Prohibited.DeserializeJson(ref reader, options);
+          break;
+
         case "quantity":
           Quantity = new fhirCsR3.Models.Quantity();
           Quantity.DeserializeJson(ref reader, options);
@@ -532,6 +547,15 @@ namespace fhirCsR3.Models
     public const string COMPLETED = "completed";
     public const string CANCELLED = "cancelled";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "not-started",
+      "scheduled",
+      "in-progress",
+      "on-hold",
+      "completed",
+      "cancelled",
+      "unknown",
+    };
   }
   /// <summary>
   /// Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.
@@ -1562,6 +1586,12 @@ namespace fhirCsR3.Models
     public const string PLAN = "plan";
     public const string ORDER = "order";
     public const string OPTION = "option";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposal",
+      "plan",
+      "order",
+      "option",
+    };
   }
   /// <summary>
   /// Code Values for the CarePlan.status field
@@ -1574,5 +1604,14 @@ namespace fhirCsR3.Models
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string CANCELLED = "cancelled";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "suspended",
+      "completed",
+      "entered-in-error",
+      "cancelled",
+      "unknown",
+    };
   }
 }

@@ -690,5 +690,12 @@ namespace fhirCsR4B.Models
     public const string SUSPENDED = "suspended";
     public const string INACTIVE = "inactive";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposed",
+      "active",
+      "suspended",
+      "inactive",
+      "entered-in-error",
+    };
   }
 }

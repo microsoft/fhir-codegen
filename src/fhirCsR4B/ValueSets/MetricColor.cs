@@ -90,9 +90,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralColorBlack = "black";
 
     /// <summary>
+    /// Literal for code: MetricColorColorBlack
+    /// </summary>
+    public const string LiteralMetricColorColorBlack = "http://hl7.org/fhir/metric-color#black";
+
+    /// <summary>
     /// Literal for code: ColorBlue
     /// </summary>
     public const string LiteralColorBlue = "blue";
+
+    /// <summary>
+    /// Literal for code: MetricColorColorBlue
+    /// </summary>
+    public const string LiteralMetricColorColorBlue = "http://hl7.org/fhir/metric-color#blue";
 
     /// <summary>
     /// Literal for code: ColorCyan
@@ -100,9 +110,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralColorCyan = "cyan";
 
     /// <summary>
+    /// Literal for code: MetricColorColorCyan
+    /// </summary>
+    public const string LiteralMetricColorColorCyan = "http://hl7.org/fhir/metric-color#cyan";
+
+    /// <summary>
     /// Literal for code: ColorGreen
     /// </summary>
     public const string LiteralColorGreen = "green";
+
+    /// <summary>
+    /// Literal for code: MetricColorColorGreen
+    /// </summary>
+    public const string LiteralMetricColorColorGreen = "http://hl7.org/fhir/metric-color#green";
 
     /// <summary>
     /// Literal for code: ColorMagenta
@@ -110,9 +130,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralColorMagenta = "magenta";
 
     /// <summary>
+    /// Literal for code: MetricColorColorMagenta
+    /// </summary>
+    public const string LiteralMetricColorColorMagenta = "http://hl7.org/fhir/metric-color#magenta";
+
+    /// <summary>
     /// Literal for code: ColorRed
     /// </summary>
     public const string LiteralColorRed = "red";
+
+    /// <summary>
+    /// Literal for code: MetricColorColorRed
+    /// </summary>
+    public const string LiteralMetricColorColorRed = "http://hl7.org/fhir/metric-color#red";
 
     /// <summary>
     /// Literal for code: ColorWhite
@@ -120,8 +150,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralColorWhite = "white";
 
     /// <summary>
+    /// Literal for code: MetricColorColorWhite
+    /// </summary>
+    public const string LiteralMetricColorColorWhite = "http://hl7.org/fhir/metric-color#white";
+
+    /// <summary>
     /// Literal for code: ColorYellow
     /// </summary>
     public const string LiteralColorYellow = "yellow";
+
+    /// <summary>
+    /// Literal for code: MetricColorColorYellow
+    /// </summary>
+    public const string LiteralMetricColorColorYellow = "http://hl7.org/fhir/metric-color#yellow";
+
+    /// <summary>
+    /// Dictionary for looking up MetricColor Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "black", ColorBlack }, 
+      { "http://hl7.org/fhir/metric-color#black", ColorBlack }, 
+      { "blue", ColorBlue }, 
+      { "http://hl7.org/fhir/metric-color#blue", ColorBlue }, 
+      { "cyan", ColorCyan }, 
+      { "http://hl7.org/fhir/metric-color#cyan", ColorCyan }, 
+      { "green", ColorGreen }, 
+      { "http://hl7.org/fhir/metric-color#green", ColorGreen }, 
+      { "magenta", ColorMagenta }, 
+      { "http://hl7.org/fhir/metric-color#magenta", ColorMagenta }, 
+      { "red", ColorRed }, 
+      { "http://hl7.org/fhir/metric-color#red", ColorRed }, 
+      { "white", ColorWhite }, 
+      { "http://hl7.org/fhir/metric-color#white", ColorWhite }, 
+      { "yellow", ColorYellow }, 
+      { "http://hl7.org/fhir/metric-color#yellow", ColorYellow }, 
+    };
   };
 }

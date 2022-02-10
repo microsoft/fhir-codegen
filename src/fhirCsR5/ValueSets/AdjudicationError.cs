@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class AdjudicationErrorCodes
   {
     /// <summary>
-    /// 
+    /// Missing Identifier
     /// </summary>
     public static readonly Coding MissingIdentifier = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/adjudication-error"
     };
     /// <summary>
-    /// 
+    /// Missing Creation Date
     /// </summary>
     public static readonly Coding MissingCreationDate = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMissingIdentifier = "a001";
 
     /// <summary>
+    /// Literal for code: AdjudicationErrorMissingIdentifier
+    /// </summary>
+    public const string LiteralAdjudicationErrorMissingIdentifier = "http://terminology.hl7.org/CodeSystem/adjudication-error#a001";
+
+    /// <summary>
     /// Literal for code: MissingCreationDate
     /// </summary>
     public const string LiteralMissingCreationDate = "a002";
+
+    /// <summary>
+    /// Literal for code: AdjudicationErrorMissingCreationDate
+    /// </summary>
+    public const string LiteralAdjudicationErrorMissingCreationDate = "http://terminology.hl7.org/CodeSystem/adjudication-error#a002";
+
+    /// <summary>
+    /// Dictionary for looking up AdjudicationError Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "a001", MissingIdentifier }, 
+      { "http://terminology.hl7.org/CodeSystem/adjudication-error#a001", MissingIdentifier }, 
+      { "a002", MissingCreationDate }, 
+      { "http://terminology.hl7.org/CodeSystem/adjudication-error#a002", MissingCreationDate }, 
+    };
   };
 }

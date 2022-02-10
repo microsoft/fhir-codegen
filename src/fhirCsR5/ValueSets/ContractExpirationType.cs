@@ -25,5 +25,18 @@ namespace fhirCsR5.ValueSets
     /// Literal for code: Breach
     /// </summary>
     public const string LiteralBreach = "breach";
+
+    /// <summary>
+    /// Literal for code: ContractExpirationTypeBreach
+    /// </summary>
+    public const string LiteralContractExpirationTypeBreach = "http://hl7.org/fhir/contract-expiration-type#breach";
+
+    /// <summary>
+    /// Dictionary for looking up ContractExpirationType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "breach", Breach }, 
+      { "http://hl7.org/fhir/contract-expiration-type#breach", Breach }, 
+    };
   };
 }

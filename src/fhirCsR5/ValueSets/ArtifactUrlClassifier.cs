@@ -153,9 +153,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAbstract = "abstract";
 
     /// <summary>
+    /// Literal for code: ArtifactUrlClassifierAbstract
+    /// </summary>
+    public const string LiteralArtifactUrlClassifierAbstract = "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#abstract";
+
+    /// <summary>
     /// Literal for code: CodeRepository
     /// </summary>
     public const string LiteralCodeRepository = "code-repository";
+
+    /// <summary>
+    /// Literal for code: ArtifactUrlClassifierCodeRepository
+    /// </summary>
+    public const string LiteralArtifactUrlClassifierCodeRepository = "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#code-repository";
 
     /// <summary>
     /// Literal for code: CompressedFile
@@ -163,9 +173,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCompressedFile = "compressed-file";
 
     /// <summary>
+    /// Literal for code: ArtifactUrlClassifierCompressedFile
+    /// </summary>
+    public const string LiteralArtifactUrlClassifierCompressedFile = "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#compressed-file";
+
+    /// <summary>
     /// Literal for code: ComputableResource
     /// </summary>
     public const string LiteralComputableResource = "computable-resource";
+
+    /// <summary>
+    /// Literal for code: ArtifactUrlClassifierComputableResource
+    /// </summary>
+    public const string LiteralArtifactUrlClassifierComputableResource = "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#computable-resource";
 
     /// <summary>
     /// Literal for code: DOIBased
@@ -173,9 +193,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDOIBased = "doi-based";
 
     /// <summary>
+    /// Literal for code: ArtifactUrlClassifierDOIBased
+    /// </summary>
+    public const string LiteralArtifactUrlClassifierDOIBased = "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#doi-based";
+
+    /// <summary>
     /// Literal for code: FileDirectory
     /// </summary>
     public const string LiteralFileDirectory = "file-directory";
+
+    /// <summary>
+    /// Literal for code: ArtifactUrlClassifierFileDirectory
+    /// </summary>
+    public const string LiteralArtifactUrlClassifierFileDirectory = "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#file-directory";
 
     /// <summary>
     /// Literal for code: FullText
@@ -183,9 +213,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFullText = "full-text";
 
     /// <summary>
+    /// Literal for code: ArtifactUrlClassifierFullText
+    /// </summary>
+    public const string LiteralArtifactUrlClassifierFullText = "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#full-text";
+
+    /// <summary>
     /// Literal for code: JSON
     /// </summary>
     public const string LiteralJSON = "json";
+
+    /// <summary>
+    /// Literal for code: ArtifactUrlClassifierJSON
+    /// </summary>
+    public const string LiteralArtifactUrlClassifierJSON = "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#json";
 
     /// <summary>
     /// Literal for code: NotSpecified
@@ -193,9 +233,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotSpecified = "not-specified";
 
     /// <summary>
+    /// Literal for code: ArtifactUrlClassifierNotSpecified
+    /// </summary>
+    public const string LiteralArtifactUrlClassifierNotSpecified = "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#not-specified";
+
+    /// <summary>
     /// Literal for code: PDF
     /// </summary>
     public const string LiteralPDF = "pdf";
+
+    /// <summary>
+    /// Literal for code: ArtifactUrlClassifierPDF
+    /// </summary>
+    public const string LiteralArtifactUrlClassifierPDF = "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#pdf";
 
     /// <summary>
     /// Literal for code: Restricted
@@ -203,9 +253,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRestricted = "restricted";
 
     /// <summary>
+    /// Literal for code: ArtifactUrlClassifierRestricted
+    /// </summary>
+    public const string LiteralArtifactUrlClassifierRestricted = "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#restricted";
+
+    /// <summary>
     /// Literal for code: Supplement
     /// </summary>
     public const string LiteralSupplement = "supplement";
+
+    /// <summary>
+    /// Literal for code: ArtifactUrlClassifierSupplement
+    /// </summary>
+    public const string LiteralArtifactUrlClassifierSupplement = "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#supplement";
 
     /// <summary>
     /// Literal for code: VersionSpecific
@@ -213,13 +273,64 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVersionSpecific = "version-specific";
 
     /// <summary>
+    /// Literal for code: ArtifactUrlClassifierVersionSpecific
+    /// </summary>
+    public const string LiteralArtifactUrlClassifierVersionSpecific = "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#version-specific";
+
+    /// <summary>
     /// Literal for code: Webpage
     /// </summary>
     public const string LiteralWebpage = "webpage";
 
     /// <summary>
+    /// Literal for code: ArtifactUrlClassifierWebpage
+    /// </summary>
+    public const string LiteralArtifactUrlClassifierWebpage = "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#webpage";
+
+    /// <summary>
     /// Literal for code: XML
     /// </summary>
     public const string LiteralXML = "xml";
+
+    /// <summary>
+    /// Literal for code: ArtifactUrlClassifierXML
+    /// </summary>
+    public const string LiteralArtifactUrlClassifierXML = "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#xml";
+
+    /// <summary>
+    /// Dictionary for looking up ArtifactUrlClassifier Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "abstract", Abstract }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#abstract", Abstract }, 
+      { "code-repository", CodeRepository }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#code-repository", CodeRepository }, 
+      { "compressed-file", CompressedFile }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#compressed-file", CompressedFile }, 
+      { "computable-resource", ComputableResource }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#computable-resource", ComputableResource }, 
+      { "doi-based", DOIBased }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#doi-based", DOIBased }, 
+      { "file-directory", FileDirectory }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#file-directory", FileDirectory }, 
+      { "full-text", FullText }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#full-text", FullText }, 
+      { "json", JSON }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#json", JSON }, 
+      { "not-specified", NotSpecified }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#not-specified", NotSpecified }, 
+      { "pdf", PDF }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#pdf", PDF }, 
+      { "restricted", Restricted }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#restricted", Restricted }, 
+      { "supplement", Supplement }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#supplement", Supplement }, 
+      { "version-specific", VersionSpecific }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#version-specific", VersionSpecific }, 
+      { "webpage", Webpage }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#webpage", Webpage }, 
+      { "xml", XML }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-url-classifier#xml", XML }, 
+    };
   };
 }

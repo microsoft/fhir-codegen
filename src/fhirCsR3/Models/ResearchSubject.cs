@@ -248,5 +248,13 @@ namespace fhirCsR3.Models
     public const string SUSPENDED = "suspended";
     public const string WITHDRAWN = "withdrawn";
     public const string COMPLETED = "completed";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "candidate",
+      "enrolled",
+      "active",
+      "suspended",
+      "withdrawn",
+      "completed",
+    };
   }
 }

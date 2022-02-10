@@ -618,6 +618,15 @@ namespace fhirCsR5.Models
     public const string FRI = "fri";
     public const string SAT = "sat";
     public const string SUN = "sun";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
+      "sat",
+      "sun",
+    };
   }
   /// <summary>
   /// Code Values for the Timing.repeat.durationUnit field
@@ -630,6 +639,15 @@ namespace fhirCsR5.Models
     public const string WK = "wk";
     public const string MO = "mo";
     public const string A = "a";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "s",
+      "min",
+      "h",
+      "d",
+      "wk",
+      "mo",
+      "a",
+    };
   }
   /// <summary>
   /// Code Values for the Timing.repeat.periodUnit field
@@ -642,6 +660,15 @@ namespace fhirCsR5.Models
     public const string WK = "wk";
     public const string MO = "mo";
     public const string A = "a";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "s",
+      "min",
+      "h",
+      "d",
+      "wk",
+      "mo",
+      "a",
+    };
   }
   /// <summary>
   /// Specifies an event that may occur multiple times. Timing schedules are used to record when things are planned, expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds, and may be used for reporting the schedule to which past regular activities were carried out.

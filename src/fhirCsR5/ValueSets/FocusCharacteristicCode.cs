@@ -90,9 +90,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCitation = "citation";
 
     /// <summary>
+    /// Literal for code: FocusCharacteristicCodeCitation
+    /// </summary>
+    public const string LiteralFocusCharacteristicCodeCitation = "http://terminology.hl7.org/CodeSystem/focus-characteristic-code#citation";
+
+    /// <summary>
     /// Literal for code: ObservedOutcomesAreClinicalOutcomes
     /// </summary>
     public const string LiteralObservedOutcomesAreClinicalOutcomes = "clinical-outcomes-observed";
+
+    /// <summary>
+    /// Literal for code: FocusCharacteristicCodeObservedOutcomesAreClinicalOutcomes
+    /// </summary>
+    public const string LiteralFocusCharacteristicCodeObservedOutcomesAreClinicalOutcomes = "http://terminology.hl7.org/CodeSystem/focus-characteristic-code#clinical-outcomes-observed";
 
     /// <summary>
     /// Literal for code: Comparator
@@ -100,9 +110,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralComparator = "comparator";
 
     /// <summary>
+    /// Literal for code: FocusCharacteristicCodeComparator
+    /// </summary>
+    public const string LiteralFocusCharacteristicCodeComparator = "http://terminology.hl7.org/CodeSystem/focus-characteristic-code#comparator";
+
+    /// <summary>
     /// Literal for code: Exposure
     /// </summary>
     public const string LiteralExposure = "exposure";
+
+    /// <summary>
+    /// Literal for code: FocusCharacteristicCodeExposure
+    /// </summary>
+    public const string LiteralFocusCharacteristicCodeExposure = "http://terminology.hl7.org/CodeSystem/focus-characteristic-code#exposure";
 
     /// <summary>
     /// Literal for code: MedicationExposures
@@ -110,9 +130,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicationExposures = "medication-exposures";
 
     /// <summary>
+    /// Literal for code: FocusCharacteristicCodeMedicationExposures
+    /// </summary>
+    public const string LiteralFocusCharacteristicCodeMedicationExposures = "http://terminology.hl7.org/CodeSystem/focus-characteristic-code#medication-exposures";
+
+    /// <summary>
     /// Literal for code: Outcome
     /// </summary>
     public const string LiteralOutcome = "outcome";
+
+    /// <summary>
+    /// Literal for code: FocusCharacteristicCodeOutcome
+    /// </summary>
+    public const string LiteralFocusCharacteristicCodeOutcome = "http://terminology.hl7.org/CodeSystem/focus-characteristic-code#outcome";
 
     /// <summary>
     /// Literal for code: Population
@@ -120,8 +150,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPopulation = "population";
 
     /// <summary>
+    /// Literal for code: FocusCharacteristicCodePopulation
+    /// </summary>
+    public const string LiteralFocusCharacteristicCodePopulation = "http://terminology.hl7.org/CodeSystem/focus-characteristic-code#population";
+
+    /// <summary>
     /// Literal for code: StudyType
     /// </summary>
     public const string LiteralStudyType = "study-type";
+
+    /// <summary>
+    /// Literal for code: FocusCharacteristicCodeStudyType
+    /// </summary>
+    public const string LiteralFocusCharacteristicCodeStudyType = "http://terminology.hl7.org/CodeSystem/focus-characteristic-code#study-type";
+
+    /// <summary>
+    /// Dictionary for looking up FocusCharacteristicCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "citation", Citation }, 
+      { "http://terminology.hl7.org/CodeSystem/focus-characteristic-code#citation", Citation }, 
+      { "clinical-outcomes-observed", ObservedOutcomesAreClinicalOutcomes }, 
+      { "http://terminology.hl7.org/CodeSystem/focus-characteristic-code#clinical-outcomes-observed", ObservedOutcomesAreClinicalOutcomes }, 
+      { "comparator", Comparator }, 
+      { "http://terminology.hl7.org/CodeSystem/focus-characteristic-code#comparator", Comparator }, 
+      { "exposure", Exposure }, 
+      { "http://terminology.hl7.org/CodeSystem/focus-characteristic-code#exposure", Exposure }, 
+      { "medication-exposures", MedicationExposures }, 
+      { "http://terminology.hl7.org/CodeSystem/focus-characteristic-code#medication-exposures", MedicationExposures }, 
+      { "outcome", Outcome }, 
+      { "http://terminology.hl7.org/CodeSystem/focus-characteristic-code#outcome", Outcome }, 
+      { "population", Population }, 
+      { "http://terminology.hl7.org/CodeSystem/focus-characteristic-code#population", Population }, 
+      { "study-type", StudyType }, 
+      { "http://terminology.hl7.org/CodeSystem/focus-characteristic-code#study-type", StudyType }, 
+    };
   };
 }

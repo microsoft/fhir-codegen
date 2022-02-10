@@ -206,6 +206,12 @@ namespace fhirCsR2.Models
     public const string PROFESSIONAL = "professional";
     public const string LEGAL = "legal";
     public const string OFFICIAL = "official";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "personal",
+      "professional",
+      "legal",
+      "official",
+    };
   }
   /// <summary>
   /// Provides context for the composition and creates a linkage between a resource describing an event and the composition created describing the event.
@@ -639,6 +645,11 @@ namespace fhirCsR2.Models
     public const string WORKING = "working";
     public const string SNAPSHOT = "snapshot";
     public const string CHANGES = "changes";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "working",
+      "snapshot",
+      "changes",
+    };
   }
   /// <summary>
   /// A set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained.
@@ -1095,5 +1106,11 @@ namespace fhirCsR2.Models
     public const string FINAL = "final";
     public const string AMENDED = "amended";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "preliminary",
+      "final",
+      "amended",
+      "entered-in-error",
+    };
   }
 }

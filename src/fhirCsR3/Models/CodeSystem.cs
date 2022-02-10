@@ -420,6 +420,14 @@ namespace fhirCsR3.Models
     public const string INTEGER = "integer";
     public const string BOOLEAN = "boolean";
     public const string DATETIME = "dateTime";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "code",
+      "Coding",
+      "string",
+      "integer",
+      "boolean",
+      "dateTime",
+    };
   }
   /// <summary>
   /// Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc.
@@ -589,9 +597,17 @@ namespace fhirCsR3.Models
     /// </summary>
     public int? ValueInteger { get; set; }
     /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
+    /// <summary>
     /// The value of this property.
     /// </summary>
     public bool? ValueBoolean { get; set; }
+    /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
     /// <summary>
     /// The value of this property.
     /// </summary>
@@ -655,9 +671,21 @@ namespace fhirCsR3.Models
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
       }
 
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
+      }
+
       if (ValueBoolean != null)
       {
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
+      }
+
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(ValueDateTime))
@@ -719,8 +747,18 @@ namespace fhirCsR3.Models
           ValueInteger = reader.GetInt32();
           break;
 
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR3.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
+          break;
+
         case "valueBoolean":
           ValueBoolean = reader.GetBoolean();
+          break;
+
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR3.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "valueDateTime":
@@ -1052,9 +1090,17 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? CaseSensitive { get; set; }
     /// <summary>
+    /// Extension container element for CaseSensitive
+    /// </summary>
+    public Element _CaseSensitive { get; set; }
+    /// <summary>
     /// Note that the code system resource does not define what the compositional grammar is, only whether or not there is one.
     /// </summary>
     public bool? Compositional { get; set; }
+    /// <summary>
+    /// Extension container element for Compositional
+    /// </summary>
+    public Element _Compositional { get; set; }
     /// <summary>
     /// If this is empty, it means that the code system resource does not represent the content of the code system.
     /// </summary>
@@ -1103,6 +1149,10 @@ namespace fhirCsR3.Models
     /// Allows filtering of code system that are appropriate for use vs. not. This is labeled as "Is Modifier" because applications should not use an experimental code system in production.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// A filter that can be used in a value set compose statement when selecting concepts using a filter.
     /// </summary>
@@ -1201,6 +1251,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? VersionNeeded { get; set; }
     /// <summary>
+    /// Extension container element for VersionNeeded
+    /// </summary>
+    public Element _VersionNeeded { get; set; }
+    /// <summary>
     /// Serialize to a JSON object
     /// </summary>
     public new void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
@@ -1281,6 +1335,12 @@ namespace fhirCsR3.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -1382,6 +1442,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("caseSensitive", (bool)CaseSensitive!);
       }
 
+      if (_CaseSensitive != null)
+      {
+        writer.WritePropertyName("_caseSensitive");
+        _CaseSensitive.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(ValueSet))
       {
         writer.WriteString("valueSet", (string)ValueSet!);
@@ -1409,9 +1475,21 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("compositional", (bool)Compositional!);
       }
 
+      if (_Compositional != null)
+      {
+        writer.WritePropertyName("_compositional");
+        _Compositional.SerializeJson(writer, options);
+      }
+
       if (VersionNeeded != null)
       {
         writer.WriteBoolean("versionNeeded", (bool)VersionNeeded!);
+      }
+
+      if (_VersionNeeded != null)
+      {
+        writer.WritePropertyName("_versionNeeded");
+        _VersionNeeded.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Content))
@@ -1485,8 +1563,18 @@ namespace fhirCsR3.Models
           CaseSensitive = reader.GetBoolean();
           break;
 
+        case "_caseSensitive":
+          _CaseSensitive = new fhirCsR3.Models.Element();
+          _CaseSensitive.DeserializeJson(ref reader, options);
+          break;
+
         case "compositional":
           Compositional = reader.GetBoolean();
+          break;
+
+        case "_compositional":
+          _Compositional = new fhirCsR3.Models.Element();
+          _Compositional.DeserializeJson(ref reader, options);
           break;
 
         case "concept":
@@ -1585,6 +1673,11 @@ namespace fhirCsR3.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR3.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "filter":
@@ -1785,6 +1878,11 @@ namespace fhirCsR3.Models
           VersionNeeded = reader.GetBoolean();
           break;
 
+        case "_versionNeeded":
+          _VersionNeeded = new fhirCsR3.Models.Element();
+          _VersionNeeded.DeserializeJson(ref reader, options);
+          break;
+
         default:
           ((fhirCsR3.Models.DomainResource)this).DeserializeJsonProperty(ref reader, options, propertyName);
           break;
@@ -1824,6 +1922,12 @@ namespace fhirCsR3.Models
     public const string EXAMPLE = "example";
     public const string FRAGMENT = "fragment";
     public const string COMPLETE = "complete";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "not-present",
+      "example",
+      "fragment",
+      "complete",
+    };
   }
   /// <summary>
   /// Code Values for the CodeSystem.hierarchyMeaning field
@@ -1833,6 +1937,12 @@ namespace fhirCsR3.Models
     public const string IS_A = "is-a";
     public const string PART_OF = "part-of";
     public const string CLASSIFIED_WITH = "classified-with";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "grouped-by",
+      "is-a",
+      "part-of",
+      "classified-with",
+    };
   }
   /// <summary>
   /// Code Values for the CodeSystem.status field
@@ -1842,5 +1952,11 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

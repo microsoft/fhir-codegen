@@ -32,6 +32,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public int? DecimalPrecision { get; set; }
     /// <summary>
+    /// Extension container element for DecimalPrecision
+    /// </summary>
+    public Element _DecimalPrecision { get; set; }
+    /// <summary>
     /// SI unit used to report quantitative results of observations conforming to this ObservationDefinition.
     /// </summary>
     public CodeableConcept Unit { get; set; }
@@ -74,6 +78,12 @@ namespace fhirCsR4B.Models
         writer.WriteNumber("decimalPrecision", (int)DecimalPrecision!);
       }
 
+      if (_DecimalPrecision != null)
+      {
+        writer.WritePropertyName("_decimalPrecision");
+        _DecimalPrecision.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -102,6 +112,11 @@ namespace fhirCsR4B.Models
 
         case "decimalPrecision":
           DecimalPrecision = reader.GetInt32();
+          break;
+
+        case "_decimalPrecision":
+          _DecimalPrecision = new fhirCsR4B.Models.Element();
+          _DecimalPrecision.DeserializeJson(ref reader, options);
           break;
 
         case "unit":
@@ -394,6 +409,11 @@ namespace fhirCsR4B.Models
     public const string REFERENCE = "reference";
     public const string CRITICAL = "critical";
     public const string ABSOLUTE = "absolute";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "reference",
+      "critical",
+      "absolute",
+    };
   }
   /// <summary>
   /// Code Values for the ObservationDefinition.qualifiedInterval.gender field
@@ -403,6 +423,12 @@ namespace fhirCsR4B.Models
     public const string FEMALE = "female";
     public const string OTHER = "other";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "male",
+      "female",
+      "other",
+      "unknown",
+    };
   }
   /// <summary>
   /// Set of definitional characteristics for a kind of observation or measurement produced or consumed by an orderable health care service.
@@ -441,6 +467,10 @@ namespace fhirCsR4B.Models
     /// An example of observation allowing multiple results is "bacteria identified by culture". Conversely, the measurement of a potassium level allows a single result.
     /// </summary>
     public bool? MultipleResultsAllowed { get; set; }
+    /// <summary>
+    /// Extension container element for MultipleResultsAllowed
+    /// </summary>
+    public Element _MultipleResultsAllowed { get; set; }
     /// <summary>
     /// The set of normal coded results for the observations conforming to this ObservationDefinition.
     /// </summary>
@@ -551,6 +581,12 @@ namespace fhirCsR4B.Models
       if (MultipleResultsAllowed != null)
       {
         writer.WriteBoolean("multipleResultsAllowed", (bool)MultipleResultsAllowed!);
+      }
+
+      if (_MultipleResultsAllowed != null)
+      {
+        writer.WritePropertyName("_multipleResultsAllowed");
+        _MultipleResultsAllowed.SerializeJson(writer, options);
       }
 
       if (Method != null)
@@ -703,6 +739,11 @@ namespace fhirCsR4B.Models
           MultipleResultsAllowed = reader.GetBoolean();
           break;
 
+        case "_multipleResultsAllowed":
+          _MultipleResultsAllowed = new fhirCsR4B.Models.Element();
+          _MultipleResultsAllowed.DeserializeJson(ref reader, options);
+          break;
+
         case "normalCodedValueSet":
           NormalCodedValueSet = new fhirCsR4B.Models.Reference();
           NormalCodedValueSet.DeserializeJson(ref reader, options);
@@ -852,5 +893,18 @@ namespace fhirCsR4B.Models
     public const string TIME = "time";
     public const string DATETIME = "dateTime";
     public const string PERIOD = "Period";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "Quantity",
+      "CodeableConcept",
+      "string",
+      "boolean",
+      "integer",
+      "Range",
+      "Ratio",
+      "SampledData",
+      "time",
+      "dateTime",
+      "Period",
+    };
   }
 }

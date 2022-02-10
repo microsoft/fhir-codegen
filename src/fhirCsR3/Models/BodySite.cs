@@ -24,6 +24,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? Active { get; set; }
     /// <summary>
+    /// Extension container element for Active
+    /// </summary>
+    public Element _Active { get; set; }
+    /// <summary>
     /// Named anatomical location - ideally coded where possible.
     /// </summary>
     public CodeableConcept Code { get; set; }
@@ -84,6 +88,12 @@ namespace fhirCsR3.Models
       if (Active != null)
       {
         writer.WriteBoolean("active", (bool)Active!);
+      }
+
+      if (_Active != null)
+      {
+        writer.WritePropertyName("_active");
+        _Active.SerializeJson(writer, options);
       }
 
       if (Code != null)
@@ -149,6 +159,11 @@ namespace fhirCsR3.Models
       {
         case "active":
           Active = reader.GetBoolean();
+          break;
+
+        case "_active":
+          _Active = new fhirCsR3.Models.Element();
+          _Active.DeserializeJson(ref reader, options);
           break;
 
         case "code":

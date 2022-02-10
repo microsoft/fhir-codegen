@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNone = "none";
 
     /// <summary>
+    /// Literal for code: FundsreserveNone
+    /// </summary>
+    public const string LiteralFundsreserveNone = "http://hl7.org/fhir/fundsreserve#none";
+
+    /// <summary>
     /// Literal for code: Patient
     /// </summary>
     public const string LiteralPatient = "patient";
 
     /// <summary>
+    /// Literal for code: FundsreservePatient
+    /// </summary>
+    public const string LiteralFundsreservePatient = "http://hl7.org/fhir/fundsreserve#patient";
+
+    /// <summary>
     /// Literal for code: Provider
     /// </summary>
     public const string LiteralProvider = "provider";
+
+    /// <summary>
+    /// Literal for code: FundsreserveProvider
+    /// </summary>
+    public const string LiteralFundsreserveProvider = "http://hl7.org/fhir/fundsreserve#provider";
+
+    /// <summary>
+    /// Dictionary for looking up Fundsreserve Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "none", None }, 
+      { "http://hl7.org/fhir/fundsreserve#none", None }, 
+      { "patient", Patient }, 
+      { "http://hl7.org/fhir/fundsreserve#patient", Patient }, 
+      { "provider", Provider }, 
+      { "http://hl7.org/fhir/fundsreserve#provider", Provider }, 
+    };
   };
 }

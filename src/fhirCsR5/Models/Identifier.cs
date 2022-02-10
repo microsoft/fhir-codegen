@@ -207,5 +207,12 @@ namespace fhirCsR5.Models
     public const string TEMP = "temp";
     public const string SECONDARY = "secondary";
     public const string OLD = "old";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "usual",
+      "official",
+      "temp",
+      "secondary",
+      "old",
+    };
   }
 }

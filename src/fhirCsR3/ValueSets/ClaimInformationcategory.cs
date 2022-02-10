@@ -108,9 +108,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAttachment = "attachment";
 
     /// <summary>
+    /// Literal for code: ClaimInformationcategoryAttachment
+    /// </summary>
+    public const string LiteralClaimInformationcategoryAttachment = "http://hl7.org/fhir/claiminformationcategory#attachment";
+
+    /// <summary>
     /// Literal for code: Discharge
     /// </summary>
     public const string LiteralDischarge = "discharge";
+
+    /// <summary>
+    /// Literal for code: ClaimInformationcategoryDischarge
+    /// </summary>
+    public const string LiteralClaimInformationcategoryDischarge = "http://hl7.org/fhir/claiminformationcategory#discharge";
 
     /// <summary>
     /// Literal for code: Exception
@@ -118,9 +128,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralException = "exception";
 
     /// <summary>
+    /// Literal for code: ClaimInformationcategoryException
+    /// </summary>
+    public const string LiteralClaimInformationcategoryException = "http://hl7.org/fhir/claiminformationcategory#exception";
+
+    /// <summary>
     /// Literal for code: Information
     /// </summary>
     public const string LiteralInformation = "info";
+
+    /// <summary>
+    /// Literal for code: ClaimInformationcategoryInformation
+    /// </summary>
+    public const string LiteralClaimInformationcategoryInformation = "http://hl7.org/fhir/claiminformationcategory#info";
 
     /// <summary>
     /// Literal for code: MaterialsForwarded
@@ -128,9 +148,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMaterialsForwarded = "material";
 
     /// <summary>
+    /// Literal for code: ClaimInformationcategoryMaterialsForwarded
+    /// </summary>
+    public const string LiteralClaimInformationcategoryMaterialsForwarded = "http://hl7.org/fhir/claiminformationcategory#material";
+
+    /// <summary>
     /// Literal for code: MissingTooth
     /// </summary>
     public const string LiteralMissingTooth = "missingtooth";
+
+    /// <summary>
+    /// Literal for code: ClaimInformationcategoryMissingTooth
+    /// </summary>
+    public const string LiteralClaimInformationcategoryMissingTooth = "http://hl7.org/fhir/claiminformationcategory#missingtooth";
 
     /// <summary>
     /// Literal for code: Onset
@@ -138,9 +168,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOnset = "onset";
 
     /// <summary>
+    /// Literal for code: ClaimInformationcategoryOnset
+    /// </summary>
+    public const string LiteralClaimInformationcategoryOnset = "http://hl7.org/fhir/claiminformationcategory#onset";
+
+    /// <summary>
     /// Literal for code: Other
     /// </summary>
     public const string LiteralOther = "other";
+
+    /// <summary>
+    /// Literal for code: ClaimInformationcategoryOther
+    /// </summary>
+    public const string LiteralClaimInformationcategoryOther = "http://hl7.org/fhir/claiminformationcategory#other";
 
     /// <summary>
     /// Literal for code: Prosthesis
@@ -148,8 +188,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProsthesis = "prosthesis";
 
     /// <summary>
+    /// Literal for code: ClaimInformationcategoryProsthesis
+    /// </summary>
+    public const string LiteralClaimInformationcategoryProsthesis = "http://hl7.org/fhir/claiminformationcategory#prosthesis";
+
+    /// <summary>
     /// Literal for code: RelatedServices
     /// </summary>
     public const string LiteralRelatedServices = "related";
+
+    /// <summary>
+    /// Literal for code: ClaimInformationcategoryRelatedServices
+    /// </summary>
+    public const string LiteralClaimInformationcategoryRelatedServices = "http://hl7.org/fhir/claiminformationcategory#related";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimInformationcategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "attachment", Attachment }, 
+      { "http://hl7.org/fhir/claiminformationcategory#attachment", Attachment }, 
+      { "discharge", Discharge }, 
+      { "http://hl7.org/fhir/claiminformationcategory#discharge", Discharge }, 
+      { "exception", Exception }, 
+      { "http://hl7.org/fhir/claiminformationcategory#exception", Exception }, 
+      { "info", Information }, 
+      { "http://hl7.org/fhir/claiminformationcategory#info", Information }, 
+      { "material", MaterialsForwarded }, 
+      { "http://hl7.org/fhir/claiminformationcategory#material", MaterialsForwarded }, 
+      { "missingtooth", MissingTooth }, 
+      { "http://hl7.org/fhir/claiminformationcategory#missingtooth", MissingTooth }, 
+      { "onset", Onset }, 
+      { "http://hl7.org/fhir/claiminformationcategory#onset", Onset }, 
+      { "other", Other }, 
+      { "http://hl7.org/fhir/claiminformationcategory#other", Other }, 
+      { "prosthesis", Prosthesis }, 
+      { "http://hl7.org/fhir/claiminformationcategory#prosthesis", Prosthesis }, 
+      { "related", RelatedServices }, 
+      { "http://hl7.org/fhir/claiminformationcategory#related", RelatedServices }, 
+    };
   };
 }

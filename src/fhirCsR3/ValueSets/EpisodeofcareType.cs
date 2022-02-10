@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class EpisodeofcareTypeCodes
   {
     /// <summary>
-    /// 
+    /// Community-based aged care
     /// </summary>
     public static readonly Coding CommunityBasedAgedCare = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/episodeofcare-type"
     };
     /// <summary>
-    /// 
+    /// Drug and alcohol rehabilitation
     /// </summary>
     public static readonly Coding DrugAndAlcoholRehabilitation = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/episodeofcare-type"
     };
     /// <summary>
-    /// 
+    /// Post co-ordinated diabetes program
     /// </summary>
     public static readonly Coding PostCoOrdinatedDiabetesProgram = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/episodeofcare-type"
     };
     /// <summary>
-    /// 
+    /// Home and Community Care
     /// </summary>
     public static readonly Coding HomeAndCommunityCare = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/episodeofcare-type"
     };
     /// <summary>
-    /// 
+    /// Post Acute Care
     /// </summary>
     public static readonly Coding PostAcuteCare = new Coding
     {
@@ -63,9 +63,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCommunityBasedAgedCare = "cacp";
 
     /// <summary>
+    /// Literal for code: EpisodeofcareTypeCommunityBasedAgedCare
+    /// </summary>
+    public const string LiteralEpisodeofcareTypeCommunityBasedAgedCare = "http://hl7.org/fhir/episodeofcare-type#cacp";
+
+    /// <summary>
     /// Literal for code: DrugAndAlcoholRehabilitation
     /// </summary>
     public const string LiteralDrugAndAlcoholRehabilitation = "da";
+
+    /// <summary>
+    /// Literal for code: EpisodeofcareTypeDrugAndAlcoholRehabilitation
+    /// </summary>
+    public const string LiteralEpisodeofcareTypeDrugAndAlcoholRehabilitation = "http://hl7.org/fhir/episodeofcare-type#da";
 
     /// <summary>
     /// Literal for code: PostCoOrdinatedDiabetesProgram
@@ -73,13 +83,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPostCoOrdinatedDiabetesProgram = "diab";
 
     /// <summary>
+    /// Literal for code: EpisodeofcareTypePostCoOrdinatedDiabetesProgram
+    /// </summary>
+    public const string LiteralEpisodeofcareTypePostCoOrdinatedDiabetesProgram = "http://hl7.org/fhir/episodeofcare-type#diab";
+
+    /// <summary>
     /// Literal for code: HomeAndCommunityCare
     /// </summary>
     public const string LiteralHomeAndCommunityCare = "hacc";
 
     /// <summary>
+    /// Literal for code: EpisodeofcareTypeHomeAndCommunityCare
+    /// </summary>
+    public const string LiteralEpisodeofcareTypeHomeAndCommunityCare = "http://hl7.org/fhir/episodeofcare-type#hacc";
+
+    /// <summary>
     /// Literal for code: PostAcuteCare
     /// </summary>
     public const string LiteralPostAcuteCare = "pac";
+
+    /// <summary>
+    /// Literal for code: EpisodeofcareTypePostAcuteCare
+    /// </summary>
+    public const string LiteralEpisodeofcareTypePostAcuteCare = "http://hl7.org/fhir/episodeofcare-type#pac";
+
+    /// <summary>
+    /// Dictionary for looking up EpisodeofcareType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "cacp", CommunityBasedAgedCare }, 
+      { "http://hl7.org/fhir/episodeofcare-type#cacp", CommunityBasedAgedCare }, 
+      { "da", DrugAndAlcoholRehabilitation }, 
+      { "http://hl7.org/fhir/episodeofcare-type#da", DrugAndAlcoholRehabilitation }, 
+      { "diab", PostCoOrdinatedDiabetesProgram }, 
+      { "http://hl7.org/fhir/episodeofcare-type#diab", PostCoOrdinatedDiabetesProgram }, 
+      { "hacc", HomeAndCommunityCare }, 
+      { "http://hl7.org/fhir/episodeofcare-type#hacc", HomeAndCommunityCare }, 
+      { "pac", PostAcuteCare }, 
+      { "http://hl7.org/fhir/episodeofcare-type#pac", PostAcuteCare }, 
+    };
   };
 }

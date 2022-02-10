@@ -678,5 +678,15 @@ namespace fhirCsR4B.Models
     public const string ON_HOLD = "on-hold";
     public const string UNKNOWN = "unknown";
     public const string NOT_TAKEN = "not-taken";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "completed",
+      "entered-in-error",
+      "intended",
+      "stopped",
+      "on-hold",
+      "unknown",
+      "not-taken",
+    };
   }
 }

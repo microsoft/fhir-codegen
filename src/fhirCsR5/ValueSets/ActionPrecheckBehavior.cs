@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNo = "no";
 
     /// <summary>
+    /// Literal for code: ActionPrecheckBehaviorNo
+    /// </summary>
+    public const string LiteralActionPrecheckBehaviorNo = "http://hl7.org/fhir/action-precheck-behavior#no";
+
+    /// <summary>
     /// Literal for code: Yes
     /// </summary>
     public const string LiteralYes = "yes";
+
+    /// <summary>
+    /// Literal for code: ActionPrecheckBehaviorYes
+    /// </summary>
+    public const string LiteralActionPrecheckBehaviorYes = "http://hl7.org/fhir/action-precheck-behavior#yes";
+
+    /// <summary>
+    /// Dictionary for looking up ActionPrecheckBehavior Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "no", No }, 
+      { "http://hl7.org/fhir/action-precheck-behavior#no", No }, 
+      { "yes", Yes }, 
+      { "http://hl7.org/fhir/action-precheck-behavior#yes", Yes }, 
+    };
   };
 }

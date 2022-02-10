@@ -14,16 +14,16 @@ using Newtonsoft.Json;
 namespace Microsoft.Health.Fhir.SpecManager.Models
 {
     /// <summary>Information about the fhir package.</summary>
-    public class FhirPackageInfo
+    public class FhirPackage
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FhirPackageInfo"/> class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="FhirPackage"/> class.</summary>
         /// <param name="name">           The name.</param>
         /// <param name="version">        The version.</param>
         /// <param name="fhirVersionList">A list of fhir versions.</param>
         /// <param name="fhirVersions">   The fhir versions.</param>
+        /// <param name="dependencies">   The dependencies.</param>
         /// <param name="packageType">    The type of the package.</param>
+        /// <param name="directories">    The directories.</param>
         /// <param name="toolsVersion">   The tools version.</param>
         /// <param name="canonical">      The canonical.</param>
         /// <param name="homepage">       The homepage.</param>
@@ -34,19 +34,21 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <param name="author">         The author.</param>
         /// <param name="license">        The license.</param>
         [JsonConstructor]
-        internal FhirPackageInfo(
+        internal FhirPackage(
             string name,
             string version,
-            List<string> fhirVersionList,
-            List<string> fhirVersions,
+            IEnumerable<string> fhirVersionList,
+            IEnumerable<string> fhirVersions,
+            Dictionary<string, string> dependencies,
             string packageType,
+            Dictionary<string, string> directories,
             decimal toolsVersion,
             string canonical,
             string homepage,
             Uri url,
             string title,
             string description,
-            List<string> keywords,
+            IEnumerable<string> keywords,
             string author,
             string license)
         {
@@ -54,7 +56,9 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             Version = version;
             FhirVersionList = fhirVersionList;
             FhirVersions = fhirVersions;
+            Dependencies = dependencies;
             PackageType = packageType;
+            Directories = directories;
             ToolsVersion = toolsVersion;
             Canonical = canonical;
             Homepage = homepage;
@@ -77,12 +81,12 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <summary>Gets a list of fhir versions.</summary>
         /// <value>A list of fhir versions.</value>
         [JsonProperty(PropertyName = "fhir-version-list")]
-        public List<string> FhirVersionList { get; }
+        public IEnumerable<string> FhirVersionList { get; }
 
         /// <summary>Gets the fhir versions.</summary>
         /// <value>The fhir versions.</value>
         [JsonProperty(PropertyName = "fhirVersions")]
-        public List<string> FhirVersions { get; }
+        public IEnumerable<string> FhirVersions { get; }
 
         /// <summary>Gets the type of the package.</summary>
         /// <value>The type of the package.</value>
@@ -114,9 +118,13 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The description.</value>
         public string Description { get; }
 
+        /// <summary>Gets or sets the dependencies.</summary>
+        [JsonProperty(PropertyName = "dependencies")]
+        public Dictionary<string, string> Dependencies { get; set; }
+
         /// <summary>Gets the keywords.</summary>
         /// <value>The keywords.</value>
-        public List<string> Keywords { get; }
+        public IEnumerable<string> Keywords { get; }
 
         /// <summary>Gets the author.</summary>
         /// <value>The author.</value>
@@ -126,12 +134,16 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
         /// <value>The license.</value>
         public string License { get; }
 
+        /// <summary>Gets or sets the directories.</summary>
+        [JsonProperty(PropertyName = "directories")]
+        public Dictionary<string, string> Directories { get; set; }
+
         /// <summary>Attempts to load FHIR NPM package information from the given directory.</summary>
         /// <exception cref="FileNotFoundException">Thrown when the requested file is not present.</exception>
         /// <exception cref="JsonException">        Thrown when a JSON error condition occurs.</exception>
         /// <param name="packageDirectory">Pathname of the package directory.</param>
         /// <returns>The package information.</returns>
-        public static FhirPackageInfo Load(string packageDirectory)
+        public static FhirPackage Load(string packageDirectory)
         {
             // build the path to our file
             string packageFilename = Path.Combine(packageDirectory, "package.json");
@@ -148,7 +160,7 @@ namespace Microsoft.Health.Fhir.SpecManager.Models
             // attempt to parse
             try
             {
-                return JsonConvert.DeserializeObject<FhirPackageInfo>(packageContents);
+                return JsonConvert.DeserializeObject<FhirPackage>(packageContents);
             }
             catch (JsonException)
             {

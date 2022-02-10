@@ -511,6 +511,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? IsDerived { get; set; }
     /// <summary>
+    /// Extension container element for IsDerived
+    /// </summary>
+    public Element _IsDerived { get; set; }
+    /// <summary>
     /// The preference for this type of conditioned specimen.
     /// </summary>
     public string Preference { get; set; }
@@ -539,6 +543,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? SingleUse { get; set; }
     /// <summary>
+    /// Extension container element for SingleUse
+    /// </summary>
+    public Element _SingleUse { get; set; }
+    /// <summary>
     /// Where the specimen will be tested: e.g., lab, sector, device or any combination of these.
     /// </summary>
     public List<CodeableConcept> TestingDestination { get; set; }
@@ -560,6 +568,12 @@ namespace fhirCsR5.Models
       if (IsDerived != null)
       {
         writer.WriteBoolean("isDerived", (bool)IsDerived!);
+      }
+
+      if (_IsDerived != null)
+      {
+        writer.WritePropertyName("_isDerived");
+        _IsDerived.SerializeJson(writer, options);
       }
 
       if (Type != null)
@@ -605,6 +619,12 @@ namespace fhirCsR5.Models
       if (SingleUse != null)
       {
         writer.WriteBoolean("singleUse", (bool)SingleUse!);
+      }
+
+      if (_SingleUse != null)
+      {
+        writer.WritePropertyName("_singleUse");
+        _SingleUse.SerializeJson(writer, options);
       }
 
       if ((RejectionCriterion != null) && (RejectionCriterion.Count != 0))
@@ -694,6 +714,11 @@ namespace fhirCsR5.Models
           IsDerived = reader.GetBoolean();
           break;
 
+        case "_isDerived":
+          _IsDerived = new fhirCsR5.Models.Element();
+          _IsDerived.DeserializeJson(ref reader, options);
+          break;
+
         case "preference":
           Preference = reader.GetString();
           break;
@@ -746,6 +771,11 @@ namespace fhirCsR5.Models
 
         case "singleUse":
           SingleUse = reader.GetBoolean();
+          break;
+
+        case "_singleUse":
+          _SingleUse = new fhirCsR5.Models.Element();
+          _SingleUse.DeserializeJson(ref reader, options);
           break;
 
         case "testingDestination":
@@ -817,6 +847,10 @@ namespace fhirCsR5.Models
   public static class SpecimenDefinitionTypeTestedPreferenceCodes {
     public const string PREFERRED = "preferred";
     public const string ALTERNATE = "alternate";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "preferred",
+      "alternate",
+    };
   }
   /// <summary>
   /// A kind of specimen with associated set of requirements.
@@ -891,6 +925,10 @@ namespace fhirCsR5.Models
     /// Allows filtering of SpecimenDefinition that are appropriate for use vs. not.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// A business identifier assigned to this SpecimenDefinition.
     /// </summary>
@@ -1106,6 +1144,12 @@ namespace fhirCsR5.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (SubjectCodeableConcept != null)
@@ -1508,6 +1552,11 @@ namespace fhirCsR5.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR5.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "identifier":
           Identifier = new fhirCsR5.Models.Identifier();
           Identifier.DeserializeJson(ref reader, options);
@@ -1743,5 +1792,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

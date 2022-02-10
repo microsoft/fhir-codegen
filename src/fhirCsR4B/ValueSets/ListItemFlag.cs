@@ -72,9 +72,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUnchanged = "01";
 
     /// <summary>
+    /// Literal for code: ListItemFlagUnchanged
+    /// </summary>
+    public const string LiteralListItemFlagUnchanged = "urn:oid:1.2.36.1.2001.1001.101.104.16592#01";
+
+    /// <summary>
     /// Literal for code: Changed
     /// </summary>
     public const string LiteralChanged = "02";
+
+    /// <summary>
+    /// Literal for code: ListItemFlagChanged
+    /// </summary>
+    public const string LiteralListItemFlagChanged = "urn:oid:1.2.36.1.2001.1001.101.104.16592#02";
 
     /// <summary>
     /// Literal for code: Cancelled
@@ -82,9 +92,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCancelled = "03";
 
     /// <summary>
+    /// Literal for code: ListItemFlagCancelled
+    /// </summary>
+    public const string LiteralListItemFlagCancelled = "urn:oid:1.2.36.1.2001.1001.101.104.16592#03";
+
+    /// <summary>
     /// Literal for code: Prescribed
     /// </summary>
     public const string LiteralPrescribed = "04";
+
+    /// <summary>
+    /// Literal for code: ListItemFlagPrescribed
+    /// </summary>
+    public const string LiteralListItemFlagPrescribed = "urn:oid:1.2.36.1.2001.1001.101.104.16592#04";
 
     /// <summary>
     /// Literal for code: Ceased
@@ -92,8 +112,36 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCeased = "05";
 
     /// <summary>
+    /// Literal for code: ListItemFlagCeased
+    /// </summary>
+    public const string LiteralListItemFlagCeased = "urn:oid:1.2.36.1.2001.1001.101.104.16592#05";
+
+    /// <summary>
     /// Literal for code: Suspended
     /// </summary>
     public const string LiteralSuspended = "06";
+
+    /// <summary>
+    /// Literal for code: ListItemFlagSuspended
+    /// </summary>
+    public const string LiteralListItemFlagSuspended = "urn:oid:1.2.36.1.2001.1001.101.104.16592#06";
+
+    /// <summary>
+    /// Dictionary for looking up ListItemFlag Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "01", Unchanged }, 
+      { "urn:oid:1.2.36.1.2001.1001.101.104.16592#01", Unchanged }, 
+      { "02", Changed }, 
+      { "urn:oid:1.2.36.1.2001.1001.101.104.16592#02", Changed }, 
+      { "03", Cancelled }, 
+      { "urn:oid:1.2.36.1.2001.1001.101.104.16592#03", Cancelled }, 
+      { "04", Prescribed }, 
+      { "urn:oid:1.2.36.1.2001.1001.101.104.16592#04", Prescribed }, 
+      { "05", Ceased }, 
+      { "urn:oid:1.2.36.1.2001.1001.101.104.16592#05", Ceased }, 
+      { "06", Suspended }, 
+      { "urn:oid:1.2.36.1.2001.1001.101.104.16592#06", Suspended }, 
+    };
   };
 }

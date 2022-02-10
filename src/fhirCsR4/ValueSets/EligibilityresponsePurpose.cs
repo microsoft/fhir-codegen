@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoverageAuthRequirements = "auth-requirements";
 
     /// <summary>
+    /// Literal for code: EligibilityresponsePurposeCoverageAuthRequirements
+    /// </summary>
+    public const string LiteralEligibilityresponsePurposeCoverageAuthRequirements = "http://hl7.org/fhir/eligibilityresponse-purpose#auth-requirements";
+
+    /// <summary>
     /// Literal for code: CoverageBenefits
     /// </summary>
     public const string LiteralCoverageBenefits = "benefits";
+
+    /// <summary>
+    /// Literal for code: EligibilityresponsePurposeCoverageBenefits
+    /// </summary>
+    public const string LiteralEligibilityresponsePurposeCoverageBenefits = "http://hl7.org/fhir/eligibilityresponse-purpose#benefits";
 
     /// <summary>
     /// Literal for code: CoverageDiscovery
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoverageDiscovery = "discovery";
 
     /// <summary>
+    /// Literal for code: EligibilityresponsePurposeCoverageDiscovery
+    /// </summary>
+    public const string LiteralEligibilityresponsePurposeCoverageDiscovery = "http://hl7.org/fhir/eligibilityresponse-purpose#discovery";
+
+    /// <summary>
     /// Literal for code: CoverageValidation
     /// </summary>
     public const string LiteralCoverageValidation = "validation";
+
+    /// <summary>
+    /// Literal for code: EligibilityresponsePurposeCoverageValidation
+    /// </summary>
+    public const string LiteralEligibilityresponsePurposeCoverageValidation = "http://hl7.org/fhir/eligibilityresponse-purpose#validation";
+
+    /// <summary>
+    /// Dictionary for looking up EligibilityresponsePurpose Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "auth-requirements", CoverageAuthRequirements }, 
+      { "http://hl7.org/fhir/eligibilityresponse-purpose#auth-requirements", CoverageAuthRequirements }, 
+      { "benefits", CoverageBenefits }, 
+      { "http://hl7.org/fhir/eligibilityresponse-purpose#benefits", CoverageBenefits }, 
+      { "discovery", CoverageDiscovery }, 
+      { "http://hl7.org/fhir/eligibilityresponse-purpose#discovery", CoverageDiscovery }, 
+      { "validation", CoverageValidation }, 
+      { "http://hl7.org/fhir/eligibilityresponse-purpose#validation", CoverageValidation }, 
+    };
   };
 }

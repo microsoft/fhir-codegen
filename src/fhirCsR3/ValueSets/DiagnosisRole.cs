@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class DiagnosisRoleCodes
   {
     /// <summary>
-    /// 
+    /// Admission diagnosis
     /// </summary>
     public static readonly Coding AdmissionDiagnosis = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/diagnosis-role"
     };
     /// <summary>
-    /// 
+    /// Billing
     /// </summary>
     public static readonly Coding Billing = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/diagnosis-role"
     };
     /// <summary>
-    /// 
+    /// Chief complaint
     /// </summary>
     public static readonly Coding ChiefComplaint = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/diagnosis-role"
     };
     /// <summary>
-    /// 
+    /// Comorbidity diagnosis
     /// </summary>
     public static readonly Coding ComorbidityDiagnosis = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/diagnosis-role"
     };
     /// <summary>
-    /// 
+    /// Discharge diagnosis
     /// </summary>
     public static readonly Coding DischargeDiagnosis = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/diagnosis-role"
     };
     /// <summary>
-    /// 
+    /// post-op diagnosis
     /// </summary>
     public static readonly Coding PostOpDiagnosis = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/diagnosis-role"
     };
     /// <summary>
-    /// 
+    /// pre-op diagnosis
     /// </summary>
     public static readonly Coding PreOpDiagnosis = new Coding
     {
@@ -81,9 +81,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdmissionDiagnosis = "AD";
 
     /// <summary>
+    /// Literal for code: DiagnosisRoleAdmissionDiagnosis
+    /// </summary>
+    public const string LiteralDiagnosisRoleAdmissionDiagnosis = "http://hl7.org/fhir/diagnosis-role#AD";
+
+    /// <summary>
     /// Literal for code: Billing
     /// </summary>
     public const string LiteralBilling = "billing";
+
+    /// <summary>
+    /// Literal for code: DiagnosisRoleBilling
+    /// </summary>
+    public const string LiteralDiagnosisRoleBilling = "http://hl7.org/fhir/diagnosis-role#billing";
 
     /// <summary>
     /// Literal for code: ChiefComplaint
@@ -91,9 +101,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChiefComplaint = "CC";
 
     /// <summary>
+    /// Literal for code: DiagnosisRoleChiefComplaint
+    /// </summary>
+    public const string LiteralDiagnosisRoleChiefComplaint = "http://hl7.org/fhir/diagnosis-role#CC";
+
+    /// <summary>
     /// Literal for code: ComorbidityDiagnosis
     /// </summary>
     public const string LiteralComorbidityDiagnosis = "CM";
+
+    /// <summary>
+    /// Literal for code: DiagnosisRoleComorbidityDiagnosis
+    /// </summary>
+    public const string LiteralDiagnosisRoleComorbidityDiagnosis = "http://hl7.org/fhir/diagnosis-role#CM";
 
     /// <summary>
     /// Literal for code: DischargeDiagnosis
@@ -101,13 +121,48 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDischargeDiagnosis = "DD";
 
     /// <summary>
+    /// Literal for code: DiagnosisRoleDischargeDiagnosis
+    /// </summary>
+    public const string LiteralDiagnosisRoleDischargeDiagnosis = "http://hl7.org/fhir/diagnosis-role#DD";
+
+    /// <summary>
     /// Literal for code: PostOpDiagnosis
     /// </summary>
     public const string LiteralPostOpDiagnosis = "post-op";
 
     /// <summary>
+    /// Literal for code: DiagnosisRolePostOpDiagnosis
+    /// </summary>
+    public const string LiteralDiagnosisRolePostOpDiagnosis = "http://hl7.org/fhir/diagnosis-role#post-op";
+
+    /// <summary>
     /// Literal for code: PreOpDiagnosis
     /// </summary>
     public const string LiteralPreOpDiagnosis = "pre-op";
+
+    /// <summary>
+    /// Literal for code: DiagnosisRolePreOpDiagnosis
+    /// </summary>
+    public const string LiteralDiagnosisRolePreOpDiagnosis = "http://hl7.org/fhir/diagnosis-role#pre-op";
+
+    /// <summary>
+    /// Dictionary for looking up DiagnosisRole Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "AD", AdmissionDiagnosis }, 
+      { "http://hl7.org/fhir/diagnosis-role#AD", AdmissionDiagnosis }, 
+      { "billing", Billing }, 
+      { "http://hl7.org/fhir/diagnosis-role#billing", Billing }, 
+      { "CC", ChiefComplaint }, 
+      { "http://hl7.org/fhir/diagnosis-role#CC", ChiefComplaint }, 
+      { "CM", ComorbidityDiagnosis }, 
+      { "http://hl7.org/fhir/diagnosis-role#CM", ComorbidityDiagnosis }, 
+      { "DD", DischargeDiagnosis }, 
+      { "http://hl7.org/fhir/diagnosis-role#DD", DischargeDiagnosis }, 
+      { "post-op", PostOpDiagnosis }, 
+      { "http://hl7.org/fhir/diagnosis-role#post-op", PostOpDiagnosis }, 
+      { "pre-op", PreOpDiagnosis }, 
+      { "http://hl7.org/fhir/diagnosis-role#pre-op", PreOpDiagnosis }, 
+    };
   };
 }

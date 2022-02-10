@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/CodeSystem/capability-features"
     };
     /// <summary>
-    /// 
+    /// Value is false
     /// </summary>
     public static readonly Coding ValueIsFalse = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/CodeSystem/capability-features"
     };
     /// <summary>
-    /// 
+    /// No VersionId Support
     /// </summary>
     public static readonly Coding NoVersionIdSupport = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/CodeSystem/capability-features"
     };
     /// <summary>
-    /// 
+    /// Value is true
     /// </summary>
     public static readonly Coding ValueIsTrue = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/CodeSystem/capability-features"
     };
     /// <summary>
-    /// 
+    /// Versioned
     /// </summary>
     public static readonly Coding Versioned = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/CodeSystem/capability-features"
     };
     /// <summary>
-    /// 
+    /// VersionId tracked fully
     /// </summary>
     public static readonly Coding VersionIdTrackedFully = new Coding
     {
@@ -162,9 +162,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralReferenceIntegrityEnforced = "enforced";
 
     /// <summary>
+    /// Literal for code: CapabilityFeaturesReferenceIntegrityEnforced
+    /// </summary>
+    public const string LiteralCapabilityFeaturesReferenceIntegrityEnforced = "http://hl7.org/fhir/CodeSystem/capability-features#enforced";
+
+    /// <summary>
     /// Literal for code: ValueIsFalse
     /// </summary>
     public const string LiteralValueIsFalse = "false";
+
+    /// <summary>
+    /// Literal for code: CapabilityFeaturesValueIsFalse
+    /// </summary>
+    public const string LiteralCapabilityFeaturesValueIsFalse = "http://hl7.org/fhir/CodeSystem/capability-features#false";
 
     /// <summary>
     /// Literal for code: FullSupport
@@ -172,9 +182,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFullSupport = "full-support";
 
     /// <summary>
+    /// Literal for code: CapabilityFeaturesFullSupport
+    /// </summary>
+    public const string LiteralCapabilityFeaturesFullSupport = "http://hl7.org/fhir/CodeSystem/capability-features#full-support";
+
+    /// <summary>
     /// Literal for code: LiteralReferences
     /// </summary>
     public const string LiteralLiteralReferences = "literal";
+
+    /// <summary>
+    /// Literal for code: CapabilityFeaturesLiteralReferences
+    /// </summary>
+    public const string LiteralCapabilityFeaturesLiteralReferences = "http://hl7.org/fhir/CodeSystem/capability-features#literal";
 
     /// <summary>
     /// Literal for code: LocalReferencesOnly
@@ -182,9 +202,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLocalReferencesOnly = "local";
 
     /// <summary>
+    /// Literal for code: CapabilityFeaturesLocalReferencesOnly
+    /// </summary>
+    public const string LiteralCapabilityFeaturesLocalReferencesOnly = "http://hl7.org/fhir/CodeSystem/capability-features#local";
+
+    /// <summary>
     /// Literal for code: LogicalReferences
     /// </summary>
     public const string LiteralLogicalReferences = "logical";
+
+    /// <summary>
+    /// Literal for code: CapabilityFeaturesLogicalReferences
+    /// </summary>
+    public const string LiteralCapabilityFeaturesLogicalReferences = "http://hl7.org/fhir/CodeSystem/capability-features#logical";
 
     /// <summary>
     /// Literal for code: IfModifiedSince
@@ -192,9 +222,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIfModifiedSince = "modified-since";
 
     /// <summary>
+    /// Literal for code: CapabilityFeaturesIfModifiedSince
+    /// </summary>
+    public const string LiteralCapabilityFeaturesIfModifiedSince = "http://hl7.org/fhir/CodeSystem/capability-features#modified-since";
+
+    /// <summary>
     /// Literal for code: MultipleDeletesSupported
     /// </summary>
     public const string LiteralMultipleDeletesSupported = "multiple";
+
+    /// <summary>
+    /// Literal for code: CapabilityFeaturesMultipleDeletesSupported
+    /// </summary>
+    public const string LiteralCapabilityFeaturesMultipleDeletesSupported = "http://hl7.org/fhir/CodeSystem/capability-features#multiple";
 
     /// <summary>
     /// Literal for code: NoVersionIdSupport
@@ -202,9 +242,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoVersionIdSupport = "no-version";
 
     /// <summary>
+    /// Literal for code: CodeSystemCapabilityFeaturesNoVersionIdSupport
+    /// </summary>
+    public const string LiteralCodeSystemCapabilityFeaturesNoVersionIdSupport = "http://hl7.org/fhir/CodeSystem/capability-features#no-version";
+
+    /// <summary>
     /// Literal for code: IfNoneMatch
     /// </summary>
     public const string LiteralIfNoneMatch = "not-match";
+
+    /// <summary>
+    /// Literal for code: CapabilityFeaturesIfNoneMatch
+    /// </summary>
+    public const string LiteralCapabilityFeaturesIfNoneMatch = "http://hl7.org/fhir/CodeSystem/capability-features#not-match";
 
     /// <summary>
     /// Literal for code: NotSupported
@@ -212,9 +262,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotSupported = "not-supported";
 
     /// <summary>
+    /// Literal for code: CapabilityFeaturesNotSupported
+    /// </summary>
+    public const string LiteralCapabilityFeaturesNotSupported = "http://hl7.org/fhir/CodeSystem/capability-features#not-supported";
+
+    /// <summary>
     /// Literal for code: ResolvesReferences
     /// </summary>
     public const string LiteralResolvesReferences = "resolves";
+
+    /// <summary>
+    /// Literal for code: CapabilityFeaturesResolvesReferences
+    /// </summary>
+    public const string LiteralCapabilityFeaturesResolvesReferences = "http://hl7.org/fhir/CodeSystem/capability-features#resolves";
 
     /// <summary>
     /// Literal for code: SingleDeletesSupported
@@ -222,9 +282,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSingleDeletesSupported = "single";
 
     /// <summary>
+    /// Literal for code: CapabilityFeaturesSingleDeletesSupported
+    /// </summary>
+    public const string LiteralCapabilityFeaturesSingleDeletesSupported = "http://hl7.org/fhir/CodeSystem/capability-features#single";
+
+    /// <summary>
     /// Literal for code: ValueIsTrue
     /// </summary>
     public const string LiteralValueIsTrue = "true";
+
+    /// <summary>
+    /// Literal for code: CapabilityFeaturesValueIsTrue
+    /// </summary>
+    public const string LiteralCapabilityFeaturesValueIsTrue = "http://hl7.org/fhir/CodeSystem/capability-features#true";
 
     /// <summary>
     /// Literal for code: Versioned
@@ -232,8 +302,56 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVersioned = "versioned";
 
     /// <summary>
+    /// Literal for code: CodeSystemCapabilityFeaturesVersioned
+    /// </summary>
+    public const string LiteralCodeSystemCapabilityFeaturesVersioned = "http://hl7.org/fhir/CodeSystem/capability-features#versioned";
+
+    /// <summary>
     /// Literal for code: VersionIdTrackedFully
     /// </summary>
     public const string LiteralVersionIdTrackedFully = "versioned-update";
+
+    /// <summary>
+    /// Literal for code: CodeSystemCapabilityFeaturesVersionIdTrackedFully
+    /// </summary>
+    public const string LiteralCodeSystemCapabilityFeaturesVersionIdTrackedFully = "http://hl7.org/fhir/CodeSystem/capability-features#versioned-update";
+
+    /// <summary>
+    /// Dictionary for looking up CapabilityFeatureValue Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "enforced", ReferenceIntegrityEnforced }, 
+      { "http://hl7.org/fhir/CodeSystem/capability-features#enforced", ReferenceIntegrityEnforced }, 
+      { "false", ValueIsFalse }, 
+      { "http://hl7.org/fhir/CodeSystem/capability-features#false", ValueIsFalse }, 
+      { "full-support", FullSupport }, 
+      { "http://hl7.org/fhir/CodeSystem/capability-features#full-support", FullSupport }, 
+      { "literal", LiteralReferences }, 
+      { "http://hl7.org/fhir/CodeSystem/capability-features#literal", LiteralReferences }, 
+      { "local", LocalReferencesOnly }, 
+      { "http://hl7.org/fhir/CodeSystem/capability-features#local", LocalReferencesOnly }, 
+      { "logical", LogicalReferences }, 
+      { "http://hl7.org/fhir/CodeSystem/capability-features#logical", LogicalReferences }, 
+      { "modified-since", IfModifiedSince }, 
+      { "http://hl7.org/fhir/CodeSystem/capability-features#modified-since", IfModifiedSince }, 
+      { "multiple", MultipleDeletesSupported }, 
+      { "http://hl7.org/fhir/CodeSystem/capability-features#multiple", MultipleDeletesSupported }, 
+      { "no-version", NoVersionIdSupport }, 
+      { "http://hl7.org/fhir/CodeSystem/capability-features#no-version", NoVersionIdSupport }, 
+      { "not-match", IfNoneMatch }, 
+      { "http://hl7.org/fhir/CodeSystem/capability-features#not-match", IfNoneMatch }, 
+      { "not-supported", NotSupported }, 
+      { "http://hl7.org/fhir/CodeSystem/capability-features#not-supported", NotSupported }, 
+      { "resolves", ResolvesReferences }, 
+      { "http://hl7.org/fhir/CodeSystem/capability-features#resolves", ResolvesReferences }, 
+      { "single", SingleDeletesSupported }, 
+      { "http://hl7.org/fhir/CodeSystem/capability-features#single", SingleDeletesSupported }, 
+      { "true", ValueIsTrue }, 
+      { "http://hl7.org/fhir/CodeSystem/capability-features#true", ValueIsTrue }, 
+      { "versioned", Versioned }, 
+      { "http://hl7.org/fhir/CodeSystem/capability-features#versioned", Versioned }, 
+      { "versioned-update", VersionIdTrackedFully }, 
+      { "http://hl7.org/fhir/CodeSystem/capability-features#versioned-update", VersionIdTrackedFully }, 
+    };
   };
 }

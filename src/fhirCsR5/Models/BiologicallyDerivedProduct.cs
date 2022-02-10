@@ -156,9 +156,17 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// The value should be provided as a boolean, integer, CodeableConcept, quantity, range, or attachment. The description can be a string only when these others are not available.
     /// </summary>
     public int? ValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
     /// <summary>
     /// The value should be provided as a boolean, integer, CodeableConcept, quantity, range, or attachment. The description can be a string only when these others are not available.
     /// </summary>
@@ -205,9 +213,21 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (ValueCodeableConcept != null)
@@ -266,8 +286,18 @@ namespace fhirCsR5.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR5.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR5.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueCodeableConcept":
@@ -801,6 +831,13 @@ namespace fhirCsR5.Models
     public const string FLUID = "fluid";
     public const string CELLS = "cells";
     public const string BIOLOGICALAGENT = "biologicalAgent";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "organ",
+      "tissue",
+      "fluid",
+      "cells",
+      "biologicalAgent",
+    };
   }
   /// <summary>
   /// Code Values for the BiologicallyDerivedProduct.status field
@@ -808,5 +845,9 @@ namespace fhirCsR5.Models
   public static class BiologicallyDerivedProductStatusCodes {
     public const string AVAILABLE = "available";
     public const string UNAVAILABLE = "unavailable";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "available",
+      "unavailable",
+    };
   }
 }

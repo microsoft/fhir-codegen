@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/consentcategorycodes"
     };
     /// <summary>
-    /// 
+    /// Privacy policy acknowledgement Document
     /// </summary>
     public static readonly Coding PrivacyPolicyAcknowledgementDocument_ = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Privacy policy Organization Document 
     /// </summary>
     public static readonly Coding PrivacyPolicyOrganizationDocument_ = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Patient Consent 
     /// </summary>
     public static readonly Coding PatientConsent_ = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Release of information consent 
     /// </summary>
     public static readonly Coding ReleaseOfInformationConsent_ = new Coding
     {
@@ -384,9 +384,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVAL42CFRPart2FormOfWrittenConsent_consent_category = "42-CFR-2";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryVAL42CFRPart2FormOfWrittenConsent_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryVAL42CFRPart2FormOfWrittenConsent_consent_category = "http://hl7.org/fhir/consentcategorycodes#42-CFR-2";
+
+    /// <summary>
     /// Literal for code: PrivacyPolicyAcknowledgementDocument_
     /// </summary>
     public const string LiteralPrivacyPolicyAcknowledgementDocument_ = "57016-8";
+
+    /// <summary>
+    /// Literal for code: NONEPrivacyPolicyAcknowledgementDocument_
+    /// </summary>
+    public const string LiteralNONEPrivacyPolicyAcknowledgementDocument_ = "http://loinc.org#57016-8";
 
     /// <summary>
     /// Literal for code: PrivacyPolicyOrganizationDocument_
@@ -394,9 +404,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrivacyPolicyOrganizationDocument_ = "57017-6";
 
     /// <summary>
+    /// Literal for code: NONEPrivacyPolicyOrganizationDocument_
+    /// </summary>
+    public const string LiteralNONEPrivacyPolicyOrganizationDocument_ = "http://loinc.org#57017-6";
+
+    /// <summary>
     /// Literal for code: PatientConsent_
     /// </summary>
     public const string LiteralPatientConsent_ = "59284-0";
+
+    /// <summary>
+    /// Literal for code: NONEPatientConsent_
+    /// </summary>
+    public const string LiteralNONEPatientConsent_ = "http://loinc.org#59284-0";
 
     /// <summary>
     /// Literal for code: ReleaseOfInformationConsent_
@@ -404,9 +424,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReleaseOfInformationConsent_ = "64292-6";
 
     /// <summary>
+    /// Literal for code: NONEReleaseOfInformationConsent_
+    /// </summary>
+    public const string LiteralNONEReleaseOfInformationConsent_ = "http://loinc.org#64292-6";
+
+    /// <summary>
     /// Literal for code: AdvanceDirective_consent_category
     /// </summary>
     public const string LiteralAdvanceDirective_consent_category = "ACD";
+
+    /// <summary>
+    /// Literal for code: ConsentCategoryAdvanceDirective_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryAdvanceDirective_consent_category = "http://hl7.org/fhir/consentcategorycodes#ACD";
 
     /// <summary>
     /// Literal for code: CommonRuleInformedConsent_consent_category
@@ -414,9 +444,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCommonRuleInformedConsent_consent_category = "CRIC";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryCommonRuleInformedConsent_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryCommonRuleInformedConsent_consent_category = "http://hl7.org/fhir/consentcategorycodes#CRIC";
+
+    /// <summary>
     /// Literal for code: DoNotResuscitate_consent_category
     /// </summary>
     public const string LiteralDoNotResuscitate_consent_category = "DNR";
+
+    /// <summary>
+    /// Literal for code: ConsentCategoryDoNotResuscitate_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryDoNotResuscitate_consent_category = "http://hl7.org/fhir/consentcategorycodes#DNR";
 
     /// <summary>
     /// Literal for code: EmergencyOnly_consent_category
@@ -424,9 +464,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEmergencyOnly_consent_category = "EMRGONLY";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryEmergencyOnly_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryEmergencyOnly_consent_category = "http://hl7.org/fhir/consentcategorycodes#EMRGONLY";
+
+    /// <summary>
     /// Literal for code: HealthCareDirective_consent_category
     /// </summary>
     public const string LiteralHealthCareDirective_consent_category = "HCD";
+
+    /// <summary>
+    /// Literal for code: ConsentCategoryHealthCareDirective_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryHealthCareDirective_consent_category = "http://hl7.org/fhir/consentcategorycodes#HCD";
 
     /// <summary>
     /// Literal for code: HIPAAAuthorization_consent_category
@@ -434,9 +484,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHIPAAAuthorization_consent_category = "HIPAA-Auth";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryHIPAAAuthorization_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryHIPAAAuthorization_consent_category = "http://hl7.org/fhir/consentcategorycodes#HIPAA-Auth";
+
+    /// <summary>
     /// Literal for code: HIPAANoticeOfPrivacyPractices_consent_category
     /// </summary>
     public const string LiteralHIPAANoticeOfPrivacyPractices_consent_category = "HIPAA-NPP";
+
+    /// <summary>
+    /// Literal for code: ConsentCategoryHIPAANoticeOfPrivacyPractices_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryHIPAANoticeOfPrivacyPractices_consent_category = "http://hl7.org/fhir/consentcategorycodes#HIPAA-NPP";
 
     /// <summary>
     /// Literal for code: HIPAAResearchAuthorization_consent_category
@@ -444,9 +504,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHIPAAResearchAuthorization_consent_category = "HIPAA-Research";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryHIPAAResearchAuthorization_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryHIPAAResearchAuthorization_consent_category = "http://hl7.org/fhir/consentcategorycodes#HIPAA-Research";
+
+    /// <summary>
     /// Literal for code: HIPAARestrictions_consent_category
     /// </summary>
     public const string LiteralHIPAARestrictions_consent_category = "HIPAA-Restrictions";
+
+    /// <summary>
+    /// Literal for code: ConsentCategoryHIPAARestrictions_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryHIPAARestrictions_consent_category = "http://hl7.org/fhir/consentcategorycodes#HIPAA-Restrictions";
 
     /// <summary>
     /// Literal for code: HIPAASelfPayRestriction_consent_category
@@ -454,9 +524,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHIPAASelfPayRestriction_consent_category = "HIPAA-Self-Pay";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryHIPAASelfPayRestriction_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryHIPAASelfPayRestriction_consent_category = "http://hl7.org/fhir/consentcategorycodes#HIPAA-Self-Pay";
+
+    /// <summary>
     /// Literal for code: InformationCollection_v3_ActCode
     /// </summary>
     public const string LiteralInformationCollection_v3_ActCode = "ICOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeInformationCollection_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeInformationCollection_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#ICOL";
 
     /// <summary>
     /// Literal for code: InformationDisclosure_v3_ActCode
@@ -464,9 +544,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInformationDisclosure_v3_ActCode = "IDSCL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeInformationDisclosure_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeInformationDisclosure_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#IDSCL";
+
+    /// <summary>
     /// Literal for code: IllinoisConsentByMinorsToMedicalProcedures_consent_category
     /// </summary>
     public const string LiteralIllinoisConsentByMinorsToMedicalProcedures_consent_category = "Illinois-Minor-Procedure";
+
+    /// <summary>
+    /// Literal for code: ConsentCategoryIllinoisConsentByMinorsToMedicalProcedures_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryIllinoisConsentByMinorsToMedicalProcedures_consent_category = "http://hl7.org/fhir/consentcategorycodes#Illinois-Minor-Procedure";
 
     /// <summary>
     /// Literal for code: InformationAccess_v3_ActCode
@@ -474,9 +564,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInformationAccess_v3_ActCode = "INFA";
 
     /// <summary>
+    /// Literal for code: V3ActCodeInformationAccess_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeInformationAccess_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#INFA";
+
+    /// <summary>
     /// Literal for code: AccessOnly_v3_ActCode
     /// </summary>
     public const string LiteralAccessOnly_v3_ActCode = "INFAO";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAccessOnly_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAccessOnly_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#INFAO";
 
     /// <summary>
     /// Literal for code: AccessAndSaveOnly_v3_ActCode
@@ -484,9 +584,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAccessAndSaveOnly_v3_ActCode = "INFASO";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAccessAndSaveOnly_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAccessAndSaveOnly_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#INFASO";
+
+    /// <summary>
     /// Literal for code: InformationRedisclosure_v3_ActCode
     /// </summary>
     public const string LiteralInformationRedisclosure_v3_ActCode = "IRDSCL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeInformationRedisclosure_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeInformationRedisclosure_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#IRDSCL";
 
     /// <summary>
     /// Literal for code: MichiganMDHHS5515ConsentToShareBehavioralHealthInformationForCareCoordinationPurposes_consent_category
@@ -494,9 +604,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMichiganMDHHS5515ConsentToShareBehavioralHealthInformationForCareCoordinationPurposes_consent_category = "MDHHS-5515";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryMichiganMDHHS5515ConsentToShareBehavioralHealthInformationForCareCoordinationPurposes_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryMichiganMDHHS5515ConsentToShareBehavioralHealthInformationForCareCoordinationPurposes_consent_category = "http://hl7.org/fhir/consentcategorycodes#MDHHS-5515";
+
+    /// <summary>
     /// Literal for code: NoticeOfPrivacyPractices_consent_category
     /// </summary>
     public const string LiteralNoticeOfPrivacyPractices_consent_category = "NPP";
+
+    /// <summary>
+    /// Literal for code: ConsentCategoryNoticeOfPrivacyPractices_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryNoticeOfPrivacyPractices_consent_category = "http://hl7.org/fhir/consentcategorycodes#NPP";
 
     /// <summary>
     /// Literal for code: NewYorkStateSurgicalAndInvasiveProcedureProtocol_consent_category
@@ -504,9 +624,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNewYorkStateSurgicalAndInvasiveProcedureProtocol_consent_category = "NYSSIPP";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryNewYorkStateSurgicalAndInvasiveProcedureProtocol_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryNewYorkStateSurgicalAndInvasiveProcedureProtocol_consent_category = "http://hl7.org/fhir/consentcategorycodes#NYSSIPP";
+
+    /// <summary>
     /// Literal for code: POLST_consent_category
     /// </summary>
     public const string LiteralPOLST_consent_category = "POLST";
+
+    /// <summary>
+    /// Literal for code: ConsentCategoryPOLST_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryPOLST_consent_category = "http://hl7.org/fhir/consentcategorycodes#POLST";
 
     /// <summary>
     /// Literal for code: ResearchInformationAccess_consent_category
@@ -514,9 +644,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralResearchInformationAccess_consent_category = "RESEARCH";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryResearchInformationAccess_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryResearchInformationAccess_consent_category = "http://hl7.org/fhir/consentcategorycodes#RESEARCH";
+
+    /// <summary>
     /// Literal for code: ResearchInformationAccess_v3_ActCode
     /// </summary>
     public const string LiteralResearchInformationAccess_v3_ActCode = "RESEARCH";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeResearchInformationAccess_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeResearchInformationAccess_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#RESEARCH";
 
     /// <summary>
     /// Literal for code: DeIdentifiedInformationAccess_consent_category
@@ -524,9 +664,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeIdentifiedInformationAccess_consent_category = "RSDID";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryDeIdentifiedInformationAccess_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryDeIdentifiedInformationAccess_consent_category = "http://hl7.org/fhir/consentcategorycodes#RSDID";
+
+    /// <summary>
     /// Literal for code: DeIdentifiedInformationAccess_v3_ActCode
     /// </summary>
     public const string LiteralDeIdentifiedInformationAccess_v3_ActCode = "RSDID";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDeIdentifiedInformationAccess_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDeIdentifiedInformationAccess_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#RSDID";
 
     /// <summary>
     /// Literal for code: ReIdentifiableInformationAccess_consent_category
@@ -534,9 +684,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReIdentifiableInformationAccess_consent_category = "RSREID";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryReIdentifiableInformationAccess_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryReIdentifiableInformationAccess_consent_category = "http://hl7.org/fhir/consentcategorycodes#RSREID";
+
+    /// <summary>
     /// Literal for code: ReIdentifiableInformationAccess_v3_ActCode
     /// </summary>
     public const string LiteralReIdentifiableInformationAccess_v3_ActCode = "RSREID";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeReIdentifiableInformationAccess_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeReIdentifiableInformationAccess_v3_ActCode = "http://hl7.org/fhir/v3/ActCode#RSREID";
 
     /// <summary>
     /// Literal for code: FormSSA827_consent_category
@@ -544,9 +704,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFormSSA827_consent_category = "SSA-827";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryFormSSA827_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryFormSSA827_consent_category = "http://hl7.org/fhir/consentcategorycodes#SSA-827";
+
+    /// <summary>
     /// Literal for code: VAForm100484_consent_category
     /// </summary>
     public const string LiteralVAForm100484_consent_category = "VA-10-0484";
+
+    /// <summary>
+    /// Literal for code: ConsentCategoryVAForm100484_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryVAForm100484_consent_category = "http://hl7.org/fhir/consentcategorycodes#VA-10-0484";
 
     /// <summary>
     /// Literal for code: VAForm100485_consent_category
@@ -554,9 +724,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVAForm100485_consent_category = "VA-10-0485";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryVAForm100485_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryVAForm100485_consent_category = "http://hl7.org/fhir/consentcategorycodes#VA-10-0485";
+
+    /// <summary>
     /// Literal for code: VAForm101010116_consent_category
     /// </summary>
     public const string LiteralVAForm101010116_consent_category = "VA-10-10116";
+
+    /// <summary>
+    /// Literal for code: ConsentCategoryVAForm101010116_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryVAForm101010116_consent_category = "http://hl7.org/fhir/consentcategorycodes#VA-10-10116";
 
     /// <summary>
     /// Literal for code: VAForm105345_consent_category
@@ -564,9 +744,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVAForm105345_consent_category = "VA-10-5345";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryVAForm105345_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryVAForm105345_consent_category = "http://hl7.org/fhir/consentcategorycodes#VA-10-5345";
+
+    /// <summary>
     /// Literal for code: VAForm105345a_consent_category
     /// </summary>
     public const string LiteralVAForm105345a_consent_category = "VA-10-5345a";
+
+    /// <summary>
+    /// Literal for code: ConsentCategoryVAForm105345a_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryVAForm105345a_consent_category = "http://hl7.org/fhir/consentcategorycodes#VA-10-5345a";
 
     /// <summary>
     /// Literal for code: VAForm105345aMHV_consent_category
@@ -574,8 +764,104 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVAForm105345aMHV_consent_category = "VA-10-5345a-MHV";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryVAForm105345aMHV_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryVAForm105345aMHV_consent_category = "http://hl7.org/fhir/consentcategorycodes#VA-10-5345a-MHV";
+
+    /// <summary>
     /// Literal for code: VAForm214142_consent_category
     /// </summary>
     public const string LiteralVAForm214142_consent_category = "VA-21-4142";
+
+    /// <summary>
+    /// Literal for code: ConsentCategoryVAForm214142_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryVAForm214142_consent_category = "http://hl7.org/fhir/consentcategorycodes#VA-21-4142";
+
+    /// <summary>
+    /// Dictionary for looking up ConsentCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "42-CFR-2", VAL42CFRPart2FormOfWrittenConsent_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#42-CFR-2", VAL42CFRPart2FormOfWrittenConsent_consent_category }, 
+      { "57016-8", PrivacyPolicyAcknowledgementDocument_ }, 
+      { "http://loinc.org#57016-8", PrivacyPolicyAcknowledgementDocument_ }, 
+      { "57017-6", PrivacyPolicyOrganizationDocument_ }, 
+      { "http://loinc.org#57017-6", PrivacyPolicyOrganizationDocument_ }, 
+      { "59284-0", PatientConsent_ }, 
+      { "http://loinc.org#59284-0", PatientConsent_ }, 
+      { "64292-6", ReleaseOfInformationConsent_ }, 
+      { "http://loinc.org#64292-6", ReleaseOfInformationConsent_ }, 
+      { "ACD", AdvanceDirective_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#ACD", AdvanceDirective_consent_category }, 
+      { "CRIC", CommonRuleInformedConsent_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#CRIC", CommonRuleInformedConsent_consent_category }, 
+      { "DNR", DoNotResuscitate_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#DNR", DoNotResuscitate_consent_category }, 
+      { "EMRGONLY", EmergencyOnly_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#EMRGONLY", EmergencyOnly_consent_category }, 
+      { "HCD", HealthCareDirective_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#HCD", HealthCareDirective_consent_category }, 
+      { "HIPAA-Auth", HIPAAAuthorization_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#HIPAA-Auth", HIPAAAuthorization_consent_category }, 
+      { "HIPAA-NPP", HIPAANoticeOfPrivacyPractices_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#HIPAA-NPP", HIPAANoticeOfPrivacyPractices_consent_category }, 
+      { "HIPAA-Research", HIPAAResearchAuthorization_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#HIPAA-Research", HIPAAResearchAuthorization_consent_category }, 
+      { "HIPAA-Restrictions", HIPAARestrictions_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#HIPAA-Restrictions", HIPAARestrictions_consent_category }, 
+      { "HIPAA-Self-Pay", HIPAASelfPayRestriction_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#HIPAA-Self-Pay", HIPAASelfPayRestriction_consent_category }, 
+      { "ICOL", InformationCollection_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#ICOL", InformationCollection_v3_ActCode }, 
+      { "IDSCL", InformationDisclosure_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#IDSCL", InformationDisclosure_v3_ActCode }, 
+      { "Illinois-Minor-Procedure", IllinoisConsentByMinorsToMedicalProcedures_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#Illinois-Minor-Procedure", IllinoisConsentByMinorsToMedicalProcedures_consent_category }, 
+      { "INFA", InformationAccess_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#INFA", InformationAccess_v3_ActCode }, 
+      { "INFAO", AccessOnly_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#INFAO", AccessOnly_v3_ActCode }, 
+      { "INFASO", AccessAndSaveOnly_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#INFASO", AccessAndSaveOnly_v3_ActCode }, 
+      { "IRDSCL", InformationRedisclosure_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#IRDSCL", InformationRedisclosure_v3_ActCode }, 
+      { "MDHHS-5515", MichiganMDHHS5515ConsentToShareBehavioralHealthInformationForCareCoordinationPurposes_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#MDHHS-5515", MichiganMDHHS5515ConsentToShareBehavioralHealthInformationForCareCoordinationPurposes_consent_category }, 
+      { "NPP", NoticeOfPrivacyPractices_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#NPP", NoticeOfPrivacyPractices_consent_category }, 
+      { "NYSSIPP", NewYorkStateSurgicalAndInvasiveProcedureProtocol_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#NYSSIPP", NewYorkStateSurgicalAndInvasiveProcedureProtocol_consent_category }, 
+      { "POLST", POLST_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#POLST", POLST_consent_category }, 
+      { "RESEARCH", ResearchInformationAccess_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#RESEARCH", ResearchInformationAccess_consent_category }, 
+      { "RESEARCH", ResearchInformationAccess_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#RESEARCH", ResearchInformationAccess_v3_ActCode }, 
+      { "RSDID", DeIdentifiedInformationAccess_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#RSDID", DeIdentifiedInformationAccess_consent_category }, 
+      { "RSDID", DeIdentifiedInformationAccess_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#RSDID", DeIdentifiedInformationAccess_v3_ActCode }, 
+      { "RSREID", ReIdentifiableInformationAccess_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#RSREID", ReIdentifiableInformationAccess_consent_category }, 
+      { "RSREID", ReIdentifiableInformationAccess_v3_ActCode }, 
+      { "http://hl7.org/fhir/v3/ActCode#RSREID", ReIdentifiableInformationAccess_v3_ActCode }, 
+      { "SSA-827", FormSSA827_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#SSA-827", FormSSA827_consent_category }, 
+      { "VA-10-0484", VAForm100484_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#VA-10-0484", VAForm100484_consent_category }, 
+      { "VA-10-0485", VAForm100485_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#VA-10-0485", VAForm100485_consent_category }, 
+      { "VA-10-10116", VAForm101010116_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#VA-10-10116", VAForm101010116_consent_category }, 
+      { "VA-10-5345", VAForm105345_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#VA-10-5345", VAForm105345_consent_category }, 
+      { "VA-10-5345a", VAForm105345a_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#VA-10-5345a", VAForm105345a_consent_category }, 
+      { "VA-10-5345a-MHV", VAForm105345aMHV_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#VA-10-5345a-MHV", VAForm105345aMHV_consent_category }, 
+      { "VA-21-4142", VAForm214142_consent_category }, 
+      { "http://hl7.org/fhir/consentcategorycodes#VA-21-4142", VAForm214142_consent_category }, 
+    };
   };
 }

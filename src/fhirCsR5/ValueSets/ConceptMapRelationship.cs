@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEquivalent = "equivalent";
 
     /// <summary>
+    /// Literal for code: ConceptMapRelationshipEquivalent
+    /// </summary>
+    public const string LiteralConceptMapRelationshipEquivalent = "http://hl7.org/fhir/concept-map-relationship#equivalent";
+
+    /// <summary>
     /// Literal for code: NotRelatedTo
     /// </summary>
     public const string LiteralNotRelatedTo = "not-related-to";
+
+    /// <summary>
+    /// Literal for code: ConceptMapRelationshipNotRelatedTo
+    /// </summary>
+    public const string LiteralConceptMapRelationshipNotRelatedTo = "http://hl7.org/fhir/concept-map-relationship#not-related-to";
 
     /// <summary>
     /// Literal for code: RelatedTo
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRelatedTo = "related-to";
 
     /// <summary>
+    /// Literal for code: ConceptMapRelationshipRelatedTo
+    /// </summary>
+    public const string LiteralConceptMapRelationshipRelatedTo = "http://hl7.org/fhir/concept-map-relationship#related-to";
+
+    /// <summary>
     /// Literal for code: SourceIsBroaderThanTarget
     /// </summary>
     public const string LiteralSourceIsBroaderThanTarget = "source-is-broader-than-target";
 
     /// <summary>
+    /// Literal for code: ConceptMapRelationshipSourceIsBroaderThanTarget
+    /// </summary>
+    public const string LiteralConceptMapRelationshipSourceIsBroaderThanTarget = "http://hl7.org/fhir/concept-map-relationship#source-is-broader-than-target";
+
+    /// <summary>
     /// Literal for code: SourceIsNarrowerThanTarget
     /// </summary>
     public const string LiteralSourceIsNarrowerThanTarget = "source-is-narrower-than-target";
+
+    /// <summary>
+    /// Literal for code: ConceptMapRelationshipSourceIsNarrowerThanTarget
+    /// </summary>
+    public const string LiteralConceptMapRelationshipSourceIsNarrowerThanTarget = "http://hl7.org/fhir/concept-map-relationship#source-is-narrower-than-target";
+
+    /// <summary>
+    /// Dictionary for looking up ConceptMapRelationship Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "equivalent", Equivalent }, 
+      { "http://hl7.org/fhir/concept-map-relationship#equivalent", Equivalent }, 
+      { "not-related-to", NotRelatedTo }, 
+      { "http://hl7.org/fhir/concept-map-relationship#not-related-to", NotRelatedTo }, 
+      { "related-to", RelatedTo }, 
+      { "http://hl7.org/fhir/concept-map-relationship#related-to", RelatedTo }, 
+      { "source-is-broader-than-target", SourceIsBroaderThanTarget }, 
+      { "http://hl7.org/fhir/concept-map-relationship#source-is-broader-than-target", SourceIsBroaderThanTarget }, 
+      { "source-is-narrower-than-target", SourceIsNarrowerThanTarget }, 
+      { "http://hl7.org/fhir/concept-map-relationship#source-is-narrower-than-target", SourceIsNarrowerThanTarget }, 
+    };
   };
 }

@@ -405,6 +405,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? ExampleBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ExampleBoolean
+    /// </summary>
+    public Element _ExampleBoolean { get; set; }
+    /// <summary>
     /// Examples: 
     /// * StructureDefinition -&gt; Any 
     /// * ValueSet -&gt; expansion 
@@ -514,6 +518,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("exampleBoolean", (bool)ExampleBoolean!);
       }
 
+      if (_ExampleBoolean != null)
+      {
+        writer.WritePropertyName("_exampleBoolean");
+        _ExampleBoolean.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(ExampleCanonical))
       {
         writer.WriteString("exampleCanonical", (string)ExampleCanonical!);
@@ -559,6 +569,11 @@ namespace fhirCsR4B.Models
 
         case "exampleBoolean":
           ExampleBoolean = reader.GetBoolean();
+          break;
+
+        case "_exampleBoolean":
+          _ExampleBoolean = new fhirCsR4B.Models.Element();
+          _ExampleBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "exampleCanonical":
@@ -886,6 +901,12 @@ namespace fhirCsR4B.Models
     public const string MARKDOWN = "markdown";
     public const string XML = "xml";
     public const string GENERATED = "generated";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "html",
+      "markdown",
+      "xml",
+      "generated",
+    };
   }
   /// <summary>
   /// Defines how IG is built by tools.
@@ -1016,6 +1037,18 @@ namespace fhirCsR4B.Models
     public const string GENERATE_JSON = "generate-json";
     public const string GENERATE_TURTLE = "generate-turtle";
     public const string HTML_TEMPLATE = "html-template";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "apply",
+      "path-resource",
+      "path-pages",
+      "path-tx-cache",
+      "expansion-parameter",
+      "rule-broken-links",
+      "generate-xml",
+      "generate-json",
+      "generate-turtle",
+      "html-template",
+    };
   }
   /// <summary>
   /// A template for building resources.
@@ -1420,6 +1453,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? ExampleBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ExampleBoolean
+    /// </summary>
+    public Element _ExampleBoolean { get; set; }
+    /// <summary>
     /// Typically, conformance resources and knowledge resources are directly part of the implementation guide, with their normal meaning, and patient linked resources are usually examples. However this is not always true.
     /// </summary>
     public string ExampleCanonical { get; set; }
@@ -1461,6 +1498,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("exampleBoolean", (bool)ExampleBoolean!);
       }
 
+      if (_ExampleBoolean != null)
+      {
+        writer.WritePropertyName("_exampleBoolean");
+        _ExampleBoolean.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(ExampleCanonical))
       {
         writer.WriteString("exampleCanonical", (string)ExampleCanonical!);
@@ -1497,6 +1540,11 @@ namespace fhirCsR4B.Models
       {
         case "exampleBoolean":
           ExampleBoolean = reader.GetBoolean();
+          break;
+
+        case "_exampleBoolean":
+          _ExampleBoolean = new fhirCsR4B.Models.Element();
+          _ExampleBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "exampleCanonical":
@@ -2151,6 +2199,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// Most implementation guides target a single version - e.g. they describe how to use a particular version, and the profiles and examples etc are valid for that version. But some implementation guides describe how to use multiple different versions of FHIR to solve the same problem, or in concert with each other. Typically, the requirement to support multiple versions arises as implementation matures and different implementation communities are stuck at different versions by regulation or market dynamics.
     /// </summary>
     public List<string> FhirVersion { get; set; }
@@ -2315,6 +2367,12 @@ namespace fhirCsR4B.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -2588,6 +2646,11 @@ namespace fhirCsR4B.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR4B.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "fhirVersion":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -2837,5 +2900,11 @@ namespace fhirCsR4B.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

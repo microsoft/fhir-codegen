@@ -135,9 +135,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTryAnotherTreatmentFirst = "altchoice";
 
     /// <summary>
+    /// Literal for code: MedicationrequestStatusReasonTryAnotherTreatmentFirst
+    /// </summary>
+    public const string LiteralMedicationrequestStatusReasonTryAnotherTreatmentFirst = "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#altchoice";
+
+    /// <summary>
     /// Literal for code: PrescriptionRequiresClarification
     /// </summary>
     public const string LiteralPrescriptionRequiresClarification = "clarif";
+
+    /// <summary>
+    /// Literal for code: MedicationrequestStatusReasonPrescriptionRequiresClarification
+    /// </summary>
+    public const string LiteralMedicationrequestStatusReasonPrescriptionRequiresClarification = "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#clarif";
 
     /// <summary>
     /// Literal for code: DrugLevelTooHigh
@@ -145,9 +155,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDrugLevelTooHigh = "drughigh";
 
     /// <summary>
+    /// Literal for code: MedicationrequestStatusReasonDrugLevelTooHigh
+    /// </summary>
+    public const string LiteralMedicationrequestStatusReasonDrugLevelTooHigh = "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#drughigh";
+
+    /// <summary>
     /// Literal for code: AdmissionToHospital
     /// </summary>
     public const string LiteralAdmissionToHospital = "hospadm";
+
+    /// <summary>
+    /// Literal for code: MedicationrequestStatusReasonAdmissionToHospital
+    /// </summary>
+    public const string LiteralMedicationrequestStatusReasonAdmissionToHospital = "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#hospadm";
 
     /// <summary>
     /// Literal for code: LabInterferenceIssues
@@ -155,9 +175,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLabInterferenceIssues = "labint";
 
     /// <summary>
+    /// Literal for code: MedicationrequestStatusReasonLabInterferenceIssues
+    /// </summary>
+    public const string LiteralMedicationrequestStatusReasonLabInterferenceIssues = "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#labint";
+
+    /// <summary>
     /// Literal for code: PatientNotAvailable
     /// </summary>
     public const string LiteralPatientNotAvailable = "non-avail";
+
+    /// <summary>
+    /// Literal for code: MedicationrequestStatusReasonPatientNotAvailable
+    /// </summary>
+    public const string LiteralMedicationrequestStatusReasonPatientNotAvailable = "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#non-avail";
 
     /// <summary>
     /// Literal for code: ParentIsPregnantBreastFeeding
@@ -165,9 +195,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralParentIsPregnantBreastFeeding = "preg";
 
     /// <summary>
+    /// Literal for code: MedicationrequestStatusReasonParentIsPregnantBreastFeeding
+    /// </summary>
+    public const string LiteralMedicationrequestStatusReasonParentIsPregnantBreastFeeding = "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#preg";
+
+    /// <summary>
     /// Literal for code: Allergy
     /// </summary>
     public const string LiteralAllergy = "salg";
+
+    /// <summary>
+    /// Literal for code: MedicationrequestStatusReasonAllergy
+    /// </summary>
+    public const string LiteralMedicationrequestStatusReasonAllergy = "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#salg";
 
     /// <summary>
     /// Literal for code: DrugInteractsWithAnotherDrug
@@ -175,9 +215,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDrugInteractsWithAnotherDrug = "sddi";
 
     /// <summary>
+    /// Literal for code: MedicationrequestStatusReasonDrugInteractsWithAnotherDrug
+    /// </summary>
+    public const string LiteralMedicationrequestStatusReasonDrugInteractsWithAnotherDrug = "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#sddi";
+
+    /// <summary>
     /// Literal for code: DuplicateTherapy
     /// </summary>
     public const string LiteralDuplicateTherapy = "sdupther";
+
+    /// <summary>
+    /// Literal for code: MedicationrequestStatusReasonDuplicateTherapy
+    /// </summary>
+    public const string LiteralMedicationrequestStatusReasonDuplicateTherapy = "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#sdupther";
 
     /// <summary>
     /// Literal for code: SuspectedIntolerance
@@ -185,13 +235,60 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSuspectedIntolerance = "sintol";
 
     /// <summary>
+    /// Literal for code: MedicationrequestStatusReasonSuspectedIntolerance
+    /// </summary>
+    public const string LiteralMedicationrequestStatusReasonSuspectedIntolerance = "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#sintol";
+
+    /// <summary>
     /// Literal for code: PatientScheduledForSurgery
     /// </summary>
     public const string LiteralPatientScheduledForSurgery = "surg";
 
     /// <summary>
+    /// Literal for code: MedicationrequestStatusReasonPatientScheduledForSurgery
+    /// </summary>
+    public const string LiteralMedicationrequestStatusReasonPatientScheduledForSurgery = "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#surg";
+
+    /// <summary>
     /// Literal for code: WaitingForOldDrugToWashOut
     /// </summary>
     public const string LiteralWaitingForOldDrugToWashOut = "washout";
+
+    /// <summary>
+    /// Literal for code: MedicationrequestStatusReasonWaitingForOldDrugToWashOut
+    /// </summary>
+    public const string LiteralMedicationrequestStatusReasonWaitingForOldDrugToWashOut = "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#washout";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationrequestStatusReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "altchoice", TryAnotherTreatmentFirst }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#altchoice", TryAnotherTreatmentFirst }, 
+      { "clarif", PrescriptionRequiresClarification }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#clarif", PrescriptionRequiresClarification }, 
+      { "drughigh", DrugLevelTooHigh }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#drughigh", DrugLevelTooHigh }, 
+      { "hospadm", AdmissionToHospital }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#hospadm", AdmissionToHospital }, 
+      { "labint", LabInterferenceIssues }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#labint", LabInterferenceIssues }, 
+      { "non-avail", PatientNotAvailable }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#non-avail", PatientNotAvailable }, 
+      { "preg", ParentIsPregnantBreastFeeding }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#preg", ParentIsPregnantBreastFeeding }, 
+      { "salg", Allergy }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#salg", Allergy }, 
+      { "sddi", DrugInteractsWithAnotherDrug }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#sddi", DrugInteractsWithAnotherDrug }, 
+      { "sdupther", DuplicateTherapy }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#sdupther", DuplicateTherapy }, 
+      { "sintol", SuspectedIntolerance }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#sintol", SuspectedIntolerance }, 
+      { "surg", PatientScheduledForSurgery }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#surg", PatientScheduledForSurgery }, 
+      { "washout", WaitingForOldDrugToWashOut }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-status-reason#washout", WaitingForOldDrugToWashOut }, 
+    };
   };
 }

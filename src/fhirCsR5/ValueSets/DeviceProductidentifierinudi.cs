@@ -72,9 +72,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBiologicalSource = "biological-source";
 
     /// <summary>
+    /// Literal for code: DeviceProductidentifierinudiBiologicalSource
+    /// </summary>
+    public const string LiteralDeviceProductidentifierinudiBiologicalSource = "http://terminology.hl7.org/CodeSystem/device-productidentifierinudi#biological-source";
+
+    /// <summary>
     /// Literal for code: ExpirationDate
     /// </summary>
     public const string LiteralExpirationDate = "expiration-date";
+
+    /// <summary>
+    /// Literal for code: DeviceProductidentifierinudiExpirationDate
+    /// </summary>
+    public const string LiteralDeviceProductidentifierinudiExpirationDate = "http://terminology.hl7.org/CodeSystem/device-productidentifierinudi#expiration-date";
 
     /// <summary>
     /// Literal for code: LotNumber
@@ -82,9 +92,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLotNumber = "lot-number";
 
     /// <summary>
+    /// Literal for code: DeviceProductidentifierinudiLotNumber
+    /// </summary>
+    public const string LiteralDeviceProductidentifierinudiLotNumber = "http://terminology.hl7.org/CodeSystem/device-productidentifierinudi#lot-number";
+
+    /// <summary>
     /// Literal for code: ManufacturedDate
     /// </summary>
     public const string LiteralManufacturedDate = "manufactured-date";
+
+    /// <summary>
+    /// Literal for code: DeviceProductidentifierinudiManufacturedDate
+    /// </summary>
+    public const string LiteralDeviceProductidentifierinudiManufacturedDate = "http://terminology.hl7.org/CodeSystem/device-productidentifierinudi#manufactured-date";
 
     /// <summary>
     /// Literal for code: SerialNumber
@@ -92,8 +112,36 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSerialNumber = "serial-number";
 
     /// <summary>
+    /// Literal for code: DeviceProductidentifierinudiSerialNumber
+    /// </summary>
+    public const string LiteralDeviceProductidentifierinudiSerialNumber = "http://terminology.hl7.org/CodeSystem/device-productidentifierinudi#serial-number";
+
+    /// <summary>
     /// Literal for code: SoftwareVersion
     /// </summary>
     public const string LiteralSoftwareVersion = "software-version";
+
+    /// <summary>
+    /// Literal for code: DeviceProductidentifierinudiSoftwareVersion
+    /// </summary>
+    public const string LiteralDeviceProductidentifierinudiSoftwareVersion = "http://terminology.hl7.org/CodeSystem/device-productidentifierinudi#software-version";
+
+    /// <summary>
+    /// Dictionary for looking up DeviceProductidentifierinudi Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "biological-source", BiologicalSource }, 
+      { "http://terminology.hl7.org/CodeSystem/device-productidentifierinudi#biological-source", BiologicalSource }, 
+      { "expiration-date", ExpirationDate }, 
+      { "http://terminology.hl7.org/CodeSystem/device-productidentifierinudi#expiration-date", ExpirationDate }, 
+      { "lot-number", LotNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/device-productidentifierinudi#lot-number", LotNumber }, 
+      { "manufactured-date", ManufacturedDate }, 
+      { "http://terminology.hl7.org/CodeSystem/device-productidentifierinudi#manufactured-date", ManufacturedDate }, 
+      { "serial-number", SerialNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/device-productidentifierinudi#serial-number", SerialNumber }, 
+      { "software-version", SoftwareVersion }, 
+      { "http://terminology.hl7.org/CodeSystem/device-productidentifierinudi#software-version", SoftwareVersion }, 
+    };
   };
 }

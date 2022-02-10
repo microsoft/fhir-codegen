@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralComposite = "composite";
 
     /// <summary>
+    /// Literal for code: MeasureTypeComposite
+    /// </summary>
+    public const string LiteralMeasureTypeComposite = "http://terminology.hl7.org/CodeSystem/measure-type#composite";
+
+    /// <summary>
     /// Literal for code: Outcome
     /// </summary>
     public const string LiteralOutcome = "outcome";
+
+    /// <summary>
+    /// Literal for code: MeasureTypeOutcome
+    /// </summary>
+    public const string LiteralMeasureTypeOutcome = "http://terminology.hl7.org/CodeSystem/measure-type#outcome";
 
     /// <summary>
     /// Literal for code: PatientReportedOutcome
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatientReportedOutcome = "patient-reported-outcome";
 
     /// <summary>
+    /// Literal for code: MeasureTypePatientReportedOutcome
+    /// </summary>
+    public const string LiteralMeasureTypePatientReportedOutcome = "http://terminology.hl7.org/CodeSystem/measure-type#patient-reported-outcome";
+
+    /// <summary>
     /// Literal for code: Process
     /// </summary>
     public const string LiteralProcess = "process";
 
     /// <summary>
+    /// Literal for code: MeasureTypeProcess
+    /// </summary>
+    public const string LiteralMeasureTypeProcess = "http://terminology.hl7.org/CodeSystem/measure-type#process";
+
+    /// <summary>
     /// Literal for code: Structure
     /// </summary>
     public const string LiteralStructure = "structure";
+
+    /// <summary>
+    /// Literal for code: MeasureTypeStructure
+    /// </summary>
+    public const string LiteralMeasureTypeStructure = "http://terminology.hl7.org/CodeSystem/measure-type#structure";
+
+    /// <summary>
+    /// Dictionary for looking up MeasureType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "composite", Composite }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-type#composite", Composite }, 
+      { "outcome", Outcome }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-type#outcome", Outcome }, 
+      { "patient-reported-outcome", PatientReportedOutcome }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-type#patient-reported-outcome", PatientReportedOutcome }, 
+      { "process", Process }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-type#process", Process }, 
+      { "structure", Structure }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-type#structure", Structure }, 
+    };
   };
 }

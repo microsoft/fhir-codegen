@@ -442,5 +442,9 @@ namespace fhirCsR4B.Models
   public static class ImmunizationEvaluationStatusCodes {
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "completed",
+      "entered-in-error",
+    };
   }
 }

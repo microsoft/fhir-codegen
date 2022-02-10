@@ -34,8 +34,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL900000000000003001 = "900000000000003001";
 
     /// <summary>
+    /// Literal for code: NONEVAL900000000000003001
+    /// </summary>
+    public const string LiteralNONEVAL900000000000003001 = "http://snomed.info/sct#900000000000003001";
+
+    /// <summary>
     /// Literal for code: VAL900000000000013009
     /// </summary>
     public const string LiteralVAL900000000000013009 = "900000000000013009";
+
+    /// <summary>
+    /// Literal for code: NONEVAL900000000000013009
+    /// </summary>
+    public const string LiteralNONEVAL900000000000013009 = "http://snomed.info/sct#900000000000013009";
+
+    /// <summary>
+    /// Dictionary for looking up DesignationUse Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "900000000000003001", VAL900000000000003001 }, 
+      { "http://snomed.info/sct#900000000000003001", VAL900000000000003001 }, 
+      { "900000000000013009", VAL900000000000013009 }, 
+      { "http://snomed.info/sct#900000000000013009", VAL900000000000013009 }, 
+    };
   };
 }

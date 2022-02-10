@@ -180,9 +180,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAuthorQuoteSSignature = "1.2.840.10065.1.12.1.1";
 
     /// <summary>
+    /// Literal for code: SignatureTypeAuthorQuoteSSignature
+    /// </summary>
+    public const string LiteralSignatureTypeAuthorQuoteSSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.1";
+
+    /// <summary>
     /// Literal for code: IdentityWitnessSignature
     /// </summary>
     public const string LiteralIdentityWitnessSignature = "1.2.840.10065.1.12.1.10";
+
+    /// <summary>
+    /// Literal for code: SignatureTypeIdentityWitnessSignature
+    /// </summary>
+    public const string LiteralSignatureTypeIdentityWitnessSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.10";
 
     /// <summary>
     /// Literal for code: ConsentWitnessSignature
@@ -190,9 +200,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConsentWitnessSignature = "1.2.840.10065.1.12.1.11";
 
     /// <summary>
+    /// Literal for code: SignatureTypeConsentWitnessSignature
+    /// </summary>
+    public const string LiteralSignatureTypeConsentWitnessSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.11";
+
+    /// <summary>
     /// Literal for code: InterpreterSignature
     /// </summary>
     public const string LiteralInterpreterSignature = "1.2.840.10065.1.12.1.12";
+
+    /// <summary>
+    /// Literal for code: SignatureTypeInterpreterSignature
+    /// </summary>
+    public const string LiteralSignatureTypeInterpreterSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.12";
 
     /// <summary>
     /// Literal for code: ReviewSignature
@@ -200,9 +220,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReviewSignature = "1.2.840.10065.1.12.1.13";
 
     /// <summary>
+    /// Literal for code: SignatureTypeReviewSignature
+    /// </summary>
+    public const string LiteralSignatureTypeReviewSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.13";
+
+    /// <summary>
     /// Literal for code: SourceSignature
     /// </summary>
     public const string LiteralSourceSignature = "1.2.840.10065.1.12.1.14";
+
+    /// <summary>
+    /// Literal for code: SignatureTypeSourceSignature
+    /// </summary>
+    public const string LiteralSignatureTypeSourceSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.14";
 
     /// <summary>
     /// Literal for code: AddendumSignature
@@ -210,9 +240,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAddendumSignature = "1.2.840.10065.1.12.1.15";
 
     /// <summary>
+    /// Literal for code: SignatureTypeAddendumSignature
+    /// </summary>
+    public const string LiteralSignatureTypeAddendumSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.15";
+
+    /// <summary>
     /// Literal for code: ModificationSignature
     /// </summary>
     public const string LiteralModificationSignature = "1.2.840.10065.1.12.1.16";
+
+    /// <summary>
+    /// Literal for code: SignatureTypeModificationSignature
+    /// </summary>
+    public const string LiteralSignatureTypeModificationSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.16";
 
     /// <summary>
     /// Literal for code: AdministrativeErrorEditSignature
@@ -220,9 +260,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdministrativeErrorEditSignature = "1.2.840.10065.1.12.1.17";
 
     /// <summary>
+    /// Literal for code: SignatureTypeAdministrativeErrorEditSignature
+    /// </summary>
+    public const string LiteralSignatureTypeAdministrativeErrorEditSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.17";
+
+    /// <summary>
     /// Literal for code: TimestampSignature
     /// </summary>
     public const string LiteralTimestampSignature = "1.2.840.10065.1.12.1.18";
+
+    /// <summary>
+    /// Literal for code: SignatureTypeTimestampSignature
+    /// </summary>
+    public const string LiteralSignatureTypeTimestampSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.18";
 
     /// <summary>
     /// Literal for code: CoauthorQuoteSSignature
@@ -230,9 +280,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoauthorQuoteSSignature = "1.2.840.10065.1.12.1.2";
 
     /// <summary>
+    /// Literal for code: SignatureTypeCoauthorQuoteSSignature
+    /// </summary>
+    public const string LiteralSignatureTypeCoauthorQuoteSSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.2";
+
+    /// <summary>
     /// Literal for code: CoParticipantQuoteSSignature
     /// </summary>
     public const string LiteralCoParticipantQuoteSSignature = "1.2.840.10065.1.12.1.3";
+
+    /// <summary>
+    /// Literal for code: SignatureTypeCoParticipantQuoteSSignature
+    /// </summary>
+    public const string LiteralSignatureTypeCoParticipantQuoteSSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.3";
 
     /// <summary>
     /// Literal for code: TranscriptionistRecorderSignature
@@ -240,9 +300,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTranscriptionistRecorderSignature = "1.2.840.10065.1.12.1.4";
 
     /// <summary>
+    /// Literal for code: SignatureTypeTranscriptionistRecorderSignature
+    /// </summary>
+    public const string LiteralSignatureTypeTranscriptionistRecorderSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.4";
+
+    /// <summary>
     /// Literal for code: VerificationSignature
     /// </summary>
     public const string LiteralVerificationSignature = "1.2.840.10065.1.12.1.5";
+
+    /// <summary>
+    /// Literal for code: SignatureTypeVerificationSignature
+    /// </summary>
+    public const string LiteralSignatureTypeVerificationSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.5";
 
     /// <summary>
     /// Literal for code: ValidationSignature
@@ -250,9 +320,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralValidationSignature = "1.2.840.10065.1.12.1.6";
 
     /// <summary>
+    /// Literal for code: SignatureTypeValidationSignature
+    /// </summary>
+    public const string LiteralSignatureTypeValidationSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.6";
+
+    /// <summary>
     /// Literal for code: ConsentSignature
     /// </summary>
     public const string LiteralConsentSignature = "1.2.840.10065.1.12.1.7";
+
+    /// <summary>
+    /// Literal for code: SignatureTypeConsentSignature
+    /// </summary>
+    public const string LiteralSignatureTypeConsentSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.7";
 
     /// <summary>
     /// Literal for code: SignatureWitnessSignature
@@ -260,8 +340,60 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSignatureWitnessSignature = "1.2.840.10065.1.12.1.8";
 
     /// <summary>
+    /// Literal for code: SignatureTypeSignatureWitnessSignature
+    /// </summary>
+    public const string LiteralSignatureTypeSignatureWitnessSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.8";
+
+    /// <summary>
     /// Literal for code: EventWitnessSignature
     /// </summary>
     public const string LiteralEventWitnessSignature = "1.2.840.10065.1.12.1.9";
+
+    /// <summary>
+    /// Literal for code: SignatureTypeEventWitnessSignature
+    /// </summary>
+    public const string LiteralSignatureTypeEventWitnessSignature = "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.9";
+
+    /// <summary>
+    /// Dictionary for looking up SignatureType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1.2.840.10065.1.12.1.1", AuthorQuoteSSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.1", AuthorQuoteSSignature }, 
+      { "1.2.840.10065.1.12.1.10", IdentityWitnessSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.10", IdentityWitnessSignature }, 
+      { "1.2.840.10065.1.12.1.11", ConsentWitnessSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.11", ConsentWitnessSignature }, 
+      { "1.2.840.10065.1.12.1.12", InterpreterSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.12", InterpreterSignature }, 
+      { "1.2.840.10065.1.12.1.13", ReviewSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.13", ReviewSignature }, 
+      { "1.2.840.10065.1.12.1.14", SourceSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.14", SourceSignature }, 
+      { "1.2.840.10065.1.12.1.15", AddendumSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.15", AddendumSignature }, 
+      { "1.2.840.10065.1.12.1.16", ModificationSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.16", ModificationSignature }, 
+      { "1.2.840.10065.1.12.1.17", AdministrativeErrorEditSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.17", AdministrativeErrorEditSignature }, 
+      { "1.2.840.10065.1.12.1.18", TimestampSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.18", TimestampSignature }, 
+      { "1.2.840.10065.1.12.1.2", CoauthorQuoteSSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.2", CoauthorQuoteSSignature }, 
+      { "1.2.840.10065.1.12.1.3", CoParticipantQuoteSSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.3", CoParticipantQuoteSSignature }, 
+      { "1.2.840.10065.1.12.1.4", TranscriptionistRecorderSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.4", TranscriptionistRecorderSignature }, 
+      { "1.2.840.10065.1.12.1.5", VerificationSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.5", VerificationSignature }, 
+      { "1.2.840.10065.1.12.1.6", ValidationSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.6", ValidationSignature }, 
+      { "1.2.840.10065.1.12.1.7", ConsentSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.7", ConsentSignature }, 
+      { "1.2.840.10065.1.12.1.8", SignatureWitnessSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.8", SignatureWitnessSignature }, 
+      { "1.2.840.10065.1.12.1.9", EventWitnessSignature }, 
+      { "urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.9", EventWitnessSignature }, 
+    };
   };
 }

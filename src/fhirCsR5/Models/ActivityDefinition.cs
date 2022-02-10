@@ -156,6 +156,18 @@ namespace fhirCsR5.Models
     public const string PRACTITIONER = "practitioner";
     public const string PRACTITIONERROLE = "practitionerrole";
     public const string RELATEDPERSON = "relatedperson";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "careteam",
+      "device",
+      "group",
+      "healthcareservice",
+      "location",
+      "organization",
+      "patient",
+      "practitioner",
+      "practitionerrole",
+      "relatedperson",
+    };
   }
   /// <summary>
   /// Dynamic values are applied in the order in which they are defined in the ActivityDefinition. Note that if both a transform and dynamic values are specified, the dynamic values will be applied to the result of the transform.
@@ -321,6 +333,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? DoNotPerform { get; set; }
     /// <summary>
+    /// Extension container element for DoNotPerform
+    /// </summary>
+    public Element _DoNotPerform { get; set; }
+    /// <summary>
     /// If a dosage instruction is used, the definition should not specify timing or quantity.
     /// </summary>
     public List<Dosage> Dosage { get; set; }
@@ -344,6 +360,10 @@ namespace fhirCsR5.Models
     /// Allows filtering of activity definitions that are appropriate for use versus not.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// Typically, this is used for identifiers that can go in an HL7 V3 II (instance identifier) data type, and can then identify this activity definition outside of FHIR, where it is not possible to use the logical URI.
     /// </summary>
@@ -663,6 +683,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("experimental", (bool)Experimental!);
       }
 
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
+      }
+
       if (SubjectCodeableConcept != null)
       {
         writer.WritePropertyName("subjectCodeableConcept");
@@ -978,6 +1004,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("doNotPerform", (bool)DoNotPerform!);
       }
 
+      if (_DoNotPerform != null)
+      {
+        writer.WritePropertyName("_doNotPerform");
+        _DoNotPerform.SerializeJson(writer, options);
+      }
+
       if (TimingTiming != null)
       {
         writer.WritePropertyName("timingTiming");
@@ -1266,6 +1298,11 @@ namespace fhirCsR5.Models
           DoNotPerform = reader.GetBoolean();
           break;
 
+        case "_doNotPerform":
+          _DoNotPerform = new fhirCsR5.Models.Element();
+          _DoNotPerform.DeserializeJson(ref reader, options);
+          break;
+
         case "dosage":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -1381,6 +1418,11 @@ namespace fhirCsR5.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR5.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "identifier":
@@ -1943,6 +1985,17 @@ namespace fhirCsR5.Models
     public const string FILLER_ORDER = "filler-order";
     public const string INSTANCE_ORDER = "instance-order";
     public const string OPTION = "option";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposal",
+      "plan",
+      "directive",
+      "order",
+      "original-order",
+      "reflex-order",
+      "filler-order",
+      "instance-order",
+      "option",
+    };
   }
   /// <summary>
   /// Code Values for the ActivityDefinition.priority field
@@ -1952,6 +2005,12 @@ namespace fhirCsR5.Models
     public const string URGENT = "urgent";
     public const string ASAP = "asap";
     public const string STAT = "stat";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "routine",
+      "urgent",
+      "asap",
+      "stat",
+    };
   }
   /// <summary>
   /// Code Values for the ActivityDefinition.status field
@@ -1961,5 +2020,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

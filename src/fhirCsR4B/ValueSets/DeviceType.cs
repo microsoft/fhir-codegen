@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class DeviceTypeCodes
   {
     /// <summary>
-    /// 
+    /// Vascular prosthesis
     /// </summary>
     public static readonly Coding VascularProsthesis = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Measuring ruler
     /// </summary>
     public static readonly Coding MeasuringRuler = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intramedullary reamer
     /// </summary>
     public static readonly Coding IntramedullaryReamer = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reamer
     /// </summary>
     public static readonly Coding Reamer = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical knife
     /// </summary>
     public static readonly Coding SurgicalKnife = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scalpel
     /// </summary>
     public static readonly Coding Scalpel = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical saw
     /// </summary>
     public static readonly Coding SurgicalSaw = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gigli's wire saw
     /// </summary>
     public static readonly Coding GigliQuoteSWireSaw = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Starck dilator
     /// </summary>
     public static readonly Coding StarckDilator = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atherectomy device
     /// </summary>
     public static readonly Coding AtherectomyDevice = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rotational atherectomy device
     /// </summary>
     public static readonly Coding RotationalAtherectomyDevice = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Embolization coil
     /// </summary>
     public static readonly Coding EmbolizationCoil = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Embolization ball
     /// </summary>
     public static readonly Coding EmbolizationBall = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Embolization particulate
     /// </summary>
     public static readonly Coding EmbolizationParticulate = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Guiding catheter
     /// </summary>
     public static readonly Coding GuidingCatheter = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantable venous catheter
     /// </summary>
     public static readonly Coding ImplantableVenousCatheter = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous transluminal angioplasty balloon
     /// </summary>
     public static readonly Coding PercutaneousTransluminalAngioplastyBalloon = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Detachable balloon
     /// </summary>
     public static readonly Coding DetachableBalloon = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Operating microscope
     /// </summary>
     public static readonly Coding OperatingMicroscope = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// External prosthesis for sonographic procedure
     /// </summary>
     public static readonly Coding ExternalProsthesisForSonographicProcedure = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Water bag prosthesis for imaging procedure
     /// </summary>
     public static readonly Coding WaterBagProsthesisForImagingProcedure = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Saline bag prosthesis for imaging procedure
     /// </summary>
     public static readonly Coding SalineBagProsthesisForImagingProcedure = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gel prosthesis for imaging procedure
     /// </summary>
     public static readonly Coding GelProsthesisForImagingProcedure = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dagger
     /// </summary>
     public static readonly Coding Dagger = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dirk
     /// </summary>
     public static readonly Coding Dirk = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sword
     /// </summary>
     public static readonly Coding Sword = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Motor vehicle airbag
     /// </summary>
     public static readonly Coding MotorVehicleAirbag = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Front airbag
     /// </summary>
     public static readonly Coding FrontAirbag = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Front driver airbag
     /// </summary>
     public static readonly Coding FrontDriverAirbag = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Front passenger airbag
     /// </summary>
     public static readonly Coding FrontPassengerAirbag = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Side airbag
     /// </summary>
     public static readonly Coding SideAirbag = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Snowboard
     /// </summary>
     public static readonly Coding Snowboard = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Water ski
     /// </summary>
     public static readonly Coding WaterSki = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Needle guide
     /// </summary>
     public static readonly Coding NeedleGuide = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrostimulating analgesia unit
     /// </summary>
     public static readonly Coding ElectrostimulatingAnalgesiaUnit = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toeboard
     /// </summary>
     public static readonly Coding Toeboard = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Life support equipment
     /// </summary>
     public static readonly Coding LifeSupportEquipment = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adhesive, bandage AND/OR suture
     /// </summary>
     public static readonly Coding AdhesiveBandageANDORSuture = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Belt AND/OR binder
     /// </summary>
     public static readonly Coding BeltANDORBinder = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Probe, sound, bougie AND/OR airway
     /// </summary>
     public static readonly Coding ProbeSoundBougieANDORAirway = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cannula, tube AND/OR catheter
     /// </summary>
     public static readonly Coding CannulaTubeANDORCatheter = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bag, balloon AND/OR bottle
     /// </summary>
     public static readonly Coding BagBalloonANDORBottle = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pump, injector AND/OR aspirator
     /// </summary>
     public static readonly Coding PumpInjectorANDORAspirator = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Analgesia AND/OR anesthesia unit
     /// </summary>
     public static readonly Coding AnalgesiaANDORAnesthesiaUnit = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scope AND/OR camera
     /// </summary>
     public static readonly Coding ScopeANDORCamera = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physical restraint equipment AND/OR structure
     /// </summary>
     public static readonly Coding PhysicalRestraintEquipmentANDORStructure = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Industrial saw
     /// </summary>
     public static readonly Coding IndustrialSaw = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiographic-therapeutic unit
     /// </summary>
     public static readonly Coding RadiographicTherapeuticUnit = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Silicone plug
     /// </summary>
     public static readonly Coding SiliconePlug = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tear test strip kit
     /// </summary>
     public static readonly Coding TearTestStripKit = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vein stripper
     /// </summary>
     public static readonly Coding VeinStripper = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Albumin test kit
     /// </summary>
     public static readonly Coding AlbuminTestKit = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bacteriuria test kit
     /// </summary>
     public static readonly Coding BacteriuriaTestKit = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilirubin test kit
     /// </summary>
     public static readonly Coding BilirubinTestKit = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood urea nitrogen test kit
     /// </summary>
     public static readonly Coding BloodUreaNitrogenTestKit = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Candida test kit
     /// </summary>
     public static readonly Coding CandidaTestKit = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chlamydia trachomatis test kit
     /// </summary>
     public static readonly Coding ChlamydiaTrachomatisTestKit = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cholesterol test kit
     /// </summary>
     public static readonly Coding CholesterolTestKit = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Color allergy screening test kit
     /// </summary>
     public static readonly Coding ColorAllergyScreeningTestKit = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cryptococcal antigen test kit
     /// </summary>
     public static readonly Coding CryptococcalAntigenTestKit = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urine glucose test kit
     /// </summary>
     public static readonly Coding UrineGlucoseTestKit = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gonorrhea test kit
     /// </summary>
     public static readonly Coding GonorrheaTestKit = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hematocrit/hemoglobin test kit
     /// </summary>
     public static readonly Coding HematocritHemoglobinTestKit = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Human immunodeficiency virus test kit
     /// </summary>
     public static readonly Coding HumanImmunodeficiencyVirusTestKit = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Meningitis test kit
     /// </summary>
     public static readonly Coding MeningitisTestKit = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mononucleosis test kit
     /// </summary>
     public static readonly Coding MononucleosisTestKit = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occult blood screening test kit
     /// </summary>
     public static readonly Coding OccultBloodScreeningTestKit = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ovulation test kit
     /// </summary>
     public static readonly Coding OvulationTestKit = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pregnancy test kit
     /// </summary>
     public static readonly Coding PregnancyTestKit = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rheumatoid factor test kit
     /// </summary>
     public static readonly Coding RheumatoidFactorTestKit = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sickle cell test kit
     /// </summary>
     public static readonly Coding SickleCellTestKit = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Staphylococcus test kit
     /// </summary>
     public static readonly Coding StaphylococcusTestKit = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Streptococci test kit
     /// </summary>
     public static readonly Coding StreptococciTestKit = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toxoplasmosis test kit
     /// </summary>
     public static readonly Coding ToxoplasmosisTestKit = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Virus test kit
     /// </summary>
     public static readonly Coding VirusTestKit = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental pin
     /// </summary>
     public static readonly Coding DentalPin = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hand joint prosthesis
     /// </summary>
     public static readonly Coding HandJointProsthesis = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Knee joint prosthesis
     /// </summary>
     public static readonly Coding KneeJointProsthesis = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Artificial nails
     /// </summary>
     public static readonly Coding ArtificialNails = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Artificial organ
     /// </summary>
     public static readonly Coding ArtificialOrgan = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical tuning fork
     /// </summary>
     public static readonly Coding MedicalTuningFork = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone tap
     /// </summary>
     public static readonly Coding BoneTap = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Exerciser
     /// </summary>
     public static readonly Coding Exerciser = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urethral bougie
     /// </summary>
     public static readonly Coding UrethralBougie = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rhinoscope
     /// </summary>
     public static readonly Coding Rhinoscope = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protective breast plate
     /// </summary>
     public static readonly Coding ProtectiveBreastPlate = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Industrial sewing machine
     /// </summary>
     public static readonly Coding IndustrialSewingMachine = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Food waste disposal equipment
     /// </summary>
     public static readonly Coding FoodWasteDisposalEquipment = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone growth stimulator
     /// </summary>
     public static readonly Coding BoneGrowthStimulator = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electromyographic monitor and recorder
     /// </summary>
     public static readonly Coding ElectromyographicMonitorAndRecorder = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prosthetic valve
     /// </summary>
     public static readonly Coding ProstheticValve = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soft Cast
     /// </summary>
     public static readonly Coding SoftCast = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fiberglass cast
     /// </summary>
     public static readonly Coding FiberglassCast = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood product unit
     /// </summary>
     public static readonly Coding BloodProductUnit = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Catheter tip
     /// </summary>
     public static readonly Coding CatheterTip = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood bag
     /// </summary>
     public static readonly Coding BloodBag = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plasma bag
     /// </summary>
     public static readonly Coding PlasmaBag = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Filter
     /// </summary>
     public static readonly Coding Filter = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wick
     /// </summary>
     public static readonly Coding Wick = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Solid-state laser
     /// </summary>
     public static readonly Coding SolidStateLaser = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gas laser
     /// </summary>
     public static readonly Coding GasLaser = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chemical laser
     /// </summary>
     public static readonly Coding ChemicalLaser = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excimer laser
     /// </summary>
     public static readonly Coding ExcimerLaser = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dye laser
     /// </summary>
     public static readonly Coding DyeLaser = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diode laser device
     /// </summary>
     public static readonly Coding DiodeLaserDevice = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nd:YVO&gt;4&lt; laser
     /// </summary>
     public static readonly Coding NdYVOGreaterThan4LessThanLaser = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nd:YLF laser
     /// </summary>
     public static readonly Coding NdYLFLaser = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nd:Glass laser
     /// </summary>
     public static readonly Coding NdGlassLaser = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chromium sapphire laser device
     /// </summary>
     public static readonly Coding ChromiumSapphireLaserDevice = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Er:Glass laser
     /// </summary>
     public static readonly Coding ErGlassLaser = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Er:YAG laser
     /// </summary>
     public static readonly Coding ErYAGLaser = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ho:YLF laser
     /// </summary>
     public static readonly Coding HoYLFLaser = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ho:YAG laser
     /// </summary>
     public static readonly Coding HoYAGLaser = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ti:sapphire laser device
     /// </summary>
     public static readonly Coding TiSapphireLaserDevice = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alexandrite laser
     /// </summary>
     public static readonly Coding AlexandriteLaser = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Argon ion laser
     /// </summary>
     public static readonly Coding ArgonIonLaser = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CO&gt;2&lt; laser
     /// </summary>
     public static readonly Coding COGreaterThan2LessThanLaser = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// He laser
     /// </summary>
     public static readonly Coding HeLaser = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Helium cadmium laser
     /// </summary>
     public static readonly Coding HeliumCadmiumLaser = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// HeNe laser
     /// </summary>
     public static readonly Coding HeNeLaser = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Krypton gas laser
     /// </summary>
     public static readonly Coding KryptonGasLaser = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neon gas laser
     /// </summary>
     public static readonly Coding NeonGasLaser = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nitrogen gas laser
     /// </summary>
     public static readonly Coding NitrogenGasLaser = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Xenon gas laser
     /// </summary>
     public static readonly Coding XenonGasLaser = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Copper vapor laser
     /// </summary>
     public static readonly Coding CopperVaporLaser = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gold vapor laser
     /// </summary>
     public static readonly Coding GoldVaporLaser = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// DF laser
     /// </summary>
     public static readonly Coding DFLaser = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// DF-CO&gt;2&lt; laser device
     /// </summary>
     public static readonly Coding DFCOGreaterThan2LessThanLaserDevice = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// HF laser
     /// </summary>
     public static readonly Coding HFLaser = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// ArF laser
     /// </summary>
     public static readonly Coding ArFLaser = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// KrF laser
     /// </summary>
     public static readonly Coding KrFLaser = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// KrCl laser
     /// </summary>
     public static readonly Coding KrClLaser = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// XeCl laser
     /// </summary>
     public static readonly Coding XeClLaser = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// XeFl laser
     /// </summary>
     public static readonly Coding XeFlLaser = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Free electron laser
     /// </summary>
     public static readonly Coding FreeElectronLaser = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tunable dye laser
     /// </summary>
     public static readonly Coding TunableDyeLaser = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tunable dye argon laser
     /// </summary>
     public static readonly Coding TunableDyeArgonLaser = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gallium arsenide laser
     /// </summary>
     public static readonly Coding GalliumArsenideLaser = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gallium aluminum arsenide laser
     /// </summary>
     public static readonly Coding GalliumAluminumArsenideLaser = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lead-salt laser
     /// </summary>
     public static readonly Coding LeadSaltLaser = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rhodamine 6G dye laser
     /// </summary>
     public static readonly Coding Rhodamine6GDyeLaser = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coumarin C30 dye laser
     /// </summary>
     public static readonly Coding CoumarinC30DyeLaser = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coumarin 102 dye laser
     /// </summary>
     public static readonly Coding Coumarin102DyeLaser = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diode pumped laser
     /// </summary>
     public static readonly Coding DiodePumpedLaser = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flashlamp pumped laser device
     /// </summary>
     public static readonly Coding FlashlampPumpedLaserDevice = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulsed dye laser
     /// </summary>
     public static readonly Coding PulsedDyeLaser = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// QS laser
     /// </summary>
     public static readonly Coding QSLaser = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flashlamp pulsed dye laser
     /// </summary>
     public static readonly Coding FlashlampPulsedDyeLaser = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// CW CO&gt;2&lt; laser
     /// </summary>
     public static readonly Coding CWCOGreaterThan2LessThanLaser = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// High energy pulsed CO&gt;2&lt; laser
     /// </summary>
     public static readonly Coding HighEnergyPulsedCOGreaterThan2LessThanLaser = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frequency doubled Nd:YAG laser
     /// </summary>
     public static readonly Coding FrequencyDoubledNdYAGLaser = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Continuous wave laser
     /// </summary>
     public static readonly Coding ContinuousWaveLaser = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulsed laser
     /// </summary>
     public static readonly Coding PulsedLaser = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metal vapor laser
     /// </summary>
     public static readonly Coding MetalVaporLaser = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// KTP laser
     /// </summary>
     public static readonly Coding KTPLaser = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ion laser
     /// </summary>
     public static readonly Coding IonLaser = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plastic implant
     /// </summary>
     public static readonly Coding PlasticImplant = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Silastic implant
     /// </summary>
     public static readonly Coding SilasticImplant = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Silicone implant
     /// </summary>
     public static readonly Coding SiliconeImplant = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac septum prosthesis
     /// </summary>
     public static readonly Coding CardiacSeptumProsthesis = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thermocouple
     /// </summary>
     public static readonly Coding Thermocouple = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biopsy needle
     /// </summary>
     public static readonly Coding BiopsyNeedle = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pacemaker pulse generator
     /// </summary>
     public static readonly Coding PacemakerPulseGenerator = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Automatic implantable cardioverter sensing electrodes
     /// </summary>
     public static readonly Coding AutomaticImplantableCardioverterSensingElectrodes = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantable defibrillator leads
     /// </summary>
     public static readonly Coding ImplantableDefibrillatorLeads = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantable cardioverter leads
     /// </summary>
     public static readonly Coding ImplantableCardioverterLeads = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// External fixation device
     /// </summary>
     public static readonly Coding ExternalFixationDevice = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long arm splint
     /// </summary>
     public static readonly Coding LongArmSplint = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Short arm splint
     /// </summary>
     public static readonly Coding ShortArmSplint = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Figure of eight plaster cast
     /// </summary>
     public static readonly Coding FigureOfEightPlasterCast = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Halo cast
     /// </summary>
     public static readonly Coding HaloCast = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Body cast, shoulder to hips
     /// </summary>
     public static readonly Coding BodyCastShoulderToHips = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Body cast, shoulder to hips including head, Minerva type
     /// </summary>
     public static readonly Coding BodyCastShoulderToHipsIncludingHeadMinervaType = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Body cast, shoulder to hips including one thigh
     /// </summary>
     public static readonly Coding BodyCastShoulderToHipsIncludingOneThigh = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Body cast, shoulder to hips including both thighs
     /// </summary>
     public static readonly Coding BodyCastShoulderToHipsIncludingBothThighs = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shoulder cast
     /// </summary>
     public static readonly Coding ShoulderCast = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Full arm cast
     /// </summary>
     public static readonly Coding FullArmCast = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Below elbow cast
     /// </summary>
     public static readonly Coding BelowElbowCast = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cylinder cast, thigh to ankle
     /// </summary>
     public static readonly Coding CylinderCastThighToAnkle = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long leg cast
     /// </summary>
     public static readonly Coding LongLegCast = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long leg cast, walker or ambulatory type
     /// </summary>
     public static readonly Coding LongLegCastWalkerOrAmbulatoryType = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long leg cast, brace type
     /// </summary>
     public static readonly Coding LongLegCastBraceType = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Short leg cast below knee to toes
     /// </summary>
     public static readonly Coding ShortLegCastBelowKneeToToes = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Short leg cast below knee to toes, walking or ambulatory type
     /// </summary>
     public static readonly Coding ShortLegCastBelowKneeToToesWalkingOrAmbulatoryType = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clubfoot cast
     /// </summary>
     public static readonly Coding ClubfootCast = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clubfoot cast, short leg
     /// </summary>
     public static readonly Coding ClubfootCastShortLeg = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clubfoot cast, long leg
     /// </summary>
     public static readonly Coding ClubfootCastLongLeg = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spica cast
     /// </summary>
     public static readonly Coding SpicaCast = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hip spica cast, both legs
     /// </summary>
     public static readonly Coding HipSpicaCastBothLegs = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hip spica cast, one leg
     /// </summary>
     public static readonly Coding HipSpicaCastOneLeg = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hip spica cast, one and one-half spica
     /// </summary>
     public static readonly Coding HipSpicaCastOneAndOneHalfSpica = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patellar tendon bearing cast
     /// </summary>
     public static readonly Coding PatellarTendonBearingCast = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boot cast
     /// </summary>
     public static readonly Coding BootCast = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sugar tong cast
     /// </summary>
     public static readonly Coding SugarTongCast = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gauntlet cast
     /// </summary>
     public static readonly Coding GauntletCast = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Body cast
     /// </summary>
     public static readonly Coding BodyCast = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pressure dressing
     /// </summary>
     public static readonly Coding PressureDressing = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Packing material
     /// </summary>
     public static readonly Coding PackingMaterial = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wound packing material
     /// </summary>
     public static readonly Coding WoundPackingMaterial = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trocar
     /// </summary>
     public static readonly Coding Trocar = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Umbrella device
     /// </summary>
     public static readonly Coding UmbrellaDevice = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atrial septal umbrella
     /// </summary>
     public static readonly Coding AtrialSeptalUmbrella = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// King-Mills umbrella device
     /// </summary>
     public static readonly Coding KingMillsUmbrellaDevice = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mobitz-Uddin umbrella device
     /// </summary>
     public static readonly Coding MobitzUddinUmbrellaDevice = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rashkind umbrella device
     /// </summary>
     public static readonly Coding RashkindUmbrellaDevice = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reservoir device
     /// </summary>
     public static readonly Coding ReservoirDevice = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ventricular reservoir
     /// </summary>
     public static readonly Coding VentricularReservoir = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ommaya reservoir
     /// </summary>
     public static readonly Coding OmmayaReservoir = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rickham reservoir
     /// </summary>
     public static readonly Coding RickhamReservoir = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flexible fiberoptic endoscope
     /// </summary>
     public static readonly Coding FlexibleFiberopticEndoscope = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flexible fiberoptic laryngoscope with strobe
     /// </summary>
     public static readonly Coding FlexibleFiberopticLaryngoscopeWithStrobe = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cast
     /// </summary>
     public static readonly Coding Cast = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical chemistry analyzer
     /// </summary>
     public static readonly Coding ClinicalChemistryAnalyzer = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Treadmill
     /// </summary>
     public static readonly Coding Treadmill = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cannula
     /// </summary>
     public static readonly Coding Cannula = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arm prosthesis
     /// </summary>
     public static readonly Coding ArmProsthesis = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ice skate
     /// </summary>
     public static readonly Coding IceSkate = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laser
     /// </summary>
     public static readonly Coding Laser = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Silk suture
     /// </summary>
     public static readonly Coding SilkSuture = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jejunostomy tube
     /// </summary>
     public static readonly Coding JejunostomyTube = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Baffle
     /// </summary>
     public static readonly Coding Baffle = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intra-aortic balloon pump
     /// </summary>
     public static readonly Coding IntraAorticBalloonPump = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tracheostomy tube
     /// </summary>
     public static readonly Coding TracheostomyTube = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fine biopsy needle
     /// </summary>
     public static readonly Coding FineBiopsyNeedle = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Core biopsy needle
     /// </summary>
     public static readonly Coding CoreBiopsyNeedle = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Compression paddle
     /// </summary>
     public static readonly Coding CompressionPaddle = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Catheter guide wire
     /// </summary>
     public static readonly Coding CatheterGuideWire = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// J wire
     /// </summary>
     public static readonly Coding JWire = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical administrative equipment
     /// </summary>
     public static readonly Coding MedicalAdministrativeEquipment = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical record
     /// </summary>
     public static readonly Coding MedicalRecord = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient chart
     /// </summary>
     public static readonly Coding PatientChart = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Identification plate
     /// </summary>
     public static readonly Coding IdentificationPlate = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// File
     /// </summary>
     public static readonly Coding File = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wool cloth
     /// </summary>
     public static readonly Coding WoolCloth = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastroscope
     /// </summary>
     public static readonly Coding Gastroscope = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Monitor
     /// </summary>
     public static readonly Coding Monitor = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Emesis basin
     /// </summary>
     public static readonly Coding EmesisBasin = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Temporary artificial heart prosthesis
     /// </summary>
     public static readonly Coding TemporaryArtificialHeartProsthesis = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sterile absorbent dressing pad
     /// </summary>
     public static readonly Coding SterileAbsorbentDressingPad = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wound drainage pouch dressing
     /// </summary>
     public static readonly Coding WoundDrainagePouchDressing = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Uterine sound
     /// </summary>
     public static readonly Coding UterineSound = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pillow
     /// </summary>
     public static readonly Coding Pillow = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tennis ball
     /// </summary>
     public static readonly Coding TennisBall = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac pacemaker
     /// </summary>
     public static readonly Coding CardiacPacemaker = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cage
     /// </summary>
     public static readonly Coding Cage = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Analgesia unit
     /// </summary>
     public static readonly Coding AnalgesiaUnit = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oil well
     /// </summary>
     public static readonly Coding OilWell = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plastic mold
     /// </summary>
     public static readonly Coding PlasticMold = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal septum button
     /// </summary>
     public static readonly Coding NasalSeptumButton = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Button
     /// </summary>
     public static readonly Coding Button = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Camera
     /// </summary>
     public static readonly Coding Camera = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adhesive bandage
     /// </summary>
     public static readonly Coding AdhesiveBandage = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aspirator
     /// </summary>
     public static readonly Coding Aspirator = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Harrington rod
     /// </summary>
     public static readonly Coding HarringtonRod = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alloy steel chain sling
     /// </summary>
     public static readonly Coding AlloySteelChainSling = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prosthetic implant
     /// </summary>
     public static readonly Coding ProstheticImplant = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Air-conditioner
     /// </summary>
     public static readonly Coding AirConditioner = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wood's light
     /// </summary>
     public static readonly Coding WoodQuoteSLight = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Joint prosthesis
     /// </summary>
     public static readonly Coding JointProsthesis = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spine board
     /// </summary>
     public static readonly Coding SpineBoard = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anesthesia unit
     /// </summary>
     public static readonly Coding AnesthesiaUnit = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical drill
     /// </summary>
     public static readonly Coding SurgicalDrill = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dosimeter
     /// </summary>
     public static readonly Coding Dosimeter = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boiler
     /// </summary>
     public static readonly Coding Boiler = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gown
     /// </summary>
     public static readonly Coding Gown = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boots
     /// </summary>
     public static readonly Coding Boots = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthopedic device
     /// </summary>
     public static readonly Coding OrthopedicDevice = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Commercial breathing supply hoses diving operation
     /// </summary>
     public static readonly Coding CommercialBreathingSupplyHosesDivingOperation = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrode
     /// </summary>
     public static readonly Coding Electrode = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electric clipper
     /// </summary>
     public static readonly Coding ElectricClipper = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cotton cloth
     /// </summary>
     public static readonly Coding CottonCloth = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Umbrella catheter
     /// </summary>
     public static readonly Coding UmbrellaCatheter = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Splint
     /// </summary>
     public static readonly Coding Splint = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Home nebulizer
     /// </summary>
     public static readonly Coding HomeNebulizer = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasogastric tube
     /// </summary>
     public static readonly Coding NasogastricTube = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mitral valve prosthesis
     /// </summary>
     public static readonly Coding MitralValveProsthesis = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mattress
     /// </summary>
     public static readonly Coding Mattress = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hernia belt
     /// </summary>
     public static readonly Coding HerniaBelt = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac compression board
     /// </summary>
     public static readonly Coding CardiacCompressionBoard = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Knife
     /// </summary>
     public static readonly Coding Knife = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toboggan
     /// </summary>
     public static readonly Coding Toboggan = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Punch
     /// </summary>
     public static readonly Coding Punch = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fluorescence immunoassay analyzer
     /// </summary>
     public static readonly Coding FluorescenceImmunoassayAnalyzer = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plaster jacket
     /// </summary>
     public static readonly Coding PlasterJacket = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shoulder spica
     /// </summary>
     public static readonly Coding ShoulderSpica = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Humeral U-slab
     /// </summary>
     public static readonly Coding HumeralUSlab = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long arm slab
     /// </summary>
     public static readonly Coding LongArmSlab = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Humeral hanging slab
     /// </summary>
     public static readonly Coding HumeralHangingSlab = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Forearm slab
     /// </summary>
     public static readonly Coding ForearmSlab = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scaphoid cast
     /// </summary>
     public static readonly Coding ScaphoidCast = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bennett cast
     /// </summary>
     public static readonly Coding BennettCast = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hip spica
     /// </summary>
     public static readonly Coding HipSpica = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Long leg spica
     /// </summary>
     public static readonly Coding LongLegSpica = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Below knee non-weight-bearing cast
     /// </summary>
     public static readonly Coding BelowKneeNonWeightBearingCast = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Below knee weight-bearing cast
     /// </summary>
     public static readonly Coding BelowKneeWeightBearingCast = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plaster stripper
     /// </summary>
     public static readonly Coding PlasterStripper = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Humeral brace
     /// </summary>
     public static readonly Coding HumeralBrace = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Functional elbow brace
     /// </summary>
     public static readonly Coding FunctionalElbowBrace = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Forearm brace
     /// </summary>
     public static readonly Coding ForearmBrace = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hip brace
     /// </summary>
     public static readonly Coding HipBrace = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Femoral brace
     /// </summary>
     public static readonly Coding FemoralBrace = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tibial brace
     /// </summary>
     public static readonly Coding TibialBrace = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Body support
     /// </summary>
     public static readonly Coding BodySupport = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spinal frame
     /// </summary>
     public static readonly Coding SpinalFrame = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corset support
     /// </summary>
     public static readonly Coding CorsetSupport = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac bed
     /// </summary>
     public static readonly Coding CardiacBed = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Water bed
     /// </summary>
     public static readonly Coding WaterBed = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// High air loss bed
     /// </summary>
     public static readonly Coding HighAirLossBed = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Automated drug microinjector
     /// </summary>
     public static readonly Coding AutomatedDrugMicroinjector = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental aid
     /// </summary>
     public static readonly Coding DentalAid = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear fitting hearing aid
     /// </summary>
     public static readonly Coding EarFittingHearingAid = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mobility aids
     /// </summary>
     public static readonly Coding MobilityAids = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inshoe orthosis
     /// </summary>
     public static readonly Coding InshoeOrthosis = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical stockings
     /// </summary>
     public static readonly Coding SurgicalStockings = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antiembolic stockings
     /// </summary>
     public static readonly Coding AntiembolicStockings = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// ZF - Zimmer frame
     /// </summary>
     public static readonly Coding ZFZimmerFrame = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tripod
     /// </summary>
     public static readonly Coding Tripod = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// RGO - Reciprocating gait orthosis
     /// </summary>
     public static readonly Coding RGOReciprocatingGaitOrthosis = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hip guidance orthosis
     /// </summary>
     public static readonly Coding HipGuidanceOrthosis = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Standing frame
     /// </summary>
     public static readonly Coding StandingFrame = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hip abduction orthosis
     /// </summary>
     public static readonly Coding HipAbductionOrthosis = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hip-knee-ankle-foot orthosis
     /// </summary>
     public static readonly Coding HipKneeAnkleFootOrthosis = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Knee-ankle-foot orthosis
     /// </summary>
     public static readonly Coding KneeAnkleFootOrthosis = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flexible knee support
     /// </summary>
     public static readonly Coding FlexibleKneeSupport = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Collateral ligament brace
     /// </summary>
     public static readonly Coding CollateralLigamentBrace = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior cruciate ligament brace
     /// </summary>
     public static readonly Coding AnteriorCruciateLigamentBrace = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior cruciate ligament brace
     /// </summary>
     public static readonly Coding PosteriorCruciateLigamentBrace = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ground reaction orthosis
     /// </summary>
     public static readonly Coding GroundReactionOrthosis = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rigid ankle-foot orthosis
     /// </summary>
     public static readonly Coding RigidAnkleFootOrthosis = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flexible ankle-foot orthosis
     /// </summary>
     public static readonly Coding FlexibleAnkleFootOrthosis = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Double below-knee iron
     /// </summary>
     public static readonly Coding DoubleBelowKneeIron = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inside iron
     /// </summary>
     public static readonly Coding InsideIron = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Outside iron
     /// </summary>
     public static readonly Coding OutsideIron = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inside T-strap
     /// </summary>
     public static readonly Coding InsideTStrap = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hindquarter prosthesis
     /// </summary>
     public static readonly Coding HindquarterProsthesis = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hip disarticulation prosthesis
     /// </summary>
     public static readonly Coding HipDisarticulationProsthesis = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Above knee prosthesis
     /// </summary>
     public static readonly Coding AboveKneeProsthesis = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Through knee prosthesis
     /// </summary>
     public static readonly Coding ThroughKneeProsthesis = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Below knee prosthesis
     /// </summary>
     public static readonly Coding BelowKneeProsthesis = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Syme's prosthesis
     /// </summary>
     public static readonly Coding SymeQuoteSProsthesis = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Midfoot amputation prosthesis
     /// </summary>
     public static readonly Coding MidfootAmputationProsthesis = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shoe filler
     /// </summary>
     public static readonly Coding ShoeFiller = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Milwaukee brace
     /// </summary>
     public static readonly Coding MilwaukeeBrace = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boston brace
     /// </summary>
     public static readonly Coding BostonBrace = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jewett brace
     /// </summary>
     public static readonly Coding JewettBrace = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Halo device
     /// </summary>
     public static readonly Coding HaloDevice = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Four poster brace
     /// </summary>
     public static readonly Coding FourPosterBrace = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rigid collar
     /// </summary>
     public static readonly Coding RigidCollar = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flexible collar
     /// </summary>
     public static readonly Coding FlexibleCollar = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shoulder abduction brace
     /// </summary>
     public static readonly Coding ShoulderAbductionBrace = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elbow brace
     /// </summary>
     public static readonly Coding ElbowBrace = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Passive wrist extension splint
     /// </summary>
     public static readonly Coding PassiveWristExtensionSplint = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Active wrist extension splint
     /// </summary>
     public static readonly Coding ActiveWristExtensionSplint = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Passive finger extension splint
     /// </summary>
     public static readonly Coding PassiveFingerExtensionSplint = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Active finger extension splint
     /// </summary>
     public static readonly Coding ActiveFingerExtensionSplint = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kleinert traction (physical object)
     /// </summary>
     public static readonly Coding KleinertTractionPhysicalObject = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Passive thumb splint
     /// </summary>
     public static readonly Coding PassiveThumbSplint = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Active thumb splint
     /// </summary>
     public static readonly Coding ActiveThumbSplint = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shin splint
     /// </summary>
     public static readonly Coding ShinSplint = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Excretory control aid
     /// </summary>
     public static readonly Coding ExcretoryControlAid = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Facial non-surgical prosthesis
     /// </summary>
     public static readonly Coding FacialNonSurgicalProsthesis = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breast non-surgical prosthesis
     /// </summary>
     public static readonly Coding BreastNonSurgicalProsthesis = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Self-propelled wheelchair
     /// </summary>
     public static readonly Coding SelfPropelledWheelchair = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pedal powered wheelchair
     /// </summary>
     public static readonly Coding PedalPoweredWheelchair = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Attendant powered wheelchair
     /// </summary>
     public static readonly Coding AttendantPoweredWheelchair = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wheelchair seating
     /// </summary>
     public static readonly Coding WheelchairSeating = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Molded wheelchair seat
     /// </summary>
     public static readonly Coding MoldedWheelchairSeat = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Matrix seat
     /// </summary>
     public static readonly Coding MatrixSeat = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chisel
     /// </summary>
     public static readonly Coding Chisel = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Finespun glass
     /// </summary>
     public static readonly Coding FinespunGlass = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Defibrillator
     /// </summary>
     public static readonly Coding Defibrillator = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blanket
     /// </summary>
     public static readonly Coding Blanket = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Silk cloth
     /// </summary>
     public static readonly Coding SilkCloth = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radioactive implant
     /// </summary>
     public static readonly Coding RadioactiveImplant = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dike
     /// </summary>
     public static readonly Coding Dike = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leather
     /// </summary>
     public static readonly Coding Leather = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leather belt
     /// </summary>
     public static readonly Coding LeatherBelt = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fan blade
     /// </summary>
     public static readonly Coding FanBlade = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scale
     /// </summary>
     public static readonly Coding Scale = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Catheter
     /// </summary>
     public static readonly Coding Catheter = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracranial pressure transducer
     /// </summary>
     public static readonly Coding IntracranialPressureTransducer = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leg prosthesis
     /// </summary>
     public static readonly Coding LegProsthesis = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toothbrush
     /// </summary>
     public static readonly Coding Toothbrush = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Industrial machine
     /// </summary>
     public static readonly Coding IndustrialMachine = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contraceptive diaphragm
     /// </summary>
     public static readonly Coding ContraceptiveDiaphragm = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Back rests
     /// </summary>
     public static readonly Coding BackRests = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oxygen tent
     /// </summary>
     public static readonly Coding OxygenTent = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Power tool
     /// </summary>
     public static readonly Coding PowerTool = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urinary catheter
     /// </summary>
     public static readonly Coding UrinaryCatheter = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cystoscope
     /// </summary>
     public static readonly Coding Cystoscope = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plug pack
     /// </summary>
     public static readonly Coding PlugPack = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Experimental implant
     /// </summary>
     public static readonly Coding ExperimentalImplant = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plastic cloth-like material
     /// </summary>
     public static readonly Coding PlasticClothLikeMaterial = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hand tool
     /// </summary>
     public static readonly Coding HandTool = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carbon monoxide analyzer
     /// </summary>
     public static readonly Coding CarbonMonoxideAnalyzer = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Refrigerator
     /// </summary>
     public static readonly Coding Refrigerator = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transluminal extraction catheter
     /// </summary>
     public static readonly Coding TransluminalExtractionCatheter = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abdominal binder
     /// </summary>
     public static readonly Coding AbdominalBinder = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Timer
     /// </summary>
     public static readonly Coding Timer = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Artificial membrane
     /// </summary>
     public static readonly Coding ArtificialMembrane = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Equipment for positioning (physical object)
     /// </summary>
     public static readonly Coding EquipmentForPositioningPhysicalObject = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Top security prison
     /// </summary>
     public static readonly Coding TopSecurityPrison = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Category B prison
     /// </summary>
     public static readonly Coding CategoryBPrison = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low security prison
     /// </summary>
     public static readonly Coding LowSecurityPrison = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endotracheal tube cuff
     /// </summary>
     public static readonly Coding EndotrachealTubeCuff = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Street lighting
     /// </summary>
     public static readonly Coding StreetLighting = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sign posting
     /// </summary>
     public static readonly Coding SignPosting = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Street name sign
     /// </summary>
     public static readonly Coding StreetNameSign = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Building name sign
     /// </summary>
     public static readonly Coding BuildingNameSign = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pedestrian direction sign
     /// </summary>
     public static readonly Coding PedestrianDirectionSign = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Traffic sign
     /// </summary>
     public static readonly Coding TrafficSign = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthotic device
     /// </summary>
     public static readonly Coding OrthoticDevice = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Walking aid
     /// </summary>
     public static readonly Coding WalkingAid = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Communication aid
     /// </summary>
     public static readonly Coding CommunicationAid = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cytology brush
     /// </summary>
     public static readonly Coding CytologyBrush = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retaining harness
     /// </summary>
     public static readonly Coding RetainingHarness = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Handcuffs
     /// </summary>
     public static readonly Coding Handcuffs = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Artificial hair wig
     /// </summary>
     public static readonly Coding ArtificialHairWig = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corset
     /// </summary>
     public static readonly Coding Corset = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breast prosthesis
     /// </summary>
     public static readonly Coding BreastProsthesis = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Slippers
     /// </summary>
     public static readonly Coding Slippers = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mules
     /// </summary>
     public static readonly Coding Mules = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Slippersox
     /// </summary>
     public static readonly Coding Slippersox = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trainers
     /// </summary>
     public static readonly Coding Trainers = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plimsolls
     /// </summary>
     public static readonly Coding Plimsolls = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sandals
     /// </summary>
     public static readonly Coding Sandals = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gum boots
     /// </summary>
     public static readonly Coding GumBoots = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chappel
     /// </summary>
     public static readonly Coding Chappel = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fastenings
     /// </summary>
     public static readonly Coding Fastenings = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Velcro
     /// </summary>
     public static readonly Coding Velcro = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Buckle
     /// </summary>
     public static readonly Coding Buckle = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zipper
     /// </summary>
     public static readonly Coding Zipper = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Small button
     /// </summary>
     public static readonly Coding SmallButton = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medium button
     /// </summary>
     public static readonly Coding MediumButton = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Large button (physical object)
     /// </summary>
     public static readonly Coding LargeButtonPhysicalObject = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Press stud
     /// </summary>
     public static readonly Coding PressStud = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hook and eye
     /// </summary>
     public static readonly Coding HookAndEye = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laces
     /// </summary>
     public static readonly Coding Laces = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shoe laces
     /// </summary>
     public static readonly Coding ShoeLaces = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Therapeutic implant
     /// </summary>
     public static readonly Coding TherapeuticImplant = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nail file
     /// </summary>
     public static readonly Coding NailFile = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiotherapy equipment and appliances
     /// </summary>
     public static readonly Coding RadiotherapyEquipmentAndAppliances = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beam direction shell
     /// </summary>
     public static readonly Coding BeamDirectionShell = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Head and neck beam direction shell
     /// </summary>
     public static readonly Coding HeadAndNeckBeamDirectionShell = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Body beam direction shell
     /// </summary>
     public static readonly Coding BodyBeamDirectionShell = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beam modifier
     /// </summary>
     public static readonly Coding BeamModifier = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surface bolus
     /// </summary>
     public static readonly Coding SurfaceBolus = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surface compensator
     /// </summary>
     public static readonly Coding SurfaceCompensator = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutout
     /// </summary>
     public static readonly Coding Cutout = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shielding block
     /// </summary>
     public static readonly Coding ShieldingBlock = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lung block
     /// </summary>
     public static readonly Coding LungBlock = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Humerus block
     /// </summary>
     public static readonly Coding HumerusBlock = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scrotal block
     /// </summary>
     public static readonly Coding ScrotalBlock = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kidney block
     /// </summary>
     public static readonly Coding KidneyBlock = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eye block
     /// </summary>
     public static readonly Coding EyeBlock = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bite block
     /// </summary>
     public static readonly Coding BiteBlock = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wedge filter
     /// </summary>
     public static readonly Coding WedgeFilter = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kilovoltage grid
     /// </summary>
     public static readonly Coding KilovoltageGrid = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brachytherapy implant
     /// </summary>
     public static readonly Coding BrachytherapyImplant = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Single plane implant
     /// </summary>
     public static readonly Coding SinglePlaneImplant = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Two plane implant
     /// </summary>
     public static readonly Coding TwoPlaneImplant = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Semicircular implant
     /// </summary>
     public static readonly Coding SemicircularImplant = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Regular volume implant
     /// </summary>
     public static readonly Coding RegularVolumeImplant = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Irregular volume implant
     /// </summary>
     public static readonly Coding IrregularVolumeImplant = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brachytherapy surface mold
     /// </summary>
     public static readonly Coding BrachytherapySurfaceMold = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Two plane mold
     /// </summary>
     public static readonly Coding TwoPlaneMold = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Single plane mold
     /// </summary>
     public static readonly Coding SinglePlaneMold = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cylinder mold
     /// </summary>
     public static readonly Coding CylinderMold = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adhesive felt mold
     /// </summary>
     public static readonly Coding AdhesiveFeltMold = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elastoplast mold
     /// </summary>
     public static readonly Coding ElastoplastMold = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Collimator (physical object)
     /// </summary>
     public static readonly Coding CollimatorPhysicalObject = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multileaf collimator
     /// </summary>
     public static readonly Coding MultileafCollimator = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Asymmetric jaws collimator
     /// </summary>
     public static readonly Coding AsymmetricJawsCollimator = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Standard collimator
     /// </summary>
     public static readonly Coding StandardCollimator = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Form of brachytherapy source
     /// </summary>
     public static readonly Coding FormOfBrachytherapySource = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wire source
     /// </summary>
     public static readonly Coding WireSource = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Seeds source
     /// </summary>
     public static readonly Coding SeedsSource = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hairpins source
     /// </summary>
     public static readonly Coding HairpinsSource = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Needles source
     /// </summary>
     public static readonly Coding NeedlesSource = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pellets source
     /// </summary>
     public static readonly Coding PelletsSource = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Capsules source
     /// </summary>
     public static readonly Coding CapsulesSource = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trains source
     /// </summary>
     public static readonly Coding TrainsSource = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tubes source
     /// </summary>
     public static readonly Coding TubesSource = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rods source
     /// </summary>
     public static readonly Coding RodsSource = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grains source
     /// </summary>
     public static readonly Coding GrainsSource = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plaque source
     /// </summary>
     public static readonly Coding PlaqueSource = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manual wheelchair
     /// </summary>
     public static readonly Coding ManualWheelchair = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bed
     /// </summary>
     public static readonly Coding Bed = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Functional foot orthosis (physical object)
     /// </summary>
     public static readonly Coding FunctionalFootOrthosisPhysicalObject = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-functional foot orthosis (physical object)
     /// </summary>
     public static readonly Coding NonFunctionalFootOrthosisPhysicalObject = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Detachable pad for the foot
     /// </summary>
     public static readonly Coding DetachablePadForTheFoot = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Detachable toe prop
     /// </summary>
     public static readonly Coding DetachableToeProp = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Detachable horseshoe pad
     /// </summary>
     public static readonly Coding DetachableHorseshoePad = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthroscope
     /// </summary>
     public static readonly Coding Arthroscope = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Motorized wheelchair device (physical object)
     /// </summary>
     public static readonly Coding MotorizedWheelchairDevicePhysicalObject = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Baseball
     /// </summary>
     public static readonly Coding Baseball = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arthroscopic irrigation/distension pump
     /// </summary>
     public static readonly Coding ArthroscopicIrrigationDistensionPump = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Indwelling urinary catheter
     /// </summary>
     public static readonly Coding IndwellingUrinaryCatheter = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Artificial cardiac valve prosthesis
     /// </summary>
     public static readonly Coding ArtificialCardiacValveProsthesis = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anoscope
     /// </summary>
     public static readonly Coding Anoscope = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bronchoscope
     /// </summary>
     public static readonly Coding Bronchoscope = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vibrator
     /// </summary>
     public static readonly Coding Vibrator = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Biologic cardiac valve prosthesis
     /// </summary>
     public static readonly Coding BiologicCardiacValveProsthesis = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spacer
     /// </summary>
     public static readonly Coding Spacer = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Near low vision aid - integral spectacle magnifier
     /// </summary>
     public static readonly Coding NearLowVisionAidIntegralSpectacleMagnifier = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Near low vision aid - clip-on spectacle magnifier
     /// </summary>
     public static readonly Coding NearLowVisionAidClipOnSpectacleMagnifier = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Near low vision aid - integral spectacle telescope
     /// </summary>
     public static readonly Coding NearLowVisionAidIntegralSpectacleTelescope = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Near low vision aid - clip-on spectacle telescope
     /// </summary>
     public static readonly Coding NearLowVisionAidClipOnSpectacleTelescope = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stepladder
     /// </summary>
     public static readonly Coding Stepladder = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wrench
     /// </summary>
     public static readonly Coding Wrench = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plastic boots
     /// </summary>
     public static readonly Coding PlasticBoots = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breath analyzer
     /// </summary>
     public static readonly Coding BreathAnalyzer = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ostomy belt
     /// </summary>
     public static readonly Coding OstomyBelt = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eustachian tube prosthesis
     /// </summary>
     public static readonly Coding EustachianTubeProsthesis = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glass eye
     /// </summary>
     public static readonly Coding GlassEye = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intra-aortic balloon catheter
     /// </summary>
     public static readonly Coding IntraAorticBalloonCatheter = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Snare
     /// </summary>
     public static readonly Coding Snare = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Feeding tube
     /// </summary>
     public static readonly Coding FeedingTube = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Squeeze cage
     /// </summary>
     public static readonly Coding SqueezeCage = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac valve prosthesis
     /// </summary>
     public static readonly Coding CardiacValveProsthesis = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wedge
     /// </summary>
     public static readonly Coding Wedge = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Television
     /// </summary>
     public static readonly Coding Television = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Latex rubber gloves
     /// </summary>
     public static readonly Coding LatexRubberGloves = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Textiles
     /// </summary>
     public static readonly Coding Textiles = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cotton - textile
     /// </summary>
     public static readonly Coding CottonTextile = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flax
     /// </summary>
     public static readonly Coding Flax = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hockey puck
     /// </summary>
     public static readonly Coding HockeyPuck = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cotton wool
     /// </summary>
     public static readonly Coding CottonWool = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cotton wool roll
     /// </summary>
     public static readonly Coding CottonWoolRoll = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cotton wool pledget
     /// </summary>
     public static readonly Coding CottonWoolPledget = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental rubber dam
     /// </summary>
     public static readonly Coding DentalRubberDam = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endodontic sponge
     /// </summary>
     public static readonly Coding EndodonticSponge = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthodontic elastic
     /// </summary>
     public static readonly Coding OrthodonticElastic = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ribbon gauze
     /// </summary>
     public static readonly Coding RibbonGauze = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wet ribbon gauze
     /// </summary>
     public static readonly Coding WetRibbonGauze = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dry ribbon gauze
     /// </summary>
     public static readonly Coding DryRibbonGauze = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scaffold
     /// </summary>
     public static readonly Coding Scaffold = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aid to vision
     /// </summary>
     public static readonly Coding AidToVision = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Loupes
     /// </summary>
     public static readonly Coding Loupes = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthodontic appliance
     /// </summary>
     public static readonly Coding OrthodonticAppliance = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neurostimulator
     /// </summary>
     public static readonly Coding Neurostimulator = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bougie
     /// </summary>
     public static readonly Coding Bougie = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soccer ball
     /// </summary>
     public static readonly Coding SoccerBall = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dockboard
     /// </summary>
     public static readonly Coding Dockboard = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breathing bag
     /// </summary>
     public static readonly Coding BreathingBag = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endotracheal tube
     /// </summary>
     public static readonly Coding EndotrachealTube = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Holter valve
     /// </summary>
     public static readonly Coding HolterValve = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Celestin tube
     /// </summary>
     public static readonly Coding CelestinTube = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rongeur
     /// </summary>
     public static readonly Coding Rongeur = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Needle adapter
     /// </summary>
     public static readonly Coding NeedleAdapter = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical suture
     /// </summary>
     public static readonly Coding SurgicalSuture = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dumbwaiter
     /// </summary>
     public static readonly Coding Dumbwaiter = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone plate
     /// </summary>
     public static readonly Coding BonePlate = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Power belt
     /// </summary>
     public static readonly Coding PowerBelt = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spray booth
     /// </summary>
     public static readonly Coding SprayBooth = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental prosthesis
     /// </summary>
     public static readonly Coding DentalProsthesis = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Athletic supporter
     /// </summary>
     public static readonly Coding AthleticSupporter = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electric heating pad
     /// </summary>
     public static readonly Coding ElectricHeatingPad = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Woodworking machinery
     /// </summary>
     public static readonly Coding WoodworkingMachinery = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thermometer
     /// </summary>
     public static readonly Coding Thermometer = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hairbrush
     /// </summary>
     public static readonly Coding Hairbrush = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Air receiver
     /// </summary>
     public static readonly Coding AirReceiver = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atomizer
     /// </summary>
     public static readonly Coding Atomizer = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fur garment
     /// </summary>
     public static readonly Coding FurGarment = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Forceps
     /// </summary>
     public static readonly Coding Forceps = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Resuscitator
     /// </summary>
     public static readonly Coding Resuscitator = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elevator
     /// </summary>
     public static readonly Coding Elevator = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multistage suspension scaffolding
     /// </summary>
     public static readonly Coding MultistageSuspensionScaffolding = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shield
     /// </summary>
     public static readonly Coding Shield = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Baseball bat
     /// </summary>
     public static readonly Coding BaseballBat = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical laboratory analyzer
     /// </summary>
     public static readonly Coding MedicalLaboratoryAnalyzer = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epidural catheter
     /// </summary>
     public static readonly Coding EpiduralCatheter = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cosmetic prosthesis
     /// </summary>
     public static readonly Coding CosmeticProsthesis = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligator
     /// </summary>
     public static readonly Coding Ligator = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drainage bag
     /// </summary>
     public static readonly Coding DrainageBag = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peritoneal catheter
     /// </summary>
     public static readonly Coding PeritonealCatheter = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthopedic internal fixation system
     /// </summary>
     public static readonly Coding OrthopedicInternalFixationSystem = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lumbosacral belt
     /// </summary>
     public static readonly Coding LumbosacralBelt = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Traction belt
     /// </summary>
     public static readonly Coding TractionBelt = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical scissors
     /// </summary>
     public static readonly Coding SurgicalScissors = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tent
     /// </summary>
     public static readonly Coding Tent = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arterial pressure monitor
     /// </summary>
     public static readonly Coding ArterialPressureMonitor = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Machine guarding
     /// </summary>
     public static readonly Coding MachineGuarding = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Screwdriver
     /// </summary>
     public static readonly Coding Screwdriver = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fixed ladder
     /// </summary>
     public static readonly Coding FixedLadder = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oropharyngeal airway device
     /// </summary>
     public static readonly Coding OropharyngealAirwayDevice = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ostomy collection bag
     /// </summary>
     public static readonly Coding OstomyCollectionBag = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drain
     /// </summary>
     public static readonly Coding Drain = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tweezer
     /// </summary>
     public static readonly Coding Tweezer = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Artificial liver
     /// </summary>
     public static readonly Coding ArtificialLiver = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Welding equipment
     /// </summary>
     public static readonly Coding WeldingEquipment = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ax
     /// </summary>
     public static readonly Coding Ax = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carbon dioxide analyzer
     /// </summary>
     public static readonly Coding CarbonDioxideAnalyzer = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rubber boots
     /// </summary>
     public static readonly Coding RubberBoots = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stylet
     /// </summary>
     public static readonly Coding Stylet = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sharp instrument
     /// </summary>
     public static readonly Coding SharpInstrument = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enema bag
     /// </summary>
     public static readonly Coding EnemaBag = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Experimental device
     /// </summary>
     public static readonly Coding ExperimentalDevice = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rubberized cloth
     /// </summary>
     public static readonly Coding RubberizedCloth = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plaster cast
     /// </summary>
     public static readonly Coding PlasterCast = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Straightjacket
     /// </summary>
     public static readonly Coding Straightjacket = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plastic tube
     /// </summary>
     public static readonly Coding PlasticTube = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical balloon
     /// </summary>
     public static readonly Coding MedicalBalloon = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vascular device
     /// </summary>
     public static readonly Coding VascularDevice = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urethral catheter
     /// </summary>
     public static readonly Coding UrethralCatheter = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ostomy appliance
     /// </summary>
     public static readonly Coding OstomyAppliance = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wire ligature
     /// </summary>
     public static readonly Coding WireLigature = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebrospinal catheter
     /// </summary>
     public static readonly Coding CerebrospinalCatheter = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ice-pick
     /// </summary>
     public static readonly Coding IcePick = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aspirator trap bottle
     /// </summary>
     public static readonly Coding AspiratorTrapBottle = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stimulator
     /// </summary>
     public static readonly Coding Stimulator = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Natural hair wig
     /// </summary>
     public static readonly Coding NaturalHairWig = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemodialysis machine
     /// </summary>
     public static readonly Coding HemodialysisMachine = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peripheral neurostimulator
     /// </summary>
     public static readonly Coding PeripheralNeurostimulator = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic detector
     /// </summary>
     public static readonly Coding MagneticDetector = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endoscope
     /// </summary>
     public static readonly Coding Endoscope = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bag
     /// </summary>
     public static readonly Coding Bag = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stone retrieval basket
     /// </summary>
     public static readonly Coding StoneRetrievalBasket = new Coding
     {
@@ -5574,7 +5574,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dildo
     /// </summary>
     public static readonly Coding Dildo = new Coding
     {
@@ -5583,7 +5583,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient isolator
     /// </summary>
     public static readonly Coding PatientIsolator = new Coding
     {
@@ -5592,7 +5592,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protective blind
     /// </summary>
     public static readonly Coding ProtectiveBlind = new Coding
     {
@@ -5601,7 +5601,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical instrument
     /// </summary>
     public static readonly Coding SurgicalInstrument = new Coding
     {
@@ -5610,7 +5610,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Continuing positive airway pressure unit
     /// </summary>
     public static readonly Coding ContinuingPositiveAirwayPressureUnit = new Coding
     {
@@ -5619,7 +5619,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bedside rails
     /// </summary>
     public static readonly Coding BedsideRails = new Coding
     {
@@ -5628,7 +5628,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protective glasses
     /// </summary>
     public static readonly Coding ProtectiveGlasses = new Coding
     {
@@ -5637,7 +5637,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tourniquet
     /// </summary>
     public static readonly Coding Tourniquet = new Coding
     {
@@ -5646,7 +5646,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protective device
     /// </summary>
     public static readonly Coding ProtectiveDevice = new Coding
     {
@@ -5655,7 +5655,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hockey stick
     /// </summary>
     public static readonly Coding HockeyStick = new Coding
     {
@@ -5664,7 +5664,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brake
     /// </summary>
     public static readonly Coding Brake = new Coding
     {
@@ -5673,7 +5673,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metallic cloth
     /// </summary>
     public static readonly Coding MetallicCloth = new Coding
     {
@@ -5682,7 +5682,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Air compressor
     /// </summary>
     public static readonly Coding AirCompressor = new Coding
     {
@@ -5691,7 +5691,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sphygmomanometer
     /// </summary>
     public static readonly Coding Sphygmomanometer = new Coding
     {
@@ -5700,7 +5700,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rasp
     /// </summary>
     public static readonly Coding Rasp = new Coding
     {
@@ -5709,7 +5709,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-electric heating pad
     /// </summary>
     public static readonly Coding NonElectricHeatingPad = new Coding
     {
@@ -5718,7 +5718,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tongue blade
     /// </summary>
     public static readonly Coding TongueBlade = new Coding
     {
@@ -5727,7 +5727,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Positron emission tomography unit
     /// </summary>
     public static readonly Coding PositronEmissionTomographyUnit = new Coding
     {
@@ -5736,7 +5736,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alarm
     /// </summary>
     public static readonly Coding Alarm = new Coding
     {
@@ -5745,7 +5745,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implant
     /// </summary>
     public static readonly Coding Implant = new Coding
     {
@@ -5754,7 +5754,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Binder
     /// </summary>
     public static readonly Coding Binder = new Coding
     {
@@ -5763,7 +5763,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immobilizer
     /// </summary>
     public static readonly Coding Immobilizer = new Coding
     {
@@ -5772,7 +5772,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urinary collection bag
     /// </summary>
     public static readonly Coding UrinaryCollectionBag = new Coding
     {
@@ -5781,7 +5781,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Industrial tool
     /// </summary>
     public static readonly Coding IndustrialTool = new Coding
     {
@@ -5790,7 +5790,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metal tube
     /// </summary>
     public static readonly Coding MetalTube = new Coding
     {
@@ -5799,7 +5799,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ambulation device
     /// </summary>
     public static readonly Coding AmbulationDevice = new Coding
     {
@@ -5808,7 +5808,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear plug
     /// </summary>
     public static readonly Coding EarPlug = new Coding
     {
@@ -5817,7 +5817,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood warmer
     /// </summary>
     public static readonly Coding BloodWarmer = new Coding
     {
@@ -5826,7 +5826,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wool
     /// </summary>
     public static readonly Coding Wool = new Coding
     {
@@ -5835,7 +5835,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypodermic spray
     /// </summary>
     public static readonly Coding HypodermicSpray = new Coding
     {
@@ -5844,7 +5844,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phlebotomy kit
     /// </summary>
     public static readonly Coding PhlebotomyKit = new Coding
     {
@@ -5853,7 +5853,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone pencil
     /// </summary>
     public static readonly Coding BonePencil = new Coding
     {
@@ -5862,7 +5862,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cochlear prosthesis
     /// </summary>
     public static readonly Coding CochlearProsthesis = new Coding
     {
@@ -5871,7 +5871,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Airway device
     /// </summary>
     public static readonly Coding AirwayDevice = new Coding
     {
@@ -5880,7 +5880,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood administration set
     /// </summary>
     public static readonly Coding BloodAdministrationSet = new Coding
     {
@@ -5889,7 +5889,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Doppler device
     /// </summary>
     public static readonly Coding DopplerDevice = new Coding
     {
@@ -5898,7 +5898,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shoes
     /// </summary>
     public static readonly Coding Shoes = new Coding
     {
@@ -5907,7 +5907,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Caliper
     /// </summary>
     public static readonly Coding Caliper = new Coding
     {
@@ -5916,7 +5916,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endoscopic camera
     /// </summary>
     public static readonly Coding EndoscopicCamera = new Coding
     {
@@ -5925,7 +5925,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnet
     /// </summary>
     public static readonly Coding Magnet = new Coding
     {
@@ -5934,7 +5934,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Industrial robot
     /// </summary>
     public static readonly Coding IndustrialRobot = new Coding
     {
@@ -5943,7 +5943,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pump
     /// </summary>
     public static readonly Coding Pump = new Coding
     {
@@ -5952,7 +5952,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laryngoscope
     /// </summary>
     public static readonly Coding Laryngoscope = new Coding
     {
@@ -5961,7 +5961,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Esophageal bougie
     /// </summary>
     public static readonly Coding EsophagealBougie = new Coding
     {
@@ -5970,7 +5970,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Golf ball
     /// </summary>
     public static readonly Coding GolfBall = new Coding
     {
@@ -5979,7 +5979,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Four-wheeled all-terrain vehicle
     /// </summary>
     public static readonly Coding FourWheeledAllTerrainVehicle = new Coding
     {
@@ -5988,7 +5988,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angioplasty balloon catheter
     /// </summary>
     public static readonly Coding AngioplastyBalloonCatheter = new Coding
     {
@@ -5997,7 +5997,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peritoneal dialyzer
     /// </summary>
     public static readonly Coding PeritonealDialyzer = new Coding
     {
@@ -6006,7 +6006,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Penrose drain
     /// </summary>
     public static readonly Coding PenroseDrain = new Coding
     {
@@ -6015,7 +6015,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Automatic fire extinguisher system
     /// </summary>
     public static readonly Coding AutomaticFireExtinguisherSystem = new Coding
     {
@@ -6024,7 +6024,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Artificial lashes
     /// </summary>
     public static readonly Coding ArtificialLashes = new Coding
     {
@@ -6033,7 +6033,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sanitary belt
     /// </summary>
     public static readonly Coding SanitaryBelt = new Coding
     {
@@ -6042,7 +6042,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hair cloth
     /// </summary>
     public static readonly Coding HairCloth = new Coding
     {
@@ -6051,7 +6051,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clamp
     /// </summary>
     public static readonly Coding Clamp = new Coding
     {
@@ -6060,7 +6060,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Basketball
     /// </summary>
     public static readonly Coding Basketball = new Coding
     {
@@ -6069,7 +6069,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pessary
     /// </summary>
     public static readonly Coding Pessary = new Coding
     {
@@ -6078,7 +6078,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chain
     /// </summary>
     public static readonly Coding Chain = new Coding
     {
@@ -6087,7 +6087,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deck machinery
     /// </summary>
     public static readonly Coding DeckMachinery = new Coding
     {
@@ -6096,7 +6096,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mirror
     /// </summary>
     public static readonly Coding Mirror = new Coding
     {
@@ -6105,7 +6105,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrical utilization equipment
     /// </summary>
     public static readonly Coding ElectricalUtilizationEquipment = new Coding
     {
@@ -6114,7 +6114,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apgar scoring timer
     /// </summary>
     public static readonly Coding ApgarScoringTimer = new Coding
     {
@@ -6123,7 +6123,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ureteral catheter
     /// </summary>
     public static readonly Coding UreteralCatheter = new Coding
     {
@@ -6132,7 +6132,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Birthing chair
     /// </summary>
     public static readonly Coding BirthingChair = new Coding
     {
@@ -6141,7 +6141,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Catgut suture
     /// </summary>
     public static readonly Coding CatgutSuture = new Coding
     {
@@ -6150,7 +6150,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hand mitt
     /// </summary>
     public static readonly Coding HandMitt = new Coding
     {
@@ -6159,7 +6159,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Proctoscope
     /// </summary>
     public static readonly Coding Proctoscope = new Coding
     {
@@ -6168,7 +6168,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Circular portable saw
     /// </summary>
     public static readonly Coding CircularPortableSaw = new Coding
     {
@@ -6177,7 +6177,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bathtub rails
     /// </summary>
     public static readonly Coding BathtubRails = new Coding
     {
@@ -6186,7 +6186,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metal device
     /// </summary>
     public static readonly Coding MetalDevice = new Coding
     {
@@ -6195,7 +6195,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Training equipment
     /// </summary>
     public static readonly Coding TrainingEquipment = new Coding
     {
@@ -6204,7 +6204,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stud gun, device (physical object)
     /// </summary>
     public static readonly Coding StudGunDevicePhysicalObject = new Coding
     {
@@ -6213,7 +6213,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vascular filter
     /// </summary>
     public static readonly Coding VascularFilter = new Coding
     {
@@ -6222,7 +6222,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protective body armor
     /// </summary>
     public static readonly Coding ProtectiveBodyArmor = new Coding
     {
@@ -6231,7 +6231,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Strap
     /// </summary>
     public static readonly Coding Strap = new Coding
     {
@@ -6240,7 +6240,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Device
     /// </summary>
     public static readonly Coding Device = new Coding
     {
@@ -6249,7 +6249,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Razor
     /// </summary>
     public static readonly Coding Razor = new Coding
     {
@@ -6258,7 +6258,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital cart
     /// </summary>
     public static readonly Coding HospitalCart = new Coding
     {
@@ -6267,7 +6267,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eye glasses, device (physical object)
     /// </summary>
     public static readonly Coding EyeGlassesDevicePhysicalObject = new Coding
     {
@@ -6276,7 +6276,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adhesive strip
     /// </summary>
     public static readonly Coding AdhesiveStrip = new Coding
     {
@@ -6285,7 +6285,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient scale
     /// </summary>
     public static readonly Coding PatientScale = new Coding
     {
@@ -6294,7 +6294,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Workover rig service to oil well
     /// </summary>
     public static readonly Coding WorkoverRigServiceToOilWell = new Coding
     {
@@ -6303,7 +6303,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oil well rig
     /// </summary>
     public static readonly Coding OilWellRig = new Coding
     {
@@ -6312,7 +6312,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Penile tumescence monitor
     /// </summary>
     public static readonly Coding PenileTumescenceMonitor = new Coding
     {
@@ -6321,7 +6321,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hammer
     /// </summary>
     public static readonly Coding Hammer = new Coding
     {
@@ -6330,7 +6330,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shower curtain
     /// </summary>
     public static readonly Coding ShowerCurtain = new Coding
     {
@@ -6339,7 +6339,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stripper
     /// </summary>
     public static readonly Coding Stripper = new Coding
     {
@@ -6348,7 +6348,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physiologic monitoring system
     /// </summary>
     public static readonly Coding PhysiologicMonitoringSystem = new Coding
     {
@@ -6357,7 +6357,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Roller skate
     /// </summary>
     public static readonly Coding RollerSkate = new Coding
     {
@@ -6366,7 +6366,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Measuring tape
     /// </summary>
     public static readonly Coding MeasuringTape = new Coding
     {
@@ -6375,7 +6375,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Valved tube
     /// </summary>
     public static readonly Coding ValvedTube = new Coding
     {
@@ -6384,7 +6384,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sling
     /// </summary>
     public static readonly Coding Sling = new Coding
     {
@@ -6393,7 +6393,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diaper
     /// </summary>
     public static readonly Coding Diaper = new Coding
     {
@@ -6402,7 +6402,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Central venous catheter
     /// </summary>
     public static readonly Coding CentralVenousCatheter = new Coding
     {
@@ -6411,7 +6411,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Molten lava
     /// </summary>
     public static readonly Coding MoltenLava = new Coding
     {
@@ -6420,7 +6420,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glove
     /// </summary>
     public static readonly Coding Glove = new Coding
     {
@@ -6429,7 +6429,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ladder
     /// </summary>
     public static readonly Coding Ladder = new Coding
     {
@@ -6438,7 +6438,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aspirator collection canister
     /// </summary>
     public static readonly Coding AspiratorCollectionCanister = new Coding
     {
@@ -6447,7 +6447,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiofrequency generator
     /// </summary>
     public static readonly Coding RadiofrequencyGenerator = new Coding
     {
@@ -6456,7 +6456,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ski
     /// </summary>
     public static readonly Coding Ski = new Coding
     {
@@ -6465,7 +6465,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasopharyngeal catheter
     /// </summary>
     public static readonly Coding NasopharyngealCatheter = new Coding
     {
@@ -6474,7 +6474,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood gas/pH analyzer
     /// </summary>
     public static readonly Coding BloodGasPHAnalyzer = new Coding
     {
@@ -6483,7 +6483,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Platform suspended boom
     /// </summary>
     public static readonly Coding PlatformSuspendedBoom = new Coding
     {
@@ -6492,7 +6492,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal balloon
     /// </summary>
     public static readonly Coding NasalBalloon = new Coding
     {
@@ -6501,7 +6501,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Artificial lung
     /// </summary>
     public static readonly Coding ArtificialLung = new Coding
     {
@@ -6510,7 +6510,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prosthesis
     /// </summary>
     public static readonly Coding Prosthesis = new Coding
     {
@@ -6519,7 +6519,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retractor
     /// </summary>
     public static readonly Coding Retractor = new Coding
     {
@@ -6528,7 +6528,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stethoscope
     /// </summary>
     public static readonly Coding Stethoscope = new Coding
     {
@@ -6537,7 +6537,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastric balloon
     /// </summary>
     public static readonly Coding GastricBalloon = new Coding
     {
@@ -6546,7 +6546,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Penile prosthesis
     /// </summary>
     public static readonly Coding PenileProsthesis = new Coding
     {
@@ -6555,7 +6555,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cryogenic analgesia unit
     /// </summary>
     public static readonly Coding CryogenicAnalgesiaUnit = new Coding
     {
@@ -6564,7 +6564,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Towel
     /// </summary>
     public static readonly Coding Towel = new Coding
     {
@@ -6573,7 +6573,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Computerized axial tomography scanner
     /// </summary>
     public static readonly Coding ComputerizedAxialTomographyScanner = new Coding
     {
@@ -6582,7 +6582,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood coagulation analyzer
     /// </summary>
     public static readonly Coding BloodCoagulationAnalyzer = new Coding
     {
@@ -6591,7 +6591,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suture button
     /// </summary>
     public static readonly Coding SutureButton = new Coding
     {
@@ -6600,7 +6600,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amnioscope
     /// </summary>
     public static readonly Coding Amnioscope = new Coding
     {
@@ -6609,7 +6609,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Auscultoscope
     /// </summary>
     public static readonly Coding Auscultoscope = new Coding
     {
@@ -6618,7 +6618,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bassinet
     /// </summary>
     public static readonly Coding Bassinet = new Coding
     {
@@ -6627,7 +6627,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hot object
     /// </summary>
     public static readonly Coding HotObject = new Coding
     {
@@ -6636,7 +6636,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tong
     /// </summary>
     public static readonly Coding Tong = new Coding
     {
@@ -6645,7 +6645,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Back braces
     /// </summary>
     public static readonly Coding BackBraces = new Coding
     {
@@ -6654,7 +6654,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Staple
     /// </summary>
     public static readonly Coding Staple = new Coding
     {
@@ -6663,7 +6663,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trephine
     /// </summary>
     public static readonly Coding Trephine = new Coding
     {
@@ -6672,7 +6672,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bed sheet
     /// </summary>
     public static readonly Coding BedSheet = new Coding
     {
@@ -6681,7 +6681,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pacemaker catheter
     /// </summary>
     public static readonly Coding PacemakerCatheter = new Coding
     {
@@ -6690,7 +6690,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cardiac transvenous pacemaker
     /// </summary>
     public static readonly Coding CardiacTransvenousPacemaker = new Coding
     {
@@ -6699,7 +6699,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Perfusion pump
     /// </summary>
     public static readonly Coding PerfusionPump = new Coding
     {
@@ -6708,7 +6708,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Instrument
     /// </summary>
     public static readonly Coding Instrument = new Coding
     {
@@ -6717,7 +6717,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contact lenses
     /// </summary>
     public static readonly Coding ContactLenses = new Coding
     {
@@ -6726,7 +6726,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physical restraint equipment
     /// </summary>
     public static readonly Coding PhysicalRestraintEquipment = new Coding
     {
@@ -6735,7 +6735,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abrasive grinding
     /// </summary>
     public static readonly Coding AbrasiveGrinding = new Coding
     {
@@ -6744,7 +6744,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Android
     /// </summary>
     public static readonly Coding Android = new Coding
     {
@@ -6753,7 +6753,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suction catheter
     /// </summary>
     public static readonly Coding SuctionCatheter = new Coding
     {
@@ -6762,7 +6762,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infant scale
     /// </summary>
     public static readonly Coding InfantScale = new Coding
     {
@@ -6771,7 +6771,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protective vest
     /// </summary>
     public static readonly Coding ProtectiveVest = new Coding
     {
@@ -6780,7 +6780,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// WC - Wheelchair
     /// </summary>
     public static readonly Coding WCWheelchair = new Coding
     {
@@ -6789,7 +6789,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ice bag
     /// </summary>
     public static readonly Coding IceBag = new Coding
     {
@@ -6798,7 +6798,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apnea alarm
     /// </summary>
     public static readonly Coding ApneaAlarm = new Coding
     {
@@ -6807,7 +6807,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Barge
     /// </summary>
     public static readonly Coding Barge = new Coding
     {
@@ -6816,7 +6816,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chipguard
     /// </summary>
     public static readonly Coding Chipguard = new Coding
     {
@@ -6825,7 +6825,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oxygen analyzer
     /// </summary>
     public static readonly Coding OxygenAnalyzer = new Coding
     {
@@ -6834,7 +6834,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ligature
     /// </summary>
     public static readonly Coding Ligature = new Coding
     {
@@ -6843,7 +6843,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Needle holder
     /// </summary>
     public static readonly Coding NeedleHolder = new Coding
     {
@@ -6852,7 +6852,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Culdoscope
     /// </summary>
     public static readonly Coding Culdoscope = new Coding
     {
@@ -6861,7 +6861,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Speculum
     /// </summary>
     public static readonly Coding Speculum = new Coding
     {
@@ -6870,7 +6870,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Collapsible balloon
     /// </summary>
     public static readonly Coding CollapsibleBalloon = new Coding
     {
@@ -6879,7 +6879,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Seat belt
     /// </summary>
     public static readonly Coding SeatBelt = new Coding
     {
@@ -6888,7 +6888,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wig
     /// </summary>
     public static readonly Coding Wig = new Coding
     {
@@ -6897,7 +6897,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hearing aid
     /// </summary>
     public static readonly Coding HearingAid = new Coding
     {
@@ -6906,7 +6906,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ski pole, device (physical object)
     /// </summary>
     public static readonly Coding SkiPoleDevicePhysicalObject = new Coding
     {
@@ -6915,7 +6915,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acupuncture needle
     /// </summary>
     public static readonly Coding AcupunctureNeedle = new Coding
     {
@@ -6924,7 +6924,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carbon dioxide absorber
     /// </summary>
     public static readonly Coding CarbonDioxideAbsorber = new Coding
     {
@@ -6933,7 +6933,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leather boots
     /// </summary>
     public static readonly Coding LeatherBoots = new Coding
     {
@@ -6942,7 +6942,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injector
     /// </summary>
     public static readonly Coding Injector = new Coding
     {
@@ -6951,7 +6951,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Whirlpool bath
     /// </summary>
     public static readonly Coding WhirlpoolBath = new Coding
     {
@@ -6960,7 +6960,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Otoscope
     /// </summary>
     public static readonly Coding Otoscope = new Coding
     {
@@ -6969,7 +6969,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// T-tube
     /// </summary>
     public static readonly Coding TTube = new Coding
     {
@@ -6978,7 +6978,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasopharyngeal airway device
     /// </summary>
     public static readonly Coding NasopharyngealAirwayDevice = new Coding
     {
@@ -6987,7 +6987,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tennis racket
     /// </summary>
     public static readonly Coding TennisRacket = new Coding
     {
@@ -6996,7 +6996,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dilator
     /// </summary>
     public static readonly Coding Dilator = new Coding
     {
@@ -7005,7 +7005,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Syringe
     /// </summary>
     public static readonly Coding Syringe = new Coding
     {
@@ -7014,7 +7014,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antiembolic device
     /// </summary>
     public static readonly Coding AntiembolicDevice = new Coding
     {
@@ -7023,7 +7023,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electric cable
     /// </summary>
     public static readonly Coding ElectricCable = new Coding
     {
@@ -7032,7 +7032,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gamma counter
     /// </summary>
     public static readonly Coding GammaCounter = new Coding
     {
@@ -7041,7 +7041,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Overhead and gantry crane
     /// </summary>
     public static readonly Coding OverheadAndGantryCrane = new Coding
     {
@@ -7050,7 +7050,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tubular bandage
     /// </summary>
     public static readonly Coding TubularBandage = new Coding
     {
@@ -7059,7 +7059,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone wire
     /// </summary>
     public static readonly Coding BoneWire = new Coding
     {
@@ -7068,7 +7068,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hat band
     /// </summary>
     public static readonly Coding HatBand = new Coding
     {
@@ -7077,7 +7077,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metal nail
     /// </summary>
     public static readonly Coding MetalNail = new Coding
     {
@@ -7086,7 +7086,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone plug
     /// </summary>
     public static readonly Coding BonePlug = new Coding
     {
@@ -7095,7 +7095,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Derrick
     /// </summary>
     public static readonly Coding Derrick = new Coding
     {
@@ -7104,7 +7104,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cervical collar
     /// </summary>
     public static readonly Coding CervicalCollar = new Coding
     {
@@ -7113,7 +7113,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fiberoptic cable
     /// </summary>
     public static readonly Coding FiberopticCable = new Coding
     {
@@ -7122,7 +7122,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medical device
     /// </summary>
     public static readonly Coding MedicalDevice = new Coding
     {
@@ -7131,7 +7131,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Traction unit
     /// </summary>
     public static readonly Coding TractionUnit = new Coding
     {
@@ -7140,7 +7140,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electroejaculator
     /// </summary>
     public static readonly Coding Electroejaculator = new Coding
     {
@@ -7149,7 +7149,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bandage
     /// </summary>
     public static readonly Coding Bandage = new Coding
     {
@@ -7158,7 +7158,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Snowmobile
     /// </summary>
     public static readonly Coding Snowmobile = new Coding
     {
@@ -7167,7 +7167,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Esophageal balloon
     /// </summary>
     public static readonly Coding EsophagealBalloon = new Coding
     {
@@ -7176,7 +7176,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Air tool
     /// </summary>
     public static readonly Coding AirTool = new Coding
     {
@@ -7185,7 +7185,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hair clipper
     /// </summary>
     public static readonly Coding HairClipper = new Coding
     {
@@ -7194,7 +7194,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhalation analgesia unit
     /// </summary>
     public static readonly Coding InhalationAnalgesiaUnit = new Coding
     {
@@ -7203,7 +7203,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scissors
     /// </summary>
     public static readonly Coding Scissors = new Coding
     {
@@ -7212,7 +7212,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Escalator
     /// </summary>
     public static readonly Coding Escalator = new Coding
     {
@@ -7221,7 +7221,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrical battery
     /// </summary>
     public static readonly Coding ElectricalBattery = new Coding
     {
@@ -7230,7 +7230,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical drapes
     /// </summary>
     public static readonly Coding SurgicalDrapes = new Coding
     {
@@ -7239,7 +7239,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chart recorder
     /// </summary>
     public static readonly Coding ChartRecorder = new Coding
     {
@@ -7248,7 +7248,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microscope
     /// </summary>
     public static readonly Coding Microscope = new Coding
     {
@@ -7257,7 +7257,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// X-ray shield
     /// </summary>
     public static readonly Coding XRayShield = new Coding
     {
@@ -7266,7 +7266,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stent
     /// </summary>
     public static readonly Coding Stent = new Coding
     {
@@ -7275,7 +7275,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital robot
     /// </summary>
     public static readonly Coding HospitalRobot = new Coding
     {
@@ -7284,7 +7284,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Audiometric testing equipment
     /// </summary>
     public static readonly Coding AudiometricTestingEquipment = new Coding
     {
@@ -7293,7 +7293,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electric bed
     /// </summary>
     public static readonly Coding ElectricBed = new Coding
     {
@@ -7302,7 +7302,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Face cloth
     /// </summary>
     public static readonly Coding FaceCloth = new Coding
     {
@@ -7311,7 +7311,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hip prosthesis
     /// </summary>
     public static readonly Coding HipProsthesis = new Coding
     {
@@ -7320,7 +7320,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coronary perfusion catheter
     /// </summary>
     public static readonly Coding CoronaryPerfusionCatheter = new Coding
     {
@@ -7329,7 +7329,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiographic-tomographic unit
     /// </summary>
     public static readonly Coding RadiographicTomographicUnit = new Coding
     {
@@ -7338,7 +7338,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Moving walk
     /// </summary>
     public static readonly Coding MovingWalk = new Coding
     {
@@ -7347,7 +7347,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epilator
     /// </summary>
     public static readonly Coding Epilator = new Coding
     {
@@ -7356,7 +7356,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Esophagoscope
     /// </summary>
     public static readonly Coding Esophagoscope = new Coding
     {
@@ -7365,7 +7365,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aerial lift
     /// </summary>
     public static readonly Coding AerialLift = new Coding
     {
@@ -7374,7 +7374,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enema tube
     /// </summary>
     public static readonly Coding EnemaTube = new Coding
     {
@@ -7383,7 +7383,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiographic unit
     /// </summary>
     public static readonly Coding RadiographicUnit = new Coding
     {
@@ -7392,7 +7392,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vibrating electric heating pad
     /// </summary>
     public static readonly Coding VibratingElectricHeatingPad = new Coding
     {
@@ -7401,7 +7401,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone screw
     /// </summary>
     public static readonly Coding BoneScrew = new Coding
     {
@@ -7410,7 +7410,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microwave oven
     /// </summary>
     public static readonly Coding MicrowaveOven = new Coding
     {
@@ -7419,7 +7419,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bottle
     /// </summary>
     public static readonly Coding Bottle = new Coding
     {
@@ -7428,7 +7428,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sound
     /// </summary>
     public static readonly Coding Sound = new Coding
     {
@@ -7437,7 +7437,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Support belt
     /// </summary>
     public static readonly Coding SupportBelt = new Coding
     {
@@ -7446,7 +7446,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Household robot
     /// </summary>
     public static readonly Coding HouseholdRobot = new Coding
     {
@@ -7455,7 +7455,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastroduodenoscope
     /// </summary>
     public static readonly Coding Gastroduodenoscope = new Coding
     {
@@ -7464,7 +7464,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protective clothing material
     /// </summary>
     public static readonly Coding ProtectiveClothingMaterial = new Coding
     {
@@ -7473,7 +7473,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient utensil kit
     /// </summary>
     public static readonly Coding PatientUtensilKit = new Coding
     {
@@ -7482,7 +7482,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lithotripter
     /// </summary>
     public static readonly Coding Lithotripter = new Coding
     {
@@ -7491,7 +7491,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insulin pump
     /// </summary>
     public static readonly Coding InsulinPump = new Coding
     {
@@ -7500,7 +7500,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tracheostomy button
     /// </summary>
     public static readonly Coding TracheostomyButton = new Coding
     {
@@ -7509,7 +7509,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiographic-fluoroscopic unit
     /// </summary>
     public static readonly Coding RadiographicFluoroscopicUnit = new Coding
     {
@@ -7518,7 +7518,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bayonet
     /// </summary>
     public static readonly Coding Bayonet = new Coding
     {
@@ -7527,7 +7527,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skull tongs
     /// </summary>
     public static readonly Coding SkullTongs = new Coding
     {
@@ -7536,7 +7536,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Freezer
     /// </summary>
     public static readonly Coding Freezer = new Coding
     {
@@ -7545,7 +7545,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sled
     /// </summary>
     public static readonly Coding Sled = new Coding
     {
@@ -7554,7 +7554,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood pressure cuff
     /// </summary>
     public static readonly Coding BloodPressureCuff = new Coding
     {
@@ -7563,7 +7563,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Recreation equipment
     /// </summary>
     public static readonly Coding RecreationEquipment = new Coding
     {
@@ -7572,7 +7572,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wash basin
     /// </summary>
     public static readonly Coding WashBasin = new Coding
     {
@@ -7581,7 +7581,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Warmer
     /// </summary>
     public static readonly Coding Warmer = new Coding
     {
@@ -7590,7 +7590,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diving stage
     /// </summary>
     public static readonly Coding DivingStage = new Coding
     {
@@ -7599,7 +7599,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Humidifier
     /// </summary>
     public static readonly Coding Humidifier = new Coding
     {
@@ -7608,7 +7608,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Proctosigmoidoscope
     /// </summary>
     public static readonly Coding Proctosigmoidoscope = new Coding
     {
@@ -7617,7 +7617,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone wax
     /// </summary>
     public static readonly Coding BoneWax = new Coding
     {
@@ -7626,7 +7626,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Autoclave
     /// </summary>
     public static readonly Coding Autoclave = new Coding
     {
@@ -7635,7 +7635,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ring
     /// </summary>
     public static readonly Coding Ring = new Coding
     {
@@ -7644,7 +7644,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tissue expander
     /// </summary>
     public static readonly Coding TissueExpander = new Coding
     {
@@ -7653,7 +7653,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lead cable
     /// </summary>
     public static readonly Coding LeadCable = new Coding
     {
@@ -7662,7 +7662,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantable defibrillator
     /// </summary>
     public static readonly Coding ImplantableDefibrillator = new Coding
     {
@@ -7671,7 +7671,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aspirator collection bottle
     /// </summary>
     public static readonly Coding AspiratorCollectionBottle = new Coding
     {
@@ -7680,7 +7680,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infant incubator
     /// </summary>
     public static readonly Coding InfantIncubator = new Coding
     {
@@ -7689,7 +7689,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Staphylococcus aureus antibody test kit
     /// </summary>
     public static readonly Coding StaphylococcusAureusAntibodyTestKit = new Coding
     {
@@ -7698,7 +7698,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Artificial skin
     /// </summary>
     public static readonly Coding ArtificialSkin = new Coding
     {
@@ -7707,7 +7707,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transilluminator
     /// </summary>
     public static readonly Coding Transilluminator = new Coding
     {
@@ -7716,7 +7716,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravenous analgesia unit
     /// </summary>
     public static readonly Coding IntravenousAnalgesiaUnit = new Coding
     {
@@ -7725,7 +7725,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Power saw
     /// </summary>
     public static readonly Coding PowerSaw = new Coding
     {
@@ -7734,7 +7734,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hand saw
     /// </summary>
     public static readonly Coding HandSaw = new Coding
     {
@@ -7743,7 +7743,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bicycle ergometer
     /// </summary>
     public static readonly Coding BicycleErgometer = new Coding
     {
@@ -7752,7 +7752,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Face protection in construction industry
     /// </summary>
     public static readonly Coding FaceProtectionInConstructionIndustry = new Coding
     {
@@ -7761,7 +7761,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Probe
     /// </summary>
     public static readonly Coding Probe = new Coding
     {
@@ -7770,7 +7770,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crib
     /// </summary>
     public static readonly Coding Crib = new Coding
     {
@@ -7779,7 +7779,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Belt
     /// </summary>
     public static readonly Coding Belt = new Coding
     {
@@ -7788,7 +7788,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Recorder
     /// </summary>
     public static readonly Coding Recorder = new Coding
     {
@@ -7797,7 +7797,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sanitary pad
     /// </summary>
     public static readonly Coding SanitaryPad = new Coding
     {
@@ -7806,7 +7806,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Limb prosthesis
     /// </summary>
     public static readonly Coding LimbProsthesis = new Coding
     {
@@ -7815,7 +7815,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crutch
     /// </summary>
     public static readonly Coding Crutch = new Coding
     {
@@ -7824,7 +7824,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boatswain's chair
     /// </summary>
     public static readonly Coding BoatswainQuoteSChair = new Coding
     {
@@ -7833,7 +7833,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shoring and bracing (masonry and woodwork)
     /// </summary>
     public static readonly Coding ShoringAndBracingMasonryAndWoodwork = new Coding
     {
@@ -7842,7 +7842,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Local anesthesia kit
     /// </summary>
     public static readonly Coding LocalAnesthesiaKit = new Coding
     {
@@ -7851,7 +7851,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arterial cannula
     /// </summary>
     public static readonly Coding ArterialCannula = new Coding
     {
@@ -7860,7 +7860,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Escherichia coli antigen test kit
     /// </summary>
     public static readonly Coding EscherichiaColiAntigenTestKit = new Coding
     {
@@ -7869,7 +7869,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Manual respirator
     /// </summary>
     public static readonly Coding ManualRespirator = new Coding
     {
@@ -7878,7 +7878,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Artificial kidney
     /// </summary>
     public static readonly Coding ArtificialKidney = new Coding
     {
@@ -7887,7 +7887,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skateboard
     /// </summary>
     public static readonly Coding Skateboard = new Coding
     {
@@ -7896,7 +7896,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stainless steel wire suture
     /// </summary>
     public static readonly Coding StainlessSteelWireSuture = new Coding
     {
@@ -7905,7 +7905,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glass tube
     /// </summary>
     public static readonly Coding GlassTube = new Coding
     {
@@ -7914,7 +7914,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elbow prosthesis
     /// </summary>
     public static readonly Coding ElbowProsthesis = new Coding
     {
@@ -7923,7 +7923,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apron
     /// </summary>
     public static readonly Coding Apron = new Coding
     {
@@ -7932,7 +7932,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Artificial pancreas
     /// </summary>
     public static readonly Coding ArtificialPancreas = new Coding
     {
@@ -7941,7 +7941,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Applicator stick
     /// </summary>
     public static readonly Coding ApplicatorStick = new Coding
     {
@@ -7950,7 +7950,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abrasive wheel machinery
     /// </summary>
     public static readonly Coding AbrasiveWheelMachinery = new Coding
     {
@@ -7959,7 +7959,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Guillotine
     /// </summary>
     public static readonly Coding Guillotine = new Coding
     {
@@ -7968,7 +7968,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stabilizing appliance
     /// </summary>
     public static readonly Coding StabilizingAppliance = new Coding
     {
@@ -7977,7 +7977,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydrocephalic shunt catheter
     /// </summary>
     public static readonly Coding HydrocephalicShuntCatheter = new Coding
     {
@@ -7986,7 +7986,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone pin
     /// </summary>
     public static readonly Coding BonePin = new Coding
     {
@@ -7995,7 +7995,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Band
     /// </summary>
     public static readonly Coding Band = new Coding
     {
@@ -8004,7 +8004,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clip
     /// </summary>
     public static readonly Coding Clip = new Coding
     {
@@ -8013,7 +8013,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chemical fiber cloth
     /// </summary>
     public static readonly Coding ChemicalFiberCloth = new Coding
     {
@@ -8022,7 +8022,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone staple
     /// </summary>
     public static readonly Coding BoneStaple = new Coding
     {
@@ -8031,7 +8031,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nail clipper
     /// </summary>
     public static readonly Coding NailClipper = new Coding
     {
@@ -8040,7 +8040,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Testicular prosthesis
     /// </summary>
     public static readonly Coding TesticularProsthesis = new Coding
     {
@@ -8049,7 +8049,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nylon suture
     /// </summary>
     public static readonly Coding NylonSuture = new Coding
     {
@@ -8058,7 +8058,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electronic monitor
     /// </summary>
     public static readonly Coding ElectronicMonitor = new Coding
     {
@@ -8067,7 +8067,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Greenfield filter
     /// </summary>
     public static readonly Coding GreenfieldFilter = new Coding
     {
@@ -8076,7 +8076,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Needle
     /// </summary>
     public static readonly Coding Needle = new Coding
     {
@@ -8085,7 +8085,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vehicle-mounted work platform
     /// </summary>
     public static readonly Coding VehicleMountedWorkPlatform = new Coding
     {
@@ -8094,7 +8094,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tampon
     /// </summary>
     public static readonly Coding Tampon = new Coding
     {
@@ -8103,7 +8103,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mechanical power press
     /// </summary>
     public static readonly Coding MechanicalPowerPress = new Coding
     {
@@ -8112,7 +8112,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chute
     /// </summary>
     public static readonly Coding Chute = new Coding
     {
@@ -8121,7 +8121,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foot protection
     /// </summary>
     public static readonly Coding FootProtection = new Coding
     {
@@ -8130,7 +8130,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swing or sliding cut-off saw
     /// </summary>
     public static readonly Coding SwingOrSlidingCutOffSaw = new Coding
     {
@@ -8139,7 +8139,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transvenous electrode
     /// </summary>
     public static readonly Coding TransvenousElectrode = new Coding
     {
@@ -8148,7 +8148,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Storage tank
     /// </summary>
     public static readonly Coding StorageTank = new Coding
     {
@@ -8157,7 +8157,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Three-wheeled all-terrain vehicle
     /// </summary>
     public static readonly Coding ThreeWheeledAllTerrainVehicle = new Coding
     {
@@ -8166,7 +8166,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fogarty catheter
     /// </summary>
     public static readonly Coding FogartyCatheter = new Coding
     {
@@ -8175,7 +8175,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electric blanket
     /// </summary>
     public static readonly Coding ElectricBlanket = new Coding
     {
@@ -8184,7 +8184,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hickman catheter
     /// </summary>
     public static readonly Coding HickmanCatheter = new Coding
     {
@@ -8193,7 +8193,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric bed
     /// </summary>
     public static readonly Coding PediatricBed = new Coding
     {
@@ -8202,7 +8202,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chain fall
     /// </summary>
     public static readonly Coding ChainFall = new Coding
     {
@@ -8211,7 +8211,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Denture
     /// </summary>
     public static readonly Coding Denture = new Coding
     {
@@ -8220,7 +8220,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Analyzer
     /// </summary>
     public static readonly Coding Analyzer = new Coding
     {
@@ -8229,7 +8229,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Motor home
     /// </summary>
     public static readonly Coding MotorHome = new Coding
     {
@@ -8238,7 +8238,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reflex hammer
     /// </summary>
     public static readonly Coding ReflexHammer = new Coding
     {
@@ -8247,7 +8247,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oven
     /// </summary>
     public static readonly Coding Oven = new Coding
     {
@@ -8256,7 +8256,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crane
     /// </summary>
     public static readonly Coding Crane = new Coding
     {
@@ -8265,7 +8265,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cloth
     /// </summary>
     public static readonly Coding Cloth = new Coding
     {
@@ -8274,7 +8274,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Socket wrench
     /// </summary>
     public static readonly Coding SocketWrench = new Coding
     {
@@ -8283,7 +8283,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enzyme immunoassay analyzer
     /// </summary>
     public static readonly Coding EnzymeImmunoassayAnalyzer = new Coding
     {
@@ -8292,7 +8292,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adhesive
     /// </summary>
     public static readonly Coding Adhesive = new Coding
     {
@@ -8301,7 +8301,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// All-terrain vehicle
     /// </summary>
     public static readonly Coding AllTerrainVehicle = new Coding
     {
@@ -8310,7 +8310,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radial saw
     /// </summary>
     public static readonly Coding RadialSaw = new Coding
     {
@@ -8319,7 +8319,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemostat
     /// </summary>
     public static readonly Coding Hemostat = new Coding
     {
@@ -8328,7 +8328,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peripheral intravenous catheter
     /// </summary>
     public static readonly Coding PeripheralIntravenousCatheter = new Coding
     {
@@ -8337,7 +8337,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bony tissue forceps
     /// </summary>
     public static readonly Coding BonyTissueForceps = new Coding
     {
@@ -8346,7 +8346,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Robotic arm
     /// </summary>
     public static readonly Coding RoboticArm = new Coding
     {
@@ -8355,7 +8355,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Safety belt
     /// </summary>
     public static readonly Coding SafetyBelt = new Coding
     {
@@ -8364,7 +8364,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tube
     /// </summary>
     public static readonly Coding Tube = new Coding
     {
@@ -8373,7 +8373,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Audio analgesia unit
     /// </summary>
     public static readonly Coding AudioAnalgesiaUnit = new Coding
     {
@@ -8382,7 +8382,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dip tank
     /// </summary>
     public static readonly Coding DipTank = new Coding
     {
@@ -8391,7 +8391,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plastic shoes
     /// </summary>
     public static readonly Coding PlasticShoes = new Coding
     {
@@ -8400,7 +8400,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Robot
     /// </summary>
     public static readonly Coding Robot = new Coding
     {
@@ -8409,7 +8409,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Band saw
     /// </summary>
     public static readonly Coding BandSaw = new Coding
     {
@@ -8418,7 +8418,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Man lift
     /// </summary>
     public static readonly Coding ManLift = new Coding
     {
@@ -8427,7 +8427,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ski tow
     /// </summary>
     public static readonly Coding SkiTow = new Coding
     {
@@ -8436,7 +8436,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bile collection bag
     /// </summary>
     public static readonly Coding BileCollectionBag = new Coding
     {
@@ -8445,7 +8445,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pliers
     /// </summary>
     public static readonly Coding Pliers = new Coding
     {
@@ -8454,7 +8454,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jail
     /// </summary>
     public static readonly Coding Jail = new Coding
     {
@@ -8463,7 +8463,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chain saw
     /// </summary>
     public static readonly Coding ChainSaw = new Coding
     {
@@ -8472,7 +8472,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intramedullary rod
     /// </summary>
     public static readonly Coding IntramedullaryRod = new Coding
     {
@@ -8481,7 +8481,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Barricade
     /// </summary>
     public static readonly Coding Barricade = new Coding
     {
@@ -8490,7 +8490,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Detonating cord
     /// </summary>
     public static readonly Coding DetonatingCord = new Coding
     {
@@ -8499,7 +8499,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implantable dental prosthesis
     /// </summary>
     public static readonly Coding ImplantableDentalProsthesis = new Coding
     {
@@ -8508,7 +8508,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Aortic valve prosthesis
     /// </summary>
     public static readonly Coding AorticValveProsthesis = new Coding
     {
@@ -8517,7 +8517,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adhesive tape
     /// </summary>
     public static readonly Coding AdhesiveTape = new Coding
     {
@@ -8526,7 +8526,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Boring machine
     /// </summary>
     public static readonly Coding BoringMachine = new Coding
     {
@@ -8535,7 +8535,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abortion pump
     /// </summary>
     public static readonly Coding AbortionPump = new Coding
     {
@@ -8544,7 +8544,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cart
     /// </summary>
     public static readonly Coding Cart = new Coding
     {
@@ -8553,7 +8553,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Engraving press
     /// </summary>
     public static readonly Coding EngravingPress = new Coding
     {
@@ -8562,7 +8562,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Golf club
     /// </summary>
     public static readonly Coding GolfClub = new Coding
     {
@@ -8571,7 +8571,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood electrolyte analyzer
     /// </summary>
     public static readonly Coding BloodElectrolyteAnalyzer = new Coding
     {
@@ -8580,7 +8580,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laparoscope
     /// </summary>
     public static readonly Coding Laparoscope = new Coding
     {
@@ -8589,7 +8589,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrocardiographic monitor and recorder
     /// </summary>
     public static readonly Coding ElectrocardiographicMonitorAndRecorder = new Coding
     {
@@ -8598,7 +8598,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Table
     /// </summary>
     public static readonly Coding Table = new Coding
     {
@@ -8607,7 +8607,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mortising machine
     /// </summary>
     public static readonly Coding MortisingMachine = new Coding
     {
@@ -8616,7 +8616,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Defibrillator paddle
     /// </summary>
     public static readonly Coding DefibrillatorPaddle = new Coding
     {
@@ -8625,7 +8625,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arteriovenous shunt catheter
     /// </summary>
     public static readonly Coding ArteriovenousShuntCatheter = new Coding
     {
@@ -8634,7 +8634,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Balloon pump
     /// </summary>
     public static readonly Coding BalloonPump = new Coding
     {
@@ -8643,7 +8643,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diving ladder
     /// </summary>
     public static readonly Coding DivingLadder = new Coding
     {
@@ -8652,7 +8652,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protective shield
     /// </summary>
     public static readonly Coding ProtectiveShield = new Coding
     {
@@ -8661,7 +8661,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tool
     /// </summary>
     public static readonly Coding Tool = new Coding
     {
@@ -8670,7 +8670,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soldering iron
     /// </summary>
     public static readonly Coding SolderingIron = new Coding
     {
@@ -8679,7 +8679,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clothing material
     /// </summary>
     public static readonly Coding ClothingMaterial = new Coding
     {
@@ -8688,7 +8688,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cane
     /// </summary>
     public static readonly Coding Cane = new Coding
     {
@@ -8697,7 +8697,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Physical restraint structure
     /// </summary>
     public static readonly Coding PhysicalRestraintStructure = new Coding
     {
@@ -8706,7 +8706,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tester
     /// </summary>
     public static readonly Coding Tester = new Coding
     {
@@ -8715,7 +8715,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood cell counter and analyzer
     /// </summary>
     public static readonly Coding BloodCellCounterAndAnalyzer = new Coding
     {
@@ -8724,7 +8724,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Footwear
     /// </summary>
     public static readonly Coding Footwear = new Coding
     {
@@ -8733,7 +8733,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maximum security cell
     /// </summary>
     public static readonly Coding MaximumSecurityCell = new Coding
     {
@@ -8742,7 +8742,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diagnostic implant
     /// </summary>
     public static readonly Coding DiagnosticImplant = new Coding
     {
@@ -8751,7 +8751,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravenous anesthesia administration set
     /// </summary>
     public static readonly Coding IntravenousAnesthesiaAdministrationSet = new Coding
     {
@@ -8760,7 +8760,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Artificial tissue
     /// </summary>
     public static readonly Coding ArtificialTissue = new Coding
     {
@@ -8769,7 +8769,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypodermic needle
     /// </summary>
     public static readonly Coding HypodermicNeedle = new Coding
     {
@@ -8778,7 +8778,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stretcher
     /// </summary>
     public static readonly Coding Stretcher = new Coding
     {
@@ -8787,7 +8787,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leather shoes
     /// </summary>
     public static readonly Coding LeatherShoes = new Coding
     {
@@ -8796,7 +8796,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood culture analyzer
     /// </summary>
     public static readonly Coding BloodCultureAnalyzer = new Coding
     {
@@ -8805,7 +8805,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnetic resonance imaging unit
     /// </summary>
     public static readonly Coding MagneticResonanceImagingUnit = new Coding
     {
@@ -8814,7 +8814,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alcohol sponge
     /// </summary>
     public static readonly Coding AlcoholSponge = new Coding
     {
@@ -8823,7 +8823,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cast cutter
     /// </summary>
     public static readonly Coding CastCutter = new Coding
     {
@@ -8832,7 +8832,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metal periosteal implant
     /// </summary>
     public static readonly Coding MetalPeriostealImplant = new Coding
     {
@@ -8841,7 +8841,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ventricular intracranial catheter
     /// </summary>
     public static readonly Coding VentricularIntracranialCatheter = new Coding
     {
@@ -8850,7 +8850,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Colonoscope
     /// </summary>
     public static readonly Coding Colonoscope = new Coding
     {
@@ -8859,7 +8859,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear prosthesis
     /// </summary>
     public static readonly Coding EarProsthesis = new Coding
     {
@@ -8868,7 +8868,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rubber shoes
     /// </summary>
     public static readonly Coding RubberShoes = new Coding
     {
@@ -8877,7 +8877,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abrasive blast by cleaning nozzles
     /// </summary>
     public static readonly Coding AbrasiveBlastByCleaningNozzles = new Coding
     {
@@ -8886,7 +8886,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Support
     /// </summary>
     public static readonly Coding Support = new Coding
     {
@@ -8895,7 +8895,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Feeding catheter
     /// </summary>
     public static readonly Coding FeedingCatheter = new Coding
     {
@@ -8904,7 +8904,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thomas collar
     /// </summary>
     public static readonly Coding ThomasCollar = new Coding
     {
@@ -8913,7 +8913,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyperbaric chamber
     /// </summary>
     public static readonly Coding HyperbaricChamber = new Coding
     {
@@ -8922,7 +8922,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Basin
     /// </summary>
     public static readonly Coding Basin = new Coding
     {
@@ -8931,7 +8931,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hospital bed
     /// </summary>
     public static readonly Coding HospitalBed = new Coding
     {
@@ -8940,7 +8940,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bobsled
     /// </summary>
     public static readonly Coding Bobsled = new Coding
     {
@@ -8949,7 +8949,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elastic bandage
     /// </summary>
     public static readonly Coding ElasticBandage = new Coding
     {
@@ -8958,7 +8958,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dermatotome
     /// </summary>
     public static readonly Coding Dermatotome = new Coding
     {
@@ -8967,7 +8967,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Air filter
     /// </summary>
     public static readonly Coding AirFilter = new Coding
     {
@@ -8976,7 +8976,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mycoplasma pulmonis antibody test kit
     /// </summary>
     public static readonly Coding MycoplasmaPulmonisAntibodyTestKit = new Coding
     {
@@ -8985,7 +8985,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cargo handling gear
     /// </summary>
     public static readonly Coding CargoHandlingGear = new Coding
     {
@@ -8994,7 +8994,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Linen cloth
     /// </summary>
     public static readonly Coding LinenCloth = new Coding
     {
@@ -9003,7 +9003,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brush
     /// </summary>
     public static readonly Coding Brush = new Coding
     {
@@ -9018,9 +9018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVascularProsthesis = "102303004";
 
     /// <summary>
+    /// Literal for code: NONEVascularProsthesis
+    /// </summary>
+    public const string LiteralNONEVascularProsthesis = "http://snomed.info/sct#102303004";
+
+    /// <summary>
     /// Literal for code: MeasuringRuler
     /// </summary>
     public const string LiteralMeasuringRuler = "102304005";
+
+    /// <summary>
+    /// Literal for code: NONEMeasuringRuler
+    /// </summary>
+    public const string LiteralNONEMeasuringRuler = "http://snomed.info/sct#102304005";
 
     /// <summary>
     /// Literal for code: IntramedullaryReamer
@@ -9028,9 +9038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIntramedullaryReamer = "102305006";
 
     /// <summary>
+    /// Literal for code: NONEIntramedullaryReamer
+    /// </summary>
+    public const string LiteralNONEIntramedullaryReamer = "http://snomed.info/sct#102305006";
+
+    /// <summary>
     /// Literal for code: Reamer
     /// </summary>
     public const string LiteralReamer = "102306007";
+
+    /// <summary>
+    /// Literal for code: NONEReamer
+    /// </summary>
+    public const string LiteralNONEReamer = "http://snomed.info/sct#102306007";
 
     /// <summary>
     /// Literal for code: SurgicalKnife
@@ -9038,9 +9058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSurgicalKnife = "102307003";
 
     /// <summary>
+    /// Literal for code: NONESurgicalKnife
+    /// </summary>
+    public const string LiteralNONESurgicalKnife = "http://snomed.info/sct#102307003";
+
+    /// <summary>
     /// Literal for code: Scalpel
     /// </summary>
     public const string LiteralScalpel = "102308008";
+
+    /// <summary>
+    /// Literal for code: NONEScalpel
+    /// </summary>
+    public const string LiteralNONEScalpel = "http://snomed.info/sct#102308008";
 
     /// <summary>
     /// Literal for code: SurgicalSaw
@@ -9048,9 +9078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSurgicalSaw = "102309000";
 
     /// <summary>
+    /// Literal for code: NONESurgicalSaw
+    /// </summary>
+    public const string LiteralNONESurgicalSaw = "http://snomed.info/sct#102309000";
+
+    /// <summary>
     /// Literal for code: GigliQuoteSWireSaw
     /// </summary>
     public const string LiteralGigliQuoteSWireSaw = "102310005";
+
+    /// <summary>
+    /// Literal for code: NONEGigliQuoteSWireSaw
+    /// </summary>
+    public const string LiteralNONEGigliQuoteSWireSaw = "http://snomed.info/sct#102310005";
 
     /// <summary>
     /// Literal for code: StarckDilator
@@ -9058,9 +9098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStarckDilator = "102311009";
 
     /// <summary>
+    /// Literal for code: NONEStarckDilator
+    /// </summary>
+    public const string LiteralNONEStarckDilator = "http://snomed.info/sct#102311009";
+
+    /// <summary>
     /// Literal for code: AtherectomyDevice
     /// </summary>
     public const string LiteralAtherectomyDevice = "102312002";
+
+    /// <summary>
+    /// Literal for code: NONEAtherectomyDevice
+    /// </summary>
+    public const string LiteralNONEAtherectomyDevice = "http://snomed.info/sct#102312002";
 
     /// <summary>
     /// Literal for code: RotationalAtherectomyDevice
@@ -9068,9 +9118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRotationalAtherectomyDevice = "102313007";
 
     /// <summary>
+    /// Literal for code: NONERotationalAtherectomyDevice
+    /// </summary>
+    public const string LiteralNONERotationalAtherectomyDevice = "http://snomed.info/sct#102313007";
+
+    /// <summary>
     /// Literal for code: EmbolizationCoil
     /// </summary>
     public const string LiteralEmbolizationCoil = "102314001";
+
+    /// <summary>
+    /// Literal for code: NONEEmbolizationCoil
+    /// </summary>
+    public const string LiteralNONEEmbolizationCoil = "http://snomed.info/sct#102314001";
 
     /// <summary>
     /// Literal for code: EmbolizationBall
@@ -9078,9 +9138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEmbolizationBall = "102315000";
 
     /// <summary>
+    /// Literal for code: NONEEmbolizationBall
+    /// </summary>
+    public const string LiteralNONEEmbolizationBall = "http://snomed.info/sct#102315000";
+
+    /// <summary>
     /// Literal for code: EmbolizationParticulate
     /// </summary>
     public const string LiteralEmbolizationParticulate = "102316004";
+
+    /// <summary>
+    /// Literal for code: NONEEmbolizationParticulate
+    /// </summary>
+    public const string LiteralNONEEmbolizationParticulate = "http://snomed.info/sct#102316004";
 
     /// <summary>
     /// Literal for code: GuidingCatheter
@@ -9088,9 +9158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGuidingCatheter = "102317008";
 
     /// <summary>
+    /// Literal for code: NONEGuidingCatheter
+    /// </summary>
+    public const string LiteralNONEGuidingCatheter = "http://snomed.info/sct#102317008";
+
+    /// <summary>
     /// Literal for code: ImplantableVenousCatheter
     /// </summary>
     public const string LiteralImplantableVenousCatheter = "102318003";
+
+    /// <summary>
+    /// Literal for code: NONEImplantableVenousCatheter
+    /// </summary>
+    public const string LiteralNONEImplantableVenousCatheter = "http://snomed.info/sct#102318003";
 
     /// <summary>
     /// Literal for code: PercutaneousTransluminalAngioplastyBalloon
@@ -9098,9 +9178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPercutaneousTransluminalAngioplastyBalloon = "102319006";
 
     /// <summary>
+    /// Literal for code: NONEPercutaneousTransluminalAngioplastyBalloon
+    /// </summary>
+    public const string LiteralNONEPercutaneousTransluminalAngioplastyBalloon = "http://snomed.info/sct#102319006";
+
+    /// <summary>
     /// Literal for code: DetachableBalloon
     /// </summary>
     public const string LiteralDetachableBalloon = "102320000";
+
+    /// <summary>
+    /// Literal for code: NONEDetachableBalloon
+    /// </summary>
+    public const string LiteralNONEDetachableBalloon = "http://snomed.info/sct#102320000";
 
     /// <summary>
     /// Literal for code: OperatingMicroscope
@@ -9108,9 +9198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOperatingMicroscope = "102321001";
 
     /// <summary>
+    /// Literal for code: NONEOperatingMicroscope
+    /// </summary>
+    public const string LiteralNONEOperatingMicroscope = "http://snomed.info/sct#102321001";
+
+    /// <summary>
     /// Literal for code: ExternalProsthesisForSonographicProcedure
     /// </summary>
     public const string LiteralExternalProsthesisForSonographicProcedure = "102322008";
+
+    /// <summary>
+    /// Literal for code: NONEExternalProsthesisForSonographicProcedure
+    /// </summary>
+    public const string LiteralNONEExternalProsthesisForSonographicProcedure = "http://snomed.info/sct#102322008";
 
     /// <summary>
     /// Literal for code: WaterBagProsthesisForImagingProcedure
@@ -9118,9 +9218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWaterBagProsthesisForImagingProcedure = "102323003";
 
     /// <summary>
+    /// Literal for code: NONEWaterBagProsthesisForImagingProcedure
+    /// </summary>
+    public const string LiteralNONEWaterBagProsthesisForImagingProcedure = "http://snomed.info/sct#102323003";
+
+    /// <summary>
     /// Literal for code: SalineBagProsthesisForImagingProcedure
     /// </summary>
     public const string LiteralSalineBagProsthesisForImagingProcedure = "102324009";
+
+    /// <summary>
+    /// Literal for code: NONESalineBagProsthesisForImagingProcedure
+    /// </summary>
+    public const string LiteralNONESalineBagProsthesisForImagingProcedure = "http://snomed.info/sct#102324009";
 
     /// <summary>
     /// Literal for code: GelProsthesisForImagingProcedure
@@ -9128,9 +9238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGelProsthesisForImagingProcedure = "102325005";
 
     /// <summary>
+    /// Literal for code: NONEGelProsthesisForImagingProcedure
+    /// </summary>
+    public const string LiteralNONEGelProsthesisForImagingProcedure = "http://snomed.info/sct#102325005";
+
+    /// <summary>
     /// Literal for code: Dagger
     /// </summary>
     public const string LiteralDagger = "102326006";
+
+    /// <summary>
+    /// Literal for code: NONEDagger
+    /// </summary>
+    public const string LiteralNONEDagger = "http://snomed.info/sct#102326006";
 
     /// <summary>
     /// Literal for code: Dirk
@@ -9138,9 +9258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDirk = "102327002";
 
     /// <summary>
+    /// Literal for code: NONEDirk
+    /// </summary>
+    public const string LiteralNONEDirk = "http://snomed.info/sct#102327002";
+
+    /// <summary>
     /// Literal for code: Sword
     /// </summary>
     public const string LiteralSword = "102328007";
+
+    /// <summary>
+    /// Literal for code: NONESword
+    /// </summary>
+    public const string LiteralNONESword = "http://snomed.info/sct#102328007";
 
     /// <summary>
     /// Literal for code: MotorVehicleAirbag
@@ -9148,9 +9278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMotorVehicleAirbag = "102384007";
 
     /// <summary>
+    /// Literal for code: NONEMotorVehicleAirbag
+    /// </summary>
+    public const string LiteralNONEMotorVehicleAirbag = "http://snomed.info/sct#102384007";
+
+    /// <summary>
     /// Literal for code: FrontAirbag
     /// </summary>
     public const string LiteralFrontAirbag = "102385008";
+
+    /// <summary>
+    /// Literal for code: NONEFrontAirbag
+    /// </summary>
+    public const string LiteralNONEFrontAirbag = "http://snomed.info/sct#102385008";
 
     /// <summary>
     /// Literal for code: FrontDriverAirbag
@@ -9158,9 +9298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFrontDriverAirbag = "102386009";
 
     /// <summary>
+    /// Literal for code: NONEFrontDriverAirbag
+    /// </summary>
+    public const string LiteralNONEFrontDriverAirbag = "http://snomed.info/sct#102386009";
+
+    /// <summary>
     /// Literal for code: FrontPassengerAirbag
     /// </summary>
     public const string LiteralFrontPassengerAirbag = "102387000";
+
+    /// <summary>
+    /// Literal for code: NONEFrontPassengerAirbag
+    /// </summary>
+    public const string LiteralNONEFrontPassengerAirbag = "http://snomed.info/sct#102387000";
 
     /// <summary>
     /// Literal for code: SideAirbag
@@ -9168,9 +9318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSideAirbag = "102388005";
 
     /// <summary>
+    /// Literal for code: NONESideAirbag
+    /// </summary>
+    public const string LiteralNONESideAirbag = "http://snomed.info/sct#102388005";
+
+    /// <summary>
     /// Literal for code: Snowboard
     /// </summary>
     public const string LiteralSnowboard = "102402008";
+
+    /// <summary>
+    /// Literal for code: NONESnowboard
+    /// </summary>
+    public const string LiteralNONESnowboard = "http://snomed.info/sct#102402008";
 
     /// <summary>
     /// Literal for code: WaterSki
@@ -9178,9 +9338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWaterSki = "102403003";
 
     /// <summary>
+    /// Literal for code: NONEWaterSki
+    /// </summary>
+    public const string LiteralNONEWaterSki = "http://snomed.info/sct#102403003";
+
+    /// <summary>
     /// Literal for code: NeedleGuide
     /// </summary>
     public const string LiteralNeedleGuide = "10244001";
+
+    /// <summary>
+    /// Literal for code: NONENeedleGuide
+    /// </summary>
+    public const string LiteralNONENeedleGuide = "http://snomed.info/sct#10244001";
 
     /// <summary>
     /// Literal for code: ElectrostimulatingAnalgesiaUnit
@@ -9188,9 +9358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralElectrostimulatingAnalgesiaUnit = "10371004";
 
     /// <summary>
+    /// Literal for code: NONEElectrostimulatingAnalgesiaUnit
+    /// </summary>
+    public const string LiteralNONEElectrostimulatingAnalgesiaUnit = "http://snomed.info/sct#10371004";
+
+    /// <summary>
     /// Literal for code: Toeboard
     /// </summary>
     public const string LiteralToeboard = "10507000";
+
+    /// <summary>
+    /// Literal for code: NONEToeboard
+    /// </summary>
+    public const string LiteralNONEToeboard = "http://snomed.info/sct#10507000";
 
     /// <summary>
     /// Literal for code: LifeSupportEquipment
@@ -9198,9 +9378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLifeSupportEquipment = "105784003";
 
     /// <summary>
+    /// Literal for code: NONELifeSupportEquipment
+    /// </summary>
+    public const string LiteralNONELifeSupportEquipment = "http://snomed.info/sct#105784003";
+
+    /// <summary>
     /// Literal for code: AdhesiveBandageANDORSuture
     /// </summary>
     public const string LiteralAdhesiveBandageANDORSuture = "105785002";
+
+    /// <summary>
+    /// Literal for code: NONEAdhesiveBandageANDORSuture
+    /// </summary>
+    public const string LiteralNONEAdhesiveBandageANDORSuture = "http://snomed.info/sct#105785002";
 
     /// <summary>
     /// Literal for code: BeltANDORBinder
@@ -9208,9 +9398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBeltANDORBinder = "105787005";
 
     /// <summary>
+    /// Literal for code: NONEBeltANDORBinder
+    /// </summary>
+    public const string LiteralNONEBeltANDORBinder = "http://snomed.info/sct#105787005";
+
+    /// <summary>
     /// Literal for code: ProbeSoundBougieANDORAirway
     /// </summary>
     public const string LiteralProbeSoundBougieANDORAirway = "105788000";
+
+    /// <summary>
+    /// Literal for code: NONEProbeSoundBougieANDORAirway
+    /// </summary>
+    public const string LiteralNONEProbeSoundBougieANDORAirway = "http://snomed.info/sct#105788000";
 
     /// <summary>
     /// Literal for code: CannulaTubeANDORCatheter
@@ -9218,9 +9418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCannulaTubeANDORCatheter = "105789008";
 
     /// <summary>
+    /// Literal for code: NONECannulaTubeANDORCatheter
+    /// </summary>
+    public const string LiteralNONECannulaTubeANDORCatheter = "http://snomed.info/sct#105789008";
+
+    /// <summary>
     /// Literal for code: BagBalloonANDORBottle
     /// </summary>
     public const string LiteralBagBalloonANDORBottle = "105790004";
+
+    /// <summary>
+    /// Literal for code: NONEBagBalloonANDORBottle
+    /// </summary>
+    public const string LiteralNONEBagBalloonANDORBottle = "http://snomed.info/sct#105790004";
 
     /// <summary>
     /// Literal for code: PumpInjectorANDORAspirator
@@ -9228,9 +9438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPumpInjectorANDORAspirator = "105791000";
 
     /// <summary>
+    /// Literal for code: NONEPumpInjectorANDORAspirator
+    /// </summary>
+    public const string LiteralNONEPumpInjectorANDORAspirator = "http://snomed.info/sct#105791000";
+
+    /// <summary>
     /// Literal for code: AnalgesiaANDORAnesthesiaUnit
     /// </summary>
     public const string LiteralAnalgesiaANDORAnesthesiaUnit = "105792007";
+
+    /// <summary>
+    /// Literal for code: NONEAnalgesiaANDORAnesthesiaUnit
+    /// </summary>
+    public const string LiteralNONEAnalgesiaANDORAnesthesiaUnit = "http://snomed.info/sct#105792007";
 
     /// <summary>
     /// Literal for code: ScopeANDORCamera
@@ -9238,9 +9458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralScopeANDORCamera = "105794008";
 
     /// <summary>
+    /// Literal for code: NONEScopeANDORCamera
+    /// </summary>
+    public const string LiteralNONEScopeANDORCamera = "http://snomed.info/sct#105794008";
+
+    /// <summary>
     /// Literal for code: PhysicalRestraintEquipmentANDORStructure
     /// </summary>
     public const string LiteralPhysicalRestraintEquipmentANDORStructure = "105809003";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalRestraintEquipmentANDORStructure
+    /// </summary>
+    public const string LiteralNONEPhysicalRestraintEquipmentANDORStructure = "http://snomed.info/sct#105809003";
 
     /// <summary>
     /// Literal for code: IndustrialSaw
@@ -9248,9 +9478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIndustrialSaw = "10826000";
 
     /// <summary>
+    /// Literal for code: NONEIndustrialSaw
+    /// </summary>
+    public const string LiteralNONEIndustrialSaw = "http://snomed.info/sct#10826000";
+
+    /// <summary>
     /// Literal for code: RadiographicTherapeuticUnit
     /// </summary>
     public const string LiteralRadiographicTherapeuticUnit = "10850003";
+
+    /// <summary>
+    /// Literal for code: NONERadiographicTherapeuticUnit
+    /// </summary>
+    public const string LiteralNONERadiographicTherapeuticUnit = "http://snomed.info/sct#10850003";
 
     /// <summary>
     /// Literal for code: SiliconePlug
@@ -9258,9 +9498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSiliconePlug = "108874005";
 
     /// <summary>
+    /// Literal for code: NONESiliconePlug
+    /// </summary>
+    public const string LiteralNONESiliconePlug = "http://snomed.info/sct#108874005";
+
+    /// <summary>
     /// Literal for code: TearTestStripKit
     /// </summary>
     public const string LiteralTearTestStripKit = "108882005";
+
+    /// <summary>
+    /// Literal for code: NONETearTestStripKit
+    /// </summary>
+    public const string LiteralNONETearTestStripKit = "http://snomed.info/sct#108882005";
 
     /// <summary>
     /// Literal for code: VeinStripper
@@ -9268,9 +9518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVeinStripper = "10906003";
 
     /// <summary>
+    /// Literal for code: NONEVeinStripper
+    /// </summary>
+    public const string LiteralNONEVeinStripper = "http://snomed.info/sct#10906003";
+
+    /// <summary>
     /// Literal for code: AlbuminTestKit
     /// </summary>
     public const string LiteralAlbuminTestKit = "109145005";
+
+    /// <summary>
+    /// Literal for code: NONEAlbuminTestKit
+    /// </summary>
+    public const string LiteralNONEAlbuminTestKit = "http://snomed.info/sct#109145005";
 
     /// <summary>
     /// Literal for code: BacteriuriaTestKit
@@ -9278,9 +9538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBacteriuriaTestKit = "109148007";
 
     /// <summary>
+    /// Literal for code: NONEBacteriuriaTestKit
+    /// </summary>
+    public const string LiteralNONEBacteriuriaTestKit = "http://snomed.info/sct#109148007";
+
+    /// <summary>
     /// Literal for code: BilirubinTestKit
     /// </summary>
     public const string LiteralBilirubinTestKit = "109152007";
+
+    /// <summary>
+    /// Literal for code: NONEBilirubinTestKit
+    /// </summary>
+    public const string LiteralNONEBilirubinTestKit = "http://snomed.info/sct#109152007";
 
     /// <summary>
     /// Literal for code: BloodUreaNitrogenTestKit
@@ -9288,9 +9558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBloodUreaNitrogenTestKit = "109154008";
 
     /// <summary>
+    /// Literal for code: NONEBloodUreaNitrogenTestKit
+    /// </summary>
+    public const string LiteralNONEBloodUreaNitrogenTestKit = "http://snomed.info/sct#109154008";
+
+    /// <summary>
     /// Literal for code: CandidaTestKit
     /// </summary>
     public const string LiteralCandidaTestKit = "109156005";
+
+    /// <summary>
+    /// Literal for code: NONECandidaTestKit
+    /// </summary>
+    public const string LiteralNONECandidaTestKit = "http://snomed.info/sct#109156005";
 
     /// <summary>
     /// Literal for code: ChlamydiaTrachomatisTestKit
@@ -9298,9 +9578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChlamydiaTrachomatisTestKit = "109159003";
 
     /// <summary>
+    /// Literal for code: NONEChlamydiaTrachomatisTestKit
+    /// </summary>
+    public const string LiteralNONEChlamydiaTrachomatisTestKit = "http://snomed.info/sct#109159003";
+
+    /// <summary>
     /// Literal for code: CholesterolTestKit
     /// </summary>
     public const string LiteralCholesterolTestKit = "109164004";
+
+    /// <summary>
+    /// Literal for code: NONECholesterolTestKit
+    /// </summary>
+    public const string LiteralNONECholesterolTestKit = "http://snomed.info/sct#109164004";
 
     /// <summary>
     /// Literal for code: ColorAllergyScreeningTestKit
@@ -9308,9 +9598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralColorAllergyScreeningTestKit = "109166002";
 
     /// <summary>
+    /// Literal for code: NONEColorAllergyScreeningTestKit
+    /// </summary>
+    public const string LiteralNONEColorAllergyScreeningTestKit = "http://snomed.info/sct#109166002";
+
+    /// <summary>
     /// Literal for code: CryptococcalAntigenTestKit
     /// </summary>
     public const string LiteralCryptococcalAntigenTestKit = "109168001";
+
+    /// <summary>
+    /// Literal for code: NONECryptococcalAntigenTestKit
+    /// </summary>
+    public const string LiteralNONECryptococcalAntigenTestKit = "http://snomed.info/sct#109168001";
 
     /// <summary>
     /// Literal for code: UrineGlucoseTestKit
@@ -9318,9 +9618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUrineGlucoseTestKit = "109176004";
 
     /// <summary>
+    /// Literal for code: NONEUrineGlucoseTestKit
+    /// </summary>
+    public const string LiteralNONEUrineGlucoseTestKit = "http://snomed.info/sct#109176004";
+
+    /// <summary>
     /// Literal for code: GonorrheaTestKit
     /// </summary>
     public const string LiteralGonorrheaTestKit = "109177008";
+
+    /// <summary>
+    /// Literal for code: NONEGonorrheaTestKit
+    /// </summary>
+    public const string LiteralNONEGonorrheaTestKit = "http://snomed.info/sct#109177008";
 
     /// <summary>
     /// Literal for code: HematocritHemoglobinTestKit
@@ -9328,9 +9638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHematocritHemoglobinTestKit = "109178003";
 
     /// <summary>
+    /// Literal for code: NONEHematocritHemoglobinTestKit
+    /// </summary>
+    public const string LiteralNONEHematocritHemoglobinTestKit = "http://snomed.info/sct#109178003";
+
+    /// <summary>
     /// Literal for code: HumanImmunodeficiencyVirusTestKit
     /// </summary>
     public const string LiteralHumanImmunodeficiencyVirusTestKit = "109179006";
+
+    /// <summary>
+    /// Literal for code: NONEHumanImmunodeficiencyVirusTestKit
+    /// </summary>
+    public const string LiteralNONEHumanImmunodeficiencyVirusTestKit = "http://snomed.info/sct#109179006";
 
     /// <summary>
     /// Literal for code: MeningitisTestKit
@@ -9338,9 +9658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMeningitisTestKit = "109180009";
 
     /// <summary>
+    /// Literal for code: NONEMeningitisTestKit
+    /// </summary>
+    public const string LiteralNONEMeningitisTestKit = "http://snomed.info/sct#109180009";
+
+    /// <summary>
     /// Literal for code: MononucleosisTestKit
     /// </summary>
     public const string LiteralMononucleosisTestKit = "109181008";
+
+    /// <summary>
+    /// Literal for code: NONEMononucleosisTestKit
+    /// </summary>
+    public const string LiteralNONEMononucleosisTestKit = "http://snomed.info/sct#109181008";
 
     /// <summary>
     /// Literal for code: OccultBloodScreeningTestKit
@@ -9348,9 +9678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOccultBloodScreeningTestKit = "109182001";
 
     /// <summary>
+    /// Literal for code: NONEOccultBloodScreeningTestKit
+    /// </summary>
+    public const string LiteralNONEOccultBloodScreeningTestKit = "http://snomed.info/sct#109182001";
+
+    /// <summary>
     /// Literal for code: OvulationTestKit
     /// </summary>
     public const string LiteralOvulationTestKit = "109183006";
+
+    /// <summary>
+    /// Literal for code: NONEOvulationTestKit
+    /// </summary>
+    public const string LiteralNONEOvulationTestKit = "http://snomed.info/sct#109183006";
 
     /// <summary>
     /// Literal for code: PregnancyTestKit
@@ -9358,9 +9698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPregnancyTestKit = "109184000";
 
     /// <summary>
+    /// Literal for code: NONEPregnancyTestKit
+    /// </summary>
+    public const string LiteralNONEPregnancyTestKit = "http://snomed.info/sct#109184000";
+
+    /// <summary>
     /// Literal for code: RheumatoidFactorTestKit
     /// </summary>
     public const string LiteralRheumatoidFactorTestKit = "109185004";
+
+    /// <summary>
+    /// Literal for code: NONERheumatoidFactorTestKit
+    /// </summary>
+    public const string LiteralNONERheumatoidFactorTestKit = "http://snomed.info/sct#109185004";
 
     /// <summary>
     /// Literal for code: SickleCellTestKit
@@ -9368,9 +9718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSickleCellTestKit = "109186003";
 
     /// <summary>
+    /// Literal for code: NONESickleCellTestKit
+    /// </summary>
+    public const string LiteralNONESickleCellTestKit = "http://snomed.info/sct#109186003";
+
+    /// <summary>
     /// Literal for code: StaphylococcusTestKit
     /// </summary>
     public const string LiteralStaphylococcusTestKit = "109187007";
+
+    /// <summary>
+    /// Literal for code: NONEStaphylococcusTestKit
+    /// </summary>
+    public const string LiteralNONEStaphylococcusTestKit = "http://snomed.info/sct#109187007";
 
     /// <summary>
     /// Literal for code: StreptococciTestKit
@@ -9378,9 +9738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStreptococciTestKit = "109188002";
 
     /// <summary>
+    /// Literal for code: NONEStreptococciTestKit
+    /// </summary>
+    public const string LiteralNONEStreptococciTestKit = "http://snomed.info/sct#109188002";
+
+    /// <summary>
     /// Literal for code: ToxoplasmosisTestKit
     /// </summary>
     public const string LiteralToxoplasmosisTestKit = "109189005";
+
+    /// <summary>
+    /// Literal for code: NONEToxoplasmosisTestKit
+    /// </summary>
+    public const string LiteralNONEToxoplasmosisTestKit = "http://snomed.info/sct#109189005";
 
     /// <summary>
     /// Literal for code: VirusTestKit
@@ -9388,9 +9758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVirusTestKit = "109190001";
 
     /// <summary>
+    /// Literal for code: NONEVirusTestKit
+    /// </summary>
+    public const string LiteralNONEVirusTestKit = "http://snomed.info/sct#109190001";
+
+    /// <summary>
     /// Literal for code: DentalPin
     /// </summary>
     public const string LiteralDentalPin = "109226007";
+
+    /// <summary>
+    /// Literal for code: NONEDentalPin
+    /// </summary>
+    public const string LiteralNONEDentalPin = "http://snomed.info/sct#109226007";
 
     /// <summary>
     /// Literal for code: HandJointProsthesis
@@ -9398,9 +9778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHandJointProsthesis = "109227003";
 
     /// <summary>
+    /// Literal for code: NONEHandJointProsthesis
+    /// </summary>
+    public const string LiteralNONEHandJointProsthesis = "http://snomed.info/sct#109227003";
+
+    /// <summary>
     /// Literal for code: KneeJointProsthesis
     /// </summary>
     public const string LiteralKneeJointProsthesis = "109228008";
+
+    /// <summary>
+    /// Literal for code: NONEKneeJointProsthesis
+    /// </summary>
+    public const string LiteralNONEKneeJointProsthesis = "http://snomed.info/sct#109228008";
 
     /// <summary>
     /// Literal for code: ArtificialNails
@@ -9408,9 +9798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralArtificialNails = "111041008";
 
     /// <summary>
+    /// Literal for code: NONEArtificialNails
+    /// </summary>
+    public const string LiteralNONEArtificialNails = "http://snomed.info/sct#111041008";
+
+    /// <summary>
     /// Literal for code: ArtificialOrgan
     /// </summary>
     public const string LiteralArtificialOrgan = "111042001";
+
+    /// <summary>
+    /// Literal for code: NONEArtificialOrgan
+    /// </summary>
+    public const string LiteralNONEArtificialOrgan = "http://snomed.info/sct#111042001";
 
     /// <summary>
     /// Literal for code: MedicalTuningFork
@@ -9418,9 +9818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMedicalTuningFork = "111043006";
 
     /// <summary>
+    /// Literal for code: NONEMedicalTuningFork
+    /// </summary>
+    public const string LiteralNONEMedicalTuningFork = "http://snomed.info/sct#111043006";
+
+    /// <summary>
     /// Literal for code: BoneTap
     /// </summary>
     public const string LiteralBoneTap = "111044000";
+
+    /// <summary>
+    /// Literal for code: NONEBoneTap
+    /// </summary>
+    public const string LiteralNONEBoneTap = "http://snomed.info/sct#111044000";
 
     /// <summary>
     /// Literal for code: Exerciser
@@ -9428,9 +9838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExerciser = "111045004";
 
     /// <summary>
+    /// Literal for code: NONEExerciser
+    /// </summary>
+    public const string LiteralNONEExerciser = "http://snomed.info/sct#111045004";
+
+    /// <summary>
     /// Literal for code: UrethralBougie
     /// </summary>
     public const string LiteralUrethralBougie = "111047007";
+
+    /// <summary>
+    /// Literal for code: NONEUrethralBougie
+    /// </summary>
+    public const string LiteralNONEUrethralBougie = "http://snomed.info/sct#111047007";
 
     /// <summary>
     /// Literal for code: Rhinoscope
@@ -9438,9 +9858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRhinoscope = "111048002";
 
     /// <summary>
+    /// Literal for code: NONERhinoscope
+    /// </summary>
+    public const string LiteralNONERhinoscope = "http://snomed.info/sct#111048002";
+
+    /// <summary>
     /// Literal for code: ProtectiveBreastPlate
     /// </summary>
     public const string LiteralProtectiveBreastPlate = "111052002";
+
+    /// <summary>
+    /// Literal for code: NONEProtectiveBreastPlate
+    /// </summary>
+    public const string LiteralNONEProtectiveBreastPlate = "http://snomed.info/sct#111052002";
 
     /// <summary>
     /// Literal for code: IndustrialSewingMachine
@@ -9448,9 +9878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIndustrialSewingMachine = "111060001";
 
     /// <summary>
+    /// Literal for code: NONEIndustrialSewingMachine
+    /// </summary>
+    public const string LiteralNONEIndustrialSewingMachine = "http://snomed.info/sct#111060001";
+
+    /// <summary>
     /// Literal for code: FoodWasteDisposalEquipment
     /// </summary>
     public const string LiteralFoodWasteDisposalEquipment = "111062009";
+
+    /// <summary>
+    /// Literal for code: NONEFoodWasteDisposalEquipment
+    /// </summary>
+    public const string LiteralNONEFoodWasteDisposalEquipment = "http://snomed.info/sct#111062009";
 
     /// <summary>
     /// Literal for code: BoneGrowthStimulator
@@ -9458,9 +9898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBoneGrowthStimulator = "11141007";
 
     /// <summary>
+    /// Literal for code: NONEBoneGrowthStimulator
+    /// </summary>
+    public const string LiteralNONEBoneGrowthStimulator = "http://snomed.info/sct#11141007";
+
+    /// <summary>
     /// Literal for code: ElectromyographicMonitorAndRecorder
     /// </summary>
     public const string LiteralElectromyographicMonitorAndRecorder = "11158002";
+
+    /// <summary>
+    /// Literal for code: NONEElectromyographicMonitorAndRecorder
+    /// </summary>
+    public const string LiteralNONEElectromyographicMonitorAndRecorder = "http://snomed.info/sct#11158002";
 
     /// <summary>
     /// Literal for code: ProstheticValve
@@ -9468,9 +9918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProstheticValve = "11358008";
 
     /// <summary>
+    /// Literal for code: NONEProstheticValve
+    /// </summary>
+    public const string LiteralNONEProstheticValve = "http://snomed.info/sct#11358008";
+
+    /// <summary>
     /// Literal for code: SoftCast
     /// </summary>
     public const string LiteralSoftCast = "115961006";
+
+    /// <summary>
+    /// Literal for code: NONESoftCast
+    /// </summary>
+    public const string LiteralNONESoftCast = "http://snomed.info/sct#115961006";
 
     /// <summary>
     /// Literal for code: FiberglassCast
@@ -9478,9 +9938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFiberglassCast = "115962004";
 
     /// <summary>
+    /// Literal for code: NONEFiberglassCast
+    /// </summary>
+    public const string LiteralNONEFiberglassCast = "http://snomed.info/sct#115962004";
+
+    /// <summary>
     /// Literal for code: BloodProductUnit
     /// </summary>
     public const string LiteralBloodProductUnit = "116146000";
+
+    /// <summary>
+    /// Literal for code: NONEBloodProductUnit
+    /// </summary>
+    public const string LiteralNONEBloodProductUnit = "http://snomed.info/sct#116146000";
 
     /// <summary>
     /// Literal for code: CatheterTip
@@ -9488,9 +9958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCatheterTip = "116204000";
 
     /// <summary>
+    /// Literal for code: NONECatheterTip
+    /// </summary>
+    public const string LiteralNONECatheterTip = "http://snomed.info/sct#116204000";
+
+    /// <summary>
     /// Literal for code: BloodBag
     /// </summary>
     public const string LiteralBloodBag = "116205004";
+
+    /// <summary>
+    /// Literal for code: NONEBloodBag
+    /// </summary>
+    public const string LiteralNONEBloodBag = "http://snomed.info/sct#116205004";
 
     /// <summary>
     /// Literal for code: PlasmaBag
@@ -9498,9 +9978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlasmaBag = "116206003";
 
     /// <summary>
+    /// Literal for code: NONEPlasmaBag
+    /// </summary>
+    public const string LiteralNONEPlasmaBag = "http://snomed.info/sct#116206003";
+
+    /// <summary>
     /// Literal for code: Filter
     /// </summary>
     public const string LiteralFilter = "116250002";
+
+    /// <summary>
+    /// Literal for code: NONEFilter
+    /// </summary>
+    public const string LiteralNONEFilter = "http://snomed.info/sct#116250002";
 
     /// <summary>
     /// Literal for code: Wick
@@ -9508,9 +9998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWick = "116251003";
 
     /// <summary>
+    /// Literal for code: NONEWick
+    /// </summary>
+    public const string LiteralNONEWick = "http://snomed.info/sct#116251003";
+
+    /// <summary>
     /// Literal for code: SolidStateLaser
     /// </summary>
     public const string LiteralSolidStateLaser = "118294000";
+
+    /// <summary>
+    /// Literal for code: NONESolidStateLaser
+    /// </summary>
+    public const string LiteralNONESolidStateLaser = "http://snomed.info/sct#118294000";
 
     /// <summary>
     /// Literal for code: GasLaser
@@ -9518,9 +10018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGasLaser = "118295004";
 
     /// <summary>
+    /// Literal for code: NONEGasLaser
+    /// </summary>
+    public const string LiteralNONEGasLaser = "http://snomed.info/sct#118295004";
+
+    /// <summary>
     /// Literal for code: ChemicalLaser
     /// </summary>
     public const string LiteralChemicalLaser = "118296003";
+
+    /// <summary>
+    /// Literal for code: NONEChemicalLaser
+    /// </summary>
+    public const string LiteralNONEChemicalLaser = "http://snomed.info/sct#118296003";
 
     /// <summary>
     /// Literal for code: ExcimerLaser
@@ -9528,9 +10038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExcimerLaser = "118297007";
 
     /// <summary>
+    /// Literal for code: NONEExcimerLaser
+    /// </summary>
+    public const string LiteralNONEExcimerLaser = "http://snomed.info/sct#118297007";
+
+    /// <summary>
     /// Literal for code: DyeLaser
     /// </summary>
     public const string LiteralDyeLaser = "118298002";
+
+    /// <summary>
+    /// Literal for code: NONEDyeLaser
+    /// </summary>
+    public const string LiteralNONEDyeLaser = "http://snomed.info/sct#118298002";
 
     /// <summary>
     /// Literal for code: DiodeLaserDevice
@@ -9538,9 +10058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDiodeLaserDevice = "118299005";
 
     /// <summary>
+    /// Literal for code: NONEDiodeLaserDevice
+    /// </summary>
+    public const string LiteralNONEDiodeLaserDevice = "http://snomed.info/sct#118299005";
+
+    /// <summary>
     /// Literal for code: NdYVOGreaterThan4LessThanLaser
     /// </summary>
     public const string LiteralNdYVOGreaterThan4LessThanLaser = "118301003";
+
+    /// <summary>
+    /// Literal for code: NONENdYVOGreaterThan4LessThanLaser
+    /// </summary>
+    public const string LiteralNONENdYVOGreaterThan4LessThanLaser = "http://snomed.info/sct#118301003";
 
     /// <summary>
     /// Literal for code: NdYLFLaser
@@ -9548,9 +10078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNdYLFLaser = "118302005";
 
     /// <summary>
+    /// Literal for code: NONENdYLFLaser
+    /// </summary>
+    public const string LiteralNONENdYLFLaser = "http://snomed.info/sct#118302005";
+
+    /// <summary>
     /// Literal for code: NdGlassLaser
     /// </summary>
     public const string LiteralNdGlassLaser = "118303000";
+
+    /// <summary>
+    /// Literal for code: NONENdGlassLaser
+    /// </summary>
+    public const string LiteralNONENdGlassLaser = "http://snomed.info/sct#118303000";
 
     /// <summary>
     /// Literal for code: ChromiumSapphireLaserDevice
@@ -9558,9 +10098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChromiumSapphireLaserDevice = "118304006";
 
     /// <summary>
+    /// Literal for code: NONEChromiumSapphireLaserDevice
+    /// </summary>
+    public const string LiteralNONEChromiumSapphireLaserDevice = "http://snomed.info/sct#118304006";
+
+    /// <summary>
     /// Literal for code: ErGlassLaser
     /// </summary>
     public const string LiteralErGlassLaser = "118305007";
+
+    /// <summary>
+    /// Literal for code: NONEErGlassLaser
+    /// </summary>
+    public const string LiteralNONEErGlassLaser = "http://snomed.info/sct#118305007";
 
     /// <summary>
     /// Literal for code: ErYAGLaser
@@ -9568,9 +10118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralErYAGLaser = "118306008";
 
     /// <summary>
+    /// Literal for code: NONEErYAGLaser
+    /// </summary>
+    public const string LiteralNONEErYAGLaser = "http://snomed.info/sct#118306008";
+
+    /// <summary>
     /// Literal for code: HoYLFLaser
     /// </summary>
     public const string LiteralHoYLFLaser = "118307004";
+
+    /// <summary>
+    /// Literal for code: NONEHoYLFLaser
+    /// </summary>
+    public const string LiteralNONEHoYLFLaser = "http://snomed.info/sct#118307004";
 
     /// <summary>
     /// Literal for code: HoYAGLaser
@@ -9578,9 +10138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHoYAGLaser = "118308009";
 
     /// <summary>
+    /// Literal for code: NONEHoYAGLaser
+    /// </summary>
+    public const string LiteralNONEHoYAGLaser = "http://snomed.info/sct#118308009";
+
+    /// <summary>
     /// Literal for code: TiSapphireLaserDevice
     /// </summary>
     public const string LiteralTiSapphireLaserDevice = "118309001";
+
+    /// <summary>
+    /// Literal for code: NONETiSapphireLaserDevice
+    /// </summary>
+    public const string LiteralNONETiSapphireLaserDevice = "http://snomed.info/sct#118309001";
 
     /// <summary>
     /// Literal for code: AlexandriteLaser
@@ -9588,9 +10158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAlexandriteLaser = "118310006";
 
     /// <summary>
+    /// Literal for code: NONEAlexandriteLaser
+    /// </summary>
+    public const string LiteralNONEAlexandriteLaser = "http://snomed.info/sct#118310006";
+
+    /// <summary>
     /// Literal for code: ArgonIonLaser
     /// </summary>
     public const string LiteralArgonIonLaser = "118311005";
+
+    /// <summary>
+    /// Literal for code: NONEArgonIonLaser
+    /// </summary>
+    public const string LiteralNONEArgonIonLaser = "http://snomed.info/sct#118311005";
 
     /// <summary>
     /// Literal for code: COGreaterThan2LessThanLaser
@@ -9598,9 +10178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCOGreaterThan2LessThanLaser = "118312003";
 
     /// <summary>
+    /// Literal for code: NONECOGreaterThan2LessThanLaser
+    /// </summary>
+    public const string LiteralNONECOGreaterThan2LessThanLaser = "http://snomed.info/sct#118312003";
+
+    /// <summary>
     /// Literal for code: HeLaser
     /// </summary>
     public const string LiteralHeLaser = "118313008";
+
+    /// <summary>
+    /// Literal for code: NONEHeLaser
+    /// </summary>
+    public const string LiteralNONEHeLaser = "http://snomed.info/sct#118313008";
 
     /// <summary>
     /// Literal for code: HeliumCadmiumLaser
@@ -9608,9 +10198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHeliumCadmiumLaser = "118314002";
 
     /// <summary>
+    /// Literal for code: NONEHeliumCadmiumLaser
+    /// </summary>
+    public const string LiteralNONEHeliumCadmiumLaser = "http://snomed.info/sct#118314002";
+
+    /// <summary>
     /// Literal for code: HeNeLaser
     /// </summary>
     public const string LiteralHeNeLaser = "118315001";
+
+    /// <summary>
+    /// Literal for code: NONEHeNeLaser
+    /// </summary>
+    public const string LiteralNONEHeNeLaser = "http://snomed.info/sct#118315001";
 
     /// <summary>
     /// Literal for code: KryptonGasLaser
@@ -9618,9 +10218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralKryptonGasLaser = "118316000";
 
     /// <summary>
+    /// Literal for code: NONEKryptonGasLaser
+    /// </summary>
+    public const string LiteralNONEKryptonGasLaser = "http://snomed.info/sct#118316000";
+
+    /// <summary>
     /// Literal for code: NeonGasLaser
     /// </summary>
     public const string LiteralNeonGasLaser = "118317009";
+
+    /// <summary>
+    /// Literal for code: NONENeonGasLaser
+    /// </summary>
+    public const string LiteralNONENeonGasLaser = "http://snomed.info/sct#118317009";
 
     /// <summary>
     /// Literal for code: NitrogenGasLaser
@@ -9628,9 +10238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNitrogenGasLaser = "118318004";
 
     /// <summary>
+    /// Literal for code: NONENitrogenGasLaser
+    /// </summary>
+    public const string LiteralNONENitrogenGasLaser = "http://snomed.info/sct#118318004";
+
+    /// <summary>
     /// Literal for code: XenonGasLaser
     /// </summary>
     public const string LiteralXenonGasLaser = "118319007";
+
+    /// <summary>
+    /// Literal for code: NONEXenonGasLaser
+    /// </summary>
+    public const string LiteralNONEXenonGasLaser = "http://snomed.info/sct#118319007";
 
     /// <summary>
     /// Literal for code: CopperVaporLaser
@@ -9638,9 +10258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCopperVaporLaser = "118320001";
 
     /// <summary>
+    /// Literal for code: NONECopperVaporLaser
+    /// </summary>
+    public const string LiteralNONECopperVaporLaser = "http://snomed.info/sct#118320001";
+
+    /// <summary>
     /// Literal for code: GoldVaporLaser
     /// </summary>
     public const string LiteralGoldVaporLaser = "118321002";
+
+    /// <summary>
+    /// Literal for code: NONEGoldVaporLaser
+    /// </summary>
+    public const string LiteralNONEGoldVaporLaser = "http://snomed.info/sct#118321002";
 
     /// <summary>
     /// Literal for code: DFLaser
@@ -9648,9 +10278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDFLaser = "118322009";
 
     /// <summary>
+    /// Literal for code: NONEDFLaser
+    /// </summary>
+    public const string LiteralNONEDFLaser = "http://snomed.info/sct#118322009";
+
+    /// <summary>
     /// Literal for code: DFCOGreaterThan2LessThanLaserDevice
     /// </summary>
     public const string LiteralDFCOGreaterThan2LessThanLaserDevice = "118323004";
+
+    /// <summary>
+    /// Literal for code: NONEDFCOGreaterThan2LessThanLaserDevice
+    /// </summary>
+    public const string LiteralNONEDFCOGreaterThan2LessThanLaserDevice = "http://snomed.info/sct#118323004";
 
     /// <summary>
     /// Literal for code: HFLaser
@@ -9658,9 +10298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHFLaser = "118324005";
 
     /// <summary>
+    /// Literal for code: NONEHFLaser
+    /// </summary>
+    public const string LiteralNONEHFLaser = "http://snomed.info/sct#118324005";
+
+    /// <summary>
     /// Literal for code: ArFLaser
     /// </summary>
     public const string LiteralArFLaser = "118325006";
+
+    /// <summary>
+    /// Literal for code: NONEArFLaser
+    /// </summary>
+    public const string LiteralNONEArFLaser = "http://snomed.info/sct#118325006";
 
     /// <summary>
     /// Literal for code: KrFLaser
@@ -9668,9 +10318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralKrFLaser = "118326007";
 
     /// <summary>
+    /// Literal for code: NONEKrFLaser
+    /// </summary>
+    public const string LiteralNONEKrFLaser = "http://snomed.info/sct#118326007";
+
+    /// <summary>
     /// Literal for code: KrClLaser
     /// </summary>
     public const string LiteralKrClLaser = "118327003";
+
+    /// <summary>
+    /// Literal for code: NONEKrClLaser
+    /// </summary>
+    public const string LiteralNONEKrClLaser = "http://snomed.info/sct#118327003";
 
     /// <summary>
     /// Literal for code: XeClLaser
@@ -9678,9 +10338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralXeClLaser = "118328008";
 
     /// <summary>
+    /// Literal for code: NONEXeClLaser
+    /// </summary>
+    public const string LiteralNONEXeClLaser = "http://snomed.info/sct#118328008";
+
+    /// <summary>
     /// Literal for code: XeFlLaser
     /// </summary>
     public const string LiteralXeFlLaser = "118329000";
+
+    /// <summary>
+    /// Literal for code: NONEXeFlLaser
+    /// </summary>
+    public const string LiteralNONEXeFlLaser = "http://snomed.info/sct#118329000";
 
     /// <summary>
     /// Literal for code: FreeElectronLaser
@@ -9688,9 +10358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFreeElectronLaser = "118330005";
 
     /// <summary>
+    /// Literal for code: NONEFreeElectronLaser
+    /// </summary>
+    public const string LiteralNONEFreeElectronLaser = "http://snomed.info/sct#118330005";
+
+    /// <summary>
     /// Literal for code: TunableDyeLaser
     /// </summary>
     public const string LiteralTunableDyeLaser = "118331009";
+
+    /// <summary>
+    /// Literal for code: NONETunableDyeLaser
+    /// </summary>
+    public const string LiteralNONETunableDyeLaser = "http://snomed.info/sct#118331009";
 
     /// <summary>
     /// Literal for code: TunableDyeArgonLaser
@@ -9698,9 +10378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTunableDyeArgonLaser = "118332002";
 
     /// <summary>
+    /// Literal for code: NONETunableDyeArgonLaser
+    /// </summary>
+    public const string LiteralNONETunableDyeArgonLaser = "http://snomed.info/sct#118332002";
+
+    /// <summary>
     /// Literal for code: GalliumArsenideLaser
     /// </summary>
     public const string LiteralGalliumArsenideLaser = "118333007";
+
+    /// <summary>
+    /// Literal for code: NONEGalliumArsenideLaser
+    /// </summary>
+    public const string LiteralNONEGalliumArsenideLaser = "http://snomed.info/sct#118333007";
 
     /// <summary>
     /// Literal for code: GalliumAluminumArsenideLaser
@@ -9708,9 +10398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGalliumAluminumArsenideLaser = "118334001";
 
     /// <summary>
+    /// Literal for code: NONEGalliumAluminumArsenideLaser
+    /// </summary>
+    public const string LiteralNONEGalliumAluminumArsenideLaser = "http://snomed.info/sct#118334001";
+
+    /// <summary>
     /// Literal for code: LeadSaltLaser
     /// </summary>
     public const string LiteralLeadSaltLaser = "118335000";
+
+    /// <summary>
+    /// Literal for code: NONELeadSaltLaser
+    /// </summary>
+    public const string LiteralNONELeadSaltLaser = "http://snomed.info/sct#118335000";
 
     /// <summary>
     /// Literal for code: Rhodamine6GDyeLaser
@@ -9718,9 +10418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRhodamine6GDyeLaser = "118336004";
 
     /// <summary>
+    /// Literal for code: NONERhodamine6GDyeLaser
+    /// </summary>
+    public const string LiteralNONERhodamine6GDyeLaser = "http://snomed.info/sct#118336004";
+
+    /// <summary>
     /// Literal for code: CoumarinC30DyeLaser
     /// </summary>
     public const string LiteralCoumarinC30DyeLaser = "118337008";
+
+    /// <summary>
+    /// Literal for code: NONECoumarinC30DyeLaser
+    /// </summary>
+    public const string LiteralNONECoumarinC30DyeLaser = "http://snomed.info/sct#118337008";
 
     /// <summary>
     /// Literal for code: Coumarin102DyeLaser
@@ -9728,9 +10438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCoumarin102DyeLaser = "118338003";
 
     /// <summary>
+    /// Literal for code: NONECoumarin102DyeLaser
+    /// </summary>
+    public const string LiteralNONECoumarin102DyeLaser = "http://snomed.info/sct#118338003";
+
+    /// <summary>
     /// Literal for code: DiodePumpedLaser
     /// </summary>
     public const string LiteralDiodePumpedLaser = "118342000";
+
+    /// <summary>
+    /// Literal for code: NONEDiodePumpedLaser
+    /// </summary>
+    public const string LiteralNONEDiodePumpedLaser = "http://snomed.info/sct#118342000";
 
     /// <summary>
     /// Literal for code: FlashlampPumpedLaserDevice
@@ -9738,9 +10458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFlashlampPumpedLaserDevice = "118343005";
 
     /// <summary>
+    /// Literal for code: NONEFlashlampPumpedLaserDevice
+    /// </summary>
+    public const string LiteralNONEFlashlampPumpedLaserDevice = "http://snomed.info/sct#118343005";
+
+    /// <summary>
     /// Literal for code: PulsedDyeLaser
     /// </summary>
     public const string LiteralPulsedDyeLaser = "118346002";
+
+    /// <summary>
+    /// Literal for code: NONEPulsedDyeLaser
+    /// </summary>
+    public const string LiteralNONEPulsedDyeLaser = "http://snomed.info/sct#118346002";
 
     /// <summary>
     /// Literal for code: QSLaser
@@ -9748,9 +10478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQSLaser = "118347006";
 
     /// <summary>
+    /// Literal for code: NONEQSLaser
+    /// </summary>
+    public const string LiteralNONEQSLaser = "http://snomed.info/sct#118347006";
+
+    /// <summary>
     /// Literal for code: FlashlampPulsedDyeLaser
     /// </summary>
     public const string LiteralFlashlampPulsedDyeLaser = "118348001";
+
+    /// <summary>
+    /// Literal for code: NONEFlashlampPulsedDyeLaser
+    /// </summary>
+    public const string LiteralNONEFlashlampPulsedDyeLaser = "http://snomed.info/sct#118348001";
 
     /// <summary>
     /// Literal for code: CWCOGreaterThan2LessThanLaser
@@ -9758,9 +10498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCWCOGreaterThan2LessThanLaser = "118349009";
 
     /// <summary>
+    /// Literal for code: NONECWCOGreaterThan2LessThanLaser
+    /// </summary>
+    public const string LiteralNONECWCOGreaterThan2LessThanLaser = "http://snomed.info/sct#118349009";
+
+    /// <summary>
     /// Literal for code: HighEnergyPulsedCOGreaterThan2LessThanLaser
     /// </summary>
     public const string LiteralHighEnergyPulsedCOGreaterThan2LessThanLaser = "118350009";
+
+    /// <summary>
+    /// Literal for code: NONEHighEnergyPulsedCOGreaterThan2LessThanLaser
+    /// </summary>
+    public const string LiteralNONEHighEnergyPulsedCOGreaterThan2LessThanLaser = "http://snomed.info/sct#118350009";
 
     /// <summary>
     /// Literal for code: FrequencyDoubledNdYAGLaser
@@ -9768,9 +10518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFrequencyDoubledNdYAGLaser = "118351008";
 
     /// <summary>
+    /// Literal for code: NONEFrequencyDoubledNdYAGLaser
+    /// </summary>
+    public const string LiteralNONEFrequencyDoubledNdYAGLaser = "http://snomed.info/sct#118351008";
+
+    /// <summary>
     /// Literal for code: ContinuousWaveLaser
     /// </summary>
     public const string LiteralContinuousWaveLaser = "118354000";
+
+    /// <summary>
+    /// Literal for code: NONEContinuousWaveLaser
+    /// </summary>
+    public const string LiteralNONEContinuousWaveLaser = "http://snomed.info/sct#118354000";
 
     /// <summary>
     /// Literal for code: PulsedLaser
@@ -9778,9 +10538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPulsedLaser = "118355004";
 
     /// <summary>
+    /// Literal for code: NONEPulsedLaser
+    /// </summary>
+    public const string LiteralNONEPulsedLaser = "http://snomed.info/sct#118355004";
+
+    /// <summary>
     /// Literal for code: MetalVaporLaser
     /// </summary>
     public const string LiteralMetalVaporLaser = "118356003";
+
+    /// <summary>
+    /// Literal for code: NONEMetalVaporLaser
+    /// </summary>
+    public const string LiteralNONEMetalVaporLaser = "http://snomed.info/sct#118356003";
 
     /// <summary>
     /// Literal for code: KTPLaser
@@ -9788,9 +10558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralKTPLaser = "118357007";
 
     /// <summary>
+    /// Literal for code: NONEKTPLaser
+    /// </summary>
+    public const string LiteralNONEKTPLaser = "http://snomed.info/sct#118357007";
+
+    /// <summary>
     /// Literal for code: IonLaser
     /// </summary>
     public const string LiteralIonLaser = "118371004";
+
+    /// <summary>
+    /// Literal for code: NONEIonLaser
+    /// </summary>
+    public const string LiteralNONEIonLaser = "http://snomed.info/sct#118371004";
 
     /// <summary>
     /// Literal for code: PlasticImplant
@@ -9798,9 +10578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlasticImplant = "118372006";
 
     /// <summary>
+    /// Literal for code: NONEPlasticImplant
+    /// </summary>
+    public const string LiteralNONEPlasticImplant = "http://snomed.info/sct#118372006";
+
+    /// <summary>
     /// Literal for code: SilasticImplant
     /// </summary>
     public const string LiteralSilasticImplant = "118373001";
+
+    /// <summary>
+    /// Literal for code: NONESilasticImplant
+    /// </summary>
+    public const string LiteralNONESilasticImplant = "http://snomed.info/sct#118373001";
 
     /// <summary>
     /// Literal for code: SiliconeImplant
@@ -9808,9 +10598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSiliconeImplant = "118374007";
 
     /// <summary>
+    /// Literal for code: NONESiliconeImplant
+    /// </summary>
+    public const string LiteralNONESiliconeImplant = "http://snomed.info/sct#118374007";
+
+    /// <summary>
     /// Literal for code: CardiacSeptumProsthesis
     /// </summary>
     public const string LiteralCardiacSeptumProsthesis = "118375008";
+
+    /// <summary>
+    /// Literal for code: NONECardiacSeptumProsthesis
+    /// </summary>
+    public const string LiteralNONECardiacSeptumProsthesis = "http://snomed.info/sct#118375008";
 
     /// <summary>
     /// Literal for code: Thermocouple
@@ -9818,9 +10618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralThermocouple = "118376009";
 
     /// <summary>
+    /// Literal for code: NONEThermocouple
+    /// </summary>
+    public const string LiteralNONEThermocouple = "http://snomed.info/sct#118376009";
+
+    /// <summary>
     /// Literal for code: BiopsyNeedle
     /// </summary>
     public const string LiteralBiopsyNeedle = "118377000";
+
+    /// <summary>
+    /// Literal for code: NONEBiopsyNeedle
+    /// </summary>
+    public const string LiteralNONEBiopsyNeedle = "http://snomed.info/sct#118377000";
 
     /// <summary>
     /// Literal for code: PacemakerPulseGenerator
@@ -9828,9 +10638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPacemakerPulseGenerator = "118378005";
 
     /// <summary>
+    /// Literal for code: NONEPacemakerPulseGenerator
+    /// </summary>
+    public const string LiteralNONEPacemakerPulseGenerator = "http://snomed.info/sct#118378005";
+
+    /// <summary>
     /// Literal for code: AutomaticImplantableCardioverterSensingElectrodes
     /// </summary>
     public const string LiteralAutomaticImplantableCardioverterSensingElectrodes = "118379002";
+
+    /// <summary>
+    /// Literal for code: NONEAutomaticImplantableCardioverterSensingElectrodes
+    /// </summary>
+    public const string LiteralNONEAutomaticImplantableCardioverterSensingElectrodes = "http://snomed.info/sct#118379002";
 
     /// <summary>
     /// Literal for code: ImplantableDefibrillatorLeads
@@ -9838,9 +10658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralImplantableDefibrillatorLeads = "118380004";
 
     /// <summary>
+    /// Literal for code: NONEImplantableDefibrillatorLeads
+    /// </summary>
+    public const string LiteralNONEImplantableDefibrillatorLeads = "http://snomed.info/sct#118380004";
+
+    /// <summary>
     /// Literal for code: ImplantableCardioverterLeads
     /// </summary>
     public const string LiteralImplantableCardioverterLeads = "118381000";
+
+    /// <summary>
+    /// Literal for code: NONEImplantableCardioverterLeads
+    /// </summary>
+    public const string LiteralNONEImplantableCardioverterLeads = "http://snomed.info/sct#118381000";
 
     /// <summary>
     /// Literal for code: ExternalFixationDevice
@@ -9848,9 +10678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExternalFixationDevice = "118383002";
 
     /// <summary>
+    /// Literal for code: NONEExternalFixationDevice
+    /// </summary>
+    public const string LiteralNONEExternalFixationDevice = "http://snomed.info/sct#118383002";
+
+    /// <summary>
     /// Literal for code: LongArmSplint
     /// </summary>
     public const string LiteralLongArmSplint = "118384008";
+
+    /// <summary>
+    /// Literal for code: NONELongArmSplint
+    /// </summary>
+    public const string LiteralNONELongArmSplint = "http://snomed.info/sct#118384008";
 
     /// <summary>
     /// Literal for code: ShortArmSplint
@@ -9858,9 +10698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralShortArmSplint = "118385009";
 
     /// <summary>
+    /// Literal for code: NONEShortArmSplint
+    /// </summary>
+    public const string LiteralNONEShortArmSplint = "http://snomed.info/sct#118385009";
+
+    /// <summary>
     /// Literal for code: FigureOfEightPlasterCast
     /// </summary>
     public const string LiteralFigureOfEightPlasterCast = "118386005";
+
+    /// <summary>
+    /// Literal for code: NONEFigureOfEightPlasterCast
+    /// </summary>
+    public const string LiteralNONEFigureOfEightPlasterCast = "http://snomed.info/sct#118386005";
 
     /// <summary>
     /// Literal for code: HaloCast
@@ -9868,9 +10718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHaloCast = "118387001";
 
     /// <summary>
+    /// Literal for code: NONEHaloCast
+    /// </summary>
+    public const string LiteralNONEHaloCast = "http://snomed.info/sct#118387001";
+
+    /// <summary>
     /// Literal for code: BodyCastShoulderToHips
     /// </summary>
     public const string LiteralBodyCastShoulderToHips = "118388006";
+
+    /// <summary>
+    /// Literal for code: NONEBodyCastShoulderToHips
+    /// </summary>
+    public const string LiteralNONEBodyCastShoulderToHips = "http://snomed.info/sct#118388006";
 
     /// <summary>
     /// Literal for code: BodyCastShoulderToHipsIncludingHeadMinervaType
@@ -9878,9 +10738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBodyCastShoulderToHipsIncludingHeadMinervaType = "118389003";
 
     /// <summary>
+    /// Literal for code: NONEBodyCastShoulderToHipsIncludingHeadMinervaType
+    /// </summary>
+    public const string LiteralNONEBodyCastShoulderToHipsIncludingHeadMinervaType = "http://snomed.info/sct#118389003";
+
+    /// <summary>
     /// Literal for code: BodyCastShoulderToHipsIncludingOneThigh
     /// </summary>
     public const string LiteralBodyCastShoulderToHipsIncludingOneThigh = "118390007";
+
+    /// <summary>
+    /// Literal for code: NONEBodyCastShoulderToHipsIncludingOneThigh
+    /// </summary>
+    public const string LiteralNONEBodyCastShoulderToHipsIncludingOneThigh = "http://snomed.info/sct#118390007";
 
     /// <summary>
     /// Literal for code: BodyCastShoulderToHipsIncludingBothThighs
@@ -9888,9 +10758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBodyCastShoulderToHipsIncludingBothThighs = "118391006";
 
     /// <summary>
+    /// Literal for code: NONEBodyCastShoulderToHipsIncludingBothThighs
+    /// </summary>
+    public const string LiteralNONEBodyCastShoulderToHipsIncludingBothThighs = "http://snomed.info/sct#118391006";
+
+    /// <summary>
     /// Literal for code: ShoulderCast
     /// </summary>
     public const string LiteralShoulderCast = "118392004";
+
+    /// <summary>
+    /// Literal for code: NONEShoulderCast
+    /// </summary>
+    public const string LiteralNONEShoulderCast = "http://snomed.info/sct#118392004";
 
     /// <summary>
     /// Literal for code: FullArmCast
@@ -9898,9 +10778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFullArmCast = "118393009";
 
     /// <summary>
+    /// Literal for code: NONEFullArmCast
+    /// </summary>
+    public const string LiteralNONEFullArmCast = "http://snomed.info/sct#118393009";
+
+    /// <summary>
     /// Literal for code: BelowElbowCast
     /// </summary>
     public const string LiteralBelowElbowCast = "118394003";
+
+    /// <summary>
+    /// Literal for code: NONEBelowElbowCast
+    /// </summary>
+    public const string LiteralNONEBelowElbowCast = "http://snomed.info/sct#118394003";
 
     /// <summary>
     /// Literal for code: CylinderCastThighToAnkle
@@ -9908,9 +10798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCylinderCastThighToAnkle = "118396001";
 
     /// <summary>
+    /// Literal for code: NONECylinderCastThighToAnkle
+    /// </summary>
+    public const string LiteralNONECylinderCastThighToAnkle = "http://snomed.info/sct#118396001";
+
+    /// <summary>
     /// Literal for code: LongLegCast
     /// </summary>
     public const string LiteralLongLegCast = "118397005";
+
+    /// <summary>
+    /// Literal for code: NONELongLegCast
+    /// </summary>
+    public const string LiteralNONELongLegCast = "http://snomed.info/sct#118397005";
 
     /// <summary>
     /// Literal for code: LongLegCastWalkerOrAmbulatoryType
@@ -9918,9 +10818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLongLegCastWalkerOrAmbulatoryType = "118398000";
 
     /// <summary>
+    /// Literal for code: NONELongLegCastWalkerOrAmbulatoryType
+    /// </summary>
+    public const string LiteralNONELongLegCastWalkerOrAmbulatoryType = "http://snomed.info/sct#118398000";
+
+    /// <summary>
     /// Literal for code: LongLegCastBraceType
     /// </summary>
     public const string LiteralLongLegCastBraceType = "118399008";
+
+    /// <summary>
+    /// Literal for code: NONELongLegCastBraceType
+    /// </summary>
+    public const string LiteralNONELongLegCastBraceType = "http://snomed.info/sct#118399008";
 
     /// <summary>
     /// Literal for code: ShortLegCastBelowKneeToToes
@@ -9928,9 +10838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralShortLegCastBelowKneeToToes = "118400001";
 
     /// <summary>
+    /// Literal for code: NONEShortLegCastBelowKneeToToes
+    /// </summary>
+    public const string LiteralNONEShortLegCastBelowKneeToToes = "http://snomed.info/sct#118400001";
+
+    /// <summary>
     /// Literal for code: ShortLegCastBelowKneeToToesWalkingOrAmbulatoryType
     /// </summary>
     public const string LiteralShortLegCastBelowKneeToToesWalkingOrAmbulatoryType = "118401002";
+
+    /// <summary>
+    /// Literal for code: NONEShortLegCastBelowKneeToToesWalkingOrAmbulatoryType
+    /// </summary>
+    public const string LiteralNONEShortLegCastBelowKneeToToesWalkingOrAmbulatoryType = "http://snomed.info/sct#118401002";
 
     /// <summary>
     /// Literal for code: ClubfootCast
@@ -9938,9 +10858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralClubfootCast = "118402009";
 
     /// <summary>
+    /// Literal for code: NONEClubfootCast
+    /// </summary>
+    public const string LiteralNONEClubfootCast = "http://snomed.info/sct#118402009";
+
+    /// <summary>
     /// Literal for code: ClubfootCastShortLeg
     /// </summary>
     public const string LiteralClubfootCastShortLeg = "118403004";
+
+    /// <summary>
+    /// Literal for code: NONEClubfootCastShortLeg
+    /// </summary>
+    public const string LiteralNONEClubfootCastShortLeg = "http://snomed.info/sct#118403004";
 
     /// <summary>
     /// Literal for code: ClubfootCastLongLeg
@@ -9948,9 +10878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralClubfootCastLongLeg = "118404005";
 
     /// <summary>
+    /// Literal for code: NONEClubfootCastLongLeg
+    /// </summary>
+    public const string LiteralNONEClubfootCastLongLeg = "http://snomed.info/sct#118404005";
+
+    /// <summary>
     /// Literal for code: SpicaCast
     /// </summary>
     public const string LiteralSpicaCast = "118405006";
+
+    /// <summary>
+    /// Literal for code: NONESpicaCast
+    /// </summary>
+    public const string LiteralNONESpicaCast = "http://snomed.info/sct#118405006";
 
     /// <summary>
     /// Literal for code: HipSpicaCastBothLegs
@@ -9958,9 +10898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHipSpicaCastBothLegs = "118406007";
 
     /// <summary>
+    /// Literal for code: NONEHipSpicaCastBothLegs
+    /// </summary>
+    public const string LiteralNONEHipSpicaCastBothLegs = "http://snomed.info/sct#118406007";
+
+    /// <summary>
     /// Literal for code: HipSpicaCastOneLeg
     /// </summary>
     public const string LiteralHipSpicaCastOneLeg = "118407003";
+
+    /// <summary>
+    /// Literal for code: NONEHipSpicaCastOneLeg
+    /// </summary>
+    public const string LiteralNONEHipSpicaCastOneLeg = "http://snomed.info/sct#118407003";
 
     /// <summary>
     /// Literal for code: HipSpicaCastOneAndOneHalfSpica
@@ -9968,9 +10918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHipSpicaCastOneAndOneHalfSpica = "118408008";
 
     /// <summary>
+    /// Literal for code: NONEHipSpicaCastOneAndOneHalfSpica
+    /// </summary>
+    public const string LiteralNONEHipSpicaCastOneAndOneHalfSpica = "http://snomed.info/sct#118408008";
+
+    /// <summary>
     /// Literal for code: PatellarTendonBearingCast
     /// </summary>
     public const string LiteralPatellarTendonBearingCast = "118409000";
+
+    /// <summary>
+    /// Literal for code: NONEPatellarTendonBearingCast
+    /// </summary>
+    public const string LiteralNONEPatellarTendonBearingCast = "http://snomed.info/sct#118409000";
 
     /// <summary>
     /// Literal for code: BootCast
@@ -9978,9 +10938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBootCast = "118410005";
 
     /// <summary>
+    /// Literal for code: NONEBootCast
+    /// </summary>
+    public const string LiteralNONEBootCast = "http://snomed.info/sct#118410005";
+
+    /// <summary>
     /// Literal for code: SugarTongCast
     /// </summary>
     public const string LiteralSugarTongCast = "118411009";
+
+    /// <summary>
+    /// Literal for code: NONESugarTongCast
+    /// </summary>
+    public const string LiteralNONESugarTongCast = "http://snomed.info/sct#118411009";
 
     /// <summary>
     /// Literal for code: GauntletCast
@@ -9988,9 +10958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGauntletCast = "118412002";
 
     /// <summary>
+    /// Literal for code: NONEGauntletCast
+    /// </summary>
+    public const string LiteralNONEGauntletCast = "http://snomed.info/sct#118412002";
+
+    /// <summary>
     /// Literal for code: BodyCast
     /// </summary>
     public const string LiteralBodyCast = "118413007";
+
+    /// <summary>
+    /// Literal for code: NONEBodyCast
+    /// </summary>
+    public const string LiteralNONEBodyCast = "http://snomed.info/sct#118413007";
 
     /// <summary>
     /// Literal for code: PressureDressing
@@ -9998,9 +10978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPressureDressing = "118414001";
 
     /// <summary>
+    /// Literal for code: NONEPressureDressing
+    /// </summary>
+    public const string LiteralNONEPressureDressing = "http://snomed.info/sct#118414001";
+
+    /// <summary>
     /// Literal for code: PackingMaterial
     /// </summary>
     public const string LiteralPackingMaterial = "118415000";
+
+    /// <summary>
+    /// Literal for code: NONEPackingMaterial
+    /// </summary>
+    public const string LiteralNONEPackingMaterial = "http://snomed.info/sct#118415000";
 
     /// <summary>
     /// Literal for code: WoundPackingMaterial
@@ -10008,9 +10998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWoundPackingMaterial = "118416004";
 
     /// <summary>
+    /// Literal for code: NONEWoundPackingMaterial
+    /// </summary>
+    public const string LiteralNONEWoundPackingMaterial = "http://snomed.info/sct#118416004";
+
+    /// <summary>
     /// Literal for code: Trocar
     /// </summary>
     public const string LiteralTrocar = "118418003";
+
+    /// <summary>
+    /// Literal for code: NONETrocar
+    /// </summary>
+    public const string LiteralNONETrocar = "http://snomed.info/sct#118418003";
 
     /// <summary>
     /// Literal for code: UmbrellaDevice
@@ -10018,9 +11018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUmbrellaDevice = "118419006";
 
     /// <summary>
+    /// Literal for code: NONEUmbrellaDevice
+    /// </summary>
+    public const string LiteralNONEUmbrellaDevice = "http://snomed.info/sct#118419006";
+
+    /// <summary>
     /// Literal for code: AtrialSeptalUmbrella
     /// </summary>
     public const string LiteralAtrialSeptalUmbrella = "118420000";
+
+    /// <summary>
+    /// Literal for code: NONEAtrialSeptalUmbrella
+    /// </summary>
+    public const string LiteralNONEAtrialSeptalUmbrella = "http://snomed.info/sct#118420000";
 
     /// <summary>
     /// Literal for code: KingMillsUmbrellaDevice
@@ -10028,9 +11038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralKingMillsUmbrellaDevice = "118421001";
 
     /// <summary>
+    /// Literal for code: NONEKingMillsUmbrellaDevice
+    /// </summary>
+    public const string LiteralNONEKingMillsUmbrellaDevice = "http://snomed.info/sct#118421001";
+
+    /// <summary>
     /// Literal for code: MobitzUddinUmbrellaDevice
     /// </summary>
     public const string LiteralMobitzUddinUmbrellaDevice = "118422008";
+
+    /// <summary>
+    /// Literal for code: NONEMobitzUddinUmbrellaDevice
+    /// </summary>
+    public const string LiteralNONEMobitzUddinUmbrellaDevice = "http://snomed.info/sct#118422008";
 
     /// <summary>
     /// Literal for code: RashkindUmbrellaDevice
@@ -10038,9 +11058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRashkindUmbrellaDevice = "118423003";
 
     /// <summary>
+    /// Literal for code: NONERashkindUmbrellaDevice
+    /// </summary>
+    public const string LiteralNONERashkindUmbrellaDevice = "http://snomed.info/sct#118423003";
+
+    /// <summary>
     /// Literal for code: ReservoirDevice
     /// </summary>
     public const string LiteralReservoirDevice = "118424009";
+
+    /// <summary>
+    /// Literal for code: NONEReservoirDevice
+    /// </summary>
+    public const string LiteralNONEReservoirDevice = "http://snomed.info/sct#118424009";
 
     /// <summary>
     /// Literal for code: VentricularReservoir
@@ -10048,9 +11078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVentricularReservoir = "118425005";
 
     /// <summary>
+    /// Literal for code: NONEVentricularReservoir
+    /// </summary>
+    public const string LiteralNONEVentricularReservoir = "http://snomed.info/sct#118425005";
+
+    /// <summary>
     /// Literal for code: OmmayaReservoir
     /// </summary>
     public const string LiteralOmmayaReservoir = "118426006";
+
+    /// <summary>
+    /// Literal for code: NONEOmmayaReservoir
+    /// </summary>
+    public const string LiteralNONEOmmayaReservoir = "http://snomed.info/sct#118426006";
 
     /// <summary>
     /// Literal for code: RickhamReservoir
@@ -10058,9 +11098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRickhamReservoir = "118427002";
 
     /// <summary>
+    /// Literal for code: NONERickhamReservoir
+    /// </summary>
+    public const string LiteralNONERickhamReservoir = "http://snomed.info/sct#118427002";
+
+    /// <summary>
     /// Literal for code: FlexibleFiberopticEndoscope
     /// </summary>
     public const string LiteralFlexibleFiberopticEndoscope = "118428007";
+
+    /// <summary>
+    /// Literal for code: NONEFlexibleFiberopticEndoscope
+    /// </summary>
+    public const string LiteralNONEFlexibleFiberopticEndoscope = "http://snomed.info/sct#118428007";
 
     /// <summary>
     /// Literal for code: FlexibleFiberopticLaryngoscopeWithStrobe
@@ -10068,9 +11118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFlexibleFiberopticLaryngoscopeWithStrobe = "118429004";
 
     /// <summary>
+    /// Literal for code: NONEFlexibleFiberopticLaryngoscopeWithStrobe
+    /// </summary>
+    public const string LiteralNONEFlexibleFiberopticLaryngoscopeWithStrobe = "http://snomed.info/sct#118429004";
+
+    /// <summary>
     /// Literal for code: Cast
     /// </summary>
     public const string LiteralCast = "118643004";
+
+    /// <summary>
+    /// Literal for code: NONECast
+    /// </summary>
+    public const string LiteralNONECast = "http://snomed.info/sct#118643004";
 
     /// <summary>
     /// Literal for code: ClinicalChemistryAnalyzer
@@ -10078,9 +11138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralClinicalChemistryAnalyzer = "11987000";
 
     /// <summary>
+    /// Literal for code: NONEClinicalChemistryAnalyzer
+    /// </summary>
+    public const string LiteralNONEClinicalChemistryAnalyzer = "http://snomed.info/sct#11987000";
+
+    /// <summary>
     /// Literal for code: Treadmill
     /// </summary>
     public const string LiteralTreadmill = "1211003";
+
+    /// <summary>
+    /// Literal for code: NONETreadmill
+    /// </summary>
+    public const string LiteralNONETreadmill = "http://snomed.info/sct#1211003";
 
     /// <summary>
     /// Literal for code: Cannula
@@ -10088,9 +11158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCannula = "12150006";
 
     /// <summary>
+    /// Literal for code: NONECannula
+    /// </summary>
+    public const string LiteralNONECannula = "http://snomed.info/sct#12150006";
+
+    /// <summary>
     /// Literal for code: ArmProsthesis
     /// </summary>
     public const string LiteralArmProsthesis = "12183004";
+
+    /// <summary>
+    /// Literal for code: NONEArmProsthesis
+    /// </summary>
+    public const string LiteralNONEArmProsthesis = "http://snomed.info/sct#12183004";
 
     /// <summary>
     /// Literal for code: IceSkate
@@ -10098,9 +11178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIceSkate = "12198002";
 
     /// <summary>
+    /// Literal for code: NONEIceSkate
+    /// </summary>
+    public const string LiteralNONEIceSkate = "http://snomed.info/sct#12198002";
+
+    /// <summary>
     /// Literal for code: Laser
     /// </summary>
     public const string LiteralLaser = "122456005";
+
+    /// <summary>
+    /// Literal for code: NONELaser
+    /// </summary>
+    public const string LiteralNONELaser = "http://snomed.info/sct#122456005";
 
     /// <summary>
     /// Literal for code: SilkSuture
@@ -10108,9 +11198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSilkSuture = "123636009";
 
     /// <summary>
+    /// Literal for code: NONESilkSuture
+    /// </summary>
+    public const string LiteralNONESilkSuture = "http://snomed.info/sct#123636009";
+
+    /// <summary>
     /// Literal for code: JejunostomyTube
     /// </summary>
     public const string LiteralJejunostomyTube = "126065006";
+
+    /// <summary>
+    /// Literal for code: NONEJejunostomyTube
+    /// </summary>
+    public const string LiteralNONEJejunostomyTube = "http://snomed.info/sct#126065006";
 
     /// <summary>
     /// Literal for code: Baffle
@@ -10118,9 +11218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBaffle = "128981007";
 
     /// <summary>
+    /// Literal for code: NONEBaffle
+    /// </summary>
+    public const string LiteralNONEBaffle = "http://snomed.info/sct#128981007";
+
+    /// <summary>
     /// Literal for code: IntraAorticBalloonPump
     /// </summary>
     public const string LiteralIntraAorticBalloonPump = "129113006";
+
+    /// <summary>
+    /// Literal for code: NONEIntraAorticBalloonPump
+    /// </summary>
+    public const string LiteralNONEIntraAorticBalloonPump = "http://snomed.info/sct#129113006";
 
     /// <summary>
     /// Literal for code: TracheostomyTube
@@ -10128,9 +11238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTracheostomyTube = "129121000";
 
     /// <summary>
+    /// Literal for code: NONETracheostomyTube
+    /// </summary>
+    public const string LiteralNONETracheostomyTube = "http://snomed.info/sct#129121000";
+
+    /// <summary>
     /// Literal for code: FineBiopsyNeedle
     /// </summary>
     public const string LiteralFineBiopsyNeedle = "129247000";
+
+    /// <summary>
+    /// Literal for code: NONEFineBiopsyNeedle
+    /// </summary>
+    public const string LiteralNONEFineBiopsyNeedle = "http://snomed.info/sct#129247000";
 
     /// <summary>
     /// Literal for code: CoreBiopsyNeedle
@@ -10138,9 +11258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCoreBiopsyNeedle = "129248005";
 
     /// <summary>
+    /// Literal for code: NONECoreBiopsyNeedle
+    /// </summary>
+    public const string LiteralNONECoreBiopsyNeedle = "http://snomed.info/sct#129248005";
+
+    /// <summary>
     /// Literal for code: CompressionPaddle
     /// </summary>
     public const string LiteralCompressionPaddle = "129460009";
+
+    /// <summary>
+    /// Literal for code: NONECompressionPaddle
+    /// </summary>
+    public const string LiteralNONECompressionPaddle = "http://snomed.info/sct#129460009";
 
     /// <summary>
     /// Literal for code: CatheterGuideWire
@@ -10148,9 +11278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCatheterGuideWire = "129462001";
 
     /// <summary>
+    /// Literal for code: NONECatheterGuideWire
+    /// </summary>
+    public const string LiteralNONECatheterGuideWire = "http://snomed.info/sct#129462001";
+
+    /// <summary>
     /// Literal for code: JWire
     /// </summary>
     public const string LiteralJWire = "129463006";
+
+    /// <summary>
+    /// Literal for code: NONEJWire
+    /// </summary>
+    public const string LiteralNONEJWire = "http://snomed.info/sct#129463006";
 
     /// <summary>
     /// Literal for code: MedicalAdministrativeEquipment
@@ -10158,9 +11298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMedicalAdministrativeEquipment = "129464000";
 
     /// <summary>
+    /// Literal for code: NONEMedicalAdministrativeEquipment
+    /// </summary>
+    public const string LiteralNONEMedicalAdministrativeEquipment = "http://snomed.info/sct#129464000";
+
+    /// <summary>
     /// Literal for code: MedicalRecord
     /// </summary>
     public const string LiteralMedicalRecord = "129465004";
+
+    /// <summary>
+    /// Literal for code: NONEMedicalRecord
+    /// </summary>
+    public const string LiteralNONEMedicalRecord = "http://snomed.info/sct#129465004";
 
     /// <summary>
     /// Literal for code: PatientChart
@@ -10168,9 +11318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPatientChart = "129466003";
 
     /// <summary>
+    /// Literal for code: NONEPatientChart
+    /// </summary>
+    public const string LiteralNONEPatientChart = "http://snomed.info/sct#129466003";
+
+    /// <summary>
     /// Literal for code: IdentificationPlate
     /// </summary>
     public const string LiteralIdentificationPlate = "129467007";
+
+    /// <summary>
+    /// Literal for code: NONEIdentificationPlate
+    /// </summary>
+    public const string LiteralNONEIdentificationPlate = "http://snomed.info/sct#129467007";
 
     /// <summary>
     /// Literal for code: File
@@ -10178,9 +11338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFile = "12953007";
 
     /// <summary>
+    /// Literal for code: NONEFile
+    /// </summary>
+    public const string LiteralNONEFile = "http://snomed.info/sct#12953007";
+
+    /// <summary>
     /// Literal for code: WoolCloth
     /// </summary>
     public const string LiteralWoolCloth = "13118005";
+
+    /// <summary>
+    /// Literal for code: NONEWoolCloth
+    /// </summary>
+    public const string LiteralNONEWoolCloth = "http://snomed.info/sct#13118005";
 
     /// <summary>
     /// Literal for code: Gastroscope
@@ -10188,9 +11358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGastroscope = "13219008";
 
     /// <summary>
+    /// Literal for code: NONEGastroscope
+    /// </summary>
+    public const string LiteralNONEGastroscope = "http://snomed.info/sct#13219008";
+
+    /// <summary>
     /// Literal for code: Monitor
     /// </summary>
     public const string LiteralMonitor = "13288007";
+
+    /// <summary>
+    /// Literal for code: NONEMonitor
+    /// </summary>
+    public const string LiteralNONEMonitor = "http://snomed.info/sct#13288007";
 
     /// <summary>
     /// Literal for code: EmesisBasin
@@ -10198,9 +11378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEmesisBasin = "1333003";
 
     /// <summary>
+    /// Literal for code: NONEEmesisBasin
+    /// </summary>
+    public const string LiteralNONEEmesisBasin = "http://snomed.info/sct#1333003";
+
+    /// <summary>
     /// Literal for code: TemporaryArtificialHeartProsthesis
     /// </summary>
     public const string LiteralTemporaryArtificialHeartProsthesis = "13459008";
+
+    /// <summary>
+    /// Literal for code: NONETemporaryArtificialHeartProsthesis
+    /// </summary>
+    public const string LiteralNONETemporaryArtificialHeartProsthesis = "http://snomed.info/sct#13459008";
 
     /// <summary>
     /// Literal for code: SterileAbsorbentDressingPad
@@ -10208,9 +11398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSterileAbsorbentDressingPad = "134823007";
 
     /// <summary>
+    /// Literal for code: NONESterileAbsorbentDressingPad
+    /// </summary>
+    public const string LiteralNONESterileAbsorbentDressingPad = "http://snomed.info/sct#134823007";
+
+    /// <summary>
     /// Literal for code: WoundDrainagePouchDressing
     /// </summary>
     public const string LiteralWoundDrainagePouchDressing = "134963007";
+
+    /// <summary>
+    /// Literal for code: NONEWoundDrainagePouchDressing
+    /// </summary>
+    public const string LiteralNONEWoundDrainagePouchDressing = "http://snomed.info/sct#134963007";
 
     /// <summary>
     /// Literal for code: UterineSound
@@ -10218,9 +11418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUterineSound = "13764006";
 
     /// <summary>
+    /// Literal for code: NONEUterineSound
+    /// </summary>
+    public const string LiteralNONEUterineSound = "http://snomed.info/sct#13764006";
+
+    /// <summary>
     /// Literal for code: Pillow
     /// </summary>
     public const string LiteralPillow = "13855007";
+
+    /// <summary>
+    /// Literal for code: NONEPillow
+    /// </summary>
+    public const string LiteralNONEPillow = "http://snomed.info/sct#13855007";
 
     /// <summary>
     /// Literal for code: TennisBall
@@ -10228,9 +11438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTennisBall = "13905003";
 
     /// <summary>
+    /// Literal for code: NONETennisBall
+    /// </summary>
+    public const string LiteralNONETennisBall = "http://snomed.info/sct#13905003";
+
+    /// <summary>
     /// Literal for code: CardiacPacemaker
     /// </summary>
     public const string LiteralCardiacPacemaker = "14106009";
+
+    /// <summary>
+    /// Literal for code: NONECardiacPacemaker
+    /// </summary>
+    public const string LiteralNONECardiacPacemaker = "http://snomed.info/sct#14106009";
 
     /// <summary>
     /// Literal for code: Cage
@@ -10238,9 +11458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCage = "14108005";
 
     /// <summary>
+    /// Literal for code: NONECage
+    /// </summary>
+    public const string LiteralNONECage = "http://snomed.info/sct#14108005";
+
+    /// <summary>
     /// Literal for code: AnalgesiaUnit
     /// </summary>
     public const string LiteralAnalgesiaUnit = "14116001";
+
+    /// <summary>
+    /// Literal for code: NONEAnalgesiaUnit
+    /// </summary>
+    public const string LiteralNONEAnalgesiaUnit = "http://snomed.info/sct#14116001";
 
     /// <summary>
     /// Literal for code: OilWell
@@ -10248,9 +11478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOilWell = "14208000";
 
     /// <summary>
+    /// Literal for code: NONEOilWell
+    /// </summary>
+    public const string LiteralNONEOilWell = "http://snomed.info/sct#14208000";
+
+    /// <summary>
     /// Literal for code: PlasticMold
     /// </summary>
     public const string LiteralPlasticMold = "1422002";
+
+    /// <summary>
+    /// Literal for code: NONEPlasticMold
+    /// </summary>
+    public const string LiteralNONEPlasticMold = "http://snomed.info/sct#1422002";
 
     /// <summary>
     /// Literal for code: NasalSeptumButton
@@ -10258,9 +11498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNasalSeptumButton = "14288003";
 
     /// <summary>
+    /// Literal for code: NONENasalSeptumButton
+    /// </summary>
+    public const string LiteralNONENasalSeptumButton = "http://snomed.info/sct#14288003";
+
+    /// <summary>
     /// Literal for code: Button
     /// </summary>
     public const string LiteralButton = "14339000";
+
+    /// <summary>
+    /// Literal for code: NONEButton
+    /// </summary>
+    public const string LiteralNONEButton = "http://snomed.info/sct#14339000";
 
     /// <summary>
     /// Literal for code: Camera
@@ -10268,9 +11518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCamera = "14364002";
 
     /// <summary>
+    /// Literal for code: NONECamera
+    /// </summary>
+    public const string LiteralNONECamera = "http://snomed.info/sct#14364002";
+
+    /// <summary>
     /// Literal for code: AdhesiveBandage
     /// </summary>
     public const string LiteralAdhesiveBandage = "14423008";
+
+    /// <summary>
+    /// Literal for code: NONEAdhesiveBandage
+    /// </summary>
+    public const string LiteralNONEAdhesiveBandage = "http://snomed.info/sct#14423008";
 
     /// <summary>
     /// Literal for code: Aspirator
@@ -10278,9 +11538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAspirator = "14519003";
 
     /// <summary>
+    /// Literal for code: NONEAspirator
+    /// </summary>
+    public const string LiteralNONEAspirator = "http://snomed.info/sct#14519003";
+
+    /// <summary>
     /// Literal for code: HarringtonRod
     /// </summary>
     public const string LiteralHarringtonRod = "14548009";
+
+    /// <summary>
+    /// Literal for code: NONEHarringtonRod
+    /// </summary>
+    public const string LiteralNONEHarringtonRod = "http://snomed.info/sct#14548009";
 
     /// <summary>
     /// Literal for code: AlloySteelChainSling
@@ -10288,9 +11558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAlloySteelChainSling = "14762000";
 
     /// <summary>
+    /// Literal for code: NONEAlloySteelChainSling
+    /// </summary>
+    public const string LiteralNONEAlloySteelChainSling = "http://snomed.info/sct#14762000";
+
+    /// <summary>
     /// Literal for code: ProstheticImplant
     /// </summary>
     public const string LiteralProstheticImplant = "14789005";
+
+    /// <summary>
+    /// Literal for code: NONEProstheticImplant
+    /// </summary>
+    public const string LiteralNONEProstheticImplant = "http://snomed.info/sct#14789005";
 
     /// <summary>
     /// Literal for code: AirConditioner
@@ -10298,9 +11578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAirConditioner = "15000008";
 
     /// <summary>
+    /// Literal for code: NONEAirConditioner
+    /// </summary>
+    public const string LiteralNONEAirConditioner = "http://snomed.info/sct#15000008";
+
+    /// <summary>
     /// Literal for code: WoodQuoteSLight
     /// </summary>
     public const string LiteralWoodQuoteSLight = "15340005";
+
+    /// <summary>
+    /// Literal for code: NONEWoodQuoteSLight
+    /// </summary>
+    public const string LiteralNONEWoodQuoteSLight = "http://snomed.info/sct#15340005";
 
     /// <summary>
     /// Literal for code: JointProsthesis
@@ -10308,9 +11598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralJointProsthesis = "15447007";
 
     /// <summary>
+    /// Literal for code: NONEJointProsthesis
+    /// </summary>
+    public const string LiteralNONEJointProsthesis = "http://snomed.info/sct#15447007";
+
+    /// <summary>
     /// Literal for code: SpineBoard
     /// </summary>
     public const string LiteralSpineBoard = "156009";
+
+    /// <summary>
+    /// Literal for code: NONESpineBoard
+    /// </summary>
+    public const string LiteralNONESpineBoard = "http://snomed.info/sct#156009";
 
     /// <summary>
     /// Literal for code: AnesthesiaUnit
@@ -10318,9 +11618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAnesthesiaUnit = "15644007";
 
     /// <summary>
+    /// Literal for code: NONEAnesthesiaUnit
+    /// </summary>
+    public const string LiteralNONEAnesthesiaUnit = "http://snomed.info/sct#15644007";
+
+    /// <summary>
     /// Literal for code: SurgicalDrill
     /// </summary>
     public const string LiteralSurgicalDrill = "1579007";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalDrill
+    /// </summary>
+    public const string LiteralNONESurgicalDrill = "http://snomed.info/sct#1579007";
 
     /// <summary>
     /// Literal for code: Dosimeter
@@ -10328,9 +11638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDosimeter = "15869005";
 
     /// <summary>
+    /// Literal for code: NONEDosimeter
+    /// </summary>
+    public const string LiteralNONEDosimeter = "http://snomed.info/sct#15869005";
+
+    /// <summary>
     /// Literal for code: Boiler
     /// </summary>
     public const string LiteralBoiler = "15873008";
+
+    /// <summary>
+    /// Literal for code: NONEBoiler
+    /// </summary>
+    public const string LiteralNONEBoiler = "http://snomed.info/sct#15873008";
 
     /// <summary>
     /// Literal for code: Gown
@@ -10338,9 +11658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGown = "15922004";
 
     /// <summary>
+    /// Literal for code: NONEGown
+    /// </summary>
+    public const string LiteralNONEGown = "http://snomed.info/sct#15922004";
+
+    /// <summary>
     /// Literal for code: Boots
     /// </summary>
     public const string LiteralBoots = "16056004";
+
+    /// <summary>
+    /// Literal for code: NONEBoots
+    /// </summary>
+    public const string LiteralNONEBoots = "http://snomed.info/sct#16056004";
 
     /// <summary>
     /// Literal for code: OrthopedicDevice
@@ -10348,9 +11678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOrthopedicDevice = "16349000";
 
     /// <summary>
+    /// Literal for code: NONEOrthopedicDevice
+    /// </summary>
+    public const string LiteralNONEOrthopedicDevice = "http://snomed.info/sct#16349000";
+
+    /// <summary>
     /// Literal for code: CommercialBreathingSupplyHosesDivingOperation
     /// </summary>
     public const string LiteralCommercialBreathingSupplyHosesDivingOperation = "16417001";
+
+    /// <summary>
+    /// Literal for code: NONECommercialBreathingSupplyHosesDivingOperation
+    /// </summary>
+    public const string LiteralNONECommercialBreathingSupplyHosesDivingOperation = "http://snomed.info/sct#16417001";
 
     /// <summary>
     /// Literal for code: Electrode
@@ -10358,9 +11698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralElectrode = "16470007";
 
     /// <summary>
+    /// Literal for code: NONEElectrode
+    /// </summary>
+    public const string LiteralNONEElectrode = "http://snomed.info/sct#16470007";
+
+    /// <summary>
     /// Literal for code: ElectricClipper
     /// </summary>
     public const string LiteralElectricClipper = "16497000";
+
+    /// <summary>
+    /// Literal for code: NONEElectricClipper
+    /// </summary>
+    public const string LiteralNONEElectricClipper = "http://snomed.info/sct#16497000";
 
     /// <summary>
     /// Literal for code: CottonCloth
@@ -10368,9 +11718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCottonCloth = "16524003";
 
     /// <summary>
+    /// Literal for code: NONECottonCloth
+    /// </summary>
+    public const string LiteralNONECottonCloth = "http://snomed.info/sct#16524003";
+
+    /// <summary>
     /// Literal for code: UmbrellaCatheter
     /// </summary>
     public const string LiteralUmbrellaCatheter = "16540000";
+
+    /// <summary>
+    /// Literal for code: NONEUmbrellaCatheter
+    /// </summary>
+    public const string LiteralNONEUmbrellaCatheter = "http://snomed.info/sct#16540000";
 
     /// <summary>
     /// Literal for code: Splint
@@ -10378,9 +11738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSplint = "16650009";
 
     /// <summary>
+    /// Literal for code: NONESplint
+    /// </summary>
+    public const string LiteralNONESplint = "http://snomed.info/sct#16650009";
+
+    /// <summary>
     /// Literal for code: HomeNebulizer
     /// </summary>
     public const string LiteralHomeNebulizer = "170615005";
+
+    /// <summary>
+    /// Literal for code: NONEHomeNebulizer
+    /// </summary>
+    public const string LiteralNONEHomeNebulizer = "http://snomed.info/sct#170615005";
 
     /// <summary>
     /// Literal for code: NasogastricTube
@@ -10388,9 +11758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNasogastricTube = "17102003";
 
     /// <summary>
+    /// Literal for code: NONENasogastricTube
+    /// </summary>
+    public const string LiteralNONENasogastricTube = "http://snomed.info/sct#17102003";
+
+    /// <summary>
     /// Literal for code: MitralValveProsthesis
     /// </summary>
     public const string LiteralMitralValveProsthesis = "17107009";
+
+    /// <summary>
+    /// Literal for code: NONEMitralValveProsthesis
+    /// </summary>
+    public const string LiteralNONEMitralValveProsthesis = "http://snomed.info/sct#17107009";
 
     /// <summary>
     /// Literal for code: Mattress
@@ -10398,9 +11778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMattress = "17207004";
 
     /// <summary>
+    /// Literal for code: NONEMattress
+    /// </summary>
+    public const string LiteralNONEMattress = "http://snomed.info/sct#17207004";
+
+    /// <summary>
     /// Literal for code: HerniaBelt
     /// </summary>
     public const string LiteralHerniaBelt = "17306006";
+
+    /// <summary>
+    /// Literal for code: NONEHerniaBelt
+    /// </summary>
+    public const string LiteralNONEHerniaBelt = "http://snomed.info/sct#17306006";
 
     /// <summary>
     /// Literal for code: CardiacCompressionBoard
@@ -10408,9 +11798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCardiacCompressionBoard = "17404008";
 
     /// <summary>
+    /// Literal for code: NONECardiacCompressionBoard
+    /// </summary>
+    public const string LiteralNONECardiacCompressionBoard = "http://snomed.info/sct#17404008";
+
+    /// <summary>
     /// Literal for code: Knife
     /// </summary>
     public const string LiteralKnife = "17472008";
+
+    /// <summary>
+    /// Literal for code: NONEKnife
+    /// </summary>
+    public const string LiteralNONEKnife = "http://snomed.info/sct#17472008";
 
     /// <summary>
     /// Literal for code: Toboggan
@@ -10418,9 +11818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralToboggan = "1766001";
 
     /// <summary>
+    /// Literal for code: NONEToboggan
+    /// </summary>
+    public const string LiteralNONEToboggan = "http://snomed.info/sct#1766001";
+
+    /// <summary>
     /// Literal for code: Punch
     /// </summary>
     public const string LiteralPunch = "18151003";
+
+    /// <summary>
+    /// Literal for code: NONEPunch
+    /// </summary>
+    public const string LiteralNONEPunch = "http://snomed.info/sct#18151003";
 
     /// <summary>
     /// Literal for code: FluorescenceImmunoassayAnalyzer
@@ -10428,9 +11838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFluorescenceImmunoassayAnalyzer = "18153000";
 
     /// <summary>
+    /// Literal for code: NONEFluorescenceImmunoassayAnalyzer
+    /// </summary>
+    public const string LiteralNONEFluorescenceImmunoassayAnalyzer = "http://snomed.info/sct#18153000";
+
+    /// <summary>
     /// Literal for code: PlasterJacket
     /// </summary>
     public const string LiteralPlasterJacket = "182562006";
+
+    /// <summary>
+    /// Literal for code: NONEPlasterJacket
+    /// </summary>
+    public const string LiteralNONEPlasterJacket = "http://snomed.info/sct#182562006";
 
     /// <summary>
     /// Literal for code: ShoulderSpica
@@ -10438,9 +11858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralShoulderSpica = "182563001";
 
     /// <summary>
+    /// Literal for code: NONEShoulderSpica
+    /// </summary>
+    public const string LiteralNONEShoulderSpica = "http://snomed.info/sct#182563001";
+
+    /// <summary>
     /// Literal for code: HumeralUSlab
     /// </summary>
     public const string LiteralHumeralUSlab = "182564007";
+
+    /// <summary>
+    /// Literal for code: NONEHumeralUSlab
+    /// </summary>
+    public const string LiteralNONEHumeralUSlab = "http://snomed.info/sct#182564007";
 
     /// <summary>
     /// Literal for code: LongArmSlab
@@ -10448,9 +11878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLongArmSlab = "182565008";
 
     /// <summary>
+    /// Literal for code: NONELongArmSlab
+    /// </summary>
+    public const string LiteralNONELongArmSlab = "http://snomed.info/sct#182565008";
+
+    /// <summary>
     /// Literal for code: HumeralHangingSlab
     /// </summary>
     public const string LiteralHumeralHangingSlab = "182566009";
+
+    /// <summary>
+    /// Literal for code: NONEHumeralHangingSlab
+    /// </summary>
+    public const string LiteralNONEHumeralHangingSlab = "http://snomed.info/sct#182566009";
 
     /// <summary>
     /// Literal for code: ForearmSlab
@@ -10458,9 +11898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralForearmSlab = "182567000";
 
     /// <summary>
+    /// Literal for code: NONEForearmSlab
+    /// </summary>
+    public const string LiteralNONEForearmSlab = "http://snomed.info/sct#182567000";
+
+    /// <summary>
     /// Literal for code: ScaphoidCast
     /// </summary>
     public const string LiteralScaphoidCast = "182568005";
+
+    /// <summary>
+    /// Literal for code: NONEScaphoidCast
+    /// </summary>
+    public const string LiteralNONEScaphoidCast = "http://snomed.info/sct#182568005";
 
     /// <summary>
     /// Literal for code: BennettCast
@@ -10468,9 +11918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBennettCast = "182569002";
 
     /// <summary>
+    /// Literal for code: NONEBennettCast
+    /// </summary>
+    public const string LiteralNONEBennettCast = "http://snomed.info/sct#182569002";
+
+    /// <summary>
     /// Literal for code: HipSpica
     /// </summary>
     public const string LiteralHipSpica = "182570001";
+
+    /// <summary>
+    /// Literal for code: NONEHipSpica
+    /// </summary>
+    public const string LiteralNONEHipSpica = "http://snomed.info/sct#182570001";
 
     /// <summary>
     /// Literal for code: LongLegSpica
@@ -10478,9 +11938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLongLegSpica = "182571002";
 
     /// <summary>
+    /// Literal for code: NONELongLegSpica
+    /// </summary>
+    public const string LiteralNONELongLegSpica = "http://snomed.info/sct#182571002";
+
+    /// <summary>
     /// Literal for code: BelowKneeNonWeightBearingCast
     /// </summary>
     public const string LiteralBelowKneeNonWeightBearingCast = "182572009";
+
+    /// <summary>
+    /// Literal for code: NONEBelowKneeNonWeightBearingCast
+    /// </summary>
+    public const string LiteralNONEBelowKneeNonWeightBearingCast = "http://snomed.info/sct#182572009";
 
     /// <summary>
     /// Literal for code: BelowKneeWeightBearingCast
@@ -10488,9 +11958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBelowKneeWeightBearingCast = "182573004";
 
     /// <summary>
+    /// Literal for code: NONEBelowKneeWeightBearingCast
+    /// </summary>
+    public const string LiteralNONEBelowKneeWeightBearingCast = "http://snomed.info/sct#182573004";
+
+    /// <summary>
     /// Literal for code: PlasterStripper
     /// </summary>
     public const string LiteralPlasterStripper = "182574005";
+
+    /// <summary>
+    /// Literal for code: NONEPlasterStripper
+    /// </summary>
+    public const string LiteralNONEPlasterStripper = "http://snomed.info/sct#182574005";
 
     /// <summary>
     /// Literal for code: HumeralBrace
@@ -10498,9 +11978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHumeralBrace = "182576007";
 
     /// <summary>
+    /// Literal for code: NONEHumeralBrace
+    /// </summary>
+    public const string LiteralNONEHumeralBrace = "http://snomed.info/sct#182576007";
+
+    /// <summary>
     /// Literal for code: FunctionalElbowBrace
     /// </summary>
     public const string LiteralFunctionalElbowBrace = "182577003";
+
+    /// <summary>
+    /// Literal for code: NONEFunctionalElbowBrace
+    /// </summary>
+    public const string LiteralNONEFunctionalElbowBrace = "http://snomed.info/sct#182577003";
 
     /// <summary>
     /// Literal for code: ForearmBrace
@@ -10508,9 +11998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralForearmBrace = "182578008";
 
     /// <summary>
+    /// Literal for code: NONEForearmBrace
+    /// </summary>
+    public const string LiteralNONEForearmBrace = "http://snomed.info/sct#182578008";
+
+    /// <summary>
     /// Literal for code: HipBrace
     /// </summary>
     public const string LiteralHipBrace = "182579000";
+
+    /// <summary>
+    /// Literal for code: NONEHipBrace
+    /// </summary>
+    public const string LiteralNONEHipBrace = "http://snomed.info/sct#182579000";
 
     /// <summary>
     /// Literal for code: FemoralBrace
@@ -10518,9 +12018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFemoralBrace = "182580002";
 
     /// <summary>
+    /// Literal for code: NONEFemoralBrace
+    /// </summary>
+    public const string LiteralNONEFemoralBrace = "http://snomed.info/sct#182580002";
+
+    /// <summary>
     /// Literal for code: TibialBrace
     /// </summary>
     public const string LiteralTibialBrace = "182581003";
+
+    /// <summary>
+    /// Literal for code: NONETibialBrace
+    /// </summary>
+    public const string LiteralNONETibialBrace = "http://snomed.info/sct#182581003";
 
     /// <summary>
     /// Literal for code: BodySupport
@@ -10528,9 +12038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBodySupport = "182587004";
 
     /// <summary>
+    /// Literal for code: NONEBodySupport
+    /// </summary>
+    public const string LiteralNONEBodySupport = "http://snomed.info/sct#182587004";
+
+    /// <summary>
     /// Literal for code: SpinalFrame
     /// </summary>
     public const string LiteralSpinalFrame = "182588009";
+
+    /// <summary>
+    /// Literal for code: NONESpinalFrame
+    /// </summary>
+    public const string LiteralNONESpinalFrame = "http://snomed.info/sct#182588009";
 
     /// <summary>
     /// Literal for code: CorsetSupport
@@ -10538,9 +12058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCorsetSupport = "182589001";
 
     /// <summary>
+    /// Literal for code: NONECorsetSupport
+    /// </summary>
+    public const string LiteralNONECorsetSupport = "http://snomed.info/sct#182589001";
+
+    /// <summary>
     /// Literal for code: CardiacBed
     /// </summary>
     public const string LiteralCardiacBed = "182590005";
+
+    /// <summary>
+    /// Literal for code: NONECardiacBed
+    /// </summary>
+    public const string LiteralNONECardiacBed = "http://snomed.info/sct#182590005";
 
     /// <summary>
     /// Literal for code: WaterBed
@@ -10548,9 +12078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWaterBed = "182591009";
 
     /// <summary>
+    /// Literal for code: NONEWaterBed
+    /// </summary>
+    public const string LiteralNONEWaterBed = "http://snomed.info/sct#182591009";
+
+    /// <summary>
     /// Literal for code: HighAirLossBed
     /// </summary>
     public const string LiteralHighAirLossBed = "182592002";
+
+    /// <summary>
+    /// Literal for code: NONEHighAirLossBed
+    /// </summary>
+    public const string LiteralNONEHighAirLossBed = "http://snomed.info/sct#182592002";
 
     /// <summary>
     /// Literal for code: AutomatedDrugMicroinjector
@@ -10558,9 +12098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAutomatedDrugMicroinjector = "182839003";
 
     /// <summary>
+    /// Literal for code: NONEAutomatedDrugMicroinjector
+    /// </summary>
+    public const string LiteralNONEAutomatedDrugMicroinjector = "http://snomed.info/sct#182839003";
+
+    /// <summary>
     /// Literal for code: DentalAid
     /// </summary>
     public const string LiteralDentalAid = "183116000";
+
+    /// <summary>
+    /// Literal for code: NONEDentalAid
+    /// </summary>
+    public const string LiteralNONEDentalAid = "http://snomed.info/sct#183116000";
 
     /// <summary>
     /// Literal for code: EarFittingHearingAid
@@ -10568,9 +12118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEarFittingHearingAid = "183125006";
 
     /// <summary>
+    /// Literal for code: NONEEarFittingHearingAid
+    /// </summary>
+    public const string LiteralNONEEarFittingHearingAid = "http://snomed.info/sct#183125006";
+
+    /// <summary>
     /// Literal for code: MobilityAids
     /// </summary>
     public const string LiteralMobilityAids = "183135000";
+
+    /// <summary>
+    /// Literal for code: NONEMobilityAids
+    /// </summary>
+    public const string LiteralNONEMobilityAids = "http://snomed.info/sct#183135000";
 
     /// <summary>
     /// Literal for code: InshoeOrthosis
@@ -10578,9 +12138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInshoeOrthosis = "183141007";
 
     /// <summary>
+    /// Literal for code: NONEInshoeOrthosis
+    /// </summary>
+    public const string LiteralNONEInshoeOrthosis = "http://snomed.info/sct#183141007";
+
+    /// <summary>
     /// Literal for code: SurgicalStockings
     /// </summary>
     public const string LiteralSurgicalStockings = "183143005";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalStockings
+    /// </summary>
+    public const string LiteralNONESurgicalStockings = "http://snomed.info/sct#183143005";
 
     /// <summary>
     /// Literal for code: AntiembolicStockings
@@ -10588,9 +12158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAntiembolicStockings = "183144004";
 
     /// <summary>
+    /// Literal for code: NONEAntiembolicStockings
+    /// </summary>
+    public const string LiteralNONEAntiembolicStockings = "http://snomed.info/sct#183144004";
+
+    /// <summary>
     /// Literal for code: ZFZimmerFrame
     /// </summary>
     public const string LiteralZFZimmerFrame = "183146002";
+
+    /// <summary>
+    /// Literal for code: NONEZFZimmerFrame
+    /// </summary>
+    public const string LiteralNONEZFZimmerFrame = "http://snomed.info/sct#183146002";
 
     /// <summary>
     /// Literal for code: Tripod
@@ -10598,9 +12178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTripod = "183147006";
 
     /// <summary>
+    /// Literal for code: NONETripod
+    /// </summary>
+    public const string LiteralNONETripod = "http://snomed.info/sct#183147006";
+
+    /// <summary>
     /// Literal for code: RGOReciprocatingGaitOrthosis
     /// </summary>
     public const string LiteralRGOReciprocatingGaitOrthosis = "183148001";
+
+    /// <summary>
+    /// Literal for code: NONERGOReciprocatingGaitOrthosis
+    /// </summary>
+    public const string LiteralNONERGOReciprocatingGaitOrthosis = "http://snomed.info/sct#183148001";
 
     /// <summary>
     /// Literal for code: HipGuidanceOrthosis
@@ -10608,9 +12198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHipGuidanceOrthosis = "183149009";
 
     /// <summary>
+    /// Literal for code: NONEHipGuidanceOrthosis
+    /// </summary>
+    public const string LiteralNONEHipGuidanceOrthosis = "http://snomed.info/sct#183149009";
+
+    /// <summary>
     /// Literal for code: StandingFrame
     /// </summary>
     public const string LiteralStandingFrame = "183150009";
+
+    /// <summary>
+    /// Literal for code: NONEStandingFrame
+    /// </summary>
+    public const string LiteralNONEStandingFrame = "http://snomed.info/sct#183150009";
 
     /// <summary>
     /// Literal for code: HipAbductionOrthosis
@@ -10618,9 +12218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHipAbductionOrthosis = "183152001";
 
     /// <summary>
+    /// Literal for code: NONEHipAbductionOrthosis
+    /// </summary>
+    public const string LiteralNONEHipAbductionOrthosis = "http://snomed.info/sct#183152001";
+
+    /// <summary>
     /// Literal for code: HipKneeAnkleFootOrthosis
     /// </summary>
     public const string LiteralHipKneeAnkleFootOrthosis = "183153006";
+
+    /// <summary>
+    /// Literal for code: NONEHipKneeAnkleFootOrthosis
+    /// </summary>
+    public const string LiteralNONEHipKneeAnkleFootOrthosis = "http://snomed.info/sct#183153006";
 
     /// <summary>
     /// Literal for code: KneeAnkleFootOrthosis
@@ -10628,9 +12238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralKneeAnkleFootOrthosis = "183154000";
 
     /// <summary>
+    /// Literal for code: NONEKneeAnkleFootOrthosis
+    /// </summary>
+    public const string LiteralNONEKneeAnkleFootOrthosis = "http://snomed.info/sct#183154000";
+
+    /// <summary>
     /// Literal for code: FlexibleKneeSupport
     /// </summary>
     public const string LiteralFlexibleKneeSupport = "183155004";
+
+    /// <summary>
+    /// Literal for code: NONEFlexibleKneeSupport
+    /// </summary>
+    public const string LiteralNONEFlexibleKneeSupport = "http://snomed.info/sct#183155004";
 
     /// <summary>
     /// Literal for code: CollateralLigamentBrace
@@ -10638,9 +12258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCollateralLigamentBrace = "183156003";
 
     /// <summary>
+    /// Literal for code: NONECollateralLigamentBrace
+    /// </summary>
+    public const string LiteralNONECollateralLigamentBrace = "http://snomed.info/sct#183156003";
+
+    /// <summary>
     /// Literal for code: AnteriorCruciateLigamentBrace
     /// </summary>
     public const string LiteralAnteriorCruciateLigamentBrace = "183157007";
+
+    /// <summary>
+    /// Literal for code: NONEAnteriorCruciateLigamentBrace
+    /// </summary>
+    public const string LiteralNONEAnteriorCruciateLigamentBrace = "http://snomed.info/sct#183157007";
 
     /// <summary>
     /// Literal for code: PosteriorCruciateLigamentBrace
@@ -10648,9 +12278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPosteriorCruciateLigamentBrace = "183158002";
 
     /// <summary>
+    /// Literal for code: NONEPosteriorCruciateLigamentBrace
+    /// </summary>
+    public const string LiteralNONEPosteriorCruciateLigamentBrace = "http://snomed.info/sct#183158002";
+
+    /// <summary>
     /// Literal for code: GroundReactionOrthosis
     /// </summary>
     public const string LiteralGroundReactionOrthosis = "183159005";
+
+    /// <summary>
+    /// Literal for code: NONEGroundReactionOrthosis
+    /// </summary>
+    public const string LiteralNONEGroundReactionOrthosis = "http://snomed.info/sct#183159005";
 
     /// <summary>
     /// Literal for code: RigidAnkleFootOrthosis
@@ -10658,9 +12298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRigidAnkleFootOrthosis = "183160000";
 
     /// <summary>
+    /// Literal for code: NONERigidAnkleFootOrthosis
+    /// </summary>
+    public const string LiteralNONERigidAnkleFootOrthosis = "http://snomed.info/sct#183160000";
+
+    /// <summary>
     /// Literal for code: FlexibleAnkleFootOrthosis
     /// </summary>
     public const string LiteralFlexibleAnkleFootOrthosis = "183161001";
+
+    /// <summary>
+    /// Literal for code: NONEFlexibleAnkleFootOrthosis
+    /// </summary>
+    public const string LiteralNONEFlexibleAnkleFootOrthosis = "http://snomed.info/sct#183161001";
 
     /// <summary>
     /// Literal for code: DoubleBelowKneeIron
@@ -10668,9 +12318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDoubleBelowKneeIron = "183162008";
 
     /// <summary>
+    /// Literal for code: NONEDoubleBelowKneeIron
+    /// </summary>
+    public const string LiteralNONEDoubleBelowKneeIron = "http://snomed.info/sct#183162008";
+
+    /// <summary>
     /// Literal for code: InsideIron
     /// </summary>
     public const string LiteralInsideIron = "183164009";
+
+    /// <summary>
+    /// Literal for code: NONEInsideIron
+    /// </summary>
+    public const string LiteralNONEInsideIron = "http://snomed.info/sct#183164009";
 
     /// <summary>
     /// Literal for code: OutsideIron
@@ -10678,9 +12338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOutsideIron = "183165005";
 
     /// <summary>
+    /// Literal for code: NONEOutsideIron
+    /// </summary>
+    public const string LiteralNONEOutsideIron = "http://snomed.info/sct#183165005";
+
+    /// <summary>
     /// Literal for code: InsideTStrap
     /// </summary>
     public const string LiteralInsideTStrap = "183166006";
+
+    /// <summary>
+    /// Literal for code: NONEInsideTStrap
+    /// </summary>
+    public const string LiteralNONEInsideTStrap = "http://snomed.info/sct#183166006";
 
     /// <summary>
     /// Literal for code: HindquarterProsthesis
@@ -10688,9 +12358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHindquarterProsthesis = "183170003";
 
     /// <summary>
+    /// Literal for code: NONEHindquarterProsthesis
+    /// </summary>
+    public const string LiteralNONEHindquarterProsthesis = "http://snomed.info/sct#183170003";
+
+    /// <summary>
     /// Literal for code: HipDisarticulationProsthesis
     /// </summary>
     public const string LiteralHipDisarticulationProsthesis = "183171004";
+
+    /// <summary>
+    /// Literal for code: NONEHipDisarticulationProsthesis
+    /// </summary>
+    public const string LiteralNONEHipDisarticulationProsthesis = "http://snomed.info/sct#183171004";
 
     /// <summary>
     /// Literal for code: AboveKneeProsthesis
@@ -10698,9 +12378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAboveKneeProsthesis = "183172006";
 
     /// <summary>
+    /// Literal for code: NONEAboveKneeProsthesis
+    /// </summary>
+    public const string LiteralNONEAboveKneeProsthesis = "http://snomed.info/sct#183172006";
+
+    /// <summary>
     /// Literal for code: ThroughKneeProsthesis
     /// </summary>
     public const string LiteralThroughKneeProsthesis = "183173001";
+
+    /// <summary>
+    /// Literal for code: NONEThroughKneeProsthesis
+    /// </summary>
+    public const string LiteralNONEThroughKneeProsthesis = "http://snomed.info/sct#183173001";
 
     /// <summary>
     /// Literal for code: BelowKneeProsthesis
@@ -10708,9 +12398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBelowKneeProsthesis = "183174007";
 
     /// <summary>
+    /// Literal for code: NONEBelowKneeProsthesis
+    /// </summary>
+    public const string LiteralNONEBelowKneeProsthesis = "http://snomed.info/sct#183174007";
+
+    /// <summary>
     /// Literal for code: SymeQuoteSProsthesis
     /// </summary>
     public const string LiteralSymeQuoteSProsthesis = "183175008";
+
+    /// <summary>
+    /// Literal for code: NONESymeQuoteSProsthesis
+    /// </summary>
+    public const string LiteralNONESymeQuoteSProsthesis = "http://snomed.info/sct#183175008";
 
     /// <summary>
     /// Literal for code: MidfootAmputationProsthesis
@@ -10718,9 +12418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMidfootAmputationProsthesis = "183176009";
 
     /// <summary>
+    /// Literal for code: NONEMidfootAmputationProsthesis
+    /// </summary>
+    public const string LiteralNONEMidfootAmputationProsthesis = "http://snomed.info/sct#183176009";
+
+    /// <summary>
     /// Literal for code: ShoeFiller
     /// </summary>
     public const string LiteralShoeFiller = "183177000";
+
+    /// <summary>
+    /// Literal for code: NONEShoeFiller
+    /// </summary>
+    public const string LiteralNONEShoeFiller = "http://snomed.info/sct#183177000";
 
     /// <summary>
     /// Literal for code: MilwaukeeBrace
@@ -10728,9 +12438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMilwaukeeBrace = "183183002";
 
     /// <summary>
+    /// Literal for code: NONEMilwaukeeBrace
+    /// </summary>
+    public const string LiteralNONEMilwaukeeBrace = "http://snomed.info/sct#183183002";
+
+    /// <summary>
     /// Literal for code: BostonBrace
     /// </summary>
     public const string LiteralBostonBrace = "183184008";
+
+    /// <summary>
+    /// Literal for code: NONEBostonBrace
+    /// </summary>
+    public const string LiteralNONEBostonBrace = "http://snomed.info/sct#183184008";
 
     /// <summary>
     /// Literal for code: JewettBrace
@@ -10738,9 +12458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralJewettBrace = "183185009";
 
     /// <summary>
+    /// Literal for code: NONEJewettBrace
+    /// </summary>
+    public const string LiteralNONEJewettBrace = "http://snomed.info/sct#183185009";
+
+    /// <summary>
     /// Literal for code: HaloDevice
     /// </summary>
     public const string LiteralHaloDevice = "183187001";
+
+    /// <summary>
+    /// Literal for code: NONEHaloDevice
+    /// </summary>
+    public const string LiteralNONEHaloDevice = "http://snomed.info/sct#183187001";
 
     /// <summary>
     /// Literal for code: FourPosterBrace
@@ -10748,9 +12478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFourPosterBrace = "183188006";
 
     /// <summary>
+    /// Literal for code: NONEFourPosterBrace
+    /// </summary>
+    public const string LiteralNONEFourPosterBrace = "http://snomed.info/sct#183188006";
+
+    /// <summary>
     /// Literal for code: RigidCollar
     /// </summary>
     public const string LiteralRigidCollar = "183189003";
+
+    /// <summary>
+    /// Literal for code: NONERigidCollar
+    /// </summary>
+    public const string LiteralNONERigidCollar = "http://snomed.info/sct#183189003";
 
     /// <summary>
     /// Literal for code: FlexibleCollar
@@ -10758,9 +12498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFlexibleCollar = "183190007";
 
     /// <summary>
+    /// Literal for code: NONEFlexibleCollar
+    /// </summary>
+    public const string LiteralNONEFlexibleCollar = "http://snomed.info/sct#183190007";
+
+    /// <summary>
     /// Literal for code: ShoulderAbductionBrace
     /// </summary>
     public const string LiteralShoulderAbductionBrace = "183192004";
+
+    /// <summary>
+    /// Literal for code: NONEShoulderAbductionBrace
+    /// </summary>
+    public const string LiteralNONEShoulderAbductionBrace = "http://snomed.info/sct#183192004";
 
     /// <summary>
     /// Literal for code: ElbowBrace
@@ -10768,9 +12518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralElbowBrace = "183193009";
 
     /// <summary>
+    /// Literal for code: NONEElbowBrace
+    /// </summary>
+    public const string LiteralNONEElbowBrace = "http://snomed.info/sct#183193009";
+
+    /// <summary>
     /// Literal for code: PassiveWristExtensionSplint
     /// </summary>
     public const string LiteralPassiveWristExtensionSplint = "183194003";
+
+    /// <summary>
+    /// Literal for code: NONEPassiveWristExtensionSplint
+    /// </summary>
+    public const string LiteralNONEPassiveWristExtensionSplint = "http://snomed.info/sct#183194003";
 
     /// <summary>
     /// Literal for code: ActiveWristExtensionSplint
@@ -10778,9 +12538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralActiveWristExtensionSplint = "183195002";
 
     /// <summary>
+    /// Literal for code: NONEActiveWristExtensionSplint
+    /// </summary>
+    public const string LiteralNONEActiveWristExtensionSplint = "http://snomed.info/sct#183195002";
+
+    /// <summary>
     /// Literal for code: PassiveFingerExtensionSplint
     /// </summary>
     public const string LiteralPassiveFingerExtensionSplint = "183196001";
+
+    /// <summary>
+    /// Literal for code: NONEPassiveFingerExtensionSplint
+    /// </summary>
+    public const string LiteralNONEPassiveFingerExtensionSplint = "http://snomed.info/sct#183196001";
 
     /// <summary>
     /// Literal for code: ActiveFingerExtensionSplint
@@ -10788,9 +12558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralActiveFingerExtensionSplint = "183197005";
 
     /// <summary>
+    /// Literal for code: NONEActiveFingerExtensionSplint
+    /// </summary>
+    public const string LiteralNONEActiveFingerExtensionSplint = "http://snomed.info/sct#183197005";
+
+    /// <summary>
     /// Literal for code: KleinertTractionPhysicalObject
     /// </summary>
     public const string LiteralKleinertTractionPhysicalObject = "183198000";
+
+    /// <summary>
+    /// Literal for code: NONEKleinertTractionPhysicalObject
+    /// </summary>
+    public const string LiteralNONEKleinertTractionPhysicalObject = "http://snomed.info/sct#183198000";
 
     /// <summary>
     /// Literal for code: PassiveThumbSplint
@@ -10798,9 +12578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPassiveThumbSplint = "183199008";
 
     /// <summary>
+    /// Literal for code: NONEPassiveThumbSplint
+    /// </summary>
+    public const string LiteralNONEPassiveThumbSplint = "http://snomed.info/sct#183199008";
+
+    /// <summary>
     /// Literal for code: ActiveThumbSplint
     /// </summary>
     public const string LiteralActiveThumbSplint = "183200006";
+
+    /// <summary>
+    /// Literal for code: NONEActiveThumbSplint
+    /// </summary>
+    public const string LiteralNONEActiveThumbSplint = "http://snomed.info/sct#183200006";
 
     /// <summary>
     /// Literal for code: ShinSplint
@@ -10808,9 +12598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralShinSplint = "183202003";
 
     /// <summary>
+    /// Literal for code: NONEShinSplint
+    /// </summary>
+    public const string LiteralNONEShinSplint = "http://snomed.info/sct#183202003";
+
+    /// <summary>
     /// Literal for code: ExcretoryControlAid
     /// </summary>
     public const string LiteralExcretoryControlAid = "183204002";
+
+    /// <summary>
+    /// Literal for code: NONEExcretoryControlAid
+    /// </summary>
+    public const string LiteralNONEExcretoryControlAid = "http://snomed.info/sct#183204002";
 
     /// <summary>
     /// Literal for code: FacialNonSurgicalProsthesis
@@ -10818,9 +12618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFacialNonSurgicalProsthesis = "183235008";
 
     /// <summary>
+    /// Literal for code: NONEFacialNonSurgicalProsthesis
+    /// </summary>
+    public const string LiteralNONEFacialNonSurgicalProsthesis = "http://snomed.info/sct#183235008";
+
+    /// <summary>
     /// Literal for code: BreastNonSurgicalProsthesis
     /// </summary>
     public const string LiteralBreastNonSurgicalProsthesis = "183236009";
+
+    /// <summary>
+    /// Literal for code: NONEBreastNonSurgicalProsthesis
+    /// </summary>
+    public const string LiteralNONEBreastNonSurgicalProsthesis = "http://snomed.info/sct#183236009";
 
     /// <summary>
     /// Literal for code: SelfPropelledWheelchair
@@ -10828,9 +12638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSelfPropelledWheelchair = "183240000";
 
     /// <summary>
+    /// Literal for code: NONESelfPropelledWheelchair
+    /// </summary>
+    public const string LiteralNONESelfPropelledWheelchair = "http://snomed.info/sct#183240000";
+
+    /// <summary>
     /// Literal for code: PedalPoweredWheelchair
     /// </summary>
     public const string LiteralPedalPoweredWheelchair = "183241001";
+
+    /// <summary>
+    /// Literal for code: NONEPedalPoweredWheelchair
+    /// </summary>
+    public const string LiteralNONEPedalPoweredWheelchair = "http://snomed.info/sct#183241001";
 
     /// <summary>
     /// Literal for code: AttendantPoweredWheelchair
@@ -10838,9 +12658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAttendantPoweredWheelchair = "183248007";
 
     /// <summary>
+    /// Literal for code: NONEAttendantPoweredWheelchair
+    /// </summary>
+    public const string LiteralNONEAttendantPoweredWheelchair = "http://snomed.info/sct#183248007";
+
+    /// <summary>
     /// Literal for code: WheelchairSeating
     /// </summary>
     public const string LiteralWheelchairSeating = "183249004";
+
+    /// <summary>
+    /// Literal for code: NONEWheelchairSeating
+    /// </summary>
+    public const string LiteralNONEWheelchairSeating = "http://snomed.info/sct#183249004";
 
     /// <summary>
     /// Literal for code: MoldedWheelchairSeat
@@ -10848,9 +12678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMoldedWheelchairSeat = "183250004";
 
     /// <summary>
+    /// Literal for code: NONEMoldedWheelchairSeat
+    /// </summary>
+    public const string LiteralNONEMoldedWheelchairSeat = "http://snomed.info/sct#183250004";
+
+    /// <summary>
     /// Literal for code: MatrixSeat
     /// </summary>
     public const string LiteralMatrixSeat = "183251000";
+
+    /// <summary>
+    /// Literal for code: NONEMatrixSeat
+    /// </summary>
+    public const string LiteralNONEMatrixSeat = "http://snomed.info/sct#183251000";
 
     /// <summary>
     /// Literal for code: Chisel
@@ -10858,9 +12698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChisel = "18411005";
 
     /// <summary>
+    /// Literal for code: NONEChisel
+    /// </summary>
+    public const string LiteralNONEChisel = "http://snomed.info/sct#18411005";
+
+    /// <summary>
     /// Literal for code: FinespunGlass
     /// </summary>
     public const string LiteralFinespunGlass = "18666004";
+
+    /// <summary>
+    /// Literal for code: NONEFinespunGlass
+    /// </summary>
+    public const string LiteralNONEFinespunGlass = "http://snomed.info/sct#18666004";
 
     /// <summary>
     /// Literal for code: Defibrillator
@@ -10868,9 +12718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDefibrillator = "19257004";
 
     /// <summary>
+    /// Literal for code: NONEDefibrillator
+    /// </summary>
+    public const string LiteralNONEDefibrillator = "http://snomed.info/sct#19257004";
+
+    /// <summary>
     /// Literal for code: Blanket
     /// </summary>
     public const string LiteralBlanket = "19328000";
+
+    /// <summary>
+    /// Literal for code: NONEBlanket
+    /// </summary>
+    public const string LiteralNONEBlanket = "http://snomed.info/sct#19328000";
 
     /// <summary>
     /// Literal for code: SilkCloth
@@ -10878,9 +12738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSilkCloth = "1941006";
 
     /// <summary>
+    /// Literal for code: NONESilkCloth
+    /// </summary>
+    public const string LiteralNONESilkCloth = "http://snomed.info/sct#1941006";
+
+    /// <summary>
     /// Literal for code: RadioactiveImplant
     /// </summary>
     public const string LiteralRadioactiveImplant = "19443004";
+
+    /// <summary>
+    /// Literal for code: NONERadioactiveImplant
+    /// </summary>
+    public const string LiteralNONERadioactiveImplant = "http://snomed.info/sct#19443004";
 
     /// <summary>
     /// Literal for code: Dike
@@ -10888,9 +12758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDike = "1962007";
 
     /// <summary>
+    /// Literal for code: NONEDike
+    /// </summary>
+    public const string LiteralNONEDike = "http://snomed.info/sct#1962007";
+
+    /// <summary>
     /// Literal for code: Leather
     /// </summary>
     public const string LiteralLeather = "19627002";
+
+    /// <summary>
+    /// Literal for code: NONELeather
+    /// </summary>
+    public const string LiteralNONELeather = "http://snomed.info/sct#19627002";
 
     /// <summary>
     /// Literal for code: LeatherBelt
@@ -10898,9 +12778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLeatherBelt = "19762002";
 
     /// <summary>
+    /// Literal for code: NONELeatherBelt
+    /// </summary>
+    public const string LiteralNONELeatherBelt = "http://snomed.info/sct#19762002";
+
+    /// <summary>
     /// Literal for code: FanBlade
     /// </summary>
     public const string LiteralFanBlade = "19817005";
+
+    /// <summary>
+    /// Literal for code: NONEFanBlade
+    /// </summary>
+    public const string LiteralNONEFanBlade = "http://snomed.info/sct#19817005";
 
     /// <summary>
     /// Literal for code: Scale
@@ -10908,9 +12798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralScale = "19892000";
 
     /// <summary>
+    /// Literal for code: NONEScale
+    /// </summary>
+    public const string LiteralNONEScale = "http://snomed.info/sct#19892000";
+
+    /// <summary>
     /// Literal for code: Catheter
     /// </summary>
     public const string LiteralCatheter = "19923001";
+
+    /// <summary>
+    /// Literal for code: NONECatheter
+    /// </summary>
+    public const string LiteralNONECatheter = "http://snomed.info/sct#19923001";
 
     /// <summary>
     /// Literal for code: IntracranialPressureTransducer
@@ -10918,9 +12818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIntracranialPressureTransducer = "201706006";
 
     /// <summary>
+    /// Literal for code: NONEIntracranialPressureTransducer
+    /// </summary>
+    public const string LiteralNONEIntracranialPressureTransducer = "http://snomed.info/sct#201706006";
+
+    /// <summary>
     /// Literal for code: LegProsthesis
     /// </summary>
     public const string LiteralLegProsthesis = "20195009";
+
+    /// <summary>
+    /// Literal for code: NONELegProsthesis
+    /// </summary>
+    public const string LiteralNONELegProsthesis = "http://snomed.info/sct#20195009";
 
     /// <summary>
     /// Literal for code: Toothbrush
@@ -10928,9 +12838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralToothbrush = "20235003";
 
     /// <summary>
+    /// Literal for code: NONEToothbrush
+    /// </summary>
+    public const string LiteralNONEToothbrush = "http://snomed.info/sct#20235003";
+
+    /// <summary>
     /// Literal for code: IndustrialMachine
     /// </summary>
     public const string LiteralIndustrialMachine = "20273004";
+
+    /// <summary>
+    /// Literal for code: NONEIndustrialMachine
+    /// </summary>
+    public const string LiteralNONEIndustrialMachine = "http://snomed.info/sct#20273004";
 
     /// <summary>
     /// Literal for code: ContraceptiveDiaphragm
@@ -10938,9 +12858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralContraceptiveDiaphragm = "20359006";
 
     /// <summary>
+    /// Literal for code: NONEContraceptiveDiaphragm
+    /// </summary>
+    public const string LiteralNONEContraceptiveDiaphragm = "http://snomed.info/sct#20359006";
+
+    /// <summary>
     /// Literal for code: BackRests
     /// </summary>
     public const string LiteralBackRests = "20406008";
+
+    /// <summary>
+    /// Literal for code: NONEBackRests
+    /// </summary>
+    public const string LiteralNONEBackRests = "http://snomed.info/sct#20406008";
 
     /// <summary>
     /// Literal for code: OxygenTent
@@ -10948,9 +12878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOxygenTent = "20428008";
 
     /// <summary>
+    /// Literal for code: NONEOxygenTent
+    /// </summary>
+    public const string LiteralNONEOxygenTent = "http://snomed.info/sct#20428008";
+
+    /// <summary>
     /// Literal for code: PowerTool
     /// </summary>
     public const string LiteralPowerTool = "20513005";
+
+    /// <summary>
+    /// Literal for code: NONEPowerTool
+    /// </summary>
+    public const string LiteralNONEPowerTool = "http://snomed.info/sct#20513005";
 
     /// <summary>
     /// Literal for code: UrinaryCatheter
@@ -10958,9 +12898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUrinaryCatheter = "20568009";
 
     /// <summary>
+    /// Literal for code: NONEUrinaryCatheter
+    /// </summary>
+    public const string LiteralNONEUrinaryCatheter = "http://snomed.info/sct#20568009";
+
+    /// <summary>
     /// Literal for code: Cystoscope
     /// </summary>
     public const string LiteralCystoscope = "20613002";
+
+    /// <summary>
+    /// Literal for code: NONECystoscope
+    /// </summary>
+    public const string LiteralNONECystoscope = "http://snomed.info/sct#20613002";
 
     /// <summary>
     /// Literal for code: PlugPack
@@ -10968,9 +12918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlugPack = "20861007";
 
     /// <summary>
+    /// Literal for code: NONEPlugPack
+    /// </summary>
+    public const string LiteralNONEPlugPack = "http://snomed.info/sct#20861007";
+
+    /// <summary>
     /// Literal for code: ExperimentalImplant
     /// </summary>
     public const string LiteralExperimentalImplant = "20867006";
+
+    /// <summary>
+    /// Literal for code: NONEExperimentalImplant
+    /// </summary>
+    public const string LiteralNONEExperimentalImplant = "http://snomed.info/sct#20867006";
 
     /// <summary>
     /// Literal for code: PlasticClothLikeMaterial
@@ -10978,9 +12938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlasticClothLikeMaterial = "20873007";
 
     /// <summary>
+    /// Literal for code: NONEPlasticClothLikeMaterial
+    /// </summary>
+    public const string LiteralNONEPlasticClothLikeMaterial = "http://snomed.info/sct#20873007";
+
+    /// <summary>
     /// Literal for code: HandTool
     /// </summary>
     public const string LiteralHandTool = "20997002";
+
+    /// <summary>
+    /// Literal for code: NONEHandTool
+    /// </summary>
+    public const string LiteralNONEHandTool = "http://snomed.info/sct#20997002";
 
     /// <summary>
     /// Literal for code: CarbonMonoxideAnalyzer
@@ -10988,9 +12958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCarbonMonoxideAnalyzer = "21079000";
 
     /// <summary>
+    /// Literal for code: NONECarbonMonoxideAnalyzer
+    /// </summary>
+    public const string LiteralNONECarbonMonoxideAnalyzer = "http://snomed.info/sct#21079000";
+
+    /// <summary>
     /// Literal for code: Refrigerator
     /// </summary>
     public const string LiteralRefrigerator = "21546008";
+
+    /// <summary>
+    /// Literal for code: NONERefrigerator
+    /// </summary>
+    public const string LiteralNONERefrigerator = "http://snomed.info/sct#21546008";
 
     /// <summary>
     /// Literal for code: TransluminalExtractionCatheter
@@ -10998,9 +12978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTransluminalExtractionCatheter = "21870002";
 
     /// <summary>
+    /// Literal for code: NONETransluminalExtractionCatheter
+    /// </summary>
+    public const string LiteralNONETransluminalExtractionCatheter = "http://snomed.info/sct#21870002";
+
+    /// <summary>
     /// Literal for code: AbdominalBinder
     /// </summary>
     public const string LiteralAbdominalBinder = "21944004";
+
+    /// <summary>
+    /// Literal for code: NONEAbdominalBinder
+    /// </summary>
+    public const string LiteralNONEAbdominalBinder = "http://snomed.info/sct#21944004";
 
     /// <summary>
     /// Literal for code: Timer
@@ -11008,9 +12998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTimer = "22251003";
 
     /// <summary>
+    /// Literal for code: NONETimer
+    /// </summary>
+    public const string LiteralNONETimer = "http://snomed.info/sct#22251003";
+
+    /// <summary>
     /// Literal for code: ArtificialMembrane
     /// </summary>
     public const string LiteralArtificialMembrane = "22283009";
+
+    /// <summary>
+    /// Literal for code: NONEArtificialMembrane
+    /// </summary>
+    public const string LiteralNONEArtificialMembrane = "http://snomed.info/sct#22283009";
 
     /// <summary>
     /// Literal for code: EquipmentForPositioningPhysicalObject
@@ -11018,9 +13018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEquipmentForPositioningPhysicalObject = "223394001";
 
     /// <summary>
+    /// Literal for code: NONEEquipmentForPositioningPhysicalObject
+    /// </summary>
+    public const string LiteralNONEEquipmentForPositioningPhysicalObject = "http://snomed.info/sct#223394001";
+
+    /// <summary>
     /// Literal for code: TopSecurityPrison
     /// </summary>
     public const string LiteralTopSecurityPrison = "224684009";
+
+    /// <summary>
+    /// Literal for code: NONETopSecurityPrison
+    /// </summary>
+    public const string LiteralNONETopSecurityPrison = "http://snomed.info/sct#224684009";
 
     /// <summary>
     /// Literal for code: CategoryBPrison
@@ -11028,9 +13038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCategoryBPrison = "224685005";
 
     /// <summary>
+    /// Literal for code: NONECategoryBPrison
+    /// </summary>
+    public const string LiteralNONECategoryBPrison = "http://snomed.info/sct#224685005";
+
+    /// <summary>
     /// Literal for code: LowSecurityPrison
     /// </summary>
     public const string LiteralLowSecurityPrison = "224686006";
+
+    /// <summary>
+    /// Literal for code: NONELowSecurityPrison
+    /// </summary>
+    public const string LiteralNONELowSecurityPrison = "http://snomed.info/sct#224686006";
 
     /// <summary>
     /// Literal for code: EndotrachealTubeCuff
@@ -11038,9 +13058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEndotrachealTubeCuff = "2248009";
 
     /// <summary>
+    /// Literal for code: NONEEndotrachealTubeCuff
+    /// </summary>
+    public const string LiteralNONEEndotrachealTubeCuff = "http://snomed.info/sct#2248009";
+
+    /// <summary>
     /// Literal for code: StreetLighting
     /// </summary>
     public const string LiteralStreetLighting = "224823002";
+
+    /// <summary>
+    /// Literal for code: NONEStreetLighting
+    /// </summary>
+    public const string LiteralNONEStreetLighting = "http://snomed.info/sct#224823002";
 
     /// <summary>
     /// Literal for code: SignPosting
@@ -11048,9 +13078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSignPosting = "224824008";
 
     /// <summary>
+    /// Literal for code: NONESignPosting
+    /// </summary>
+    public const string LiteralNONESignPosting = "http://snomed.info/sct#224824008";
+
+    /// <summary>
     /// Literal for code: StreetNameSign
     /// </summary>
     public const string LiteralStreetNameSign = "224825009";
+
+    /// <summary>
+    /// Literal for code: NONEStreetNameSign
+    /// </summary>
+    public const string LiteralNONEStreetNameSign = "http://snomed.info/sct#224825009";
 
     /// <summary>
     /// Literal for code: BuildingNameSign
@@ -11058,9 +13098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBuildingNameSign = "224826005";
 
     /// <summary>
+    /// Literal for code: NONEBuildingNameSign
+    /// </summary>
+    public const string LiteralNONEBuildingNameSign = "http://snomed.info/sct#224826005";
+
+    /// <summary>
     /// Literal for code: PedestrianDirectionSign
     /// </summary>
     public const string LiteralPedestrianDirectionSign = "224827001";
+
+    /// <summary>
+    /// Literal for code: NONEPedestrianDirectionSign
+    /// </summary>
+    public const string LiteralNONEPedestrianDirectionSign = "http://snomed.info/sct#224827001";
 
     /// <summary>
     /// Literal for code: TrafficSign
@@ -11068,9 +13118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTrafficSign = "224828006";
 
     /// <summary>
+    /// Literal for code: NONETrafficSign
+    /// </summary>
+    public const string LiteralNONETrafficSign = "http://snomed.info/sct#224828006";
+
+    /// <summary>
     /// Literal for code: OrthoticDevice
     /// </summary>
     public const string LiteralOrthoticDevice = "224898003";
+
+    /// <summary>
+    /// Literal for code: NONEOrthoticDevice
+    /// </summary>
+    public const string LiteralNONEOrthoticDevice = "http://snomed.info/sct#224898003";
 
     /// <summary>
     /// Literal for code: WalkingAid
@@ -11078,9 +13138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWalkingAid = "224899006";
 
     /// <summary>
+    /// Literal for code: NONEWalkingAid
+    /// </summary>
+    public const string LiteralNONEWalkingAid = "http://snomed.info/sct#224899006";
+
+    /// <summary>
     /// Literal for code: CommunicationAid
     /// </summary>
     public const string LiteralCommunicationAid = "224900001";
+
+    /// <summary>
+    /// Literal for code: NONECommunicationAid
+    /// </summary>
+    public const string LiteralNONECommunicationAid = "http://snomed.info/sct#224900001";
 
     /// <summary>
     /// Literal for code: CytologyBrush
@@ -11088,9 +13158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCytologyBrush = "22566001";
 
     /// <summary>
+    /// Literal for code: NONECytologyBrush
+    /// </summary>
+    public const string LiteralNONECytologyBrush = "http://snomed.info/sct#22566001";
+
+    /// <summary>
     /// Literal for code: RetainingHarness
     /// </summary>
     public const string LiteralRetainingHarness = "22662007";
+
+    /// <summary>
+    /// Literal for code: NONERetainingHarness
+    /// </summary>
+    public const string LiteralNONERetainingHarness = "http://snomed.info/sct#22662007";
 
     /// <summary>
     /// Literal for code: Handcuffs
@@ -11098,9 +13178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHandcuffs = "22679001";
 
     /// <summary>
+    /// Literal for code: NONEHandcuffs
+    /// </summary>
+    public const string LiteralNONEHandcuffs = "http://snomed.info/sct#22679001";
+
+    /// <summary>
     /// Literal for code: ArtificialHairWig
     /// </summary>
     public const string LiteralArtificialHairWig = "22744006";
+
+    /// <summary>
+    /// Literal for code: NONEArtificialHairWig
+    /// </summary>
+    public const string LiteralNONEArtificialHairWig = "http://snomed.info/sct#22744006";
 
     /// <summary>
     /// Literal for code: Corset
@@ -11108,9 +13198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCorset = "228167008";
 
     /// <summary>
+    /// Literal for code: NONECorset
+    /// </summary>
+    public const string LiteralNONECorset = "http://snomed.info/sct#228167008";
+
+    /// <summary>
     /// Literal for code: BreastProsthesis
     /// </summary>
     public const string LiteralBreastProsthesis = "2282003";
+
+    /// <summary>
+    /// Literal for code: NONEBreastProsthesis
+    /// </summary>
+    public const string LiteralNONEBreastProsthesis = "http://snomed.info/sct#2282003";
 
     /// <summary>
     /// Literal for code: Slippers
@@ -11118,9 +13218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSlippers = "228235002";
 
     /// <summary>
+    /// Literal for code: NONESlippers
+    /// </summary>
+    public const string LiteralNONESlippers = "http://snomed.info/sct#228235002";
+
+    /// <summary>
     /// Literal for code: Mules
     /// </summary>
     public const string LiteralMules = "228236001";
+
+    /// <summary>
+    /// Literal for code: NONEMules
+    /// </summary>
+    public const string LiteralNONEMules = "http://snomed.info/sct#228236001";
 
     /// <summary>
     /// Literal for code: Slippersox
@@ -11128,9 +13238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSlippersox = "228237005";
 
     /// <summary>
+    /// Literal for code: NONESlippersox
+    /// </summary>
+    public const string LiteralNONESlippersox = "http://snomed.info/sct#228237005";
+
+    /// <summary>
     /// Literal for code: Trainers
     /// </summary>
     public const string LiteralTrainers = "228239008";
+
+    /// <summary>
+    /// Literal for code: NONETrainers
+    /// </summary>
+    public const string LiteralNONETrainers = "http://snomed.info/sct#228239008";
 
     /// <summary>
     /// Literal for code: Plimsolls
@@ -11138,9 +13258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlimsolls = "228240005";
 
     /// <summary>
+    /// Literal for code: NONEPlimsolls
+    /// </summary>
+    public const string LiteralNONEPlimsolls = "http://snomed.info/sct#228240005";
+
+    /// <summary>
     /// Literal for code: Sandals
     /// </summary>
     public const string LiteralSandals = "228241009";
+
+    /// <summary>
+    /// Literal for code: NONESandals
+    /// </summary>
+    public const string LiteralNONESandals = "http://snomed.info/sct#228241009";
 
     /// <summary>
     /// Literal for code: GumBoots
@@ -11148,9 +13278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGumBoots = "228242002";
 
     /// <summary>
+    /// Literal for code: NONEGumBoots
+    /// </summary>
+    public const string LiteralNONEGumBoots = "http://snomed.info/sct#228242002";
+
+    /// <summary>
     /// Literal for code: Chappel
     /// </summary>
     public const string LiteralChappel = "228243007";
+
+    /// <summary>
+    /// Literal for code: NONEChappel
+    /// </summary>
+    public const string LiteralNONEChappel = "http://snomed.info/sct#228243007";
 
     /// <summary>
     /// Literal for code: Fastenings
@@ -11158,9 +13298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFastenings = "228259007";
 
     /// <summary>
+    /// Literal for code: NONEFastenings
+    /// </summary>
+    public const string LiteralNONEFastenings = "http://snomed.info/sct#228259007";
+
+    /// <summary>
     /// Literal for code: Velcro
     /// </summary>
     public const string LiteralVelcro = "228260002";
+
+    /// <summary>
+    /// Literal for code: NONEVelcro
+    /// </summary>
+    public const string LiteralNONEVelcro = "http://snomed.info/sct#228260002";
 
     /// <summary>
     /// Literal for code: Buckle
@@ -11168,9 +13318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBuckle = "228261003";
 
     /// <summary>
+    /// Literal for code: NONEBuckle
+    /// </summary>
+    public const string LiteralNONEBuckle = "http://snomed.info/sct#228261003";
+
+    /// <summary>
     /// Literal for code: Zipper
     /// </summary>
     public const string LiteralZipper = "228262005";
+
+    /// <summary>
+    /// Literal for code: NONEZipper
+    /// </summary>
+    public const string LiteralNONEZipper = "http://snomed.info/sct#228262005";
 
     /// <summary>
     /// Literal for code: SmallButton
@@ -11178,9 +13338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSmallButton = "228264006";
 
     /// <summary>
+    /// Literal for code: NONESmallButton
+    /// </summary>
+    public const string LiteralNONESmallButton = "http://snomed.info/sct#228264006";
+
+    /// <summary>
     /// Literal for code: MediumButton
     /// </summary>
     public const string LiteralMediumButton = "228265007";
+
+    /// <summary>
+    /// Literal for code: NONEMediumButton
+    /// </summary>
+    public const string LiteralNONEMediumButton = "http://snomed.info/sct#228265007";
 
     /// <summary>
     /// Literal for code: LargeButtonPhysicalObject
@@ -11188,9 +13358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLargeButtonPhysicalObject = "228266008";
 
     /// <summary>
+    /// Literal for code: NONELargeButtonPhysicalObject
+    /// </summary>
+    public const string LiteralNONELargeButtonPhysicalObject = "http://snomed.info/sct#228266008";
+
+    /// <summary>
     /// Literal for code: PressStud
     /// </summary>
     public const string LiteralPressStud = "228267004";
+
+    /// <summary>
+    /// Literal for code: NONEPressStud
+    /// </summary>
+    public const string LiteralNONEPressStud = "http://snomed.info/sct#228267004";
 
     /// <summary>
     /// Literal for code: HookAndEye
@@ -11198,9 +13378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHookAndEye = "228268009";
 
     /// <summary>
+    /// Literal for code: NONEHookAndEye
+    /// </summary>
+    public const string LiteralNONEHookAndEye = "http://snomed.info/sct#228268009";
+
+    /// <summary>
     /// Literal for code: Laces
     /// </summary>
     public const string LiteralLaces = "228270000";
+
+    /// <summary>
+    /// Literal for code: NONELaces
+    /// </summary>
+    public const string LiteralNONELaces = "http://snomed.info/sct#228270000";
 
     /// <summary>
     /// Literal for code: ShoeLaces
@@ -11208,9 +13398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralShoeLaces = "228271001";
 
     /// <summary>
+    /// Literal for code: NONEShoeLaces
+    /// </summary>
+    public const string LiteralNONEShoeLaces = "http://snomed.info/sct#228271001";
+
+    /// <summary>
     /// Literal for code: TherapeuticImplant
     /// </summary>
     public const string LiteralTherapeuticImplant = "22852002";
+
+    /// <summary>
+    /// Literal for code: NONETherapeuticImplant
+    /// </summary>
+    public const string LiteralNONETherapeuticImplant = "http://snomed.info/sct#22852002";
 
     /// <summary>
     /// Literal for code: NailFile
@@ -11218,9 +13418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNailFile = "2287009";
 
     /// <summary>
+    /// Literal for code: NONENailFile
+    /// </summary>
+    public const string LiteralNONENailFile = "http://snomed.info/sct#2287009";
+
+    /// <summary>
     /// Literal for code: RadiotherapyEquipmentAndAppliances
     /// </summary>
     public const string LiteralRadiotherapyEquipmentAndAppliances = "228731007";
+
+    /// <summary>
+    /// Literal for code: NONERadiotherapyEquipmentAndAppliances
+    /// </summary>
+    public const string LiteralNONERadiotherapyEquipmentAndAppliances = "http://snomed.info/sct#228731007";
 
     /// <summary>
     /// Literal for code: BeamDirectionShell
@@ -11228,9 +13438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBeamDirectionShell = "228732000";
 
     /// <summary>
+    /// Literal for code: NONEBeamDirectionShell
+    /// </summary>
+    public const string LiteralNONEBeamDirectionShell = "http://snomed.info/sct#228732000";
+
+    /// <summary>
     /// Literal for code: HeadAndNeckBeamDirectionShell
     /// </summary>
     public const string LiteralHeadAndNeckBeamDirectionShell = "228733005";
+
+    /// <summary>
+    /// Literal for code: NONEHeadAndNeckBeamDirectionShell
+    /// </summary>
+    public const string LiteralNONEHeadAndNeckBeamDirectionShell = "http://snomed.info/sct#228733005";
 
     /// <summary>
     /// Literal for code: BodyBeamDirectionShell
@@ -11238,9 +13458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBodyBeamDirectionShell = "228734004";
 
     /// <summary>
+    /// Literal for code: NONEBodyBeamDirectionShell
+    /// </summary>
+    public const string LiteralNONEBodyBeamDirectionShell = "http://snomed.info/sct#228734004";
+
+    /// <summary>
     /// Literal for code: BeamModifier
     /// </summary>
     public const string LiteralBeamModifier = "228735003";
+
+    /// <summary>
+    /// Literal for code: NONEBeamModifier
+    /// </summary>
+    public const string LiteralNONEBeamModifier = "http://snomed.info/sct#228735003";
 
     /// <summary>
     /// Literal for code: SurfaceBolus
@@ -11248,9 +13478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSurfaceBolus = "228736002";
 
     /// <summary>
+    /// Literal for code: NONESurfaceBolus
+    /// </summary>
+    public const string LiteralNONESurfaceBolus = "http://snomed.info/sct#228736002";
+
+    /// <summary>
     /// Literal for code: SurfaceCompensator
     /// </summary>
     public const string LiteralSurfaceCompensator = "228737006";
+
+    /// <summary>
+    /// Literal for code: NONESurfaceCompensator
+    /// </summary>
+    public const string LiteralNONESurfaceCompensator = "http://snomed.info/sct#228737006";
 
     /// <summary>
     /// Literal for code: Cutout
@@ -11258,9 +13498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCutout = "228738001";
 
     /// <summary>
+    /// Literal for code: NONECutout
+    /// </summary>
+    public const string LiteralNONECutout = "http://snomed.info/sct#228738001";
+
+    /// <summary>
     /// Literal for code: ShieldingBlock
     /// </summary>
     public const string LiteralShieldingBlock = "228739009";
+
+    /// <summary>
+    /// Literal for code: NONEShieldingBlock
+    /// </summary>
+    public const string LiteralNONEShieldingBlock = "http://snomed.info/sct#228739009";
 
     /// <summary>
     /// Literal for code: LungBlock
@@ -11268,9 +13518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLungBlock = "228740006";
 
     /// <summary>
+    /// Literal for code: NONELungBlock
+    /// </summary>
+    public const string LiteralNONELungBlock = "http://snomed.info/sct#228740006";
+
+    /// <summary>
     /// Literal for code: HumerusBlock
     /// </summary>
     public const string LiteralHumerusBlock = "228741005";
+
+    /// <summary>
+    /// Literal for code: NONEHumerusBlock
+    /// </summary>
+    public const string LiteralNONEHumerusBlock = "http://snomed.info/sct#228741005";
 
     /// <summary>
     /// Literal for code: ScrotalBlock
@@ -11278,9 +13538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralScrotalBlock = "228742003";
 
     /// <summary>
+    /// Literal for code: NONEScrotalBlock
+    /// </summary>
+    public const string LiteralNONEScrotalBlock = "http://snomed.info/sct#228742003";
+
+    /// <summary>
     /// Literal for code: KidneyBlock
     /// </summary>
     public const string LiteralKidneyBlock = "228743008";
+
+    /// <summary>
+    /// Literal for code: NONEKidneyBlock
+    /// </summary>
+    public const string LiteralNONEKidneyBlock = "http://snomed.info/sct#228743008";
 
     /// <summary>
     /// Literal for code: EyeBlock
@@ -11288,9 +13558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEyeBlock = "228744002";
 
     /// <summary>
+    /// Literal for code: NONEEyeBlock
+    /// </summary>
+    public const string LiteralNONEEyeBlock = "http://snomed.info/sct#228744002";
+
+    /// <summary>
     /// Literal for code: BiteBlock
     /// </summary>
     public const string LiteralBiteBlock = "228745001";
+
+    /// <summary>
+    /// Literal for code: NONEBiteBlock
+    /// </summary>
+    public const string LiteralNONEBiteBlock = "http://snomed.info/sct#228745001";
 
     /// <summary>
     /// Literal for code: WedgeFilter
@@ -11298,9 +13578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWedgeFilter = "228746000";
 
     /// <summary>
+    /// Literal for code: NONEWedgeFilter
+    /// </summary>
+    public const string LiteralNONEWedgeFilter = "http://snomed.info/sct#228746000";
+
+    /// <summary>
     /// Literal for code: KilovoltageGrid
     /// </summary>
     public const string LiteralKilovoltageGrid = "228747009";
+
+    /// <summary>
+    /// Literal for code: NONEKilovoltageGrid
+    /// </summary>
+    public const string LiteralNONEKilovoltageGrid = "http://snomed.info/sct#228747009";
 
     /// <summary>
     /// Literal for code: BrachytherapyImplant
@@ -11308,9 +13598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBrachytherapyImplant = "228748004";
 
     /// <summary>
+    /// Literal for code: NONEBrachytherapyImplant
+    /// </summary>
+    public const string LiteralNONEBrachytherapyImplant = "http://snomed.info/sct#228748004";
+
+    /// <summary>
     /// Literal for code: SinglePlaneImplant
     /// </summary>
     public const string LiteralSinglePlaneImplant = "228749007";
+
+    /// <summary>
+    /// Literal for code: NONESinglePlaneImplant
+    /// </summary>
+    public const string LiteralNONESinglePlaneImplant = "http://snomed.info/sct#228749007";
 
     /// <summary>
     /// Literal for code: TwoPlaneImplant
@@ -11318,9 +13618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTwoPlaneImplant = "228750007";
 
     /// <summary>
+    /// Literal for code: NONETwoPlaneImplant
+    /// </summary>
+    public const string LiteralNONETwoPlaneImplant = "http://snomed.info/sct#228750007";
+
+    /// <summary>
     /// Literal for code: SemicircularImplant
     /// </summary>
     public const string LiteralSemicircularImplant = "228751006";
+
+    /// <summary>
+    /// Literal for code: NONESemicircularImplant
+    /// </summary>
+    public const string LiteralNONESemicircularImplant = "http://snomed.info/sct#228751006";
 
     /// <summary>
     /// Literal for code: RegularVolumeImplant
@@ -11328,9 +13638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRegularVolumeImplant = "228752004";
 
     /// <summary>
+    /// Literal for code: NONERegularVolumeImplant
+    /// </summary>
+    public const string LiteralNONERegularVolumeImplant = "http://snomed.info/sct#228752004";
+
+    /// <summary>
     /// Literal for code: IrregularVolumeImplant
     /// </summary>
     public const string LiteralIrregularVolumeImplant = "228753009";
+
+    /// <summary>
+    /// Literal for code: NONEIrregularVolumeImplant
+    /// </summary>
+    public const string LiteralNONEIrregularVolumeImplant = "http://snomed.info/sct#228753009";
 
     /// <summary>
     /// Literal for code: BrachytherapySurfaceMold
@@ -11338,9 +13658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBrachytherapySurfaceMold = "228754003";
 
     /// <summary>
+    /// Literal for code: NONEBrachytherapySurfaceMold
+    /// </summary>
+    public const string LiteralNONEBrachytherapySurfaceMold = "http://snomed.info/sct#228754003";
+
+    /// <summary>
     /// Literal for code: TwoPlaneMold
     /// </summary>
     public const string LiteralTwoPlaneMold = "228755002";
+
+    /// <summary>
+    /// Literal for code: NONETwoPlaneMold
+    /// </summary>
+    public const string LiteralNONETwoPlaneMold = "http://snomed.info/sct#228755002";
 
     /// <summary>
     /// Literal for code: SinglePlaneMold
@@ -11348,9 +13678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSinglePlaneMold = "228756001";
 
     /// <summary>
+    /// Literal for code: NONESinglePlaneMold
+    /// </summary>
+    public const string LiteralNONESinglePlaneMold = "http://snomed.info/sct#228756001";
+
+    /// <summary>
     /// Literal for code: CylinderMold
     /// </summary>
     public const string LiteralCylinderMold = "228757005";
+
+    /// <summary>
+    /// Literal for code: NONECylinderMold
+    /// </summary>
+    public const string LiteralNONECylinderMold = "http://snomed.info/sct#228757005";
 
     /// <summary>
     /// Literal for code: AdhesiveFeltMold
@@ -11358,9 +13698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdhesiveFeltMold = "228759008";
 
     /// <summary>
+    /// Literal for code: NONEAdhesiveFeltMold
+    /// </summary>
+    public const string LiteralNONEAdhesiveFeltMold = "http://snomed.info/sct#228759008";
+
+    /// <summary>
     /// Literal for code: ElastoplastMold
     /// </summary>
     public const string LiteralElastoplastMold = "228760003";
+
+    /// <summary>
+    /// Literal for code: NONEElastoplastMold
+    /// </summary>
+    public const string LiteralNONEElastoplastMold = "http://snomed.info/sct#228760003";
 
     /// <summary>
     /// Literal for code: CollimatorPhysicalObject
@@ -11368,9 +13718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCollimatorPhysicalObject = "228761004";
 
     /// <summary>
+    /// Literal for code: NONECollimatorPhysicalObject
+    /// </summary>
+    public const string LiteralNONECollimatorPhysicalObject = "http://snomed.info/sct#228761004";
+
+    /// <summary>
     /// Literal for code: MultileafCollimator
     /// </summary>
     public const string LiteralMultileafCollimator = "228762006";
+
+    /// <summary>
+    /// Literal for code: NONEMultileafCollimator
+    /// </summary>
+    public const string LiteralNONEMultileafCollimator = "http://snomed.info/sct#228762006";
 
     /// <summary>
     /// Literal for code: AsymmetricJawsCollimator
@@ -11378,9 +13738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAsymmetricJawsCollimator = "228763001";
 
     /// <summary>
+    /// Literal for code: NONEAsymmetricJawsCollimator
+    /// </summary>
+    public const string LiteralNONEAsymmetricJawsCollimator = "http://snomed.info/sct#228763001";
+
+    /// <summary>
     /// Literal for code: StandardCollimator
     /// </summary>
     public const string LiteralStandardCollimator = "228765008";
+
+    /// <summary>
+    /// Literal for code: NONEStandardCollimator
+    /// </summary>
+    public const string LiteralNONEStandardCollimator = "http://snomed.info/sct#228765008";
 
     /// <summary>
     /// Literal for code: FormOfBrachytherapySource
@@ -11388,9 +13758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFormOfBrachytherapySource = "228766009";
 
     /// <summary>
+    /// Literal for code: NONEFormOfBrachytherapySource
+    /// </summary>
+    public const string LiteralNONEFormOfBrachytherapySource = "http://snomed.info/sct#228766009";
+
+    /// <summary>
     /// Literal for code: WireSource
     /// </summary>
     public const string LiteralWireSource = "228767000";
+
+    /// <summary>
+    /// Literal for code: NONEWireSource
+    /// </summary>
+    public const string LiteralNONEWireSource = "http://snomed.info/sct#228767000";
 
     /// <summary>
     /// Literal for code: SeedsSource
@@ -11398,9 +13778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSeedsSource = "228768005";
 
     /// <summary>
+    /// Literal for code: NONESeedsSource
+    /// </summary>
+    public const string LiteralNONESeedsSource = "http://snomed.info/sct#228768005";
+
+    /// <summary>
     /// Literal for code: HairpinsSource
     /// </summary>
     public const string LiteralHairpinsSource = "228770001";
+
+    /// <summary>
+    /// Literal for code: NONEHairpinsSource
+    /// </summary>
+    public const string LiteralNONEHairpinsSource = "http://snomed.info/sct#228770001";
 
     /// <summary>
     /// Literal for code: NeedlesSource
@@ -11408,9 +13798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNeedlesSource = "228771002";
 
     /// <summary>
+    /// Literal for code: NONENeedlesSource
+    /// </summary>
+    public const string LiteralNONENeedlesSource = "http://snomed.info/sct#228771002";
+
+    /// <summary>
     /// Literal for code: PelletsSource
     /// </summary>
     public const string LiteralPelletsSource = "228772009";
+
+    /// <summary>
+    /// Literal for code: NONEPelletsSource
+    /// </summary>
+    public const string LiteralNONEPelletsSource = "http://snomed.info/sct#228772009";
 
     /// <summary>
     /// Literal for code: CapsulesSource
@@ -11418,9 +13818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCapsulesSource = "228773004";
 
     /// <summary>
+    /// Literal for code: NONECapsulesSource
+    /// </summary>
+    public const string LiteralNONECapsulesSource = "http://snomed.info/sct#228773004";
+
+    /// <summary>
     /// Literal for code: TrainsSource
     /// </summary>
     public const string LiteralTrainsSource = "228774005";
+
+    /// <summary>
+    /// Literal for code: NONETrainsSource
+    /// </summary>
+    public const string LiteralNONETrainsSource = "http://snomed.info/sct#228774005";
 
     /// <summary>
     /// Literal for code: TubesSource
@@ -11428,9 +13838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTubesSource = "228775006";
 
     /// <summary>
+    /// Literal for code: NONETubesSource
+    /// </summary>
+    public const string LiteralNONETubesSource = "http://snomed.info/sct#228775006";
+
+    /// <summary>
     /// Literal for code: RodsSource
     /// </summary>
     public const string LiteralRodsSource = "228776007";
+
+    /// <summary>
+    /// Literal for code: NONERodsSource
+    /// </summary>
+    public const string LiteralNONERodsSource = "http://snomed.info/sct#228776007";
 
     /// <summary>
     /// Literal for code: GrainsSource
@@ -11438,9 +13858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGrainsSource = "228777003";
 
     /// <summary>
+    /// Literal for code: NONEGrainsSource
+    /// </summary>
+    public const string LiteralNONEGrainsSource = "http://snomed.info/sct#228777003";
+
+    /// <summary>
     /// Literal for code: PlaqueSource
     /// </summary>
     public const string LiteralPlaqueSource = "228778008";
+
+    /// <summary>
+    /// Literal for code: NONEPlaqueSource
+    /// </summary>
+    public const string LiteralNONEPlaqueSource = "http://snomed.info/sct#228778008";
 
     /// <summary>
     /// Literal for code: ManualWheelchair
@@ -11448,9 +13878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralManualWheelchair = "228869008";
 
     /// <summary>
+    /// Literal for code: NONEManualWheelchair
+    /// </summary>
+    public const string LiteralNONEManualWheelchair = "http://snomed.info/sct#228869008";
+
+    /// <summary>
     /// Literal for code: Bed
     /// </summary>
     public const string LiteralBed = "229772003";
+
+    /// <summary>
+    /// Literal for code: NONEBed
+    /// </summary>
+    public const string LiteralNONEBed = "http://snomed.info/sct#229772003";
 
     /// <summary>
     /// Literal for code: FunctionalFootOrthosisPhysicalObject
@@ -11458,9 +13898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFunctionalFootOrthosisPhysicalObject = "229839006";
 
     /// <summary>
+    /// Literal for code: NONEFunctionalFootOrthosisPhysicalObject
+    /// </summary>
+    public const string LiteralNONEFunctionalFootOrthosisPhysicalObject = "http://snomed.info/sct#229839006";
+
+    /// <summary>
     /// Literal for code: NonFunctionalFootOrthosisPhysicalObject
     /// </summary>
     public const string LiteralNonFunctionalFootOrthosisPhysicalObject = "229840008";
+
+    /// <summary>
+    /// Literal for code: NONENonFunctionalFootOrthosisPhysicalObject
+    /// </summary>
+    public const string LiteralNONENonFunctionalFootOrthosisPhysicalObject = "http://snomed.info/sct#229840008";
 
     /// <summary>
     /// Literal for code: DetachablePadForTheFoot
@@ -11468,9 +13918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDetachablePadForTheFoot = "229841007";
 
     /// <summary>
+    /// Literal for code: NONEDetachablePadForTheFoot
+    /// </summary>
+    public const string LiteralNONEDetachablePadForTheFoot = "http://snomed.info/sct#229841007";
+
+    /// <summary>
     /// Literal for code: DetachableToeProp
     /// </summary>
     public const string LiteralDetachableToeProp = "229842000";
+
+    /// <summary>
+    /// Literal for code: NONEDetachableToeProp
+    /// </summary>
+    public const string LiteralNONEDetachableToeProp = "http://snomed.info/sct#229842000";
 
     /// <summary>
     /// Literal for code: DetachableHorseshoePad
@@ -11478,9 +13938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDetachableHorseshoePad = "229843005";
 
     /// <summary>
+    /// Literal for code: NONEDetachableHorseshoePad
+    /// </summary>
+    public const string LiteralNONEDetachableHorseshoePad = "http://snomed.info/sct#229843005";
+
+    /// <summary>
     /// Literal for code: Arthroscope
     /// </summary>
     public const string LiteralArthroscope = "23228005";
+
+    /// <summary>
+    /// Literal for code: NONEArthroscope
+    /// </summary>
+    public const string LiteralNONEArthroscope = "http://snomed.info/sct#23228005";
 
     /// <summary>
     /// Literal for code: MotorizedWheelchairDevicePhysicalObject
@@ -11488,9 +13958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMotorizedWheelchairDevicePhysicalObject = "23366006";
 
     /// <summary>
+    /// Literal for code: NONEMotorizedWheelchairDevicePhysicalObject
+    /// </summary>
+    public const string LiteralNONEMotorizedWheelchairDevicePhysicalObject = "http://snomed.info/sct#23366006";
+
+    /// <summary>
     /// Literal for code: Baseball
     /// </summary>
     public const string LiteralBaseball = "23699001";
+
+    /// <summary>
+    /// Literal for code: NONEBaseball
+    /// </summary>
+    public const string LiteralNONEBaseball = "http://snomed.info/sct#23699001";
 
     /// <summary>
     /// Literal for code: ArthroscopicIrrigationDistensionPump
@@ -11498,9 +13978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralArthroscopicIrrigationDistensionPump = "23785007";
 
     /// <summary>
+    /// Literal for code: NONEArthroscopicIrrigationDistensionPump
+    /// </summary>
+    public const string LiteralNONEArthroscopicIrrigationDistensionPump = "http://snomed.info/sct#23785007";
+
+    /// <summary>
     /// Literal for code: IndwellingUrinaryCatheter
     /// </summary>
     public const string LiteralIndwellingUrinaryCatheter = "23973005";
+
+    /// <summary>
+    /// Literal for code: NONEIndwellingUrinaryCatheter
+    /// </summary>
+    public const string LiteralNONEIndwellingUrinaryCatheter = "http://snomed.info/sct#23973005";
 
     /// <summary>
     /// Literal for code: ArtificialCardiacValveProsthesis
@@ -11508,9 +13998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralArtificialCardiacValveProsthesis = "24073000";
 
     /// <summary>
+    /// Literal for code: NONEArtificialCardiacValveProsthesis
+    /// </summary>
+    public const string LiteralNONEArtificialCardiacValveProsthesis = "http://snomed.info/sct#24073000";
+
+    /// <summary>
     /// Literal for code: Anoscope
     /// </summary>
     public const string LiteralAnoscope = "24110008";
+
+    /// <summary>
+    /// Literal for code: NONEAnoscope
+    /// </summary>
+    public const string LiteralNONEAnoscope = "http://snomed.info/sct#24110008";
 
     /// <summary>
     /// Literal for code: Bronchoscope
@@ -11518,9 +14018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBronchoscope = "24174009";
 
     /// <summary>
+    /// Literal for code: NONEBronchoscope
+    /// </summary>
+    public const string LiteralNONEBronchoscope = "http://snomed.info/sct#24174009";
+
+    /// <summary>
     /// Literal for code: Vibrator
     /// </summary>
     public const string LiteralVibrator = "24230000";
+
+    /// <summary>
+    /// Literal for code: NONEVibrator
+    /// </summary>
+    public const string LiteralNONEVibrator = "http://snomed.info/sct#24230000";
 
     /// <summary>
     /// Literal for code: BiologicCardiacValveProsthesis
@@ -11528,9 +14038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBiologicCardiacValveProsthesis = "24290003";
 
     /// <summary>
+    /// Literal for code: NONEBiologicCardiacValveProsthesis
+    /// </summary>
+    public const string LiteralNONEBiologicCardiacValveProsthesis = "http://snomed.info/sct#24290003";
+
+    /// <summary>
     /// Literal for code: Spacer
     /// </summary>
     public const string LiteralSpacer = "243135003";
+
+    /// <summary>
+    /// Literal for code: NONESpacer
+    /// </summary>
+    public const string LiteralNONESpacer = "http://snomed.info/sct#243135003";
 
     /// <summary>
     /// Literal for code: NearLowVisionAidIntegralSpectacleMagnifier
@@ -11538,9 +14058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNearLowVisionAidIntegralSpectacleMagnifier = "243719003";
 
     /// <summary>
+    /// Literal for code: NONENearLowVisionAidIntegralSpectacleMagnifier
+    /// </summary>
+    public const string LiteralNONENearLowVisionAidIntegralSpectacleMagnifier = "http://snomed.info/sct#243719003";
+
+    /// <summary>
     /// Literal for code: NearLowVisionAidClipOnSpectacleMagnifier
     /// </summary>
     public const string LiteralNearLowVisionAidClipOnSpectacleMagnifier = "243720009";
+
+    /// <summary>
+    /// Literal for code: NONENearLowVisionAidClipOnSpectacleMagnifier
+    /// </summary>
+    public const string LiteralNONENearLowVisionAidClipOnSpectacleMagnifier = "http://snomed.info/sct#243720009";
 
     /// <summary>
     /// Literal for code: NearLowVisionAidIntegralSpectacleTelescope
@@ -11548,9 +14078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNearLowVisionAidIntegralSpectacleTelescope = "243722001";
 
     /// <summary>
+    /// Literal for code: NONENearLowVisionAidIntegralSpectacleTelescope
+    /// </summary>
+    public const string LiteralNONENearLowVisionAidIntegralSpectacleTelescope = "http://snomed.info/sct#243722001";
+
+    /// <summary>
     /// Literal for code: NearLowVisionAidClipOnSpectacleTelescope
     /// </summary>
     public const string LiteralNearLowVisionAidClipOnSpectacleTelescope = "243723006";
+
+    /// <summary>
+    /// Literal for code: NONENearLowVisionAidClipOnSpectacleTelescope
+    /// </summary>
+    public const string LiteralNONENearLowVisionAidClipOnSpectacleTelescope = "http://snomed.info/sct#243723006";
 
     /// <summary>
     /// Literal for code: Stepladder
@@ -11558,9 +14098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStepladder = "24402003";
 
     /// <summary>
+    /// Literal for code: NONEStepladder
+    /// </summary>
+    public const string LiteralNONEStepladder = "http://snomed.info/sct#24402003";
+
+    /// <summary>
     /// Literal for code: Wrench
     /// </summary>
     public const string LiteralWrench = "24470005";
+
+    /// <summary>
+    /// Literal for code: NONEWrench
+    /// </summary>
+    public const string LiteralNONEWrench = "http://snomed.info/sct#24470005";
 
     /// <summary>
     /// Literal for code: PlasticBoots
@@ -11568,9 +14118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlasticBoots = "24513003";
 
     /// <summary>
+    /// Literal for code: NONEPlasticBoots
+    /// </summary>
+    public const string LiteralNONEPlasticBoots = "http://snomed.info/sct#24513003";
+
+    /// <summary>
     /// Literal for code: BreathAnalyzer
     /// </summary>
     public const string LiteralBreathAnalyzer = "2468001";
+
+    /// <summary>
+    /// Literal for code: NONEBreathAnalyzer
+    /// </summary>
+    public const string LiteralNONEBreathAnalyzer = "http://snomed.info/sct#2468001";
 
     /// <summary>
     /// Literal for code: OstomyBelt
@@ -11578,9 +14138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOstomyBelt = "24697008";
 
     /// <summary>
+    /// Literal for code: NONEOstomyBelt
+    /// </summary>
+    public const string LiteralNONEOstomyBelt = "http://snomed.info/sct#24697008";
+
+    /// <summary>
     /// Literal for code: EustachianTubeProsthesis
     /// </summary>
     public const string LiteralEustachianTubeProsthesis = "24767007";
+
+    /// <summary>
+    /// Literal for code: NONEEustachianTubeProsthesis
+    /// </summary>
+    public const string LiteralNONEEustachianTubeProsthesis = "http://snomed.info/sct#24767007";
 
     /// <summary>
     /// Literal for code: GlassEye
@@ -11588,9 +14158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGlassEye = "2478003";
 
     /// <summary>
+    /// Literal for code: NONEGlassEye
+    /// </summary>
+    public const string LiteralNONEGlassEye = "http://snomed.info/sct#2478003";
+
+    /// <summary>
     /// Literal for code: IntraAorticBalloonCatheter
     /// </summary>
     public const string LiteralIntraAorticBalloonCatheter = "2491002";
+
+    /// <summary>
+    /// Literal for code: NONEIntraAorticBalloonCatheter
+    /// </summary>
+    public const string LiteralNONEIntraAorticBalloonCatheter = "http://snomed.info/sct#2491002";
 
     /// <summary>
     /// Literal for code: Snare
@@ -11598,9 +14178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSnare = "25005004";
 
     /// <summary>
+    /// Literal for code: NONESnare
+    /// </summary>
+    public const string LiteralNONESnare = "http://snomed.info/sct#25005004";
+
+    /// <summary>
     /// Literal for code: FeedingTube
     /// </summary>
     public const string LiteralFeedingTube = "25062003";
+
+    /// <summary>
+    /// Literal for code: NONEFeedingTube
+    /// </summary>
+    public const string LiteralNONEFeedingTube = "http://snomed.info/sct#25062003";
 
     /// <summary>
     /// Literal for code: SqueezeCage
@@ -11608,9 +14198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSqueezeCage = "25152007";
 
     /// <summary>
+    /// Literal for code: NONESqueezeCage
+    /// </summary>
+    public const string LiteralNONESqueezeCage = "http://snomed.info/sct#25152007";
+
+    /// <summary>
     /// Literal for code: CardiacValveProsthesis
     /// </summary>
     public const string LiteralCardiacValveProsthesis = "25510005";
+
+    /// <summary>
+    /// Literal for code: NONECardiacValveProsthesis
+    /// </summary>
+    public const string LiteralNONECardiacValveProsthesis = "http://snomed.info/sct#25510005";
 
     /// <summary>
     /// Literal for code: Wedge
@@ -11618,9 +14218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWedge = "255296002";
 
     /// <summary>
+    /// Literal for code: NONEWedge
+    /// </summary>
+    public const string LiteralNONEWedge = "http://snomed.info/sct#255296002";
+
+    /// <summary>
     /// Literal for code: Television
     /// </summary>
     public const string LiteralTelevision = "255712000";
+
+    /// <summary>
+    /// Literal for code: NONETelevision
+    /// </summary>
+    public const string LiteralNONETelevision = "http://snomed.info/sct#255712000";
 
     /// <summary>
     /// Literal for code: LatexRubberGloves
@@ -11628,9 +14238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLatexRubberGloves = "255716002";
 
     /// <summary>
+    /// Literal for code: NONELatexRubberGloves
+    /// </summary>
+    public const string LiteralNONELatexRubberGloves = "http://snomed.info/sct#255716002";
+
+    /// <summary>
     /// Literal for code: Textiles
     /// </summary>
     public const string LiteralTextiles = "256245006";
+
+    /// <summary>
+    /// Literal for code: NONETextiles
+    /// </summary>
+    public const string LiteralNONETextiles = "http://snomed.info/sct#256245006";
 
     /// <summary>
     /// Literal for code: CottonTextile
@@ -11638,9 +14258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCottonTextile = "256246007";
 
     /// <summary>
+    /// Literal for code: NONECottonTextile
+    /// </summary>
+    public const string LiteralNONECottonTextile = "http://snomed.info/sct#256246007";
+
+    /// <summary>
     /// Literal for code: Flax
     /// </summary>
     public const string LiteralFlax = "256247003";
+
+    /// <summary>
+    /// Literal for code: NONEFlax
+    /// </summary>
+    public const string LiteralNONEFlax = "http://snomed.info/sct#256247003";
 
     /// <summary>
     /// Literal for code: HockeyPuck
@@ -11648,9 +14278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHockeyPuck = "25632005";
 
     /// <summary>
+    /// Literal for code: NONEHockeyPuck
+    /// </summary>
+    public const string LiteralNONEHockeyPuck = "http://snomed.info/sct#25632005";
+
+    /// <summary>
     /// Literal for code: CottonWool
     /// </summary>
     public const string LiteralCottonWool = "256562002";
+
+    /// <summary>
+    /// Literal for code: NONECottonWool
+    /// </summary>
+    public const string LiteralNONECottonWool = "http://snomed.info/sct#256562002";
 
     /// <summary>
     /// Literal for code: CottonWoolRoll
@@ -11658,9 +14298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCottonWoolRoll = "256563007";
 
     /// <summary>
+    /// Literal for code: NONECottonWoolRoll
+    /// </summary>
+    public const string LiteralNONECottonWoolRoll = "http://snomed.info/sct#256563007";
+
+    /// <summary>
     /// Literal for code: CottonWoolPledget
     /// </summary>
     public const string LiteralCottonWoolPledget = "256564001";
+
+    /// <summary>
+    /// Literal for code: NONECottonWoolPledget
+    /// </summary>
+    public const string LiteralNONECottonWoolPledget = "http://snomed.info/sct#256564001";
 
     /// <summary>
     /// Literal for code: DentalRubberDam
@@ -11668,9 +14318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDentalRubberDam = "256589007";
 
     /// <summary>
+    /// Literal for code: NONEDentalRubberDam
+    /// </summary>
+    public const string LiteralNONEDentalRubberDam = "http://snomed.info/sct#256589007";
+
+    /// <summary>
     /// Literal for code: EndodonticSponge
     /// </summary>
     public const string LiteralEndodonticSponge = "256590003";
+
+    /// <summary>
+    /// Literal for code: NONEEndodonticSponge
+    /// </summary>
+    public const string LiteralNONEEndodonticSponge = "http://snomed.info/sct#256590003";
 
     /// <summary>
     /// Literal for code: OrthodonticElastic
@@ -11678,9 +14338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOrthodonticElastic = "256593001";
 
     /// <summary>
+    /// Literal for code: NONEOrthodonticElastic
+    /// </summary>
+    public const string LiteralNONEOrthodonticElastic = "http://snomed.info/sct#256593001";
+
+    /// <summary>
     /// Literal for code: RibbonGauze
     /// </summary>
     public const string LiteralRibbonGauze = "256641009";
+
+    /// <summary>
+    /// Literal for code: NONERibbonGauze
+    /// </summary>
+    public const string LiteralNONERibbonGauze = "http://snomed.info/sct#256641009";
 
     /// <summary>
     /// Literal for code: WetRibbonGauze
@@ -11688,9 +14358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWetRibbonGauze = "256642002";
 
     /// <summary>
+    /// Literal for code: NONEWetRibbonGauze
+    /// </summary>
+    public const string LiteralNONEWetRibbonGauze = "http://snomed.info/sct#256642002";
+
+    /// <summary>
     /// Literal for code: DryRibbonGauze
     /// </summary>
     public const string LiteralDryRibbonGauze = "256643007";
+
+    /// <summary>
+    /// Literal for code: NONEDryRibbonGauze
+    /// </summary>
+    public const string LiteralNONEDryRibbonGauze = "http://snomed.info/sct#256643007";
 
     /// <summary>
     /// Literal for code: Scaffold
@@ -11698,9 +14378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralScaffold = "25680008";
 
     /// <summary>
+    /// Literal for code: NONEScaffold
+    /// </summary>
+    public const string LiteralNONEScaffold = "http://snomed.info/sct#25680008";
+
+    /// <summary>
     /// Literal for code: AidToVision
     /// </summary>
     public const string LiteralAidToVision = "257192006";
+
+    /// <summary>
+    /// Literal for code: NONEAidToVision
+    /// </summary>
+    public const string LiteralNONEAidToVision = "http://snomed.info/sct#257192006";
 
     /// <summary>
     /// Literal for code: Loupes
@@ -11708,9 +14398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLoupes = "257193001";
 
     /// <summary>
+    /// Literal for code: NONELoupes
+    /// </summary>
+    public const string LiteralNONELoupes = "http://snomed.info/sct#257193001";
+
+    /// <summary>
     /// Literal for code: OrthodonticAppliance
     /// </summary>
     public const string LiteralOrthodonticAppliance = "25742001";
+
+    /// <summary>
+    /// Literal for code: NONEOrthodonticAppliance
+    /// </summary>
+    public const string LiteralNONEOrthodonticAppliance = "http://snomed.info/sct#25742001";
 
     /// <summary>
     /// Literal for code: Neurostimulator
@@ -11718,9 +14418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNeurostimulator = "25937001";
 
     /// <summary>
+    /// Literal for code: NONENeurostimulator
+    /// </summary>
+    public const string LiteralNONENeurostimulator = "http://snomed.info/sct#25937001";
+
+    /// <summary>
     /// Literal for code: Bougie
     /// </summary>
     public const string LiteralBougie = "26128008";
+
+    /// <summary>
+    /// Literal for code: NONEBougie
+    /// </summary>
+    public const string LiteralNONEBougie = "http://snomed.info/sct#26128008";
 
     /// <summary>
     /// Literal for code: SoccerBall
@@ -11728,9 +14438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSoccerBall = "26239002";
 
     /// <summary>
+    /// Literal for code: NONESoccerBall
+    /// </summary>
+    public const string LiteralNONESoccerBall = "http://snomed.info/sct#26239002";
+
+    /// <summary>
     /// Literal for code: Dockboard
     /// </summary>
     public const string LiteralDockboard = "26334009";
+
+    /// <summary>
+    /// Literal for code: NONEDockboard
+    /// </summary>
+    public const string LiteralNONEDockboard = "http://snomed.info/sct#26334009";
 
     /// <summary>
     /// Literal for code: BreathingBag
@@ -11738,9 +14458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBreathingBag = "26397000";
 
     /// <summary>
+    /// Literal for code: NONEBreathingBag
+    /// </summary>
+    public const string LiteralNONEBreathingBag = "http://snomed.info/sct#26397000";
+
+    /// <summary>
     /// Literal for code: EndotrachealTube
     /// </summary>
     public const string LiteralEndotrachealTube = "26412008";
+
+    /// <summary>
+    /// Literal for code: NONEEndotrachealTube
+    /// </summary>
+    public const string LiteralNONEEndotrachealTube = "http://snomed.info/sct#26412008";
 
     /// <summary>
     /// Literal for code: HolterValve
@@ -11748,9 +14478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHolterValve = "26579007";
 
     /// <summary>
+    /// Literal for code: NONEHolterValve
+    /// </summary>
+    public const string LiteralNONEHolterValve = "http://snomed.info/sct#26579007";
+
+    /// <summary>
     /// Literal for code: CelestinTube
     /// </summary>
     public const string LiteralCelestinTube = "26719000";
+
+    /// <summary>
+    /// Literal for code: NONECelestinTube
+    /// </summary>
+    public const string LiteralNONECelestinTube = "http://snomed.info/sct#26719000";
 
     /// <summary>
     /// Literal for code: Rongeur
@@ -11758,9 +14498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRongeur = "26882005";
 
     /// <summary>
+    /// Literal for code: NONERongeur
+    /// </summary>
+    public const string LiteralNONERongeur = "http://snomed.info/sct#26882005";
+
+    /// <summary>
     /// Literal for code: NeedleAdapter
     /// </summary>
     public const string LiteralNeedleAdapter = "27042007";
+
+    /// <summary>
+    /// Literal for code: NONENeedleAdapter
+    /// </summary>
+    public const string LiteralNONENeedleAdapter = "http://snomed.info/sct#27042007";
 
     /// <summary>
     /// Literal for code: SurgicalSuture
@@ -11768,9 +14518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSurgicalSuture = "27065002";
 
     /// <summary>
+    /// Literal for code: NONESurgicalSuture
+    /// </summary>
+    public const string LiteralNONESurgicalSuture = "http://snomed.info/sct#27065002";
+
+    /// <summary>
     /// Literal for code: Dumbwaiter
     /// </summary>
     public const string LiteralDumbwaiter = "27091001";
+
+    /// <summary>
+    /// Literal for code: NONEDumbwaiter
+    /// </summary>
+    public const string LiteralNONEDumbwaiter = "http://snomed.info/sct#27091001";
 
     /// <summary>
     /// Literal for code: BonePlate
@@ -11778,9 +14538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBonePlate = "271003";
 
     /// <summary>
+    /// Literal for code: NONEBonePlate
+    /// </summary>
+    public const string LiteralNONEBonePlate = "http://snomed.info/sct#271003";
+
+    /// <summary>
     /// Literal for code: PowerBelt
     /// </summary>
     public const string LiteralPowerBelt = "27126002";
+
+    /// <summary>
+    /// Literal for code: NONEPowerBelt
+    /// </summary>
+    public const string LiteralNONEPowerBelt = "http://snomed.info/sct#27126002";
 
     /// <summary>
     /// Literal for code: SprayBooth
@@ -11788,9 +14558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSprayBooth = "27229001";
 
     /// <summary>
+    /// Literal for code: NONESprayBooth
+    /// </summary>
+    public const string LiteralNONESprayBooth = "http://snomed.info/sct#27229001";
+
+    /// <summary>
     /// Literal for code: DentalProsthesis
     /// </summary>
     public const string LiteralDentalProsthesis = "27606000";
+
+    /// <summary>
+    /// Literal for code: NONEDentalProsthesis
+    /// </summary>
+    public const string LiteralNONEDentalProsthesis = "http://snomed.info/sct#27606000";
 
     /// <summary>
     /// Literal for code: AthleticSupporter
@@ -11798,9 +14578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAthleticSupporter = "27785006";
 
     /// <summary>
+    /// Literal for code: NONEAthleticSupporter
+    /// </summary>
+    public const string LiteralNONEAthleticSupporter = "http://snomed.info/sct#27785006";
+
+    /// <summary>
     /// Literal for code: ElectricHeatingPad
     /// </summary>
     public const string LiteralElectricHeatingPad = "27812008";
+
+    /// <summary>
+    /// Literal for code: NONEElectricHeatingPad
+    /// </summary>
+    public const string LiteralNONEElectricHeatingPad = "http://snomed.info/sct#27812008";
 
     /// <summary>
     /// Literal for code: WoodworkingMachinery
@@ -11808,9 +14598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWoodworkingMachinery = "27976001";
 
     /// <summary>
+    /// Literal for code: NONEWoodworkingMachinery
+    /// </summary>
+    public const string LiteralNONEWoodworkingMachinery = "http://snomed.info/sct#27976001";
+
+    /// <summary>
     /// Literal for code: Thermometer
     /// </summary>
     public const string LiteralThermometer = "27991004";
+
+    /// <summary>
+    /// Literal for code: NONEThermometer
+    /// </summary>
+    public const string LiteralNONEThermometer = "http://snomed.info/sct#27991004";
 
     /// <summary>
     /// Literal for code: Hairbrush
@@ -11818,9 +14618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHairbrush = "28026003";
 
     /// <summary>
+    /// Literal for code: NONEHairbrush
+    /// </summary>
+    public const string LiteralNONEHairbrush = "http://snomed.info/sct#28026003";
+
+    /// <summary>
     /// Literal for code: AirReceiver
     /// </summary>
     public const string LiteralAirReceiver = "287000";
+
+    /// <summary>
+    /// Literal for code: NONEAirReceiver
+    /// </summary>
+    public const string LiteralNONEAirReceiver = "http://snomed.info/sct#287000";
 
     /// <summary>
     /// Literal for code: Atomizer
@@ -11828,9 +14638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAtomizer = "291005";
 
     /// <summary>
+    /// Literal for code: NONEAtomizer
+    /// </summary>
+    public const string LiteralNONEAtomizer = "http://snomed.info/sct#291005";
+
+    /// <summary>
     /// Literal for code: FurGarment
     /// </summary>
     public const string LiteralFurGarment = "29292008";
+
+    /// <summary>
+    /// Literal for code: NONEFurGarment
+    /// </summary>
+    public const string LiteralNONEFurGarment = "http://snomed.info/sct#29292008";
 
     /// <summary>
     /// Literal for code: Forceps
@@ -11838,9 +14658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralForceps = "29319002";
 
     /// <summary>
+    /// Literal for code: NONEForceps
+    /// </summary>
+    public const string LiteralNONEForceps = "http://snomed.info/sct#29319002";
+
+    /// <summary>
     /// Literal for code: Resuscitator
     /// </summary>
     public const string LiteralResuscitator = "29396008";
+
+    /// <summary>
+    /// Literal for code: NONEResuscitator
+    /// </summary>
+    public const string LiteralNONEResuscitator = "http://snomed.info/sct#29396008";
 
     /// <summary>
     /// Literal for code: Elevator
@@ -11848,9 +14678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralElevator = "30012001";
 
     /// <summary>
+    /// Literal for code: NONEElevator
+    /// </summary>
+    public const string LiteralNONEElevator = "http://snomed.info/sct#30012001";
+
+    /// <summary>
     /// Literal for code: MultistageSuspensionScaffolding
     /// </summary>
     public const string LiteralMultistageSuspensionScaffolding = "30070001";
+
+    /// <summary>
+    /// Literal for code: NONEMultistageSuspensionScaffolding
+    /// </summary>
+    public const string LiteralNONEMultistageSuspensionScaffolding = "http://snomed.info/sct#30070001";
 
     /// <summary>
     /// Literal for code: Shield
@@ -11858,9 +14698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralShield = "30115002";
 
     /// <summary>
+    /// Literal for code: NONEShield
+    /// </summary>
+    public const string LiteralNONEShield = "http://snomed.info/sct#30115002";
+
+    /// <summary>
     /// Literal for code: BaseballBat
     /// </summary>
     public const string LiteralBaseballBat = "30176005";
+
+    /// <summary>
+    /// Literal for code: NONEBaseballBat
+    /// </summary>
+    public const string LiteralNONEBaseballBat = "http://snomed.info/sct#30176005";
 
     /// <summary>
     /// Literal for code: MedicalLaboratoryAnalyzer
@@ -11868,9 +14718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMedicalLaboratoryAnalyzer = "30234008";
 
     /// <summary>
+    /// Literal for code: NONEMedicalLaboratoryAnalyzer
+    /// </summary>
+    public const string LiteralNONEMedicalLaboratoryAnalyzer = "http://snomed.info/sct#30234008";
+
+    /// <summary>
     /// Literal for code: EpiduralCatheter
     /// </summary>
     public const string LiteralEpiduralCatheter = "30610008";
+
+    /// <summary>
+    /// Literal for code: NONEEpiduralCatheter
+    /// </summary>
+    public const string LiteralNONEEpiduralCatheter = "http://snomed.info/sct#30610008";
 
     /// <summary>
     /// Literal for code: CosmeticProsthesis
@@ -11878,9 +14738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCosmeticProsthesis = "30661003";
 
     /// <summary>
+    /// Literal for code: NONECosmeticProsthesis
+    /// </summary>
+    public const string LiteralNONECosmeticProsthesis = "http://snomed.info/sct#30661003";
+
+    /// <summary>
     /// Literal for code: Ligator
     /// </summary>
     public const string LiteralLigator = "30929000";
+
+    /// <summary>
+    /// Literal for code: NONELigator
+    /// </summary>
+    public const string LiteralNONELigator = "http://snomed.info/sct#30929000";
 
     /// <summary>
     /// Literal for code: DrainageBag
@@ -11888,9 +14758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDrainageBag = "30968007";
 
     /// <summary>
+    /// Literal for code: NONEDrainageBag
+    /// </summary>
+    public const string LiteralNONEDrainageBag = "http://snomed.info/sct#30968007";
+
+    /// <summary>
     /// Literal for code: PeritonealCatheter
     /// </summary>
     public const string LiteralPeritonealCatheter = "31030004";
+
+    /// <summary>
+    /// Literal for code: NONEPeritonealCatheter
+    /// </summary>
+    public const string LiteralNONEPeritonealCatheter = "http://snomed.info/sct#31030004";
 
     /// <summary>
     /// Literal for code: OrthopedicInternalFixationSystem
@@ -11898,9 +14778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOrthopedicInternalFixationSystem = "31031000";
 
     /// <summary>
+    /// Literal for code: NONEOrthopedicInternalFixationSystem
+    /// </summary>
+    public const string LiteralNONEOrthopedicInternalFixationSystem = "http://snomed.info/sct#31031000";
+
+    /// <summary>
     /// Literal for code: LumbosacralBelt
     /// </summary>
     public const string LiteralLumbosacralBelt = "31174004";
+
+    /// <summary>
+    /// Literal for code: NONELumbosacralBelt
+    /// </summary>
+    public const string LiteralNONELumbosacralBelt = "http://snomed.info/sct#31174004";
 
     /// <summary>
     /// Literal for code: TractionBelt
@@ -11908,9 +14798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTractionBelt = "31791005";
 
     /// <summary>
+    /// Literal for code: NONETractionBelt
+    /// </summary>
+    public const string LiteralNONETractionBelt = "http://snomed.info/sct#31791005";
+
+    /// <summary>
     /// Literal for code: SurgicalScissors
     /// </summary>
     public const string LiteralSurgicalScissors = "31878003";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalScissors
+    /// </summary>
+    public const string LiteralNONESurgicalScissors = "http://snomed.info/sct#31878003";
 
     /// <summary>
     /// Literal for code: Tent
@@ -11918,9 +14818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTent = "3201004";
 
     /// <summary>
+    /// Literal for code: NONETent
+    /// </summary>
+    public const string LiteralNONETent = "http://snomed.info/sct#3201004";
+
+    /// <summary>
     /// Literal for code: ArterialPressureMonitor
     /// </summary>
     public const string LiteralArterialPressureMonitor = "32033000";
+
+    /// <summary>
+    /// Literal for code: NONEArterialPressureMonitor
+    /// </summary>
+    public const string LiteralNONEArterialPressureMonitor = "http://snomed.info/sct#32033000";
 
     /// <summary>
     /// Literal for code: MachineGuarding
@@ -11928,9 +14838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMachineGuarding = "32356002";
 
     /// <summary>
+    /// Literal for code: NONEMachineGuarding
+    /// </summary>
+    public const string LiteralNONEMachineGuarding = "http://snomed.info/sct#32356002";
+
+    /// <summary>
     /// Literal for code: Screwdriver
     /// </summary>
     public const string LiteralScrewdriver = "32504006";
+
+    /// <summary>
+    /// Literal for code: NONEScrewdriver
+    /// </summary>
+    public const string LiteralNONEScrewdriver = "http://snomed.info/sct#32504006";
 
     /// <summary>
     /// Literal for code: FixedLadder
@@ -11938,9 +14858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFixedLadder = "32634007";
 
     /// <summary>
+    /// Literal for code: NONEFixedLadder
+    /// </summary>
+    public const string LiteralNONEFixedLadder = "http://snomed.info/sct#32634007";
+
+    /// <summary>
     /// Literal for code: OropharyngealAirwayDevice
     /// </summary>
     public const string LiteralOropharyngealAirwayDevice = "32667006";
+
+    /// <summary>
+    /// Literal for code: NONEOropharyngealAirwayDevice
+    /// </summary>
+    public const string LiteralNONEOropharyngealAirwayDevice = "http://snomed.info/sct#32667006";
 
     /// <summary>
     /// Literal for code: OstomyCollectionBag
@@ -11948,9 +14878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOstomyCollectionBag = "32711007";
 
     /// <summary>
+    /// Literal for code: NONEOstomyCollectionBag
+    /// </summary>
+    public const string LiteralNONEOstomyCollectionBag = "http://snomed.info/sct#32711007";
+
+    /// <summary>
     /// Literal for code: Drain
     /// </summary>
     public const string LiteralDrain = "32712000";
+
+    /// <summary>
+    /// Literal for code: NONEDrain
+    /// </summary>
+    public const string LiteralNONEDrain = "http://snomed.info/sct#32712000";
 
     /// <summary>
     /// Literal for code: Tweezer
@@ -11958,9 +14898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTweezer = "32871007";
 
     /// <summary>
+    /// Literal for code: NONETweezer
+    /// </summary>
+    public const string LiteralNONETweezer = "http://snomed.info/sct#32871007";
+
+    /// <summary>
     /// Literal for code: ArtificialLiver
     /// </summary>
     public const string LiteralArtificialLiver = "3319006";
+
+    /// <summary>
+    /// Literal for code: NONEArtificialLiver
+    /// </summary>
+    public const string LiteralNONEArtificialLiver = "http://snomed.info/sct#3319006";
 
     /// <summary>
     /// Literal for code: WeldingEquipment
@@ -11968,9 +14918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWeldingEquipment = "33194000";
 
     /// <summary>
+    /// Literal for code: NONEWeldingEquipment
+    /// </summary>
+    public const string LiteralNONEWeldingEquipment = "http://snomed.info/sct#33194000";
+
+    /// <summary>
     /// Literal for code: Ax
     /// </summary>
     public const string LiteralAx = "33352006";
+
+    /// <summary>
+    /// Literal for code: NONEAx
+    /// </summary>
+    public const string LiteralNONEAx = "http://snomed.info/sct#33352006";
 
     /// <summary>
     /// Literal for code: CarbonDioxideAnalyzer
@@ -11978,9 +14938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCarbonDioxideAnalyzer = "33388001";
 
     /// <summary>
+    /// Literal for code: NONECarbonDioxideAnalyzer
+    /// </summary>
+    public const string LiteralNONECarbonDioxideAnalyzer = "http://snomed.info/sct#33388001";
+
+    /// <summary>
     /// Literal for code: RubberBoots
     /// </summary>
     public const string LiteralRubberBoots = "33482001";
+
+    /// <summary>
+    /// Literal for code: NONERubberBoots
+    /// </summary>
+    public const string LiteralNONERubberBoots = "http://snomed.info/sct#33482001";
 
     /// <summary>
     /// Literal for code: Stylet
@@ -11988,9 +14958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStylet = "33686008";
 
     /// <summary>
+    /// Literal for code: NONEStylet
+    /// </summary>
+    public const string LiteralNONEStylet = "http://snomed.info/sct#33686008";
+
+    /// <summary>
     /// Literal for code: SharpInstrument
     /// </summary>
     public const string LiteralSharpInstrument = "33690005";
+
+    /// <summary>
+    /// Literal for code: NONESharpInstrument
+    /// </summary>
+    public const string LiteralNONESharpInstrument = "http://snomed.info/sct#33690005";
 
     /// <summary>
     /// Literal for code: EnemaBag
@@ -11998,9 +14978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEnemaBag = "33802005";
 
     /// <summary>
+    /// Literal for code: NONEEnemaBag
+    /// </summary>
+    public const string LiteralNONEEnemaBag = "http://snomed.info/sct#33802005";
+
+    /// <summary>
     /// Literal for code: ExperimentalDevice
     /// </summary>
     public const string LiteralExperimentalDevice = "33894003";
+
+    /// <summary>
+    /// Literal for code: NONEExperimentalDevice
+    /// </summary>
+    public const string LiteralNONEExperimentalDevice = "http://snomed.info/sct#33894003";
 
     /// <summary>
     /// Literal for code: RubberizedCloth
@@ -12008,9 +14998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRubberizedCloth = "33918000";
 
     /// <summary>
+    /// Literal for code: NONERubberizedCloth
+    /// </summary>
+    public const string LiteralNONERubberizedCloth = "http://snomed.info/sct#33918000";
+
+    /// <summary>
     /// Literal for code: PlasterCast
     /// </summary>
     public const string LiteralPlasterCast = "34164001";
+
+    /// <summary>
+    /// Literal for code: NONEPlasterCast
+    /// </summary>
+    public const string LiteralNONEPlasterCast = "http://snomed.info/sct#34164001";
 
     /// <summary>
     /// Literal for code: Straightjacket
@@ -12018,9 +15018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStraightjacket = "34188004";
 
     /// <summary>
+    /// Literal for code: NONEStraightjacket
+    /// </summary>
+    public const string LiteralNONEStraightjacket = "http://snomed.info/sct#34188004";
+
+    /// <summary>
     /// Literal for code: PlasticTube
     /// </summary>
     public const string LiteralPlasticTube = "34234003";
+
+    /// <summary>
+    /// Literal for code: NONEPlasticTube
+    /// </summary>
+    public const string LiteralNONEPlasticTube = "http://snomed.info/sct#34234003";
 
     /// <summary>
     /// Literal for code: MedicalBalloon
@@ -12028,9 +15038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMedicalBalloon = "34263000";
 
     /// <summary>
+    /// Literal for code: NONEMedicalBalloon
+    /// </summary>
+    public const string LiteralNONEMedicalBalloon = "http://snomed.info/sct#34263000";
+
+    /// <summary>
     /// Literal for code: VascularDevice
     /// </summary>
     public const string LiteralVascularDevice = "34362008";
+
+    /// <summary>
+    /// Literal for code: NONEVascularDevice
+    /// </summary>
+    public const string LiteralNONEVascularDevice = "http://snomed.info/sct#34362008";
 
     /// <summary>
     /// Literal for code: UrethralCatheter
@@ -12038,9 +15058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUrethralCatheter = "34759008";
 
     /// <summary>
+    /// Literal for code: NONEUrethralCatheter
+    /// </summary>
+    public const string LiteralNONEUrethralCatheter = "http://snomed.info/sct#34759008";
+
+    /// <summary>
     /// Literal for code: OstomyAppliance
     /// </summary>
     public const string LiteralOstomyAppliance = "35398009";
+
+    /// <summary>
+    /// Literal for code: NONEOstomyAppliance
+    /// </summary>
+    public const string LiteralNONEOstomyAppliance = "http://snomed.info/sct#35398009";
 
     /// <summary>
     /// Literal for code: WireLigature
@@ -12048,9 +15078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWireLigature = "35593004";
 
     /// <summary>
+    /// Literal for code: NONEWireLigature
+    /// </summary>
+    public const string LiteralNONEWireLigature = "http://snomed.info/sct#35593004";
+
+    /// <summary>
     /// Literal for code: CerebrospinalCatheter
     /// </summary>
     public const string LiteralCerebrospinalCatheter = "35870000";
+
+    /// <summary>
+    /// Literal for code: NONECerebrospinalCatheter
+    /// </summary>
+    public const string LiteralNONECerebrospinalCatheter = "http://snomed.info/sct#35870000";
 
     /// <summary>
     /// Literal for code: IcePick
@@ -12058,9 +15098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIcePick = "36365007";
 
     /// <summary>
+    /// Literal for code: NONEIcePick
+    /// </summary>
+    public const string LiteralNONEIcePick = "http://snomed.info/sct#36365007";
+
+    /// <summary>
     /// Literal for code: AspiratorTrapBottle
     /// </summary>
     public const string LiteralAspiratorTrapBottle = "36370000";
+
+    /// <summary>
+    /// Literal for code: NONEAspiratorTrapBottle
+    /// </summary>
+    public const string LiteralNONEAspiratorTrapBottle = "http://snomed.info/sct#36370000";
 
     /// <summary>
     /// Literal for code: Stimulator
@@ -12068,9 +15118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStimulator = "36645008";
 
     /// <summary>
+    /// Literal for code: NONEStimulator
+    /// </summary>
+    public const string LiteralNONEStimulator = "http://snomed.info/sct#36645008";
+
+    /// <summary>
     /// Literal for code: NaturalHairWig
     /// </summary>
     public const string LiteralNaturalHairWig = "36761001";
+
+    /// <summary>
+    /// Literal for code: NONENaturalHairWig
+    /// </summary>
+    public const string LiteralNONENaturalHairWig = "http://snomed.info/sct#36761001";
 
     /// <summary>
     /// Literal for code: HemodialysisMachine
@@ -12078,9 +15138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHemodialysisMachine = "36965003";
 
     /// <summary>
+    /// Literal for code: NONEHemodialysisMachine
+    /// </summary>
+    public const string LiteralNONEHemodialysisMachine = "http://snomed.info/sct#36965003";
+
+    /// <summary>
     /// Literal for code: PeripheralNeurostimulator
     /// </summary>
     public const string LiteralPeripheralNeurostimulator = "36977008";
+
+    /// <summary>
+    /// Literal for code: NONEPeripheralNeurostimulator
+    /// </summary>
+    public const string LiteralNONEPeripheralNeurostimulator = "http://snomed.info/sct#36977008";
 
     /// <summary>
     /// Literal for code: MagneticDetector
@@ -12088,9 +15158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMagneticDetector = "37189001";
 
     /// <summary>
+    /// Literal for code: NONEMagneticDetector
+    /// </summary>
+    public const string LiteralNONEMagneticDetector = "http://snomed.info/sct#37189001";
+
+    /// <summary>
     /// Literal for code: Endoscope
     /// </summary>
     public const string LiteralEndoscope = "37270008";
+
+    /// <summary>
+    /// Literal for code: NONEEndoscope
+    /// </summary>
+    public const string LiteralNONEEndoscope = "http://snomed.info/sct#37270008";
 
     /// <summary>
     /// Literal for code: Bag
@@ -12098,9 +15178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBag = "37284003";
 
     /// <summary>
+    /// Literal for code: NONEBag
+    /// </summary>
+    public const string LiteralNONEBag = "http://snomed.info/sct#37284003";
+
+    /// <summary>
     /// Literal for code: StoneRetrievalBasket
     /// </summary>
     public const string LiteralStoneRetrievalBasket = "37311003";
+
+    /// <summary>
+    /// Literal for code: NONEStoneRetrievalBasket
+    /// </summary>
+    public const string LiteralNONEStoneRetrievalBasket = "http://snomed.info/sct#37311003";
 
     /// <summary>
     /// Literal for code: Dildo
@@ -12108,9 +15198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDildo = "37347002";
 
     /// <summary>
+    /// Literal for code: NONEDildo
+    /// </summary>
+    public const string LiteralNONEDildo = "http://snomed.info/sct#37347002";
+
+    /// <summary>
     /// Literal for code: PatientIsolator
     /// </summary>
     public const string LiteralPatientIsolator = "37360008";
+
+    /// <summary>
+    /// Literal for code: NONEPatientIsolator
+    /// </summary>
+    public const string LiteralNONEPatientIsolator = "http://snomed.info/sct#37360008";
 
     /// <summary>
     /// Literal for code: ProtectiveBlind
@@ -12118,9 +15218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProtectiveBlind = "37503007";
 
     /// <summary>
+    /// Literal for code: NONEProtectiveBlind
+    /// </summary>
+    public const string LiteralNONEProtectiveBlind = "http://snomed.info/sct#37503007";
+
+    /// <summary>
     /// Literal for code: SurgicalInstrument
     /// </summary>
     public const string LiteralSurgicalInstrument = "37759000";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalInstrument
+    /// </summary>
+    public const string LiteralNONESurgicalInstrument = "http://snomed.info/sct#37759000";
 
     /// <summary>
     /// Literal for code: ContinuingPositiveAirwayPressureUnit
@@ -12128,9 +15238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralContinuingPositiveAirwayPressureUnit = "37874008";
 
     /// <summary>
+    /// Literal for code: NONEContinuingPositiveAirwayPressureUnit
+    /// </summary>
+    public const string LiteralNONEContinuingPositiveAirwayPressureUnit = "http://snomed.info/sct#37874008";
+
+    /// <summary>
     /// Literal for code: BedsideRails
     /// </summary>
     public const string LiteralBedsideRails = "37953008";
+
+    /// <summary>
+    /// Literal for code: NONEBedsideRails
+    /// </summary>
+    public const string LiteralNONEBedsideRails = "http://snomed.info/sct#37953008";
 
     /// <summary>
     /// Literal for code: ProtectiveGlasses
@@ -12138,9 +15258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProtectiveGlasses = "38126007";
 
     /// <summary>
+    /// Literal for code: NONEProtectiveGlasses
+    /// </summary>
+    public const string LiteralNONEProtectiveGlasses = "http://snomed.info/sct#38126007";
+
+    /// <summary>
     /// Literal for code: Tourniquet
     /// </summary>
     public const string LiteralTourniquet = "38141007";
+
+    /// <summary>
+    /// Literal for code: NONETourniquet
+    /// </summary>
+    public const string LiteralNONETourniquet = "http://snomed.info/sct#38141007";
 
     /// <summary>
     /// Literal for code: ProtectiveDevice
@@ -12148,9 +15278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProtectiveDevice = "38277008";
 
     /// <summary>
+    /// Literal for code: NONEProtectiveDevice
+    /// </summary>
+    public const string LiteralNONEProtectiveDevice = "http://snomed.info/sct#38277008";
+
+    /// <summary>
     /// Literal for code: HockeyStick
     /// </summary>
     public const string LiteralHockeyStick = "38806006";
+
+    /// <summary>
+    /// Literal for code: NONEHockeyStick
+    /// </summary>
+    public const string LiteralNONEHockeyStick = "http://snomed.info/sct#38806006";
 
     /// <summary>
     /// Literal for code: Brake
@@ -12158,9 +15298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBrake = "38862006";
 
     /// <summary>
+    /// Literal for code: NONEBrake
+    /// </summary>
+    public const string LiteralNONEBrake = "http://snomed.info/sct#38862006";
+
+    /// <summary>
     /// Literal for code: MetallicCloth
     /// </summary>
     public const string LiteralMetallicCloth = "38871002";
+
+    /// <summary>
+    /// Literal for code: NONEMetallicCloth
+    /// </summary>
+    public const string LiteralNONEMetallicCloth = "http://snomed.info/sct#38871002";
 
     /// <summary>
     /// Literal for code: AirCompressor
@@ -12168,9 +15318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAirCompressor = "39590006";
 
     /// <summary>
+    /// Literal for code: NONEAirCompressor
+    /// </summary>
+    public const string LiteralNONEAirCompressor = "http://snomed.info/sct#39590006";
+
+    /// <summary>
     /// Literal for code: Sphygmomanometer
     /// </summary>
     public const string LiteralSphygmomanometer = "39690000";
+
+    /// <summary>
+    /// Literal for code: NONESphygmomanometer
+    /// </summary>
+    public const string LiteralNONESphygmomanometer = "http://snomed.info/sct#39690000";
 
     /// <summary>
     /// Literal for code: Rasp
@@ -12178,9 +15338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRasp = "39768008";
 
     /// <summary>
+    /// Literal for code: NONERasp
+    /// </summary>
+    public const string LiteralNONERasp = "http://snomed.info/sct#39768008";
+
+    /// <summary>
     /// Literal for code: NonElectricHeatingPad
     /// </summary>
     public const string LiteralNonElectricHeatingPad = "39790008";
+
+    /// <summary>
+    /// Literal for code: NONENonElectricHeatingPad
+    /// </summary>
+    public const string LiteralNONENonElectricHeatingPad = "http://snomed.info/sct#39790008";
 
     /// <summary>
     /// Literal for code: TongueBlade
@@ -12188,9 +15358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTongueBlade = "39802000";
 
     /// <summary>
+    /// Literal for code: NONETongueBlade
+    /// </summary>
+    public const string LiteralNONETongueBlade = "http://snomed.info/sct#39802000";
+
+    /// <summary>
     /// Literal for code: PositronEmissionTomographyUnit
     /// </summary>
     public const string LiteralPositronEmissionTomographyUnit = "39821008";
+
+    /// <summary>
+    /// Literal for code: NONEPositronEmissionTomographyUnit
+    /// </summary>
+    public const string LiteralNONEPositronEmissionTomographyUnit = "http://snomed.info/sct#39821008";
 
     /// <summary>
     /// Literal for code: Alarm
@@ -12198,9 +15378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAlarm = "39869006";
 
     /// <summary>
+    /// Literal for code: NONEAlarm
+    /// </summary>
+    public const string LiteralNONEAlarm = "http://snomed.info/sct#39869006";
+
+    /// <summary>
     /// Literal for code: Implant
     /// </summary>
     public const string LiteralImplant = "40388003";
+
+    /// <summary>
+    /// Literal for code: NONEImplant
+    /// </summary>
+    public const string LiteralNONEImplant = "http://snomed.info/sct#40388003";
 
     /// <summary>
     /// Literal for code: Binder
@@ -12208,9 +15398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBinder = "40519001";
 
     /// <summary>
+    /// Literal for code: NONEBinder
+    /// </summary>
+    public const string LiteralNONEBinder = "http://snomed.info/sct#40519001";
+
+    /// <summary>
     /// Literal for code: Immobilizer
     /// </summary>
     public const string LiteralImmobilizer = "41157002";
+
+    /// <summary>
+    /// Literal for code: NONEImmobilizer
+    /// </summary>
+    public const string LiteralNONEImmobilizer = "http://snomed.info/sct#41157002";
 
     /// <summary>
     /// Literal for code: UrinaryCollectionBag
@@ -12218,9 +15418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUrinaryCollectionBag = "41323003";
 
     /// <summary>
+    /// Literal for code: NONEUrinaryCollectionBag
+    /// </summary>
+    public const string LiteralNONEUrinaryCollectionBag = "http://snomed.info/sct#41323003";
+
+    /// <summary>
     /// Literal for code: IndustrialTool
     /// </summary>
     public const string LiteralIndustrialTool = "41684000";
+
+    /// <summary>
+    /// Literal for code: NONEIndustrialTool
+    /// </summary>
+    public const string LiteralNONEIndustrialTool = "http://snomed.info/sct#41684000";
 
     /// <summary>
     /// Literal for code: MetalTube
@@ -12228,9 +15438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMetalTube = "42152006";
 
     /// <summary>
+    /// Literal for code: NONEMetalTube
+    /// </summary>
+    public const string LiteralNONEMetalTube = "http://snomed.info/sct#42152006";
+
+    /// <summary>
     /// Literal for code: AmbulationDevice
     /// </summary>
     public const string LiteralAmbulationDevice = "42305009";
+
+    /// <summary>
+    /// Literal for code: NONEAmbulationDevice
+    /// </summary>
+    public const string LiteralNONEAmbulationDevice = "http://snomed.info/sct#42305009";
 
     /// <summary>
     /// Literal for code: EarPlug
@@ -12238,9 +15458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEarPlug = "42380001";
 
     /// <summary>
+    /// Literal for code: NONEEarPlug
+    /// </summary>
+    public const string LiteralNONEEarPlug = "http://snomed.info/sct#42380001";
+
+    /// <summary>
     /// Literal for code: BloodWarmer
     /// </summary>
     public const string LiteralBloodWarmer = "42451009";
+
+    /// <summary>
+    /// Literal for code: NONEBloodWarmer
+    /// </summary>
+    public const string LiteralNONEBloodWarmer = "http://snomed.info/sct#42451009";
 
     /// <summary>
     /// Literal for code: Wool
@@ -12248,9 +15478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWool = "42716000";
 
     /// <summary>
+    /// Literal for code: NONEWool
+    /// </summary>
+    public const string LiteralNONEWool = "http://snomed.info/sct#42716000";
+
+    /// <summary>
     /// Literal for code: HypodermicSpray
     /// </summary>
     public const string LiteralHypodermicSpray = "42882002";
+
+    /// <summary>
+    /// Literal for code: NONEHypodermicSpray
+    /// </summary>
+    public const string LiteralNONEHypodermicSpray = "http://snomed.info/sct#42882002";
 
     /// <summary>
     /// Literal for code: PhlebotomyKit
@@ -12258,9 +15498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPhlebotomyKit = "43001000";
 
     /// <summary>
+    /// Literal for code: NONEPhlebotomyKit
+    /// </summary>
+    public const string LiteralNONEPhlebotomyKit = "http://snomed.info/sct#43001000";
+
+    /// <summary>
     /// Literal for code: BonePencil
     /// </summary>
     public const string LiteralBonePencil = "43192004";
+
+    /// <summary>
+    /// Literal for code: NONEBonePencil
+    /// </summary>
+    public const string LiteralNONEBonePencil = "http://snomed.info/sct#43192004";
 
     /// <summary>
     /// Literal for code: CochlearProsthesis
@@ -12268,9 +15518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCochlearProsthesis = "43252007";
 
     /// <summary>
+    /// Literal for code: NONECochlearProsthesis
+    /// </summary>
+    public const string LiteralNONECochlearProsthesis = "http://snomed.info/sct#43252007";
+
+    /// <summary>
     /// Literal for code: AirwayDevice
     /// </summary>
     public const string LiteralAirwayDevice = "43725001";
+
+    /// <summary>
+    /// Literal for code: NONEAirwayDevice
+    /// </summary>
+    public const string LiteralNONEAirwayDevice = "http://snomed.info/sct#43725001";
 
     /// <summary>
     /// Literal for code: BloodAdministrationSet
@@ -12278,9 +15538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBloodAdministrationSet = "43734006";
 
     /// <summary>
+    /// Literal for code: NONEBloodAdministrationSet
+    /// </summary>
+    public const string LiteralNONEBloodAdministrationSet = "http://snomed.info/sct#43734006";
+
+    /// <summary>
     /// Literal for code: DopplerDevice
     /// </summary>
     public const string LiteralDopplerDevice = "43770009";
+
+    /// <summary>
+    /// Literal for code: NONEDopplerDevice
+    /// </summary>
+    public const string LiteralNONEDopplerDevice = "http://snomed.info/sct#43770009";
 
     /// <summary>
     /// Literal for code: Shoes
@@ -12288,9 +15558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralShoes = "43983001";
 
     /// <summary>
+    /// Literal for code: NONEShoes
+    /// </summary>
+    public const string LiteralNONEShoes = "http://snomed.info/sct#43983001";
+
+    /// <summary>
     /// Literal for code: Caliper
     /// </summary>
     public const string LiteralCaliper = "44056008";
+
+    /// <summary>
+    /// Literal for code: NONECaliper
+    /// </summary>
+    public const string LiteralNONECaliper = "http://snomed.info/sct#44056008";
 
     /// <summary>
     /// Literal for code: EndoscopicCamera
@@ -12298,9 +15578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEndoscopicCamera = "4408003";
 
     /// <summary>
+    /// Literal for code: NONEEndoscopicCamera
+    /// </summary>
+    public const string LiteralNONEEndoscopicCamera = "http://snomed.info/sct#4408003";
+
+    /// <summary>
     /// Literal for code: Magnet
     /// </summary>
     public const string LiteralMagnet = "44396004";
+
+    /// <summary>
+    /// Literal for code: NONEMagnet
+    /// </summary>
+    public const string LiteralNONEMagnet = "http://snomed.info/sct#44396004";
 
     /// <summary>
     /// Literal for code: IndustrialRobot
@@ -12308,9 +15598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIndustrialRobot = "44492001";
 
     /// <summary>
+    /// Literal for code: NONEIndustrialRobot
+    /// </summary>
+    public const string LiteralNONEIndustrialRobot = "http://snomed.info/sct#44492001";
+
+    /// <summary>
     /// Literal for code: Pump
     /// </summary>
     public const string LiteralPump = "44668000";
+
+    /// <summary>
+    /// Literal for code: NONEPump
+    /// </summary>
+    public const string LiteralNONEPump = "http://snomed.info/sct#44668000";
 
     /// <summary>
     /// Literal for code: Laryngoscope
@@ -12318,9 +15618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLaryngoscope = "44738004";
 
     /// <summary>
+    /// Literal for code: NONELaryngoscope
+    /// </summary>
+    public const string LiteralNONELaryngoscope = "http://snomed.info/sct#44738004";
+
+    /// <summary>
     /// Literal for code: EsophagealBougie
     /// </summary>
     public const string LiteralEsophagealBougie = "44806002";
+
+    /// <summary>
+    /// Literal for code: NONEEsophagealBougie
+    /// </summary>
+    public const string LiteralNONEEsophagealBougie = "http://snomed.info/sct#44806002";
 
     /// <summary>
     /// Literal for code: GolfBall
@@ -12328,9 +15638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGolfBall = "44845007";
 
     /// <summary>
+    /// Literal for code: NONEGolfBall
+    /// </summary>
+    public const string LiteralNONEGolfBall = "http://snomed.info/sct#44845007";
+
+    /// <summary>
     /// Literal for code: FourWheeledAllTerrainVehicle
     /// </summary>
     public const string LiteralFourWheeledAllTerrainVehicle = "44907005";
+
+    /// <summary>
+    /// Literal for code: NONEFourWheeledAllTerrainVehicle
+    /// </summary>
+    public const string LiteralNONEFourWheeledAllTerrainVehicle = "http://snomed.info/sct#44907005";
 
     /// <summary>
     /// Literal for code: AngioplastyBalloonCatheter
@@ -12338,9 +15658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAngioplastyBalloonCatheter = "44959004";
 
     /// <summary>
+    /// Literal for code: NONEAngioplastyBalloonCatheter
+    /// </summary>
+    public const string LiteralNONEAngioplastyBalloonCatheter = "http://snomed.info/sct#44959004";
+
+    /// <summary>
     /// Literal for code: PeritonealDialyzer
     /// </summary>
     public const string LiteralPeritonealDialyzer = "45633005";
+
+    /// <summary>
+    /// Literal for code: NONEPeritonealDialyzer
+    /// </summary>
+    public const string LiteralNONEPeritonealDialyzer = "http://snomed.info/sct#45633005";
 
     /// <summary>
     /// Literal for code: PenroseDrain
@@ -12348,9 +15678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPenroseDrain = "45901004";
 
     /// <summary>
+    /// Literal for code: NONEPenroseDrain
+    /// </summary>
+    public const string LiteralNONEPenroseDrain = "http://snomed.info/sct#45901004";
+
+    /// <summary>
     /// Literal for code: AutomaticFireExtinguisherSystem
     /// </summary>
     public const string LiteralAutomaticFireExtinguisherSystem = "46181005";
+
+    /// <summary>
+    /// Literal for code: NONEAutomaticFireExtinguisherSystem
+    /// </summary>
+    public const string LiteralNONEAutomaticFireExtinguisherSystem = "http://snomed.info/sct#46181005";
 
     /// <summary>
     /// Literal for code: ArtificialLashes
@@ -12358,9 +15698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralArtificialLashes = "46265007";
 
     /// <summary>
+    /// Literal for code: NONEArtificialLashes
+    /// </summary>
+    public const string LiteralNONEArtificialLashes = "http://snomed.info/sct#46265007";
+
+    /// <summary>
     /// Literal for code: SanitaryBelt
     /// </summary>
     public const string LiteralSanitaryBelt = "46299005";
+
+    /// <summary>
+    /// Literal for code: NONESanitaryBelt
+    /// </summary>
+    public const string LiteralNONESanitaryBelt = "http://snomed.info/sct#46299005";
 
     /// <summary>
     /// Literal for code: HairCloth
@@ -12368,9 +15718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHairCloth = "4632004";
 
     /// <summary>
+    /// Literal for code: NONEHairCloth
+    /// </summary>
+    public const string LiteralNONEHairCloth = "http://snomed.info/sct#4632004";
+
+    /// <summary>
     /// Literal for code: Clamp
     /// </summary>
     public const string LiteralClamp = "46364009";
+
+    /// <summary>
+    /// Literal for code: NONEClamp
+    /// </summary>
+    public const string LiteralNONEClamp = "http://snomed.info/sct#46364009";
 
     /// <summary>
     /// Literal for code: Basketball
@@ -12378,9 +15738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBasketball = "46440007";
 
     /// <summary>
+    /// Literal for code: NONEBasketball
+    /// </summary>
+    public const string LiteralNONEBasketball = "http://snomed.info/sct#46440007";
+
+    /// <summary>
     /// Literal for code: Pessary
     /// </summary>
     public const string LiteralPessary = "46625003";
+
+    /// <summary>
+    /// Literal for code: NONEPessary
+    /// </summary>
+    public const string LiteralNONEPessary = "http://snomed.info/sct#46625003";
 
     /// <summary>
     /// Literal for code: Chain
@@ -12388,9 +15758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChain = "46666003";
 
     /// <summary>
+    /// Literal for code: NONEChain
+    /// </summary>
+    public const string LiteralNONEChain = "http://snomed.info/sct#46666003";
+
+    /// <summary>
     /// Literal for code: DeckMachinery
     /// </summary>
     public const string LiteralDeckMachinery = "46949002";
+
+    /// <summary>
+    /// Literal for code: NONEDeckMachinery
+    /// </summary>
+    public const string LiteralNONEDeckMachinery = "http://snomed.info/sct#46949002";
 
     /// <summary>
     /// Literal for code: Mirror
@@ -12398,9 +15778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMirror = "47162009";
 
     /// <summary>
+    /// Literal for code: NONEMirror
+    /// </summary>
+    public const string LiteralNONEMirror = "http://snomed.info/sct#47162009";
+
+    /// <summary>
     /// Literal for code: ElectricalUtilizationEquipment
     /// </summary>
     public const string LiteralElectricalUtilizationEquipment = "47326004";
+
+    /// <summary>
+    /// Literal for code: NONEElectricalUtilizationEquipment
+    /// </summary>
+    public const string LiteralNONEElectricalUtilizationEquipment = "http://snomed.info/sct#47326004";
 
     /// <summary>
     /// Literal for code: ApgarScoringTimer
@@ -12408,9 +15798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralApgarScoringTimer = "47424002";
 
     /// <summary>
+    /// Literal for code: NONEApgarScoringTimer
+    /// </summary>
+    public const string LiteralNONEApgarScoringTimer = "http://snomed.info/sct#47424002";
+
+    /// <summary>
     /// Literal for code: UreteralCatheter
     /// </summary>
     public const string LiteralUreteralCatheter = "47528002";
+
+    /// <summary>
+    /// Literal for code: NONEUreteralCatheter
+    /// </summary>
+    public const string LiteralNONEUreteralCatheter = "http://snomed.info/sct#47528002";
 
     /// <summary>
     /// Literal for code: BirthingChair
@@ -12418,9 +15818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBirthingChair = "47731004";
 
     /// <summary>
+    /// Literal for code: NONEBirthingChair
+    /// </summary>
+    public const string LiteralNONEBirthingChair = "http://snomed.info/sct#47731004";
+
+    /// <summary>
     /// Literal for code: CatgutSuture
     /// </summary>
     public const string LiteralCatgutSuture = "47734007";
+
+    /// <summary>
+    /// Literal for code: NONECatgutSuture
+    /// </summary>
+    public const string LiteralNONECatgutSuture = "http://snomed.info/sct#47734007";
 
     /// <summary>
     /// Literal for code: HandMitt
@@ -12428,9 +15838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHandMitt = "47776004";
 
     /// <summary>
+    /// Literal for code: NONEHandMitt
+    /// </summary>
+    public const string LiteralNONEHandMitt = "http://snomed.info/sct#47776004";
+
+    /// <summary>
     /// Literal for code: Proctoscope
     /// </summary>
     public const string LiteralProctoscope = "47942000";
+
+    /// <summary>
+    /// Literal for code: NONEProctoscope
+    /// </summary>
+    public const string LiteralNONEProctoscope = "http://snomed.info/sct#47942000";
 
     /// <summary>
     /// Literal for code: CircularPortableSaw
@@ -12438,9 +15858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCircularPortableSaw = "48066006";
 
     /// <summary>
+    /// Literal for code: NONECircularPortableSaw
+    /// </summary>
+    public const string LiteralNONECircularPortableSaw = "http://snomed.info/sct#48066006";
+
+    /// <summary>
     /// Literal for code: BathtubRails
     /// </summary>
     public const string LiteralBathtubRails = "48096001";
+
+    /// <summary>
+    /// Literal for code: NONEBathtubRails
+    /// </summary>
+    public const string LiteralNONEBathtubRails = "http://snomed.info/sct#48096001";
 
     /// <summary>
     /// Literal for code: MetalDevice
@@ -12448,9 +15878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMetalDevice = "4816004";
 
     /// <summary>
+    /// Literal for code: NONEMetalDevice
+    /// </summary>
+    public const string LiteralNONEMetalDevice = "http://snomed.info/sct#4816004";
+
+    /// <summary>
     /// Literal for code: TrainingEquipment
     /// </summary>
     public const string LiteralTrainingEquipment = "48240003";
+
+    /// <summary>
+    /// Literal for code: NONETrainingEquipment
+    /// </summary>
+    public const string LiteralNONETrainingEquipment = "http://snomed.info/sct#48240003";
 
     /// <summary>
     /// Literal for code: StudGunDevicePhysicalObject
@@ -12458,9 +15898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStudGunDevicePhysicalObject = "48246009";
 
     /// <summary>
+    /// Literal for code: NONEStudGunDevicePhysicalObject
+    /// </summary>
+    public const string LiteralNONEStudGunDevicePhysicalObject = "http://snomed.info/sct#48246009";
+
+    /// <summary>
     /// Literal for code: VascularFilter
     /// </summary>
     public const string LiteralVascularFilter = "48295009";
+
+    /// <summary>
+    /// Literal for code: NONEVascularFilter
+    /// </summary>
+    public const string LiteralNONEVascularFilter = "http://snomed.info/sct#48295009";
 
     /// <summary>
     /// Literal for code: ProtectiveBodyArmor
@@ -12468,9 +15918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProtectiveBodyArmor = "48473008";
 
     /// <summary>
+    /// Literal for code: NONEProtectiveBodyArmor
+    /// </summary>
+    public const string LiteralNONEProtectiveBodyArmor = "http://snomed.info/sct#48473008";
+
+    /// <summary>
     /// Literal for code: Strap
     /// </summary>
     public const string LiteralStrap = "48990009";
+
+    /// <summary>
+    /// Literal for code: NONEStrap
+    /// </summary>
+    public const string LiteralNONEStrap = "http://snomed.info/sct#48990009";
 
     /// <summary>
     /// Literal for code: Device
@@ -12478,9 +15938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDevice = "49062001";
 
     /// <summary>
+    /// Literal for code: NONEDevice
+    /// </summary>
+    public const string LiteralNONEDevice = "http://snomed.info/sct#49062001";
+
+    /// <summary>
     /// Literal for code: Razor
     /// </summary>
     public const string LiteralRazor = "49448001";
+
+    /// <summary>
+    /// Literal for code: NONERazor
+    /// </summary>
+    public const string LiteralNONERazor = "http://snomed.info/sct#49448001";
 
     /// <summary>
     /// Literal for code: HospitalCart
@@ -12488,9 +15958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHospitalCart = "49890001";
 
     /// <summary>
+    /// Literal for code: NONEHospitalCart
+    /// </summary>
+    public const string LiteralNONEHospitalCart = "http://snomed.info/sct#49890001";
+
+    /// <summary>
     /// Literal for code: EyeGlassesDevicePhysicalObject
     /// </summary>
     public const string LiteralEyeGlassesDevicePhysicalObject = "50121007";
+
+    /// <summary>
+    /// Literal for code: NONEEyeGlassesDevicePhysicalObject
+    /// </summary>
+    public const string LiteralNONEEyeGlassesDevicePhysicalObject = "http://snomed.info/sct#50121007";
 
     /// <summary>
     /// Literal for code: AdhesiveStrip
@@ -12498,9 +15978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdhesiveStrip = "5041003";
 
     /// <summary>
+    /// Literal for code: NONEAdhesiveStrip
+    /// </summary>
+    public const string LiteralNONEAdhesiveStrip = "http://snomed.info/sct#5041003";
+
+    /// <summary>
     /// Literal for code: PatientScale
     /// </summary>
     public const string LiteralPatientScale = "5042005";
+
+    /// <summary>
+    /// Literal for code: NONEPatientScale
+    /// </summary>
+    public const string LiteralNONEPatientScale = "http://snomed.info/sct#5042005";
 
     /// <summary>
     /// Literal for code: WorkoverRigServiceToOilWell
@@ -12508,9 +15998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWorkoverRigServiceToOilWell = "50457005";
 
     /// <summary>
+    /// Literal for code: NONEWorkoverRigServiceToOilWell
+    /// </summary>
+    public const string LiteralNONEWorkoverRigServiceToOilWell = "http://snomed.info/sct#50457005";
+
+    /// <summary>
     /// Literal for code: OilWellRig
     /// </summary>
     public const string LiteralOilWellRig = "50483000";
+
+    /// <summary>
+    /// Literal for code: NONEOilWellRig
+    /// </summary>
+    public const string LiteralNONEOilWellRig = "http://snomed.info/sct#50483000";
 
     /// <summary>
     /// Literal for code: PenileTumescenceMonitor
@@ -12518,9 +16018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPenileTumescenceMonitor = "50851003";
 
     /// <summary>
+    /// Literal for code: NONEPenileTumescenceMonitor
+    /// </summary>
+    public const string LiteralNONEPenileTumescenceMonitor = "http://snomed.info/sct#50851003";
+
+    /// <summary>
     /// Literal for code: Hammer
     /// </summary>
     public const string LiteralHammer = "51016001";
+
+    /// <summary>
+    /// Literal for code: NONEHammer
+    /// </summary>
+    public const string LiteralNONEHammer = "http://snomed.info/sct#51016001";
 
     /// <summary>
     /// Literal for code: ShowerCurtain
@@ -12528,9 +16038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralShowerCurtain = "51086006";
 
     /// <summary>
+    /// Literal for code: NONEShowerCurtain
+    /// </summary>
+    public const string LiteralNONEShowerCurtain = "http://snomed.info/sct#51086006";
+
+    /// <summary>
     /// Literal for code: Stripper
     /// </summary>
     public const string LiteralStripper = "51324004";
+
+    /// <summary>
+    /// Literal for code: NONEStripper
+    /// </summary>
+    public const string LiteralNONEStripper = "http://snomed.info/sct#51324004";
 
     /// <summary>
     /// Literal for code: PhysiologicMonitoringSystem
@@ -12538,9 +16058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPhysiologicMonitoringSystem = "5159002";
 
     /// <summary>
+    /// Literal for code: NONEPhysiologicMonitoringSystem
+    /// </summary>
+    public const string LiteralNONEPhysiologicMonitoringSystem = "http://snomed.info/sct#5159002";
+
+    /// <summary>
     /// Literal for code: RollerSkate
     /// </summary>
     public const string LiteralRollerSkate = "51685009";
+
+    /// <summary>
+    /// Literal for code: NONERollerSkate
+    /// </summary>
+    public const string LiteralNONERollerSkate = "http://snomed.info/sct#51685009";
 
     /// <summary>
     /// Literal for code: MeasuringTape
@@ -12548,9 +16078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMeasuringTape = "51791000";
 
     /// <summary>
+    /// Literal for code: NONEMeasuringTape
+    /// </summary>
+    public const string LiteralNONEMeasuringTape = "http://snomed.info/sct#51791000";
+
+    /// <summary>
     /// Literal for code: ValvedTube
     /// </summary>
     public const string LiteralValvedTube = "51832004";
+
+    /// <summary>
+    /// Literal for code: NONEValvedTube
+    /// </summary>
+    public const string LiteralNONEValvedTube = "http://snomed.info/sct#51832004";
 
     /// <summary>
     /// Literal for code: Sling
@@ -12558,9 +16098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSling = "51883004";
 
     /// <summary>
+    /// Literal for code: NONESling
+    /// </summary>
+    public const string LiteralNONESling = "http://snomed.info/sct#51883004";
+
+    /// <summary>
     /// Literal for code: Diaper
     /// </summary>
     public const string LiteralDiaper = "52065008";
+
+    /// <summary>
+    /// Literal for code: NONEDiaper
+    /// </summary>
+    public const string LiteralNONEDiaper = "http://snomed.info/sct#52065008";
 
     /// <summary>
     /// Literal for code: CentralVenousCatheter
@@ -12568,9 +16118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCentralVenousCatheter = "52124006";
 
     /// <summary>
+    /// Literal for code: NONECentralVenousCatheter
+    /// </summary>
+    public const string LiteralNONECentralVenousCatheter = "http://snomed.info/sct#52124006";
+
+    /// <summary>
     /// Literal for code: MoltenLava
     /// </summary>
     public const string LiteralMoltenLava = "52161002";
+
+    /// <summary>
+    /// Literal for code: NONEMoltenLava
+    /// </summary>
+    public const string LiteralNONEMoltenLava = "http://snomed.info/sct#52161002";
 
     /// <summary>
     /// Literal for code: Glove
@@ -12578,9 +16138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGlove = "52291003";
 
     /// <summary>
+    /// Literal for code: NONEGlove
+    /// </summary>
+    public const string LiteralNONEGlove = "http://snomed.info/sct#52291003";
+
+    /// <summary>
     /// Literal for code: Ladder
     /// </summary>
     public const string LiteralLadder = "52520009";
+
+    /// <summary>
+    /// Literal for code: NONELadder
+    /// </summary>
+    public const string LiteralNONELadder = "http://snomed.info/sct#52520009";
 
     /// <summary>
     /// Literal for code: AspiratorCollectionCanister
@@ -12588,9 +16158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAspiratorCollectionCanister = "52537002";
 
     /// <summary>
+    /// Literal for code: NONEAspiratorCollectionCanister
+    /// </summary>
+    public const string LiteralNONEAspiratorCollectionCanister = "http://snomed.info/sct#52537002";
+
+    /// <summary>
     /// Literal for code: RadiofrequencyGenerator
     /// </summary>
     public const string LiteralRadiofrequencyGenerator = "52624007";
+
+    /// <summary>
+    /// Literal for code: NONERadiofrequencyGenerator
+    /// </summary>
+    public const string LiteralNONERadiofrequencyGenerator = "http://snomed.info/sct#52624007";
 
     /// <summary>
     /// Literal for code: Ski
@@ -12598,9 +16178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSki = "52773007";
 
     /// <summary>
+    /// Literal for code: NONESki
+    /// </summary>
+    public const string LiteralNONESki = "http://snomed.info/sct#52773007";
+
+    /// <summary>
     /// Literal for code: NasopharyngealCatheter
     /// </summary>
     public const string LiteralNasopharyngealCatheter = "52809000";
+
+    /// <summary>
+    /// Literal for code: NONENasopharyngealCatheter
+    /// </summary>
+    public const string LiteralNONENasopharyngealCatheter = "http://snomed.info/sct#52809000";
 
     /// <summary>
     /// Literal for code: BloodGasPHAnalyzer
@@ -12608,9 +16198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBloodGasPHAnalyzer = "52893008";
 
     /// <summary>
+    /// Literal for code: NONEBloodGasPHAnalyzer
+    /// </summary>
+    public const string LiteralNONEBloodGasPHAnalyzer = "http://snomed.info/sct#52893008";
+
+    /// <summary>
     /// Literal for code: PlatformSuspendedBoom
     /// </summary>
     public const string LiteralPlatformSuspendedBoom = "53167006";
+
+    /// <summary>
+    /// Literal for code: NONEPlatformSuspendedBoom
+    /// </summary>
+    public const string LiteralNONEPlatformSuspendedBoom = "http://snomed.info/sct#53167006";
 
     /// <summary>
     /// Literal for code: NasalBalloon
@@ -12618,9 +16218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNasalBalloon = "53177008";
 
     /// <summary>
+    /// Literal for code: NONENasalBalloon
+    /// </summary>
+    public const string LiteralNONENasalBalloon = "http://snomed.info/sct#53177008";
+
+    /// <summary>
     /// Literal for code: ArtificialLung
     /// </summary>
     public const string LiteralArtificialLung = "53217009";
+
+    /// <summary>
+    /// Literal for code: NONEArtificialLung
+    /// </summary>
+    public const string LiteralNONEArtificialLung = "http://snomed.info/sct#53217009";
 
     /// <summary>
     /// Literal for code: Prosthesis
@@ -12628,9 +16238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProsthesis = "53350007";
 
     /// <summary>
+    /// Literal for code: NONEProsthesis
+    /// </summary>
+    public const string LiteralNONEProsthesis = "http://snomed.info/sct#53350007";
+
+    /// <summary>
     /// Literal for code: Retractor
     /// </summary>
     public const string LiteralRetractor = "53535004";
+
+    /// <summary>
+    /// Literal for code: NONERetractor
+    /// </summary>
+    public const string LiteralNONERetractor = "http://snomed.info/sct#53535004";
 
     /// <summary>
     /// Literal for code: Stethoscope
@@ -12638,9 +16258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStethoscope = "53639001";
 
     /// <summary>
+    /// Literal for code: NONEStethoscope
+    /// </summary>
+    public const string LiteralNONEStethoscope = "http://snomed.info/sct#53639001";
+
+    /// <summary>
     /// Literal for code: GastricBalloon
     /// </summary>
     public const string LiteralGastricBalloon = "53671008";
+
+    /// <summary>
+    /// Literal for code: NONEGastricBalloon
+    /// </summary>
+    public const string LiteralNONEGastricBalloon = "http://snomed.info/sct#53671008";
 
     /// <summary>
     /// Literal for code: PenileProsthesis
@@ -12648,9 +16278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPenileProsthesis = "53996008";
 
     /// <summary>
+    /// Literal for code: NONEPenileProsthesis
+    /// </summary>
+    public const string LiteralNONEPenileProsthesis = "http://snomed.info/sct#53996008";
+
+    /// <summary>
     /// Literal for code: CryogenicAnalgesiaUnit
     /// </summary>
     public const string LiteralCryogenicAnalgesiaUnit = "54234007";
+
+    /// <summary>
+    /// Literal for code: NONECryogenicAnalgesiaUnit
+    /// </summary>
+    public const string LiteralNONECryogenicAnalgesiaUnit = "http://snomed.info/sct#54234007";
 
     /// <summary>
     /// Literal for code: Towel
@@ -12658,9 +16298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTowel = "54638004";
 
     /// <summary>
+    /// Literal for code: NONETowel
+    /// </summary>
+    public const string LiteralNONETowel = "http://snomed.info/sct#54638004";
+
+    /// <summary>
     /// Literal for code: ComputerizedAxialTomographyScanner
     /// </summary>
     public const string LiteralComputerizedAxialTomographyScanner = "54953005";
+
+    /// <summary>
+    /// Literal for code: NONEComputerizedAxialTomographyScanner
+    /// </summary>
+    public const string LiteralNONEComputerizedAxialTomographyScanner = "http://snomed.info/sct#54953005";
 
     /// <summary>
     /// Literal for code: BloodCoagulationAnalyzer
@@ -12668,9 +16318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBloodCoagulationAnalyzer = "55091003";
 
     /// <summary>
+    /// Literal for code: NONEBloodCoagulationAnalyzer
+    /// </summary>
+    public const string LiteralNONEBloodCoagulationAnalyzer = "http://snomed.info/sct#55091003";
+
+    /// <summary>
     /// Literal for code: SutureButton
     /// </summary>
     public const string LiteralSutureButton = "55206006";
+
+    /// <summary>
+    /// Literal for code: NONESutureButton
+    /// </summary>
+    public const string LiteralNONESutureButton = "http://snomed.info/sct#55206006";
 
     /// <summary>
     /// Literal for code: Amnioscope
@@ -12678,9 +16338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAmnioscope = "55216003";
 
     /// <summary>
+    /// Literal for code: NONEAmnioscope
+    /// </summary>
+    public const string LiteralNONEAmnioscope = "http://snomed.info/sct#55216003";
+
+    /// <summary>
     /// Literal for code: Auscultoscope
     /// </summary>
     public const string LiteralAuscultoscope = "55337009";
+
+    /// <summary>
+    /// Literal for code: NONEAuscultoscope
+    /// </summary>
+    public const string LiteralNONEAuscultoscope = "http://snomed.info/sct#55337009";
 
     /// <summary>
     /// Literal for code: Bassinet
@@ -12688,9 +16358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBassinet = "55567004";
 
     /// <summary>
+    /// Literal for code: NONEBassinet
+    /// </summary>
+    public const string LiteralNONEBassinet = "http://snomed.info/sct#55567004";
+
+    /// <summary>
     /// Literal for code: HotObject
     /// </summary>
     public const string LiteralHotObject = "55658008";
+
+    /// <summary>
+    /// Literal for code: NONEHotObject
+    /// </summary>
+    public const string LiteralNONEHotObject = "http://snomed.info/sct#55658008";
 
     /// <summary>
     /// Literal for code: Tong
@@ -12698,9 +16378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTong = "55986002";
 
     /// <summary>
+    /// Literal for code: NONETong
+    /// </summary>
+    public const string LiteralNONETong = "http://snomed.info/sct#55986002";
+
+    /// <summary>
     /// Literal for code: BackBraces
     /// </summary>
     public const string LiteralBackBraces = "56144002";
+
+    /// <summary>
+    /// Literal for code: NONEBackBraces
+    /// </summary>
+    public const string LiteralNONEBackBraces = "http://snomed.info/sct#56144002";
 
     /// <summary>
     /// Literal for code: Staple
@@ -12708,9 +16398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStaple = "56353002";
 
     /// <summary>
+    /// Literal for code: NONEStaple
+    /// </summary>
+    public const string LiteralNONEStaple = "http://snomed.info/sct#56353002";
+
+    /// <summary>
     /// Literal for code: Trephine
     /// </summary>
     public const string LiteralTrephine = "56547001";
+
+    /// <summary>
+    /// Literal for code: NONETrephine
+    /// </summary>
+    public const string LiteralNONETrephine = "http://snomed.info/sct#56547001";
 
     /// <summary>
     /// Literal for code: BedSheet
@@ -12718,9 +16418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBedSheet = "5679009";
 
     /// <summary>
+    /// Literal for code: NONEBedSheet
+    /// </summary>
+    public const string LiteralNONEBedSheet = "http://snomed.info/sct#5679009";
+
+    /// <summary>
     /// Literal for code: PacemakerCatheter
     /// </summary>
     public const string LiteralPacemakerCatheter = "56896002";
+
+    /// <summary>
+    /// Literal for code: NONEPacemakerCatheter
+    /// </summary>
+    public const string LiteralNONEPacemakerCatheter = "http://snomed.info/sct#56896002";
 
     /// <summary>
     /// Literal for code: CardiacTransvenousPacemaker
@@ -12728,9 +16438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCardiacTransvenousPacemaker = "56961003";
 
     /// <summary>
+    /// Literal for code: NONECardiacTransvenousPacemaker
+    /// </summary>
+    public const string LiteralNONECardiacTransvenousPacemaker = "http://snomed.info/sct#56961003";
+
+    /// <summary>
     /// Literal for code: PerfusionPump
     /// </summary>
     public const string LiteralPerfusionPump = "57118008";
+
+    /// <summary>
+    /// Literal for code: NONEPerfusionPump
+    /// </summary>
+    public const string LiteralNONEPerfusionPump = "http://snomed.info/sct#57118008";
 
     /// <summary>
     /// Literal for code: Instrument
@@ -12738,9 +16458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInstrument = "57134006";
 
     /// <summary>
+    /// Literal for code: NONEInstrument
+    /// </summary>
+    public const string LiteralNONEInstrument = "http://snomed.info/sct#57134006";
+
+    /// <summary>
     /// Literal for code: ContactLenses
     /// </summary>
     public const string LiteralContactLenses = "57368009";
+
+    /// <summary>
+    /// Literal for code: NONEContactLenses
+    /// </summary>
+    public const string LiteralNONEContactLenses = "http://snomed.info/sct#57368009";
 
     /// <summary>
     /// Literal for code: PhysicalRestraintEquipment
@@ -12748,9 +16478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPhysicalRestraintEquipment = "57395004";
 
     /// <summary>
+    /// Literal for code: NONEPhysicalRestraintEquipment
+    /// </summary>
+    public const string LiteralNONEPhysicalRestraintEquipment = "http://snomed.info/sct#57395004";
+
+    /// <summary>
     /// Literal for code: AbrasiveGrinding
     /// </summary>
     public const string LiteralAbrasiveGrinding = "57730005";
+
+    /// <summary>
+    /// Literal for code: NONEAbrasiveGrinding
+    /// </summary>
+    public const string LiteralNONEAbrasiveGrinding = "http://snomed.info/sct#57730005";
 
     /// <summary>
     /// Literal for code: Android
@@ -12758,9 +16498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAndroid = "58153004";
 
     /// <summary>
+    /// Literal for code: NONEAndroid
+    /// </summary>
+    public const string LiteralNONEAndroid = "http://snomed.info/sct#58153004";
+
+    /// <summary>
     /// Literal for code: SuctionCatheter
     /// </summary>
     public const string LiteralSuctionCatheter = "58253008";
+
+    /// <summary>
+    /// Literal for code: NONESuctionCatheter
+    /// </summary>
+    public const string LiteralNONESuctionCatheter = "http://snomed.info/sct#58253008";
 
     /// <summary>
     /// Literal for code: InfantScale
@@ -12768,9 +16518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInfantScale = "58514003";
 
     /// <summary>
+    /// Literal for code: NONEInfantScale
+    /// </summary>
+    public const string LiteralNONEInfantScale = "http://snomed.info/sct#58514003";
+
+    /// <summary>
     /// Literal for code: ProtectiveVest
     /// </summary>
     public const string LiteralProtectiveVest = "58878002";
+
+    /// <summary>
+    /// Literal for code: NONEProtectiveVest
+    /// </summary>
+    public const string LiteralNONEProtectiveVest = "http://snomed.info/sct#58878002";
 
     /// <summary>
     /// Literal for code: WCWheelchair
@@ -12778,9 +16538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWCWheelchair = "58938008";
 
     /// <summary>
+    /// Literal for code: NONEWCWheelchair
+    /// </summary>
+    public const string LiteralNONEWCWheelchair = "http://snomed.info/sct#58938008";
+
+    /// <summary>
     /// Literal for code: IceBag
     /// </summary>
     public const string LiteralIceBag = "59102007";
+
+    /// <summary>
+    /// Literal for code: NONEIceBag
+    /// </summary>
+    public const string LiteralNONEIceBag = "http://snomed.info/sct#59102007";
 
     /// <summary>
     /// Literal for code: ApneaAlarm
@@ -12788,9 +16558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralApneaAlarm = "59127000";
 
     /// <summary>
+    /// Literal for code: NONEApneaAlarm
+    /// </summary>
+    public const string LiteralNONEApneaAlarm = "http://snomed.info/sct#59127000";
+
+    /// <summary>
     /// Literal for code: Barge
     /// </summary>
     public const string LiteralBarge = "59153008";
+
+    /// <summary>
+    /// Literal for code: NONEBarge
+    /// </summary>
+    public const string LiteralNONEBarge = "http://snomed.info/sct#59153008";
 
     /// <summary>
     /// Literal for code: Chipguard
@@ -12798,9 +16578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChipguard = "59160002";
 
     /// <summary>
+    /// Literal for code: NONEChipguard
+    /// </summary>
+    public const string LiteralNONEChipguard = "http://snomed.info/sct#59160002";
+
+    /// <summary>
     /// Literal for code: OxygenAnalyzer
     /// </summary>
     public const string LiteralOxygenAnalyzer = "59181002";
+
+    /// <summary>
+    /// Literal for code: NONEOxygenAnalyzer
+    /// </summary>
+    public const string LiteralNONEOxygenAnalyzer = "http://snomed.info/sct#59181002";
 
     /// <summary>
     /// Literal for code: Ligature
@@ -12808,9 +16598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLigature = "59432006";
 
     /// <summary>
+    /// Literal for code: NONELigature
+    /// </summary>
+    public const string LiteralNONELigature = "http://snomed.info/sct#59432006";
+
+    /// <summary>
     /// Literal for code: NeedleHolder
     /// </summary>
     public const string LiteralNeedleHolder = "59746007";
+
+    /// <summary>
+    /// Literal for code: NONENeedleHolder
+    /// </summary>
+    public const string LiteralNONENeedleHolder = "http://snomed.info/sct#59746007";
 
     /// <summary>
     /// Literal for code: Culdoscope
@@ -12818,9 +16618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCuldoscope = "59772003";
 
     /// <summary>
+    /// Literal for code: NONECuldoscope
+    /// </summary>
+    public const string LiteralNONECuldoscope = "http://snomed.info/sct#59772003";
+
+    /// <summary>
     /// Literal for code: Speculum
     /// </summary>
     public const string LiteralSpeculum = "59782002";
+
+    /// <summary>
+    /// Literal for code: NONESpeculum
+    /// </summary>
+    public const string LiteralNONESpeculum = "http://snomed.info/sct#59782002";
 
     /// <summary>
     /// Literal for code: CollapsibleBalloon
@@ -12828,9 +16638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCollapsibleBalloon = "59833007";
 
     /// <summary>
+    /// Literal for code: NONECollapsibleBalloon
+    /// </summary>
+    public const string LiteralNONECollapsibleBalloon = "http://snomed.info/sct#59833007";
+
+    /// <summary>
     /// Literal for code: SeatBelt
     /// </summary>
     public const string LiteralSeatBelt = "60054005";
+
+    /// <summary>
+    /// Literal for code: NONESeatBelt
+    /// </summary>
+    public const string LiteralNONESeatBelt = "http://snomed.info/sct#60054005";
 
     /// <summary>
     /// Literal for code: Wig
@@ -12838,9 +16658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWig = "60110001";
 
     /// <summary>
+    /// Literal for code: NONEWig
+    /// </summary>
+    public const string LiteralNONEWig = "http://snomed.info/sct#60110001";
+
+    /// <summary>
     /// Literal for code: HearingAid
     /// </summary>
     public const string LiteralHearingAid = "6012004";
+
+    /// <summary>
+    /// Literal for code: NONEHearingAid
+    /// </summary>
+    public const string LiteralNONEHearingAid = "http://snomed.info/sct#6012004";
 
     /// <summary>
     /// Literal for code: SkiPoleDevicePhysicalObject
@@ -12848,9 +16678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSkiPoleDevicePhysicalObject = "60150003";
 
     /// <summary>
+    /// Literal for code: NONESkiPoleDevicePhysicalObject
+    /// </summary>
+    public const string LiteralNONESkiPoleDevicePhysicalObject = "http://snomed.info/sct#60150003";
+
+    /// <summary>
     /// Literal for code: AcupunctureNeedle
     /// </summary>
     public const string LiteralAcupunctureNeedle = "60161006";
+
+    /// <summary>
+    /// Literal for code: NONEAcupunctureNeedle
+    /// </summary>
+    public const string LiteralNONEAcupunctureNeedle = "http://snomed.info/sct#60161006";
 
     /// <summary>
     /// Literal for code: CarbonDioxideAbsorber
@@ -12858,9 +16698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCarbonDioxideAbsorber = "60185003";
 
     /// <summary>
+    /// Literal for code: NONECarbonDioxideAbsorber
+    /// </summary>
+    public const string LiteralNONECarbonDioxideAbsorber = "http://snomed.info/sct#60185003";
+
+    /// <summary>
     /// Literal for code: LeatherBoots
     /// </summary>
     public const string LiteralLeatherBoots = "60311007";
+
+    /// <summary>
+    /// Literal for code: NONELeatherBoots
+    /// </summary>
+    public const string LiteralNONELeatherBoots = "http://snomed.info/sct#60311007";
 
     /// <summary>
     /// Literal for code: Injector
@@ -12868,9 +16718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInjector = "60773001";
 
     /// <summary>
+    /// Literal for code: NONEInjector
+    /// </summary>
+    public const string LiteralNONEInjector = "http://snomed.info/sct#60773001";
+
+    /// <summary>
     /// Literal for code: WhirlpoolBath
     /// </summary>
     public const string LiteralWhirlpoolBath = "60806001";
+
+    /// <summary>
+    /// Literal for code: NONEWhirlpoolBath
+    /// </summary>
+    public const string LiteralNONEWhirlpoolBath = "http://snomed.info/sct#60806001";
 
     /// <summary>
     /// Literal for code: Otoscope
@@ -12878,9 +16738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOtoscope = "60957001";
 
     /// <summary>
+    /// Literal for code: NONEOtoscope
+    /// </summary>
+    public const string LiteralNONEOtoscope = "http://snomed.info/sct#60957001";
+
+    /// <summary>
     /// Literal for code: TTube
     /// </summary>
     public const string LiteralTTube = "6097006";
+
+    /// <summary>
+    /// Literal for code: NONETTube
+    /// </summary>
+    public const string LiteralNONETTube = "http://snomed.info/sct#6097006";
 
     /// <summary>
     /// Literal for code: NasopharyngealAirwayDevice
@@ -12888,9 +16758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNasopharyngealAirwayDevice = "61330002";
 
     /// <summary>
+    /// Literal for code: NONENasopharyngealAirwayDevice
+    /// </summary>
+    public const string LiteralNONENasopharyngealAirwayDevice = "http://snomed.info/sct#61330002";
+
+    /// <summary>
     /// Literal for code: TennisRacket
     /// </summary>
     public const string LiteralTennisRacket = "61512008";
+
+    /// <summary>
+    /// Literal for code: NONETennisRacket
+    /// </summary>
+    public const string LiteralNONETennisRacket = "http://snomed.info/sct#61512008";
 
     /// <summary>
     /// Literal for code: Dilator
@@ -12898,9 +16778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDilator = "61835000";
 
     /// <summary>
+    /// Literal for code: NONEDilator
+    /// </summary>
+    public const string LiteralNONEDilator = "http://snomed.info/sct#61835000";
+
+    /// <summary>
     /// Literal for code: Syringe
     /// </summary>
     public const string LiteralSyringe = "61968008";
+
+    /// <summary>
+    /// Literal for code: NONESyringe
+    /// </summary>
+    public const string LiteralNONESyringe = "http://snomed.info/sct#61968008";
 
     /// <summary>
     /// Literal for code: AntiembolicDevice
@@ -12908,9 +16798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAntiembolicDevice = "61979003";
 
     /// <summary>
+    /// Literal for code: NONEAntiembolicDevice
+    /// </summary>
+    public const string LiteralNONEAntiembolicDevice = "http://snomed.info/sct#61979003";
+
+    /// <summary>
     /// Literal for code: ElectricCable
     /// </summary>
     public const string LiteralElectricCable = "62336005";
+
+    /// <summary>
+    /// Literal for code: NONEElectricCable
+    /// </summary>
+    public const string LiteralNONEElectricCable = "http://snomed.info/sct#62336005";
 
     /// <summary>
     /// Literal for code: GammaCounter
@@ -12918,9 +16818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGammaCounter = "62495008";
 
     /// <summary>
+    /// Literal for code: NONEGammaCounter
+    /// </summary>
+    public const string LiteralNONEGammaCounter = "http://snomed.info/sct#62495008";
+
+    /// <summary>
     /// Literal for code: OverheadAndGantryCrane
     /// </summary>
     public const string LiteralOverheadAndGantryCrane = "62614002";
+
+    /// <summary>
+    /// Literal for code: NONEOverheadAndGantryCrane
+    /// </summary>
+    public const string LiteralNONEOverheadAndGantryCrane = "http://snomed.info/sct#62614002";
 
     /// <summary>
     /// Literal for code: TubularBandage
@@ -12928,9 +16838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTubularBandage = "62980002";
 
     /// <summary>
+    /// Literal for code: NONETubularBandage
+    /// </summary>
+    public const string LiteralNONETubularBandage = "http://snomed.info/sct#62980002";
+
+    /// <summary>
     /// Literal for code: BoneWire
     /// </summary>
     public const string LiteralBoneWire = "63112008";
+
+    /// <summary>
+    /// Literal for code: NONEBoneWire
+    /// </summary>
+    public const string LiteralNONEBoneWire = "http://snomed.info/sct#63112008";
 
     /// <summary>
     /// Literal for code: HatBand
@@ -12938,9 +16858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHatBand = "63173005";
 
     /// <summary>
+    /// Literal for code: NONEHatBand
+    /// </summary>
+    public const string LiteralNONEHatBand = "http://snomed.info/sct#63173005";
+
+    /// <summary>
     /// Literal for code: MetalNail
     /// </summary>
     public const string LiteralMetalNail = "63289001";
+
+    /// <summary>
+    /// Literal for code: NONEMetalNail
+    /// </summary>
+    public const string LiteralNONEMetalNail = "http://snomed.info/sct#63289001";
 
     /// <summary>
     /// Literal for code: BonePlug
@@ -12948,9 +16878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBonePlug = "63336000";
 
     /// <summary>
+    /// Literal for code: NONEBonePlug
+    /// </summary>
+    public const string LiteralNONEBonePlug = "http://snomed.info/sct#63336000";
+
+    /// <summary>
     /// Literal for code: Derrick
     /// </summary>
     public const string LiteralDerrick = "63548003";
+
+    /// <summary>
+    /// Literal for code: NONEDerrick
+    /// </summary>
+    public const string LiteralNONEDerrick = "http://snomed.info/sct#63548003";
 
     /// <summary>
     /// Literal for code: CervicalCollar
@@ -12958,9 +16898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCervicalCollar = "63562005";
 
     /// <summary>
+    /// Literal for code: NONECervicalCollar
+    /// </summary>
+    public const string LiteralNONECervicalCollar = "http://snomed.info/sct#63562005";
+
+    /// <summary>
     /// Literal for code: FiberopticCable
     /// </summary>
     public const string LiteralFiberopticCable = "63619003";
+
+    /// <summary>
+    /// Literal for code: NONEFiberopticCable
+    /// </summary>
+    public const string LiteralNONEFiberopticCable = "http://snomed.info/sct#63619003";
 
     /// <summary>
     /// Literal for code: MedicalDevice
@@ -12968,9 +16918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMedicalDevice = "63653004";
 
     /// <summary>
+    /// Literal for code: NONEMedicalDevice
+    /// </summary>
+    public const string LiteralNONEMedicalDevice = "http://snomed.info/sct#63653004";
+
+    /// <summary>
     /// Literal for code: TractionUnit
     /// </summary>
     public const string LiteralTractionUnit = "63797009";
+
+    /// <summary>
+    /// Literal for code: NONETractionUnit
+    /// </summary>
+    public const string LiteralNONETractionUnit = "http://snomed.info/sct#63797009";
 
     /// <summary>
     /// Literal for code: Electroejaculator
@@ -12978,9 +16938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralElectroejaculator = "63839002";
 
     /// <summary>
+    /// Literal for code: NONEElectroejaculator
+    /// </summary>
+    public const string LiteralNONEElectroejaculator = "http://snomed.info/sct#63839002";
+
+    /// <summary>
     /// Literal for code: Bandage
     /// </summary>
     public const string LiteralBandage = "63995005";
+
+    /// <summary>
+    /// Literal for code: NONEBandage
+    /// </summary>
+    public const string LiteralNONEBandage = "http://snomed.info/sct#63995005";
 
     /// <summary>
     /// Literal for code: Snowmobile
@@ -12988,9 +16958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSnowmobile = "64174005";
 
     /// <summary>
+    /// Literal for code: NONESnowmobile
+    /// </summary>
+    public const string LiteralNONESnowmobile = "http://snomed.info/sct#64174005";
+
+    /// <summary>
     /// Literal for code: EsophagealBalloon
     /// </summary>
     public const string LiteralEsophagealBalloon = "64255007";
+
+    /// <summary>
+    /// Literal for code: NONEEsophagealBalloon
+    /// </summary>
+    public const string LiteralNONEEsophagealBalloon = "http://snomed.info/sct#64255007";
 
     /// <summary>
     /// Literal for code: AirTool
@@ -12998,9 +16978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAirTool = "64565002";
 
     /// <summary>
+    /// Literal for code: NONEAirTool
+    /// </summary>
+    public const string LiteralNONEAirTool = "http://snomed.info/sct#64565002";
+
+    /// <summary>
     /// Literal for code: HairClipper
     /// </summary>
     public const string LiteralHairClipper = "64571008";
+
+    /// <summary>
+    /// Literal for code: NONEHairClipper
+    /// </summary>
+    public const string LiteralNONEHairClipper = "http://snomed.info/sct#64571008";
 
     /// <summary>
     /// Literal for code: InhalationAnalgesiaUnit
@@ -13008,9 +16998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInhalationAnalgesiaUnit = "64883003";
 
     /// <summary>
+    /// Literal for code: NONEInhalationAnalgesiaUnit
+    /// </summary>
+    public const string LiteralNONEInhalationAnalgesiaUnit = "http://snomed.info/sct#64883003";
+
+    /// <summary>
     /// Literal for code: Scissors
     /// </summary>
     public const string LiteralScissors = "64973003";
+
+    /// <summary>
+    /// Literal for code: NONEScissors
+    /// </summary>
+    public const string LiteralNONEScissors = "http://snomed.info/sct#64973003";
 
     /// <summary>
     /// Literal for code: Escalator
@@ -13018,9 +17018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEscalator = "64989000";
 
     /// <summary>
+    /// Literal for code: NONEEscalator
+    /// </summary>
+    public const string LiteralNONEEscalator = "http://snomed.info/sct#64989000";
+
+    /// <summary>
     /// Literal for code: ElectricalBattery
     /// </summary>
     public const string LiteralElectricalBattery = "65053001";
+
+    /// <summary>
+    /// Literal for code: NONEElectricalBattery
+    /// </summary>
+    public const string LiteralNONEElectricalBattery = "http://snomed.info/sct#65053001";
 
     /// <summary>
     /// Literal for code: SurgicalDrapes
@@ -13028,9 +17038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSurgicalDrapes = "65105002";
 
     /// <summary>
+    /// Literal for code: NONESurgicalDrapes
+    /// </summary>
+    public const string LiteralNONESurgicalDrapes = "http://snomed.info/sct#65105002";
+
+    /// <summary>
     /// Literal for code: ChartRecorder
     /// </summary>
     public const string LiteralChartRecorder = "65268008";
+
+    /// <summary>
+    /// Literal for code: NONEChartRecorder
+    /// </summary>
+    public const string LiteralNONEChartRecorder = "http://snomed.info/sct#65268008";
 
     /// <summary>
     /// Literal for code: Microscope
@@ -13038,9 +17058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMicroscope = "65473004";
 
     /// <summary>
+    /// Literal for code: NONEMicroscope
+    /// </summary>
+    public const string LiteralNONEMicroscope = "http://snomed.info/sct#65473004";
+
+    /// <summary>
     /// Literal for code: XRayShield
     /// </summary>
     public const string LiteralXRayShield = "65577000";
+
+    /// <summary>
+    /// Literal for code: NONEXRayShield
+    /// </summary>
+    public const string LiteralNONEXRayShield = "http://snomed.info/sct#65577000";
 
     /// <summary>
     /// Literal for code: Stent
@@ -13048,9 +17078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStent = "65818007";
 
     /// <summary>
+    /// Literal for code: NONEStent
+    /// </summary>
+    public const string LiteralNONEStent = "http://snomed.info/sct#65818007";
+
+    /// <summary>
     /// Literal for code: HospitalRobot
     /// </summary>
     public const string LiteralHospitalRobot = "66222000";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalRobot
+    /// </summary>
+    public const string LiteralNONEHospitalRobot = "http://snomed.info/sct#66222000";
 
     /// <summary>
     /// Literal for code: AudiometricTestingEquipment
@@ -13058,9 +17098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAudiometricTestingEquipment = "66415006";
 
     /// <summary>
+    /// Literal for code: NONEAudiometricTestingEquipment
+    /// </summary>
+    public const string LiteralNONEAudiometricTestingEquipment = "http://snomed.info/sct#66415006";
+
+    /// <summary>
     /// Literal for code: ElectricBed
     /// </summary>
     public const string LiteralElectricBed = "66435007";
+
+    /// <summary>
+    /// Literal for code: NONEElectricBed
+    /// </summary>
+    public const string LiteralNONEElectricBed = "http://snomed.info/sct#66435007";
 
     /// <summary>
     /// Literal for code: FaceCloth
@@ -13068,9 +17118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFaceCloth = "66494009";
 
     /// <summary>
+    /// Literal for code: NONEFaceCloth
+    /// </summary>
+    public const string LiteralNONEFaceCloth = "http://snomed.info/sct#66494009";
+
+    /// <summary>
     /// Literal for code: HipProsthesis
     /// </summary>
     public const string LiteralHipProsthesis = "67270000";
+
+    /// <summary>
+    /// Literal for code: NONEHipProsthesis
+    /// </summary>
+    public const string LiteralNONEHipProsthesis = "http://snomed.info/sct#67270000";
 
     /// <summary>
     /// Literal for code: CoronaryPerfusionCatheter
@@ -13078,9 +17138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCoronaryPerfusionCatheter = "67387001";
 
     /// <summary>
+    /// Literal for code: NONECoronaryPerfusionCatheter
+    /// </summary>
+    public const string LiteralNONECoronaryPerfusionCatheter = "http://snomed.info/sct#67387001";
+
+    /// <summary>
     /// Literal for code: RadiographicTomographicUnit
     /// </summary>
     public const string LiteralRadiographicTomographicUnit = "67670006";
+
+    /// <summary>
+    /// Literal for code: NONERadiographicTomographicUnit
+    /// </summary>
+    public const string LiteralNONERadiographicTomographicUnit = "http://snomed.info/sct#67670006";
 
     /// <summary>
     /// Literal for code: MovingWalk
@@ -13088,9 +17158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMovingWalk = "67777003";
 
     /// <summary>
+    /// Literal for code: NONEMovingWalk
+    /// </summary>
+    public const string LiteralNONEMovingWalk = "http://snomed.info/sct#67777003";
+
+    /// <summary>
     /// Literal for code: Epilator
     /// </summary>
     public const string LiteralEpilator = "678001";
+
+    /// <summary>
+    /// Literal for code: NONEEpilator
+    /// </summary>
+    public const string LiteralNONEEpilator = "http://snomed.info/sct#678001";
 
     /// <summary>
     /// Literal for code: Esophagoscope
@@ -13098,9 +17178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEsophagoscope = "67829007";
 
     /// <summary>
+    /// Literal for code: NONEEsophagoscope
+    /// </summary>
+    public const string LiteralNONEEsophagoscope = "http://snomed.info/sct#67829007";
+
+    /// <summary>
     /// Literal for code: AerialLift
     /// </summary>
     public const string LiteralAerialLift = "67920005";
+
+    /// <summary>
+    /// Literal for code: NONEAerialLift
+    /// </summary>
+    public const string LiteralNONEAerialLift = "http://snomed.info/sct#67920005";
 
     /// <summary>
     /// Literal for code: EnemaTube
@@ -13108,9 +17198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEnemaTube = "67966000";
 
     /// <summary>
+    /// Literal for code: NONEEnemaTube
+    /// </summary>
+    public const string LiteralNONEEnemaTube = "http://snomed.info/sct#67966000";
+
+    /// <summary>
     /// Literal for code: RadiographicUnit
     /// </summary>
     public const string LiteralRadiographicUnit = "68080007";
+
+    /// <summary>
+    /// Literal for code: NONERadiographicUnit
+    /// </summary>
+    public const string LiteralNONERadiographicUnit = "http://snomed.info/sct#68080007";
 
     /// <summary>
     /// Literal for code: VibratingElectricHeatingPad
@@ -13118,9 +17218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVibratingElectricHeatingPad = "68181008";
 
     /// <summary>
+    /// Literal for code: NONEVibratingElectricHeatingPad
+    /// </summary>
+    public const string LiteralNONEVibratingElectricHeatingPad = "http://snomed.info/sct#68181008";
+
+    /// <summary>
     /// Literal for code: BoneScrew
     /// </summary>
     public const string LiteralBoneScrew = "68183006";
+
+    /// <summary>
+    /// Literal for code: NONEBoneScrew
+    /// </summary>
+    public const string LiteralNONEBoneScrew = "http://snomed.info/sct#68183006";
 
     /// <summary>
     /// Literal for code: MicrowaveOven
@@ -13128,9 +17238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMicrowaveOven = "6822006";
 
     /// <summary>
+    /// Literal for code: NONEMicrowaveOven
+    /// </summary>
+    public const string LiteralNONEMicrowaveOven = "http://snomed.info/sct#6822006";
+
+    /// <summary>
     /// Literal for code: Bottle
     /// </summary>
     public const string LiteralBottle = "68276009";
+
+    /// <summary>
+    /// Literal for code: NONEBottle
+    /// </summary>
+    public const string LiteralNONEBottle = "http://snomed.info/sct#68276009";
 
     /// <summary>
     /// Literal for code: Sound
@@ -13138,9 +17258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSound = "68325009";
 
     /// <summary>
+    /// Literal for code: NONESound
+    /// </summary>
+    public const string LiteralNONESound = "http://snomed.info/sct#68325009";
+
+    /// <summary>
     /// Literal for code: SupportBelt
     /// </summary>
     public const string LiteralSupportBelt = "68597009";
+
+    /// <summary>
+    /// Literal for code: NONESupportBelt
+    /// </summary>
+    public const string LiteralNONESupportBelt = "http://snomed.info/sct#68597009";
 
     /// <summary>
     /// Literal for code: HouseholdRobot
@@ -13148,9 +17278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHouseholdRobot = "68685003";
 
     /// <summary>
+    /// Literal for code: NONEHouseholdRobot
+    /// </summary>
+    public const string LiteralNONEHouseholdRobot = "http://snomed.info/sct#68685003";
+
+    /// <summary>
     /// Literal for code: Gastroduodenoscope
     /// </summary>
     public const string LiteralGastroduodenoscope = "68842005";
+
+    /// <summary>
+    /// Literal for code: NONEGastroduodenoscope
+    /// </summary>
+    public const string LiteralNONEGastroduodenoscope = "http://snomed.info/sct#68842005";
 
     /// <summary>
     /// Literal for code: ProtectiveClothingMaterial
@@ -13158,9 +17298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProtectiveClothingMaterial = "6919005";
 
     /// <summary>
+    /// Literal for code: NONEProtectiveClothingMaterial
+    /// </summary>
+    public const string LiteralNONEProtectiveClothingMaterial = "http://snomed.info/sct#6919005";
+
+    /// <summary>
     /// Literal for code: PatientUtensilKit
     /// </summary>
     public const string LiteralPatientUtensilKit = "69670004";
+
+    /// <summary>
+    /// Literal for code: NONEPatientUtensilKit
+    /// </summary>
+    public const string LiteralNONEPatientUtensilKit = "http://snomed.info/sct#69670004";
 
     /// <summary>
     /// Literal for code: Lithotripter
@@ -13168,9 +17318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLithotripter = "6972009";
 
     /// <summary>
+    /// Literal for code: NONELithotripter
+    /// </summary>
+    public const string LiteralNONELithotripter = "http://snomed.info/sct#6972009";
+
+    /// <summary>
     /// Literal for code: InsulinPump
     /// </summary>
     public const string LiteralInsulinPump = "69805005";
+
+    /// <summary>
+    /// Literal for code: NONEInsulinPump
+    /// </summary>
+    public const string LiteralNONEInsulinPump = "http://snomed.info/sct#69805005";
 
     /// <summary>
     /// Literal for code: TracheostomyButton
@@ -13178,9 +17338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTracheostomyButton = "69922008";
 
     /// <summary>
+    /// Literal for code: NONETracheostomyButton
+    /// </summary>
+    public const string LiteralNONETracheostomyButton = "http://snomed.info/sct#69922008";
+
+    /// <summary>
     /// Literal for code: RadiographicFluoroscopicUnit
     /// </summary>
     public const string LiteralRadiographicFluoroscopicUnit = "7007007";
+
+    /// <summary>
+    /// Literal for code: NONERadiographicFluoroscopicUnit
+    /// </summary>
+    public const string LiteralNONERadiographicFluoroscopicUnit = "http://snomed.info/sct#7007007";
 
     /// <summary>
     /// Literal for code: Bayonet
@@ -13188,9 +17358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBayonet = "70080007";
 
     /// <summary>
+    /// Literal for code: NONEBayonet
+    /// </summary>
+    public const string LiteralNONEBayonet = "http://snomed.info/sct#70080007";
+
+    /// <summary>
     /// Literal for code: SkullTongs
     /// </summary>
     public const string LiteralSkullTongs = "70300000";
+
+    /// <summary>
+    /// Literal for code: NONESkullTongs
+    /// </summary>
+    public const string LiteralNONESkullTongs = "http://snomed.info/sct#70300000";
 
     /// <summary>
     /// Literal for code: Freezer
@@ -13198,9 +17378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFreezer = "70303003";
 
     /// <summary>
+    /// Literal for code: NONEFreezer
+    /// </summary>
+    public const string LiteralNONEFreezer = "http://snomed.info/sct#70303003";
+
+    /// <summary>
     /// Literal for code: Sled
     /// </summary>
     public const string LiteralSled = "70453008";
+
+    /// <summary>
+    /// Literal for code: NONESled
+    /// </summary>
+    public const string LiteralNONESled = "http://snomed.info/sct#70453008";
 
     /// <summary>
     /// Literal for code: BloodPressureCuff
@@ -13208,9 +17398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBloodPressureCuff = "70665002";
 
     /// <summary>
+    /// Literal for code: NONEBloodPressureCuff
+    /// </summary>
+    public const string LiteralNONEBloodPressureCuff = "http://snomed.info/sct#70665002";
+
+    /// <summary>
     /// Literal for code: RecreationEquipment
     /// </summary>
     public const string LiteralRecreationEquipment = "70793005";
+
+    /// <summary>
+    /// Literal for code: NONERecreationEquipment
+    /// </summary>
+    public const string LiteralNONERecreationEquipment = "http://snomed.info/sct#70793005";
 
     /// <summary>
     /// Literal for code: WashBasin
@@ -13218,9 +17418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWashBasin = "70872004";
 
     /// <summary>
+    /// Literal for code: NONEWashBasin
+    /// </summary>
+    public const string LiteralNONEWashBasin = "http://snomed.info/sct#70872004";
+
+    /// <summary>
     /// Literal for code: Warmer
     /// </summary>
     public const string LiteralWarmer = "71384000";
+
+    /// <summary>
+    /// Literal for code: NONEWarmer
+    /// </summary>
+    public const string LiteralNONEWarmer = "http://snomed.info/sct#71384000";
 
     /// <summary>
     /// Literal for code: DivingStage
@@ -13228,9 +17438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDivingStage = "71483007";
 
     /// <summary>
+    /// Literal for code: NONEDivingStage
+    /// </summary>
+    public const string LiteralNONEDivingStage = "http://snomed.info/sct#71483007";
+
+    /// <summary>
     /// Literal for code: Humidifier
     /// </summary>
     public const string LiteralHumidifier = "71545009";
+
+    /// <summary>
+    /// Literal for code: NONEHumidifier
+    /// </summary>
+    public const string LiteralNONEHumidifier = "http://snomed.info/sct#71545009";
 
     /// <summary>
     /// Literal for code: Proctosigmoidoscope
@@ -13238,9 +17458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProctosigmoidoscope = "71601002";
 
     /// <summary>
+    /// Literal for code: NONEProctosigmoidoscope
+    /// </summary>
+    public const string LiteralNONEProctosigmoidoscope = "http://snomed.info/sct#71601002";
+
+    /// <summary>
     /// Literal for code: BoneWax
     /// </summary>
     public const string LiteralBoneWax = "71667001";
+
+    /// <summary>
+    /// Literal for code: NONEBoneWax
+    /// </summary>
+    public const string LiteralNONEBoneWax = "http://snomed.info/sct#71667001";
 
     /// <summary>
     /// Literal for code: Autoclave
@@ -13248,9 +17478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAutoclave = "71948003";
 
     /// <summary>
+    /// Literal for code: NONEAutoclave
+    /// </summary>
+    public const string LiteralNONEAutoclave = "http://snomed.info/sct#71948003";
+
+    /// <summary>
     /// Literal for code: Ring
     /// </summary>
     public const string LiteralRing = "72070000";
+
+    /// <summary>
+    /// Literal for code: NONERing
+    /// </summary>
+    public const string LiteralNONERing = "http://snomed.info/sct#72070000";
 
     /// <summary>
     /// Literal for code: TissueExpander
@@ -13258,9 +17498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTissueExpander = "72188006";
 
     /// <summary>
+    /// Literal for code: NONETissueExpander
+    /// </summary>
+    public const string LiteralNONETissueExpander = "http://snomed.info/sct#72188006";
+
+    /// <summary>
     /// Literal for code: LeadCable
     /// </summary>
     public const string LiteralLeadCable = "72302000";
+
+    /// <summary>
+    /// Literal for code: NONELeadCable
+    /// </summary>
+    public const string LiteralNONELeadCable = "http://snomed.info/sct#72302000";
 
     /// <summary>
     /// Literal for code: ImplantableDefibrillator
@@ -13268,9 +17518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralImplantableDefibrillator = "72506001";
 
     /// <summary>
+    /// Literal for code: NONEImplantableDefibrillator
+    /// </summary>
+    public const string LiteralNONEImplantableDefibrillator = "http://snomed.info/sct#72506001";
+
+    /// <summary>
     /// Literal for code: AspiratorCollectionBottle
     /// </summary>
     public const string LiteralAspiratorCollectionBottle = "72742007";
+
+    /// <summary>
+    /// Literal for code: NONEAspiratorCollectionBottle
+    /// </summary>
+    public const string LiteralNONEAspiratorCollectionBottle = "http://snomed.info/sct#72742007";
 
     /// <summary>
     /// Literal for code: InfantIncubator
@@ -13278,9 +17538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInfantIncubator = "73027007";
 
     /// <summary>
+    /// Literal for code: NONEInfantIncubator
+    /// </summary>
+    public const string LiteralNONEInfantIncubator = "http://snomed.info/sct#73027007";
+
+    /// <summary>
     /// Literal for code: StaphylococcusAureusAntibodyTestKit
     /// </summary>
     public const string LiteralStaphylococcusAureusAntibodyTestKit = "73276008";
+
+    /// <summary>
+    /// Literal for code: NONEStaphylococcusAureusAntibodyTestKit
+    /// </summary>
+    public const string LiteralNONEStaphylococcusAureusAntibodyTestKit = "http://snomed.info/sct#73276008";
 
     /// <summary>
     /// Literal for code: ArtificialSkin
@@ -13288,9 +17558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralArtificialSkin = "73534004";
 
     /// <summary>
+    /// Literal for code: NONEArtificialSkin
+    /// </summary>
+    public const string LiteralNONEArtificialSkin = "http://snomed.info/sct#73534004";
+
+    /// <summary>
     /// Literal for code: Transilluminator
     /// </summary>
     public const string LiteralTransilluminator = "73562006";
+
+    /// <summary>
+    /// Literal for code: NONETransilluminator
+    /// </summary>
+    public const string LiteralNONETransilluminator = "http://snomed.info/sct#73562006";
 
     /// <summary>
     /// Literal for code: IntravenousAnalgesiaUnit
@@ -13298,9 +17578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIntravenousAnalgesiaUnit = "73571002";
 
     /// <summary>
+    /// Literal for code: NONEIntravenousAnalgesiaUnit
+    /// </summary>
+    public const string LiteralNONEIntravenousAnalgesiaUnit = "http://snomed.info/sct#73571002";
+
+    /// <summary>
     /// Literal for code: PowerSaw
     /// </summary>
     public const string LiteralPowerSaw = "73618007";
+
+    /// <summary>
+    /// Literal for code: NONEPowerSaw
+    /// </summary>
+    public const string LiteralNONEPowerSaw = "http://snomed.info/sct#73618007";
 
     /// <summary>
     /// Literal for code: HandSaw
@@ -13308,9 +17598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHandSaw = "73878004";
 
     /// <summary>
+    /// Literal for code: NONEHandSaw
+    /// </summary>
+    public const string LiteralNONEHandSaw = "http://snomed.info/sct#73878004";
+
+    /// <summary>
     /// Literal for code: BicycleErgometer
     /// </summary>
     public const string LiteralBicycleErgometer = "739006";
+
+    /// <summary>
+    /// Literal for code: NONEBicycleErgometer
+    /// </summary>
+    public const string LiteralNONEBicycleErgometer = "http://snomed.info/sct#739006";
 
     /// <summary>
     /// Literal for code: FaceProtectionInConstructionIndustry
@@ -13318,9 +17618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFaceProtectionInConstructionIndustry = "73985004";
 
     /// <summary>
+    /// Literal for code: NONEFaceProtectionInConstructionIndustry
+    /// </summary>
+    public const string LiteralNONEFaceProtectionInConstructionIndustry = "http://snomed.info/sct#73985004";
+
+    /// <summary>
     /// Literal for code: Probe
     /// </summary>
     public const string LiteralProbe = "7402007";
+
+    /// <summary>
+    /// Literal for code: NONEProbe
+    /// </summary>
+    public const string LiteralNONEProbe = "http://snomed.info/sct#7402007";
 
     /// <summary>
     /// Literal for code: Crib
@@ -13328,9 +17638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCrib = "7406005";
 
     /// <summary>
+    /// Literal for code: NONECrib
+    /// </summary>
+    public const string LiteralNONECrib = "http://snomed.info/sct#7406005";
+
+    /// <summary>
     /// Literal for code: Belt
     /// </summary>
     public const string LiteralBelt = "74094004";
+
+    /// <summary>
+    /// Literal for code: NONEBelt
+    /// </summary>
+    public const string LiteralNONEBelt = "http://snomed.info/sct#74094004";
 
     /// <summary>
     /// Literal for code: Recorder
@@ -13338,9 +17658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRecorder = "74108008";
 
     /// <summary>
+    /// Literal for code: NONERecorder
+    /// </summary>
+    public const string LiteralNONERecorder = "http://snomed.info/sct#74108008";
+
+    /// <summary>
     /// Literal for code: SanitaryPad
     /// </summary>
     public const string LiteralSanitaryPad = "74300007";
+
+    /// <summary>
+    /// Literal for code: NONESanitaryPad
+    /// </summary>
+    public const string LiteralNONESanitaryPad = "http://snomed.info/sct#74300007";
 
     /// <summary>
     /// Literal for code: LimbProsthesis
@@ -13348,9 +17678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLimbProsthesis = "74444006";
 
     /// <summary>
+    /// Literal for code: NONELimbProsthesis
+    /// </summary>
+    public const string LiteralNONELimbProsthesis = "http://snomed.info/sct#74444006";
+
+    /// <summary>
     /// Literal for code: Crutch
     /// </summary>
     public const string LiteralCrutch = "74566002";
+
+    /// <summary>
+    /// Literal for code: NONECrutch
+    /// </summary>
+    public const string LiteralNONECrutch = "http://snomed.info/sct#74566002";
 
     /// <summary>
     /// Literal for code: BoatswainQuoteSChair
@@ -13358,9 +17698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBoatswainQuoteSChair = "74884005";
 
     /// <summary>
+    /// Literal for code: NONEBoatswainQuoteSChair
+    /// </summary>
+    public const string LiteralNONEBoatswainQuoteSChair = "http://snomed.info/sct#74884005";
+
+    /// <summary>
     /// Literal for code: ShoringAndBracingMasonryAndWoodwork
     /// </summary>
     public const string LiteralShoringAndBracingMasonryAndWoodwork = "75075000";
+
+    /// <summary>
+    /// Literal for code: NONEShoringAndBracingMasonryAndWoodwork
+    /// </summary>
+    public const string LiteralNONEShoringAndBracingMasonryAndWoodwork = "http://snomed.info/sct#75075000";
 
     /// <summary>
     /// Literal for code: LocalAnesthesiaKit
@@ -13368,9 +17718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLocalAnesthesiaKit = "75187009";
 
     /// <summary>
+    /// Literal for code: NONELocalAnesthesiaKit
+    /// </summary>
+    public const string LiteralNONELocalAnesthesiaKit = "http://snomed.info/sct#75187009";
+
+    /// <summary>
     /// Literal for code: ArterialCannula
     /// </summary>
     public const string LiteralArterialCannula = "75192006";
+
+    /// <summary>
+    /// Literal for code: NONEArterialCannula
+    /// </summary>
+    public const string LiteralNONEArterialCannula = "http://snomed.info/sct#75192006";
 
     /// <summary>
     /// Literal for code: EscherichiaColiAntigenTestKit
@@ -13378,9 +17738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEscherichiaColiAntigenTestKit = "75750007";
 
     /// <summary>
+    /// Literal for code: NONEEscherichiaColiAntigenTestKit
+    /// </summary>
+    public const string LiteralNONEEscherichiaColiAntigenTestKit = "http://snomed.info/sct#75750007";
+
+    /// <summary>
     /// Literal for code: ManualRespirator
     /// </summary>
     public const string LiteralManualRespirator = "75751006";
+
+    /// <summary>
+    /// Literal for code: NONEManualRespirator
+    /// </summary>
+    public const string LiteralNONEManualRespirator = "http://snomed.info/sct#75751006";
 
     /// <summary>
     /// Literal for code: ArtificialKidney
@@ -13388,9 +17758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralArtificialKidney = "75780002";
 
     /// <summary>
+    /// Literal for code: NONEArtificialKidney
+    /// </summary>
+    public const string LiteralNONEArtificialKidney = "http://snomed.info/sct#75780002";
+
+    /// <summary>
     /// Literal for code: Skateboard
     /// </summary>
     public const string LiteralSkateboard = "75963008";
+
+    /// <summary>
+    /// Literal for code: NONESkateboard
+    /// </summary>
+    public const string LiteralNONESkateboard = "http://snomed.info/sct#75963008";
 
     /// <summary>
     /// Literal for code: StainlessSteelWireSuture
@@ -13398,9 +17778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStainlessSteelWireSuture = "76091005";
 
     /// <summary>
+    /// Literal for code: NONEStainlessSteelWireSuture
+    /// </summary>
+    public const string LiteralNONEStainlessSteelWireSuture = "http://snomed.info/sct#76091005";
+
+    /// <summary>
     /// Literal for code: GlassTube
     /// </summary>
     public const string LiteralGlassTube = "76123001";
+
+    /// <summary>
+    /// Literal for code: NONEGlassTube
+    /// </summary>
+    public const string LiteralNONEGlassTube = "http://snomed.info/sct#76123001";
 
     /// <summary>
     /// Literal for code: ElbowProsthesis
@@ -13408,9 +17798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralElbowProsthesis = "76428000";
 
     /// <summary>
+    /// Literal for code: NONEElbowProsthesis
+    /// </summary>
+    public const string LiteralNONEElbowProsthesis = "http://snomed.info/sct#76428000";
+
+    /// <summary>
     /// Literal for code: Apron
     /// </summary>
     public const string LiteralApron = "76433001";
+
+    /// <summary>
+    /// Literal for code: NONEApron
+    /// </summary>
+    public const string LiteralNONEApron = "http://snomed.info/sct#76433001";
 
     /// <summary>
     /// Literal for code: ArtificialPancreas
@@ -13418,9 +17818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralArtificialPancreas = "76664007";
 
     /// <summary>
+    /// Literal for code: NONEArtificialPancreas
+    /// </summary>
+    public const string LiteralNONEArtificialPancreas = "http://snomed.info/sct#76664007";
+
+    /// <summary>
     /// Literal for code: ApplicatorStick
     /// </summary>
     public const string LiteralApplicatorStick = "76705002";
+
+    /// <summary>
+    /// Literal for code: NONEApplicatorStick
+    /// </summary>
+    public const string LiteralNONEApplicatorStick = "http://snomed.info/sct#76705002";
 
     /// <summary>
     /// Literal for code: AbrasiveWheelMachinery
@@ -13428,9 +17838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAbrasiveWheelMachinery = "76825006";
 
     /// <summary>
+    /// Literal for code: NONEAbrasiveWheelMachinery
+    /// </summary>
+    public const string LiteralNONEAbrasiveWheelMachinery = "http://snomed.info/sct#76825006";
+
+    /// <summary>
     /// Literal for code: Guillotine
     /// </summary>
     public const string LiteralGuillotine = "76937009";
+
+    /// <summary>
+    /// Literal for code: NONEGuillotine
+    /// </summary>
+    public const string LiteralNONEGuillotine = "http://snomed.info/sct#76937009";
 
     /// <summary>
     /// Literal for code: StabilizingAppliance
@@ -13438,9 +17858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStabilizingAppliance = "7704007";
 
     /// <summary>
+    /// Literal for code: NONEStabilizingAppliance
+    /// </summary>
+    public const string LiteralNONEStabilizingAppliance = "http://snomed.info/sct#7704007";
+
+    /// <summary>
     /// Literal for code: HydrocephalicShuntCatheter
     /// </summary>
     public const string LiteralHydrocephalicShuntCatheter = "7733008";
+
+    /// <summary>
+    /// Literal for code: NONEHydrocephalicShuntCatheter
+    /// </summary>
+    public const string LiteralNONEHydrocephalicShuntCatheter = "http://snomed.info/sct#7733008";
 
     /// <summary>
     /// Literal for code: BonePin
@@ -13448,9 +17878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBonePin = "77444004";
 
     /// <summary>
+    /// Literal for code: NONEBonePin
+    /// </summary>
+    public const string LiteralNONEBonePin = "http://snomed.info/sct#77444004";
+
+    /// <summary>
     /// Literal for code: Band
     /// </summary>
     public const string LiteralBand = "77541009";
+
+    /// <summary>
+    /// Literal for code: NONEBand
+    /// </summary>
+    public const string LiteralNONEBand = "http://snomed.info/sct#77541009";
 
     /// <summary>
     /// Literal for code: Clip
@@ -13458,9 +17898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralClip = "77720000";
 
     /// <summary>
+    /// Literal for code: NONEClip
+    /// </summary>
+    public const string LiteralNONEClip = "http://snomed.info/sct#77720000";
+
+    /// <summary>
     /// Literal for code: ChemicalFiberCloth
     /// </summary>
     public const string LiteralChemicalFiberCloth = "77755003";
+
+    /// <summary>
+    /// Literal for code: NONEChemicalFiberCloth
+    /// </summary>
+    public const string LiteralNONEChemicalFiberCloth = "http://snomed.info/sct#77755003";
 
     /// <summary>
     /// Literal for code: BoneStaple
@@ -13468,9 +17918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBoneStaple = "77777004";
 
     /// <summary>
+    /// Literal for code: NONEBoneStaple
+    /// </summary>
+    public const string LiteralNONEBoneStaple = "http://snomed.info/sct#77777004";
+
+    /// <summary>
     /// Literal for code: NailClipper
     /// </summary>
     public const string LiteralNailClipper = "78279003";
+
+    /// <summary>
+    /// Literal for code: NONENailClipper
+    /// </summary>
+    public const string LiteralNONENailClipper = "http://snomed.info/sct#78279003";
 
     /// <summary>
     /// Literal for code: TesticularProsthesis
@@ -13478,9 +17938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTesticularProsthesis = "78498003";
 
     /// <summary>
+    /// Literal for code: NONETesticularProsthesis
+    /// </summary>
+    public const string LiteralNONETesticularProsthesis = "http://snomed.info/sct#78498003";
+
+    /// <summary>
     /// Literal for code: NylonSuture
     /// </summary>
     public const string LiteralNylonSuture = "78641001";
+
+    /// <summary>
+    /// Literal for code: NONENylonSuture
+    /// </summary>
+    public const string LiteralNONENylonSuture = "http://snomed.info/sct#78641001";
 
     /// <summary>
     /// Literal for code: ElectronicMonitor
@@ -13488,9 +17958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralElectronicMonitor = "78886001";
 
     /// <summary>
+    /// Literal for code: NONEElectronicMonitor
+    /// </summary>
+    public const string LiteralNONEElectronicMonitor = "http://snomed.info/sct#78886001";
+
+    /// <summary>
     /// Literal for code: GreenfieldFilter
     /// </summary>
     public const string LiteralGreenfieldFilter = "79051006";
+
+    /// <summary>
+    /// Literal for code: NONEGreenfieldFilter
+    /// </summary>
+    public const string LiteralNONEGreenfieldFilter = "http://snomed.info/sct#79051006";
 
     /// <summary>
     /// Literal for code: Needle
@@ -13498,9 +17978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNeedle = "79068005";
 
     /// <summary>
+    /// Literal for code: NONENeedle
+    /// </summary>
+    public const string LiteralNONENeedle = "http://snomed.info/sct#79068005";
+
+    /// <summary>
     /// Literal for code: VehicleMountedWorkPlatform
     /// </summary>
     public const string LiteralVehicleMountedWorkPlatform = "79218005";
+
+    /// <summary>
+    /// Literal for code: NONEVehicleMountedWorkPlatform
+    /// </summary>
+    public const string LiteralNONEVehicleMountedWorkPlatform = "http://snomed.info/sct#79218005";
 
     /// <summary>
     /// Literal for code: Tampon
@@ -13508,9 +17998,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTampon = "79287008";
 
     /// <summary>
+    /// Literal for code: NONETampon
+    /// </summary>
+    public const string LiteralNONETampon = "http://snomed.info/sct#79287008";
+
+    /// <summary>
     /// Literal for code: MechanicalPowerPress
     /// </summary>
     public const string LiteralMechanicalPowerPress = "793009";
+
+    /// <summary>
+    /// Literal for code: NONEMechanicalPowerPress
+    /// </summary>
+    public const string LiteralNONEMechanicalPowerPress = "http://snomed.info/sct#793009";
 
     /// <summary>
     /// Literal for code: Chute
@@ -13518,9 +18018,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChute = "79401009";
 
     /// <summary>
+    /// Literal for code: NONEChute
+    /// </summary>
+    public const string LiteralNONEChute = "http://snomed.info/sct#79401009";
+
+    /// <summary>
     /// Literal for code: FootProtection
     /// </summary>
     public const string LiteralFootProtection = "79438009";
+
+    /// <summary>
+    /// Literal for code: NONEFootProtection
+    /// </summary>
+    public const string LiteralNONEFootProtection = "http://snomed.info/sct#79438009";
 
     /// <summary>
     /// Literal for code: SwingOrSlidingCutOffSaw
@@ -13528,9 +18038,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSwingOrSlidingCutOffSaw = "79481007";
 
     /// <summary>
+    /// Literal for code: NONESwingOrSlidingCutOffSaw
+    /// </summary>
+    public const string LiteralNONESwingOrSlidingCutOffSaw = "http://snomed.info/sct#79481007";
+
+    /// <summary>
     /// Literal for code: TransvenousElectrode
     /// </summary>
     public const string LiteralTransvenousElectrode = "79593001";
+
+    /// <summary>
+    /// Literal for code: NONETransvenousElectrode
+    /// </summary>
+    public const string LiteralNONETransvenousElectrode = "http://snomed.info/sct#79593001";
 
     /// <summary>
     /// Literal for code: StorageTank
@@ -13538,9 +18058,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStorageTank = "79618001";
 
     /// <summary>
+    /// Literal for code: NONEStorageTank
+    /// </summary>
+    public const string LiteralNONEStorageTank = "http://snomed.info/sct#79618001";
+
+    /// <summary>
     /// Literal for code: ThreeWheeledAllTerrainVehicle
     /// </summary>
     public const string LiteralThreeWheeledAllTerrainVehicle = "7968002";
+
+    /// <summary>
+    /// Literal for code: NONEThreeWheeledAllTerrainVehicle
+    /// </summary>
+    public const string LiteralNONEThreeWheeledAllTerrainVehicle = "http://snomed.info/sct#7968002";
 
     /// <summary>
     /// Literal for code: FogartyCatheter
@@ -13548,9 +18078,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFogartyCatheter = "7971005";
 
     /// <summary>
+    /// Literal for code: NONEFogartyCatheter
+    /// </summary>
+    public const string LiteralNONEFogartyCatheter = "http://snomed.info/sct#7971005";
+
+    /// <summary>
     /// Literal for code: ElectricBlanket
     /// </summary>
     public const string LiteralElectricBlanket = "79811009";
+
+    /// <summary>
+    /// Literal for code: NONEElectricBlanket
+    /// </summary>
+    public const string LiteralNONEElectricBlanket = "http://snomed.info/sct#79811009";
 
     /// <summary>
     /// Literal for code: HickmanCatheter
@@ -13558,9 +18098,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHickmanCatheter = "79834000";
 
     /// <summary>
+    /// Literal for code: NONEHickmanCatheter
+    /// </summary>
+    public const string LiteralNONEHickmanCatheter = "http://snomed.info/sct#79834000";
+
+    /// <summary>
     /// Literal for code: PediatricBed
     /// </summary>
     public const string LiteralPediatricBed = "80278003";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricBed
+    /// </summary>
+    public const string LiteralNONEPediatricBed = "http://snomed.info/sct#80278003";
 
     /// <summary>
     /// Literal for code: ChainFall
@@ -13568,9 +18118,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChainFall = "80404000";
 
     /// <summary>
+    /// Literal for code: NONEChainFall
+    /// </summary>
+    public const string LiteralNONEChainFall = "http://snomed.info/sct#80404000";
+
+    /// <summary>
     /// Literal for code: Denture
     /// </summary>
     public const string LiteralDenture = "8060009";
+
+    /// <summary>
+    /// Literal for code: NONEDenture
+    /// </summary>
+    public const string LiteralNONEDenture = "http://snomed.info/sct#8060009";
 
     /// <summary>
     /// Literal for code: Analyzer
@@ -13578,9 +18138,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAnalyzer = "80617005";
 
     /// <summary>
+    /// Literal for code: NONEAnalyzer
+    /// </summary>
+    public const string LiteralNONEAnalyzer = "http://snomed.info/sct#80617005";
+
+    /// <summary>
     /// Literal for code: MotorHome
     /// </summary>
     public const string LiteralMotorHome = "80664005";
+
+    /// <summary>
+    /// Literal for code: NONEMotorHome
+    /// </summary>
+    public const string LiteralNONEMotorHome = "http://snomed.info/sct#80664005";
 
     /// <summary>
     /// Literal for code: ReflexHammer
@@ -13588,9 +18158,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralReflexHammer = "80853009";
 
     /// <summary>
+    /// Literal for code: NONEReflexHammer
+    /// </summary>
+    public const string LiteralNONEReflexHammer = "http://snomed.info/sct#80853009";
+
+    /// <summary>
     /// Literal for code: Oven
     /// </summary>
     public const string LiteralOven = "80950008";
+
+    /// <summary>
+    /// Literal for code: NONEOven
+    /// </summary>
+    public const string LiteralNONEOven = "http://snomed.info/sct#80950008";
 
     /// <summary>
     /// Literal for code: Crane
@@ -13598,9 +18178,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCrane = "8118007";
 
     /// <summary>
+    /// Literal for code: NONECrane
+    /// </summary>
+    public const string LiteralNONECrane = "http://snomed.info/sct#8118007";
+
+    /// <summary>
     /// Literal for code: Cloth
     /// </summary>
     public const string LiteralCloth = "81293006";
+
+    /// <summary>
+    /// Literal for code: NONECloth
+    /// </summary>
+    public const string LiteralNONECloth = "http://snomed.info/sct#81293006";
 
     /// <summary>
     /// Literal for code: SocketWrench
@@ -13608,9 +18198,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSocketWrench = "81317009";
 
     /// <summary>
+    /// Literal for code: NONESocketWrench
+    /// </summary>
+    public const string LiteralNONESocketWrench = "http://snomed.info/sct#81317009";
+
+    /// <summary>
     /// Literal for code: EnzymeImmunoassayAnalyzer
     /// </summary>
     public const string LiteralEnzymeImmunoassayAnalyzer = "81320001";
+
+    /// <summary>
+    /// Literal for code: NONEEnzymeImmunoassayAnalyzer
+    /// </summary>
+    public const string LiteralNONEEnzymeImmunoassayAnalyzer = "http://snomed.info/sct#81320001";
 
     /// <summary>
     /// Literal for code: Adhesive
@@ -13618,9 +18218,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdhesive = "8170008";
 
     /// <summary>
+    /// Literal for code: NONEAdhesive
+    /// </summary>
+    public const string LiteralNONEAdhesive = "http://snomed.info/sct#8170008";
+
+    /// <summary>
     /// Literal for code: AllTerrainVehicle
     /// </summary>
     public const string LiteralAllTerrainVehicle = "81826000";
+
+    /// <summary>
+    /// Literal for code: NONEAllTerrainVehicle
+    /// </summary>
+    public const string LiteralNONEAllTerrainVehicle = "http://snomed.info/sct#81826000";
 
     /// <summary>
     /// Literal for code: RadialSaw
@@ -13628,9 +18238,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRadialSaw = "81892008";
 
     /// <summary>
+    /// Literal for code: NONERadialSaw
+    /// </summary>
+    public const string LiteralNONERadialSaw = "http://snomed.info/sct#81892008";
+
+    /// <summary>
     /// Literal for code: Hemostat
     /// </summary>
     public const string LiteralHemostat = "82379000";
+
+    /// <summary>
+    /// Literal for code: NONEHemostat
+    /// </summary>
+    public const string LiteralNONEHemostat = "http://snomed.info/sct#82379000";
 
     /// <summary>
     /// Literal for code: PeripheralIntravenousCatheter
@@ -13638,9 +18258,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPeripheralIntravenousCatheter = "82449006";
 
     /// <summary>
+    /// Literal for code: NONEPeripheralIntravenousCatheter
+    /// </summary>
+    public const string LiteralNONEPeripheralIntravenousCatheter = "http://snomed.info/sct#82449006";
+
+    /// <summary>
     /// Literal for code: BonyTissueForceps
     /// </summary>
     public const string LiteralBonyTissueForceps = "82657000";
+
+    /// <summary>
+    /// Literal for code: NONEBonyTissueForceps
+    /// </summary>
+    public const string LiteralNONEBonyTissueForceps = "http://snomed.info/sct#82657000";
 
     /// <summary>
     /// Literal for code: RoboticArm
@@ -13648,9 +18278,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRoboticArm = "82830000";
 
     /// <summary>
+    /// Literal for code: NONERoboticArm
+    /// </summary>
+    public const string LiteralNONERoboticArm = "http://snomed.info/sct#82830000";
+
+    /// <summary>
     /// Literal for code: SafetyBelt
     /// </summary>
     public const string LiteralSafetyBelt = "82879008";
+
+    /// <summary>
+    /// Literal for code: NONESafetyBelt
+    /// </summary>
+    public const string LiteralNONESafetyBelt = "http://snomed.info/sct#82879008";
 
     /// <summary>
     /// Literal for code: Tube
@@ -13658,9 +18298,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTube = "83059008";
 
     /// <summary>
+    /// Literal for code: NONETube
+    /// </summary>
+    public const string LiteralNONETube = "http://snomed.info/sct#83059008";
+
+    /// <summary>
     /// Literal for code: AudioAnalgesiaUnit
     /// </summary>
     public const string LiteralAudioAnalgesiaUnit = "83315005";
+
+    /// <summary>
+    /// Literal for code: NONEAudioAnalgesiaUnit
+    /// </summary>
+    public const string LiteralNONEAudioAnalgesiaUnit = "http://snomed.info/sct#83315005";
 
     /// <summary>
     /// Literal for code: DipTank
@@ -13668,9 +18318,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDipTank = "83320005";
 
     /// <summary>
+    /// Literal for code: NONEDipTank
+    /// </summary>
+    public const string LiteralNONEDipTank = "http://snomed.info/sct#83320005";
+
+    /// <summary>
     /// Literal for code: PlasticShoes
     /// </summary>
     public const string LiteralPlasticShoes = "83369007";
+
+    /// <summary>
+    /// Literal for code: NONEPlasticShoes
+    /// </summary>
+    public const string LiteralNONEPlasticShoes = "http://snomed.info/sct#83369007";
 
     /// <summary>
     /// Literal for code: Robot
@@ -13678,9 +18338,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRobot = "83517001";
 
     /// <summary>
+    /// Literal for code: NONERobot
+    /// </summary>
+    public const string LiteralNONERobot = "http://snomed.info/sct#83517001";
+
+    /// <summary>
     /// Literal for code: BandSaw
     /// </summary>
     public const string LiteralBandSaw = "8384009";
+
+    /// <summary>
+    /// Literal for code: NONEBandSaw
+    /// </summary>
+    public const string LiteralNONEBandSaw = "http://snomed.info/sct#8384009";
 
     /// <summary>
     /// Literal for code: ManLift
@@ -13688,9 +18358,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralManLift = "83903000";
 
     /// <summary>
+    /// Literal for code: NONEManLift
+    /// </summary>
+    public const string LiteralNONEManLift = "http://snomed.info/sct#83903000";
+
+    /// <summary>
     /// Literal for code: SkiTow
     /// </summary>
     public const string LiteralSkiTow = "84023008";
+
+    /// <summary>
+    /// Literal for code: NONESkiTow
+    /// </summary>
+    public const string LiteralNONESkiTow = "http://snomed.info/sct#84023008";
 
     /// <summary>
     /// Literal for code: BileCollectionBag
@@ -13698,9 +18378,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBileCollectionBag = "8407004";
 
     /// <summary>
+    /// Literal for code: NONEBileCollectionBag
+    /// </summary>
+    public const string LiteralNONEBileCollectionBag = "http://snomed.info/sct#8407004";
+
+    /// <summary>
     /// Literal for code: Pliers
     /// </summary>
     public const string LiteralPliers = "84330009";
+
+    /// <summary>
+    /// Literal for code: NONEPliers
+    /// </summary>
+    public const string LiteralNONEPliers = "http://snomed.info/sct#84330009";
 
     /// <summary>
     /// Literal for code: Jail
@@ -13708,9 +18398,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralJail = "8434001";
 
     /// <summary>
+    /// Literal for code: NONEJail
+    /// </summary>
+    public const string LiteralNONEJail = "http://snomed.info/sct#8434001";
+
+    /// <summary>
     /// Literal for code: ChainSaw
     /// </summary>
     public const string LiteralChainSaw = "84444002";
+
+    /// <summary>
+    /// Literal for code: NONEChainSaw
+    /// </summary>
+    public const string LiteralNONEChainSaw = "http://snomed.info/sct#84444002";
 
     /// <summary>
     /// Literal for code: IntramedullaryRod
@@ -13718,9 +18418,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIntramedullaryRod = "8451008";
 
     /// <summary>
+    /// Literal for code: NONEIntramedullaryRod
+    /// </summary>
+    public const string LiteralNONEIntramedullaryRod = "http://snomed.info/sct#8451008";
+
+    /// <summary>
     /// Literal for code: Barricade
     /// </summary>
     public const string LiteralBarricade = "84546002";
+
+    /// <summary>
+    /// Literal for code: NONEBarricade
+    /// </summary>
+    public const string LiteralNONEBarricade = "http://snomed.info/sct#84546002";
 
     /// <summary>
     /// Literal for code: DetonatingCord
@@ -13728,9 +18438,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDetonatingCord = "84599008";
 
     /// <summary>
+    /// Literal for code: NONEDetonatingCord
+    /// </summary>
+    public const string LiteralNONEDetonatingCord = "http://snomed.info/sct#84599008";
+
+    /// <summary>
     /// Literal for code: ImplantableDentalProsthesis
     /// </summary>
     public const string LiteralImplantableDentalProsthesis = "84610002";
+
+    /// <summary>
+    /// Literal for code: NONEImplantableDentalProsthesis
+    /// </summary>
+    public const string LiteralNONEImplantableDentalProsthesis = "http://snomed.info/sct#84610002";
 
     /// <summary>
     /// Literal for code: AorticValveProsthesis
@@ -13738,9 +18458,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAorticValveProsthesis = "84683006";
 
     /// <summary>
+    /// Literal for code: NONEAorticValveProsthesis
+    /// </summary>
+    public const string LiteralNONEAorticValveProsthesis = "http://snomed.info/sct#84683006";
+
+    /// <summary>
     /// Literal for code: AdhesiveTape
     /// </summary>
     public const string LiteralAdhesiveTape = "84756000";
+
+    /// <summary>
+    /// Literal for code: NONEAdhesiveTape
+    /// </summary>
+    public const string LiteralNONEAdhesiveTape = "http://snomed.info/sct#84756000";
 
     /// <summary>
     /// Literal for code: BoringMachine
@@ -13748,9 +18478,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBoringMachine = "85106006";
 
     /// <summary>
+    /// Literal for code: NONEBoringMachine
+    /// </summary>
+    public const string LiteralNONEBoringMachine = "http://snomed.info/sct#85106006";
+
+    /// <summary>
     /// Literal for code: AbortionPump
     /// </summary>
     public const string LiteralAbortionPump = "85329008";
+
+    /// <summary>
+    /// Literal for code: NONEAbortionPump
+    /// </summary>
+    public const string LiteralNONEAbortionPump = "http://snomed.info/sct#85329008";
 
     /// <summary>
     /// Literal for code: Cart
@@ -13758,9 +18498,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCart = "85455005";
 
     /// <summary>
+    /// Literal for code: NONECart
+    /// </summary>
+    public const string LiteralNONECart = "http://snomed.info/sct#85455005";
+
+    /// <summary>
     /// Literal for code: EngravingPress
     /// </summary>
     public const string LiteralEngravingPress = "85684007";
+
+    /// <summary>
+    /// Literal for code: NONEEngravingPress
+    /// </summary>
+    public const string LiteralNONEEngravingPress = "http://snomed.info/sct#85684007";
 
     /// <summary>
     /// Literal for code: GolfClub
@@ -13768,9 +18518,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGolfClub = "86056006";
 
     /// <summary>
+    /// Literal for code: NONEGolfClub
+    /// </summary>
+    public const string LiteralNONEGolfClub = "http://snomed.info/sct#86056006";
+
+    /// <summary>
     /// Literal for code: BloodElectrolyteAnalyzer
     /// </summary>
     public const string LiteralBloodElectrolyteAnalyzer = "8615009";
+
+    /// <summary>
+    /// Literal for code: NONEBloodElectrolyteAnalyzer
+    /// </summary>
+    public const string LiteralNONEBloodElectrolyteAnalyzer = "http://snomed.info/sct#8615009";
 
     /// <summary>
     /// Literal for code: Laparoscope
@@ -13778,9 +18538,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLaparoscope = "86174004";
 
     /// <summary>
+    /// Literal for code: NONELaparoscope
+    /// </summary>
+    public const string LiteralNONELaparoscope = "http://snomed.info/sct#86174004";
+
+    /// <summary>
     /// Literal for code: ElectrocardiographicMonitorAndRecorder
     /// </summary>
     public const string LiteralElectrocardiographicMonitorAndRecorder = "86184003";
+
+    /// <summary>
+    /// Literal for code: NONEElectrocardiographicMonitorAndRecorder
+    /// </summary>
+    public const string LiteralNONEElectrocardiographicMonitorAndRecorder = "http://snomed.info/sct#86184003";
 
     /// <summary>
     /// Literal for code: Table
@@ -13788,9 +18558,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTable = "86407004";
 
     /// <summary>
+    /// Literal for code: NONETable
+    /// </summary>
+    public const string LiteralNONETable = "http://snomed.info/sct#86407004";
+
+    /// <summary>
     /// Literal for code: MortisingMachine
     /// </summary>
     public const string LiteralMortisingMachine = "8643000";
+
+    /// <summary>
+    /// Literal for code: NONEMortisingMachine
+    /// </summary>
+    public const string LiteralNONEMortisingMachine = "http://snomed.info/sct#8643000";
 
     /// <summary>
     /// Literal for code: DefibrillatorPaddle
@@ -13798,9 +18578,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDefibrillatorPaddle = "86453006";
 
     /// <summary>
+    /// Literal for code: NONEDefibrillatorPaddle
+    /// </summary>
+    public const string LiteralNONEDefibrillatorPaddle = "http://snomed.info/sct#86453006";
+
+    /// <summary>
     /// Literal for code: ArteriovenousShuntCatheter
     /// </summary>
     public const string LiteralArteriovenousShuntCatheter = "86572008";
+
+    /// <summary>
+    /// Literal for code: NONEArteriovenousShuntCatheter
+    /// </summary>
+    public const string LiteralNONEArteriovenousShuntCatheter = "http://snomed.info/sct#86572008";
 
     /// <summary>
     /// Literal for code: BalloonPump
@@ -13808,9 +18598,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBalloonPump = "86768006";
 
     /// <summary>
+    /// Literal for code: NONEBalloonPump
+    /// </summary>
+    public const string LiteralNONEBalloonPump = "http://snomed.info/sct#86768006";
+
+    /// <summary>
     /// Literal for code: DivingLadder
     /// </summary>
     public const string LiteralDivingLadder = "86816008";
+
+    /// <summary>
+    /// Literal for code: NONEDivingLadder
+    /// </summary>
+    public const string LiteralNONEDivingLadder = "http://snomed.info/sct#86816008";
 
     /// <summary>
     /// Literal for code: ProtectiveShield
@@ -13818,9 +18618,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProtectiveShield = "8682003";
 
     /// <summary>
+    /// Literal for code: NONEProtectiveShield
+    /// </summary>
+    public const string LiteralNONEProtectiveShield = "http://snomed.info/sct#8682003";
+
+    /// <summary>
     /// Literal for code: Tool
     /// </summary>
     public const string LiteralTool = "86967005";
+
+    /// <summary>
+    /// Literal for code: NONETool
+    /// </summary>
+    public const string LiteralNONETool = "http://snomed.info/sct#86967005";
 
     /// <summary>
     /// Literal for code: SolderingIron
@@ -13828,9 +18638,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSolderingIron = "87088005";
 
     /// <summary>
+    /// Literal for code: NONESolderingIron
+    /// </summary>
+    public const string LiteralNONESolderingIron = "http://snomed.info/sct#87088005";
+
+    /// <summary>
     /// Literal for code: ClothingMaterial
     /// </summary>
     public const string LiteralClothingMaterial = "87140005";
+
+    /// <summary>
+    /// Literal for code: NONEClothingMaterial
+    /// </summary>
+    public const string LiteralNONEClothingMaterial = "http://snomed.info/sct#87140005";
 
     /// <summary>
     /// Literal for code: Cane
@@ -13838,9 +18658,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCane = "87405001";
 
     /// <summary>
+    /// Literal for code: NONECane
+    /// </summary>
+    public const string LiteralNONECane = "http://snomed.info/sct#87405001";
+
+    /// <summary>
     /// Literal for code: PhysicalRestraintStructure
     /// </summary>
     public const string LiteralPhysicalRestraintStructure = "87710003";
+
+    /// <summary>
+    /// Literal for code: NONEPhysicalRestraintStructure
+    /// </summary>
+    public const string LiteralNONEPhysicalRestraintStructure = "http://snomed.info/sct#87710003";
 
     /// <summary>
     /// Literal for code: Tester
@@ -13848,9 +18678,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTester = "87717000";
 
     /// <summary>
+    /// Literal for code: NONETester
+    /// </summary>
+    public const string LiteralNONETester = "http://snomed.info/sct#87717000";
+
+    /// <summary>
     /// Literal for code: BloodCellCounterAndAnalyzer
     /// </summary>
     public const string LiteralBloodCellCounterAndAnalyzer = "87851008";
+
+    /// <summary>
+    /// Literal for code: NONEBloodCellCounterAndAnalyzer
+    /// </summary>
+    public const string LiteralNONEBloodCellCounterAndAnalyzer = "http://snomed.info/sct#87851008";
 
     /// <summary>
     /// Literal for code: Footwear
@@ -13858,9 +18698,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFootwear = "88063004";
 
     /// <summary>
+    /// Literal for code: NONEFootwear
+    /// </summary>
+    public const string LiteralNONEFootwear = "http://snomed.info/sct#88063004";
+
+    /// <summary>
     /// Literal for code: MaximumSecurityCell
     /// </summary>
     public const string LiteralMaximumSecurityCell = "88168006";
+
+    /// <summary>
+    /// Literal for code: NONEMaximumSecurityCell
+    /// </summary>
+    public const string LiteralNONEMaximumSecurityCell = "http://snomed.info/sct#88168006";
 
     /// <summary>
     /// Literal for code: DiagnosticImplant
@@ -13868,9 +18718,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDiagnosticImplant = "882002";
 
     /// <summary>
+    /// Literal for code: NONEDiagnosticImplant
+    /// </summary>
+    public const string LiteralNONEDiagnosticImplant = "http://snomed.info/sct#882002";
+
+    /// <summary>
     /// Literal for code: IntravenousAnesthesiaAdministrationSet
     /// </summary>
     public const string LiteralIntravenousAnesthesiaAdministrationSet = "88208003";
+
+    /// <summary>
+    /// Literal for code: NONEIntravenousAnesthesiaAdministrationSet
+    /// </summary>
+    public const string LiteralNONEIntravenousAnesthesiaAdministrationSet = "http://snomed.info/sct#88208003";
 
     /// <summary>
     /// Literal for code: ArtificialTissue
@@ -13878,9 +18738,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralArtificialTissue = "88765001";
 
     /// <summary>
+    /// Literal for code: NONEArtificialTissue
+    /// </summary>
+    public const string LiteralNONEArtificialTissue = "http://snomed.info/sct#88765001";
+
+    /// <summary>
     /// Literal for code: HypodermicNeedle
     /// </summary>
     public const string LiteralHypodermicNeedle = "88959008";
+
+    /// <summary>
+    /// Literal for code: NONEHypodermicNeedle
+    /// </summary>
+    public const string LiteralNONEHypodermicNeedle = "http://snomed.info/sct#88959008";
 
     /// <summary>
     /// Literal for code: Stretcher
@@ -13888,9 +18758,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStretcher = "89149003";
 
     /// <summary>
+    /// Literal for code: NONEStretcher
+    /// </summary>
+    public const string LiteralNONEStretcher = "http://snomed.info/sct#89149003";
+
+    /// <summary>
     /// Literal for code: LeatherShoes
     /// </summary>
     public const string LiteralLeatherShoes = "89236003";
+
+    /// <summary>
+    /// Literal for code: NONELeatherShoes
+    /// </summary>
+    public const string LiteralNONELeatherShoes = "http://snomed.info/sct#89236003";
 
     /// <summary>
     /// Literal for code: BloodCultureAnalyzer
@@ -13898,9 +18778,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBloodCultureAnalyzer = "89509004";
 
     /// <summary>
+    /// Literal for code: NONEBloodCultureAnalyzer
+    /// </summary>
+    public const string LiteralNONEBloodCultureAnalyzer = "http://snomed.info/sct#89509004";
+
+    /// <summary>
     /// Literal for code: MagneticResonanceImagingUnit
     /// </summary>
     public const string LiteralMagneticResonanceImagingUnit = "90003000";
+
+    /// <summary>
+    /// Literal for code: NONEMagneticResonanceImagingUnit
+    /// </summary>
+    public const string LiteralNONEMagneticResonanceImagingUnit = "http://snomed.info/sct#90003000";
 
     /// <summary>
     /// Literal for code: AlcoholSponge
@@ -13908,9 +18798,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAlcoholSponge = "90035000";
 
     /// <summary>
+    /// Literal for code: NONEAlcoholSponge
+    /// </summary>
+    public const string LiteralNONEAlcoholSponge = "http://snomed.info/sct#90035000";
+
+    /// <summary>
     /// Literal for code: CastCutter
     /// </summary>
     public const string LiteralCastCutter = "90082007";
+
+    /// <summary>
+    /// Literal for code: NONECastCutter
+    /// </summary>
+    public const string LiteralNONECastCutter = "http://snomed.info/sct#90082007";
 
     /// <summary>
     /// Literal for code: MetalPeriostealImplant
@@ -13918,9 +18818,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMetalPeriostealImplant = "90134004";
 
     /// <summary>
+    /// Literal for code: NONEMetalPeriostealImplant
+    /// </summary>
+    public const string LiteralNONEMetalPeriostealImplant = "http://snomed.info/sct#90134004";
+
+    /// <summary>
     /// Literal for code: VentricularIntracranialCatheter
     /// </summary>
     public const string LiteralVentricularIntracranialCatheter = "9017009";
+
+    /// <summary>
+    /// Literal for code: NONEVentricularIntracranialCatheter
+    /// </summary>
+    public const string LiteralNONEVentricularIntracranialCatheter = "http://snomed.info/sct#9017009";
 
     /// <summary>
     /// Literal for code: Colonoscope
@@ -13928,9 +18838,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralColonoscope = "90412006";
 
     /// <summary>
+    /// Literal for code: NONEColonoscope
+    /// </summary>
+    public const string LiteralNONEColonoscope = "http://snomed.info/sct#90412006";
+
+    /// <summary>
     /// Literal for code: EarProsthesis
     /// </summary>
     public const string LiteralEarProsthesis = "90504001";
+
+    /// <summary>
+    /// Literal for code: NONEEarProsthesis
+    /// </summary>
+    public const string LiteralNONEEarProsthesis = "http://snomed.info/sct#90504001";
 
     /// <summary>
     /// Literal for code: RubberShoes
@@ -13938,9 +18858,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRubberShoes = "90913005";
 
     /// <summary>
+    /// Literal for code: NONERubberShoes
+    /// </summary>
+    public const string LiteralNONERubberShoes = "http://snomed.info/sct#90913005";
+
+    /// <summary>
     /// Literal for code: AbrasiveBlastByCleaningNozzles
     /// </summary>
     public const string LiteralAbrasiveBlastByCleaningNozzles = "90948003";
+
+    /// <summary>
+    /// Literal for code: NONEAbrasiveBlastByCleaningNozzles
+    /// </summary>
+    public const string LiteralNONEAbrasiveBlastByCleaningNozzles = "http://snomed.info/sct#90948003";
 
     /// <summary>
     /// Literal for code: Support
@@ -13948,9 +18878,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSupport = "9096001";
 
     /// <summary>
+    /// Literal for code: NONESupport
+    /// </summary>
+    public const string LiteralNONESupport = "http://snomed.info/sct#9096001";
+
+    /// <summary>
     /// Literal for code: FeedingCatheter
     /// </summary>
     public const string LiteralFeedingCatheter = "9129003";
+
+    /// <summary>
+    /// Literal for code: NONEFeedingCatheter
+    /// </summary>
+    public const string LiteralNONEFeedingCatheter = "http://snomed.info/sct#9129003";
 
     /// <summary>
     /// Literal for code: ThomasCollar
@@ -13958,9 +18898,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralThomasCollar = "91294003";
 
     /// <summary>
+    /// Literal for code: NONEThomasCollar
+    /// </summary>
+    public const string LiteralNONEThomasCollar = "http://snomed.info/sct#91294003";
+
+    /// <summary>
     /// Literal for code: HyperbaricChamber
     /// </summary>
     public const string LiteralHyperbaricChamber = "91318002";
+
+    /// <summary>
+    /// Literal for code: NONEHyperbaricChamber
+    /// </summary>
+    public const string LiteralNONEHyperbaricChamber = "http://snomed.info/sct#91318002";
 
     /// <summary>
     /// Literal for code: Basin
@@ -13968,9 +18918,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBasin = "91535004";
 
     /// <summary>
+    /// Literal for code: NONEBasin
+    /// </summary>
+    public const string LiteralNONEBasin = "http://snomed.info/sct#91535004";
+
+    /// <summary>
     /// Literal for code: HospitalBed
     /// </summary>
     public const string LiteralHospitalBed = "91537007";
+
+    /// <summary>
+    /// Literal for code: NONEHospitalBed
+    /// </summary>
+    public const string LiteralNONEHospitalBed = "http://snomed.info/sct#91537007";
 
     /// <summary>
     /// Literal for code: Bobsled
@@ -13978,9 +18938,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBobsled = "9419002";
 
     /// <summary>
+    /// Literal for code: NONEBobsled
+    /// </summary>
+    public const string LiteralNONEBobsled = "http://snomed.info/sct#9419002";
+
+    /// <summary>
     /// Literal for code: ElasticBandage
     /// </summary>
     public const string LiteralElasticBandage = "9458007";
+
+    /// <summary>
+    /// Literal for code: NONEElasticBandage
+    /// </summary>
+    public const string LiteralNONEElasticBandage = "http://snomed.info/sct#9458007";
 
     /// <summary>
     /// Literal for code: Dermatotome
@@ -13988,9 +18958,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDermatotome = "9611009";
 
     /// <summary>
+    /// Literal for code: NONEDermatotome
+    /// </summary>
+    public const string LiteralNONEDermatotome = "http://snomed.info/sct#9611009";
+
+    /// <summary>
     /// Literal for code: AirFilter
     /// </summary>
     public const string LiteralAirFilter = "972002";
+
+    /// <summary>
+    /// Literal for code: NONEAirFilter
+    /// </summary>
+    public const string LiteralNONEAirFilter = "http://snomed.info/sct#972002";
 
     /// <summary>
     /// Literal for code: MycoplasmaPulmonisAntibodyTestKit
@@ -13998,9 +18978,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMycoplasmaPulmonisAntibodyTestKit = "9817005";
 
     /// <summary>
+    /// Literal for code: NONEMycoplasmaPulmonisAntibodyTestKit
+    /// </summary>
+    public const string LiteralNONEMycoplasmaPulmonisAntibodyTestKit = "http://snomed.info/sct#9817005";
+
+    /// <summary>
     /// Literal for code: CargoHandlingGear
     /// </summary>
     public const string LiteralCargoHandlingGear = "9883003";
+
+    /// <summary>
+    /// Literal for code: NONECargoHandlingGear
+    /// </summary>
+    public const string LiteralNONECargoHandlingGear = "http://snomed.info/sct#9883003";
 
     /// <summary>
     /// Literal for code: LinenCloth
@@ -14008,8 +18998,2024 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLinenCloth = "989005";
 
     /// <summary>
+    /// Literal for code: NONELinenCloth
+    /// </summary>
+    public const string LiteralNONELinenCloth = "http://snomed.info/sct#989005";
+
+    /// <summary>
     /// Literal for code: Brush
     /// </summary>
     public const string LiteralBrush = "994005";
+
+    /// <summary>
+    /// Literal for code: NONEBrush
+    /// </summary>
+    public const string LiteralNONEBrush = "http://snomed.info/sct#994005";
+
+    /// <summary>
+    /// Dictionary for looking up DeviceType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "102303004", VascularProsthesis }, 
+      { "http://snomed.info/sct#102303004", VascularProsthesis }, 
+      { "102304005", MeasuringRuler }, 
+      { "http://snomed.info/sct#102304005", MeasuringRuler }, 
+      { "102305006", IntramedullaryReamer }, 
+      { "http://snomed.info/sct#102305006", IntramedullaryReamer }, 
+      { "102306007", Reamer }, 
+      { "http://snomed.info/sct#102306007", Reamer }, 
+      { "102307003", SurgicalKnife }, 
+      { "http://snomed.info/sct#102307003", SurgicalKnife }, 
+      { "102308008", Scalpel }, 
+      { "http://snomed.info/sct#102308008", Scalpel }, 
+      { "102309000", SurgicalSaw }, 
+      { "http://snomed.info/sct#102309000", SurgicalSaw }, 
+      { "102310005", GigliQuoteSWireSaw }, 
+      { "http://snomed.info/sct#102310005", GigliQuoteSWireSaw }, 
+      { "102311009", StarckDilator }, 
+      { "http://snomed.info/sct#102311009", StarckDilator }, 
+      { "102312002", AtherectomyDevice }, 
+      { "http://snomed.info/sct#102312002", AtherectomyDevice }, 
+      { "102313007", RotationalAtherectomyDevice }, 
+      { "http://snomed.info/sct#102313007", RotationalAtherectomyDevice }, 
+      { "102314001", EmbolizationCoil }, 
+      { "http://snomed.info/sct#102314001", EmbolizationCoil }, 
+      { "102315000", EmbolizationBall }, 
+      { "http://snomed.info/sct#102315000", EmbolizationBall }, 
+      { "102316004", EmbolizationParticulate }, 
+      { "http://snomed.info/sct#102316004", EmbolizationParticulate }, 
+      { "102317008", GuidingCatheter }, 
+      { "http://snomed.info/sct#102317008", GuidingCatheter }, 
+      { "102318003", ImplantableVenousCatheter }, 
+      { "http://snomed.info/sct#102318003", ImplantableVenousCatheter }, 
+      { "102319006", PercutaneousTransluminalAngioplastyBalloon }, 
+      { "http://snomed.info/sct#102319006", PercutaneousTransluminalAngioplastyBalloon }, 
+      { "102320000", DetachableBalloon }, 
+      { "http://snomed.info/sct#102320000", DetachableBalloon }, 
+      { "102321001", OperatingMicroscope }, 
+      { "http://snomed.info/sct#102321001", OperatingMicroscope }, 
+      { "102322008", ExternalProsthesisForSonographicProcedure }, 
+      { "http://snomed.info/sct#102322008", ExternalProsthesisForSonographicProcedure }, 
+      { "102323003", WaterBagProsthesisForImagingProcedure }, 
+      { "http://snomed.info/sct#102323003", WaterBagProsthesisForImagingProcedure }, 
+      { "102324009", SalineBagProsthesisForImagingProcedure }, 
+      { "http://snomed.info/sct#102324009", SalineBagProsthesisForImagingProcedure }, 
+      { "102325005", GelProsthesisForImagingProcedure }, 
+      { "http://snomed.info/sct#102325005", GelProsthesisForImagingProcedure }, 
+      { "102326006", Dagger }, 
+      { "http://snomed.info/sct#102326006", Dagger }, 
+      { "102327002", Dirk }, 
+      { "http://snomed.info/sct#102327002", Dirk }, 
+      { "102328007", Sword }, 
+      { "http://snomed.info/sct#102328007", Sword }, 
+      { "102384007", MotorVehicleAirbag }, 
+      { "http://snomed.info/sct#102384007", MotorVehicleAirbag }, 
+      { "102385008", FrontAirbag }, 
+      { "http://snomed.info/sct#102385008", FrontAirbag }, 
+      { "102386009", FrontDriverAirbag }, 
+      { "http://snomed.info/sct#102386009", FrontDriverAirbag }, 
+      { "102387000", FrontPassengerAirbag }, 
+      { "http://snomed.info/sct#102387000", FrontPassengerAirbag }, 
+      { "102388005", SideAirbag }, 
+      { "http://snomed.info/sct#102388005", SideAirbag }, 
+      { "102402008", Snowboard }, 
+      { "http://snomed.info/sct#102402008", Snowboard }, 
+      { "102403003", WaterSki }, 
+      { "http://snomed.info/sct#102403003", WaterSki }, 
+      { "10244001", NeedleGuide }, 
+      { "http://snomed.info/sct#10244001", NeedleGuide }, 
+      { "10371004", ElectrostimulatingAnalgesiaUnit }, 
+      { "http://snomed.info/sct#10371004", ElectrostimulatingAnalgesiaUnit }, 
+      { "10507000", Toeboard }, 
+      { "http://snomed.info/sct#10507000", Toeboard }, 
+      { "105784003", LifeSupportEquipment }, 
+      { "http://snomed.info/sct#105784003", LifeSupportEquipment }, 
+      { "105785002", AdhesiveBandageANDORSuture }, 
+      { "http://snomed.info/sct#105785002", AdhesiveBandageANDORSuture }, 
+      { "105787005", BeltANDORBinder }, 
+      { "http://snomed.info/sct#105787005", BeltANDORBinder }, 
+      { "105788000", ProbeSoundBougieANDORAirway }, 
+      { "http://snomed.info/sct#105788000", ProbeSoundBougieANDORAirway }, 
+      { "105789008", CannulaTubeANDORCatheter }, 
+      { "http://snomed.info/sct#105789008", CannulaTubeANDORCatheter }, 
+      { "105790004", BagBalloonANDORBottle }, 
+      { "http://snomed.info/sct#105790004", BagBalloonANDORBottle }, 
+      { "105791000", PumpInjectorANDORAspirator }, 
+      { "http://snomed.info/sct#105791000", PumpInjectorANDORAspirator }, 
+      { "105792007", AnalgesiaANDORAnesthesiaUnit }, 
+      { "http://snomed.info/sct#105792007", AnalgesiaANDORAnesthesiaUnit }, 
+      { "105794008", ScopeANDORCamera }, 
+      { "http://snomed.info/sct#105794008", ScopeANDORCamera }, 
+      { "105809003", PhysicalRestraintEquipmentANDORStructure }, 
+      { "http://snomed.info/sct#105809003", PhysicalRestraintEquipmentANDORStructure }, 
+      { "10826000", IndustrialSaw }, 
+      { "http://snomed.info/sct#10826000", IndustrialSaw }, 
+      { "10850003", RadiographicTherapeuticUnit }, 
+      { "http://snomed.info/sct#10850003", RadiographicTherapeuticUnit }, 
+      { "108874005", SiliconePlug }, 
+      { "http://snomed.info/sct#108874005", SiliconePlug }, 
+      { "108882005", TearTestStripKit }, 
+      { "http://snomed.info/sct#108882005", TearTestStripKit }, 
+      { "10906003", VeinStripper }, 
+      { "http://snomed.info/sct#10906003", VeinStripper }, 
+      { "109145005", AlbuminTestKit }, 
+      { "http://snomed.info/sct#109145005", AlbuminTestKit }, 
+      { "109148007", BacteriuriaTestKit }, 
+      { "http://snomed.info/sct#109148007", BacteriuriaTestKit }, 
+      { "109152007", BilirubinTestKit }, 
+      { "http://snomed.info/sct#109152007", BilirubinTestKit }, 
+      { "109154008", BloodUreaNitrogenTestKit }, 
+      { "http://snomed.info/sct#109154008", BloodUreaNitrogenTestKit }, 
+      { "109156005", CandidaTestKit }, 
+      { "http://snomed.info/sct#109156005", CandidaTestKit }, 
+      { "109159003", ChlamydiaTrachomatisTestKit }, 
+      { "http://snomed.info/sct#109159003", ChlamydiaTrachomatisTestKit }, 
+      { "109164004", CholesterolTestKit }, 
+      { "http://snomed.info/sct#109164004", CholesterolTestKit }, 
+      { "109166002", ColorAllergyScreeningTestKit }, 
+      { "http://snomed.info/sct#109166002", ColorAllergyScreeningTestKit }, 
+      { "109168001", CryptococcalAntigenTestKit }, 
+      { "http://snomed.info/sct#109168001", CryptococcalAntigenTestKit }, 
+      { "109176004", UrineGlucoseTestKit }, 
+      { "http://snomed.info/sct#109176004", UrineGlucoseTestKit }, 
+      { "109177008", GonorrheaTestKit }, 
+      { "http://snomed.info/sct#109177008", GonorrheaTestKit }, 
+      { "109178003", HematocritHemoglobinTestKit }, 
+      { "http://snomed.info/sct#109178003", HematocritHemoglobinTestKit }, 
+      { "109179006", HumanImmunodeficiencyVirusTestKit }, 
+      { "http://snomed.info/sct#109179006", HumanImmunodeficiencyVirusTestKit }, 
+      { "109180009", MeningitisTestKit }, 
+      { "http://snomed.info/sct#109180009", MeningitisTestKit }, 
+      { "109181008", MononucleosisTestKit }, 
+      { "http://snomed.info/sct#109181008", MononucleosisTestKit }, 
+      { "109182001", OccultBloodScreeningTestKit }, 
+      { "http://snomed.info/sct#109182001", OccultBloodScreeningTestKit }, 
+      { "109183006", OvulationTestKit }, 
+      { "http://snomed.info/sct#109183006", OvulationTestKit }, 
+      { "109184000", PregnancyTestKit }, 
+      { "http://snomed.info/sct#109184000", PregnancyTestKit }, 
+      { "109185004", RheumatoidFactorTestKit }, 
+      { "http://snomed.info/sct#109185004", RheumatoidFactorTestKit }, 
+      { "109186003", SickleCellTestKit }, 
+      { "http://snomed.info/sct#109186003", SickleCellTestKit }, 
+      { "109187007", StaphylococcusTestKit }, 
+      { "http://snomed.info/sct#109187007", StaphylococcusTestKit }, 
+      { "109188002", StreptococciTestKit }, 
+      { "http://snomed.info/sct#109188002", StreptococciTestKit }, 
+      { "109189005", ToxoplasmosisTestKit }, 
+      { "http://snomed.info/sct#109189005", ToxoplasmosisTestKit }, 
+      { "109190001", VirusTestKit }, 
+      { "http://snomed.info/sct#109190001", VirusTestKit }, 
+      { "109226007", DentalPin }, 
+      { "http://snomed.info/sct#109226007", DentalPin }, 
+      { "109227003", HandJointProsthesis }, 
+      { "http://snomed.info/sct#109227003", HandJointProsthesis }, 
+      { "109228008", KneeJointProsthesis }, 
+      { "http://snomed.info/sct#109228008", KneeJointProsthesis }, 
+      { "111041008", ArtificialNails }, 
+      { "http://snomed.info/sct#111041008", ArtificialNails }, 
+      { "111042001", ArtificialOrgan }, 
+      { "http://snomed.info/sct#111042001", ArtificialOrgan }, 
+      { "111043006", MedicalTuningFork }, 
+      { "http://snomed.info/sct#111043006", MedicalTuningFork }, 
+      { "111044000", BoneTap }, 
+      { "http://snomed.info/sct#111044000", BoneTap }, 
+      { "111045004", Exerciser }, 
+      { "http://snomed.info/sct#111045004", Exerciser }, 
+      { "111047007", UrethralBougie }, 
+      { "http://snomed.info/sct#111047007", UrethralBougie }, 
+      { "111048002", Rhinoscope }, 
+      { "http://snomed.info/sct#111048002", Rhinoscope }, 
+      { "111052002", ProtectiveBreastPlate }, 
+      { "http://snomed.info/sct#111052002", ProtectiveBreastPlate }, 
+      { "111060001", IndustrialSewingMachine }, 
+      { "http://snomed.info/sct#111060001", IndustrialSewingMachine }, 
+      { "111062009", FoodWasteDisposalEquipment }, 
+      { "http://snomed.info/sct#111062009", FoodWasteDisposalEquipment }, 
+      { "11141007", BoneGrowthStimulator }, 
+      { "http://snomed.info/sct#11141007", BoneGrowthStimulator }, 
+      { "11158002", ElectromyographicMonitorAndRecorder }, 
+      { "http://snomed.info/sct#11158002", ElectromyographicMonitorAndRecorder }, 
+      { "11358008", ProstheticValve }, 
+      { "http://snomed.info/sct#11358008", ProstheticValve }, 
+      { "115961006", SoftCast }, 
+      { "http://snomed.info/sct#115961006", SoftCast }, 
+      { "115962004", FiberglassCast }, 
+      { "http://snomed.info/sct#115962004", FiberglassCast }, 
+      { "116146000", BloodProductUnit }, 
+      { "http://snomed.info/sct#116146000", BloodProductUnit }, 
+      { "116204000", CatheterTip }, 
+      { "http://snomed.info/sct#116204000", CatheterTip }, 
+      { "116205004", BloodBag }, 
+      { "http://snomed.info/sct#116205004", BloodBag }, 
+      { "116206003", PlasmaBag }, 
+      { "http://snomed.info/sct#116206003", PlasmaBag }, 
+      { "116250002", Filter }, 
+      { "http://snomed.info/sct#116250002", Filter }, 
+      { "116251003", Wick }, 
+      { "http://snomed.info/sct#116251003", Wick }, 
+      { "118294000", SolidStateLaser }, 
+      { "http://snomed.info/sct#118294000", SolidStateLaser }, 
+      { "118295004", GasLaser }, 
+      { "http://snomed.info/sct#118295004", GasLaser }, 
+      { "118296003", ChemicalLaser }, 
+      { "http://snomed.info/sct#118296003", ChemicalLaser }, 
+      { "118297007", ExcimerLaser }, 
+      { "http://snomed.info/sct#118297007", ExcimerLaser }, 
+      { "118298002", DyeLaser }, 
+      { "http://snomed.info/sct#118298002", DyeLaser }, 
+      { "118299005", DiodeLaserDevice }, 
+      { "http://snomed.info/sct#118299005", DiodeLaserDevice }, 
+      { "118301003", NdYVOGreaterThan4LessThanLaser }, 
+      { "http://snomed.info/sct#118301003", NdYVOGreaterThan4LessThanLaser }, 
+      { "118302005", NdYLFLaser }, 
+      { "http://snomed.info/sct#118302005", NdYLFLaser }, 
+      { "118303000", NdGlassLaser }, 
+      { "http://snomed.info/sct#118303000", NdGlassLaser }, 
+      { "118304006", ChromiumSapphireLaserDevice }, 
+      { "http://snomed.info/sct#118304006", ChromiumSapphireLaserDevice }, 
+      { "118305007", ErGlassLaser }, 
+      { "http://snomed.info/sct#118305007", ErGlassLaser }, 
+      { "118306008", ErYAGLaser }, 
+      { "http://snomed.info/sct#118306008", ErYAGLaser }, 
+      { "118307004", HoYLFLaser }, 
+      { "http://snomed.info/sct#118307004", HoYLFLaser }, 
+      { "118308009", HoYAGLaser }, 
+      { "http://snomed.info/sct#118308009", HoYAGLaser }, 
+      { "118309001", TiSapphireLaserDevice }, 
+      { "http://snomed.info/sct#118309001", TiSapphireLaserDevice }, 
+      { "118310006", AlexandriteLaser }, 
+      { "http://snomed.info/sct#118310006", AlexandriteLaser }, 
+      { "118311005", ArgonIonLaser }, 
+      { "http://snomed.info/sct#118311005", ArgonIonLaser }, 
+      { "118312003", COGreaterThan2LessThanLaser }, 
+      { "http://snomed.info/sct#118312003", COGreaterThan2LessThanLaser }, 
+      { "118313008", HeLaser }, 
+      { "http://snomed.info/sct#118313008", HeLaser }, 
+      { "118314002", HeliumCadmiumLaser }, 
+      { "http://snomed.info/sct#118314002", HeliumCadmiumLaser }, 
+      { "118315001", HeNeLaser }, 
+      { "http://snomed.info/sct#118315001", HeNeLaser }, 
+      { "118316000", KryptonGasLaser }, 
+      { "http://snomed.info/sct#118316000", KryptonGasLaser }, 
+      { "118317009", NeonGasLaser }, 
+      { "http://snomed.info/sct#118317009", NeonGasLaser }, 
+      { "118318004", NitrogenGasLaser }, 
+      { "http://snomed.info/sct#118318004", NitrogenGasLaser }, 
+      { "118319007", XenonGasLaser }, 
+      { "http://snomed.info/sct#118319007", XenonGasLaser }, 
+      { "118320001", CopperVaporLaser }, 
+      { "http://snomed.info/sct#118320001", CopperVaporLaser }, 
+      { "118321002", GoldVaporLaser }, 
+      { "http://snomed.info/sct#118321002", GoldVaporLaser }, 
+      { "118322009", DFLaser }, 
+      { "http://snomed.info/sct#118322009", DFLaser }, 
+      { "118323004", DFCOGreaterThan2LessThanLaserDevice }, 
+      { "http://snomed.info/sct#118323004", DFCOGreaterThan2LessThanLaserDevice }, 
+      { "118324005", HFLaser }, 
+      { "http://snomed.info/sct#118324005", HFLaser }, 
+      { "118325006", ArFLaser }, 
+      { "http://snomed.info/sct#118325006", ArFLaser }, 
+      { "118326007", KrFLaser }, 
+      { "http://snomed.info/sct#118326007", KrFLaser }, 
+      { "118327003", KrClLaser }, 
+      { "http://snomed.info/sct#118327003", KrClLaser }, 
+      { "118328008", XeClLaser }, 
+      { "http://snomed.info/sct#118328008", XeClLaser }, 
+      { "118329000", XeFlLaser }, 
+      { "http://snomed.info/sct#118329000", XeFlLaser }, 
+      { "118330005", FreeElectronLaser }, 
+      { "http://snomed.info/sct#118330005", FreeElectronLaser }, 
+      { "118331009", TunableDyeLaser }, 
+      { "http://snomed.info/sct#118331009", TunableDyeLaser }, 
+      { "118332002", TunableDyeArgonLaser }, 
+      { "http://snomed.info/sct#118332002", TunableDyeArgonLaser }, 
+      { "118333007", GalliumArsenideLaser }, 
+      { "http://snomed.info/sct#118333007", GalliumArsenideLaser }, 
+      { "118334001", GalliumAluminumArsenideLaser }, 
+      { "http://snomed.info/sct#118334001", GalliumAluminumArsenideLaser }, 
+      { "118335000", LeadSaltLaser }, 
+      { "http://snomed.info/sct#118335000", LeadSaltLaser }, 
+      { "118336004", Rhodamine6GDyeLaser }, 
+      { "http://snomed.info/sct#118336004", Rhodamine6GDyeLaser }, 
+      { "118337008", CoumarinC30DyeLaser }, 
+      { "http://snomed.info/sct#118337008", CoumarinC30DyeLaser }, 
+      { "118338003", Coumarin102DyeLaser }, 
+      { "http://snomed.info/sct#118338003", Coumarin102DyeLaser }, 
+      { "118342000", DiodePumpedLaser }, 
+      { "http://snomed.info/sct#118342000", DiodePumpedLaser }, 
+      { "118343005", FlashlampPumpedLaserDevice }, 
+      { "http://snomed.info/sct#118343005", FlashlampPumpedLaserDevice }, 
+      { "118346002", PulsedDyeLaser }, 
+      { "http://snomed.info/sct#118346002", PulsedDyeLaser }, 
+      { "118347006", QSLaser }, 
+      { "http://snomed.info/sct#118347006", QSLaser }, 
+      { "118348001", FlashlampPulsedDyeLaser }, 
+      { "http://snomed.info/sct#118348001", FlashlampPulsedDyeLaser }, 
+      { "118349009", CWCOGreaterThan2LessThanLaser }, 
+      { "http://snomed.info/sct#118349009", CWCOGreaterThan2LessThanLaser }, 
+      { "118350009", HighEnergyPulsedCOGreaterThan2LessThanLaser }, 
+      { "http://snomed.info/sct#118350009", HighEnergyPulsedCOGreaterThan2LessThanLaser }, 
+      { "118351008", FrequencyDoubledNdYAGLaser }, 
+      { "http://snomed.info/sct#118351008", FrequencyDoubledNdYAGLaser }, 
+      { "118354000", ContinuousWaveLaser }, 
+      { "http://snomed.info/sct#118354000", ContinuousWaveLaser }, 
+      { "118355004", PulsedLaser }, 
+      { "http://snomed.info/sct#118355004", PulsedLaser }, 
+      { "118356003", MetalVaporLaser }, 
+      { "http://snomed.info/sct#118356003", MetalVaporLaser }, 
+      { "118357007", KTPLaser }, 
+      { "http://snomed.info/sct#118357007", KTPLaser }, 
+      { "118371004", IonLaser }, 
+      { "http://snomed.info/sct#118371004", IonLaser }, 
+      { "118372006", PlasticImplant }, 
+      { "http://snomed.info/sct#118372006", PlasticImplant }, 
+      { "118373001", SilasticImplant }, 
+      { "http://snomed.info/sct#118373001", SilasticImplant }, 
+      { "118374007", SiliconeImplant }, 
+      { "http://snomed.info/sct#118374007", SiliconeImplant }, 
+      { "118375008", CardiacSeptumProsthesis }, 
+      { "http://snomed.info/sct#118375008", CardiacSeptumProsthesis }, 
+      { "118376009", Thermocouple }, 
+      { "http://snomed.info/sct#118376009", Thermocouple }, 
+      { "118377000", BiopsyNeedle }, 
+      { "http://snomed.info/sct#118377000", BiopsyNeedle }, 
+      { "118378005", PacemakerPulseGenerator }, 
+      { "http://snomed.info/sct#118378005", PacemakerPulseGenerator }, 
+      { "118379002", AutomaticImplantableCardioverterSensingElectrodes }, 
+      { "http://snomed.info/sct#118379002", AutomaticImplantableCardioverterSensingElectrodes }, 
+      { "118380004", ImplantableDefibrillatorLeads }, 
+      { "http://snomed.info/sct#118380004", ImplantableDefibrillatorLeads }, 
+      { "118381000", ImplantableCardioverterLeads }, 
+      { "http://snomed.info/sct#118381000", ImplantableCardioverterLeads }, 
+      { "118383002", ExternalFixationDevice }, 
+      { "http://snomed.info/sct#118383002", ExternalFixationDevice }, 
+      { "118384008", LongArmSplint }, 
+      { "http://snomed.info/sct#118384008", LongArmSplint }, 
+      { "118385009", ShortArmSplint }, 
+      { "http://snomed.info/sct#118385009", ShortArmSplint }, 
+      { "118386005", FigureOfEightPlasterCast }, 
+      { "http://snomed.info/sct#118386005", FigureOfEightPlasterCast }, 
+      { "118387001", HaloCast }, 
+      { "http://snomed.info/sct#118387001", HaloCast }, 
+      { "118388006", BodyCastShoulderToHips }, 
+      { "http://snomed.info/sct#118388006", BodyCastShoulderToHips }, 
+      { "118389003", BodyCastShoulderToHipsIncludingHeadMinervaType }, 
+      { "http://snomed.info/sct#118389003", BodyCastShoulderToHipsIncludingHeadMinervaType }, 
+      { "118390007", BodyCastShoulderToHipsIncludingOneThigh }, 
+      { "http://snomed.info/sct#118390007", BodyCastShoulderToHipsIncludingOneThigh }, 
+      { "118391006", BodyCastShoulderToHipsIncludingBothThighs }, 
+      { "http://snomed.info/sct#118391006", BodyCastShoulderToHipsIncludingBothThighs }, 
+      { "118392004", ShoulderCast }, 
+      { "http://snomed.info/sct#118392004", ShoulderCast }, 
+      { "118393009", FullArmCast }, 
+      { "http://snomed.info/sct#118393009", FullArmCast }, 
+      { "118394003", BelowElbowCast }, 
+      { "http://snomed.info/sct#118394003", BelowElbowCast }, 
+      { "118396001", CylinderCastThighToAnkle }, 
+      { "http://snomed.info/sct#118396001", CylinderCastThighToAnkle }, 
+      { "118397005", LongLegCast }, 
+      { "http://snomed.info/sct#118397005", LongLegCast }, 
+      { "118398000", LongLegCastWalkerOrAmbulatoryType }, 
+      { "http://snomed.info/sct#118398000", LongLegCastWalkerOrAmbulatoryType }, 
+      { "118399008", LongLegCastBraceType }, 
+      { "http://snomed.info/sct#118399008", LongLegCastBraceType }, 
+      { "118400001", ShortLegCastBelowKneeToToes }, 
+      { "http://snomed.info/sct#118400001", ShortLegCastBelowKneeToToes }, 
+      { "118401002", ShortLegCastBelowKneeToToesWalkingOrAmbulatoryType }, 
+      { "http://snomed.info/sct#118401002", ShortLegCastBelowKneeToToesWalkingOrAmbulatoryType }, 
+      { "118402009", ClubfootCast }, 
+      { "http://snomed.info/sct#118402009", ClubfootCast }, 
+      { "118403004", ClubfootCastShortLeg }, 
+      { "http://snomed.info/sct#118403004", ClubfootCastShortLeg }, 
+      { "118404005", ClubfootCastLongLeg }, 
+      { "http://snomed.info/sct#118404005", ClubfootCastLongLeg }, 
+      { "118405006", SpicaCast }, 
+      { "http://snomed.info/sct#118405006", SpicaCast }, 
+      { "118406007", HipSpicaCastBothLegs }, 
+      { "http://snomed.info/sct#118406007", HipSpicaCastBothLegs }, 
+      { "118407003", HipSpicaCastOneLeg }, 
+      { "http://snomed.info/sct#118407003", HipSpicaCastOneLeg }, 
+      { "118408008", HipSpicaCastOneAndOneHalfSpica }, 
+      { "http://snomed.info/sct#118408008", HipSpicaCastOneAndOneHalfSpica }, 
+      { "118409000", PatellarTendonBearingCast }, 
+      { "http://snomed.info/sct#118409000", PatellarTendonBearingCast }, 
+      { "118410005", BootCast }, 
+      { "http://snomed.info/sct#118410005", BootCast }, 
+      { "118411009", SugarTongCast }, 
+      { "http://snomed.info/sct#118411009", SugarTongCast }, 
+      { "118412002", GauntletCast }, 
+      { "http://snomed.info/sct#118412002", GauntletCast }, 
+      { "118413007", BodyCast }, 
+      { "http://snomed.info/sct#118413007", BodyCast }, 
+      { "118414001", PressureDressing }, 
+      { "http://snomed.info/sct#118414001", PressureDressing }, 
+      { "118415000", PackingMaterial }, 
+      { "http://snomed.info/sct#118415000", PackingMaterial }, 
+      { "118416004", WoundPackingMaterial }, 
+      { "http://snomed.info/sct#118416004", WoundPackingMaterial }, 
+      { "118418003", Trocar }, 
+      { "http://snomed.info/sct#118418003", Trocar }, 
+      { "118419006", UmbrellaDevice }, 
+      { "http://snomed.info/sct#118419006", UmbrellaDevice }, 
+      { "118420000", AtrialSeptalUmbrella }, 
+      { "http://snomed.info/sct#118420000", AtrialSeptalUmbrella }, 
+      { "118421001", KingMillsUmbrellaDevice }, 
+      { "http://snomed.info/sct#118421001", KingMillsUmbrellaDevice }, 
+      { "118422008", MobitzUddinUmbrellaDevice }, 
+      { "http://snomed.info/sct#118422008", MobitzUddinUmbrellaDevice }, 
+      { "118423003", RashkindUmbrellaDevice }, 
+      { "http://snomed.info/sct#118423003", RashkindUmbrellaDevice }, 
+      { "118424009", ReservoirDevice }, 
+      { "http://snomed.info/sct#118424009", ReservoirDevice }, 
+      { "118425005", VentricularReservoir }, 
+      { "http://snomed.info/sct#118425005", VentricularReservoir }, 
+      { "118426006", OmmayaReservoir }, 
+      { "http://snomed.info/sct#118426006", OmmayaReservoir }, 
+      { "118427002", RickhamReservoir }, 
+      { "http://snomed.info/sct#118427002", RickhamReservoir }, 
+      { "118428007", FlexibleFiberopticEndoscope }, 
+      { "http://snomed.info/sct#118428007", FlexibleFiberopticEndoscope }, 
+      { "118429004", FlexibleFiberopticLaryngoscopeWithStrobe }, 
+      { "http://snomed.info/sct#118429004", FlexibleFiberopticLaryngoscopeWithStrobe }, 
+      { "118643004", Cast }, 
+      { "http://snomed.info/sct#118643004", Cast }, 
+      { "11987000", ClinicalChemistryAnalyzer }, 
+      { "http://snomed.info/sct#11987000", ClinicalChemistryAnalyzer }, 
+      { "1211003", Treadmill }, 
+      { "http://snomed.info/sct#1211003", Treadmill }, 
+      { "12150006", Cannula }, 
+      { "http://snomed.info/sct#12150006", Cannula }, 
+      { "12183004", ArmProsthesis }, 
+      { "http://snomed.info/sct#12183004", ArmProsthesis }, 
+      { "12198002", IceSkate }, 
+      { "http://snomed.info/sct#12198002", IceSkate }, 
+      { "122456005", Laser }, 
+      { "http://snomed.info/sct#122456005", Laser }, 
+      { "123636009", SilkSuture }, 
+      { "http://snomed.info/sct#123636009", SilkSuture }, 
+      { "126065006", JejunostomyTube }, 
+      { "http://snomed.info/sct#126065006", JejunostomyTube }, 
+      { "128981007", Baffle }, 
+      { "http://snomed.info/sct#128981007", Baffle }, 
+      { "129113006", IntraAorticBalloonPump }, 
+      { "http://snomed.info/sct#129113006", IntraAorticBalloonPump }, 
+      { "129121000", TracheostomyTube }, 
+      { "http://snomed.info/sct#129121000", TracheostomyTube }, 
+      { "129247000", FineBiopsyNeedle }, 
+      { "http://snomed.info/sct#129247000", FineBiopsyNeedle }, 
+      { "129248005", CoreBiopsyNeedle }, 
+      { "http://snomed.info/sct#129248005", CoreBiopsyNeedle }, 
+      { "129460009", CompressionPaddle }, 
+      { "http://snomed.info/sct#129460009", CompressionPaddle }, 
+      { "129462001", CatheterGuideWire }, 
+      { "http://snomed.info/sct#129462001", CatheterGuideWire }, 
+      { "129463006", JWire }, 
+      { "http://snomed.info/sct#129463006", JWire }, 
+      { "129464000", MedicalAdministrativeEquipment }, 
+      { "http://snomed.info/sct#129464000", MedicalAdministrativeEquipment }, 
+      { "129465004", MedicalRecord }, 
+      { "http://snomed.info/sct#129465004", MedicalRecord }, 
+      { "129466003", PatientChart }, 
+      { "http://snomed.info/sct#129466003", PatientChart }, 
+      { "129467007", IdentificationPlate }, 
+      { "http://snomed.info/sct#129467007", IdentificationPlate }, 
+      { "12953007", File }, 
+      { "http://snomed.info/sct#12953007", File }, 
+      { "13118005", WoolCloth }, 
+      { "http://snomed.info/sct#13118005", WoolCloth }, 
+      { "13219008", Gastroscope }, 
+      { "http://snomed.info/sct#13219008", Gastroscope }, 
+      { "13288007", Monitor }, 
+      { "http://snomed.info/sct#13288007", Monitor }, 
+      { "1333003", EmesisBasin }, 
+      { "http://snomed.info/sct#1333003", EmesisBasin }, 
+      { "13459008", TemporaryArtificialHeartProsthesis }, 
+      { "http://snomed.info/sct#13459008", TemporaryArtificialHeartProsthesis }, 
+      { "134823007", SterileAbsorbentDressingPad }, 
+      { "http://snomed.info/sct#134823007", SterileAbsorbentDressingPad }, 
+      { "134963007", WoundDrainagePouchDressing }, 
+      { "http://snomed.info/sct#134963007", WoundDrainagePouchDressing }, 
+      { "13764006", UterineSound }, 
+      { "http://snomed.info/sct#13764006", UterineSound }, 
+      { "13855007", Pillow }, 
+      { "http://snomed.info/sct#13855007", Pillow }, 
+      { "13905003", TennisBall }, 
+      { "http://snomed.info/sct#13905003", TennisBall }, 
+      { "14106009", CardiacPacemaker }, 
+      { "http://snomed.info/sct#14106009", CardiacPacemaker }, 
+      { "14108005", Cage }, 
+      { "http://snomed.info/sct#14108005", Cage }, 
+      { "14116001", AnalgesiaUnit }, 
+      { "http://snomed.info/sct#14116001", AnalgesiaUnit }, 
+      { "14208000", OilWell }, 
+      { "http://snomed.info/sct#14208000", OilWell }, 
+      { "1422002", PlasticMold }, 
+      { "http://snomed.info/sct#1422002", PlasticMold }, 
+      { "14288003", NasalSeptumButton }, 
+      { "http://snomed.info/sct#14288003", NasalSeptumButton }, 
+      { "14339000", Button }, 
+      { "http://snomed.info/sct#14339000", Button }, 
+      { "14364002", Camera }, 
+      { "http://snomed.info/sct#14364002", Camera }, 
+      { "14423008", AdhesiveBandage }, 
+      { "http://snomed.info/sct#14423008", AdhesiveBandage }, 
+      { "14519003", Aspirator }, 
+      { "http://snomed.info/sct#14519003", Aspirator }, 
+      { "14548009", HarringtonRod }, 
+      { "http://snomed.info/sct#14548009", HarringtonRod }, 
+      { "14762000", AlloySteelChainSling }, 
+      { "http://snomed.info/sct#14762000", AlloySteelChainSling }, 
+      { "14789005", ProstheticImplant }, 
+      { "http://snomed.info/sct#14789005", ProstheticImplant }, 
+      { "15000008", AirConditioner }, 
+      { "http://snomed.info/sct#15000008", AirConditioner }, 
+      { "15340005", WoodQuoteSLight }, 
+      { "http://snomed.info/sct#15340005", WoodQuoteSLight }, 
+      { "15447007", JointProsthesis }, 
+      { "http://snomed.info/sct#15447007", JointProsthesis }, 
+      { "156009", SpineBoard }, 
+      { "http://snomed.info/sct#156009", SpineBoard }, 
+      { "15644007", AnesthesiaUnit }, 
+      { "http://snomed.info/sct#15644007", AnesthesiaUnit }, 
+      { "1579007", SurgicalDrill }, 
+      { "http://snomed.info/sct#1579007", SurgicalDrill }, 
+      { "15869005", Dosimeter }, 
+      { "http://snomed.info/sct#15869005", Dosimeter }, 
+      { "15873008", Boiler }, 
+      { "http://snomed.info/sct#15873008", Boiler }, 
+      { "15922004", Gown }, 
+      { "http://snomed.info/sct#15922004", Gown }, 
+      { "16056004", Boots }, 
+      { "http://snomed.info/sct#16056004", Boots }, 
+      { "16349000", OrthopedicDevice }, 
+      { "http://snomed.info/sct#16349000", OrthopedicDevice }, 
+      { "16417001", CommercialBreathingSupplyHosesDivingOperation }, 
+      { "http://snomed.info/sct#16417001", CommercialBreathingSupplyHosesDivingOperation }, 
+      { "16470007", Electrode }, 
+      { "http://snomed.info/sct#16470007", Electrode }, 
+      { "16497000", ElectricClipper }, 
+      { "http://snomed.info/sct#16497000", ElectricClipper }, 
+      { "16524003", CottonCloth }, 
+      { "http://snomed.info/sct#16524003", CottonCloth }, 
+      { "16540000", UmbrellaCatheter }, 
+      { "http://snomed.info/sct#16540000", UmbrellaCatheter }, 
+      { "16650009", Splint }, 
+      { "http://snomed.info/sct#16650009", Splint }, 
+      { "170615005", HomeNebulizer }, 
+      { "http://snomed.info/sct#170615005", HomeNebulizer }, 
+      { "17102003", NasogastricTube }, 
+      { "http://snomed.info/sct#17102003", NasogastricTube }, 
+      { "17107009", MitralValveProsthesis }, 
+      { "http://snomed.info/sct#17107009", MitralValveProsthesis }, 
+      { "17207004", Mattress }, 
+      { "http://snomed.info/sct#17207004", Mattress }, 
+      { "17306006", HerniaBelt }, 
+      { "http://snomed.info/sct#17306006", HerniaBelt }, 
+      { "17404008", CardiacCompressionBoard }, 
+      { "http://snomed.info/sct#17404008", CardiacCompressionBoard }, 
+      { "17472008", Knife }, 
+      { "http://snomed.info/sct#17472008", Knife }, 
+      { "1766001", Toboggan }, 
+      { "http://snomed.info/sct#1766001", Toboggan }, 
+      { "18151003", Punch }, 
+      { "http://snomed.info/sct#18151003", Punch }, 
+      { "18153000", FluorescenceImmunoassayAnalyzer }, 
+      { "http://snomed.info/sct#18153000", FluorescenceImmunoassayAnalyzer }, 
+      { "182562006", PlasterJacket }, 
+      { "http://snomed.info/sct#182562006", PlasterJacket }, 
+      { "182563001", ShoulderSpica }, 
+      { "http://snomed.info/sct#182563001", ShoulderSpica }, 
+      { "182564007", HumeralUSlab }, 
+      { "http://snomed.info/sct#182564007", HumeralUSlab }, 
+      { "182565008", LongArmSlab }, 
+      { "http://snomed.info/sct#182565008", LongArmSlab }, 
+      { "182566009", HumeralHangingSlab }, 
+      { "http://snomed.info/sct#182566009", HumeralHangingSlab }, 
+      { "182567000", ForearmSlab }, 
+      { "http://snomed.info/sct#182567000", ForearmSlab }, 
+      { "182568005", ScaphoidCast }, 
+      { "http://snomed.info/sct#182568005", ScaphoidCast }, 
+      { "182569002", BennettCast }, 
+      { "http://snomed.info/sct#182569002", BennettCast }, 
+      { "182570001", HipSpica }, 
+      { "http://snomed.info/sct#182570001", HipSpica }, 
+      { "182571002", LongLegSpica }, 
+      { "http://snomed.info/sct#182571002", LongLegSpica }, 
+      { "182572009", BelowKneeNonWeightBearingCast }, 
+      { "http://snomed.info/sct#182572009", BelowKneeNonWeightBearingCast }, 
+      { "182573004", BelowKneeWeightBearingCast }, 
+      { "http://snomed.info/sct#182573004", BelowKneeWeightBearingCast }, 
+      { "182574005", PlasterStripper }, 
+      { "http://snomed.info/sct#182574005", PlasterStripper }, 
+      { "182576007", HumeralBrace }, 
+      { "http://snomed.info/sct#182576007", HumeralBrace }, 
+      { "182577003", FunctionalElbowBrace }, 
+      { "http://snomed.info/sct#182577003", FunctionalElbowBrace }, 
+      { "182578008", ForearmBrace }, 
+      { "http://snomed.info/sct#182578008", ForearmBrace }, 
+      { "182579000", HipBrace }, 
+      { "http://snomed.info/sct#182579000", HipBrace }, 
+      { "182580002", FemoralBrace }, 
+      { "http://snomed.info/sct#182580002", FemoralBrace }, 
+      { "182581003", TibialBrace }, 
+      { "http://snomed.info/sct#182581003", TibialBrace }, 
+      { "182587004", BodySupport }, 
+      { "http://snomed.info/sct#182587004", BodySupport }, 
+      { "182588009", SpinalFrame }, 
+      { "http://snomed.info/sct#182588009", SpinalFrame }, 
+      { "182589001", CorsetSupport }, 
+      { "http://snomed.info/sct#182589001", CorsetSupport }, 
+      { "182590005", CardiacBed }, 
+      { "http://snomed.info/sct#182590005", CardiacBed }, 
+      { "182591009", WaterBed }, 
+      { "http://snomed.info/sct#182591009", WaterBed }, 
+      { "182592002", HighAirLossBed }, 
+      { "http://snomed.info/sct#182592002", HighAirLossBed }, 
+      { "182839003", AutomatedDrugMicroinjector }, 
+      { "http://snomed.info/sct#182839003", AutomatedDrugMicroinjector }, 
+      { "183116000", DentalAid }, 
+      { "http://snomed.info/sct#183116000", DentalAid }, 
+      { "183125006", EarFittingHearingAid }, 
+      { "http://snomed.info/sct#183125006", EarFittingHearingAid }, 
+      { "183135000", MobilityAids }, 
+      { "http://snomed.info/sct#183135000", MobilityAids }, 
+      { "183141007", InshoeOrthosis }, 
+      { "http://snomed.info/sct#183141007", InshoeOrthosis }, 
+      { "183143005", SurgicalStockings }, 
+      { "http://snomed.info/sct#183143005", SurgicalStockings }, 
+      { "183144004", AntiembolicStockings }, 
+      { "http://snomed.info/sct#183144004", AntiembolicStockings }, 
+      { "183146002", ZFZimmerFrame }, 
+      { "http://snomed.info/sct#183146002", ZFZimmerFrame }, 
+      { "183147006", Tripod }, 
+      { "http://snomed.info/sct#183147006", Tripod }, 
+      { "183148001", RGOReciprocatingGaitOrthosis }, 
+      { "http://snomed.info/sct#183148001", RGOReciprocatingGaitOrthosis }, 
+      { "183149009", HipGuidanceOrthosis }, 
+      { "http://snomed.info/sct#183149009", HipGuidanceOrthosis }, 
+      { "183150009", StandingFrame }, 
+      { "http://snomed.info/sct#183150009", StandingFrame }, 
+      { "183152001", HipAbductionOrthosis }, 
+      { "http://snomed.info/sct#183152001", HipAbductionOrthosis }, 
+      { "183153006", HipKneeAnkleFootOrthosis }, 
+      { "http://snomed.info/sct#183153006", HipKneeAnkleFootOrthosis }, 
+      { "183154000", KneeAnkleFootOrthosis }, 
+      { "http://snomed.info/sct#183154000", KneeAnkleFootOrthosis }, 
+      { "183155004", FlexibleKneeSupport }, 
+      { "http://snomed.info/sct#183155004", FlexibleKneeSupport }, 
+      { "183156003", CollateralLigamentBrace }, 
+      { "http://snomed.info/sct#183156003", CollateralLigamentBrace }, 
+      { "183157007", AnteriorCruciateLigamentBrace }, 
+      { "http://snomed.info/sct#183157007", AnteriorCruciateLigamentBrace }, 
+      { "183158002", PosteriorCruciateLigamentBrace }, 
+      { "http://snomed.info/sct#183158002", PosteriorCruciateLigamentBrace }, 
+      { "183159005", GroundReactionOrthosis }, 
+      { "http://snomed.info/sct#183159005", GroundReactionOrthosis }, 
+      { "183160000", RigidAnkleFootOrthosis }, 
+      { "http://snomed.info/sct#183160000", RigidAnkleFootOrthosis }, 
+      { "183161001", FlexibleAnkleFootOrthosis }, 
+      { "http://snomed.info/sct#183161001", FlexibleAnkleFootOrthosis }, 
+      { "183162008", DoubleBelowKneeIron }, 
+      { "http://snomed.info/sct#183162008", DoubleBelowKneeIron }, 
+      { "183164009", InsideIron }, 
+      { "http://snomed.info/sct#183164009", InsideIron }, 
+      { "183165005", OutsideIron }, 
+      { "http://snomed.info/sct#183165005", OutsideIron }, 
+      { "183166006", InsideTStrap }, 
+      { "http://snomed.info/sct#183166006", InsideTStrap }, 
+      { "183170003", HindquarterProsthesis }, 
+      { "http://snomed.info/sct#183170003", HindquarterProsthesis }, 
+      { "183171004", HipDisarticulationProsthesis }, 
+      { "http://snomed.info/sct#183171004", HipDisarticulationProsthesis }, 
+      { "183172006", AboveKneeProsthesis }, 
+      { "http://snomed.info/sct#183172006", AboveKneeProsthesis }, 
+      { "183173001", ThroughKneeProsthesis }, 
+      { "http://snomed.info/sct#183173001", ThroughKneeProsthesis }, 
+      { "183174007", BelowKneeProsthesis }, 
+      { "http://snomed.info/sct#183174007", BelowKneeProsthesis }, 
+      { "183175008", SymeQuoteSProsthesis }, 
+      { "http://snomed.info/sct#183175008", SymeQuoteSProsthesis }, 
+      { "183176009", MidfootAmputationProsthesis }, 
+      { "http://snomed.info/sct#183176009", MidfootAmputationProsthesis }, 
+      { "183177000", ShoeFiller }, 
+      { "http://snomed.info/sct#183177000", ShoeFiller }, 
+      { "183183002", MilwaukeeBrace }, 
+      { "http://snomed.info/sct#183183002", MilwaukeeBrace }, 
+      { "183184008", BostonBrace }, 
+      { "http://snomed.info/sct#183184008", BostonBrace }, 
+      { "183185009", JewettBrace }, 
+      { "http://snomed.info/sct#183185009", JewettBrace }, 
+      { "183187001", HaloDevice }, 
+      { "http://snomed.info/sct#183187001", HaloDevice }, 
+      { "183188006", FourPosterBrace }, 
+      { "http://snomed.info/sct#183188006", FourPosterBrace }, 
+      { "183189003", RigidCollar }, 
+      { "http://snomed.info/sct#183189003", RigidCollar }, 
+      { "183190007", FlexibleCollar }, 
+      { "http://snomed.info/sct#183190007", FlexibleCollar }, 
+      { "183192004", ShoulderAbductionBrace }, 
+      { "http://snomed.info/sct#183192004", ShoulderAbductionBrace }, 
+      { "183193009", ElbowBrace }, 
+      { "http://snomed.info/sct#183193009", ElbowBrace }, 
+      { "183194003", PassiveWristExtensionSplint }, 
+      { "http://snomed.info/sct#183194003", PassiveWristExtensionSplint }, 
+      { "183195002", ActiveWristExtensionSplint }, 
+      { "http://snomed.info/sct#183195002", ActiveWristExtensionSplint }, 
+      { "183196001", PassiveFingerExtensionSplint }, 
+      { "http://snomed.info/sct#183196001", PassiveFingerExtensionSplint }, 
+      { "183197005", ActiveFingerExtensionSplint }, 
+      { "http://snomed.info/sct#183197005", ActiveFingerExtensionSplint }, 
+      { "183198000", KleinertTractionPhysicalObject }, 
+      { "http://snomed.info/sct#183198000", KleinertTractionPhysicalObject }, 
+      { "183199008", PassiveThumbSplint }, 
+      { "http://snomed.info/sct#183199008", PassiveThumbSplint }, 
+      { "183200006", ActiveThumbSplint }, 
+      { "http://snomed.info/sct#183200006", ActiveThumbSplint }, 
+      { "183202003", ShinSplint }, 
+      { "http://snomed.info/sct#183202003", ShinSplint }, 
+      { "183204002", ExcretoryControlAid }, 
+      { "http://snomed.info/sct#183204002", ExcretoryControlAid }, 
+      { "183235008", FacialNonSurgicalProsthesis }, 
+      { "http://snomed.info/sct#183235008", FacialNonSurgicalProsthesis }, 
+      { "183236009", BreastNonSurgicalProsthesis }, 
+      { "http://snomed.info/sct#183236009", BreastNonSurgicalProsthesis }, 
+      { "183240000", SelfPropelledWheelchair }, 
+      { "http://snomed.info/sct#183240000", SelfPropelledWheelchair }, 
+      { "183241001", PedalPoweredWheelchair }, 
+      { "http://snomed.info/sct#183241001", PedalPoweredWheelchair }, 
+      { "183248007", AttendantPoweredWheelchair }, 
+      { "http://snomed.info/sct#183248007", AttendantPoweredWheelchair }, 
+      { "183249004", WheelchairSeating }, 
+      { "http://snomed.info/sct#183249004", WheelchairSeating }, 
+      { "183250004", MoldedWheelchairSeat }, 
+      { "http://snomed.info/sct#183250004", MoldedWheelchairSeat }, 
+      { "183251000", MatrixSeat }, 
+      { "http://snomed.info/sct#183251000", MatrixSeat }, 
+      { "18411005", Chisel }, 
+      { "http://snomed.info/sct#18411005", Chisel }, 
+      { "18666004", FinespunGlass }, 
+      { "http://snomed.info/sct#18666004", FinespunGlass }, 
+      { "19257004", Defibrillator }, 
+      { "http://snomed.info/sct#19257004", Defibrillator }, 
+      { "19328000", Blanket }, 
+      { "http://snomed.info/sct#19328000", Blanket }, 
+      { "1941006", SilkCloth }, 
+      { "http://snomed.info/sct#1941006", SilkCloth }, 
+      { "19443004", RadioactiveImplant }, 
+      { "http://snomed.info/sct#19443004", RadioactiveImplant }, 
+      { "1962007", Dike }, 
+      { "http://snomed.info/sct#1962007", Dike }, 
+      { "19627002", Leather }, 
+      { "http://snomed.info/sct#19627002", Leather }, 
+      { "19762002", LeatherBelt }, 
+      { "http://snomed.info/sct#19762002", LeatherBelt }, 
+      { "19817005", FanBlade }, 
+      { "http://snomed.info/sct#19817005", FanBlade }, 
+      { "19892000", Scale }, 
+      { "http://snomed.info/sct#19892000", Scale }, 
+      { "19923001", Catheter }, 
+      { "http://snomed.info/sct#19923001", Catheter }, 
+      { "201706006", IntracranialPressureTransducer }, 
+      { "http://snomed.info/sct#201706006", IntracranialPressureTransducer }, 
+      { "20195009", LegProsthesis }, 
+      { "http://snomed.info/sct#20195009", LegProsthesis }, 
+      { "20235003", Toothbrush }, 
+      { "http://snomed.info/sct#20235003", Toothbrush }, 
+      { "20273004", IndustrialMachine }, 
+      { "http://snomed.info/sct#20273004", IndustrialMachine }, 
+      { "20359006", ContraceptiveDiaphragm }, 
+      { "http://snomed.info/sct#20359006", ContraceptiveDiaphragm }, 
+      { "20406008", BackRests }, 
+      { "http://snomed.info/sct#20406008", BackRests }, 
+      { "20428008", OxygenTent }, 
+      { "http://snomed.info/sct#20428008", OxygenTent }, 
+      { "20513005", PowerTool }, 
+      { "http://snomed.info/sct#20513005", PowerTool }, 
+      { "20568009", UrinaryCatheter }, 
+      { "http://snomed.info/sct#20568009", UrinaryCatheter }, 
+      { "20613002", Cystoscope }, 
+      { "http://snomed.info/sct#20613002", Cystoscope }, 
+      { "20861007", PlugPack }, 
+      { "http://snomed.info/sct#20861007", PlugPack }, 
+      { "20867006", ExperimentalImplant }, 
+      { "http://snomed.info/sct#20867006", ExperimentalImplant }, 
+      { "20873007", PlasticClothLikeMaterial }, 
+      { "http://snomed.info/sct#20873007", PlasticClothLikeMaterial }, 
+      { "20997002", HandTool }, 
+      { "http://snomed.info/sct#20997002", HandTool }, 
+      { "21079000", CarbonMonoxideAnalyzer }, 
+      { "http://snomed.info/sct#21079000", CarbonMonoxideAnalyzer }, 
+      { "21546008", Refrigerator }, 
+      { "http://snomed.info/sct#21546008", Refrigerator }, 
+      { "21870002", TransluminalExtractionCatheter }, 
+      { "http://snomed.info/sct#21870002", TransluminalExtractionCatheter }, 
+      { "21944004", AbdominalBinder }, 
+      { "http://snomed.info/sct#21944004", AbdominalBinder }, 
+      { "22251003", Timer }, 
+      { "http://snomed.info/sct#22251003", Timer }, 
+      { "22283009", ArtificialMembrane }, 
+      { "http://snomed.info/sct#22283009", ArtificialMembrane }, 
+      { "223394001", EquipmentForPositioningPhysicalObject }, 
+      { "http://snomed.info/sct#223394001", EquipmentForPositioningPhysicalObject }, 
+      { "224684009", TopSecurityPrison }, 
+      { "http://snomed.info/sct#224684009", TopSecurityPrison }, 
+      { "224685005", CategoryBPrison }, 
+      { "http://snomed.info/sct#224685005", CategoryBPrison }, 
+      { "224686006", LowSecurityPrison }, 
+      { "http://snomed.info/sct#224686006", LowSecurityPrison }, 
+      { "2248009", EndotrachealTubeCuff }, 
+      { "http://snomed.info/sct#2248009", EndotrachealTubeCuff }, 
+      { "224823002", StreetLighting }, 
+      { "http://snomed.info/sct#224823002", StreetLighting }, 
+      { "224824008", SignPosting }, 
+      { "http://snomed.info/sct#224824008", SignPosting }, 
+      { "224825009", StreetNameSign }, 
+      { "http://snomed.info/sct#224825009", StreetNameSign }, 
+      { "224826005", BuildingNameSign }, 
+      { "http://snomed.info/sct#224826005", BuildingNameSign }, 
+      { "224827001", PedestrianDirectionSign }, 
+      { "http://snomed.info/sct#224827001", PedestrianDirectionSign }, 
+      { "224828006", TrafficSign }, 
+      { "http://snomed.info/sct#224828006", TrafficSign }, 
+      { "224898003", OrthoticDevice }, 
+      { "http://snomed.info/sct#224898003", OrthoticDevice }, 
+      { "224899006", WalkingAid }, 
+      { "http://snomed.info/sct#224899006", WalkingAid }, 
+      { "224900001", CommunicationAid }, 
+      { "http://snomed.info/sct#224900001", CommunicationAid }, 
+      { "22566001", CytologyBrush }, 
+      { "http://snomed.info/sct#22566001", CytologyBrush }, 
+      { "22662007", RetainingHarness }, 
+      { "http://snomed.info/sct#22662007", RetainingHarness }, 
+      { "22679001", Handcuffs }, 
+      { "http://snomed.info/sct#22679001", Handcuffs }, 
+      { "22744006", ArtificialHairWig }, 
+      { "http://snomed.info/sct#22744006", ArtificialHairWig }, 
+      { "228167008", Corset }, 
+      { "http://snomed.info/sct#228167008", Corset }, 
+      { "2282003", BreastProsthesis }, 
+      { "http://snomed.info/sct#2282003", BreastProsthesis }, 
+      { "228235002", Slippers }, 
+      { "http://snomed.info/sct#228235002", Slippers }, 
+      { "228236001", Mules }, 
+      { "http://snomed.info/sct#228236001", Mules }, 
+      { "228237005", Slippersox }, 
+      { "http://snomed.info/sct#228237005", Slippersox }, 
+      { "228239008", Trainers }, 
+      { "http://snomed.info/sct#228239008", Trainers }, 
+      { "228240005", Plimsolls }, 
+      { "http://snomed.info/sct#228240005", Plimsolls }, 
+      { "228241009", Sandals }, 
+      { "http://snomed.info/sct#228241009", Sandals }, 
+      { "228242002", GumBoots }, 
+      { "http://snomed.info/sct#228242002", GumBoots }, 
+      { "228243007", Chappel }, 
+      { "http://snomed.info/sct#228243007", Chappel }, 
+      { "228259007", Fastenings }, 
+      { "http://snomed.info/sct#228259007", Fastenings }, 
+      { "228260002", Velcro }, 
+      { "http://snomed.info/sct#228260002", Velcro }, 
+      { "228261003", Buckle }, 
+      { "http://snomed.info/sct#228261003", Buckle }, 
+      { "228262005", Zipper }, 
+      { "http://snomed.info/sct#228262005", Zipper }, 
+      { "228264006", SmallButton }, 
+      { "http://snomed.info/sct#228264006", SmallButton }, 
+      { "228265007", MediumButton }, 
+      { "http://snomed.info/sct#228265007", MediumButton }, 
+      { "228266008", LargeButtonPhysicalObject }, 
+      { "http://snomed.info/sct#228266008", LargeButtonPhysicalObject }, 
+      { "228267004", PressStud }, 
+      { "http://snomed.info/sct#228267004", PressStud }, 
+      { "228268009", HookAndEye }, 
+      { "http://snomed.info/sct#228268009", HookAndEye }, 
+      { "228270000", Laces }, 
+      { "http://snomed.info/sct#228270000", Laces }, 
+      { "228271001", ShoeLaces }, 
+      { "http://snomed.info/sct#228271001", ShoeLaces }, 
+      { "22852002", TherapeuticImplant }, 
+      { "http://snomed.info/sct#22852002", TherapeuticImplant }, 
+      { "2287009", NailFile }, 
+      { "http://snomed.info/sct#2287009", NailFile }, 
+      { "228731007", RadiotherapyEquipmentAndAppliances }, 
+      { "http://snomed.info/sct#228731007", RadiotherapyEquipmentAndAppliances }, 
+      { "228732000", BeamDirectionShell }, 
+      { "http://snomed.info/sct#228732000", BeamDirectionShell }, 
+      { "228733005", HeadAndNeckBeamDirectionShell }, 
+      { "http://snomed.info/sct#228733005", HeadAndNeckBeamDirectionShell }, 
+      { "228734004", BodyBeamDirectionShell }, 
+      { "http://snomed.info/sct#228734004", BodyBeamDirectionShell }, 
+      { "228735003", BeamModifier }, 
+      { "http://snomed.info/sct#228735003", BeamModifier }, 
+      { "228736002", SurfaceBolus }, 
+      { "http://snomed.info/sct#228736002", SurfaceBolus }, 
+      { "228737006", SurfaceCompensator }, 
+      { "http://snomed.info/sct#228737006", SurfaceCompensator }, 
+      { "228738001", Cutout }, 
+      { "http://snomed.info/sct#228738001", Cutout }, 
+      { "228739009", ShieldingBlock }, 
+      { "http://snomed.info/sct#228739009", ShieldingBlock }, 
+      { "228740006", LungBlock }, 
+      { "http://snomed.info/sct#228740006", LungBlock }, 
+      { "228741005", HumerusBlock }, 
+      { "http://snomed.info/sct#228741005", HumerusBlock }, 
+      { "228742003", ScrotalBlock }, 
+      { "http://snomed.info/sct#228742003", ScrotalBlock }, 
+      { "228743008", KidneyBlock }, 
+      { "http://snomed.info/sct#228743008", KidneyBlock }, 
+      { "228744002", EyeBlock }, 
+      { "http://snomed.info/sct#228744002", EyeBlock }, 
+      { "228745001", BiteBlock }, 
+      { "http://snomed.info/sct#228745001", BiteBlock }, 
+      { "228746000", WedgeFilter }, 
+      { "http://snomed.info/sct#228746000", WedgeFilter }, 
+      { "228747009", KilovoltageGrid }, 
+      { "http://snomed.info/sct#228747009", KilovoltageGrid }, 
+      { "228748004", BrachytherapyImplant }, 
+      { "http://snomed.info/sct#228748004", BrachytherapyImplant }, 
+      { "228749007", SinglePlaneImplant }, 
+      { "http://snomed.info/sct#228749007", SinglePlaneImplant }, 
+      { "228750007", TwoPlaneImplant }, 
+      { "http://snomed.info/sct#228750007", TwoPlaneImplant }, 
+      { "228751006", SemicircularImplant }, 
+      { "http://snomed.info/sct#228751006", SemicircularImplant }, 
+      { "228752004", RegularVolumeImplant }, 
+      { "http://snomed.info/sct#228752004", RegularVolumeImplant }, 
+      { "228753009", IrregularVolumeImplant }, 
+      { "http://snomed.info/sct#228753009", IrregularVolumeImplant }, 
+      { "228754003", BrachytherapySurfaceMold }, 
+      { "http://snomed.info/sct#228754003", BrachytherapySurfaceMold }, 
+      { "228755002", TwoPlaneMold }, 
+      { "http://snomed.info/sct#228755002", TwoPlaneMold }, 
+      { "228756001", SinglePlaneMold }, 
+      { "http://snomed.info/sct#228756001", SinglePlaneMold }, 
+      { "228757005", CylinderMold }, 
+      { "http://snomed.info/sct#228757005", CylinderMold }, 
+      { "228759008", AdhesiveFeltMold }, 
+      { "http://snomed.info/sct#228759008", AdhesiveFeltMold }, 
+      { "228760003", ElastoplastMold }, 
+      { "http://snomed.info/sct#228760003", ElastoplastMold }, 
+      { "228761004", CollimatorPhysicalObject }, 
+      { "http://snomed.info/sct#228761004", CollimatorPhysicalObject }, 
+      { "228762006", MultileafCollimator }, 
+      { "http://snomed.info/sct#228762006", MultileafCollimator }, 
+      { "228763001", AsymmetricJawsCollimator }, 
+      { "http://snomed.info/sct#228763001", AsymmetricJawsCollimator }, 
+      { "228765008", StandardCollimator }, 
+      { "http://snomed.info/sct#228765008", StandardCollimator }, 
+      { "228766009", FormOfBrachytherapySource }, 
+      { "http://snomed.info/sct#228766009", FormOfBrachytherapySource }, 
+      { "228767000", WireSource }, 
+      { "http://snomed.info/sct#228767000", WireSource }, 
+      { "228768005", SeedsSource }, 
+      { "http://snomed.info/sct#228768005", SeedsSource }, 
+      { "228770001", HairpinsSource }, 
+      { "http://snomed.info/sct#228770001", HairpinsSource }, 
+      { "228771002", NeedlesSource }, 
+      { "http://snomed.info/sct#228771002", NeedlesSource }, 
+      { "228772009", PelletsSource }, 
+      { "http://snomed.info/sct#228772009", PelletsSource }, 
+      { "228773004", CapsulesSource }, 
+      { "http://snomed.info/sct#228773004", CapsulesSource }, 
+      { "228774005", TrainsSource }, 
+      { "http://snomed.info/sct#228774005", TrainsSource }, 
+      { "228775006", TubesSource }, 
+      { "http://snomed.info/sct#228775006", TubesSource }, 
+      { "228776007", RodsSource }, 
+      { "http://snomed.info/sct#228776007", RodsSource }, 
+      { "228777003", GrainsSource }, 
+      { "http://snomed.info/sct#228777003", GrainsSource }, 
+      { "228778008", PlaqueSource }, 
+      { "http://snomed.info/sct#228778008", PlaqueSource }, 
+      { "228869008", ManualWheelchair }, 
+      { "http://snomed.info/sct#228869008", ManualWheelchair }, 
+      { "229772003", Bed }, 
+      { "http://snomed.info/sct#229772003", Bed }, 
+      { "229839006", FunctionalFootOrthosisPhysicalObject }, 
+      { "http://snomed.info/sct#229839006", FunctionalFootOrthosisPhysicalObject }, 
+      { "229840008", NonFunctionalFootOrthosisPhysicalObject }, 
+      { "http://snomed.info/sct#229840008", NonFunctionalFootOrthosisPhysicalObject }, 
+      { "229841007", DetachablePadForTheFoot }, 
+      { "http://snomed.info/sct#229841007", DetachablePadForTheFoot }, 
+      { "229842000", DetachableToeProp }, 
+      { "http://snomed.info/sct#229842000", DetachableToeProp }, 
+      { "229843005", DetachableHorseshoePad }, 
+      { "http://snomed.info/sct#229843005", DetachableHorseshoePad }, 
+      { "23228005", Arthroscope }, 
+      { "http://snomed.info/sct#23228005", Arthroscope }, 
+      { "23366006", MotorizedWheelchairDevicePhysicalObject }, 
+      { "http://snomed.info/sct#23366006", MotorizedWheelchairDevicePhysicalObject }, 
+      { "23699001", Baseball }, 
+      { "http://snomed.info/sct#23699001", Baseball }, 
+      { "23785007", ArthroscopicIrrigationDistensionPump }, 
+      { "http://snomed.info/sct#23785007", ArthroscopicIrrigationDistensionPump }, 
+      { "23973005", IndwellingUrinaryCatheter }, 
+      { "http://snomed.info/sct#23973005", IndwellingUrinaryCatheter }, 
+      { "24073000", ArtificialCardiacValveProsthesis }, 
+      { "http://snomed.info/sct#24073000", ArtificialCardiacValveProsthesis }, 
+      { "24110008", Anoscope }, 
+      { "http://snomed.info/sct#24110008", Anoscope }, 
+      { "24174009", Bronchoscope }, 
+      { "http://snomed.info/sct#24174009", Bronchoscope }, 
+      { "24230000", Vibrator }, 
+      { "http://snomed.info/sct#24230000", Vibrator }, 
+      { "24290003", BiologicCardiacValveProsthesis }, 
+      { "http://snomed.info/sct#24290003", BiologicCardiacValveProsthesis }, 
+      { "243135003", Spacer }, 
+      { "http://snomed.info/sct#243135003", Spacer }, 
+      { "243719003", NearLowVisionAidIntegralSpectacleMagnifier }, 
+      { "http://snomed.info/sct#243719003", NearLowVisionAidIntegralSpectacleMagnifier }, 
+      { "243720009", NearLowVisionAidClipOnSpectacleMagnifier }, 
+      { "http://snomed.info/sct#243720009", NearLowVisionAidClipOnSpectacleMagnifier }, 
+      { "243722001", NearLowVisionAidIntegralSpectacleTelescope }, 
+      { "http://snomed.info/sct#243722001", NearLowVisionAidIntegralSpectacleTelescope }, 
+      { "243723006", NearLowVisionAidClipOnSpectacleTelescope }, 
+      { "http://snomed.info/sct#243723006", NearLowVisionAidClipOnSpectacleTelescope }, 
+      { "24402003", Stepladder }, 
+      { "http://snomed.info/sct#24402003", Stepladder }, 
+      { "24470005", Wrench }, 
+      { "http://snomed.info/sct#24470005", Wrench }, 
+      { "24513003", PlasticBoots }, 
+      { "http://snomed.info/sct#24513003", PlasticBoots }, 
+      { "2468001", BreathAnalyzer }, 
+      { "http://snomed.info/sct#2468001", BreathAnalyzer }, 
+      { "24697008", OstomyBelt }, 
+      { "http://snomed.info/sct#24697008", OstomyBelt }, 
+      { "24767007", EustachianTubeProsthesis }, 
+      { "http://snomed.info/sct#24767007", EustachianTubeProsthesis }, 
+      { "2478003", GlassEye }, 
+      { "http://snomed.info/sct#2478003", GlassEye }, 
+      { "2491002", IntraAorticBalloonCatheter }, 
+      { "http://snomed.info/sct#2491002", IntraAorticBalloonCatheter }, 
+      { "25005004", Snare }, 
+      { "http://snomed.info/sct#25005004", Snare }, 
+      { "25062003", FeedingTube }, 
+      { "http://snomed.info/sct#25062003", FeedingTube }, 
+      { "25152007", SqueezeCage }, 
+      { "http://snomed.info/sct#25152007", SqueezeCage }, 
+      { "25510005", CardiacValveProsthesis }, 
+      { "http://snomed.info/sct#25510005", CardiacValveProsthesis }, 
+      { "255296002", Wedge }, 
+      { "http://snomed.info/sct#255296002", Wedge }, 
+      { "255712000", Television }, 
+      { "http://snomed.info/sct#255712000", Television }, 
+      { "255716002", LatexRubberGloves }, 
+      { "http://snomed.info/sct#255716002", LatexRubberGloves }, 
+      { "256245006", Textiles }, 
+      { "http://snomed.info/sct#256245006", Textiles }, 
+      { "256246007", CottonTextile }, 
+      { "http://snomed.info/sct#256246007", CottonTextile }, 
+      { "256247003", Flax }, 
+      { "http://snomed.info/sct#256247003", Flax }, 
+      { "25632005", HockeyPuck }, 
+      { "http://snomed.info/sct#25632005", HockeyPuck }, 
+      { "256562002", CottonWool }, 
+      { "http://snomed.info/sct#256562002", CottonWool }, 
+      { "256563007", CottonWoolRoll }, 
+      { "http://snomed.info/sct#256563007", CottonWoolRoll }, 
+      { "256564001", CottonWoolPledget }, 
+      { "http://snomed.info/sct#256564001", CottonWoolPledget }, 
+      { "256589007", DentalRubberDam }, 
+      { "http://snomed.info/sct#256589007", DentalRubberDam }, 
+      { "256590003", EndodonticSponge }, 
+      { "http://snomed.info/sct#256590003", EndodonticSponge }, 
+      { "256593001", OrthodonticElastic }, 
+      { "http://snomed.info/sct#256593001", OrthodonticElastic }, 
+      { "256641009", RibbonGauze }, 
+      { "http://snomed.info/sct#256641009", RibbonGauze }, 
+      { "256642002", WetRibbonGauze }, 
+      { "http://snomed.info/sct#256642002", WetRibbonGauze }, 
+      { "256643007", DryRibbonGauze }, 
+      { "http://snomed.info/sct#256643007", DryRibbonGauze }, 
+      { "25680008", Scaffold }, 
+      { "http://snomed.info/sct#25680008", Scaffold }, 
+      { "257192006", AidToVision }, 
+      { "http://snomed.info/sct#257192006", AidToVision }, 
+      { "257193001", Loupes }, 
+      { "http://snomed.info/sct#257193001", Loupes }, 
+      { "25742001", OrthodonticAppliance }, 
+      { "http://snomed.info/sct#25742001", OrthodonticAppliance }, 
+      { "25937001", Neurostimulator }, 
+      { "http://snomed.info/sct#25937001", Neurostimulator }, 
+      { "26128008", Bougie }, 
+      { "http://snomed.info/sct#26128008", Bougie }, 
+      { "26239002", SoccerBall }, 
+      { "http://snomed.info/sct#26239002", SoccerBall }, 
+      { "26334009", Dockboard }, 
+      { "http://snomed.info/sct#26334009", Dockboard }, 
+      { "26397000", BreathingBag }, 
+      { "http://snomed.info/sct#26397000", BreathingBag }, 
+      { "26412008", EndotrachealTube }, 
+      { "http://snomed.info/sct#26412008", EndotrachealTube }, 
+      { "26579007", HolterValve }, 
+      { "http://snomed.info/sct#26579007", HolterValve }, 
+      { "26719000", CelestinTube }, 
+      { "http://snomed.info/sct#26719000", CelestinTube }, 
+      { "26882005", Rongeur }, 
+      { "http://snomed.info/sct#26882005", Rongeur }, 
+      { "27042007", NeedleAdapter }, 
+      { "http://snomed.info/sct#27042007", NeedleAdapter }, 
+      { "27065002", SurgicalSuture }, 
+      { "http://snomed.info/sct#27065002", SurgicalSuture }, 
+      { "27091001", Dumbwaiter }, 
+      { "http://snomed.info/sct#27091001", Dumbwaiter }, 
+      { "271003", BonePlate }, 
+      { "http://snomed.info/sct#271003", BonePlate }, 
+      { "27126002", PowerBelt }, 
+      { "http://snomed.info/sct#27126002", PowerBelt }, 
+      { "27229001", SprayBooth }, 
+      { "http://snomed.info/sct#27229001", SprayBooth }, 
+      { "27606000", DentalProsthesis }, 
+      { "http://snomed.info/sct#27606000", DentalProsthesis }, 
+      { "27785006", AthleticSupporter }, 
+      { "http://snomed.info/sct#27785006", AthleticSupporter }, 
+      { "27812008", ElectricHeatingPad }, 
+      { "http://snomed.info/sct#27812008", ElectricHeatingPad }, 
+      { "27976001", WoodworkingMachinery }, 
+      { "http://snomed.info/sct#27976001", WoodworkingMachinery }, 
+      { "27991004", Thermometer }, 
+      { "http://snomed.info/sct#27991004", Thermometer }, 
+      { "28026003", Hairbrush }, 
+      { "http://snomed.info/sct#28026003", Hairbrush }, 
+      { "287000", AirReceiver }, 
+      { "http://snomed.info/sct#287000", AirReceiver }, 
+      { "291005", Atomizer }, 
+      { "http://snomed.info/sct#291005", Atomizer }, 
+      { "29292008", FurGarment }, 
+      { "http://snomed.info/sct#29292008", FurGarment }, 
+      { "29319002", Forceps }, 
+      { "http://snomed.info/sct#29319002", Forceps }, 
+      { "29396008", Resuscitator }, 
+      { "http://snomed.info/sct#29396008", Resuscitator }, 
+      { "30012001", Elevator }, 
+      { "http://snomed.info/sct#30012001", Elevator }, 
+      { "30070001", MultistageSuspensionScaffolding }, 
+      { "http://snomed.info/sct#30070001", MultistageSuspensionScaffolding }, 
+      { "30115002", Shield }, 
+      { "http://snomed.info/sct#30115002", Shield }, 
+      { "30176005", BaseballBat }, 
+      { "http://snomed.info/sct#30176005", BaseballBat }, 
+      { "30234008", MedicalLaboratoryAnalyzer }, 
+      { "http://snomed.info/sct#30234008", MedicalLaboratoryAnalyzer }, 
+      { "30610008", EpiduralCatheter }, 
+      { "http://snomed.info/sct#30610008", EpiduralCatheter }, 
+      { "30661003", CosmeticProsthesis }, 
+      { "http://snomed.info/sct#30661003", CosmeticProsthesis }, 
+      { "30929000", Ligator }, 
+      { "http://snomed.info/sct#30929000", Ligator }, 
+      { "30968007", DrainageBag }, 
+      { "http://snomed.info/sct#30968007", DrainageBag }, 
+      { "31030004", PeritonealCatheter }, 
+      { "http://snomed.info/sct#31030004", PeritonealCatheter }, 
+      { "31031000", OrthopedicInternalFixationSystem }, 
+      { "http://snomed.info/sct#31031000", OrthopedicInternalFixationSystem }, 
+      { "31174004", LumbosacralBelt }, 
+      { "http://snomed.info/sct#31174004", LumbosacralBelt }, 
+      { "31791005", TractionBelt }, 
+      { "http://snomed.info/sct#31791005", TractionBelt }, 
+      { "31878003", SurgicalScissors }, 
+      { "http://snomed.info/sct#31878003", SurgicalScissors }, 
+      { "3201004", Tent }, 
+      { "http://snomed.info/sct#3201004", Tent }, 
+      { "32033000", ArterialPressureMonitor }, 
+      { "http://snomed.info/sct#32033000", ArterialPressureMonitor }, 
+      { "32356002", MachineGuarding }, 
+      { "http://snomed.info/sct#32356002", MachineGuarding }, 
+      { "32504006", Screwdriver }, 
+      { "http://snomed.info/sct#32504006", Screwdriver }, 
+      { "32634007", FixedLadder }, 
+      { "http://snomed.info/sct#32634007", FixedLadder }, 
+      { "32667006", OropharyngealAirwayDevice }, 
+      { "http://snomed.info/sct#32667006", OropharyngealAirwayDevice }, 
+      { "32711007", OstomyCollectionBag }, 
+      { "http://snomed.info/sct#32711007", OstomyCollectionBag }, 
+      { "32712000", Drain }, 
+      { "http://snomed.info/sct#32712000", Drain }, 
+      { "32871007", Tweezer }, 
+      { "http://snomed.info/sct#32871007", Tweezer }, 
+      { "3319006", ArtificialLiver }, 
+      { "http://snomed.info/sct#3319006", ArtificialLiver }, 
+      { "33194000", WeldingEquipment }, 
+      { "http://snomed.info/sct#33194000", WeldingEquipment }, 
+      { "33352006", Ax }, 
+      { "http://snomed.info/sct#33352006", Ax }, 
+      { "33388001", CarbonDioxideAnalyzer }, 
+      { "http://snomed.info/sct#33388001", CarbonDioxideAnalyzer }, 
+      { "33482001", RubberBoots }, 
+      { "http://snomed.info/sct#33482001", RubberBoots }, 
+      { "33686008", Stylet }, 
+      { "http://snomed.info/sct#33686008", Stylet }, 
+      { "33690005", SharpInstrument }, 
+      { "http://snomed.info/sct#33690005", SharpInstrument }, 
+      { "33802005", EnemaBag }, 
+      { "http://snomed.info/sct#33802005", EnemaBag }, 
+      { "33894003", ExperimentalDevice }, 
+      { "http://snomed.info/sct#33894003", ExperimentalDevice }, 
+      { "33918000", RubberizedCloth }, 
+      { "http://snomed.info/sct#33918000", RubberizedCloth }, 
+      { "34164001", PlasterCast }, 
+      { "http://snomed.info/sct#34164001", PlasterCast }, 
+      { "34188004", Straightjacket }, 
+      { "http://snomed.info/sct#34188004", Straightjacket }, 
+      { "34234003", PlasticTube }, 
+      { "http://snomed.info/sct#34234003", PlasticTube }, 
+      { "34263000", MedicalBalloon }, 
+      { "http://snomed.info/sct#34263000", MedicalBalloon }, 
+      { "34362008", VascularDevice }, 
+      { "http://snomed.info/sct#34362008", VascularDevice }, 
+      { "34759008", UrethralCatheter }, 
+      { "http://snomed.info/sct#34759008", UrethralCatheter }, 
+      { "35398009", OstomyAppliance }, 
+      { "http://snomed.info/sct#35398009", OstomyAppliance }, 
+      { "35593004", WireLigature }, 
+      { "http://snomed.info/sct#35593004", WireLigature }, 
+      { "35870000", CerebrospinalCatheter }, 
+      { "http://snomed.info/sct#35870000", CerebrospinalCatheter }, 
+      { "36365007", IcePick }, 
+      { "http://snomed.info/sct#36365007", IcePick }, 
+      { "36370000", AspiratorTrapBottle }, 
+      { "http://snomed.info/sct#36370000", AspiratorTrapBottle }, 
+      { "36645008", Stimulator }, 
+      { "http://snomed.info/sct#36645008", Stimulator }, 
+      { "36761001", NaturalHairWig }, 
+      { "http://snomed.info/sct#36761001", NaturalHairWig }, 
+      { "36965003", HemodialysisMachine }, 
+      { "http://snomed.info/sct#36965003", HemodialysisMachine }, 
+      { "36977008", PeripheralNeurostimulator }, 
+      { "http://snomed.info/sct#36977008", PeripheralNeurostimulator }, 
+      { "37189001", MagneticDetector }, 
+      { "http://snomed.info/sct#37189001", MagneticDetector }, 
+      { "37270008", Endoscope }, 
+      { "http://snomed.info/sct#37270008", Endoscope }, 
+      { "37284003", Bag }, 
+      { "http://snomed.info/sct#37284003", Bag }, 
+      { "37311003", StoneRetrievalBasket }, 
+      { "http://snomed.info/sct#37311003", StoneRetrievalBasket }, 
+      { "37347002", Dildo }, 
+      { "http://snomed.info/sct#37347002", Dildo }, 
+      { "37360008", PatientIsolator }, 
+      { "http://snomed.info/sct#37360008", PatientIsolator }, 
+      { "37503007", ProtectiveBlind }, 
+      { "http://snomed.info/sct#37503007", ProtectiveBlind }, 
+      { "37759000", SurgicalInstrument }, 
+      { "http://snomed.info/sct#37759000", SurgicalInstrument }, 
+      { "37874008", ContinuingPositiveAirwayPressureUnit }, 
+      { "http://snomed.info/sct#37874008", ContinuingPositiveAirwayPressureUnit }, 
+      { "37953008", BedsideRails }, 
+      { "http://snomed.info/sct#37953008", BedsideRails }, 
+      { "38126007", ProtectiveGlasses }, 
+      { "http://snomed.info/sct#38126007", ProtectiveGlasses }, 
+      { "38141007", Tourniquet }, 
+      { "http://snomed.info/sct#38141007", Tourniquet }, 
+      { "38277008", ProtectiveDevice }, 
+      { "http://snomed.info/sct#38277008", ProtectiveDevice }, 
+      { "38806006", HockeyStick }, 
+      { "http://snomed.info/sct#38806006", HockeyStick }, 
+      { "38862006", Brake }, 
+      { "http://snomed.info/sct#38862006", Brake }, 
+      { "38871002", MetallicCloth }, 
+      { "http://snomed.info/sct#38871002", MetallicCloth }, 
+      { "39590006", AirCompressor }, 
+      { "http://snomed.info/sct#39590006", AirCompressor }, 
+      { "39690000", Sphygmomanometer }, 
+      { "http://snomed.info/sct#39690000", Sphygmomanometer }, 
+      { "39768008", Rasp }, 
+      { "http://snomed.info/sct#39768008", Rasp }, 
+      { "39790008", NonElectricHeatingPad }, 
+      { "http://snomed.info/sct#39790008", NonElectricHeatingPad }, 
+      { "39802000", TongueBlade }, 
+      { "http://snomed.info/sct#39802000", TongueBlade }, 
+      { "39821008", PositronEmissionTomographyUnit }, 
+      { "http://snomed.info/sct#39821008", PositronEmissionTomographyUnit }, 
+      { "39869006", Alarm }, 
+      { "http://snomed.info/sct#39869006", Alarm }, 
+      { "40388003", Implant }, 
+      { "http://snomed.info/sct#40388003", Implant }, 
+      { "40519001", Binder }, 
+      { "http://snomed.info/sct#40519001", Binder }, 
+      { "41157002", Immobilizer }, 
+      { "http://snomed.info/sct#41157002", Immobilizer }, 
+      { "41323003", UrinaryCollectionBag }, 
+      { "http://snomed.info/sct#41323003", UrinaryCollectionBag }, 
+      { "41684000", IndustrialTool }, 
+      { "http://snomed.info/sct#41684000", IndustrialTool }, 
+      { "42152006", MetalTube }, 
+      { "http://snomed.info/sct#42152006", MetalTube }, 
+      { "42305009", AmbulationDevice }, 
+      { "http://snomed.info/sct#42305009", AmbulationDevice }, 
+      { "42380001", EarPlug }, 
+      { "http://snomed.info/sct#42380001", EarPlug }, 
+      { "42451009", BloodWarmer }, 
+      { "http://snomed.info/sct#42451009", BloodWarmer }, 
+      { "42716000", Wool }, 
+      { "http://snomed.info/sct#42716000", Wool }, 
+      { "42882002", HypodermicSpray }, 
+      { "http://snomed.info/sct#42882002", HypodermicSpray }, 
+      { "43001000", PhlebotomyKit }, 
+      { "http://snomed.info/sct#43001000", PhlebotomyKit }, 
+      { "43192004", BonePencil }, 
+      { "http://snomed.info/sct#43192004", BonePencil }, 
+      { "43252007", CochlearProsthesis }, 
+      { "http://snomed.info/sct#43252007", CochlearProsthesis }, 
+      { "43725001", AirwayDevice }, 
+      { "http://snomed.info/sct#43725001", AirwayDevice }, 
+      { "43734006", BloodAdministrationSet }, 
+      { "http://snomed.info/sct#43734006", BloodAdministrationSet }, 
+      { "43770009", DopplerDevice }, 
+      { "http://snomed.info/sct#43770009", DopplerDevice }, 
+      { "43983001", Shoes }, 
+      { "http://snomed.info/sct#43983001", Shoes }, 
+      { "44056008", Caliper }, 
+      { "http://snomed.info/sct#44056008", Caliper }, 
+      { "4408003", EndoscopicCamera }, 
+      { "http://snomed.info/sct#4408003", EndoscopicCamera }, 
+      { "44396004", Magnet }, 
+      { "http://snomed.info/sct#44396004", Magnet }, 
+      { "44492001", IndustrialRobot }, 
+      { "http://snomed.info/sct#44492001", IndustrialRobot }, 
+      { "44668000", Pump }, 
+      { "http://snomed.info/sct#44668000", Pump }, 
+      { "44738004", Laryngoscope }, 
+      { "http://snomed.info/sct#44738004", Laryngoscope }, 
+      { "44806002", EsophagealBougie }, 
+      { "http://snomed.info/sct#44806002", EsophagealBougie }, 
+      { "44845007", GolfBall }, 
+      { "http://snomed.info/sct#44845007", GolfBall }, 
+      { "44907005", FourWheeledAllTerrainVehicle }, 
+      { "http://snomed.info/sct#44907005", FourWheeledAllTerrainVehicle }, 
+      { "44959004", AngioplastyBalloonCatheter }, 
+      { "http://snomed.info/sct#44959004", AngioplastyBalloonCatheter }, 
+      { "45633005", PeritonealDialyzer }, 
+      { "http://snomed.info/sct#45633005", PeritonealDialyzer }, 
+      { "45901004", PenroseDrain }, 
+      { "http://snomed.info/sct#45901004", PenroseDrain }, 
+      { "46181005", AutomaticFireExtinguisherSystem }, 
+      { "http://snomed.info/sct#46181005", AutomaticFireExtinguisherSystem }, 
+      { "46265007", ArtificialLashes }, 
+      { "http://snomed.info/sct#46265007", ArtificialLashes }, 
+      { "46299005", SanitaryBelt }, 
+      { "http://snomed.info/sct#46299005", SanitaryBelt }, 
+      { "4632004", HairCloth }, 
+      { "http://snomed.info/sct#4632004", HairCloth }, 
+      { "46364009", Clamp }, 
+      { "http://snomed.info/sct#46364009", Clamp }, 
+      { "46440007", Basketball }, 
+      { "http://snomed.info/sct#46440007", Basketball }, 
+      { "46625003", Pessary }, 
+      { "http://snomed.info/sct#46625003", Pessary }, 
+      { "46666003", Chain }, 
+      { "http://snomed.info/sct#46666003", Chain }, 
+      { "46949002", DeckMachinery }, 
+      { "http://snomed.info/sct#46949002", DeckMachinery }, 
+      { "47162009", Mirror }, 
+      { "http://snomed.info/sct#47162009", Mirror }, 
+      { "47326004", ElectricalUtilizationEquipment }, 
+      { "http://snomed.info/sct#47326004", ElectricalUtilizationEquipment }, 
+      { "47424002", ApgarScoringTimer }, 
+      { "http://snomed.info/sct#47424002", ApgarScoringTimer }, 
+      { "47528002", UreteralCatheter }, 
+      { "http://snomed.info/sct#47528002", UreteralCatheter }, 
+      { "47731004", BirthingChair }, 
+      { "http://snomed.info/sct#47731004", BirthingChair }, 
+      { "47734007", CatgutSuture }, 
+      { "http://snomed.info/sct#47734007", CatgutSuture }, 
+      { "47776004", HandMitt }, 
+      { "http://snomed.info/sct#47776004", HandMitt }, 
+      { "47942000", Proctoscope }, 
+      { "http://snomed.info/sct#47942000", Proctoscope }, 
+      { "48066006", CircularPortableSaw }, 
+      { "http://snomed.info/sct#48066006", CircularPortableSaw }, 
+      { "48096001", BathtubRails }, 
+      { "http://snomed.info/sct#48096001", BathtubRails }, 
+      { "4816004", MetalDevice }, 
+      { "http://snomed.info/sct#4816004", MetalDevice }, 
+      { "48240003", TrainingEquipment }, 
+      { "http://snomed.info/sct#48240003", TrainingEquipment }, 
+      { "48246009", StudGunDevicePhysicalObject }, 
+      { "http://snomed.info/sct#48246009", StudGunDevicePhysicalObject }, 
+      { "48295009", VascularFilter }, 
+      { "http://snomed.info/sct#48295009", VascularFilter }, 
+      { "48473008", ProtectiveBodyArmor }, 
+      { "http://snomed.info/sct#48473008", ProtectiveBodyArmor }, 
+      { "48990009", Strap }, 
+      { "http://snomed.info/sct#48990009", Strap }, 
+      { "49062001", Device }, 
+      { "http://snomed.info/sct#49062001", Device }, 
+      { "49448001", Razor }, 
+      { "http://snomed.info/sct#49448001", Razor }, 
+      { "49890001", HospitalCart }, 
+      { "http://snomed.info/sct#49890001", HospitalCart }, 
+      { "50121007", EyeGlassesDevicePhysicalObject }, 
+      { "http://snomed.info/sct#50121007", EyeGlassesDevicePhysicalObject }, 
+      { "5041003", AdhesiveStrip }, 
+      { "http://snomed.info/sct#5041003", AdhesiveStrip }, 
+      { "5042005", PatientScale }, 
+      { "http://snomed.info/sct#5042005", PatientScale }, 
+      { "50457005", WorkoverRigServiceToOilWell }, 
+      { "http://snomed.info/sct#50457005", WorkoverRigServiceToOilWell }, 
+      { "50483000", OilWellRig }, 
+      { "http://snomed.info/sct#50483000", OilWellRig }, 
+      { "50851003", PenileTumescenceMonitor }, 
+      { "http://snomed.info/sct#50851003", PenileTumescenceMonitor }, 
+      { "51016001", Hammer }, 
+      { "http://snomed.info/sct#51016001", Hammer }, 
+      { "51086006", ShowerCurtain }, 
+      { "http://snomed.info/sct#51086006", ShowerCurtain }, 
+      { "51324004", Stripper }, 
+      { "http://snomed.info/sct#51324004", Stripper }, 
+      { "5159002", PhysiologicMonitoringSystem }, 
+      { "http://snomed.info/sct#5159002", PhysiologicMonitoringSystem }, 
+      { "51685009", RollerSkate }, 
+      { "http://snomed.info/sct#51685009", RollerSkate }, 
+      { "51791000", MeasuringTape }, 
+      { "http://snomed.info/sct#51791000", MeasuringTape }, 
+      { "51832004", ValvedTube }, 
+      { "http://snomed.info/sct#51832004", ValvedTube }, 
+      { "51883004", Sling }, 
+      { "http://snomed.info/sct#51883004", Sling }, 
+      { "52065008", Diaper }, 
+      { "http://snomed.info/sct#52065008", Diaper }, 
+      { "52124006", CentralVenousCatheter }, 
+      { "http://snomed.info/sct#52124006", CentralVenousCatheter }, 
+      { "52161002", MoltenLava }, 
+      { "http://snomed.info/sct#52161002", MoltenLava }, 
+      { "52291003", Glove }, 
+      { "http://snomed.info/sct#52291003", Glove }, 
+      { "52520009", Ladder }, 
+      { "http://snomed.info/sct#52520009", Ladder }, 
+      { "52537002", AspiratorCollectionCanister }, 
+      { "http://snomed.info/sct#52537002", AspiratorCollectionCanister }, 
+      { "52624007", RadiofrequencyGenerator }, 
+      { "http://snomed.info/sct#52624007", RadiofrequencyGenerator }, 
+      { "52773007", Ski }, 
+      { "http://snomed.info/sct#52773007", Ski }, 
+      { "52809000", NasopharyngealCatheter }, 
+      { "http://snomed.info/sct#52809000", NasopharyngealCatheter }, 
+      { "52893008", BloodGasPHAnalyzer }, 
+      { "http://snomed.info/sct#52893008", BloodGasPHAnalyzer }, 
+      { "53167006", PlatformSuspendedBoom }, 
+      { "http://snomed.info/sct#53167006", PlatformSuspendedBoom }, 
+      { "53177008", NasalBalloon }, 
+      { "http://snomed.info/sct#53177008", NasalBalloon }, 
+      { "53217009", ArtificialLung }, 
+      { "http://snomed.info/sct#53217009", ArtificialLung }, 
+      { "53350007", Prosthesis }, 
+      { "http://snomed.info/sct#53350007", Prosthesis }, 
+      { "53535004", Retractor }, 
+      { "http://snomed.info/sct#53535004", Retractor }, 
+      { "53639001", Stethoscope }, 
+      { "http://snomed.info/sct#53639001", Stethoscope }, 
+      { "53671008", GastricBalloon }, 
+      { "http://snomed.info/sct#53671008", GastricBalloon }, 
+      { "53996008", PenileProsthesis }, 
+      { "http://snomed.info/sct#53996008", PenileProsthesis }, 
+      { "54234007", CryogenicAnalgesiaUnit }, 
+      { "http://snomed.info/sct#54234007", CryogenicAnalgesiaUnit }, 
+      { "54638004", Towel }, 
+      { "http://snomed.info/sct#54638004", Towel }, 
+      { "54953005", ComputerizedAxialTomographyScanner }, 
+      { "http://snomed.info/sct#54953005", ComputerizedAxialTomographyScanner }, 
+      { "55091003", BloodCoagulationAnalyzer }, 
+      { "http://snomed.info/sct#55091003", BloodCoagulationAnalyzer }, 
+      { "55206006", SutureButton }, 
+      { "http://snomed.info/sct#55206006", SutureButton }, 
+      { "55216003", Amnioscope }, 
+      { "http://snomed.info/sct#55216003", Amnioscope }, 
+      { "55337009", Auscultoscope }, 
+      { "http://snomed.info/sct#55337009", Auscultoscope }, 
+      { "55567004", Bassinet }, 
+      { "http://snomed.info/sct#55567004", Bassinet }, 
+      { "55658008", HotObject }, 
+      { "http://snomed.info/sct#55658008", HotObject }, 
+      { "55986002", Tong }, 
+      { "http://snomed.info/sct#55986002", Tong }, 
+      { "56144002", BackBraces }, 
+      { "http://snomed.info/sct#56144002", BackBraces }, 
+      { "56353002", Staple }, 
+      { "http://snomed.info/sct#56353002", Staple }, 
+      { "56547001", Trephine }, 
+      { "http://snomed.info/sct#56547001", Trephine }, 
+      { "5679009", BedSheet }, 
+      { "http://snomed.info/sct#5679009", BedSheet }, 
+      { "56896002", PacemakerCatheter }, 
+      { "http://snomed.info/sct#56896002", PacemakerCatheter }, 
+      { "56961003", CardiacTransvenousPacemaker }, 
+      { "http://snomed.info/sct#56961003", CardiacTransvenousPacemaker }, 
+      { "57118008", PerfusionPump }, 
+      { "http://snomed.info/sct#57118008", PerfusionPump }, 
+      { "57134006", Instrument }, 
+      { "http://snomed.info/sct#57134006", Instrument }, 
+      { "57368009", ContactLenses }, 
+      { "http://snomed.info/sct#57368009", ContactLenses }, 
+      { "57395004", PhysicalRestraintEquipment }, 
+      { "http://snomed.info/sct#57395004", PhysicalRestraintEquipment }, 
+      { "57730005", AbrasiveGrinding }, 
+      { "http://snomed.info/sct#57730005", AbrasiveGrinding }, 
+      { "58153004", Android }, 
+      { "http://snomed.info/sct#58153004", Android }, 
+      { "58253008", SuctionCatheter }, 
+      { "http://snomed.info/sct#58253008", SuctionCatheter }, 
+      { "58514003", InfantScale }, 
+      { "http://snomed.info/sct#58514003", InfantScale }, 
+      { "58878002", ProtectiveVest }, 
+      { "http://snomed.info/sct#58878002", ProtectiveVest }, 
+      { "58938008", WCWheelchair }, 
+      { "http://snomed.info/sct#58938008", WCWheelchair }, 
+      { "59102007", IceBag }, 
+      { "http://snomed.info/sct#59102007", IceBag }, 
+      { "59127000", ApneaAlarm }, 
+      { "http://snomed.info/sct#59127000", ApneaAlarm }, 
+      { "59153008", Barge }, 
+      { "http://snomed.info/sct#59153008", Barge }, 
+      { "59160002", Chipguard }, 
+      { "http://snomed.info/sct#59160002", Chipguard }, 
+      { "59181002", OxygenAnalyzer }, 
+      { "http://snomed.info/sct#59181002", OxygenAnalyzer }, 
+      { "59432006", Ligature }, 
+      { "http://snomed.info/sct#59432006", Ligature }, 
+      { "59746007", NeedleHolder }, 
+      { "http://snomed.info/sct#59746007", NeedleHolder }, 
+      { "59772003", Culdoscope }, 
+      { "http://snomed.info/sct#59772003", Culdoscope }, 
+      { "59782002", Speculum }, 
+      { "http://snomed.info/sct#59782002", Speculum }, 
+      { "59833007", CollapsibleBalloon }, 
+      { "http://snomed.info/sct#59833007", CollapsibleBalloon }, 
+      { "60054005", SeatBelt }, 
+      { "http://snomed.info/sct#60054005", SeatBelt }, 
+      { "60110001", Wig }, 
+      { "http://snomed.info/sct#60110001", Wig }, 
+      { "6012004", HearingAid }, 
+      { "http://snomed.info/sct#6012004", HearingAid }, 
+      { "60150003", SkiPoleDevicePhysicalObject }, 
+      { "http://snomed.info/sct#60150003", SkiPoleDevicePhysicalObject }, 
+      { "60161006", AcupunctureNeedle }, 
+      { "http://snomed.info/sct#60161006", AcupunctureNeedle }, 
+      { "60185003", CarbonDioxideAbsorber }, 
+      { "http://snomed.info/sct#60185003", CarbonDioxideAbsorber }, 
+      { "60311007", LeatherBoots }, 
+      { "http://snomed.info/sct#60311007", LeatherBoots }, 
+      { "60773001", Injector }, 
+      { "http://snomed.info/sct#60773001", Injector }, 
+      { "60806001", WhirlpoolBath }, 
+      { "http://snomed.info/sct#60806001", WhirlpoolBath }, 
+      { "60957001", Otoscope }, 
+      { "http://snomed.info/sct#60957001", Otoscope }, 
+      { "6097006", TTube }, 
+      { "http://snomed.info/sct#6097006", TTube }, 
+      { "61330002", NasopharyngealAirwayDevice }, 
+      { "http://snomed.info/sct#61330002", NasopharyngealAirwayDevice }, 
+      { "61512008", TennisRacket }, 
+      { "http://snomed.info/sct#61512008", TennisRacket }, 
+      { "61835000", Dilator }, 
+      { "http://snomed.info/sct#61835000", Dilator }, 
+      { "61968008", Syringe }, 
+      { "http://snomed.info/sct#61968008", Syringe }, 
+      { "61979003", AntiembolicDevice }, 
+      { "http://snomed.info/sct#61979003", AntiembolicDevice }, 
+      { "62336005", ElectricCable }, 
+      { "http://snomed.info/sct#62336005", ElectricCable }, 
+      { "62495008", GammaCounter }, 
+      { "http://snomed.info/sct#62495008", GammaCounter }, 
+      { "62614002", OverheadAndGantryCrane }, 
+      { "http://snomed.info/sct#62614002", OverheadAndGantryCrane }, 
+      { "62980002", TubularBandage }, 
+      { "http://snomed.info/sct#62980002", TubularBandage }, 
+      { "63112008", BoneWire }, 
+      { "http://snomed.info/sct#63112008", BoneWire }, 
+      { "63173005", HatBand }, 
+      { "http://snomed.info/sct#63173005", HatBand }, 
+      { "63289001", MetalNail }, 
+      { "http://snomed.info/sct#63289001", MetalNail }, 
+      { "63336000", BonePlug }, 
+      { "http://snomed.info/sct#63336000", BonePlug }, 
+      { "63548003", Derrick }, 
+      { "http://snomed.info/sct#63548003", Derrick }, 
+      { "63562005", CervicalCollar }, 
+      { "http://snomed.info/sct#63562005", CervicalCollar }, 
+      { "63619003", FiberopticCable }, 
+      { "http://snomed.info/sct#63619003", FiberopticCable }, 
+      { "63653004", MedicalDevice }, 
+      { "http://snomed.info/sct#63653004", MedicalDevice }, 
+      { "63797009", TractionUnit }, 
+      { "http://snomed.info/sct#63797009", TractionUnit }, 
+      { "63839002", Electroejaculator }, 
+      { "http://snomed.info/sct#63839002", Electroejaculator }, 
+      { "63995005", Bandage }, 
+      { "http://snomed.info/sct#63995005", Bandage }, 
+      { "64174005", Snowmobile }, 
+      { "http://snomed.info/sct#64174005", Snowmobile }, 
+      { "64255007", EsophagealBalloon }, 
+      { "http://snomed.info/sct#64255007", EsophagealBalloon }, 
+      { "64565002", AirTool }, 
+      { "http://snomed.info/sct#64565002", AirTool }, 
+      { "64571008", HairClipper }, 
+      { "http://snomed.info/sct#64571008", HairClipper }, 
+      { "64883003", InhalationAnalgesiaUnit }, 
+      { "http://snomed.info/sct#64883003", InhalationAnalgesiaUnit }, 
+      { "64973003", Scissors }, 
+      { "http://snomed.info/sct#64973003", Scissors }, 
+      { "64989000", Escalator }, 
+      { "http://snomed.info/sct#64989000", Escalator }, 
+      { "65053001", ElectricalBattery }, 
+      { "http://snomed.info/sct#65053001", ElectricalBattery }, 
+      { "65105002", SurgicalDrapes }, 
+      { "http://snomed.info/sct#65105002", SurgicalDrapes }, 
+      { "65268008", ChartRecorder }, 
+      { "http://snomed.info/sct#65268008", ChartRecorder }, 
+      { "65473004", Microscope }, 
+      { "http://snomed.info/sct#65473004", Microscope }, 
+      { "65577000", XRayShield }, 
+      { "http://snomed.info/sct#65577000", XRayShield }, 
+      { "65818007", Stent }, 
+      { "http://snomed.info/sct#65818007", Stent }, 
+      { "66222000", HospitalRobot }, 
+      { "http://snomed.info/sct#66222000", HospitalRobot }, 
+      { "66415006", AudiometricTestingEquipment }, 
+      { "http://snomed.info/sct#66415006", AudiometricTestingEquipment }, 
+      { "66435007", ElectricBed }, 
+      { "http://snomed.info/sct#66435007", ElectricBed }, 
+      { "66494009", FaceCloth }, 
+      { "http://snomed.info/sct#66494009", FaceCloth }, 
+      { "67270000", HipProsthesis }, 
+      { "http://snomed.info/sct#67270000", HipProsthesis }, 
+      { "67387001", CoronaryPerfusionCatheter }, 
+      { "http://snomed.info/sct#67387001", CoronaryPerfusionCatheter }, 
+      { "67670006", RadiographicTomographicUnit }, 
+      { "http://snomed.info/sct#67670006", RadiographicTomographicUnit }, 
+      { "67777003", MovingWalk }, 
+      { "http://snomed.info/sct#67777003", MovingWalk }, 
+      { "678001", Epilator }, 
+      { "http://snomed.info/sct#678001", Epilator }, 
+      { "67829007", Esophagoscope }, 
+      { "http://snomed.info/sct#67829007", Esophagoscope }, 
+      { "67920005", AerialLift }, 
+      { "http://snomed.info/sct#67920005", AerialLift }, 
+      { "67966000", EnemaTube }, 
+      { "http://snomed.info/sct#67966000", EnemaTube }, 
+      { "68080007", RadiographicUnit }, 
+      { "http://snomed.info/sct#68080007", RadiographicUnit }, 
+      { "68181008", VibratingElectricHeatingPad }, 
+      { "http://snomed.info/sct#68181008", VibratingElectricHeatingPad }, 
+      { "68183006", BoneScrew }, 
+      { "http://snomed.info/sct#68183006", BoneScrew }, 
+      { "6822006", MicrowaveOven }, 
+      { "http://snomed.info/sct#6822006", MicrowaveOven }, 
+      { "68276009", Bottle }, 
+      { "http://snomed.info/sct#68276009", Bottle }, 
+      { "68325009", Sound }, 
+      { "http://snomed.info/sct#68325009", Sound }, 
+      { "68597009", SupportBelt }, 
+      { "http://snomed.info/sct#68597009", SupportBelt }, 
+      { "68685003", HouseholdRobot }, 
+      { "http://snomed.info/sct#68685003", HouseholdRobot }, 
+      { "68842005", Gastroduodenoscope }, 
+      { "http://snomed.info/sct#68842005", Gastroduodenoscope }, 
+      { "6919005", ProtectiveClothingMaterial }, 
+      { "http://snomed.info/sct#6919005", ProtectiveClothingMaterial }, 
+      { "69670004", PatientUtensilKit }, 
+      { "http://snomed.info/sct#69670004", PatientUtensilKit }, 
+      { "6972009", Lithotripter }, 
+      { "http://snomed.info/sct#6972009", Lithotripter }, 
+      { "69805005", InsulinPump }, 
+      { "http://snomed.info/sct#69805005", InsulinPump }, 
+      { "69922008", TracheostomyButton }, 
+      { "http://snomed.info/sct#69922008", TracheostomyButton }, 
+      { "7007007", RadiographicFluoroscopicUnit }, 
+      { "http://snomed.info/sct#7007007", RadiographicFluoroscopicUnit }, 
+      { "70080007", Bayonet }, 
+      { "http://snomed.info/sct#70080007", Bayonet }, 
+      { "70300000", SkullTongs }, 
+      { "http://snomed.info/sct#70300000", SkullTongs }, 
+      { "70303003", Freezer }, 
+      { "http://snomed.info/sct#70303003", Freezer }, 
+      { "70453008", Sled }, 
+      { "http://snomed.info/sct#70453008", Sled }, 
+      { "70665002", BloodPressureCuff }, 
+      { "http://snomed.info/sct#70665002", BloodPressureCuff }, 
+      { "70793005", RecreationEquipment }, 
+      { "http://snomed.info/sct#70793005", RecreationEquipment }, 
+      { "70872004", WashBasin }, 
+      { "http://snomed.info/sct#70872004", WashBasin }, 
+      { "71384000", Warmer }, 
+      { "http://snomed.info/sct#71384000", Warmer }, 
+      { "71483007", DivingStage }, 
+      { "http://snomed.info/sct#71483007", DivingStage }, 
+      { "71545009", Humidifier }, 
+      { "http://snomed.info/sct#71545009", Humidifier }, 
+      { "71601002", Proctosigmoidoscope }, 
+      { "http://snomed.info/sct#71601002", Proctosigmoidoscope }, 
+      { "71667001", BoneWax }, 
+      { "http://snomed.info/sct#71667001", BoneWax }, 
+      { "71948003", Autoclave }, 
+      { "http://snomed.info/sct#71948003", Autoclave }, 
+      { "72070000", Ring }, 
+      { "http://snomed.info/sct#72070000", Ring }, 
+      { "72188006", TissueExpander }, 
+      { "http://snomed.info/sct#72188006", TissueExpander }, 
+      { "72302000", LeadCable }, 
+      { "http://snomed.info/sct#72302000", LeadCable }, 
+      { "72506001", ImplantableDefibrillator }, 
+      { "http://snomed.info/sct#72506001", ImplantableDefibrillator }, 
+      { "72742007", AspiratorCollectionBottle }, 
+      { "http://snomed.info/sct#72742007", AspiratorCollectionBottle }, 
+      { "73027007", InfantIncubator }, 
+      { "http://snomed.info/sct#73027007", InfantIncubator }, 
+      { "73276008", StaphylococcusAureusAntibodyTestKit }, 
+      { "http://snomed.info/sct#73276008", StaphylococcusAureusAntibodyTestKit }, 
+      { "73534004", ArtificialSkin }, 
+      { "http://snomed.info/sct#73534004", ArtificialSkin }, 
+      { "73562006", Transilluminator }, 
+      { "http://snomed.info/sct#73562006", Transilluminator }, 
+      { "73571002", IntravenousAnalgesiaUnit }, 
+      { "http://snomed.info/sct#73571002", IntravenousAnalgesiaUnit }, 
+      { "73618007", PowerSaw }, 
+      { "http://snomed.info/sct#73618007", PowerSaw }, 
+      { "73878004", HandSaw }, 
+      { "http://snomed.info/sct#73878004", HandSaw }, 
+      { "739006", BicycleErgometer }, 
+      { "http://snomed.info/sct#739006", BicycleErgometer }, 
+      { "73985004", FaceProtectionInConstructionIndustry }, 
+      { "http://snomed.info/sct#73985004", FaceProtectionInConstructionIndustry }, 
+      { "7402007", Probe }, 
+      { "http://snomed.info/sct#7402007", Probe }, 
+      { "7406005", Crib }, 
+      { "http://snomed.info/sct#7406005", Crib }, 
+      { "74094004", Belt }, 
+      { "http://snomed.info/sct#74094004", Belt }, 
+      { "74108008", Recorder }, 
+      { "http://snomed.info/sct#74108008", Recorder }, 
+      { "74300007", SanitaryPad }, 
+      { "http://snomed.info/sct#74300007", SanitaryPad }, 
+      { "74444006", LimbProsthesis }, 
+      { "http://snomed.info/sct#74444006", LimbProsthesis }, 
+      { "74566002", Crutch }, 
+      { "http://snomed.info/sct#74566002", Crutch }, 
+      { "74884005", BoatswainQuoteSChair }, 
+      { "http://snomed.info/sct#74884005", BoatswainQuoteSChair }, 
+      { "75075000", ShoringAndBracingMasonryAndWoodwork }, 
+      { "http://snomed.info/sct#75075000", ShoringAndBracingMasonryAndWoodwork }, 
+      { "75187009", LocalAnesthesiaKit }, 
+      { "http://snomed.info/sct#75187009", LocalAnesthesiaKit }, 
+      { "75192006", ArterialCannula }, 
+      { "http://snomed.info/sct#75192006", ArterialCannula }, 
+      { "75750007", EscherichiaColiAntigenTestKit }, 
+      { "http://snomed.info/sct#75750007", EscherichiaColiAntigenTestKit }, 
+      { "75751006", ManualRespirator }, 
+      { "http://snomed.info/sct#75751006", ManualRespirator }, 
+      { "75780002", ArtificialKidney }, 
+      { "http://snomed.info/sct#75780002", ArtificialKidney }, 
+      { "75963008", Skateboard }, 
+      { "http://snomed.info/sct#75963008", Skateboard }, 
+      { "76091005", StainlessSteelWireSuture }, 
+      { "http://snomed.info/sct#76091005", StainlessSteelWireSuture }, 
+      { "76123001", GlassTube }, 
+      { "http://snomed.info/sct#76123001", GlassTube }, 
+      { "76428000", ElbowProsthesis }, 
+      { "http://snomed.info/sct#76428000", ElbowProsthesis }, 
+      { "76433001", Apron }, 
+      { "http://snomed.info/sct#76433001", Apron }, 
+      { "76664007", ArtificialPancreas }, 
+      { "http://snomed.info/sct#76664007", ArtificialPancreas }, 
+      { "76705002", ApplicatorStick }, 
+      { "http://snomed.info/sct#76705002", ApplicatorStick }, 
+      { "76825006", AbrasiveWheelMachinery }, 
+      { "http://snomed.info/sct#76825006", AbrasiveWheelMachinery }, 
+      { "76937009", Guillotine }, 
+      { "http://snomed.info/sct#76937009", Guillotine }, 
+      { "7704007", StabilizingAppliance }, 
+      { "http://snomed.info/sct#7704007", StabilizingAppliance }, 
+      { "7733008", HydrocephalicShuntCatheter }, 
+      { "http://snomed.info/sct#7733008", HydrocephalicShuntCatheter }, 
+      { "77444004", BonePin }, 
+      { "http://snomed.info/sct#77444004", BonePin }, 
+      { "77541009", Band }, 
+      { "http://snomed.info/sct#77541009", Band }, 
+      { "77720000", Clip }, 
+      { "http://snomed.info/sct#77720000", Clip }, 
+      { "77755003", ChemicalFiberCloth }, 
+      { "http://snomed.info/sct#77755003", ChemicalFiberCloth }, 
+      { "77777004", BoneStaple }, 
+      { "http://snomed.info/sct#77777004", BoneStaple }, 
+      { "78279003", NailClipper }, 
+      { "http://snomed.info/sct#78279003", NailClipper }, 
+      { "78498003", TesticularProsthesis }, 
+      { "http://snomed.info/sct#78498003", TesticularProsthesis }, 
+      { "78641001", NylonSuture }, 
+      { "http://snomed.info/sct#78641001", NylonSuture }, 
+      { "78886001", ElectronicMonitor }, 
+      { "http://snomed.info/sct#78886001", ElectronicMonitor }, 
+      { "79051006", GreenfieldFilter }, 
+      { "http://snomed.info/sct#79051006", GreenfieldFilter }, 
+      { "79068005", Needle }, 
+      { "http://snomed.info/sct#79068005", Needle }, 
+      { "79218005", VehicleMountedWorkPlatform }, 
+      { "http://snomed.info/sct#79218005", VehicleMountedWorkPlatform }, 
+      { "79287008", Tampon }, 
+      { "http://snomed.info/sct#79287008", Tampon }, 
+      { "793009", MechanicalPowerPress }, 
+      { "http://snomed.info/sct#793009", MechanicalPowerPress }, 
+      { "79401009", Chute }, 
+      { "http://snomed.info/sct#79401009", Chute }, 
+      { "79438009", FootProtection }, 
+      { "http://snomed.info/sct#79438009", FootProtection }, 
+      { "79481007", SwingOrSlidingCutOffSaw }, 
+      { "http://snomed.info/sct#79481007", SwingOrSlidingCutOffSaw }, 
+      { "79593001", TransvenousElectrode }, 
+      { "http://snomed.info/sct#79593001", TransvenousElectrode }, 
+      { "79618001", StorageTank }, 
+      { "http://snomed.info/sct#79618001", StorageTank }, 
+      { "7968002", ThreeWheeledAllTerrainVehicle }, 
+      { "http://snomed.info/sct#7968002", ThreeWheeledAllTerrainVehicle }, 
+      { "7971005", FogartyCatheter }, 
+      { "http://snomed.info/sct#7971005", FogartyCatheter }, 
+      { "79811009", ElectricBlanket }, 
+      { "http://snomed.info/sct#79811009", ElectricBlanket }, 
+      { "79834000", HickmanCatheter }, 
+      { "http://snomed.info/sct#79834000", HickmanCatheter }, 
+      { "80278003", PediatricBed }, 
+      { "http://snomed.info/sct#80278003", PediatricBed }, 
+      { "80404000", ChainFall }, 
+      { "http://snomed.info/sct#80404000", ChainFall }, 
+      { "8060009", Denture }, 
+      { "http://snomed.info/sct#8060009", Denture }, 
+      { "80617005", Analyzer }, 
+      { "http://snomed.info/sct#80617005", Analyzer }, 
+      { "80664005", MotorHome }, 
+      { "http://snomed.info/sct#80664005", MotorHome }, 
+      { "80853009", ReflexHammer }, 
+      { "http://snomed.info/sct#80853009", ReflexHammer }, 
+      { "80950008", Oven }, 
+      { "http://snomed.info/sct#80950008", Oven }, 
+      { "8118007", Crane }, 
+      { "http://snomed.info/sct#8118007", Crane }, 
+      { "81293006", Cloth }, 
+      { "http://snomed.info/sct#81293006", Cloth }, 
+      { "81317009", SocketWrench }, 
+      { "http://snomed.info/sct#81317009", SocketWrench }, 
+      { "81320001", EnzymeImmunoassayAnalyzer }, 
+      { "http://snomed.info/sct#81320001", EnzymeImmunoassayAnalyzer }, 
+      { "8170008", Adhesive }, 
+      { "http://snomed.info/sct#8170008", Adhesive }, 
+      { "81826000", AllTerrainVehicle }, 
+      { "http://snomed.info/sct#81826000", AllTerrainVehicle }, 
+      { "81892008", RadialSaw }, 
+      { "http://snomed.info/sct#81892008", RadialSaw }, 
+      { "82379000", Hemostat }, 
+      { "http://snomed.info/sct#82379000", Hemostat }, 
+      { "82449006", PeripheralIntravenousCatheter }, 
+      { "http://snomed.info/sct#82449006", PeripheralIntravenousCatheter }, 
+      { "82657000", BonyTissueForceps }, 
+      { "http://snomed.info/sct#82657000", BonyTissueForceps }, 
+      { "82830000", RoboticArm }, 
+      { "http://snomed.info/sct#82830000", RoboticArm }, 
+      { "82879008", SafetyBelt }, 
+      { "http://snomed.info/sct#82879008", SafetyBelt }, 
+      { "83059008", Tube }, 
+      { "http://snomed.info/sct#83059008", Tube }, 
+      { "83315005", AudioAnalgesiaUnit }, 
+      { "http://snomed.info/sct#83315005", AudioAnalgesiaUnit }, 
+      { "83320005", DipTank }, 
+      { "http://snomed.info/sct#83320005", DipTank }, 
+      { "83369007", PlasticShoes }, 
+      { "http://snomed.info/sct#83369007", PlasticShoes }, 
+      { "83517001", Robot }, 
+      { "http://snomed.info/sct#83517001", Robot }, 
+      { "8384009", BandSaw }, 
+      { "http://snomed.info/sct#8384009", BandSaw }, 
+      { "83903000", ManLift }, 
+      { "http://snomed.info/sct#83903000", ManLift }, 
+      { "84023008", SkiTow }, 
+      { "http://snomed.info/sct#84023008", SkiTow }, 
+      { "8407004", BileCollectionBag }, 
+      { "http://snomed.info/sct#8407004", BileCollectionBag }, 
+      { "84330009", Pliers }, 
+      { "http://snomed.info/sct#84330009", Pliers }, 
+      { "8434001", Jail }, 
+      { "http://snomed.info/sct#8434001", Jail }, 
+      { "84444002", ChainSaw }, 
+      { "http://snomed.info/sct#84444002", ChainSaw }, 
+      { "8451008", IntramedullaryRod }, 
+      { "http://snomed.info/sct#8451008", IntramedullaryRod }, 
+      { "84546002", Barricade }, 
+      { "http://snomed.info/sct#84546002", Barricade }, 
+      { "84599008", DetonatingCord }, 
+      { "http://snomed.info/sct#84599008", DetonatingCord }, 
+      { "84610002", ImplantableDentalProsthesis }, 
+      { "http://snomed.info/sct#84610002", ImplantableDentalProsthesis }, 
+      { "84683006", AorticValveProsthesis }, 
+      { "http://snomed.info/sct#84683006", AorticValveProsthesis }, 
+      { "84756000", AdhesiveTape }, 
+      { "http://snomed.info/sct#84756000", AdhesiveTape }, 
+      { "85106006", BoringMachine }, 
+      { "http://snomed.info/sct#85106006", BoringMachine }, 
+      { "85329008", AbortionPump }, 
+      { "http://snomed.info/sct#85329008", AbortionPump }, 
+      { "85455005", Cart }, 
+      { "http://snomed.info/sct#85455005", Cart }, 
+      { "85684007", EngravingPress }, 
+      { "http://snomed.info/sct#85684007", EngravingPress }, 
+      { "86056006", GolfClub }, 
+      { "http://snomed.info/sct#86056006", GolfClub }, 
+      { "8615009", BloodElectrolyteAnalyzer }, 
+      { "http://snomed.info/sct#8615009", BloodElectrolyteAnalyzer }, 
+      { "86174004", Laparoscope }, 
+      { "http://snomed.info/sct#86174004", Laparoscope }, 
+      { "86184003", ElectrocardiographicMonitorAndRecorder }, 
+      { "http://snomed.info/sct#86184003", ElectrocardiographicMonitorAndRecorder }, 
+      { "86407004", Table }, 
+      { "http://snomed.info/sct#86407004", Table }, 
+      { "8643000", MortisingMachine }, 
+      { "http://snomed.info/sct#8643000", MortisingMachine }, 
+      { "86453006", DefibrillatorPaddle }, 
+      { "http://snomed.info/sct#86453006", DefibrillatorPaddle }, 
+      { "86572008", ArteriovenousShuntCatheter }, 
+      { "http://snomed.info/sct#86572008", ArteriovenousShuntCatheter }, 
+      { "86768006", BalloonPump }, 
+      { "http://snomed.info/sct#86768006", BalloonPump }, 
+      { "86816008", DivingLadder }, 
+      { "http://snomed.info/sct#86816008", DivingLadder }, 
+      { "8682003", ProtectiveShield }, 
+      { "http://snomed.info/sct#8682003", ProtectiveShield }, 
+      { "86967005", Tool }, 
+      { "http://snomed.info/sct#86967005", Tool }, 
+      { "87088005", SolderingIron }, 
+      { "http://snomed.info/sct#87088005", SolderingIron }, 
+      { "87140005", ClothingMaterial }, 
+      { "http://snomed.info/sct#87140005", ClothingMaterial }, 
+      { "87405001", Cane }, 
+      { "http://snomed.info/sct#87405001", Cane }, 
+      { "87710003", PhysicalRestraintStructure }, 
+      { "http://snomed.info/sct#87710003", PhysicalRestraintStructure }, 
+      { "87717000", Tester }, 
+      { "http://snomed.info/sct#87717000", Tester }, 
+      { "87851008", BloodCellCounterAndAnalyzer }, 
+      { "http://snomed.info/sct#87851008", BloodCellCounterAndAnalyzer }, 
+      { "88063004", Footwear }, 
+      { "http://snomed.info/sct#88063004", Footwear }, 
+      { "88168006", MaximumSecurityCell }, 
+      { "http://snomed.info/sct#88168006", MaximumSecurityCell }, 
+      { "882002", DiagnosticImplant }, 
+      { "http://snomed.info/sct#882002", DiagnosticImplant }, 
+      { "88208003", IntravenousAnesthesiaAdministrationSet }, 
+      { "http://snomed.info/sct#88208003", IntravenousAnesthesiaAdministrationSet }, 
+      { "88765001", ArtificialTissue }, 
+      { "http://snomed.info/sct#88765001", ArtificialTissue }, 
+      { "88959008", HypodermicNeedle }, 
+      { "http://snomed.info/sct#88959008", HypodermicNeedle }, 
+      { "89149003", Stretcher }, 
+      { "http://snomed.info/sct#89149003", Stretcher }, 
+      { "89236003", LeatherShoes }, 
+      { "http://snomed.info/sct#89236003", LeatherShoes }, 
+      { "89509004", BloodCultureAnalyzer }, 
+      { "http://snomed.info/sct#89509004", BloodCultureAnalyzer }, 
+      { "90003000", MagneticResonanceImagingUnit }, 
+      { "http://snomed.info/sct#90003000", MagneticResonanceImagingUnit }, 
+      { "90035000", AlcoholSponge }, 
+      { "http://snomed.info/sct#90035000", AlcoholSponge }, 
+      { "90082007", CastCutter }, 
+      { "http://snomed.info/sct#90082007", CastCutter }, 
+      { "90134004", MetalPeriostealImplant }, 
+      { "http://snomed.info/sct#90134004", MetalPeriostealImplant }, 
+      { "9017009", VentricularIntracranialCatheter }, 
+      { "http://snomed.info/sct#9017009", VentricularIntracranialCatheter }, 
+      { "90412006", Colonoscope }, 
+      { "http://snomed.info/sct#90412006", Colonoscope }, 
+      { "90504001", EarProsthesis }, 
+      { "http://snomed.info/sct#90504001", EarProsthesis }, 
+      { "90913005", RubberShoes }, 
+      { "http://snomed.info/sct#90913005", RubberShoes }, 
+      { "90948003", AbrasiveBlastByCleaningNozzles }, 
+      { "http://snomed.info/sct#90948003", AbrasiveBlastByCleaningNozzles }, 
+      { "9096001", Support }, 
+      { "http://snomed.info/sct#9096001", Support }, 
+      { "9129003", FeedingCatheter }, 
+      { "http://snomed.info/sct#9129003", FeedingCatheter }, 
+      { "91294003", ThomasCollar }, 
+      { "http://snomed.info/sct#91294003", ThomasCollar }, 
+      { "91318002", HyperbaricChamber }, 
+      { "http://snomed.info/sct#91318002", HyperbaricChamber }, 
+      { "91535004", Basin }, 
+      { "http://snomed.info/sct#91535004", Basin }, 
+      { "91537007", HospitalBed }, 
+      { "http://snomed.info/sct#91537007", HospitalBed }, 
+      { "9419002", Bobsled }, 
+      { "http://snomed.info/sct#9419002", Bobsled }, 
+      { "9458007", ElasticBandage }, 
+      { "http://snomed.info/sct#9458007", ElasticBandage }, 
+      { "9611009", Dermatotome }, 
+      { "http://snomed.info/sct#9611009", Dermatotome }, 
+      { "972002", AirFilter }, 
+      { "http://snomed.info/sct#972002", AirFilter }, 
+      { "9817005", MycoplasmaPulmonisAntibodyTestKit }, 
+      { "http://snomed.info/sct#9817005", MycoplasmaPulmonisAntibodyTestKit }, 
+      { "9883003", CargoHandlingGear }, 
+      { "http://snomed.info/sct#9883003", CargoHandlingGear }, 
+      { "989005", LinenCloth }, 
+      { "http://snomed.info/sct#989005", LinenCloth }, 
+      { "994005", Brush }, 
+      { "http://snomed.info/sct#994005", Brush }, 
+    };
   };
 }

@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ImmunizationEvaluationDoseStatusCodes
   {
     /// <summary>
-    /// 
+    /// Not valid
     /// </summary>
     public static readonly Coding NotValid = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status"
     };
     /// <summary>
-    /// 
+    /// Valid
     /// </summary>
     public static readonly Coding Valid = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotValid = "notvalid";
 
     /// <summary>
+    /// Literal for code: ImmunizationEvaluationDoseStatusNotValid
+    /// </summary>
+    public const string LiteralImmunizationEvaluationDoseStatusNotValid = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status#notvalid";
+
+    /// <summary>
     /// Literal for code: Valid
     /// </summary>
     public const string LiteralValid = "valid";
+
+    /// <summary>
+    /// Literal for code: ImmunizationEvaluationDoseStatusValid
+    /// </summary>
+    public const string LiteralImmunizationEvaluationDoseStatusValid = "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status#valid";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationEvaluationDoseStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "notvalid", NotValid }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status#notvalid", NotValid }, 
+      { "valid", Valid }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status#valid", Valid }, 
+    };
   };
 }

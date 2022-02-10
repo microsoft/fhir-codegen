@@ -32,6 +32,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? FreeToShare { get; set; }
     /// <summary>
+    /// Extension container element for FreeToShare
+    /// </summary>
+    public Element _FreeToShare { get; set; }
+    /// <summary>
     /// The type of information this component of the content represents.
     /// </summary>
     public string InformationType { get; set; }
@@ -165,6 +169,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("freeToShare", (bool)FreeToShare!);
       }
 
+      if (_FreeToShare != null)
+      {
+        writer.WritePropertyName("_freeToShare");
+        _FreeToShare.SerializeJson(writer, options);
+      }
+
       if ((Component != null) && (Component.Count != 0))
       {
         writer.WritePropertyName("component");
@@ -251,6 +261,11 @@ namespace fhirCsR5.Models
 
         case "freeToShare":
           FreeToShare = reader.GetBoolean();
+          break;
+
+        case "_freeToShare":
+          _FreeToShare = new fhirCsR5.Models.Element();
+          _FreeToShare.DeserializeJson(ref reader, options);
           break;
 
         case "informationType":
@@ -396,6 +411,14 @@ namespace fhirCsR5.Models
     public const string CONTAINER = "container";
     public const string RESPONSE = "response";
     public const string CHANGE_REQUEST = "change-request";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "comment",
+      "classifier",
+      "rating",
+      "container",
+      "response",
+      "change-request",
+    };
   }
   /// <summary>
   /// This Resource provides one or more comments, classifiers or ratings about a Resource and supports attribution and rights management metadata for the added content.
@@ -845,6 +868,13 @@ namespace fhirCsR5.Models
     public const string PERSUASIVE = "persuasive";
     public const string PERSUASIVE_WITH_MODIFICATION = "persuasive-with-modification";
     public const string NOT_PERSUASIVE_WITH_MODIFICATION = "not-persuasive-with-modification";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "unresolved",
+      "not-persuasive",
+      "persuasive",
+      "persuasive-with-modification",
+      "not-persuasive-with-modification",
+    };
   }
   /// <summary>
   /// Code Values for the ArtifactAssessment.workflowStatus field
@@ -859,5 +889,16 @@ namespace fhirCsR5.Models
     public const string DUPLICATE = "duplicate";
     public const string APPLIED = "applied";
     public const string PUBLISHED = "published";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "submitted",
+      "triaged",
+      "waiting-for-input",
+      "resolved-no-change",
+      "resolved-change-required",
+      "deferred",
+      "duplicate",
+      "applied",
+      "published",
+    };
   }
 }

@@ -99,9 +99,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralAborted = "aborted";
 
     /// <summary>
+    /// Literal for code: OrderStatusAborted
+    /// </summary>
+    public const string LiteralOrderStatusAborted = "http://hl7.org/fhir/order-status#aborted";
+
+    /// <summary>
     /// Literal for code: Accepted
     /// </summary>
     public const string LiteralAccepted = "accepted";
+
+    /// <summary>
+    /// Literal for code: OrderStatusAccepted
+    /// </summary>
+    public const string LiteralOrderStatusAccepted = "http://hl7.org/fhir/order-status#accepted";
 
     /// <summary>
     /// Literal for code: Cancelled
@@ -109,9 +119,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralCancelled = "cancelled";
 
     /// <summary>
+    /// Literal for code: OrderStatusCancelled
+    /// </summary>
+    public const string LiteralOrderStatusCancelled = "http://hl7.org/fhir/order-status#cancelled";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: OrderStatusCompleted
+    /// </summary>
+    public const string LiteralOrderStatusCompleted = "http://hl7.org/fhir/order-status#completed";
 
     /// <summary>
     /// Literal for code: Error
@@ -119,9 +139,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralError = "error";
 
     /// <summary>
+    /// Literal for code: OrderStatusError
+    /// </summary>
+    public const string LiteralOrderStatusError = "http://hl7.org/fhir/order-status#error";
+
+    /// <summary>
     /// Literal for code: Pending
     /// </summary>
     public const string LiteralPending = "pending";
+
+    /// <summary>
+    /// Literal for code: OrderStatusPending
+    /// </summary>
+    public const string LiteralOrderStatusPending = "http://hl7.org/fhir/order-status#pending";
 
     /// <summary>
     /// Literal for code: Rejected
@@ -129,13 +159,52 @@ namespace fhirCsR2.ValueSets
     public const string LiteralRejected = "rejected";
 
     /// <summary>
+    /// Literal for code: OrderStatusRejected
+    /// </summary>
+    public const string LiteralOrderStatusRejected = "http://hl7.org/fhir/order-status#rejected";
+
+    /// <summary>
     /// Literal for code: Replaced
     /// </summary>
     public const string LiteralReplaced = "replaced";
 
     /// <summary>
+    /// Literal for code: OrderStatusReplaced
+    /// </summary>
+    public const string LiteralOrderStatusReplaced = "http://hl7.org/fhir/order-status#replaced";
+
+    /// <summary>
     /// Literal for code: Review
     /// </summary>
     public const string LiteralReview = "review";
+
+    /// <summary>
+    /// Literal for code: OrderStatusReview
+    /// </summary>
+    public const string LiteralOrderStatusReview = "http://hl7.org/fhir/order-status#review";
+
+    /// <summary>
+    /// Dictionary for looking up OrderStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "aborted", Aborted }, 
+      { "http://hl7.org/fhir/order-status#aborted", Aborted }, 
+      { "accepted", Accepted }, 
+      { "http://hl7.org/fhir/order-status#accepted", Accepted }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/order-status#cancelled", Cancelled }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/order-status#completed", Completed }, 
+      { "error", Error }, 
+      { "http://hl7.org/fhir/order-status#error", Error }, 
+      { "pending", Pending }, 
+      { "http://hl7.org/fhir/order-status#pending", Pending }, 
+      { "rejected", Rejected }, 
+      { "http://hl7.org/fhir/order-status#rejected", Rejected }, 
+      { "replaced", Replaced }, 
+      { "http://hl7.org/fhir/order-status#replaced", Replaced }, 
+      { "review", Review }, 
+      { "http://hl7.org/fhir/order-status#review", Review }, 
+    };
   };
 }

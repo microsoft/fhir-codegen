@@ -303,5 +303,9 @@ namespace fhirCsR2.Models
   public static class EligibilityResponseOutcomeCodes {
     public const string COMPLETE = "complete";
     public const string ERROR = "error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "complete",
+      "error",
+    };
   }
 }

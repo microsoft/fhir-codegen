@@ -294,5 +294,16 @@ namespace fhirCsR2.Models
     public const string REPLACED = "replaced";
     public const string ABORTED = "aborted";
     public const string COMPLETED = "completed";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "pending",
+      "review",
+      "rejected",
+      "error",
+      "accepted",
+      "cancelled",
+      "replaced",
+      "aborted",
+      "completed",
+    };
   }
 }

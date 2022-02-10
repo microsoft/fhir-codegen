@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class InsuranceplanTypeCodes
   {
     /// <summary>
-    /// 
+    /// Dental
     /// </summary>
     public static readonly Coding Dental = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/insurance-plan-type"
     };
     /// <summary>
-    /// 
+    /// Drug
     /// </summary>
     public static readonly Coding Drug = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/insurance-plan-type"
     };
     /// <summary>
-    /// 
+    /// Home Health
     /// </summary>
     public static readonly Coding HomeHealth = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/insurance-plan-type"
     };
     /// <summary>
-    /// 
+    /// Hospice
     /// </summary>
     public static readonly Coding Hospice = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/insurance-plan-type"
     };
     /// <summary>
-    /// 
+    /// Long Term Care
     /// </summary>
     public static readonly Coding LongTermCare = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/insurance-plan-type"
     };
     /// <summary>
-    /// 
+    /// Medical
     /// </summary>
     public static readonly Coding Medical = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/insurance-plan-type"
     };
     /// <summary>
-    /// 
+    /// Mental Health
     /// </summary>
     public static readonly Coding MentalHealth = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/insurance-plan-type"
     };
     /// <summary>
-    /// 
+    /// Short Term
     /// </summary>
     public static readonly Coding ShortTerm = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/insurance-plan-type"
     };
     /// <summary>
-    /// 
+    /// Substance Abuse
     /// </summary>
     public static readonly Coding SubstanceAbuse = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/insurance-plan-type"
     };
     /// <summary>
-    /// 
+    /// Vision
     /// </summary>
     public static readonly Coding Vision = new Coding
     {
@@ -108,9 +108,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDental = "dental";
 
     /// <summary>
+    /// Literal for code: InsurancePlanTypeDental
+    /// </summary>
+    public const string LiteralInsurancePlanTypeDental = "http://terminology.hl7.org/CodeSystem/insurance-plan-type#dental";
+
+    /// <summary>
     /// Literal for code: Drug
     /// </summary>
     public const string LiteralDrug = "Drug";
+
+    /// <summary>
+    /// Literal for code: InsurancePlanTypeDrug
+    /// </summary>
+    public const string LiteralInsurancePlanTypeDrug = "http://terminology.hl7.org/CodeSystem/insurance-plan-type#Drug";
 
     /// <summary>
     /// Literal for code: HomeHealth
@@ -118,9 +128,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHomeHealth = "home";
 
     /// <summary>
+    /// Literal for code: InsurancePlanTypeHomeHealth
+    /// </summary>
+    public const string LiteralInsurancePlanTypeHomeHealth = "http://terminology.hl7.org/CodeSystem/insurance-plan-type#home";
+
+    /// <summary>
     /// Literal for code: Hospice
     /// </summary>
     public const string LiteralHospice = "hospice";
+
+    /// <summary>
+    /// Literal for code: InsurancePlanTypeHospice
+    /// </summary>
+    public const string LiteralInsurancePlanTypeHospice = "http://terminology.hl7.org/CodeSystem/insurance-plan-type#hospice";
 
     /// <summary>
     /// Literal for code: LongTermCare
@@ -128,9 +148,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLongTermCare = "long-term";
 
     /// <summary>
+    /// Literal for code: InsurancePlanTypeLongTermCare
+    /// </summary>
+    public const string LiteralInsurancePlanTypeLongTermCare = "http://terminology.hl7.org/CodeSystem/insurance-plan-type#long-term";
+
+    /// <summary>
     /// Literal for code: Medical
     /// </summary>
     public const string LiteralMedical = "medical";
+
+    /// <summary>
+    /// Literal for code: InsurancePlanTypeMedical
+    /// </summary>
+    public const string LiteralInsurancePlanTypeMedical = "http://terminology.hl7.org/CodeSystem/insurance-plan-type#medical";
 
     /// <summary>
     /// Literal for code: MentalHealth
@@ -138,9 +168,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMentalHealth = "mental";
 
     /// <summary>
+    /// Literal for code: InsurancePlanTypeMentalHealth
+    /// </summary>
+    public const string LiteralInsurancePlanTypeMentalHealth = "http://terminology.hl7.org/CodeSystem/insurance-plan-type#mental";
+
+    /// <summary>
     /// Literal for code: ShortTerm
     /// </summary>
     public const string LiteralShortTerm = "short-term";
+
+    /// <summary>
+    /// Literal for code: InsurancePlanTypeShortTerm
+    /// </summary>
+    public const string LiteralInsurancePlanTypeShortTerm = "http://terminology.hl7.org/CodeSystem/insurance-plan-type#short-term";
 
     /// <summary>
     /// Literal for code: SubstanceAbuse
@@ -148,8 +188,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSubstanceAbuse = "subst-ab";
 
     /// <summary>
+    /// Literal for code: InsurancePlanTypeSubstanceAbuse
+    /// </summary>
+    public const string LiteralInsurancePlanTypeSubstanceAbuse = "http://terminology.hl7.org/CodeSystem/insurance-plan-type#subst-ab";
+
+    /// <summary>
     /// Literal for code: Vision
     /// </summary>
     public const string LiteralVision = "vision";
+
+    /// <summary>
+    /// Literal for code: InsurancePlanTypeVision
+    /// </summary>
+    public const string LiteralInsurancePlanTypeVision = "http://terminology.hl7.org/CodeSystem/insurance-plan-type#vision";
+
+    /// <summary>
+    /// Dictionary for looking up InsuranceplanType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "dental", Dental }, 
+      { "http://terminology.hl7.org/CodeSystem/insurance-plan-type#dental", Dental }, 
+      { "Drug", Drug }, 
+      { "http://terminology.hl7.org/CodeSystem/insurance-plan-type#Drug", Drug }, 
+      { "home", HomeHealth }, 
+      { "http://terminology.hl7.org/CodeSystem/insurance-plan-type#home", HomeHealth }, 
+      { "hospice", Hospice }, 
+      { "http://terminology.hl7.org/CodeSystem/insurance-plan-type#hospice", Hospice }, 
+      { "long-term", LongTermCare }, 
+      { "http://terminology.hl7.org/CodeSystem/insurance-plan-type#long-term", LongTermCare }, 
+      { "medical", Medical }, 
+      { "http://terminology.hl7.org/CodeSystem/insurance-plan-type#medical", Medical }, 
+      { "mental", MentalHealth }, 
+      { "http://terminology.hl7.org/CodeSystem/insurance-plan-type#mental", MentalHealth }, 
+      { "short-term", ShortTerm }, 
+      { "http://terminology.hl7.org/CodeSystem/insurance-plan-type#short-term", ShortTerm }, 
+      { "subst-ab", SubstanceAbuse }, 
+      { "http://terminology.hl7.org/CodeSystem/insurance-plan-type#subst-ab", SubstanceAbuse }, 
+      { "vision", Vision }, 
+      { "http://terminology.hl7.org/CodeSystem/insurance-plan-type#vision", Vision }, 
+    };
   };
 }

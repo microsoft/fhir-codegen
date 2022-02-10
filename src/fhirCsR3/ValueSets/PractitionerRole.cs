@@ -72,9 +72,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDoctor = "doctor";
 
     /// <summary>
+    /// Literal for code: PractitionerRoleDoctor
+    /// </summary>
+    public const string LiteralPractitionerRoleDoctor = "http://hl7.org/fhir/practitioner-role#doctor";
+
+    /// <summary>
     /// Literal for code: ICTProfessional
     /// </summary>
     public const string LiteralICTProfessional = "ict";
+
+    /// <summary>
+    /// Literal for code: PractitionerRoleICTProfessional
+    /// </summary>
+    public const string LiteralPractitionerRoleICTProfessional = "http://hl7.org/fhir/practitioner-role#ict";
 
     /// <summary>
     /// Literal for code: Nurse
@@ -82,9 +92,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNurse = "nurse";
 
     /// <summary>
+    /// Literal for code: PractitionerRoleNurse
+    /// </summary>
+    public const string LiteralPractitionerRoleNurse = "http://hl7.org/fhir/practitioner-role#nurse";
+
+    /// <summary>
     /// Literal for code: Pharmacist
     /// </summary>
     public const string LiteralPharmacist = "pharmacist";
+
+    /// <summary>
+    /// Literal for code: PractitionerRolePharmacist
+    /// </summary>
+    public const string LiteralPractitionerRolePharmacist = "http://hl7.org/fhir/practitioner-role#pharmacist";
 
     /// <summary>
     /// Literal for code: Researcher
@@ -92,8 +112,36 @@ namespace fhirCsR3.ValueSets
     public const string LiteralResearcher = "researcher";
 
     /// <summary>
+    /// Literal for code: PractitionerRoleResearcher
+    /// </summary>
+    public const string LiteralPractitionerRoleResearcher = "http://hl7.org/fhir/practitioner-role#researcher";
+
+    /// <summary>
     /// Literal for code: TeacherEducator
     /// </summary>
     public const string LiteralTeacherEducator = "teacher";
+
+    /// <summary>
+    /// Literal for code: PractitionerRoleTeacherEducator
+    /// </summary>
+    public const string LiteralPractitionerRoleTeacherEducator = "http://hl7.org/fhir/practitioner-role#teacher";
+
+    /// <summary>
+    /// Dictionary for looking up PractitionerRole Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "doctor", Doctor }, 
+      { "http://hl7.org/fhir/practitioner-role#doctor", Doctor }, 
+      { "ict", ICTProfessional }, 
+      { "http://hl7.org/fhir/practitioner-role#ict", ICTProfessional }, 
+      { "nurse", Nurse }, 
+      { "http://hl7.org/fhir/practitioner-role#nurse", Nurse }, 
+      { "pharmacist", Pharmacist }, 
+      { "http://hl7.org/fhir/practitioner-role#pharmacist", Pharmacist }, 
+      { "researcher", Researcher }, 
+      { "http://hl7.org/fhir/practitioner-role#researcher", Researcher }, 
+      { "teacher", TeacherEducator }, 
+      { "http://hl7.org/fhir/practitioner-role#teacher", TeacherEducator }, 
+    };
   };
 }

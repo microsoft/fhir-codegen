@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFHIRClient = "FHIR-Client";
 
     /// <summary>
+    /// Literal for code: TestscriptProfileOriginTypesFHIRClient
+    /// </summary>
+    public const string LiteralTestscriptProfileOriginTypesFHIRClient = "http://hl7.org/fhir/testscript-profile-origin-types#FHIR-Client";
+
+    /// <summary>
     /// Literal for code: FHIRSDCFormFiller
     /// </summary>
     public const string LiteralFHIRSDCFormFiller = "FHIR-SDC-FormFiller";
+
+    /// <summary>
+    /// Literal for code: TestscriptProfileOriginTypesFHIRSDCFormFiller
+    /// </summary>
+    public const string LiteralTestscriptProfileOriginTypesFHIRSDCFormFiller = "http://hl7.org/fhir/testscript-profile-origin-types#FHIR-SDC-FormFiller";
+
+    /// <summary>
+    /// Dictionary for looking up TestscriptProfileOriginTypes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "FHIR-Client", FHIRClient }, 
+      { "http://hl7.org/fhir/testscript-profile-origin-types#FHIR-Client", FHIRClient }, 
+      { "FHIR-SDC-FormFiller", FHIRSDCFormFiller }, 
+      { "http://hl7.org/fhir/testscript-profile-origin-types#FHIR-SDC-FormFiller", FHIRSDCFormFiller }, 
+    };
   };
 }

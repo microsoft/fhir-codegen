@@ -597,6 +597,11 @@ namespace fhirCsR4B.Models
     public const string FARENHEIT = "farenheit";
     public const string CELSIUS = "celsius";
     public const string KELVIN = "kelvin";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "farenheit",
+      "celsius",
+      "kelvin",
+    };
   }
   /// <summary>
   /// A material substance originating from a biological entity intended to be transplanted or infused
@@ -644,6 +649,10 @@ namespace fhirCsR4B.Models
     /// Number of discrete units within this product.
     /// </summary>
     public int? Quantity { get; set; }
+    /// <summary>
+    /// Extension container element for Quantity
+    /// </summary>
+    public Element _Quantity { get; set; }
     /// <summary>
     /// Procedure request to obtain this biologically derived product.
     /// </summary>
@@ -734,6 +743,12 @@ namespace fhirCsR4B.Models
       if (Quantity != null)
       {
         writer.WriteNumber("quantity", (int)Quantity!);
+      }
+
+      if (_Quantity != null)
+      {
+        writer.WritePropertyName("_quantity");
+        _Quantity.SerializeJson(writer, options);
       }
 
       if ((Parent != null) && (Parent.Count != 0))
@@ -908,6 +923,11 @@ namespace fhirCsR4B.Models
           Quantity = reader.GetInt32();
           break;
 
+        case "_quantity":
+          _Quantity = new fhirCsR4B.Models.Element();
+          _Quantity.DeserializeJson(ref reader, options);
+          break;
+
         case "request":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -1011,6 +1031,13 @@ namespace fhirCsR4B.Models
     public const string FLUID = "fluid";
     public const string CELLS = "cells";
     public const string BIOLOGICALAGENT = "biologicalAgent";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "organ",
+      "tissue",
+      "fluid",
+      "cells",
+      "biologicalAgent",
+    };
   }
   /// <summary>
   /// Code Values for the BiologicallyDerivedProduct.status field
@@ -1018,5 +1045,9 @@ namespace fhirCsR4B.Models
   public static class BiologicallyDerivedProductStatusCodes {
     public const string AVAILABLE = "available";
     public const string UNAVAILABLE = "unavailable";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "available",
+      "unavailable",
+    };
   }
 }

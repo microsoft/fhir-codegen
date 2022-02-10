@@ -319,5 +319,11 @@ namespace fhirCsR3.Models
     public const string DECLINED = "declined";
     public const string TENTATIVE = "tentative";
     public const string NEEDS_ACTION = "needs-action";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "accepted",
+      "declined",
+      "tentative",
+      "needs-action",
+    };
   }
 }

@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCreate = "create";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionCreate
+    /// </summary>
+    public const string LiteralRestfulInteractionCreate = "http://hl7.org/fhir/restful-interaction#create";
+
+    /// <summary>
     /// Literal for code: Delete
     /// </summary>
     public const string LiteralDelete = "delete";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionDelete
+    /// </summary>
+    public const string LiteralRestfulInteractionDelete = "http://hl7.org/fhir/restful-interaction#delete";
+
+    /// <summary>
     /// Literal for code: Update
     /// </summary>
     public const string LiteralUpdate = "update";
+
+    /// <summary>
+    /// Literal for code: RestfulInteractionUpdate
+    /// </summary>
+    public const string LiteralRestfulInteractionUpdate = "http://hl7.org/fhir/restful-interaction#update";
+
+    /// <summary>
+    /// Dictionary for looking up InteractionTrigger Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "create", Create }, 
+      { "http://hl7.org/fhir/restful-interaction#create", Create }, 
+      { "delete", Delete }, 
+      { "http://hl7.org/fhir/restful-interaction#delete", Delete }, 
+      { "update", Update }, 
+      { "http://hl7.org/fhir/restful-interaction#update", Update }, 
+    };
   };
 }

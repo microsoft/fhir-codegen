@@ -270,9 +270,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMedicalCare = "1";
 
     /// <summary>
+    /// Literal for code: BenefitSubcategoryMedicalCare
+    /// </summary>
+    public const string LiteralBenefitSubcategoryMedicalCare = "http://hl7.org/fhir/benefit-subcategory#1";
+
+    /// <summary>
     /// Literal for code: RenalSupplies
     /// </summary>
     public const string LiteralRenalSupplies = "14";
+
+    /// <summary>
+    /// Literal for code: BenefitSubcategoryRenalSupplies
+    /// </summary>
+    public const string LiteralBenefitSubcategoryRenalSupplies = "http://hl7.org/fhir/benefit-subcategory#14";
 
     /// <summary>
     /// Literal for code: Surgical
@@ -280,9 +290,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSurgical = "2";
 
     /// <summary>
+    /// Literal for code: BenefitSubcategorySurgical
+    /// </summary>
+    public const string LiteralBenefitSubcategorySurgical = "http://hl7.org/fhir/benefit-subcategory#2";
+
+    /// <summary>
     /// Literal for code: DiagnosticDental
     /// </summary>
     public const string LiteralDiagnosticDental = "23";
+
+    /// <summary>
+    /// Literal for code: BenefitSubcategoryDiagnosticDental
+    /// </summary>
+    public const string LiteralBenefitSubcategoryDiagnosticDental = "http://hl7.org/fhir/benefit-subcategory#23";
 
     /// <summary>
     /// Literal for code: Periodontics
@@ -290,9 +310,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPeriodontics = "24";
 
     /// <summary>
+    /// Literal for code: BenefitSubcategoryPeriodontics
+    /// </summary>
+    public const string LiteralBenefitSubcategoryPeriodontics = "http://hl7.org/fhir/benefit-subcategory#24";
+
+    /// <summary>
     /// Literal for code: Restorative
     /// </summary>
     public const string LiteralRestorative = "25";
+
+    /// <summary>
+    /// Literal for code: BenefitSubcategoryRestorative
+    /// </summary>
+    public const string LiteralBenefitSubcategoryRestorative = "http://hl7.org/fhir/benefit-subcategory#25";
 
     /// <summary>
     /// Literal for code: Endodontics
@@ -300,9 +330,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEndodontics = "26";
 
     /// <summary>
+    /// Literal for code: BenefitSubcategoryEndodontics
+    /// </summary>
+    public const string LiteralBenefitSubcategoryEndodontics = "http://hl7.org/fhir/benefit-subcategory#26";
+
+    /// <summary>
     /// Literal for code: MaxillofacilialProsthetics
     /// </summary>
     public const string LiteralMaxillofacilialProsthetics = "27";
+
+    /// <summary>
+    /// Literal for code: BenefitSubcategoryMaxillofacilialProsthetics
+    /// </summary>
+    public const string LiteralBenefitSubcategoryMaxillofacilialProsthetics = "http://hl7.org/fhir/benefit-subcategory#27";
 
     /// <summary>
     /// Literal for code: AdjunctiveDentalServices
@@ -310,9 +350,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdjunctiveDentalServices = "28";
 
     /// <summary>
+    /// Literal for code: BenefitSubcategoryAdjunctiveDentalServices
+    /// </summary>
+    public const string LiteralBenefitSubcategoryAdjunctiveDentalServices = "http://hl7.org/fhir/benefit-subcategory#28";
+
+    /// <summary>
     /// Literal for code: Consultation
     /// </summary>
     public const string LiteralConsultation = "3";
+
+    /// <summary>
+    /// Literal for code: BenefitSubcategoryConsultation
+    /// </summary>
+    public const string LiteralBenefitSubcategoryConsultation = "http://hl7.org/fhir/benefit-subcategory#3";
 
     /// <summary>
     /// Literal for code: HealthBenefitPlanCoverage
@@ -320,9 +370,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHealthBenefitPlanCoverage = "30";
 
     /// <summary>
+    /// Literal for code: BenefitSubcategoryHealthBenefitPlanCoverage
+    /// </summary>
+    public const string LiteralBenefitSubcategoryHealthBenefitPlanCoverage = "http://hl7.org/fhir/benefit-subcategory#30";
+
+    /// <summary>
     /// Literal for code: DentalCare
     /// </summary>
     public const string LiteralDentalCare = "35";
+
+    /// <summary>
+    /// Literal for code: BenefitSubcategoryDentalCare
+    /// </summary>
+    public const string LiteralBenefitSubcategoryDentalCare = "http://hl7.org/fhir/benefit-subcategory#35";
 
     /// <summary>
     /// Literal for code: DentalCrowns
@@ -330,9 +390,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDentalCrowns = "36";
 
     /// <summary>
+    /// Literal for code: BenefitSubcategoryDentalCrowns
+    /// </summary>
+    public const string LiteralBenefitSubcategoryDentalCrowns = "http://hl7.org/fhir/benefit-subcategory#36";
+
+    /// <summary>
     /// Literal for code: DentalAccident
     /// </summary>
     public const string LiteralDentalAccident = "37";
+
+    /// <summary>
+    /// Literal for code: BenefitSubcategoryDentalAccident
+    /// </summary>
+    public const string LiteralBenefitSubcategoryDentalAccident = "http://hl7.org/fhir/benefit-subcategory#37";
 
     /// <summary>
     /// Literal for code: DiagnosticXRay
@@ -340,9 +410,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticXRay = "4";
 
     /// <summary>
+    /// Literal for code: BenefitSubcategoryDiagnosticXRay
+    /// </summary>
+    public const string LiteralBenefitSubcategoryDiagnosticXRay = "http://hl7.org/fhir/benefit-subcategory#4";
+
+    /// <summary>
     /// Literal for code: HospitalRoomAndBoard
     /// </summary>
     public const string LiteralHospitalRoomAndBoard = "49";
+
+    /// <summary>
+    /// Literal for code: BenefitSubcategoryHospitalRoomAndBoard
+    /// </summary>
+    public const string LiteralBenefitSubcategoryHospitalRoomAndBoard = "http://hl7.org/fhir/benefit-subcategory#49";
 
     /// <summary>
     /// Literal for code: DiagnosticLab
@@ -350,9 +430,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDiagnosticLab = "5";
 
     /// <summary>
+    /// Literal for code: BenefitSubcategoryDiagnosticLab
+    /// </summary>
+    public const string LiteralBenefitSubcategoryDiagnosticLab = "http://hl7.org/fhir/benefit-subcategory#5";
+
+    /// <summary>
     /// Literal for code: MajorMedical
     /// </summary>
     public const string LiteralMajorMedical = "55";
+
+    /// <summary>
+    /// Literal for code: BenefitSubcategoryMajorMedical
+    /// </summary>
+    public const string LiteralBenefitSubcategoryMajorMedical = "http://hl7.org/fhir/benefit-subcategory#55";
 
     /// <summary>
     /// Literal for code: MedicallyRelatedTransportation
@@ -360,9 +450,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMedicallyRelatedTransportation = "56";
 
     /// <summary>
+    /// Literal for code: BenefitSubcategoryMedicallyRelatedTransportation
+    /// </summary>
+    public const string LiteralBenefitSubcategoryMedicallyRelatedTransportation = "http://hl7.org/fhir/benefit-subcategory#56";
+
+    /// <summary>
     /// Literal for code: InVitroFertilization
     /// </summary>
     public const string LiteralInVitroFertilization = "61";
+
+    /// <summary>
+    /// Literal for code: BenefitSubcategoryInVitroFertilization
+    /// </summary>
+    public const string LiteralBenefitSubcategoryInVitroFertilization = "http://hl7.org/fhir/benefit-subcategory#61";
 
     /// <summary>
     /// Literal for code: MRIScan
@@ -370,9 +470,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMRIScan = "62";
 
     /// <summary>
+    /// Literal for code: BenefitSubcategoryMRIScan
+    /// </summary>
+    public const string LiteralBenefitSubcategoryMRIScan = "http://hl7.org/fhir/benefit-subcategory#62";
+
+    /// <summary>
     /// Literal for code: DonorProcedures
     /// </summary>
     public const string LiteralDonorProcedures = "63";
+
+    /// <summary>
+    /// Literal for code: BenefitSubcategoryDonorProcedures
+    /// </summary>
+    public const string LiteralBenefitSubcategoryDonorProcedures = "http://hl7.org/fhir/benefit-subcategory#63";
 
     /// <summary>
     /// Literal for code: Maternity
@@ -380,9 +490,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMaternity = "69";
 
     /// <summary>
+    /// Literal for code: BenefitSubcategoryMaternity
+    /// </summary>
+    public const string LiteralBenefitSubcategoryMaternity = "http://hl7.org/fhir/benefit-subcategory#69";
+
+    /// <summary>
     /// Literal for code: RenalDialysis
     /// </summary>
     public const string LiteralRenalDialysis = "76";
+
+    /// <summary>
+    /// Literal for code: BenefitSubcategoryRenalDialysis
+    /// </summary>
+    public const string LiteralBenefitSubcategoryRenalDialysis = "http://hl7.org/fhir/benefit-subcategory#76";
 
     /// <summary>
     /// Literal for code: MedicalCoverage
@@ -390,9 +510,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMedicalCoverage = "F1";
 
     /// <summary>
+    /// Literal for code: BenefitSubcategoryMedicalCoverage
+    /// </summary>
+    public const string LiteralBenefitSubcategoryMedicalCoverage = "http://hl7.org/fhir/benefit-subcategory#F1";
+
+    /// <summary>
     /// Literal for code: DentalCoverage
     /// </summary>
     public const string LiteralDentalCoverage = "F3";
+
+    /// <summary>
+    /// Literal for code: BenefitSubcategoryDentalCoverage
+    /// </summary>
+    public const string LiteralBenefitSubcategoryDentalCoverage = "http://hl7.org/fhir/benefit-subcategory#F3";
 
     /// <summary>
     /// Literal for code: HearingCoverage
@@ -400,8 +530,80 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHearingCoverage = "F4";
 
     /// <summary>
+    /// Literal for code: BenefitSubcategoryHearingCoverage
+    /// </summary>
+    public const string LiteralBenefitSubcategoryHearingCoverage = "http://hl7.org/fhir/benefit-subcategory#F4";
+
+    /// <summary>
     /// Literal for code: VisionCoverage
     /// </summary>
     public const string LiteralVisionCoverage = "F6";
+
+    /// <summary>
+    /// Literal for code: BenefitSubcategoryVisionCoverage
+    /// </summary>
+    public const string LiteralBenefitSubcategoryVisionCoverage = "http://hl7.org/fhir/benefit-subcategory#F6";
+
+    /// <summary>
+    /// Dictionary for looking up BenefitSubcategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1", MedicalCare }, 
+      { "http://hl7.org/fhir/benefit-subcategory#1", MedicalCare }, 
+      { "14", RenalSupplies }, 
+      { "http://hl7.org/fhir/benefit-subcategory#14", RenalSupplies }, 
+      { "2", Surgical }, 
+      { "http://hl7.org/fhir/benefit-subcategory#2", Surgical }, 
+      { "23", DiagnosticDental }, 
+      { "http://hl7.org/fhir/benefit-subcategory#23", DiagnosticDental }, 
+      { "24", Periodontics }, 
+      { "http://hl7.org/fhir/benefit-subcategory#24", Periodontics }, 
+      { "25", Restorative }, 
+      { "http://hl7.org/fhir/benefit-subcategory#25", Restorative }, 
+      { "26", Endodontics }, 
+      { "http://hl7.org/fhir/benefit-subcategory#26", Endodontics }, 
+      { "27", MaxillofacilialProsthetics }, 
+      { "http://hl7.org/fhir/benefit-subcategory#27", MaxillofacilialProsthetics }, 
+      { "28", AdjunctiveDentalServices }, 
+      { "http://hl7.org/fhir/benefit-subcategory#28", AdjunctiveDentalServices }, 
+      { "3", Consultation }, 
+      { "http://hl7.org/fhir/benefit-subcategory#3", Consultation }, 
+      { "30", HealthBenefitPlanCoverage }, 
+      { "http://hl7.org/fhir/benefit-subcategory#30", HealthBenefitPlanCoverage }, 
+      { "35", DentalCare }, 
+      { "http://hl7.org/fhir/benefit-subcategory#35", DentalCare }, 
+      { "36", DentalCrowns }, 
+      { "http://hl7.org/fhir/benefit-subcategory#36", DentalCrowns }, 
+      { "37", DentalAccident }, 
+      { "http://hl7.org/fhir/benefit-subcategory#37", DentalAccident }, 
+      { "4", DiagnosticXRay }, 
+      { "http://hl7.org/fhir/benefit-subcategory#4", DiagnosticXRay }, 
+      { "49", HospitalRoomAndBoard }, 
+      { "http://hl7.org/fhir/benefit-subcategory#49", HospitalRoomAndBoard }, 
+      { "5", DiagnosticLab }, 
+      { "http://hl7.org/fhir/benefit-subcategory#5", DiagnosticLab }, 
+      { "55", MajorMedical }, 
+      { "http://hl7.org/fhir/benefit-subcategory#55", MajorMedical }, 
+      { "56", MedicallyRelatedTransportation }, 
+      { "http://hl7.org/fhir/benefit-subcategory#56", MedicallyRelatedTransportation }, 
+      { "61", InVitroFertilization }, 
+      { "http://hl7.org/fhir/benefit-subcategory#61", InVitroFertilization }, 
+      { "62", MRIScan }, 
+      { "http://hl7.org/fhir/benefit-subcategory#62", MRIScan }, 
+      { "63", DonorProcedures }, 
+      { "http://hl7.org/fhir/benefit-subcategory#63", DonorProcedures }, 
+      { "69", Maternity }, 
+      { "http://hl7.org/fhir/benefit-subcategory#69", Maternity }, 
+      { "76", RenalDialysis }, 
+      { "http://hl7.org/fhir/benefit-subcategory#76", RenalDialysis }, 
+      { "F1", MedicalCoverage }, 
+      { "http://hl7.org/fhir/benefit-subcategory#F1", MedicalCoverage }, 
+      { "F3", DentalCoverage }, 
+      { "http://hl7.org/fhir/benefit-subcategory#F3", DentalCoverage }, 
+      { "F4", HearingCoverage }, 
+      { "http://hl7.org/fhir/benefit-subcategory#F4", HearingCoverage }, 
+      { "F6", VisionCoverage }, 
+      { "http://hl7.org/fhir/benefit-subcategory#F6", VisionCoverage }, 
+    };
   };
 }

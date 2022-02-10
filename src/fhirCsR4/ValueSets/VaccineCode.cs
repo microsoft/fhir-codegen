@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class VaccineCodeCodes
   {
     /// <summary>
-    /// 
+    /// DTP
     /// </summary>
     public static readonly Coding DTP = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// OPV
     /// </summary>
     public static readonly Coding OPV = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// MMR
     /// </summary>
     public static readonly Coding MMR = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// M/R
     /// </summary>
     public static readonly Coding MR = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// measles
     /// </summary>
     public static readonly Coding Measles = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// rubella
     /// </summary>
     public static readonly Coding Rubella = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// mumps
     /// </summary>
     public static readonly Coding Mumps = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hep B, adolescent or pediatric
     /// </summary>
     public static readonly Coding HepBAdolescentOrPediatric = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Td (adult), 2 Lf tetanus toxoid, preservative free, adsorbed
     /// </summary>
     public static readonly Coding TdAdult2LfTetanusToxoidPreservativeFreeAdsorbed = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// IPV
     /// </summary>
     public static readonly Coding IPV = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// pneumococcal conjugate PCV 7
     /// </summary>
     public static readonly Coding PneumococcalConjugatePCV7 = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// typhoid, ViCPs
     /// </summary>
     public static readonly Coding TyphoidViCPs = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// DTP-Hib-Hep B
     /// </summary>
     public static readonly Coding DTPHibHepB = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// meningococcal C conjugate
     /// </summary>
     public static readonly Coding MeningococcalCConjugate = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hep A-Hep B
     /// </summary>
     public static readonly Coding HepAHepB = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// vaccinia (smallpox) diluted
     /// </summary>
     public static readonly Coding VacciniaSmallpoxDiluted = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// DTaP, 5 pertussis antigens
     /// </summary>
     public static readonly Coding DTaP5PertussisAntigens = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// DTaP, unspecified formulation
     /// </summary>
     public static readonly Coding DTaPUnspecifiedFormulation = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// meningococcal ACWY, unspecified formulation
     /// </summary>
     public static readonly Coding MeningococcalACWYUnspecifiedFormulation = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// pneumococcal, unspecified formulation
     /// </summary>
     public static readonly Coding PneumococcalUnspecifiedFormulation = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// pertussis
     /// </summary>
     public static readonly Coding Pertussis = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// DTaP-Hep B-IPV
     /// </summary>
     public static readonly Coding DTaPHepBIPV = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// influenza, live, intranasal
     /// </summary>
     public static readonly Coding InfluenzaLiveIntranasal = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// tetanus toxoid, unspecified formulation
     /// </summary>
     public static readonly Coding TetanusToxoidUnspecifiedFormulation = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Td (adult), 5 Lf tetanus toxoid, preservative free, adsorbed
     /// </summary>
     public static readonly Coding TdAdult5LfTetanusToxoidPreservativeFreeAdsorbed = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// meningococcal MCV4P
     /// </summary>
     public static readonly Coding MeningococcalMCV4P = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Tdap
     /// </summary>
     public static readonly Coding Tdap = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// rotavirus, pentavalent
     /// </summary>
     public static readonly Coding RotavirusPentavalent = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// VZIG (IND)
     /// </summary>
     public static readonly Coding VZIGIND = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// HPV, bivalent
     /// </summary>
     public static readonly Coding HPVBivalent = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// rotavirus, monovalent
     /// </summary>
     public static readonly Coding RotavirusMonovalent = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// diphtheria antitoxin
     /// </summary>
     public static readonly Coding DiphtheriaAntitoxin = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// DTaP-Hib-IPV
     /// </summary>
     public static readonly Coding DTaPHibIPV = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// zoster live
     /// </summary>
     public static readonly Coding ZosterLive = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// rotavirus, unspecified formulation
     /// </summary>
     public static readonly Coding RotavirusUnspecifiedFormulation = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// influenza, H5N1-1203
     /// </summary>
     public static readonly Coding InfluenzaH5N11203 = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Novel Influenza-H1N1-09, nasal
     /// </summary>
     public static readonly Coding NovelInfluenzaH1N109Nasal = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Novel influenza-H1N1-09, preservative-free
     /// </summary>
     public static readonly Coding NovelInfluenzaH1N109PreservativeFree = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Novel influenza-H1N1-09
     /// </summary>
     public static readonly Coding NovelInfluenzaH1N109 = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Novel Influenza-H1N1-09, all formulations
     /// </summary>
     public static readonly Coding NovelInfluenzaH1N109AllFormulations = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Japanese Encephalitis, unspecified formulation
     /// </summary>
     public static readonly Coding JapaneseEncephalitisUnspecifiedFormulation = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// TIG
     /// </summary>
     public static readonly Coding TIG = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// DTaP-IPV
     /// </summary>
     public static readonly Coding DTaPIPV = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// typhus, historical
     /// </summary>
     public static readonly Coding TyphusHistorical = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// DTaP-IPV-HIB-HEP B, historical
     /// </summary>
     public static readonly Coding DTaPIPVHIBHEPBHistorical = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Pneumococcal conjugate PCV 13
     /// </summary>
     public static readonly Coding PneumococcalConjugatePCV13 = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Japanese Encephalitis IM
     /// </summary>
     public static readonly Coding JapaneseEncephalitisIM = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Influenza, high dose seasonal
     /// </summary>
     public static readonly Coding InfluenzaHighDoseSeasonal = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Meningococcal MCV4O
     /// </summary>
     public static readonly Coding MeningococcalMCV4O = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// HPV, unspecified formulation
     /// </summary>
     public static readonly Coding HPVUnspecifiedFormulation = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Td (adult)
     /// </summary>
     public static readonly Coding TdAdult = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Td(adult) unspecified formulation
     /// </summary>
     public static readonly Coding TdAdultUnspecifiedFormulation = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// IG, unspecified formulation
     /// </summary>
     public static readonly Coding IGUnspecifiedFormulation = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Influenza, seasonal, injectable, preservative free
     /// </summary>
     public static readonly Coding InfluenzaSeasonalInjectablePreservativeFree = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Influenza, seasonal, injectable
     /// </summary>
     public static readonly Coding InfluenzaSeasonalInjectable = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// tetanus toxoid, not adsorbed
     /// </summary>
     public static readonly Coding TetanusToxoidNotAdsorbed = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Adenovirus types 4 and 7
     /// </summary>
     public static readonly Coding AdenovirusTypes4And7 = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// influenza, seasonal, intradermal, preservative free
     /// </summary>
     public static readonly Coding InfluenzaSeasonalIntradermalPreservativeFree = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// RSV-MAb (new)
     /// </summary>
     public static readonly Coding RSVMAbNew = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// DTaP,IPV,Hib,HepB
     /// </summary>
     public static readonly Coding DTaPIPVHibHepB = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// meningococcal MCV4, unspecified formulation
     /// </summary>
     public static readonly Coding MeningococcalMCV4UnspecifiedFormulation = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Meningococcal C/Y-HIB PRP
     /// </summary>
     public static readonly Coding MeningococcalCYHIBPRP = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// influenza, live, intranasal, quadrivalent
     /// </summary>
     public static readonly Coding InfluenzaLiveIntranasalQuadrivalent = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// influenza, split (incl. purified surface antigen)
     /// </summary>
     public static readonly Coding InfluenzaSplitInclPurifiedSurfaceAntigen = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// influenza, injectable, quadrivalent, preservative free
     /// </summary>
     public static readonly Coding InfluenzaInjectableQuadrivalentPreservativeFree = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// influenza nasal, unspecified formulation
     /// </summary>
     public static readonly Coding InfluenzaNasalUnspecifiedFormulation = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Pneumococcal Conjugate, unspecified formulation
     /// </summary>
     public static readonly Coding PneumococcalConjugateUnspecifiedFormulation = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Influenza, injectable, MDCK, preservative free
     /// </summary>
     public static readonly Coding InfluenzaInjectableMDCKPreservativeFree = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hep A, IG
     /// </summary>
     public static readonly Coding HepAIG = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// influenza, recombinant, injectable, preservative free
     /// </summary>
     public static readonly Coding InfluenzaRecombinantInjectablePreservativeFree = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Rho(D)-IG
     /// </summary>
     public static readonly Coding RhoDIG = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Rho(D) -IG IM
     /// </summary>
     public static readonly Coding RhoDIGIM = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// influenza, injectable, quadrivalent
     /// </summary>
     public static readonly Coding InfluenzaInjectableQuadrivalent = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Rho(D) - Unspecified formulation
     /// </summary>
     public static readonly Coding RhoDUnspecifiedFormulation = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// influenza, whole
     /// </summary>
     public static readonly Coding InfluenzaWhole = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Influenza A monovalent (H5N1), ADJUVANTED-2013
     /// </summary>
     public static readonly Coding InfluenzaAMonovalentH5N1ADJUVANTED2013 = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Influenza, injectable,quadrivalent, preservative free, pediatric
     /// </summary>
     public static readonly Coding InfluenzaInjectableQuadrivalentPreservativeFreePediatric = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// meningococcal B, recombinant
     /// </summary>
     public static readonly Coding MeningococcalBRecombinant = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// meningococcal B, OMV
     /// </summary>
     public static readonly Coding MeningococcalBOMV = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// meningococcal B, unspecified
     /// </summary>
     public static readonly Coding MeningococcalBUnspecified = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// HPV9
     /// </summary>
     public static readonly Coding HPV9 = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// influenza, intradermal, quadrivalent, preservative free
     /// </summary>
     public static readonly Coding InfluenzaIntradermalQuadrivalentPreservativeFree = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// meningococcal, unknown serogroups
     /// </summary>
     public static readonly Coding MeningococcalUnknownSerogroups = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// influenza, trivalent, adjuvanted
     /// </summary>
     public static readonly Coding InfluenzaTrivalentAdjuvanted = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hep A, live attenuated
     /// </summary>
     public static readonly Coding HepALiveAttenuated = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hib, unspecified formulation
     /// </summary>
     public static readonly Coding HibUnspecifiedFormulation = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// DTAP/IPV/HIB - non-US
     /// </summary>
     public static readonly Coding DTAPIPVHIBNonUS = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Influenza, injectable, MDCK, preservative free, quadrivalent
     /// </summary>
     public static readonly Coding InfluenzaInjectableMDCKPreservativeFreeQuadrivalent = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// cholera, WC-rBS
     /// </summary>
     public static readonly Coding CholeraWCRBS = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// cholera, BivWC
     /// </summary>
     public static readonly Coding CholeraBivWC = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// cholera, live attenuated
     /// </summary>
     public static readonly Coding CholeraLiveAttenuated = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Rabies - IM Diploid cell culture
     /// </summary>
     public static readonly Coding RabiesIMDiploidCellCulture = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Rabies - IM fibroblast culture
     /// </summary>
     public static readonly Coding RabiesIMFibroblastCulture = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// PCV10
     /// </summary>
     public static readonly Coding PCV10 = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// OPV bivalent
     /// </summary>
     public static readonly Coding OPVBivalent = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// OPV ,monovalent, unspecified
     /// </summary>
     public static readonly Coding OPVMonovalentUnspecified = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// rabies, intramuscular injection
     /// </summary>
     public static readonly Coding RabiesIntramuscularInjection = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// tetanus immune globulin
     /// </summary>
     public static readonly Coding TetanusImmuneGlobulin = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// anthrax immune globulin
     /// </summary>
     public static readonly Coding AnthraxImmuneGlobulin = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// OPV, Unspecified
     /// </summary>
     public static readonly Coding OPVUnspecified = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Yellow fever vaccine - alt
     /// </summary>
     public static readonly Coding YellowFeverVaccineAlt = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Yellow fever, unspecified formulation
     /// </summary>
     public static readonly Coding YellowFeverUnspecifiedFormulation = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// influenza, recombinant, quadrivalent,injectable, preservative free
     /// </summary>
     public static readonly Coding InfluenzaRecombinantQuadrivalentInjectablePreservativeFree = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Influenza, injectable, MDCK, quadrivalent, preservative
     /// </summary>
     public static readonly Coding InfluenzaInjectableMDCKQuadrivalentPreservative = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// zoster recombinant
     /// </summary>
     public static readonly Coding ZosterRecombinant = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// zoster, unspecified formulation
     /// </summary>
     public static readonly Coding ZosterUnspecifiedFormulation = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// HepB-CpG
     /// </summary>
     public static readonly Coding HepBCpG = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// BCG
     /// </summary>
     public static readonly Coding BCG = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Typhoid conjugate vaccine (TCV)
     /// </summary>
     public static readonly Coding TyphoidConjugateVaccineTCV = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// meningococcal A polysaccharide (non-US)
     /// </summary>
     public static readonly Coding MeningococcalAPolysaccharideNonUS = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// meningococcal AC polysaccharide (non-US)
     /// </summary>
     public static readonly Coding MeningococcalACPolysaccharideNonUS = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hep A-Hep B, pediatric/adolescent
     /// </summary>
     public static readonly Coding HepAHepBPediatricAdolescent = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// DTaP
     /// </summary>
     public static readonly Coding DTaP = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// varicella
     /// </summary>
     public static readonly Coding Varicella = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// DTP-Hib
     /// </summary>
     public static readonly Coding DTPHib = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// plague
     /// </summary>
     public static readonly Coding Plague = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// anthrax
     /// </summary>
     public static readonly Coding Anthrax = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// typhoid, oral
     /// </summary>
     public static readonly Coding TyphoidOral = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// cholera, unspecified formulation
     /// </summary>
     public static readonly Coding CholeraUnspecifiedFormulation = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// botulinum antitoxin
     /// </summary>
     public static readonly Coding BotulinumAntitoxin = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// DT (pediatric)
     /// </summary>
     public static readonly Coding DTPediatric = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// CMVIG
     /// </summary>
     public static readonly Coding CMVIG = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// HBIG
     /// </summary>
     public static readonly Coding HBIG = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hep A, pediatric, unspecified formulation
     /// </summary>
     public static readonly Coding HepAPediatricUnspecifiedFormulation = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// meningococcal MPSV4
     /// </summary>
     public static readonly Coding MeningococcalMPSV4 = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// pneumococcal polysaccharide PPV23
     /// </summary>
     public static readonly Coding PneumococcalPolysaccharidePPV23 = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// RIG
     /// </summary>
     public static readonly Coding RIG = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// tetanus toxoid, adsorbed
     /// </summary>
     public static readonly Coding TetanusToxoidAdsorbed = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// VZIG
     /// </summary>
     public static readonly Coding VZIG = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// yellow fever
     /// </summary>
     public static readonly Coding YellowFever = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// rubella/mumps
     /// </summary>
     public static readonly Coding RubellaMumps = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Japanese encephalitis SC
     /// </summary>
     public static readonly Coding JapaneseEncephalitisSC = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// rabies, intradermal injection
     /// </summary>
     public static readonly Coding RabiesIntradermalInjection = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// typhoid, parenteral
     /// </summary>
     public static readonly Coding TyphoidParenteral = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hep B, adolescent/high risk infant
     /// </summary>
     public static readonly Coding HepBAdolescentHighRiskInfant = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hep B, adult
     /// </summary>
     public static readonly Coding HepBAdult = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hep B, dialysis
     /// </summary>
     public static readonly Coding HepBDialysis = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hep B, unspecified formulation
     /// </summary>
     public static readonly Coding HepBUnspecifiedFormulation = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hib (PRP-D)
     /// </summary>
     public static readonly Coding HibPRPD = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hib (HbOC)
     /// </summary>
     public static readonly Coding HibHbOC = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hib (PRP-T)
     /// </summary>
     public static readonly Coding HibPRPT = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hib (PRP-OMP)
     /// </summary>
     public static readonly Coding HibPRPOMP = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// DTaP-Hib
     /// </summary>
     public static readonly Coding DTaPHib = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hib-Hep B
     /// </summary>
     public static readonly Coding HibHepB = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hep A, adult
     /// </summary>
     public static readonly Coding HepAAdult = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// typhoid, parenteral, AKD (U.S. military)
     /// </summary>
     public static readonly Coding TyphoidParenteralAKDUSMilitary = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// adenovirus, type 4
     /// </summary>
     public static readonly Coding AdenovirusType4 = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// adenovirus, type 7
     /// </summary>
     public static readonly Coding AdenovirusType7 = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// dengue fever
     /// </summary>
     public static readonly Coding DengueFever = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// hantavirus
     /// </summary>
     public static readonly Coding Hantavirus = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hep C
     /// </summary>
     public static readonly Coding HepC = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hep E
     /// </summary>
     public static readonly Coding HepE = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// herpes simplex 2
     /// </summary>
     public static readonly Coding HerpesSimplex2 = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// HIV
     /// </summary>
     public static readonly Coding HIV = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// HPV, quadrivalent
     /// </summary>
     public static readonly Coding HPVQuadrivalent = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Junin virus
     /// </summary>
     public static readonly Coding JuninVirus = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// leishmaniasis
     /// </summary>
     public static readonly Coding Leishmaniasis = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// leprosy
     /// </summary>
     public static readonly Coding Leprosy = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Lyme disease
     /// </summary>
     public static readonly Coding LymeDisease = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// malaria
     /// </summary>
     public static readonly Coding Malaria = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// melanoma
     /// </summary>
     public static readonly Coding Melanoma = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// parainfluenza-3
     /// </summary>
     public static readonly Coding Parainfluenza3 = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Q fever
     /// </summary>
     public static readonly Coding QFever = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// RSV-IGIV
     /// </summary>
     public static readonly Coding RSVIGIV = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// rheumatic fever
     /// </summary>
     public static readonly Coding RheumaticFever = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Rift Valley fever
     /// </summary>
     public static readonly Coding RiftValleyFever = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// rotavirus, tetravalent
     /// </summary>
     public static readonly Coding RotavirusTetravalent = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// vaccinia (smallpox)
     /// </summary>
     public static readonly Coding VacciniaSmallpox = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Staphylococcus bacterio lysate
     /// </summary>
     public static readonly Coding StaphylococcusBacterioLysate = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// tick-borne encephalitis
     /// </summary>
     public static readonly Coding TickBorneEncephalitis = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// tularemia vaccine
     /// </summary>
     public static readonly Coding TularemiaVaccine = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// vaccinia immune globulin
     /// </summary>
     public static readonly Coding VacciniaImmuneGlobulin = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// VEE, live
     /// </summary>
     public static readonly Coding VEELive = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// AS03 Adjuvant
     /// </summary>
     public static readonly Coding AS03Adjuvant = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// VEE, inactivated
     /// </summary>
     public static readonly Coding VEEInactivated = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// adenovirus, unspecified formulation
     /// </summary>
     public static readonly Coding AdenovirusUnspecifiedFormulation = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hep A, ped/adol, 2 dose
     /// </summary>
     public static readonly Coding HepAPedAdol2Dose = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hep A, ped/adol, 3 dose
     /// </summary>
     public static readonly Coding HepAPedAdol3Dose = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Hep A, unspecified formulation
     /// </summary>
     public static readonly Coding HepAUnspecifiedFormulation = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// IG
     /// </summary>
     public static readonly Coding IG = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// IGIV
     /// </summary>
     public static readonly Coding IGIV = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// influenza, unspecified formulation
     /// </summary>
     public static readonly Coding InfluenzaUnspecifiedFormulation = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// polio, unspecified formulation
     /// </summary>
     public static readonly Coding PolioUnspecifiedFormulation = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// rabies, unspecified formulation
     /// </summary>
     public static readonly Coding RabiesUnspecifiedFormulation = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// typhoid, unspecified formulation
     /// </summary>
     public static readonly Coding TyphoidUnspecifiedFormulation = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// VEE, unspecified formulation
     /// </summary>
     public static readonly Coding VEEUnspecifiedFormulation = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// RSV-MAb
     /// </summary>
     public static readonly Coding RSVMAb = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// MMRV
     /// </summary>
     public static readonly Coding MMRV = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// TST-OT tine test
     /// </summary>
     public static readonly Coding TSTOTTineTest = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// TST-PPD intradermal
     /// </summary>
     public static readonly Coding TSTPPDIntradermal = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// TST-PPD tine test
     /// </summary>
     public static readonly Coding TSTPPDTineTest = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// TST, unspecified formulation
     /// </summary>
     public static readonly Coding TSTUnspecifiedFormulation = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// RESERVED - do not use
     /// </summary>
     public static readonly Coding RESERVEDDoNotUse = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// no vaccine administered
     /// </summary>
     public static readonly Coding NoVaccineAdministered = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// unknown
     /// </summary>
     public static readonly Coding Unknown = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/sid/cvx"
     };
     /// <summary>
-    /// 
+    /// Agrippal
     /// </summary>
     public static readonly Coding Agrippal = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Avaxim
     /// </summary>
     public static readonly Coding Avaxim = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// BCG
     /// </summary>
     public static readonly Coding BCG_2 = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// CDT
     /// </summary>
     public static readonly Coding CDT = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// COMVAX
     /// </summary>
     public static readonly Coding COMVAX = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Triple Antigen
     /// </summary>
     public static readonly Coding TripleAntigen = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// DTPa
     /// </summary>
     public static readonly Coding DTPa = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Engerix B
     /// </summary>
     public static readonly Coding EngerixB = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Fluarix
     /// </summary>
     public static readonly Coding Fluarix = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Fluvax
     /// </summary>
     public static readonly Coding Fluvax = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Fluvirin
     /// </summary>
     public static readonly Coding Fluvirin = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Fluvax Junior
     /// </summary>
     public static readonly Coding FluvaxJunior = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Diphtheria
     /// </summary>
     public static readonly Coding Diphtheria = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Influenza
     /// </summary>
     public static readonly Coding Influenza = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Hepatitis B
     /// </summary>
     public static readonly Coding HepatitisB = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// HIB
     /// </summary>
     public static readonly Coding HIB = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Hepatitis A
     /// </summary>
     public static readonly Coding HepatitisA = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Japanese Encephalitis
     /// </summary>
     public static readonly Coding JapaneseEncephalitis = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Measles
     /// </summary>
     public static readonly Coding Measles_2 = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Meningococcal C
     /// </summary>
     public static readonly Coding MeningococcalC = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Mumps
     /// </summary>
     public static readonly Coding Mumps_2 = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Pneumococcal
     /// </summary>
     public static readonly Coding Pneumococcal = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Polio
     /// </summary>
     public static readonly Coding Polio = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Rotavirus
     /// </summary>
     public static readonly Coding Rotavirus = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Rubella
     /// </summary>
     public static readonly Coding Rubella_2 = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Tetanus
     /// </summary>
     public static readonly Coding Tetanus = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Varicella
     /// </summary>
     public static readonly Coding Varicella_2 = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Twinrix Junior
     /// </summary>
     public static readonly Coding TwinrixJunior = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Vaqta Paed/Adol
     /// </summary>
     public static readonly Coding VaqtaPaedAdol = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Havrix Junior
     /// </summary>
     public static readonly Coding HavrixJunior = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// HibTITER
     /// </summary>
     public static readonly Coding HibTITER = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// HBV
     /// </summary>
     public static readonly Coding HBV = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// HBVAX II
     /// </summary>
     public static readonly Coding HBVAXII = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Hiberix
     /// </summary>
     public static readonly Coding Hiberix = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Infanrix Hexa
     /// </summary>
     public static readonly Coding InfanrixHexa = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Infanrix-IPV
     /// </summary>
     public static readonly Coding InfanrixIPV = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Infanrix Penta
     /// </summary>
     public static readonly Coding InfanrixPenta = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Infanrix
     /// </summary>
     public static readonly Coding Infanrix = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// InfanrixHepB
     /// </summary>
     public static readonly Coding InfanrixHepB = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Influvac
     /// </summary>
     public static readonly Coding Influvac = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// IPOL
     /// </summary>
     public static readonly Coding IPOL = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// JE-VAX
     /// </summary>
     public static readonly Coding JEVAX = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Menjugate
     /// </summary>
     public static readonly Coding Menjugate = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Meningitec
     /// </summary>
     public static readonly Coding Meningitec = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Menomune
     /// </summary>
     public static readonly Coding Menomune = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Mencevax ACWY
     /// </summary>
     public static readonly Coding MencevaxACWY = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// MMR
     /// </summary>
     public static readonly Coding MMR_2 = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// MMR II
     /// </summary>
     public static readonly Coding MMRII = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Priorix
     /// </summary>
     public static readonly Coding Priorix = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Menitorix
     /// </summary>
     public static readonly Coding Menitorix = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// NeisVac-C
     /// </summary>
     public static readonly Coding NeisVacC = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Polio
     /// </summary>
     public static readonly Coding Polio_2 = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Pertussis
     /// </summary>
     public static readonly Coding Pertussis_2 = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Panvax
     /// </summary>
     public static readonly Coding Panvax = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Pediacel
     /// </summary>
     public static readonly Coding Pediacel = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Poliacel
     /// </summary>
     public static readonly Coding Poliacel = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Pneumovax
     /// </summary>
     public static readonly Coding Pneumovax = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// ProQuad
     /// </summary>
     public static readonly Coding ProQuad = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// ProHIBit
     /// </summary>
     public static readonly Coding ProHIBit = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// PedvaxHIB
     /// </summary>
     public static readonly Coding PedvaxHIB = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// ActHIB
     /// </summary>
     public static readonly Coding ActHIB = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Prevenar 7
     /// </summary>
     public static readonly Coding Prevenar7 = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Prevenar 13
     /// </summary>
     public static readonly Coding Prevenar13 = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Priorix-Tetra
     /// </summary>
     public static readonly Coding PriorixTetra = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Quadracel
     /// </summary>
     public static readonly Coding Quadracel = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Rotarix
     /// </summary>
     public static readonly Coding Rotarix = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Rotateq
     /// </summary>
     public static readonly Coding Rotateq = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Synflorix
     /// </summary>
     public static readonly Coding Synflorix = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Tripacel
     /// </summary>
     public static readonly Coding Tripacel = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Vaxigrip
     /// </summary>
     public static readonly Coding Vaxigrip = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Vaxigrip Junior
     /// </summary>
     public static readonly Coding VaxigripJunior = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Varilrix
     /// </summary>
     public static readonly Coding Varilrix = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR4.ValueSets
       System = "urn:oid:1.2.36.1.2001.1005.17"
     };
     /// <summary>
-    /// 
+    /// Varivax
     /// </summary>
     public static readonly Coding Varivax = new Coding
     {
@@ -2430,9 +2430,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDTP = "01";
 
     /// <summary>
+    /// Literal for code: SidCvxDTP
+    /// </summary>
+    public const string LiteralSidCvxDTP = "http://hl7.org/fhir/sid/cvx#01";
+
+    /// <summary>
     /// Literal for code: OPV
     /// </summary>
     public const string LiteralOPV = "02";
+
+    /// <summary>
+    /// Literal for code: SidCvxOPV
+    /// </summary>
+    public const string LiteralSidCvxOPV = "http://hl7.org/fhir/sid/cvx#02";
 
     /// <summary>
     /// Literal for code: MMR
@@ -2440,9 +2450,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMMR = "03";
 
     /// <summary>
+    /// Literal for code: SidCvxMMR
+    /// </summary>
+    public const string LiteralSidCvxMMR = "http://hl7.org/fhir/sid/cvx#03";
+
+    /// <summary>
     /// Literal for code: MR
     /// </summary>
     public const string LiteralMR = "04";
+
+    /// <summary>
+    /// Literal for code: SidCvxMR
+    /// </summary>
+    public const string LiteralSidCvxMR = "http://hl7.org/fhir/sid/cvx#04";
 
     /// <summary>
     /// Literal for code: Measles
@@ -2450,9 +2470,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeasles = "05";
 
     /// <summary>
+    /// Literal for code: SidCvxMeasles
+    /// </summary>
+    public const string LiteralSidCvxMeasles = "http://hl7.org/fhir/sid/cvx#05";
+
+    /// <summary>
     /// Literal for code: Rubella
     /// </summary>
     public const string LiteralRubella = "06";
+
+    /// <summary>
+    /// Literal for code: SidCvxRubella
+    /// </summary>
+    public const string LiteralSidCvxRubella = "http://hl7.org/fhir/sid/cvx#06";
 
     /// <summary>
     /// Literal for code: Mumps
@@ -2460,9 +2490,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMumps = "07";
 
     /// <summary>
+    /// Literal for code: SidCvxMumps
+    /// </summary>
+    public const string LiteralSidCvxMumps = "http://hl7.org/fhir/sid/cvx#07";
+
+    /// <summary>
     /// Literal for code: HepBAdolescentOrPediatric
     /// </summary>
     public const string LiteralHepBAdolescentOrPediatric = "08";
+
+    /// <summary>
+    /// Literal for code: SidCvxHepBAdolescentOrPediatric
+    /// </summary>
+    public const string LiteralSidCvxHepBAdolescentOrPediatric = "http://hl7.org/fhir/sid/cvx#08";
 
     /// <summary>
     /// Literal for code: TdAdult2LfTetanusToxoidPreservativeFreeAdsorbed
@@ -2470,9 +2510,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTdAdult2LfTetanusToxoidPreservativeFreeAdsorbed = "09";
 
     /// <summary>
+    /// Literal for code: SidCvxTdAdult2LfTetanusToxoidPreservativeFreeAdsorbed
+    /// </summary>
+    public const string LiteralSidCvxTdAdult2LfTetanusToxoidPreservativeFreeAdsorbed = "http://hl7.org/fhir/sid/cvx#09";
+
+    /// <summary>
     /// Literal for code: IPV
     /// </summary>
     public const string LiteralIPV = "10";
+
+    /// <summary>
+    /// Literal for code: SidCvxIPV
+    /// </summary>
+    public const string LiteralSidCvxIPV = "http://hl7.org/fhir/sid/cvx#10";
 
     /// <summary>
     /// Literal for code: PneumococcalConjugatePCV7
@@ -2480,9 +2530,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPneumococcalConjugatePCV7 = "100";
 
     /// <summary>
+    /// Literal for code: SidCvxPneumococcalConjugatePCV7
+    /// </summary>
+    public const string LiteralSidCvxPneumococcalConjugatePCV7 = "http://hl7.org/fhir/sid/cvx#100";
+
+    /// <summary>
     /// Literal for code: TyphoidViCPs
     /// </summary>
     public const string LiteralTyphoidViCPs = "101";
+
+    /// <summary>
+    /// Literal for code: SidCvxTyphoidViCPs
+    /// </summary>
+    public const string LiteralSidCvxTyphoidViCPs = "http://hl7.org/fhir/sid/cvx#101";
 
     /// <summary>
     /// Literal for code: DTPHibHepB
@@ -2490,9 +2550,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDTPHibHepB = "102";
 
     /// <summary>
+    /// Literal for code: SidCvxDTPHibHepB
+    /// </summary>
+    public const string LiteralSidCvxDTPHibHepB = "http://hl7.org/fhir/sid/cvx#102";
+
+    /// <summary>
     /// Literal for code: MeningococcalCConjugate
     /// </summary>
     public const string LiteralMeningococcalCConjugate = "103";
+
+    /// <summary>
+    /// Literal for code: SidCvxMeningococcalCConjugate
+    /// </summary>
+    public const string LiteralSidCvxMeningococcalCConjugate = "http://hl7.org/fhir/sid/cvx#103";
 
     /// <summary>
     /// Literal for code: HepAHepB
@@ -2500,9 +2570,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHepAHepB = "104";
 
     /// <summary>
+    /// Literal for code: SidCvxHepAHepB
+    /// </summary>
+    public const string LiteralSidCvxHepAHepB = "http://hl7.org/fhir/sid/cvx#104";
+
+    /// <summary>
     /// Literal for code: VacciniaSmallpoxDiluted
     /// </summary>
     public const string LiteralVacciniaSmallpoxDiluted = "105";
+
+    /// <summary>
+    /// Literal for code: SidCvxVacciniaSmallpoxDiluted
+    /// </summary>
+    public const string LiteralSidCvxVacciniaSmallpoxDiluted = "http://hl7.org/fhir/sid/cvx#105";
 
     /// <summary>
     /// Literal for code: DTaP5PertussisAntigens
@@ -2510,9 +2590,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDTaP5PertussisAntigens = "106";
 
     /// <summary>
+    /// Literal for code: SidCvxDTaP5PertussisAntigens
+    /// </summary>
+    public const string LiteralSidCvxDTaP5PertussisAntigens = "http://hl7.org/fhir/sid/cvx#106";
+
+    /// <summary>
     /// Literal for code: DTaPUnspecifiedFormulation
     /// </summary>
     public const string LiteralDTaPUnspecifiedFormulation = "107";
+
+    /// <summary>
+    /// Literal for code: SidCvxDTaPUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxDTaPUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#107";
 
     /// <summary>
     /// Literal for code: MeningococcalACWYUnspecifiedFormulation
@@ -2520,9 +2610,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeningococcalACWYUnspecifiedFormulation = "108";
 
     /// <summary>
+    /// Literal for code: SidCvxMeningococcalACWYUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxMeningococcalACWYUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#108";
+
+    /// <summary>
     /// Literal for code: PneumococcalUnspecifiedFormulation
     /// </summary>
     public const string LiteralPneumococcalUnspecifiedFormulation = "109";
+
+    /// <summary>
+    /// Literal for code: SidCvxPneumococcalUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxPneumococcalUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#109";
 
     /// <summary>
     /// Literal for code: Pertussis
@@ -2530,9 +2630,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPertussis = "11";
 
     /// <summary>
+    /// Literal for code: SidCvxPertussis
+    /// </summary>
+    public const string LiteralSidCvxPertussis = "http://hl7.org/fhir/sid/cvx#11";
+
+    /// <summary>
     /// Literal for code: DTaPHepBIPV
     /// </summary>
     public const string LiteralDTaPHepBIPV = "110";
+
+    /// <summary>
+    /// Literal for code: SidCvxDTaPHepBIPV
+    /// </summary>
+    public const string LiteralSidCvxDTaPHepBIPV = "http://hl7.org/fhir/sid/cvx#110";
 
     /// <summary>
     /// Literal for code: InfluenzaLiveIntranasal
@@ -2540,9 +2650,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfluenzaLiveIntranasal = "111";
 
     /// <summary>
+    /// Literal for code: SidCvxInfluenzaLiveIntranasal
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaLiveIntranasal = "http://hl7.org/fhir/sid/cvx#111";
+
+    /// <summary>
     /// Literal for code: TetanusToxoidUnspecifiedFormulation
     /// </summary>
     public const string LiteralTetanusToxoidUnspecifiedFormulation = "112";
+
+    /// <summary>
+    /// Literal for code: SidCvxTetanusToxoidUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxTetanusToxoidUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#112";
 
     /// <summary>
     /// Literal for code: TdAdult5LfTetanusToxoidPreservativeFreeAdsorbed
@@ -2550,9 +2670,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTdAdult5LfTetanusToxoidPreservativeFreeAdsorbed = "113";
 
     /// <summary>
+    /// Literal for code: SidCvxTdAdult5LfTetanusToxoidPreservativeFreeAdsorbed
+    /// </summary>
+    public const string LiteralSidCvxTdAdult5LfTetanusToxoidPreservativeFreeAdsorbed = "http://hl7.org/fhir/sid/cvx#113";
+
+    /// <summary>
     /// Literal for code: MeningococcalMCV4P
     /// </summary>
     public const string LiteralMeningococcalMCV4P = "114";
+
+    /// <summary>
+    /// Literal for code: SidCvxMeningococcalMCV4P
+    /// </summary>
+    public const string LiteralSidCvxMeningococcalMCV4P = "http://hl7.org/fhir/sid/cvx#114";
 
     /// <summary>
     /// Literal for code: Tdap
@@ -2560,9 +2690,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTdap = "115";
 
     /// <summary>
+    /// Literal for code: SidCvxTdap
+    /// </summary>
+    public const string LiteralSidCvxTdap = "http://hl7.org/fhir/sid/cvx#115";
+
+    /// <summary>
     /// Literal for code: RotavirusPentavalent
     /// </summary>
     public const string LiteralRotavirusPentavalent = "116";
+
+    /// <summary>
+    /// Literal for code: SidCvxRotavirusPentavalent
+    /// </summary>
+    public const string LiteralSidCvxRotavirusPentavalent = "http://hl7.org/fhir/sid/cvx#116";
 
     /// <summary>
     /// Literal for code: VZIGIND
@@ -2570,9 +2710,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVZIGIND = "117";
 
     /// <summary>
+    /// Literal for code: SidCvxVZIGIND
+    /// </summary>
+    public const string LiteralSidCvxVZIGIND = "http://hl7.org/fhir/sid/cvx#117";
+
+    /// <summary>
     /// Literal for code: HPVBivalent
     /// </summary>
     public const string LiteralHPVBivalent = "118";
+
+    /// <summary>
+    /// Literal for code: SidCvxHPVBivalent
+    /// </summary>
+    public const string LiteralSidCvxHPVBivalent = "http://hl7.org/fhir/sid/cvx#118";
 
     /// <summary>
     /// Literal for code: RotavirusMonovalent
@@ -2580,9 +2730,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRotavirusMonovalent = "119";
 
     /// <summary>
+    /// Literal for code: SidCvxRotavirusMonovalent
+    /// </summary>
+    public const string LiteralSidCvxRotavirusMonovalent = "http://hl7.org/fhir/sid/cvx#119";
+
+    /// <summary>
     /// Literal for code: DiphtheriaAntitoxin
     /// </summary>
     public const string LiteralDiphtheriaAntitoxin = "12";
+
+    /// <summary>
+    /// Literal for code: SidCvxDiphtheriaAntitoxin
+    /// </summary>
+    public const string LiteralSidCvxDiphtheriaAntitoxin = "http://hl7.org/fhir/sid/cvx#12";
 
     /// <summary>
     /// Literal for code: DTaPHibIPV
@@ -2590,9 +2750,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDTaPHibIPV = "120";
 
     /// <summary>
+    /// Literal for code: SidCvxDTaPHibIPV
+    /// </summary>
+    public const string LiteralSidCvxDTaPHibIPV = "http://hl7.org/fhir/sid/cvx#120";
+
+    /// <summary>
     /// Literal for code: ZosterLive
     /// </summary>
     public const string LiteralZosterLive = "121";
+
+    /// <summary>
+    /// Literal for code: SidCvxZosterLive
+    /// </summary>
+    public const string LiteralSidCvxZosterLive = "http://hl7.org/fhir/sid/cvx#121";
 
     /// <summary>
     /// Literal for code: RotavirusUnspecifiedFormulation
@@ -2600,9 +2770,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRotavirusUnspecifiedFormulation = "122";
 
     /// <summary>
+    /// Literal for code: SidCvxRotavirusUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxRotavirusUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#122";
+
+    /// <summary>
     /// Literal for code: InfluenzaH5N11203
     /// </summary>
     public const string LiteralInfluenzaH5N11203 = "123";
+
+    /// <summary>
+    /// Literal for code: SidCvxInfluenzaH5N11203
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaH5N11203 = "http://hl7.org/fhir/sid/cvx#123";
 
     /// <summary>
     /// Literal for code: NovelInfluenzaH1N109Nasal
@@ -2610,9 +2790,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNovelInfluenzaH1N109Nasal = "125";
 
     /// <summary>
+    /// Literal for code: SidCvxNovelInfluenzaH1N109Nasal
+    /// </summary>
+    public const string LiteralSidCvxNovelInfluenzaH1N109Nasal = "http://hl7.org/fhir/sid/cvx#125";
+
+    /// <summary>
     /// Literal for code: NovelInfluenzaH1N109PreservativeFree
     /// </summary>
     public const string LiteralNovelInfluenzaH1N109PreservativeFree = "126";
+
+    /// <summary>
+    /// Literal for code: SidCvxNovelInfluenzaH1N109PreservativeFree
+    /// </summary>
+    public const string LiteralSidCvxNovelInfluenzaH1N109PreservativeFree = "http://hl7.org/fhir/sid/cvx#126";
 
     /// <summary>
     /// Literal for code: NovelInfluenzaH1N109
@@ -2620,9 +2810,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNovelInfluenzaH1N109 = "127";
 
     /// <summary>
+    /// Literal for code: SidCvxNovelInfluenzaH1N109
+    /// </summary>
+    public const string LiteralSidCvxNovelInfluenzaH1N109 = "http://hl7.org/fhir/sid/cvx#127";
+
+    /// <summary>
     /// Literal for code: NovelInfluenzaH1N109AllFormulations
     /// </summary>
     public const string LiteralNovelInfluenzaH1N109AllFormulations = "128";
+
+    /// <summary>
+    /// Literal for code: SidCvxNovelInfluenzaH1N109AllFormulations
+    /// </summary>
+    public const string LiteralSidCvxNovelInfluenzaH1N109AllFormulations = "http://hl7.org/fhir/sid/cvx#128";
 
     /// <summary>
     /// Literal for code: JapaneseEncephalitisUnspecifiedFormulation
@@ -2630,9 +2830,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJapaneseEncephalitisUnspecifiedFormulation = "129";
 
     /// <summary>
+    /// Literal for code: SidCvxJapaneseEncephalitisUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxJapaneseEncephalitisUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#129";
+
+    /// <summary>
     /// Literal for code: TIG
     /// </summary>
     public const string LiteralTIG = "13";
+
+    /// <summary>
+    /// Literal for code: SidCvxTIG
+    /// </summary>
+    public const string LiteralSidCvxTIG = "http://hl7.org/fhir/sid/cvx#13";
 
     /// <summary>
     /// Literal for code: DTaPIPV
@@ -2640,9 +2850,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDTaPIPV = "130";
 
     /// <summary>
+    /// Literal for code: SidCvxDTaPIPV
+    /// </summary>
+    public const string LiteralSidCvxDTaPIPV = "http://hl7.org/fhir/sid/cvx#130";
+
+    /// <summary>
     /// Literal for code: TyphusHistorical
     /// </summary>
     public const string LiteralTyphusHistorical = "131";
+
+    /// <summary>
+    /// Literal for code: SidCvxTyphusHistorical
+    /// </summary>
+    public const string LiteralSidCvxTyphusHistorical = "http://hl7.org/fhir/sid/cvx#131";
 
     /// <summary>
     /// Literal for code: DTaPIPVHIBHEPBHistorical
@@ -2650,9 +2870,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDTaPIPVHIBHEPBHistorical = "132";
 
     /// <summary>
+    /// Literal for code: SidCvxDTaPIPVHIBHEPBHistorical
+    /// </summary>
+    public const string LiteralSidCvxDTaPIPVHIBHEPBHistorical = "http://hl7.org/fhir/sid/cvx#132";
+
+    /// <summary>
     /// Literal for code: PneumococcalConjugatePCV13
     /// </summary>
     public const string LiteralPneumococcalConjugatePCV13 = "133";
+
+    /// <summary>
+    /// Literal for code: SidCvxPneumococcalConjugatePCV13
+    /// </summary>
+    public const string LiteralSidCvxPneumococcalConjugatePCV13 = "http://hl7.org/fhir/sid/cvx#133";
 
     /// <summary>
     /// Literal for code: JapaneseEncephalitisIM
@@ -2660,9 +2890,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJapaneseEncephalitisIM = "134";
 
     /// <summary>
+    /// Literal for code: SidCvxJapaneseEncephalitisIM
+    /// </summary>
+    public const string LiteralSidCvxJapaneseEncephalitisIM = "http://hl7.org/fhir/sid/cvx#134";
+
+    /// <summary>
     /// Literal for code: InfluenzaHighDoseSeasonal
     /// </summary>
     public const string LiteralInfluenzaHighDoseSeasonal = "135";
+
+    /// <summary>
+    /// Literal for code: SidCvxInfluenzaHighDoseSeasonal
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaHighDoseSeasonal = "http://hl7.org/fhir/sid/cvx#135";
 
     /// <summary>
     /// Literal for code: MeningococcalMCV4O
@@ -2670,9 +2910,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeningococcalMCV4O = "136";
 
     /// <summary>
+    /// Literal for code: SidCvxMeningococcalMCV4O
+    /// </summary>
+    public const string LiteralSidCvxMeningococcalMCV4O = "http://hl7.org/fhir/sid/cvx#136";
+
+    /// <summary>
     /// Literal for code: HPVUnspecifiedFormulation
     /// </summary>
     public const string LiteralHPVUnspecifiedFormulation = "137";
+
+    /// <summary>
+    /// Literal for code: SidCvxHPVUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxHPVUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#137";
 
     /// <summary>
     /// Literal for code: TdAdult
@@ -2680,9 +2930,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTdAdult = "138";
 
     /// <summary>
+    /// Literal for code: SidCvxTdAdult
+    /// </summary>
+    public const string LiteralSidCvxTdAdult = "http://hl7.org/fhir/sid/cvx#138";
+
+    /// <summary>
     /// Literal for code: TdAdultUnspecifiedFormulation
     /// </summary>
     public const string LiteralTdAdultUnspecifiedFormulation = "139";
+
+    /// <summary>
+    /// Literal for code: SidCvxTdAdultUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxTdAdultUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#139";
 
     /// <summary>
     /// Literal for code: IGUnspecifiedFormulation
@@ -2690,9 +2950,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIGUnspecifiedFormulation = "14";
 
     /// <summary>
+    /// Literal for code: SidCvxIGUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxIGUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#14";
+
+    /// <summary>
     /// Literal for code: InfluenzaSeasonalInjectablePreservativeFree
     /// </summary>
     public const string LiteralInfluenzaSeasonalInjectablePreservativeFree = "140";
+
+    /// <summary>
+    /// Literal for code: SidCvxInfluenzaSeasonalInjectablePreservativeFree
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaSeasonalInjectablePreservativeFree = "http://hl7.org/fhir/sid/cvx#140";
 
     /// <summary>
     /// Literal for code: InfluenzaSeasonalInjectable
@@ -2700,9 +2970,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfluenzaSeasonalInjectable = "141";
 
     /// <summary>
+    /// Literal for code: SidCvxInfluenzaSeasonalInjectable
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaSeasonalInjectable = "http://hl7.org/fhir/sid/cvx#141";
+
+    /// <summary>
     /// Literal for code: TetanusToxoidNotAdsorbed
     /// </summary>
     public const string LiteralTetanusToxoidNotAdsorbed = "142";
+
+    /// <summary>
+    /// Literal for code: SidCvxTetanusToxoidNotAdsorbed
+    /// </summary>
+    public const string LiteralSidCvxTetanusToxoidNotAdsorbed = "http://hl7.org/fhir/sid/cvx#142";
 
     /// <summary>
     /// Literal for code: AdenovirusTypes4And7
@@ -2710,9 +2990,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdenovirusTypes4And7 = "143";
 
     /// <summary>
+    /// Literal for code: SidCvxAdenovirusTypes4And7
+    /// </summary>
+    public const string LiteralSidCvxAdenovirusTypes4And7 = "http://hl7.org/fhir/sid/cvx#143";
+
+    /// <summary>
     /// Literal for code: InfluenzaSeasonalIntradermalPreservativeFree
     /// </summary>
     public const string LiteralInfluenzaSeasonalIntradermalPreservativeFree = "144";
+
+    /// <summary>
+    /// Literal for code: SidCvxInfluenzaSeasonalIntradermalPreservativeFree
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaSeasonalIntradermalPreservativeFree = "http://hl7.org/fhir/sid/cvx#144";
 
     /// <summary>
     /// Literal for code: RSVMAbNew
@@ -2720,9 +3010,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRSVMAbNew = "145";
 
     /// <summary>
+    /// Literal for code: SidCvxRSVMAbNew
+    /// </summary>
+    public const string LiteralSidCvxRSVMAbNew = "http://hl7.org/fhir/sid/cvx#145";
+
+    /// <summary>
     /// Literal for code: DTaPIPVHibHepB
     /// </summary>
     public const string LiteralDTaPIPVHibHepB = "146";
+
+    /// <summary>
+    /// Literal for code: SidCvxDTaPIPVHibHepB
+    /// </summary>
+    public const string LiteralSidCvxDTaPIPVHibHepB = "http://hl7.org/fhir/sid/cvx#146";
 
     /// <summary>
     /// Literal for code: MeningococcalMCV4UnspecifiedFormulation
@@ -2730,9 +3030,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeningococcalMCV4UnspecifiedFormulation = "147";
 
     /// <summary>
+    /// Literal for code: SidCvxMeningococcalMCV4UnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxMeningococcalMCV4UnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#147";
+
+    /// <summary>
     /// Literal for code: MeningococcalCYHIBPRP
     /// </summary>
     public const string LiteralMeningococcalCYHIBPRP = "148";
+
+    /// <summary>
+    /// Literal for code: SidCvxMeningococcalCYHIBPRP
+    /// </summary>
+    public const string LiteralSidCvxMeningococcalCYHIBPRP = "http://hl7.org/fhir/sid/cvx#148";
 
     /// <summary>
     /// Literal for code: InfluenzaLiveIntranasalQuadrivalent
@@ -2740,9 +3050,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfluenzaLiveIntranasalQuadrivalent = "149";
 
     /// <summary>
+    /// Literal for code: SidCvxInfluenzaLiveIntranasalQuadrivalent
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaLiveIntranasalQuadrivalent = "http://hl7.org/fhir/sid/cvx#149";
+
+    /// <summary>
     /// Literal for code: InfluenzaSplitInclPurifiedSurfaceAntigen
     /// </summary>
     public const string LiteralInfluenzaSplitInclPurifiedSurfaceAntigen = "15";
+
+    /// <summary>
+    /// Literal for code: SidCvxInfluenzaSplitInclPurifiedSurfaceAntigen
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaSplitInclPurifiedSurfaceAntigen = "http://hl7.org/fhir/sid/cvx#15";
 
     /// <summary>
     /// Literal for code: InfluenzaInjectableQuadrivalentPreservativeFree
@@ -2750,9 +3070,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfluenzaInjectableQuadrivalentPreservativeFree = "150";
 
     /// <summary>
+    /// Literal for code: SidCvxInfluenzaInjectableQuadrivalentPreservativeFree
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaInjectableQuadrivalentPreservativeFree = "http://hl7.org/fhir/sid/cvx#150";
+
+    /// <summary>
     /// Literal for code: InfluenzaNasalUnspecifiedFormulation
     /// </summary>
     public const string LiteralInfluenzaNasalUnspecifiedFormulation = "151";
+
+    /// <summary>
+    /// Literal for code: SidCvxInfluenzaNasalUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaNasalUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#151";
 
     /// <summary>
     /// Literal for code: PneumococcalConjugateUnspecifiedFormulation
@@ -2760,9 +3090,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPneumococcalConjugateUnspecifiedFormulation = "152";
 
     /// <summary>
+    /// Literal for code: SidCvxPneumococcalConjugateUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxPneumococcalConjugateUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#152";
+
+    /// <summary>
     /// Literal for code: InfluenzaInjectableMDCKPreservativeFree
     /// </summary>
     public const string LiteralInfluenzaInjectableMDCKPreservativeFree = "153";
+
+    /// <summary>
+    /// Literal for code: SidCvxInfluenzaInjectableMDCKPreservativeFree
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaInjectableMDCKPreservativeFree = "http://hl7.org/fhir/sid/cvx#153";
 
     /// <summary>
     /// Literal for code: HepAIG
@@ -2770,9 +3110,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHepAIG = "154";
 
     /// <summary>
+    /// Literal for code: SidCvxHepAIG
+    /// </summary>
+    public const string LiteralSidCvxHepAIG = "http://hl7.org/fhir/sid/cvx#154";
+
+    /// <summary>
     /// Literal for code: InfluenzaRecombinantInjectablePreservativeFree
     /// </summary>
     public const string LiteralInfluenzaRecombinantInjectablePreservativeFree = "155";
+
+    /// <summary>
+    /// Literal for code: SidCvxInfluenzaRecombinantInjectablePreservativeFree
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaRecombinantInjectablePreservativeFree = "http://hl7.org/fhir/sid/cvx#155";
 
     /// <summary>
     /// Literal for code: RhoDIG
@@ -2780,9 +3130,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRhoDIG = "156";
 
     /// <summary>
+    /// Literal for code: SidCvxRhoDIG
+    /// </summary>
+    public const string LiteralSidCvxRhoDIG = "http://hl7.org/fhir/sid/cvx#156";
+
+    /// <summary>
     /// Literal for code: RhoDIGIM
     /// </summary>
     public const string LiteralRhoDIGIM = "157";
+
+    /// <summary>
+    /// Literal for code: SidCvxRhoDIGIM
+    /// </summary>
+    public const string LiteralSidCvxRhoDIGIM = "http://hl7.org/fhir/sid/cvx#157";
 
     /// <summary>
     /// Literal for code: InfluenzaInjectableQuadrivalent
@@ -2790,9 +3150,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfluenzaInjectableQuadrivalent = "158";
 
     /// <summary>
+    /// Literal for code: SidCvxInfluenzaInjectableQuadrivalent
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaInjectableQuadrivalent = "http://hl7.org/fhir/sid/cvx#158";
+
+    /// <summary>
     /// Literal for code: RhoDUnspecifiedFormulation
     /// </summary>
     public const string LiteralRhoDUnspecifiedFormulation = "159";
+
+    /// <summary>
+    /// Literal for code: SidCvxRhoDUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxRhoDUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#159";
 
     /// <summary>
     /// Literal for code: InfluenzaWhole
@@ -2800,9 +3170,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfluenzaWhole = "16";
 
     /// <summary>
+    /// Literal for code: SidCvxInfluenzaWhole
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaWhole = "http://hl7.org/fhir/sid/cvx#16";
+
+    /// <summary>
     /// Literal for code: InfluenzaAMonovalentH5N1ADJUVANTED2013
     /// </summary>
     public const string LiteralInfluenzaAMonovalentH5N1ADJUVANTED2013 = "160";
+
+    /// <summary>
+    /// Literal for code: SidCvxInfluenzaAMonovalentH5N1ADJUVANTED2013
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaAMonovalentH5N1ADJUVANTED2013 = "http://hl7.org/fhir/sid/cvx#160";
 
     /// <summary>
     /// Literal for code: InfluenzaInjectableQuadrivalentPreservativeFreePediatric
@@ -2810,9 +3190,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfluenzaInjectableQuadrivalentPreservativeFreePediatric = "161";
 
     /// <summary>
+    /// Literal for code: SidCvxInfluenzaInjectableQuadrivalentPreservativeFreePediatric
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaInjectableQuadrivalentPreservativeFreePediatric = "http://hl7.org/fhir/sid/cvx#161";
+
+    /// <summary>
     /// Literal for code: MeningococcalBRecombinant
     /// </summary>
     public const string LiteralMeningococcalBRecombinant = "162";
+
+    /// <summary>
+    /// Literal for code: SidCvxMeningococcalBRecombinant
+    /// </summary>
+    public const string LiteralSidCvxMeningococcalBRecombinant = "http://hl7.org/fhir/sid/cvx#162";
 
     /// <summary>
     /// Literal for code: MeningococcalBOMV
@@ -2820,9 +3210,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeningococcalBOMV = "163";
 
     /// <summary>
+    /// Literal for code: SidCvxMeningococcalBOMV
+    /// </summary>
+    public const string LiteralSidCvxMeningococcalBOMV = "http://hl7.org/fhir/sid/cvx#163";
+
+    /// <summary>
     /// Literal for code: MeningococcalBUnspecified
     /// </summary>
     public const string LiteralMeningococcalBUnspecified = "164";
+
+    /// <summary>
+    /// Literal for code: SidCvxMeningococcalBUnspecified
+    /// </summary>
+    public const string LiteralSidCvxMeningococcalBUnspecified = "http://hl7.org/fhir/sid/cvx#164";
 
     /// <summary>
     /// Literal for code: HPV9
@@ -2830,9 +3230,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHPV9 = "165";
 
     /// <summary>
+    /// Literal for code: SidCvxHPV9
+    /// </summary>
+    public const string LiteralSidCvxHPV9 = "http://hl7.org/fhir/sid/cvx#165";
+
+    /// <summary>
     /// Literal for code: InfluenzaIntradermalQuadrivalentPreservativeFree
     /// </summary>
     public const string LiteralInfluenzaIntradermalQuadrivalentPreservativeFree = "166";
+
+    /// <summary>
+    /// Literal for code: SidCvxInfluenzaIntradermalQuadrivalentPreservativeFree
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaIntradermalQuadrivalentPreservativeFree = "http://hl7.org/fhir/sid/cvx#166";
 
     /// <summary>
     /// Literal for code: MeningococcalUnknownSerogroups
@@ -2840,9 +3250,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeningococcalUnknownSerogroups = "167";
 
     /// <summary>
+    /// Literal for code: SidCvxMeningococcalUnknownSerogroups
+    /// </summary>
+    public const string LiteralSidCvxMeningococcalUnknownSerogroups = "http://hl7.org/fhir/sid/cvx#167";
+
+    /// <summary>
     /// Literal for code: InfluenzaTrivalentAdjuvanted
     /// </summary>
     public const string LiteralInfluenzaTrivalentAdjuvanted = "168";
+
+    /// <summary>
+    /// Literal for code: SidCvxInfluenzaTrivalentAdjuvanted
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaTrivalentAdjuvanted = "http://hl7.org/fhir/sid/cvx#168";
 
     /// <summary>
     /// Literal for code: HepALiveAttenuated
@@ -2850,9 +3270,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHepALiveAttenuated = "169";
 
     /// <summary>
+    /// Literal for code: SidCvxHepALiveAttenuated
+    /// </summary>
+    public const string LiteralSidCvxHepALiveAttenuated = "http://hl7.org/fhir/sid/cvx#169";
+
+    /// <summary>
     /// Literal for code: HibUnspecifiedFormulation
     /// </summary>
     public const string LiteralHibUnspecifiedFormulation = "17";
+
+    /// <summary>
+    /// Literal for code: SidCvxHibUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxHibUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#17";
 
     /// <summary>
     /// Literal for code: DTAPIPVHIBNonUS
@@ -2860,9 +3290,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDTAPIPVHIBNonUS = "170";
 
     /// <summary>
+    /// Literal for code: SidCvxDTAPIPVHIBNonUS
+    /// </summary>
+    public const string LiteralSidCvxDTAPIPVHIBNonUS = "http://hl7.org/fhir/sid/cvx#170";
+
+    /// <summary>
     /// Literal for code: InfluenzaInjectableMDCKPreservativeFreeQuadrivalent
     /// </summary>
     public const string LiteralInfluenzaInjectableMDCKPreservativeFreeQuadrivalent = "171";
+
+    /// <summary>
+    /// Literal for code: SidCvxInfluenzaInjectableMDCKPreservativeFreeQuadrivalent
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaInjectableMDCKPreservativeFreeQuadrivalent = "http://hl7.org/fhir/sid/cvx#171";
 
     /// <summary>
     /// Literal for code: CholeraWCRBS
@@ -2870,9 +3310,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCholeraWCRBS = "172";
 
     /// <summary>
+    /// Literal for code: SidCvxCholeraWCRBS
+    /// </summary>
+    public const string LiteralSidCvxCholeraWCRBS = "http://hl7.org/fhir/sid/cvx#172";
+
+    /// <summary>
     /// Literal for code: CholeraBivWC
     /// </summary>
     public const string LiteralCholeraBivWC = "173";
+
+    /// <summary>
+    /// Literal for code: SidCvxCholeraBivWC
+    /// </summary>
+    public const string LiteralSidCvxCholeraBivWC = "http://hl7.org/fhir/sid/cvx#173";
 
     /// <summary>
     /// Literal for code: CholeraLiveAttenuated
@@ -2880,9 +3330,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCholeraLiveAttenuated = "174";
 
     /// <summary>
+    /// Literal for code: SidCvxCholeraLiveAttenuated
+    /// </summary>
+    public const string LiteralSidCvxCholeraLiveAttenuated = "http://hl7.org/fhir/sid/cvx#174";
+
+    /// <summary>
     /// Literal for code: RabiesIMDiploidCellCulture
     /// </summary>
     public const string LiteralRabiesIMDiploidCellCulture = "175";
+
+    /// <summary>
+    /// Literal for code: SidCvxRabiesIMDiploidCellCulture
+    /// </summary>
+    public const string LiteralSidCvxRabiesIMDiploidCellCulture = "http://hl7.org/fhir/sid/cvx#175";
 
     /// <summary>
     /// Literal for code: RabiesIMFibroblastCulture
@@ -2890,9 +3350,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRabiesIMFibroblastCulture = "176";
 
     /// <summary>
+    /// Literal for code: SidCvxRabiesIMFibroblastCulture
+    /// </summary>
+    public const string LiteralSidCvxRabiesIMFibroblastCulture = "http://hl7.org/fhir/sid/cvx#176";
+
+    /// <summary>
     /// Literal for code: PCV10
     /// </summary>
     public const string LiteralPCV10 = "177";
+
+    /// <summary>
+    /// Literal for code: SidCvxPCV10
+    /// </summary>
+    public const string LiteralSidCvxPCV10 = "http://hl7.org/fhir/sid/cvx#177";
 
     /// <summary>
     /// Literal for code: OPVBivalent
@@ -2900,9 +3370,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOPVBivalent = "178";
 
     /// <summary>
+    /// Literal for code: SidCvxOPVBivalent
+    /// </summary>
+    public const string LiteralSidCvxOPVBivalent = "http://hl7.org/fhir/sid/cvx#178";
+
+    /// <summary>
     /// Literal for code: OPVMonovalentUnspecified
     /// </summary>
     public const string LiteralOPVMonovalentUnspecified = "179";
+
+    /// <summary>
+    /// Literal for code: SidCvxOPVMonovalentUnspecified
+    /// </summary>
+    public const string LiteralSidCvxOPVMonovalentUnspecified = "http://hl7.org/fhir/sid/cvx#179";
 
     /// <summary>
     /// Literal for code: RabiesIntramuscularInjection
@@ -2910,9 +3390,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRabiesIntramuscularInjection = "18";
 
     /// <summary>
+    /// Literal for code: SidCvxRabiesIntramuscularInjection
+    /// </summary>
+    public const string LiteralSidCvxRabiesIntramuscularInjection = "http://hl7.org/fhir/sid/cvx#18";
+
+    /// <summary>
     /// Literal for code: TetanusImmuneGlobulin
     /// </summary>
     public const string LiteralTetanusImmuneGlobulin = "180";
+
+    /// <summary>
+    /// Literal for code: SidCvxTetanusImmuneGlobulin
+    /// </summary>
+    public const string LiteralSidCvxTetanusImmuneGlobulin = "http://hl7.org/fhir/sid/cvx#180";
 
     /// <summary>
     /// Literal for code: AnthraxImmuneGlobulin
@@ -2920,9 +3410,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnthraxImmuneGlobulin = "181";
 
     /// <summary>
+    /// Literal for code: SidCvxAnthraxImmuneGlobulin
+    /// </summary>
+    public const string LiteralSidCvxAnthraxImmuneGlobulin = "http://hl7.org/fhir/sid/cvx#181";
+
+    /// <summary>
     /// Literal for code: OPVUnspecified
     /// </summary>
     public const string LiteralOPVUnspecified = "182";
+
+    /// <summary>
+    /// Literal for code: SidCvxOPVUnspecified
+    /// </summary>
+    public const string LiteralSidCvxOPVUnspecified = "http://hl7.org/fhir/sid/cvx#182";
 
     /// <summary>
     /// Literal for code: YellowFeverVaccineAlt
@@ -2930,9 +3430,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralYellowFeverVaccineAlt = "183";
 
     /// <summary>
+    /// Literal for code: SidCvxYellowFeverVaccineAlt
+    /// </summary>
+    public const string LiteralSidCvxYellowFeverVaccineAlt = "http://hl7.org/fhir/sid/cvx#183";
+
+    /// <summary>
     /// Literal for code: YellowFeverUnspecifiedFormulation
     /// </summary>
     public const string LiteralYellowFeverUnspecifiedFormulation = "184";
+
+    /// <summary>
+    /// Literal for code: SidCvxYellowFeverUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxYellowFeverUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#184";
 
     /// <summary>
     /// Literal for code: InfluenzaRecombinantQuadrivalentInjectablePreservativeFree
@@ -2940,9 +3450,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfluenzaRecombinantQuadrivalentInjectablePreservativeFree = "185";
 
     /// <summary>
+    /// Literal for code: SidCvxInfluenzaRecombinantQuadrivalentInjectablePreservativeFree
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaRecombinantQuadrivalentInjectablePreservativeFree = "http://hl7.org/fhir/sid/cvx#185";
+
+    /// <summary>
     /// Literal for code: InfluenzaInjectableMDCKQuadrivalentPreservative
     /// </summary>
     public const string LiteralInfluenzaInjectableMDCKQuadrivalentPreservative = "186";
+
+    /// <summary>
+    /// Literal for code: SidCvxInfluenzaInjectableMDCKQuadrivalentPreservative
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaInjectableMDCKQuadrivalentPreservative = "http://hl7.org/fhir/sid/cvx#186";
 
     /// <summary>
     /// Literal for code: ZosterRecombinant
@@ -2950,9 +3470,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralZosterRecombinant = "187";
 
     /// <summary>
+    /// Literal for code: SidCvxZosterRecombinant
+    /// </summary>
+    public const string LiteralSidCvxZosterRecombinant = "http://hl7.org/fhir/sid/cvx#187";
+
+    /// <summary>
     /// Literal for code: ZosterUnspecifiedFormulation
     /// </summary>
     public const string LiteralZosterUnspecifiedFormulation = "188";
+
+    /// <summary>
+    /// Literal for code: SidCvxZosterUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxZosterUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#188";
 
     /// <summary>
     /// Literal for code: HepBCpG
@@ -2960,9 +3490,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHepBCpG = "189";
 
     /// <summary>
+    /// Literal for code: SidCvxHepBCpG
+    /// </summary>
+    public const string LiteralSidCvxHepBCpG = "http://hl7.org/fhir/sid/cvx#189";
+
+    /// <summary>
     /// Literal for code: BCG
     /// </summary>
     public const string LiteralBCG = "19";
+
+    /// <summary>
+    /// Literal for code: SidCvxBCG
+    /// </summary>
+    public const string LiteralSidCvxBCG = "http://hl7.org/fhir/sid/cvx#19";
 
     /// <summary>
     /// Literal for code: TyphoidConjugateVaccineTCV
@@ -2970,9 +3510,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTyphoidConjugateVaccineTCV = "190";
 
     /// <summary>
+    /// Literal for code: SidCvxTyphoidConjugateVaccineTCV
+    /// </summary>
+    public const string LiteralSidCvxTyphoidConjugateVaccineTCV = "http://hl7.org/fhir/sid/cvx#190";
+
+    /// <summary>
     /// Literal for code: MeningococcalAPolysaccharideNonUS
     /// </summary>
     public const string LiteralMeningococcalAPolysaccharideNonUS = "191";
+
+    /// <summary>
+    /// Literal for code: SidCvxMeningococcalAPolysaccharideNonUS
+    /// </summary>
+    public const string LiteralSidCvxMeningococcalAPolysaccharideNonUS = "http://hl7.org/fhir/sid/cvx#191";
 
     /// <summary>
     /// Literal for code: MeningococcalACPolysaccharideNonUS
@@ -2980,9 +3530,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeningococcalACPolysaccharideNonUS = "192";
 
     /// <summary>
+    /// Literal for code: SidCvxMeningococcalACPolysaccharideNonUS
+    /// </summary>
+    public const string LiteralSidCvxMeningococcalACPolysaccharideNonUS = "http://hl7.org/fhir/sid/cvx#192";
+
+    /// <summary>
     /// Literal for code: HepAHepBPediatricAdolescent
     /// </summary>
     public const string LiteralHepAHepBPediatricAdolescent = "193";
+
+    /// <summary>
+    /// Literal for code: SidCvxHepAHepBPediatricAdolescent
+    /// </summary>
+    public const string LiteralSidCvxHepAHepBPediatricAdolescent = "http://hl7.org/fhir/sid/cvx#193";
 
     /// <summary>
     /// Literal for code: DTaP
@@ -2990,9 +3550,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDTaP = "20";
 
     /// <summary>
+    /// Literal for code: SidCvxDTaP
+    /// </summary>
+    public const string LiteralSidCvxDTaP = "http://hl7.org/fhir/sid/cvx#20";
+
+    /// <summary>
     /// Literal for code: Varicella
     /// </summary>
     public const string LiteralVaricella = "21";
+
+    /// <summary>
+    /// Literal for code: SidCvxVaricella
+    /// </summary>
+    public const string LiteralSidCvxVaricella = "http://hl7.org/fhir/sid/cvx#21";
 
     /// <summary>
     /// Literal for code: DTPHib
@@ -3000,9 +3570,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDTPHib = "22";
 
     /// <summary>
+    /// Literal for code: SidCvxDTPHib
+    /// </summary>
+    public const string LiteralSidCvxDTPHib = "http://hl7.org/fhir/sid/cvx#22";
+
+    /// <summary>
     /// Literal for code: Plague
     /// </summary>
     public const string LiteralPlague = "23";
+
+    /// <summary>
+    /// Literal for code: SidCvxPlague
+    /// </summary>
+    public const string LiteralSidCvxPlague = "http://hl7.org/fhir/sid/cvx#23";
 
     /// <summary>
     /// Literal for code: Anthrax
@@ -3010,9 +3590,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnthrax = "24";
 
     /// <summary>
+    /// Literal for code: SidCvxAnthrax
+    /// </summary>
+    public const string LiteralSidCvxAnthrax = "http://hl7.org/fhir/sid/cvx#24";
+
+    /// <summary>
     /// Literal for code: TyphoidOral
     /// </summary>
     public const string LiteralTyphoidOral = "25";
+
+    /// <summary>
+    /// Literal for code: SidCvxTyphoidOral
+    /// </summary>
+    public const string LiteralSidCvxTyphoidOral = "http://hl7.org/fhir/sid/cvx#25";
 
     /// <summary>
     /// Literal for code: CholeraUnspecifiedFormulation
@@ -3020,9 +3610,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCholeraUnspecifiedFormulation = "26";
 
     /// <summary>
+    /// Literal for code: SidCvxCholeraUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxCholeraUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#26";
+
+    /// <summary>
     /// Literal for code: BotulinumAntitoxin
     /// </summary>
     public const string LiteralBotulinumAntitoxin = "27";
+
+    /// <summary>
+    /// Literal for code: SidCvxBotulinumAntitoxin
+    /// </summary>
+    public const string LiteralSidCvxBotulinumAntitoxin = "http://hl7.org/fhir/sid/cvx#27";
 
     /// <summary>
     /// Literal for code: DTPediatric
@@ -3030,9 +3630,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDTPediatric = "28";
 
     /// <summary>
+    /// Literal for code: SidCvxDTPediatric
+    /// </summary>
+    public const string LiteralSidCvxDTPediatric = "http://hl7.org/fhir/sid/cvx#28";
+
+    /// <summary>
     /// Literal for code: CMVIG
     /// </summary>
     public const string LiteralCMVIG = "29";
+
+    /// <summary>
+    /// Literal for code: SidCvxCMVIG
+    /// </summary>
+    public const string LiteralSidCvxCMVIG = "http://hl7.org/fhir/sid/cvx#29";
 
     /// <summary>
     /// Literal for code: HBIG
@@ -3040,9 +3650,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHBIG = "30";
 
     /// <summary>
+    /// Literal for code: SidCvxHBIG
+    /// </summary>
+    public const string LiteralSidCvxHBIG = "http://hl7.org/fhir/sid/cvx#30";
+
+    /// <summary>
     /// Literal for code: HepAPediatricUnspecifiedFormulation
     /// </summary>
     public const string LiteralHepAPediatricUnspecifiedFormulation = "31";
+
+    /// <summary>
+    /// Literal for code: SidCvxHepAPediatricUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxHepAPediatricUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#31";
 
     /// <summary>
     /// Literal for code: MeningococcalMPSV4
@@ -3050,9 +3670,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeningococcalMPSV4 = "32";
 
     /// <summary>
+    /// Literal for code: SidCvxMeningococcalMPSV4
+    /// </summary>
+    public const string LiteralSidCvxMeningococcalMPSV4 = "http://hl7.org/fhir/sid/cvx#32";
+
+    /// <summary>
     /// Literal for code: PneumococcalPolysaccharidePPV23
     /// </summary>
     public const string LiteralPneumococcalPolysaccharidePPV23 = "33";
+
+    /// <summary>
+    /// Literal for code: SidCvxPneumococcalPolysaccharidePPV23
+    /// </summary>
+    public const string LiteralSidCvxPneumococcalPolysaccharidePPV23 = "http://hl7.org/fhir/sid/cvx#33";
 
     /// <summary>
     /// Literal for code: RIG
@@ -3060,9 +3690,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRIG = "34";
 
     /// <summary>
+    /// Literal for code: SidCvxRIG
+    /// </summary>
+    public const string LiteralSidCvxRIG = "http://hl7.org/fhir/sid/cvx#34";
+
+    /// <summary>
     /// Literal for code: TetanusToxoidAdsorbed
     /// </summary>
     public const string LiteralTetanusToxoidAdsorbed = "35";
+
+    /// <summary>
+    /// Literal for code: SidCvxTetanusToxoidAdsorbed
+    /// </summary>
+    public const string LiteralSidCvxTetanusToxoidAdsorbed = "http://hl7.org/fhir/sid/cvx#35";
 
     /// <summary>
     /// Literal for code: VZIG
@@ -3070,9 +3710,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVZIG = "36";
 
     /// <summary>
+    /// Literal for code: SidCvxVZIG
+    /// </summary>
+    public const string LiteralSidCvxVZIG = "http://hl7.org/fhir/sid/cvx#36";
+
+    /// <summary>
     /// Literal for code: YellowFever
     /// </summary>
     public const string LiteralYellowFever = "37";
+
+    /// <summary>
+    /// Literal for code: SidCvxYellowFever
+    /// </summary>
+    public const string LiteralSidCvxYellowFever = "http://hl7.org/fhir/sid/cvx#37";
 
     /// <summary>
     /// Literal for code: RubellaMumps
@@ -3080,9 +3730,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRubellaMumps = "38";
 
     /// <summary>
+    /// Literal for code: SidCvxRubellaMumps
+    /// </summary>
+    public const string LiteralSidCvxRubellaMumps = "http://hl7.org/fhir/sid/cvx#38";
+
+    /// <summary>
     /// Literal for code: JapaneseEncephalitisSC
     /// </summary>
     public const string LiteralJapaneseEncephalitisSC = "39";
+
+    /// <summary>
+    /// Literal for code: SidCvxJapaneseEncephalitisSC
+    /// </summary>
+    public const string LiteralSidCvxJapaneseEncephalitisSC = "http://hl7.org/fhir/sid/cvx#39";
 
     /// <summary>
     /// Literal for code: RabiesIntradermalInjection
@@ -3090,9 +3750,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRabiesIntradermalInjection = "40";
 
     /// <summary>
+    /// Literal for code: SidCvxRabiesIntradermalInjection
+    /// </summary>
+    public const string LiteralSidCvxRabiesIntradermalInjection = "http://hl7.org/fhir/sid/cvx#40";
+
+    /// <summary>
     /// Literal for code: TyphoidParenteral
     /// </summary>
     public const string LiteralTyphoidParenteral = "41";
+
+    /// <summary>
+    /// Literal for code: SidCvxTyphoidParenteral
+    /// </summary>
+    public const string LiteralSidCvxTyphoidParenteral = "http://hl7.org/fhir/sid/cvx#41";
 
     /// <summary>
     /// Literal for code: HepBAdolescentHighRiskInfant
@@ -3100,9 +3770,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHepBAdolescentHighRiskInfant = "42";
 
     /// <summary>
+    /// Literal for code: SidCvxHepBAdolescentHighRiskInfant
+    /// </summary>
+    public const string LiteralSidCvxHepBAdolescentHighRiskInfant = "http://hl7.org/fhir/sid/cvx#42";
+
+    /// <summary>
     /// Literal for code: HepBAdult
     /// </summary>
     public const string LiteralHepBAdult = "43";
+
+    /// <summary>
+    /// Literal for code: SidCvxHepBAdult
+    /// </summary>
+    public const string LiteralSidCvxHepBAdult = "http://hl7.org/fhir/sid/cvx#43";
 
     /// <summary>
     /// Literal for code: HepBDialysis
@@ -3110,9 +3790,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHepBDialysis = "44";
 
     /// <summary>
+    /// Literal for code: SidCvxHepBDialysis
+    /// </summary>
+    public const string LiteralSidCvxHepBDialysis = "http://hl7.org/fhir/sid/cvx#44";
+
+    /// <summary>
     /// Literal for code: HepBUnspecifiedFormulation
     /// </summary>
     public const string LiteralHepBUnspecifiedFormulation = "45";
+
+    /// <summary>
+    /// Literal for code: SidCvxHepBUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxHepBUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#45";
 
     /// <summary>
     /// Literal for code: HibPRPD
@@ -3120,9 +3810,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHibPRPD = "46";
 
     /// <summary>
+    /// Literal for code: SidCvxHibPRPD
+    /// </summary>
+    public const string LiteralSidCvxHibPRPD = "http://hl7.org/fhir/sid/cvx#46";
+
+    /// <summary>
     /// Literal for code: HibHbOC
     /// </summary>
     public const string LiteralHibHbOC = "47";
+
+    /// <summary>
+    /// Literal for code: SidCvxHibHbOC
+    /// </summary>
+    public const string LiteralSidCvxHibHbOC = "http://hl7.org/fhir/sid/cvx#47";
 
     /// <summary>
     /// Literal for code: HibPRPT
@@ -3130,9 +3830,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHibPRPT = "48";
 
     /// <summary>
+    /// Literal for code: SidCvxHibPRPT
+    /// </summary>
+    public const string LiteralSidCvxHibPRPT = "http://hl7.org/fhir/sid/cvx#48";
+
+    /// <summary>
     /// Literal for code: HibPRPOMP
     /// </summary>
     public const string LiteralHibPRPOMP = "49";
+
+    /// <summary>
+    /// Literal for code: SidCvxHibPRPOMP
+    /// </summary>
+    public const string LiteralSidCvxHibPRPOMP = "http://hl7.org/fhir/sid/cvx#49";
 
     /// <summary>
     /// Literal for code: DTaPHib
@@ -3140,9 +3850,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDTaPHib = "50";
 
     /// <summary>
+    /// Literal for code: SidCvxDTaPHib
+    /// </summary>
+    public const string LiteralSidCvxDTaPHib = "http://hl7.org/fhir/sid/cvx#50";
+
+    /// <summary>
     /// Literal for code: HibHepB
     /// </summary>
     public const string LiteralHibHepB = "51";
+
+    /// <summary>
+    /// Literal for code: SidCvxHibHepB
+    /// </summary>
+    public const string LiteralSidCvxHibHepB = "http://hl7.org/fhir/sid/cvx#51";
 
     /// <summary>
     /// Literal for code: HepAAdult
@@ -3150,9 +3870,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHepAAdult = "52";
 
     /// <summary>
+    /// Literal for code: SidCvxHepAAdult
+    /// </summary>
+    public const string LiteralSidCvxHepAAdult = "http://hl7.org/fhir/sid/cvx#52";
+
+    /// <summary>
     /// Literal for code: TyphoidParenteralAKDUSMilitary
     /// </summary>
     public const string LiteralTyphoidParenteralAKDUSMilitary = "53";
+
+    /// <summary>
+    /// Literal for code: SidCvxTyphoidParenteralAKDUSMilitary
+    /// </summary>
+    public const string LiteralSidCvxTyphoidParenteralAKDUSMilitary = "http://hl7.org/fhir/sid/cvx#53";
 
     /// <summary>
     /// Literal for code: AdenovirusType4
@@ -3160,9 +3890,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdenovirusType4 = "54";
 
     /// <summary>
+    /// Literal for code: SidCvxAdenovirusType4
+    /// </summary>
+    public const string LiteralSidCvxAdenovirusType4 = "http://hl7.org/fhir/sid/cvx#54";
+
+    /// <summary>
     /// Literal for code: AdenovirusType7
     /// </summary>
     public const string LiteralAdenovirusType7 = "55";
+
+    /// <summary>
+    /// Literal for code: SidCvxAdenovirusType7
+    /// </summary>
+    public const string LiteralSidCvxAdenovirusType7 = "http://hl7.org/fhir/sid/cvx#55";
 
     /// <summary>
     /// Literal for code: DengueFever
@@ -3170,9 +3910,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDengueFever = "56";
 
     /// <summary>
+    /// Literal for code: SidCvxDengueFever
+    /// </summary>
+    public const string LiteralSidCvxDengueFever = "http://hl7.org/fhir/sid/cvx#56";
+
+    /// <summary>
     /// Literal for code: Hantavirus
     /// </summary>
     public const string LiteralHantavirus = "57";
+
+    /// <summary>
+    /// Literal for code: SidCvxHantavirus
+    /// </summary>
+    public const string LiteralSidCvxHantavirus = "http://hl7.org/fhir/sid/cvx#57";
 
     /// <summary>
     /// Literal for code: HepC
@@ -3180,9 +3930,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHepC = "58";
 
     /// <summary>
+    /// Literal for code: SidCvxHepC
+    /// </summary>
+    public const string LiteralSidCvxHepC = "http://hl7.org/fhir/sid/cvx#58";
+
+    /// <summary>
     /// Literal for code: HepE
     /// </summary>
     public const string LiteralHepE = "59";
+
+    /// <summary>
+    /// Literal for code: SidCvxHepE
+    /// </summary>
+    public const string LiteralSidCvxHepE = "http://hl7.org/fhir/sid/cvx#59";
 
     /// <summary>
     /// Literal for code: HerpesSimplex2
@@ -3190,9 +3950,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHerpesSimplex2 = "60";
 
     /// <summary>
+    /// Literal for code: SidCvxHerpesSimplex2
+    /// </summary>
+    public const string LiteralSidCvxHerpesSimplex2 = "http://hl7.org/fhir/sid/cvx#60";
+
+    /// <summary>
     /// Literal for code: HIV
     /// </summary>
     public const string LiteralHIV = "61";
+
+    /// <summary>
+    /// Literal for code: SidCvxHIV
+    /// </summary>
+    public const string LiteralSidCvxHIV = "http://hl7.org/fhir/sid/cvx#61";
 
     /// <summary>
     /// Literal for code: HPVQuadrivalent
@@ -3200,9 +3970,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHPVQuadrivalent = "62";
 
     /// <summary>
+    /// Literal for code: SidCvxHPVQuadrivalent
+    /// </summary>
+    public const string LiteralSidCvxHPVQuadrivalent = "http://hl7.org/fhir/sid/cvx#62";
+
+    /// <summary>
     /// Literal for code: JuninVirus
     /// </summary>
     public const string LiteralJuninVirus = "63";
+
+    /// <summary>
+    /// Literal for code: SidCvxJuninVirus
+    /// </summary>
+    public const string LiteralSidCvxJuninVirus = "http://hl7.org/fhir/sid/cvx#63";
 
     /// <summary>
     /// Literal for code: Leishmaniasis
@@ -3210,9 +3990,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeishmaniasis = "64";
 
     /// <summary>
+    /// Literal for code: SidCvxLeishmaniasis
+    /// </summary>
+    public const string LiteralSidCvxLeishmaniasis = "http://hl7.org/fhir/sid/cvx#64";
+
+    /// <summary>
     /// Literal for code: Leprosy
     /// </summary>
     public const string LiteralLeprosy = "65";
+
+    /// <summary>
+    /// Literal for code: SidCvxLeprosy
+    /// </summary>
+    public const string LiteralSidCvxLeprosy = "http://hl7.org/fhir/sid/cvx#65";
 
     /// <summary>
     /// Literal for code: LymeDisease
@@ -3220,9 +4010,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLymeDisease = "66";
 
     /// <summary>
+    /// Literal for code: SidCvxLymeDisease
+    /// </summary>
+    public const string LiteralSidCvxLymeDisease = "http://hl7.org/fhir/sid/cvx#66";
+
+    /// <summary>
     /// Literal for code: Malaria
     /// </summary>
     public const string LiteralMalaria = "67";
+
+    /// <summary>
+    /// Literal for code: SidCvxMalaria
+    /// </summary>
+    public const string LiteralSidCvxMalaria = "http://hl7.org/fhir/sid/cvx#67";
 
     /// <summary>
     /// Literal for code: Melanoma
@@ -3230,9 +4030,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMelanoma = "68";
 
     /// <summary>
+    /// Literal for code: SidCvxMelanoma
+    /// </summary>
+    public const string LiteralSidCvxMelanoma = "http://hl7.org/fhir/sid/cvx#68";
+
+    /// <summary>
     /// Literal for code: Parainfluenza3
     /// </summary>
     public const string LiteralParainfluenza3 = "69";
+
+    /// <summary>
+    /// Literal for code: SidCvxParainfluenza3
+    /// </summary>
+    public const string LiteralSidCvxParainfluenza3 = "http://hl7.org/fhir/sid/cvx#69";
 
     /// <summary>
     /// Literal for code: QFever
@@ -3240,9 +4050,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralQFever = "70";
 
     /// <summary>
+    /// Literal for code: SidCvxQFever
+    /// </summary>
+    public const string LiteralSidCvxQFever = "http://hl7.org/fhir/sid/cvx#70";
+
+    /// <summary>
     /// Literal for code: RSVIGIV
     /// </summary>
     public const string LiteralRSVIGIV = "71";
+
+    /// <summary>
+    /// Literal for code: SidCvxRSVIGIV
+    /// </summary>
+    public const string LiteralSidCvxRSVIGIV = "http://hl7.org/fhir/sid/cvx#71";
 
     /// <summary>
     /// Literal for code: RheumaticFever
@@ -3250,9 +4070,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRheumaticFever = "72";
 
     /// <summary>
+    /// Literal for code: SidCvxRheumaticFever
+    /// </summary>
+    public const string LiteralSidCvxRheumaticFever = "http://hl7.org/fhir/sid/cvx#72";
+
+    /// <summary>
     /// Literal for code: RiftValleyFever
     /// </summary>
     public const string LiteralRiftValleyFever = "73";
+
+    /// <summary>
+    /// Literal for code: SidCvxRiftValleyFever
+    /// </summary>
+    public const string LiteralSidCvxRiftValleyFever = "http://hl7.org/fhir/sid/cvx#73";
 
     /// <summary>
     /// Literal for code: RotavirusTetravalent
@@ -3260,9 +4090,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRotavirusTetravalent = "74";
 
     /// <summary>
+    /// Literal for code: SidCvxRotavirusTetravalent
+    /// </summary>
+    public const string LiteralSidCvxRotavirusTetravalent = "http://hl7.org/fhir/sid/cvx#74";
+
+    /// <summary>
     /// Literal for code: VacciniaSmallpox
     /// </summary>
     public const string LiteralVacciniaSmallpox = "75";
+
+    /// <summary>
+    /// Literal for code: SidCvxVacciniaSmallpox
+    /// </summary>
+    public const string LiteralSidCvxVacciniaSmallpox = "http://hl7.org/fhir/sid/cvx#75";
 
     /// <summary>
     /// Literal for code: StaphylococcusBacterioLysate
@@ -3270,9 +4110,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStaphylococcusBacterioLysate = "76";
 
     /// <summary>
+    /// Literal for code: SidCvxStaphylococcusBacterioLysate
+    /// </summary>
+    public const string LiteralSidCvxStaphylococcusBacterioLysate = "http://hl7.org/fhir/sid/cvx#76";
+
+    /// <summary>
     /// Literal for code: TickBorneEncephalitis
     /// </summary>
     public const string LiteralTickBorneEncephalitis = "77";
+
+    /// <summary>
+    /// Literal for code: SidCvxTickBorneEncephalitis
+    /// </summary>
+    public const string LiteralSidCvxTickBorneEncephalitis = "http://hl7.org/fhir/sid/cvx#77";
 
     /// <summary>
     /// Literal for code: TularemiaVaccine
@@ -3280,9 +4130,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTularemiaVaccine = "78";
 
     /// <summary>
+    /// Literal for code: SidCvxTularemiaVaccine
+    /// </summary>
+    public const string LiteralSidCvxTularemiaVaccine = "http://hl7.org/fhir/sid/cvx#78";
+
+    /// <summary>
     /// Literal for code: VacciniaImmuneGlobulin
     /// </summary>
     public const string LiteralVacciniaImmuneGlobulin = "79";
+
+    /// <summary>
+    /// Literal for code: SidCvxVacciniaImmuneGlobulin
+    /// </summary>
+    public const string LiteralSidCvxVacciniaImmuneGlobulin = "http://hl7.org/fhir/sid/cvx#79";
 
     /// <summary>
     /// Literal for code: VEELive
@@ -3290,9 +4150,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVEELive = "80";
 
     /// <summary>
+    /// Literal for code: SidCvxVEELive
+    /// </summary>
+    public const string LiteralSidCvxVEELive = "http://hl7.org/fhir/sid/cvx#80";
+
+    /// <summary>
     /// Literal for code: AS03Adjuvant
     /// </summary>
     public const string LiteralAS03Adjuvant = "801";
+
+    /// <summary>
+    /// Literal for code: SidCvxAS03Adjuvant
+    /// </summary>
+    public const string LiteralSidCvxAS03Adjuvant = "http://hl7.org/fhir/sid/cvx#801";
 
     /// <summary>
     /// Literal for code: VEEInactivated
@@ -3300,9 +4170,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVEEInactivated = "81";
 
     /// <summary>
+    /// Literal for code: SidCvxVEEInactivated
+    /// </summary>
+    public const string LiteralSidCvxVEEInactivated = "http://hl7.org/fhir/sid/cvx#81";
+
+    /// <summary>
     /// Literal for code: AdenovirusUnspecifiedFormulation
     /// </summary>
     public const string LiteralAdenovirusUnspecifiedFormulation = "82";
+
+    /// <summary>
+    /// Literal for code: SidCvxAdenovirusUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxAdenovirusUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#82";
 
     /// <summary>
     /// Literal for code: HepAPedAdol2Dose
@@ -3310,9 +4190,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHepAPedAdol2Dose = "83";
 
     /// <summary>
+    /// Literal for code: SidCvxHepAPedAdol2Dose
+    /// </summary>
+    public const string LiteralSidCvxHepAPedAdol2Dose = "http://hl7.org/fhir/sid/cvx#83";
+
+    /// <summary>
     /// Literal for code: HepAPedAdol3Dose
     /// </summary>
     public const string LiteralHepAPedAdol3Dose = "84";
+
+    /// <summary>
+    /// Literal for code: SidCvxHepAPedAdol3Dose
+    /// </summary>
+    public const string LiteralSidCvxHepAPedAdol3Dose = "http://hl7.org/fhir/sid/cvx#84";
 
     /// <summary>
     /// Literal for code: HepAUnspecifiedFormulation
@@ -3320,9 +4210,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHepAUnspecifiedFormulation = "85";
 
     /// <summary>
+    /// Literal for code: SidCvxHepAUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxHepAUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#85";
+
+    /// <summary>
     /// Literal for code: IG
     /// </summary>
     public const string LiteralIG = "86";
+
+    /// <summary>
+    /// Literal for code: SidCvxIG
+    /// </summary>
+    public const string LiteralSidCvxIG = "http://hl7.org/fhir/sid/cvx#86";
 
     /// <summary>
     /// Literal for code: IGIV
@@ -3330,9 +4230,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIGIV = "87";
 
     /// <summary>
+    /// Literal for code: SidCvxIGIV
+    /// </summary>
+    public const string LiteralSidCvxIGIV = "http://hl7.org/fhir/sid/cvx#87";
+
+    /// <summary>
     /// Literal for code: InfluenzaUnspecifiedFormulation
     /// </summary>
     public const string LiteralInfluenzaUnspecifiedFormulation = "88";
+
+    /// <summary>
+    /// Literal for code: SidCvxInfluenzaUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxInfluenzaUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#88";
 
     /// <summary>
     /// Literal for code: PolioUnspecifiedFormulation
@@ -3340,9 +4250,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPolioUnspecifiedFormulation = "89";
 
     /// <summary>
+    /// Literal for code: SidCvxPolioUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxPolioUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#89";
+
+    /// <summary>
     /// Literal for code: RabiesUnspecifiedFormulation
     /// </summary>
     public const string LiteralRabiesUnspecifiedFormulation = "90";
+
+    /// <summary>
+    /// Literal for code: SidCvxRabiesUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxRabiesUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#90";
 
     /// <summary>
     /// Literal for code: TyphoidUnspecifiedFormulation
@@ -3350,9 +4270,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTyphoidUnspecifiedFormulation = "91";
 
     /// <summary>
+    /// Literal for code: SidCvxTyphoidUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxTyphoidUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#91";
+
+    /// <summary>
     /// Literal for code: VEEUnspecifiedFormulation
     /// </summary>
     public const string LiteralVEEUnspecifiedFormulation = "92";
+
+    /// <summary>
+    /// Literal for code: SidCvxVEEUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxVEEUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#92";
 
     /// <summary>
     /// Literal for code: RSVMAb
@@ -3360,9 +4290,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRSVMAb = "93";
 
     /// <summary>
+    /// Literal for code: SidCvxRSVMAb
+    /// </summary>
+    public const string LiteralSidCvxRSVMAb = "http://hl7.org/fhir/sid/cvx#93";
+
+    /// <summary>
     /// Literal for code: MMRV
     /// </summary>
     public const string LiteralMMRV = "94";
+
+    /// <summary>
+    /// Literal for code: SidCvxMMRV
+    /// </summary>
+    public const string LiteralSidCvxMMRV = "http://hl7.org/fhir/sid/cvx#94";
 
     /// <summary>
     /// Literal for code: TSTOTTineTest
@@ -3370,9 +4310,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTSTOTTineTest = "95";
 
     /// <summary>
+    /// Literal for code: SidCvxTSTOTTineTest
+    /// </summary>
+    public const string LiteralSidCvxTSTOTTineTest = "http://hl7.org/fhir/sid/cvx#95";
+
+    /// <summary>
     /// Literal for code: TSTPPDIntradermal
     /// </summary>
     public const string LiteralTSTPPDIntradermal = "96";
+
+    /// <summary>
+    /// Literal for code: SidCvxTSTPPDIntradermal
+    /// </summary>
+    public const string LiteralSidCvxTSTPPDIntradermal = "http://hl7.org/fhir/sid/cvx#96";
 
     /// <summary>
     /// Literal for code: TSTPPDTineTest
@@ -3380,9 +4330,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTSTPPDTineTest = "97";
 
     /// <summary>
+    /// Literal for code: SidCvxTSTPPDTineTest
+    /// </summary>
+    public const string LiteralSidCvxTSTPPDTineTest = "http://hl7.org/fhir/sid/cvx#97";
+
+    /// <summary>
     /// Literal for code: TSTUnspecifiedFormulation
     /// </summary>
     public const string LiteralTSTUnspecifiedFormulation = "98";
+
+    /// <summary>
+    /// Literal for code: SidCvxTSTUnspecifiedFormulation
+    /// </summary>
+    public const string LiteralSidCvxTSTUnspecifiedFormulation = "http://hl7.org/fhir/sid/cvx#98";
 
     /// <summary>
     /// Literal for code: RESERVEDDoNotUse
@@ -3390,9 +4350,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRESERVEDDoNotUse = "99";
 
     /// <summary>
+    /// Literal for code: SidCvxRESERVEDDoNotUse
+    /// </summary>
+    public const string LiteralSidCvxRESERVEDDoNotUse = "http://hl7.org/fhir/sid/cvx#99";
+
+    /// <summary>
     /// Literal for code: NoVaccineAdministered
     /// </summary>
     public const string LiteralNoVaccineAdministered = "998";
+
+    /// <summary>
+    /// Literal for code: SidCvxNoVaccineAdministered
+    /// </summary>
+    public const string LiteralSidCvxNoVaccineAdministered = "http://hl7.org/fhir/sid/cvx#998";
 
     /// <summary>
     /// Literal for code: Unknown
@@ -3400,9 +4370,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnknown = "999";
 
     /// <summary>
+    /// Literal for code: SidCvxUnknown
+    /// </summary>
+    public const string LiteralSidCvxUnknown = "http://hl7.org/fhir/sid/cvx#999";
+
+    /// <summary>
     /// Literal for code: Agrippal
     /// </summary>
     public const string LiteralAgrippal = "AGRPAL";
+
+    /// <summary>
+    /// Literal for code: NONEAgrippal
+    /// </summary>
+    public const string LiteralNONEAgrippal = "urn:oid:1.2.36.1.2001.1005.17#AGRPAL";
 
     /// <summary>
     /// Literal for code: Avaxim
@@ -3410,9 +4390,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAvaxim = "AVAXM";
 
     /// <summary>
+    /// Literal for code: NONEAvaxim
+    /// </summary>
+    public const string LiteralNONEAvaxim = "urn:oid:1.2.36.1.2001.1005.17#AVAXM";
+
+    /// <summary>
     /// Literal for code: BCG_2
     /// </summary>
     public const string LiteralBCG_2 = "BCG";
+
+    /// <summary>
+    /// Literal for code: NONEBCG_2
+    /// </summary>
+    public const string LiteralNONEBCG_2 = "urn:oid:1.2.36.1.2001.1005.17#BCG";
 
     /// <summary>
     /// Literal for code: CDT
@@ -3420,9 +4410,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCDT = "CDT";
 
     /// <summary>
+    /// Literal for code: NONECDT
+    /// </summary>
+    public const string LiteralNONECDT = "urn:oid:1.2.36.1.2001.1005.17#CDT";
+
+    /// <summary>
     /// Literal for code: COMVAX
     /// </summary>
     public const string LiteralCOMVAX = "CMX";
+
+    /// <summary>
+    /// Literal for code: NONECOMVAX
+    /// </summary>
+    public const string LiteralNONECOMVAX = "urn:oid:1.2.36.1.2001.1005.17#CMX";
 
     /// <summary>
     /// Literal for code: TripleAntigen
@@ -3430,9 +4430,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTripleAntigen = "DTP";
 
     /// <summary>
+    /// Literal for code: NONETripleAntigen
+    /// </summary>
+    public const string LiteralNONETripleAntigen = "urn:oid:1.2.36.1.2001.1005.17#DTP";
+
+    /// <summary>
     /// Literal for code: DTPa
     /// </summary>
     public const string LiteralDTPa = "DTPA";
+
+    /// <summary>
+    /// Literal for code: NONEDTPa
+    /// </summary>
+    public const string LiteralNONEDTPa = "urn:oid:1.2.36.1.2001.1005.17#DTPA";
 
     /// <summary>
     /// Literal for code: EngerixB
@@ -3440,9 +4450,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEngerixB = "ENGP";
 
     /// <summary>
+    /// Literal for code: NONEEngerixB
+    /// </summary>
+    public const string LiteralNONEEngerixB = "urn:oid:1.2.36.1.2001.1005.17#ENGP";
+
+    /// <summary>
     /// Literal for code: Fluarix
     /// </summary>
     public const string LiteralFluarix = "FLRIX";
+
+    /// <summary>
+    /// Literal for code: NONEFluarix
+    /// </summary>
+    public const string LiteralNONEFluarix = "urn:oid:1.2.36.1.2001.1005.17#FLRIX";
 
     /// <summary>
     /// Literal for code: Fluvax
@@ -3450,9 +4470,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFluvax = "FLUVAX";
 
     /// <summary>
+    /// Literal for code: NONEFluvax
+    /// </summary>
+    public const string LiteralNONEFluvax = "urn:oid:1.2.36.1.2001.1005.17#FLUVAX";
+
+    /// <summary>
     /// Literal for code: Fluvirin
     /// </summary>
     public const string LiteralFluvirin = "FLVRN";
+
+    /// <summary>
+    /// Literal for code: NONEFluvirin
+    /// </summary>
+    public const string LiteralNONEFluvirin = "urn:oid:1.2.36.1.2001.1005.17#FLVRN";
 
     /// <summary>
     /// Literal for code: FluvaxJunior
@@ -3460,9 +4490,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFluvaxJunior = "FVXJNR";
 
     /// <summary>
+    /// Literal for code: NONEFluvaxJunior
+    /// </summary>
+    public const string LiteralNONEFluvaxJunior = "urn:oid:1.2.36.1.2001.1005.17#FVXJNR";
+
+    /// <summary>
     /// Literal for code: Diphtheria
     /// </summary>
     public const string LiteralDiphtheria = "GNDIP";
+
+    /// <summary>
+    /// Literal for code: NONEDiphtheria
+    /// </summary>
+    public const string LiteralNONEDiphtheria = "urn:oid:1.2.36.1.2001.1005.17#GNDIP";
 
     /// <summary>
     /// Literal for code: Influenza
@@ -3470,9 +4510,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfluenza = "GNFLU";
 
     /// <summary>
+    /// Literal for code: NONEInfluenza
+    /// </summary>
+    public const string LiteralNONEInfluenza = "urn:oid:1.2.36.1.2001.1005.17#GNFLU";
+
+    /// <summary>
     /// Literal for code: HepatitisB
     /// </summary>
     public const string LiteralHepatitisB = "GNHEP";
+
+    /// <summary>
+    /// Literal for code: NONEHepatitisB
+    /// </summary>
+    public const string LiteralNONEHepatitisB = "urn:oid:1.2.36.1.2001.1005.17#GNHEP";
 
     /// <summary>
     /// Literal for code: HIB
@@ -3480,9 +4530,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHIB = "GNHIB";
 
     /// <summary>
+    /// Literal for code: NONEHIB
+    /// </summary>
+    public const string LiteralNONEHIB = "urn:oid:1.2.36.1.2001.1005.17#GNHIB";
+
+    /// <summary>
     /// Literal for code: HepatitisA
     /// </summary>
     public const string LiteralHepatitisA = "GNHPA";
+
+    /// <summary>
+    /// Literal for code: NONEHepatitisA
+    /// </summary>
+    public const string LiteralNONEHepatitisA = "urn:oid:1.2.36.1.2001.1005.17#GNHPA";
 
     /// <summary>
     /// Literal for code: JapaneseEncephalitis
@@ -3490,9 +4550,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJapaneseEncephalitis = "GNJEN";
 
     /// <summary>
+    /// Literal for code: NONEJapaneseEncephalitis
+    /// </summary>
+    public const string LiteralNONEJapaneseEncephalitis = "urn:oid:1.2.36.1.2001.1005.17#GNJEN";
+
+    /// <summary>
     /// Literal for code: Measles_2
     /// </summary>
     public const string LiteralMeasles_2 = "GNMEA";
+
+    /// <summary>
+    /// Literal for code: NONEMeasles_2
+    /// </summary>
+    public const string LiteralNONEMeasles_2 = "urn:oid:1.2.36.1.2001.1005.17#GNMEA";
 
     /// <summary>
     /// Literal for code: MeningococcalC
@@ -3500,9 +4570,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeningococcalC = "GNMEN";
 
     /// <summary>
+    /// Literal for code: NONEMeningococcalC
+    /// </summary>
+    public const string LiteralNONEMeningococcalC = "urn:oid:1.2.36.1.2001.1005.17#GNMEN";
+
+    /// <summary>
     /// Literal for code: Mumps_2
     /// </summary>
     public const string LiteralMumps_2 = "GNMUM";
+
+    /// <summary>
+    /// Literal for code: NONEMumps_2
+    /// </summary>
+    public const string LiteralNONEMumps_2 = "urn:oid:1.2.36.1.2001.1005.17#GNMUM";
 
     /// <summary>
     /// Literal for code: Pneumococcal
@@ -3510,9 +4590,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPneumococcal = "GNPNE";
 
     /// <summary>
+    /// Literal for code: NONEPneumococcal
+    /// </summary>
+    public const string LiteralNONEPneumococcal = "urn:oid:1.2.36.1.2001.1005.17#GNPNE";
+
+    /// <summary>
     /// Literal for code: Polio
     /// </summary>
     public const string LiteralPolio = "GNPOL";
+
+    /// <summary>
+    /// Literal for code: NONEPolio
+    /// </summary>
+    public const string LiteralNONEPolio = "urn:oid:1.2.36.1.2001.1005.17#GNPOL";
 
     /// <summary>
     /// Literal for code: Rotavirus
@@ -3520,9 +4610,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRotavirus = "GNROX";
 
     /// <summary>
+    /// Literal for code: NONERotavirus
+    /// </summary>
+    public const string LiteralNONERotavirus = "urn:oid:1.2.36.1.2001.1005.17#GNROX";
+
+    /// <summary>
     /// Literal for code: Rubella_2
     /// </summary>
     public const string LiteralRubella_2 = "GNRUB";
+
+    /// <summary>
+    /// Literal for code: NONERubella_2
+    /// </summary>
+    public const string LiteralNONERubella_2 = "urn:oid:1.2.36.1.2001.1005.17#GNRUB";
 
     /// <summary>
     /// Literal for code: Tetanus
@@ -3530,9 +4630,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTetanus = "GNTET";
 
     /// <summary>
+    /// Literal for code: NONETetanus
+    /// </summary>
+    public const string LiteralNONETetanus = "urn:oid:1.2.36.1.2001.1005.17#GNTET";
+
+    /// <summary>
     /// Literal for code: Varicella_2
     /// </summary>
     public const string LiteralVaricella_2 = "GNVAR";
+
+    /// <summary>
+    /// Literal for code: NONEVaricella_2
+    /// </summary>
+    public const string LiteralNONEVaricella_2 = "urn:oid:1.2.36.1.2001.1005.17#GNVAR";
 
     /// <summary>
     /// Literal for code: TwinrixJunior
@@ -3540,9 +4650,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTwinrixJunior = "HATWNJ";
 
     /// <summary>
+    /// Literal for code: NONETwinrixJunior
+    /// </summary>
+    public const string LiteralNONETwinrixJunior = "urn:oid:1.2.36.1.2001.1005.17#HATWNJ";
+
+    /// <summary>
     /// Literal for code: VaqtaPaedAdol
     /// </summary>
     public const string LiteralVaqtaPaedAdol = "HAVAQ";
+
+    /// <summary>
+    /// Literal for code: NONEVaqtaPaedAdol
+    /// </summary>
+    public const string LiteralNONEVaqtaPaedAdol = "urn:oid:1.2.36.1.2001.1005.17#HAVAQ";
 
     /// <summary>
     /// Literal for code: HavrixJunior
@@ -3550,9 +4670,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHavrixJunior = "HAVJ";
 
     /// <summary>
+    /// Literal for code: NONEHavrixJunior
+    /// </summary>
+    public const string LiteralNONEHavrixJunior = "urn:oid:1.2.36.1.2001.1005.17#HAVJ";
+
+    /// <summary>
     /// Literal for code: HibTITER
     /// </summary>
     public const string LiteralHibTITER = "HBOC";
+
+    /// <summary>
+    /// Literal for code: NONEHibTITER
+    /// </summary>
+    public const string LiteralNONEHibTITER = "urn:oid:1.2.36.1.2001.1005.17#HBOC";
 
     /// <summary>
     /// Literal for code: HBV
@@ -3560,9 +4690,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHBV = "HBV";
 
     /// <summary>
+    /// Literal for code: NONEHBV
+    /// </summary>
+    public const string LiteralNONEHBV = "urn:oid:1.2.36.1.2001.1005.17#HBV";
+
+    /// <summary>
     /// Literal for code: HBVAXII
     /// </summary>
     public const string LiteralHBVAXII = "HBVP";
+
+    /// <summary>
+    /// Literal for code: NONEHBVAXII
+    /// </summary>
+    public const string LiteralNONEHBVAXII = "urn:oid:1.2.36.1.2001.1005.17#HBVP";
 
     /// <summary>
     /// Literal for code: Hiberix
@@ -3570,9 +4710,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHiberix = "HBX";
 
     /// <summary>
+    /// Literal for code: NONEHiberix
+    /// </summary>
+    public const string LiteralNONEHiberix = "urn:oid:1.2.36.1.2001.1005.17#HBX";
+
+    /// <summary>
     /// Literal for code: InfanrixHexa
     /// </summary>
     public const string LiteralInfanrixHexa = "IFHX";
+
+    /// <summary>
+    /// Literal for code: NONEInfanrixHexa
+    /// </summary>
+    public const string LiteralNONEInfanrixHexa = "urn:oid:1.2.36.1.2001.1005.17#IFHX";
 
     /// <summary>
     /// Literal for code: InfanrixIPV
@@ -3580,9 +4730,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfanrixIPV = "IFIP";
 
     /// <summary>
+    /// Literal for code: NONEInfanrixIPV
+    /// </summary>
+    public const string LiteralNONEInfanrixIPV = "urn:oid:1.2.36.1.2001.1005.17#IFIP";
+
+    /// <summary>
     /// Literal for code: InfanrixPenta
     /// </summary>
     public const string LiteralInfanrixPenta = "IFPA";
+
+    /// <summary>
+    /// Literal for code: NONEInfanrixPenta
+    /// </summary>
+    public const string LiteralNONEInfanrixPenta = "urn:oid:1.2.36.1.2001.1005.17#IFPA";
 
     /// <summary>
     /// Literal for code: Infanrix
@@ -3590,9 +4750,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfanrix = "IFX";
 
     /// <summary>
+    /// Literal for code: NONEInfanrix
+    /// </summary>
+    public const string LiteralNONEInfanrix = "urn:oid:1.2.36.1.2001.1005.17#IFX";
+
+    /// <summary>
     /// Literal for code: InfanrixHepB
     /// </summary>
     public const string LiteralInfanrixHepB = "IFXB";
+
+    /// <summary>
+    /// Literal for code: NONEInfanrixHepB
+    /// </summary>
+    public const string LiteralNONEInfanrixHepB = "urn:oid:1.2.36.1.2001.1005.17#IFXB";
 
     /// <summary>
     /// Literal for code: Influvac
@@ -3600,9 +4770,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfluvac = "INFLUV";
 
     /// <summary>
+    /// Literal for code: NONEInfluvac
+    /// </summary>
+    public const string LiteralNONEInfluvac = "urn:oid:1.2.36.1.2001.1005.17#INFLUV";
+
+    /// <summary>
     /// Literal for code: IPOL
     /// </summary>
     public const string LiteralIPOL = "IPV";
+
+    /// <summary>
+    /// Literal for code: NONEIPOL
+    /// </summary>
+    public const string LiteralNONEIPOL = "urn:oid:1.2.36.1.2001.1005.17#IPV";
 
     /// <summary>
     /// Literal for code: JEVAX
@@ -3610,9 +4790,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJEVAX = "JEVAX";
 
     /// <summary>
+    /// Literal for code: NONEJEVAX
+    /// </summary>
+    public const string LiteralNONEJEVAX = "urn:oid:1.2.36.1.2001.1005.17#JEVAX";
+
+    /// <summary>
     /// Literal for code: Menjugate
     /// </summary>
     public const string LiteralMenjugate = "MENJUG";
+
+    /// <summary>
+    /// Literal for code: NONEMenjugate
+    /// </summary>
+    public const string LiteralNONEMenjugate = "urn:oid:1.2.36.1.2001.1005.17#MENJUG";
 
     /// <summary>
     /// Literal for code: Meningitec
@@ -3620,9 +4810,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeningitec = "MENTEC";
 
     /// <summary>
+    /// Literal for code: NONEMeningitec
+    /// </summary>
+    public const string LiteralNONEMeningitec = "urn:oid:1.2.36.1.2001.1005.17#MENTEC";
+
+    /// <summary>
     /// Literal for code: Menomune
     /// </summary>
     public const string LiteralMenomune = "MENUME";
+
+    /// <summary>
+    /// Literal for code: NONEMenomune
+    /// </summary>
+    public const string LiteralNONEMenomune = "urn:oid:1.2.36.1.2001.1005.17#MENUME";
 
     /// <summary>
     /// Literal for code: MencevaxACWY
@@ -3630,9 +4830,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMencevaxACWY = "MENVAX";
 
     /// <summary>
+    /// Literal for code: NONEMencevaxACWY
+    /// </summary>
+    public const string LiteralNONEMencevaxACWY = "urn:oid:1.2.36.1.2001.1005.17#MENVAX";
+
+    /// <summary>
     /// Literal for code: MMR_2
     /// </summary>
     public const string LiteralMMR_2 = "MMR";
+
+    /// <summary>
+    /// Literal for code: NONEMMR_2
+    /// </summary>
+    public const string LiteralNONEMMR_2 = "urn:oid:1.2.36.1.2001.1005.17#MMR";
 
     /// <summary>
     /// Literal for code: MMRII
@@ -3640,9 +4850,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMMRII = "MMRCSL";
 
     /// <summary>
+    /// Literal for code: NONEMMRII
+    /// </summary>
+    public const string LiteralNONEMMRII = "urn:oid:1.2.36.1.2001.1005.17#MMRCSL";
+
+    /// <summary>
     /// Literal for code: Priorix
     /// </summary>
     public const string LiteralPriorix = "MMRSKB";
+
+    /// <summary>
+    /// Literal for code: NONEPriorix
+    /// </summary>
+    public const string LiteralNONEPriorix = "urn:oid:1.2.36.1.2001.1005.17#MMRSKB";
 
     /// <summary>
     /// Literal for code: Menitorix
@@ -3650,9 +4870,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMenitorix = "MNTRX";
 
     /// <summary>
+    /// Literal for code: NONEMenitorix
+    /// </summary>
+    public const string LiteralNONEMenitorix = "urn:oid:1.2.36.1.2001.1005.17#MNTRX";
+
+    /// <summary>
     /// Literal for code: NeisVacC
     /// </summary>
     public const string LiteralNeisVacC = "NEISVC";
+
+    /// <summary>
+    /// Literal for code: NONENeisVacC
+    /// </summary>
+    public const string LiteralNONENeisVacC = "urn:oid:1.2.36.1.2001.1005.17#NEISVC";
 
     /// <summary>
     /// Literal for code: Polio_2
@@ -3660,9 +4890,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPolio_2 = "OPV";
 
     /// <summary>
+    /// Literal for code: NONEPolio_2
+    /// </summary>
+    public const string LiteralNONEPolio_2 = "urn:oid:1.2.36.1.2001.1005.17#OPV";
+
+    /// <summary>
     /// Literal for code: Pertussis_2
     /// </summary>
     public const string LiteralPertussis_2 = "P";
+
+    /// <summary>
+    /// Literal for code: NONEPertussis_2
+    /// </summary>
+    public const string LiteralNONEPertussis_2 = "urn:oid:1.2.36.1.2001.1005.17#P";
 
     /// <summary>
     /// Literal for code: Panvax
@@ -3670,9 +4910,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPanvax = "PANVAX";
 
     /// <summary>
+    /// Literal for code: NONEPanvax
+    /// </summary>
+    public const string LiteralNONEPanvax = "urn:oid:1.2.36.1.2001.1005.17#PANVAX";
+
+    /// <summary>
     /// Literal for code: Pediacel
     /// </summary>
     public const string LiteralPediacel = "PDCL";
+
+    /// <summary>
+    /// Literal for code: NONEPediacel
+    /// </summary>
+    public const string LiteralNONEPediacel = "urn:oid:1.2.36.1.2001.1005.17#PDCL";
 
     /// <summary>
     /// Literal for code: Poliacel
@@ -3680,9 +4930,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPoliacel = "PLCL";
 
     /// <summary>
+    /// Literal for code: NONEPoliacel
+    /// </summary>
+    public const string LiteralNONEPoliacel = "urn:oid:1.2.36.1.2001.1005.17#PLCL";
+
+    /// <summary>
     /// Literal for code: Pneumovax
     /// </summary>
     public const string LiteralPneumovax = "PNEUMO";
+
+    /// <summary>
+    /// Literal for code: NONEPneumovax
+    /// </summary>
+    public const string LiteralNONEPneumovax = "urn:oid:1.2.36.1.2001.1005.17#PNEUMO";
 
     /// <summary>
     /// Literal for code: ProQuad
@@ -3690,9 +4950,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProQuad = "PROQAD";
 
     /// <summary>
+    /// Literal for code: NONEProQuad
+    /// </summary>
+    public const string LiteralNONEProQuad = "urn:oid:1.2.36.1.2001.1005.17#PROQAD";
+
+    /// <summary>
     /// Literal for code: ProHIBit
     /// </summary>
     public const string LiteralProHIBit = "PRPD";
+
+    /// <summary>
+    /// Literal for code: NONEProHIBit
+    /// </summary>
+    public const string LiteralNONEProHIBit = "urn:oid:1.2.36.1.2001.1005.17#PRPD";
 
     /// <summary>
     /// Literal for code: PedvaxHIB
@@ -3700,9 +4970,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPedvaxHIB = "PRPOMP";
 
     /// <summary>
+    /// Literal for code: NONEPedvaxHIB
+    /// </summary>
+    public const string LiteralNONEPedvaxHIB = "urn:oid:1.2.36.1.2001.1005.17#PRPOMP";
+
+    /// <summary>
     /// Literal for code: ActHIB
     /// </summary>
     public const string LiteralActHIB = "PRPT";
+
+    /// <summary>
+    /// Literal for code: NONEActHIB
+    /// </summary>
+    public const string LiteralNONEActHIB = "urn:oid:1.2.36.1.2001.1005.17#PRPT";
 
     /// <summary>
     /// Literal for code: Prevenar7
@@ -3710,9 +4990,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrevenar7 = "PRVNR";
 
     /// <summary>
+    /// Literal for code: NONEPrevenar7
+    /// </summary>
+    public const string LiteralNONEPrevenar7 = "urn:oid:1.2.36.1.2001.1005.17#PRVNR";
+
+    /// <summary>
     /// Literal for code: Prevenar13
     /// </summary>
     public const string LiteralPrevenar13 = "PRVTH";
+
+    /// <summary>
+    /// Literal for code: NONEPrevenar13
+    /// </summary>
+    public const string LiteralNONEPrevenar13 = "urn:oid:1.2.36.1.2001.1005.17#PRVTH";
 
     /// <summary>
     /// Literal for code: PriorixTetra
@@ -3720,9 +5010,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPriorixTetra = "PRXTEX";
 
     /// <summary>
+    /// Literal for code: NONEPriorixTetra
+    /// </summary>
+    public const string LiteralNONEPriorixTetra = "urn:oid:1.2.36.1.2001.1005.17#PRXTEX";
+
+    /// <summary>
     /// Literal for code: Quadracel
     /// </summary>
     public const string LiteralQuadracel = "QDCL";
+
+    /// <summary>
+    /// Literal for code: NONEQuadracel
+    /// </summary>
+    public const string LiteralNONEQuadracel = "urn:oid:1.2.36.1.2001.1005.17#QDCL";
 
     /// <summary>
     /// Literal for code: Rotarix
@@ -3730,9 +5030,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRotarix = "ROTRIX";
 
     /// <summary>
+    /// Literal for code: NONERotarix
+    /// </summary>
+    public const string LiteralNONERotarix = "urn:oid:1.2.36.1.2001.1005.17#ROTRIX";
+
+    /// <summary>
     /// Literal for code: Rotateq
     /// </summary>
     public const string LiteralRotateq = "ROTTEQ";
+
+    /// <summary>
+    /// Literal for code: NONERotateq
+    /// </summary>
+    public const string LiteralNONERotateq = "urn:oid:1.2.36.1.2001.1005.17#ROTTEQ";
 
     /// <summary>
     /// Literal for code: Synflorix
@@ -3740,9 +5050,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSynflorix = "SYNFLX";
 
     /// <summary>
+    /// Literal for code: NONESynflorix
+    /// </summary>
+    public const string LiteralNONESynflorix = "urn:oid:1.2.36.1.2001.1005.17#SYNFLX";
+
+    /// <summary>
     /// Literal for code: Tripacel
     /// </summary>
     public const string LiteralTripacel = "TCL";
+
+    /// <summary>
+    /// Literal for code: NONETripacel
+    /// </summary>
+    public const string LiteralNONETripacel = "urn:oid:1.2.36.1.2001.1005.17#TCL";
 
     /// <summary>
     /// Literal for code: Vaxigrip
@@ -3750,9 +5070,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVaxigrip = "VAXGRP";
 
     /// <summary>
+    /// Literal for code: NONEVaxigrip
+    /// </summary>
+    public const string LiteralNONEVaxigrip = "urn:oid:1.2.36.1.2001.1005.17#VAXGRP";
+
+    /// <summary>
     /// Literal for code: VaxigripJunior
     /// </summary>
     public const string LiteralVaxigripJunior = "VGRJNR";
+
+    /// <summary>
+    /// Literal for code: NONEVaxigripJunior
+    /// </summary>
+    public const string LiteralNONEVaxigripJunior = "urn:oid:1.2.36.1.2001.1005.17#VGRJNR";
 
     /// <summary>
     /// Literal for code: Varilrix
@@ -3760,8 +5090,560 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVarilrix = "VLRIX";
 
     /// <summary>
+    /// Literal for code: NONEVarilrix
+    /// </summary>
+    public const string LiteralNONEVarilrix = "urn:oid:1.2.36.1.2001.1005.17#VLRIX";
+
+    /// <summary>
     /// Literal for code: Varivax
     /// </summary>
     public const string LiteralVarivax = "VRVAX";
+
+    /// <summary>
+    /// Literal for code: NONEVarivax
+    /// </summary>
+    public const string LiteralNONEVarivax = "urn:oid:1.2.36.1.2001.1005.17#VRVAX";
+
+    /// <summary>
+    /// Dictionary for looking up VaccineCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "01", DTP }, 
+      { "http://hl7.org/fhir/sid/cvx#01", DTP }, 
+      { "02", OPV }, 
+      { "http://hl7.org/fhir/sid/cvx#02", OPV }, 
+      { "03", MMR }, 
+      { "http://hl7.org/fhir/sid/cvx#03", MMR }, 
+      { "04", MR }, 
+      { "http://hl7.org/fhir/sid/cvx#04", MR }, 
+      { "05", Measles }, 
+      { "http://hl7.org/fhir/sid/cvx#05", Measles }, 
+      { "06", Rubella }, 
+      { "http://hl7.org/fhir/sid/cvx#06", Rubella }, 
+      { "07", Mumps }, 
+      { "http://hl7.org/fhir/sid/cvx#07", Mumps }, 
+      { "08", HepBAdolescentOrPediatric }, 
+      { "http://hl7.org/fhir/sid/cvx#08", HepBAdolescentOrPediatric }, 
+      { "09", TdAdult2LfTetanusToxoidPreservativeFreeAdsorbed }, 
+      { "http://hl7.org/fhir/sid/cvx#09", TdAdult2LfTetanusToxoidPreservativeFreeAdsorbed }, 
+      { "10", IPV }, 
+      { "http://hl7.org/fhir/sid/cvx#10", IPV }, 
+      { "100", PneumococcalConjugatePCV7 }, 
+      { "http://hl7.org/fhir/sid/cvx#100", PneumococcalConjugatePCV7 }, 
+      { "101", TyphoidViCPs }, 
+      { "http://hl7.org/fhir/sid/cvx#101", TyphoidViCPs }, 
+      { "102", DTPHibHepB }, 
+      { "http://hl7.org/fhir/sid/cvx#102", DTPHibHepB }, 
+      { "103", MeningococcalCConjugate }, 
+      { "http://hl7.org/fhir/sid/cvx#103", MeningococcalCConjugate }, 
+      { "104", HepAHepB }, 
+      { "http://hl7.org/fhir/sid/cvx#104", HepAHepB }, 
+      { "105", VacciniaSmallpoxDiluted }, 
+      { "http://hl7.org/fhir/sid/cvx#105", VacciniaSmallpoxDiluted }, 
+      { "106", DTaP5PertussisAntigens }, 
+      { "http://hl7.org/fhir/sid/cvx#106", DTaP5PertussisAntigens }, 
+      { "107", DTaPUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#107", DTaPUnspecifiedFormulation }, 
+      { "108", MeningococcalACWYUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#108", MeningococcalACWYUnspecifiedFormulation }, 
+      { "109", PneumococcalUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#109", PneumococcalUnspecifiedFormulation }, 
+      { "11", Pertussis }, 
+      { "http://hl7.org/fhir/sid/cvx#11", Pertussis }, 
+      { "110", DTaPHepBIPV }, 
+      { "http://hl7.org/fhir/sid/cvx#110", DTaPHepBIPV }, 
+      { "111", InfluenzaLiveIntranasal }, 
+      { "http://hl7.org/fhir/sid/cvx#111", InfluenzaLiveIntranasal }, 
+      { "112", TetanusToxoidUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#112", TetanusToxoidUnspecifiedFormulation }, 
+      { "113", TdAdult5LfTetanusToxoidPreservativeFreeAdsorbed }, 
+      { "http://hl7.org/fhir/sid/cvx#113", TdAdult5LfTetanusToxoidPreservativeFreeAdsorbed }, 
+      { "114", MeningococcalMCV4P }, 
+      { "http://hl7.org/fhir/sid/cvx#114", MeningococcalMCV4P }, 
+      { "115", Tdap }, 
+      { "http://hl7.org/fhir/sid/cvx#115", Tdap }, 
+      { "116", RotavirusPentavalent }, 
+      { "http://hl7.org/fhir/sid/cvx#116", RotavirusPentavalent }, 
+      { "117", VZIGIND }, 
+      { "http://hl7.org/fhir/sid/cvx#117", VZIGIND }, 
+      { "118", HPVBivalent }, 
+      { "http://hl7.org/fhir/sid/cvx#118", HPVBivalent }, 
+      { "119", RotavirusMonovalent }, 
+      { "http://hl7.org/fhir/sid/cvx#119", RotavirusMonovalent }, 
+      { "12", DiphtheriaAntitoxin }, 
+      { "http://hl7.org/fhir/sid/cvx#12", DiphtheriaAntitoxin }, 
+      { "120", DTaPHibIPV }, 
+      { "http://hl7.org/fhir/sid/cvx#120", DTaPHibIPV }, 
+      { "121", ZosterLive }, 
+      { "http://hl7.org/fhir/sid/cvx#121", ZosterLive }, 
+      { "122", RotavirusUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#122", RotavirusUnspecifiedFormulation }, 
+      { "123", InfluenzaH5N11203 }, 
+      { "http://hl7.org/fhir/sid/cvx#123", InfluenzaH5N11203 }, 
+      { "125", NovelInfluenzaH1N109Nasal }, 
+      { "http://hl7.org/fhir/sid/cvx#125", NovelInfluenzaH1N109Nasal }, 
+      { "126", NovelInfluenzaH1N109PreservativeFree }, 
+      { "http://hl7.org/fhir/sid/cvx#126", NovelInfluenzaH1N109PreservativeFree }, 
+      { "127", NovelInfluenzaH1N109 }, 
+      { "http://hl7.org/fhir/sid/cvx#127", NovelInfluenzaH1N109 }, 
+      { "128", NovelInfluenzaH1N109AllFormulations }, 
+      { "http://hl7.org/fhir/sid/cvx#128", NovelInfluenzaH1N109AllFormulations }, 
+      { "129", JapaneseEncephalitisUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#129", JapaneseEncephalitisUnspecifiedFormulation }, 
+      { "13", TIG }, 
+      { "http://hl7.org/fhir/sid/cvx#13", TIG }, 
+      { "130", DTaPIPV }, 
+      { "http://hl7.org/fhir/sid/cvx#130", DTaPIPV }, 
+      { "131", TyphusHistorical }, 
+      { "http://hl7.org/fhir/sid/cvx#131", TyphusHistorical }, 
+      { "132", DTaPIPVHIBHEPBHistorical }, 
+      { "http://hl7.org/fhir/sid/cvx#132", DTaPIPVHIBHEPBHistorical }, 
+      { "133", PneumococcalConjugatePCV13 }, 
+      { "http://hl7.org/fhir/sid/cvx#133", PneumococcalConjugatePCV13 }, 
+      { "134", JapaneseEncephalitisIM }, 
+      { "http://hl7.org/fhir/sid/cvx#134", JapaneseEncephalitisIM }, 
+      { "135", InfluenzaHighDoseSeasonal }, 
+      { "http://hl7.org/fhir/sid/cvx#135", InfluenzaHighDoseSeasonal }, 
+      { "136", MeningococcalMCV4O }, 
+      { "http://hl7.org/fhir/sid/cvx#136", MeningococcalMCV4O }, 
+      { "137", HPVUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#137", HPVUnspecifiedFormulation }, 
+      { "138", TdAdult }, 
+      { "http://hl7.org/fhir/sid/cvx#138", TdAdult }, 
+      { "139", TdAdultUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#139", TdAdultUnspecifiedFormulation }, 
+      { "14", IGUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#14", IGUnspecifiedFormulation }, 
+      { "140", InfluenzaSeasonalInjectablePreservativeFree }, 
+      { "http://hl7.org/fhir/sid/cvx#140", InfluenzaSeasonalInjectablePreservativeFree }, 
+      { "141", InfluenzaSeasonalInjectable }, 
+      { "http://hl7.org/fhir/sid/cvx#141", InfluenzaSeasonalInjectable }, 
+      { "142", TetanusToxoidNotAdsorbed }, 
+      { "http://hl7.org/fhir/sid/cvx#142", TetanusToxoidNotAdsorbed }, 
+      { "143", AdenovirusTypes4And7 }, 
+      { "http://hl7.org/fhir/sid/cvx#143", AdenovirusTypes4And7 }, 
+      { "144", InfluenzaSeasonalIntradermalPreservativeFree }, 
+      { "http://hl7.org/fhir/sid/cvx#144", InfluenzaSeasonalIntradermalPreservativeFree }, 
+      { "145", RSVMAbNew }, 
+      { "http://hl7.org/fhir/sid/cvx#145", RSVMAbNew }, 
+      { "146", DTaPIPVHibHepB }, 
+      { "http://hl7.org/fhir/sid/cvx#146", DTaPIPVHibHepB }, 
+      { "147", MeningococcalMCV4UnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#147", MeningococcalMCV4UnspecifiedFormulation }, 
+      { "148", MeningococcalCYHIBPRP }, 
+      { "http://hl7.org/fhir/sid/cvx#148", MeningococcalCYHIBPRP }, 
+      { "149", InfluenzaLiveIntranasalQuadrivalent }, 
+      { "http://hl7.org/fhir/sid/cvx#149", InfluenzaLiveIntranasalQuadrivalent }, 
+      { "15", InfluenzaSplitInclPurifiedSurfaceAntigen }, 
+      { "http://hl7.org/fhir/sid/cvx#15", InfluenzaSplitInclPurifiedSurfaceAntigen }, 
+      { "150", InfluenzaInjectableQuadrivalentPreservativeFree }, 
+      { "http://hl7.org/fhir/sid/cvx#150", InfluenzaInjectableQuadrivalentPreservativeFree }, 
+      { "151", InfluenzaNasalUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#151", InfluenzaNasalUnspecifiedFormulation }, 
+      { "152", PneumococcalConjugateUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#152", PneumococcalConjugateUnspecifiedFormulation }, 
+      { "153", InfluenzaInjectableMDCKPreservativeFree }, 
+      { "http://hl7.org/fhir/sid/cvx#153", InfluenzaInjectableMDCKPreservativeFree }, 
+      { "154", HepAIG }, 
+      { "http://hl7.org/fhir/sid/cvx#154", HepAIG }, 
+      { "155", InfluenzaRecombinantInjectablePreservativeFree }, 
+      { "http://hl7.org/fhir/sid/cvx#155", InfluenzaRecombinantInjectablePreservativeFree }, 
+      { "156", RhoDIG }, 
+      { "http://hl7.org/fhir/sid/cvx#156", RhoDIG }, 
+      { "157", RhoDIGIM }, 
+      { "http://hl7.org/fhir/sid/cvx#157", RhoDIGIM }, 
+      { "158", InfluenzaInjectableQuadrivalent }, 
+      { "http://hl7.org/fhir/sid/cvx#158", InfluenzaInjectableQuadrivalent }, 
+      { "159", RhoDUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#159", RhoDUnspecifiedFormulation }, 
+      { "16", InfluenzaWhole }, 
+      { "http://hl7.org/fhir/sid/cvx#16", InfluenzaWhole }, 
+      { "160", InfluenzaAMonovalentH5N1ADJUVANTED2013 }, 
+      { "http://hl7.org/fhir/sid/cvx#160", InfluenzaAMonovalentH5N1ADJUVANTED2013 }, 
+      { "161", InfluenzaInjectableQuadrivalentPreservativeFreePediatric }, 
+      { "http://hl7.org/fhir/sid/cvx#161", InfluenzaInjectableQuadrivalentPreservativeFreePediatric }, 
+      { "162", MeningococcalBRecombinant }, 
+      { "http://hl7.org/fhir/sid/cvx#162", MeningococcalBRecombinant }, 
+      { "163", MeningococcalBOMV }, 
+      { "http://hl7.org/fhir/sid/cvx#163", MeningococcalBOMV }, 
+      { "164", MeningococcalBUnspecified }, 
+      { "http://hl7.org/fhir/sid/cvx#164", MeningococcalBUnspecified }, 
+      { "165", HPV9 }, 
+      { "http://hl7.org/fhir/sid/cvx#165", HPV9 }, 
+      { "166", InfluenzaIntradermalQuadrivalentPreservativeFree }, 
+      { "http://hl7.org/fhir/sid/cvx#166", InfluenzaIntradermalQuadrivalentPreservativeFree }, 
+      { "167", MeningococcalUnknownSerogroups }, 
+      { "http://hl7.org/fhir/sid/cvx#167", MeningococcalUnknownSerogroups }, 
+      { "168", InfluenzaTrivalentAdjuvanted }, 
+      { "http://hl7.org/fhir/sid/cvx#168", InfluenzaTrivalentAdjuvanted }, 
+      { "169", HepALiveAttenuated }, 
+      { "http://hl7.org/fhir/sid/cvx#169", HepALiveAttenuated }, 
+      { "17", HibUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#17", HibUnspecifiedFormulation }, 
+      { "170", DTAPIPVHIBNonUS }, 
+      { "http://hl7.org/fhir/sid/cvx#170", DTAPIPVHIBNonUS }, 
+      { "171", InfluenzaInjectableMDCKPreservativeFreeQuadrivalent }, 
+      { "http://hl7.org/fhir/sid/cvx#171", InfluenzaInjectableMDCKPreservativeFreeQuadrivalent }, 
+      { "172", CholeraWCRBS }, 
+      { "http://hl7.org/fhir/sid/cvx#172", CholeraWCRBS }, 
+      { "173", CholeraBivWC }, 
+      { "http://hl7.org/fhir/sid/cvx#173", CholeraBivWC }, 
+      { "174", CholeraLiveAttenuated }, 
+      { "http://hl7.org/fhir/sid/cvx#174", CholeraLiveAttenuated }, 
+      { "175", RabiesIMDiploidCellCulture }, 
+      { "http://hl7.org/fhir/sid/cvx#175", RabiesIMDiploidCellCulture }, 
+      { "176", RabiesIMFibroblastCulture }, 
+      { "http://hl7.org/fhir/sid/cvx#176", RabiesIMFibroblastCulture }, 
+      { "177", PCV10 }, 
+      { "http://hl7.org/fhir/sid/cvx#177", PCV10 }, 
+      { "178", OPVBivalent }, 
+      { "http://hl7.org/fhir/sid/cvx#178", OPVBivalent }, 
+      { "179", OPVMonovalentUnspecified }, 
+      { "http://hl7.org/fhir/sid/cvx#179", OPVMonovalentUnspecified }, 
+      { "18", RabiesIntramuscularInjection }, 
+      { "http://hl7.org/fhir/sid/cvx#18", RabiesIntramuscularInjection }, 
+      { "180", TetanusImmuneGlobulin }, 
+      { "http://hl7.org/fhir/sid/cvx#180", TetanusImmuneGlobulin }, 
+      { "181", AnthraxImmuneGlobulin }, 
+      { "http://hl7.org/fhir/sid/cvx#181", AnthraxImmuneGlobulin }, 
+      { "182", OPVUnspecified }, 
+      { "http://hl7.org/fhir/sid/cvx#182", OPVUnspecified }, 
+      { "183", YellowFeverVaccineAlt }, 
+      { "http://hl7.org/fhir/sid/cvx#183", YellowFeverVaccineAlt }, 
+      { "184", YellowFeverUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#184", YellowFeverUnspecifiedFormulation }, 
+      { "185", InfluenzaRecombinantQuadrivalentInjectablePreservativeFree }, 
+      { "http://hl7.org/fhir/sid/cvx#185", InfluenzaRecombinantQuadrivalentInjectablePreservativeFree }, 
+      { "186", InfluenzaInjectableMDCKQuadrivalentPreservative }, 
+      { "http://hl7.org/fhir/sid/cvx#186", InfluenzaInjectableMDCKQuadrivalentPreservative }, 
+      { "187", ZosterRecombinant }, 
+      { "http://hl7.org/fhir/sid/cvx#187", ZosterRecombinant }, 
+      { "188", ZosterUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#188", ZosterUnspecifiedFormulation }, 
+      { "189", HepBCpG }, 
+      { "http://hl7.org/fhir/sid/cvx#189", HepBCpG }, 
+      { "19", BCG }, 
+      { "http://hl7.org/fhir/sid/cvx#19", BCG }, 
+      { "190", TyphoidConjugateVaccineTCV }, 
+      { "http://hl7.org/fhir/sid/cvx#190", TyphoidConjugateVaccineTCV }, 
+      { "191", MeningococcalAPolysaccharideNonUS }, 
+      { "http://hl7.org/fhir/sid/cvx#191", MeningococcalAPolysaccharideNonUS }, 
+      { "192", MeningococcalACPolysaccharideNonUS }, 
+      { "http://hl7.org/fhir/sid/cvx#192", MeningococcalACPolysaccharideNonUS }, 
+      { "193", HepAHepBPediatricAdolescent }, 
+      { "http://hl7.org/fhir/sid/cvx#193", HepAHepBPediatricAdolescent }, 
+      { "20", DTaP }, 
+      { "http://hl7.org/fhir/sid/cvx#20", DTaP }, 
+      { "21", Varicella }, 
+      { "http://hl7.org/fhir/sid/cvx#21", Varicella }, 
+      { "22", DTPHib }, 
+      { "http://hl7.org/fhir/sid/cvx#22", DTPHib }, 
+      { "23", Plague }, 
+      { "http://hl7.org/fhir/sid/cvx#23", Plague }, 
+      { "24", Anthrax }, 
+      { "http://hl7.org/fhir/sid/cvx#24", Anthrax }, 
+      { "25", TyphoidOral }, 
+      { "http://hl7.org/fhir/sid/cvx#25", TyphoidOral }, 
+      { "26", CholeraUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#26", CholeraUnspecifiedFormulation }, 
+      { "27", BotulinumAntitoxin }, 
+      { "http://hl7.org/fhir/sid/cvx#27", BotulinumAntitoxin }, 
+      { "28", DTPediatric }, 
+      { "http://hl7.org/fhir/sid/cvx#28", DTPediatric }, 
+      { "29", CMVIG }, 
+      { "http://hl7.org/fhir/sid/cvx#29", CMVIG }, 
+      { "30", HBIG }, 
+      { "http://hl7.org/fhir/sid/cvx#30", HBIG }, 
+      { "31", HepAPediatricUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#31", HepAPediatricUnspecifiedFormulation }, 
+      { "32", MeningococcalMPSV4 }, 
+      { "http://hl7.org/fhir/sid/cvx#32", MeningococcalMPSV4 }, 
+      { "33", PneumococcalPolysaccharidePPV23 }, 
+      { "http://hl7.org/fhir/sid/cvx#33", PneumococcalPolysaccharidePPV23 }, 
+      { "34", RIG }, 
+      { "http://hl7.org/fhir/sid/cvx#34", RIG }, 
+      { "35", TetanusToxoidAdsorbed }, 
+      { "http://hl7.org/fhir/sid/cvx#35", TetanusToxoidAdsorbed }, 
+      { "36", VZIG }, 
+      { "http://hl7.org/fhir/sid/cvx#36", VZIG }, 
+      { "37", YellowFever }, 
+      { "http://hl7.org/fhir/sid/cvx#37", YellowFever }, 
+      { "38", RubellaMumps }, 
+      { "http://hl7.org/fhir/sid/cvx#38", RubellaMumps }, 
+      { "39", JapaneseEncephalitisSC }, 
+      { "http://hl7.org/fhir/sid/cvx#39", JapaneseEncephalitisSC }, 
+      { "40", RabiesIntradermalInjection }, 
+      { "http://hl7.org/fhir/sid/cvx#40", RabiesIntradermalInjection }, 
+      { "41", TyphoidParenteral }, 
+      { "http://hl7.org/fhir/sid/cvx#41", TyphoidParenteral }, 
+      { "42", HepBAdolescentHighRiskInfant }, 
+      { "http://hl7.org/fhir/sid/cvx#42", HepBAdolescentHighRiskInfant }, 
+      { "43", HepBAdult }, 
+      { "http://hl7.org/fhir/sid/cvx#43", HepBAdult }, 
+      { "44", HepBDialysis }, 
+      { "http://hl7.org/fhir/sid/cvx#44", HepBDialysis }, 
+      { "45", HepBUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#45", HepBUnspecifiedFormulation }, 
+      { "46", HibPRPD }, 
+      { "http://hl7.org/fhir/sid/cvx#46", HibPRPD }, 
+      { "47", HibHbOC }, 
+      { "http://hl7.org/fhir/sid/cvx#47", HibHbOC }, 
+      { "48", HibPRPT }, 
+      { "http://hl7.org/fhir/sid/cvx#48", HibPRPT }, 
+      { "49", HibPRPOMP }, 
+      { "http://hl7.org/fhir/sid/cvx#49", HibPRPOMP }, 
+      { "50", DTaPHib }, 
+      { "http://hl7.org/fhir/sid/cvx#50", DTaPHib }, 
+      { "51", HibHepB }, 
+      { "http://hl7.org/fhir/sid/cvx#51", HibHepB }, 
+      { "52", HepAAdult }, 
+      { "http://hl7.org/fhir/sid/cvx#52", HepAAdult }, 
+      { "53", TyphoidParenteralAKDUSMilitary }, 
+      { "http://hl7.org/fhir/sid/cvx#53", TyphoidParenteralAKDUSMilitary }, 
+      { "54", AdenovirusType4 }, 
+      { "http://hl7.org/fhir/sid/cvx#54", AdenovirusType4 }, 
+      { "55", AdenovirusType7 }, 
+      { "http://hl7.org/fhir/sid/cvx#55", AdenovirusType7 }, 
+      { "56", DengueFever }, 
+      { "http://hl7.org/fhir/sid/cvx#56", DengueFever }, 
+      { "57", Hantavirus }, 
+      { "http://hl7.org/fhir/sid/cvx#57", Hantavirus }, 
+      { "58", HepC }, 
+      { "http://hl7.org/fhir/sid/cvx#58", HepC }, 
+      { "59", HepE }, 
+      { "http://hl7.org/fhir/sid/cvx#59", HepE }, 
+      { "60", HerpesSimplex2 }, 
+      { "http://hl7.org/fhir/sid/cvx#60", HerpesSimplex2 }, 
+      { "61", HIV }, 
+      { "http://hl7.org/fhir/sid/cvx#61", HIV }, 
+      { "62", HPVQuadrivalent }, 
+      { "http://hl7.org/fhir/sid/cvx#62", HPVQuadrivalent }, 
+      { "63", JuninVirus }, 
+      { "http://hl7.org/fhir/sid/cvx#63", JuninVirus }, 
+      { "64", Leishmaniasis }, 
+      { "http://hl7.org/fhir/sid/cvx#64", Leishmaniasis }, 
+      { "65", Leprosy }, 
+      { "http://hl7.org/fhir/sid/cvx#65", Leprosy }, 
+      { "66", LymeDisease }, 
+      { "http://hl7.org/fhir/sid/cvx#66", LymeDisease }, 
+      { "67", Malaria }, 
+      { "http://hl7.org/fhir/sid/cvx#67", Malaria }, 
+      { "68", Melanoma }, 
+      { "http://hl7.org/fhir/sid/cvx#68", Melanoma }, 
+      { "69", Parainfluenza3 }, 
+      { "http://hl7.org/fhir/sid/cvx#69", Parainfluenza3 }, 
+      { "70", QFever }, 
+      { "http://hl7.org/fhir/sid/cvx#70", QFever }, 
+      { "71", RSVIGIV }, 
+      { "http://hl7.org/fhir/sid/cvx#71", RSVIGIV }, 
+      { "72", RheumaticFever }, 
+      { "http://hl7.org/fhir/sid/cvx#72", RheumaticFever }, 
+      { "73", RiftValleyFever }, 
+      { "http://hl7.org/fhir/sid/cvx#73", RiftValleyFever }, 
+      { "74", RotavirusTetravalent }, 
+      { "http://hl7.org/fhir/sid/cvx#74", RotavirusTetravalent }, 
+      { "75", VacciniaSmallpox }, 
+      { "http://hl7.org/fhir/sid/cvx#75", VacciniaSmallpox }, 
+      { "76", StaphylococcusBacterioLysate }, 
+      { "http://hl7.org/fhir/sid/cvx#76", StaphylococcusBacterioLysate }, 
+      { "77", TickBorneEncephalitis }, 
+      { "http://hl7.org/fhir/sid/cvx#77", TickBorneEncephalitis }, 
+      { "78", TularemiaVaccine }, 
+      { "http://hl7.org/fhir/sid/cvx#78", TularemiaVaccine }, 
+      { "79", VacciniaImmuneGlobulin }, 
+      { "http://hl7.org/fhir/sid/cvx#79", VacciniaImmuneGlobulin }, 
+      { "80", VEELive }, 
+      { "http://hl7.org/fhir/sid/cvx#80", VEELive }, 
+      { "801", AS03Adjuvant }, 
+      { "http://hl7.org/fhir/sid/cvx#801", AS03Adjuvant }, 
+      { "81", VEEInactivated }, 
+      { "http://hl7.org/fhir/sid/cvx#81", VEEInactivated }, 
+      { "82", AdenovirusUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#82", AdenovirusUnspecifiedFormulation }, 
+      { "83", HepAPedAdol2Dose }, 
+      { "http://hl7.org/fhir/sid/cvx#83", HepAPedAdol2Dose }, 
+      { "84", HepAPedAdol3Dose }, 
+      { "http://hl7.org/fhir/sid/cvx#84", HepAPedAdol3Dose }, 
+      { "85", HepAUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#85", HepAUnspecifiedFormulation }, 
+      { "86", IG }, 
+      { "http://hl7.org/fhir/sid/cvx#86", IG }, 
+      { "87", IGIV }, 
+      { "http://hl7.org/fhir/sid/cvx#87", IGIV }, 
+      { "88", InfluenzaUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#88", InfluenzaUnspecifiedFormulation }, 
+      { "89", PolioUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#89", PolioUnspecifiedFormulation }, 
+      { "90", RabiesUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#90", RabiesUnspecifiedFormulation }, 
+      { "91", TyphoidUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#91", TyphoidUnspecifiedFormulation }, 
+      { "92", VEEUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#92", VEEUnspecifiedFormulation }, 
+      { "93", RSVMAb }, 
+      { "http://hl7.org/fhir/sid/cvx#93", RSVMAb }, 
+      { "94", MMRV }, 
+      { "http://hl7.org/fhir/sid/cvx#94", MMRV }, 
+      { "95", TSTOTTineTest }, 
+      { "http://hl7.org/fhir/sid/cvx#95", TSTOTTineTest }, 
+      { "96", TSTPPDIntradermal }, 
+      { "http://hl7.org/fhir/sid/cvx#96", TSTPPDIntradermal }, 
+      { "97", TSTPPDTineTest }, 
+      { "http://hl7.org/fhir/sid/cvx#97", TSTPPDTineTest }, 
+      { "98", TSTUnspecifiedFormulation }, 
+      { "http://hl7.org/fhir/sid/cvx#98", TSTUnspecifiedFormulation }, 
+      { "99", RESERVEDDoNotUse }, 
+      { "http://hl7.org/fhir/sid/cvx#99", RESERVEDDoNotUse }, 
+      { "998", NoVaccineAdministered }, 
+      { "http://hl7.org/fhir/sid/cvx#998", NoVaccineAdministered }, 
+      { "999", Unknown }, 
+      { "http://hl7.org/fhir/sid/cvx#999", Unknown }, 
+      { "AGRPAL", Agrippal }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#AGRPAL", Agrippal }, 
+      { "AVAXM", Avaxim }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#AVAXM", Avaxim }, 
+      { "BCG", BCG_2 }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#BCG", BCG_2 }, 
+      { "CDT", CDT }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#CDT", CDT }, 
+      { "CMX", COMVAX }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#CMX", COMVAX }, 
+      { "DTP", TripleAntigen }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#DTP", TripleAntigen }, 
+      { "DTPA", DTPa }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#DTPA", DTPa }, 
+      { "ENGP", EngerixB }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#ENGP", EngerixB }, 
+      { "FLRIX", Fluarix }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#FLRIX", Fluarix }, 
+      { "FLUVAX", Fluvax }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#FLUVAX", Fluvax }, 
+      { "FLVRN", Fluvirin }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#FLVRN", Fluvirin }, 
+      { "FVXJNR", FluvaxJunior }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#FVXJNR", FluvaxJunior }, 
+      { "GNDIP", Diphtheria }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#GNDIP", Diphtheria }, 
+      { "GNFLU", Influenza }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#GNFLU", Influenza }, 
+      { "GNHEP", HepatitisB }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#GNHEP", HepatitisB }, 
+      { "GNHIB", HIB }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#GNHIB", HIB }, 
+      { "GNHPA", HepatitisA }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#GNHPA", HepatitisA }, 
+      { "GNJEN", JapaneseEncephalitis }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#GNJEN", JapaneseEncephalitis }, 
+      { "GNMEA", Measles_2 }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#GNMEA", Measles_2 }, 
+      { "GNMEN", MeningococcalC }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#GNMEN", MeningococcalC }, 
+      { "GNMUM", Mumps_2 }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#GNMUM", Mumps_2 }, 
+      { "GNPNE", Pneumococcal }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#GNPNE", Pneumococcal }, 
+      { "GNPOL", Polio }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#GNPOL", Polio }, 
+      { "GNROX", Rotavirus }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#GNROX", Rotavirus }, 
+      { "GNRUB", Rubella_2 }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#GNRUB", Rubella_2 }, 
+      { "GNTET", Tetanus }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#GNTET", Tetanus }, 
+      { "GNVAR", Varicella_2 }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#GNVAR", Varicella_2 }, 
+      { "HATWNJ", TwinrixJunior }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#HATWNJ", TwinrixJunior }, 
+      { "HAVAQ", VaqtaPaedAdol }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#HAVAQ", VaqtaPaedAdol }, 
+      { "HAVJ", HavrixJunior }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#HAVJ", HavrixJunior }, 
+      { "HBOC", HibTITER }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#HBOC", HibTITER }, 
+      { "HBV", HBV }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#HBV", HBV }, 
+      { "HBVP", HBVAXII }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#HBVP", HBVAXII }, 
+      { "HBX", Hiberix }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#HBX", Hiberix }, 
+      { "IFHX", InfanrixHexa }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#IFHX", InfanrixHexa }, 
+      { "IFIP", InfanrixIPV }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#IFIP", InfanrixIPV }, 
+      { "IFPA", InfanrixPenta }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#IFPA", InfanrixPenta }, 
+      { "IFX", Infanrix }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#IFX", Infanrix }, 
+      { "IFXB", InfanrixHepB }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#IFXB", InfanrixHepB }, 
+      { "INFLUV", Influvac }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#INFLUV", Influvac }, 
+      { "IPV", IPOL }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#IPV", IPOL }, 
+      { "JEVAX", JEVAX }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#JEVAX", JEVAX }, 
+      { "MENJUG", Menjugate }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#MENJUG", Menjugate }, 
+      { "MENTEC", Meningitec }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#MENTEC", Meningitec }, 
+      { "MENUME", Menomune }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#MENUME", Menomune }, 
+      { "MENVAX", MencevaxACWY }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#MENVAX", MencevaxACWY }, 
+      { "MMR", MMR_2 }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#MMR", MMR_2 }, 
+      { "MMRCSL", MMRII }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#MMRCSL", MMRII }, 
+      { "MMRSKB", Priorix }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#MMRSKB", Priorix }, 
+      { "MNTRX", Menitorix }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#MNTRX", Menitorix }, 
+      { "NEISVC", NeisVacC }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#NEISVC", NeisVacC }, 
+      { "OPV", Polio_2 }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#OPV", Polio_2 }, 
+      { "P", Pertussis_2 }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#P", Pertussis_2 }, 
+      { "PANVAX", Panvax }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#PANVAX", Panvax }, 
+      { "PDCL", Pediacel }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#PDCL", Pediacel }, 
+      { "PLCL", Poliacel }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#PLCL", Poliacel }, 
+      { "PNEUMO", Pneumovax }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#PNEUMO", Pneumovax }, 
+      { "PROQAD", ProQuad }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#PROQAD", ProQuad }, 
+      { "PRPD", ProHIBit }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#PRPD", ProHIBit }, 
+      { "PRPOMP", PedvaxHIB }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#PRPOMP", PedvaxHIB }, 
+      { "PRPT", ActHIB }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#PRPT", ActHIB }, 
+      { "PRVNR", Prevenar7 }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#PRVNR", Prevenar7 }, 
+      { "PRVTH", Prevenar13 }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#PRVTH", Prevenar13 }, 
+      { "PRXTEX", PriorixTetra }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#PRXTEX", PriorixTetra }, 
+      { "QDCL", Quadracel }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#QDCL", Quadracel }, 
+      { "ROTRIX", Rotarix }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#ROTRIX", Rotarix }, 
+      { "ROTTEQ", Rotateq }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#ROTTEQ", Rotateq }, 
+      { "SYNFLX", Synflorix }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#SYNFLX", Synflorix }, 
+      { "TCL", Tripacel }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#TCL", Tripacel }, 
+      { "VAXGRP", Vaxigrip }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#VAXGRP", Vaxigrip }, 
+      { "VGRJNR", VaxigripJunior }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#VGRJNR", VaxigripJunior }, 
+      { "VLRIX", Varilrix }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#VLRIX", Varilrix }, 
+      { "VRVAX", Varivax }, 
+      { "urn:oid:1.2.36.1.2001.1005.17#VRVAX", Varivax }, 
+    };
   };
 }

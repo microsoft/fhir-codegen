@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class CoverageTypeCodes
   {
     /// <summary>
-    /// 
+    /// ActCoverageTypeCode
     /// </summary>
     public static readonly Coding ActCoverageTypeCode = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// ActHealthInsuranceTypeCode
     /// </summary>
     public static readonly Coding ActHealthInsuranceTypeCode = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// ActInsurancePolicyCode
     /// </summary>
     public static readonly Coding ActInsurancePolicyCode = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// ActInsuranceTypeCode
     /// </summary>
     public static readonly Coding ActInsuranceTypeCode = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// ActProgramTypeCode
     /// </summary>
     public static readonly Coding ActProgramTypeCode = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// annuity policy
     /// </summary>
     public static readonly Coding AnnuityPolicy = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// automobile
     /// </summary>
     public static readonly Coding Automobile = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// women's cancer detection program
     /// </summary>
     public static readonly Coding WomenQuoteSCancerDetectionProgram = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// charity program
     /// </summary>
     public static readonly Coding CharityProgram = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// collision coverage policy
     /// </summary>
     public static readonly Coding CollisionCoveragePolicy = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// crime victim program
     /// </summary>
     public static readonly Coding CrimeVictimProgram = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// dental care policy
     /// </summary>
     public static readonly Coding DentalCarePolicy = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// dental program
     /// </summary>
     public static readonly Coding DentalProgram = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// disability insurance policy
     /// </summary>
     public static readonly Coding DisabilityInsurancePolicy = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// disease specific policy
     /// </summary>
     public static readonly Coding DiseaseSpecificPolicy = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// public health program
     /// </summary>
     public static readonly Coding PublicHealthProgram = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// drug policy
     /// </summary>
     public static readonly Coding DrugPolicy = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// employee assistance program
     /// </summary>
     public static readonly Coding EmployeeAssistanceProgram = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// extended healthcare
     /// </summary>
     public static readonly Coding ExtendedHealthcare = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// end renal program
     /// </summary>
     public static readonly Coding EndRenalProgram = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// employee welfare benefit plan policy
     /// </summary>
     public static readonly Coding EmployeeWelfareBenefitPlanPolicy = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// flexible benefit plan policy
     /// </summary>
     public static readonly Coding FlexibleBenefitPlanPolicy = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// government employee health program
     /// </summary>
     public static readonly Coding GovernmentEmployeeHealthProgram = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// health insurance plan policy
     /// </summary>
     public static readonly Coding HealthInsurancePlanPolicy = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// high risk pool program
     /// </summary>
     public static readonly Coding HighRiskPoolProgram = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// HIV-AIDS program
     /// </summary>
     public static readonly Coding HIVAIDSProgram = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// health maintenance organization policy
     /// </summary>
     public static readonly Coding HealthMaintenanceOrganizationPolicy = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// health spending account
     /// </summary>
     public static readonly Coding HealthSpendingAccount = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// indigenous peoples health program
     /// </summary>
     public static readonly Coding IndigenousPeoplesHealthProgram = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// life insurance policy
     /// </summary>
     public static readonly Coding LifeInsurancePolicy = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// long term care policy
     /// </summary>
     public static readonly Coding LongTermCarePolicy = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// mandatory health program
     /// </summary>
     public static readonly Coding MandatoryHealthProgram = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// managed care policy
     /// </summary>
     public static readonly Coding ManagedCarePolicy = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// mental health policy
     /// </summary>
     public static readonly Coding MentalHealthPolicy = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// mental health program
     /// </summary>
     public static readonly Coding MentalHealthProgram = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// military health program
     /// </summary>
     public static readonly Coding MilitaryHealthProgram = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Pay
     /// </summary>
     public static readonly Coding Pay = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverage-selfpay"
     };
     /// <summary>
-    /// 
+    /// property and casualty insurance policy
     /// </summary>
     public static readonly Coding PropertyAndCasualtyInsurancePolicy = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// point of service policy
     /// </summary>
     public static readonly Coding PointOfServicePolicy = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// preferred provider organization policy
     /// </summary>
     public static readonly Coding PreferredProviderOrganizationPolicy = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// public healthcare
     /// </summary>
     public static readonly Coding PublicHealthcare = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// reinsurance policy
     /// </summary>
     public static readonly Coding ReinsurancePolicy = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// retiree health program
     /// </summary>
     public static readonly Coding RetireeHealthProgram = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// safety net clinic program
     /// </summary>
     public static readonly Coding SafetyNetClinicProgram = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// social service program
     /// </summary>
     public static readonly Coding SocialServiceProgram = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// substance use policy
     /// </summary>
     public static readonly Coding SubstanceUsePolicy = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// substance use program
     /// </summary>
     public static readonly Coding SubstanceUseProgram = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// subsidized health program
     /// </summary>
     public static readonly Coding SubsidizedHealthProgram = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// subsidized managed care program
     /// </summary>
     public static readonly Coding SubsidizedManagedCareProgram = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// subsidized supplemental health program
     /// </summary>
     public static readonly Coding SubsidizedSupplementalHealthProgram = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// surplus line insurance policy
     /// </summary>
     public static readonly Coding SurplusLineInsurancePolicy = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// term life insurance policy
     /// </summary>
     public static readonly Coding TermLifeInsurancePolicy = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// universal life insurance policy
     /// </summary>
     public static readonly Coding UniversalLifeInsurancePolicy = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// umbrella liability insurance policy
     /// </summary>
     public static readonly Coding UmbrellaLiabilityInsurancePolicy = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// uninsured motorist policy
     /// </summary>
     public static readonly Coding UninsuredMotoristPolicy = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// veteran health program
     /// </summary>
     public static readonly Coding VeteranHealthProgram = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// vision care policy
     /// </summary>
     public static readonly Coding VisionCarePolicy = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// worker's compensation
     /// </summary>
     public static readonly Coding WorkerQuoteSCompensation = new Coding
     {
@@ -540,9 +540,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActCoverageTypeCode = "_ActCoverageTypeCode";
 
     /// <summary>
+    /// Literal for code: V3ActCodeActCoverageTypeCode
+    /// </summary>
+    public const string LiteralV3ActCodeActCoverageTypeCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActCoverageTypeCode";
+
+    /// <summary>
     /// Literal for code: ActHealthInsuranceTypeCode
     /// </summary>
     public const string LiteralActHealthInsuranceTypeCode = "_ActHealthInsuranceTypeCode";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeActHealthInsuranceTypeCode
+    /// </summary>
+    public const string LiteralV3ActCodeActHealthInsuranceTypeCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActHealthInsuranceTypeCode";
 
     /// <summary>
     /// Literal for code: ActInsurancePolicyCode
@@ -550,9 +560,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActInsurancePolicyCode = "_ActInsurancePolicyCode";
 
     /// <summary>
+    /// Literal for code: V3ActCodeActInsurancePolicyCode
+    /// </summary>
+    public const string LiteralV3ActCodeActInsurancePolicyCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActInsurancePolicyCode";
+
+    /// <summary>
     /// Literal for code: ActInsuranceTypeCode
     /// </summary>
     public const string LiteralActInsuranceTypeCode = "_ActInsuranceTypeCode";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeActInsuranceTypeCode
+    /// </summary>
+    public const string LiteralV3ActCodeActInsuranceTypeCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActInsuranceTypeCode";
 
     /// <summary>
     /// Literal for code: ActProgramTypeCode
@@ -560,9 +580,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActProgramTypeCode = "_ActProgramTypeCode";
 
     /// <summary>
+    /// Literal for code: V3ActCodeActProgramTypeCode
+    /// </summary>
+    public const string LiteralV3ActCodeActProgramTypeCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActProgramTypeCode";
+
+    /// <summary>
     /// Literal for code: AnnuityPolicy
     /// </summary>
     public const string LiteralAnnuityPolicy = "ANNU";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAnnuityPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeAnnuityPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ANNU";
 
     /// <summary>
     /// Literal for code: Automobile
@@ -570,9 +600,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAutomobile = "AUTOPOL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAutomobile
+    /// </summary>
+    public const string LiteralV3ActCodeAutomobile = "http://terminology.hl7.org/CodeSystem/v3-ActCode#AUTOPOL";
+
+    /// <summary>
     /// Literal for code: WomenQuoteSCancerDetectionProgram
     /// </summary>
     public const string LiteralWomenQuoteSCancerDetectionProgram = "CANPRG";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeWomenQuoteSCancerDetectionProgram
+    /// </summary>
+    public const string LiteralV3ActCodeWomenQuoteSCancerDetectionProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CANPRG";
 
     /// <summary>
     /// Literal for code: CharityProgram
@@ -580,9 +620,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCharityProgram = "CHAR";
 
     /// <summary>
+    /// Literal for code: V3ActCodeCharityProgram
+    /// </summary>
+    public const string LiteralV3ActCodeCharityProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CHAR";
+
+    /// <summary>
     /// Literal for code: CollisionCoveragePolicy
     /// </summary>
     public const string LiteralCollisionCoveragePolicy = "COL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCollisionCoveragePolicy
+    /// </summary>
+    public const string LiteralV3ActCodeCollisionCoveragePolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#COL";
 
     /// <summary>
     /// Literal for code: CrimeVictimProgram
@@ -590,9 +640,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCrimeVictimProgram = "CRIME";
 
     /// <summary>
+    /// Literal for code: V3ActCodeCrimeVictimProgram
+    /// </summary>
+    public const string LiteralV3ActCodeCrimeVictimProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CRIME";
+
+    /// <summary>
     /// Literal for code: DentalCarePolicy
     /// </summary>
     public const string LiteralDentalCarePolicy = "DENTAL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDentalCarePolicy
+    /// </summary>
+    public const string LiteralV3ActCodeDentalCarePolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DENTAL";
 
     /// <summary>
     /// Literal for code: DentalProgram
@@ -600,9 +660,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDentalProgram = "DENTPRG";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDentalProgram
+    /// </summary>
+    public const string LiteralV3ActCodeDentalProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DENTPRG";
+
+    /// <summary>
     /// Literal for code: DisabilityInsurancePolicy
     /// </summary>
     public const string LiteralDisabilityInsurancePolicy = "DIS";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDisabilityInsurancePolicy
+    /// </summary>
+    public const string LiteralV3ActCodeDisabilityInsurancePolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DIS";
 
     /// <summary>
     /// Literal for code: DiseaseSpecificPolicy
@@ -610,9 +680,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDiseaseSpecificPolicy = "DISEASE";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDiseaseSpecificPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeDiseaseSpecificPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DISEASE";
+
+    /// <summary>
     /// Literal for code: PublicHealthProgram
     /// </summary>
     public const string LiteralPublicHealthProgram = "DISEASEPRG";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePublicHealthProgram
+    /// </summary>
+    public const string LiteralV3ActCodePublicHealthProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DISEASEPRG";
 
     /// <summary>
     /// Literal for code: DrugPolicy
@@ -620,9 +700,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDrugPolicy = "DRUGPOL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDrugPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeDrugPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DRUGPOL";
+
+    /// <summary>
     /// Literal for code: EmployeeAssistanceProgram
     /// </summary>
     public const string LiteralEmployeeAssistanceProgram = "EAP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEmployeeAssistanceProgram
+    /// </summary>
+    public const string LiteralV3ActCodeEmployeeAssistanceProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#EAP";
 
     /// <summary>
     /// Literal for code: ExtendedHealthcare
@@ -630,9 +720,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralExtendedHealthcare = "EHCPOL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeExtendedHealthcare
+    /// </summary>
+    public const string LiteralV3ActCodeExtendedHealthcare = "http://terminology.hl7.org/CodeSystem/v3-ActCode#EHCPOL";
+
+    /// <summary>
     /// Literal for code: EndRenalProgram
     /// </summary>
     public const string LiteralEndRenalProgram = "ENDRENAL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEndRenalProgram
+    /// </summary>
+    public const string LiteralV3ActCodeEndRenalProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ENDRENAL";
 
     /// <summary>
     /// Literal for code: EmployeeWelfareBenefitPlanPolicy
@@ -640,9 +740,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmployeeWelfareBenefitPlanPolicy = "EWB";
 
     /// <summary>
+    /// Literal for code: V3ActCodeEmployeeWelfareBenefitPlanPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeEmployeeWelfareBenefitPlanPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#EWB";
+
+    /// <summary>
     /// Literal for code: FlexibleBenefitPlanPolicy
     /// </summary>
     public const string LiteralFlexibleBenefitPlanPolicy = "FLEXP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeFlexibleBenefitPlanPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeFlexibleBenefitPlanPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#FLEXP";
 
     /// <summary>
     /// Literal for code: GovernmentEmployeeHealthProgram
@@ -650,9 +760,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGovernmentEmployeeHealthProgram = "GOVEMP";
 
     /// <summary>
+    /// Literal for code: V3ActCodeGovernmentEmployeeHealthProgram
+    /// </summary>
+    public const string LiteralV3ActCodeGovernmentEmployeeHealthProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#GOVEMP";
+
+    /// <summary>
     /// Literal for code: HealthInsurancePlanPolicy
     /// </summary>
     public const string LiteralHealthInsurancePlanPolicy = "HIP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeHealthInsurancePlanPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeHealthInsurancePlanPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#HIP";
 
     /// <summary>
     /// Literal for code: HighRiskPoolProgram
@@ -660,9 +780,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHighRiskPoolProgram = "HIRISK";
 
     /// <summary>
+    /// Literal for code: V3ActCodeHighRiskPoolProgram
+    /// </summary>
+    public const string LiteralV3ActCodeHighRiskPoolProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#HIRISK";
+
+    /// <summary>
     /// Literal for code: HIVAIDSProgram
     /// </summary>
     public const string LiteralHIVAIDSProgram = "HIVAIDS";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeHIVAIDSProgram
+    /// </summary>
+    public const string LiteralV3ActCodeHIVAIDSProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#HIVAIDS";
 
     /// <summary>
     /// Literal for code: HealthMaintenanceOrganizationPolicy
@@ -670,9 +800,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHealthMaintenanceOrganizationPolicy = "HMO";
 
     /// <summary>
+    /// Literal for code: V3ActCodeHealthMaintenanceOrganizationPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeHealthMaintenanceOrganizationPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#HMO";
+
+    /// <summary>
     /// Literal for code: HealthSpendingAccount
     /// </summary>
     public const string LiteralHealthSpendingAccount = "HSAPOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeHealthSpendingAccount
+    /// </summary>
+    public const string LiteralV3ActCodeHealthSpendingAccount = "http://terminology.hl7.org/CodeSystem/v3-ActCode#HSAPOL";
 
     /// <summary>
     /// Literal for code: IndigenousPeoplesHealthProgram
@@ -680,9 +820,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIndigenousPeoplesHealthProgram = "IND";
 
     /// <summary>
+    /// Literal for code: V3ActCodeIndigenousPeoplesHealthProgram
+    /// </summary>
+    public const string LiteralV3ActCodeIndigenousPeoplesHealthProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#IND";
+
+    /// <summary>
     /// Literal for code: LifeInsurancePolicy
     /// </summary>
     public const string LiteralLifeInsurancePolicy = "LIFE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeLifeInsurancePolicy
+    /// </summary>
+    public const string LiteralV3ActCodeLifeInsurancePolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#LIFE";
 
     /// <summary>
     /// Literal for code: LongTermCarePolicy
@@ -690,9 +840,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLongTermCarePolicy = "LTC";
 
     /// <summary>
+    /// Literal for code: V3ActCodeLongTermCarePolicy
+    /// </summary>
+    public const string LiteralV3ActCodeLongTermCarePolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#LTC";
+
+    /// <summary>
     /// Literal for code: MandatoryHealthProgram
     /// </summary>
     public const string LiteralMandatoryHealthProgram = "MANDPOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeMandatoryHealthProgram
+    /// </summary>
+    public const string LiteralV3ActCodeMandatoryHealthProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#MANDPOL";
 
     /// <summary>
     /// Literal for code: ManagedCarePolicy
@@ -700,9 +860,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralManagedCarePolicy = "MCPOL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeManagedCarePolicy
+    /// </summary>
+    public const string LiteralV3ActCodeManagedCarePolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#MCPOL";
+
+    /// <summary>
     /// Literal for code: MentalHealthPolicy
     /// </summary>
     public const string LiteralMentalHealthPolicy = "MENTPOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeMentalHealthPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeMentalHealthPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#MENTPOL";
 
     /// <summary>
     /// Literal for code: MentalHealthProgram
@@ -710,9 +880,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMentalHealthProgram = "MENTPRG";
 
     /// <summary>
+    /// Literal for code: V3ActCodeMentalHealthProgram
+    /// </summary>
+    public const string LiteralV3ActCodeMentalHealthProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#MENTPRG";
+
+    /// <summary>
     /// Literal for code: MilitaryHealthProgram
     /// </summary>
     public const string LiteralMilitaryHealthProgram = "MILITARY";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeMilitaryHealthProgram
+    /// </summary>
+    public const string LiteralV3ActCodeMilitaryHealthProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#MILITARY";
 
     /// <summary>
     /// Literal for code: Pay
@@ -720,9 +900,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPay = "pay";
 
     /// <summary>
+    /// Literal for code: CoverageSelfpayPay
+    /// </summary>
+    public const string LiteralCoverageSelfpayPay = "http://terminology.hl7.org/CodeSystem/coverage-selfpay#pay";
+
+    /// <summary>
     /// Literal for code: PropertyAndCasualtyInsurancePolicy
     /// </summary>
     public const string LiteralPropertyAndCasualtyInsurancePolicy = "PNC";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePropertyAndCasualtyInsurancePolicy
+    /// </summary>
+    public const string LiteralV3ActCodePropertyAndCasualtyInsurancePolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PNC";
 
     /// <summary>
     /// Literal for code: PointOfServicePolicy
@@ -730,9 +920,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPointOfServicePolicy = "POS";
 
     /// <summary>
+    /// Literal for code: V3ActCodePointOfServicePolicy
+    /// </summary>
+    public const string LiteralV3ActCodePointOfServicePolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#POS";
+
+    /// <summary>
     /// Literal for code: PreferredProviderOrganizationPolicy
     /// </summary>
     public const string LiteralPreferredProviderOrganizationPolicy = "PPO";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePreferredProviderOrganizationPolicy
+    /// </summary>
+    public const string LiteralV3ActCodePreferredProviderOrganizationPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PPO";
 
     /// <summary>
     /// Literal for code: PublicHealthcare
@@ -740,9 +940,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPublicHealthcare = "PUBLICPOL";
 
     /// <summary>
+    /// Literal for code: V3ActCodePublicHealthcare
+    /// </summary>
+    public const string LiteralV3ActCodePublicHealthcare = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PUBLICPOL";
+
+    /// <summary>
     /// Literal for code: ReinsurancePolicy
     /// </summary>
     public const string LiteralReinsurancePolicy = "REI";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeReinsurancePolicy
+    /// </summary>
+    public const string LiteralV3ActCodeReinsurancePolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#REI";
 
     /// <summary>
     /// Literal for code: RetireeHealthProgram
@@ -750,9 +960,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRetireeHealthProgram = "RETIRE";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRetireeHealthProgram
+    /// </summary>
+    public const string LiteralV3ActCodeRetireeHealthProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RETIRE";
+
+    /// <summary>
     /// Literal for code: SafetyNetClinicProgram
     /// </summary>
     public const string LiteralSafetyNetClinicProgram = "SAFNET";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSafetyNetClinicProgram
+    /// </summary>
+    public const string LiteralV3ActCodeSafetyNetClinicProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SAFNET";
 
     /// <summary>
     /// Literal for code: SocialServiceProgram
@@ -760,9 +980,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSocialServiceProgram = "SOCIAL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSocialServiceProgram
+    /// </summary>
+    public const string LiteralV3ActCodeSocialServiceProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SOCIAL";
+
+    /// <summary>
     /// Literal for code: SubstanceUsePolicy
     /// </summary>
     public const string LiteralSubstanceUsePolicy = "SUBPOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSubstanceUsePolicy
+    /// </summary>
+    public const string LiteralV3ActCodeSubstanceUsePolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SUBPOL";
 
     /// <summary>
     /// Literal for code: SubstanceUseProgram
@@ -770,9 +1000,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSubstanceUseProgram = "SUBPRG";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSubstanceUseProgram
+    /// </summary>
+    public const string LiteralV3ActCodeSubstanceUseProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SUBPRG";
+
+    /// <summary>
     /// Literal for code: SubsidizedHealthProgram
     /// </summary>
     public const string LiteralSubsidizedHealthProgram = "SUBSIDIZ";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSubsidizedHealthProgram
+    /// </summary>
+    public const string LiteralV3ActCodeSubsidizedHealthProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SUBSIDIZ";
 
     /// <summary>
     /// Literal for code: SubsidizedManagedCareProgram
@@ -780,9 +1020,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSubsidizedManagedCareProgram = "SUBSIDMC";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSubsidizedManagedCareProgram
+    /// </summary>
+    public const string LiteralV3ActCodeSubsidizedManagedCareProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SUBSIDMC";
+
+    /// <summary>
     /// Literal for code: SubsidizedSupplementalHealthProgram
     /// </summary>
     public const string LiteralSubsidizedSupplementalHealthProgram = "SUBSUPP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSubsidizedSupplementalHealthProgram
+    /// </summary>
+    public const string LiteralV3ActCodeSubsidizedSupplementalHealthProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SUBSUPP";
 
     /// <summary>
     /// Literal for code: SurplusLineInsurancePolicy
@@ -790,9 +1040,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSurplusLineInsurancePolicy = "SURPL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSurplusLineInsurancePolicy
+    /// </summary>
+    public const string LiteralV3ActCodeSurplusLineInsurancePolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SURPL";
+
+    /// <summary>
     /// Literal for code: TermLifeInsurancePolicy
     /// </summary>
     public const string LiteralTermLifeInsurancePolicy = "TLIFE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeTermLifeInsurancePolicy
+    /// </summary>
+    public const string LiteralV3ActCodeTermLifeInsurancePolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#TLIFE";
 
     /// <summary>
     /// Literal for code: UniversalLifeInsurancePolicy
@@ -800,9 +1060,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUniversalLifeInsurancePolicy = "ULIFE";
 
     /// <summary>
+    /// Literal for code: V3ActCodeUniversalLifeInsurancePolicy
+    /// </summary>
+    public const string LiteralV3ActCodeUniversalLifeInsurancePolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ULIFE";
+
+    /// <summary>
     /// Literal for code: UmbrellaLiabilityInsurancePolicy
     /// </summary>
     public const string LiteralUmbrellaLiabilityInsurancePolicy = "UMBRL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeUmbrellaLiabilityInsurancePolicy
+    /// </summary>
+    public const string LiteralV3ActCodeUmbrellaLiabilityInsurancePolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#UMBRL";
 
     /// <summary>
     /// Literal for code: UninsuredMotoristPolicy
@@ -810,9 +1080,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUninsuredMotoristPolicy = "UNINSMOT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeUninsuredMotoristPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeUninsuredMotoristPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#UNINSMOT";
+
+    /// <summary>
     /// Literal for code: VeteranHealthProgram
     /// </summary>
     public const string LiteralVeteranHealthProgram = "VET";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeVeteranHealthProgram
+    /// </summary>
+    public const string LiteralV3ActCodeVeteranHealthProgram = "http://terminology.hl7.org/CodeSystem/v3-ActCode#VET";
 
     /// <summary>
     /// Literal for code: VisionCarePolicy
@@ -820,8 +1100,140 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVisionCarePolicy = "VISPOL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeVisionCarePolicy
+    /// </summary>
+    public const string LiteralV3ActCodeVisionCarePolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#VISPOL";
+
+    /// <summary>
     /// Literal for code: WorkerQuoteSCompensation
     /// </summary>
     public const string LiteralWorkerQuoteSCompensation = "WCBPOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeWorkerQuoteSCompensation
+    /// </summary>
+    public const string LiteralV3ActCodeWorkerQuoteSCompensation = "http://terminology.hl7.org/CodeSystem/v3-ActCode#WCBPOL";
+
+    /// <summary>
+    /// Dictionary for looking up CoverageType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "_ActCoverageTypeCode", ActCoverageTypeCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActCoverageTypeCode", ActCoverageTypeCode }, 
+      { "_ActHealthInsuranceTypeCode", ActHealthInsuranceTypeCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActHealthInsuranceTypeCode", ActHealthInsuranceTypeCode }, 
+      { "_ActInsurancePolicyCode", ActInsurancePolicyCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActInsurancePolicyCode", ActInsurancePolicyCode }, 
+      { "_ActInsuranceTypeCode", ActInsuranceTypeCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActInsuranceTypeCode", ActInsuranceTypeCode }, 
+      { "_ActProgramTypeCode", ActProgramTypeCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActProgramTypeCode", ActProgramTypeCode }, 
+      { "ANNU", AnnuityPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ANNU", AnnuityPolicy }, 
+      { "AUTOPOL", Automobile }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#AUTOPOL", Automobile }, 
+      { "CANPRG", WomenQuoteSCancerDetectionProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CANPRG", WomenQuoteSCancerDetectionProgram }, 
+      { "CHAR", CharityProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CHAR", CharityProgram }, 
+      { "COL", CollisionCoveragePolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#COL", CollisionCoveragePolicy }, 
+      { "CRIME", CrimeVictimProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CRIME", CrimeVictimProgram }, 
+      { "DENTAL", DentalCarePolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DENTAL", DentalCarePolicy }, 
+      { "DENTPRG", DentalProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DENTPRG", DentalProgram }, 
+      { "DIS", DisabilityInsurancePolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DIS", DisabilityInsurancePolicy }, 
+      { "DISEASE", DiseaseSpecificPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DISEASE", DiseaseSpecificPolicy }, 
+      { "DISEASEPRG", PublicHealthProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DISEASEPRG", PublicHealthProgram }, 
+      { "DRUGPOL", DrugPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DRUGPOL", DrugPolicy }, 
+      { "EAP", EmployeeAssistanceProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#EAP", EmployeeAssistanceProgram }, 
+      { "EHCPOL", ExtendedHealthcare }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#EHCPOL", ExtendedHealthcare }, 
+      { "ENDRENAL", EndRenalProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ENDRENAL", EndRenalProgram }, 
+      { "EWB", EmployeeWelfareBenefitPlanPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#EWB", EmployeeWelfareBenefitPlanPolicy }, 
+      { "FLEXP", FlexibleBenefitPlanPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#FLEXP", FlexibleBenefitPlanPolicy }, 
+      { "GOVEMP", GovernmentEmployeeHealthProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#GOVEMP", GovernmentEmployeeHealthProgram }, 
+      { "HIP", HealthInsurancePlanPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#HIP", HealthInsurancePlanPolicy }, 
+      { "HIRISK", HighRiskPoolProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#HIRISK", HighRiskPoolProgram }, 
+      { "HIVAIDS", HIVAIDSProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#HIVAIDS", HIVAIDSProgram }, 
+      { "HMO", HealthMaintenanceOrganizationPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#HMO", HealthMaintenanceOrganizationPolicy }, 
+      { "HSAPOL", HealthSpendingAccount }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#HSAPOL", HealthSpendingAccount }, 
+      { "IND", IndigenousPeoplesHealthProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#IND", IndigenousPeoplesHealthProgram }, 
+      { "LIFE", LifeInsurancePolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#LIFE", LifeInsurancePolicy }, 
+      { "LTC", LongTermCarePolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#LTC", LongTermCarePolicy }, 
+      { "MANDPOL", MandatoryHealthProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#MANDPOL", MandatoryHealthProgram }, 
+      { "MCPOL", ManagedCarePolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#MCPOL", ManagedCarePolicy }, 
+      { "MENTPOL", MentalHealthPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#MENTPOL", MentalHealthPolicy }, 
+      { "MENTPRG", MentalHealthProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#MENTPRG", MentalHealthProgram }, 
+      { "MILITARY", MilitaryHealthProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#MILITARY", MilitaryHealthProgram }, 
+      { "pay", Pay }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-selfpay#pay", Pay }, 
+      { "PNC", PropertyAndCasualtyInsurancePolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PNC", PropertyAndCasualtyInsurancePolicy }, 
+      { "POS", PointOfServicePolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#POS", PointOfServicePolicy }, 
+      { "PPO", PreferredProviderOrganizationPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PPO", PreferredProviderOrganizationPolicy }, 
+      { "PUBLICPOL", PublicHealthcare }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PUBLICPOL", PublicHealthcare }, 
+      { "REI", ReinsurancePolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#REI", ReinsurancePolicy }, 
+      { "RETIRE", RetireeHealthProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RETIRE", RetireeHealthProgram }, 
+      { "SAFNET", SafetyNetClinicProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SAFNET", SafetyNetClinicProgram }, 
+      { "SOCIAL", SocialServiceProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SOCIAL", SocialServiceProgram }, 
+      { "SUBPOL", SubstanceUsePolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SUBPOL", SubstanceUsePolicy }, 
+      { "SUBPRG", SubstanceUseProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SUBPRG", SubstanceUseProgram }, 
+      { "SUBSIDIZ", SubsidizedHealthProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SUBSIDIZ", SubsidizedHealthProgram }, 
+      { "SUBSIDMC", SubsidizedManagedCareProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SUBSIDMC", SubsidizedManagedCareProgram }, 
+      { "SUBSUPP", SubsidizedSupplementalHealthProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SUBSUPP", SubsidizedSupplementalHealthProgram }, 
+      { "SURPL", SurplusLineInsurancePolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SURPL", SurplusLineInsurancePolicy }, 
+      { "TLIFE", TermLifeInsurancePolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#TLIFE", TermLifeInsurancePolicy }, 
+      { "ULIFE", UniversalLifeInsurancePolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ULIFE", UniversalLifeInsurancePolicy }, 
+      { "UMBRL", UmbrellaLiabilityInsurancePolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#UMBRL", UmbrellaLiabilityInsurancePolicy }, 
+      { "UNINSMOT", UninsuredMotoristPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#UNINSMOT", UninsuredMotoristPolicy }, 
+      { "VET", VeteranHealthProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#VET", VeteranHealthProgram }, 
+      { "VISPOL", VisionCarePolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#VISPOL", VisionCarePolicy }, 
+      { "WCBPOL", WorkerQuoteSCompensation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#WCBPOL", WorkerQuoteSCompensation }, 
+    };
   };
 }

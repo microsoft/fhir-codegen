@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ContractTermTypeCodes
   {
     /// <summary>
-    /// 
+    /// Statutory
     /// </summary>
     public static readonly Coding Statutory = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contracttermtypecodes"
     };
     /// <summary>
-    /// 
+    /// Subject To
     /// </summary>
     public static readonly Coding SubjectTo = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStatutory = "statutory";
 
     /// <summary>
+    /// Literal for code: ContracttermtypecodesStatutory
+    /// </summary>
+    public const string LiteralContracttermtypecodesStatutory = "http://terminology.hl7.org/CodeSystem/contracttermtypecodes#statutory";
+
+    /// <summary>
     /// Literal for code: SubjectTo
     /// </summary>
     public const string LiteralSubjectTo = "subject-to";
+
+    /// <summary>
+    /// Literal for code: ContracttermtypecodesSubjectTo
+    /// </summary>
+    public const string LiteralContracttermtypecodesSubjectTo = "http://terminology.hl7.org/CodeSystem/contracttermtypecodes#subject-to";
+
+    /// <summary>
+    /// Dictionary for looking up ContractTermType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "statutory", Statutory }, 
+      { "http://terminology.hl7.org/CodeSystem/contracttermtypecodes#statutory", Statutory }, 
+      { "subject-to", SubjectTo }, 
+      { "http://terminology.hl7.org/CodeSystem/contracttermtypecodes#subject-to", SubjectTo }, 
+    };
   };
 }

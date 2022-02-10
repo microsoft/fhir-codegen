@@ -189,6 +189,12 @@ namespace fhirCsR4.Models
     public const string QUERIED = "queried";
     public const string TARGET = "target";
     public const string PRODUCED = "produced";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "source",
+      "queried",
+      "target",
+      "produced",
+    };
   }
   /// <summary>
   /// If no inputs are named, then the entry mappings are type based.
@@ -367,6 +373,10 @@ namespace fhirCsR4.Models
   public static class StructureMapGroupInputModeCodes {
     public const string SOURCE = "source";
     public const string TARGET = "target";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "source",
+      "target",
+    };
   }
   /// <summary>
   /// Source inputs to the mapping.
@@ -405,6 +415,10 @@ namespace fhirCsR4.Models
     /// If there's a default value on an item that can repeat, it will only be used once.
     /// </summary>
     public bool? DefaultValueBoolean { get; set; }
+    /// <summary>
+    /// Extension container element for DefaultValueBoolean
+    /// </summary>
+    public Element _DefaultValueBoolean { get; set; }
     /// <summary>
     /// If there's a default value on an item that can repeat, it will only be used once.
     /// </summary>
@@ -465,6 +479,10 @@ namespace fhirCsR4.Models
     /// If there's a default value on an item that can repeat, it will only be used once.
     /// </summary>
     public int? DefaultValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for DefaultValueInteger
+    /// </summary>
+    public Element _DefaultValueInteger { get; set; }
     /// <summary>
     /// If there's a default value on an item that can repeat, it will only be used once.
     /// </summary>
@@ -686,6 +704,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public int? Min { get; set; }
     /// <summary>
+    /// Extension container element for Min
+    /// </summary>
+    public Element _Min { get; set; }
+    /// <summary>
     /// Specified type for the element. This works as a condition on the mapping - use for polymorphic elements.
     /// </summary>
     public string Type { get; set; }
@@ -728,6 +750,12 @@ namespace fhirCsR4.Models
         writer.WriteNumber("min", (int)Min!);
       }
 
+      if (_Min != null)
+      {
+        writer.WritePropertyName("_min");
+        _Min.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Max))
       {
         writer.WriteString("max", (string)Max!);
@@ -758,6 +786,12 @@ namespace fhirCsR4.Models
       if (DefaultValueBoolean != null)
       {
         writer.WriteBoolean("defaultValueBoolean", (bool)DefaultValueBoolean!);
+      }
+
+      if (_DefaultValueBoolean != null)
+      {
+        writer.WritePropertyName("_defaultValueBoolean");
+        _DefaultValueBoolean.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(DefaultValueCanonical))
@@ -840,6 +874,12 @@ namespace fhirCsR4.Models
       if (DefaultValueInteger != null)
       {
         writer.WriteNumber("defaultValueInteger", (int)DefaultValueInteger!);
+      }
+
+      if (_DefaultValueInteger != null)
+      {
+        writer.WritePropertyName("_defaultValueInteger");
+        _DefaultValueInteger.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(DefaultValueMarkdown))
@@ -1222,6 +1262,11 @@ namespace fhirCsR4.Models
           DefaultValueBoolean = reader.GetBoolean();
           break;
 
+        case "_defaultValueBoolean":
+          _DefaultValueBoolean = new fhirCsR4.Models.Element();
+          _DefaultValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "defaultValueCanonical":
           DefaultValueCanonical = reader.GetString();
           break;
@@ -1287,6 +1332,11 @@ namespace fhirCsR4.Models
 
         case "defaultValueInteger":
           DefaultValueInteger = reader.GetInt32();
+          break;
+
+        case "_defaultValueInteger":
+          _DefaultValueInteger = new fhirCsR4.Models.Element();
+          _DefaultValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueMarkdown":
@@ -1550,6 +1600,11 @@ namespace fhirCsR4.Models
           Min = reader.GetInt32();
           break;
 
+        case "_min":
+          _Min = new fhirCsR4.Models.Element();
+          _Min.DeserializeJson(ref reader, options);
+          break;
+
         case "type":
           Type = reader.GetString();
           break;
@@ -1608,6 +1663,13 @@ namespace fhirCsR4.Models
     public const string LAST = "last";
     public const string NOT_LAST = "not_last";
     public const string ONLY_ONE = "only_one";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "first",
+      "not_first",
+      "last",
+      "not_last",
+      "only_one",
+    };
   }
   /// <summary>
   /// Parameters to the transform.
@@ -1635,9 +1697,17 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// Parameter value - variable or literal.
     /// </summary>
     public int? ValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
     /// <summary>
     /// Parameter value - variable or literal.
     /// </summary>
@@ -1684,9 +1754,21 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (ValueDecimal != null)
@@ -1734,8 +1816,18 @@ namespace fhirCsR4.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR4.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR4.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueDecimal":
@@ -2141,6 +2233,10 @@ namespace fhirCsR4.Models
   public static class StructureMapGroupRuleTargetContextTypeCodes {
     public const string TYPE = "type";
     public const string VARIABLE = "variable";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "type",
+      "variable",
+    };
   }
   /// <summary>
   /// Code Values for the StructureMap.group.rule.target.listMode field
@@ -2150,6 +2246,12 @@ namespace fhirCsR4.Models
     public const string SHARE = "share";
     public const string LAST = "last";
     public const string COLLATE = "collate";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "first",
+      "share",
+      "last",
+      "collate",
+    };
   }
   /// <summary>
   /// Code Values for the StructureMap.group.rule.target.transform field
@@ -2172,6 +2274,25 @@ namespace fhirCsR4.Models
     public const string QTY = "qty";
     public const string ID = "id";
     public const string CP = "cp";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "create",
+      "copy",
+      "truncate",
+      "escape",
+      "cast",
+      "append",
+      "translate",
+      "reference",
+      "dateOp",
+      "uuid",
+      "pointer",
+      "evaluate",
+      "cc",
+      "c",
+      "qty",
+      "id",
+      "cp",
+    };
   }
   /// <summary>
   /// Which other rules to apply in the context of this rule.
@@ -2903,6 +3024,11 @@ namespace fhirCsR4.Models
     public const string NONE = "none";
     public const string TYPES = "types";
     public const string TYPE_AND_TYPES = "type-and-types";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "none",
+      "types",
+      "type-and-types",
+    };
   }
   /// <summary>
   /// A Map of relationships between 2 structures that can be used to transform data.
@@ -2945,6 +3071,10 @@ namespace fhirCsR4.Models
     /// Allows filtering of structure maps that are appropriate for use versus not.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// Organizes the mapping into manageable chunks for human review/ease of maintenance.
     /// </summary>
@@ -3119,6 +3249,12 @@ namespace fhirCsR4.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -3335,6 +3471,11 @@ namespace fhirCsR4.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR4.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "group":
@@ -3626,5 +3767,11 @@ namespace fhirCsR4.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

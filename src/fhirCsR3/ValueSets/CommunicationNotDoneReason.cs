@@ -72,9 +72,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFamilyObjection = "family-objection";
 
     /// <summary>
+    /// Literal for code: CommunicationNotDoneReasonFamilyObjection
+    /// </summary>
+    public const string LiteralCommunicationNotDoneReasonFamilyObjection = "http://hl7.org/fhir/communication-not-done-reason#family-objection";
+
+    /// <summary>
     /// Literal for code: InvalidPhoneNumber
     /// </summary>
     public const string LiteralInvalidPhoneNumber = "invalid-phone-number";
+
+    /// <summary>
+    /// Literal for code: CommunicationNotDoneReasonInvalidPhoneNumber
+    /// </summary>
+    public const string LiteralCommunicationNotDoneReasonInvalidPhoneNumber = "http://hl7.org/fhir/communication-not-done-reason#invalid-phone-number";
 
     /// <summary>
     /// Literal for code: PatientObjection
@@ -82,9 +92,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientObjection = "patient-objection";
 
     /// <summary>
+    /// Literal for code: CommunicationNotDoneReasonPatientObjection
+    /// </summary>
+    public const string LiteralCommunicationNotDoneReasonPatientObjection = "http://hl7.org/fhir/communication-not-done-reason#patient-objection";
+
+    /// <summary>
     /// Literal for code: RecipientUnavailable
     /// </summary>
     public const string LiteralRecipientUnavailable = "recipient-unavailable";
+
+    /// <summary>
+    /// Literal for code: CommunicationNotDoneReasonRecipientUnavailable
+    /// </summary>
+    public const string LiteralCommunicationNotDoneReasonRecipientUnavailable = "http://hl7.org/fhir/communication-not-done-reason#recipient-unavailable";
 
     /// <summary>
     /// Literal for code: SystemError
@@ -92,8 +112,36 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSystemError = "system-error";
 
     /// <summary>
+    /// Literal for code: CommunicationNotDoneReasonSystemError
+    /// </summary>
+    public const string LiteralCommunicationNotDoneReasonSystemError = "http://hl7.org/fhir/communication-not-done-reason#system-error";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: CommunicationNotDoneReasonUnknown
+    /// </summary>
+    public const string LiteralCommunicationNotDoneReasonUnknown = "http://hl7.org/fhir/communication-not-done-reason#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up CommunicationNotDoneReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "family-objection", FamilyObjection }, 
+      { "http://hl7.org/fhir/communication-not-done-reason#family-objection", FamilyObjection }, 
+      { "invalid-phone-number", InvalidPhoneNumber }, 
+      { "http://hl7.org/fhir/communication-not-done-reason#invalid-phone-number", InvalidPhoneNumber }, 
+      { "patient-objection", PatientObjection }, 
+      { "http://hl7.org/fhir/communication-not-done-reason#patient-objection", PatientObjection }, 
+      { "recipient-unavailable", RecipientUnavailable }, 
+      { "http://hl7.org/fhir/communication-not-done-reason#recipient-unavailable", RecipientUnavailable }, 
+      { "system-error", SystemError }, 
+      { "http://hl7.org/fhir/communication-not-done-reason#system-error", SystemError }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/communication-not-done-reason#unknown", Unknown }, 
+    };
   };
 }

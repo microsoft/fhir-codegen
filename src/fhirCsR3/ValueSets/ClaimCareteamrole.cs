@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAssistingProvider = "assist";
 
     /// <summary>
+    /// Literal for code: ClaimCareteamroleAssistingProvider
+    /// </summary>
+    public const string LiteralClaimCareteamroleAssistingProvider = "http://hl7.org/fhir/claimcareteamrole#assist";
+
+    /// <summary>
     /// Literal for code: Other
     /// </summary>
     public const string LiteralOther = "other";
+
+    /// <summary>
+    /// Literal for code: ClaimCareteamroleOther
+    /// </summary>
+    public const string LiteralClaimCareteamroleOther = "http://hl7.org/fhir/claimcareteamrole#other";
 
     /// <summary>
     /// Literal for code: PrimaryProvider
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrimaryProvider = "primary";
 
     /// <summary>
+    /// Literal for code: ClaimCareteamrolePrimaryProvider
+    /// </summary>
+    public const string LiteralClaimCareteamrolePrimaryProvider = "http://hl7.org/fhir/claimcareteamrole#primary";
+
+    /// <summary>
     /// Literal for code: SupervisingProvider
     /// </summary>
     public const string LiteralSupervisingProvider = "supervisor";
+
+    /// <summary>
+    /// Literal for code: ClaimCareteamroleSupervisingProvider
+    /// </summary>
+    public const string LiteralClaimCareteamroleSupervisingProvider = "http://hl7.org/fhir/claimcareteamrole#supervisor";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimCareteamrole Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "assist", AssistingProvider }, 
+      { "http://hl7.org/fhir/claimcareteamrole#assist", AssistingProvider }, 
+      { "other", Other }, 
+      { "http://hl7.org/fhir/claimcareteamrole#other", Other }, 
+      { "primary", PrimaryProvider }, 
+      { "http://hl7.org/fhir/claimcareteamrole#primary", PrimaryProvider }, 
+      { "supervisor", SupervisingProvider }, 
+      { "http://hl7.org/fhir/claimcareteamrole#supervisor", SupervisingProvider }, 
+    };
   };
 }

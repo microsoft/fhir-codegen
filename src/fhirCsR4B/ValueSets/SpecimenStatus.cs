@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAvailable = "available";
 
     /// <summary>
+    /// Literal for code: SpecimenStatusAvailable
+    /// </summary>
+    public const string LiteralSpecimenStatusAvailable = "http://hl7.org/fhir/specimen-status#available";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: SpecimenStatusEnteredInError
+    /// </summary>
+    public const string LiteralSpecimenStatusEnteredInError = "http://hl7.org/fhir/specimen-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: Unavailable
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUnavailable = "unavailable";
 
     /// <summary>
+    /// Literal for code: SpecimenStatusUnavailable
+    /// </summary>
+    public const string LiteralSpecimenStatusUnavailable = "http://hl7.org/fhir/specimen-status#unavailable";
+
+    /// <summary>
     /// Literal for code: Unsatisfactory
     /// </summary>
     public const string LiteralUnsatisfactory = "unsatisfactory";
+
+    /// <summary>
+    /// Literal for code: SpecimenStatusUnsatisfactory
+    /// </summary>
+    public const string LiteralSpecimenStatusUnsatisfactory = "http://hl7.org/fhir/specimen-status#unsatisfactory";
+
+    /// <summary>
+    /// Dictionary for looking up SpecimenStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "available", Available }, 
+      { "http://hl7.org/fhir/specimen-status#available", Available }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/specimen-status#entered-in-error", EnteredInError }, 
+      { "unavailable", Unavailable }, 
+      { "http://hl7.org/fhir/specimen-status#unavailable", Unavailable }, 
+      { "unsatisfactory", Unsatisfactory }, 
+      { "http://hl7.org/fhir/specimen-status#unsatisfactory", Unsatisfactory }, 
+    };
   };
 }

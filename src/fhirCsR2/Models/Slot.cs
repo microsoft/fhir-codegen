@@ -301,5 +301,11 @@ namespace fhirCsR2.Models
     public const string FREE = "free";
     public const string BUSY_UNAVAILABLE = "busy-unavailable";
     public const string BUSY_TENTATIVE = "busy-tentative";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "busy",
+      "free",
+      "busy-unavailable",
+      "busy-tentative",
+    };
   }
 }

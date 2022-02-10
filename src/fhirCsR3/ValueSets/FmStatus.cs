@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: FmStatusActive
+    /// </summary>
+    public const string LiteralFmStatusActive = "http://hl7.org/fhir/fm-status#active";
+
+    /// <summary>
     /// Literal for code: Cancelled
     /// </summary>
     public const string LiteralCancelled = "cancelled";
+
+    /// <summary>
+    /// Literal for code: FmStatusCancelled
+    /// </summary>
+    public const string LiteralFmStatusCancelled = "http://hl7.org/fhir/fm-status#cancelled";
 
     /// <summary>
     /// Literal for code: Draft
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDraft = "draft";
 
     /// <summary>
+    /// Literal for code: FmStatusDraft
+    /// </summary>
+    public const string LiteralFmStatusDraft = "http://hl7.org/fhir/fm-status#draft";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: FmStatusEnteredInError
+    /// </summary>
+    public const string LiteralFmStatusEnteredInError = "http://hl7.org/fhir/fm-status#entered-in-error";
+
+    /// <summary>
+    /// Dictionary for looking up FmStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/fm-status#active", Active }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/fm-status#cancelled", Cancelled }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/fm-status#draft", Draft }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/fm-status#entered-in-error", EnteredInError }, 
+    };
   };
 }

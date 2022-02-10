@@ -90,9 +90,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAmendedWith = "amendedWith";
 
     /// <summary>
+    /// Literal for code: ReportRelationTypeAmendedWith
+    /// </summary>
+    public const string LiteralReportRelationTypeAmendedWith = "http://hl7.org/fhir/report-relation-type#amendedWith";
+
+    /// <summary>
     /// Literal for code: Amends
     /// </summary>
     public const string LiteralAmends = "amends";
+
+    /// <summary>
+    /// Literal for code: ReportRelationTypeAmends
+    /// </summary>
+    public const string LiteralReportRelationTypeAmends = "http://hl7.org/fhir/report-relation-type#amends";
 
     /// <summary>
     /// Literal for code: AppendedWith
@@ -100,9 +110,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAppendedWith = "appendedWith";
 
     /// <summary>
+    /// Literal for code: ReportRelationTypeAppendedWith
+    /// </summary>
+    public const string LiteralReportRelationTypeAppendedWith = "http://hl7.org/fhir/report-relation-type#appendedWith";
+
+    /// <summary>
     /// Literal for code: Appends
     /// </summary>
     public const string LiteralAppends = "appends";
+
+    /// <summary>
+    /// Literal for code: ReportRelationTypeAppends
+    /// </summary>
+    public const string LiteralReportRelationTypeAppends = "http://hl7.org/fhir/report-relation-type#appends";
 
     /// <summary>
     /// Literal for code: ReplacedWith
@@ -110,9 +130,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralReplacedWith = "replacedWith";
 
     /// <summary>
+    /// Literal for code: ReportRelationTypeReplacedWith
+    /// </summary>
+    public const string LiteralReportRelationTypeReplacedWith = "http://hl7.org/fhir/report-relation-type#replacedWith";
+
+    /// <summary>
     /// Literal for code: Replaces
     /// </summary>
     public const string LiteralReplaces = "replaces";
+
+    /// <summary>
+    /// Literal for code: ReportRelationTypeReplaces
+    /// </summary>
+    public const string LiteralReportRelationTypeReplaces = "http://hl7.org/fhir/report-relation-type#replaces";
 
     /// <summary>
     /// Literal for code: TransformedWith
@@ -120,8 +150,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTransformedWith = "transformedWith";
 
     /// <summary>
+    /// Literal for code: ReportRelationTypeTransformedWith
+    /// </summary>
+    public const string LiteralReportRelationTypeTransformedWith = "http://hl7.org/fhir/report-relation-type#transformedWith";
+
+    /// <summary>
     /// Literal for code: Transforms
     /// </summary>
     public const string LiteralTransforms = "transforms";
+
+    /// <summary>
+    /// Literal for code: ReportRelationTypeTransforms
+    /// </summary>
+    public const string LiteralReportRelationTypeTransforms = "http://hl7.org/fhir/report-relation-type#transforms";
+
+    /// <summary>
+    /// Dictionary for looking up ReportRelationType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "amendedWith", AmendedWith }, 
+      { "http://hl7.org/fhir/report-relation-type#amendedWith", AmendedWith }, 
+      { "amends", Amends }, 
+      { "http://hl7.org/fhir/report-relation-type#amends", Amends }, 
+      { "appendedWith", AppendedWith }, 
+      { "http://hl7.org/fhir/report-relation-type#appendedWith", AppendedWith }, 
+      { "appends", Appends }, 
+      { "http://hl7.org/fhir/report-relation-type#appends", Appends }, 
+      { "replacedWith", ReplacedWith }, 
+      { "http://hl7.org/fhir/report-relation-type#replacedWith", ReplacedWith }, 
+      { "replaces", Replaces }, 
+      { "http://hl7.org/fhir/report-relation-type#replaces", Replaces }, 
+      { "transformedWith", TransformedWith }, 
+      { "http://hl7.org/fhir/report-relation-type#transformedWith", TransformedWith }, 
+      { "transforms", Transforms }, 
+      { "http://hl7.org/fhir/report-relation-type#transforms", Transforms }, 
+    };
   };
 }

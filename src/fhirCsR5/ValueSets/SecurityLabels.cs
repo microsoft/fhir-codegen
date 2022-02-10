@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class SecurityLabelsCodes
   {
     /// <summary>
-    /// 
+    /// ActCoverageAssessmentObservationValue
     /// </summary>
     public static readonly Coding ActCoverageAssessmentObservationValue = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// ActFinancialStatusObservationValue
     /// </summary>
     public static readonly Coding ActFinancialStatusObservationValue = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// ActInformationSensitivityPolicy
     /// </summary>
     public static readonly Coding ActInformationSensitivityPolicy = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// AllergyTestValue
     /// </summary>
     public static readonly Coding AllergyTestValue = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// AnnotationValue
     /// </summary>
     public static readonly Coding AnnotationValue = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// CaseSeriousnessCriteria
     /// </summary>
     public static readonly Coding CaseSeriousnessCriteria = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// CommonClinicalObservationAssertionValue
     /// </summary>
     public static readonly Coding CommonClinicalObservationAssertionValue = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// CommonClinicalObservationResultValue
     /// </summary>
     public static readonly Coding CommonClinicalObservationResultValue = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// common clinical observation
     /// </summary>
     public static readonly Coding CommonClinicalObservation = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// CompositeMeasureScoring
     /// </summary>
     public static readonly Coding CompositeMeasureScoring = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// CoverageChemicalDependencyValue
     /// </summary>
     public static readonly Coding CoverageChemicalDependencyValue = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// CoverageItemLimitObservationValue
     /// </summary>
     public static readonly Coding CoverageItemLimitObservationValue = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// CoverageLevelObservationValue
     /// </summary>
     public static readonly Coding CoverageLevelObservationValue = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// CoverageLimitObservationValue
     /// </summary>
     public static readonly Coding CoverageLimitObservationValue = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// CoverageLocationLimitObservationValue
     /// </summary>
     public static readonly Coding CoverageLocationLimitObservationValue = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// CriticalityObservationValue
     /// </summary>
     public static readonly Coding CriticalityObservationValue = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// DeviceManufacturerEvaluationInterpretation
     /// </summary>
     public static readonly Coding DeviceManufacturerEvaluationInterpretation = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// DeviceManufacturerEvaluationMethod
     /// </summary>
     public static readonly Coding DeviceManufacturerEvaluationMethod = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// DeviceManufacturerEvaluationResult
     /// </summary>
     public static readonly Coding DeviceManufacturerEvaluationResult = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// DiagnosisValue
     /// </summary>
     public static readonly Coding DiagnosisValue = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// ECGAnnotationValue
     /// </summary>
     public static readonly Coding ECGAnnotationValue = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// _EmploymentStatus
     /// </summary>
     public static readonly Coding EmploymentStatus = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// EntityInformationSensitivityPolicy
     /// </summary>
     public static readonly Coding EntityInformationSensitivityPolicy = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// GeneticObservationValue
     /// </summary>
     public static readonly Coding GeneticObservationValue = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// IndicationValue
     /// </summary>
     public static readonly Coding IndicationValue = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// Individual Case Safety Report Value Domains
     /// </summary>
     public static readonly Coding IndividualCaseSafetyReportValueDomains = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// InformationSensitivityPolicy
     /// </summary>
     public static readonly Coding InformationSensitivityPolicy = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// InjuryObservationValue
     /// </summary>
     public static readonly Coding InjuryObservationValue = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// IntoleranceValue
     /// </summary>
     public static readonly Coding IntoleranceValue = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// IssueTriggerObservationValue
     /// </summary>
     public static readonly Coding IssueTriggerObservationValue = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// Measurement Improvement Notation
     /// </summary>
     public static readonly Coding MeasurementImprovementNotation = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// ObservationMeasureScoring
     /// </summary>
     public static readonly Coding ObservationMeasureScoring = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// ObservationMeasureType
     /// </summary>
     public static readonly Coding ObservationMeasureType = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// OtherIndicationValue
     /// </summary>
     public static readonly Coding OtherIndicationValue = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// PartialCompletionScale
     /// </summary>
     public static readonly Coding PartialCompletionScale = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// Pertinent Reaction Relatedness
     /// </summary>
     public static readonly Coding PertinentReactionRelatedness = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// Product Characterization
     /// </summary>
     public static readonly Coding ProductCharacterization = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// ReactionActionTaken
     /// </summary>
     public static readonly Coding ReactionActionTaken = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// RoleInformationSensitivityPolicy
     /// </summary>
     public static readonly Coding RoleInformationSensitivityPolicy = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// alteration integrity
     /// </summary>
     public static readonly Coding AlterationIntegrity = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// security category
     /// </summary>
     public static readonly Coding SecurityCategory = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// security classification
     /// </summary>
     public static readonly Coding SecurityClassification = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// security control
     /// </summary>
     public static readonly Coding SecurityControl = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// data integrity
     /// </summary>
     public static readonly Coding DataIntegrity = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// integrity confidence
     /// </summary>
     public static readonly Coding IntegrityConfidence = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// security integrity
     /// </summary>
     public static readonly Coding SecurityIntegrity = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// provenance asserted by
     /// </summary>
     public static readonly Coding ProvenanceAssertedBy = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// provenance
     /// </summary>
     public static readonly Coding Provenance = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// provenance reported by
     /// </summary>
     public static readonly Coding ProvenanceReportedBy = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// integrity status
     /// </summary>
     public static readonly Coding IntegrityStatus = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// SecurityObservationValue
     /// </summary>
     public static readonly Coding SecurityObservationValue = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// SeverityObservation
     /// </summary>
     public static readonly Coding SeverityObservation = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// _SubjectBodyPosition
     /// </summary>
     public static readonly Coding SubjectBodyPosition = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// Subject Reaction
     /// </summary>
     public static readonly Coding SubjectReaction = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// SubjectReactionEmphasis
     /// </summary>
     public static readonly Coding SubjectReactionEmphasis = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// SubjectReactionOutcome
     /// </summary>
     public static readonly Coding SubjectReactionOutcome = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// SymptomValue
     /// </summary>
     public static readonly Coding SymptomValue = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// verification outcome
     /// </summary>
     public static readonly Coding VerificationOutcome = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// _WorkSchedule
     /// </summary>
     public static readonly Coding WorkSchedule = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// no reaction
     /// </summary>
     public static readonly Coding NoReaction = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// minimal reaction
     /// </summary>
     public static readonly Coding MinimalReaction = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// mild reaction
     /// </summary>
     public static readonly Coding MildReaction = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// moderate reaction
     /// </summary>
     public static readonly Coding ModerateReaction = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// severe reaction
     /// </summary>
     public static readonly Coding SevereReaction = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// abstracted
     /// </summary>
     public static readonly Coding Abstracted = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// abuse victim
     /// </summary>
     public static readonly Coding AbuseVictim = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// access control scheme
     /// </summary>
     public static readonly Coding AccessControlScheme = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// accountable care organization compartment
     /// </summary>
     public static readonly Coding AccountableCareOrganizationCompartment = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// active coverage
     /// </summary>
     public static readonly Coding ActiveCoverage = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// active - pending investigation
     /// </summary>
     public static readonly Coding ActivePendingInvestigation = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// adult child
     /// </summary>
     public static readonly Coding AdultChild = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// adolescent information sensitivity
     /// </summary>
     public static readonly Coding AdolescentInformationSensitivity = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// adoption document
     /// </summary>
     public static readonly Coding AdoptionDocument = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// aggregated
     /// </summary>
     public static readonly Coding Aggregated = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// All-or-nothing Scoring
     /// </summary>
     public static readonly Coding AllOrNothingScoring = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// alone
     /// </summary>
     public static readonly Coding Alone = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// annuity
     /// </summary>
     public static readonly Coding Annuity = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// anonymize
     /// </summary>
     public static readonly Coding Anonymize = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// anonymized
     /// </summary>
     public static readonly Coding Anonymized = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// accounting of disclosure
     /// </summary>
     public static readonly Coding AccountingOfDisclosure = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// appropriate use process measure
     /// </summary>
     public static readonly Coding AppropriateUseProcessMeasure = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// asset
     /// </summary>
     public static readonly Coding Asset = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// audit
     /// </summary>
     public static readonly Coding Audit = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// audit trail
     /// </summary>
     public static readonly Coding AuditTrail = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// authorization policy
     /// </summary>
     public static readonly Coding AuthorizationPolicy = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// business information sensitivity
     /// </summary>
     public static readonly Coding BusinessInformationSensitivity = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// behavioral health information sensitivity
     /// </summary>
     public static readonly Coding BehavioralHealthInformationSensitivity = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// biomedical research
     /// </summary>
     public static readonly Coding BiomedicalResearch = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// break the glass
     /// </summary>
     public static readonly Coding BreakTheGlass = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// birth certificate
     /// </summary>
     public static readonly Coding BirthCertificate = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// care management
     /// </summary>
     public static readonly Coding CareManagement = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// creditable coverage document
     /// </summary>
     public static readonly Coding CreditableCoverageDocument = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// CDS system compartment
     /// </summary>
     public static readonly Coding CDSSystemCompartment = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// celebrity information sensitivity
     /// </summary>
     public static readonly Coding CelebrityInformationSensitivity = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// child
     /// </summary>
     public static readonly Coding Child = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// child support
     /// </summary>
     public static readonly Coding ChildSupport = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// clinician asserted
     /// </summary>
     public static readonly Coding ClinicianAsserted = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// clinician reported
     /// </summary>
     public static readonly Coding ClinicianReported = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// clinical trial research
     /// </summary>
     public static readonly Coding ClinicalTrialResearch = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// clinical trial research without patient care
     /// </summary>
     public static readonly Coding ClinicalTrialResearchWithoutPatientCare = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// clinical trial research with patient care
     /// </summary>
     public static readonly Coding ClinicalTrialResearchWithPatientCare = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// clinical trial
     /// </summary>
     public static readonly Coding ClinicalTrial = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// claim attachment
     /// </summary>
     public static readonly Coding ClaimAttachment = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// clothing expense
     /// </summary>
     public static readonly Coding ClothingExpense = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// coordination of care
     /// </summary>
     public static readonly Coding CoordinationOfCare = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// cognitive disability information sensitivity
     /// </summary>
     public static readonly Coding CognitiveDisabilityInformationSensitivity = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// cohort measure scoring
     /// </summary>
     public static readonly Coding CohortMeasureScoring = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// composite measure type
     /// </summary>
     public static readonly Coding CompositeMeasureType = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// compartment
     /// </summary>
     public static readonly Coding Compartment = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// confidential mark
     /// </summary>
     public static readonly Coding ConfidentialMark = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// CONTROLLED
     /// </summary>
     public static readonly Coding CONTROLLED = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// ControlledUnclassifiedInformation
     /// </summary>
     public static readonly Coding ControlledUnclassifiedInformation = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// continuous variable measure scoring
     /// </summary>
     public static readonly Coding ContinuousVariableMeasureScoring = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// copy of original mark
     /// </summary>
     public static readonly Coding CopyOfOriginalMark = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// coverage authorization
     /// </summary>
     public static readonly Coding CoverageAuthorization = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// coverage under policy or program
     /// </summary>
     public static readonly Coding CoverageUnderPolicyOrProgram = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// comply with confidentiality code
     /// </summary>
     public static readonly Coding ComplyWithConfidentialityCode = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// comply with consent directive
     /// </summary>
     public static readonly Coding ComplyWithConsentDirective = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// comply with controlled unclassified information policy
     /// </summary>
     public static readonly Coding ComplyWithControlledUnclassifiedInformationPolicy = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// comply with jurisdictional privacy policy
     /// </summary>
     public static readonly Coding ComplyWithJurisdictionalPrivacyPolicy = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// comply with jurisdictional security policy
     /// </summary>
     public static readonly Coding ComplyWithJurisdictionalSecurityPolicy = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// comply with organizational privacy policy
     /// </summary>
     public static readonly Coding ComplyWithOrganizationalPrivacyPolicy = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// comply with organizational security policy
     /// </summary>
     public static readonly Coding ComplyWithOrganizationalSecurityPolicy = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// comply with policy
     /// </summary>
     public static readonly Coding ComplyWithPolicy = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// high criticality
     /// </summary>
     public static readonly Coding HighCriticality = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// low criticality
     /// </summary>
     public static readonly Coding LowCriticality = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// unable to assess criticality
     /// </summary>
     public static readonly Coding UnableToAssessCriticality = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// cryptographic hash function
     /// </summary>
     public static readonly Coding CryptographicHashFunction = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// care team compartment
     /// </summary>
     public static readonly Coding CareTeamCompartment = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// CUI
     /// </summary>
     public static readonly Coding CUI = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// CUI//HLTH
     /// </summary>
     public static readonly Coding CUIHLTH = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// (CUI//HLTH)
     /// </summary>
     public static readonly Coding CUIHLTH_2 = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// CUI Mark
     /// </summary>
     public static readonly Coding CUIMark = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// (CUI)
     /// </summary>
     public static readonly Coding CUI_2 = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// CUI//PRVCY
     /// </summary>
     public static readonly Coding CUIPRVCY = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// (CUI//PRVCY)
     /// </summary>
     public static readonly Coding CUIPRVCY_2 = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// CUI//SP-HLTH
     /// </summary>
     public static readonly Coding CUISPHLTH = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// (CUI//SP-HLTH)
     /// </summary>
     public static readonly Coding CUISPHLTH_2 = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// CUI//SP-PRVCY
     /// </summary>
     public static readonly Coding CUISPPRVCY = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// (CUI//SP-PRVCY)
     /// </summary>
     public static readonly Coding CUISPPRVCY_2 = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// declassify security label
     /// </summary>
     public static readonly Coding DeclassifySecurityLabel = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Decreased score indicates improvement
     /// </summary>
     public static readonly Coding DecreasedScoreIndicatesImprovement = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// deidentify
     /// </summary>
     public static readonly Coding Deidentify = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// delete after use
     /// </summary>
     public static readonly Coding DeleteAfterUse = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// delegation policy
     /// </summary>
     public static readonly Coding DelegationPolicy = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// deliver only to addressee mark
     /// </summary>
     public static readonly Coding DeliverOnlyToAddresseeMark = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// all demographic information sensitivity
     /// </summary>
     public static readonly Coding AllDemographicInformationSensitivity = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// dependent
     /// </summary>
     public static readonly Coding Dependent = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// dependent children
     /// </summary>
     public static readonly Coding DependentChildren = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// dependent spouse
     /// </summary>
     public static readonly Coding DependentSpouse = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// dependent young children
     /// </summary>
     public static readonly Coding DependentYoungChildren = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// device asserted
     /// </summary>
     public static readonly Coding DeviceAsserted = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// device reported
     /// </summary>
     public static readonly Coding DeviceReported = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// diagnosis information sensitivity
     /// </summary>
     public static readonly Coding DiagnosisInformationSensitivity = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// digital signature
     /// </summary>
     public static readonly Coding DigitalSignature = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// disability pay
     /// </summary>
     public static readonly Coding DisabilityPay = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// disabled
     /// </summary>
     public static readonly Coding Disabled = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// disaster
     /// </summary>
     public static readonly Coding Disaster = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// date of birth information sensitivity
     /// </summary>
     public static readonly Coding DateOfBirthInformationSensitivity = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// donation
     /// </summary>
     public static readonly Coding Donation = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// downgrade security label
     /// </summary>
     public static readonly Coding DowngradeSecurityLabel = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// domestic partner
     /// </summary>
     public static readonly Coding DomesticPartner = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// Draft Mark
     /// </summary>
     public static readonly Coding DraftMark = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// drug information sensitivity
     /// </summary>
     public static readonly Coding DrugInformationSensitivity = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// derive security label
     /// </summary>
     public static readonly Coding DeriveSecurityLabel = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// driver license
     /// </summary>
     public static readonly Coding DriverLicense = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// drug use
     /// </summary>
     public static readonly Coding DrugUse = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// daytime shift
     /// </summary>
     public static readonly Coding DaytimeShift = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// disease specific healthcare research
     /// </summary>
     public static readonly Coding DiseaseSpecificHealthcareResearch = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// developmental disability information sensitivity
     /// </summary>
     public static readonly Coding DevelopmentalDisabilityInformationSensitivity = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// employee
     /// </summary>
     public static readonly Coding Employee = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// efficiency measure type
     /// </summary>
     public static readonly Coding EfficiencyMeasureType = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// eligible
     /// </summary>
     public static readonly Coding Eligible = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// eligibility determination
     /// </summary>
     public static readonly Coding EligibilityDetermination = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// eligibility verification
     /// </summary>
     public static readonly Coding EligibilityVerification = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// eligibility indicator
     /// </summary>
     public static readonly Coding EligibilityIndicator = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// emotional disturbance information sensitivity
     /// </summary>
     public static readonly Coding EmotionalDisturbanceInformationSensitivity = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// employee information sensitivity
     /// </summary>
     public static readonly Coding EmployeeInformationSensitivity = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// employer information sensitivity
     /// </summary>
     public static readonly Coding EmployerInformationSensitivity = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Employed
     /// </summary>
     public static readonly Coding Employed = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// early morning shift
     /// </summary>
     public static readonly Coding EarlyMorningShift = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// encrypt
     /// </summary>
     public static readonly Coding Encrypt = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// encrypt at rest
     /// </summary>
     public static readonly Coding EncryptAtRest = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// encrypt in transit
     /// </summary>
     public static readonly Coding EncryptInTransit = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// encrypt in use
     /// </summary>
     public static readonly Coding EncryptInUse = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// enrollment
     /// </summary>
     public static readonly Coding Enrollment = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// emergency room treatment
     /// </summary>
     public static readonly Coding EmergencyRoomTreatment = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// evening shift
     /// </summary>
     public static readonly Coding EveningShift = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// substance abuse information sensitivity
     /// </summary>
     public static readonly Coding SubstanceAbuseInformationSensitivity = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// alcohol use disorder information sensitivity
     /// </summary>
     public static readonly Coding AlcoholUseDisorderInformationSensitivity = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Emergency Treatment
     /// </summary>
     public static readonly Coding EmergencyTreatment = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// experience measure type
     /// </summary>
     public static readonly Coding ExperienceMeasureType = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// live with family
     /// </summary>
     public static readonly Coding LiveWithFamily = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// family requested
     /// </summary>
     public static readonly Coding FamilyRequested = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// family coverage
     /// </summary>
     public static readonly Coding FamilyCoverage = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// financial management compartment
     /// </summary>
     public static readonly Coding FinancialManagementCompartment = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// food expense
     /// </summary>
     public static readonly Coding FoodExpense = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// foster child document
     /// </summary>
     public static readonly Coding FosterChildDocument = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// fraud
     /// </summary>
     public static readonly Coding Fraud = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Great extent
     /// </summary>
     public static readonly Coding GreatExtent = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// genetic disease information sensitivity
     /// </summary>
     public static readonly Coding GeneticDiseaseInformationSensitivity = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// gender and sexual orientation information sensitivity
     /// </summary>
     public static readonly Coding GenderAndSexualOrientationInformationSensitivity = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// government
     /// </summary>
     public static readonly Coding Government = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// High
     /// </summary>
     public static readonly Coding High = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// health accreditation
     /// </summary>
     public static readonly Coding HealthAccreditation = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// health compliance
     /// </summary>
     public static readonly Coding HealthCompliance = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// healthcare professional asserted
     /// </summary>
     public static readonly Coding HealthcareProfessionalAsserted = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// healthcare professional reported
     /// </summary>
     public static readonly Coding HealthcareProfessionalReported = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// decedent
     /// </summary>
     public static readonly Coding Decedent = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// directory
     /// </summary>
     public static readonly Coding Directory = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// healthcare delivery management
     /// </summary>
     public static readonly Coding HealthcareDeliveryManagement = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// health expense
     /// </summary>
     public static readonly Coding HealthExpense = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// HIV/AIDS information sensitivity
     /// </summary>
     public static readonly Coding HIVAIDSInformationSensitivity = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// legal
     /// </summary>
     public static readonly Coding Legal = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// health status
     /// </summary>
     public static readonly Coding HealthStatus = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// healthcare marketing
     /// </summary>
     public static readonly Coding HealthcareMarketing = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// homeless
     /// </summary>
     public static readonly Coding Homeless = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// HOMO
     /// </summary>
     public static readonly Coding HOMO = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// healthcare operations
     /// </summary>
     public static readonly Coding HealthcareOperations = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// household expense
     /// </summary>
     public static readonly Coding HouseholdExpense = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// health outcome measure
     /// </summary>
     public static readonly Coding HealthOutcomeMeasure = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// healthcare payment
     /// </summary>
     public static readonly Coding HealthcarePayment = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// health program reporting
     /// </summary>
     public static readonly Coding HealthProgramReporting = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// health quality improvement
     /// </summary>
     public static readonly Coding HealthQualityImprovement = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// human resource compartment
     /// </summary>
     public static readonly Coding HumanResourceCompartment = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// highly reliable
     /// </summary>
     public static readonly Coding HighlyReliable = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// healthcare research
     /// </summary>
     public static readonly Coding HealthcareResearch = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// health system administration
     /// </summary>
     public static readonly Coding HealthSystemAdministration = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// test health data
     /// </summary>
     public static readonly Coding TestHealthData = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// human approval
     /// </summary>
     public static readonly Coding HumanApproval = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Identifier Sensitivity
     /// </summary>
     public static readonly Coding IdentifierSensitivity = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// illegal immigrant
     /// </summary>
     public static readonly Coding IllegalImmigrant = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// inactive
     /// </summary>
     public static readonly Coding Inactive = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// incarcerated
     /// </summary>
     public static readonly Coding Incarcerated = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// income
     /// </summary>
     public static readonly Coding Income = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// Increased score indicates improvement
     /// </summary>
     public static readonly Coding IncreasedScoreIndicatesImprovement = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// individual
     /// </summary>
     public static readonly Coding Individual = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// inactive - pending investigation
     /// </summary>
     public static readonly Coding InactivePendingInvestigation = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// inactive - pending eligibility update
     /// </summary>
     public static readonly Coding InactivePendingEligibilityUpdate = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// intermediate clinical outcome measure
     /// </summary>
     public static readonly Coding IntermediateClinicalOutcomeMeasure = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// investment income
     /// </summary>
     public static readonly Coding InvestmentIncome = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// IV drug use
     /// </summary>
     public static readonly Coding IVDrugUse = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// low
     /// </summary>
     public static readonly Coding Low = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
     };
     /// <summary>
-    /// 
+    /// Low
     /// </summary>
     public static readonly Coding Low_2 = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// assign security label
     /// </summary>
     public static readonly Coding AssignSecurityLabel = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// labeling
     /// </summary>
     public static readonly Coding Labeling = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// Large extent
     /// </summary>
     public static readonly Coding LargeExtent = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// legal expense
     /// </summary>
     public static readonly Coding LegalExpense = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// Linear Scoring
     /// </summary>
     public static readonly Coding LinearScoring = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// living arrangement information sensitivity
     /// </summary>
     public static readonly Coding LivingArrangementInformationSensitivity = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// living dependency
     /// </summary>
     public static readonly Coding LivingDependency = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// living expense
     /// </summary>
     public static readonly Coding LivingExpense = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// living situation
     /// </summary>
     public static readonly Coding LivingSituation = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// left lateral decubitus
     /// </summary>
     public static readonly Coding LeftLateralDecubitus = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// authentication level of assurance value
     /// </summary>
     public static readonly Coding AuthenticationLevelOfAssuranceValue = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// low authentication level of assurance
     /// </summary>
     public static readonly Coding LowAuthenticationLevelOfAssurance = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// basic authentication level of assurance
     /// </summary>
     public static readonly Coding BasicAuthenticationLevelOfAssurance = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// medium authentication level of assurance
     /// </summary>
     public static readonly Coding MediumAuthenticationLevelOfAssurance = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// high authentication level of assurance
     /// </summary>
     public static readonly Coding HighAuthenticationLevelOfAssurance = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// authentication process level of assurance value
     /// </summary>
     public static readonly Coding AuthenticationProcessLevelOfAssuranceValue = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// low authentication process level of assurance
     /// </summary>
     public static readonly Coding LowAuthenticationProcessLevelOfAssurance = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// basic authentication process level of assurance
     /// </summary>
     public static readonly Coding BasicAuthenticationProcessLevelOfAssurance = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// medium authentication process level of assurance
     /// </summary>
     public static readonly Coding MediumAuthenticationProcessLevelOfAssurance = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// high authentication process level of assurance
     /// </summary>
     public static readonly Coding HighAuthenticationProcessLevelOfAssurance = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// assertion level of assurance value
     /// </summary>
     public static readonly Coding AssertionLevelOfAssuranceValue = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// low assertion level of assurance
     /// </summary>
     public static readonly Coding LowAssertionLevelOfAssurance = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// basic assertion level of assurance
     /// </summary>
     public static readonly Coding BasicAssertionLevelOfAssurance = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// medium assertion level of assurance
     /// </summary>
     public static readonly Coding MediumAssertionLevelOfAssurance = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// high assertion level of assurance
     /// </summary>
     public static readonly Coding HighAssertionLevelOfAssurance = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// token and credential management level of assurance value)
     /// </summary>
     public static readonly Coding TokenAndCredentialManagementLevelOfAssuranceValue = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// low token and credential management level of assurance
     /// </summary>
     public static readonly Coding LowTokenAndCredentialManagementLevelOfAssurance = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// basic token and credential management level of assurance
     /// </summary>
     public static readonly Coding BasicTokenAndCredentialManagementLevelOfAssurance = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// medium token and credential management level of assurance
     /// </summary>
     public static readonly Coding MediumTokenAndCredentialManagementLevelOfAssurance = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// high token and credential management level of assurance
     /// </summary>
     public static readonly Coding HighTokenAndCredentialManagementLevelOfAssurance = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// identity proofing level of assurance
     /// </summary>
     public static readonly Coding IdentityProofingLevelOfAssurance = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// low identity proofing level of assurance
     /// </summary>
     public static readonly Coding LowIdentityProofingLevelOfAssurance = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// basic identity proofing level of assurance
     /// </summary>
     public static readonly Coding BasicIdentityProofingLevelOfAssurance = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// medium identity proofing level of assurance
     /// </summary>
     public static readonly Coding MediumIdentityProofingLevelOfAssurance = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// high identity proofing level of assurance
     /// </summary>
     public static readonly Coding HighIdentityProofingLevelOfAssurance = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// non-repudiation level of assurance value
     /// </summary>
     public static readonly Coding NonRepudiationLevelOfAssuranceValue = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// low non-repudiation level of assurance
     /// </summary>
     public static readonly Coding LowNonRepudiationLevelOfAssurance = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// basic non-repudiation level of assurance
     /// </summary>
     public static readonly Coding BasicNonRepudiationLevelOfAssurance = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// medium non-repudiation level of assurance
     /// </summary>
     public static readonly Coding MediumNonRepudiationLevelOfAssurance = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// high non-repudiation level of assurance
     /// </summary>
     public static readonly Coding HighNonRepudiationLevelOfAssurance = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// remote access level of assurance value
     /// </summary>
     public static readonly Coding RemoteAccessLevelOfAssuranceValue = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// low remote access level of assurance
     /// </summary>
     public static readonly Coding LowRemoteAccessLevelOfAssurance = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// basic remote access level of assurance
     /// </summary>
     public static readonly Coding BasicRemoteAccessLevelOfAssurance = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// medium remote access level of assurance
     /// </summary>
     public static readonly Coding MediumRemoteAccessLevelOfAssurance = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// high remote access level of assurance
     /// </summary>
     public static readonly Coding HighRemoteAccessLevelOfAssurance = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// token level of assurance value
     /// </summary>
     public static readonly Coding TokenLevelOfAssuranceValue = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// low token level of assurance
     /// </summary>
     public static readonly Coding LowTokenLevelOfAssurance = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// basic token level of assurance
     /// </summary>
     public static readonly Coding BasicTokenLevelOfAssurance = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// medium token level of assurance
     /// </summary>
     public static readonly Coding MediumTokenLevelOfAssurance = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// high token level of assurance
     /// </summary>
     public static readonly Coding HighTokenLevelOfAssurance = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// location information sensitivity
     /// </summary>
     public static readonly Coding LocationInformationSensitivity = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// legitimate relationship compartment
     /// </summary>
     public static readonly Coding LegitimateRelationshipCompartment = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// moderate
     /// </summary>
     public static readonly Coding Moderate = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
     };
     /// <summary>
-    /// 
+    /// Moderate
     /// </summary>
     public static readonly Coding Moderate_2 = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// mapped
     /// </summary>
     public static readonly Coding Mapped = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// marital status information sensitivity
     /// </summary>
     public static readonly Coding MaritalStatusInformationSensitivity = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// mask
     /// </summary>
     public static readonly Coding Mask = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// masked
     /// </summary>
     public static readonly Coding Masked = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// Medium extent
     /// </summary>
     public static readonly Coding MediumExtent = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// member administration
     /// </summary>
     public static readonly Coding MemberAdministration = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// program or policy member
     /// </summary>
     public static readonly Coding ProgramOrPolicyMember = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// metadata management
     /// </summary>
     public static readonly Coding MetadataManagement = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// mental health information sensitivity
     /// </summary>
     public static readonly Coding MentalHealthInformationSensitivity = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Minimal extent
     /// </summary>
     public static readonly Coding MinimalExtent = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// military identification
     /// </summary>
     public static readonly Coding MilitaryIdentification = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// military command
     /// </summary>
     public static readonly Coding MilitaryCommand = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// military discharge
     /// </summary>
     public static readonly Coding MilitaryDischarge = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// minimum necessary
     /// </summary>
     public static readonly Coding MinimumNecessary = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// mortgage
     /// </summary>
     public static readonly Coding Mortgage = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// marriage certificate
     /// </summary>
     public static readonly Coding MarriageCertificate = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// military sexual trauma information sensitivity
     /// </summary>
     public static readonly Coding MilitarySexualTraumaInformationSensitivity = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// normal
     /// </summary>
     public static readonly Coding Normal = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
     };
     /// <summary>
-    /// 
+    /// None
     /// </summary>
     public static readonly Coding None = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// not eligible
     /// </summary>
     public static readonly Coding NotEligible = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// no disclosure without subject authorization
     /// </summary>
     public static readonly Coding NoDisclosureWithoutSubjectAuthorization = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// no collection
     /// </summary>
     public static readonly Coding NoCollection = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// no disclosure without consent directive
     /// </summary>
     public static readonly Coding NoDisclosureWithoutConsentDirective = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// no disclosure without information subject's consent directive
     /// </summary>
     public static readonly Coding NoDisclosureWithoutInformationSubjectQuoteSConsentDirective = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// no integration
     /// </summary>
     public static readonly Coding NoIntegration = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// no unlisted entity disclosure
     /// </summary>
     public static readonly Coding NoUnlistedEntityDisclosure = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// no disclosure without MOU
     /// </summary>
     public static readonly Coding NoDisclosureWithoutMOU = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// no disclosure without organizational authorization
     /// </summary>
     public static readonly Coding NoDisclosureWithoutOrganizationalAuthorization = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// no disclosure to patient, family or caregivers without attending provider's authorization
     /// </summary>
     public static readonly Coding NoDisclosureToPatientFamilyOrCaregiversWithoutAttendingProviderQuoteSAuthorization = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// no collection beyond purpose of use
     /// </summary>
     public static readonly Coding NoCollectionBeyondPurposeOfUse = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// no redisclosure without consent directive
     /// </summary>
     public static readonly Coding NoRedisclosureWithoutConsentDirective = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// no redisclosure without information subject's consent directive
     /// </summary>
     public static readonly Coding NoRedisclosureWithoutInformationSubjectQuoteSConsentDirective = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// no disclosure without jurisdictional authorization
     /// </summary>
     public static readonly Coding NoDisclosureWithoutJurisdictionalAuthorization = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// no redisclosure without consent directive
     /// </summary>
     public static readonly Coding NoRedisclosureWithoutConsentDirective_2 = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// no relinking
     /// </summary>
     public static readonly Coding NoRelinking = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// no reuse beyond purpose of use
     /// </summary>
     public static readonly Coding NoReuseBeyondPurposeOfUse = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Not In Labor Force
     /// </summary>
     public static readonly Coding NotInLaborForce = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// no unauthorized VIP disclosure
     /// </summary>
     public static readonly Coding NoUnauthorizedVIPDisclosure = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// night shift
     /// </summary>
     public static readonly Coding NightShift = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// obligation policy
     /// </summary>
     public static readonly Coding ObligationPolicy = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// opioid use disorder information sensitivity
     /// </summary>
     public static readonly Coding OpioidUseDisorderInformationSensitivity = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Opportunity Scoring
     /// </summary>
     public static readonly Coding OpportunityScoring = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// no disclosure without originator authorization
     /// </summary>
     public static readonly Coding NoDisclosureWithoutOriginatorAuthorization = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// outcome measure type
     /// </summary>
     public static readonly Coding OutcomeMeasureType = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// patient administration compartment
     /// </summary>
     public static readonly Coding PatientAdministrationCompartment = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// patient acquaintance asserted
     /// </summary>
     public static readonly Coding PatientAcquaintanceAsserted = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// patient acquaintance reported
     /// </summary>
     public static readonly Coding PatientAcquaintanceReported = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// passport
     /// </summary>
     public static readonly Coding Passport = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// patient administration
     /// </summary>
     public static readonly Coding PatientAdministration = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// patient asserted
     /// </summary>
     public static readonly Coding PatientAsserted = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// patient location
     /// </summary>
     public static readonly Coding PatientLocation = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// patient reported
     /// </summary>
     public static readonly Coding PatientReported = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// patient requested
     /// </summary>
     public static readonly Coding PatientRequested = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// patient safety
     /// </summary>
     public static readonly Coding PatientSafety = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// paid employment
     /// </summary>
     public static readonly Coding PaidEmployment = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// payer asserted
     /// </summary>
     public static readonly Coding PayerAsserted = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// payer reported
     /// </summary>
     public static readonly Coding PayerReported = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// patient default information sensitivity
     /// </summary>
     public static readonly Coding PatientDefaultInformationSensitivity = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// performance measure
     /// </summary>
     public static readonly Coding PerformanceMeasure = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// persist security label
     /// </summary>
     public static readonly Coding PersistSecurityLabel = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// pregnant
     /// </summary>
     public static readonly Coding Pregnant = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// physician requested information sensitivity
     /// </summary>
     public static readonly Coding PhysicianRequestedInformationSensitivity = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// population origins or ancestry healthcare research
     /// </summary>
     public static readonly Coding PopulationOriginsOrAncestryHealthcareResearch = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// population health
     /// </summary>
     public static readonly Coding PopulationHealth = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// preclinical trial research
     /// </summary>
     public static readonly Coding PreclinicalTrialResearch = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// pregnancy information sensitivity
     /// </summary>
     public static readonly Coding PregnancyInformationSensitivity = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// privacy mark
     /// </summary>
     public static readonly Coding PrivacyMark = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// privacy mark
     /// </summary>
     public static readonly Coding PrivacyMark_2 = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// prone
     /// </summary>
     public static readonly Coding Prone = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// patient reported outcome performance measure
     /// </summary>
     public static readonly Coding PatientReportedOutcomePerformanceMeasure = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// professional asserted
     /// </summary>
     public static readonly Coding ProfessionalAsserted = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// probation
     /// </summary>
     public static readonly Coding Probation = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// process measure type
     /// </summary>
     public static readonly Coding ProcessMeasureType = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// real property
     /// </summary>
     public static readonly Coding RealProperty = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// proportion measure scoring
     /// </summary>
     public static readonly Coding ProportionMeasureScoring = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// professional reported
     /// </summary>
     public static readonly Coding ProfessionalReported = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// patient requested information sensitivity
     /// </summary>
     public static readonly Coding PatientRequestedInformationSensitivity = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// pseudonymize
     /// </summary>
     public static readonly Coding Pseudonymize = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// pseudonymized
     /// </summary>
     public static readonly Coding Pseudonymized = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// psychiatry disorder information sensitivity
     /// </summary>
     public static readonly Coding PsychiatryDisorderInformationSensitivity = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// psychotherapy note information sensitivity
     /// </summary>
     public static readonly Coding PsychotherapyNoteInformationSensitivity = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// public health
     /// </summary>
     public static readonly Coding PublicHealth = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// power of attorney
     /// </summary>
     public static readonly Coding PowerOfAttorney = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// restricted
     /// </summary>
     public static readonly Coding Restricted = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
     };
     /// <summary>
-    /// 
+    /// race information sensitivity
     /// </summary>
     public static readonly Coding RaceInformationSensitivity = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// ratio measure scoring
     /// </summary>
     public static readonly Coding RatioMeasureScoring = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// records management
     /// </summary>
     public static readonly Coding RecordsManagement = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// redact
     /// </summary>
     public static readonly Coding Redact = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// redacted
     /// </summary>
     public static readonly Coding Redacted = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// prohibition against redisclosure mark
     /// </summary>
     public static readonly Coding ProhibitionAgainstRedisclosureMark = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// refrain policy
     /// </summary>
     public static readonly Coding RefrainPolicy = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// refugee
     /// </summary>
     public static readonly Coding Refugee = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// religion information sensitivity
     /// </summary>
     public static readonly Coding ReligionInformationSensitivity = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// relative
     /// </summary>
     public static readonly Coding Relative = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// relative dependent
     /// </summary>
     public static readonly Coding RelativeDependent = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// reliable
     /// </summary>
     public static readonly Coding Reliable = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// remittance advice
     /// </summary>
     public static readonly Coding RemittanceAdvice = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// rent
     /// </summary>
     public static readonly Coding Rent = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// research project compartment
     /// </summary>
     public static readonly Coding ResearchProjectCompartment = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// resource use measure type
     /// </summary>
     public static readonly Coding ResourceUseMeasureType = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// restricted confidentiality mark
     /// </summary>
     public static readonly Coding RestrictedConfidentialityMark = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// retirement investment account
     /// </summary>
     public static readonly Coding RetirementInvestmentAccount = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// retirement pay
     /// </summary>
     public static readonly Coding RetirementPay = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// right lateral decubitus
     /// </summary>
     public static readonly Coding RightLateralDecubitus = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// records management compartment
     /// </summary>
     public static readonly Coding RecordsManagementCompartment = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// rotating shift with nights
     /// </summary>
     public static readonly Coding RotatingShiftWithNights = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// rotating shift without nights
     /// </summary>
     public static readonly Coding RotatingShiftWithoutNights = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// reverse trendelenburg
     /// </summary>
     public static readonly Coding ReverseTrendelenburg = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// Some extent
     /// </summary>
     public static readonly Coding SomeExtent = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// sickle cell anemia information sensitivity
     /// </summary>
     public static readonly Coding SickleCellAnemiaInformationSensitivity = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// substitute decision maker asserted
     /// </summary>
     public static readonly Coding SubstituteDecisionMakerAsserted = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// substitute decision maker reported
     /// </summary>
     public static readonly Coding SubstituteDecisionMakerReported = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// sexual assault, abuse, or domestic violence information sensitivity
     /// </summary>
     public static readonly Coding SexualAssaultAbuseOrDomesticViolenceInformationSensitivity = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// security trust observation
     /// </summary>
     public static readonly Coding SecurityTrustObservation = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// Security Label Mark
     /// </summary>
     public static readonly Coding SecurityLabelMark = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// security policy
     /// </summary>
     public static readonly Coding SecurityPolicy = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// sexuality and reproductive health information sensitivity
     /// </summary>
     public static readonly Coding SexualityAndReproductiveHealthInformationSensitivity = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// Semi-Fowler's
     /// </summary>
     public static readonly Coding SemiFowlerQuoteS = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// sickle cell
     /// </summary>
     public static readonly Coding SickleCell = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// sitting
     /// </summary>
     public static readonly Coding Sitting = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// socio economic status
     /// </summary>
     public static readonly Coding SocioEconomicStatus = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// specially protected information sensitivity
     /// </summary>
     public static readonly Coding SpeciallyProtectedInformationSensitivity = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// spousal or partner support
     /// </summary>
     public static readonly Coding SpousalOrPartnerSupport = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// spouse only
     /// </summary>
     public static readonly Coding SpouseOnly = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// spouse dependent
     /// </summary>
     public static readonly Coding SpouseDependent = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// split shift
     /// </summary>
     public static readonly Coding SplitShift = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// sensitive service provider information sensitivity
     /// </summary>
     public static readonly Coding SensitiveServiceProviderInformationSensitivity = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// same sex partner
     /// </summary>
     public static readonly Coding SameSexPartner = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// sexually transmitted disease information sensitivity
     /// </summary>
     public static readonly Coding SexuallyTransmittedDiseaseInformationSensitivity = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// standing
     /// </summary>
     public static readonly Coding Standing = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// structure measure type
     /// </summary>
     public static readonly Coding StructureMeasureType = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// student enrollment
     /// </summary>
     public static readonly Coding StudentEnrollment = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// subsetted
     /// </summary>
     public static readonly Coding Subsetted = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// substance use disorder information sensitivity
     /// </summary>
     public static readonly Coding SubstanceUseDisorderInformationSensitivity = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// sundry expense
     /// </summary>
     public static readonly Coding SundryExpense = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// supine
     /// </summary>
     public static readonly Coding Supine = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// support network
     /// </summary>
     public static readonly Coding SupportNetwork = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// income supplement
     /// </summary>
     public static readonly Coding IncomeSupplement = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// syntactic transform
     /// </summary>
     public static readonly Coding SyntacticTransform = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// system development
     /// </summary>
     public static readonly Coding SystemDevelopment = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// tax obligation
     /// </summary>
     public static readonly Coding TaxObligation = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// taboo
     /// </summary>
     public static readonly Coding Taboo = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// threat
     /// </summary>
     public static readonly Coding Threat = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// training
     /// </summary>
     public static readonly Coding Training = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// transportation expense
     /// </summary>
     public static readonly Coding TransportationExpense = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// translational healthcare research
     /// </summary>
     public static readonly Coding TranslationalHealthcareResearch = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// trendelenburg
     /// </summary>
     public static readonly Coding Trendelenburg = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// treatment
     /// </summary>
     public static readonly Coding Treatment = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     };
     /// <summary>
-    /// 
+    /// translated
     /// </summary>
     public static readonly Coding Translated = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// trust accreditation observation
     /// </summary>
     public static readonly Coding TrustAccreditationObservation = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// trust agreement observation
     /// </summary>
     public static readonly Coding TrustAgreementObservation = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// trust certificate observation
     /// </summary>
     public static readonly Coding TrustCertificateObservation = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// none supplied 5
     /// </summary>
     public static readonly Coding NoneSupplied5 = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// trust assurance observation
     /// </summary>
     public static readonly Coding TrustAssuranceObservation = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// none supplied 6
     /// </summary>
     public static readonly Coding NoneSupplied6 = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// trust
     /// </summary>
     public static readonly Coding Trust = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// unrestricted
     /// </summary>
     public static readonly Coding Unrestricted = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
     };
     /// <summary>
-    /// 
+    /// uncertain reliability
     /// </summary>
     public static readonly Coding UncertainReliability = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// unemployed
     /// </summary>
     public static readonly Coding Unemployed = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// Unemployed
     /// </summary>
     public static readonly Coding Unemployed_2 = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// unrelated person
     /// </summary>
     public static readonly Coding UnrelatedPerson = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// unreliable
     /// </summary>
     public static readonly Coding Unreliable = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// upgrade security label
     /// </summary>
     public static readonly Coding UpgradeSecurityLabel = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// unrelated person dependent
     /// </summary>
     public static readonly Coding UnrelatedPersonDependent = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// utility expense
     /// </summary>
     public static readonly Coding UtilityExpense = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// (U)
     /// </summary>
     public static readonly Coding U = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// very restricted
     /// </summary>
     public static readonly Coding VeryRestricted = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
     };
     /// <summary>
-    /// 
+    /// versioned
     /// </summary>
     public static readonly Coding Versioned = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// violence information sensitivity
     /// </summary>
     public static readonly Coding ViolenceInformationSensitivity = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// celebrity information sensitivity
     /// </summary>
     public static readonly Coding CelebrityInformationSensitivity_2 = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// very long shift
     /// </summary>
     public static readonly Coding VeryLongShift = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// variable shift
     /// </summary>
     public static readonly Coding VariableShift = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue"
     };
     /// <summary>
-    /// 
+    /// Weighted Scoring
     /// </summary>
     public static readonly Coding WeightedScoring = new Coding
     {
@@ -4257,9 +4257,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActCoverageAssessmentObservationValue = "_ActCoverageAssessmentObservationValue";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueActCoverageAssessmentObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueActCoverageAssessmentObservationValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_ActCoverageAssessmentObservationValue";
+
+    /// <summary>
     /// Literal for code: ActFinancialStatusObservationValue
     /// </summary>
     public const string LiteralActFinancialStatusObservationValue = "_ActFinancialStatusObservationValue";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueActFinancialStatusObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueActFinancialStatusObservationValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_ActFinancialStatusObservationValue";
 
     /// <summary>
     /// Literal for code: ActInformationSensitivityPolicy
@@ -4267,9 +4277,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActInformationSensitivityPolicy = "_ActInformationSensitivityPolicy";
 
     /// <summary>
+    /// Literal for code: V3ActCodeActInformationSensitivityPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeActInformationSensitivityPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActInformationSensitivityPolicy";
+
+    /// <summary>
     /// Literal for code: AllergyTestValue
     /// </summary>
     public const string LiteralAllergyTestValue = "_AllergyTestValue";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueAllergyTestValue
+    /// </summary>
+    public const string LiteralV3ObservationValueAllergyTestValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_AllergyTestValue";
 
     /// <summary>
     /// Literal for code: AnnotationValue
@@ -4277,9 +4297,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAnnotationValue = "_AnnotationValue";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueAnnotationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueAnnotationValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_AnnotationValue";
+
+    /// <summary>
     /// Literal for code: CaseSeriousnessCriteria
     /// </summary>
     public const string LiteralCaseSeriousnessCriteria = "_CaseSeriousnessCriteria";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueCaseSeriousnessCriteria
+    /// </summary>
+    public const string LiteralV3ObservationValueCaseSeriousnessCriteria = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CaseSeriousnessCriteria";
 
     /// <summary>
     /// Literal for code: CommonClinicalObservationAssertionValue
@@ -4287,9 +4317,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCommonClinicalObservationAssertionValue = "_CommonClinicalObservationAssertionValue";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueCommonClinicalObservationAssertionValue
+    /// </summary>
+    public const string LiteralV3ObservationValueCommonClinicalObservationAssertionValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CommonClinicalObservationAssertionValue";
+
+    /// <summary>
     /// Literal for code: CommonClinicalObservationResultValue
     /// </summary>
     public const string LiteralCommonClinicalObservationResultValue = "_CommonClinicalObservationResultValue";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueCommonClinicalObservationResultValue
+    /// </summary>
+    public const string LiteralV3ObservationValueCommonClinicalObservationResultValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CommonClinicalObservationResultValue";
 
     /// <summary>
     /// Literal for code: CommonClinicalObservation
@@ -4297,9 +4337,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCommonClinicalObservation = "_CommonClinicalObservationValue";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueCommonClinicalObservation
+    /// </summary>
+    public const string LiteralV3ObservationValueCommonClinicalObservation = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CommonClinicalObservationValue";
+
+    /// <summary>
     /// Literal for code: CompositeMeasureScoring
     /// </summary>
     public const string LiteralCompositeMeasureScoring = "_CompositeMeasureScoring";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueCompositeMeasureScoring
+    /// </summary>
+    public const string LiteralV3ObservationValueCompositeMeasureScoring = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CompositeMeasureScoring";
 
     /// <summary>
     /// Literal for code: CoverageChemicalDependencyValue
@@ -4307,9 +4357,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCoverageChemicalDependencyValue = "_CoverageChemicalDependencyValue";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueCoverageChemicalDependencyValue
+    /// </summary>
+    public const string LiteralV3ObservationValueCoverageChemicalDependencyValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CoverageChemicalDependencyValue";
+
+    /// <summary>
     /// Literal for code: CoverageItemLimitObservationValue
     /// </summary>
     public const string LiteralCoverageItemLimitObservationValue = "_CoverageItemLimitObservationValue";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueCoverageItemLimitObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueCoverageItemLimitObservationValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CoverageItemLimitObservationValue";
 
     /// <summary>
     /// Literal for code: CoverageLevelObservationValue
@@ -4317,9 +4377,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCoverageLevelObservationValue = "_CoverageLevelObservationValue";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueCoverageLevelObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueCoverageLevelObservationValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CoverageLevelObservationValue";
+
+    /// <summary>
     /// Literal for code: CoverageLimitObservationValue
     /// </summary>
     public const string LiteralCoverageLimitObservationValue = "_CoverageLimitObservationValue";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueCoverageLimitObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueCoverageLimitObservationValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CoverageLimitObservationValue";
 
     /// <summary>
     /// Literal for code: CoverageLocationLimitObservationValue
@@ -4327,9 +4397,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCoverageLocationLimitObservationValue = "_CoverageLocationLimitObservationValue";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueCoverageLocationLimitObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueCoverageLocationLimitObservationValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CoverageLocationLimitObservationValue";
+
+    /// <summary>
     /// Literal for code: CriticalityObservationValue
     /// </summary>
     public const string LiteralCriticalityObservationValue = "_CriticalityObservationValue";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueCriticalityObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueCriticalityObservationValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CriticalityObservationValue";
 
     /// <summary>
     /// Literal for code: DeviceManufacturerEvaluationInterpretation
@@ -4337,9 +4417,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDeviceManufacturerEvaluationInterpretation = "_DeviceManufacturerEvaluationInterpretation";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueDeviceManufacturerEvaluationInterpretation
+    /// </summary>
+    public const string LiteralV3ObservationValueDeviceManufacturerEvaluationInterpretation = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_DeviceManufacturerEvaluationInterpretation";
+
+    /// <summary>
     /// Literal for code: DeviceManufacturerEvaluationMethod
     /// </summary>
     public const string LiteralDeviceManufacturerEvaluationMethod = "_DeviceManufacturerEvaluationMethod";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueDeviceManufacturerEvaluationMethod
+    /// </summary>
+    public const string LiteralV3ObservationValueDeviceManufacturerEvaluationMethod = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_DeviceManufacturerEvaluationMethod";
 
     /// <summary>
     /// Literal for code: DeviceManufacturerEvaluationResult
@@ -4347,9 +4437,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDeviceManufacturerEvaluationResult = "_DeviceManufacturerEvaluationResult";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueDeviceManufacturerEvaluationResult
+    /// </summary>
+    public const string LiteralV3ObservationValueDeviceManufacturerEvaluationResult = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_DeviceManufacturerEvaluationResult";
+
+    /// <summary>
     /// Literal for code: DiagnosisValue
     /// </summary>
     public const string LiteralDiagnosisValue = "_DiagnosisValue";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueDiagnosisValue
+    /// </summary>
+    public const string LiteralV3ObservationValueDiagnosisValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_DiagnosisValue";
 
     /// <summary>
     /// Literal for code: ECGAnnotationValue
@@ -4357,9 +4457,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralECGAnnotationValue = "_ECGAnnotationValue";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueECGAnnotationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueECGAnnotationValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_ECGAnnotationValue";
+
+    /// <summary>
     /// Literal for code: EmploymentStatus
     /// </summary>
     public const string LiteralEmploymentStatus = "_EmploymentStatus";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueEmploymentStatus
+    /// </summary>
+    public const string LiteralV3ObservationValueEmploymentStatus = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_EmploymentStatus";
 
     /// <summary>
     /// Literal for code: EntityInformationSensitivityPolicy
@@ -4367,9 +4477,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEntityInformationSensitivityPolicy = "_EntitySensitivityPolicyType";
 
     /// <summary>
+    /// Literal for code: V3ActCodeEntityInformationSensitivityPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeEntityInformationSensitivityPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_EntitySensitivityPolicyType";
+
+    /// <summary>
     /// Literal for code: GeneticObservationValue
     /// </summary>
     public const string LiteralGeneticObservationValue = "_GeneticObservationValue";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueGeneticObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueGeneticObservationValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_GeneticObservationValue";
 
     /// <summary>
     /// Literal for code: IndicationValue
@@ -4377,9 +4497,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIndicationValue = "_IndicationValue";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueIndicationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueIndicationValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_IndicationValue";
+
+    /// <summary>
     /// Literal for code: IndividualCaseSafetyReportValueDomains
     /// </summary>
     public const string LiteralIndividualCaseSafetyReportValueDomains = "_IndividualCaseSafetyReportValueDomains";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueIndividualCaseSafetyReportValueDomains
+    /// </summary>
+    public const string LiteralV3ObservationValueIndividualCaseSafetyReportValueDomains = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_IndividualCaseSafetyReportValueDomains";
 
     /// <summary>
     /// Literal for code: InformationSensitivityPolicy
@@ -4387,9 +4517,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInformationSensitivityPolicy = "_InformationSensitivityPolicy";
 
     /// <summary>
+    /// Literal for code: V3ActCodeInformationSensitivityPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeInformationSensitivityPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_InformationSensitivityPolicy";
+
+    /// <summary>
     /// Literal for code: InjuryObservationValue
     /// </summary>
     public const string LiteralInjuryObservationValue = "_InjuryObservationValue";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueInjuryObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueInjuryObservationValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_InjuryObservationValue";
 
     /// <summary>
     /// Literal for code: IntoleranceValue
@@ -4397,9 +4537,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIntoleranceValue = "_IntoleranceValue";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueIntoleranceValue
+    /// </summary>
+    public const string LiteralV3ObservationValueIntoleranceValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_IntoleranceValue";
+
+    /// <summary>
     /// Literal for code: IssueTriggerObservationValue
     /// </summary>
     public const string LiteralIssueTriggerObservationValue = "_IssueTriggerObservationValue";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueIssueTriggerObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueIssueTriggerObservationValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_IssueTriggerObservationValue";
 
     /// <summary>
     /// Literal for code: MeasurementImprovementNotation
@@ -4407,9 +4557,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMeasurementImprovementNotation = "_MeasurementImprovementNotation";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueMeasurementImprovementNotation
+    /// </summary>
+    public const string LiteralV3ObservationValueMeasurementImprovementNotation = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_MeasurementImprovementNotation";
+
+    /// <summary>
     /// Literal for code: ObservationMeasureScoring
     /// </summary>
     public const string LiteralObservationMeasureScoring = "_ObservationMeasureScoring";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueObservationMeasureScoring
+    /// </summary>
+    public const string LiteralV3ObservationValueObservationMeasureScoring = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_ObservationMeasureScoring";
 
     /// <summary>
     /// Literal for code: ObservationMeasureType
@@ -4417,9 +4577,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralObservationMeasureType = "_ObservationMeasureType";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueObservationMeasureType
+    /// </summary>
+    public const string LiteralV3ObservationValueObservationMeasureType = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_ObservationMeasureType";
+
+    /// <summary>
     /// Literal for code: OtherIndicationValue
     /// </summary>
     public const string LiteralOtherIndicationValue = "_OtherIndicationValue";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueOtherIndicationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueOtherIndicationValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_OtherIndicationValue";
 
     /// <summary>
     /// Literal for code: PartialCompletionScale
@@ -4427,9 +4597,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPartialCompletionScale = "_PartialCompletionScale";
 
     /// <summary>
+    /// Literal for code: V3ObservationValuePartialCompletionScale
+    /// </summary>
+    public const string LiteralV3ObservationValuePartialCompletionScale = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_PartialCompletionScale";
+
+    /// <summary>
     /// Literal for code: PertinentReactionRelatedness
     /// </summary>
     public const string LiteralPertinentReactionRelatedness = "_PertinentReactionRelatedness";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValuePertinentReactionRelatedness
+    /// </summary>
+    public const string LiteralV3ObservationValuePertinentReactionRelatedness = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_PertinentReactionRelatedness";
 
     /// <summary>
     /// Literal for code: ProductCharacterization
@@ -4437,9 +4617,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProductCharacterization = "_ProductCharacterization";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueProductCharacterization
+    /// </summary>
+    public const string LiteralV3ObservationValueProductCharacterization = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_ProductCharacterization";
+
+    /// <summary>
     /// Literal for code: ReactionActionTaken
     /// </summary>
     public const string LiteralReactionActionTaken = "_ReactionActionTaken";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueReactionActionTaken
+    /// </summary>
+    public const string LiteralV3ObservationValueReactionActionTaken = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_ReactionActionTaken";
 
     /// <summary>
     /// Literal for code: RoleInformationSensitivityPolicy
@@ -4447,9 +4637,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRoleInformationSensitivityPolicy = "_RoleInformationSensitivityPolicy";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRoleInformationSensitivityPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeRoleInformationSensitivityPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#_RoleInformationSensitivityPolicy";
+
+    /// <summary>
     /// Literal for code: AlterationIntegrity
     /// </summary>
     public const string LiteralAlterationIntegrity = "_SECALTINTOBV";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueAlterationIntegrity
+    /// </summary>
+    public const string LiteralV3ObservationValueAlterationIntegrity = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECALTINTOBV";
 
     /// <summary>
     /// Literal for code: SecurityCategory
@@ -4457,9 +4657,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSecurityCategory = "_SECCATOBV";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueSecurityCategory
+    /// </summary>
+    public const string LiteralV3ObservationValueSecurityCategory = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECCATOBV";
+
+    /// <summary>
     /// Literal for code: SecurityClassification
     /// </summary>
     public const string LiteralSecurityClassification = "_SECCLASSOBV";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSecurityClassification
+    /// </summary>
+    public const string LiteralV3ObservationValueSecurityClassification = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECCLASSOBV";
 
     /// <summary>
     /// Literal for code: SecurityControl
@@ -4467,9 +4677,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSecurityControl = "_SECCONOBV";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueSecurityControl
+    /// </summary>
+    public const string LiteralV3ObservationValueSecurityControl = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECCONOBV";
+
+    /// <summary>
     /// Literal for code: DataIntegrity
     /// </summary>
     public const string LiteralDataIntegrity = "_SECDATINTOBV";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueDataIntegrity
+    /// </summary>
+    public const string LiteralV3ObservationValueDataIntegrity = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECDATINTOBV";
 
     /// <summary>
     /// Literal for code: IntegrityConfidence
@@ -4477,9 +4697,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIntegrityConfidence = "_SECINTCONOBV";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueIntegrityConfidence
+    /// </summary>
+    public const string LiteralV3ObservationValueIntegrityConfidence = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECINTCONOBV";
+
+    /// <summary>
     /// Literal for code: SecurityIntegrity
     /// </summary>
     public const string LiteralSecurityIntegrity = "_SECINTOBV";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSecurityIntegrity
+    /// </summary>
+    public const string LiteralV3ObservationValueSecurityIntegrity = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECINTOBV";
 
     /// <summary>
     /// Literal for code: ProvenanceAssertedBy
@@ -4487,9 +4717,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProvenanceAssertedBy = "_SECINTPRVABOBV";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueProvenanceAssertedBy
+    /// </summary>
+    public const string LiteralV3ObservationValueProvenanceAssertedBy = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECINTPRVABOBV";
+
+    /// <summary>
     /// Literal for code: Provenance
     /// </summary>
     public const string LiteralProvenance = "_SECINTPRVOBV";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueProvenance
+    /// </summary>
+    public const string LiteralV3ObservationValueProvenance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECINTPRVOBV";
 
     /// <summary>
     /// Literal for code: ProvenanceReportedBy
@@ -4497,9 +4737,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProvenanceReportedBy = "_SECINTPRVRBOBV";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueProvenanceReportedBy
+    /// </summary>
+    public const string LiteralV3ObservationValueProvenanceReportedBy = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECINTPRVRBOBV";
+
+    /// <summary>
     /// Literal for code: IntegrityStatus
     /// </summary>
     public const string LiteralIntegrityStatus = "_SECINTSTOBV";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueIntegrityStatus
+    /// </summary>
+    public const string LiteralV3ObservationValueIntegrityStatus = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECINTSTOBV";
 
     /// <summary>
     /// Literal for code: SecurityObservationValue
@@ -4507,9 +4757,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSecurityObservationValue = "_SecurityObservationValue";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueSecurityObservationValue
+    /// </summary>
+    public const string LiteralV3ObservationValueSecurityObservationValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SecurityObservationValue";
+
+    /// <summary>
     /// Literal for code: SeverityObservation
     /// </summary>
     public const string LiteralSeverityObservation = "_SeverityObservation";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSeverityObservation
+    /// </summary>
+    public const string LiteralV3ObservationValueSeverityObservation = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SeverityObservation";
 
     /// <summary>
     /// Literal for code: SubjectBodyPosition
@@ -4517,9 +4777,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSubjectBodyPosition = "_SubjectBodyPosition";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueSubjectBodyPosition
+    /// </summary>
+    public const string LiteralV3ObservationValueSubjectBodyPosition = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SubjectBodyPosition";
+
+    /// <summary>
     /// Literal for code: SubjectReaction
     /// </summary>
     public const string LiteralSubjectReaction = "_SubjectReaction";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSubjectReaction
+    /// </summary>
+    public const string LiteralV3ObservationValueSubjectReaction = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SubjectReaction";
 
     /// <summary>
     /// Literal for code: SubjectReactionEmphasis
@@ -4527,9 +4797,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSubjectReactionEmphasis = "_SubjectReactionEmphasis";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueSubjectReactionEmphasis
+    /// </summary>
+    public const string LiteralV3ObservationValueSubjectReactionEmphasis = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SubjectReactionEmphasis";
+
+    /// <summary>
     /// Literal for code: SubjectReactionOutcome
     /// </summary>
     public const string LiteralSubjectReactionOutcome = "_SubjectReactionOutcome";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSubjectReactionOutcome
+    /// </summary>
+    public const string LiteralV3ObservationValueSubjectReactionOutcome = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SubjectReactionOutcome";
 
     /// <summary>
     /// Literal for code: SymptomValue
@@ -4537,9 +4817,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSymptomValue = "_SymptomValue";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueSymptomValue
+    /// </summary>
+    public const string LiteralV3ObservationValueSymptomValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SymptomValue";
+
+    /// <summary>
     /// Literal for code: VerificationOutcome
     /// </summary>
     public const string LiteralVerificationOutcome = "_VerificationOutcomeValue";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueVerificationOutcome
+    /// </summary>
+    public const string LiteralV3ObservationValueVerificationOutcome = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_VerificationOutcomeValue";
 
     /// <summary>
     /// Literal for code: WorkSchedule
@@ -4547,9 +4837,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWorkSchedule = "_WorkSchedule";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueWorkSchedule
+    /// </summary>
+    public const string LiteralV3ObservationValueWorkSchedule = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_WorkSchedule";
+
+    /// <summary>
     /// Literal for code: NoReaction
     /// </summary>
     public const string LiteralNoReaction = "A0";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueNoReaction
+    /// </summary>
+    public const string LiteralV3ObservationValueNoReaction = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#A0";
 
     /// <summary>
     /// Literal for code: MinimalReaction
@@ -4557,9 +4857,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMinimalReaction = "A1";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueMinimalReaction
+    /// </summary>
+    public const string LiteralV3ObservationValueMinimalReaction = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#A1";
+
+    /// <summary>
     /// Literal for code: MildReaction
     /// </summary>
     public const string LiteralMildReaction = "A2";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueMildReaction
+    /// </summary>
+    public const string LiteralV3ObservationValueMildReaction = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#A2";
 
     /// <summary>
     /// Literal for code: ModerateReaction
@@ -4567,9 +4877,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralModerateReaction = "A3";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueModerateReaction
+    /// </summary>
+    public const string LiteralV3ObservationValueModerateReaction = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#A3";
+
+    /// <summary>
     /// Literal for code: SevereReaction
     /// </summary>
     public const string LiteralSevereReaction = "A4";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSevereReaction
+    /// </summary>
+    public const string LiteralV3ObservationValueSevereReaction = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#A4";
 
     /// <summary>
     /// Literal for code: Abstracted
@@ -4577,9 +4897,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAbstracted = "ABSTRED";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueAbstracted
+    /// </summary>
+    public const string LiteralV3ObservationValueAbstracted = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ABSTRED";
+
+    /// <summary>
     /// Literal for code: AbuseVictim
     /// </summary>
     public const string LiteralAbuseVictim = "ABUSE";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueAbuseVictim
+    /// </summary>
+    public const string LiteralV3ObservationValueAbuseVictim = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ABUSE";
 
     /// <summary>
     /// Literal for code: AccessControlScheme
@@ -4587,9 +4917,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAccessControlScheme = "ACCESSCONSCHEME";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAccessControlScheme
+    /// </summary>
+    public const string LiteralV3ActCodeAccessControlScheme = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ACCESSCONSCHEME";
+
+    /// <summary>
     /// Literal for code: AccountableCareOrganizationCompartment
     /// </summary>
     public const string LiteralAccountableCareOrganizationCompartment = "ACOCOMPT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAccountableCareOrganizationCompartment
+    /// </summary>
+    public const string LiteralV3ActCodeAccountableCareOrganizationCompartment = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ACOCOMPT";
 
     /// <summary>
     /// Literal for code: ActiveCoverage
@@ -4597,9 +4937,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActiveCoverage = "ACT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueActiveCoverage
+    /// </summary>
+    public const string LiteralV3ObservationValueActiveCoverage = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ACT";
+
+    /// <summary>
     /// Literal for code: ActivePendingInvestigation
     /// </summary>
     public const string LiteralActivePendingInvestigation = "ACTPEND";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueActivePendingInvestigation
+    /// </summary>
+    public const string LiteralV3ObservationValueActivePendingInvestigation = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ACTPEND";
 
     /// <summary>
     /// Literal for code: AdultChild
@@ -4607,9 +4957,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAdultChild = "ADC";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueAdultChild
+    /// </summary>
+    public const string LiteralV3ObservationValueAdultChild = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ADC";
+
+    /// <summary>
     /// Literal for code: AdolescentInformationSensitivity
     /// </summary>
     public const string LiteralAdolescentInformationSensitivity = "ADOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAdolescentInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeAdolescentInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ADOL";
 
     /// <summary>
     /// Literal for code: AdoptionDocument
@@ -4617,9 +4977,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAdoptionDocument = "ADOPT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueAdoptionDocument
+    /// </summary>
+    public const string LiteralV3ObservationValueAdoptionDocument = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ADOPT";
+
+    /// <summary>
     /// Literal for code: Aggregated
     /// </summary>
     public const string LiteralAggregated = "AGGRED";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueAggregated
+    /// </summary>
+    public const string LiteralV3ObservationValueAggregated = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#AGGRED";
 
     /// <summary>
     /// Literal for code: AllOrNothingScoring
@@ -4627,9 +4997,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAllOrNothingScoring = "ALLORNONESCR";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueAllOrNothingScoring
+    /// </summary>
+    public const string LiteralV3ObservationValueAllOrNothingScoring = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ALLORNONESCR";
+
+    /// <summary>
     /// Literal for code: Alone
     /// </summary>
     public const string LiteralAlone = "ALONE";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueAlone
+    /// </summary>
+    public const string LiteralV3ObservationValueAlone = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ALONE";
 
     /// <summary>
     /// Literal for code: Annuity
@@ -4637,9 +5017,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAnnuity = "ANNUITY";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueAnnuity
+    /// </summary>
+    public const string LiteralV3ObservationValueAnnuity = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ANNUITY";
+
+    /// <summary>
     /// Literal for code: Anonymize
     /// </summary>
     public const string LiteralAnonymize = "ANONY";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAnonymize
+    /// </summary>
+    public const string LiteralV3ActCodeAnonymize = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ANONY";
 
     /// <summary>
     /// Literal for code: Anonymized
@@ -4647,9 +5037,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAnonymized = "ANONYED";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueAnonymized
+    /// </summary>
+    public const string LiteralV3ObservationValueAnonymized = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ANONYED";
+
+    /// <summary>
     /// Literal for code: AccountingOfDisclosure
     /// </summary>
     public const string LiteralAccountingOfDisclosure = "AOD";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAccountingOfDisclosure
+    /// </summary>
+    public const string LiteralV3ActCodeAccountingOfDisclosure = "http://terminology.hl7.org/CodeSystem/v3-ActCode#AOD";
 
     /// <summary>
     /// Literal for code: AppropriateUseProcessMeasure
@@ -4657,9 +5057,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAppropriateUseProcessMeasure = "APPROPRIATE";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueAppropriateUseProcessMeasure
+    /// </summary>
+    public const string LiteralV3ObservationValueAppropriateUseProcessMeasure = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#APPROPRIATE";
+
+    /// <summary>
     /// Literal for code: Asset
     /// </summary>
     public const string LiteralAsset = "ASSET";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueAsset
+    /// </summary>
+    public const string LiteralV3ObservationValueAsset = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ASSET";
 
     /// <summary>
     /// Literal for code: Audit
@@ -4667,9 +5077,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAudit = "AUDIT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAudit
+    /// </summary>
+    public const string LiteralV3ActCodeAudit = "http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT";
+
+    /// <summary>
     /// Literal for code: AuditTrail
     /// </summary>
     public const string LiteralAuditTrail = "AUDTR";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAuditTrail
+    /// </summary>
+    public const string LiteralV3ActCodeAuditTrail = "http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDTR";
 
     /// <summary>
     /// Literal for code: AuthorizationPolicy
@@ -4677,9 +5097,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAuthorizationPolicy = "AUTHPOL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAuthorizationPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeAuthorizationPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#AUTHPOL";
+
+    /// <summary>
     /// Literal for code: BusinessInformationSensitivity
     /// </summary>
     public const string LiteralBusinessInformationSensitivity = "B";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeBusinessInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeBusinessInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#B";
 
     /// <summary>
     /// Literal for code: BehavioralHealthInformationSensitivity
@@ -4687,9 +5117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBehavioralHealthInformationSensitivity = "BH";
 
     /// <summary>
+    /// Literal for code: V3ActCodeBehavioralHealthInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeBehavioralHealthInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#BH";
+
+    /// <summary>
     /// Literal for code: BiomedicalResearch
     /// </summary>
     public const string LiteralBiomedicalResearch = "BIORCH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonBiomedicalResearch
+    /// </summary>
+    public const string LiteralV3ActReasonBiomedicalResearch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#BIORCH";
 
     /// <summary>
     /// Literal for code: BreakTheGlass
@@ -4697,9 +5137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBreakTheGlass = "BTG";
 
     /// <summary>
+    /// Literal for code: V3ActReasonBreakTheGlass
+    /// </summary>
+    public const string LiteralV3ActReasonBreakTheGlass = "http://terminology.hl7.org/CodeSystem/v3-ActReason#BTG";
+
+    /// <summary>
     /// Literal for code: BirthCertificate
     /// </summary>
     public const string LiteralBirthCertificate = "BTHCERT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueBirthCertificate
+    /// </summary>
+    public const string LiteralV3ObservationValueBirthCertificate = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#BTHCERT";
 
     /// <summary>
     /// Literal for code: CareManagement
@@ -4707,9 +5157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCareManagement = "CAREMGT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonCareManagement
+    /// </summary>
+    public const string LiteralV3ActReasonCareManagement = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CAREMGT";
+
+    /// <summary>
     /// Literal for code: CreditableCoverageDocument
     /// </summary>
     public const string LiteralCreditableCoverageDocument = "CCOC";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueCreditableCoverageDocument
+    /// </summary>
+    public const string LiteralV3ObservationValueCreditableCoverageDocument = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CCOC";
 
     /// <summary>
     /// Literal for code: CDSSystemCompartment
@@ -4717,9 +5177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCDSSystemCompartment = "CDSSCOMPT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeCDSSystemCompartment
+    /// </summary>
+    public const string LiteralV3ActCodeCDSSystemCompartment = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CDSSCOMPT";
+
+    /// <summary>
     /// Literal for code: CelebrityInformationSensitivity
     /// </summary>
     public const string LiteralCelebrityInformationSensitivity = "CEL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCelebrityInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeCelebrityInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CEL";
 
     /// <summary>
     /// Literal for code: Child
@@ -4727,9 +5197,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChild = "CHD";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueChild
+    /// </summary>
+    public const string LiteralV3ObservationValueChild = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CHD";
+
+    /// <summary>
     /// Literal for code: ChildSupport
     /// </summary>
     public const string LiteralChildSupport = "CHILD";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueChildSupport
+    /// </summary>
+    public const string LiteralV3ObservationValueChildSupport = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CHILD";
 
     /// <summary>
     /// Literal for code: ClinicianAsserted
@@ -4737,9 +5217,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClinicianAsserted = "CLINAST";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueClinicianAsserted
+    /// </summary>
+    public const string LiteralV3ObservationValueClinicianAsserted = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CLINAST";
+
+    /// <summary>
     /// Literal for code: ClinicianReported
     /// </summary>
     public const string LiteralClinicianReported = "CLINRPT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueClinicianReported
+    /// </summary>
+    public const string LiteralV3ObservationValueClinicianReported = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CLINRPT";
 
     /// <summary>
     /// Literal for code: ClinicalTrialResearch
@@ -4747,9 +5237,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClinicalTrialResearch = "CLINTRCH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonClinicalTrialResearch
+    /// </summary>
+    public const string LiteralV3ActReasonClinicalTrialResearch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINTRCH";
+
+    /// <summary>
     /// Literal for code: ClinicalTrialResearchWithoutPatientCare
     /// </summary>
     public const string LiteralClinicalTrialResearchWithoutPatientCare = "CLINTRCHNPC";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonClinicalTrialResearchWithoutPatientCare
+    /// </summary>
+    public const string LiteralV3ActReasonClinicalTrialResearchWithoutPatientCare = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINTRCHNPC";
 
     /// <summary>
     /// Literal for code: ClinicalTrialResearchWithPatientCare
@@ -4757,9 +5257,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClinicalTrialResearchWithPatientCare = "CLINTRCHPC";
 
     /// <summary>
+    /// Literal for code: V3ActReasonClinicalTrialResearchWithPatientCare
+    /// </summary>
+    public const string LiteralV3ActReasonClinicalTrialResearchWithPatientCare = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINTRCHPC";
+
+    /// <summary>
     /// Literal for code: ClinicalTrial
     /// </summary>
     public const string LiteralClinicalTrial = "CLINTRL";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonClinicalTrial
+    /// </summary>
+    public const string LiteralV3ActReasonClinicalTrial = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINTRL";
 
     /// <summary>
     /// Literal for code: ClaimAttachment
@@ -4767,9 +5277,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClaimAttachment = "CLMATTCH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonClaimAttachment
+    /// </summary>
+    public const string LiteralV3ActReasonClaimAttachment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLMATTCH";
+
+    /// <summary>
     /// Literal for code: ClothingExpense
     /// </summary>
     public const string LiteralClothingExpense = "CLOTH";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueClothingExpense
+    /// </summary>
+    public const string LiteralV3ObservationValueClothingExpense = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CLOTH";
 
     /// <summary>
     /// Literal for code: CoordinationOfCare
@@ -4777,9 +5297,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCoordinationOfCare = "COC";
 
     /// <summary>
+    /// Literal for code: V3ActReasonCoordinationOfCare
+    /// </summary>
+    public const string LiteralV3ActReasonCoordinationOfCare = "http://terminology.hl7.org/CodeSystem/v3-ActReason#COC";
+
+    /// <summary>
     /// Literal for code: CognitiveDisabilityInformationSensitivity
     /// </summary>
     public const string LiteralCognitiveDisabilityInformationSensitivity = "COGN";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCognitiveDisabilityInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeCognitiveDisabilityInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#COGN";
 
     /// <summary>
     /// Literal for code: CohortMeasureScoring
@@ -4787,9 +5317,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCohortMeasureScoring = "COHORT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueCohortMeasureScoring
+    /// </summary>
+    public const string LiteralV3ObservationValueCohortMeasureScoring = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#COHORT";
+
+    /// <summary>
     /// Literal for code: CompositeMeasureType
     /// </summary>
     public const string LiteralCompositeMeasureType = "COMPOSITE";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueCompositeMeasureType
+    /// </summary>
+    public const string LiteralV3ObservationValueCompositeMeasureType = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#COMPOSITE";
 
     /// <summary>
     /// Literal for code: Compartment
@@ -4797,9 +5337,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCompartment = "COMPT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeCompartment
+    /// </summary>
+    public const string LiteralV3ActCodeCompartment = "http://terminology.hl7.org/CodeSystem/v3-ActCode#COMPT";
+
+    /// <summary>
     /// Literal for code: ConfidentialMark
     /// </summary>
     public const string LiteralConfidentialMark = "ConfidentialMark";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeConfidentialMark
+    /// </summary>
+    public const string LiteralV3ActCodeConfidentialMark = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ConfidentialMark";
 
     /// <summary>
     /// Literal for code: CONTROLLED
@@ -4807,9 +5357,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCONTROLLED = "CONTROLLED";
 
     /// <summary>
+    /// Literal for code: V3ActCodeCONTROLLED
+    /// </summary>
+    public const string LiteralV3ActCodeCONTROLLED = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CONTROLLED";
+
+    /// <summary>
     /// Literal for code: ControlledUnclassifiedInformation
     /// </summary>
     public const string LiteralControlledUnclassifiedInformation = "ControlledUnclassifiedInformation";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeControlledUnclassifiedInformation
+    /// </summary>
+    public const string LiteralV3ActCodeControlledUnclassifiedInformation = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ControlledUnclassifiedInformation";
 
     /// <summary>
     /// Literal for code: ContinuousVariableMeasureScoring
@@ -4817,9 +5377,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralContinuousVariableMeasureScoring = "CONTVAR";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueContinuousVariableMeasureScoring
+    /// </summary>
+    public const string LiteralV3ObservationValueContinuousVariableMeasureScoring = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CONTVAR";
+
+    /// <summary>
     /// Literal for code: CopyOfOriginalMark
     /// </summary>
     public const string LiteralCopyOfOriginalMark = "COPYMark";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCopyOfOriginalMark
+    /// </summary>
+    public const string LiteralV3ActCodeCopyOfOriginalMark = "http://terminology.hl7.org/CodeSystem/v3-ActCode#COPYMark";
 
     /// <summary>
     /// Literal for code: CoverageAuthorization
@@ -4827,9 +5397,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCoverageAuthorization = "COVAUTH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonCoverageAuthorization
+    /// </summary>
+    public const string LiteralV3ActReasonCoverageAuthorization = "http://terminology.hl7.org/CodeSystem/v3-ActReason#COVAUTH";
+
+    /// <summary>
     /// Literal for code: CoverageUnderPolicyOrProgram
     /// </summary>
     public const string LiteralCoverageUnderPolicyOrProgram = "COVERAGE";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonCoverageUnderPolicyOrProgram
+    /// </summary>
+    public const string LiteralV3ActReasonCoverageUnderPolicyOrProgram = "http://terminology.hl7.org/CodeSystem/v3-ActReason#COVERAGE";
 
     /// <summary>
     /// Literal for code: ComplyWithConfidentialityCode
@@ -4837,9 +5417,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralComplyWithConfidentialityCode = "CPLYCC";
 
     /// <summary>
+    /// Literal for code: V3ActCodeComplyWithConfidentialityCode
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithConfidentialityCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYCC";
+
+    /// <summary>
     /// Literal for code: ComplyWithConsentDirective
     /// </summary>
     public const string LiteralComplyWithConsentDirective = "CPLYCD";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeComplyWithConsentDirective
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithConsentDirective = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYCD";
 
     /// <summary>
     /// Literal for code: ComplyWithControlledUnclassifiedInformationPolicy
@@ -4847,9 +5437,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralComplyWithControlledUnclassifiedInformationPolicy = "CPLYCUI";
 
     /// <summary>
+    /// Literal for code: V3ActCodeComplyWithControlledUnclassifiedInformationPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithControlledUnclassifiedInformationPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYCUI";
+
+    /// <summary>
     /// Literal for code: ComplyWithJurisdictionalPrivacyPolicy
     /// </summary>
     public const string LiteralComplyWithJurisdictionalPrivacyPolicy = "CPLYJPP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeComplyWithJurisdictionalPrivacyPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithJurisdictionalPrivacyPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYJPP";
 
     /// <summary>
     /// Literal for code: ComplyWithJurisdictionalSecurityPolicy
@@ -4857,9 +5457,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralComplyWithJurisdictionalSecurityPolicy = "CPLYJSP";
 
     /// <summary>
+    /// Literal for code: V3ActCodeComplyWithJurisdictionalSecurityPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithJurisdictionalSecurityPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYJSP";
+
+    /// <summary>
     /// Literal for code: ComplyWithOrganizationalPrivacyPolicy
     /// </summary>
     public const string LiteralComplyWithOrganizationalPrivacyPolicy = "CPLYOPP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeComplyWithOrganizationalPrivacyPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithOrganizationalPrivacyPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYOPP";
 
     /// <summary>
     /// Literal for code: ComplyWithOrganizationalSecurityPolicy
@@ -4867,9 +5477,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralComplyWithOrganizationalSecurityPolicy = "CPLYOSP";
 
     /// <summary>
+    /// Literal for code: V3ActCodeComplyWithOrganizationalSecurityPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithOrganizationalSecurityPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYOSP";
+
+    /// <summary>
     /// Literal for code: ComplyWithPolicy
     /// </summary>
     public const string LiteralComplyWithPolicy = "CPLYPOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeComplyWithPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeComplyWithPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYPOL";
 
     /// <summary>
     /// Literal for code: HighCriticality
@@ -4877,9 +5497,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHighCriticality = "CRITH";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueHighCriticality
+    /// </summary>
+    public const string LiteralV3ObservationValueHighCriticality = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CRITH";
+
+    /// <summary>
     /// Literal for code: LowCriticality
     /// </summary>
     public const string LiteralLowCriticality = "CRITL";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueLowCriticality
+    /// </summary>
+    public const string LiteralV3ObservationValueLowCriticality = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CRITL";
 
     /// <summary>
     /// Literal for code: UnableToAssessCriticality
@@ -4887,9 +5517,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUnableToAssessCriticality = "CRITU";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueUnableToAssessCriticality
+    /// </summary>
+    public const string LiteralV3ObservationValueUnableToAssessCriticality = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CRITU";
+
+    /// <summary>
     /// Literal for code: CryptographicHashFunction
     /// </summary>
     public const string LiteralCryptographicHashFunction = "CRYTOHASH";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueCryptographicHashFunction
+    /// </summary>
+    public const string LiteralV3ObservationValueCryptographicHashFunction = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CRYTOHASH";
 
     /// <summary>
     /// Literal for code: CareTeamCompartment
@@ -4897,9 +5537,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCareTeamCompartment = "CTCOMPT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeCareTeamCompartment
+    /// </summary>
+    public const string LiteralV3ActCodeCareTeamCompartment = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CTCOMPT";
+
+    /// <summary>
     /// Literal for code: CUI
     /// </summary>
     public const string LiteralCUI = "CUI";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCUI
+    /// </summary>
+    public const string LiteralV3ActCodeCUI = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUI";
 
     /// <summary>
     /// Literal for code: CUIHLTH
@@ -4907,9 +5557,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCUIHLTH = "CUIHLTH";
 
     /// <summary>
+    /// Literal for code: V3ActCodeCUIHLTH
+    /// </summary>
+    public const string LiteralV3ActCodeCUIHLTH = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUIHLTH";
+
+    /// <summary>
     /// Literal for code: CUIHLTH_2
     /// </summary>
     public const string LiteralCUIHLTH_2 = "CUIHLTHP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCUIHLTH_2
+    /// </summary>
+    public const string LiteralV3ActCodeCUIHLTH_2 = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUIHLTHP";
 
     /// <summary>
     /// Literal for code: CUIMark
@@ -4917,9 +5577,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCUIMark = "CUIMark";
 
     /// <summary>
+    /// Literal for code: V3ActCodeCUIMark
+    /// </summary>
+    public const string LiteralV3ActCodeCUIMark = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUIMark";
+
+    /// <summary>
     /// Literal for code: CUI_2
     /// </summary>
     public const string LiteralCUI_2 = "CUIP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCUI_2
+    /// </summary>
+    public const string LiteralV3ActCodeCUI_2 = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUIP";
 
     /// <summary>
     /// Literal for code: CUIPRVCY
@@ -4927,9 +5597,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCUIPRVCY = "CUIPRVCY";
 
     /// <summary>
+    /// Literal for code: V3ActCodeCUIPRVCY
+    /// </summary>
+    public const string LiteralV3ActCodeCUIPRVCY = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUIPRVCY";
+
+    /// <summary>
     /// Literal for code: CUIPRVCY_2
     /// </summary>
     public const string LiteralCUIPRVCY_2 = "CUIPRVCYP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCUIPRVCY_2
+    /// </summary>
+    public const string LiteralV3ActCodeCUIPRVCY_2 = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUIPRVCYP";
 
     /// <summary>
     /// Literal for code: CUISPHLTH
@@ -4937,9 +5617,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCUISPHLTH = "CUISP-HLTH";
 
     /// <summary>
+    /// Literal for code: V3ActCodeCUISPHLTH
+    /// </summary>
+    public const string LiteralV3ActCodeCUISPHLTH = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUISP-HLTH";
+
+    /// <summary>
     /// Literal for code: CUISPHLTH_2
     /// </summary>
     public const string LiteralCUISPHLTH_2 = "CUISP-HLTHP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCUISPHLTH_2
+    /// </summary>
+    public const string LiteralV3ActCodeCUISPHLTH_2 = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUISP-HLTHP";
 
     /// <summary>
     /// Literal for code: CUISPPRVCY
@@ -4947,9 +5637,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCUISPPRVCY = "CUISP-PRVCY";
 
     /// <summary>
+    /// Literal for code: V3ActCodeCUISPPRVCY
+    /// </summary>
+    public const string LiteralV3ActCodeCUISPPRVCY = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUISP-PRVCY";
+
+    /// <summary>
     /// Literal for code: CUISPPRVCY_2
     /// </summary>
     public const string LiteralCUISPPRVCY_2 = "CUISP-PRVCYP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCUISPPRVCY_2
+    /// </summary>
+    public const string LiteralV3ActCodeCUISPPRVCY_2 = "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUISP-PRVCYP";
 
     /// <summary>
     /// Literal for code: DeclassifySecurityLabel
@@ -4957,9 +5657,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDeclassifySecurityLabel = "DECLASSIFYLABEL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDeclassifySecurityLabel
+    /// </summary>
+    public const string LiteralV3ActCodeDeclassifySecurityLabel = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DECLASSIFYLABEL";
+
+    /// <summary>
     /// Literal for code: DecreasedScoreIndicatesImprovement
     /// </summary>
     public const string LiteralDecreasedScoreIndicatesImprovement = "DecrIsImp";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueDecreasedScoreIndicatesImprovement
+    /// </summary>
+    public const string LiteralV3ObservationValueDecreasedScoreIndicatesImprovement = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DecrIsImp";
 
     /// <summary>
     /// Literal for code: Deidentify
@@ -4967,9 +5677,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDeidentify = "DEID";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDeidentify
+    /// </summary>
+    public const string LiteralV3ActCodeDeidentify = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DEID";
+
+    /// <summary>
     /// Literal for code: DeleteAfterUse
     /// </summary>
     public const string LiteralDeleteAfterUse = "DELAU";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDeleteAfterUse
+    /// </summary>
+    public const string LiteralV3ActCodeDeleteAfterUse = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DELAU";
 
     /// <summary>
     /// Literal for code: DelegationPolicy
@@ -4977,9 +5697,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDelegationPolicy = "DELEPOL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDelegationPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeDelegationPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DELEPOL";
+
+    /// <summary>
     /// Literal for code: DeliverOnlyToAddresseeMark
     /// </summary>
     public const string LiteralDeliverOnlyToAddresseeMark = "DeliverToAddresseeOnlyMark";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDeliverOnlyToAddresseeMark
+    /// </summary>
+    public const string LiteralV3ActCodeDeliverOnlyToAddresseeMark = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DeliverToAddresseeOnlyMark";
 
     /// <summary>
     /// Literal for code: AllDemographicInformationSensitivity
@@ -4987,9 +5717,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAllDemographicInformationSensitivity = "DEMO";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAllDemographicInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeAllDemographicInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DEMO";
+
+    /// <summary>
     /// Literal for code: Dependent
     /// </summary>
     public const string LiteralDependent = "DEP";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueDependent
+    /// </summary>
+    public const string LiteralV3ObservationValueDependent = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DEP";
 
     /// <summary>
     /// Literal for code: DependentChildren
@@ -4997,9 +5737,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDependentChildren = "DEPCHD";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueDependentChildren
+    /// </summary>
+    public const string LiteralV3ObservationValueDependentChildren = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DEPCHD";
+
+    /// <summary>
     /// Literal for code: DependentSpouse
     /// </summary>
     public const string LiteralDependentSpouse = "DEPSPS";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueDependentSpouse
+    /// </summary>
+    public const string LiteralV3ObservationValueDependentSpouse = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DEPSPS";
 
     /// <summary>
     /// Literal for code: DependentYoungChildren
@@ -5007,9 +5757,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDependentYoungChildren = "DEPYGCHD";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueDependentYoungChildren
+    /// </summary>
+    public const string LiteralV3ObservationValueDependentYoungChildren = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DEPYGCHD";
+
+    /// <summary>
     /// Literal for code: DeviceAsserted
     /// </summary>
     public const string LiteralDeviceAsserted = "DEVAST";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueDeviceAsserted
+    /// </summary>
+    public const string LiteralV3ObservationValueDeviceAsserted = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DEVAST";
 
     /// <summary>
     /// Literal for code: DeviceReported
@@ -5017,9 +5777,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDeviceReported = "DEVRPT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueDeviceReported
+    /// </summary>
+    public const string LiteralV3ObservationValueDeviceReported = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DEVRPT";
+
+    /// <summary>
     /// Literal for code: DiagnosisInformationSensitivity
     /// </summary>
     public const string LiteralDiagnosisInformationSensitivity = "DIA";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDiagnosisInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeDiagnosisInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DIA";
 
     /// <summary>
     /// Literal for code: DigitalSignature
@@ -5027,9 +5797,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDigitalSignature = "DIGSIG";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueDigitalSignature
+    /// </summary>
+    public const string LiteralV3ObservationValueDigitalSignature = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DIGSIG";
+
+    /// <summary>
     /// Literal for code: DisabilityPay
     /// </summary>
     public const string LiteralDisabilityPay = "DISABL";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueDisabilityPay
+    /// </summary>
+    public const string LiteralV3ObservationValueDisabilityPay = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DISABL";
 
     /// <summary>
     /// Literal for code: Disabled
@@ -5037,9 +5817,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDisabled = "DISABLE";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueDisabled
+    /// </summary>
+    public const string LiteralV3ObservationValueDisabled = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DISABLE";
+
+    /// <summary>
     /// Literal for code: Disaster
     /// </summary>
     public const string LiteralDisaster = "DISASTER";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonDisaster
+    /// </summary>
+    public const string LiteralV3ActReasonDisaster = "http://terminology.hl7.org/CodeSystem/v3-ActReason#DISASTER";
 
     /// <summary>
     /// Literal for code: DateOfBirthInformationSensitivity
@@ -5047,9 +5837,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDateOfBirthInformationSensitivity = "DOB";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDateOfBirthInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeDateOfBirthInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOB";
+
+    /// <summary>
     /// Literal for code: Donation
     /// </summary>
     public const string LiteralDonation = "DONAT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonDonation
+    /// </summary>
+    public const string LiteralV3ActReasonDonation = "http://terminology.hl7.org/CodeSystem/v3-ActReason#DONAT";
 
     /// <summary>
     /// Literal for code: DowngradeSecurityLabel
@@ -5057,9 +5857,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDowngradeSecurityLabel = "DOWNGRDLABEL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDowngradeSecurityLabel
+    /// </summary>
+    public const string LiteralV3ActCodeDowngradeSecurityLabel = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOWNGRDLABEL";
+
+    /// <summary>
     /// Literal for code: DomesticPartner
     /// </summary>
     public const string LiteralDomesticPartner = "DP";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueDomesticPartner
+    /// </summary>
+    public const string LiteralV3ObservationValueDomesticPartner = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DP";
 
     /// <summary>
     /// Literal for code: DraftMark
@@ -5067,9 +5877,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDraftMark = "DRAFTMark";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDraftMark
+    /// </summary>
+    public const string LiteralV3ActCodeDraftMark = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DRAFTMark";
+
+    /// <summary>
     /// Literal for code: DrugInformationSensitivity
     /// </summary>
     public const string LiteralDrugInformationSensitivity = "DRGIS";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDrugInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeDrugInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DRGIS";
 
     /// <summary>
     /// Literal for code: DeriveSecurityLabel
@@ -5077,9 +5897,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDeriveSecurityLabel = "DRIVLABEL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeDeriveSecurityLabel
+    /// </summary>
+    public const string LiteralV3ActCodeDeriveSecurityLabel = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DRIVLABEL";
+
+    /// <summary>
     /// Literal for code: DriverLicense
     /// </summary>
     public const string LiteralDriverLicense = "DRLIC";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueDriverLicense
+    /// </summary>
+    public const string LiteralV3ObservationValueDriverLicense = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DRLIC";
 
     /// <summary>
     /// Literal for code: DrugUse
@@ -5087,9 +5917,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDrugUse = "DRUG";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueDrugUse
+    /// </summary>
+    public const string LiteralV3ObservationValueDrugUse = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DRUG";
+
+    /// <summary>
     /// Literal for code: DaytimeShift
     /// </summary>
     public const string LiteralDaytimeShift = "DS";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueDaytimeShift
+    /// </summary>
+    public const string LiteralV3ObservationValueDaytimeShift = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DS";
 
     /// <summary>
     /// Literal for code: DiseaseSpecificHealthcareResearch
@@ -5097,9 +5937,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDiseaseSpecificHealthcareResearch = "DSRCH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonDiseaseSpecificHealthcareResearch
+    /// </summary>
+    public const string LiteralV3ActReasonDiseaseSpecificHealthcareResearch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#DSRCH";
+
+    /// <summary>
     /// Literal for code: DevelopmentalDisabilityInformationSensitivity
     /// </summary>
     public const string LiteralDevelopmentalDisabilityInformationSensitivity = "DVD";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDevelopmentalDisabilityInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeDevelopmentalDisabilityInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DVD";
 
     /// <summary>
     /// Literal for code: Employee
@@ -5107,9 +5957,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmployee = "ECH";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueEmployee
+    /// </summary>
+    public const string LiteralV3ObservationValueEmployee = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ECH";
+
+    /// <summary>
     /// Literal for code: EfficiencyMeasureType
     /// </summary>
     public const string LiteralEfficiencyMeasureType = "EFFICIENCY";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueEfficiencyMeasureType
+    /// </summary>
+    public const string LiteralV3ObservationValueEfficiencyMeasureType = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#EFFICIENCY";
 
     /// <summary>
     /// Literal for code: Eligible
@@ -5117,9 +5977,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEligible = "ELG";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueEligible
+    /// </summary>
+    public const string LiteralV3ObservationValueEligible = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ELG";
+
+    /// <summary>
     /// Literal for code: EligibilityDetermination
     /// </summary>
     public const string LiteralEligibilityDetermination = "ELIGDTRM";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonEligibilityDetermination
+    /// </summary>
+    public const string LiteralV3ActReasonEligibilityDetermination = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ELIGDTRM";
 
     /// <summary>
     /// Literal for code: EligibilityVerification
@@ -5127,9 +5997,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEligibilityVerification = "ELIGVER";
 
     /// <summary>
+    /// Literal for code: V3ActReasonEligibilityVerification
+    /// </summary>
+    public const string LiteralV3ActReasonEligibilityVerification = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ELIGVER";
+
+    /// <summary>
     /// Literal for code: EligibilityIndicator
     /// </summary>
     public const string LiteralEligibilityIndicator = "ELSTAT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueEligibilityIndicator
+    /// </summary>
+    public const string LiteralV3ObservationValueEligibilityIndicator = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ELSTAT";
 
     /// <summary>
     /// Literal for code: EmotionalDisturbanceInformationSensitivity
@@ -5137,9 +6017,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmotionalDisturbanceInformationSensitivity = "EMOTDIS";
 
     /// <summary>
+    /// Literal for code: V3ActCodeEmotionalDisturbanceInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeEmotionalDisturbanceInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#EMOTDIS";
+
+    /// <summary>
     /// Literal for code: EmployeeInformationSensitivity
     /// </summary>
     public const string LiteralEmployeeInformationSensitivity = "EMP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEmployeeInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeEmployeeInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#EMP";
 
     /// <summary>
     /// Literal for code: EmployerInformationSensitivity
@@ -5147,9 +6037,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmployerInformationSensitivity = "EMPL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeEmployerInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeEmployerInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#EMPL";
+
+    /// <summary>
     /// Literal for code: Employed
     /// </summary>
     public const string LiteralEmployed = "Employed";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueEmployed
+    /// </summary>
+    public const string LiteralV3ObservationValueEmployed = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#Employed";
 
     /// <summary>
     /// Literal for code: EarlyMorningShift
@@ -5157,9 +6057,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEarlyMorningShift = "EMS";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueEarlyMorningShift
+    /// </summary>
+    public const string LiteralV3ObservationValueEarlyMorningShift = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#EMS";
+
+    /// <summary>
     /// Literal for code: Encrypt
     /// </summary>
     public const string LiteralEncrypt = "ENCRYPT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEncrypt
+    /// </summary>
+    public const string LiteralV3ActCodeEncrypt = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ENCRYPT";
 
     /// <summary>
     /// Literal for code: EncryptAtRest
@@ -5167,9 +6077,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEncryptAtRest = "ENCRYPTR";
 
     /// <summary>
+    /// Literal for code: V3ActCodeEncryptAtRest
+    /// </summary>
+    public const string LiteralV3ActCodeEncryptAtRest = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ENCRYPTR";
+
+    /// <summary>
     /// Literal for code: EncryptInTransit
     /// </summary>
     public const string LiteralEncryptInTransit = "ENCRYPTT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeEncryptInTransit
+    /// </summary>
+    public const string LiteralV3ActCodeEncryptInTransit = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ENCRYPTT";
 
     /// <summary>
     /// Literal for code: EncryptInUse
@@ -5177,9 +6097,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEncryptInUse = "ENCRYPTU";
 
     /// <summary>
+    /// Literal for code: V3ActCodeEncryptInUse
+    /// </summary>
+    public const string LiteralV3ActCodeEncryptInUse = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ENCRYPTU";
+
+    /// <summary>
     /// Literal for code: Enrollment
     /// </summary>
     public const string LiteralEnrollment = "ENROLLM";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonEnrollment
+    /// </summary>
+    public const string LiteralV3ActReasonEnrollment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ENROLLM";
 
     /// <summary>
     /// Literal for code: EmergencyRoomTreatment
@@ -5187,9 +6117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmergencyRoomTreatment = "ERTREAT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonEmergencyRoomTreatment
+    /// </summary>
+    public const string LiteralV3ActReasonEmergencyRoomTreatment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ERTREAT";
+
+    /// <summary>
     /// Literal for code: EveningShift
     /// </summary>
     public const string LiteralEveningShift = "ES";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueEveningShift
+    /// </summary>
+    public const string LiteralV3ObservationValueEveningShift = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ES";
 
     /// <summary>
     /// Literal for code: SubstanceAbuseInformationSensitivity
@@ -5197,9 +6137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSubstanceAbuseInformationSensitivity = "ETH";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSubstanceAbuseInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeSubstanceAbuseInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ETH";
+
+    /// <summary>
     /// Literal for code: AlcoholUseDisorderInformationSensitivity
     /// </summary>
     public const string LiteralAlcoholUseDisorderInformationSensitivity = "ETHUD";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAlcoholUseDisorderInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeAlcoholUseDisorderInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ETHUD";
 
     /// <summary>
     /// Literal for code: EmergencyTreatment
@@ -5207,9 +6157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmergencyTreatment = "ETREAT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonEmergencyTreatment
+    /// </summary>
+    public const string LiteralV3ActReasonEmergencyTreatment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#ETREAT";
+
+    /// <summary>
     /// Literal for code: ExperienceMeasureType
     /// </summary>
     public const string LiteralExperienceMeasureType = "EXPERIENCE";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueExperienceMeasureType
+    /// </summary>
+    public const string LiteralV3ObservationValueExperienceMeasureType = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#EXPERIENCE";
 
     /// <summary>
     /// Literal for code: LiveWithFamily
@@ -5217,9 +6177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLiveWithFamily = "FAM";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueLiveWithFamily
+    /// </summary>
+    public const string LiteralV3ObservationValueLiveWithFamily = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#FAM";
+
+    /// <summary>
     /// Literal for code: FamilyRequested
     /// </summary>
     public const string LiteralFamilyRequested = "FAMRQT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonFamilyRequested
+    /// </summary>
+    public const string LiteralV3ActReasonFamilyRequested = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FAMRQT";
 
     /// <summary>
     /// Literal for code: FamilyCoverage
@@ -5227,9 +6197,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFamilyCoverage = "FLY";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueFamilyCoverage
+    /// </summary>
+    public const string LiteralV3ObservationValueFamilyCoverage = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#FLY";
+
+    /// <summary>
     /// Literal for code: FinancialManagementCompartment
     /// </summary>
     public const string LiteralFinancialManagementCompartment = "FMCOMPT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeFinancialManagementCompartment
+    /// </summary>
+    public const string LiteralV3ActCodeFinancialManagementCompartment = "http://terminology.hl7.org/CodeSystem/v3-ActCode#FMCOMPT";
 
     /// <summary>
     /// Literal for code: FoodExpense
@@ -5237,9 +6217,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFoodExpense = "FOOD";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueFoodExpense
+    /// </summary>
+    public const string LiteralV3ObservationValueFoodExpense = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#FOOD";
+
+    /// <summary>
     /// Literal for code: FosterChildDocument
     /// </summary>
     public const string LiteralFosterChildDocument = "FOSTER";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueFosterChildDocument
+    /// </summary>
+    public const string LiteralV3ObservationValueFosterChildDocument = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#FOSTER";
 
     /// <summary>
     /// Literal for code: Fraud
@@ -5247,9 +6237,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFraud = "FRAUD";
 
     /// <summary>
+    /// Literal for code: V3ActReasonFraud
+    /// </summary>
+    public const string LiteralV3ActReasonFraud = "http://terminology.hl7.org/CodeSystem/v3-ActReason#FRAUD";
+
+    /// <summary>
     /// Literal for code: GreatExtent
     /// </summary>
     public const string LiteralGreatExtent = "G";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueGreatExtent
+    /// </summary>
+    public const string LiteralV3ObservationValueGreatExtent = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#G";
 
     /// <summary>
     /// Literal for code: GeneticDiseaseInformationSensitivity
@@ -5257,9 +6257,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGeneticDiseaseInformationSensitivity = "GDIS";
 
     /// <summary>
+    /// Literal for code: V3ActCodeGeneticDiseaseInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeGeneticDiseaseInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#GDIS";
+
+    /// <summary>
     /// Literal for code: GenderAndSexualOrientationInformationSensitivity
     /// </summary>
     public const string LiteralGenderAndSexualOrientationInformationSensitivity = "GENDER";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeGenderAndSexualOrientationInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeGenderAndSexualOrientationInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#GENDER";
 
     /// <summary>
     /// Literal for code: Government
@@ -5267,9 +6277,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGovernment = "GOV";
 
     /// <summary>
+    /// Literal for code: V3ActReasonGovernment
+    /// </summary>
+    public const string LiteralV3ActReasonGovernment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#GOV";
+
+    /// <summary>
     /// Literal for code: High
     /// </summary>
     public const string LiteralHigh = "H";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueHigh
+    /// </summary>
+    public const string LiteralV3ObservationValueHigh = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#H";
 
     /// <summary>
     /// Literal for code: HealthAccreditation
@@ -5277,9 +6297,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHealthAccreditation = "HACCRED";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthAccreditation
+    /// </summary>
+    public const string LiteralV3ActReasonHealthAccreditation = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HACCRED";
+
+    /// <summary>
     /// Literal for code: HealthCompliance
     /// </summary>
     public const string LiteralHealthCompliance = "HCOMPL";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonHealthCompliance
+    /// </summary>
+    public const string LiteralV3ActReasonHealthCompliance = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HCOMPL";
 
     /// <summary>
     /// Literal for code: HealthcareProfessionalAsserted
@@ -5287,9 +6317,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHealthcareProfessionalAsserted = "HCPAST";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueHealthcareProfessionalAsserted
+    /// </summary>
+    public const string LiteralV3ObservationValueHealthcareProfessionalAsserted = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#HCPAST";
+
+    /// <summary>
     /// Literal for code: HealthcareProfessionalReported
     /// </summary>
     public const string LiteralHealthcareProfessionalReported = "HCPRPT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueHealthcareProfessionalReported
+    /// </summary>
+    public const string LiteralV3ObservationValueHealthcareProfessionalReported = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#HCPRPT";
 
     /// <summary>
     /// Literal for code: Decedent
@@ -5297,9 +6337,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDecedent = "HDECD";
 
     /// <summary>
+    /// Literal for code: V3ActReasonDecedent
+    /// </summary>
+    public const string LiteralV3ActReasonDecedent = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HDECD";
+
+    /// <summary>
     /// Literal for code: Directory
     /// </summary>
     public const string LiteralDirectory = "HDIRECT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonDirectory
+    /// </summary>
+    public const string LiteralV3ActReasonDirectory = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HDIRECT";
 
     /// <summary>
     /// Literal for code: HealthcareDeliveryManagement
@@ -5307,9 +6357,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHealthcareDeliveryManagement = "HDM";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthcareDeliveryManagement
+    /// </summary>
+    public const string LiteralV3ActReasonHealthcareDeliveryManagement = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HDM";
+
+    /// <summary>
     /// Literal for code: HealthExpense
     /// </summary>
     public const string LiteralHealthExpense = "HEALTH";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueHealthExpense
+    /// </summary>
+    public const string LiteralV3ObservationValueHealthExpense = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#HEALTH";
 
     /// <summary>
     /// Literal for code: HIVAIDSInformationSensitivity
@@ -5317,9 +6377,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHIVAIDSInformationSensitivity = "HIV";
 
     /// <summary>
+    /// Literal for code: V3ActCodeHIVAIDSInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeHIVAIDSInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#HIV";
+
+    /// <summary>
     /// Literal for code: Legal
     /// </summary>
     public const string LiteralLegal = "HLEGAL";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonLegal
+    /// </summary>
+    public const string LiteralV3ActReasonLegal = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HLEGAL";
 
     /// <summary>
     /// Literal for code: HealthStatus
@@ -5327,9 +6397,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHealthStatus = "HLSTAT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueHealthStatus
+    /// </summary>
+    public const string LiteralV3ObservationValueHealthStatus = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#HLSTAT";
+
+    /// <summary>
     /// Literal for code: HealthcareMarketing
     /// </summary>
     public const string LiteralHealthcareMarketing = "HMARKT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonHealthcareMarketing
+    /// </summary>
+    public const string LiteralV3ActReasonHealthcareMarketing = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HMARKT";
 
     /// <summary>
     /// Literal for code: Homeless
@@ -5337,9 +6417,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHomeless = "HMLESS";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueHomeless
+    /// </summary>
+    public const string LiteralV3ObservationValueHomeless = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#HMLESS";
+
+    /// <summary>
     /// Literal for code: HOMO
     /// </summary>
     public const string LiteralHOMO = "Homozygote";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueHOMO
+    /// </summary>
+    public const string LiteralV3ObservationValueHOMO = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#Homozygote";
 
     /// <summary>
     /// Literal for code: HealthcareOperations
@@ -5347,9 +6437,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHealthcareOperations = "HOPERAT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthcareOperations
+    /// </summary>
+    public const string LiteralV3ActReasonHealthcareOperations = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT";
+
+    /// <summary>
     /// Literal for code: HouseholdExpense
     /// </summary>
     public const string LiteralHouseholdExpense = "HOUSE";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueHouseholdExpense
+    /// </summary>
+    public const string LiteralV3ObservationValueHouseholdExpense = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#HOUSE";
 
     /// <summary>
     /// Literal for code: HealthOutcomeMeasure
@@ -5357,9 +6457,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHealthOutcomeMeasure = "HOUTCOMS";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthOutcomeMeasure
+    /// </summary>
+    public const string LiteralV3ActReasonHealthOutcomeMeasure = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HOUTCOMS";
+
+    /// <summary>
     /// Literal for code: HealthcarePayment
     /// </summary>
     public const string LiteralHealthcarePayment = "HPAYMT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonHealthcarePayment
+    /// </summary>
+    public const string LiteralV3ActReasonHealthcarePayment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT";
 
     /// <summary>
     /// Literal for code: HealthProgramReporting
@@ -5367,9 +6477,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHealthProgramReporting = "HPRGRP";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthProgramReporting
+    /// </summary>
+    public const string LiteralV3ActReasonHealthProgramReporting = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HPRGRP";
+
+    /// <summary>
     /// Literal for code: HealthQualityImprovement
     /// </summary>
     public const string LiteralHealthQualityImprovement = "HQUALIMP";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonHealthQualityImprovement
+    /// </summary>
+    public const string LiteralV3ActReasonHealthQualityImprovement = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HQUALIMP";
 
     /// <summary>
     /// Literal for code: HumanResourceCompartment
@@ -5377,9 +6497,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHumanResourceCompartment = "HRCOMPT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeHumanResourceCompartment
+    /// </summary>
+    public const string LiteralV3ActCodeHumanResourceCompartment = "http://terminology.hl7.org/CodeSystem/v3-ActCode#HRCOMPT";
+
+    /// <summary>
     /// Literal for code: HighlyReliable
     /// </summary>
     public const string LiteralHighlyReliable = "HRELIABLE";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueHighlyReliable
+    /// </summary>
+    public const string LiteralV3ObservationValueHighlyReliable = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#HRELIABLE";
 
     /// <summary>
     /// Literal for code: HealthcareResearch
@@ -5387,9 +6517,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHealthcareResearch = "HRESCH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonHealthcareResearch
+    /// </summary>
+    public const string LiteralV3ActReasonHealthcareResearch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HRESCH";
+
+    /// <summary>
     /// Literal for code: HealthSystemAdministration
     /// </summary>
     public const string LiteralHealthSystemAdministration = "HSYSADMIN";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonHealthSystemAdministration
+    /// </summary>
+    public const string LiteralV3ActReasonHealthSystemAdministration = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HSYSADMIN";
 
     /// <summary>
     /// Literal for code: TestHealthData
@@ -5397,9 +6537,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTestHealthData = "HTEST";
 
     /// <summary>
+    /// Literal for code: V3ActReasonTestHealthData
+    /// </summary>
+    public const string LiteralV3ActReasonTestHealthData = "http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST";
+
+    /// <summary>
     /// Literal for code: HumanApproval
     /// </summary>
     public const string LiteralHumanApproval = "HUAPRV";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeHumanApproval
+    /// </summary>
+    public const string LiteralV3ActCodeHumanApproval = "http://terminology.hl7.org/CodeSystem/v3-ActCode#HUAPRV";
 
     /// <summary>
     /// Literal for code: IdentifierSensitivity
@@ -5407,9 +6557,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIdentifierSensitivity = "IDS";
 
     /// <summary>
+    /// Literal for code: V3ActCodeIdentifierSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeIdentifierSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#IDS";
+
+    /// <summary>
     /// Literal for code: IllegalImmigrant
     /// </summary>
     public const string LiteralIllegalImmigrant = "ILGIM";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueIllegalImmigrant
+    /// </summary>
+    public const string LiteralV3ObservationValueIllegalImmigrant = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ILGIM";
 
     /// <summary>
     /// Literal for code: Inactive
@@ -5417,9 +6577,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInactive = "INACT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueInactive
+    /// </summary>
+    public const string LiteralV3ObservationValueInactive = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#INACT";
+
+    /// <summary>
     /// Literal for code: Incarcerated
     /// </summary>
     public const string LiteralIncarcerated = "INCAR";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueIncarcerated
+    /// </summary>
+    public const string LiteralV3ObservationValueIncarcerated = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#INCAR";
 
     /// <summary>
     /// Literal for code: Income
@@ -5427,9 +6597,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncome = "INCOME";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueIncome
+    /// </summary>
+    public const string LiteralV3ObservationValueIncome = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#INCOME";
+
+    /// <summary>
     /// Literal for code: IncreasedScoreIndicatesImprovement
     /// </summary>
     public const string LiteralIncreasedScoreIndicatesImprovement = "IncrIsImp";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueIncreasedScoreIndicatesImprovement
+    /// </summary>
+    public const string LiteralV3ObservationValueIncreasedScoreIndicatesImprovement = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#IncrIsImp";
 
     /// <summary>
     /// Literal for code: Individual
@@ -5437,9 +6617,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIndividual = "IND";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueIndividual
+    /// </summary>
+    public const string LiteralV3ObservationValueIndividual = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#IND";
+
+    /// <summary>
     /// Literal for code: InactivePendingInvestigation
     /// </summary>
     public const string LiteralInactivePendingInvestigation = "INPNDINV";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueInactivePendingInvestigation
+    /// </summary>
+    public const string LiteralV3ObservationValueInactivePendingInvestigation = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#INPNDINV";
 
     /// <summary>
     /// Literal for code: InactivePendingEligibilityUpdate
@@ -5447,9 +6637,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInactivePendingEligibilityUpdate = "INPNDUPD";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueInactivePendingEligibilityUpdate
+    /// </summary>
+    public const string LiteralV3ObservationValueInactivePendingEligibilityUpdate = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#INPNDUPD";
+
+    /// <summary>
     /// Literal for code: IntermediateClinicalOutcomeMeasure
     /// </summary>
     public const string LiteralIntermediateClinicalOutcomeMeasure = "INTERM-OM";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueIntermediateClinicalOutcomeMeasure
+    /// </summary>
+    public const string LiteralV3ObservationValueIntermediateClinicalOutcomeMeasure = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#INTERM-OM";
 
     /// <summary>
     /// Literal for code: InvestmentIncome
@@ -5457,9 +6657,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInvestmentIncome = "INVEST";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueInvestmentIncome
+    /// </summary>
+    public const string LiteralV3ObservationValueInvestmentIncome = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#INVEST";
+
+    /// <summary>
     /// Literal for code: IVDrugUse
     /// </summary>
     public const string LiteralIVDrugUse = "IVDRG";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueIVDrugUse
+    /// </summary>
+    public const string LiteralV3ObservationValueIVDrugUse = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#IVDRG";
 
     /// <summary>
     /// Literal for code: Low
@@ -5467,9 +6677,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLow = "L";
 
     /// <summary>
+    /// Literal for code: V3ConfidentialityLow
+    /// </summary>
+    public const string LiteralV3ConfidentialityLow = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#L";
+
+    /// <summary>
     /// Literal for code: Low_2
     /// </summary>
     public const string LiteralLow_2 = "L";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueLow_2
+    /// </summary>
+    public const string LiteralV3ObservationValueLow_2 = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#L";
 
     /// <summary>
     /// Literal for code: AssignSecurityLabel
@@ -5477,9 +6697,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAssignSecurityLabel = "LABEL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAssignSecurityLabel
+    /// </summary>
+    public const string LiteralV3ActCodeAssignSecurityLabel = "http://terminology.hl7.org/CodeSystem/v3-ActCode#LABEL";
+
+    /// <summary>
     /// Literal for code: Labeling
     /// </summary>
     public const string LiteralLabeling = "LABELING";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonLabeling
+    /// </summary>
+    public const string LiteralV3ActReasonLabeling = "http://terminology.hl7.org/CodeSystem/v3-ActReason#LABELING";
 
     /// <summary>
     /// Literal for code: LargeExtent
@@ -5487,9 +6717,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLargeExtent = "LE";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueLargeExtent
+    /// </summary>
+    public const string LiteralV3ObservationValueLargeExtent = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LE";
+
+    /// <summary>
     /// Literal for code: LegalExpense
     /// </summary>
     public const string LiteralLegalExpense = "LEGAL";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueLegalExpense
+    /// </summary>
+    public const string LiteralV3ObservationValueLegalExpense = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LEGAL";
 
     /// <summary>
     /// Literal for code: LinearScoring
@@ -5497,9 +6737,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLinearScoring = "LINEARSCR";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueLinearScoring
+    /// </summary>
+    public const string LiteralV3ObservationValueLinearScoring = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LINEARSCR";
+
+    /// <summary>
     /// Literal for code: LivingArrangementInformationSensitivity
     /// </summary>
     public const string LiteralLivingArrangementInformationSensitivity = "LIVARG";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeLivingArrangementInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeLivingArrangementInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#LIVARG";
 
     /// <summary>
     /// Literal for code: LivingDependency
@@ -5507,9 +6757,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLivingDependency = "LIVDEP";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueLivingDependency
+    /// </summary>
+    public const string LiteralV3ObservationValueLivingDependency = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LIVDEP";
+
+    /// <summary>
     /// Literal for code: LivingExpense
     /// </summary>
     public const string LiteralLivingExpense = "LIVEXP";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueLivingExpense
+    /// </summary>
+    public const string LiteralV3ObservationValueLivingExpense = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LIVEXP";
 
     /// <summary>
     /// Literal for code: LivingSituation
@@ -5517,9 +6777,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLivingSituation = "LIVSIT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueLivingSituation
+    /// </summary>
+    public const string LiteralV3ObservationValueLivingSituation = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LIVSIT";
+
+    /// <summary>
     /// Literal for code: LeftLateralDecubitus
     /// </summary>
     public const string LiteralLeftLateralDecubitus = "LLD";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueLeftLateralDecubitus
+    /// </summary>
+    public const string LiteralV3ObservationValueLeftLateralDecubitus = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LLD";
 
     /// <summary>
     /// Literal for code: AuthenticationLevelOfAssuranceValue
@@ -5527,9 +6797,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAuthenticationLevelOfAssuranceValue = "LOAAN";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueAuthenticationLevelOfAssuranceValue
+    /// </summary>
+    public const string LiteralV3ObservationValueAuthenticationLevelOfAssuranceValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAN";
+
+    /// <summary>
     /// Literal for code: LowAuthenticationLevelOfAssurance
     /// </summary>
     public const string LiteralLowAuthenticationLevelOfAssurance = "LOAAN1";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueLowAuthenticationLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueLowAuthenticationLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAN1";
 
     /// <summary>
     /// Literal for code: BasicAuthenticationLevelOfAssurance
@@ -5537,9 +6817,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBasicAuthenticationLevelOfAssurance = "LOAAN2";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueBasicAuthenticationLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueBasicAuthenticationLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAN2";
+
+    /// <summary>
     /// Literal for code: MediumAuthenticationLevelOfAssurance
     /// </summary>
     public const string LiteralMediumAuthenticationLevelOfAssurance = "LOAAN3";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueMediumAuthenticationLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueMediumAuthenticationLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAN3";
 
     /// <summary>
     /// Literal for code: HighAuthenticationLevelOfAssurance
@@ -5547,9 +6837,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHighAuthenticationLevelOfAssurance = "LOAAN4";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueHighAuthenticationLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueHighAuthenticationLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAN4";
+
+    /// <summary>
     /// Literal for code: AuthenticationProcessLevelOfAssuranceValue
     /// </summary>
     public const string LiteralAuthenticationProcessLevelOfAssuranceValue = "LOAAP";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueAuthenticationProcessLevelOfAssuranceValue
+    /// </summary>
+    public const string LiteralV3ObservationValueAuthenticationProcessLevelOfAssuranceValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAP";
 
     /// <summary>
     /// Literal for code: LowAuthenticationProcessLevelOfAssurance
@@ -5557,9 +6857,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLowAuthenticationProcessLevelOfAssurance = "LOAAP1";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueLowAuthenticationProcessLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueLowAuthenticationProcessLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAP1";
+
+    /// <summary>
     /// Literal for code: BasicAuthenticationProcessLevelOfAssurance
     /// </summary>
     public const string LiteralBasicAuthenticationProcessLevelOfAssurance = "LOAAP2";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueBasicAuthenticationProcessLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueBasicAuthenticationProcessLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAP2";
 
     /// <summary>
     /// Literal for code: MediumAuthenticationProcessLevelOfAssurance
@@ -5567,9 +6877,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMediumAuthenticationProcessLevelOfAssurance = "LOAAP3";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueMediumAuthenticationProcessLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueMediumAuthenticationProcessLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAP3";
+
+    /// <summary>
     /// Literal for code: HighAuthenticationProcessLevelOfAssurance
     /// </summary>
     public const string LiteralHighAuthenticationProcessLevelOfAssurance = "LOAAP4";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueHighAuthenticationProcessLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueHighAuthenticationProcessLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAP4";
 
     /// <summary>
     /// Literal for code: AssertionLevelOfAssuranceValue
@@ -5577,9 +6897,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAssertionLevelOfAssuranceValue = "LOAAS";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueAssertionLevelOfAssuranceValue
+    /// </summary>
+    public const string LiteralV3ObservationValueAssertionLevelOfAssuranceValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAS";
+
+    /// <summary>
     /// Literal for code: LowAssertionLevelOfAssurance
     /// </summary>
     public const string LiteralLowAssertionLevelOfAssurance = "LOAAS1";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueLowAssertionLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueLowAssertionLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAS1";
 
     /// <summary>
     /// Literal for code: BasicAssertionLevelOfAssurance
@@ -5587,9 +6917,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBasicAssertionLevelOfAssurance = "LOAAS2";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueBasicAssertionLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueBasicAssertionLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAS2";
+
+    /// <summary>
     /// Literal for code: MediumAssertionLevelOfAssurance
     /// </summary>
     public const string LiteralMediumAssertionLevelOfAssurance = "LOAAS3";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueMediumAssertionLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueMediumAssertionLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAS3";
 
     /// <summary>
     /// Literal for code: HighAssertionLevelOfAssurance
@@ -5597,9 +6937,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHighAssertionLevelOfAssurance = "LOAAS4";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueHighAssertionLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueHighAssertionLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAS4";
+
+    /// <summary>
     /// Literal for code: TokenAndCredentialManagementLevelOfAssuranceValue
     /// </summary>
     public const string LiteralTokenAndCredentialManagementLevelOfAssuranceValue = "LOACM";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueTokenAndCredentialManagementLevelOfAssuranceValue
+    /// </summary>
+    public const string LiteralV3ObservationValueTokenAndCredentialManagementLevelOfAssuranceValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOACM";
 
     /// <summary>
     /// Literal for code: LowTokenAndCredentialManagementLevelOfAssurance
@@ -5607,9 +6957,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLowTokenAndCredentialManagementLevelOfAssurance = "LOACM1";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueLowTokenAndCredentialManagementLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueLowTokenAndCredentialManagementLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOACM1";
+
+    /// <summary>
     /// Literal for code: BasicTokenAndCredentialManagementLevelOfAssurance
     /// </summary>
     public const string LiteralBasicTokenAndCredentialManagementLevelOfAssurance = "LOACM2";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueBasicTokenAndCredentialManagementLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueBasicTokenAndCredentialManagementLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOACM2";
 
     /// <summary>
     /// Literal for code: MediumTokenAndCredentialManagementLevelOfAssurance
@@ -5617,9 +6977,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMediumTokenAndCredentialManagementLevelOfAssurance = "LOACM3";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueMediumTokenAndCredentialManagementLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueMediumTokenAndCredentialManagementLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOACM3";
+
+    /// <summary>
     /// Literal for code: HighTokenAndCredentialManagementLevelOfAssurance
     /// </summary>
     public const string LiteralHighTokenAndCredentialManagementLevelOfAssurance = "LOACM4";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueHighTokenAndCredentialManagementLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueHighTokenAndCredentialManagementLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOACM4";
 
     /// <summary>
     /// Literal for code: IdentityProofingLevelOfAssurance
@@ -5627,9 +6997,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIdentityProofingLevelOfAssurance = "LOAID";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueIdentityProofingLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueIdentityProofingLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAID";
+
+    /// <summary>
     /// Literal for code: LowIdentityProofingLevelOfAssurance
     /// </summary>
     public const string LiteralLowIdentityProofingLevelOfAssurance = "LOAID1";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueLowIdentityProofingLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueLowIdentityProofingLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAID1";
 
     /// <summary>
     /// Literal for code: BasicIdentityProofingLevelOfAssurance
@@ -5637,9 +7017,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBasicIdentityProofingLevelOfAssurance = "LOAID2";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueBasicIdentityProofingLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueBasicIdentityProofingLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAID2";
+
+    /// <summary>
     /// Literal for code: MediumIdentityProofingLevelOfAssurance
     /// </summary>
     public const string LiteralMediumIdentityProofingLevelOfAssurance = "LOAID3";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueMediumIdentityProofingLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueMediumIdentityProofingLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAID3";
 
     /// <summary>
     /// Literal for code: HighIdentityProofingLevelOfAssurance
@@ -5647,9 +7037,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHighIdentityProofingLevelOfAssurance = "LOAID4";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueHighIdentityProofingLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueHighIdentityProofingLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAID4";
+
+    /// <summary>
     /// Literal for code: NonRepudiationLevelOfAssuranceValue
     /// </summary>
     public const string LiteralNonRepudiationLevelOfAssuranceValue = "LOANR";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueNonRepudiationLevelOfAssuranceValue
+    /// </summary>
+    public const string LiteralV3ObservationValueNonRepudiationLevelOfAssuranceValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOANR";
 
     /// <summary>
     /// Literal for code: LowNonRepudiationLevelOfAssurance
@@ -5657,9 +7057,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLowNonRepudiationLevelOfAssurance = "LOANR1";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueLowNonRepudiationLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueLowNonRepudiationLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOANR1";
+
+    /// <summary>
     /// Literal for code: BasicNonRepudiationLevelOfAssurance
     /// </summary>
     public const string LiteralBasicNonRepudiationLevelOfAssurance = "LOANR2";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueBasicNonRepudiationLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueBasicNonRepudiationLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOANR2";
 
     /// <summary>
     /// Literal for code: MediumNonRepudiationLevelOfAssurance
@@ -5667,9 +7077,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMediumNonRepudiationLevelOfAssurance = "LOANR3";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueMediumNonRepudiationLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueMediumNonRepudiationLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOANR3";
+
+    /// <summary>
     /// Literal for code: HighNonRepudiationLevelOfAssurance
     /// </summary>
     public const string LiteralHighNonRepudiationLevelOfAssurance = "LOANR4";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueHighNonRepudiationLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueHighNonRepudiationLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOANR4";
 
     /// <summary>
     /// Literal for code: RemoteAccessLevelOfAssuranceValue
@@ -5677,9 +7097,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRemoteAccessLevelOfAssuranceValue = "LOARA";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueRemoteAccessLevelOfAssuranceValue
+    /// </summary>
+    public const string LiteralV3ObservationValueRemoteAccessLevelOfAssuranceValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOARA";
+
+    /// <summary>
     /// Literal for code: LowRemoteAccessLevelOfAssurance
     /// </summary>
     public const string LiteralLowRemoteAccessLevelOfAssurance = "LOARA1";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueLowRemoteAccessLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueLowRemoteAccessLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOARA1";
 
     /// <summary>
     /// Literal for code: BasicRemoteAccessLevelOfAssurance
@@ -5687,9 +7117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBasicRemoteAccessLevelOfAssurance = "LOARA2";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueBasicRemoteAccessLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueBasicRemoteAccessLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOARA2";
+
+    /// <summary>
     /// Literal for code: MediumRemoteAccessLevelOfAssurance
     /// </summary>
     public const string LiteralMediumRemoteAccessLevelOfAssurance = "LOARA3";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueMediumRemoteAccessLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueMediumRemoteAccessLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOARA3";
 
     /// <summary>
     /// Literal for code: HighRemoteAccessLevelOfAssurance
@@ -5697,9 +7137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHighRemoteAccessLevelOfAssurance = "LOARA4";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueHighRemoteAccessLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueHighRemoteAccessLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOARA4";
+
+    /// <summary>
     /// Literal for code: TokenLevelOfAssuranceValue
     /// </summary>
     public const string LiteralTokenLevelOfAssuranceValue = "LOATK";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueTokenLevelOfAssuranceValue
+    /// </summary>
+    public const string LiteralV3ObservationValueTokenLevelOfAssuranceValue = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOATK";
 
     /// <summary>
     /// Literal for code: LowTokenLevelOfAssurance
@@ -5707,9 +7157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLowTokenLevelOfAssurance = "LOATK1";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueLowTokenLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueLowTokenLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOATK1";
+
+    /// <summary>
     /// Literal for code: BasicTokenLevelOfAssurance
     /// </summary>
     public const string LiteralBasicTokenLevelOfAssurance = "LOATK2";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueBasicTokenLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueBasicTokenLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOATK2";
 
     /// <summary>
     /// Literal for code: MediumTokenLevelOfAssurance
@@ -5717,9 +7177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMediumTokenLevelOfAssurance = "LOATK3";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueMediumTokenLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueMediumTokenLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOATK3";
+
+    /// <summary>
     /// Literal for code: HighTokenLevelOfAssurance
     /// </summary>
     public const string LiteralHighTokenLevelOfAssurance = "LOATK4";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueHighTokenLevelOfAssurance
+    /// </summary>
+    public const string LiteralV3ObservationValueHighTokenLevelOfAssurance = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOATK4";
 
     /// <summary>
     /// Literal for code: LocationInformationSensitivity
@@ -5727,9 +7197,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLocationInformationSensitivity = "LOCIS";
 
     /// <summary>
+    /// Literal for code: V3ActCodeLocationInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeLocationInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS";
+
+    /// <summary>
     /// Literal for code: LegitimateRelationshipCompartment
     /// </summary>
     public const string LiteralLegitimateRelationshipCompartment = "LRCOMPT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeLegitimateRelationshipCompartment
+    /// </summary>
+    public const string LiteralV3ActCodeLegitimateRelationshipCompartment = "http://terminology.hl7.org/CodeSystem/v3-ActCode#LRCOMPT";
 
     /// <summary>
     /// Literal for code: Moderate
@@ -5737,9 +7217,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralModerate = "M";
 
     /// <summary>
+    /// Literal for code: V3ConfidentialityModerate
+    /// </summary>
+    public const string LiteralV3ConfidentialityModerate = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#M";
+
+    /// <summary>
     /// Literal for code: Moderate_2
     /// </summary>
     public const string LiteralModerate_2 = "M";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueModerate_2
+    /// </summary>
+    public const string LiteralV3ObservationValueModerate_2 = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#M";
 
     /// <summary>
     /// Literal for code: Mapped
@@ -5747,9 +7237,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMapped = "MAPPED";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueMapped
+    /// </summary>
+    public const string LiteralV3ObservationValueMapped = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#MAPPED";
+
+    /// <summary>
     /// Literal for code: MaritalStatusInformationSensitivity
     /// </summary>
     public const string LiteralMaritalStatusInformationSensitivity = "MARST";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeMaritalStatusInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeMaritalStatusInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#MARST";
 
     /// <summary>
     /// Literal for code: Mask
@@ -5757,9 +7257,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMask = "MASK";
 
     /// <summary>
+    /// Literal for code: V3ActCodeMask
+    /// </summary>
+    public const string LiteralV3ActCodeMask = "http://terminology.hl7.org/CodeSystem/v3-ActCode#MASK";
+
+    /// <summary>
     /// Literal for code: Masked
     /// </summary>
     public const string LiteralMasked = "MASKED";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueMasked
+    /// </summary>
+    public const string LiteralV3ObservationValueMasked = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#MASKED";
 
     /// <summary>
     /// Literal for code: MediumExtent
@@ -5767,9 +7277,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMediumExtent = "ME";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueMediumExtent
+    /// </summary>
+    public const string LiteralV3ObservationValueMediumExtent = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ME";
+
+    /// <summary>
     /// Literal for code: MemberAdministration
     /// </summary>
     public const string LiteralMemberAdministration = "MEMADMIN";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonMemberAdministration
+    /// </summary>
+    public const string LiteralV3ActReasonMemberAdministration = "http://terminology.hl7.org/CodeSystem/v3-ActReason#MEMADMIN";
 
     /// <summary>
     /// Literal for code: ProgramOrPolicyMember
@@ -5777,9 +7297,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProgramOrPolicyMember = "MEMBER";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueProgramOrPolicyMember
+    /// </summary>
+    public const string LiteralV3ObservationValueProgramOrPolicyMember = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#MEMBER";
+
+    /// <summary>
     /// Literal for code: MetadataManagement
     /// </summary>
     public const string LiteralMetadataManagement = "METAMGT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonMetadataManagement
+    /// </summary>
+    public const string LiteralV3ActReasonMetadataManagement = "http://terminology.hl7.org/CodeSystem/v3-ActReason#METAMGT";
 
     /// <summary>
     /// Literal for code: MentalHealthInformationSensitivity
@@ -5787,9 +7317,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMentalHealthInformationSensitivity = "MH";
 
     /// <summary>
+    /// Literal for code: V3ActCodeMentalHealthInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeMentalHealthInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#MH";
+
+    /// <summary>
     /// Literal for code: MinimalExtent
     /// </summary>
     public const string LiteralMinimalExtent = "MI";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueMinimalExtent
+    /// </summary>
+    public const string LiteralV3ObservationValueMinimalExtent = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#MI";
 
     /// <summary>
     /// Literal for code: MilitaryIdentification
@@ -5797,9 +7337,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMilitaryIdentification = "MIL";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueMilitaryIdentification
+    /// </summary>
+    public const string LiteralV3ObservationValueMilitaryIdentification = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#MIL";
+
+    /// <summary>
     /// Literal for code: MilitaryCommand
     /// </summary>
     public const string LiteralMilitaryCommand = "MILCDM";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonMilitaryCommand
+    /// </summary>
+    public const string LiteralV3ActReasonMilitaryCommand = "http://terminology.hl7.org/CodeSystem/v3-ActReason#MILCDM";
 
     /// <summary>
     /// Literal for code: MilitaryDischarge
@@ -5807,9 +7357,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMilitaryDischarge = "MILDCRG";
 
     /// <summary>
+    /// Literal for code: V3ActReasonMilitaryDischarge
+    /// </summary>
+    public const string LiteralV3ActReasonMilitaryDischarge = "http://terminology.hl7.org/CodeSystem/v3-ActReason#MILDCRG";
+
+    /// <summary>
     /// Literal for code: MinimumNecessary
     /// </summary>
     public const string LiteralMinimumNecessary = "MINEC";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeMinimumNecessary
+    /// </summary>
+    public const string LiteralV3ActCodeMinimumNecessary = "http://terminology.hl7.org/CodeSystem/v3-ActCode#MINEC";
 
     /// <summary>
     /// Literal for code: Mortgage
@@ -5817,9 +7377,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMortgage = "MORTG";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueMortgage
+    /// </summary>
+    public const string LiteralV3ObservationValueMortgage = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#MORTG";
+
+    /// <summary>
     /// Literal for code: MarriageCertificate
     /// </summary>
     public const string LiteralMarriageCertificate = "MRGCERT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueMarriageCertificate
+    /// </summary>
+    public const string LiteralV3ObservationValueMarriageCertificate = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#MRGCERT";
 
     /// <summary>
     /// Literal for code: MilitarySexualTraumaInformationSensitivity
@@ -5827,9 +7397,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMilitarySexualTraumaInformationSensitivity = "MST";
 
     /// <summary>
+    /// Literal for code: V3ActCodeMilitarySexualTraumaInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeMilitarySexualTraumaInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#MST";
+
+    /// <summary>
     /// Literal for code: Normal
     /// </summary>
     public const string LiteralNormal = "N";
+
+    /// <summary>
+    /// Literal for code: V3ConfidentialityNormal
+    /// </summary>
+    public const string LiteralV3ConfidentialityNormal = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#N";
 
     /// <summary>
     /// Literal for code: None
@@ -5837,9 +7417,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNone = "N";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueNone
+    /// </summary>
+    public const string LiteralV3ObservationValueNone = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#N";
+
+    /// <summary>
     /// Literal for code: NotEligible
     /// </summary>
     public const string LiteralNotEligible = "NELG";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueNotEligible
+    /// </summary>
+    public const string LiteralV3ObservationValueNotEligible = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#NELG";
 
     /// <summary>
     /// Literal for code: NoDisclosureWithoutSubjectAuthorization
@@ -5847,9 +7437,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoDisclosureWithoutSubjectAuthorization = "NOAUTH";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoDisclosureWithoutSubjectAuthorization
+    /// </summary>
+    public const string LiteralV3ActCodeNoDisclosureWithoutSubjectAuthorization = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOAUTH";
+
+    /// <summary>
     /// Literal for code: NoCollection
     /// </summary>
     public const string LiteralNoCollection = "NOCOLLECT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoCollection
+    /// </summary>
+    public const string LiteralV3ActCodeNoCollection = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOCOLLECT";
 
     /// <summary>
     /// Literal for code: NoDisclosureWithoutConsentDirective
@@ -5857,9 +7457,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoDisclosureWithoutConsentDirective = "NODSCLCD";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoDisclosureWithoutConsentDirective
+    /// </summary>
+    public const string LiteralV3ActCodeNoDisclosureWithoutConsentDirective = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCD";
+
+    /// <summary>
     /// Literal for code: NoDisclosureWithoutInformationSubjectQuoteSConsentDirective
     /// </summary>
     public const string LiteralNoDisclosureWithoutInformationSubjectQuoteSConsentDirective = "NODSCLCDS";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoDisclosureWithoutInformationSubjectQuoteSConsentDirective
+    /// </summary>
+    public const string LiteralV3ActCodeNoDisclosureWithoutInformationSubjectQuoteSConsentDirective = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCDS";
 
     /// <summary>
     /// Literal for code: NoIntegration
@@ -5867,9 +7477,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoIntegration = "NOINTEGRATE";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoIntegration
+    /// </summary>
+    public const string LiteralV3ActCodeNoIntegration = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOINTEGRATE";
+
+    /// <summary>
     /// Literal for code: NoUnlistedEntityDisclosure
     /// </summary>
     public const string LiteralNoUnlistedEntityDisclosure = "NOLIST";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoUnlistedEntityDisclosure
+    /// </summary>
+    public const string LiteralV3ActCodeNoUnlistedEntityDisclosure = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOLIST";
 
     /// <summary>
     /// Literal for code: NoDisclosureWithoutMOU
@@ -5877,9 +7497,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoDisclosureWithoutMOU = "NOMOU";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoDisclosureWithoutMOU
+    /// </summary>
+    public const string LiteralV3ActCodeNoDisclosureWithoutMOU = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOMOU";
+
+    /// <summary>
     /// Literal for code: NoDisclosureWithoutOrganizationalAuthorization
     /// </summary>
     public const string LiteralNoDisclosureWithoutOrganizationalAuthorization = "NOORGPOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoDisclosureWithoutOrganizationalAuthorization
+    /// </summary>
+    public const string LiteralV3ActCodeNoDisclosureWithoutOrganizationalAuthorization = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOORGPOL";
 
     /// <summary>
     /// Literal for code: NoDisclosureToPatientFamilyOrCaregiversWithoutAttendingProviderQuoteSAuthorization
@@ -5887,9 +7517,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoDisclosureToPatientFamilyOrCaregiversWithoutAttendingProviderQuoteSAuthorization = "NOPAT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoDisclosureToPatientFamilyOrCaregiversWithoutAttendingProviderQuoteSAuthorization
+    /// </summary>
+    public const string LiteralV3ActCodeNoDisclosureToPatientFamilyOrCaregiversWithoutAttendingProviderQuoteSAuthorization = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOPAT";
+
+    /// <summary>
     /// Literal for code: NoCollectionBeyondPurposeOfUse
     /// </summary>
     public const string LiteralNoCollectionBeyondPurposeOfUse = "NOPERSISTP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoCollectionBeyondPurposeOfUse
+    /// </summary>
+    public const string LiteralV3ActCodeNoCollectionBeyondPurposeOfUse = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOPERSISTP";
 
     /// <summary>
     /// Literal for code: NoRedisclosureWithoutConsentDirective
@@ -5897,9 +7537,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoRedisclosureWithoutConsentDirective = "NORDSCLCD";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoRedisclosureWithoutConsentDirective
+    /// </summary>
+    public const string LiteralV3ActCodeNoRedisclosureWithoutConsentDirective = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NORDSCLCD";
+
+    /// <summary>
     /// Literal for code: NoRedisclosureWithoutInformationSubjectQuoteSConsentDirective
     /// </summary>
     public const string LiteralNoRedisclosureWithoutInformationSubjectQuoteSConsentDirective = "NORDSCLCDS";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoRedisclosureWithoutInformationSubjectQuoteSConsentDirective
+    /// </summary>
+    public const string LiteralV3ActCodeNoRedisclosureWithoutInformationSubjectQuoteSConsentDirective = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NORDSCLCDS";
 
     /// <summary>
     /// Literal for code: NoDisclosureWithoutJurisdictionalAuthorization
@@ -5907,9 +7557,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoDisclosureWithoutJurisdictionalAuthorization = "NORDSCLW";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoDisclosureWithoutJurisdictionalAuthorization
+    /// </summary>
+    public const string LiteralV3ActCodeNoDisclosureWithoutJurisdictionalAuthorization = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NORDSCLW";
+
+    /// <summary>
     /// Literal for code: NoRedisclosureWithoutConsentDirective_2
     /// </summary>
     public const string LiteralNoRedisclosureWithoutConsentDirective_2 = "NORDSLCD";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoRedisclosureWithoutConsentDirective_2
+    /// </summary>
+    public const string LiteralV3ActCodeNoRedisclosureWithoutConsentDirective_2 = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NORDSLCD";
 
     /// <summary>
     /// Literal for code: NoRelinking
@@ -5917,9 +7577,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoRelinking = "NORELINK";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoRelinking
+    /// </summary>
+    public const string LiteralV3ActCodeNoRelinking = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NORELINK";
+
+    /// <summary>
     /// Literal for code: NoReuseBeyondPurposeOfUse
     /// </summary>
     public const string LiteralNoReuseBeyondPurposeOfUse = "NOREUSE";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoReuseBeyondPurposeOfUse
+    /// </summary>
+    public const string LiteralV3ActCodeNoReuseBeyondPurposeOfUse = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOREUSE";
 
     /// <summary>
     /// Literal for code: NotInLaborForce
@@ -5927,9 +7597,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotInLaborForce = "NotInLaborForce";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueNotInLaborForce
+    /// </summary>
+    public const string LiteralV3ObservationValueNotInLaborForce = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#NotInLaborForce";
+
+    /// <summary>
     /// Literal for code: NoUnauthorizedVIPDisclosure
     /// </summary>
     public const string LiteralNoUnauthorizedVIPDisclosure = "NOVIP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeNoUnauthorizedVIPDisclosure
+    /// </summary>
+    public const string LiteralV3ActCodeNoUnauthorizedVIPDisclosure = "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOVIP";
 
     /// <summary>
     /// Literal for code: NightShift
@@ -5937,9 +7617,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNightShift = "NS";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueNightShift
+    /// </summary>
+    public const string LiteralV3ObservationValueNightShift = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#NS";
+
+    /// <summary>
     /// Literal for code: ObligationPolicy
     /// </summary>
     public const string LiteralObligationPolicy = "ObligationPolicy";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeObligationPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeObligationPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ObligationPolicy";
 
     /// <summary>
     /// Literal for code: OpioidUseDisorderInformationSensitivity
@@ -5947,9 +7637,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOpioidUseDisorderInformationSensitivity = "OPIOIDUD";
 
     /// <summary>
+    /// Literal for code: V3ActCodeOpioidUseDisorderInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeOpioidUseDisorderInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#OPIOIDUD";
+
+    /// <summary>
     /// Literal for code: OpportunityScoring
     /// </summary>
     public const string LiteralOpportunityScoring = "OPPORSCR";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueOpportunityScoring
+    /// </summary>
+    public const string LiteralV3ObservationValueOpportunityScoring = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#OPPORSCR";
 
     /// <summary>
     /// Literal for code: NoDisclosureWithoutOriginatorAuthorization
@@ -5957,9 +7657,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoDisclosureWithoutOriginatorAuthorization = "ORCON";
 
     /// <summary>
+    /// Literal for code: V3ActCodeNoDisclosureWithoutOriginatorAuthorization
+    /// </summary>
+    public const string LiteralV3ActCodeNoDisclosureWithoutOriginatorAuthorization = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ORCON";
+
+    /// <summary>
     /// Literal for code: OutcomeMeasureType
     /// </summary>
     public const string LiteralOutcomeMeasureType = "OUTCOME";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueOutcomeMeasureType
+    /// </summary>
+    public const string LiteralV3ObservationValueOutcomeMeasureType = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#OUTCOME";
 
     /// <summary>
     /// Literal for code: PatientAdministrationCompartment
@@ -5967,9 +7677,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatientAdministrationCompartment = "PACOMPT";
 
     /// <summary>
+    /// Literal for code: V3ActCodePatientAdministrationCompartment
+    /// </summary>
+    public const string LiteralV3ActCodePatientAdministrationCompartment = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PACOMPT";
+
+    /// <summary>
     /// Literal for code: PatientAcquaintanceAsserted
     /// </summary>
     public const string LiteralPatientAcquaintanceAsserted = "PACQAST";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValuePatientAcquaintanceAsserted
+    /// </summary>
+    public const string LiteralV3ObservationValuePatientAcquaintanceAsserted = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PACQAST";
 
     /// <summary>
     /// Literal for code: PatientAcquaintanceReported
@@ -5977,9 +7697,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatientAcquaintanceReported = "PACQRPT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValuePatientAcquaintanceReported
+    /// </summary>
+    public const string LiteralV3ObservationValuePatientAcquaintanceReported = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PACQRPT";
+
+    /// <summary>
     /// Literal for code: Passport
     /// </summary>
     public const string LiteralPassport = "PASSPORT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValuePassport
+    /// </summary>
+    public const string LiteralV3ObservationValuePassport = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PASSPORT";
 
     /// <summary>
     /// Literal for code: PatientAdministration
@@ -5987,9 +7717,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatientAdministration = "PATADMIN";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPatientAdministration
+    /// </summary>
+    public const string LiteralV3ActReasonPatientAdministration = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATADMIN";
+
+    /// <summary>
     /// Literal for code: PatientAsserted
     /// </summary>
     public const string LiteralPatientAsserted = "PATAST";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValuePatientAsserted
+    /// </summary>
+    public const string LiteralV3ObservationValuePatientAsserted = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PATAST";
 
     /// <summary>
     /// Literal for code: PatientLocation
@@ -5997,9 +7737,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatientLocation = "PATLOC";
 
     /// <summary>
+    /// Literal for code: V3ActCodePatientLocation
+    /// </summary>
+    public const string LiteralV3ActCodePatientLocation = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PATLOC";
+
+    /// <summary>
     /// Literal for code: PatientReported
     /// </summary>
     public const string LiteralPatientReported = "PATRPT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValuePatientReported
+    /// </summary>
+    public const string LiteralV3ObservationValuePatientReported = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PATRPT";
 
     /// <summary>
     /// Literal for code: PatientRequested
@@ -6007,9 +7757,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatientRequested = "PATRQT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPatientRequested
+    /// </summary>
+    public const string LiteralV3ActReasonPatientRequested = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATRQT";
+
+    /// <summary>
     /// Literal for code: PatientSafety
     /// </summary>
     public const string LiteralPatientSafety = "PATSFTY";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPatientSafety
+    /// </summary>
+    public const string LiteralV3ActReasonPatientSafety = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATSFTY";
 
     /// <summary>
     /// Literal for code: PaidEmployment
@@ -6017,9 +7777,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPaidEmployment = "PAY";
 
     /// <summary>
+    /// Literal for code: V3ObservationValuePaidEmployment
+    /// </summary>
+    public const string LiteralV3ObservationValuePaidEmployment = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PAY";
+
+    /// <summary>
     /// Literal for code: PayerAsserted
     /// </summary>
     public const string LiteralPayerAsserted = "PAYAST";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValuePayerAsserted
+    /// </summary>
+    public const string LiteralV3ObservationValuePayerAsserted = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PAYAST";
 
     /// <summary>
     /// Literal for code: PayerReported
@@ -6027,9 +7797,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPayerReported = "PAYRPT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValuePayerReported
+    /// </summary>
+    public const string LiteralV3ObservationValuePayerReported = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PAYRPT";
+
+    /// <summary>
     /// Literal for code: PatientDefaultInformationSensitivity
     /// </summary>
     public const string LiteralPatientDefaultInformationSensitivity = "PDS";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePatientDefaultInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodePatientDefaultInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PDS";
 
     /// <summary>
     /// Literal for code: PerformanceMeasure
@@ -6037,9 +7817,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPerformanceMeasure = "PERFMSR";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPerformanceMeasure
+    /// </summary>
+    public const string LiteralV3ActReasonPerformanceMeasure = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PERFMSR";
+
+    /// <summary>
     /// Literal for code: PersistSecurityLabel
     /// </summary>
     public const string LiteralPersistSecurityLabel = "PERSISTLABEL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePersistSecurityLabel
+    /// </summary>
+    public const string LiteralV3ActCodePersistSecurityLabel = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PERSISTLABEL";
 
     /// <summary>
     /// Literal for code: Pregnant
@@ -6047,9 +7837,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPregnant = "PGNT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValuePregnant
+    /// </summary>
+    public const string LiteralV3ObservationValuePregnant = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PGNT";
+
+    /// <summary>
     /// Literal for code: PhysicianRequestedInformationSensitivity
     /// </summary>
     public const string LiteralPhysicianRequestedInformationSensitivity = "PHY";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePhysicianRequestedInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodePhysicianRequestedInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PHY";
 
     /// <summary>
     /// Literal for code: PopulationOriginsOrAncestryHealthcareResearch
@@ -6057,9 +7857,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPopulationOriginsOrAncestryHealthcareResearch = "POARCH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPopulationOriginsOrAncestryHealthcareResearch
+    /// </summary>
+    public const string LiteralV3ActReasonPopulationOriginsOrAncestryHealthcareResearch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#POARCH";
+
+    /// <summary>
     /// Literal for code: PopulationHealth
     /// </summary>
     public const string LiteralPopulationHealth = "POPHLTH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPopulationHealth
+    /// </summary>
+    public const string LiteralV3ActReasonPopulationHealth = "http://terminology.hl7.org/CodeSystem/v3-ActReason#POPHLTH";
 
     /// <summary>
     /// Literal for code: PreclinicalTrialResearch
@@ -6067,9 +7877,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPreclinicalTrialResearch = "PRECLINTRCH";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPreclinicalTrialResearch
+    /// </summary>
+    public const string LiteralV3ActReasonPreclinicalTrialResearch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PRECLINTRCH";
+
+    /// <summary>
     /// Literal for code: PregnancyInformationSensitivity
     /// </summary>
     public const string LiteralPregnancyInformationSensitivity = "PREGNANT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePregnancyInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodePregnancyInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PREGNANT";
 
     /// <summary>
     /// Literal for code: PrivacyMark
@@ -6077,9 +7897,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPrivacyMark = "PrivacyMark";
 
     /// <summary>
+    /// Literal for code: V3ActCodePrivacyMark
+    /// </summary>
+    public const string LiteralV3ActCodePrivacyMark = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PrivacyMark";
+
+    /// <summary>
     /// Literal for code: PrivacyMark_2
     /// </summary>
     public const string LiteralPrivacyMark_2 = "PRIVMARK";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePrivacyMark_2
+    /// </summary>
+    public const string LiteralV3ActCodePrivacyMark_2 = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PRIVMARK";
 
     /// <summary>
     /// Literal for code: Prone
@@ -6087,9 +7917,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProne = "PRN";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueProne
+    /// </summary>
+    public const string LiteralV3ObservationValueProne = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PRN";
+
+    /// <summary>
     /// Literal for code: PatientReportedOutcomePerformanceMeasure
     /// </summary>
     public const string LiteralPatientReportedOutcomePerformanceMeasure = "PRO-PM";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValuePatientReportedOutcomePerformanceMeasure
+    /// </summary>
+    public const string LiteralV3ObservationValuePatientReportedOutcomePerformanceMeasure = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PRO-PM";
 
     /// <summary>
     /// Literal for code: ProfessionalAsserted
@@ -6097,9 +7937,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProfessionalAsserted = "PROAST";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueProfessionalAsserted
+    /// </summary>
+    public const string LiteralV3ObservationValueProfessionalAsserted = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PROAST";
+
+    /// <summary>
     /// Literal for code: Probation
     /// </summary>
     public const string LiteralProbation = "PROB";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueProbation
+    /// </summary>
+    public const string LiteralV3ObservationValueProbation = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PROB";
 
     /// <summary>
     /// Literal for code: ProcessMeasureType
@@ -6107,9 +7957,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProcessMeasureType = "PROCESS";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueProcessMeasureType
+    /// </summary>
+    public const string LiteralV3ObservationValueProcessMeasureType = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PROCESS";
+
+    /// <summary>
     /// Literal for code: RealProperty
     /// </summary>
     public const string LiteralRealProperty = "PROP";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueRealProperty
+    /// </summary>
+    public const string LiteralV3ObservationValueRealProperty = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PROP";
 
     /// <summary>
     /// Literal for code: ProportionMeasureScoring
@@ -6117,9 +7977,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProportionMeasureScoring = "PROPOR";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueProportionMeasureScoring
+    /// </summary>
+    public const string LiteralV3ObservationValueProportionMeasureScoring = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PROPOR";
+
+    /// <summary>
     /// Literal for code: ProfessionalReported
     /// </summary>
     public const string LiteralProfessionalReported = "PRORPT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueProfessionalReported
+    /// </summary>
+    public const string LiteralV3ObservationValueProfessionalReported = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PRORPT";
 
     /// <summary>
     /// Literal for code: PatientRequestedInformationSensitivity
@@ -6127,9 +7997,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatientRequestedInformationSensitivity = "PRS";
 
     /// <summary>
+    /// Literal for code: V3ActCodePatientRequestedInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodePatientRequestedInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PRS";
+
+    /// <summary>
     /// Literal for code: Pseudonymize
     /// </summary>
     public const string LiteralPseudonymize = "PSEUD";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePseudonymize
+    /// </summary>
+    public const string LiteralV3ActCodePseudonymize = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PSEUD";
 
     /// <summary>
     /// Literal for code: Pseudonymized
@@ -6137,9 +8017,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPseudonymized = "PSEUDED";
 
     /// <summary>
+    /// Literal for code: V3ObservationValuePseudonymized
+    /// </summary>
+    public const string LiteralV3ObservationValuePseudonymized = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PSEUDED";
+
+    /// <summary>
     /// Literal for code: PsychiatryDisorderInformationSensitivity
     /// </summary>
     public const string LiteralPsychiatryDisorderInformationSensitivity = "PSY";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePsychiatryDisorderInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodePsychiatryDisorderInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PSY";
 
     /// <summary>
     /// Literal for code: PsychotherapyNoteInformationSensitivity
@@ -6147,9 +8037,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPsychotherapyNoteInformationSensitivity = "PSYTHPN";
 
     /// <summary>
+    /// Literal for code: V3ActCodePsychotherapyNoteInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodePsychotherapyNoteInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PSYTHPN";
+
+    /// <summary>
     /// Literal for code: PublicHealth
     /// </summary>
     public const string LiteralPublicHealth = "PUBHLTH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPublicHealth
+    /// </summary>
+    public const string LiteralV3ActReasonPublicHealth = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PUBHLTH";
 
     /// <summary>
     /// Literal for code: PowerOfAttorney
@@ -6157,9 +8057,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowerOfAttorney = "PWATRNY";
 
     /// <summary>
+    /// Literal for code: V3ActReasonPowerOfAttorney
+    /// </summary>
+    public const string LiteralV3ActReasonPowerOfAttorney = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PWATRNY";
+
+    /// <summary>
     /// Literal for code: Restricted
     /// </summary>
     public const string LiteralRestricted = "R";
+
+    /// <summary>
+    /// Literal for code: V3ConfidentialityRestricted
+    /// </summary>
+    public const string LiteralV3ConfidentialityRestricted = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#R";
 
     /// <summary>
     /// Literal for code: RaceInformationSensitivity
@@ -6167,9 +8077,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRaceInformationSensitivity = "RACE";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRaceInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeRaceInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RACE";
+
+    /// <summary>
     /// Literal for code: RatioMeasureScoring
     /// </summary>
     public const string LiteralRatioMeasureScoring = "RATIO";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueRatioMeasureScoring
+    /// </summary>
+    public const string LiteralV3ObservationValueRatioMeasureScoring = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RATIO";
 
     /// <summary>
     /// Literal for code: RecordsManagement
@@ -6177,9 +8097,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRecordsManagement = "RECORDMGT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonRecordsManagement
+    /// </summary>
+    public const string LiteralV3ActReasonRecordsManagement = "http://terminology.hl7.org/CodeSystem/v3-ActReason#RECORDMGT";
+
+    /// <summary>
     /// Literal for code: Redact
     /// </summary>
     public const string LiteralRedact = "REDACT";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeRedact
+    /// </summary>
+    public const string LiteralV3ActCodeRedact = "http://terminology.hl7.org/CodeSystem/v3-ActCode#REDACT";
 
     /// <summary>
     /// Literal for code: Redacted
@@ -6187,9 +8117,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRedacted = "REDACTED";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueRedacted
+    /// </summary>
+    public const string LiteralV3ObservationValueRedacted = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#REDACTED";
+
+    /// <summary>
     /// Literal for code: ProhibitionAgainstRedisclosureMark
     /// </summary>
     public const string LiteralProhibitionAgainstRedisclosureMark = "RedisclosureProhibitionMark";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeProhibitionAgainstRedisclosureMark
+    /// </summary>
+    public const string LiteralV3ActCodeProhibitionAgainstRedisclosureMark = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RedisclosureProhibitionMark";
 
     /// <summary>
     /// Literal for code: RefrainPolicy
@@ -6197,9 +8137,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRefrainPolicy = "RefrainPolicy";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRefrainPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeRefrainPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RefrainPolicy";
+
+    /// <summary>
     /// Literal for code: Refugee
     /// </summary>
     public const string LiteralRefugee = "REFUG";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueRefugee
+    /// </summary>
+    public const string LiteralV3ObservationValueRefugee = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#REFUG";
 
     /// <summary>
     /// Literal for code: ReligionInformationSensitivity
@@ -6207,9 +8157,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralReligionInformationSensitivity = "REL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeReligionInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeReligionInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#REL";
+
+    /// <summary>
     /// Literal for code: Relative
     /// </summary>
     public const string LiteralRelative = "RELAT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueRelative
+    /// </summary>
+    public const string LiteralV3ObservationValueRelative = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RELAT";
 
     /// <summary>
     /// Literal for code: RelativeDependent
@@ -6217,9 +8177,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRelativeDependent = "RELDEP";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueRelativeDependent
+    /// </summary>
+    public const string LiteralV3ObservationValueRelativeDependent = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RELDEP";
+
+    /// <summary>
     /// Literal for code: Reliable
     /// </summary>
     public const string LiteralReliable = "RELIABLE";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueReliable
+    /// </summary>
+    public const string LiteralV3ObservationValueReliable = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RELIABLE";
 
     /// <summary>
     /// Literal for code: RemittanceAdvice
@@ -6227,9 +8197,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRemittanceAdvice = "REMITADV";
 
     /// <summary>
+    /// Literal for code: V3ActReasonRemittanceAdvice
+    /// </summary>
+    public const string LiteralV3ActReasonRemittanceAdvice = "http://terminology.hl7.org/CodeSystem/v3-ActReason#REMITADV";
+
+    /// <summary>
     /// Literal for code: Rent
     /// </summary>
     public const string LiteralRent = "RENT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueRent
+    /// </summary>
+    public const string LiteralV3ObservationValueRent = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RENT";
 
     /// <summary>
     /// Literal for code: ResearchProjectCompartment
@@ -6237,9 +8217,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralResearchProjectCompartment = "RESCOMPT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeResearchProjectCompartment
+    /// </summary>
+    public const string LiteralV3ActCodeResearchProjectCompartment = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RESCOMPT";
+
+    /// <summary>
     /// Literal for code: ResourceUseMeasureType
     /// </summary>
     public const string LiteralResourceUseMeasureType = "RESOURCE";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueResourceUseMeasureType
+    /// </summary>
+    public const string LiteralV3ObservationValueResourceUseMeasureType = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RESOURCE";
 
     /// <summary>
     /// Literal for code: RestrictedConfidentialityMark
@@ -6247,9 +8237,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRestrictedConfidentialityMark = "RestrictedConfidentialityMark";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRestrictedConfidentialityMark
+    /// </summary>
+    public const string LiteralV3ActCodeRestrictedConfidentialityMark = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RestrictedConfidentialityMark";
+
+    /// <summary>
     /// Literal for code: RetirementInvestmentAccount
     /// </summary>
     public const string LiteralRetirementInvestmentAccount = "RETACCT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueRetirementInvestmentAccount
+    /// </summary>
+    public const string LiteralV3ObservationValueRetirementInvestmentAccount = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RETACCT";
 
     /// <summary>
     /// Literal for code: RetirementPay
@@ -6257,9 +8257,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRetirementPay = "RETIRE";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueRetirementPay
+    /// </summary>
+    public const string LiteralV3ObservationValueRetirementPay = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RETIRE";
+
+    /// <summary>
     /// Literal for code: RightLateralDecubitus
     /// </summary>
     public const string LiteralRightLateralDecubitus = "RLD";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueRightLateralDecubitus
+    /// </summary>
+    public const string LiteralV3ObservationValueRightLateralDecubitus = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RLD";
 
     /// <summary>
     /// Literal for code: RecordsManagementCompartment
@@ -6267,9 +8277,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRecordsManagementCompartment = "RMGTCOMPT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeRecordsManagementCompartment
+    /// </summary>
+    public const string LiteralV3ActCodeRecordsManagementCompartment = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RMGTCOMPT";
+
+    /// <summary>
     /// Literal for code: RotatingShiftWithNights
     /// </summary>
     public const string LiteralRotatingShiftWithNights = "RSWN";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueRotatingShiftWithNights
+    /// </summary>
+    public const string LiteralV3ObservationValueRotatingShiftWithNights = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RSWN";
 
     /// <summary>
     /// Literal for code: RotatingShiftWithoutNights
@@ -6277,9 +8297,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRotatingShiftWithoutNights = "RSWON";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueRotatingShiftWithoutNights
+    /// </summary>
+    public const string LiteralV3ObservationValueRotatingShiftWithoutNights = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RSWON";
+
+    /// <summary>
     /// Literal for code: ReverseTrendelenburg
     /// </summary>
     public const string LiteralReverseTrendelenburg = "RTRD";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueReverseTrendelenburg
+    /// </summary>
+    public const string LiteralV3ObservationValueReverseTrendelenburg = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RTRD";
 
     /// <summary>
     /// Literal for code: SomeExtent
@@ -6287,9 +8317,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSomeExtent = "S";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueSomeExtent
+    /// </summary>
+    public const string LiteralV3ObservationValueSomeExtent = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#S";
+
+    /// <summary>
     /// Literal for code: SickleCellAnemiaInformationSensitivity
     /// </summary>
     public const string LiteralSickleCellAnemiaInformationSensitivity = "SCA";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSickleCellAnemiaInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeSickleCellAnemiaInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SCA";
 
     /// <summary>
     /// Literal for code: SubstituteDecisionMakerAsserted
@@ -6297,9 +8337,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSubstituteDecisionMakerAsserted = "SDMAST";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueSubstituteDecisionMakerAsserted
+    /// </summary>
+    public const string LiteralV3ObservationValueSubstituteDecisionMakerAsserted = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SDMAST";
+
+    /// <summary>
     /// Literal for code: SubstituteDecisionMakerReported
     /// </summary>
     public const string LiteralSubstituteDecisionMakerReported = "SDMRPT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSubstituteDecisionMakerReported
+    /// </summary>
+    public const string LiteralV3ObservationValueSubstituteDecisionMakerReported = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SDMRPT";
 
     /// <summary>
     /// Literal for code: SexualAssaultAbuseOrDomesticViolenceInformationSensitivity
@@ -6307,9 +8357,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSexualAssaultAbuseOrDomesticViolenceInformationSensitivity = "SDV";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSexualAssaultAbuseOrDomesticViolenceInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeSexualAssaultAbuseOrDomesticViolenceInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SDV";
+
+    /// <summary>
     /// Literal for code: SecurityTrustObservation
     /// </summary>
     public const string LiteralSecurityTrustObservation = "SECTRSTOBV";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSecurityTrustObservation
+    /// </summary>
+    public const string LiteralV3ObservationValueSecurityTrustObservation = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SECTRSTOBV";
 
     /// <summary>
     /// Literal for code: SecurityLabelMark
@@ -6317,9 +8377,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSecurityLabelMark = "SecurityLabelMark";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSecurityLabelMark
+    /// </summary>
+    public const string LiteralV3ActCodeSecurityLabelMark = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SecurityLabelMark";
+
+    /// <summary>
     /// Literal for code: SecurityPolicy
     /// </summary>
     public const string LiteralSecurityPolicy = "SecurityPolicy";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSecurityPolicy
+    /// </summary>
+    public const string LiteralV3ActCodeSecurityPolicy = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SecurityPolicy";
 
     /// <summary>
     /// Literal for code: SexualityAndReproductiveHealthInformationSensitivity
@@ -6327,9 +8397,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSexualityAndReproductiveHealthInformationSensitivity = "SEX";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSexualityAndReproductiveHealthInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeSexualityAndReproductiveHealthInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SEX";
+
+    /// <summary>
     /// Literal for code: SemiFowlerQuoteS
     /// </summary>
     public const string LiteralSemiFowlerQuoteS = "SFWL";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSemiFowlerQuoteS
+    /// </summary>
+    public const string LiteralV3ObservationValueSemiFowlerQuoteS = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SFWL";
 
     /// <summary>
     /// Literal for code: SickleCell
@@ -6337,9 +8417,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSickleCell = "SICKLE";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSickleCell
+    /// </summary>
+    public const string LiteralV3ActCodeSickleCell = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SICKLE";
+
+    /// <summary>
     /// Literal for code: Sitting
     /// </summary>
     public const string LiteralSitting = "SIT";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSitting
+    /// </summary>
+    public const string LiteralV3ObservationValueSitting = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SIT";
 
     /// <summary>
     /// Literal for code: SocioEconomicStatus
@@ -6347,9 +8437,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSocioEconomicStatus = "SOECSTAT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueSocioEconomicStatus
+    /// </summary>
+    public const string LiteralV3ObservationValueSocioEconomicStatus = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SOECSTAT";
+
+    /// <summary>
     /// Literal for code: SpeciallyProtectedInformationSensitivity
     /// </summary>
     public const string LiteralSpeciallyProtectedInformationSensitivity = "SPI";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSpeciallyProtectedInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeSpeciallyProtectedInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SPI";
 
     /// <summary>
     /// Literal for code: SpousalOrPartnerSupport
@@ -6357,9 +8457,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSpousalOrPartnerSupport = "SPOUSAL";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueSpousalOrPartnerSupport
+    /// </summary>
+    public const string LiteralV3ObservationValueSpousalOrPartnerSupport = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SPOUSAL";
+
+    /// <summary>
     /// Literal for code: SpouseOnly
     /// </summary>
     public const string LiteralSpouseOnly = "SPS";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSpouseOnly
+    /// </summary>
+    public const string LiteralV3ObservationValueSpouseOnly = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SPS";
 
     /// <summary>
     /// Literal for code: SpouseDependent
@@ -6367,9 +8477,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSpouseDependent = "SPSDEP";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueSpouseDependent
+    /// </summary>
+    public const string LiteralV3ObservationValueSpouseDependent = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SPSDEP";
+
+    /// <summary>
     /// Literal for code: SplitShift
     /// </summary>
     public const string LiteralSplitShift = "SS";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSplitShift
+    /// </summary>
+    public const string LiteralV3ObservationValueSplitShift = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SS";
 
     /// <summary>
     /// Literal for code: SensitiveServiceProviderInformationSensitivity
@@ -6377,9 +8497,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSensitiveServiceProviderInformationSensitivity = "SSP";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSensitiveServiceProviderInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeSensitiveServiceProviderInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SSP";
+
+    /// <summary>
     /// Literal for code: SameSexPartner
     /// </summary>
     public const string LiteralSameSexPartner = "SSP";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSameSexPartner
+    /// </summary>
+    public const string LiteralV3ObservationValueSameSexPartner = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SSP";
 
     /// <summary>
     /// Literal for code: SexuallyTransmittedDiseaseInformationSensitivity
@@ -6387,9 +8517,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSexuallyTransmittedDiseaseInformationSensitivity = "STD";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSexuallyTransmittedDiseaseInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeSexuallyTransmittedDiseaseInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#STD";
+
+    /// <summary>
     /// Literal for code: Standing
     /// </summary>
     public const string LiteralStanding = "STN";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueStanding
+    /// </summary>
+    public const string LiteralV3ObservationValueStanding = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#STN";
 
     /// <summary>
     /// Literal for code: StructureMeasureType
@@ -6397,9 +8537,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralStructureMeasureType = "STRUCTURE";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueStructureMeasureType
+    /// </summary>
+    public const string LiteralV3ObservationValueStructureMeasureType = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#STRUCTURE";
+
+    /// <summary>
     /// Literal for code: StudentEnrollment
     /// </summary>
     public const string LiteralStudentEnrollment = "STUDENRL";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueStudentEnrollment
+    /// </summary>
+    public const string LiteralV3ObservationValueStudentEnrollment = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#STUDENRL";
 
     /// <summary>
     /// Literal for code: Subsetted
@@ -6407,9 +8557,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSubsetted = "SUBSETTED";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueSubsetted
+    /// </summary>
+    public const string LiteralV3ObservationValueSubsetted = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SUBSETTED";
+
+    /// <summary>
     /// Literal for code: SubstanceUseDisorderInformationSensitivity
     /// </summary>
     public const string LiteralSubstanceUseDisorderInformationSensitivity = "SUD";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSubstanceUseDisorderInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeSubstanceUseDisorderInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#SUD";
 
     /// <summary>
     /// Literal for code: SundryExpense
@@ -6417,9 +8577,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSundryExpense = "SUNDRY";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueSundryExpense
+    /// </summary>
+    public const string LiteralV3ObservationValueSundryExpense = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SUNDRY";
+
+    /// <summary>
     /// Literal for code: Supine
     /// </summary>
     public const string LiteralSupine = "SUP";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueSupine
+    /// </summary>
+    public const string LiteralV3ObservationValueSupine = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SUP";
 
     /// <summary>
     /// Literal for code: SupportNetwork
@@ -6427,9 +8597,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSupportNetwork = "SUPNWK";
 
     /// <summary>
+    /// Literal for code: V3ActReasonSupportNetwork
+    /// </summary>
+    public const string LiteralV3ActReasonSupportNetwork = "http://terminology.hl7.org/CodeSystem/v3-ActReason#SUPNWK";
+
+    /// <summary>
     /// Literal for code: IncomeSupplement
     /// </summary>
     public const string LiteralIncomeSupplement = "SUPPLE";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueIncomeSupplement
+    /// </summary>
+    public const string LiteralV3ObservationValueIncomeSupplement = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SUPPLE";
 
     /// <summary>
     /// Literal for code: SyntacticTransform
@@ -6437,9 +8617,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSyntacticTransform = "SYNTAC";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueSyntacticTransform
+    /// </summary>
+    public const string LiteralV3ObservationValueSyntacticTransform = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SYNTAC";
+
+    /// <summary>
     /// Literal for code: SystemDevelopment
     /// </summary>
     public const string LiteralSystemDevelopment = "SYSDEV";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonSystemDevelopment
+    /// </summary>
+    public const string LiteralV3ActReasonSystemDevelopment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#SYSDEV";
 
     /// <summary>
     /// Literal for code: TaxObligation
@@ -6447,9 +8637,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTaxObligation = "TAX";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueTaxObligation
+    /// </summary>
+    public const string LiteralV3ObservationValueTaxObligation = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TAX";
+
+    /// <summary>
     /// Literal for code: Taboo
     /// </summary>
     public const string LiteralTaboo = "TBOO";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeTaboo
+    /// </summary>
+    public const string LiteralV3ActCodeTaboo = "http://terminology.hl7.org/CodeSystem/v3-ActCode#TBOO";
 
     /// <summary>
     /// Literal for code: Threat
@@ -6457,9 +8657,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralThreat = "THREAT";
 
     /// <summary>
+    /// Literal for code: V3ActReasonThreat
+    /// </summary>
+    public const string LiteralV3ActReasonThreat = "http://terminology.hl7.org/CodeSystem/v3-ActReason#THREAT";
+
+    /// <summary>
     /// Literal for code: Training
     /// </summary>
     public const string LiteralTraining = "TRAIN";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonTraining
+    /// </summary>
+    public const string LiteralV3ActReasonTraining = "http://terminology.hl7.org/CodeSystem/v3-ActReason#TRAIN";
 
     /// <summary>
     /// Literal for code: TransportationExpense
@@ -6467,9 +8677,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTransportationExpense = "TRANS";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueTransportationExpense
+    /// </summary>
+    public const string LiteralV3ObservationValueTransportationExpense = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRANS";
+
+    /// <summary>
     /// Literal for code: TranslationalHealthcareResearch
     /// </summary>
     public const string LiteralTranslationalHealthcareResearch = "TRANSRCH";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonTranslationalHealthcareResearch
+    /// </summary>
+    public const string LiteralV3ActReasonTranslationalHealthcareResearch = "http://terminology.hl7.org/CodeSystem/v3-ActReason#TRANSRCH";
 
     /// <summary>
     /// Literal for code: Trendelenburg
@@ -6477,9 +8697,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTrendelenburg = "TRD";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueTrendelenburg
+    /// </summary>
+    public const string LiteralV3ObservationValueTrendelenburg = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRD";
+
+    /// <summary>
     /// Literal for code: Treatment
     /// </summary>
     public const string LiteralTreatment = "TREAT";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonTreatment
+    /// </summary>
+    public const string LiteralV3ActReasonTreatment = "http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT";
 
     /// <summary>
     /// Literal for code: Translated
@@ -6487,9 +8717,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTranslated = "TRSLT";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueTranslated
+    /// </summary>
+    public const string LiteralV3ObservationValueTranslated = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRSLT";
+
+    /// <summary>
     /// Literal for code: TrustAccreditationObservation
     /// </summary>
     public const string LiteralTrustAccreditationObservation = "TRSTACCRDOBV";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueTrustAccreditationObservation
+    /// </summary>
+    public const string LiteralV3ObservationValueTrustAccreditationObservation = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRSTACCRDOBV";
 
     /// <summary>
     /// Literal for code: TrustAgreementObservation
@@ -6497,9 +8737,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTrustAgreementObservation = "TRSTAGREOBV";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueTrustAgreementObservation
+    /// </summary>
+    public const string LiteralV3ObservationValueTrustAgreementObservation = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRSTAGREOBV";
+
+    /// <summary>
     /// Literal for code: TrustCertificateObservation
     /// </summary>
     public const string LiteralTrustCertificateObservation = "TRSTCERTOBV";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueTrustCertificateObservation
+    /// </summary>
+    public const string LiteralV3ObservationValueTrustCertificateObservation = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRSTCERTOBV";
 
     /// <summary>
     /// Literal for code: NoneSupplied5
@@ -6507,9 +8757,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoneSupplied5 = "TRSTFWKOBV";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueNoneSupplied5
+    /// </summary>
+    public const string LiteralV3ObservationValueNoneSupplied5 = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRSTFWKOBV";
+
+    /// <summary>
     /// Literal for code: TrustAssuranceObservation
     /// </summary>
     public const string LiteralTrustAssuranceObservation = "TRSTLOAOBV";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueTrustAssuranceObservation
+    /// </summary>
+    public const string LiteralV3ObservationValueTrustAssuranceObservation = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRSTLOAOBV";
 
     /// <summary>
     /// Literal for code: NoneSupplied6
@@ -6517,9 +8777,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoneSupplied6 = "TRSTMECOBV";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueNoneSupplied6
+    /// </summary>
+    public const string LiteralV3ObservationValueNoneSupplied6 = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRSTMECOBV";
+
+    /// <summary>
     /// Literal for code: Trust
     /// </summary>
     public const string LiteralTrust = "TRUST";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueTrust
+    /// </summary>
+    public const string LiteralV3ObservationValueTrust = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRUST";
 
     /// <summary>
     /// Literal for code: Unrestricted
@@ -6527,9 +8797,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUnrestricted = "U";
 
     /// <summary>
+    /// Literal for code: V3ConfidentialityUnrestricted
+    /// </summary>
+    public const string LiteralV3ConfidentialityUnrestricted = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#U";
+
+    /// <summary>
     /// Literal for code: UncertainReliability
     /// </summary>
     public const string LiteralUncertainReliability = "UNCERTREL";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueUncertainReliability
+    /// </summary>
+    public const string LiteralV3ObservationValueUncertainReliability = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#UNCERTREL";
 
     /// <summary>
     /// Literal for code: Unemployed
@@ -6537,9 +8817,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUnemployed = "UNEMPL";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueUnemployed
+    /// </summary>
+    public const string LiteralV3ObservationValueUnemployed = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#UNEMPL";
+
+    /// <summary>
     /// Literal for code: Unemployed_2
     /// </summary>
     public const string LiteralUnemployed_2 = "Unemployed";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueUnemployed_2
+    /// </summary>
+    public const string LiteralV3ObservationValueUnemployed_2 = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#Unemployed";
 
     /// <summary>
     /// Literal for code: UnrelatedPerson
@@ -6547,9 +8837,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUnrelatedPerson = "UNREL";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueUnrelatedPerson
+    /// </summary>
+    public const string LiteralV3ObservationValueUnrelatedPerson = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#UNREL";
+
+    /// <summary>
     /// Literal for code: Unreliable
     /// </summary>
     public const string LiteralUnreliable = "UNRELIABLE";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueUnreliable
+    /// </summary>
+    public const string LiteralV3ObservationValueUnreliable = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#UNRELIABLE";
 
     /// <summary>
     /// Literal for code: UpgradeSecurityLabel
@@ -6557,9 +8857,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUpgradeSecurityLabel = "UPGRDLABEL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeUpgradeSecurityLabel
+    /// </summary>
+    public const string LiteralV3ActCodeUpgradeSecurityLabel = "http://terminology.hl7.org/CodeSystem/v3-ActCode#UPGRDLABEL";
+
+    /// <summary>
     /// Literal for code: UnrelatedPersonDependent
     /// </summary>
     public const string LiteralUnrelatedPersonDependent = "URELDEP";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueUnrelatedPersonDependent
+    /// </summary>
+    public const string LiteralV3ObservationValueUnrelatedPersonDependent = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#URELDEP";
 
     /// <summary>
     /// Literal for code: UtilityExpense
@@ -6567,9 +8877,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUtilityExpense = "UTIL";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueUtilityExpense
+    /// </summary>
+    public const string LiteralV3ObservationValueUtilityExpense = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#UTIL";
+
+    /// <summary>
     /// Literal for code: U
     /// </summary>
     public const string LiteralU = "UUI";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeU
+    /// </summary>
+    public const string LiteralV3ActCodeU = "http://terminology.hl7.org/CodeSystem/v3-ActCode#UUI";
 
     /// <summary>
     /// Literal for code: VeryRestricted
@@ -6577,9 +8897,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVeryRestricted = "V";
 
     /// <summary>
+    /// Literal for code: V3ConfidentialityVeryRestricted
+    /// </summary>
+    public const string LiteralV3ConfidentialityVeryRestricted = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#V";
+
+    /// <summary>
     /// Literal for code: Versioned
     /// </summary>
     public const string LiteralVersioned = "VERSIONED";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueVersioned
+    /// </summary>
+    public const string LiteralV3ObservationValueVersioned = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#VERSIONED";
 
     /// <summary>
     /// Literal for code: ViolenceInformationSensitivity
@@ -6587,9 +8917,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralViolenceInformationSensitivity = "VIO";
 
     /// <summary>
+    /// Literal for code: V3ActCodeViolenceInformationSensitivity
+    /// </summary>
+    public const string LiteralV3ActCodeViolenceInformationSensitivity = "http://terminology.hl7.org/CodeSystem/v3-ActCode#VIO";
+
+    /// <summary>
     /// Literal for code: CelebrityInformationSensitivity_2
     /// </summary>
     public const string LiteralCelebrityInformationSensitivity_2 = "VIP";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeCelebrityInformationSensitivity_2
+    /// </summary>
+    public const string LiteralV3ActCodeCelebrityInformationSensitivity_2 = "http://terminology.hl7.org/CodeSystem/v3-ActCode#VIP";
 
     /// <summary>
     /// Literal for code: VeryLongShift
@@ -6597,13 +8937,976 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVeryLongShift = "VLS";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueVeryLongShift
+    /// </summary>
+    public const string LiteralV3ObservationValueVeryLongShift = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#VLS";
+
+    /// <summary>
     /// Literal for code: VariableShift
     /// </summary>
     public const string LiteralVariableShift = "VS";
 
     /// <summary>
+    /// Literal for code: V3ObservationValueVariableShift
+    /// </summary>
+    public const string LiteralV3ObservationValueVariableShift = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#VS";
+
+    /// <summary>
     /// Literal for code: WeightedScoring
     /// </summary>
     public const string LiteralWeightedScoring = "WEIGHTSCR";
+
+    /// <summary>
+    /// Literal for code: V3ObservationValueWeightedScoring
+    /// </summary>
+    public const string LiteralV3ObservationValueWeightedScoring = "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#WEIGHTSCR";
+
+    /// <summary>
+    /// Dictionary for looking up SecurityLabels Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "_ActCoverageAssessmentObservationValue", ActCoverageAssessmentObservationValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_ActCoverageAssessmentObservationValue", ActCoverageAssessmentObservationValue }, 
+      { "_ActFinancialStatusObservationValue", ActFinancialStatusObservationValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_ActFinancialStatusObservationValue", ActFinancialStatusObservationValue }, 
+      { "_ActInformationSensitivityPolicy", ActInformationSensitivityPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_ActInformationSensitivityPolicy", ActInformationSensitivityPolicy }, 
+      { "_AllergyTestValue", AllergyTestValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_AllergyTestValue", AllergyTestValue }, 
+      { "_AnnotationValue", AnnotationValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_AnnotationValue", AnnotationValue }, 
+      { "_CaseSeriousnessCriteria", CaseSeriousnessCriteria }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CaseSeriousnessCriteria", CaseSeriousnessCriteria }, 
+      { "_CommonClinicalObservationAssertionValue", CommonClinicalObservationAssertionValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CommonClinicalObservationAssertionValue", CommonClinicalObservationAssertionValue }, 
+      { "_CommonClinicalObservationResultValue", CommonClinicalObservationResultValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CommonClinicalObservationResultValue", CommonClinicalObservationResultValue }, 
+      { "_CommonClinicalObservationValue", CommonClinicalObservation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CommonClinicalObservationValue", CommonClinicalObservation }, 
+      { "_CompositeMeasureScoring", CompositeMeasureScoring }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CompositeMeasureScoring", CompositeMeasureScoring }, 
+      { "_CoverageChemicalDependencyValue", CoverageChemicalDependencyValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CoverageChemicalDependencyValue", CoverageChemicalDependencyValue }, 
+      { "_CoverageItemLimitObservationValue", CoverageItemLimitObservationValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CoverageItemLimitObservationValue", CoverageItemLimitObservationValue }, 
+      { "_CoverageLevelObservationValue", CoverageLevelObservationValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CoverageLevelObservationValue", CoverageLevelObservationValue }, 
+      { "_CoverageLimitObservationValue", CoverageLimitObservationValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CoverageLimitObservationValue", CoverageLimitObservationValue }, 
+      { "_CoverageLocationLimitObservationValue", CoverageLocationLimitObservationValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CoverageLocationLimitObservationValue", CoverageLocationLimitObservationValue }, 
+      { "_CriticalityObservationValue", CriticalityObservationValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_CriticalityObservationValue", CriticalityObservationValue }, 
+      { "_DeviceManufacturerEvaluationInterpretation", DeviceManufacturerEvaluationInterpretation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_DeviceManufacturerEvaluationInterpretation", DeviceManufacturerEvaluationInterpretation }, 
+      { "_DeviceManufacturerEvaluationMethod", DeviceManufacturerEvaluationMethod }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_DeviceManufacturerEvaluationMethod", DeviceManufacturerEvaluationMethod }, 
+      { "_DeviceManufacturerEvaluationResult", DeviceManufacturerEvaluationResult }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_DeviceManufacturerEvaluationResult", DeviceManufacturerEvaluationResult }, 
+      { "_DiagnosisValue", DiagnosisValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_DiagnosisValue", DiagnosisValue }, 
+      { "_ECGAnnotationValue", ECGAnnotationValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_ECGAnnotationValue", ECGAnnotationValue }, 
+      { "_EmploymentStatus", EmploymentStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_EmploymentStatus", EmploymentStatus }, 
+      { "_EntitySensitivityPolicyType", EntityInformationSensitivityPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_EntitySensitivityPolicyType", EntityInformationSensitivityPolicy }, 
+      { "_GeneticObservationValue", GeneticObservationValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_GeneticObservationValue", GeneticObservationValue }, 
+      { "_IndicationValue", IndicationValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_IndicationValue", IndicationValue }, 
+      { "_IndividualCaseSafetyReportValueDomains", IndividualCaseSafetyReportValueDomains }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_IndividualCaseSafetyReportValueDomains", IndividualCaseSafetyReportValueDomains }, 
+      { "_InformationSensitivityPolicy", InformationSensitivityPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_InformationSensitivityPolicy", InformationSensitivityPolicy }, 
+      { "_InjuryObservationValue", InjuryObservationValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_InjuryObservationValue", InjuryObservationValue }, 
+      { "_IntoleranceValue", IntoleranceValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_IntoleranceValue", IntoleranceValue }, 
+      { "_IssueTriggerObservationValue", IssueTriggerObservationValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_IssueTriggerObservationValue", IssueTriggerObservationValue }, 
+      { "_MeasurementImprovementNotation", MeasurementImprovementNotation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_MeasurementImprovementNotation", MeasurementImprovementNotation }, 
+      { "_ObservationMeasureScoring", ObservationMeasureScoring }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_ObservationMeasureScoring", ObservationMeasureScoring }, 
+      { "_ObservationMeasureType", ObservationMeasureType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_ObservationMeasureType", ObservationMeasureType }, 
+      { "_OtherIndicationValue", OtherIndicationValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_OtherIndicationValue", OtherIndicationValue }, 
+      { "_PartialCompletionScale", PartialCompletionScale }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_PartialCompletionScale", PartialCompletionScale }, 
+      { "_PertinentReactionRelatedness", PertinentReactionRelatedness }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_PertinentReactionRelatedness", PertinentReactionRelatedness }, 
+      { "_ProductCharacterization", ProductCharacterization }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_ProductCharacterization", ProductCharacterization }, 
+      { "_ReactionActionTaken", ReactionActionTaken }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_ReactionActionTaken", ReactionActionTaken }, 
+      { "_RoleInformationSensitivityPolicy", RoleInformationSensitivityPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#_RoleInformationSensitivityPolicy", RoleInformationSensitivityPolicy }, 
+      { "_SECALTINTOBV", AlterationIntegrity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECALTINTOBV", AlterationIntegrity }, 
+      { "_SECCATOBV", SecurityCategory }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECCATOBV", SecurityCategory }, 
+      { "_SECCLASSOBV", SecurityClassification }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECCLASSOBV", SecurityClassification }, 
+      { "_SECCONOBV", SecurityControl }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECCONOBV", SecurityControl }, 
+      { "_SECDATINTOBV", DataIntegrity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECDATINTOBV", DataIntegrity }, 
+      { "_SECINTCONOBV", IntegrityConfidence }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECINTCONOBV", IntegrityConfidence }, 
+      { "_SECINTOBV", SecurityIntegrity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECINTOBV", SecurityIntegrity }, 
+      { "_SECINTPRVABOBV", ProvenanceAssertedBy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECINTPRVABOBV", ProvenanceAssertedBy }, 
+      { "_SECINTPRVOBV", Provenance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECINTPRVOBV", Provenance }, 
+      { "_SECINTPRVRBOBV", ProvenanceReportedBy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECINTPRVRBOBV", ProvenanceReportedBy }, 
+      { "_SECINTSTOBV", IntegrityStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SECINTSTOBV", IntegrityStatus }, 
+      { "_SecurityObservationValue", SecurityObservationValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SecurityObservationValue", SecurityObservationValue }, 
+      { "_SeverityObservation", SeverityObservation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SeverityObservation", SeverityObservation }, 
+      { "_SubjectBodyPosition", SubjectBodyPosition }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SubjectBodyPosition", SubjectBodyPosition }, 
+      { "_SubjectReaction", SubjectReaction }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SubjectReaction", SubjectReaction }, 
+      { "_SubjectReactionEmphasis", SubjectReactionEmphasis }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SubjectReactionEmphasis", SubjectReactionEmphasis }, 
+      { "_SubjectReactionOutcome", SubjectReactionOutcome }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SubjectReactionOutcome", SubjectReactionOutcome }, 
+      { "_SymptomValue", SymptomValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_SymptomValue", SymptomValue }, 
+      { "_VerificationOutcomeValue", VerificationOutcome }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_VerificationOutcomeValue", VerificationOutcome }, 
+      { "_WorkSchedule", WorkSchedule }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#_WorkSchedule", WorkSchedule }, 
+      { "A0", NoReaction }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#A0", NoReaction }, 
+      { "A1", MinimalReaction }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#A1", MinimalReaction }, 
+      { "A2", MildReaction }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#A2", MildReaction }, 
+      { "A3", ModerateReaction }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#A3", ModerateReaction }, 
+      { "A4", SevereReaction }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#A4", SevereReaction }, 
+      { "ABSTRED", Abstracted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ABSTRED", Abstracted }, 
+      { "ABUSE", AbuseVictim }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ABUSE", AbuseVictim }, 
+      { "ACCESSCONSCHEME", AccessControlScheme }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ACCESSCONSCHEME", AccessControlScheme }, 
+      { "ACOCOMPT", AccountableCareOrganizationCompartment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ACOCOMPT", AccountableCareOrganizationCompartment }, 
+      { "ACT", ActiveCoverage }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ACT", ActiveCoverage }, 
+      { "ACTPEND", ActivePendingInvestigation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ACTPEND", ActivePendingInvestigation }, 
+      { "ADC", AdultChild }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ADC", AdultChild }, 
+      { "ADOL", AdolescentInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ADOL", AdolescentInformationSensitivity }, 
+      { "ADOPT", AdoptionDocument }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ADOPT", AdoptionDocument }, 
+      { "AGGRED", Aggregated }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#AGGRED", Aggregated }, 
+      { "ALLORNONESCR", AllOrNothingScoring }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ALLORNONESCR", AllOrNothingScoring }, 
+      { "ALONE", Alone }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ALONE", Alone }, 
+      { "ANNUITY", Annuity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ANNUITY", Annuity }, 
+      { "ANONY", Anonymize }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ANONY", Anonymize }, 
+      { "ANONYED", Anonymized }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ANONYED", Anonymized }, 
+      { "AOD", AccountingOfDisclosure }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#AOD", AccountingOfDisclosure }, 
+      { "APPROPRIATE", AppropriateUseProcessMeasure }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#APPROPRIATE", AppropriateUseProcessMeasure }, 
+      { "ASSET", Asset }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ASSET", Asset }, 
+      { "AUDIT", Audit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT", Audit }, 
+      { "AUDTR", AuditTrail }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDTR", AuditTrail }, 
+      { "AUTHPOL", AuthorizationPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#AUTHPOL", AuthorizationPolicy }, 
+      { "B", BusinessInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#B", BusinessInformationSensitivity }, 
+      { "BH", BehavioralHealthInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#BH", BehavioralHealthInformationSensitivity }, 
+      { "BIORCH", BiomedicalResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#BIORCH", BiomedicalResearch }, 
+      { "BTG", BreakTheGlass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#BTG", BreakTheGlass }, 
+      { "BTHCERT", BirthCertificate }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#BTHCERT", BirthCertificate }, 
+      { "CAREMGT", CareManagement }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CAREMGT", CareManagement }, 
+      { "CCOC", CreditableCoverageDocument }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CCOC", CreditableCoverageDocument }, 
+      { "CDSSCOMPT", CDSSystemCompartment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CDSSCOMPT", CDSSystemCompartment }, 
+      { "CEL", CelebrityInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CEL", CelebrityInformationSensitivity }, 
+      { "CHD", Child }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CHD", Child }, 
+      { "CHILD", ChildSupport }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CHILD", ChildSupport }, 
+      { "CLINAST", ClinicianAsserted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CLINAST", ClinicianAsserted }, 
+      { "CLINRPT", ClinicianReported }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CLINRPT", ClinicianReported }, 
+      { "CLINTRCH", ClinicalTrialResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINTRCH", ClinicalTrialResearch }, 
+      { "CLINTRCHNPC", ClinicalTrialResearchWithoutPatientCare }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINTRCHNPC", ClinicalTrialResearchWithoutPatientCare }, 
+      { "CLINTRCHPC", ClinicalTrialResearchWithPatientCare }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINTRCHPC", ClinicalTrialResearchWithPatientCare }, 
+      { "CLINTRL", ClinicalTrial }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLINTRL", ClinicalTrial }, 
+      { "CLMATTCH", ClaimAttachment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#CLMATTCH", ClaimAttachment }, 
+      { "CLOTH", ClothingExpense }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CLOTH", ClothingExpense }, 
+      { "COC", CoordinationOfCare }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#COC", CoordinationOfCare }, 
+      { "COGN", CognitiveDisabilityInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#COGN", CognitiveDisabilityInformationSensitivity }, 
+      { "COHORT", CohortMeasureScoring }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#COHORT", CohortMeasureScoring }, 
+      { "COMPOSITE", CompositeMeasureType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#COMPOSITE", CompositeMeasureType }, 
+      { "COMPT", Compartment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#COMPT", Compartment }, 
+      { "ConfidentialMark", ConfidentialMark }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ConfidentialMark", ConfidentialMark }, 
+      { "CONTROLLED", CONTROLLED }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CONTROLLED", CONTROLLED }, 
+      { "ControlledUnclassifiedInformation", ControlledUnclassifiedInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ControlledUnclassifiedInformation", ControlledUnclassifiedInformation }, 
+      { "CONTVAR", ContinuousVariableMeasureScoring }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CONTVAR", ContinuousVariableMeasureScoring }, 
+      { "COPYMark", CopyOfOriginalMark }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#COPYMark", CopyOfOriginalMark }, 
+      { "COVAUTH", CoverageAuthorization }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#COVAUTH", CoverageAuthorization }, 
+      { "COVERAGE", CoverageUnderPolicyOrProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#COVERAGE", CoverageUnderPolicyOrProgram }, 
+      { "CPLYCC", ComplyWithConfidentialityCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYCC", ComplyWithConfidentialityCode }, 
+      { "CPLYCD", ComplyWithConsentDirective }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYCD", ComplyWithConsentDirective }, 
+      { "CPLYCUI", ComplyWithControlledUnclassifiedInformationPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYCUI", ComplyWithControlledUnclassifiedInformationPolicy }, 
+      { "CPLYJPP", ComplyWithJurisdictionalPrivacyPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYJPP", ComplyWithJurisdictionalPrivacyPolicy }, 
+      { "CPLYJSP", ComplyWithJurisdictionalSecurityPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYJSP", ComplyWithJurisdictionalSecurityPolicy }, 
+      { "CPLYOPP", ComplyWithOrganizationalPrivacyPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYOPP", ComplyWithOrganizationalPrivacyPolicy }, 
+      { "CPLYOSP", ComplyWithOrganizationalSecurityPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYOSP", ComplyWithOrganizationalSecurityPolicy }, 
+      { "CPLYPOL", ComplyWithPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYPOL", ComplyWithPolicy }, 
+      { "CRITH", HighCriticality }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CRITH", HighCriticality }, 
+      { "CRITL", LowCriticality }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CRITL", LowCriticality }, 
+      { "CRITU", UnableToAssessCriticality }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CRITU", UnableToAssessCriticality }, 
+      { "CRYTOHASH", CryptographicHashFunction }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#CRYTOHASH", CryptographicHashFunction }, 
+      { "CTCOMPT", CareTeamCompartment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CTCOMPT", CareTeamCompartment }, 
+      { "CUI", CUI }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUI", CUI }, 
+      { "CUIHLTH", CUIHLTH }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUIHLTH", CUIHLTH }, 
+      { "CUIHLTHP", CUIHLTH_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUIHLTHP", CUIHLTH_2 }, 
+      { "CUIMark", CUIMark }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUIMark", CUIMark }, 
+      { "CUIP", CUI_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUIP", CUI_2 }, 
+      { "CUIPRVCY", CUIPRVCY }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUIPRVCY", CUIPRVCY }, 
+      { "CUIPRVCYP", CUIPRVCY_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUIPRVCYP", CUIPRVCY_2 }, 
+      { "CUISP-HLTH", CUISPHLTH }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUISP-HLTH", CUISPHLTH }, 
+      { "CUISP-HLTHP", CUISPHLTH_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUISP-HLTHP", CUISPHLTH_2 }, 
+      { "CUISP-PRVCY", CUISPPRVCY }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUISP-PRVCY", CUISPPRVCY }, 
+      { "CUISP-PRVCYP", CUISPPRVCY_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#CUISP-PRVCYP", CUISPPRVCY_2 }, 
+      { "DECLASSIFYLABEL", DeclassifySecurityLabel }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DECLASSIFYLABEL", DeclassifySecurityLabel }, 
+      { "DecrIsImp", DecreasedScoreIndicatesImprovement }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DecrIsImp", DecreasedScoreIndicatesImprovement }, 
+      { "DEID", Deidentify }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DEID", Deidentify }, 
+      { "DELAU", DeleteAfterUse }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DELAU", DeleteAfterUse }, 
+      { "DELEPOL", DelegationPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DELEPOL", DelegationPolicy }, 
+      { "DeliverToAddresseeOnlyMark", DeliverOnlyToAddresseeMark }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DeliverToAddresseeOnlyMark", DeliverOnlyToAddresseeMark }, 
+      { "DEMO", AllDemographicInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DEMO", AllDemographicInformationSensitivity }, 
+      { "DEP", Dependent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DEP", Dependent }, 
+      { "DEPCHD", DependentChildren }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DEPCHD", DependentChildren }, 
+      { "DEPSPS", DependentSpouse }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DEPSPS", DependentSpouse }, 
+      { "DEPYGCHD", DependentYoungChildren }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DEPYGCHD", DependentYoungChildren }, 
+      { "DEVAST", DeviceAsserted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DEVAST", DeviceAsserted }, 
+      { "DEVRPT", DeviceReported }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DEVRPT", DeviceReported }, 
+      { "DIA", DiagnosisInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DIA", DiagnosisInformationSensitivity }, 
+      { "DIGSIG", DigitalSignature }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DIGSIG", DigitalSignature }, 
+      { "DISABL", DisabilityPay }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DISABL", DisabilityPay }, 
+      { "DISABLE", Disabled }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DISABLE", Disabled }, 
+      { "DISASTER", Disaster }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#DISASTER", Disaster }, 
+      { "DOB", DateOfBirthInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOB", DateOfBirthInformationSensitivity }, 
+      { "DONAT", Donation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#DONAT", Donation }, 
+      { "DOWNGRDLABEL", DowngradeSecurityLabel }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DOWNGRDLABEL", DowngradeSecurityLabel }, 
+      { "DP", DomesticPartner }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DP", DomesticPartner }, 
+      { "DRAFTMark", DraftMark }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DRAFTMark", DraftMark }, 
+      { "DRGIS", DrugInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DRGIS", DrugInformationSensitivity }, 
+      { "DRIVLABEL", DeriveSecurityLabel }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DRIVLABEL", DeriveSecurityLabel }, 
+      { "DRLIC", DriverLicense }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DRLIC", DriverLicense }, 
+      { "DRUG", DrugUse }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DRUG", DrugUse }, 
+      { "DS", DaytimeShift }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#DS", DaytimeShift }, 
+      { "DSRCH", DiseaseSpecificHealthcareResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#DSRCH", DiseaseSpecificHealthcareResearch }, 
+      { "DVD", DevelopmentalDisabilityInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DVD", DevelopmentalDisabilityInformationSensitivity }, 
+      { "ECH", Employee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ECH", Employee }, 
+      { "EFFICIENCY", EfficiencyMeasureType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#EFFICIENCY", EfficiencyMeasureType }, 
+      { "ELG", Eligible }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ELG", Eligible }, 
+      { "ELIGDTRM", EligibilityDetermination }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ELIGDTRM", EligibilityDetermination }, 
+      { "ELIGVER", EligibilityVerification }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ELIGVER", EligibilityVerification }, 
+      { "ELSTAT", EligibilityIndicator }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ELSTAT", EligibilityIndicator }, 
+      { "EMOTDIS", EmotionalDisturbanceInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#EMOTDIS", EmotionalDisturbanceInformationSensitivity }, 
+      { "EMP", EmployeeInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#EMP", EmployeeInformationSensitivity }, 
+      { "EMPL", EmployerInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#EMPL", EmployerInformationSensitivity }, 
+      { "Employed", Employed }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#Employed", Employed }, 
+      { "EMS", EarlyMorningShift }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#EMS", EarlyMorningShift }, 
+      { "ENCRYPT", Encrypt }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ENCRYPT", Encrypt }, 
+      { "ENCRYPTR", EncryptAtRest }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ENCRYPTR", EncryptAtRest }, 
+      { "ENCRYPTT", EncryptInTransit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ENCRYPTT", EncryptInTransit }, 
+      { "ENCRYPTU", EncryptInUse }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ENCRYPTU", EncryptInUse }, 
+      { "ENROLLM", Enrollment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ENROLLM", Enrollment }, 
+      { "ERTREAT", EmergencyRoomTreatment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ERTREAT", EmergencyRoomTreatment }, 
+      { "ES", EveningShift }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ES", EveningShift }, 
+      { "ETH", SubstanceAbuseInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ETH", SubstanceAbuseInformationSensitivity }, 
+      { "ETHUD", AlcoholUseDisorderInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ETHUD", AlcoholUseDisorderInformationSensitivity }, 
+      { "ETREAT", EmergencyTreatment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#ETREAT", EmergencyTreatment }, 
+      { "EXPERIENCE", ExperienceMeasureType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#EXPERIENCE", ExperienceMeasureType }, 
+      { "FAM", LiveWithFamily }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#FAM", LiveWithFamily }, 
+      { "FAMRQT", FamilyRequested }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FAMRQT", FamilyRequested }, 
+      { "FLY", FamilyCoverage }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#FLY", FamilyCoverage }, 
+      { "FMCOMPT", FinancialManagementCompartment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#FMCOMPT", FinancialManagementCompartment }, 
+      { "FOOD", FoodExpense }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#FOOD", FoodExpense }, 
+      { "FOSTER", FosterChildDocument }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#FOSTER", FosterChildDocument }, 
+      { "FRAUD", Fraud }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#FRAUD", Fraud }, 
+      { "G", GreatExtent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#G", GreatExtent }, 
+      { "GDIS", GeneticDiseaseInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#GDIS", GeneticDiseaseInformationSensitivity }, 
+      { "GENDER", GenderAndSexualOrientationInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#GENDER", GenderAndSexualOrientationInformationSensitivity }, 
+      { "GOV", Government }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#GOV", Government }, 
+      { "H", High }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#H", High }, 
+      { "HACCRED", HealthAccreditation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HACCRED", HealthAccreditation }, 
+      { "HCOMPL", HealthCompliance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HCOMPL", HealthCompliance }, 
+      { "HCPAST", HealthcareProfessionalAsserted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#HCPAST", HealthcareProfessionalAsserted }, 
+      { "HCPRPT", HealthcareProfessionalReported }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#HCPRPT", HealthcareProfessionalReported }, 
+      { "HDECD", Decedent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HDECD", Decedent }, 
+      { "HDIRECT", Directory }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HDIRECT", Directory }, 
+      { "HDM", HealthcareDeliveryManagement }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HDM", HealthcareDeliveryManagement }, 
+      { "HEALTH", HealthExpense }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#HEALTH", HealthExpense }, 
+      { "HIV", HIVAIDSInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#HIV", HIVAIDSInformationSensitivity }, 
+      { "HLEGAL", Legal }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HLEGAL", Legal }, 
+      { "HLSTAT", HealthStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#HLSTAT", HealthStatus }, 
+      { "HMARKT", HealthcareMarketing }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HMARKT", HealthcareMarketing }, 
+      { "HMLESS", Homeless }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#HMLESS", Homeless }, 
+      { "Homozygote", HOMO }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#Homozygote", HOMO }, 
+      { "HOPERAT", HealthcareOperations }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT", HealthcareOperations }, 
+      { "HOUSE", HouseholdExpense }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#HOUSE", HouseholdExpense }, 
+      { "HOUTCOMS", HealthOutcomeMeasure }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HOUTCOMS", HealthOutcomeMeasure }, 
+      { "HPAYMT", HealthcarePayment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT", HealthcarePayment }, 
+      { "HPRGRP", HealthProgramReporting }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HPRGRP", HealthProgramReporting }, 
+      { "HQUALIMP", HealthQualityImprovement }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HQUALIMP", HealthQualityImprovement }, 
+      { "HRCOMPT", HumanResourceCompartment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#HRCOMPT", HumanResourceCompartment }, 
+      { "HRELIABLE", HighlyReliable }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#HRELIABLE", HighlyReliable }, 
+      { "HRESCH", HealthcareResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HRESCH", HealthcareResearch }, 
+      { "HSYSADMIN", HealthSystemAdministration }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HSYSADMIN", HealthSystemAdministration }, 
+      { "HTEST", TestHealthData }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST", TestHealthData }, 
+      { "HUAPRV", HumanApproval }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#HUAPRV", HumanApproval }, 
+      { "IDS", IdentifierSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#IDS", IdentifierSensitivity }, 
+      { "ILGIM", IllegalImmigrant }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ILGIM", IllegalImmigrant }, 
+      { "INACT", Inactive }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#INACT", Inactive }, 
+      { "INCAR", Incarcerated }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#INCAR", Incarcerated }, 
+      { "INCOME", Income }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#INCOME", Income }, 
+      { "IncrIsImp", IncreasedScoreIndicatesImprovement }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#IncrIsImp", IncreasedScoreIndicatesImprovement }, 
+      { "IND", Individual }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#IND", Individual }, 
+      { "INPNDINV", InactivePendingInvestigation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#INPNDINV", InactivePendingInvestigation }, 
+      { "INPNDUPD", InactivePendingEligibilityUpdate }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#INPNDUPD", InactivePendingEligibilityUpdate }, 
+      { "INTERM-OM", IntermediateClinicalOutcomeMeasure }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#INTERM-OM", IntermediateClinicalOutcomeMeasure }, 
+      { "INVEST", InvestmentIncome }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#INVEST", InvestmentIncome }, 
+      { "IVDRG", IVDrugUse }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#IVDRG", IVDrugUse }, 
+      { "L", Low }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#L", Low }, 
+      { "L", Low_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#L", Low_2 }, 
+      { "LABEL", AssignSecurityLabel }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#LABEL", AssignSecurityLabel }, 
+      { "LABELING", Labeling }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#LABELING", Labeling }, 
+      { "LE", LargeExtent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LE", LargeExtent }, 
+      { "LEGAL", LegalExpense }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LEGAL", LegalExpense }, 
+      { "LINEARSCR", LinearScoring }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LINEARSCR", LinearScoring }, 
+      { "LIVARG", LivingArrangementInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#LIVARG", LivingArrangementInformationSensitivity }, 
+      { "LIVDEP", LivingDependency }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LIVDEP", LivingDependency }, 
+      { "LIVEXP", LivingExpense }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LIVEXP", LivingExpense }, 
+      { "LIVSIT", LivingSituation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LIVSIT", LivingSituation }, 
+      { "LLD", LeftLateralDecubitus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LLD", LeftLateralDecubitus }, 
+      { "LOAAN", AuthenticationLevelOfAssuranceValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAN", AuthenticationLevelOfAssuranceValue }, 
+      { "LOAAN1", LowAuthenticationLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAN1", LowAuthenticationLevelOfAssurance }, 
+      { "LOAAN2", BasicAuthenticationLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAN2", BasicAuthenticationLevelOfAssurance }, 
+      { "LOAAN3", MediumAuthenticationLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAN3", MediumAuthenticationLevelOfAssurance }, 
+      { "LOAAN4", HighAuthenticationLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAN4", HighAuthenticationLevelOfAssurance }, 
+      { "LOAAP", AuthenticationProcessLevelOfAssuranceValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAP", AuthenticationProcessLevelOfAssuranceValue }, 
+      { "LOAAP1", LowAuthenticationProcessLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAP1", LowAuthenticationProcessLevelOfAssurance }, 
+      { "LOAAP2", BasicAuthenticationProcessLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAP2", BasicAuthenticationProcessLevelOfAssurance }, 
+      { "LOAAP3", MediumAuthenticationProcessLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAP3", MediumAuthenticationProcessLevelOfAssurance }, 
+      { "LOAAP4", HighAuthenticationProcessLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAP4", HighAuthenticationProcessLevelOfAssurance }, 
+      { "LOAAS", AssertionLevelOfAssuranceValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAS", AssertionLevelOfAssuranceValue }, 
+      { "LOAAS1", LowAssertionLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAS1", LowAssertionLevelOfAssurance }, 
+      { "LOAAS2", BasicAssertionLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAS2", BasicAssertionLevelOfAssurance }, 
+      { "LOAAS3", MediumAssertionLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAS3", MediumAssertionLevelOfAssurance }, 
+      { "LOAAS4", HighAssertionLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAAS4", HighAssertionLevelOfAssurance }, 
+      { "LOACM", TokenAndCredentialManagementLevelOfAssuranceValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOACM", TokenAndCredentialManagementLevelOfAssuranceValue }, 
+      { "LOACM1", LowTokenAndCredentialManagementLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOACM1", LowTokenAndCredentialManagementLevelOfAssurance }, 
+      { "LOACM2", BasicTokenAndCredentialManagementLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOACM2", BasicTokenAndCredentialManagementLevelOfAssurance }, 
+      { "LOACM3", MediumTokenAndCredentialManagementLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOACM3", MediumTokenAndCredentialManagementLevelOfAssurance }, 
+      { "LOACM4", HighTokenAndCredentialManagementLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOACM4", HighTokenAndCredentialManagementLevelOfAssurance }, 
+      { "LOAID", IdentityProofingLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAID", IdentityProofingLevelOfAssurance }, 
+      { "LOAID1", LowIdentityProofingLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAID1", LowIdentityProofingLevelOfAssurance }, 
+      { "LOAID2", BasicIdentityProofingLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAID2", BasicIdentityProofingLevelOfAssurance }, 
+      { "LOAID3", MediumIdentityProofingLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAID3", MediumIdentityProofingLevelOfAssurance }, 
+      { "LOAID4", HighIdentityProofingLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOAID4", HighIdentityProofingLevelOfAssurance }, 
+      { "LOANR", NonRepudiationLevelOfAssuranceValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOANR", NonRepudiationLevelOfAssuranceValue }, 
+      { "LOANR1", LowNonRepudiationLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOANR1", LowNonRepudiationLevelOfAssurance }, 
+      { "LOANR2", BasicNonRepudiationLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOANR2", BasicNonRepudiationLevelOfAssurance }, 
+      { "LOANR3", MediumNonRepudiationLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOANR3", MediumNonRepudiationLevelOfAssurance }, 
+      { "LOANR4", HighNonRepudiationLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOANR4", HighNonRepudiationLevelOfAssurance }, 
+      { "LOARA", RemoteAccessLevelOfAssuranceValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOARA", RemoteAccessLevelOfAssuranceValue }, 
+      { "LOARA1", LowRemoteAccessLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOARA1", LowRemoteAccessLevelOfAssurance }, 
+      { "LOARA2", BasicRemoteAccessLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOARA2", BasicRemoteAccessLevelOfAssurance }, 
+      { "LOARA3", MediumRemoteAccessLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOARA3", MediumRemoteAccessLevelOfAssurance }, 
+      { "LOARA4", HighRemoteAccessLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOARA4", HighRemoteAccessLevelOfAssurance }, 
+      { "LOATK", TokenLevelOfAssuranceValue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOATK", TokenLevelOfAssuranceValue }, 
+      { "LOATK1", LowTokenLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOATK1", LowTokenLevelOfAssurance }, 
+      { "LOATK2", BasicTokenLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOATK2", BasicTokenLevelOfAssurance }, 
+      { "LOATK3", MediumTokenLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOATK3", MediumTokenLevelOfAssurance }, 
+      { "LOATK4", HighTokenLevelOfAssurance }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#LOATK4", HighTokenLevelOfAssurance }, 
+      { "LOCIS", LocationInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS", LocationInformationSensitivity }, 
+      { "LRCOMPT", LegitimateRelationshipCompartment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#LRCOMPT", LegitimateRelationshipCompartment }, 
+      { "M", Moderate }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#M", Moderate }, 
+      { "M", Moderate_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#M", Moderate_2 }, 
+      { "MAPPED", Mapped }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#MAPPED", Mapped }, 
+      { "MARST", MaritalStatusInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#MARST", MaritalStatusInformationSensitivity }, 
+      { "MASK", Mask }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#MASK", Mask }, 
+      { "MASKED", Masked }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#MASKED", Masked }, 
+      { "ME", MediumExtent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#ME", MediumExtent }, 
+      { "MEMADMIN", MemberAdministration }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#MEMADMIN", MemberAdministration }, 
+      { "MEMBER", ProgramOrPolicyMember }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#MEMBER", ProgramOrPolicyMember }, 
+      { "METAMGT", MetadataManagement }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#METAMGT", MetadataManagement }, 
+      { "MH", MentalHealthInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#MH", MentalHealthInformationSensitivity }, 
+      { "MI", MinimalExtent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#MI", MinimalExtent }, 
+      { "MIL", MilitaryIdentification }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#MIL", MilitaryIdentification }, 
+      { "MILCDM", MilitaryCommand }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#MILCDM", MilitaryCommand }, 
+      { "MILDCRG", MilitaryDischarge }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#MILDCRG", MilitaryDischarge }, 
+      { "MINEC", MinimumNecessary }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#MINEC", MinimumNecessary }, 
+      { "MORTG", Mortgage }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#MORTG", Mortgage }, 
+      { "MRGCERT", MarriageCertificate }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#MRGCERT", MarriageCertificate }, 
+      { "MST", MilitarySexualTraumaInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#MST", MilitarySexualTraumaInformationSensitivity }, 
+      { "N", Normal }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#N", Normal }, 
+      { "N", None }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#N", None }, 
+      { "NELG", NotEligible }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#NELG", NotEligible }, 
+      { "NOAUTH", NoDisclosureWithoutSubjectAuthorization }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOAUTH", NoDisclosureWithoutSubjectAuthorization }, 
+      { "NOCOLLECT", NoCollection }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOCOLLECT", NoCollection }, 
+      { "NODSCLCD", NoDisclosureWithoutConsentDirective }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCD", NoDisclosureWithoutConsentDirective }, 
+      { "NODSCLCDS", NoDisclosureWithoutInformationSubjectQuoteSConsentDirective }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCDS", NoDisclosureWithoutInformationSubjectQuoteSConsentDirective }, 
+      { "NOINTEGRATE", NoIntegration }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOINTEGRATE", NoIntegration }, 
+      { "NOLIST", NoUnlistedEntityDisclosure }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOLIST", NoUnlistedEntityDisclosure }, 
+      { "NOMOU", NoDisclosureWithoutMOU }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOMOU", NoDisclosureWithoutMOU }, 
+      { "NOORGPOL", NoDisclosureWithoutOrganizationalAuthorization }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOORGPOL", NoDisclosureWithoutOrganizationalAuthorization }, 
+      { "NOPAT", NoDisclosureToPatientFamilyOrCaregiversWithoutAttendingProviderQuoteSAuthorization }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOPAT", NoDisclosureToPatientFamilyOrCaregiversWithoutAttendingProviderQuoteSAuthorization }, 
+      { "NOPERSISTP", NoCollectionBeyondPurposeOfUse }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOPERSISTP", NoCollectionBeyondPurposeOfUse }, 
+      { "NORDSCLCD", NoRedisclosureWithoutConsentDirective }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NORDSCLCD", NoRedisclosureWithoutConsentDirective }, 
+      { "NORDSCLCDS", NoRedisclosureWithoutInformationSubjectQuoteSConsentDirective }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NORDSCLCDS", NoRedisclosureWithoutInformationSubjectQuoteSConsentDirective }, 
+      { "NORDSCLW", NoDisclosureWithoutJurisdictionalAuthorization }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NORDSCLW", NoDisclosureWithoutJurisdictionalAuthorization }, 
+      { "NORDSLCD", NoRedisclosureWithoutConsentDirective_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NORDSLCD", NoRedisclosureWithoutConsentDirective_2 }, 
+      { "NORELINK", NoRelinking }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NORELINK", NoRelinking }, 
+      { "NOREUSE", NoReuseBeyondPurposeOfUse }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOREUSE", NoReuseBeyondPurposeOfUse }, 
+      { "NotInLaborForce", NotInLaborForce }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#NotInLaborForce", NotInLaborForce }, 
+      { "NOVIP", NoUnauthorizedVIPDisclosure }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#NOVIP", NoUnauthorizedVIPDisclosure }, 
+      { "NS", NightShift }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#NS", NightShift }, 
+      { "ObligationPolicy", ObligationPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ObligationPolicy", ObligationPolicy }, 
+      { "OPIOIDUD", OpioidUseDisorderInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#OPIOIDUD", OpioidUseDisorderInformationSensitivity }, 
+      { "OPPORSCR", OpportunityScoring }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#OPPORSCR", OpportunityScoring }, 
+      { "ORCON", NoDisclosureWithoutOriginatorAuthorization }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ORCON", NoDisclosureWithoutOriginatorAuthorization }, 
+      { "OUTCOME", OutcomeMeasureType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#OUTCOME", OutcomeMeasureType }, 
+      { "PACOMPT", PatientAdministrationCompartment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PACOMPT", PatientAdministrationCompartment }, 
+      { "PACQAST", PatientAcquaintanceAsserted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PACQAST", PatientAcquaintanceAsserted }, 
+      { "PACQRPT", PatientAcquaintanceReported }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PACQRPT", PatientAcquaintanceReported }, 
+      { "PASSPORT", Passport }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PASSPORT", Passport }, 
+      { "PATADMIN", PatientAdministration }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATADMIN", PatientAdministration }, 
+      { "PATAST", PatientAsserted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PATAST", PatientAsserted }, 
+      { "PATLOC", PatientLocation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PATLOC", PatientLocation }, 
+      { "PATRPT", PatientReported }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PATRPT", PatientReported }, 
+      { "PATRQT", PatientRequested }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATRQT", PatientRequested }, 
+      { "PATSFTY", PatientSafety }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATSFTY", PatientSafety }, 
+      { "PAY", PaidEmployment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PAY", PaidEmployment }, 
+      { "PAYAST", PayerAsserted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PAYAST", PayerAsserted }, 
+      { "PAYRPT", PayerReported }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PAYRPT", PayerReported }, 
+      { "PDS", PatientDefaultInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PDS", PatientDefaultInformationSensitivity }, 
+      { "PERFMSR", PerformanceMeasure }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PERFMSR", PerformanceMeasure }, 
+      { "PERSISTLABEL", PersistSecurityLabel }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PERSISTLABEL", PersistSecurityLabel }, 
+      { "PGNT", Pregnant }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PGNT", Pregnant }, 
+      { "PHY", PhysicianRequestedInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PHY", PhysicianRequestedInformationSensitivity }, 
+      { "POARCH", PopulationOriginsOrAncestryHealthcareResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#POARCH", PopulationOriginsOrAncestryHealthcareResearch }, 
+      { "POPHLTH", PopulationHealth }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#POPHLTH", PopulationHealth }, 
+      { "PRECLINTRCH", PreclinicalTrialResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PRECLINTRCH", PreclinicalTrialResearch }, 
+      { "PREGNANT", PregnancyInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PREGNANT", PregnancyInformationSensitivity }, 
+      { "PrivacyMark", PrivacyMark }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PrivacyMark", PrivacyMark }, 
+      { "PRIVMARK", PrivacyMark_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PRIVMARK", PrivacyMark_2 }, 
+      { "PRN", Prone }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PRN", Prone }, 
+      { "PRO-PM", PatientReportedOutcomePerformanceMeasure }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PRO-PM", PatientReportedOutcomePerformanceMeasure }, 
+      { "PROAST", ProfessionalAsserted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PROAST", ProfessionalAsserted }, 
+      { "PROB", Probation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PROB", Probation }, 
+      { "PROCESS", ProcessMeasureType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PROCESS", ProcessMeasureType }, 
+      { "PROP", RealProperty }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PROP", RealProperty }, 
+      { "PROPOR", ProportionMeasureScoring }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PROPOR", ProportionMeasureScoring }, 
+      { "PRORPT", ProfessionalReported }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PRORPT", ProfessionalReported }, 
+      { "PRS", PatientRequestedInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PRS", PatientRequestedInformationSensitivity }, 
+      { "PSEUD", Pseudonymize }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PSEUD", Pseudonymize }, 
+      { "PSEUDED", Pseudonymized }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#PSEUDED", Pseudonymized }, 
+      { "PSY", PsychiatryDisorderInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PSY", PsychiatryDisorderInformationSensitivity }, 
+      { "PSYTHPN", PsychotherapyNoteInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PSYTHPN", PsychotherapyNoteInformationSensitivity }, 
+      { "PUBHLTH", PublicHealth }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PUBHLTH", PublicHealth }, 
+      { "PWATRNY", PowerOfAttorney }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PWATRNY", PowerOfAttorney }, 
+      { "R", Restricted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#R", Restricted }, 
+      { "RACE", RaceInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RACE", RaceInformationSensitivity }, 
+      { "RATIO", RatioMeasureScoring }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RATIO", RatioMeasureScoring }, 
+      { "RECORDMGT", RecordsManagement }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#RECORDMGT", RecordsManagement }, 
+      { "REDACT", Redact }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#REDACT", Redact }, 
+      { "REDACTED", Redacted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#REDACTED", Redacted }, 
+      { "RedisclosureProhibitionMark", ProhibitionAgainstRedisclosureMark }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RedisclosureProhibitionMark", ProhibitionAgainstRedisclosureMark }, 
+      { "RefrainPolicy", RefrainPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RefrainPolicy", RefrainPolicy }, 
+      { "REFUG", Refugee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#REFUG", Refugee }, 
+      { "REL", ReligionInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#REL", ReligionInformationSensitivity }, 
+      { "RELAT", Relative }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RELAT", Relative }, 
+      { "RELDEP", RelativeDependent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RELDEP", RelativeDependent }, 
+      { "RELIABLE", Reliable }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RELIABLE", Reliable }, 
+      { "REMITADV", RemittanceAdvice }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#REMITADV", RemittanceAdvice }, 
+      { "RENT", Rent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RENT", Rent }, 
+      { "RESCOMPT", ResearchProjectCompartment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RESCOMPT", ResearchProjectCompartment }, 
+      { "RESOURCE", ResourceUseMeasureType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RESOURCE", ResourceUseMeasureType }, 
+      { "RestrictedConfidentialityMark", RestrictedConfidentialityMark }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RestrictedConfidentialityMark", RestrictedConfidentialityMark }, 
+      { "RETACCT", RetirementInvestmentAccount }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RETACCT", RetirementInvestmentAccount }, 
+      { "RETIRE", RetirementPay }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RETIRE", RetirementPay }, 
+      { "RLD", RightLateralDecubitus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RLD", RightLateralDecubitus }, 
+      { "RMGTCOMPT", RecordsManagementCompartment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RMGTCOMPT", RecordsManagementCompartment }, 
+      { "RSWN", RotatingShiftWithNights }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RSWN", RotatingShiftWithNights }, 
+      { "RSWON", RotatingShiftWithoutNights }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RSWON", RotatingShiftWithoutNights }, 
+      { "RTRD", ReverseTrendelenburg }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#RTRD", ReverseTrendelenburg }, 
+      { "S", SomeExtent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#S", SomeExtent }, 
+      { "SCA", SickleCellAnemiaInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SCA", SickleCellAnemiaInformationSensitivity }, 
+      { "SDMAST", SubstituteDecisionMakerAsserted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SDMAST", SubstituteDecisionMakerAsserted }, 
+      { "SDMRPT", SubstituteDecisionMakerReported }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SDMRPT", SubstituteDecisionMakerReported }, 
+      { "SDV", SexualAssaultAbuseOrDomesticViolenceInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SDV", SexualAssaultAbuseOrDomesticViolenceInformationSensitivity }, 
+      { "SECTRSTOBV", SecurityTrustObservation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SECTRSTOBV", SecurityTrustObservation }, 
+      { "SecurityLabelMark", SecurityLabelMark }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SecurityLabelMark", SecurityLabelMark }, 
+      { "SecurityPolicy", SecurityPolicy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SecurityPolicy", SecurityPolicy }, 
+      { "SEX", SexualityAndReproductiveHealthInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SEX", SexualityAndReproductiveHealthInformationSensitivity }, 
+      { "SFWL", SemiFowlerQuoteS }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SFWL", SemiFowlerQuoteS }, 
+      { "SICKLE", SickleCell }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SICKLE", SickleCell }, 
+      { "SIT", Sitting }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SIT", Sitting }, 
+      { "SOECSTAT", SocioEconomicStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SOECSTAT", SocioEconomicStatus }, 
+      { "SPI", SpeciallyProtectedInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SPI", SpeciallyProtectedInformationSensitivity }, 
+      { "SPOUSAL", SpousalOrPartnerSupport }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SPOUSAL", SpousalOrPartnerSupport }, 
+      { "SPS", SpouseOnly }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SPS", SpouseOnly }, 
+      { "SPSDEP", SpouseDependent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SPSDEP", SpouseDependent }, 
+      { "SS", SplitShift }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SS", SplitShift }, 
+      { "SSP", SensitiveServiceProviderInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SSP", SensitiveServiceProviderInformationSensitivity }, 
+      { "SSP", SameSexPartner }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SSP", SameSexPartner }, 
+      { "STD", SexuallyTransmittedDiseaseInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#STD", SexuallyTransmittedDiseaseInformationSensitivity }, 
+      { "STN", Standing }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#STN", Standing }, 
+      { "STRUCTURE", StructureMeasureType }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#STRUCTURE", StructureMeasureType }, 
+      { "STUDENRL", StudentEnrollment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#STUDENRL", StudentEnrollment }, 
+      { "SUBSETTED", Subsetted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SUBSETTED", Subsetted }, 
+      { "SUD", SubstanceUseDisorderInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#SUD", SubstanceUseDisorderInformationSensitivity }, 
+      { "SUNDRY", SundryExpense }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SUNDRY", SundryExpense }, 
+      { "SUP", Supine }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SUP", Supine }, 
+      { "SUPNWK", SupportNetwork }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#SUPNWK", SupportNetwork }, 
+      { "SUPPLE", IncomeSupplement }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SUPPLE", IncomeSupplement }, 
+      { "SYNTAC", SyntacticTransform }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SYNTAC", SyntacticTransform }, 
+      { "SYSDEV", SystemDevelopment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#SYSDEV", SystemDevelopment }, 
+      { "TAX", TaxObligation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TAX", TaxObligation }, 
+      { "TBOO", Taboo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#TBOO", Taboo }, 
+      { "THREAT", Threat }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#THREAT", Threat }, 
+      { "TRAIN", Training }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#TRAIN", Training }, 
+      { "TRANS", TransportationExpense }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRANS", TransportationExpense }, 
+      { "TRANSRCH", TranslationalHealthcareResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#TRANSRCH", TranslationalHealthcareResearch }, 
+      { "TRD", Trendelenburg }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRD", Trendelenburg }, 
+      { "TREAT", Treatment }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT", Treatment }, 
+      { "TRSLT", Translated }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRSLT", Translated }, 
+      { "TRSTACCRDOBV", TrustAccreditationObservation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRSTACCRDOBV", TrustAccreditationObservation }, 
+      { "TRSTAGREOBV", TrustAgreementObservation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRSTAGREOBV", TrustAgreementObservation }, 
+      { "TRSTCERTOBV", TrustCertificateObservation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRSTCERTOBV", TrustCertificateObservation }, 
+      { "TRSTFWKOBV", NoneSupplied5 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRSTFWKOBV", NoneSupplied5 }, 
+      { "TRSTLOAOBV", TrustAssuranceObservation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRSTLOAOBV", TrustAssuranceObservation }, 
+      { "TRSTMECOBV", NoneSupplied6 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRSTMECOBV", NoneSupplied6 }, 
+      { "TRUST", Trust }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#TRUST", Trust }, 
+      { "U", Unrestricted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#U", Unrestricted }, 
+      { "UNCERTREL", UncertainReliability }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#UNCERTREL", UncertainReliability }, 
+      { "UNEMPL", Unemployed }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#UNEMPL", Unemployed }, 
+      { "Unemployed", Unemployed_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#Unemployed", Unemployed_2 }, 
+      { "UNREL", UnrelatedPerson }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#UNREL", UnrelatedPerson }, 
+      { "UNRELIABLE", Unreliable }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#UNRELIABLE", Unreliable }, 
+      { "UPGRDLABEL", UpgradeSecurityLabel }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#UPGRDLABEL", UpgradeSecurityLabel }, 
+      { "URELDEP", UnrelatedPersonDependent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#URELDEP", UnrelatedPersonDependent }, 
+      { "UTIL", UtilityExpense }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#UTIL", UtilityExpense }, 
+      { "UUI", U }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#UUI", U }, 
+      { "V", VeryRestricted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#V", VeryRestricted }, 
+      { "VERSIONED", Versioned }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#VERSIONED", Versioned }, 
+      { "VIO", ViolenceInformationSensitivity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#VIO", ViolenceInformationSensitivity }, 
+      { "VIP", CelebrityInformationSensitivity_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#VIP", CelebrityInformationSensitivity_2 }, 
+      { "VLS", VeryLongShift }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#VLS", VeryLongShift }, 
+      { "VS", VariableShift }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#VS", VariableShift }, 
+      { "WEIGHTSCR", WeightedScoring }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationValue#WEIGHTSCR", WeightedScoring }, 
+    };
   };
 }

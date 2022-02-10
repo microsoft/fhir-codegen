@@ -25,5 +25,18 @@ namespace fhirCsR2.ValueSets
     /// Literal for code: XMLAttribute
     /// </summary>
     public const string LiteralXMLAttribute = "xmlAttr";
+
+    /// <summary>
+    /// Literal for code: PropertyRepresentationXMLAttribute
+    /// </summary>
+    public const string LiteralPropertyRepresentationXMLAttribute = "http://hl7.org/fhir/property-representation#xmlAttr";
+
+    /// <summary>
+    /// Dictionary for looking up PropertyRepresentation Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "xmlAttr", XMLAttribute }, 
+      { "http://hl7.org/fhir/property-representation#xmlAttr", XMLAttribute }, 
+    };
   };
 }

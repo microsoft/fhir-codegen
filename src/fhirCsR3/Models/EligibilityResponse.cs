@@ -190,6 +190,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? Excluded { get; set; }
     /// <summary>
+    /// Extension container element for Excluded
+    /// </summary>
+    public Element _Excluded { get; set; }
+    /// <summary>
     /// Benefits Used to date.
     /// </summary>
     public List<EligibilityResponseInsuranceBenefitBalanceFinancial> Financial { get; set; }
@@ -243,6 +247,12 @@ namespace fhirCsR3.Models
       if (Excluded != null)
       {
         writer.WriteBoolean("excluded", (bool)Excluded!);
+      }
+
+      if (_Excluded != null)
+      {
+        writer.WritePropertyName("_excluded");
+        _Excluded.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Name))
@@ -326,6 +336,11 @@ namespace fhirCsR3.Models
 
         case "excluded":
           Excluded = reader.GetBoolean();
+          break;
+
+        case "_excluded":
+          _Excluded = new fhirCsR3.Models.Element();
+          _Excluded.DeserializeJson(ref reader, options);
           break;
 
         case "financial":
@@ -664,6 +679,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? Inforce { get; set; }
     /// <summary>
+    /// Extension container element for Inforce
+    /// </summary>
+    public Element _Inforce { get; set; }
+    /// <summary>
     /// The insurer may provide both the details for the requested coverage as well as details for additional coverages known to the insurer.
     /// </summary>
     public List<EligibilityResponseInsurance> Insurance { get; set; }
@@ -793,6 +812,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("inforce", (bool)Inforce!);
       }
 
+      if (_Inforce != null)
+      {
+        writer.WritePropertyName("_inforce");
+        _Inforce.SerializeJson(writer, options);
+      }
+
       if ((Insurance != null) && (Insurance.Count != 0))
       {
         writer.WritePropertyName("insurance");
@@ -918,6 +943,11 @@ namespace fhirCsR3.Models
           Inforce = reader.GetBoolean();
           break;
 
+        case "_inforce":
+          _Inforce = new fhirCsR3.Models.Element();
+          _Inforce.DeserializeJson(ref reader, options);
+          break;
+
         case "insurance":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -1018,5 +1048,11 @@ namespace fhirCsR3.Models
     public const string CANCELLED = "cancelled";
     public const string DRAFT = "draft";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "cancelled",
+      "draft",
+      "entered-in-error",
+    };
   }
 }

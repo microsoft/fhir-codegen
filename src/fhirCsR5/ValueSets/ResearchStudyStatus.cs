@@ -118,9 +118,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: ResearchStudyStatusActive
+    /// </summary>
+    public const string LiteralResearchStudyStatusActive = "http://hl7.org/fhir/research-study-status#active";
+
+    /// <summary>
     /// Literal for code: AdministrativelyCompleted
     /// </summary>
     public const string LiteralAdministrativelyCompleted = "administratively-completed";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyStatusAdministrativelyCompleted
+    /// </summary>
+    public const string LiteralResearchStudyStatusAdministrativelyCompleted = "http://hl7.org/fhir/research-study-status#administratively-completed";
 
     /// <summary>
     /// Literal for code: Approved
@@ -128,9 +138,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralApproved = "approved";
 
     /// <summary>
+    /// Literal for code: ResearchStudyStatusApproved
+    /// </summary>
+    public const string LiteralResearchStudyStatusApproved = "http://hl7.org/fhir/research-study-status#approved";
+
+    /// <summary>
     /// Literal for code: ClosedToAccrual
     /// </summary>
     public const string LiteralClosedToAccrual = "closed-to-accrual";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyStatusClosedToAccrual
+    /// </summary>
+    public const string LiteralResearchStudyStatusClosedToAccrual = "http://hl7.org/fhir/research-study-status#closed-to-accrual";
 
     /// <summary>
     /// Literal for code: ClosedToAccrualAndIntervention
@@ -138,9 +158,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClosedToAccrualAndIntervention = "closed-to-accrual-and-intervention";
 
     /// <summary>
+    /// Literal for code: ResearchStudyStatusClosedToAccrualAndIntervention
+    /// </summary>
+    public const string LiteralResearchStudyStatusClosedToAccrualAndIntervention = "http://hl7.org/fhir/research-study-status#closed-to-accrual-and-intervention";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyStatusCompleted
+    /// </summary>
+    public const string LiteralResearchStudyStatusCompleted = "http://hl7.org/fhir/research-study-status#completed";
 
     /// <summary>
     /// Literal for code: Disapproved
@@ -148,9 +178,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDisapproved = "disapproved";
 
     /// <summary>
+    /// Literal for code: ResearchStudyStatusDisapproved
+    /// </summary>
+    public const string LiteralResearchStudyStatusDisapproved = "http://hl7.org/fhir/research-study-status#disapproved";
+
+    /// <summary>
     /// Literal for code: InReview
     /// </summary>
     public const string LiteralInReview = "in-review";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyStatusInReview
+    /// </summary>
+    public const string LiteralResearchStudyStatusInReview = "http://hl7.org/fhir/research-study-status#in-review";
 
     /// <summary>
     /// Literal for code: TemporarilyClosedToAccrual
@@ -158,13 +198,56 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTemporarilyClosedToAccrual = "temporarily-closed-to-accrual";
 
     /// <summary>
+    /// Literal for code: ResearchStudyStatusTemporarilyClosedToAccrual
+    /// </summary>
+    public const string LiteralResearchStudyStatusTemporarilyClosedToAccrual = "http://hl7.org/fhir/research-study-status#temporarily-closed-to-accrual";
+
+    /// <summary>
     /// Literal for code: TemporarilyClosedToAccrualAndIntervention
     /// </summary>
     public const string LiteralTemporarilyClosedToAccrualAndIntervention = "temporarily-closed-to-accrual-and-intervention";
 
     /// <summary>
+    /// Literal for code: ResearchStudyStatusTemporarilyClosedToAccrualAndIntervention
+    /// </summary>
+    public const string LiteralResearchStudyStatusTemporarilyClosedToAccrualAndIntervention = "http://hl7.org/fhir/research-study-status#temporarily-closed-to-accrual-and-intervention";
+
+    /// <summary>
     /// Literal for code: Withdrawn
     /// </summary>
     public const string LiteralWithdrawn = "withdrawn";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyStatusWithdrawn
+    /// </summary>
+    public const string LiteralResearchStudyStatusWithdrawn = "http://hl7.org/fhir/research-study-status#withdrawn";
+
+    /// <summary>
+    /// Dictionary for looking up ResearchStudyStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/research-study-status#active", Active }, 
+      { "administratively-completed", AdministrativelyCompleted }, 
+      { "http://hl7.org/fhir/research-study-status#administratively-completed", AdministrativelyCompleted }, 
+      { "approved", Approved }, 
+      { "http://hl7.org/fhir/research-study-status#approved", Approved }, 
+      { "closed-to-accrual", ClosedToAccrual }, 
+      { "http://hl7.org/fhir/research-study-status#closed-to-accrual", ClosedToAccrual }, 
+      { "closed-to-accrual-and-intervention", ClosedToAccrualAndIntervention }, 
+      { "http://hl7.org/fhir/research-study-status#closed-to-accrual-and-intervention", ClosedToAccrualAndIntervention }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/research-study-status#completed", Completed }, 
+      { "disapproved", Disapproved }, 
+      { "http://hl7.org/fhir/research-study-status#disapproved", Disapproved }, 
+      { "in-review", InReview }, 
+      { "http://hl7.org/fhir/research-study-status#in-review", InReview }, 
+      { "temporarily-closed-to-accrual", TemporarilyClosedToAccrual }, 
+      { "http://hl7.org/fhir/research-study-status#temporarily-closed-to-accrual", TemporarilyClosedToAccrual }, 
+      { "temporarily-closed-to-accrual-and-intervention", TemporarilyClosedToAccrualAndIntervention }, 
+      { "http://hl7.org/fhir/research-study-status#temporarily-closed-to-accrual-and-intervention", TemporarilyClosedToAccrualAndIntervention }, 
+      { "withdrawn", Withdrawn }, 
+      { "http://hl7.org/fhir/research-study-status#withdrawn", Withdrawn }, 
+    };
   };
 }

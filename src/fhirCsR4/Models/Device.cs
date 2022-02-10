@@ -240,6 +240,14 @@ namespace fhirCsR4.Models
     public const string CARD = "card";
     public const string SELF_REPORTED = "self-reported";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "barcode",
+      "rfid",
+      "manual",
+      "card",
+      "self-reported",
+      "unknown",
+    };
   }
   /// <summary>
   /// This represents the manufacturer's name of the device as provided by the device, from a UDI label, or by a person describing the Device.  This typically would be used when a person provides the name(s) or when the device represents one of the names available from DeviceDefinition.
@@ -367,6 +375,14 @@ namespace fhirCsR4.Models
     public const string MANUFACTURER_NAME = "manufacturer-name";
     public const string MODEL_NAME = "model-name";
     public const string OTHER = "other";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "udi-label-name",
+      "user-friendly-name",
+      "patient-reported-name",
+      "manufacturer-name",
+      "model-name",
+      "other",
+    };
   }
   /// <summary>
   /// The capabilities supported on a  device, the standards to which the device conforms for a particular purpose, and used for the communication.
@@ -1636,5 +1652,11 @@ namespace fhirCsR4.Models
     public const string INACTIVE = "inactive";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "inactive",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

@@ -324,6 +324,12 @@ namespace fhirCsR3.Models
     public const string RELATED = "related";
     public const string DEPENDENTS = "dependents";
     public const string AUTHOREDBY = "authoredby";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "instance",
+      "related",
+      "dependents",
+      "authoredby",
+    };
   }
   /// <summary>
   /// Who or what is controlled by this Exception. Use group to identify a set of actors by some property they share (e.g. 'admitting officers').
@@ -524,6 +530,12 @@ namespace fhirCsR3.Models
     public const string RELATED = "related";
     public const string DEPENDENTS = "dependents";
     public const string AUTHOREDBY = "authoredby";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "instance",
+      "related",
+      "dependents",
+      "authoredby",
+    };
   }
   /// <summary>
   /// An exception to the base policy of this consent. An exception can be an addition or removal of access permissions.
@@ -956,6 +968,10 @@ namespace fhirCsR3.Models
   public static class ConsentExceptTypeCodes {
     public const string DENY = "deny";
     public const string PERMIT = "permit";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "deny",
+      "permit",
+    };
   }
   /// <summary>
   /// A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
@@ -1665,5 +1681,13 @@ namespace fhirCsR3.Models
     public const string REJECTED = "rejected";
     public const string INACTIVE = "inactive";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "proposed",
+      "active",
+      "rejected",
+      "inactive",
+      "entered-in-error",
+    };
   }
 }

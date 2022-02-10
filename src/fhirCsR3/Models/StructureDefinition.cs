@@ -401,6 +401,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool Abstract { get; set; }
     /// <summary>
+    /// Extension container element for Abstract
+    /// </summary>
+    public Element _Abstract { get; set; }
+    /// <summary>
     /// If differential constraints are specified in this structure, they are applied to the base in a "differential" fashion. If there is no base, then the differential constraints cannot be provided (snapshot only). Differential structures are useful for the editing perspective, and snapshot structures are suitable for operational use. The FHIR Project provides a number of tools/services to populate snapshots from differential constraints. Logical Models have a base of "Element" or another logical model.
     /// </summary>
     public string BaseDefinition { get; set; }
@@ -477,6 +481,10 @@ namespace fhirCsR3.Models
     /// Allows filtering of structure definition that are appropriate for use vs. not. This is labeled as "Is Modifier" because applications should not use an experimental structure definition in production.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// A StructureDefinition does not need to specify the target it applies to,as StructureDefinitions will often be valid across multiple versions of FHIR. FHIR tooling can determine whether a StructureDefinition is consistent with a particular StructureDefinition if desired.
     /// </summary>
@@ -672,6 +680,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("experimental", (bool)Experimental!);
       }
 
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Date))
       {
         writer.WriteString("date", (string)Date!);
@@ -816,6 +830,12 @@ namespace fhirCsR3.Models
 
       writer.WriteBoolean("abstract", Abstract);
 
+      if (_Abstract != null)
+      {
+        writer.WritePropertyName("_abstract");
+        _Abstract.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(ContextType))
       {
         writer.WriteString("contextType", (string)ContextType!);
@@ -938,6 +958,11 @@ namespace fhirCsR3.Models
       {
         case "abstract":
           Abstract = reader.GetBoolean();
+          break;
+
+        case "_abstract":
+          _Abstract = new fhirCsR3.Models.Element();
+          _Abstract.DeserializeJson(ref reader, options);
           break;
 
         case "baseDefinition":
@@ -1132,6 +1157,11 @@ namespace fhirCsR3.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR3.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "fhirVersion":
@@ -1402,6 +1432,11 @@ namespace fhirCsR3.Models
     public const string RESOURCE = "resource";
     public const string DATATYPE = "datatype";
     public const string EXTENSION = "extension";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "resource",
+      "datatype",
+      "extension",
+    };
   }
   /// <summary>
   /// Code Values for the StructureDefinition.derivation field
@@ -1409,6 +1444,10 @@ namespace fhirCsR3.Models
   public static class StructureDefinitionDerivationCodes {
     public const string SPECIALIZATION = "specialization";
     public const string CONSTRAINT = "constraint";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "specialization",
+      "constraint",
+    };
   }
   /// <summary>
   /// Code Values for the StructureDefinition.kind field
@@ -1418,6 +1457,12 @@ namespace fhirCsR3.Models
     public const string COMPLEX_TYPE = "complex-type";
     public const string RESOURCE = "resource";
     public const string LOGICAL = "logical";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "primitive-type",
+      "complex-type",
+      "resource",
+      "logical",
+    };
   }
   /// <summary>
   /// Code Values for the StructureDefinition.status field
@@ -1427,5 +1472,11 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

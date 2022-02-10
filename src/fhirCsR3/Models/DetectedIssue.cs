@@ -491,6 +491,11 @@ namespace fhirCsR3.Models
     public const string HIGH = "high";
     public const string MODERATE = "moderate";
     public const string LOW = "low";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "high",
+      "moderate",
+      "low",
+    };
   }
   /// <summary>
   /// Code Values for the DetectedIssue.status field
@@ -504,5 +509,15 @@ namespace fhirCsR3.Models
     public const string CANCELLED = "cancelled";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "registered",
+      "preliminary",
+      "final",
+      "amended",
+      "corrected",
+      "cancelled",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

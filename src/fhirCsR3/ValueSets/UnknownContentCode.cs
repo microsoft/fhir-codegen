@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnknownElementsAndExtensions = "both";
 
     /// <summary>
+    /// Literal for code: UnknownContentCodeUnknownElementsAndExtensions
+    /// </summary>
+    public const string LiteralUnknownContentCodeUnknownElementsAndExtensions = "http://hl7.org/fhir/unknown-content-code#both";
+
+    /// <summary>
     /// Literal for code: UnknownElements
     /// </summary>
     public const string LiteralUnknownElements = "elements";
+
+    /// <summary>
+    /// Literal for code: UnknownContentCodeUnknownElements
+    /// </summary>
+    public const string LiteralUnknownContentCodeUnknownElements = "http://hl7.org/fhir/unknown-content-code#elements";
 
     /// <summary>
     /// Literal for code: UnknownExtensions
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnknownExtensions = "extensions";
 
     /// <summary>
+    /// Literal for code: UnknownContentCodeUnknownExtensions
+    /// </summary>
+    public const string LiteralUnknownContentCodeUnknownExtensions = "http://hl7.org/fhir/unknown-content-code#extensions";
+
+    /// <summary>
     /// Literal for code: NeitherElementsOrExtensions
     /// </summary>
     public const string LiteralNeitherElementsOrExtensions = "no";
+
+    /// <summary>
+    /// Literal for code: UnknownContentCodeNeitherElementsOrExtensions
+    /// </summary>
+    public const string LiteralUnknownContentCodeNeitherElementsOrExtensions = "http://hl7.org/fhir/unknown-content-code#no";
+
+    /// <summary>
+    /// Dictionary for looking up UnknownContentCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "both", UnknownElementsAndExtensions }, 
+      { "http://hl7.org/fhir/unknown-content-code#both", UnknownElementsAndExtensions }, 
+      { "elements", UnknownElements }, 
+      { "http://hl7.org/fhir/unknown-content-code#elements", UnknownElements }, 
+      { "extensions", UnknownExtensions }, 
+      { "http://hl7.org/fhir/unknown-content-code#extensions", UnknownExtensions }, 
+      { "no", NeitherElementsOrExtensions }, 
+      { "http://hl7.org/fhir/unknown-content-code#no", NeitherElementsOrExtensions }, 
+    };
   };
 }

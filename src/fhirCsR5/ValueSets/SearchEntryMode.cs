@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInclude = "include";
 
     /// <summary>
+    /// Literal for code: SearchEntryModeInclude
+    /// </summary>
+    public const string LiteralSearchEntryModeInclude = "http://hl7.org/fhir/search-entry-mode#include";
+
+    /// <summary>
     /// Literal for code: Match
     /// </summary>
     public const string LiteralMatch = "match";
 
     /// <summary>
+    /// Literal for code: SearchEntryModeMatch
+    /// </summary>
+    public const string LiteralSearchEntryModeMatch = "http://hl7.org/fhir/search-entry-mode#match";
+
+    /// <summary>
     /// Literal for code: Outcome
     /// </summary>
     public const string LiteralOutcome = "outcome";
+
+    /// <summary>
+    /// Literal for code: SearchEntryModeOutcome
+    /// </summary>
+    public const string LiteralSearchEntryModeOutcome = "http://hl7.org/fhir/search-entry-mode#outcome";
+
+    /// <summary>
+    /// Dictionary for looking up SearchEntryMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "include", Include }, 
+      { "http://hl7.org/fhir/search-entry-mode#include", Include }, 
+      { "match", Match }, 
+      { "http://hl7.org/fhir/search-entry-mode#match", Match }, 
+      { "outcome", Outcome }, 
+      { "http://hl7.org/fhir/search-entry-mode#outcome", Outcome }, 
+    };
   };
 }

@@ -526,9 +526,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGeneticObservationInterpretation = "_GeneticObservationInterpretation";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationGeneticObservationInterpretation
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationGeneticObservationInterpretation = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#_GeneticObservationInterpretation";
+
+    /// <summary>
     /// Literal for code: ObservationInterpretationChange
     /// </summary>
     public const string LiteralObservationInterpretationChange = "_ObservationInterpretationChange";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationObservationInterpretationChange
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationObservationInterpretationChange = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#_ObservationInterpretationChange";
 
     /// <summary>
     /// Literal for code: ObservationInterpretationExceptions
@@ -536,9 +546,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralObservationInterpretationExceptions = "_ObservationInterpretationExceptions";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationObservationInterpretationExceptions
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationObservationInterpretationExceptions = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#_ObservationInterpretationExceptions";
+
+    /// <summary>
     /// Literal for code: ObservationInterpretationNormality
     /// </summary>
     public const string LiteralObservationInterpretationNormality = "_ObservationInterpretationNormality";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationObservationInterpretationNormality
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationObservationInterpretationNormality = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#_ObservationInterpretationNormality";
 
     /// <summary>
     /// Literal for code: ObservationInterpretationSusceptibility
@@ -546,9 +566,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralObservationInterpretationSusceptibility = "_ObservationInterpretationSusceptibility";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationObservationInterpretationSusceptibility
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationObservationInterpretationSusceptibility = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#_ObservationInterpretationSusceptibility";
+
+    /// <summary>
     /// Literal for code: OffScaleLow
     /// </summary>
     public const string LiteralOffScaleLow = "<";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationOffScaleLow
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationOffScaleLow = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#<";
 
     /// <summary>
     /// Literal for code: OffScaleHigh
@@ -556,9 +586,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOffScaleHigh = ">";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationOffScaleHigh
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationOffScaleHigh = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#>";
+
+    /// <summary>
     /// Literal for code: Abnormal
     /// </summary>
     public const string LiteralAbnormal = "A";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationAbnormal
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationAbnormal = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#A";
 
     /// <summary>
     /// Literal for code: CriticalAbnormal
@@ -566,9 +606,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCriticalAbnormal = "AA";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationCriticalAbnormal
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationCriticalAbnormal = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#AA";
+
+    /// <summary>
     /// Literal for code: Better
     /// </summary>
     public const string LiteralBetter = "B";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationBetter
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationBetter = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#B";
 
     /// <summary>
     /// Literal for code: Carrier
@@ -576,9 +626,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCarrier = "CAR";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationCarrier
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationCarrier = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#CAR";
+
+    /// <summary>
     /// Literal for code: SignificantChangeDown
     /// </summary>
     public const string LiteralSignificantChangeDown = "D";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationSignificantChangeDown
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationSignificantChangeDown = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#D";
 
     /// <summary>
     /// Literal for code: Detected
@@ -586,9 +646,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDetected = "DET";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationDetected
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationDetected = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#DET";
+
+    /// <summary>
     /// Literal for code: Equivocal
     /// </summary>
     public const string LiteralEquivocal = "E";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationEquivocal
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationEquivocal = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#E";
 
     /// <summary>
     /// Literal for code: OutsideThreshold
@@ -596,9 +666,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOutsideThreshold = "EX";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationOutsideThreshold
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationOutsideThreshold = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#EX";
+
+    /// <summary>
     /// Literal for code: Expected
     /// </summary>
     public const string LiteralExpected = "EXP";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationExpected
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationExpected = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#EXP";
 
     /// <summary>
     /// Literal for code: High
@@ -606,9 +686,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHigh = "H";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationHigh
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationHigh = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#H";
+
+    /// <summary>
     /// Literal for code: CriticalHigh
     /// </summary>
     public const string LiteralCriticalHigh = "HH";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationCriticalHigh
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationCriticalHigh = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#HH";
 
     /// <summary>
     /// Literal for code: SignificantlyHigh
@@ -616,9 +706,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSignificantlyHigh = "HU";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationSignificantlyHigh
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationSignificantlyHigh = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#HU";
+
+    /// <summary>
     /// Literal for code: AboveHighThreshold
     /// </summary>
     public const string LiteralAboveHighThreshold = "HX";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationAboveHighThreshold
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationAboveHighThreshold = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#HX";
 
     /// <summary>
     /// Literal for code: Intermediate
@@ -626,9 +726,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntermediate = "I";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationIntermediate
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationIntermediate = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#I";
+
+    /// <summary>
     /// Literal for code: InsufficientEvidence
     /// </summary>
     public const string LiteralInsufficientEvidence = "IE";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationInsufficientEvidence
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationInsufficientEvidence = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#IE";
 
     /// <summary>
     /// Literal for code: Indeterminate
@@ -636,9 +746,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIndeterminate = "IND";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationIndeterminate
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationIndeterminate = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#IND";
+
+    /// <summary>
     /// Literal for code: Low
     /// </summary>
     public const string LiteralLow = "L";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationLow
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationLow = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#L";
 
     /// <summary>
     /// Literal for code: CriticalLow
@@ -646,9 +766,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCriticalLow = "LL";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationCriticalLow
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationCriticalLow = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#LL";
+
+    /// <summary>
     /// Literal for code: SignificantlyLow
     /// </summary>
     public const string LiteralSignificantlyLow = "LU";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationSignificantlyLow
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationSignificantlyLow = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#LU";
 
     /// <summary>
     /// Literal for code: BelowLowThreshold
@@ -656,9 +786,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBelowLowThreshold = "LX";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationBelowLowThreshold
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationBelowLowThreshold = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#LX";
+
+    /// <summary>
     /// Literal for code: Normal
     /// </summary>
     public const string LiteralNormal = "N";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationNormal
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationNormal = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#N";
 
     /// <summary>
     /// Literal for code: NoCLSIDefinedBreakpoint
@@ -666,9 +806,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNoCLSIDefinedBreakpoint = "NCL";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationNoCLSIDefinedBreakpoint
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationNoCLSIDefinedBreakpoint = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#NCL";
+
+    /// <summary>
     /// Literal for code: NotDetected
     /// </summary>
     public const string LiteralNotDetected = "ND";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationNotDetected
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationNotDetected = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#ND";
 
     /// <summary>
     /// Literal for code: Negative
@@ -676,9 +826,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNegative = "NEG";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationNegative
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationNegative = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#NEG";
+
+    /// <summary>
     /// Literal for code: NonReactive
     /// </summary>
     public const string LiteralNonReactive = "NR";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationNonReactive
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationNonReactive = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#NR";
 
     /// <summary>
     /// Literal for code: NonSusceptible
@@ -686,9 +846,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonSusceptible = "NS";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationNonSusceptible
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationNonSusceptible = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#NS";
+
+    /// <summary>
     /// Literal for code: ObservationInterpretationDetection
     /// </summary>
     public const string LiteralObservationInterpretationDetection = "ObservationInterpretationDetection";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationObservationInterpretationDetection
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationObservationInterpretationDetection = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#ObservationInterpretationDetection";
 
     /// <summary>
     /// Literal for code: ObservationInterpretationExpectation
@@ -696,9 +866,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralObservationInterpretationExpectation = "ObservationInterpretationExpectation";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationObservationInterpretationExpectation
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationObservationInterpretationExpectation = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#ObservationInterpretationExpectation";
+
+    /// <summary>
     /// Literal for code: Positive
     /// </summary>
     public const string LiteralPositive = "POS";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationPositive
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationPositive = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#POS";
 
     /// <summary>
     /// Literal for code: Resistant
@@ -706,9 +886,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralResistant = "R";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationResistant
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationResistant = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#R";
+
+    /// <summary>
     /// Literal for code: ReactivityObservationInterpretation
     /// </summary>
     public const string LiteralReactivityObservationInterpretation = "ReactivityObservationInterpretation";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationReactivityObservationInterpretation
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationReactivityObservationInterpretation = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#ReactivityObservationInterpretation";
 
     /// <summary>
     /// Literal for code: Reactive
@@ -716,9 +906,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReactive = "RR";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationReactive
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationReactive = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#RR";
+
+    /// <summary>
     /// Literal for code: Susceptible
     /// </summary>
     public const string LiteralSusceptible = "S";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationSusceptible
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationSusceptible = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#S";
 
     /// <summary>
     /// Literal for code: SusceptibleDoseDependent
@@ -726,9 +926,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSusceptibleDoseDependent = "SDD";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationSusceptibleDoseDependent
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationSusceptibleDoseDependent = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#SDD";
+
+    /// <summary>
     /// Literal for code: SynergyResistant
     /// </summary>
     public const string LiteralSynergyResistant = "SYN-R";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationSynergyResistant
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationSynergyResistant = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#SYN-R";
 
     /// <summary>
     /// Literal for code: SynergySusceptible
@@ -736,9 +946,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSynergySusceptible = "SYN-S";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationSynergySusceptible
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationSynergySusceptible = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#SYN-S";
+
+    /// <summary>
     /// Literal for code: SignificantChangeUp
     /// </summary>
     public const string LiteralSignificantChangeUp = "U";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationSignificantChangeUp
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationSignificantChangeUp = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#U";
 
     /// <summary>
     /// Literal for code: Unexpected
@@ -746,13 +966,128 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnexpected = "UNE";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationUnexpected
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationUnexpected = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#UNE";
+
+    /// <summary>
     /// Literal for code: Worse
     /// </summary>
     public const string LiteralWorse = "W";
 
     /// <summary>
+    /// Literal for code: V3ObservationInterpretationWorse
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationWorse = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#W";
+
+    /// <summary>
     /// Literal for code: WeaklyReactive
     /// </summary>
     public const string LiteralWeaklyReactive = "WR";
+
+    /// <summary>
+    /// Literal for code: V3ObservationInterpretationWeaklyReactive
+    /// </summary>
+    public const string LiteralV3ObservationInterpretationWeaklyReactive = "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#WR";
+
+    /// <summary>
+    /// Dictionary for looking up ObservationInterpretation Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "_GeneticObservationInterpretation", GeneticObservationInterpretation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#_GeneticObservationInterpretation", GeneticObservationInterpretation }, 
+      { "_ObservationInterpretationChange", ObservationInterpretationChange }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#_ObservationInterpretationChange", ObservationInterpretationChange }, 
+      { "_ObservationInterpretationExceptions", ObservationInterpretationExceptions }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#_ObservationInterpretationExceptions", ObservationInterpretationExceptions }, 
+      { "_ObservationInterpretationNormality", ObservationInterpretationNormality }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#_ObservationInterpretationNormality", ObservationInterpretationNormality }, 
+      { "_ObservationInterpretationSusceptibility", ObservationInterpretationSusceptibility }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#_ObservationInterpretationSusceptibility", ObservationInterpretationSusceptibility }, 
+      { "<", OffScaleLow }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#<", OffScaleLow }, 
+      { ">", OffScaleHigh }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#>", OffScaleHigh }, 
+      { "A", Abnormal }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#A", Abnormal }, 
+      { "AA", CriticalAbnormal }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#AA", CriticalAbnormal }, 
+      { "B", Better }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#B", Better }, 
+      { "CAR", Carrier }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#CAR", Carrier }, 
+      { "D", SignificantChangeDown }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#D", SignificantChangeDown }, 
+      { "DET", Detected }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#DET", Detected }, 
+      { "E", Equivocal }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#E", Equivocal }, 
+      { "EX", OutsideThreshold }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#EX", OutsideThreshold }, 
+      { "EXP", Expected }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#EXP", Expected }, 
+      { "H", High }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#H", High }, 
+      { "HH", CriticalHigh }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#HH", CriticalHigh }, 
+      { "HU", SignificantlyHigh }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#HU", SignificantlyHigh }, 
+      { "HX", AboveHighThreshold }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#HX", AboveHighThreshold }, 
+      { "I", Intermediate }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#I", Intermediate }, 
+      { "IE", InsufficientEvidence }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#IE", InsufficientEvidence }, 
+      { "IND", Indeterminate }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#IND", Indeterminate }, 
+      { "L", Low }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#L", Low }, 
+      { "LL", CriticalLow }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#LL", CriticalLow }, 
+      { "LU", SignificantlyLow }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#LU", SignificantlyLow }, 
+      { "LX", BelowLowThreshold }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#LX", BelowLowThreshold }, 
+      { "N", Normal }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#N", Normal }, 
+      { "NCL", NoCLSIDefinedBreakpoint }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#NCL", NoCLSIDefinedBreakpoint }, 
+      { "ND", NotDetected }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#ND", NotDetected }, 
+      { "NEG", Negative }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#NEG", Negative }, 
+      { "NR", NonReactive }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#NR", NonReactive }, 
+      { "NS", NonSusceptible }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#NS", NonSusceptible }, 
+      { "ObservationInterpretationDetection", ObservationInterpretationDetection }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#ObservationInterpretationDetection", ObservationInterpretationDetection }, 
+      { "ObservationInterpretationExpectation", ObservationInterpretationExpectation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#ObservationInterpretationExpectation", ObservationInterpretationExpectation }, 
+      { "POS", Positive }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#POS", Positive }, 
+      { "R", Resistant }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#R", Resistant }, 
+      { "ReactivityObservationInterpretation", ReactivityObservationInterpretation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#ReactivityObservationInterpretation", ReactivityObservationInterpretation }, 
+      { "RR", Reactive }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#RR", Reactive }, 
+      { "S", Susceptible }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#S", Susceptible }, 
+      { "SDD", SusceptibleDoseDependent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#SDD", SusceptibleDoseDependent }, 
+      { "SYN-R", SynergyResistant }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#SYN-R", SynergyResistant }, 
+      { "SYN-S", SynergySusceptible }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#SYN-S", SynergySusceptible }, 
+      { "U", SignificantChangeUp }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#U", SignificantChangeUp }, 
+      { "UNE", Unexpected }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#UNE", Unexpected }, 
+      { "W", Worse }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#W", Worse }, 
+      { "WR", WeaklyReactive }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#WR", WeaklyReactive }, 
+    };
   };
 }

@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class EntformulaTypeCodes
   {
     /// <summary>
-    /// 
+    /// Standard Enteral Formula
     /// </summary>
     public static readonly Coding StandardEnteralFormula = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Standard enteral formula with fiber
     /// </summary>
     public static readonly Coding StandardEnteralFormulaWithFiber = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// High energy enteral formula with fiber
     /// </summary>
     public static readonly Coding HighEnergyEnteralFormulaWithFiber = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diabetic enteral formula with fiber
     /// </summary>
     public static readonly Coding DiabeticEnteralFormulaWithFiber = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diabetic high calorie high protein enteral formula with fiber
     /// </summary>
     public static readonly Coding DiabeticHighCalorieHighProteinEnteralFormulaWithFiber = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydrolyzed peptide-based high protein enteral formula
     /// </summary>
     public static readonly Coding HydrolyzedPeptideBasedHighProteinEnteralFormula = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult formula
     /// </summary>
     public static readonly Coding AdultFormula = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult elemental formula
     /// </summary>
     public static readonly Coding AdultElementalFormula = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult standard formula
     /// </summary>
     public static readonly Coding AdultStandardFormula = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult soy protein isolate formula
     /// </summary>
     public static readonly Coding AdultSoyProteinIsolateFormula = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult renal specialty formula
     /// </summary>
     public static readonly Coding AdultRenalSpecialtyFormula = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult pulmonary specialty formula
     /// </summary>
     public static readonly Coding AdultPulmonarySpecialtyFormula = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult low carbohydrate formula
     /// </summary>
     public static readonly Coding AdultLowCarbohydrateFormula = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult high energy formula
     /// </summary>
     public static readonly Coding AdultHighEnergyFormula = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult hydrolyzed protein formula
     /// </summary>
     public static readonly Coding AdultHydrolyzedProteinFormula = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult high protein formula
     /// </summary>
     public static readonly Coding AdultHighProteinFormula = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult high protein high fiber formula
     /// </summary>
     public static readonly Coding AdultHighProteinHighFiberFormula = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult hepatic specialty formula
     /// </summary>
     public static readonly Coding AdultHepaticSpecialtyFormula = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult critical care formula
     /// </summary>
     public static readonly Coding AdultCriticalCareFormula = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult diabetes specialty formula
     /// </summary>
     public static readonly Coding AdultDiabetesSpecialtyFormula = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// High protein formula
     /// </summary>
     public static readonly Coding HighProteinFormula = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Increased fiber formula
     /// </summary>
     public static readonly Coding IncreasedFiberFormula = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric Formula
     /// </summary>
     public static readonly Coding PediatricFormula = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric elemental formula
     /// </summary>
     public static readonly Coding PediatricElementalFormula = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elemental Formula
     /// </summary>
     public static readonly Coding ElementalFormula = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric hydrolyzed protein formula
     /// </summary>
     public static readonly Coding PediatricHydrolyzedProteinFormula = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// High Energy Formula
     /// </summary>
     public static readonly Coding HighEnergyFormula = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric standard formula
     /// </summary>
     public static readonly Coding PediatricStandardFormula = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Standard Formula
     /// </summary>
     public static readonly Coding StandardFormula = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric increased fiber formula
     /// </summary>
     public static readonly Coding PediatricIncreasedFiberFormula = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Renal Formula
     /// </summary>
     public static readonly Coding RenalFormula = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric high energy formula
     /// </summary>
     public static readonly Coding PediatricHighEnergyFormula = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric high energy formula with increased fiber
     /// </summary>
     public static readonly Coding PediatricHighEnergyFormulaWithIncreasedFiber = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Soy based formula
     /// </summary>
     public static readonly Coding SoyBasedFormula = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydrolyzed protein formula
     /// </summary>
     public static readonly Coding HydrolyzedProteinFormula = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pediatric reduced energy formula
     /// </summary>
     public static readonly Coding PediatricReducedEnergyFormula = new Coding
     {
@@ -342,9 +342,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStandardEnteralFormula = "441531000124102";
 
     /// <summary>
+    /// Literal for code: NONEStandardEnteralFormula
+    /// </summary>
+    public const string LiteralNONEStandardEnteralFormula = "http://snomed.info/sct#441531000124102";
+
+    /// <summary>
     /// Literal for code: StandardEnteralFormulaWithFiber
     /// </summary>
     public const string LiteralStandardEnteralFormulaWithFiber = "441561000124106";
+
+    /// <summary>
+    /// Literal for code: NONEStandardEnteralFormulaWithFiber
+    /// </summary>
+    public const string LiteralNONEStandardEnteralFormulaWithFiber = "http://snomed.info/sct#441561000124106";
 
     /// <summary>
     /// Literal for code: HighEnergyEnteralFormulaWithFiber
@@ -352,9 +362,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHighEnergyEnteralFormulaWithFiber = "441571000124104";
 
     /// <summary>
+    /// Literal for code: NONEHighEnergyEnteralFormulaWithFiber
+    /// </summary>
+    public const string LiteralNONEHighEnergyEnteralFormulaWithFiber = "http://snomed.info/sct#441571000124104";
+
+    /// <summary>
     /// Literal for code: DiabeticEnteralFormulaWithFiber
     /// </summary>
     public const string LiteralDiabeticEnteralFormulaWithFiber = "441591000124103";
+
+    /// <summary>
+    /// Literal for code: NONEDiabeticEnteralFormulaWithFiber
+    /// </summary>
+    public const string LiteralNONEDiabeticEnteralFormulaWithFiber = "http://snomed.info/sct#441591000124103";
 
     /// <summary>
     /// Literal for code: DiabeticHighCalorieHighProteinEnteralFormulaWithFiber
@@ -362,9 +382,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDiabeticHighCalorieHighProteinEnteralFormulaWithFiber = "441601000124106";
 
     /// <summary>
+    /// Literal for code: NONEDiabeticHighCalorieHighProteinEnteralFormulaWithFiber
+    /// </summary>
+    public const string LiteralNONEDiabeticHighCalorieHighProteinEnteralFormulaWithFiber = "http://snomed.info/sct#441601000124106";
+
+    /// <summary>
     /// Literal for code: HydrolyzedPeptideBasedHighProteinEnteralFormula
     /// </summary>
     public const string LiteralHydrolyzedPeptideBasedHighProteinEnteralFormula = "441671000124100";
+
+    /// <summary>
+    /// Literal for code: NONEHydrolyzedPeptideBasedHighProteinEnteralFormula
+    /// </summary>
+    public const string LiteralNONEHydrolyzedPeptideBasedHighProteinEnteralFormula = "http://snomed.info/sct#441671000124100";
 
     /// <summary>
     /// Literal for code: AdultFormula
@@ -372,9 +402,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdultFormula = "442651000124102";
 
     /// <summary>
+    /// Literal for code: NONEAdultFormula
+    /// </summary>
+    public const string LiteralNONEAdultFormula = "http://snomed.info/sct#442651000124102";
+
+    /// <summary>
     /// Literal for code: AdultElementalFormula
     /// </summary>
     public const string LiteralAdultElementalFormula = "442911000124109";
+
+    /// <summary>
+    /// Literal for code: NONEAdultElementalFormula
+    /// </summary>
+    public const string LiteralNONEAdultElementalFormula = "http://snomed.info/sct#442911000124109";
 
     /// <summary>
     /// Literal for code: AdultStandardFormula
@@ -382,9 +422,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdultStandardFormula = "442921000124101";
 
     /// <summary>
+    /// Literal for code: NONEAdultStandardFormula
+    /// </summary>
+    public const string LiteralNONEAdultStandardFormula = "http://snomed.info/sct#442921000124101";
+
+    /// <summary>
     /// Literal for code: AdultSoyProteinIsolateFormula
     /// </summary>
     public const string LiteralAdultSoyProteinIsolateFormula = "442931000124103";
+
+    /// <summary>
+    /// Literal for code: NONEAdultSoyProteinIsolateFormula
+    /// </summary>
+    public const string LiteralNONEAdultSoyProteinIsolateFormula = "http://snomed.info/sct#442931000124103";
 
     /// <summary>
     /// Literal for code: AdultRenalSpecialtyFormula
@@ -392,9 +442,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdultRenalSpecialtyFormula = "442941000124108";
 
     /// <summary>
+    /// Literal for code: NONEAdultRenalSpecialtyFormula
+    /// </summary>
+    public const string LiteralNONEAdultRenalSpecialtyFormula = "http://snomed.info/sct#442941000124108";
+
+    /// <summary>
     /// Literal for code: AdultPulmonarySpecialtyFormula
     /// </summary>
     public const string LiteralAdultPulmonarySpecialtyFormula = "442951000124105";
+
+    /// <summary>
+    /// Literal for code: NONEAdultPulmonarySpecialtyFormula
+    /// </summary>
+    public const string LiteralNONEAdultPulmonarySpecialtyFormula = "http://snomed.info/sct#442951000124105";
 
     /// <summary>
     /// Literal for code: AdultLowCarbohydrateFormula
@@ -402,9 +462,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdultLowCarbohydrateFormula = "442961000124107";
 
     /// <summary>
+    /// Literal for code: NONEAdultLowCarbohydrateFormula
+    /// </summary>
+    public const string LiteralNONEAdultLowCarbohydrateFormula = "http://snomed.info/sct#442961000124107";
+
+    /// <summary>
     /// Literal for code: AdultHighEnergyFormula
     /// </summary>
     public const string LiteralAdultHighEnergyFormula = "442971000124100";
+
+    /// <summary>
+    /// Literal for code: NONEAdultHighEnergyFormula
+    /// </summary>
+    public const string LiteralNONEAdultHighEnergyFormula = "http://snomed.info/sct#442971000124100";
 
     /// <summary>
     /// Literal for code: AdultHydrolyzedProteinFormula
@@ -412,9 +482,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdultHydrolyzedProteinFormula = "442981000124102";
 
     /// <summary>
+    /// Literal for code: NONEAdultHydrolyzedProteinFormula
+    /// </summary>
+    public const string LiteralNONEAdultHydrolyzedProteinFormula = "http://snomed.info/sct#442981000124102";
+
+    /// <summary>
     /// Literal for code: AdultHighProteinFormula
     /// </summary>
     public const string LiteralAdultHighProteinFormula = "442991000124104";
+
+    /// <summary>
+    /// Literal for code: NONEAdultHighProteinFormula
+    /// </summary>
+    public const string LiteralNONEAdultHighProteinFormula = "http://snomed.info/sct#442991000124104";
 
     /// <summary>
     /// Literal for code: AdultHighProteinHighFiberFormula
@@ -422,9 +502,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdultHighProteinHighFiberFormula = "443011000124100";
 
     /// <summary>
+    /// Literal for code: NONEAdultHighProteinHighFiberFormula
+    /// </summary>
+    public const string LiteralNONEAdultHighProteinHighFiberFormula = "http://snomed.info/sct#443011000124100";
+
+    /// <summary>
     /// Literal for code: AdultHepaticSpecialtyFormula
     /// </summary>
     public const string LiteralAdultHepaticSpecialtyFormula = "443021000124108";
+
+    /// <summary>
+    /// Literal for code: NONEAdultHepaticSpecialtyFormula
+    /// </summary>
+    public const string LiteralNONEAdultHepaticSpecialtyFormula = "http://snomed.info/sct#443021000124108";
 
     /// <summary>
     /// Literal for code: AdultCriticalCareFormula
@@ -432,9 +522,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdultCriticalCareFormula = "443031000124106";
 
     /// <summary>
+    /// Literal for code: NONEAdultCriticalCareFormula
+    /// </summary>
+    public const string LiteralNONEAdultCriticalCareFormula = "http://snomed.info/sct#443031000124106";
+
+    /// <summary>
     /// Literal for code: AdultDiabetesSpecialtyFormula
     /// </summary>
     public const string LiteralAdultDiabetesSpecialtyFormula = "443051000124104";
+
+    /// <summary>
+    /// Literal for code: NONEAdultDiabetesSpecialtyFormula
+    /// </summary>
+    public const string LiteralNONEAdultDiabetesSpecialtyFormula = "http://snomed.info/sct#443051000124104";
 
     /// <summary>
     /// Literal for code: HighProteinFormula
@@ -442,9 +542,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHighProteinFormula = "443111000124101";
 
     /// <summary>
+    /// Literal for code: NONEHighProteinFormula
+    /// </summary>
+    public const string LiteralNONEHighProteinFormula = "http://snomed.info/sct#443111000124101";
+
+    /// <summary>
     /// Literal for code: IncreasedFiberFormula
     /// </summary>
     public const string LiteralIncreasedFiberFormula = "443351000124102";
+
+    /// <summary>
+    /// Literal for code: NONEIncreasedFiberFormula
+    /// </summary>
+    public const string LiteralNONEIncreasedFiberFormula = "http://snomed.info/sct#443351000124102";
 
     /// <summary>
     /// Literal for code: PediatricFormula
@@ -452,9 +562,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPediatricFormula = "443361000124100";
 
     /// <summary>
+    /// Literal for code: NONEPediatricFormula
+    /// </summary>
+    public const string LiteralNONEPediatricFormula = "http://snomed.info/sct#443361000124100";
+
+    /// <summary>
     /// Literal for code: PediatricElementalFormula
     /// </summary>
     public const string LiteralPediatricElementalFormula = "443401000124105";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricElementalFormula
+    /// </summary>
+    public const string LiteralNONEPediatricElementalFormula = "http://snomed.info/sct#443401000124105";
 
     /// <summary>
     /// Literal for code: ElementalFormula
@@ -462,9 +582,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralElementalFormula = "443411000124108";
 
     /// <summary>
+    /// Literal for code: NONEElementalFormula
+    /// </summary>
+    public const string LiteralNONEElementalFormula = "http://snomed.info/sct#443411000124108";
+
+    /// <summary>
     /// Literal for code: PediatricHydrolyzedProteinFormula
     /// </summary>
     public const string LiteralPediatricHydrolyzedProteinFormula = "443421000124100";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricHydrolyzedProteinFormula
+    /// </summary>
+    public const string LiteralNONEPediatricHydrolyzedProteinFormula = "http://snomed.info/sct#443421000124100";
 
     /// <summary>
     /// Literal for code: HighEnergyFormula
@@ -472,9 +602,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHighEnergyFormula = "443431000124102";
 
     /// <summary>
+    /// Literal for code: NONEHighEnergyFormula
+    /// </summary>
+    public const string LiteralNONEHighEnergyFormula = "http://snomed.info/sct#443431000124102";
+
+    /// <summary>
     /// Literal for code: PediatricStandardFormula
     /// </summary>
     public const string LiteralPediatricStandardFormula = "443451000124109";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricStandardFormula
+    /// </summary>
+    public const string LiteralNONEPediatricStandardFormula = "http://snomed.info/sct#443451000124109";
 
     /// <summary>
     /// Literal for code: StandardFormula
@@ -482,9 +622,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStandardFormula = "443461000124106";
 
     /// <summary>
+    /// Literal for code: NONEStandardFormula
+    /// </summary>
+    public const string LiteralNONEStandardFormula = "http://snomed.info/sct#443461000124106";
+
+    /// <summary>
     /// Literal for code: PediatricIncreasedFiberFormula
     /// </summary>
     public const string LiteralPediatricIncreasedFiberFormula = "443471000124104";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricIncreasedFiberFormula
+    /// </summary>
+    public const string LiteralNONEPediatricIncreasedFiberFormula = "http://snomed.info/sct#443471000124104";
 
     /// <summary>
     /// Literal for code: RenalFormula
@@ -492,9 +642,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRenalFormula = "443481000124101";
 
     /// <summary>
+    /// Literal for code: NONERenalFormula
+    /// </summary>
+    public const string LiteralNONERenalFormula = "http://snomed.info/sct#443481000124101";
+
+    /// <summary>
     /// Literal for code: PediatricHighEnergyFormula
     /// </summary>
     public const string LiteralPediatricHighEnergyFormula = "443491000124103";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricHighEnergyFormula
+    /// </summary>
+    public const string LiteralNONEPediatricHighEnergyFormula = "http://snomed.info/sct#443491000124103";
 
     /// <summary>
     /// Literal for code: PediatricHighEnergyFormulaWithIncreasedFiber
@@ -502,9 +662,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPediatricHighEnergyFormulaWithIncreasedFiber = "443501000124106";
 
     /// <summary>
+    /// Literal for code: NONEPediatricHighEnergyFormulaWithIncreasedFiber
+    /// </summary>
+    public const string LiteralNONEPediatricHighEnergyFormulaWithIncreasedFiber = "http://snomed.info/sct#443501000124106";
+
+    /// <summary>
     /// Literal for code: SoyBasedFormula
     /// </summary>
     public const string LiteralSoyBasedFormula = "443561000124107";
+
+    /// <summary>
+    /// Literal for code: NONESoyBasedFormula
+    /// </summary>
+    public const string LiteralNONESoyBasedFormula = "http://snomed.info/sct#443561000124107";
 
     /// <summary>
     /// Literal for code: HydrolyzedProteinFormula
@@ -512,8 +682,96 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHydrolyzedProteinFormula = "443771000124106";
 
     /// <summary>
+    /// Literal for code: NONEHydrolyzedProteinFormula
+    /// </summary>
+    public const string LiteralNONEHydrolyzedProteinFormula = "http://snomed.info/sct#443771000124106";
+
+    /// <summary>
     /// Literal for code: PediatricReducedEnergyFormula
     /// </summary>
     public const string LiteralPediatricReducedEnergyFormula = "444431000124104";
+
+    /// <summary>
+    /// Literal for code: NONEPediatricReducedEnergyFormula
+    /// </summary>
+    public const string LiteralNONEPediatricReducedEnergyFormula = "http://snomed.info/sct#444431000124104";
+
+    /// <summary>
+    /// Dictionary for looking up EntformulaType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "441531000124102", StandardEnteralFormula }, 
+      { "http://snomed.info/sct#441531000124102", StandardEnteralFormula }, 
+      { "441561000124106", StandardEnteralFormulaWithFiber }, 
+      { "http://snomed.info/sct#441561000124106", StandardEnteralFormulaWithFiber }, 
+      { "441571000124104", HighEnergyEnteralFormulaWithFiber }, 
+      { "http://snomed.info/sct#441571000124104", HighEnergyEnteralFormulaWithFiber }, 
+      { "441591000124103", DiabeticEnteralFormulaWithFiber }, 
+      { "http://snomed.info/sct#441591000124103", DiabeticEnteralFormulaWithFiber }, 
+      { "441601000124106", DiabeticHighCalorieHighProteinEnteralFormulaWithFiber }, 
+      { "http://snomed.info/sct#441601000124106", DiabeticHighCalorieHighProteinEnteralFormulaWithFiber }, 
+      { "441671000124100", HydrolyzedPeptideBasedHighProteinEnteralFormula }, 
+      { "http://snomed.info/sct#441671000124100", HydrolyzedPeptideBasedHighProteinEnteralFormula }, 
+      { "442651000124102", AdultFormula }, 
+      { "http://snomed.info/sct#442651000124102", AdultFormula }, 
+      { "442911000124109", AdultElementalFormula }, 
+      { "http://snomed.info/sct#442911000124109", AdultElementalFormula }, 
+      { "442921000124101", AdultStandardFormula }, 
+      { "http://snomed.info/sct#442921000124101", AdultStandardFormula }, 
+      { "442931000124103", AdultSoyProteinIsolateFormula }, 
+      { "http://snomed.info/sct#442931000124103", AdultSoyProteinIsolateFormula }, 
+      { "442941000124108", AdultRenalSpecialtyFormula }, 
+      { "http://snomed.info/sct#442941000124108", AdultRenalSpecialtyFormula }, 
+      { "442951000124105", AdultPulmonarySpecialtyFormula }, 
+      { "http://snomed.info/sct#442951000124105", AdultPulmonarySpecialtyFormula }, 
+      { "442961000124107", AdultLowCarbohydrateFormula }, 
+      { "http://snomed.info/sct#442961000124107", AdultLowCarbohydrateFormula }, 
+      { "442971000124100", AdultHighEnergyFormula }, 
+      { "http://snomed.info/sct#442971000124100", AdultHighEnergyFormula }, 
+      { "442981000124102", AdultHydrolyzedProteinFormula }, 
+      { "http://snomed.info/sct#442981000124102", AdultHydrolyzedProteinFormula }, 
+      { "442991000124104", AdultHighProteinFormula }, 
+      { "http://snomed.info/sct#442991000124104", AdultHighProteinFormula }, 
+      { "443011000124100", AdultHighProteinHighFiberFormula }, 
+      { "http://snomed.info/sct#443011000124100", AdultHighProteinHighFiberFormula }, 
+      { "443021000124108", AdultHepaticSpecialtyFormula }, 
+      { "http://snomed.info/sct#443021000124108", AdultHepaticSpecialtyFormula }, 
+      { "443031000124106", AdultCriticalCareFormula }, 
+      { "http://snomed.info/sct#443031000124106", AdultCriticalCareFormula }, 
+      { "443051000124104", AdultDiabetesSpecialtyFormula }, 
+      { "http://snomed.info/sct#443051000124104", AdultDiabetesSpecialtyFormula }, 
+      { "443111000124101", HighProteinFormula }, 
+      { "http://snomed.info/sct#443111000124101", HighProteinFormula }, 
+      { "443351000124102", IncreasedFiberFormula }, 
+      { "http://snomed.info/sct#443351000124102", IncreasedFiberFormula }, 
+      { "443361000124100", PediatricFormula }, 
+      { "http://snomed.info/sct#443361000124100", PediatricFormula }, 
+      { "443401000124105", PediatricElementalFormula }, 
+      { "http://snomed.info/sct#443401000124105", PediatricElementalFormula }, 
+      { "443411000124108", ElementalFormula }, 
+      { "http://snomed.info/sct#443411000124108", ElementalFormula }, 
+      { "443421000124100", PediatricHydrolyzedProteinFormula }, 
+      { "http://snomed.info/sct#443421000124100", PediatricHydrolyzedProteinFormula }, 
+      { "443431000124102", HighEnergyFormula }, 
+      { "http://snomed.info/sct#443431000124102", HighEnergyFormula }, 
+      { "443451000124109", PediatricStandardFormula }, 
+      { "http://snomed.info/sct#443451000124109", PediatricStandardFormula }, 
+      { "443461000124106", StandardFormula }, 
+      { "http://snomed.info/sct#443461000124106", StandardFormula }, 
+      { "443471000124104", PediatricIncreasedFiberFormula }, 
+      { "http://snomed.info/sct#443471000124104", PediatricIncreasedFiberFormula }, 
+      { "443481000124101", RenalFormula }, 
+      { "http://snomed.info/sct#443481000124101", RenalFormula }, 
+      { "443491000124103", PediatricHighEnergyFormula }, 
+      { "http://snomed.info/sct#443491000124103", PediatricHighEnergyFormula }, 
+      { "443501000124106", PediatricHighEnergyFormulaWithIncreasedFiber }, 
+      { "http://snomed.info/sct#443501000124106", PediatricHighEnergyFormulaWithIncreasedFiber }, 
+      { "443561000124107", SoyBasedFormula }, 
+      { "http://snomed.info/sct#443561000124107", SoyBasedFormula }, 
+      { "443771000124106", HydrolyzedProteinFormula }, 
+      { "http://snomed.info/sct#443771000124106", HydrolyzedProteinFormula }, 
+      { "444431000124104", PediatricReducedEnergyFormula }, 
+      { "http://snomed.info/sct#444431000124104", PediatricReducedEnergyFormula }, 
+    };
   };
 }

@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSecureMessaging = "elec";
 
     /// <summary>
+    /// Literal for code: ServiceReferralMethodSecureMessaging
+    /// </summary>
+    public const string LiteralServiceReferralMethodSecureMessaging = "http://terminology.hl7.org/CodeSystem/service-referral-method#elec";
+
+    /// <summary>
     /// Literal for code: Fax
     /// </summary>
     public const string LiteralFax = "fax";
+
+    /// <summary>
+    /// Literal for code: ServiceReferralMethodFax
+    /// </summary>
+    public const string LiteralServiceReferralMethodFax = "http://terminology.hl7.org/CodeSystem/service-referral-method#fax";
 
     /// <summary>
     /// Literal for code: Mail
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMail = "mail";
 
     /// <summary>
+    /// Literal for code: ServiceReferralMethodMail
+    /// </summary>
+    public const string LiteralServiceReferralMethodMail = "http://terminology.hl7.org/CodeSystem/service-referral-method#mail";
+
+    /// <summary>
     /// Literal for code: Phone
     /// </summary>
     public const string LiteralPhone = "phone";
 
     /// <summary>
+    /// Literal for code: ServiceReferralMethodPhone
+    /// </summary>
+    public const string LiteralServiceReferralMethodPhone = "http://terminology.hl7.org/CodeSystem/service-referral-method#phone";
+
+    /// <summary>
     /// Literal for code: SecureEmail
     /// </summary>
     public const string LiteralSecureEmail = "semail";
+
+    /// <summary>
+    /// Literal for code: ServiceReferralMethodSecureEmail
+    /// </summary>
+    public const string LiteralServiceReferralMethodSecureEmail = "http://terminology.hl7.org/CodeSystem/service-referral-method#semail";
+
+    /// <summary>
+    /// Dictionary for looking up ServiceReferralMethod Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "elec", SecureMessaging }, 
+      { "http://terminology.hl7.org/CodeSystem/service-referral-method#elec", SecureMessaging }, 
+      { "fax", Fax }, 
+      { "http://terminology.hl7.org/CodeSystem/service-referral-method#fax", Fax }, 
+      { "mail", Mail }, 
+      { "http://terminology.hl7.org/CodeSystem/service-referral-method#mail", Mail }, 
+      { "phone", Phone }, 
+      { "http://terminology.hl7.org/CodeSystem/service-referral-method#phone", Phone }, 
+      { "semail", SecureEmail }, 
+      { "http://terminology.hl7.org/CodeSystem/service-referral-method#semail", SecureEmail }, 
+    };
   };
 }

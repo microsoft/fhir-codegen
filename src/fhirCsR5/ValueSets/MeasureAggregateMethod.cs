@@ -72,9 +72,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAverage = "average";
 
     /// <summary>
+    /// Literal for code: MeasureAggregateMethodAverage
+    /// </summary>
+    public const string LiteralMeasureAggregateMethodAverage = "http://hl7.org/fhir/CodeSystem/measure-aggregate-method#average";
+
+    /// <summary>
     /// Literal for code: Count
     /// </summary>
     public const string LiteralCount = "count";
+
+    /// <summary>
+    /// Literal for code: MeasureAggregateMethodCount
+    /// </summary>
+    public const string LiteralMeasureAggregateMethodCount = "http://hl7.org/fhir/CodeSystem/measure-aggregate-method#count";
 
     /// <summary>
     /// Literal for code: Maximum
@@ -82,9 +92,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMaximum = "maximum";
 
     /// <summary>
+    /// Literal for code: MeasureAggregateMethodMaximum
+    /// </summary>
+    public const string LiteralMeasureAggregateMethodMaximum = "http://hl7.org/fhir/CodeSystem/measure-aggregate-method#maximum";
+
+    /// <summary>
     /// Literal for code: Median
     /// </summary>
     public const string LiteralMedian = "median";
+
+    /// <summary>
+    /// Literal for code: MeasureAggregateMethodMedian
+    /// </summary>
+    public const string LiteralMeasureAggregateMethodMedian = "http://hl7.org/fhir/CodeSystem/measure-aggregate-method#median";
 
     /// <summary>
     /// Literal for code: Minimum
@@ -92,8 +112,36 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMinimum = "minimum";
 
     /// <summary>
+    /// Literal for code: MeasureAggregateMethodMinimum
+    /// </summary>
+    public const string LiteralMeasureAggregateMethodMinimum = "http://hl7.org/fhir/CodeSystem/measure-aggregate-method#minimum";
+
+    /// <summary>
     /// Literal for code: Sum
     /// </summary>
     public const string LiteralSum = "sum";
+
+    /// <summary>
+    /// Literal for code: MeasureAggregateMethodSum
+    /// </summary>
+    public const string LiteralMeasureAggregateMethodSum = "http://hl7.org/fhir/CodeSystem/measure-aggregate-method#sum";
+
+    /// <summary>
+    /// Dictionary for looking up MeasureAggregateMethod Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "average", Average }, 
+      { "http://hl7.org/fhir/CodeSystem/measure-aggregate-method#average", Average }, 
+      { "count", Count }, 
+      { "http://hl7.org/fhir/CodeSystem/measure-aggregate-method#count", Count }, 
+      { "maximum", Maximum }, 
+      { "http://hl7.org/fhir/CodeSystem/measure-aggregate-method#maximum", Maximum }, 
+      { "median", Median }, 
+      { "http://hl7.org/fhir/CodeSystem/measure-aggregate-method#median", Median }, 
+      { "minimum", Minimum }, 
+      { "http://hl7.org/fhir/CodeSystem/measure-aggregate-method#minimum", Minimum }, 
+      { "sum", Sum }, 
+      { "http://hl7.org/fhir/CodeSystem/measure-aggregate-method#sum", Sum }, 
+    };
   };
 }

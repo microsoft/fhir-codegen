@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class ContractActionCodes
   {
     /// <summary>
-    /// 
+    /// Action A
     /// </summary>
     public static readonly Coding ActionA = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractaction"
     };
     /// <summary>
-    /// 
+    /// Action B
     /// </summary>
     public static readonly Coding ActionB = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralActionA = "action-a";
 
     /// <summary>
+    /// Literal for code: ContractactionActionA
+    /// </summary>
+    public const string LiteralContractactionActionA = "http://terminology.hl7.org/CodeSystem/contractaction#action-a";
+
+    /// <summary>
     /// Literal for code: ActionB
     /// </summary>
     public const string LiteralActionB = "action-b";
+
+    /// <summary>
+    /// Literal for code: ContractactionActionB
+    /// </summary>
+    public const string LiteralContractactionActionB = "http://terminology.hl7.org/CodeSystem/contractaction#action-b";
+
+    /// <summary>
+    /// Dictionary for looking up ContractAction Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "action-a", ActionA }, 
+      { "http://terminology.hl7.org/CodeSystem/contractaction#action-a", ActionA }, 
+      { "action-b", ActionB }, 
+      { "http://terminology.hl7.org/CodeSystem/contractaction#action-b", ActionB }, 
+    };
   };
 }

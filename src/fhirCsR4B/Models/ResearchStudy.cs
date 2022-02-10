@@ -1160,5 +1160,18 @@ namespace fhirCsR4B.Models
     public const string TEMPORARILY_CLOSED_TO_ACCRUAL = "temporarily-closed-to-accrual";
     public const string TEMPORARILY_CLOSED_TO_ACCRUAL_AND_INTERVENTION = "temporarily-closed-to-accrual-and-intervention";
     public const string WITHDRAWN = "withdrawn";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "administratively-completed",
+      "approved",
+      "closed-to-accrual",
+      "closed-to-accrual-and-intervention",
+      "completed",
+      "disapproved",
+      "in-review",
+      "temporarily-closed-to-accrual",
+      "temporarily-closed-to-accrual-and-intervention",
+      "withdrawn",
+    };
   }
 }

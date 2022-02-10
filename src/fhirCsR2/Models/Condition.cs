@@ -902,6 +902,12 @@ namespace fhirCsR2.Models
     public const string RELAPSE = "relapse";
     public const string REMISSION = "remission";
     public const string RESOLVED = "resolved";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "relapse",
+      "remission",
+      "resolved",
+    };
   }
   /// <summary>
   /// Code Values for the Condition.verificationStatus field
@@ -913,5 +919,13 @@ namespace fhirCsR2.Models
     public const string REFUTED = "refuted";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "provisional",
+      "differential",
+      "confirmed",
+      "refuted",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

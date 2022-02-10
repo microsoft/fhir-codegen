@@ -63,9 +63,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEmail = "email";
 
     /// <summary>
+    /// Literal for code: SubscriptionChannelTypeEmail
+    /// </summary>
+    public const string LiteralSubscriptionChannelTypeEmail = "http://hl7.org/fhir/subscription-channel-type#email";
+
+    /// <summary>
     /// Literal for code: Message
     /// </summary>
     public const string LiteralMessage = "message";
+
+    /// <summary>
+    /// Literal for code: SubscriptionChannelTypeMessage
+    /// </summary>
+    public const string LiteralSubscriptionChannelTypeMessage = "http://hl7.org/fhir/subscription-channel-type#message";
 
     /// <summary>
     /// Literal for code: RestHook
@@ -73,13 +83,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRestHook = "rest-hook";
 
     /// <summary>
+    /// Literal for code: SubscriptionChannelTypeRestHook
+    /// </summary>
+    public const string LiteralSubscriptionChannelTypeRestHook = "http://hl7.org/fhir/subscription-channel-type#rest-hook";
+
+    /// <summary>
     /// Literal for code: SMS
     /// </summary>
     public const string LiteralSMS = "sms";
 
     /// <summary>
+    /// Literal for code: SubscriptionChannelTypeSMS
+    /// </summary>
+    public const string LiteralSubscriptionChannelTypeSMS = "http://hl7.org/fhir/subscription-channel-type#sms";
+
+    /// <summary>
     /// Literal for code: Websocket
     /// </summary>
     public const string LiteralWebsocket = "websocket";
+
+    /// <summary>
+    /// Literal for code: SubscriptionChannelTypeWebsocket
+    /// </summary>
+    public const string LiteralSubscriptionChannelTypeWebsocket = "http://hl7.org/fhir/subscription-channel-type#websocket";
+
+    /// <summary>
+    /// Dictionary for looking up SubscriptionChannelType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "email", Email }, 
+      { "http://hl7.org/fhir/subscription-channel-type#email", Email }, 
+      { "message", Message }, 
+      { "http://hl7.org/fhir/subscription-channel-type#message", Message }, 
+      { "rest-hook", RestHook }, 
+      { "http://hl7.org/fhir/subscription-channel-type#rest-hook", RestHook }, 
+      { "sms", SMS }, 
+      { "http://hl7.org/fhir/subscription-channel-type#sms", SMS }, 
+      { "websocket", Websocket }, 
+      { "http://hl7.org/fhir/subscription-channel-type#websocket", Websocket }, 
+    };
   };
 }

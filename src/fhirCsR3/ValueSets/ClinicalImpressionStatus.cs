@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: ClinicalImpressionStatusCompleted
+    /// </summary>
+    public const string LiteralClinicalImpressionStatusCompleted = "http://hl7.org/fhir/clinical-impression-status#completed";
+
+    /// <summary>
     /// Literal for code: InProgress
     /// </summary>
     public const string LiteralInProgress = "draft";
 
     /// <summary>
+    /// Literal for code: ClinicalImpressionStatusInProgress
+    /// </summary>
+    public const string LiteralClinicalImpressionStatusInProgress = "http://hl7.org/fhir/clinical-impression-status#draft";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: ClinicalImpressionStatusEnteredInError
+    /// </summary>
+    public const string LiteralClinicalImpressionStatusEnteredInError = "http://hl7.org/fhir/clinical-impression-status#entered-in-error";
+
+    /// <summary>
+    /// Dictionary for looking up ClinicalImpressionStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/clinical-impression-status#completed", Completed }, 
+      { "draft", InProgress }, 
+      { "http://hl7.org/fhir/clinical-impression-status#draft", InProgress }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/clinical-impression-status#entered-in-error", EnteredInError }, 
+    };
   };
 }

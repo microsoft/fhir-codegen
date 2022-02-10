@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNo = "n";
 
     /// <summary>
+    /// Literal for code: MedicationStatementTakenNo
+    /// </summary>
+    public const string LiteralMedicationStatementTakenNo = "http://hl7.org/fhir/medication-statement-taken#n";
+
+    /// <summary>
     /// Literal for code: NotApplicable
     /// </summary>
     public const string LiteralNotApplicable = "na";
+
+    /// <summary>
+    /// Literal for code: MedicationStatementTakenNotApplicable
+    /// </summary>
+    public const string LiteralMedicationStatementTakenNotApplicable = "http://hl7.org/fhir/medication-statement-taken#na";
 
     /// <summary>
     /// Literal for code: Unknown
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnknown = "unk";
 
     /// <summary>
+    /// Literal for code: MedicationStatementTakenUnknown
+    /// </summary>
+    public const string LiteralMedicationStatementTakenUnknown = "http://hl7.org/fhir/medication-statement-taken#unk";
+
+    /// <summary>
     /// Literal for code: Yes
     /// </summary>
     public const string LiteralYes = "y";
+
+    /// <summary>
+    /// Literal for code: MedicationStatementTakenYes
+    /// </summary>
+    public const string LiteralMedicationStatementTakenYes = "http://hl7.org/fhir/medication-statement-taken#y";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationStatementTaken Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "n", No }, 
+      { "http://hl7.org/fhir/medication-statement-taken#n", No }, 
+      { "na", NotApplicable }, 
+      { "http://hl7.org/fhir/medication-statement-taken#na", NotApplicable }, 
+      { "unk", Unknown }, 
+      { "http://hl7.org/fhir/medication-statement-taken#unk", Unknown }, 
+      { "y", Yes }, 
+      { "http://hl7.org/fhir/medication-statement-taken#y", Yes }, 
+    };
   };
 }

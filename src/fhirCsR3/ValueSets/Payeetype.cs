@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProvider = "other";
 
     /// <summary>
+    /// Literal for code: PayeetypeProvider
+    /// </summary>
+    public const string LiteralPayeetypeProvider = "http://hl7.org/fhir/payeetype#other";
+
+    /// <summary>
     /// Literal for code: Provider_2
     /// </summary>
     public const string LiteralProvider_2 = "provider";
 
     /// <summary>
+    /// Literal for code: PayeetypeProvider_2
+    /// </summary>
+    public const string LiteralPayeetypeProvider_2 = "http://hl7.org/fhir/payeetype#provider";
+
+    /// <summary>
     /// Literal for code: Subscriber
     /// </summary>
     public const string LiteralSubscriber = "subscriber";
+
+    /// <summary>
+    /// Literal for code: PayeetypeSubscriber
+    /// </summary>
+    public const string LiteralPayeetypeSubscriber = "http://hl7.org/fhir/payeetype#subscriber";
+
+    /// <summary>
+    /// Dictionary for looking up Payeetype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "other", Provider }, 
+      { "http://hl7.org/fhir/payeetype#other", Provider }, 
+      { "provider", Provider_2 }, 
+      { "http://hl7.org/fhir/payeetype#provider", Provider_2 }, 
+      { "subscriber", Subscriber }, 
+      { "http://hl7.org/fhir/payeetype#subscriber", Subscriber }, 
+    };
   };
 }

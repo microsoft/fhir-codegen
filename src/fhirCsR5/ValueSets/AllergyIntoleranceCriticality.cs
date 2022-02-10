@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHighRisk = "high";
 
     /// <summary>
+    /// Literal for code: AllergyIntoleranceCriticalityHighRisk
+    /// </summary>
+    public const string LiteralAllergyIntoleranceCriticalityHighRisk = "http://hl7.org/fhir/allergy-intolerance-criticality#high";
+
+    /// <summary>
     /// Literal for code: LowRisk
     /// </summary>
     public const string LiteralLowRisk = "low";
 
     /// <summary>
+    /// Literal for code: AllergyIntoleranceCriticalityLowRisk
+    /// </summary>
+    public const string LiteralAllergyIntoleranceCriticalityLowRisk = "http://hl7.org/fhir/allergy-intolerance-criticality#low";
+
+    /// <summary>
     /// Literal for code: UnableToAssessRisk
     /// </summary>
     public const string LiteralUnableToAssessRisk = "unable-to-assess";
+
+    /// <summary>
+    /// Literal for code: AllergyIntoleranceCriticalityUnableToAssessRisk
+    /// </summary>
+    public const string LiteralAllergyIntoleranceCriticalityUnableToAssessRisk = "http://hl7.org/fhir/allergy-intolerance-criticality#unable-to-assess";
+
+    /// <summary>
+    /// Dictionary for looking up AllergyIntoleranceCriticality Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "high", HighRisk }, 
+      { "http://hl7.org/fhir/allergy-intolerance-criticality#high", HighRisk }, 
+      { "low", LowRisk }, 
+      { "http://hl7.org/fhir/allergy-intolerance-criticality#low", LowRisk }, 
+      { "unable-to-assess", UnableToAssessRisk }, 
+      { "http://hl7.org/fhir/allergy-intolerance-criticality#unable-to-assess", UnableToAssessRisk }, 
+    };
   };
 }

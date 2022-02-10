@@ -253,6 +253,12 @@ namespace fhirCsR4.Models
     public const string FEMALE = "female";
     public const string OTHER = "other";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "male",
+      "female",
+      "other",
+      "unknown",
+    };
   }
   /// <summary>
   /// If no language is specified, this *implies* that the default local language is spoken.  If you need to convey proficiency for multiple modes, then you need multiple Patient.Communication associations.   For animals, language is not a relevant field, and should be absent from the instance. If the Patient does not speak the default local language, then the Interpreter Required Standard can be used to explicitly declare that an interpreter is required.
@@ -267,6 +273,10 @@ namespace fhirCsR4.Models
     /// This language is specifically identified for communicating healthcare information.
     /// </summary>
     public bool? Preferred { get; set; }
+    /// <summary>
+    /// Extension container element for Preferred
+    /// </summary>
+    public Element _Preferred { get; set; }
     /// <summary>
     /// Serialize to a JSON object
     /// </summary>
@@ -289,6 +299,12 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("preferred", (bool)Preferred!);
       }
 
+      if (_Preferred != null)
+      {
+        writer.WritePropertyName("_preferred");
+        _Preferred.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -308,6 +324,11 @@ namespace fhirCsR4.Models
 
         case "preferred":
           Preferred = reader.GetBoolean();
+          break;
+
+        case "_preferred":
+          _Preferred = new fhirCsR4.Models.Element();
+          _Preferred.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -451,6 +472,12 @@ namespace fhirCsR4.Models
     public const string REPLACES = "replaces";
     public const string REFER = "refer";
     public const string SEEALSO = "seealso";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "replaced-by",
+      "replaces",
+      "refer",
+      "seealso",
+    };
   }
   /// <summary>
   /// Demographics and other administrative information about an individual or animal receiving care or other health-related services.
@@ -465,6 +492,10 @@ namespace fhirCsR4.Models
     /// If a record is inactive, and linked to an active record, then future patient/record updates should occur on the other patient.
     /// </summary>
     public bool? Active { get; set; }
+    /// <summary>
+    /// Extension container element for Active
+    /// </summary>
+    public Element _Active { get; set; }
     /// <summary>
     /// Patient may have multiple addresses with different uses or applicable periods.
     /// </summary>
@@ -489,6 +520,10 @@ namespace fhirCsR4.Models
     /// If there's no value in the instance, it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
     /// </summary>
     public bool? DeceasedBoolean { get; set; }
+    /// <summary>
+    /// Extension container element for DeceasedBoolean
+    /// </summary>
+    public Element _DeceasedBoolean { get; set; }
     /// <summary>
     /// If there's no value in the instance, it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
     /// </summary>
@@ -532,9 +567,17 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? MultipleBirthBoolean { get; set; }
     /// <summary>
+    /// Extension container element for MultipleBirthBoolean
+    /// </summary>
+    public Element _MultipleBirthBoolean { get; set; }
+    /// <summary>
     /// Where the valueInteger is provided, the number is the birth number in the sequence. E.g. The middle birth in triplets would be valueInteger=2 and the third born would have valueInteger=3 If a boolean value was provided for this triplets example, then all 3 patient records would have valueBoolean=true (the ordering is not indicated).
     /// </summary>
     public int? MultipleBirthInteger { get; set; }
+    /// <summary>
+    /// Extension container element for MultipleBirthInteger
+    /// </summary>
+    public Element _MultipleBirthInteger { get; set; }
     /// <summary>
     /// A patient may have multiple names with different uses or applicable periods. For animals, the name is a "HumanName" in the sense that is assigned and used by humans and has the same patterns.
     /// </summary>
@@ -583,6 +626,12 @@ namespace fhirCsR4.Models
       if (Active != null)
       {
         writer.WriteBoolean("active", (bool)Active!);
+      }
+
+      if (_Active != null)
+      {
+        writer.WritePropertyName("_active");
+        _Active.SerializeJson(writer, options);
       }
 
       if ((Name != null) && (Name.Count != 0))
@@ -638,6 +687,12 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("deceasedBoolean", (bool)DeceasedBoolean!);
       }
 
+      if (_DeceasedBoolean != null)
+      {
+        writer.WritePropertyName("_deceasedBoolean");
+        _DeceasedBoolean.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(DeceasedDateTime))
       {
         writer.WriteString("deceasedDateTime", (string)DeceasedDateTime!);
@@ -673,9 +728,21 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("multipleBirthBoolean", (bool)MultipleBirthBoolean!);
       }
 
+      if (_MultipleBirthBoolean != null)
+      {
+        writer.WritePropertyName("_multipleBirthBoolean");
+        _MultipleBirthBoolean.SerializeJson(writer, options);
+      }
+
       if (MultipleBirthInteger != null)
       {
         writer.WriteNumber("multipleBirthInteger", (int)MultipleBirthInteger!);
+      }
+
+      if (_MultipleBirthInteger != null)
+      {
+        writer.WritePropertyName("_multipleBirthInteger");
+        _MultipleBirthInteger.SerializeJson(writer, options);
       }
 
       if ((Photo != null) && (Photo.Count != 0))
@@ -763,6 +830,11 @@ namespace fhirCsR4.Models
       {
         case "active":
           Active = reader.GetBoolean();
+          break;
+
+        case "_active":
+          _Active = new fhirCsR4.Models.Element();
+          _Active.DeserializeJson(ref reader, options);
           break;
 
         case "address":
@@ -857,6 +929,11 @@ namespace fhirCsR4.Models
 
         case "deceasedBoolean":
           DeceasedBoolean = reader.GetBoolean();
+          break;
+
+        case "_deceasedBoolean":
+          _DeceasedBoolean = new fhirCsR4.Models.Element();
+          _DeceasedBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "deceasedDateTime":
@@ -972,8 +1049,18 @@ namespace fhirCsR4.Models
           MultipleBirthBoolean = reader.GetBoolean();
           break;
 
+        case "_multipleBirthBoolean":
+          _MultipleBirthBoolean = new fhirCsR4.Models.Element();
+          _MultipleBirthBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "multipleBirthInteger":
           MultipleBirthInteger = reader.GetInt32();
+          break;
+
+        case "_multipleBirthInteger":
+          _MultipleBirthInteger = new fhirCsR4.Models.Element();
+          _MultipleBirthInteger.DeserializeJson(ref reader, options);
           break;
 
         case "name":
@@ -1096,5 +1183,11 @@ namespace fhirCsR4.Models
     public const string FEMALE = "female";
     public const string OTHER = "other";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "male",
+      "female",
+      "other",
+      "unknown",
+    };
   }
 }

@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: SubscriptionStatusActive
+    /// </summary>
+    public const string LiteralSubscriptionStatusActive = "http://hl7.org/fhir/subscription-status#active";
+
+    /// <summary>
     /// Literal for code: Error
     /// </summary>
     public const string LiteralError = "error";
+
+    /// <summary>
+    /// Literal for code: SubscriptionStatusError
+    /// </summary>
+    public const string LiteralSubscriptionStatusError = "http://hl7.org/fhir/subscription-status#error";
 
     /// <summary>
     /// Literal for code: Off
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOff = "off";
 
     /// <summary>
+    /// Literal for code: SubscriptionStatusOff
+    /// </summary>
+    public const string LiteralSubscriptionStatusOff = "http://hl7.org/fhir/subscription-status#off";
+
+    /// <summary>
     /// Literal for code: Requested
     /// </summary>
     public const string LiteralRequested = "requested";
+
+    /// <summary>
+    /// Literal for code: SubscriptionStatusRequested
+    /// </summary>
+    public const string LiteralSubscriptionStatusRequested = "http://hl7.org/fhir/subscription-status#requested";
+
+    /// <summary>
+    /// Dictionary for looking up SubscriptionStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/subscription-status#active", Active }, 
+      { "error", Error }, 
+      { "http://hl7.org/fhir/subscription-status#error", Error }, 
+      { "off", Off }, 
+      { "http://hl7.org/fhir/subscription-status#off", Off }, 
+      { "requested", Requested }, 
+      { "http://hl7.org/fhir/subscription-status#requested", Requested }, 
+    };
   };
 }

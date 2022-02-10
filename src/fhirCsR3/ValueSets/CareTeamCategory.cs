@@ -72,9 +72,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClinicalResearch = "clinical-research";
 
     /// <summary>
+    /// Literal for code: CareTeamCategoryClinicalResearch
+    /// </summary>
+    public const string LiteralCareTeamCategoryClinicalResearch = "http://hl7.org/fhir/care-team-category#clinical-research";
+
+    /// <summary>
     /// Literal for code: Condition
     /// </summary>
     public const string LiteralCondition = "condition";
+
+    /// <summary>
+    /// Literal for code: CareTeamCategoryCondition
+    /// </summary>
+    public const string LiteralCareTeamCategoryCondition = "http://hl7.org/fhir/care-team-category#condition";
 
     /// <summary>
     /// Literal for code: Encounter
@@ -82,9 +92,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEncounter = "encounter";
 
     /// <summary>
+    /// Literal for code: CareTeamCategoryEncounter
+    /// </summary>
+    public const string LiteralCareTeamCategoryEncounter = "http://hl7.org/fhir/care-team-category#encounter";
+
+    /// <summary>
     /// Literal for code: Episode
     /// </summary>
     public const string LiteralEpisode = "episode";
+
+    /// <summary>
+    /// Literal for code: CareTeamCategoryEpisode
+    /// </summary>
+    public const string LiteralCareTeamCategoryEpisode = "http://hl7.org/fhir/care-team-category#episode";
 
     /// <summary>
     /// Literal for code: Event
@@ -92,8 +112,36 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEvent = "event";
 
     /// <summary>
+    /// Literal for code: CareTeamCategoryEvent
+    /// </summary>
+    public const string LiteralCareTeamCategoryEvent = "http://hl7.org/fhir/care-team-category#event";
+
+    /// <summary>
     /// Literal for code: LongitudinalCareCoordination
     /// </summary>
     public const string LiteralLongitudinalCareCoordination = "longitudinal";
+
+    /// <summary>
+    /// Literal for code: CareTeamCategoryLongitudinalCareCoordination
+    /// </summary>
+    public const string LiteralCareTeamCategoryLongitudinalCareCoordination = "http://hl7.org/fhir/care-team-category#longitudinal";
+
+    /// <summary>
+    /// Dictionary for looking up CareTeamCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "clinical-research", ClinicalResearch }, 
+      { "http://hl7.org/fhir/care-team-category#clinical-research", ClinicalResearch }, 
+      { "condition", Condition }, 
+      { "http://hl7.org/fhir/care-team-category#condition", Condition }, 
+      { "encounter", Encounter }, 
+      { "http://hl7.org/fhir/care-team-category#encounter", Encounter }, 
+      { "episode", Episode }, 
+      { "http://hl7.org/fhir/care-team-category#episode", Episode }, 
+      { "event", Event }, 
+      { "http://hl7.org/fhir/care-team-category#event", Event }, 
+      { "longitudinal", LongitudinalCareCoordination }, 
+      { "http://hl7.org/fhir/care-team-category#longitudinal", LongitudinalCareCoordination }, 
+    };
   };
 }

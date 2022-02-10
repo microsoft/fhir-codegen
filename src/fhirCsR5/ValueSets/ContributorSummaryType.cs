@@ -81,9 +81,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAcknowledgmentList = "acknowledgement-list";
 
     /// <summary>
+    /// Literal for code: ContributorSummaryTypeAcknowledgmentList
+    /// </summary>
+    public const string LiteralContributorSummaryTypeAcknowledgmentList = "http://terminology.hl7.org/CodeSystem/contributor-summary-type#acknowledgement-list";
+
+    /// <summary>
     /// Literal for code: AcknowledgmentStatement
     /// </summary>
     public const string LiteralAcknowledgmentStatement = "acknowledgment-statement";
+
+    /// <summary>
+    /// Literal for code: ContributorSummaryTypeAcknowledgmentStatement
+    /// </summary>
+    public const string LiteralContributorSummaryTypeAcknowledgmentStatement = "http://terminology.hl7.org/CodeSystem/contributor-summary-type#acknowledgment-statement";
 
     /// <summary>
     /// Literal for code: AuthorString
@@ -91,9 +101,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAuthorString = "author-string";
 
     /// <summary>
+    /// Literal for code: ContributorSummaryTypeAuthorString
+    /// </summary>
+    public const string LiteralContributorSummaryTypeAuthorString = "http://terminology.hl7.org/CodeSystem/contributor-summary-type#author-string";
+
+    /// <summary>
     /// Literal for code: CompetingInterestsStatement
     /// </summary>
     public const string LiteralCompetingInterestsStatement = "competing-interests-statement";
+
+    /// <summary>
+    /// Literal for code: ContributorSummaryTypeCompetingInterestsStatement
+    /// </summary>
+    public const string LiteralContributorSummaryTypeCompetingInterestsStatement = "http://terminology.hl7.org/CodeSystem/contributor-summary-type#competing-interests-statement";
 
     /// <summary>
     /// Literal for code: ContributorshipList
@@ -101,13 +121,48 @@ namespace fhirCsR5.ValueSets
     public const string LiteralContributorshipList = "contributorship-list";
 
     /// <summary>
+    /// Literal for code: ContributorSummaryTypeContributorshipList
+    /// </summary>
+    public const string LiteralContributorSummaryTypeContributorshipList = "http://terminology.hl7.org/CodeSystem/contributor-summary-type#contributorship-list";
+
+    /// <summary>
     /// Literal for code: ContributorshipStatement
     /// </summary>
     public const string LiteralContributorshipStatement = "contributorship-statement";
 
     /// <summary>
+    /// Literal for code: ContributorSummaryTypeContributorshipStatement
+    /// </summary>
+    public const string LiteralContributorSummaryTypeContributorshipStatement = "http://terminology.hl7.org/CodeSystem/contributor-summary-type#contributorship-statement";
+
+    /// <summary>
     /// Literal for code: FundingStatement
     /// </summary>
     public const string LiteralFundingStatement = "funding-statement";
+
+    /// <summary>
+    /// Literal for code: ContributorSummaryTypeFundingStatement
+    /// </summary>
+    public const string LiteralContributorSummaryTypeFundingStatement = "http://terminology.hl7.org/CodeSystem/contributor-summary-type#funding-statement";
+
+    /// <summary>
+    /// Dictionary for looking up ContributorSummaryType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "acknowledgement-list", AcknowledgmentList }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-type#acknowledgement-list", AcknowledgmentList }, 
+      { "acknowledgment-statement", AcknowledgmentStatement }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-type#acknowledgment-statement", AcknowledgmentStatement }, 
+      { "author-string", AuthorString }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-type#author-string", AuthorString }, 
+      { "competing-interests-statement", CompetingInterestsStatement }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-type#competing-interests-statement", CompetingInterestsStatement }, 
+      { "contributorship-list", ContributorshipList }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-type#contributorship-list", ContributorshipList }, 
+      { "contributorship-statement", ContributorshipStatement }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-type#contributorship-statement", ContributorshipStatement }, 
+      { "funding-statement", FundingStatement }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-summary-type#funding-statement", FundingStatement }, 
+    };
   };
 }

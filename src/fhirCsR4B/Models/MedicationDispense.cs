@@ -121,6 +121,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool WasSubstituted { get; set; }
     /// <summary>
+    /// Extension container element for WasSubstituted
+    /// </summary>
+    public Element _WasSubstituted { get; set; }
+    /// <summary>
     /// Serialize to a JSON object
     /// </summary>
     public new void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
@@ -132,6 +136,12 @@ namespace fhirCsR4B.Models
       ((fhirCsR4B.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
       writer.WriteBoolean("wasSubstituted", WasSubstituted);
+
+      if (_WasSubstituted != null)
+      {
+        writer.WritePropertyName("_wasSubstituted");
+        _WasSubstituted.SerializeJson(writer, options);
+      }
 
       if (Type != null)
       {
@@ -238,6 +248,11 @@ namespace fhirCsR4B.Models
 
         case "wasSubstituted":
           WasSubstituted = reader.GetBoolean();
+          break;
+
+        case "_wasSubstituted":
+          _WasSubstituted = new fhirCsR4B.Models.Element();
+          _WasSubstituted.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -1073,5 +1088,16 @@ namespace fhirCsR4B.Models
     public const string STOPPED = "stopped";
     public const string DECLINED = "declined";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "preparation",
+      "in-progress",
+      "cancelled",
+      "on-hold",
+      "completed",
+      "entered-in-error",
+      "stopped",
+      "declined",
+      "unknown",
+    };
   }
 }

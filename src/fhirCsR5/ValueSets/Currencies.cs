@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class CurrenciesCodes
   {
     /// <summary>
-    /// 
+    /// United Arab Emirates dirham
     /// </summary>
     public static readonly Coding UnitedArabEmiratesDirham = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Afghan afghani
     /// </summary>
     public static readonly Coding AfghanAfghani = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Albanian lek
     /// </summary>
     public static readonly Coding AlbanianLek = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Armenian dram
     /// </summary>
     public static readonly Coding ArmenianDram = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Netherlands Antillean guilder
     /// </summary>
     public static readonly Coding NetherlandsAntilleanGuilder = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Angolan kwanza
     /// </summary>
     public static readonly Coding AngolanKwanza = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Argentine peso
     /// </summary>
     public static readonly Coding ArgentinePeso = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Australian dollar
     /// </summary>
     public static readonly Coding AustralianDollar = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Aruban florin
     /// </summary>
     public static readonly Coding ArubanFlorin = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Azerbaijani manat
     /// </summary>
     public static readonly Coding AzerbaijaniManat = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Bosnia and Herzegovina convertible mark
     /// </summary>
     public static readonly Coding BosniaAndHerzegovinaConvertibleMark = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Barbados dollar
     /// </summary>
     public static readonly Coding BarbadosDollar = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Bangladeshi taka
     /// </summary>
     public static readonly Coding BangladeshiTaka = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Bulgarian lev
     /// </summary>
     public static readonly Coding BulgarianLev = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Bahraini dinar
     /// </summary>
     public static readonly Coding BahrainiDinar = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Burundian franc
     /// </summary>
     public static readonly Coding BurundianFranc = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Bermudian dollar
     /// </summary>
     public static readonly Coding BermudianDollar = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Brunei dollar
     /// </summary>
     public static readonly Coding BruneiDollar = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Boliviano
     /// </summary>
     public static readonly Coding Boliviano = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Bolivian Mvdol (funds code)
     /// </summary>
     public static readonly Coding BolivianMvdolFundsCode = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Brazilian real
     /// </summary>
     public static readonly Coding BrazilianReal = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Bahamian dollar
     /// </summary>
     public static readonly Coding BahamianDollar = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Bhutanese ngultrum
     /// </summary>
     public static readonly Coding BhutaneseNgultrum = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Botswana pula
     /// </summary>
     public static readonly Coding BotswanaPula = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Belarusian ruble
     /// </summary>
     public static readonly Coding BelarusianRuble = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Belize dollar
     /// </summary>
     public static readonly Coding BelizeDollar = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Canadian dollar
     /// </summary>
     public static readonly Coding CanadianDollar = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Congolese franc
     /// </summary>
     public static readonly Coding CongoleseFranc = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// WIR Euro (complementary currency)
     /// </summary>
     public static readonly Coding WIREuroComplementaryCurrency = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Swiss franc
     /// </summary>
     public static readonly Coding SwissFranc = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// WIR Franc (complementary currency)
     /// </summary>
     public static readonly Coding WIRFrancComplementaryCurrency = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Unidad de Fomento (funds code)
     /// </summary>
     public static readonly Coding UnidadDeFomentoFundsCode = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Chilean peso
     /// </summary>
     public static readonly Coding ChileanPeso = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Renminbi (Chinese) yuan[8]
     /// </summary>
     public static readonly Coding RenminbiChineseYuan8 = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Colombian peso
     /// </summary>
     public static readonly Coding ColombianPeso = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Unidad de Valor Real (UVR) (funds code)[9]
     /// </summary>
     public static readonly Coding UnidadDeValorRealUVRFundsCode9 = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Costa Rican colon
     /// </summary>
     public static readonly Coding CostaRicanColon = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Cuban convertible peso
     /// </summary>
     public static readonly Coding CubanConvertiblePeso = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Cuban peso
     /// </summary>
     public static readonly Coding CubanPeso = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Cape Verde escudo
     /// </summary>
     public static readonly Coding CapeVerdeEscudo = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Czech koruna
     /// </summary>
     public static readonly Coding CzechKoruna = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Djiboutian franc
     /// </summary>
     public static readonly Coding DjiboutianFranc = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Danish krone
     /// </summary>
     public static readonly Coding DanishKrone = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Dominican peso
     /// </summary>
     public static readonly Coding DominicanPeso = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Algerian dinar
     /// </summary>
     public static readonly Coding AlgerianDinar = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Egyptian pound
     /// </summary>
     public static readonly Coding EgyptianPound = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Eritrean nakfa
     /// </summary>
     public static readonly Coding EritreanNakfa = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Ethiopian birr
     /// </summary>
     public static readonly Coding EthiopianBirr = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Euro
     /// </summary>
     public static readonly Coding Euro = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Fiji dollar
     /// </summary>
     public static readonly Coding FijiDollar = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Falkland Islands pound
     /// </summary>
     public static readonly Coding FalklandIslandsPound = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Pound sterling
     /// </summary>
     public static readonly Coding PoundSterling = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Georgian lari
     /// </summary>
     public static readonly Coding GeorgianLari = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Guernsey Pound
     /// </summary>
     public static readonly Coding GuernseyPound = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Ghanaian cedi
     /// </summary>
     public static readonly Coding GhanaianCedi = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Gibraltar pound
     /// </summary>
     public static readonly Coding GibraltarPound = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Gambian dalasi
     /// </summary>
     public static readonly Coding GambianDalasi = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Guinean franc
     /// </summary>
     public static readonly Coding GuineanFranc = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Guatemalan quetzal
     /// </summary>
     public static readonly Coding GuatemalanQuetzal = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Guyanese dollar
     /// </summary>
     public static readonly Coding GuyaneseDollar = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Hong Kong dollar
     /// </summary>
     public static readonly Coding HongKongDollar = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Honduran lempira
     /// </summary>
     public static readonly Coding HonduranLempira = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Croatian kuna
     /// </summary>
     public static readonly Coding CroatianKuna = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Haitian gourde
     /// </summary>
     public static readonly Coding HaitianGourde = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Hungarian forint
     /// </summary>
     public static readonly Coding HungarianForint = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Indonesian rupiah
     /// </summary>
     public static readonly Coding IndonesianRupiah = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Israeli new shekel
     /// </summary>
     public static readonly Coding IsraeliNewShekel = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Isle of Man Pound
     /// </summary>
     public static readonly Coding IsleOfManPound = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Indian rupee
     /// </summary>
     public static readonly Coding IndianRupee = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Iraqi dinar
     /// </summary>
     public static readonly Coding IraqiDinar = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Iranian rial
     /// </summary>
     public static readonly Coding IranianRial = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Icelandic króna
     /// </summary>
     public static readonly Coding IcelandicKrona = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Jersey Pound
     /// </summary>
     public static readonly Coding JerseyPound = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Jamaican dollar
     /// </summary>
     public static readonly Coding JamaicanDollar = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Jordanian dinar
     /// </summary>
     public static readonly Coding JordanianDinar = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Japanese yen
     /// </summary>
     public static readonly Coding JapaneseYen = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Kenyan shilling
     /// </summary>
     public static readonly Coding KenyanShilling = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Kyrgyzstani som
     /// </summary>
     public static readonly Coding KyrgyzstaniSom = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Cambodian riel
     /// </summary>
     public static readonly Coding CambodianRiel = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Comoro franc
     /// </summary>
     public static readonly Coding ComoroFranc = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// North Korean won
     /// </summary>
     public static readonly Coding NorthKoreanWon = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// South Korean won
     /// </summary>
     public static readonly Coding SouthKoreanWon = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Kuwaiti dinar
     /// </summary>
     public static readonly Coding KuwaitiDinar = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Cayman Islands dollar
     /// </summary>
     public static readonly Coding CaymanIslandsDollar = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Kazakhstani tenge
     /// </summary>
     public static readonly Coding KazakhstaniTenge = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Lao kip
     /// </summary>
     public static readonly Coding LaoKip = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Lebanese pound
     /// </summary>
     public static readonly Coding LebanesePound = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Sri Lankan rupee
     /// </summary>
     public static readonly Coding SriLankanRupee = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Liberian dollar
     /// </summary>
     public static readonly Coding LiberianDollar = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Lesotho loti
     /// </summary>
     public static readonly Coding LesothoLoti = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Libyan dinar
     /// </summary>
     public static readonly Coding LibyanDinar = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Moroccan dirham
     /// </summary>
     public static readonly Coding MoroccanDirham = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Moldovan leu
     /// </summary>
     public static readonly Coding MoldovanLeu = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Malagasy ariary
     /// </summary>
     public static readonly Coding MalagasyAriary = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Macedonian denar
     /// </summary>
     public static readonly Coding MacedonianDenar = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Myanmar kyat
     /// </summary>
     public static readonly Coding MyanmarKyat = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Mongolian tögrög
     /// </summary>
     public static readonly Coding MongolianTogrog = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Macanese pataca
     /// </summary>
     public static readonly Coding MacanesePataca = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Mauritanian ouguiya
     /// </summary>
     public static readonly Coding MauritanianOuguiya = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Mauritian rupee
     /// </summary>
     public static readonly Coding MauritianRupee = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Maldivian rufiyaa
     /// </summary>
     public static readonly Coding MaldivianRufiyaa = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Malawian kwacha
     /// </summary>
     public static readonly Coding MalawianKwacha = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Mexican peso
     /// </summary>
     public static readonly Coding MexicanPeso = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Mexican Unidad de Inversion (UDI) (funds code)
     /// </summary>
     public static readonly Coding MexicanUnidadDeInversionUDIFundsCode = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Malaysian ringgit
     /// </summary>
     public static readonly Coding MalaysianRinggit = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Mozambican metical
     /// </summary>
     public static readonly Coding MozambicanMetical = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Namibian dollar
     /// </summary>
     public static readonly Coding NamibianDollar = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Nigerian naira
     /// </summary>
     public static readonly Coding NigerianNaira = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Nicaraguan córdoba
     /// </summary>
     public static readonly Coding NicaraguanCordoba = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Norwegian krone
     /// </summary>
     public static readonly Coding NorwegianKrone = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Nepalese rupee
     /// </summary>
     public static readonly Coding NepaleseRupee = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// New Zealand dollar
     /// </summary>
     public static readonly Coding NewZealandDollar = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Omani rial
     /// </summary>
     public static readonly Coding OmaniRial = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Panamanian balboa
     /// </summary>
     public static readonly Coding PanamanianBalboa = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Peruvian Sol
     /// </summary>
     public static readonly Coding PeruvianSol = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Papua New Guinean kina
     /// </summary>
     public static readonly Coding PapuaNewGuineanKina = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Philippine piso[13]
     /// </summary>
     public static readonly Coding PhilippinePiso13 = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Pakistani rupee
     /// </summary>
     public static readonly Coding PakistaniRupee = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Polish złoty
     /// </summary>
     public static readonly Coding PolishZłoty = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Paraguayan guaraní
     /// </summary>
     public static readonly Coding ParaguayanGuarani = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Qatari riyal
     /// </summary>
     public static readonly Coding QatariRiyal = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Romanian leu
     /// </summary>
     public static readonly Coding RomanianLeu = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Serbian dinar
     /// </summary>
     public static readonly Coding SerbianDinar = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Russian ruble
     /// </summary>
     public static readonly Coding RussianRuble = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Rwandan franc
     /// </summary>
     public static readonly Coding RwandanFranc = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Saudi riyal
     /// </summary>
     public static readonly Coding SaudiRiyal = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Solomon Islands dollar
     /// </summary>
     public static readonly Coding SolomonIslandsDollar = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Seychelles rupee
     /// </summary>
     public static readonly Coding SeychellesRupee = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Sudanese pound
     /// </summary>
     public static readonly Coding SudanesePound = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Swedish krona/kronor
     /// </summary>
     public static readonly Coding SwedishKronaKronor = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Singapore dollar
     /// </summary>
     public static readonly Coding SingaporeDollar = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Saint Helena pound
     /// </summary>
     public static readonly Coding SaintHelenaPound = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Sierra Leonean leone
     /// </summary>
     public static readonly Coding SierraLeoneanLeone = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Somali shilling
     /// </summary>
     public static readonly Coding SomaliShilling = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Surinamese dollar
     /// </summary>
     public static readonly Coding SurinameseDollar = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// South Sudanese pound
     /// </summary>
     public static readonly Coding SouthSudanesePound = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// São Tomé and Príncipe dobra
     /// </summary>
     public static readonly Coding SaoTomeAndPrincipeDobra = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Salvadoran colón
     /// </summary>
     public static readonly Coding SalvadoranColon = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Syrian pound
     /// </summary>
     public static readonly Coding SyrianPound = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Swazi lilangeni
     /// </summary>
     public static readonly Coding SwaziLilangeni = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Thai baht
     /// </summary>
     public static readonly Coding ThaiBaht = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Tajikistani somoni
     /// </summary>
     public static readonly Coding TajikistaniSomoni = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Turkmenistan manat
     /// </summary>
     public static readonly Coding TurkmenistanManat = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Tunisian dinar
     /// </summary>
     public static readonly Coding TunisianDinar = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Tongan paʻanga
     /// </summary>
     public static readonly Coding TonganPaanga = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Turkish lira
     /// </summary>
     public static readonly Coding TurkishLira = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Trinidad and Tobago dollar
     /// </summary>
     public static readonly Coding TrinidadAndTobagoDollar = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Tuvalu Dollar
     /// </summary>
     public static readonly Coding TuvaluDollar = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// New Taiwan dollar
     /// </summary>
     public static readonly Coding NewTaiwanDollar = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Tanzanian shilling
     /// </summary>
     public static readonly Coding TanzanianShilling = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Ukrainian hryvnia
     /// </summary>
     public static readonly Coding UkrainianHryvnia = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Ugandan shilling
     /// </summary>
     public static readonly Coding UgandanShilling = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// United States dollar
     /// </summary>
     public static readonly Coding UnitedStatesDollar = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// United States dollar (next day) (funds code)
     /// </summary>
     public static readonly Coding UnitedStatesDollarNextDayFundsCode = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Uruguay Peso en Unidades Indexadas (URUIURUI) (funds code)
     /// </summary>
     public static readonly Coding UruguayPesoEnUnidadesIndexadasURUIURUIFundsCode = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Uruguayan peso
     /// </summary>
     public static readonly Coding UruguayanPeso = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Uzbekistan som
     /// </summary>
     public static readonly Coding UzbekistanSom = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Venezuelan bolívar
     /// </summary>
     public static readonly Coding VenezuelanBolivar = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Vietnamese đồng
     /// </summary>
     public static readonly Coding VietnameseĐong = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Vanuatu vatu
     /// </summary>
     public static readonly Coding VanuatuVatu = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Samoan tala
     /// </summary>
     public static readonly Coding SamoanTala = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// CFA franc BEAC
     /// </summary>
     public static readonly Coding CFAFrancBEAC = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Silver (one troy ounce)
     /// </summary>
     public static readonly Coding SilverOneTroyOunce = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Gold (one troy ounce)
     /// </summary>
     public static readonly Coding GoldOneTroyOunce = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// European Composite Unit (EURCO) (bond market unit)
     /// </summary>
     public static readonly Coding EuropeanCompositeUnitEURCOBondMarketUnit = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// European Monetary Unit (E.M.U.-6) (bond market unit)
     /// </summary>
     public static readonly Coding EuropeanMonetaryUnitEMU6BondMarketUnit = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// European Unit of Account 9 (E.U.A.-9) (bond market unit)
     /// </summary>
     public static readonly Coding EuropeanUnitOfAccount9EUA9BondMarketUnit = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// European Unit of Account 17 (E.U.A.-17) (bond market unit)
     /// </summary>
     public static readonly Coding EuropeanUnitOfAccount17EUA17BondMarketUnit = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// East Caribbean dollar
     /// </summary>
     public static readonly Coding EastCaribbeanDollar = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Special drawing rights
     /// </summary>
     public static readonly Coding SpecialDrawingRights = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// CFA franc BCEAO
     /// </summary>
     public static readonly Coding CFAFrancBCEAO = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Palladium (one troy ounce)
     /// </summary>
     public static readonly Coding PalladiumOneTroyOunce = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// CFP franc (franc Pacifique)
     /// </summary>
     public static readonly Coding CFPFrancFrancPacifique = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Platinum (one troy ounce)
     /// </summary>
     public static readonly Coding PlatinumOneTroyOunce = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// SUCRE
     /// </summary>
     public static readonly Coding SUCRE = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Code reserved for testing purposes
     /// </summary>
     public static readonly Coding CodeReservedForTestingPurposes = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// ADB Unit of Account
     /// </summary>
     public static readonly Coding ADBUnitOfAccount = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// No currency
     /// </summary>
     public static readonly Coding NoCurrency = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Yemeni rial
     /// </summary>
     public static readonly Coding YemeniRial = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// South African rand
     /// </summary>
     public static readonly Coding SouthAfricanRand = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Zambian kwacha
     /// </summary>
     public static readonly Coding ZambianKwacha = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR5.ValueSets
       System = "urn:iso:std:iso:4217"
     };
     /// <summary>
-    /// 
+    /// Zimbabwean dollar A/10
     /// </summary>
     public static readonly Coding ZimbabweanDollarA10 = new Coding
     {
@@ -1656,9 +1656,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUnitedArabEmiratesDirham = "AED";
 
     /// <summary>
+    /// Literal for code: NONEUnitedArabEmiratesDirham
+    /// </summary>
+    public const string LiteralNONEUnitedArabEmiratesDirham = "urn:iso:std:iso:4217#AED";
+
+    /// <summary>
     /// Literal for code: AfghanAfghani
     /// </summary>
     public const string LiteralAfghanAfghani = "AFN";
+
+    /// <summary>
+    /// Literal for code: NONEAfghanAfghani
+    /// </summary>
+    public const string LiteralNONEAfghanAfghani = "urn:iso:std:iso:4217#AFN";
 
     /// <summary>
     /// Literal for code: AlbanianLek
@@ -1666,9 +1676,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAlbanianLek = "ALL";
 
     /// <summary>
+    /// Literal for code: NONEAlbanianLek
+    /// </summary>
+    public const string LiteralNONEAlbanianLek = "urn:iso:std:iso:4217#ALL";
+
+    /// <summary>
     /// Literal for code: ArmenianDram
     /// </summary>
     public const string LiteralArmenianDram = "AMD";
+
+    /// <summary>
+    /// Literal for code: NONEArmenianDram
+    /// </summary>
+    public const string LiteralNONEArmenianDram = "urn:iso:std:iso:4217#AMD";
 
     /// <summary>
     /// Literal for code: NetherlandsAntilleanGuilder
@@ -1676,9 +1696,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNetherlandsAntilleanGuilder = "ANG";
 
     /// <summary>
+    /// Literal for code: NONENetherlandsAntilleanGuilder
+    /// </summary>
+    public const string LiteralNONENetherlandsAntilleanGuilder = "urn:iso:std:iso:4217#ANG";
+
+    /// <summary>
     /// Literal for code: AngolanKwanza
     /// </summary>
     public const string LiteralAngolanKwanza = "AOA";
+
+    /// <summary>
+    /// Literal for code: NONEAngolanKwanza
+    /// </summary>
+    public const string LiteralNONEAngolanKwanza = "urn:iso:std:iso:4217#AOA";
 
     /// <summary>
     /// Literal for code: ArgentinePeso
@@ -1686,9 +1716,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralArgentinePeso = "ARS";
 
     /// <summary>
+    /// Literal for code: NONEArgentinePeso
+    /// </summary>
+    public const string LiteralNONEArgentinePeso = "urn:iso:std:iso:4217#ARS";
+
+    /// <summary>
     /// Literal for code: AustralianDollar
     /// </summary>
     public const string LiteralAustralianDollar = "AUD";
+
+    /// <summary>
+    /// Literal for code: NONEAustralianDollar
+    /// </summary>
+    public const string LiteralNONEAustralianDollar = "urn:iso:std:iso:4217#AUD";
 
     /// <summary>
     /// Literal for code: ArubanFlorin
@@ -1696,9 +1736,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralArubanFlorin = "AWG";
 
     /// <summary>
+    /// Literal for code: NONEArubanFlorin
+    /// </summary>
+    public const string LiteralNONEArubanFlorin = "urn:iso:std:iso:4217#AWG";
+
+    /// <summary>
     /// Literal for code: AzerbaijaniManat
     /// </summary>
     public const string LiteralAzerbaijaniManat = "AZN";
+
+    /// <summary>
+    /// Literal for code: NONEAzerbaijaniManat
+    /// </summary>
+    public const string LiteralNONEAzerbaijaniManat = "urn:iso:std:iso:4217#AZN";
 
     /// <summary>
     /// Literal for code: BosniaAndHerzegovinaConvertibleMark
@@ -1706,9 +1756,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBosniaAndHerzegovinaConvertibleMark = "BAM";
 
     /// <summary>
+    /// Literal for code: NONEBosniaAndHerzegovinaConvertibleMark
+    /// </summary>
+    public const string LiteralNONEBosniaAndHerzegovinaConvertibleMark = "urn:iso:std:iso:4217#BAM";
+
+    /// <summary>
     /// Literal for code: BarbadosDollar
     /// </summary>
     public const string LiteralBarbadosDollar = "BBD";
+
+    /// <summary>
+    /// Literal for code: NONEBarbadosDollar
+    /// </summary>
+    public const string LiteralNONEBarbadosDollar = "urn:iso:std:iso:4217#BBD";
 
     /// <summary>
     /// Literal for code: BangladeshiTaka
@@ -1716,9 +1776,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBangladeshiTaka = "BDT";
 
     /// <summary>
+    /// Literal for code: NONEBangladeshiTaka
+    /// </summary>
+    public const string LiteralNONEBangladeshiTaka = "urn:iso:std:iso:4217#BDT";
+
+    /// <summary>
     /// Literal for code: BulgarianLev
     /// </summary>
     public const string LiteralBulgarianLev = "BGN";
+
+    /// <summary>
+    /// Literal for code: NONEBulgarianLev
+    /// </summary>
+    public const string LiteralNONEBulgarianLev = "urn:iso:std:iso:4217#BGN";
 
     /// <summary>
     /// Literal for code: BahrainiDinar
@@ -1726,9 +1796,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBahrainiDinar = "BHD";
 
     /// <summary>
+    /// Literal for code: NONEBahrainiDinar
+    /// </summary>
+    public const string LiteralNONEBahrainiDinar = "urn:iso:std:iso:4217#BHD";
+
+    /// <summary>
     /// Literal for code: BurundianFranc
     /// </summary>
     public const string LiteralBurundianFranc = "BIF";
+
+    /// <summary>
+    /// Literal for code: NONEBurundianFranc
+    /// </summary>
+    public const string LiteralNONEBurundianFranc = "urn:iso:std:iso:4217#BIF";
 
     /// <summary>
     /// Literal for code: BermudianDollar
@@ -1736,9 +1816,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBermudianDollar = "BMD";
 
     /// <summary>
+    /// Literal for code: NONEBermudianDollar
+    /// </summary>
+    public const string LiteralNONEBermudianDollar = "urn:iso:std:iso:4217#BMD";
+
+    /// <summary>
     /// Literal for code: BruneiDollar
     /// </summary>
     public const string LiteralBruneiDollar = "BND";
+
+    /// <summary>
+    /// Literal for code: NONEBruneiDollar
+    /// </summary>
+    public const string LiteralNONEBruneiDollar = "urn:iso:std:iso:4217#BND";
 
     /// <summary>
     /// Literal for code: Boliviano
@@ -1746,9 +1836,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBoliviano = "BOB";
 
     /// <summary>
+    /// Literal for code: NONEBoliviano
+    /// </summary>
+    public const string LiteralNONEBoliviano = "urn:iso:std:iso:4217#BOB";
+
+    /// <summary>
     /// Literal for code: BolivianMvdolFundsCode
     /// </summary>
     public const string LiteralBolivianMvdolFundsCode = "BOV";
+
+    /// <summary>
+    /// Literal for code: NONEBolivianMvdolFundsCode
+    /// </summary>
+    public const string LiteralNONEBolivianMvdolFundsCode = "urn:iso:std:iso:4217#BOV";
 
     /// <summary>
     /// Literal for code: BrazilianReal
@@ -1756,9 +1856,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBrazilianReal = "BRL";
 
     /// <summary>
+    /// Literal for code: NONEBrazilianReal
+    /// </summary>
+    public const string LiteralNONEBrazilianReal = "urn:iso:std:iso:4217#BRL";
+
+    /// <summary>
     /// Literal for code: BahamianDollar
     /// </summary>
     public const string LiteralBahamianDollar = "BSD";
+
+    /// <summary>
+    /// Literal for code: NONEBahamianDollar
+    /// </summary>
+    public const string LiteralNONEBahamianDollar = "urn:iso:std:iso:4217#BSD";
 
     /// <summary>
     /// Literal for code: BhutaneseNgultrum
@@ -1766,9 +1876,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBhutaneseNgultrum = "BTN";
 
     /// <summary>
+    /// Literal for code: NONEBhutaneseNgultrum
+    /// </summary>
+    public const string LiteralNONEBhutaneseNgultrum = "urn:iso:std:iso:4217#BTN";
+
+    /// <summary>
     /// Literal for code: BotswanaPula
     /// </summary>
     public const string LiteralBotswanaPula = "BWP";
+
+    /// <summary>
+    /// Literal for code: NONEBotswanaPula
+    /// </summary>
+    public const string LiteralNONEBotswanaPula = "urn:iso:std:iso:4217#BWP";
 
     /// <summary>
     /// Literal for code: BelarusianRuble
@@ -1776,9 +1896,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBelarusianRuble = "BYN";
 
     /// <summary>
+    /// Literal for code: NONEBelarusianRuble
+    /// </summary>
+    public const string LiteralNONEBelarusianRuble = "urn:iso:std:iso:4217#BYN";
+
+    /// <summary>
     /// Literal for code: BelizeDollar
     /// </summary>
     public const string LiteralBelizeDollar = "BZD";
+
+    /// <summary>
+    /// Literal for code: NONEBelizeDollar
+    /// </summary>
+    public const string LiteralNONEBelizeDollar = "urn:iso:std:iso:4217#BZD";
 
     /// <summary>
     /// Literal for code: CanadianDollar
@@ -1786,9 +1916,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCanadianDollar = "CAD";
 
     /// <summary>
+    /// Literal for code: NONECanadianDollar
+    /// </summary>
+    public const string LiteralNONECanadianDollar = "urn:iso:std:iso:4217#CAD";
+
+    /// <summary>
     /// Literal for code: CongoleseFranc
     /// </summary>
     public const string LiteralCongoleseFranc = "CDF";
+
+    /// <summary>
+    /// Literal for code: NONECongoleseFranc
+    /// </summary>
+    public const string LiteralNONECongoleseFranc = "urn:iso:std:iso:4217#CDF";
 
     /// <summary>
     /// Literal for code: WIREuroComplementaryCurrency
@@ -1796,9 +1936,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWIREuroComplementaryCurrency = "CHE";
 
     /// <summary>
+    /// Literal for code: NONEWIREuroComplementaryCurrency
+    /// </summary>
+    public const string LiteralNONEWIREuroComplementaryCurrency = "urn:iso:std:iso:4217#CHE";
+
+    /// <summary>
     /// Literal for code: SwissFranc
     /// </summary>
     public const string LiteralSwissFranc = "CHF";
+
+    /// <summary>
+    /// Literal for code: NONESwissFranc
+    /// </summary>
+    public const string LiteralNONESwissFranc = "urn:iso:std:iso:4217#CHF";
 
     /// <summary>
     /// Literal for code: WIRFrancComplementaryCurrency
@@ -1806,9 +1956,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralWIRFrancComplementaryCurrency = "CHW";
 
     /// <summary>
+    /// Literal for code: NONEWIRFrancComplementaryCurrency
+    /// </summary>
+    public const string LiteralNONEWIRFrancComplementaryCurrency = "urn:iso:std:iso:4217#CHW";
+
+    /// <summary>
     /// Literal for code: UnidadDeFomentoFundsCode
     /// </summary>
     public const string LiteralUnidadDeFomentoFundsCode = "CLF";
+
+    /// <summary>
+    /// Literal for code: NONEUnidadDeFomentoFundsCode
+    /// </summary>
+    public const string LiteralNONEUnidadDeFomentoFundsCode = "urn:iso:std:iso:4217#CLF";
 
     /// <summary>
     /// Literal for code: ChileanPeso
@@ -1816,9 +1976,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChileanPeso = "CLP";
 
     /// <summary>
+    /// Literal for code: NONEChileanPeso
+    /// </summary>
+    public const string LiteralNONEChileanPeso = "urn:iso:std:iso:4217#CLP";
+
+    /// <summary>
     /// Literal for code: RenminbiChineseYuan8
     /// </summary>
     public const string LiteralRenminbiChineseYuan8 = "CNY";
+
+    /// <summary>
+    /// Literal for code: NONERenminbiChineseYuan8
+    /// </summary>
+    public const string LiteralNONERenminbiChineseYuan8 = "urn:iso:std:iso:4217#CNY";
 
     /// <summary>
     /// Literal for code: ColombianPeso
@@ -1826,9 +1996,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralColombianPeso = "COP";
 
     /// <summary>
+    /// Literal for code: NONEColombianPeso
+    /// </summary>
+    public const string LiteralNONEColombianPeso = "urn:iso:std:iso:4217#COP";
+
+    /// <summary>
     /// Literal for code: UnidadDeValorRealUVRFundsCode9
     /// </summary>
     public const string LiteralUnidadDeValorRealUVRFundsCode9 = "COU";
+
+    /// <summary>
+    /// Literal for code: NONEUnidadDeValorRealUVRFundsCode9
+    /// </summary>
+    public const string LiteralNONEUnidadDeValorRealUVRFundsCode9 = "urn:iso:std:iso:4217#COU";
 
     /// <summary>
     /// Literal for code: CostaRicanColon
@@ -1836,9 +2016,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCostaRicanColon = "CRC";
 
     /// <summary>
+    /// Literal for code: NONECostaRicanColon
+    /// </summary>
+    public const string LiteralNONECostaRicanColon = "urn:iso:std:iso:4217#CRC";
+
+    /// <summary>
     /// Literal for code: CubanConvertiblePeso
     /// </summary>
     public const string LiteralCubanConvertiblePeso = "CUC";
+
+    /// <summary>
+    /// Literal for code: NONECubanConvertiblePeso
+    /// </summary>
+    public const string LiteralNONECubanConvertiblePeso = "urn:iso:std:iso:4217#CUC";
 
     /// <summary>
     /// Literal for code: CubanPeso
@@ -1846,9 +2036,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCubanPeso = "CUP";
 
     /// <summary>
+    /// Literal for code: NONECubanPeso
+    /// </summary>
+    public const string LiteralNONECubanPeso = "urn:iso:std:iso:4217#CUP";
+
+    /// <summary>
     /// Literal for code: CapeVerdeEscudo
     /// </summary>
     public const string LiteralCapeVerdeEscudo = "CVE";
+
+    /// <summary>
+    /// Literal for code: NONECapeVerdeEscudo
+    /// </summary>
+    public const string LiteralNONECapeVerdeEscudo = "urn:iso:std:iso:4217#CVE";
 
     /// <summary>
     /// Literal for code: CzechKoruna
@@ -1856,9 +2056,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCzechKoruna = "CZK";
 
     /// <summary>
+    /// Literal for code: NONECzechKoruna
+    /// </summary>
+    public const string LiteralNONECzechKoruna = "urn:iso:std:iso:4217#CZK";
+
+    /// <summary>
     /// Literal for code: DjiboutianFranc
     /// </summary>
     public const string LiteralDjiboutianFranc = "DJF";
+
+    /// <summary>
+    /// Literal for code: NONEDjiboutianFranc
+    /// </summary>
+    public const string LiteralNONEDjiboutianFranc = "urn:iso:std:iso:4217#DJF";
 
     /// <summary>
     /// Literal for code: DanishKrone
@@ -1866,9 +2076,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDanishKrone = "DKK";
 
     /// <summary>
+    /// Literal for code: NONEDanishKrone
+    /// </summary>
+    public const string LiteralNONEDanishKrone = "urn:iso:std:iso:4217#DKK";
+
+    /// <summary>
     /// Literal for code: DominicanPeso
     /// </summary>
     public const string LiteralDominicanPeso = "DOP";
+
+    /// <summary>
+    /// Literal for code: NONEDominicanPeso
+    /// </summary>
+    public const string LiteralNONEDominicanPeso = "urn:iso:std:iso:4217#DOP";
 
     /// <summary>
     /// Literal for code: AlgerianDinar
@@ -1876,9 +2096,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAlgerianDinar = "DZD";
 
     /// <summary>
+    /// Literal for code: NONEAlgerianDinar
+    /// </summary>
+    public const string LiteralNONEAlgerianDinar = "urn:iso:std:iso:4217#DZD";
+
+    /// <summary>
     /// Literal for code: EgyptianPound
     /// </summary>
     public const string LiteralEgyptianPound = "EGP";
+
+    /// <summary>
+    /// Literal for code: NONEEgyptianPound
+    /// </summary>
+    public const string LiteralNONEEgyptianPound = "urn:iso:std:iso:4217#EGP";
 
     /// <summary>
     /// Literal for code: EritreanNakfa
@@ -1886,9 +2116,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEritreanNakfa = "ERN";
 
     /// <summary>
+    /// Literal for code: NONEEritreanNakfa
+    /// </summary>
+    public const string LiteralNONEEritreanNakfa = "urn:iso:std:iso:4217#ERN";
+
+    /// <summary>
     /// Literal for code: EthiopianBirr
     /// </summary>
     public const string LiteralEthiopianBirr = "ETB";
+
+    /// <summary>
+    /// Literal for code: NONEEthiopianBirr
+    /// </summary>
+    public const string LiteralNONEEthiopianBirr = "urn:iso:std:iso:4217#ETB";
 
     /// <summary>
     /// Literal for code: Euro
@@ -1896,9 +2136,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEuro = "EUR";
 
     /// <summary>
+    /// Literal for code: NONEEuro
+    /// </summary>
+    public const string LiteralNONEEuro = "urn:iso:std:iso:4217#EUR";
+
+    /// <summary>
     /// Literal for code: FijiDollar
     /// </summary>
     public const string LiteralFijiDollar = "FJD";
+
+    /// <summary>
+    /// Literal for code: NONEFijiDollar
+    /// </summary>
+    public const string LiteralNONEFijiDollar = "urn:iso:std:iso:4217#FJD";
 
     /// <summary>
     /// Literal for code: FalklandIslandsPound
@@ -1906,9 +2156,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFalklandIslandsPound = "FKP";
 
     /// <summary>
+    /// Literal for code: NONEFalklandIslandsPound
+    /// </summary>
+    public const string LiteralNONEFalklandIslandsPound = "urn:iso:std:iso:4217#FKP";
+
+    /// <summary>
     /// Literal for code: PoundSterling
     /// </summary>
     public const string LiteralPoundSterling = "GBP";
+
+    /// <summary>
+    /// Literal for code: NONEPoundSterling
+    /// </summary>
+    public const string LiteralNONEPoundSterling = "urn:iso:std:iso:4217#GBP";
 
     /// <summary>
     /// Literal for code: GeorgianLari
@@ -1916,9 +2176,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGeorgianLari = "GEL";
 
     /// <summary>
+    /// Literal for code: NONEGeorgianLari
+    /// </summary>
+    public const string LiteralNONEGeorgianLari = "urn:iso:std:iso:4217#GEL";
+
+    /// <summary>
     /// Literal for code: GuernseyPound
     /// </summary>
     public const string LiteralGuernseyPound = "GGP";
+
+    /// <summary>
+    /// Literal for code: NONEGuernseyPound
+    /// </summary>
+    public const string LiteralNONEGuernseyPound = "urn:iso:std:iso:4217#GGP";
 
     /// <summary>
     /// Literal for code: GhanaianCedi
@@ -1926,9 +2196,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGhanaianCedi = "GHS";
 
     /// <summary>
+    /// Literal for code: NONEGhanaianCedi
+    /// </summary>
+    public const string LiteralNONEGhanaianCedi = "urn:iso:std:iso:4217#GHS";
+
+    /// <summary>
     /// Literal for code: GibraltarPound
     /// </summary>
     public const string LiteralGibraltarPound = "GIP";
+
+    /// <summary>
+    /// Literal for code: NONEGibraltarPound
+    /// </summary>
+    public const string LiteralNONEGibraltarPound = "urn:iso:std:iso:4217#GIP";
 
     /// <summary>
     /// Literal for code: GambianDalasi
@@ -1936,9 +2216,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGambianDalasi = "GMD";
 
     /// <summary>
+    /// Literal for code: NONEGambianDalasi
+    /// </summary>
+    public const string LiteralNONEGambianDalasi = "urn:iso:std:iso:4217#GMD";
+
+    /// <summary>
     /// Literal for code: GuineanFranc
     /// </summary>
     public const string LiteralGuineanFranc = "GNF";
+
+    /// <summary>
+    /// Literal for code: NONEGuineanFranc
+    /// </summary>
+    public const string LiteralNONEGuineanFranc = "urn:iso:std:iso:4217#GNF";
 
     /// <summary>
     /// Literal for code: GuatemalanQuetzal
@@ -1946,9 +2236,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGuatemalanQuetzal = "GTQ";
 
     /// <summary>
+    /// Literal for code: NONEGuatemalanQuetzal
+    /// </summary>
+    public const string LiteralNONEGuatemalanQuetzal = "urn:iso:std:iso:4217#GTQ";
+
+    /// <summary>
     /// Literal for code: GuyaneseDollar
     /// </summary>
     public const string LiteralGuyaneseDollar = "GYD";
+
+    /// <summary>
+    /// Literal for code: NONEGuyaneseDollar
+    /// </summary>
+    public const string LiteralNONEGuyaneseDollar = "urn:iso:std:iso:4217#GYD";
 
     /// <summary>
     /// Literal for code: HongKongDollar
@@ -1956,9 +2256,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHongKongDollar = "HKD";
 
     /// <summary>
+    /// Literal for code: NONEHongKongDollar
+    /// </summary>
+    public const string LiteralNONEHongKongDollar = "urn:iso:std:iso:4217#HKD";
+
+    /// <summary>
     /// Literal for code: HonduranLempira
     /// </summary>
     public const string LiteralHonduranLempira = "HNL";
+
+    /// <summary>
+    /// Literal for code: NONEHonduranLempira
+    /// </summary>
+    public const string LiteralNONEHonduranLempira = "urn:iso:std:iso:4217#HNL";
 
     /// <summary>
     /// Literal for code: CroatianKuna
@@ -1966,9 +2276,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCroatianKuna = "HRK";
 
     /// <summary>
+    /// Literal for code: NONECroatianKuna
+    /// </summary>
+    public const string LiteralNONECroatianKuna = "urn:iso:std:iso:4217#HRK";
+
+    /// <summary>
     /// Literal for code: HaitianGourde
     /// </summary>
     public const string LiteralHaitianGourde = "HTG";
+
+    /// <summary>
+    /// Literal for code: NONEHaitianGourde
+    /// </summary>
+    public const string LiteralNONEHaitianGourde = "urn:iso:std:iso:4217#HTG";
 
     /// <summary>
     /// Literal for code: HungarianForint
@@ -1976,9 +2296,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHungarianForint = "HUF";
 
     /// <summary>
+    /// Literal for code: NONEHungarianForint
+    /// </summary>
+    public const string LiteralNONEHungarianForint = "urn:iso:std:iso:4217#HUF";
+
+    /// <summary>
     /// Literal for code: IndonesianRupiah
     /// </summary>
     public const string LiteralIndonesianRupiah = "IDR";
+
+    /// <summary>
+    /// Literal for code: NONEIndonesianRupiah
+    /// </summary>
+    public const string LiteralNONEIndonesianRupiah = "urn:iso:std:iso:4217#IDR";
 
     /// <summary>
     /// Literal for code: IsraeliNewShekel
@@ -1986,9 +2316,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIsraeliNewShekel = "ILS";
 
     /// <summary>
+    /// Literal for code: NONEIsraeliNewShekel
+    /// </summary>
+    public const string LiteralNONEIsraeliNewShekel = "urn:iso:std:iso:4217#ILS";
+
+    /// <summary>
     /// Literal for code: IsleOfManPound
     /// </summary>
     public const string LiteralIsleOfManPound = "IMP";
+
+    /// <summary>
+    /// Literal for code: NONEIsleOfManPound
+    /// </summary>
+    public const string LiteralNONEIsleOfManPound = "urn:iso:std:iso:4217#IMP";
 
     /// <summary>
     /// Literal for code: IndianRupee
@@ -1996,9 +2336,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIndianRupee = "INR";
 
     /// <summary>
+    /// Literal for code: NONEIndianRupee
+    /// </summary>
+    public const string LiteralNONEIndianRupee = "urn:iso:std:iso:4217#INR";
+
+    /// <summary>
     /// Literal for code: IraqiDinar
     /// </summary>
     public const string LiteralIraqiDinar = "IQD";
+
+    /// <summary>
+    /// Literal for code: NONEIraqiDinar
+    /// </summary>
+    public const string LiteralNONEIraqiDinar = "urn:iso:std:iso:4217#IQD";
 
     /// <summary>
     /// Literal for code: IranianRial
@@ -2006,9 +2356,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIranianRial = "IRR";
 
     /// <summary>
+    /// Literal for code: NONEIranianRial
+    /// </summary>
+    public const string LiteralNONEIranianRial = "urn:iso:std:iso:4217#IRR";
+
+    /// <summary>
     /// Literal for code: IcelandicKrona
     /// </summary>
     public const string LiteralIcelandicKrona = "ISK";
+
+    /// <summary>
+    /// Literal for code: NONEIcelandicKrona
+    /// </summary>
+    public const string LiteralNONEIcelandicKrona = "urn:iso:std:iso:4217#ISK";
 
     /// <summary>
     /// Literal for code: JerseyPound
@@ -2016,9 +2376,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralJerseyPound = "JEP";
 
     /// <summary>
+    /// Literal for code: NONEJerseyPound
+    /// </summary>
+    public const string LiteralNONEJerseyPound = "urn:iso:std:iso:4217#JEP";
+
+    /// <summary>
     /// Literal for code: JamaicanDollar
     /// </summary>
     public const string LiteralJamaicanDollar = "JMD";
+
+    /// <summary>
+    /// Literal for code: NONEJamaicanDollar
+    /// </summary>
+    public const string LiteralNONEJamaicanDollar = "urn:iso:std:iso:4217#JMD";
 
     /// <summary>
     /// Literal for code: JordanianDinar
@@ -2026,9 +2396,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralJordanianDinar = "JOD";
 
     /// <summary>
+    /// Literal for code: NONEJordanianDinar
+    /// </summary>
+    public const string LiteralNONEJordanianDinar = "urn:iso:std:iso:4217#JOD";
+
+    /// <summary>
     /// Literal for code: JapaneseYen
     /// </summary>
     public const string LiteralJapaneseYen = "JPY";
+
+    /// <summary>
+    /// Literal for code: NONEJapaneseYen
+    /// </summary>
+    public const string LiteralNONEJapaneseYen = "urn:iso:std:iso:4217#JPY";
 
     /// <summary>
     /// Literal for code: KenyanShilling
@@ -2036,9 +2416,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralKenyanShilling = "KES";
 
     /// <summary>
+    /// Literal for code: NONEKenyanShilling
+    /// </summary>
+    public const string LiteralNONEKenyanShilling = "urn:iso:std:iso:4217#KES";
+
+    /// <summary>
     /// Literal for code: KyrgyzstaniSom
     /// </summary>
     public const string LiteralKyrgyzstaniSom = "KGS";
+
+    /// <summary>
+    /// Literal for code: NONEKyrgyzstaniSom
+    /// </summary>
+    public const string LiteralNONEKyrgyzstaniSom = "urn:iso:std:iso:4217#KGS";
 
     /// <summary>
     /// Literal for code: CambodianRiel
@@ -2046,9 +2436,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCambodianRiel = "KHR";
 
     /// <summary>
+    /// Literal for code: NONECambodianRiel
+    /// </summary>
+    public const string LiteralNONECambodianRiel = "urn:iso:std:iso:4217#KHR";
+
+    /// <summary>
     /// Literal for code: ComoroFranc
     /// </summary>
     public const string LiteralComoroFranc = "KMF";
+
+    /// <summary>
+    /// Literal for code: NONEComoroFranc
+    /// </summary>
+    public const string LiteralNONEComoroFranc = "urn:iso:std:iso:4217#KMF";
 
     /// <summary>
     /// Literal for code: NorthKoreanWon
@@ -2056,9 +2456,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNorthKoreanWon = "KPW";
 
     /// <summary>
+    /// Literal for code: NONENorthKoreanWon
+    /// </summary>
+    public const string LiteralNONENorthKoreanWon = "urn:iso:std:iso:4217#KPW";
+
+    /// <summary>
     /// Literal for code: SouthKoreanWon
     /// </summary>
     public const string LiteralSouthKoreanWon = "KRW";
+
+    /// <summary>
+    /// Literal for code: NONESouthKoreanWon
+    /// </summary>
+    public const string LiteralNONESouthKoreanWon = "urn:iso:std:iso:4217#KRW";
 
     /// <summary>
     /// Literal for code: KuwaitiDinar
@@ -2066,9 +2476,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralKuwaitiDinar = "KWD";
 
     /// <summary>
+    /// Literal for code: NONEKuwaitiDinar
+    /// </summary>
+    public const string LiteralNONEKuwaitiDinar = "urn:iso:std:iso:4217#KWD";
+
+    /// <summary>
     /// Literal for code: CaymanIslandsDollar
     /// </summary>
     public const string LiteralCaymanIslandsDollar = "KYD";
+
+    /// <summary>
+    /// Literal for code: NONECaymanIslandsDollar
+    /// </summary>
+    public const string LiteralNONECaymanIslandsDollar = "urn:iso:std:iso:4217#KYD";
 
     /// <summary>
     /// Literal for code: KazakhstaniTenge
@@ -2076,9 +2496,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralKazakhstaniTenge = "KZT";
 
     /// <summary>
+    /// Literal for code: NONEKazakhstaniTenge
+    /// </summary>
+    public const string LiteralNONEKazakhstaniTenge = "urn:iso:std:iso:4217#KZT";
+
+    /// <summary>
     /// Literal for code: LaoKip
     /// </summary>
     public const string LiteralLaoKip = "LAK";
+
+    /// <summary>
+    /// Literal for code: NONELaoKip
+    /// </summary>
+    public const string LiteralNONELaoKip = "urn:iso:std:iso:4217#LAK";
 
     /// <summary>
     /// Literal for code: LebanesePound
@@ -2086,9 +2516,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLebanesePound = "LBP";
 
     /// <summary>
+    /// Literal for code: NONELebanesePound
+    /// </summary>
+    public const string LiteralNONELebanesePound = "urn:iso:std:iso:4217#LBP";
+
+    /// <summary>
     /// Literal for code: SriLankanRupee
     /// </summary>
     public const string LiteralSriLankanRupee = "LKR";
+
+    /// <summary>
+    /// Literal for code: NONESriLankanRupee
+    /// </summary>
+    public const string LiteralNONESriLankanRupee = "urn:iso:std:iso:4217#LKR";
 
     /// <summary>
     /// Literal for code: LiberianDollar
@@ -2096,9 +2536,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLiberianDollar = "LRD";
 
     /// <summary>
+    /// Literal for code: NONELiberianDollar
+    /// </summary>
+    public const string LiteralNONELiberianDollar = "urn:iso:std:iso:4217#LRD";
+
+    /// <summary>
     /// Literal for code: LesothoLoti
     /// </summary>
     public const string LiteralLesothoLoti = "LSL";
+
+    /// <summary>
+    /// Literal for code: NONELesothoLoti
+    /// </summary>
+    public const string LiteralNONELesothoLoti = "urn:iso:std:iso:4217#LSL";
 
     /// <summary>
     /// Literal for code: LibyanDinar
@@ -2106,9 +2556,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLibyanDinar = "LYD";
 
     /// <summary>
+    /// Literal for code: NONELibyanDinar
+    /// </summary>
+    public const string LiteralNONELibyanDinar = "urn:iso:std:iso:4217#LYD";
+
+    /// <summary>
     /// Literal for code: MoroccanDirham
     /// </summary>
     public const string LiteralMoroccanDirham = "MAD";
+
+    /// <summary>
+    /// Literal for code: NONEMoroccanDirham
+    /// </summary>
+    public const string LiteralNONEMoroccanDirham = "urn:iso:std:iso:4217#MAD";
 
     /// <summary>
     /// Literal for code: MoldovanLeu
@@ -2116,9 +2576,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMoldovanLeu = "MDL";
 
     /// <summary>
+    /// Literal for code: NONEMoldovanLeu
+    /// </summary>
+    public const string LiteralNONEMoldovanLeu = "urn:iso:std:iso:4217#MDL";
+
+    /// <summary>
     /// Literal for code: MalagasyAriary
     /// </summary>
     public const string LiteralMalagasyAriary = "MGA";
+
+    /// <summary>
+    /// Literal for code: NONEMalagasyAriary
+    /// </summary>
+    public const string LiteralNONEMalagasyAriary = "urn:iso:std:iso:4217#MGA";
 
     /// <summary>
     /// Literal for code: MacedonianDenar
@@ -2126,9 +2596,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMacedonianDenar = "MKD";
 
     /// <summary>
+    /// Literal for code: NONEMacedonianDenar
+    /// </summary>
+    public const string LiteralNONEMacedonianDenar = "urn:iso:std:iso:4217#MKD";
+
+    /// <summary>
     /// Literal for code: MyanmarKyat
     /// </summary>
     public const string LiteralMyanmarKyat = "MMK";
+
+    /// <summary>
+    /// Literal for code: NONEMyanmarKyat
+    /// </summary>
+    public const string LiteralNONEMyanmarKyat = "urn:iso:std:iso:4217#MMK";
 
     /// <summary>
     /// Literal for code: MongolianTogrog
@@ -2136,9 +2616,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMongolianTogrog = "MNT";
 
     /// <summary>
+    /// Literal for code: NONEMongolianTogrog
+    /// </summary>
+    public const string LiteralNONEMongolianTogrog = "urn:iso:std:iso:4217#MNT";
+
+    /// <summary>
     /// Literal for code: MacanesePataca
     /// </summary>
     public const string LiteralMacanesePataca = "MOP";
+
+    /// <summary>
+    /// Literal for code: NONEMacanesePataca
+    /// </summary>
+    public const string LiteralNONEMacanesePataca = "urn:iso:std:iso:4217#MOP";
 
     /// <summary>
     /// Literal for code: MauritanianOuguiya
@@ -2146,9 +2636,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMauritanianOuguiya = "MRU";
 
     /// <summary>
+    /// Literal for code: NONEMauritanianOuguiya
+    /// </summary>
+    public const string LiteralNONEMauritanianOuguiya = "urn:iso:std:iso:4217#MRU";
+
+    /// <summary>
     /// Literal for code: MauritianRupee
     /// </summary>
     public const string LiteralMauritianRupee = "MUR";
+
+    /// <summary>
+    /// Literal for code: NONEMauritianRupee
+    /// </summary>
+    public const string LiteralNONEMauritianRupee = "urn:iso:std:iso:4217#MUR";
 
     /// <summary>
     /// Literal for code: MaldivianRufiyaa
@@ -2156,9 +2656,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMaldivianRufiyaa = "MVR";
 
     /// <summary>
+    /// Literal for code: NONEMaldivianRufiyaa
+    /// </summary>
+    public const string LiteralNONEMaldivianRufiyaa = "urn:iso:std:iso:4217#MVR";
+
+    /// <summary>
     /// Literal for code: MalawianKwacha
     /// </summary>
     public const string LiteralMalawianKwacha = "MWK";
+
+    /// <summary>
+    /// Literal for code: NONEMalawianKwacha
+    /// </summary>
+    public const string LiteralNONEMalawianKwacha = "urn:iso:std:iso:4217#MWK";
 
     /// <summary>
     /// Literal for code: MexicanPeso
@@ -2166,9 +2676,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMexicanPeso = "MXN";
 
     /// <summary>
+    /// Literal for code: NONEMexicanPeso
+    /// </summary>
+    public const string LiteralNONEMexicanPeso = "urn:iso:std:iso:4217#MXN";
+
+    /// <summary>
     /// Literal for code: MexicanUnidadDeInversionUDIFundsCode
     /// </summary>
     public const string LiteralMexicanUnidadDeInversionUDIFundsCode = "MXV";
+
+    /// <summary>
+    /// Literal for code: NONEMexicanUnidadDeInversionUDIFundsCode
+    /// </summary>
+    public const string LiteralNONEMexicanUnidadDeInversionUDIFundsCode = "urn:iso:std:iso:4217#MXV";
 
     /// <summary>
     /// Literal for code: MalaysianRinggit
@@ -2176,9 +2696,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMalaysianRinggit = "MYR";
 
     /// <summary>
+    /// Literal for code: NONEMalaysianRinggit
+    /// </summary>
+    public const string LiteralNONEMalaysianRinggit = "urn:iso:std:iso:4217#MYR";
+
+    /// <summary>
     /// Literal for code: MozambicanMetical
     /// </summary>
     public const string LiteralMozambicanMetical = "MZN";
+
+    /// <summary>
+    /// Literal for code: NONEMozambicanMetical
+    /// </summary>
+    public const string LiteralNONEMozambicanMetical = "urn:iso:std:iso:4217#MZN";
 
     /// <summary>
     /// Literal for code: NamibianDollar
@@ -2186,9 +2716,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNamibianDollar = "NAD";
 
     /// <summary>
+    /// Literal for code: NONENamibianDollar
+    /// </summary>
+    public const string LiteralNONENamibianDollar = "urn:iso:std:iso:4217#NAD";
+
+    /// <summary>
     /// Literal for code: NigerianNaira
     /// </summary>
     public const string LiteralNigerianNaira = "NGN";
+
+    /// <summary>
+    /// Literal for code: NONENigerianNaira
+    /// </summary>
+    public const string LiteralNONENigerianNaira = "urn:iso:std:iso:4217#NGN";
 
     /// <summary>
     /// Literal for code: NicaraguanCordoba
@@ -2196,9 +2736,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNicaraguanCordoba = "NIO";
 
     /// <summary>
+    /// Literal for code: NONENicaraguanCordoba
+    /// </summary>
+    public const string LiteralNONENicaraguanCordoba = "urn:iso:std:iso:4217#NIO";
+
+    /// <summary>
     /// Literal for code: NorwegianKrone
     /// </summary>
     public const string LiteralNorwegianKrone = "NOK";
+
+    /// <summary>
+    /// Literal for code: NONENorwegianKrone
+    /// </summary>
+    public const string LiteralNONENorwegianKrone = "urn:iso:std:iso:4217#NOK";
 
     /// <summary>
     /// Literal for code: NepaleseRupee
@@ -2206,9 +2756,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNepaleseRupee = "NPR";
 
     /// <summary>
+    /// Literal for code: NONENepaleseRupee
+    /// </summary>
+    public const string LiteralNONENepaleseRupee = "urn:iso:std:iso:4217#NPR";
+
+    /// <summary>
     /// Literal for code: NewZealandDollar
     /// </summary>
     public const string LiteralNewZealandDollar = "NZD";
+
+    /// <summary>
+    /// Literal for code: NONENewZealandDollar
+    /// </summary>
+    public const string LiteralNONENewZealandDollar = "urn:iso:std:iso:4217#NZD";
 
     /// <summary>
     /// Literal for code: OmaniRial
@@ -2216,9 +2776,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOmaniRial = "OMR";
 
     /// <summary>
+    /// Literal for code: NONEOmaniRial
+    /// </summary>
+    public const string LiteralNONEOmaniRial = "urn:iso:std:iso:4217#OMR";
+
+    /// <summary>
     /// Literal for code: PanamanianBalboa
     /// </summary>
     public const string LiteralPanamanianBalboa = "PAB";
+
+    /// <summary>
+    /// Literal for code: NONEPanamanianBalboa
+    /// </summary>
+    public const string LiteralNONEPanamanianBalboa = "urn:iso:std:iso:4217#PAB";
 
     /// <summary>
     /// Literal for code: PeruvianSol
@@ -2226,9 +2796,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPeruvianSol = "PEN";
 
     /// <summary>
+    /// Literal for code: NONEPeruvianSol
+    /// </summary>
+    public const string LiteralNONEPeruvianSol = "urn:iso:std:iso:4217#PEN";
+
+    /// <summary>
     /// Literal for code: PapuaNewGuineanKina
     /// </summary>
     public const string LiteralPapuaNewGuineanKina = "PGK";
+
+    /// <summary>
+    /// Literal for code: NONEPapuaNewGuineanKina
+    /// </summary>
+    public const string LiteralNONEPapuaNewGuineanKina = "urn:iso:std:iso:4217#PGK";
 
     /// <summary>
     /// Literal for code: PhilippinePiso13
@@ -2236,9 +2816,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPhilippinePiso13 = "PHP";
 
     /// <summary>
+    /// Literal for code: NONEPhilippinePiso13
+    /// </summary>
+    public const string LiteralNONEPhilippinePiso13 = "urn:iso:std:iso:4217#PHP";
+
+    /// <summary>
     /// Literal for code: PakistaniRupee
     /// </summary>
     public const string LiteralPakistaniRupee = "PKR";
+
+    /// <summary>
+    /// Literal for code: NONEPakistaniRupee
+    /// </summary>
+    public const string LiteralNONEPakistaniRupee = "urn:iso:std:iso:4217#PKR";
 
     /// <summary>
     /// Literal for code: PolishZłoty
@@ -2246,9 +2836,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPolishZłoty = "PLN";
 
     /// <summary>
+    /// Literal for code: NONEPolishZłoty
+    /// </summary>
+    public const string LiteralNONEPolishZłoty = "urn:iso:std:iso:4217#PLN";
+
+    /// <summary>
     /// Literal for code: ParaguayanGuarani
     /// </summary>
     public const string LiteralParaguayanGuarani = "PYG";
+
+    /// <summary>
+    /// Literal for code: NONEParaguayanGuarani
+    /// </summary>
+    public const string LiteralNONEParaguayanGuarani = "urn:iso:std:iso:4217#PYG";
 
     /// <summary>
     /// Literal for code: QatariRiyal
@@ -2256,9 +2856,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralQatariRiyal = "QAR";
 
     /// <summary>
+    /// Literal for code: NONEQatariRiyal
+    /// </summary>
+    public const string LiteralNONEQatariRiyal = "urn:iso:std:iso:4217#QAR";
+
+    /// <summary>
     /// Literal for code: RomanianLeu
     /// </summary>
     public const string LiteralRomanianLeu = "RON";
+
+    /// <summary>
+    /// Literal for code: NONERomanianLeu
+    /// </summary>
+    public const string LiteralNONERomanianLeu = "urn:iso:std:iso:4217#RON";
 
     /// <summary>
     /// Literal for code: SerbianDinar
@@ -2266,9 +2876,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSerbianDinar = "RSD";
 
     /// <summary>
+    /// Literal for code: NONESerbianDinar
+    /// </summary>
+    public const string LiteralNONESerbianDinar = "urn:iso:std:iso:4217#RSD";
+
+    /// <summary>
     /// Literal for code: RussianRuble
     /// </summary>
     public const string LiteralRussianRuble = "RUB";
+
+    /// <summary>
+    /// Literal for code: NONERussianRuble
+    /// </summary>
+    public const string LiteralNONERussianRuble = "urn:iso:std:iso:4217#RUB";
 
     /// <summary>
     /// Literal for code: RwandanFranc
@@ -2276,9 +2896,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRwandanFranc = "RWF";
 
     /// <summary>
+    /// Literal for code: NONERwandanFranc
+    /// </summary>
+    public const string LiteralNONERwandanFranc = "urn:iso:std:iso:4217#RWF";
+
+    /// <summary>
     /// Literal for code: SaudiRiyal
     /// </summary>
     public const string LiteralSaudiRiyal = "SAR";
+
+    /// <summary>
+    /// Literal for code: NONESaudiRiyal
+    /// </summary>
+    public const string LiteralNONESaudiRiyal = "urn:iso:std:iso:4217#SAR";
 
     /// <summary>
     /// Literal for code: SolomonIslandsDollar
@@ -2286,9 +2916,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSolomonIslandsDollar = "SBD";
 
     /// <summary>
+    /// Literal for code: NONESolomonIslandsDollar
+    /// </summary>
+    public const string LiteralNONESolomonIslandsDollar = "urn:iso:std:iso:4217#SBD";
+
+    /// <summary>
     /// Literal for code: SeychellesRupee
     /// </summary>
     public const string LiteralSeychellesRupee = "SCR";
+
+    /// <summary>
+    /// Literal for code: NONESeychellesRupee
+    /// </summary>
+    public const string LiteralNONESeychellesRupee = "urn:iso:std:iso:4217#SCR";
 
     /// <summary>
     /// Literal for code: SudanesePound
@@ -2296,9 +2936,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSudanesePound = "SDG";
 
     /// <summary>
+    /// Literal for code: NONESudanesePound
+    /// </summary>
+    public const string LiteralNONESudanesePound = "urn:iso:std:iso:4217#SDG";
+
+    /// <summary>
     /// Literal for code: SwedishKronaKronor
     /// </summary>
     public const string LiteralSwedishKronaKronor = "SEK";
+
+    /// <summary>
+    /// Literal for code: NONESwedishKronaKronor
+    /// </summary>
+    public const string LiteralNONESwedishKronaKronor = "urn:iso:std:iso:4217#SEK";
 
     /// <summary>
     /// Literal for code: SingaporeDollar
@@ -2306,9 +2956,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSingaporeDollar = "SGD";
 
     /// <summary>
+    /// Literal for code: NONESingaporeDollar
+    /// </summary>
+    public const string LiteralNONESingaporeDollar = "urn:iso:std:iso:4217#SGD";
+
+    /// <summary>
     /// Literal for code: SaintHelenaPound
     /// </summary>
     public const string LiteralSaintHelenaPound = "SHP";
+
+    /// <summary>
+    /// Literal for code: NONESaintHelenaPound
+    /// </summary>
+    public const string LiteralNONESaintHelenaPound = "urn:iso:std:iso:4217#SHP";
 
     /// <summary>
     /// Literal for code: SierraLeoneanLeone
@@ -2316,9 +2976,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSierraLeoneanLeone = "SLL";
 
     /// <summary>
+    /// Literal for code: NONESierraLeoneanLeone
+    /// </summary>
+    public const string LiteralNONESierraLeoneanLeone = "urn:iso:std:iso:4217#SLL";
+
+    /// <summary>
     /// Literal for code: SomaliShilling
     /// </summary>
     public const string LiteralSomaliShilling = "SOS";
+
+    /// <summary>
+    /// Literal for code: NONESomaliShilling
+    /// </summary>
+    public const string LiteralNONESomaliShilling = "urn:iso:std:iso:4217#SOS";
 
     /// <summary>
     /// Literal for code: SurinameseDollar
@@ -2326,9 +2996,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSurinameseDollar = "SRD";
 
     /// <summary>
+    /// Literal for code: NONESurinameseDollar
+    /// </summary>
+    public const string LiteralNONESurinameseDollar = "urn:iso:std:iso:4217#SRD";
+
+    /// <summary>
     /// Literal for code: SouthSudanesePound
     /// </summary>
     public const string LiteralSouthSudanesePound = "SSP";
+
+    /// <summary>
+    /// Literal for code: NONESouthSudanesePound
+    /// </summary>
+    public const string LiteralNONESouthSudanesePound = "urn:iso:std:iso:4217#SSP";
 
     /// <summary>
     /// Literal for code: SaoTomeAndPrincipeDobra
@@ -2336,9 +3016,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSaoTomeAndPrincipeDobra = "STN";
 
     /// <summary>
+    /// Literal for code: NONESaoTomeAndPrincipeDobra
+    /// </summary>
+    public const string LiteralNONESaoTomeAndPrincipeDobra = "urn:iso:std:iso:4217#STN";
+
+    /// <summary>
     /// Literal for code: SalvadoranColon
     /// </summary>
     public const string LiteralSalvadoranColon = "SVC";
+
+    /// <summary>
+    /// Literal for code: NONESalvadoranColon
+    /// </summary>
+    public const string LiteralNONESalvadoranColon = "urn:iso:std:iso:4217#SVC";
 
     /// <summary>
     /// Literal for code: SyrianPound
@@ -2346,9 +3036,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSyrianPound = "SYP";
 
     /// <summary>
+    /// Literal for code: NONESyrianPound
+    /// </summary>
+    public const string LiteralNONESyrianPound = "urn:iso:std:iso:4217#SYP";
+
+    /// <summary>
     /// Literal for code: SwaziLilangeni
     /// </summary>
     public const string LiteralSwaziLilangeni = "SZL";
+
+    /// <summary>
+    /// Literal for code: NONESwaziLilangeni
+    /// </summary>
+    public const string LiteralNONESwaziLilangeni = "urn:iso:std:iso:4217#SZL";
 
     /// <summary>
     /// Literal for code: ThaiBaht
@@ -2356,9 +3056,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralThaiBaht = "THB";
 
     /// <summary>
+    /// Literal for code: NONEThaiBaht
+    /// </summary>
+    public const string LiteralNONEThaiBaht = "urn:iso:std:iso:4217#THB";
+
+    /// <summary>
     /// Literal for code: TajikistaniSomoni
     /// </summary>
     public const string LiteralTajikistaniSomoni = "TJS";
+
+    /// <summary>
+    /// Literal for code: NONETajikistaniSomoni
+    /// </summary>
+    public const string LiteralNONETajikistaniSomoni = "urn:iso:std:iso:4217#TJS";
 
     /// <summary>
     /// Literal for code: TurkmenistanManat
@@ -2366,9 +3076,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTurkmenistanManat = "TMT";
 
     /// <summary>
+    /// Literal for code: NONETurkmenistanManat
+    /// </summary>
+    public const string LiteralNONETurkmenistanManat = "urn:iso:std:iso:4217#TMT";
+
+    /// <summary>
     /// Literal for code: TunisianDinar
     /// </summary>
     public const string LiteralTunisianDinar = "TND";
+
+    /// <summary>
+    /// Literal for code: NONETunisianDinar
+    /// </summary>
+    public const string LiteralNONETunisianDinar = "urn:iso:std:iso:4217#TND";
 
     /// <summary>
     /// Literal for code: TonganPaanga
@@ -2376,9 +3096,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTonganPaanga = "TOP";
 
     /// <summary>
+    /// Literal for code: NONETonganPaanga
+    /// </summary>
+    public const string LiteralNONETonganPaanga = "urn:iso:std:iso:4217#TOP";
+
+    /// <summary>
     /// Literal for code: TurkishLira
     /// </summary>
     public const string LiteralTurkishLira = "TRY";
+
+    /// <summary>
+    /// Literal for code: NONETurkishLira
+    /// </summary>
+    public const string LiteralNONETurkishLira = "urn:iso:std:iso:4217#TRY";
 
     /// <summary>
     /// Literal for code: TrinidadAndTobagoDollar
@@ -2386,9 +3116,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTrinidadAndTobagoDollar = "TTD";
 
     /// <summary>
+    /// Literal for code: NONETrinidadAndTobagoDollar
+    /// </summary>
+    public const string LiteralNONETrinidadAndTobagoDollar = "urn:iso:std:iso:4217#TTD";
+
+    /// <summary>
     /// Literal for code: TuvaluDollar
     /// </summary>
     public const string LiteralTuvaluDollar = "TVD";
+
+    /// <summary>
+    /// Literal for code: NONETuvaluDollar
+    /// </summary>
+    public const string LiteralNONETuvaluDollar = "urn:iso:std:iso:4217#TVD";
 
     /// <summary>
     /// Literal for code: NewTaiwanDollar
@@ -2396,9 +3136,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNewTaiwanDollar = "TWD";
 
     /// <summary>
+    /// Literal for code: NONENewTaiwanDollar
+    /// </summary>
+    public const string LiteralNONENewTaiwanDollar = "urn:iso:std:iso:4217#TWD";
+
+    /// <summary>
     /// Literal for code: TanzanianShilling
     /// </summary>
     public const string LiteralTanzanianShilling = "TZS";
+
+    /// <summary>
+    /// Literal for code: NONETanzanianShilling
+    /// </summary>
+    public const string LiteralNONETanzanianShilling = "urn:iso:std:iso:4217#TZS";
 
     /// <summary>
     /// Literal for code: UkrainianHryvnia
@@ -2406,9 +3156,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUkrainianHryvnia = "UAH";
 
     /// <summary>
+    /// Literal for code: NONEUkrainianHryvnia
+    /// </summary>
+    public const string LiteralNONEUkrainianHryvnia = "urn:iso:std:iso:4217#UAH";
+
+    /// <summary>
     /// Literal for code: UgandanShilling
     /// </summary>
     public const string LiteralUgandanShilling = "UGX";
+
+    /// <summary>
+    /// Literal for code: NONEUgandanShilling
+    /// </summary>
+    public const string LiteralNONEUgandanShilling = "urn:iso:std:iso:4217#UGX";
 
     /// <summary>
     /// Literal for code: UnitedStatesDollar
@@ -2416,9 +3176,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUnitedStatesDollar = "USD";
 
     /// <summary>
+    /// Literal for code: NONEUnitedStatesDollar
+    /// </summary>
+    public const string LiteralNONEUnitedStatesDollar = "urn:iso:std:iso:4217#USD";
+
+    /// <summary>
     /// Literal for code: UnitedStatesDollarNextDayFundsCode
     /// </summary>
     public const string LiteralUnitedStatesDollarNextDayFundsCode = "USN";
+
+    /// <summary>
+    /// Literal for code: NONEUnitedStatesDollarNextDayFundsCode
+    /// </summary>
+    public const string LiteralNONEUnitedStatesDollarNextDayFundsCode = "urn:iso:std:iso:4217#USN";
 
     /// <summary>
     /// Literal for code: UruguayPesoEnUnidadesIndexadasURUIURUIFundsCode
@@ -2426,9 +3196,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUruguayPesoEnUnidadesIndexadasURUIURUIFundsCode = "UYI";
 
     /// <summary>
+    /// Literal for code: NONEUruguayPesoEnUnidadesIndexadasURUIURUIFundsCode
+    /// </summary>
+    public const string LiteralNONEUruguayPesoEnUnidadesIndexadasURUIURUIFundsCode = "urn:iso:std:iso:4217#UYI";
+
+    /// <summary>
     /// Literal for code: UruguayanPeso
     /// </summary>
     public const string LiteralUruguayanPeso = "UYU";
+
+    /// <summary>
+    /// Literal for code: NONEUruguayanPeso
+    /// </summary>
+    public const string LiteralNONEUruguayanPeso = "urn:iso:std:iso:4217#UYU";
 
     /// <summary>
     /// Literal for code: UzbekistanSom
@@ -2436,9 +3216,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralUzbekistanSom = "UZS";
 
     /// <summary>
+    /// Literal for code: NONEUzbekistanSom
+    /// </summary>
+    public const string LiteralNONEUzbekistanSom = "urn:iso:std:iso:4217#UZS";
+
+    /// <summary>
     /// Literal for code: VenezuelanBolivar
     /// </summary>
     public const string LiteralVenezuelanBolivar = "VEF";
+
+    /// <summary>
+    /// Literal for code: NONEVenezuelanBolivar
+    /// </summary>
+    public const string LiteralNONEVenezuelanBolivar = "urn:iso:std:iso:4217#VEF";
 
     /// <summary>
     /// Literal for code: VietnameseĐong
@@ -2446,9 +3236,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVietnameseĐong = "VND";
 
     /// <summary>
+    /// Literal for code: NONEVietnameseĐong
+    /// </summary>
+    public const string LiteralNONEVietnameseĐong = "urn:iso:std:iso:4217#VND";
+
+    /// <summary>
     /// Literal for code: VanuatuVatu
     /// </summary>
     public const string LiteralVanuatuVatu = "VUV";
+
+    /// <summary>
+    /// Literal for code: NONEVanuatuVatu
+    /// </summary>
+    public const string LiteralNONEVanuatuVatu = "urn:iso:std:iso:4217#VUV";
 
     /// <summary>
     /// Literal for code: SamoanTala
@@ -2456,9 +3256,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSamoanTala = "WST";
 
     /// <summary>
+    /// Literal for code: NONESamoanTala
+    /// </summary>
+    public const string LiteralNONESamoanTala = "urn:iso:std:iso:4217#WST";
+
+    /// <summary>
     /// Literal for code: CFAFrancBEAC
     /// </summary>
     public const string LiteralCFAFrancBEAC = "XAF";
+
+    /// <summary>
+    /// Literal for code: NONECFAFrancBEAC
+    /// </summary>
+    public const string LiteralNONECFAFrancBEAC = "urn:iso:std:iso:4217#XAF";
 
     /// <summary>
     /// Literal for code: SilverOneTroyOunce
@@ -2466,9 +3276,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSilverOneTroyOunce = "XAG";
 
     /// <summary>
+    /// Literal for code: NONESilverOneTroyOunce
+    /// </summary>
+    public const string LiteralNONESilverOneTroyOunce = "urn:iso:std:iso:4217#XAG";
+
+    /// <summary>
     /// Literal for code: GoldOneTroyOunce
     /// </summary>
     public const string LiteralGoldOneTroyOunce = "XAU";
+
+    /// <summary>
+    /// Literal for code: NONEGoldOneTroyOunce
+    /// </summary>
+    public const string LiteralNONEGoldOneTroyOunce = "urn:iso:std:iso:4217#XAU";
 
     /// <summary>
     /// Literal for code: EuropeanCompositeUnitEURCOBondMarketUnit
@@ -2476,9 +3296,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEuropeanCompositeUnitEURCOBondMarketUnit = "XBA";
 
     /// <summary>
+    /// Literal for code: NONEEuropeanCompositeUnitEURCOBondMarketUnit
+    /// </summary>
+    public const string LiteralNONEEuropeanCompositeUnitEURCOBondMarketUnit = "urn:iso:std:iso:4217#XBA";
+
+    /// <summary>
     /// Literal for code: EuropeanMonetaryUnitEMU6BondMarketUnit
     /// </summary>
     public const string LiteralEuropeanMonetaryUnitEMU6BondMarketUnit = "XBB";
+
+    /// <summary>
+    /// Literal for code: NONEEuropeanMonetaryUnitEMU6BondMarketUnit
+    /// </summary>
+    public const string LiteralNONEEuropeanMonetaryUnitEMU6BondMarketUnit = "urn:iso:std:iso:4217#XBB";
 
     /// <summary>
     /// Literal for code: EuropeanUnitOfAccount9EUA9BondMarketUnit
@@ -2486,9 +3316,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEuropeanUnitOfAccount9EUA9BondMarketUnit = "XBC";
 
     /// <summary>
+    /// Literal for code: NONEEuropeanUnitOfAccount9EUA9BondMarketUnit
+    /// </summary>
+    public const string LiteralNONEEuropeanUnitOfAccount9EUA9BondMarketUnit = "urn:iso:std:iso:4217#XBC";
+
+    /// <summary>
     /// Literal for code: EuropeanUnitOfAccount17EUA17BondMarketUnit
     /// </summary>
     public const string LiteralEuropeanUnitOfAccount17EUA17BondMarketUnit = "XBD";
+
+    /// <summary>
+    /// Literal for code: NONEEuropeanUnitOfAccount17EUA17BondMarketUnit
+    /// </summary>
+    public const string LiteralNONEEuropeanUnitOfAccount17EUA17BondMarketUnit = "urn:iso:std:iso:4217#XBD";
 
     /// <summary>
     /// Literal for code: EastCaribbeanDollar
@@ -2496,9 +3336,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEastCaribbeanDollar = "XCD";
 
     /// <summary>
+    /// Literal for code: NONEEastCaribbeanDollar
+    /// </summary>
+    public const string LiteralNONEEastCaribbeanDollar = "urn:iso:std:iso:4217#XCD";
+
+    /// <summary>
     /// Literal for code: SpecialDrawingRights
     /// </summary>
     public const string LiteralSpecialDrawingRights = "XDR";
+
+    /// <summary>
+    /// Literal for code: NONESpecialDrawingRights
+    /// </summary>
+    public const string LiteralNONESpecialDrawingRights = "urn:iso:std:iso:4217#XDR";
 
     /// <summary>
     /// Literal for code: CFAFrancBCEAO
@@ -2506,9 +3356,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCFAFrancBCEAO = "XOF";
 
     /// <summary>
+    /// Literal for code: NONECFAFrancBCEAO
+    /// </summary>
+    public const string LiteralNONECFAFrancBCEAO = "urn:iso:std:iso:4217#XOF";
+
+    /// <summary>
     /// Literal for code: PalladiumOneTroyOunce
     /// </summary>
     public const string LiteralPalladiumOneTroyOunce = "XPD";
+
+    /// <summary>
+    /// Literal for code: NONEPalladiumOneTroyOunce
+    /// </summary>
+    public const string LiteralNONEPalladiumOneTroyOunce = "urn:iso:std:iso:4217#XPD";
 
     /// <summary>
     /// Literal for code: CFPFrancFrancPacifique
@@ -2516,9 +3376,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCFPFrancFrancPacifique = "XPF";
 
     /// <summary>
+    /// Literal for code: NONECFPFrancFrancPacifique
+    /// </summary>
+    public const string LiteralNONECFPFrancFrancPacifique = "urn:iso:std:iso:4217#XPF";
+
+    /// <summary>
     /// Literal for code: PlatinumOneTroyOunce
     /// </summary>
     public const string LiteralPlatinumOneTroyOunce = "XPT";
+
+    /// <summary>
+    /// Literal for code: NONEPlatinumOneTroyOunce
+    /// </summary>
+    public const string LiteralNONEPlatinumOneTroyOunce = "urn:iso:std:iso:4217#XPT";
 
     /// <summary>
     /// Literal for code: SUCRE
@@ -2526,9 +3396,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSUCRE = "XSU";
 
     /// <summary>
+    /// Literal for code: NONESUCRE
+    /// </summary>
+    public const string LiteralNONESUCRE = "urn:iso:std:iso:4217#XSU";
+
+    /// <summary>
     /// Literal for code: CodeReservedForTestingPurposes
     /// </summary>
     public const string LiteralCodeReservedForTestingPurposes = "XTS";
+
+    /// <summary>
+    /// Literal for code: NONECodeReservedForTestingPurposes
+    /// </summary>
+    public const string LiteralNONECodeReservedForTestingPurposes = "urn:iso:std:iso:4217#XTS";
 
     /// <summary>
     /// Literal for code: ADBUnitOfAccount
@@ -2536,9 +3416,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralADBUnitOfAccount = "XUA";
 
     /// <summary>
+    /// Literal for code: NONEADBUnitOfAccount
+    /// </summary>
+    public const string LiteralNONEADBUnitOfAccount = "urn:iso:std:iso:4217#XUA";
+
+    /// <summary>
     /// Literal for code: NoCurrency
     /// </summary>
     public const string LiteralNoCurrency = "XXX";
+
+    /// <summary>
+    /// Literal for code: NONENoCurrency
+    /// </summary>
+    public const string LiteralNONENoCurrency = "urn:iso:std:iso:4217#XXX";
 
     /// <summary>
     /// Literal for code: YemeniRial
@@ -2546,9 +3436,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralYemeniRial = "YER";
 
     /// <summary>
+    /// Literal for code: NONEYemeniRial
+    /// </summary>
+    public const string LiteralNONEYemeniRial = "urn:iso:std:iso:4217#YER";
+
+    /// <summary>
     /// Literal for code: SouthAfricanRand
     /// </summary>
     public const string LiteralSouthAfricanRand = "ZAR";
+
+    /// <summary>
+    /// Literal for code: NONESouthAfricanRand
+    /// </summary>
+    public const string LiteralNONESouthAfricanRand = "urn:iso:std:iso:4217#ZAR";
 
     /// <summary>
     /// Literal for code: ZambianKwacha
@@ -2556,8 +3456,388 @@ namespace fhirCsR5.ValueSets
     public const string LiteralZambianKwacha = "ZMW";
 
     /// <summary>
+    /// Literal for code: NONEZambianKwacha
+    /// </summary>
+    public const string LiteralNONEZambianKwacha = "urn:iso:std:iso:4217#ZMW";
+
+    /// <summary>
     /// Literal for code: ZimbabweanDollarA10
     /// </summary>
     public const string LiteralZimbabweanDollarA10 = "ZWL";
+
+    /// <summary>
+    /// Literal for code: NONEZimbabweanDollarA10
+    /// </summary>
+    public const string LiteralNONEZimbabweanDollarA10 = "urn:iso:std:iso:4217#ZWL";
+
+    /// <summary>
+    /// Dictionary for looking up Currencies Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "AED", UnitedArabEmiratesDirham }, 
+      { "urn:iso:std:iso:4217#AED", UnitedArabEmiratesDirham }, 
+      { "AFN", AfghanAfghani }, 
+      { "urn:iso:std:iso:4217#AFN", AfghanAfghani }, 
+      { "ALL", AlbanianLek }, 
+      { "urn:iso:std:iso:4217#ALL", AlbanianLek }, 
+      { "AMD", ArmenianDram }, 
+      { "urn:iso:std:iso:4217#AMD", ArmenianDram }, 
+      { "ANG", NetherlandsAntilleanGuilder }, 
+      { "urn:iso:std:iso:4217#ANG", NetherlandsAntilleanGuilder }, 
+      { "AOA", AngolanKwanza }, 
+      { "urn:iso:std:iso:4217#AOA", AngolanKwanza }, 
+      { "ARS", ArgentinePeso }, 
+      { "urn:iso:std:iso:4217#ARS", ArgentinePeso }, 
+      { "AUD", AustralianDollar }, 
+      { "urn:iso:std:iso:4217#AUD", AustralianDollar }, 
+      { "AWG", ArubanFlorin }, 
+      { "urn:iso:std:iso:4217#AWG", ArubanFlorin }, 
+      { "AZN", AzerbaijaniManat }, 
+      { "urn:iso:std:iso:4217#AZN", AzerbaijaniManat }, 
+      { "BAM", BosniaAndHerzegovinaConvertibleMark }, 
+      { "urn:iso:std:iso:4217#BAM", BosniaAndHerzegovinaConvertibleMark }, 
+      { "BBD", BarbadosDollar }, 
+      { "urn:iso:std:iso:4217#BBD", BarbadosDollar }, 
+      { "BDT", BangladeshiTaka }, 
+      { "urn:iso:std:iso:4217#BDT", BangladeshiTaka }, 
+      { "BGN", BulgarianLev }, 
+      { "urn:iso:std:iso:4217#BGN", BulgarianLev }, 
+      { "BHD", BahrainiDinar }, 
+      { "urn:iso:std:iso:4217#BHD", BahrainiDinar }, 
+      { "BIF", BurundianFranc }, 
+      { "urn:iso:std:iso:4217#BIF", BurundianFranc }, 
+      { "BMD", BermudianDollar }, 
+      { "urn:iso:std:iso:4217#BMD", BermudianDollar }, 
+      { "BND", BruneiDollar }, 
+      { "urn:iso:std:iso:4217#BND", BruneiDollar }, 
+      { "BOB", Boliviano }, 
+      { "urn:iso:std:iso:4217#BOB", Boliviano }, 
+      { "BOV", BolivianMvdolFundsCode }, 
+      { "urn:iso:std:iso:4217#BOV", BolivianMvdolFundsCode }, 
+      { "BRL", BrazilianReal }, 
+      { "urn:iso:std:iso:4217#BRL", BrazilianReal }, 
+      { "BSD", BahamianDollar }, 
+      { "urn:iso:std:iso:4217#BSD", BahamianDollar }, 
+      { "BTN", BhutaneseNgultrum }, 
+      { "urn:iso:std:iso:4217#BTN", BhutaneseNgultrum }, 
+      { "BWP", BotswanaPula }, 
+      { "urn:iso:std:iso:4217#BWP", BotswanaPula }, 
+      { "BYN", BelarusianRuble }, 
+      { "urn:iso:std:iso:4217#BYN", BelarusianRuble }, 
+      { "BZD", BelizeDollar }, 
+      { "urn:iso:std:iso:4217#BZD", BelizeDollar }, 
+      { "CAD", CanadianDollar }, 
+      { "urn:iso:std:iso:4217#CAD", CanadianDollar }, 
+      { "CDF", CongoleseFranc }, 
+      { "urn:iso:std:iso:4217#CDF", CongoleseFranc }, 
+      { "CHE", WIREuroComplementaryCurrency }, 
+      { "urn:iso:std:iso:4217#CHE", WIREuroComplementaryCurrency }, 
+      { "CHF", SwissFranc }, 
+      { "urn:iso:std:iso:4217#CHF", SwissFranc }, 
+      { "CHW", WIRFrancComplementaryCurrency }, 
+      { "urn:iso:std:iso:4217#CHW", WIRFrancComplementaryCurrency }, 
+      { "CLF", UnidadDeFomentoFundsCode }, 
+      { "urn:iso:std:iso:4217#CLF", UnidadDeFomentoFundsCode }, 
+      { "CLP", ChileanPeso }, 
+      { "urn:iso:std:iso:4217#CLP", ChileanPeso }, 
+      { "CNY", RenminbiChineseYuan8 }, 
+      { "urn:iso:std:iso:4217#CNY", RenminbiChineseYuan8 }, 
+      { "COP", ColombianPeso }, 
+      { "urn:iso:std:iso:4217#COP", ColombianPeso }, 
+      { "COU", UnidadDeValorRealUVRFundsCode9 }, 
+      { "urn:iso:std:iso:4217#COU", UnidadDeValorRealUVRFundsCode9 }, 
+      { "CRC", CostaRicanColon }, 
+      { "urn:iso:std:iso:4217#CRC", CostaRicanColon }, 
+      { "CUC", CubanConvertiblePeso }, 
+      { "urn:iso:std:iso:4217#CUC", CubanConvertiblePeso }, 
+      { "CUP", CubanPeso }, 
+      { "urn:iso:std:iso:4217#CUP", CubanPeso }, 
+      { "CVE", CapeVerdeEscudo }, 
+      { "urn:iso:std:iso:4217#CVE", CapeVerdeEscudo }, 
+      { "CZK", CzechKoruna }, 
+      { "urn:iso:std:iso:4217#CZK", CzechKoruna }, 
+      { "DJF", DjiboutianFranc }, 
+      { "urn:iso:std:iso:4217#DJF", DjiboutianFranc }, 
+      { "DKK", DanishKrone }, 
+      { "urn:iso:std:iso:4217#DKK", DanishKrone }, 
+      { "DOP", DominicanPeso }, 
+      { "urn:iso:std:iso:4217#DOP", DominicanPeso }, 
+      { "DZD", AlgerianDinar }, 
+      { "urn:iso:std:iso:4217#DZD", AlgerianDinar }, 
+      { "EGP", EgyptianPound }, 
+      { "urn:iso:std:iso:4217#EGP", EgyptianPound }, 
+      { "ERN", EritreanNakfa }, 
+      { "urn:iso:std:iso:4217#ERN", EritreanNakfa }, 
+      { "ETB", EthiopianBirr }, 
+      { "urn:iso:std:iso:4217#ETB", EthiopianBirr }, 
+      { "EUR", Euro }, 
+      { "urn:iso:std:iso:4217#EUR", Euro }, 
+      { "FJD", FijiDollar }, 
+      { "urn:iso:std:iso:4217#FJD", FijiDollar }, 
+      { "FKP", FalklandIslandsPound }, 
+      { "urn:iso:std:iso:4217#FKP", FalklandIslandsPound }, 
+      { "GBP", PoundSterling }, 
+      { "urn:iso:std:iso:4217#GBP", PoundSterling }, 
+      { "GEL", GeorgianLari }, 
+      { "urn:iso:std:iso:4217#GEL", GeorgianLari }, 
+      { "GGP", GuernseyPound }, 
+      { "urn:iso:std:iso:4217#GGP", GuernseyPound }, 
+      { "GHS", GhanaianCedi }, 
+      { "urn:iso:std:iso:4217#GHS", GhanaianCedi }, 
+      { "GIP", GibraltarPound }, 
+      { "urn:iso:std:iso:4217#GIP", GibraltarPound }, 
+      { "GMD", GambianDalasi }, 
+      { "urn:iso:std:iso:4217#GMD", GambianDalasi }, 
+      { "GNF", GuineanFranc }, 
+      { "urn:iso:std:iso:4217#GNF", GuineanFranc }, 
+      { "GTQ", GuatemalanQuetzal }, 
+      { "urn:iso:std:iso:4217#GTQ", GuatemalanQuetzal }, 
+      { "GYD", GuyaneseDollar }, 
+      { "urn:iso:std:iso:4217#GYD", GuyaneseDollar }, 
+      { "HKD", HongKongDollar }, 
+      { "urn:iso:std:iso:4217#HKD", HongKongDollar }, 
+      { "HNL", HonduranLempira }, 
+      { "urn:iso:std:iso:4217#HNL", HonduranLempira }, 
+      { "HRK", CroatianKuna }, 
+      { "urn:iso:std:iso:4217#HRK", CroatianKuna }, 
+      { "HTG", HaitianGourde }, 
+      { "urn:iso:std:iso:4217#HTG", HaitianGourde }, 
+      { "HUF", HungarianForint }, 
+      { "urn:iso:std:iso:4217#HUF", HungarianForint }, 
+      { "IDR", IndonesianRupiah }, 
+      { "urn:iso:std:iso:4217#IDR", IndonesianRupiah }, 
+      { "ILS", IsraeliNewShekel }, 
+      { "urn:iso:std:iso:4217#ILS", IsraeliNewShekel }, 
+      { "IMP", IsleOfManPound }, 
+      { "urn:iso:std:iso:4217#IMP", IsleOfManPound }, 
+      { "INR", IndianRupee }, 
+      { "urn:iso:std:iso:4217#INR", IndianRupee }, 
+      { "IQD", IraqiDinar }, 
+      { "urn:iso:std:iso:4217#IQD", IraqiDinar }, 
+      { "IRR", IranianRial }, 
+      { "urn:iso:std:iso:4217#IRR", IranianRial }, 
+      { "ISK", IcelandicKrona }, 
+      { "urn:iso:std:iso:4217#ISK", IcelandicKrona }, 
+      { "JEP", JerseyPound }, 
+      { "urn:iso:std:iso:4217#JEP", JerseyPound }, 
+      { "JMD", JamaicanDollar }, 
+      { "urn:iso:std:iso:4217#JMD", JamaicanDollar }, 
+      { "JOD", JordanianDinar }, 
+      { "urn:iso:std:iso:4217#JOD", JordanianDinar }, 
+      { "JPY", JapaneseYen }, 
+      { "urn:iso:std:iso:4217#JPY", JapaneseYen }, 
+      { "KES", KenyanShilling }, 
+      { "urn:iso:std:iso:4217#KES", KenyanShilling }, 
+      { "KGS", KyrgyzstaniSom }, 
+      { "urn:iso:std:iso:4217#KGS", KyrgyzstaniSom }, 
+      { "KHR", CambodianRiel }, 
+      { "urn:iso:std:iso:4217#KHR", CambodianRiel }, 
+      { "KMF", ComoroFranc }, 
+      { "urn:iso:std:iso:4217#KMF", ComoroFranc }, 
+      { "KPW", NorthKoreanWon }, 
+      { "urn:iso:std:iso:4217#KPW", NorthKoreanWon }, 
+      { "KRW", SouthKoreanWon }, 
+      { "urn:iso:std:iso:4217#KRW", SouthKoreanWon }, 
+      { "KWD", KuwaitiDinar }, 
+      { "urn:iso:std:iso:4217#KWD", KuwaitiDinar }, 
+      { "KYD", CaymanIslandsDollar }, 
+      { "urn:iso:std:iso:4217#KYD", CaymanIslandsDollar }, 
+      { "KZT", KazakhstaniTenge }, 
+      { "urn:iso:std:iso:4217#KZT", KazakhstaniTenge }, 
+      { "LAK", LaoKip }, 
+      { "urn:iso:std:iso:4217#LAK", LaoKip }, 
+      { "LBP", LebanesePound }, 
+      { "urn:iso:std:iso:4217#LBP", LebanesePound }, 
+      { "LKR", SriLankanRupee }, 
+      { "urn:iso:std:iso:4217#LKR", SriLankanRupee }, 
+      { "LRD", LiberianDollar }, 
+      { "urn:iso:std:iso:4217#LRD", LiberianDollar }, 
+      { "LSL", LesothoLoti }, 
+      { "urn:iso:std:iso:4217#LSL", LesothoLoti }, 
+      { "LYD", LibyanDinar }, 
+      { "urn:iso:std:iso:4217#LYD", LibyanDinar }, 
+      { "MAD", MoroccanDirham }, 
+      { "urn:iso:std:iso:4217#MAD", MoroccanDirham }, 
+      { "MDL", MoldovanLeu }, 
+      { "urn:iso:std:iso:4217#MDL", MoldovanLeu }, 
+      { "MGA", MalagasyAriary }, 
+      { "urn:iso:std:iso:4217#MGA", MalagasyAriary }, 
+      { "MKD", MacedonianDenar }, 
+      { "urn:iso:std:iso:4217#MKD", MacedonianDenar }, 
+      { "MMK", MyanmarKyat }, 
+      { "urn:iso:std:iso:4217#MMK", MyanmarKyat }, 
+      { "MNT", MongolianTogrog }, 
+      { "urn:iso:std:iso:4217#MNT", MongolianTogrog }, 
+      { "MOP", MacanesePataca }, 
+      { "urn:iso:std:iso:4217#MOP", MacanesePataca }, 
+      { "MRU", MauritanianOuguiya }, 
+      { "urn:iso:std:iso:4217#MRU", MauritanianOuguiya }, 
+      { "MUR", MauritianRupee }, 
+      { "urn:iso:std:iso:4217#MUR", MauritianRupee }, 
+      { "MVR", MaldivianRufiyaa }, 
+      { "urn:iso:std:iso:4217#MVR", MaldivianRufiyaa }, 
+      { "MWK", MalawianKwacha }, 
+      { "urn:iso:std:iso:4217#MWK", MalawianKwacha }, 
+      { "MXN", MexicanPeso }, 
+      { "urn:iso:std:iso:4217#MXN", MexicanPeso }, 
+      { "MXV", MexicanUnidadDeInversionUDIFundsCode }, 
+      { "urn:iso:std:iso:4217#MXV", MexicanUnidadDeInversionUDIFundsCode }, 
+      { "MYR", MalaysianRinggit }, 
+      { "urn:iso:std:iso:4217#MYR", MalaysianRinggit }, 
+      { "MZN", MozambicanMetical }, 
+      { "urn:iso:std:iso:4217#MZN", MozambicanMetical }, 
+      { "NAD", NamibianDollar }, 
+      { "urn:iso:std:iso:4217#NAD", NamibianDollar }, 
+      { "NGN", NigerianNaira }, 
+      { "urn:iso:std:iso:4217#NGN", NigerianNaira }, 
+      { "NIO", NicaraguanCordoba }, 
+      { "urn:iso:std:iso:4217#NIO", NicaraguanCordoba }, 
+      { "NOK", NorwegianKrone }, 
+      { "urn:iso:std:iso:4217#NOK", NorwegianKrone }, 
+      { "NPR", NepaleseRupee }, 
+      { "urn:iso:std:iso:4217#NPR", NepaleseRupee }, 
+      { "NZD", NewZealandDollar }, 
+      { "urn:iso:std:iso:4217#NZD", NewZealandDollar }, 
+      { "OMR", OmaniRial }, 
+      { "urn:iso:std:iso:4217#OMR", OmaniRial }, 
+      { "PAB", PanamanianBalboa }, 
+      { "urn:iso:std:iso:4217#PAB", PanamanianBalboa }, 
+      { "PEN", PeruvianSol }, 
+      { "urn:iso:std:iso:4217#PEN", PeruvianSol }, 
+      { "PGK", PapuaNewGuineanKina }, 
+      { "urn:iso:std:iso:4217#PGK", PapuaNewGuineanKina }, 
+      { "PHP", PhilippinePiso13 }, 
+      { "urn:iso:std:iso:4217#PHP", PhilippinePiso13 }, 
+      { "PKR", PakistaniRupee }, 
+      { "urn:iso:std:iso:4217#PKR", PakistaniRupee }, 
+      { "PLN", PolishZłoty }, 
+      { "urn:iso:std:iso:4217#PLN", PolishZłoty }, 
+      { "PYG", ParaguayanGuarani }, 
+      { "urn:iso:std:iso:4217#PYG", ParaguayanGuarani }, 
+      { "QAR", QatariRiyal }, 
+      { "urn:iso:std:iso:4217#QAR", QatariRiyal }, 
+      { "RON", RomanianLeu }, 
+      { "urn:iso:std:iso:4217#RON", RomanianLeu }, 
+      { "RSD", SerbianDinar }, 
+      { "urn:iso:std:iso:4217#RSD", SerbianDinar }, 
+      { "RUB", RussianRuble }, 
+      { "urn:iso:std:iso:4217#RUB", RussianRuble }, 
+      { "RWF", RwandanFranc }, 
+      { "urn:iso:std:iso:4217#RWF", RwandanFranc }, 
+      { "SAR", SaudiRiyal }, 
+      { "urn:iso:std:iso:4217#SAR", SaudiRiyal }, 
+      { "SBD", SolomonIslandsDollar }, 
+      { "urn:iso:std:iso:4217#SBD", SolomonIslandsDollar }, 
+      { "SCR", SeychellesRupee }, 
+      { "urn:iso:std:iso:4217#SCR", SeychellesRupee }, 
+      { "SDG", SudanesePound }, 
+      { "urn:iso:std:iso:4217#SDG", SudanesePound }, 
+      { "SEK", SwedishKronaKronor }, 
+      { "urn:iso:std:iso:4217#SEK", SwedishKronaKronor }, 
+      { "SGD", SingaporeDollar }, 
+      { "urn:iso:std:iso:4217#SGD", SingaporeDollar }, 
+      { "SHP", SaintHelenaPound }, 
+      { "urn:iso:std:iso:4217#SHP", SaintHelenaPound }, 
+      { "SLL", SierraLeoneanLeone }, 
+      { "urn:iso:std:iso:4217#SLL", SierraLeoneanLeone }, 
+      { "SOS", SomaliShilling }, 
+      { "urn:iso:std:iso:4217#SOS", SomaliShilling }, 
+      { "SRD", SurinameseDollar }, 
+      { "urn:iso:std:iso:4217#SRD", SurinameseDollar }, 
+      { "SSP", SouthSudanesePound }, 
+      { "urn:iso:std:iso:4217#SSP", SouthSudanesePound }, 
+      { "STN", SaoTomeAndPrincipeDobra }, 
+      { "urn:iso:std:iso:4217#STN", SaoTomeAndPrincipeDobra }, 
+      { "SVC", SalvadoranColon }, 
+      { "urn:iso:std:iso:4217#SVC", SalvadoranColon }, 
+      { "SYP", SyrianPound }, 
+      { "urn:iso:std:iso:4217#SYP", SyrianPound }, 
+      { "SZL", SwaziLilangeni }, 
+      { "urn:iso:std:iso:4217#SZL", SwaziLilangeni }, 
+      { "THB", ThaiBaht }, 
+      { "urn:iso:std:iso:4217#THB", ThaiBaht }, 
+      { "TJS", TajikistaniSomoni }, 
+      { "urn:iso:std:iso:4217#TJS", TajikistaniSomoni }, 
+      { "TMT", TurkmenistanManat }, 
+      { "urn:iso:std:iso:4217#TMT", TurkmenistanManat }, 
+      { "TND", TunisianDinar }, 
+      { "urn:iso:std:iso:4217#TND", TunisianDinar }, 
+      { "TOP", TonganPaanga }, 
+      { "urn:iso:std:iso:4217#TOP", TonganPaanga }, 
+      { "TRY", TurkishLira }, 
+      { "urn:iso:std:iso:4217#TRY", TurkishLira }, 
+      { "TTD", TrinidadAndTobagoDollar }, 
+      { "urn:iso:std:iso:4217#TTD", TrinidadAndTobagoDollar }, 
+      { "TVD", TuvaluDollar }, 
+      { "urn:iso:std:iso:4217#TVD", TuvaluDollar }, 
+      { "TWD", NewTaiwanDollar }, 
+      { "urn:iso:std:iso:4217#TWD", NewTaiwanDollar }, 
+      { "TZS", TanzanianShilling }, 
+      { "urn:iso:std:iso:4217#TZS", TanzanianShilling }, 
+      { "UAH", UkrainianHryvnia }, 
+      { "urn:iso:std:iso:4217#UAH", UkrainianHryvnia }, 
+      { "UGX", UgandanShilling }, 
+      { "urn:iso:std:iso:4217#UGX", UgandanShilling }, 
+      { "USD", UnitedStatesDollar }, 
+      { "urn:iso:std:iso:4217#USD", UnitedStatesDollar }, 
+      { "USN", UnitedStatesDollarNextDayFundsCode }, 
+      { "urn:iso:std:iso:4217#USN", UnitedStatesDollarNextDayFundsCode }, 
+      { "UYI", UruguayPesoEnUnidadesIndexadasURUIURUIFundsCode }, 
+      { "urn:iso:std:iso:4217#UYI", UruguayPesoEnUnidadesIndexadasURUIURUIFundsCode }, 
+      { "UYU", UruguayanPeso }, 
+      { "urn:iso:std:iso:4217#UYU", UruguayanPeso }, 
+      { "UZS", UzbekistanSom }, 
+      { "urn:iso:std:iso:4217#UZS", UzbekistanSom }, 
+      { "VEF", VenezuelanBolivar }, 
+      { "urn:iso:std:iso:4217#VEF", VenezuelanBolivar }, 
+      { "VND", VietnameseĐong }, 
+      { "urn:iso:std:iso:4217#VND", VietnameseĐong }, 
+      { "VUV", VanuatuVatu }, 
+      { "urn:iso:std:iso:4217#VUV", VanuatuVatu }, 
+      { "WST", SamoanTala }, 
+      { "urn:iso:std:iso:4217#WST", SamoanTala }, 
+      { "XAF", CFAFrancBEAC }, 
+      { "urn:iso:std:iso:4217#XAF", CFAFrancBEAC }, 
+      { "XAG", SilverOneTroyOunce }, 
+      { "urn:iso:std:iso:4217#XAG", SilverOneTroyOunce }, 
+      { "XAU", GoldOneTroyOunce }, 
+      { "urn:iso:std:iso:4217#XAU", GoldOneTroyOunce }, 
+      { "XBA", EuropeanCompositeUnitEURCOBondMarketUnit }, 
+      { "urn:iso:std:iso:4217#XBA", EuropeanCompositeUnitEURCOBondMarketUnit }, 
+      { "XBB", EuropeanMonetaryUnitEMU6BondMarketUnit }, 
+      { "urn:iso:std:iso:4217#XBB", EuropeanMonetaryUnitEMU6BondMarketUnit }, 
+      { "XBC", EuropeanUnitOfAccount9EUA9BondMarketUnit }, 
+      { "urn:iso:std:iso:4217#XBC", EuropeanUnitOfAccount9EUA9BondMarketUnit }, 
+      { "XBD", EuropeanUnitOfAccount17EUA17BondMarketUnit }, 
+      { "urn:iso:std:iso:4217#XBD", EuropeanUnitOfAccount17EUA17BondMarketUnit }, 
+      { "XCD", EastCaribbeanDollar }, 
+      { "urn:iso:std:iso:4217#XCD", EastCaribbeanDollar }, 
+      { "XDR", SpecialDrawingRights }, 
+      { "urn:iso:std:iso:4217#XDR", SpecialDrawingRights }, 
+      { "XOF", CFAFrancBCEAO }, 
+      { "urn:iso:std:iso:4217#XOF", CFAFrancBCEAO }, 
+      { "XPD", PalladiumOneTroyOunce }, 
+      { "urn:iso:std:iso:4217#XPD", PalladiumOneTroyOunce }, 
+      { "XPF", CFPFrancFrancPacifique }, 
+      { "urn:iso:std:iso:4217#XPF", CFPFrancFrancPacifique }, 
+      { "XPT", PlatinumOneTroyOunce }, 
+      { "urn:iso:std:iso:4217#XPT", PlatinumOneTroyOunce }, 
+      { "XSU", SUCRE }, 
+      { "urn:iso:std:iso:4217#XSU", SUCRE }, 
+      { "XTS", CodeReservedForTestingPurposes }, 
+      { "urn:iso:std:iso:4217#XTS", CodeReservedForTestingPurposes }, 
+      { "XUA", ADBUnitOfAccount }, 
+      { "urn:iso:std:iso:4217#XUA", ADBUnitOfAccount }, 
+      { "XXX", NoCurrency }, 
+      { "urn:iso:std:iso:4217#XXX", NoCurrency }, 
+      { "YER", YemeniRial }, 
+      { "urn:iso:std:iso:4217#YER", YemeniRial }, 
+      { "ZAR", SouthAfricanRand }, 
+      { "urn:iso:std:iso:4217#ZAR", SouthAfricanRand }, 
+      { "ZMW", ZambianKwacha }, 
+      { "urn:iso:std:iso:4217#ZMW", ZambianKwacha }, 
+      { "ZWL", ZimbabweanDollarA10 }, 
+      { "urn:iso:std:iso:4217#ZWL", ZimbabweanDollarA10 }, 
+    };
   };
 }

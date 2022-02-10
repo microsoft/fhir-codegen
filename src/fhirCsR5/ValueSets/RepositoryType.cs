@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralClickAndSee = "directlink";
 
     /// <summary>
+    /// Literal for code: RepositoryTypeClickAndSee
+    /// </summary>
+    public const string LiteralRepositoryTypeClickAndSee = "http://hl7.org/fhir/repository-type#directlink";
+
+    /// <summary>
     /// Literal for code: ResultCannotBeAccessUnlessAnAccountIsLoggedIn
     /// </summary>
     public const string LiteralResultCannotBeAccessUnlessAnAccountIsLoggedIn = "login";
+
+    /// <summary>
+    /// Literal for code: RepositoryTypeResultCannotBeAccessUnlessAnAccountIsLoggedIn
+    /// </summary>
+    public const string LiteralRepositoryTypeResultCannotBeAccessUnlessAnAccountIsLoggedIn = "http://hl7.org/fhir/repository-type#login";
 
     /// <summary>
     /// Literal for code: ResultNeedToBeFetchedWithAPIAndNeedLOGINOrCookiesAreRequiredWhenVisitingTheLinkOfResource
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralResultNeedToBeFetchedWithAPIAndNeedLOGINOrCookiesAreRequiredWhenVisitingTheLinkOfResource = "oauth";
 
     /// <summary>
+    /// Literal for code: RepositoryTypeResultNeedToBeFetchedWithAPIAndNeedLOGINOrCookiesAreRequiredWhenVisitingTheLinkOfResource
+    /// </summary>
+    public const string LiteralRepositoryTypeResultNeedToBeFetchedWithAPIAndNeedLOGINOrCookiesAreRequiredWhenVisitingTheLinkOfResource = "http://hl7.org/fhir/repository-type#oauth";
+
+    /// <summary>
     /// Literal for code: TheURLIsTheRESTfulOrOtherKindOfAPIThatCanAccessToTheResult
     /// </summary>
     public const string LiteralTheURLIsTheRESTfulOrOtherKindOfAPIThatCanAccessToTheResult = "openapi";
 
     /// <summary>
+    /// Literal for code: RepositoryTypeTheURLIsTheRESTfulOrOtherKindOfAPIThatCanAccessToTheResult
+    /// </summary>
+    public const string LiteralRepositoryTypeTheURLIsTheRESTfulOrOtherKindOfAPIThatCanAccessToTheResult = "http://hl7.org/fhir/repository-type#openapi";
+
+    /// <summary>
     /// Literal for code: SomeOtherComplicatedOrParticularWayToGetResourceFromURL
     /// </summary>
     public const string LiteralSomeOtherComplicatedOrParticularWayToGetResourceFromURL = "other";
+
+    /// <summary>
+    /// Literal for code: RepositoryTypeSomeOtherComplicatedOrParticularWayToGetResourceFromURL
+    /// </summary>
+    public const string LiteralRepositoryTypeSomeOtherComplicatedOrParticularWayToGetResourceFromURL = "http://hl7.org/fhir/repository-type#other";
+
+    /// <summary>
+    /// Dictionary for looking up RepositoryType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "directlink", ClickAndSee }, 
+      { "http://hl7.org/fhir/repository-type#directlink", ClickAndSee }, 
+      { "login", ResultCannotBeAccessUnlessAnAccountIsLoggedIn }, 
+      { "http://hl7.org/fhir/repository-type#login", ResultCannotBeAccessUnlessAnAccountIsLoggedIn }, 
+      { "oauth", ResultNeedToBeFetchedWithAPIAndNeedLOGINOrCookiesAreRequiredWhenVisitingTheLinkOfResource }, 
+      { "http://hl7.org/fhir/repository-type#oauth", ResultNeedToBeFetchedWithAPIAndNeedLOGINOrCookiesAreRequiredWhenVisitingTheLinkOfResource }, 
+      { "openapi", TheURLIsTheRESTfulOrOtherKindOfAPIThatCanAccessToTheResult }, 
+      { "http://hl7.org/fhir/repository-type#openapi", TheURLIsTheRESTfulOrOtherKindOfAPIThatCanAccessToTheResult }, 
+      { "other", SomeOtherComplicatedOrParticularWayToGetResourceFromURL }, 
+      { "http://hl7.org/fhir/repository-type#other", SomeOtherComplicatedOrParticularWayToGetResourceFromURL }, 
+    };
   };
 }

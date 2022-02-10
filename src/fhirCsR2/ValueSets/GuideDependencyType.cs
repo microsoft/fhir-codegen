@@ -36,8 +36,28 @@ namespace fhirCsR2.ValueSets
     public const string LiteralInclusion = "inclusion";
 
     /// <summary>
+    /// Literal for code: GuideDependencyTypeInclusion
+    /// </summary>
+    public const string LiteralGuideDependencyTypeInclusion = "http://hl7.org/fhir/guide-dependency-type#inclusion";
+
+    /// <summary>
     /// Literal for code: Reference
     /// </summary>
     public const string LiteralReference = "reference";
+
+    /// <summary>
+    /// Literal for code: GuideDependencyTypeReference
+    /// </summary>
+    public const string LiteralGuideDependencyTypeReference = "http://hl7.org/fhir/guide-dependency-type#reference";
+
+    /// <summary>
+    /// Dictionary for looking up GuideDependencyType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "inclusion", Inclusion }, 
+      { "http://hl7.org/fhir/guide-dependency-type#inclusion", Inclusion }, 
+      { "reference", Reference }, 
+      { "http://hl7.org/fhir/guide-dependency-type#reference", Reference }, 
+    };
   };
 }

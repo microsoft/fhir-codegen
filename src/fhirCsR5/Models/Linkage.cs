@@ -119,6 +119,11 @@ namespace fhirCsR5.Models
     public const string SOURCE = "source";
     public const string ALTERNATE = "alternate";
     public const string HISTORICAL = "historical";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "source",
+      "alternate",
+      "historical",
+    };
   }
   /// <summary>
   /// Identifies two or more records (resource instances) that refer to the same real-world "occurrence".
@@ -133,6 +138,10 @@ namespace fhirCsR5.Models
     /// If false, any asserted linkages should not be considered current/relevant/applicable.
     /// </summary>
     public bool? Active { get; set; }
+    /// <summary>
+    /// Extension container element for Active
+    /// </summary>
+    public Element _Active { get; set; }
     /// <summary>
     /// Identifies the user or organization responsible for asserting the linkages as well as the user or organization who establishes the context in which the nature of each linkage is evaluated.
     /// </summary>
@@ -161,6 +170,12 @@ namespace fhirCsR5.Models
       if (Active != null)
       {
         writer.WriteBoolean("active", (bool)Active!);
+      }
+
+      if (_Active != null)
+      {
+        writer.WritePropertyName("_active");
+        _Active.SerializeJson(writer, options);
       }
 
       if (Author != null)
@@ -196,6 +211,11 @@ namespace fhirCsR5.Models
       {
         case "active":
           Active = reader.GetBoolean();
+          break;
+
+        case "_active":
+          _Active = new fhirCsR5.Models.Element();
+          _Active.DeserializeJson(ref reader, options);
           break;
 
         case "author":

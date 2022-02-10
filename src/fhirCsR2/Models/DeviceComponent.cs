@@ -445,5 +445,18 @@ namespace fhirCsR2.Models
     public const string MECHANICAL = "mechanical";
     public const string ACOUSTICAL = "acoustical";
     public const string MANUAL = "manual";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "other",
+      "chemical",
+      "electrical",
+      "impedance",
+      "nuclear",
+      "optical",
+      "thermal",
+      "biological",
+      "mechanical",
+      "acoustical",
+      "manual",
+    };
   }
 }

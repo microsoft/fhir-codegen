@@ -246,6 +246,11 @@ namespace fhirCsR2.Models
     public const string CLOSED = "closed";
     public const string OPEN = "open";
     public const string OPENATEND = "openAtEnd";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "closed",
+      "open",
+      "openAtEnd",
+    };
   }
   /// <summary>
   /// Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.
@@ -653,6 +658,11 @@ namespace fhirCsR2.Models
     public const string CONTAINED = "contained";
     public const string REFERENCED = "referenced";
     public const string BUNDLED = "bundled";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "contained",
+      "referenced",
+      "bundled",
+    };
   }
   /// <summary>
   /// Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.
@@ -859,6 +869,10 @@ namespace fhirCsR2.Models
   public static class ElementDefinitionConstraintSeverityCodes {
     public const string ERROR = "error";
     public const string WARNING = "warning";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "error",
+      "warning",
+    };
   }
   /// <summary>
   /// Binds to a value set if this element is coded (code, Coding, CodeableConcept).
@@ -1026,6 +1040,12 @@ namespace fhirCsR2.Models
     public const string EXTENSIBLE = "extensible";
     public const string PREFERRED = "preferred";
     public const string EXAMPLE = "example";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "required",
+      "extensible",
+      "preferred",
+      "example",
+    };
   }
   /// <summary>
   /// Provides guidance to implementers familiar with or converting content from other specifications.

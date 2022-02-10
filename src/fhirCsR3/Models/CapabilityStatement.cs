@@ -382,6 +382,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? Cors { get; set; }
     /// <summary>
+    /// Extension container element for Cors
+    /// </summary>
+    public Element _Cors { get; set; }
+    /// <summary>
     /// General description of how security works.
     /// </summary>
     public string Description { get; set; }
@@ -407,6 +411,12 @@ namespace fhirCsR3.Models
       if (Cors != null)
       {
         writer.WriteBoolean("cors", (bool)Cors!);
+      }
+
+      if (_Cors != null)
+      {
+        writer.WritePropertyName("_cors");
+        _Cors.SerializeJson(writer, options);
       }
 
       if ((Service != null) && (Service.Count != 0))
@@ -487,6 +497,11 @@ namespace fhirCsR3.Models
 
         case "cors":
           Cors = reader.GetBoolean();
+          break;
+
+        case "_cors":
+          _Cors = new fhirCsR3.Models.Element();
+          _Cors.DeserializeJson(ref reader, options);
           break;
 
         case "description":
@@ -684,6 +699,17 @@ namespace fhirCsR3.Models
     public const string HISTORY_TYPE = "history-type";
     public const string CREATE = "create";
     public const string SEARCH_TYPE = "search-type";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "read",
+      "vread",
+      "update",
+      "patch",
+      "delete",
+      "history-instance",
+      "history-type",
+      "create",
+      "search-type",
+    };
   }
   /// <summary>
   /// Search parameters for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation.
@@ -868,6 +894,16 @@ namespace fhirCsR3.Models
     public const string COMPOSITE = "composite";
     public const string QUANTITY = "quantity";
     public const string URI = "uri";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "number",
+      "date",
+      "string",
+      "token",
+      "reference",
+      "composite",
+      "quantity",
+      "uri",
+    };
   }
   /// <summary>
   /// Max of one repetition per resource type.
@@ -878,6 +914,10 @@ namespace fhirCsR3.Models
     /// Conditional Create is mainly appropriate for interface engine scripts converting from other formats, such as v2.
     /// </summary>
     public bool? ConditionalCreate { get; set; }
+    /// <summary>
+    /// Extension container element for ConditionalCreate
+    /// </summary>
+    public Element _ConditionalCreate { get; set; }
     /// <summary>
     /// Conditional Delete is mainly appropriate for interface engine scripts converting from other formats, such as v2.
     /// </summary>
@@ -899,6 +939,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? ConditionalUpdate { get; set; }
     /// <summary>
+    /// Extension container element for ConditionalUpdate
+    /// </summary>
+    public Element _ConditionalUpdate { get; set; }
+    /// <summary>
     /// Additional information about the resource type used by the system.
     /// </summary>
     public string Documentation { get; set; }
@@ -918,6 +962,10 @@ namespace fhirCsR3.Models
     /// It is useful to support the vRead operation for current operations, even if past versions aren't available.
     /// </summary>
     public bool? ReadHistory { get; set; }
+    /// <summary>
+    /// Extension container element for ReadHistory
+    /// </summary>
+    public Element _ReadHistory { get; set; }
     /// <summary>
     /// A set of flags that defines how references are supported.
     /// </summary>
@@ -958,6 +1006,10 @@ namespace fhirCsR3.Models
     /// Allowing the clients to create new identities on the server means that the system administrator needs to have confidence that the clients do not create clashing identities between them. Obviously, if there is only one client, this won't happen. While creating identities on the client means that the clients need to be managed, it's much more convenient for many scenarios if such management can be put in place.
     /// </summary>
     public bool? UpdateCreate { get; set; }
+    /// <summary>
+    /// Extension container element for UpdateCreate
+    /// </summary>
+    public Element _UpdateCreate { get; set; }
     /// <summary>
     /// If a server supports versionIds correctly, it SHOULD support vread too, but is not required to do so.
     /// </summary>
@@ -1034,14 +1086,32 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("readHistory", (bool)ReadHistory!);
       }
 
+      if (_ReadHistory != null)
+      {
+        writer.WritePropertyName("_readHistory");
+        _ReadHistory.SerializeJson(writer, options);
+      }
+
       if (UpdateCreate != null)
       {
         writer.WriteBoolean("updateCreate", (bool)UpdateCreate!);
       }
 
+      if (_UpdateCreate != null)
+      {
+        writer.WritePropertyName("_updateCreate");
+        _UpdateCreate.SerializeJson(writer, options);
+      }
+
       if (ConditionalCreate != null)
       {
         writer.WriteBoolean("conditionalCreate", (bool)ConditionalCreate!);
+      }
+
+      if (_ConditionalCreate != null)
+      {
+        writer.WritePropertyName("_conditionalCreate");
+        _ConditionalCreate.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(ConditionalRead))
@@ -1058,6 +1128,12 @@ namespace fhirCsR3.Models
       if (ConditionalUpdate != null)
       {
         writer.WriteBoolean("conditionalUpdate", (bool)ConditionalUpdate!);
+      }
+
+      if (_ConditionalUpdate != null)
+      {
+        writer.WritePropertyName("_conditionalUpdate");
+        _ConditionalUpdate.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(ConditionalDelete))
@@ -1178,6 +1254,11 @@ namespace fhirCsR3.Models
           ConditionalCreate = reader.GetBoolean();
           break;
 
+        case "_conditionalCreate":
+          _ConditionalCreate = new fhirCsR3.Models.Element();
+          _ConditionalCreate.DeserializeJson(ref reader, options);
+          break;
+
         case "conditionalDelete":
           ConditionalDelete = reader.GetString();
           break;
@@ -1198,6 +1279,11 @@ namespace fhirCsR3.Models
 
         case "conditionalUpdate":
           ConditionalUpdate = reader.GetBoolean();
+          break;
+
+        case "_conditionalUpdate":
+          _ConditionalUpdate = new fhirCsR3.Models.Element();
+          _ConditionalUpdate.DeserializeJson(ref reader, options);
           break;
 
         case "documentation":
@@ -1243,6 +1329,11 @@ namespace fhirCsR3.Models
 
         case "readHistory":
           ReadHistory = reader.GetBoolean();
+          break;
+
+        case "_readHistory":
+          _ReadHistory = new fhirCsR3.Models.Element();
+          _ReadHistory.DeserializeJson(ref reader, options);
           break;
 
         case "referencePolicy":
@@ -1441,6 +1532,11 @@ namespace fhirCsR3.Models
           UpdateCreate = reader.GetBoolean();
           break;
 
+        case "_updateCreate":
+          _UpdateCreate = new fhirCsR3.Models.Element();
+          _UpdateCreate.DeserializeJson(ref reader, options);
+          break;
+
         case "versioning":
           Versioning = reader.GetString();
           break;
@@ -1488,6 +1584,11 @@ namespace fhirCsR3.Models
     public const string NOT_SUPPORTED = "not-supported";
     public const string SINGLE = "single";
     public const string MULTIPLE = "multiple";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "not-supported",
+      "single",
+      "multiple",
+    };
   }
   /// <summary>
   /// Code Values for the CapabilityStatement.rest.resource.conditionalRead field
@@ -1497,6 +1598,12 @@ namespace fhirCsR3.Models
     public const string MODIFIED_SINCE = "modified-since";
     public const string NOT_MATCH = "not-match";
     public const string FULL_SUPPORT = "full-support";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "not-supported",
+      "modified-since",
+      "not-match",
+      "full-support",
+    };
   }
   /// <summary>
   /// Code Values for the CapabilityStatement.rest.resource.referencePolicy field
@@ -1507,6 +1614,13 @@ namespace fhirCsR3.Models
     public const string RESOLVES = "resolves";
     public const string ENFORCED = "enforced";
     public const string LOCAL = "local";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "literal",
+      "logical",
+      "resolves",
+      "enforced",
+      "local",
+    };
   }
   /// <summary>
   /// Code Values for the CapabilityStatement.rest.resource.versioning field
@@ -1515,6 +1629,11 @@ namespace fhirCsR3.Models
     public const string NO_VERSION = "no-version";
     public const string VERSIONED = "versioned";
     public const string VERSIONED_UPDATE = "versioned-update";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "no-version",
+      "versioned",
+      "versioned-update",
+    };
   }
   /// <summary>
   /// A specification of restful operations supported by the system.
@@ -1639,6 +1758,12 @@ namespace fhirCsR3.Models
     public const string BATCH = "batch";
     public const string SEARCH_SYSTEM = "search-system";
     public const string HISTORY_SYSTEM = "history-system";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "transaction",
+      "batch",
+      "search-system",
+      "history-system",
+    };
   }
   /// <summary>
   /// Definition of an operation or a named query together with its parameters and their meaning and type.
@@ -2140,6 +2265,10 @@ namespace fhirCsR3.Models
   public static class CapabilityStatementRestModeCodes {
     public const string CLIENT = "client";
     public const string SERVER = "server";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "client",
+      "server",
+    };
   }
   /// <summary>
   /// An endpoint (network accessible address) to which messages and/or replies are to be sent.
@@ -2351,6 +2480,10 @@ namespace fhirCsR3.Models
   public static class CapabilityStatementMessagingSupportedMessageModeCodes {
     public const string SENDER = "sender";
     public const string RECEIVER = "receiver";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "sender",
+      "receiver",
+    };
   }
   /// <summary>
   /// The same event may be listed up to two times - once as sender and once as receiver.
@@ -2575,6 +2708,11 @@ namespace fhirCsR3.Models
     public const string CONSEQUENCE = "Consequence";
     public const string CURRENCY = "Currency";
     public const string NOTIFICATION = "Notification";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "Consequence",
+      "Currency",
+      "Notification",
+    };
   }
   /// <summary>
   /// Code Values for the CapabilityStatement.messaging.event.mode field
@@ -2582,6 +2720,10 @@ namespace fhirCsR3.Models
   public static class CapabilityStatementMessagingEventModeCodes {
     public const string SENDER = "sender";
     public const string RECEIVER = "receiver";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "sender",
+      "receiver",
+    };
   }
   /// <summary>
   /// Multiple repetitions allow the documentation of multiple endpoints per solution.
@@ -2951,6 +3093,10 @@ namespace fhirCsR3.Models
   public static class CapabilityStatementDocumentModeCodes {
     public const string PRODUCER = "producer";
     public const string CONSUMER = "consumer";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "producer",
+      "consumer",
+    };
   }
   /// <summary>
   /// A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
@@ -3006,6 +3152,10 @@ namespace fhirCsR3.Models
     /// Allows filtering of capability statement that are appropriate for use vs. not. This is labeled as "Is Modifier" because applications should not use an experimental capability statement in production.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// The version of the FHIR specification on which this capability statement is based.
     /// </summary>
@@ -3215,6 +3365,12 @@ namespace fhirCsR3.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -3616,6 +3772,11 @@ namespace fhirCsR3.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR3.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "fhirVersion":
@@ -4091,6 +4252,12 @@ namespace fhirCsR3.Models
     public const string EXTENSIONS = "extensions";
     public const string ELEMENTS = "elements";
     public const string BOTH = "both";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "no",
+      "extensions",
+      "elements",
+      "both",
+    };
   }
   /// <summary>
   /// Code Values for the CapabilityStatement.format field
@@ -4100,6 +4267,12 @@ namespace fhirCsR3.Models
     public const string JSON = "json";
     public const string TTL = "ttl";
     public const string MIME = "MIME";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "xml",
+      "json",
+      "ttl",
+      "MIME",
+    };
   }
   /// <summary>
   /// Code Values for the CapabilityStatement.kind field
@@ -4108,6 +4281,11 @@ namespace fhirCsR3.Models
     public const string INSTANCE = "instance";
     public const string CAPABILITY = "capability";
     public const string REQUIREMENTS = "requirements";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "instance",
+      "capability",
+      "requirements",
+    };
   }
   /// <summary>
   /// Code Values for the CapabilityStatement.status field
@@ -4117,5 +4295,11 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

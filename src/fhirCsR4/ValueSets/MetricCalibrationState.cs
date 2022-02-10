@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCalibrated = "calibrated";
 
     /// <summary>
+    /// Literal for code: MetricCalibrationStateCalibrated
+    /// </summary>
+    public const string LiteralMetricCalibrationStateCalibrated = "http://hl7.org/fhir/metric-calibration-state#calibrated";
+
+    /// <summary>
     /// Literal for code: CalibrationRequired
     /// </summary>
     public const string LiteralCalibrationRequired = "calibration-required";
+
+    /// <summary>
+    /// Literal for code: MetricCalibrationStateCalibrationRequired
+    /// </summary>
+    public const string LiteralMetricCalibrationStateCalibrationRequired = "http://hl7.org/fhir/metric-calibration-state#calibration-required";
 
     /// <summary>
     /// Literal for code: NotCalibrated
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNotCalibrated = "not-calibrated";
 
     /// <summary>
+    /// Literal for code: MetricCalibrationStateNotCalibrated
+    /// </summary>
+    public const string LiteralMetricCalibrationStateNotCalibrated = "http://hl7.org/fhir/metric-calibration-state#not-calibrated";
+
+    /// <summary>
     /// Literal for code: Unspecified
     /// </summary>
     public const string LiteralUnspecified = "unspecified";
+
+    /// <summary>
+    /// Literal for code: MetricCalibrationStateUnspecified
+    /// </summary>
+    public const string LiteralMetricCalibrationStateUnspecified = "http://hl7.org/fhir/metric-calibration-state#unspecified";
+
+    /// <summary>
+    /// Dictionary for looking up MetricCalibrationState Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "calibrated", Calibrated }, 
+      { "http://hl7.org/fhir/metric-calibration-state#calibrated", Calibrated }, 
+      { "calibration-required", CalibrationRequired }, 
+      { "http://hl7.org/fhir/metric-calibration-state#calibration-required", CalibrationRequired }, 
+      { "not-calibrated", NotCalibrated }, 
+      { "http://hl7.org/fhir/metric-calibration-state#not-calibrated", NotCalibrated }, 
+      { "unspecified", Unspecified }, 
+      { "http://hl7.org/fhir/metric-calibration-state#unspecified", Unspecified }, 
+    };
   };
 }

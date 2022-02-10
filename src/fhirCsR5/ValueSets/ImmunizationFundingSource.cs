@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ImmunizationFundingSourceCodes
   {
     /// <summary>
-    /// 
+    /// Private
     /// </summary>
     public static readonly Coding Private = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/immunization-funding-source"
     };
     /// <summary>
-    /// 
+    /// Public
     /// </summary>
     public static readonly Coding Public = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPrivate = "private";
 
     /// <summary>
+    /// Literal for code: ImmunizationFundingSourcePrivate
+    /// </summary>
+    public const string LiteralImmunizationFundingSourcePrivate = "http://terminology.hl7.org/CodeSystem/immunization-funding-source#private";
+
+    /// <summary>
     /// Literal for code: Public
     /// </summary>
     public const string LiteralPublic = "public";
+
+    /// <summary>
+    /// Literal for code: ImmunizationFundingSourcePublic
+    /// </summary>
+    public const string LiteralImmunizationFundingSourcePublic = "http://terminology.hl7.org/CodeSystem/immunization-funding-source#public";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationFundingSource Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "private", Private }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-funding-source#private", Private }, 
+      { "public", Public }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-funding-source#public", Public }, 
+    };
   };
 }

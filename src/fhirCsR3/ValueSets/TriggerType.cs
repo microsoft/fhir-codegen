@@ -81,9 +81,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDataAccessEnded = "data-access-ended";
 
     /// <summary>
+    /// Literal for code: TriggerTypeDataAccessEnded
+    /// </summary>
+    public const string LiteralTriggerTypeDataAccessEnded = "http://hl7.org/fhir/trigger-type#data-access-ended";
+
+    /// <summary>
     /// Literal for code: DataAccessed
     /// </summary>
     public const string LiteralDataAccessed = "data-accessed";
+
+    /// <summary>
+    /// Literal for code: TriggerTypeDataAccessed
+    /// </summary>
+    public const string LiteralTriggerTypeDataAccessed = "http://hl7.org/fhir/trigger-type#data-accessed";
 
     /// <summary>
     /// Literal for code: DataAdded
@@ -91,9 +101,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDataAdded = "data-added";
 
     /// <summary>
+    /// Literal for code: TriggerTypeDataAdded
+    /// </summary>
+    public const string LiteralTriggerTypeDataAdded = "http://hl7.org/fhir/trigger-type#data-added";
+
+    /// <summary>
     /// Literal for code: DataModified
     /// </summary>
     public const string LiteralDataModified = "data-modified";
+
+    /// <summary>
+    /// Literal for code: TriggerTypeDataModified
+    /// </summary>
+    public const string LiteralTriggerTypeDataModified = "http://hl7.org/fhir/trigger-type#data-modified";
 
     /// <summary>
     /// Literal for code: DataRemoved
@@ -101,13 +121,48 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDataRemoved = "data-removed";
 
     /// <summary>
+    /// Literal for code: TriggerTypeDataRemoved
+    /// </summary>
+    public const string LiteralTriggerTypeDataRemoved = "http://hl7.org/fhir/trigger-type#data-removed";
+
+    /// <summary>
     /// Literal for code: NamedEvent
     /// </summary>
     public const string LiteralNamedEvent = "named-event";
 
     /// <summary>
+    /// Literal for code: TriggerTypeNamedEvent
+    /// </summary>
+    public const string LiteralTriggerTypeNamedEvent = "http://hl7.org/fhir/trigger-type#named-event";
+
+    /// <summary>
     /// Literal for code: Periodic
     /// </summary>
     public const string LiteralPeriodic = "periodic";
+
+    /// <summary>
+    /// Literal for code: TriggerTypePeriodic
+    /// </summary>
+    public const string LiteralTriggerTypePeriodic = "http://hl7.org/fhir/trigger-type#periodic";
+
+    /// <summary>
+    /// Dictionary for looking up TriggerType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "data-access-ended", DataAccessEnded }, 
+      { "http://hl7.org/fhir/trigger-type#data-access-ended", DataAccessEnded }, 
+      { "data-accessed", DataAccessed }, 
+      { "http://hl7.org/fhir/trigger-type#data-accessed", DataAccessed }, 
+      { "data-added", DataAdded }, 
+      { "http://hl7.org/fhir/trigger-type#data-added", DataAdded }, 
+      { "data-modified", DataModified }, 
+      { "http://hl7.org/fhir/trigger-type#data-modified", DataModified }, 
+      { "data-removed", DataRemoved }, 
+      { "http://hl7.org/fhir/trigger-type#data-removed", DataRemoved }, 
+      { "named-event", NamedEvent }, 
+      { "http://hl7.org/fhir/trigger-type#named-event", NamedEvent }, 
+      { "periodic", Periodic }, 
+      { "http://hl7.org/fhir/trigger-type#periodic", Periodic }, 
+    };
   };
 }

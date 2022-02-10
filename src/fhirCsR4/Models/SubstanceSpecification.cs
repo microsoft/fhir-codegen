@@ -1405,6 +1405,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? Preferred { get; set; }
     /// <summary>
+    /// Extension container element for Preferred
+    /// </summary>
+    public Element _Preferred { get; set; }
+    /// <summary>
     /// Supporting literature.
     /// </summary>
     public List<Reference> Source { get; set; }
@@ -1461,6 +1465,12 @@ namespace fhirCsR4.Models
       if (Preferred != null)
       {
         writer.WriteBoolean("preferred", (bool)Preferred!);
+      }
+
+      if (_Preferred != null)
+      {
+        writer.WritePropertyName("_preferred");
+        _Preferred.SerializeJson(writer, options);
       }
 
       if ((Language != null) && (Language.Count != 0))
@@ -1687,6 +1697,11 @@ namespace fhirCsR4.Models
           Preferred = reader.GetBoolean();
           break;
 
+        case "_preferred":
+          _Preferred = new fhirCsR4.Models.Element();
+          _Preferred.DeserializeJson(ref reader, options);
+          break;
+
         case "source":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -1847,6 +1862,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? IsDefining { get; set; }
     /// <summary>
+    /// Extension container element for IsDefining
+    /// </summary>
+    public Element _IsDefining { get; set; }
+    /// <summary>
     /// For example "salt to parent", "active moiety", "starting material".
     /// </summary>
     public CodeableConcept Relationship { get; set; }
@@ -1894,6 +1913,12 @@ namespace fhirCsR4.Models
       if (IsDefining != null)
       {
         writer.WriteBoolean("isDefining", (bool)IsDefining!);
+      }
+
+      if (_IsDefining != null)
+      {
+        writer.WritePropertyName("_isDefining");
+        _IsDefining.SerializeJson(writer, options);
       }
 
       if (AmountQuantity != null)
@@ -1998,6 +2023,11 @@ namespace fhirCsR4.Models
 
         case "isDefining":
           IsDefining = reader.GetBoolean();
+          break;
+
+        case "_isDefining":
+          _IsDefining = new fhirCsR4.Models.Element();
+          _IsDefining.DeserializeJson(ref reader, options);
           break;
 
         case "relationship":

@@ -578,6 +578,10 @@ namespace fhirCsR5.Models
   public static class ImagingSelectionImageRegionCoordinateTypeCodes {
     public const string VAL_2D = "2d";
     public const string VAL_3D = "3d";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "2d",
+      "3d",
+    };
   }
   /// <summary>
   /// Code Values for the ImagingSelection.imageRegion.regionType field
@@ -589,6 +593,14 @@ namespace fhirCsR5.Models
     public const string POLYGON = "POLYGON";
     public const string ELLIPSE = "ELLIPSE";
     public const string ELLIPSOID = "ELLIPSOID";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "POINT",
+      "MULTIPOINT",
+      "POLYLINE",
+      "POLYGON",
+      "ELLIPSE",
+      "ELLIPSOID",
+    };
   }
   /// <summary>
   /// A selection of DICOM SOP instances and/or frames within a single Study and Series. This might include additional specifics such as an image region, an Observation UID or a Segmentation Number, allowing linkage to an Observation Resource or transferring this information along with the ImagingStudy Resource.

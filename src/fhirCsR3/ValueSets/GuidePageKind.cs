@@ -90,9 +90,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDictionary = "dictionary";
 
     /// <summary>
+    /// Literal for code: GuidePageKindDictionary
+    /// </summary>
+    public const string LiteralGuidePageKindDictionary = "http://hl7.org/fhir/guide-page-kind#dictionary";
+
+    /// <summary>
     /// Literal for code: Directory
     /// </summary>
     public const string LiteralDirectory = "directory";
+
+    /// <summary>
+    /// Literal for code: GuidePageKindDirectory
+    /// </summary>
+    public const string LiteralGuidePageKindDirectory = "http://hl7.org/fhir/guide-page-kind#directory";
 
     /// <summary>
     /// Literal for code: Example
@@ -100,9 +110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExample = "example";
 
     /// <summary>
+    /// Literal for code: GuidePageKindExample
+    /// </summary>
+    public const string LiteralGuidePageKindExample = "http://hl7.org/fhir/guide-page-kind#example";
+
+    /// <summary>
     /// Literal for code: Include
     /// </summary>
     public const string LiteralInclude = "include";
+
+    /// <summary>
+    /// Literal for code: GuidePageKindInclude
+    /// </summary>
+    public const string LiteralGuidePageKindInclude = "http://hl7.org/fhir/guide-page-kind#include";
 
     /// <summary>
     /// Literal for code: List
@@ -110,9 +130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralList = "list";
 
     /// <summary>
+    /// Literal for code: GuidePageKindList
+    /// </summary>
+    public const string LiteralGuidePageKindList = "http://hl7.org/fhir/guide-page-kind#list";
+
+    /// <summary>
     /// Literal for code: Page
     /// </summary>
     public const string LiteralPage = "page";
+
+    /// <summary>
+    /// Literal for code: GuidePageKindPage
+    /// </summary>
+    public const string LiteralGuidePageKindPage = "http://hl7.org/fhir/guide-page-kind#page";
 
     /// <summary>
     /// Literal for code: Resource
@@ -120,8 +150,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralResource = "resource";
 
     /// <summary>
+    /// Literal for code: GuidePageKindResource
+    /// </summary>
+    public const string LiteralGuidePageKindResource = "http://hl7.org/fhir/guide-page-kind#resource";
+
+    /// <summary>
     /// Literal for code: TableOfContents
     /// </summary>
     public const string LiteralTableOfContents = "toc";
+
+    /// <summary>
+    /// Literal for code: GuidePageKindTableOfContents
+    /// </summary>
+    public const string LiteralGuidePageKindTableOfContents = "http://hl7.org/fhir/guide-page-kind#toc";
+
+    /// <summary>
+    /// Dictionary for looking up GuidePageKind Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "dictionary", Dictionary }, 
+      { "http://hl7.org/fhir/guide-page-kind#dictionary", Dictionary }, 
+      { "directory", Directory }, 
+      { "http://hl7.org/fhir/guide-page-kind#directory", Directory }, 
+      { "example", Example }, 
+      { "http://hl7.org/fhir/guide-page-kind#example", Example }, 
+      { "include", Include }, 
+      { "http://hl7.org/fhir/guide-page-kind#include", Include }, 
+      { "list", List }, 
+      { "http://hl7.org/fhir/guide-page-kind#list", List }, 
+      { "page", Page }, 
+      { "http://hl7.org/fhir/guide-page-kind#page", Page }, 
+      { "resource", Resource }, 
+      { "http://hl7.org/fhir/guide-page-kind#resource", Resource }, 
+      { "toc", TableOfContents }, 
+      { "http://hl7.org/fhir/guide-page-kind#toc", TableOfContents }, 
+    };
   };
 }

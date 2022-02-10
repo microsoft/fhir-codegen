@@ -72,9 +72,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: MedicationAdminStatusCompleted
+    /// </summary>
+    public const string LiteralMedicationAdminStatusCompleted = "http://hl7.org/fhir/medication-admin-status#completed";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: MedicationAdminStatusEnteredInError
+    /// </summary>
+    public const string LiteralMedicationAdminStatusEnteredInError = "http://hl7.org/fhir/medication-admin-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: InProgress
@@ -82,9 +92,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInProgress = "in-progress";
 
     /// <summary>
+    /// Literal for code: MedicationAdminStatusInProgress
+    /// </summary>
+    public const string LiteralMedicationAdminStatusInProgress = "http://hl7.org/fhir/medication-admin-status#in-progress";
+
+    /// <summary>
     /// Literal for code: OnHold
     /// </summary>
     public const string LiteralOnHold = "on-hold";
+
+    /// <summary>
+    /// Literal for code: MedicationAdminStatusOnHold
+    /// </summary>
+    public const string LiteralMedicationAdminStatusOnHold = "http://hl7.org/fhir/medication-admin-status#on-hold";
 
     /// <summary>
     /// Literal for code: Stopped
@@ -92,8 +112,36 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStopped = "stopped";
 
     /// <summary>
+    /// Literal for code: MedicationAdminStatusStopped
+    /// </summary>
+    public const string LiteralMedicationAdminStatusStopped = "http://hl7.org/fhir/medication-admin-status#stopped";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: MedicationAdminStatusUnknown
+    /// </summary>
+    public const string LiteralMedicationAdminStatusUnknown = "http://hl7.org/fhir/medication-admin-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationAdminStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/medication-admin-status#completed", Completed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/medication-admin-status#entered-in-error", EnteredInError }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/medication-admin-status#in-progress", InProgress }, 
+      { "on-hold", OnHold }, 
+      { "http://hl7.org/fhir/medication-admin-status#on-hold", OnHold }, 
+      { "stopped", Stopped }, 
+      { "http://hl7.org/fhir/medication-admin-status#stopped", Stopped }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/medication-admin-status#unknown", Unknown }, 
+    };
   };
 }

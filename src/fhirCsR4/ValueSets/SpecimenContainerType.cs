@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class SpecimenContainerTypeCodes
   {
     /// <summary>
-    /// 
+    /// Cytology brush, device
     /// </summary>
     public static readonly Coding CytologyBrushDevice = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pleural drainage system fluid collector
     /// </summary>
     public static readonly Coding PleuralDrainageSystemFluidCollector = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paediatric blood donor set
     /// </summary>
     public static readonly Coding PaediatricBloodDonorSet = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assisted reproduction needle, reprocessed
     /// </summary>
     public static readonly Coding AssistedReproductionNeedleReprocessed = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assisted reproduction catheter
     /// </summary>
     public static readonly Coding AssistedReproductionCatheter = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assisted reproduction needle, single-use
     /// </summary>
     public static readonly Coding AssistedReproductionNeedleSingleUse = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Assisted reproduction cryotube
     /// </summary>
     public static readonly Coding AssistedReproductionCryotube = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tissue extraction bag
     /// </summary>
     public static readonly Coding TissueExtractionBag = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Otological bone particle collector
     /// </summary>
     public static readonly Coding OtologicalBoneParticleCollector = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rigid endotherapy cytology brush, reusable
     /// </summary>
     public static readonly Coding RigidEndotherapyCytologyBrushReusable = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rigid endotherapy cytology brush, single-use
     /// </summary>
     public static readonly Coding RigidEndotherapyCytologyBrushSingleUse = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Viscerotome
     /// </summary>
     public static readonly Coding Viscerotome = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood-processing autotransfusion system container
     /// </summary>
     public static readonly Coding BloodProcessingAutotransfusionSystemContainer = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood gas syringe/needle, sodium heparin
     /// </summary>
     public static readonly Coding BloodGasSyringeNeedleSodiumHeparin = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood donor set, quad-pack
     /// </summary>
     public static readonly Coding BloodDonorSetQuadPack = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood collection/fat content reduction device
     /// </summary>
     public static readonly Coding BloodCollectionFatContentReductionDevice = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood donor set, double-pack
     /// </summary>
     public static readonly Coding BloodDonorSetDoublePack = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood donor set, quin-pack
     /// </summary>
     public static readonly Coding BloodDonorSetQuinPack = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood donor set, triple-pack
     /// </summary>
     public static readonly Coding BloodDonorSetTriplePack = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood gas syringe/needle, lithium heparin
     /// </summary>
     public static readonly Coding BloodGasSyringeNeedleLithiumHeparin = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood autotransfusion system tubing
     /// </summary>
     public static readonly Coding BloodAutotransfusionSystemTubing = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood donor set, single-pack
     /// </summary>
     public static readonly Coding BloodDonorSetSinglePack = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood donor set, many-pack
     /// </summary>
     public static readonly Coding BloodDonorSetManyPack = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cervical cytology inflatable collector
     /// </summary>
     public static readonly Coding CervicalCytologyInflatableCollector = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adipose tissue stem cell recovery unit
     /// </summary>
     public static readonly Coding AdiposeTissueStemCellRecoveryUnit = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abortion suction system collection bottle
     /// </summary>
     public static readonly Coding AbortionSuctionSystemCollectionBottle = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chorionic villus sampling catheter
     /// </summary>
     public static readonly Coding ChorionicVillusSamplingCatheter = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cryostat microtome
     /// </summary>
     public static readonly Coding CryostatMicrotome = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cytology scraper, single-use
     /// </summary>
     public static readonly Coding CytologyScraperSingleUse = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone marrow explant needle
     /// </summary>
     public static readonly Coding BoneMarrowExplantNeedle = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cytology scraper, reusable
     /// </summary>
     public static readonly Coding CytologyScraperReusable = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Capillary blood collection tube, no-additive
     /// </summary>
     public static readonly Coding CapillaryBloodCollectionTubeNoAdditive = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone marrow collection/transfusion set
     /// </summary>
     public static readonly Coding BoneMarrowCollectionTransfusionSet = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cervical cytology brush
     /// </summary>
     public static readonly Coding CervicalCytologyBrush = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epididymal fluid aspiration catheter
     /// </summary>
     public static readonly Coding EpididymalFluidAspirationCatheter = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental bone particle collector
     /// </summary>
     public static readonly Coding DentalBoneParticleCollector = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endometrial cytology brush
     /// </summary>
     public static readonly Coding EndometrialCytologyBrush = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrauterine secretion scoop
     /// </summary>
     public static readonly Coding IntrauterineSecretionScoop = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravascular catheter endoluminal brush
     /// </summary>
     public static readonly Coding IntravascularCatheterEndoluminalBrush = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrauterine scoop
     /// </summary>
     public static readonly Coding IntrauterineScoop = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flexible endotherapy cytology brush, single-use
     /// </summary>
     public static readonly Coding FlexibleEndotherapyCytologyBrushSingleUse = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flexible endotherapy cytology brush, reusable
     /// </summary>
     public static readonly Coding FlexibleEndotherapyCytologyBrushReusable = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General-purpose cytology brush
     /// </summary>
     public static readonly Coding GeneralPurposeCytologyBrush = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastro-urological scoop
     /// </summary>
     public static readonly Coding GastroUrologicalScoop = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tissue/fluid collection bag, sterile
     /// </summary>
     public static readonly Coding TissueFluidCollectionBagSterile = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specimen container mailer, insulated
     /// </summary>
     public static readonly Coding SpecimenContainerMailerInsulated = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specimen container mailer, non-insulated
     /// </summary>
     public static readonly Coding SpecimenContainerMailerNonInsulated = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood cell freeze/thaw system set
     /// </summary>
     public static readonly Coding BloodCellFreezeThawSystemSet = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood collection Luer-syringe adaptor
     /// </summary>
     public static readonly Coding BloodCollectionLuerSyringeAdaptor = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood collection needle, basic
     /// </summary>
     public static readonly Coding BloodCollectionNeedleBasic = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood/tissue storage/culture container
     /// </summary>
     public static readonly Coding BloodTissueStorageCultureContainer = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General specimen receptacle transport container
     /// </summary>
     public static readonly Coding GeneralSpecimenReceptacleTransportContainer = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evacuated blood collection tube transport container
     /// </summary>
     public static readonly Coding EvacuatedBloodCollectionTubeTransportContainer = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tissue/fluid collection bag, non-sterile
     /// </summary>
     public static readonly Coding TissueFluidCollectionBagNonSterile = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood collection Luer adaptor
     /// </summary>
     public static readonly Coding BloodCollectionLuerAdaptor = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sputum specimen container
     /// </summary>
     public static readonly Coding SputumSpecimenContainer = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Midstream urine specimen container
     /// </summary>
     public static readonly Coding MidstreamUrineSpecimenContainer = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sweat specimen container IVD
     /// </summary>
     public static readonly Coding SweatSpecimenContainerIVD = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sterile urine specimen container
     /// </summary>
     public static readonly Coding SterileUrineSpecimenContainer = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-evacuated blood collection tube, no additive
     /// </summary>
     public static readonly Coding NonEvacuatedBloodCollectionTubeNoAdditive = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-sterile urine specimen container IVD
     /// </summary>
     public static readonly Coding NonSterileUrineSpecimenContainerIVD = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General specimen container, no additive, non-sterile
     /// </summary>
     public static readonly Coding GeneralSpecimenContainerNoAdditiveNonSterile = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General specimen container, no additive, sterile
     /// </summary>
     public static readonly Coding GeneralSpecimenContainerNoAdditiveSterile = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microcapillary blood collection tube, ammonium heparin
     /// </summary>
     public static readonly Coding MicrocapillaryBloodCollectionTubeAmmoniumHeparin = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microcapillary blood collection tube, K2EDTA
     /// </summary>
     public static readonly Coding MicrocapillaryBloodCollectionTubeK2EDTA = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microcapillary blood collection tube, no additive
     /// </summary>
     public static readonly Coding MicrocapillaryBloodCollectionTubeNoAdditive = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evacuated blood collection tube, no additive/metal-free
     /// </summary>
     public static readonly Coding EvacuatedBloodCollectionTubeNoAdditiveMetalFree = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evacuated blood collection tube, gel separator
     /// </summary>
     public static readonly Coding EvacuatedBloodCollectionTubeGelSeparator = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evacuated blood collection tube, RNA stabilizer
     /// </summary>
     public static readonly Coding EvacuatedBloodCollectionTubeRNAStabilizer = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evacuated blood collection tube, thrombin/clot activator/gel separator
     /// </summary>
     public static readonly Coding EvacuatedBloodCollectionTubeThrombinClotActivatorGelSeparator = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-evacuated blood collection tube, EDTA
     /// </summary>
     public static readonly Coding NonEvacuatedBloodCollectionTubeEDTA = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-evacuated blood collection tube, gel separator
     /// </summary>
     public static readonly Coding NonEvacuatedBloodCollectionTubeGelSeparator = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-evacuated blood collection tube, lithium heparin
     /// </summary>
     public static readonly Coding NonEvacuatedBloodCollectionTubeLithiumHeparin = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-evacuated blood collection tube, lithium heparin/gel separator, sterile
     /// </summary>
     public static readonly Coding NonEvacuatedBloodCollectionTubeLithiumHeparinGelSeparatorSterile = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-evacuated blood collection tube, NaEDTA/sodium fluoride
     /// </summary>
     public static readonly Coding NonEvacuatedBloodCollectionTubeNaEDTASodiumFluoride = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-evacuated blood collection tube, potassium oxalate/sodium fluoride
     /// </summary>
     public static readonly Coding NonEvacuatedBloodCollectionTubePotassiumOxalateSodiumFluoride = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evacuated urine specimen container, boric acid (H3BO3)/sodium formate
     /// </summary>
     public static readonly Coding EvacuatedUrineSpecimenContainerBoricAcidH3BO3SodiumFormate = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evacuated urine specimen container, ethyl paraben/sodium porpionate/chlorhexidine
     /// </summary>
     public static readonly Coding EvacuatedUrineSpecimenContainerEthylParabenSodiumPorpionateChlorhexidine = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cervical cytology microscopy slide
     /// </summary>
     public static readonly Coding CervicalCytologyMicroscopySlide = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evacuated blood collection tube , K3EDTA/sodium fluoride
     /// </summary>
     public static readonly Coding EvacuatedBloodCollectionTubeK3EDTASodiumFluoride = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evacuated blood collection tube, K2EDTA/aprotinin
     /// </summary>
     public static readonly Coding EvacuatedBloodCollectionTubeK2EDTAAprotinin = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Syringe-blood collection tube transfer
     /// </summary>
     public static readonly Coding SyringeBloodCollectionTubeTransfer = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-evacuated blood collection tube, clot activator/gel separator
     /// </summary>
     public static readonly Coding NonEvacuatedBloodCollectionTubeClotActivatorGelSeparator = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-evacuated blood collection tube, sodium citrate
     /// </summary>
     public static readonly Coding NonEvacuatedBloodCollectionTubeSodiumCitrate = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-evacuated blood collection tube, clot activator
     /// </summary>
     public static readonly Coding NonEvacuatedBloodCollectionTubeClotActivator = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-evacuated blood collection tube, K3EDTA
     /// </summary>
     public static readonly Coding NonEvacuatedBloodCollectionTubeK3EDTA = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-evacuated blood collection tube, K2EDTA
     /// </summary>
     public static readonly Coding NonEvacuatedBloodCollectionTubeK2EDTA = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-evacuated blood collection tube, lithium heparin/gel separator, non-sterile
     /// </summary>
     public static readonly Coding NonEvacuatedBloodCollectionTubeLithiumHeparinGelSeparatorNonSterile = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microcapillary blood collection funnel
     /// </summary>
     public static readonly Coding MicrocapillaryBloodCollectionFunnel = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evacuated urine specimen container, boric acid (H3BO3)
     /// </summary>
     public static readonly Coding EvacuatedUrineSpecimenContainerBoricAcidH3BO3 = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evacuated urine specimen container, multiple preservative
     /// </summary>
     public static readonly Coding EvacuatedUrineSpecimenContainerMultiplePreservative = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microcapillary blood transfer tube, clot activator
     /// </summary>
     public static readonly Coding MicrocapillaryBloodTransferTubeClotActivator = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microcapillary blood transfer tube, sodium fluoride
     /// </summary>
     public static readonly Coding MicrocapillaryBloodTransferTubeSodiumFluoride = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microcapillary blood transfer tube, EDTA
     /// </summary>
     public static readonly Coding MicrocapillaryBloodTransferTubeEDTA = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microcapillary blood transfer tube IVD, heparin
     /// </summary>
     public static readonly Coding MicrocapillaryBloodTransferTubeIVDHeparin = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evacuated urine specimen container IVD, no additive
     /// </summary>
     public static readonly Coding EvacuatedUrineSpecimenContainerIVDNoAdditive = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Saliva specimen container IVD, no additive
     /// </summary>
     public static readonly Coding SalivaSpecimenContainerIVDNoAdditive = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evacuated saliva specimen container IVD, sodium azide
     /// </summary>
     public static readonly Coding EvacuatedSalivaSpecimenContainerIVDSodiumAzide = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orthopedic bone particle collector, reusable
     /// </summary>
     public static readonly Coding OrthopedicBoneParticleCollectorReusable = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemoperfusion tubing set
     /// </summary>
     public static readonly Coding HemoperfusionTubingSet = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clinical sampling brush
     /// </summary>
     public static readonly Coding ClinicalSamplingBrush = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endotherapy cytology brush
     /// </summary>
     public static readonly Coding EndotherapyCytologyBrush = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bone particle collector
     /// </summary>
     public static readonly Coding BoneParticleCollector = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specimen receptacle
     /// </summary>
     public static readonly Coding SpecimenReceptacle = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fecal specimen container
     /// </summary>
     public static readonly Coding FecalSpecimenContainer = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood specimen receptacle
     /// </summary>
     public static readonly Coding BloodSpecimenReceptacle = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood tube
     /// </summary>
     public static readonly Coding BloodTube = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microcapillary blood collection tube
     /// </summary>
     public static readonly Coding MicrocapillaryBloodCollectionTube = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-evacuated blood collection tube
     /// </summary>
     public static readonly Coding NonEvacuatedBloodCollectionTube = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evacuated blood collection tube
     /// </summary>
     public static readonly Coding EvacuatedBloodCollectionTube = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// General specimen container
     /// </summary>
     public static readonly Coding GeneralSpecimenContainer = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urine specimen container
     /// </summary>
     public static readonly Coding UrineSpecimenContainer = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 24-hour urine specimen container
     /// </summary>
     public static readonly Coding VAL24HourUrineSpecimenContainer = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Evacuated urine specimen container
     /// </summary>
     public static readonly Coding EvacuatedUrineSpecimenContainer = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cytology specimen container
     /// </summary>
     public static readonly Coding CytologySpecimenContainer = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Secretory specimen container
     /// </summary>
     public static readonly Coding SecretorySpecimenContainer = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood collection/transfer device
     /// </summary>
     public static readonly Coding BloodCollectionTransferDevice = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood donor set
     /// </summary>
     public static readonly Coding BloodDonorSet = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specimen receptacle transport container
     /// </summary>
     public static readonly Coding SpecimenReceptacleTransportContainer = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Autologous blood collection tube
     /// </summary>
     public static readonly Coding AutologousBloodCollectionTube = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adipose tissue stem cell recovery unit, ultrasonic
     /// </summary>
     public static readonly Coding AdiposeTissueStemCellRecoveryUnitUltrasonic = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blood component separator
     /// </summary>
     public static readonly Coding BloodComponentSeparator = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urological fluid funnel, sterile
     /// </summary>
     public static readonly Coding UrologicalFluidFunnelSterile = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urological fluid funnel, non-sterile
     /// </summary>
     public static readonly Coding UrologicalFluidFunnelNonSterile = new Coding
     {
@@ -1134,9 +1134,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCytologyBrushDevice = "22566001";
 
     /// <summary>
+    /// Literal for code: NONECytologyBrushDevice
+    /// </summary>
+    public const string LiteralNONECytologyBrushDevice = "http://snomed.info/sct#22566001";
+
+    /// <summary>
     /// Literal for code: PleuralDrainageSystemFluidCollector
     /// </summary>
     public const string LiteralPleuralDrainageSystemFluidCollector = "463568005";
+
+    /// <summary>
+    /// Literal for code: NONEPleuralDrainageSystemFluidCollector
+    /// </summary>
+    public const string LiteralNONEPleuralDrainageSystemFluidCollector = "http://snomed.info/sct#463568005";
 
     /// <summary>
     /// Literal for code: PaediatricBloodDonorSet
@@ -1144,9 +1154,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPaediatricBloodDonorSet = "464527005";
 
     /// <summary>
+    /// Literal for code: NONEPaediatricBloodDonorSet
+    /// </summary>
+    public const string LiteralNONEPaediatricBloodDonorSet = "http://snomed.info/sct#464527005";
+
+    /// <summary>
     /// Literal for code: AssistedReproductionNeedleReprocessed
     /// </summary>
     public const string LiteralAssistedReproductionNeedleReprocessed = "464573007";
+
+    /// <summary>
+    /// Literal for code: NONEAssistedReproductionNeedleReprocessed
+    /// </summary>
+    public const string LiteralNONEAssistedReproductionNeedleReprocessed = "http://snomed.info/sct#464573007";
 
     /// <summary>
     /// Literal for code: AssistedReproductionCatheter
@@ -1154,9 +1174,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAssistedReproductionCatheter = "464784003";
 
     /// <summary>
+    /// Literal for code: NONEAssistedReproductionCatheter
+    /// </summary>
+    public const string LiteralNONEAssistedReproductionCatheter = "http://snomed.info/sct#464784003";
+
+    /// <summary>
     /// Literal for code: AssistedReproductionNeedleSingleUse
     /// </summary>
     public const string LiteralAssistedReproductionNeedleSingleUse = "464946000";
+
+    /// <summary>
+    /// Literal for code: NONEAssistedReproductionNeedleSingleUse
+    /// </summary>
+    public const string LiteralNONEAssistedReproductionNeedleSingleUse = "http://snomed.info/sct#464946000";
 
     /// <summary>
     /// Literal for code: AssistedReproductionCryotube
@@ -1164,9 +1194,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAssistedReproductionCryotube = "465046006";
 
     /// <summary>
+    /// Literal for code: NONEAssistedReproductionCryotube
+    /// </summary>
+    public const string LiteralNONEAssistedReproductionCryotube = "http://snomed.info/sct#465046006";
+
+    /// <summary>
     /// Literal for code: TissueExtractionBag
     /// </summary>
     public const string LiteralTissueExtractionBag = "465091002";
+
+    /// <summary>
+    /// Literal for code: NONETissueExtractionBag
+    /// </summary>
+    public const string LiteralNONETissueExtractionBag = "http://snomed.info/sct#465091002";
 
     /// <summary>
     /// Literal for code: OtologicalBoneParticleCollector
@@ -1174,9 +1214,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOtologicalBoneParticleCollector = "465141003";
 
     /// <summary>
+    /// Literal for code: NONEOtologicalBoneParticleCollector
+    /// </summary>
+    public const string LiteralNONEOtologicalBoneParticleCollector = "http://snomed.info/sct#465141003";
+
+    /// <summary>
     /// Literal for code: RigidEndotherapyCytologyBrushReusable
     /// </summary>
     public const string LiteralRigidEndotherapyCytologyBrushReusable = "465487000";
+
+    /// <summary>
+    /// Literal for code: NONERigidEndotherapyCytologyBrushReusable
+    /// </summary>
+    public const string LiteralNONERigidEndotherapyCytologyBrushReusable = "http://snomed.info/sct#465487000";
 
     /// <summary>
     /// Literal for code: RigidEndotherapyCytologyBrushSingleUse
@@ -1184,9 +1234,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRigidEndotherapyCytologyBrushSingleUse = "466164006";
 
     /// <summary>
+    /// Literal for code: NONERigidEndotherapyCytologyBrushSingleUse
+    /// </summary>
+    public const string LiteralNONERigidEndotherapyCytologyBrushSingleUse = "http://snomed.info/sct#466164006";
+
+    /// <summary>
     /// Literal for code: Viscerotome
     /// </summary>
     public const string LiteralViscerotome = "466421006";
+
+    /// <summary>
+    /// Literal for code: NONEViscerotome
+    /// </summary>
+    public const string LiteralNONEViscerotome = "http://snomed.info/sct#466421006";
 
     /// <summary>
     /// Literal for code: BloodProcessingAutotransfusionSystemContainer
@@ -1194,9 +1254,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBloodProcessingAutotransfusionSystemContainer = "466447002";
 
     /// <summary>
+    /// Literal for code: NONEBloodProcessingAutotransfusionSystemContainer
+    /// </summary>
+    public const string LiteralNONEBloodProcessingAutotransfusionSystemContainer = "http://snomed.info/sct#466447002";
+
+    /// <summary>
     /// Literal for code: BloodGasSyringeNeedleSodiumHeparin
     /// </summary>
     public const string LiteralBloodGasSyringeNeedleSodiumHeparin = "466623002";
+
+    /// <summary>
+    /// Literal for code: NONEBloodGasSyringeNeedleSodiumHeparin
+    /// </summary>
+    public const string LiteralNONEBloodGasSyringeNeedleSodiumHeparin = "http://snomed.info/sct#466623002";
 
     /// <summary>
     /// Literal for code: BloodDonorSetQuadPack
@@ -1204,9 +1274,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBloodDonorSetQuadPack = "466637006";
 
     /// <summary>
+    /// Literal for code: NONEBloodDonorSetQuadPack
+    /// </summary>
+    public const string LiteralNONEBloodDonorSetQuadPack = "http://snomed.info/sct#466637006";
+
+    /// <summary>
     /// Literal for code: BloodCollectionFatContentReductionDevice
     /// </summary>
     public const string LiteralBloodCollectionFatContentReductionDevice = "466704003";
+
+    /// <summary>
+    /// Literal for code: NONEBloodCollectionFatContentReductionDevice
+    /// </summary>
+    public const string LiteralNONEBloodCollectionFatContentReductionDevice = "http://snomed.info/sct#466704003";
 
     /// <summary>
     /// Literal for code: BloodDonorSetDoublePack
@@ -1214,9 +1294,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBloodDonorSetDoublePack = "466844004";
 
     /// <summary>
+    /// Literal for code: NONEBloodDonorSetDoublePack
+    /// </summary>
+    public const string LiteralNONEBloodDonorSetDoublePack = "http://snomed.info/sct#466844004";
+
+    /// <summary>
     /// Literal for code: BloodDonorSetQuinPack
     /// </summary>
     public const string LiteralBloodDonorSetQuinPack = "466898000";
+
+    /// <summary>
+    /// Literal for code: NONEBloodDonorSetQuinPack
+    /// </summary>
+    public const string LiteralNONEBloodDonorSetQuinPack = "http://snomed.info/sct#466898000";
 
     /// <summary>
     /// Literal for code: BloodDonorSetTriplePack
@@ -1224,9 +1314,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBloodDonorSetTriplePack = "466930006";
 
     /// <summary>
+    /// Literal for code: NONEBloodDonorSetTriplePack
+    /// </summary>
+    public const string LiteralNONEBloodDonorSetTriplePack = "http://snomed.info/sct#466930006";
+
+    /// <summary>
     /// Literal for code: BloodGasSyringeNeedleLithiumHeparin
     /// </summary>
     public const string LiteralBloodGasSyringeNeedleLithiumHeparin = "467030004";
+
+    /// <summary>
+    /// Literal for code: NONEBloodGasSyringeNeedleLithiumHeparin
+    /// </summary>
+    public const string LiteralNONEBloodGasSyringeNeedleLithiumHeparin = "http://snomed.info/sct#467030004";
 
     /// <summary>
     /// Literal for code: BloodAutotransfusionSystemTubing
@@ -1234,9 +1334,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBloodAutotransfusionSystemTubing = "467131002";
 
     /// <summary>
+    /// Literal for code: NONEBloodAutotransfusionSystemTubing
+    /// </summary>
+    public const string LiteralNONEBloodAutotransfusionSystemTubing = "http://snomed.info/sct#467131002";
+
+    /// <summary>
     /// Literal for code: BloodDonorSetSinglePack
     /// </summary>
     public const string LiteralBloodDonorSetSinglePack = "467132009";
+
+    /// <summary>
+    /// Literal for code: NONEBloodDonorSetSinglePack
+    /// </summary>
+    public const string LiteralNONEBloodDonorSetSinglePack = "http://snomed.info/sct#467132009";
 
     /// <summary>
     /// Literal for code: BloodDonorSetManyPack
@@ -1244,9 +1354,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBloodDonorSetManyPack = "467141004";
 
     /// <summary>
+    /// Literal for code: NONEBloodDonorSetManyPack
+    /// </summary>
+    public const string LiteralNONEBloodDonorSetManyPack = "http://snomed.info/sct#467141004";
+
+    /// <summary>
     /// Literal for code: CervicalCytologyInflatableCollector
     /// </summary>
     public const string LiteralCervicalCytologyInflatableCollector = "467182004";
+
+    /// <summary>
+    /// Literal for code: NONECervicalCytologyInflatableCollector
+    /// </summary>
+    public const string LiteralNONECervicalCytologyInflatableCollector = "http://snomed.info/sct#467182004";
 
     /// <summary>
     /// Literal for code: AdiposeTissueStemCellRecoveryUnit
@@ -1254,9 +1374,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdiposeTissueStemCellRecoveryUnit = "467330006";
 
     /// <summary>
+    /// Literal for code: NONEAdiposeTissueStemCellRecoveryUnit
+    /// </summary>
+    public const string LiteralNONEAdiposeTissueStemCellRecoveryUnit = "http://snomed.info/sct#467330006";
+
+    /// <summary>
     /// Literal for code: AbortionSuctionSystemCollectionBottle
     /// </summary>
     public const string LiteralAbortionSuctionSystemCollectionBottle = "467431009";
+
+    /// <summary>
+    /// Literal for code: NONEAbortionSuctionSystemCollectionBottle
+    /// </summary>
+    public const string LiteralNONEAbortionSuctionSystemCollectionBottle = "http://snomed.info/sct#467431009";
 
     /// <summary>
     /// Literal for code: ChorionicVillusSamplingCatheter
@@ -1264,9 +1394,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChorionicVillusSamplingCatheter = "467499008";
 
     /// <summary>
+    /// Literal for code: NONEChorionicVillusSamplingCatheter
+    /// </summary>
+    public const string LiteralNONEChorionicVillusSamplingCatheter = "http://snomed.info/sct#467499008";
+
+    /// <summary>
     /// Literal for code: CryostatMicrotome
     /// </summary>
     public const string LiteralCryostatMicrotome = "467647004";
+
+    /// <summary>
+    /// Literal for code: NONECryostatMicrotome
+    /// </summary>
+    public const string LiteralNONECryostatMicrotome = "http://snomed.info/sct#467647004";
 
     /// <summary>
     /// Literal for code: CytologyScraperSingleUse
@@ -1274,9 +1414,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCytologyScraperSingleUse = "467697000";
 
     /// <summary>
+    /// Literal for code: NONECytologyScraperSingleUse
+    /// </summary>
+    public const string LiteralNONECytologyScraperSingleUse = "http://snomed.info/sct#467697000";
+
+    /// <summary>
     /// Literal for code: BoneMarrowExplantNeedle
     /// </summary>
     public const string LiteralBoneMarrowExplantNeedle = "467743009";
+
+    /// <summary>
+    /// Literal for code: NONEBoneMarrowExplantNeedle
+    /// </summary>
+    public const string LiteralNONEBoneMarrowExplantNeedle = "http://snomed.info/sct#467743009";
 
     /// <summary>
     /// Literal for code: CytologyScraperReusable
@@ -1284,9 +1434,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCytologyScraperReusable = "467967005";
 
     /// <summary>
+    /// Literal for code: NONECytologyScraperReusable
+    /// </summary>
+    public const string LiteralNONECytologyScraperReusable = "http://snomed.info/sct#467967005";
+
+    /// <summary>
     /// Literal for code: CapillaryBloodCollectionTubeNoAdditive
     /// </summary>
     public const string LiteralCapillaryBloodCollectionTubeNoAdditive = "467989009";
+
+    /// <summary>
+    /// Literal for code: NONECapillaryBloodCollectionTubeNoAdditive
+    /// </summary>
+    public const string LiteralNONECapillaryBloodCollectionTubeNoAdditive = "http://snomed.info/sct#467989009";
 
     /// <summary>
     /// Literal for code: BoneMarrowCollectionTransfusionSet
@@ -1294,9 +1454,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBoneMarrowCollectionTransfusionSet = "468076003";
 
     /// <summary>
+    /// Literal for code: NONEBoneMarrowCollectionTransfusionSet
+    /// </summary>
+    public const string LiteralNONEBoneMarrowCollectionTransfusionSet = "http://snomed.info/sct#468076003";
+
+    /// <summary>
     /// Literal for code: CervicalCytologyBrush
     /// </summary>
     public const string LiteralCervicalCytologyBrush = "468131000";
+
+    /// <summary>
+    /// Literal for code: NONECervicalCytologyBrush
+    /// </summary>
+    public const string LiteralNONECervicalCytologyBrush = "http://snomed.info/sct#468131000";
 
     /// <summary>
     /// Literal for code: EpididymalFluidAspirationCatheter
@@ -1304,9 +1474,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEpididymalFluidAspirationCatheter = "468200003";
 
     /// <summary>
+    /// Literal for code: NONEEpididymalFluidAspirationCatheter
+    /// </summary>
+    public const string LiteralNONEEpididymalFluidAspirationCatheter = "http://snomed.info/sct#468200003";
+
+    /// <summary>
     /// Literal for code: DentalBoneParticleCollector
     /// </summary>
     public const string LiteralDentalBoneParticleCollector = "468981005";
+
+    /// <summary>
+    /// Literal for code: NONEDentalBoneParticleCollector
+    /// </summary>
+    public const string LiteralNONEDentalBoneParticleCollector = "http://snomed.info/sct#468981005";
 
     /// <summary>
     /// Literal for code: EndometrialCytologyBrush
@@ -1314,9 +1494,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndometrialCytologyBrush = "468999002";
 
     /// <summary>
+    /// Literal for code: NONEEndometrialCytologyBrush
+    /// </summary>
+    public const string LiteralNONEEndometrialCytologyBrush = "http://snomed.info/sct#468999002";
+
+    /// <summary>
     /// Literal for code: IntrauterineSecretionScoop
     /// </summary>
     public const string LiteralIntrauterineSecretionScoop = "469287008";
+
+    /// <summary>
+    /// Literal for code: NONEIntrauterineSecretionScoop
+    /// </summary>
+    public const string LiteralNONEIntrauterineSecretionScoop = "http://snomed.info/sct#469287008";
 
     /// <summary>
     /// Literal for code: IntravascularCatheterEndoluminalBrush
@@ -1324,9 +1514,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntravascularCatheterEndoluminalBrush = "469322002";
 
     /// <summary>
+    /// Literal for code: NONEIntravascularCatheterEndoluminalBrush
+    /// </summary>
+    public const string LiteralNONEIntravascularCatheterEndoluminalBrush = "http://snomed.info/sct#469322002";
+
+    /// <summary>
     /// Literal for code: IntrauterineScoop
     /// </summary>
     public const string LiteralIntrauterineScoop = "469454007";
+
+    /// <summary>
+    /// Literal for code: NONEIntrauterineScoop
+    /// </summary>
+    public const string LiteralNONEIntrauterineScoop = "http://snomed.info/sct#469454007";
 
     /// <summary>
     /// Literal for code: FlexibleEndotherapyCytologyBrushSingleUse
@@ -1334,9 +1534,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFlexibleEndotherapyCytologyBrushSingleUse = "469822008";
 
     /// <summary>
+    /// Literal for code: NONEFlexibleEndotherapyCytologyBrushSingleUse
+    /// </summary>
+    public const string LiteralNONEFlexibleEndotherapyCytologyBrushSingleUse = "http://snomed.info/sct#469822008";
+
+    /// <summary>
     /// Literal for code: FlexibleEndotherapyCytologyBrushReusable
     /// </summary>
     public const string LiteralFlexibleEndotherapyCytologyBrushReusable = "470114007";
+
+    /// <summary>
+    /// Literal for code: NONEFlexibleEndotherapyCytologyBrushReusable
+    /// </summary>
+    public const string LiteralNONEFlexibleEndotherapyCytologyBrushReusable = "http://snomed.info/sct#470114007";
 
     /// <summary>
     /// Literal for code: GeneralPurposeCytologyBrush
@@ -1344,9 +1554,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGeneralPurposeCytologyBrush = "470547006";
 
     /// <summary>
+    /// Literal for code: NONEGeneralPurposeCytologyBrush
+    /// </summary>
+    public const string LiteralNONEGeneralPurposeCytologyBrush = "http://snomed.info/sct#470547006";
+
+    /// <summary>
     /// Literal for code: GastroUrologicalScoop
     /// </summary>
     public const string LiteralGastroUrologicalScoop = "470597005";
+
+    /// <summary>
+    /// Literal for code: NONEGastroUrologicalScoop
+    /// </summary>
+    public const string LiteralNONEGastroUrologicalScoop = "http://snomed.info/sct#470597005";
 
     /// <summary>
     /// Literal for code: TissueFluidCollectionBagSterile
@@ -1354,9 +1574,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTissueFluidCollectionBagSterile = "700855008";
 
     /// <summary>
+    /// Literal for code: NONETissueFluidCollectionBagSterile
+    /// </summary>
+    public const string LiteralNONETissueFluidCollectionBagSterile = "http://snomed.info/sct#700855008";
+
+    /// <summary>
     /// Literal for code: SpecimenContainerMailerInsulated
     /// </summary>
     public const string LiteralSpecimenContainerMailerInsulated = "700905004";
+
+    /// <summary>
+    /// Literal for code: NONESpecimenContainerMailerInsulated
+    /// </summary>
+    public const string LiteralNONESpecimenContainerMailerInsulated = "http://snomed.info/sct#700905004";
 
     /// <summary>
     /// Literal for code: SpecimenContainerMailerNonInsulated
@@ -1364,9 +1594,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpecimenContainerMailerNonInsulated = "700906003";
 
     /// <summary>
+    /// Literal for code: NONESpecimenContainerMailerNonInsulated
+    /// </summary>
+    public const string LiteralNONESpecimenContainerMailerNonInsulated = "http://snomed.info/sct#700906003";
+
+    /// <summary>
     /// Literal for code: BloodCellFreezeThawSystemSet
     /// </summary>
     public const string LiteralBloodCellFreezeThawSystemSet = "700945008";
+
+    /// <summary>
+    /// Literal for code: NONEBloodCellFreezeThawSystemSet
+    /// </summary>
+    public const string LiteralNONEBloodCellFreezeThawSystemSet = "http://snomed.info/sct#700945008";
 
     /// <summary>
     /// Literal for code: BloodCollectionLuerSyringeAdaptor
@@ -1374,9 +1614,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBloodCollectionLuerSyringeAdaptor = "700955007";
 
     /// <summary>
+    /// Literal for code: NONEBloodCollectionLuerSyringeAdaptor
+    /// </summary>
+    public const string LiteralNONEBloodCollectionLuerSyringeAdaptor = "http://snomed.info/sct#700955007";
+
+    /// <summary>
     /// Literal for code: BloodCollectionNeedleBasic
     /// </summary>
     public const string LiteralBloodCollectionNeedleBasic = "700956008";
+
+    /// <summary>
+    /// Literal for code: NONEBloodCollectionNeedleBasic
+    /// </summary>
+    public const string LiteralNONEBloodCollectionNeedleBasic = "http://snomed.info/sct#700956008";
 
     /// <summary>
     /// Literal for code: BloodTissueStorageCultureContainer
@@ -1384,9 +1634,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBloodTissueStorageCultureContainer = "700957004";
 
     /// <summary>
+    /// Literal for code: NONEBloodTissueStorageCultureContainer
+    /// </summary>
+    public const string LiteralNONEBloodTissueStorageCultureContainer = "http://snomed.info/sct#700957004";
+
+    /// <summary>
     /// Literal for code: GeneralSpecimenReceptacleTransportContainer
     /// </summary>
     public const string LiteralGeneralSpecimenReceptacleTransportContainer = "701394007";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralSpecimenReceptacleTransportContainer
+    /// </summary>
+    public const string LiteralNONEGeneralSpecimenReceptacleTransportContainer = "http://snomed.info/sct#701394007";
 
     /// <summary>
     /// Literal for code: EvacuatedBloodCollectionTubeTransportContainer
@@ -1394,9 +1654,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEvacuatedBloodCollectionTubeTransportContainer = "701516009";
 
     /// <summary>
+    /// Literal for code: NONEEvacuatedBloodCollectionTubeTransportContainer
+    /// </summary>
+    public const string LiteralNONEEvacuatedBloodCollectionTubeTransportContainer = "http://snomed.info/sct#701516009";
+
+    /// <summary>
     /// Literal for code: TissueFluidCollectionBagNonSterile
     /// </summary>
     public const string LiteralTissueFluidCollectionBagNonSterile = "701720006";
+
+    /// <summary>
+    /// Literal for code: NONETissueFluidCollectionBagNonSterile
+    /// </summary>
+    public const string LiteralNONETissueFluidCollectionBagNonSterile = "http://snomed.info/sct#701720006";
 
     /// <summary>
     /// Literal for code: BloodCollectionLuerAdaptor
@@ -1404,9 +1674,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBloodCollectionLuerAdaptor = "702120003";
 
     /// <summary>
+    /// Literal for code: NONEBloodCollectionLuerAdaptor
+    /// </summary>
+    public const string LiteralNONEBloodCollectionLuerAdaptor = "http://snomed.info/sct#702120003";
+
+    /// <summary>
     /// Literal for code: SputumSpecimenContainer
     /// </summary>
     public const string LiteralSputumSpecimenContainer = "702223006";
+
+    /// <summary>
+    /// Literal for code: NONESputumSpecimenContainer
+    /// </summary>
+    public const string LiteralNONESputumSpecimenContainer = "http://snomed.info/sct#702223006";
 
     /// <summary>
     /// Literal for code: MidstreamUrineSpecimenContainer
@@ -1414,9 +1694,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMidstreamUrineSpecimenContainer = "702224000";
 
     /// <summary>
+    /// Literal for code: NONEMidstreamUrineSpecimenContainer
+    /// </summary>
+    public const string LiteralNONEMidstreamUrineSpecimenContainer = "http://snomed.info/sct#702224000";
+
+    /// <summary>
     /// Literal for code: SweatSpecimenContainerIVD
     /// </summary>
     public const string LiteralSweatSpecimenContainerIVD = "702232008";
+
+    /// <summary>
+    /// Literal for code: NONESweatSpecimenContainerIVD
+    /// </summary>
+    public const string LiteralNONESweatSpecimenContainerIVD = "http://snomed.info/sct#702232008";
 
     /// <summary>
     /// Literal for code: SterileUrineSpecimenContainer
@@ -1424,9 +1714,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSterileUrineSpecimenContainer = "702244006";
 
     /// <summary>
+    /// Literal for code: NONESterileUrineSpecimenContainer
+    /// </summary>
+    public const string LiteralNONESterileUrineSpecimenContainer = "http://snomed.info/sct#702244006";
+
+    /// <summary>
     /// Literal for code: NonEvacuatedBloodCollectionTubeNoAdditive
     /// </summary>
     public const string LiteralNonEvacuatedBloodCollectionTubeNoAdditive = "702256007";
+
+    /// <summary>
+    /// Literal for code: NONENonEvacuatedBloodCollectionTubeNoAdditive
+    /// </summary>
+    public const string LiteralNONENonEvacuatedBloodCollectionTubeNoAdditive = "http://snomed.info/sct#702256007";
 
     /// <summary>
     /// Literal for code: NonSterileUrineSpecimenContainerIVD
@@ -1434,9 +1734,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonSterileUrineSpecimenContainerIVD = "702264001";
 
     /// <summary>
+    /// Literal for code: NONENonSterileUrineSpecimenContainerIVD
+    /// </summary>
+    public const string LiteralNONENonSterileUrineSpecimenContainerIVD = "http://snomed.info/sct#702264001";
+
+    /// <summary>
     /// Literal for code: GeneralSpecimenContainerNoAdditiveNonSterile
     /// </summary>
     public const string LiteralGeneralSpecimenContainerNoAdditiveNonSterile = "702268003";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralSpecimenContainerNoAdditiveNonSterile
+    /// </summary>
+    public const string LiteralNONEGeneralSpecimenContainerNoAdditiveNonSterile = "http://snomed.info/sct#702268003";
 
     /// <summary>
     /// Literal for code: GeneralSpecimenContainerNoAdditiveSterile
@@ -1444,9 +1754,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGeneralSpecimenContainerNoAdditiveSterile = "702269006";
 
     /// <summary>
+    /// Literal for code: NONEGeneralSpecimenContainerNoAdditiveSterile
+    /// </summary>
+    public const string LiteralNONEGeneralSpecimenContainerNoAdditiveSterile = "http://snomed.info/sct#702269006";
+
+    /// <summary>
     /// Literal for code: MicrocapillaryBloodCollectionTubeAmmoniumHeparin
     /// </summary>
     public const string LiteralMicrocapillaryBloodCollectionTubeAmmoniumHeparin = "702275002";
+
+    /// <summary>
+    /// Literal for code: NONEMicrocapillaryBloodCollectionTubeAmmoniumHeparin
+    /// </summary>
+    public const string LiteralNONEMicrocapillaryBloodCollectionTubeAmmoniumHeparin = "http://snomed.info/sct#702275002";
 
     /// <summary>
     /// Literal for code: MicrocapillaryBloodCollectionTubeK2EDTA
@@ -1454,9 +1774,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicrocapillaryBloodCollectionTubeK2EDTA = "702276001";
 
     /// <summary>
+    /// Literal for code: NONEMicrocapillaryBloodCollectionTubeK2EDTA
+    /// </summary>
+    public const string LiteralNONEMicrocapillaryBloodCollectionTubeK2EDTA = "http://snomed.info/sct#702276001";
+
+    /// <summary>
     /// Literal for code: MicrocapillaryBloodCollectionTubeNoAdditive
     /// </summary>
     public const string LiteralMicrocapillaryBloodCollectionTubeNoAdditive = "702277005";
+
+    /// <summary>
+    /// Literal for code: NONEMicrocapillaryBloodCollectionTubeNoAdditive
+    /// </summary>
+    public const string LiteralNONEMicrocapillaryBloodCollectionTubeNoAdditive = "http://snomed.info/sct#702277005";
 
     /// <summary>
     /// Literal for code: EvacuatedBloodCollectionTubeNoAdditiveMetalFree
@@ -1464,9 +1794,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEvacuatedBloodCollectionTubeNoAdditiveMetalFree = "702278000";
 
     /// <summary>
+    /// Literal for code: NONEEvacuatedBloodCollectionTubeNoAdditiveMetalFree
+    /// </summary>
+    public const string LiteralNONEEvacuatedBloodCollectionTubeNoAdditiveMetalFree = "http://snomed.info/sct#702278000";
+
+    /// <summary>
     /// Literal for code: EvacuatedBloodCollectionTubeGelSeparator
     /// </summary>
     public const string LiteralEvacuatedBloodCollectionTubeGelSeparator = "702279008";
+
+    /// <summary>
+    /// Literal for code: NONEEvacuatedBloodCollectionTubeGelSeparator
+    /// </summary>
+    public const string LiteralNONEEvacuatedBloodCollectionTubeGelSeparator = "http://snomed.info/sct#702279008";
 
     /// <summary>
     /// Literal for code: EvacuatedBloodCollectionTubeRNAStabilizer
@@ -1474,9 +1814,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEvacuatedBloodCollectionTubeRNAStabilizer = "702280006";
 
     /// <summary>
+    /// Literal for code: NONEEvacuatedBloodCollectionTubeRNAStabilizer
+    /// </summary>
+    public const string LiteralNONEEvacuatedBloodCollectionTubeRNAStabilizer = "http://snomed.info/sct#702280006";
+
+    /// <summary>
     /// Literal for code: EvacuatedBloodCollectionTubeThrombinClotActivatorGelSeparator
     /// </summary>
     public const string LiteralEvacuatedBloodCollectionTubeThrombinClotActivatorGelSeparator = "702281005";
+
+    /// <summary>
+    /// Literal for code: NONEEvacuatedBloodCollectionTubeThrombinClotActivatorGelSeparator
+    /// </summary>
+    public const string LiteralNONEEvacuatedBloodCollectionTubeThrombinClotActivatorGelSeparator = "http://snomed.info/sct#702281005";
 
     /// <summary>
     /// Literal for code: NonEvacuatedBloodCollectionTubeEDTA
@@ -1484,9 +1834,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonEvacuatedBloodCollectionTubeEDTA = "702282003";
 
     /// <summary>
+    /// Literal for code: NONENonEvacuatedBloodCollectionTubeEDTA
+    /// </summary>
+    public const string LiteralNONENonEvacuatedBloodCollectionTubeEDTA = "http://snomed.info/sct#702282003";
+
+    /// <summary>
     /// Literal for code: NonEvacuatedBloodCollectionTubeGelSeparator
     /// </summary>
     public const string LiteralNonEvacuatedBloodCollectionTubeGelSeparator = "702283008";
+
+    /// <summary>
+    /// Literal for code: NONENonEvacuatedBloodCollectionTubeGelSeparator
+    /// </summary>
+    public const string LiteralNONENonEvacuatedBloodCollectionTubeGelSeparator = "http://snomed.info/sct#702283008";
 
     /// <summary>
     /// Literal for code: NonEvacuatedBloodCollectionTubeLithiumHeparin
@@ -1494,9 +1854,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonEvacuatedBloodCollectionTubeLithiumHeparin = "702284002";
 
     /// <summary>
+    /// Literal for code: NONENonEvacuatedBloodCollectionTubeLithiumHeparin
+    /// </summary>
+    public const string LiteralNONENonEvacuatedBloodCollectionTubeLithiumHeparin = "http://snomed.info/sct#702284002";
+
+    /// <summary>
     /// Literal for code: NonEvacuatedBloodCollectionTubeLithiumHeparinGelSeparatorSterile
     /// </summary>
     public const string LiteralNonEvacuatedBloodCollectionTubeLithiumHeparinGelSeparatorSterile = "702285001";
+
+    /// <summary>
+    /// Literal for code: NONENonEvacuatedBloodCollectionTubeLithiumHeparinGelSeparatorSterile
+    /// </summary>
+    public const string LiteralNONENonEvacuatedBloodCollectionTubeLithiumHeparinGelSeparatorSterile = "http://snomed.info/sct#702285001";
 
     /// <summary>
     /// Literal for code: NonEvacuatedBloodCollectionTubeNaEDTASodiumFluoride
@@ -1504,9 +1874,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonEvacuatedBloodCollectionTubeNaEDTASodiumFluoride = "702286000";
 
     /// <summary>
+    /// Literal for code: NONENonEvacuatedBloodCollectionTubeNaEDTASodiumFluoride
+    /// </summary>
+    public const string LiteralNONENonEvacuatedBloodCollectionTubeNaEDTASodiumFluoride = "http://snomed.info/sct#702286000";
+
+    /// <summary>
     /// Literal for code: NonEvacuatedBloodCollectionTubePotassiumOxalateSodiumFluoride
     /// </summary>
     public const string LiteralNonEvacuatedBloodCollectionTubePotassiumOxalateSodiumFluoride = "702287009";
+
+    /// <summary>
+    /// Literal for code: NONENonEvacuatedBloodCollectionTubePotassiumOxalateSodiumFluoride
+    /// </summary>
+    public const string LiteralNONENonEvacuatedBloodCollectionTubePotassiumOxalateSodiumFluoride = "http://snomed.info/sct#702287009";
 
     /// <summary>
     /// Literal for code: EvacuatedUrineSpecimenContainerBoricAcidH3BO3SodiumFormate
@@ -1514,9 +1894,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEvacuatedUrineSpecimenContainerBoricAcidH3BO3SodiumFormate = "702288004";
 
     /// <summary>
+    /// Literal for code: NONEEvacuatedUrineSpecimenContainerBoricAcidH3BO3SodiumFormate
+    /// </summary>
+    public const string LiteralNONEEvacuatedUrineSpecimenContainerBoricAcidH3BO3SodiumFormate = "http://snomed.info/sct#702288004";
+
+    /// <summary>
     /// Literal for code: EvacuatedUrineSpecimenContainerEthylParabenSodiumPorpionateChlorhexidine
     /// </summary>
     public const string LiteralEvacuatedUrineSpecimenContainerEthylParabenSodiumPorpionateChlorhexidine = "702289007";
+
+    /// <summary>
+    /// Literal for code: NONEEvacuatedUrineSpecimenContainerEthylParabenSodiumPorpionateChlorhexidine
+    /// </summary>
+    public const string LiteralNONEEvacuatedUrineSpecimenContainerEthylParabenSodiumPorpionateChlorhexidine = "http://snomed.info/sct#702289007";
 
     /// <summary>
     /// Literal for code: CervicalCytologyMicroscopySlide
@@ -1524,9 +1914,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCervicalCytologyMicroscopySlide = "702290003";
 
     /// <summary>
+    /// Literal for code: NONECervicalCytologyMicroscopySlide
+    /// </summary>
+    public const string LiteralNONECervicalCytologyMicroscopySlide = "http://snomed.info/sct#702290003";
+
+    /// <summary>
     /// Literal for code: EvacuatedBloodCollectionTubeK3EDTASodiumFluoride
     /// </summary>
     public const string LiteralEvacuatedBloodCollectionTubeK3EDTASodiumFluoride = "702292006";
+
+    /// <summary>
+    /// Literal for code: NONEEvacuatedBloodCollectionTubeK3EDTASodiumFluoride
+    /// </summary>
+    public const string LiteralNONEEvacuatedBloodCollectionTubeK3EDTASodiumFluoride = "http://snomed.info/sct#702292006";
 
     /// <summary>
     /// Literal for code: EvacuatedBloodCollectionTubeK2EDTAAprotinin
@@ -1534,9 +1934,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEvacuatedBloodCollectionTubeK2EDTAAprotinin = "702293001";
 
     /// <summary>
+    /// Literal for code: NONEEvacuatedBloodCollectionTubeK2EDTAAprotinin
+    /// </summary>
+    public const string LiteralNONEEvacuatedBloodCollectionTubeK2EDTAAprotinin = "http://snomed.info/sct#702293001";
+
+    /// <summary>
     /// Literal for code: SyringeBloodCollectionTubeTransfer
     /// </summary>
     public const string LiteralSyringeBloodCollectionTubeTransfer = "702294007";
+
+    /// <summary>
+    /// Literal for code: NONESyringeBloodCollectionTubeTransfer
+    /// </summary>
+    public const string LiteralNONESyringeBloodCollectionTubeTransfer = "http://snomed.info/sct#702294007";
 
     /// <summary>
     /// Literal for code: NonEvacuatedBloodCollectionTubeClotActivatorGelSeparator
@@ -1544,9 +1954,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonEvacuatedBloodCollectionTubeClotActivatorGelSeparator = "702295008";
 
     /// <summary>
+    /// Literal for code: NONENonEvacuatedBloodCollectionTubeClotActivatorGelSeparator
+    /// </summary>
+    public const string LiteralNONENonEvacuatedBloodCollectionTubeClotActivatorGelSeparator = "http://snomed.info/sct#702295008";
+
+    /// <summary>
     /// Literal for code: NonEvacuatedBloodCollectionTubeSodiumCitrate
     /// </summary>
     public const string LiteralNonEvacuatedBloodCollectionTubeSodiumCitrate = "702296009";
+
+    /// <summary>
+    /// Literal for code: NONENonEvacuatedBloodCollectionTubeSodiumCitrate
+    /// </summary>
+    public const string LiteralNONENonEvacuatedBloodCollectionTubeSodiumCitrate = "http://snomed.info/sct#702296009";
 
     /// <summary>
     /// Literal for code: NonEvacuatedBloodCollectionTubeClotActivator
@@ -1554,9 +1974,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonEvacuatedBloodCollectionTubeClotActivator = "702297000";
 
     /// <summary>
+    /// Literal for code: NONENonEvacuatedBloodCollectionTubeClotActivator
+    /// </summary>
+    public const string LiteralNONENonEvacuatedBloodCollectionTubeClotActivator = "http://snomed.info/sct#702297000";
+
+    /// <summary>
     /// Literal for code: NonEvacuatedBloodCollectionTubeK3EDTA
     /// </summary>
     public const string LiteralNonEvacuatedBloodCollectionTubeK3EDTA = "702298005";
+
+    /// <summary>
+    /// Literal for code: NONENonEvacuatedBloodCollectionTubeK3EDTA
+    /// </summary>
+    public const string LiteralNONENonEvacuatedBloodCollectionTubeK3EDTA = "http://snomed.info/sct#702298005";
 
     /// <summary>
     /// Literal for code: NonEvacuatedBloodCollectionTubeK2EDTA
@@ -1564,9 +1994,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonEvacuatedBloodCollectionTubeK2EDTA = "702299002";
 
     /// <summary>
+    /// Literal for code: NONENonEvacuatedBloodCollectionTubeK2EDTA
+    /// </summary>
+    public const string LiteralNONENonEvacuatedBloodCollectionTubeK2EDTA = "http://snomed.info/sct#702299002";
+
+    /// <summary>
     /// Literal for code: NonEvacuatedBloodCollectionTubeLithiumHeparinGelSeparatorNonSterile
     /// </summary>
     public const string LiteralNonEvacuatedBloodCollectionTubeLithiumHeparinGelSeparatorNonSterile = "702300005";
+
+    /// <summary>
+    /// Literal for code: NONENonEvacuatedBloodCollectionTubeLithiumHeparinGelSeparatorNonSterile
+    /// </summary>
+    public const string LiteralNONENonEvacuatedBloodCollectionTubeLithiumHeparinGelSeparatorNonSterile = "http://snomed.info/sct#702300005";
 
     /// <summary>
     /// Literal for code: MicrocapillaryBloodCollectionFunnel
@@ -1574,9 +2014,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicrocapillaryBloodCollectionFunnel = "702301009";
 
     /// <summary>
+    /// Literal for code: NONEMicrocapillaryBloodCollectionFunnel
+    /// </summary>
+    public const string LiteralNONEMicrocapillaryBloodCollectionFunnel = "http://snomed.info/sct#702301009";
+
+    /// <summary>
     /// Literal for code: EvacuatedUrineSpecimenContainerBoricAcidH3BO3
     /// </summary>
     public const string LiteralEvacuatedUrineSpecimenContainerBoricAcidH3BO3 = "702302002";
+
+    /// <summary>
+    /// Literal for code: NONEEvacuatedUrineSpecimenContainerBoricAcidH3BO3
+    /// </summary>
+    public const string LiteralNONEEvacuatedUrineSpecimenContainerBoricAcidH3BO3 = "http://snomed.info/sct#702302002";
 
     /// <summary>
     /// Literal for code: EvacuatedUrineSpecimenContainerMultiplePreservative
@@ -1584,9 +2034,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEvacuatedUrineSpecimenContainerMultiplePreservative = "702303007";
 
     /// <summary>
+    /// Literal for code: NONEEvacuatedUrineSpecimenContainerMultiplePreservative
+    /// </summary>
+    public const string LiteralNONEEvacuatedUrineSpecimenContainerMultiplePreservative = "http://snomed.info/sct#702303007";
+
+    /// <summary>
     /// Literal for code: MicrocapillaryBloodTransferTubeClotActivator
     /// </summary>
     public const string LiteralMicrocapillaryBloodTransferTubeClotActivator = "702304001";
+
+    /// <summary>
+    /// Literal for code: NONEMicrocapillaryBloodTransferTubeClotActivator
+    /// </summary>
+    public const string LiteralNONEMicrocapillaryBloodTransferTubeClotActivator = "http://snomed.info/sct#702304001";
 
     /// <summary>
     /// Literal for code: MicrocapillaryBloodTransferTubeSodiumFluoride
@@ -1594,9 +2054,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicrocapillaryBloodTransferTubeSodiumFluoride = "702305000";
 
     /// <summary>
+    /// Literal for code: NONEMicrocapillaryBloodTransferTubeSodiumFluoride
+    /// </summary>
+    public const string LiteralNONEMicrocapillaryBloodTransferTubeSodiumFluoride = "http://snomed.info/sct#702305000";
+
+    /// <summary>
     /// Literal for code: MicrocapillaryBloodTransferTubeEDTA
     /// </summary>
     public const string LiteralMicrocapillaryBloodTransferTubeEDTA = "702306004";
+
+    /// <summary>
+    /// Literal for code: NONEMicrocapillaryBloodTransferTubeEDTA
+    /// </summary>
+    public const string LiteralNONEMicrocapillaryBloodTransferTubeEDTA = "http://snomed.info/sct#702306004";
 
     /// <summary>
     /// Literal for code: MicrocapillaryBloodTransferTubeIVDHeparin
@@ -1604,9 +2074,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicrocapillaryBloodTransferTubeIVDHeparin = "702307008";
 
     /// <summary>
+    /// Literal for code: NONEMicrocapillaryBloodTransferTubeIVDHeparin
+    /// </summary>
+    public const string LiteralNONEMicrocapillaryBloodTransferTubeIVDHeparin = "http://snomed.info/sct#702307008";
+
+    /// <summary>
     /// Literal for code: EvacuatedUrineSpecimenContainerIVDNoAdditive
     /// </summary>
     public const string LiteralEvacuatedUrineSpecimenContainerIVDNoAdditive = "702308003";
+
+    /// <summary>
+    /// Literal for code: NONEEvacuatedUrineSpecimenContainerIVDNoAdditive
+    /// </summary>
+    public const string LiteralNONEEvacuatedUrineSpecimenContainerIVDNoAdditive = "http://snomed.info/sct#702308003";
 
     /// <summary>
     /// Literal for code: SalivaSpecimenContainerIVDNoAdditive
@@ -1614,9 +2094,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSalivaSpecimenContainerIVDNoAdditive = "702309006";
 
     /// <summary>
+    /// Literal for code: NONESalivaSpecimenContainerIVDNoAdditive
+    /// </summary>
+    public const string LiteralNONESalivaSpecimenContainerIVDNoAdditive = "http://snomed.info/sct#702309006";
+
+    /// <summary>
     /// Literal for code: EvacuatedSalivaSpecimenContainerIVDSodiumAzide
     /// </summary>
     public const string LiteralEvacuatedSalivaSpecimenContainerIVDSodiumAzide = "702310001";
+
+    /// <summary>
+    /// Literal for code: NONEEvacuatedSalivaSpecimenContainerIVDSodiumAzide
+    /// </summary>
+    public const string LiteralNONEEvacuatedSalivaSpecimenContainerIVDSodiumAzide = "http://snomed.info/sct#702310001";
 
     /// <summary>
     /// Literal for code: OrthopedicBoneParticleCollectorReusable
@@ -1624,9 +2114,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOrthopedicBoneParticleCollectorReusable = "704866005";
 
     /// <summary>
+    /// Literal for code: NONEOrthopedicBoneParticleCollectorReusable
+    /// </summary>
+    public const string LiteralNONEOrthopedicBoneParticleCollectorReusable = "http://snomed.info/sct#704866005";
+
+    /// <summary>
     /// Literal for code: HemoperfusionTubingSet
     /// </summary>
     public const string LiteralHemoperfusionTubingSet = "704921002";
+
+    /// <summary>
+    /// Literal for code: NONEHemoperfusionTubingSet
+    /// </summary>
+    public const string LiteralNONEHemoperfusionTubingSet = "http://snomed.info/sct#704921002";
 
     /// <summary>
     /// Literal for code: ClinicalSamplingBrush
@@ -1634,9 +2134,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClinicalSamplingBrush = "706042001";
 
     /// <summary>
+    /// Literal for code: NONEClinicalSamplingBrush
+    /// </summary>
+    public const string LiteralNONEClinicalSamplingBrush = "http://snomed.info/sct#706042001";
+
+    /// <summary>
     /// Literal for code: EndotherapyCytologyBrush
     /// </summary>
     public const string LiteralEndotherapyCytologyBrush = "706044000";
+
+    /// <summary>
+    /// Literal for code: NONEEndotherapyCytologyBrush
+    /// </summary>
+    public const string LiteralNONEEndotherapyCytologyBrush = "http://snomed.info/sct#706044000";
 
     /// <summary>
     /// Literal for code: BoneParticleCollector
@@ -1644,9 +2154,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBoneParticleCollector = "706045004";
 
     /// <summary>
+    /// Literal for code: NONEBoneParticleCollector
+    /// </summary>
+    public const string LiteralNONEBoneParticleCollector = "http://snomed.info/sct#706045004";
+
+    /// <summary>
     /// Literal for code: SpecimenReceptacle
     /// </summary>
     public const string LiteralSpecimenReceptacle = "706046003";
+
+    /// <summary>
+    /// Literal for code: NONESpecimenReceptacle
+    /// </summary>
+    public const string LiteralNONESpecimenReceptacle = "http://snomed.info/sct#706046003";
 
     /// <summary>
     /// Literal for code: FecalSpecimenContainer
@@ -1654,9 +2174,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFecalSpecimenContainer = "706047007";
 
     /// <summary>
+    /// Literal for code: NONEFecalSpecimenContainer
+    /// </summary>
+    public const string LiteralNONEFecalSpecimenContainer = "http://snomed.info/sct#706047007";
+
+    /// <summary>
     /// Literal for code: BloodSpecimenReceptacle
     /// </summary>
     public const string LiteralBloodSpecimenReceptacle = "706048002";
+
+    /// <summary>
+    /// Literal for code: NONEBloodSpecimenReceptacle
+    /// </summary>
+    public const string LiteralNONEBloodSpecimenReceptacle = "http://snomed.info/sct#706048002";
 
     /// <summary>
     /// Literal for code: BloodTube
@@ -1664,9 +2194,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBloodTube = "706049005";
 
     /// <summary>
+    /// Literal for code: NONEBloodTube
+    /// </summary>
+    public const string LiteralNONEBloodTube = "http://snomed.info/sct#706049005";
+
+    /// <summary>
     /// Literal for code: MicrocapillaryBloodCollectionTube
     /// </summary>
     public const string LiteralMicrocapillaryBloodCollectionTube = "706050005";
+
+    /// <summary>
+    /// Literal for code: NONEMicrocapillaryBloodCollectionTube
+    /// </summary>
+    public const string LiteralNONEMicrocapillaryBloodCollectionTube = "http://snomed.info/sct#706050005";
 
     /// <summary>
     /// Literal for code: NonEvacuatedBloodCollectionTube
@@ -1674,9 +2214,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonEvacuatedBloodCollectionTube = "706051009";
 
     /// <summary>
+    /// Literal for code: NONENonEvacuatedBloodCollectionTube
+    /// </summary>
+    public const string LiteralNONENonEvacuatedBloodCollectionTube = "http://snomed.info/sct#706051009";
+
+    /// <summary>
     /// Literal for code: EvacuatedBloodCollectionTube
     /// </summary>
     public const string LiteralEvacuatedBloodCollectionTube = "706052002";
+
+    /// <summary>
+    /// Literal for code: NONEEvacuatedBloodCollectionTube
+    /// </summary>
+    public const string LiteralNONEEvacuatedBloodCollectionTube = "http://snomed.info/sct#706052002";
 
     /// <summary>
     /// Literal for code: GeneralSpecimenContainer
@@ -1684,9 +2234,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGeneralSpecimenContainer = "706053007";
 
     /// <summary>
+    /// Literal for code: NONEGeneralSpecimenContainer
+    /// </summary>
+    public const string LiteralNONEGeneralSpecimenContainer = "http://snomed.info/sct#706053007";
+
+    /// <summary>
     /// Literal for code: UrineSpecimenContainer
     /// </summary>
     public const string LiteralUrineSpecimenContainer = "706054001";
+
+    /// <summary>
+    /// Literal for code: NONEUrineSpecimenContainer
+    /// </summary>
+    public const string LiteralNONEUrineSpecimenContainer = "http://snomed.info/sct#706054001";
 
     /// <summary>
     /// Literal for code: VAL24HourUrineSpecimenContainer
@@ -1694,9 +2254,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL24HourUrineSpecimenContainer = "706055000";
 
     /// <summary>
+    /// Literal for code: NONEVAL24HourUrineSpecimenContainer
+    /// </summary>
+    public const string LiteralNONEVAL24HourUrineSpecimenContainer = "http://snomed.info/sct#706055000";
+
+    /// <summary>
     /// Literal for code: EvacuatedUrineSpecimenContainer
     /// </summary>
     public const string LiteralEvacuatedUrineSpecimenContainer = "706056004";
+
+    /// <summary>
+    /// Literal for code: NONEEvacuatedUrineSpecimenContainer
+    /// </summary>
+    public const string LiteralNONEEvacuatedUrineSpecimenContainer = "http://snomed.info/sct#706056004";
 
     /// <summary>
     /// Literal for code: CytologySpecimenContainer
@@ -1704,9 +2274,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCytologySpecimenContainer = "706057008";
 
     /// <summary>
+    /// Literal for code: NONECytologySpecimenContainer
+    /// </summary>
+    public const string LiteralNONECytologySpecimenContainer = "http://snomed.info/sct#706057008";
+
+    /// <summary>
     /// Literal for code: SecretorySpecimenContainer
     /// </summary>
     public const string LiteralSecretorySpecimenContainer = "706058003";
+
+    /// <summary>
+    /// Literal for code: NONESecretorySpecimenContainer
+    /// </summary>
+    public const string LiteralNONESecretorySpecimenContainer = "http://snomed.info/sct#706058003";
 
     /// <summary>
     /// Literal for code: BloodCollectionTransferDevice
@@ -1714,9 +2294,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBloodCollectionTransferDevice = "706067003";
 
     /// <summary>
+    /// Literal for code: NONEBloodCollectionTransferDevice
+    /// </summary>
+    public const string LiteralNONEBloodCollectionTransferDevice = "http://snomed.info/sct#706067003";
+
+    /// <summary>
     /// Literal for code: BloodDonorSet
     /// </summary>
     public const string LiteralBloodDonorSet = "706070004";
+
+    /// <summary>
+    /// Literal for code: NONEBloodDonorSet
+    /// </summary>
+    public const string LiteralNONEBloodDonorSet = "http://snomed.info/sct#706070004";
 
     /// <summary>
     /// Literal for code: SpecimenReceptacleTransportContainer
@@ -1724,9 +2314,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpecimenReceptacleTransportContainer = "706071000";
 
     /// <summary>
+    /// Literal for code: NONESpecimenReceptacleTransportContainer
+    /// </summary>
+    public const string LiteralNONESpecimenReceptacleTransportContainer = "http://snomed.info/sct#706071000";
+
+    /// <summary>
     /// Literal for code: AutologousBloodCollectionTube
     /// </summary>
     public const string LiteralAutologousBloodCollectionTube = "712485008";
+
+    /// <summary>
+    /// Literal for code: NONEAutologousBloodCollectionTube
+    /// </summary>
+    public const string LiteralNONEAutologousBloodCollectionTube = "http://snomed.info/sct#712485008";
 
     /// <summary>
     /// Literal for code: AdiposeTissueStemCellRecoveryUnitUltrasonic
@@ -1734,9 +2334,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdiposeTissueStemCellRecoveryUnitUltrasonic = "713951005";
 
     /// <summary>
+    /// Literal for code: NONEAdiposeTissueStemCellRecoveryUnitUltrasonic
+    /// </summary>
+    public const string LiteralNONEAdiposeTissueStemCellRecoveryUnitUltrasonic = "http://snomed.info/sct#713951005";
+
+    /// <summary>
     /// Literal for code: BloodComponentSeparator
     /// </summary>
     public const string LiteralBloodComponentSeparator = "714731008";
+
+    /// <summary>
+    /// Literal for code: NONEBloodComponentSeparator
+    /// </summary>
+    public const string LiteralNONEBloodComponentSeparator = "http://snomed.info/sct#714731008";
 
     /// <summary>
     /// Literal for code: UrologicalFluidFunnelSterile
@@ -1744,8 +2354,272 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUrologicalFluidFunnelSterile = "718301008";
 
     /// <summary>
+    /// Literal for code: NONEUrologicalFluidFunnelSterile
+    /// </summary>
+    public const string LiteralNONEUrologicalFluidFunnelSterile = "http://snomed.info/sct#718301008";
+
+    /// <summary>
     /// Literal for code: UrologicalFluidFunnelNonSterile
     /// </summary>
     public const string LiteralUrologicalFluidFunnelNonSterile = "718302001";
+
+    /// <summary>
+    /// Literal for code: NONEUrologicalFluidFunnelNonSterile
+    /// </summary>
+    public const string LiteralNONEUrologicalFluidFunnelNonSterile = "http://snomed.info/sct#718302001";
+
+    /// <summary>
+    /// Dictionary for looking up SpecimenContainerType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "22566001", CytologyBrushDevice }, 
+      { "http://snomed.info/sct#22566001", CytologyBrushDevice }, 
+      { "463568005", PleuralDrainageSystemFluidCollector }, 
+      { "http://snomed.info/sct#463568005", PleuralDrainageSystemFluidCollector }, 
+      { "464527005", PaediatricBloodDonorSet }, 
+      { "http://snomed.info/sct#464527005", PaediatricBloodDonorSet }, 
+      { "464573007", AssistedReproductionNeedleReprocessed }, 
+      { "http://snomed.info/sct#464573007", AssistedReproductionNeedleReprocessed }, 
+      { "464784003", AssistedReproductionCatheter }, 
+      { "http://snomed.info/sct#464784003", AssistedReproductionCatheter }, 
+      { "464946000", AssistedReproductionNeedleSingleUse }, 
+      { "http://snomed.info/sct#464946000", AssistedReproductionNeedleSingleUse }, 
+      { "465046006", AssistedReproductionCryotube }, 
+      { "http://snomed.info/sct#465046006", AssistedReproductionCryotube }, 
+      { "465091002", TissueExtractionBag }, 
+      { "http://snomed.info/sct#465091002", TissueExtractionBag }, 
+      { "465141003", OtologicalBoneParticleCollector }, 
+      { "http://snomed.info/sct#465141003", OtologicalBoneParticleCollector }, 
+      { "465487000", RigidEndotherapyCytologyBrushReusable }, 
+      { "http://snomed.info/sct#465487000", RigidEndotherapyCytologyBrushReusable }, 
+      { "466164006", RigidEndotherapyCytologyBrushSingleUse }, 
+      { "http://snomed.info/sct#466164006", RigidEndotherapyCytologyBrushSingleUse }, 
+      { "466421006", Viscerotome }, 
+      { "http://snomed.info/sct#466421006", Viscerotome }, 
+      { "466447002", BloodProcessingAutotransfusionSystemContainer }, 
+      { "http://snomed.info/sct#466447002", BloodProcessingAutotransfusionSystemContainer }, 
+      { "466623002", BloodGasSyringeNeedleSodiumHeparin }, 
+      { "http://snomed.info/sct#466623002", BloodGasSyringeNeedleSodiumHeparin }, 
+      { "466637006", BloodDonorSetQuadPack }, 
+      { "http://snomed.info/sct#466637006", BloodDonorSetQuadPack }, 
+      { "466704003", BloodCollectionFatContentReductionDevice }, 
+      { "http://snomed.info/sct#466704003", BloodCollectionFatContentReductionDevice }, 
+      { "466844004", BloodDonorSetDoublePack }, 
+      { "http://snomed.info/sct#466844004", BloodDonorSetDoublePack }, 
+      { "466898000", BloodDonorSetQuinPack }, 
+      { "http://snomed.info/sct#466898000", BloodDonorSetQuinPack }, 
+      { "466930006", BloodDonorSetTriplePack }, 
+      { "http://snomed.info/sct#466930006", BloodDonorSetTriplePack }, 
+      { "467030004", BloodGasSyringeNeedleLithiumHeparin }, 
+      { "http://snomed.info/sct#467030004", BloodGasSyringeNeedleLithiumHeparin }, 
+      { "467131002", BloodAutotransfusionSystemTubing }, 
+      { "http://snomed.info/sct#467131002", BloodAutotransfusionSystemTubing }, 
+      { "467132009", BloodDonorSetSinglePack }, 
+      { "http://snomed.info/sct#467132009", BloodDonorSetSinglePack }, 
+      { "467141004", BloodDonorSetManyPack }, 
+      { "http://snomed.info/sct#467141004", BloodDonorSetManyPack }, 
+      { "467182004", CervicalCytologyInflatableCollector }, 
+      { "http://snomed.info/sct#467182004", CervicalCytologyInflatableCollector }, 
+      { "467330006", AdiposeTissueStemCellRecoveryUnit }, 
+      { "http://snomed.info/sct#467330006", AdiposeTissueStemCellRecoveryUnit }, 
+      { "467431009", AbortionSuctionSystemCollectionBottle }, 
+      { "http://snomed.info/sct#467431009", AbortionSuctionSystemCollectionBottle }, 
+      { "467499008", ChorionicVillusSamplingCatheter }, 
+      { "http://snomed.info/sct#467499008", ChorionicVillusSamplingCatheter }, 
+      { "467647004", CryostatMicrotome }, 
+      { "http://snomed.info/sct#467647004", CryostatMicrotome }, 
+      { "467697000", CytologyScraperSingleUse }, 
+      { "http://snomed.info/sct#467697000", CytologyScraperSingleUse }, 
+      { "467743009", BoneMarrowExplantNeedle }, 
+      { "http://snomed.info/sct#467743009", BoneMarrowExplantNeedle }, 
+      { "467967005", CytologyScraperReusable }, 
+      { "http://snomed.info/sct#467967005", CytologyScraperReusable }, 
+      { "467989009", CapillaryBloodCollectionTubeNoAdditive }, 
+      { "http://snomed.info/sct#467989009", CapillaryBloodCollectionTubeNoAdditive }, 
+      { "468076003", BoneMarrowCollectionTransfusionSet }, 
+      { "http://snomed.info/sct#468076003", BoneMarrowCollectionTransfusionSet }, 
+      { "468131000", CervicalCytologyBrush }, 
+      { "http://snomed.info/sct#468131000", CervicalCytologyBrush }, 
+      { "468200003", EpididymalFluidAspirationCatheter }, 
+      { "http://snomed.info/sct#468200003", EpididymalFluidAspirationCatheter }, 
+      { "468981005", DentalBoneParticleCollector }, 
+      { "http://snomed.info/sct#468981005", DentalBoneParticleCollector }, 
+      { "468999002", EndometrialCytologyBrush }, 
+      { "http://snomed.info/sct#468999002", EndometrialCytologyBrush }, 
+      { "469287008", IntrauterineSecretionScoop }, 
+      { "http://snomed.info/sct#469287008", IntrauterineSecretionScoop }, 
+      { "469322002", IntravascularCatheterEndoluminalBrush }, 
+      { "http://snomed.info/sct#469322002", IntravascularCatheterEndoluminalBrush }, 
+      { "469454007", IntrauterineScoop }, 
+      { "http://snomed.info/sct#469454007", IntrauterineScoop }, 
+      { "469822008", FlexibleEndotherapyCytologyBrushSingleUse }, 
+      { "http://snomed.info/sct#469822008", FlexibleEndotherapyCytologyBrushSingleUse }, 
+      { "470114007", FlexibleEndotherapyCytologyBrushReusable }, 
+      { "http://snomed.info/sct#470114007", FlexibleEndotherapyCytologyBrushReusable }, 
+      { "470547006", GeneralPurposeCytologyBrush }, 
+      { "http://snomed.info/sct#470547006", GeneralPurposeCytologyBrush }, 
+      { "470597005", GastroUrologicalScoop }, 
+      { "http://snomed.info/sct#470597005", GastroUrologicalScoop }, 
+      { "700855008", TissueFluidCollectionBagSterile }, 
+      { "http://snomed.info/sct#700855008", TissueFluidCollectionBagSterile }, 
+      { "700905004", SpecimenContainerMailerInsulated }, 
+      { "http://snomed.info/sct#700905004", SpecimenContainerMailerInsulated }, 
+      { "700906003", SpecimenContainerMailerNonInsulated }, 
+      { "http://snomed.info/sct#700906003", SpecimenContainerMailerNonInsulated }, 
+      { "700945008", BloodCellFreezeThawSystemSet }, 
+      { "http://snomed.info/sct#700945008", BloodCellFreezeThawSystemSet }, 
+      { "700955007", BloodCollectionLuerSyringeAdaptor }, 
+      { "http://snomed.info/sct#700955007", BloodCollectionLuerSyringeAdaptor }, 
+      { "700956008", BloodCollectionNeedleBasic }, 
+      { "http://snomed.info/sct#700956008", BloodCollectionNeedleBasic }, 
+      { "700957004", BloodTissueStorageCultureContainer }, 
+      { "http://snomed.info/sct#700957004", BloodTissueStorageCultureContainer }, 
+      { "701394007", GeneralSpecimenReceptacleTransportContainer }, 
+      { "http://snomed.info/sct#701394007", GeneralSpecimenReceptacleTransportContainer }, 
+      { "701516009", EvacuatedBloodCollectionTubeTransportContainer }, 
+      { "http://snomed.info/sct#701516009", EvacuatedBloodCollectionTubeTransportContainer }, 
+      { "701720006", TissueFluidCollectionBagNonSterile }, 
+      { "http://snomed.info/sct#701720006", TissueFluidCollectionBagNonSterile }, 
+      { "702120003", BloodCollectionLuerAdaptor }, 
+      { "http://snomed.info/sct#702120003", BloodCollectionLuerAdaptor }, 
+      { "702223006", SputumSpecimenContainer }, 
+      { "http://snomed.info/sct#702223006", SputumSpecimenContainer }, 
+      { "702224000", MidstreamUrineSpecimenContainer }, 
+      { "http://snomed.info/sct#702224000", MidstreamUrineSpecimenContainer }, 
+      { "702232008", SweatSpecimenContainerIVD }, 
+      { "http://snomed.info/sct#702232008", SweatSpecimenContainerIVD }, 
+      { "702244006", SterileUrineSpecimenContainer }, 
+      { "http://snomed.info/sct#702244006", SterileUrineSpecimenContainer }, 
+      { "702256007", NonEvacuatedBloodCollectionTubeNoAdditive }, 
+      { "http://snomed.info/sct#702256007", NonEvacuatedBloodCollectionTubeNoAdditive }, 
+      { "702264001", NonSterileUrineSpecimenContainerIVD }, 
+      { "http://snomed.info/sct#702264001", NonSterileUrineSpecimenContainerIVD }, 
+      { "702268003", GeneralSpecimenContainerNoAdditiveNonSterile }, 
+      { "http://snomed.info/sct#702268003", GeneralSpecimenContainerNoAdditiveNonSterile }, 
+      { "702269006", GeneralSpecimenContainerNoAdditiveSterile }, 
+      { "http://snomed.info/sct#702269006", GeneralSpecimenContainerNoAdditiveSterile }, 
+      { "702275002", MicrocapillaryBloodCollectionTubeAmmoniumHeparin }, 
+      { "http://snomed.info/sct#702275002", MicrocapillaryBloodCollectionTubeAmmoniumHeparin }, 
+      { "702276001", MicrocapillaryBloodCollectionTubeK2EDTA }, 
+      { "http://snomed.info/sct#702276001", MicrocapillaryBloodCollectionTubeK2EDTA }, 
+      { "702277005", MicrocapillaryBloodCollectionTubeNoAdditive }, 
+      { "http://snomed.info/sct#702277005", MicrocapillaryBloodCollectionTubeNoAdditive }, 
+      { "702278000", EvacuatedBloodCollectionTubeNoAdditiveMetalFree }, 
+      { "http://snomed.info/sct#702278000", EvacuatedBloodCollectionTubeNoAdditiveMetalFree }, 
+      { "702279008", EvacuatedBloodCollectionTubeGelSeparator }, 
+      { "http://snomed.info/sct#702279008", EvacuatedBloodCollectionTubeGelSeparator }, 
+      { "702280006", EvacuatedBloodCollectionTubeRNAStabilizer }, 
+      { "http://snomed.info/sct#702280006", EvacuatedBloodCollectionTubeRNAStabilizer }, 
+      { "702281005", EvacuatedBloodCollectionTubeThrombinClotActivatorGelSeparator }, 
+      { "http://snomed.info/sct#702281005", EvacuatedBloodCollectionTubeThrombinClotActivatorGelSeparator }, 
+      { "702282003", NonEvacuatedBloodCollectionTubeEDTA }, 
+      { "http://snomed.info/sct#702282003", NonEvacuatedBloodCollectionTubeEDTA }, 
+      { "702283008", NonEvacuatedBloodCollectionTubeGelSeparator }, 
+      { "http://snomed.info/sct#702283008", NonEvacuatedBloodCollectionTubeGelSeparator }, 
+      { "702284002", NonEvacuatedBloodCollectionTubeLithiumHeparin }, 
+      { "http://snomed.info/sct#702284002", NonEvacuatedBloodCollectionTubeLithiumHeparin }, 
+      { "702285001", NonEvacuatedBloodCollectionTubeLithiumHeparinGelSeparatorSterile }, 
+      { "http://snomed.info/sct#702285001", NonEvacuatedBloodCollectionTubeLithiumHeparinGelSeparatorSterile }, 
+      { "702286000", NonEvacuatedBloodCollectionTubeNaEDTASodiumFluoride }, 
+      { "http://snomed.info/sct#702286000", NonEvacuatedBloodCollectionTubeNaEDTASodiumFluoride }, 
+      { "702287009", NonEvacuatedBloodCollectionTubePotassiumOxalateSodiumFluoride }, 
+      { "http://snomed.info/sct#702287009", NonEvacuatedBloodCollectionTubePotassiumOxalateSodiumFluoride }, 
+      { "702288004", EvacuatedUrineSpecimenContainerBoricAcidH3BO3SodiumFormate }, 
+      { "http://snomed.info/sct#702288004", EvacuatedUrineSpecimenContainerBoricAcidH3BO3SodiumFormate }, 
+      { "702289007", EvacuatedUrineSpecimenContainerEthylParabenSodiumPorpionateChlorhexidine }, 
+      { "http://snomed.info/sct#702289007", EvacuatedUrineSpecimenContainerEthylParabenSodiumPorpionateChlorhexidine }, 
+      { "702290003", CervicalCytologyMicroscopySlide }, 
+      { "http://snomed.info/sct#702290003", CervicalCytologyMicroscopySlide }, 
+      { "702292006", EvacuatedBloodCollectionTubeK3EDTASodiumFluoride }, 
+      { "http://snomed.info/sct#702292006", EvacuatedBloodCollectionTubeK3EDTASodiumFluoride }, 
+      { "702293001", EvacuatedBloodCollectionTubeK2EDTAAprotinin }, 
+      { "http://snomed.info/sct#702293001", EvacuatedBloodCollectionTubeK2EDTAAprotinin }, 
+      { "702294007", SyringeBloodCollectionTubeTransfer }, 
+      { "http://snomed.info/sct#702294007", SyringeBloodCollectionTubeTransfer }, 
+      { "702295008", NonEvacuatedBloodCollectionTubeClotActivatorGelSeparator }, 
+      { "http://snomed.info/sct#702295008", NonEvacuatedBloodCollectionTubeClotActivatorGelSeparator }, 
+      { "702296009", NonEvacuatedBloodCollectionTubeSodiumCitrate }, 
+      { "http://snomed.info/sct#702296009", NonEvacuatedBloodCollectionTubeSodiumCitrate }, 
+      { "702297000", NonEvacuatedBloodCollectionTubeClotActivator }, 
+      { "http://snomed.info/sct#702297000", NonEvacuatedBloodCollectionTubeClotActivator }, 
+      { "702298005", NonEvacuatedBloodCollectionTubeK3EDTA }, 
+      { "http://snomed.info/sct#702298005", NonEvacuatedBloodCollectionTubeK3EDTA }, 
+      { "702299002", NonEvacuatedBloodCollectionTubeK2EDTA }, 
+      { "http://snomed.info/sct#702299002", NonEvacuatedBloodCollectionTubeK2EDTA }, 
+      { "702300005", NonEvacuatedBloodCollectionTubeLithiumHeparinGelSeparatorNonSterile }, 
+      { "http://snomed.info/sct#702300005", NonEvacuatedBloodCollectionTubeLithiumHeparinGelSeparatorNonSterile }, 
+      { "702301009", MicrocapillaryBloodCollectionFunnel }, 
+      { "http://snomed.info/sct#702301009", MicrocapillaryBloodCollectionFunnel }, 
+      { "702302002", EvacuatedUrineSpecimenContainerBoricAcidH3BO3 }, 
+      { "http://snomed.info/sct#702302002", EvacuatedUrineSpecimenContainerBoricAcidH3BO3 }, 
+      { "702303007", EvacuatedUrineSpecimenContainerMultiplePreservative }, 
+      { "http://snomed.info/sct#702303007", EvacuatedUrineSpecimenContainerMultiplePreservative }, 
+      { "702304001", MicrocapillaryBloodTransferTubeClotActivator }, 
+      { "http://snomed.info/sct#702304001", MicrocapillaryBloodTransferTubeClotActivator }, 
+      { "702305000", MicrocapillaryBloodTransferTubeSodiumFluoride }, 
+      { "http://snomed.info/sct#702305000", MicrocapillaryBloodTransferTubeSodiumFluoride }, 
+      { "702306004", MicrocapillaryBloodTransferTubeEDTA }, 
+      { "http://snomed.info/sct#702306004", MicrocapillaryBloodTransferTubeEDTA }, 
+      { "702307008", MicrocapillaryBloodTransferTubeIVDHeparin }, 
+      { "http://snomed.info/sct#702307008", MicrocapillaryBloodTransferTubeIVDHeparin }, 
+      { "702308003", EvacuatedUrineSpecimenContainerIVDNoAdditive }, 
+      { "http://snomed.info/sct#702308003", EvacuatedUrineSpecimenContainerIVDNoAdditive }, 
+      { "702309006", SalivaSpecimenContainerIVDNoAdditive }, 
+      { "http://snomed.info/sct#702309006", SalivaSpecimenContainerIVDNoAdditive }, 
+      { "702310001", EvacuatedSalivaSpecimenContainerIVDSodiumAzide }, 
+      { "http://snomed.info/sct#702310001", EvacuatedSalivaSpecimenContainerIVDSodiumAzide }, 
+      { "704866005", OrthopedicBoneParticleCollectorReusable }, 
+      { "http://snomed.info/sct#704866005", OrthopedicBoneParticleCollectorReusable }, 
+      { "704921002", HemoperfusionTubingSet }, 
+      { "http://snomed.info/sct#704921002", HemoperfusionTubingSet }, 
+      { "706042001", ClinicalSamplingBrush }, 
+      { "http://snomed.info/sct#706042001", ClinicalSamplingBrush }, 
+      { "706044000", EndotherapyCytologyBrush }, 
+      { "http://snomed.info/sct#706044000", EndotherapyCytologyBrush }, 
+      { "706045004", BoneParticleCollector }, 
+      { "http://snomed.info/sct#706045004", BoneParticleCollector }, 
+      { "706046003", SpecimenReceptacle }, 
+      { "http://snomed.info/sct#706046003", SpecimenReceptacle }, 
+      { "706047007", FecalSpecimenContainer }, 
+      { "http://snomed.info/sct#706047007", FecalSpecimenContainer }, 
+      { "706048002", BloodSpecimenReceptacle }, 
+      { "http://snomed.info/sct#706048002", BloodSpecimenReceptacle }, 
+      { "706049005", BloodTube }, 
+      { "http://snomed.info/sct#706049005", BloodTube }, 
+      { "706050005", MicrocapillaryBloodCollectionTube }, 
+      { "http://snomed.info/sct#706050005", MicrocapillaryBloodCollectionTube }, 
+      { "706051009", NonEvacuatedBloodCollectionTube }, 
+      { "http://snomed.info/sct#706051009", NonEvacuatedBloodCollectionTube }, 
+      { "706052002", EvacuatedBloodCollectionTube }, 
+      { "http://snomed.info/sct#706052002", EvacuatedBloodCollectionTube }, 
+      { "706053007", GeneralSpecimenContainer }, 
+      { "http://snomed.info/sct#706053007", GeneralSpecimenContainer }, 
+      { "706054001", UrineSpecimenContainer }, 
+      { "http://snomed.info/sct#706054001", UrineSpecimenContainer }, 
+      { "706055000", VAL24HourUrineSpecimenContainer }, 
+      { "http://snomed.info/sct#706055000", VAL24HourUrineSpecimenContainer }, 
+      { "706056004", EvacuatedUrineSpecimenContainer }, 
+      { "http://snomed.info/sct#706056004", EvacuatedUrineSpecimenContainer }, 
+      { "706057008", CytologySpecimenContainer }, 
+      { "http://snomed.info/sct#706057008", CytologySpecimenContainer }, 
+      { "706058003", SecretorySpecimenContainer }, 
+      { "http://snomed.info/sct#706058003", SecretorySpecimenContainer }, 
+      { "706067003", BloodCollectionTransferDevice }, 
+      { "http://snomed.info/sct#706067003", BloodCollectionTransferDevice }, 
+      { "706070004", BloodDonorSet }, 
+      { "http://snomed.info/sct#706070004", BloodDonorSet }, 
+      { "706071000", SpecimenReceptacleTransportContainer }, 
+      { "http://snomed.info/sct#706071000", SpecimenReceptacleTransportContainer }, 
+      { "712485008", AutologousBloodCollectionTube }, 
+      { "http://snomed.info/sct#712485008", AutologousBloodCollectionTube }, 
+      { "713951005", AdiposeTissueStemCellRecoveryUnitUltrasonic }, 
+      { "http://snomed.info/sct#713951005", AdiposeTissueStemCellRecoveryUnitUltrasonic }, 
+      { "714731008", BloodComponentSeparator }, 
+      { "http://snomed.info/sct#714731008", BloodComponentSeparator }, 
+      { "718301008", UrologicalFluidFunnelSterile }, 
+      { "http://snomed.info/sct#718301008", UrologicalFluidFunnelSterile }, 
+      { "718302001", UrologicalFluidFunnelNonSterile }, 
+      { "http://snomed.info/sct#718302001", UrologicalFluidFunnelNonSterile }, 
+    };
   };
 }

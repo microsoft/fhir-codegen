@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRandomized = "Randomized";
 
     /// <summary>
+    /// Literal for code: ResearchSubjectMilestoneRandomized
+    /// </summary>
+    public const string LiteralResearchSubjectMilestoneRandomized = "http://terminology.hl7.org/CodeSystem/research-subject-milestone#Randomized";
+
+    /// <summary>
     /// Literal for code: Screened
     /// </summary>
     public const string LiteralScreened = "Screened";
 
     /// <summary>
+    /// Literal for code: ResearchSubjectMilestoneScreened
+    /// </summary>
+    public const string LiteralResearchSubjectMilestoneScreened = "http://terminology.hl7.org/CodeSystem/research-subject-milestone#Screened";
+
+    /// <summary>
     /// Literal for code: SignedUp
     /// </summary>
     public const string LiteralSignedUp = "SignedUp";
+
+    /// <summary>
+    /// Literal for code: ResearchSubjectMilestoneSignedUp
+    /// </summary>
+    public const string LiteralResearchSubjectMilestoneSignedUp = "http://terminology.hl7.org/CodeSystem/research-subject-milestone#SignedUp";
+
+    /// <summary>
+    /// Dictionary for looking up ResearchSubjectMilestone Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "Randomized", Randomized }, 
+      { "http://terminology.hl7.org/CodeSystem/research-subject-milestone#Randomized", Randomized }, 
+      { "Screened", Screened }, 
+      { "http://terminology.hl7.org/CodeSystem/research-subject-milestone#Screened", Screened }, 
+      { "SignedUp", SignedUp }, 
+      { "http://terminology.hl7.org/CodeSystem/research-subject-milestone#SignedUp", SignedUp }, 
+    };
   };
 }

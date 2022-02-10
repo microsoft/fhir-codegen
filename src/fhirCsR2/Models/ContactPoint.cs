@@ -190,6 +190,13 @@ namespace fhirCsR2.Models
     public const string EMAIL = "email";
     public const string PAGER = "pager";
     public const string OTHER = "other";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "phone",
+      "fax",
+      "email",
+      "pager",
+      "other",
+    };
   }
   /// <summary>
   /// Code Values for the ContactPoint.use field
@@ -200,5 +207,12 @@ namespace fhirCsR2.Models
     public const string TEMP = "temp";
     public const string OLD = "old";
     public const string MOBILE = "mobile";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "home",
+      "work",
+      "temp",
+      "old",
+      "mobile",
+    };
   }
 }

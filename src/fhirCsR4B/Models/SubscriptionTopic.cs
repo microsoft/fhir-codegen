@@ -36,6 +36,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? RequireBoth { get; set; }
     /// <summary>
+    /// Extension container element for RequireBoth
+    /// </summary>
+    public Element _RequireBoth { get; set; }
+    /// <summary>
     /// What behavior a server will exhibit if the previous state of a resource does NOT exist (e.g., prior to a create).
     /// </summary>
     public string ResultForCreate { get; set; }
@@ -111,6 +115,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("requireBoth", (bool)RequireBoth!);
       }
 
+      if (_RequireBoth != null)
+      {
+        writer.WritePropertyName("_requireBoth");
+        _RequireBoth.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -143,6 +153,11 @@ namespace fhirCsR4B.Models
 
         case "requireBoth":
           RequireBoth = reader.GetBoolean();
+          break;
+
+        case "_requireBoth":
+          _RequireBoth = new fhirCsR4B.Models.Element();
+          _RequireBoth.DeserializeJson(ref reader, options);
           break;
 
         case "resultForCreate":
@@ -200,6 +215,10 @@ namespace fhirCsR4B.Models
   public static class SubscriptionTopicResourceTriggerQueryCriteriaResultForCreateCodes {
     public const string TEST_PASSES = "test-passes";
     public const string TEST_FAILS = "test-fails";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "test-passes",
+      "test-fails",
+    };
   }
   /// <summary>
   /// Code Values for the SubscriptionTopic.resourceTrigger.queryCriteria.resultForDelete field
@@ -207,6 +226,10 @@ namespace fhirCsR4B.Models
   public static class SubscriptionTopicResourceTriggerQueryCriteriaResultForDeleteCodes {
     public const string TEST_PASSES = "test-passes";
     public const string TEST_FAILS = "test-fails";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "test-passes",
+      "test-fails",
+    };
   }
   /// <summary>
   /// A definition of a resource-based event that triggers a notification based on the SubscriptionTopic. The criteria may be just a human readable description and/or a full FHIR search string or FHIRPath expression. Multiple triggers are considered OR joined (e.g., a resource update matching ANY of the definitions will trigger a notification).
@@ -459,6 +482,11 @@ namespace fhirCsR4B.Models
     public const string CREATE = "create";
     public const string UPDATE = "update";
     public const string DELETE = "delete";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "create",
+      "update",
+      "delete",
+    };
   }
   /// <summary>
   /// Event definition which can be used to trigger the SubscriptionTopic.
@@ -838,6 +866,23 @@ namespace fhirCsR4B.Models
     public const string VAL_IN = "in";
     public const string NOT_IN = "not-in";
     public const string OF_TYPE = "of-type";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "=",
+      "eq",
+      "ne",
+      "gt",
+      "lt",
+      "ge",
+      "le",
+      "sa",
+      "eb",
+      "ap",
+      "above",
+      "below",
+      "in",
+      "not-in",
+      "of-type",
+    };
   }
   /// <summary>
   /// List of properties to describe the shape (e.g., resources) included in notifications from this Subscription Topic.
@@ -1168,6 +1213,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// Note: This is a business identifier, not a resource identifier (see [discussion](resource.html#identifiers)).  It is best practice for the identifier to only appear on a single resource instance, however business practices may occasionally dictate that multiple resource instances with the same identifier can exist - possibly even with different resource types.  For example, multiple Patient and a Person resource instance might share the same social insurance number.
     /// </summary>
     public List<Identifier> Identifier { get; set; }
@@ -1347,6 +1396,12 @@ namespace fhirCsR4B.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -1713,6 +1768,11 @@ namespace fhirCsR4B.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR4B.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "identifier":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -1950,5 +2010,11 @@ namespace fhirCsR4B.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

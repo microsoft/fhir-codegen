@@ -437,5 +437,14 @@ namespace fhirCsR3.Models
     public const string ANONYMOUS = "anonymous";
     public const string OLD = "old";
     public const string MAIDEN = "maiden";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "usual",
+      "official",
+      "temp",
+      "nickname",
+      "anonymous",
+      "old",
+      "maiden",
+    };
   }
 }

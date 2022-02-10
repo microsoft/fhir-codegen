@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSuccess = "0";
 
     /// <summary>
+    /// Literal for code: AuditEventOutcomeSuccess
+    /// </summary>
+    public const string LiteralAuditEventOutcomeSuccess = "http://hl7.org/fhir/audit-event-outcome#0";
+
+    /// <summary>
     /// Literal for code: MajorFailure
     /// </summary>
     public const string LiteralMajorFailure = "12";
+
+    /// <summary>
+    /// Literal for code: AuditEventOutcomeMajorFailure
+    /// </summary>
+    public const string LiteralAuditEventOutcomeMajorFailure = "http://hl7.org/fhir/audit-event-outcome#12";
 
     /// <summary>
     /// Literal for code: MinorFailure
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMinorFailure = "4";
 
     /// <summary>
+    /// Literal for code: AuditEventOutcomeMinorFailure
+    /// </summary>
+    public const string LiteralAuditEventOutcomeMinorFailure = "http://hl7.org/fhir/audit-event-outcome#4";
+
+    /// <summary>
     /// Literal for code: SeriousFailure
     /// </summary>
     public const string LiteralSeriousFailure = "8";
+
+    /// <summary>
+    /// Literal for code: AuditEventOutcomeSeriousFailure
+    /// </summary>
+    public const string LiteralAuditEventOutcomeSeriousFailure = "http://hl7.org/fhir/audit-event-outcome#8";
+
+    /// <summary>
+    /// Dictionary for looking up AuditEventOutcome Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "0", Success }, 
+      { "http://hl7.org/fhir/audit-event-outcome#0", Success }, 
+      { "12", MajorFailure }, 
+      { "http://hl7.org/fhir/audit-event-outcome#12", MajorFailure }, 
+      { "4", MinorFailure }, 
+      { "http://hl7.org/fhir/audit-event-outcome#4", MinorFailure }, 
+      { "8", SeriousFailure }, 
+      { "http://hl7.org/fhir/audit-event-outcome#8", SeriousFailure }, 
+    };
   };
 }

@@ -45,13 +45,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: LocationStatusActive
+    /// </summary>
+    public const string LiteralLocationStatusActive = "http://hl7.org/fhir/location-status#active";
+
+    /// <summary>
     /// Literal for code: Inactive
     /// </summary>
     public const string LiteralInactive = "inactive";
 
     /// <summary>
+    /// Literal for code: LocationStatusInactive
+    /// </summary>
+    public const string LiteralLocationStatusInactive = "http://hl7.org/fhir/location-status#inactive";
+
+    /// <summary>
     /// Literal for code: Suspended
     /// </summary>
     public const string LiteralSuspended = "suspended";
+
+    /// <summary>
+    /// Literal for code: LocationStatusSuspended
+    /// </summary>
+    public const string LiteralLocationStatusSuspended = "http://hl7.org/fhir/location-status#suspended";
+
+    /// <summary>
+    /// Dictionary for looking up LocationStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/location-status#active", Active }, 
+      { "inactive", Inactive }, 
+      { "http://hl7.org/fhir/location-status#inactive", Inactive }, 
+      { "suspended", Suspended }, 
+      { "http://hl7.org/fhir/location-status#suspended", Suspended }, 
+    };
   };
 }

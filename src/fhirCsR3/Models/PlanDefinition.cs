@@ -573,6 +573,11 @@ namespace fhirCsR3.Models
     public const string APPLICABILITY = "applicability";
     public const string START = "start";
     public const string STOP = "stop";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "applicability",
+      "start",
+      "stop",
+    };
   }
   /// <summary>
   /// When an action depends on multiple actions, the meaning is that all actions are dependencies, rather than that any of the actions are a dependency.
@@ -732,6 +737,17 @@ namespace fhirCsR3.Models
     public const string AFTER_START = "after-start";
     public const string AFTER = "after";
     public const string AFTER_END = "after-end";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "before-start",
+      "before",
+      "before-end",
+      "concurrent-with-start",
+      "concurrent",
+      "concurrent-with-end",
+      "after-start",
+      "after",
+      "after-end",
+    };
   }
   /// <summary>
   /// Indicates who should participate in performing the action described.
@@ -842,6 +858,11 @@ namespace fhirCsR3.Models
     public const string PATIENT = "patient";
     public const string PRACTITIONER = "practitioner";
     public const string RELATED_PERSON = "related-person";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "patient",
+      "practitioner",
+      "related-person",
+    };
   }
   /// <summary>
   /// Customizations that should be applied to the statically defined resource. For example, if the dosage of a medication must be computed based on the patient's weight, a customization would be used to specify an expression that calculated the weight, and the path on the resource that would contain the result.
@@ -2034,6 +2055,10 @@ namespace fhirCsR3.Models
   public static class PlanDefinitionActionCardinalityBehaviorCodes {
     public const string SINGLE = "single";
     public const string MULTIPLE = "multiple";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "single",
+      "multiple",
+    };
   }
   /// <summary>
   /// Code Values for the PlanDefinition.action.groupingBehavior field
@@ -2042,6 +2067,11 @@ namespace fhirCsR3.Models
     public const string VISUAL_GROUP = "visual-group";
     public const string LOGICAL_GROUP = "logical-group";
     public const string SENTENCE_GROUP = "sentence-group";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "visual-group",
+      "logical-group",
+      "sentence-group",
+    };
   }
   /// <summary>
   /// Code Values for the PlanDefinition.action.precheckBehavior field
@@ -2049,6 +2079,10 @@ namespace fhirCsR3.Models
   public static class PlanDefinitionActionPrecheckBehaviorCodes {
     public const string YES = "yes";
     public const string NO = "no";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "yes",
+      "no",
+    };
   }
   /// <summary>
   /// Code Values for the PlanDefinition.action.requiredBehavior field
@@ -2057,6 +2091,11 @@ namespace fhirCsR3.Models
     public const string MUST = "must";
     public const string COULD = "could";
     public const string MUST_UNLESS_DOCUMENTED = "must-unless-documented";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "must",
+      "could",
+      "must-unless-documented",
+    };
   }
   /// <summary>
   /// Code Values for the PlanDefinition.action.selectionBehavior field
@@ -2068,6 +2107,14 @@ namespace fhirCsR3.Models
     public const string EXACTLY_ONE = "exactly-one";
     public const string AT_MOST_ONE = "at-most-one";
     public const string ONE_OR_MORE = "one-or-more";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "any",
+      "all",
+      "all-or-none",
+      "exactly-one",
+      "at-most-one",
+      "one-or-more",
+    };
   }
   /// <summary>
   /// This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical artifacts such as clinical decision support rules, order sets and protocols.
@@ -2130,6 +2177,10 @@ namespace fhirCsR3.Models
     /// Allows filtering of plan definition that are appropriate for use vs. not. This is labeled as "Is Modifier" because applications should not use an experimental plan definition in production.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// Goals that describe what the activities within the plan are intended to achieve. For example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.
     /// </summary>
@@ -2329,6 +2380,12 @@ namespace fhirCsR3.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -2680,6 +2737,11 @@ namespace fhirCsR3.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR3.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "goal":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -2994,5 +3056,11 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

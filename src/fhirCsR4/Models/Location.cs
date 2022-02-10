@@ -158,6 +158,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? AllDay { get; set; }
     /// <summary>
+    /// Extension container element for AllDay
+    /// </summary>
+    public Element _AllDay { get; set; }
+    /// <summary>
     /// Time that the Location closes.
     /// </summary>
     public string ClosingTime { get; set; }
@@ -223,6 +227,12 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("allDay", (bool)AllDay!);
       }
 
+      if (_AllDay != null)
+      {
+        writer.WritePropertyName("_allDay");
+        _AllDay.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(OpeningTime))
       {
         writer.WriteString("openingTime", (string)OpeningTime!);
@@ -259,6 +269,11 @@ namespace fhirCsR4.Models
       {
         case "allDay":
           AllDay = reader.GetBoolean();
+          break;
+
+        case "_allDay":
+          _AllDay = new fhirCsR4.Models.Element();
+          _AllDay.DeserializeJson(ref reader, options);
           break;
 
         case "closingTime":
@@ -373,6 +388,15 @@ namespace fhirCsR4.Models
     public const string FRI = "fri";
     public const string SAT = "sat";
     public const string SUN = "sun";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
+      "sat",
+      "sun",
+    };
   }
   /// <summary>
   /// Details and position information for a physical place where services are provided and resources and participants may be stored, found, contained, or accommodated.
@@ -986,6 +1010,10 @@ namespace fhirCsR4.Models
   public static class LocationModeCodes {
     public const string INSTANCE = "instance";
     public const string KIND = "kind";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "instance",
+      "kind",
+    };
   }
   /// <summary>
   /// Code Values for the Location.status field
@@ -994,5 +1022,10 @@ namespace fhirCsR4.Models
     public const string ACTIVE = "active";
     public const string SUSPENDED = "suspended";
     public const string INACTIVE = "inactive";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "suspended",
+      "inactive",
+    };
   }
 }

@@ -24,6 +24,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? NotConsumed { get; set; }
     /// <summary>
+    /// Extension container element for NotConsumed
+    /// </summary>
+    public Element _NotConsumed { get; set; }
+    /// <summary>
     /// Document the reason the food or fluid was not consumed, such as refused, held, etc.
     /// </summary>
     public CodeableConcept NotConsumedReason { get; set; }
@@ -89,6 +93,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("notConsumed", (bool)NotConsumed!);
       }
 
+      if (_NotConsumed != null)
+      {
+        writer.WritePropertyName("_notConsumed");
+        _NotConsumed.SerializeJson(writer, options);
+      }
+
       if (NotConsumedReason != null)
       {
         writer.WritePropertyName("notConsumedReason");
@@ -114,6 +124,11 @@ namespace fhirCsR5.Models
 
         case "notConsumed":
           NotConsumed = reader.GetBoolean();
+          break;
+
+        case "_notConsumed":
+          _NotConsumed = new fhirCsR5.Models.Element();
+          _NotConsumed.DeserializeJson(ref reader, options);
           break;
 
         case "notConsumedReason":
@@ -448,6 +463,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ReportedBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ReportedBoolean
+    /// </summary>
+    public Element _ReportedBoolean { get; set; }
+    /// <summary>
     /// The person or organization that provided the information about the consumption of this food or fluid. Note: Use derivedFrom when a NutritionIntake is derived from other resources.
     /// </summary>
     public Reference ReportedReference { get; set; }
@@ -649,6 +668,12 @@ namespace fhirCsR5.Models
       if (ReportedBoolean != null)
       {
         writer.WriteBoolean("reportedBoolean", (bool)ReportedBoolean!);
+      }
+
+      if (_ReportedBoolean != null)
+      {
+        writer.WritePropertyName("_reportedBoolean");
+        _ReportedBoolean.SerializeJson(writer, options);
       }
 
       if (ReportedReference != null)
@@ -1142,6 +1167,11 @@ namespace fhirCsR5.Models
           ReportedBoolean = reader.GetBoolean();
           break;
 
+        case "_reportedBoolean":
+          _ReportedBoolean = new fhirCsR5.Models.Element();
+          _ReportedBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "reportedReference":
           ReportedReference = new fhirCsR5.Models.Reference();
           ReportedReference.DeserializeJson(ref reader, options);
@@ -1231,5 +1261,15 @@ namespace fhirCsR5.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "preparation",
+      "in-progress",
+      "not-done",
+      "on-hold",
+      "stopped",
+      "completed",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

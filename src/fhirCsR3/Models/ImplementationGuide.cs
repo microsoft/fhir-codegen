@@ -131,6 +131,10 @@ namespace fhirCsR3.Models
   public static class ImplementationGuideDependencyTypeCodes {
     public const string REFERENCE = "reference";
     public const string INCLUSION = "inclusion";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "reference",
+      "inclusion",
+    };
   }
   /// <summary>
   /// A resource that is part of the implementation guide. Conformance resources (value set, structure definition, capability statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.
@@ -157,6 +161,10 @@ namespace fhirCsR3.Models
     /// Typically, conformance resources and knowledge resources are directly part of the implementation guide, with their normal meaning, and patient linked resources are usually examples. However this is not always true.
     /// </summary>
     public bool Example { get; set; }
+    /// <summary>
+    /// Extension container element for Example
+    /// </summary>
+    public Element _Example { get; set; }
     /// <summary>
     /// Examples:
     /// * StructureDefinition -&gt; Any
@@ -197,6 +205,12 @@ namespace fhirCsR3.Models
       ((fhirCsR3.Models.BackboneElement)this).SerializeJson(writer, options, false);
 
       writer.WriteBoolean("example", Example);
+
+      if (_Example != null)
+      {
+        writer.WritePropertyName("_example");
+        _Example.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Name))
       {
@@ -286,6 +300,11 @@ namespace fhirCsR3.Models
 
         case "example":
           Example = reader.GetBoolean();
+          break;
+
+        case "_example":
+          _Example = new fhirCsR3.Models.Element();
+          _Example.DeserializeJson(ref reader, options);
           break;
 
         case "exampleFor":
@@ -1007,6 +1026,16 @@ namespace fhirCsR3.Models
     public const string DICTIONARY = "dictionary";
     public const string TOC = "toc";
     public const string RESOURCE = "resource";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "page",
+      "example",
+      "list",
+      "include",
+      "directory",
+      "dictionary",
+      "toc",
+      "resource",
+    };
   }
   /// <summary>
   /// A set of rules of how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.
@@ -1061,6 +1090,10 @@ namespace fhirCsR3.Models
     /// Allows filtering of implementation guide that are appropriate for use vs. not. This is labeled as "Is Modifier" because applications should not use an experimental implementation guide in production.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// An Implementation Guide should specify the target it applies to, as ImplementationGuides are rarely valid across multiple versions of FHIR.
     /// </summary>
@@ -1194,6 +1227,12 @@ namespace fhirCsR3.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -1510,6 +1549,11 @@ namespace fhirCsR3.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR3.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "fhirVersion":
           FhirVersion = reader.GetString();
           break;
@@ -1716,5 +1760,11 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

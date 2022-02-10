@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDataCollection = "data-collection";
 
     /// <summary>
+    /// Literal for code: MeasureReportTypeDataCollection
+    /// </summary>
+    public const string LiteralMeasureReportTypeDataCollection = "http://hl7.org/fhir/measure-report-type#data-collection";
+
+    /// <summary>
     /// Literal for code: Individual
     /// </summary>
     public const string LiteralIndividual = "individual";
+
+    /// <summary>
+    /// Literal for code: MeasureReportTypeIndividual
+    /// </summary>
+    public const string LiteralMeasureReportTypeIndividual = "http://hl7.org/fhir/measure-report-type#individual";
 
     /// <summary>
     /// Literal for code: SubjectList
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSubjectList = "subject-list";
 
     /// <summary>
+    /// Literal for code: MeasureReportTypeSubjectList
+    /// </summary>
+    public const string LiteralMeasureReportTypeSubjectList = "http://hl7.org/fhir/measure-report-type#subject-list";
+
+    /// <summary>
     /// Literal for code: Summary
     /// </summary>
     public const string LiteralSummary = "summary";
+
+    /// <summary>
+    /// Literal for code: MeasureReportTypeSummary
+    /// </summary>
+    public const string LiteralMeasureReportTypeSummary = "http://hl7.org/fhir/measure-report-type#summary";
+
+    /// <summary>
+    /// Dictionary for looking up MeasureReportType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "data-collection", DataCollection }, 
+      { "http://hl7.org/fhir/measure-report-type#data-collection", DataCollection }, 
+      { "individual", Individual }, 
+      { "http://hl7.org/fhir/measure-report-type#individual", Individual }, 
+      { "subject-list", SubjectList }, 
+      { "http://hl7.org/fhir/measure-report-type#subject-list", SubjectList }, 
+      { "summary", Summary }, 
+      { "http://hl7.org/fhir/measure-report-type#summary", Summary }, 
+    };
   };
 }

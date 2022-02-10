@@ -108,9 +108,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCopayAmount = "copay";
 
     /// <summary>
+    /// Literal for code: CoverageCopayTypeCopayAmount
+    /// </summary>
+    public const string LiteralCoverageCopayTypeCopayAmount = "http://terminology.hl7.org/CodeSystem/coverage-copay-type#copay";
+
+    /// <summary>
     /// Literal for code: CopayPercentage
     /// </summary>
     public const string LiteralCopayPercentage = "copaypct";
+
+    /// <summary>
+    /// Literal for code: CoverageCopayTypeCopayPercentage
+    /// </summary>
+    public const string LiteralCoverageCopayTypeCopayPercentage = "http://terminology.hl7.org/CodeSystem/coverage-copay-type#copaypct";
 
     /// <summary>
     /// Literal for code: Deductible
@@ -118,9 +128,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeductible = "deductible";
 
     /// <summary>
+    /// Literal for code: CoverageCopayTypeDeductible
+    /// </summary>
+    public const string LiteralCoverageCopayTypeDeductible = "http://terminology.hl7.org/CodeSystem/coverage-copay-type#deductible";
+
+    /// <summary>
     /// Literal for code: Emergency
     /// </summary>
     public const string LiteralEmergency = "emergency";
+
+    /// <summary>
+    /// Literal for code: CoverageCopayTypeEmergency
+    /// </summary>
+    public const string LiteralCoverageCopayTypeEmergency = "http://terminology.hl7.org/CodeSystem/coverage-copay-type#emergency";
 
     /// <summary>
     /// Literal for code: GPOfficeVisit
@@ -128,9 +148,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGPOfficeVisit = "gpvisit";
 
     /// <summary>
+    /// Literal for code: CoverageCopayTypeGPOfficeVisit
+    /// </summary>
+    public const string LiteralCoverageCopayTypeGPOfficeVisit = "http://terminology.hl7.org/CodeSystem/coverage-copay-type#gpvisit";
+
+    /// <summary>
     /// Literal for code: InpatientHospital
     /// </summary>
     public const string LiteralInpatientHospital = "inpthosp";
+
+    /// <summary>
+    /// Literal for code: CoverageCopayTypeInpatientHospital
+    /// </summary>
+    public const string LiteralCoverageCopayTypeInpatientHospital = "http://terminology.hl7.org/CodeSystem/coverage-copay-type#inpthosp";
 
     /// <summary>
     /// Literal for code: MaximumOutOfPocket
@@ -138,9 +168,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaximumOutOfPocket = "maxoutofpocket";
 
     /// <summary>
+    /// Literal for code: CoverageCopayTypeMaximumOutOfPocket
+    /// </summary>
+    public const string LiteralCoverageCopayTypeMaximumOutOfPocket = "http://terminology.hl7.org/CodeSystem/coverage-copay-type#maxoutofpocket";
+
+    /// <summary>
     /// Literal for code: SpecialistOfficeVisit
     /// </summary>
     public const string LiteralSpecialistOfficeVisit = "spvisit";
+
+    /// <summary>
+    /// Literal for code: CoverageCopayTypeSpecialistOfficeVisit
+    /// </summary>
+    public const string LiteralCoverageCopayTypeSpecialistOfficeVisit = "http://terminology.hl7.org/CodeSystem/coverage-copay-type#spvisit";
 
     /// <summary>
     /// Literal for code: TeleVisit
@@ -148,8 +188,44 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTeleVisit = "televisit";
 
     /// <summary>
+    /// Literal for code: CoverageCopayTypeTeleVisit
+    /// </summary>
+    public const string LiteralCoverageCopayTypeTeleVisit = "http://terminology.hl7.org/CodeSystem/coverage-copay-type#televisit";
+
+    /// <summary>
     /// Literal for code: UrgentCare
     /// </summary>
     public const string LiteralUrgentCare = "urgentcare";
+
+    /// <summary>
+    /// Literal for code: CoverageCopayTypeUrgentCare
+    /// </summary>
+    public const string LiteralCoverageCopayTypeUrgentCare = "http://terminology.hl7.org/CodeSystem/coverage-copay-type#urgentcare";
+
+    /// <summary>
+    /// Dictionary for looking up CoverageCopayType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "copay", CopayAmount }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-copay-type#copay", CopayAmount }, 
+      { "copaypct", CopayPercentage }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-copay-type#copaypct", CopayPercentage }, 
+      { "deductible", Deductible }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-copay-type#deductible", Deductible }, 
+      { "emergency", Emergency }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-copay-type#emergency", Emergency }, 
+      { "gpvisit", GPOfficeVisit }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-copay-type#gpvisit", GPOfficeVisit }, 
+      { "inpthosp", InpatientHospital }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-copay-type#inpthosp", InpatientHospital }, 
+      { "maxoutofpocket", MaximumOutOfPocket }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-copay-type#maxoutofpocket", MaximumOutOfPocket }, 
+      { "spvisit", SpecialistOfficeVisit }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-copay-type#spvisit", SpecialistOfficeVisit }, 
+      { "televisit", TeleVisit }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-copay-type#televisit", TeleVisit }, 
+      { "urgentcare", UrgentCare }, 
+      { "http://terminology.hl7.org/CodeSystem/coverage-copay-type#urgentcare", UrgentCare }, 
+    };
   };
 }

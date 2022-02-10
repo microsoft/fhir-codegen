@@ -450,9 +450,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAffiliate = "AFFL";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeAffiliate
+    /// </summary>
+    public const string LiteralContractSignerTypeAffiliate = "http://www.hl7.org/fhir/contractsignertypecodes#AFFL";
+
+    /// <summary>
     /// Literal for code: Agent
     /// </summary>
     public const string LiteralAgent = "AGNT";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeAgent
+    /// </summary>
+    public const string LiteralContractSignerTypeAgent = "http://www.hl7.org/fhir/contractsignertypecodes#AGNT";
 
     /// <summary>
     /// Literal for code: Amender
@@ -460,9 +470,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAmender = "AMENDER";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeAmender
+    /// </summary>
+    public const string LiteralContractSignerTypeAmender = "http://www.hl7.org/fhir/contractsignertypecodes#AMENDER";
+
+    /// <summary>
     /// Literal for code: AssignedEntity
     /// </summary>
     public const string LiteralAssignedEntity = "ASSIGNED";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeAssignedEntity
+    /// </summary>
+    public const string LiteralContractSignerTypeAssignedEntity = "http://www.hl7.org/fhir/contractsignertypecodes#ASSIGNED";
 
     /// <summary>
     /// Literal for code: Author
@@ -470,9 +490,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAuthor = "AUT";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeAuthor
+    /// </summary>
+    public const string LiteralContractSignerTypeAuthor = "http://www.hl7.org/fhir/contractsignertypecodes#AUT";
+
+    /// <summary>
     /// Literal for code: Authenticator
     /// </summary>
     public const string LiteralAuthenticator = "AUTHN";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeAuthenticator
+    /// </summary>
+    public const string LiteralContractSignerTypeAuthenticator = "http://www.hl7.org/fhir/contractsignertypecodes#AUTHN";
 
     /// <summary>
     /// Literal for code: Citizen
@@ -480,9 +510,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCitizen = "CIT";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeCitizen
+    /// </summary>
+    public const string LiteralContractSignerTypeCitizen = "http://www.hl7.org/fhir/contractsignertypecodes#CIT";
+
+    /// <summary>
     /// Literal for code: Claimant
     /// </summary>
     public const string LiteralClaimant = "CLAIMANT";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeClaimant
+    /// </summary>
+    public const string LiteralContractSignerTypeClaimant = "http://www.hl7.org/fhir/contractsignertypecodes#CLAIMANT";
 
     /// <summary>
     /// Literal for code: CoAuthor
@@ -490,9 +530,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCoAuthor = "COAUTH";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeCoAuthor
+    /// </summary>
+    public const string LiteralContractSignerTypeCoAuthor = "http://www.hl7.org/fhir/contractsignertypecodes#COAUTH";
+
+    /// <summary>
     /// Literal for code: Consenter
     /// </summary>
     public const string LiteralConsenter = "CONSENTER";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeConsenter
+    /// </summary>
+    public const string LiteralContractSignerTypeConsenter = "http://www.hl7.org/fhir/contractsignertypecodes#CONSENTER";
 
     /// <summary>
     /// Literal for code: ConsentWitness
@@ -500,9 +550,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConsentWitness = "CONSWIT";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeConsentWitness
+    /// </summary>
+    public const string LiteralContractSignerTypeConsentWitness = "http://www.hl7.org/fhir/contractsignertypecodes#CONSWIT";
+
+    /// <summary>
     /// Literal for code: Contact
     /// </summary>
     public const string LiteralContact = "CONT";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeContact
+    /// </summary>
+    public const string LiteralContractSignerTypeContact = "http://www.hl7.org/fhir/contractsignertypecodes#CONT";
 
     /// <summary>
     /// Literal for code: CoParticipant
@@ -510,9 +570,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCoParticipant = "COPART";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeCoParticipant
+    /// </summary>
+    public const string LiteralContractSignerTypeCoParticipant = "http://www.hl7.org/fhir/contractsignertypecodes#COPART";
+
+    /// <summary>
     /// Literal for code: CoveredParty
     /// </summary>
     public const string LiteralCoveredParty = "COVPTY";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeCoveredParty
+    /// </summary>
+    public const string LiteralContractSignerTypeCoveredParty = "http://www.hl7.org/fhir/contractsignertypecodes#COVPTY";
 
     /// <summary>
     /// Literal for code: Delegatee
@@ -520,9 +590,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDelegatee = "DELEGATEE";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeDelegatee
+    /// </summary>
+    public const string LiteralContractSignerTypeDelegatee = "http://www.hl7.org/fhir/contractsignertypecodes#DELEGATEE";
+
+    /// <summary>
     /// Literal for code: Delegator
     /// </summary>
     public const string LiteralDelegator = "delegator";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeDelegator
+    /// </summary>
+    public const string LiteralContractSignerTypeDelegator = "http://www.hl7.org/fhir/contractsignertypecodes#delegator";
 
     /// <summary>
     /// Literal for code: Dependent
@@ -530,9 +610,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDependent = "DEPEND";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeDependent
+    /// </summary>
+    public const string LiteralContractSignerTypeDependent = "http://www.hl7.org/fhir/contractsignertypecodes#DEPEND";
+
+    /// <summary>
     /// Literal for code: DurablePowerOfAttorney
     /// </summary>
     public const string LiteralDurablePowerOfAttorney = "DPOWATT";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeDurablePowerOfAttorney
+    /// </summary>
+    public const string LiteralContractSignerTypeDurablePowerOfAttorney = "http://www.hl7.org/fhir/contractsignertypecodes#DPOWATT";
 
     /// <summary>
     /// Literal for code: EmergencyContact
@@ -540,9 +630,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEmergencyContact = "EMGCON";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeEmergencyContact
+    /// </summary>
+    public const string LiteralContractSignerTypeEmergencyContact = "http://www.hl7.org/fhir/contractsignertypecodes#EMGCON";
+
+    /// <summary>
     /// Literal for code: EventWitness
     /// </summary>
     public const string LiteralEventWitness = "EVTWIT";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeEventWitness
+    /// </summary>
+    public const string LiteralContractSignerTypeEventWitness = "http://www.hl7.org/fhir/contractsignertypecodes#EVTWIT";
 
     /// <summary>
     /// Literal for code: ExecutorOfEstate
@@ -550,9 +650,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExecutorOfEstate = "EXCEST";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeExecutorOfEstate
+    /// </summary>
+    public const string LiteralContractSignerTypeExecutorOfEstate = "http://www.hl7.org/fhir/contractsignertypecodes#EXCEST";
+
+    /// <summary>
     /// Literal for code: Grantee
     /// </summary>
     public const string LiteralGrantee = "GRANTEE";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeGrantee
+    /// </summary>
+    public const string LiteralContractSignerTypeGrantee = "http://www.hl7.org/fhir/contractsignertypecodes#GRANTEE";
 
     /// <summary>
     /// Literal for code: Grantor
@@ -560,9 +670,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGrantor = "GRANTOR";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeGrantor
+    /// </summary>
+    public const string LiteralContractSignerTypeGrantor = "http://www.hl7.org/fhir/contractsignertypecodes#GRANTOR";
+
+    /// <summary>
     /// Literal for code: GuardianAdLidem
     /// </summary>
     public const string LiteralGuardianAdLidem = "GUADLTM";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeGuardianAdLidem
+    /// </summary>
+    public const string LiteralContractSignerTypeGuardianAdLidem = "http://www.hl7.org/fhir/contractsignertypecodes#GUADLTM";
 
     /// <summary>
     /// Literal for code: Guarantor
@@ -570,9 +690,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGuarantor = "GUAR";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeGuarantor
+    /// </summary>
+    public const string LiteralContractSignerTypeGuarantor = "http://www.hl7.org/fhir/contractsignertypecodes#GUAR";
+
+    /// <summary>
     /// Literal for code: Guardian
     /// </summary>
     public const string LiteralGuardian = "GUARD";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeGuardian
+    /// </summary>
+    public const string LiteralContractSignerTypeGuardian = "http://www.hl7.org/fhir/contractsignertypecodes#GUARD";
 
     /// <summary>
     /// Literal for code: HealthcarePowerOfAttorney
@@ -580,9 +710,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHealthcarePowerOfAttorney = "HPOWATT";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeHealthcarePowerOfAttorney
+    /// </summary>
+    public const string LiteralContractSignerTypeHealthcarePowerOfAttorney = "http://www.hl7.org/fhir/contractsignertypecodes#HPOWATT";
+
+    /// <summary>
     /// Literal for code: HealthcareProvider
     /// </summary>
     public const string LiteralHealthcareProvider = "HPROV";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeHealthcareProvider
+    /// </summary>
+    public const string LiteralContractSignerTypeHealthcareProvider = "http://www.hl7.org/fhir/contractsignertypecodes#HPROV";
 
     /// <summary>
     /// Literal for code: Informant
@@ -590,9 +730,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInformant = "INF";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeInformant
+    /// </summary>
+    public const string LiteralContractSignerTypeInformant = "http://www.hl7.org/fhir/contractsignertypecodes#INF";
+
+    /// <summary>
     /// Literal for code: InvestigationSubject
     /// </summary>
     public const string LiteralInvestigationSubject = "INSBJ";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeInvestigationSubject
+    /// </summary>
+    public const string LiteralContractSignerTypeInvestigationSubject = "http://www.hl7.org/fhir/contractsignertypecodes#INSBJ";
 
     /// <summary>
     /// Literal for code: Interpreter
@@ -600,9 +750,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInterpreter = "INTPRT";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeInterpreter
+    /// </summary>
+    public const string LiteralContractSignerTypeInterpreter = "http://www.hl7.org/fhir/contractsignertypecodes#INTPRT";
+
+    /// <summary>
     /// Literal for code: LegalAuthenticator
     /// </summary>
     public const string LiteralLegalAuthenticator = "LEGAUTHN";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeLegalAuthenticator
+    /// </summary>
+    public const string LiteralContractSignerTypeLegalAuthenticator = "http://www.hl7.org/fhir/contractsignertypecodes#LEGAUTHN";
 
     /// <summary>
     /// Literal for code: NamedInsured
@@ -610,9 +770,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNamedInsured = "NMDINS";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeNamedInsured
+    /// </summary>
+    public const string LiteralContractSignerTypeNamedInsured = "http://www.hl7.org/fhir/contractsignertypecodes#NMDINS";
+
+    /// <summary>
     /// Literal for code: NextOfKin
     /// </summary>
     public const string LiteralNextOfKin = "NOK";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeNextOfKin
+    /// </summary>
+    public const string LiteralContractSignerTypeNextOfKin = "http://www.hl7.org/fhir/contractsignertypecodes#NOK";
 
     /// <summary>
     /// Literal for code: Notary
@@ -620,9 +790,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNotary = "NOTARY";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeNotary
+    /// </summary>
+    public const string LiteralContractSignerTypeNotary = "http://www.hl7.org/fhir/contractsignertypecodes#NOTARY";
+
+    /// <summary>
     /// Literal for code: Patient
     /// </summary>
     public const string LiteralPatient = "PAT";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypePatient
+    /// </summary>
+    public const string LiteralContractSignerTypePatient = "http://www.hl7.org/fhir/contractsignertypecodes#PAT";
 
     /// <summary>
     /// Literal for code: PowerOfAttorney
@@ -630,9 +810,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPowerOfAttorney = "POWATT";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypePowerOfAttorney
+    /// </summary>
+    public const string LiteralContractSignerTypePowerOfAttorney = "http://www.hl7.org/fhir/contractsignertypecodes#POWATT";
+
+    /// <summary>
     /// Literal for code: PrimaryAuthor
     /// </summary>
     public const string LiteralPrimaryAuthor = "PRIMAUTH";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypePrimaryAuthor
+    /// </summary>
+    public const string LiteralContractSignerTypePrimaryAuthor = "http://www.hl7.org/fhir/contractsignertypecodes#PRIMAUTH";
 
     /// <summary>
     /// Literal for code: PrimaryResponsibleParty
@@ -640,9 +830,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPrimaryResponsibleParty = "PRIRECIP";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypePrimaryResponsibleParty
+    /// </summary>
+    public const string LiteralContractSignerTypePrimaryResponsibleParty = "http://www.hl7.org/fhir/contractsignertypecodes#PRIRECIP";
+
+    /// <summary>
     /// Literal for code: Recipient
     /// </summary>
     public const string LiteralRecipient = "RECIP";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeRecipient
+    /// </summary>
+    public const string LiteralContractSignerTypeRecipient = "http://www.hl7.org/fhir/contractsignertypecodes#RECIP";
 
     /// <summary>
     /// Literal for code: ResponsibleParty
@@ -650,9 +850,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralResponsibleParty = "RESPRSN";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeResponsibleParty
+    /// </summary>
+    public const string LiteralContractSignerTypeResponsibleParty = "http://www.hl7.org/fhir/contractsignertypecodes#RESPRSN";
+
+    /// <summary>
     /// Literal for code: Reviewer
     /// </summary>
     public const string LiteralReviewer = "REVIEWER";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeReviewer
+    /// </summary>
+    public const string LiteralContractSignerTypeReviewer = "http://www.hl7.org/fhir/contractsignertypecodes#REVIEWER";
 
     /// <summary>
     /// Literal for code: Source
@@ -660,9 +870,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSource = "SOURCE";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeSource
+    /// </summary>
+    public const string LiteralContractSignerTypeSource = "http://www.hl7.org/fhir/contractsignertypecodes#SOURCE";
+
+    /// <summary>
     /// Literal for code: ApecialPowerOfAttorney
     /// </summary>
     public const string LiteralApecialPowerOfAttorney = "SPOWATT";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeApecialPowerOfAttorney
+    /// </summary>
+    public const string LiteralContractSignerTypeApecialPowerOfAttorney = "http://www.hl7.org/fhir/contractsignertypecodes#SPOWATT";
 
     /// <summary>
     /// Literal for code: Transcriber
@@ -670,9 +890,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTranscriber = "TRANS";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeTranscriber
+    /// </summary>
+    public const string LiteralContractSignerTypeTranscriber = "http://www.hl7.org/fhir/contractsignertypecodes#TRANS";
+
+    /// <summary>
     /// Literal for code: Validator
     /// </summary>
     public const string LiteralValidator = "VALID";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeValidator
+    /// </summary>
+    public const string LiteralContractSignerTypeValidator = "http://www.hl7.org/fhir/contractsignertypecodes#VALID";
 
     /// <summary>
     /// Literal for code: Verifier
@@ -680,8 +910,120 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVerifier = "VERF";
 
     /// <summary>
+    /// Literal for code: ContractSignerTypeVerifier
+    /// </summary>
+    public const string LiteralContractSignerTypeVerifier = "http://www.hl7.org/fhir/contractsignertypecodes#VERF";
+
+    /// <summary>
     /// Literal for code: Witness
     /// </summary>
     public const string LiteralWitness = "WIT";
+
+    /// <summary>
+    /// Literal for code: ContractSignerTypeWitness
+    /// </summary>
+    public const string LiteralContractSignerTypeWitness = "http://www.hl7.org/fhir/contractsignertypecodes#WIT";
+
+    /// <summary>
+    /// Dictionary for looking up ContractSignerType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "AFFL", Affiliate }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#AFFL", Affiliate }, 
+      { "AGNT", Agent }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#AGNT", Agent }, 
+      { "AMENDER", Amender }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#AMENDER", Amender }, 
+      { "ASSIGNED", AssignedEntity }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#ASSIGNED", AssignedEntity }, 
+      { "AUT", Author }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#AUT", Author }, 
+      { "AUTHN", Authenticator }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#AUTHN", Authenticator }, 
+      { "CIT", Citizen }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#CIT", Citizen }, 
+      { "CLAIMANT", Claimant }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#CLAIMANT", Claimant }, 
+      { "COAUTH", CoAuthor }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#COAUTH", CoAuthor }, 
+      { "CONSENTER", Consenter }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#CONSENTER", Consenter }, 
+      { "CONSWIT", ConsentWitness }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#CONSWIT", ConsentWitness }, 
+      { "CONT", Contact }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#CONT", Contact }, 
+      { "COPART", CoParticipant }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#COPART", CoParticipant }, 
+      { "COVPTY", CoveredParty }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#COVPTY", CoveredParty }, 
+      { "DELEGATEE", Delegatee }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#DELEGATEE", Delegatee }, 
+      { "delegator", Delegator }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#delegator", Delegator }, 
+      { "DEPEND", Dependent }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#DEPEND", Dependent }, 
+      { "DPOWATT", DurablePowerOfAttorney }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#DPOWATT", DurablePowerOfAttorney }, 
+      { "EMGCON", EmergencyContact }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#EMGCON", EmergencyContact }, 
+      { "EVTWIT", EventWitness }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#EVTWIT", EventWitness }, 
+      { "EXCEST", ExecutorOfEstate }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#EXCEST", ExecutorOfEstate }, 
+      { "GRANTEE", Grantee }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#GRANTEE", Grantee }, 
+      { "GRANTOR", Grantor }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#GRANTOR", Grantor }, 
+      { "GUADLTM", GuardianAdLidem }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#GUADLTM", GuardianAdLidem }, 
+      { "GUAR", Guarantor }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#GUAR", Guarantor }, 
+      { "GUARD", Guardian }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#GUARD", Guardian }, 
+      { "HPOWATT", HealthcarePowerOfAttorney }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#HPOWATT", HealthcarePowerOfAttorney }, 
+      { "HPROV", HealthcareProvider }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#HPROV", HealthcareProvider }, 
+      { "INF", Informant }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#INF", Informant }, 
+      { "INSBJ", InvestigationSubject }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#INSBJ", InvestigationSubject }, 
+      { "INTPRT", Interpreter }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#INTPRT", Interpreter }, 
+      { "LEGAUTHN", LegalAuthenticator }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#LEGAUTHN", LegalAuthenticator }, 
+      { "NMDINS", NamedInsured }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#NMDINS", NamedInsured }, 
+      { "NOK", NextOfKin }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#NOK", NextOfKin }, 
+      { "NOTARY", Notary }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#NOTARY", Notary }, 
+      { "PAT", Patient }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#PAT", Patient }, 
+      { "POWATT", PowerOfAttorney }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#POWATT", PowerOfAttorney }, 
+      { "PRIMAUTH", PrimaryAuthor }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#PRIMAUTH", PrimaryAuthor }, 
+      { "PRIRECIP", PrimaryResponsibleParty }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#PRIRECIP", PrimaryResponsibleParty }, 
+      { "RECIP", Recipient }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#RECIP", Recipient }, 
+      { "RESPRSN", ResponsibleParty }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#RESPRSN", ResponsibleParty }, 
+      { "REVIEWER", Reviewer }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#REVIEWER", Reviewer }, 
+      { "SOURCE", Source }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#SOURCE", Source }, 
+      { "SPOWATT", ApecialPowerOfAttorney }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#SPOWATT", ApecialPowerOfAttorney }, 
+      { "TRANS", Transcriber }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#TRANS", Transcriber }, 
+      { "VALID", Validator }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#VALID", Validator }, 
+      { "VERF", Verifier }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#VERF", Verifier }, 
+      { "WIT", Witness }, 
+      { "http://www.hl7.org/fhir/contractsignertypecodes#WIT", Witness }, 
+    };
   };
 }

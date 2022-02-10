@@ -401,6 +401,11 @@ namespace fhirCsR4.Models
     public const string POSTAL = "postal";
     public const string PHYSICAL = "physical";
     public const string BOTH = "both";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "postal",
+      "physical",
+      "both",
+    };
   }
   /// <summary>
   /// Code Values for the Address.use field
@@ -411,5 +416,12 @@ namespace fhirCsR4.Models
     public const string TEMP = "temp";
     public const string OLD = "old";
     public const string BILLING = "billing";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "home",
+      "work",
+      "temp",
+      "old",
+      "billing",
+    };
   }
 }

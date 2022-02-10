@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOptionsOnly = "optionsOnly";
 
     /// <summary>
+    /// Literal for code: QuestionnaireAnswerConstraintOptionsOnly
+    /// </summary>
+    public const string LiteralQuestionnaireAnswerConstraintOptionsOnly = "http://hl7.org/fhir/questionnaire-answer-constraint#optionsOnly";
+
+    /// <summary>
     /// Literal for code: OptionsOrString
     /// </summary>
     public const string LiteralOptionsOrString = "optionsOrString";
 
     /// <summary>
+    /// Literal for code: QuestionnaireAnswerConstraintOptionsOrString
+    /// </summary>
+    public const string LiteralQuestionnaireAnswerConstraintOptionsOrString = "http://hl7.org/fhir/questionnaire-answer-constraint#optionsOrString";
+
+    /// <summary>
     /// Literal for code: OptionsOrQuoteTypeQuote
     /// </summary>
     public const string LiteralOptionsOrQuoteTypeQuote = "optionsOrType";
+
+    /// <summary>
+    /// Literal for code: QuestionnaireAnswerConstraintOptionsOrQuoteTypeQuote
+    /// </summary>
+    public const string LiteralQuestionnaireAnswerConstraintOptionsOrQuoteTypeQuote = "http://hl7.org/fhir/questionnaire-answer-constraint#optionsOrType";
+
+    /// <summary>
+    /// Dictionary for looking up QuestionnaireAnswerConstraint Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "optionsOnly", OptionsOnly }, 
+      { "http://hl7.org/fhir/questionnaire-answer-constraint#optionsOnly", OptionsOnly }, 
+      { "optionsOrString", OptionsOrString }, 
+      { "http://hl7.org/fhir/questionnaire-answer-constraint#optionsOrString", OptionsOrString }, 
+      { "optionsOrType", OptionsOrQuoteTypeQuote }, 
+      { "http://hl7.org/fhir/questionnaire-answer-constraint#optionsOrType", OptionsOrQuoteTypeQuote }, 
+    };
   };
 }

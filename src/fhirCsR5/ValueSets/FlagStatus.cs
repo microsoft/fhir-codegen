@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: FlagStatusActive
+    /// </summary>
+    public const string LiteralFlagStatusActive = "http://hl7.org/fhir/flag-status#active";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: FlagStatusEnteredInError
+    /// </summary>
+    public const string LiteralFlagStatusEnteredInError = "http://hl7.org/fhir/flag-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Inactive
     /// </summary>
     public const string LiteralInactive = "inactive";
+
+    /// <summary>
+    /// Literal for code: FlagStatusInactive
+    /// </summary>
+    public const string LiteralFlagStatusInactive = "http://hl7.org/fhir/flag-status#inactive";
+
+    /// <summary>
+    /// Dictionary for looking up FlagStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/flag-status#active", Active }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/flag-status#entered-in-error", EnteredInError }, 
+      { "inactive", Inactive }, 
+      { "http://hl7.org/fhir/flag-status#inactive", Inactive }, 
+    };
   };
 }

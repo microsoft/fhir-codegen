@@ -134,6 +134,13 @@ namespace fhirCsR4B.Models
     public const string PATTERN = "pattern";
     public const string TYPE = "type";
     public const string PROFILE = "profile";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "value",
+      "exists",
+      "pattern",
+      "type",
+      "profile",
+    };
   }
   /// <summary>
   /// The first element in the sequence, the one that carries the slicing, is the definition that applies to all the slices. This is based on the unconstrained element, but can apply any constraints as appropriate. This may include the common constraints on the children of the element.
@@ -156,6 +163,10 @@ namespace fhirCsR4B.Models
     /// Order should only be required when it is a pressing concern for presentation. Profile authors should consider making the order a feature of the rules about the narrative, not the rules about the data - requiring ordered data makes the profile much less re-usable.
     /// </summary>
     public bool? Ordered { get; set; }
+    /// <summary>
+    /// Extension container element for Ordered
+    /// </summary>
+    public Element _Ordered { get; set; }
     /// <summary>
     /// Allowing additional elements makes for a much for flexible template - it's open for use in wider contexts, but also means that the content of the resource is not closed, and applications have to decide how to handle content not described by the profile.
     /// </summary>
@@ -202,6 +213,12 @@ namespace fhirCsR4B.Models
       if (Ordered != null)
       {
         writer.WriteBoolean("ordered", (bool)Ordered!);
+      }
+
+      if (_Ordered != null)
+      {
+        writer.WritePropertyName("_ordered");
+        _Ordered.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Rules))
@@ -267,6 +284,11 @@ namespace fhirCsR4B.Models
           Ordered = reader.GetBoolean();
           break;
 
+        case "_ordered":
+          _Ordered = new fhirCsR4B.Models.Element();
+          _Ordered.DeserializeJson(ref reader, options);
+          break;
+
         case "rules":
           Rules = reader.GetString();
           break;
@@ -314,6 +336,11 @@ namespace fhirCsR4B.Models
     public const string CLOSED = "closed";
     public const string OPEN = "open";
     public const string OPENATEND = "openAtEnd";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "closed",
+      "open",
+      "openAtEnd",
+    };
   }
   /// <summary>
   /// The base information does not carry any information that could not be determined from the path and related profiles, but making this determination requires both that the related profiles are available, and that the algorithm to determine them be available. For tooling simplicity, the base information must always be populated in element definitions in snap shots, even if it is the same.
@@ -820,6 +847,11 @@ namespace fhirCsR4B.Models
     public const string CONTAINED = "contained";
     public const string REFERENCED = "referenced";
     public const string BUNDLED = "bundled";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "contained",
+      "referenced",
+      "bundled",
+    };
   }
   /// <summary>
   /// Code Values for the ElementDefinition.type.versioning field
@@ -828,6 +860,11 @@ namespace fhirCsR4B.Models
     public const string EITHER = "either";
     public const string INDEPENDENT = "independent";
     public const string SPECIFIC = "specific";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "either",
+      "independent",
+      "specific",
+    };
   }
   /// <summary>
   /// Examples will most commonly be present for data where it's not implicitly obvious from either the data type or value set what the values might be.  (I.e. Example values for dates or quantities would generally be unnecessary.)  If the example value is fully populated, the publication tool can generate an instance automatically.
@@ -850,6 +887,10 @@ namespace fhirCsR4B.Models
     /// The actual value for the element, which must be one of the types allowed for this element.
     /// </summary>
     public bool? ValueBoolean { get; set; }
+    /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
     /// <summary>
     /// The actual value for the element, which must be one of the types allowed for this element.
     /// </summary>
@@ -910,6 +951,10 @@ namespace fhirCsR4B.Models
     /// The actual value for the element, which must be one of the types allowed for this element.
     /// </summary>
     public int? ValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
     /// <summary>
     /// The actual value for the element, which must be one of the types allowed for this element.
     /// </summary>
@@ -1134,6 +1179,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(ValueCanonical))
       {
         writer.WriteString("valueCanonical", (string)ValueCanonical!);
@@ -1214,6 +1265,12 @@ namespace fhirCsR4B.Models
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(ValueMarkdown))
@@ -1524,6 +1581,11 @@ namespace fhirCsR4B.Models
           ValueBoolean = reader.GetBoolean();
           break;
 
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR4B.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "valueCanonical":
           ValueCanonical = reader.GetString();
           break;
@@ -1589,6 +1651,11 @@ namespace fhirCsR4B.Models
 
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR4B.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueMarkdown":
@@ -2114,6 +2181,10 @@ namespace fhirCsR4B.Models
   public static class ElementDefinitionConstraintSeverityCodes {
     public const string ERROR = "error";
     public const string WARNING = "warning";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "error",
+      "warning",
+    };
   }
   /// <summary>
   /// For a CodeableConcept, when no codes are allowed - only text, use a binding of strength "required" with a description explaining that no coded values are allowed and what sort of information to put in the "text" element.
@@ -2266,6 +2337,12 @@ namespace fhirCsR4B.Models
     public const string EXTENSIBLE = "extensible";
     public const string PREFERRED = "preferred";
     public const string EXAMPLE = "example";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "required",
+      "extensible",
+      "preferred",
+      "example",
+    };
   }
   /// <summary>
   /// Mappings are not necessarily specific enough for safe translation.
@@ -2502,6 +2579,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? DefaultValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for DefaultValueBoolean
+    /// </summary>
+    public Element _DefaultValueBoolean { get; set; }
+    /// <summary>
     /// Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed, or changed in constraints on content models. Defining default values creates many difficulties in implementation (e.g. when is a value missing?). For these reasons, default values are (and should be) used extremely sparingly. 
     /// No default values are ever defined in the FHIR specification, nor can they be defined in constraints ("profiles") on data types or resources. This element only exists so that default values may be defined in logical models.
     /// </summary>
@@ -2569,6 +2650,10 @@ namespace fhirCsR4B.Models
     /// No default values are ever defined in the FHIR specification, nor can they be defined in constraints ("profiles") on data types or resources. This element only exists so that default values may be defined in logical models.
     /// </summary>
     public int? DefaultValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for DefaultValueInteger
+    /// </summary>
+    public Element _DefaultValueInteger { get; set; }
     /// <summary>
     /// Specifying a default value means that the property can never been unknown - it must always have a value. Further, the default value can never be changed, or changed in constraints on content models. Defining default values creates many difficulties in implementation (e.g. when is a value missing?). For these reasons, default values are (and should be) used extremely sparingly. 
     /// No default values are ever defined in the FHIR specification, nor can they be defined in constraints ("profiles") on data types or resources. This element only exists so that default values may be defined in logical models.
@@ -2824,6 +2909,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? FixedBoolean { get; set; }
     /// <summary>
+    /// Extension container element for FixedBoolean
+    /// </summary>
+    public Element _FixedBoolean { get; set; }
+    /// <summary>
     /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
     /// </summary>
     public string FixedCanonical { get; set; }
@@ -2883,6 +2972,10 @@ namespace fhirCsR4B.Models
     /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
     /// </summary>
     public int? FixedInteger { get; set; }
+    /// <summary>
+    /// Extension container element for FixedInteger
+    /// </summary>
+    public Element _FixedInteger { get; set; }
     /// <summary>
     /// This is not recommended for Coding and CodeableConcept since these often have highly contextual properties such as version or display.
     /// </summary>
@@ -3080,6 +3173,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? IsModifier { get; set; }
     /// <summary>
+    /// Extension container element for IsModifier
+    /// </summary>
+    public Element _IsModifier { get; set; }
+    /// <summary>
     /// Explains how that element affects the interpretation of the resource or element that contains it.
     /// </summary>
     public string IsModifierReason { get; set; }
@@ -3091,6 +3188,10 @@ namespace fhirCsR4B.Models
     /// Some resources include a set of simple metadata, and some very large data. This element is used to reduce the quantity of data returned in searches. Note that servers may pre-cache summarized resources for optimal performance, so servers might not support per-profile use of the isSummary flag. When a request is made with _summary=true, serailisers only include elements marked as 'isSummary = true'. Other than Attachment.data, all data type properties are included in the summary form. In resource and data type definitions, if an element is at the root or has a parent that is 'mustSupport' and the minimum cardinality is 1 or the element is a modifier, it must be marked as isSummary=true.
     /// </summary>
     public bool? IsSummary { get; set; }
+    /// <summary>
+    /// Extension container element for IsSummary
+    /// </summary>
+    public Element _IsSummary { get; set; }
     /// <summary>
     /// See also the extension (http://hl7.org/fhir/StructureDefinition/elementdefinition-question)[extension-elementdefinition-question.html].
     /// </summary>
@@ -3115,6 +3216,10 @@ namespace fhirCsR4B.Models
     /// Receivers are not required to reject instances that exceed the maximum length.  The full length could be stored.  In some cases, data might be truncated, though truncation should be undertaken with care and an understanding of the consequences of doing so. If not specified, there is no conformance expectation for length support.
     /// </summary>
     public int? MaxLength { get; set; }
+    /// <summary>
+    /// Extension container element for MaxLength
+    /// </summary>
+    public Element _MaxLength { get; set; }
     /// <summary>
     /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a [Duration](datatypes.html#Duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
     /// </summary>
@@ -3159,6 +3264,10 @@ namespace fhirCsR4B.Models
     /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a [Duration](datatypes.html#Duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
     /// </summary>
     public int? MaxValueInteger { get; set; }
+    /// <summary>
+    /// Extension container element for MaxValueInteger
+    /// </summary>
+    public Element _MaxValueInteger { get; set; }
     /// <summary>
     /// Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a [Duration](datatypes.html#Duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg.
     /// </summary>
@@ -3228,6 +3337,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public int? MinValueInteger { get; set; }
     /// <summary>
+    /// Extension container element for MinValueInteger
+    /// </summary>
+    public Element _MinValueInteger { get; set; }
+    /// <summary>
     /// Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a [Duration](datatypes.html#Duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g.
     /// </summary>
     public uint? MinValuePositiveInt { get; set; }
@@ -3243,6 +3356,10 @@ namespace fhirCsR4B.Models
     /// "Something useful" is context dependent and impossible to describe in the base FHIR specification. For this reason, tue mustSupport flag is never set to true by the FHIR specification itself - it is only set to true in profiles.  A profile on a type can always make musSupport = true if it is false in the base type but cannot make mustSupport = false if it is true in the base type.   This is done in [Resource Profiles](profiling.html#mustsupport), where the profile labels an element as mustSupport=true. When a profile does this, it SHALL also make clear exactly what kind of "support" is required, as this can mean many things.    Note that an element that has the property IsModifier is not necessarily a "key" element (e.g. one of the important elements to make use of the resource), nor is it automatically mustSupport - however both of these things are more likely to be true for IsModifier elements than for other elements.
     /// </summary>
     public bool? MustSupport { get; set; }
+    /// <summary>
+    /// Extension container element for MustSupport
+    /// </summary>
+    public Element _MustSupport { get; set; }
     /// <summary>
     /// This element can only be asserted on repeating elements and can only be introduced when defining resources or data types.  It can be further refined profiled elements but if absent in the base type, a profile cannot assert meaning.
     /// </summary>
@@ -3267,6 +3384,10 @@ namespace fhirCsR4B.Models
     /// Mostly used for fixing values of CodeableConcept. In general, pattern[x] is not intended for use with primitive types, where is has the same meaning as fixed[x].
     /// </summary>
     public bool? PatternBoolean { get; set; }
+    /// <summary>
+    /// Extension container element for PatternBoolean
+    /// </summary>
+    public Element _PatternBoolean { get; set; }
     /// <summary>
     /// Mostly used for fixing values of CodeableConcept. In general, pattern[x] is not intended for use with primitive types, where is has the same meaning as fixed[x].
     /// </summary>
@@ -3327,6 +3448,10 @@ namespace fhirCsR4B.Models
     /// Mostly used for fixing values of CodeableConcept. In general, pattern[x] is not intended for use with primitive types, where is has the same meaning as fixed[x].
     /// </summary>
     public int? PatternInteger { get; set; }
+    /// <summary>
+    /// Extension container element for PatternInteger
+    /// </summary>
+    public Element _PatternInteger { get; set; }
     /// <summary>
     /// Mostly used for fixing values of CodeableConcept. In general, pattern[x] is not intended for use with primitive types, where is has the same meaning as fixed[x].
     /// </summary>
@@ -3548,6 +3673,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? SliceIsConstraining { get; set; }
     /// <summary>
+    /// Extension container element for SliceIsConstraining
+    /// </summary>
+    public Element _SliceIsConstraining { get; set; }
+    /// <summary>
     /// The name SHALL be unique within the structure within the context of the constrained resource element.  (Though to avoid confusion, uniqueness across all elements is recommended.).
     /// </summary>
     public string SliceName { get; set; }
@@ -3625,6 +3754,12 @@ namespace fhirCsR4B.Models
       if (SliceIsConstraining != null)
       {
         writer.WriteBoolean("sliceIsConstraining", (bool)SliceIsConstraining!);
+      }
+
+      if (_SliceIsConstraining != null)
+      {
+        writer.WritePropertyName("_sliceIsConstraining");
+        _SliceIsConstraining.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Label))
@@ -3783,6 +3918,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("defaultValueBoolean", (bool)DefaultValueBoolean!);
       }
 
+      if (_DefaultValueBoolean != null)
+      {
+        writer.WritePropertyName("_defaultValueBoolean");
+        _DefaultValueBoolean.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(DefaultValueCanonical))
       {
         writer.WriteString("defaultValueCanonical", (string)DefaultValueCanonical!);
@@ -3863,6 +4004,12 @@ namespace fhirCsR4B.Models
       if (DefaultValueInteger != null)
       {
         writer.WriteNumber("defaultValueInteger", (int)DefaultValueInteger!);
+      }
+
+      if (_DefaultValueInteger != null)
+      {
+        writer.WritePropertyName("_defaultValueInteger");
+        _DefaultValueInteger.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(DefaultValueMarkdown))
@@ -4176,6 +4323,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("fixedBoolean", (bool)FixedBoolean!);
       }
 
+      if (_FixedBoolean != null)
+      {
+        writer.WritePropertyName("_fixedBoolean");
+        _FixedBoolean.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(FixedCanonical))
       {
         writer.WriteString("fixedCanonical", (string)FixedCanonical!);
@@ -4256,6 +4409,12 @@ namespace fhirCsR4B.Models
       if (FixedInteger != null)
       {
         writer.WriteNumber("fixedInteger", (int)FixedInteger!);
+      }
+
+      if (_FixedInteger != null)
+      {
+        writer.WritePropertyName("_fixedInteger");
+        _FixedInteger.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(FixedMarkdown))
@@ -4547,6 +4706,12 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("patternBoolean", (bool)PatternBoolean!);
       }
 
+      if (_PatternBoolean != null)
+      {
+        writer.WritePropertyName("_patternBoolean");
+        _PatternBoolean.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(PatternCanonical))
       {
         writer.WriteString("patternCanonical", (string)PatternCanonical!);
@@ -4627,6 +4792,12 @@ namespace fhirCsR4B.Models
       if (PatternInteger != null)
       {
         writer.WriteNumber("patternInteger", (int)PatternInteger!);
+      }
+
+      if (_PatternInteger != null)
+      {
+        writer.WritePropertyName("_patternInteger");
+        _PatternInteger.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(PatternMarkdown))
@@ -4981,6 +5152,12 @@ namespace fhirCsR4B.Models
         writer.WriteNumber("minValueInteger", (int)MinValueInteger!);
       }
 
+      if (_MinValueInteger != null)
+      {
+        writer.WritePropertyName("_minValueInteger");
+        _MinValueInteger.SerializeJson(writer, options);
+      }
+
       if (MinValuePositiveInt != null)
       {
         writer.WriteNumber("minValuePositiveInt", (uint)MinValuePositiveInt!);
@@ -5057,6 +5234,12 @@ namespace fhirCsR4B.Models
         writer.WriteNumber("maxValueInteger", (int)MaxValueInteger!);
       }
 
+      if (_MaxValueInteger != null)
+      {
+        writer.WritePropertyName("_maxValueInteger");
+        _MaxValueInteger.SerializeJson(writer, options);
+      }
+
       if (MaxValuePositiveInt != null)
       {
         writer.WriteNumber("maxValuePositiveInt", (uint)MaxValuePositiveInt!);
@@ -5076,6 +5259,12 @@ namespace fhirCsR4B.Models
       if (MaxLength != null)
       {
         writer.WriteNumber("maxLength", (int)MaxLength!);
+      }
+
+      if (_MaxLength != null)
+      {
+        writer.WritePropertyName("_maxLength");
+        _MaxLength.SerializeJson(writer, options);
       }
 
       if ((Condition != null) && (Condition.Count != 0))
@@ -5122,9 +5311,21 @@ namespace fhirCsR4B.Models
         writer.WriteBoolean("mustSupport", (bool)MustSupport!);
       }
 
+      if (_MustSupport != null)
+      {
+        writer.WritePropertyName("_mustSupport");
+        _MustSupport.SerializeJson(writer, options);
+      }
+
       if (IsModifier != null)
       {
         writer.WriteBoolean("isModifier", (bool)IsModifier!);
+      }
+
+      if (_IsModifier != null)
+      {
+        writer.WritePropertyName("_isModifier");
+        _IsModifier.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(IsModifierReason))
@@ -5141,6 +5342,12 @@ namespace fhirCsR4B.Models
       if (IsSummary != null)
       {
         writer.WriteBoolean("isSummary", (bool)IsSummary!);
+      }
+
+      if (_IsSummary != null)
+      {
+        writer.WritePropertyName("_isSummary");
+        _IsSummary.SerializeJson(writer, options);
       }
 
       if (Binding != null)
@@ -5368,6 +5575,11 @@ namespace fhirCsR4B.Models
           DefaultValueBoolean = reader.GetBoolean();
           break;
 
+        case "_defaultValueBoolean":
+          _DefaultValueBoolean = new fhirCsR4B.Models.Element();
+          _DefaultValueBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "defaultValueCanonical":
           DefaultValueCanonical = reader.GetString();
           break;
@@ -5433,6 +5645,11 @@ namespace fhirCsR4B.Models
 
         case "defaultValueInteger":
           DefaultValueInteger = reader.GetInt32();
+          break;
+
+        case "_defaultValueInteger":
+          _DefaultValueInteger = new fhirCsR4B.Models.Element();
+          _DefaultValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "defaultValueMarkdown":
@@ -5710,6 +5927,11 @@ namespace fhirCsR4B.Models
           FixedBoolean = reader.GetBoolean();
           break;
 
+        case "_fixedBoolean":
+          _FixedBoolean = new fhirCsR4B.Models.Element();
+          _FixedBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "fixedCanonical":
           FixedCanonical = reader.GetString();
           break;
@@ -5775,6 +5997,11 @@ namespace fhirCsR4B.Models
 
         case "fixedInteger":
           FixedInteger = reader.GetInt32();
+          break;
+
+        case "_fixedInteger":
+          _FixedInteger = new fhirCsR4B.Models.Element();
+          _FixedInteger.DeserializeJson(ref reader, options);
           break;
 
         case "fixedMarkdown":
@@ -6012,6 +6239,11 @@ namespace fhirCsR4B.Models
           IsModifier = reader.GetBoolean();
           break;
 
+        case "_isModifier":
+          _IsModifier = new fhirCsR4B.Models.Element();
+          _IsModifier.DeserializeJson(ref reader, options);
+          break;
+
         case "isModifierReason":
           IsModifierReason = reader.GetString();
           break;
@@ -6023,6 +6255,11 @@ namespace fhirCsR4B.Models
 
         case "isSummary":
           IsSummary = reader.GetBoolean();
+          break;
+
+        case "_isSummary":
+          _IsSummary = new fhirCsR4B.Models.Element();
+          _IsSummary.DeserializeJson(ref reader, options);
           break;
 
         case "label":
@@ -6074,6 +6311,11 @@ namespace fhirCsR4B.Models
           MaxLength = reader.GetInt32();
           break;
 
+        case "_maxLength":
+          _MaxLength = new fhirCsR4B.Models.Element();
+          _MaxLength.DeserializeJson(ref reader, options);
+          break;
+
         case "maxValueDate":
           MaxValueDate = reader.GetString();
           break;
@@ -6121,6 +6363,11 @@ namespace fhirCsR4B.Models
 
         case "maxValueInteger":
           MaxValueInteger = reader.GetInt32();
+          break;
+
+        case "_maxValueInteger":
+          _MaxValueInteger = new fhirCsR4B.Models.Element();
+          _MaxValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "maxValuePositiveInt":
@@ -6198,6 +6445,11 @@ namespace fhirCsR4B.Models
           MinValueInteger = reader.GetInt32();
           break;
 
+        case "_minValueInteger":
+          _MinValueInteger = new fhirCsR4B.Models.Element();
+          _MinValueInteger.DeserializeJson(ref reader, options);
+          break;
+
         case "minValuePositiveInt":
           MinValuePositiveInt = reader.GetUInt32();
           break;
@@ -6213,6 +6465,11 @@ namespace fhirCsR4B.Models
 
         case "mustSupport":
           MustSupport = reader.GetBoolean();
+          break;
+
+        case "_mustSupport":
+          _MustSupport = new fhirCsR4B.Models.Element();
+          _MustSupport.DeserializeJson(ref reader, options);
           break;
 
         case "orderMeaning":
@@ -6239,6 +6496,11 @@ namespace fhirCsR4B.Models
 
         case "patternBoolean":
           PatternBoolean = reader.GetBoolean();
+          break;
+
+        case "_patternBoolean":
+          _PatternBoolean = new fhirCsR4B.Models.Element();
+          _PatternBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "patternCanonical":
@@ -6306,6 +6568,11 @@ namespace fhirCsR4B.Models
 
         case "patternInteger":
           PatternInteger = reader.GetInt32();
+          break;
+
+        case "_patternInteger":
+          _PatternInteger = new fhirCsR4B.Models.Element();
+          _PatternInteger.DeserializeJson(ref reader, options);
           break;
 
         case "patternMarkdown":
@@ -6613,6 +6880,11 @@ namespace fhirCsR4B.Models
           SliceIsConstraining = reader.GetBoolean();
           break;
 
+        case "_sliceIsConstraining":
+          _SliceIsConstraining = new fhirCsR4B.Models.Element();
+          _SliceIsConstraining.DeserializeJson(ref reader, options);
+          break;
+
         case "sliceName":
           SliceName = reader.GetString();
           break;
@@ -6694,5 +6966,12 @@ namespace fhirCsR4B.Models
     public const string TYPEATTR = "typeAttr";
     public const string CDATEXT = "cdaText";
     public const string XHTML = "xhtml";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "xmlAttr",
+      "xmlText",
+      "typeAttr",
+      "cdaText",
+      "xhtml",
+    };
   }
 }

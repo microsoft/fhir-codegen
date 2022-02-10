@@ -108,9 +108,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdministrative = "admin";
 
     /// <summary>
+    /// Literal for code: FlagCategoryAdministrative
+    /// </summary>
+    public const string LiteralFlagCategoryAdministrative = "http://terminology.hl7.org/CodeSystem/flag-category#admin";
+
+    /// <summary>
     /// Literal for code: AdvanceDirective
     /// </summary>
     public const string LiteralAdvanceDirective = "advance-directive";
+
+    /// <summary>
+    /// Literal for code: FlagCategoryAdvanceDirective
+    /// </summary>
+    public const string LiteralFlagCategoryAdvanceDirective = "http://terminology.hl7.org/CodeSystem/flag-category#advance-directive";
 
     /// <summary>
     /// Literal for code: Behavioral
@@ -118,9 +128,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBehavioral = "behavioral";
 
     /// <summary>
+    /// Literal for code: FlagCategoryBehavioral
+    /// </summary>
+    public const string LiteralFlagCategoryBehavioral = "http://terminology.hl7.org/CodeSystem/flag-category#behavioral";
+
+    /// <summary>
     /// Literal for code: Clinical
     /// </summary>
     public const string LiteralClinical = "clinical";
+
+    /// <summary>
+    /// Literal for code: FlagCategoryClinical
+    /// </summary>
+    public const string LiteralFlagCategoryClinical = "http://terminology.hl7.org/CodeSystem/flag-category#clinical";
 
     /// <summary>
     /// Literal for code: SubjectContact
@@ -128,9 +148,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSubjectContact = "contact";
 
     /// <summary>
+    /// Literal for code: FlagCategorySubjectContact
+    /// </summary>
+    public const string LiteralFlagCategorySubjectContact = "http://terminology.hl7.org/CodeSystem/flag-category#contact";
+
+    /// <summary>
     /// Literal for code: Diet
     /// </summary>
     public const string LiteralDiet = "diet";
+
+    /// <summary>
+    /// Literal for code: FlagCategoryDiet
+    /// </summary>
+    public const string LiteralFlagCategoryDiet = "http://terminology.hl7.org/CodeSystem/flag-category#diet";
 
     /// <summary>
     /// Literal for code: Drug
@@ -138,9 +168,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDrug = "drug";
 
     /// <summary>
+    /// Literal for code: FlagCategoryDrug
+    /// </summary>
+    public const string LiteralFlagCategoryDrug = "http://terminology.hl7.org/CodeSystem/flag-category#drug";
+
+    /// <summary>
     /// Literal for code: Lab
     /// </summary>
     public const string LiteralLab = "lab";
+
+    /// <summary>
+    /// Literal for code: FlagCategoryLab
+    /// </summary>
+    public const string LiteralFlagCategoryLab = "http://terminology.hl7.org/CodeSystem/flag-category#lab";
 
     /// <summary>
     /// Literal for code: Research
@@ -148,8 +188,44 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralResearch = "research";
 
     /// <summary>
+    /// Literal for code: FlagCategoryResearch
+    /// </summary>
+    public const string LiteralFlagCategoryResearch = "http://terminology.hl7.org/CodeSystem/flag-category#research";
+
+    /// <summary>
     /// Literal for code: Safety
     /// </summary>
     public const string LiteralSafety = "safety";
+
+    /// <summary>
+    /// Literal for code: FlagCategorySafety
+    /// </summary>
+    public const string LiteralFlagCategorySafety = "http://terminology.hl7.org/CodeSystem/flag-category#safety";
+
+    /// <summary>
+    /// Dictionary for looking up FlagCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "admin", Administrative }, 
+      { "http://terminology.hl7.org/CodeSystem/flag-category#admin", Administrative }, 
+      { "advance-directive", AdvanceDirective }, 
+      { "http://terminology.hl7.org/CodeSystem/flag-category#advance-directive", AdvanceDirective }, 
+      { "behavioral", Behavioral }, 
+      { "http://terminology.hl7.org/CodeSystem/flag-category#behavioral", Behavioral }, 
+      { "clinical", Clinical }, 
+      { "http://terminology.hl7.org/CodeSystem/flag-category#clinical", Clinical }, 
+      { "contact", SubjectContact }, 
+      { "http://terminology.hl7.org/CodeSystem/flag-category#contact", SubjectContact }, 
+      { "diet", Diet }, 
+      { "http://terminology.hl7.org/CodeSystem/flag-category#diet", Diet }, 
+      { "drug", Drug }, 
+      { "http://terminology.hl7.org/CodeSystem/flag-category#drug", Drug }, 
+      { "lab", Lab }, 
+      { "http://terminology.hl7.org/CodeSystem/flag-category#lab", Lab }, 
+      { "research", Research }, 
+      { "http://terminology.hl7.org/CodeSystem/flag-category#research", Research }, 
+      { "safety", Safety }, 
+      { "http://terminology.hl7.org/CodeSystem/flag-category#safety", Safety }, 
+    };
   };
 }

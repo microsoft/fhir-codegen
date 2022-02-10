@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNotEligible = "ineligible";
 
     /// <summary>
+    /// Literal for code: ImmunizationProgramEligibilityNotEligible
+    /// </summary>
+    public const string LiteralImmunizationProgramEligibilityNotEligible = "http://terminology.hl7.org/CodeSystem/immunization-program-eligibility#ineligible";
+
+    /// <summary>
     /// Literal for code: Uninsured
     /// </summary>
     public const string LiteralUninsured = "uninsured";
+
+    /// <summary>
+    /// Literal for code: ImmunizationProgramEligibilityUninsured
+    /// </summary>
+    public const string LiteralImmunizationProgramEligibilityUninsured = "http://terminology.hl7.org/CodeSystem/immunization-program-eligibility#uninsured";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationProgramEligibility Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ineligible", NotEligible }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-program-eligibility#ineligible", NotEligible }, 
+      { "uninsured", Uninsured }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-program-eligibility#uninsured", Uninsured }, 
+    };
   };
 }

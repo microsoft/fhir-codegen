@@ -99,9 +99,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: NutritionRequestStatusActive
+    /// </summary>
+    public const string LiteralNutritionRequestStatusActive = "http://hl7.org/fhir/nutrition-request-status#active";
+
+    /// <summary>
     /// Literal for code: Cancelled
     /// </summary>
     public const string LiteralCancelled = "cancelled";
+
+    /// <summary>
+    /// Literal for code: NutritionRequestStatusCancelled
+    /// </summary>
+    public const string LiteralNutritionRequestStatusCancelled = "http://hl7.org/fhir/nutrition-request-status#cancelled";
 
     /// <summary>
     /// Literal for code: Completed
@@ -109,9 +119,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: NutritionRequestStatusCompleted
+    /// </summary>
+    public const string LiteralNutritionRequestStatusCompleted = "http://hl7.org/fhir/nutrition-request-status#completed";
+
+    /// <summary>
     /// Literal for code: Draft
     /// </summary>
     public const string LiteralDraft = "draft";
+
+    /// <summary>
+    /// Literal for code: NutritionRequestStatusDraft
+    /// </summary>
+    public const string LiteralNutritionRequestStatusDraft = "http://hl7.org/fhir/nutrition-request-status#draft";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -119,9 +139,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: NutritionRequestStatusEnteredInError
+    /// </summary>
+    public const string LiteralNutritionRequestStatusEnteredInError = "http://hl7.org/fhir/nutrition-request-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: OnHold
     /// </summary>
     public const string LiteralOnHold = "on-hold";
+
+    /// <summary>
+    /// Literal for code: NutritionRequestStatusOnHold
+    /// </summary>
+    public const string LiteralNutritionRequestStatusOnHold = "http://hl7.org/fhir/nutrition-request-status#on-hold";
 
     /// <summary>
     /// Literal for code: Planned
@@ -129,13 +159,52 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlanned = "planned";
 
     /// <summary>
+    /// Literal for code: NutritionRequestStatusPlanned
+    /// </summary>
+    public const string LiteralNutritionRequestStatusPlanned = "http://hl7.org/fhir/nutrition-request-status#planned";
+
+    /// <summary>
     /// Literal for code: Proposed
     /// </summary>
     public const string LiteralProposed = "proposed";
 
     /// <summary>
+    /// Literal for code: NutritionRequestStatusProposed
+    /// </summary>
+    public const string LiteralNutritionRequestStatusProposed = "http://hl7.org/fhir/nutrition-request-status#proposed";
+
+    /// <summary>
     /// Literal for code: Requested
     /// </summary>
     public const string LiteralRequested = "requested";
+
+    /// <summary>
+    /// Literal for code: NutritionRequestStatusRequested
+    /// </summary>
+    public const string LiteralNutritionRequestStatusRequested = "http://hl7.org/fhir/nutrition-request-status#requested";
+
+    /// <summary>
+    /// Dictionary for looking up NutritionRequestStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/nutrition-request-status#active", Active }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/nutrition-request-status#cancelled", Cancelled }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/nutrition-request-status#completed", Completed }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/nutrition-request-status#draft", Draft }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/nutrition-request-status#entered-in-error", EnteredInError }, 
+      { "on-hold", OnHold }, 
+      { "http://hl7.org/fhir/nutrition-request-status#on-hold", OnHold }, 
+      { "planned", Planned }, 
+      { "http://hl7.org/fhir/nutrition-request-status#planned", Planned }, 
+      { "proposed", Proposed }, 
+      { "http://hl7.org/fhir/nutrition-request-status#proposed", Proposed }, 
+      { "requested", Requested }, 
+      { "http://hl7.org/fhir/nutrition-request-status#requested", Requested }, 
+    };
   };
 }

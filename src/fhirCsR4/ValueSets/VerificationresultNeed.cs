@@ -45,13 +45,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInitial = "initial";
 
     /// <summary>
+    /// Literal for code: VerificationresultNeedInitial
+    /// </summary>
+    public const string LiteralVerificationresultNeedInitial = "http://terminology.hl7.org/CodeSystem/need#initial";
+
+    /// <summary>
     /// Literal for code: None
     /// </summary>
     public const string LiteralNone = "none";
 
     /// <summary>
+    /// Literal for code: VerificationresultNeedNone
+    /// </summary>
+    public const string LiteralVerificationresultNeedNone = "http://terminology.hl7.org/CodeSystem/need#none";
+
+    /// <summary>
     /// Literal for code: Periodic
     /// </summary>
     public const string LiteralPeriodic = "periodic";
+
+    /// <summary>
+    /// Literal for code: VerificationresultNeedPeriodic
+    /// </summary>
+    public const string LiteralVerificationresultNeedPeriodic = "http://terminology.hl7.org/CodeSystem/need#periodic";
+
+    /// <summary>
+    /// Dictionary for looking up VerificationresultNeed Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "initial", Initial }, 
+      { "http://terminology.hl7.org/CodeSystem/need#initial", Initial }, 
+      { "none", None }, 
+      { "http://terminology.hl7.org/CodeSystem/need#none", None }, 
+      { "periodic", Periodic }, 
+      { "http://terminology.hl7.org/CodeSystem/need#periodic", Periodic }, 
+    };
   };
 }

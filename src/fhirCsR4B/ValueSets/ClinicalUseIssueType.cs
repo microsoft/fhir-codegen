@@ -63,9 +63,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralContraindication = "contraindication";
 
     /// <summary>
+    /// Literal for code: ClinicalUseIssueTypeContraindication
+    /// </summary>
+    public const string LiteralClinicalUseIssueTypeContraindication = "http://hl7.org/fhir/clinical-use-issue-type#contraindication";
+
+    /// <summary>
     /// Literal for code: Indication
     /// </summary>
     public const string LiteralIndication = "indication";
+
+    /// <summary>
+    /// Literal for code: ClinicalUseIssueTypeIndication
+    /// </summary>
+    public const string LiteralClinicalUseIssueTypeIndication = "http://hl7.org/fhir/clinical-use-issue-type#indication";
 
     /// <summary>
     /// Literal for code: Interaction
@@ -73,13 +83,44 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInteraction = "interaction";
 
     /// <summary>
+    /// Literal for code: ClinicalUseIssueTypeInteraction
+    /// </summary>
+    public const string LiteralClinicalUseIssueTypeInteraction = "http://hl7.org/fhir/clinical-use-issue-type#interaction";
+
+    /// <summary>
     /// Literal for code: UndesirableEffect
     /// </summary>
     public const string LiteralUndesirableEffect = "undesirable-effect";
 
     /// <summary>
+    /// Literal for code: ClinicalUseIssueTypeUndesirableEffect
+    /// </summary>
+    public const string LiteralClinicalUseIssueTypeUndesirableEffect = "http://hl7.org/fhir/clinical-use-issue-type#undesirable-effect";
+
+    /// <summary>
     /// Literal for code: Warning
     /// </summary>
     public const string LiteralWarning = "warning";
+
+    /// <summary>
+    /// Literal for code: ClinicalUseIssueTypeWarning
+    /// </summary>
+    public const string LiteralClinicalUseIssueTypeWarning = "http://hl7.org/fhir/clinical-use-issue-type#warning";
+
+    /// <summary>
+    /// Dictionary for looking up ClinicalUseIssueType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "contraindication", Contraindication }, 
+      { "http://hl7.org/fhir/clinical-use-issue-type#contraindication", Contraindication }, 
+      { "indication", Indication }, 
+      { "http://hl7.org/fhir/clinical-use-issue-type#indication", Indication }, 
+      { "interaction", Interaction }, 
+      { "http://hl7.org/fhir/clinical-use-issue-type#interaction", Interaction }, 
+      { "undesirable-effect", UndesirableEffect }, 
+      { "http://hl7.org/fhir/clinical-use-issue-type#undesirable-effect", UndesirableEffect }, 
+      { "warning", Warning }, 
+      { "http://hl7.org/fhir/clinical-use-issue-type#warning", Warning }, 
+    };
   };
 }

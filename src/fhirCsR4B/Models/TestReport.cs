@@ -160,6 +160,11 @@ namespace fhirCsR4B.Models
     public const string TEST_ENGINE = "test-engine";
     public const string CLIENT = "client";
     public const string SERVER = "server";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "test-engine",
+      "client",
+      "server",
+    };
   }
   /// <summary>
   /// The operation performed.
@@ -313,6 +318,13 @@ namespace fhirCsR4B.Models
     public const string FAIL = "fail";
     public const string WARNING = "warning";
     public const string ERROR = "error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "pass",
+      "skip",
+      "fail",
+      "warning",
+      "error",
+    };
   }
   /// <summary>
   /// The results of the assertion performed on the previous operations.
@@ -466,6 +478,13 @@ namespace fhirCsR4B.Models
     public const string FAIL = "fail";
     public const string WARNING = "warning";
     public const string ERROR = "error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "pass",
+      "skip",
+      "fail",
+      "warning",
+      "error",
+    };
   }
   /// <summary>
   /// An action should contain either an operation or an assertion but not both.  It can contain any number of variables.
@@ -1477,6 +1496,11 @@ namespace fhirCsR4B.Models
     public const string PASS = "pass";
     public const string FAIL = "fail";
     public const string PENDING = "pending";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "pass",
+      "fail",
+      "pending",
+    };
   }
   /// <summary>
   /// Code Values for the TestReport.status field
@@ -1487,5 +1511,12 @@ namespace fhirCsR4B.Models
     public const string WAITING = "waiting";
     public const string STOPPED = "stopped";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "completed",
+      "in-progress",
+      "waiting",
+      "stopped",
+      "entered-in-error",
+    };
   }
 }

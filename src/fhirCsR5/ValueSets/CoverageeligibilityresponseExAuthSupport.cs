@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class CoverageeligibilityresponseExAuthSupportCodes
   {
     /// <summary>
-    /// 
+    /// Accident Report
     /// </summary>
     public static readonly Coding AccidentReport = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support"
     };
     /// <summary>
-    /// 
+    /// Diagnostic Image Order
     /// </summary>
     public static readonly Coding DiagnosticImageOrder = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support"
     };
     /// <summary>
-    /// 
+    /// Diagnostic Image Report
     /// </summary>
     public static readonly Coding DiagnosticImageReport = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support"
     };
     /// <summary>
-    /// 
+    /// Lab Order
     /// </summary>
     public static readonly Coding LabOrder = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support"
     };
     /// <summary>
-    /// 
+    /// Lab Report
     /// </summary>
     public static readonly Coding LabReport = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support"
     };
     /// <summary>
-    /// 
+    /// Model
     /// </summary>
     public static readonly Coding Model = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support"
     };
     /// <summary>
-    /// 
+    /// Picture
     /// </summary>
     public static readonly Coding Picture = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support"
     };
     /// <summary>
-    /// 
+    /// Professional Report
     /// </summary>
     public static readonly Coding ProfessionalReport = new Coding
     {
@@ -90,9 +90,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAccidentReport = "accidentreport";
 
     /// <summary>
+    /// Literal for code: CoverageeligibilityresponseExAuthSupportAccidentReport
+    /// </summary>
+    public const string LiteralCoverageeligibilityresponseExAuthSupportAccidentReport = "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support#accidentreport";
+
+    /// <summary>
     /// Literal for code: DiagnosticImageOrder
     /// </summary>
     public const string LiteralDiagnosticImageOrder = "diagnosticimageorder";
+
+    /// <summary>
+    /// Literal for code: CoverageeligibilityresponseExAuthSupportDiagnosticImageOrder
+    /// </summary>
+    public const string LiteralCoverageeligibilityresponseExAuthSupportDiagnosticImageOrder = "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support#diagnosticimageorder";
 
     /// <summary>
     /// Literal for code: DiagnosticImageReport
@@ -100,9 +110,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDiagnosticImageReport = "diagnosticimagereport";
 
     /// <summary>
+    /// Literal for code: CoverageeligibilityresponseExAuthSupportDiagnosticImageReport
+    /// </summary>
+    public const string LiteralCoverageeligibilityresponseExAuthSupportDiagnosticImageReport = "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support#diagnosticimagereport";
+
+    /// <summary>
     /// Literal for code: LabOrder
     /// </summary>
     public const string LiteralLabOrder = "laborder";
+
+    /// <summary>
+    /// Literal for code: CoverageeligibilityresponseExAuthSupportLabOrder
+    /// </summary>
+    public const string LiteralCoverageeligibilityresponseExAuthSupportLabOrder = "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support#laborder";
 
     /// <summary>
     /// Literal for code: LabReport
@@ -110,9 +130,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLabReport = "labreport";
 
     /// <summary>
+    /// Literal for code: CoverageeligibilityresponseExAuthSupportLabReport
+    /// </summary>
+    public const string LiteralCoverageeligibilityresponseExAuthSupportLabReport = "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support#labreport";
+
+    /// <summary>
     /// Literal for code: Model
     /// </summary>
     public const string LiteralModel = "model";
+
+    /// <summary>
+    /// Literal for code: CoverageeligibilityresponseExAuthSupportModel
+    /// </summary>
+    public const string LiteralCoverageeligibilityresponseExAuthSupportModel = "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support#model";
 
     /// <summary>
     /// Literal for code: Picture
@@ -120,8 +150,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPicture = "picture";
 
     /// <summary>
+    /// Literal for code: CoverageeligibilityresponseExAuthSupportPicture
+    /// </summary>
+    public const string LiteralCoverageeligibilityresponseExAuthSupportPicture = "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support#picture";
+
+    /// <summary>
     /// Literal for code: ProfessionalReport
     /// </summary>
     public const string LiteralProfessionalReport = "professionalreport";
+
+    /// <summary>
+    /// Literal for code: CoverageeligibilityresponseExAuthSupportProfessionalReport
+    /// </summary>
+    public const string LiteralCoverageeligibilityresponseExAuthSupportProfessionalReport = "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support#professionalreport";
+
+    /// <summary>
+    /// Dictionary for looking up CoverageeligibilityresponseExAuthSupport Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "accidentreport", AccidentReport }, 
+      { "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support#accidentreport", AccidentReport }, 
+      { "diagnosticimageorder", DiagnosticImageOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support#diagnosticimageorder", DiagnosticImageOrder }, 
+      { "diagnosticimagereport", DiagnosticImageReport }, 
+      { "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support#diagnosticimagereport", DiagnosticImageReport }, 
+      { "laborder", LabOrder }, 
+      { "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support#laborder", LabOrder }, 
+      { "labreport", LabReport }, 
+      { "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support#labreport", LabReport }, 
+      { "model", Model }, 
+      { "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support#model", Model }, 
+      { "picture", Picture }, 
+      { "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support#picture", Picture }, 
+      { "professionalreport", ProfessionalReport }, 
+      { "http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support#professionalreport", ProfessionalReport }, 
+    };
   };
 }

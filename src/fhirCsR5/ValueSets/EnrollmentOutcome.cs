@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProcessingComplete = "complete";
 
     /// <summary>
+    /// Literal for code: EnrollmentOutcomeProcessingComplete
+    /// </summary>
+    public const string LiteralEnrollmentOutcomeProcessingComplete = "http://hl7.org/fhir/enrollment-outcome#complete";
+
+    /// <summary>
     /// Literal for code: Error
     /// </summary>
     public const string LiteralError = "error";
+
+    /// <summary>
+    /// Literal for code: EnrollmentOutcomeError
+    /// </summary>
+    public const string LiteralEnrollmentOutcomeError = "http://hl7.org/fhir/enrollment-outcome#error";
 
     /// <summary>
     /// Literal for code: PartialProcessing
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPartialProcessing = "partial";
 
     /// <summary>
+    /// Literal for code: EnrollmentOutcomePartialProcessing
+    /// </summary>
+    public const string LiteralEnrollmentOutcomePartialProcessing = "http://hl7.org/fhir/enrollment-outcome#partial";
+
+    /// <summary>
     /// Literal for code: Queued
     /// </summary>
     public const string LiteralQueued = "queued";
+
+    /// <summary>
+    /// Literal for code: EnrollmentOutcomeQueued
+    /// </summary>
+    public const string LiteralEnrollmentOutcomeQueued = "http://hl7.org/fhir/enrollment-outcome#queued";
+
+    /// <summary>
+    /// Dictionary for looking up EnrollmentOutcome Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", ProcessingComplete }, 
+      { "http://hl7.org/fhir/enrollment-outcome#complete", ProcessingComplete }, 
+      { "error", Error }, 
+      { "http://hl7.org/fhir/enrollment-outcome#error", Error }, 
+      { "partial", PartialProcessing }, 
+      { "http://hl7.org/fhir/enrollment-outcome#partial", PartialProcessing }, 
+      { "queued", Queued }, 
+      { "http://hl7.org/fhir/enrollment-outcome#queued", Queued }, 
+    };
   };
 }

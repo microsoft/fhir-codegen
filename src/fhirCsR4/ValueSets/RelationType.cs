@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReplacedBy = "is-replaced-by";
 
     /// <summary>
+    /// Literal for code: RelationTypeReplacedBy
+    /// </summary>
+    public const string LiteralRelationTypeReplacedBy = "http://hl7.org/fhir/relation-type#is-replaced-by";
+
+    /// <summary>
     /// Literal for code: Triggers
     /// </summary>
     public const string LiteralTriggers = "triggers";
+
+    /// <summary>
+    /// Literal for code: RelationTypeTriggers
+    /// </summary>
+    public const string LiteralRelationTypeTriggers = "http://hl7.org/fhir/relation-type#triggers";
+
+    /// <summary>
+    /// Dictionary for looking up RelationType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "is-replaced-by", ReplacedBy }, 
+      { "http://hl7.org/fhir/relation-type#is-replaced-by", ReplacedBy }, 
+      { "triggers", Triggers }, 
+      { "http://hl7.org/fhir/relation-type#triggers", Triggers }, 
+    };
   };
 }

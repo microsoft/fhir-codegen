@@ -72,9 +72,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRepairOfPriorServiceOrInstallation = "a";
 
     /// <summary>
+    /// Literal for code: ClaimModifiersRepairOfPriorServiceOrInstallation
+    /// </summary>
+    public const string LiteralClaimModifiersRepairOfPriorServiceOrInstallation = "http://hl7.org/fhir/modifiers#a";
+
+    /// <summary>
     /// Literal for code: TemporaryServiceOrInstallation
     /// </summary>
     public const string LiteralTemporaryServiceOrInstallation = "b";
+
+    /// <summary>
+    /// Literal for code: ClaimModifiersTemporaryServiceOrInstallation
+    /// </summary>
+    public const string LiteralClaimModifiersTemporaryServiceOrInstallation = "http://hl7.org/fhir/modifiers#b";
 
     /// <summary>
     /// Literal for code: TMJTreatment
@@ -82,9 +92,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTMJTreatment = "c";
 
     /// <summary>
+    /// Literal for code: ClaimModifiersTMJTreatment
+    /// </summary>
+    public const string LiteralClaimModifiersTMJTreatment = "http://hl7.org/fhir/modifiers#c";
+
+    /// <summary>
     /// Literal for code: ImplantOrAssociatedWithAnImplant
     /// </summary>
     public const string LiteralImplantOrAssociatedWithAnImplant = "e";
+
+    /// <summary>
+    /// Literal for code: ClaimModifiersImplantOrAssociatedWithAnImplant
+    /// </summary>
+    public const string LiteralClaimModifiersImplantOrAssociatedWithAnImplant = "http://hl7.org/fhir/modifiers#e";
 
     /// <summary>
     /// Literal for code: RushOrOutsideOfOfficeHours
@@ -92,8 +112,36 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRushOrOutsideOfOfficeHours = "rooh";
 
     /// <summary>
+    /// Literal for code: ClaimModifiersRushOrOutsideOfOfficeHours
+    /// </summary>
+    public const string LiteralClaimModifiersRushOrOutsideOfOfficeHours = "http://hl7.org/fhir/modifiers#rooh";
+
+    /// <summary>
     /// Literal for code: None
     /// </summary>
     public const string LiteralNone = "x";
+
+    /// <summary>
+    /// Literal for code: ClaimModifiersNone
+    /// </summary>
+    public const string LiteralClaimModifiersNone = "http://hl7.org/fhir/modifiers#x";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimModifiers Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "a", RepairOfPriorServiceOrInstallation }, 
+      { "http://hl7.org/fhir/modifiers#a", RepairOfPriorServiceOrInstallation }, 
+      { "b", TemporaryServiceOrInstallation }, 
+      { "http://hl7.org/fhir/modifiers#b", TemporaryServiceOrInstallation }, 
+      { "c", TMJTreatment }, 
+      { "http://hl7.org/fhir/modifiers#c", TMJTreatment }, 
+      { "e", ImplantOrAssociatedWithAnImplant }, 
+      { "http://hl7.org/fhir/modifiers#e", ImplantOrAssociatedWithAnImplant }, 
+      { "rooh", RushOrOutsideOfOfficeHours }, 
+      { "http://hl7.org/fhir/modifiers#rooh", RushOrOutsideOfOfficeHours }, 
+      { "x", None }, 
+      { "http://hl7.org/fhir/modifiers#x", None }, 
+    };
   };
 }

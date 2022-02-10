@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBundled = "bundled";
 
     /// <summary>
+    /// Literal for code: ResourceAggregationModeBundled
+    /// </summary>
+    public const string LiteralResourceAggregationModeBundled = "http://hl7.org/fhir/resource-aggregation-mode#bundled";
+
+    /// <summary>
     /// Literal for code: Contained
     /// </summary>
     public const string LiteralContained = "contained";
 
     /// <summary>
+    /// Literal for code: ResourceAggregationModeContained
+    /// </summary>
+    public const string LiteralResourceAggregationModeContained = "http://hl7.org/fhir/resource-aggregation-mode#contained";
+
+    /// <summary>
     /// Literal for code: Referenced
     /// </summary>
     public const string LiteralReferenced = "referenced";
+
+    /// <summary>
+    /// Literal for code: ResourceAggregationModeReferenced
+    /// </summary>
+    public const string LiteralResourceAggregationModeReferenced = "http://hl7.org/fhir/resource-aggregation-mode#referenced";
+
+    /// <summary>
+    /// Dictionary for looking up ResourceAggregationMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "bundled", Bundled }, 
+      { "http://hl7.org/fhir/resource-aggregation-mode#bundled", Bundled }, 
+      { "contained", Contained }, 
+      { "http://hl7.org/fhir/resource-aggregation-mode#contained", Contained }, 
+      { "referenced", Referenced }, 
+      { "http://hl7.org/fhir/resource-aggregation-mode#referenced", Referenced }, 
+    };
   };
 }

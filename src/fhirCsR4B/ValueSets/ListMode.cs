@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChangeList = "changes";
 
     /// <summary>
+    /// Literal for code: ListModeChangeList
+    /// </summary>
+    public const string LiteralListModeChangeList = "http://hl7.org/fhir/list-mode#changes";
+
+    /// <summary>
     /// Literal for code: SnapshotList
     /// </summary>
     public const string LiteralSnapshotList = "snapshot";
 
     /// <summary>
+    /// Literal for code: ListModeSnapshotList
+    /// </summary>
+    public const string LiteralListModeSnapshotList = "http://hl7.org/fhir/list-mode#snapshot";
+
+    /// <summary>
     /// Literal for code: WorkingList
     /// </summary>
     public const string LiteralWorkingList = "working";
+
+    /// <summary>
+    /// Literal for code: ListModeWorkingList
+    /// </summary>
+    public const string LiteralListModeWorkingList = "http://hl7.org/fhir/list-mode#working";
+
+    /// <summary>
+    /// Dictionary for looking up ListMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "changes", ChangeList }, 
+      { "http://hl7.org/fhir/list-mode#changes", ChangeList }, 
+      { "snapshot", SnapshotList }, 
+      { "http://hl7.org/fhir/list-mode#snapshot", SnapshotList }, 
+      { "working", WorkingList }, 
+      { "http://hl7.org/fhir/list-mode#working", WorkingList }, 
+    };
   };
 }

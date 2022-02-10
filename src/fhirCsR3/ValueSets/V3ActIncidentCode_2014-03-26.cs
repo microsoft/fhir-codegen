@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMotorVehicleAccident = "MVA";
 
     /// <summary>
+    /// Literal for code: V3ActCodeMotorVehicleAccident
+    /// </summary>
+    public const string LiteralV3ActCodeMotorVehicleAccident = "http://hl7.org/fhir/v3/ActCode#MVA";
+
+    /// <summary>
     /// Literal for code: SchoolAccident
     /// </summary>
     public const string LiteralSchoolAccident = "SCHOOL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeSchoolAccident
+    /// </summary>
+    public const string LiteralV3ActCodeSchoolAccident = "http://hl7.org/fhir/v3/ActCode#SCHOOL";
 
     /// <summary>
     /// Literal for code: SportingAccident
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSportingAccident = "SPT";
 
     /// <summary>
+    /// Literal for code: V3ActCodeSportingAccident
+    /// </summary>
+    public const string LiteralV3ActCodeSportingAccident = "http://hl7.org/fhir/v3/ActCode#SPT";
+
+    /// <summary>
     /// Literal for code: WorkplaceAccident
     /// </summary>
     public const string LiteralWorkplaceAccident = "WPA";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeWorkplaceAccident
+    /// </summary>
+    public const string LiteralV3ActCodeWorkplaceAccident = "http://hl7.org/fhir/v3/ActCode#WPA";
+
+    /// <summary>
+    /// Dictionary for looking up V3ActIncidentCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "MVA", MotorVehicleAccident }, 
+      { "http://hl7.org/fhir/v3/ActCode#MVA", MotorVehicleAccident }, 
+      { "SCHOOL", SchoolAccident }, 
+      { "http://hl7.org/fhir/v3/ActCode#SCHOOL", SchoolAccident }, 
+      { "SPT", SportingAccident }, 
+      { "http://hl7.org/fhir/v3/ActCode#SPT", SportingAccident }, 
+      { "WPA", WorkplaceAccident }, 
+      { "http://hl7.org/fhir/v3/ActCode#WPA", WorkplaceAccident }, 
+    };
   };
 }

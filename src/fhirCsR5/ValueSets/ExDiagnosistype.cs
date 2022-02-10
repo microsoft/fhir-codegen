@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ExDiagnosistypeCodes
   {
     /// <summary>
-    /// 
+    /// Admitting Diagnosis
     /// </summary>
     public static readonly Coding AdmittingDiagnosis = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype"
     };
     /// <summary>
-    /// 
+    /// Clinical Diagnosis
     /// </summary>
     public static readonly Coding ClinicalDiagnosis = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype"
     };
     /// <summary>
-    /// 
+    /// Differential Diagnosis
     /// </summary>
     public static readonly Coding DifferentialDiagnosis = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype"
     };
     /// <summary>
-    /// 
+    /// Discharge Diagnosis
     /// </summary>
     public static readonly Coding DischargeDiagnosis = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype"
     };
     /// <summary>
-    /// 
+    /// Laboratory Diagnosis
     /// </summary>
     public static readonly Coding LaboratoryDiagnosis = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype"
     };
     /// <summary>
-    /// 
+    /// Nursing Diagnosis
     /// </summary>
     public static readonly Coding NursingDiagnosis = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype"
     };
     /// <summary>
-    /// 
+    /// Prenatal Diagnosis
     /// </summary>
     public static readonly Coding PrenatalDiagnosis = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype"
     };
     /// <summary>
-    /// 
+    /// Principal Diagnosis
     /// </summary>
     public static readonly Coding PrincipalDiagnosis = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype"
     };
     /// <summary>
-    /// 
+    /// Radiology Diagnosis
     /// </summary>
     public static readonly Coding RadiologyDiagnosis = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype"
     };
     /// <summary>
-    /// 
+    /// Remote Diagnosis
     /// </summary>
     public static readonly Coding RemoteDiagnosis = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype"
     };
     /// <summary>
-    /// 
+    /// Retrospective Diagnosis
     /// </summary>
     public static readonly Coding RetrospectiveDiagnosis = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype"
     };
     /// <summary>
-    /// 
+    /// Self Diagnosis
     /// </summary>
     public static readonly Coding SelfDiagnosis = new Coding
     {
@@ -126,9 +126,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAdmittingDiagnosis = "admitting";
 
     /// <summary>
+    /// Literal for code: ExDiagnosistypeAdmittingDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeAdmittingDiagnosis = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#admitting";
+
+    /// <summary>
     /// Literal for code: ClinicalDiagnosis
     /// </summary>
     public const string LiteralClinicalDiagnosis = "clinical";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosistypeClinicalDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeClinicalDiagnosis = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#clinical";
 
     /// <summary>
     /// Literal for code: DifferentialDiagnosis
@@ -136,9 +146,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDifferentialDiagnosis = "differential";
 
     /// <summary>
+    /// Literal for code: ExDiagnosistypeDifferentialDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeDifferentialDiagnosis = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#differential";
+
+    /// <summary>
     /// Literal for code: DischargeDiagnosis
     /// </summary>
     public const string LiteralDischargeDiagnosis = "discharge";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosistypeDischargeDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeDischargeDiagnosis = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#discharge";
 
     /// <summary>
     /// Literal for code: LaboratoryDiagnosis
@@ -146,9 +166,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLaboratoryDiagnosis = "laboratory";
 
     /// <summary>
+    /// Literal for code: ExDiagnosistypeLaboratoryDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeLaboratoryDiagnosis = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#laboratory";
+
+    /// <summary>
     /// Literal for code: NursingDiagnosis
     /// </summary>
     public const string LiteralNursingDiagnosis = "nursing";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosistypeNursingDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeNursingDiagnosis = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#nursing";
 
     /// <summary>
     /// Literal for code: PrenatalDiagnosis
@@ -156,9 +186,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPrenatalDiagnosis = "prenatal";
 
     /// <summary>
+    /// Literal for code: ExDiagnosistypePrenatalDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypePrenatalDiagnosis = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#prenatal";
+
+    /// <summary>
     /// Literal for code: PrincipalDiagnosis
     /// </summary>
     public const string LiteralPrincipalDiagnosis = "principal";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosistypePrincipalDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypePrincipalDiagnosis = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#principal";
 
     /// <summary>
     /// Literal for code: RadiologyDiagnosis
@@ -166,9 +206,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRadiologyDiagnosis = "radiology";
 
     /// <summary>
+    /// Literal for code: ExDiagnosistypeRadiologyDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeRadiologyDiagnosis = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#radiology";
+
+    /// <summary>
     /// Literal for code: RemoteDiagnosis
     /// </summary>
     public const string LiteralRemoteDiagnosis = "remote";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosistypeRemoteDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeRemoteDiagnosis = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#remote";
 
     /// <summary>
     /// Literal for code: RetrospectiveDiagnosis
@@ -176,8 +226,48 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRetrospectiveDiagnosis = "retrospective";
 
     /// <summary>
+    /// Literal for code: ExDiagnosistypeRetrospectiveDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeRetrospectiveDiagnosis = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#retrospective";
+
+    /// <summary>
     /// Literal for code: SelfDiagnosis
     /// </summary>
     public const string LiteralSelfDiagnosis = "self";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosistypeSelfDiagnosis
+    /// </summary>
+    public const string LiteralExDiagnosistypeSelfDiagnosis = "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#self";
+
+    /// <summary>
+    /// Dictionary for looking up ExDiagnosistype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "admitting", AdmittingDiagnosis }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#admitting", AdmittingDiagnosis }, 
+      { "clinical", ClinicalDiagnosis }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#clinical", ClinicalDiagnosis }, 
+      { "differential", DifferentialDiagnosis }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#differential", DifferentialDiagnosis }, 
+      { "discharge", DischargeDiagnosis }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#discharge", DischargeDiagnosis }, 
+      { "laboratory", LaboratoryDiagnosis }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#laboratory", LaboratoryDiagnosis }, 
+      { "nursing", NursingDiagnosis }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#nursing", NursingDiagnosis }, 
+      { "prenatal", PrenatalDiagnosis }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#prenatal", PrenatalDiagnosis }, 
+      { "principal", PrincipalDiagnosis }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#principal", PrincipalDiagnosis }, 
+      { "radiology", RadiologyDiagnosis }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#radiology", RadiologyDiagnosis }, 
+      { "remote", RemoteDiagnosis }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#remote", RemoteDiagnosis }, 
+      { "retrospective", RetrospectiveDiagnosis }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#retrospective", RetrospectiveDiagnosis }, 
+      { "self", SelfDiagnosis }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosistype#self", SelfDiagnosis }, 
+    };
   };
 }

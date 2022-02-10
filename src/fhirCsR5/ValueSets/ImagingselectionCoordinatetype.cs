@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL2D = "2d";
 
     /// <summary>
+    /// Literal for code: ImagingselectionCoordinatetypeVAL2D
+    /// </summary>
+    public const string LiteralImagingselectionCoordinatetypeVAL2D = "http://hl7.org/fhir/imagingselection-coordinatetype#2d";
+
+    /// <summary>
     /// Literal for code: VAL3D
     /// </summary>
     public const string LiteralVAL3D = "3d";
+
+    /// <summary>
+    /// Literal for code: ImagingselectionCoordinatetypeVAL3D
+    /// </summary>
+    public const string LiteralImagingselectionCoordinatetypeVAL3D = "http://hl7.org/fhir/imagingselection-coordinatetype#3d";
+
+    /// <summary>
+    /// Dictionary for looking up ImagingselectionCoordinatetype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "2d", VAL2D }, 
+      { "http://hl7.org/fhir/imagingselection-coordinatetype#2d", VAL2D }, 
+      { "3d", VAL3D }, 
+      { "http://hl7.org/fhir/imagingselection-coordinatetype#3d", VAL3D }, 
+    };
   };
 }

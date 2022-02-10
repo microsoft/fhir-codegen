@@ -63,9 +63,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCDATextFormat = "cdaText";
 
     /// <summary>
+    /// Literal for code: PropertyRepresentationCDATextFormat
+    /// </summary>
+    public const string LiteralPropertyRepresentationCDATextFormat = "http://hl7.org/fhir/property-representation#cdaText";
+
+    /// <summary>
     /// Literal for code: TypeAttribute
     /// </summary>
     public const string LiteralTypeAttribute = "typeAttr";
+
+    /// <summary>
+    /// Literal for code: PropertyRepresentationTypeAttribute
+    /// </summary>
+    public const string LiteralPropertyRepresentationTypeAttribute = "http://hl7.org/fhir/property-representation#typeAttr";
 
     /// <summary>
     /// Literal for code: XHTML
@@ -73,13 +83,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralXHTML = "xhtml";
 
     /// <summary>
+    /// Literal for code: PropertyRepresentationXHTML
+    /// </summary>
+    public const string LiteralPropertyRepresentationXHTML = "http://hl7.org/fhir/property-representation#xhtml";
+
+    /// <summary>
     /// Literal for code: XMLAttribute
     /// </summary>
     public const string LiteralXMLAttribute = "xmlAttr";
 
     /// <summary>
+    /// Literal for code: PropertyRepresentationXMLAttribute
+    /// </summary>
+    public const string LiteralPropertyRepresentationXMLAttribute = "http://hl7.org/fhir/property-representation#xmlAttr";
+
+    /// <summary>
     /// Literal for code: XMLText
     /// </summary>
     public const string LiteralXMLText = "xmlText";
+
+    /// <summary>
+    /// Literal for code: PropertyRepresentationXMLText
+    /// </summary>
+    public const string LiteralPropertyRepresentationXMLText = "http://hl7.org/fhir/property-representation#xmlText";
+
+    /// <summary>
+    /// Dictionary for looking up PropertyRepresentation Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "cdaText", CDATextFormat }, 
+      { "http://hl7.org/fhir/property-representation#cdaText", CDATextFormat }, 
+      { "typeAttr", TypeAttribute }, 
+      { "http://hl7.org/fhir/property-representation#typeAttr", TypeAttribute }, 
+      { "xhtml", XHTML }, 
+      { "http://hl7.org/fhir/property-representation#xhtml", XHTML }, 
+      { "xmlAttr", XMLAttribute }, 
+      { "http://hl7.org/fhir/property-representation#xmlAttr", XMLAttribute }, 
+      { "xmlText", XMLText }, 
+      { "http://hl7.org/fhir/property-representation#xmlText", XMLText }, 
+    };
   };
 }

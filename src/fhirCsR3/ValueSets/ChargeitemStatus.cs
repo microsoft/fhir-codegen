@@ -81,9 +81,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAborted = "aborted";
 
     /// <summary>
+    /// Literal for code: ChargeitemStatusAborted
+    /// </summary>
+    public const string LiteralChargeitemStatusAborted = "http://hl7.org/fhir/chargeitem-status#aborted";
+
+    /// <summary>
     /// Literal for code: Billable
     /// </summary>
     public const string LiteralBillable = "billable";
+
+    /// <summary>
+    /// Literal for code: ChargeitemStatusBillable
+    /// </summary>
+    public const string LiteralChargeitemStatusBillable = "http://hl7.org/fhir/chargeitem-status#billable";
 
     /// <summary>
     /// Literal for code: Billed
@@ -91,9 +101,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBilled = "billed";
 
     /// <summary>
+    /// Literal for code: ChargeitemStatusBilled
+    /// </summary>
+    public const string LiteralChargeitemStatusBilled = "http://hl7.org/fhir/chargeitem-status#billed";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: ChargeitemStatusEnteredInError
+    /// </summary>
+    public const string LiteralChargeitemStatusEnteredInError = "http://hl7.org/fhir/chargeitem-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: NotBillable
@@ -101,13 +121,48 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNotBillable = "not-billable";
 
     /// <summary>
+    /// Literal for code: ChargeitemStatusNotBillable
+    /// </summary>
+    public const string LiteralChargeitemStatusNotBillable = "http://hl7.org/fhir/chargeitem-status#not-billable";
+
+    /// <summary>
     /// Literal for code: Planned
     /// </summary>
     public const string LiteralPlanned = "planned";
 
     /// <summary>
+    /// Literal for code: ChargeitemStatusPlanned
+    /// </summary>
+    public const string LiteralChargeitemStatusPlanned = "http://hl7.org/fhir/chargeitem-status#planned";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: ChargeitemStatusUnknown
+    /// </summary>
+    public const string LiteralChargeitemStatusUnknown = "http://hl7.org/fhir/chargeitem-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up ChargeitemStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "aborted", Aborted }, 
+      { "http://hl7.org/fhir/chargeitem-status#aborted", Aborted }, 
+      { "billable", Billable }, 
+      { "http://hl7.org/fhir/chargeitem-status#billable", Billable }, 
+      { "billed", Billed }, 
+      { "http://hl7.org/fhir/chargeitem-status#billed", Billed }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/chargeitem-status#entered-in-error", EnteredInError }, 
+      { "not-billable", NotBillable }, 
+      { "http://hl7.org/fhir/chargeitem-status#not-billable", NotBillable }, 
+      { "planned", Planned }, 
+      { "http://hl7.org/fhir/chargeitem-status#planned", Planned }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/chargeitem-status#unknown", Unknown }, 
+    };
   };
 }

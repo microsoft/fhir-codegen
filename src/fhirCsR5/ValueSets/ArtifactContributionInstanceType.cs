@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralApproved = "approved";
 
     /// <summary>
+    /// Literal for code: ArtifactContributionInstanceTypeApproved
+    /// </summary>
+    public const string LiteralArtifactContributionInstanceTypeApproved = "http://terminology.hl7.org/CodeSystem/artifact-contribution-instance-type#approved";
+
+    /// <summary>
     /// Literal for code: Edited
     /// </summary>
     public const string LiteralEdited = "edited";
 
     /// <summary>
+    /// Literal for code: ArtifactContributionInstanceTypeEdited
+    /// </summary>
+    public const string LiteralArtifactContributionInstanceTypeEdited = "http://terminology.hl7.org/CodeSystem/artifact-contribution-instance-type#edited";
+
+    /// <summary>
     /// Literal for code: Reviewed
     /// </summary>
     public const string LiteralReviewed = "reviewed";
+
+    /// <summary>
+    /// Literal for code: ArtifactContributionInstanceTypeReviewed
+    /// </summary>
+    public const string LiteralArtifactContributionInstanceTypeReviewed = "http://terminology.hl7.org/CodeSystem/artifact-contribution-instance-type#reviewed";
+
+    /// <summary>
+    /// Dictionary for looking up ArtifactContributionInstanceType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "approved", Approved }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-instance-type#approved", Approved }, 
+      { "edited", Edited }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-instance-type#edited", Edited }, 
+      { "reviewed", Reviewed }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-instance-type#reviewed", Reviewed }, 
+    };
   };
 }

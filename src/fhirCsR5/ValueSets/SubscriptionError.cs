@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class SubscriptionErrorCodes
   {
     /// <summary>
-    /// 
+    /// DNS resolution error
     /// </summary>
     public static readonly Coding DNSResolutionError = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/subscription-error"
     };
     /// <summary>
-    /// 
+    /// Error response
     /// </summary>
     public static readonly Coding ErrorResponse = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/subscription-error"
     };
     /// <summary>
-    /// 
+    /// No response
     /// </summary>
     public static readonly Coding NoResponse = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDNSResolutionError = "dns-resolution-error";
 
     /// <summary>
+    /// Literal for code: SubscriptionErrorDNSResolutionError
+    /// </summary>
+    public const string LiteralSubscriptionErrorDNSResolutionError = "http://terminology.hl7.org/CodeSystem/subscription-error#dns-resolution-error";
+
+    /// <summary>
     /// Literal for code: ErrorResponse
     /// </summary>
     public const string LiteralErrorResponse = "error-response";
 
     /// <summary>
+    /// Literal for code: SubscriptionErrorErrorResponse
+    /// </summary>
+    public const string LiteralSubscriptionErrorErrorResponse = "http://terminology.hl7.org/CodeSystem/subscription-error#error-response";
+
+    /// <summary>
     /// Literal for code: NoResponse
     /// </summary>
     public const string LiteralNoResponse = "no-response";
+
+    /// <summary>
+    /// Literal for code: SubscriptionErrorNoResponse
+    /// </summary>
+    public const string LiteralSubscriptionErrorNoResponse = "http://terminology.hl7.org/CodeSystem/subscription-error#no-response";
+
+    /// <summary>
+    /// Dictionary for looking up SubscriptionError Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "dns-resolution-error", DNSResolutionError }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-error#dns-resolution-error", DNSResolutionError }, 
+      { "error-response", ErrorResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-error#error-response", ErrorResponse }, 
+      { "no-response", NoResponse }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-error#no-response", NoResponse }, 
+    };
   };
 }

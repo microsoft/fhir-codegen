@@ -126,9 +126,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAbove = "above";
 
     /// <summary>
+    /// Literal for code: SearchModifierCodeAbove
+    /// </summary>
+    public const string LiteralSearchModifierCodeAbove = "http://hl7.org/fhir/search-modifier-code#above";
+
+    /// <summary>
     /// Literal for code: Below
     /// </summary>
     public const string LiteralBelow = "below";
+
+    /// <summary>
+    /// Literal for code: SearchModifierCodeBelow
+    /// </summary>
+    public const string LiteralSearchModifierCodeBelow = "http://hl7.org/fhir/search-modifier-code#below";
 
     /// <summary>
     /// Literal for code: Contains
@@ -136,9 +146,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralContains = "contains";
 
     /// <summary>
+    /// Literal for code: SearchModifierCodeContains
+    /// </summary>
+    public const string LiteralSearchModifierCodeContains = "http://hl7.org/fhir/search-modifier-code#contains";
+
+    /// <summary>
     /// Literal for code: Exact
     /// </summary>
     public const string LiteralExact = "exact";
+
+    /// <summary>
+    /// Literal for code: SearchModifierCodeExact
+    /// </summary>
+    public const string LiteralSearchModifierCodeExact = "http://hl7.org/fhir/search-modifier-code#exact";
 
     /// <summary>
     /// Literal for code: Identifier
@@ -146,9 +166,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIdentifier = "identifier";
 
     /// <summary>
+    /// Literal for code: SearchModifierCodeIdentifier
+    /// </summary>
+    public const string LiteralSearchModifierCodeIdentifier = "http://hl7.org/fhir/search-modifier-code#identifier";
+
+    /// <summary>
     /// Literal for code: In
     /// </summary>
     public const string LiteralIn = "in";
+
+    /// <summary>
+    /// Literal for code: SearchModifierCodeIn
+    /// </summary>
+    public const string LiteralSearchModifierCodeIn = "http://hl7.org/fhir/search-modifier-code#in";
 
     /// <summary>
     /// Literal for code: Missing
@@ -156,9 +186,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMissing = "missing";
 
     /// <summary>
+    /// Literal for code: SearchModifierCodeMissing
+    /// </summary>
+    public const string LiteralSearchModifierCodeMissing = "http://hl7.org/fhir/search-modifier-code#missing";
+
+    /// <summary>
     /// Literal for code: Not
     /// </summary>
     public const string LiteralNot = "not";
+
+    /// <summary>
+    /// Literal for code: SearchModifierCodeNot
+    /// </summary>
+    public const string LiteralSearchModifierCodeNot = "http://hl7.org/fhir/search-modifier-code#not";
 
     /// <summary>
     /// Literal for code: NotIn
@@ -166,9 +206,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNotIn = "not-in";
 
     /// <summary>
+    /// Literal for code: SearchModifierCodeNotIn
+    /// </summary>
+    public const string LiteralSearchModifierCodeNotIn = "http://hl7.org/fhir/search-modifier-code#not-in";
+
+    /// <summary>
     /// Literal for code: OfType
     /// </summary>
     public const string LiteralOfType = "ofType";
+
+    /// <summary>
+    /// Literal for code: SearchModifierCodeOfType
+    /// </summary>
+    public const string LiteralSearchModifierCodeOfType = "http://hl7.org/fhir/search-modifier-code#ofType";
 
     /// <summary>
     /// Literal for code: Text
@@ -176,8 +226,48 @@ namespace fhirCsR5.ValueSets
     public const string LiteralText = "text";
 
     /// <summary>
+    /// Literal for code: SearchModifierCodeText
+    /// </summary>
+    public const string LiteralSearchModifierCodeText = "http://hl7.org/fhir/search-modifier-code#text";
+
+    /// <summary>
     /// Literal for code: Type
     /// </summary>
     public const string LiteralType = "type";
+
+    /// <summary>
+    /// Literal for code: SearchModifierCodeType
+    /// </summary>
+    public const string LiteralSearchModifierCodeType = "http://hl7.org/fhir/search-modifier-code#type";
+
+    /// <summary>
+    /// Dictionary for looking up SearchModifierCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "above", Above }, 
+      { "http://hl7.org/fhir/search-modifier-code#above", Above }, 
+      { "below", Below }, 
+      { "http://hl7.org/fhir/search-modifier-code#below", Below }, 
+      { "contains", Contains }, 
+      { "http://hl7.org/fhir/search-modifier-code#contains", Contains }, 
+      { "exact", Exact }, 
+      { "http://hl7.org/fhir/search-modifier-code#exact", Exact }, 
+      { "identifier", Identifier }, 
+      { "http://hl7.org/fhir/search-modifier-code#identifier", Identifier }, 
+      { "in", In }, 
+      { "http://hl7.org/fhir/search-modifier-code#in", In }, 
+      { "missing", Missing }, 
+      { "http://hl7.org/fhir/search-modifier-code#missing", Missing }, 
+      { "not", Not }, 
+      { "http://hl7.org/fhir/search-modifier-code#not", Not }, 
+      { "not-in", NotIn }, 
+      { "http://hl7.org/fhir/search-modifier-code#not-in", NotIn }, 
+      { "ofType", OfType }, 
+      { "http://hl7.org/fhir/search-modifier-code#ofType", OfType }, 
+      { "text", Text }, 
+      { "http://hl7.org/fhir/search-modifier-code#text", Text }, 
+      { "type", Type }, 
+      { "http://hl7.org/fhir/search-modifier-code#type", Type }, 
+    };
   };
 }

@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class VerificationresultValidationTypeCodes
   {
     /// <summary>
-    /// 
+    /// Multiple Sources
     /// </summary>
     public static readonly Coding MultipleSources = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/validation-type"
     };
     /// <summary>
-    /// 
+    /// Nothing
     /// </summary>
     public static readonly Coding Nothing = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/validation-type"
     };
     /// <summary>
-    /// 
+    /// Primary Source
     /// </summary>
     public static readonly Coding PrimarySource = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMultipleSources = "multiple";
 
     /// <summary>
+    /// Literal for code: VerificationresultValidationTypeMultipleSources
+    /// </summary>
+    public const string LiteralVerificationresultValidationTypeMultipleSources = "http://terminology.hl7.org/CodeSystem/validation-type#multiple";
+
+    /// <summary>
     /// Literal for code: Nothing
     /// </summary>
     public const string LiteralNothing = "nothing";
 
     /// <summary>
+    /// Literal for code: VerificationresultValidationTypeNothing
+    /// </summary>
+    public const string LiteralVerificationresultValidationTypeNothing = "http://terminology.hl7.org/CodeSystem/validation-type#nothing";
+
+    /// <summary>
     /// Literal for code: PrimarySource
     /// </summary>
     public const string LiteralPrimarySource = "primary";
+
+    /// <summary>
+    /// Literal for code: VerificationresultValidationTypePrimarySource
+    /// </summary>
+    public const string LiteralVerificationresultValidationTypePrimarySource = "http://terminology.hl7.org/CodeSystem/validation-type#primary";
+
+    /// <summary>
+    /// Dictionary for looking up VerificationresultValidationType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "multiple", MultipleSources }, 
+      { "http://terminology.hl7.org/CodeSystem/validation-type#multiple", MultipleSources }, 
+      { "nothing", Nothing }, 
+      { "http://terminology.hl7.org/CodeSystem/validation-type#nothing", Nothing }, 
+      { "primary", PrimarySource }, 
+      { "http://terminology.hl7.org/CodeSystem/validation-type#primary", PrimarySource }, 
+    };
   };
 }

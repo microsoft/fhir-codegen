@@ -135,9 +135,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAcronym = "acronym";
 
     /// <summary>
+    /// Literal for code: TitleTypeAcronym
+    /// </summary>
+    public const string LiteralTitleTypeAcronym = "http://terminology.hl7.org/CodeSystem/title-type#acronym";
+
+    /// <summary>
     /// Literal for code: DifferentLanguageDerivedFromAutotranslation
     /// </summary>
     public const string LiteralDifferentLanguageDerivedFromAutotranslation = "autotranslated";
+
+    /// <summary>
+    /// Literal for code: TitleTypeDifferentLanguageDerivedFromAutotranslation
+    /// </summary>
+    public const string LiteralTitleTypeDifferentLanguageDerivedFromAutotranslation = "http://terminology.hl7.org/CodeSystem/title-type#autotranslated";
 
     /// <summary>
     /// Literal for code: DifferentTextForTheSameObjectWithADifferentIdentifier
@@ -145,9 +155,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDifferentTextForTheSameObjectWithADifferentIdentifier = "duplicate-uid";
 
     /// <summary>
+    /// Literal for code: TitleTypeDifferentTextForTheSameObjectWithADifferentIdentifier
+    /// </summary>
+    public const string LiteralTitleTypeDifferentTextForTheSameObjectWithADifferentIdentifier = "http://terminology.hl7.org/CodeSystem/title-type#duplicate-uid";
+
+    /// <summary>
     /// Literal for code: DifferentTextInAnEarlierVersion
     /// </summary>
     public const string LiteralDifferentTextInAnEarlierVersion = "earlier-title";
+
+    /// <summary>
+    /// Literal for code: TitleTypeDifferentTextInAnEarlierVersion
+    /// </summary>
+    public const string LiteralTitleTypeDifferentTextInAnEarlierVersion = "http://terminology.hl7.org/CodeSystem/title-type#earlier-title";
 
     /// <summary>
     /// Literal for code: HumanUse
@@ -155,9 +175,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHumanUse = "human-use";
 
     /// <summary>
+    /// Literal for code: TitleTypeHumanUse
+    /// </summary>
+    public const string LiteralTitleTypeHumanUse = "http://terminology.hl7.org/CodeSystem/title-type#human-use";
+
+    /// <summary>
     /// Literal for code: DifferentLanguage
     /// </summary>
     public const string LiteralDifferentLanguage = "language";
+
+    /// <summary>
+    /// Literal for code: TitleTypeDifferentLanguage
+    /// </summary>
+    public const string LiteralTitleTypeDifferentLanguage = "http://terminology.hl7.org/CodeSystem/title-type#language";
 
     /// <summary>
     /// Literal for code: MachineUse
@@ -165,9 +195,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMachineUse = "machine-use";
 
     /// <summary>
+    /// Literal for code: TitleTypeMachineUse
+    /// </summary>
+    public const string LiteralTitleTypeMachineUse = "http://terminology.hl7.org/CodeSystem/title-type#machine-use";
+
+    /// <summary>
     /// Literal for code: OfficialTitle
     /// </summary>
     public const string LiteralOfficialTitle = "official";
+
+    /// <summary>
+    /// Literal for code: TitleTypeOfficialTitle
+    /// </summary>
+    public const string LiteralTitleTypeOfficialTitle = "http://terminology.hl7.org/CodeSystem/title-type#official";
 
     /// <summary>
     /// Literal for code: PlainLanguageTitle
@@ -175,9 +215,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPlainLanguageTitle = "plain-language";
 
     /// <summary>
+    /// Literal for code: TitleTypePlainLanguageTitle
+    /// </summary>
+    public const string LiteralTitleTypePlainLanguageTitle = "http://terminology.hl7.org/CodeSystem/title-type#plain-language";
+
+    /// <summary>
     /// Literal for code: PrimaryTitle
     /// </summary>
     public const string LiteralPrimaryTitle = "primary";
+
+    /// <summary>
+    /// Literal for code: TitleTypePrimaryTitle
+    /// </summary>
+    public const string LiteralTitleTypePrimaryTitle = "http://terminology.hl7.org/CodeSystem/title-type#primary";
 
     /// <summary>
     /// Literal for code: ScientificTitle
@@ -185,13 +235,60 @@ namespace fhirCsR5.ValueSets
     public const string LiteralScientificTitle = "scientific";
 
     /// <summary>
+    /// Literal for code: TitleTypeScientificTitle
+    /// </summary>
+    public const string LiteralTitleTypeScientificTitle = "http://terminology.hl7.org/CodeSystem/title-type#scientific";
+
+    /// <summary>
     /// Literal for code: ShortTitle
     /// </summary>
     public const string LiteralShortTitle = "short-title";
 
     /// <summary>
+    /// Literal for code: TitleTypeShortTitle
+    /// </summary>
+    public const string LiteralTitleTypeShortTitle = "http://terminology.hl7.org/CodeSystem/title-type#short-title";
+
+    /// <summary>
     /// Literal for code: Subtitle
     /// </summary>
     public const string LiteralSubtitle = "subtitle";
+
+    /// <summary>
+    /// Literal for code: TitleTypeSubtitle
+    /// </summary>
+    public const string LiteralTitleTypeSubtitle = "http://terminology.hl7.org/CodeSystem/title-type#subtitle";
+
+    /// <summary>
+    /// Dictionary for looking up TitleType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "acronym", Acronym }, 
+      { "http://terminology.hl7.org/CodeSystem/title-type#acronym", Acronym }, 
+      { "autotranslated", DifferentLanguageDerivedFromAutotranslation }, 
+      { "http://terminology.hl7.org/CodeSystem/title-type#autotranslated", DifferentLanguageDerivedFromAutotranslation }, 
+      { "duplicate-uid", DifferentTextForTheSameObjectWithADifferentIdentifier }, 
+      { "http://terminology.hl7.org/CodeSystem/title-type#duplicate-uid", DifferentTextForTheSameObjectWithADifferentIdentifier }, 
+      { "earlier-title", DifferentTextInAnEarlierVersion }, 
+      { "http://terminology.hl7.org/CodeSystem/title-type#earlier-title", DifferentTextInAnEarlierVersion }, 
+      { "human-use", HumanUse }, 
+      { "http://terminology.hl7.org/CodeSystem/title-type#human-use", HumanUse }, 
+      { "language", DifferentLanguage }, 
+      { "http://terminology.hl7.org/CodeSystem/title-type#language", DifferentLanguage }, 
+      { "machine-use", MachineUse }, 
+      { "http://terminology.hl7.org/CodeSystem/title-type#machine-use", MachineUse }, 
+      { "official", OfficialTitle }, 
+      { "http://terminology.hl7.org/CodeSystem/title-type#official", OfficialTitle }, 
+      { "plain-language", PlainLanguageTitle }, 
+      { "http://terminology.hl7.org/CodeSystem/title-type#plain-language", PlainLanguageTitle }, 
+      { "primary", PrimaryTitle }, 
+      { "http://terminology.hl7.org/CodeSystem/title-type#primary", PrimaryTitle }, 
+      { "scientific", ScientificTitle }, 
+      { "http://terminology.hl7.org/CodeSystem/title-type#scientific", ScientificTitle }, 
+      { "short-title", ShortTitle }, 
+      { "http://terminology.hl7.org/CodeSystem/title-type#short-title", ShortTitle }, 
+      { "subtitle", Subtitle }, 
+      { "http://terminology.hl7.org/CodeSystem/title-type#subtitle", Subtitle }, 
+    };
   };
 }

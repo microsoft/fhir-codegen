@@ -126,9 +126,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdminNotify = "admin-notify";
 
     /// <summary>
+    /// Literal for code: MessageEventsAdminNotify
+    /// </summary>
+    public const string LiteralMessageEventsAdminNotify = "http://hl7.org/fhir/message-events#admin-notify";
+
+    /// <summary>
     /// Literal for code: CodeSystemExpand
     /// </summary>
     public const string LiteralCodeSystemExpand = "CodeSystem-expand";
+
+    /// <summary>
+    /// Literal for code: MessageEventsCodeSystemExpand
+    /// </summary>
+    public const string LiteralMessageEventsCodeSystemExpand = "http://hl7.org/fhir/message-events#CodeSystem-expand";
 
     /// <summary>
     /// Literal for code: CommunicationRequest
@@ -136,9 +146,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCommunicationRequest = "communication-request";
 
     /// <summary>
+    /// Literal for code: MessageEventsCommunicationRequest
+    /// </summary>
+    public const string LiteralMessageEventsCommunicationRequest = "http://hl7.org/fhir/message-events#communication-request";
+
+    /// <summary>
     /// Literal for code: DiagnosticreportProvide
     /// </summary>
     public const string LiteralDiagnosticreportProvide = "diagnosticreport-provide";
+
+    /// <summary>
+    /// Literal for code: MessageEventsDiagnosticreportProvide
+    /// </summary>
+    public const string LiteralMessageEventsDiagnosticreportProvide = "http://hl7.org/fhir/message-events#diagnosticreport-provide";
 
     /// <summary>
     /// Literal for code: MedicationAdministrationComplete
@@ -146,9 +166,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMedicationAdministrationComplete = "MedicationAdministration-Complete";
 
     /// <summary>
+    /// Literal for code: MessageEventsMedicationAdministrationComplete
+    /// </summary>
+    public const string LiteralMessageEventsMedicationAdministrationComplete = "http://hl7.org/fhir/message-events#MedicationAdministration-Complete";
+
+    /// <summary>
     /// Literal for code: MedicationAdministrationNullification
     /// </summary>
     public const string LiteralMedicationAdministrationNullification = "MedicationAdministration-Nullification";
+
+    /// <summary>
+    /// Literal for code: MessageEventsMedicationAdministrationNullification
+    /// </summary>
+    public const string LiteralMessageEventsMedicationAdministrationNullification = "http://hl7.org/fhir/message-events#MedicationAdministration-Nullification";
 
     /// <summary>
     /// Literal for code: MedicationAdministrationRecording
@@ -156,9 +186,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMedicationAdministrationRecording = "MedicationAdministration-Recording";
 
     /// <summary>
+    /// Literal for code: MessageEventsMedicationAdministrationRecording
+    /// </summary>
+    public const string LiteralMessageEventsMedicationAdministrationRecording = "http://hl7.org/fhir/message-events#MedicationAdministration-Recording";
+
+    /// <summary>
     /// Literal for code: MedicationAdministrationUpdate
     /// </summary>
     public const string LiteralMedicationAdministrationUpdate = "MedicationAdministration-Update";
+
+    /// <summary>
+    /// Literal for code: MessageEventsMedicationAdministrationUpdate
+    /// </summary>
+    public const string LiteralMessageEventsMedicationAdministrationUpdate = "http://hl7.org/fhir/message-events#MedicationAdministration-Update";
 
     /// <summary>
     /// Literal for code: ObservationProvide
@@ -166,9 +206,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralObservationProvide = "observation-provide";
 
     /// <summary>
+    /// Literal for code: MessageEventsObservationProvide
+    /// </summary>
+    public const string LiteralMessageEventsObservationProvide = "http://hl7.org/fhir/message-events#observation-provide";
+
+    /// <summary>
     /// Literal for code: PatientLink
     /// </summary>
     public const string LiteralPatientLink = "patient-link";
+
+    /// <summary>
+    /// Literal for code: MessageEventsPatientLink
+    /// </summary>
+    public const string LiteralMessageEventsPatientLink = "http://hl7.org/fhir/message-events#patient-link";
 
     /// <summary>
     /// Literal for code: PatientUnlink
@@ -176,8 +226,48 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientUnlink = "patient-unlink";
 
     /// <summary>
+    /// Literal for code: MessageEventsPatientUnlink
+    /// </summary>
+    public const string LiteralMessageEventsPatientUnlink = "http://hl7.org/fhir/message-events#patient-unlink";
+
+    /// <summary>
     /// Literal for code: ValuesetExpand
     /// </summary>
     public const string LiteralValuesetExpand = "valueset-expand";
+
+    /// <summary>
+    /// Literal for code: MessageEventsValuesetExpand
+    /// </summary>
+    public const string LiteralMessageEventsValuesetExpand = "http://hl7.org/fhir/message-events#valueset-expand";
+
+    /// <summary>
+    /// Dictionary for looking up MessageEvents Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "admin-notify", AdminNotify }, 
+      { "http://hl7.org/fhir/message-events#admin-notify", AdminNotify }, 
+      { "CodeSystem-expand", CodeSystemExpand }, 
+      { "http://hl7.org/fhir/message-events#CodeSystem-expand", CodeSystemExpand }, 
+      { "communication-request", CommunicationRequest }, 
+      { "http://hl7.org/fhir/message-events#communication-request", CommunicationRequest }, 
+      { "diagnosticreport-provide", DiagnosticreportProvide }, 
+      { "http://hl7.org/fhir/message-events#diagnosticreport-provide", DiagnosticreportProvide }, 
+      { "MedicationAdministration-Complete", MedicationAdministrationComplete }, 
+      { "http://hl7.org/fhir/message-events#MedicationAdministration-Complete", MedicationAdministrationComplete }, 
+      { "MedicationAdministration-Nullification", MedicationAdministrationNullification }, 
+      { "http://hl7.org/fhir/message-events#MedicationAdministration-Nullification", MedicationAdministrationNullification }, 
+      { "MedicationAdministration-Recording", MedicationAdministrationRecording }, 
+      { "http://hl7.org/fhir/message-events#MedicationAdministration-Recording", MedicationAdministrationRecording }, 
+      { "MedicationAdministration-Update", MedicationAdministrationUpdate }, 
+      { "http://hl7.org/fhir/message-events#MedicationAdministration-Update", MedicationAdministrationUpdate }, 
+      { "observation-provide", ObservationProvide }, 
+      { "http://hl7.org/fhir/message-events#observation-provide", ObservationProvide }, 
+      { "patient-link", PatientLink }, 
+      { "http://hl7.org/fhir/message-events#patient-link", PatientLink }, 
+      { "patient-unlink", PatientUnlink }, 
+      { "http://hl7.org/fhir/message-events#patient-unlink", PatientUnlink }, 
+      { "valueset-expand", ValuesetExpand }, 
+      { "http://hl7.org/fhir/message-events#valueset-expand", ValuesetExpand }, 
+    };
   };
 }

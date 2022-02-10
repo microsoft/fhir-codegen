@@ -160,6 +160,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool Instance { get; set; }
     /// <summary>
+    /// Extension container element for Instance
+    /// </summary>
+    public Element _Instance { get; set; }
+    /// <summary>
     /// The amount of the substance.
     /// </summary>
     public Quantity Quantity { get; set; }
@@ -202,6 +206,12 @@ namespace fhirCsR5.Models
       }
 
       writer.WriteBoolean("instance", Instance);
+
+      if (_Instance != null)
+      {
+        writer.WritePropertyName("_instance");
+        _Instance.SerializeJson(writer, options);
+      }
 
       if (!string.IsNullOrEmpty(Status))
       {
@@ -394,6 +404,11 @@ namespace fhirCsR5.Models
           Instance = reader.GetBoolean();
           break;
 
+        case "_instance":
+          _Instance = new fhirCsR5.Models.Element();
+          _Instance.DeserializeJson(ref reader, options);
+          break;
+
         case "quantity":
           Quantity = new fhirCsR5.Models.Quantity();
           Quantity.DeserializeJson(ref reader, options);
@@ -446,5 +461,10 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string INACTIVE = "inactive";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "inactive",
+      "entered-in-error",
+    };
   }
 }

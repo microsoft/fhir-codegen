@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNonSerious = "non-serious";
 
     /// <summary>
+    /// Literal for code: AdverseEventSeriousnessNonSerious
+    /// </summary>
+    public const string LiteralAdverseEventSeriousnessNonSerious = "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#non-serious";
+
+    /// <summary>
     /// Literal for code: Serious
     /// </summary>
     public const string LiteralSerious = "serious";
+
+    /// <summary>
+    /// Literal for code: AdverseEventSeriousnessSerious
+    /// </summary>
+    public const string LiteralAdverseEventSeriousnessSerious = "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#serious";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventSeriousness Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "non-serious", NonSerious }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#non-serious", NonSerious }, 
+      { "serious", Serious }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness#serious", Serious }, 
+    };
   };
 }

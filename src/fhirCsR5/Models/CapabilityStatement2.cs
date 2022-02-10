@@ -570,6 +570,17 @@ namespace fhirCsR5.Models
     public const string HISTORY_TYPE = "history-type";
     public const string CREATE = "create";
     public const string SEARCH_TYPE = "search-type";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "read",
+      "vread",
+      "update",
+      "patch",
+      "delete",
+      "history-instance",
+      "history-type",
+      "create",
+      "search-type",
+    };
   }
   /// <summary>
   /// The search parameters should include the control search parameters such as _sort, _count, etc. that also apply to this resource (though many will be listed at [CapabilityStatement2.rest.searchParam](capabilitystatement2-definitions.html#CapabilityStatement2.rest.searchParam)). The behavior of some search parameters may be further described by other code or extension elements, or narrative within the capability statement or linked [SearchParameter](searchparameter.html#) definitions.
@@ -799,6 +810,17 @@ namespace fhirCsR5.Models
     public const string QUANTITY = "quantity";
     public const string URI = "uri";
     public const string SPECIAL = "special";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "number",
+      "date",
+      "string",
+      "token",
+      "reference",
+      "composite",
+      "quantity",
+      "uri",
+      "special",
+    };
   }
   /// <summary>
   /// Operations linked from CapabilityStatement2.rest.resource.operation must have OperationDefinition.type = true or OperationDefinition.instance = true.    
@@ -1561,6 +1583,12 @@ namespace fhirCsR5.Models
     public const string BATCH = "batch";
     public const string SEARCH_SYSTEM = "search-system";
     public const string HISTORY_SYSTEM = "history-system";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "transaction",
+      "batch",
+      "search-system",
+      "history-system",
+    };
   }
   /// <summary>
   /// Multiple repetitions allow definition of both client and/or server behaviors or possibly behaviors under different configuration settings (for software or requirements statements).
@@ -1989,6 +2017,10 @@ namespace fhirCsR5.Models
   public static class CapabilityStatement2RestModeCodes {
     public const string CLIENT = "client";
     public const string SERVER = "server";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "client",
+      "server",
+    };
   }
   /// <summary>
   /// A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
@@ -2031,6 +2063,10 @@ namespace fhirCsR5.Models
     /// Allows filtering of capability statement2s that are appropriate for use versus not.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// Servers may implement multiple versions (see [Managing Multiple Versions](versioning.html), and the [$versions](capabilitystatement2-operation-versions.html) operation). If they do, and the CapabilityStatement2 is requested from the server, then this fhirVersion will be either the version requested, or the server's default version.
     /// </summary>
@@ -2242,6 +2278,12 @@ namespace fhirCsR5.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -2583,6 +2625,11 @@ namespace fhirCsR5.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR5.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "fhirVersion":
@@ -3056,6 +3103,12 @@ namespace fhirCsR5.Models
     public const string JSON = "json";
     public const string TTL = "ttl";
     public const string MIME = "MIME";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "xml",
+      "json",
+      "ttl",
+      "MIME",
+    };
   }
   /// <summary>
   /// Code Values for the CapabilityStatement2.kind field
@@ -3064,6 +3117,11 @@ namespace fhirCsR5.Models
     public const string INSTANCE = "instance";
     public const string CAPABILITY = "capability";
     public const string REQUIREMENTS = "requirements";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "instance",
+      "capability",
+      "requirements",
+    };
   }
   /// <summary>
   /// Code Values for the CapabilityStatement2.status field
@@ -3073,5 +3131,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

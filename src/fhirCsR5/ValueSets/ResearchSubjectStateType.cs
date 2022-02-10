@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEnrollmentStatus = "Enrollment";
 
     /// <summary>
+    /// Literal for code: ResearchSubjectStateTypeEnrollmentStatus
+    /// </summary>
+    public const string LiteralResearchSubjectStateTypeEnrollmentStatus = "http://terminology.hl7.org/CodeSystem/research-subject-state-type#Enrollment";
+
+    /// <summary>
     /// Literal for code: MilestoneStatus
     /// </summary>
     public const string LiteralMilestoneStatus = "Milestone";
+
+    /// <summary>
+    /// Literal for code: ResearchSubjectStateTypeMilestoneStatus
+    /// </summary>
+    public const string LiteralResearchSubjectStateTypeMilestoneStatus = "http://terminology.hl7.org/CodeSystem/research-subject-state-type#Milestone";
+
+    /// <summary>
+    /// Dictionary for looking up ResearchSubjectStateType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "Enrollment", EnrollmentStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/research-subject-state-type#Enrollment", EnrollmentStatus }, 
+      { "Milestone", MilestoneStatus }, 
+      { "http://terminology.hl7.org/CodeSystem/research-subject-state-type#Milestone", MilestoneStatus }, 
+    };
   };
 }

@@ -279,6 +279,14 @@ namespace fhirCsR4.Models
     public const string MANUFACTURER_NAME = "manufacturer-name";
     public const string MODEL_NAME = "model-name";
     public const string OTHER = "other";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "udi-label-name",
+      "user-friendly-name",
+      "patient-reported-name",
+      "manufacturer-name",
+      "model-name",
+      "other",
+    };
   }
   /// <summary>
   /// The capabilities supported on a  device, the standards to which the device conforms for a particular purpose, and used for the communication.
@@ -685,9 +693,17 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? AllergenicIndicator { get; set; }
     /// <summary>
+    /// Extension container element for AllergenicIndicator
+    /// </summary>
+    public Element _AllergenicIndicator { get; set; }
+    /// <summary>
     /// Indicates an alternative material of the device.
     /// </summary>
     public bool? Alternate { get; set; }
+    /// <summary>
+    /// Extension container element for Alternate
+    /// </summary>
+    public Element _Alternate { get; set; }
     /// <summary>
     /// The substance.
     /// </summary>
@@ -714,9 +730,21 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("alternate", (bool)Alternate!);
       }
 
+      if (_Alternate != null)
+      {
+        writer.WritePropertyName("_alternate");
+        _Alternate.SerializeJson(writer, options);
+      }
+
       if (AllergenicIndicator != null)
       {
         writer.WriteBoolean("allergenicIndicator", (bool)AllergenicIndicator!);
+      }
+
+      if (_AllergenicIndicator != null)
+      {
+        writer.WritePropertyName("_allergenicIndicator");
+        _AllergenicIndicator.SerializeJson(writer, options);
       }
 
       if (includeStartObject)
@@ -735,8 +763,18 @@ namespace fhirCsR4.Models
           AllergenicIndicator = reader.GetBoolean();
           break;
 
+        case "_allergenicIndicator":
+          _AllergenicIndicator = new fhirCsR4.Models.Element();
+          _AllergenicIndicator.DeserializeJson(ref reader, options);
+          break;
+
         case "alternate":
           Alternate = reader.GetBoolean();
+          break;
+
+        case "_alternate":
+          _Alternate = new fhirCsR4.Models.Element();
+          _Alternate.DeserializeJson(ref reader, options);
           break;
 
         case "substance":

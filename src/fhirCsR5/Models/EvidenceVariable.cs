@@ -119,6 +119,13 @@ namespace fhirCsR5.Models
     public const string AT_LEAST = "at-least";
     public const string AT_MOST = "at-most";
     public const string NET_EFFECT = "net-effect";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "all-of",
+      "any-of",
+      "at-least",
+      "at-most",
+      "net-effect",
+    };
   }
   /// <summary>
   /// Observation time from study specified event.
@@ -338,6 +345,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Exclude { get; set; }
     /// <summary>
+    /// Extension container element for Exclude
+    /// </summary>
+    public Element _Exclude { get; set; }
+    /// <summary>
     /// Value or set of values that define the grouping.
     /// </summary>
     public string GroupMeasure { get; set; }
@@ -431,6 +442,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("exclude", (bool)Exclude!);
       }
 
+      if (_Exclude != null)
+      {
+        writer.WritePropertyName("_exclude");
+        _Exclude.SerializeJson(writer, options);
+      }
+
       if ((TimeFromEvent != null) && (TimeFromEvent.Count != 0))
       {
         writer.WritePropertyName("timeFromEvent");
@@ -507,6 +524,11 @@ namespace fhirCsR5.Models
 
         case "exclude":
           Exclude = reader.GetBoolean();
+          break;
+
+        case "_exclude":
+          _Exclude = new fhirCsR5.Models.Element();
+          _Exclude.DeserializeJson(ref reader, options);
           break;
 
         case "groupMeasure":
@@ -596,6 +618,14 @@ namespace fhirCsR5.Models
     public const string MEAN_OF_MEDIAN = "mean-of-median";
     public const string MEDIAN_OF_MEAN = "median-of-mean";
     public const string MEDIAN_OF_MEDIAN = "median-of-median";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "mean",
+      "median",
+      "mean-of-mean",
+      "mean-of-median",
+      "median-of-mean",
+      "median-of-median",
+    };
   }
   /// <summary>
   /// A grouping for ordinal or polychotomous variables.
@@ -742,6 +772,10 @@ namespace fhirCsR5.Models
     /// True if the actual variable measured, false if a conceptual representation of the intended variable.
     /// </summary>
     public bool? Actual { get; set; }
+    /// <summary>
+    /// Extension container element for Actual
+    /// </summary>
+    public Element _Actual { get; set; }
     /// <summary>
     /// Extensions to ContactDetail include: contactReference, contactAddress, and contributionTime (Details at: http://build.fhir.org/clinicalreasoning-module.html).
     /// </summary>
@@ -1129,6 +1163,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("actual", (bool)Actual!);
       }
 
+      if (_Actual != null)
+      {
+        writer.WritePropertyName("_actual");
+        _Actual.SerializeJson(writer, options);
+      }
+
       if (CharacteristicCombination != null)
       {
         writer.WritePropertyName("characteristicCombination");
@@ -1186,6 +1226,11 @@ namespace fhirCsR5.Models
       {
         case "actual":
           Actual = reader.GetBoolean();
+          break;
+
+        case "_actual":
+          _Actual = new fhirCsR5.Models.Element();
+          _Actual.DeserializeJson(ref reader, options);
           break;
 
         case "author":
@@ -1628,6 +1673,12 @@ namespace fhirCsR5.Models
     public const string DICHOTOMOUS = "dichotomous";
     public const string ORDINAL = "ordinal";
     public const string POLYCHOTOMOUS = "polychotomous";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "continuous",
+      "dichotomous",
+      "ordinal",
+      "polychotomous",
+    };
   }
   /// <summary>
   /// Code Values for the EvidenceVariable.status field
@@ -1637,5 +1688,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

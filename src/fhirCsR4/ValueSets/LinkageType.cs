@@ -45,13 +45,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlternateRecord = "alternate";
 
     /// <summary>
+    /// Literal for code: LinkageTypeAlternateRecord
+    /// </summary>
+    public const string LiteralLinkageTypeAlternateRecord = "http://hl7.org/fhir/linkage-type#alternate";
+
+    /// <summary>
     /// Literal for code: HistoricalObsoleteRecord
     /// </summary>
     public const string LiteralHistoricalObsoleteRecord = "historical";
 
     /// <summary>
+    /// Literal for code: LinkageTypeHistoricalObsoleteRecord
+    /// </summary>
+    public const string LiteralLinkageTypeHistoricalObsoleteRecord = "http://hl7.org/fhir/linkage-type#historical";
+
+    /// <summary>
     /// Literal for code: SourceOfTruth
     /// </summary>
     public const string LiteralSourceOfTruth = "source";
+
+    /// <summary>
+    /// Literal for code: LinkageTypeSourceOfTruth
+    /// </summary>
+    public const string LiteralLinkageTypeSourceOfTruth = "http://hl7.org/fhir/linkage-type#source";
+
+    /// <summary>
+    /// Dictionary for looking up LinkageType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "alternate", AlternateRecord }, 
+      { "http://hl7.org/fhir/linkage-type#alternate", AlternateRecord }, 
+      { "historical", HistoricalObsoleteRecord }, 
+      { "http://hl7.org/fhir/linkage-type#historical", HistoricalObsoleteRecord }, 
+      { "source", SourceOfTruth }, 
+      { "http://hl7.org/fhir/linkage-type#source", SourceOfTruth }, 
+    };
   };
 }

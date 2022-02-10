@@ -45,13 +45,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHighRisk = "high-risk";
 
     /// <summary>
+    /// Literal for code: EvidenceVariantStateHighRisk
+    /// </summary>
+    public const string LiteralEvidenceVariantStateHighRisk = "http://terminology.hl7.org/CodeSystem/evidence-variant-state#high-risk";
+
+    /// <summary>
     /// Literal for code: LowRisk
     /// </summary>
     public const string LiteralLowRisk = "low-risk";
 
     /// <summary>
+    /// Literal for code: EvidenceVariantStateLowRisk
+    /// </summary>
+    public const string LiteralEvidenceVariantStateLowRisk = "http://terminology.hl7.org/CodeSystem/evidence-variant-state#low-risk";
+
+    /// <summary>
     /// Literal for code: MediumRisk
     /// </summary>
     public const string LiteralMediumRisk = "medium-risk";
+
+    /// <summary>
+    /// Literal for code: EvidenceVariantStateMediumRisk
+    /// </summary>
+    public const string LiteralEvidenceVariantStateMediumRisk = "http://terminology.hl7.org/CodeSystem/evidence-variant-state#medium-risk";
+
+    /// <summary>
+    /// Dictionary for looking up EvidenceVariantState Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "high-risk", HighRisk }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-variant-state#high-risk", HighRisk }, 
+      { "low-risk", LowRisk }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-variant-state#low-risk", LowRisk }, 
+      { "medium-risk", MediumRisk }, 
+      { "http://terminology.hl7.org/CodeSystem/evidence-variant-state#medium-risk", MediumRisk }, 
+    };
   };
 }

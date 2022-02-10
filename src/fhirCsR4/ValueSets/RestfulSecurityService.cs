@@ -72,9 +72,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBasic = "Basic";
 
     /// <summary>
+    /// Literal for code: RestfulSecurityServiceBasic
+    /// </summary>
+    public const string LiteralRestfulSecurityServiceBasic = "http://terminology.hl7.org/CodeSystem/restful-security-service#Basic";
+
+    /// <summary>
     /// Literal for code: Certificates
     /// </summary>
     public const string LiteralCertificates = "Certificates";
+
+    /// <summary>
+    /// Literal for code: RestfulSecurityServiceCertificates
+    /// </summary>
+    public const string LiteralRestfulSecurityServiceCertificates = "http://terminology.hl7.org/CodeSystem/restful-security-service#Certificates";
 
     /// <summary>
     /// Literal for code: Kerberos
@@ -82,9 +92,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKerberos = "Kerberos";
 
     /// <summary>
+    /// Literal for code: RestfulSecurityServiceKerberos
+    /// </summary>
+    public const string LiteralRestfulSecurityServiceKerberos = "http://terminology.hl7.org/CodeSystem/restful-security-service#Kerberos";
+
+    /// <summary>
     /// Literal for code: NTLM
     /// </summary>
     public const string LiteralNTLM = "NTLM";
+
+    /// <summary>
+    /// Literal for code: RestfulSecurityServiceNTLM
+    /// </summary>
+    public const string LiteralRestfulSecurityServiceNTLM = "http://terminology.hl7.org/CodeSystem/restful-security-service#NTLM";
 
     /// <summary>
     /// Literal for code: OAuth
@@ -92,8 +112,36 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOAuth = "OAuth";
 
     /// <summary>
+    /// Literal for code: RestfulSecurityServiceOAuth
+    /// </summary>
+    public const string LiteralRestfulSecurityServiceOAuth = "http://terminology.hl7.org/CodeSystem/restful-security-service#OAuth";
+
+    /// <summary>
     /// Literal for code: SMARTOnFHIR
     /// </summary>
     public const string LiteralSMARTOnFHIR = "SMART-on-FHIR";
+
+    /// <summary>
+    /// Literal for code: RestfulSecurityServiceSMARTOnFHIR
+    /// </summary>
+    public const string LiteralRestfulSecurityServiceSMARTOnFHIR = "http://terminology.hl7.org/CodeSystem/restful-security-service#SMART-on-FHIR";
+
+    /// <summary>
+    /// Dictionary for looking up RestfulSecurityService Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "Basic", Basic }, 
+      { "http://terminology.hl7.org/CodeSystem/restful-security-service#Basic", Basic }, 
+      { "Certificates", Certificates }, 
+      { "http://terminology.hl7.org/CodeSystem/restful-security-service#Certificates", Certificates }, 
+      { "Kerberos", Kerberos }, 
+      { "http://terminology.hl7.org/CodeSystem/restful-security-service#Kerberos", Kerberos }, 
+      { "NTLM", NTLM }, 
+      { "http://terminology.hl7.org/CodeSystem/restful-security-service#NTLM", NTLM }, 
+      { "OAuth", OAuth }, 
+      { "http://terminology.hl7.org/CodeSystem/restful-security-service#OAuth", OAuth }, 
+      { "SMART-on-FHIR", SMARTOnFHIR }, 
+      { "http://terminology.hl7.org/CodeSystem/restful-security-service#SMART-on-FHIR", SMARTOnFHIR }, 
+    };
   };
 }

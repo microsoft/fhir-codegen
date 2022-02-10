@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class EpisodeofcareTypeCodes
   {
     /// <summary>
-    /// 
+    /// Community-based aged care
     /// </summary>
     public static readonly Coding CommunityBasedAgedCare = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/episodeofcare-type"
     };
     /// <summary>
-    /// 
+    /// Drug and alcohol rehabilitation
     /// </summary>
     public static readonly Coding DrugAndAlcoholRehabilitation = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/episodeofcare-type"
     };
     /// <summary>
-    /// 
+    /// Post coordinated diabetes program
     /// </summary>
     public static readonly Coding PostCoordinatedDiabetesProgram = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/episodeofcare-type"
     };
     /// <summary>
-    /// 
+    /// Home and Community Care
     /// </summary>
     public static readonly Coding HomeAndCommunityCare = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/episodeofcare-type"
     };
     /// <summary>
-    /// 
+    /// Post Acute Care
     /// </summary>
     public static readonly Coding PostAcuteCare = new Coding
     {
@@ -63,9 +63,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommunityBasedAgedCare = "cacp";
 
     /// <summary>
+    /// Literal for code: EpisodeofcareTypeCommunityBasedAgedCare
+    /// </summary>
+    public const string LiteralEpisodeofcareTypeCommunityBasedAgedCare = "http://terminology.hl7.org/CodeSystem/episodeofcare-type#cacp";
+
+    /// <summary>
     /// Literal for code: DrugAndAlcoholRehabilitation
     /// </summary>
     public const string LiteralDrugAndAlcoholRehabilitation = "da";
+
+    /// <summary>
+    /// Literal for code: EpisodeofcareTypeDrugAndAlcoholRehabilitation
+    /// </summary>
+    public const string LiteralEpisodeofcareTypeDrugAndAlcoholRehabilitation = "http://terminology.hl7.org/CodeSystem/episodeofcare-type#da";
 
     /// <summary>
     /// Literal for code: PostCoordinatedDiabetesProgram
@@ -73,13 +83,44 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPostCoordinatedDiabetesProgram = "diab";
 
     /// <summary>
+    /// Literal for code: EpisodeofcareTypePostCoordinatedDiabetesProgram
+    /// </summary>
+    public const string LiteralEpisodeofcareTypePostCoordinatedDiabetesProgram = "http://terminology.hl7.org/CodeSystem/episodeofcare-type#diab";
+
+    /// <summary>
     /// Literal for code: HomeAndCommunityCare
     /// </summary>
     public const string LiteralHomeAndCommunityCare = "hacc";
 
     /// <summary>
+    /// Literal for code: EpisodeofcareTypeHomeAndCommunityCare
+    /// </summary>
+    public const string LiteralEpisodeofcareTypeHomeAndCommunityCare = "http://terminology.hl7.org/CodeSystem/episodeofcare-type#hacc";
+
+    /// <summary>
     /// Literal for code: PostAcuteCare
     /// </summary>
     public const string LiteralPostAcuteCare = "pac";
+
+    /// <summary>
+    /// Literal for code: EpisodeofcareTypePostAcuteCare
+    /// </summary>
+    public const string LiteralEpisodeofcareTypePostAcuteCare = "http://terminology.hl7.org/CodeSystem/episodeofcare-type#pac";
+
+    /// <summary>
+    /// Dictionary for looking up EpisodeofcareType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "cacp", CommunityBasedAgedCare }, 
+      { "http://terminology.hl7.org/CodeSystem/episodeofcare-type#cacp", CommunityBasedAgedCare }, 
+      { "da", DrugAndAlcoholRehabilitation }, 
+      { "http://terminology.hl7.org/CodeSystem/episodeofcare-type#da", DrugAndAlcoholRehabilitation }, 
+      { "diab", PostCoordinatedDiabetesProgram }, 
+      { "http://terminology.hl7.org/CodeSystem/episodeofcare-type#diab", PostCoordinatedDiabetesProgram }, 
+      { "hacc", HomeAndCommunityCare }, 
+      { "http://terminology.hl7.org/CodeSystem/episodeofcare-type#hacc", HomeAndCommunityCare }, 
+      { "pac", PostAcuteCare }, 
+      { "http://terminology.hl7.org/CodeSystem/episodeofcare-type#pac", PostAcuteCare }, 
+    };
   };
 }

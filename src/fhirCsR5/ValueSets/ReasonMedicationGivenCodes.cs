@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ReasonMedicationGivenCodesCodes
   {
     /// <summary>
-    /// 
+    /// None
     /// </summary>
     public static readonly Coding None = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/reason-medication-given"
     };
     /// <summary>
-    /// 
+    /// Given as Ordered
     /// </summary>
     public static readonly Coding GivenAsOrdered = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/reason-medication-given"
     };
     /// <summary>
-    /// 
+    /// Emergency
     /// </summary>
     public static readonly Coding Emergency = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNone = "a";
 
     /// <summary>
+    /// Literal for code: ReasonMedicationGivenNone
+    /// </summary>
+    public const string LiteralReasonMedicationGivenNone = "http://terminology.hl7.org/CodeSystem/reason-medication-given#a";
+
+    /// <summary>
     /// Literal for code: GivenAsOrdered
     /// </summary>
     public const string LiteralGivenAsOrdered = "b";
 
     /// <summary>
+    /// Literal for code: ReasonMedicationGivenGivenAsOrdered
+    /// </summary>
+    public const string LiteralReasonMedicationGivenGivenAsOrdered = "http://terminology.hl7.org/CodeSystem/reason-medication-given#b";
+
+    /// <summary>
     /// Literal for code: Emergency
     /// </summary>
     public const string LiteralEmergency = "c";
+
+    /// <summary>
+    /// Literal for code: ReasonMedicationGivenEmergency
+    /// </summary>
+    public const string LiteralReasonMedicationGivenEmergency = "http://terminology.hl7.org/CodeSystem/reason-medication-given#c";
+
+    /// <summary>
+    /// Dictionary for looking up ReasonMedicationGivenCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "a", None }, 
+      { "http://terminology.hl7.org/CodeSystem/reason-medication-given#a", None }, 
+      { "b", GivenAsOrdered }, 
+      { "http://terminology.hl7.org/CodeSystem/reason-medication-given#b", GivenAsOrdered }, 
+      { "c", Emergency }, 
+      { "http://terminology.hl7.org/CodeSystem/reason-medication-given#c", Emergency }, 
+    };
   };
 }

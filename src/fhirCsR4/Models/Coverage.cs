@@ -456,6 +456,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? Subrogation { get; set; }
     /// <summary>
+    /// Extension container element for Subrogation
+    /// </summary>
+    public Element _Subrogation { get; set; }
+    /// <summary>
     /// May be self or a parent in the case of dependants.
     /// </summary>
     public Reference Subscriber { get; set; }
@@ -628,6 +632,12 @@ namespace fhirCsR4.Models
       if (Subrogation != null)
       {
         writer.WriteBoolean("subrogation", (bool)Subrogation!);
+      }
+
+      if (_Subrogation != null)
+      {
+        writer.WritePropertyName("_subrogation");
+        _Subrogation.SerializeJson(writer, options);
       }
 
       if ((Contract != null) && (Contract.Count != 0))
@@ -845,6 +855,11 @@ namespace fhirCsR4.Models
           Subrogation = reader.GetBoolean();
           break;
 
+        case "_subrogation":
+          _Subrogation = new fhirCsR4.Models.Element();
+          _Subrogation.DeserializeJson(ref reader, options);
+          break;
+
         case "subscriber":
           Subscriber = new fhirCsR4.Models.Reference();
           Subscriber.DeserializeJson(ref reader, options);
@@ -903,5 +918,11 @@ namespace fhirCsR4.Models
     public const string CANCELLED = "cancelled";
     public const string DRAFT = "draft";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "cancelled",
+      "draft",
+      "entered-in-error",
+    };
   }
 }

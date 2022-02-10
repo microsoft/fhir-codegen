@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInNetwork = "in";
 
     /// <summary>
+    /// Literal for code: BenefitNetworkInNetwork
+    /// </summary>
+    public const string LiteralBenefitNetworkInNetwork = "http://terminology.hl7.org/CodeSystem/benefit-network#in";
+
+    /// <summary>
     /// Literal for code: OutOfNetwork
     /// </summary>
     public const string LiteralOutOfNetwork = "out";
+
+    /// <summary>
+    /// Literal for code: BenefitNetworkOutOfNetwork
+    /// </summary>
+    public const string LiteralBenefitNetworkOutOfNetwork = "http://terminology.hl7.org/CodeSystem/benefit-network#out";
+
+    /// <summary>
+    /// Dictionary for looking up BenefitNetwork Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "in", InNetwork }, 
+      { "http://terminology.hl7.org/CodeSystem/benefit-network#in", InNetwork }, 
+      { "out", OutOfNetwork }, 
+      { "http://terminology.hl7.org/CodeSystem/benefit-network#out", OutOfNetwork }, 
+    };
   };
 }

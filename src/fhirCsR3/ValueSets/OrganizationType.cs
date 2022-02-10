@@ -117,9 +117,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNonHealthcareBusinessOrCorporation = "bus";
 
     /// <summary>
+    /// Literal for code: OrganizationTypeNonHealthcareBusinessOrCorporation
+    /// </summary>
+    public const string LiteralOrganizationTypeNonHealthcareBusinessOrCorporation = "http://hl7.org/fhir/organization-type#bus";
+
+    /// <summary>
     /// Literal for code: CommunityGroup
     /// </summary>
     public const string LiteralCommunityGroup = "cg";
+
+    /// <summary>
+    /// Literal for code: OrganizationTypeCommunityGroup
+    /// </summary>
+    public const string LiteralOrganizationTypeCommunityGroup = "http://hl7.org/fhir/organization-type#cg";
 
     /// <summary>
     /// Literal for code: ClinicalResearchSponsor
@@ -127,9 +137,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralClinicalResearchSponsor = "crs";
 
     /// <summary>
+    /// Literal for code: OrganizationTypeClinicalResearchSponsor
+    /// </summary>
+    public const string LiteralOrganizationTypeClinicalResearchSponsor = "http://hl7.org/fhir/organization-type#crs";
+
+    /// <summary>
     /// Literal for code: HospitalDepartment
     /// </summary>
     public const string LiteralHospitalDepartment = "dept";
+
+    /// <summary>
+    /// Literal for code: OrganizationTypeHospitalDepartment
+    /// </summary>
+    public const string LiteralOrganizationTypeHospitalDepartment = "http://hl7.org/fhir/organization-type#dept";
 
     /// <summary>
     /// Literal for code: EducationalInstitute
@@ -137,9 +157,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEducationalInstitute = "edu";
 
     /// <summary>
+    /// Literal for code: OrganizationTypeEducationalInstitute
+    /// </summary>
+    public const string LiteralOrganizationTypeEducationalInstitute = "http://hl7.org/fhir/organization-type#edu";
+
+    /// <summary>
     /// Literal for code: Government
     /// </summary>
     public const string LiteralGovernment = "govt";
+
+    /// <summary>
+    /// Literal for code: OrganizationTypeGovernment
+    /// </summary>
+    public const string LiteralOrganizationTypeGovernment = "http://hl7.org/fhir/organization-type#govt";
 
     /// <summary>
     /// Literal for code: InsuranceCompany
@@ -147,9 +177,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInsuranceCompany = "ins";
 
     /// <summary>
+    /// Literal for code: OrganizationTypeInsuranceCompany
+    /// </summary>
+    public const string LiteralOrganizationTypeInsuranceCompany = "http://hl7.org/fhir/organization-type#ins";
+
+    /// <summary>
     /// Literal for code: Other
     /// </summary>
     public const string LiteralOther = "other";
+
+    /// <summary>
+    /// Literal for code: OrganizationTypeOther
+    /// </summary>
+    public const string LiteralOrganizationTypeOther = "http://hl7.org/fhir/organization-type#other";
 
     /// <summary>
     /// Literal for code: HealthcareProvider
@@ -157,13 +197,56 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHealthcareProvider = "prov";
 
     /// <summary>
+    /// Literal for code: OrganizationTypeHealthcareProvider
+    /// </summary>
+    public const string LiteralOrganizationTypeHealthcareProvider = "http://hl7.org/fhir/organization-type#prov";
+
+    /// <summary>
     /// Literal for code: ReligiousInstitution
     /// </summary>
     public const string LiteralReligiousInstitution = "reli";
 
     /// <summary>
+    /// Literal for code: OrganizationTypeReligiousInstitution
+    /// </summary>
+    public const string LiteralOrganizationTypeReligiousInstitution = "http://hl7.org/fhir/organization-type#reli";
+
+    /// <summary>
     /// Literal for code: OrganizationalTeam
     /// </summary>
     public const string LiteralOrganizationalTeam = "team";
+
+    /// <summary>
+    /// Literal for code: OrganizationTypeOrganizationalTeam
+    /// </summary>
+    public const string LiteralOrganizationTypeOrganizationalTeam = "http://hl7.org/fhir/organization-type#team";
+
+    /// <summary>
+    /// Dictionary for looking up OrganizationType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "bus", NonHealthcareBusinessOrCorporation }, 
+      { "http://hl7.org/fhir/organization-type#bus", NonHealthcareBusinessOrCorporation }, 
+      { "cg", CommunityGroup }, 
+      { "http://hl7.org/fhir/organization-type#cg", CommunityGroup }, 
+      { "crs", ClinicalResearchSponsor }, 
+      { "http://hl7.org/fhir/organization-type#crs", ClinicalResearchSponsor }, 
+      { "dept", HospitalDepartment }, 
+      { "http://hl7.org/fhir/organization-type#dept", HospitalDepartment }, 
+      { "edu", EducationalInstitute }, 
+      { "http://hl7.org/fhir/organization-type#edu", EducationalInstitute }, 
+      { "govt", Government }, 
+      { "http://hl7.org/fhir/organization-type#govt", Government }, 
+      { "ins", InsuranceCompany }, 
+      { "http://hl7.org/fhir/organization-type#ins", InsuranceCompany }, 
+      { "other", Other }, 
+      { "http://hl7.org/fhir/organization-type#other", Other }, 
+      { "prov", HealthcareProvider }, 
+      { "http://hl7.org/fhir/organization-type#prov", HealthcareProvider }, 
+      { "reli", ReligiousInstitution }, 
+      { "http://hl7.org/fhir/organization-type#reli", ReligiousInstitution }, 
+      { "team", OrganizationalTeam }, 
+      { "http://hl7.org/fhir/organization-type#team", OrganizationalTeam }, 
+    };
   };
 }

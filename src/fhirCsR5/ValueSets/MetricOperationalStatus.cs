@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: MetricOperationalStatusEnteredInError
+    /// </summary>
+    public const string LiteralMetricOperationalStatusEnteredInError = "http://hl7.org/fhir/metric-operational-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Off
     /// </summary>
     public const string LiteralOff = "off";
+
+    /// <summary>
+    /// Literal for code: MetricOperationalStatusOff
+    /// </summary>
+    public const string LiteralMetricOperationalStatusOff = "http://hl7.org/fhir/metric-operational-status#off";
 
     /// <summary>
     /// Literal for code: On
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOn = "on";
 
     /// <summary>
+    /// Literal for code: MetricOperationalStatusOn
+    /// </summary>
+    public const string LiteralMetricOperationalStatusOn = "http://hl7.org/fhir/metric-operational-status#on";
+
+    /// <summary>
     /// Literal for code: Standby
     /// </summary>
     public const string LiteralStandby = "standby";
+
+    /// <summary>
+    /// Literal for code: MetricOperationalStatusStandby
+    /// </summary>
+    public const string LiteralMetricOperationalStatusStandby = "http://hl7.org/fhir/metric-operational-status#standby";
+
+    /// <summary>
+    /// Dictionary for looking up MetricOperationalStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/metric-operational-status#entered-in-error", EnteredInError }, 
+      { "off", Off }, 
+      { "http://hl7.org/fhir/metric-operational-status#off", Off }, 
+      { "on", On }, 
+      { "http://hl7.org/fhir/metric-operational-status#on", On }, 
+      { "standby", Standby }, 
+      { "http://hl7.org/fhir/metric-operational-status#standby", Standby }, 
+    };
   };
 }

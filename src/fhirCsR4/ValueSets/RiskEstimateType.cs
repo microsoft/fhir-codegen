@@ -72,9 +72,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCount = "count";
 
     /// <summary>
+    /// Literal for code: RiskEstimateTypeCount
+    /// </summary>
+    public const string LiteralRiskEstimateTypeCount = "http://terminology.hl7.org/CodeSystem/risk-estimate-type#count";
+
+    /// <summary>
     /// Literal for code: DerivedProportion
     /// </summary>
     public const string LiteralDerivedProportion = "derivedProportion";
+
+    /// <summary>
+    /// Literal for code: RiskEstimateTypeDerivedProportion
+    /// </summary>
+    public const string LiteralRiskEstimateTypeDerivedProportion = "http://terminology.hl7.org/CodeSystem/risk-estimate-type#derivedProportion";
 
     /// <summary>
     /// Literal for code: Descriptive
@@ -82,9 +92,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDescriptive = "descriptive";
 
     /// <summary>
+    /// Literal for code: RiskEstimateTypeDescriptive
+    /// </summary>
+    public const string LiteralRiskEstimateTypeDescriptive = "http://terminology.hl7.org/CodeSystem/risk-estimate-type#descriptive";
+
+    /// <summary>
     /// Literal for code: Mean
     /// </summary>
     public const string LiteralMean = "mean";
+
+    /// <summary>
+    /// Literal for code: RiskEstimateTypeMean
+    /// </summary>
+    public const string LiteralRiskEstimateTypeMean = "http://terminology.hl7.org/CodeSystem/risk-estimate-type#mean";
 
     /// <summary>
     /// Literal for code: Median
@@ -92,8 +112,36 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedian = "median";
 
     /// <summary>
+    /// Literal for code: RiskEstimateTypeMedian
+    /// </summary>
+    public const string LiteralRiskEstimateTypeMedian = "http://terminology.hl7.org/CodeSystem/risk-estimate-type#median";
+
+    /// <summary>
     /// Literal for code: Proportion
     /// </summary>
     public const string LiteralProportion = "proportion";
+
+    /// <summary>
+    /// Literal for code: RiskEstimateTypeProportion
+    /// </summary>
+    public const string LiteralRiskEstimateTypeProportion = "http://terminology.hl7.org/CodeSystem/risk-estimate-type#proportion";
+
+    /// <summary>
+    /// Dictionary for looking up RiskEstimateType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "count", Count }, 
+      { "http://terminology.hl7.org/CodeSystem/risk-estimate-type#count", Count }, 
+      { "derivedProportion", DerivedProportion }, 
+      { "http://terminology.hl7.org/CodeSystem/risk-estimate-type#derivedProportion", DerivedProportion }, 
+      { "descriptive", Descriptive }, 
+      { "http://terminology.hl7.org/CodeSystem/risk-estimate-type#descriptive", Descriptive }, 
+      { "mean", Mean }, 
+      { "http://terminology.hl7.org/CodeSystem/risk-estimate-type#mean", Mean }, 
+      { "median", Median }, 
+      { "http://terminology.hl7.org/CodeSystem/risk-estimate-type#median", Median }, 
+      { "proportion", Proportion }, 
+      { "http://terminology.hl7.org/CodeSystem/risk-estimate-type#proportion", Proportion }, 
+    };
   };
 }

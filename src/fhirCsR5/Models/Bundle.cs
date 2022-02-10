@@ -250,6 +250,11 @@ namespace fhirCsR5.Models
     public const string MATCH = "match";
     public const string INCLUDE = "include";
     public const string OUTCOME = "outcome";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "match",
+      "include",
+      "outcome",
+    };
   }
   /// <summary>
   /// Additional information about how this entry should be processed as part of a transaction or batch.  For history, it shows how the entry was processed to create the version contained in the entry.
@@ -488,6 +493,14 @@ namespace fhirCsR5.Models
     public const string PUT = "PUT";
     public const string DELETE = "DELETE";
     public const string PATCH = "PATCH";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "GET",
+      "HEAD",
+      "POST",
+      "PUT",
+      "DELETE",
+      "PATCH",
+    };
   }
   /// <summary>
   /// Indicates the results of processing the corresponding 'request' entry in the batch or transaction being responded to or what the results of an operation where when returning history.
@@ -1145,5 +1158,17 @@ namespace fhirCsR5.Models
     public const string SEARCHSET = "searchset";
     public const string COLLECTION = "collection";
     public const string SUBSCRIPTION_NOTIFICATION = "subscription-notification";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "document",
+      "message",
+      "transaction",
+      "transaction-response",
+      "batch",
+      "batch-response",
+      "history",
+      "searchset",
+      "collection",
+      "subscription-notification",
+    };
   }
 }

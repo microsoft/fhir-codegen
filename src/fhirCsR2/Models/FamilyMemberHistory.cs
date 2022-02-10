@@ -752,6 +752,12 @@ namespace fhirCsR2.Models
     public const string FEMALE = "female";
     public const string OTHER = "other";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "male",
+      "female",
+      "other",
+      "unknown",
+    };
   }
   /// <summary>
   /// Code Values for the FamilyMemberHistory.status field
@@ -761,5 +767,11 @@ namespace fhirCsR2.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string HEALTH_UNKNOWN = "health-unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "partial",
+      "completed",
+      "entered-in-error",
+      "health-unknown",
+    };
   }
 }

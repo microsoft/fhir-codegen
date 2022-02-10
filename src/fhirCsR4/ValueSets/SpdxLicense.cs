@@ -3132,9 +3132,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBSDZeroClauseLicense = "0BSD";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseBSDZeroClauseLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseBSDZeroClauseLicense = "http://hl7.org/fhir/spdx-license#0BSD";
+
+    /// <summary>
     /// Literal for code: AttributionAssuranceLicense
     /// </summary>
     public const string LiteralAttributionAssuranceLicense = "AAL";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseAttributionAssuranceLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseAttributionAssuranceLicense = "http://hl7.org/fhir/spdx-license#AAL";
 
     /// <summary>
     /// Literal for code: AbstylesLicense
@@ -3142,9 +3152,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAbstylesLicense = "Abstyles";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseAbstylesLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseAbstylesLicense = "http://hl7.org/fhir/spdx-license#Abstyles";
+
+    /// <summary>
     /// Literal for code: AdobeSystemsIncorporatedSourceCodeLicenseAgreement
     /// </summary>
     public const string LiteralAdobeSystemsIncorporatedSourceCodeLicenseAgreement = "Adobe-2006";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseAdobeSystemsIncorporatedSourceCodeLicenseAgreement
+    /// </summary>
+    public const string LiteralSpdxLicenseAdobeSystemsIncorporatedSourceCodeLicenseAgreement = "http://hl7.org/fhir/spdx-license#Adobe-2006";
 
     /// <summary>
     /// Literal for code: AdobeGlyphListLicense
@@ -3152,9 +3172,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdobeGlyphListLicense = "Adobe-Glyph";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseAdobeGlyphListLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseAdobeGlyphListLicense = "http://hl7.org/fhir/spdx-license#Adobe-Glyph";
+
+    /// <summary>
     /// Literal for code: AmazonDigitalServicesLicense
     /// </summary>
     public const string LiteralAmazonDigitalServicesLicense = "ADSL";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseAmazonDigitalServicesLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseAmazonDigitalServicesLicense = "http://hl7.org/fhir/spdx-license#ADSL";
 
     /// <summary>
     /// Literal for code: AcademicFreeLicenseV11
@@ -3162,9 +3192,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcademicFreeLicenseV11 = "AFL-1.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseAcademicFreeLicenseV11
+    /// </summary>
+    public const string LiteralSpdxLicenseAcademicFreeLicenseV11 = "http://hl7.org/fhir/spdx-license#AFL-1.1";
+
+    /// <summary>
     /// Literal for code: AcademicFreeLicenseV12
     /// </summary>
     public const string LiteralAcademicFreeLicenseV12 = "AFL-1.2";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseAcademicFreeLicenseV12
+    /// </summary>
+    public const string LiteralSpdxLicenseAcademicFreeLicenseV12 = "http://hl7.org/fhir/spdx-license#AFL-1.2";
 
     /// <summary>
     /// Literal for code: AcademicFreeLicenseV20
@@ -3172,9 +3212,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcademicFreeLicenseV20 = "AFL-2.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseAcademicFreeLicenseV20
+    /// </summary>
+    public const string LiteralSpdxLicenseAcademicFreeLicenseV20 = "http://hl7.org/fhir/spdx-license#AFL-2.0";
+
+    /// <summary>
     /// Literal for code: AcademicFreeLicenseV21
     /// </summary>
     public const string LiteralAcademicFreeLicenseV21 = "AFL-2.1";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseAcademicFreeLicenseV21
+    /// </summary>
+    public const string LiteralSpdxLicenseAcademicFreeLicenseV21 = "http://hl7.org/fhir/spdx-license#AFL-2.1";
 
     /// <summary>
     /// Literal for code: AcademicFreeLicenseV30
@@ -3182,9 +3232,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcademicFreeLicenseV30 = "AFL-3.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseAcademicFreeLicenseV30
+    /// </summary>
+    public const string LiteralSpdxLicenseAcademicFreeLicenseV30 = "http://hl7.org/fhir/spdx-license#AFL-3.0";
+
+    /// <summary>
     /// Literal for code: AfmparseLicense
     /// </summary>
     public const string LiteralAfmparseLicense = "Afmparse";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseAfmparseLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseAfmparseLicense = "http://hl7.org/fhir/spdx-license#Afmparse";
 
     /// <summary>
     /// Literal for code: AfferoGeneralPublicLicenseV10Only
@@ -3192,9 +3252,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAfferoGeneralPublicLicenseV10Only = "AGPL-1.0-only";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseAfferoGeneralPublicLicenseV10Only
+    /// </summary>
+    public const string LiteralSpdxLicenseAfferoGeneralPublicLicenseV10Only = "http://hl7.org/fhir/spdx-license#AGPL-1.0-only";
+
+    /// <summary>
     /// Literal for code: AfferoGeneralPublicLicenseV10OrLater
     /// </summary>
     public const string LiteralAfferoGeneralPublicLicenseV10OrLater = "AGPL-1.0-or-later";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseAfferoGeneralPublicLicenseV10OrLater
+    /// </summary>
+    public const string LiteralSpdxLicenseAfferoGeneralPublicLicenseV10OrLater = "http://hl7.org/fhir/spdx-license#AGPL-1.0-or-later";
 
     /// <summary>
     /// Literal for code: GNUAfferoGeneralPublicLicenseV30Only
@@ -3202,9 +3272,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGNUAfferoGeneralPublicLicenseV30Only = "AGPL-3.0-only";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseGNUAfferoGeneralPublicLicenseV30Only
+    /// </summary>
+    public const string LiteralSpdxLicenseGNUAfferoGeneralPublicLicenseV30Only = "http://hl7.org/fhir/spdx-license#AGPL-3.0-only";
+
+    /// <summary>
     /// Literal for code: GNUAfferoGeneralPublicLicenseV30OrLater
     /// </summary>
     public const string LiteralGNUAfferoGeneralPublicLicenseV30OrLater = "AGPL-3.0-or-later";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseGNUAfferoGeneralPublicLicenseV30OrLater
+    /// </summary>
+    public const string LiteralSpdxLicenseGNUAfferoGeneralPublicLicenseV30OrLater = "http://hl7.org/fhir/spdx-license#AGPL-3.0-or-later";
 
     /// <summary>
     /// Literal for code: AladdinFreePublicLicense
@@ -3212,9 +3292,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAladdinFreePublicLicense = "Aladdin";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseAladdinFreePublicLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseAladdinFreePublicLicense = "http://hl7.org/fhir/spdx-license#Aladdin";
+
+    /// <summary>
     /// Literal for code: AMDQuoteSPlpaMapCLicense
     /// </summary>
     public const string LiteralAMDQuoteSPlpaMapCLicense = "AMDPLPA";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseAMDQuoteSPlpaMapCLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseAMDQuoteSPlpaMapCLicense = "http://hl7.org/fhir/spdx-license#AMDPLPA";
 
     /// <summary>
     /// Literal for code: AppleMITLicense
@@ -3222,9 +3312,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAppleMITLicense = "AML";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseAppleMITLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseAppleMITLicense = "http://hl7.org/fhir/spdx-license#AML";
+
+    /// <summary>
     /// Literal for code: AcademyOfMotionPictureArtsAndSciencesBSD
     /// </summary>
     public const string LiteralAcademyOfMotionPictureArtsAndSciencesBSD = "AMPAS";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseAcademyOfMotionPictureArtsAndSciencesBSD
+    /// </summary>
+    public const string LiteralSpdxLicenseAcademyOfMotionPictureArtsAndSciencesBSD = "http://hl7.org/fhir/spdx-license#AMPAS";
 
     /// <summary>
     /// Literal for code: ANTLRSoftwareRightsNotice
@@ -3232,9 +3332,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralANTLRSoftwareRightsNotice = "ANTLR-PD";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseANTLRSoftwareRightsNotice
+    /// </summary>
+    public const string LiteralSpdxLicenseANTLRSoftwareRightsNotice = "http://hl7.org/fhir/spdx-license#ANTLR-PD";
+
+    /// <summary>
     /// Literal for code: ApacheLicense10
     /// </summary>
     public const string LiteralApacheLicense10 = "Apache-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseApacheLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseApacheLicense10 = "http://hl7.org/fhir/spdx-license#Apache-1.0";
 
     /// <summary>
     /// Literal for code: ApacheLicense11
@@ -3242,9 +3352,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralApacheLicense11 = "Apache-1.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseApacheLicense11
+    /// </summary>
+    public const string LiteralSpdxLicenseApacheLicense11 = "http://hl7.org/fhir/spdx-license#Apache-1.1";
+
+    /// <summary>
     /// Literal for code: ApacheLicense20
     /// </summary>
     public const string LiteralApacheLicense20 = "Apache-2.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseApacheLicense20
+    /// </summary>
+    public const string LiteralSpdxLicenseApacheLicense20 = "http://hl7.org/fhir/spdx-license#Apache-2.0";
 
     /// <summary>
     /// Literal for code: AdobePostscriptAFMLicense
@@ -3252,9 +3372,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdobePostscriptAFMLicense = "APAFML";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseAdobePostscriptAFMLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseAdobePostscriptAFMLicense = "http://hl7.org/fhir/spdx-license#APAFML";
+
+    /// <summary>
     /// Literal for code: AdaptivePublicLicense10
     /// </summary>
     public const string LiteralAdaptivePublicLicense10 = "APL-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseAdaptivePublicLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseAdaptivePublicLicense10 = "http://hl7.org/fhir/spdx-license#APL-1.0";
 
     /// <summary>
     /// Literal for code: ApplePublicSourceLicense10
@@ -3262,9 +3392,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralApplePublicSourceLicense10 = "APSL-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseApplePublicSourceLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseApplePublicSourceLicense10 = "http://hl7.org/fhir/spdx-license#APSL-1.0";
+
+    /// <summary>
     /// Literal for code: ApplePublicSourceLicense11
     /// </summary>
     public const string LiteralApplePublicSourceLicense11 = "APSL-1.1";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseApplePublicSourceLicense11
+    /// </summary>
+    public const string LiteralSpdxLicenseApplePublicSourceLicense11 = "http://hl7.org/fhir/spdx-license#APSL-1.1";
 
     /// <summary>
     /// Literal for code: ApplePublicSourceLicense12
@@ -3272,9 +3412,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralApplePublicSourceLicense12 = "APSL-1.2";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseApplePublicSourceLicense12
+    /// </summary>
+    public const string LiteralSpdxLicenseApplePublicSourceLicense12 = "http://hl7.org/fhir/spdx-license#APSL-1.2";
+
+    /// <summary>
     /// Literal for code: ApplePublicSourceLicense20
     /// </summary>
     public const string LiteralApplePublicSourceLicense20 = "APSL-2.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseApplePublicSourceLicense20
+    /// </summary>
+    public const string LiteralSpdxLicenseApplePublicSourceLicense20 = "http://hl7.org/fhir/spdx-license#APSL-2.0";
 
     /// <summary>
     /// Literal for code: ArtisticLicense10
@@ -3282,9 +3432,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArtisticLicense10 = "Artistic-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseArtisticLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseArtisticLicense10 = "http://hl7.org/fhir/spdx-license#Artistic-1.0";
+
+    /// <summary>
     /// Literal for code: ArtisticLicense10WClause8
     /// </summary>
     public const string LiteralArtisticLicense10WClause8 = "Artistic-1.0-cl8";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseArtisticLicense10WClause8
+    /// </summary>
+    public const string LiteralSpdxLicenseArtisticLicense10WClause8 = "http://hl7.org/fhir/spdx-license#Artistic-1.0-cl8";
 
     /// <summary>
     /// Literal for code: ArtisticLicense10Perl
@@ -3292,9 +3452,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArtisticLicense10Perl = "Artistic-1.0-Perl";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseArtisticLicense10Perl
+    /// </summary>
+    public const string LiteralSpdxLicenseArtisticLicense10Perl = "http://hl7.org/fhir/spdx-license#Artistic-1.0-Perl";
+
+    /// <summary>
     /// Literal for code: ArtisticLicense20
     /// </summary>
     public const string LiteralArtisticLicense20 = "Artistic-2.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseArtisticLicense20
+    /// </summary>
+    public const string LiteralSpdxLicenseArtisticLicense20 = "http://hl7.org/fhir/spdx-license#Artistic-2.0";
 
     /// <summary>
     /// Literal for code: BahyphLicense
@@ -3302,9 +3472,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBahyphLicense = "Bahyph";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseBahyphLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseBahyphLicense = "http://hl7.org/fhir/spdx-license#Bahyph";
+
+    /// <summary>
     /// Literal for code: BarrLicense
     /// </summary>
     public const string LiteralBarrLicense = "Barr";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseBarrLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseBarrLicense = "http://hl7.org/fhir/spdx-license#Barr";
 
     /// <summary>
     /// Literal for code: BeerwareLicense
@@ -3312,9 +3492,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBeerwareLicense = "Beerware";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseBeerwareLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseBeerwareLicense = "http://hl7.org/fhir/spdx-license#Beerware";
+
+    /// <summary>
     /// Literal for code: BitTorrentOpenSourceLicenseV10
     /// </summary>
     public const string LiteralBitTorrentOpenSourceLicenseV10 = "BitTorrent-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseBitTorrentOpenSourceLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseBitTorrentOpenSourceLicenseV10 = "http://hl7.org/fhir/spdx-license#BitTorrent-1.0";
 
     /// <summary>
     /// Literal for code: BitTorrentOpenSourceLicenseV11
@@ -3322,9 +3512,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBitTorrentOpenSourceLicenseV11 = "BitTorrent-1.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseBitTorrentOpenSourceLicenseV11
+    /// </summary>
+    public const string LiteralSpdxLicenseBitTorrentOpenSourceLicenseV11 = "http://hl7.org/fhir/spdx-license#BitTorrent-1.1";
+
+    /// <summary>
     /// Literal for code: BorceuxLicense
     /// </summary>
     public const string LiteralBorceuxLicense = "Borceux";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseBorceuxLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseBorceuxLicense = "http://hl7.org/fhir/spdx-license#Borceux";
 
     /// <summary>
     /// Literal for code: BSD1ClauseLicense
@@ -3332,9 +3532,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBSD1ClauseLicense = "BSD-1-Clause";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseBSD1ClauseLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseBSD1ClauseLicense = "http://hl7.org/fhir/spdx-license#BSD-1-Clause";
+
+    /// <summary>
     /// Literal for code: BSD2ClauseQuotationSimplifiedQuotationLicense
     /// </summary>
     public const string LiteralBSD2ClauseQuotationSimplifiedQuotationLicense = "BSD-2-Clause";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseBSD2ClauseQuotationSimplifiedQuotationLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseBSD2ClauseQuotationSimplifiedQuotationLicense = "http://hl7.org/fhir/spdx-license#BSD-2-Clause";
 
     /// <summary>
     /// Literal for code: BSD2ClauseFreeBSDLicense
@@ -3342,9 +3552,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBSD2ClauseFreeBSDLicense = "BSD-2-Clause-FreeBSD";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseBSD2ClauseFreeBSDLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseBSD2ClauseFreeBSDLicense = "http://hl7.org/fhir/spdx-license#BSD-2-Clause-FreeBSD";
+
+    /// <summary>
     /// Literal for code: BSD2ClauseNetBSDLicense
     /// </summary>
     public const string LiteralBSD2ClauseNetBSDLicense = "BSD-2-Clause-NetBSD";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseBSD2ClauseNetBSDLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseBSD2ClauseNetBSDLicense = "http://hl7.org/fhir/spdx-license#BSD-2-Clause-NetBSD";
 
     /// <summary>
     /// Literal for code: BSD2ClausePlusPatentLicense
@@ -3352,9 +3572,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBSD2ClausePlusPatentLicense = "BSD-2-Clause-Patent";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseBSD2ClausePlusPatentLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseBSD2ClausePlusPatentLicense = "http://hl7.org/fhir/spdx-license#BSD-2-Clause-Patent";
+
+    /// <summary>
     /// Literal for code: BSD3ClauseQuotationNewQuotationOrQuotationRevisedQuotationLicense
     /// </summary>
     public const string LiteralBSD3ClauseQuotationNewQuotationOrQuotationRevisedQuotationLicense = "BSD-3-Clause";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseBSD3ClauseQuotationNewQuotationOrQuotationRevisedQuotationLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseBSD3ClauseQuotationNewQuotationOrQuotationRevisedQuotationLicense = "http://hl7.org/fhir/spdx-license#BSD-3-Clause";
 
     /// <summary>
     /// Literal for code: BSDWithAttribution
@@ -3362,9 +3592,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBSDWithAttribution = "BSD-3-Clause-Attribution";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseBSDWithAttribution
+    /// </summary>
+    public const string LiteralSpdxLicenseBSDWithAttribution = "http://hl7.org/fhir/spdx-license#BSD-3-Clause-Attribution";
+
+    /// <summary>
     /// Literal for code: BSD3ClauseClearLicense
     /// </summary>
     public const string LiteralBSD3ClauseClearLicense = "BSD-3-Clause-Clear";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseBSD3ClauseClearLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseBSD3ClauseClearLicense = "http://hl7.org/fhir/spdx-license#BSD-3-Clause-Clear";
 
     /// <summary>
     /// Literal for code: LawrenceBerkeleyNationalLabsBSDVariantLicense
@@ -3372,9 +3612,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLawrenceBerkeleyNationalLabsBSDVariantLicense = "BSD-3-Clause-LBNL";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseLawrenceBerkeleyNationalLabsBSDVariantLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseLawrenceBerkeleyNationalLabsBSDVariantLicense = "http://hl7.org/fhir/spdx-license#BSD-3-Clause-LBNL";
+
+    /// <summary>
     /// Literal for code: BSD3ClauseNoNuclearLicense
     /// </summary>
     public const string LiteralBSD3ClauseNoNuclearLicense = "BSD-3-Clause-No-Nuclear-License";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseBSD3ClauseNoNuclearLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseBSD3ClauseNoNuclearLicense = "http://hl7.org/fhir/spdx-license#BSD-3-Clause-No-Nuclear-License";
 
     /// <summary>
     /// Literal for code: BSD3ClauseNoNuclearLicense2014
@@ -3382,9 +3632,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBSD3ClauseNoNuclearLicense2014 = "BSD-3-Clause-No-Nuclear-License-2014";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseBSD3ClauseNoNuclearLicense2014
+    /// </summary>
+    public const string LiteralSpdxLicenseBSD3ClauseNoNuclearLicense2014 = "http://hl7.org/fhir/spdx-license#BSD-3-Clause-No-Nuclear-License-2014";
+
+    /// <summary>
     /// Literal for code: BSD3ClauseNoNuclearWarranty
     /// </summary>
     public const string LiteralBSD3ClauseNoNuclearWarranty = "BSD-3-Clause-No-Nuclear-Warranty";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseBSD3ClauseNoNuclearWarranty
+    /// </summary>
+    public const string LiteralSpdxLicenseBSD3ClauseNoNuclearWarranty = "http://hl7.org/fhir/spdx-license#BSD-3-Clause-No-Nuclear-Warranty";
 
     /// <summary>
     /// Literal for code: BSD4ClauseQuotationOriginalQuotationOrQuotationOldQuotationLicense
@@ -3392,9 +3652,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBSD4ClauseQuotationOriginalQuotationOrQuotationOldQuotationLicense = "BSD-4-Clause";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseBSD4ClauseQuotationOriginalQuotationOrQuotationOldQuotationLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseBSD4ClauseQuotationOriginalQuotationOrQuotationOldQuotationLicense = "http://hl7.org/fhir/spdx-license#BSD-4-Clause";
+
+    /// <summary>
     /// Literal for code: BSD4ClauseUniversityOfCaliforniaSpecific
     /// </summary>
     public const string LiteralBSD4ClauseUniversityOfCaliforniaSpecific = "BSD-4-Clause-UC";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseBSD4ClauseUniversityOfCaliforniaSpecific
+    /// </summary>
+    public const string LiteralSpdxLicenseBSD4ClauseUniversityOfCaliforniaSpecific = "http://hl7.org/fhir/spdx-license#BSD-4-Clause-UC";
 
     /// <summary>
     /// Literal for code: BSDProtectionLicense
@@ -3402,9 +3672,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBSDProtectionLicense = "BSD-Protection";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseBSDProtectionLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseBSDProtectionLicense = "http://hl7.org/fhir/spdx-license#BSD-Protection";
+
+    /// <summary>
     /// Literal for code: BSDSourceCodeAttribution
     /// </summary>
     public const string LiteralBSDSourceCodeAttribution = "BSD-Source-Code";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseBSDSourceCodeAttribution
+    /// </summary>
+    public const string LiteralSpdxLicenseBSDSourceCodeAttribution = "http://hl7.org/fhir/spdx-license#BSD-Source-Code";
 
     /// <summary>
     /// Literal for code: BoostSoftwareLicense10
@@ -3412,9 +3692,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBoostSoftwareLicense10 = "BSL-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseBoostSoftwareLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseBoostSoftwareLicense10 = "http://hl7.org/fhir/spdx-license#BSL-1.0";
+
+    /// <summary>
     /// Literal for code: Bzip2AndLibbzip2LicenseV105
     /// </summary>
     public const string LiteralBzip2AndLibbzip2LicenseV105 = "bzip2-1.0.5";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseBzip2AndLibbzip2LicenseV105
+    /// </summary>
+    public const string LiteralSpdxLicenseBzip2AndLibbzip2LicenseV105 = "http://hl7.org/fhir/spdx-license#bzip2-1.0.5";
 
     /// <summary>
     /// Literal for code: Bzip2AndLibbzip2LicenseV106
@@ -3422,9 +3712,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBzip2AndLibbzip2LicenseV106 = "bzip2-1.0.6";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseBzip2AndLibbzip2LicenseV106
+    /// </summary>
+    public const string LiteralSpdxLicenseBzip2AndLibbzip2LicenseV106 = "http://hl7.org/fhir/spdx-license#bzip2-1.0.6";
+
+    /// <summary>
     /// Literal for code: CalderaLicense
     /// </summary>
     public const string LiteralCalderaLicense = "Caldera";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCalderaLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseCalderaLicense = "http://hl7.org/fhir/spdx-license#Caldera";
 
     /// <summary>
     /// Literal for code: ComputerAssociatesTrustedOpenSourceLicense11
@@ -3432,9 +3732,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralComputerAssociatesTrustedOpenSourceLicense11 = "CATOSL-1.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseComputerAssociatesTrustedOpenSourceLicense11
+    /// </summary>
+    public const string LiteralSpdxLicenseComputerAssociatesTrustedOpenSourceLicense11 = "http://hl7.org/fhir/spdx-license#CATOSL-1.1";
+
+    /// <summary>
     /// Literal for code: CreativeCommonsAttribution10Generic
     /// </summary>
     public const string LiteralCreativeCommonsAttribution10Generic = "CC-BY-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttribution10Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttribution10Generic = "http://hl7.org/fhir/spdx-license#CC-BY-1.0";
 
     /// <summary>
     /// Literal for code: CreativeCommonsAttribution20Generic
@@ -3442,9 +3752,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCreativeCommonsAttribution20Generic = "CC-BY-2.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttribution20Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttribution20Generic = "http://hl7.org/fhir/spdx-license#CC-BY-2.0";
+
+    /// <summary>
     /// Literal for code: CreativeCommonsAttribution25Generic
     /// </summary>
     public const string LiteralCreativeCommonsAttribution25Generic = "CC-BY-2.5";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttribution25Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttribution25Generic = "http://hl7.org/fhir/spdx-license#CC-BY-2.5";
 
     /// <summary>
     /// Literal for code: CreativeCommonsAttribution30Unported
@@ -3452,9 +3772,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCreativeCommonsAttribution30Unported = "CC-BY-3.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttribution30Unported
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttribution30Unported = "http://hl7.org/fhir/spdx-license#CC-BY-3.0";
+
+    /// <summary>
     /// Literal for code: CreativeCommonsAttribution40International
     /// </summary>
     public const string LiteralCreativeCommonsAttribution40International = "CC-BY-4.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttribution40International
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttribution40International = "http://hl7.org/fhir/spdx-license#CC-BY-4.0";
 
     /// <summary>
     /// Literal for code: CreativeCommonsAttributionNonCommercial10Generic
@@ -3462,9 +3792,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCreativeCommonsAttributionNonCommercial10Generic = "CC-BY-NC-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNonCommercial10Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNonCommercial10Generic = "http://hl7.org/fhir/spdx-license#CC-BY-NC-1.0";
+
+    /// <summary>
     /// Literal for code: CreativeCommonsAttributionNonCommercial20Generic
     /// </summary>
     public const string LiteralCreativeCommonsAttributionNonCommercial20Generic = "CC-BY-NC-2.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNonCommercial20Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNonCommercial20Generic = "http://hl7.org/fhir/spdx-license#CC-BY-NC-2.0";
 
     /// <summary>
     /// Literal for code: CreativeCommonsAttributionNonCommercial25Generic
@@ -3472,9 +3812,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCreativeCommonsAttributionNonCommercial25Generic = "CC-BY-NC-2.5";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNonCommercial25Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNonCommercial25Generic = "http://hl7.org/fhir/spdx-license#CC-BY-NC-2.5";
+
+    /// <summary>
     /// Literal for code: CreativeCommonsAttributionNonCommercial30Unported
     /// </summary>
     public const string LiteralCreativeCommonsAttributionNonCommercial30Unported = "CC-BY-NC-3.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNonCommercial30Unported
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNonCommercial30Unported = "http://hl7.org/fhir/spdx-license#CC-BY-NC-3.0";
 
     /// <summary>
     /// Literal for code: CreativeCommonsAttributionNonCommercial40International
@@ -3482,9 +3832,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCreativeCommonsAttributionNonCommercial40International = "CC-BY-NC-4.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNonCommercial40International
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNonCommercial40International = "http://hl7.org/fhir/spdx-license#CC-BY-NC-4.0";
+
+    /// <summary>
     /// Literal for code: CreativeCommonsAttributionNonCommercialNoDerivatives10Generic
     /// </summary>
     public const string LiteralCreativeCommonsAttributionNonCommercialNoDerivatives10Generic = "CC-BY-NC-ND-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNonCommercialNoDerivatives10Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNonCommercialNoDerivatives10Generic = "http://hl7.org/fhir/spdx-license#CC-BY-NC-ND-1.0";
 
     /// <summary>
     /// Literal for code: CreativeCommonsAttributionNonCommercialNoDerivatives20Generic
@@ -3492,9 +3852,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCreativeCommonsAttributionNonCommercialNoDerivatives20Generic = "CC-BY-NC-ND-2.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNonCommercialNoDerivatives20Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNonCommercialNoDerivatives20Generic = "http://hl7.org/fhir/spdx-license#CC-BY-NC-ND-2.0";
+
+    /// <summary>
     /// Literal for code: CreativeCommonsAttributionNonCommercialNoDerivatives25Generic
     /// </summary>
     public const string LiteralCreativeCommonsAttributionNonCommercialNoDerivatives25Generic = "CC-BY-NC-ND-2.5";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNonCommercialNoDerivatives25Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNonCommercialNoDerivatives25Generic = "http://hl7.org/fhir/spdx-license#CC-BY-NC-ND-2.5";
 
     /// <summary>
     /// Literal for code: CreativeCommonsAttributionNonCommercialNoDerivatives30Unported
@@ -3502,9 +3872,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCreativeCommonsAttributionNonCommercialNoDerivatives30Unported = "CC-BY-NC-ND-3.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNonCommercialNoDerivatives30Unported
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNonCommercialNoDerivatives30Unported = "http://hl7.org/fhir/spdx-license#CC-BY-NC-ND-3.0";
+
+    /// <summary>
     /// Literal for code: CreativeCommonsAttributionNonCommercialNoDerivatives40International
     /// </summary>
     public const string LiteralCreativeCommonsAttributionNonCommercialNoDerivatives40International = "CC-BY-NC-ND-4.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNonCommercialNoDerivatives40International
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNonCommercialNoDerivatives40International = "http://hl7.org/fhir/spdx-license#CC-BY-NC-ND-4.0";
 
     /// <summary>
     /// Literal for code: CreativeCommonsAttributionNonCommercialShareAlike10Generic
@@ -3512,9 +3892,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCreativeCommonsAttributionNonCommercialShareAlike10Generic = "CC-BY-NC-SA-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNonCommercialShareAlike10Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNonCommercialShareAlike10Generic = "http://hl7.org/fhir/spdx-license#CC-BY-NC-SA-1.0";
+
+    /// <summary>
     /// Literal for code: CreativeCommonsAttributionNonCommercialShareAlike20Generic
     /// </summary>
     public const string LiteralCreativeCommonsAttributionNonCommercialShareAlike20Generic = "CC-BY-NC-SA-2.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNonCommercialShareAlike20Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNonCommercialShareAlike20Generic = "http://hl7.org/fhir/spdx-license#CC-BY-NC-SA-2.0";
 
     /// <summary>
     /// Literal for code: CreativeCommonsAttributionNonCommercialShareAlike25Generic
@@ -3522,9 +3912,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCreativeCommonsAttributionNonCommercialShareAlike25Generic = "CC-BY-NC-SA-2.5";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNonCommercialShareAlike25Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNonCommercialShareAlike25Generic = "http://hl7.org/fhir/spdx-license#CC-BY-NC-SA-2.5";
+
+    /// <summary>
     /// Literal for code: CreativeCommonsAttributionNonCommercialShareAlike30Unported
     /// </summary>
     public const string LiteralCreativeCommonsAttributionNonCommercialShareAlike30Unported = "CC-BY-NC-SA-3.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNonCommercialShareAlike30Unported
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNonCommercialShareAlike30Unported = "http://hl7.org/fhir/spdx-license#CC-BY-NC-SA-3.0";
 
     /// <summary>
     /// Literal for code: CreativeCommonsAttributionNonCommercialShareAlike40International
@@ -3532,9 +3932,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCreativeCommonsAttributionNonCommercialShareAlike40International = "CC-BY-NC-SA-4.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNonCommercialShareAlike40International
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNonCommercialShareAlike40International = "http://hl7.org/fhir/spdx-license#CC-BY-NC-SA-4.0";
+
+    /// <summary>
     /// Literal for code: CreativeCommonsAttributionNoDerivatives10Generic
     /// </summary>
     public const string LiteralCreativeCommonsAttributionNoDerivatives10Generic = "CC-BY-ND-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNoDerivatives10Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNoDerivatives10Generic = "http://hl7.org/fhir/spdx-license#CC-BY-ND-1.0";
 
     /// <summary>
     /// Literal for code: CreativeCommonsAttributionNoDerivatives20Generic
@@ -3542,9 +3952,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCreativeCommonsAttributionNoDerivatives20Generic = "CC-BY-ND-2.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNoDerivatives20Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNoDerivatives20Generic = "http://hl7.org/fhir/spdx-license#CC-BY-ND-2.0";
+
+    /// <summary>
     /// Literal for code: CreativeCommonsAttributionNoDerivatives25Generic
     /// </summary>
     public const string LiteralCreativeCommonsAttributionNoDerivatives25Generic = "CC-BY-ND-2.5";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNoDerivatives25Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNoDerivatives25Generic = "http://hl7.org/fhir/spdx-license#CC-BY-ND-2.5";
 
     /// <summary>
     /// Literal for code: CreativeCommonsAttributionNoDerivatives30Unported
@@ -3552,9 +3972,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCreativeCommonsAttributionNoDerivatives30Unported = "CC-BY-ND-3.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNoDerivatives30Unported
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNoDerivatives30Unported = "http://hl7.org/fhir/spdx-license#CC-BY-ND-3.0";
+
+    /// <summary>
     /// Literal for code: CreativeCommonsAttributionNoDerivatives40International
     /// </summary>
     public const string LiteralCreativeCommonsAttributionNoDerivatives40International = "CC-BY-ND-4.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionNoDerivatives40International
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionNoDerivatives40International = "http://hl7.org/fhir/spdx-license#CC-BY-ND-4.0";
 
     /// <summary>
     /// Literal for code: CreativeCommonsAttributionShareAlike10Generic
@@ -3562,9 +3992,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCreativeCommonsAttributionShareAlike10Generic = "CC-BY-SA-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionShareAlike10Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionShareAlike10Generic = "http://hl7.org/fhir/spdx-license#CC-BY-SA-1.0";
+
+    /// <summary>
     /// Literal for code: CreativeCommonsAttributionShareAlike20Generic
     /// </summary>
     public const string LiteralCreativeCommonsAttributionShareAlike20Generic = "CC-BY-SA-2.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionShareAlike20Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionShareAlike20Generic = "http://hl7.org/fhir/spdx-license#CC-BY-SA-2.0";
 
     /// <summary>
     /// Literal for code: CreativeCommonsAttributionShareAlike25Generic
@@ -3572,9 +4012,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCreativeCommonsAttributionShareAlike25Generic = "CC-BY-SA-2.5";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionShareAlike25Generic
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionShareAlike25Generic = "http://hl7.org/fhir/spdx-license#CC-BY-SA-2.5";
+
+    /// <summary>
     /// Literal for code: CreativeCommonsAttributionShareAlike30Unported
     /// </summary>
     public const string LiteralCreativeCommonsAttributionShareAlike30Unported = "CC-BY-SA-3.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionShareAlike30Unported
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionShareAlike30Unported = "http://hl7.org/fhir/spdx-license#CC-BY-SA-3.0";
 
     /// <summary>
     /// Literal for code: CreativeCommonsAttributionShareAlike40International
@@ -3582,9 +4032,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCreativeCommonsAttributionShareAlike40International = "CC-BY-SA-4.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsAttributionShareAlike40International
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsAttributionShareAlike40International = "http://hl7.org/fhir/spdx-license#CC-BY-SA-4.0";
+
+    /// <summary>
     /// Literal for code: CreativeCommonsZeroV10Universal
     /// </summary>
     public const string LiteralCreativeCommonsZeroV10Universal = "CC0-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCreativeCommonsZeroV10Universal
+    /// </summary>
+    public const string LiteralSpdxLicenseCreativeCommonsZeroV10Universal = "http://hl7.org/fhir/spdx-license#CC0-1.0";
 
     /// <summary>
     /// Literal for code: CommonDevelopmentAndDistributionLicense10
@@ -3592,9 +4052,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommonDevelopmentAndDistributionLicense10 = "CDDL-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCommonDevelopmentAndDistributionLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseCommonDevelopmentAndDistributionLicense10 = "http://hl7.org/fhir/spdx-license#CDDL-1.0";
+
+    /// <summary>
     /// Literal for code: CommonDevelopmentAndDistributionLicense11
     /// </summary>
     public const string LiteralCommonDevelopmentAndDistributionLicense11 = "CDDL-1.1";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCommonDevelopmentAndDistributionLicense11
+    /// </summary>
+    public const string LiteralSpdxLicenseCommonDevelopmentAndDistributionLicense11 = "http://hl7.org/fhir/spdx-license#CDDL-1.1";
 
     /// <summary>
     /// Literal for code: CommunityDataLicenseAgreementPermissive10
@@ -3602,9 +4072,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommunityDataLicenseAgreementPermissive10 = "CDLA-Permissive-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCommunityDataLicenseAgreementPermissive10
+    /// </summary>
+    public const string LiteralSpdxLicenseCommunityDataLicenseAgreementPermissive10 = "http://hl7.org/fhir/spdx-license#CDLA-Permissive-1.0";
+
+    /// <summary>
     /// Literal for code: CommunityDataLicenseAgreementSharing10
     /// </summary>
     public const string LiteralCommunityDataLicenseAgreementSharing10 = "CDLA-Sharing-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCommunityDataLicenseAgreementSharing10
+    /// </summary>
+    public const string LiteralSpdxLicenseCommunityDataLicenseAgreementSharing10 = "http://hl7.org/fhir/spdx-license#CDLA-Sharing-1.0";
 
     /// <summary>
     /// Literal for code: CeCILLFreeSoftwareLicenseAgreementV10
@@ -3612,9 +4092,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCeCILLFreeSoftwareLicenseAgreementV10 = "CECILL-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCeCILLFreeSoftwareLicenseAgreementV10
+    /// </summary>
+    public const string LiteralSpdxLicenseCeCILLFreeSoftwareLicenseAgreementV10 = "http://hl7.org/fhir/spdx-license#CECILL-1.0";
+
+    /// <summary>
     /// Literal for code: CeCILLFreeSoftwareLicenseAgreementV11
     /// </summary>
     public const string LiteralCeCILLFreeSoftwareLicenseAgreementV11 = "CECILL-1.1";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCeCILLFreeSoftwareLicenseAgreementV11
+    /// </summary>
+    public const string LiteralSpdxLicenseCeCILLFreeSoftwareLicenseAgreementV11 = "http://hl7.org/fhir/spdx-license#CECILL-1.1";
 
     /// <summary>
     /// Literal for code: CeCILLFreeSoftwareLicenseAgreementV20
@@ -3622,9 +4112,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCeCILLFreeSoftwareLicenseAgreementV20 = "CECILL-2.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCeCILLFreeSoftwareLicenseAgreementV20
+    /// </summary>
+    public const string LiteralSpdxLicenseCeCILLFreeSoftwareLicenseAgreementV20 = "http://hl7.org/fhir/spdx-license#CECILL-2.0";
+
+    /// <summary>
     /// Literal for code: CeCILLFreeSoftwareLicenseAgreementV21
     /// </summary>
     public const string LiteralCeCILLFreeSoftwareLicenseAgreementV21 = "CECILL-2.1";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCeCILLFreeSoftwareLicenseAgreementV21
+    /// </summary>
+    public const string LiteralSpdxLicenseCeCILLFreeSoftwareLicenseAgreementV21 = "http://hl7.org/fhir/spdx-license#CECILL-2.1";
 
     /// <summary>
     /// Literal for code: CeCILLBFreeSoftwareLicenseAgreement
@@ -3632,9 +4132,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCeCILLBFreeSoftwareLicenseAgreement = "CECILL-B";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCeCILLBFreeSoftwareLicenseAgreement
+    /// </summary>
+    public const string LiteralSpdxLicenseCeCILLBFreeSoftwareLicenseAgreement = "http://hl7.org/fhir/spdx-license#CECILL-B";
+
+    /// <summary>
     /// Literal for code: CeCILLCFreeSoftwareLicenseAgreement
     /// </summary>
     public const string LiteralCeCILLCFreeSoftwareLicenseAgreement = "CECILL-C";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCeCILLCFreeSoftwareLicenseAgreement
+    /// </summary>
+    public const string LiteralSpdxLicenseCeCILLCFreeSoftwareLicenseAgreement = "http://hl7.org/fhir/spdx-license#CECILL-C";
 
     /// <summary>
     /// Literal for code: ClarifiedArtisticLicense
@@ -3642,9 +4152,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClarifiedArtisticLicense = "ClArtistic";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseClarifiedArtisticLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseClarifiedArtisticLicense = "http://hl7.org/fhir/spdx-license#ClArtistic";
+
+    /// <summary>
     /// Literal for code: CNRIJythonLicense
     /// </summary>
     public const string LiteralCNRIJythonLicense = "CNRI-Jython";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCNRIJythonLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseCNRIJythonLicense = "http://hl7.org/fhir/spdx-license#CNRI-Jython";
 
     /// <summary>
     /// Literal for code: CNRIPythonLicense
@@ -3652,9 +4172,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCNRIPythonLicense = "CNRI-Python";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCNRIPythonLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseCNRIPythonLicense = "http://hl7.org/fhir/spdx-license#CNRI-Python";
+
+    /// <summary>
     /// Literal for code: CNRIPythonOpenSourceGPLCompatibleLicenseAgreement
     /// </summary>
     public const string LiteralCNRIPythonOpenSourceGPLCompatibleLicenseAgreement = "CNRI-Python-GPL-Compatible";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCNRIPythonOpenSourceGPLCompatibleLicenseAgreement
+    /// </summary>
+    public const string LiteralSpdxLicenseCNRIPythonOpenSourceGPLCompatibleLicenseAgreement = "http://hl7.org/fhir/spdx-license#CNRI-Python-GPL-Compatible";
 
     /// <summary>
     /// Literal for code: CondorPublicLicenseV11
@@ -3662,9 +4192,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCondorPublicLicenseV11 = "Condor-1.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCondorPublicLicenseV11
+    /// </summary>
+    public const string LiteralSpdxLicenseCondorPublicLicenseV11 = "http://hl7.org/fhir/spdx-license#Condor-1.1";
+
+    /// <summary>
     /// Literal for code: CommonPublicAttributionLicense10
     /// </summary>
     public const string LiteralCommonPublicAttributionLicense10 = "CPAL-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCommonPublicAttributionLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseCommonPublicAttributionLicense10 = "http://hl7.org/fhir/spdx-license#CPAL-1.0";
 
     /// <summary>
     /// Literal for code: CommonPublicLicense10
@@ -3672,9 +4212,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommonPublicLicense10 = "CPL-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCommonPublicLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseCommonPublicLicense10 = "http://hl7.org/fhir/spdx-license#CPL-1.0";
+
+    /// <summary>
     /// Literal for code: CodeProjectOpenLicense102
     /// </summary>
     public const string LiteralCodeProjectOpenLicense102 = "CPOL-1.02";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCodeProjectOpenLicense102
+    /// </summary>
+    public const string LiteralSpdxLicenseCodeProjectOpenLicense102 = "http://hl7.org/fhir/spdx-license#CPOL-1.02";
 
     /// <summary>
     /// Literal for code: CrosswordLicense
@@ -3682,9 +4232,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCrosswordLicense = "Crossword";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCrosswordLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseCrosswordLicense = "http://hl7.org/fhir/spdx-license#Crossword";
+
+    /// <summary>
     /// Literal for code: CrystalStackerLicense
     /// </summary>
     public const string LiteralCrystalStackerLicense = "CrystalStacker";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCrystalStackerLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseCrystalStackerLicense = "http://hl7.org/fhir/spdx-license#CrystalStacker";
 
     /// <summary>
     /// Literal for code: CUAOfficePublicLicenseV10
@@ -3692,9 +4252,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCUAOfficePublicLicenseV10 = "CUA-OPL-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCUAOfficePublicLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseCUAOfficePublicLicenseV10 = "http://hl7.org/fhir/spdx-license#CUA-OPL-1.0";
+
+    /// <summary>
     /// Literal for code: CubeLicense
     /// </summary>
     public const string LiteralCubeLicense = "Cube";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseCubeLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseCubeLicense = "http://hl7.org/fhir/spdx-license#Cube";
 
     /// <summary>
     /// Literal for code: CurlLicense
@@ -3702,9 +4272,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCurlLicense = "curl";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCurlLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseCurlLicense = "http://hl7.org/fhir/spdx-license#curl";
+
+    /// <summary>
     /// Literal for code: DeutscheFreieSoftwareLizenz
     /// </summary>
     public const string LiteralDeutscheFreieSoftwareLizenz = "D-FSL-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseDeutscheFreieSoftwareLizenz
+    /// </summary>
+    public const string LiteralSpdxLicenseDeutscheFreieSoftwareLizenz = "http://hl7.org/fhir/spdx-license#D-FSL-1.0";
 
     /// <summary>
     /// Literal for code: DiffmarkLicense
@@ -3712,9 +4292,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiffmarkLicense = "diffmark";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseDiffmarkLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseDiffmarkLicense = "http://hl7.org/fhir/spdx-license#diffmark";
+
+    /// <summary>
     /// Literal for code: DOCLicense
     /// </summary>
     public const string LiteralDOCLicense = "DOC";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseDOCLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseDOCLicense = "http://hl7.org/fhir/spdx-license#DOC";
 
     /// <summary>
     /// Literal for code: DotseqnLicense
@@ -3722,9 +4312,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDotseqnLicense = "Dotseqn";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseDotseqnLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseDotseqnLicense = "http://hl7.org/fhir/spdx-license#Dotseqn";
+
+    /// <summary>
     /// Literal for code: DSDPLicense
     /// </summary>
     public const string LiteralDSDPLicense = "DSDP";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseDSDPLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseDSDPLicense = "http://hl7.org/fhir/spdx-license#DSDP";
 
     /// <summary>
     /// Literal for code: DvipdfmLicense
@@ -3732,9 +4332,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDvipdfmLicense = "dvipdfm";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseDvipdfmLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseDvipdfmLicense = "http://hl7.org/fhir/spdx-license#dvipdfm";
+
+    /// <summary>
     /// Literal for code: EducationalCommunityLicenseV10
     /// </summary>
     public const string LiteralEducationalCommunityLicenseV10 = "ECL-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseEducationalCommunityLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseEducationalCommunityLicenseV10 = "http://hl7.org/fhir/spdx-license#ECL-1.0";
 
     /// <summary>
     /// Literal for code: EducationalCommunityLicenseV20
@@ -3742,9 +4352,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEducationalCommunityLicenseV20 = "ECL-2.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseEducationalCommunityLicenseV20
+    /// </summary>
+    public const string LiteralSpdxLicenseEducationalCommunityLicenseV20 = "http://hl7.org/fhir/spdx-license#ECL-2.0";
+
+    /// <summary>
     /// Literal for code: EiffelForumLicenseV10
     /// </summary>
     public const string LiteralEiffelForumLicenseV10 = "EFL-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseEiffelForumLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseEiffelForumLicenseV10 = "http://hl7.org/fhir/spdx-license#EFL-1.0";
 
     /// <summary>
     /// Literal for code: EiffelForumLicenseV20
@@ -3752,9 +4372,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEiffelForumLicenseV20 = "EFL-2.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseEiffelForumLicenseV20
+    /// </summary>
+    public const string LiteralSpdxLicenseEiffelForumLicenseV20 = "http://hl7.org/fhir/spdx-license#EFL-2.0";
+
+    /// <summary>
     /// Literal for code: EGenixComPublicLicense110
     /// </summary>
     public const string LiteralEGenixComPublicLicense110 = "eGenix";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseEGenixComPublicLicense110
+    /// </summary>
+    public const string LiteralSpdxLicenseEGenixComPublicLicense110 = "http://hl7.org/fhir/spdx-license#eGenix";
 
     /// <summary>
     /// Literal for code: EntessaPublicLicenseV10
@@ -3762,9 +4392,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEntessaPublicLicenseV10 = "Entessa";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseEntessaPublicLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseEntessaPublicLicenseV10 = "http://hl7.org/fhir/spdx-license#Entessa";
+
+    /// <summary>
     /// Literal for code: EclipsePublicLicense10
     /// </summary>
     public const string LiteralEclipsePublicLicense10 = "EPL-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseEclipsePublicLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseEclipsePublicLicense10 = "http://hl7.org/fhir/spdx-license#EPL-1.0";
 
     /// <summary>
     /// Literal for code: EclipsePublicLicense20
@@ -3772,9 +4412,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEclipsePublicLicense20 = "EPL-2.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseEclipsePublicLicense20
+    /// </summary>
+    public const string LiteralSpdxLicenseEclipsePublicLicense20 = "http://hl7.org/fhir/spdx-license#EPL-2.0";
+
+    /// <summary>
     /// Literal for code: ErlangPublicLicenseV11
     /// </summary>
     public const string LiteralErlangPublicLicenseV11 = "ErlPL-1.1";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseErlangPublicLicenseV11
+    /// </summary>
+    public const string LiteralSpdxLicenseErlangPublicLicenseV11 = "http://hl7.org/fhir/spdx-license#ErlPL-1.1";
 
     /// <summary>
     /// Literal for code: EUDataGridSoftwareLicense
@@ -3782,9 +4432,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEUDataGridSoftwareLicense = "EUDatagrid";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseEUDataGridSoftwareLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseEUDataGridSoftwareLicense = "http://hl7.org/fhir/spdx-license#EUDatagrid";
+
+    /// <summary>
     /// Literal for code: EuropeanUnionPublicLicense10
     /// </summary>
     public const string LiteralEuropeanUnionPublicLicense10 = "EUPL-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseEuropeanUnionPublicLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseEuropeanUnionPublicLicense10 = "http://hl7.org/fhir/spdx-license#EUPL-1.0";
 
     /// <summary>
     /// Literal for code: EuropeanUnionPublicLicense11
@@ -3792,9 +4452,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEuropeanUnionPublicLicense11 = "EUPL-1.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseEuropeanUnionPublicLicense11
+    /// </summary>
+    public const string LiteralSpdxLicenseEuropeanUnionPublicLicense11 = "http://hl7.org/fhir/spdx-license#EUPL-1.1";
+
+    /// <summary>
     /// Literal for code: EuropeanUnionPublicLicense12
     /// </summary>
     public const string LiteralEuropeanUnionPublicLicense12 = "EUPL-1.2";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseEuropeanUnionPublicLicense12
+    /// </summary>
+    public const string LiteralSpdxLicenseEuropeanUnionPublicLicense12 = "http://hl7.org/fhir/spdx-license#EUPL-1.2";
 
     /// <summary>
     /// Literal for code: EurosymLicense
@@ -3802,9 +4472,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEurosymLicense = "Eurosym";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseEurosymLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseEurosymLicense = "http://hl7.org/fhir/spdx-license#Eurosym";
+
+    /// <summary>
     /// Literal for code: FairLicense
     /// </summary>
     public const string LiteralFairLicense = "Fair";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseFairLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseFairLicense = "http://hl7.org/fhir/spdx-license#Fair";
 
     /// <summary>
     /// Literal for code: FrameworxOpenLicense10
@@ -3812,9 +4492,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFrameworxOpenLicense10 = "Frameworx-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseFrameworxOpenLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseFrameworxOpenLicense10 = "http://hl7.org/fhir/spdx-license#Frameworx-1.0";
+
+    /// <summary>
     /// Literal for code: FreeImagePublicLicenseV10
     /// </summary>
     public const string LiteralFreeImagePublicLicenseV10 = "FreeImage";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseFreeImagePublicLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseFreeImagePublicLicenseV10 = "http://hl7.org/fhir/spdx-license#FreeImage";
 
     /// <summary>
     /// Literal for code: FSFAllPermissiveLicense
@@ -3822,9 +4512,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFSFAllPermissiveLicense = "FSFAP";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseFSFAllPermissiveLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseFSFAllPermissiveLicense = "http://hl7.org/fhir/spdx-license#FSFAP";
+
+    /// <summary>
     /// Literal for code: FSFUnlimitedLicense
     /// </summary>
     public const string LiteralFSFUnlimitedLicense = "FSFUL";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseFSFUnlimitedLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseFSFUnlimitedLicense = "http://hl7.org/fhir/spdx-license#FSFUL";
 
     /// <summary>
     /// Literal for code: FSFUnlimitedLicenseWithLicenseRetention
@@ -3832,9 +4532,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFSFUnlimitedLicenseWithLicenseRetention = "FSFULLR";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseFSFUnlimitedLicenseWithLicenseRetention
+    /// </summary>
+    public const string LiteralSpdxLicenseFSFUnlimitedLicenseWithLicenseRetention = "http://hl7.org/fhir/spdx-license#FSFULLR";
+
+    /// <summary>
     /// Literal for code: FreetypeProjectLicense
     /// </summary>
     public const string LiteralFreetypeProjectLicense = "FTL";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseFreetypeProjectLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseFreetypeProjectLicense = "http://hl7.org/fhir/spdx-license#FTL";
 
     /// <summary>
     /// Literal for code: GNUFreeDocumentationLicenseV11Only
@@ -3842,9 +4552,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGNUFreeDocumentationLicenseV11Only = "GFDL-1.1-only";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseGNUFreeDocumentationLicenseV11Only
+    /// </summary>
+    public const string LiteralSpdxLicenseGNUFreeDocumentationLicenseV11Only = "http://hl7.org/fhir/spdx-license#GFDL-1.1-only";
+
+    /// <summary>
     /// Literal for code: GNUFreeDocumentationLicenseV11OrLater
     /// </summary>
     public const string LiteralGNUFreeDocumentationLicenseV11OrLater = "GFDL-1.1-or-later";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseGNUFreeDocumentationLicenseV11OrLater
+    /// </summary>
+    public const string LiteralSpdxLicenseGNUFreeDocumentationLicenseV11OrLater = "http://hl7.org/fhir/spdx-license#GFDL-1.1-or-later";
 
     /// <summary>
     /// Literal for code: GNUFreeDocumentationLicenseV12Only
@@ -3852,9 +4572,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGNUFreeDocumentationLicenseV12Only = "GFDL-1.2-only";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseGNUFreeDocumentationLicenseV12Only
+    /// </summary>
+    public const string LiteralSpdxLicenseGNUFreeDocumentationLicenseV12Only = "http://hl7.org/fhir/spdx-license#GFDL-1.2-only";
+
+    /// <summary>
     /// Literal for code: GNUFreeDocumentationLicenseV12OrLater
     /// </summary>
     public const string LiteralGNUFreeDocumentationLicenseV12OrLater = "GFDL-1.2-or-later";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseGNUFreeDocumentationLicenseV12OrLater
+    /// </summary>
+    public const string LiteralSpdxLicenseGNUFreeDocumentationLicenseV12OrLater = "http://hl7.org/fhir/spdx-license#GFDL-1.2-or-later";
 
     /// <summary>
     /// Literal for code: GNUFreeDocumentationLicenseV13Only
@@ -3862,9 +4592,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGNUFreeDocumentationLicenseV13Only = "GFDL-1.3-only";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseGNUFreeDocumentationLicenseV13Only
+    /// </summary>
+    public const string LiteralSpdxLicenseGNUFreeDocumentationLicenseV13Only = "http://hl7.org/fhir/spdx-license#GFDL-1.3-only";
+
+    /// <summary>
     /// Literal for code: GNUFreeDocumentationLicenseV13OrLater
     /// </summary>
     public const string LiteralGNUFreeDocumentationLicenseV13OrLater = "GFDL-1.3-or-later";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseGNUFreeDocumentationLicenseV13OrLater
+    /// </summary>
+    public const string LiteralSpdxLicenseGNUFreeDocumentationLicenseV13OrLater = "http://hl7.org/fhir/spdx-license#GFDL-1.3-or-later";
 
     /// <summary>
     /// Literal for code: GiftwareLicense
@@ -3872,9 +4612,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGiftwareLicense = "Giftware";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseGiftwareLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseGiftwareLicense = "http://hl7.org/fhir/spdx-license#Giftware";
+
+    /// <summary>
     /// Literal for code: GL2PSLicense
     /// </summary>
     public const string LiteralGL2PSLicense = "GL2PS";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseGL2PSLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseGL2PSLicense = "http://hl7.org/fhir/spdx-license#GL2PS";
 
     /// <summary>
     /// Literal for code: VAL3dfxGlideLicense
@@ -3882,9 +4632,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL3dfxGlideLicense = "Glide";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseVAL3dfxGlideLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseVAL3dfxGlideLicense = "http://hl7.org/fhir/spdx-license#Glide";
+
+    /// <summary>
     /// Literal for code: GlulxeLicense
     /// </summary>
     public const string LiteralGlulxeLicense = "Glulxe";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseGlulxeLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseGlulxeLicense = "http://hl7.org/fhir/spdx-license#Glulxe";
 
     /// <summary>
     /// Literal for code: GnuplotLicense
@@ -3892,9 +4652,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGnuplotLicense = "gnuplot";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseGnuplotLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseGnuplotLicense = "http://hl7.org/fhir/spdx-license#gnuplot";
+
+    /// <summary>
     /// Literal for code: GNUGeneralPublicLicenseV10Only
     /// </summary>
     public const string LiteralGNUGeneralPublicLicenseV10Only = "GPL-1.0-only";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseGNUGeneralPublicLicenseV10Only
+    /// </summary>
+    public const string LiteralSpdxLicenseGNUGeneralPublicLicenseV10Only = "http://hl7.org/fhir/spdx-license#GPL-1.0-only";
 
     /// <summary>
     /// Literal for code: GNUGeneralPublicLicenseV10OrLater
@@ -3902,9 +4672,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGNUGeneralPublicLicenseV10OrLater = "GPL-1.0-or-later";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseGNUGeneralPublicLicenseV10OrLater
+    /// </summary>
+    public const string LiteralSpdxLicenseGNUGeneralPublicLicenseV10OrLater = "http://hl7.org/fhir/spdx-license#GPL-1.0-or-later";
+
+    /// <summary>
     /// Literal for code: GNUGeneralPublicLicenseV20Only
     /// </summary>
     public const string LiteralGNUGeneralPublicLicenseV20Only = "GPL-2.0-only";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseGNUGeneralPublicLicenseV20Only
+    /// </summary>
+    public const string LiteralSpdxLicenseGNUGeneralPublicLicenseV20Only = "http://hl7.org/fhir/spdx-license#GPL-2.0-only";
 
     /// <summary>
     /// Literal for code: GNUGeneralPublicLicenseV20OrLater
@@ -3912,9 +4692,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGNUGeneralPublicLicenseV20OrLater = "GPL-2.0-or-later";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseGNUGeneralPublicLicenseV20OrLater
+    /// </summary>
+    public const string LiteralSpdxLicenseGNUGeneralPublicLicenseV20OrLater = "http://hl7.org/fhir/spdx-license#GPL-2.0-or-later";
+
+    /// <summary>
     /// Literal for code: GNUGeneralPublicLicenseV30Only
     /// </summary>
     public const string LiteralGNUGeneralPublicLicenseV30Only = "GPL-3.0-only";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseGNUGeneralPublicLicenseV30Only
+    /// </summary>
+    public const string LiteralSpdxLicenseGNUGeneralPublicLicenseV30Only = "http://hl7.org/fhir/spdx-license#GPL-3.0-only";
 
     /// <summary>
     /// Literal for code: GNUGeneralPublicLicenseV30OrLater
@@ -3922,9 +4712,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGNUGeneralPublicLicenseV30OrLater = "GPL-3.0-or-later";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseGNUGeneralPublicLicenseV30OrLater
+    /// </summary>
+    public const string LiteralSpdxLicenseGNUGeneralPublicLicenseV30OrLater = "http://hl7.org/fhir/spdx-license#GPL-3.0-or-later";
+
+    /// <summary>
     /// Literal for code: GSOAPPublicLicenseV13b
     /// </summary>
     public const string LiteralGSOAPPublicLicenseV13b = "gSOAP-1.3b";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseGSOAPPublicLicenseV13b
+    /// </summary>
+    public const string LiteralSpdxLicenseGSOAPPublicLicenseV13b = "http://hl7.org/fhir/spdx-license#gSOAP-1.3b";
 
     /// <summary>
     /// Literal for code: HaskellLanguageReportLicense
@@ -3932,9 +4732,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHaskellLanguageReportLicense = "HaskellReport";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseHaskellLanguageReportLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseHaskellLanguageReportLicense = "http://hl7.org/fhir/spdx-license#HaskellReport";
+
+    /// <summary>
     /// Literal for code: HistoricalPermissionNoticeAndDisclaimer
     /// </summary>
     public const string LiteralHistoricalPermissionNoticeAndDisclaimer = "HPND";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseHistoricalPermissionNoticeAndDisclaimer
+    /// </summary>
+    public const string LiteralSpdxLicenseHistoricalPermissionNoticeAndDisclaimer = "http://hl7.org/fhir/spdx-license#HPND";
 
     /// <summary>
     /// Literal for code: IBMPowerPCInitializationAndBootSoftware
@@ -3942,9 +4752,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIBMPowerPCInitializationAndBootSoftware = "IBM-pibs";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseIBMPowerPCInitializationAndBootSoftware
+    /// </summary>
+    public const string LiteralSpdxLicenseIBMPowerPCInitializationAndBootSoftware = "http://hl7.org/fhir/spdx-license#IBM-pibs";
+
+    /// <summary>
     /// Literal for code: ICULicense
     /// </summary>
     public const string LiteralICULicense = "ICU";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseICULicense
+    /// </summary>
+    public const string LiteralSpdxLicenseICULicense = "http://hl7.org/fhir/spdx-license#ICU";
 
     /// <summary>
     /// Literal for code: IndependentJPEGGroupLicense
@@ -3952,9 +4772,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIndependentJPEGGroupLicense = "IJG";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseIndependentJPEGGroupLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseIndependentJPEGGroupLicense = "http://hl7.org/fhir/spdx-license#IJG";
+
+    /// <summary>
     /// Literal for code: ImageMagickLicense
     /// </summary>
     public const string LiteralImageMagickLicense = "ImageMagick";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseImageMagickLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseImageMagickLicense = "http://hl7.org/fhir/spdx-license#ImageMagick";
 
     /// <summary>
     /// Literal for code: IMatixStandardFunctionLibraryAgreement
@@ -3962,9 +4792,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIMatixStandardFunctionLibraryAgreement = "iMatix";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseIMatixStandardFunctionLibraryAgreement
+    /// </summary>
+    public const string LiteralSpdxLicenseIMatixStandardFunctionLibraryAgreement = "http://hl7.org/fhir/spdx-license#iMatix";
+
+    /// <summary>
     /// Literal for code: Imlib2License
     /// </summary>
     public const string LiteralImlib2License = "Imlib2";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseImlib2License
+    /// </summary>
+    public const string LiteralSpdxLicenseImlib2License = "http://hl7.org/fhir/spdx-license#Imlib2";
 
     /// <summary>
     /// Literal for code: InfoZIPLicense
@@ -3972,9 +4812,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfoZIPLicense = "Info-ZIP";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseInfoZIPLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseInfoZIPLicense = "http://hl7.org/fhir/spdx-license#Info-ZIP";
+
+    /// <summary>
     /// Literal for code: IntelOpenSourceLicense
     /// </summary>
     public const string LiteralIntelOpenSourceLicense = "Intel";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseIntelOpenSourceLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseIntelOpenSourceLicense = "http://hl7.org/fhir/spdx-license#Intel";
 
     /// <summary>
     /// Literal for code: IntelACPISoftwareLicenseAgreement
@@ -3982,9 +4832,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntelACPISoftwareLicenseAgreement = "Intel-ACPI";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseIntelACPISoftwareLicenseAgreement
+    /// </summary>
+    public const string LiteralSpdxLicenseIntelACPISoftwareLicenseAgreement = "http://hl7.org/fhir/spdx-license#Intel-ACPI";
+
+    /// <summary>
     /// Literal for code: InterbasePublicLicenseV10
     /// </summary>
     public const string LiteralInterbasePublicLicenseV10 = "Interbase-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseInterbasePublicLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseInterbasePublicLicenseV10 = "http://hl7.org/fhir/spdx-license#Interbase-1.0";
 
     /// <summary>
     /// Literal for code: IPAFontLicense
@@ -3992,9 +4852,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIPAFontLicense = "IPA";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseIPAFontLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseIPAFontLicense = "http://hl7.org/fhir/spdx-license#IPA";
+
+    /// <summary>
     /// Literal for code: IBMPublicLicenseV10
     /// </summary>
     public const string LiteralIBMPublicLicenseV10 = "IPL-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseIBMPublicLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseIBMPublicLicenseV10 = "http://hl7.org/fhir/spdx-license#IPL-1.0";
 
     /// <summary>
     /// Literal for code: ISCLicense
@@ -4002,9 +4872,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralISCLicense = "ISC";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseISCLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseISCLicense = "http://hl7.org/fhir/spdx-license#ISC";
+
+    /// <summary>
     /// Literal for code: JasPerLicense
     /// </summary>
     public const string LiteralJasPerLicense = "JasPer-2.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseJasPerLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseJasPerLicense = "http://hl7.org/fhir/spdx-license#JasPer-2.0";
 
     /// <summary>
     /// Literal for code: JSONLicense
@@ -4012,9 +4892,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJSONLicense = "JSON";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseJSONLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseJSONLicense = "http://hl7.org/fhir/spdx-license#JSON";
+
+    /// <summary>
     /// Literal for code: LicenceArtLibre12
     /// </summary>
     public const string LiteralLicenceArtLibre12 = "LAL-1.2";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseLicenceArtLibre12
+    /// </summary>
+    public const string LiteralSpdxLicenseLicenceArtLibre12 = "http://hl7.org/fhir/spdx-license#LAL-1.2";
 
     /// <summary>
     /// Literal for code: LicenceArtLibre13
@@ -4022,9 +4912,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLicenceArtLibre13 = "LAL-1.3";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseLicenceArtLibre13
+    /// </summary>
+    public const string LiteralSpdxLicenseLicenceArtLibre13 = "http://hl7.org/fhir/spdx-license#LAL-1.3";
+
+    /// <summary>
     /// Literal for code: Latex2eLicense
     /// </summary>
     public const string LiteralLatex2eLicense = "Latex2e";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseLatex2eLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseLatex2eLicense = "http://hl7.org/fhir/spdx-license#Latex2e";
 
     /// <summary>
     /// Literal for code: LeptonicaLicense
@@ -4032,9 +4932,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeptonicaLicense = "Leptonica";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseLeptonicaLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseLeptonicaLicense = "http://hl7.org/fhir/spdx-license#Leptonica";
+
+    /// <summary>
     /// Literal for code: GNULibraryGeneralPublicLicenseV2Only
     /// </summary>
     public const string LiteralGNULibraryGeneralPublicLicenseV2Only = "LGPL-2.0-only";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseGNULibraryGeneralPublicLicenseV2Only
+    /// </summary>
+    public const string LiteralSpdxLicenseGNULibraryGeneralPublicLicenseV2Only = "http://hl7.org/fhir/spdx-license#LGPL-2.0-only";
 
     /// <summary>
     /// Literal for code: GNULibraryGeneralPublicLicenseV2OrLater
@@ -4042,9 +4952,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGNULibraryGeneralPublicLicenseV2OrLater = "LGPL-2.0-or-later";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseGNULibraryGeneralPublicLicenseV2OrLater
+    /// </summary>
+    public const string LiteralSpdxLicenseGNULibraryGeneralPublicLicenseV2OrLater = "http://hl7.org/fhir/spdx-license#LGPL-2.0-or-later";
+
+    /// <summary>
     /// Literal for code: GNULesserGeneralPublicLicenseV21Only
     /// </summary>
     public const string LiteralGNULesserGeneralPublicLicenseV21Only = "LGPL-2.1-only";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseGNULesserGeneralPublicLicenseV21Only
+    /// </summary>
+    public const string LiteralSpdxLicenseGNULesserGeneralPublicLicenseV21Only = "http://hl7.org/fhir/spdx-license#LGPL-2.1-only";
 
     /// <summary>
     /// Literal for code: GNULesserGeneralPublicLicenseV21OrLater
@@ -4052,9 +4972,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGNULesserGeneralPublicLicenseV21OrLater = "LGPL-2.1-or-later";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseGNULesserGeneralPublicLicenseV21OrLater
+    /// </summary>
+    public const string LiteralSpdxLicenseGNULesserGeneralPublicLicenseV21OrLater = "http://hl7.org/fhir/spdx-license#LGPL-2.1-or-later";
+
+    /// <summary>
     /// Literal for code: GNULesserGeneralPublicLicenseV30Only
     /// </summary>
     public const string LiteralGNULesserGeneralPublicLicenseV30Only = "LGPL-3.0-only";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseGNULesserGeneralPublicLicenseV30Only
+    /// </summary>
+    public const string LiteralSpdxLicenseGNULesserGeneralPublicLicenseV30Only = "http://hl7.org/fhir/spdx-license#LGPL-3.0-only";
 
     /// <summary>
     /// Literal for code: GNULesserGeneralPublicLicenseV30OrLater
@@ -4062,9 +4992,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGNULesserGeneralPublicLicenseV30OrLater = "LGPL-3.0-or-later";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseGNULesserGeneralPublicLicenseV30OrLater
+    /// </summary>
+    public const string LiteralSpdxLicenseGNULesserGeneralPublicLicenseV30OrLater = "http://hl7.org/fhir/spdx-license#LGPL-3.0-or-later";
+
+    /// <summary>
     /// Literal for code: LesserGeneralPublicLicenseForLinguisticResources
     /// </summary>
     public const string LiteralLesserGeneralPublicLicenseForLinguisticResources = "LGPLLR";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseLesserGeneralPublicLicenseForLinguisticResources
+    /// </summary>
+    public const string LiteralSpdxLicenseLesserGeneralPublicLicenseForLinguisticResources = "http://hl7.org/fhir/spdx-license#LGPLLR";
 
     /// <summary>
     /// Literal for code: LibpngLicense
@@ -4072,9 +5012,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLibpngLicense = "Libpng";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseLibpngLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseLibpngLicense = "http://hl7.org/fhir/spdx-license#Libpng";
+
+    /// <summary>
     /// Literal for code: LibtiffLicense
     /// </summary>
     public const string LiteralLibtiffLicense = "libtiff";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseLibtiffLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseLibtiffLicense = "http://hl7.org/fhir/spdx-license#libtiff";
 
     /// <summary>
     /// Literal for code: LicenceLibreDuQuebecPermissiveVersion11
@@ -4082,9 +5032,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLicenceLibreDuQuebecPermissiveVersion11 = "LiLiQ-P-1.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseLicenceLibreDuQuebecPermissiveVersion11
+    /// </summary>
+    public const string LiteralSpdxLicenseLicenceLibreDuQuebecPermissiveVersion11 = "http://hl7.org/fhir/spdx-license#LiLiQ-P-1.1";
+
+    /// <summary>
     /// Literal for code: LicenceLibreDuQuebecReciprociteVersion11
     /// </summary>
     public const string LiteralLicenceLibreDuQuebecReciprociteVersion11 = "LiLiQ-R-1.1";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseLicenceLibreDuQuebecReciprociteVersion11
+    /// </summary>
+    public const string LiteralSpdxLicenseLicenceLibreDuQuebecReciprociteVersion11 = "http://hl7.org/fhir/spdx-license#LiLiQ-R-1.1";
 
     /// <summary>
     /// Literal for code: LicenceLibreDuQuebecReciprociteForteVersion11
@@ -4092,9 +5052,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLicenceLibreDuQuebecReciprociteForteVersion11 = "LiLiQ-Rplus-1.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseLicenceLibreDuQuebecReciprociteForteVersion11
+    /// </summary>
+    public const string LiteralSpdxLicenseLicenceLibreDuQuebecReciprociteForteVersion11 = "http://hl7.org/fhir/spdx-license#LiLiQ-Rplus-1.1";
+
+    /// <summary>
     /// Literal for code: LinuxKernelVariantOfOpenIBOrgLicense
     /// </summary>
     public const string LiteralLinuxKernelVariantOfOpenIBOrgLicense = "Linux-OpenIB";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseLinuxKernelVariantOfOpenIBOrgLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseLinuxKernelVariantOfOpenIBOrgLicense = "http://hl7.org/fhir/spdx-license#Linux-OpenIB";
 
     /// <summary>
     /// Literal for code: LucentPublicLicenseVersion10
@@ -4102,9 +5072,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLucentPublicLicenseVersion10 = "LPL-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseLucentPublicLicenseVersion10
+    /// </summary>
+    public const string LiteralSpdxLicenseLucentPublicLicenseVersion10 = "http://hl7.org/fhir/spdx-license#LPL-1.0";
+
+    /// <summary>
     /// Literal for code: LucentPublicLicenseV102
     /// </summary>
     public const string LiteralLucentPublicLicenseV102 = "LPL-1.02";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseLucentPublicLicenseV102
+    /// </summary>
+    public const string LiteralSpdxLicenseLucentPublicLicenseV102 = "http://hl7.org/fhir/spdx-license#LPL-1.02";
 
     /// <summary>
     /// Literal for code: LaTeXProjectPublicLicenseV10
@@ -4112,9 +5092,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLaTeXProjectPublicLicenseV10 = "LPPL-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseLaTeXProjectPublicLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseLaTeXProjectPublicLicenseV10 = "http://hl7.org/fhir/spdx-license#LPPL-1.0";
+
+    /// <summary>
     /// Literal for code: LaTeXProjectPublicLicenseV11
     /// </summary>
     public const string LiteralLaTeXProjectPublicLicenseV11 = "LPPL-1.1";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseLaTeXProjectPublicLicenseV11
+    /// </summary>
+    public const string LiteralSpdxLicenseLaTeXProjectPublicLicenseV11 = "http://hl7.org/fhir/spdx-license#LPPL-1.1";
 
     /// <summary>
     /// Literal for code: LaTeXProjectPublicLicenseV12
@@ -4122,9 +5112,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLaTeXProjectPublicLicenseV12 = "LPPL-1.2";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseLaTeXProjectPublicLicenseV12
+    /// </summary>
+    public const string LiteralSpdxLicenseLaTeXProjectPublicLicenseV12 = "http://hl7.org/fhir/spdx-license#LPPL-1.2";
+
+    /// <summary>
     /// Literal for code: LaTeXProjectPublicLicenseV13a
     /// </summary>
     public const string LiteralLaTeXProjectPublicLicenseV13a = "LPPL-1.3a";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseLaTeXProjectPublicLicenseV13a
+    /// </summary>
+    public const string LiteralSpdxLicenseLaTeXProjectPublicLicenseV13a = "http://hl7.org/fhir/spdx-license#LPPL-1.3a";
 
     /// <summary>
     /// Literal for code: LaTeXProjectPublicLicenseV13c
@@ -4132,9 +5132,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLaTeXProjectPublicLicenseV13c = "LPPL-1.3c";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseLaTeXProjectPublicLicenseV13c
+    /// </summary>
+    public const string LiteralSpdxLicenseLaTeXProjectPublicLicenseV13c = "http://hl7.org/fhir/spdx-license#LPPL-1.3c";
+
+    /// <summary>
     /// Literal for code: MakeIndexLicense
     /// </summary>
     public const string LiteralMakeIndexLicense = "MakeIndex";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseMakeIndexLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseMakeIndexLicense = "http://hl7.org/fhir/spdx-license#MakeIndex";
 
     /// <summary>
     /// Literal for code: MirOSLicense
@@ -4142,9 +5152,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMirOSLicense = "MirOS";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseMirOSLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseMirOSLicense = "http://hl7.org/fhir/spdx-license#MirOS";
+
+    /// <summary>
     /// Literal for code: MITLicense
     /// </summary>
     public const string LiteralMITLicense = "MIT";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseMITLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseMITLicense = "http://hl7.org/fhir/spdx-license#MIT";
 
     /// <summary>
     /// Literal for code: MITNoAttribution
@@ -4152,9 +5172,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMITNoAttribution = "MIT-0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseMITNoAttribution
+    /// </summary>
+    public const string LiteralSpdxLicenseMITNoAttribution = "http://hl7.org/fhir/spdx-license#MIT-0";
+
+    /// <summary>
     /// Literal for code: EnlightenmentLicenseE16
     /// </summary>
     public const string LiteralEnlightenmentLicenseE16 = "MIT-advertising";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseEnlightenmentLicenseE16
+    /// </summary>
+    public const string LiteralSpdxLicenseEnlightenmentLicenseE16 = "http://hl7.org/fhir/spdx-license#MIT-advertising";
 
     /// <summary>
     /// Literal for code: CMULicense
@@ -4162,9 +5192,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCMULicense = "MIT-CMU";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseCMULicense
+    /// </summary>
+    public const string LiteralSpdxLicenseCMULicense = "http://hl7.org/fhir/spdx-license#MIT-CMU";
+
+    /// <summary>
     /// Literal for code: EnnaLicense
     /// </summary>
     public const string LiteralEnnaLicense = "MIT-enna";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseEnnaLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseEnnaLicense = "http://hl7.org/fhir/spdx-license#MIT-enna";
 
     /// <summary>
     /// Literal for code: FehLicense
@@ -4172,9 +5212,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFehLicense = "MIT-feh";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseFehLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseFehLicense = "http://hl7.org/fhir/spdx-license#MIT-feh";
+
+    /// <summary>
     /// Literal for code: MITPlusNoFalseAttribsLicense
     /// </summary>
     public const string LiteralMITPlusNoFalseAttribsLicense = "MITNFA";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseMITPlusNoFalseAttribsLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseMITPlusNoFalseAttribsLicense = "http://hl7.org/fhir/spdx-license#MITNFA";
 
     /// <summary>
     /// Literal for code: MotosotoLicense
@@ -4182,9 +5232,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMotosotoLicense = "Motosoto";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseMotosotoLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseMotosotoLicense = "http://hl7.org/fhir/spdx-license#Motosoto";
+
+    /// <summary>
     /// Literal for code: Mpich2License
     /// </summary>
     public const string LiteralMpich2License = "mpich2";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseMpich2License
+    /// </summary>
+    public const string LiteralSpdxLicenseMpich2License = "http://hl7.org/fhir/spdx-license#mpich2";
 
     /// <summary>
     /// Literal for code: MozillaPublicLicense10
@@ -4192,9 +5252,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMozillaPublicLicense10 = "MPL-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseMozillaPublicLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseMozillaPublicLicense10 = "http://hl7.org/fhir/spdx-license#MPL-1.0";
+
+    /// <summary>
     /// Literal for code: MozillaPublicLicense11
     /// </summary>
     public const string LiteralMozillaPublicLicense11 = "MPL-1.1";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseMozillaPublicLicense11
+    /// </summary>
+    public const string LiteralSpdxLicenseMozillaPublicLicense11 = "http://hl7.org/fhir/spdx-license#MPL-1.1";
 
     /// <summary>
     /// Literal for code: MozillaPublicLicense20
@@ -4202,9 +5272,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMozillaPublicLicense20 = "MPL-2.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseMozillaPublicLicense20
+    /// </summary>
+    public const string LiteralSpdxLicenseMozillaPublicLicense20 = "http://hl7.org/fhir/spdx-license#MPL-2.0";
+
+    /// <summary>
     /// Literal for code: MozillaPublicLicense20NoCopyleftException
     /// </summary>
     public const string LiteralMozillaPublicLicense20NoCopyleftException = "MPL-2.0-no-copyleft-exception";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseMozillaPublicLicense20NoCopyleftException
+    /// </summary>
+    public const string LiteralSpdxLicenseMozillaPublicLicense20NoCopyleftException = "http://hl7.org/fhir/spdx-license#MPL-2.0-no-copyleft-exception";
 
     /// <summary>
     /// Literal for code: MicrosoftPublicLicense
@@ -4212,9 +5292,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicrosoftPublicLicense = "MS-PL";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseMicrosoftPublicLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseMicrosoftPublicLicense = "http://hl7.org/fhir/spdx-license#MS-PL";
+
+    /// <summary>
     /// Literal for code: MicrosoftReciprocalLicense
     /// </summary>
     public const string LiteralMicrosoftReciprocalLicense = "MS-RL";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseMicrosoftReciprocalLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseMicrosoftReciprocalLicense = "http://hl7.org/fhir/spdx-license#MS-RL";
 
     /// <summary>
     /// Literal for code: MatrixTemplateLibraryLicense
@@ -4222,9 +5312,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMatrixTemplateLibraryLicense = "MTLL";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseMatrixTemplateLibraryLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseMatrixTemplateLibraryLicense = "http://hl7.org/fhir/spdx-license#MTLL";
+
+    /// <summary>
     /// Literal for code: MulticsLicense
     /// </summary>
     public const string LiteralMulticsLicense = "Multics";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseMulticsLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseMulticsLicense = "http://hl7.org/fhir/spdx-license#Multics";
 
     /// <summary>
     /// Literal for code: MupLicense
@@ -4232,9 +5332,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMupLicense = "Mup";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseMupLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseMupLicense = "http://hl7.org/fhir/spdx-license#Mup";
+
+    /// <summary>
     /// Literal for code: NASAOpenSourceAgreement13
     /// </summary>
     public const string LiteralNASAOpenSourceAgreement13 = "NASA-1.3";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseNASAOpenSourceAgreement13
+    /// </summary>
+    public const string LiteralSpdxLicenseNASAOpenSourceAgreement13 = "http://hl7.org/fhir/spdx-license#NASA-1.3";
 
     /// <summary>
     /// Literal for code: NaumenPublicLicense
@@ -4242,9 +5352,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNaumenPublicLicense = "Naumen";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseNaumenPublicLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseNaumenPublicLicense = "http://hl7.org/fhir/spdx-license#Naumen";
+
+    /// <summary>
     /// Literal for code: NetBooleanPublicLicenseV1
     /// </summary>
     public const string LiteralNetBooleanPublicLicenseV1 = "NBPL-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseNetBooleanPublicLicenseV1
+    /// </summary>
+    public const string LiteralSpdxLicenseNetBooleanPublicLicenseV1 = "http://hl7.org/fhir/spdx-license#NBPL-1.0";
 
     /// <summary>
     /// Literal for code: UniversityOfIllinoisNCSAOpenSourceLicense
@@ -4252,9 +5372,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUniversityOfIllinoisNCSAOpenSourceLicense = "NCSA";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseUniversityOfIllinoisNCSAOpenSourceLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseUniversityOfIllinoisNCSAOpenSourceLicense = "http://hl7.org/fhir/spdx-license#NCSA";
+
+    /// <summary>
     /// Literal for code: NetSNMPLicense
     /// </summary>
     public const string LiteralNetSNMPLicense = "Net-SNMP";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseNetSNMPLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseNetSNMPLicense = "http://hl7.org/fhir/spdx-license#Net-SNMP";
 
     /// <summary>
     /// Literal for code: NetCDFLicense
@@ -4262,9 +5392,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNetCDFLicense = "NetCDF";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseNetCDFLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseNetCDFLicense = "http://hl7.org/fhir/spdx-license#NetCDF";
+
+    /// <summary>
     /// Literal for code: NewsletrLicense
     /// </summary>
     public const string LiteralNewsletrLicense = "Newsletr";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseNewsletrLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseNewsletrLicense = "http://hl7.org/fhir/spdx-license#Newsletr";
 
     /// <summary>
     /// Literal for code: NethackGeneralPublicLicense
@@ -4272,9 +5412,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNethackGeneralPublicLicense = "NGPL";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseNethackGeneralPublicLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseNethackGeneralPublicLicense = "http://hl7.org/fhir/spdx-license#NGPL";
+
+    /// <summary>
     /// Literal for code: NorwegianLicenceForOpenGovernmentData
     /// </summary>
     public const string LiteralNorwegianLicenceForOpenGovernmentData = "NLOD-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseNorwegianLicenceForOpenGovernmentData
+    /// </summary>
+    public const string LiteralSpdxLicenseNorwegianLicenceForOpenGovernmentData = "http://hl7.org/fhir/spdx-license#NLOD-1.0";
 
     /// <summary>
     /// Literal for code: NoLimitPublicLicense
@@ -4282,9 +5432,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNoLimitPublicLicense = "NLPL";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseNoLimitPublicLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseNoLimitPublicLicense = "http://hl7.org/fhir/spdx-license#NLPL";
+
+    /// <summary>
     /// Literal for code: NokiaOpenSourceLicense
     /// </summary>
     public const string LiteralNokiaOpenSourceLicense = "Nokia";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseNokiaOpenSourceLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseNokiaOpenSourceLicense = "http://hl7.org/fhir/spdx-license#Nokia";
 
     /// <summary>
     /// Literal for code: NetizenOpenSourceLicense
@@ -4292,9 +5452,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNetizenOpenSourceLicense = "NOSL";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseNetizenOpenSourceLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseNetizenOpenSourceLicense = "http://hl7.org/fhir/spdx-license#NOSL";
+
+    /// <summary>
     /// Literal for code: NotOpenSource
     /// </summary>
     public const string LiteralNotOpenSource = "not-open-source";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseNotOpenSource
+    /// </summary>
+    public const string LiteralSpdxLicenseNotOpenSource = "http://hl7.org/fhir/spdx-license#not-open-source";
 
     /// <summary>
     /// Literal for code: NowebLicense
@@ -4302,9 +5472,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNowebLicense = "Noweb";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseNowebLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseNowebLicense = "http://hl7.org/fhir/spdx-license#Noweb";
+
+    /// <summary>
     /// Literal for code: NetscapePublicLicenseV10
     /// </summary>
     public const string LiteralNetscapePublicLicenseV10 = "NPL-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseNetscapePublicLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseNetscapePublicLicenseV10 = "http://hl7.org/fhir/spdx-license#NPL-1.0";
 
     /// <summary>
     /// Literal for code: NetscapePublicLicenseV11
@@ -4312,9 +5492,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNetscapePublicLicenseV11 = "NPL-1.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseNetscapePublicLicenseV11
+    /// </summary>
+    public const string LiteralSpdxLicenseNetscapePublicLicenseV11 = "http://hl7.org/fhir/spdx-license#NPL-1.1";
+
+    /// <summary>
     /// Literal for code: NonProfitOpenSoftwareLicense30
     /// </summary>
     public const string LiteralNonProfitOpenSoftwareLicense30 = "NPOSL-3.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseNonProfitOpenSoftwareLicense30
+    /// </summary>
+    public const string LiteralSpdxLicenseNonProfitOpenSoftwareLicense30 = "http://hl7.org/fhir/spdx-license#NPOSL-3.0";
 
     /// <summary>
     /// Literal for code: NRLLicense
@@ -4322,9 +5512,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNRLLicense = "NRL";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseNRLLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseNRLLicense = "http://hl7.org/fhir/spdx-license#NRL";
+
+    /// <summary>
     /// Literal for code: NTPLicense
     /// </summary>
     public const string LiteralNTPLicense = "NTP";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseNTPLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseNTPLicense = "http://hl7.org/fhir/spdx-license#NTP";
 
     /// <summary>
     /// Literal for code: OpenCASCADETechnologyPublicLicense
@@ -4332,9 +5532,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenCASCADETechnologyPublicLicense = "OCCT-PL";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseOpenCASCADETechnologyPublicLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenCASCADETechnologyPublicLicense = "http://hl7.org/fhir/spdx-license#OCCT-PL";
+
+    /// <summary>
     /// Literal for code: OCLCResearchPublicLicense20
     /// </summary>
     public const string LiteralOCLCResearchPublicLicense20 = "OCLC-2.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseOCLCResearchPublicLicense20
+    /// </summary>
+    public const string LiteralSpdxLicenseOCLCResearchPublicLicense20 = "http://hl7.org/fhir/spdx-license#OCLC-2.0";
 
     /// <summary>
     /// Literal for code: ODCOpenDatabaseLicenseV10
@@ -4342,9 +5552,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralODCOpenDatabaseLicenseV10 = "ODbL-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseODCOpenDatabaseLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseODCOpenDatabaseLicenseV10 = "http://hl7.org/fhir/spdx-license#ODbL-1.0";
+
+    /// <summary>
     /// Literal for code: SILOpenFontLicense10
     /// </summary>
     public const string LiteralSILOpenFontLicense10 = "OFL-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseSILOpenFontLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseSILOpenFontLicense10 = "http://hl7.org/fhir/spdx-license#OFL-1.0";
 
     /// <summary>
     /// Literal for code: SILOpenFontLicense11
@@ -4352,9 +5572,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSILOpenFontLicense11 = "OFL-1.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseSILOpenFontLicense11
+    /// </summary>
+    public const string LiteralSpdxLicenseSILOpenFontLicense11 = "http://hl7.org/fhir/spdx-license#OFL-1.1";
+
+    /// <summary>
     /// Literal for code: OpenGroupTestSuiteLicense
     /// </summary>
     public const string LiteralOpenGroupTestSuiteLicense = "OGTSL";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseOpenGroupTestSuiteLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenGroupTestSuiteLicense = "http://hl7.org/fhir/spdx-license#OGTSL";
 
     /// <summary>
     /// Literal for code: OpenLDAPPublicLicenseV11
@@ -4362,9 +5592,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenLDAPPublicLicenseV11 = "OLDAP-1.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseOpenLDAPPublicLicenseV11
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenLDAPPublicLicenseV11 = "http://hl7.org/fhir/spdx-license#OLDAP-1.1";
+
+    /// <summary>
     /// Literal for code: OpenLDAPPublicLicenseV12
     /// </summary>
     public const string LiteralOpenLDAPPublicLicenseV12 = "OLDAP-1.2";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseOpenLDAPPublicLicenseV12
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenLDAPPublicLicenseV12 = "http://hl7.org/fhir/spdx-license#OLDAP-1.2";
 
     /// <summary>
     /// Literal for code: OpenLDAPPublicLicenseV13
@@ -4372,9 +5612,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenLDAPPublicLicenseV13 = "OLDAP-1.3";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseOpenLDAPPublicLicenseV13
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenLDAPPublicLicenseV13 = "http://hl7.org/fhir/spdx-license#OLDAP-1.3";
+
+    /// <summary>
     /// Literal for code: OpenLDAPPublicLicenseV14
     /// </summary>
     public const string LiteralOpenLDAPPublicLicenseV14 = "OLDAP-1.4";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseOpenLDAPPublicLicenseV14
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenLDAPPublicLicenseV14 = "http://hl7.org/fhir/spdx-license#OLDAP-1.4";
 
     /// <summary>
     /// Literal for code: OpenLDAPPublicLicenseV20OrPossibly20AAnd20B
@@ -4382,9 +5632,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenLDAPPublicLicenseV20OrPossibly20AAnd20B = "OLDAP-2.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseOpenLDAPPublicLicenseV20OrPossibly20AAnd20B
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenLDAPPublicLicenseV20OrPossibly20AAnd20B = "http://hl7.org/fhir/spdx-license#OLDAP-2.0";
+
+    /// <summary>
     /// Literal for code: OpenLDAPPublicLicenseV201
     /// </summary>
     public const string LiteralOpenLDAPPublicLicenseV201 = "OLDAP-2.0.1";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseOpenLDAPPublicLicenseV201
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenLDAPPublicLicenseV201 = "http://hl7.org/fhir/spdx-license#OLDAP-2.0.1";
 
     /// <summary>
     /// Literal for code: OpenLDAPPublicLicenseV21
@@ -4392,9 +5652,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenLDAPPublicLicenseV21 = "OLDAP-2.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseOpenLDAPPublicLicenseV21
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenLDAPPublicLicenseV21 = "http://hl7.org/fhir/spdx-license#OLDAP-2.1";
+
+    /// <summary>
     /// Literal for code: OpenLDAPPublicLicenseV22
     /// </summary>
     public const string LiteralOpenLDAPPublicLicenseV22 = "OLDAP-2.2";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseOpenLDAPPublicLicenseV22
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenLDAPPublicLicenseV22 = "http://hl7.org/fhir/spdx-license#OLDAP-2.2";
 
     /// <summary>
     /// Literal for code: OpenLDAPPublicLicenseV221
@@ -4402,9 +5672,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenLDAPPublicLicenseV221 = "OLDAP-2.2.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseOpenLDAPPublicLicenseV221
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenLDAPPublicLicenseV221 = "http://hl7.org/fhir/spdx-license#OLDAP-2.2.1";
+
+    /// <summary>
     /// Literal for code: OpenLDAPPublicLicense222
     /// </summary>
     public const string LiteralOpenLDAPPublicLicense222 = "OLDAP-2.2.2";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseOpenLDAPPublicLicense222
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenLDAPPublicLicense222 = "http://hl7.org/fhir/spdx-license#OLDAP-2.2.2";
 
     /// <summary>
     /// Literal for code: OpenLDAPPublicLicenseV23
@@ -4412,9 +5692,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenLDAPPublicLicenseV23 = "OLDAP-2.3";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseOpenLDAPPublicLicenseV23
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenLDAPPublicLicenseV23 = "http://hl7.org/fhir/spdx-license#OLDAP-2.3";
+
+    /// <summary>
     /// Literal for code: OpenLDAPPublicLicenseV24
     /// </summary>
     public const string LiteralOpenLDAPPublicLicenseV24 = "OLDAP-2.4";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseOpenLDAPPublicLicenseV24
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenLDAPPublicLicenseV24 = "http://hl7.org/fhir/spdx-license#OLDAP-2.4";
 
     /// <summary>
     /// Literal for code: OpenLDAPPublicLicenseV25
@@ -4422,9 +5712,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenLDAPPublicLicenseV25 = "OLDAP-2.5";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseOpenLDAPPublicLicenseV25
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenLDAPPublicLicenseV25 = "http://hl7.org/fhir/spdx-license#OLDAP-2.5";
+
+    /// <summary>
     /// Literal for code: OpenLDAPPublicLicenseV26
     /// </summary>
     public const string LiteralOpenLDAPPublicLicenseV26 = "OLDAP-2.6";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseOpenLDAPPublicLicenseV26
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenLDAPPublicLicenseV26 = "http://hl7.org/fhir/spdx-license#OLDAP-2.6";
 
     /// <summary>
     /// Literal for code: OpenLDAPPublicLicenseV27
@@ -4432,9 +5732,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenLDAPPublicLicenseV27 = "OLDAP-2.7";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseOpenLDAPPublicLicenseV27
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenLDAPPublicLicenseV27 = "http://hl7.org/fhir/spdx-license#OLDAP-2.7";
+
+    /// <summary>
     /// Literal for code: OpenLDAPPublicLicenseV28
     /// </summary>
     public const string LiteralOpenLDAPPublicLicenseV28 = "OLDAP-2.8";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseOpenLDAPPublicLicenseV28
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenLDAPPublicLicenseV28 = "http://hl7.org/fhir/spdx-license#OLDAP-2.8";
 
     /// <summary>
     /// Literal for code: OpenMarketLicense
@@ -4442,9 +5752,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenMarketLicense = "OML";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseOpenMarketLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenMarketLicense = "http://hl7.org/fhir/spdx-license#OML";
+
+    /// <summary>
     /// Literal for code: OpenSSLLicense
     /// </summary>
     public const string LiteralOpenSSLLicense = "OpenSSL";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseOpenSSLLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenSSLLicense = "http://hl7.org/fhir/spdx-license#OpenSSL";
 
     /// <summary>
     /// Literal for code: OpenPublicLicenseV10
@@ -4452,9 +5772,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenPublicLicenseV10 = "OPL-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseOpenPublicLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenPublicLicenseV10 = "http://hl7.org/fhir/spdx-license#OPL-1.0";
+
+    /// <summary>
     /// Literal for code: OSETPublicLicenseVersion21
     /// </summary>
     public const string LiteralOSETPublicLicenseVersion21 = "OSET-PL-2.1";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseOSETPublicLicenseVersion21
+    /// </summary>
+    public const string LiteralSpdxLicenseOSETPublicLicenseVersion21 = "http://hl7.org/fhir/spdx-license#OSET-PL-2.1";
 
     /// <summary>
     /// Literal for code: OpenSoftwareLicense10
@@ -4462,9 +5792,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenSoftwareLicense10 = "OSL-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseOpenSoftwareLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenSoftwareLicense10 = "http://hl7.org/fhir/spdx-license#OSL-1.0";
+
+    /// <summary>
     /// Literal for code: OpenSoftwareLicense11
     /// </summary>
     public const string LiteralOpenSoftwareLicense11 = "OSL-1.1";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseOpenSoftwareLicense11
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenSoftwareLicense11 = "http://hl7.org/fhir/spdx-license#OSL-1.1";
 
     /// <summary>
     /// Literal for code: OpenSoftwareLicense20
@@ -4472,9 +5812,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenSoftwareLicense20 = "OSL-2.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseOpenSoftwareLicense20
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenSoftwareLicense20 = "http://hl7.org/fhir/spdx-license#OSL-2.0";
+
+    /// <summary>
     /// Literal for code: OpenSoftwareLicense21
     /// </summary>
     public const string LiteralOpenSoftwareLicense21 = "OSL-2.1";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseOpenSoftwareLicense21
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenSoftwareLicense21 = "http://hl7.org/fhir/spdx-license#OSL-2.1";
 
     /// <summary>
     /// Literal for code: OpenSoftwareLicense30
@@ -4482,9 +5832,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenSoftwareLicense30 = "OSL-3.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseOpenSoftwareLicense30
+    /// </summary>
+    public const string LiteralSpdxLicenseOpenSoftwareLicense30 = "http://hl7.org/fhir/spdx-license#OSL-3.0";
+
+    /// <summary>
     /// Literal for code: ODCPublicDomainDedicationAndLicense10
     /// </summary>
     public const string LiteralODCPublicDomainDedicationAndLicense10 = "PDDL-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseODCPublicDomainDedicationAndLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseODCPublicDomainDedicationAndLicense10 = "http://hl7.org/fhir/spdx-license#PDDL-1.0";
 
     /// <summary>
     /// Literal for code: PHPLicenseV30
@@ -4492,9 +5852,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPHPLicenseV30 = "PHP-3.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicensePHPLicenseV30
+    /// </summary>
+    public const string LiteralSpdxLicensePHPLicenseV30 = "http://hl7.org/fhir/spdx-license#PHP-3.0";
+
+    /// <summary>
     /// Literal for code: PHPLicenseV301
     /// </summary>
     public const string LiteralPHPLicenseV301 = "PHP-3.01";
+
+    /// <summary>
+    /// Literal for code: SpdxLicensePHPLicenseV301
+    /// </summary>
+    public const string LiteralSpdxLicensePHPLicenseV301 = "http://hl7.org/fhir/spdx-license#PHP-3.01";
 
     /// <summary>
     /// Literal for code: PlexusClassworldsLicense
@@ -4502,9 +5872,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPlexusClassworldsLicense = "Plexus";
 
     /// <summary>
+    /// Literal for code: SpdxLicensePlexusClassworldsLicense
+    /// </summary>
+    public const string LiteralSpdxLicensePlexusClassworldsLicense = "http://hl7.org/fhir/spdx-license#Plexus";
+
+    /// <summary>
     /// Literal for code: PostgreSQLLicense
     /// </summary>
     public const string LiteralPostgreSQLLicense = "PostgreSQL";
+
+    /// <summary>
+    /// Literal for code: SpdxLicensePostgreSQLLicense
+    /// </summary>
+    public const string LiteralSpdxLicensePostgreSQLLicense = "http://hl7.org/fhir/spdx-license#PostgreSQL";
 
     /// <summary>
     /// Literal for code: PsfragLicense
@@ -4512,9 +5892,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPsfragLicense = "psfrag";
 
     /// <summary>
+    /// Literal for code: SpdxLicensePsfragLicense
+    /// </summary>
+    public const string LiteralSpdxLicensePsfragLicense = "http://hl7.org/fhir/spdx-license#psfrag";
+
+    /// <summary>
     /// Literal for code: PsutilsLicense
     /// </summary>
     public const string LiteralPsutilsLicense = "psutils";
+
+    /// <summary>
+    /// Literal for code: SpdxLicensePsutilsLicense
+    /// </summary>
+    public const string LiteralSpdxLicensePsutilsLicense = "http://hl7.org/fhir/spdx-license#psutils";
 
     /// <summary>
     /// Literal for code: PythonLicense20
@@ -4522,9 +5912,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPythonLicense20 = "Python-2.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicensePythonLicense20
+    /// </summary>
+    public const string LiteralSpdxLicensePythonLicense20 = "http://hl7.org/fhir/spdx-license#Python-2.0";
+
+    /// <summary>
     /// Literal for code: QhullLicense
     /// </summary>
     public const string LiteralQhullLicense = "Qhull";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseQhullLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseQhullLicense = "http://hl7.org/fhir/spdx-license#Qhull";
 
     /// <summary>
     /// Literal for code: QPublicLicense10
@@ -4532,9 +5932,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralQPublicLicense10 = "QPL-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseQPublicLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseQPublicLicense10 = "http://hl7.org/fhir/spdx-license#QPL-1.0";
+
+    /// <summary>
     /// Literal for code: RdiscLicense
     /// </summary>
     public const string LiteralRdiscLicense = "Rdisc";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseRdiscLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseRdiscLicense = "http://hl7.org/fhir/spdx-license#Rdisc";
 
     /// <summary>
     /// Literal for code: RedHatECosPublicLicenseV11
@@ -4542,9 +5952,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRedHatECosPublicLicenseV11 = "RHeCos-1.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseRedHatECosPublicLicenseV11
+    /// </summary>
+    public const string LiteralSpdxLicenseRedHatECosPublicLicenseV11 = "http://hl7.org/fhir/spdx-license#RHeCos-1.1";
+
+    /// <summary>
     /// Literal for code: ReciprocalPublicLicense11
     /// </summary>
     public const string LiteralReciprocalPublicLicense11 = "RPL-1.1";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseReciprocalPublicLicense11
+    /// </summary>
+    public const string LiteralSpdxLicenseReciprocalPublicLicense11 = "http://hl7.org/fhir/spdx-license#RPL-1.1";
 
     /// <summary>
     /// Literal for code: ReciprocalPublicLicense15
@@ -4552,9 +5972,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReciprocalPublicLicense15 = "RPL-1.5";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseReciprocalPublicLicense15
+    /// </summary>
+    public const string LiteralSpdxLicenseReciprocalPublicLicense15 = "http://hl7.org/fhir/spdx-license#RPL-1.5";
+
+    /// <summary>
     /// Literal for code: RealNetworksPublicSourceLicenseV10
     /// </summary>
     public const string LiteralRealNetworksPublicSourceLicenseV10 = "RPSL-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseRealNetworksPublicSourceLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseRealNetworksPublicSourceLicenseV10 = "http://hl7.org/fhir/spdx-license#RPSL-1.0";
 
     /// <summary>
     /// Literal for code: RSAMessageDigestLicense
@@ -4562,9 +5992,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRSAMessageDigestLicense = "RSA-MD";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseRSAMessageDigestLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseRSAMessageDigestLicense = "http://hl7.org/fhir/spdx-license#RSA-MD";
+
+    /// <summary>
     /// Literal for code: RicohSourceCodePublicLicense
     /// </summary>
     public const string LiteralRicohSourceCodePublicLicense = "RSCPL";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseRicohSourceCodePublicLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseRicohSourceCodePublicLicense = "http://hl7.org/fhir/spdx-license#RSCPL";
 
     /// <summary>
     /// Literal for code: RubyLicense
@@ -4572,9 +6012,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRubyLicense = "Ruby";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseRubyLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseRubyLicense = "http://hl7.org/fhir/spdx-license#Ruby";
+
+    /// <summary>
     /// Literal for code: SaxPublicDomainNotice
     /// </summary>
     public const string LiteralSaxPublicDomainNotice = "SAX-PD";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseSaxPublicDomainNotice
+    /// </summary>
+    public const string LiteralSpdxLicenseSaxPublicDomainNotice = "http://hl7.org/fhir/spdx-license#SAX-PD";
 
     /// <summary>
     /// Literal for code: SaxpathLicense
@@ -4582,9 +6032,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSaxpathLicense = "Saxpath";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseSaxpathLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseSaxpathLicense = "http://hl7.org/fhir/spdx-license#Saxpath";
+
+    /// <summary>
     /// Literal for code: SCEASharedSourceLicense
     /// </summary>
     public const string LiteralSCEASharedSourceLicense = "SCEA";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseSCEASharedSourceLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseSCEASharedSourceLicense = "http://hl7.org/fhir/spdx-license#SCEA";
 
     /// <summary>
     /// Literal for code: SendmailLicense
@@ -4592,9 +6052,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSendmailLicense = "Sendmail";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseSendmailLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseSendmailLicense = "http://hl7.org/fhir/spdx-license#Sendmail";
+
+    /// <summary>
     /// Literal for code: SGIFreeSoftwareLicenseBV10
     /// </summary>
     public const string LiteralSGIFreeSoftwareLicenseBV10 = "SGI-B-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseSGIFreeSoftwareLicenseBV10
+    /// </summary>
+    public const string LiteralSpdxLicenseSGIFreeSoftwareLicenseBV10 = "http://hl7.org/fhir/spdx-license#SGI-B-1.0";
 
     /// <summary>
     /// Literal for code: SGIFreeSoftwareLicenseBV11
@@ -4602,9 +6072,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSGIFreeSoftwareLicenseBV11 = "SGI-B-1.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseSGIFreeSoftwareLicenseBV11
+    /// </summary>
+    public const string LiteralSpdxLicenseSGIFreeSoftwareLicenseBV11 = "http://hl7.org/fhir/spdx-license#SGI-B-1.1";
+
+    /// <summary>
     /// Literal for code: SGIFreeSoftwareLicenseBV20
     /// </summary>
     public const string LiteralSGIFreeSoftwareLicenseBV20 = "SGI-B-2.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseSGIFreeSoftwareLicenseBV20
+    /// </summary>
+    public const string LiteralSpdxLicenseSGIFreeSoftwareLicenseBV20 = "http://hl7.org/fhir/spdx-license#SGI-B-2.0";
 
     /// <summary>
     /// Literal for code: SimplePublicLicense20
@@ -4612,9 +6092,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSimplePublicLicense20 = "SimPL-2.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseSimplePublicLicense20
+    /// </summary>
+    public const string LiteralSpdxLicenseSimplePublicLicense20 = "http://hl7.org/fhir/spdx-license#SimPL-2.0";
+
+    /// <summary>
     /// Literal for code: SunIndustryStandardsSourceLicenseV11
     /// </summary>
     public const string LiteralSunIndustryStandardsSourceLicenseV11 = "SISSL";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseSunIndustryStandardsSourceLicenseV11
+    /// </summary>
+    public const string LiteralSpdxLicenseSunIndustryStandardsSourceLicenseV11 = "http://hl7.org/fhir/spdx-license#SISSL";
 
     /// <summary>
     /// Literal for code: SunIndustryStandardsSourceLicenseV12
@@ -4622,9 +6112,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSunIndustryStandardsSourceLicenseV12 = "SISSL-1.2";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseSunIndustryStandardsSourceLicenseV12
+    /// </summary>
+    public const string LiteralSpdxLicenseSunIndustryStandardsSourceLicenseV12 = "http://hl7.org/fhir/spdx-license#SISSL-1.2";
+
+    /// <summary>
     /// Literal for code: SleepycatLicense
     /// </summary>
     public const string LiteralSleepycatLicense = "Sleepycat";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseSleepycatLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseSleepycatLicense = "http://hl7.org/fhir/spdx-license#Sleepycat";
 
     /// <summary>
     /// Literal for code: StandardMLOfNewJerseyLicense
@@ -4632,9 +6132,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStandardMLOfNewJerseyLicense = "SMLNJ";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseStandardMLOfNewJerseyLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseStandardMLOfNewJerseyLicense = "http://hl7.org/fhir/spdx-license#SMLNJ";
+
+    /// <summary>
     /// Literal for code: SecureMessagingProtocolPublicLicense
     /// </summary>
     public const string LiteralSecureMessagingProtocolPublicLicense = "SMPPL";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseSecureMessagingProtocolPublicLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseSecureMessagingProtocolPublicLicense = "http://hl7.org/fhir/spdx-license#SMPPL";
 
     /// <summary>
     /// Literal for code: SNIAPublicLicense11
@@ -4642,9 +6152,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSNIAPublicLicense11 = "SNIA";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseSNIAPublicLicense11
+    /// </summary>
+    public const string LiteralSpdxLicenseSNIAPublicLicense11 = "http://hl7.org/fhir/spdx-license#SNIA";
+
+    /// <summary>
     /// Literal for code: SpencerLicense86
     /// </summary>
     public const string LiteralSpencerLicense86 = "Spencer-86";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseSpencerLicense86
+    /// </summary>
+    public const string LiteralSpdxLicenseSpencerLicense86 = "http://hl7.org/fhir/spdx-license#Spencer-86";
 
     /// <summary>
     /// Literal for code: SpencerLicense94
@@ -4652,9 +6172,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpencerLicense94 = "Spencer-94";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseSpencerLicense94
+    /// </summary>
+    public const string LiteralSpdxLicenseSpencerLicense94 = "http://hl7.org/fhir/spdx-license#Spencer-94";
+
+    /// <summary>
     /// Literal for code: SpencerLicense99
     /// </summary>
     public const string LiteralSpencerLicense99 = "Spencer-99";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseSpencerLicense99
+    /// </summary>
+    public const string LiteralSpdxLicenseSpencerLicense99 = "http://hl7.org/fhir/spdx-license#Spencer-99";
 
     /// <summary>
     /// Literal for code: SunPublicLicenseV10
@@ -4662,9 +6192,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSunPublicLicenseV10 = "SPL-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseSunPublicLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseSunPublicLicenseV10 = "http://hl7.org/fhir/spdx-license#SPL-1.0";
+
+    /// <summary>
     /// Literal for code: SugarCRMPublicLicenseV113
     /// </summary>
     public const string LiteralSugarCRMPublicLicenseV113 = "SugarCRM-1.1.3";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseSugarCRMPublicLicenseV113
+    /// </summary>
+    public const string LiteralSpdxLicenseSugarCRMPublicLicenseV113 = "http://hl7.org/fhir/spdx-license#SugarCRM-1.1.3";
 
     /// <summary>
     /// Literal for code: SchemeWidgetLibrarySWLSoftwareLicenseAgreement
@@ -4672,9 +6212,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSchemeWidgetLibrarySWLSoftwareLicenseAgreement = "SWL";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseSchemeWidgetLibrarySWLSoftwareLicenseAgreement
+    /// </summary>
+    public const string LiteralSpdxLicenseSchemeWidgetLibrarySWLSoftwareLicenseAgreement = "http://hl7.org/fhir/spdx-license#SWL";
+
+    /// <summary>
     /// Literal for code: TCLTKLicense
     /// </summary>
     public const string LiteralTCLTKLicense = "TCL";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseTCLTKLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseTCLTKLicense = "http://hl7.org/fhir/spdx-license#TCL";
 
     /// <summary>
     /// Literal for code: TCPWrappersLicense
@@ -4682,9 +6232,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTCPWrappersLicense = "TCP-wrappers";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseTCPWrappersLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseTCPWrappersLicense = "http://hl7.org/fhir/spdx-license#TCP-wrappers";
+
+    /// <summary>
     /// Literal for code: TMateOpenSourceLicense
     /// </summary>
     public const string LiteralTMateOpenSourceLicense = "TMate";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseTMateOpenSourceLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseTMateOpenSourceLicense = "http://hl7.org/fhir/spdx-license#TMate";
 
     /// <summary>
     /// Literal for code: TORQUEV25PlusSoftwareLicenseV11
@@ -4692,9 +6252,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTORQUEV25PlusSoftwareLicenseV11 = "TORQUE-1.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseTORQUEV25PlusSoftwareLicenseV11
+    /// </summary>
+    public const string LiteralSpdxLicenseTORQUEV25PlusSoftwareLicenseV11 = "http://hl7.org/fhir/spdx-license#TORQUE-1.1";
+
+    /// <summary>
     /// Literal for code: TrussterOpenSourceLicense
     /// </summary>
     public const string LiteralTrussterOpenSourceLicense = "TOSL";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseTrussterOpenSourceLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseTrussterOpenSourceLicense = "http://hl7.org/fhir/spdx-license#TOSL";
 
     /// <summary>
     /// Literal for code: UnicodeLicenseAgreementDataFilesAndSoftware2015
@@ -4702,9 +6272,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnicodeLicenseAgreementDataFilesAndSoftware2015 = "Unicode-DFS-2015";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseUnicodeLicenseAgreementDataFilesAndSoftware2015
+    /// </summary>
+    public const string LiteralSpdxLicenseUnicodeLicenseAgreementDataFilesAndSoftware2015 = "http://hl7.org/fhir/spdx-license#Unicode-DFS-2015";
+
+    /// <summary>
     /// Literal for code: UnicodeLicenseAgreementDataFilesAndSoftware2016
     /// </summary>
     public const string LiteralUnicodeLicenseAgreementDataFilesAndSoftware2016 = "Unicode-DFS-2016";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseUnicodeLicenseAgreementDataFilesAndSoftware2016
+    /// </summary>
+    public const string LiteralSpdxLicenseUnicodeLicenseAgreementDataFilesAndSoftware2016 = "http://hl7.org/fhir/spdx-license#Unicode-DFS-2016";
 
     /// <summary>
     /// Literal for code: UnicodeTermsOfUse
@@ -4712,9 +6292,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnicodeTermsOfUse = "Unicode-TOU";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseUnicodeTermsOfUse
+    /// </summary>
+    public const string LiteralSpdxLicenseUnicodeTermsOfUse = "http://hl7.org/fhir/spdx-license#Unicode-TOU";
+
+    /// <summary>
     /// Literal for code: TheUnlicense
     /// </summary>
     public const string LiteralTheUnlicense = "Unlicense";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseTheUnlicense
+    /// </summary>
+    public const string LiteralSpdxLicenseTheUnlicense = "http://hl7.org/fhir/spdx-license#Unlicense";
 
     /// <summary>
     /// Literal for code: UniversalPermissiveLicenseV10
@@ -4722,9 +6312,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUniversalPermissiveLicenseV10 = "UPL-1.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseUniversalPermissiveLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseUniversalPermissiveLicenseV10 = "http://hl7.org/fhir/spdx-license#UPL-1.0";
+
+    /// <summary>
     /// Literal for code: VimLicense
     /// </summary>
     public const string LiteralVimLicense = "Vim";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseVimLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseVimLicense = "http://hl7.org/fhir/spdx-license#Vim";
 
     /// <summary>
     /// Literal for code: VOSTROMPublicLicenseForOpenSource
@@ -4732,9 +6332,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVOSTROMPublicLicenseForOpenSource = "VOSTROM";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseVOSTROMPublicLicenseForOpenSource
+    /// </summary>
+    public const string LiteralSpdxLicenseVOSTROMPublicLicenseForOpenSource = "http://hl7.org/fhir/spdx-license#VOSTROM";
+
+    /// <summary>
     /// Literal for code: VovidaSoftwareLicenseV10
     /// </summary>
     public const string LiteralVovidaSoftwareLicenseV10 = "VSL-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseVovidaSoftwareLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseVovidaSoftwareLicenseV10 = "http://hl7.org/fhir/spdx-license#VSL-1.0";
 
     /// <summary>
     /// Literal for code: W3CSoftwareNoticeAndLicense20021231
@@ -4742,9 +6352,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralW3CSoftwareNoticeAndLicense20021231 = "W3C";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseW3CSoftwareNoticeAndLicense20021231
+    /// </summary>
+    public const string LiteralSpdxLicenseW3CSoftwareNoticeAndLicense20021231 = "http://hl7.org/fhir/spdx-license#W3C";
+
+    /// <summary>
     /// Literal for code: W3CSoftwareNoticeAndLicense19980720
     /// </summary>
     public const string LiteralW3CSoftwareNoticeAndLicense19980720 = "W3C-19980720";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseW3CSoftwareNoticeAndLicense19980720
+    /// </summary>
+    public const string LiteralSpdxLicenseW3CSoftwareNoticeAndLicense19980720 = "http://hl7.org/fhir/spdx-license#W3C-19980720";
 
     /// <summary>
     /// Literal for code: W3CSoftwareNoticeAndDocumentLicense20150513
@@ -4752,9 +6372,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralW3CSoftwareNoticeAndDocumentLicense20150513 = "W3C-20150513";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseW3CSoftwareNoticeAndDocumentLicense20150513
+    /// </summary>
+    public const string LiteralSpdxLicenseW3CSoftwareNoticeAndDocumentLicense20150513 = "http://hl7.org/fhir/spdx-license#W3C-20150513";
+
+    /// <summary>
     /// Literal for code: SybaseOpenWatcomPublicLicense10
     /// </summary>
     public const string LiteralSybaseOpenWatcomPublicLicense10 = "Watcom-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseSybaseOpenWatcomPublicLicense10
+    /// </summary>
+    public const string LiteralSpdxLicenseSybaseOpenWatcomPublicLicense10 = "http://hl7.org/fhir/spdx-license#Watcom-1.0";
 
     /// <summary>
     /// Literal for code: WsuipaLicense
@@ -4762,9 +6392,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWsuipaLicense = "Wsuipa";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseWsuipaLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseWsuipaLicense = "http://hl7.org/fhir/spdx-license#Wsuipa";
+
+    /// <summary>
     /// Literal for code: DoWhatTheFAsteriskCkYouWantToPublicLicense
     /// </summary>
     public const string LiteralDoWhatTheFAsteriskCkYouWantToPublicLicense = "WTFPL";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseDoWhatTheFAsteriskCkYouWantToPublicLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseDoWhatTheFAsteriskCkYouWantToPublicLicense = "http://hl7.org/fhir/spdx-license#WTFPL";
 
     /// <summary>
     /// Literal for code: X11License
@@ -4772,9 +6412,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralX11License = "X11";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseX11License
+    /// </summary>
+    public const string LiteralSpdxLicenseX11License = "http://hl7.org/fhir/spdx-license#X11";
+
+    /// <summary>
     /// Literal for code: XeroxLicense
     /// </summary>
     public const string LiteralXeroxLicense = "Xerox";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseXeroxLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseXeroxLicense = "http://hl7.org/fhir/spdx-license#Xerox";
 
     /// <summary>
     /// Literal for code: XFree86License11
@@ -4782,9 +6432,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralXFree86License11 = "XFree86-1.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseXFree86License11
+    /// </summary>
+    public const string LiteralSpdxLicenseXFree86License11 = "http://hl7.org/fhir/spdx-license#XFree86-1.1";
+
+    /// <summary>
     /// Literal for code: XinetdLicense
     /// </summary>
     public const string LiteralXinetdLicense = "xinetd";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseXinetdLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseXinetdLicense = "http://hl7.org/fhir/spdx-license#xinetd";
 
     /// <summary>
     /// Literal for code: XNetLicense
@@ -4792,9 +6452,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralXNetLicense = "Xnet";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseXNetLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseXNetLicense = "http://hl7.org/fhir/spdx-license#Xnet";
+
+    /// <summary>
     /// Literal for code: XPPLicense
     /// </summary>
     public const string LiteralXPPLicense = "xpp";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseXPPLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseXPPLicense = "http://hl7.org/fhir/spdx-license#xpp";
 
     /// <summary>
     /// Literal for code: XSkatLicense
@@ -4802,9 +6472,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralXSkatLicense = "XSkat";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseXSkatLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseXSkatLicense = "http://hl7.org/fhir/spdx-license#XSkat";
+
+    /// <summary>
     /// Literal for code: YahooNotPublicLicenseV10
     /// </summary>
     public const string LiteralYahooNotPublicLicenseV10 = "YPL-1.0";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseYahooNotPublicLicenseV10
+    /// </summary>
+    public const string LiteralSpdxLicenseYahooNotPublicLicenseV10 = "http://hl7.org/fhir/spdx-license#YPL-1.0";
 
     /// <summary>
     /// Literal for code: YahooNotPublicLicenseV11
@@ -4812,9 +6492,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralYahooNotPublicLicenseV11 = "YPL-1.1";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseYahooNotPublicLicenseV11
+    /// </summary>
+    public const string LiteralSpdxLicenseYahooNotPublicLicenseV11 = "http://hl7.org/fhir/spdx-license#YPL-1.1";
+
+    /// <summary>
     /// Literal for code: ZedLicense
     /// </summary>
     public const string LiteralZedLicense = "Zed";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseZedLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseZedLicense = "http://hl7.org/fhir/spdx-license#Zed";
 
     /// <summary>
     /// Literal for code: ZendLicenseV20
@@ -4822,9 +6512,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralZendLicenseV20 = "Zend-2.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseZendLicenseV20
+    /// </summary>
+    public const string LiteralSpdxLicenseZendLicenseV20 = "http://hl7.org/fhir/spdx-license#Zend-2.0";
+
+    /// <summary>
     /// Literal for code: ZimbraPublicLicenseV13
     /// </summary>
     public const string LiteralZimbraPublicLicenseV13 = "Zimbra-1.3";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseZimbraPublicLicenseV13
+    /// </summary>
+    public const string LiteralSpdxLicenseZimbraPublicLicenseV13 = "http://hl7.org/fhir/spdx-license#Zimbra-1.3";
 
     /// <summary>
     /// Literal for code: ZimbraPublicLicenseV14
@@ -4832,9 +6532,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralZimbraPublicLicenseV14 = "Zimbra-1.4";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseZimbraPublicLicenseV14
+    /// </summary>
+    public const string LiteralSpdxLicenseZimbraPublicLicenseV14 = "http://hl7.org/fhir/spdx-license#Zimbra-1.4";
+
+    /// <summary>
     /// Literal for code: ZlibLicense
     /// </summary>
     public const string LiteralZlibLicense = "Zlib";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseZlibLicense
+    /// </summary>
+    public const string LiteralSpdxLicenseZlibLicense = "http://hl7.org/fhir/spdx-license#Zlib";
 
     /// <summary>
     /// Literal for code: ZlibLibpngLicenseWithAcknowledgement
@@ -4842,9 +6552,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralZlibLibpngLicenseWithAcknowledgement = "zlib-acknowledgement";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseZlibLibpngLicenseWithAcknowledgement
+    /// </summary>
+    public const string LiteralSpdxLicenseZlibLibpngLicenseWithAcknowledgement = "http://hl7.org/fhir/spdx-license#zlib-acknowledgement";
+
+    /// <summary>
     /// Literal for code: ZopePublicLicense11
     /// </summary>
     public const string LiteralZopePublicLicense11 = "ZPL-1.1";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseZopePublicLicense11
+    /// </summary>
+    public const string LiteralSpdxLicenseZopePublicLicense11 = "http://hl7.org/fhir/spdx-license#ZPL-1.1";
 
     /// <summary>
     /// Literal for code: ZopePublicLicense20
@@ -4852,8 +6572,716 @@ namespace fhirCsR4.ValueSets
     public const string LiteralZopePublicLicense20 = "ZPL-2.0";
 
     /// <summary>
+    /// Literal for code: SpdxLicenseZopePublicLicense20
+    /// </summary>
+    public const string LiteralSpdxLicenseZopePublicLicense20 = "http://hl7.org/fhir/spdx-license#ZPL-2.0";
+
+    /// <summary>
     /// Literal for code: ZopePublicLicense21
     /// </summary>
     public const string LiteralZopePublicLicense21 = "ZPL-2.1";
+
+    /// <summary>
+    /// Literal for code: SpdxLicenseZopePublicLicense21
+    /// </summary>
+    public const string LiteralSpdxLicenseZopePublicLicense21 = "http://hl7.org/fhir/spdx-license#ZPL-2.1";
+
+    /// <summary>
+    /// Dictionary for looking up SpdxLicense Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "0BSD", BSDZeroClauseLicense }, 
+      { "http://hl7.org/fhir/spdx-license#0BSD", BSDZeroClauseLicense }, 
+      { "AAL", AttributionAssuranceLicense }, 
+      { "http://hl7.org/fhir/spdx-license#AAL", AttributionAssuranceLicense }, 
+      { "Abstyles", AbstylesLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Abstyles", AbstylesLicense }, 
+      { "Adobe-2006", AdobeSystemsIncorporatedSourceCodeLicenseAgreement }, 
+      { "http://hl7.org/fhir/spdx-license#Adobe-2006", AdobeSystemsIncorporatedSourceCodeLicenseAgreement }, 
+      { "Adobe-Glyph", AdobeGlyphListLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Adobe-Glyph", AdobeGlyphListLicense }, 
+      { "ADSL", AmazonDigitalServicesLicense }, 
+      { "http://hl7.org/fhir/spdx-license#ADSL", AmazonDigitalServicesLicense }, 
+      { "AFL-1.1", AcademicFreeLicenseV11 }, 
+      { "http://hl7.org/fhir/spdx-license#AFL-1.1", AcademicFreeLicenseV11 }, 
+      { "AFL-1.2", AcademicFreeLicenseV12 }, 
+      { "http://hl7.org/fhir/spdx-license#AFL-1.2", AcademicFreeLicenseV12 }, 
+      { "AFL-2.0", AcademicFreeLicenseV20 }, 
+      { "http://hl7.org/fhir/spdx-license#AFL-2.0", AcademicFreeLicenseV20 }, 
+      { "AFL-2.1", AcademicFreeLicenseV21 }, 
+      { "http://hl7.org/fhir/spdx-license#AFL-2.1", AcademicFreeLicenseV21 }, 
+      { "AFL-3.0", AcademicFreeLicenseV30 }, 
+      { "http://hl7.org/fhir/spdx-license#AFL-3.0", AcademicFreeLicenseV30 }, 
+      { "Afmparse", AfmparseLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Afmparse", AfmparseLicense }, 
+      { "AGPL-1.0-only", AfferoGeneralPublicLicenseV10Only }, 
+      { "http://hl7.org/fhir/spdx-license#AGPL-1.0-only", AfferoGeneralPublicLicenseV10Only }, 
+      { "AGPL-1.0-or-later", AfferoGeneralPublicLicenseV10OrLater }, 
+      { "http://hl7.org/fhir/spdx-license#AGPL-1.0-or-later", AfferoGeneralPublicLicenseV10OrLater }, 
+      { "AGPL-3.0-only", GNUAfferoGeneralPublicLicenseV30Only }, 
+      { "http://hl7.org/fhir/spdx-license#AGPL-3.0-only", GNUAfferoGeneralPublicLicenseV30Only }, 
+      { "AGPL-3.0-or-later", GNUAfferoGeneralPublicLicenseV30OrLater }, 
+      { "http://hl7.org/fhir/spdx-license#AGPL-3.0-or-later", GNUAfferoGeneralPublicLicenseV30OrLater }, 
+      { "Aladdin", AladdinFreePublicLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Aladdin", AladdinFreePublicLicense }, 
+      { "AMDPLPA", AMDQuoteSPlpaMapCLicense }, 
+      { "http://hl7.org/fhir/spdx-license#AMDPLPA", AMDQuoteSPlpaMapCLicense }, 
+      { "AML", AppleMITLicense }, 
+      { "http://hl7.org/fhir/spdx-license#AML", AppleMITLicense }, 
+      { "AMPAS", AcademyOfMotionPictureArtsAndSciencesBSD }, 
+      { "http://hl7.org/fhir/spdx-license#AMPAS", AcademyOfMotionPictureArtsAndSciencesBSD }, 
+      { "ANTLR-PD", ANTLRSoftwareRightsNotice }, 
+      { "http://hl7.org/fhir/spdx-license#ANTLR-PD", ANTLRSoftwareRightsNotice }, 
+      { "Apache-1.0", ApacheLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#Apache-1.0", ApacheLicense10 }, 
+      { "Apache-1.1", ApacheLicense11 }, 
+      { "http://hl7.org/fhir/spdx-license#Apache-1.1", ApacheLicense11 }, 
+      { "Apache-2.0", ApacheLicense20 }, 
+      { "http://hl7.org/fhir/spdx-license#Apache-2.0", ApacheLicense20 }, 
+      { "APAFML", AdobePostscriptAFMLicense }, 
+      { "http://hl7.org/fhir/spdx-license#APAFML", AdobePostscriptAFMLicense }, 
+      { "APL-1.0", AdaptivePublicLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#APL-1.0", AdaptivePublicLicense10 }, 
+      { "APSL-1.0", ApplePublicSourceLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#APSL-1.0", ApplePublicSourceLicense10 }, 
+      { "APSL-1.1", ApplePublicSourceLicense11 }, 
+      { "http://hl7.org/fhir/spdx-license#APSL-1.1", ApplePublicSourceLicense11 }, 
+      { "APSL-1.2", ApplePublicSourceLicense12 }, 
+      { "http://hl7.org/fhir/spdx-license#APSL-1.2", ApplePublicSourceLicense12 }, 
+      { "APSL-2.0", ApplePublicSourceLicense20 }, 
+      { "http://hl7.org/fhir/spdx-license#APSL-2.0", ApplePublicSourceLicense20 }, 
+      { "Artistic-1.0", ArtisticLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#Artistic-1.0", ArtisticLicense10 }, 
+      { "Artistic-1.0-cl8", ArtisticLicense10WClause8 }, 
+      { "http://hl7.org/fhir/spdx-license#Artistic-1.0-cl8", ArtisticLicense10WClause8 }, 
+      { "Artistic-1.0-Perl", ArtisticLicense10Perl }, 
+      { "http://hl7.org/fhir/spdx-license#Artistic-1.0-Perl", ArtisticLicense10Perl }, 
+      { "Artistic-2.0", ArtisticLicense20 }, 
+      { "http://hl7.org/fhir/spdx-license#Artistic-2.0", ArtisticLicense20 }, 
+      { "Bahyph", BahyphLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Bahyph", BahyphLicense }, 
+      { "Barr", BarrLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Barr", BarrLicense }, 
+      { "Beerware", BeerwareLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Beerware", BeerwareLicense }, 
+      { "BitTorrent-1.0", BitTorrentOpenSourceLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#BitTorrent-1.0", BitTorrentOpenSourceLicenseV10 }, 
+      { "BitTorrent-1.1", BitTorrentOpenSourceLicenseV11 }, 
+      { "http://hl7.org/fhir/spdx-license#BitTorrent-1.1", BitTorrentOpenSourceLicenseV11 }, 
+      { "Borceux", BorceuxLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Borceux", BorceuxLicense }, 
+      { "BSD-1-Clause", BSD1ClauseLicense }, 
+      { "http://hl7.org/fhir/spdx-license#BSD-1-Clause", BSD1ClauseLicense }, 
+      { "BSD-2-Clause", BSD2ClauseQuotationSimplifiedQuotationLicense }, 
+      { "http://hl7.org/fhir/spdx-license#BSD-2-Clause", BSD2ClauseQuotationSimplifiedQuotationLicense }, 
+      { "BSD-2-Clause-FreeBSD", BSD2ClauseFreeBSDLicense }, 
+      { "http://hl7.org/fhir/spdx-license#BSD-2-Clause-FreeBSD", BSD2ClauseFreeBSDLicense }, 
+      { "BSD-2-Clause-NetBSD", BSD2ClauseNetBSDLicense }, 
+      { "http://hl7.org/fhir/spdx-license#BSD-2-Clause-NetBSD", BSD2ClauseNetBSDLicense }, 
+      { "BSD-2-Clause-Patent", BSD2ClausePlusPatentLicense }, 
+      { "http://hl7.org/fhir/spdx-license#BSD-2-Clause-Patent", BSD2ClausePlusPatentLicense }, 
+      { "BSD-3-Clause", BSD3ClauseQuotationNewQuotationOrQuotationRevisedQuotationLicense }, 
+      { "http://hl7.org/fhir/spdx-license#BSD-3-Clause", BSD3ClauseQuotationNewQuotationOrQuotationRevisedQuotationLicense }, 
+      { "BSD-3-Clause-Attribution", BSDWithAttribution }, 
+      { "http://hl7.org/fhir/spdx-license#BSD-3-Clause-Attribution", BSDWithAttribution }, 
+      { "BSD-3-Clause-Clear", BSD3ClauseClearLicense }, 
+      { "http://hl7.org/fhir/spdx-license#BSD-3-Clause-Clear", BSD3ClauseClearLicense }, 
+      { "BSD-3-Clause-LBNL", LawrenceBerkeleyNationalLabsBSDVariantLicense }, 
+      { "http://hl7.org/fhir/spdx-license#BSD-3-Clause-LBNL", LawrenceBerkeleyNationalLabsBSDVariantLicense }, 
+      { "BSD-3-Clause-No-Nuclear-License", BSD3ClauseNoNuclearLicense }, 
+      { "http://hl7.org/fhir/spdx-license#BSD-3-Clause-No-Nuclear-License", BSD3ClauseNoNuclearLicense }, 
+      { "BSD-3-Clause-No-Nuclear-License-2014", BSD3ClauseNoNuclearLicense2014 }, 
+      { "http://hl7.org/fhir/spdx-license#BSD-3-Clause-No-Nuclear-License-2014", BSD3ClauseNoNuclearLicense2014 }, 
+      { "BSD-3-Clause-No-Nuclear-Warranty", BSD3ClauseNoNuclearWarranty }, 
+      { "http://hl7.org/fhir/spdx-license#BSD-3-Clause-No-Nuclear-Warranty", BSD3ClauseNoNuclearWarranty }, 
+      { "BSD-4-Clause", BSD4ClauseQuotationOriginalQuotationOrQuotationOldQuotationLicense }, 
+      { "http://hl7.org/fhir/spdx-license#BSD-4-Clause", BSD4ClauseQuotationOriginalQuotationOrQuotationOldQuotationLicense }, 
+      { "BSD-4-Clause-UC", BSD4ClauseUniversityOfCaliforniaSpecific }, 
+      { "http://hl7.org/fhir/spdx-license#BSD-4-Clause-UC", BSD4ClauseUniversityOfCaliforniaSpecific }, 
+      { "BSD-Protection", BSDProtectionLicense }, 
+      { "http://hl7.org/fhir/spdx-license#BSD-Protection", BSDProtectionLicense }, 
+      { "BSD-Source-Code", BSDSourceCodeAttribution }, 
+      { "http://hl7.org/fhir/spdx-license#BSD-Source-Code", BSDSourceCodeAttribution }, 
+      { "BSL-1.0", BoostSoftwareLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#BSL-1.0", BoostSoftwareLicense10 }, 
+      { "bzip2-1.0.5", Bzip2AndLibbzip2LicenseV105 }, 
+      { "http://hl7.org/fhir/spdx-license#bzip2-1.0.5", Bzip2AndLibbzip2LicenseV105 }, 
+      { "bzip2-1.0.6", Bzip2AndLibbzip2LicenseV106 }, 
+      { "http://hl7.org/fhir/spdx-license#bzip2-1.0.6", Bzip2AndLibbzip2LicenseV106 }, 
+      { "Caldera", CalderaLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Caldera", CalderaLicense }, 
+      { "CATOSL-1.1", ComputerAssociatesTrustedOpenSourceLicense11 }, 
+      { "http://hl7.org/fhir/spdx-license#CATOSL-1.1", ComputerAssociatesTrustedOpenSourceLicense11 }, 
+      { "CC-BY-1.0", CreativeCommonsAttribution10Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-1.0", CreativeCommonsAttribution10Generic }, 
+      { "CC-BY-2.0", CreativeCommonsAttribution20Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-2.0", CreativeCommonsAttribution20Generic }, 
+      { "CC-BY-2.5", CreativeCommonsAttribution25Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-2.5", CreativeCommonsAttribution25Generic }, 
+      { "CC-BY-3.0", CreativeCommonsAttribution30Unported }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-3.0", CreativeCommonsAttribution30Unported }, 
+      { "CC-BY-4.0", CreativeCommonsAttribution40International }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-4.0", CreativeCommonsAttribution40International }, 
+      { "CC-BY-NC-1.0", CreativeCommonsAttributionNonCommercial10Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-NC-1.0", CreativeCommonsAttributionNonCommercial10Generic }, 
+      { "CC-BY-NC-2.0", CreativeCommonsAttributionNonCommercial20Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-NC-2.0", CreativeCommonsAttributionNonCommercial20Generic }, 
+      { "CC-BY-NC-2.5", CreativeCommonsAttributionNonCommercial25Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-NC-2.5", CreativeCommonsAttributionNonCommercial25Generic }, 
+      { "CC-BY-NC-3.0", CreativeCommonsAttributionNonCommercial30Unported }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-NC-3.0", CreativeCommonsAttributionNonCommercial30Unported }, 
+      { "CC-BY-NC-4.0", CreativeCommonsAttributionNonCommercial40International }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-NC-4.0", CreativeCommonsAttributionNonCommercial40International }, 
+      { "CC-BY-NC-ND-1.0", CreativeCommonsAttributionNonCommercialNoDerivatives10Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-NC-ND-1.0", CreativeCommonsAttributionNonCommercialNoDerivatives10Generic }, 
+      { "CC-BY-NC-ND-2.0", CreativeCommonsAttributionNonCommercialNoDerivatives20Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-NC-ND-2.0", CreativeCommonsAttributionNonCommercialNoDerivatives20Generic }, 
+      { "CC-BY-NC-ND-2.5", CreativeCommonsAttributionNonCommercialNoDerivatives25Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-NC-ND-2.5", CreativeCommonsAttributionNonCommercialNoDerivatives25Generic }, 
+      { "CC-BY-NC-ND-3.0", CreativeCommonsAttributionNonCommercialNoDerivatives30Unported }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-NC-ND-3.0", CreativeCommonsAttributionNonCommercialNoDerivatives30Unported }, 
+      { "CC-BY-NC-ND-4.0", CreativeCommonsAttributionNonCommercialNoDerivatives40International }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-NC-ND-4.0", CreativeCommonsAttributionNonCommercialNoDerivatives40International }, 
+      { "CC-BY-NC-SA-1.0", CreativeCommonsAttributionNonCommercialShareAlike10Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-NC-SA-1.0", CreativeCommonsAttributionNonCommercialShareAlike10Generic }, 
+      { "CC-BY-NC-SA-2.0", CreativeCommonsAttributionNonCommercialShareAlike20Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-NC-SA-2.0", CreativeCommonsAttributionNonCommercialShareAlike20Generic }, 
+      { "CC-BY-NC-SA-2.5", CreativeCommonsAttributionNonCommercialShareAlike25Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-NC-SA-2.5", CreativeCommonsAttributionNonCommercialShareAlike25Generic }, 
+      { "CC-BY-NC-SA-3.0", CreativeCommonsAttributionNonCommercialShareAlike30Unported }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-NC-SA-3.0", CreativeCommonsAttributionNonCommercialShareAlike30Unported }, 
+      { "CC-BY-NC-SA-4.0", CreativeCommonsAttributionNonCommercialShareAlike40International }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-NC-SA-4.0", CreativeCommonsAttributionNonCommercialShareAlike40International }, 
+      { "CC-BY-ND-1.0", CreativeCommonsAttributionNoDerivatives10Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-ND-1.0", CreativeCommonsAttributionNoDerivatives10Generic }, 
+      { "CC-BY-ND-2.0", CreativeCommonsAttributionNoDerivatives20Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-ND-2.0", CreativeCommonsAttributionNoDerivatives20Generic }, 
+      { "CC-BY-ND-2.5", CreativeCommonsAttributionNoDerivatives25Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-ND-2.5", CreativeCommonsAttributionNoDerivatives25Generic }, 
+      { "CC-BY-ND-3.0", CreativeCommonsAttributionNoDerivatives30Unported }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-ND-3.0", CreativeCommonsAttributionNoDerivatives30Unported }, 
+      { "CC-BY-ND-4.0", CreativeCommonsAttributionNoDerivatives40International }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-ND-4.0", CreativeCommonsAttributionNoDerivatives40International }, 
+      { "CC-BY-SA-1.0", CreativeCommonsAttributionShareAlike10Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-SA-1.0", CreativeCommonsAttributionShareAlike10Generic }, 
+      { "CC-BY-SA-2.0", CreativeCommonsAttributionShareAlike20Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-SA-2.0", CreativeCommonsAttributionShareAlike20Generic }, 
+      { "CC-BY-SA-2.5", CreativeCommonsAttributionShareAlike25Generic }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-SA-2.5", CreativeCommonsAttributionShareAlike25Generic }, 
+      { "CC-BY-SA-3.0", CreativeCommonsAttributionShareAlike30Unported }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-SA-3.0", CreativeCommonsAttributionShareAlike30Unported }, 
+      { "CC-BY-SA-4.0", CreativeCommonsAttributionShareAlike40International }, 
+      { "http://hl7.org/fhir/spdx-license#CC-BY-SA-4.0", CreativeCommonsAttributionShareAlike40International }, 
+      { "CC0-1.0", CreativeCommonsZeroV10Universal }, 
+      { "http://hl7.org/fhir/spdx-license#CC0-1.0", CreativeCommonsZeroV10Universal }, 
+      { "CDDL-1.0", CommonDevelopmentAndDistributionLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#CDDL-1.0", CommonDevelopmentAndDistributionLicense10 }, 
+      { "CDDL-1.1", CommonDevelopmentAndDistributionLicense11 }, 
+      { "http://hl7.org/fhir/spdx-license#CDDL-1.1", CommonDevelopmentAndDistributionLicense11 }, 
+      { "CDLA-Permissive-1.0", CommunityDataLicenseAgreementPermissive10 }, 
+      { "http://hl7.org/fhir/spdx-license#CDLA-Permissive-1.0", CommunityDataLicenseAgreementPermissive10 }, 
+      { "CDLA-Sharing-1.0", CommunityDataLicenseAgreementSharing10 }, 
+      { "http://hl7.org/fhir/spdx-license#CDLA-Sharing-1.0", CommunityDataLicenseAgreementSharing10 }, 
+      { "CECILL-1.0", CeCILLFreeSoftwareLicenseAgreementV10 }, 
+      { "http://hl7.org/fhir/spdx-license#CECILL-1.0", CeCILLFreeSoftwareLicenseAgreementV10 }, 
+      { "CECILL-1.1", CeCILLFreeSoftwareLicenseAgreementV11 }, 
+      { "http://hl7.org/fhir/spdx-license#CECILL-1.1", CeCILLFreeSoftwareLicenseAgreementV11 }, 
+      { "CECILL-2.0", CeCILLFreeSoftwareLicenseAgreementV20 }, 
+      { "http://hl7.org/fhir/spdx-license#CECILL-2.0", CeCILLFreeSoftwareLicenseAgreementV20 }, 
+      { "CECILL-2.1", CeCILLFreeSoftwareLicenseAgreementV21 }, 
+      { "http://hl7.org/fhir/spdx-license#CECILL-2.1", CeCILLFreeSoftwareLicenseAgreementV21 }, 
+      { "CECILL-B", CeCILLBFreeSoftwareLicenseAgreement }, 
+      { "http://hl7.org/fhir/spdx-license#CECILL-B", CeCILLBFreeSoftwareLicenseAgreement }, 
+      { "CECILL-C", CeCILLCFreeSoftwareLicenseAgreement }, 
+      { "http://hl7.org/fhir/spdx-license#CECILL-C", CeCILLCFreeSoftwareLicenseAgreement }, 
+      { "ClArtistic", ClarifiedArtisticLicense }, 
+      { "http://hl7.org/fhir/spdx-license#ClArtistic", ClarifiedArtisticLicense }, 
+      { "CNRI-Jython", CNRIJythonLicense }, 
+      { "http://hl7.org/fhir/spdx-license#CNRI-Jython", CNRIJythonLicense }, 
+      { "CNRI-Python", CNRIPythonLicense }, 
+      { "http://hl7.org/fhir/spdx-license#CNRI-Python", CNRIPythonLicense }, 
+      { "CNRI-Python-GPL-Compatible", CNRIPythonOpenSourceGPLCompatibleLicenseAgreement }, 
+      { "http://hl7.org/fhir/spdx-license#CNRI-Python-GPL-Compatible", CNRIPythonOpenSourceGPLCompatibleLicenseAgreement }, 
+      { "Condor-1.1", CondorPublicLicenseV11 }, 
+      { "http://hl7.org/fhir/spdx-license#Condor-1.1", CondorPublicLicenseV11 }, 
+      { "CPAL-1.0", CommonPublicAttributionLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#CPAL-1.0", CommonPublicAttributionLicense10 }, 
+      { "CPL-1.0", CommonPublicLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#CPL-1.0", CommonPublicLicense10 }, 
+      { "CPOL-1.02", CodeProjectOpenLicense102 }, 
+      { "http://hl7.org/fhir/spdx-license#CPOL-1.02", CodeProjectOpenLicense102 }, 
+      { "Crossword", CrosswordLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Crossword", CrosswordLicense }, 
+      { "CrystalStacker", CrystalStackerLicense }, 
+      { "http://hl7.org/fhir/spdx-license#CrystalStacker", CrystalStackerLicense }, 
+      { "CUA-OPL-1.0", CUAOfficePublicLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#CUA-OPL-1.0", CUAOfficePublicLicenseV10 }, 
+      { "Cube", CubeLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Cube", CubeLicense }, 
+      { "curl", CurlLicense }, 
+      { "http://hl7.org/fhir/spdx-license#curl", CurlLicense }, 
+      { "D-FSL-1.0", DeutscheFreieSoftwareLizenz }, 
+      { "http://hl7.org/fhir/spdx-license#D-FSL-1.0", DeutscheFreieSoftwareLizenz }, 
+      { "diffmark", DiffmarkLicense }, 
+      { "http://hl7.org/fhir/spdx-license#diffmark", DiffmarkLicense }, 
+      { "DOC", DOCLicense }, 
+      { "http://hl7.org/fhir/spdx-license#DOC", DOCLicense }, 
+      { "Dotseqn", DotseqnLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Dotseqn", DotseqnLicense }, 
+      { "DSDP", DSDPLicense }, 
+      { "http://hl7.org/fhir/spdx-license#DSDP", DSDPLicense }, 
+      { "dvipdfm", DvipdfmLicense }, 
+      { "http://hl7.org/fhir/spdx-license#dvipdfm", DvipdfmLicense }, 
+      { "ECL-1.0", EducationalCommunityLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#ECL-1.0", EducationalCommunityLicenseV10 }, 
+      { "ECL-2.0", EducationalCommunityLicenseV20 }, 
+      { "http://hl7.org/fhir/spdx-license#ECL-2.0", EducationalCommunityLicenseV20 }, 
+      { "EFL-1.0", EiffelForumLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#EFL-1.0", EiffelForumLicenseV10 }, 
+      { "EFL-2.0", EiffelForumLicenseV20 }, 
+      { "http://hl7.org/fhir/spdx-license#EFL-2.0", EiffelForumLicenseV20 }, 
+      { "eGenix", EGenixComPublicLicense110 }, 
+      { "http://hl7.org/fhir/spdx-license#eGenix", EGenixComPublicLicense110 }, 
+      { "Entessa", EntessaPublicLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#Entessa", EntessaPublicLicenseV10 }, 
+      { "EPL-1.0", EclipsePublicLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#EPL-1.0", EclipsePublicLicense10 }, 
+      { "EPL-2.0", EclipsePublicLicense20 }, 
+      { "http://hl7.org/fhir/spdx-license#EPL-2.0", EclipsePublicLicense20 }, 
+      { "ErlPL-1.1", ErlangPublicLicenseV11 }, 
+      { "http://hl7.org/fhir/spdx-license#ErlPL-1.1", ErlangPublicLicenseV11 }, 
+      { "EUDatagrid", EUDataGridSoftwareLicense }, 
+      { "http://hl7.org/fhir/spdx-license#EUDatagrid", EUDataGridSoftwareLicense }, 
+      { "EUPL-1.0", EuropeanUnionPublicLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#EUPL-1.0", EuropeanUnionPublicLicense10 }, 
+      { "EUPL-1.1", EuropeanUnionPublicLicense11 }, 
+      { "http://hl7.org/fhir/spdx-license#EUPL-1.1", EuropeanUnionPublicLicense11 }, 
+      { "EUPL-1.2", EuropeanUnionPublicLicense12 }, 
+      { "http://hl7.org/fhir/spdx-license#EUPL-1.2", EuropeanUnionPublicLicense12 }, 
+      { "Eurosym", EurosymLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Eurosym", EurosymLicense }, 
+      { "Fair", FairLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Fair", FairLicense }, 
+      { "Frameworx-1.0", FrameworxOpenLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#Frameworx-1.0", FrameworxOpenLicense10 }, 
+      { "FreeImage", FreeImagePublicLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#FreeImage", FreeImagePublicLicenseV10 }, 
+      { "FSFAP", FSFAllPermissiveLicense }, 
+      { "http://hl7.org/fhir/spdx-license#FSFAP", FSFAllPermissiveLicense }, 
+      { "FSFUL", FSFUnlimitedLicense }, 
+      { "http://hl7.org/fhir/spdx-license#FSFUL", FSFUnlimitedLicense }, 
+      { "FSFULLR", FSFUnlimitedLicenseWithLicenseRetention }, 
+      { "http://hl7.org/fhir/spdx-license#FSFULLR", FSFUnlimitedLicenseWithLicenseRetention }, 
+      { "FTL", FreetypeProjectLicense }, 
+      { "http://hl7.org/fhir/spdx-license#FTL", FreetypeProjectLicense }, 
+      { "GFDL-1.1-only", GNUFreeDocumentationLicenseV11Only }, 
+      { "http://hl7.org/fhir/spdx-license#GFDL-1.1-only", GNUFreeDocumentationLicenseV11Only }, 
+      { "GFDL-1.1-or-later", GNUFreeDocumentationLicenseV11OrLater }, 
+      { "http://hl7.org/fhir/spdx-license#GFDL-1.1-or-later", GNUFreeDocumentationLicenseV11OrLater }, 
+      { "GFDL-1.2-only", GNUFreeDocumentationLicenseV12Only }, 
+      { "http://hl7.org/fhir/spdx-license#GFDL-1.2-only", GNUFreeDocumentationLicenseV12Only }, 
+      { "GFDL-1.2-or-later", GNUFreeDocumentationLicenseV12OrLater }, 
+      { "http://hl7.org/fhir/spdx-license#GFDL-1.2-or-later", GNUFreeDocumentationLicenseV12OrLater }, 
+      { "GFDL-1.3-only", GNUFreeDocumentationLicenseV13Only }, 
+      { "http://hl7.org/fhir/spdx-license#GFDL-1.3-only", GNUFreeDocumentationLicenseV13Only }, 
+      { "GFDL-1.3-or-later", GNUFreeDocumentationLicenseV13OrLater }, 
+      { "http://hl7.org/fhir/spdx-license#GFDL-1.3-or-later", GNUFreeDocumentationLicenseV13OrLater }, 
+      { "Giftware", GiftwareLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Giftware", GiftwareLicense }, 
+      { "GL2PS", GL2PSLicense }, 
+      { "http://hl7.org/fhir/spdx-license#GL2PS", GL2PSLicense }, 
+      { "Glide", VAL3dfxGlideLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Glide", VAL3dfxGlideLicense }, 
+      { "Glulxe", GlulxeLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Glulxe", GlulxeLicense }, 
+      { "gnuplot", GnuplotLicense }, 
+      { "http://hl7.org/fhir/spdx-license#gnuplot", GnuplotLicense }, 
+      { "GPL-1.0-only", GNUGeneralPublicLicenseV10Only }, 
+      { "http://hl7.org/fhir/spdx-license#GPL-1.0-only", GNUGeneralPublicLicenseV10Only }, 
+      { "GPL-1.0-or-later", GNUGeneralPublicLicenseV10OrLater }, 
+      { "http://hl7.org/fhir/spdx-license#GPL-1.0-or-later", GNUGeneralPublicLicenseV10OrLater }, 
+      { "GPL-2.0-only", GNUGeneralPublicLicenseV20Only }, 
+      { "http://hl7.org/fhir/spdx-license#GPL-2.0-only", GNUGeneralPublicLicenseV20Only }, 
+      { "GPL-2.0-or-later", GNUGeneralPublicLicenseV20OrLater }, 
+      { "http://hl7.org/fhir/spdx-license#GPL-2.0-or-later", GNUGeneralPublicLicenseV20OrLater }, 
+      { "GPL-3.0-only", GNUGeneralPublicLicenseV30Only }, 
+      { "http://hl7.org/fhir/spdx-license#GPL-3.0-only", GNUGeneralPublicLicenseV30Only }, 
+      { "GPL-3.0-or-later", GNUGeneralPublicLicenseV30OrLater }, 
+      { "http://hl7.org/fhir/spdx-license#GPL-3.0-or-later", GNUGeneralPublicLicenseV30OrLater }, 
+      { "gSOAP-1.3b", GSOAPPublicLicenseV13b }, 
+      { "http://hl7.org/fhir/spdx-license#gSOAP-1.3b", GSOAPPublicLicenseV13b }, 
+      { "HaskellReport", HaskellLanguageReportLicense }, 
+      { "http://hl7.org/fhir/spdx-license#HaskellReport", HaskellLanguageReportLicense }, 
+      { "HPND", HistoricalPermissionNoticeAndDisclaimer }, 
+      { "http://hl7.org/fhir/spdx-license#HPND", HistoricalPermissionNoticeAndDisclaimer }, 
+      { "IBM-pibs", IBMPowerPCInitializationAndBootSoftware }, 
+      { "http://hl7.org/fhir/spdx-license#IBM-pibs", IBMPowerPCInitializationAndBootSoftware }, 
+      { "ICU", ICULicense }, 
+      { "http://hl7.org/fhir/spdx-license#ICU", ICULicense }, 
+      { "IJG", IndependentJPEGGroupLicense }, 
+      { "http://hl7.org/fhir/spdx-license#IJG", IndependentJPEGGroupLicense }, 
+      { "ImageMagick", ImageMagickLicense }, 
+      { "http://hl7.org/fhir/spdx-license#ImageMagick", ImageMagickLicense }, 
+      { "iMatix", IMatixStandardFunctionLibraryAgreement }, 
+      { "http://hl7.org/fhir/spdx-license#iMatix", IMatixStandardFunctionLibraryAgreement }, 
+      { "Imlib2", Imlib2License }, 
+      { "http://hl7.org/fhir/spdx-license#Imlib2", Imlib2License }, 
+      { "Info-ZIP", InfoZIPLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Info-ZIP", InfoZIPLicense }, 
+      { "Intel", IntelOpenSourceLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Intel", IntelOpenSourceLicense }, 
+      { "Intel-ACPI", IntelACPISoftwareLicenseAgreement }, 
+      { "http://hl7.org/fhir/spdx-license#Intel-ACPI", IntelACPISoftwareLicenseAgreement }, 
+      { "Interbase-1.0", InterbasePublicLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#Interbase-1.0", InterbasePublicLicenseV10 }, 
+      { "IPA", IPAFontLicense }, 
+      { "http://hl7.org/fhir/spdx-license#IPA", IPAFontLicense }, 
+      { "IPL-1.0", IBMPublicLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#IPL-1.0", IBMPublicLicenseV10 }, 
+      { "ISC", ISCLicense }, 
+      { "http://hl7.org/fhir/spdx-license#ISC", ISCLicense }, 
+      { "JasPer-2.0", JasPerLicense }, 
+      { "http://hl7.org/fhir/spdx-license#JasPer-2.0", JasPerLicense }, 
+      { "JSON", JSONLicense }, 
+      { "http://hl7.org/fhir/spdx-license#JSON", JSONLicense }, 
+      { "LAL-1.2", LicenceArtLibre12 }, 
+      { "http://hl7.org/fhir/spdx-license#LAL-1.2", LicenceArtLibre12 }, 
+      { "LAL-1.3", LicenceArtLibre13 }, 
+      { "http://hl7.org/fhir/spdx-license#LAL-1.3", LicenceArtLibre13 }, 
+      { "Latex2e", Latex2eLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Latex2e", Latex2eLicense }, 
+      { "Leptonica", LeptonicaLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Leptonica", LeptonicaLicense }, 
+      { "LGPL-2.0-only", GNULibraryGeneralPublicLicenseV2Only }, 
+      { "http://hl7.org/fhir/spdx-license#LGPL-2.0-only", GNULibraryGeneralPublicLicenseV2Only }, 
+      { "LGPL-2.0-or-later", GNULibraryGeneralPublicLicenseV2OrLater }, 
+      { "http://hl7.org/fhir/spdx-license#LGPL-2.0-or-later", GNULibraryGeneralPublicLicenseV2OrLater }, 
+      { "LGPL-2.1-only", GNULesserGeneralPublicLicenseV21Only }, 
+      { "http://hl7.org/fhir/spdx-license#LGPL-2.1-only", GNULesserGeneralPublicLicenseV21Only }, 
+      { "LGPL-2.1-or-later", GNULesserGeneralPublicLicenseV21OrLater }, 
+      { "http://hl7.org/fhir/spdx-license#LGPL-2.1-or-later", GNULesserGeneralPublicLicenseV21OrLater }, 
+      { "LGPL-3.0-only", GNULesserGeneralPublicLicenseV30Only }, 
+      { "http://hl7.org/fhir/spdx-license#LGPL-3.0-only", GNULesserGeneralPublicLicenseV30Only }, 
+      { "LGPL-3.0-or-later", GNULesserGeneralPublicLicenseV30OrLater }, 
+      { "http://hl7.org/fhir/spdx-license#LGPL-3.0-or-later", GNULesserGeneralPublicLicenseV30OrLater }, 
+      { "LGPLLR", LesserGeneralPublicLicenseForLinguisticResources }, 
+      { "http://hl7.org/fhir/spdx-license#LGPLLR", LesserGeneralPublicLicenseForLinguisticResources }, 
+      { "Libpng", LibpngLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Libpng", LibpngLicense }, 
+      { "libtiff", LibtiffLicense }, 
+      { "http://hl7.org/fhir/spdx-license#libtiff", LibtiffLicense }, 
+      { "LiLiQ-P-1.1", LicenceLibreDuQuebecPermissiveVersion11 }, 
+      { "http://hl7.org/fhir/spdx-license#LiLiQ-P-1.1", LicenceLibreDuQuebecPermissiveVersion11 }, 
+      { "LiLiQ-R-1.1", LicenceLibreDuQuebecReciprociteVersion11 }, 
+      { "http://hl7.org/fhir/spdx-license#LiLiQ-R-1.1", LicenceLibreDuQuebecReciprociteVersion11 }, 
+      { "LiLiQ-Rplus-1.1", LicenceLibreDuQuebecReciprociteForteVersion11 }, 
+      { "http://hl7.org/fhir/spdx-license#LiLiQ-Rplus-1.1", LicenceLibreDuQuebecReciprociteForteVersion11 }, 
+      { "Linux-OpenIB", LinuxKernelVariantOfOpenIBOrgLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Linux-OpenIB", LinuxKernelVariantOfOpenIBOrgLicense }, 
+      { "LPL-1.0", LucentPublicLicenseVersion10 }, 
+      { "http://hl7.org/fhir/spdx-license#LPL-1.0", LucentPublicLicenseVersion10 }, 
+      { "LPL-1.02", LucentPublicLicenseV102 }, 
+      { "http://hl7.org/fhir/spdx-license#LPL-1.02", LucentPublicLicenseV102 }, 
+      { "LPPL-1.0", LaTeXProjectPublicLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#LPPL-1.0", LaTeXProjectPublicLicenseV10 }, 
+      { "LPPL-1.1", LaTeXProjectPublicLicenseV11 }, 
+      { "http://hl7.org/fhir/spdx-license#LPPL-1.1", LaTeXProjectPublicLicenseV11 }, 
+      { "LPPL-1.2", LaTeXProjectPublicLicenseV12 }, 
+      { "http://hl7.org/fhir/spdx-license#LPPL-1.2", LaTeXProjectPublicLicenseV12 }, 
+      { "LPPL-1.3a", LaTeXProjectPublicLicenseV13a }, 
+      { "http://hl7.org/fhir/spdx-license#LPPL-1.3a", LaTeXProjectPublicLicenseV13a }, 
+      { "LPPL-1.3c", LaTeXProjectPublicLicenseV13c }, 
+      { "http://hl7.org/fhir/spdx-license#LPPL-1.3c", LaTeXProjectPublicLicenseV13c }, 
+      { "MakeIndex", MakeIndexLicense }, 
+      { "http://hl7.org/fhir/spdx-license#MakeIndex", MakeIndexLicense }, 
+      { "MirOS", MirOSLicense }, 
+      { "http://hl7.org/fhir/spdx-license#MirOS", MirOSLicense }, 
+      { "MIT", MITLicense }, 
+      { "http://hl7.org/fhir/spdx-license#MIT", MITLicense }, 
+      { "MIT-0", MITNoAttribution }, 
+      { "http://hl7.org/fhir/spdx-license#MIT-0", MITNoAttribution }, 
+      { "MIT-advertising", EnlightenmentLicenseE16 }, 
+      { "http://hl7.org/fhir/spdx-license#MIT-advertising", EnlightenmentLicenseE16 }, 
+      { "MIT-CMU", CMULicense }, 
+      { "http://hl7.org/fhir/spdx-license#MIT-CMU", CMULicense }, 
+      { "MIT-enna", EnnaLicense }, 
+      { "http://hl7.org/fhir/spdx-license#MIT-enna", EnnaLicense }, 
+      { "MIT-feh", FehLicense }, 
+      { "http://hl7.org/fhir/spdx-license#MIT-feh", FehLicense }, 
+      { "MITNFA", MITPlusNoFalseAttribsLicense }, 
+      { "http://hl7.org/fhir/spdx-license#MITNFA", MITPlusNoFalseAttribsLicense }, 
+      { "Motosoto", MotosotoLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Motosoto", MotosotoLicense }, 
+      { "mpich2", Mpich2License }, 
+      { "http://hl7.org/fhir/spdx-license#mpich2", Mpich2License }, 
+      { "MPL-1.0", MozillaPublicLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#MPL-1.0", MozillaPublicLicense10 }, 
+      { "MPL-1.1", MozillaPublicLicense11 }, 
+      { "http://hl7.org/fhir/spdx-license#MPL-1.1", MozillaPublicLicense11 }, 
+      { "MPL-2.0", MozillaPublicLicense20 }, 
+      { "http://hl7.org/fhir/spdx-license#MPL-2.0", MozillaPublicLicense20 }, 
+      { "MPL-2.0-no-copyleft-exception", MozillaPublicLicense20NoCopyleftException }, 
+      { "http://hl7.org/fhir/spdx-license#MPL-2.0-no-copyleft-exception", MozillaPublicLicense20NoCopyleftException }, 
+      { "MS-PL", MicrosoftPublicLicense }, 
+      { "http://hl7.org/fhir/spdx-license#MS-PL", MicrosoftPublicLicense }, 
+      { "MS-RL", MicrosoftReciprocalLicense }, 
+      { "http://hl7.org/fhir/spdx-license#MS-RL", MicrosoftReciprocalLicense }, 
+      { "MTLL", MatrixTemplateLibraryLicense }, 
+      { "http://hl7.org/fhir/spdx-license#MTLL", MatrixTemplateLibraryLicense }, 
+      { "Multics", MulticsLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Multics", MulticsLicense }, 
+      { "Mup", MupLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Mup", MupLicense }, 
+      { "NASA-1.3", NASAOpenSourceAgreement13 }, 
+      { "http://hl7.org/fhir/spdx-license#NASA-1.3", NASAOpenSourceAgreement13 }, 
+      { "Naumen", NaumenPublicLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Naumen", NaumenPublicLicense }, 
+      { "NBPL-1.0", NetBooleanPublicLicenseV1 }, 
+      { "http://hl7.org/fhir/spdx-license#NBPL-1.0", NetBooleanPublicLicenseV1 }, 
+      { "NCSA", UniversityOfIllinoisNCSAOpenSourceLicense }, 
+      { "http://hl7.org/fhir/spdx-license#NCSA", UniversityOfIllinoisNCSAOpenSourceLicense }, 
+      { "Net-SNMP", NetSNMPLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Net-SNMP", NetSNMPLicense }, 
+      { "NetCDF", NetCDFLicense }, 
+      { "http://hl7.org/fhir/spdx-license#NetCDF", NetCDFLicense }, 
+      { "Newsletr", NewsletrLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Newsletr", NewsletrLicense }, 
+      { "NGPL", NethackGeneralPublicLicense }, 
+      { "http://hl7.org/fhir/spdx-license#NGPL", NethackGeneralPublicLicense }, 
+      { "NLOD-1.0", NorwegianLicenceForOpenGovernmentData }, 
+      { "http://hl7.org/fhir/spdx-license#NLOD-1.0", NorwegianLicenceForOpenGovernmentData }, 
+      { "NLPL", NoLimitPublicLicense }, 
+      { "http://hl7.org/fhir/spdx-license#NLPL", NoLimitPublicLicense }, 
+      { "Nokia", NokiaOpenSourceLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Nokia", NokiaOpenSourceLicense }, 
+      { "NOSL", NetizenOpenSourceLicense }, 
+      { "http://hl7.org/fhir/spdx-license#NOSL", NetizenOpenSourceLicense }, 
+      { "not-open-source", NotOpenSource }, 
+      { "http://hl7.org/fhir/spdx-license#not-open-source", NotOpenSource }, 
+      { "Noweb", NowebLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Noweb", NowebLicense }, 
+      { "NPL-1.0", NetscapePublicLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#NPL-1.0", NetscapePublicLicenseV10 }, 
+      { "NPL-1.1", NetscapePublicLicenseV11 }, 
+      { "http://hl7.org/fhir/spdx-license#NPL-1.1", NetscapePublicLicenseV11 }, 
+      { "NPOSL-3.0", NonProfitOpenSoftwareLicense30 }, 
+      { "http://hl7.org/fhir/spdx-license#NPOSL-3.0", NonProfitOpenSoftwareLicense30 }, 
+      { "NRL", NRLLicense }, 
+      { "http://hl7.org/fhir/spdx-license#NRL", NRLLicense }, 
+      { "NTP", NTPLicense }, 
+      { "http://hl7.org/fhir/spdx-license#NTP", NTPLicense }, 
+      { "OCCT-PL", OpenCASCADETechnologyPublicLicense }, 
+      { "http://hl7.org/fhir/spdx-license#OCCT-PL", OpenCASCADETechnologyPublicLicense }, 
+      { "OCLC-2.0", OCLCResearchPublicLicense20 }, 
+      { "http://hl7.org/fhir/spdx-license#OCLC-2.0", OCLCResearchPublicLicense20 }, 
+      { "ODbL-1.0", ODCOpenDatabaseLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#ODbL-1.0", ODCOpenDatabaseLicenseV10 }, 
+      { "OFL-1.0", SILOpenFontLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#OFL-1.0", SILOpenFontLicense10 }, 
+      { "OFL-1.1", SILOpenFontLicense11 }, 
+      { "http://hl7.org/fhir/spdx-license#OFL-1.1", SILOpenFontLicense11 }, 
+      { "OGTSL", OpenGroupTestSuiteLicense }, 
+      { "http://hl7.org/fhir/spdx-license#OGTSL", OpenGroupTestSuiteLicense }, 
+      { "OLDAP-1.1", OpenLDAPPublicLicenseV11 }, 
+      { "http://hl7.org/fhir/spdx-license#OLDAP-1.1", OpenLDAPPublicLicenseV11 }, 
+      { "OLDAP-1.2", OpenLDAPPublicLicenseV12 }, 
+      { "http://hl7.org/fhir/spdx-license#OLDAP-1.2", OpenLDAPPublicLicenseV12 }, 
+      { "OLDAP-1.3", OpenLDAPPublicLicenseV13 }, 
+      { "http://hl7.org/fhir/spdx-license#OLDAP-1.3", OpenLDAPPublicLicenseV13 }, 
+      { "OLDAP-1.4", OpenLDAPPublicLicenseV14 }, 
+      { "http://hl7.org/fhir/spdx-license#OLDAP-1.4", OpenLDAPPublicLicenseV14 }, 
+      { "OLDAP-2.0", OpenLDAPPublicLicenseV20OrPossibly20AAnd20B }, 
+      { "http://hl7.org/fhir/spdx-license#OLDAP-2.0", OpenLDAPPublicLicenseV20OrPossibly20AAnd20B }, 
+      { "OLDAP-2.0.1", OpenLDAPPublicLicenseV201 }, 
+      { "http://hl7.org/fhir/spdx-license#OLDAP-2.0.1", OpenLDAPPublicLicenseV201 }, 
+      { "OLDAP-2.1", OpenLDAPPublicLicenseV21 }, 
+      { "http://hl7.org/fhir/spdx-license#OLDAP-2.1", OpenLDAPPublicLicenseV21 }, 
+      { "OLDAP-2.2", OpenLDAPPublicLicenseV22 }, 
+      { "http://hl7.org/fhir/spdx-license#OLDAP-2.2", OpenLDAPPublicLicenseV22 }, 
+      { "OLDAP-2.2.1", OpenLDAPPublicLicenseV221 }, 
+      { "http://hl7.org/fhir/spdx-license#OLDAP-2.2.1", OpenLDAPPublicLicenseV221 }, 
+      { "OLDAP-2.2.2", OpenLDAPPublicLicense222 }, 
+      { "http://hl7.org/fhir/spdx-license#OLDAP-2.2.2", OpenLDAPPublicLicense222 }, 
+      { "OLDAP-2.3", OpenLDAPPublicLicenseV23 }, 
+      { "http://hl7.org/fhir/spdx-license#OLDAP-2.3", OpenLDAPPublicLicenseV23 }, 
+      { "OLDAP-2.4", OpenLDAPPublicLicenseV24 }, 
+      { "http://hl7.org/fhir/spdx-license#OLDAP-2.4", OpenLDAPPublicLicenseV24 }, 
+      { "OLDAP-2.5", OpenLDAPPublicLicenseV25 }, 
+      { "http://hl7.org/fhir/spdx-license#OLDAP-2.5", OpenLDAPPublicLicenseV25 }, 
+      { "OLDAP-2.6", OpenLDAPPublicLicenseV26 }, 
+      { "http://hl7.org/fhir/spdx-license#OLDAP-2.6", OpenLDAPPublicLicenseV26 }, 
+      { "OLDAP-2.7", OpenLDAPPublicLicenseV27 }, 
+      { "http://hl7.org/fhir/spdx-license#OLDAP-2.7", OpenLDAPPublicLicenseV27 }, 
+      { "OLDAP-2.8", OpenLDAPPublicLicenseV28 }, 
+      { "http://hl7.org/fhir/spdx-license#OLDAP-2.8", OpenLDAPPublicLicenseV28 }, 
+      { "OML", OpenMarketLicense }, 
+      { "http://hl7.org/fhir/spdx-license#OML", OpenMarketLicense }, 
+      { "OpenSSL", OpenSSLLicense }, 
+      { "http://hl7.org/fhir/spdx-license#OpenSSL", OpenSSLLicense }, 
+      { "OPL-1.0", OpenPublicLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#OPL-1.0", OpenPublicLicenseV10 }, 
+      { "OSET-PL-2.1", OSETPublicLicenseVersion21 }, 
+      { "http://hl7.org/fhir/spdx-license#OSET-PL-2.1", OSETPublicLicenseVersion21 }, 
+      { "OSL-1.0", OpenSoftwareLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#OSL-1.0", OpenSoftwareLicense10 }, 
+      { "OSL-1.1", OpenSoftwareLicense11 }, 
+      { "http://hl7.org/fhir/spdx-license#OSL-1.1", OpenSoftwareLicense11 }, 
+      { "OSL-2.0", OpenSoftwareLicense20 }, 
+      { "http://hl7.org/fhir/spdx-license#OSL-2.0", OpenSoftwareLicense20 }, 
+      { "OSL-2.1", OpenSoftwareLicense21 }, 
+      { "http://hl7.org/fhir/spdx-license#OSL-2.1", OpenSoftwareLicense21 }, 
+      { "OSL-3.0", OpenSoftwareLicense30 }, 
+      { "http://hl7.org/fhir/spdx-license#OSL-3.0", OpenSoftwareLicense30 }, 
+      { "PDDL-1.0", ODCPublicDomainDedicationAndLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#PDDL-1.0", ODCPublicDomainDedicationAndLicense10 }, 
+      { "PHP-3.0", PHPLicenseV30 }, 
+      { "http://hl7.org/fhir/spdx-license#PHP-3.0", PHPLicenseV30 }, 
+      { "PHP-3.01", PHPLicenseV301 }, 
+      { "http://hl7.org/fhir/spdx-license#PHP-3.01", PHPLicenseV301 }, 
+      { "Plexus", PlexusClassworldsLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Plexus", PlexusClassworldsLicense }, 
+      { "PostgreSQL", PostgreSQLLicense }, 
+      { "http://hl7.org/fhir/spdx-license#PostgreSQL", PostgreSQLLicense }, 
+      { "psfrag", PsfragLicense }, 
+      { "http://hl7.org/fhir/spdx-license#psfrag", PsfragLicense }, 
+      { "psutils", PsutilsLicense }, 
+      { "http://hl7.org/fhir/spdx-license#psutils", PsutilsLicense }, 
+      { "Python-2.0", PythonLicense20 }, 
+      { "http://hl7.org/fhir/spdx-license#Python-2.0", PythonLicense20 }, 
+      { "Qhull", QhullLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Qhull", QhullLicense }, 
+      { "QPL-1.0", QPublicLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#QPL-1.0", QPublicLicense10 }, 
+      { "Rdisc", RdiscLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Rdisc", RdiscLicense }, 
+      { "RHeCos-1.1", RedHatECosPublicLicenseV11 }, 
+      { "http://hl7.org/fhir/spdx-license#RHeCos-1.1", RedHatECosPublicLicenseV11 }, 
+      { "RPL-1.1", ReciprocalPublicLicense11 }, 
+      { "http://hl7.org/fhir/spdx-license#RPL-1.1", ReciprocalPublicLicense11 }, 
+      { "RPL-1.5", ReciprocalPublicLicense15 }, 
+      { "http://hl7.org/fhir/spdx-license#RPL-1.5", ReciprocalPublicLicense15 }, 
+      { "RPSL-1.0", RealNetworksPublicSourceLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#RPSL-1.0", RealNetworksPublicSourceLicenseV10 }, 
+      { "RSA-MD", RSAMessageDigestLicense }, 
+      { "http://hl7.org/fhir/spdx-license#RSA-MD", RSAMessageDigestLicense }, 
+      { "RSCPL", RicohSourceCodePublicLicense }, 
+      { "http://hl7.org/fhir/spdx-license#RSCPL", RicohSourceCodePublicLicense }, 
+      { "Ruby", RubyLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Ruby", RubyLicense }, 
+      { "SAX-PD", SaxPublicDomainNotice }, 
+      { "http://hl7.org/fhir/spdx-license#SAX-PD", SaxPublicDomainNotice }, 
+      { "Saxpath", SaxpathLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Saxpath", SaxpathLicense }, 
+      { "SCEA", SCEASharedSourceLicense }, 
+      { "http://hl7.org/fhir/spdx-license#SCEA", SCEASharedSourceLicense }, 
+      { "Sendmail", SendmailLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Sendmail", SendmailLicense }, 
+      { "SGI-B-1.0", SGIFreeSoftwareLicenseBV10 }, 
+      { "http://hl7.org/fhir/spdx-license#SGI-B-1.0", SGIFreeSoftwareLicenseBV10 }, 
+      { "SGI-B-1.1", SGIFreeSoftwareLicenseBV11 }, 
+      { "http://hl7.org/fhir/spdx-license#SGI-B-1.1", SGIFreeSoftwareLicenseBV11 }, 
+      { "SGI-B-2.0", SGIFreeSoftwareLicenseBV20 }, 
+      { "http://hl7.org/fhir/spdx-license#SGI-B-2.0", SGIFreeSoftwareLicenseBV20 }, 
+      { "SimPL-2.0", SimplePublicLicense20 }, 
+      { "http://hl7.org/fhir/spdx-license#SimPL-2.0", SimplePublicLicense20 }, 
+      { "SISSL", SunIndustryStandardsSourceLicenseV11 }, 
+      { "http://hl7.org/fhir/spdx-license#SISSL", SunIndustryStandardsSourceLicenseV11 }, 
+      { "SISSL-1.2", SunIndustryStandardsSourceLicenseV12 }, 
+      { "http://hl7.org/fhir/spdx-license#SISSL-1.2", SunIndustryStandardsSourceLicenseV12 }, 
+      { "Sleepycat", SleepycatLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Sleepycat", SleepycatLicense }, 
+      { "SMLNJ", StandardMLOfNewJerseyLicense }, 
+      { "http://hl7.org/fhir/spdx-license#SMLNJ", StandardMLOfNewJerseyLicense }, 
+      { "SMPPL", SecureMessagingProtocolPublicLicense }, 
+      { "http://hl7.org/fhir/spdx-license#SMPPL", SecureMessagingProtocolPublicLicense }, 
+      { "SNIA", SNIAPublicLicense11 }, 
+      { "http://hl7.org/fhir/spdx-license#SNIA", SNIAPublicLicense11 }, 
+      { "Spencer-86", SpencerLicense86 }, 
+      { "http://hl7.org/fhir/spdx-license#Spencer-86", SpencerLicense86 }, 
+      { "Spencer-94", SpencerLicense94 }, 
+      { "http://hl7.org/fhir/spdx-license#Spencer-94", SpencerLicense94 }, 
+      { "Spencer-99", SpencerLicense99 }, 
+      { "http://hl7.org/fhir/spdx-license#Spencer-99", SpencerLicense99 }, 
+      { "SPL-1.0", SunPublicLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#SPL-1.0", SunPublicLicenseV10 }, 
+      { "SugarCRM-1.1.3", SugarCRMPublicLicenseV113 }, 
+      { "http://hl7.org/fhir/spdx-license#SugarCRM-1.1.3", SugarCRMPublicLicenseV113 }, 
+      { "SWL", SchemeWidgetLibrarySWLSoftwareLicenseAgreement }, 
+      { "http://hl7.org/fhir/spdx-license#SWL", SchemeWidgetLibrarySWLSoftwareLicenseAgreement }, 
+      { "TCL", TCLTKLicense }, 
+      { "http://hl7.org/fhir/spdx-license#TCL", TCLTKLicense }, 
+      { "TCP-wrappers", TCPWrappersLicense }, 
+      { "http://hl7.org/fhir/spdx-license#TCP-wrappers", TCPWrappersLicense }, 
+      { "TMate", TMateOpenSourceLicense }, 
+      { "http://hl7.org/fhir/spdx-license#TMate", TMateOpenSourceLicense }, 
+      { "TORQUE-1.1", TORQUEV25PlusSoftwareLicenseV11 }, 
+      { "http://hl7.org/fhir/spdx-license#TORQUE-1.1", TORQUEV25PlusSoftwareLicenseV11 }, 
+      { "TOSL", TrussterOpenSourceLicense }, 
+      { "http://hl7.org/fhir/spdx-license#TOSL", TrussterOpenSourceLicense }, 
+      { "Unicode-DFS-2015", UnicodeLicenseAgreementDataFilesAndSoftware2015 }, 
+      { "http://hl7.org/fhir/spdx-license#Unicode-DFS-2015", UnicodeLicenseAgreementDataFilesAndSoftware2015 }, 
+      { "Unicode-DFS-2016", UnicodeLicenseAgreementDataFilesAndSoftware2016 }, 
+      { "http://hl7.org/fhir/spdx-license#Unicode-DFS-2016", UnicodeLicenseAgreementDataFilesAndSoftware2016 }, 
+      { "Unicode-TOU", UnicodeTermsOfUse }, 
+      { "http://hl7.org/fhir/spdx-license#Unicode-TOU", UnicodeTermsOfUse }, 
+      { "Unlicense", TheUnlicense }, 
+      { "http://hl7.org/fhir/spdx-license#Unlicense", TheUnlicense }, 
+      { "UPL-1.0", UniversalPermissiveLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#UPL-1.0", UniversalPermissiveLicenseV10 }, 
+      { "Vim", VimLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Vim", VimLicense }, 
+      { "VOSTROM", VOSTROMPublicLicenseForOpenSource }, 
+      { "http://hl7.org/fhir/spdx-license#VOSTROM", VOSTROMPublicLicenseForOpenSource }, 
+      { "VSL-1.0", VovidaSoftwareLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#VSL-1.0", VovidaSoftwareLicenseV10 }, 
+      { "W3C", W3CSoftwareNoticeAndLicense20021231 }, 
+      { "http://hl7.org/fhir/spdx-license#W3C", W3CSoftwareNoticeAndLicense20021231 }, 
+      { "W3C-19980720", W3CSoftwareNoticeAndLicense19980720 }, 
+      { "http://hl7.org/fhir/spdx-license#W3C-19980720", W3CSoftwareNoticeAndLicense19980720 }, 
+      { "W3C-20150513", W3CSoftwareNoticeAndDocumentLicense20150513 }, 
+      { "http://hl7.org/fhir/spdx-license#W3C-20150513", W3CSoftwareNoticeAndDocumentLicense20150513 }, 
+      { "Watcom-1.0", SybaseOpenWatcomPublicLicense10 }, 
+      { "http://hl7.org/fhir/spdx-license#Watcom-1.0", SybaseOpenWatcomPublicLicense10 }, 
+      { "Wsuipa", WsuipaLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Wsuipa", WsuipaLicense }, 
+      { "WTFPL", DoWhatTheFAsteriskCkYouWantToPublicLicense }, 
+      { "http://hl7.org/fhir/spdx-license#WTFPL", DoWhatTheFAsteriskCkYouWantToPublicLicense }, 
+      { "X11", X11License }, 
+      { "http://hl7.org/fhir/spdx-license#X11", X11License }, 
+      { "Xerox", XeroxLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Xerox", XeroxLicense }, 
+      { "XFree86-1.1", XFree86License11 }, 
+      { "http://hl7.org/fhir/spdx-license#XFree86-1.1", XFree86License11 }, 
+      { "xinetd", XinetdLicense }, 
+      { "http://hl7.org/fhir/spdx-license#xinetd", XinetdLicense }, 
+      { "Xnet", XNetLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Xnet", XNetLicense }, 
+      { "xpp", XPPLicense }, 
+      { "http://hl7.org/fhir/spdx-license#xpp", XPPLicense }, 
+      { "XSkat", XSkatLicense }, 
+      { "http://hl7.org/fhir/spdx-license#XSkat", XSkatLicense }, 
+      { "YPL-1.0", YahooNotPublicLicenseV10 }, 
+      { "http://hl7.org/fhir/spdx-license#YPL-1.0", YahooNotPublicLicenseV10 }, 
+      { "YPL-1.1", YahooNotPublicLicenseV11 }, 
+      { "http://hl7.org/fhir/spdx-license#YPL-1.1", YahooNotPublicLicenseV11 }, 
+      { "Zed", ZedLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Zed", ZedLicense }, 
+      { "Zend-2.0", ZendLicenseV20 }, 
+      { "http://hl7.org/fhir/spdx-license#Zend-2.0", ZendLicenseV20 }, 
+      { "Zimbra-1.3", ZimbraPublicLicenseV13 }, 
+      { "http://hl7.org/fhir/spdx-license#Zimbra-1.3", ZimbraPublicLicenseV13 }, 
+      { "Zimbra-1.4", ZimbraPublicLicenseV14 }, 
+      { "http://hl7.org/fhir/spdx-license#Zimbra-1.4", ZimbraPublicLicenseV14 }, 
+      { "Zlib", ZlibLicense }, 
+      { "http://hl7.org/fhir/spdx-license#Zlib", ZlibLicense }, 
+      { "zlib-acknowledgement", ZlibLibpngLicenseWithAcknowledgement }, 
+      { "http://hl7.org/fhir/spdx-license#zlib-acknowledgement", ZlibLibpngLicenseWithAcknowledgement }, 
+      { "ZPL-1.1", ZopePublicLicense11 }, 
+      { "http://hl7.org/fhir/spdx-license#ZPL-1.1", ZopePublicLicense11 }, 
+      { "ZPL-2.0", ZopePublicLicense20 }, 
+      { "http://hl7.org/fhir/spdx-license#ZPL-2.0", ZopePublicLicense20 }, 
+      { "ZPL-2.1", ZopePublicLicense21 }, 
+      { "http://hl7.org/fhir/spdx-license#ZPL-2.1", ZopePublicLicense21 }, 
+    };
   };
 }

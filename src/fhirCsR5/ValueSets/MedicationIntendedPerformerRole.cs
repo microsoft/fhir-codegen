@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class MedicationIntendedPerformerRoleCodes
   {
     /// <summary>
-    /// 
+    /// Oncology Nurse
     /// </summary>
     public static readonly Coding OncologyNurse = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/CodeSystem/medication-intended-performer-role"
     };
     /// <summary>
-    /// 
+    /// Pain Control Nurse
     /// </summary>
     public static readonly Coding PainControlNurse = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/CodeSystem/medication-intended-performer-role"
     };
     /// <summary>
-    /// 
+    /// Pharmacist
     /// </summary>
     public static readonly Coding Pharmacist = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/CodeSystem/medication-intended-performer-role"
     };
     /// <summary>
-    /// 
+    /// Physician
     /// </summary>
     public static readonly Coding Physician = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/CodeSystem/medication-intended-performer-role"
     };
     /// <summary>
-    /// 
+    /// Registered Nurse
     /// </summary>
     public static readonly Coding RegisteredNurse = new Coding
     {
@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOncologyNurse = "oncologynurse";
 
     /// <summary>
+    /// Literal for code: MedicationIntendedPerformerRoleOncologyNurse
+    /// </summary>
+    public const string LiteralMedicationIntendedPerformerRoleOncologyNurse = "http://hl7.org/fhir/CodeSystem/medication-intended-performer-role#oncologynurse";
+
+    /// <summary>
     /// Literal for code: PainControlNurse
     /// </summary>
     public const string LiteralPainControlNurse = "paincontrolnurse";
+
+    /// <summary>
+    /// Literal for code: MedicationIntendedPerformerRolePainControlNurse
+    /// </summary>
+    public const string LiteralMedicationIntendedPerformerRolePainControlNurse = "http://hl7.org/fhir/CodeSystem/medication-intended-performer-role#paincontrolnurse";
 
     /// <summary>
     /// Literal for code: Pharmacist
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPharmacist = "pharmacist";
 
     /// <summary>
+    /// Literal for code: MedicationIntendedPerformerRolePharmacist
+    /// </summary>
+    public const string LiteralMedicationIntendedPerformerRolePharmacist = "http://hl7.org/fhir/CodeSystem/medication-intended-performer-role#pharmacist";
+
+    /// <summary>
     /// Literal for code: Physician
     /// </summary>
     public const string LiteralPhysician = "physician";
 
     /// <summary>
+    /// Literal for code: MedicationIntendedPerformerRolePhysician
+    /// </summary>
+    public const string LiteralMedicationIntendedPerformerRolePhysician = "http://hl7.org/fhir/CodeSystem/medication-intended-performer-role#physician";
+
+    /// <summary>
     /// Literal for code: RegisteredNurse
     /// </summary>
     public const string LiteralRegisteredNurse = "registerednurse";
+
+    /// <summary>
+    /// Literal for code: MedicationIntendedPerformerRoleRegisteredNurse
+    /// </summary>
+    public const string LiteralMedicationIntendedPerformerRoleRegisteredNurse = "http://hl7.org/fhir/CodeSystem/medication-intended-performer-role#registerednurse";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationIntendedPerformerRole Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "oncologynurse", OncologyNurse }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-intended-performer-role#oncologynurse", OncologyNurse }, 
+      { "paincontrolnurse", PainControlNurse }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-intended-performer-role#paincontrolnurse", PainControlNurse }, 
+      { "pharmacist", Pharmacist }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-intended-performer-role#pharmacist", Pharmacist }, 
+      { "physician", Physician }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-intended-performer-role#physician", Physician }, 
+      { "registerednurse", RegisteredNurse }, 
+      { "http://hl7.org/fhir/CodeSystem/medication-intended-performer-role#registerednurse", RegisteredNurse }, 
+    };
   };
 }

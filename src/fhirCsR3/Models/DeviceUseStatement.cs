@@ -411,5 +411,13 @@ namespace fhirCsR3.Models
     public const string INTENDED = "intended";
     public const string STOPPED = "stopped";
     public const string ON_HOLD = "on-hold";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "completed",
+      "entered-in-error",
+      "intended",
+      "stopped",
+      "on-hold",
+    };
   }
 }

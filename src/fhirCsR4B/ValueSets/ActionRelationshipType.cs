@@ -99,9 +99,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAfter = "after";
 
     /// <summary>
+    /// Literal for code: ActionRelationshipTypeAfter
+    /// </summary>
+    public const string LiteralActionRelationshipTypeAfter = "http://hl7.org/fhir/action-relationship-type#after";
+
+    /// <summary>
     /// Literal for code: AfterEnd
     /// </summary>
     public const string LiteralAfterEnd = "after-end";
+
+    /// <summary>
+    /// Literal for code: ActionRelationshipTypeAfterEnd
+    /// </summary>
+    public const string LiteralActionRelationshipTypeAfterEnd = "http://hl7.org/fhir/action-relationship-type#after-end";
 
     /// <summary>
     /// Literal for code: AfterStart
@@ -109,9 +119,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAfterStart = "after-start";
 
     /// <summary>
+    /// Literal for code: ActionRelationshipTypeAfterStart
+    /// </summary>
+    public const string LiteralActionRelationshipTypeAfterStart = "http://hl7.org/fhir/action-relationship-type#after-start";
+
+    /// <summary>
     /// Literal for code: Before
     /// </summary>
     public const string LiteralBefore = "before";
+
+    /// <summary>
+    /// Literal for code: ActionRelationshipTypeBefore
+    /// </summary>
+    public const string LiteralActionRelationshipTypeBefore = "http://hl7.org/fhir/action-relationship-type#before";
 
     /// <summary>
     /// Literal for code: BeforeEnd
@@ -119,9 +139,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBeforeEnd = "before-end";
 
     /// <summary>
+    /// Literal for code: ActionRelationshipTypeBeforeEnd
+    /// </summary>
+    public const string LiteralActionRelationshipTypeBeforeEnd = "http://hl7.org/fhir/action-relationship-type#before-end";
+
+    /// <summary>
     /// Literal for code: BeforeStart
     /// </summary>
     public const string LiteralBeforeStart = "before-start";
+
+    /// <summary>
+    /// Literal for code: ActionRelationshipTypeBeforeStart
+    /// </summary>
+    public const string LiteralActionRelationshipTypeBeforeStart = "http://hl7.org/fhir/action-relationship-type#before-start";
 
     /// <summary>
     /// Literal for code: Concurrent
@@ -129,13 +159,52 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralConcurrent = "concurrent";
 
     /// <summary>
+    /// Literal for code: ActionRelationshipTypeConcurrent
+    /// </summary>
+    public const string LiteralActionRelationshipTypeConcurrent = "http://hl7.org/fhir/action-relationship-type#concurrent";
+
+    /// <summary>
     /// Literal for code: ConcurrentWithEnd
     /// </summary>
     public const string LiteralConcurrentWithEnd = "concurrent-with-end";
 
     /// <summary>
+    /// Literal for code: ActionRelationshipTypeConcurrentWithEnd
+    /// </summary>
+    public const string LiteralActionRelationshipTypeConcurrentWithEnd = "http://hl7.org/fhir/action-relationship-type#concurrent-with-end";
+
+    /// <summary>
     /// Literal for code: ConcurrentWithStart
     /// </summary>
     public const string LiteralConcurrentWithStart = "concurrent-with-start";
+
+    /// <summary>
+    /// Literal for code: ActionRelationshipTypeConcurrentWithStart
+    /// </summary>
+    public const string LiteralActionRelationshipTypeConcurrentWithStart = "http://hl7.org/fhir/action-relationship-type#concurrent-with-start";
+
+    /// <summary>
+    /// Dictionary for looking up ActionRelationshipType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "after", After }, 
+      { "http://hl7.org/fhir/action-relationship-type#after", After }, 
+      { "after-end", AfterEnd }, 
+      { "http://hl7.org/fhir/action-relationship-type#after-end", AfterEnd }, 
+      { "after-start", AfterStart }, 
+      { "http://hl7.org/fhir/action-relationship-type#after-start", AfterStart }, 
+      { "before", Before }, 
+      { "http://hl7.org/fhir/action-relationship-type#before", Before }, 
+      { "before-end", BeforeEnd }, 
+      { "http://hl7.org/fhir/action-relationship-type#before-end", BeforeEnd }, 
+      { "before-start", BeforeStart }, 
+      { "http://hl7.org/fhir/action-relationship-type#before-start", BeforeStart }, 
+      { "concurrent", Concurrent }, 
+      { "http://hl7.org/fhir/action-relationship-type#concurrent", Concurrent }, 
+      { "concurrent-with-end", ConcurrentWithEnd }, 
+      { "http://hl7.org/fhir/action-relationship-type#concurrent-with-end", ConcurrentWithEnd }, 
+      { "concurrent-with-start", ConcurrentWithStart }, 
+      { "http://hl7.org/fhir/action-relationship-type#concurrent-with-start", ConcurrentWithStart }, 
+    };
   };
 }

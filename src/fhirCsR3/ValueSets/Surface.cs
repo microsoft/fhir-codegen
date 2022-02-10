@@ -117,9 +117,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBuccal = "B";
 
     /// <summary>
+    /// Literal for code: SurfaceBuccal
+    /// </summary>
+    public const string LiteralSurfaceBuccal = "http://hl7.org/fhir/FDI-surface#B";
+
+    /// <summary>
     /// Literal for code: Distal
     /// </summary>
     public const string LiteralDistal = "D";
+
+    /// <summary>
+    /// Literal for code: SurfaceDistal
+    /// </summary>
+    public const string LiteralSurfaceDistal = "http://hl7.org/fhir/FDI-surface#D";
 
     /// <summary>
     /// Literal for code: Distoincisal
@@ -127,9 +137,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDistoincisal = "DI";
 
     /// <summary>
+    /// Literal for code: SurfaceDistoincisal
+    /// </summary>
+    public const string LiteralSurfaceDistoincisal = "http://hl7.org/fhir/FDI-surface#DI";
+
+    /// <summary>
     /// Literal for code: Distoclusal
     /// </summary>
     public const string LiteralDistoclusal = "DO";
+
+    /// <summary>
+    /// Literal for code: SurfaceDistoclusal
+    /// </summary>
+    public const string LiteralSurfaceDistoclusal = "http://hl7.org/fhir/FDI-surface#DO";
 
     /// <summary>
     /// Literal for code: Incisal
@@ -137,9 +157,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIncisal = "I";
 
     /// <summary>
+    /// Literal for code: SurfaceIncisal
+    /// </summary>
+    public const string LiteralSurfaceIncisal = "http://hl7.org/fhir/FDI-surface#I";
+
+    /// <summary>
     /// Literal for code: Lingual
     /// </summary>
     public const string LiteralLingual = "L";
+
+    /// <summary>
+    /// Literal for code: SurfaceLingual
+    /// </summary>
+    public const string LiteralSurfaceLingual = "http://hl7.org/fhir/FDI-surface#L";
 
     /// <summary>
     /// Literal for code: Mesial
@@ -147,9 +177,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMesial = "M";
 
     /// <summary>
+    /// Literal for code: SurfaceMesial
+    /// </summary>
+    public const string LiteralSurfaceMesial = "http://hl7.org/fhir/FDI-surface#M";
+
+    /// <summary>
     /// Literal for code: Mesioclusal
     /// </summary>
     public const string LiteralMesioclusal = "MO";
+
+    /// <summary>
+    /// Literal for code: SurfaceMesioclusal
+    /// </summary>
+    public const string LiteralSurfaceMesioclusal = "http://hl7.org/fhir/FDI-surface#MO";
 
     /// <summary>
     /// Literal for code: Mesioclusodistal
@@ -157,13 +197,56 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMesioclusodistal = "MOD";
 
     /// <summary>
+    /// Literal for code: SurfaceMesioclusodistal
+    /// </summary>
+    public const string LiteralSurfaceMesioclusodistal = "http://hl7.org/fhir/FDI-surface#MOD";
+
+    /// <summary>
     /// Literal for code: Occlusal
     /// </summary>
     public const string LiteralOcclusal = "O";
 
     /// <summary>
+    /// Literal for code: SurfaceOcclusal
+    /// </summary>
+    public const string LiteralSurfaceOcclusal = "http://hl7.org/fhir/FDI-surface#O";
+
+    /// <summary>
     /// Literal for code: Ventral
     /// </summary>
     public const string LiteralVentral = "V";
+
+    /// <summary>
+    /// Literal for code: SurfaceVentral
+    /// </summary>
+    public const string LiteralSurfaceVentral = "http://hl7.org/fhir/FDI-surface#V";
+
+    /// <summary>
+    /// Dictionary for looking up Surface Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "B", Buccal }, 
+      { "http://hl7.org/fhir/FDI-surface#B", Buccal }, 
+      { "D", Distal }, 
+      { "http://hl7.org/fhir/FDI-surface#D", Distal }, 
+      { "DI", Distoincisal }, 
+      { "http://hl7.org/fhir/FDI-surface#DI", Distoincisal }, 
+      { "DO", Distoclusal }, 
+      { "http://hl7.org/fhir/FDI-surface#DO", Distoclusal }, 
+      { "I", Incisal }, 
+      { "http://hl7.org/fhir/FDI-surface#I", Incisal }, 
+      { "L", Lingual }, 
+      { "http://hl7.org/fhir/FDI-surface#L", Lingual }, 
+      { "M", Mesial }, 
+      { "http://hl7.org/fhir/FDI-surface#M", Mesial }, 
+      { "MO", Mesioclusal }, 
+      { "http://hl7.org/fhir/FDI-surface#MO", Mesioclusal }, 
+      { "MOD", Mesioclusodistal }, 
+      { "http://hl7.org/fhir/FDI-surface#MOD", Mesioclusodistal }, 
+      { "O", Occlusal }, 
+      { "http://hl7.org/fhir/FDI-surface#O", Occlusal }, 
+      { "V", Ventral }, 
+      { "http://hl7.org/fhir/FDI-surface#V", Ventral }, 
+    };
   };
 }

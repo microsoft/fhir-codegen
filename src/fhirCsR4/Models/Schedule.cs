@@ -24,6 +24,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? Active { get; set; }
     /// <summary>
+    /// Extension container element for Active
+    /// </summary>
+    public Element _Active { get; set; }
+    /// <summary>
     /// The capacity to support multiple referenced resource types should be used in cases where the specific resources themselves cannot be scheduled without the other, and thus only make sense to the system exposing them as a group. Common examples of this are where the combination of a practitioner and a room (Location) are always required by a system.
     /// </summary>
     public List<Reference> Actor { get; set; }
@@ -88,6 +92,12 @@ namespace fhirCsR4.Models
       if (Active != null)
       {
         writer.WriteBoolean("active", (bool)Active!);
+      }
+
+      if (_Active != null)
+      {
+        writer.WritePropertyName("_active");
+        _Active.SerializeJson(writer, options);
       }
 
       if ((ServiceCategory != null) && (ServiceCategory.Count != 0))
@@ -173,6 +183,11 @@ namespace fhirCsR4.Models
       {
         case "active":
           Active = reader.GetBoolean();
+          break;
+
+        case "_active":
+          _Active = new fhirCsR4.Models.Element();
+          _Active.DeserializeJson(ref reader, options);
           break;
 
         case "actor":

@@ -343,6 +343,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? NotGiven { get; set; }
     /// <summary>
+    /// Extension container element for NotGiven
+    /// </summary>
+    public Element _NotGiven { get; set; }
+    /// <summary>
     /// A larger event of which this particular event is a component or step.
     /// </summary>
     public List<Reference> PartOf { get; set; }
@@ -525,6 +529,12 @@ namespace fhirCsR3.Models
       if (NotGiven != null)
       {
         writer.WriteBoolean("notGiven", (bool)NotGiven!);
+      }
+
+      if (_NotGiven != null)
+      {
+        writer.WritePropertyName("_notGiven");
+        _NotGiven.SerializeJson(writer, options);
       }
 
       if ((ReasonNotGiven != null) && (ReasonNotGiven.Count != 0))
@@ -807,6 +817,11 @@ namespace fhirCsR3.Models
           NotGiven = reader.GetBoolean();
           break;
 
+        case "_notGiven":
+          _NotGiven = new fhirCsR3.Models.Element();
+          _NotGiven.DeserializeJson(ref reader, options);
+          break;
+
         case "partOf":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -1029,5 +1044,13 @@ namespace fhirCsR3.Models
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string STOPPED = "stopped";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "in-progress",
+      "on-hold",
+      "completed",
+      "entered-in-error",
+      "stopped",
+      "unknown",
+    };
   }
 }

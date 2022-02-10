@@ -28,9 +28,17 @@ namespace fhirCsR4.Models
     /// </summary>
     public int? NumberOfParticipants { get; set; }
     /// <summary>
+    /// Extension container element for NumberOfParticipants
+    /// </summary>
+    public Element _NumberOfParticipants { get; set; }
+    /// <summary>
     /// Number of studies included in this evidence synthesis.
     /// </summary>
     public int? NumberOfStudies { get; set; }
+    /// <summary>
+    /// Extension container element for NumberOfStudies
+    /// </summary>
+    public Element _NumberOfStudies { get; set; }
     /// <summary>
     /// Serialize to a JSON object
     /// </summary>
@@ -58,9 +66,21 @@ namespace fhirCsR4.Models
         writer.WriteNumber("numberOfStudies", (int)NumberOfStudies!);
       }
 
+      if (_NumberOfStudies != null)
+      {
+        writer.WritePropertyName("_numberOfStudies");
+        _NumberOfStudies.SerializeJson(writer, options);
+      }
+
       if (NumberOfParticipants != null)
       {
         writer.WriteNumber("numberOfParticipants", (int)NumberOfParticipants!);
+      }
+
+      if (_NumberOfParticipants != null)
+      {
+        writer.WritePropertyName("_numberOfParticipants");
+        _NumberOfParticipants.SerializeJson(writer, options);
       }
 
       if (includeStartObject)
@@ -88,8 +108,18 @@ namespace fhirCsR4.Models
           NumberOfParticipants = reader.GetInt32();
           break;
 
+        case "_numberOfParticipants":
+          _NumberOfParticipants = new fhirCsR4.Models.Element();
+          _NumberOfParticipants.DeserializeJson(ref reader, options);
+          break;
+
         case "numberOfStudies":
           NumberOfStudies = reader.GetInt32();
+          break;
+
+        case "_numberOfStudies":
+          _NumberOfStudies = new fhirCsR4.Models.Element();
+          _NumberOfStudies.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -291,6 +321,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public int? DenominatorCount { get; set; }
     /// <summary>
+    /// Extension container element for DenominatorCount
+    /// </summary>
+    public Element _DenominatorCount { get; set; }
+    /// <summary>
     /// Human-readable summary of risk estimate.
     /// </summary>
     public string Description { get; set; }
@@ -302,6 +336,10 @@ namespace fhirCsR4.Models
     /// The number of group members with the outcome of interest.
     /// </summary>
     public int? NumeratorCount { get; set; }
+    /// <summary>
+    /// Extension container element for NumeratorCount
+    /// </summary>
+    public Element _NumeratorCount { get; set; }
     /// <summary>
     /// A description of the precision of the estimate for the effect.
     /// </summary>
@@ -372,9 +410,21 @@ namespace fhirCsR4.Models
         writer.WriteNumber("denominatorCount", (int)DenominatorCount!);
       }
 
+      if (_DenominatorCount != null)
+      {
+        writer.WritePropertyName("_denominatorCount");
+        _DenominatorCount.SerializeJson(writer, options);
+      }
+
       if (NumeratorCount != null)
       {
         writer.WriteNumber("numeratorCount", (int)NumeratorCount!);
+      }
+
+      if (_NumeratorCount != null)
+      {
+        writer.WritePropertyName("_numeratorCount");
+        _NumeratorCount.SerializeJson(writer, options);
       }
 
       if ((PrecisionEstimate != null) && (PrecisionEstimate.Count != 0))
@@ -406,6 +456,11 @@ namespace fhirCsR4.Models
           DenominatorCount = reader.GetInt32();
           break;
 
+        case "_denominatorCount":
+          _DenominatorCount = new fhirCsR4.Models.Element();
+          _DenominatorCount.DeserializeJson(ref reader, options);
+          break;
+
         case "description":
           Description = reader.GetString();
           break;
@@ -417,6 +472,11 @@ namespace fhirCsR4.Models
 
         case "numeratorCount":
           NumeratorCount = reader.GetInt32();
+          break;
+
+        case "_numeratorCount":
+          _NumeratorCount = new fhirCsR4.Models.Element();
+          _NumeratorCount.DeserializeJson(ref reader, options);
           break;
 
         case "precisionEstimate":
@@ -1884,5 +1944,11 @@ namespace fhirCsR4.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

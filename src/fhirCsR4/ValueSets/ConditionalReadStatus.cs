@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFullSupport = "full-support";
 
     /// <summary>
+    /// Literal for code: ConditionalReadStatusFullSupport
+    /// </summary>
+    public const string LiteralConditionalReadStatusFullSupport = "http://hl7.org/fhir/conditional-read-status#full-support";
+
+    /// <summary>
     /// Literal for code: IfModifiedSince
     /// </summary>
     public const string LiteralIfModifiedSince = "modified-since";
+
+    /// <summary>
+    /// Literal for code: ConditionalReadStatusIfModifiedSince
+    /// </summary>
+    public const string LiteralConditionalReadStatusIfModifiedSince = "http://hl7.org/fhir/conditional-read-status#modified-since";
 
     /// <summary>
     /// Literal for code: IfNoneMatch
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIfNoneMatch = "not-match";
 
     /// <summary>
+    /// Literal for code: ConditionalReadStatusIfNoneMatch
+    /// </summary>
+    public const string LiteralConditionalReadStatusIfNoneMatch = "http://hl7.org/fhir/conditional-read-status#not-match";
+
+    /// <summary>
     /// Literal for code: NotSupported
     /// </summary>
     public const string LiteralNotSupported = "not-supported";
+
+    /// <summary>
+    /// Literal for code: ConditionalReadStatusNotSupported
+    /// </summary>
+    public const string LiteralConditionalReadStatusNotSupported = "http://hl7.org/fhir/conditional-read-status#not-supported";
+
+    /// <summary>
+    /// Dictionary for looking up ConditionalReadStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "full-support", FullSupport }, 
+      { "http://hl7.org/fhir/conditional-read-status#full-support", FullSupport }, 
+      { "modified-since", IfModifiedSince }, 
+      { "http://hl7.org/fhir/conditional-read-status#modified-since", IfModifiedSince }, 
+      { "not-match", IfNoneMatch }, 
+      { "http://hl7.org/fhir/conditional-read-status#not-match", IfNoneMatch }, 
+      { "not-supported", NotSupported }, 
+      { "http://hl7.org/fhir/conditional-read-status#not-supported", NotSupported }, 
+    };
   };
 }

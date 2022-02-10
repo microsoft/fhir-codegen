@@ -81,9 +81,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInjectionIntradermal = "IDINJ";
 
     /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInjectionIntradermal
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInjectionIntradermal = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#IDINJ";
+
+    /// <summary>
     /// Literal for code: InjectionIntramuscular
     /// </summary>
     public const string LiteralInjectionIntramuscular = "IM";
+
+    /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInjectionIntramuscular
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInjectionIntramuscular = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#IM";
 
     /// <summary>
     /// Literal for code: InjectionIntravenous
@@ -91,9 +101,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInjectionIntravenous = "IVINJ";
 
     /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInjectionIntravenous
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInjectionIntravenous = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#IVINJ";
+
+    /// <summary>
     /// Literal for code: InhalationNasalCannula
     /// </summary>
     public const string LiteralInhalationNasalCannula = "NASINHLC";
+
+    /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInhalationNasalCannula
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInhalationNasalCannula = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#NASINHLC";
 
     /// <summary>
     /// Literal for code: SwallowOral
@@ -101,13 +121,48 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSwallowOral = "PO";
 
     /// <summary>
+    /// Literal for code: V3RouteOfAdministrationSwallowOral
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationSwallowOral = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#PO";
+
+    /// <summary>
     /// Literal for code: InjectionSubcutaneous
     /// </summary>
     public const string LiteralInjectionSubcutaneous = "SQ";
 
     /// <summary>
+    /// Literal for code: V3RouteOfAdministrationInjectionSubcutaneous
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationInjectionSubcutaneous = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#SQ";
+
+    /// <summary>
     /// Literal for code: Transdermal
     /// </summary>
     public const string LiteralTransdermal = "TRNSDERM";
+
+    /// <summary>
+    /// Literal for code: V3RouteOfAdministrationTransdermal
+    /// </summary>
+    public const string LiteralV3RouteOfAdministrationTransdermal = "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#TRNSDERM";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationRoute Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "IDINJ", InjectionIntradermal }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#IDINJ", InjectionIntradermal }, 
+      { "IM", InjectionIntramuscular }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#IM", InjectionIntramuscular }, 
+      { "IVINJ", InjectionIntravenous }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#IVINJ", InjectionIntravenous }, 
+      { "NASINHLC", InhalationNasalCannula }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#NASINHLC", InhalationNasalCannula }, 
+      { "PO", SwallowOral }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#PO", SwallowOral }, 
+      { "SQ", InjectionSubcutaneous }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#SQ", InjectionSubcutaneous }, 
+      { "TRNSDERM", Transdermal }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration#TRNSDERM", Transdermal }, 
+    };
   };
 }

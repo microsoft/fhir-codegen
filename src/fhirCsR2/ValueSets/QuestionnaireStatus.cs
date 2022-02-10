@@ -45,13 +45,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralDraft = "draft";
 
     /// <summary>
+    /// Literal for code: QuestionnaireStatusDraft
+    /// </summary>
+    public const string LiteralQuestionnaireStatusDraft = "http://hl7.org/fhir/questionnaire-status#draft";
+
+    /// <summary>
     /// Literal for code: Published
     /// </summary>
     public const string LiteralPublished = "published";
 
     /// <summary>
+    /// Literal for code: QuestionnaireStatusPublished
+    /// </summary>
+    public const string LiteralQuestionnaireStatusPublished = "http://hl7.org/fhir/questionnaire-status#published";
+
+    /// <summary>
     /// Literal for code: Retired
     /// </summary>
     public const string LiteralRetired = "retired";
+
+    /// <summary>
+    /// Literal for code: QuestionnaireStatusRetired
+    /// </summary>
+    public const string LiteralQuestionnaireStatusRetired = "http://hl7.org/fhir/questionnaire-status#retired";
+
+    /// <summary>
+    /// Dictionary for looking up QuestionnaireStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/questionnaire-status#draft", Draft }, 
+      { "published", Published }, 
+      { "http://hl7.org/fhir/questionnaire-status#published", Published }, 
+      { "retired", Retired }, 
+      { "http://hl7.org/fhir/questionnaire-status#retired", Retired }, 
+    };
   };
 }

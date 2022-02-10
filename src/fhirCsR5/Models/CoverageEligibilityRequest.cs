@@ -20,6 +20,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? AppliesToAll { get; set; }
     /// <summary>
+    /// Extension container element for AppliesToAll
+    /// </summary>
+    public Element _AppliesToAll { get; set; }
+    /// <summary>
     /// Could be used to provide references to other resources, document. For example could contain a PDF in an Attachment of the Police Report for an Accident.
     /// </summary>
     public Reference Information { get; set; }
@@ -51,6 +55,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("appliesToAll", (bool)AppliesToAll!);
       }
 
+      if (_AppliesToAll != null)
+      {
+        writer.WritePropertyName("_appliesToAll");
+        _AppliesToAll.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -65,6 +75,11 @@ namespace fhirCsR5.Models
       {
         case "appliesToAll":
           AppliesToAll = reader.GetBoolean();
+          break;
+
+        case "_appliesToAll":
+          _AppliesToAll = new fhirCsR5.Models.Element();
+          _AppliesToAll.DeserializeJson(ref reader, options);
           break;
 
         case "information":
@@ -129,6 +144,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Focal { get; set; }
     /// <summary>
+    /// Extension container element for Focal
+    /// </summary>
+    public Element _Focal { get; set; }
+    /// <summary>
     /// Serialize to a JSON object
     /// </summary>
     public new void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
@@ -142,6 +161,12 @@ namespace fhirCsR5.Models
       if (Focal != null)
       {
         writer.WriteBoolean("focal", (bool)Focal!);
+      }
+
+      if (_Focal != null)
+      {
+        writer.WritePropertyName("_focal");
+        _Focal.SerializeJson(writer, options);
       }
 
       if (Coverage != null)
@@ -189,6 +214,11 @@ namespace fhirCsR5.Models
 
         case "focal":
           Focal = reader.GetBoolean();
+          break;
+
+        case "_focal":
+          _Focal = new fhirCsR5.Models.Element();
+          _Focal.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -1162,6 +1192,12 @@ namespace fhirCsR5.Models
     public const string BENEFITS = "benefits";
     public const string DISCOVERY = "discovery";
     public const string VALIDATION = "validation";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "auth-requirements",
+      "benefits",
+      "discovery",
+      "validation",
+    };
   }
   /// <summary>
   /// Code Values for the CoverageEligibilityRequest.status field
@@ -1171,5 +1207,11 @@ namespace fhirCsR5.Models
     public const string CANCELLED = "cancelled";
     public const string DRAFT = "draft";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "cancelled",
+      "draft",
+      "entered-in-error",
+    };
   }
 }

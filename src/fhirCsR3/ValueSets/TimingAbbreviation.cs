@@ -99,9 +99,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAM = "AM";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationAM
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationAM = "http://hl7.org/fhir/v3/GTSAbbreviation#AM";
+
+    /// <summary>
     /// Literal for code: BID
     /// </summary>
     public const string LiteralBID = "BID";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationBID
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationBID = "http://hl7.org/fhir/v3/GTSAbbreviation#BID";
 
     /// <summary>
     /// Literal for code: PM
@@ -109,9 +119,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPM = "PM";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationPM
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationPM = "http://hl7.org/fhir/v3/GTSAbbreviation#PM";
+
+    /// <summary>
     /// Literal for code: Q4H
     /// </summary>
     public const string LiteralQ4H = "Q4H";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationQ4H
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationQ4H = "http://hl7.org/fhir/v3/GTSAbbreviation#Q4H";
 
     /// <summary>
     /// Literal for code: Q6H
@@ -119,9 +139,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralQ6H = "Q6H";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationQ6H
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationQ6H = "http://hl7.org/fhir/v3/GTSAbbreviation#Q6H";
+
+    /// <summary>
     /// Literal for code: QD
     /// </summary>
     public const string LiteralQD = "QD";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationQD
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationQD = "http://hl7.org/fhir/v3/GTSAbbreviation#QD";
 
     /// <summary>
     /// Literal for code: QID
@@ -129,13 +159,52 @@ namespace fhirCsR3.ValueSets
     public const string LiteralQID = "QID";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationQID
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationQID = "http://hl7.org/fhir/v3/GTSAbbreviation#QID";
+
+    /// <summary>
     /// Literal for code: QOD
     /// </summary>
     public const string LiteralQOD = "QOD";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationQOD
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationQOD = "http://hl7.org/fhir/v3/GTSAbbreviation#QOD";
+
+    /// <summary>
     /// Literal for code: TID
     /// </summary>
     public const string LiteralTID = "TID";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationTID
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationTID = "http://hl7.org/fhir/v3/GTSAbbreviation#TID";
+
+    /// <summary>
+    /// Dictionary for looking up TimingAbbreviation Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "AM", AM }, 
+      { "http://hl7.org/fhir/v3/GTSAbbreviation#AM", AM }, 
+      { "BID", BID }, 
+      { "http://hl7.org/fhir/v3/GTSAbbreviation#BID", BID }, 
+      { "PM", PM }, 
+      { "http://hl7.org/fhir/v3/GTSAbbreviation#PM", PM }, 
+      { "Q4H", Q4H }, 
+      { "http://hl7.org/fhir/v3/GTSAbbreviation#Q4H", Q4H }, 
+      { "Q6H", Q6H }, 
+      { "http://hl7.org/fhir/v3/GTSAbbreviation#Q6H", Q6H }, 
+      { "QD", QD }, 
+      { "http://hl7.org/fhir/v3/GTSAbbreviation#QD", QD }, 
+      { "QID", QID }, 
+      { "http://hl7.org/fhir/v3/GTSAbbreviation#QID", QID }, 
+      { "QOD", QOD }, 
+      { "http://hl7.org/fhir/v3/GTSAbbreviation#QOD", QOD }, 
+      { "TID", TID }, 
+      { "http://hl7.org/fhir/v3/GTSAbbreviation#TID", TID }, 
+    };
   };
 }

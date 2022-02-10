@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/resource-types"
     };
     /// <summary>
-    /// 
+    /// CDA Documents
     /// </summary>
     public static readonly Coding CDADocuments = new Coding
     {
@@ -571,7 +571,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/resource-types"
     };
     /// <summary>
-    /// 
+    /// Lipid Lab Report
     /// </summary>
     public static readonly Coding LipidLabReport = new Coding
     {
@@ -1337,7 +1337,7 @@ namespace fhirCsR4.ValueSets
       System = "http://hl7.org/fhir/resource-types"
     };
     /// <summary>
-    /// 
+    /// For documents following C-CDA 1.1 constraints using a non structured body.
     /// </summary>
     public static readonly Coding ForDocumentsFollowingCCDA11ConstraintsUsingANonStructuredBody = new Coding
     {
@@ -1346,7 +1346,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// For documents following C-CDA 2.1 constraints using a non structured body.
     /// </summary>
     public static readonly Coding ForDocumentsFollowingCCDA21ConstraintsUsingANonStructuredBody = new Coding
     {
@@ -1355,7 +1355,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// For documents following C-CDA 1.1 constraints using a structured body.
     /// </summary>
     public static readonly Coding ForDocumentsFollowingCCDA11ConstraintsUsingAStructuredBody = new Coding
     {
@@ -1364,7 +1364,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// For documents following C-CDA 2.1 constraints using a structured body.
     /// </summary>
     public static readonly Coding ForDocumentsFollowingCCDA21ConstraintsUsingAStructuredBody = new Coding
     {
@@ -1373,7 +1373,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Cardiology CRC
     /// </summary>
     public static readonly Coding CardiologyCRC = new Coding
     {
@@ -1382,7 +1382,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Cardiology EPRC-IE
     /// </summary>
     public static readonly Coding CardiologyEPRCIE = new Coding
     {
@@ -1391,7 +1391,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Cardiac Imaging Report
     /// </summary>
     public static readonly Coding CardiacImagingReport = new Coding
     {
@@ -1400,7 +1400,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Dental CDA
     /// </summary>
     public static readonly Coding DentalCDA = new Coding
     {
@@ -1409,7 +1409,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Dental PDF
     /// </summary>
     public static readonly Coding DentalPDF = new Coding
     {
@@ -1418,7 +1418,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Dental Text
     /// </summary>
     public static readonly Coding DentalText = new Coding
     {
@@ -1427,7 +1427,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Advanced Patient Privacy Consents
     /// </summary>
     public static readonly Coding AdvancedPatientPrivacyConsents = new Coding
     {
@@ -1436,7 +1436,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Basic Patient Privacy Consents with Scanned Document
     /// </summary>
     public static readonly Coding BasicPatientPrivacyConsentsWithScannedDocument = new Coding
     {
@@ -1445,7 +1445,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Basic Patient Privacy Consents
     /// </summary>
     public static readonly Coding BasicPatientPrivacyConsents = new Coding
     {
@@ -1454,7 +1454,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// DSG Detached Document
     /// </summary>
     public static readonly Coding DSGDetachedDocument = new Coding
     {
@@ -1463,7 +1463,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// DSG Enveloping Document
     /// </summary>
     public static readonly Coding DSGEnvelopingDocument = new Coding
     {
@@ -1472,7 +1472,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// PDF embedded in CDA per XDS-SD profile
     /// </summary>
     public static readonly Coding PDFEmbeddedInCDAPerXDSSDProfile = new Coding
     {
@@ -1481,7 +1481,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Text embedded in CDA per XDS-SD profile
     /// </summary>
     public static readonly Coding TextEmbeddedInCDAPerXDSSDProfile = new Coding
     {
@@ -1490,7 +1490,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// mimeType Sufficient
     /// </summary>
     public static readonly Coding MimeTypeSufficient = new Coding
     {
@@ -1499,7 +1499,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// XDW Workflow Document
     /// </summary>
     public static readonly Coding XDWWorkflowDocument = new Coding
     {
@@ -1508,7 +1508,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// CDA Laboratory Report
     /// </summary>
     public static readonly Coding CDALaboratoryReport = new Coding
     {
@@ -1517,7 +1517,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report All
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportAll = new Coding
     {
@@ -1526,7 +1526,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer All
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerAll = new Coding
     {
@@ -1535,7 +1535,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Breast
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerBreast = new Coding
     {
@@ -1544,7 +1544,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Cervix
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerCervix = new Coding
     {
@@ -1553,7 +1553,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Colon
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerColon = new Coding
     {
@@ -1562,7 +1562,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Endometrium
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerEndometrium = new Coding
     {
@@ -1571,7 +1571,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Esophagus
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerEsophagus = new Coding
     {
@@ -1580,7 +1580,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Kidney
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerKidney = new Coding
     {
@@ -1589,7 +1589,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Larynx
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerLarynx = new Coding
     {
@@ -1598,7 +1598,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Lip Oral Cavity
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerLipOralCavity = new Coding
     {
@@ -1607,7 +1607,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Liver
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerLiver = new Coding
     {
@@ -1616,7 +1616,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Lung
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerLung = new Coding
     {
@@ -1625,7 +1625,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Ovary
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerOvary = new Coding
     {
@@ -1634,7 +1634,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Pancreas
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerPancreas = new Coding
     {
@@ -1643,7 +1643,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Pharynx
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerPharynx = new Coding
     {
@@ -1652,7 +1652,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Prostate
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerProstate = new Coding
     {
@@ -1661,7 +1661,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Salivary Gland
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerSalivaryGland = new Coding
     {
@@ -1670,7 +1670,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Skin
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerSkin = new Coding
     {
@@ -1679,7 +1679,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Stomach
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerStomach = new Coding
     {
@@ -1688,7 +1688,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Testis
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerTestis = new Coding
     {
@@ -1697,7 +1697,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Thyroid
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerThyroid = new Coding
     {
@@ -1706,7 +1706,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Anatomic Pathology Structured Report Cancer Urinary Bladder
     /// </summary>
     public static readonly Coding AnatomicPathologyStructuredReportCancerUrinaryBladder = new Coding
     {
@@ -1715,7 +1715,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Antepartum Record (APR) - Education
     /// </summary>
     public static readonly Coding AntepartumRecordAPREducation = new Coding
     {
@@ -1724,7 +1724,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Antepartum Record (APR) - History and Physical
     /// </summary>
     public static readonly Coding AntepartumRecordAPRHistoryAndPhysical = new Coding
     {
@@ -1733,7 +1733,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Antepartum Record (APR) - Laboratory
     /// </summary>
     public static readonly Coding AntepartumRecordAPRLaboratory = new Coding
     {
@@ -1742,7 +1742,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// IHE Antepartum Summary
     /// </summary>
     public static readonly Coding IHEAntepartumSummary = new Coding
     {
@@ -1751,7 +1751,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Care Management (CM)
     /// </summary>
     public static readonly Coding CareManagementCM = new Coding
     {
@@ -1760,7 +1760,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Cancer Registry Content (CRC)
     /// </summary>
     public static readonly Coding CancerRegistryContentCRC = new Coding
     {
@@ -1769,7 +1769,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// PCC CTN
     /// </summary>
     public static readonly Coding PCCCTN = new Coding
     {
@@ -1778,7 +1778,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Emergency Department Encounter Summary (EDES)
     /// </summary>
     public static readonly Coding EmergencyDepartmentEncounterSummaryEDES = new Coding
     {
@@ -1787,7 +1787,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// PCC EDPN
     /// </summary>
     public static readonly Coding PCCEDPN = new Coding
     {
@@ -1796,7 +1796,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Emergency Department Referral (EDR)
     /// </summary>
     public static readonly Coding EmergencyDepartmentReferralEDR = new Coding
     {
@@ -1805,7 +1805,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// PCC ETS
     /// </summary>
     public static readonly Coding PCCETS = new Coding
     {
@@ -1814,7 +1814,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// PCC HP
     /// </summary>
     public static readonly Coding PCCHP = new Coding
     {
@@ -1823,7 +1823,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Immunization Content (IC)
     /// </summary>
     public static readonly Coding ImmunizationContentIC = new Coding
     {
@@ -1832,7 +1832,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// PCC ITS
     /// </summary>
     public static readonly Coding PCCITS = new Coding
     {
@@ -1841,7 +1841,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// PCC LDHP
     /// </summary>
     public static readonly Coding PCCLDHP = new Coding
     {
@@ -1850,7 +1850,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// PCC LDS
     /// </summary>
     public static readonly Coding PCCLDS = new Coding
     {
@@ -1859,7 +1859,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// PCC MDS
     /// </summary>
     public static readonly Coding PCCMDS = new Coding
     {
@@ -1868,7 +1868,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// PCC NDS
     /// </summary>
     public static readonly Coding PCCNDS = new Coding
     {
@@ -1877,7 +1877,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// PCC NN
     /// </summary>
     public static readonly Coding PCCNN = new Coding
     {
@@ -1886,7 +1886,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// PCC PPVS
     /// </summary>
     public static readonly Coding PCCPPVS = new Coding
     {
@@ -1895,7 +1895,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Routine Interfacility Patient Transport (RIPT)
     /// </summary>
     public static readonly Coding RoutineInterfacilityPatientTransportRIPT = new Coding
     {
@@ -1904,7 +1904,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// PCC TN
     /// </summary>
     public static readonly Coding PCCTN = new Coding
     {
@@ -1913,7 +1913,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// PCC TRS
     /// </summary>
     public static readonly Coding PCCTRS = new Coding
     {
@@ -1922,7 +1922,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// XDS Medical Summaries
     /// </summary>
     public static readonly Coding XDSMedicalSummaries = new Coding
     {
@@ -1931,7 +1931,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Personal Health Records. Also known as HL7 CCD and HITSP C32
     /// </summary>
     public static readonly Coding PersonalHealthRecordsAlsoKnownAsHL7CCDAndHITSPC32 = new Coding
     {
@@ -1940,7 +1940,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Pharmacy DIS
     /// </summary>
     public static readonly Coding PharmacyDIS = new Coding
     {
@@ -1949,7 +1949,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Pharmacy PADV
     /// </summary>
     public static readonly Coding PharmacyPADV = new Coding
     {
@@ -1958,7 +1958,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Pharmacy PML
     /// </summary>
     public static readonly Coding PharmacyPML = new Coding
     {
@@ -1967,7 +1967,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Pharmacy Pre
     /// </summary>
     public static readonly Coding PharmacyPre = new Coding
     {
@@ -1976,7 +1976,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Radiology XDS-I Structured CDA
     /// </summary>
     public static readonly Coding RadiologyXDSIStructuredCDA = new Coding
     {
@@ -1985,7 +1985,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Radiology XDS-I PDF
     /// </summary>
     public static readonly Coding RadiologyXDSIPDF = new Coding
     {
@@ -1994,7 +1994,7 @@ namespace fhirCsR4.ValueSets
       System = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem"
     };
     /// <summary>
-    /// 
+    /// Radiology XDS-I Text
     /// </summary>
     public static readonly Coding RadiologyXDSIText = new Coding
     {
@@ -2036,9 +2036,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAccount = "Account";
 
     /// <summary>
+    /// Literal for code: ResourceTypesAccount
+    /// </summary>
+    public const string LiteralResourceTypesAccount = "http://hl7.org/fhir/resource-types#Account";
+
+    /// <summary>
     /// Literal for code: ActivityDefinition
     /// </summary>
     public const string LiteralActivityDefinition = "ActivityDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesActivityDefinition
+    /// </summary>
+    public const string LiteralResourceTypesActivityDefinition = "http://hl7.org/fhir/resource-types#ActivityDefinition";
 
     /// <summary>
     /// Literal for code: AdverseEvent
@@ -2046,9 +2056,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdverseEvent = "AdverseEvent";
 
     /// <summary>
+    /// Literal for code: ResourceTypesAdverseEvent
+    /// </summary>
+    public const string LiteralResourceTypesAdverseEvent = "http://hl7.org/fhir/resource-types#AdverseEvent";
+
+    /// <summary>
     /// Literal for code: AllergyIntolerance
     /// </summary>
     public const string LiteralAllergyIntolerance = "AllergyIntolerance";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesAllergyIntolerance
+    /// </summary>
+    public const string LiteralResourceTypesAllergyIntolerance = "http://hl7.org/fhir/resource-types#AllergyIntolerance";
 
     /// <summary>
     /// Literal for code: CDADocuments
@@ -2056,9 +2076,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCDADocuments = "application/hl7-cda+xml";
 
     /// <summary>
+    /// Literal for code: NONECDADocuments
+    /// </summary>
+    public const string LiteralNONECDADocuments = "urn:ietf:bcp:13#application/hl7-cda+xml";
+
+    /// <summary>
     /// Literal for code: Appointment
     /// </summary>
     public const string LiteralAppointment = "Appointment";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesAppointment
+    /// </summary>
+    public const string LiteralResourceTypesAppointment = "http://hl7.org/fhir/resource-types#Appointment";
 
     /// <summary>
     /// Literal for code: AppointmentResponse
@@ -2066,9 +2096,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAppointmentResponse = "AppointmentResponse";
 
     /// <summary>
+    /// Literal for code: ResourceTypesAppointmentResponse
+    /// </summary>
+    public const string LiteralResourceTypesAppointmentResponse = "http://hl7.org/fhir/resource-types#AppointmentResponse";
+
+    /// <summary>
     /// Literal for code: AuditEvent
     /// </summary>
     public const string LiteralAuditEvent = "AuditEvent";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesAuditEvent
+    /// </summary>
+    public const string LiteralResourceTypesAuditEvent = "http://hl7.org/fhir/resource-types#AuditEvent";
 
     /// <summary>
     /// Literal for code: Basic
@@ -2076,9 +2116,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBasic = "Basic";
 
     /// <summary>
+    /// Literal for code: ResourceTypesBasic
+    /// </summary>
+    public const string LiteralResourceTypesBasic = "http://hl7.org/fhir/resource-types#Basic";
+
+    /// <summary>
     /// Literal for code: Binary
     /// </summary>
     public const string LiteralBinary = "Binary";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesBinary
+    /// </summary>
+    public const string LiteralResourceTypesBinary = "http://hl7.org/fhir/resource-types#Binary";
 
     /// <summary>
     /// Literal for code: BiologicallyDerivedProduct
@@ -2086,9 +2136,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBiologicallyDerivedProduct = "BiologicallyDerivedProduct";
 
     /// <summary>
+    /// Literal for code: ResourceTypesBiologicallyDerivedProduct
+    /// </summary>
+    public const string LiteralResourceTypesBiologicallyDerivedProduct = "http://hl7.org/fhir/resource-types#BiologicallyDerivedProduct";
+
+    /// <summary>
     /// Literal for code: BodyStructure
     /// </summary>
     public const string LiteralBodyStructure = "BodyStructure";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesBodyStructure
+    /// </summary>
+    public const string LiteralResourceTypesBodyStructure = "http://hl7.org/fhir/resource-types#BodyStructure";
 
     /// <summary>
     /// Literal for code: Bundle
@@ -2096,9 +2156,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBundle = "Bundle";
 
     /// <summary>
+    /// Literal for code: ResourceTypesBundle
+    /// </summary>
+    public const string LiteralResourceTypesBundle = "http://hl7.org/fhir/resource-types#Bundle";
+
+    /// <summary>
     /// Literal for code: CapabilityStatement
     /// </summary>
     public const string LiteralCapabilityStatement = "CapabilityStatement";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesCapabilityStatement
+    /// </summary>
+    public const string LiteralResourceTypesCapabilityStatement = "http://hl7.org/fhir/resource-types#CapabilityStatement";
 
     /// <summary>
     /// Literal for code: CarePlan
@@ -2106,9 +2176,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCarePlan = "CarePlan";
 
     /// <summary>
+    /// Literal for code: ResourceTypesCarePlan
+    /// </summary>
+    public const string LiteralResourceTypesCarePlan = "http://hl7.org/fhir/resource-types#CarePlan";
+
+    /// <summary>
     /// Literal for code: CareTeam
     /// </summary>
     public const string LiteralCareTeam = "CareTeam";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesCareTeam
+    /// </summary>
+    public const string LiteralResourceTypesCareTeam = "http://hl7.org/fhir/resource-types#CareTeam";
 
     /// <summary>
     /// Literal for code: CatalogEntry
@@ -2116,9 +2196,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCatalogEntry = "CatalogEntry";
 
     /// <summary>
+    /// Literal for code: ResourceTypesCatalogEntry
+    /// </summary>
+    public const string LiteralResourceTypesCatalogEntry = "http://hl7.org/fhir/resource-types#CatalogEntry";
+
+    /// <summary>
     /// Literal for code: ChargeItem
     /// </summary>
     public const string LiteralChargeItem = "ChargeItem";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesChargeItem
+    /// </summary>
+    public const string LiteralResourceTypesChargeItem = "http://hl7.org/fhir/resource-types#ChargeItem";
 
     /// <summary>
     /// Literal for code: ChargeItemDefinition
@@ -2126,9 +2216,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChargeItemDefinition = "ChargeItemDefinition";
 
     /// <summary>
+    /// Literal for code: ResourceTypesChargeItemDefinition
+    /// </summary>
+    public const string LiteralResourceTypesChargeItemDefinition = "http://hl7.org/fhir/resource-types#ChargeItemDefinition";
+
+    /// <summary>
     /// Literal for code: Claim
     /// </summary>
     public const string LiteralClaim = "Claim";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesClaim
+    /// </summary>
+    public const string LiteralResourceTypesClaim = "http://hl7.org/fhir/resource-types#Claim";
 
     /// <summary>
     /// Literal for code: ClaimResponse
@@ -2136,9 +2236,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClaimResponse = "ClaimResponse";
 
     /// <summary>
+    /// Literal for code: ResourceTypesClaimResponse
+    /// </summary>
+    public const string LiteralResourceTypesClaimResponse = "http://hl7.org/fhir/resource-types#ClaimResponse";
+
+    /// <summary>
     /// Literal for code: ClinicalImpression
     /// </summary>
     public const string LiteralClinicalImpression = "ClinicalImpression";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesClinicalImpression
+    /// </summary>
+    public const string LiteralResourceTypesClinicalImpression = "http://hl7.org/fhir/resource-types#ClinicalImpression";
 
     /// <summary>
     /// Literal for code: CodeSystem
@@ -2146,9 +2256,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCodeSystem = "CodeSystem";
 
     /// <summary>
+    /// Literal for code: ResourceTypesCodeSystem
+    /// </summary>
+    public const string LiteralResourceTypesCodeSystem = "http://hl7.org/fhir/resource-types#CodeSystem";
+
+    /// <summary>
     /// Literal for code: Communication
     /// </summary>
     public const string LiteralCommunication = "Communication";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesCommunication
+    /// </summary>
+    public const string LiteralResourceTypesCommunication = "http://hl7.org/fhir/resource-types#Communication";
 
     /// <summary>
     /// Literal for code: CommunicationRequest
@@ -2156,9 +2276,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommunicationRequest = "CommunicationRequest";
 
     /// <summary>
+    /// Literal for code: ResourceTypesCommunicationRequest
+    /// </summary>
+    public const string LiteralResourceTypesCommunicationRequest = "http://hl7.org/fhir/resource-types#CommunicationRequest";
+
+    /// <summary>
     /// Literal for code: CompartmentDefinition
     /// </summary>
     public const string LiteralCompartmentDefinition = "CompartmentDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesCompartmentDefinition
+    /// </summary>
+    public const string LiteralResourceTypesCompartmentDefinition = "http://hl7.org/fhir/resource-types#CompartmentDefinition";
 
     /// <summary>
     /// Literal for code: Composition
@@ -2166,9 +2296,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralComposition = "Composition";
 
     /// <summary>
+    /// Literal for code: ResourceTypesComposition
+    /// </summary>
+    public const string LiteralResourceTypesComposition = "http://hl7.org/fhir/resource-types#Composition";
+
+    /// <summary>
     /// Literal for code: ConceptMap
     /// </summary>
     public const string LiteralConceptMap = "ConceptMap";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesConceptMap
+    /// </summary>
+    public const string LiteralResourceTypesConceptMap = "http://hl7.org/fhir/resource-types#ConceptMap";
 
     /// <summary>
     /// Literal for code: Condition
@@ -2176,9 +2316,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCondition = "Condition";
 
     /// <summary>
+    /// Literal for code: ResourceTypesCondition
+    /// </summary>
+    public const string LiteralResourceTypesCondition = "http://hl7.org/fhir/resource-types#Condition";
+
+    /// <summary>
     /// Literal for code: Consent
     /// </summary>
     public const string LiteralConsent = "Consent";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesConsent
+    /// </summary>
+    public const string LiteralResourceTypesConsent = "http://hl7.org/fhir/resource-types#Consent";
 
     /// <summary>
     /// Literal for code: Contract
@@ -2186,9 +2336,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralContract = "Contract";
 
     /// <summary>
+    /// Literal for code: ResourceTypesContract
+    /// </summary>
+    public const string LiteralResourceTypesContract = "http://hl7.org/fhir/resource-types#Contract";
+
+    /// <summary>
     /// Literal for code: Coverage
     /// </summary>
     public const string LiteralCoverage = "Coverage";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesCoverage
+    /// </summary>
+    public const string LiteralResourceTypesCoverage = "http://hl7.org/fhir/resource-types#Coverage";
 
     /// <summary>
     /// Literal for code: CoverageEligibilityRequest
@@ -2196,9 +2356,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoverageEligibilityRequest = "CoverageEligibilityRequest";
 
     /// <summary>
+    /// Literal for code: ResourceTypesCoverageEligibilityRequest
+    /// </summary>
+    public const string LiteralResourceTypesCoverageEligibilityRequest = "http://hl7.org/fhir/resource-types#CoverageEligibilityRequest";
+
+    /// <summary>
     /// Literal for code: CoverageEligibilityResponse
     /// </summary>
     public const string LiteralCoverageEligibilityResponse = "CoverageEligibilityResponse";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesCoverageEligibilityResponse
+    /// </summary>
+    public const string LiteralResourceTypesCoverageEligibilityResponse = "http://hl7.org/fhir/resource-types#CoverageEligibilityResponse";
 
     /// <summary>
     /// Literal for code: DetectedIssue
@@ -2206,9 +2376,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDetectedIssue = "DetectedIssue";
 
     /// <summary>
+    /// Literal for code: ResourceTypesDetectedIssue
+    /// </summary>
+    public const string LiteralResourceTypesDetectedIssue = "http://hl7.org/fhir/resource-types#DetectedIssue";
+
+    /// <summary>
     /// Literal for code: Device
     /// </summary>
     public const string LiteralDevice = "Device";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesDevice
+    /// </summary>
+    public const string LiteralResourceTypesDevice = "http://hl7.org/fhir/resource-types#Device";
 
     /// <summary>
     /// Literal for code: DeviceDefinition
@@ -2216,9 +2396,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeviceDefinition = "DeviceDefinition";
 
     /// <summary>
+    /// Literal for code: ResourceTypesDeviceDefinition
+    /// </summary>
+    public const string LiteralResourceTypesDeviceDefinition = "http://hl7.org/fhir/resource-types#DeviceDefinition";
+
+    /// <summary>
     /// Literal for code: DeviceMetric
     /// </summary>
     public const string LiteralDeviceMetric = "DeviceMetric";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesDeviceMetric
+    /// </summary>
+    public const string LiteralResourceTypesDeviceMetric = "http://hl7.org/fhir/resource-types#DeviceMetric";
 
     /// <summary>
     /// Literal for code: DeviceRequest
@@ -2226,9 +2416,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeviceRequest = "DeviceRequest";
 
     /// <summary>
+    /// Literal for code: ResourceTypesDeviceRequest
+    /// </summary>
+    public const string LiteralResourceTypesDeviceRequest = "http://hl7.org/fhir/resource-types#DeviceRequest";
+
+    /// <summary>
     /// Literal for code: DeviceUseStatement
     /// </summary>
     public const string LiteralDeviceUseStatement = "DeviceUseStatement";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesDeviceUseStatement
+    /// </summary>
+    public const string LiteralResourceTypesDeviceUseStatement = "http://hl7.org/fhir/resource-types#DeviceUseStatement";
 
     /// <summary>
     /// Literal for code: DiagnosticReport
@@ -2236,9 +2436,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiagnosticReport = "DiagnosticReport";
 
     /// <summary>
+    /// Literal for code: ResourceTypesDiagnosticReport
+    /// </summary>
+    public const string LiteralResourceTypesDiagnosticReport = "http://hl7.org/fhir/resource-types#DiagnosticReport";
+
+    /// <summary>
     /// Literal for code: DocumentManifest
     /// </summary>
     public const string LiteralDocumentManifest = "DocumentManifest";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesDocumentManifest
+    /// </summary>
+    public const string LiteralResourceTypesDocumentManifest = "http://hl7.org/fhir/resource-types#DocumentManifest";
 
     /// <summary>
     /// Literal for code: DocumentReference
@@ -2246,9 +2456,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDocumentReference = "DocumentReference";
 
     /// <summary>
+    /// Literal for code: ResourceTypesDocumentReference
+    /// </summary>
+    public const string LiteralResourceTypesDocumentReference = "http://hl7.org/fhir/resource-types#DocumentReference";
+
+    /// <summary>
     /// Literal for code: DomainResource
     /// </summary>
     public const string LiteralDomainResource = "DomainResource";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesDomainResource
+    /// </summary>
+    public const string LiteralResourceTypesDomainResource = "http://hl7.org/fhir/resource-types#DomainResource";
 
     /// <summary>
     /// Literal for code: EffectEvidenceSynthesis
@@ -2256,9 +2476,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEffectEvidenceSynthesis = "EffectEvidenceSynthesis";
 
     /// <summary>
+    /// Literal for code: ResourceTypesEffectEvidenceSynthesis
+    /// </summary>
+    public const string LiteralResourceTypesEffectEvidenceSynthesis = "http://hl7.org/fhir/resource-types#EffectEvidenceSynthesis";
+
+    /// <summary>
     /// Literal for code: Encounter
     /// </summary>
     public const string LiteralEncounter = "Encounter";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesEncounter
+    /// </summary>
+    public const string LiteralResourceTypesEncounter = "http://hl7.org/fhir/resource-types#Encounter";
 
     /// <summary>
     /// Literal for code: Endpoint
@@ -2266,9 +2496,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndpoint = "Endpoint";
 
     /// <summary>
+    /// Literal for code: ResourceTypesEndpoint
+    /// </summary>
+    public const string LiteralResourceTypesEndpoint = "http://hl7.org/fhir/resource-types#Endpoint";
+
+    /// <summary>
     /// Literal for code: EnrollmentRequest
     /// </summary>
     public const string LiteralEnrollmentRequest = "EnrollmentRequest";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesEnrollmentRequest
+    /// </summary>
+    public const string LiteralResourceTypesEnrollmentRequest = "http://hl7.org/fhir/resource-types#EnrollmentRequest";
 
     /// <summary>
     /// Literal for code: EnrollmentResponse
@@ -2276,9 +2516,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEnrollmentResponse = "EnrollmentResponse";
 
     /// <summary>
+    /// Literal for code: ResourceTypesEnrollmentResponse
+    /// </summary>
+    public const string LiteralResourceTypesEnrollmentResponse = "http://hl7.org/fhir/resource-types#EnrollmentResponse";
+
+    /// <summary>
     /// Literal for code: EpisodeOfCare
     /// </summary>
     public const string LiteralEpisodeOfCare = "EpisodeOfCare";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesEpisodeOfCare
+    /// </summary>
+    public const string LiteralResourceTypesEpisodeOfCare = "http://hl7.org/fhir/resource-types#EpisodeOfCare";
 
     /// <summary>
     /// Literal for code: EventDefinition
@@ -2286,9 +2536,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEventDefinition = "EventDefinition";
 
     /// <summary>
+    /// Literal for code: ResourceTypesEventDefinition
+    /// </summary>
+    public const string LiteralResourceTypesEventDefinition = "http://hl7.org/fhir/resource-types#EventDefinition";
+
+    /// <summary>
     /// Literal for code: Evidence
     /// </summary>
     public const string LiteralEvidence = "Evidence";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesEvidence
+    /// </summary>
+    public const string LiteralResourceTypesEvidence = "http://hl7.org/fhir/resource-types#Evidence";
 
     /// <summary>
     /// Literal for code: EvidenceVariable
@@ -2296,9 +2556,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEvidenceVariable = "EvidenceVariable";
 
     /// <summary>
+    /// Literal for code: ResourceTypesEvidenceVariable
+    /// </summary>
+    public const string LiteralResourceTypesEvidenceVariable = "http://hl7.org/fhir/resource-types#EvidenceVariable";
+
+    /// <summary>
     /// Literal for code: ExampleScenario
     /// </summary>
     public const string LiteralExampleScenario = "ExampleScenario";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesExampleScenario
+    /// </summary>
+    public const string LiteralResourceTypesExampleScenario = "http://hl7.org/fhir/resource-types#ExampleScenario";
 
     /// <summary>
     /// Literal for code: ExplanationOfBenefit
@@ -2306,9 +2576,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExplanationOfBenefit = "ExplanationOfBenefit";
 
     /// <summary>
+    /// Literal for code: ResourceTypesExplanationOfBenefit
+    /// </summary>
+    public const string LiteralResourceTypesExplanationOfBenefit = "http://hl7.org/fhir/resource-types#ExplanationOfBenefit";
+
+    /// <summary>
     /// Literal for code: FamilyMemberHistory
     /// </summary>
     public const string LiteralFamilyMemberHistory = "FamilyMemberHistory";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesFamilyMemberHistory
+    /// </summary>
+    public const string LiteralResourceTypesFamilyMemberHistory = "http://hl7.org/fhir/resource-types#FamilyMemberHistory";
 
     /// <summary>
     /// Literal for code: Flag
@@ -2316,9 +2596,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFlag = "Flag";
 
     /// <summary>
+    /// Literal for code: ResourceTypesFlag
+    /// </summary>
+    public const string LiteralResourceTypesFlag = "http://hl7.org/fhir/resource-types#Flag";
+
+    /// <summary>
     /// Literal for code: Goal
     /// </summary>
     public const string LiteralGoal = "Goal";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesGoal
+    /// </summary>
+    public const string LiteralResourceTypesGoal = "http://hl7.org/fhir/resource-types#Goal";
 
     /// <summary>
     /// Literal for code: GraphDefinition
@@ -2326,9 +2616,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGraphDefinition = "GraphDefinition";
 
     /// <summary>
+    /// Literal for code: ResourceTypesGraphDefinition
+    /// </summary>
+    public const string LiteralResourceTypesGraphDefinition = "http://hl7.org/fhir/resource-types#GraphDefinition";
+
+    /// <summary>
     /// Literal for code: Group
     /// </summary>
     public const string LiteralGroup = "Group";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesGroup
+    /// </summary>
+    public const string LiteralResourceTypesGroup = "http://hl7.org/fhir/resource-types#Group";
 
     /// <summary>
     /// Literal for code: GuidanceResponse
@@ -2336,9 +2636,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGuidanceResponse = "GuidanceResponse";
 
     /// <summary>
+    /// Literal for code: ResourceTypesGuidanceResponse
+    /// </summary>
+    public const string LiteralResourceTypesGuidanceResponse = "http://hl7.org/fhir/resource-types#GuidanceResponse";
+
+    /// <summary>
     /// Literal for code: HealthcareService
     /// </summary>
     public const string LiteralHealthcareService = "HealthcareService";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesHealthcareService
+    /// </summary>
+    public const string LiteralResourceTypesHealthcareService = "http://hl7.org/fhir/resource-types#HealthcareService";
 
     /// <summary>
     /// Literal for code: LipidLabReport
@@ -2346,9 +2656,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLipidLabReport = "http://hl7.org/fhir/StructureDefinition/lipidprofile";
 
     /// <summary>
+    /// Literal for code: NONELipidLabReport
+    /// </summary>
+    public const string LiteralNONELipidLabReport = "urn:ietf:rfc:3986#http://hl7.org/fhir/StructureDefinition/lipidprofile";
+
+    /// <summary>
     /// Literal for code: ImagingStudy
     /// </summary>
     public const string LiteralImagingStudy = "ImagingStudy";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesImagingStudy
+    /// </summary>
+    public const string LiteralResourceTypesImagingStudy = "http://hl7.org/fhir/resource-types#ImagingStudy";
 
     /// <summary>
     /// Literal for code: Immunization
@@ -2356,9 +2676,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImmunization = "Immunization";
 
     /// <summary>
+    /// Literal for code: ResourceTypesImmunization
+    /// </summary>
+    public const string LiteralResourceTypesImmunization = "http://hl7.org/fhir/resource-types#Immunization";
+
+    /// <summary>
     /// Literal for code: ImmunizationEvaluation
     /// </summary>
     public const string LiteralImmunizationEvaluation = "ImmunizationEvaluation";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesImmunizationEvaluation
+    /// </summary>
+    public const string LiteralResourceTypesImmunizationEvaluation = "http://hl7.org/fhir/resource-types#ImmunizationEvaluation";
 
     /// <summary>
     /// Literal for code: ImmunizationRecommendation
@@ -2366,9 +2696,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImmunizationRecommendation = "ImmunizationRecommendation";
 
     /// <summary>
+    /// Literal for code: ResourceTypesImmunizationRecommendation
+    /// </summary>
+    public const string LiteralResourceTypesImmunizationRecommendation = "http://hl7.org/fhir/resource-types#ImmunizationRecommendation";
+
+    /// <summary>
     /// Literal for code: ImplementationGuide
     /// </summary>
     public const string LiteralImplementationGuide = "ImplementationGuide";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesImplementationGuide
+    /// </summary>
+    public const string LiteralResourceTypesImplementationGuide = "http://hl7.org/fhir/resource-types#ImplementationGuide";
 
     /// <summary>
     /// Literal for code: InsurancePlan
@@ -2376,9 +2716,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInsurancePlan = "InsurancePlan";
 
     /// <summary>
+    /// Literal for code: ResourceTypesInsurancePlan
+    /// </summary>
+    public const string LiteralResourceTypesInsurancePlan = "http://hl7.org/fhir/resource-types#InsurancePlan";
+
+    /// <summary>
     /// Literal for code: Invoice
     /// </summary>
     public const string LiteralInvoice = "Invoice";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesInvoice
+    /// </summary>
+    public const string LiteralResourceTypesInvoice = "http://hl7.org/fhir/resource-types#Invoice";
 
     /// <summary>
     /// Literal for code: Library
@@ -2386,9 +2736,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLibrary = "Library";
 
     /// <summary>
+    /// Literal for code: ResourceTypesLibrary
+    /// </summary>
+    public const string LiteralResourceTypesLibrary = "http://hl7.org/fhir/resource-types#Library";
+
+    /// <summary>
     /// Literal for code: Linkage
     /// </summary>
     public const string LiteralLinkage = "Linkage";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesLinkage
+    /// </summary>
+    public const string LiteralResourceTypesLinkage = "http://hl7.org/fhir/resource-types#Linkage";
 
     /// <summary>
     /// Literal for code: List
@@ -2396,9 +2756,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralList = "List";
 
     /// <summary>
+    /// Literal for code: ResourceTypesList
+    /// </summary>
+    public const string LiteralResourceTypesList = "http://hl7.org/fhir/resource-types#List";
+
+    /// <summary>
     /// Literal for code: Location
     /// </summary>
     public const string LiteralLocation = "Location";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesLocation
+    /// </summary>
+    public const string LiteralResourceTypesLocation = "http://hl7.org/fhir/resource-types#Location";
 
     /// <summary>
     /// Literal for code: Measure
@@ -2406,9 +2776,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeasure = "Measure";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMeasure
+    /// </summary>
+    public const string LiteralResourceTypesMeasure = "http://hl7.org/fhir/resource-types#Measure";
+
+    /// <summary>
     /// Literal for code: MeasureReport
     /// </summary>
     public const string LiteralMeasureReport = "MeasureReport";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMeasureReport
+    /// </summary>
+    public const string LiteralResourceTypesMeasureReport = "http://hl7.org/fhir/resource-types#MeasureReport";
 
     /// <summary>
     /// Literal for code: Media
@@ -2416,9 +2796,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedia = "Media";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedia
+    /// </summary>
+    public const string LiteralResourceTypesMedia = "http://hl7.org/fhir/resource-types#Media";
+
+    /// <summary>
     /// Literal for code: Medication
     /// </summary>
     public const string LiteralMedication = "Medication";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedication
+    /// </summary>
+    public const string LiteralResourceTypesMedication = "http://hl7.org/fhir/resource-types#Medication";
 
     /// <summary>
     /// Literal for code: MedicationAdministration
@@ -2426,9 +2816,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicationAdministration = "MedicationAdministration";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedicationAdministration
+    /// </summary>
+    public const string LiteralResourceTypesMedicationAdministration = "http://hl7.org/fhir/resource-types#MedicationAdministration";
+
+    /// <summary>
     /// Literal for code: MedicationDispense
     /// </summary>
     public const string LiteralMedicationDispense = "MedicationDispense";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedicationDispense
+    /// </summary>
+    public const string LiteralResourceTypesMedicationDispense = "http://hl7.org/fhir/resource-types#MedicationDispense";
 
     /// <summary>
     /// Literal for code: MedicationKnowledge
@@ -2436,9 +2836,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicationKnowledge = "MedicationKnowledge";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedicationKnowledge
+    /// </summary>
+    public const string LiteralResourceTypesMedicationKnowledge = "http://hl7.org/fhir/resource-types#MedicationKnowledge";
+
+    /// <summary>
     /// Literal for code: MedicationRequest
     /// </summary>
     public const string LiteralMedicationRequest = "MedicationRequest";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedicationRequest
+    /// </summary>
+    public const string LiteralResourceTypesMedicationRequest = "http://hl7.org/fhir/resource-types#MedicationRequest";
 
     /// <summary>
     /// Literal for code: MedicationStatement
@@ -2446,9 +2856,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicationStatement = "MedicationStatement";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedicationStatement
+    /// </summary>
+    public const string LiteralResourceTypesMedicationStatement = "http://hl7.org/fhir/resource-types#MedicationStatement";
+
+    /// <summary>
     /// Literal for code: MedicinalProduct
     /// </summary>
     public const string LiteralMedicinalProduct = "MedicinalProduct";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProduct
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProduct = "http://hl7.org/fhir/resource-types#MedicinalProduct";
 
     /// <summary>
     /// Literal for code: MedicinalProductAuthorization
@@ -2456,9 +2876,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicinalProductAuthorization = "MedicinalProductAuthorization";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductAuthorization
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductAuthorization = "http://hl7.org/fhir/resource-types#MedicinalProductAuthorization";
+
+    /// <summary>
     /// Literal for code: MedicinalProductContraindication
     /// </summary>
     public const string LiteralMedicinalProductContraindication = "MedicinalProductContraindication";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductContraindication
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductContraindication = "http://hl7.org/fhir/resource-types#MedicinalProductContraindication";
 
     /// <summary>
     /// Literal for code: MedicinalProductIndication
@@ -2466,9 +2896,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicinalProductIndication = "MedicinalProductIndication";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductIndication
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductIndication = "http://hl7.org/fhir/resource-types#MedicinalProductIndication";
+
+    /// <summary>
     /// Literal for code: MedicinalProductIngredient
     /// </summary>
     public const string LiteralMedicinalProductIngredient = "MedicinalProductIngredient";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductIngredient
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductIngredient = "http://hl7.org/fhir/resource-types#MedicinalProductIngredient";
 
     /// <summary>
     /// Literal for code: MedicinalProductInteraction
@@ -2476,9 +2916,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicinalProductInteraction = "MedicinalProductInteraction";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductInteraction
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductInteraction = "http://hl7.org/fhir/resource-types#MedicinalProductInteraction";
+
+    /// <summary>
     /// Literal for code: MedicinalProductManufactured
     /// </summary>
     public const string LiteralMedicinalProductManufactured = "MedicinalProductManufactured";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductManufactured
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductManufactured = "http://hl7.org/fhir/resource-types#MedicinalProductManufactured";
 
     /// <summary>
     /// Literal for code: MedicinalProductPackaged
@@ -2486,9 +2936,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicinalProductPackaged = "MedicinalProductPackaged";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductPackaged
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductPackaged = "http://hl7.org/fhir/resource-types#MedicinalProductPackaged";
+
+    /// <summary>
     /// Literal for code: MedicinalProductPharmaceutical
     /// </summary>
     public const string LiteralMedicinalProductPharmaceutical = "MedicinalProductPharmaceutical";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductPharmaceutical
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductPharmaceutical = "http://hl7.org/fhir/resource-types#MedicinalProductPharmaceutical";
 
     /// <summary>
     /// Literal for code: MedicinalProductUndesirableEffect
@@ -2496,9 +2956,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicinalProductUndesirableEffect = "MedicinalProductUndesirableEffect";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMedicinalProductUndesirableEffect
+    /// </summary>
+    public const string LiteralResourceTypesMedicinalProductUndesirableEffect = "http://hl7.org/fhir/resource-types#MedicinalProductUndesirableEffect";
+
+    /// <summary>
     /// Literal for code: MessageDefinition
     /// </summary>
     public const string LiteralMessageDefinition = "MessageDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMessageDefinition
+    /// </summary>
+    public const string LiteralResourceTypesMessageDefinition = "http://hl7.org/fhir/resource-types#MessageDefinition";
 
     /// <summary>
     /// Literal for code: MessageHeader
@@ -2506,9 +2976,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMessageHeader = "MessageHeader";
 
     /// <summary>
+    /// Literal for code: ResourceTypesMessageHeader
+    /// </summary>
+    public const string LiteralResourceTypesMessageHeader = "http://hl7.org/fhir/resource-types#MessageHeader";
+
+    /// <summary>
     /// Literal for code: MolecularSequence
     /// </summary>
     public const string LiteralMolecularSequence = "MolecularSequence";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMolecularSequence
+    /// </summary>
+    public const string LiteralResourceTypesMolecularSequence = "http://hl7.org/fhir/resource-types#MolecularSequence";
 
     /// <summary>
     /// Literal for code: NamingSystem
@@ -2516,9 +2996,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNamingSystem = "NamingSystem";
 
     /// <summary>
+    /// Literal for code: ResourceTypesNamingSystem
+    /// </summary>
+    public const string LiteralResourceTypesNamingSystem = "http://hl7.org/fhir/resource-types#NamingSystem";
+
+    /// <summary>
     /// Literal for code: NutritionOrder
     /// </summary>
     public const string LiteralNutritionOrder = "NutritionOrder";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesNutritionOrder
+    /// </summary>
+    public const string LiteralResourceTypesNutritionOrder = "http://hl7.org/fhir/resource-types#NutritionOrder";
 
     /// <summary>
     /// Literal for code: Observation
@@ -2526,9 +3016,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralObservation = "Observation";
 
     /// <summary>
+    /// Literal for code: ResourceTypesObservation
+    /// </summary>
+    public const string LiteralResourceTypesObservation = "http://hl7.org/fhir/resource-types#Observation";
+
+    /// <summary>
     /// Literal for code: ObservationDefinition
     /// </summary>
     public const string LiteralObservationDefinition = "ObservationDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesObservationDefinition
+    /// </summary>
+    public const string LiteralResourceTypesObservationDefinition = "http://hl7.org/fhir/resource-types#ObservationDefinition";
 
     /// <summary>
     /// Literal for code: OperationDefinition
@@ -2536,9 +3036,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOperationDefinition = "OperationDefinition";
 
     /// <summary>
+    /// Literal for code: ResourceTypesOperationDefinition
+    /// </summary>
+    public const string LiteralResourceTypesOperationDefinition = "http://hl7.org/fhir/resource-types#OperationDefinition";
+
+    /// <summary>
     /// Literal for code: OperationOutcome
     /// </summary>
     public const string LiteralOperationOutcome = "OperationOutcome";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesOperationOutcome
+    /// </summary>
+    public const string LiteralResourceTypesOperationOutcome = "http://hl7.org/fhir/resource-types#OperationOutcome";
 
     /// <summary>
     /// Literal for code: Organization
@@ -2546,9 +3056,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOrganization = "Organization";
 
     /// <summary>
+    /// Literal for code: ResourceTypesOrganization
+    /// </summary>
+    public const string LiteralResourceTypesOrganization = "http://hl7.org/fhir/resource-types#Organization";
+
+    /// <summary>
     /// Literal for code: OrganizationAffiliation
     /// </summary>
     public const string LiteralOrganizationAffiliation = "OrganizationAffiliation";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesOrganizationAffiliation
+    /// </summary>
+    public const string LiteralResourceTypesOrganizationAffiliation = "http://hl7.org/fhir/resource-types#OrganizationAffiliation";
 
     /// <summary>
     /// Literal for code: Parameters
@@ -2556,9 +3076,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParameters = "Parameters";
 
     /// <summary>
+    /// Literal for code: ResourceTypesParameters
+    /// </summary>
+    public const string LiteralResourceTypesParameters = "http://hl7.org/fhir/resource-types#Parameters";
+
+    /// <summary>
     /// Literal for code: Patient
     /// </summary>
     public const string LiteralPatient = "Patient";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesPatient
+    /// </summary>
+    public const string LiteralResourceTypesPatient = "http://hl7.org/fhir/resource-types#Patient";
 
     /// <summary>
     /// Literal for code: PaymentNotice
@@ -2566,9 +3096,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPaymentNotice = "PaymentNotice";
 
     /// <summary>
+    /// Literal for code: ResourceTypesPaymentNotice
+    /// </summary>
+    public const string LiteralResourceTypesPaymentNotice = "http://hl7.org/fhir/resource-types#PaymentNotice";
+
+    /// <summary>
     /// Literal for code: PaymentReconciliation
     /// </summary>
     public const string LiteralPaymentReconciliation = "PaymentReconciliation";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesPaymentReconciliation
+    /// </summary>
+    public const string LiteralResourceTypesPaymentReconciliation = "http://hl7.org/fhir/resource-types#PaymentReconciliation";
 
     /// <summary>
     /// Literal for code: Person
@@ -2576,9 +3116,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPerson = "Person";
 
     /// <summary>
+    /// Literal for code: ResourceTypesPerson
+    /// </summary>
+    public const string LiteralResourceTypesPerson = "http://hl7.org/fhir/resource-types#Person";
+
+    /// <summary>
     /// Literal for code: PlanDefinition
     /// </summary>
     public const string LiteralPlanDefinition = "PlanDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesPlanDefinition
+    /// </summary>
+    public const string LiteralResourceTypesPlanDefinition = "http://hl7.org/fhir/resource-types#PlanDefinition";
 
     /// <summary>
     /// Literal for code: Practitioner
@@ -2586,9 +3136,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPractitioner = "Practitioner";
 
     /// <summary>
+    /// Literal for code: ResourceTypesPractitioner
+    /// </summary>
+    public const string LiteralResourceTypesPractitioner = "http://hl7.org/fhir/resource-types#Practitioner";
+
+    /// <summary>
     /// Literal for code: PractitionerRole
     /// </summary>
     public const string LiteralPractitionerRole = "PractitionerRole";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesPractitionerRole
+    /// </summary>
+    public const string LiteralResourceTypesPractitionerRole = "http://hl7.org/fhir/resource-types#PractitionerRole";
 
     /// <summary>
     /// Literal for code: Procedure
@@ -2596,9 +3156,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProcedure = "Procedure";
 
     /// <summary>
+    /// Literal for code: ResourceTypesProcedure
+    /// </summary>
+    public const string LiteralResourceTypesProcedure = "http://hl7.org/fhir/resource-types#Procedure";
+
+    /// <summary>
     /// Literal for code: Provenance
     /// </summary>
     public const string LiteralProvenance = "Provenance";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesProvenance
+    /// </summary>
+    public const string LiteralResourceTypesProvenance = "http://hl7.org/fhir/resource-types#Provenance";
 
     /// <summary>
     /// Literal for code: Questionnaire
@@ -2606,9 +3176,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralQuestionnaire = "Questionnaire";
 
     /// <summary>
+    /// Literal for code: ResourceTypesQuestionnaire
+    /// </summary>
+    public const string LiteralResourceTypesQuestionnaire = "http://hl7.org/fhir/resource-types#Questionnaire";
+
+    /// <summary>
     /// Literal for code: QuestionnaireResponse
     /// </summary>
     public const string LiteralQuestionnaireResponse = "QuestionnaireResponse";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesQuestionnaireResponse
+    /// </summary>
+    public const string LiteralResourceTypesQuestionnaireResponse = "http://hl7.org/fhir/resource-types#QuestionnaireResponse";
 
     /// <summary>
     /// Literal for code: RelatedPerson
@@ -2616,9 +3196,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRelatedPerson = "RelatedPerson";
 
     /// <summary>
+    /// Literal for code: ResourceTypesRelatedPerson
+    /// </summary>
+    public const string LiteralResourceTypesRelatedPerson = "http://hl7.org/fhir/resource-types#RelatedPerson";
+
+    /// <summary>
     /// Literal for code: RequestGroup
     /// </summary>
     public const string LiteralRequestGroup = "RequestGroup";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesRequestGroup
+    /// </summary>
+    public const string LiteralResourceTypesRequestGroup = "http://hl7.org/fhir/resource-types#RequestGroup";
 
     /// <summary>
     /// Literal for code: ResearchDefinition
@@ -2626,9 +3216,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralResearchDefinition = "ResearchDefinition";
 
     /// <summary>
+    /// Literal for code: ResourceTypesResearchDefinition
+    /// </summary>
+    public const string LiteralResourceTypesResearchDefinition = "http://hl7.org/fhir/resource-types#ResearchDefinition";
+
+    /// <summary>
     /// Literal for code: ResearchElementDefinition
     /// </summary>
     public const string LiteralResearchElementDefinition = "ResearchElementDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesResearchElementDefinition
+    /// </summary>
+    public const string LiteralResourceTypesResearchElementDefinition = "http://hl7.org/fhir/resource-types#ResearchElementDefinition";
 
     /// <summary>
     /// Literal for code: ResearchStudy
@@ -2636,9 +3236,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralResearchStudy = "ResearchStudy";
 
     /// <summary>
+    /// Literal for code: ResourceTypesResearchStudy
+    /// </summary>
+    public const string LiteralResourceTypesResearchStudy = "http://hl7.org/fhir/resource-types#ResearchStudy";
+
+    /// <summary>
     /// Literal for code: ResearchSubject
     /// </summary>
     public const string LiteralResearchSubject = "ResearchSubject";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesResearchSubject
+    /// </summary>
+    public const string LiteralResourceTypesResearchSubject = "http://hl7.org/fhir/resource-types#ResearchSubject";
 
     /// <summary>
     /// Literal for code: Resource
@@ -2646,9 +3256,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralResource = "Resource";
 
     /// <summary>
+    /// Literal for code: ResourceTypesResource
+    /// </summary>
+    public const string LiteralResourceTypesResource = "http://hl7.org/fhir/resource-types#Resource";
+
+    /// <summary>
     /// Literal for code: RiskAssessment
     /// </summary>
     public const string LiteralRiskAssessment = "RiskAssessment";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesRiskAssessment
+    /// </summary>
+    public const string LiteralResourceTypesRiskAssessment = "http://hl7.org/fhir/resource-types#RiskAssessment";
 
     /// <summary>
     /// Literal for code: RiskEvidenceSynthesis
@@ -2656,9 +3276,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRiskEvidenceSynthesis = "RiskEvidenceSynthesis";
 
     /// <summary>
+    /// Literal for code: ResourceTypesRiskEvidenceSynthesis
+    /// </summary>
+    public const string LiteralResourceTypesRiskEvidenceSynthesis = "http://hl7.org/fhir/resource-types#RiskEvidenceSynthesis";
+
+    /// <summary>
     /// Literal for code: Schedule
     /// </summary>
     public const string LiteralSchedule = "Schedule";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesSchedule
+    /// </summary>
+    public const string LiteralResourceTypesSchedule = "http://hl7.org/fhir/resource-types#Schedule";
 
     /// <summary>
     /// Literal for code: SearchParameter
@@ -2666,9 +3296,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSearchParameter = "SearchParameter";
 
     /// <summary>
+    /// Literal for code: ResourceTypesSearchParameter
+    /// </summary>
+    public const string LiteralResourceTypesSearchParameter = "http://hl7.org/fhir/resource-types#SearchParameter";
+
+    /// <summary>
     /// Literal for code: ServiceRequest
     /// </summary>
     public const string LiteralServiceRequest = "ServiceRequest";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesServiceRequest
+    /// </summary>
+    public const string LiteralResourceTypesServiceRequest = "http://hl7.org/fhir/resource-types#ServiceRequest";
 
     /// <summary>
     /// Literal for code: Slot
@@ -2676,9 +3316,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSlot = "Slot";
 
     /// <summary>
+    /// Literal for code: ResourceTypesSlot
+    /// </summary>
+    public const string LiteralResourceTypesSlot = "http://hl7.org/fhir/resource-types#Slot";
+
+    /// <summary>
     /// Literal for code: Specimen
     /// </summary>
     public const string LiteralSpecimen = "Specimen";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesSpecimen
+    /// </summary>
+    public const string LiteralResourceTypesSpecimen = "http://hl7.org/fhir/resource-types#Specimen";
 
     /// <summary>
     /// Literal for code: SpecimenDefinition
@@ -2686,9 +3336,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpecimenDefinition = "SpecimenDefinition";
 
     /// <summary>
+    /// Literal for code: ResourceTypesSpecimenDefinition
+    /// </summary>
+    public const string LiteralResourceTypesSpecimenDefinition = "http://hl7.org/fhir/resource-types#SpecimenDefinition";
+
+    /// <summary>
     /// Literal for code: StructureDefinition
     /// </summary>
     public const string LiteralStructureDefinition = "StructureDefinition";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesStructureDefinition
+    /// </summary>
+    public const string LiteralResourceTypesStructureDefinition = "http://hl7.org/fhir/resource-types#StructureDefinition";
 
     /// <summary>
     /// Literal for code: StructureMap
@@ -2696,9 +3356,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStructureMap = "StructureMap";
 
     /// <summary>
+    /// Literal for code: ResourceTypesStructureMap
+    /// </summary>
+    public const string LiteralResourceTypesStructureMap = "http://hl7.org/fhir/resource-types#StructureMap";
+
+    /// <summary>
     /// Literal for code: Subscription
     /// </summary>
     public const string LiteralSubscription = "Subscription";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesSubscription
+    /// </summary>
+    public const string LiteralResourceTypesSubscription = "http://hl7.org/fhir/resource-types#Subscription";
 
     /// <summary>
     /// Literal for code: Substance
@@ -2706,9 +3376,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubstance = "Substance";
 
     /// <summary>
+    /// Literal for code: ResourceTypesSubstance
+    /// </summary>
+    public const string LiteralResourceTypesSubstance = "http://hl7.org/fhir/resource-types#Substance";
+
+    /// <summary>
     /// Literal for code: SubstanceNucleicAcid
     /// </summary>
     public const string LiteralSubstanceNucleicAcid = "SubstanceNucleicAcid";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesSubstanceNucleicAcid
+    /// </summary>
+    public const string LiteralResourceTypesSubstanceNucleicAcid = "http://hl7.org/fhir/resource-types#SubstanceNucleicAcid";
 
     /// <summary>
     /// Literal for code: SubstancePolymer
@@ -2716,9 +3396,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubstancePolymer = "SubstancePolymer";
 
     /// <summary>
+    /// Literal for code: ResourceTypesSubstancePolymer
+    /// </summary>
+    public const string LiteralResourceTypesSubstancePolymer = "http://hl7.org/fhir/resource-types#SubstancePolymer";
+
+    /// <summary>
     /// Literal for code: SubstanceProtein
     /// </summary>
     public const string LiteralSubstanceProtein = "SubstanceProtein";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesSubstanceProtein
+    /// </summary>
+    public const string LiteralResourceTypesSubstanceProtein = "http://hl7.org/fhir/resource-types#SubstanceProtein";
 
     /// <summary>
     /// Literal for code: SubstanceReferenceInformation
@@ -2726,9 +3416,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubstanceReferenceInformation = "SubstanceReferenceInformation";
 
     /// <summary>
+    /// Literal for code: ResourceTypesSubstanceReferenceInformation
+    /// </summary>
+    public const string LiteralResourceTypesSubstanceReferenceInformation = "http://hl7.org/fhir/resource-types#SubstanceReferenceInformation";
+
+    /// <summary>
     /// Literal for code: SubstanceSourceMaterial
     /// </summary>
     public const string LiteralSubstanceSourceMaterial = "SubstanceSourceMaterial";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesSubstanceSourceMaterial
+    /// </summary>
+    public const string LiteralResourceTypesSubstanceSourceMaterial = "http://hl7.org/fhir/resource-types#SubstanceSourceMaterial";
 
     /// <summary>
     /// Literal for code: SubstanceSpecification
@@ -2736,9 +3436,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubstanceSpecification = "SubstanceSpecification";
 
     /// <summary>
+    /// Literal for code: ResourceTypesSubstanceSpecification
+    /// </summary>
+    public const string LiteralResourceTypesSubstanceSpecification = "http://hl7.org/fhir/resource-types#SubstanceSpecification";
+
+    /// <summary>
     /// Literal for code: SupplyDelivery
     /// </summary>
     public const string LiteralSupplyDelivery = "SupplyDelivery";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesSupplyDelivery
+    /// </summary>
+    public const string LiteralResourceTypesSupplyDelivery = "http://hl7.org/fhir/resource-types#SupplyDelivery";
 
     /// <summary>
     /// Literal for code: SupplyRequest
@@ -2746,9 +3456,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSupplyRequest = "SupplyRequest";
 
     /// <summary>
+    /// Literal for code: ResourceTypesSupplyRequest
+    /// </summary>
+    public const string LiteralResourceTypesSupplyRequest = "http://hl7.org/fhir/resource-types#SupplyRequest";
+
+    /// <summary>
     /// Literal for code: Task
     /// </summary>
     public const string LiteralTask = "Task";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesTask
+    /// </summary>
+    public const string LiteralResourceTypesTask = "http://hl7.org/fhir/resource-types#Task";
 
     /// <summary>
     /// Literal for code: TerminologyCapabilities
@@ -2756,9 +3476,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTerminologyCapabilities = "TerminologyCapabilities";
 
     /// <summary>
+    /// Literal for code: ResourceTypesTerminologyCapabilities
+    /// </summary>
+    public const string LiteralResourceTypesTerminologyCapabilities = "http://hl7.org/fhir/resource-types#TerminologyCapabilities";
+
+    /// <summary>
     /// Literal for code: TestReport
     /// </summary>
     public const string LiteralTestReport = "TestReport";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesTestReport
+    /// </summary>
+    public const string LiteralResourceTypesTestReport = "http://hl7.org/fhir/resource-types#TestReport";
 
     /// <summary>
     /// Literal for code: TestScript
@@ -2766,9 +3496,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTestScript = "TestScript";
 
     /// <summary>
+    /// Literal for code: ResourceTypesTestScript
+    /// </summary>
+    public const string LiteralResourceTypesTestScript = "http://hl7.org/fhir/resource-types#TestScript";
+
+    /// <summary>
     /// Literal for code: ForDocumentsFollowingCCDA11ConstraintsUsingANonStructuredBody
     /// </summary>
     public const string LiteralForDocumentsFollowingCCDA11ConstraintsUsingANonStructuredBody = "urn:hl7-org:sdwg:ccda-nonXMLBody:1.1";
+
+    /// <summary>
+    /// Literal for code: NONEForDocumentsFollowingCCDA11ConstraintsUsingANonStructuredBody
+    /// </summary>
+    public const string LiteralNONEForDocumentsFollowingCCDA11ConstraintsUsingANonStructuredBody = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:hl7-org:sdwg:ccda-nonXMLBody:1.1";
 
     /// <summary>
     /// Literal for code: ForDocumentsFollowingCCDA21ConstraintsUsingANonStructuredBody
@@ -2776,9 +3516,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralForDocumentsFollowingCCDA21ConstraintsUsingANonStructuredBody = "urn:hl7-org:sdwg:ccda-nonXMLBody:2.1";
 
     /// <summary>
+    /// Literal for code: NONEForDocumentsFollowingCCDA21ConstraintsUsingANonStructuredBody
+    /// </summary>
+    public const string LiteralNONEForDocumentsFollowingCCDA21ConstraintsUsingANonStructuredBody = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:hl7-org:sdwg:ccda-nonXMLBody:2.1";
+
+    /// <summary>
     /// Literal for code: ForDocumentsFollowingCCDA11ConstraintsUsingAStructuredBody
     /// </summary>
     public const string LiteralForDocumentsFollowingCCDA11ConstraintsUsingAStructuredBody = "urn:hl7-org:sdwg:ccda-structuredBody:1.1";
+
+    /// <summary>
+    /// Literal for code: NONEForDocumentsFollowingCCDA11ConstraintsUsingAStructuredBody
+    /// </summary>
+    public const string LiteralNONEForDocumentsFollowingCCDA11ConstraintsUsingAStructuredBody = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:hl7-org:sdwg:ccda-structuredBody:1.1";
 
     /// <summary>
     /// Literal for code: ForDocumentsFollowingCCDA21ConstraintsUsingAStructuredBody
@@ -2786,9 +3536,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralForDocumentsFollowingCCDA21ConstraintsUsingAStructuredBody = "urn:hl7-org:sdwg:ccda-structuredBody:2.1";
 
     /// <summary>
+    /// Literal for code: NONEForDocumentsFollowingCCDA21ConstraintsUsingAStructuredBody
+    /// </summary>
+    public const string LiteralNONEForDocumentsFollowingCCDA21ConstraintsUsingAStructuredBody = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:hl7-org:sdwg:ccda-structuredBody:2.1";
+
+    /// <summary>
     /// Literal for code: CardiologyCRC
     /// </summary>
     public const string LiteralCardiologyCRC = "urn:ihe:card:CRC:2012";
+
+    /// <summary>
+    /// Literal for code: NONECardiologyCRC
+    /// </summary>
+    public const string LiteralNONECardiologyCRC = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:card:CRC:2012";
 
     /// <summary>
     /// Literal for code: CardiologyEPRCIE
@@ -2796,9 +3556,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCardiologyEPRCIE = "urn:ihe:card:EPRC-IE:2014";
 
     /// <summary>
+    /// Literal for code: NONECardiologyEPRCIE
+    /// </summary>
+    public const string LiteralNONECardiologyEPRCIE = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:card:EPRC-IE:2014";
+
+    /// <summary>
     /// Literal for code: CardiacImagingReport
     /// </summary>
     public const string LiteralCardiacImagingReport = "urn:ihe:card:imaging:2011";
+
+    /// <summary>
+    /// Literal for code: NONECardiacImagingReport
+    /// </summary>
+    public const string LiteralNONECardiacImagingReport = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:card:imaging:2011";
 
     /// <summary>
     /// Literal for code: DentalCDA
@@ -2806,9 +3576,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDentalCDA = "urn:ihe:dent:CDA:ImagingReportStructuredHeadings:2013";
 
     /// <summary>
+    /// Literal for code: NONEDentalCDA
+    /// </summary>
+    public const string LiteralNONEDentalCDA = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:dent:CDA:ImagingReportStructuredHeadings:2013";
+
+    /// <summary>
     /// Literal for code: DentalPDF
     /// </summary>
     public const string LiteralDentalPDF = "urn:ihe:dent:PDF";
+
+    /// <summary>
+    /// Literal for code: NONEDentalPDF
+    /// </summary>
+    public const string LiteralNONEDentalPDF = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:dent:PDF";
 
     /// <summary>
     /// Literal for code: DentalText
@@ -2816,9 +3596,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDentalText = "urn:ihe:dent:TEXT";
 
     /// <summary>
+    /// Literal for code: NONEDentalText
+    /// </summary>
+    public const string LiteralNONEDentalText = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:dent:TEXT";
+
+    /// <summary>
     /// Literal for code: AdvancedPatientPrivacyConsents
     /// </summary>
     public const string LiteralAdvancedPatientPrivacyConsents = "urn:ihe:iti:appc:2016:consent";
+
+    /// <summary>
+    /// Literal for code: NONEAdvancedPatientPrivacyConsents
+    /// </summary>
+    public const string LiteralNONEAdvancedPatientPrivacyConsents = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:appc:2016:consent";
 
     /// <summary>
     /// Literal for code: BasicPatientPrivacyConsentsWithScannedDocument
@@ -2826,9 +3616,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBasicPatientPrivacyConsentsWithScannedDocument = "urn:ihe:iti:bppc-sd:2007";
 
     /// <summary>
+    /// Literal for code: NONEBasicPatientPrivacyConsentsWithScannedDocument
+    /// </summary>
+    public const string LiteralNONEBasicPatientPrivacyConsentsWithScannedDocument = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:bppc-sd:2007";
+
+    /// <summary>
     /// Literal for code: BasicPatientPrivacyConsents
     /// </summary>
     public const string LiteralBasicPatientPrivacyConsents = "urn:ihe:iti:bppc:2007";
+
+    /// <summary>
+    /// Literal for code: NONEBasicPatientPrivacyConsents
+    /// </summary>
+    public const string LiteralNONEBasicPatientPrivacyConsents = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:bppc:2007";
 
     /// <summary>
     /// Literal for code: DSGDetachedDocument
@@ -2836,9 +3636,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDSGDetachedDocument = "urn:ihe:iti:dsg:detached:2014";
 
     /// <summary>
+    /// Literal for code: NONEDSGDetachedDocument
+    /// </summary>
+    public const string LiteralNONEDSGDetachedDocument = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:dsg:detached:2014";
+
+    /// <summary>
     /// Literal for code: DSGEnvelopingDocument
     /// </summary>
     public const string LiteralDSGEnvelopingDocument = "urn:ihe:iti:dsg:enveloping:2014";
+
+    /// <summary>
+    /// Literal for code: NONEDSGEnvelopingDocument
+    /// </summary>
+    public const string LiteralNONEDSGEnvelopingDocument = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:dsg:enveloping:2014";
 
     /// <summary>
     /// Literal for code: PDFEmbeddedInCDAPerXDSSDProfile
@@ -2846,9 +3656,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPDFEmbeddedInCDAPerXDSSDProfile = "urn:ihe:iti:xds-sd:pdf:2008";
 
     /// <summary>
+    /// Literal for code: NONEPDFEmbeddedInCDAPerXDSSDProfile
+    /// </summary>
+    public const string LiteralNONEPDFEmbeddedInCDAPerXDSSDProfile = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:xds-sd:pdf:2008";
+
+    /// <summary>
     /// Literal for code: TextEmbeddedInCDAPerXDSSDProfile
     /// </summary>
     public const string LiteralTextEmbeddedInCDAPerXDSSDProfile = "urn:ihe:iti:xds-sd:text:2008";
+
+    /// <summary>
+    /// Literal for code: NONETextEmbeddedInCDAPerXDSSDProfile
+    /// </summary>
+    public const string LiteralNONETextEmbeddedInCDAPerXDSSDProfile = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:xds-sd:text:2008";
 
     /// <summary>
     /// Literal for code: MimeTypeSufficient
@@ -2856,9 +3676,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMimeTypeSufficient = "urn:ihe:iti:xds:2017:mimeTypeSufficient";
 
     /// <summary>
+    /// Literal for code: NONEMimeTypeSufficient
+    /// </summary>
+    public const string LiteralNONEMimeTypeSufficient = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:xds:2017:mimeTypeSufficient";
+
+    /// <summary>
     /// Literal for code: XDWWorkflowDocument
     /// </summary>
     public const string LiteralXDWWorkflowDocument = "urn:ihe:iti:xdw:2011:workflowDoc";
+
+    /// <summary>
+    /// Literal for code: NONEXDWWorkflowDocument
+    /// </summary>
+    public const string LiteralNONEXDWWorkflowDocument = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:xdw:2011:workflowDoc";
 
     /// <summary>
     /// Literal for code: CDALaboratoryReport
@@ -2866,9 +3696,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCDALaboratoryReport = "urn:ihe:lab:xd-lab:2008";
 
     /// <summary>
+    /// Literal for code: NONECDALaboratoryReport
+    /// </summary>
+    public const string LiteralNONECDALaboratoryReport = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:lab:xd-lab:2008";
+
+    /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportAll
     /// </summary>
     public const string LiteralAnatomicPathologyStructuredReportAll = "urn:ihe:pat:apsr:all:2010";
+
+    /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportAll
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportAll = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:all:2010";
 
     /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerAll
@@ -2876,9 +3716,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnatomicPathologyStructuredReportCancerAll = "urn:ihe:pat:apsr:cancer:all:2010";
 
     /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerAll
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerAll = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:all:2010";
+
+    /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerBreast
     /// </summary>
     public const string LiteralAnatomicPathologyStructuredReportCancerBreast = "urn:ihe:pat:apsr:cancer:breast:2010";
+
+    /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerBreast
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerBreast = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:breast:2010";
 
     /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerCervix
@@ -2886,9 +3736,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnatomicPathologyStructuredReportCancerCervix = "urn:ihe:pat:apsr:cancer:cervix:2010";
 
     /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerCervix
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerCervix = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:cervix:2010";
+
+    /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerColon
     /// </summary>
     public const string LiteralAnatomicPathologyStructuredReportCancerColon = "urn:ihe:pat:apsr:cancer:colon:2010";
+
+    /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerColon
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerColon = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:colon:2010";
 
     /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerEndometrium
@@ -2896,9 +3756,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnatomicPathologyStructuredReportCancerEndometrium = "urn:ihe:pat:apsr:cancer:endometrium:2010";
 
     /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerEndometrium
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerEndometrium = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:endometrium:2010";
+
+    /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerEsophagus
     /// </summary>
     public const string LiteralAnatomicPathologyStructuredReportCancerEsophagus = "urn:ihe:pat:apsr:cancer:esophagus:2010";
+
+    /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerEsophagus
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerEsophagus = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:esophagus:2010";
 
     /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerKidney
@@ -2906,9 +3776,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnatomicPathologyStructuredReportCancerKidney = "urn:ihe:pat:apsr:cancer:kidney:2010";
 
     /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerKidney
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerKidney = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:kidney:2010";
+
+    /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerLarynx
     /// </summary>
     public const string LiteralAnatomicPathologyStructuredReportCancerLarynx = "urn:ihe:pat:apsr:cancer:larynx:2010";
+
+    /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerLarynx
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerLarynx = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:larynx:2010";
 
     /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerLipOralCavity
@@ -2916,9 +3796,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnatomicPathologyStructuredReportCancerLipOralCavity = "urn:ihe:pat:apsr:cancer:lip_oral_cavity:2010";
 
     /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerLipOralCavity
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerLipOralCavity = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:lip_oral_cavity:2010";
+
+    /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerLiver
     /// </summary>
     public const string LiteralAnatomicPathologyStructuredReportCancerLiver = "urn:ihe:pat:apsr:cancer:liver:2010";
+
+    /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerLiver
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerLiver = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:liver:2010";
 
     /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerLung
@@ -2926,9 +3816,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnatomicPathologyStructuredReportCancerLung = "urn:ihe:pat:apsr:cancer:lung:2010";
 
     /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerLung
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerLung = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:lung:2010";
+
+    /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerOvary
     /// </summary>
     public const string LiteralAnatomicPathologyStructuredReportCancerOvary = "urn:ihe:pat:apsr:cancer:ovary:2010";
+
+    /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerOvary
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerOvary = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:ovary:2010";
 
     /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerPancreas
@@ -2936,9 +3836,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnatomicPathologyStructuredReportCancerPancreas = "urn:ihe:pat:apsr:cancer:pancreas:2010";
 
     /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerPancreas
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerPancreas = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:pancreas:2010";
+
+    /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerPharynx
     /// </summary>
     public const string LiteralAnatomicPathologyStructuredReportCancerPharynx = "urn:ihe:pat:apsr:cancer:pharynx:2010";
+
+    /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerPharynx
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerPharynx = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:pharynx:2010";
 
     /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerProstate
@@ -2946,9 +3856,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnatomicPathologyStructuredReportCancerProstate = "urn:ihe:pat:apsr:cancer:prostate:2010";
 
     /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerProstate
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerProstate = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:prostate:2010";
+
+    /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerSalivaryGland
     /// </summary>
     public const string LiteralAnatomicPathologyStructuredReportCancerSalivaryGland = "urn:ihe:pat:apsr:cancer:salivary_gland:2010";
+
+    /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerSalivaryGland
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerSalivaryGland = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:salivary_gland:2010";
 
     /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerSkin
@@ -2956,9 +3876,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnatomicPathologyStructuredReportCancerSkin = "urn:ihe:pat:apsr:cancer:skin:2010";
 
     /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerSkin
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerSkin = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:skin:2010";
+
+    /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerStomach
     /// </summary>
     public const string LiteralAnatomicPathologyStructuredReportCancerStomach = "urn:ihe:pat:apsr:cancer:stomach:2010";
+
+    /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerStomach
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerStomach = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:stomach:2010";
 
     /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerTestis
@@ -2966,9 +3896,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnatomicPathologyStructuredReportCancerTestis = "urn:ihe:pat:apsr:cancer:testis:2010";
 
     /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerTestis
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerTestis = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:testis:2010";
+
+    /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerThyroid
     /// </summary>
     public const string LiteralAnatomicPathologyStructuredReportCancerThyroid = "urn:ihe:pat:apsr:cancer:thyroid:2010";
+
+    /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerThyroid
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerThyroid = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:thyroid:2010";
 
     /// <summary>
     /// Literal for code: AnatomicPathologyStructuredReportCancerUrinaryBladder
@@ -2976,9 +3916,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnatomicPathologyStructuredReportCancerUrinaryBladder = "urn:ihe:pat:apsr:cancer:urinary_bladder:2010";
 
     /// <summary>
+    /// Literal for code: NONEAnatomicPathologyStructuredReportCancerUrinaryBladder
+    /// </summary>
+    public const string LiteralNONEAnatomicPathologyStructuredReportCancerUrinaryBladder = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:urinary_bladder:2010";
+
+    /// <summary>
     /// Literal for code: AntepartumRecordAPREducation
     /// </summary>
     public const string LiteralAntepartumRecordAPREducation = "urn:ihe:pcc:apr:edu:2008";
+
+    /// <summary>
+    /// Literal for code: NONEAntepartumRecordAPREducation
+    /// </summary>
+    public const string LiteralNONEAntepartumRecordAPREducation = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:apr:edu:2008";
 
     /// <summary>
     /// Literal for code: AntepartumRecordAPRHistoryAndPhysical
@@ -2986,9 +3936,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAntepartumRecordAPRHistoryAndPhysical = "urn:ihe:pcc:apr:handp:2008";
 
     /// <summary>
+    /// Literal for code: NONEAntepartumRecordAPRHistoryAndPhysical
+    /// </summary>
+    public const string LiteralNONEAntepartumRecordAPRHistoryAndPhysical = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:apr:handp:2008";
+
+    /// <summary>
     /// Literal for code: AntepartumRecordAPRLaboratory
     /// </summary>
     public const string LiteralAntepartumRecordAPRLaboratory = "urn:ihe:pcc:apr:lab:2008";
+
+    /// <summary>
+    /// Literal for code: NONEAntepartumRecordAPRLaboratory
+    /// </summary>
+    public const string LiteralNONEAntepartumRecordAPRLaboratory = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:apr:lab:2008";
 
     /// <summary>
     /// Literal for code: IHEAntepartumSummary
@@ -2996,9 +3956,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIHEAntepartumSummary = "urn:ihe:pcc:aps:2007";
 
     /// <summary>
+    /// Literal for code: NONEIHEAntepartumSummary
+    /// </summary>
+    public const string LiteralNONEIHEAntepartumSummary = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:aps:2007";
+
+    /// <summary>
     /// Literal for code: CareManagementCM
     /// </summary>
     public const string LiteralCareManagementCM = "urn:ihe:pcc:cm:2008";
+
+    /// <summary>
+    /// Literal for code: NONECareManagementCM
+    /// </summary>
+    public const string LiteralNONECareManagementCM = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:cm:2008";
 
     /// <summary>
     /// Literal for code: CancerRegistryContentCRC
@@ -3006,9 +3976,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCancerRegistryContentCRC = "urn:ihe:pcc:crc:2008";
 
     /// <summary>
+    /// Literal for code: NONECancerRegistryContentCRC
+    /// </summary>
+    public const string LiteralNONECancerRegistryContentCRC = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:crc:2008";
+
+    /// <summary>
     /// Literal for code: PCCCTN
     /// </summary>
     public const string LiteralPCCCTN = "urn:ihe:pcc:ctn:2007";
+
+    /// <summary>
+    /// Literal for code: NONEPCCCTN
+    /// </summary>
+    public const string LiteralNONEPCCCTN = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:ctn:2007";
 
     /// <summary>
     /// Literal for code: EmergencyDepartmentEncounterSummaryEDES
@@ -3016,9 +3996,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmergencyDepartmentEncounterSummaryEDES = "urn:ihe:pcc:edes:2007";
 
     /// <summary>
+    /// Literal for code: NONEEmergencyDepartmentEncounterSummaryEDES
+    /// </summary>
+    public const string LiteralNONEEmergencyDepartmentEncounterSummaryEDES = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:edes:2007";
+
+    /// <summary>
     /// Literal for code: PCCEDPN
     /// </summary>
     public const string LiteralPCCEDPN = "urn:ihe:pcc:edpn:2007";
+
+    /// <summary>
+    /// Literal for code: NONEPCCEDPN
+    /// </summary>
+    public const string LiteralNONEPCCEDPN = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:edpn:2007";
 
     /// <summary>
     /// Literal for code: EmergencyDepartmentReferralEDR
@@ -3026,9 +4016,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmergencyDepartmentReferralEDR = "urn:ihe:pcc:edr:2007";
 
     /// <summary>
+    /// Literal for code: NONEEmergencyDepartmentReferralEDR
+    /// </summary>
+    public const string LiteralNONEEmergencyDepartmentReferralEDR = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:edr:2007";
+
+    /// <summary>
     /// Literal for code: PCCETS
     /// </summary>
     public const string LiteralPCCETS = "urn:ihe:pcc:ets:2011";
+
+    /// <summary>
+    /// Literal for code: NONEPCCETS
+    /// </summary>
+    public const string LiteralNONEPCCETS = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:ets:2011";
 
     /// <summary>
     /// Literal for code: PCCHP
@@ -3036,9 +4036,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPCCHP = "urn:ihe:pcc:hp:2008";
 
     /// <summary>
+    /// Literal for code: NONEPCCHP
+    /// </summary>
+    public const string LiteralNONEPCCHP = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:hp:2008";
+
+    /// <summary>
     /// Literal for code: ImmunizationContentIC
     /// </summary>
     public const string LiteralImmunizationContentIC = "urn:ihe:pcc:ic:2008";
+
+    /// <summary>
+    /// Literal for code: NONEImmunizationContentIC
+    /// </summary>
+    public const string LiteralNONEImmunizationContentIC = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:ic:2008";
 
     /// <summary>
     /// Literal for code: PCCITS
@@ -3046,9 +4056,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPCCITS = "urn:ihe:pcc:its:2011";
 
     /// <summary>
+    /// Literal for code: NONEPCCITS
+    /// </summary>
+    public const string LiteralNONEPCCITS = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:its:2011";
+
+    /// <summary>
     /// Literal for code: PCCLDHP
     /// </summary>
     public const string LiteralPCCLDHP = "urn:ihe:pcc:ldhp:2009";
+
+    /// <summary>
+    /// Literal for code: NONEPCCLDHP
+    /// </summary>
+    public const string LiteralNONEPCCLDHP = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:ldhp:2009";
 
     /// <summary>
     /// Literal for code: PCCLDS
@@ -3056,9 +4076,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPCCLDS = "urn:ihe:pcc:lds:2009";
 
     /// <summary>
+    /// Literal for code: NONEPCCLDS
+    /// </summary>
+    public const string LiteralNONEPCCLDS = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:lds:2009";
+
+    /// <summary>
     /// Literal for code: PCCMDS
     /// </summary>
     public const string LiteralPCCMDS = "urn:ihe:pcc:mds:2009";
+
+    /// <summary>
+    /// Literal for code: NONEPCCMDS
+    /// </summary>
+    public const string LiteralNONEPCCMDS = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:mds:2009";
 
     /// <summary>
     /// Literal for code: PCCNDS
@@ -3066,9 +4096,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPCCNDS = "urn:ihe:pcc:nds:2010";
 
     /// <summary>
+    /// Literal for code: NONEPCCNDS
+    /// </summary>
+    public const string LiteralNONEPCCNDS = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:nds:2010";
+
+    /// <summary>
     /// Literal for code: PCCNN
     /// </summary>
     public const string LiteralPCCNN = "urn:ihe:pcc:nn:2007";
+
+    /// <summary>
+    /// Literal for code: NONEPCCNN
+    /// </summary>
+    public const string LiteralNONEPCCNN = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:nn:2007";
 
     /// <summary>
     /// Literal for code: PCCPPVS
@@ -3076,9 +4116,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPCCPPVS = "urn:ihe:pcc:ppvs:2010";
 
     /// <summary>
+    /// Literal for code: NONEPCCPPVS
+    /// </summary>
+    public const string LiteralNONEPCCPPVS = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:ppvs:2010";
+
+    /// <summary>
     /// Literal for code: RoutineInterfacilityPatientTransportRIPT
     /// </summary>
     public const string LiteralRoutineInterfacilityPatientTransportRIPT = "urn:ihe:pcc:ript:2017";
+
+    /// <summary>
+    /// Literal for code: NONERoutineInterfacilityPatientTransportRIPT
+    /// </summary>
+    public const string LiteralNONERoutineInterfacilityPatientTransportRIPT = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:ript:2017";
 
     /// <summary>
     /// Literal for code: PCCTN
@@ -3086,9 +4136,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPCCTN = "urn:ihe:pcc:tn:2007";
 
     /// <summary>
+    /// Literal for code: NONEPCCTN
+    /// </summary>
+    public const string LiteralNONEPCCTN = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:tn:2007";
+
+    /// <summary>
     /// Literal for code: PCCTRS
     /// </summary>
     public const string LiteralPCCTRS = "urn:ihe:pcc:trs:2011";
+
+    /// <summary>
+    /// Literal for code: NONEPCCTRS
+    /// </summary>
+    public const string LiteralNONEPCCTRS = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:trs:2011";
 
     /// <summary>
     /// Literal for code: XDSMedicalSummaries
@@ -3096,9 +4156,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralXDSMedicalSummaries = "urn:ihe:pcc:xds-ms:2007";
 
     /// <summary>
+    /// Literal for code: NONEXDSMedicalSummaries
+    /// </summary>
+    public const string LiteralNONEXDSMedicalSummaries = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:xds-ms:2007";
+
+    /// <summary>
     /// Literal for code: PersonalHealthRecordsAlsoKnownAsHL7CCDAndHITSPC32
     /// </summary>
     public const string LiteralPersonalHealthRecordsAlsoKnownAsHL7CCDAndHITSPC32 = "urn:ihe:pcc:xphr:2007";
+
+    /// <summary>
+    /// Literal for code: NONEPersonalHealthRecordsAlsoKnownAsHL7CCDAndHITSPC32
+    /// </summary>
+    public const string LiteralNONEPersonalHealthRecordsAlsoKnownAsHL7CCDAndHITSPC32 = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:xphr:2007";
 
     /// <summary>
     /// Literal for code: PharmacyDIS
@@ -3106,9 +4176,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPharmacyDIS = "urn:ihe:pharm:dis:2010";
 
     /// <summary>
+    /// Literal for code: NONEPharmacyDIS
+    /// </summary>
+    public const string LiteralNONEPharmacyDIS = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pharm:dis:2010";
+
+    /// <summary>
     /// Literal for code: PharmacyPADV
     /// </summary>
     public const string LiteralPharmacyPADV = "urn:ihe:pharm:padv:2010";
+
+    /// <summary>
+    /// Literal for code: NONEPharmacyPADV
+    /// </summary>
+    public const string LiteralNONEPharmacyPADV = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pharm:padv:2010";
 
     /// <summary>
     /// Literal for code: PharmacyPML
@@ -3116,9 +4196,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPharmacyPML = "urn:ihe:pharm:pml:2013";
 
     /// <summary>
+    /// Literal for code: NONEPharmacyPML
+    /// </summary>
+    public const string LiteralNONEPharmacyPML = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pharm:pml:2013";
+
+    /// <summary>
     /// Literal for code: PharmacyPre
     /// </summary>
     public const string LiteralPharmacyPre = "urn:ihe:pharm:pre:2010";
+
+    /// <summary>
+    /// Literal for code: NONEPharmacyPre
+    /// </summary>
+    public const string LiteralNONEPharmacyPre = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pharm:pre:2010";
 
     /// <summary>
     /// Literal for code: RadiologyXDSIStructuredCDA
@@ -3126,9 +4216,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRadiologyXDSIStructuredCDA = "urn:ihe:rad:CDA:ImagingReportStructuredHeadings:2013";
 
     /// <summary>
+    /// Literal for code: NONERadiologyXDSIStructuredCDA
+    /// </summary>
+    public const string LiteralNONERadiologyXDSIStructuredCDA = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:rad:CDA:ImagingReportStructuredHeadings:2013";
+
+    /// <summary>
     /// Literal for code: RadiologyXDSIPDF
     /// </summary>
     public const string LiteralRadiologyXDSIPDF = "urn:ihe:rad:PDF";
+
+    /// <summary>
+    /// Literal for code: NONERadiologyXDSIPDF
+    /// </summary>
+    public const string LiteralNONERadiologyXDSIPDF = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:rad:PDF";
 
     /// <summary>
     /// Literal for code: RadiologyXDSIText
@@ -3136,9 +4236,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRadiologyXDSIText = "urn:ihe:rad:TEXT";
 
     /// <summary>
+    /// Literal for code: NONERadiologyXDSIText
+    /// </summary>
+    public const string LiteralNONERadiologyXDSIText = "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:rad:TEXT";
+
+    /// <summary>
     /// Literal for code: ValueSet
     /// </summary>
     public const string LiteralValueSet = "ValueSet";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesValueSet
+    /// </summary>
+    public const string LiteralResourceTypesValueSet = "http://hl7.org/fhir/resource-types#ValueSet";
 
     /// <summary>
     /// Literal for code: VerificationResult
@@ -3146,8 +4256,472 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVerificationResult = "VerificationResult";
 
     /// <summary>
+    /// Literal for code: ResourceTypesVerificationResult
+    /// </summary>
+    public const string LiteralResourceTypesVerificationResult = "http://hl7.org/fhir/resource-types#VerificationResult";
+
+    /// <summary>
     /// Literal for code: VisionPrescription
     /// </summary>
     public const string LiteralVisionPrescription = "VisionPrescription";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesVisionPrescription
+    /// </summary>
+    public const string LiteralResourceTypesVisionPrescription = "http://hl7.org/fhir/resource-types#VisionPrescription";
+
+    /// <summary>
+    /// Dictionary for looking up ConsentContentClass Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "Account", Account }, 
+      { "http://hl7.org/fhir/resource-types#Account", Account }, 
+      { "ActivityDefinition", ActivityDefinition }, 
+      { "http://hl7.org/fhir/resource-types#ActivityDefinition", ActivityDefinition }, 
+      { "AdverseEvent", AdverseEvent }, 
+      { "http://hl7.org/fhir/resource-types#AdverseEvent", AdverseEvent }, 
+      { "AllergyIntolerance", AllergyIntolerance }, 
+      { "http://hl7.org/fhir/resource-types#AllergyIntolerance", AllergyIntolerance }, 
+      { "application/hl7-cda+xml", CDADocuments }, 
+      { "urn:ietf:bcp:13#application/hl7-cda+xml", CDADocuments }, 
+      { "Appointment", Appointment }, 
+      { "http://hl7.org/fhir/resource-types#Appointment", Appointment }, 
+      { "AppointmentResponse", AppointmentResponse }, 
+      { "http://hl7.org/fhir/resource-types#AppointmentResponse", AppointmentResponse }, 
+      { "AuditEvent", AuditEvent }, 
+      { "http://hl7.org/fhir/resource-types#AuditEvent", AuditEvent }, 
+      { "Basic", Basic }, 
+      { "http://hl7.org/fhir/resource-types#Basic", Basic }, 
+      { "Binary", Binary }, 
+      { "http://hl7.org/fhir/resource-types#Binary", Binary }, 
+      { "BiologicallyDerivedProduct", BiologicallyDerivedProduct }, 
+      { "http://hl7.org/fhir/resource-types#BiologicallyDerivedProduct", BiologicallyDerivedProduct }, 
+      { "BodyStructure", BodyStructure }, 
+      { "http://hl7.org/fhir/resource-types#BodyStructure", BodyStructure }, 
+      { "Bundle", Bundle }, 
+      { "http://hl7.org/fhir/resource-types#Bundle", Bundle }, 
+      { "CapabilityStatement", CapabilityStatement }, 
+      { "http://hl7.org/fhir/resource-types#CapabilityStatement", CapabilityStatement }, 
+      { "CarePlan", CarePlan }, 
+      { "http://hl7.org/fhir/resource-types#CarePlan", CarePlan }, 
+      { "CareTeam", CareTeam }, 
+      { "http://hl7.org/fhir/resource-types#CareTeam", CareTeam }, 
+      { "CatalogEntry", CatalogEntry }, 
+      { "http://hl7.org/fhir/resource-types#CatalogEntry", CatalogEntry }, 
+      { "ChargeItem", ChargeItem }, 
+      { "http://hl7.org/fhir/resource-types#ChargeItem", ChargeItem }, 
+      { "ChargeItemDefinition", ChargeItemDefinition }, 
+      { "http://hl7.org/fhir/resource-types#ChargeItemDefinition", ChargeItemDefinition }, 
+      { "Claim", Claim }, 
+      { "http://hl7.org/fhir/resource-types#Claim", Claim }, 
+      { "ClaimResponse", ClaimResponse }, 
+      { "http://hl7.org/fhir/resource-types#ClaimResponse", ClaimResponse }, 
+      { "ClinicalImpression", ClinicalImpression }, 
+      { "http://hl7.org/fhir/resource-types#ClinicalImpression", ClinicalImpression }, 
+      { "CodeSystem", CodeSystem }, 
+      { "http://hl7.org/fhir/resource-types#CodeSystem", CodeSystem }, 
+      { "Communication", Communication }, 
+      { "http://hl7.org/fhir/resource-types#Communication", Communication }, 
+      { "CommunicationRequest", CommunicationRequest }, 
+      { "http://hl7.org/fhir/resource-types#CommunicationRequest", CommunicationRequest }, 
+      { "CompartmentDefinition", CompartmentDefinition }, 
+      { "http://hl7.org/fhir/resource-types#CompartmentDefinition", CompartmentDefinition }, 
+      { "Composition", Composition }, 
+      { "http://hl7.org/fhir/resource-types#Composition", Composition }, 
+      { "ConceptMap", ConceptMap }, 
+      { "http://hl7.org/fhir/resource-types#ConceptMap", ConceptMap }, 
+      { "Condition", Condition }, 
+      { "http://hl7.org/fhir/resource-types#Condition", Condition }, 
+      { "Consent", Consent }, 
+      { "http://hl7.org/fhir/resource-types#Consent", Consent }, 
+      { "Contract", Contract }, 
+      { "http://hl7.org/fhir/resource-types#Contract", Contract }, 
+      { "Coverage", Coverage }, 
+      { "http://hl7.org/fhir/resource-types#Coverage", Coverage }, 
+      { "CoverageEligibilityRequest", CoverageEligibilityRequest }, 
+      { "http://hl7.org/fhir/resource-types#CoverageEligibilityRequest", CoverageEligibilityRequest }, 
+      { "CoverageEligibilityResponse", CoverageEligibilityResponse }, 
+      { "http://hl7.org/fhir/resource-types#CoverageEligibilityResponse", CoverageEligibilityResponse }, 
+      { "DetectedIssue", DetectedIssue }, 
+      { "http://hl7.org/fhir/resource-types#DetectedIssue", DetectedIssue }, 
+      { "Device", Device }, 
+      { "http://hl7.org/fhir/resource-types#Device", Device }, 
+      { "DeviceDefinition", DeviceDefinition }, 
+      { "http://hl7.org/fhir/resource-types#DeviceDefinition", DeviceDefinition }, 
+      { "DeviceMetric", DeviceMetric }, 
+      { "http://hl7.org/fhir/resource-types#DeviceMetric", DeviceMetric }, 
+      { "DeviceRequest", DeviceRequest }, 
+      { "http://hl7.org/fhir/resource-types#DeviceRequest", DeviceRequest }, 
+      { "DeviceUseStatement", DeviceUseStatement }, 
+      { "http://hl7.org/fhir/resource-types#DeviceUseStatement", DeviceUseStatement }, 
+      { "DiagnosticReport", DiagnosticReport }, 
+      { "http://hl7.org/fhir/resource-types#DiagnosticReport", DiagnosticReport }, 
+      { "DocumentManifest", DocumentManifest }, 
+      { "http://hl7.org/fhir/resource-types#DocumentManifest", DocumentManifest }, 
+      { "DocumentReference", DocumentReference }, 
+      { "http://hl7.org/fhir/resource-types#DocumentReference", DocumentReference }, 
+      { "DomainResource", DomainResource }, 
+      { "http://hl7.org/fhir/resource-types#DomainResource", DomainResource }, 
+      { "EffectEvidenceSynthesis", EffectEvidenceSynthesis }, 
+      { "http://hl7.org/fhir/resource-types#EffectEvidenceSynthesis", EffectEvidenceSynthesis }, 
+      { "Encounter", Encounter }, 
+      { "http://hl7.org/fhir/resource-types#Encounter", Encounter }, 
+      { "Endpoint", Endpoint }, 
+      { "http://hl7.org/fhir/resource-types#Endpoint", Endpoint }, 
+      { "EnrollmentRequest", EnrollmentRequest }, 
+      { "http://hl7.org/fhir/resource-types#EnrollmentRequest", EnrollmentRequest }, 
+      { "EnrollmentResponse", EnrollmentResponse }, 
+      { "http://hl7.org/fhir/resource-types#EnrollmentResponse", EnrollmentResponse }, 
+      { "EpisodeOfCare", EpisodeOfCare }, 
+      { "http://hl7.org/fhir/resource-types#EpisodeOfCare", EpisodeOfCare }, 
+      { "EventDefinition", EventDefinition }, 
+      { "http://hl7.org/fhir/resource-types#EventDefinition", EventDefinition }, 
+      { "Evidence", Evidence }, 
+      { "http://hl7.org/fhir/resource-types#Evidence", Evidence }, 
+      { "EvidenceVariable", EvidenceVariable }, 
+      { "http://hl7.org/fhir/resource-types#EvidenceVariable", EvidenceVariable }, 
+      { "ExampleScenario", ExampleScenario }, 
+      { "http://hl7.org/fhir/resource-types#ExampleScenario", ExampleScenario }, 
+      { "ExplanationOfBenefit", ExplanationOfBenefit }, 
+      { "http://hl7.org/fhir/resource-types#ExplanationOfBenefit", ExplanationOfBenefit }, 
+      { "FamilyMemberHistory", FamilyMemberHistory }, 
+      { "http://hl7.org/fhir/resource-types#FamilyMemberHistory", FamilyMemberHistory }, 
+      { "Flag", Flag }, 
+      { "http://hl7.org/fhir/resource-types#Flag", Flag }, 
+      { "Goal", Goal }, 
+      { "http://hl7.org/fhir/resource-types#Goal", Goal }, 
+      { "GraphDefinition", GraphDefinition }, 
+      { "http://hl7.org/fhir/resource-types#GraphDefinition", GraphDefinition }, 
+      { "Group", Group }, 
+      { "http://hl7.org/fhir/resource-types#Group", Group }, 
+      { "GuidanceResponse", GuidanceResponse }, 
+      { "http://hl7.org/fhir/resource-types#GuidanceResponse", GuidanceResponse }, 
+      { "HealthcareService", HealthcareService }, 
+      { "http://hl7.org/fhir/resource-types#HealthcareService", HealthcareService }, 
+      { "http://hl7.org/fhir/StructureDefinition/lipidprofile", LipidLabReport }, 
+      { "urn:ietf:rfc:3986#http://hl7.org/fhir/StructureDefinition/lipidprofile", LipidLabReport }, 
+      { "ImagingStudy", ImagingStudy }, 
+      { "http://hl7.org/fhir/resource-types#ImagingStudy", ImagingStudy }, 
+      { "Immunization", Immunization }, 
+      { "http://hl7.org/fhir/resource-types#Immunization", Immunization }, 
+      { "ImmunizationEvaluation", ImmunizationEvaluation }, 
+      { "http://hl7.org/fhir/resource-types#ImmunizationEvaluation", ImmunizationEvaluation }, 
+      { "ImmunizationRecommendation", ImmunizationRecommendation }, 
+      { "http://hl7.org/fhir/resource-types#ImmunizationRecommendation", ImmunizationRecommendation }, 
+      { "ImplementationGuide", ImplementationGuide }, 
+      { "http://hl7.org/fhir/resource-types#ImplementationGuide", ImplementationGuide }, 
+      { "InsurancePlan", InsurancePlan }, 
+      { "http://hl7.org/fhir/resource-types#InsurancePlan", InsurancePlan }, 
+      { "Invoice", Invoice }, 
+      { "http://hl7.org/fhir/resource-types#Invoice", Invoice }, 
+      { "Library", Library }, 
+      { "http://hl7.org/fhir/resource-types#Library", Library }, 
+      { "Linkage", Linkage }, 
+      { "http://hl7.org/fhir/resource-types#Linkage", Linkage }, 
+      { "List", List }, 
+      { "http://hl7.org/fhir/resource-types#List", List }, 
+      { "Location", Location }, 
+      { "http://hl7.org/fhir/resource-types#Location", Location }, 
+      { "Measure", Measure }, 
+      { "http://hl7.org/fhir/resource-types#Measure", Measure }, 
+      { "MeasureReport", MeasureReport }, 
+      { "http://hl7.org/fhir/resource-types#MeasureReport", MeasureReport }, 
+      { "Media", Media }, 
+      { "http://hl7.org/fhir/resource-types#Media", Media }, 
+      { "Medication", Medication }, 
+      { "http://hl7.org/fhir/resource-types#Medication", Medication }, 
+      { "MedicationAdministration", MedicationAdministration }, 
+      { "http://hl7.org/fhir/resource-types#MedicationAdministration", MedicationAdministration }, 
+      { "MedicationDispense", MedicationDispense }, 
+      { "http://hl7.org/fhir/resource-types#MedicationDispense", MedicationDispense }, 
+      { "MedicationKnowledge", MedicationKnowledge }, 
+      { "http://hl7.org/fhir/resource-types#MedicationKnowledge", MedicationKnowledge }, 
+      { "MedicationRequest", MedicationRequest }, 
+      { "http://hl7.org/fhir/resource-types#MedicationRequest", MedicationRequest }, 
+      { "MedicationStatement", MedicationStatement }, 
+      { "http://hl7.org/fhir/resource-types#MedicationStatement", MedicationStatement }, 
+      { "MedicinalProduct", MedicinalProduct }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProduct", MedicinalProduct }, 
+      { "MedicinalProductAuthorization", MedicinalProductAuthorization }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductAuthorization", MedicinalProductAuthorization }, 
+      { "MedicinalProductContraindication", MedicinalProductContraindication }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductContraindication", MedicinalProductContraindication }, 
+      { "MedicinalProductIndication", MedicinalProductIndication }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductIndication", MedicinalProductIndication }, 
+      { "MedicinalProductIngredient", MedicinalProductIngredient }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductIngredient", MedicinalProductIngredient }, 
+      { "MedicinalProductInteraction", MedicinalProductInteraction }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductInteraction", MedicinalProductInteraction }, 
+      { "MedicinalProductManufactured", MedicinalProductManufactured }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductManufactured", MedicinalProductManufactured }, 
+      { "MedicinalProductPackaged", MedicinalProductPackaged }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductPackaged", MedicinalProductPackaged }, 
+      { "MedicinalProductPharmaceutical", MedicinalProductPharmaceutical }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductPharmaceutical", MedicinalProductPharmaceutical }, 
+      { "MedicinalProductUndesirableEffect", MedicinalProductUndesirableEffect }, 
+      { "http://hl7.org/fhir/resource-types#MedicinalProductUndesirableEffect", MedicinalProductUndesirableEffect }, 
+      { "MessageDefinition", MessageDefinition }, 
+      { "http://hl7.org/fhir/resource-types#MessageDefinition", MessageDefinition }, 
+      { "MessageHeader", MessageHeader }, 
+      { "http://hl7.org/fhir/resource-types#MessageHeader", MessageHeader }, 
+      { "MolecularSequence", MolecularSequence }, 
+      { "http://hl7.org/fhir/resource-types#MolecularSequence", MolecularSequence }, 
+      { "NamingSystem", NamingSystem }, 
+      { "http://hl7.org/fhir/resource-types#NamingSystem", NamingSystem }, 
+      { "NutritionOrder", NutritionOrder }, 
+      { "http://hl7.org/fhir/resource-types#NutritionOrder", NutritionOrder }, 
+      { "Observation", Observation }, 
+      { "http://hl7.org/fhir/resource-types#Observation", Observation }, 
+      { "ObservationDefinition", ObservationDefinition }, 
+      { "http://hl7.org/fhir/resource-types#ObservationDefinition", ObservationDefinition }, 
+      { "OperationDefinition", OperationDefinition }, 
+      { "http://hl7.org/fhir/resource-types#OperationDefinition", OperationDefinition }, 
+      { "OperationOutcome", OperationOutcome }, 
+      { "http://hl7.org/fhir/resource-types#OperationOutcome", OperationOutcome }, 
+      { "Organization", Organization }, 
+      { "http://hl7.org/fhir/resource-types#Organization", Organization }, 
+      { "OrganizationAffiliation", OrganizationAffiliation }, 
+      { "http://hl7.org/fhir/resource-types#OrganizationAffiliation", OrganizationAffiliation }, 
+      { "Parameters", Parameters }, 
+      { "http://hl7.org/fhir/resource-types#Parameters", Parameters }, 
+      { "Patient", Patient }, 
+      { "http://hl7.org/fhir/resource-types#Patient", Patient }, 
+      { "PaymentNotice", PaymentNotice }, 
+      { "http://hl7.org/fhir/resource-types#PaymentNotice", PaymentNotice }, 
+      { "PaymentReconciliation", PaymentReconciliation }, 
+      { "http://hl7.org/fhir/resource-types#PaymentReconciliation", PaymentReconciliation }, 
+      { "Person", Person }, 
+      { "http://hl7.org/fhir/resource-types#Person", Person }, 
+      { "PlanDefinition", PlanDefinition }, 
+      { "http://hl7.org/fhir/resource-types#PlanDefinition", PlanDefinition }, 
+      { "Practitioner", Practitioner }, 
+      { "http://hl7.org/fhir/resource-types#Practitioner", Practitioner }, 
+      { "PractitionerRole", PractitionerRole }, 
+      { "http://hl7.org/fhir/resource-types#PractitionerRole", PractitionerRole }, 
+      { "Procedure", Procedure }, 
+      { "http://hl7.org/fhir/resource-types#Procedure", Procedure }, 
+      { "Provenance", Provenance }, 
+      { "http://hl7.org/fhir/resource-types#Provenance", Provenance }, 
+      { "Questionnaire", Questionnaire }, 
+      { "http://hl7.org/fhir/resource-types#Questionnaire", Questionnaire }, 
+      { "QuestionnaireResponse", QuestionnaireResponse }, 
+      { "http://hl7.org/fhir/resource-types#QuestionnaireResponse", QuestionnaireResponse }, 
+      { "RelatedPerson", RelatedPerson }, 
+      { "http://hl7.org/fhir/resource-types#RelatedPerson", RelatedPerson }, 
+      { "RequestGroup", RequestGroup }, 
+      { "http://hl7.org/fhir/resource-types#RequestGroup", RequestGroup }, 
+      { "ResearchDefinition", ResearchDefinition }, 
+      { "http://hl7.org/fhir/resource-types#ResearchDefinition", ResearchDefinition }, 
+      { "ResearchElementDefinition", ResearchElementDefinition }, 
+      { "http://hl7.org/fhir/resource-types#ResearchElementDefinition", ResearchElementDefinition }, 
+      { "ResearchStudy", ResearchStudy }, 
+      { "http://hl7.org/fhir/resource-types#ResearchStudy", ResearchStudy }, 
+      { "ResearchSubject", ResearchSubject }, 
+      { "http://hl7.org/fhir/resource-types#ResearchSubject", ResearchSubject }, 
+      { "Resource", Resource }, 
+      { "http://hl7.org/fhir/resource-types#Resource", Resource }, 
+      { "RiskAssessment", RiskAssessment }, 
+      { "http://hl7.org/fhir/resource-types#RiskAssessment", RiskAssessment }, 
+      { "RiskEvidenceSynthesis", RiskEvidenceSynthesis }, 
+      { "http://hl7.org/fhir/resource-types#RiskEvidenceSynthesis", RiskEvidenceSynthesis }, 
+      { "Schedule", Schedule }, 
+      { "http://hl7.org/fhir/resource-types#Schedule", Schedule }, 
+      { "SearchParameter", SearchParameter }, 
+      { "http://hl7.org/fhir/resource-types#SearchParameter", SearchParameter }, 
+      { "ServiceRequest", ServiceRequest }, 
+      { "http://hl7.org/fhir/resource-types#ServiceRequest", ServiceRequest }, 
+      { "Slot", Slot }, 
+      { "http://hl7.org/fhir/resource-types#Slot", Slot }, 
+      { "Specimen", Specimen }, 
+      { "http://hl7.org/fhir/resource-types#Specimen", Specimen }, 
+      { "SpecimenDefinition", SpecimenDefinition }, 
+      { "http://hl7.org/fhir/resource-types#SpecimenDefinition", SpecimenDefinition }, 
+      { "StructureDefinition", StructureDefinition }, 
+      { "http://hl7.org/fhir/resource-types#StructureDefinition", StructureDefinition }, 
+      { "StructureMap", StructureMap }, 
+      { "http://hl7.org/fhir/resource-types#StructureMap", StructureMap }, 
+      { "Subscription", Subscription }, 
+      { "http://hl7.org/fhir/resource-types#Subscription", Subscription }, 
+      { "Substance", Substance }, 
+      { "http://hl7.org/fhir/resource-types#Substance", Substance }, 
+      { "SubstanceNucleicAcid", SubstanceNucleicAcid }, 
+      { "http://hl7.org/fhir/resource-types#SubstanceNucleicAcid", SubstanceNucleicAcid }, 
+      { "SubstancePolymer", SubstancePolymer }, 
+      { "http://hl7.org/fhir/resource-types#SubstancePolymer", SubstancePolymer }, 
+      { "SubstanceProtein", SubstanceProtein }, 
+      { "http://hl7.org/fhir/resource-types#SubstanceProtein", SubstanceProtein }, 
+      { "SubstanceReferenceInformation", SubstanceReferenceInformation }, 
+      { "http://hl7.org/fhir/resource-types#SubstanceReferenceInformation", SubstanceReferenceInformation }, 
+      { "SubstanceSourceMaterial", SubstanceSourceMaterial }, 
+      { "http://hl7.org/fhir/resource-types#SubstanceSourceMaterial", SubstanceSourceMaterial }, 
+      { "SubstanceSpecification", SubstanceSpecification }, 
+      { "http://hl7.org/fhir/resource-types#SubstanceSpecification", SubstanceSpecification }, 
+      { "SupplyDelivery", SupplyDelivery }, 
+      { "http://hl7.org/fhir/resource-types#SupplyDelivery", SupplyDelivery }, 
+      { "SupplyRequest", SupplyRequest }, 
+      { "http://hl7.org/fhir/resource-types#SupplyRequest", SupplyRequest }, 
+      { "Task", Task }, 
+      { "http://hl7.org/fhir/resource-types#Task", Task }, 
+      { "TerminologyCapabilities", TerminologyCapabilities }, 
+      { "http://hl7.org/fhir/resource-types#TerminologyCapabilities", TerminologyCapabilities }, 
+      { "TestReport", TestReport }, 
+      { "http://hl7.org/fhir/resource-types#TestReport", TestReport }, 
+      { "TestScript", TestScript }, 
+      { "http://hl7.org/fhir/resource-types#TestScript", TestScript }, 
+      { "urn:hl7-org:sdwg:ccda-nonXMLBody:1.1", ForDocumentsFollowingCCDA11ConstraintsUsingANonStructuredBody }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:hl7-org:sdwg:ccda-nonXMLBody:1.1", ForDocumentsFollowingCCDA11ConstraintsUsingANonStructuredBody }, 
+      { "urn:hl7-org:sdwg:ccda-nonXMLBody:2.1", ForDocumentsFollowingCCDA21ConstraintsUsingANonStructuredBody }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:hl7-org:sdwg:ccda-nonXMLBody:2.1", ForDocumentsFollowingCCDA21ConstraintsUsingANonStructuredBody }, 
+      { "urn:hl7-org:sdwg:ccda-structuredBody:1.1", ForDocumentsFollowingCCDA11ConstraintsUsingAStructuredBody }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:hl7-org:sdwg:ccda-structuredBody:1.1", ForDocumentsFollowingCCDA11ConstraintsUsingAStructuredBody }, 
+      { "urn:hl7-org:sdwg:ccda-structuredBody:2.1", ForDocumentsFollowingCCDA21ConstraintsUsingAStructuredBody }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:hl7-org:sdwg:ccda-structuredBody:2.1", ForDocumentsFollowingCCDA21ConstraintsUsingAStructuredBody }, 
+      { "urn:ihe:card:CRC:2012", CardiologyCRC }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:card:CRC:2012", CardiologyCRC }, 
+      { "urn:ihe:card:EPRC-IE:2014", CardiologyEPRCIE }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:card:EPRC-IE:2014", CardiologyEPRCIE }, 
+      { "urn:ihe:card:imaging:2011", CardiacImagingReport }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:card:imaging:2011", CardiacImagingReport }, 
+      { "urn:ihe:dent:CDA:ImagingReportStructuredHeadings:2013", DentalCDA }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:dent:CDA:ImagingReportStructuredHeadings:2013", DentalCDA }, 
+      { "urn:ihe:dent:PDF", DentalPDF }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:dent:PDF", DentalPDF }, 
+      { "urn:ihe:dent:TEXT", DentalText }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:dent:TEXT", DentalText }, 
+      { "urn:ihe:iti:appc:2016:consent", AdvancedPatientPrivacyConsents }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:appc:2016:consent", AdvancedPatientPrivacyConsents }, 
+      { "urn:ihe:iti:bppc-sd:2007", BasicPatientPrivacyConsentsWithScannedDocument }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:bppc-sd:2007", BasicPatientPrivacyConsentsWithScannedDocument }, 
+      { "urn:ihe:iti:bppc:2007", BasicPatientPrivacyConsents }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:bppc:2007", BasicPatientPrivacyConsents }, 
+      { "urn:ihe:iti:dsg:detached:2014", DSGDetachedDocument }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:dsg:detached:2014", DSGDetachedDocument }, 
+      { "urn:ihe:iti:dsg:enveloping:2014", DSGEnvelopingDocument }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:dsg:enveloping:2014", DSGEnvelopingDocument }, 
+      { "urn:ihe:iti:xds-sd:pdf:2008", PDFEmbeddedInCDAPerXDSSDProfile }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:xds-sd:pdf:2008", PDFEmbeddedInCDAPerXDSSDProfile }, 
+      { "urn:ihe:iti:xds-sd:text:2008", TextEmbeddedInCDAPerXDSSDProfile }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:xds-sd:text:2008", TextEmbeddedInCDAPerXDSSDProfile }, 
+      { "urn:ihe:iti:xds:2017:mimeTypeSufficient", MimeTypeSufficient }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:xds:2017:mimeTypeSufficient", MimeTypeSufficient }, 
+      { "urn:ihe:iti:xdw:2011:workflowDoc", XDWWorkflowDocument }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:iti:xdw:2011:workflowDoc", XDWWorkflowDocument }, 
+      { "urn:ihe:lab:xd-lab:2008", CDALaboratoryReport }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:lab:xd-lab:2008", CDALaboratoryReport }, 
+      { "urn:ihe:pat:apsr:all:2010", AnatomicPathologyStructuredReportAll }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:all:2010", AnatomicPathologyStructuredReportAll }, 
+      { "urn:ihe:pat:apsr:cancer:all:2010", AnatomicPathologyStructuredReportCancerAll }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:all:2010", AnatomicPathologyStructuredReportCancerAll }, 
+      { "urn:ihe:pat:apsr:cancer:breast:2010", AnatomicPathologyStructuredReportCancerBreast }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:breast:2010", AnatomicPathologyStructuredReportCancerBreast }, 
+      { "urn:ihe:pat:apsr:cancer:cervix:2010", AnatomicPathologyStructuredReportCancerCervix }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:cervix:2010", AnatomicPathologyStructuredReportCancerCervix }, 
+      { "urn:ihe:pat:apsr:cancer:colon:2010", AnatomicPathologyStructuredReportCancerColon }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:colon:2010", AnatomicPathologyStructuredReportCancerColon }, 
+      { "urn:ihe:pat:apsr:cancer:endometrium:2010", AnatomicPathologyStructuredReportCancerEndometrium }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:endometrium:2010", AnatomicPathologyStructuredReportCancerEndometrium }, 
+      { "urn:ihe:pat:apsr:cancer:esophagus:2010", AnatomicPathologyStructuredReportCancerEsophagus }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:esophagus:2010", AnatomicPathologyStructuredReportCancerEsophagus }, 
+      { "urn:ihe:pat:apsr:cancer:kidney:2010", AnatomicPathologyStructuredReportCancerKidney }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:kidney:2010", AnatomicPathologyStructuredReportCancerKidney }, 
+      { "urn:ihe:pat:apsr:cancer:larynx:2010", AnatomicPathologyStructuredReportCancerLarynx }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:larynx:2010", AnatomicPathologyStructuredReportCancerLarynx }, 
+      { "urn:ihe:pat:apsr:cancer:lip_oral_cavity:2010", AnatomicPathologyStructuredReportCancerLipOralCavity }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:lip_oral_cavity:2010", AnatomicPathologyStructuredReportCancerLipOralCavity }, 
+      { "urn:ihe:pat:apsr:cancer:liver:2010", AnatomicPathologyStructuredReportCancerLiver }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:liver:2010", AnatomicPathologyStructuredReportCancerLiver }, 
+      { "urn:ihe:pat:apsr:cancer:lung:2010", AnatomicPathologyStructuredReportCancerLung }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:lung:2010", AnatomicPathologyStructuredReportCancerLung }, 
+      { "urn:ihe:pat:apsr:cancer:ovary:2010", AnatomicPathologyStructuredReportCancerOvary }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:ovary:2010", AnatomicPathologyStructuredReportCancerOvary }, 
+      { "urn:ihe:pat:apsr:cancer:pancreas:2010", AnatomicPathologyStructuredReportCancerPancreas }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:pancreas:2010", AnatomicPathologyStructuredReportCancerPancreas }, 
+      { "urn:ihe:pat:apsr:cancer:pharynx:2010", AnatomicPathologyStructuredReportCancerPharynx }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:pharynx:2010", AnatomicPathologyStructuredReportCancerPharynx }, 
+      { "urn:ihe:pat:apsr:cancer:prostate:2010", AnatomicPathologyStructuredReportCancerProstate }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:prostate:2010", AnatomicPathologyStructuredReportCancerProstate }, 
+      { "urn:ihe:pat:apsr:cancer:salivary_gland:2010", AnatomicPathologyStructuredReportCancerSalivaryGland }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:salivary_gland:2010", AnatomicPathologyStructuredReportCancerSalivaryGland }, 
+      { "urn:ihe:pat:apsr:cancer:skin:2010", AnatomicPathologyStructuredReportCancerSkin }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:skin:2010", AnatomicPathologyStructuredReportCancerSkin }, 
+      { "urn:ihe:pat:apsr:cancer:stomach:2010", AnatomicPathologyStructuredReportCancerStomach }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:stomach:2010", AnatomicPathologyStructuredReportCancerStomach }, 
+      { "urn:ihe:pat:apsr:cancer:testis:2010", AnatomicPathologyStructuredReportCancerTestis }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:testis:2010", AnatomicPathologyStructuredReportCancerTestis }, 
+      { "urn:ihe:pat:apsr:cancer:thyroid:2010", AnatomicPathologyStructuredReportCancerThyroid }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:thyroid:2010", AnatomicPathologyStructuredReportCancerThyroid }, 
+      { "urn:ihe:pat:apsr:cancer:urinary_bladder:2010", AnatomicPathologyStructuredReportCancerUrinaryBladder }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pat:apsr:cancer:urinary_bladder:2010", AnatomicPathologyStructuredReportCancerUrinaryBladder }, 
+      { "urn:ihe:pcc:apr:edu:2008", AntepartumRecordAPREducation }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:apr:edu:2008", AntepartumRecordAPREducation }, 
+      { "urn:ihe:pcc:apr:handp:2008", AntepartumRecordAPRHistoryAndPhysical }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:apr:handp:2008", AntepartumRecordAPRHistoryAndPhysical }, 
+      { "urn:ihe:pcc:apr:lab:2008", AntepartumRecordAPRLaboratory }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:apr:lab:2008", AntepartumRecordAPRLaboratory }, 
+      { "urn:ihe:pcc:aps:2007", IHEAntepartumSummary }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:aps:2007", IHEAntepartumSummary }, 
+      { "urn:ihe:pcc:cm:2008", CareManagementCM }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:cm:2008", CareManagementCM }, 
+      { "urn:ihe:pcc:crc:2008", CancerRegistryContentCRC }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:crc:2008", CancerRegistryContentCRC }, 
+      { "urn:ihe:pcc:ctn:2007", PCCCTN }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:ctn:2007", PCCCTN }, 
+      { "urn:ihe:pcc:edes:2007", EmergencyDepartmentEncounterSummaryEDES }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:edes:2007", EmergencyDepartmentEncounterSummaryEDES }, 
+      { "urn:ihe:pcc:edpn:2007", PCCEDPN }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:edpn:2007", PCCEDPN }, 
+      { "urn:ihe:pcc:edr:2007", EmergencyDepartmentReferralEDR }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:edr:2007", EmergencyDepartmentReferralEDR }, 
+      { "urn:ihe:pcc:ets:2011", PCCETS }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:ets:2011", PCCETS }, 
+      { "urn:ihe:pcc:hp:2008", PCCHP }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:hp:2008", PCCHP }, 
+      { "urn:ihe:pcc:ic:2008", ImmunizationContentIC }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:ic:2008", ImmunizationContentIC }, 
+      { "urn:ihe:pcc:its:2011", PCCITS }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:its:2011", PCCITS }, 
+      { "urn:ihe:pcc:ldhp:2009", PCCLDHP }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:ldhp:2009", PCCLDHP }, 
+      { "urn:ihe:pcc:lds:2009", PCCLDS }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:lds:2009", PCCLDS }, 
+      { "urn:ihe:pcc:mds:2009", PCCMDS }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:mds:2009", PCCMDS }, 
+      { "urn:ihe:pcc:nds:2010", PCCNDS }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:nds:2010", PCCNDS }, 
+      { "urn:ihe:pcc:nn:2007", PCCNN }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:nn:2007", PCCNN }, 
+      { "urn:ihe:pcc:ppvs:2010", PCCPPVS }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:ppvs:2010", PCCPPVS }, 
+      { "urn:ihe:pcc:ript:2017", RoutineInterfacilityPatientTransportRIPT }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:ript:2017", RoutineInterfacilityPatientTransportRIPT }, 
+      { "urn:ihe:pcc:tn:2007", PCCTN }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:tn:2007", PCCTN }, 
+      { "urn:ihe:pcc:trs:2011", PCCTRS }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:trs:2011", PCCTRS }, 
+      { "urn:ihe:pcc:xds-ms:2007", XDSMedicalSummaries }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:xds-ms:2007", XDSMedicalSummaries }, 
+      { "urn:ihe:pcc:xphr:2007", PersonalHealthRecordsAlsoKnownAsHL7CCDAndHITSPC32 }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pcc:xphr:2007", PersonalHealthRecordsAlsoKnownAsHL7CCDAndHITSPC32 }, 
+      { "urn:ihe:pharm:dis:2010", PharmacyDIS }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pharm:dis:2010", PharmacyDIS }, 
+      { "urn:ihe:pharm:padv:2010", PharmacyPADV }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pharm:padv:2010", PharmacyPADV }, 
+      { "urn:ihe:pharm:pml:2013", PharmacyPML }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pharm:pml:2013", PharmacyPML }, 
+      { "urn:ihe:pharm:pre:2010", PharmacyPre }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:pharm:pre:2010", PharmacyPre }, 
+      { "urn:ihe:rad:CDA:ImagingReportStructuredHeadings:2013", RadiologyXDSIStructuredCDA }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:rad:CDA:ImagingReportStructuredHeadings:2013", RadiologyXDSIStructuredCDA }, 
+      { "urn:ihe:rad:PDF", RadiologyXDSIPDF }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:rad:PDF", RadiologyXDSIPDF }, 
+      { "urn:ihe:rad:TEXT", RadiologyXDSIText }, 
+      { "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem#urn:ihe:rad:TEXT", RadiologyXDSIText }, 
+      { "ValueSet", ValueSet }, 
+      { "http://hl7.org/fhir/resource-types#ValueSet", ValueSet }, 
+      { "VerificationResult", VerificationResult }, 
+      { "http://hl7.org/fhir/resource-types#VerificationResult", VerificationResult }, 
+      { "VisionPrescription", VisionPrescription }, 
+      { "http://hl7.org/fhir/resource-types#VisionPrescription", VisionPrescription }, 
+    };
   };
 }

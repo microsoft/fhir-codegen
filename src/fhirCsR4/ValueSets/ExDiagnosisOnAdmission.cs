@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNo = "n";
 
     /// <summary>
+    /// Literal for code: ExDiagnosisOnAdmissionNo
+    /// </summary>
+    public const string LiteralExDiagnosisOnAdmissionNo = "http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission#n";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "u";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosisOnAdmissionUnknown
+    /// </summary>
+    public const string LiteralExDiagnosisOnAdmissionUnknown = "http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission#u";
 
     /// <summary>
     /// Literal for code: Undetermined
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUndetermined = "w";
 
     /// <summary>
+    /// Literal for code: ExDiagnosisOnAdmissionUndetermined
+    /// </summary>
+    public const string LiteralExDiagnosisOnAdmissionUndetermined = "http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission#w";
+
+    /// <summary>
     /// Literal for code: Yes
     /// </summary>
     public const string LiteralYes = "y";
+
+    /// <summary>
+    /// Literal for code: ExDiagnosisOnAdmissionYes
+    /// </summary>
+    public const string LiteralExDiagnosisOnAdmissionYes = "http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission#y";
+
+    /// <summary>
+    /// Dictionary for looking up ExDiagnosisOnAdmission Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "n", No }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission#n", No }, 
+      { "u", Unknown }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission#u", Unknown }, 
+      { "w", Undetermined }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission#w", Undetermined }, 
+      { "y", Yes }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission#y", Yes }, 
+    };
   };
 }

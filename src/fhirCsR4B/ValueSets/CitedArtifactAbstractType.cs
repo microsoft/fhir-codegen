@@ -117,9 +117,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDifferentLanguageDerivedFromAutotranslation = "autotranslated";
 
     /// <summary>
+    /// Literal for code: CitedArtifactAbstractTypeDifferentLanguageDerivedFromAutotranslation
+    /// </summary>
+    public const string LiteralCitedArtifactAbstractTypeDifferentLanguageDerivedFromAutotranslation = "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#autotranslated";
+
+    /// <summary>
     /// Literal for code: DifferentPublisherForAbstract
     /// </summary>
     public const string LiteralDifferentPublisherForAbstract = "different-publisher";
+
+    /// <summary>
+    /// Literal for code: CitedArtifactAbstractTypeDifferentPublisherForAbstract
+    /// </summary>
+    public const string LiteralCitedArtifactAbstractTypeDifferentPublisherForAbstract = "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#different-publisher";
 
     /// <summary>
     /// Literal for code: DifferentTextInAdditionalMedlineEntry
@@ -127,9 +137,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDifferentTextInAdditionalMedlineEntry = "duplicate-pmid";
 
     /// <summary>
+    /// Literal for code: CitedArtifactAbstractTypeDifferentTextInAdditionalMedlineEntry
+    /// </summary>
+    public const string LiteralCitedArtifactAbstractTypeDifferentTextInAdditionalMedlineEntry = "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#duplicate-pmid";
+
+    /// <summary>
     /// Literal for code: DifferentTextInAnEarlierVersion
     /// </summary>
     public const string LiteralDifferentTextInAnEarlierVersion = "earlier-abstract";
+
+    /// <summary>
+    /// Literal for code: CitedArtifactAbstractTypeDifferentTextInAnEarlierVersion
+    /// </summary>
+    public const string LiteralCitedArtifactAbstractTypeDifferentTextInAnEarlierVersion = "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#earlier-abstract";
 
     /// <summary>
     /// Literal for code: DifferentLanguage
@@ -137,9 +157,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDifferentLanguage = "language";
 
     /// <summary>
+    /// Literal for code: CitedArtifactAbstractTypeDifferentLanguage
+    /// </summary>
+    public const string LiteralCitedArtifactAbstractTypeDifferentLanguage = "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#language";
+
+    /// <summary>
     /// Literal for code: LongAbstract
     /// </summary>
     public const string LiteralLongAbstract = "long-abstract";
+
+    /// <summary>
+    /// Literal for code: CitedArtifactAbstractTypeLongAbstract
+    /// </summary>
+    public const string LiteralCitedArtifactAbstractTypeLongAbstract = "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#long-abstract";
 
     /// <summary>
     /// Literal for code: PlainLanguage
@@ -147,9 +177,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlainLanguage = "plain-language";
 
     /// <summary>
+    /// Literal for code: CitedArtifactAbstractTypePlainLanguage
+    /// </summary>
+    public const string LiteralCitedArtifactAbstractTypePlainLanguage = "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#plain-language";
+
+    /// <summary>
     /// Literal for code: PrimaryHumanUse
     /// </summary>
     public const string LiteralPrimaryHumanUse = "primary-human-use";
+
+    /// <summary>
+    /// Literal for code: CitedArtifactAbstractTypePrimaryHumanUse
+    /// </summary>
+    public const string LiteralCitedArtifactAbstractTypePrimaryHumanUse = "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#primary-human-use";
 
     /// <summary>
     /// Literal for code: PrimaryMachineUse
@@ -157,13 +197,56 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrimaryMachineUse = "primary-machine-use";
 
     /// <summary>
+    /// Literal for code: CitedArtifactAbstractTypePrimaryMachineUse
+    /// </summary>
+    public const string LiteralCitedArtifactAbstractTypePrimaryMachineUse = "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#primary-machine-use";
+
+    /// <summary>
     /// Literal for code: ShortAbstract
     /// </summary>
     public const string LiteralShortAbstract = "short-abstract";
 
     /// <summary>
+    /// Literal for code: CitedArtifactAbstractTypeShortAbstract
+    /// </summary>
+    public const string LiteralCitedArtifactAbstractTypeShortAbstract = "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#short-abstract";
+
+    /// <summary>
     /// Literal for code: Truncated
     /// </summary>
     public const string LiteralTruncated = "truncated";
+
+    /// <summary>
+    /// Literal for code: CitedArtifactAbstractTypeTruncated
+    /// </summary>
+    public const string LiteralCitedArtifactAbstractTypeTruncated = "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#truncated";
+
+    /// <summary>
+    /// Dictionary for looking up CitedArtifactAbstractType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "autotranslated", DifferentLanguageDerivedFromAutotranslation }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#autotranslated", DifferentLanguageDerivedFromAutotranslation }, 
+      { "different-publisher", DifferentPublisherForAbstract }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#different-publisher", DifferentPublisherForAbstract }, 
+      { "duplicate-pmid", DifferentTextInAdditionalMedlineEntry }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#duplicate-pmid", DifferentTextInAdditionalMedlineEntry }, 
+      { "earlier-abstract", DifferentTextInAnEarlierVersion }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#earlier-abstract", DifferentTextInAnEarlierVersion }, 
+      { "language", DifferentLanguage }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#language", DifferentLanguage }, 
+      { "long-abstract", LongAbstract }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#long-abstract", LongAbstract }, 
+      { "plain-language", PlainLanguage }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#plain-language", PlainLanguage }, 
+      { "primary-human-use", PrimaryHumanUse }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#primary-human-use", PrimaryHumanUse }, 
+      { "primary-machine-use", PrimaryMachineUse }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#primary-machine-use", PrimaryMachineUse }, 
+      { "short-abstract", ShortAbstract }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#short-abstract", ShortAbstract }, 
+      { "truncated", Truncated }, 
+      { "http://terminology.hl7.org/CodeSystem/cited-artifact-abstract-type#truncated", Truncated }, 
+    };
   };
 }

@@ -25,5 +25,18 @@ namespace fhirCsR5.ValueSets
     /// Literal for code: Thing
     /// </summary>
     public const string LiteralThing = "thing";
+
+    /// <summary>
+    /// Literal for code: ContractAssetscopeThing
+    /// </summary>
+    public const string LiteralContractAssetscopeThing = "http://hl7.org/fhir/contract-asset-scope#thing";
+
+    /// <summary>
+    /// Dictionary for looking up ContractAssetscope Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "thing", Thing }, 
+      { "http://hl7.org/fhir/contract-asset-scope#thing", Thing }, 
+    };
   };
 }

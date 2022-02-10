@@ -236,6 +236,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? Responsible { get; set; }
     /// <summary>
+    /// Extension container element for Responsible
+    /// </summary>
+    public Element _Responsible { get; set; }
+    /// <summary>
     /// The lead, assisting or supervising practitioner and their discipline if a multidisiplinary team.
     /// </summary>
     public CodeableConcept Role { get; set; }
@@ -265,6 +269,12 @@ namespace fhirCsR3.Models
       if (Responsible != null)
       {
         writer.WriteBoolean("responsible", (bool)Responsible!);
+      }
+
+      if (_Responsible != null)
+      {
+        writer.WritePropertyName("_responsible");
+        _Responsible.SerializeJson(writer, options);
       }
 
       if (Role != null)
@@ -303,6 +313,11 @@ namespace fhirCsR3.Models
 
         case "responsible":
           Responsible = reader.GetBoolean();
+          break;
+
+        case "_responsible":
+          _Responsible = new fhirCsR3.Models.Element();
+          _Responsible.DeserializeJson(ref reader, options);
           break;
 
         case "role":
@@ -886,6 +901,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool Focal { get; set; }
     /// <summary>
+    /// Extension container element for Focal
+    /// </summary>
+    public Element _Focal { get; set; }
+    /// <summary>
     /// A list of references from the Insurer to which these services pertain.
     /// </summary>
     public List<string> PreAuthRef { get; set; }
@@ -911,6 +930,12 @@ namespace fhirCsR3.Models
       writer.WriteNumber("sequence", Sequence);
 
       writer.WriteBoolean("focal", Focal);
+
+      if (_Focal != null)
+      {
+        writer.WritePropertyName("_focal");
+        _Focal.SerializeJson(writer, options);
+      }
 
       if (Coverage != null)
       {
@@ -994,6 +1019,11 @@ namespace fhirCsR3.Models
 
         case "focal":
           Focal = reader.GetBoolean();
+          break;
+
+        case "_focal":
+          _Focal = new fhirCsR3.Models.Element();
+          _Focal.DeserializeJson(ref reader, options);
           break;
 
         case "preAuthRef":
@@ -3446,6 +3476,12 @@ namespace fhirCsR3.Models
     public const string CANCELLED = "cancelled";
     public const string DRAFT = "draft";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "active",
+      "cancelled",
+      "draft",
+      "entered-in-error",
+    };
   }
   /// <summary>
   /// Code Values for the Claim.use field
@@ -3455,5 +3491,11 @@ namespace fhirCsR3.Models
     public const string PROPOSED = "proposed";
     public const string EXPLORATORY = "exploratory";
     public const string OTHER = "other";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "complete",
+      "proposed",
+      "exploratory",
+      "other",
+    };
   }
 }

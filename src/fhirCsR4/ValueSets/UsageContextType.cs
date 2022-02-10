@@ -99,9 +99,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAgeRange = "age";
 
     /// <summary>
+    /// Literal for code: UsageContextTypeAgeRange
+    /// </summary>
+    public const string LiteralUsageContextTypeAgeRange = "http://terminology.hl7.org/CodeSystem/usage-context-type#age";
+
+    /// <summary>
     /// Literal for code: ClinicalFocus
     /// </summary>
     public const string LiteralClinicalFocus = "focus";
+
+    /// <summary>
+    /// Literal for code: UsageContextTypeClinicalFocus
+    /// </summary>
+    public const string LiteralUsageContextTypeClinicalFocus = "http://terminology.hl7.org/CodeSystem/usage-context-type#focus";
 
     /// <summary>
     /// Literal for code: Gender
@@ -109,9 +119,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGender = "gender";
 
     /// <summary>
+    /// Literal for code: UsageContextTypeGender
+    /// </summary>
+    public const string LiteralUsageContextTypeGender = "http://terminology.hl7.org/CodeSystem/usage-context-type#gender";
+
+    /// <summary>
     /// Literal for code: Program
     /// </summary>
     public const string LiteralProgram = "program";
+
+    /// <summary>
+    /// Literal for code: UsageContextTypeProgram
+    /// </summary>
+    public const string LiteralUsageContextTypeProgram = "http://terminology.hl7.org/CodeSystem/usage-context-type#program";
 
     /// <summary>
     /// Literal for code: Species
@@ -119,9 +139,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpecies = "species";
 
     /// <summary>
+    /// Literal for code: UsageContextTypeSpecies
+    /// </summary>
+    public const string LiteralUsageContextTypeSpecies = "http://terminology.hl7.org/CodeSystem/usage-context-type#species";
+
+    /// <summary>
     /// Literal for code: WorkflowTask
     /// </summary>
     public const string LiteralWorkflowTask = "task";
+
+    /// <summary>
+    /// Literal for code: UsageContextTypeWorkflowTask
+    /// </summary>
+    public const string LiteralUsageContextTypeWorkflowTask = "http://terminology.hl7.org/CodeSystem/usage-context-type#task";
 
     /// <summary>
     /// Literal for code: UserType
@@ -129,13 +159,52 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUserType = "user";
 
     /// <summary>
+    /// Literal for code: UsageContextTypeUserType
+    /// </summary>
+    public const string LiteralUsageContextTypeUserType = "http://terminology.hl7.org/CodeSystem/usage-context-type#user";
+
+    /// <summary>
     /// Literal for code: ClinicalVenue
     /// </summary>
     public const string LiteralClinicalVenue = "venue";
 
     /// <summary>
+    /// Literal for code: UsageContextTypeClinicalVenue
+    /// </summary>
+    public const string LiteralUsageContextTypeClinicalVenue = "http://terminology.hl7.org/CodeSystem/usage-context-type#venue";
+
+    /// <summary>
     /// Literal for code: WorkflowSetting
     /// </summary>
     public const string LiteralWorkflowSetting = "workflow";
+
+    /// <summary>
+    /// Literal for code: UsageContextTypeWorkflowSetting
+    /// </summary>
+    public const string LiteralUsageContextTypeWorkflowSetting = "http://terminology.hl7.org/CodeSystem/usage-context-type#workflow";
+
+    /// <summary>
+    /// Dictionary for looking up UsageContextType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "age", AgeRange }, 
+      { "http://terminology.hl7.org/CodeSystem/usage-context-type#age", AgeRange }, 
+      { "focus", ClinicalFocus }, 
+      { "http://terminology.hl7.org/CodeSystem/usage-context-type#focus", ClinicalFocus }, 
+      { "gender", Gender }, 
+      { "http://terminology.hl7.org/CodeSystem/usage-context-type#gender", Gender }, 
+      { "program", Program }, 
+      { "http://terminology.hl7.org/CodeSystem/usage-context-type#program", Program }, 
+      { "species", Species }, 
+      { "http://terminology.hl7.org/CodeSystem/usage-context-type#species", Species }, 
+      { "task", WorkflowTask }, 
+      { "http://terminology.hl7.org/CodeSystem/usage-context-type#task", WorkflowTask }, 
+      { "user", UserType }, 
+      { "http://terminology.hl7.org/CodeSystem/usage-context-type#user", UserType }, 
+      { "venue", ClinicalVenue }, 
+      { "http://terminology.hl7.org/CodeSystem/usage-context-type#venue", ClinicalVenue }, 
+      { "workflow", WorkflowSetting }, 
+      { "http://terminology.hl7.org/CodeSystem/usage-context-type#workflow", WorkflowSetting }, 
+    };
   };
 }

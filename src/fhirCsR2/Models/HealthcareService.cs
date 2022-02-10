@@ -368,6 +368,15 @@ namespace fhirCsR2.Models
     public const string FRI = "fri";
     public const string SAT = "sat";
     public const string SUN = "sun";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri",
+      "sat",
+      "sun",
+    };
   }
   /// <summary>
   /// The HealthcareService is not available during this period of time due to the provided reason.

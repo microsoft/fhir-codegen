@@ -72,9 +72,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDELETE = "delete";
 
     /// <summary>
+    /// Literal for code: HttpOperationsDELETE
+    /// </summary>
+    public const string LiteralHttpOperationsDELETE = "http://hl7.org/fhir/http-operations#delete";
+
+    /// <summary>
     /// Literal for code: GET
     /// </summary>
     public const string LiteralGET = "get";
+
+    /// <summary>
+    /// Literal for code: HttpOperationsGET
+    /// </summary>
+    public const string LiteralHttpOperationsGET = "http://hl7.org/fhir/http-operations#get";
 
     /// <summary>
     /// Literal for code: OPTIONS
@@ -82,9 +92,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOPTIONS = "options";
 
     /// <summary>
+    /// Literal for code: HttpOperationsOPTIONS
+    /// </summary>
+    public const string LiteralHttpOperationsOPTIONS = "http://hl7.org/fhir/http-operations#options";
+
+    /// <summary>
     /// Literal for code: PATCH
     /// </summary>
     public const string LiteralPATCH = "patch";
+
+    /// <summary>
+    /// Literal for code: HttpOperationsPATCH
+    /// </summary>
+    public const string LiteralHttpOperationsPATCH = "http://hl7.org/fhir/http-operations#patch";
 
     /// <summary>
     /// Literal for code: POST
@@ -92,8 +112,36 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPOST = "post";
 
     /// <summary>
+    /// Literal for code: HttpOperationsPOST
+    /// </summary>
+    public const string LiteralHttpOperationsPOST = "http://hl7.org/fhir/http-operations#post";
+
+    /// <summary>
     /// Literal for code: PUT
     /// </summary>
     public const string LiteralPUT = "put";
+
+    /// <summary>
+    /// Literal for code: HttpOperationsPUT
+    /// </summary>
+    public const string LiteralHttpOperationsPUT = "http://hl7.org/fhir/http-operations#put";
+
+    /// <summary>
+    /// Dictionary for looking up HttpOperations Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "delete", DELETE }, 
+      { "http://hl7.org/fhir/http-operations#delete", DELETE }, 
+      { "get", GET }, 
+      { "http://hl7.org/fhir/http-operations#get", GET }, 
+      { "options", OPTIONS }, 
+      { "http://hl7.org/fhir/http-operations#options", OPTIONS }, 
+      { "patch", PATCH }, 
+      { "http://hl7.org/fhir/http-operations#patch", PATCH }, 
+      { "post", POST }, 
+      { "http://hl7.org/fhir/http-operations#post", POST }, 
+      { "put", PUT }, 
+      { "http://hl7.org/fhir/http-operations#put", PUT }, 
+    };
   };
 }

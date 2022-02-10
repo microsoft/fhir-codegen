@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ContractActorroleCodes
   {
     /// <summary>
-    /// 
+    /// Patient
     /// </summary>
     public static readonly Coding Patient = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/contractactorrole"
     };
     /// <summary>
-    /// 
+    /// Practitioner
     /// </summary>
     public static readonly Coding Practitioner = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatient = "patient";
 
     /// <summary>
+    /// Literal for code: ContractactorrolePatient
+    /// </summary>
+    public const string LiteralContractactorrolePatient = "http://terminology.hl7.org/CodeSystem/contractactorrole#patient";
+
+    /// <summary>
     /// Literal for code: Practitioner
     /// </summary>
     public const string LiteralPractitioner = "practitioner";
+
+    /// <summary>
+    /// Literal for code: ContractactorrolePractitioner
+    /// </summary>
+    public const string LiteralContractactorrolePractitioner = "http://terminology.hl7.org/CodeSystem/contractactorrole#practitioner";
+
+    /// <summary>
+    /// Dictionary for looking up ContractActorrole Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "patient", Patient }, 
+      { "http://terminology.hl7.org/CodeSystem/contractactorrole#patient", Patient }, 
+      { "practitioner", Practitioner }, 
+      { "http://terminology.hl7.org/CodeSystem/contractactorrole#practitioner", Practitioner }, 
+    };
   };
 }

@@ -48,13 +48,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUnvorhergeseheneInanspruchnahme = "1100";
 
     /// <summary>
+    /// Literal for code: ChargeitemBillingcodesUnvorhergeseheneInanspruchnahme
+    /// </summary>
+    public const string LiteralChargeitemBillingcodesUnvorhergeseheneInanspruchnahme = "http://terminology.hl7.org/CodeSystem/chargeitem-billingcodes#1100";
+
+    /// <summary>
     /// Literal for code: Notfallpauschale
     /// </summary>
     public const string LiteralNotfallpauschale = "1210";
 
     /// <summary>
+    /// Literal for code: ChargeitemBillingcodesNotfallpauschale
+    /// </summary>
+    public const string LiteralChargeitemBillingcodesNotfallpauschale = "http://terminology.hl7.org/CodeSystem/chargeitem-billingcodes#1210";
+
+    /// <summary>
     /// Literal for code: Grundpauschale
     /// </summary>
     public const string LiteralGrundpauschale = "1320";
+
+    /// <summary>
+    /// Literal for code: ChargeitemBillingcodesGrundpauschale
+    /// </summary>
+    public const string LiteralChargeitemBillingcodesGrundpauschale = "http://terminology.hl7.org/CodeSystem/chargeitem-billingcodes#1320";
+
+    /// <summary>
+    /// Dictionary for looking up ChargeitemBillingcodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1100", UnvorhergeseheneInanspruchnahme }, 
+      { "http://terminology.hl7.org/CodeSystem/chargeitem-billingcodes#1100", UnvorhergeseheneInanspruchnahme }, 
+      { "1210", Notfallpauschale }, 
+      { "http://terminology.hl7.org/CodeSystem/chargeitem-billingcodes#1210", Notfallpauschale }, 
+      { "1320", Grundpauschale }, 
+      { "http://terminology.hl7.org/CodeSystem/chargeitem-billingcodes#1320", Grundpauschale }, 
+    };
   };
 }

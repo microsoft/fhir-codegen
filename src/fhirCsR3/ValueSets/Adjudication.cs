@@ -81,9 +81,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBenefitAmount = "benefit";
 
     /// <summary>
+    /// Literal for code: AdjudicationBenefitAmount
+    /// </summary>
+    public const string LiteralAdjudicationBenefitAmount = "http://hl7.org/fhir/adjudication#benefit";
+
+    /// <summary>
     /// Literal for code: CoPay
     /// </summary>
     public const string LiteralCoPay = "copay";
+
+    /// <summary>
+    /// Literal for code: AdjudicationCoPay
+    /// </summary>
+    public const string LiteralAdjudicationCoPay = "http://hl7.org/fhir/adjudication#copay";
 
     /// <summary>
     /// Literal for code: Deductable
@@ -91,9 +101,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeductable = "deductible";
 
     /// <summary>
+    /// Literal for code: AdjudicationDeductable
+    /// </summary>
+    public const string LiteralAdjudicationDeductable = "http://hl7.org/fhir/adjudication#deductible";
+
+    /// <summary>
     /// Literal for code: EligibleAmount
     /// </summary>
     public const string LiteralEligibleAmount = "eligible";
+
+    /// <summary>
+    /// Literal for code: AdjudicationEligibleAmount
+    /// </summary>
+    public const string LiteralAdjudicationEligibleAmount = "http://hl7.org/fhir/adjudication#eligible";
 
     /// <summary>
     /// Literal for code: EligiblePercent
@@ -101,13 +121,48 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEligiblePercent = "eligpercent";
 
     /// <summary>
+    /// Literal for code: AdjudicationEligiblePercent
+    /// </summary>
+    public const string LiteralAdjudicationEligiblePercent = "http://hl7.org/fhir/adjudication#eligpercent";
+
+    /// <summary>
     /// Literal for code: EmergencyDepartment
     /// </summary>
     public const string LiteralEmergencyDepartment = "tax";
 
     /// <summary>
+    /// Literal for code: AdjudicationEmergencyDepartment
+    /// </summary>
+    public const string LiteralAdjudicationEmergencyDepartment = "http://hl7.org/fhir/adjudication#tax";
+
+    /// <summary>
     /// Literal for code: Total
     /// </summary>
     public const string LiteralTotal = "total";
+
+    /// <summary>
+    /// Literal for code: AdjudicationTotal
+    /// </summary>
+    public const string LiteralAdjudicationTotal = "http://hl7.org/fhir/adjudication#total";
+
+    /// <summary>
+    /// Dictionary for looking up Adjudication Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "benefit", BenefitAmount }, 
+      { "http://hl7.org/fhir/adjudication#benefit", BenefitAmount }, 
+      { "copay", CoPay }, 
+      { "http://hl7.org/fhir/adjudication#copay", CoPay }, 
+      { "deductible", Deductable }, 
+      { "http://hl7.org/fhir/adjudication#deductible", Deductable }, 
+      { "eligible", EligibleAmount }, 
+      { "http://hl7.org/fhir/adjudication#eligible", EligibleAmount }, 
+      { "eligpercent", EligiblePercent }, 
+      { "http://hl7.org/fhir/adjudication#eligpercent", EligiblePercent }, 
+      { "tax", EmergencyDepartment }, 
+      { "http://hl7.org/fhir/adjudication#tax", EmergencyDepartment }, 
+      { "total", Total }, 
+      { "http://hl7.org/fhir/adjudication#total", Total }, 
+    };
   };
 }

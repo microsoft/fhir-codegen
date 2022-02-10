@@ -634,5 +634,13 @@ namespace fhirCsR2.Models
     public const string DEVICE = "device";
     public const string MEDICATION = "medication";
     public const string SUBSTANCE = "substance";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "person",
+      "animal",
+      "practitioner",
+      "device",
+      "medication",
+      "substance",
+    };
   }
 }

@@ -72,9 +72,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDerivation = "derivation";
 
     /// <summary>
+    /// Literal for code: ProvenanceEntityRoleDerivation
+    /// </summary>
+    public const string LiteralProvenanceEntityRoleDerivation = "http://hl7.org/fhir/provenance-entity-role#derivation";
+
+    /// <summary>
     /// Literal for code: Instantiates
     /// </summary>
     public const string LiteralInstantiates = "instantiates";
+
+    /// <summary>
+    /// Literal for code: ProvenanceEntityRoleInstantiates
+    /// </summary>
+    public const string LiteralProvenanceEntityRoleInstantiates = "http://hl7.org/fhir/provenance-entity-role#instantiates";
 
     /// <summary>
     /// Literal for code: Quotation
@@ -82,9 +92,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralQuotation = "quotation";
 
     /// <summary>
+    /// Literal for code: ProvenanceEntityRoleQuotation
+    /// </summary>
+    public const string LiteralProvenanceEntityRoleQuotation = "http://hl7.org/fhir/provenance-entity-role#quotation";
+
+    /// <summary>
     /// Literal for code: Removal
     /// </summary>
     public const string LiteralRemoval = "removal";
+
+    /// <summary>
+    /// Literal for code: ProvenanceEntityRoleRemoval
+    /// </summary>
+    public const string LiteralProvenanceEntityRoleRemoval = "http://hl7.org/fhir/provenance-entity-role#removal";
 
     /// <summary>
     /// Literal for code: Revision
@@ -92,8 +112,36 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRevision = "revision";
 
     /// <summary>
+    /// Literal for code: ProvenanceEntityRoleRevision
+    /// </summary>
+    public const string LiteralProvenanceEntityRoleRevision = "http://hl7.org/fhir/provenance-entity-role#revision";
+
+    /// <summary>
     /// Literal for code: Source
     /// </summary>
     public const string LiteralSource = "source";
+
+    /// <summary>
+    /// Literal for code: ProvenanceEntityRoleSource
+    /// </summary>
+    public const string LiteralProvenanceEntityRoleSource = "http://hl7.org/fhir/provenance-entity-role#source";
+
+    /// <summary>
+    /// Dictionary for looking up ProvenanceEntityRole Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "derivation", Derivation }, 
+      { "http://hl7.org/fhir/provenance-entity-role#derivation", Derivation }, 
+      { "instantiates", Instantiates }, 
+      { "http://hl7.org/fhir/provenance-entity-role#instantiates", Instantiates }, 
+      { "quotation", Quotation }, 
+      { "http://hl7.org/fhir/provenance-entity-role#quotation", Quotation }, 
+      { "removal", Removal }, 
+      { "http://hl7.org/fhir/provenance-entity-role#removal", Removal }, 
+      { "revision", Revision }, 
+      { "http://hl7.org/fhir/provenance-entity-role#revision", Revision }, 
+      { "source", Source }, 
+      { "http://hl7.org/fhir/provenance-entity-role#source", Source }, 
+    };
   };
 }

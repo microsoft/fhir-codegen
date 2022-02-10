@@ -45,13 +45,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralColdChainBreak = "coldchainbreak";
 
     /// <summary>
+    /// Literal for code: ImmunizationSubpotentReasonColdChainBreak
+    /// </summary>
+    public const string LiteralImmunizationSubpotentReasonColdChainBreak = "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason#coldchainbreak";
+
+    /// <summary>
     /// Literal for code: PartialDose
     /// </summary>
     public const string LiteralPartialDose = "partial";
 
     /// <summary>
+    /// Literal for code: ImmunizationSubpotentReasonPartialDose
+    /// </summary>
+    public const string LiteralImmunizationSubpotentReasonPartialDose = "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason#partial";
+
+    /// <summary>
     /// Literal for code: ManufacturerRecall
     /// </summary>
     public const string LiteralManufacturerRecall = "recall";
+
+    /// <summary>
+    /// Literal for code: ImmunizationSubpotentReasonManufacturerRecall
+    /// </summary>
+    public const string LiteralImmunizationSubpotentReasonManufacturerRecall = "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason#recall";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationSubpotentReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "coldchainbreak", ColdChainBreak }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason#coldchainbreak", ColdChainBreak }, 
+      { "partial", PartialDose }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason#partial", PartialDose }, 
+      { "recall", ManufacturerRecall }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason#recall", ManufacturerRecall }, 
+    };
   };
 }

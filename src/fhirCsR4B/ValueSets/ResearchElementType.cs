@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExposure = "exposure";
 
     /// <summary>
+    /// Literal for code: ResearchElementTypeExposure
+    /// </summary>
+    public const string LiteralResearchElementTypeExposure = "http://hl7.org/fhir/research-element-type#exposure";
+
+    /// <summary>
     /// Literal for code: Outcome
     /// </summary>
     public const string LiteralOutcome = "outcome";
 
     /// <summary>
+    /// Literal for code: ResearchElementTypeOutcome
+    /// </summary>
+    public const string LiteralResearchElementTypeOutcome = "http://hl7.org/fhir/research-element-type#outcome";
+
+    /// <summary>
     /// Literal for code: Population
     /// </summary>
     public const string LiteralPopulation = "population";
+
+    /// <summary>
+    /// Literal for code: ResearchElementTypePopulation
+    /// </summary>
+    public const string LiteralResearchElementTypePopulation = "http://hl7.org/fhir/research-element-type#population";
+
+    /// <summary>
+    /// Dictionary for looking up ResearchElementType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "exposure", Exposure }, 
+      { "http://hl7.org/fhir/research-element-type#exposure", Exposure }, 
+      { "outcome", Outcome }, 
+      { "http://hl7.org/fhir/research-element-type#outcome", Outcome }, 
+      { "population", Population }, 
+      { "http://hl7.org/fhir/research-element-type#population", Population }, 
+    };
   };
 }

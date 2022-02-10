@@ -108,9 +108,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCareTeam = "careteam";
 
     /// <summary>
+    /// Literal for code: ActionParticipantTypeCareTeam
+    /// </summary>
+    public const string LiteralActionParticipantTypeCareTeam = "http://hl7.org/fhir/action-participant-type#careteam";
+
+    /// <summary>
     /// Literal for code: Device
     /// </summary>
     public const string LiteralDevice = "device";
+
+    /// <summary>
+    /// Literal for code: ActionParticipantTypeDevice
+    /// </summary>
+    public const string LiteralActionParticipantTypeDevice = "http://hl7.org/fhir/action-participant-type#device";
 
     /// <summary>
     /// Literal for code: Group
@@ -118,9 +128,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGroup = "group";
 
     /// <summary>
+    /// Literal for code: ActionParticipantTypeGroup
+    /// </summary>
+    public const string LiteralActionParticipantTypeGroup = "http://hl7.org/fhir/action-participant-type#group";
+
+    /// <summary>
     /// Literal for code: HealthcareService
     /// </summary>
     public const string LiteralHealthcareService = "healthcareservice";
+
+    /// <summary>
+    /// Literal for code: ActionParticipantTypeHealthcareService
+    /// </summary>
+    public const string LiteralActionParticipantTypeHealthcareService = "http://hl7.org/fhir/action-participant-type#healthcareservice";
 
     /// <summary>
     /// Literal for code: Location
@@ -128,9 +148,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLocation = "location";
 
     /// <summary>
+    /// Literal for code: ActionParticipantTypeLocation
+    /// </summary>
+    public const string LiteralActionParticipantTypeLocation = "http://hl7.org/fhir/action-participant-type#location";
+
+    /// <summary>
     /// Literal for code: Organization
     /// </summary>
     public const string LiteralOrganization = "organization";
+
+    /// <summary>
+    /// Literal for code: ActionParticipantTypeOrganization
+    /// </summary>
+    public const string LiteralActionParticipantTypeOrganization = "http://hl7.org/fhir/action-participant-type#organization";
 
     /// <summary>
     /// Literal for code: Patient
@@ -138,9 +168,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPatient = "patient";
 
     /// <summary>
+    /// Literal for code: ActionParticipantTypePatient
+    /// </summary>
+    public const string LiteralActionParticipantTypePatient = "http://hl7.org/fhir/action-participant-type#patient";
+
+    /// <summary>
     /// Literal for code: Practitioner
     /// </summary>
     public const string LiteralPractitioner = "practitioner";
+
+    /// <summary>
+    /// Literal for code: ActionParticipantTypePractitioner
+    /// </summary>
+    public const string LiteralActionParticipantTypePractitioner = "http://hl7.org/fhir/action-participant-type#practitioner";
 
     /// <summary>
     /// Literal for code: PractitionerRole
@@ -148,8 +188,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPractitionerRole = "practitionerrole";
 
     /// <summary>
+    /// Literal for code: ActionParticipantTypePractitionerRole
+    /// </summary>
+    public const string LiteralActionParticipantTypePractitionerRole = "http://hl7.org/fhir/action-participant-type#practitionerrole";
+
+    /// <summary>
     /// Literal for code: RelatedPerson
     /// </summary>
     public const string LiteralRelatedPerson = "relatedperson";
+
+    /// <summary>
+    /// Literal for code: ActionParticipantTypeRelatedPerson
+    /// </summary>
+    public const string LiteralActionParticipantTypeRelatedPerson = "http://hl7.org/fhir/action-participant-type#relatedperson";
+
+    /// <summary>
+    /// Dictionary for looking up ActionParticipantType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "careteam", CareTeam }, 
+      { "http://hl7.org/fhir/action-participant-type#careteam", CareTeam }, 
+      { "device", Device }, 
+      { "http://hl7.org/fhir/action-participant-type#device", Device }, 
+      { "group", Group }, 
+      { "http://hl7.org/fhir/action-participant-type#group", Group }, 
+      { "healthcareservice", HealthcareService }, 
+      { "http://hl7.org/fhir/action-participant-type#healthcareservice", HealthcareService }, 
+      { "location", Location }, 
+      { "http://hl7.org/fhir/action-participant-type#location", Location }, 
+      { "organization", Organization }, 
+      { "http://hl7.org/fhir/action-participant-type#organization", Organization }, 
+      { "patient", Patient }, 
+      { "http://hl7.org/fhir/action-participant-type#patient", Patient }, 
+      { "practitioner", Practitioner }, 
+      { "http://hl7.org/fhir/action-participant-type#practitioner", Practitioner }, 
+      { "practitionerrole", PractitionerRole }, 
+      { "http://hl7.org/fhir/action-participant-type#practitionerrole", PractitionerRole }, 
+      { "relatedperson", RelatedPerson }, 
+      { "http://hl7.org/fhir/action-participant-type#relatedperson", RelatedPerson }, 
+    };
   };
 }

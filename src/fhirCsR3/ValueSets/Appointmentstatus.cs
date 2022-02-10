@@ -90,9 +90,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArrived = "arrived";
 
     /// <summary>
+    /// Literal for code: AppointmentstatusArrived
+    /// </summary>
+    public const string LiteralAppointmentstatusArrived = "http://hl7.org/fhir/appointmentstatus#arrived";
+
+    /// <summary>
     /// Literal for code: Booked
     /// </summary>
     public const string LiteralBooked = "booked";
+
+    /// <summary>
+    /// Literal for code: AppointmentstatusBooked
+    /// </summary>
+    public const string LiteralAppointmentstatusBooked = "http://hl7.org/fhir/appointmentstatus#booked";
 
     /// <summary>
     /// Literal for code: Cancelled
@@ -100,9 +110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCancelled = "cancelled";
 
     /// <summary>
+    /// Literal for code: AppointmentstatusCancelled
+    /// </summary>
+    public const string LiteralAppointmentstatusCancelled = "http://hl7.org/fhir/appointmentstatus#cancelled";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: AppointmentstatusEnteredInError
+    /// </summary>
+    public const string LiteralAppointmentstatusEnteredInError = "http://hl7.org/fhir/appointmentstatus#entered-in-error";
 
     /// <summary>
     /// Literal for code: Fulfilled
@@ -110,9 +130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFulfilled = "fulfilled";
 
     /// <summary>
+    /// Literal for code: AppointmentstatusFulfilled
+    /// </summary>
+    public const string LiteralAppointmentstatusFulfilled = "http://hl7.org/fhir/appointmentstatus#fulfilled";
+
+    /// <summary>
     /// Literal for code: NoShow
     /// </summary>
     public const string LiteralNoShow = "noshow";
+
+    /// <summary>
+    /// Literal for code: AppointmentstatusNoShow
+    /// </summary>
+    public const string LiteralAppointmentstatusNoShow = "http://hl7.org/fhir/appointmentstatus#noshow";
 
     /// <summary>
     /// Literal for code: Pending
@@ -120,8 +150,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPending = "pending";
 
     /// <summary>
+    /// Literal for code: AppointmentstatusPending
+    /// </summary>
+    public const string LiteralAppointmentstatusPending = "http://hl7.org/fhir/appointmentstatus#pending";
+
+    /// <summary>
     /// Literal for code: Proposed
     /// </summary>
     public const string LiteralProposed = "proposed";
+
+    /// <summary>
+    /// Literal for code: AppointmentstatusProposed
+    /// </summary>
+    public const string LiteralAppointmentstatusProposed = "http://hl7.org/fhir/appointmentstatus#proposed";
+
+    /// <summary>
+    /// Dictionary for looking up Appointmentstatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "arrived", Arrived }, 
+      { "http://hl7.org/fhir/appointmentstatus#arrived", Arrived }, 
+      { "booked", Booked }, 
+      { "http://hl7.org/fhir/appointmentstatus#booked", Booked }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/appointmentstatus#cancelled", Cancelled }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/appointmentstatus#entered-in-error", EnteredInError }, 
+      { "fulfilled", Fulfilled }, 
+      { "http://hl7.org/fhir/appointmentstatus#fulfilled", Fulfilled }, 
+      { "noshow", NoShow }, 
+      { "http://hl7.org/fhir/appointmentstatus#noshow", NoShow }, 
+      { "pending", Pending }, 
+      { "http://hl7.org/fhir/appointmentstatus#pending", Pending }, 
+      { "proposed", Proposed }, 
+      { "http://hl7.org/fhir/appointmentstatus#proposed", Proposed }, 
+    };
   };
 }

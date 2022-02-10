@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralJson = "json";
 
     /// <summary>
+    /// Literal for code: ContentTypeJson
+    /// </summary>
+    public const string LiteralContentTypeJson = "http://hl7.org/fhir/content-type#json";
+
+    /// <summary>
     /// Literal for code: None
     /// </summary>
     public const string LiteralNone = "none";
+
+    /// <summary>
+    /// Literal for code: ContentTypeNone
+    /// </summary>
+    public const string LiteralContentTypeNone = "http://hl7.org/fhir/content-type#none";
 
     /// <summary>
     /// Literal for code: Ttl
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTtl = "ttl";
 
     /// <summary>
+    /// Literal for code: ContentTypeTtl
+    /// </summary>
+    public const string LiteralContentTypeTtl = "http://hl7.org/fhir/content-type#ttl";
+
+    /// <summary>
     /// Literal for code: Xml
     /// </summary>
     public const string LiteralXml = "xml";
+
+    /// <summary>
+    /// Literal for code: ContentTypeXml
+    /// </summary>
+    public const string LiteralContentTypeXml = "http://hl7.org/fhir/content-type#xml";
+
+    /// <summary>
+    /// Dictionary for looking up ContentType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "json", Json }, 
+      { "http://hl7.org/fhir/content-type#json", Json }, 
+      { "none", None }, 
+      { "http://hl7.org/fhir/content-type#none", None }, 
+      { "ttl", Ttl }, 
+      { "http://hl7.org/fhir/content-type#ttl", Ttl }, 
+      { "xml", Xml }, 
+      { "http://hl7.org/fhir/content-type#xml", Xml }, 
+    };
   };
 }

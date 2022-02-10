@@ -63,9 +63,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInstitutional = "institutional";
 
     /// <summary>
+    /// Literal for code: ClaimTypeInstitutional
+    /// </summary>
+    public const string LiteralClaimTypeInstitutional = "http://terminology.hl7.org/CodeSystem/claim-type#institutional";
+
+    /// <summary>
     /// Literal for code: Oral
     /// </summary>
     public const string LiteralOral = "oral";
+
+    /// <summary>
+    /// Literal for code: ClaimTypeOral
+    /// </summary>
+    public const string LiteralClaimTypeOral = "http://terminology.hl7.org/CodeSystem/claim-type#oral";
 
     /// <summary>
     /// Literal for code: Pharmacy
@@ -73,13 +83,44 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPharmacy = "pharmacy";
 
     /// <summary>
+    /// Literal for code: ClaimTypePharmacy
+    /// </summary>
+    public const string LiteralClaimTypePharmacy = "http://terminology.hl7.org/CodeSystem/claim-type#pharmacy";
+
+    /// <summary>
     /// Literal for code: Professional
     /// </summary>
     public const string LiteralProfessional = "professional";
 
     /// <summary>
+    /// Literal for code: ClaimTypeProfessional
+    /// </summary>
+    public const string LiteralClaimTypeProfessional = "http://terminology.hl7.org/CodeSystem/claim-type#professional";
+
+    /// <summary>
     /// Literal for code: Vision
     /// </summary>
     public const string LiteralVision = "vision";
+
+    /// <summary>
+    /// Literal for code: ClaimTypeVision
+    /// </summary>
+    public const string LiteralClaimTypeVision = "http://terminology.hl7.org/CodeSystem/claim-type#vision";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "institutional", Institutional }, 
+      { "http://terminology.hl7.org/CodeSystem/claim-type#institutional", Institutional }, 
+      { "oral", Oral }, 
+      { "http://terminology.hl7.org/CodeSystem/claim-type#oral", Oral }, 
+      { "pharmacy", Pharmacy }, 
+      { "http://terminology.hl7.org/CodeSystem/claim-type#pharmacy", Pharmacy }, 
+      { "professional", Professional }, 
+      { "http://terminology.hl7.org/CodeSystem/claim-type#professional", Professional }, 
+      { "vision", Vision }, 
+      { "http://terminology.hl7.org/CodeSystem/claim-type#vision", Vision }, 
+    };
   };
 }

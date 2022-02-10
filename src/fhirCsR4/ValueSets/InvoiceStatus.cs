@@ -63,9 +63,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBalanced = "balanced";
 
     /// <summary>
+    /// Literal for code: InvoiceStatusBalanced
+    /// </summary>
+    public const string LiteralInvoiceStatusBalanced = "http://hl7.org/fhir/invoice-status#balanced";
+
+    /// <summary>
     /// Literal for code: Cancelled
     /// </summary>
     public const string LiteralCancelled = "cancelled";
+
+    /// <summary>
+    /// Literal for code: InvoiceStatusCancelled
+    /// </summary>
+    public const string LiteralInvoiceStatusCancelled = "http://hl7.org/fhir/invoice-status#cancelled";
 
     /// <summary>
     /// Literal for code: Draft
@@ -73,13 +83,44 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDraft = "draft";
 
     /// <summary>
+    /// Literal for code: InvoiceStatusDraft
+    /// </summary>
+    public const string LiteralInvoiceStatusDraft = "http://hl7.org/fhir/invoice-status#draft";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: InvoiceStatusEnteredInError
+    /// </summary>
+    public const string LiteralInvoiceStatusEnteredInError = "http://hl7.org/fhir/invoice-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Issued
     /// </summary>
     public const string LiteralIssued = "issued";
+
+    /// <summary>
+    /// Literal for code: InvoiceStatusIssued
+    /// </summary>
+    public const string LiteralInvoiceStatusIssued = "http://hl7.org/fhir/invoice-status#issued";
+
+    /// <summary>
+    /// Dictionary for looking up InvoiceStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "balanced", Balanced }, 
+      { "http://hl7.org/fhir/invoice-status#balanced", Balanced }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/invoice-status#cancelled", Cancelled }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/invoice-status#draft", Draft }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/invoice-status#entered-in-error", EnteredInError }, 
+      { "issued", Issued }, 
+      { "http://hl7.org/fhir/invoice-status#issued", Issued }, 
+    };
   };
 }

@@ -701,6 +701,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? AllergenicIndicator { get; set; }
     /// <summary>
+    /// Extension container element for AllergenicIndicator
+    /// </summary>
+    public Element _AllergenicIndicator { get; set; }
+    /// <summary>
     /// The identifier(s) of this Ingredient that are assigned by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate.
     /// </summary>
     public Identifier Identifier { get; set; }
@@ -754,6 +758,12 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("allergenicIndicator", (bool)AllergenicIndicator!);
       }
 
+      if (_AllergenicIndicator != null)
+      {
+        writer.WritePropertyName("_allergenicIndicator");
+        _AllergenicIndicator.SerializeJson(writer, options);
+      }
+
       if ((Manufacturer != null) && (Manufacturer.Count != 0))
       {
         writer.WritePropertyName("manufacturer");
@@ -800,6 +810,11 @@ namespace fhirCsR4.Models
       {
         case "allergenicIndicator":
           AllergenicIndicator = reader.GetBoolean();
+          break;
+
+        case "_allergenicIndicator":
+          _AllergenicIndicator = new fhirCsR4.Models.Element();
+          _AllergenicIndicator.DeserializeJson(ref reader, options);
           break;
 
         case "identifier":

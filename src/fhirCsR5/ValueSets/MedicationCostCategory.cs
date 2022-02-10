@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBandA = "banda";
 
     /// <summary>
+    /// Literal for code: MedicationCostCategoryBandA
+    /// </summary>
+    public const string LiteralMedicationCostCategoryBandA = "http://terminology.hl7.org/CodeSystem/medication-cost-category#banda";
+
+    /// <summary>
     /// Literal for code: BandB
     /// </summary>
     public const string LiteralBandB = "bandb";
+
+    /// <summary>
+    /// Literal for code: MedicationCostCategoryBandB
+    /// </summary>
+    public const string LiteralMedicationCostCategoryBandB = "http://terminology.hl7.org/CodeSystem/medication-cost-category#bandb";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationCostCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "banda", BandA }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-cost-category#banda", BandA }, 
+      { "bandb", BandB }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-cost-category#bandb", BandB }, 
+    };
   };
 }

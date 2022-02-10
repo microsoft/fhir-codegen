@@ -36,8 +36,28 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralContactLens = "contact";
 
     /// <summary>
+    /// Literal for code: VisionProductContactLens
+    /// </summary>
+    public const string LiteralVisionProductContactLens = "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct#contact";
+
+    /// <summary>
     /// Literal for code: Lens
     /// </summary>
     public const string LiteralLens = "lens";
+
+    /// <summary>
+    /// Literal for code: VisionProductLens
+    /// </summary>
+    public const string LiteralVisionProductLens = "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct#lens";
+
+    /// <summary>
+    /// Dictionary for looking up VisionProduct Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "contact", ContactLens }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct#contact", ContactLens }, 
+      { "lens", Lens }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct#lens", Lens }, 
+    };
   };
 }

@@ -248,6 +248,13 @@ namespace fhirCsR3.Models
     public const string EMAIL = "email";
     public const string SMS = "sms";
     public const string MESSAGE = "message";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "rest-hook",
+      "websocket",
+      "email",
+      "sms",
+      "message",
+    };
   }
   /// <summary>
   /// The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined "channel" so that another system is able to take an appropriate action.
@@ -570,5 +577,11 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string ERROR = "error";
     public const string OFF = "off";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "requested",
+      "active",
+      "error",
+      "off",
+    };
   }
 }

@@ -25,5 +25,18 @@ namespace fhirCsR4.ValueSets
     /// Literal for code: FLunky
     /// </summary>
     public const string LiteralFLunky = "flunky";
+
+    /// <summary>
+    /// Literal for code: ContractPartyRoleFLunky
+    /// </summary>
+    public const string LiteralContractPartyRoleFLunky = "http://hl7.org/fhir/contract-party-role#flunky";
+
+    /// <summary>
+    /// Dictionary for looking up ContractPartyRole Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "flunky", FLunky }, 
+      { "http://hl7.org/fhir/contract-party-role#flunky", FLunky }, 
+    };
   };
 }

@@ -81,9 +81,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralAppended = "appended";
 
     /// <summary>
+    /// Literal for code: DiagnosticReportStatusAppended
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusAppended = "http://hl7.org/fhir/diagnostic-report-status#appended";
+
+    /// <summary>
     /// Literal for code: Cancelled
     /// </summary>
     public const string LiteralCancelled = "cancelled";
+
+    /// <summary>
+    /// Literal for code: DiagnosticReportStatusCancelled
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusCancelled = "http://hl7.org/fhir/diagnostic-report-status#cancelled";
 
     /// <summary>
     /// Literal for code: Corrected
@@ -91,9 +101,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralCorrected = "corrected";
 
     /// <summary>
+    /// Literal for code: DiagnosticReportStatusCorrected
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusCorrected = "http://hl7.org/fhir/diagnostic-report-status#corrected";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: DiagnosticReportStatusEnteredInError
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusEnteredInError = "http://hl7.org/fhir/diagnostic-report-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: Final
@@ -101,13 +121,48 @@ namespace fhirCsR2.ValueSets
     public const string LiteralFinal = "final";
 
     /// <summary>
+    /// Literal for code: DiagnosticReportStatusFinal
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusFinal = "http://hl7.org/fhir/diagnostic-report-status#final";
+
+    /// <summary>
     /// Literal for code: Partial
     /// </summary>
     public const string LiteralPartial = "partial";
 
     /// <summary>
+    /// Literal for code: DiagnosticReportStatusPartial
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusPartial = "http://hl7.org/fhir/diagnostic-report-status#partial";
+
+    /// <summary>
     /// Literal for code: Registered
     /// </summary>
     public const string LiteralRegistered = "registered";
+
+    /// <summary>
+    /// Literal for code: DiagnosticReportStatusRegistered
+    /// </summary>
+    public const string LiteralDiagnosticReportStatusRegistered = "http://hl7.org/fhir/diagnostic-report-status#registered";
+
+    /// <summary>
+    /// Dictionary for looking up DiagnosticReportStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "appended", Appended }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#appended", Appended }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#cancelled", Cancelled }, 
+      { "corrected", Corrected }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#corrected", Corrected }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#entered-in-error", EnteredInError }, 
+      { "final", Final }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#final", Final }, 
+      { "partial", Partial }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#partial", Partial }, 
+      { "registered", Registered }, 
+      { "http://hl7.org/fhir/diagnostic-report-status#registered", Registered }, 
+    };
   };
 }

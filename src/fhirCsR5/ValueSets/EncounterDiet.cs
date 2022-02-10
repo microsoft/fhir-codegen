@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class EncounterDietCodes
   {
     /// <summary>
-    /// 
+    /// Dairy Free
     /// </summary>
     public static readonly Coding DairyFree = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/diet"
     };
     /// <summary>
-    /// 
+    /// Gluten Free
     /// </summary>
     public static readonly Coding GlutenFree = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/diet"
     };
     /// <summary>
-    /// 
+    /// Halal
     /// </summary>
     public static readonly Coding Halal = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/diet"
     };
     /// <summary>
-    /// 
+    /// Kosher
     /// </summary>
     public static readonly Coding Kosher = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/diet"
     };
     /// <summary>
-    /// 
+    /// Nut Free
     /// </summary>
     public static readonly Coding NutFree = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/diet"
     };
     /// <summary>
-    /// 
+    /// Vegan
     /// </summary>
     public static readonly Coding Vegan = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/diet"
     };
     /// <summary>
-    /// 
+    /// Vegetarian
     /// </summary>
     public static readonly Coding Vegetarian = new Coding
     {
@@ -81,9 +81,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDairyFree = "dairy-free";
 
     /// <summary>
+    /// Literal for code: DietDairyFree
+    /// </summary>
+    public const string LiteralDietDairyFree = "http://terminology.hl7.org/CodeSystem/diet#dairy-free";
+
+    /// <summary>
     /// Literal for code: GlutenFree
     /// </summary>
     public const string LiteralGlutenFree = "gluten-free";
+
+    /// <summary>
+    /// Literal for code: DietGlutenFree
+    /// </summary>
+    public const string LiteralDietGlutenFree = "http://terminology.hl7.org/CodeSystem/diet#gluten-free";
 
     /// <summary>
     /// Literal for code: Halal
@@ -91,9 +101,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralHalal = "halal";
 
     /// <summary>
+    /// Literal for code: DietHalal
+    /// </summary>
+    public const string LiteralDietHalal = "http://terminology.hl7.org/CodeSystem/diet#halal";
+
+    /// <summary>
     /// Literal for code: Kosher
     /// </summary>
     public const string LiteralKosher = "kosher";
+
+    /// <summary>
+    /// Literal for code: DietKosher
+    /// </summary>
+    public const string LiteralDietKosher = "http://terminology.hl7.org/CodeSystem/diet#kosher";
 
     /// <summary>
     /// Literal for code: NutFree
@@ -101,13 +121,48 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNutFree = "nut-free";
 
     /// <summary>
+    /// Literal for code: DietNutFree
+    /// </summary>
+    public const string LiteralDietNutFree = "http://terminology.hl7.org/CodeSystem/diet#nut-free";
+
+    /// <summary>
     /// Literal for code: Vegan
     /// </summary>
     public const string LiteralVegan = "vegan";
 
     /// <summary>
+    /// Literal for code: DietVegan
+    /// </summary>
+    public const string LiteralDietVegan = "http://terminology.hl7.org/CodeSystem/diet#vegan";
+
+    /// <summary>
     /// Literal for code: Vegetarian
     /// </summary>
     public const string LiteralVegetarian = "vegetarian";
+
+    /// <summary>
+    /// Literal for code: DietVegetarian
+    /// </summary>
+    public const string LiteralDietVegetarian = "http://terminology.hl7.org/CodeSystem/diet#vegetarian";
+
+    /// <summary>
+    /// Dictionary for looking up EncounterDiet Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "dairy-free", DairyFree }, 
+      { "http://terminology.hl7.org/CodeSystem/diet#dairy-free", DairyFree }, 
+      { "gluten-free", GlutenFree }, 
+      { "http://terminology.hl7.org/CodeSystem/diet#gluten-free", GlutenFree }, 
+      { "halal", Halal }, 
+      { "http://terminology.hl7.org/CodeSystem/diet#halal", Halal }, 
+      { "kosher", Kosher }, 
+      { "http://terminology.hl7.org/CodeSystem/diet#kosher", Kosher }, 
+      { "nut-free", NutFree }, 
+      { "http://terminology.hl7.org/CodeSystem/diet#nut-free", NutFree }, 
+      { "vegan", Vegan }, 
+      { "http://terminology.hl7.org/CodeSystem/diet#vegan", Vegan }, 
+      { "vegetarian", Vegetarian }, 
+      { "http://terminology.hl7.org/CodeSystem/diet#vegetarian", Vegetarian }, 
+    };
   };
 }

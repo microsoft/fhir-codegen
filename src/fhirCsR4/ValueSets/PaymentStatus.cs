@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCleared = "cleared";
 
     /// <summary>
+    /// Literal for code: PaymentStatusCleared
+    /// </summary>
+    public const string LiteralPaymentStatusCleared = "http://terminology.hl7.org/CodeSystem/paymentstatus#cleared";
+
+    /// <summary>
     /// Literal for code: Paid
     /// </summary>
     public const string LiteralPaid = "paid";
+
+    /// <summary>
+    /// Literal for code: PaymentStatusPaid
+    /// </summary>
+    public const string LiteralPaymentStatusPaid = "http://terminology.hl7.org/CodeSystem/paymentstatus#paid";
+
+    /// <summary>
+    /// Dictionary for looking up PaymentStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "cleared", Cleared }, 
+      { "http://terminology.hl7.org/CodeSystem/paymentstatus#cleared", Cleared }, 
+      { "paid", Paid }, 
+      { "http://terminology.hl7.org/CodeSystem/paymentstatus#paid", Paid }, 
+    };
   };
 }

@@ -45,13 +45,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralAvailable = "available";
 
     /// <summary>
+    /// Literal for code: DevicestatusAvailable
+    /// </summary>
+    public const string LiteralDevicestatusAvailable = "http://hl7.org/fhir/devicestatus#available";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: DevicestatusEnteredInError
+    /// </summary>
+    public const string LiteralDevicestatusEnteredInError = "http://hl7.org/fhir/devicestatus#entered-in-error";
+
+    /// <summary>
     /// Literal for code: NotAvailable
     /// </summary>
     public const string LiteralNotAvailable = "not-available";
+
+    /// <summary>
+    /// Literal for code: DevicestatusNotAvailable
+    /// </summary>
+    public const string LiteralDevicestatusNotAvailable = "http://hl7.org/fhir/devicestatus#not-available";
+
+    /// <summary>
+    /// Dictionary for looking up Devicestatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "available", Available }, 
+      { "http://hl7.org/fhir/devicestatus#available", Available }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/devicestatus#entered-in-error", EnteredInError }, 
+      { "not-available", NotAvailable }, 
+      { "http://hl7.org/fhir/devicestatus#not-available", NotAvailable }, 
+    };
   };
 }

@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class ReasonMedicationNotTakenCodesCodes
   {
     /// <summary>
-    /// 
+    /// Drug not taken - dislike taste
     /// </summary>
     public static readonly Coding DrugNotTakenDislikeTaste = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug not taken - dislike form
     /// </summary>
     public static readonly Coding DrugNotTakenDislikeForm = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug not taken - side-effects
     /// </summary>
     public static readonly Coding DrugNotTakenSideEffects = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug not taken - inconvenient
     /// </summary>
     public static readonly Coding DrugNotTakenInconvenient = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug not taken - pat disbelief
     /// </summary>
     public static readonly Coding DrugNotTakenPatDisbelief = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Treatment stopped - alternative therapy undertaken
     /// </summary>
     public static readonly Coding TreatmentStoppedAlternativeTherapyUndertaken = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug not taken - patient lost tablets
     /// </summary>
     public static readonly Coding DrugNotTakenPatientLostTablets = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug discontinued - reason unknown
     /// </summary>
     public static readonly Coding DrugDiscontinuedReasonUnknown = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug discontinued - patient fear/risk
     /// </summary>
     public static readonly Coding DrugDiscontinuedPatientFearRisk = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug discontinued - too expensive
     /// </summary>
     public static readonly Coding DrugDiscontinuedTooExpensive = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug treatment stopped - patient ran out of tablets
     /// </summary>
     public static readonly Coding DrugTreatmentStoppedPatientRanOutOfTablets = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Treatment stopped - patient unable to concentrate
     /// </summary>
     public static readonly Coding TreatmentStoppedPatientUnableToConcentrate = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug not taken - problem swallowing
     /// </summary>
     public static readonly Coding DrugNotTakenProblemSwallowing = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tablets too large to swallow
     /// </summary>
     public static readonly Coding TabletsTooLargeToSwallow = new Coding
     {
@@ -144,9 +144,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrugNotTakenDislikeTaste = "182862001";
 
     /// <summary>
+    /// Literal for code: NONEDrugNotTakenDislikeTaste
+    /// </summary>
+    public const string LiteralNONEDrugNotTakenDislikeTaste = "http://snomed.info/sct#182862001";
+
+    /// <summary>
     /// Literal for code: DrugNotTakenDislikeForm
     /// </summary>
     public const string LiteralDrugNotTakenDislikeForm = "182863006";
+
+    /// <summary>
+    /// Literal for code: NONEDrugNotTakenDislikeForm
+    /// </summary>
+    public const string LiteralNONEDrugNotTakenDislikeForm = "http://snomed.info/sct#182863006";
 
     /// <summary>
     /// Literal for code: DrugNotTakenSideEffects
@@ -154,9 +164,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrugNotTakenSideEffects = "182864000";
 
     /// <summary>
+    /// Literal for code: NONEDrugNotTakenSideEffects
+    /// </summary>
+    public const string LiteralNONEDrugNotTakenSideEffects = "http://snomed.info/sct#182864000";
+
+    /// <summary>
     /// Literal for code: DrugNotTakenInconvenient
     /// </summary>
     public const string LiteralDrugNotTakenInconvenient = "182865004";
+
+    /// <summary>
+    /// Literal for code: NONEDrugNotTakenInconvenient
+    /// </summary>
+    public const string LiteralNONEDrugNotTakenInconvenient = "http://snomed.info/sct#182865004";
 
     /// <summary>
     /// Literal for code: DrugNotTakenPatDisbelief
@@ -164,9 +184,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrugNotTakenPatDisbelief = "182867007";
 
     /// <summary>
+    /// Literal for code: NONEDrugNotTakenPatDisbelief
+    /// </summary>
+    public const string LiteralNONEDrugNotTakenPatDisbelief = "http://snomed.info/sct#182867007";
+
+    /// <summary>
     /// Literal for code: TreatmentStoppedAlternativeTherapyUndertaken
     /// </summary>
     public const string LiteralTreatmentStoppedAlternativeTherapyUndertaken = "182868002";
+
+    /// <summary>
+    /// Literal for code: NONETreatmentStoppedAlternativeTherapyUndertaken
+    /// </summary>
+    public const string LiteralNONETreatmentStoppedAlternativeTherapyUndertaken = "http://snomed.info/sct#182868002";
 
     /// <summary>
     /// Literal for code: DrugNotTakenPatientLostTablets
@@ -174,9 +204,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrugNotTakenPatientLostTablets = "182869005";
 
     /// <summary>
+    /// Literal for code: NONEDrugNotTakenPatientLostTablets
+    /// </summary>
+    public const string LiteralNONEDrugNotTakenPatientLostTablets = "http://snomed.info/sct#182869005";
+
+    /// <summary>
     /// Literal for code: DrugDiscontinuedReasonUnknown
     /// </summary>
     public const string LiteralDrugDiscontinuedReasonUnknown = "182870006";
+
+    /// <summary>
+    /// Literal for code: NONEDrugDiscontinuedReasonUnknown
+    /// </summary>
+    public const string LiteralNONEDrugDiscontinuedReasonUnknown = "http://snomed.info/sct#182870006";
 
     /// <summary>
     /// Literal for code: DrugDiscontinuedPatientFearRisk
@@ -184,9 +224,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrugDiscontinuedPatientFearRisk = "182871005";
 
     /// <summary>
+    /// Literal for code: NONEDrugDiscontinuedPatientFearRisk
+    /// </summary>
+    public const string LiteralNONEDrugDiscontinuedPatientFearRisk = "http://snomed.info/sct#182871005";
+
+    /// <summary>
     /// Literal for code: DrugDiscontinuedTooExpensive
     /// </summary>
     public const string LiteralDrugDiscontinuedTooExpensive = "182872003";
+
+    /// <summary>
+    /// Literal for code: NONEDrugDiscontinuedTooExpensive
+    /// </summary>
+    public const string LiteralNONEDrugDiscontinuedTooExpensive = "http://snomed.info/sct#182872003";
 
     /// <summary>
     /// Literal for code: DrugTreatmentStoppedPatientRanOutOfTablets
@@ -194,9 +244,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrugTreatmentStoppedPatientRanOutOfTablets = "182873008";
 
     /// <summary>
+    /// Literal for code: NONEDrugTreatmentStoppedPatientRanOutOfTablets
+    /// </summary>
+    public const string LiteralNONEDrugTreatmentStoppedPatientRanOutOfTablets = "http://snomed.info/sct#182873008";
+
+    /// <summary>
     /// Literal for code: TreatmentStoppedPatientUnableToConcentrate
     /// </summary>
     public const string LiteralTreatmentStoppedPatientUnableToConcentrate = "182874002";
+
+    /// <summary>
+    /// Literal for code: NONETreatmentStoppedPatientUnableToConcentrate
+    /// </summary>
+    public const string LiteralNONETreatmentStoppedPatientUnableToConcentrate = "http://snomed.info/sct#182874002";
 
     /// <summary>
     /// Literal for code: DrugNotTakenProblemSwallowing
@@ -204,8 +264,52 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrugNotTakenProblemSwallowing = "266711001";
 
     /// <summary>
+    /// Literal for code: NONEDrugNotTakenProblemSwallowing
+    /// </summary>
+    public const string LiteralNONEDrugNotTakenProblemSwallowing = "http://snomed.info/sct#266711001";
+
+    /// <summary>
     /// Literal for code: TabletsTooLargeToSwallow
     /// </summary>
     public const string LiteralTabletsTooLargeToSwallow = "275929009";
+
+    /// <summary>
+    /// Literal for code: NONETabletsTooLargeToSwallow
+    /// </summary>
+    public const string LiteralNONETabletsTooLargeToSwallow = "http://snomed.info/sct#275929009";
+
+    /// <summary>
+    /// Dictionary for looking up ReasonMedicationNotTakenCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "182862001", DrugNotTakenDislikeTaste }, 
+      { "http://snomed.info/sct#182862001", DrugNotTakenDislikeTaste }, 
+      { "182863006", DrugNotTakenDislikeForm }, 
+      { "http://snomed.info/sct#182863006", DrugNotTakenDislikeForm }, 
+      { "182864000", DrugNotTakenSideEffects }, 
+      { "http://snomed.info/sct#182864000", DrugNotTakenSideEffects }, 
+      { "182865004", DrugNotTakenInconvenient }, 
+      { "http://snomed.info/sct#182865004", DrugNotTakenInconvenient }, 
+      { "182867007", DrugNotTakenPatDisbelief }, 
+      { "http://snomed.info/sct#182867007", DrugNotTakenPatDisbelief }, 
+      { "182868002", TreatmentStoppedAlternativeTherapyUndertaken }, 
+      { "http://snomed.info/sct#182868002", TreatmentStoppedAlternativeTherapyUndertaken }, 
+      { "182869005", DrugNotTakenPatientLostTablets }, 
+      { "http://snomed.info/sct#182869005", DrugNotTakenPatientLostTablets }, 
+      { "182870006", DrugDiscontinuedReasonUnknown }, 
+      { "http://snomed.info/sct#182870006", DrugDiscontinuedReasonUnknown }, 
+      { "182871005", DrugDiscontinuedPatientFearRisk }, 
+      { "http://snomed.info/sct#182871005", DrugDiscontinuedPatientFearRisk }, 
+      { "182872003", DrugDiscontinuedTooExpensive }, 
+      { "http://snomed.info/sct#182872003", DrugDiscontinuedTooExpensive }, 
+      { "182873008", DrugTreatmentStoppedPatientRanOutOfTablets }, 
+      { "http://snomed.info/sct#182873008", DrugTreatmentStoppedPatientRanOutOfTablets }, 
+      { "182874002", TreatmentStoppedPatientUnableToConcentrate }, 
+      { "http://snomed.info/sct#182874002", TreatmentStoppedPatientUnableToConcentrate }, 
+      { "266711001", DrugNotTakenProblemSwallowing }, 
+      { "http://snomed.info/sct#266711001", DrugNotTakenProblemSwallowing }, 
+      { "275929009", TabletsTooLargeToSwallow }, 
+      { "http://snomed.info/sct#275929009", TabletsTooLargeToSwallow }, 
+    };
   };
 }

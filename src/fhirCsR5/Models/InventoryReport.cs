@@ -709,6 +709,10 @@ namespace fhirCsR5.Models
   public static class InventoryReportCountTypeCodes {
     public const string SNAPSHOT = "snapshot";
     public const string DIFFERENCE = "difference";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "snapshot",
+      "difference",
+    };
   }
   /// <summary>
   /// Code Values for the InventoryReport.status field
@@ -718,5 +722,11 @@ namespace fhirCsR5.Models
     public const string REQUESTED = "requested";
     public const string ACTIVE = "active";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "requested",
+      "active",
+      "entered-in-error",
+    };
   }
 }

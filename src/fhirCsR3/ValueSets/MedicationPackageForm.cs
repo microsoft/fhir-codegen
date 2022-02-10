@@ -90,9 +90,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAmpoule = "ampoule";
 
     /// <summary>
+    /// Literal for code: MedicationPackageFormAmpoule
+    /// </summary>
+    public const string LiteralMedicationPackageFormAmpoule = "http://hl7.org/fhir/medication-package-form#ampoule";
+
+    /// <summary>
     /// Literal for code: Bottle
     /// </summary>
     public const string LiteralBottle = "bottle";
+
+    /// <summary>
+    /// Literal for code: MedicationPackageFormBottle
+    /// </summary>
+    public const string LiteralMedicationPackageFormBottle = "http://hl7.org/fhir/medication-package-form#bottle";
 
     /// <summary>
     /// Literal for code: Box
@@ -100,9 +110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBox = "box";
 
     /// <summary>
+    /// Literal for code: MedicationPackageFormBox
+    /// </summary>
+    public const string LiteralMedicationPackageFormBox = "http://hl7.org/fhir/medication-package-form#box";
+
+    /// <summary>
     /// Literal for code: Cartridge
     /// </summary>
     public const string LiteralCartridge = "cartridge";
+
+    /// <summary>
+    /// Literal for code: MedicationPackageFormCartridge
+    /// </summary>
+    public const string LiteralMedicationPackageFormCartridge = "http://hl7.org/fhir/medication-package-form#cartridge";
 
     /// <summary>
     /// Literal for code: Container
@@ -110,9 +130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralContainer = "container";
 
     /// <summary>
+    /// Literal for code: MedicationPackageFormContainer
+    /// </summary>
+    public const string LiteralMedicationPackageFormContainer = "http://hl7.org/fhir/medication-package-form#container";
+
+    /// <summary>
     /// Literal for code: Tube
     /// </summary>
     public const string LiteralTube = "tube";
+
+    /// <summary>
+    /// Literal for code: MedicationPackageFormTube
+    /// </summary>
+    public const string LiteralMedicationPackageFormTube = "http://hl7.org/fhir/medication-package-form#tube";
 
     /// <summary>
     /// Literal for code: UnitDoseBlister
@@ -120,8 +150,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnitDoseBlister = "unitdose";
 
     /// <summary>
+    /// Literal for code: MedicationPackageFormUnitDoseBlister
+    /// </summary>
+    public const string LiteralMedicationPackageFormUnitDoseBlister = "http://hl7.org/fhir/medication-package-form#unitdose";
+
+    /// <summary>
     /// Literal for code: Vial
     /// </summary>
     public const string LiteralVial = "vial";
+
+    /// <summary>
+    /// Literal for code: MedicationPackageFormVial
+    /// </summary>
+    public const string LiteralMedicationPackageFormVial = "http://hl7.org/fhir/medication-package-form#vial";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationPackageForm Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ampoule", Ampoule }, 
+      { "http://hl7.org/fhir/medication-package-form#ampoule", Ampoule }, 
+      { "bottle", Bottle }, 
+      { "http://hl7.org/fhir/medication-package-form#bottle", Bottle }, 
+      { "box", Box }, 
+      { "http://hl7.org/fhir/medication-package-form#box", Box }, 
+      { "cartridge", Cartridge }, 
+      { "http://hl7.org/fhir/medication-package-form#cartridge", Cartridge }, 
+      { "container", Container }, 
+      { "http://hl7.org/fhir/medication-package-form#container", Container }, 
+      { "tube", Tube }, 
+      { "http://hl7.org/fhir/medication-package-form#tube", Tube }, 
+      { "unitdose", UnitDoseBlister }, 
+      { "http://hl7.org/fhir/medication-package-form#unitdose", UnitDoseBlister }, 
+      { "vial", Vial }, 
+      { "http://hl7.org/fhir/medication-package-form#vial", Vial }, 
+    };
   };
 }

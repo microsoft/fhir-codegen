@@ -746,5 +746,14 @@ namespace fhirCsR2.Models
     public const string APPENDED = "appended";
     public const string CANCELLED = "cancelled";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "registered",
+      "partial",
+      "final",
+      "corrected",
+      "appended",
+      "cancelled",
+      "entered-in-error",
+    };
   }
 }

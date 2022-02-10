@@ -81,9 +81,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: SupplyrequestStatusActive
+    /// </summary>
+    public const string LiteralSupplyrequestStatusActive = "http://hl7.org/fhir/supplyrequest-status#active";
+
+    /// <summary>
     /// Literal for code: Cancelled
     /// </summary>
     public const string LiteralCancelled = "cancelled";
+
+    /// <summary>
+    /// Literal for code: SupplyrequestStatusCancelled
+    /// </summary>
+    public const string LiteralSupplyrequestStatusCancelled = "http://hl7.org/fhir/supplyrequest-status#cancelled";
 
     /// <summary>
     /// Literal for code: Completed
@@ -91,9 +101,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: SupplyrequestStatusCompleted
+    /// </summary>
+    public const string LiteralSupplyrequestStatusCompleted = "http://hl7.org/fhir/supplyrequest-status#completed";
+
+    /// <summary>
     /// Literal for code: Draft
     /// </summary>
     public const string LiteralDraft = "draft";
+
+    /// <summary>
+    /// Literal for code: SupplyrequestStatusDraft
+    /// </summary>
+    public const string LiteralSupplyrequestStatusDraft = "http://hl7.org/fhir/supplyrequest-status#draft";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -101,13 +121,48 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: SupplyrequestStatusEnteredInError
+    /// </summary>
+    public const string LiteralSupplyrequestStatusEnteredInError = "http://hl7.org/fhir/supplyrequest-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Suspended
     /// </summary>
     public const string LiteralSuspended = "suspended";
 
     /// <summary>
+    /// Literal for code: SupplyrequestStatusSuspended
+    /// </summary>
+    public const string LiteralSupplyrequestStatusSuspended = "http://hl7.org/fhir/supplyrequest-status#suspended";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: SupplyrequestStatusUnknown
+    /// </summary>
+    public const string LiteralSupplyrequestStatusUnknown = "http://hl7.org/fhir/supplyrequest-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up SupplyrequestStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/supplyrequest-status#active", Active }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/supplyrequest-status#cancelled", Cancelled }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/supplyrequest-status#completed", Completed }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/supplyrequest-status#draft", Draft }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/supplyrequest-status#entered-in-error", EnteredInError }, 
+      { "suspended", Suspended }, 
+      { "http://hl7.org/fhir/supplyrequest-status#suspended", Suspended }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/supplyrequest-status#unknown", Unknown }, 
+    };
   };
 }

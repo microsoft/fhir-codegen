@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIntegration = "integration";
 
     /// <summary>
+    /// Literal for code: TestscriptScopePhaseCodesIntegration
+    /// </summary>
+    public const string LiteralTestscriptScopePhaseCodesIntegration = "http://terminology.hl7.org/CodeSystem/testscript-scope-phase-codes#integration";
+
+    /// <summary>
     /// Literal for code: Production
     /// </summary>
     public const string LiteralProduction = "production";
 
     /// <summary>
+    /// Literal for code: TestscriptScopePhaseCodesProduction
+    /// </summary>
+    public const string LiteralTestscriptScopePhaseCodesProduction = "http://terminology.hl7.org/CodeSystem/testscript-scope-phase-codes#production";
+
+    /// <summary>
     /// Literal for code: Unit
     /// </summary>
     public const string LiteralUnit = "unit";
+
+    /// <summary>
+    /// Literal for code: TestscriptScopePhaseCodesUnit
+    /// </summary>
+    public const string LiteralTestscriptScopePhaseCodesUnit = "http://terminology.hl7.org/CodeSystem/testscript-scope-phase-codes#unit";
+
+    /// <summary>
+    /// Dictionary for looking up TestscriptScopePhaseCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "integration", Integration }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-scope-phase-codes#integration", Integration }, 
+      { "production", Production }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-scope-phase-codes#production", Production }, 
+      { "unit", Unit }, 
+      { "http://terminology.hl7.org/CodeSystem/testscript-scope-phase-codes#unit", Unit }, 
+    };
   };
 }

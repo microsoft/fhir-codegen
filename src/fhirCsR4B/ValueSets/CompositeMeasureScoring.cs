@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAllOrNothing = "all-or-nothing";
 
     /// <summary>
+    /// Literal for code: CompositeMeasureScoringAllOrNothing
+    /// </summary>
+    public const string LiteralCompositeMeasureScoringAllOrNothing = "http://terminology.hl7.org/CodeSystem/composite-measure-scoring#all-or-nothing";
+
+    /// <summary>
     /// Literal for code: Linear
     /// </summary>
     public const string LiteralLinear = "linear";
+
+    /// <summary>
+    /// Literal for code: CompositeMeasureScoringLinear
+    /// </summary>
+    public const string LiteralCompositeMeasureScoringLinear = "http://terminology.hl7.org/CodeSystem/composite-measure-scoring#linear";
 
     /// <summary>
     /// Literal for code: Opportunity
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOpportunity = "opportunity";
 
     /// <summary>
+    /// Literal for code: CompositeMeasureScoringOpportunity
+    /// </summary>
+    public const string LiteralCompositeMeasureScoringOpportunity = "http://terminology.hl7.org/CodeSystem/composite-measure-scoring#opportunity";
+
+    /// <summary>
     /// Literal for code: Weighted
     /// </summary>
     public const string LiteralWeighted = "weighted";
+
+    /// <summary>
+    /// Literal for code: CompositeMeasureScoringWeighted
+    /// </summary>
+    public const string LiteralCompositeMeasureScoringWeighted = "http://terminology.hl7.org/CodeSystem/composite-measure-scoring#weighted";
+
+    /// <summary>
+    /// Dictionary for looking up CompositeMeasureScoring Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "all-or-nothing", AllOrNothing }, 
+      { "http://terminology.hl7.org/CodeSystem/composite-measure-scoring#all-or-nothing", AllOrNothing }, 
+      { "linear", Linear }, 
+      { "http://terminology.hl7.org/CodeSystem/composite-measure-scoring#linear", Linear }, 
+      { "opportunity", Opportunity }, 
+      { "http://terminology.hl7.org/CodeSystem/composite-measure-scoring#opportunity", Opportunity }, 
+      { "weighted", Weighted }, 
+      { "http://terminology.hl7.org/CodeSystem/composite-measure-scoring#weighted", Weighted }, 
+    };
   };
 }

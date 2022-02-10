@@ -147,6 +147,11 @@ namespace fhirCsR2.Models
     public const string OK = "ok";
     public const string TRANSIENT_ERROR = "transient-error";
     public const string FATAL_ERROR = "fatal-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "ok",
+      "transient-error",
+      "fatal-error",
+    };
   }
   /// <summary>
   /// Allows replies, supports audit.

@@ -72,9 +72,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAppends = "appends";
 
     /// <summary>
+    /// Literal for code: DocumentRelationshipTypeAppends
+    /// </summary>
+    public const string LiteralDocumentRelationshipTypeAppends = "http://hl7.org/fhir/document-relationship-type#appends";
+
+    /// <summary>
     /// Literal for code: Incorporates
     /// </summary>
     public const string LiteralIncorporates = "incorporates";
+
+    /// <summary>
+    /// Literal for code: DocumentRelationshipTypeIncorporates
+    /// </summary>
+    public const string LiteralDocumentRelationshipTypeIncorporates = "http://hl7.org/fhir/document-relationship-type#incorporates";
 
     /// <summary>
     /// Literal for code: Replaces
@@ -82,9 +92,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralReplaces = "replaces";
 
     /// <summary>
+    /// Literal for code: DocumentRelationshipTypeReplaces
+    /// </summary>
+    public const string LiteralDocumentRelationshipTypeReplaces = "http://hl7.org/fhir/document-relationship-type#replaces";
+
+    /// <summary>
     /// Literal for code: Signs
     /// </summary>
     public const string LiteralSigns = "signs";
+
+    /// <summary>
+    /// Literal for code: DocumentRelationshipTypeSigns
+    /// </summary>
+    public const string LiteralDocumentRelationshipTypeSigns = "http://hl7.org/fhir/document-relationship-type#signs";
 
     /// <summary>
     /// Literal for code: Summarizes
@@ -92,8 +112,36 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSummarizes = "summarizes";
 
     /// <summary>
+    /// Literal for code: DocumentRelationshipTypeSummarizes
+    /// </summary>
+    public const string LiteralDocumentRelationshipTypeSummarizes = "http://hl7.org/fhir/document-relationship-type#summarizes";
+
+    /// <summary>
     /// Literal for code: Transforms
     /// </summary>
     public const string LiteralTransforms = "transforms";
+
+    /// <summary>
+    /// Literal for code: DocumentRelationshipTypeTransforms
+    /// </summary>
+    public const string LiteralDocumentRelationshipTypeTransforms = "http://hl7.org/fhir/document-relationship-type#transforms";
+
+    /// <summary>
+    /// Dictionary for looking up DocumentRelationshipType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "appends", Appends }, 
+      { "http://hl7.org/fhir/document-relationship-type#appends", Appends }, 
+      { "incorporates", Incorporates }, 
+      { "http://hl7.org/fhir/document-relationship-type#incorporates", Incorporates }, 
+      { "replaces", Replaces }, 
+      { "http://hl7.org/fhir/document-relationship-type#replaces", Replaces }, 
+      { "signs", Signs }, 
+      { "http://hl7.org/fhir/document-relationship-type#signs", Signs }, 
+      { "summarizes", Summarizes }, 
+      { "http://hl7.org/fhir/document-relationship-type#summarizes", Summarizes }, 
+      { "transforms", Transforms }, 
+      { "http://hl7.org/fhir/document-relationship-type#transforms", Transforms }, 
+    };
   };
 }

@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCounts = "count";
 
     /// <summary>
+    /// Literal for code: VaccinationProtocolDoseStatusCounts
+    /// </summary>
+    public const string LiteralVaccinationProtocolDoseStatusCounts = "http://hl7.org/fhir/vaccination-protocol-dose-status#count";
+
+    /// <summary>
     /// Literal for code: DoesNotCount
     /// </summary>
     public const string LiteralDoesNotCount = "nocount";
+
+    /// <summary>
+    /// Literal for code: VaccinationProtocolDoseStatusDoesNotCount
+    /// </summary>
+    public const string LiteralVaccinationProtocolDoseStatusDoesNotCount = "http://hl7.org/fhir/vaccination-protocol-dose-status#nocount";
+
+    /// <summary>
+    /// Dictionary for looking up VaccinationProtocolDoseStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "count", Counts }, 
+      { "http://hl7.org/fhir/vaccination-protocol-dose-status#count", Counts }, 
+      { "nocount", DoesNotCount }, 
+      { "http://hl7.org/fhir/vaccination-protocol-dose-status#nocount", DoesNotCount }, 
+    };
   };
 }

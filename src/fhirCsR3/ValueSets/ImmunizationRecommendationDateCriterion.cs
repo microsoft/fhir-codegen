@@ -63,9 +63,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDue = "due";
 
     /// <summary>
+    /// Literal for code: ImmunizationRecommendationDateCriterionDue
+    /// </summary>
+    public const string LiteralImmunizationRecommendationDateCriterionDue = "http://hl7.org/fhir/immunization-recommendation-date-criterion#due";
+
+    /// <summary>
     /// Literal for code: EarliestDate
     /// </summary>
     public const string LiteralEarliestDate = "earliest";
+
+    /// <summary>
+    /// Literal for code: ImmunizationRecommendationDateCriterionEarliestDate
+    /// </summary>
+    public const string LiteralImmunizationRecommendationDateCriterionEarliestDate = "http://hl7.org/fhir/immunization-recommendation-date-criterion#earliest";
 
     /// <summary>
     /// Literal for code: Latest
@@ -73,13 +83,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLatest = "latest";
 
     /// <summary>
+    /// Literal for code: ImmunizationRecommendationDateCriterionLatest
+    /// </summary>
+    public const string LiteralImmunizationRecommendationDateCriterionLatest = "http://hl7.org/fhir/immunization-recommendation-date-criterion#latest";
+
+    /// <summary>
     /// Literal for code: PastDueDate
     /// </summary>
     public const string LiteralPastDueDate = "overdue";
 
     /// <summary>
+    /// Literal for code: ImmunizationRecommendationDateCriterionPastDueDate
+    /// </summary>
+    public const string LiteralImmunizationRecommendationDateCriterionPastDueDate = "http://hl7.org/fhir/immunization-recommendation-date-criterion#overdue";
+
+    /// <summary>
     /// Literal for code: Recommended
     /// </summary>
     public const string LiteralRecommended = "recommended";
+
+    /// <summary>
+    /// Literal for code: ImmunizationRecommendationDateCriterionRecommended
+    /// </summary>
+    public const string LiteralImmunizationRecommendationDateCriterionRecommended = "http://hl7.org/fhir/immunization-recommendation-date-criterion#recommended";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationRecommendationDateCriterion Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "due", Due }, 
+      { "http://hl7.org/fhir/immunization-recommendation-date-criterion#due", Due }, 
+      { "earliest", EarliestDate }, 
+      { "http://hl7.org/fhir/immunization-recommendation-date-criterion#earliest", EarliestDate }, 
+      { "latest", Latest }, 
+      { "http://hl7.org/fhir/immunization-recommendation-date-criterion#latest", Latest }, 
+      { "overdue", PastDueDate }, 
+      { "http://hl7.org/fhir/immunization-recommendation-date-criterion#overdue", PastDueDate }, 
+      { "recommended", Recommended }, 
+      { "http://hl7.org/fhir/immunization-recommendation-date-criterion#recommended", Recommended }, 
+    };
   };
 }

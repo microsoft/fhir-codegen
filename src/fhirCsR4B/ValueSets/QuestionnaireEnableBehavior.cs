@@ -36,8 +36,28 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAll = "all";
 
     /// <summary>
+    /// Literal for code: QuestionnaireEnableBehaviorAll
+    /// </summary>
+    public const string LiteralQuestionnaireEnableBehaviorAll = "http://hl7.org/fhir/questionnaire-enable-behavior#all";
+
+    /// <summary>
     /// Literal for code: Any
     /// </summary>
     public const string LiteralAny = "any";
+
+    /// <summary>
+    /// Literal for code: QuestionnaireEnableBehaviorAny
+    /// </summary>
+    public const string LiteralQuestionnaireEnableBehaviorAny = "http://hl7.org/fhir/questionnaire-enable-behavior#any";
+
+    /// <summary>
+    /// Dictionary for looking up QuestionnaireEnableBehavior Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "all", All }, 
+      { "http://hl7.org/fhir/questionnaire-enable-behavior#all", All }, 
+      { "any", Any }, 
+      { "http://hl7.org/fhir/questionnaire-enable-behavior#any", Any }, 
+    };
   };
 }

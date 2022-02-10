@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ConsentVerificationCodes
   {
     /// <summary>
-    /// 
+    /// FamilyVerified
     /// </summary>
     public static readonly Coding FamilyVerified = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/consentverification"
     };
     /// <summary>
-    /// 
+    /// Validation
     /// </summary>
     public static readonly Coding Validation = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFamilyVerified = "family";
 
     /// <summary>
+    /// Literal for code: ConsentverificationFamilyVerified
+    /// </summary>
+    public const string LiteralConsentverificationFamilyVerified = "http://terminology.hl7.org/CodeSystem/consentverification#family";
+
+    /// <summary>
     /// Literal for code: Validation
     /// </summary>
     public const string LiteralValidation = "validation";
+
+    /// <summary>
+    /// Literal for code: ConsentverificationValidation
+    /// </summary>
+    public const string LiteralConsentverificationValidation = "http://terminology.hl7.org/CodeSystem/consentverification#validation";
+
+    /// <summary>
+    /// Dictionary for looking up ConsentVerification Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "family", FamilyVerified }, 
+      { "http://terminology.hl7.org/CodeSystem/consentverification#family", FamilyVerified }, 
+      { "validation", Validation }, 
+      { "http://terminology.hl7.org/CodeSystem/consentverification#validation", Validation }, 
+    };
   };
 }

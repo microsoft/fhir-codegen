@@ -117,9 +117,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeftAgainstAdvice = "aadvice";
 
     /// <summary>
+    /// Literal for code: EncounterDischargeDispositionLeftAgainstAdvice
+    /// </summary>
+    public const string LiteralEncounterDischargeDispositionLeftAgainstAdvice = "http://terminology.hl7.org/CodeSystem/discharge-disposition#aadvice";
+
+    /// <summary>
     /// Literal for code: AlternativeHome
     /// </summary>
     public const string LiteralAlternativeHome = "alt-home";
+
+    /// <summary>
+    /// Literal for code: EncounterDischargeDispositionAlternativeHome
+    /// </summary>
+    public const string LiteralEncounterDischargeDispositionAlternativeHome = "http://terminology.hl7.org/CodeSystem/discharge-disposition#alt-home";
 
     /// <summary>
     /// Literal for code: Expired
@@ -127,9 +137,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExpired = "exp";
 
     /// <summary>
+    /// Literal for code: EncounterDischargeDispositionExpired
+    /// </summary>
+    public const string LiteralEncounterDischargeDispositionExpired = "http://terminology.hl7.org/CodeSystem/discharge-disposition#exp";
+
+    /// <summary>
     /// Literal for code: Home
     /// </summary>
     public const string LiteralHome = "home";
+
+    /// <summary>
+    /// Literal for code: EncounterDischargeDispositionHome
+    /// </summary>
+    public const string LiteralEncounterDischargeDispositionHome = "http://terminology.hl7.org/CodeSystem/discharge-disposition#home";
 
     /// <summary>
     /// Literal for code: Hospice
@@ -137,9 +157,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHospice = "hosp";
 
     /// <summary>
+    /// Literal for code: EncounterDischargeDispositionHospice
+    /// </summary>
+    public const string LiteralEncounterDischargeDispositionHospice = "http://terminology.hl7.org/CodeSystem/discharge-disposition#hosp";
+
+    /// <summary>
     /// Literal for code: LongTermCare
     /// </summary>
     public const string LiteralLongTermCare = "long";
+
+    /// <summary>
+    /// Literal for code: EncounterDischargeDispositionLongTermCare
+    /// </summary>
+    public const string LiteralEncounterDischargeDispositionLongTermCare = "http://terminology.hl7.org/CodeSystem/discharge-disposition#long";
 
     /// <summary>
     /// Literal for code: Other
@@ -147,9 +177,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOther = "oth";
 
     /// <summary>
+    /// Literal for code: EncounterDischargeDispositionOther
+    /// </summary>
+    public const string LiteralEncounterDischargeDispositionOther = "http://terminology.hl7.org/CodeSystem/discharge-disposition#oth";
+
+    /// <summary>
     /// Literal for code: OtherHealthcareFacility
     /// </summary>
     public const string LiteralOtherHealthcareFacility = "other-hcf";
+
+    /// <summary>
+    /// Literal for code: EncounterDischargeDispositionOtherHealthcareFacility
+    /// </summary>
+    public const string LiteralEncounterDischargeDispositionOtherHealthcareFacility = "http://terminology.hl7.org/CodeSystem/discharge-disposition#other-hcf";
 
     /// <summary>
     /// Literal for code: PsychiatricHospital
@@ -157,13 +197,56 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPsychiatricHospital = "psy";
 
     /// <summary>
+    /// Literal for code: EncounterDischargeDispositionPsychiatricHospital
+    /// </summary>
+    public const string LiteralEncounterDischargeDispositionPsychiatricHospital = "http://terminology.hl7.org/CodeSystem/discharge-disposition#psy";
+
+    /// <summary>
     /// Literal for code: Rehabilitation
     /// </summary>
     public const string LiteralRehabilitation = "rehab";
 
     /// <summary>
+    /// Literal for code: EncounterDischargeDispositionRehabilitation
+    /// </summary>
+    public const string LiteralEncounterDischargeDispositionRehabilitation = "http://terminology.hl7.org/CodeSystem/discharge-disposition#rehab";
+
+    /// <summary>
     /// Literal for code: SkilledNursingFacility
     /// </summary>
     public const string LiteralSkilledNursingFacility = "snf";
+
+    /// <summary>
+    /// Literal for code: EncounterDischargeDispositionSkilledNursingFacility
+    /// </summary>
+    public const string LiteralEncounterDischargeDispositionSkilledNursingFacility = "http://terminology.hl7.org/CodeSystem/discharge-disposition#snf";
+
+    /// <summary>
+    /// Dictionary for looking up EncounterDischargeDisposition Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "aadvice", LeftAgainstAdvice }, 
+      { "http://terminology.hl7.org/CodeSystem/discharge-disposition#aadvice", LeftAgainstAdvice }, 
+      { "alt-home", AlternativeHome }, 
+      { "http://terminology.hl7.org/CodeSystem/discharge-disposition#alt-home", AlternativeHome }, 
+      { "exp", Expired }, 
+      { "http://terminology.hl7.org/CodeSystem/discharge-disposition#exp", Expired }, 
+      { "home", Home }, 
+      { "http://terminology.hl7.org/CodeSystem/discharge-disposition#home", Home }, 
+      { "hosp", Hospice }, 
+      { "http://terminology.hl7.org/CodeSystem/discharge-disposition#hosp", Hospice }, 
+      { "long", LongTermCare }, 
+      { "http://terminology.hl7.org/CodeSystem/discharge-disposition#long", LongTermCare }, 
+      { "oth", Other }, 
+      { "http://terminology.hl7.org/CodeSystem/discharge-disposition#oth", Other }, 
+      { "other-hcf", OtherHealthcareFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/discharge-disposition#other-hcf", OtherHealthcareFacility }, 
+      { "psy", PsychiatricHospital }, 
+      { "http://terminology.hl7.org/CodeSystem/discharge-disposition#psy", PsychiatricHospital }, 
+      { "rehab", Rehabilitation }, 
+      { "http://terminology.hl7.org/CodeSystem/discharge-disposition#rehab", Rehabilitation }, 
+      { "snf", SkilledNursingFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/discharge-disposition#snf", SkilledNursingFacility }, 
+    };
   };
 }

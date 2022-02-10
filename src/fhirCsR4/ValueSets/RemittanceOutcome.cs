@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProcessingComplete = "complete";
 
     /// <summary>
+    /// Literal for code: RemittanceOutcomeProcessingComplete
+    /// </summary>
+    public const string LiteralRemittanceOutcomeProcessingComplete = "http://hl7.org/fhir/remittance-outcome#complete";
+
+    /// <summary>
     /// Literal for code: Error
     /// </summary>
     public const string LiteralError = "error";
+
+    /// <summary>
+    /// Literal for code: RemittanceOutcomeError
+    /// </summary>
+    public const string LiteralRemittanceOutcomeError = "http://hl7.org/fhir/remittance-outcome#error";
 
     /// <summary>
     /// Literal for code: PartialProcessing
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPartialProcessing = "partial";
 
     /// <summary>
+    /// Literal for code: RemittanceOutcomePartialProcessing
+    /// </summary>
+    public const string LiteralRemittanceOutcomePartialProcessing = "http://hl7.org/fhir/remittance-outcome#partial";
+
+    /// <summary>
     /// Literal for code: Queued
     /// </summary>
     public const string LiteralQueued = "queued";
+
+    /// <summary>
+    /// Literal for code: RemittanceOutcomeQueued
+    /// </summary>
+    public const string LiteralRemittanceOutcomeQueued = "http://hl7.org/fhir/remittance-outcome#queued";
+
+    /// <summary>
+    /// Dictionary for looking up RemittanceOutcome Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", ProcessingComplete }, 
+      { "http://hl7.org/fhir/remittance-outcome#complete", ProcessingComplete }, 
+      { "error", Error }, 
+      { "http://hl7.org/fhir/remittance-outcome#error", Error }, 
+      { "partial", PartialProcessing }, 
+      { "http://hl7.org/fhir/remittance-outcome#partial", PartialProcessing }, 
+      { "queued", Queued }, 
+      { "http://hl7.org/fhir/remittance-outcome#queued", Queued }, 
+    };
   };
 }

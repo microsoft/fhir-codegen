@@ -144,9 +144,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExpiredDrug = "expired-drug";
 
     /// <summary>
+    /// Literal for code: AdverseEventCategoryExpiredDrug
+    /// </summary>
+    public const string LiteralAdverseEventCategoryExpiredDrug = "http://terminology.hl7.org/CodeSystem/adverse-event-category#expired-drug";
+
+    /// <summary>
     /// Literal for code: IncorrectPrescribingInformation
     /// </summary>
     public const string LiteralIncorrectPrescribingInformation = "incorrect-prescribing-information";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCategoryIncorrectPrescribingInformation
+    /// </summary>
+    public const string LiteralAdverseEventCategoryIncorrectPrescribingInformation = "http://terminology.hl7.org/CodeSystem/adverse-event-category#incorrect-prescribing-information";
 
     /// <summary>
     /// Literal for code: MedicalDeviceUseError
@@ -154,9 +164,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMedicalDeviceUseError = "medical-device-use-error";
 
     /// <summary>
+    /// Literal for code: AdverseEventCategoryMedicalDeviceUseError
+    /// </summary>
+    public const string LiteralAdverseEventCategoryMedicalDeviceUseError = "http://terminology.hl7.org/CodeSystem/adverse-event-category#medical-device-use-error";
+
+    /// <summary>
     /// Literal for code: ProblemWithDifferentManufacturerOfSameMedicine
     /// </summary>
     public const string LiteralProblemWithDifferentManufacturerOfSameMedicine = "problem-different-manufacturer";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCategoryProblemWithDifferentManufacturerOfSameMedicine
+    /// </summary>
+    public const string LiteralAdverseEventCategoryProblemWithDifferentManufacturerOfSameMedicine = "http://terminology.hl7.org/CodeSystem/adverse-event-category#problem-different-manufacturer";
 
     /// <summary>
     /// Literal for code: ProductProblem
@@ -164,9 +184,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProductProblem = "product-problem";
 
     /// <summary>
+    /// Literal for code: AdverseEventCategoryProductProblem
+    /// </summary>
+    public const string LiteralAdverseEventCategoryProductProblem = "http://terminology.hl7.org/CodeSystem/adverse-event-category#product-problem";
+
+    /// <summary>
     /// Literal for code: ProductQuality
     /// </summary>
     public const string LiteralProductQuality = "product-quality";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCategoryProductQuality
+    /// </summary>
+    public const string LiteralAdverseEventCategoryProductQuality = "http://terminology.hl7.org/CodeSystem/adverse-event-category#product-quality";
 
     /// <summary>
     /// Literal for code: ProductUseError
@@ -174,9 +204,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProductUseError = "product-use-error";
 
     /// <summary>
+    /// Literal for code: AdverseEventCategoryProductUseError
+    /// </summary>
+    public const string LiteralAdverseEventCategoryProductUseError = "http://terminology.hl7.org/CodeSystem/adverse-event-category#product-use-error";
+
+    /// <summary>
     /// Literal for code: UnsafePhysicalEnvironment
     /// </summary>
     public const string LiteralUnsafePhysicalEnvironment = "unsafe-physical-environment";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCategoryUnsafePhysicalEnvironment
+    /// </summary>
+    public const string LiteralAdverseEventCategoryUnsafePhysicalEnvironment = "http://terminology.hl7.org/CodeSystem/adverse-event-category#unsafe-physical-environment";
 
     /// <summary>
     /// Literal for code: WrongDose
@@ -184,9 +224,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWrongDose = "wrong-dose";
 
     /// <summary>
+    /// Literal for code: AdverseEventCategoryWrongDose
+    /// </summary>
+    public const string LiteralAdverseEventCategoryWrongDose = "http://terminology.hl7.org/CodeSystem/adverse-event-category#wrong-dose";
+
+    /// <summary>
     /// Literal for code: WrongDuration
     /// </summary>
     public const string LiteralWrongDuration = "wrong-duration";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCategoryWrongDuration
+    /// </summary>
+    public const string LiteralAdverseEventCategoryWrongDuration = "http://terminology.hl7.org/CodeSystem/adverse-event-category#wrong-duration";
 
     /// <summary>
     /// Literal for code: WrongRate
@@ -194,9 +244,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWrongRate = "wrong-rate";
 
     /// <summary>
+    /// Literal for code: AdverseEventCategoryWrongRate
+    /// </summary>
+    public const string LiteralAdverseEventCategoryWrongRate = "http://terminology.hl7.org/CodeSystem/adverse-event-category#wrong-rate";
+
+    /// <summary>
     /// Literal for code: WrongRouteOfAdministration
     /// </summary>
     public const string LiteralWrongRouteOfAdministration = "wrong-route-of-administration";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCategoryWrongRouteOfAdministration
+    /// </summary>
+    public const string LiteralAdverseEventCategoryWrongRouteOfAdministration = "http://terminology.hl7.org/CodeSystem/adverse-event-category#wrong-route-of-administration";
 
     /// <summary>
     /// Literal for code: WrongTechnique
@@ -204,8 +264,52 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWrongTechnique = "wrong-technique";
 
     /// <summary>
+    /// Literal for code: AdverseEventCategoryWrongTechnique
+    /// </summary>
+    public const string LiteralAdverseEventCategoryWrongTechnique = "http://terminology.hl7.org/CodeSystem/adverse-event-category#wrong-technique";
+
+    /// <summary>
     /// Literal for code: WrongTime
     /// </summary>
     public const string LiteralWrongTime = "wrong-time";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCategoryWrongTime
+    /// </summary>
+    public const string LiteralAdverseEventCategoryWrongTime = "http://terminology.hl7.org/CodeSystem/adverse-event-category#wrong-time";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "expired-drug", ExpiredDrug }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#expired-drug", ExpiredDrug }, 
+      { "incorrect-prescribing-information", IncorrectPrescribingInformation }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#incorrect-prescribing-information", IncorrectPrescribingInformation }, 
+      { "medical-device-use-error", MedicalDeviceUseError }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#medical-device-use-error", MedicalDeviceUseError }, 
+      { "problem-different-manufacturer", ProblemWithDifferentManufacturerOfSameMedicine }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#problem-different-manufacturer", ProblemWithDifferentManufacturerOfSameMedicine }, 
+      { "product-problem", ProductProblem }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#product-problem", ProductProblem }, 
+      { "product-quality", ProductQuality }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#product-quality", ProductQuality }, 
+      { "product-use-error", ProductUseError }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#product-use-error", ProductUseError }, 
+      { "unsafe-physical-environment", UnsafePhysicalEnvironment }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#unsafe-physical-environment", UnsafePhysicalEnvironment }, 
+      { "wrong-dose", WrongDose }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#wrong-dose", WrongDose }, 
+      { "wrong-duration", WrongDuration }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#wrong-duration", WrongDuration }, 
+      { "wrong-rate", WrongRate }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#wrong-rate", WrongRate }, 
+      { "wrong-route-of-administration", WrongRouteOfAdministration }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#wrong-route-of-administration", WrongRouteOfAdministration }, 
+      { "wrong-technique", WrongTechnique }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#wrong-technique", WrongTechnique }, 
+      { "wrong-time", WrongTime }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-category#wrong-time", WrongTime }, 
+    };
   };
 }

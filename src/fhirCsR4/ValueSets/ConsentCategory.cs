@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class ConsentCategoryCodes
   {
     /// <summary>
-    /// 
+    /// Privacy policy acknowledgement Document
     /// </summary>
     public static readonly Coding PrivacyPolicyAcknowledgementDocument_ = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Privacy policy Organization Document 
     /// </summary>
     public static readonly Coding PrivacyPolicyOrganizationDocument_ = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Patient Consent 
     /// </summary>
     public static readonly Coding PatientConsent_ = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://loinc.org"
     };
     /// <summary>
-    /// 
+    /// Release of information consent 
     /// </summary>
     public static readonly Coding ReleaseOfInformationConsent_ = new Coding
     {
@@ -222,9 +222,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrivacyPolicyAcknowledgementDocument_ = "57016-8";
 
     /// <summary>
+    /// Literal for code: NONEPrivacyPolicyAcknowledgementDocument_
+    /// </summary>
+    public const string LiteralNONEPrivacyPolicyAcknowledgementDocument_ = "http://loinc.org#57016-8";
+
+    /// <summary>
     /// Literal for code: PrivacyPolicyOrganizationDocument_
     /// </summary>
     public const string LiteralPrivacyPolicyOrganizationDocument_ = "57017-6";
+
+    /// <summary>
+    /// Literal for code: NONEPrivacyPolicyOrganizationDocument_
+    /// </summary>
+    public const string LiteralNONEPrivacyPolicyOrganizationDocument_ = "http://loinc.org#57017-6";
 
     /// <summary>
     /// Literal for code: PatientConsent_
@@ -232,9 +242,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPatientConsent_ = "59284-0";
 
     /// <summary>
+    /// Literal for code: NONEPatientConsent_
+    /// </summary>
+    public const string LiteralNONEPatientConsent_ = "http://loinc.org#59284-0";
+
+    /// <summary>
     /// Literal for code: ReleaseOfInformationConsent_
     /// </summary>
     public const string LiteralReleaseOfInformationConsent_ = "64292-6";
+
+    /// <summary>
+    /// Literal for code: NONEReleaseOfInformationConsent_
+    /// </summary>
+    public const string LiteralNONEReleaseOfInformationConsent_ = "http://loinc.org#64292-6";
 
     /// <summary>
     /// Literal for code: AdvanceDirective_consent_category
@@ -242,9 +262,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdvanceDirective_consent_category = "acd";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryAdvanceDirective_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryAdvanceDirective_consent_category = "http://terminology.hl7.org/CodeSystem/consentcategorycodes#acd";
+
+    /// <summary>
     /// Literal for code: DoNotResuscitate_consent_category
     /// </summary>
     public const string LiteralDoNotResuscitate_consent_category = "dnr";
+
+    /// <summary>
+    /// Literal for code: ConsentCategoryDoNotResuscitate_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryDoNotResuscitate_consent_category = "http://terminology.hl7.org/CodeSystem/consentcategorycodes#dnr";
 
     /// <summary>
     /// Literal for code: EmergencyOnly_consent_category
@@ -252,9 +282,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmergencyOnly_consent_category = "emrgonly";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryEmergencyOnly_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryEmergencyOnly_consent_category = "http://terminology.hl7.org/CodeSystem/consentcategorycodes#emrgonly";
+
+    /// <summary>
     /// Literal for code: HealthCareDirective_consent_category
     /// </summary>
     public const string LiteralHealthCareDirective_consent_category = "hcd";
+
+    /// <summary>
+    /// Literal for code: ConsentCategoryHealthCareDirective_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryHealthCareDirective_consent_category = "http://terminology.hl7.org/CodeSystem/consentcategorycodes#hcd";
 
     /// <summary>
     /// Literal for code: InformationCollection_v3_ActCode
@@ -262,9 +302,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInformationCollection_v3_ActCode = "ICOL";
 
     /// <summary>
+    /// Literal for code: V3ActCodeInformationCollection_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeInformationCollection_v3_ActCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ICOL";
+
+    /// <summary>
     /// Literal for code: InformationDisclosure_v3_ActCode
     /// </summary>
     public const string LiteralInformationDisclosure_v3_ActCode = "IDSCL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeInformationDisclosure_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeInformationDisclosure_v3_ActCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#IDSCL";
 
     /// <summary>
     /// Literal for code: InformationAccess_v3_ActCode
@@ -272,9 +322,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInformationAccess_v3_ActCode = "INFA";
 
     /// <summary>
+    /// Literal for code: V3ActCodeInformationAccess_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeInformationAccess_v3_ActCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#INFA";
+
+    /// <summary>
     /// Literal for code: AccessOnly_v3_ActCode
     /// </summary>
     public const string LiteralAccessOnly_v3_ActCode = "INFAO";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeAccessOnly_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAccessOnly_v3_ActCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#INFAO";
 
     /// <summary>
     /// Literal for code: AccessAndSaveOnly_v3_ActCode
@@ -282,9 +342,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAccessAndSaveOnly_v3_ActCode = "INFASO";
 
     /// <summary>
+    /// Literal for code: V3ActCodeAccessAndSaveOnly_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeAccessAndSaveOnly_v3_ActCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#INFASO";
+
+    /// <summary>
     /// Literal for code: InformationRedisclosure_v3_ActCode
     /// </summary>
     public const string LiteralInformationRedisclosure_v3_ActCode = "IRDSCL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeInformationRedisclosure_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeInformationRedisclosure_v3_ActCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#IRDSCL";
 
     /// <summary>
     /// Literal for code: NoticeOfPrivacyPractices_consent_category
@@ -292,9 +362,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNoticeOfPrivacyPractices_consent_category = "npp";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryNoticeOfPrivacyPractices_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryNoticeOfPrivacyPractices_consent_category = "http://terminology.hl7.org/CodeSystem/consentcategorycodes#npp";
+
+    /// <summary>
     /// Literal for code: POLST_consent_category
     /// </summary>
     public const string LiteralPOLST_consent_category = "polst";
+
+    /// <summary>
+    /// Literal for code: ConsentCategoryPOLST_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryPOLST_consent_category = "http://terminology.hl7.org/CodeSystem/consentcategorycodes#polst";
 
     /// <summary>
     /// Literal for code: ResearchInformationAccess_consent_category
@@ -302,9 +382,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralResearchInformationAccess_consent_category = "research";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryResearchInformationAccess_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryResearchInformationAccess_consent_category = "http://terminology.hl7.org/CodeSystem/consentcategorycodes#research";
+
+    /// <summary>
     /// Literal for code: ResearchInformationAccess_v3_ActCode
     /// </summary>
     public const string LiteralResearchInformationAccess_v3_ActCode = "RESEARCH";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeResearchInformationAccess_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeResearchInformationAccess_v3_ActCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RESEARCH";
 
     /// <summary>
     /// Literal for code: DeIdentifiedInformationAccess_consent_category
@@ -312,9 +402,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeIdentifiedInformationAccess_consent_category = "rsdid";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryDeIdentifiedInformationAccess_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryDeIdentifiedInformationAccess_consent_category = "http://terminology.hl7.org/CodeSystem/consentcategorycodes#rsdid";
+
+    /// <summary>
     /// Literal for code: DeIdentifiedInformationAccess_v3_ActCode
     /// </summary>
     public const string LiteralDeIdentifiedInformationAccess_v3_ActCode = "RSDID";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDeIdentifiedInformationAccess_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeDeIdentifiedInformationAccess_v3_ActCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RSDID";
 
     /// <summary>
     /// Literal for code: ReIdentifiableInformationAccess_consent_category
@@ -322,8 +422,68 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReIdentifiableInformationAccess_consent_category = "rsreid";
 
     /// <summary>
+    /// Literal for code: ConsentCategoryReIdentifiableInformationAccess_consent_category
+    /// </summary>
+    public const string LiteralConsentCategoryReIdentifiableInformationAccess_consent_category = "http://terminology.hl7.org/CodeSystem/consentcategorycodes#rsreid";
+
+    /// <summary>
     /// Literal for code: ReIdentifiableInformationAccess_v3_ActCode
     /// </summary>
     public const string LiteralReIdentifiableInformationAccess_v3_ActCode = "RSREID";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeReIdentifiableInformationAccess_v3_ActCode
+    /// </summary>
+    public const string LiteralV3ActCodeReIdentifiableInformationAccess_v3_ActCode = "http://terminology.hl7.org/CodeSystem/v3-ActCode#RSREID";
+
+    /// <summary>
+    /// Dictionary for looking up ConsentCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "57016-8", PrivacyPolicyAcknowledgementDocument_ }, 
+      { "http://loinc.org#57016-8", PrivacyPolicyAcknowledgementDocument_ }, 
+      { "57017-6", PrivacyPolicyOrganizationDocument_ }, 
+      { "http://loinc.org#57017-6", PrivacyPolicyOrganizationDocument_ }, 
+      { "59284-0", PatientConsent_ }, 
+      { "http://loinc.org#59284-0", PatientConsent_ }, 
+      { "64292-6", ReleaseOfInformationConsent_ }, 
+      { "http://loinc.org#64292-6", ReleaseOfInformationConsent_ }, 
+      { "acd", AdvanceDirective_consent_category }, 
+      { "http://terminology.hl7.org/CodeSystem/consentcategorycodes#acd", AdvanceDirective_consent_category }, 
+      { "dnr", DoNotResuscitate_consent_category }, 
+      { "http://terminology.hl7.org/CodeSystem/consentcategorycodes#dnr", DoNotResuscitate_consent_category }, 
+      { "emrgonly", EmergencyOnly_consent_category }, 
+      { "http://terminology.hl7.org/CodeSystem/consentcategorycodes#emrgonly", EmergencyOnly_consent_category }, 
+      { "hcd", HealthCareDirective_consent_category }, 
+      { "http://terminology.hl7.org/CodeSystem/consentcategorycodes#hcd", HealthCareDirective_consent_category }, 
+      { "ICOL", InformationCollection_v3_ActCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ICOL", InformationCollection_v3_ActCode }, 
+      { "IDSCL", InformationDisclosure_v3_ActCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#IDSCL", InformationDisclosure_v3_ActCode }, 
+      { "INFA", InformationAccess_v3_ActCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#INFA", InformationAccess_v3_ActCode }, 
+      { "INFAO", AccessOnly_v3_ActCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#INFAO", AccessOnly_v3_ActCode }, 
+      { "INFASO", AccessAndSaveOnly_v3_ActCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#INFASO", AccessAndSaveOnly_v3_ActCode }, 
+      { "IRDSCL", InformationRedisclosure_v3_ActCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#IRDSCL", InformationRedisclosure_v3_ActCode }, 
+      { "npp", NoticeOfPrivacyPractices_consent_category }, 
+      { "http://terminology.hl7.org/CodeSystem/consentcategorycodes#npp", NoticeOfPrivacyPractices_consent_category }, 
+      { "polst", POLST_consent_category }, 
+      { "http://terminology.hl7.org/CodeSystem/consentcategorycodes#polst", POLST_consent_category }, 
+      { "research", ResearchInformationAccess_consent_category }, 
+      { "http://terminology.hl7.org/CodeSystem/consentcategorycodes#research", ResearchInformationAccess_consent_category }, 
+      { "RESEARCH", ResearchInformationAccess_v3_ActCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RESEARCH", ResearchInformationAccess_v3_ActCode }, 
+      { "rsdid", DeIdentifiedInformationAccess_consent_category }, 
+      { "http://terminology.hl7.org/CodeSystem/consentcategorycodes#rsdid", DeIdentifiedInformationAccess_consent_category }, 
+      { "RSDID", DeIdentifiedInformationAccess_v3_ActCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RSDID", DeIdentifiedInformationAccess_v3_ActCode }, 
+      { "rsreid", ReIdentifiableInformationAccess_consent_category }, 
+      { "http://terminology.hl7.org/CodeSystem/consentcategorycodes#rsreid", ReIdentifiableInformationAccess_consent_category }, 
+      { "RSREID", ReIdentifiableInformationAccess_v3_ActCode }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#RSREID", ReIdentifiableInformationAccess_v3_ActCode }, 
+    };
   };
 }

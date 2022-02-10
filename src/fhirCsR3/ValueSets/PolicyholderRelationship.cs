@@ -72,9 +72,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChild = "child";
 
     /// <summary>
+    /// Literal for code: PolicyholderRelationshipChild
+    /// </summary>
+    public const string LiteralPolicyholderRelationshipChild = "http://hl7.org/fhir/policyholder-relationship#child";
+
+    /// <summary>
     /// Literal for code: CommonLawSpouse
     /// </summary>
     public const string LiteralCommonLawSpouse = "common";
+
+    /// <summary>
+    /// Literal for code: PolicyholderRelationshipCommonLawSpouse
+    /// </summary>
+    public const string LiteralPolicyholderRelationshipCommonLawSpouse = "http://hl7.org/fhir/policyholder-relationship#common";
 
     /// <summary>
     /// Literal for code: Other
@@ -82,9 +92,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOther = "other";
 
     /// <summary>
+    /// Literal for code: PolicyholderRelationshipOther
+    /// </summary>
+    public const string LiteralPolicyholderRelationshipOther = "http://hl7.org/fhir/policyholder-relationship#other";
+
+    /// <summary>
     /// Literal for code: Parent
     /// </summary>
     public const string LiteralParent = "parent";
+
+    /// <summary>
+    /// Literal for code: PolicyholderRelationshipParent
+    /// </summary>
+    public const string LiteralPolicyholderRelationshipParent = "http://hl7.org/fhir/policyholder-relationship#parent";
 
     /// <summary>
     /// Literal for code: Self
@@ -92,8 +112,36 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSelf = "self";
 
     /// <summary>
+    /// Literal for code: PolicyholderRelationshipSelf
+    /// </summary>
+    public const string LiteralPolicyholderRelationshipSelf = "http://hl7.org/fhir/policyholder-relationship#self";
+
+    /// <summary>
     /// Literal for code: Spouse
     /// </summary>
     public const string LiteralSpouse = "spouse";
+
+    /// <summary>
+    /// Literal for code: PolicyholderRelationshipSpouse
+    /// </summary>
+    public const string LiteralPolicyholderRelationshipSpouse = "http://hl7.org/fhir/policyholder-relationship#spouse";
+
+    /// <summary>
+    /// Dictionary for looking up PolicyholderRelationship Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "child", Child }, 
+      { "http://hl7.org/fhir/policyholder-relationship#child", Child }, 
+      { "common", CommonLawSpouse }, 
+      { "http://hl7.org/fhir/policyholder-relationship#common", CommonLawSpouse }, 
+      { "other", Other }, 
+      { "http://hl7.org/fhir/policyholder-relationship#other", Other }, 
+      { "parent", Parent }, 
+      { "http://hl7.org/fhir/policyholder-relationship#parent", Parent }, 
+      { "self", Self }, 
+      { "http://hl7.org/fhir/policyholder-relationship#self", Self }, 
+      { "spouse", Spouse }, 
+      { "http://hl7.org/fhir/policyholder-relationship#spouse", Spouse }, 
+    };
   };
 }

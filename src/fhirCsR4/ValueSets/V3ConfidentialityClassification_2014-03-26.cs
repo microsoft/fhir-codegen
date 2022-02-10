@@ -123,9 +123,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLow = "L";
 
     /// <summary>
+    /// Literal for code: V3ConfidentialityLow
+    /// </summary>
+    public const string LiteralV3ConfidentialityLow = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#L";
+
+    /// <summary>
     /// Literal for code: Moderate
     /// </summary>
     public const string LiteralModerate = "M";
+
+    /// <summary>
+    /// Literal for code: V3ConfidentialityModerate
+    /// </summary>
+    public const string LiteralV3ConfidentialityModerate = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#M";
 
     /// <summary>
     /// Literal for code: Normal
@@ -133,9 +143,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNormal = "N";
 
     /// <summary>
+    /// Literal for code: V3ConfidentialityNormal
+    /// </summary>
+    public const string LiteralV3ConfidentialityNormal = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#N";
+
+    /// <summary>
     /// Literal for code: Restricted
     /// </summary>
     public const string LiteralRestricted = "R";
+
+    /// <summary>
+    /// Literal for code: V3ConfidentialityRestricted
+    /// </summary>
+    public const string LiteralV3ConfidentialityRestricted = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#R";
 
     /// <summary>
     /// Literal for code: Unrestricted
@@ -143,8 +163,36 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnrestricted = "U";
 
     /// <summary>
+    /// Literal for code: V3ConfidentialityUnrestricted
+    /// </summary>
+    public const string LiteralV3ConfidentialityUnrestricted = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#U";
+
+    /// <summary>
     /// Literal for code: VeryRestricted
     /// </summary>
     public const string LiteralVeryRestricted = "V";
+
+    /// <summary>
+    /// Literal for code: V3ConfidentialityVeryRestricted
+    /// </summary>
+    public const string LiteralV3ConfidentialityVeryRestricted = "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#V";
+
+    /// <summary>
+    /// Dictionary for looking up V3ConfidentialityClassification Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "L", Low }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#L", Low }, 
+      { "M", Moderate }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#M", Moderate }, 
+      { "N", Normal }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#N", Normal }, 
+      { "R", Restricted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#R", Restricted }, 
+      { "U", Unrestricted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#U", Unrestricted }, 
+      { "V", VeryRestricted }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Confidentiality#V", VeryRestricted }, 
+    };
   };
 }

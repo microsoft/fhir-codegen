@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class AdministrationMethodCodesCodes
   {
     /// <summary>
-    /// 
+    /// Apply
     /// </summary>
     public static readonly Coding Apply = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Administer
     /// </summary>
     public static readonly Coding Administer = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Use
     /// </summary>
     public static readonly Coding Use = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Give
     /// </summary>
     public static readonly Coding Give = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Take
     /// </summary>
     public static readonly Coding Take = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chew
     /// </summary>
     public static readonly Coding Chew = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suck
     /// </summary>
     public static readonly Coding Suck = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// At - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding AtDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding DosingInstructionImperativeQualifierValue = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Only - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding OnlyDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Constant - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding ConstantDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sniff - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding SniffDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subtract - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding SubtractDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// As - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding AsDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Or - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding OrDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Finish - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding FinishDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shampoo - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding ShampooDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Push - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding PushDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Until gone - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding UntilGoneDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Upon - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding UponDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Per - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding PerDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sparingly - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding SparinglyDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Call - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding CallDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// When - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding WhenDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// To - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding ToDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Place - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding PlaceDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Then - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding ThenDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inhale - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding InhaleDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hold - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding HoldDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multiply - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding MultiplyDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insert - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding InsertDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Discontinue - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding DiscontinueDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swish and swallow - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding SwishAndSwallowDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dilute - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding DiluteDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// With - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding WithDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Then discontinue - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding ThenDiscontinueDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swallow - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding SwallowDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Instill - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding InstillDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Until - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding UntilDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Every - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding EveryDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dissolve - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding DissolveDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Before - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding BeforeDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Now - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding NowDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Follow directions (qualifier value)
     /// </summary>
     public static readonly Coding FollowDirectionsQualifierValue = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// If - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding IfDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swish - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding SwishDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// And - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding AndDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Twice - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding TwiceDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Follow - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding FollowDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Until finished - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding UntilFinishedDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// During - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding DuringDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Divide - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding DivideDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding DosingInstructionFragmentQualifierValue = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Add - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding AddDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Once - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding OnceDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inject - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding InjectDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wash - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding WashDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sprinkle - dosing instruction imperative (qualifier value)
     /// </summary>
     public static readonly Coding SprinkleDosingInstructionImperativeQualifierValue = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Then stop - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding ThenStopDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medication container empty (qualifier value)
     /// </summary>
     public static readonly Coding MedicationContainerEmptyQualifierValue = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thoroughly - dosing instruction fragment
     /// </summary>
     public static readonly Coding ThoroughlyDosingInstructionFragment = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Completely - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding CompletelyDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deeply - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding DeeplyDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Repeatedly - dosing instruction fragment (qualifier value)
     /// </summary>
     public static readonly Coding RepeatedlyDosingInstructionFragmentQualifierValue = new Coding
     {
@@ -594,9 +594,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralApply = "417924000";
 
     /// <summary>
+    /// Literal for code: NONEApply
+    /// </summary>
+    public const string LiteralNONEApply = "http://snomed.info/sct#417924000";
+
+    /// <summary>
     /// Literal for code: Administer
     /// </summary>
     public const string LiteralAdminister = "418283001";
+
+    /// <summary>
+    /// Literal for code: NONEAdminister
+    /// </summary>
+    public const string LiteralNONEAdminister = "http://snomed.info/sct#418283001";
 
     /// <summary>
     /// Literal for code: Use
@@ -604,9 +614,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUse = "419385000";
 
     /// <summary>
+    /// Literal for code: NONEUse
+    /// </summary>
+    public const string LiteralNONEUse = "http://snomed.info/sct#419385000";
+
+    /// <summary>
     /// Literal for code: Give
     /// </summary>
     public const string LiteralGive = "419582001";
+
+    /// <summary>
+    /// Literal for code: NONEGive
+    /// </summary>
+    public const string LiteralNONEGive = "http://snomed.info/sct#419582001";
 
     /// <summary>
     /// Literal for code: Take
@@ -614,9 +634,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTake = "419652001";
 
     /// <summary>
+    /// Literal for code: NONETake
+    /// </summary>
+    public const string LiteralNONETake = "http://snomed.info/sct#419652001";
+
+    /// <summary>
     /// Literal for code: Chew
     /// </summary>
     public const string LiteralChew = "419747000";
+
+    /// <summary>
+    /// Literal for code: NONEChew
+    /// </summary>
+    public const string LiteralNONEChew = "http://snomed.info/sct#419747000";
 
     /// <summary>
     /// Literal for code: Suck
@@ -624,9 +654,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSuck = "420045007";
 
     /// <summary>
+    /// Literal for code: NONESuck
+    /// </summary>
+    public const string LiteralNONESuck = "http://snomed.info/sct#420045007";
+
+    /// <summary>
     /// Literal for code: AtDosingInstructionFragmentQualifierValue
     /// </summary>
     public const string LiteralAtDosingInstructionFragmentQualifierValue = "420246001";
+
+    /// <summary>
+    /// Literal for code: NONEAtDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEAtDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#420246001";
 
     /// <summary>
     /// Literal for code: DosingInstructionImperativeQualifierValue
@@ -634,9 +674,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDosingInstructionImperativeQualifierValue = "420247005";
 
     /// <summary>
+    /// Literal for code: NONEDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONEDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#420247005";
+
+    /// <summary>
     /// Literal for code: OnlyDosingInstructionFragmentQualifierValue
     /// </summary>
     public const string LiteralOnlyDosingInstructionFragmentQualifierValue = "420295001";
+
+    /// <summary>
+    /// Literal for code: NONEOnlyDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEOnlyDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#420295001";
 
     /// <summary>
     /// Literal for code: ConstantDosingInstructionFragmentQualifierValue
@@ -644,9 +694,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralConstantDosingInstructionFragmentQualifierValue = "420341009";
 
     /// <summary>
+    /// Literal for code: NONEConstantDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEConstantDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#420341009";
+
+    /// <summary>
     /// Literal for code: SniffDosingInstructionImperativeQualifierValue
     /// </summary>
     public const string LiteralSniffDosingInstructionImperativeQualifierValue = "420360002";
+
+    /// <summary>
+    /// Literal for code: NONESniffDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONESniffDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#420360002";
 
     /// <summary>
     /// Literal for code: SubtractDosingInstructionFragmentQualifierValue
@@ -654,9 +714,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSubtractDosingInstructionFragmentQualifierValue = "420484009";
 
     /// <summary>
+    /// Literal for code: NONESubtractDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONESubtractDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#420484009";
+
+    /// <summary>
     /// Literal for code: AsDosingInstructionFragmentQualifierValue
     /// </summary>
     public const string LiteralAsDosingInstructionFragmentQualifierValue = "420503003";
+
+    /// <summary>
+    /// Literal for code: NONEAsDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEAsDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#420503003";
 
     /// <summary>
     /// Literal for code: OrDosingInstructionFragmentQualifierValue
@@ -664,9 +734,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOrDosingInstructionFragmentQualifierValue = "420561004";
 
     /// <summary>
+    /// Literal for code: NONEOrDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEOrDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#420561004";
+
+    /// <summary>
     /// Literal for code: FinishDosingInstructionImperativeQualifierValue
     /// </summary>
     public const string LiteralFinishDosingInstructionImperativeQualifierValue = "420604000";
+
+    /// <summary>
+    /// Literal for code: NONEFinishDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONEFinishDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#420604000";
 
     /// <summary>
     /// Literal for code: ShampooDosingInstructionImperativeQualifierValue
@@ -674,9 +754,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralShampooDosingInstructionImperativeQualifierValue = "420606003";
 
     /// <summary>
+    /// Literal for code: NONEShampooDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONEShampooDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#420606003";
+
+    /// <summary>
     /// Literal for code: PushDosingInstructionImperativeQualifierValue
     /// </summary>
     public const string LiteralPushDosingInstructionImperativeQualifierValue = "420620005";
+
+    /// <summary>
+    /// Literal for code: NONEPushDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONEPushDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#420620005";
 
     /// <summary>
     /// Literal for code: UntilGoneDosingInstructionFragmentQualifierValue
@@ -684,9 +774,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUntilGoneDosingInstructionFragmentQualifierValue = "420652005";
 
     /// <summary>
+    /// Literal for code: NONEUntilGoneDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEUntilGoneDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#420652005";
+
+    /// <summary>
     /// Literal for code: UponDosingInstructionFragmentQualifierValue
     /// </summary>
     public const string LiteralUponDosingInstructionFragmentQualifierValue = "420771004";
+
+    /// <summary>
+    /// Literal for code: NONEUponDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEUponDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#420771004";
 
     /// <summary>
     /// Literal for code: PerDosingInstructionFragmentQualifierValue
@@ -694,9 +794,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPerDosingInstructionFragmentQualifierValue = "420806001";
 
     /// <summary>
+    /// Literal for code: NONEPerDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEPerDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#420806001";
+
+    /// <summary>
     /// Literal for code: SparinglyDosingInstructionFragmentQualifierValue
     /// </summary>
     public const string LiteralSparinglyDosingInstructionFragmentQualifierValue = "420883007";
+
+    /// <summary>
+    /// Literal for code: NONESparinglyDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONESparinglyDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#420883007";
 
     /// <summary>
     /// Literal for code: CallDosingInstructionFragmentQualifierValue
@@ -704,9 +814,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCallDosingInstructionFragmentQualifierValue = "420942008";
 
     /// <summary>
+    /// Literal for code: NONECallDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONECallDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#420942008";
+
+    /// <summary>
     /// Literal for code: WhenDosingInstructionFragmentQualifierValue
     /// </summary>
     public const string LiteralWhenDosingInstructionFragmentQualifierValue = "420974001";
+
+    /// <summary>
+    /// Literal for code: NONEWhenDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEWhenDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#420974001";
 
     /// <summary>
     /// Literal for code: ToDosingInstructionFragmentQualifierValue
@@ -714,9 +834,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralToDosingInstructionFragmentQualifierValue = "421035004";
 
     /// <summary>
+    /// Literal for code: NONEToDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEToDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#421035004";
+
+    /// <summary>
     /// Literal for code: PlaceDosingInstructionImperativeQualifierValue
     /// </summary>
     public const string LiteralPlaceDosingInstructionImperativeQualifierValue = "421066005";
+
+    /// <summary>
+    /// Literal for code: NONEPlaceDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONEPlaceDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#421066005";
 
     /// <summary>
     /// Literal for code: ThenDosingInstructionFragmentQualifierValue
@@ -724,9 +854,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralThenDosingInstructionFragmentQualifierValue = "421067001";
 
     /// <summary>
+    /// Literal for code: NONEThenDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEThenDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#421067001";
+
+    /// <summary>
     /// Literal for code: InhaleDosingInstructionImperativeQualifierValue
     /// </summary>
     public const string LiteralInhaleDosingInstructionImperativeQualifierValue = "421134003";
+
+    /// <summary>
+    /// Literal for code: NONEInhaleDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONEInhaleDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#421134003";
 
     /// <summary>
     /// Literal for code: HoldDosingInstructionFragmentQualifierValue
@@ -734,9 +874,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHoldDosingInstructionFragmentQualifierValue = "421139008";
 
     /// <summary>
+    /// Literal for code: NONEHoldDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEHoldDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#421139008";
+
+    /// <summary>
     /// Literal for code: MultiplyDosingInstructionFragmentQualifierValue
     /// </summary>
     public const string LiteralMultiplyDosingInstructionFragmentQualifierValue = "421206002";
+
+    /// <summary>
+    /// Literal for code: NONEMultiplyDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEMultiplyDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#421206002";
 
     /// <summary>
     /// Literal for code: InsertDosingInstructionImperativeQualifierValue
@@ -744,9 +894,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInsertDosingInstructionImperativeQualifierValue = "421257003";
 
     /// <summary>
+    /// Literal for code: NONEInsertDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONEInsertDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#421257003";
+
+    /// <summary>
     /// Literal for code: DiscontinueDosingInstructionImperativeQualifierValue
     /// </summary>
     public const string LiteralDiscontinueDosingInstructionImperativeQualifierValue = "421286000";
+
+    /// <summary>
+    /// Literal for code: NONEDiscontinueDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONEDiscontinueDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#421286000";
 
     /// <summary>
     /// Literal for code: SwishAndSwallowDosingInstructionImperativeQualifierValue
@@ -754,9 +914,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSwishAndSwallowDosingInstructionImperativeQualifierValue = "421298005";
 
     /// <summary>
+    /// Literal for code: NONESwishAndSwallowDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONESwishAndSwallowDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#421298005";
+
+    /// <summary>
     /// Literal for code: DiluteDosingInstructionImperativeQualifierValue
     /// </summary>
     public const string LiteralDiluteDosingInstructionImperativeQualifierValue = "421399004";
+
+    /// <summary>
+    /// Literal for code: NONEDiluteDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONEDiluteDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#421399004";
 
     /// <summary>
     /// Literal for code: WithDosingInstructionFragmentQualifierValue
@@ -764,9 +934,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWithDosingInstructionFragmentQualifierValue = "421463005";
 
     /// <summary>
+    /// Literal for code: NONEWithDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEWithDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#421463005";
+
+    /// <summary>
     /// Literal for code: ThenDiscontinueDosingInstructionFragmentQualifierValue
     /// </summary>
     public const string LiteralThenDiscontinueDosingInstructionFragmentQualifierValue = "421484000";
+
+    /// <summary>
+    /// Literal for code: NONEThenDiscontinueDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEThenDiscontinueDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#421484000";
 
     /// <summary>
     /// Literal for code: SwallowDosingInstructionImperativeQualifierValue
@@ -774,9 +954,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSwallowDosingInstructionImperativeQualifierValue = "421521009";
 
     /// <summary>
+    /// Literal for code: NONESwallowDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONESwallowDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#421521009";
+
+    /// <summary>
     /// Literal for code: InstillDosingInstructionImperativeQualifierValue
     /// </summary>
     public const string LiteralInstillDosingInstructionImperativeQualifierValue = "421538008";
+
+    /// <summary>
+    /// Literal for code: NONEInstillDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONEInstillDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#421538008";
 
     /// <summary>
     /// Literal for code: UntilDosingInstructionFragmentQualifierValue
@@ -784,9 +974,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUntilDosingInstructionFragmentQualifierValue = "421548005";
 
     /// <summary>
+    /// Literal for code: NONEUntilDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEUntilDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#421548005";
+
+    /// <summary>
     /// Literal for code: EveryDosingInstructionFragmentQualifierValue
     /// </summary>
     public const string LiteralEveryDosingInstructionFragmentQualifierValue = "421612001";
+
+    /// <summary>
+    /// Literal for code: NONEEveryDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEEveryDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#421612001";
 
     /// <summary>
     /// Literal for code: DissolveDosingInstructionImperativeQualifierValue
@@ -794,9 +994,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDissolveDosingInstructionImperativeQualifierValue = "421682005";
 
     /// <summary>
+    /// Literal for code: NONEDissolveDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONEDissolveDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#421682005";
+
+    /// <summary>
     /// Literal for code: BeforeDosingInstructionFragmentQualifierValue
     /// </summary>
     public const string LiteralBeforeDosingInstructionFragmentQualifierValue = "421718005";
+
+    /// <summary>
+    /// Literal for code: NONEBeforeDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEBeforeDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#421718005";
 
     /// <summary>
     /// Literal for code: NowDosingInstructionFragmentQualifierValue
@@ -804,9 +1014,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNowDosingInstructionFragmentQualifierValue = "421723005";
 
     /// <summary>
+    /// Literal for code: NONENowDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONENowDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#421723005";
+
+    /// <summary>
     /// Literal for code: FollowDirectionsQualifierValue
     /// </summary>
     public const string LiteralFollowDirectionsQualifierValue = "421769005";
+
+    /// <summary>
+    /// Literal for code: NONEFollowDirectionsQualifierValue
+    /// </summary>
+    public const string LiteralNONEFollowDirectionsQualifierValue = "http://snomed.info/sct#421769005";
 
     /// <summary>
     /// Literal for code: IfDosingInstructionFragmentQualifierValue
@@ -814,9 +1034,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIfDosingInstructionFragmentQualifierValue = "421803000";
 
     /// <summary>
+    /// Literal for code: NONEIfDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEIfDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#421803000";
+
+    /// <summary>
     /// Literal for code: SwishDosingInstructionImperativeQualifierValue
     /// </summary>
     public const string LiteralSwishDosingInstructionImperativeQualifierValue = "421805007";
+
+    /// <summary>
+    /// Literal for code: NONESwishDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONESwishDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#421805007";
 
     /// <summary>
     /// Literal for code: AndDosingInstructionFragmentQualifierValue
@@ -824,9 +1054,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAndDosingInstructionFragmentQualifierValue = "421829000";
 
     /// <summary>
+    /// Literal for code: NONEAndDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEAndDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#421829000";
+
+    /// <summary>
     /// Literal for code: TwiceDosingInstructionFragmentQualifierValue
     /// </summary>
     public const string LiteralTwiceDosingInstructionFragmentQualifierValue = "421832002";
+
+    /// <summary>
+    /// Literal for code: NONETwiceDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONETwiceDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#421832002";
 
     /// <summary>
     /// Literal for code: FollowDosingInstructionImperativeQualifierValue
@@ -834,9 +1074,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFollowDosingInstructionImperativeQualifierValue = "421939007";
 
     /// <summary>
+    /// Literal for code: NONEFollowDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONEFollowDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#421939007";
+
+    /// <summary>
     /// Literal for code: UntilFinishedDosingInstructionFragmentQualifierValue
     /// </summary>
     public const string LiteralUntilFinishedDosingInstructionFragmentQualifierValue = "421984009";
+
+    /// <summary>
+    /// Literal for code: NONEUntilFinishedDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEUntilFinishedDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#421984009";
 
     /// <summary>
     /// Literal for code: DuringDosingInstructionFragmentQualifierValue
@@ -844,9 +1094,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDuringDosingInstructionFragmentQualifierValue = "421994004";
 
     /// <summary>
+    /// Literal for code: NONEDuringDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEDuringDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#421994004";
+
+    /// <summary>
     /// Literal for code: DivideDosingInstructionFragmentQualifierValue
     /// </summary>
     public const string LiteralDivideDosingInstructionFragmentQualifierValue = "422033008";
+
+    /// <summary>
+    /// Literal for code: NONEDivideDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEDivideDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#422033008";
 
     /// <summary>
     /// Literal for code: DosingInstructionFragmentQualifierValue
@@ -854,9 +1114,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDosingInstructionFragmentQualifierValue = "422096002";
 
     /// <summary>
+    /// Literal for code: NONEDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#422096002";
+
+    /// <summary>
     /// Literal for code: AddDosingInstructionFragmentQualifierValue
     /// </summary>
     public const string LiteralAddDosingInstructionFragmentQualifierValue = "422106007";
+
+    /// <summary>
+    /// Literal for code: NONEAddDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEAddDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#422106007";
 
     /// <summary>
     /// Literal for code: OnceDosingInstructionFragmentQualifierValue
@@ -864,9 +1134,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOnceDosingInstructionFragmentQualifierValue = "422114001";
 
     /// <summary>
+    /// Literal for code: NONEOnceDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEOnceDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#422114001";
+
+    /// <summary>
     /// Literal for code: InjectDosingInstructionImperativeQualifierValue
     /// </summary>
     public const string LiteralInjectDosingInstructionImperativeQualifierValue = "422145002";
+
+    /// <summary>
+    /// Literal for code: NONEInjectDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONEInjectDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#422145002";
 
     /// <summary>
     /// Literal for code: WashDosingInstructionImperativeQualifierValue
@@ -874,9 +1154,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWashDosingInstructionImperativeQualifierValue = "422152000";
 
     /// <summary>
+    /// Literal for code: NONEWashDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONEWashDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#422152000";
+
+    /// <summary>
     /// Literal for code: SprinkleDosingInstructionImperativeQualifierValue
     /// </summary>
     public const string LiteralSprinkleDosingInstructionImperativeQualifierValue = "422219000";
+
+    /// <summary>
+    /// Literal for code: NONESprinkleDosingInstructionImperativeQualifierValue
+    /// </summary>
+    public const string LiteralNONESprinkleDosingInstructionImperativeQualifierValue = "http://snomed.info/sct#422219000";
 
     /// <summary>
     /// Literal for code: ThenStopDosingInstructionFragmentQualifierValue
@@ -884,9 +1174,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralThenStopDosingInstructionFragmentQualifierValue = "422327006";
 
     /// <summary>
+    /// Literal for code: NONEThenStopDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEThenStopDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#422327006";
+
+    /// <summary>
     /// Literal for code: MedicationContainerEmptyQualifierValue
     /// </summary>
     public const string LiteralMedicationContainerEmptyQualifierValue = "769364006";
+
+    /// <summary>
+    /// Literal for code: NONEMedicationContainerEmptyQualifierValue
+    /// </summary>
+    public const string LiteralNONEMedicationContainerEmptyQualifierValue = "http://snomed.info/sct#769364006";
 
     /// <summary>
     /// Literal for code: ThoroughlyDosingInstructionFragment
@@ -894,9 +1194,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralThoroughlyDosingInstructionFragment = "769407000";
 
     /// <summary>
+    /// Literal for code: NONEThoroughlyDosingInstructionFragment
+    /// </summary>
+    public const string LiteralNONEThoroughlyDosingInstructionFragment = "http://snomed.info/sct#769407000";
+
+    /// <summary>
     /// Literal for code: CompletelyDosingInstructionFragmentQualifierValue
     /// </summary>
     public const string LiteralCompletelyDosingInstructionFragmentQualifierValue = "769408005";
+
+    /// <summary>
+    /// Literal for code: NONECompletelyDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONECompletelyDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#769408005";
 
     /// <summary>
     /// Literal for code: DeeplyDosingInstructionFragmentQualifierValue
@@ -904,8 +1214,152 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeeplyDosingInstructionFragmentQualifierValue = "769409002";
 
     /// <summary>
+    /// Literal for code: NONEDeeplyDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONEDeeplyDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#769409002";
+
+    /// <summary>
     /// Literal for code: RepeatedlyDosingInstructionFragmentQualifierValue
     /// </summary>
     public const string LiteralRepeatedlyDosingInstructionFragmentQualifierValue = "769410007";
+
+    /// <summary>
+    /// Literal for code: NONERepeatedlyDosingInstructionFragmentQualifierValue
+    /// </summary>
+    public const string LiteralNONERepeatedlyDosingInstructionFragmentQualifierValue = "http://snomed.info/sct#769410007";
+
+    /// <summary>
+    /// Dictionary for looking up AdministrationMethodCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "417924000", Apply }, 
+      { "http://snomed.info/sct#417924000", Apply }, 
+      { "418283001", Administer }, 
+      { "http://snomed.info/sct#418283001", Administer }, 
+      { "419385000", Use }, 
+      { "http://snomed.info/sct#419385000", Use }, 
+      { "419582001", Give }, 
+      { "http://snomed.info/sct#419582001", Give }, 
+      { "419652001", Take }, 
+      { "http://snomed.info/sct#419652001", Take }, 
+      { "419747000", Chew }, 
+      { "http://snomed.info/sct#419747000", Chew }, 
+      { "420045007", Suck }, 
+      { "http://snomed.info/sct#420045007", Suck }, 
+      { "420246001", AtDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#420246001", AtDosingInstructionFragmentQualifierValue }, 
+      { "420247005", DosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#420247005", DosingInstructionImperativeQualifierValue }, 
+      { "420295001", OnlyDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#420295001", OnlyDosingInstructionFragmentQualifierValue }, 
+      { "420341009", ConstantDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#420341009", ConstantDosingInstructionFragmentQualifierValue }, 
+      { "420360002", SniffDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#420360002", SniffDosingInstructionImperativeQualifierValue }, 
+      { "420484009", SubtractDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#420484009", SubtractDosingInstructionFragmentQualifierValue }, 
+      { "420503003", AsDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#420503003", AsDosingInstructionFragmentQualifierValue }, 
+      { "420561004", OrDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#420561004", OrDosingInstructionFragmentQualifierValue }, 
+      { "420604000", FinishDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#420604000", FinishDosingInstructionImperativeQualifierValue }, 
+      { "420606003", ShampooDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#420606003", ShampooDosingInstructionImperativeQualifierValue }, 
+      { "420620005", PushDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#420620005", PushDosingInstructionImperativeQualifierValue }, 
+      { "420652005", UntilGoneDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#420652005", UntilGoneDosingInstructionFragmentQualifierValue }, 
+      { "420771004", UponDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#420771004", UponDosingInstructionFragmentQualifierValue }, 
+      { "420806001", PerDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#420806001", PerDosingInstructionFragmentQualifierValue }, 
+      { "420883007", SparinglyDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#420883007", SparinglyDosingInstructionFragmentQualifierValue }, 
+      { "420942008", CallDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#420942008", CallDosingInstructionFragmentQualifierValue }, 
+      { "420974001", WhenDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#420974001", WhenDosingInstructionFragmentQualifierValue }, 
+      { "421035004", ToDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#421035004", ToDosingInstructionFragmentQualifierValue }, 
+      { "421066005", PlaceDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#421066005", PlaceDosingInstructionImperativeQualifierValue }, 
+      { "421067001", ThenDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#421067001", ThenDosingInstructionFragmentQualifierValue }, 
+      { "421134003", InhaleDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#421134003", InhaleDosingInstructionImperativeQualifierValue }, 
+      { "421139008", HoldDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#421139008", HoldDosingInstructionFragmentQualifierValue }, 
+      { "421206002", MultiplyDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#421206002", MultiplyDosingInstructionFragmentQualifierValue }, 
+      { "421257003", InsertDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#421257003", InsertDosingInstructionImperativeQualifierValue }, 
+      { "421286000", DiscontinueDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#421286000", DiscontinueDosingInstructionImperativeQualifierValue }, 
+      { "421298005", SwishAndSwallowDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#421298005", SwishAndSwallowDosingInstructionImperativeQualifierValue }, 
+      { "421399004", DiluteDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#421399004", DiluteDosingInstructionImperativeQualifierValue }, 
+      { "421463005", WithDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#421463005", WithDosingInstructionFragmentQualifierValue }, 
+      { "421484000", ThenDiscontinueDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#421484000", ThenDiscontinueDosingInstructionFragmentQualifierValue }, 
+      { "421521009", SwallowDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#421521009", SwallowDosingInstructionImperativeQualifierValue }, 
+      { "421538008", InstillDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#421538008", InstillDosingInstructionImperativeQualifierValue }, 
+      { "421548005", UntilDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#421548005", UntilDosingInstructionFragmentQualifierValue }, 
+      { "421612001", EveryDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#421612001", EveryDosingInstructionFragmentQualifierValue }, 
+      { "421682005", DissolveDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#421682005", DissolveDosingInstructionImperativeQualifierValue }, 
+      { "421718005", BeforeDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#421718005", BeforeDosingInstructionFragmentQualifierValue }, 
+      { "421723005", NowDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#421723005", NowDosingInstructionFragmentQualifierValue }, 
+      { "421769005", FollowDirectionsQualifierValue }, 
+      { "http://snomed.info/sct#421769005", FollowDirectionsQualifierValue }, 
+      { "421803000", IfDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#421803000", IfDosingInstructionFragmentQualifierValue }, 
+      { "421805007", SwishDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#421805007", SwishDosingInstructionImperativeQualifierValue }, 
+      { "421829000", AndDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#421829000", AndDosingInstructionFragmentQualifierValue }, 
+      { "421832002", TwiceDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#421832002", TwiceDosingInstructionFragmentQualifierValue }, 
+      { "421939007", FollowDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#421939007", FollowDosingInstructionImperativeQualifierValue }, 
+      { "421984009", UntilFinishedDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#421984009", UntilFinishedDosingInstructionFragmentQualifierValue }, 
+      { "421994004", DuringDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#421994004", DuringDosingInstructionFragmentQualifierValue }, 
+      { "422033008", DivideDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#422033008", DivideDosingInstructionFragmentQualifierValue }, 
+      { "422096002", DosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#422096002", DosingInstructionFragmentQualifierValue }, 
+      { "422106007", AddDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#422106007", AddDosingInstructionFragmentQualifierValue }, 
+      { "422114001", OnceDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#422114001", OnceDosingInstructionFragmentQualifierValue }, 
+      { "422145002", InjectDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#422145002", InjectDosingInstructionImperativeQualifierValue }, 
+      { "422152000", WashDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#422152000", WashDosingInstructionImperativeQualifierValue }, 
+      { "422219000", SprinkleDosingInstructionImperativeQualifierValue }, 
+      { "http://snomed.info/sct#422219000", SprinkleDosingInstructionImperativeQualifierValue }, 
+      { "422327006", ThenStopDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#422327006", ThenStopDosingInstructionFragmentQualifierValue }, 
+      { "769364006", MedicationContainerEmptyQualifierValue }, 
+      { "http://snomed.info/sct#769364006", MedicationContainerEmptyQualifierValue }, 
+      { "769407000", ThoroughlyDosingInstructionFragment }, 
+      { "http://snomed.info/sct#769407000", ThoroughlyDosingInstructionFragment }, 
+      { "769408005", CompletelyDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#769408005", CompletelyDosingInstructionFragmentQualifierValue }, 
+      { "769409002", DeeplyDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#769409002", DeeplyDosingInstructionFragmentQualifierValue }, 
+      { "769410007", RepeatedlyDosingInstructionFragmentQualifierValue }, 
+      { "http://snomed.info/sct#769410007", RepeatedlyDosingInstructionFragmentQualifierValue }, 
+    };
   };
 }

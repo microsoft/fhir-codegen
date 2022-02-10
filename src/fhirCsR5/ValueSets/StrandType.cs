@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCrickStrandOfReferenceSeq = "crick";
 
     /// <summary>
+    /// Literal for code: StrandTypeCrickStrandOfReferenceSeq
+    /// </summary>
+    public const string LiteralStrandTypeCrickStrandOfReferenceSeq = "http://hl7.org/fhir/strand-type#crick";
+
+    /// <summary>
     /// Literal for code: WatsonStrandOfReferenceSeq
     /// </summary>
     public const string LiteralWatsonStrandOfReferenceSeq = "watson";
+
+    /// <summary>
+    /// Literal for code: StrandTypeWatsonStrandOfReferenceSeq
+    /// </summary>
+    public const string LiteralStrandTypeWatsonStrandOfReferenceSeq = "http://hl7.org/fhir/strand-type#watson";
+
+    /// <summary>
+    /// Dictionary for looking up StrandType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "crick", CrickStrandOfReferenceSeq }, 
+      { "http://hl7.org/fhir/strand-type#crick", CrickStrandOfReferenceSeq }, 
+      { "watson", WatsonStrandOfReferenceSeq }, 
+      { "http://hl7.org/fhir/strand-type#watson", WatsonStrandOfReferenceSeq }, 
+    };
   };
 }

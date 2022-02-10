@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLegal = "legal";
 
     /// <summary>
+    /// Literal for code: DocumentAttestationModeLegal
+    /// </summary>
+    public const string LiteralDocumentAttestationModeLegal = "http://hl7.org/fhir/document-attestation-mode#legal";
+
+    /// <summary>
     /// Literal for code: Official
     /// </summary>
     public const string LiteralOfficial = "official";
+
+    /// <summary>
+    /// Literal for code: DocumentAttestationModeOfficial
+    /// </summary>
+    public const string LiteralDocumentAttestationModeOfficial = "http://hl7.org/fhir/document-attestation-mode#official";
 
     /// <summary>
     /// Literal for code: Personal
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPersonal = "personal";
 
     /// <summary>
+    /// Literal for code: DocumentAttestationModePersonal
+    /// </summary>
+    public const string LiteralDocumentAttestationModePersonal = "http://hl7.org/fhir/document-attestation-mode#personal";
+
+    /// <summary>
     /// Literal for code: Professional
     /// </summary>
     public const string LiteralProfessional = "professional";
+
+    /// <summary>
+    /// Literal for code: DocumentAttestationModeProfessional
+    /// </summary>
+    public const string LiteralDocumentAttestationModeProfessional = "http://hl7.org/fhir/document-attestation-mode#professional";
+
+    /// <summary>
+    /// Dictionary for looking up DocumentAttestationMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "legal", Legal }, 
+      { "http://hl7.org/fhir/document-attestation-mode#legal", Legal }, 
+      { "official", Official }, 
+      { "http://hl7.org/fhir/document-attestation-mode#official", Official }, 
+      { "personal", Personal }, 
+      { "http://hl7.org/fhir/document-attestation-mode#personal", Personal }, 
+      { "professional", Professional }, 
+      { "http://hl7.org/fhir/document-attestation-mode#professional", Professional }, 
+    };
   };
 }

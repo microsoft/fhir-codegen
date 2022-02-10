@@ -319,5 +319,39 @@ namespace fhirCsR5.Models
     public const string TRANSFORMS = "transforms";
     public const string TRANSFORMED_INTO = "transformed-into";
     public const string TRANSFORMED_WITH = "transformed-with";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "documentation",
+      "justification",
+      "citation",
+      "predecessor",
+      "successor",
+      "derived-from",
+      "depends-on",
+      "composed-of",
+      "part-of",
+      "amends",
+      "amended-with",
+      "appends",
+      "appended-with",
+      "cites",
+      "cited-by",
+      "comments-on",
+      "comment-in",
+      "contains",
+      "contained-in",
+      "corrects",
+      "correction-in",
+      "replaces",
+      "replaced-with",
+      "retracts",
+      "retracted-by",
+      "signs",
+      "similar-to",
+      "supports",
+      "supported-with",
+      "transforms",
+      "transformed-into",
+      "transformed-with",
+    };
   }
 }

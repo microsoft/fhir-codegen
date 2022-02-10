@@ -162,9 +162,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralApplicationActivity_dicom_dcim = "110100";
 
     /// <summary>
+    /// Literal for code: DicomDcimApplicationActivity_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimApplicationActivity_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110100";
+
+    /// <summary>
     /// Literal for code: AuditLogUsed_dicom_dcim
     /// </summary>
     public const string LiteralAuditLogUsed_dicom_dcim = "110101";
+
+    /// <summary>
+    /// Literal for code: DicomDcimAuditLogUsed_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimAuditLogUsed_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110101";
 
     /// <summary>
     /// Literal for code: BeginTransferringDICOMInstances_dicom_dcim
@@ -172,9 +182,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBeginTransferringDICOMInstances_dicom_dcim = "110102";
 
     /// <summary>
+    /// Literal for code: DicomDcimBeginTransferringDICOMInstances_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimBeginTransferringDICOMInstances_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110102";
+
+    /// <summary>
     /// Literal for code: DICOMInstancesAccessed_dicom_dcim
     /// </summary>
     public const string LiteralDICOMInstancesAccessed_dicom_dcim = "110103";
+
+    /// <summary>
+    /// Literal for code: DicomDcimDICOMInstancesAccessed_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimDICOMInstancesAccessed_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110103";
 
     /// <summary>
     /// Literal for code: DICOMInstancesTransferred_dicom_dcim
@@ -182,9 +202,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDICOMInstancesTransferred_dicom_dcim = "110104";
 
     /// <summary>
+    /// Literal for code: DicomDcimDICOMInstancesTransferred_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimDICOMInstancesTransferred_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110104";
+
+    /// <summary>
     /// Literal for code: DICOMStudyDeleted_dicom_dcim
     /// </summary>
     public const string LiteralDICOMStudyDeleted_dicom_dcim = "110105";
+
+    /// <summary>
+    /// Literal for code: DicomDcimDICOMStudyDeleted_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimDICOMStudyDeleted_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110105";
 
     /// <summary>
     /// Literal for code: Export_dicom_dcim
@@ -192,9 +222,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExport_dicom_dcim = "110106";
 
     /// <summary>
+    /// Literal for code: DicomDcimExport_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimExport_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110106";
+
+    /// <summary>
     /// Literal for code: Import_dicom_dcim
     /// </summary>
     public const string LiteralImport_dicom_dcim = "110107";
+
+    /// <summary>
+    /// Literal for code: DicomDcimImport_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimImport_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110107";
 
     /// <summary>
     /// Literal for code: NetworkEntry_dicom_dcim
@@ -202,9 +242,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNetworkEntry_dicom_dcim = "110108";
 
     /// <summary>
+    /// Literal for code: DicomDcimNetworkEntry_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimNetworkEntry_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110108";
+
+    /// <summary>
     /// Literal for code: OrderRecord_dicom_dcim
     /// </summary>
     public const string LiteralOrderRecord_dicom_dcim = "110109";
+
+    /// <summary>
+    /// Literal for code: DicomDcimOrderRecord_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimOrderRecord_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110109";
 
     /// <summary>
     /// Literal for code: PatientRecord_dicom_dcim
@@ -212,9 +262,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatientRecord_dicom_dcim = "110110";
 
     /// <summary>
+    /// Literal for code: DicomDcimPatientRecord_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimPatientRecord_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110110";
+
+    /// <summary>
     /// Literal for code: ProcedureRecord_dicom_dcim
     /// </summary>
     public const string LiteralProcedureRecord_dicom_dcim = "110111";
+
+    /// <summary>
+    /// Literal for code: DicomDcimProcedureRecord_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimProcedureRecord_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110111";
 
     /// <summary>
     /// Literal for code: Query_dicom_dcim
@@ -222,9 +282,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralQuery_dicom_dcim = "110112";
 
     /// <summary>
+    /// Literal for code: DicomDcimQuery_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimQuery_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110112";
+
+    /// <summary>
     /// Literal for code: SecurityAlert_dicom_dcim
     /// </summary>
     public const string LiteralSecurityAlert_dicom_dcim = "110113";
+
+    /// <summary>
+    /// Literal for code: DicomDcimSecurityAlert_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimSecurityAlert_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110113";
 
     /// <summary>
     /// Literal for code: UserAuthentication_dicom_dcim
@@ -232,8 +302,56 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUserAuthentication_dicom_dcim = "110114";
 
     /// <summary>
+    /// Literal for code: DicomDcimUserAuthentication_dicom_dcim
+    /// </summary>
+    public const string LiteralDicomDcimUserAuthentication_dicom_dcim = "http://dicom.nema.org/resources/ontology/DCM#110114";
+
+    /// <summary>
     /// Literal for code: RESTfulOperation_audit_event_type
     /// </summary>
     public const string LiteralRESTfulOperation_audit_event_type = "rest";
+
+    /// <summary>
+    /// Literal for code: AuditEventTypeRESTfulOperation_audit_event_type
+    /// </summary>
+    public const string LiteralAuditEventTypeRESTfulOperation_audit_event_type = "http://hl7.org/fhir/audit-event-type#rest";
+
+    /// <summary>
+    /// Dictionary for looking up AuditEventType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "110100", ApplicationActivity_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110100", ApplicationActivity_dicom_dcim }, 
+      { "110101", AuditLogUsed_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110101", AuditLogUsed_dicom_dcim }, 
+      { "110102", BeginTransferringDICOMInstances_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110102", BeginTransferringDICOMInstances_dicom_dcim }, 
+      { "110103", DICOMInstancesAccessed_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110103", DICOMInstancesAccessed_dicom_dcim }, 
+      { "110104", DICOMInstancesTransferred_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110104", DICOMInstancesTransferred_dicom_dcim }, 
+      { "110105", DICOMStudyDeleted_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110105", DICOMStudyDeleted_dicom_dcim }, 
+      { "110106", Export_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110106", Export_dicom_dcim }, 
+      { "110107", Import_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110107", Import_dicom_dcim }, 
+      { "110108", NetworkEntry_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110108", NetworkEntry_dicom_dcim }, 
+      { "110109", OrderRecord_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110109", OrderRecord_dicom_dcim }, 
+      { "110110", PatientRecord_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110110", PatientRecord_dicom_dcim }, 
+      { "110111", ProcedureRecord_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110111", ProcedureRecord_dicom_dcim }, 
+      { "110112", Query_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110112", Query_dicom_dcim }, 
+      { "110113", SecurityAlert_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110113", SecurityAlert_dicom_dcim }, 
+      { "110114", UserAuthentication_dicom_dcim }, 
+      { "http://dicom.nema.org/resources/ontology/DCM#110114", UserAuthentication_dicom_dcim }, 
+      { "rest", RESTfulOperation_audit_event_type }, 
+      { "http://hl7.org/fhir/audit-event-type#rest", RESTfulOperation_audit_event_type }, 
+    };
   };
 }

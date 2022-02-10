@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntact = "intact";
 
     /// <summary>
+    /// Literal for code: AnimalGenderstatusIntact
+    /// </summary>
+    public const string LiteralAnimalGenderstatusIntact = "http://hl7.org/fhir/animal-genderstatus#intact";
+
+    /// <summary>
     /// Literal for code: Neutered
     /// </summary>
     public const string LiteralNeutered = "neutered";
 
     /// <summary>
+    /// Literal for code: AnimalGenderstatusNeutered
+    /// </summary>
+    public const string LiteralAnimalGenderstatusNeutered = "http://hl7.org/fhir/animal-genderstatus#neutered";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: AnimalGenderstatusUnknown
+    /// </summary>
+    public const string LiteralAnimalGenderstatusUnknown = "http://hl7.org/fhir/animal-genderstatus#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up AnimalGenderstatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "intact", Intact }, 
+      { "http://hl7.org/fhir/animal-genderstatus#intact", Intact }, 
+      { "neutered", Neutered }, 
+      { "http://hl7.org/fhir/animal-genderstatus#neutered", Neutered }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/animal-genderstatus#unknown", Unknown }, 
+    };
   };
 }

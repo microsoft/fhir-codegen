@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class AdverseEventCausalityResultCodes
   {
     /// <summary>
-    /// 
+    /// placeholder
     /// </summary>
     public static readonly Coding Placeholder = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/adverse-event-causality-result"
     };
     /// <summary>
-    /// 
+    /// placeholder
     /// </summary>
     public static readonly Coding Placeholder_2 = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlaceholder = "result1";
 
     /// <summary>
+    /// Literal for code: AdverseEventCausalityResultPlaceholder
+    /// </summary>
+    public const string LiteralAdverseEventCausalityResultPlaceholder = "http://hl7.org/fhir/adverse-event-causality-result#result1";
+
+    /// <summary>
     /// Literal for code: Placeholder_2
     /// </summary>
     public const string LiteralPlaceholder_2 = "result2";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCausalityResultPlaceholder_2
+    /// </summary>
+    public const string LiteralAdverseEventCausalityResultPlaceholder_2 = "http://hl7.org/fhir/adverse-event-causality-result#result2";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventCausalityResult Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "result1", Placeholder }, 
+      { "http://hl7.org/fhir/adverse-event-causality-result#result1", Placeholder }, 
+      { "result2", Placeholder_2 }, 
+      { "http://hl7.org/fhir/adverse-event-causality-result#result2", Placeholder_2 }, 
+    };
   };
 }

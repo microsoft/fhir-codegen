@@ -351,6 +351,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ReportedBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ReportedBoolean
+    /// </summary>
+    public Element _ReportedBoolean { get; set; }
+    /// <summary>
     /// Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.
     /// </summary>
     public Reference ReportedReference { get; set; }
@@ -601,6 +605,12 @@ namespace fhirCsR5.Models
       if (ReportedBoolean != null)
       {
         writer.WriteBoolean("reportedBoolean", (bool)ReportedBoolean!);
+      }
+
+      if (_ReportedBoolean != null)
+      {
+        writer.WritePropertyName("_reportedBoolean");
+        _ReportedBoolean.SerializeJson(writer, options);
       }
 
       if (ReportedReference != null)
@@ -1307,6 +1317,11 @@ namespace fhirCsR5.Models
           ReportedBoolean = reader.GetBoolean();
           break;
 
+        case "_reportedBoolean":
+          _ReportedBoolean = new fhirCsR5.Models.Element();
+          _ReportedBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "reportedReference":
           ReportedReference = new fhirCsR5.Models.Reference();
           ReportedReference.DeserializeJson(ref reader, options);
@@ -1428,5 +1443,15 @@ namespace fhirCsR5.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "preparation",
+      "in-progress",
+      "not-done",
+      "on-hold",
+      "stopped",
+      "completed",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

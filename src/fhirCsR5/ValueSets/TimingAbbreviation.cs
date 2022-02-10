@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class TimingAbbreviationCodes
   {
     /// <summary>
-    /// 
+    /// AM
     /// </summary>
     public static readonly Coding AM = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation"
     };
     /// <summary>
-    /// 
+    /// at bedtime
     /// </summary>
     public static readonly Coding AtBedtime = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation"
     };
     /// <summary>
-    /// 
+    /// BID
     /// </summary>
     public static readonly Coding BID = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/timing-abbreviation"
     };
     /// <summary>
-    /// 
+    /// monthly
     /// </summary>
     public static readonly Coding Monthly = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation"
     };
     /// <summary>
-    /// 
+    /// PM
     /// </summary>
     public static readonly Coding PM = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation"
     };
     /// <summary>
-    /// 
+    /// every hour
     /// </summary>
     public static readonly Coding EveryHour = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation"
     };
     /// <summary>
-    /// 
+    /// every 2 hours
     /// </summary>
     public static readonly Coding Every2Hours = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation"
     };
     /// <summary>
-    /// 
+    /// every 3 hours
     /// </summary>
     public static readonly Coding Every3Hours = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation"
     };
     /// <summary>
-    /// 
+    /// Q4H
     /// </summary>
     public static readonly Coding Q4H = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation"
     };
     /// <summary>
-    /// 
+    /// Q6H
     /// </summary>
     public static readonly Coding Q6H = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation"
     };
     /// <summary>
-    /// 
+    /// every 8 hours
     /// </summary>
     public static readonly Coding Every8Hours = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation"
     };
     /// <summary>
-    /// 
+    /// QD
     /// </summary>
     public static readonly Coding QD = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation"
     };
     /// <summary>
-    /// 
+    /// QID
     /// </summary>
     public static readonly Coding QID = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation"
     };
     /// <summary>
-    /// 
+    /// QOD
     /// </summary>
     public static readonly Coding QOD = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation"
     };
     /// <summary>
-    /// 
+    /// TID
     /// </summary>
     public static readonly Coding TID = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation"
     };
     /// <summary>
-    /// 
+    /// weekly
     /// </summary>
     public static readonly Coding Weekly = new Coding
     {
@@ -171,9 +171,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAM = "AM";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationAM
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationAM = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#AM";
+
+    /// <summary>
     /// Literal for code: AtBedtime
     /// </summary>
     public const string LiteralAtBedtime = "BED";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationAtBedtime
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationAtBedtime = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#BED";
 
     /// <summary>
     /// Literal for code: BID
@@ -181,9 +191,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBID = "BID";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationBID
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationBID = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#BID";
+
+    /// <summary>
     /// Literal for code: ContinuousFrequency
     /// </summary>
     public const string LiteralContinuousFrequency = "C";
+
+    /// <summary>
+    /// Literal for code: TimingAbbreviationContinuousFrequency
+    /// </summary>
+    public const string LiteralTimingAbbreviationContinuousFrequency = "http://terminology.hl7.org/CodeSystem/timing-abbreviation#C";
 
     /// <summary>
     /// Literal for code: Monthly
@@ -191,9 +211,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMonthly = "MO";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationMonthly
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationMonthly = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#MO";
+
+    /// <summary>
     /// Literal for code: PM
     /// </summary>
     public const string LiteralPM = "PM";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationPM
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationPM = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#PM";
 
     /// <summary>
     /// Literal for code: EveryHour
@@ -201,9 +231,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEveryHour = "Q1H";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationEveryHour
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationEveryHour = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q1H";
+
+    /// <summary>
     /// Literal for code: Every2Hours
     /// </summary>
     public const string LiteralEvery2Hours = "Q2H";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationEvery2Hours
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationEvery2Hours = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q2H";
 
     /// <summary>
     /// Literal for code: Every3Hours
@@ -211,9 +251,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEvery3Hours = "Q3H";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationEvery3Hours
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationEvery3Hours = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q3H";
+
+    /// <summary>
     /// Literal for code: Q4H
     /// </summary>
     public const string LiteralQ4H = "Q4H";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationQ4H
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationQ4H = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q4H";
 
     /// <summary>
     /// Literal for code: Q6H
@@ -221,9 +271,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralQ6H = "Q6H";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationQ6H
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationQ6H = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q6H";
+
+    /// <summary>
     /// Literal for code: Every8Hours
     /// </summary>
     public const string LiteralEvery8Hours = "Q8H";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationEvery8Hours
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationEvery8Hours = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q8H";
 
     /// <summary>
     /// Literal for code: QD
@@ -231,9 +291,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralQD = "QD";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationQD
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationQD = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#QD";
+
+    /// <summary>
     /// Literal for code: QID
     /// </summary>
     public const string LiteralQID = "QID";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationQID
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationQID = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#QID";
 
     /// <summary>
     /// Literal for code: QOD
@@ -241,13 +311,68 @@ namespace fhirCsR5.ValueSets
     public const string LiteralQOD = "QOD";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationQOD
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationQOD = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#QOD";
+
+    /// <summary>
     /// Literal for code: TID
     /// </summary>
     public const string LiteralTID = "TID";
 
     /// <summary>
+    /// Literal for code: V3GTSAbbreviationTID
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationTID = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#TID";
+
+    /// <summary>
     /// Literal for code: Weekly
     /// </summary>
     public const string LiteralWeekly = "WK";
+
+    /// <summary>
+    /// Literal for code: V3GTSAbbreviationWeekly
+    /// </summary>
+    public const string LiteralV3GTSAbbreviationWeekly = "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#WK";
+
+    /// <summary>
+    /// Dictionary for looking up TimingAbbreviation Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "AM", AM }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#AM", AM }, 
+      { "BED", AtBedtime }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#BED", AtBedtime }, 
+      { "BID", BID }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#BID", BID }, 
+      { "C", ContinuousFrequency }, 
+      { "http://terminology.hl7.org/CodeSystem/timing-abbreviation#C", ContinuousFrequency }, 
+      { "MO", Monthly }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#MO", Monthly }, 
+      { "PM", PM }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#PM", PM }, 
+      { "Q1H", EveryHour }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q1H", EveryHour }, 
+      { "Q2H", Every2Hours }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q2H", Every2Hours }, 
+      { "Q3H", Every3Hours }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q3H", Every3Hours }, 
+      { "Q4H", Q4H }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q4H", Q4H }, 
+      { "Q6H", Q6H }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q6H", Q6H }, 
+      { "Q8H", Every8Hours }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#Q8H", Every8Hours }, 
+      { "QD", QD }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#QD", QD }, 
+      { "QID", QID }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#QID", QID }, 
+      { "QOD", QOD }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#QOD", QOD }, 
+      { "TID", TID }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#TID", TID }, 
+      { "WK", Weekly }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#WK", Weekly }, 
+    };
   };
 }

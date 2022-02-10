@@ -36,8 +36,28 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIntersection = "intersection";
 
     /// <summary>
+    /// Literal for code: CharacteristicCombinationIntersection
+    /// </summary>
+    public const string LiteralCharacteristicCombinationIntersection = "http://hl7.org/fhir/characteristic-combination#intersection";
+
+    /// <summary>
     /// Literal for code: Union
     /// </summary>
     public const string LiteralUnion = "union";
+
+    /// <summary>
+    /// Literal for code: CharacteristicCombinationUnion
+    /// </summary>
+    public const string LiteralCharacteristicCombinationUnion = "http://hl7.org/fhir/characteristic-combination#union";
+
+    /// <summary>
+    /// Dictionary for looking up CharacteristicCombination Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "intersection", Intersection }, 
+      { "http://hl7.org/fhir/characteristic-combination#intersection", Intersection }, 
+      { "union", Union }, 
+      { "http://hl7.org/fhir/characteristic-combination#union", Union }, 
+    };
   };
 }

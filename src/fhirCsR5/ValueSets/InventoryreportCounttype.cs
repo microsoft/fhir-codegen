@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDifference = "difference";
 
     /// <summary>
+    /// Literal for code: InventoryreportCounttypeDifference
+    /// </summary>
+    public const string LiteralInventoryreportCounttypeDifference = "http://hl7.org/fhir/inventoryreport-counttype#difference";
+
+    /// <summary>
     /// Literal for code: Snapshot
     /// </summary>
     public const string LiteralSnapshot = "snapshot";
+
+    /// <summary>
+    /// Literal for code: InventoryreportCounttypeSnapshot
+    /// </summary>
+    public const string LiteralInventoryreportCounttypeSnapshot = "http://hl7.org/fhir/inventoryreport-counttype#snapshot";
+
+    /// <summary>
+    /// Dictionary for looking up InventoryreportCounttype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "difference", Difference }, 
+      { "http://hl7.org/fhir/inventoryreport-counttype#difference", Difference }, 
+      { "snapshot", Snapshot }, 
+      { "http://hl7.org/fhir/inventoryreport-counttype#snapshot", Snapshot }, 
+    };
   };
 }

@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSourceInstance = "source";
 
     /// <summary>
+    /// Literal for code: MapInputModeSourceInstance
+    /// </summary>
+    public const string LiteralMapInputModeSourceInstance = "http://hl7.org/fhir/map-input-mode#source";
+
+    /// <summary>
     /// Literal for code: TargetInstance
     /// </summary>
     public const string LiteralTargetInstance = "target";
+
+    /// <summary>
+    /// Literal for code: MapInputModeTargetInstance
+    /// </summary>
+    public const string LiteralMapInputModeTargetInstance = "http://hl7.org/fhir/map-input-mode#target";
+
+    /// <summary>
+    /// Dictionary for looking up MapInputMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "source", SourceInstance }, 
+      { "http://hl7.org/fhir/map-input-mode#source", SourceInstance }, 
+      { "target", TargetInstance }, 
+      { "http://hl7.org/fhir/map-input-mode#target", TargetInstance }, 
+    };
   };
 }

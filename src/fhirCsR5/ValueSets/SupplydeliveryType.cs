@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class SupplydeliveryTypeCodes
   {
     /// <summary>
-    /// 
+    /// Device
     /// </summary>
     public static readonly Coding Device = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/supply-item-type"
     };
     /// <summary>
-    /// 
+    /// Medication
     /// </summary>
     public static readonly Coding Medication = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDevice = "device";
 
     /// <summary>
+    /// Literal for code: SupplyItemTypeDevice
+    /// </summary>
+    public const string LiteralSupplyItemTypeDevice = "http://terminology.hl7.org/CodeSystem/supply-item-type#device";
+
+    /// <summary>
     /// Literal for code: Medication
     /// </summary>
     public const string LiteralMedication = "medication";
+
+    /// <summary>
+    /// Literal for code: SupplyItemTypeMedication
+    /// </summary>
+    public const string LiteralSupplyItemTypeMedication = "http://terminology.hl7.org/CodeSystem/supply-item-type#medication";
+
+    /// <summary>
+    /// Dictionary for looking up SupplydeliveryType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "device", Device }, 
+      { "http://terminology.hl7.org/CodeSystem/supply-item-type#device", Device }, 
+      { "medication", Medication }, 
+      { "http://terminology.hl7.org/CodeSystem/supply-item-type#medication", Medication }, 
+    };
   };
 }

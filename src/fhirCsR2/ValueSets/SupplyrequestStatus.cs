@@ -54,9 +54,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralCancelled = "cancelled";
 
     /// <summary>
+    /// Literal for code: SupplyrequestStatusCancelled
+    /// </summary>
+    public const string LiteralSupplyrequestStatusCancelled = "http://hl7.org/fhir/supplyrequest-status#cancelled";
+
+    /// <summary>
     /// Literal for code: Received
     /// </summary>
     public const string LiteralReceived = "completed";
+
+    /// <summary>
+    /// Literal for code: SupplyrequestStatusReceived
+    /// </summary>
+    public const string LiteralSupplyrequestStatusReceived = "http://hl7.org/fhir/supplyrequest-status#completed";
 
     /// <summary>
     /// Literal for code: Failed
@@ -64,8 +74,32 @@ namespace fhirCsR2.ValueSets
     public const string LiteralFailed = "failed";
 
     /// <summary>
+    /// Literal for code: SupplyrequestStatusFailed
+    /// </summary>
+    public const string LiteralSupplyrequestStatusFailed = "http://hl7.org/fhir/supplyrequest-status#failed";
+
+    /// <summary>
     /// Literal for code: Requested
     /// </summary>
     public const string LiteralRequested = "requested";
+
+    /// <summary>
+    /// Literal for code: SupplyrequestStatusRequested
+    /// </summary>
+    public const string LiteralSupplyrequestStatusRequested = "http://hl7.org/fhir/supplyrequest-status#requested";
+
+    /// <summary>
+    /// Dictionary for looking up SupplyrequestStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/supplyrequest-status#cancelled", Cancelled }, 
+      { "completed", Received }, 
+      { "http://hl7.org/fhir/supplyrequest-status#completed", Received }, 
+      { "failed", Failed }, 
+      { "http://hl7.org/fhir/supplyrequest-status#failed", Failed }, 
+      { "requested", Requested }, 
+      { "http://hl7.org/fhir/supplyrequest-status#requested", Requested }, 
+    };
   };
 }

@@ -63,9 +63,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralInstitutional = "institutional";
 
     /// <summary>
+    /// Literal for code: ClaimTypeLinkInstitutional
+    /// </summary>
+    public const string LiteralClaimTypeLinkInstitutional = "http://hl7.org/fhir/claim-type-link#institutional";
+
+    /// <summary>
     /// Literal for code: OralHealth
     /// </summary>
     public const string LiteralOralHealth = "oral";
+
+    /// <summary>
+    /// Literal for code: ClaimTypeLinkOralHealth
+    /// </summary>
+    public const string LiteralClaimTypeLinkOralHealth = "http://hl7.org/fhir/claim-type-link#oral";
 
     /// <summary>
     /// Literal for code: Pharmacy
@@ -73,13 +83,44 @@ namespace fhirCsR2.ValueSets
     public const string LiteralPharmacy = "pharmacy";
 
     /// <summary>
+    /// Literal for code: ClaimTypeLinkPharmacy
+    /// </summary>
+    public const string LiteralClaimTypeLinkPharmacy = "http://hl7.org/fhir/claim-type-link#pharmacy";
+
+    /// <summary>
     /// Literal for code: Professional
     /// </summary>
     public const string LiteralProfessional = "professional";
 
     /// <summary>
+    /// Literal for code: ClaimTypeLinkProfessional
+    /// </summary>
+    public const string LiteralClaimTypeLinkProfessional = "http://hl7.org/fhir/claim-type-link#professional";
+
+    /// <summary>
     /// Literal for code: Vision
     /// </summary>
     public const string LiteralVision = "vision";
+
+    /// <summary>
+    /// Literal for code: ClaimTypeLinkVision
+    /// </summary>
+    public const string LiteralClaimTypeLinkVision = "http://hl7.org/fhir/claim-type-link#vision";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimTypeLink Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "institutional", Institutional }, 
+      { "http://hl7.org/fhir/claim-type-link#institutional", Institutional }, 
+      { "oral", OralHealth }, 
+      { "http://hl7.org/fhir/claim-type-link#oral", OralHealth }, 
+      { "pharmacy", Pharmacy }, 
+      { "http://hl7.org/fhir/claim-type-link#pharmacy", Pharmacy }, 
+      { "professional", Professional }, 
+      { "http://hl7.org/fhir/claim-type-link#professional", Professional }, 
+      { "vision", Vision }, 
+      { "http://hl7.org/fhir/claim-type-link#vision", Vision }, 
+    };
   };
 }

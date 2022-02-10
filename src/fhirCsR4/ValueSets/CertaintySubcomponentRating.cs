@@ -117,9 +117,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAbsent = "absent";
 
     /// <summary>
+    /// Literal for code: CertaintySubcomponentRatingAbsent
+    /// </summary>
+    public const string LiteralCertaintySubcomponentRatingAbsent = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#absent";
+
+    /// <summary>
     /// Literal for code: CriticalConcern
     /// </summary>
     public const string LiteralCriticalConcern = "critical-concern";
+
+    /// <summary>
+    /// Literal for code: CertaintySubcomponentRatingCriticalConcern
+    /// </summary>
+    public const string LiteralCertaintySubcomponentRatingCriticalConcern = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#critical-concern";
 
     /// <summary>
     /// Literal for code: ReduceRating1
@@ -127,9 +137,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReduceRating1 = "downcode1";
 
     /// <summary>
+    /// Literal for code: CertaintySubcomponentRatingReduceRating1
+    /// </summary>
+    public const string LiteralCertaintySubcomponentRatingReduceRating1 = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#downcode1";
+
+    /// <summary>
     /// Literal for code: ReduceRating2
     /// </summary>
     public const string LiteralReduceRating2 = "downcode2";
+
+    /// <summary>
+    /// Literal for code: CertaintySubcomponentRatingReduceRating2
+    /// </summary>
+    public const string LiteralCertaintySubcomponentRatingReduceRating2 = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#downcode2";
 
     /// <summary>
     /// Literal for code: ReduceRating3
@@ -137,9 +157,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralReduceRating3 = "downcode3";
 
     /// <summary>
+    /// Literal for code: CertaintySubcomponentRatingReduceRating3
+    /// </summary>
+    public const string LiteralCertaintySubcomponentRatingReduceRating3 = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#downcode3";
+
+    /// <summary>
     /// Literal for code: NoChangeToRating
     /// </summary>
     public const string LiteralNoChangeToRating = "no-change";
+
+    /// <summary>
+    /// Literal for code: CertaintySubcomponentRatingNoChangeToRating
+    /// </summary>
+    public const string LiteralCertaintySubcomponentRatingNoChangeToRating = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#no-change";
 
     /// <summary>
     /// Literal for code: NoSeriousConcern
@@ -147,9 +177,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNoSeriousConcern = "no-concern";
 
     /// <summary>
+    /// Literal for code: CertaintySubcomponentRatingNoSeriousConcern
+    /// </summary>
+    public const string LiteralCertaintySubcomponentRatingNoSeriousConcern = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#no-concern";
+
+    /// <summary>
     /// Literal for code: Present
     /// </summary>
     public const string LiteralPresent = "present";
+
+    /// <summary>
+    /// Literal for code: CertaintySubcomponentRatingPresent
+    /// </summary>
+    public const string LiteralCertaintySubcomponentRatingPresent = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#present";
 
     /// <summary>
     /// Literal for code: SeriousConcern
@@ -157,13 +197,56 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSeriousConcern = "serious-concern";
 
     /// <summary>
+    /// Literal for code: CertaintySubcomponentRatingSeriousConcern
+    /// </summary>
+    public const string LiteralCertaintySubcomponentRatingSeriousConcern = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#serious-concern";
+
+    /// <summary>
     /// Literal for code: IncreaseRatingPlus1
     /// </summary>
     public const string LiteralIncreaseRatingPlus1 = "upcode1";
 
     /// <summary>
+    /// Literal for code: CertaintySubcomponentRatingIncreaseRatingPlus1
+    /// </summary>
+    public const string LiteralCertaintySubcomponentRatingIncreaseRatingPlus1 = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#upcode1";
+
+    /// <summary>
     /// Literal for code: IncreaseRatingPlus2
     /// </summary>
     public const string LiteralIncreaseRatingPlus2 = "upcode2";
+
+    /// <summary>
+    /// Literal for code: CertaintySubcomponentRatingIncreaseRatingPlus2
+    /// </summary>
+    public const string LiteralCertaintySubcomponentRatingIncreaseRatingPlus2 = "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#upcode2";
+
+    /// <summary>
+    /// Dictionary for looking up CertaintySubcomponentRating Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "absent", Absent }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#absent", Absent }, 
+      { "critical-concern", CriticalConcern }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#critical-concern", CriticalConcern }, 
+      { "downcode1", ReduceRating1 }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#downcode1", ReduceRating1 }, 
+      { "downcode2", ReduceRating2 }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#downcode2", ReduceRating2 }, 
+      { "downcode3", ReduceRating3 }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#downcode3", ReduceRating3 }, 
+      { "no-change", NoChangeToRating }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#no-change", NoChangeToRating }, 
+      { "no-concern", NoSeriousConcern }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#no-concern", NoSeriousConcern }, 
+      { "present", Present }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#present", Present }, 
+      { "serious-concern", SeriousConcern }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#serious-concern", SeriousConcern }, 
+      { "upcode1", IncreaseRatingPlus1 }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#upcode1", IncreaseRatingPlus1 }, 
+      { "upcode2", IncreaseRatingPlus2 }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating#upcode2", IncreaseRatingPlus2 }, 
+    };
   };
 }

@@ -663,5 +663,11 @@ namespace fhirCsR2.Models
     public const string POLL = "poll";
     public const string REPROCESS = "reprocess";
     public const string STATUS = "status";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "cancel",
+      "poll",
+      "reprocess",
+      "status",
+    };
   }
 }

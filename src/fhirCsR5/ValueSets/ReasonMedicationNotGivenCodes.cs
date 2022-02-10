@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ReasonMedicationNotGivenCodesCodes
   {
     /// <summary>
-    /// 
+    /// Drug declined by patient
     /// </summary>
     public static readonly Coding DrugDeclinedByPatient = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug declined by patient - dislikes taste
     /// </summary>
     public static readonly Coding DrugDeclinedByPatientDislikesTaste = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug declined by patient - side effects
     /// </summary>
     public static readonly Coding DrugDeclinedByPatientSideEffects = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug declined by patient - inconvenient
     /// </summary>
     public static readonly Coding DrugDeclinedByPatientInconvenient = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug declined by patient - problem swallowing
     /// </summary>
     public static readonly Coding DrugDeclinedByPatientProblemSwallowing = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug declined by patient - patient beliefs
     /// </summary>
     public static readonly Coding DrugDeclinedByPatientPatientBeliefs = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug declined by patient - alternative therapy
     /// </summary>
     public static readonly Coding DrugDeclinedByPatientAlternativeTherapy = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug declined by patient - cannot pay script
     /// </summary>
     public static readonly Coding DrugDeclinedByPatientCannotPayScript = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug declined by patient - reason unknown
     /// </summary>
     public static readonly Coding DrugDeclinedByPatientReasonUnknown = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Drug not available for administration
     /// </summary>
     public static readonly Coding DrugNotAvailableForAdministration = new Coding
     {
@@ -108,9 +108,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDrugDeclinedByPatient = "182895007";
 
     /// <summary>
+    /// Literal for code: NONEDrugDeclinedByPatient
+    /// </summary>
+    public const string LiteralNONEDrugDeclinedByPatient = "http://snomed.info/sct#182895007";
+
+    /// <summary>
     /// Literal for code: DrugDeclinedByPatientDislikesTaste
     /// </summary>
     public const string LiteralDrugDeclinedByPatientDislikesTaste = "182896008";
+
+    /// <summary>
+    /// Literal for code: NONEDrugDeclinedByPatientDislikesTaste
+    /// </summary>
+    public const string LiteralNONEDrugDeclinedByPatientDislikesTaste = "http://snomed.info/sct#182896008";
 
     /// <summary>
     /// Literal for code: DrugDeclinedByPatientSideEffects
@@ -118,9 +128,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDrugDeclinedByPatientSideEffects = "182897004";
 
     /// <summary>
+    /// Literal for code: NONEDrugDeclinedByPatientSideEffects
+    /// </summary>
+    public const string LiteralNONEDrugDeclinedByPatientSideEffects = "http://snomed.info/sct#182897004";
+
+    /// <summary>
     /// Literal for code: DrugDeclinedByPatientInconvenient
     /// </summary>
     public const string LiteralDrugDeclinedByPatientInconvenient = "182898009";
+
+    /// <summary>
+    /// Literal for code: NONEDrugDeclinedByPatientInconvenient
+    /// </summary>
+    public const string LiteralNONEDrugDeclinedByPatientInconvenient = "http://snomed.info/sct#182898009";
 
     /// <summary>
     /// Literal for code: DrugDeclinedByPatientProblemSwallowing
@@ -128,9 +148,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDrugDeclinedByPatientProblemSwallowing = "182899001";
 
     /// <summary>
+    /// Literal for code: NONEDrugDeclinedByPatientProblemSwallowing
+    /// </summary>
+    public const string LiteralNONEDrugDeclinedByPatientProblemSwallowing = "http://snomed.info/sct#182899001";
+
+    /// <summary>
     /// Literal for code: DrugDeclinedByPatientPatientBeliefs
     /// </summary>
     public const string LiteralDrugDeclinedByPatientPatientBeliefs = "182900006";
+
+    /// <summary>
+    /// Literal for code: NONEDrugDeclinedByPatientPatientBeliefs
+    /// </summary>
+    public const string LiteralNONEDrugDeclinedByPatientPatientBeliefs = "http://snomed.info/sct#182900006";
 
     /// <summary>
     /// Literal for code: DrugDeclinedByPatientAlternativeTherapy
@@ -138,9 +168,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDrugDeclinedByPatientAlternativeTherapy = "182901005";
 
     /// <summary>
+    /// Literal for code: NONEDrugDeclinedByPatientAlternativeTherapy
+    /// </summary>
+    public const string LiteralNONEDrugDeclinedByPatientAlternativeTherapy = "http://snomed.info/sct#182901005";
+
+    /// <summary>
     /// Literal for code: DrugDeclinedByPatientCannotPayScript
     /// </summary>
     public const string LiteralDrugDeclinedByPatientCannotPayScript = "182902003";
+
+    /// <summary>
+    /// Literal for code: NONEDrugDeclinedByPatientCannotPayScript
+    /// </summary>
+    public const string LiteralNONEDrugDeclinedByPatientCannotPayScript = "http://snomed.info/sct#182902003";
 
     /// <summary>
     /// Literal for code: DrugDeclinedByPatientReasonUnknown
@@ -148,8 +188,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDrugDeclinedByPatientReasonUnknown = "182903008";
 
     /// <summary>
+    /// Literal for code: NONEDrugDeclinedByPatientReasonUnknown
+    /// </summary>
+    public const string LiteralNONEDrugDeclinedByPatientReasonUnknown = "http://snomed.info/sct#182903008";
+
+    /// <summary>
     /// Literal for code: DrugNotAvailableForAdministration
     /// </summary>
     public const string LiteralDrugNotAvailableForAdministration = "242990004";
+
+    /// <summary>
+    /// Literal for code: NONEDrugNotAvailableForAdministration
+    /// </summary>
+    public const string LiteralNONEDrugNotAvailableForAdministration = "http://snomed.info/sct#242990004";
+
+    /// <summary>
+    /// Dictionary for looking up ReasonMedicationNotGivenCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "182895007", DrugDeclinedByPatient }, 
+      { "http://snomed.info/sct#182895007", DrugDeclinedByPatient }, 
+      { "182896008", DrugDeclinedByPatientDislikesTaste }, 
+      { "http://snomed.info/sct#182896008", DrugDeclinedByPatientDislikesTaste }, 
+      { "182897004", DrugDeclinedByPatientSideEffects }, 
+      { "http://snomed.info/sct#182897004", DrugDeclinedByPatientSideEffects }, 
+      { "182898009", DrugDeclinedByPatientInconvenient }, 
+      { "http://snomed.info/sct#182898009", DrugDeclinedByPatientInconvenient }, 
+      { "182899001", DrugDeclinedByPatientProblemSwallowing }, 
+      { "http://snomed.info/sct#182899001", DrugDeclinedByPatientProblemSwallowing }, 
+      { "182900006", DrugDeclinedByPatientPatientBeliefs }, 
+      { "http://snomed.info/sct#182900006", DrugDeclinedByPatientPatientBeliefs }, 
+      { "182901005", DrugDeclinedByPatientAlternativeTherapy }, 
+      { "http://snomed.info/sct#182901005", DrugDeclinedByPatientAlternativeTherapy }, 
+      { "182902003", DrugDeclinedByPatientCannotPayScript }, 
+      { "http://snomed.info/sct#182902003", DrugDeclinedByPatientCannotPayScript }, 
+      { "182903008", DrugDeclinedByPatientReasonUnknown }, 
+      { "http://snomed.info/sct#182903008", DrugDeclinedByPatientReasonUnknown }, 
+      { "242990004", DrugNotAvailableForAdministration }, 
+      { "http://snomed.info/sct#242990004", DrugNotAvailableForAdministration }, 
+    };
   };
 }

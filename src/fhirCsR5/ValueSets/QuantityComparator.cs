@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLessThan = "<";
 
     /// <summary>
+    /// Literal for code: QuantityComparatorLessThan
+    /// </summary>
+    public const string LiteralQuantityComparatorLessThan = "http://hl7.org/fhir/quantity-comparator#<";
+
+    /// <summary>
     /// Literal for code: LessOrEqualTo
     /// </summary>
     public const string LiteralLessOrEqualTo = "<=";
+
+    /// <summary>
+    /// Literal for code: QuantityComparatorLessOrEqualTo
+    /// </summary>
+    public const string LiteralQuantityComparatorLessOrEqualTo = "http://hl7.org/fhir/quantity-comparator#<=";
 
     /// <summary>
     /// Literal for code: GreaterThan
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGreaterThan = ">";
 
     /// <summary>
+    /// Literal for code: QuantityComparatorGreaterThan
+    /// </summary>
+    public const string LiteralQuantityComparatorGreaterThan = "http://hl7.org/fhir/quantity-comparator#>";
+
+    /// <summary>
     /// Literal for code: GreaterOrEqualTo
     /// </summary>
     public const string LiteralGreaterOrEqualTo = ">=";
 
     /// <summary>
+    /// Literal for code: QuantityComparatorGreaterOrEqualTo
+    /// </summary>
+    public const string LiteralQuantityComparatorGreaterOrEqualTo = "http://hl7.org/fhir/quantity-comparator#>=";
+
+    /// <summary>
     /// Literal for code: SufficientToAchieveThisTotalQuantity
     /// </summary>
     public const string LiteralSufficientToAchieveThisTotalQuantity = "ad";
+
+    /// <summary>
+    /// Literal for code: QuantityComparatorSufficientToAchieveThisTotalQuantity
+    /// </summary>
+    public const string LiteralQuantityComparatorSufficientToAchieveThisTotalQuantity = "http://hl7.org/fhir/quantity-comparator#ad";
+
+    /// <summary>
+    /// Dictionary for looking up QuantityComparator Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "<", LessThan }, 
+      { "http://hl7.org/fhir/quantity-comparator#<", LessThan }, 
+      { "<=", LessOrEqualTo }, 
+      { "http://hl7.org/fhir/quantity-comparator#<=", LessOrEqualTo }, 
+      { ">", GreaterThan }, 
+      { "http://hl7.org/fhir/quantity-comparator#>", GreaterThan }, 
+      { ">=", GreaterOrEqualTo }, 
+      { "http://hl7.org/fhir/quantity-comparator#>=", GreaterOrEqualTo }, 
+      { "ad", SufficientToAchieveThisTotalQuantity }, 
+      { "http://hl7.org/fhir/quantity-comparator#ad", SufficientToAchieveThisTotalQuantity }, 
+    };
   };
 }

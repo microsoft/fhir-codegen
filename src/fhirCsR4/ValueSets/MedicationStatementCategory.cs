@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCommunity = "community";
 
     /// <summary>
+    /// Literal for code: MedicationStatementCategoryCommunity
+    /// </summary>
+    public const string LiteralMedicationStatementCategoryCommunity = "http://terminology.hl7.org/CodeSystem/medication-statement-category#community";
+
+    /// <summary>
     /// Literal for code: Inpatient
     /// </summary>
     public const string LiteralInpatient = "inpatient";
+
+    /// <summary>
+    /// Literal for code: MedicationStatementCategoryInpatient
+    /// </summary>
+    public const string LiteralMedicationStatementCategoryInpatient = "http://terminology.hl7.org/CodeSystem/medication-statement-category#inpatient";
 
     /// <summary>
     /// Literal for code: Outpatient
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOutpatient = "outpatient";
 
     /// <summary>
+    /// Literal for code: MedicationStatementCategoryOutpatient
+    /// </summary>
+    public const string LiteralMedicationStatementCategoryOutpatient = "http://terminology.hl7.org/CodeSystem/medication-statement-category#outpatient";
+
+    /// <summary>
     /// Literal for code: PatientSpecified
     /// </summary>
     public const string LiteralPatientSpecified = "patientspecified";
+
+    /// <summary>
+    /// Literal for code: MedicationStatementCategoryPatientSpecified
+    /// </summary>
+    public const string LiteralMedicationStatementCategoryPatientSpecified = "http://terminology.hl7.org/CodeSystem/medication-statement-category#patientspecified";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationStatementCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "community", Community }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-statement-category#community", Community }, 
+      { "inpatient", Inpatient }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-statement-category#inpatient", Inpatient }, 
+      { "outpatient", Outpatient }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-statement-category#outpatient", Outpatient }, 
+      { "patientspecified", PatientSpecified }, 
+      { "http://terminology.hl7.org/CodeSystem/medication-statement-category#patientspecified", PatientSpecified }, 
+    };
   };
 }

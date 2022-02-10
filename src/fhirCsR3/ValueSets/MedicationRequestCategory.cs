@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCommunity = "community";
 
     /// <summary>
+    /// Literal for code: MedicationRequestCategoryCommunity
+    /// </summary>
+    public const string LiteralMedicationRequestCategoryCommunity = "http://hl7.org/fhir/medication-request-category#community";
+
+    /// <summary>
     /// Literal for code: Inpatient
     /// </summary>
     public const string LiteralInpatient = "inpatient";
 
     /// <summary>
+    /// Literal for code: MedicationRequestCategoryInpatient
+    /// </summary>
+    public const string LiteralMedicationRequestCategoryInpatient = "http://hl7.org/fhir/medication-request-category#inpatient";
+
+    /// <summary>
     /// Literal for code: Outpatient
     /// </summary>
     public const string LiteralOutpatient = "outpatient";
+
+    /// <summary>
+    /// Literal for code: MedicationRequestCategoryOutpatient
+    /// </summary>
+    public const string LiteralMedicationRequestCategoryOutpatient = "http://hl7.org/fhir/medication-request-category#outpatient";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationRequestCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "community", Community }, 
+      { "http://hl7.org/fhir/medication-request-category#community", Community }, 
+      { "inpatient", Inpatient }, 
+      { "http://hl7.org/fhir/medication-request-category#inpatient", Inpatient }, 
+      { "outpatient", Outpatient }, 
+      { "http://hl7.org/fhir/medication-request-category#outpatient", Outpatient }, 
+    };
   };
 }

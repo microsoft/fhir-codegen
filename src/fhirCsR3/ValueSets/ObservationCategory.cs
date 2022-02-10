@@ -90,9 +90,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExam = "exam";
 
     /// <summary>
+    /// Literal for code: ObservationCategoryExam
+    /// </summary>
+    public const string LiteralObservationCategoryExam = "http://hl7.org/fhir/observation-category#exam";
+
+    /// <summary>
     /// Literal for code: Imaging
     /// </summary>
     public const string LiteralImaging = "imaging";
+
+    /// <summary>
+    /// Literal for code: ObservationCategoryImaging
+    /// </summary>
+    public const string LiteralObservationCategoryImaging = "http://hl7.org/fhir/observation-category#imaging";
 
     /// <summary>
     /// Literal for code: Laboratory
@@ -100,9 +110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLaboratory = "laboratory";
 
     /// <summary>
+    /// Literal for code: ObservationCategoryLaboratory
+    /// </summary>
+    public const string LiteralObservationCategoryLaboratory = "http://hl7.org/fhir/observation-category#laboratory";
+
+    /// <summary>
     /// Literal for code: Procedure
     /// </summary>
     public const string LiteralProcedure = "procedure";
+
+    /// <summary>
+    /// Literal for code: ObservationCategoryProcedure
+    /// </summary>
+    public const string LiteralObservationCategoryProcedure = "http://hl7.org/fhir/observation-category#procedure";
 
     /// <summary>
     /// Literal for code: SocialHistory
@@ -110,9 +130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSocialHistory = "social-history";
 
     /// <summary>
+    /// Literal for code: ObservationCategorySocialHistory
+    /// </summary>
+    public const string LiteralObservationCategorySocialHistory = "http://hl7.org/fhir/observation-category#social-history";
+
+    /// <summary>
     /// Literal for code: Survey
     /// </summary>
     public const string LiteralSurvey = "survey";
+
+    /// <summary>
+    /// Literal for code: ObservationCategorySurvey
+    /// </summary>
+    public const string LiteralObservationCategorySurvey = "http://hl7.org/fhir/observation-category#survey";
 
     /// <summary>
     /// Literal for code: Therapy
@@ -120,8 +150,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTherapy = "therapy";
 
     /// <summary>
+    /// Literal for code: ObservationCategoryTherapy
+    /// </summary>
+    public const string LiteralObservationCategoryTherapy = "http://hl7.org/fhir/observation-category#therapy";
+
+    /// <summary>
     /// Literal for code: VitalSigns
     /// </summary>
     public const string LiteralVitalSigns = "vital-signs";
+
+    /// <summary>
+    /// Literal for code: ObservationCategoryVitalSigns
+    /// </summary>
+    public const string LiteralObservationCategoryVitalSigns = "http://hl7.org/fhir/observation-category#vital-signs";
+
+    /// <summary>
+    /// Dictionary for looking up ObservationCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "exam", Exam }, 
+      { "http://hl7.org/fhir/observation-category#exam", Exam }, 
+      { "imaging", Imaging }, 
+      { "http://hl7.org/fhir/observation-category#imaging", Imaging }, 
+      { "laboratory", Laboratory }, 
+      { "http://hl7.org/fhir/observation-category#laboratory", Laboratory }, 
+      { "procedure", Procedure }, 
+      { "http://hl7.org/fhir/observation-category#procedure", Procedure }, 
+      { "social-history", SocialHistory }, 
+      { "http://hl7.org/fhir/observation-category#social-history", SocialHistory }, 
+      { "survey", Survey }, 
+      { "http://hl7.org/fhir/observation-category#survey", Survey }, 
+      { "therapy", Therapy }, 
+      { "http://hl7.org/fhir/observation-category#therapy", Therapy }, 
+      { "vital-signs", VitalSigns }, 
+      { "http://hl7.org/fhir/observation-category#vital-signs", VitalSigns }, 
+    };
   };
 }

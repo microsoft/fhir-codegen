@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class ProvenanceActivityTypeCodes
   {
     /// <summary>
-    /// 
+    /// ParticipationAncillary
     /// </summary>
     public static readonly Coding ParticipationAncillary = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// ParticipationInformationGenerator
     /// </summary>
     public static readonly Coding ParticipationInformationGenerator = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// admitter
     /// </summary>
     public static readonly Coding Admitter = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// analyte
     /// </summary>
     public static readonly Coding Analyte = new Coding
     {
@@ -64,7 +64,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-DataOperation"
     };
     /// <summary>
-    /// 
+    /// attender
     /// </summary>
     public static readonly Coding Attender = new Coding
     {
@@ -73,7 +73,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// author (originator)
     /// </summary>
     public static readonly Coding AuthorOriginator = new Coding
     {
@@ -82,7 +82,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// authenticator
     /// </summary>
     public static readonly Coding Authenticator = new Coding
     {
@@ -91,7 +91,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// baby
     /// </summary>
     public static readonly Coding Baby = new Coding
     {
@@ -100,7 +100,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// beneficiary
     /// </summary>
     public static readonly Coding Beneficiary = new Coding
     {
@@ -109,7 +109,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// causative agent
     /// </summary>
     public static readonly Coding CausativeAgent = new Coding
     {
@@ -118,7 +118,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// callback contact
     /// </summary>
     public static readonly Coding CallbackContact = new Coding
     {
@@ -127,7 +127,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// catalyst
     /// </summary>
     public static readonly Coding Catalyst = new Coding
     {
@@ -136,7 +136,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// consultant
     /// </summary>
     public static readonly Coding Consultant = new Coding
     {
@@ -145,7 +145,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// coverage target
     /// </summary>
     public static readonly Coding CoverageTarget = new Coding
     {
@@ -162,7 +162,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-DataOperation"
     };
     /// <summary>
-    /// 
+    /// consumable
     /// </summary>
     public static readonly Coding Consumable = new Coding
     {
@@ -171,7 +171,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// custodian
     /// </summary>
     public static readonly Coding Custodian = new Coding
     {
@@ -196,7 +196,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-DataOperation"
     };
     /// <summary>
-    /// 
+    /// device
     /// </summary>
     public static readonly Coding Device = new Coding
     {
@@ -205,7 +205,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// direct target
     /// </summary>
     public static readonly Coding DirectTarget = new Coding
     {
@@ -214,7 +214,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// discharger
     /// </summary>
     public static readonly Coding Discharger = new Coding
     {
@@ -223,7 +223,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// distributor
     /// </summary>
     public static readonly Coding Distributor = new Coding
     {
@@ -232,7 +232,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// donor
     /// </summary>
     public static readonly Coding Donor = new Coding
     {
@@ -241,7 +241,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// destination
     /// </summary>
     public static readonly Coding Destination = new Coding
     {
@@ -250,7 +250,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// entry location
     /// </summary>
     public static readonly Coding EntryLocation = new Coding
     {
@@ -259,7 +259,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// data entry person
     /// </summary>
     public static readonly Coding DataEntryPerson = new Coding
     {
@@ -268,7 +268,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// escort
     /// </summary>
     public static readonly Coding Escort = new Coding
     {
@@ -277,7 +277,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// ExposureAgent
     /// </summary>
     public static readonly Coding ExposureAgent = new Coding
     {
@@ -286,7 +286,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// ExposureParticipation
     /// </summary>
     public static readonly Coding ExposureParticipation = new Coding
     {
@@ -295,7 +295,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// ExposureTarget
     /// </summary>
     public static readonly Coding ExposureTarget = new Coding
     {
@@ -304,7 +304,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// ExposureSource
     /// </summary>
     public static readonly Coding ExposureSource = new Coding
     {
@@ -313,7 +313,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// guarantor party
     /// </summary>
     public static readonly Coding GuarantorParty = new Coding
     {
@@ -322,7 +322,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// holder
     /// </summary>
     public static readonly Coding Holder = new Coding
     {
@@ -331,7 +331,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// indirect target
     /// </summary>
     public static readonly Coding IndirectTarget = new Coding
     {
@@ -340,7 +340,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// informant
     /// </summary>
     public static readonly Coding Informant = new Coding
     {
@@ -349,7 +349,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// information recipient
     /// </summary>
     public static readonly Coding InformationRecipient = new Coding
     {
@@ -366,7 +366,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-DocumentCompletion"
     };
     /// <summary>
-    /// 
+    /// legal authenticator
     /// </summary>
     public static readonly Coding LegalAuthenticator = new Coding
     {
@@ -383,7 +383,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// location
     /// </summary>
     public static readonly Coding Location = new Coding
     {
@@ -400,7 +400,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// ugent notification contact
     /// </summary>
     public static readonly Coding UgentNotificationContact = new Coding
     {
@@ -409,7 +409,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// non-reuseable device
     /// </summary>
     public static readonly Coding NonReuseableDevice = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-DataOperation"
     };
     /// <summary>
-    /// 
+    /// origin
     /// </summary>
     public static readonly Coding Origin = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// Participation
     /// </summary>
     public static readonly Coding Participation = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// primary performer
     /// </summary>
     public static readonly Coding PrimaryPerformer = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// primary information recipient
     /// </summary>
     public static readonly Coding PrimaryInformationRecipient = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// product
     /// </summary>
     public static readonly Coding Product = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// performer
     /// </summary>
     public static readonly Coding Performer = new Coding
     {
@@ -488,7 +488,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
     };
     /// <summary>
-    /// 
+    /// record target
     /// </summary>
     public static readonly Coding RecordTarget = new Coding
     {
@@ -497,7 +497,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// receiver
     /// </summary>
     public static readonly Coding Receiver = new Coding
     {
@@ -506,7 +506,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// reusable device
     /// </summary>
     public static readonly Coding ReusableDevice = new Coding
     {
@@ -515,7 +515,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// referrer
     /// </summary>
     public static readonly Coding Referrer = new Coding
     {
@@ -524,7 +524,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// Referred By
     /// </summary>
     public static readonly Coding ReferredBy = new Coding
     {
@@ -533,7 +533,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// Referred to
     /// </summary>
     public static readonly Coding ReferredTo = new Coding
     {
@@ -542,7 +542,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// responsible party
     /// </summary>
     public static readonly Coding ResponsibleParty = new Coding
     {
@@ -551,7 +551,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// remote
     /// </summary>
     public static readonly Coding Remote = new Coding
     {
@@ -560,7 +560,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// subject
     /// </summary>
     public static readonly Coding Subject = new Coding
     {
@@ -569,7 +569,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// specimen
     /// </summary>
     public static readonly Coding Specimen = new Coding
     {
@@ -578,7 +578,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// secondary performer
     /// </summary>
     public static readonly Coding SecondaryPerformer = new Coding
     {
@@ -587,7 +587,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// therapeutic agent
     /// </summary>
     public static readonly Coding TherapeuticAgent = new Coding
     {
@@ -596,7 +596,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// Transcriber
     /// </summary>
     public static readonly Coding Transcriber = new Coding
     {
@@ -605,7 +605,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// tracker
     /// </summary>
     public static readonly Coding Tracker = new Coding
     {
@@ -622,7 +622,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-DataOperation"
     };
     /// <summary>
-    /// 
+    /// via
     /// </summary>
     public static readonly Coding Via = new Coding
     {
@@ -631,7 +631,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// verifier
     /// </summary>
     public static readonly Coding Verifier = new Coding
     {
@@ -640,7 +640,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
     };
     /// <summary>
-    /// 
+    /// witness
     /// </summary>
     public static readonly Coding Witness = new Coding
     {
@@ -655,9 +655,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralParticipationAncillary = "_ParticipationAncillary";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeParticipationAncillary
+    /// </summary>
+    public const string LiteralV3ParticipationTypeParticipationAncillary = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#_ParticipationAncillary";
+
+    /// <summary>
     /// Literal for code: ParticipationInformationGenerator
     /// </summary>
     public const string LiteralParticipationInformationGenerator = "_ParticipationInformationGenerator";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeParticipationInformationGenerator
+    /// </summary>
+    public const string LiteralV3ParticipationTypeParticipationInformationGenerator = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#_ParticipationInformationGenerator";
 
     /// <summary>
     /// Literal for code: Admitter
@@ -665,9 +675,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdmitter = "ADM";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeAdmitter
+    /// </summary>
+    public const string LiteralV3ParticipationTypeAdmitter = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ADM";
+
+    /// <summary>
     /// Literal for code: Analyte
     /// </summary>
     public const string LiteralAnalyte = "ALY";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeAnalyte
+    /// </summary>
+    public const string LiteralV3ParticipationTypeAnalyte = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ALY";
 
     /// <summary>
     /// Literal for code: ANONY
@@ -675,9 +695,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralANONY = "ANONY";
 
     /// <summary>
+    /// Literal for code: V3ActCodeANONY
+    /// </summary>
+    public const string LiteralV3ActCodeANONY = "http://terminology.hl7.org/CodeSystem/v3-ActCode#ANONY";
+
+    /// <summary>
     /// Literal for code: APPEND
     /// </summary>
     public const string LiteralAPPEND = "APPEND";
+
+    /// <summary>
+    /// Literal for code: V3DataOperationAPPEND
+    /// </summary>
+    public const string LiteralV3DataOperationAPPEND = "http://terminology.hl7.org/CodeSystem/v3-DataOperation#APPEND";
 
     /// <summary>
     /// Literal for code: Attender
@@ -685,9 +715,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAttender = "ATND";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeAttender
+    /// </summary>
+    public const string LiteralV3ParticipationTypeAttender = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ATND";
+
+    /// <summary>
     /// Literal for code: AuthorOriginator
     /// </summary>
     public const string LiteralAuthorOriginator = "AUT";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeAuthorOriginator
+    /// </summary>
+    public const string LiteralV3ParticipationTypeAuthorOriginator = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#AUT";
 
     /// <summary>
     /// Literal for code: Authenticator
@@ -695,9 +735,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAuthenticator = "AUTHEN";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeAuthenticator
+    /// </summary>
+    public const string LiteralV3ParticipationTypeAuthenticator = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#AUTHEN";
+
+    /// <summary>
     /// Literal for code: Baby
     /// </summary>
     public const string LiteralBaby = "BBY";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeBaby
+    /// </summary>
+    public const string LiteralV3ParticipationTypeBaby = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#BBY";
 
     /// <summary>
     /// Literal for code: Beneficiary
@@ -705,9 +755,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBeneficiary = "BEN";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeBeneficiary
+    /// </summary>
+    public const string LiteralV3ParticipationTypeBeneficiary = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#BEN";
+
+    /// <summary>
     /// Literal for code: CausativeAgent
     /// </summary>
     public const string LiteralCausativeAgent = "CAGNT";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeCausativeAgent
+    /// </summary>
+    public const string LiteralV3ParticipationTypeCausativeAgent = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CAGNT";
 
     /// <summary>
     /// Literal for code: CallbackContact
@@ -715,9 +775,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCallbackContact = "CALLBCK";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeCallbackContact
+    /// </summary>
+    public const string LiteralV3ParticipationTypeCallbackContact = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CALLBCK";
+
+    /// <summary>
     /// Literal for code: Catalyst
     /// </summary>
     public const string LiteralCatalyst = "CAT";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeCatalyst
+    /// </summary>
+    public const string LiteralV3ParticipationTypeCatalyst = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CAT";
 
     /// <summary>
     /// Literal for code: Consultant
@@ -725,9 +795,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralConsultant = "CON";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeConsultant
+    /// </summary>
+    public const string LiteralV3ParticipationTypeConsultant = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CON";
+
+    /// <summary>
     /// Literal for code: CoverageTarget
     /// </summary>
     public const string LiteralCoverageTarget = "COV";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeCoverageTarget
+    /// </summary>
+    public const string LiteralV3ParticipationTypeCoverageTarget = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#COV";
 
     /// <summary>
     /// Literal for code: CREATE
@@ -735,9 +815,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCREATE = "CREATE";
 
     /// <summary>
+    /// Literal for code: V3DataOperationCREATE
+    /// </summary>
+    public const string LiteralV3DataOperationCREATE = "http://terminology.hl7.org/CodeSystem/v3-DataOperation#CREATE";
+
+    /// <summary>
     /// Literal for code: Consumable
     /// </summary>
     public const string LiteralConsumable = "CSM";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeConsumable
+    /// </summary>
+    public const string LiteralV3ParticipationTypeConsumable = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CSM";
 
     /// <summary>
     /// Literal for code: Custodian
@@ -745,9 +835,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCustodian = "CST";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeCustodian
+    /// </summary>
+    public const string LiteralV3ParticipationTypeCustodian = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CST";
+
+    /// <summary>
     /// Literal for code: DEID
     /// </summary>
     public const string LiteralDEID = "DEID";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeDEID
+    /// </summary>
+    public const string LiteralV3ActCodeDEID = "http://terminology.hl7.org/CodeSystem/v3-ActCode#DEID";
 
     /// <summary>
     /// Literal for code: DELETE
@@ -755,9 +855,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDELETE = "DELETE";
 
     /// <summary>
+    /// Literal for code: V3DataOperationDELETE
+    /// </summary>
+    public const string LiteralV3DataOperationDELETE = "http://terminology.hl7.org/CodeSystem/v3-DataOperation#DELETE";
+
+    /// <summary>
     /// Literal for code: Device
     /// </summary>
     public const string LiteralDevice = "DEV";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeDevice
+    /// </summary>
+    public const string LiteralV3ParticipationTypeDevice = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DEV";
 
     /// <summary>
     /// Literal for code: DirectTarget
@@ -765,9 +875,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDirectTarget = "DIR";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeDirectTarget
+    /// </summary>
+    public const string LiteralV3ParticipationTypeDirectTarget = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DIR";
+
+    /// <summary>
     /// Literal for code: Discharger
     /// </summary>
     public const string LiteralDischarger = "DIS";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeDischarger
+    /// </summary>
+    public const string LiteralV3ParticipationTypeDischarger = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DIS";
 
     /// <summary>
     /// Literal for code: Distributor
@@ -775,9 +895,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDistributor = "DIST";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeDistributor
+    /// </summary>
+    public const string LiteralV3ParticipationTypeDistributor = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DIST";
+
+    /// <summary>
     /// Literal for code: Donor
     /// </summary>
     public const string LiteralDonor = "DON";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeDonor
+    /// </summary>
+    public const string LiteralV3ParticipationTypeDonor = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DON";
 
     /// <summary>
     /// Literal for code: Destination
@@ -785,9 +915,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDestination = "DST";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeDestination
+    /// </summary>
+    public const string LiteralV3ParticipationTypeDestination = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DST";
+
+    /// <summary>
     /// Literal for code: EntryLocation
     /// </summary>
     public const string LiteralEntryLocation = "ELOC";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeEntryLocation
+    /// </summary>
+    public const string LiteralV3ParticipationTypeEntryLocation = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ELOC";
 
     /// <summary>
     /// Literal for code: DataEntryPerson
@@ -795,9 +935,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDataEntryPerson = "ENT";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeDataEntryPerson
+    /// </summary>
+    public const string LiteralV3ParticipationTypeDataEntryPerson = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ENT";
+
+    /// <summary>
     /// Literal for code: Escort
     /// </summary>
     public const string LiteralEscort = "ESC";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeEscort
+    /// </summary>
+    public const string LiteralV3ParticipationTypeEscort = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ESC";
 
     /// <summary>
     /// Literal for code: ExposureAgent
@@ -805,9 +955,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExposureAgent = "EXPAGNT";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeExposureAgent
+    /// </summary>
+    public const string LiteralV3ParticipationTypeExposureAgent = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#EXPAGNT";
+
+    /// <summary>
     /// Literal for code: ExposureParticipation
     /// </summary>
     public const string LiteralExposureParticipation = "EXPART";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeExposureParticipation
+    /// </summary>
+    public const string LiteralV3ParticipationTypeExposureParticipation = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#EXPART";
 
     /// <summary>
     /// Literal for code: ExposureTarget
@@ -815,9 +975,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExposureTarget = "EXPTRGT";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeExposureTarget
+    /// </summary>
+    public const string LiteralV3ParticipationTypeExposureTarget = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#EXPTRGT";
+
+    /// <summary>
     /// Literal for code: ExposureSource
     /// </summary>
     public const string LiteralExposureSource = "EXSRC";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeExposureSource
+    /// </summary>
+    public const string LiteralV3ParticipationTypeExposureSource = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#EXSRC";
 
     /// <summary>
     /// Literal for code: GuarantorParty
@@ -825,9 +995,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGuarantorParty = "GUAR";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeGuarantorParty
+    /// </summary>
+    public const string LiteralV3ParticipationTypeGuarantorParty = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#GUAR";
+
+    /// <summary>
     /// Literal for code: Holder
     /// </summary>
     public const string LiteralHolder = "HLD";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeHolder
+    /// </summary>
+    public const string LiteralV3ParticipationTypeHolder = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#HLD";
 
     /// <summary>
     /// Literal for code: IndirectTarget
@@ -835,9 +1015,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIndirectTarget = "IND";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeIndirectTarget
+    /// </summary>
+    public const string LiteralV3ParticipationTypeIndirectTarget = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#IND";
+
+    /// <summary>
     /// Literal for code: Informant
     /// </summary>
     public const string LiteralInformant = "INF";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeInformant
+    /// </summary>
+    public const string LiteralV3ParticipationTypeInformant = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#INF";
 
     /// <summary>
     /// Literal for code: InformationRecipient
@@ -845,9 +1035,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInformationRecipient = "IRCP";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeInformationRecipient
+    /// </summary>
+    public const string LiteralV3ParticipationTypeInformationRecipient = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#IRCP";
+
+    /// <summary>
     /// Literal for code: LA
     /// </summary>
     public const string LiteralLA = "LA";
+
+    /// <summary>
+    /// Literal for code: V3DocumentCompletionLA
+    /// </summary>
+    public const string LiteralV3DocumentCompletionLA = "http://terminology.hl7.org/CodeSystem/v3-DocumentCompletion#LA";
 
     /// <summary>
     /// Literal for code: LegalAuthenticator
@@ -855,9 +1055,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLegalAuthenticator = "LA";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeLegalAuthenticator
+    /// </summary>
+    public const string LiteralV3ParticipationTypeLegalAuthenticator = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#LA";
+
+    /// <summary>
     /// Literal for code: LABEL
     /// </summary>
     public const string LiteralLABEL = "LABEL";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeLABEL
+    /// </summary>
+    public const string LiteralV3ActCodeLABEL = "http://terminology.hl7.org/CodeSystem/v3-ActCode#LABEL";
 
     /// <summary>
     /// Literal for code: Location
@@ -865,9 +1075,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLocation = "LOC";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeLocation
+    /// </summary>
+    public const string LiteralV3ParticipationTypeLocation = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#LOC";
+
+    /// <summary>
     /// Literal for code: MASK
     /// </summary>
     public const string LiteralMASK = "MASK";
+
+    /// <summary>
+    /// Literal for code: V3ActCodeMASK
+    /// </summary>
+    public const string LiteralV3ActCodeMASK = "http://terminology.hl7.org/CodeSystem/v3-ActCode#MASK";
 
     /// <summary>
     /// Literal for code: UgentNotificationContact
@@ -875,9 +1095,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUgentNotificationContact = "NOT";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeUgentNotificationContact
+    /// </summary>
+    public const string LiteralV3ParticipationTypeUgentNotificationContact = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#NOT";
+
+    /// <summary>
     /// Literal for code: NonReuseableDevice
     /// </summary>
     public const string LiteralNonReuseableDevice = "NRD";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeNonReuseableDevice
+    /// </summary>
+    public const string LiteralV3ParticipationTypeNonReuseableDevice = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#NRD";
 
     /// <summary>
     /// Literal for code: NULLIFY
@@ -885,9 +1115,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNULLIFY = "NULLIFY";
 
     /// <summary>
+    /// Literal for code: V3DataOperationNULLIFY
+    /// </summary>
+    public const string LiteralV3DataOperationNULLIFY = "http://terminology.hl7.org/CodeSystem/v3-DataOperation#NULLIFY";
+
+    /// <summary>
     /// Literal for code: Origin
     /// </summary>
     public const string LiteralOrigin = "ORG";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeOrigin
+    /// </summary>
+    public const string LiteralV3ParticipationTypeOrigin = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ORG";
 
     /// <summary>
     /// Literal for code: Participation
@@ -895,9 +1135,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralParticipation = "PART";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeParticipation
+    /// </summary>
+    public const string LiteralV3ParticipationTypeParticipation = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PART";
+
+    /// <summary>
     /// Literal for code: PrimaryPerformer
     /// </summary>
     public const string LiteralPrimaryPerformer = "PPRF";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypePrimaryPerformer
+    /// </summary>
+    public const string LiteralV3ParticipationTypePrimaryPerformer = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PPRF";
 
     /// <summary>
     /// Literal for code: PrimaryInformationRecipient
@@ -905,9 +1155,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPrimaryInformationRecipient = "PRCP";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypePrimaryInformationRecipient
+    /// </summary>
+    public const string LiteralV3ParticipationTypePrimaryInformationRecipient = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PRCP";
+
+    /// <summary>
     /// Literal for code: Product
     /// </summary>
     public const string LiteralProduct = "PRD";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeProduct
+    /// </summary>
+    public const string LiteralV3ParticipationTypeProduct = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PRD";
 
     /// <summary>
     /// Literal for code: Performer
@@ -915,9 +1175,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPerformer = "PRF";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypePerformer
+    /// </summary>
+    public const string LiteralV3ParticipationTypePerformer = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PRF";
+
+    /// <summary>
     /// Literal for code: PSEUD
     /// </summary>
     public const string LiteralPSEUD = "PSEUD";
+
+    /// <summary>
+    /// Literal for code: V3ActCodePSEUD
+    /// </summary>
+    public const string LiteralV3ActCodePSEUD = "http://terminology.hl7.org/CodeSystem/v3-ActCode#PSEUD";
 
     /// <summary>
     /// Literal for code: RecordTarget
@@ -925,9 +1195,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRecordTarget = "RCT";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeRecordTarget
+    /// </summary>
+    public const string LiteralV3ParticipationTypeRecordTarget = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#RCT";
+
+    /// <summary>
     /// Literal for code: Receiver
     /// </summary>
     public const string LiteralReceiver = "RCV";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeReceiver
+    /// </summary>
+    public const string LiteralV3ParticipationTypeReceiver = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#RCV";
 
     /// <summary>
     /// Literal for code: ReusableDevice
@@ -935,9 +1215,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralReusableDevice = "RDV";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeReusableDevice
+    /// </summary>
+    public const string LiteralV3ParticipationTypeReusableDevice = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#RDV";
+
+    /// <summary>
     /// Literal for code: Referrer
     /// </summary>
     public const string LiteralReferrer = "REF";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeReferrer
+    /// </summary>
+    public const string LiteralV3ParticipationTypeReferrer = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#REF";
 
     /// <summary>
     /// Literal for code: ReferredBy
@@ -945,9 +1235,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralReferredBy = "REFB";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeReferredBy
+    /// </summary>
+    public const string LiteralV3ParticipationTypeReferredBy = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#REFB";
+
+    /// <summary>
     /// Literal for code: ReferredTo
     /// </summary>
     public const string LiteralReferredTo = "REFT";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeReferredTo
+    /// </summary>
+    public const string LiteralV3ParticipationTypeReferredTo = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#REFT";
 
     /// <summary>
     /// Literal for code: ResponsibleParty
@@ -955,9 +1255,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralResponsibleParty = "RESP";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeResponsibleParty
+    /// </summary>
+    public const string LiteralV3ParticipationTypeResponsibleParty = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#RESP";
+
+    /// <summary>
     /// Literal for code: Remote
     /// </summary>
     public const string LiteralRemote = "RML";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeRemote
+    /// </summary>
+    public const string LiteralV3ParticipationTypeRemote = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#RML";
 
     /// <summary>
     /// Literal for code: Subject
@@ -965,9 +1275,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSubject = "SBJ";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeSubject
+    /// </summary>
+    public const string LiteralV3ParticipationTypeSubject = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SBJ";
+
+    /// <summary>
     /// Literal for code: Specimen
     /// </summary>
     public const string LiteralSpecimen = "SPC";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeSpecimen
+    /// </summary>
+    public const string LiteralV3ParticipationTypeSpecimen = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPC";
 
     /// <summary>
     /// Literal for code: SecondaryPerformer
@@ -975,9 +1295,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSecondaryPerformer = "SPRF";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeSecondaryPerformer
+    /// </summary>
+    public const string LiteralV3ParticipationTypeSecondaryPerformer = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF";
+
+    /// <summary>
     /// Literal for code: TherapeuticAgent
     /// </summary>
     public const string LiteralTherapeuticAgent = "TPA";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeTherapeuticAgent
+    /// </summary>
+    public const string LiteralV3ParticipationTypeTherapeuticAgent = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#TPA";
 
     /// <summary>
     /// Literal for code: Transcriber
@@ -985,9 +1315,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTranscriber = "TRANS";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeTranscriber
+    /// </summary>
+    public const string LiteralV3ParticipationTypeTranscriber = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#TRANS";
+
+    /// <summary>
     /// Literal for code: Tracker
     /// </summary>
     public const string LiteralTracker = "TRC";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeTracker
+    /// </summary>
+    public const string LiteralV3ParticipationTypeTracker = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#TRC";
 
     /// <summary>
     /// Literal for code: UPDATE
@@ -995,9 +1335,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUPDATE = "UPDATE";
 
     /// <summary>
+    /// Literal for code: V3DataOperationUPDATE
+    /// </summary>
+    public const string LiteralV3DataOperationUPDATE = "http://terminology.hl7.org/CodeSystem/v3-DataOperation#UPDATE";
+
+    /// <summary>
     /// Literal for code: Via
     /// </summary>
     public const string LiteralVia = "VIA";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeVia
+    /// </summary>
+    public const string LiteralV3ParticipationTypeVia = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#VIA";
 
     /// <summary>
     /// Literal for code: Verifier
@@ -1005,8 +1355,168 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVerifier = "VRF";
 
     /// <summary>
+    /// Literal for code: V3ParticipationTypeVerifier
+    /// </summary>
+    public const string LiteralV3ParticipationTypeVerifier = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#VRF";
+
+    /// <summary>
     /// Literal for code: Witness
     /// </summary>
     public const string LiteralWitness = "WIT";
+
+    /// <summary>
+    /// Literal for code: V3ParticipationTypeWitness
+    /// </summary>
+    public const string LiteralV3ParticipationTypeWitness = "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#WIT";
+
+    /// <summary>
+    /// Dictionary for looking up ProvenanceActivityType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "_ParticipationAncillary", ParticipationAncillary }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#_ParticipationAncillary", ParticipationAncillary }, 
+      { "_ParticipationInformationGenerator", ParticipationInformationGenerator }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#_ParticipationInformationGenerator", ParticipationInformationGenerator }, 
+      { "ADM", Admitter }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ADM", Admitter }, 
+      { "ALY", Analyte }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ALY", Analyte }, 
+      { "ANONY", ANONY }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#ANONY", ANONY }, 
+      { "APPEND", APPEND }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-DataOperation#APPEND", APPEND }, 
+      { "ATND", Attender }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ATND", Attender }, 
+      { "AUT", AuthorOriginator }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#AUT", AuthorOriginator }, 
+      { "AUTHEN", Authenticator }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#AUTHEN", Authenticator }, 
+      { "BBY", Baby }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#BBY", Baby }, 
+      { "BEN", Beneficiary }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#BEN", Beneficiary }, 
+      { "CAGNT", CausativeAgent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CAGNT", CausativeAgent }, 
+      { "CALLBCK", CallbackContact }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CALLBCK", CallbackContact }, 
+      { "CAT", Catalyst }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CAT", Catalyst }, 
+      { "CON", Consultant }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CON", Consultant }, 
+      { "COV", CoverageTarget }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#COV", CoverageTarget }, 
+      { "CREATE", CREATE }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-DataOperation#CREATE", CREATE }, 
+      { "CSM", Consumable }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CSM", Consumable }, 
+      { "CST", Custodian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CST", Custodian }, 
+      { "DEID", DEID }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#DEID", DEID }, 
+      { "DELETE", DELETE }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-DataOperation#DELETE", DELETE }, 
+      { "DEV", Device }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DEV", Device }, 
+      { "DIR", DirectTarget }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DIR", DirectTarget }, 
+      { "DIS", Discharger }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DIS", Discharger }, 
+      { "DIST", Distributor }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DIST", Distributor }, 
+      { "DON", Donor }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DON", Donor }, 
+      { "DST", Destination }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DST", Destination }, 
+      { "ELOC", EntryLocation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ELOC", EntryLocation }, 
+      { "ENT", DataEntryPerson }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ENT", DataEntryPerson }, 
+      { "ESC", Escort }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ESC", Escort }, 
+      { "EXPAGNT", ExposureAgent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#EXPAGNT", ExposureAgent }, 
+      { "EXPART", ExposureParticipation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#EXPART", ExposureParticipation }, 
+      { "EXPTRGT", ExposureTarget }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#EXPTRGT", ExposureTarget }, 
+      { "EXSRC", ExposureSource }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#EXSRC", ExposureSource }, 
+      { "GUAR", GuarantorParty }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#GUAR", GuarantorParty }, 
+      { "HLD", Holder }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#HLD", Holder }, 
+      { "IND", IndirectTarget }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#IND", IndirectTarget }, 
+      { "INF", Informant }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#INF", Informant }, 
+      { "IRCP", InformationRecipient }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#IRCP", InformationRecipient }, 
+      { "LA", LA }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-DocumentCompletion#LA", LA }, 
+      { "LA", LegalAuthenticator }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#LA", LegalAuthenticator }, 
+      { "LABEL", LABEL }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#LABEL", LABEL }, 
+      { "LOC", Location }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#LOC", Location }, 
+      { "MASK", MASK }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#MASK", MASK }, 
+      { "NOT", UgentNotificationContact }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#NOT", UgentNotificationContact }, 
+      { "NRD", NonReuseableDevice }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#NRD", NonReuseableDevice }, 
+      { "NULLIFY", NULLIFY }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-DataOperation#NULLIFY", NULLIFY }, 
+      { "ORG", Origin }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ORG", Origin }, 
+      { "PART", Participation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PART", Participation }, 
+      { "PPRF", PrimaryPerformer }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PPRF", PrimaryPerformer }, 
+      { "PRCP", PrimaryInformationRecipient }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PRCP", PrimaryInformationRecipient }, 
+      { "PRD", Product }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PRD", Product }, 
+      { "PRF", Performer }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PRF", Performer }, 
+      { "PSEUD", PSEUD }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActCode#PSEUD", PSEUD }, 
+      { "RCT", RecordTarget }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#RCT", RecordTarget }, 
+      { "RCV", Receiver }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#RCV", Receiver }, 
+      { "RDV", ReusableDevice }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#RDV", ReusableDevice }, 
+      { "REF", Referrer }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#REF", Referrer }, 
+      { "REFB", ReferredBy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#REFB", ReferredBy }, 
+      { "REFT", ReferredTo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#REFT", ReferredTo }, 
+      { "RESP", ResponsibleParty }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#RESP", ResponsibleParty }, 
+      { "RML", Remote }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#RML", Remote }, 
+      { "SBJ", Subject }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SBJ", Subject }, 
+      { "SPC", Specimen }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPC", Specimen }, 
+      { "SPRF", SecondaryPerformer }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF", SecondaryPerformer }, 
+      { "TPA", TherapeuticAgent }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#TPA", TherapeuticAgent }, 
+      { "TRANS", Transcriber }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#TRANS", Transcriber }, 
+      { "TRC", Tracker }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#TRC", Tracker }, 
+      { "UPDATE", UPDATE }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-DataOperation#UPDATE", UPDATE }, 
+      { "VIA", Via }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#VIA", Via }, 
+      { "VRF", Verifier }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#VRF", Verifier }, 
+      { "WIT", Witness }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ParticipationType#WIT", Witness }, 
+    };
   };
 }

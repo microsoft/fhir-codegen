@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralComplexDataType = "complex-type";
 
     /// <summary>
+    /// Literal for code: StructureDefinitionKindComplexDataType
+    /// </summary>
+    public const string LiteralStructureDefinitionKindComplexDataType = "http://hl7.org/fhir/structure-definition-kind#complex-type";
+
+    /// <summary>
     /// Literal for code: Logical
     /// </summary>
     public const string LiteralLogical = "logical";
+
+    /// <summary>
+    /// Literal for code: StructureDefinitionKindLogical
+    /// </summary>
+    public const string LiteralStructureDefinitionKindLogical = "http://hl7.org/fhir/structure-definition-kind#logical";
 
     /// <summary>
     /// Literal for code: PrimitiveDataType
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPrimitiveDataType = "primitive-type";
 
     /// <summary>
+    /// Literal for code: StructureDefinitionKindPrimitiveDataType
+    /// </summary>
+    public const string LiteralStructureDefinitionKindPrimitiveDataType = "http://hl7.org/fhir/structure-definition-kind#primitive-type";
+
+    /// <summary>
     /// Literal for code: Resource
     /// </summary>
     public const string LiteralResource = "resource";
+
+    /// <summary>
+    /// Literal for code: StructureDefinitionKindResource
+    /// </summary>
+    public const string LiteralStructureDefinitionKindResource = "http://hl7.org/fhir/structure-definition-kind#resource";
+
+    /// <summary>
+    /// Dictionary for looking up StructureDefinitionKind Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complex-type", ComplexDataType }, 
+      { "http://hl7.org/fhir/structure-definition-kind#complex-type", ComplexDataType }, 
+      { "logical", Logical }, 
+      { "http://hl7.org/fhir/structure-definition-kind#logical", Logical }, 
+      { "primitive-type", PrimitiveDataType }, 
+      { "http://hl7.org/fhir/structure-definition-kind#primitive-type", PrimitiveDataType }, 
+      { "resource", Resource }, 
+      { "http://hl7.org/fhir/structure-definition-kind#resource", Resource }, 
+    };
   };
 }

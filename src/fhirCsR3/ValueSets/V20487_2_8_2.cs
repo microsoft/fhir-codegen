@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class V20487Codes
   {
     /// <summary>
-    /// 
+    /// No suggested values
     /// </summary>
     public static readonly Coding NoSuggestedValues = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Abscess
     /// </summary>
     public static readonly Coding Abscess = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Tissue, Acne
     /// </summary>
     public static readonly Coding TissueAcne = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid, Acne
     /// </summary>
     public static readonly Coding FluidAcne = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Air Sample
     /// </summary>
     public static readonly Coding AirSample = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Allograft
     /// </summary>
     public static readonly Coding Allograft = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Amniotic fluid
     /// </summary>
     public static readonly Coding AmnioticFluid = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Amputation
     /// </summary>
     public static readonly Coding Amputation = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Tip, Angio
     /// </summary>
     public static readonly Coding CatheterTipAngio = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Tip, Arterial
     /// </summary>
     public static readonly Coding CatheterTipArterial = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Serum, Acute
     /// </summary>
     public static readonly Coding SerumAcute = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Aspirate
     /// </summary>
     public static readonly Coding Aspirate = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environment, Attest
     /// </summary>
     public static readonly Coding EnvironmentAttest = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Autoclave Ampule
     /// </summary>
     public static readonly Coding EnvironmentalAutoclaveAmpule = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Autoclave Capsule
     /// </summary>
     public static readonly Coding EnvironmentalAutoclaveCapsule = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Autopsy
     /// </summary>
     public static readonly Coding Autopsy = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Blood bag
     /// </summary>
     public static readonly Coding BloodBag = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Cyst, Baker's
     /// </summary>
     public static readonly Coding CystBakerQuoteS = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Whole body
     /// </summary>
     public static readonly Coding WholeBody = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Bile Fluid
     /// </summary>
     public static readonly Coding BileFluid = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Bite
     /// </summary>
     public static readonly Coding Bite = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Whole blood
     /// </summary>
     public static readonly Coding WholeBlood = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Blood arterial
     /// </summary>
     public static readonly Coding BloodArterial = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Cord blood
     /// </summary>
     public static readonly Coding CordBlood = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Blood venous
     /// </summary>
     public static readonly Coding BloodVenous = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Bleb
     /// </summary>
     public static readonly Coding Bleb = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Blister
     /// </summary>
     public static readonly Coding Blister = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Boil
     /// </summary>
     public static readonly Coding Boil = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Bone
     /// </summary>
     public static readonly Coding Bone = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Bone
     /// </summary>
     public static readonly Coding Bone_2 = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Bowel contents
     /// </summary>
     public static readonly Coding BowelContents = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Basophils
     /// </summary>
     public static readonly Coding Basophils = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Blood product unit
     /// </summary>
     public static readonly Coding BloodProductUnit = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Burn
     /// </summary>
     public static readonly Coding Burn = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Brush
     /// </summary>
     public static readonly Coding Brush = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Breath (use EXHLD)
     /// </summary>
     public static readonly Coding BreathUseEXHLD = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Brushing
     /// </summary>
     public static readonly Coding Brushing = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Bubo
     /// </summary>
     public static readonly Coding Bubo = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Bulla/Bullae
     /// </summary>
     public static readonly Coding BullaBullae = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Biopsy
     /// </summary>
     public static readonly Coding Biopsy = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Calculus (=Stone)
     /// </summary>
     public static readonly Coding CalculusEqualsStone = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Carbuncle
     /// </summary>
     public static readonly Coding Carbuncle = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter
     /// </summary>
     public static readonly Coding Catheter = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Bite, Cat
     /// </summary>
     public static readonly Coding BiteCat = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Cardiac muscle
     /// </summary>
     public static readonly Coding CardiacMuscle = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Clippings
     /// </summary>
     public static readonly Coding Clippings = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Conjunctiva
     /// </summary>
     public static readonly Coding Conjunctiva = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Cannula
     /// </summary>
     public static readonly Coding Cannula = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Colostrum
     /// </summary>
     public static readonly Coding Colostrum = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Biospy, Cone
     /// </summary>
     public static readonly Coding BiospyCone = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Scratch, Cat
     /// </summary>
     public static readonly Coding ScratchCat = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Serum, Convalescent
     /// </summary>
     public static readonly Coding SerumConvalescent = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Cerebral spinal fluid
     /// </summary>
     public static readonly Coding CerebralSpinalFluid = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Insertion Site
     /// </summary>
     public static readonly Coding CatheterInsertionSite = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid,  Cystostomy Tube
     /// </summary>
     public static readonly Coding FluidCystostomyTube = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid, Cyst
     /// </summary>
     public static readonly Coding FluidCyst = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Blood, Cell Saver
     /// </summary>
     public static readonly Coding BloodCellSaver = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter tip
     /// </summary>
     public static readonly Coding CatheterTip = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Curretage
     /// </summary>
     public static readonly Coding Curretage = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Cervical Mucus
     /// </summary>
     public static readonly Coding CervicalMucus = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Site, CVP
     /// </summary>
     public static readonly Coding SiteCVP = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Tip, CVP
     /// </summary>
     public static readonly Coding CatheterTipCVP = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Nodule, Cystic
     /// </summary>
     public static readonly Coding NoduleCystic = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Cyst
     /// </summary>
     public static readonly Coding Cyst = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Bite, Dog
     /// </summary>
     public static readonly Coding BiteDog = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Sputum, Deep Cough
     /// </summary>
     public static readonly Coding SputumDeepCough = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Ulcer, Decubitus
     /// </summary>
     public static readonly Coding UlcerDecubitus = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Water  (Deionized)
     /// </summary>
     public static readonly Coding EnvironmentalWaterDeionized = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Dialysate
     /// </summary>
     public static readonly Coding Dialysate = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Dialysis Fluid
     /// </summary>
     public static readonly Coding DialysisFluid = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Discharge
     /// </summary>
     public static readonly Coding Discharge = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Diverticulum
     /// </summary>
     public static readonly Coding Diverticulum = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Drain
     /// </summary>
     public static readonly Coding Drain = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Drainage, Tube
     /// </summary>
     public static readonly Coding DrainageTube = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Drainage, Penrose
     /// </summary>
     public static readonly Coding DrainagePenrose = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Duodenal fluid
     /// </summary>
     public static readonly Coding DuodenalFluid = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Ear wax (cerumen)
     /// </summary>
     public static readonly Coding EarWaxCerumen = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Brush, Esophageal
     /// </summary>
     public static readonly Coding BrushEsophageal = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Eye Wash
     /// </summary>
     public static readonly Coding EnvironmentalEyeWash = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Effluent
     /// </summary>
     public static readonly Coding EnvironmentalEffluent = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Effusion
     /// </summary>
     public static readonly Coding Effusion = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Food
     /// </summary>
     public static readonly Coding EnvironmentalFood = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Isolette
     /// </summary>
     public static readonly Coding EnvironmentalIsolette = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Electrode
     /// </summary>
     public static readonly Coding Electrode = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Unidentified Substance
     /// </summary>
     public static readonly Coding EnvironmentalUnidentifiedSubstance = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Eosinophils
     /// </summary>
     public static readonly Coding Eosinophils = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Other Substance
     /// </summary>
     public static readonly Coding EnvironmentalOtherSubstance = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Soil
     /// </summary>
     public static readonly Coding EnvironmentalSoil = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Solution (Sterile)
     /// </summary>
     public static readonly Coding EnvironmentalSolutionSterile = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Aspirate,  Endotrach
     /// </summary>
     public static readonly Coding AspirateEndotrach = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Tip, Endotracheal
     /// </summary>
     public static readonly Coding CatheterTipEndotracheal = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Tube, Endotracheal
     /// </summary>
     public static readonly Coding TubeEndotracheal = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Whirlpool
     /// </summary>
     public static readonly Coding EnvironmentalWhirlpool = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Gas, exhaled (=breath)
     /// </summary>
     public static readonly Coding GasExhaledEqualsBreath = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Shunt, External
     /// </summary>
     public static readonly Coding ShuntExternal = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Exudate
     /// </summary>
     public static readonly Coding Exudate = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Water  (Well)
     /// </summary>
     public static readonly Coding EnvironmentalWaterWell = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Blood, Fetal
     /// </summary>
     public static readonly Coding BloodFetal = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid,  Abdomen
     /// </summary>
     public static readonly Coding FluidAbdomen = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fibroblasts
     /// </summary>
     public static readonly Coding Fibroblasts = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fistula
     /// </summary>
     public static readonly Coding Fistula = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid, Other
     /// </summary>
     public static readonly Coding FluidOther = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Filter
     /// </summary>
     public static readonly Coding Filter = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid, Body unsp
     /// </summary>
     public static readonly Coding FluidBodyUnsp = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid
     /// </summary>
     public static readonly Coding Fluid = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Tip, Foley
     /// </summary>
     public static readonly Coding CatheterTipFoley = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid, Respiratory
     /// </summary>
     public static readonly Coding FluidRespiratory = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Scalp, Fetal
     /// </summary>
     public static readonly Coding ScalpFetal = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Furuncle
     /// </summary>
     public static readonly Coding Furuncle = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Gas
     /// </summary>
     public static readonly Coding Gas = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Aspirate, Gastric
     /// </summary>
     public static readonly Coding AspirateGastric = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Antrum, Gastric
     /// </summary>
     public static readonly Coding AntrumGastric = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Brushing, Gastric
     /// </summary>
     public static readonly Coding BrushingGastric = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Drainage, Gastric
     /// </summary>
     public static readonly Coding DrainageGastric = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid/contents, Gastric
     /// </summary>
     public static readonly Coding FluidContentsGastric = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Genital lochia
     /// </summary>
     public static readonly Coding GenitalLochia = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Genital vaginal
     /// </summary>
     public static readonly Coding GenitalVaginal = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Graft
     /// </summary>
     public static readonly Coding Graft = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Graft Site
     /// </summary>
     public static readonly Coding GraftSite = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Granuloma
     /// </summary>
     public static readonly Coding Granuloma = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter, Groshong
     /// </summary>
     public static readonly Coding CatheterGroshong = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Solution, Gastrostomy
     /// </summary>
     public static readonly Coding SolutionGastrostomy = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Biopsy, Gastric
     /// </summary>
     public static readonly Coding BiopsyGastric = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Tube, Gastric
     /// </summary>
     public static readonly Coding TubeGastric = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Drainage Tube, Drainage (Gastrostomy)
     /// </summary>
     public static readonly Coding DrainageTubeDrainageGastrostomy = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Hair
     /// </summary>
     public static readonly Coding Hair = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Bite, Human
     /// </summary>
     public static readonly Coding BiteHuman = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Blood, Autopsy
     /// </summary>
     public static readonly Coding BloodAutopsy = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Tip, Hemaquit
     /// </summary>
     public static readonly Coding CatheterTipHemaquit = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Tip, Hemovac
     /// </summary>
     public static readonly Coding CatheterTipHemovac = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Tissue, Herniated
     /// </summary>
     public static readonly Coding TissueHerniated = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Drain, Hemovac
     /// </summary>
     public static readonly Coding DrainHemovac = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter, Hickman
     /// </summary>
     public static readonly Coding CatheterHickman = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid, Hydrocele
     /// </summary>
     public static readonly Coding FluidHydrocele = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Bite, Insect
     /// </summary>
     public static readonly Coding BiteInsect = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Cyst, Inclusion
     /// </summary>
     public static readonly Coding CystInclusion = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Tip, Indwelling
     /// </summary>
     public static readonly Coding CatheterTipIndwelling = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Gas, Inhaled
     /// </summary>
     public static readonly Coding GasInhaled = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Drainage, Ileostomy
     /// </summary>
     public static readonly Coding DrainageIleostomy = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Source of Specimen Is Illigible
     /// </summary>
     public static readonly Coding SourceOfSpecimenIsIlligible = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Implant
     /// </summary>
     public static readonly Coding Implant = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Site, Incision/Surgical
     /// </summary>
     public static readonly Coding SiteIncisionSurgical = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Infiltrate
     /// </summary>
     public static readonly Coding Infiltrate = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Insect
     /// </summary>
     public static readonly Coding Insect = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Tip, Introducer
     /// </summary>
     public static readonly Coding CatheterTipIntroducer = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Isolate
     /// </summary>
     public static readonly Coding Isolate = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Intubation tube
     /// </summary>
     public static readonly Coding IntubationTube = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Intrauterine Device
     /// </summary>
     public static readonly Coding IntrauterineDevice = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Tip, IV
     /// </summary>
     public static readonly Coding CatheterTipIV = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid, IV
     /// </summary>
     public static readonly Coding FluidIV = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Tubing Tip, IV
     /// </summary>
     public static readonly Coding TubingTipIV = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Drainage, Jejunal
     /// </summary>
     public static readonly Coding DrainageJejunal = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid, Joint
     /// </summary>
     public static readonly Coding FluidJoint = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Drainage, Jackson Pratt
     /// </summary>
     public static readonly Coding DrainageJacksonPratt = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Lavage
     /// </summary>
     public static readonly Coding Lavage = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid, Kidney
     /// </summary>
     public static readonly Coding FluidKidney = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Lavage, Bronhial
     /// </summary>
     public static readonly Coding LavageBronhial = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Lavage, Gastric
     /// </summary>
     public static readonly Coding LavageGastric = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Lavage, Peritoneal
     /// </summary>
     public static readonly Coding LavagePeritoneal = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Lavage, Pre-Bronch
     /// </summary>
     public static readonly Coding LavagePreBronch = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Contact Lens
     /// </summary>
     public static readonly Coding ContactLens = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Contact Lens Case
     /// </summary>
     public static readonly Coding ContactLensCase = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Lesion
     /// </summary>
     public static readonly Coding Lesion = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Liquid, Unspecified
     /// </summary>
     public static readonly Coding LiquidUnspecified = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Liquid, Other
     /// </summary>
     public static readonly Coding LiquidOther = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Line arterial
     /// </summary>
     public static readonly Coding LineArterial = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Line venous
     /// </summary>
     public static readonly Coding LineVenous = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid, Lumbar Sac
     /// </summary>
     public static readonly Coding FluidLumbarSac = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Lymphocytes
     /// </summary>
     public static readonly Coding Lymphocytes = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Macrophages
     /// </summary>
     public static readonly Coding Macrophages = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Tip, Makurkour
     /// </summary>
     public static readonly Coding CatheterTipMakurkour = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Marrow
     /// </summary>
     public static readonly Coding Marrow = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Mass
     /// </summary>
     public static readonly Coding Mass = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Blood, Menstrual
     /// </summary>
     public static readonly Coding BloodMenstrual = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Meconium
     /// </summary>
     public static readonly Coding Meconium = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Breast milk
     /// </summary>
     public static readonly Coding BreastMilk = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Milk
     /// </summary>
     public static readonly Coding Milk = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Mucosa
     /// </summary>
     public static readonly Coding Mucosa = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Mucus
     /// </summary>
     public static readonly Coding Mucus = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Nail
     /// </summary>
     public static readonly Coding Nail = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Drainage, Nasal
     /// </summary>
     public static readonly Coding DrainageNasal = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Needle
     /// </summary>
     public static readonly Coding Needle = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Site, Nephrostomy
     /// </summary>
     public static readonly Coding SiteNephrostomy = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Aspirate, Nasogastric
     /// </summary>
     public static readonly Coding AspirateNasogastric = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Drainage, Nasogastric
     /// </summary>
     public static readonly Coding DrainageNasogastric = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Site, Naso/Gastric
     /// </summary>
     public static readonly Coding SiteNasoGastric = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Nodule(s)
     /// </summary>
     public static readonly Coding NoduleS = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Secretion, Nasal
     /// </summary>
     public static readonly Coding SecretionNasal = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Other
     /// </summary>
     public static readonly Coding Other = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Lesion, Oral
     /// </summary>
     public static readonly Coding LesionOral = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Source, Other
     /// </summary>
     public static readonly Coding SourceOther = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Pacemaker
     /// </summary>
     public static readonly Coding Pacemaker = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Pancreatic fluid
     /// </summary>
     public static readonly Coding PancreaticFluid = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid, Pericardial
     /// </summary>
     public static readonly Coding FluidPericardial = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Site, Peritoneal Dialysis
     /// </summary>
     public static readonly Coding SitePeritonealDialysis = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Site, Peritoneal Dialysis Tunnel
     /// </summary>
     public static readonly Coding SitePeritonealDialysisTunnel = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Abscess, Pelvic
     /// </summary>
     public static readonly Coding AbscessPelvic = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Lesion, Penile
     /// </summary>
     public static readonly Coding LesionPenile = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Abscess, Perianal
     /// </summary>
     public static readonly Coding AbscessPerianal = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Cyst, Pilonidal
     /// </summary>
     public static readonly Coding CystPilonidal = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Site, Pin
     /// </summary>
     public static readonly Coding SitePin = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Site, Pacemaker Insetion
     /// </summary>
     public static readonly Coding SitePacemakerInsetion = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Plant Material
     /// </summary>
     public static readonly Coding PlantMaterial = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Plasma
     /// </summary>
     public static readonly Coding Plasma = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Plasma bag
     /// </summary>
     public static readonly Coding PlasmaBag = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Placenta
     /// </summary>
     public static readonly Coding Placenta = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Serum, Peak Level
     /// </summary>
     public static readonly Coding SerumPeakLevel = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Pleural fluid (thoracentesis fluid)
     /// </summary>
     public static readonly Coding PleuralFluidThoracentesisFluid = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Polymorphonuclear neutrophils
     /// </summary>
     public static readonly Coding PolymorphonuclearNeutrophils = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Drainage, Penile
     /// </summary>
     public static readonly Coding DrainagePenile = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Polyps
     /// </summary>
     public static readonly Coding Polyps = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Graft Site, Popliteal
     /// </summary>
     public static readonly Coding GraftSitePopliteal = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Graft, Popliteal
     /// </summary>
     public static readonly Coding GraftPopliteal = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Site, Popliteal Vein
     /// </summary>
     public static readonly Coding SitePoplitealVein = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter, Porta
     /// </summary>
     public static readonly Coding CatheterPorta = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Plasma, Platelet poor
     /// </summary>
     public static readonly Coding PlasmaPlateletPoor = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Prosthetic Device
     /// </summary>
     public static readonly Coding ProstheticDevice = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Plasma, Platelet rich
     /// </summary>
     public static readonly Coding PlasmaPlateletRich = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Pseudocyst
     /// </summary>
     public static readonly Coding Pseudocyst = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Wound, Puncture
     /// </summary>
     public static readonly Coding WoundPuncture = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Pus
     /// </summary>
     public static readonly Coding Pus = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Pustule
     /// </summary>
     public static readonly Coding Pustule = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Pus
     /// </summary>
     public static readonly Coding Pus_2 = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Quality Control
     /// </summary>
     public static readonly Coding QualityControl = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Urine, Random
     /// </summary>
     public static readonly Coding UrineRandom = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Erythrocytes
     /// </summary>
     public static readonly Coding Erythrocytes = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Bite, Reptile
     /// </summary>
     public static readonly Coding BiteReptile = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Drainage, Rectal
     /// </summary>
     public static readonly Coding DrainageRectal = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Abscess, Rectal
     /// </summary>
     public static readonly Coding AbscessRectal = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Cyst, Renal
     /// </summary>
     public static readonly Coding CystRenal = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid, Renal Cyst
     /// </summary>
     public static readonly Coding FluidRenalCyst = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Respiratory
     /// </summary>
     public static readonly Coding Respiratory = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Saliva
     /// </summary>
     public static readonly Coding Saliva = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Tissue, Keloid (Scar)
     /// </summary>
     public static readonly Coding TissueKeloidScar = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Tip, Subclavian
     /// </summary>
     public static readonly Coding CatheterTipSubclavian = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Abscess, Scrotal
     /// </summary>
     public static readonly Coding AbscessScrotal = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Secretion(s)
     /// </summary>
     public static readonly Coding SecretionS = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Serum
     /// </summary>
     public static readonly Coding Serum = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Site, Shunt
     /// </summary>
     public static readonly Coding SiteShunt = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid, Shunt
     /// </summary>
     public static readonly Coding FluidShunt = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Shunt
     /// </summary>
     public static readonly Coding Shunt = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Site
     /// </summary>
     public static readonly Coding Site = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Biopsy, Skin
     /// </summary>
     public static readonly Coding BiopsySkin = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Skin
     /// </summary>
     public static readonly Coding Skin = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Mass, Sub-Mandibular
     /// </summary>
     public static readonly Coding MassSubMandibular = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Seminal fluid
     /// </summary>
     public static readonly Coding SeminalFluid = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Fluid, synovial (Joint fluid)
     /// </summary>
     public static readonly Coding FluidSynovialJointFluid = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Spermatozoa
     /// </summary>
     public static readonly Coding Spermatozoa = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Tip, Suprapubic
     /// </summary>
     public static readonly Coding CatheterTipSuprapubic = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Cathether Tip, Suprapubic
     /// </summary>
     public static readonly Coding CathetherTipSuprapubic = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Spore Strip
     /// </summary>
     public static readonly Coding EnvironmentalSporeStrip = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Sputum
     /// </summary>
     public static readonly Coding Sputum = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Sputum - coughed
     /// </summary>
     public static readonly Coding SputumCoughed = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Sputum - tracheal aspirate
     /// </summary>
     public static readonly Coding SputumTrachealAspirate = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Sputum, Simulated
     /// </summary>
     public static readonly Coding SputumSimulated = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Sputum, Inducted
     /// </summary>
     public static readonly Coding SputumInducted = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Sputum, Spontaneous
     /// </summary>
     public static readonly Coding SputumSpontaneous = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Sterrad
     /// </summary>
     public static readonly Coding EnvironmentalSterrad = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Stool = Fecal
     /// </summary>
     public static readonly Coding StoolEqualsFecal = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Stone, Kidney
     /// </summary>
     public static readonly Coding StoneKidney = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Abscess, Submandibular
     /// </summary>
     public static readonly Coding AbscessSubmandibular = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Abscess, Submaxillary
     /// </summary>
     public static readonly Coding AbscessSubmaxillary = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Drainage, Sump
     /// </summary>
     public static readonly Coding DrainageSump = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Suprapubic Tap
     /// </summary>
     public static readonly Coding SuprapubicTap = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Suture
     /// </summary>
     public static readonly Coding Suture = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Tip, Swan Gantz
     /// </summary>
     public static readonly Coding CatheterTipSwanGantz = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Sweat
     /// </summary>
     public static readonly Coding Sweat = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Aspirate, Tracheal
     /// </summary>
     public static readonly Coding AspirateTracheal = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Tears
     /// </summary>
     public static readonly Coding Tears = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Thrombocyte (platelet)
     /// </summary>
     public static readonly Coding ThrombocytePlatelet = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Tissue
     /// </summary>
     public static readonly Coding Tissue = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Tissue ulcer
     /// </summary>
     public static readonly Coding TissueUlcer = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Cathether Tip, Triple Lumen
     /// </summary>
     public static readonly Coding CathetherTipTripleLumen = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Site, Tracheostomy
     /// </summary>
     public static readonly Coding SiteTracheostomy = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Transudate
     /// </summary>
     public static readonly Coding Transudate = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Serum, Trough
     /// </summary>
     public static readonly Coding SerumTrough = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Abscess, Testicular
     /// </summary>
     public static readonly Coding AbscessTesticular = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Aspirate, Transtracheal
     /// </summary>
     public static readonly Coding AspirateTranstracheal = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Tubes
     /// </summary>
     public static readonly Coding Tubes = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Tumor
     /// </summary>
     public static readonly Coding Tumor = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Smear, Tzanck
     /// </summary>
     public static readonly Coding SmearTzanck = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Source, Unidentified
     /// </summary>
     public static readonly Coding SourceUnidentified = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Unknown Medicine
     /// </summary>
     public static readonly Coding UnknownMedicine = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Urine
     /// </summary>
     public static readonly Coding Urine = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Urine clean catch
     /// </summary>
     public static readonly Coding UrineCleanCatch = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Urine, Bladder Washings
     /// </summary>
     public static readonly Coding UrineBladderWashings = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Urine, Catheterized
     /// </summary>
     public static readonly Coding UrineCatheterized = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Urine, Midstream
     /// </summary>
     public static readonly Coding UrineMidstream = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Urine, Nephrostomy
     /// </summary>
     public static readonly Coding UrineNephrostomy = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Urine, Pedibag
     /// </summary>
     public static readonly Coding UrinePedibag = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Urine sediment
     /// </summary>
     public static readonly Coding UrineSediment = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Urine catheter
     /// </summary>
     public static readonly Coding UrineCatheter = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Urine, Cystoscopy
     /// </summary>
     public static readonly Coding UrineCystoscopy = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Source, Unspecified
     /// </summary>
     public static readonly Coding SourceUnspecified = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Unkown substance
     /// </summary>
     public static readonly Coding UnkownSubstance = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Tip, Vas
     /// </summary>
     public static readonly Coding CatheterTipVas = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Catheter Tip, Ventricular
     /// </summary>
     public static readonly Coding CatheterTipVentricular = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Vitreous Fluid
     /// </summary>
     public static readonly Coding VitreousFluid = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Vomitus
     /// </summary>
     public static readonly Coding Vomitus = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Wash
     /// </summary>
     public static readonly Coding Wash = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Washing, e.g. bronchial washing
     /// </summary>
     public static readonly Coding WashingEGBronchialWashing = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Water
     /// </summary>
     public static readonly Coding Water = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Blood, Whole
     /// </summary>
     public static readonly Coding BloodWhole = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Leukocytes
     /// </summary>
     public static readonly Coding Leukocytes = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Wen
     /// </summary>
     public static readonly Coding Wen = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Wick
     /// </summary>
     public static readonly Coding Wick = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Wound
     /// </summary>
     public static readonly Coding Wound = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Wound abscess
     /// </summary>
     public static readonly Coding WoundAbscess = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Wound drainage
     /// </summary>
     public static readonly Coding WoundDrainage = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Wound exudate
     /// </summary>
     public static readonly Coding WoundExudate = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Worm
     /// </summary>
     public static readonly Coding Worm = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Wart
     /// </summary>
     public static readonly Coding Wart = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Water
     /// </summary>
     public static readonly Coding EnvironmentalWater = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Water (Ocean)
     /// </summary>
     public static readonly Coding EnvironmentalWaterOcean = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0487"
     };
     /// <summary>
-    /// 
+    /// Environmental, Water  (Tap)
     /// </summary>
     public static readonly Coding EnvironmentalWaterTap = new Coding
     {
@@ -2853,9 +2853,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoSuggestedValues = "...";
 
     /// <summary>
+    /// Literal for code: V20487NoSuggestedValues
+    /// </summary>
+    public const string LiteralV20487NoSuggestedValues = "http://hl7.org/fhir/v2/0487#...";
+
+    /// <summary>
     /// Literal for code: Abscess
     /// </summary>
     public const string LiteralAbscess = "ABS";
+
+    /// <summary>
+    /// Literal for code: V20487Abscess
+    /// </summary>
+    public const string LiteralV20487Abscess = "http://hl7.org/fhir/v2/0487#ABS";
 
     /// <summary>
     /// Literal for code: TissueAcne
@@ -2863,9 +2873,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTissueAcne = "ACNE";
 
     /// <summary>
+    /// Literal for code: V20487TissueAcne
+    /// </summary>
+    public const string LiteralV20487TissueAcne = "http://hl7.org/fhir/v2/0487#ACNE";
+
+    /// <summary>
     /// Literal for code: FluidAcne
     /// </summary>
     public const string LiteralFluidAcne = "ACNFLD";
+
+    /// <summary>
+    /// Literal for code: V20487FluidAcne
+    /// </summary>
+    public const string LiteralV20487FluidAcne = "http://hl7.org/fhir/v2/0487#ACNFLD";
 
     /// <summary>
     /// Literal for code: AirSample
@@ -2873,9 +2893,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAirSample = "AIRS";
 
     /// <summary>
+    /// Literal for code: V20487AirSample
+    /// </summary>
+    public const string LiteralV20487AirSample = "http://hl7.org/fhir/v2/0487#AIRS";
+
+    /// <summary>
     /// Literal for code: Allograft
     /// </summary>
     public const string LiteralAllograft = "ALL";
+
+    /// <summary>
+    /// Literal for code: V20487Allograft
+    /// </summary>
+    public const string LiteralV20487Allograft = "http://hl7.org/fhir/v2/0487#ALL";
 
     /// <summary>
     /// Literal for code: AmnioticFluid
@@ -2883,9 +2913,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAmnioticFluid = "AMN";
 
     /// <summary>
+    /// Literal for code: V20487AmnioticFluid
+    /// </summary>
+    public const string LiteralV20487AmnioticFluid = "http://hl7.org/fhir/v2/0487#AMN";
+
+    /// <summary>
     /// Literal for code: Amputation
     /// </summary>
     public const string LiteralAmputation = "AMP";
+
+    /// <summary>
+    /// Literal for code: V20487Amputation
+    /// </summary>
+    public const string LiteralV20487Amputation = "http://hl7.org/fhir/v2/0487#AMP";
 
     /// <summary>
     /// Literal for code: CatheterTipAngio
@@ -2893,9 +2933,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterTipAngio = "ANGI";
 
     /// <summary>
+    /// Literal for code: V20487CatheterTipAngio
+    /// </summary>
+    public const string LiteralV20487CatheterTipAngio = "http://hl7.org/fhir/v2/0487#ANGI";
+
+    /// <summary>
     /// Literal for code: CatheterTipArterial
     /// </summary>
     public const string LiteralCatheterTipArterial = "ARTC";
+
+    /// <summary>
+    /// Literal for code: V20487CatheterTipArterial
+    /// </summary>
+    public const string LiteralV20487CatheterTipArterial = "http://hl7.org/fhir/v2/0487#ARTC";
 
     /// <summary>
     /// Literal for code: SerumAcute
@@ -2903,9 +2953,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSerumAcute = "ASERU";
 
     /// <summary>
+    /// Literal for code: V20487SerumAcute
+    /// </summary>
+    public const string LiteralV20487SerumAcute = "http://hl7.org/fhir/v2/0487#ASERU";
+
+    /// <summary>
     /// Literal for code: Aspirate
     /// </summary>
     public const string LiteralAspirate = "ASP";
+
+    /// <summary>
+    /// Literal for code: V20487Aspirate
+    /// </summary>
+    public const string LiteralV20487Aspirate = "http://hl7.org/fhir/v2/0487#ASP";
 
     /// <summary>
     /// Literal for code: EnvironmentAttest
@@ -2913,9 +2973,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnvironmentAttest = "ATTE";
 
     /// <summary>
+    /// Literal for code: V20487EnvironmentAttest
+    /// </summary>
+    public const string LiteralV20487EnvironmentAttest = "http://hl7.org/fhir/v2/0487#ATTE";
+
+    /// <summary>
     /// Literal for code: EnvironmentalAutoclaveAmpule
     /// </summary>
     public const string LiteralEnvironmentalAutoclaveAmpule = "AUTOA";
+
+    /// <summary>
+    /// Literal for code: V20487EnvironmentalAutoclaveAmpule
+    /// </summary>
+    public const string LiteralV20487EnvironmentalAutoclaveAmpule = "http://hl7.org/fhir/v2/0487#AUTOA";
 
     /// <summary>
     /// Literal for code: EnvironmentalAutoclaveCapsule
@@ -2923,9 +2993,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnvironmentalAutoclaveCapsule = "AUTOC";
 
     /// <summary>
+    /// Literal for code: V20487EnvironmentalAutoclaveCapsule
+    /// </summary>
+    public const string LiteralV20487EnvironmentalAutoclaveCapsule = "http://hl7.org/fhir/v2/0487#AUTOC";
+
+    /// <summary>
     /// Literal for code: Autopsy
     /// </summary>
     public const string LiteralAutopsy = "AUTP";
+
+    /// <summary>
+    /// Literal for code: V20487Autopsy
+    /// </summary>
+    public const string LiteralV20487Autopsy = "http://hl7.org/fhir/v2/0487#AUTP";
 
     /// <summary>
     /// Literal for code: BloodBag
@@ -2933,9 +3013,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBloodBag = "BBL";
 
     /// <summary>
+    /// Literal for code: V20487BloodBag
+    /// </summary>
+    public const string LiteralV20487BloodBag = "http://hl7.org/fhir/v2/0487#BBL";
+
+    /// <summary>
     /// Literal for code: CystBakerQuoteS
     /// </summary>
     public const string LiteralCystBakerQuoteS = "BCYST";
+
+    /// <summary>
+    /// Literal for code: V20487CystBakerQuoteS
+    /// </summary>
+    public const string LiteralV20487CystBakerQuoteS = "http://hl7.org/fhir/v2/0487#BCYST";
 
     /// <summary>
     /// Literal for code: WholeBody
@@ -2943,9 +3033,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWholeBody = "BDY";
 
     /// <summary>
+    /// Literal for code: V20487WholeBody
+    /// </summary>
+    public const string LiteralV20487WholeBody = "http://hl7.org/fhir/v2/0487#BDY";
+
+    /// <summary>
     /// Literal for code: BileFluid
     /// </summary>
     public const string LiteralBileFluid = "BIFL";
+
+    /// <summary>
+    /// Literal for code: V20487BileFluid
+    /// </summary>
+    public const string LiteralV20487BileFluid = "http://hl7.org/fhir/v2/0487#BIFL";
 
     /// <summary>
     /// Literal for code: Bite
@@ -2953,9 +3053,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBite = "BITE";
 
     /// <summary>
+    /// Literal for code: V20487Bite
+    /// </summary>
+    public const string LiteralV20487Bite = "http://hl7.org/fhir/v2/0487#BITE";
+
+    /// <summary>
     /// Literal for code: WholeBlood
     /// </summary>
     public const string LiteralWholeBlood = "BLD";
+
+    /// <summary>
+    /// Literal for code: V20487WholeBlood
+    /// </summary>
+    public const string LiteralV20487WholeBlood = "http://hl7.org/fhir/v2/0487#BLD";
 
     /// <summary>
     /// Literal for code: BloodArterial
@@ -2963,9 +3073,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBloodArterial = "BLDA";
 
     /// <summary>
+    /// Literal for code: V20487BloodArterial
+    /// </summary>
+    public const string LiteralV20487BloodArterial = "http://hl7.org/fhir/v2/0487#BLDA";
+
+    /// <summary>
     /// Literal for code: CordBlood
     /// </summary>
     public const string LiteralCordBlood = "BLDCO";
+
+    /// <summary>
+    /// Literal for code: V20487CordBlood
+    /// </summary>
+    public const string LiteralV20487CordBlood = "http://hl7.org/fhir/v2/0487#BLDCO";
 
     /// <summary>
     /// Literal for code: BloodVenous
@@ -2973,9 +3093,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBloodVenous = "BLDV";
 
     /// <summary>
+    /// Literal for code: V20487BloodVenous
+    /// </summary>
+    public const string LiteralV20487BloodVenous = "http://hl7.org/fhir/v2/0487#BLDV";
+
+    /// <summary>
     /// Literal for code: Bleb
     /// </summary>
     public const string LiteralBleb = "BLEB";
+
+    /// <summary>
+    /// Literal for code: V20487Bleb
+    /// </summary>
+    public const string LiteralV20487Bleb = "http://hl7.org/fhir/v2/0487#BLEB";
 
     /// <summary>
     /// Literal for code: Blister
@@ -2983,9 +3113,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBlister = "BLIST";
 
     /// <summary>
+    /// Literal for code: V20487Blister
+    /// </summary>
+    public const string LiteralV20487Blister = "http://hl7.org/fhir/v2/0487#BLIST";
+
+    /// <summary>
     /// Literal for code: Boil
     /// </summary>
     public const string LiteralBoil = "BOIL";
+
+    /// <summary>
+    /// Literal for code: V20487Boil
+    /// </summary>
+    public const string LiteralV20487Boil = "http://hl7.org/fhir/v2/0487#BOIL";
 
     /// <summary>
     /// Literal for code: Bone
@@ -2993,9 +3133,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBone = "BON";
 
     /// <summary>
+    /// Literal for code: V20487Bone
+    /// </summary>
+    public const string LiteralV20487Bone = "http://hl7.org/fhir/v2/0487#BON";
+
+    /// <summary>
     /// Literal for code: Bone_2
     /// </summary>
     public const string LiteralBone_2 = "BONE";
+
+    /// <summary>
+    /// Literal for code: V20487Bone_2
+    /// </summary>
+    public const string LiteralV20487Bone_2 = "http://hl7.org/fhir/v2/0487#BONE";
 
     /// <summary>
     /// Literal for code: BowelContents
@@ -3003,9 +3153,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBowelContents = "BOWL";
 
     /// <summary>
+    /// Literal for code: V20487BowelContents
+    /// </summary>
+    public const string LiteralV20487BowelContents = "http://hl7.org/fhir/v2/0487#BOWL";
+
+    /// <summary>
     /// Literal for code: Basophils
     /// </summary>
     public const string LiteralBasophils = "BPH";
+
+    /// <summary>
+    /// Literal for code: V20487Basophils
+    /// </summary>
+    public const string LiteralV20487Basophils = "http://hl7.org/fhir/v2/0487#BPH";
 
     /// <summary>
     /// Literal for code: BloodProductUnit
@@ -3013,9 +3173,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBloodProductUnit = "BPU";
 
     /// <summary>
+    /// Literal for code: V20487BloodProductUnit
+    /// </summary>
+    public const string LiteralV20487BloodProductUnit = "http://hl7.org/fhir/v2/0487#BPU";
+
+    /// <summary>
     /// Literal for code: Burn
     /// </summary>
     public const string LiteralBurn = "BRN";
+
+    /// <summary>
+    /// Literal for code: V20487Burn
+    /// </summary>
+    public const string LiteralV20487Burn = "http://hl7.org/fhir/v2/0487#BRN";
 
     /// <summary>
     /// Literal for code: Brush
@@ -3023,9 +3193,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrush = "BRSH";
 
     /// <summary>
+    /// Literal for code: V20487Brush
+    /// </summary>
+    public const string LiteralV20487Brush = "http://hl7.org/fhir/v2/0487#BRSH";
+
+    /// <summary>
     /// Literal for code: BreathUseEXHLD
     /// </summary>
     public const string LiteralBreathUseEXHLD = "BRTH";
+
+    /// <summary>
+    /// Literal for code: V20487BreathUseEXHLD
+    /// </summary>
+    public const string LiteralV20487BreathUseEXHLD = "http://hl7.org/fhir/v2/0487#BRTH";
 
     /// <summary>
     /// Literal for code: Brushing
@@ -3033,9 +3213,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrushing = "BRUS";
 
     /// <summary>
+    /// Literal for code: V20487Brushing
+    /// </summary>
+    public const string LiteralV20487Brushing = "http://hl7.org/fhir/v2/0487#BRUS";
+
+    /// <summary>
     /// Literal for code: Bubo
     /// </summary>
     public const string LiteralBubo = "BUB";
+
+    /// <summary>
+    /// Literal for code: V20487Bubo
+    /// </summary>
+    public const string LiteralV20487Bubo = "http://hl7.org/fhir/v2/0487#BUB";
 
     /// <summary>
     /// Literal for code: BullaBullae
@@ -3043,9 +3233,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBullaBullae = "BULLA";
 
     /// <summary>
+    /// Literal for code: V20487BullaBullae
+    /// </summary>
+    public const string LiteralV20487BullaBullae = "http://hl7.org/fhir/v2/0487#BULLA";
+
+    /// <summary>
     /// Literal for code: Biopsy
     /// </summary>
     public const string LiteralBiopsy = "BX";
+
+    /// <summary>
+    /// Literal for code: V20487Biopsy
+    /// </summary>
+    public const string LiteralV20487Biopsy = "http://hl7.org/fhir/v2/0487#BX";
 
     /// <summary>
     /// Literal for code: CalculusEqualsStone
@@ -3053,9 +3253,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCalculusEqualsStone = "CALC";
 
     /// <summary>
+    /// Literal for code: V20487CalculusEqualsStone
+    /// </summary>
+    public const string LiteralV20487CalculusEqualsStone = "http://hl7.org/fhir/v2/0487#CALC";
+
+    /// <summary>
     /// Literal for code: Carbuncle
     /// </summary>
     public const string LiteralCarbuncle = "CARBU";
+
+    /// <summary>
+    /// Literal for code: V20487Carbuncle
+    /// </summary>
+    public const string LiteralV20487Carbuncle = "http://hl7.org/fhir/v2/0487#CARBU";
 
     /// <summary>
     /// Literal for code: Catheter
@@ -3063,9 +3273,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheter = "CAT";
 
     /// <summary>
+    /// Literal for code: V20487Catheter
+    /// </summary>
+    public const string LiteralV20487Catheter = "http://hl7.org/fhir/v2/0487#CAT";
+
+    /// <summary>
     /// Literal for code: BiteCat
     /// </summary>
     public const string LiteralBiteCat = "CBITE";
+
+    /// <summary>
+    /// Literal for code: V20487BiteCat
+    /// </summary>
+    public const string LiteralV20487BiteCat = "http://hl7.org/fhir/v2/0487#CBITE";
 
     /// <summary>
     /// Literal for code: CardiacMuscle
@@ -3073,9 +3293,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCardiacMuscle = "CDM";
 
     /// <summary>
+    /// Literal for code: V20487CardiacMuscle
+    /// </summary>
+    public const string LiteralV20487CardiacMuscle = "http://hl7.org/fhir/v2/0487#CDM";
+
+    /// <summary>
     /// Literal for code: Clippings
     /// </summary>
     public const string LiteralClippings = "CLIPP";
+
+    /// <summary>
+    /// Literal for code: V20487Clippings
+    /// </summary>
+    public const string LiteralV20487Clippings = "http://hl7.org/fhir/v2/0487#CLIPP";
 
     /// <summary>
     /// Literal for code: Conjunctiva
@@ -3083,9 +3313,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConjunctiva = "CNJT";
 
     /// <summary>
+    /// Literal for code: V20487Conjunctiva
+    /// </summary>
+    public const string LiteralV20487Conjunctiva = "http://hl7.org/fhir/v2/0487#CNJT";
+
+    /// <summary>
     /// Literal for code: Cannula
     /// </summary>
     public const string LiteralCannula = "CNL";
+
+    /// <summary>
+    /// Literal for code: V20487Cannula
+    /// </summary>
+    public const string LiteralV20487Cannula = "http://hl7.org/fhir/v2/0487#CNL";
 
     /// <summary>
     /// Literal for code: Colostrum
@@ -3093,9 +3333,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralColostrum = "COL";
 
     /// <summary>
+    /// Literal for code: V20487Colostrum
+    /// </summary>
+    public const string LiteralV20487Colostrum = "http://hl7.org/fhir/v2/0487#COL";
+
+    /// <summary>
     /// Literal for code: BiospyCone
     /// </summary>
     public const string LiteralBiospyCone = "CONE";
+
+    /// <summary>
+    /// Literal for code: V20487BiospyCone
+    /// </summary>
+    public const string LiteralV20487BiospyCone = "http://hl7.org/fhir/v2/0487#CONE";
 
     /// <summary>
     /// Literal for code: ScratchCat
@@ -3103,9 +3353,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralScratchCat = "CSCR";
 
     /// <summary>
+    /// Literal for code: V20487ScratchCat
+    /// </summary>
+    public const string LiteralV20487ScratchCat = "http://hl7.org/fhir/v2/0487#CSCR";
+
+    /// <summary>
     /// Literal for code: SerumConvalescent
     /// </summary>
     public const string LiteralSerumConvalescent = "CSERU";
+
+    /// <summary>
+    /// Literal for code: V20487SerumConvalescent
+    /// </summary>
+    public const string LiteralV20487SerumConvalescent = "http://hl7.org/fhir/v2/0487#CSERU";
 
     /// <summary>
     /// Literal for code: CerebralSpinalFluid
@@ -3113,9 +3373,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCerebralSpinalFluid = "CSF";
 
     /// <summary>
+    /// Literal for code: V20487CerebralSpinalFluid
+    /// </summary>
+    public const string LiteralV20487CerebralSpinalFluid = "http://hl7.org/fhir/v2/0487#CSF";
+
+    /// <summary>
     /// Literal for code: CatheterInsertionSite
     /// </summary>
     public const string LiteralCatheterInsertionSite = "CSITE";
+
+    /// <summary>
+    /// Literal for code: V20487CatheterInsertionSite
+    /// </summary>
+    public const string LiteralV20487CatheterInsertionSite = "http://hl7.org/fhir/v2/0487#CSITE";
 
     /// <summary>
     /// Literal for code: FluidCystostomyTube
@@ -3123,9 +3393,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluidCystostomyTube = "CSMY";
 
     /// <summary>
+    /// Literal for code: V20487FluidCystostomyTube
+    /// </summary>
+    public const string LiteralV20487FluidCystostomyTube = "http://hl7.org/fhir/v2/0487#CSMY";
+
+    /// <summary>
     /// Literal for code: FluidCyst
     /// </summary>
     public const string LiteralFluidCyst = "CST";
+
+    /// <summary>
+    /// Literal for code: V20487FluidCyst
+    /// </summary>
+    public const string LiteralV20487FluidCyst = "http://hl7.org/fhir/v2/0487#CST";
 
     /// <summary>
     /// Literal for code: BloodCellSaver
@@ -3133,9 +3413,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBloodCellSaver = "CSVR";
 
     /// <summary>
+    /// Literal for code: V20487BloodCellSaver
+    /// </summary>
+    public const string LiteralV20487BloodCellSaver = "http://hl7.org/fhir/v2/0487#CSVR";
+
+    /// <summary>
     /// Literal for code: CatheterTip
     /// </summary>
     public const string LiteralCatheterTip = "CTP";
+
+    /// <summary>
+    /// Literal for code: V20487CatheterTip
+    /// </summary>
+    public const string LiteralV20487CatheterTip = "http://hl7.org/fhir/v2/0487#CTP";
 
     /// <summary>
     /// Literal for code: Curretage
@@ -3143,9 +3433,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCurretage = "CUR";
 
     /// <summary>
+    /// Literal for code: V20487Curretage
+    /// </summary>
+    public const string LiteralV20487Curretage = "http://hl7.org/fhir/v2/0487#CUR";
+
+    /// <summary>
     /// Literal for code: CervicalMucus
     /// </summary>
     public const string LiteralCervicalMucus = "CVM";
+
+    /// <summary>
+    /// Literal for code: V20487CervicalMucus
+    /// </summary>
+    public const string LiteralV20487CervicalMucus = "http://hl7.org/fhir/v2/0487#CVM";
 
     /// <summary>
     /// Literal for code: SiteCVP
@@ -3153,9 +3453,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSiteCVP = "CVPS";
 
     /// <summary>
+    /// Literal for code: V20487SiteCVP
+    /// </summary>
+    public const string LiteralV20487SiteCVP = "http://hl7.org/fhir/v2/0487#CVPS";
+
+    /// <summary>
     /// Literal for code: CatheterTipCVP
     /// </summary>
     public const string LiteralCatheterTipCVP = "CVPT";
+
+    /// <summary>
+    /// Literal for code: V20487CatheterTipCVP
+    /// </summary>
+    public const string LiteralV20487CatheterTipCVP = "http://hl7.org/fhir/v2/0487#CVPT";
 
     /// <summary>
     /// Literal for code: NoduleCystic
@@ -3163,9 +3473,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoduleCystic = "CYN";
 
     /// <summary>
+    /// Literal for code: V20487NoduleCystic
+    /// </summary>
+    public const string LiteralV20487NoduleCystic = "http://hl7.org/fhir/v2/0487#CYN";
+
+    /// <summary>
     /// Literal for code: Cyst
     /// </summary>
     public const string LiteralCyst = "CYST";
+
+    /// <summary>
+    /// Literal for code: V20487Cyst
+    /// </summary>
+    public const string LiteralV20487Cyst = "http://hl7.org/fhir/v2/0487#CYST";
 
     /// <summary>
     /// Literal for code: BiteDog
@@ -3173,9 +3493,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBiteDog = "DBITE";
 
     /// <summary>
+    /// Literal for code: V20487BiteDog
+    /// </summary>
+    public const string LiteralV20487BiteDog = "http://hl7.org/fhir/v2/0487#DBITE";
+
+    /// <summary>
     /// Literal for code: SputumDeepCough
     /// </summary>
     public const string LiteralSputumDeepCough = "DCS";
+
+    /// <summary>
+    /// Literal for code: V20487SputumDeepCough
+    /// </summary>
+    public const string LiteralV20487SputumDeepCough = "http://hl7.org/fhir/v2/0487#DCS";
 
     /// <summary>
     /// Literal for code: UlcerDecubitus
@@ -3183,9 +3513,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUlcerDecubitus = "DEC";
 
     /// <summary>
+    /// Literal for code: V20487UlcerDecubitus
+    /// </summary>
+    public const string LiteralV20487UlcerDecubitus = "http://hl7.org/fhir/v2/0487#DEC";
+
+    /// <summary>
     /// Literal for code: EnvironmentalWaterDeionized
     /// </summary>
     public const string LiteralEnvironmentalWaterDeionized = "DEION";
+
+    /// <summary>
+    /// Literal for code: V20487EnvironmentalWaterDeionized
+    /// </summary>
+    public const string LiteralV20487EnvironmentalWaterDeionized = "http://hl7.org/fhir/v2/0487#DEION";
 
     /// <summary>
     /// Literal for code: Dialysate
@@ -3193,9 +3533,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDialysate = "DIA";
 
     /// <summary>
+    /// Literal for code: V20487Dialysate
+    /// </summary>
+    public const string LiteralV20487Dialysate = "http://hl7.org/fhir/v2/0487#DIA";
+
+    /// <summary>
     /// Literal for code: DialysisFluid
     /// </summary>
     public const string LiteralDialysisFluid = "DIAF";
+
+    /// <summary>
+    /// Literal for code: V20487DialysisFluid
+    /// </summary>
+    public const string LiteralV20487DialysisFluid = "http://hl7.org/fhir/v2/0487#DIAF";
 
     /// <summary>
     /// Literal for code: Discharge
@@ -3203,9 +3553,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDischarge = "DISCHG";
 
     /// <summary>
+    /// Literal for code: V20487Discharge
+    /// </summary>
+    public const string LiteralV20487Discharge = "http://hl7.org/fhir/v2/0487#DISCHG";
+
+    /// <summary>
     /// Literal for code: Diverticulum
     /// </summary>
     public const string LiteralDiverticulum = "DIV";
+
+    /// <summary>
+    /// Literal for code: V20487Diverticulum
+    /// </summary>
+    public const string LiteralV20487Diverticulum = "http://hl7.org/fhir/v2/0487#DIV";
 
     /// <summary>
     /// Literal for code: Drain
@@ -3213,9 +3573,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrain = "DRN";
 
     /// <summary>
+    /// Literal for code: V20487Drain
+    /// </summary>
+    public const string LiteralV20487Drain = "http://hl7.org/fhir/v2/0487#DRN";
+
+    /// <summary>
     /// Literal for code: DrainageTube
     /// </summary>
     public const string LiteralDrainageTube = "DRNG";
+
+    /// <summary>
+    /// Literal for code: V20487DrainageTube
+    /// </summary>
+    public const string LiteralV20487DrainageTube = "http://hl7.org/fhir/v2/0487#DRNG";
 
     /// <summary>
     /// Literal for code: DrainagePenrose
@@ -3223,9 +3593,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrainagePenrose = "DRNGP";
 
     /// <summary>
+    /// Literal for code: V20487DrainagePenrose
+    /// </summary>
+    public const string LiteralV20487DrainagePenrose = "http://hl7.org/fhir/v2/0487#DRNGP";
+
+    /// <summary>
     /// Literal for code: DuodenalFluid
     /// </summary>
     public const string LiteralDuodenalFluid = "DUFL";
+
+    /// <summary>
+    /// Literal for code: V20487DuodenalFluid
+    /// </summary>
+    public const string LiteralV20487DuodenalFluid = "http://hl7.org/fhir/v2/0487#DUFL";
 
     /// <summary>
     /// Literal for code: EarWaxCerumen
@@ -3233,9 +3613,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEarWaxCerumen = "EARW";
 
     /// <summary>
+    /// Literal for code: V20487EarWaxCerumen
+    /// </summary>
+    public const string LiteralV20487EarWaxCerumen = "http://hl7.org/fhir/v2/0487#EARW";
+
+    /// <summary>
     /// Literal for code: BrushEsophageal
     /// </summary>
     public const string LiteralBrushEsophageal = "EBRUSH";
+
+    /// <summary>
+    /// Literal for code: V20487BrushEsophageal
+    /// </summary>
+    public const string LiteralV20487BrushEsophageal = "http://hl7.org/fhir/v2/0487#EBRUSH";
 
     /// <summary>
     /// Literal for code: EnvironmentalEyeWash
@@ -3243,9 +3633,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnvironmentalEyeWash = "EEYE";
 
     /// <summary>
+    /// Literal for code: V20487EnvironmentalEyeWash
+    /// </summary>
+    public const string LiteralV20487EnvironmentalEyeWash = "http://hl7.org/fhir/v2/0487#EEYE";
+
+    /// <summary>
     /// Literal for code: EnvironmentalEffluent
     /// </summary>
     public const string LiteralEnvironmentalEffluent = "EFF";
+
+    /// <summary>
+    /// Literal for code: V20487EnvironmentalEffluent
+    /// </summary>
+    public const string LiteralV20487EnvironmentalEffluent = "http://hl7.org/fhir/v2/0487#EFF";
 
     /// <summary>
     /// Literal for code: Effusion
@@ -3253,9 +3653,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEffusion = "EFFUS";
 
     /// <summary>
+    /// Literal for code: V20487Effusion
+    /// </summary>
+    public const string LiteralV20487Effusion = "http://hl7.org/fhir/v2/0487#EFFUS";
+
+    /// <summary>
     /// Literal for code: EnvironmentalFood
     /// </summary>
     public const string LiteralEnvironmentalFood = "EFOD";
+
+    /// <summary>
+    /// Literal for code: V20487EnvironmentalFood
+    /// </summary>
+    public const string LiteralV20487EnvironmentalFood = "http://hl7.org/fhir/v2/0487#EFOD";
 
     /// <summary>
     /// Literal for code: EnvironmentalIsolette
@@ -3263,9 +3673,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnvironmentalIsolette = "EISO";
 
     /// <summary>
+    /// Literal for code: V20487EnvironmentalIsolette
+    /// </summary>
+    public const string LiteralV20487EnvironmentalIsolette = "http://hl7.org/fhir/v2/0487#EISO";
+
+    /// <summary>
     /// Literal for code: Electrode
     /// </summary>
     public const string LiteralElectrode = "ELT";
+
+    /// <summary>
+    /// Literal for code: V20487Electrode
+    /// </summary>
+    public const string LiteralV20487Electrode = "http://hl7.org/fhir/v2/0487#ELT";
 
     /// <summary>
     /// Literal for code: EnvironmentalUnidentifiedSubstance
@@ -3273,9 +3693,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnvironmentalUnidentifiedSubstance = "ENVIR";
 
     /// <summary>
+    /// Literal for code: V20487EnvironmentalUnidentifiedSubstance
+    /// </summary>
+    public const string LiteralV20487EnvironmentalUnidentifiedSubstance = "http://hl7.org/fhir/v2/0487#ENVIR";
+
+    /// <summary>
     /// Literal for code: Eosinophils
     /// </summary>
     public const string LiteralEosinophils = "EOS";
+
+    /// <summary>
+    /// Literal for code: V20487Eosinophils
+    /// </summary>
+    public const string LiteralV20487Eosinophils = "http://hl7.org/fhir/v2/0487#EOS";
 
     /// <summary>
     /// Literal for code: EnvironmentalOtherSubstance
@@ -3283,9 +3713,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnvironmentalOtherSubstance = "EOTH";
 
     /// <summary>
+    /// Literal for code: V20487EnvironmentalOtherSubstance
+    /// </summary>
+    public const string LiteralV20487EnvironmentalOtherSubstance = "http://hl7.org/fhir/v2/0487#EOTH";
+
+    /// <summary>
     /// Literal for code: EnvironmentalSoil
     /// </summary>
     public const string LiteralEnvironmentalSoil = "ESOI";
+
+    /// <summary>
+    /// Literal for code: V20487EnvironmentalSoil
+    /// </summary>
+    public const string LiteralV20487EnvironmentalSoil = "http://hl7.org/fhir/v2/0487#ESOI";
 
     /// <summary>
     /// Literal for code: EnvironmentalSolutionSterile
@@ -3293,9 +3733,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnvironmentalSolutionSterile = "ESOS";
 
     /// <summary>
+    /// Literal for code: V20487EnvironmentalSolutionSterile
+    /// </summary>
+    public const string LiteralV20487EnvironmentalSolutionSterile = "http://hl7.org/fhir/v2/0487#ESOS";
+
+    /// <summary>
     /// Literal for code: AspirateEndotrach
     /// </summary>
     public const string LiteralAspirateEndotrach = "ETA";
+
+    /// <summary>
+    /// Literal for code: V20487AspirateEndotrach
+    /// </summary>
+    public const string LiteralV20487AspirateEndotrach = "http://hl7.org/fhir/v2/0487#ETA";
 
     /// <summary>
     /// Literal for code: CatheterTipEndotracheal
@@ -3303,9 +3753,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterTipEndotracheal = "ETTP";
 
     /// <summary>
+    /// Literal for code: V20487CatheterTipEndotracheal
+    /// </summary>
+    public const string LiteralV20487CatheterTipEndotracheal = "http://hl7.org/fhir/v2/0487#ETTP";
+
+    /// <summary>
     /// Literal for code: TubeEndotracheal
     /// </summary>
     public const string LiteralTubeEndotracheal = "ETTUB";
+
+    /// <summary>
+    /// Literal for code: V20487TubeEndotracheal
+    /// </summary>
+    public const string LiteralV20487TubeEndotracheal = "http://hl7.org/fhir/v2/0487#ETTUB";
 
     /// <summary>
     /// Literal for code: EnvironmentalWhirlpool
@@ -3313,9 +3773,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnvironmentalWhirlpool = "EWHI";
 
     /// <summary>
+    /// Literal for code: V20487EnvironmentalWhirlpool
+    /// </summary>
+    public const string LiteralV20487EnvironmentalWhirlpool = "http://hl7.org/fhir/v2/0487#EWHI";
+
+    /// <summary>
     /// Literal for code: GasExhaledEqualsBreath
     /// </summary>
     public const string LiteralGasExhaledEqualsBreath = "EXG";
+
+    /// <summary>
+    /// Literal for code: V20487GasExhaledEqualsBreath
+    /// </summary>
+    public const string LiteralV20487GasExhaledEqualsBreath = "http://hl7.org/fhir/v2/0487#EXG";
 
     /// <summary>
     /// Literal for code: ShuntExternal
@@ -3323,9 +3793,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShuntExternal = "EXS";
 
     /// <summary>
+    /// Literal for code: V20487ShuntExternal
+    /// </summary>
+    public const string LiteralV20487ShuntExternal = "http://hl7.org/fhir/v2/0487#EXS";
+
+    /// <summary>
     /// Literal for code: Exudate
     /// </summary>
     public const string LiteralExudate = "EXUDTE";
+
+    /// <summary>
+    /// Literal for code: V20487Exudate
+    /// </summary>
+    public const string LiteralV20487Exudate = "http://hl7.org/fhir/v2/0487#EXUDTE";
 
     /// <summary>
     /// Literal for code: EnvironmentalWaterWell
@@ -3333,9 +3813,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnvironmentalWaterWell = "FAW";
 
     /// <summary>
+    /// Literal for code: V20487EnvironmentalWaterWell
+    /// </summary>
+    public const string LiteralV20487EnvironmentalWaterWell = "http://hl7.org/fhir/v2/0487#FAW";
+
+    /// <summary>
     /// Literal for code: BloodFetal
     /// </summary>
     public const string LiteralBloodFetal = "FBLOOD";
+
+    /// <summary>
+    /// Literal for code: V20487BloodFetal
+    /// </summary>
+    public const string LiteralV20487BloodFetal = "http://hl7.org/fhir/v2/0487#FBLOOD";
 
     /// <summary>
     /// Literal for code: FluidAbdomen
@@ -3343,9 +3833,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluidAbdomen = "FGA";
 
     /// <summary>
+    /// Literal for code: V20487FluidAbdomen
+    /// </summary>
+    public const string LiteralV20487FluidAbdomen = "http://hl7.org/fhir/v2/0487#FGA";
+
+    /// <summary>
     /// Literal for code: Fibroblasts
     /// </summary>
     public const string LiteralFibroblasts = "FIB";
+
+    /// <summary>
+    /// Literal for code: V20487Fibroblasts
+    /// </summary>
+    public const string LiteralV20487Fibroblasts = "http://hl7.org/fhir/v2/0487#FIB";
 
     /// <summary>
     /// Literal for code: Fistula
@@ -3353,9 +3853,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFistula = "FIST";
 
     /// <summary>
+    /// Literal for code: V20487Fistula
+    /// </summary>
+    public const string LiteralV20487Fistula = "http://hl7.org/fhir/v2/0487#FIST";
+
+    /// <summary>
     /// Literal for code: FluidOther
     /// </summary>
     public const string LiteralFluidOther = "FLD";
+
+    /// <summary>
+    /// Literal for code: V20487FluidOther
+    /// </summary>
+    public const string LiteralV20487FluidOther = "http://hl7.org/fhir/v2/0487#FLD";
 
     /// <summary>
     /// Literal for code: Filter
@@ -3363,9 +3873,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFilter = "FLT";
 
     /// <summary>
+    /// Literal for code: V20487Filter
+    /// </summary>
+    public const string LiteralV20487Filter = "http://hl7.org/fhir/v2/0487#FLT";
+
+    /// <summary>
     /// Literal for code: FluidBodyUnsp
     /// </summary>
     public const string LiteralFluidBodyUnsp = "FLU";
+
+    /// <summary>
+    /// Literal for code: V20487FluidBodyUnsp
+    /// </summary>
+    public const string LiteralV20487FluidBodyUnsp = "http://hl7.org/fhir/v2/0487#FLU";
 
     /// <summary>
     /// Literal for code: Fluid
@@ -3373,9 +3893,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluid = "FLUID";
 
     /// <summary>
+    /// Literal for code: V20487Fluid
+    /// </summary>
+    public const string LiteralV20487Fluid = "http://hl7.org/fhir/v2/0487#FLUID";
+
+    /// <summary>
     /// Literal for code: CatheterTipFoley
     /// </summary>
     public const string LiteralCatheterTipFoley = "FOLEY";
+
+    /// <summary>
+    /// Literal for code: V20487CatheterTipFoley
+    /// </summary>
+    public const string LiteralV20487CatheterTipFoley = "http://hl7.org/fhir/v2/0487#FOLEY";
 
     /// <summary>
     /// Literal for code: FluidRespiratory
@@ -3383,9 +3913,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluidRespiratory = "FRS";
 
     /// <summary>
+    /// Literal for code: V20487FluidRespiratory
+    /// </summary>
+    public const string LiteralV20487FluidRespiratory = "http://hl7.org/fhir/v2/0487#FRS";
+
+    /// <summary>
     /// Literal for code: ScalpFetal
     /// </summary>
     public const string LiteralScalpFetal = "FSCLP";
+
+    /// <summary>
+    /// Literal for code: V20487ScalpFetal
+    /// </summary>
+    public const string LiteralV20487ScalpFetal = "http://hl7.org/fhir/v2/0487#FSCLP";
 
     /// <summary>
     /// Literal for code: Furuncle
@@ -3393,9 +3933,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFuruncle = "FUR";
 
     /// <summary>
+    /// Literal for code: V20487Furuncle
+    /// </summary>
+    public const string LiteralV20487Furuncle = "http://hl7.org/fhir/v2/0487#FUR";
+
+    /// <summary>
     /// Literal for code: Gas
     /// </summary>
     public const string LiteralGas = "GAS";
+
+    /// <summary>
+    /// Literal for code: V20487Gas
+    /// </summary>
+    public const string LiteralV20487Gas = "http://hl7.org/fhir/v2/0487#GAS";
 
     /// <summary>
     /// Literal for code: AspirateGastric
@@ -3403,9 +3953,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAspirateGastric = "GASA";
 
     /// <summary>
+    /// Literal for code: V20487AspirateGastric
+    /// </summary>
+    public const string LiteralV20487AspirateGastric = "http://hl7.org/fhir/v2/0487#GASA";
+
+    /// <summary>
     /// Literal for code: AntrumGastric
     /// </summary>
     public const string LiteralAntrumGastric = "GASAN";
+
+    /// <summary>
+    /// Literal for code: V20487AntrumGastric
+    /// </summary>
+    public const string LiteralV20487AntrumGastric = "http://hl7.org/fhir/v2/0487#GASAN";
 
     /// <summary>
     /// Literal for code: BrushingGastric
@@ -3413,9 +3973,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrushingGastric = "GASBR";
 
     /// <summary>
+    /// Literal for code: V20487BrushingGastric
+    /// </summary>
+    public const string LiteralV20487BrushingGastric = "http://hl7.org/fhir/v2/0487#GASBR";
+
+    /// <summary>
     /// Literal for code: DrainageGastric
     /// </summary>
     public const string LiteralDrainageGastric = "GASD";
+
+    /// <summary>
+    /// Literal for code: V20487DrainageGastric
+    /// </summary>
+    public const string LiteralV20487DrainageGastric = "http://hl7.org/fhir/v2/0487#GASD";
 
     /// <summary>
     /// Literal for code: FluidContentsGastric
@@ -3423,9 +3993,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluidContentsGastric = "GAST";
 
     /// <summary>
+    /// Literal for code: V20487FluidContentsGastric
+    /// </summary>
+    public const string LiteralV20487FluidContentsGastric = "http://hl7.org/fhir/v2/0487#GAST";
+
+    /// <summary>
     /// Literal for code: GenitalLochia
     /// </summary>
     public const string LiteralGenitalLochia = "GENL";
+
+    /// <summary>
+    /// Literal for code: V20487GenitalLochia
+    /// </summary>
+    public const string LiteralV20487GenitalLochia = "http://hl7.org/fhir/v2/0487#GENL";
 
     /// <summary>
     /// Literal for code: GenitalVaginal
@@ -3433,9 +4013,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGenitalVaginal = "GENV";
 
     /// <summary>
+    /// Literal for code: V20487GenitalVaginal
+    /// </summary>
+    public const string LiteralV20487GenitalVaginal = "http://hl7.org/fhir/v2/0487#GENV";
+
+    /// <summary>
     /// Literal for code: Graft
     /// </summary>
     public const string LiteralGraft = "GRAFT";
+
+    /// <summary>
+    /// Literal for code: V20487Graft
+    /// </summary>
+    public const string LiteralV20487Graft = "http://hl7.org/fhir/v2/0487#GRAFT";
 
     /// <summary>
     /// Literal for code: GraftSite
@@ -3443,9 +4033,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGraftSite = "GRAFTS";
 
     /// <summary>
+    /// Literal for code: V20487GraftSite
+    /// </summary>
+    public const string LiteralV20487GraftSite = "http://hl7.org/fhir/v2/0487#GRAFTS";
+
+    /// <summary>
     /// Literal for code: Granuloma
     /// </summary>
     public const string LiteralGranuloma = "GRANU";
+
+    /// <summary>
+    /// Literal for code: V20487Granuloma
+    /// </summary>
+    public const string LiteralV20487Granuloma = "http://hl7.org/fhir/v2/0487#GRANU";
 
     /// <summary>
     /// Literal for code: CatheterGroshong
@@ -3453,9 +4053,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterGroshong = "GROSH";
 
     /// <summary>
+    /// Literal for code: V20487CatheterGroshong
+    /// </summary>
+    public const string LiteralV20487CatheterGroshong = "http://hl7.org/fhir/v2/0487#GROSH";
+
+    /// <summary>
     /// Literal for code: SolutionGastrostomy
     /// </summary>
     public const string LiteralSolutionGastrostomy = "GSOL";
+
+    /// <summary>
+    /// Literal for code: V20487SolutionGastrostomy
+    /// </summary>
+    public const string LiteralV20487SolutionGastrostomy = "http://hl7.org/fhir/v2/0487#GSOL";
 
     /// <summary>
     /// Literal for code: BiopsyGastric
@@ -3463,9 +4073,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBiopsyGastric = "GSPEC";
 
     /// <summary>
+    /// Literal for code: V20487BiopsyGastric
+    /// </summary>
+    public const string LiteralV20487BiopsyGastric = "http://hl7.org/fhir/v2/0487#GSPEC";
+
+    /// <summary>
     /// Literal for code: TubeGastric
     /// </summary>
     public const string LiteralTubeGastric = "GT";
+
+    /// <summary>
+    /// Literal for code: V20487TubeGastric
+    /// </summary>
+    public const string LiteralV20487TubeGastric = "http://hl7.org/fhir/v2/0487#GT";
 
     /// <summary>
     /// Literal for code: DrainageTubeDrainageGastrostomy
@@ -3473,9 +4093,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrainageTubeDrainageGastrostomy = "GTUBE";
 
     /// <summary>
+    /// Literal for code: V20487DrainageTubeDrainageGastrostomy
+    /// </summary>
+    public const string LiteralV20487DrainageTubeDrainageGastrostomy = "http://hl7.org/fhir/v2/0487#GTUBE";
+
+    /// <summary>
     /// Literal for code: Hair
     /// </summary>
     public const string LiteralHair = "HAR";
+
+    /// <summary>
+    /// Literal for code: V20487Hair
+    /// </summary>
+    public const string LiteralV20487Hair = "http://hl7.org/fhir/v2/0487#HAR";
 
     /// <summary>
     /// Literal for code: BiteHuman
@@ -3483,9 +4113,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBiteHuman = "HBITE";
 
     /// <summary>
+    /// Literal for code: V20487BiteHuman
+    /// </summary>
+    public const string LiteralV20487BiteHuman = "http://hl7.org/fhir/v2/0487#HBITE";
+
+    /// <summary>
     /// Literal for code: BloodAutopsy
     /// </summary>
     public const string LiteralBloodAutopsy = "HBLUD";
+
+    /// <summary>
+    /// Literal for code: V20487BloodAutopsy
+    /// </summary>
+    public const string LiteralV20487BloodAutopsy = "http://hl7.org/fhir/v2/0487#HBLUD";
 
     /// <summary>
     /// Literal for code: CatheterTipHemaquit
@@ -3493,9 +4133,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterTipHemaquit = "HEMAQ";
 
     /// <summary>
+    /// Literal for code: V20487CatheterTipHemaquit
+    /// </summary>
+    public const string LiteralV20487CatheterTipHemaquit = "http://hl7.org/fhir/v2/0487#HEMAQ";
+
+    /// <summary>
     /// Literal for code: CatheterTipHemovac
     /// </summary>
     public const string LiteralCatheterTipHemovac = "HEMO";
+
+    /// <summary>
+    /// Literal for code: V20487CatheterTipHemovac
+    /// </summary>
+    public const string LiteralV20487CatheterTipHemovac = "http://hl7.org/fhir/v2/0487#HEMO";
 
     /// <summary>
     /// Literal for code: TissueHerniated
@@ -3503,9 +4153,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTissueHerniated = "HERNI";
 
     /// <summary>
+    /// Literal for code: V20487TissueHerniated
+    /// </summary>
+    public const string LiteralV20487TissueHerniated = "http://hl7.org/fhir/v2/0487#HERNI";
+
+    /// <summary>
     /// Literal for code: DrainHemovac
     /// </summary>
     public const string LiteralDrainHemovac = "HEV";
+
+    /// <summary>
+    /// Literal for code: V20487DrainHemovac
+    /// </summary>
+    public const string LiteralV20487DrainHemovac = "http://hl7.org/fhir/v2/0487#HEV";
 
     /// <summary>
     /// Literal for code: CatheterHickman
@@ -3513,9 +4173,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterHickman = "HIC";
 
     /// <summary>
+    /// Literal for code: V20487CatheterHickman
+    /// </summary>
+    public const string LiteralV20487CatheterHickman = "http://hl7.org/fhir/v2/0487#HIC";
+
+    /// <summary>
     /// Literal for code: FluidHydrocele
     /// </summary>
     public const string LiteralFluidHydrocele = "HYDC";
+
+    /// <summary>
+    /// Literal for code: V20487FluidHydrocele
+    /// </summary>
+    public const string LiteralV20487FluidHydrocele = "http://hl7.org/fhir/v2/0487#HYDC";
 
     /// <summary>
     /// Literal for code: BiteInsect
@@ -3523,9 +4193,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBiteInsect = "IBITE";
 
     /// <summary>
+    /// Literal for code: V20487BiteInsect
+    /// </summary>
+    public const string LiteralV20487BiteInsect = "http://hl7.org/fhir/v2/0487#IBITE";
+
+    /// <summary>
     /// Literal for code: CystInclusion
     /// </summary>
     public const string LiteralCystInclusion = "ICYST";
+
+    /// <summary>
+    /// Literal for code: V20487CystInclusion
+    /// </summary>
+    public const string LiteralV20487CystInclusion = "http://hl7.org/fhir/v2/0487#ICYST";
 
     /// <summary>
     /// Literal for code: CatheterTipIndwelling
@@ -3533,9 +4213,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterTipIndwelling = "IDC";
 
     /// <summary>
+    /// Literal for code: V20487CatheterTipIndwelling
+    /// </summary>
+    public const string LiteralV20487CatheterTipIndwelling = "http://hl7.org/fhir/v2/0487#IDC";
+
+    /// <summary>
     /// Literal for code: GasInhaled
     /// </summary>
     public const string LiteralGasInhaled = "IHG";
+
+    /// <summary>
+    /// Literal for code: V20487GasInhaled
+    /// </summary>
+    public const string LiteralV20487GasInhaled = "http://hl7.org/fhir/v2/0487#IHG";
 
     /// <summary>
     /// Literal for code: DrainageIleostomy
@@ -3543,9 +4233,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrainageIleostomy = "ILEO";
 
     /// <summary>
+    /// Literal for code: V20487DrainageIleostomy
+    /// </summary>
+    public const string LiteralV20487DrainageIleostomy = "http://hl7.org/fhir/v2/0487#ILEO";
+
+    /// <summary>
     /// Literal for code: SourceOfSpecimenIsIlligible
     /// </summary>
     public const string LiteralSourceOfSpecimenIsIlligible = "ILLEG";
+
+    /// <summary>
+    /// Literal for code: V20487SourceOfSpecimenIsIlligible
+    /// </summary>
+    public const string LiteralV20487SourceOfSpecimenIsIlligible = "http://hl7.org/fhir/v2/0487#ILLEG";
 
     /// <summary>
     /// Literal for code: Implant
@@ -3553,9 +4253,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralImplant = "IMP";
 
     /// <summary>
+    /// Literal for code: V20487Implant
+    /// </summary>
+    public const string LiteralV20487Implant = "http://hl7.org/fhir/v2/0487#IMP";
+
+    /// <summary>
     /// Literal for code: SiteIncisionSurgical
     /// </summary>
     public const string LiteralSiteIncisionSurgical = "INCI";
+
+    /// <summary>
+    /// Literal for code: V20487SiteIncisionSurgical
+    /// </summary>
+    public const string LiteralV20487SiteIncisionSurgical = "http://hl7.org/fhir/v2/0487#INCI";
 
     /// <summary>
     /// Literal for code: Infiltrate
@@ -3563,9 +4273,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInfiltrate = "INFIL";
 
     /// <summary>
+    /// Literal for code: V20487Infiltrate
+    /// </summary>
+    public const string LiteralV20487Infiltrate = "http://hl7.org/fhir/v2/0487#INFIL";
+
+    /// <summary>
     /// Literal for code: Insect
     /// </summary>
     public const string LiteralInsect = "INS";
+
+    /// <summary>
+    /// Literal for code: V20487Insect
+    /// </summary>
+    public const string LiteralV20487Insect = "http://hl7.org/fhir/v2/0487#INS";
 
     /// <summary>
     /// Literal for code: CatheterTipIntroducer
@@ -3573,9 +4293,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterTipIntroducer = "INTRD";
 
     /// <summary>
+    /// Literal for code: V20487CatheterTipIntroducer
+    /// </summary>
+    public const string LiteralV20487CatheterTipIntroducer = "http://hl7.org/fhir/v2/0487#INTRD";
+
+    /// <summary>
     /// Literal for code: Isolate
     /// </summary>
     public const string LiteralIsolate = "ISLT";
+
+    /// <summary>
+    /// Literal for code: V20487Isolate
+    /// </summary>
+    public const string LiteralV20487Isolate = "http://hl7.org/fhir/v2/0487#ISLT";
 
     /// <summary>
     /// Literal for code: IntubationTube
@@ -3583,9 +4313,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIntubationTube = "IT";
 
     /// <summary>
+    /// Literal for code: V20487IntubationTube
+    /// </summary>
+    public const string LiteralV20487IntubationTube = "http://hl7.org/fhir/v2/0487#IT";
+
+    /// <summary>
     /// Literal for code: IntrauterineDevice
     /// </summary>
     public const string LiteralIntrauterineDevice = "IUD";
+
+    /// <summary>
+    /// Literal for code: V20487IntrauterineDevice
+    /// </summary>
+    public const string LiteralV20487IntrauterineDevice = "http://hl7.org/fhir/v2/0487#IUD";
 
     /// <summary>
     /// Literal for code: CatheterTipIV
@@ -3593,9 +4333,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterTipIV = "IVCAT";
 
     /// <summary>
+    /// Literal for code: V20487CatheterTipIV
+    /// </summary>
+    public const string LiteralV20487CatheterTipIV = "http://hl7.org/fhir/v2/0487#IVCAT";
+
+    /// <summary>
     /// Literal for code: FluidIV
     /// </summary>
     public const string LiteralFluidIV = "IVFLD";
+
+    /// <summary>
+    /// Literal for code: V20487FluidIV
+    /// </summary>
+    public const string LiteralV20487FluidIV = "http://hl7.org/fhir/v2/0487#IVFLD";
 
     /// <summary>
     /// Literal for code: TubingTipIV
@@ -3603,9 +4353,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTubingTipIV = "IVTIP";
 
     /// <summary>
+    /// Literal for code: V20487TubingTipIV
+    /// </summary>
+    public const string LiteralV20487TubingTipIV = "http://hl7.org/fhir/v2/0487#IVTIP";
+
+    /// <summary>
     /// Literal for code: DrainageJejunal
     /// </summary>
     public const string LiteralDrainageJejunal = "JEJU";
+
+    /// <summary>
+    /// Literal for code: V20487DrainageJejunal
+    /// </summary>
+    public const string LiteralV20487DrainageJejunal = "http://hl7.org/fhir/v2/0487#JEJU";
 
     /// <summary>
     /// Literal for code: FluidJoint
@@ -3613,9 +4373,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluidJoint = "JNTFLD";
 
     /// <summary>
+    /// Literal for code: V20487FluidJoint
+    /// </summary>
+    public const string LiteralV20487FluidJoint = "http://hl7.org/fhir/v2/0487#JNTFLD";
+
+    /// <summary>
     /// Literal for code: DrainageJacksonPratt
     /// </summary>
     public const string LiteralDrainageJacksonPratt = "JP";
+
+    /// <summary>
+    /// Literal for code: V20487DrainageJacksonPratt
+    /// </summary>
+    public const string LiteralV20487DrainageJacksonPratt = "http://hl7.org/fhir/v2/0487#JP";
 
     /// <summary>
     /// Literal for code: Lavage
@@ -3623,9 +4393,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLavage = "KELOI";
 
     /// <summary>
+    /// Literal for code: V20487Lavage
+    /// </summary>
+    public const string LiteralV20487Lavage = "http://hl7.org/fhir/v2/0487#KELOI";
+
+    /// <summary>
     /// Literal for code: FluidKidney
     /// </summary>
     public const string LiteralFluidKidney = "KIDFLD";
+
+    /// <summary>
+    /// Literal for code: V20487FluidKidney
+    /// </summary>
+    public const string LiteralV20487FluidKidney = "http://hl7.org/fhir/v2/0487#KIDFLD";
 
     /// <summary>
     /// Literal for code: LavageBronhial
@@ -3633,9 +4413,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLavageBronhial = "LAVG";
 
     /// <summary>
+    /// Literal for code: V20487LavageBronhial
+    /// </summary>
+    public const string LiteralV20487LavageBronhial = "http://hl7.org/fhir/v2/0487#LAVG";
+
+    /// <summary>
     /// Literal for code: LavageGastric
     /// </summary>
     public const string LiteralLavageGastric = "LAVGG";
+
+    /// <summary>
+    /// Literal for code: V20487LavageGastric
+    /// </summary>
+    public const string LiteralV20487LavageGastric = "http://hl7.org/fhir/v2/0487#LAVGG";
 
     /// <summary>
     /// Literal for code: LavagePeritoneal
@@ -3643,9 +4433,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLavagePeritoneal = "LAVGP";
 
     /// <summary>
+    /// Literal for code: V20487LavagePeritoneal
+    /// </summary>
+    public const string LiteralV20487LavagePeritoneal = "http://hl7.org/fhir/v2/0487#LAVGP";
+
+    /// <summary>
     /// Literal for code: LavagePreBronch
     /// </summary>
     public const string LiteralLavagePreBronch = "LAVPG";
+
+    /// <summary>
+    /// Literal for code: V20487LavagePreBronch
+    /// </summary>
+    public const string LiteralV20487LavagePreBronch = "http://hl7.org/fhir/v2/0487#LAVPG";
 
     /// <summary>
     /// Literal for code: ContactLens
@@ -3653,9 +4453,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralContactLens = "LENS1";
 
     /// <summary>
+    /// Literal for code: V20487ContactLens
+    /// </summary>
+    public const string LiteralV20487ContactLens = "http://hl7.org/fhir/v2/0487#LENS1";
+
+    /// <summary>
     /// Literal for code: ContactLensCase
     /// </summary>
     public const string LiteralContactLensCase = "LENS2";
+
+    /// <summary>
+    /// Literal for code: V20487ContactLensCase
+    /// </summary>
+    public const string LiteralV20487ContactLensCase = "http://hl7.org/fhir/v2/0487#LENS2";
 
     /// <summary>
     /// Literal for code: Lesion
@@ -3663,9 +4473,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLesion = "LESN";
 
     /// <summary>
+    /// Literal for code: V20487Lesion
+    /// </summary>
+    public const string LiteralV20487Lesion = "http://hl7.org/fhir/v2/0487#LESN";
+
+    /// <summary>
     /// Literal for code: LiquidUnspecified
     /// </summary>
     public const string LiteralLiquidUnspecified = "LIQ";
+
+    /// <summary>
+    /// Literal for code: V20487LiquidUnspecified
+    /// </summary>
+    public const string LiteralV20487LiquidUnspecified = "http://hl7.org/fhir/v2/0487#LIQ";
 
     /// <summary>
     /// Literal for code: LiquidOther
@@ -3673,9 +4493,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLiquidOther = "LIQO";
 
     /// <summary>
+    /// Literal for code: V20487LiquidOther
+    /// </summary>
+    public const string LiteralV20487LiquidOther = "http://hl7.org/fhir/v2/0487#LIQO";
+
+    /// <summary>
     /// Literal for code: LineArterial
     /// </summary>
     public const string LiteralLineArterial = "LNA";
+
+    /// <summary>
+    /// Literal for code: V20487LineArterial
+    /// </summary>
+    public const string LiteralV20487LineArterial = "http://hl7.org/fhir/v2/0487#LNA";
 
     /// <summary>
     /// Literal for code: LineVenous
@@ -3683,9 +4513,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLineVenous = "LNV";
 
     /// <summary>
+    /// Literal for code: V20487LineVenous
+    /// </summary>
+    public const string LiteralV20487LineVenous = "http://hl7.org/fhir/v2/0487#LNV";
+
+    /// <summary>
     /// Literal for code: FluidLumbarSac
     /// </summary>
     public const string LiteralFluidLumbarSac = "LSAC";
+
+    /// <summary>
+    /// Literal for code: V20487FluidLumbarSac
+    /// </summary>
+    public const string LiteralV20487FluidLumbarSac = "http://hl7.org/fhir/v2/0487#LSAC";
 
     /// <summary>
     /// Literal for code: Lymphocytes
@@ -3693,9 +4533,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLymphocytes = "LYM";
 
     /// <summary>
+    /// Literal for code: V20487Lymphocytes
+    /// </summary>
+    public const string LiteralV20487Lymphocytes = "http://hl7.org/fhir/v2/0487#LYM";
+
+    /// <summary>
     /// Literal for code: Macrophages
     /// </summary>
     public const string LiteralMacrophages = "MAC";
+
+    /// <summary>
+    /// Literal for code: V20487Macrophages
+    /// </summary>
+    public const string LiteralV20487Macrophages = "http://hl7.org/fhir/v2/0487#MAC";
 
     /// <summary>
     /// Literal for code: CatheterTipMakurkour
@@ -3703,9 +4553,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterTipMakurkour = "MAHUR";
 
     /// <summary>
+    /// Literal for code: V20487CatheterTipMakurkour
+    /// </summary>
+    public const string LiteralV20487CatheterTipMakurkour = "http://hl7.org/fhir/v2/0487#MAHUR";
+
+    /// <summary>
     /// Literal for code: Marrow
     /// </summary>
     public const string LiteralMarrow = "MAR";
+
+    /// <summary>
+    /// Literal for code: V20487Marrow
+    /// </summary>
+    public const string LiteralV20487Marrow = "http://hl7.org/fhir/v2/0487#MAR";
 
     /// <summary>
     /// Literal for code: Mass
@@ -3713,9 +4573,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMass = "MASS";
 
     /// <summary>
+    /// Literal for code: V20487Mass
+    /// </summary>
+    public const string LiteralV20487Mass = "http://hl7.org/fhir/v2/0487#MASS";
+
+    /// <summary>
     /// Literal for code: BloodMenstrual
     /// </summary>
     public const string LiteralBloodMenstrual = "MBLD";
+
+    /// <summary>
+    /// Literal for code: V20487BloodMenstrual
+    /// </summary>
+    public const string LiteralV20487BloodMenstrual = "http://hl7.org/fhir/v2/0487#MBLD";
 
     /// <summary>
     /// Literal for code: Meconium
@@ -3723,9 +4593,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMeconium = "MEC";
 
     /// <summary>
+    /// Literal for code: V20487Meconium
+    /// </summary>
+    public const string LiteralV20487Meconium = "http://hl7.org/fhir/v2/0487#MEC";
+
+    /// <summary>
     /// Literal for code: BreastMilk
     /// </summary>
     public const string LiteralBreastMilk = "MILK";
+
+    /// <summary>
+    /// Literal for code: V20487BreastMilk
+    /// </summary>
+    public const string LiteralV20487BreastMilk = "http://hl7.org/fhir/v2/0487#MILK";
 
     /// <summary>
     /// Literal for code: Milk
@@ -3733,9 +4613,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMilk = "MLK";
 
     /// <summary>
+    /// Literal for code: V20487Milk
+    /// </summary>
+    public const string LiteralV20487Milk = "http://hl7.org/fhir/v2/0487#MLK";
+
+    /// <summary>
     /// Literal for code: Mucosa
     /// </summary>
     public const string LiteralMucosa = "MUCOS";
+
+    /// <summary>
+    /// Literal for code: V20487Mucosa
+    /// </summary>
+    public const string LiteralV20487Mucosa = "http://hl7.org/fhir/v2/0487#MUCOS";
 
     /// <summary>
     /// Literal for code: Mucus
@@ -3743,9 +4633,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMucus = "MUCUS";
 
     /// <summary>
+    /// Literal for code: V20487Mucus
+    /// </summary>
+    public const string LiteralV20487Mucus = "http://hl7.org/fhir/v2/0487#MUCUS";
+
+    /// <summary>
     /// Literal for code: Nail
     /// </summary>
     public const string LiteralNail = "NAIL";
+
+    /// <summary>
+    /// Literal for code: V20487Nail
+    /// </summary>
+    public const string LiteralV20487Nail = "http://hl7.org/fhir/v2/0487#NAIL";
 
     /// <summary>
     /// Literal for code: DrainageNasal
@@ -3753,9 +4653,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrainageNasal = "NASDR";
 
     /// <summary>
+    /// Literal for code: V20487DrainageNasal
+    /// </summary>
+    public const string LiteralV20487DrainageNasal = "http://hl7.org/fhir/v2/0487#NASDR";
+
+    /// <summary>
     /// Literal for code: Needle
     /// </summary>
     public const string LiteralNeedle = "NEDL";
+
+    /// <summary>
+    /// Literal for code: V20487Needle
+    /// </summary>
+    public const string LiteralV20487Needle = "http://hl7.org/fhir/v2/0487#NEDL";
 
     /// <summary>
     /// Literal for code: SiteNephrostomy
@@ -3763,9 +4673,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSiteNephrostomy = "NEPH";
 
     /// <summary>
+    /// Literal for code: V20487SiteNephrostomy
+    /// </summary>
+    public const string LiteralV20487SiteNephrostomy = "http://hl7.org/fhir/v2/0487#NEPH";
+
+    /// <summary>
     /// Literal for code: AspirateNasogastric
     /// </summary>
     public const string LiteralAspirateNasogastric = "NGASP";
+
+    /// <summary>
+    /// Literal for code: V20487AspirateNasogastric
+    /// </summary>
+    public const string LiteralV20487AspirateNasogastric = "http://hl7.org/fhir/v2/0487#NGASP";
 
     /// <summary>
     /// Literal for code: DrainageNasogastric
@@ -3773,9 +4693,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrainageNasogastric = "NGAST";
 
     /// <summary>
+    /// Literal for code: V20487DrainageNasogastric
+    /// </summary>
+    public const string LiteralV20487DrainageNasogastric = "http://hl7.org/fhir/v2/0487#NGAST";
+
+    /// <summary>
     /// Literal for code: SiteNasoGastric
     /// </summary>
     public const string LiteralSiteNasoGastric = "NGS";
+
+    /// <summary>
+    /// Literal for code: V20487SiteNasoGastric
+    /// </summary>
+    public const string LiteralV20487SiteNasoGastric = "http://hl7.org/fhir/v2/0487#NGS";
 
     /// <summary>
     /// Literal for code: NoduleS
@@ -3783,9 +4713,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNoduleS = "NODUL";
 
     /// <summary>
+    /// Literal for code: V20487NoduleS
+    /// </summary>
+    public const string LiteralV20487NoduleS = "http://hl7.org/fhir/v2/0487#NODUL";
+
+    /// <summary>
     /// Literal for code: SecretionNasal
     /// </summary>
     public const string LiteralSecretionNasal = "NSECR";
+
+    /// <summary>
+    /// Literal for code: V20487SecretionNasal
+    /// </summary>
+    public const string LiteralV20487SecretionNasal = "http://hl7.org/fhir/v2/0487#NSECR";
 
     /// <summary>
     /// Literal for code: Other
@@ -3793,9 +4733,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOther = "ORH";
 
     /// <summary>
+    /// Literal for code: V20487Other
+    /// </summary>
+    public const string LiteralV20487Other = "http://hl7.org/fhir/v2/0487#ORH";
+
+    /// <summary>
     /// Literal for code: LesionOral
     /// </summary>
     public const string LiteralLesionOral = "ORL";
+
+    /// <summary>
+    /// Literal for code: V20487LesionOral
+    /// </summary>
+    public const string LiteralV20487LesionOral = "http://hl7.org/fhir/v2/0487#ORL";
 
     /// <summary>
     /// Literal for code: SourceOther
@@ -3803,9 +4753,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSourceOther = "OTH";
 
     /// <summary>
+    /// Literal for code: V20487SourceOther
+    /// </summary>
+    public const string LiteralV20487SourceOther = "http://hl7.org/fhir/v2/0487#OTH";
+
+    /// <summary>
     /// Literal for code: Pacemaker
     /// </summary>
     public const string LiteralPacemaker = "PACEM";
+
+    /// <summary>
+    /// Literal for code: V20487Pacemaker
+    /// </summary>
+    public const string LiteralV20487Pacemaker = "http://hl7.org/fhir/v2/0487#PACEM";
 
     /// <summary>
     /// Literal for code: PancreaticFluid
@@ -3813,9 +4773,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPancreaticFluid = "PAFL";
 
     /// <summary>
+    /// Literal for code: V20487PancreaticFluid
+    /// </summary>
+    public const string LiteralV20487PancreaticFluid = "http://hl7.org/fhir/v2/0487#PAFL";
+
+    /// <summary>
     /// Literal for code: FluidPericardial
     /// </summary>
     public const string LiteralFluidPericardial = "PCFL";
+
+    /// <summary>
+    /// Literal for code: V20487FluidPericardial
+    /// </summary>
+    public const string LiteralV20487FluidPericardial = "http://hl7.org/fhir/v2/0487#PCFL";
 
     /// <summary>
     /// Literal for code: SitePeritonealDialysis
@@ -3823,9 +4793,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSitePeritonealDialysis = "PDSIT";
 
     /// <summary>
+    /// Literal for code: V20487SitePeritonealDialysis
+    /// </summary>
+    public const string LiteralV20487SitePeritonealDialysis = "http://hl7.org/fhir/v2/0487#PDSIT";
+
+    /// <summary>
     /// Literal for code: SitePeritonealDialysisTunnel
     /// </summary>
     public const string LiteralSitePeritonealDialysisTunnel = "PDTS";
+
+    /// <summary>
+    /// Literal for code: V20487SitePeritonealDialysisTunnel
+    /// </summary>
+    public const string LiteralV20487SitePeritonealDialysisTunnel = "http://hl7.org/fhir/v2/0487#PDTS";
 
     /// <summary>
     /// Literal for code: AbscessPelvic
@@ -3833,9 +4813,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbscessPelvic = "PELVA";
 
     /// <summary>
+    /// Literal for code: V20487AbscessPelvic
+    /// </summary>
+    public const string LiteralV20487AbscessPelvic = "http://hl7.org/fhir/v2/0487#PELVA";
+
+    /// <summary>
     /// Literal for code: LesionPenile
     /// </summary>
     public const string LiteralLesionPenile = "PENIL";
+
+    /// <summary>
+    /// Literal for code: V20487LesionPenile
+    /// </summary>
+    public const string LiteralV20487LesionPenile = "http://hl7.org/fhir/v2/0487#PENIL";
 
     /// <summary>
     /// Literal for code: AbscessPerianal
@@ -3843,9 +4833,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbscessPerianal = "PERIA";
 
     /// <summary>
+    /// Literal for code: V20487AbscessPerianal
+    /// </summary>
+    public const string LiteralV20487AbscessPerianal = "http://hl7.org/fhir/v2/0487#PERIA";
+
+    /// <summary>
     /// Literal for code: CystPilonidal
     /// </summary>
     public const string LiteralCystPilonidal = "PILOC";
+
+    /// <summary>
+    /// Literal for code: V20487CystPilonidal
+    /// </summary>
+    public const string LiteralV20487CystPilonidal = "http://hl7.org/fhir/v2/0487#PILOC";
 
     /// <summary>
     /// Literal for code: SitePin
@@ -3853,9 +4853,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSitePin = "PINS";
 
     /// <summary>
+    /// Literal for code: V20487SitePin
+    /// </summary>
+    public const string LiteralV20487SitePin = "http://hl7.org/fhir/v2/0487#PINS";
+
+    /// <summary>
     /// Literal for code: SitePacemakerInsetion
     /// </summary>
     public const string LiteralSitePacemakerInsetion = "PIS";
+
+    /// <summary>
+    /// Literal for code: V20487SitePacemakerInsetion
+    /// </summary>
+    public const string LiteralV20487SitePacemakerInsetion = "http://hl7.org/fhir/v2/0487#PIS";
 
     /// <summary>
     /// Literal for code: PlantMaterial
@@ -3863,9 +4873,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlantMaterial = "PLAN";
 
     /// <summary>
+    /// Literal for code: V20487PlantMaterial
+    /// </summary>
+    public const string LiteralV20487PlantMaterial = "http://hl7.org/fhir/v2/0487#PLAN";
+
+    /// <summary>
     /// Literal for code: Plasma
     /// </summary>
     public const string LiteralPlasma = "PLAS";
+
+    /// <summary>
+    /// Literal for code: V20487Plasma
+    /// </summary>
+    public const string LiteralV20487Plasma = "http://hl7.org/fhir/v2/0487#PLAS";
 
     /// <summary>
     /// Literal for code: PlasmaBag
@@ -3873,9 +4893,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlasmaBag = "PLB";
 
     /// <summary>
+    /// Literal for code: V20487PlasmaBag
+    /// </summary>
+    public const string LiteralV20487PlasmaBag = "http://hl7.org/fhir/v2/0487#PLB";
+
+    /// <summary>
     /// Literal for code: Placenta
     /// </summary>
     public const string LiteralPlacenta = "PLC";
+
+    /// <summary>
+    /// Literal for code: V20487Placenta
+    /// </summary>
+    public const string LiteralV20487Placenta = "http://hl7.org/fhir/v2/0487#PLC";
 
     /// <summary>
     /// Literal for code: SerumPeakLevel
@@ -3883,9 +4913,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSerumPeakLevel = "PLEVS";
 
     /// <summary>
+    /// Literal for code: V20487SerumPeakLevel
+    /// </summary>
+    public const string LiteralV20487SerumPeakLevel = "http://hl7.org/fhir/v2/0487#PLEVS";
+
+    /// <summary>
     /// Literal for code: PleuralFluidThoracentesisFluid
     /// </summary>
     public const string LiteralPleuralFluidThoracentesisFluid = "PLR";
+
+    /// <summary>
+    /// Literal for code: V20487PleuralFluidThoracentesisFluid
+    /// </summary>
+    public const string LiteralV20487PleuralFluidThoracentesisFluid = "http://hl7.org/fhir/v2/0487#PLR";
 
     /// <summary>
     /// Literal for code: PolymorphonuclearNeutrophils
@@ -3893,9 +4933,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPolymorphonuclearNeutrophils = "PMN";
 
     /// <summary>
+    /// Literal for code: V20487PolymorphonuclearNeutrophils
+    /// </summary>
+    public const string LiteralV20487PolymorphonuclearNeutrophils = "http://hl7.org/fhir/v2/0487#PMN";
+
+    /// <summary>
     /// Literal for code: DrainagePenile
     /// </summary>
     public const string LiteralDrainagePenile = "PND";
+
+    /// <summary>
+    /// Literal for code: V20487DrainagePenile
+    /// </summary>
+    public const string LiteralV20487DrainagePenile = "http://hl7.org/fhir/v2/0487#PND";
 
     /// <summary>
     /// Literal for code: Polyps
@@ -3903,9 +4953,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPolyps = "POL";
 
     /// <summary>
+    /// Literal for code: V20487Polyps
+    /// </summary>
+    public const string LiteralV20487Polyps = "http://hl7.org/fhir/v2/0487#POL";
+
+    /// <summary>
     /// Literal for code: GraftSitePopliteal
     /// </summary>
     public const string LiteralGraftSitePopliteal = "POPGS";
+
+    /// <summary>
+    /// Literal for code: V20487GraftSitePopliteal
+    /// </summary>
+    public const string LiteralV20487GraftSitePopliteal = "http://hl7.org/fhir/v2/0487#POPGS";
 
     /// <summary>
     /// Literal for code: GraftPopliteal
@@ -3913,9 +4973,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGraftPopliteal = "POPLG";
 
     /// <summary>
+    /// Literal for code: V20487GraftPopliteal
+    /// </summary>
+    public const string LiteralV20487GraftPopliteal = "http://hl7.org/fhir/v2/0487#POPLG";
+
+    /// <summary>
     /// Literal for code: SitePoplitealVein
     /// </summary>
     public const string LiteralSitePoplitealVein = "POPLV";
+
+    /// <summary>
+    /// Literal for code: V20487SitePoplitealVein
+    /// </summary>
+    public const string LiteralV20487SitePoplitealVein = "http://hl7.org/fhir/v2/0487#POPLV";
 
     /// <summary>
     /// Literal for code: CatheterPorta
@@ -3923,9 +4993,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterPorta = "PORTA";
 
     /// <summary>
+    /// Literal for code: V20487CatheterPorta
+    /// </summary>
+    public const string LiteralV20487CatheterPorta = "http://hl7.org/fhir/v2/0487#PORTA";
+
+    /// <summary>
     /// Literal for code: PlasmaPlateletPoor
     /// </summary>
     public const string LiteralPlasmaPlateletPoor = "PPP";
+
+    /// <summary>
+    /// Literal for code: V20487PlasmaPlateletPoor
+    /// </summary>
+    public const string LiteralV20487PlasmaPlateletPoor = "http://hl7.org/fhir/v2/0487#PPP";
 
     /// <summary>
     /// Literal for code: ProstheticDevice
@@ -3933,9 +5013,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralProstheticDevice = "PROST";
 
     /// <summary>
+    /// Literal for code: V20487ProstheticDevice
+    /// </summary>
+    public const string LiteralV20487ProstheticDevice = "http://hl7.org/fhir/v2/0487#PROST";
+
+    /// <summary>
     /// Literal for code: PlasmaPlateletRich
     /// </summary>
     public const string LiteralPlasmaPlateletRich = "PRP";
+
+    /// <summary>
+    /// Literal for code: V20487PlasmaPlateletRich
+    /// </summary>
+    public const string LiteralV20487PlasmaPlateletRich = "http://hl7.org/fhir/v2/0487#PRP";
 
     /// <summary>
     /// Literal for code: Pseudocyst
@@ -3943,9 +5033,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPseudocyst = "PSC";
 
     /// <summary>
+    /// Literal for code: V20487Pseudocyst
+    /// </summary>
+    public const string LiteralV20487Pseudocyst = "http://hl7.org/fhir/v2/0487#PSC";
+
+    /// <summary>
     /// Literal for code: WoundPuncture
     /// </summary>
     public const string LiteralWoundPuncture = "PUNCT";
+
+    /// <summary>
+    /// Literal for code: V20487WoundPuncture
+    /// </summary>
+    public const string LiteralV20487WoundPuncture = "http://hl7.org/fhir/v2/0487#PUNCT";
 
     /// <summary>
     /// Literal for code: Pus
@@ -3953,9 +5053,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPus = "PUS";
 
     /// <summary>
+    /// Literal for code: V20487Pus
+    /// </summary>
+    public const string LiteralV20487Pus = "http://hl7.org/fhir/v2/0487#PUS";
+
+    /// <summary>
     /// Literal for code: Pustule
     /// </summary>
     public const string LiteralPustule = "PUSFR";
+
+    /// <summary>
+    /// Literal for code: V20487Pustule
+    /// </summary>
+    public const string LiteralV20487Pustule = "http://hl7.org/fhir/v2/0487#PUSFR";
 
     /// <summary>
     /// Literal for code: Pus_2
@@ -3963,9 +5073,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPus_2 = "PUST";
 
     /// <summary>
+    /// Literal for code: V20487Pus_2
+    /// </summary>
+    public const string LiteralV20487Pus_2 = "http://hl7.org/fhir/v2/0487#PUST";
+
+    /// <summary>
     /// Literal for code: QualityControl
     /// </summary>
     public const string LiteralQualityControl = "QC3";
+
+    /// <summary>
+    /// Literal for code: V20487QualityControl
+    /// </summary>
+    public const string LiteralV20487QualityControl = "http://hl7.org/fhir/v2/0487#QC3";
 
     /// <summary>
     /// Literal for code: UrineRandom
@@ -3973,9 +5093,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUrineRandom = "RANDU";
 
     /// <summary>
+    /// Literal for code: V20487UrineRandom
+    /// </summary>
+    public const string LiteralV20487UrineRandom = "http://hl7.org/fhir/v2/0487#RANDU";
+
+    /// <summary>
     /// Literal for code: Erythrocytes
     /// </summary>
     public const string LiteralErythrocytes = "RBC";
+
+    /// <summary>
+    /// Literal for code: V20487Erythrocytes
+    /// </summary>
+    public const string LiteralV20487Erythrocytes = "http://hl7.org/fhir/v2/0487#RBC";
 
     /// <summary>
     /// Literal for code: BiteReptile
@@ -3983,9 +5113,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBiteReptile = "RBITE";
 
     /// <summary>
+    /// Literal for code: V20487BiteReptile
+    /// </summary>
+    public const string LiteralV20487BiteReptile = "http://hl7.org/fhir/v2/0487#RBITE";
+
+    /// <summary>
     /// Literal for code: DrainageRectal
     /// </summary>
     public const string LiteralDrainageRectal = "RECT";
+
+    /// <summary>
+    /// Literal for code: V20487DrainageRectal
+    /// </summary>
+    public const string LiteralV20487DrainageRectal = "http://hl7.org/fhir/v2/0487#RECT";
 
     /// <summary>
     /// Literal for code: AbscessRectal
@@ -3993,9 +5133,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbscessRectal = "RECTA";
 
     /// <summary>
+    /// Literal for code: V20487AbscessRectal
+    /// </summary>
+    public const string LiteralV20487AbscessRectal = "http://hl7.org/fhir/v2/0487#RECTA";
+
+    /// <summary>
     /// Literal for code: CystRenal
     /// </summary>
     public const string LiteralCystRenal = "RENALC";
+
+    /// <summary>
+    /// Literal for code: V20487CystRenal
+    /// </summary>
+    public const string LiteralV20487CystRenal = "http://hl7.org/fhir/v2/0487#RENALC";
 
     /// <summary>
     /// Literal for code: FluidRenalCyst
@@ -4003,9 +5153,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluidRenalCyst = "RENC";
 
     /// <summary>
+    /// Literal for code: V20487FluidRenalCyst
+    /// </summary>
+    public const string LiteralV20487FluidRenalCyst = "http://hl7.org/fhir/v2/0487#RENC";
+
+    /// <summary>
     /// Literal for code: Respiratory
     /// </summary>
     public const string LiteralRespiratory = "RES";
+
+    /// <summary>
+    /// Literal for code: V20487Respiratory
+    /// </summary>
+    public const string LiteralV20487Respiratory = "http://hl7.org/fhir/v2/0487#RES";
 
     /// <summary>
     /// Literal for code: Saliva
@@ -4013,9 +5173,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSaliva = "SAL";
 
     /// <summary>
+    /// Literal for code: V20487Saliva
+    /// </summary>
+    public const string LiteralV20487Saliva = "http://hl7.org/fhir/v2/0487#SAL";
+
+    /// <summary>
     /// Literal for code: TissueKeloidScar
     /// </summary>
     public const string LiteralTissueKeloidScar = "SCAR";
+
+    /// <summary>
+    /// Literal for code: V20487TissueKeloidScar
+    /// </summary>
+    public const string LiteralV20487TissueKeloidScar = "http://hl7.org/fhir/v2/0487#SCAR";
 
     /// <summary>
     /// Literal for code: CatheterTipSubclavian
@@ -4023,9 +5193,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterTipSubclavian = "SCLV";
 
     /// <summary>
+    /// Literal for code: V20487CatheterTipSubclavian
+    /// </summary>
+    public const string LiteralV20487CatheterTipSubclavian = "http://hl7.org/fhir/v2/0487#SCLV";
+
+    /// <summary>
     /// Literal for code: AbscessScrotal
     /// </summary>
     public const string LiteralAbscessScrotal = "SCROA";
+
+    /// <summary>
+    /// Literal for code: V20487AbscessScrotal
+    /// </summary>
+    public const string LiteralV20487AbscessScrotal = "http://hl7.org/fhir/v2/0487#SCROA";
 
     /// <summary>
     /// Literal for code: SecretionS
@@ -4033,9 +5213,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSecretionS = "SECRE";
 
     /// <summary>
+    /// Literal for code: V20487SecretionS
+    /// </summary>
+    public const string LiteralV20487SecretionS = "http://hl7.org/fhir/v2/0487#SECRE";
+
+    /// <summary>
     /// Literal for code: Serum
     /// </summary>
     public const string LiteralSerum = "SER";
+
+    /// <summary>
+    /// Literal for code: V20487Serum
+    /// </summary>
+    public const string LiteralV20487Serum = "http://hl7.org/fhir/v2/0487#SER";
 
     /// <summary>
     /// Literal for code: SiteShunt
@@ -4043,9 +5233,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSiteShunt = "SHU";
 
     /// <summary>
+    /// Literal for code: V20487SiteShunt
+    /// </summary>
+    public const string LiteralV20487SiteShunt = "http://hl7.org/fhir/v2/0487#SHU";
+
+    /// <summary>
     /// Literal for code: FluidShunt
     /// </summary>
     public const string LiteralFluidShunt = "SHUNF";
+
+    /// <summary>
+    /// Literal for code: V20487FluidShunt
+    /// </summary>
+    public const string LiteralV20487FluidShunt = "http://hl7.org/fhir/v2/0487#SHUNF";
 
     /// <summary>
     /// Literal for code: Shunt
@@ -4053,9 +5253,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShunt = "SHUNT";
 
     /// <summary>
+    /// Literal for code: V20487Shunt
+    /// </summary>
+    public const string LiteralV20487Shunt = "http://hl7.org/fhir/v2/0487#SHUNT";
+
+    /// <summary>
     /// Literal for code: Site
     /// </summary>
     public const string LiteralSite = "SITE";
+
+    /// <summary>
+    /// Literal for code: V20487Site
+    /// </summary>
+    public const string LiteralV20487Site = "http://hl7.org/fhir/v2/0487#SITE";
 
     /// <summary>
     /// Literal for code: BiopsySkin
@@ -4063,9 +5273,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBiopsySkin = "SKBP";
 
     /// <summary>
+    /// Literal for code: V20487BiopsySkin
+    /// </summary>
+    public const string LiteralV20487BiopsySkin = "http://hl7.org/fhir/v2/0487#SKBP";
+
+    /// <summary>
     /// Literal for code: Skin
     /// </summary>
     public const string LiteralSkin = "SKN";
+
+    /// <summary>
+    /// Literal for code: V20487Skin
+    /// </summary>
+    public const string LiteralV20487Skin = "http://hl7.org/fhir/v2/0487#SKN";
 
     /// <summary>
     /// Literal for code: MassSubMandibular
@@ -4073,9 +5293,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMassSubMandibular = "SMM";
 
     /// <summary>
+    /// Literal for code: V20487MassSubMandibular
+    /// </summary>
+    public const string LiteralV20487MassSubMandibular = "http://hl7.org/fhir/v2/0487#SMM";
+
+    /// <summary>
     /// Literal for code: SeminalFluid
     /// </summary>
     public const string LiteralSeminalFluid = "SMN";
+
+    /// <summary>
+    /// Literal for code: V20487SeminalFluid
+    /// </summary>
+    public const string LiteralV20487SeminalFluid = "http://hl7.org/fhir/v2/0487#SMN";
 
     /// <summary>
     /// Literal for code: FluidSynovialJointFluid
@@ -4083,9 +5313,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFluidSynovialJointFluid = "SNV";
 
     /// <summary>
+    /// Literal for code: V20487FluidSynovialJointFluid
+    /// </summary>
+    public const string LiteralV20487FluidSynovialJointFluid = "http://hl7.org/fhir/v2/0487#SNV";
+
+    /// <summary>
     /// Literal for code: Spermatozoa
     /// </summary>
     public const string LiteralSpermatozoa = "SPRM";
+
+    /// <summary>
+    /// Literal for code: V20487Spermatozoa
+    /// </summary>
+    public const string LiteralV20487Spermatozoa = "http://hl7.org/fhir/v2/0487#SPRM";
 
     /// <summary>
     /// Literal for code: CatheterTipSuprapubic
@@ -4093,9 +5333,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterTipSuprapubic = "SPRP";
 
     /// <summary>
+    /// Literal for code: V20487CatheterTipSuprapubic
+    /// </summary>
+    public const string LiteralV20487CatheterTipSuprapubic = "http://hl7.org/fhir/v2/0487#SPRP";
+
+    /// <summary>
     /// Literal for code: CathetherTipSuprapubic
     /// </summary>
     public const string LiteralCathetherTipSuprapubic = "SPRPB";
+
+    /// <summary>
+    /// Literal for code: V20487CathetherTipSuprapubic
+    /// </summary>
+    public const string LiteralV20487CathetherTipSuprapubic = "http://hl7.org/fhir/v2/0487#SPRPB";
 
     /// <summary>
     /// Literal for code: EnvironmentalSporeStrip
@@ -4103,9 +5353,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnvironmentalSporeStrip = "SPS";
 
     /// <summary>
+    /// Literal for code: V20487EnvironmentalSporeStrip
+    /// </summary>
+    public const string LiteralV20487EnvironmentalSporeStrip = "http://hl7.org/fhir/v2/0487#SPS";
+
+    /// <summary>
     /// Literal for code: Sputum
     /// </summary>
     public const string LiteralSputum = "SPT";
+
+    /// <summary>
+    /// Literal for code: V20487Sputum
+    /// </summary>
+    public const string LiteralV20487Sputum = "http://hl7.org/fhir/v2/0487#SPT";
 
     /// <summary>
     /// Literal for code: SputumCoughed
@@ -4113,9 +5373,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSputumCoughed = "SPTC";
 
     /// <summary>
+    /// Literal for code: V20487SputumCoughed
+    /// </summary>
+    public const string LiteralV20487SputumCoughed = "http://hl7.org/fhir/v2/0487#SPTC";
+
+    /// <summary>
     /// Literal for code: SputumTrachealAspirate
     /// </summary>
     public const string LiteralSputumTrachealAspirate = "SPTT";
+
+    /// <summary>
+    /// Literal for code: V20487SputumTrachealAspirate
+    /// </summary>
+    public const string LiteralV20487SputumTrachealAspirate = "http://hl7.org/fhir/v2/0487#SPTT";
 
     /// <summary>
     /// Literal for code: SputumSimulated
@@ -4123,9 +5393,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSputumSimulated = "SPUT1";
 
     /// <summary>
+    /// Literal for code: V20487SputumSimulated
+    /// </summary>
+    public const string LiteralV20487SputumSimulated = "http://hl7.org/fhir/v2/0487#SPUT1";
+
+    /// <summary>
     /// Literal for code: SputumInducted
     /// </summary>
     public const string LiteralSputumInducted = "SPUTIN";
+
+    /// <summary>
+    /// Literal for code: V20487SputumInducted
+    /// </summary>
+    public const string LiteralV20487SputumInducted = "http://hl7.org/fhir/v2/0487#SPUTIN";
 
     /// <summary>
     /// Literal for code: SputumSpontaneous
@@ -4133,9 +5413,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSputumSpontaneous = "SPUTSP";
 
     /// <summary>
+    /// Literal for code: V20487SputumSpontaneous
+    /// </summary>
+    public const string LiteralV20487SputumSpontaneous = "http://hl7.org/fhir/v2/0487#SPUTSP";
+
+    /// <summary>
     /// Literal for code: EnvironmentalSterrad
     /// </summary>
     public const string LiteralEnvironmentalSterrad = "STER";
+
+    /// <summary>
+    /// Literal for code: V20487EnvironmentalSterrad
+    /// </summary>
+    public const string LiteralV20487EnvironmentalSterrad = "http://hl7.org/fhir/v2/0487#STER";
 
     /// <summary>
     /// Literal for code: StoolEqualsFecal
@@ -4143,9 +5433,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralStoolEqualsFecal = "STL";
 
     /// <summary>
+    /// Literal for code: V20487StoolEqualsFecal
+    /// </summary>
+    public const string LiteralV20487StoolEqualsFecal = "http://hl7.org/fhir/v2/0487#STL";
+
+    /// <summary>
     /// Literal for code: StoneKidney
     /// </summary>
     public const string LiteralStoneKidney = "STONE";
+
+    /// <summary>
+    /// Literal for code: V20487StoneKidney
+    /// </summary>
+    public const string LiteralV20487StoneKidney = "http://hl7.org/fhir/v2/0487#STONE";
 
     /// <summary>
     /// Literal for code: AbscessSubmandibular
@@ -4153,9 +5453,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbscessSubmandibular = "SUBMA";
 
     /// <summary>
+    /// Literal for code: V20487AbscessSubmandibular
+    /// </summary>
+    public const string LiteralV20487AbscessSubmandibular = "http://hl7.org/fhir/v2/0487#SUBMA";
+
+    /// <summary>
     /// Literal for code: AbscessSubmaxillary
     /// </summary>
     public const string LiteralAbscessSubmaxillary = "SUBMX";
+
+    /// <summary>
+    /// Literal for code: V20487AbscessSubmaxillary
+    /// </summary>
+    public const string LiteralV20487AbscessSubmaxillary = "http://hl7.org/fhir/v2/0487#SUBMX";
 
     /// <summary>
     /// Literal for code: DrainageSump
@@ -4163,9 +5473,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrainageSump = "SUMP";
 
     /// <summary>
+    /// Literal for code: V20487DrainageSump
+    /// </summary>
+    public const string LiteralV20487DrainageSump = "http://hl7.org/fhir/v2/0487#SUMP";
+
+    /// <summary>
     /// Literal for code: SuprapubicTap
     /// </summary>
     public const string LiteralSuprapubicTap = "SUP";
+
+    /// <summary>
+    /// Literal for code: V20487SuprapubicTap
+    /// </summary>
+    public const string LiteralV20487SuprapubicTap = "http://hl7.org/fhir/v2/0487#SUP";
 
     /// <summary>
     /// Literal for code: Suture
@@ -4173,9 +5493,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSuture = "SUTUR";
 
     /// <summary>
+    /// Literal for code: V20487Suture
+    /// </summary>
+    public const string LiteralV20487Suture = "http://hl7.org/fhir/v2/0487#SUTUR";
+
+    /// <summary>
     /// Literal for code: CatheterTipSwanGantz
     /// </summary>
     public const string LiteralCatheterTipSwanGantz = "SWGZ";
+
+    /// <summary>
+    /// Literal for code: V20487CatheterTipSwanGantz
+    /// </summary>
+    public const string LiteralV20487CatheterTipSwanGantz = "http://hl7.org/fhir/v2/0487#SWGZ";
 
     /// <summary>
     /// Literal for code: Sweat
@@ -4183,9 +5513,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSweat = "SWT";
 
     /// <summary>
+    /// Literal for code: V20487Sweat
+    /// </summary>
+    public const string LiteralV20487Sweat = "http://hl7.org/fhir/v2/0487#SWT";
+
+    /// <summary>
     /// Literal for code: AspirateTracheal
     /// </summary>
     public const string LiteralAspirateTracheal = "TASP";
+
+    /// <summary>
+    /// Literal for code: V20487AspirateTracheal
+    /// </summary>
+    public const string LiteralV20487AspirateTracheal = "http://hl7.org/fhir/v2/0487#TASP";
 
     /// <summary>
     /// Literal for code: Tears
@@ -4193,9 +5533,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTears = "TEAR";
 
     /// <summary>
+    /// Literal for code: V20487Tears
+    /// </summary>
+    public const string LiteralV20487Tears = "http://hl7.org/fhir/v2/0487#TEAR";
+
+    /// <summary>
     /// Literal for code: ThrombocytePlatelet
     /// </summary>
     public const string LiteralThrombocytePlatelet = "THRB";
+
+    /// <summary>
+    /// Literal for code: V20487ThrombocytePlatelet
+    /// </summary>
+    public const string LiteralV20487ThrombocytePlatelet = "http://hl7.org/fhir/v2/0487#THRB";
 
     /// <summary>
     /// Literal for code: Tissue
@@ -4203,9 +5553,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTissue = "TISS";
 
     /// <summary>
+    /// Literal for code: V20487Tissue
+    /// </summary>
+    public const string LiteralV20487Tissue = "http://hl7.org/fhir/v2/0487#TISS";
+
+    /// <summary>
     /// Literal for code: TissueUlcer
     /// </summary>
     public const string LiteralTissueUlcer = "TISU";
+
+    /// <summary>
+    /// Literal for code: V20487TissueUlcer
+    /// </summary>
+    public const string LiteralV20487TissueUlcer = "http://hl7.org/fhir/v2/0487#TISU";
 
     /// <summary>
     /// Literal for code: CathetherTipTripleLumen
@@ -4213,9 +5573,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCathetherTipTripleLumen = "TLC";
 
     /// <summary>
+    /// Literal for code: V20487CathetherTipTripleLumen
+    /// </summary>
+    public const string LiteralV20487CathetherTipTripleLumen = "http://hl7.org/fhir/v2/0487#TLC";
+
+    /// <summary>
     /// Literal for code: SiteTracheostomy
     /// </summary>
     public const string LiteralSiteTracheostomy = "TRAC";
+
+    /// <summary>
+    /// Literal for code: V20487SiteTracheostomy
+    /// </summary>
+    public const string LiteralV20487SiteTracheostomy = "http://hl7.org/fhir/v2/0487#TRAC";
 
     /// <summary>
     /// Literal for code: Transudate
@@ -4223,9 +5593,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTransudate = "TRANS";
 
     /// <summary>
+    /// Literal for code: V20487Transudate
+    /// </summary>
+    public const string LiteralV20487Transudate = "http://hl7.org/fhir/v2/0487#TRANS";
+
+    /// <summary>
     /// Literal for code: SerumTrough
     /// </summary>
     public const string LiteralSerumTrough = "TSERU";
+
+    /// <summary>
+    /// Literal for code: V20487SerumTrough
+    /// </summary>
+    public const string LiteralV20487SerumTrough = "http://hl7.org/fhir/v2/0487#TSERU";
 
     /// <summary>
     /// Literal for code: AbscessTesticular
@@ -4233,9 +5613,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAbscessTesticular = "TSTES";
 
     /// <summary>
+    /// Literal for code: V20487AbscessTesticular
+    /// </summary>
+    public const string LiteralV20487AbscessTesticular = "http://hl7.org/fhir/v2/0487#TSTES";
+
+    /// <summary>
     /// Literal for code: AspirateTranstracheal
     /// </summary>
     public const string LiteralAspirateTranstracheal = "TTRA";
+
+    /// <summary>
+    /// Literal for code: V20487AspirateTranstracheal
+    /// </summary>
+    public const string LiteralV20487AspirateTranstracheal = "http://hl7.org/fhir/v2/0487#TTRA";
 
     /// <summary>
     /// Literal for code: Tubes
@@ -4243,9 +5633,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTubes = "TUBES";
 
     /// <summary>
+    /// Literal for code: V20487Tubes
+    /// </summary>
+    public const string LiteralV20487Tubes = "http://hl7.org/fhir/v2/0487#TUBES";
+
+    /// <summary>
     /// Literal for code: Tumor
     /// </summary>
     public const string LiteralTumor = "TUMOR";
+
+    /// <summary>
+    /// Literal for code: V20487Tumor
+    /// </summary>
+    public const string LiteralV20487Tumor = "http://hl7.org/fhir/v2/0487#TUMOR";
 
     /// <summary>
     /// Literal for code: SmearTzanck
@@ -4253,9 +5653,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSmearTzanck = "TZANC";
 
     /// <summary>
+    /// Literal for code: V20487SmearTzanck
+    /// </summary>
+    public const string LiteralV20487SmearTzanck = "http://hl7.org/fhir/v2/0487#TZANC";
+
+    /// <summary>
     /// Literal for code: SourceUnidentified
     /// </summary>
     public const string LiteralSourceUnidentified = "UDENT";
+
+    /// <summary>
+    /// Literal for code: V20487SourceUnidentified
+    /// </summary>
+    public const string LiteralV20487SourceUnidentified = "http://hl7.org/fhir/v2/0487#UDENT";
 
     /// <summary>
     /// Literal for code: UnknownMedicine
@@ -4263,9 +5673,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnknownMedicine = "UMED";
 
     /// <summary>
+    /// Literal for code: V20487UnknownMedicine
+    /// </summary>
+    public const string LiteralV20487UnknownMedicine = "http://hl7.org/fhir/v2/0487#UMED";
+
+    /// <summary>
     /// Literal for code: Urine
     /// </summary>
     public const string LiteralUrine = "UR";
+
+    /// <summary>
+    /// Literal for code: V20487Urine
+    /// </summary>
+    public const string LiteralV20487Urine = "http://hl7.org/fhir/v2/0487#UR";
 
     /// <summary>
     /// Literal for code: UrineCleanCatch
@@ -4273,9 +5693,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUrineCleanCatch = "URC";
 
     /// <summary>
+    /// Literal for code: V20487UrineCleanCatch
+    /// </summary>
+    public const string LiteralV20487UrineCleanCatch = "http://hl7.org/fhir/v2/0487#URC";
+
+    /// <summary>
     /// Literal for code: UrineBladderWashings
     /// </summary>
     public const string LiteralUrineBladderWashings = "URINB";
+
+    /// <summary>
+    /// Literal for code: V20487UrineBladderWashings
+    /// </summary>
+    public const string LiteralV20487UrineBladderWashings = "http://hl7.org/fhir/v2/0487#URINB";
 
     /// <summary>
     /// Literal for code: UrineCatheterized
@@ -4283,9 +5713,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUrineCatheterized = "URINC";
 
     /// <summary>
+    /// Literal for code: V20487UrineCatheterized
+    /// </summary>
+    public const string LiteralV20487UrineCatheterized = "http://hl7.org/fhir/v2/0487#URINC";
+
+    /// <summary>
     /// Literal for code: UrineMidstream
     /// </summary>
     public const string LiteralUrineMidstream = "URINM";
+
+    /// <summary>
+    /// Literal for code: V20487UrineMidstream
+    /// </summary>
+    public const string LiteralV20487UrineMidstream = "http://hl7.org/fhir/v2/0487#URINM";
 
     /// <summary>
     /// Literal for code: UrineNephrostomy
@@ -4293,9 +5733,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUrineNephrostomy = "URINN";
 
     /// <summary>
+    /// Literal for code: V20487UrineNephrostomy
+    /// </summary>
+    public const string LiteralV20487UrineNephrostomy = "http://hl7.org/fhir/v2/0487#URINN";
+
+    /// <summary>
     /// Literal for code: UrinePedibag
     /// </summary>
     public const string LiteralUrinePedibag = "URINP";
+
+    /// <summary>
+    /// Literal for code: V20487UrinePedibag
+    /// </summary>
+    public const string LiteralV20487UrinePedibag = "http://hl7.org/fhir/v2/0487#URINP";
 
     /// <summary>
     /// Literal for code: UrineSediment
@@ -4303,9 +5753,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUrineSediment = "URNS";
 
     /// <summary>
+    /// Literal for code: V20487UrineSediment
+    /// </summary>
+    public const string LiteralV20487UrineSediment = "http://hl7.org/fhir/v2/0487#URNS";
+
+    /// <summary>
     /// Literal for code: UrineCatheter
     /// </summary>
     public const string LiteralUrineCatheter = "URT";
+
+    /// <summary>
+    /// Literal for code: V20487UrineCatheter
+    /// </summary>
+    public const string LiteralV20487UrineCatheter = "http://hl7.org/fhir/v2/0487#URT";
 
     /// <summary>
     /// Literal for code: UrineCystoscopy
@@ -4313,9 +5773,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUrineCystoscopy = "USCOP";
 
     /// <summary>
+    /// Literal for code: V20487UrineCystoscopy
+    /// </summary>
+    public const string LiteralV20487UrineCystoscopy = "http://hl7.org/fhir/v2/0487#USCOP";
+
+    /// <summary>
     /// Literal for code: SourceUnspecified
     /// </summary>
     public const string LiteralSourceUnspecified = "USPEC";
+
+    /// <summary>
+    /// Literal for code: V20487SourceUnspecified
+    /// </summary>
+    public const string LiteralV20487SourceUnspecified = "http://hl7.org/fhir/v2/0487#USPEC";
 
     /// <summary>
     /// Literal for code: UnkownSubstance
@@ -4323,9 +5793,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnkownSubstance = "USUB";
 
     /// <summary>
+    /// Literal for code: V20487UnkownSubstance
+    /// </summary>
+    public const string LiteralV20487UnkownSubstance = "http://hl7.org/fhir/v2/0487#USUB";
+
+    /// <summary>
     /// Literal for code: CatheterTipVas
     /// </summary>
     public const string LiteralCatheterTipVas = "VASTIP";
+
+    /// <summary>
+    /// Literal for code: V20487CatheterTipVas
+    /// </summary>
+    public const string LiteralV20487CatheterTipVas = "http://hl7.org/fhir/v2/0487#VASTIP";
 
     /// <summary>
     /// Literal for code: CatheterTipVentricular
@@ -4333,9 +5813,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterTipVentricular = "VENT";
 
     /// <summary>
+    /// Literal for code: V20487CatheterTipVentricular
+    /// </summary>
+    public const string LiteralV20487CatheterTipVentricular = "http://hl7.org/fhir/v2/0487#VENT";
+
+    /// <summary>
     /// Literal for code: VitreousFluid
     /// </summary>
     public const string LiteralVitreousFluid = "VITF";
+
+    /// <summary>
+    /// Literal for code: V20487VitreousFluid
+    /// </summary>
+    public const string LiteralV20487VitreousFluid = "http://hl7.org/fhir/v2/0487#VITF";
 
     /// <summary>
     /// Literal for code: Vomitus
@@ -4343,9 +5833,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVomitus = "VOM";
 
     /// <summary>
+    /// Literal for code: V20487Vomitus
+    /// </summary>
+    public const string LiteralV20487Vomitus = "http://hl7.org/fhir/v2/0487#VOM";
+
+    /// <summary>
     /// Literal for code: Wash
     /// </summary>
     public const string LiteralWash = "WASH";
+
+    /// <summary>
+    /// Literal for code: V20487Wash
+    /// </summary>
+    public const string LiteralV20487Wash = "http://hl7.org/fhir/v2/0487#WASH";
 
     /// <summary>
     /// Literal for code: WashingEGBronchialWashing
@@ -4353,9 +5853,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWashingEGBronchialWashing = "WASI";
 
     /// <summary>
+    /// Literal for code: V20487WashingEGBronchialWashing
+    /// </summary>
+    public const string LiteralV20487WashingEGBronchialWashing = "http://hl7.org/fhir/v2/0487#WASI";
+
+    /// <summary>
     /// Literal for code: Water
     /// </summary>
     public const string LiteralWater = "WAT";
+
+    /// <summary>
+    /// Literal for code: V20487Water
+    /// </summary>
+    public const string LiteralV20487Water = "http://hl7.org/fhir/v2/0487#WAT";
 
     /// <summary>
     /// Literal for code: BloodWhole
@@ -4363,9 +5873,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBloodWhole = "WB";
 
     /// <summary>
+    /// Literal for code: V20487BloodWhole
+    /// </summary>
+    public const string LiteralV20487BloodWhole = "http://hl7.org/fhir/v2/0487#WB";
+
+    /// <summary>
     /// Literal for code: Leukocytes
     /// </summary>
     public const string LiteralLeukocytes = "WBC";
+
+    /// <summary>
+    /// Literal for code: V20487Leukocytes
+    /// </summary>
+    public const string LiteralV20487Leukocytes = "http://hl7.org/fhir/v2/0487#WBC";
 
     /// <summary>
     /// Literal for code: Wen
@@ -4373,9 +5893,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWen = "WEN";
 
     /// <summary>
+    /// Literal for code: V20487Wen
+    /// </summary>
+    public const string LiteralV20487Wen = "http://hl7.org/fhir/v2/0487#WEN";
+
+    /// <summary>
     /// Literal for code: Wick
     /// </summary>
     public const string LiteralWick = "WICK";
+
+    /// <summary>
+    /// Literal for code: V20487Wick
+    /// </summary>
+    public const string LiteralV20487Wick = "http://hl7.org/fhir/v2/0487#WICK";
 
     /// <summary>
     /// Literal for code: Wound
@@ -4383,9 +5913,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWound = "WND";
 
     /// <summary>
+    /// Literal for code: V20487Wound
+    /// </summary>
+    public const string LiteralV20487Wound = "http://hl7.org/fhir/v2/0487#WND";
+
+    /// <summary>
     /// Literal for code: WoundAbscess
     /// </summary>
     public const string LiteralWoundAbscess = "WNDA";
+
+    /// <summary>
+    /// Literal for code: V20487WoundAbscess
+    /// </summary>
+    public const string LiteralV20487WoundAbscess = "http://hl7.org/fhir/v2/0487#WNDA";
 
     /// <summary>
     /// Literal for code: WoundDrainage
@@ -4393,9 +5933,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWoundDrainage = "WNDD";
 
     /// <summary>
+    /// Literal for code: V20487WoundDrainage
+    /// </summary>
+    public const string LiteralV20487WoundDrainage = "http://hl7.org/fhir/v2/0487#WNDD";
+
+    /// <summary>
     /// Literal for code: WoundExudate
     /// </summary>
     public const string LiteralWoundExudate = "WNDE";
+
+    /// <summary>
+    /// Literal for code: V20487WoundExudate
+    /// </summary>
+    public const string LiteralV20487WoundExudate = "http://hl7.org/fhir/v2/0487#WNDE";
 
     /// <summary>
     /// Literal for code: Worm
@@ -4403,9 +5953,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWorm = "WORM";
 
     /// <summary>
+    /// Literal for code: V20487Worm
+    /// </summary>
+    public const string LiteralV20487Worm = "http://hl7.org/fhir/v2/0487#WORM";
+
+    /// <summary>
     /// Literal for code: Wart
     /// </summary>
     public const string LiteralWart = "WRT";
+
+    /// <summary>
+    /// Literal for code: V20487Wart
+    /// </summary>
+    public const string LiteralV20487Wart = "http://hl7.org/fhir/v2/0487#WRT";
 
     /// <summary>
     /// Literal for code: EnvironmentalWater
@@ -4413,13 +5973,664 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnvironmentalWater = "WWA";
 
     /// <summary>
+    /// Literal for code: V20487EnvironmentalWater
+    /// </summary>
+    public const string LiteralV20487EnvironmentalWater = "http://hl7.org/fhir/v2/0487#WWA";
+
+    /// <summary>
     /// Literal for code: EnvironmentalWaterOcean
     /// </summary>
     public const string LiteralEnvironmentalWaterOcean = "WWO";
 
     /// <summary>
+    /// Literal for code: V20487EnvironmentalWaterOcean
+    /// </summary>
+    public const string LiteralV20487EnvironmentalWaterOcean = "http://hl7.org/fhir/v2/0487#WWO";
+
+    /// <summary>
     /// Literal for code: EnvironmentalWaterTap
     /// </summary>
     public const string LiteralEnvironmentalWaterTap = "WWT";
+
+    /// <summary>
+    /// Literal for code: V20487EnvironmentalWaterTap
+    /// </summary>
+    public const string LiteralV20487EnvironmentalWaterTap = "http://hl7.org/fhir/v2/0487#WWT";
+
+    /// <summary>
+    /// Dictionary for looking up V20487 Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "...", NoSuggestedValues }, 
+      { "http://hl7.org/fhir/v2/0487#...", NoSuggestedValues }, 
+      { "ABS", Abscess }, 
+      { "http://hl7.org/fhir/v2/0487#ABS", Abscess }, 
+      { "ACNE", TissueAcne }, 
+      { "http://hl7.org/fhir/v2/0487#ACNE", TissueAcne }, 
+      { "ACNFLD", FluidAcne }, 
+      { "http://hl7.org/fhir/v2/0487#ACNFLD", FluidAcne }, 
+      { "AIRS", AirSample }, 
+      { "http://hl7.org/fhir/v2/0487#AIRS", AirSample }, 
+      { "ALL", Allograft }, 
+      { "http://hl7.org/fhir/v2/0487#ALL", Allograft }, 
+      { "AMN", AmnioticFluid }, 
+      { "http://hl7.org/fhir/v2/0487#AMN", AmnioticFluid }, 
+      { "AMP", Amputation }, 
+      { "http://hl7.org/fhir/v2/0487#AMP", Amputation }, 
+      { "ANGI", CatheterTipAngio }, 
+      { "http://hl7.org/fhir/v2/0487#ANGI", CatheterTipAngio }, 
+      { "ARTC", CatheterTipArterial }, 
+      { "http://hl7.org/fhir/v2/0487#ARTC", CatheterTipArterial }, 
+      { "ASERU", SerumAcute }, 
+      { "http://hl7.org/fhir/v2/0487#ASERU", SerumAcute }, 
+      { "ASP", Aspirate }, 
+      { "http://hl7.org/fhir/v2/0487#ASP", Aspirate }, 
+      { "ATTE", EnvironmentAttest }, 
+      { "http://hl7.org/fhir/v2/0487#ATTE", EnvironmentAttest }, 
+      { "AUTOA", EnvironmentalAutoclaveAmpule }, 
+      { "http://hl7.org/fhir/v2/0487#AUTOA", EnvironmentalAutoclaveAmpule }, 
+      { "AUTOC", EnvironmentalAutoclaveCapsule }, 
+      { "http://hl7.org/fhir/v2/0487#AUTOC", EnvironmentalAutoclaveCapsule }, 
+      { "AUTP", Autopsy }, 
+      { "http://hl7.org/fhir/v2/0487#AUTP", Autopsy }, 
+      { "BBL", BloodBag }, 
+      { "http://hl7.org/fhir/v2/0487#BBL", BloodBag }, 
+      { "BCYST", CystBakerQuoteS }, 
+      { "http://hl7.org/fhir/v2/0487#BCYST", CystBakerQuoteS }, 
+      { "BDY", WholeBody }, 
+      { "http://hl7.org/fhir/v2/0487#BDY", WholeBody }, 
+      { "BIFL", BileFluid }, 
+      { "http://hl7.org/fhir/v2/0487#BIFL", BileFluid }, 
+      { "BITE", Bite }, 
+      { "http://hl7.org/fhir/v2/0487#BITE", Bite }, 
+      { "BLD", WholeBlood }, 
+      { "http://hl7.org/fhir/v2/0487#BLD", WholeBlood }, 
+      { "BLDA", BloodArterial }, 
+      { "http://hl7.org/fhir/v2/0487#BLDA", BloodArterial }, 
+      { "BLDCO", CordBlood }, 
+      { "http://hl7.org/fhir/v2/0487#BLDCO", CordBlood }, 
+      { "BLDV", BloodVenous }, 
+      { "http://hl7.org/fhir/v2/0487#BLDV", BloodVenous }, 
+      { "BLEB", Bleb }, 
+      { "http://hl7.org/fhir/v2/0487#BLEB", Bleb }, 
+      { "BLIST", Blister }, 
+      { "http://hl7.org/fhir/v2/0487#BLIST", Blister }, 
+      { "BOIL", Boil }, 
+      { "http://hl7.org/fhir/v2/0487#BOIL", Boil }, 
+      { "BON", Bone }, 
+      { "http://hl7.org/fhir/v2/0487#BON", Bone }, 
+      { "BONE", Bone_2 }, 
+      { "http://hl7.org/fhir/v2/0487#BONE", Bone_2 }, 
+      { "BOWL", BowelContents }, 
+      { "http://hl7.org/fhir/v2/0487#BOWL", BowelContents }, 
+      { "BPH", Basophils }, 
+      { "http://hl7.org/fhir/v2/0487#BPH", Basophils }, 
+      { "BPU", BloodProductUnit }, 
+      { "http://hl7.org/fhir/v2/0487#BPU", BloodProductUnit }, 
+      { "BRN", Burn }, 
+      { "http://hl7.org/fhir/v2/0487#BRN", Burn }, 
+      { "BRSH", Brush }, 
+      { "http://hl7.org/fhir/v2/0487#BRSH", Brush }, 
+      { "BRTH", BreathUseEXHLD }, 
+      { "http://hl7.org/fhir/v2/0487#BRTH", BreathUseEXHLD }, 
+      { "BRUS", Brushing }, 
+      { "http://hl7.org/fhir/v2/0487#BRUS", Brushing }, 
+      { "BUB", Bubo }, 
+      { "http://hl7.org/fhir/v2/0487#BUB", Bubo }, 
+      { "BULLA", BullaBullae }, 
+      { "http://hl7.org/fhir/v2/0487#BULLA", BullaBullae }, 
+      { "BX", Biopsy }, 
+      { "http://hl7.org/fhir/v2/0487#BX", Biopsy }, 
+      { "CALC", CalculusEqualsStone }, 
+      { "http://hl7.org/fhir/v2/0487#CALC", CalculusEqualsStone }, 
+      { "CARBU", Carbuncle }, 
+      { "http://hl7.org/fhir/v2/0487#CARBU", Carbuncle }, 
+      { "CAT", Catheter }, 
+      { "http://hl7.org/fhir/v2/0487#CAT", Catheter }, 
+      { "CBITE", BiteCat }, 
+      { "http://hl7.org/fhir/v2/0487#CBITE", BiteCat }, 
+      { "CDM", CardiacMuscle }, 
+      { "http://hl7.org/fhir/v2/0487#CDM", CardiacMuscle }, 
+      { "CLIPP", Clippings }, 
+      { "http://hl7.org/fhir/v2/0487#CLIPP", Clippings }, 
+      { "CNJT", Conjunctiva }, 
+      { "http://hl7.org/fhir/v2/0487#CNJT", Conjunctiva }, 
+      { "CNL", Cannula }, 
+      { "http://hl7.org/fhir/v2/0487#CNL", Cannula }, 
+      { "COL", Colostrum }, 
+      { "http://hl7.org/fhir/v2/0487#COL", Colostrum }, 
+      { "CONE", BiospyCone }, 
+      { "http://hl7.org/fhir/v2/0487#CONE", BiospyCone }, 
+      { "CSCR", ScratchCat }, 
+      { "http://hl7.org/fhir/v2/0487#CSCR", ScratchCat }, 
+      { "CSERU", SerumConvalescent }, 
+      { "http://hl7.org/fhir/v2/0487#CSERU", SerumConvalescent }, 
+      { "CSF", CerebralSpinalFluid }, 
+      { "http://hl7.org/fhir/v2/0487#CSF", CerebralSpinalFluid }, 
+      { "CSITE", CatheterInsertionSite }, 
+      { "http://hl7.org/fhir/v2/0487#CSITE", CatheterInsertionSite }, 
+      { "CSMY", FluidCystostomyTube }, 
+      { "http://hl7.org/fhir/v2/0487#CSMY", FluidCystostomyTube }, 
+      { "CST", FluidCyst }, 
+      { "http://hl7.org/fhir/v2/0487#CST", FluidCyst }, 
+      { "CSVR", BloodCellSaver }, 
+      { "http://hl7.org/fhir/v2/0487#CSVR", BloodCellSaver }, 
+      { "CTP", CatheterTip }, 
+      { "http://hl7.org/fhir/v2/0487#CTP", CatheterTip }, 
+      { "CUR", Curretage }, 
+      { "http://hl7.org/fhir/v2/0487#CUR", Curretage }, 
+      { "CVM", CervicalMucus }, 
+      { "http://hl7.org/fhir/v2/0487#CVM", CervicalMucus }, 
+      { "CVPS", SiteCVP }, 
+      { "http://hl7.org/fhir/v2/0487#CVPS", SiteCVP }, 
+      { "CVPT", CatheterTipCVP }, 
+      { "http://hl7.org/fhir/v2/0487#CVPT", CatheterTipCVP }, 
+      { "CYN", NoduleCystic }, 
+      { "http://hl7.org/fhir/v2/0487#CYN", NoduleCystic }, 
+      { "CYST", Cyst }, 
+      { "http://hl7.org/fhir/v2/0487#CYST", Cyst }, 
+      { "DBITE", BiteDog }, 
+      { "http://hl7.org/fhir/v2/0487#DBITE", BiteDog }, 
+      { "DCS", SputumDeepCough }, 
+      { "http://hl7.org/fhir/v2/0487#DCS", SputumDeepCough }, 
+      { "DEC", UlcerDecubitus }, 
+      { "http://hl7.org/fhir/v2/0487#DEC", UlcerDecubitus }, 
+      { "DEION", EnvironmentalWaterDeionized }, 
+      { "http://hl7.org/fhir/v2/0487#DEION", EnvironmentalWaterDeionized }, 
+      { "DIA", Dialysate }, 
+      { "http://hl7.org/fhir/v2/0487#DIA", Dialysate }, 
+      { "DIAF", DialysisFluid }, 
+      { "http://hl7.org/fhir/v2/0487#DIAF", DialysisFluid }, 
+      { "DISCHG", Discharge }, 
+      { "http://hl7.org/fhir/v2/0487#DISCHG", Discharge }, 
+      { "DIV", Diverticulum }, 
+      { "http://hl7.org/fhir/v2/0487#DIV", Diverticulum }, 
+      { "DRN", Drain }, 
+      { "http://hl7.org/fhir/v2/0487#DRN", Drain }, 
+      { "DRNG", DrainageTube }, 
+      { "http://hl7.org/fhir/v2/0487#DRNG", DrainageTube }, 
+      { "DRNGP", DrainagePenrose }, 
+      { "http://hl7.org/fhir/v2/0487#DRNGP", DrainagePenrose }, 
+      { "DUFL", DuodenalFluid }, 
+      { "http://hl7.org/fhir/v2/0487#DUFL", DuodenalFluid }, 
+      { "EARW", EarWaxCerumen }, 
+      { "http://hl7.org/fhir/v2/0487#EARW", EarWaxCerumen }, 
+      { "EBRUSH", BrushEsophageal }, 
+      { "http://hl7.org/fhir/v2/0487#EBRUSH", BrushEsophageal }, 
+      { "EEYE", EnvironmentalEyeWash }, 
+      { "http://hl7.org/fhir/v2/0487#EEYE", EnvironmentalEyeWash }, 
+      { "EFF", EnvironmentalEffluent }, 
+      { "http://hl7.org/fhir/v2/0487#EFF", EnvironmentalEffluent }, 
+      { "EFFUS", Effusion }, 
+      { "http://hl7.org/fhir/v2/0487#EFFUS", Effusion }, 
+      { "EFOD", EnvironmentalFood }, 
+      { "http://hl7.org/fhir/v2/0487#EFOD", EnvironmentalFood }, 
+      { "EISO", EnvironmentalIsolette }, 
+      { "http://hl7.org/fhir/v2/0487#EISO", EnvironmentalIsolette }, 
+      { "ELT", Electrode }, 
+      { "http://hl7.org/fhir/v2/0487#ELT", Electrode }, 
+      { "ENVIR", EnvironmentalUnidentifiedSubstance }, 
+      { "http://hl7.org/fhir/v2/0487#ENVIR", EnvironmentalUnidentifiedSubstance }, 
+      { "EOS", Eosinophils }, 
+      { "http://hl7.org/fhir/v2/0487#EOS", Eosinophils }, 
+      { "EOTH", EnvironmentalOtherSubstance }, 
+      { "http://hl7.org/fhir/v2/0487#EOTH", EnvironmentalOtherSubstance }, 
+      { "ESOI", EnvironmentalSoil }, 
+      { "http://hl7.org/fhir/v2/0487#ESOI", EnvironmentalSoil }, 
+      { "ESOS", EnvironmentalSolutionSterile }, 
+      { "http://hl7.org/fhir/v2/0487#ESOS", EnvironmentalSolutionSterile }, 
+      { "ETA", AspirateEndotrach }, 
+      { "http://hl7.org/fhir/v2/0487#ETA", AspirateEndotrach }, 
+      { "ETTP", CatheterTipEndotracheal }, 
+      { "http://hl7.org/fhir/v2/0487#ETTP", CatheterTipEndotracheal }, 
+      { "ETTUB", TubeEndotracheal }, 
+      { "http://hl7.org/fhir/v2/0487#ETTUB", TubeEndotracheal }, 
+      { "EWHI", EnvironmentalWhirlpool }, 
+      { "http://hl7.org/fhir/v2/0487#EWHI", EnvironmentalWhirlpool }, 
+      { "EXG", GasExhaledEqualsBreath }, 
+      { "http://hl7.org/fhir/v2/0487#EXG", GasExhaledEqualsBreath }, 
+      { "EXS", ShuntExternal }, 
+      { "http://hl7.org/fhir/v2/0487#EXS", ShuntExternal }, 
+      { "EXUDTE", Exudate }, 
+      { "http://hl7.org/fhir/v2/0487#EXUDTE", Exudate }, 
+      { "FAW", EnvironmentalWaterWell }, 
+      { "http://hl7.org/fhir/v2/0487#FAW", EnvironmentalWaterWell }, 
+      { "FBLOOD", BloodFetal }, 
+      { "http://hl7.org/fhir/v2/0487#FBLOOD", BloodFetal }, 
+      { "FGA", FluidAbdomen }, 
+      { "http://hl7.org/fhir/v2/0487#FGA", FluidAbdomen }, 
+      { "FIB", Fibroblasts }, 
+      { "http://hl7.org/fhir/v2/0487#FIB", Fibroblasts }, 
+      { "FIST", Fistula }, 
+      { "http://hl7.org/fhir/v2/0487#FIST", Fistula }, 
+      { "FLD", FluidOther }, 
+      { "http://hl7.org/fhir/v2/0487#FLD", FluidOther }, 
+      { "FLT", Filter }, 
+      { "http://hl7.org/fhir/v2/0487#FLT", Filter }, 
+      { "FLU", FluidBodyUnsp }, 
+      { "http://hl7.org/fhir/v2/0487#FLU", FluidBodyUnsp }, 
+      { "FLUID", Fluid }, 
+      { "http://hl7.org/fhir/v2/0487#FLUID", Fluid }, 
+      { "FOLEY", CatheterTipFoley }, 
+      { "http://hl7.org/fhir/v2/0487#FOLEY", CatheterTipFoley }, 
+      { "FRS", FluidRespiratory }, 
+      { "http://hl7.org/fhir/v2/0487#FRS", FluidRespiratory }, 
+      { "FSCLP", ScalpFetal }, 
+      { "http://hl7.org/fhir/v2/0487#FSCLP", ScalpFetal }, 
+      { "FUR", Furuncle }, 
+      { "http://hl7.org/fhir/v2/0487#FUR", Furuncle }, 
+      { "GAS", Gas }, 
+      { "http://hl7.org/fhir/v2/0487#GAS", Gas }, 
+      { "GASA", AspirateGastric }, 
+      { "http://hl7.org/fhir/v2/0487#GASA", AspirateGastric }, 
+      { "GASAN", AntrumGastric }, 
+      { "http://hl7.org/fhir/v2/0487#GASAN", AntrumGastric }, 
+      { "GASBR", BrushingGastric }, 
+      { "http://hl7.org/fhir/v2/0487#GASBR", BrushingGastric }, 
+      { "GASD", DrainageGastric }, 
+      { "http://hl7.org/fhir/v2/0487#GASD", DrainageGastric }, 
+      { "GAST", FluidContentsGastric }, 
+      { "http://hl7.org/fhir/v2/0487#GAST", FluidContentsGastric }, 
+      { "GENL", GenitalLochia }, 
+      { "http://hl7.org/fhir/v2/0487#GENL", GenitalLochia }, 
+      { "GENV", GenitalVaginal }, 
+      { "http://hl7.org/fhir/v2/0487#GENV", GenitalVaginal }, 
+      { "GRAFT", Graft }, 
+      { "http://hl7.org/fhir/v2/0487#GRAFT", Graft }, 
+      { "GRAFTS", GraftSite }, 
+      { "http://hl7.org/fhir/v2/0487#GRAFTS", GraftSite }, 
+      { "GRANU", Granuloma }, 
+      { "http://hl7.org/fhir/v2/0487#GRANU", Granuloma }, 
+      { "GROSH", CatheterGroshong }, 
+      { "http://hl7.org/fhir/v2/0487#GROSH", CatheterGroshong }, 
+      { "GSOL", SolutionGastrostomy }, 
+      { "http://hl7.org/fhir/v2/0487#GSOL", SolutionGastrostomy }, 
+      { "GSPEC", BiopsyGastric }, 
+      { "http://hl7.org/fhir/v2/0487#GSPEC", BiopsyGastric }, 
+      { "GT", TubeGastric }, 
+      { "http://hl7.org/fhir/v2/0487#GT", TubeGastric }, 
+      { "GTUBE", DrainageTubeDrainageGastrostomy }, 
+      { "http://hl7.org/fhir/v2/0487#GTUBE", DrainageTubeDrainageGastrostomy }, 
+      { "HAR", Hair }, 
+      { "http://hl7.org/fhir/v2/0487#HAR", Hair }, 
+      { "HBITE", BiteHuman }, 
+      { "http://hl7.org/fhir/v2/0487#HBITE", BiteHuman }, 
+      { "HBLUD", BloodAutopsy }, 
+      { "http://hl7.org/fhir/v2/0487#HBLUD", BloodAutopsy }, 
+      { "HEMAQ", CatheterTipHemaquit }, 
+      { "http://hl7.org/fhir/v2/0487#HEMAQ", CatheterTipHemaquit }, 
+      { "HEMO", CatheterTipHemovac }, 
+      { "http://hl7.org/fhir/v2/0487#HEMO", CatheterTipHemovac }, 
+      { "HERNI", TissueHerniated }, 
+      { "http://hl7.org/fhir/v2/0487#HERNI", TissueHerniated }, 
+      { "HEV", DrainHemovac }, 
+      { "http://hl7.org/fhir/v2/0487#HEV", DrainHemovac }, 
+      { "HIC", CatheterHickman }, 
+      { "http://hl7.org/fhir/v2/0487#HIC", CatheterHickman }, 
+      { "HYDC", FluidHydrocele }, 
+      { "http://hl7.org/fhir/v2/0487#HYDC", FluidHydrocele }, 
+      { "IBITE", BiteInsect }, 
+      { "http://hl7.org/fhir/v2/0487#IBITE", BiteInsect }, 
+      { "ICYST", CystInclusion }, 
+      { "http://hl7.org/fhir/v2/0487#ICYST", CystInclusion }, 
+      { "IDC", CatheterTipIndwelling }, 
+      { "http://hl7.org/fhir/v2/0487#IDC", CatheterTipIndwelling }, 
+      { "IHG", GasInhaled }, 
+      { "http://hl7.org/fhir/v2/0487#IHG", GasInhaled }, 
+      { "ILEO", DrainageIleostomy }, 
+      { "http://hl7.org/fhir/v2/0487#ILEO", DrainageIleostomy }, 
+      { "ILLEG", SourceOfSpecimenIsIlligible }, 
+      { "http://hl7.org/fhir/v2/0487#ILLEG", SourceOfSpecimenIsIlligible }, 
+      { "IMP", Implant }, 
+      { "http://hl7.org/fhir/v2/0487#IMP", Implant }, 
+      { "INCI", SiteIncisionSurgical }, 
+      { "http://hl7.org/fhir/v2/0487#INCI", SiteIncisionSurgical }, 
+      { "INFIL", Infiltrate }, 
+      { "http://hl7.org/fhir/v2/0487#INFIL", Infiltrate }, 
+      { "INS", Insect }, 
+      { "http://hl7.org/fhir/v2/0487#INS", Insect }, 
+      { "INTRD", CatheterTipIntroducer }, 
+      { "http://hl7.org/fhir/v2/0487#INTRD", CatheterTipIntroducer }, 
+      { "ISLT", Isolate }, 
+      { "http://hl7.org/fhir/v2/0487#ISLT", Isolate }, 
+      { "IT", IntubationTube }, 
+      { "http://hl7.org/fhir/v2/0487#IT", IntubationTube }, 
+      { "IUD", IntrauterineDevice }, 
+      { "http://hl7.org/fhir/v2/0487#IUD", IntrauterineDevice }, 
+      { "IVCAT", CatheterTipIV }, 
+      { "http://hl7.org/fhir/v2/0487#IVCAT", CatheterTipIV }, 
+      { "IVFLD", FluidIV }, 
+      { "http://hl7.org/fhir/v2/0487#IVFLD", FluidIV }, 
+      { "IVTIP", TubingTipIV }, 
+      { "http://hl7.org/fhir/v2/0487#IVTIP", TubingTipIV }, 
+      { "JEJU", DrainageJejunal }, 
+      { "http://hl7.org/fhir/v2/0487#JEJU", DrainageJejunal }, 
+      { "JNTFLD", FluidJoint }, 
+      { "http://hl7.org/fhir/v2/0487#JNTFLD", FluidJoint }, 
+      { "JP", DrainageJacksonPratt }, 
+      { "http://hl7.org/fhir/v2/0487#JP", DrainageJacksonPratt }, 
+      { "KELOI", Lavage }, 
+      { "http://hl7.org/fhir/v2/0487#KELOI", Lavage }, 
+      { "KIDFLD", FluidKidney }, 
+      { "http://hl7.org/fhir/v2/0487#KIDFLD", FluidKidney }, 
+      { "LAVG", LavageBronhial }, 
+      { "http://hl7.org/fhir/v2/0487#LAVG", LavageBronhial }, 
+      { "LAVGG", LavageGastric }, 
+      { "http://hl7.org/fhir/v2/0487#LAVGG", LavageGastric }, 
+      { "LAVGP", LavagePeritoneal }, 
+      { "http://hl7.org/fhir/v2/0487#LAVGP", LavagePeritoneal }, 
+      { "LAVPG", LavagePreBronch }, 
+      { "http://hl7.org/fhir/v2/0487#LAVPG", LavagePreBronch }, 
+      { "LENS1", ContactLens }, 
+      { "http://hl7.org/fhir/v2/0487#LENS1", ContactLens }, 
+      { "LENS2", ContactLensCase }, 
+      { "http://hl7.org/fhir/v2/0487#LENS2", ContactLensCase }, 
+      { "LESN", Lesion }, 
+      { "http://hl7.org/fhir/v2/0487#LESN", Lesion }, 
+      { "LIQ", LiquidUnspecified }, 
+      { "http://hl7.org/fhir/v2/0487#LIQ", LiquidUnspecified }, 
+      { "LIQO", LiquidOther }, 
+      { "http://hl7.org/fhir/v2/0487#LIQO", LiquidOther }, 
+      { "LNA", LineArterial }, 
+      { "http://hl7.org/fhir/v2/0487#LNA", LineArterial }, 
+      { "LNV", LineVenous }, 
+      { "http://hl7.org/fhir/v2/0487#LNV", LineVenous }, 
+      { "LSAC", FluidLumbarSac }, 
+      { "http://hl7.org/fhir/v2/0487#LSAC", FluidLumbarSac }, 
+      { "LYM", Lymphocytes }, 
+      { "http://hl7.org/fhir/v2/0487#LYM", Lymphocytes }, 
+      { "MAC", Macrophages }, 
+      { "http://hl7.org/fhir/v2/0487#MAC", Macrophages }, 
+      { "MAHUR", CatheterTipMakurkour }, 
+      { "http://hl7.org/fhir/v2/0487#MAHUR", CatheterTipMakurkour }, 
+      { "MAR", Marrow }, 
+      { "http://hl7.org/fhir/v2/0487#MAR", Marrow }, 
+      { "MASS", Mass }, 
+      { "http://hl7.org/fhir/v2/0487#MASS", Mass }, 
+      { "MBLD", BloodMenstrual }, 
+      { "http://hl7.org/fhir/v2/0487#MBLD", BloodMenstrual }, 
+      { "MEC", Meconium }, 
+      { "http://hl7.org/fhir/v2/0487#MEC", Meconium }, 
+      { "MILK", BreastMilk }, 
+      { "http://hl7.org/fhir/v2/0487#MILK", BreastMilk }, 
+      { "MLK", Milk }, 
+      { "http://hl7.org/fhir/v2/0487#MLK", Milk }, 
+      { "MUCOS", Mucosa }, 
+      { "http://hl7.org/fhir/v2/0487#MUCOS", Mucosa }, 
+      { "MUCUS", Mucus }, 
+      { "http://hl7.org/fhir/v2/0487#MUCUS", Mucus }, 
+      { "NAIL", Nail }, 
+      { "http://hl7.org/fhir/v2/0487#NAIL", Nail }, 
+      { "NASDR", DrainageNasal }, 
+      { "http://hl7.org/fhir/v2/0487#NASDR", DrainageNasal }, 
+      { "NEDL", Needle }, 
+      { "http://hl7.org/fhir/v2/0487#NEDL", Needle }, 
+      { "NEPH", SiteNephrostomy }, 
+      { "http://hl7.org/fhir/v2/0487#NEPH", SiteNephrostomy }, 
+      { "NGASP", AspirateNasogastric }, 
+      { "http://hl7.org/fhir/v2/0487#NGASP", AspirateNasogastric }, 
+      { "NGAST", DrainageNasogastric }, 
+      { "http://hl7.org/fhir/v2/0487#NGAST", DrainageNasogastric }, 
+      { "NGS", SiteNasoGastric }, 
+      { "http://hl7.org/fhir/v2/0487#NGS", SiteNasoGastric }, 
+      { "NODUL", NoduleS }, 
+      { "http://hl7.org/fhir/v2/0487#NODUL", NoduleS }, 
+      { "NSECR", SecretionNasal }, 
+      { "http://hl7.org/fhir/v2/0487#NSECR", SecretionNasal }, 
+      { "ORH", Other }, 
+      { "http://hl7.org/fhir/v2/0487#ORH", Other }, 
+      { "ORL", LesionOral }, 
+      { "http://hl7.org/fhir/v2/0487#ORL", LesionOral }, 
+      { "OTH", SourceOther }, 
+      { "http://hl7.org/fhir/v2/0487#OTH", SourceOther }, 
+      { "PACEM", Pacemaker }, 
+      { "http://hl7.org/fhir/v2/0487#PACEM", Pacemaker }, 
+      { "PAFL", PancreaticFluid }, 
+      { "http://hl7.org/fhir/v2/0487#PAFL", PancreaticFluid }, 
+      { "PCFL", FluidPericardial }, 
+      { "http://hl7.org/fhir/v2/0487#PCFL", FluidPericardial }, 
+      { "PDSIT", SitePeritonealDialysis }, 
+      { "http://hl7.org/fhir/v2/0487#PDSIT", SitePeritonealDialysis }, 
+      { "PDTS", SitePeritonealDialysisTunnel }, 
+      { "http://hl7.org/fhir/v2/0487#PDTS", SitePeritonealDialysisTunnel }, 
+      { "PELVA", AbscessPelvic }, 
+      { "http://hl7.org/fhir/v2/0487#PELVA", AbscessPelvic }, 
+      { "PENIL", LesionPenile }, 
+      { "http://hl7.org/fhir/v2/0487#PENIL", LesionPenile }, 
+      { "PERIA", AbscessPerianal }, 
+      { "http://hl7.org/fhir/v2/0487#PERIA", AbscessPerianal }, 
+      { "PILOC", CystPilonidal }, 
+      { "http://hl7.org/fhir/v2/0487#PILOC", CystPilonidal }, 
+      { "PINS", SitePin }, 
+      { "http://hl7.org/fhir/v2/0487#PINS", SitePin }, 
+      { "PIS", SitePacemakerInsetion }, 
+      { "http://hl7.org/fhir/v2/0487#PIS", SitePacemakerInsetion }, 
+      { "PLAN", PlantMaterial }, 
+      { "http://hl7.org/fhir/v2/0487#PLAN", PlantMaterial }, 
+      { "PLAS", Plasma }, 
+      { "http://hl7.org/fhir/v2/0487#PLAS", Plasma }, 
+      { "PLB", PlasmaBag }, 
+      { "http://hl7.org/fhir/v2/0487#PLB", PlasmaBag }, 
+      { "PLC", Placenta }, 
+      { "http://hl7.org/fhir/v2/0487#PLC", Placenta }, 
+      { "PLEVS", SerumPeakLevel }, 
+      { "http://hl7.org/fhir/v2/0487#PLEVS", SerumPeakLevel }, 
+      { "PLR", PleuralFluidThoracentesisFluid }, 
+      { "http://hl7.org/fhir/v2/0487#PLR", PleuralFluidThoracentesisFluid }, 
+      { "PMN", PolymorphonuclearNeutrophils }, 
+      { "http://hl7.org/fhir/v2/0487#PMN", PolymorphonuclearNeutrophils }, 
+      { "PND", DrainagePenile }, 
+      { "http://hl7.org/fhir/v2/0487#PND", DrainagePenile }, 
+      { "POL", Polyps }, 
+      { "http://hl7.org/fhir/v2/0487#POL", Polyps }, 
+      { "POPGS", GraftSitePopliteal }, 
+      { "http://hl7.org/fhir/v2/0487#POPGS", GraftSitePopliteal }, 
+      { "POPLG", GraftPopliteal }, 
+      { "http://hl7.org/fhir/v2/0487#POPLG", GraftPopliteal }, 
+      { "POPLV", SitePoplitealVein }, 
+      { "http://hl7.org/fhir/v2/0487#POPLV", SitePoplitealVein }, 
+      { "PORTA", CatheterPorta }, 
+      { "http://hl7.org/fhir/v2/0487#PORTA", CatheterPorta }, 
+      { "PPP", PlasmaPlateletPoor }, 
+      { "http://hl7.org/fhir/v2/0487#PPP", PlasmaPlateletPoor }, 
+      { "PROST", ProstheticDevice }, 
+      { "http://hl7.org/fhir/v2/0487#PROST", ProstheticDevice }, 
+      { "PRP", PlasmaPlateletRich }, 
+      { "http://hl7.org/fhir/v2/0487#PRP", PlasmaPlateletRich }, 
+      { "PSC", Pseudocyst }, 
+      { "http://hl7.org/fhir/v2/0487#PSC", Pseudocyst }, 
+      { "PUNCT", WoundPuncture }, 
+      { "http://hl7.org/fhir/v2/0487#PUNCT", WoundPuncture }, 
+      { "PUS", Pus }, 
+      { "http://hl7.org/fhir/v2/0487#PUS", Pus }, 
+      { "PUSFR", Pustule }, 
+      { "http://hl7.org/fhir/v2/0487#PUSFR", Pustule }, 
+      { "PUST", Pus_2 }, 
+      { "http://hl7.org/fhir/v2/0487#PUST", Pus_2 }, 
+      { "QC3", QualityControl }, 
+      { "http://hl7.org/fhir/v2/0487#QC3", QualityControl }, 
+      { "RANDU", UrineRandom }, 
+      { "http://hl7.org/fhir/v2/0487#RANDU", UrineRandom }, 
+      { "RBC", Erythrocytes }, 
+      { "http://hl7.org/fhir/v2/0487#RBC", Erythrocytes }, 
+      { "RBITE", BiteReptile }, 
+      { "http://hl7.org/fhir/v2/0487#RBITE", BiteReptile }, 
+      { "RECT", DrainageRectal }, 
+      { "http://hl7.org/fhir/v2/0487#RECT", DrainageRectal }, 
+      { "RECTA", AbscessRectal }, 
+      { "http://hl7.org/fhir/v2/0487#RECTA", AbscessRectal }, 
+      { "RENALC", CystRenal }, 
+      { "http://hl7.org/fhir/v2/0487#RENALC", CystRenal }, 
+      { "RENC", FluidRenalCyst }, 
+      { "http://hl7.org/fhir/v2/0487#RENC", FluidRenalCyst }, 
+      { "RES", Respiratory }, 
+      { "http://hl7.org/fhir/v2/0487#RES", Respiratory }, 
+      { "SAL", Saliva }, 
+      { "http://hl7.org/fhir/v2/0487#SAL", Saliva }, 
+      { "SCAR", TissueKeloidScar }, 
+      { "http://hl7.org/fhir/v2/0487#SCAR", TissueKeloidScar }, 
+      { "SCLV", CatheterTipSubclavian }, 
+      { "http://hl7.org/fhir/v2/0487#SCLV", CatheterTipSubclavian }, 
+      { "SCROA", AbscessScrotal }, 
+      { "http://hl7.org/fhir/v2/0487#SCROA", AbscessScrotal }, 
+      { "SECRE", SecretionS }, 
+      { "http://hl7.org/fhir/v2/0487#SECRE", SecretionS }, 
+      { "SER", Serum }, 
+      { "http://hl7.org/fhir/v2/0487#SER", Serum }, 
+      { "SHU", SiteShunt }, 
+      { "http://hl7.org/fhir/v2/0487#SHU", SiteShunt }, 
+      { "SHUNF", FluidShunt }, 
+      { "http://hl7.org/fhir/v2/0487#SHUNF", FluidShunt }, 
+      { "SHUNT", Shunt }, 
+      { "http://hl7.org/fhir/v2/0487#SHUNT", Shunt }, 
+      { "SITE", Site }, 
+      { "http://hl7.org/fhir/v2/0487#SITE", Site }, 
+      { "SKBP", BiopsySkin }, 
+      { "http://hl7.org/fhir/v2/0487#SKBP", BiopsySkin }, 
+      { "SKN", Skin }, 
+      { "http://hl7.org/fhir/v2/0487#SKN", Skin }, 
+      { "SMM", MassSubMandibular }, 
+      { "http://hl7.org/fhir/v2/0487#SMM", MassSubMandibular }, 
+      { "SMN", SeminalFluid }, 
+      { "http://hl7.org/fhir/v2/0487#SMN", SeminalFluid }, 
+      { "SNV", FluidSynovialJointFluid }, 
+      { "http://hl7.org/fhir/v2/0487#SNV", FluidSynovialJointFluid }, 
+      { "SPRM", Spermatozoa }, 
+      { "http://hl7.org/fhir/v2/0487#SPRM", Spermatozoa }, 
+      { "SPRP", CatheterTipSuprapubic }, 
+      { "http://hl7.org/fhir/v2/0487#SPRP", CatheterTipSuprapubic }, 
+      { "SPRPB", CathetherTipSuprapubic }, 
+      { "http://hl7.org/fhir/v2/0487#SPRPB", CathetherTipSuprapubic }, 
+      { "SPS", EnvironmentalSporeStrip }, 
+      { "http://hl7.org/fhir/v2/0487#SPS", EnvironmentalSporeStrip }, 
+      { "SPT", Sputum }, 
+      { "http://hl7.org/fhir/v2/0487#SPT", Sputum }, 
+      { "SPTC", SputumCoughed }, 
+      { "http://hl7.org/fhir/v2/0487#SPTC", SputumCoughed }, 
+      { "SPTT", SputumTrachealAspirate }, 
+      { "http://hl7.org/fhir/v2/0487#SPTT", SputumTrachealAspirate }, 
+      { "SPUT1", SputumSimulated }, 
+      { "http://hl7.org/fhir/v2/0487#SPUT1", SputumSimulated }, 
+      { "SPUTIN", SputumInducted }, 
+      { "http://hl7.org/fhir/v2/0487#SPUTIN", SputumInducted }, 
+      { "SPUTSP", SputumSpontaneous }, 
+      { "http://hl7.org/fhir/v2/0487#SPUTSP", SputumSpontaneous }, 
+      { "STER", EnvironmentalSterrad }, 
+      { "http://hl7.org/fhir/v2/0487#STER", EnvironmentalSterrad }, 
+      { "STL", StoolEqualsFecal }, 
+      { "http://hl7.org/fhir/v2/0487#STL", StoolEqualsFecal }, 
+      { "STONE", StoneKidney }, 
+      { "http://hl7.org/fhir/v2/0487#STONE", StoneKidney }, 
+      { "SUBMA", AbscessSubmandibular }, 
+      { "http://hl7.org/fhir/v2/0487#SUBMA", AbscessSubmandibular }, 
+      { "SUBMX", AbscessSubmaxillary }, 
+      { "http://hl7.org/fhir/v2/0487#SUBMX", AbscessSubmaxillary }, 
+      { "SUMP", DrainageSump }, 
+      { "http://hl7.org/fhir/v2/0487#SUMP", DrainageSump }, 
+      { "SUP", SuprapubicTap }, 
+      { "http://hl7.org/fhir/v2/0487#SUP", SuprapubicTap }, 
+      { "SUTUR", Suture }, 
+      { "http://hl7.org/fhir/v2/0487#SUTUR", Suture }, 
+      { "SWGZ", CatheterTipSwanGantz }, 
+      { "http://hl7.org/fhir/v2/0487#SWGZ", CatheterTipSwanGantz }, 
+      { "SWT", Sweat }, 
+      { "http://hl7.org/fhir/v2/0487#SWT", Sweat }, 
+      { "TASP", AspirateTracheal }, 
+      { "http://hl7.org/fhir/v2/0487#TASP", AspirateTracheal }, 
+      { "TEAR", Tears }, 
+      { "http://hl7.org/fhir/v2/0487#TEAR", Tears }, 
+      { "THRB", ThrombocytePlatelet }, 
+      { "http://hl7.org/fhir/v2/0487#THRB", ThrombocytePlatelet }, 
+      { "TISS", Tissue }, 
+      { "http://hl7.org/fhir/v2/0487#TISS", Tissue }, 
+      { "TISU", TissueUlcer }, 
+      { "http://hl7.org/fhir/v2/0487#TISU", TissueUlcer }, 
+      { "TLC", CathetherTipTripleLumen }, 
+      { "http://hl7.org/fhir/v2/0487#TLC", CathetherTipTripleLumen }, 
+      { "TRAC", SiteTracheostomy }, 
+      { "http://hl7.org/fhir/v2/0487#TRAC", SiteTracheostomy }, 
+      { "TRANS", Transudate }, 
+      { "http://hl7.org/fhir/v2/0487#TRANS", Transudate }, 
+      { "TSERU", SerumTrough }, 
+      { "http://hl7.org/fhir/v2/0487#TSERU", SerumTrough }, 
+      { "TSTES", AbscessTesticular }, 
+      { "http://hl7.org/fhir/v2/0487#TSTES", AbscessTesticular }, 
+      { "TTRA", AspirateTranstracheal }, 
+      { "http://hl7.org/fhir/v2/0487#TTRA", AspirateTranstracheal }, 
+      { "TUBES", Tubes }, 
+      { "http://hl7.org/fhir/v2/0487#TUBES", Tubes }, 
+      { "TUMOR", Tumor }, 
+      { "http://hl7.org/fhir/v2/0487#TUMOR", Tumor }, 
+      { "TZANC", SmearTzanck }, 
+      { "http://hl7.org/fhir/v2/0487#TZANC", SmearTzanck }, 
+      { "UDENT", SourceUnidentified }, 
+      { "http://hl7.org/fhir/v2/0487#UDENT", SourceUnidentified }, 
+      { "UMED", UnknownMedicine }, 
+      { "http://hl7.org/fhir/v2/0487#UMED", UnknownMedicine }, 
+      { "UR", Urine }, 
+      { "http://hl7.org/fhir/v2/0487#UR", Urine }, 
+      { "URC", UrineCleanCatch }, 
+      { "http://hl7.org/fhir/v2/0487#URC", UrineCleanCatch }, 
+      { "URINB", UrineBladderWashings }, 
+      { "http://hl7.org/fhir/v2/0487#URINB", UrineBladderWashings }, 
+      { "URINC", UrineCatheterized }, 
+      { "http://hl7.org/fhir/v2/0487#URINC", UrineCatheterized }, 
+      { "URINM", UrineMidstream }, 
+      { "http://hl7.org/fhir/v2/0487#URINM", UrineMidstream }, 
+      { "URINN", UrineNephrostomy }, 
+      { "http://hl7.org/fhir/v2/0487#URINN", UrineNephrostomy }, 
+      { "URINP", UrinePedibag }, 
+      { "http://hl7.org/fhir/v2/0487#URINP", UrinePedibag }, 
+      { "URNS", UrineSediment }, 
+      { "http://hl7.org/fhir/v2/0487#URNS", UrineSediment }, 
+      { "URT", UrineCatheter }, 
+      { "http://hl7.org/fhir/v2/0487#URT", UrineCatheter }, 
+      { "USCOP", UrineCystoscopy }, 
+      { "http://hl7.org/fhir/v2/0487#USCOP", UrineCystoscopy }, 
+      { "USPEC", SourceUnspecified }, 
+      { "http://hl7.org/fhir/v2/0487#USPEC", SourceUnspecified }, 
+      { "USUB", UnkownSubstance }, 
+      { "http://hl7.org/fhir/v2/0487#USUB", UnkownSubstance }, 
+      { "VASTIP", CatheterTipVas }, 
+      { "http://hl7.org/fhir/v2/0487#VASTIP", CatheterTipVas }, 
+      { "VENT", CatheterTipVentricular }, 
+      { "http://hl7.org/fhir/v2/0487#VENT", CatheterTipVentricular }, 
+      { "VITF", VitreousFluid }, 
+      { "http://hl7.org/fhir/v2/0487#VITF", VitreousFluid }, 
+      { "VOM", Vomitus }, 
+      { "http://hl7.org/fhir/v2/0487#VOM", Vomitus }, 
+      { "WASH", Wash }, 
+      { "http://hl7.org/fhir/v2/0487#WASH", Wash }, 
+      { "WASI", WashingEGBronchialWashing }, 
+      { "http://hl7.org/fhir/v2/0487#WASI", WashingEGBronchialWashing }, 
+      { "WAT", Water }, 
+      { "http://hl7.org/fhir/v2/0487#WAT", Water }, 
+      { "WB", BloodWhole }, 
+      { "http://hl7.org/fhir/v2/0487#WB", BloodWhole }, 
+      { "WBC", Leukocytes }, 
+      { "http://hl7.org/fhir/v2/0487#WBC", Leukocytes }, 
+      { "WEN", Wen }, 
+      { "http://hl7.org/fhir/v2/0487#WEN", Wen }, 
+      { "WICK", Wick }, 
+      { "http://hl7.org/fhir/v2/0487#WICK", Wick }, 
+      { "WND", Wound }, 
+      { "http://hl7.org/fhir/v2/0487#WND", Wound }, 
+      { "WNDA", WoundAbscess }, 
+      { "http://hl7.org/fhir/v2/0487#WNDA", WoundAbscess }, 
+      { "WNDD", WoundDrainage }, 
+      { "http://hl7.org/fhir/v2/0487#WNDD", WoundDrainage }, 
+      { "WNDE", WoundExudate }, 
+      { "http://hl7.org/fhir/v2/0487#WNDE", WoundExudate }, 
+      { "WORM", Worm }, 
+      { "http://hl7.org/fhir/v2/0487#WORM", Worm }, 
+      { "WRT", Wart }, 
+      { "http://hl7.org/fhir/v2/0487#WRT", Wart }, 
+      { "WWA", EnvironmentalWater }, 
+      { "http://hl7.org/fhir/v2/0487#WWA", EnvironmentalWater }, 
+      { "WWO", EnvironmentalWaterOcean }, 
+      { "http://hl7.org/fhir/v2/0487#WWO", EnvironmentalWaterOcean }, 
+      { "WWT", EnvironmentalWaterTap }, 
+      { "http://hl7.org/fhir/v2/0487#WWT", EnvironmentalWaterTap }, 
+    };
   };
 }

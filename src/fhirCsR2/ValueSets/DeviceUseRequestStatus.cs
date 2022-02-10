@@ -108,9 +108,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralAborted = "aborted";
 
     /// <summary>
+    /// Literal for code: DeviceUseRequestStatusAborted
+    /// </summary>
+    public const string LiteralDeviceUseRequestStatusAborted = "http://hl7.org/fhir/device-use-request-status#aborted";
+
+    /// <summary>
     /// Literal for code: Accepted
     /// </summary>
     public const string LiteralAccepted = "accepted";
+
+    /// <summary>
+    /// Literal for code: DeviceUseRequestStatusAccepted
+    /// </summary>
+    public const string LiteralDeviceUseRequestStatusAccepted = "http://hl7.org/fhir/device-use-request-status#accepted";
 
     /// <summary>
     /// Literal for code: Completed
@@ -118,9 +128,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralCompleted = "completed";
 
     /// <summary>
+    /// Literal for code: DeviceUseRequestStatusCompleted
+    /// </summary>
+    public const string LiteralDeviceUseRequestStatusCompleted = "http://hl7.org/fhir/device-use-request-status#completed";
+
+    /// <summary>
     /// Literal for code: InProgress
     /// </summary>
     public const string LiteralInProgress = "in-progress";
+
+    /// <summary>
+    /// Literal for code: DeviceUseRequestStatusInProgress
+    /// </summary>
+    public const string LiteralDeviceUseRequestStatusInProgress = "http://hl7.org/fhir/device-use-request-status#in-progress";
 
     /// <summary>
     /// Literal for code: Planned
@@ -128,9 +148,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralPlanned = "planned";
 
     /// <summary>
+    /// Literal for code: DeviceUseRequestStatusPlanned
+    /// </summary>
+    public const string LiteralDeviceUseRequestStatusPlanned = "http://hl7.org/fhir/device-use-request-status#planned";
+
+    /// <summary>
     /// Literal for code: Proposed
     /// </summary>
     public const string LiteralProposed = "proposed";
+
+    /// <summary>
+    /// Literal for code: DeviceUseRequestStatusProposed
+    /// </summary>
+    public const string LiteralDeviceUseRequestStatusProposed = "http://hl7.org/fhir/device-use-request-status#proposed";
 
     /// <summary>
     /// Literal for code: Received
@@ -138,9 +168,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralReceived = "received";
 
     /// <summary>
+    /// Literal for code: DeviceUseRequestStatusReceived
+    /// </summary>
+    public const string LiteralDeviceUseRequestStatusReceived = "http://hl7.org/fhir/device-use-request-status#received";
+
+    /// <summary>
     /// Literal for code: Rejected
     /// </summary>
     public const string LiteralRejected = "rejected";
+
+    /// <summary>
+    /// Literal for code: DeviceUseRequestStatusRejected
+    /// </summary>
+    public const string LiteralDeviceUseRequestStatusRejected = "http://hl7.org/fhir/device-use-request-status#rejected";
 
     /// <summary>
     /// Literal for code: Requested
@@ -148,8 +188,44 @@ namespace fhirCsR2.ValueSets
     public const string LiteralRequested = "requested";
 
     /// <summary>
+    /// Literal for code: DeviceUseRequestStatusRequested
+    /// </summary>
+    public const string LiteralDeviceUseRequestStatusRequested = "http://hl7.org/fhir/device-use-request-status#requested";
+
+    /// <summary>
     /// Literal for code: Suspended
     /// </summary>
     public const string LiteralSuspended = "suspended";
+
+    /// <summary>
+    /// Literal for code: DeviceUseRequestStatusSuspended
+    /// </summary>
+    public const string LiteralDeviceUseRequestStatusSuspended = "http://hl7.org/fhir/device-use-request-status#suspended";
+
+    /// <summary>
+    /// Dictionary for looking up DeviceUseRequestStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "aborted", Aborted }, 
+      { "http://hl7.org/fhir/device-use-request-status#aborted", Aborted }, 
+      { "accepted", Accepted }, 
+      { "http://hl7.org/fhir/device-use-request-status#accepted", Accepted }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/device-use-request-status#completed", Completed }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/device-use-request-status#in-progress", InProgress }, 
+      { "planned", Planned }, 
+      { "http://hl7.org/fhir/device-use-request-status#planned", Planned }, 
+      { "proposed", Proposed }, 
+      { "http://hl7.org/fhir/device-use-request-status#proposed", Proposed }, 
+      { "received", Received }, 
+      { "http://hl7.org/fhir/device-use-request-status#received", Received }, 
+      { "rejected", Rejected }, 
+      { "http://hl7.org/fhir/device-use-request-status#rejected", Rejected }, 
+      { "requested", Requested }, 
+      { "http://hl7.org/fhir/device-use-request-status#requested", Requested }, 
+      { "suspended", Suspended }, 
+      { "http://hl7.org/fhir/device-use-request-status#suspended", Suspended }, 
+    };
   };
 }

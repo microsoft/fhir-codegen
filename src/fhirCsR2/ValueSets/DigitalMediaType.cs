@@ -45,13 +45,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralAudio = "audio";
 
     /// <summary>
+    /// Literal for code: DigitalMediaTypeAudio
+    /// </summary>
+    public const string LiteralDigitalMediaTypeAudio = "http://hl7.org/fhir/digital-media-type#audio";
+
+    /// <summary>
     /// Literal for code: Photo
     /// </summary>
     public const string LiteralPhoto = "photo";
 
     /// <summary>
+    /// Literal for code: DigitalMediaTypePhoto
+    /// </summary>
+    public const string LiteralDigitalMediaTypePhoto = "http://hl7.org/fhir/digital-media-type#photo";
+
+    /// <summary>
     /// Literal for code: Video
     /// </summary>
     public const string LiteralVideo = "video";
+
+    /// <summary>
+    /// Literal for code: DigitalMediaTypeVideo
+    /// </summary>
+    public const string LiteralDigitalMediaTypeVideo = "http://hl7.org/fhir/digital-media-type#video";
+
+    /// <summary>
+    /// Dictionary for looking up DigitalMediaType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "audio", Audio }, 
+      { "http://hl7.org/fhir/digital-media-type#audio", Audio }, 
+      { "photo", Photo }, 
+      { "http://hl7.org/fhir/digital-media-type#photo", Photo }, 
+      { "video", Video }, 
+      { "http://hl7.org/fhir/digital-media-type#video", Video }, 
+    };
   };
 }

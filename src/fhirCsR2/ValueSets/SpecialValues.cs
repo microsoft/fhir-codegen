@@ -72,9 +72,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralVALFalse = "false";
 
     /// <summary>
+    /// Literal for code: SpecialValuesVALFalse
+    /// </summary>
+    public const string LiteralSpecialValuesVALFalse = "http://hl7.org/fhir/special-values#false";
+
+    /// <summary>
     /// Literal for code: NilKnown
     /// </summary>
     public const string LiteralNilKnown = "nil-known";
+
+    /// <summary>
+    /// Literal for code: SpecialValuesNilKnown
+    /// </summary>
+    public const string LiteralSpecialValuesNilKnown = "http://hl7.org/fhir/special-values#nil-known";
 
     /// <summary>
     /// Literal for code: SufficientQuantity
@@ -82,9 +92,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralSufficientQuantity = "sufficient";
 
     /// <summary>
+    /// Literal for code: SpecialValuesSufficientQuantity
+    /// </summary>
+    public const string LiteralSpecialValuesSufficientQuantity = "http://hl7.org/fhir/special-values#sufficient";
+
+    /// <summary>
     /// Literal for code: TraceAmountDetected
     /// </summary>
     public const string LiteralTraceAmountDetected = "trace";
+
+    /// <summary>
+    /// Literal for code: SpecialValuesTraceAmountDetected
+    /// </summary>
+    public const string LiteralSpecialValuesTraceAmountDetected = "http://hl7.org/fhir/special-values#trace";
 
     /// <summary>
     /// Literal for code: VALTrue
@@ -92,8 +112,36 @@ namespace fhirCsR2.ValueSets
     public const string LiteralVALTrue = "true";
 
     /// <summary>
+    /// Literal for code: SpecialValuesVALTrue
+    /// </summary>
+    public const string LiteralSpecialValuesVALTrue = "http://hl7.org/fhir/special-values#true";
+
+    /// <summary>
     /// Literal for code: ValueWithdrawn
     /// </summary>
     public const string LiteralValueWithdrawn = "withdrawn";
+
+    /// <summary>
+    /// Literal for code: SpecialValuesValueWithdrawn
+    /// </summary>
+    public const string LiteralSpecialValuesValueWithdrawn = "http://hl7.org/fhir/special-values#withdrawn";
+
+    /// <summary>
+    /// Dictionary for looking up SpecialValues Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "false", VALFalse }, 
+      { "http://hl7.org/fhir/special-values#false", VALFalse }, 
+      { "nil-known", NilKnown }, 
+      { "http://hl7.org/fhir/special-values#nil-known", NilKnown }, 
+      { "sufficient", SufficientQuantity }, 
+      { "http://hl7.org/fhir/special-values#sufficient", SufficientQuantity }, 
+      { "trace", TraceAmountDetected }, 
+      { "http://hl7.org/fhir/special-values#trace", TraceAmountDetected }, 
+      { "true", VALTrue }, 
+      { "http://hl7.org/fhir/special-values#true", VALTrue }, 
+      { "withdrawn", ValueWithdrawn }, 
+      { "http://hl7.org/fhir/special-values#withdrawn", ValueWithdrawn }, 
+    };
   };
 }

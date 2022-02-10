@@ -84,6 +84,10 @@ namespace fhirCsR4B.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// A reference to a ResearchElementDefinition resource that defines the exposure for the research.
     /// </summary>
     public Reference Exposure { get; set; }
@@ -339,6 +343,12 @@ namespace fhirCsR4B.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (SubjectCodeableConcept != null)
@@ -857,6 +867,11 @@ namespace fhirCsR4B.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR4B.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "exposure":
           Exposure = new fhirCsR4B.Models.Reference();
           Exposure.DeserializeJson(ref reader, options);
@@ -1239,5 +1254,11 @@ namespace fhirCsR4B.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

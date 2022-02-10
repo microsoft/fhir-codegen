@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class SpecimenCollectionMethodCodes
   {
     /// <summary>
-    /// 
+    /// Specimen obtained by aspiration
     /// </summary>
     public static readonly Coding SpecimenObtainedByAspiration = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Induced
     /// </summary>
     public static readonly Coding Induced = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blushing
     /// </summary>
     public static readonly Coding Blushing = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scrapings
     /// </summary>
     public static readonly Coding Scrapings = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Finger stick
     /// </summary>
     public static readonly Coding FingerStick = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Autopsy examination
     /// </summary>
     public static readonly Coding AutopsyExamination = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extirpation - action
     /// </summary>
     public static readonly Coding ExtirpationAction = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Smear procedure
     /// </summary>
     public static readonly Coding SmearProcedure = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bioptics
     /// </summary>
     public static readonly Coding Bioptics = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Examination of midstream urine specimen
     /// </summary>
     public static readonly Coding ExaminationOfMidstreamUrineSpecimen = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sputum
     /// </summary>
     public static readonly Coding Sputum = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Irrigation
     /// </summary>
     public static readonly Coding Irrigation = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Punctate
     /// </summary>
     public static readonly Coding Punctate = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plates, Anaerobic
     /// </summary>
     public static readonly Coding PlatesAnaerobic = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Plates, Blood Agar
     /// </summary>
     public static readonly Coding PlatesBloodAgar = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Blood Culture, Aerobic Bottle
     /// </summary>
     public static readonly Coding BloodCultureAerobicBottle = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Blood Culture, Anaerobic Bottle
     /// </summary>
     public static readonly Coding BloodCultureAnaerobicBottle = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Blood Culture, Pediatric Bottle
     /// </summary>
     public static readonly Coding BloodCulturePediatricBottle = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Biopsy
     /// </summary>
     public static readonly Coding Biopsy = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Capillary Specimen
     /// </summary>
     public static readonly Coding CapillarySpecimen = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Catheterized
     /// </summary>
     public static readonly Coding Catheterized = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Line, CVP
     /// </summary>
     public static readonly Coding LineCVP = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Environmental, Plate
     /// </summary>
     public static readonly Coding EnvironmentalPlate = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Environmental, Swab
     /// </summary>
     public static readonly Coding EnvironmentalSwab = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Aspiration, Fine Needle
     /// </summary>
     public static readonly Coding AspirationFineNeedle = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Plate, Cough
     /// </summary>
     public static readonly Coding PlateCough = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Line, Arterial
     /// </summary>
     public static readonly Coding LineArterial = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Line, Venous
     /// </summary>
     public static readonly Coding LineVenous = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Martin-Lewis Agar
     /// </summary>
     public static readonly Coding MartinLewisAgar = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Mod. Martin-Lewis Agar
     /// </summary>
     public static readonly Coding ModMartinLewisAgar = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Plate, Martin-Lewis
     /// </summary>
     public static readonly Coding PlateMartinLewis = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Plate, New York City
     /// </summary>
     public static readonly Coding PlateNewYorkCity = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Pace, Gen-Probe
     /// </summary>
     public static readonly Coding PaceGenProbe = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Pinworm Prep
     /// </summary>
     public static readonly Coding PinwormPrep = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Arterial puncture
     /// </summary>
     public static readonly Coding ArterialPuncture = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Pump Prime
     /// </summary>
     public static readonly Coding PumpPrime = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Pump Specimen
     /// </summary>
     public static readonly Coding PumpSpecimen = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Quality Control For Micro
     /// </summary>
     public static readonly Coding QualityControlForMicro = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Scalp, Fetal Vein
     /// </summary>
     public static readonly Coding ScalpFetalVein = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Scrapings
     /// </summary>
     public static readonly Coding Scrapings_2 = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Shaving
     /// </summary>
     public static readonly Coding Shaving = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Swab
     /// </summary>
     public static readonly Coding Swab = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Swab, Dacron tipped
     /// </summary>
     public static readonly Coding SwabDacronTipped = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Transport Media, Anaerobic
     /// </summary>
     public static readonly Coding TransportMediaAnaerobic = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Transport Media, Chalamydia
     /// </summary>
     public static readonly Coding TransportMediaChalamydia = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Transport Media, M4
     /// </summary>
     public static readonly Coding TransportMediaM4 = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Transport Media, Mycoplasma
     /// </summary>
     public static readonly Coding TransportMediaMycoplasma = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Transport Media,
     /// </summary>
     public static readonly Coding TransportMedia = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Plate, Thayer-Martin
     /// </summary>
     public static readonly Coding PlateThayerMartin = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Transport Media, PVA
     /// </summary>
     public static readonly Coding TransportMediaPVA = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Transport Media, Stool Culture
     /// </summary>
     public static readonly Coding TransportMediaStoolCulture = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Transport Media, Ureaplasma
     /// </summary>
     public static readonly Coding TransportMediaUreaplasma = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Transport Media, Viral
     /// </summary>
     public static readonly Coding TransportMediaViral = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Venipuncture
     /// </summary>
     public static readonly Coding Venipuncture = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/v2/0488"
     };
     /// <summary>
-    /// 
+    /// Swab, Wooden Shaft
     /// </summary>
     public static readonly Coding SwabWoodenShaft = new Coding
     {
@@ -513,9 +513,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpecimenObtainedByAspiration = "119295008";
 
     /// <summary>
+    /// Literal for code: NONESpecimenObtainedByAspiration
+    /// </summary>
+    public const string LiteralNONESpecimenObtainedByAspiration = "http://snomed.info/sct#119295008";
+
+    /// <summary>
     /// Literal for code: Induced
     /// </summary>
     public const string LiteralInduced = "16404004";
+
+    /// <summary>
+    /// Literal for code: NONEInduced
+    /// </summary>
+    public const string LiteralNONEInduced = "http://snomed.info/sct#16404004";
 
     /// <summary>
     /// Literal for code: Blushing
@@ -523,9 +533,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBlushing = "20255002";
 
     /// <summary>
+    /// Literal for code: NONEBlushing
+    /// </summary>
+    public const string LiteralNONEBlushing = "http://snomed.info/sct#20255002";
+
+    /// <summary>
     /// Literal for code: Scrapings
     /// </summary>
     public const string LiteralScrapings = "258431006";
+
+    /// <summary>
+    /// Literal for code: NONEScrapings
+    /// </summary>
+    public const string LiteralNONEScrapings = "http://snomed.info/sct#258431006";
 
     /// <summary>
     /// Literal for code: FingerStick
@@ -533,9 +553,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFingerStick = "278450005";
 
     /// <summary>
+    /// Literal for code: NONEFingerStick
+    /// </summary>
+    public const string LiteralNONEFingerStick = "http://snomed.info/sct#278450005";
+
+    /// <summary>
     /// Literal for code: AutopsyExamination
     /// </summary>
     public const string LiteralAutopsyExamination = "29240004";
+
+    /// <summary>
+    /// Literal for code: NONEAutopsyExamination
+    /// </summary>
+    public const string LiteralNONEAutopsyExamination = "http://snomed.info/sct#29240004";
 
     /// <summary>
     /// Literal for code: ExtirpationAction
@@ -543,9 +573,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExtirpationAction = "360020006";
 
     /// <summary>
+    /// Literal for code: NONEExtirpationAction
+    /// </summary>
+    public const string LiteralNONEExtirpationAction = "http://snomed.info/sct#360020006";
+
+    /// <summary>
     /// Literal for code: SmearProcedure
     /// </summary>
     public const string LiteralSmearProcedure = "386147002";
+
+    /// <summary>
+    /// Literal for code: NONESmearProcedure
+    /// </summary>
+    public const string LiteralNONESmearProcedure = "http://snomed.info/sct#386147002";
 
     /// <summary>
     /// Literal for code: Bioptics
@@ -553,9 +593,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBioptics = "413651001";
 
     /// <summary>
+    /// Literal for code: NONEBioptics
+    /// </summary>
+    public const string LiteralNONEBioptics = "http://snomed.info/sct#413651001";
+
+    /// <summary>
     /// Literal for code: ExaminationOfMidstreamUrineSpecimen
     /// </summary>
     public const string LiteralExaminationOfMidstreamUrineSpecimen = "430823004";
+
+    /// <summary>
+    /// Literal for code: NONEExaminationOfMidstreamUrineSpecimen
+    /// </summary>
+    public const string LiteralNONEExaminationOfMidstreamUrineSpecimen = "http://snomed.info/sct#430823004";
 
     /// <summary>
     /// Literal for code: Sputum
@@ -563,9 +613,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSputum = "45710003";
 
     /// <summary>
+    /// Literal for code: NONESputum
+    /// </summary>
+    public const string LiteralNONESputum = "http://snomed.info/sct#45710003";
+
+    /// <summary>
     /// Literal for code: Irrigation
     /// </summary>
     public const string LiteralIrrigation = "67889009";
+
+    /// <summary>
+    /// Literal for code: NONEIrrigation
+    /// </summary>
+    public const string LiteralNONEIrrigation = "http://snomed.info/sct#67889009";
 
     /// <summary>
     /// Literal for code: Punctate
@@ -573,9 +633,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPunctate = "7800008";
 
     /// <summary>
+    /// Literal for code: NONEPunctate
+    /// </summary>
+    public const string LiteralNONEPunctate = "http://snomed.info/sct#7800008";
+
+    /// <summary>
     /// Literal for code: PlatesAnaerobic
     /// </summary>
     public const string LiteralPlatesAnaerobic = "ANP";
+
+    /// <summary>
+    /// Literal for code: V20488PlatesAnaerobic
+    /// </summary>
+    public const string LiteralV20488PlatesAnaerobic = "http://hl7.org/fhir/v2/0488#ANP";
 
     /// <summary>
     /// Literal for code: PlatesBloodAgar
@@ -583,9 +653,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlatesBloodAgar = "BAP";
 
     /// <summary>
+    /// Literal for code: V20488PlatesBloodAgar
+    /// </summary>
+    public const string LiteralV20488PlatesBloodAgar = "http://hl7.org/fhir/v2/0488#BAP";
+
+    /// <summary>
     /// Literal for code: BloodCultureAerobicBottle
     /// </summary>
     public const string LiteralBloodCultureAerobicBottle = "BCAE";
+
+    /// <summary>
+    /// Literal for code: V20488BloodCultureAerobicBottle
+    /// </summary>
+    public const string LiteralV20488BloodCultureAerobicBottle = "http://hl7.org/fhir/v2/0488#BCAE";
 
     /// <summary>
     /// Literal for code: BloodCultureAnaerobicBottle
@@ -593,9 +673,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBloodCultureAnaerobicBottle = "BCAN";
 
     /// <summary>
+    /// Literal for code: V20488BloodCultureAnaerobicBottle
+    /// </summary>
+    public const string LiteralV20488BloodCultureAnaerobicBottle = "http://hl7.org/fhir/v2/0488#BCAN";
+
+    /// <summary>
     /// Literal for code: BloodCulturePediatricBottle
     /// </summary>
     public const string LiteralBloodCulturePediatricBottle = "BCPD";
+
+    /// <summary>
+    /// Literal for code: V20488BloodCulturePediatricBottle
+    /// </summary>
+    public const string LiteralV20488BloodCulturePediatricBottle = "http://hl7.org/fhir/v2/0488#BCPD";
 
     /// <summary>
     /// Literal for code: Biopsy
@@ -603,9 +693,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBiopsy = "BIO";
 
     /// <summary>
+    /// Literal for code: V20488Biopsy
+    /// </summary>
+    public const string LiteralV20488Biopsy = "http://hl7.org/fhir/v2/0488#BIO";
+
+    /// <summary>
     /// Literal for code: CapillarySpecimen
     /// </summary>
     public const string LiteralCapillarySpecimen = "CAP";
+
+    /// <summary>
+    /// Literal for code: V20488CapillarySpecimen
+    /// </summary>
+    public const string LiteralV20488CapillarySpecimen = "http://hl7.org/fhir/v2/0488#CAP";
 
     /// <summary>
     /// Literal for code: Catheterized
@@ -613,9 +713,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCatheterized = "CATH";
 
     /// <summary>
+    /// Literal for code: V20488Catheterized
+    /// </summary>
+    public const string LiteralV20488Catheterized = "http://hl7.org/fhir/v2/0488#CATH";
+
+    /// <summary>
     /// Literal for code: LineCVP
     /// </summary>
     public const string LiteralLineCVP = "CVP";
+
+    /// <summary>
+    /// Literal for code: V20488LineCVP
+    /// </summary>
+    public const string LiteralV20488LineCVP = "http://hl7.org/fhir/v2/0488#CVP";
 
     /// <summary>
     /// Literal for code: EnvironmentalPlate
@@ -623,9 +733,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnvironmentalPlate = "EPLA";
 
     /// <summary>
+    /// Literal for code: V20488EnvironmentalPlate
+    /// </summary>
+    public const string LiteralV20488EnvironmentalPlate = "http://hl7.org/fhir/v2/0488#EPLA";
+
+    /// <summary>
     /// Literal for code: EnvironmentalSwab
     /// </summary>
     public const string LiteralEnvironmentalSwab = "ESWA";
+
+    /// <summary>
+    /// Literal for code: V20488EnvironmentalSwab
+    /// </summary>
+    public const string LiteralV20488EnvironmentalSwab = "http://hl7.org/fhir/v2/0488#ESWA";
 
     /// <summary>
     /// Literal for code: AspirationFineNeedle
@@ -633,9 +753,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAspirationFineNeedle = "FNA";
 
     /// <summary>
+    /// Literal for code: V20488AspirationFineNeedle
+    /// </summary>
+    public const string LiteralV20488AspirationFineNeedle = "http://hl7.org/fhir/v2/0488#FNA";
+
+    /// <summary>
     /// Literal for code: PlateCough
     /// </summary>
     public const string LiteralPlateCough = "KOFFP";
+
+    /// <summary>
+    /// Literal for code: V20488PlateCough
+    /// </summary>
+    public const string LiteralV20488PlateCough = "http://hl7.org/fhir/v2/0488#KOFFP";
 
     /// <summary>
     /// Literal for code: LineArterial
@@ -643,9 +773,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLineArterial = "LNA";
 
     /// <summary>
+    /// Literal for code: V20488LineArterial
+    /// </summary>
+    public const string LiteralV20488LineArterial = "http://hl7.org/fhir/v2/0488#LNA";
+
+    /// <summary>
     /// Literal for code: LineVenous
     /// </summary>
     public const string LiteralLineVenous = "LNV";
+
+    /// <summary>
+    /// Literal for code: V20488LineVenous
+    /// </summary>
+    public const string LiteralV20488LineVenous = "http://hl7.org/fhir/v2/0488#LNV";
 
     /// <summary>
     /// Literal for code: MartinLewisAgar
@@ -653,9 +793,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMartinLewisAgar = "MARTL";
 
     /// <summary>
+    /// Literal for code: V20488MartinLewisAgar
+    /// </summary>
+    public const string LiteralV20488MartinLewisAgar = "http://hl7.org/fhir/v2/0488#MARTL";
+
+    /// <summary>
     /// Literal for code: ModMartinLewisAgar
     /// </summary>
     public const string LiteralModMartinLewisAgar = "ML11";
+
+    /// <summary>
+    /// Literal for code: V20488ModMartinLewisAgar
+    /// </summary>
+    public const string LiteralV20488ModMartinLewisAgar = "http://hl7.org/fhir/v2/0488#ML11";
 
     /// <summary>
     /// Literal for code: PlateMartinLewis
@@ -663,9 +813,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlateMartinLewis = "MLP";
 
     /// <summary>
+    /// Literal for code: V20488PlateMartinLewis
+    /// </summary>
+    public const string LiteralV20488PlateMartinLewis = "http://hl7.org/fhir/v2/0488#MLP";
+
+    /// <summary>
     /// Literal for code: PlateNewYorkCity
     /// </summary>
     public const string LiteralPlateNewYorkCity = "NYP";
+
+    /// <summary>
+    /// Literal for code: V20488PlateNewYorkCity
+    /// </summary>
+    public const string LiteralV20488PlateNewYorkCity = "http://hl7.org/fhir/v2/0488#NYP";
 
     /// <summary>
     /// Literal for code: PaceGenProbe
@@ -673,9 +833,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPaceGenProbe = "PACE";
 
     /// <summary>
+    /// Literal for code: V20488PaceGenProbe
+    /// </summary>
+    public const string LiteralV20488PaceGenProbe = "http://hl7.org/fhir/v2/0488#PACE";
+
+    /// <summary>
     /// Literal for code: PinwormPrep
     /// </summary>
     public const string LiteralPinwormPrep = "PIN";
+
+    /// <summary>
+    /// Literal for code: V20488PinwormPrep
+    /// </summary>
+    public const string LiteralV20488PinwormPrep = "http://hl7.org/fhir/v2/0488#PIN";
 
     /// <summary>
     /// Literal for code: ArterialPuncture
@@ -683,9 +853,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArterialPuncture = "PNA";
 
     /// <summary>
+    /// Literal for code: V20488ArterialPuncture
+    /// </summary>
+    public const string LiteralV20488ArterialPuncture = "http://hl7.org/fhir/v2/0488#PNA";
+
+    /// <summary>
     /// Literal for code: PumpPrime
     /// </summary>
     public const string LiteralPumpPrime = "PRIME";
+
+    /// <summary>
+    /// Literal for code: V20488PumpPrime
+    /// </summary>
+    public const string LiteralV20488PumpPrime = "http://hl7.org/fhir/v2/0488#PRIME";
 
     /// <summary>
     /// Literal for code: PumpSpecimen
@@ -693,9 +873,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPumpSpecimen = "PUMP";
 
     /// <summary>
+    /// Literal for code: V20488PumpSpecimen
+    /// </summary>
+    public const string LiteralV20488PumpSpecimen = "http://hl7.org/fhir/v2/0488#PUMP";
+
+    /// <summary>
     /// Literal for code: QualityControlForMicro
     /// </summary>
     public const string LiteralQualityControlForMicro = "QC5";
+
+    /// <summary>
+    /// Literal for code: V20488QualityControlForMicro
+    /// </summary>
+    public const string LiteralV20488QualityControlForMicro = "http://hl7.org/fhir/v2/0488#QC5";
 
     /// <summary>
     /// Literal for code: ScalpFetalVein
@@ -703,9 +893,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralScalpFetalVein = "SCLP";
 
     /// <summary>
+    /// Literal for code: V20488ScalpFetalVein
+    /// </summary>
+    public const string LiteralV20488ScalpFetalVein = "http://hl7.org/fhir/v2/0488#SCLP";
+
+    /// <summary>
     /// Literal for code: Scrapings_2
     /// </summary>
     public const string LiteralScrapings_2 = "SCRAPS";
+
+    /// <summary>
+    /// Literal for code: V20488Scrapings_2
+    /// </summary>
+    public const string LiteralV20488Scrapings_2 = "http://hl7.org/fhir/v2/0488#SCRAPS";
 
     /// <summary>
     /// Literal for code: Shaving
@@ -713,9 +913,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralShaving = "SHA";
 
     /// <summary>
+    /// Literal for code: V20488Shaving
+    /// </summary>
+    public const string LiteralV20488Shaving = "http://hl7.org/fhir/v2/0488#SHA";
+
+    /// <summary>
     /// Literal for code: Swab
     /// </summary>
     public const string LiteralSwab = "SWA";
+
+    /// <summary>
+    /// Literal for code: V20488Swab
+    /// </summary>
+    public const string LiteralV20488Swab = "http://hl7.org/fhir/v2/0488#SWA";
 
     /// <summary>
     /// Literal for code: SwabDacronTipped
@@ -723,9 +933,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSwabDacronTipped = "SWD";
 
     /// <summary>
+    /// Literal for code: V20488SwabDacronTipped
+    /// </summary>
+    public const string LiteralV20488SwabDacronTipped = "http://hl7.org/fhir/v2/0488#SWD";
+
+    /// <summary>
     /// Literal for code: TransportMediaAnaerobic
     /// </summary>
     public const string LiteralTransportMediaAnaerobic = "TMAN";
+
+    /// <summary>
+    /// Literal for code: V20488TransportMediaAnaerobic
+    /// </summary>
+    public const string LiteralV20488TransportMediaAnaerobic = "http://hl7.org/fhir/v2/0488#TMAN";
 
     /// <summary>
     /// Literal for code: TransportMediaChalamydia
@@ -733,9 +953,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTransportMediaChalamydia = "TMCH";
 
     /// <summary>
+    /// Literal for code: V20488TransportMediaChalamydia
+    /// </summary>
+    public const string LiteralV20488TransportMediaChalamydia = "http://hl7.org/fhir/v2/0488#TMCH";
+
+    /// <summary>
     /// Literal for code: TransportMediaM4
     /// </summary>
     public const string LiteralTransportMediaM4 = "TMM4";
+
+    /// <summary>
+    /// Literal for code: V20488TransportMediaM4
+    /// </summary>
+    public const string LiteralV20488TransportMediaM4 = "http://hl7.org/fhir/v2/0488#TMM4";
 
     /// <summary>
     /// Literal for code: TransportMediaMycoplasma
@@ -743,9 +973,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTransportMediaMycoplasma = "TMMY";
 
     /// <summary>
+    /// Literal for code: V20488TransportMediaMycoplasma
+    /// </summary>
+    public const string LiteralV20488TransportMediaMycoplasma = "http://hl7.org/fhir/v2/0488#TMMY";
+
+    /// <summary>
     /// Literal for code: TransportMedia
     /// </summary>
     public const string LiteralTransportMedia = "TMOT";
+
+    /// <summary>
+    /// Literal for code: V20488TransportMedia
+    /// </summary>
+    public const string LiteralV20488TransportMedia = "http://hl7.org/fhir/v2/0488#TMOT";
 
     /// <summary>
     /// Literal for code: PlateThayerMartin
@@ -753,9 +993,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlateThayerMartin = "TMP";
 
     /// <summary>
+    /// Literal for code: V20488PlateThayerMartin
+    /// </summary>
+    public const string LiteralV20488PlateThayerMartin = "http://hl7.org/fhir/v2/0488#TMP";
+
+    /// <summary>
     /// Literal for code: TransportMediaPVA
     /// </summary>
     public const string LiteralTransportMediaPVA = "TMPV";
+
+    /// <summary>
+    /// Literal for code: V20488TransportMediaPVA
+    /// </summary>
+    public const string LiteralV20488TransportMediaPVA = "http://hl7.org/fhir/v2/0488#TMPV";
 
     /// <summary>
     /// Literal for code: TransportMediaStoolCulture
@@ -763,9 +1013,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTransportMediaStoolCulture = "TMSC";
 
     /// <summary>
+    /// Literal for code: V20488TransportMediaStoolCulture
+    /// </summary>
+    public const string LiteralV20488TransportMediaStoolCulture = "http://hl7.org/fhir/v2/0488#TMSC";
+
+    /// <summary>
     /// Literal for code: TransportMediaUreaplasma
     /// </summary>
     public const string LiteralTransportMediaUreaplasma = "TMUP";
+
+    /// <summary>
+    /// Literal for code: V20488TransportMediaUreaplasma
+    /// </summary>
+    public const string LiteralV20488TransportMediaUreaplasma = "http://hl7.org/fhir/v2/0488#TMUP";
 
     /// <summary>
     /// Literal for code: TransportMediaViral
@@ -773,13 +1033,144 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTransportMediaViral = "TMVI";
 
     /// <summary>
+    /// Literal for code: V20488TransportMediaViral
+    /// </summary>
+    public const string LiteralV20488TransportMediaViral = "http://hl7.org/fhir/v2/0488#TMVI";
+
+    /// <summary>
     /// Literal for code: Venipuncture
     /// </summary>
     public const string LiteralVenipuncture = "VENIP";
 
     /// <summary>
+    /// Literal for code: V20488Venipuncture
+    /// </summary>
+    public const string LiteralV20488Venipuncture = "http://hl7.org/fhir/v2/0488#VENIP";
+
+    /// <summary>
     /// Literal for code: SwabWoodenShaft
     /// </summary>
     public const string LiteralSwabWoodenShaft = "WOOD";
+
+    /// <summary>
+    /// Literal for code: V20488SwabWoodenShaft
+    /// </summary>
+    public const string LiteralV20488SwabWoodenShaft = "http://hl7.org/fhir/v2/0488#WOOD";
+
+    /// <summary>
+    /// Dictionary for looking up SpecimenCollectionMethod Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "119295008", SpecimenObtainedByAspiration }, 
+      { "http://snomed.info/sct#119295008", SpecimenObtainedByAspiration }, 
+      { "16404004", Induced }, 
+      { "http://snomed.info/sct#16404004", Induced }, 
+      { "20255002", Blushing }, 
+      { "http://snomed.info/sct#20255002", Blushing }, 
+      { "258431006", Scrapings }, 
+      { "http://snomed.info/sct#258431006", Scrapings }, 
+      { "278450005", FingerStick }, 
+      { "http://snomed.info/sct#278450005", FingerStick }, 
+      { "29240004", AutopsyExamination }, 
+      { "http://snomed.info/sct#29240004", AutopsyExamination }, 
+      { "360020006", ExtirpationAction }, 
+      { "http://snomed.info/sct#360020006", ExtirpationAction }, 
+      { "386147002", SmearProcedure }, 
+      { "http://snomed.info/sct#386147002", SmearProcedure }, 
+      { "413651001", Bioptics }, 
+      { "http://snomed.info/sct#413651001", Bioptics }, 
+      { "430823004", ExaminationOfMidstreamUrineSpecimen }, 
+      { "http://snomed.info/sct#430823004", ExaminationOfMidstreamUrineSpecimen }, 
+      { "45710003", Sputum }, 
+      { "http://snomed.info/sct#45710003", Sputum }, 
+      { "67889009", Irrigation }, 
+      { "http://snomed.info/sct#67889009", Irrigation }, 
+      { "7800008", Punctate }, 
+      { "http://snomed.info/sct#7800008", Punctate }, 
+      { "ANP", PlatesAnaerobic }, 
+      { "http://hl7.org/fhir/v2/0488#ANP", PlatesAnaerobic }, 
+      { "BAP", PlatesBloodAgar }, 
+      { "http://hl7.org/fhir/v2/0488#BAP", PlatesBloodAgar }, 
+      { "BCAE", BloodCultureAerobicBottle }, 
+      { "http://hl7.org/fhir/v2/0488#BCAE", BloodCultureAerobicBottle }, 
+      { "BCAN", BloodCultureAnaerobicBottle }, 
+      { "http://hl7.org/fhir/v2/0488#BCAN", BloodCultureAnaerobicBottle }, 
+      { "BCPD", BloodCulturePediatricBottle }, 
+      { "http://hl7.org/fhir/v2/0488#BCPD", BloodCulturePediatricBottle }, 
+      { "BIO", Biopsy }, 
+      { "http://hl7.org/fhir/v2/0488#BIO", Biopsy }, 
+      { "CAP", CapillarySpecimen }, 
+      { "http://hl7.org/fhir/v2/0488#CAP", CapillarySpecimen }, 
+      { "CATH", Catheterized }, 
+      { "http://hl7.org/fhir/v2/0488#CATH", Catheterized }, 
+      { "CVP", LineCVP }, 
+      { "http://hl7.org/fhir/v2/0488#CVP", LineCVP }, 
+      { "EPLA", EnvironmentalPlate }, 
+      { "http://hl7.org/fhir/v2/0488#EPLA", EnvironmentalPlate }, 
+      { "ESWA", EnvironmentalSwab }, 
+      { "http://hl7.org/fhir/v2/0488#ESWA", EnvironmentalSwab }, 
+      { "FNA", AspirationFineNeedle }, 
+      { "http://hl7.org/fhir/v2/0488#FNA", AspirationFineNeedle }, 
+      { "KOFFP", PlateCough }, 
+      { "http://hl7.org/fhir/v2/0488#KOFFP", PlateCough }, 
+      { "LNA", LineArterial }, 
+      { "http://hl7.org/fhir/v2/0488#LNA", LineArterial }, 
+      { "LNV", LineVenous }, 
+      { "http://hl7.org/fhir/v2/0488#LNV", LineVenous }, 
+      { "MARTL", MartinLewisAgar }, 
+      { "http://hl7.org/fhir/v2/0488#MARTL", MartinLewisAgar }, 
+      { "ML11", ModMartinLewisAgar }, 
+      { "http://hl7.org/fhir/v2/0488#ML11", ModMartinLewisAgar }, 
+      { "MLP", PlateMartinLewis }, 
+      { "http://hl7.org/fhir/v2/0488#MLP", PlateMartinLewis }, 
+      { "NYP", PlateNewYorkCity }, 
+      { "http://hl7.org/fhir/v2/0488#NYP", PlateNewYorkCity }, 
+      { "PACE", PaceGenProbe }, 
+      { "http://hl7.org/fhir/v2/0488#PACE", PaceGenProbe }, 
+      { "PIN", PinwormPrep }, 
+      { "http://hl7.org/fhir/v2/0488#PIN", PinwormPrep }, 
+      { "PNA", ArterialPuncture }, 
+      { "http://hl7.org/fhir/v2/0488#PNA", ArterialPuncture }, 
+      { "PRIME", PumpPrime }, 
+      { "http://hl7.org/fhir/v2/0488#PRIME", PumpPrime }, 
+      { "PUMP", PumpSpecimen }, 
+      { "http://hl7.org/fhir/v2/0488#PUMP", PumpSpecimen }, 
+      { "QC5", QualityControlForMicro }, 
+      { "http://hl7.org/fhir/v2/0488#QC5", QualityControlForMicro }, 
+      { "SCLP", ScalpFetalVein }, 
+      { "http://hl7.org/fhir/v2/0488#SCLP", ScalpFetalVein }, 
+      { "SCRAPS", Scrapings_2 }, 
+      { "http://hl7.org/fhir/v2/0488#SCRAPS", Scrapings_2 }, 
+      { "SHA", Shaving }, 
+      { "http://hl7.org/fhir/v2/0488#SHA", Shaving }, 
+      { "SWA", Swab }, 
+      { "http://hl7.org/fhir/v2/0488#SWA", Swab }, 
+      { "SWD", SwabDacronTipped }, 
+      { "http://hl7.org/fhir/v2/0488#SWD", SwabDacronTipped }, 
+      { "TMAN", TransportMediaAnaerobic }, 
+      { "http://hl7.org/fhir/v2/0488#TMAN", TransportMediaAnaerobic }, 
+      { "TMCH", TransportMediaChalamydia }, 
+      { "http://hl7.org/fhir/v2/0488#TMCH", TransportMediaChalamydia }, 
+      { "TMM4", TransportMediaM4 }, 
+      { "http://hl7.org/fhir/v2/0488#TMM4", TransportMediaM4 }, 
+      { "TMMY", TransportMediaMycoplasma }, 
+      { "http://hl7.org/fhir/v2/0488#TMMY", TransportMediaMycoplasma }, 
+      { "TMOT", TransportMedia }, 
+      { "http://hl7.org/fhir/v2/0488#TMOT", TransportMedia }, 
+      { "TMP", PlateThayerMartin }, 
+      { "http://hl7.org/fhir/v2/0488#TMP", PlateThayerMartin }, 
+      { "TMPV", TransportMediaPVA }, 
+      { "http://hl7.org/fhir/v2/0488#TMPV", TransportMediaPVA }, 
+      { "TMSC", TransportMediaStoolCulture }, 
+      { "http://hl7.org/fhir/v2/0488#TMSC", TransportMediaStoolCulture }, 
+      { "TMUP", TransportMediaUreaplasma }, 
+      { "http://hl7.org/fhir/v2/0488#TMUP", TransportMediaUreaplasma }, 
+      { "TMVI", TransportMediaViral }, 
+      { "http://hl7.org/fhir/v2/0488#TMVI", TransportMediaViral }, 
+      { "VENIP", Venipuncture }, 
+      { "http://hl7.org/fhir/v2/0488#VENIP", Venipuncture }, 
+      { "WOOD", SwabWoodenShaft }, 
+      { "http://hl7.org/fhir/v2/0488#WOOD", SwabWoodenShaft }, 
+    };
   };
 }

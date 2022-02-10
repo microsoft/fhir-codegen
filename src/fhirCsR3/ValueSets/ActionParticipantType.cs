@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPatient = "patient";
 
     /// <summary>
+    /// Literal for code: ActionParticipantTypePatient
+    /// </summary>
+    public const string LiteralActionParticipantTypePatient = "http://hl7.org/fhir/action-participant-type#patient";
+
+    /// <summary>
     /// Literal for code: Practitioner
     /// </summary>
     public const string LiteralPractitioner = "practitioner";
 
     /// <summary>
+    /// Literal for code: ActionParticipantTypePractitioner
+    /// </summary>
+    public const string LiteralActionParticipantTypePractitioner = "http://hl7.org/fhir/action-participant-type#practitioner";
+
+    /// <summary>
     /// Literal for code: RelatedPerson
     /// </summary>
     public const string LiteralRelatedPerson = "related-person";
+
+    /// <summary>
+    /// Literal for code: ActionParticipantTypeRelatedPerson
+    /// </summary>
+    public const string LiteralActionParticipantTypeRelatedPerson = "http://hl7.org/fhir/action-participant-type#related-person";
+
+    /// <summary>
+    /// Dictionary for looking up ActionParticipantType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "patient", Patient }, 
+      { "http://hl7.org/fhir/action-participant-type#patient", Patient }, 
+      { "practitioner", Practitioner }, 
+      { "http://hl7.org/fhir/action-participant-type#practitioner", Practitioner }, 
+      { "related-person", RelatedPerson }, 
+      { "http://hl7.org/fhir/action-participant-type#related-person", RelatedPerson }, 
+    };
   };
 }

@@ -81,9 +81,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBoolean = "boolean";
 
     /// <summary>
+    /// Literal for code: ConceptPropertyTypeBoolean
+    /// </summary>
+    public const string LiteralConceptPropertyTypeBoolean = "http://hl7.org/fhir/concept-property-type#boolean";
+
+    /// <summary>
     /// Literal for code: CodeInternalReference
     /// </summary>
     public const string LiteralCodeInternalReference = "code";
+
+    /// <summary>
+    /// Literal for code: ConceptPropertyTypeCodeInternalReference
+    /// </summary>
+    public const string LiteralConceptPropertyTypeCodeInternalReference = "http://hl7.org/fhir/concept-property-type#code";
 
     /// <summary>
     /// Literal for code: CodingExternalReference
@@ -91,9 +101,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCodingExternalReference = "Coding";
 
     /// <summary>
+    /// Literal for code: ConceptPropertyTypeCodingExternalReference
+    /// </summary>
+    public const string LiteralConceptPropertyTypeCodingExternalReference = "http://hl7.org/fhir/concept-property-type#Coding";
+
+    /// <summary>
     /// Literal for code: DateTime
     /// </summary>
     public const string LiteralDateTime = "dateTime";
+
+    /// <summary>
+    /// Literal for code: ConceptPropertyTypeDateTime
+    /// </summary>
+    public const string LiteralConceptPropertyTypeDateTime = "http://hl7.org/fhir/concept-property-type#dateTime";
 
     /// <summary>
     /// Literal for code: VALDecimal
@@ -101,13 +121,48 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVALDecimal = "decimal";
 
     /// <summary>
+    /// Literal for code: ConceptPropertyTypeVALDecimal
+    /// </summary>
+    public const string LiteralConceptPropertyTypeVALDecimal = "http://hl7.org/fhir/concept-property-type#decimal";
+
+    /// <summary>
     /// Literal for code: Integer
     /// </summary>
     public const string LiteralInteger = "integer";
 
     /// <summary>
+    /// Literal for code: ConceptPropertyTypeInteger
+    /// </summary>
+    public const string LiteralConceptPropertyTypeInteger = "http://hl7.org/fhir/concept-property-type#integer";
+
+    /// <summary>
     /// Literal for code: VALString
     /// </summary>
     public const string LiteralVALString = "string";
+
+    /// <summary>
+    /// Literal for code: ConceptPropertyTypeVALString
+    /// </summary>
+    public const string LiteralConceptPropertyTypeVALString = "http://hl7.org/fhir/concept-property-type#string";
+
+    /// <summary>
+    /// Dictionary for looking up ConceptPropertyType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "boolean", Boolean }, 
+      { "http://hl7.org/fhir/concept-property-type#boolean", Boolean }, 
+      { "code", CodeInternalReference }, 
+      { "http://hl7.org/fhir/concept-property-type#code", CodeInternalReference }, 
+      { "Coding", CodingExternalReference }, 
+      { "http://hl7.org/fhir/concept-property-type#Coding", CodingExternalReference }, 
+      { "dateTime", DateTime }, 
+      { "http://hl7.org/fhir/concept-property-type#dateTime", DateTime }, 
+      { "decimal", VALDecimal }, 
+      { "http://hl7.org/fhir/concept-property-type#decimal", VALDecimal }, 
+      { "integer", Integer }, 
+      { "http://hl7.org/fhir/concept-property-type#integer", Integer }, 
+      { "string", VALString }, 
+      { "http://hl7.org/fhir/concept-property-type#string", VALString }, 
+    };
   };
 }

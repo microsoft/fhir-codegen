@@ -63,9 +63,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBrokenSpecimenContainer = "broken";
 
     /// <summary>
+    /// Literal for code: RejectionCriteriaBrokenSpecimenContainer
+    /// </summary>
+    public const string LiteralRejectionCriteriaBrokenSpecimenContainer = "http://terminology.hl7.org/CodeSystem/rejection-criteria#broken";
+
+    /// <summary>
     /// Literal for code: SpecimenClotted
     /// </summary>
     public const string LiteralSpecimenClotted = "clotted";
+
+    /// <summary>
+    /// Literal for code: RejectionCriteriaSpecimenClotted
+    /// </summary>
+    public const string LiteralRejectionCriteriaSpecimenClotted = "http://terminology.hl7.org/CodeSystem/rejection-criteria#clotted";
 
     /// <summary>
     /// Literal for code: HemolizedSpecimen
@@ -73,13 +83,44 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHemolizedSpecimen = "hemolized";
 
     /// <summary>
+    /// Literal for code: RejectionCriteriaHemolizedSpecimen
+    /// </summary>
+    public const string LiteralRejectionCriteriaHemolizedSpecimen = "http://terminology.hl7.org/CodeSystem/rejection-criteria#hemolized";
+
+    /// <summary>
     /// Literal for code: InsufficientSpecimenVolume
     /// </summary>
     public const string LiteralInsufficientSpecimenVolume = "insufficient";
 
     /// <summary>
+    /// Literal for code: RejectionCriteriaInsufficientSpecimenVolume
+    /// </summary>
+    public const string LiteralRejectionCriteriaInsufficientSpecimenVolume = "http://terminology.hl7.org/CodeSystem/rejection-criteria#insufficient";
+
+    /// <summary>
     /// Literal for code: SpecimenTemperatureInappropriate
     /// </summary>
     public const string LiteralSpecimenTemperatureInappropriate = "wrong-temperature";
+
+    /// <summary>
+    /// Literal for code: RejectionCriteriaSpecimenTemperatureInappropriate
+    /// </summary>
+    public const string LiteralRejectionCriteriaSpecimenTemperatureInappropriate = "http://terminology.hl7.org/CodeSystem/rejection-criteria#wrong-temperature";
+
+    /// <summary>
+    /// Dictionary for looking up RejectionCriteria Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "broken", BrokenSpecimenContainer }, 
+      { "http://terminology.hl7.org/CodeSystem/rejection-criteria#broken", BrokenSpecimenContainer }, 
+      { "clotted", SpecimenClotted }, 
+      { "http://terminology.hl7.org/CodeSystem/rejection-criteria#clotted", SpecimenClotted }, 
+      { "hemolized", HemolizedSpecimen }, 
+      { "http://terminology.hl7.org/CodeSystem/rejection-criteria#hemolized", HemolizedSpecimen }, 
+      { "insufficient", InsufficientSpecimenVolume }, 
+      { "http://terminology.hl7.org/CodeSystem/rejection-criteria#insufficient", InsufficientSpecimenVolume }, 
+      { "wrong-temperature", SpecimenTemperatureInappropriate }, 
+      { "http://terminology.hl7.org/CodeSystem/rejection-criteria#wrong-temperature", SpecimenTemperatureInappropriate }, 
+    };
   };
 }

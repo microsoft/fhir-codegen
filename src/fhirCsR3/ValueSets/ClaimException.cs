@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDisabled = "disabled";
 
     /// <summary>
+    /// Literal for code: ClaimExceptionDisabled
+    /// </summary>
+    public const string LiteralClaimExceptionDisabled = "http://hl7.org/fhir/claim-exception#disabled";
+
+    /// <summary>
     /// Literal for code: StudentFulltime
     /// </summary>
     public const string LiteralStudentFulltime = "student";
+
+    /// <summary>
+    /// Literal for code: ClaimExceptionStudentFulltime
+    /// </summary>
+    public const string LiteralClaimExceptionStudentFulltime = "http://hl7.org/fhir/claim-exception#student";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimException Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "disabled", Disabled }, 
+      { "http://hl7.org/fhir/claim-exception#disabled", Disabled }, 
+      { "student", StudentFulltime }, 
+      { "http://hl7.org/fhir/claim-exception#student", StudentFulltime }, 
+    };
   };
 }

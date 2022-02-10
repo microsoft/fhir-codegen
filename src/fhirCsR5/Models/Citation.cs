@@ -244,6 +244,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Actual { get; set; }
     /// <summary>
+    /// Extension container element for Actual
+    /// </summary>
+    public Element _Actual { get; set; }
+    /// <summary>
     /// For an instance, place the same value in both start and end elements.
     /// </summary>
     public Period Period { get; set; }
@@ -267,6 +271,12 @@ namespace fhirCsR5.Models
       if (Actual != null)
       {
         writer.WriteBoolean("actual", (bool)Actual!);
+      }
+
+      if (_Actual != null)
+      {
+        writer.WritePropertyName("_actual");
+        _Actual.SerializeJson(writer, options);
       }
 
       if (Period != null)
@@ -294,6 +304,11 @@ namespace fhirCsR5.Models
 
         case "actual":
           Actual = reader.GetBoolean();
+          break;
+
+        case "_actual":
+          _Actual = new fhirCsR5.Models.Element();
+          _Actual.DeserializeJson(ref reader, options);
           break;
 
         case "period":
@@ -448,6 +463,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Actual { get; set; }
     /// <summary>
+    /// Extension container element for Actual
+    /// </summary>
+    public Element _Actual { get; set; }
+    /// <summary>
     /// For an instance, place the same value in both start and end elements.
     /// </summary>
     public Period Period { get; set; }
@@ -471,6 +490,12 @@ namespace fhirCsR5.Models
       if (Actual != null)
       {
         writer.WriteBoolean("actual", (bool)Actual!);
+      }
+
+      if (_Actual != null)
+      {
+        writer.WritePropertyName("_actual");
+        _Actual.SerializeJson(writer, options);
       }
 
       if (Period != null)
@@ -498,6 +523,11 @@ namespace fhirCsR5.Models
 
         case "actual":
           Actual = reader.GetBoolean();
+          break;
+
+        case "_actual":
+          _Actual = new fhirCsR5.Models.Element();
+          _Actual.DeserializeJson(ref reader, options);
           break;
 
         case "period":
@@ -2011,6 +2041,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? FreeToShare { get; set; }
     /// <summary>
+    /// Extension container element for FreeToShare
+    /// </summary>
+    public Element _FreeToShare { get; set; }
+    /// <summary>
     /// Organization who created the classification.
     /// </summary>
     public Reference Organization { get; set; }
@@ -2067,6 +2101,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("freeToShare", (bool)FreeToShare!);
       }
 
+      if (_FreeToShare != null)
+      {
+        writer.WritePropertyName("_freeToShare");
+        _FreeToShare.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -2090,6 +2130,11 @@ namespace fhirCsR5.Models
 
         case "freeToShare":
           FreeToShare = reader.GetBoolean();
+          break;
+
+        case "_freeToShare":
+          _FreeToShare = new fhirCsR5.Models.Element();
+          _FreeToShare.DeserializeJson(ref reader, options);
           break;
 
         case "organization":
@@ -2566,6 +2611,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? CorrespondingContact { get; set; }
     /// <summary>
+    /// Extension container element for CorrespondingContact
+    /// </summary>
+    public Element _CorrespondingContact { get; set; }
+    /// <summary>
     /// Avoids needing to disambiguate common last names or changes of name. ORCID is commonly used as author identifier.
     /// </summary>
     public List<Identifier> Identifier { get; set; }
@@ -2721,6 +2770,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("correspondingContact", (bool)CorrespondingContact!);
       }
 
+      if (_CorrespondingContact != null)
+      {
+        writer.WritePropertyName("_correspondingContact");
+        _CorrespondingContact.SerializeJson(writer, options);
+      }
+
       if (RankingOrder != null)
       {
         writer.WriteNumber("rankingOrder", (uint)RankingOrder!);
@@ -2857,6 +2912,11 @@ namespace fhirCsR5.Models
 
         case "correspondingContact":
           CorrespondingContact = reader.GetBoolean();
+          break;
+
+        case "_correspondingContact":
+          _CorrespondingContact = new fhirCsR5.Models.Element();
+          _CorrespondingContact.DeserializeJson(ref reader, options);
           break;
 
         case "identifier":
@@ -3109,6 +3169,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Complete { get; set; }
     /// <summary>
+    /// Extension container element for Complete
+    /// </summary>
+    public Element _Complete { get; set; }
+    /// <summary>
     /// Used to report contributorship in individualized ways.
     /// </summary>
     public List<CitationCitedArtifactContributorshipEntry> Entry { get; set; }
@@ -3130,6 +3194,12 @@ namespace fhirCsR5.Models
       if (Complete != null)
       {
         writer.WriteBoolean("complete", (bool)Complete!);
+      }
+
+      if (_Complete != null)
+      {
+        writer.WritePropertyName("_complete");
+        _Complete.SerializeJson(writer, options);
       }
 
       if ((Entry != null) && (Entry.Count != 0))
@@ -3172,6 +3242,11 @@ namespace fhirCsR5.Models
       {
         case "complete":
           Complete = reader.GetBoolean();
+          break;
+
+        case "_complete":
+          _Complete = new fhirCsR5.Models.Element();
+          _Complete.DeserializeJson(ref reader, options);
           break;
 
         case "entry":
@@ -3953,6 +4028,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// May include DOI, PMID, PMCID, etc. This element will contain unique identifiers that support de-duplication of citations. This identifier can be valid for only one citation resource.
     /// </summary>
     public List<Identifier> Identifier { get; set; }
@@ -4136,6 +4215,12 @@ namespace fhirCsR5.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -4620,6 +4705,11 @@ namespace fhirCsR5.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR5.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "identifier":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -4947,5 +5037,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ImmunizationRecommendationStatusCodes
   {
     /// <summary>
-    /// 
+    /// Complete
     /// </summary>
     public static readonly Coding Complete = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"
     };
     /// <summary>
-    /// 
+    /// Contraindicated
     /// </summary>
     public static readonly Coding Contraindicated = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"
     };
     /// <summary>
-    /// 
+    /// Due
     /// </summary>
     public static readonly Coding Due = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"
     };
     /// <summary>
-    /// 
+    /// Immune
     /// </summary>
     public static readonly Coding Immune = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status"
     };
     /// <summary>
-    /// 
+    /// Overdue
     /// </summary>
     public static readonly Coding Overdue = new Coding
     {
@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralComplete = "complete";
 
     /// <summary>
+    /// Literal for code: ImmunizationRecommendationStatusComplete
+    /// </summary>
+    public const string LiteralImmunizationRecommendationStatusComplete = "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status#complete";
+
+    /// <summary>
     /// Literal for code: Contraindicated
     /// </summary>
     public const string LiteralContraindicated = "contraindicated";
+
+    /// <summary>
+    /// Literal for code: ImmunizationRecommendationStatusContraindicated
+    /// </summary>
+    public const string LiteralImmunizationRecommendationStatusContraindicated = "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status#contraindicated";
 
     /// <summary>
     /// Literal for code: Due
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDue = "due";
 
     /// <summary>
+    /// Literal for code: ImmunizationRecommendationStatusDue
+    /// </summary>
+    public const string LiteralImmunizationRecommendationStatusDue = "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status#due";
+
+    /// <summary>
     /// Literal for code: Immune
     /// </summary>
     public const string LiteralImmune = "immune";
 
     /// <summary>
+    /// Literal for code: ImmunizationRecommendationStatusImmune
+    /// </summary>
+    public const string LiteralImmunizationRecommendationStatusImmune = "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status#immune";
+
+    /// <summary>
     /// Literal for code: Overdue
     /// </summary>
     public const string LiteralOverdue = "overdue";
+
+    /// <summary>
+    /// Literal for code: ImmunizationRecommendationStatusOverdue
+    /// </summary>
+    public const string LiteralImmunizationRecommendationStatusOverdue = "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status#overdue";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationRecommendationStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", Complete }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status#complete", Complete }, 
+      { "contraindicated", Contraindicated }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status#contraindicated", Contraindicated }, 
+      { "due", Due }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status#due", Due }, 
+      { "immune", Immune }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status#immune", Immune }, 
+      { "overdue", Overdue }, 
+      { "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status#overdue", Overdue }, 
+    };
   };
 }

@@ -99,9 +99,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBatch = "batch";
 
     /// <summary>
+    /// Literal for code: BundleTypeBatch
+    /// </summary>
+    public const string LiteralBundleTypeBatch = "http://hl7.org/fhir/bundle-type#batch";
+
+    /// <summary>
     /// Literal for code: BatchResponse
     /// </summary>
     public const string LiteralBatchResponse = "batch-response";
+
+    /// <summary>
+    /// Literal for code: BundleTypeBatchResponse
+    /// </summary>
+    public const string LiteralBundleTypeBatchResponse = "http://hl7.org/fhir/bundle-type#batch-response";
 
     /// <summary>
     /// Literal for code: Collection
@@ -109,9 +119,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCollection = "collection";
 
     /// <summary>
+    /// Literal for code: BundleTypeCollection
+    /// </summary>
+    public const string LiteralBundleTypeCollection = "http://hl7.org/fhir/bundle-type#collection";
+
+    /// <summary>
     /// Literal for code: Document
     /// </summary>
     public const string LiteralDocument = "document";
+
+    /// <summary>
+    /// Literal for code: BundleTypeDocument
+    /// </summary>
+    public const string LiteralBundleTypeDocument = "http://hl7.org/fhir/bundle-type#document";
 
     /// <summary>
     /// Literal for code: HistoryList
@@ -119,9 +139,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHistoryList = "history";
 
     /// <summary>
+    /// Literal for code: BundleTypeHistoryList
+    /// </summary>
+    public const string LiteralBundleTypeHistoryList = "http://hl7.org/fhir/bundle-type#history";
+
+    /// <summary>
     /// Literal for code: Message
     /// </summary>
     public const string LiteralMessage = "message";
+
+    /// <summary>
+    /// Literal for code: BundleTypeMessage
+    /// </summary>
+    public const string LiteralBundleTypeMessage = "http://hl7.org/fhir/bundle-type#message";
 
     /// <summary>
     /// Literal for code: SearchResults
@@ -129,13 +159,52 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSearchResults = "searchset";
 
     /// <summary>
+    /// Literal for code: BundleTypeSearchResults
+    /// </summary>
+    public const string LiteralBundleTypeSearchResults = "http://hl7.org/fhir/bundle-type#searchset";
+
+    /// <summary>
     /// Literal for code: Transaction
     /// </summary>
     public const string LiteralTransaction = "transaction";
 
     /// <summary>
+    /// Literal for code: BundleTypeTransaction
+    /// </summary>
+    public const string LiteralBundleTypeTransaction = "http://hl7.org/fhir/bundle-type#transaction";
+
+    /// <summary>
     /// Literal for code: TransactionResponse
     /// </summary>
     public const string LiteralTransactionResponse = "transaction-response";
+
+    /// <summary>
+    /// Literal for code: BundleTypeTransactionResponse
+    /// </summary>
+    public const string LiteralBundleTypeTransactionResponse = "http://hl7.org/fhir/bundle-type#transaction-response";
+
+    /// <summary>
+    /// Dictionary for looking up BundleType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "batch", Batch }, 
+      { "http://hl7.org/fhir/bundle-type#batch", Batch }, 
+      { "batch-response", BatchResponse }, 
+      { "http://hl7.org/fhir/bundle-type#batch-response", BatchResponse }, 
+      { "collection", Collection }, 
+      { "http://hl7.org/fhir/bundle-type#collection", Collection }, 
+      { "document", Document }, 
+      { "http://hl7.org/fhir/bundle-type#document", Document }, 
+      { "history", HistoryList }, 
+      { "http://hl7.org/fhir/bundle-type#history", HistoryList }, 
+      { "message", Message }, 
+      { "http://hl7.org/fhir/bundle-type#message", Message }, 
+      { "searchset", SearchResults }, 
+      { "http://hl7.org/fhir/bundle-type#searchset", SearchResults }, 
+      { "transaction", Transaction }, 
+      { "http://hl7.org/fhir/bundle-type#transaction", Transaction }, 
+      { "transaction-response", TransactionResponse }, 
+      { "http://hl7.org/fhir/bundle-type#transaction-response", TransactionResponse }, 
+    };
   };
 }

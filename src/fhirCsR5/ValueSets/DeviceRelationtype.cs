@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralConnected = "connected";
 
     /// <summary>
+    /// Literal for code: DeviceRelationtypeConnected
+    /// </summary>
+    public const string LiteralDeviceRelationtypeConnected = "http://hl7.org/fhir/device-relationtype#connected";
+
+    /// <summary>
     /// Literal for code: Container
     /// </summary>
     public const string LiteralContainer = "container";
+
+    /// <summary>
+    /// Literal for code: DeviceRelationtypeContainer
+    /// </summary>
+    public const string LiteralDeviceRelationtypeContainer = "http://hl7.org/fhir/device-relationtype#container";
 
     /// <summary>
     /// Literal for code: Gateway
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGateway = "gateway";
 
     /// <summary>
+    /// Literal for code: DeviceRelationtypeGateway
+    /// </summary>
+    public const string LiteralDeviceRelationtypeGateway = "http://hl7.org/fhir/device-relationtype#gateway";
+
+    /// <summary>
     /// Literal for code: Previous
     /// </summary>
     public const string LiteralPrevious = "previous";
 
     /// <summary>
+    /// Literal for code: DeviceRelationtypePrevious
+    /// </summary>
+    public const string LiteralDeviceRelationtypePrevious = "http://hl7.org/fhir/device-relationtype#previous";
+
+    /// <summary>
     /// Literal for code: Replaces
     /// </summary>
     public const string LiteralReplaces = "replaces";
+
+    /// <summary>
+    /// Literal for code: DeviceRelationtypeReplaces
+    /// </summary>
+    public const string LiteralDeviceRelationtypeReplaces = "http://hl7.org/fhir/device-relationtype#replaces";
+
+    /// <summary>
+    /// Dictionary for looking up DeviceRelationtype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "connected", Connected }, 
+      { "http://hl7.org/fhir/device-relationtype#connected", Connected }, 
+      { "container", Container }, 
+      { "http://hl7.org/fhir/device-relationtype#container", Container }, 
+      { "gateway", Gateway }, 
+      { "http://hl7.org/fhir/device-relationtype#gateway", Gateway }, 
+      { "previous", Previous }, 
+      { "http://hl7.org/fhir/device-relationtype#previous", Previous }, 
+      { "replaces", Replaces }, 
+      { "http://hl7.org/fhir/device-relationtype#replaces", Replaces }, 
+    };
   };
 }

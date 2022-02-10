@@ -45,13 +45,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralMultipleDeletesSupported = "multiple";
 
     /// <summary>
+    /// Literal for code: ConditionalDeleteStatusMultipleDeletesSupported
+    /// </summary>
+    public const string LiteralConditionalDeleteStatusMultipleDeletesSupported = "http://hl7.org/fhir/conditional-delete-status#multiple";
+
+    /// <summary>
     /// Literal for code: NotSupported
     /// </summary>
     public const string LiteralNotSupported = "not-supported";
 
     /// <summary>
+    /// Literal for code: ConditionalDeleteStatusNotSupported
+    /// </summary>
+    public const string LiteralConditionalDeleteStatusNotSupported = "http://hl7.org/fhir/conditional-delete-status#not-supported";
+
+    /// <summary>
     /// Literal for code: SingleDeletesSupported
     /// </summary>
     public const string LiteralSingleDeletesSupported = "single";
+
+    /// <summary>
+    /// Literal for code: ConditionalDeleteStatusSingleDeletesSupported
+    /// </summary>
+    public const string LiteralConditionalDeleteStatusSingleDeletesSupported = "http://hl7.org/fhir/conditional-delete-status#single";
+
+    /// <summary>
+    /// Dictionary for looking up ConditionalDeleteStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "multiple", MultipleDeletesSupported }, 
+      { "http://hl7.org/fhir/conditional-delete-status#multiple", MultipleDeletesSupported }, 
+      { "not-supported", NotSupported }, 
+      { "http://hl7.org/fhir/conditional-delete-status#not-supported", NotSupported }, 
+      { "single", SingleDeletesSupported }, 
+      { "http://hl7.org/fhir/conditional-delete-status#single", SingleDeletesSupported }, 
+    };
   };
 }

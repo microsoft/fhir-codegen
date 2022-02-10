@@ -162,9 +162,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAbsent = "absent";
 
     /// <summary>
+    /// Literal for code: CertaintyRatingAbsent
+    /// </summary>
+    public const string LiteralCertaintyRatingAbsent = "http://terminology.hl7.org/CodeSystem/certainty-rating#absent";
+
+    /// <summary>
     /// Literal for code: ReduceRating1
     /// </summary>
     public const string LiteralReduceRating1 = "downcode1";
+
+    /// <summary>
+    /// Literal for code: CertaintyRatingReduceRating1
+    /// </summary>
+    public const string LiteralCertaintyRatingReduceRating1 = "http://terminology.hl7.org/CodeSystem/certainty-rating#downcode1";
 
     /// <summary>
     /// Literal for code: ReduceRating2
@@ -172,9 +182,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralReduceRating2 = "downcode2";
 
     /// <summary>
+    /// Literal for code: CertaintyRatingReduceRating2
+    /// </summary>
+    public const string LiteralCertaintyRatingReduceRating2 = "http://terminology.hl7.org/CodeSystem/certainty-rating#downcode2";
+
+    /// <summary>
     /// Literal for code: ReduceRating3
     /// </summary>
     public const string LiteralReduceRating3 = "downcode3";
+
+    /// <summary>
+    /// Literal for code: CertaintyRatingReduceRating3
+    /// </summary>
+    public const string LiteralCertaintyRatingReduceRating3 = "http://terminology.hl7.org/CodeSystem/certainty-rating#downcode3";
 
     /// <summary>
     /// Literal for code: ExtremelySeriousConcern
@@ -182,9 +202,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralExtremelySeriousConcern = "extremely-serious-concern";
 
     /// <summary>
+    /// Literal for code: CertaintyRatingExtremelySeriousConcern
+    /// </summary>
+    public const string LiteralCertaintyRatingExtremelySeriousConcern = "http://terminology.hl7.org/CodeSystem/certainty-rating#extremely-serious-concern";
+
+    /// <summary>
     /// Literal for code: HighQuality
     /// </summary>
     public const string LiteralHighQuality = "high";
+
+    /// <summary>
+    /// Literal for code: CertaintyRatingHighQuality
+    /// </summary>
+    public const string LiteralCertaintyRatingHighQuality = "http://terminology.hl7.org/CodeSystem/certainty-rating#high";
 
     /// <summary>
     /// Literal for code: LowQuality
@@ -192,9 +222,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLowQuality = "low";
 
     /// <summary>
+    /// Literal for code: CertaintyRatingLowQuality
+    /// </summary>
+    public const string LiteralCertaintyRatingLowQuality = "http://terminology.hl7.org/CodeSystem/certainty-rating#low";
+
+    /// <summary>
     /// Literal for code: ModerateQuality
     /// </summary>
     public const string LiteralModerateQuality = "moderate";
+
+    /// <summary>
+    /// Literal for code: CertaintyRatingModerateQuality
+    /// </summary>
+    public const string LiteralCertaintyRatingModerateQuality = "http://terminology.hl7.org/CodeSystem/certainty-rating#moderate";
 
     /// <summary>
     /// Literal for code: NoChangeToRating
@@ -202,9 +242,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNoChangeToRating = "no-change";
 
     /// <summary>
+    /// Literal for code: CertaintyRatingNoChangeToRating
+    /// </summary>
+    public const string LiteralCertaintyRatingNoChangeToRating = "http://terminology.hl7.org/CodeSystem/certainty-rating#no-change";
+
+    /// <summary>
     /// Literal for code: NoSeriousConcern
     /// </summary>
     public const string LiteralNoSeriousConcern = "no-concern";
+
+    /// <summary>
+    /// Literal for code: CertaintyRatingNoSeriousConcern
+    /// </summary>
+    public const string LiteralCertaintyRatingNoSeriousConcern = "http://terminology.hl7.org/CodeSystem/certainty-rating#no-concern";
 
     /// <summary>
     /// Literal for code: Present
@@ -212,9 +262,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPresent = "present";
 
     /// <summary>
+    /// Literal for code: CertaintyRatingPresent
+    /// </summary>
+    public const string LiteralCertaintyRatingPresent = "http://terminology.hl7.org/CodeSystem/certainty-rating#present";
+
+    /// <summary>
     /// Literal for code: SeriousConcern
     /// </summary>
     public const string LiteralSeriousConcern = "serious-concern";
+
+    /// <summary>
+    /// Literal for code: CertaintyRatingSeriousConcern
+    /// </summary>
+    public const string LiteralCertaintyRatingSeriousConcern = "http://terminology.hl7.org/CodeSystem/certainty-rating#serious-concern";
 
     /// <summary>
     /// Literal for code: IncreaseRatingPlus1
@@ -222,9 +282,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralIncreaseRatingPlus1 = "upcode1";
 
     /// <summary>
+    /// Literal for code: CertaintyRatingIncreaseRatingPlus1
+    /// </summary>
+    public const string LiteralCertaintyRatingIncreaseRatingPlus1 = "http://terminology.hl7.org/CodeSystem/certainty-rating#upcode1";
+
+    /// <summary>
     /// Literal for code: IncreaseRatingPlus2
     /// </summary>
     public const string LiteralIncreaseRatingPlus2 = "upcode2";
+
+    /// <summary>
+    /// Literal for code: CertaintyRatingIncreaseRatingPlus2
+    /// </summary>
+    public const string LiteralCertaintyRatingIncreaseRatingPlus2 = "http://terminology.hl7.org/CodeSystem/certainty-rating#upcode2";
 
     /// <summary>
     /// Literal for code: VeryLowQuality
@@ -232,8 +302,56 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVeryLowQuality = "very-low";
 
     /// <summary>
+    /// Literal for code: CertaintyRatingVeryLowQuality
+    /// </summary>
+    public const string LiteralCertaintyRatingVeryLowQuality = "http://terminology.hl7.org/CodeSystem/certainty-rating#very-low";
+
+    /// <summary>
     /// Literal for code: VerySeriousConcern
     /// </summary>
     public const string LiteralVerySeriousConcern = "very-serious-concern";
+
+    /// <summary>
+    /// Literal for code: CertaintyRatingVerySeriousConcern
+    /// </summary>
+    public const string LiteralCertaintyRatingVerySeriousConcern = "http://terminology.hl7.org/CodeSystem/certainty-rating#very-serious-concern";
+
+    /// <summary>
+    /// Dictionary for looking up CertaintyRating Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "absent", Absent }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-rating#absent", Absent }, 
+      { "downcode1", ReduceRating1 }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-rating#downcode1", ReduceRating1 }, 
+      { "downcode2", ReduceRating2 }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-rating#downcode2", ReduceRating2 }, 
+      { "downcode3", ReduceRating3 }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-rating#downcode3", ReduceRating3 }, 
+      { "extremely-serious-concern", ExtremelySeriousConcern }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-rating#extremely-serious-concern", ExtremelySeriousConcern }, 
+      { "high", HighQuality }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-rating#high", HighQuality }, 
+      { "low", LowQuality }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-rating#low", LowQuality }, 
+      { "moderate", ModerateQuality }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-rating#moderate", ModerateQuality }, 
+      { "no-change", NoChangeToRating }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-rating#no-change", NoChangeToRating }, 
+      { "no-concern", NoSeriousConcern }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-rating#no-concern", NoSeriousConcern }, 
+      { "present", Present }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-rating#present", Present }, 
+      { "serious-concern", SeriousConcern }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-rating#serious-concern", SeriousConcern }, 
+      { "upcode1", IncreaseRatingPlus1 }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-rating#upcode1", IncreaseRatingPlus1 }, 
+      { "upcode2", IncreaseRatingPlus2 }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-rating#upcode2", IncreaseRatingPlus2 }, 
+      { "very-low", VeryLowQuality }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-rating#very-low", VeryLowQuality }, 
+      { "very-serious-concern", VerySeriousConcern }, 
+      { "http://terminology.hl7.org/CodeSystem/certainty-rating#very-serious-concern", VerySeriousConcern }, 
+    };
   };
 }

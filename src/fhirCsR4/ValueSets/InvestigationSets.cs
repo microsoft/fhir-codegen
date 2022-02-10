@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class InvestigationSetsCodes
   {
     /// <summary>
-    /// 
+    /// History/symptoms
     /// </summary>
     public static readonly Coding HistorySymptoms = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Examination / signs
     /// </summary>
     public static readonly Coding ExaminationSigns = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHistorySymptoms = "160237006";
 
     /// <summary>
+    /// Literal for code: NONEHistorySymptoms
+    /// </summary>
+    public const string LiteralNONEHistorySymptoms = "http://snomed.info/sct#160237006";
+
+    /// <summary>
     /// Literal for code: ExaminationSigns
     /// </summary>
     public const string LiteralExaminationSigns = "271336007";
+
+    /// <summary>
+    /// Literal for code: NONEExaminationSigns
+    /// </summary>
+    public const string LiteralNONEExaminationSigns = "http://snomed.info/sct#271336007";
+
+    /// <summary>
+    /// Dictionary for looking up InvestigationSets Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "160237006", HistorySymptoms }, 
+      { "http://snomed.info/sct#160237006", HistorySymptoms }, 
+      { "271336007", ExaminationSigns }, 
+      { "http://snomed.info/sct#271336007", ExaminationSigns }, 
+    };
   };
 }

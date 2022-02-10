@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ClaimSubtypeCodes
   {
     /// <summary>
-    /// 
+    /// Emergency Claim
     /// </summary>
     public static readonly Coding EmergencyClaim = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-claimsubtype"
     };
     /// <summary>
-    /// 
+    /// Orthodontic Claim
     /// </summary>
     public static readonly Coding OrthodonticClaim = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmergencyClaim = "emergency";
 
     /// <summary>
+    /// Literal for code: ExClaimsubtypeEmergencyClaim
+    /// </summary>
+    public const string LiteralExClaimsubtypeEmergencyClaim = "http://terminology.hl7.org/CodeSystem/ex-claimsubtype#emergency";
+
+    /// <summary>
     /// Literal for code: OrthodonticClaim
     /// </summary>
     public const string LiteralOrthodonticClaim = "ortho";
+
+    /// <summary>
+    /// Literal for code: ExClaimsubtypeOrthodonticClaim
+    /// </summary>
+    public const string LiteralExClaimsubtypeOrthodonticClaim = "http://terminology.hl7.org/CodeSystem/ex-claimsubtype#ortho";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimSubtype Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "emergency", EmergencyClaim }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-claimsubtype#emergency", EmergencyClaim }, 
+      { "ortho", OrthodonticClaim }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-claimsubtype#ortho", OrthodonticClaim }, 
+    };
   };
 }

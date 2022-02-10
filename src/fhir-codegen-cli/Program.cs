@@ -539,12 +539,14 @@ public static class Program
             {
                 info.TryLoadPackages(
                     packageDirectives,
-                    out List<string> packagesLoaded,
+                    out List<FhirGuideInfo> guidesLoaded,
                     out List<string> packagesFailed);
 
-                foreach (string package in packagesLoaded)
+                foreach (FhirGuideInfo guide in guidesLoaded)
                 {
-                    Console.WriteLine($" <<< FHIR {info.VersionString}: Loaded package: {package}");
+                    Console.WriteLine(
+                        $" <<< FHIR {info.VersionString}:" +
+                        $" Loaded package: {guide.PackageInfo.Name}:{guide.PackageInfo.Version}");
                 }
 
                 foreach (string package in packagesFailed)

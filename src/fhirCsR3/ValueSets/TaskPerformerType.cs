@@ -90,9 +90,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAcquirer = "acquirer";
 
     /// <summary>
+    /// Literal for code: TaskPerformerTypeAcquirer
+    /// </summary>
+    public const string LiteralTaskPerformerTypeAcquirer = "http://hl7.org/fhir/task-performer-type#acquirer";
+
+    /// <summary>
     /// Literal for code: Dispatcher
     /// </summary>
     public const string LiteralDispatcher = "dispatcher";
+
+    /// <summary>
+    /// Literal for code: TaskPerformerTypeDispatcher
+    /// </summary>
+    public const string LiteralTaskPerformerTypeDispatcher = "http://hl7.org/fhir/task-performer-type#dispatcher";
 
     /// <summary>
     /// Literal for code: Manager
@@ -100,9 +110,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralManager = "manager";
 
     /// <summary>
+    /// Literal for code: TaskPerformerTypeManager
+    /// </summary>
+    public const string LiteralTaskPerformerTypeManager = "http://hl7.org/fhir/task-performer-type#manager";
+
+    /// <summary>
     /// Literal for code: Monitor
     /// </summary>
     public const string LiteralMonitor = "monitor";
+
+    /// <summary>
+    /// Literal for code: TaskPerformerTypeMonitor
+    /// </summary>
+    public const string LiteralTaskPerformerTypeMonitor = "http://hl7.org/fhir/task-performer-type#monitor";
 
     /// <summary>
     /// Literal for code: Performer
@@ -110,9 +130,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPerformer = "performer";
 
     /// <summary>
+    /// Literal for code: TaskPerformerTypePerformer
+    /// </summary>
+    public const string LiteralTaskPerformerTypePerformer = "http://hl7.org/fhir/task-performer-type#performer";
+
+    /// <summary>
     /// Literal for code: Requester
     /// </summary>
     public const string LiteralRequester = "requester";
+
+    /// <summary>
+    /// Literal for code: TaskPerformerTypeRequester
+    /// </summary>
+    public const string LiteralTaskPerformerTypeRequester = "http://hl7.org/fhir/task-performer-type#requester";
 
     /// <summary>
     /// Literal for code: Reviewer
@@ -120,8 +150,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReviewer = "reviewer";
 
     /// <summary>
+    /// Literal for code: TaskPerformerTypeReviewer
+    /// </summary>
+    public const string LiteralTaskPerformerTypeReviewer = "http://hl7.org/fhir/task-performer-type#reviewer";
+
+    /// <summary>
     /// Literal for code: Scheduler
     /// </summary>
     public const string LiteralScheduler = "scheduler";
+
+    /// <summary>
+    /// Literal for code: TaskPerformerTypeScheduler
+    /// </summary>
+    public const string LiteralTaskPerformerTypeScheduler = "http://hl7.org/fhir/task-performer-type#scheduler";
+
+    /// <summary>
+    /// Dictionary for looking up TaskPerformerType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "acquirer", Acquirer }, 
+      { "http://hl7.org/fhir/task-performer-type#acquirer", Acquirer }, 
+      { "dispatcher", Dispatcher }, 
+      { "http://hl7.org/fhir/task-performer-type#dispatcher", Dispatcher }, 
+      { "manager", Manager }, 
+      { "http://hl7.org/fhir/task-performer-type#manager", Manager }, 
+      { "monitor", Monitor }, 
+      { "http://hl7.org/fhir/task-performer-type#monitor", Monitor }, 
+      { "performer", Performer }, 
+      { "http://hl7.org/fhir/task-performer-type#performer", Performer }, 
+      { "requester", Requester }, 
+      { "http://hl7.org/fhir/task-performer-type#requester", Requester }, 
+      { "reviewer", Reviewer }, 
+      { "http://hl7.org/fhir/task-performer-type#reviewer", Reviewer }, 
+      { "scheduler", Scheduler }, 
+      { "http://hl7.org/fhir/task-performer-type#scheduler", Scheduler }, 
+    };
   };
 }

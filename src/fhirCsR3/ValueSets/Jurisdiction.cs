@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class JurisdictionCodes
   {
     /// <summary>
-    /// 
+    /// World
     /// </summary>
     public static readonly Coding World = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Africa
     /// </summary>
     public static readonly Coding Africa = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// South America
     /// </summary>
     public static readonly Coding SouthAmerica = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Oceania
     /// </summary>
     public static readonly Coding Oceania = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Western Africa
     /// </summary>
     public static readonly Coding WesternAfrica = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Central America
     /// </summary>
     public static readonly Coding CentralAmerica = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Eastern Africa
     /// </summary>
     public static readonly Coding EasternAfrica = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Northern Africa
     /// </summary>
     public static readonly Coding NorthernAfrica = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Middle Africa
     /// </summary>
     public static readonly Coding MiddleAfrica = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Southern Africa
     /// </summary>
     public static readonly Coding SouthernAfrica = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Americas
     /// </summary>
     public static readonly Coding Americas = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Northern America a/
     /// </summary>
     public static readonly Coding NorthernAmericaA = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Caribbean
     /// </summary>
     public static readonly Coding Caribbean = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Eastern Asia
     /// </summary>
     public static readonly Coding EasternAsia = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Southern Asia
     /// </summary>
     public static readonly Coding SouthernAsia = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// South-Eastern Asia
     /// </summary>
     public static readonly Coding SouthEasternAsia = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Southern Europe
     /// </summary>
     public static readonly Coding SouthernEurope = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Australia and New Zealand
     /// </summary>
     public static readonly Coding AustraliaAndNewZealand = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Melanesia
     /// </summary>
     public static readonly Coding Melanesia = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Micronesia
     /// </summary>
     public static readonly Coding Micronesia = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Polynesia
     /// </summary>
     public static readonly Coding Polynesia = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Asia
     /// </summary>
     public static readonly Coding Asia = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Central Asia
     /// </summary>
     public static readonly Coding CentralAsia = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Western Asia
     /// </summary>
     public static readonly Coding WesternAsia = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Europe
     /// </summary>
     public static readonly Coding Europe = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Eastern Europe
     /// </summary>
     public static readonly Coding EasternEurope = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Northern Europe
     /// </summary>
     public static readonly Coding NorthernEurope = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Western Europe
     /// </summary>
     public static readonly Coding WesternEurope = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Latin America and the Caribbean
     /// </summary>
     public static readonly Coding LatinAmericaAndTheCaribbean = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR3.ValueSets
       System = "http://unstats.un.org/unsd/methods/m49/m49.htm"
     };
     /// <summary>
-    /// 
+    /// Andorra
     /// </summary>
     public static readonly Coding Andorra = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// United Arab Emirates (the)
     /// </summary>
     public static readonly Coding UnitedArabEmiratesThe = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Afghanistan
     /// </summary>
     public static readonly Coding Afghanistan = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Antigua and Barbuda
     /// </summary>
     public static readonly Coding AntiguaAndBarbuda = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Anguilla
     /// </summary>
     public static readonly Coding Anguilla = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Alaska
     /// </summary>
     public static readonly Coding Alaska = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Albania
     /// </summary>
     public static readonly Coding Albania = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Alabama
     /// </summary>
     public static readonly Coding Alabama = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Armenia
     /// </summary>
     public static readonly Coding Armenia = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Netherlands Antilles
     /// </summary>
     public static readonly Coding NetherlandsAntilles = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Angola
     /// </summary>
     public static readonly Coding Angola = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Antarctica
     /// </summary>
     public static readonly Coding Antarctica = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Argentina
     /// </summary>
     public static readonly Coding Argentina = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Arkansas
     /// </summary>
     public static readonly Coding Arkansas = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// American Samoa
     /// </summary>
     public static readonly Coding AmericanSamoa = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// American Samoa
     /// </summary>
     public static readonly Coding AmericanSamoa_2 = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Austria
     /// </summary>
     public static readonly Coding Austria = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Australia
     /// </summary>
     public static readonly Coding Australia = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Aruba
     /// </summary>
     public static readonly Coding Aruba = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Åland Islands
     /// </summary>
     public static readonly Coding AlandIslands = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Azerbaijan
     /// </summary>
     public static readonly Coding Azerbaijan = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Arizona
     /// </summary>
     public static readonly Coding Arizona = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Bosnia and Herzegovina
     /// </summary>
     public static readonly Coding BosniaAndHerzegovina = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Barbados
     /// </summary>
     public static readonly Coding Barbados = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bangladesh
     /// </summary>
     public static readonly Coding Bangladesh = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Belgium
     /// </summary>
     public static readonly Coding Belgium = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Burkina Faso
     /// </summary>
     public static readonly Coding BurkinaFaso = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bulgaria
     /// </summary>
     public static readonly Coding Bulgaria = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bahrain
     /// </summary>
     public static readonly Coding Bahrain = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Burundi
     /// </summary>
     public static readonly Coding Burundi = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Benin
     /// </summary>
     public static readonly Coding Benin = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Saint Barthélemy
     /// </summary>
     public static readonly Coding SaintBarthelemy = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bermuda
     /// </summary>
     public static readonly Coding Bermuda = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Brunei Darussalam
     /// </summary>
     public static readonly Coding BruneiDarussalam = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bolivia (Plurinational State of)
     /// </summary>
     public static readonly Coding BoliviaPlurinationalStateOf = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bonaire, Sint Eustatius and Saba
     /// </summary>
     public static readonly Coding BonaireSintEustatiusAndSaba = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Brazil
     /// </summary>
     public static readonly Coding Brazil = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bahamas (the)
     /// </summary>
     public static readonly Coding BahamasThe = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bhutan
     /// </summary>
     public static readonly Coding Bhutan = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Burma
     /// </summary>
     public static readonly Coding Burma = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Bouvet Island
     /// </summary>
     public static readonly Coding BouvetIsland = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Botswana
     /// </summary>
     public static readonly Coding Botswana = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Belarus
     /// </summary>
     public static readonly Coding Belarus = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Belize
     /// </summary>
     public static readonly Coding Belize = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Canada
     /// </summary>
     public static readonly Coding Canada = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// California
     /// </summary>
     public static readonly Coding California = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Cocos (Keeling) Islands (the)
     /// </summary>
     public static readonly Coding CocosKeelingIslandsThe = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Congo (the Democratic Republic of the)
     /// </summary>
     public static readonly Coding CongoTheDemocraticRepublicOfThe = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Central African Republic (the)
     /// </summary>
     public static readonly Coding CentralAfricanRepublicThe = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Congo (the)
     /// </summary>
     public static readonly Coding CongoThe = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Switzerland
     /// </summary>
     public static readonly Coding Switzerland = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Côte d'Ivoire
     /// </summary>
     public static readonly Coding CoteDQuoteIvoire = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Cook Islands (the)
     /// </summary>
     public static readonly Coding CookIslandsThe = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Chile
     /// </summary>
     public static readonly Coding Chile = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Cameroon
     /// </summary>
     public static readonly Coding Cameroon = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// China
     /// </summary>
     public static readonly Coding China = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Colombia
     /// </summary>
     public static readonly Coding Colombia = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Colorado
     /// </summary>
     public static readonly Coding Colorado = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Costa Rica
     /// </summary>
     public static readonly Coding CostaRica = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Serbia and Montenegro
     /// </summary>
     public static readonly Coding SerbiaAndMontenegro = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Canton and Enderbury Islands
     /// </summary>
     public static readonly Coding CantonAndEnderburyIslands = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Connecticut
     /// </summary>
     public static readonly Coding Connecticut = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Cuba
     /// </summary>
     public static readonly Coding Cuba = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Cabo Verde
     /// </summary>
     public static readonly Coding CaboVerde = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Curaçao
     /// </summary>
     public static readonly Coding Curacao = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Christmas Island
     /// </summary>
     public static readonly Coding ChristmasIsland = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Cyprus
     /// </summary>
     public static readonly Coding Cyprus = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Czech Republic (the)
     /// </summary>
     public static readonly Coding CzechRepublicThe = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// District of Columbia
     /// </summary>
     public static readonly Coding DistrictOfColumbia = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// German Democratic Republic
     /// </summary>
     public static readonly Coding GermanDemocraticRepublic = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Germany
     /// </summary>
     public static readonly Coding Germany = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Delaware
     /// </summary>
     public static readonly Coding Delaware = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Djibouti
     /// </summary>
     public static readonly Coding Djibouti = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Denmark
     /// </summary>
     public static readonly Coding Denmark = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Dominica
     /// </summary>
     public static readonly Coding Dominica = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Dominican Republic (the)
     /// </summary>
     public static readonly Coding DominicanRepublicThe = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Dahomey
     /// </summary>
     public static readonly Coding Dahomey = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Algeria
     /// </summary>
     public static readonly Coding Algeria = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Ecuador
     /// </summary>
     public static readonly Coding Ecuador = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Estonia
     /// </summary>
     public static readonly Coding Estonia = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Egypt
     /// </summary>
     public static readonly Coding Egypt = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Western Sahara*
     /// </summary>
     public static readonly Coding WesternSaharaAsterisk = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Eritrea
     /// </summary>
     public static readonly Coding Eritrea = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Spain
     /// </summary>
     public static readonly Coding Spain = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Ethiopia
     /// </summary>
     public static readonly Coding Ethiopia = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Finland
     /// </summary>
     public static readonly Coding Finland = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Fiji
     /// </summary>
     public static readonly Coding Fiji = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Falkland Islands (the) [Malvinas]
     /// </summary>
     public static readonly Coding FalklandIslandsTheMalvinas = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Florida
     /// </summary>
     public static readonly Coding Florida = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Micronesia (Federated States of)
     /// </summary>
     public static readonly Coding MicronesiaFederatedStatesOf = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Federated States of Micronesia
     /// </summary>
     public static readonly Coding FederatedStatesOfMicronesia = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Faroe Islands (the)
     /// </summary>
     public static readonly Coding FaroeIslandsThe = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// French Southern and Antarctic Territories
     /// </summary>
     public static readonly Coding FrenchSouthernAndAntarcticTerritories = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// France
     /// </summary>
     public static readonly Coding France = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Gabon
     /// </summary>
     public static readonly Coding Gabon = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Georgia
     /// </summary>
     public static readonly Coding Georgia = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// United Kingdom of Great Britain and Northern Ireland (the)
     /// </summary>
     public static readonly Coding UnitedKingdomOfGreatBritainAndNorthernIrelandThe = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Grenada
     /// </summary>
     public static readonly Coding Grenada = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Georgia
     /// </summary>
     public static readonly Coding Georgia_2 = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// French Guiana
     /// </summary>
     public static readonly Coding FrenchGuiana = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Guernsey
     /// </summary>
     public static readonly Coding Guernsey = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Ghana
     /// </summary>
     public static readonly Coding Ghana = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Gibraltar
     /// </summary>
     public static readonly Coding Gibraltar = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Greenland
     /// </summary>
     public static readonly Coding Greenland = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Gambia (the)
     /// </summary>
     public static readonly Coding GambiaThe = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Guinea
     /// </summary>
     public static readonly Coding Guinea = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Guadeloupe
     /// </summary>
     public static readonly Coding Guadeloupe = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Equatorial Guinea
     /// </summary>
     public static readonly Coding EquatorialGuinea = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Greece
     /// </summary>
     public static readonly Coding Greece = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// South Georgia and the South Sandwich Islands
     /// </summary>
     public static readonly Coding SouthGeorgiaAndTheSouthSandwichIslands = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Guatemala
     /// </summary>
     public static readonly Coding Guatemala = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Guam
     /// </summary>
     public static readonly Coding Guam = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Guam
     /// </summary>
     public static readonly Coding Guam_2 = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Guinea-Bissau
     /// </summary>
     public static readonly Coding GuineaBissau = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Guyana
     /// </summary>
     public static readonly Coding Guyana = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Hawaii
     /// </summary>
     public static readonly Coding Hawaii = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Hong Kong
     /// </summary>
     public static readonly Coding HongKong = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Heard Island and McDonald Islands
     /// </summary>
     public static readonly Coding HeardIslandAndMcDonaldIslands = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Honduras
     /// </summary>
     public static readonly Coding Honduras = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Croatia
     /// </summary>
     public static readonly Coding Croatia = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Haiti
     /// </summary>
     public static readonly Coding Haiti = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Hungary
     /// </summary>
     public static readonly Coding Hungary = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Upper Volta
     /// </summary>
     public static readonly Coding UpperVolta = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Iowa
     /// </summary>
     public static readonly Coding Iowa = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Indonesia
     /// </summary>
     public static readonly Coding Indonesia = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Idaho
     /// </summary>
     public static readonly Coding Idaho = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Ireland
     /// </summary>
     public static readonly Coding Ireland = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Israel
     /// </summary>
     public static readonly Coding Israel = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Illinois
     /// </summary>
     public static readonly Coding Illinois = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Isle of Man
     /// </summary>
     public static readonly Coding IsleOfMan = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// India
     /// </summary>
     public static readonly Coding India = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Indiana
     /// </summary>
     public static readonly Coding Indiana = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// British Indian Ocean Territory (the)
     /// </summary>
     public static readonly Coding BritishIndianOceanTerritoryThe = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Iraq
     /// </summary>
     public static readonly Coding Iraq = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Iran (Islamic Republic of)
     /// </summary>
     public static readonly Coding IranIslamicRepublicOf = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Iceland
     /// </summary>
     public static readonly Coding Iceland = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Italy
     /// </summary>
     public static readonly Coding Italy = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Jersey
     /// </summary>
     public static readonly Coding Jersey = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Jamaica
     /// </summary>
     public static readonly Coding Jamaica = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Jordan
     /// </summary>
     public static readonly Coding Jordan = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Japan
     /// </summary>
     public static readonly Coding Japan = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Johnston Island
     /// </summary>
     public static readonly Coding JohnstonIsland = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Kenya
     /// </summary>
     public static readonly Coding Kenya = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Kyrgyzstan
     /// </summary>
     public static readonly Coding Kyrgyzstan = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Cambodia
     /// </summary>
     public static readonly Coding Cambodia = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Kiribati
     /// </summary>
     public static readonly Coding Kiribati = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Comoros (the)
     /// </summary>
     public static readonly Coding ComorosThe = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Saint Kitts and Nevis
     /// </summary>
     public static readonly Coding SaintKittsAndNevis = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Korea (the Democratic People's Republic of)
     /// </summary>
     public static readonly Coding KoreaTheDemocraticPeopleQuoteSRepublicOf = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Korea (the Republic of)
     /// </summary>
     public static readonly Coding KoreaTheRepublicOf = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Kansas
     /// </summary>
     public static readonly Coding Kansas = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Kuwait
     /// </summary>
     public static readonly Coding Kuwait = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Cayman Islands (the)
     /// </summary>
     public static readonly Coding CaymanIslandsThe = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Kentucky
     /// </summary>
     public static readonly Coding Kentucky = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Kazakhstan
     /// </summary>
     public static readonly Coding Kazakhstan = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Lao People's Democratic Republic (the)
     /// </summary>
     public static readonly Coding LaoPeopleQuoteSDemocraticRepublicThe = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Louisiana
     /// </summary>
     public static readonly Coding Louisiana = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Lebanon
     /// </summary>
     public static readonly Coding Lebanon = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Saint Lucia
     /// </summary>
     public static readonly Coding SaintLucia = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Liechtenstein
     /// </summary>
     public static readonly Coding Liechtenstein = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Sri Lanka
     /// </summary>
     public static readonly Coding SriLanka = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Liberia
     /// </summary>
     public static readonly Coding Liberia = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Lesotho
     /// </summary>
     public static readonly Coding Lesotho = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Lithuania
     /// </summary>
     public static readonly Coding Lithuania = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Luxembourg
     /// </summary>
     public static readonly Coding Luxembourg = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Latvia
     /// </summary>
     public static readonly Coding Latvia = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Libya
     /// </summary>
     public static readonly Coding Libya = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Morocco
     /// </summary>
     public static readonly Coding Morocco = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Massachusetts
     /// </summary>
     public static readonly Coding Massachusetts = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Monaco
     /// </summary>
     public static readonly Coding Monaco = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Moldova (the Republic of)
     /// </summary>
     public static readonly Coding MoldovaTheRepublicOf = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Maryland
     /// </summary>
     public static readonly Coding Maryland = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Montenegro
     /// </summary>
     public static readonly Coding Montenegro = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Maine
     /// </summary>
     public static readonly Coding Maine = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Saint Martin (French part)
     /// </summary>
     public static readonly Coding SaintMartinFrenchPart = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Madagascar
     /// </summary>
     public static readonly Coding Madagascar = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Marshall Islands (the)
     /// </summary>
     public static readonly Coding MarshallIslandsThe = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Marshall Islands
     /// </summary>
     public static readonly Coding MarshallIslands = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Midway Islands
     /// </summary>
     public static readonly Coding MidwayIslands = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Michigan
     /// </summary>
     public static readonly Coding Michigan = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Macedonia (the former Yugoslav Republic of)
     /// </summary>
     public static readonly Coding MacedoniaTheFormerYugoslavRepublicOf = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Mali
     /// </summary>
     public static readonly Coding Mali = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Myanmar
     /// </summary>
     public static readonly Coding Myanmar = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Mongolia
     /// </summary>
     public static readonly Coding Mongolia = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Minnesota
     /// </summary>
     public static readonly Coding Minnesota = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Macao
     /// </summary>
     public static readonly Coding Macao = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Missouri
     /// </summary>
     public static readonly Coding Missouri = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Northern Mariana Islands (the)
     /// </summary>
     public static readonly Coding NorthernMarianaIslandsThe = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Northern Mariana Islands
     /// </summary>
     public static readonly Coding NorthernMarianaIslands = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Martinique
     /// </summary>
     public static readonly Coding Martinique = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Mauritania
     /// </summary>
     public static readonly Coding Mauritania = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Montserrat
     /// </summary>
     public static readonly Coding Montserrat = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Mississippi
     /// </summary>
     public static readonly Coding Mississippi = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Malta
     /// </summary>
     public static readonly Coding Malta = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Montana
     /// </summary>
     public static readonly Coding Montana = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Mauritius
     /// </summary>
     public static readonly Coding Mauritius = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Maldives
     /// </summary>
     public static readonly Coding Maldives = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Malawi
     /// </summary>
     public static readonly Coding Malawi = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Mexico
     /// </summary>
     public static readonly Coding Mexico = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Malaysia
     /// </summary>
     public static readonly Coding Malaysia = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Mozambique
     /// </summary>
     public static readonly Coding Mozambique = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Namibia
     /// </summary>
     public static readonly Coding Namibia = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// New Caledonia
     /// </summary>
     public static readonly Coding NewCaledonia = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// North Carolina
     /// </summary>
     public static readonly Coding NorthCarolina = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// North Dakota
     /// </summary>
     public static readonly Coding NorthDakota = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Niger (the)
     /// </summary>
     public static readonly Coding NigerThe = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Nebraska
     /// </summary>
     public static readonly Coding Nebraska = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Norfolk Island
     /// </summary>
     public static readonly Coding NorfolkIsland = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Nigeria
     /// </summary>
     public static readonly Coding Nigeria = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// New Hebrides
     /// </summary>
     public static readonly Coding NewHebrides = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// New Hampshire
     /// </summary>
     public static readonly Coding NewHampshire = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Nicaragua
     /// </summary>
     public static readonly Coding Nicaragua = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// New Jersey
     /// </summary>
     public static readonly Coding NewJersey = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Netherlands (the)
     /// </summary>
     public static readonly Coding NetherlandsThe = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// New Mexico
     /// </summary>
     public static readonly Coding NewMexico = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Norway
     /// </summary>
     public static readonly Coding Norway = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Nepal
     /// </summary>
     public static readonly Coding Nepal = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Dronning Maud Land
     /// </summary>
     public static readonly Coding DronningMaudLand = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Nauru
     /// </summary>
     public static readonly Coding Nauru = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Neutral Zone
     /// </summary>
     public static readonly Coding NeutralZone = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Niue
     /// </summary>
     public static readonly Coding Niue = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Nevada
     /// </summary>
     public static readonly Coding Nevada = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// New York
     /// </summary>
     public static readonly Coding NewYork = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// New Zealand
     /// </summary>
     public static readonly Coding NewZealand = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Ohio
     /// </summary>
     public static readonly Coding Ohio = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Oklahoma
     /// </summary>
     public static readonly Coding Oklahoma = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Oman
     /// </summary>
     public static readonly Coding Oman = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Oregon
     /// </summary>
     public static readonly Coding Oregon = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Panama
     /// </summary>
     public static readonly Coding Panama = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Pennsylvania
     /// </summary>
     public static readonly Coding Pennsylvania = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Pacific Islands (Trust Territory)
     /// </summary>
     public static readonly Coding PacificIslandsTrustTerritory = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Peru
     /// </summary>
     public static readonly Coding Peru = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// French Polynesia
     /// </summary>
     public static readonly Coding FrenchPolynesia = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Papua New Guinea
     /// </summary>
     public static readonly Coding PapuaNewGuinea = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Philippines (the)
     /// </summary>
     public static readonly Coding PhilippinesThe = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Pakistan
     /// </summary>
     public static readonly Coding Pakistan = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Poland
     /// </summary>
     public static readonly Coding Poland = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Saint Pierre and Miquelon
     /// </summary>
     public static readonly Coding SaintPierreAndMiquelon = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Pitcairn
     /// </summary>
     public static readonly Coding Pitcairn = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Puerto Rico
     /// </summary>
     public static readonly Coding PuertoRico = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Puerto Rico
     /// </summary>
     public static readonly Coding PuertoRico_2 = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Palestine, State of
     /// </summary>
     public static readonly Coding PalestineStateOf = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Portugal
     /// </summary>
     public static readonly Coding Portugal = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// United States Miscellaneous Pacific Islands
     /// </summary>
     public static readonly Coding UnitedStatesMiscellaneousPacificIslands = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Palau
     /// </summary>
     public static readonly Coding Palau = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Palau
     /// </summary>
     public static readonly Coding Palau_2 = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Paraguay
     /// </summary>
     public static readonly Coding Paraguay = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Panama Canal Zone
     /// </summary>
     public static readonly Coding PanamaCanalZone = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Qatar
     /// </summary>
     public static readonly Coding Qatar = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Réunion
     /// </summary>
     public static readonly Coding Reunion = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Southern Rhodesia
     /// </summary>
     public static readonly Coding SouthernRhodesia = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Rhode Island
     /// </summary>
     public static readonly Coding RhodeIsland = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Romania
     /// </summary>
     public static readonly Coding Romania = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Serbia
     /// </summary>
     public static readonly Coding Serbia = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Russian Federation (the)
     /// </summary>
     public static readonly Coding RussianFederationThe = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Rwanda
     /// </summary>
     public static readonly Coding Rwanda = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Saudi Arabia
     /// </summary>
     public static readonly Coding SaudiArabia = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Solomon Islands
     /// </summary>
     public static readonly Coding SolomonIslands = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Seychelles
     /// </summary>
     public static readonly Coding Seychelles = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// South Carolina
     /// </summary>
     public static readonly Coding SouthCarolina = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Sudan (the)
     /// </summary>
     public static readonly Coding SudanThe = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// South Dakota
     /// </summary>
     public static readonly Coding SouthDakota = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Sweden
     /// </summary>
     public static readonly Coding Sweden = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Singapore
     /// </summary>
     public static readonly Coding Singapore = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Saint Helena, Ascension and Tristan da Cunha
     /// </summary>
     public static readonly Coding SaintHelenaAscensionAndTristanDaCunha = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Slovenia
     /// </summary>
     public static readonly Coding Slovenia = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Svalbard and Jan Mayen
     /// </summary>
     public static readonly Coding SvalbardAndJanMayen = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Slovakia
     /// </summary>
     public static readonly Coding Slovakia = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Sierra Leone
     /// </summary>
     public static readonly Coding SierraLeone = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// San Marino
     /// </summary>
     public static readonly Coding SanMarino = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Senegal
     /// </summary>
     public static readonly Coding Senegal = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Somalia
     /// </summary>
     public static readonly Coding Somalia = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Suriname
     /// </summary>
     public static readonly Coding Suriname = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// South Sudan
     /// </summary>
     public static readonly Coding SouthSudan = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Sao Tome and Principe
     /// </summary>
     public static readonly Coding SaoTomeAndPrincipe = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// USSR
     /// </summary>
     public static readonly Coding USSR = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// El Salvador
     /// </summary>
     public static readonly Coding ElSalvador = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Sint Maarten (Dutch part)
     /// </summary>
     public static readonly Coding SintMaartenDutchPart = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Syrian Arab Republic
     /// </summary>
     public static readonly Coding SyrianArabRepublic = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Swaziland
     /// </summary>
     public static readonly Coding Swaziland = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Turks and Caicos Islands (the)
     /// </summary>
     public static readonly Coding TurksAndCaicosIslandsThe = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Chad
     /// </summary>
     public static readonly Coding Chad = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// French Southern Territories (the)
     /// </summary>
     public static readonly Coding FrenchSouthernTerritoriesThe = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Togo
     /// </summary>
     public static readonly Coding Togo = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Thailand
     /// </summary>
     public static readonly Coding Thailand = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Tajikistan
     /// </summary>
     public static readonly Coding Tajikistan = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Tokelau
     /// </summary>
     public static readonly Coding Tokelau = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Timor-Leste
     /// </summary>
     public static readonly Coding TimorLeste = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Turkmenistan
     /// </summary>
     public static readonly Coding Turkmenistan = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Tunisia
     /// </summary>
     public static readonly Coding Tunisia = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Tennessee
     /// </summary>
     public static readonly Coding Tennessee = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Tonga
     /// </summary>
     public static readonly Coding Tonga = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// East Timor
     /// </summary>
     public static readonly Coding EastTimor = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Turkey
     /// </summary>
     public static readonly Coding Turkey = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Trinidad and Tobago
     /// </summary>
     public static readonly Coding TrinidadAndTobago = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Tuvalu
     /// </summary>
     public static readonly Coding Tuvalu = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Taiwan (Province of China)
     /// </summary>
     public static readonly Coding TaiwanProvinceOfChina = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Texas
     /// </summary>
     public static readonly Coding Texas = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Tanzania, United Republic of
     /// </summary>
     public static readonly Coding TanzaniaUnitedRepublicOf = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Ukraine
     /// </summary>
     public static readonly Coding Ukraine = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Uganda
     /// </summary>
     public static readonly Coding Uganda = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// United States Minor Outlying Islands (the)
     /// </summary>
     public static readonly Coding UnitedStatesMinorOutlyingIslandsThe = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// U.S. Minor Outlying Islands
     /// </summary>
     public static readonly Coding USMinorOutlyingIslands = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// United States of America (the)
     /// </summary>
     public static readonly Coding UnitedStatesOfAmericaThe = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Utah
     /// </summary>
     public static readonly Coding Utah = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Uruguay
     /// </summary>
     public static readonly Coding Uruguay = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Uzbekistan
     /// </summary>
     public static readonly Coding Uzbekistan = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Holy See (the)
     /// </summary>
     public static readonly Coding HolySeeThe = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Virginia
     /// </summary>
     public static readonly Coding Virginia = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Saint Vincent and the Grenadines
     /// </summary>
     public static readonly Coding SaintVincentAndTheGrenadines = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Viet-Nam, Democratic Republic of
     /// </summary>
     public static readonly Coding VietNamDemocraticRepublicOf = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Venezuela (Bolivarian Republic of)
     /// </summary>
     public static readonly Coding VenezuelaBolivarianRepublicOf = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Virgin Islands (British)
     /// </summary>
     public static readonly Coding VirginIslandsBritish = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Virgin Islands (U.S.)
     /// </summary>
     public static readonly Coding VirginIslandsUS = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Virgin Islands of the U.S.
     /// </summary>
     public static readonly Coding VirginIslandsOfTheUS = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Viet Nam
     /// </summary>
     public static readonly Coding VietNam = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Vermont
     /// </summary>
     public static readonly Coding Vermont = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Vanuatu
     /// </summary>
     public static readonly Coding Vanuatu = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Washington
     /// </summary>
     public static readonly Coding Washington = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Wallis and Futuna
     /// </summary>
     public static readonly Coding WallisAndFutuna = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Wisconsin
     /// </summary>
     public static readonly Coding Wisconsin = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Wake Island
     /// </summary>
     public static readonly Coding WakeIsland = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Samoa
     /// </summary>
     public static readonly Coding Samoa = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// West Virginia
     /// </summary>
     public static readonly Coding WestVirginia = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Wyoming
     /// </summary>
     public static readonly Coding Wyoming = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR3.ValueSets
       System = "https://www.usps.com/"
     };
     /// <summary>
-    /// 
+    /// Yemen, Democratic
     /// </summary>
     public static readonly Coding YemenDemocratic = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Yemen
     /// </summary>
     public static readonly Coding Yemen = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Mayotte
     /// </summary>
     public static readonly Coding Mayotte = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Yugoslavia
     /// </summary>
     public static readonly Coding Yugoslavia = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// South Africa
     /// </summary>
     public static readonly Coding SouthAfrica = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Zambia
     /// </summary>
     public static readonly Coding Zambia = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Zaire
     /// </summary>
     public static readonly Coding Zaire = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR3.ValueSets
       System = "urn:iso:std:iso:3166"
     };
     /// <summary>
-    /// 
+    /// Zimbabwe
     /// </summary>
     public static readonly Coding Zimbabwe = new Coding
     {
@@ -3276,9 +3276,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWorld = "001";
 
     /// <summary>
+    /// Literal for code: NONEWorld
+    /// </summary>
+    public const string LiteralNONEWorld = "http://unstats.un.org/unsd/methods/m49/m49.htm#001";
+
+    /// <summary>
     /// Literal for code: Africa
     /// </summary>
     public const string LiteralAfrica = "002";
+
+    /// <summary>
+    /// Literal for code: NONEAfrica
+    /// </summary>
+    public const string LiteralNONEAfrica = "http://unstats.un.org/unsd/methods/m49/m49.htm#002";
 
     /// <summary>
     /// Literal for code: SouthAmerica
@@ -3286,9 +3296,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSouthAmerica = "005";
 
     /// <summary>
+    /// Literal for code: NONESouthAmerica
+    /// </summary>
+    public const string LiteralNONESouthAmerica = "http://unstats.un.org/unsd/methods/m49/m49.htm#005";
+
+    /// <summary>
     /// Literal for code: Oceania
     /// </summary>
     public const string LiteralOceania = "009";
+
+    /// <summary>
+    /// Literal for code: NONEOceania
+    /// </summary>
+    public const string LiteralNONEOceania = "http://unstats.un.org/unsd/methods/m49/m49.htm#009";
 
     /// <summary>
     /// Literal for code: WesternAfrica
@@ -3296,9 +3316,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWesternAfrica = "011";
 
     /// <summary>
+    /// Literal for code: NONEWesternAfrica
+    /// </summary>
+    public const string LiteralNONEWesternAfrica = "http://unstats.un.org/unsd/methods/m49/m49.htm#011";
+
+    /// <summary>
     /// Literal for code: CentralAmerica
     /// </summary>
     public const string LiteralCentralAmerica = "013";
+
+    /// <summary>
+    /// Literal for code: NONECentralAmerica
+    /// </summary>
+    public const string LiteralNONECentralAmerica = "http://unstats.un.org/unsd/methods/m49/m49.htm#013";
 
     /// <summary>
     /// Literal for code: EasternAfrica
@@ -3306,9 +3336,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEasternAfrica = "014";
 
     /// <summary>
+    /// Literal for code: NONEEasternAfrica
+    /// </summary>
+    public const string LiteralNONEEasternAfrica = "http://unstats.un.org/unsd/methods/m49/m49.htm#014";
+
+    /// <summary>
     /// Literal for code: NorthernAfrica
     /// </summary>
     public const string LiteralNorthernAfrica = "015";
+
+    /// <summary>
+    /// Literal for code: NONENorthernAfrica
+    /// </summary>
+    public const string LiteralNONENorthernAfrica = "http://unstats.un.org/unsd/methods/m49/m49.htm#015";
 
     /// <summary>
     /// Literal for code: MiddleAfrica
@@ -3316,9 +3356,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMiddleAfrica = "017";
 
     /// <summary>
+    /// Literal for code: NONEMiddleAfrica
+    /// </summary>
+    public const string LiteralNONEMiddleAfrica = "http://unstats.un.org/unsd/methods/m49/m49.htm#017";
+
+    /// <summary>
     /// Literal for code: SouthernAfrica
     /// </summary>
     public const string LiteralSouthernAfrica = "018";
+
+    /// <summary>
+    /// Literal for code: NONESouthernAfrica
+    /// </summary>
+    public const string LiteralNONESouthernAfrica = "http://unstats.un.org/unsd/methods/m49/m49.htm#018";
 
     /// <summary>
     /// Literal for code: Americas
@@ -3326,9 +3376,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAmericas = "019";
 
     /// <summary>
+    /// Literal for code: NONEAmericas
+    /// </summary>
+    public const string LiteralNONEAmericas = "http://unstats.un.org/unsd/methods/m49/m49.htm#019";
+
+    /// <summary>
     /// Literal for code: NorthernAmericaA
     /// </summary>
     public const string LiteralNorthernAmericaA = "021";
+
+    /// <summary>
+    /// Literal for code: NONENorthernAmericaA
+    /// </summary>
+    public const string LiteralNONENorthernAmericaA = "http://unstats.un.org/unsd/methods/m49/m49.htm#021";
 
     /// <summary>
     /// Literal for code: Caribbean
@@ -3336,9 +3396,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCaribbean = "029";
 
     /// <summary>
+    /// Literal for code: NONECaribbean
+    /// </summary>
+    public const string LiteralNONECaribbean = "http://unstats.un.org/unsd/methods/m49/m49.htm#029";
+
+    /// <summary>
     /// Literal for code: EasternAsia
     /// </summary>
     public const string LiteralEasternAsia = "030";
+
+    /// <summary>
+    /// Literal for code: NONEEasternAsia
+    /// </summary>
+    public const string LiteralNONEEasternAsia = "http://unstats.un.org/unsd/methods/m49/m49.htm#030";
 
     /// <summary>
     /// Literal for code: SouthernAsia
@@ -3346,9 +3416,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSouthernAsia = "034";
 
     /// <summary>
+    /// Literal for code: NONESouthernAsia
+    /// </summary>
+    public const string LiteralNONESouthernAsia = "http://unstats.un.org/unsd/methods/m49/m49.htm#034";
+
+    /// <summary>
     /// Literal for code: SouthEasternAsia
     /// </summary>
     public const string LiteralSouthEasternAsia = "035";
+
+    /// <summary>
+    /// Literal for code: NONESouthEasternAsia
+    /// </summary>
+    public const string LiteralNONESouthEasternAsia = "http://unstats.un.org/unsd/methods/m49/m49.htm#035";
 
     /// <summary>
     /// Literal for code: SouthernEurope
@@ -3356,9 +3436,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSouthernEurope = "039";
 
     /// <summary>
+    /// Literal for code: NONESouthernEurope
+    /// </summary>
+    public const string LiteralNONESouthernEurope = "http://unstats.un.org/unsd/methods/m49/m49.htm#039";
+
+    /// <summary>
     /// Literal for code: AustraliaAndNewZealand
     /// </summary>
     public const string LiteralAustraliaAndNewZealand = "053";
+
+    /// <summary>
+    /// Literal for code: NONEAustraliaAndNewZealand
+    /// </summary>
+    public const string LiteralNONEAustraliaAndNewZealand = "http://unstats.un.org/unsd/methods/m49/m49.htm#053";
 
     /// <summary>
     /// Literal for code: Melanesia
@@ -3366,9 +3456,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMelanesia = "054";
 
     /// <summary>
+    /// Literal for code: NONEMelanesia
+    /// </summary>
+    public const string LiteralNONEMelanesia = "http://unstats.un.org/unsd/methods/m49/m49.htm#054";
+
+    /// <summary>
     /// Literal for code: Micronesia
     /// </summary>
     public const string LiteralMicronesia = "057";
+
+    /// <summary>
+    /// Literal for code: NONEMicronesia
+    /// </summary>
+    public const string LiteralNONEMicronesia = "http://unstats.un.org/unsd/methods/m49/m49.htm#057";
 
     /// <summary>
     /// Literal for code: Polynesia
@@ -3376,9 +3476,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPolynesia = "061";
 
     /// <summary>
+    /// Literal for code: NONEPolynesia
+    /// </summary>
+    public const string LiteralNONEPolynesia = "http://unstats.un.org/unsd/methods/m49/m49.htm#061";
+
+    /// <summary>
     /// Literal for code: Asia
     /// </summary>
     public const string LiteralAsia = "142";
+
+    /// <summary>
+    /// Literal for code: NONEAsia
+    /// </summary>
+    public const string LiteralNONEAsia = "http://unstats.un.org/unsd/methods/m49/m49.htm#142";
 
     /// <summary>
     /// Literal for code: CentralAsia
@@ -3386,9 +3496,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCentralAsia = "143";
 
     /// <summary>
+    /// Literal for code: NONECentralAsia
+    /// </summary>
+    public const string LiteralNONECentralAsia = "http://unstats.un.org/unsd/methods/m49/m49.htm#143";
+
+    /// <summary>
     /// Literal for code: WesternAsia
     /// </summary>
     public const string LiteralWesternAsia = "145";
+
+    /// <summary>
+    /// Literal for code: NONEWesternAsia
+    /// </summary>
+    public const string LiteralNONEWesternAsia = "http://unstats.un.org/unsd/methods/m49/m49.htm#145";
 
     /// <summary>
     /// Literal for code: Europe
@@ -3396,9 +3516,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEurope = "150";
 
     /// <summary>
+    /// Literal for code: NONEEurope
+    /// </summary>
+    public const string LiteralNONEEurope = "http://unstats.un.org/unsd/methods/m49/m49.htm#150";
+
+    /// <summary>
     /// Literal for code: EasternEurope
     /// </summary>
     public const string LiteralEasternEurope = "151";
+
+    /// <summary>
+    /// Literal for code: NONEEasternEurope
+    /// </summary>
+    public const string LiteralNONEEasternEurope = "http://unstats.un.org/unsd/methods/m49/m49.htm#151";
 
     /// <summary>
     /// Literal for code: NorthernEurope
@@ -3406,9 +3536,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNorthernEurope = "154";
 
     /// <summary>
+    /// Literal for code: NONENorthernEurope
+    /// </summary>
+    public const string LiteralNONENorthernEurope = "http://unstats.un.org/unsd/methods/m49/m49.htm#154";
+
+    /// <summary>
     /// Literal for code: WesternEurope
     /// </summary>
     public const string LiteralWesternEurope = "155";
+
+    /// <summary>
+    /// Literal for code: NONEWesternEurope
+    /// </summary>
+    public const string LiteralNONEWesternEurope = "http://unstats.un.org/unsd/methods/m49/m49.htm#155";
 
     /// <summary>
     /// Literal for code: LatinAmericaAndTheCaribbean
@@ -3416,9 +3556,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLatinAmericaAndTheCaribbean = "419";
 
     /// <summary>
+    /// Literal for code: NONELatinAmericaAndTheCaribbean
+    /// </summary>
+    public const string LiteralNONELatinAmericaAndTheCaribbean = "http://unstats.un.org/unsd/methods/m49/m49.htm#419";
+
+    /// <summary>
     /// Literal for code: Andorra
     /// </summary>
     public const string LiteralAndorra = "AD";
+
+    /// <summary>
+    /// Literal for code: NONEAndorra
+    /// </summary>
+    public const string LiteralNONEAndorra = "urn:iso:std:iso:3166#AD";
 
     /// <summary>
     /// Literal for code: UnitedArabEmiratesThe
@@ -3426,9 +3576,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnitedArabEmiratesThe = "AE";
 
     /// <summary>
+    /// Literal for code: NONEUnitedArabEmiratesThe
+    /// </summary>
+    public const string LiteralNONEUnitedArabEmiratesThe = "urn:iso:std:iso:3166#AE";
+
+    /// <summary>
     /// Literal for code: Afghanistan
     /// </summary>
     public const string LiteralAfghanistan = "AF";
+
+    /// <summary>
+    /// Literal for code: NONEAfghanistan
+    /// </summary>
+    public const string LiteralNONEAfghanistan = "urn:iso:std:iso:3166#AF";
 
     /// <summary>
     /// Literal for code: AntiguaAndBarbuda
@@ -3436,9 +3596,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAntiguaAndBarbuda = "AG";
 
     /// <summary>
+    /// Literal for code: NONEAntiguaAndBarbuda
+    /// </summary>
+    public const string LiteralNONEAntiguaAndBarbuda = "urn:iso:std:iso:3166#AG";
+
+    /// <summary>
     /// Literal for code: Anguilla
     /// </summary>
     public const string LiteralAnguilla = "AI";
+
+    /// <summary>
+    /// Literal for code: NONEAnguilla
+    /// </summary>
+    public const string LiteralNONEAnguilla = "urn:iso:std:iso:3166#AI";
 
     /// <summary>
     /// Literal for code: Alaska
@@ -3446,9 +3616,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAlaska = "AK";
 
     /// <summary>
+    /// Literal for code: NONEAlaska
+    /// </summary>
+    public const string LiteralNONEAlaska = "https://www.usps.com/#AK";
+
+    /// <summary>
     /// Literal for code: Albania
     /// </summary>
     public const string LiteralAlbania = "AL";
+
+    /// <summary>
+    /// Literal for code: NONEAlbania
+    /// </summary>
+    public const string LiteralNONEAlbania = "urn:iso:std:iso:3166#AL";
 
     /// <summary>
     /// Literal for code: Alabama
@@ -3456,9 +3636,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAlabama = "AL";
 
     /// <summary>
+    /// Literal for code: NONEAlabama
+    /// </summary>
+    public const string LiteralNONEAlabama = "https://www.usps.com/#AL";
+
+    /// <summary>
     /// Literal for code: Armenia
     /// </summary>
     public const string LiteralArmenia = "AM";
+
+    /// <summary>
+    /// Literal for code: NONEArmenia
+    /// </summary>
+    public const string LiteralNONEArmenia = "urn:iso:std:iso:3166#AM";
 
     /// <summary>
     /// Literal for code: NetherlandsAntilles
@@ -3466,9 +3656,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNetherlandsAntilles = "AN";
 
     /// <summary>
+    /// Literal for code: NONENetherlandsAntilles
+    /// </summary>
+    public const string LiteralNONENetherlandsAntilles = "urn:iso:std:iso:3166#AN";
+
+    /// <summary>
     /// Literal for code: Angola
     /// </summary>
     public const string LiteralAngola = "AO";
+
+    /// <summary>
+    /// Literal for code: NONEAngola
+    /// </summary>
+    public const string LiteralNONEAngola = "urn:iso:std:iso:3166#AO";
 
     /// <summary>
     /// Literal for code: Antarctica
@@ -3476,9 +3676,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAntarctica = "AQ";
 
     /// <summary>
+    /// Literal for code: NONEAntarctica
+    /// </summary>
+    public const string LiteralNONEAntarctica = "urn:iso:std:iso:3166#AQ";
+
+    /// <summary>
     /// Literal for code: Argentina
     /// </summary>
     public const string LiteralArgentina = "AR";
+
+    /// <summary>
+    /// Literal for code: NONEArgentina
+    /// </summary>
+    public const string LiteralNONEArgentina = "urn:iso:std:iso:3166#AR";
 
     /// <summary>
     /// Literal for code: Arkansas
@@ -3486,9 +3696,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArkansas = "AR";
 
     /// <summary>
+    /// Literal for code: NONEArkansas
+    /// </summary>
+    public const string LiteralNONEArkansas = "https://www.usps.com/#AR";
+
+    /// <summary>
     /// Literal for code: AmericanSamoa
     /// </summary>
     public const string LiteralAmericanSamoa = "AS";
+
+    /// <summary>
+    /// Literal for code: NONEAmericanSamoa
+    /// </summary>
+    public const string LiteralNONEAmericanSamoa = "urn:iso:std:iso:3166#AS";
 
     /// <summary>
     /// Literal for code: AmericanSamoa_2
@@ -3496,9 +3716,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAmericanSamoa_2 = "AS";
 
     /// <summary>
+    /// Literal for code: NONEAmericanSamoa_2
+    /// </summary>
+    public const string LiteralNONEAmericanSamoa_2 = "https://www.usps.com/#AS";
+
+    /// <summary>
     /// Literal for code: Austria
     /// </summary>
     public const string LiteralAustria = "AT";
+
+    /// <summary>
+    /// Literal for code: NONEAustria
+    /// </summary>
+    public const string LiteralNONEAustria = "urn:iso:std:iso:3166#AT";
 
     /// <summary>
     /// Literal for code: Australia
@@ -3506,9 +3736,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAustralia = "AU";
 
     /// <summary>
+    /// Literal for code: NONEAustralia
+    /// </summary>
+    public const string LiteralNONEAustralia = "urn:iso:std:iso:3166#AU";
+
+    /// <summary>
     /// Literal for code: Aruba
     /// </summary>
     public const string LiteralAruba = "AW";
+
+    /// <summary>
+    /// Literal for code: NONEAruba
+    /// </summary>
+    public const string LiteralNONEAruba = "urn:iso:std:iso:3166#AW";
 
     /// <summary>
     /// Literal for code: AlandIslands
@@ -3516,9 +3756,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAlandIslands = "AX";
 
     /// <summary>
+    /// Literal for code: NONEAlandIslands
+    /// </summary>
+    public const string LiteralNONEAlandIslands = "urn:iso:std:iso:3166#AX";
+
+    /// <summary>
     /// Literal for code: Azerbaijan
     /// </summary>
     public const string LiteralAzerbaijan = "AZ";
+
+    /// <summary>
+    /// Literal for code: NONEAzerbaijan
+    /// </summary>
+    public const string LiteralNONEAzerbaijan = "urn:iso:std:iso:3166#AZ";
 
     /// <summary>
     /// Literal for code: Arizona
@@ -3526,9 +3776,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralArizona = "AZ";
 
     /// <summary>
+    /// Literal for code: NONEArizona
+    /// </summary>
+    public const string LiteralNONEArizona = "https://www.usps.com/#AZ";
+
+    /// <summary>
     /// Literal for code: BosniaAndHerzegovina
     /// </summary>
     public const string LiteralBosniaAndHerzegovina = "BA";
+
+    /// <summary>
+    /// Literal for code: NONEBosniaAndHerzegovina
+    /// </summary>
+    public const string LiteralNONEBosniaAndHerzegovina = "urn:iso:std:iso:3166#BA";
 
     /// <summary>
     /// Literal for code: Barbados
@@ -3536,9 +3796,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBarbados = "BB";
 
     /// <summary>
+    /// Literal for code: NONEBarbados
+    /// </summary>
+    public const string LiteralNONEBarbados = "urn:iso:std:iso:3166#BB";
+
+    /// <summary>
     /// Literal for code: Bangladesh
     /// </summary>
     public const string LiteralBangladesh = "BD";
+
+    /// <summary>
+    /// Literal for code: NONEBangladesh
+    /// </summary>
+    public const string LiteralNONEBangladesh = "urn:iso:std:iso:3166#BD";
 
     /// <summary>
     /// Literal for code: Belgium
@@ -3546,9 +3816,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBelgium = "BE";
 
     /// <summary>
+    /// Literal for code: NONEBelgium
+    /// </summary>
+    public const string LiteralNONEBelgium = "urn:iso:std:iso:3166#BE";
+
+    /// <summary>
     /// Literal for code: BurkinaFaso
     /// </summary>
     public const string LiteralBurkinaFaso = "BF";
+
+    /// <summary>
+    /// Literal for code: NONEBurkinaFaso
+    /// </summary>
+    public const string LiteralNONEBurkinaFaso = "urn:iso:std:iso:3166#BF";
 
     /// <summary>
     /// Literal for code: Bulgaria
@@ -3556,9 +3836,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBulgaria = "BG";
 
     /// <summary>
+    /// Literal for code: NONEBulgaria
+    /// </summary>
+    public const string LiteralNONEBulgaria = "urn:iso:std:iso:3166#BG";
+
+    /// <summary>
     /// Literal for code: Bahrain
     /// </summary>
     public const string LiteralBahrain = "BH";
+
+    /// <summary>
+    /// Literal for code: NONEBahrain
+    /// </summary>
+    public const string LiteralNONEBahrain = "urn:iso:std:iso:3166#BH";
 
     /// <summary>
     /// Literal for code: Burundi
@@ -3566,9 +3856,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBurundi = "BI";
 
     /// <summary>
+    /// Literal for code: NONEBurundi
+    /// </summary>
+    public const string LiteralNONEBurundi = "urn:iso:std:iso:3166#BI";
+
+    /// <summary>
     /// Literal for code: Benin
     /// </summary>
     public const string LiteralBenin = "BJ";
+
+    /// <summary>
+    /// Literal for code: NONEBenin
+    /// </summary>
+    public const string LiteralNONEBenin = "urn:iso:std:iso:3166#BJ";
 
     /// <summary>
     /// Literal for code: SaintBarthelemy
@@ -3576,9 +3876,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSaintBarthelemy = "BL";
 
     /// <summary>
+    /// Literal for code: NONESaintBarthelemy
+    /// </summary>
+    public const string LiteralNONESaintBarthelemy = "urn:iso:std:iso:3166#BL";
+
+    /// <summary>
     /// Literal for code: Bermuda
     /// </summary>
     public const string LiteralBermuda = "BM";
+
+    /// <summary>
+    /// Literal for code: NONEBermuda
+    /// </summary>
+    public const string LiteralNONEBermuda = "urn:iso:std:iso:3166#BM";
 
     /// <summary>
     /// Literal for code: BruneiDarussalam
@@ -3586,9 +3896,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBruneiDarussalam = "BN";
 
     /// <summary>
+    /// Literal for code: NONEBruneiDarussalam
+    /// </summary>
+    public const string LiteralNONEBruneiDarussalam = "urn:iso:std:iso:3166#BN";
+
+    /// <summary>
     /// Literal for code: BoliviaPlurinationalStateOf
     /// </summary>
     public const string LiteralBoliviaPlurinationalStateOf = "BO";
+
+    /// <summary>
+    /// Literal for code: NONEBoliviaPlurinationalStateOf
+    /// </summary>
+    public const string LiteralNONEBoliviaPlurinationalStateOf = "urn:iso:std:iso:3166#BO";
 
     /// <summary>
     /// Literal for code: BonaireSintEustatiusAndSaba
@@ -3596,9 +3916,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBonaireSintEustatiusAndSaba = "BQ";
 
     /// <summary>
+    /// Literal for code: NONEBonaireSintEustatiusAndSaba
+    /// </summary>
+    public const string LiteralNONEBonaireSintEustatiusAndSaba = "urn:iso:std:iso:3166#BQ";
+
+    /// <summary>
     /// Literal for code: Brazil
     /// </summary>
     public const string LiteralBrazil = "BR";
+
+    /// <summary>
+    /// Literal for code: NONEBrazil
+    /// </summary>
+    public const string LiteralNONEBrazil = "urn:iso:std:iso:3166#BR";
 
     /// <summary>
     /// Literal for code: BahamasThe
@@ -3606,9 +3936,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBahamasThe = "BS";
 
     /// <summary>
+    /// Literal for code: NONEBahamasThe
+    /// </summary>
+    public const string LiteralNONEBahamasThe = "urn:iso:std:iso:3166#BS";
+
+    /// <summary>
     /// Literal for code: Bhutan
     /// </summary>
     public const string LiteralBhutan = "BT";
+
+    /// <summary>
+    /// Literal for code: NONEBhutan
+    /// </summary>
+    public const string LiteralNONEBhutan = "urn:iso:std:iso:3166#BT";
 
     /// <summary>
     /// Literal for code: Burma
@@ -3616,9 +3956,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBurma = "BU";
 
     /// <summary>
+    /// Literal for code: NONEBurma
+    /// </summary>
+    public const string LiteralNONEBurma = "urn:iso:std:iso:3166#BU";
+
+    /// <summary>
     /// Literal for code: BouvetIsland
     /// </summary>
     public const string LiteralBouvetIsland = "BV";
+
+    /// <summary>
+    /// Literal for code: NONEBouvetIsland
+    /// </summary>
+    public const string LiteralNONEBouvetIsland = "urn:iso:std:iso:3166#BV";
 
     /// <summary>
     /// Literal for code: Botswana
@@ -3626,9 +3976,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBotswana = "BW";
 
     /// <summary>
+    /// Literal for code: NONEBotswana
+    /// </summary>
+    public const string LiteralNONEBotswana = "urn:iso:std:iso:3166#BW";
+
+    /// <summary>
     /// Literal for code: Belarus
     /// </summary>
     public const string LiteralBelarus = "BY";
+
+    /// <summary>
+    /// Literal for code: NONEBelarus
+    /// </summary>
+    public const string LiteralNONEBelarus = "urn:iso:std:iso:3166#BY";
 
     /// <summary>
     /// Literal for code: Belize
@@ -3636,9 +3996,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBelize = "BZ";
 
     /// <summary>
+    /// Literal for code: NONEBelize
+    /// </summary>
+    public const string LiteralNONEBelize = "urn:iso:std:iso:3166#BZ";
+
+    /// <summary>
     /// Literal for code: Canada
     /// </summary>
     public const string LiteralCanada = "CA";
+
+    /// <summary>
+    /// Literal for code: NONECanada
+    /// </summary>
+    public const string LiteralNONECanada = "urn:iso:std:iso:3166#CA";
 
     /// <summary>
     /// Literal for code: California
@@ -3646,9 +4016,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCalifornia = "CA";
 
     /// <summary>
+    /// Literal for code: NONECalifornia
+    /// </summary>
+    public const string LiteralNONECalifornia = "https://www.usps.com/#CA";
+
+    /// <summary>
     /// Literal for code: CocosKeelingIslandsThe
     /// </summary>
     public const string LiteralCocosKeelingIslandsThe = "CC";
+
+    /// <summary>
+    /// Literal for code: NONECocosKeelingIslandsThe
+    /// </summary>
+    public const string LiteralNONECocosKeelingIslandsThe = "urn:iso:std:iso:3166#CC";
 
     /// <summary>
     /// Literal for code: CongoTheDemocraticRepublicOfThe
@@ -3656,9 +4036,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCongoTheDemocraticRepublicOfThe = "CD";
 
     /// <summary>
+    /// Literal for code: NONECongoTheDemocraticRepublicOfThe
+    /// </summary>
+    public const string LiteralNONECongoTheDemocraticRepublicOfThe = "urn:iso:std:iso:3166#CD";
+
+    /// <summary>
     /// Literal for code: CentralAfricanRepublicThe
     /// </summary>
     public const string LiteralCentralAfricanRepublicThe = "CF";
+
+    /// <summary>
+    /// Literal for code: NONECentralAfricanRepublicThe
+    /// </summary>
+    public const string LiteralNONECentralAfricanRepublicThe = "urn:iso:std:iso:3166#CF";
 
     /// <summary>
     /// Literal for code: CongoThe
@@ -3666,9 +4056,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCongoThe = "CG";
 
     /// <summary>
+    /// Literal for code: NONECongoThe
+    /// </summary>
+    public const string LiteralNONECongoThe = "urn:iso:std:iso:3166#CG";
+
+    /// <summary>
     /// Literal for code: Switzerland
     /// </summary>
     public const string LiteralSwitzerland = "CH";
+
+    /// <summary>
+    /// Literal for code: NONESwitzerland
+    /// </summary>
+    public const string LiteralNONESwitzerland = "urn:iso:std:iso:3166#CH";
 
     /// <summary>
     /// Literal for code: CoteDQuoteIvoire
@@ -3676,9 +4076,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCoteDQuoteIvoire = "CI";
 
     /// <summary>
+    /// Literal for code: NONECoteDQuoteIvoire
+    /// </summary>
+    public const string LiteralNONECoteDQuoteIvoire = "urn:iso:std:iso:3166#CI";
+
+    /// <summary>
     /// Literal for code: CookIslandsThe
     /// </summary>
     public const string LiteralCookIslandsThe = "CK";
+
+    /// <summary>
+    /// Literal for code: NONECookIslandsThe
+    /// </summary>
+    public const string LiteralNONECookIslandsThe = "urn:iso:std:iso:3166#CK";
 
     /// <summary>
     /// Literal for code: Chile
@@ -3686,9 +4096,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChile = "CL";
 
     /// <summary>
+    /// Literal for code: NONEChile
+    /// </summary>
+    public const string LiteralNONEChile = "urn:iso:std:iso:3166#CL";
+
+    /// <summary>
     /// Literal for code: Cameroon
     /// </summary>
     public const string LiteralCameroon = "CM";
+
+    /// <summary>
+    /// Literal for code: NONECameroon
+    /// </summary>
+    public const string LiteralNONECameroon = "urn:iso:std:iso:3166#CM";
 
     /// <summary>
     /// Literal for code: China
@@ -3696,9 +4116,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChina = "CN";
 
     /// <summary>
+    /// Literal for code: NONEChina
+    /// </summary>
+    public const string LiteralNONEChina = "urn:iso:std:iso:3166#CN";
+
+    /// <summary>
     /// Literal for code: Colombia
     /// </summary>
     public const string LiteralColombia = "CO";
+
+    /// <summary>
+    /// Literal for code: NONEColombia
+    /// </summary>
+    public const string LiteralNONEColombia = "urn:iso:std:iso:3166#CO";
 
     /// <summary>
     /// Literal for code: Colorado
@@ -3706,9 +4136,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralColorado = "CO";
 
     /// <summary>
+    /// Literal for code: NONEColorado
+    /// </summary>
+    public const string LiteralNONEColorado = "https://www.usps.com/#CO";
+
+    /// <summary>
     /// Literal for code: CostaRica
     /// </summary>
     public const string LiteralCostaRica = "CR";
+
+    /// <summary>
+    /// Literal for code: NONECostaRica
+    /// </summary>
+    public const string LiteralNONECostaRica = "urn:iso:std:iso:3166#CR";
 
     /// <summary>
     /// Literal for code: SerbiaAndMontenegro
@@ -3716,9 +4156,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSerbiaAndMontenegro = "CS";
 
     /// <summary>
+    /// Literal for code: NONESerbiaAndMontenegro
+    /// </summary>
+    public const string LiteralNONESerbiaAndMontenegro = "urn:iso:std:iso:3166#CS";
+
+    /// <summary>
     /// Literal for code: CantonAndEnderburyIslands
     /// </summary>
     public const string LiteralCantonAndEnderburyIslands = "CT";
+
+    /// <summary>
+    /// Literal for code: NONECantonAndEnderburyIslands
+    /// </summary>
+    public const string LiteralNONECantonAndEnderburyIslands = "urn:iso:std:iso:3166#CT";
 
     /// <summary>
     /// Literal for code: Connecticut
@@ -3726,9 +4176,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralConnecticut = "CT";
 
     /// <summary>
+    /// Literal for code: NONEConnecticut
+    /// </summary>
+    public const string LiteralNONEConnecticut = "https://www.usps.com/#CT";
+
+    /// <summary>
     /// Literal for code: Cuba
     /// </summary>
     public const string LiteralCuba = "CU";
+
+    /// <summary>
+    /// Literal for code: NONECuba
+    /// </summary>
+    public const string LiteralNONECuba = "urn:iso:std:iso:3166#CU";
 
     /// <summary>
     /// Literal for code: CaboVerde
@@ -3736,9 +4196,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCaboVerde = "CV";
 
     /// <summary>
+    /// Literal for code: NONECaboVerde
+    /// </summary>
+    public const string LiteralNONECaboVerde = "urn:iso:std:iso:3166#CV";
+
+    /// <summary>
     /// Literal for code: Curacao
     /// </summary>
     public const string LiteralCuracao = "CW";
+
+    /// <summary>
+    /// Literal for code: NONECuracao
+    /// </summary>
+    public const string LiteralNONECuracao = "urn:iso:std:iso:3166#CW";
 
     /// <summary>
     /// Literal for code: ChristmasIsland
@@ -3746,9 +4216,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChristmasIsland = "CX";
 
     /// <summary>
+    /// Literal for code: NONEChristmasIsland
+    /// </summary>
+    public const string LiteralNONEChristmasIsland = "urn:iso:std:iso:3166#CX";
+
+    /// <summary>
     /// Literal for code: Cyprus
     /// </summary>
     public const string LiteralCyprus = "CY";
+
+    /// <summary>
+    /// Literal for code: NONECyprus
+    /// </summary>
+    public const string LiteralNONECyprus = "urn:iso:std:iso:3166#CY";
 
     /// <summary>
     /// Literal for code: CzechRepublicThe
@@ -3756,9 +4236,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCzechRepublicThe = "CZ";
 
     /// <summary>
+    /// Literal for code: NONECzechRepublicThe
+    /// </summary>
+    public const string LiteralNONECzechRepublicThe = "urn:iso:std:iso:3166#CZ";
+
+    /// <summary>
     /// Literal for code: DistrictOfColumbia
     /// </summary>
     public const string LiteralDistrictOfColumbia = "DC";
+
+    /// <summary>
+    /// Literal for code: NONEDistrictOfColumbia
+    /// </summary>
+    public const string LiteralNONEDistrictOfColumbia = "https://www.usps.com/#DC";
 
     /// <summary>
     /// Literal for code: GermanDemocraticRepublic
@@ -3766,9 +4256,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGermanDemocraticRepublic = "DD";
 
     /// <summary>
+    /// Literal for code: NONEGermanDemocraticRepublic
+    /// </summary>
+    public const string LiteralNONEGermanDemocraticRepublic = "urn:iso:std:iso:3166#DD";
+
+    /// <summary>
     /// Literal for code: Germany
     /// </summary>
     public const string LiteralGermany = "DE";
+
+    /// <summary>
+    /// Literal for code: NONEGermany
+    /// </summary>
+    public const string LiteralNONEGermany = "urn:iso:std:iso:3166#DE";
 
     /// <summary>
     /// Literal for code: Delaware
@@ -3776,9 +4276,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDelaware = "DE";
 
     /// <summary>
+    /// Literal for code: NONEDelaware
+    /// </summary>
+    public const string LiteralNONEDelaware = "https://www.usps.com/#DE";
+
+    /// <summary>
     /// Literal for code: Djibouti
     /// </summary>
     public const string LiteralDjibouti = "DJ";
+
+    /// <summary>
+    /// Literal for code: NONEDjibouti
+    /// </summary>
+    public const string LiteralNONEDjibouti = "urn:iso:std:iso:3166#DJ";
 
     /// <summary>
     /// Literal for code: Denmark
@@ -3786,9 +4296,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDenmark = "DK";
 
     /// <summary>
+    /// Literal for code: NONEDenmark
+    /// </summary>
+    public const string LiteralNONEDenmark = "urn:iso:std:iso:3166#DK";
+
+    /// <summary>
     /// Literal for code: Dominica
     /// </summary>
     public const string LiteralDominica = "DM";
+
+    /// <summary>
+    /// Literal for code: NONEDominica
+    /// </summary>
+    public const string LiteralNONEDominica = "urn:iso:std:iso:3166#DM";
 
     /// <summary>
     /// Literal for code: DominicanRepublicThe
@@ -3796,9 +4316,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDominicanRepublicThe = "DO";
 
     /// <summary>
+    /// Literal for code: NONEDominicanRepublicThe
+    /// </summary>
+    public const string LiteralNONEDominicanRepublicThe = "urn:iso:std:iso:3166#DO";
+
+    /// <summary>
     /// Literal for code: Dahomey
     /// </summary>
     public const string LiteralDahomey = "DY";
+
+    /// <summary>
+    /// Literal for code: NONEDahomey
+    /// </summary>
+    public const string LiteralNONEDahomey = "urn:iso:std:iso:3166#DY";
 
     /// <summary>
     /// Literal for code: Algeria
@@ -3806,9 +4336,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAlgeria = "DZ";
 
     /// <summary>
+    /// Literal for code: NONEAlgeria
+    /// </summary>
+    public const string LiteralNONEAlgeria = "urn:iso:std:iso:3166#DZ";
+
+    /// <summary>
     /// Literal for code: Ecuador
     /// </summary>
     public const string LiteralEcuador = "EC";
+
+    /// <summary>
+    /// Literal for code: NONEEcuador
+    /// </summary>
+    public const string LiteralNONEEcuador = "urn:iso:std:iso:3166#EC";
 
     /// <summary>
     /// Literal for code: Estonia
@@ -3816,9 +4356,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEstonia = "EE";
 
     /// <summary>
+    /// Literal for code: NONEEstonia
+    /// </summary>
+    public const string LiteralNONEEstonia = "urn:iso:std:iso:3166#EE";
+
+    /// <summary>
     /// Literal for code: Egypt
     /// </summary>
     public const string LiteralEgypt = "EG";
+
+    /// <summary>
+    /// Literal for code: NONEEgypt
+    /// </summary>
+    public const string LiteralNONEEgypt = "urn:iso:std:iso:3166#EG";
 
     /// <summary>
     /// Literal for code: WesternSaharaAsterisk
@@ -3826,9 +4376,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWesternSaharaAsterisk = "EH";
 
     /// <summary>
+    /// Literal for code: NONEWesternSaharaAsterisk
+    /// </summary>
+    public const string LiteralNONEWesternSaharaAsterisk = "urn:iso:std:iso:3166#EH";
+
+    /// <summary>
     /// Literal for code: Eritrea
     /// </summary>
     public const string LiteralEritrea = "ER";
+
+    /// <summary>
+    /// Literal for code: NONEEritrea
+    /// </summary>
+    public const string LiteralNONEEritrea = "urn:iso:std:iso:3166#ER";
 
     /// <summary>
     /// Literal for code: Spain
@@ -3836,9 +4396,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpain = "ES";
 
     /// <summary>
+    /// Literal for code: NONESpain
+    /// </summary>
+    public const string LiteralNONESpain = "urn:iso:std:iso:3166#ES";
+
+    /// <summary>
     /// Literal for code: Ethiopia
     /// </summary>
     public const string LiteralEthiopia = "ET";
+
+    /// <summary>
+    /// Literal for code: NONEEthiopia
+    /// </summary>
+    public const string LiteralNONEEthiopia = "urn:iso:std:iso:3166#ET";
 
     /// <summary>
     /// Literal for code: Finland
@@ -3846,9 +4416,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFinland = "FI";
 
     /// <summary>
+    /// Literal for code: NONEFinland
+    /// </summary>
+    public const string LiteralNONEFinland = "urn:iso:std:iso:3166#FI";
+
+    /// <summary>
     /// Literal for code: Fiji
     /// </summary>
     public const string LiteralFiji = "FJ";
+
+    /// <summary>
+    /// Literal for code: NONEFiji
+    /// </summary>
+    public const string LiteralNONEFiji = "urn:iso:std:iso:3166#FJ";
 
     /// <summary>
     /// Literal for code: FalklandIslandsTheMalvinas
@@ -3856,9 +4436,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFalklandIslandsTheMalvinas = "FK";
 
     /// <summary>
+    /// Literal for code: NONEFalklandIslandsTheMalvinas
+    /// </summary>
+    public const string LiteralNONEFalklandIslandsTheMalvinas = "urn:iso:std:iso:3166#FK";
+
+    /// <summary>
     /// Literal for code: Florida
     /// </summary>
     public const string LiteralFlorida = "FL";
+
+    /// <summary>
+    /// Literal for code: NONEFlorida
+    /// </summary>
+    public const string LiteralNONEFlorida = "https://www.usps.com/#FL";
 
     /// <summary>
     /// Literal for code: MicronesiaFederatedStatesOf
@@ -3866,9 +4456,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMicronesiaFederatedStatesOf = "FM";
 
     /// <summary>
+    /// Literal for code: NONEMicronesiaFederatedStatesOf
+    /// </summary>
+    public const string LiteralNONEMicronesiaFederatedStatesOf = "urn:iso:std:iso:3166#FM";
+
+    /// <summary>
     /// Literal for code: FederatedStatesOfMicronesia
     /// </summary>
     public const string LiteralFederatedStatesOfMicronesia = "FM";
+
+    /// <summary>
+    /// Literal for code: NONEFederatedStatesOfMicronesia
+    /// </summary>
+    public const string LiteralNONEFederatedStatesOfMicronesia = "https://www.usps.com/#FM";
 
     /// <summary>
     /// Literal for code: FaroeIslandsThe
@@ -3876,9 +4476,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFaroeIslandsThe = "FO";
 
     /// <summary>
+    /// Literal for code: NONEFaroeIslandsThe
+    /// </summary>
+    public const string LiteralNONEFaroeIslandsThe = "urn:iso:std:iso:3166#FO";
+
+    /// <summary>
     /// Literal for code: FrenchSouthernAndAntarcticTerritories
     /// </summary>
     public const string LiteralFrenchSouthernAndAntarcticTerritories = "FQ";
+
+    /// <summary>
+    /// Literal for code: NONEFrenchSouthernAndAntarcticTerritories
+    /// </summary>
+    public const string LiteralNONEFrenchSouthernAndAntarcticTerritories = "urn:iso:std:iso:3166#FQ";
 
     /// <summary>
     /// Literal for code: France
@@ -3886,9 +4496,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFrance = "FR";
 
     /// <summary>
+    /// Literal for code: NONEFrance
+    /// </summary>
+    public const string LiteralNONEFrance = "urn:iso:std:iso:3166#FR";
+
+    /// <summary>
     /// Literal for code: Gabon
     /// </summary>
     public const string LiteralGabon = "GA";
+
+    /// <summary>
+    /// Literal for code: NONEGabon
+    /// </summary>
+    public const string LiteralNONEGabon = "urn:iso:std:iso:3166#GA";
 
     /// <summary>
     /// Literal for code: Georgia
@@ -3896,9 +4516,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGeorgia = "GA";
 
     /// <summary>
+    /// Literal for code: NONEGeorgia
+    /// </summary>
+    public const string LiteralNONEGeorgia = "https://www.usps.com/#GA";
+
+    /// <summary>
     /// Literal for code: UnitedKingdomOfGreatBritainAndNorthernIrelandThe
     /// </summary>
     public const string LiteralUnitedKingdomOfGreatBritainAndNorthernIrelandThe = "GB";
+
+    /// <summary>
+    /// Literal for code: NONEUnitedKingdomOfGreatBritainAndNorthernIrelandThe
+    /// </summary>
+    public const string LiteralNONEUnitedKingdomOfGreatBritainAndNorthernIrelandThe = "urn:iso:std:iso:3166#GB";
 
     /// <summary>
     /// Literal for code: Grenada
@@ -3906,9 +4536,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGrenada = "GD";
 
     /// <summary>
+    /// Literal for code: NONEGrenada
+    /// </summary>
+    public const string LiteralNONEGrenada = "urn:iso:std:iso:3166#GD";
+
+    /// <summary>
     /// Literal for code: Georgia_2
     /// </summary>
     public const string LiteralGeorgia_2 = "GE";
+
+    /// <summary>
+    /// Literal for code: NONEGeorgia_2
+    /// </summary>
+    public const string LiteralNONEGeorgia_2 = "urn:iso:std:iso:3166#GE";
 
     /// <summary>
     /// Literal for code: FrenchGuiana
@@ -3916,9 +4556,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralFrenchGuiana = "GF";
 
     /// <summary>
+    /// Literal for code: NONEFrenchGuiana
+    /// </summary>
+    public const string LiteralNONEFrenchGuiana = "urn:iso:std:iso:3166#GF";
+
+    /// <summary>
     /// Literal for code: Guernsey
     /// </summary>
     public const string LiteralGuernsey = "GG";
+
+    /// <summary>
+    /// Literal for code: NONEGuernsey
+    /// </summary>
+    public const string LiteralNONEGuernsey = "urn:iso:std:iso:3166#GG";
 
     /// <summary>
     /// Literal for code: Ghana
@@ -3926,9 +4576,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGhana = "GH";
 
     /// <summary>
+    /// Literal for code: NONEGhana
+    /// </summary>
+    public const string LiteralNONEGhana = "urn:iso:std:iso:3166#GH";
+
+    /// <summary>
     /// Literal for code: Gibraltar
     /// </summary>
     public const string LiteralGibraltar = "GI";
+
+    /// <summary>
+    /// Literal for code: NONEGibraltar
+    /// </summary>
+    public const string LiteralNONEGibraltar = "urn:iso:std:iso:3166#GI";
 
     /// <summary>
     /// Literal for code: Greenland
@@ -3936,9 +4596,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGreenland = "GL";
 
     /// <summary>
+    /// Literal for code: NONEGreenland
+    /// </summary>
+    public const string LiteralNONEGreenland = "urn:iso:std:iso:3166#GL";
+
+    /// <summary>
     /// Literal for code: GambiaThe
     /// </summary>
     public const string LiteralGambiaThe = "GM";
+
+    /// <summary>
+    /// Literal for code: NONEGambiaThe
+    /// </summary>
+    public const string LiteralNONEGambiaThe = "urn:iso:std:iso:3166#GM";
 
     /// <summary>
     /// Literal for code: Guinea
@@ -3946,9 +4616,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGuinea = "GN";
 
     /// <summary>
+    /// Literal for code: NONEGuinea
+    /// </summary>
+    public const string LiteralNONEGuinea = "urn:iso:std:iso:3166#GN";
+
+    /// <summary>
     /// Literal for code: Guadeloupe
     /// </summary>
     public const string LiteralGuadeloupe = "GP";
+
+    /// <summary>
+    /// Literal for code: NONEGuadeloupe
+    /// </summary>
+    public const string LiteralNONEGuadeloupe = "urn:iso:std:iso:3166#GP";
 
     /// <summary>
     /// Literal for code: EquatorialGuinea
@@ -3956,9 +4636,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEquatorialGuinea = "GQ";
 
     /// <summary>
+    /// Literal for code: NONEEquatorialGuinea
+    /// </summary>
+    public const string LiteralNONEEquatorialGuinea = "urn:iso:std:iso:3166#GQ";
+
+    /// <summary>
     /// Literal for code: Greece
     /// </summary>
     public const string LiteralGreece = "GR";
+
+    /// <summary>
+    /// Literal for code: NONEGreece
+    /// </summary>
+    public const string LiteralNONEGreece = "urn:iso:std:iso:3166#GR";
 
     /// <summary>
     /// Literal for code: SouthGeorgiaAndTheSouthSandwichIslands
@@ -3966,9 +4656,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSouthGeorgiaAndTheSouthSandwichIslands = "GS";
 
     /// <summary>
+    /// Literal for code: NONESouthGeorgiaAndTheSouthSandwichIslands
+    /// </summary>
+    public const string LiteralNONESouthGeorgiaAndTheSouthSandwichIslands = "urn:iso:std:iso:3166#GS";
+
+    /// <summary>
     /// Literal for code: Guatemala
     /// </summary>
     public const string LiteralGuatemala = "GT";
+
+    /// <summary>
+    /// Literal for code: NONEGuatemala
+    /// </summary>
+    public const string LiteralNONEGuatemala = "urn:iso:std:iso:3166#GT";
 
     /// <summary>
     /// Literal for code: Guam
@@ -3976,9 +4676,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGuam = "GU";
 
     /// <summary>
+    /// Literal for code: NONEGuam
+    /// </summary>
+    public const string LiteralNONEGuam = "urn:iso:std:iso:3166#GU";
+
+    /// <summary>
     /// Literal for code: Guam_2
     /// </summary>
     public const string LiteralGuam_2 = "GU";
+
+    /// <summary>
+    /// Literal for code: NONEGuam_2
+    /// </summary>
+    public const string LiteralNONEGuam_2 = "https://www.usps.com/#GU";
 
     /// <summary>
     /// Literal for code: GuineaBissau
@@ -3986,9 +4696,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGuineaBissau = "GW";
 
     /// <summary>
+    /// Literal for code: NONEGuineaBissau
+    /// </summary>
+    public const string LiteralNONEGuineaBissau = "urn:iso:std:iso:3166#GW";
+
+    /// <summary>
     /// Literal for code: Guyana
     /// </summary>
     public const string LiteralGuyana = "GY";
+
+    /// <summary>
+    /// Literal for code: NONEGuyana
+    /// </summary>
+    public const string LiteralNONEGuyana = "urn:iso:std:iso:3166#GY";
 
     /// <summary>
     /// Literal for code: Hawaii
@@ -3996,9 +4716,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHawaii = "HI";
 
     /// <summary>
+    /// Literal for code: NONEHawaii
+    /// </summary>
+    public const string LiteralNONEHawaii = "https://www.usps.com/#HI";
+
+    /// <summary>
     /// Literal for code: HongKong
     /// </summary>
     public const string LiteralHongKong = "HK";
+
+    /// <summary>
+    /// Literal for code: NONEHongKong
+    /// </summary>
+    public const string LiteralNONEHongKong = "urn:iso:std:iso:3166#HK";
 
     /// <summary>
     /// Literal for code: HeardIslandAndMcDonaldIslands
@@ -4006,9 +4736,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHeardIslandAndMcDonaldIslands = "HM";
 
     /// <summary>
+    /// Literal for code: NONEHeardIslandAndMcDonaldIslands
+    /// </summary>
+    public const string LiteralNONEHeardIslandAndMcDonaldIslands = "urn:iso:std:iso:3166#HM";
+
+    /// <summary>
     /// Literal for code: Honduras
     /// </summary>
     public const string LiteralHonduras = "HN";
+
+    /// <summary>
+    /// Literal for code: NONEHonduras
+    /// </summary>
+    public const string LiteralNONEHonduras = "urn:iso:std:iso:3166#HN";
 
     /// <summary>
     /// Literal for code: Croatia
@@ -4016,9 +4756,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCroatia = "HR";
 
     /// <summary>
+    /// Literal for code: NONECroatia
+    /// </summary>
+    public const string LiteralNONECroatia = "urn:iso:std:iso:3166#HR";
+
+    /// <summary>
     /// Literal for code: Haiti
     /// </summary>
     public const string LiteralHaiti = "HT";
+
+    /// <summary>
+    /// Literal for code: NONEHaiti
+    /// </summary>
+    public const string LiteralNONEHaiti = "urn:iso:std:iso:3166#HT";
 
     /// <summary>
     /// Literal for code: Hungary
@@ -4026,9 +4776,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHungary = "HU";
 
     /// <summary>
+    /// Literal for code: NONEHungary
+    /// </summary>
+    public const string LiteralNONEHungary = "urn:iso:std:iso:3166#HU";
+
+    /// <summary>
     /// Literal for code: UpperVolta
     /// </summary>
     public const string LiteralUpperVolta = "HV";
+
+    /// <summary>
+    /// Literal for code: NONEUpperVolta
+    /// </summary>
+    public const string LiteralNONEUpperVolta = "urn:iso:std:iso:3166#HV";
 
     /// <summary>
     /// Literal for code: Iowa
@@ -4036,9 +4796,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIowa = "IA";
 
     /// <summary>
+    /// Literal for code: NONEIowa
+    /// </summary>
+    public const string LiteralNONEIowa = "https://www.usps.com/#IA";
+
+    /// <summary>
     /// Literal for code: Indonesia
     /// </summary>
     public const string LiteralIndonesia = "ID";
+
+    /// <summary>
+    /// Literal for code: NONEIndonesia
+    /// </summary>
+    public const string LiteralNONEIndonesia = "urn:iso:std:iso:3166#ID";
 
     /// <summary>
     /// Literal for code: Idaho
@@ -4046,9 +4816,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIdaho = "ID";
 
     /// <summary>
+    /// Literal for code: NONEIdaho
+    /// </summary>
+    public const string LiteralNONEIdaho = "https://www.usps.com/#ID";
+
+    /// <summary>
     /// Literal for code: Ireland
     /// </summary>
     public const string LiteralIreland = "IE";
+
+    /// <summary>
+    /// Literal for code: NONEIreland
+    /// </summary>
+    public const string LiteralNONEIreland = "urn:iso:std:iso:3166#IE";
 
     /// <summary>
     /// Literal for code: Israel
@@ -4056,9 +4836,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIsrael = "IL";
 
     /// <summary>
+    /// Literal for code: NONEIsrael
+    /// </summary>
+    public const string LiteralNONEIsrael = "urn:iso:std:iso:3166#IL";
+
+    /// <summary>
     /// Literal for code: Illinois
     /// </summary>
     public const string LiteralIllinois = "IL";
+
+    /// <summary>
+    /// Literal for code: NONEIllinois
+    /// </summary>
+    public const string LiteralNONEIllinois = "https://www.usps.com/#IL";
 
     /// <summary>
     /// Literal for code: IsleOfMan
@@ -4066,9 +4856,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIsleOfMan = "IM";
 
     /// <summary>
+    /// Literal for code: NONEIsleOfMan
+    /// </summary>
+    public const string LiteralNONEIsleOfMan = "urn:iso:std:iso:3166#IM";
+
+    /// <summary>
     /// Literal for code: India
     /// </summary>
     public const string LiteralIndia = "IN";
+
+    /// <summary>
+    /// Literal for code: NONEIndia
+    /// </summary>
+    public const string LiteralNONEIndia = "urn:iso:std:iso:3166#IN";
 
     /// <summary>
     /// Literal for code: Indiana
@@ -4076,9 +4876,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIndiana = "IN";
 
     /// <summary>
+    /// Literal for code: NONEIndiana
+    /// </summary>
+    public const string LiteralNONEIndiana = "https://www.usps.com/#IN";
+
+    /// <summary>
     /// Literal for code: BritishIndianOceanTerritoryThe
     /// </summary>
     public const string LiteralBritishIndianOceanTerritoryThe = "IO";
+
+    /// <summary>
+    /// Literal for code: NONEBritishIndianOceanTerritoryThe
+    /// </summary>
+    public const string LiteralNONEBritishIndianOceanTerritoryThe = "urn:iso:std:iso:3166#IO";
 
     /// <summary>
     /// Literal for code: Iraq
@@ -4086,9 +4896,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIraq = "IQ";
 
     /// <summary>
+    /// Literal for code: NONEIraq
+    /// </summary>
+    public const string LiteralNONEIraq = "urn:iso:std:iso:3166#IQ";
+
+    /// <summary>
     /// Literal for code: IranIslamicRepublicOf
     /// </summary>
     public const string LiteralIranIslamicRepublicOf = "IR";
+
+    /// <summary>
+    /// Literal for code: NONEIranIslamicRepublicOf
+    /// </summary>
+    public const string LiteralNONEIranIslamicRepublicOf = "urn:iso:std:iso:3166#IR";
 
     /// <summary>
     /// Literal for code: Iceland
@@ -4096,9 +4916,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralIceland = "IS";
 
     /// <summary>
+    /// Literal for code: NONEIceland
+    /// </summary>
+    public const string LiteralNONEIceland = "urn:iso:std:iso:3166#IS";
+
+    /// <summary>
     /// Literal for code: Italy
     /// </summary>
     public const string LiteralItaly = "IT";
+
+    /// <summary>
+    /// Literal for code: NONEItaly
+    /// </summary>
+    public const string LiteralNONEItaly = "urn:iso:std:iso:3166#IT";
 
     /// <summary>
     /// Literal for code: Jersey
@@ -4106,9 +4936,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralJersey = "JE";
 
     /// <summary>
+    /// Literal for code: NONEJersey
+    /// </summary>
+    public const string LiteralNONEJersey = "urn:iso:std:iso:3166#JE";
+
+    /// <summary>
     /// Literal for code: Jamaica
     /// </summary>
     public const string LiteralJamaica = "JM";
+
+    /// <summary>
+    /// Literal for code: NONEJamaica
+    /// </summary>
+    public const string LiteralNONEJamaica = "urn:iso:std:iso:3166#JM";
 
     /// <summary>
     /// Literal for code: Jordan
@@ -4116,9 +4956,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralJordan = "JO";
 
     /// <summary>
+    /// Literal for code: NONEJordan
+    /// </summary>
+    public const string LiteralNONEJordan = "urn:iso:std:iso:3166#JO";
+
+    /// <summary>
     /// Literal for code: Japan
     /// </summary>
     public const string LiteralJapan = "JP";
+
+    /// <summary>
+    /// Literal for code: NONEJapan
+    /// </summary>
+    public const string LiteralNONEJapan = "urn:iso:std:iso:3166#JP";
 
     /// <summary>
     /// Literal for code: JohnstonIsland
@@ -4126,9 +4976,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralJohnstonIsland = "JT";
 
     /// <summary>
+    /// Literal for code: NONEJohnstonIsland
+    /// </summary>
+    public const string LiteralNONEJohnstonIsland = "urn:iso:std:iso:3166#JT";
+
+    /// <summary>
     /// Literal for code: Kenya
     /// </summary>
     public const string LiteralKenya = "KE";
+
+    /// <summary>
+    /// Literal for code: NONEKenya
+    /// </summary>
+    public const string LiteralNONEKenya = "urn:iso:std:iso:3166#KE";
 
     /// <summary>
     /// Literal for code: Kyrgyzstan
@@ -4136,9 +4996,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKyrgyzstan = "KG";
 
     /// <summary>
+    /// Literal for code: NONEKyrgyzstan
+    /// </summary>
+    public const string LiteralNONEKyrgyzstan = "urn:iso:std:iso:3166#KG";
+
+    /// <summary>
     /// Literal for code: Cambodia
     /// </summary>
     public const string LiteralCambodia = "KH";
+
+    /// <summary>
+    /// Literal for code: NONECambodia
+    /// </summary>
+    public const string LiteralNONECambodia = "urn:iso:std:iso:3166#KH";
 
     /// <summary>
     /// Literal for code: Kiribati
@@ -4146,9 +5016,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKiribati = "KI";
 
     /// <summary>
+    /// Literal for code: NONEKiribati
+    /// </summary>
+    public const string LiteralNONEKiribati = "urn:iso:std:iso:3166#KI";
+
+    /// <summary>
     /// Literal for code: ComorosThe
     /// </summary>
     public const string LiteralComorosThe = "KM";
+
+    /// <summary>
+    /// Literal for code: NONEComorosThe
+    /// </summary>
+    public const string LiteralNONEComorosThe = "urn:iso:std:iso:3166#KM";
 
     /// <summary>
     /// Literal for code: SaintKittsAndNevis
@@ -4156,9 +5036,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSaintKittsAndNevis = "KN";
 
     /// <summary>
+    /// Literal for code: NONESaintKittsAndNevis
+    /// </summary>
+    public const string LiteralNONESaintKittsAndNevis = "urn:iso:std:iso:3166#KN";
+
+    /// <summary>
     /// Literal for code: KoreaTheDemocraticPeopleQuoteSRepublicOf
     /// </summary>
     public const string LiteralKoreaTheDemocraticPeopleQuoteSRepublicOf = "KP";
+
+    /// <summary>
+    /// Literal for code: NONEKoreaTheDemocraticPeopleQuoteSRepublicOf
+    /// </summary>
+    public const string LiteralNONEKoreaTheDemocraticPeopleQuoteSRepublicOf = "urn:iso:std:iso:3166#KP";
 
     /// <summary>
     /// Literal for code: KoreaTheRepublicOf
@@ -4166,9 +5056,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKoreaTheRepublicOf = "KR";
 
     /// <summary>
+    /// Literal for code: NONEKoreaTheRepublicOf
+    /// </summary>
+    public const string LiteralNONEKoreaTheRepublicOf = "urn:iso:std:iso:3166#KR";
+
+    /// <summary>
     /// Literal for code: Kansas
     /// </summary>
     public const string LiteralKansas = "KS";
+
+    /// <summary>
+    /// Literal for code: NONEKansas
+    /// </summary>
+    public const string LiteralNONEKansas = "https://www.usps.com/#KS";
 
     /// <summary>
     /// Literal for code: Kuwait
@@ -4176,9 +5076,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKuwait = "KW";
 
     /// <summary>
+    /// Literal for code: NONEKuwait
+    /// </summary>
+    public const string LiteralNONEKuwait = "urn:iso:std:iso:3166#KW";
+
+    /// <summary>
     /// Literal for code: CaymanIslandsThe
     /// </summary>
     public const string LiteralCaymanIslandsThe = "KY";
+
+    /// <summary>
+    /// Literal for code: NONECaymanIslandsThe
+    /// </summary>
+    public const string LiteralNONECaymanIslandsThe = "urn:iso:std:iso:3166#KY";
 
     /// <summary>
     /// Literal for code: Kentucky
@@ -4186,9 +5096,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralKentucky = "KY";
 
     /// <summary>
+    /// Literal for code: NONEKentucky
+    /// </summary>
+    public const string LiteralNONEKentucky = "https://www.usps.com/#KY";
+
+    /// <summary>
     /// Literal for code: Kazakhstan
     /// </summary>
     public const string LiteralKazakhstan = "KZ";
+
+    /// <summary>
+    /// Literal for code: NONEKazakhstan
+    /// </summary>
+    public const string LiteralNONEKazakhstan = "urn:iso:std:iso:3166#KZ";
 
     /// <summary>
     /// Literal for code: LaoPeopleQuoteSDemocraticRepublicThe
@@ -4196,9 +5116,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLaoPeopleQuoteSDemocraticRepublicThe = "LA";
 
     /// <summary>
+    /// Literal for code: NONELaoPeopleQuoteSDemocraticRepublicThe
+    /// </summary>
+    public const string LiteralNONELaoPeopleQuoteSDemocraticRepublicThe = "urn:iso:std:iso:3166#LA";
+
+    /// <summary>
     /// Literal for code: Louisiana
     /// </summary>
     public const string LiteralLouisiana = "LA";
+
+    /// <summary>
+    /// Literal for code: NONELouisiana
+    /// </summary>
+    public const string LiteralNONELouisiana = "https://www.usps.com/#LA";
 
     /// <summary>
     /// Literal for code: Lebanon
@@ -4206,9 +5136,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLebanon = "LB";
 
     /// <summary>
+    /// Literal for code: NONELebanon
+    /// </summary>
+    public const string LiteralNONELebanon = "urn:iso:std:iso:3166#LB";
+
+    /// <summary>
     /// Literal for code: SaintLucia
     /// </summary>
     public const string LiteralSaintLucia = "LC";
+
+    /// <summary>
+    /// Literal for code: NONESaintLucia
+    /// </summary>
+    public const string LiteralNONESaintLucia = "urn:iso:std:iso:3166#LC";
 
     /// <summary>
     /// Literal for code: Liechtenstein
@@ -4216,9 +5156,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLiechtenstein = "LI";
 
     /// <summary>
+    /// Literal for code: NONELiechtenstein
+    /// </summary>
+    public const string LiteralNONELiechtenstein = "urn:iso:std:iso:3166#LI";
+
+    /// <summary>
     /// Literal for code: SriLanka
     /// </summary>
     public const string LiteralSriLanka = "LK";
+
+    /// <summary>
+    /// Literal for code: NONESriLanka
+    /// </summary>
+    public const string LiteralNONESriLanka = "urn:iso:std:iso:3166#LK";
 
     /// <summary>
     /// Literal for code: Liberia
@@ -4226,9 +5176,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLiberia = "LR";
 
     /// <summary>
+    /// Literal for code: NONELiberia
+    /// </summary>
+    public const string LiteralNONELiberia = "urn:iso:std:iso:3166#LR";
+
+    /// <summary>
     /// Literal for code: Lesotho
     /// </summary>
     public const string LiteralLesotho = "LS";
+
+    /// <summary>
+    /// Literal for code: NONELesotho
+    /// </summary>
+    public const string LiteralNONELesotho = "urn:iso:std:iso:3166#LS";
 
     /// <summary>
     /// Literal for code: Lithuania
@@ -4236,9 +5196,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLithuania = "LT";
 
     /// <summary>
+    /// Literal for code: NONELithuania
+    /// </summary>
+    public const string LiteralNONELithuania = "urn:iso:std:iso:3166#LT";
+
+    /// <summary>
     /// Literal for code: Luxembourg
     /// </summary>
     public const string LiteralLuxembourg = "LU";
+
+    /// <summary>
+    /// Literal for code: NONELuxembourg
+    /// </summary>
+    public const string LiteralNONELuxembourg = "urn:iso:std:iso:3166#LU";
 
     /// <summary>
     /// Literal for code: Latvia
@@ -4246,9 +5216,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLatvia = "LV";
 
     /// <summary>
+    /// Literal for code: NONELatvia
+    /// </summary>
+    public const string LiteralNONELatvia = "urn:iso:std:iso:3166#LV";
+
+    /// <summary>
     /// Literal for code: Libya
     /// </summary>
     public const string LiteralLibya = "LY";
+
+    /// <summary>
+    /// Literal for code: NONELibya
+    /// </summary>
+    public const string LiteralNONELibya = "urn:iso:std:iso:3166#LY";
 
     /// <summary>
     /// Literal for code: Morocco
@@ -4256,9 +5236,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMorocco = "MA";
 
     /// <summary>
+    /// Literal for code: NONEMorocco
+    /// </summary>
+    public const string LiteralNONEMorocco = "urn:iso:std:iso:3166#MA";
+
+    /// <summary>
     /// Literal for code: Massachusetts
     /// </summary>
     public const string LiteralMassachusetts = "MA";
+
+    /// <summary>
+    /// Literal for code: NONEMassachusetts
+    /// </summary>
+    public const string LiteralNONEMassachusetts = "https://www.usps.com/#MA";
 
     /// <summary>
     /// Literal for code: Monaco
@@ -4266,9 +5256,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMonaco = "MC";
 
     /// <summary>
+    /// Literal for code: NONEMonaco
+    /// </summary>
+    public const string LiteralNONEMonaco = "urn:iso:std:iso:3166#MC";
+
+    /// <summary>
     /// Literal for code: MoldovaTheRepublicOf
     /// </summary>
     public const string LiteralMoldovaTheRepublicOf = "MD";
+
+    /// <summary>
+    /// Literal for code: NONEMoldovaTheRepublicOf
+    /// </summary>
+    public const string LiteralNONEMoldovaTheRepublicOf = "urn:iso:std:iso:3166#MD";
 
     /// <summary>
     /// Literal for code: Maryland
@@ -4276,9 +5276,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMaryland = "MD";
 
     /// <summary>
+    /// Literal for code: NONEMaryland
+    /// </summary>
+    public const string LiteralNONEMaryland = "https://www.usps.com/#MD";
+
+    /// <summary>
     /// Literal for code: Montenegro
     /// </summary>
     public const string LiteralMontenegro = "ME";
+
+    /// <summary>
+    /// Literal for code: NONEMontenegro
+    /// </summary>
+    public const string LiteralNONEMontenegro = "urn:iso:std:iso:3166#ME";
 
     /// <summary>
     /// Literal for code: Maine
@@ -4286,9 +5296,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMaine = "ME";
 
     /// <summary>
+    /// Literal for code: NONEMaine
+    /// </summary>
+    public const string LiteralNONEMaine = "https://www.usps.com/#ME";
+
+    /// <summary>
     /// Literal for code: SaintMartinFrenchPart
     /// </summary>
     public const string LiteralSaintMartinFrenchPart = "MF";
+
+    /// <summary>
+    /// Literal for code: NONESaintMartinFrenchPart
+    /// </summary>
+    public const string LiteralNONESaintMartinFrenchPart = "urn:iso:std:iso:3166#MF";
 
     /// <summary>
     /// Literal for code: Madagascar
@@ -4296,9 +5316,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMadagascar = "MG";
 
     /// <summary>
+    /// Literal for code: NONEMadagascar
+    /// </summary>
+    public const string LiteralNONEMadagascar = "urn:iso:std:iso:3166#MG";
+
+    /// <summary>
     /// Literal for code: MarshallIslandsThe
     /// </summary>
     public const string LiteralMarshallIslandsThe = "MH";
+
+    /// <summary>
+    /// Literal for code: NONEMarshallIslandsThe
+    /// </summary>
+    public const string LiteralNONEMarshallIslandsThe = "urn:iso:std:iso:3166#MH";
 
     /// <summary>
     /// Literal for code: MarshallIslands
@@ -4306,9 +5336,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMarshallIslands = "MH";
 
     /// <summary>
+    /// Literal for code: NONEMarshallIslands
+    /// </summary>
+    public const string LiteralNONEMarshallIslands = "https://www.usps.com/#MH";
+
+    /// <summary>
     /// Literal for code: MidwayIslands
     /// </summary>
     public const string LiteralMidwayIslands = "MI";
+
+    /// <summary>
+    /// Literal for code: NONEMidwayIslands
+    /// </summary>
+    public const string LiteralNONEMidwayIslands = "urn:iso:std:iso:3166#MI";
 
     /// <summary>
     /// Literal for code: Michigan
@@ -4316,9 +5356,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMichigan = "MI";
 
     /// <summary>
+    /// Literal for code: NONEMichigan
+    /// </summary>
+    public const string LiteralNONEMichigan = "https://www.usps.com/#MI";
+
+    /// <summary>
     /// Literal for code: MacedoniaTheFormerYugoslavRepublicOf
     /// </summary>
     public const string LiteralMacedoniaTheFormerYugoslavRepublicOf = "MK";
+
+    /// <summary>
+    /// Literal for code: NONEMacedoniaTheFormerYugoslavRepublicOf
+    /// </summary>
+    public const string LiteralNONEMacedoniaTheFormerYugoslavRepublicOf = "urn:iso:std:iso:3166#MK";
 
     /// <summary>
     /// Literal for code: Mali
@@ -4326,9 +5376,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMali = "ML";
 
     /// <summary>
+    /// Literal for code: NONEMali
+    /// </summary>
+    public const string LiteralNONEMali = "urn:iso:std:iso:3166#ML";
+
+    /// <summary>
     /// Literal for code: Myanmar
     /// </summary>
     public const string LiteralMyanmar = "MM";
+
+    /// <summary>
+    /// Literal for code: NONEMyanmar
+    /// </summary>
+    public const string LiteralNONEMyanmar = "urn:iso:std:iso:3166#MM";
 
     /// <summary>
     /// Literal for code: Mongolia
@@ -4336,9 +5396,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMongolia = "MN";
 
     /// <summary>
+    /// Literal for code: NONEMongolia
+    /// </summary>
+    public const string LiteralNONEMongolia = "urn:iso:std:iso:3166#MN";
+
+    /// <summary>
     /// Literal for code: Minnesota
     /// </summary>
     public const string LiteralMinnesota = "MN";
+
+    /// <summary>
+    /// Literal for code: NONEMinnesota
+    /// </summary>
+    public const string LiteralNONEMinnesota = "https://www.usps.com/#MN";
 
     /// <summary>
     /// Literal for code: Macao
@@ -4346,9 +5416,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMacao = "MO";
 
     /// <summary>
+    /// Literal for code: NONEMacao
+    /// </summary>
+    public const string LiteralNONEMacao = "urn:iso:std:iso:3166#MO";
+
+    /// <summary>
     /// Literal for code: Missouri
     /// </summary>
     public const string LiteralMissouri = "MO";
+
+    /// <summary>
+    /// Literal for code: NONEMissouri
+    /// </summary>
+    public const string LiteralNONEMissouri = "https://www.usps.com/#MO";
 
     /// <summary>
     /// Literal for code: NorthernMarianaIslandsThe
@@ -4356,9 +5436,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNorthernMarianaIslandsThe = "MP";
 
     /// <summary>
+    /// Literal for code: NONENorthernMarianaIslandsThe
+    /// </summary>
+    public const string LiteralNONENorthernMarianaIslandsThe = "urn:iso:std:iso:3166#MP";
+
+    /// <summary>
     /// Literal for code: NorthernMarianaIslands
     /// </summary>
     public const string LiteralNorthernMarianaIslands = "MP";
+
+    /// <summary>
+    /// Literal for code: NONENorthernMarianaIslands
+    /// </summary>
+    public const string LiteralNONENorthernMarianaIslands = "https://www.usps.com/#MP";
 
     /// <summary>
     /// Literal for code: Martinique
@@ -4366,9 +5456,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMartinique = "MQ";
 
     /// <summary>
+    /// Literal for code: NONEMartinique
+    /// </summary>
+    public const string LiteralNONEMartinique = "urn:iso:std:iso:3166#MQ";
+
+    /// <summary>
     /// Literal for code: Mauritania
     /// </summary>
     public const string LiteralMauritania = "MR";
+
+    /// <summary>
+    /// Literal for code: NONEMauritania
+    /// </summary>
+    public const string LiteralNONEMauritania = "urn:iso:std:iso:3166#MR";
 
     /// <summary>
     /// Literal for code: Montserrat
@@ -4376,9 +5476,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMontserrat = "MS";
 
     /// <summary>
+    /// Literal for code: NONEMontserrat
+    /// </summary>
+    public const string LiteralNONEMontserrat = "urn:iso:std:iso:3166#MS";
+
+    /// <summary>
     /// Literal for code: Mississippi
     /// </summary>
     public const string LiteralMississippi = "MS";
+
+    /// <summary>
+    /// Literal for code: NONEMississippi
+    /// </summary>
+    public const string LiteralNONEMississippi = "https://www.usps.com/#MS";
 
     /// <summary>
     /// Literal for code: Malta
@@ -4386,9 +5496,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMalta = "MT";
 
     /// <summary>
+    /// Literal for code: NONEMalta
+    /// </summary>
+    public const string LiteralNONEMalta = "urn:iso:std:iso:3166#MT";
+
+    /// <summary>
     /// Literal for code: Montana
     /// </summary>
     public const string LiteralMontana = "MT";
+
+    /// <summary>
+    /// Literal for code: NONEMontana
+    /// </summary>
+    public const string LiteralNONEMontana = "https://www.usps.com/#MT";
 
     /// <summary>
     /// Literal for code: Mauritius
@@ -4396,9 +5516,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMauritius = "MU";
 
     /// <summary>
+    /// Literal for code: NONEMauritius
+    /// </summary>
+    public const string LiteralNONEMauritius = "urn:iso:std:iso:3166#MU";
+
+    /// <summary>
     /// Literal for code: Maldives
     /// </summary>
     public const string LiteralMaldives = "MV";
+
+    /// <summary>
+    /// Literal for code: NONEMaldives
+    /// </summary>
+    public const string LiteralNONEMaldives = "urn:iso:std:iso:3166#MV";
 
     /// <summary>
     /// Literal for code: Malawi
@@ -4406,9 +5536,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMalawi = "MW";
 
     /// <summary>
+    /// Literal for code: NONEMalawi
+    /// </summary>
+    public const string LiteralNONEMalawi = "urn:iso:std:iso:3166#MW";
+
+    /// <summary>
     /// Literal for code: Mexico
     /// </summary>
     public const string LiteralMexico = "MX";
+
+    /// <summary>
+    /// Literal for code: NONEMexico
+    /// </summary>
+    public const string LiteralNONEMexico = "urn:iso:std:iso:3166#MX";
 
     /// <summary>
     /// Literal for code: Malaysia
@@ -4416,9 +5556,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMalaysia = "MY";
 
     /// <summary>
+    /// Literal for code: NONEMalaysia
+    /// </summary>
+    public const string LiteralNONEMalaysia = "urn:iso:std:iso:3166#MY";
+
+    /// <summary>
     /// Literal for code: Mozambique
     /// </summary>
     public const string LiteralMozambique = "MZ";
+
+    /// <summary>
+    /// Literal for code: NONEMozambique
+    /// </summary>
+    public const string LiteralNONEMozambique = "urn:iso:std:iso:3166#MZ";
 
     /// <summary>
     /// Literal for code: Namibia
@@ -4426,9 +5576,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNamibia = "NA";
 
     /// <summary>
+    /// Literal for code: NONENamibia
+    /// </summary>
+    public const string LiteralNONENamibia = "urn:iso:std:iso:3166#NA";
+
+    /// <summary>
     /// Literal for code: NewCaledonia
     /// </summary>
     public const string LiteralNewCaledonia = "NC";
+
+    /// <summary>
+    /// Literal for code: NONENewCaledonia
+    /// </summary>
+    public const string LiteralNONENewCaledonia = "urn:iso:std:iso:3166#NC";
 
     /// <summary>
     /// Literal for code: NorthCarolina
@@ -4436,9 +5596,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNorthCarolina = "NC";
 
     /// <summary>
+    /// Literal for code: NONENorthCarolina
+    /// </summary>
+    public const string LiteralNONENorthCarolina = "https://www.usps.com/#NC";
+
+    /// <summary>
     /// Literal for code: NorthDakota
     /// </summary>
     public const string LiteralNorthDakota = "ND";
+
+    /// <summary>
+    /// Literal for code: NONENorthDakota
+    /// </summary>
+    public const string LiteralNONENorthDakota = "https://www.usps.com/#ND";
 
     /// <summary>
     /// Literal for code: NigerThe
@@ -4446,9 +5616,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNigerThe = "NE";
 
     /// <summary>
+    /// Literal for code: NONENigerThe
+    /// </summary>
+    public const string LiteralNONENigerThe = "urn:iso:std:iso:3166#NE";
+
+    /// <summary>
     /// Literal for code: Nebraska
     /// </summary>
     public const string LiteralNebraska = "NE";
+
+    /// <summary>
+    /// Literal for code: NONENebraska
+    /// </summary>
+    public const string LiteralNONENebraska = "https://www.usps.com/#NE";
 
     /// <summary>
     /// Literal for code: NorfolkIsland
@@ -4456,9 +5636,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNorfolkIsland = "NF";
 
     /// <summary>
+    /// Literal for code: NONENorfolkIsland
+    /// </summary>
+    public const string LiteralNONENorfolkIsland = "urn:iso:std:iso:3166#NF";
+
+    /// <summary>
     /// Literal for code: Nigeria
     /// </summary>
     public const string LiteralNigeria = "NG";
+
+    /// <summary>
+    /// Literal for code: NONENigeria
+    /// </summary>
+    public const string LiteralNONENigeria = "urn:iso:std:iso:3166#NG";
 
     /// <summary>
     /// Literal for code: NewHebrides
@@ -4466,9 +5656,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNewHebrides = "NH";
 
     /// <summary>
+    /// Literal for code: NONENewHebrides
+    /// </summary>
+    public const string LiteralNONENewHebrides = "urn:iso:std:iso:3166#NH";
+
+    /// <summary>
     /// Literal for code: NewHampshire
     /// </summary>
     public const string LiteralNewHampshire = "NH";
+
+    /// <summary>
+    /// Literal for code: NONENewHampshire
+    /// </summary>
+    public const string LiteralNONENewHampshire = "https://www.usps.com/#NH";
 
     /// <summary>
     /// Literal for code: Nicaragua
@@ -4476,9 +5676,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNicaragua = "NI";
 
     /// <summary>
+    /// Literal for code: NONENicaragua
+    /// </summary>
+    public const string LiteralNONENicaragua = "urn:iso:std:iso:3166#NI";
+
+    /// <summary>
     /// Literal for code: NewJersey
     /// </summary>
     public const string LiteralNewJersey = "NJ";
+
+    /// <summary>
+    /// Literal for code: NONENewJersey
+    /// </summary>
+    public const string LiteralNONENewJersey = "https://www.usps.com/#NJ";
 
     /// <summary>
     /// Literal for code: NetherlandsThe
@@ -4486,9 +5696,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNetherlandsThe = "NL";
 
     /// <summary>
+    /// Literal for code: NONENetherlandsThe
+    /// </summary>
+    public const string LiteralNONENetherlandsThe = "urn:iso:std:iso:3166#NL";
+
+    /// <summary>
     /// Literal for code: NewMexico
     /// </summary>
     public const string LiteralNewMexico = "NM";
+
+    /// <summary>
+    /// Literal for code: NONENewMexico
+    /// </summary>
+    public const string LiteralNONENewMexico = "https://www.usps.com/#NM";
 
     /// <summary>
     /// Literal for code: Norway
@@ -4496,9 +5716,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNorway = "NO";
 
     /// <summary>
+    /// Literal for code: NONENorway
+    /// </summary>
+    public const string LiteralNONENorway = "urn:iso:std:iso:3166#NO";
+
+    /// <summary>
     /// Literal for code: Nepal
     /// </summary>
     public const string LiteralNepal = "NP";
+
+    /// <summary>
+    /// Literal for code: NONENepal
+    /// </summary>
+    public const string LiteralNONENepal = "urn:iso:std:iso:3166#NP";
 
     /// <summary>
     /// Literal for code: DronningMaudLand
@@ -4506,9 +5736,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDronningMaudLand = "NQ";
 
     /// <summary>
+    /// Literal for code: NONEDronningMaudLand
+    /// </summary>
+    public const string LiteralNONEDronningMaudLand = "urn:iso:std:iso:3166#NQ";
+
+    /// <summary>
     /// Literal for code: Nauru
     /// </summary>
     public const string LiteralNauru = "NR";
+
+    /// <summary>
+    /// Literal for code: NONENauru
+    /// </summary>
+    public const string LiteralNONENauru = "urn:iso:std:iso:3166#NR";
 
     /// <summary>
     /// Literal for code: NeutralZone
@@ -4516,9 +5756,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNeutralZone = "NT";
 
     /// <summary>
+    /// Literal for code: NONENeutralZone
+    /// </summary>
+    public const string LiteralNONENeutralZone = "urn:iso:std:iso:3166#NT";
+
+    /// <summary>
     /// Literal for code: Niue
     /// </summary>
     public const string LiteralNiue = "NU";
+
+    /// <summary>
+    /// Literal for code: NONENiue
+    /// </summary>
+    public const string LiteralNONENiue = "urn:iso:std:iso:3166#NU";
 
     /// <summary>
     /// Literal for code: Nevada
@@ -4526,9 +5776,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNevada = "NV";
 
     /// <summary>
+    /// Literal for code: NONENevada
+    /// </summary>
+    public const string LiteralNONENevada = "https://www.usps.com/#NV";
+
+    /// <summary>
     /// Literal for code: NewYork
     /// </summary>
     public const string LiteralNewYork = "NY";
+
+    /// <summary>
+    /// Literal for code: NONENewYork
+    /// </summary>
+    public const string LiteralNONENewYork = "https://www.usps.com/#NY";
 
     /// <summary>
     /// Literal for code: NewZealand
@@ -4536,9 +5796,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralNewZealand = "NZ";
 
     /// <summary>
+    /// Literal for code: NONENewZealand
+    /// </summary>
+    public const string LiteralNONENewZealand = "urn:iso:std:iso:3166#NZ";
+
+    /// <summary>
     /// Literal for code: Ohio
     /// </summary>
     public const string LiteralOhio = "OH";
+
+    /// <summary>
+    /// Literal for code: NONEOhio
+    /// </summary>
+    public const string LiteralNONEOhio = "https://www.usps.com/#OH";
 
     /// <summary>
     /// Literal for code: Oklahoma
@@ -4546,9 +5816,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOklahoma = "OK";
 
     /// <summary>
+    /// Literal for code: NONEOklahoma
+    /// </summary>
+    public const string LiteralNONEOklahoma = "https://www.usps.com/#OK";
+
+    /// <summary>
     /// Literal for code: Oman
     /// </summary>
     public const string LiteralOman = "OM";
+
+    /// <summary>
+    /// Literal for code: NONEOman
+    /// </summary>
+    public const string LiteralNONEOman = "urn:iso:std:iso:3166#OM";
 
     /// <summary>
     /// Literal for code: Oregon
@@ -4556,9 +5836,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOregon = "OR";
 
     /// <summary>
+    /// Literal for code: NONEOregon
+    /// </summary>
+    public const string LiteralNONEOregon = "https://www.usps.com/#OR";
+
+    /// <summary>
     /// Literal for code: Panama
     /// </summary>
     public const string LiteralPanama = "PA";
+
+    /// <summary>
+    /// Literal for code: NONEPanama
+    /// </summary>
+    public const string LiteralNONEPanama = "urn:iso:std:iso:3166#PA";
 
     /// <summary>
     /// Literal for code: Pennsylvania
@@ -4566,9 +5856,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPennsylvania = "PA";
 
     /// <summary>
+    /// Literal for code: NONEPennsylvania
+    /// </summary>
+    public const string LiteralNONEPennsylvania = "https://www.usps.com/#PA";
+
+    /// <summary>
     /// Literal for code: PacificIslandsTrustTerritory
     /// </summary>
     public const string LiteralPacificIslandsTrustTerritory = "PC";
+
+    /// <summary>
+    /// Literal for code: NONEPacificIslandsTrustTerritory
+    /// </summary>
+    public const string LiteralNONEPacificIslandsTrustTerritory = "urn:iso:std:iso:3166#PC";
 
     /// <summary>
     /// Literal for code: Peru
@@ -4576,9 +5876,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPeru = "PE";
 
     /// <summary>
+    /// Literal for code: NONEPeru
+    /// </summary>
+    public const string LiteralNONEPeru = "urn:iso:std:iso:3166#PE";
+
+    /// <summary>
     /// Literal for code: FrenchPolynesia
     /// </summary>
     public const string LiteralFrenchPolynesia = "PF";
+
+    /// <summary>
+    /// Literal for code: NONEFrenchPolynesia
+    /// </summary>
+    public const string LiteralNONEFrenchPolynesia = "urn:iso:std:iso:3166#PF";
 
     /// <summary>
     /// Literal for code: PapuaNewGuinea
@@ -4586,9 +5896,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPapuaNewGuinea = "PG";
 
     /// <summary>
+    /// Literal for code: NONEPapuaNewGuinea
+    /// </summary>
+    public const string LiteralNONEPapuaNewGuinea = "urn:iso:std:iso:3166#PG";
+
+    /// <summary>
     /// Literal for code: PhilippinesThe
     /// </summary>
     public const string LiteralPhilippinesThe = "PH";
+
+    /// <summary>
+    /// Literal for code: NONEPhilippinesThe
+    /// </summary>
+    public const string LiteralNONEPhilippinesThe = "urn:iso:std:iso:3166#PH";
 
     /// <summary>
     /// Literal for code: Pakistan
@@ -4596,9 +5916,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPakistan = "PK";
 
     /// <summary>
+    /// Literal for code: NONEPakistan
+    /// </summary>
+    public const string LiteralNONEPakistan = "urn:iso:std:iso:3166#PK";
+
+    /// <summary>
     /// Literal for code: Poland
     /// </summary>
     public const string LiteralPoland = "PL";
+
+    /// <summary>
+    /// Literal for code: NONEPoland
+    /// </summary>
+    public const string LiteralNONEPoland = "urn:iso:std:iso:3166#PL";
 
     /// <summary>
     /// Literal for code: SaintPierreAndMiquelon
@@ -4606,9 +5936,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSaintPierreAndMiquelon = "PM";
 
     /// <summary>
+    /// Literal for code: NONESaintPierreAndMiquelon
+    /// </summary>
+    public const string LiteralNONESaintPierreAndMiquelon = "urn:iso:std:iso:3166#PM";
+
+    /// <summary>
     /// Literal for code: Pitcairn
     /// </summary>
     public const string LiteralPitcairn = "PN";
+
+    /// <summary>
+    /// Literal for code: NONEPitcairn
+    /// </summary>
+    public const string LiteralNONEPitcairn = "urn:iso:std:iso:3166#PN";
 
     /// <summary>
     /// Literal for code: PuertoRico
@@ -4616,9 +5956,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPuertoRico = "PR";
 
     /// <summary>
+    /// Literal for code: NONEPuertoRico
+    /// </summary>
+    public const string LiteralNONEPuertoRico = "urn:iso:std:iso:3166#PR";
+
+    /// <summary>
     /// Literal for code: PuertoRico_2
     /// </summary>
     public const string LiteralPuertoRico_2 = "PR";
+
+    /// <summary>
+    /// Literal for code: NONEPuertoRico_2
+    /// </summary>
+    public const string LiteralNONEPuertoRico_2 = "https://www.usps.com/#PR";
 
     /// <summary>
     /// Literal for code: PalestineStateOf
@@ -4626,9 +5976,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPalestineStateOf = "PS";
 
     /// <summary>
+    /// Literal for code: NONEPalestineStateOf
+    /// </summary>
+    public const string LiteralNONEPalestineStateOf = "urn:iso:std:iso:3166#PS";
+
+    /// <summary>
     /// Literal for code: Portugal
     /// </summary>
     public const string LiteralPortugal = "PT";
+
+    /// <summary>
+    /// Literal for code: NONEPortugal
+    /// </summary>
+    public const string LiteralNONEPortugal = "urn:iso:std:iso:3166#PT";
 
     /// <summary>
     /// Literal for code: UnitedStatesMiscellaneousPacificIslands
@@ -4636,9 +5996,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnitedStatesMiscellaneousPacificIslands = "PU";
 
     /// <summary>
+    /// Literal for code: NONEUnitedStatesMiscellaneousPacificIslands
+    /// </summary>
+    public const string LiteralNONEUnitedStatesMiscellaneousPacificIslands = "urn:iso:std:iso:3166#PU";
+
+    /// <summary>
     /// Literal for code: Palau
     /// </summary>
     public const string LiteralPalau = "PW";
+
+    /// <summary>
+    /// Literal for code: NONEPalau
+    /// </summary>
+    public const string LiteralNONEPalau = "urn:iso:std:iso:3166#PW";
 
     /// <summary>
     /// Literal for code: Palau_2
@@ -4646,9 +6016,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPalau_2 = "PW";
 
     /// <summary>
+    /// Literal for code: NONEPalau_2
+    /// </summary>
+    public const string LiteralNONEPalau_2 = "https://www.usps.com/#PW";
+
+    /// <summary>
     /// Literal for code: Paraguay
     /// </summary>
     public const string LiteralParaguay = "PY";
+
+    /// <summary>
+    /// Literal for code: NONEParaguay
+    /// </summary>
+    public const string LiteralNONEParaguay = "urn:iso:std:iso:3166#PY";
 
     /// <summary>
     /// Literal for code: PanamaCanalZone
@@ -4656,9 +6036,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPanamaCanalZone = "PZ";
 
     /// <summary>
+    /// Literal for code: NONEPanamaCanalZone
+    /// </summary>
+    public const string LiteralNONEPanamaCanalZone = "urn:iso:std:iso:3166#PZ";
+
+    /// <summary>
     /// Literal for code: Qatar
     /// </summary>
     public const string LiteralQatar = "QA";
+
+    /// <summary>
+    /// Literal for code: NONEQatar
+    /// </summary>
+    public const string LiteralNONEQatar = "urn:iso:std:iso:3166#QA";
 
     /// <summary>
     /// Literal for code: Reunion
@@ -4666,9 +6056,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralReunion = "RE";
 
     /// <summary>
+    /// Literal for code: NONEReunion
+    /// </summary>
+    public const string LiteralNONEReunion = "urn:iso:std:iso:3166#RE";
+
+    /// <summary>
     /// Literal for code: SouthernRhodesia
     /// </summary>
     public const string LiteralSouthernRhodesia = "RH";
+
+    /// <summary>
+    /// Literal for code: NONESouthernRhodesia
+    /// </summary>
+    public const string LiteralNONESouthernRhodesia = "urn:iso:std:iso:3166#RH";
 
     /// <summary>
     /// Literal for code: RhodeIsland
@@ -4676,9 +6076,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRhodeIsland = "RI";
 
     /// <summary>
+    /// Literal for code: NONERhodeIsland
+    /// </summary>
+    public const string LiteralNONERhodeIsland = "https://www.usps.com/#RI";
+
+    /// <summary>
     /// Literal for code: Romania
     /// </summary>
     public const string LiteralRomania = "RO";
+
+    /// <summary>
+    /// Literal for code: NONERomania
+    /// </summary>
+    public const string LiteralNONERomania = "urn:iso:std:iso:3166#RO";
 
     /// <summary>
     /// Literal for code: Serbia
@@ -4686,9 +6096,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSerbia = "RS";
 
     /// <summary>
+    /// Literal for code: NONESerbia
+    /// </summary>
+    public const string LiteralNONESerbia = "urn:iso:std:iso:3166#RS";
+
+    /// <summary>
     /// Literal for code: RussianFederationThe
     /// </summary>
     public const string LiteralRussianFederationThe = "RU";
+
+    /// <summary>
+    /// Literal for code: NONERussianFederationThe
+    /// </summary>
+    public const string LiteralNONERussianFederationThe = "urn:iso:std:iso:3166#RU";
 
     /// <summary>
     /// Literal for code: Rwanda
@@ -4696,9 +6116,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRwanda = "RW";
 
     /// <summary>
+    /// Literal for code: NONERwanda
+    /// </summary>
+    public const string LiteralNONERwanda = "urn:iso:std:iso:3166#RW";
+
+    /// <summary>
     /// Literal for code: SaudiArabia
     /// </summary>
     public const string LiteralSaudiArabia = "SA";
+
+    /// <summary>
+    /// Literal for code: NONESaudiArabia
+    /// </summary>
+    public const string LiteralNONESaudiArabia = "urn:iso:std:iso:3166#SA";
 
     /// <summary>
     /// Literal for code: SolomonIslands
@@ -4706,9 +6136,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSolomonIslands = "SB";
 
     /// <summary>
+    /// Literal for code: NONESolomonIslands
+    /// </summary>
+    public const string LiteralNONESolomonIslands = "urn:iso:std:iso:3166#SB";
+
+    /// <summary>
     /// Literal for code: Seychelles
     /// </summary>
     public const string LiteralSeychelles = "SC";
+
+    /// <summary>
+    /// Literal for code: NONESeychelles
+    /// </summary>
+    public const string LiteralNONESeychelles = "urn:iso:std:iso:3166#SC";
 
     /// <summary>
     /// Literal for code: SouthCarolina
@@ -4716,9 +6156,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSouthCarolina = "SC";
 
     /// <summary>
+    /// Literal for code: NONESouthCarolina
+    /// </summary>
+    public const string LiteralNONESouthCarolina = "https://www.usps.com/#SC";
+
+    /// <summary>
     /// Literal for code: SudanThe
     /// </summary>
     public const string LiteralSudanThe = "SD";
+
+    /// <summary>
+    /// Literal for code: NONESudanThe
+    /// </summary>
+    public const string LiteralNONESudanThe = "urn:iso:std:iso:3166#SD";
 
     /// <summary>
     /// Literal for code: SouthDakota
@@ -4726,9 +6176,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSouthDakota = "SD";
 
     /// <summary>
+    /// Literal for code: NONESouthDakota
+    /// </summary>
+    public const string LiteralNONESouthDakota = "https://www.usps.com/#SD";
+
+    /// <summary>
     /// Literal for code: Sweden
     /// </summary>
     public const string LiteralSweden = "SE";
+
+    /// <summary>
+    /// Literal for code: NONESweden
+    /// </summary>
+    public const string LiteralNONESweden = "urn:iso:std:iso:3166#SE";
 
     /// <summary>
     /// Literal for code: Singapore
@@ -4736,9 +6196,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSingapore = "SG";
 
     /// <summary>
+    /// Literal for code: NONESingapore
+    /// </summary>
+    public const string LiteralNONESingapore = "urn:iso:std:iso:3166#SG";
+
+    /// <summary>
     /// Literal for code: SaintHelenaAscensionAndTristanDaCunha
     /// </summary>
     public const string LiteralSaintHelenaAscensionAndTristanDaCunha = "SH";
+
+    /// <summary>
+    /// Literal for code: NONESaintHelenaAscensionAndTristanDaCunha
+    /// </summary>
+    public const string LiteralNONESaintHelenaAscensionAndTristanDaCunha = "urn:iso:std:iso:3166#SH";
 
     /// <summary>
     /// Literal for code: Slovenia
@@ -4746,9 +6216,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSlovenia = "SI";
 
     /// <summary>
+    /// Literal for code: NONESlovenia
+    /// </summary>
+    public const string LiteralNONESlovenia = "urn:iso:std:iso:3166#SI";
+
+    /// <summary>
     /// Literal for code: SvalbardAndJanMayen
     /// </summary>
     public const string LiteralSvalbardAndJanMayen = "SJ";
+
+    /// <summary>
+    /// Literal for code: NONESvalbardAndJanMayen
+    /// </summary>
+    public const string LiteralNONESvalbardAndJanMayen = "urn:iso:std:iso:3166#SJ";
 
     /// <summary>
     /// Literal for code: Slovakia
@@ -4756,9 +6236,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSlovakia = "SK";
 
     /// <summary>
+    /// Literal for code: NONESlovakia
+    /// </summary>
+    public const string LiteralNONESlovakia = "urn:iso:std:iso:3166#SK";
+
+    /// <summary>
     /// Literal for code: SierraLeone
     /// </summary>
     public const string LiteralSierraLeone = "SL";
+
+    /// <summary>
+    /// Literal for code: NONESierraLeone
+    /// </summary>
+    public const string LiteralNONESierraLeone = "urn:iso:std:iso:3166#SL";
 
     /// <summary>
     /// Literal for code: SanMarino
@@ -4766,9 +6256,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSanMarino = "SM";
 
     /// <summary>
+    /// Literal for code: NONESanMarino
+    /// </summary>
+    public const string LiteralNONESanMarino = "urn:iso:std:iso:3166#SM";
+
+    /// <summary>
     /// Literal for code: Senegal
     /// </summary>
     public const string LiteralSenegal = "SN";
+
+    /// <summary>
+    /// Literal for code: NONESenegal
+    /// </summary>
+    public const string LiteralNONESenegal = "urn:iso:std:iso:3166#SN";
 
     /// <summary>
     /// Literal for code: Somalia
@@ -4776,9 +6276,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSomalia = "SO";
 
     /// <summary>
+    /// Literal for code: NONESomalia
+    /// </summary>
+    public const string LiteralNONESomalia = "urn:iso:std:iso:3166#SO";
+
+    /// <summary>
     /// Literal for code: Suriname
     /// </summary>
     public const string LiteralSuriname = "SR";
+
+    /// <summary>
+    /// Literal for code: NONESuriname
+    /// </summary>
+    public const string LiteralNONESuriname = "urn:iso:std:iso:3166#SR";
 
     /// <summary>
     /// Literal for code: SouthSudan
@@ -4786,9 +6296,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSouthSudan = "SS";
 
     /// <summary>
+    /// Literal for code: NONESouthSudan
+    /// </summary>
+    public const string LiteralNONESouthSudan = "urn:iso:std:iso:3166#SS";
+
+    /// <summary>
     /// Literal for code: SaoTomeAndPrincipe
     /// </summary>
     public const string LiteralSaoTomeAndPrincipe = "ST";
+
+    /// <summary>
+    /// Literal for code: NONESaoTomeAndPrincipe
+    /// </summary>
+    public const string LiteralNONESaoTomeAndPrincipe = "urn:iso:std:iso:3166#ST";
 
     /// <summary>
     /// Literal for code: USSR
@@ -4796,9 +6316,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUSSR = "SU";
 
     /// <summary>
+    /// Literal for code: NONEUSSR
+    /// </summary>
+    public const string LiteralNONEUSSR = "urn:iso:std:iso:3166#SU";
+
+    /// <summary>
     /// Literal for code: ElSalvador
     /// </summary>
     public const string LiteralElSalvador = "SV";
+
+    /// <summary>
+    /// Literal for code: NONEElSalvador
+    /// </summary>
+    public const string LiteralNONEElSalvador = "urn:iso:std:iso:3166#SV";
 
     /// <summary>
     /// Literal for code: SintMaartenDutchPart
@@ -4806,9 +6336,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSintMaartenDutchPart = "SX";
 
     /// <summary>
+    /// Literal for code: NONESintMaartenDutchPart
+    /// </summary>
+    public const string LiteralNONESintMaartenDutchPart = "urn:iso:std:iso:3166#SX";
+
+    /// <summary>
     /// Literal for code: SyrianArabRepublic
     /// </summary>
     public const string LiteralSyrianArabRepublic = "SY";
+
+    /// <summary>
+    /// Literal for code: NONESyrianArabRepublic
+    /// </summary>
+    public const string LiteralNONESyrianArabRepublic = "urn:iso:std:iso:3166#SY";
 
     /// <summary>
     /// Literal for code: Swaziland
@@ -4816,9 +6356,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSwaziland = "SZ";
 
     /// <summary>
+    /// Literal for code: NONESwaziland
+    /// </summary>
+    public const string LiteralNONESwaziland = "urn:iso:std:iso:3166#SZ";
+
+    /// <summary>
     /// Literal for code: TurksAndCaicosIslandsThe
     /// </summary>
     public const string LiteralTurksAndCaicosIslandsThe = "TC";
+
+    /// <summary>
+    /// Literal for code: NONETurksAndCaicosIslandsThe
+    /// </summary>
+    public const string LiteralNONETurksAndCaicosIslandsThe = "urn:iso:std:iso:3166#TC";
 
     /// <summary>
     /// Literal for code: Chad
@@ -4826,9 +6376,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralChad = "TD";
 
     /// <summary>
+    /// Literal for code: NONEChad
+    /// </summary>
+    public const string LiteralNONEChad = "urn:iso:std:iso:3166#TD";
+
+    /// <summary>
     /// Literal for code: FrenchSouthernTerritoriesThe
     /// </summary>
     public const string LiteralFrenchSouthernTerritoriesThe = "TF";
+
+    /// <summary>
+    /// Literal for code: NONEFrenchSouthernTerritoriesThe
+    /// </summary>
+    public const string LiteralNONEFrenchSouthernTerritoriesThe = "urn:iso:std:iso:3166#TF";
 
     /// <summary>
     /// Literal for code: Togo
@@ -4836,9 +6396,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTogo = "TG";
 
     /// <summary>
+    /// Literal for code: NONETogo
+    /// </summary>
+    public const string LiteralNONETogo = "urn:iso:std:iso:3166#TG";
+
+    /// <summary>
     /// Literal for code: Thailand
     /// </summary>
     public const string LiteralThailand = "TH";
+
+    /// <summary>
+    /// Literal for code: NONEThailand
+    /// </summary>
+    public const string LiteralNONEThailand = "urn:iso:std:iso:3166#TH";
 
     /// <summary>
     /// Literal for code: Tajikistan
@@ -4846,9 +6416,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTajikistan = "TJ";
 
     /// <summary>
+    /// Literal for code: NONETajikistan
+    /// </summary>
+    public const string LiteralNONETajikistan = "urn:iso:std:iso:3166#TJ";
+
+    /// <summary>
     /// Literal for code: Tokelau
     /// </summary>
     public const string LiteralTokelau = "TK";
+
+    /// <summary>
+    /// Literal for code: NONETokelau
+    /// </summary>
+    public const string LiteralNONETokelau = "urn:iso:std:iso:3166#TK";
 
     /// <summary>
     /// Literal for code: TimorLeste
@@ -4856,9 +6436,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTimorLeste = "TL";
 
     /// <summary>
+    /// Literal for code: NONETimorLeste
+    /// </summary>
+    public const string LiteralNONETimorLeste = "urn:iso:std:iso:3166#TL";
+
+    /// <summary>
     /// Literal for code: Turkmenistan
     /// </summary>
     public const string LiteralTurkmenistan = "TM";
+
+    /// <summary>
+    /// Literal for code: NONETurkmenistan
+    /// </summary>
+    public const string LiteralNONETurkmenistan = "urn:iso:std:iso:3166#TM";
 
     /// <summary>
     /// Literal for code: Tunisia
@@ -4866,9 +6456,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTunisia = "TN";
 
     /// <summary>
+    /// Literal for code: NONETunisia
+    /// </summary>
+    public const string LiteralNONETunisia = "urn:iso:std:iso:3166#TN";
+
+    /// <summary>
     /// Literal for code: Tennessee
     /// </summary>
     public const string LiteralTennessee = "TN";
+
+    /// <summary>
+    /// Literal for code: NONETennessee
+    /// </summary>
+    public const string LiteralNONETennessee = "https://www.usps.com/#TN";
 
     /// <summary>
     /// Literal for code: Tonga
@@ -4876,9 +6476,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTonga = "TO";
 
     /// <summary>
+    /// Literal for code: NONETonga
+    /// </summary>
+    public const string LiteralNONETonga = "urn:iso:std:iso:3166#TO";
+
+    /// <summary>
     /// Literal for code: EastTimor
     /// </summary>
     public const string LiteralEastTimor = "TP";
+
+    /// <summary>
+    /// Literal for code: NONEEastTimor
+    /// </summary>
+    public const string LiteralNONEEastTimor = "urn:iso:std:iso:3166#TP";
 
     /// <summary>
     /// Literal for code: Turkey
@@ -4886,9 +6496,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTurkey = "TR";
 
     /// <summary>
+    /// Literal for code: NONETurkey
+    /// </summary>
+    public const string LiteralNONETurkey = "urn:iso:std:iso:3166#TR";
+
+    /// <summary>
     /// Literal for code: TrinidadAndTobago
     /// </summary>
     public const string LiteralTrinidadAndTobago = "TT";
+
+    /// <summary>
+    /// Literal for code: NONETrinidadAndTobago
+    /// </summary>
+    public const string LiteralNONETrinidadAndTobago = "urn:iso:std:iso:3166#TT";
 
     /// <summary>
     /// Literal for code: Tuvalu
@@ -4896,9 +6516,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTuvalu = "TV";
 
     /// <summary>
+    /// Literal for code: NONETuvalu
+    /// </summary>
+    public const string LiteralNONETuvalu = "urn:iso:std:iso:3166#TV";
+
+    /// <summary>
     /// Literal for code: TaiwanProvinceOfChina
     /// </summary>
     public const string LiteralTaiwanProvinceOfChina = "TW";
+
+    /// <summary>
+    /// Literal for code: NONETaiwanProvinceOfChina
+    /// </summary>
+    public const string LiteralNONETaiwanProvinceOfChina = "urn:iso:std:iso:3166#TW";
 
     /// <summary>
     /// Literal for code: Texas
@@ -4906,9 +6536,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTexas = "TX";
 
     /// <summary>
+    /// Literal for code: NONETexas
+    /// </summary>
+    public const string LiteralNONETexas = "https://www.usps.com/#TX";
+
+    /// <summary>
     /// Literal for code: TanzaniaUnitedRepublicOf
     /// </summary>
     public const string LiteralTanzaniaUnitedRepublicOf = "TZ";
+
+    /// <summary>
+    /// Literal for code: NONETanzaniaUnitedRepublicOf
+    /// </summary>
+    public const string LiteralNONETanzaniaUnitedRepublicOf = "urn:iso:std:iso:3166#TZ";
 
     /// <summary>
     /// Literal for code: Ukraine
@@ -4916,9 +6556,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUkraine = "UA";
 
     /// <summary>
+    /// Literal for code: NONEUkraine
+    /// </summary>
+    public const string LiteralNONEUkraine = "urn:iso:std:iso:3166#UA";
+
+    /// <summary>
     /// Literal for code: Uganda
     /// </summary>
     public const string LiteralUganda = "UG";
+
+    /// <summary>
+    /// Literal for code: NONEUganda
+    /// </summary>
+    public const string LiteralNONEUganda = "urn:iso:std:iso:3166#UG";
 
     /// <summary>
     /// Literal for code: UnitedStatesMinorOutlyingIslandsThe
@@ -4926,9 +6576,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnitedStatesMinorOutlyingIslandsThe = "UM";
 
     /// <summary>
+    /// Literal for code: NONEUnitedStatesMinorOutlyingIslandsThe
+    /// </summary>
+    public const string LiteralNONEUnitedStatesMinorOutlyingIslandsThe = "urn:iso:std:iso:3166#UM";
+
+    /// <summary>
     /// Literal for code: USMinorOutlyingIslands
     /// </summary>
     public const string LiteralUSMinorOutlyingIslands = "UM";
+
+    /// <summary>
+    /// Literal for code: NONEUSMinorOutlyingIslands
+    /// </summary>
+    public const string LiteralNONEUSMinorOutlyingIslands = "https://www.usps.com/#UM";
 
     /// <summary>
     /// Literal for code: UnitedStatesOfAmericaThe
@@ -4936,9 +6596,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnitedStatesOfAmericaThe = "US";
 
     /// <summary>
+    /// Literal for code: NONEUnitedStatesOfAmericaThe
+    /// </summary>
+    public const string LiteralNONEUnitedStatesOfAmericaThe = "urn:iso:std:iso:3166#US";
+
+    /// <summary>
     /// Literal for code: Utah
     /// </summary>
     public const string LiteralUtah = "UT";
+
+    /// <summary>
+    /// Literal for code: NONEUtah
+    /// </summary>
+    public const string LiteralNONEUtah = "https://www.usps.com/#UT";
 
     /// <summary>
     /// Literal for code: Uruguay
@@ -4946,9 +6616,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUruguay = "UY";
 
     /// <summary>
+    /// Literal for code: NONEUruguay
+    /// </summary>
+    public const string LiteralNONEUruguay = "urn:iso:std:iso:3166#UY";
+
+    /// <summary>
     /// Literal for code: Uzbekistan
     /// </summary>
     public const string LiteralUzbekistan = "UZ";
+
+    /// <summary>
+    /// Literal for code: NONEUzbekistan
+    /// </summary>
+    public const string LiteralNONEUzbekistan = "urn:iso:std:iso:3166#UZ";
 
     /// <summary>
     /// Literal for code: HolySeeThe
@@ -4956,9 +6636,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHolySeeThe = "VA";
 
     /// <summary>
+    /// Literal for code: NONEHolySeeThe
+    /// </summary>
+    public const string LiteralNONEHolySeeThe = "urn:iso:std:iso:3166#VA";
+
+    /// <summary>
     /// Literal for code: Virginia
     /// </summary>
     public const string LiteralVirginia = "VA";
+
+    /// <summary>
+    /// Literal for code: NONEVirginia
+    /// </summary>
+    public const string LiteralNONEVirginia = "https://www.usps.com/#VA";
 
     /// <summary>
     /// Literal for code: SaintVincentAndTheGrenadines
@@ -4966,9 +6656,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSaintVincentAndTheGrenadines = "VC";
 
     /// <summary>
+    /// Literal for code: NONESaintVincentAndTheGrenadines
+    /// </summary>
+    public const string LiteralNONESaintVincentAndTheGrenadines = "urn:iso:std:iso:3166#VC";
+
+    /// <summary>
     /// Literal for code: VietNamDemocraticRepublicOf
     /// </summary>
     public const string LiteralVietNamDemocraticRepublicOf = "VD";
+
+    /// <summary>
+    /// Literal for code: NONEVietNamDemocraticRepublicOf
+    /// </summary>
+    public const string LiteralNONEVietNamDemocraticRepublicOf = "urn:iso:std:iso:3166#VD";
 
     /// <summary>
     /// Literal for code: VenezuelaBolivarianRepublicOf
@@ -4976,9 +6676,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVenezuelaBolivarianRepublicOf = "VE";
 
     /// <summary>
+    /// Literal for code: NONEVenezuelaBolivarianRepublicOf
+    /// </summary>
+    public const string LiteralNONEVenezuelaBolivarianRepublicOf = "urn:iso:std:iso:3166#VE";
+
+    /// <summary>
     /// Literal for code: VirginIslandsBritish
     /// </summary>
     public const string LiteralVirginIslandsBritish = "VG";
+
+    /// <summary>
+    /// Literal for code: NONEVirginIslandsBritish
+    /// </summary>
+    public const string LiteralNONEVirginIslandsBritish = "urn:iso:std:iso:3166#VG";
 
     /// <summary>
     /// Literal for code: VirginIslandsUS
@@ -4986,9 +6696,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVirginIslandsUS = "VI";
 
     /// <summary>
+    /// Literal for code: NONEVirginIslandsUS
+    /// </summary>
+    public const string LiteralNONEVirginIslandsUS = "urn:iso:std:iso:3166#VI";
+
+    /// <summary>
     /// Literal for code: VirginIslandsOfTheUS
     /// </summary>
     public const string LiteralVirginIslandsOfTheUS = "VI";
+
+    /// <summary>
+    /// Literal for code: NONEVirginIslandsOfTheUS
+    /// </summary>
+    public const string LiteralNONEVirginIslandsOfTheUS = "https://www.usps.com/#VI";
 
     /// <summary>
     /// Literal for code: VietNam
@@ -4996,9 +6716,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVietNam = "VN";
 
     /// <summary>
+    /// Literal for code: NONEVietNam
+    /// </summary>
+    public const string LiteralNONEVietNam = "urn:iso:std:iso:3166#VN";
+
+    /// <summary>
     /// Literal for code: Vermont
     /// </summary>
     public const string LiteralVermont = "VT";
+
+    /// <summary>
+    /// Literal for code: NONEVermont
+    /// </summary>
+    public const string LiteralNONEVermont = "https://www.usps.com/#VT";
 
     /// <summary>
     /// Literal for code: Vanuatu
@@ -5006,9 +6736,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVanuatu = "VU";
 
     /// <summary>
+    /// Literal for code: NONEVanuatu
+    /// </summary>
+    public const string LiteralNONEVanuatu = "urn:iso:std:iso:3166#VU";
+
+    /// <summary>
     /// Literal for code: Washington
     /// </summary>
     public const string LiteralWashington = "WA";
+
+    /// <summary>
+    /// Literal for code: NONEWashington
+    /// </summary>
+    public const string LiteralNONEWashington = "https://www.usps.com/#WA";
 
     /// <summary>
     /// Literal for code: WallisAndFutuna
@@ -5016,9 +6756,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWallisAndFutuna = "WF";
 
     /// <summary>
+    /// Literal for code: NONEWallisAndFutuna
+    /// </summary>
+    public const string LiteralNONEWallisAndFutuna = "urn:iso:std:iso:3166#WF";
+
+    /// <summary>
     /// Literal for code: Wisconsin
     /// </summary>
     public const string LiteralWisconsin = "WI";
+
+    /// <summary>
+    /// Literal for code: NONEWisconsin
+    /// </summary>
+    public const string LiteralNONEWisconsin = "https://www.usps.com/#WI";
 
     /// <summary>
     /// Literal for code: WakeIsland
@@ -5026,9 +6776,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWakeIsland = "WK";
 
     /// <summary>
+    /// Literal for code: NONEWakeIsland
+    /// </summary>
+    public const string LiteralNONEWakeIsland = "urn:iso:std:iso:3166#WK";
+
+    /// <summary>
     /// Literal for code: Samoa
     /// </summary>
     public const string LiteralSamoa = "WS";
+
+    /// <summary>
+    /// Literal for code: NONESamoa
+    /// </summary>
+    public const string LiteralNONESamoa = "urn:iso:std:iso:3166#WS";
 
     /// <summary>
     /// Literal for code: WestVirginia
@@ -5036,9 +6796,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralWestVirginia = "WV";
 
     /// <summary>
+    /// Literal for code: NONEWestVirginia
+    /// </summary>
+    public const string LiteralNONEWestVirginia = "https://www.usps.com/#WV";
+
+    /// <summary>
     /// Literal for code: Wyoming
     /// </summary>
     public const string LiteralWyoming = "WY";
+
+    /// <summary>
+    /// Literal for code: NONEWyoming
+    /// </summary>
+    public const string LiteralNONEWyoming = "https://www.usps.com/#WY";
 
     /// <summary>
     /// Literal for code: YemenDemocratic
@@ -5046,9 +6816,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralYemenDemocratic = "YD";
 
     /// <summary>
+    /// Literal for code: NONEYemenDemocratic
+    /// </summary>
+    public const string LiteralNONEYemenDemocratic = "urn:iso:std:iso:3166#YD";
+
+    /// <summary>
     /// Literal for code: Yemen
     /// </summary>
     public const string LiteralYemen = "YE";
+
+    /// <summary>
+    /// Literal for code: NONEYemen
+    /// </summary>
+    public const string LiteralNONEYemen = "urn:iso:std:iso:3166#YE";
 
     /// <summary>
     /// Literal for code: Mayotte
@@ -5056,9 +6836,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMayotte = "YT";
 
     /// <summary>
+    /// Literal for code: NONEMayotte
+    /// </summary>
+    public const string LiteralNONEMayotte = "urn:iso:std:iso:3166#YT";
+
+    /// <summary>
     /// Literal for code: Yugoslavia
     /// </summary>
     public const string LiteralYugoslavia = "YU";
+
+    /// <summary>
+    /// Literal for code: NONEYugoslavia
+    /// </summary>
+    public const string LiteralNONEYugoslavia = "urn:iso:std:iso:3166#YU";
 
     /// <summary>
     /// Literal for code: SouthAfrica
@@ -5066,9 +6856,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSouthAfrica = "ZA";
 
     /// <summary>
+    /// Literal for code: NONESouthAfrica
+    /// </summary>
+    public const string LiteralNONESouthAfrica = "urn:iso:std:iso:3166#ZA";
+
+    /// <summary>
     /// Literal for code: Zambia
     /// </summary>
     public const string LiteralZambia = "ZM";
+
+    /// <summary>
+    /// Literal for code: NONEZambia
+    /// </summary>
+    public const string LiteralNONEZambia = "urn:iso:std:iso:3166#ZM";
 
     /// <summary>
     /// Literal for code: Zaire
@@ -5076,8 +6876,748 @@ namespace fhirCsR3.ValueSets
     public const string LiteralZaire = "ZR";
 
     /// <summary>
+    /// Literal for code: NONEZaire
+    /// </summary>
+    public const string LiteralNONEZaire = "urn:iso:std:iso:3166#ZR";
+
+    /// <summary>
     /// Literal for code: Zimbabwe
     /// </summary>
     public const string LiteralZimbabwe = "ZW";
+
+    /// <summary>
+    /// Literal for code: NONEZimbabwe
+    /// </summary>
+    public const string LiteralNONEZimbabwe = "urn:iso:std:iso:3166#ZW";
+
+    /// <summary>
+    /// Dictionary for looking up Jurisdiction Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "001", World }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#001", World }, 
+      { "002", Africa }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#002", Africa }, 
+      { "005", SouthAmerica }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#005", SouthAmerica }, 
+      { "009", Oceania }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#009", Oceania }, 
+      { "011", WesternAfrica }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#011", WesternAfrica }, 
+      { "013", CentralAmerica }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#013", CentralAmerica }, 
+      { "014", EasternAfrica }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#014", EasternAfrica }, 
+      { "015", NorthernAfrica }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#015", NorthernAfrica }, 
+      { "017", MiddleAfrica }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#017", MiddleAfrica }, 
+      { "018", SouthernAfrica }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#018", SouthernAfrica }, 
+      { "019", Americas }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#019", Americas }, 
+      { "021", NorthernAmericaA }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#021", NorthernAmericaA }, 
+      { "029", Caribbean }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#029", Caribbean }, 
+      { "030", EasternAsia }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#030", EasternAsia }, 
+      { "034", SouthernAsia }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#034", SouthernAsia }, 
+      { "035", SouthEasternAsia }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#035", SouthEasternAsia }, 
+      { "039", SouthernEurope }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#039", SouthernEurope }, 
+      { "053", AustraliaAndNewZealand }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#053", AustraliaAndNewZealand }, 
+      { "054", Melanesia }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#054", Melanesia }, 
+      { "057", Micronesia }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#057", Micronesia }, 
+      { "061", Polynesia }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#061", Polynesia }, 
+      { "142", Asia }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#142", Asia }, 
+      { "143", CentralAsia }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#143", CentralAsia }, 
+      { "145", WesternAsia }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#145", WesternAsia }, 
+      { "150", Europe }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#150", Europe }, 
+      { "151", EasternEurope }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#151", EasternEurope }, 
+      { "154", NorthernEurope }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#154", NorthernEurope }, 
+      { "155", WesternEurope }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#155", WesternEurope }, 
+      { "419", LatinAmericaAndTheCaribbean }, 
+      { "http://unstats.un.org/unsd/methods/m49/m49.htm#419", LatinAmericaAndTheCaribbean }, 
+      { "AD", Andorra }, 
+      { "urn:iso:std:iso:3166#AD", Andorra }, 
+      { "AE", UnitedArabEmiratesThe }, 
+      { "urn:iso:std:iso:3166#AE", UnitedArabEmiratesThe }, 
+      { "AF", Afghanistan }, 
+      { "urn:iso:std:iso:3166#AF", Afghanistan }, 
+      { "AG", AntiguaAndBarbuda }, 
+      { "urn:iso:std:iso:3166#AG", AntiguaAndBarbuda }, 
+      { "AI", Anguilla }, 
+      { "urn:iso:std:iso:3166#AI", Anguilla }, 
+      { "AK", Alaska }, 
+      { "https://www.usps.com/#AK", Alaska }, 
+      { "AL", Albania }, 
+      { "urn:iso:std:iso:3166#AL", Albania }, 
+      { "AL", Alabama }, 
+      { "https://www.usps.com/#AL", Alabama }, 
+      { "AM", Armenia }, 
+      { "urn:iso:std:iso:3166#AM", Armenia }, 
+      { "AN", NetherlandsAntilles }, 
+      { "urn:iso:std:iso:3166#AN", NetherlandsAntilles }, 
+      { "AO", Angola }, 
+      { "urn:iso:std:iso:3166#AO", Angola }, 
+      { "AQ", Antarctica }, 
+      { "urn:iso:std:iso:3166#AQ", Antarctica }, 
+      { "AR", Argentina }, 
+      { "urn:iso:std:iso:3166#AR", Argentina }, 
+      { "AR", Arkansas }, 
+      { "https://www.usps.com/#AR", Arkansas }, 
+      { "AS", AmericanSamoa }, 
+      { "urn:iso:std:iso:3166#AS", AmericanSamoa }, 
+      { "AS", AmericanSamoa_2 }, 
+      { "https://www.usps.com/#AS", AmericanSamoa_2 }, 
+      { "AT", Austria }, 
+      { "urn:iso:std:iso:3166#AT", Austria }, 
+      { "AU", Australia }, 
+      { "urn:iso:std:iso:3166#AU", Australia }, 
+      { "AW", Aruba }, 
+      { "urn:iso:std:iso:3166#AW", Aruba }, 
+      { "AX", AlandIslands }, 
+      { "urn:iso:std:iso:3166#AX", AlandIslands }, 
+      { "AZ", Azerbaijan }, 
+      { "urn:iso:std:iso:3166#AZ", Azerbaijan }, 
+      { "AZ", Arizona }, 
+      { "https://www.usps.com/#AZ", Arizona }, 
+      { "BA", BosniaAndHerzegovina }, 
+      { "urn:iso:std:iso:3166#BA", BosniaAndHerzegovina }, 
+      { "BB", Barbados }, 
+      { "urn:iso:std:iso:3166#BB", Barbados }, 
+      { "BD", Bangladesh }, 
+      { "urn:iso:std:iso:3166#BD", Bangladesh }, 
+      { "BE", Belgium }, 
+      { "urn:iso:std:iso:3166#BE", Belgium }, 
+      { "BF", BurkinaFaso }, 
+      { "urn:iso:std:iso:3166#BF", BurkinaFaso }, 
+      { "BG", Bulgaria }, 
+      { "urn:iso:std:iso:3166#BG", Bulgaria }, 
+      { "BH", Bahrain }, 
+      { "urn:iso:std:iso:3166#BH", Bahrain }, 
+      { "BI", Burundi }, 
+      { "urn:iso:std:iso:3166#BI", Burundi }, 
+      { "BJ", Benin }, 
+      { "urn:iso:std:iso:3166#BJ", Benin }, 
+      { "BL", SaintBarthelemy }, 
+      { "urn:iso:std:iso:3166#BL", SaintBarthelemy }, 
+      { "BM", Bermuda }, 
+      { "urn:iso:std:iso:3166#BM", Bermuda }, 
+      { "BN", BruneiDarussalam }, 
+      { "urn:iso:std:iso:3166#BN", BruneiDarussalam }, 
+      { "BO", BoliviaPlurinationalStateOf }, 
+      { "urn:iso:std:iso:3166#BO", BoliviaPlurinationalStateOf }, 
+      { "BQ", BonaireSintEustatiusAndSaba }, 
+      { "urn:iso:std:iso:3166#BQ", BonaireSintEustatiusAndSaba }, 
+      { "BR", Brazil }, 
+      { "urn:iso:std:iso:3166#BR", Brazil }, 
+      { "BS", BahamasThe }, 
+      { "urn:iso:std:iso:3166#BS", BahamasThe }, 
+      { "BT", Bhutan }, 
+      { "urn:iso:std:iso:3166#BT", Bhutan }, 
+      { "BU", Burma }, 
+      { "urn:iso:std:iso:3166#BU", Burma }, 
+      { "BV", BouvetIsland }, 
+      { "urn:iso:std:iso:3166#BV", BouvetIsland }, 
+      { "BW", Botswana }, 
+      { "urn:iso:std:iso:3166#BW", Botswana }, 
+      { "BY", Belarus }, 
+      { "urn:iso:std:iso:3166#BY", Belarus }, 
+      { "BZ", Belize }, 
+      { "urn:iso:std:iso:3166#BZ", Belize }, 
+      { "CA", Canada }, 
+      { "urn:iso:std:iso:3166#CA", Canada }, 
+      { "CA", California }, 
+      { "https://www.usps.com/#CA", California }, 
+      { "CC", CocosKeelingIslandsThe }, 
+      { "urn:iso:std:iso:3166#CC", CocosKeelingIslandsThe }, 
+      { "CD", CongoTheDemocraticRepublicOfThe }, 
+      { "urn:iso:std:iso:3166#CD", CongoTheDemocraticRepublicOfThe }, 
+      { "CF", CentralAfricanRepublicThe }, 
+      { "urn:iso:std:iso:3166#CF", CentralAfricanRepublicThe }, 
+      { "CG", CongoThe }, 
+      { "urn:iso:std:iso:3166#CG", CongoThe }, 
+      { "CH", Switzerland }, 
+      { "urn:iso:std:iso:3166#CH", Switzerland }, 
+      { "CI", CoteDQuoteIvoire }, 
+      { "urn:iso:std:iso:3166#CI", CoteDQuoteIvoire }, 
+      { "CK", CookIslandsThe }, 
+      { "urn:iso:std:iso:3166#CK", CookIslandsThe }, 
+      { "CL", Chile }, 
+      { "urn:iso:std:iso:3166#CL", Chile }, 
+      { "CM", Cameroon }, 
+      { "urn:iso:std:iso:3166#CM", Cameroon }, 
+      { "CN", China }, 
+      { "urn:iso:std:iso:3166#CN", China }, 
+      { "CO", Colombia }, 
+      { "urn:iso:std:iso:3166#CO", Colombia }, 
+      { "CO", Colorado }, 
+      { "https://www.usps.com/#CO", Colorado }, 
+      { "CR", CostaRica }, 
+      { "urn:iso:std:iso:3166#CR", CostaRica }, 
+      { "CS", SerbiaAndMontenegro }, 
+      { "urn:iso:std:iso:3166#CS", SerbiaAndMontenegro }, 
+      { "CT", CantonAndEnderburyIslands }, 
+      { "urn:iso:std:iso:3166#CT", CantonAndEnderburyIslands }, 
+      { "CT", Connecticut }, 
+      { "https://www.usps.com/#CT", Connecticut }, 
+      { "CU", Cuba }, 
+      { "urn:iso:std:iso:3166#CU", Cuba }, 
+      { "CV", CaboVerde }, 
+      { "urn:iso:std:iso:3166#CV", CaboVerde }, 
+      { "CW", Curacao }, 
+      { "urn:iso:std:iso:3166#CW", Curacao }, 
+      { "CX", ChristmasIsland }, 
+      { "urn:iso:std:iso:3166#CX", ChristmasIsland }, 
+      { "CY", Cyprus }, 
+      { "urn:iso:std:iso:3166#CY", Cyprus }, 
+      { "CZ", CzechRepublicThe }, 
+      { "urn:iso:std:iso:3166#CZ", CzechRepublicThe }, 
+      { "DC", DistrictOfColumbia }, 
+      { "https://www.usps.com/#DC", DistrictOfColumbia }, 
+      { "DD", GermanDemocraticRepublic }, 
+      { "urn:iso:std:iso:3166#DD", GermanDemocraticRepublic }, 
+      { "DE", Germany }, 
+      { "urn:iso:std:iso:3166#DE", Germany }, 
+      { "DE", Delaware }, 
+      { "https://www.usps.com/#DE", Delaware }, 
+      { "DJ", Djibouti }, 
+      { "urn:iso:std:iso:3166#DJ", Djibouti }, 
+      { "DK", Denmark }, 
+      { "urn:iso:std:iso:3166#DK", Denmark }, 
+      { "DM", Dominica }, 
+      { "urn:iso:std:iso:3166#DM", Dominica }, 
+      { "DO", DominicanRepublicThe }, 
+      { "urn:iso:std:iso:3166#DO", DominicanRepublicThe }, 
+      { "DY", Dahomey }, 
+      { "urn:iso:std:iso:3166#DY", Dahomey }, 
+      { "DZ", Algeria }, 
+      { "urn:iso:std:iso:3166#DZ", Algeria }, 
+      { "EC", Ecuador }, 
+      { "urn:iso:std:iso:3166#EC", Ecuador }, 
+      { "EE", Estonia }, 
+      { "urn:iso:std:iso:3166#EE", Estonia }, 
+      { "EG", Egypt }, 
+      { "urn:iso:std:iso:3166#EG", Egypt }, 
+      { "EH", WesternSaharaAsterisk }, 
+      { "urn:iso:std:iso:3166#EH", WesternSaharaAsterisk }, 
+      { "ER", Eritrea }, 
+      { "urn:iso:std:iso:3166#ER", Eritrea }, 
+      { "ES", Spain }, 
+      { "urn:iso:std:iso:3166#ES", Spain }, 
+      { "ET", Ethiopia }, 
+      { "urn:iso:std:iso:3166#ET", Ethiopia }, 
+      { "FI", Finland }, 
+      { "urn:iso:std:iso:3166#FI", Finland }, 
+      { "FJ", Fiji }, 
+      { "urn:iso:std:iso:3166#FJ", Fiji }, 
+      { "FK", FalklandIslandsTheMalvinas }, 
+      { "urn:iso:std:iso:3166#FK", FalklandIslandsTheMalvinas }, 
+      { "FL", Florida }, 
+      { "https://www.usps.com/#FL", Florida }, 
+      { "FM", MicronesiaFederatedStatesOf }, 
+      { "urn:iso:std:iso:3166#FM", MicronesiaFederatedStatesOf }, 
+      { "FM", FederatedStatesOfMicronesia }, 
+      { "https://www.usps.com/#FM", FederatedStatesOfMicronesia }, 
+      { "FO", FaroeIslandsThe }, 
+      { "urn:iso:std:iso:3166#FO", FaroeIslandsThe }, 
+      { "FQ", FrenchSouthernAndAntarcticTerritories }, 
+      { "urn:iso:std:iso:3166#FQ", FrenchSouthernAndAntarcticTerritories }, 
+      { "FR", France }, 
+      { "urn:iso:std:iso:3166#FR", France }, 
+      { "GA", Gabon }, 
+      { "urn:iso:std:iso:3166#GA", Gabon }, 
+      { "GA", Georgia }, 
+      { "https://www.usps.com/#GA", Georgia }, 
+      { "GB", UnitedKingdomOfGreatBritainAndNorthernIrelandThe }, 
+      { "urn:iso:std:iso:3166#GB", UnitedKingdomOfGreatBritainAndNorthernIrelandThe }, 
+      { "GD", Grenada }, 
+      { "urn:iso:std:iso:3166#GD", Grenada }, 
+      { "GE", Georgia_2 }, 
+      { "urn:iso:std:iso:3166#GE", Georgia_2 }, 
+      { "GF", FrenchGuiana }, 
+      { "urn:iso:std:iso:3166#GF", FrenchGuiana }, 
+      { "GG", Guernsey }, 
+      { "urn:iso:std:iso:3166#GG", Guernsey }, 
+      { "GH", Ghana }, 
+      { "urn:iso:std:iso:3166#GH", Ghana }, 
+      { "GI", Gibraltar }, 
+      { "urn:iso:std:iso:3166#GI", Gibraltar }, 
+      { "GL", Greenland }, 
+      { "urn:iso:std:iso:3166#GL", Greenland }, 
+      { "GM", GambiaThe }, 
+      { "urn:iso:std:iso:3166#GM", GambiaThe }, 
+      { "GN", Guinea }, 
+      { "urn:iso:std:iso:3166#GN", Guinea }, 
+      { "GP", Guadeloupe }, 
+      { "urn:iso:std:iso:3166#GP", Guadeloupe }, 
+      { "GQ", EquatorialGuinea }, 
+      { "urn:iso:std:iso:3166#GQ", EquatorialGuinea }, 
+      { "GR", Greece }, 
+      { "urn:iso:std:iso:3166#GR", Greece }, 
+      { "GS", SouthGeorgiaAndTheSouthSandwichIslands }, 
+      { "urn:iso:std:iso:3166#GS", SouthGeorgiaAndTheSouthSandwichIslands }, 
+      { "GT", Guatemala }, 
+      { "urn:iso:std:iso:3166#GT", Guatemala }, 
+      { "GU", Guam }, 
+      { "urn:iso:std:iso:3166#GU", Guam }, 
+      { "GU", Guam_2 }, 
+      { "https://www.usps.com/#GU", Guam_2 }, 
+      { "GW", GuineaBissau }, 
+      { "urn:iso:std:iso:3166#GW", GuineaBissau }, 
+      { "GY", Guyana }, 
+      { "urn:iso:std:iso:3166#GY", Guyana }, 
+      { "HI", Hawaii }, 
+      { "https://www.usps.com/#HI", Hawaii }, 
+      { "HK", HongKong }, 
+      { "urn:iso:std:iso:3166#HK", HongKong }, 
+      { "HM", HeardIslandAndMcDonaldIslands }, 
+      { "urn:iso:std:iso:3166#HM", HeardIslandAndMcDonaldIslands }, 
+      { "HN", Honduras }, 
+      { "urn:iso:std:iso:3166#HN", Honduras }, 
+      { "HR", Croatia }, 
+      { "urn:iso:std:iso:3166#HR", Croatia }, 
+      { "HT", Haiti }, 
+      { "urn:iso:std:iso:3166#HT", Haiti }, 
+      { "HU", Hungary }, 
+      { "urn:iso:std:iso:3166#HU", Hungary }, 
+      { "HV", UpperVolta }, 
+      { "urn:iso:std:iso:3166#HV", UpperVolta }, 
+      { "IA", Iowa }, 
+      { "https://www.usps.com/#IA", Iowa }, 
+      { "ID", Indonesia }, 
+      { "urn:iso:std:iso:3166#ID", Indonesia }, 
+      { "ID", Idaho }, 
+      { "https://www.usps.com/#ID", Idaho }, 
+      { "IE", Ireland }, 
+      { "urn:iso:std:iso:3166#IE", Ireland }, 
+      { "IL", Israel }, 
+      { "urn:iso:std:iso:3166#IL", Israel }, 
+      { "IL", Illinois }, 
+      { "https://www.usps.com/#IL", Illinois }, 
+      { "IM", IsleOfMan }, 
+      { "urn:iso:std:iso:3166#IM", IsleOfMan }, 
+      { "IN", India }, 
+      { "urn:iso:std:iso:3166#IN", India }, 
+      { "IN", Indiana }, 
+      { "https://www.usps.com/#IN", Indiana }, 
+      { "IO", BritishIndianOceanTerritoryThe }, 
+      { "urn:iso:std:iso:3166#IO", BritishIndianOceanTerritoryThe }, 
+      { "IQ", Iraq }, 
+      { "urn:iso:std:iso:3166#IQ", Iraq }, 
+      { "IR", IranIslamicRepublicOf }, 
+      { "urn:iso:std:iso:3166#IR", IranIslamicRepublicOf }, 
+      { "IS", Iceland }, 
+      { "urn:iso:std:iso:3166#IS", Iceland }, 
+      { "IT", Italy }, 
+      { "urn:iso:std:iso:3166#IT", Italy }, 
+      { "JE", Jersey }, 
+      { "urn:iso:std:iso:3166#JE", Jersey }, 
+      { "JM", Jamaica }, 
+      { "urn:iso:std:iso:3166#JM", Jamaica }, 
+      { "JO", Jordan }, 
+      { "urn:iso:std:iso:3166#JO", Jordan }, 
+      { "JP", Japan }, 
+      { "urn:iso:std:iso:3166#JP", Japan }, 
+      { "JT", JohnstonIsland }, 
+      { "urn:iso:std:iso:3166#JT", JohnstonIsland }, 
+      { "KE", Kenya }, 
+      { "urn:iso:std:iso:3166#KE", Kenya }, 
+      { "KG", Kyrgyzstan }, 
+      { "urn:iso:std:iso:3166#KG", Kyrgyzstan }, 
+      { "KH", Cambodia }, 
+      { "urn:iso:std:iso:3166#KH", Cambodia }, 
+      { "KI", Kiribati }, 
+      { "urn:iso:std:iso:3166#KI", Kiribati }, 
+      { "KM", ComorosThe }, 
+      { "urn:iso:std:iso:3166#KM", ComorosThe }, 
+      { "KN", SaintKittsAndNevis }, 
+      { "urn:iso:std:iso:3166#KN", SaintKittsAndNevis }, 
+      { "KP", KoreaTheDemocraticPeopleQuoteSRepublicOf }, 
+      { "urn:iso:std:iso:3166#KP", KoreaTheDemocraticPeopleQuoteSRepublicOf }, 
+      { "KR", KoreaTheRepublicOf }, 
+      { "urn:iso:std:iso:3166#KR", KoreaTheRepublicOf }, 
+      { "KS", Kansas }, 
+      { "https://www.usps.com/#KS", Kansas }, 
+      { "KW", Kuwait }, 
+      { "urn:iso:std:iso:3166#KW", Kuwait }, 
+      { "KY", CaymanIslandsThe }, 
+      { "urn:iso:std:iso:3166#KY", CaymanIslandsThe }, 
+      { "KY", Kentucky }, 
+      { "https://www.usps.com/#KY", Kentucky }, 
+      { "KZ", Kazakhstan }, 
+      { "urn:iso:std:iso:3166#KZ", Kazakhstan }, 
+      { "LA", LaoPeopleQuoteSDemocraticRepublicThe }, 
+      { "urn:iso:std:iso:3166#LA", LaoPeopleQuoteSDemocraticRepublicThe }, 
+      { "LA", Louisiana }, 
+      { "https://www.usps.com/#LA", Louisiana }, 
+      { "LB", Lebanon }, 
+      { "urn:iso:std:iso:3166#LB", Lebanon }, 
+      { "LC", SaintLucia }, 
+      { "urn:iso:std:iso:3166#LC", SaintLucia }, 
+      { "LI", Liechtenstein }, 
+      { "urn:iso:std:iso:3166#LI", Liechtenstein }, 
+      { "LK", SriLanka }, 
+      { "urn:iso:std:iso:3166#LK", SriLanka }, 
+      { "LR", Liberia }, 
+      { "urn:iso:std:iso:3166#LR", Liberia }, 
+      { "LS", Lesotho }, 
+      { "urn:iso:std:iso:3166#LS", Lesotho }, 
+      { "LT", Lithuania }, 
+      { "urn:iso:std:iso:3166#LT", Lithuania }, 
+      { "LU", Luxembourg }, 
+      { "urn:iso:std:iso:3166#LU", Luxembourg }, 
+      { "LV", Latvia }, 
+      { "urn:iso:std:iso:3166#LV", Latvia }, 
+      { "LY", Libya }, 
+      { "urn:iso:std:iso:3166#LY", Libya }, 
+      { "MA", Morocco }, 
+      { "urn:iso:std:iso:3166#MA", Morocco }, 
+      { "MA", Massachusetts }, 
+      { "https://www.usps.com/#MA", Massachusetts }, 
+      { "MC", Monaco }, 
+      { "urn:iso:std:iso:3166#MC", Monaco }, 
+      { "MD", MoldovaTheRepublicOf }, 
+      { "urn:iso:std:iso:3166#MD", MoldovaTheRepublicOf }, 
+      { "MD", Maryland }, 
+      { "https://www.usps.com/#MD", Maryland }, 
+      { "ME", Montenegro }, 
+      { "urn:iso:std:iso:3166#ME", Montenegro }, 
+      { "ME", Maine }, 
+      { "https://www.usps.com/#ME", Maine }, 
+      { "MF", SaintMartinFrenchPart }, 
+      { "urn:iso:std:iso:3166#MF", SaintMartinFrenchPart }, 
+      { "MG", Madagascar }, 
+      { "urn:iso:std:iso:3166#MG", Madagascar }, 
+      { "MH", MarshallIslandsThe }, 
+      { "urn:iso:std:iso:3166#MH", MarshallIslandsThe }, 
+      { "MH", MarshallIslands }, 
+      { "https://www.usps.com/#MH", MarshallIslands }, 
+      { "MI", MidwayIslands }, 
+      { "urn:iso:std:iso:3166#MI", MidwayIslands }, 
+      { "MI", Michigan }, 
+      { "https://www.usps.com/#MI", Michigan }, 
+      { "MK", MacedoniaTheFormerYugoslavRepublicOf }, 
+      { "urn:iso:std:iso:3166#MK", MacedoniaTheFormerYugoslavRepublicOf }, 
+      { "ML", Mali }, 
+      { "urn:iso:std:iso:3166#ML", Mali }, 
+      { "MM", Myanmar }, 
+      { "urn:iso:std:iso:3166#MM", Myanmar }, 
+      { "MN", Mongolia }, 
+      { "urn:iso:std:iso:3166#MN", Mongolia }, 
+      { "MN", Minnesota }, 
+      { "https://www.usps.com/#MN", Minnesota }, 
+      { "MO", Macao }, 
+      { "urn:iso:std:iso:3166#MO", Macao }, 
+      { "MO", Missouri }, 
+      { "https://www.usps.com/#MO", Missouri }, 
+      { "MP", NorthernMarianaIslandsThe }, 
+      { "urn:iso:std:iso:3166#MP", NorthernMarianaIslandsThe }, 
+      { "MP", NorthernMarianaIslands }, 
+      { "https://www.usps.com/#MP", NorthernMarianaIslands }, 
+      { "MQ", Martinique }, 
+      { "urn:iso:std:iso:3166#MQ", Martinique }, 
+      { "MR", Mauritania }, 
+      { "urn:iso:std:iso:3166#MR", Mauritania }, 
+      { "MS", Montserrat }, 
+      { "urn:iso:std:iso:3166#MS", Montserrat }, 
+      { "MS", Mississippi }, 
+      { "https://www.usps.com/#MS", Mississippi }, 
+      { "MT", Malta }, 
+      { "urn:iso:std:iso:3166#MT", Malta }, 
+      { "MT", Montana }, 
+      { "https://www.usps.com/#MT", Montana }, 
+      { "MU", Mauritius }, 
+      { "urn:iso:std:iso:3166#MU", Mauritius }, 
+      { "MV", Maldives }, 
+      { "urn:iso:std:iso:3166#MV", Maldives }, 
+      { "MW", Malawi }, 
+      { "urn:iso:std:iso:3166#MW", Malawi }, 
+      { "MX", Mexico }, 
+      { "urn:iso:std:iso:3166#MX", Mexico }, 
+      { "MY", Malaysia }, 
+      { "urn:iso:std:iso:3166#MY", Malaysia }, 
+      { "MZ", Mozambique }, 
+      { "urn:iso:std:iso:3166#MZ", Mozambique }, 
+      { "NA", Namibia }, 
+      { "urn:iso:std:iso:3166#NA", Namibia }, 
+      { "NC", NewCaledonia }, 
+      { "urn:iso:std:iso:3166#NC", NewCaledonia }, 
+      { "NC", NorthCarolina }, 
+      { "https://www.usps.com/#NC", NorthCarolina }, 
+      { "ND", NorthDakota }, 
+      { "https://www.usps.com/#ND", NorthDakota }, 
+      { "NE", NigerThe }, 
+      { "urn:iso:std:iso:3166#NE", NigerThe }, 
+      { "NE", Nebraska }, 
+      { "https://www.usps.com/#NE", Nebraska }, 
+      { "NF", NorfolkIsland }, 
+      { "urn:iso:std:iso:3166#NF", NorfolkIsland }, 
+      { "NG", Nigeria }, 
+      { "urn:iso:std:iso:3166#NG", Nigeria }, 
+      { "NH", NewHebrides }, 
+      { "urn:iso:std:iso:3166#NH", NewHebrides }, 
+      { "NH", NewHampshire }, 
+      { "https://www.usps.com/#NH", NewHampshire }, 
+      { "NI", Nicaragua }, 
+      { "urn:iso:std:iso:3166#NI", Nicaragua }, 
+      { "NJ", NewJersey }, 
+      { "https://www.usps.com/#NJ", NewJersey }, 
+      { "NL", NetherlandsThe }, 
+      { "urn:iso:std:iso:3166#NL", NetherlandsThe }, 
+      { "NM", NewMexico }, 
+      { "https://www.usps.com/#NM", NewMexico }, 
+      { "NO", Norway }, 
+      { "urn:iso:std:iso:3166#NO", Norway }, 
+      { "NP", Nepal }, 
+      { "urn:iso:std:iso:3166#NP", Nepal }, 
+      { "NQ", DronningMaudLand }, 
+      { "urn:iso:std:iso:3166#NQ", DronningMaudLand }, 
+      { "NR", Nauru }, 
+      { "urn:iso:std:iso:3166#NR", Nauru }, 
+      { "NT", NeutralZone }, 
+      { "urn:iso:std:iso:3166#NT", NeutralZone }, 
+      { "NU", Niue }, 
+      { "urn:iso:std:iso:3166#NU", Niue }, 
+      { "NV", Nevada }, 
+      { "https://www.usps.com/#NV", Nevada }, 
+      { "NY", NewYork }, 
+      { "https://www.usps.com/#NY", NewYork }, 
+      { "NZ", NewZealand }, 
+      { "urn:iso:std:iso:3166#NZ", NewZealand }, 
+      { "OH", Ohio }, 
+      { "https://www.usps.com/#OH", Ohio }, 
+      { "OK", Oklahoma }, 
+      { "https://www.usps.com/#OK", Oklahoma }, 
+      { "OM", Oman }, 
+      { "urn:iso:std:iso:3166#OM", Oman }, 
+      { "OR", Oregon }, 
+      { "https://www.usps.com/#OR", Oregon }, 
+      { "PA", Panama }, 
+      { "urn:iso:std:iso:3166#PA", Panama }, 
+      { "PA", Pennsylvania }, 
+      { "https://www.usps.com/#PA", Pennsylvania }, 
+      { "PC", PacificIslandsTrustTerritory }, 
+      { "urn:iso:std:iso:3166#PC", PacificIslandsTrustTerritory }, 
+      { "PE", Peru }, 
+      { "urn:iso:std:iso:3166#PE", Peru }, 
+      { "PF", FrenchPolynesia }, 
+      { "urn:iso:std:iso:3166#PF", FrenchPolynesia }, 
+      { "PG", PapuaNewGuinea }, 
+      { "urn:iso:std:iso:3166#PG", PapuaNewGuinea }, 
+      { "PH", PhilippinesThe }, 
+      { "urn:iso:std:iso:3166#PH", PhilippinesThe }, 
+      { "PK", Pakistan }, 
+      { "urn:iso:std:iso:3166#PK", Pakistan }, 
+      { "PL", Poland }, 
+      { "urn:iso:std:iso:3166#PL", Poland }, 
+      { "PM", SaintPierreAndMiquelon }, 
+      { "urn:iso:std:iso:3166#PM", SaintPierreAndMiquelon }, 
+      { "PN", Pitcairn }, 
+      { "urn:iso:std:iso:3166#PN", Pitcairn }, 
+      { "PR", PuertoRico }, 
+      { "urn:iso:std:iso:3166#PR", PuertoRico }, 
+      { "PR", PuertoRico_2 }, 
+      { "https://www.usps.com/#PR", PuertoRico_2 }, 
+      { "PS", PalestineStateOf }, 
+      { "urn:iso:std:iso:3166#PS", PalestineStateOf }, 
+      { "PT", Portugal }, 
+      { "urn:iso:std:iso:3166#PT", Portugal }, 
+      { "PU", UnitedStatesMiscellaneousPacificIslands }, 
+      { "urn:iso:std:iso:3166#PU", UnitedStatesMiscellaneousPacificIslands }, 
+      { "PW", Palau }, 
+      { "urn:iso:std:iso:3166#PW", Palau }, 
+      { "PW", Palau_2 }, 
+      { "https://www.usps.com/#PW", Palau_2 }, 
+      { "PY", Paraguay }, 
+      { "urn:iso:std:iso:3166#PY", Paraguay }, 
+      { "PZ", PanamaCanalZone }, 
+      { "urn:iso:std:iso:3166#PZ", PanamaCanalZone }, 
+      { "QA", Qatar }, 
+      { "urn:iso:std:iso:3166#QA", Qatar }, 
+      { "RE", Reunion }, 
+      { "urn:iso:std:iso:3166#RE", Reunion }, 
+      { "RH", SouthernRhodesia }, 
+      { "urn:iso:std:iso:3166#RH", SouthernRhodesia }, 
+      { "RI", RhodeIsland }, 
+      { "https://www.usps.com/#RI", RhodeIsland }, 
+      { "RO", Romania }, 
+      { "urn:iso:std:iso:3166#RO", Romania }, 
+      { "RS", Serbia }, 
+      { "urn:iso:std:iso:3166#RS", Serbia }, 
+      { "RU", RussianFederationThe }, 
+      { "urn:iso:std:iso:3166#RU", RussianFederationThe }, 
+      { "RW", Rwanda }, 
+      { "urn:iso:std:iso:3166#RW", Rwanda }, 
+      { "SA", SaudiArabia }, 
+      { "urn:iso:std:iso:3166#SA", SaudiArabia }, 
+      { "SB", SolomonIslands }, 
+      { "urn:iso:std:iso:3166#SB", SolomonIslands }, 
+      { "SC", Seychelles }, 
+      { "urn:iso:std:iso:3166#SC", Seychelles }, 
+      { "SC", SouthCarolina }, 
+      { "https://www.usps.com/#SC", SouthCarolina }, 
+      { "SD", SudanThe }, 
+      { "urn:iso:std:iso:3166#SD", SudanThe }, 
+      { "SD", SouthDakota }, 
+      { "https://www.usps.com/#SD", SouthDakota }, 
+      { "SE", Sweden }, 
+      { "urn:iso:std:iso:3166#SE", Sweden }, 
+      { "SG", Singapore }, 
+      { "urn:iso:std:iso:3166#SG", Singapore }, 
+      { "SH", SaintHelenaAscensionAndTristanDaCunha }, 
+      { "urn:iso:std:iso:3166#SH", SaintHelenaAscensionAndTristanDaCunha }, 
+      { "SI", Slovenia }, 
+      { "urn:iso:std:iso:3166#SI", Slovenia }, 
+      { "SJ", SvalbardAndJanMayen }, 
+      { "urn:iso:std:iso:3166#SJ", SvalbardAndJanMayen }, 
+      { "SK", Slovakia }, 
+      { "urn:iso:std:iso:3166#SK", Slovakia }, 
+      { "SL", SierraLeone }, 
+      { "urn:iso:std:iso:3166#SL", SierraLeone }, 
+      { "SM", SanMarino }, 
+      { "urn:iso:std:iso:3166#SM", SanMarino }, 
+      { "SN", Senegal }, 
+      { "urn:iso:std:iso:3166#SN", Senegal }, 
+      { "SO", Somalia }, 
+      { "urn:iso:std:iso:3166#SO", Somalia }, 
+      { "SR", Suriname }, 
+      { "urn:iso:std:iso:3166#SR", Suriname }, 
+      { "SS", SouthSudan }, 
+      { "urn:iso:std:iso:3166#SS", SouthSudan }, 
+      { "ST", SaoTomeAndPrincipe }, 
+      { "urn:iso:std:iso:3166#ST", SaoTomeAndPrincipe }, 
+      { "SU", USSR }, 
+      { "urn:iso:std:iso:3166#SU", USSR }, 
+      { "SV", ElSalvador }, 
+      { "urn:iso:std:iso:3166#SV", ElSalvador }, 
+      { "SX", SintMaartenDutchPart }, 
+      { "urn:iso:std:iso:3166#SX", SintMaartenDutchPart }, 
+      { "SY", SyrianArabRepublic }, 
+      { "urn:iso:std:iso:3166#SY", SyrianArabRepublic }, 
+      { "SZ", Swaziland }, 
+      { "urn:iso:std:iso:3166#SZ", Swaziland }, 
+      { "TC", TurksAndCaicosIslandsThe }, 
+      { "urn:iso:std:iso:3166#TC", TurksAndCaicosIslandsThe }, 
+      { "TD", Chad }, 
+      { "urn:iso:std:iso:3166#TD", Chad }, 
+      { "TF", FrenchSouthernTerritoriesThe }, 
+      { "urn:iso:std:iso:3166#TF", FrenchSouthernTerritoriesThe }, 
+      { "TG", Togo }, 
+      { "urn:iso:std:iso:3166#TG", Togo }, 
+      { "TH", Thailand }, 
+      { "urn:iso:std:iso:3166#TH", Thailand }, 
+      { "TJ", Tajikistan }, 
+      { "urn:iso:std:iso:3166#TJ", Tajikistan }, 
+      { "TK", Tokelau }, 
+      { "urn:iso:std:iso:3166#TK", Tokelau }, 
+      { "TL", TimorLeste }, 
+      { "urn:iso:std:iso:3166#TL", TimorLeste }, 
+      { "TM", Turkmenistan }, 
+      { "urn:iso:std:iso:3166#TM", Turkmenistan }, 
+      { "TN", Tunisia }, 
+      { "urn:iso:std:iso:3166#TN", Tunisia }, 
+      { "TN", Tennessee }, 
+      { "https://www.usps.com/#TN", Tennessee }, 
+      { "TO", Tonga }, 
+      { "urn:iso:std:iso:3166#TO", Tonga }, 
+      { "TP", EastTimor }, 
+      { "urn:iso:std:iso:3166#TP", EastTimor }, 
+      { "TR", Turkey }, 
+      { "urn:iso:std:iso:3166#TR", Turkey }, 
+      { "TT", TrinidadAndTobago }, 
+      { "urn:iso:std:iso:3166#TT", TrinidadAndTobago }, 
+      { "TV", Tuvalu }, 
+      { "urn:iso:std:iso:3166#TV", Tuvalu }, 
+      { "TW", TaiwanProvinceOfChina }, 
+      { "urn:iso:std:iso:3166#TW", TaiwanProvinceOfChina }, 
+      { "TX", Texas }, 
+      { "https://www.usps.com/#TX", Texas }, 
+      { "TZ", TanzaniaUnitedRepublicOf }, 
+      { "urn:iso:std:iso:3166#TZ", TanzaniaUnitedRepublicOf }, 
+      { "UA", Ukraine }, 
+      { "urn:iso:std:iso:3166#UA", Ukraine }, 
+      { "UG", Uganda }, 
+      { "urn:iso:std:iso:3166#UG", Uganda }, 
+      { "UM", UnitedStatesMinorOutlyingIslandsThe }, 
+      { "urn:iso:std:iso:3166#UM", UnitedStatesMinorOutlyingIslandsThe }, 
+      { "UM", USMinorOutlyingIslands }, 
+      { "https://www.usps.com/#UM", USMinorOutlyingIslands }, 
+      { "US", UnitedStatesOfAmericaThe }, 
+      { "urn:iso:std:iso:3166#US", UnitedStatesOfAmericaThe }, 
+      { "UT", Utah }, 
+      { "https://www.usps.com/#UT", Utah }, 
+      { "UY", Uruguay }, 
+      { "urn:iso:std:iso:3166#UY", Uruguay }, 
+      { "UZ", Uzbekistan }, 
+      { "urn:iso:std:iso:3166#UZ", Uzbekistan }, 
+      { "VA", HolySeeThe }, 
+      { "urn:iso:std:iso:3166#VA", HolySeeThe }, 
+      { "VA", Virginia }, 
+      { "https://www.usps.com/#VA", Virginia }, 
+      { "VC", SaintVincentAndTheGrenadines }, 
+      { "urn:iso:std:iso:3166#VC", SaintVincentAndTheGrenadines }, 
+      { "VD", VietNamDemocraticRepublicOf }, 
+      { "urn:iso:std:iso:3166#VD", VietNamDemocraticRepublicOf }, 
+      { "VE", VenezuelaBolivarianRepublicOf }, 
+      { "urn:iso:std:iso:3166#VE", VenezuelaBolivarianRepublicOf }, 
+      { "VG", VirginIslandsBritish }, 
+      { "urn:iso:std:iso:3166#VG", VirginIslandsBritish }, 
+      { "VI", VirginIslandsUS }, 
+      { "urn:iso:std:iso:3166#VI", VirginIslandsUS }, 
+      { "VI", VirginIslandsOfTheUS }, 
+      { "https://www.usps.com/#VI", VirginIslandsOfTheUS }, 
+      { "VN", VietNam }, 
+      { "urn:iso:std:iso:3166#VN", VietNam }, 
+      { "VT", Vermont }, 
+      { "https://www.usps.com/#VT", Vermont }, 
+      { "VU", Vanuatu }, 
+      { "urn:iso:std:iso:3166#VU", Vanuatu }, 
+      { "WA", Washington }, 
+      { "https://www.usps.com/#WA", Washington }, 
+      { "WF", WallisAndFutuna }, 
+      { "urn:iso:std:iso:3166#WF", WallisAndFutuna }, 
+      { "WI", Wisconsin }, 
+      { "https://www.usps.com/#WI", Wisconsin }, 
+      { "WK", WakeIsland }, 
+      { "urn:iso:std:iso:3166#WK", WakeIsland }, 
+      { "WS", Samoa }, 
+      { "urn:iso:std:iso:3166#WS", Samoa }, 
+      { "WV", WestVirginia }, 
+      { "https://www.usps.com/#WV", WestVirginia }, 
+      { "WY", Wyoming }, 
+      { "https://www.usps.com/#WY", Wyoming }, 
+      { "YD", YemenDemocratic }, 
+      { "urn:iso:std:iso:3166#YD", YemenDemocratic }, 
+      { "YE", Yemen }, 
+      { "urn:iso:std:iso:3166#YE", Yemen }, 
+      { "YT", Mayotte }, 
+      { "urn:iso:std:iso:3166#YT", Mayotte }, 
+      { "YU", Yugoslavia }, 
+      { "urn:iso:std:iso:3166#YU", Yugoslavia }, 
+      { "ZA", SouthAfrica }, 
+      { "urn:iso:std:iso:3166#ZA", SouthAfrica }, 
+      { "ZM", Zambia }, 
+      { "urn:iso:std:iso:3166#ZM", Zambia }, 
+      { "ZR", Zaire }, 
+      { "urn:iso:std:iso:3166#ZR", Zaire }, 
+      { "ZW", Zimbabwe }, 
+      { "urn:iso:std:iso:3166#ZW", Zimbabwe }, 
+    };
   };
 }

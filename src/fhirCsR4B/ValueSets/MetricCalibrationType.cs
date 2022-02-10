@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralGain = "gain";
 
     /// <summary>
+    /// Literal for code: MetricCalibrationTypeGain
+    /// </summary>
+    public const string LiteralMetricCalibrationTypeGain = "http://hl7.org/fhir/metric-calibration-type#gain";
+
+    /// <summary>
     /// Literal for code: Offset
     /// </summary>
     public const string LiteralOffset = "offset";
+
+    /// <summary>
+    /// Literal for code: MetricCalibrationTypeOffset
+    /// </summary>
+    public const string LiteralMetricCalibrationTypeOffset = "http://hl7.org/fhir/metric-calibration-type#offset";
 
     /// <summary>
     /// Literal for code: TwoPoint
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTwoPoint = "two-point";
 
     /// <summary>
+    /// Literal for code: MetricCalibrationTypeTwoPoint
+    /// </summary>
+    public const string LiteralMetricCalibrationTypeTwoPoint = "http://hl7.org/fhir/metric-calibration-type#two-point";
+
+    /// <summary>
     /// Literal for code: Unspecified
     /// </summary>
     public const string LiteralUnspecified = "unspecified";
+
+    /// <summary>
+    /// Literal for code: MetricCalibrationTypeUnspecified
+    /// </summary>
+    public const string LiteralMetricCalibrationTypeUnspecified = "http://hl7.org/fhir/metric-calibration-type#unspecified";
+
+    /// <summary>
+    /// Dictionary for looking up MetricCalibrationType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "gain", Gain }, 
+      { "http://hl7.org/fhir/metric-calibration-type#gain", Gain }, 
+      { "offset", Offset }, 
+      { "http://hl7.org/fhir/metric-calibration-type#offset", Offset }, 
+      { "two-point", TwoPoint }, 
+      { "http://hl7.org/fhir/metric-calibration-type#two-point", TwoPoint }, 
+      { "unspecified", Unspecified }, 
+      { "http://hl7.org/fhir/metric-calibration-type#unspecified", Unspecified }, 
+    };
   };
 }

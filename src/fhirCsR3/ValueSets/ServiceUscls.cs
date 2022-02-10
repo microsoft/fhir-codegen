@@ -198,9 +198,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExamCompPrimary = "1101";
 
     /// <summary>
+    /// Literal for code: ServiceUsclsExamCompPrimary
+    /// </summary>
+    public const string LiteralServiceUsclsExamCompPrimary = "http://hl7.org/fhir/ex-USCLS#1101";
+
+    /// <summary>
     /// Literal for code: ExamCompMixed
     /// </summary>
     public const string LiteralExamCompMixed = "1102";
+
+    /// <summary>
+    /// Literal for code: ServiceUsclsExamCompMixed
+    /// </summary>
+    public const string LiteralServiceUsclsExamCompMixed = "http://hl7.org/fhir/ex-USCLS#1102";
 
     /// <summary>
     /// Literal for code: ExamCompPermanent
@@ -208,9 +218,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExamCompPermanent = "1103";
 
     /// <summary>
+    /// Literal for code: ServiceUsclsExamCompPermanent
+    /// </summary>
+    public const string LiteralServiceUsclsExamCompPermanent = "http://hl7.org/fhir/ex-USCLS#1103";
+
+    /// <summary>
     /// Literal for code: Polishing1Unit
     /// </summary>
     public const string LiteralPolishing1Unit = "11101";
+
+    /// <summary>
+    /// Literal for code: ServiceUsclsPolishing1Unit
+    /// </summary>
+    public const string LiteralServiceUsclsPolishing1Unit = "http://hl7.org/fhir/ex-USCLS#11101";
 
     /// <summary>
     /// Literal for code: Polishing2Unit
@@ -218,9 +238,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPolishing2Unit = "11102";
 
     /// <summary>
+    /// Literal for code: ServiceUsclsPolishing2Unit
+    /// </summary>
+    public const string LiteralServiceUsclsPolishing2Unit = "http://hl7.org/fhir/ex-USCLS#11102";
+
+    /// <summary>
     /// Literal for code: Polishing3Unit
     /// </summary>
     public const string LiteralPolishing3Unit = "11103";
+
+    /// <summary>
+    /// Literal for code: ServiceUsclsPolishing3Unit
+    /// </summary>
+    public const string LiteralServiceUsclsPolishing3Unit = "http://hl7.org/fhir/ex-USCLS#11103";
 
     /// <summary>
     /// Literal for code: Polishing4Unit
@@ -228,9 +258,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPolishing4Unit = "11104";
 
     /// <summary>
+    /// Literal for code: ServiceUsclsPolishing4Unit
+    /// </summary>
+    public const string LiteralServiceUsclsPolishing4Unit = "http://hl7.org/fhir/ex-USCLS#11104";
+
+    /// <summary>
     /// Literal for code: ExamRecall
     /// </summary>
     public const string LiteralExamRecall = "1201";
+
+    /// <summary>
+    /// Literal for code: ServiceUsclsExamRecall
+    /// </summary>
+    public const string LiteralServiceUsclsExamRecall = "http://hl7.org/fhir/ex-USCLS#1201";
 
     /// <summary>
     /// Literal for code: ExamEmergency
@@ -238,9 +278,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralExamEmergency = "1205";
 
     /// <summary>
+    /// Literal for code: ServiceUsclsExamEmergency
+    /// </summary>
+    public const string LiteralServiceUsclsExamEmergency = "http://hl7.org/fhir/ex-USCLS#1205";
+
+    /// <summary>
     /// Literal for code: RadiographSeries12
     /// </summary>
     public const string LiteralRadiographSeries12 = "2101";
+
+    /// <summary>
+    /// Literal for code: ServiceUsclsRadiographSeries12
+    /// </summary>
+    public const string LiteralServiceUsclsRadiographSeries12 = "http://hl7.org/fhir/ex-USCLS#2101";
 
     /// <summary>
     /// Literal for code: RadiographSeries16
@@ -248,9 +298,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographSeries16 = "2102";
 
     /// <summary>
+    /// Literal for code: ServiceUsclsRadiographSeries16
+    /// </summary>
+    public const string LiteralServiceUsclsRadiographSeries16 = "http://hl7.org/fhir/ex-USCLS#2102";
+
+    /// <summary>
     /// Literal for code: Amalgam1Surface
     /// </summary>
     public const string LiteralAmalgam1Surface = "21211";
+
+    /// <summary>
+    /// Literal for code: ServiceUsclsAmalgam1Surface
+    /// </summary>
+    public const string LiteralServiceUsclsAmalgam1Surface = "http://hl7.org/fhir/ex-USCLS#21211";
 
     /// <summary>
     /// Literal for code: Amalgam2Surface
@@ -258,9 +318,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAmalgam2Surface = "21212";
 
     /// <summary>
+    /// Literal for code: ServiceUsclsAmalgam2Surface
+    /// </summary>
+    public const string LiteralServiceUsclsAmalgam2Surface = "http://hl7.org/fhir/ex-USCLS#21212";
+
+    /// <summary>
     /// Literal for code: RadiographBytewing
     /// </summary>
     public const string LiteralRadiographBytewing = "2141";
+
+    /// <summary>
+    /// Literal for code: ServiceUsclsRadiographBytewing
+    /// </summary>
+    public const string LiteralServiceUsclsRadiographBytewing = "http://hl7.org/fhir/ex-USCLS#2141";
 
     /// <summary>
     /// Literal for code: RadiographPanoramic
@@ -268,9 +338,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRadiographPanoramic = "2601";
 
     /// <summary>
+    /// Literal for code: ServiceUsclsRadiographPanoramic
+    /// </summary>
+    public const string LiteralServiceUsclsRadiographPanoramic = "http://hl7.org/fhir/ex-USCLS#2601";
+
+    /// <summary>
     /// Literal for code: CrownPFM
     /// </summary>
     public const string LiteralCrownPFM = "27211";
+
+    /// <summary>
+    /// Literal for code: ServiceUsclsCrownPFM
+    /// </summary>
+    public const string LiteralServiceUsclsCrownPFM = "http://hl7.org/fhir/ex-USCLS#27211";
 
     /// <summary>
     /// Literal for code: MarylandBridge
@@ -278,9 +358,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMarylandBridge = "67211";
 
     /// <summary>
+    /// Literal for code: ServiceUsclsMarylandBridge
+    /// </summary>
+    public const string LiteralServiceUsclsMarylandBridge = "http://hl7.org/fhir/ex-USCLS#67211";
+
+    /// <summary>
     /// Literal for code: LabCommercial
     /// </summary>
     public const string LiteralLabCommercial = "99111";
+
+    /// <summary>
+    /// Literal for code: ServiceUsclsLabCommercial
+    /// </summary>
+    public const string LiteralServiceUsclsLabCommercial = "http://hl7.org/fhir/ex-USCLS#99111";
 
     /// <summary>
     /// Literal for code: LabInOffice
@@ -288,8 +378,64 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLabInOffice = "99333";
 
     /// <summary>
+    /// Literal for code: ServiceUsclsLabInOffice
+    /// </summary>
+    public const string LiteralServiceUsclsLabInOffice = "http://hl7.org/fhir/ex-USCLS#99333";
+
+    /// <summary>
     /// Literal for code: Expense
     /// </summary>
     public const string LiteralExpense = "99555";
+
+    /// <summary>
+    /// Literal for code: ServiceUsclsExpense
+    /// </summary>
+    public const string LiteralServiceUsclsExpense = "http://hl7.org/fhir/ex-USCLS#99555";
+
+    /// <summary>
+    /// Dictionary for looking up ServiceUscls Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1101", ExamCompPrimary }, 
+      { "http://hl7.org/fhir/ex-USCLS#1101", ExamCompPrimary }, 
+      { "1102", ExamCompMixed }, 
+      { "http://hl7.org/fhir/ex-USCLS#1102", ExamCompMixed }, 
+      { "1103", ExamCompPermanent }, 
+      { "http://hl7.org/fhir/ex-USCLS#1103", ExamCompPermanent }, 
+      { "11101", Polishing1Unit }, 
+      { "http://hl7.org/fhir/ex-USCLS#11101", Polishing1Unit }, 
+      { "11102", Polishing2Unit }, 
+      { "http://hl7.org/fhir/ex-USCLS#11102", Polishing2Unit }, 
+      { "11103", Polishing3Unit }, 
+      { "http://hl7.org/fhir/ex-USCLS#11103", Polishing3Unit }, 
+      { "11104", Polishing4Unit }, 
+      { "http://hl7.org/fhir/ex-USCLS#11104", Polishing4Unit }, 
+      { "1201", ExamRecall }, 
+      { "http://hl7.org/fhir/ex-USCLS#1201", ExamRecall }, 
+      { "1205", ExamEmergency }, 
+      { "http://hl7.org/fhir/ex-USCLS#1205", ExamEmergency }, 
+      { "2101", RadiographSeries12 }, 
+      { "http://hl7.org/fhir/ex-USCLS#2101", RadiographSeries12 }, 
+      { "2102", RadiographSeries16 }, 
+      { "http://hl7.org/fhir/ex-USCLS#2102", RadiographSeries16 }, 
+      { "21211", Amalgam1Surface }, 
+      { "http://hl7.org/fhir/ex-USCLS#21211", Amalgam1Surface }, 
+      { "21212", Amalgam2Surface }, 
+      { "http://hl7.org/fhir/ex-USCLS#21212", Amalgam2Surface }, 
+      { "2141", RadiographBytewing }, 
+      { "http://hl7.org/fhir/ex-USCLS#2141", RadiographBytewing }, 
+      { "2601", RadiographPanoramic }, 
+      { "http://hl7.org/fhir/ex-USCLS#2601", RadiographPanoramic }, 
+      { "27211", CrownPFM }, 
+      { "http://hl7.org/fhir/ex-USCLS#27211", CrownPFM }, 
+      { "67211", MarylandBridge }, 
+      { "http://hl7.org/fhir/ex-USCLS#67211", MarylandBridge }, 
+      { "99111", LabCommercial }, 
+      { "http://hl7.org/fhir/ex-USCLS#99111", LabCommercial }, 
+      { "99333", LabInOffice }, 
+      { "http://hl7.org/fhir/ex-USCLS#99333", LabInOffice }, 
+      { "99555", Expense }, 
+      { "http://hl7.org/fhir/ex-USCLS#99555", Expense }, 
+    };
   };
 }

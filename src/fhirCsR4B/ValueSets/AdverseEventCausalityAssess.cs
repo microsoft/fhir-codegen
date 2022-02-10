@@ -72,9 +72,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCertain = "Certain";
 
     /// <summary>
+    /// Literal for code: AdverseEventCausalityAssessCertain
+    /// </summary>
+    public const string LiteralAdverseEventCausalityAssessCertain = "http://terminology.hl7.org/CodeSystem/adverse-event-causality-assess#Certain";
+
+    /// <summary>
     /// Literal for code: ConditionalClassified
     /// </summary>
     public const string LiteralConditionalClassified = "Conditional-Classified";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCausalityAssessConditionalClassified
+    /// </summary>
+    public const string LiteralAdverseEventCausalityAssessConditionalClassified = "http://terminology.hl7.org/CodeSystem/adverse-event-causality-assess#Conditional-Classified";
 
     /// <summary>
     /// Literal for code: Possible
@@ -82,9 +92,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPossible = "Possible";
 
     /// <summary>
+    /// Literal for code: AdverseEventCausalityAssessPossible
+    /// </summary>
+    public const string LiteralAdverseEventCausalityAssessPossible = "http://terminology.hl7.org/CodeSystem/adverse-event-causality-assess#Possible";
+
+    /// <summary>
     /// Literal for code: ProbablyLikely
     /// </summary>
     public const string LiteralProbablyLikely = "Probably-Likely";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCausalityAssessProbablyLikely
+    /// </summary>
+    public const string LiteralAdverseEventCausalityAssessProbablyLikely = "http://terminology.hl7.org/CodeSystem/adverse-event-causality-assess#Probably-Likely";
 
     /// <summary>
     /// Literal for code: UnassessableUnclassifiable
@@ -92,8 +112,36 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralUnassessableUnclassifiable = "Unassessable-Unclassifiable";
 
     /// <summary>
+    /// Literal for code: AdverseEventCausalityAssessUnassessableUnclassifiable
+    /// </summary>
+    public const string LiteralAdverseEventCausalityAssessUnassessableUnclassifiable = "http://terminology.hl7.org/CodeSystem/adverse-event-causality-assess#Unassessable-Unclassifiable";
+
+    /// <summary>
     /// Literal for code: Unlikely
     /// </summary>
     public const string LiteralUnlikely = "Unlikely";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCausalityAssessUnlikely
+    /// </summary>
+    public const string LiteralAdverseEventCausalityAssessUnlikely = "http://terminology.hl7.org/CodeSystem/adverse-event-causality-assess#Unlikely";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventCausalityAssess Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "Certain", Certain }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-causality-assess#Certain", Certain }, 
+      { "Conditional-Classified", ConditionalClassified }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-causality-assess#Conditional-Classified", ConditionalClassified }, 
+      { "Possible", Possible }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-causality-assess#Possible", Possible }, 
+      { "Probably-Likely", ProbablyLikely }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-causality-assess#Probably-Likely", ProbablyLikely }, 
+      { "Unassessable-Unclassifiable", UnassessableUnclassifiable }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-causality-assess#Unassessable-Unclassifiable", UnassessableUnclassifiable }, 
+      { "Unlikely", Unlikely }, 
+      { "http://terminology.hl7.org/CodeSystem/adverse-event-causality-assess#Unlikely", Unlikely }, 
+    };
   };
 }

@@ -292,6 +292,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? Reported { get; set; }
     /// <summary>
+    /// Extension container element for Reported
+    /// </summary>
+    public Element _Reported { get; set; }
+    /// <summary>
     /// Serialize to a JSON object
     /// </summary>
     public new void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
@@ -324,6 +328,12 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("reported", (bool)Reported!);
       }
 
+      if (_Reported != null)
+      {
+        writer.WritePropertyName("_reported");
+        _Reported.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -352,6 +362,11 @@ namespace fhirCsR4.Models
 
         case "reported":
           Reported = reader.GetBoolean();
+          break;
+
+        case "_reported":
+          _Reported = new fhirCsR4.Models.Element();
+          _Reported.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -655,6 +670,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? IsSubpotent { get; set; }
     /// <summary>
+    /// Extension container element for IsSubpotent
+    /// </summary>
+    public Element _IsSubpotent { get; set; }
+    /// <summary>
     /// The service delivery location where the vaccine administration occurred.
     /// </summary>
     public Reference Location { get; set; }
@@ -702,6 +721,10 @@ namespace fhirCsR4.Models
     /// Reflects the “reliability” of the content.
     /// </summary>
     public bool? PrimarySource { get; set; }
+    /// <summary>
+    /// Extension container element for PrimarySource
+    /// </summary>
+    public Element _PrimarySource { get; set; }
     /// <summary>
     /// Indicates a patient's eligibility for a funding program.
     /// </summary>
@@ -865,6 +888,12 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("primarySource", (bool)PrimarySource!);
       }
 
+      if (_PrimarySource != null)
+      {
+        writer.WritePropertyName("_primarySource");
+        _PrimarySource.SerializeJson(writer, options);
+      }
+
       if (ReportOrigin != null)
       {
         writer.WritePropertyName("reportOrigin");
@@ -978,6 +1007,12 @@ namespace fhirCsR4.Models
       if (IsSubpotent != null)
       {
         writer.WriteBoolean("isSubpotent", (bool)IsSubpotent!);
+      }
+
+      if (_IsSubpotent != null)
+      {
+        writer.WritePropertyName("_isSubpotent");
+        _IsSubpotent.SerializeJson(writer, options);
       }
 
       if ((SubpotentReason != null) && (SubpotentReason.Count != 0))
@@ -1145,6 +1180,11 @@ namespace fhirCsR4.Models
           IsSubpotent = reader.GetBoolean();
           break;
 
+        case "_isSubpotent":
+          _IsSubpotent = new fhirCsR4.Models.Element();
+          _IsSubpotent.DeserializeJson(ref reader, options);
+          break;
+
         case "location":
           Location = new fhirCsR4.Models.Reference();
           Location.DeserializeJson(ref reader, options);
@@ -1243,6 +1283,11 @@ namespace fhirCsR4.Models
 
         case "primarySource":
           PrimarySource = reader.GetBoolean();
+          break;
+
+        case "_primarySource":
+          _PrimarySource = new fhirCsR4.Models.Element();
+          _PrimarySource.DeserializeJson(ref reader, options);
           break;
 
         case "programEligibility":
@@ -1488,5 +1533,10 @@ namespace fhirCsR4.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string NOT_DONE = "not-done";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "completed",
+      "entered-in-error",
+      "not-done",
+    };
   }
 }

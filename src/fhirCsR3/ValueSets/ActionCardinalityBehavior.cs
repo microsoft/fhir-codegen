@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMultiple = "multiple";
 
     /// <summary>
+    /// Literal for code: ActionCardinalityBehaviorMultiple
+    /// </summary>
+    public const string LiteralActionCardinalityBehaviorMultiple = "http://hl7.org/fhir/action-cardinality-behavior#multiple";
+
+    /// <summary>
     /// Literal for code: Single
     /// </summary>
     public const string LiteralSingle = "single";
+
+    /// <summary>
+    /// Literal for code: ActionCardinalityBehaviorSingle
+    /// </summary>
+    public const string LiteralActionCardinalityBehaviorSingle = "http://hl7.org/fhir/action-cardinality-behavior#single";
+
+    /// <summary>
+    /// Dictionary for looking up ActionCardinalityBehavior Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "multiple", Multiple }, 
+      { "http://hl7.org/fhir/action-cardinality-behavior#multiple", Multiple }, 
+      { "single", Single }, 
+      { "http://hl7.org/fhir/action-cardinality-behavior#single", Single }, 
+    };
   };
 }

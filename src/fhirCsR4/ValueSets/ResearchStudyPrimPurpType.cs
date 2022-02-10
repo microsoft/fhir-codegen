@@ -90,9 +90,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBasicScience = "basic-science";
 
     /// <summary>
+    /// Literal for code: ResearchStudyPrimPurpTypeBasicScience
+    /// </summary>
+    public const string LiteralResearchStudyPrimPurpTypeBasicScience = "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type#basic-science";
+
+    /// <summary>
     /// Literal for code: DeviceFeasibility
     /// </summary>
     public const string LiteralDeviceFeasibility = "device-feasibility";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyPrimPurpTypeDeviceFeasibility
+    /// </summary>
+    public const string LiteralResearchStudyPrimPurpTypeDeviceFeasibility = "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type#device-feasibility";
 
     /// <summary>
     /// Literal for code: Diagnostic
@@ -100,9 +110,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiagnostic = "diagnostic";
 
     /// <summary>
+    /// Literal for code: ResearchStudyPrimPurpTypeDiagnostic
+    /// </summary>
+    public const string LiteralResearchStudyPrimPurpTypeDiagnostic = "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type#diagnostic";
+
+    /// <summary>
     /// Literal for code: HealthServicesResearch
     /// </summary>
     public const string LiteralHealthServicesResearch = "health-services-research";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyPrimPurpTypeHealthServicesResearch
+    /// </summary>
+    public const string LiteralResearchStudyPrimPurpTypeHealthServicesResearch = "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type#health-services-research";
 
     /// <summary>
     /// Literal for code: Prevention
@@ -110,9 +130,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrevention = "prevention";
 
     /// <summary>
+    /// Literal for code: ResearchStudyPrimPurpTypePrevention
+    /// </summary>
+    public const string LiteralResearchStudyPrimPurpTypePrevention = "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type#prevention";
+
+    /// <summary>
     /// Literal for code: Screening
     /// </summary>
     public const string LiteralScreening = "screening";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyPrimPurpTypeScreening
+    /// </summary>
+    public const string LiteralResearchStudyPrimPurpTypeScreening = "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type#screening";
 
     /// <summary>
     /// Literal for code: SupportiveCare
@@ -120,8 +150,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSupportiveCare = "supportive-care";
 
     /// <summary>
+    /// Literal for code: ResearchStudyPrimPurpTypeSupportiveCare
+    /// </summary>
+    public const string LiteralResearchStudyPrimPurpTypeSupportiveCare = "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type#supportive-care";
+
+    /// <summary>
     /// Literal for code: Treatment
     /// </summary>
     public const string LiteralTreatment = "treatment";
+
+    /// <summary>
+    /// Literal for code: ResearchStudyPrimPurpTypeTreatment
+    /// </summary>
+    public const string LiteralResearchStudyPrimPurpTypeTreatment = "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type#treatment";
+
+    /// <summary>
+    /// Dictionary for looking up ResearchStudyPrimPurpType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "basic-science", BasicScience }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type#basic-science", BasicScience }, 
+      { "device-feasibility", DeviceFeasibility }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type#device-feasibility", DeviceFeasibility }, 
+      { "diagnostic", Diagnostic }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type#diagnostic", Diagnostic }, 
+      { "health-services-research", HealthServicesResearch }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type#health-services-research", HealthServicesResearch }, 
+      { "prevention", Prevention }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type#prevention", Prevention }, 
+      { "screening", Screening }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type#screening", Screening }, 
+      { "supportive-care", SupportiveCare }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type#supportive-care", SupportiveCare }, 
+      { "treatment", Treatment }, 
+      { "http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type#treatment", Treatment }, 
+    };
   };
 }

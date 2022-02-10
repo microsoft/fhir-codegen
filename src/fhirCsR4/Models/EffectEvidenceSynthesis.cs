@@ -28,9 +28,17 @@ namespace fhirCsR4.Models
     /// </summary>
     public int? NumberOfParticipants { get; set; }
     /// <summary>
+    /// Extension container element for NumberOfParticipants
+    /// </summary>
+    public Element _NumberOfParticipants { get; set; }
+    /// <summary>
     /// Number of studies included in this evidence synthesis.
     /// </summary>
     public int? NumberOfStudies { get; set; }
+    /// <summary>
+    /// Extension container element for NumberOfStudies
+    /// </summary>
+    public Element _NumberOfStudies { get; set; }
     /// <summary>
     /// Serialize to a JSON object
     /// </summary>
@@ -58,9 +66,21 @@ namespace fhirCsR4.Models
         writer.WriteNumber("numberOfStudies", (int)NumberOfStudies!);
       }
 
+      if (_NumberOfStudies != null)
+      {
+        writer.WritePropertyName("_numberOfStudies");
+        _NumberOfStudies.SerializeJson(writer, options);
+      }
+
       if (NumberOfParticipants != null)
       {
         writer.WriteNumber("numberOfParticipants", (int)NumberOfParticipants!);
+      }
+
+      if (_NumberOfParticipants != null)
+      {
+        writer.WritePropertyName("_numberOfParticipants");
+        _NumberOfParticipants.SerializeJson(writer, options);
       }
 
       if (includeStartObject)
@@ -88,8 +108,18 @@ namespace fhirCsR4.Models
           NumberOfParticipants = reader.GetInt32();
           break;
 
+        case "_numberOfParticipants":
+          _NumberOfParticipants = new fhirCsR4.Models.Element();
+          _NumberOfParticipants.DeserializeJson(ref reader, options);
+          break;
+
         case "numberOfStudies":
           NumberOfStudies = reader.GetInt32();
+          break;
+
+        case "_numberOfStudies":
+          _NumberOfStudies = new fhirCsR4.Models.Element();
+          _NumberOfStudies.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -274,6 +304,10 @@ namespace fhirCsR4.Models
   public static class EffectEvidenceSynthesisResultsByExposureExposureStateCodes {
     public const string EXPOSURE = "exposure";
     public const string EXPOSURE_ALTERNATIVE = "exposure-alternative";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "exposure",
+      "exposure-alternative",
+    };
   }
   /// <summary>
   /// A description of the precision of the estimate for the effect.
@@ -2113,5 +2147,11 @@ namespace fhirCsR4.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

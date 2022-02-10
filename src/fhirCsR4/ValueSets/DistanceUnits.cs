@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class DistanceUnitsCodes
   {
     /// <summary>
-    /// 
+    /// kilometers
     /// </summary>
     public static readonly Coding Kilometers = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://unitsofmeasure.org"
     };
     /// <summary>
-    /// 
+    /// meters
     /// </summary>
     public static readonly Coding Meters = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://unitsofmeasure.org"
     };
     /// <summary>
-    /// 
+    /// millimeters
     /// </summary>
     public static readonly Coding Millimeters = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://unitsofmeasure.org"
     };
     /// <summary>
-    /// 
+    /// nanometers
     /// </summary>
     public static readonly Coding Nanometers = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://unitsofmeasure.org"
     };
     /// <summary>
-    /// 
+    /// micrometers
     /// </summary>
     public static readonly Coding Micrometers = new Coding
     {
@@ -63,9 +63,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKilometers = "km";
 
     /// <summary>
+    /// Literal for code: NONEKilometers
+    /// </summary>
+    public const string LiteralNONEKilometers = "http://unitsofmeasure.org#km";
+
+    /// <summary>
     /// Literal for code: Meters
     /// </summary>
     public const string LiteralMeters = "m";
+
+    /// <summary>
+    /// Literal for code: NONEMeters
+    /// </summary>
+    public const string LiteralNONEMeters = "http://unitsofmeasure.org#m";
 
     /// <summary>
     /// Literal for code: Millimeters
@@ -73,13 +83,44 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMillimeters = "mm";
 
     /// <summary>
+    /// Literal for code: NONEMillimeters
+    /// </summary>
+    public const string LiteralNONEMillimeters = "http://unitsofmeasure.org#mm";
+
+    /// <summary>
     /// Literal for code: Nanometers
     /// </summary>
     public const string LiteralNanometers = "nm";
 
     /// <summary>
+    /// Literal for code: NONENanometers
+    /// </summary>
+    public const string LiteralNONENanometers = "http://unitsofmeasure.org#nm";
+
+    /// <summary>
     /// Literal for code: Micrometers
     /// </summary>
     public const string LiteralMicrometers = "um";
+
+    /// <summary>
+    /// Literal for code: NONEMicrometers
+    /// </summary>
+    public const string LiteralNONEMicrometers = "http://unitsofmeasure.org#um";
+
+    /// <summary>
+    /// Dictionary for looking up DistanceUnits Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "km", Kilometers }, 
+      { "http://unitsofmeasure.org#km", Kilometers }, 
+      { "m", Meters }, 
+      { "http://unitsofmeasure.org#m", Meters }, 
+      { "mm", Millimeters }, 
+      { "http://unitsofmeasure.org#mm", Millimeters }, 
+      { "nm", Nanometers }, 
+      { "http://unitsofmeasure.org#nm", Nanometers }, 
+      { "um", Micrometers }, 
+      { "http://unitsofmeasure.org#um", Micrometers }, 
+    };
   };
 }

@@ -162,9 +162,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAttachment = "attachment";
 
     /// <summary>
+    /// Literal for code: ItemTypeAttachment
+    /// </summary>
+    public const string LiteralItemTypeAttachment = "http://hl7.org/fhir/item-type#attachment";
+
+    /// <summary>
     /// Literal for code: Boolean
     /// </summary>
     public const string LiteralBoolean = "boolean";
+
+    /// <summary>
+    /// Literal for code: ItemTypeBoolean
+    /// </summary>
+    public const string LiteralItemTypeBoolean = "http://hl7.org/fhir/item-type#boolean";
 
     /// <summary>
     /// Literal for code: Coding
@@ -172,9 +182,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCoding = "coding";
 
     /// <summary>
+    /// Literal for code: ItemTypeCoding
+    /// </summary>
+    public const string LiteralItemTypeCoding = "http://hl7.org/fhir/item-type#coding";
+
+    /// <summary>
     /// Literal for code: Date
     /// </summary>
     public const string LiteralDate = "date";
+
+    /// <summary>
+    /// Literal for code: ItemTypeDate
+    /// </summary>
+    public const string LiteralItemTypeDate = "http://hl7.org/fhir/item-type#date";
 
     /// <summary>
     /// Literal for code: DateTime
@@ -182,9 +202,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDateTime = "dateTime";
 
     /// <summary>
+    /// Literal for code: ItemTypeDateTime
+    /// </summary>
+    public const string LiteralItemTypeDateTime = "http://hl7.org/fhir/item-type#dateTime";
+
+    /// <summary>
     /// Literal for code: Decimal
     /// </summary>
     public const string LiteralDecimal = "decimal";
+
+    /// <summary>
+    /// Literal for code: ItemTypeDecimal
+    /// </summary>
+    public const string LiteralItemTypeDecimal = "http://hl7.org/fhir/item-type#decimal";
 
     /// <summary>
     /// Literal for code: Display
@@ -192,9 +222,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDisplay = "display";
 
     /// <summary>
+    /// Literal for code: ItemTypeDisplay
+    /// </summary>
+    public const string LiteralItemTypeDisplay = "http://hl7.org/fhir/item-type#display";
+
+    /// <summary>
     /// Literal for code: Group
     /// </summary>
     public const string LiteralGroup = "group";
+
+    /// <summary>
+    /// Literal for code: ItemTypeGroup
+    /// </summary>
+    public const string LiteralItemTypeGroup = "http://hl7.org/fhir/item-type#group";
 
     /// <summary>
     /// Literal for code: Integer
@@ -202,9 +242,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInteger = "integer";
 
     /// <summary>
+    /// Literal for code: ItemTypeInteger
+    /// </summary>
+    public const string LiteralItemTypeInteger = "http://hl7.org/fhir/item-type#integer";
+
+    /// <summary>
     /// Literal for code: Quantity
     /// </summary>
     public const string LiteralQuantity = "quantity";
+
+    /// <summary>
+    /// Literal for code: ItemTypeQuantity
+    /// </summary>
+    public const string LiteralItemTypeQuantity = "http://hl7.org/fhir/item-type#quantity";
 
     /// <summary>
     /// Literal for code: Question
@@ -212,9 +262,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralQuestion = "question";
 
     /// <summary>
+    /// Literal for code: ItemTypeQuestion
+    /// </summary>
+    public const string LiteralItemTypeQuestion = "http://hl7.org/fhir/item-type#question";
+
+    /// <summary>
     /// Literal for code: Reference
     /// </summary>
     public const string LiteralReference = "reference";
+
+    /// <summary>
+    /// Literal for code: ItemTypeReference
+    /// </summary>
+    public const string LiteralItemTypeReference = "http://hl7.org/fhir/item-type#reference";
 
     /// <summary>
     /// Literal for code: String
@@ -222,9 +282,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralString = "string";
 
     /// <summary>
+    /// Literal for code: ItemTypeString
+    /// </summary>
+    public const string LiteralItemTypeString = "http://hl7.org/fhir/item-type#string";
+
+    /// <summary>
     /// Literal for code: Text
     /// </summary>
     public const string LiteralText = "text";
+
+    /// <summary>
+    /// Literal for code: ItemTypeText
+    /// </summary>
+    public const string LiteralItemTypeText = "http://hl7.org/fhir/item-type#text";
 
     /// <summary>
     /// Literal for code: Time
@@ -232,8 +302,56 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTime = "time";
 
     /// <summary>
+    /// Literal for code: ItemTypeTime
+    /// </summary>
+    public const string LiteralItemTypeTime = "http://hl7.org/fhir/item-type#time";
+
+    /// <summary>
     /// Literal for code: Url
     /// </summary>
     public const string LiteralUrl = "url";
+
+    /// <summary>
+    /// Literal for code: ItemTypeUrl
+    /// </summary>
+    public const string LiteralItemTypeUrl = "http://hl7.org/fhir/item-type#url";
+
+    /// <summary>
+    /// Dictionary for looking up ItemType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "attachment", Attachment }, 
+      { "http://hl7.org/fhir/item-type#attachment", Attachment }, 
+      { "boolean", Boolean }, 
+      { "http://hl7.org/fhir/item-type#boolean", Boolean }, 
+      { "coding", Coding }, 
+      { "http://hl7.org/fhir/item-type#coding", Coding }, 
+      { "date", Date }, 
+      { "http://hl7.org/fhir/item-type#date", Date }, 
+      { "dateTime", DateTime }, 
+      { "http://hl7.org/fhir/item-type#dateTime", DateTime }, 
+      { "decimal", Decimal }, 
+      { "http://hl7.org/fhir/item-type#decimal", Decimal }, 
+      { "display", Display }, 
+      { "http://hl7.org/fhir/item-type#display", Display }, 
+      { "group", Group }, 
+      { "http://hl7.org/fhir/item-type#group", Group }, 
+      { "integer", Integer }, 
+      { "http://hl7.org/fhir/item-type#integer", Integer }, 
+      { "quantity", Quantity }, 
+      { "http://hl7.org/fhir/item-type#quantity", Quantity }, 
+      { "question", Question }, 
+      { "http://hl7.org/fhir/item-type#question", Question }, 
+      { "reference", Reference }, 
+      { "http://hl7.org/fhir/item-type#reference", Reference }, 
+      { "string", String }, 
+      { "http://hl7.org/fhir/item-type#string", String }, 
+      { "text", Text }, 
+      { "http://hl7.org/fhir/item-type#text", Text }, 
+      { "time", Time }, 
+      { "http://hl7.org/fhir/item-type#time", Time }, 
+      { "url", Url }, 
+      { "http://hl7.org/fhir/item-type#url", Url }, 
+    };
   };
 }

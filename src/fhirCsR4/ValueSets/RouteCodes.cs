@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class RouteCodesCodes
   {
     /// <summary>
-    /// 
+    /// Auricular use
     /// </summary>
     public static readonly Coding AuricularUse = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intra-articular route
     /// </summary>
     public static readonly Coding IntraArticularRoute = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastrostomy use
     /// </summary>
     public static readonly Coding GastrostomyUse = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jejunostomy use
     /// </summary>
     public static readonly Coding JejunostomyUse = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasogastric use
     /// </summary>
     public static readonly Coding NasogastricUse = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sublesional route
     /// </summary>
     public static readonly Coding SublesionalRoute = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vaginal use
     /// </summary>
     public static readonly Coding VaginalUse = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraventricular
     /// </summary>
     public static readonly Coding Intraventricular = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oral use
     /// </summary>
     public static readonly Coding OralUse = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// SC use
     /// </summary>
     public static readonly Coding SCUse = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rectal use
     /// </summary>
     public static readonly Coding RectalUse = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental use
     /// </summary>
     public static readonly Coding DentalUse = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endocervical use
     /// </summary>
     public static readonly Coding EndocervicalUse = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endosinusial use
     /// </summary>
     public static readonly Coding EndosinusialUse = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endotracheopulmonary use
     /// </summary>
     public static readonly Coding EndotracheopulmonaryUse = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extra-amniotic use
     /// </summary>
     public static readonly Coding ExtraAmnioticUse = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastroenteral use
     /// </summary>
     public static readonly Coding GastroenteralUse = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gingival use
     /// </summary>
     public static readonly Coding GingivalUse = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraamniotic use
     /// </summary>
     public static readonly Coding IntraamnioticUse = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrabursal use
     /// </summary>
     public static readonly Coding IntrabursalUse = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracardiac use
     /// </summary>
     public static readonly Coding IntracardiacUse = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracavernous use
     /// </summary>
     public static readonly Coding IntracavernousUse = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracoronary use
     /// </summary>
     public static readonly Coding IntracoronaryUse = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intradermal use
     /// </summary>
     public static readonly Coding IntradermalUse = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intradiscal use
     /// </summary>
     public static readonly Coding IntradiscalUse = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intralesional use
     /// </summary>
     public static readonly Coding IntralesionalUse = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intralymphatic use
     /// </summary>
     public static readonly Coding IntralymphaticUse = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraocular use
     /// </summary>
     public static readonly Coding IntraocularUse = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrapleural use
     /// </summary>
     public static readonly Coding IntrapleuralUse = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrasternal use
     /// </summary>
     public static readonly Coding IntrasternalUse = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravesical use
     /// </summary>
     public static readonly Coding IntravesicalUse = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oromucosal use
     /// </summary>
     public static readonly Coding OromucosalUse = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Periarticular use
     /// </summary>
     public static readonly Coding PeriarticularUse = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Perineural use
     /// </summary>
     public static readonly Coding PerineuralUse = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subconjunctival use
     /// </summary>
     public static readonly Coding SubconjunctivalUse = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraluminal use
     /// </summary>
     public static readonly Coding IntraluminalUse = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sublingual use
     /// </summary>
     public static readonly Coding SublingualUse = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraperitoneal use
     /// </summary>
     public static readonly Coding IntraperitonealUse = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transmucosal route
     /// </summary>
     public static readonly Coding TransmucosalRoute = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intratracheal route
     /// </summary>
     public static readonly Coding IntratrachealRoute = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrabiliary route
     /// </summary>
     public static readonly Coding IntrabiliaryRoute = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epidural route
     /// </summary>
     public static readonly Coding EpiduralRoute = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suborbital route
     /// </summary>
     public static readonly Coding SuborbitalRoute = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Caudal route
     /// </summary>
     public static readonly Coding CaudalRoute = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraosseous route
     /// </summary>
     public static readonly Coding IntraosseousRoute = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrathoracic route
     /// </summary>
     public static readonly Coding IntrathoracicRoute = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enteral route
     /// </summary>
     public static readonly Coding EnteralRoute = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraductal route
     /// </summary>
     public static readonly Coding IntraductalRoute = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intratympanic route
     /// </summary>
     public static readonly Coding IntratympanicRoute = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravenous central route
     /// </summary>
     public static readonly Coding IntravenousCentralRoute = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intramyometrial route
     /// </summary>
     public static readonly Coding IntramyometrialRoute = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastro-intestinal stoma route
     /// </summary>
     public static readonly Coding GastroIntestinalStomaRoute = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Colostomy route
     /// </summary>
     public static readonly Coding ColostomyRoute = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Periurethral route
     /// </summary>
     public static readonly Coding PeriurethralRoute = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracoronal route
     /// </summary>
     public static readonly Coding IntracoronalRoute = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retrobulbar route
     /// </summary>
     public static readonly Coding RetrobulbarRoute = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracartilaginous route
     /// </summary>
     public static readonly Coding IntracartilaginousRoute = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravitreal route
     /// </summary>
     public static readonly Coding IntravitrealRoute = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraspinal route
     /// </summary>
     public static readonly Coding IntraspinalRoute = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orogastric route
     /// </summary>
     public static readonly Coding OrogastricRoute = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transurethral route
     /// </summary>
     public static readonly Coding TransurethralRoute = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intratendinous route
     /// </summary>
     public static readonly Coding IntratendinousRoute = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracorneal route
     /// </summary>
     public static readonly Coding IntracornealRoute = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oropharyngeal route
     /// </summary>
     public static readonly Coding OropharyngealRoute = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peribulbar route
     /// </summary>
     public static readonly Coding PeribulbarRoute = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasojejunal route
     /// </summary>
     public static readonly Coding NasojejunalRoute = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fistula route
     /// </summary>
     public static readonly Coding FistulaRoute = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical drain route
     /// </summary>
     public static readonly Coding SurgicalDrainRoute = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracameral route
     /// </summary>
     public static readonly Coding IntracameralRoute = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paracervical route
     /// </summary>
     public static readonly Coding ParacervicalRoute = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrasynovial route
     /// </summary>
     public static readonly Coding IntrasynovialRoute = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraduodenal route
     /// </summary>
     public static readonly Coding IntraduodenalRoute = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracisternal route
     /// </summary>
     public static readonly Coding IntracisternalRoute = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intratesticular route
     /// </summary>
     public static readonly Coding IntratesticularRoute = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracranial route
     /// </summary>
     public static readonly Coding IntracranialRoute = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor cavity route
     /// </summary>
     public static readonly Coding TumorCavityRoute = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paravertebral route
     /// </summary>
     public static readonly Coding ParavertebralRoute = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrasinal route
     /// </summary>
     public static readonly Coding IntrasinalRoute = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transcervical route
     /// </summary>
     public static readonly Coding TranscervicalRoute = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subtendinous route
     /// </summary>
     public static readonly Coding SubtendinousRoute = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraabdominal route
     /// </summary>
     public static readonly Coding IntraabdominalRoute = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subgingival route
     /// </summary>
     public static readonly Coding SubgingivalRoute = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraovarian route
     /// </summary>
     public static readonly Coding IntraovarianRoute = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ureteral route
     /// </summary>
     public static readonly Coding UreteralRoute = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peritendinous route
     /// </summary>
     public static readonly Coding PeritendinousRoute = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrabronchial route
     /// </summary>
     public static readonly Coding IntrabronchialRoute = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraprostatic route
     /// </summary>
     public static readonly Coding IntraprostaticRoute = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Submucosal route
     /// </summary>
     public static readonly Coding SubmucosalRoute = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical cavity route
     /// </summary>
     public static readonly Coding SurgicalCavityRoute = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ileostomy route
     /// </summary>
     public static readonly Coding IleostomyRoute = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravenous peripheral route
     /// </summary>
     public static readonly Coding IntravenousPeripheralRoute = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Periosteal route
     /// </summary>
     public static readonly Coding PeriostealRoute = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Esophagostomy route
     /// </summary>
     public static readonly Coding EsophagostomyRoute = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urostomy route
     /// </summary>
     public static readonly Coding UrostomyRoute = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laryngeal route
     /// </summary>
     public static readonly Coding LaryngealRoute = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrapulmonary route
     /// </summary>
     public static readonly Coding IntrapulmonaryRoute = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mucous fistula route
     /// </summary>
     public static readonly Coding MucousFistulaRoute = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasoduodenal route
     /// </summary>
     public static readonly Coding NasoduodenalRoute = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Body cavity route
     /// </summary>
     public static readonly Coding BodyCavityRoute = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraventricular route - cardiac
     /// </summary>
     public static readonly Coding IntraventricularRouteCardiac = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracerebroventricular route
     /// </summary>
     public static readonly Coding IntracerebroventricularRoute = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Percutaneous route
     /// </summary>
     public static readonly Coding PercutaneousRoute = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interstitial route
     /// </summary>
     public static readonly Coding InterstitialRoute = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraesophageal route
     /// </summary>
     public static readonly Coding IntraesophagealRoute = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intragingival route
     /// </summary>
     public static readonly Coding IntragingivalRoute = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravascular route
     /// </summary>
     public static readonly Coding IntravascularRoute = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intradural route
     /// </summary>
     public static readonly Coding IntraduralRoute = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrameningeal route
     /// </summary>
     public static readonly Coding IntrameningealRoute = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intragastric route
     /// </summary>
     public static readonly Coding IntragastricRoute = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracorpus cavernosum route
     /// </summary>
     public static readonly Coding IntracorpusCavernosumRoute = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrapericardial route
     /// </summary>
     public static readonly Coding IntrapericardialRoute = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intralingual route
     /// </summary>
     public static readonly Coding IntralingualRoute = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrahepatic route
     /// </summary>
     public static readonly Coding IntrahepaticRoute = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Conjunctival route
     /// </summary>
     public static readonly Coding ConjunctivalRoute = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraepicardial route
     /// </summary>
     public static readonly Coding IntraepicardialRoute = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transendocardial route
     /// </summary>
     public static readonly Coding TransendocardialRoute = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transplacental route
     /// </summary>
     public static readonly Coding TransplacentalRoute = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracerebral route
     /// </summary>
     public static readonly Coding IntracerebralRoute = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraileal route
     /// </summary>
     public static readonly Coding IntrailealRoute = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Periodontal route
     /// </summary>
     public static readonly Coding PeriodontalRoute = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peridural route
     /// </summary>
     public static readonly Coding PeriduralRoute = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lower respiratory tract route
     /// </summary>
     public static readonly Coding LowerRespiratoryTractRoute = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intramammary route
     /// </summary>
     public static readonly Coding IntramammaryRoute = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intratumor route
     /// </summary>
     public static readonly Coding IntratumorRoute = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transtympanic route
     /// </summary>
     public static readonly Coding TranstympanicRoute = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transtracheal route
     /// </summary>
     public static readonly Coding TranstrachealRoute = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Respiratory tract route
     /// </summary>
     public static readonly Coding RespiratoryTractRoute = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Digestive tract route
     /// </summary>
     public static readonly Coding DigestiveTractRoute = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraepidermal route
     /// </summary>
     public static readonly Coding IntraepidermalRoute = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrajejunal route
     /// </summary>
     public static readonly Coding IntrajejunalRoute = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracolonic route
     /// </summary>
     public static readonly Coding IntracolonicRoute = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous route
     /// </summary>
     public static readonly Coding CutaneousRoute = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transdermal use
     /// </summary>
     public static readonly Coding TransdermalUse = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Translingual
     /// </summary>
     public static readonly Coding Translingual = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nasal use
     /// </summary>
     public static readonly Coding NasalUse = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intravenous use
     /// </summary>
     public static readonly Coding IntravenousUse = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Buccal use
     /// </summary>
     public static readonly Coding BuccalUse = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ophthalmic use
     /// </summary>
     public static readonly Coding OphthalmicUse = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intra-arterial use
     /// </summary>
     public static readonly Coding IntraArterialUse = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intramedullary route
     /// </summary>
     public static readonly Coding IntramedullaryRoute = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Topical route
     /// </summary>
     public static readonly Coding TopicalRoute = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrauterine route
     /// </summary>
     public static readonly Coding IntrauterineRoute = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arteriovenous fistula route
     /// </summary>
     public static readonly Coding ArteriovenousFistulaRoute = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraneural route
     /// </summary>
     public static readonly Coding IntraneuralRoute = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intramural route
     /// </summary>
     public static readonly Coding IntramuralRoute = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Extracorporeal route
     /// </summary>
     public static readonly Coding ExtracorporealRoute = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infiltration route
     /// </summary>
     public static readonly Coding InfiltrationRoute = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrathecal route
     /// </summary>
     public static readonly Coding IntrathecalRoute = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intramuscular use
     /// </summary>
     public static readonly Coding IntramuscularUse = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urethral use
     /// </summary>
     public static readonly Coding UrethralUse = new Coding
     {
@@ -1368,9 +1368,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAuricularUse = "10547007";
 
     /// <summary>
+    /// Literal for code: NONEAuricularUse
+    /// </summary>
+    public const string LiteralNONEAuricularUse = "http://snomed.info/sct#10547007";
+
+    /// <summary>
     /// Literal for code: IntraArticularRoute
     /// </summary>
     public const string LiteralIntraArticularRoute = "12130007";
+
+    /// <summary>
+    /// Literal for code: NONEIntraArticularRoute
+    /// </summary>
+    public const string LiteralNONEIntraArticularRoute = "http://snomed.info/sct#12130007";
 
     /// <summary>
     /// Literal for code: GastrostomyUse
@@ -1378,9 +1388,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGastrostomyUse = "127490009";
 
     /// <summary>
+    /// Literal for code: NONEGastrostomyUse
+    /// </summary>
+    public const string LiteralNONEGastrostomyUse = "http://snomed.info/sct#127490009";
+
+    /// <summary>
     /// Literal for code: JejunostomyUse
     /// </summary>
     public const string LiteralJejunostomyUse = "127491008";
+
+    /// <summary>
+    /// Literal for code: NONEJejunostomyUse
+    /// </summary>
+    public const string LiteralNONEJejunostomyUse = "http://snomed.info/sct#127491008";
 
     /// <summary>
     /// Literal for code: NasogastricUse
@@ -1388,9 +1408,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNasogastricUse = "127492001";
 
     /// <summary>
+    /// Literal for code: NONENasogastricUse
+    /// </summary>
+    public const string LiteralNONENasogastricUse = "http://snomed.info/sct#127492001";
+
+    /// <summary>
     /// Literal for code: SublesionalRoute
     /// </summary>
     public const string LiteralSublesionalRoute = "1611000175109";
+
+    /// <summary>
+    /// Literal for code: NONESublesionalRoute
+    /// </summary>
+    public const string LiteralNONESublesionalRoute = "http://snomed.info/sct#1611000175109";
 
     /// <summary>
     /// Literal for code: VaginalUse
@@ -1398,9 +1428,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVaginalUse = "16857009";
 
     /// <summary>
+    /// Literal for code: NONEVaginalUse
+    /// </summary>
+    public const string LiteralNONEVaginalUse = "http://snomed.info/sct#16857009";
+
+    /// <summary>
     /// Literal for code: Intraventricular
     /// </summary>
     public const string LiteralIntraventricular = "180677251000087104";
+
+    /// <summary>
+    /// Literal for code: NONEIntraventricular
+    /// </summary>
+    public const string LiteralNONEIntraventricular = "http://snomed.info/sct#180677251000087104";
 
     /// <summary>
     /// Literal for code: OralUse
@@ -1408,9 +1448,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOralUse = "26643006";
 
     /// <summary>
+    /// Literal for code: NONEOralUse
+    /// </summary>
+    public const string LiteralNONEOralUse = "http://snomed.info/sct#26643006";
+
+    /// <summary>
     /// Literal for code: SCUse
     /// </summary>
     public const string LiteralSCUse = "34206005";
+
+    /// <summary>
+    /// Literal for code: NONESCUse
+    /// </summary>
+    public const string LiteralNONESCUse = "http://snomed.info/sct#34206005";
 
     /// <summary>
     /// Literal for code: RectalUse
@@ -1418,9 +1468,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRectalUse = "37161004";
 
     /// <summary>
+    /// Literal for code: NONERectalUse
+    /// </summary>
+    public const string LiteralNONERectalUse = "http://snomed.info/sct#37161004";
+
+    /// <summary>
     /// Literal for code: DentalUse
     /// </summary>
     public const string LiteralDentalUse = "372449004";
+
+    /// <summary>
+    /// Literal for code: NONEDentalUse
+    /// </summary>
+    public const string LiteralNONEDentalUse = "http://snomed.info/sct#372449004";
 
     /// <summary>
     /// Literal for code: EndocervicalUse
@@ -1428,9 +1488,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndocervicalUse = "372450004";
 
     /// <summary>
+    /// Literal for code: NONEEndocervicalUse
+    /// </summary>
+    public const string LiteralNONEEndocervicalUse = "http://snomed.info/sct#372450004";
+
+    /// <summary>
     /// Literal for code: EndosinusialUse
     /// </summary>
     public const string LiteralEndosinusialUse = "372451000";
+
+    /// <summary>
+    /// Literal for code: NONEEndosinusialUse
+    /// </summary>
+    public const string LiteralNONEEndosinusialUse = "http://snomed.info/sct#372451000";
 
     /// <summary>
     /// Literal for code: EndotracheopulmonaryUse
@@ -1438,9 +1508,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndotracheopulmonaryUse = "372452007";
 
     /// <summary>
+    /// Literal for code: NONEEndotracheopulmonaryUse
+    /// </summary>
+    public const string LiteralNONEEndotracheopulmonaryUse = "http://snomed.info/sct#372452007";
+
+    /// <summary>
     /// Literal for code: ExtraAmnioticUse
     /// </summary>
     public const string LiteralExtraAmnioticUse = "372453002";
+
+    /// <summary>
+    /// Literal for code: NONEExtraAmnioticUse
+    /// </summary>
+    public const string LiteralNONEExtraAmnioticUse = "http://snomed.info/sct#372453002";
 
     /// <summary>
     /// Literal for code: GastroenteralUse
@@ -1448,9 +1528,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGastroenteralUse = "372454008";
 
     /// <summary>
+    /// Literal for code: NONEGastroenteralUse
+    /// </summary>
+    public const string LiteralNONEGastroenteralUse = "http://snomed.info/sct#372454008";
+
+    /// <summary>
     /// Literal for code: GingivalUse
     /// </summary>
     public const string LiteralGingivalUse = "372457001";
+
+    /// <summary>
+    /// Literal for code: NONEGingivalUse
+    /// </summary>
+    public const string LiteralNONEGingivalUse = "http://snomed.info/sct#372457001";
 
     /// <summary>
     /// Literal for code: IntraamnioticUse
@@ -1458,9 +1548,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntraamnioticUse = "372458006";
 
     /// <summary>
+    /// Literal for code: NONEIntraamnioticUse
+    /// </summary>
+    public const string LiteralNONEIntraamnioticUse = "http://snomed.info/sct#372458006";
+
+    /// <summary>
     /// Literal for code: IntrabursalUse
     /// </summary>
     public const string LiteralIntrabursalUse = "372459003";
+
+    /// <summary>
+    /// Literal for code: NONEIntrabursalUse
+    /// </summary>
+    public const string LiteralNONEIntrabursalUse = "http://snomed.info/sct#372459003";
 
     /// <summary>
     /// Literal for code: IntracardiacUse
@@ -1468,9 +1568,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntracardiacUse = "372460008";
 
     /// <summary>
+    /// Literal for code: NONEIntracardiacUse
+    /// </summary>
+    public const string LiteralNONEIntracardiacUse = "http://snomed.info/sct#372460008";
+
+    /// <summary>
     /// Literal for code: IntracavernousUse
     /// </summary>
     public const string LiteralIntracavernousUse = "372461007";
+
+    /// <summary>
+    /// Literal for code: NONEIntracavernousUse
+    /// </summary>
+    public const string LiteralNONEIntracavernousUse = "http://snomed.info/sct#372461007";
 
     /// <summary>
     /// Literal for code: IntracoronaryUse
@@ -1478,9 +1588,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntracoronaryUse = "372463005";
 
     /// <summary>
+    /// Literal for code: NONEIntracoronaryUse
+    /// </summary>
+    public const string LiteralNONEIntracoronaryUse = "http://snomed.info/sct#372463005";
+
+    /// <summary>
     /// Literal for code: IntradermalUse
     /// </summary>
     public const string LiteralIntradermalUse = "372464004";
+
+    /// <summary>
+    /// Literal for code: NONEIntradermalUse
+    /// </summary>
+    public const string LiteralNONEIntradermalUse = "http://snomed.info/sct#372464004";
 
     /// <summary>
     /// Literal for code: IntradiscalUse
@@ -1488,9 +1608,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntradiscalUse = "372465003";
 
     /// <summary>
+    /// Literal for code: NONEIntradiscalUse
+    /// </summary>
+    public const string LiteralNONEIntradiscalUse = "http://snomed.info/sct#372465003";
+
+    /// <summary>
     /// Literal for code: IntralesionalUse
     /// </summary>
     public const string LiteralIntralesionalUse = "372466002";
+
+    /// <summary>
+    /// Literal for code: NONEIntralesionalUse
+    /// </summary>
+    public const string LiteralNONEIntralesionalUse = "http://snomed.info/sct#372466002";
 
     /// <summary>
     /// Literal for code: IntralymphaticUse
@@ -1498,9 +1628,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntralymphaticUse = "372467006";
 
     /// <summary>
+    /// Literal for code: NONEIntralymphaticUse
+    /// </summary>
+    public const string LiteralNONEIntralymphaticUse = "http://snomed.info/sct#372467006";
+
+    /// <summary>
     /// Literal for code: IntraocularUse
     /// </summary>
     public const string LiteralIntraocularUse = "372468001";
+
+    /// <summary>
+    /// Literal for code: NONEIntraocularUse
+    /// </summary>
+    public const string LiteralNONEIntraocularUse = "http://snomed.info/sct#372468001";
 
     /// <summary>
     /// Literal for code: IntrapleuralUse
@@ -1508,9 +1648,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntrapleuralUse = "372469009";
 
     /// <summary>
+    /// Literal for code: NONEIntrapleuralUse
+    /// </summary>
+    public const string LiteralNONEIntrapleuralUse = "http://snomed.info/sct#372469009";
+
+    /// <summary>
     /// Literal for code: IntrasternalUse
     /// </summary>
     public const string LiteralIntrasternalUse = "372470005";
+
+    /// <summary>
+    /// Literal for code: NONEIntrasternalUse
+    /// </summary>
+    public const string LiteralNONEIntrasternalUse = "http://snomed.info/sct#372470005";
 
     /// <summary>
     /// Literal for code: IntravesicalUse
@@ -1518,9 +1668,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntravesicalUse = "372471009";
 
     /// <summary>
+    /// Literal for code: NONEIntravesicalUse
+    /// </summary>
+    public const string LiteralNONEIntravesicalUse = "http://snomed.info/sct#372471009";
+
+    /// <summary>
     /// Literal for code: OromucosalUse
     /// </summary>
     public const string LiteralOromucosalUse = "372473007";
+
+    /// <summary>
+    /// Literal for code: NONEOromucosalUse
+    /// </summary>
+    public const string LiteralNONEOromucosalUse = "http://snomed.info/sct#372473007";
 
     /// <summary>
     /// Literal for code: PeriarticularUse
@@ -1528,9 +1688,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeriarticularUse = "372474001";
 
     /// <summary>
+    /// Literal for code: NONEPeriarticularUse
+    /// </summary>
+    public const string LiteralNONEPeriarticularUse = "http://snomed.info/sct#372474001";
+
+    /// <summary>
     /// Literal for code: PerineuralUse
     /// </summary>
     public const string LiteralPerineuralUse = "372475000";
+
+    /// <summary>
+    /// Literal for code: NONEPerineuralUse
+    /// </summary>
+    public const string LiteralNONEPerineuralUse = "http://snomed.info/sct#372475000";
 
     /// <summary>
     /// Literal for code: SubconjunctivalUse
@@ -1538,9 +1708,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubconjunctivalUse = "372476004";
 
     /// <summary>
+    /// Literal for code: NONESubconjunctivalUse
+    /// </summary>
+    public const string LiteralNONESubconjunctivalUse = "http://snomed.info/sct#372476004";
+
+    /// <summary>
     /// Literal for code: IntraluminalUse
     /// </summary>
     public const string LiteralIntraluminalUse = "37737002";
+
+    /// <summary>
+    /// Literal for code: NONEIntraluminalUse
+    /// </summary>
+    public const string LiteralNONEIntraluminalUse = "http://snomed.info/sct#37737002";
 
     /// <summary>
     /// Literal for code: SublingualUse
@@ -1548,9 +1728,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSublingualUse = "37839007";
 
     /// <summary>
+    /// Literal for code: NONESublingualUse
+    /// </summary>
+    public const string LiteralNONESublingualUse = "http://snomed.info/sct#37839007";
+
+    /// <summary>
     /// Literal for code: IntraperitonealUse
     /// </summary>
     public const string LiteralIntraperitonealUse = "38239002";
+
+    /// <summary>
+    /// Literal for code: NONEIntraperitonealUse
+    /// </summary>
+    public const string LiteralNONEIntraperitonealUse = "http://snomed.info/sct#38239002";
 
     /// <summary>
     /// Literal for code: TransmucosalRoute
@@ -1558,9 +1748,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransmucosalRoute = "404815008";
 
     /// <summary>
+    /// Literal for code: NONETransmucosalRoute
+    /// </summary>
+    public const string LiteralNONETransmucosalRoute = "http://snomed.info/sct#404815008";
+
+    /// <summary>
     /// Literal for code: IntratrachealRoute
     /// </summary>
     public const string LiteralIntratrachealRoute = "404818005";
+
+    /// <summary>
+    /// Literal for code: NONEIntratrachealRoute
+    /// </summary>
+    public const string LiteralNONEIntratrachealRoute = "http://snomed.info/sct#404818005";
 
     /// <summary>
     /// Literal for code: IntrabiliaryRoute
@@ -1568,9 +1768,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntrabiliaryRoute = "404819002";
 
     /// <summary>
+    /// Literal for code: NONEIntrabiliaryRoute
+    /// </summary>
+    public const string LiteralNONEIntrabiliaryRoute = "http://snomed.info/sct#404819002";
+
+    /// <summary>
     /// Literal for code: EpiduralRoute
     /// </summary>
     public const string LiteralEpiduralRoute = "404820008";
+
+    /// <summary>
+    /// Literal for code: NONEEpiduralRoute
+    /// </summary>
+    public const string LiteralNONEEpiduralRoute = "http://snomed.info/sct#404820008";
 
     /// <summary>
     /// Literal for code: SuborbitalRoute
@@ -1578,9 +1788,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuborbitalRoute = "416174007";
 
     /// <summary>
+    /// Literal for code: NONESuborbitalRoute
+    /// </summary>
+    public const string LiteralNONESuborbitalRoute = "http://snomed.info/sct#416174007";
+
+    /// <summary>
     /// Literal for code: CaudalRoute
     /// </summary>
     public const string LiteralCaudalRoute = "417070009";
+
+    /// <summary>
+    /// Literal for code: NONECaudalRoute
+    /// </summary>
+    public const string LiteralNONECaudalRoute = "http://snomed.info/sct#417070009";
 
     /// <summary>
     /// Literal for code: IntraosseousRoute
@@ -1588,9 +1808,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntraosseousRoute = "417255000";
 
     /// <summary>
+    /// Literal for code: NONEIntraosseousRoute
+    /// </summary>
+    public const string LiteralNONEIntraosseousRoute = "http://snomed.info/sct#417255000";
+
+    /// <summary>
     /// Literal for code: IntrathoracicRoute
     /// </summary>
     public const string LiteralIntrathoracicRoute = "417950001";
+
+    /// <summary>
+    /// Literal for code: NONEIntrathoracicRoute
+    /// </summary>
+    public const string LiteralNONEIntrathoracicRoute = "http://snomed.info/sct#417950001";
 
     /// <summary>
     /// Literal for code: EnteralRoute
@@ -1598,9 +1828,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEnteralRoute = "417985001";
 
     /// <summary>
+    /// Literal for code: NONEEnteralRoute
+    /// </summary>
+    public const string LiteralNONEEnteralRoute = "http://snomed.info/sct#417985001";
+
+    /// <summary>
     /// Literal for code: IntraductalRoute
     /// </summary>
     public const string LiteralIntraductalRoute = "417989007";
+
+    /// <summary>
+    /// Literal for code: NONEIntraductalRoute
+    /// </summary>
+    public const string LiteralNONEIntraductalRoute = "http://snomed.info/sct#417989007";
 
     /// <summary>
     /// Literal for code: IntratympanicRoute
@@ -1608,9 +1848,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntratympanicRoute = "418091004";
 
     /// <summary>
+    /// Literal for code: NONEIntratympanicRoute
+    /// </summary>
+    public const string LiteralNONEIntratympanicRoute = "http://snomed.info/sct#418091004";
+
+    /// <summary>
     /// Literal for code: IntravenousCentralRoute
     /// </summary>
     public const string LiteralIntravenousCentralRoute = "418114005";
+
+    /// <summary>
+    /// Literal for code: NONEIntravenousCentralRoute
+    /// </summary>
+    public const string LiteralNONEIntravenousCentralRoute = "http://snomed.info/sct#418114005";
 
     /// <summary>
     /// Literal for code: IntramyometrialRoute
@@ -1618,9 +1868,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntramyometrialRoute = "418133000";
 
     /// <summary>
+    /// Literal for code: NONEIntramyometrialRoute
+    /// </summary>
+    public const string LiteralNONEIntramyometrialRoute = "http://snomed.info/sct#418133000";
+
+    /// <summary>
     /// Literal for code: GastroIntestinalStomaRoute
     /// </summary>
     public const string LiteralGastroIntestinalStomaRoute = "418136008";
+
+    /// <summary>
+    /// Literal for code: NONEGastroIntestinalStomaRoute
+    /// </summary>
+    public const string LiteralNONEGastroIntestinalStomaRoute = "http://snomed.info/sct#418136008";
 
     /// <summary>
     /// Literal for code: ColostomyRoute
@@ -1628,9 +1888,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralColostomyRoute = "418162004";
 
     /// <summary>
+    /// Literal for code: NONEColostomyRoute
+    /// </summary>
+    public const string LiteralNONEColostomyRoute = "http://snomed.info/sct#418162004";
+
+    /// <summary>
     /// Literal for code: PeriurethralRoute
     /// </summary>
     public const string LiteralPeriurethralRoute = "418204005";
+
+    /// <summary>
+    /// Literal for code: NONEPeriurethralRoute
+    /// </summary>
+    public const string LiteralNONEPeriurethralRoute = "http://snomed.info/sct#418204005";
 
     /// <summary>
     /// Literal for code: IntracoronalRoute
@@ -1638,9 +1908,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntracoronalRoute = "418287000";
 
     /// <summary>
+    /// Literal for code: NONEIntracoronalRoute
+    /// </summary>
+    public const string LiteralNONEIntracoronalRoute = "http://snomed.info/sct#418287000";
+
+    /// <summary>
     /// Literal for code: RetrobulbarRoute
     /// </summary>
     public const string LiteralRetrobulbarRoute = "418321004";
+
+    /// <summary>
+    /// Literal for code: NONERetrobulbarRoute
+    /// </summary>
+    public const string LiteralNONERetrobulbarRoute = "http://snomed.info/sct#418321004";
 
     /// <summary>
     /// Literal for code: IntracartilaginousRoute
@@ -1648,9 +1928,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntracartilaginousRoute = "418331006";
 
     /// <summary>
+    /// Literal for code: NONEIntracartilaginousRoute
+    /// </summary>
+    public const string LiteralNONEIntracartilaginousRoute = "http://snomed.info/sct#418331006";
+
+    /// <summary>
     /// Literal for code: IntravitrealRoute
     /// </summary>
     public const string LiteralIntravitrealRoute = "418401004";
+
+    /// <summary>
+    /// Literal for code: NONEIntravitrealRoute
+    /// </summary>
+    public const string LiteralNONEIntravitrealRoute = "http://snomed.info/sct#418401004";
 
     /// <summary>
     /// Literal for code: IntraspinalRoute
@@ -1658,9 +1948,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntraspinalRoute = "418418000";
 
     /// <summary>
+    /// Literal for code: NONEIntraspinalRoute
+    /// </summary>
+    public const string LiteralNONEIntraspinalRoute = "http://snomed.info/sct#418418000";
+
+    /// <summary>
     /// Literal for code: OrogastricRoute
     /// </summary>
     public const string LiteralOrogastricRoute = "418441008";
+
+    /// <summary>
+    /// Literal for code: NONEOrogastricRoute
+    /// </summary>
+    public const string LiteralNONEOrogastricRoute = "http://snomed.info/sct#418441008";
 
     /// <summary>
     /// Literal for code: TransurethralRoute
@@ -1668,9 +1968,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransurethralRoute = "418511008";
 
     /// <summary>
+    /// Literal for code: NONETransurethralRoute
+    /// </summary>
+    public const string LiteralNONETransurethralRoute = "http://snomed.info/sct#418511008";
+
+    /// <summary>
     /// Literal for code: IntratendinousRoute
     /// </summary>
     public const string LiteralIntratendinousRoute = "418586008";
+
+    /// <summary>
+    /// Literal for code: NONEIntratendinousRoute
+    /// </summary>
+    public const string LiteralNONEIntratendinousRoute = "http://snomed.info/sct#418586008";
 
     /// <summary>
     /// Literal for code: IntracornealRoute
@@ -1678,9 +1988,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntracornealRoute = "418608002";
 
     /// <summary>
+    /// Literal for code: NONEIntracornealRoute
+    /// </summary>
+    public const string LiteralNONEIntracornealRoute = "http://snomed.info/sct#418608002";
+
+    /// <summary>
     /// Literal for code: OropharyngealRoute
     /// </summary>
     public const string LiteralOropharyngealRoute = "418664002";
+
+    /// <summary>
+    /// Literal for code: NONEOropharyngealRoute
+    /// </summary>
+    public const string LiteralNONEOropharyngealRoute = "http://snomed.info/sct#418664002";
 
     /// <summary>
     /// Literal for code: PeribulbarRoute
@@ -1688,9 +2008,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeribulbarRoute = "418722009";
 
     /// <summary>
+    /// Literal for code: NONEPeribulbarRoute
+    /// </summary>
+    public const string LiteralNONEPeribulbarRoute = "http://snomed.info/sct#418722009";
+
+    /// <summary>
     /// Literal for code: NasojejunalRoute
     /// </summary>
     public const string LiteralNasojejunalRoute = "418730005";
+
+    /// <summary>
+    /// Literal for code: NONENasojejunalRoute
+    /// </summary>
+    public const string LiteralNONENasojejunalRoute = "http://snomed.info/sct#418730005";
 
     /// <summary>
     /// Literal for code: FistulaRoute
@@ -1698,9 +2028,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFistulaRoute = "418743005";
 
     /// <summary>
+    /// Literal for code: NONEFistulaRoute
+    /// </summary>
+    public const string LiteralNONEFistulaRoute = "http://snomed.info/sct#418743005";
+
+    /// <summary>
     /// Literal for code: SurgicalDrainRoute
     /// </summary>
     public const string LiteralSurgicalDrainRoute = "418813001";
+
+    /// <summary>
+    /// Literal for code: NONESurgicalDrainRoute
+    /// </summary>
+    public const string LiteralNONESurgicalDrainRoute = "http://snomed.info/sct#418813001";
 
     /// <summary>
     /// Literal for code: IntracameralRoute
@@ -1708,9 +2048,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntracameralRoute = "418821007";
 
     /// <summary>
+    /// Literal for code: NONEIntracameralRoute
+    /// </summary>
+    public const string LiteralNONEIntracameralRoute = "http://snomed.info/sct#418821007";
+
+    /// <summary>
     /// Literal for code: ParacervicalRoute
     /// </summary>
     public const string LiteralParacervicalRoute = "418851001";
+
+    /// <summary>
+    /// Literal for code: NONEParacervicalRoute
+    /// </summary>
+    public const string LiteralNONEParacervicalRoute = "http://snomed.info/sct#418851001";
 
     /// <summary>
     /// Literal for code: IntrasynovialRoute
@@ -1718,9 +2068,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntrasynovialRoute = "418877009";
 
     /// <summary>
+    /// Literal for code: NONEIntrasynovialRoute
+    /// </summary>
+    public const string LiteralNONEIntrasynovialRoute = "http://snomed.info/sct#418877009";
+
+    /// <summary>
     /// Literal for code: IntraduodenalRoute
     /// </summary>
     public const string LiteralIntraduodenalRoute = "418887008";
+
+    /// <summary>
+    /// Literal for code: NONEIntraduodenalRoute
+    /// </summary>
+    public const string LiteralNONEIntraduodenalRoute = "http://snomed.info/sct#418887008";
 
     /// <summary>
     /// Literal for code: IntracisternalRoute
@@ -1728,9 +2088,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntracisternalRoute = "418892005";
 
     /// <summary>
+    /// Literal for code: NONEIntracisternalRoute
+    /// </summary>
+    public const string LiteralNONEIntracisternalRoute = "http://snomed.info/sct#418892005";
+
+    /// <summary>
     /// Literal for code: IntratesticularRoute
     /// </summary>
     public const string LiteralIntratesticularRoute = "418947002";
+
+    /// <summary>
+    /// Literal for code: NONEIntratesticularRoute
+    /// </summary>
+    public const string LiteralNONEIntratesticularRoute = "http://snomed.info/sct#418947002";
 
     /// <summary>
     /// Literal for code: IntracranialRoute
@@ -1738,9 +2108,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntracranialRoute = "418987007";
 
     /// <summary>
+    /// Literal for code: NONEIntracranialRoute
+    /// </summary>
+    public const string LiteralNONEIntracranialRoute = "http://snomed.info/sct#418987007";
+
+    /// <summary>
     /// Literal for code: TumorCavityRoute
     /// </summary>
     public const string LiteralTumorCavityRoute = "419021003";
+
+    /// <summary>
+    /// Literal for code: NONETumorCavityRoute
+    /// </summary>
+    public const string LiteralNONETumorCavityRoute = "http://snomed.info/sct#419021003";
 
     /// <summary>
     /// Literal for code: ParavertebralRoute
@@ -1748,9 +2128,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralParavertebralRoute = "419165009";
 
     /// <summary>
+    /// Literal for code: NONEParavertebralRoute
+    /// </summary>
+    public const string LiteralNONEParavertebralRoute = "http://snomed.info/sct#419165009";
+
+    /// <summary>
     /// Literal for code: IntrasinalRoute
     /// </summary>
     public const string LiteralIntrasinalRoute = "419231003";
+
+    /// <summary>
+    /// Literal for code: NONEIntrasinalRoute
+    /// </summary>
+    public const string LiteralNONEIntrasinalRoute = "http://snomed.info/sct#419231003";
 
     /// <summary>
     /// Literal for code: TranscervicalRoute
@@ -1758,9 +2148,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTranscervicalRoute = "419243002";
 
     /// <summary>
+    /// Literal for code: NONETranscervicalRoute
+    /// </summary>
+    public const string LiteralNONETranscervicalRoute = "http://snomed.info/sct#419243002";
+
+    /// <summary>
     /// Literal for code: SubtendinousRoute
     /// </summary>
     public const string LiteralSubtendinousRoute = "419320008";
+
+    /// <summary>
+    /// Literal for code: NONESubtendinousRoute
+    /// </summary>
+    public const string LiteralNONESubtendinousRoute = "http://snomed.info/sct#419320008";
 
     /// <summary>
     /// Literal for code: IntraabdominalRoute
@@ -1768,9 +2168,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntraabdominalRoute = "419396008";
 
     /// <summary>
+    /// Literal for code: NONEIntraabdominalRoute
+    /// </summary>
+    public const string LiteralNONEIntraabdominalRoute = "http://snomed.info/sct#419396008";
+
+    /// <summary>
     /// Literal for code: SubgingivalRoute
     /// </summary>
     public const string LiteralSubgingivalRoute = "419601003";
+
+    /// <summary>
+    /// Literal for code: NONESubgingivalRoute
+    /// </summary>
+    public const string LiteralNONESubgingivalRoute = "http://snomed.info/sct#419601003";
 
     /// <summary>
     /// Literal for code: IntraovarianRoute
@@ -1778,9 +2188,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntraovarianRoute = "419631009";
 
     /// <summary>
+    /// Literal for code: NONEIntraovarianRoute
+    /// </summary>
+    public const string LiteralNONEIntraovarianRoute = "http://snomed.info/sct#419631009";
+
+    /// <summary>
     /// Literal for code: UreteralRoute
     /// </summary>
     public const string LiteralUreteralRoute = "419684008";
+
+    /// <summary>
+    /// Literal for code: NONEUreteralRoute
+    /// </summary>
+    public const string LiteralNONEUreteralRoute = "http://snomed.info/sct#419684008";
 
     /// <summary>
     /// Literal for code: PeritendinousRoute
@@ -1788,9 +2208,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeritendinousRoute = "419762003";
 
     /// <summary>
+    /// Literal for code: NONEPeritendinousRoute
+    /// </summary>
+    public const string LiteralNONEPeritendinousRoute = "http://snomed.info/sct#419762003";
+
+    /// <summary>
     /// Literal for code: IntrabronchialRoute
     /// </summary>
     public const string LiteralIntrabronchialRoute = "419778001";
+
+    /// <summary>
+    /// Literal for code: NONEIntrabronchialRoute
+    /// </summary>
+    public const string LiteralNONEIntrabronchialRoute = "http://snomed.info/sct#419778001";
 
     /// <summary>
     /// Literal for code: IntraprostaticRoute
@@ -1798,9 +2228,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntraprostaticRoute = "419810008";
 
     /// <summary>
+    /// Literal for code: NONEIntraprostaticRoute
+    /// </summary>
+    public const string LiteralNONEIntraprostaticRoute = "http://snomed.info/sct#419810008";
+
+    /// <summary>
     /// Literal for code: SubmucosalRoute
     /// </summary>
     public const string LiteralSubmucosalRoute = "419874009";
+
+    /// <summary>
+    /// Literal for code: NONESubmucosalRoute
+    /// </summary>
+    public const string LiteralNONESubmucosalRoute = "http://snomed.info/sct#419874009";
 
     /// <summary>
     /// Literal for code: SurgicalCavityRoute
@@ -1808,9 +2248,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgicalCavityRoute = "419894000";
 
     /// <summary>
+    /// Literal for code: NONESurgicalCavityRoute
+    /// </summary>
+    public const string LiteralNONESurgicalCavityRoute = "http://snomed.info/sct#419894000";
+
+    /// <summary>
     /// Literal for code: IleostomyRoute
     /// </summary>
     public const string LiteralIleostomyRoute = "419954003";
+
+    /// <summary>
+    /// Literal for code: NONEIleostomyRoute
+    /// </summary>
+    public const string LiteralNONEIleostomyRoute = "http://snomed.info/sct#419954003";
 
     /// <summary>
     /// Literal for code: IntravenousPeripheralRoute
@@ -1818,9 +2268,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntravenousPeripheralRoute = "419993007";
 
     /// <summary>
+    /// Literal for code: NONEIntravenousPeripheralRoute
+    /// </summary>
+    public const string LiteralNONEIntravenousPeripheralRoute = "http://snomed.info/sct#419993007";
+
+    /// <summary>
     /// Literal for code: PeriostealRoute
     /// </summary>
     public const string LiteralPeriostealRoute = "420047004";
+
+    /// <summary>
+    /// Literal for code: NONEPeriostealRoute
+    /// </summary>
+    public const string LiteralNONEPeriostealRoute = "http://snomed.info/sct#420047004";
 
     /// <summary>
     /// Literal for code: EsophagostomyRoute
@@ -1828,9 +2288,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEsophagostomyRoute = "420163009";
 
     /// <summary>
+    /// Literal for code: NONEEsophagostomyRoute
+    /// </summary>
+    public const string LiteralNONEEsophagostomyRoute = "http://snomed.info/sct#420163009";
+
+    /// <summary>
     /// Literal for code: UrostomyRoute
     /// </summary>
     public const string LiteralUrostomyRoute = "420168000";
+
+    /// <summary>
+    /// Literal for code: NONEUrostomyRoute
+    /// </summary>
+    public const string LiteralNONEUrostomyRoute = "http://snomed.info/sct#420168000";
 
     /// <summary>
     /// Literal for code: LaryngealRoute
@@ -1838,9 +2308,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLaryngealRoute = "420185003";
 
     /// <summary>
+    /// Literal for code: NONELaryngealRoute
+    /// </summary>
+    public const string LiteralNONELaryngealRoute = "http://snomed.info/sct#420185003";
+
+    /// <summary>
     /// Literal for code: IntrapulmonaryRoute
     /// </summary>
     public const string LiteralIntrapulmonaryRoute = "420201002";
+
+    /// <summary>
+    /// Literal for code: NONEIntrapulmonaryRoute
+    /// </summary>
+    public const string LiteralNONEIntrapulmonaryRoute = "http://snomed.info/sct#420201002";
 
     /// <summary>
     /// Literal for code: MucousFistulaRoute
@@ -1848,9 +2328,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMucousFistulaRoute = "420204005";
 
     /// <summary>
+    /// Literal for code: NONEMucousFistulaRoute
+    /// </summary>
+    public const string LiteralNONEMucousFistulaRoute = "http://snomed.info/sct#420204005";
+
+    /// <summary>
     /// Literal for code: NasoduodenalRoute
     /// </summary>
     public const string LiteralNasoduodenalRoute = "420218003";
+
+    /// <summary>
+    /// Literal for code: NONENasoduodenalRoute
+    /// </summary>
+    public const string LiteralNONENasoduodenalRoute = "http://snomed.info/sct#420218003";
 
     /// <summary>
     /// Literal for code: BodyCavityRoute
@@ -1858,9 +2348,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBodyCavityRoute = "420254004";
 
     /// <summary>
+    /// Literal for code: NONEBodyCavityRoute
+    /// </summary>
+    public const string LiteralNONEBodyCavityRoute = "http://snomed.info/sct#420254004";
+
+    /// <summary>
     /// Literal for code: IntraventricularRouteCardiac
     /// </summary>
     public const string LiteralIntraventricularRouteCardiac = "420287000";
+
+    /// <summary>
+    /// Literal for code: NONEIntraventricularRouteCardiac
+    /// </summary>
+    public const string LiteralNONEIntraventricularRouteCardiac = "http://snomed.info/sct#420287000";
 
     /// <summary>
     /// Literal for code: IntracerebroventricularRoute
@@ -1868,9 +2368,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntracerebroventricularRoute = "420719007";
 
     /// <summary>
+    /// Literal for code: NONEIntracerebroventricularRoute
+    /// </summary>
+    public const string LiteralNONEIntracerebroventricularRoute = "http://snomed.info/sct#420719007";
+
+    /// <summary>
     /// Literal for code: PercutaneousRoute
     /// </summary>
     public const string LiteralPercutaneousRoute = "428191002";
+
+    /// <summary>
+    /// Literal for code: NONEPercutaneousRoute
+    /// </summary>
+    public const string LiteralNONEPercutaneousRoute = "http://snomed.info/sct#428191002";
 
     /// <summary>
     /// Literal for code: InterstitialRoute
@@ -1878,9 +2388,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInterstitialRoute = "429817007";
 
     /// <summary>
+    /// Literal for code: NONEInterstitialRoute
+    /// </summary>
+    public const string LiteralNONEInterstitialRoute = "http://snomed.info/sct#429817007";
+
+    /// <summary>
     /// Literal for code: IntraesophagealRoute
     /// </summary>
     public const string LiteralIntraesophagealRoute = "445752009";
+
+    /// <summary>
+    /// Literal for code: NONEIntraesophagealRoute
+    /// </summary>
+    public const string LiteralNONEIntraesophagealRoute = "http://snomed.info/sct#445752009";
 
     /// <summary>
     /// Literal for code: IntragingivalRoute
@@ -1888,9 +2408,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntragingivalRoute = "445754005";
 
     /// <summary>
+    /// Literal for code: NONEIntragingivalRoute
+    /// </summary>
+    public const string LiteralNONEIntragingivalRoute = "http://snomed.info/sct#445754005";
+
+    /// <summary>
     /// Literal for code: IntravascularRoute
     /// </summary>
     public const string LiteralIntravascularRoute = "445755006";
+
+    /// <summary>
+    /// Literal for code: NONEIntravascularRoute
+    /// </summary>
+    public const string LiteralNONEIntravascularRoute = "http://snomed.info/sct#445755006";
 
     /// <summary>
     /// Literal for code: IntraduralRoute
@@ -1898,9 +2428,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntraduralRoute = "445756007";
 
     /// <summary>
+    /// Literal for code: NONEIntraduralRoute
+    /// </summary>
+    public const string LiteralNONEIntraduralRoute = "http://snomed.info/sct#445756007";
+
+    /// <summary>
     /// Literal for code: IntrameningealRoute
     /// </summary>
     public const string LiteralIntrameningealRoute = "445767008";
+
+    /// <summary>
+    /// Literal for code: NONEIntrameningealRoute
+    /// </summary>
+    public const string LiteralNONEIntrameningealRoute = "http://snomed.info/sct#445767008";
 
     /// <summary>
     /// Literal for code: IntragastricRoute
@@ -1908,9 +2448,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntragastricRoute = "445768003";
 
     /// <summary>
+    /// Literal for code: NONEIntragastricRoute
+    /// </summary>
+    public const string LiteralNONEIntragastricRoute = "http://snomed.info/sct#445768003";
+
+    /// <summary>
     /// Literal for code: IntracorpusCavernosumRoute
     /// </summary>
     public const string LiteralIntracorpusCavernosumRoute = "445769006";
+
+    /// <summary>
+    /// Literal for code: NONEIntracorpusCavernosumRoute
+    /// </summary>
+    public const string LiteralNONEIntracorpusCavernosumRoute = "http://snomed.info/sct#445769006";
 
     /// <summary>
     /// Literal for code: IntrapericardialRoute
@@ -1918,9 +2468,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntrapericardialRoute = "445771006";
 
     /// <summary>
+    /// Literal for code: NONEIntrapericardialRoute
+    /// </summary>
+    public const string LiteralNONEIntrapericardialRoute = "http://snomed.info/sct#445771006";
+
+    /// <summary>
     /// Literal for code: IntralingualRoute
     /// </summary>
     public const string LiteralIntralingualRoute = "445913005";
+
+    /// <summary>
+    /// Literal for code: NONEIntralingualRoute
+    /// </summary>
+    public const string LiteralNONEIntralingualRoute = "http://snomed.info/sct#445913005";
 
     /// <summary>
     /// Literal for code: IntrahepaticRoute
@@ -1928,9 +2488,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntrahepaticRoute = "445941009";
 
     /// <summary>
+    /// Literal for code: NONEIntrahepaticRoute
+    /// </summary>
+    public const string LiteralNONEIntrahepaticRoute = "http://snomed.info/sct#445941009";
+
+    /// <summary>
     /// Literal for code: ConjunctivalRoute
     /// </summary>
     public const string LiteralConjunctivalRoute = "446105004";
+
+    /// <summary>
+    /// Literal for code: NONEConjunctivalRoute
+    /// </summary>
+    public const string LiteralNONEConjunctivalRoute = "http://snomed.info/sct#446105004";
 
     /// <summary>
     /// Literal for code: IntraepicardialRoute
@@ -1938,9 +2508,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntraepicardialRoute = "446407004";
 
     /// <summary>
+    /// Literal for code: NONEIntraepicardialRoute
+    /// </summary>
+    public const string LiteralNONEIntraepicardialRoute = "http://snomed.info/sct#446407004";
+
+    /// <summary>
     /// Literal for code: TransendocardialRoute
     /// </summary>
     public const string LiteralTransendocardialRoute = "446435000";
+
+    /// <summary>
+    /// Literal for code: NONETransendocardialRoute
+    /// </summary>
+    public const string LiteralNONETransendocardialRoute = "http://snomed.info/sct#446435000";
 
     /// <summary>
     /// Literal for code: TransplacentalRoute
@@ -1948,9 +2528,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransplacentalRoute = "446442000";
 
     /// <summary>
+    /// Literal for code: NONETransplacentalRoute
+    /// </summary>
+    public const string LiteralNONETransplacentalRoute = "http://snomed.info/sct#446442000";
+
+    /// <summary>
     /// Literal for code: IntracerebralRoute
     /// </summary>
     public const string LiteralIntracerebralRoute = "446540005";
+
+    /// <summary>
+    /// Literal for code: NONEIntracerebralRoute
+    /// </summary>
+    public const string LiteralNONEIntracerebralRoute = "http://snomed.info/sct#446540005";
 
     /// <summary>
     /// Literal for code: IntrailealRoute
@@ -1958,9 +2548,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntrailealRoute = "447026006";
 
     /// <summary>
+    /// Literal for code: NONEIntrailealRoute
+    /// </summary>
+    public const string LiteralNONEIntrailealRoute = "http://snomed.info/sct#447026006";
+
+    /// <summary>
     /// Literal for code: PeriodontalRoute
     /// </summary>
     public const string LiteralPeriodontalRoute = "447052000";
+
+    /// <summary>
+    /// Literal for code: NONEPeriodontalRoute
+    /// </summary>
+    public const string LiteralNONEPeriodontalRoute = "http://snomed.info/sct#447052000";
 
     /// <summary>
     /// Literal for code: PeriduralRoute
@@ -1968,9 +2568,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeriduralRoute = "447080003";
 
     /// <summary>
+    /// Literal for code: NONEPeriduralRoute
+    /// </summary>
+    public const string LiteralNONEPeriduralRoute = "http://snomed.info/sct#447080003";
+
+    /// <summary>
     /// Literal for code: LowerRespiratoryTractRoute
     /// </summary>
     public const string LiteralLowerRespiratoryTractRoute = "447081004";
+
+    /// <summary>
+    /// Literal for code: NONELowerRespiratoryTractRoute
+    /// </summary>
+    public const string LiteralNONELowerRespiratoryTractRoute = "http://snomed.info/sct#447081004";
 
     /// <summary>
     /// Literal for code: IntramammaryRoute
@@ -1978,9 +2588,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntramammaryRoute = "447121004";
 
     /// <summary>
+    /// Literal for code: NONEIntramammaryRoute
+    /// </summary>
+    public const string LiteralNONEIntramammaryRoute = "http://snomed.info/sct#447121004";
+
+    /// <summary>
     /// Literal for code: IntratumorRoute
     /// </summary>
     public const string LiteralIntratumorRoute = "447122006";
+
+    /// <summary>
+    /// Literal for code: NONEIntratumorRoute
+    /// </summary>
+    public const string LiteralNONEIntratumorRoute = "http://snomed.info/sct#447122006";
 
     /// <summary>
     /// Literal for code: TranstympanicRoute
@@ -1988,9 +2608,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTranstympanicRoute = "447227007";
 
     /// <summary>
+    /// Literal for code: NONETranstympanicRoute
+    /// </summary>
+    public const string LiteralNONETranstympanicRoute = "http://snomed.info/sct#447227007";
+
+    /// <summary>
     /// Literal for code: TranstrachealRoute
     /// </summary>
     public const string LiteralTranstrachealRoute = "447229005";
+
+    /// <summary>
+    /// Literal for code: NONETranstrachealRoute
+    /// </summary>
+    public const string LiteralNONETranstrachealRoute = "http://snomed.info/sct#447229005";
 
     /// <summary>
     /// Literal for code: RespiratoryTractRoute
@@ -1998,9 +2628,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRespiratoryTractRoute = "447694001";
 
     /// <summary>
+    /// Literal for code: NONERespiratoryTractRoute
+    /// </summary>
+    public const string LiteralNONERespiratoryTractRoute = "http://snomed.info/sct#447694001";
+
+    /// <summary>
     /// Literal for code: DigestiveTractRoute
     /// </summary>
     public const string LiteralDigestiveTractRoute = "447964005";
+
+    /// <summary>
+    /// Literal for code: NONEDigestiveTractRoute
+    /// </summary>
+    public const string LiteralNONEDigestiveTractRoute = "http://snomed.info/sct#447964005";
 
     /// <summary>
     /// Literal for code: IntraepidermalRoute
@@ -2008,9 +2648,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntraepidermalRoute = "448077001";
 
     /// <summary>
+    /// Literal for code: NONEIntraepidermalRoute
+    /// </summary>
+    public const string LiteralNONEIntraepidermalRoute = "http://snomed.info/sct#448077001";
+
+    /// <summary>
     /// Literal for code: IntrajejunalRoute
     /// </summary>
     public const string LiteralIntrajejunalRoute = "448491004";
+
+    /// <summary>
+    /// Literal for code: NONEIntrajejunalRoute
+    /// </summary>
+    public const string LiteralNONEIntrajejunalRoute = "http://snomed.info/sct#448491004";
 
     /// <summary>
     /// Literal for code: IntracolonicRoute
@@ -2018,9 +2668,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntracolonicRoute = "448492006";
 
     /// <summary>
+    /// Literal for code: NONEIntracolonicRoute
+    /// </summary>
+    public const string LiteralNONEIntracolonicRoute = "http://snomed.info/sct#448492006";
+
+    /// <summary>
     /// Literal for code: CutaneousRoute
     /// </summary>
     public const string LiteralCutaneousRoute = "448598008";
+
+    /// <summary>
+    /// Literal for code: NONECutaneousRoute
+    /// </summary>
+    public const string LiteralNONECutaneousRoute = "http://snomed.info/sct#448598008";
 
     /// <summary>
     /// Literal for code: TransdermalUse
@@ -2028,9 +2688,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransdermalUse = "45890007";
 
     /// <summary>
+    /// Literal for code: NONETransdermalUse
+    /// </summary>
+    public const string LiteralNONETransdermalUse = "http://snomed.info/sct#45890007";
+
+    /// <summary>
     /// Literal for code: Translingual
     /// </summary>
     public const string LiteralTranslingual = "461657851000087101";
+
+    /// <summary>
+    /// Literal for code: NONETranslingual
+    /// </summary>
+    public const string LiteralNONETranslingual = "http://snomed.info/sct#461657851000087101";
 
     /// <summary>
     /// Literal for code: NasalUse
@@ -2038,9 +2708,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNasalUse = "46713006";
 
     /// <summary>
+    /// Literal for code: NONENasalUse
+    /// </summary>
+    public const string LiteralNONENasalUse = "http://snomed.info/sct#46713006";
+
+    /// <summary>
     /// Literal for code: IntravenousUse
     /// </summary>
     public const string LiteralIntravenousUse = "47625008";
+
+    /// <summary>
+    /// Literal for code: NONEIntravenousUse
+    /// </summary>
+    public const string LiteralNONEIntravenousUse = "http://snomed.info/sct#47625008";
 
     /// <summary>
     /// Literal for code: BuccalUse
@@ -2048,9 +2728,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBuccalUse = "54471007";
 
     /// <summary>
+    /// Literal for code: NONEBuccalUse
+    /// </summary>
+    public const string LiteralNONEBuccalUse = "http://snomed.info/sct#54471007";
+
+    /// <summary>
     /// Literal for code: OphthalmicUse
     /// </summary>
     public const string LiteralOphthalmicUse = "54485002";
+
+    /// <summary>
+    /// Literal for code: NONEOphthalmicUse
+    /// </summary>
+    public const string LiteralNONEOphthalmicUse = "http://snomed.info/sct#54485002";
 
     /// <summary>
     /// Literal for code: IntraArterialUse
@@ -2058,9 +2748,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntraArterialUse = "58100008";
 
     /// <summary>
+    /// Literal for code: NONEIntraArterialUse
+    /// </summary>
+    public const string LiteralNONEIntraArterialUse = "http://snomed.info/sct#58100008";
+
+    /// <summary>
     /// Literal for code: IntramedullaryRoute
     /// </summary>
     public const string LiteralIntramedullaryRoute = "60213007";
+
+    /// <summary>
+    /// Literal for code: NONEIntramedullaryRoute
+    /// </summary>
+    public const string LiteralNONEIntramedullaryRoute = "http://snomed.info/sct#60213007";
 
     /// <summary>
     /// Literal for code: TopicalRoute
@@ -2068,9 +2768,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTopicalRoute = "6064005";
 
     /// <summary>
+    /// Literal for code: NONETopicalRoute
+    /// </summary>
+    public const string LiteralNONETopicalRoute = "http://snomed.info/sct#6064005";
+
+    /// <summary>
     /// Literal for code: IntrauterineRoute
     /// </summary>
     public const string LiteralIntrauterineRoute = "62226000";
+
+    /// <summary>
+    /// Literal for code: NONEIntrauterineRoute
+    /// </summary>
+    public const string LiteralNONEIntrauterineRoute = "http://snomed.info/sct#62226000";
 
     /// <summary>
     /// Literal for code: ArteriovenousFistulaRoute
@@ -2078,9 +2788,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArteriovenousFistulaRoute = "697971008";
 
     /// <summary>
+    /// Literal for code: NONEArteriovenousFistulaRoute
+    /// </summary>
+    public const string LiteralNONEArteriovenousFistulaRoute = "http://snomed.info/sct#697971008";
+
+    /// <summary>
     /// Literal for code: IntraneuralRoute
     /// </summary>
     public const string LiteralIntraneuralRoute = "711360002";
+
+    /// <summary>
+    /// Literal for code: NONEIntraneuralRoute
+    /// </summary>
+    public const string LiteralNONEIntraneuralRoute = "http://snomed.info/sct#711360002";
 
     /// <summary>
     /// Literal for code: IntramuralRoute
@@ -2088,9 +2808,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntramuralRoute = "711378007";
 
     /// <summary>
+    /// Literal for code: NONEIntramuralRoute
+    /// </summary>
+    public const string LiteralNONEIntramuralRoute = "http://snomed.info/sct#711378007";
+
+    /// <summary>
     /// Literal for code: ExtracorporealRoute
     /// </summary>
     public const string LiteralExtracorporealRoute = "714743009";
+
+    /// <summary>
+    /// Literal for code: NONEExtracorporealRoute
+    /// </summary>
+    public const string LiteralNONEExtracorporealRoute = "http://snomed.info/sct#714743009";
 
     /// <summary>
     /// Literal for code: InfiltrationRoute
@@ -2098,9 +2828,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfiltrationRoute = "718329006";
 
     /// <summary>
+    /// Literal for code: NONEInfiltrationRoute
+    /// </summary>
+    public const string LiteralNONEInfiltrationRoute = "http://snomed.info/sct#718329006";
+
+    /// <summary>
     /// Literal for code: IntrathecalRoute
     /// </summary>
     public const string LiteralIntrathecalRoute = "72607000";
+
+    /// <summary>
+    /// Literal for code: NONEIntrathecalRoute
+    /// </summary>
+    public const string LiteralNONEIntrathecalRoute = "http://snomed.info/sct#72607000";
 
     /// <summary>
     /// Literal for code: IntramuscularUse
@@ -2108,8 +2848,324 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntramuscularUse = "78421000";
 
     /// <summary>
+    /// Literal for code: NONEIntramuscularUse
+    /// </summary>
+    public const string LiteralNONEIntramuscularUse = "http://snomed.info/sct#78421000";
+
+    /// <summary>
     /// Literal for code: UrethralUse
     /// </summary>
     public const string LiteralUrethralUse = "90028008";
+
+    /// <summary>
+    /// Literal for code: NONEUrethralUse
+    /// </summary>
+    public const string LiteralNONEUrethralUse = "http://snomed.info/sct#90028008";
+
+    /// <summary>
+    /// Dictionary for looking up RouteCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "10547007", AuricularUse }, 
+      { "http://snomed.info/sct#10547007", AuricularUse }, 
+      { "12130007", IntraArticularRoute }, 
+      { "http://snomed.info/sct#12130007", IntraArticularRoute }, 
+      { "127490009", GastrostomyUse }, 
+      { "http://snomed.info/sct#127490009", GastrostomyUse }, 
+      { "127491008", JejunostomyUse }, 
+      { "http://snomed.info/sct#127491008", JejunostomyUse }, 
+      { "127492001", NasogastricUse }, 
+      { "http://snomed.info/sct#127492001", NasogastricUse }, 
+      { "1611000175109", SublesionalRoute }, 
+      { "http://snomed.info/sct#1611000175109", SublesionalRoute }, 
+      { "16857009", VaginalUse }, 
+      { "http://snomed.info/sct#16857009", VaginalUse }, 
+      { "180677251000087104", Intraventricular }, 
+      { "http://snomed.info/sct#180677251000087104", Intraventricular }, 
+      { "26643006", OralUse }, 
+      { "http://snomed.info/sct#26643006", OralUse }, 
+      { "34206005", SCUse }, 
+      { "http://snomed.info/sct#34206005", SCUse }, 
+      { "37161004", RectalUse }, 
+      { "http://snomed.info/sct#37161004", RectalUse }, 
+      { "372449004", DentalUse }, 
+      { "http://snomed.info/sct#372449004", DentalUse }, 
+      { "372450004", EndocervicalUse }, 
+      { "http://snomed.info/sct#372450004", EndocervicalUse }, 
+      { "372451000", EndosinusialUse }, 
+      { "http://snomed.info/sct#372451000", EndosinusialUse }, 
+      { "372452007", EndotracheopulmonaryUse }, 
+      { "http://snomed.info/sct#372452007", EndotracheopulmonaryUse }, 
+      { "372453002", ExtraAmnioticUse }, 
+      { "http://snomed.info/sct#372453002", ExtraAmnioticUse }, 
+      { "372454008", GastroenteralUse }, 
+      { "http://snomed.info/sct#372454008", GastroenteralUse }, 
+      { "372457001", GingivalUse }, 
+      { "http://snomed.info/sct#372457001", GingivalUse }, 
+      { "372458006", IntraamnioticUse }, 
+      { "http://snomed.info/sct#372458006", IntraamnioticUse }, 
+      { "372459003", IntrabursalUse }, 
+      { "http://snomed.info/sct#372459003", IntrabursalUse }, 
+      { "372460008", IntracardiacUse }, 
+      { "http://snomed.info/sct#372460008", IntracardiacUse }, 
+      { "372461007", IntracavernousUse }, 
+      { "http://snomed.info/sct#372461007", IntracavernousUse }, 
+      { "372463005", IntracoronaryUse }, 
+      { "http://snomed.info/sct#372463005", IntracoronaryUse }, 
+      { "372464004", IntradermalUse }, 
+      { "http://snomed.info/sct#372464004", IntradermalUse }, 
+      { "372465003", IntradiscalUse }, 
+      { "http://snomed.info/sct#372465003", IntradiscalUse }, 
+      { "372466002", IntralesionalUse }, 
+      { "http://snomed.info/sct#372466002", IntralesionalUse }, 
+      { "372467006", IntralymphaticUse }, 
+      { "http://snomed.info/sct#372467006", IntralymphaticUse }, 
+      { "372468001", IntraocularUse }, 
+      { "http://snomed.info/sct#372468001", IntraocularUse }, 
+      { "372469009", IntrapleuralUse }, 
+      { "http://snomed.info/sct#372469009", IntrapleuralUse }, 
+      { "372470005", IntrasternalUse }, 
+      { "http://snomed.info/sct#372470005", IntrasternalUse }, 
+      { "372471009", IntravesicalUse }, 
+      { "http://snomed.info/sct#372471009", IntravesicalUse }, 
+      { "372473007", OromucosalUse }, 
+      { "http://snomed.info/sct#372473007", OromucosalUse }, 
+      { "372474001", PeriarticularUse }, 
+      { "http://snomed.info/sct#372474001", PeriarticularUse }, 
+      { "372475000", PerineuralUse }, 
+      { "http://snomed.info/sct#372475000", PerineuralUse }, 
+      { "372476004", SubconjunctivalUse }, 
+      { "http://snomed.info/sct#372476004", SubconjunctivalUse }, 
+      { "37737002", IntraluminalUse }, 
+      { "http://snomed.info/sct#37737002", IntraluminalUse }, 
+      { "37839007", SublingualUse }, 
+      { "http://snomed.info/sct#37839007", SublingualUse }, 
+      { "38239002", IntraperitonealUse }, 
+      { "http://snomed.info/sct#38239002", IntraperitonealUse }, 
+      { "404815008", TransmucosalRoute }, 
+      { "http://snomed.info/sct#404815008", TransmucosalRoute }, 
+      { "404818005", IntratrachealRoute }, 
+      { "http://snomed.info/sct#404818005", IntratrachealRoute }, 
+      { "404819002", IntrabiliaryRoute }, 
+      { "http://snomed.info/sct#404819002", IntrabiliaryRoute }, 
+      { "404820008", EpiduralRoute }, 
+      { "http://snomed.info/sct#404820008", EpiduralRoute }, 
+      { "416174007", SuborbitalRoute }, 
+      { "http://snomed.info/sct#416174007", SuborbitalRoute }, 
+      { "417070009", CaudalRoute }, 
+      { "http://snomed.info/sct#417070009", CaudalRoute }, 
+      { "417255000", IntraosseousRoute }, 
+      { "http://snomed.info/sct#417255000", IntraosseousRoute }, 
+      { "417950001", IntrathoracicRoute }, 
+      { "http://snomed.info/sct#417950001", IntrathoracicRoute }, 
+      { "417985001", EnteralRoute }, 
+      { "http://snomed.info/sct#417985001", EnteralRoute }, 
+      { "417989007", IntraductalRoute }, 
+      { "http://snomed.info/sct#417989007", IntraductalRoute }, 
+      { "418091004", IntratympanicRoute }, 
+      { "http://snomed.info/sct#418091004", IntratympanicRoute }, 
+      { "418114005", IntravenousCentralRoute }, 
+      { "http://snomed.info/sct#418114005", IntravenousCentralRoute }, 
+      { "418133000", IntramyometrialRoute }, 
+      { "http://snomed.info/sct#418133000", IntramyometrialRoute }, 
+      { "418136008", GastroIntestinalStomaRoute }, 
+      { "http://snomed.info/sct#418136008", GastroIntestinalStomaRoute }, 
+      { "418162004", ColostomyRoute }, 
+      { "http://snomed.info/sct#418162004", ColostomyRoute }, 
+      { "418204005", PeriurethralRoute }, 
+      { "http://snomed.info/sct#418204005", PeriurethralRoute }, 
+      { "418287000", IntracoronalRoute }, 
+      { "http://snomed.info/sct#418287000", IntracoronalRoute }, 
+      { "418321004", RetrobulbarRoute }, 
+      { "http://snomed.info/sct#418321004", RetrobulbarRoute }, 
+      { "418331006", IntracartilaginousRoute }, 
+      { "http://snomed.info/sct#418331006", IntracartilaginousRoute }, 
+      { "418401004", IntravitrealRoute }, 
+      { "http://snomed.info/sct#418401004", IntravitrealRoute }, 
+      { "418418000", IntraspinalRoute }, 
+      { "http://snomed.info/sct#418418000", IntraspinalRoute }, 
+      { "418441008", OrogastricRoute }, 
+      { "http://snomed.info/sct#418441008", OrogastricRoute }, 
+      { "418511008", TransurethralRoute }, 
+      { "http://snomed.info/sct#418511008", TransurethralRoute }, 
+      { "418586008", IntratendinousRoute }, 
+      { "http://snomed.info/sct#418586008", IntratendinousRoute }, 
+      { "418608002", IntracornealRoute }, 
+      { "http://snomed.info/sct#418608002", IntracornealRoute }, 
+      { "418664002", OropharyngealRoute }, 
+      { "http://snomed.info/sct#418664002", OropharyngealRoute }, 
+      { "418722009", PeribulbarRoute }, 
+      { "http://snomed.info/sct#418722009", PeribulbarRoute }, 
+      { "418730005", NasojejunalRoute }, 
+      { "http://snomed.info/sct#418730005", NasojejunalRoute }, 
+      { "418743005", FistulaRoute }, 
+      { "http://snomed.info/sct#418743005", FistulaRoute }, 
+      { "418813001", SurgicalDrainRoute }, 
+      { "http://snomed.info/sct#418813001", SurgicalDrainRoute }, 
+      { "418821007", IntracameralRoute }, 
+      { "http://snomed.info/sct#418821007", IntracameralRoute }, 
+      { "418851001", ParacervicalRoute }, 
+      { "http://snomed.info/sct#418851001", ParacervicalRoute }, 
+      { "418877009", IntrasynovialRoute }, 
+      { "http://snomed.info/sct#418877009", IntrasynovialRoute }, 
+      { "418887008", IntraduodenalRoute }, 
+      { "http://snomed.info/sct#418887008", IntraduodenalRoute }, 
+      { "418892005", IntracisternalRoute }, 
+      { "http://snomed.info/sct#418892005", IntracisternalRoute }, 
+      { "418947002", IntratesticularRoute }, 
+      { "http://snomed.info/sct#418947002", IntratesticularRoute }, 
+      { "418987007", IntracranialRoute }, 
+      { "http://snomed.info/sct#418987007", IntracranialRoute }, 
+      { "419021003", TumorCavityRoute }, 
+      { "http://snomed.info/sct#419021003", TumorCavityRoute }, 
+      { "419165009", ParavertebralRoute }, 
+      { "http://snomed.info/sct#419165009", ParavertebralRoute }, 
+      { "419231003", IntrasinalRoute }, 
+      { "http://snomed.info/sct#419231003", IntrasinalRoute }, 
+      { "419243002", TranscervicalRoute }, 
+      { "http://snomed.info/sct#419243002", TranscervicalRoute }, 
+      { "419320008", SubtendinousRoute }, 
+      { "http://snomed.info/sct#419320008", SubtendinousRoute }, 
+      { "419396008", IntraabdominalRoute }, 
+      { "http://snomed.info/sct#419396008", IntraabdominalRoute }, 
+      { "419601003", SubgingivalRoute }, 
+      { "http://snomed.info/sct#419601003", SubgingivalRoute }, 
+      { "419631009", IntraovarianRoute }, 
+      { "http://snomed.info/sct#419631009", IntraovarianRoute }, 
+      { "419684008", UreteralRoute }, 
+      { "http://snomed.info/sct#419684008", UreteralRoute }, 
+      { "419762003", PeritendinousRoute }, 
+      { "http://snomed.info/sct#419762003", PeritendinousRoute }, 
+      { "419778001", IntrabronchialRoute }, 
+      { "http://snomed.info/sct#419778001", IntrabronchialRoute }, 
+      { "419810008", IntraprostaticRoute }, 
+      { "http://snomed.info/sct#419810008", IntraprostaticRoute }, 
+      { "419874009", SubmucosalRoute }, 
+      { "http://snomed.info/sct#419874009", SubmucosalRoute }, 
+      { "419894000", SurgicalCavityRoute }, 
+      { "http://snomed.info/sct#419894000", SurgicalCavityRoute }, 
+      { "419954003", IleostomyRoute }, 
+      { "http://snomed.info/sct#419954003", IleostomyRoute }, 
+      { "419993007", IntravenousPeripheralRoute }, 
+      { "http://snomed.info/sct#419993007", IntravenousPeripheralRoute }, 
+      { "420047004", PeriostealRoute }, 
+      { "http://snomed.info/sct#420047004", PeriostealRoute }, 
+      { "420163009", EsophagostomyRoute }, 
+      { "http://snomed.info/sct#420163009", EsophagostomyRoute }, 
+      { "420168000", UrostomyRoute }, 
+      { "http://snomed.info/sct#420168000", UrostomyRoute }, 
+      { "420185003", LaryngealRoute }, 
+      { "http://snomed.info/sct#420185003", LaryngealRoute }, 
+      { "420201002", IntrapulmonaryRoute }, 
+      { "http://snomed.info/sct#420201002", IntrapulmonaryRoute }, 
+      { "420204005", MucousFistulaRoute }, 
+      { "http://snomed.info/sct#420204005", MucousFistulaRoute }, 
+      { "420218003", NasoduodenalRoute }, 
+      { "http://snomed.info/sct#420218003", NasoduodenalRoute }, 
+      { "420254004", BodyCavityRoute }, 
+      { "http://snomed.info/sct#420254004", BodyCavityRoute }, 
+      { "420287000", IntraventricularRouteCardiac }, 
+      { "http://snomed.info/sct#420287000", IntraventricularRouteCardiac }, 
+      { "420719007", IntracerebroventricularRoute }, 
+      { "http://snomed.info/sct#420719007", IntracerebroventricularRoute }, 
+      { "428191002", PercutaneousRoute }, 
+      { "http://snomed.info/sct#428191002", PercutaneousRoute }, 
+      { "429817007", InterstitialRoute }, 
+      { "http://snomed.info/sct#429817007", InterstitialRoute }, 
+      { "445752009", IntraesophagealRoute }, 
+      { "http://snomed.info/sct#445752009", IntraesophagealRoute }, 
+      { "445754005", IntragingivalRoute }, 
+      { "http://snomed.info/sct#445754005", IntragingivalRoute }, 
+      { "445755006", IntravascularRoute }, 
+      { "http://snomed.info/sct#445755006", IntravascularRoute }, 
+      { "445756007", IntraduralRoute }, 
+      { "http://snomed.info/sct#445756007", IntraduralRoute }, 
+      { "445767008", IntrameningealRoute }, 
+      { "http://snomed.info/sct#445767008", IntrameningealRoute }, 
+      { "445768003", IntragastricRoute }, 
+      { "http://snomed.info/sct#445768003", IntragastricRoute }, 
+      { "445769006", IntracorpusCavernosumRoute }, 
+      { "http://snomed.info/sct#445769006", IntracorpusCavernosumRoute }, 
+      { "445771006", IntrapericardialRoute }, 
+      { "http://snomed.info/sct#445771006", IntrapericardialRoute }, 
+      { "445913005", IntralingualRoute }, 
+      { "http://snomed.info/sct#445913005", IntralingualRoute }, 
+      { "445941009", IntrahepaticRoute }, 
+      { "http://snomed.info/sct#445941009", IntrahepaticRoute }, 
+      { "446105004", ConjunctivalRoute }, 
+      { "http://snomed.info/sct#446105004", ConjunctivalRoute }, 
+      { "446407004", IntraepicardialRoute }, 
+      { "http://snomed.info/sct#446407004", IntraepicardialRoute }, 
+      { "446435000", TransendocardialRoute }, 
+      { "http://snomed.info/sct#446435000", TransendocardialRoute }, 
+      { "446442000", TransplacentalRoute }, 
+      { "http://snomed.info/sct#446442000", TransplacentalRoute }, 
+      { "446540005", IntracerebralRoute }, 
+      { "http://snomed.info/sct#446540005", IntracerebralRoute }, 
+      { "447026006", IntrailealRoute }, 
+      { "http://snomed.info/sct#447026006", IntrailealRoute }, 
+      { "447052000", PeriodontalRoute }, 
+      { "http://snomed.info/sct#447052000", PeriodontalRoute }, 
+      { "447080003", PeriduralRoute }, 
+      { "http://snomed.info/sct#447080003", PeriduralRoute }, 
+      { "447081004", LowerRespiratoryTractRoute }, 
+      { "http://snomed.info/sct#447081004", LowerRespiratoryTractRoute }, 
+      { "447121004", IntramammaryRoute }, 
+      { "http://snomed.info/sct#447121004", IntramammaryRoute }, 
+      { "447122006", IntratumorRoute }, 
+      { "http://snomed.info/sct#447122006", IntratumorRoute }, 
+      { "447227007", TranstympanicRoute }, 
+      { "http://snomed.info/sct#447227007", TranstympanicRoute }, 
+      { "447229005", TranstrachealRoute }, 
+      { "http://snomed.info/sct#447229005", TranstrachealRoute }, 
+      { "447694001", RespiratoryTractRoute }, 
+      { "http://snomed.info/sct#447694001", RespiratoryTractRoute }, 
+      { "447964005", DigestiveTractRoute }, 
+      { "http://snomed.info/sct#447964005", DigestiveTractRoute }, 
+      { "448077001", IntraepidermalRoute }, 
+      { "http://snomed.info/sct#448077001", IntraepidermalRoute }, 
+      { "448491004", IntrajejunalRoute }, 
+      { "http://snomed.info/sct#448491004", IntrajejunalRoute }, 
+      { "448492006", IntracolonicRoute }, 
+      { "http://snomed.info/sct#448492006", IntracolonicRoute }, 
+      { "448598008", CutaneousRoute }, 
+      { "http://snomed.info/sct#448598008", CutaneousRoute }, 
+      { "45890007", TransdermalUse }, 
+      { "http://snomed.info/sct#45890007", TransdermalUse }, 
+      { "461657851000087101", Translingual }, 
+      { "http://snomed.info/sct#461657851000087101", Translingual }, 
+      { "46713006", NasalUse }, 
+      { "http://snomed.info/sct#46713006", NasalUse }, 
+      { "47625008", IntravenousUse }, 
+      { "http://snomed.info/sct#47625008", IntravenousUse }, 
+      { "54471007", BuccalUse }, 
+      { "http://snomed.info/sct#54471007", BuccalUse }, 
+      { "54485002", OphthalmicUse }, 
+      { "http://snomed.info/sct#54485002", OphthalmicUse }, 
+      { "58100008", IntraArterialUse }, 
+      { "http://snomed.info/sct#58100008", IntraArterialUse }, 
+      { "60213007", IntramedullaryRoute }, 
+      { "http://snomed.info/sct#60213007", IntramedullaryRoute }, 
+      { "6064005", TopicalRoute }, 
+      { "http://snomed.info/sct#6064005", TopicalRoute }, 
+      { "62226000", IntrauterineRoute }, 
+      { "http://snomed.info/sct#62226000", IntrauterineRoute }, 
+      { "697971008", ArteriovenousFistulaRoute }, 
+      { "http://snomed.info/sct#697971008", ArteriovenousFistulaRoute }, 
+      { "711360002", IntraneuralRoute }, 
+      { "http://snomed.info/sct#711360002", IntraneuralRoute }, 
+      { "711378007", IntramuralRoute }, 
+      { "http://snomed.info/sct#711378007", IntramuralRoute }, 
+      { "714743009", ExtracorporealRoute }, 
+      { "http://snomed.info/sct#714743009", ExtracorporealRoute }, 
+      { "718329006", InfiltrationRoute }, 
+      { "http://snomed.info/sct#718329006", InfiltrationRoute }, 
+      { "72607000", IntrathecalRoute }, 
+      { "http://snomed.info/sct#72607000", IntrathecalRoute }, 
+      { "78421000", IntramuscularUse }, 
+      { "http://snomed.info/sct#78421000", IntramuscularUse }, 
+      { "90028008", UrethralUse }, 
+      { "http://snomed.info/sct#90028008", UrethralUse }, 
+    };
   };
 }

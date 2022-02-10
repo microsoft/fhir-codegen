@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class MedicationdispensePerformerFunctionCodes
   {
     /// <summary>
-    /// 
+    /// Checker
     /// </summary>
     public static readonly Coding Checker = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function"
     };
     /// <summary>
-    /// 
+    /// Counsellor
     /// </summary>
     public static readonly Coding Counsellor = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function"
     };
     /// <summary>
-    /// 
+    /// Data Enterer
     /// </summary>
     public static readonly Coding DataEnterer = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function"
     };
     /// <summary>
-    /// 
+    /// Final Checker
     /// </summary>
     public static readonly Coding FinalChecker = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function"
     };
     /// <summary>
-    /// 
+    /// Packager
     /// </summary>
     public static readonly Coding Packager = new Coding
     {
@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralChecker = "checker";
 
     /// <summary>
+    /// Literal for code: MedicationdispensePerformerFunctionChecker
+    /// </summary>
+    public const string LiteralMedicationdispensePerformerFunctionChecker = "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function#checker";
+
+    /// <summary>
     /// Literal for code: Counsellor
     /// </summary>
     public const string LiteralCounsellor = "counsellor";
+
+    /// <summary>
+    /// Literal for code: MedicationdispensePerformerFunctionCounsellor
+    /// </summary>
+    public const string LiteralMedicationdispensePerformerFunctionCounsellor = "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function#counsellor";
 
     /// <summary>
     /// Literal for code: DataEnterer
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDataEnterer = "dataenterer";
 
     /// <summary>
+    /// Literal for code: MedicationdispensePerformerFunctionDataEnterer
+    /// </summary>
+    public const string LiteralMedicationdispensePerformerFunctionDataEnterer = "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function#dataenterer";
+
+    /// <summary>
     /// Literal for code: FinalChecker
     /// </summary>
     public const string LiteralFinalChecker = "finalchecker";
 
     /// <summary>
+    /// Literal for code: MedicationdispensePerformerFunctionFinalChecker
+    /// </summary>
+    public const string LiteralMedicationdispensePerformerFunctionFinalChecker = "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function#finalchecker";
+
+    /// <summary>
     /// Literal for code: Packager
     /// </summary>
     public const string LiteralPackager = "packager";
+
+    /// <summary>
+    /// Literal for code: MedicationdispensePerformerFunctionPackager
+    /// </summary>
+    public const string LiteralMedicationdispensePerformerFunctionPackager = "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function#packager";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationdispensePerformerFunction Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "checker", Checker }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function#checker", Checker }, 
+      { "counsellor", Counsellor }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function#counsellor", Counsellor }, 
+      { "dataenterer", DataEnterer }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function#dataenterer", DataEnterer }, 
+      { "finalchecker", FinalChecker }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function#finalchecker", FinalChecker }, 
+      { "packager", Packager }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function#packager", Packager }, 
+    };
   };
 }

@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class SubscriptionChannelTypeCodes
   {
     /// <summary>
-    /// 
+    /// Email
     /// </summary>
     public static readonly Coding Email = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/subscription-channel-type"
     };
     /// <summary>
-    /// 
+    /// Message
     /// </summary>
     public static readonly Coding Message = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/subscription-channel-type"
     };
     /// <summary>
-    /// 
+    /// Rest Hook
     /// </summary>
     public static readonly Coding RestHook = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/subscription-channel-type"
     };
     /// <summary>
-    /// 
+    /// Websocket
     /// </summary>
     public static readonly Coding Websocket = new Coding
     {
@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmail = "email";
 
     /// <summary>
+    /// Literal for code: SubscriptionChannelTypeEmail
+    /// </summary>
+    public const string LiteralSubscriptionChannelTypeEmail = "http://terminology.hl7.org/CodeSystem/subscription-channel-type#email";
+
+    /// <summary>
     /// Literal for code: Message
     /// </summary>
     public const string LiteralMessage = "message";
+
+    /// <summary>
+    /// Literal for code: SubscriptionChannelTypeMessage
+    /// </summary>
+    public const string LiteralSubscriptionChannelTypeMessage = "http://terminology.hl7.org/CodeSystem/subscription-channel-type#message";
 
     /// <summary>
     /// Literal for code: RestHook
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralRestHook = "rest-hook";
 
     /// <summary>
+    /// Literal for code: SubscriptionChannelTypeRestHook
+    /// </summary>
+    public const string LiteralSubscriptionChannelTypeRestHook = "http://terminology.hl7.org/CodeSystem/subscription-channel-type#rest-hook";
+
+    /// <summary>
     /// Literal for code: Websocket
     /// </summary>
     public const string LiteralWebsocket = "websocket";
+
+    /// <summary>
+    /// Literal for code: SubscriptionChannelTypeWebsocket
+    /// </summary>
+    public const string LiteralSubscriptionChannelTypeWebsocket = "http://terminology.hl7.org/CodeSystem/subscription-channel-type#websocket";
+
+    /// <summary>
+    /// Dictionary for looking up SubscriptionChannelType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "email", Email }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-channel-type#email", Email }, 
+      { "message", Message }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-channel-type#message", Message }, 
+      { "rest-hook", RestHook }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-channel-type#rest-hook", RestHook }, 
+      { "websocket", Websocket }, 
+      { "http://terminology.hl7.org/CodeSystem/subscription-channel-type#websocket", Websocket }, 
+    };
   };
 }

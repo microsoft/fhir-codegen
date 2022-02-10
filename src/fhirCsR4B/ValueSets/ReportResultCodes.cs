@@ -45,13 +45,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFail = "fail";
 
     /// <summary>
+    /// Literal for code: ReportResultCodesFail
+    /// </summary>
+    public const string LiteralReportResultCodesFail = "http://hl7.org/fhir/report-result-codes#fail";
+
+    /// <summary>
     /// Literal for code: Pass
     /// </summary>
     public const string LiteralPass = "pass";
 
     /// <summary>
+    /// Literal for code: ReportResultCodesPass
+    /// </summary>
+    public const string LiteralReportResultCodesPass = "http://hl7.org/fhir/report-result-codes#pass";
+
+    /// <summary>
     /// Literal for code: Pending
     /// </summary>
     public const string LiteralPending = "pending";
+
+    /// <summary>
+    /// Literal for code: ReportResultCodesPending
+    /// </summary>
+    public const string LiteralReportResultCodesPending = "http://hl7.org/fhir/report-result-codes#pending";
+
+    /// <summary>
+    /// Dictionary for looking up ReportResultCodes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "fail", Fail }, 
+      { "http://hl7.org/fhir/report-result-codes#fail", Fail }, 
+      { "pass", Pass }, 
+      { "http://hl7.org/fhir/report-result-codes#pass", Pass }, 
+      { "pending", Pending }, 
+      { "http://hl7.org/fhir/report-result-codes#pending", Pending }, 
+    };
   };
 }

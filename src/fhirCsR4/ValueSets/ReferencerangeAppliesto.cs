@@ -8331,9 +8331,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAmericanIndianOrAlaskaNative = "1002-5";
 
     /// <summary>
+    /// Literal for code: V3RaceAmericanIndianOrAlaskaNative
+    /// </summary>
+    public const string LiteralV3RaceAmericanIndianOrAlaskaNative = "http://terminology.hl7.org/CodeSystem/v3-Race#1002-5";
+
+    /// <summary>
     /// Literal for code: AmericanIndian
     /// </summary>
     public const string LiteralAmericanIndian = "1004-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceAmericanIndian
+    /// </summary>
+    public const string LiteralV3RaceAmericanIndian = "http://terminology.hl7.org/CodeSystem/v3-Race#1004-1";
 
     /// <summary>
     /// Literal for code: Abenaki
@@ -8341,9 +8351,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAbenaki = "1006-6";
 
     /// <summary>
+    /// Literal for code: V3RaceAbenaki
+    /// </summary>
+    public const string LiteralV3RaceAbenaki = "http://terminology.hl7.org/CodeSystem/v3-Race#1006-6";
+
+    /// <summary>
     /// Literal for code: Algonquian
     /// </summary>
     public const string LiteralAlgonquian = "1008-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceAlgonquian
+    /// </summary>
+    public const string LiteralV3RaceAlgonquian = "http://terminology.hl7.org/CodeSystem/v3-Race#1008-2";
 
     /// <summary>
     /// Literal for code: Apache
@@ -8351,9 +8371,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralApache = "1010-8";
 
     /// <summary>
+    /// Literal for code: V3RaceApache
+    /// </summary>
+    public const string LiteralV3RaceApache = "http://terminology.hl7.org/CodeSystem/v3-Race#1010-8";
+
+    /// <summary>
     /// Literal for code: Chiricahua
     /// </summary>
     public const string LiteralChiricahua = "1011-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceChiricahua
+    /// </summary>
+    public const string LiteralV3RaceChiricahua = "http://terminology.hl7.org/CodeSystem/v3-Race#1011-6";
 
     /// <summary>
     /// Literal for code: FortSillApache
@@ -8361,9 +8391,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFortSillApache = "1012-4";
 
     /// <summary>
+    /// Literal for code: V3RaceFortSillApache
+    /// </summary>
+    public const string LiteralV3RaceFortSillApache = "http://terminology.hl7.org/CodeSystem/v3-Race#1012-4";
+
+    /// <summary>
     /// Literal for code: JicarillaApache
     /// </summary>
     public const string LiteralJicarillaApache = "1013-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceJicarillaApache
+    /// </summary>
+    public const string LiteralV3RaceJicarillaApache = "http://terminology.hl7.org/CodeSystem/v3-Race#1013-2";
 
     /// <summary>
     /// Literal for code: LipanApache
@@ -8371,9 +8411,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLipanApache = "1014-0";
 
     /// <summary>
+    /// Literal for code: V3RaceLipanApache
+    /// </summary>
+    public const string LiteralV3RaceLipanApache = "http://terminology.hl7.org/CodeSystem/v3-Race#1014-0";
+
+    /// <summary>
     /// Literal for code: MescaleroApache
     /// </summary>
     public const string LiteralMescaleroApache = "1015-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceMescaleroApache
+    /// </summary>
+    public const string LiteralV3RaceMescaleroApache = "http://terminology.hl7.org/CodeSystem/v3-Race#1015-7";
 
     /// <summary>
     /// Literal for code: OklahomaApache
@@ -8381,9 +8431,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOklahomaApache = "1016-5";
 
     /// <summary>
+    /// Literal for code: V3RaceOklahomaApache
+    /// </summary>
+    public const string LiteralV3RaceOklahomaApache = "http://terminology.hl7.org/CodeSystem/v3-Race#1016-5";
+
+    /// <summary>
     /// Literal for code: PaysonApache
     /// </summary>
     public const string LiteralPaysonApache = "1017-3";
+
+    /// <summary>
+    /// Literal for code: V3RacePaysonApache
+    /// </summary>
+    public const string LiteralV3RacePaysonApache = "http://terminology.hl7.org/CodeSystem/v3-Race#1017-3";
 
     /// <summary>
     /// Literal for code: SanCarlosApache
@@ -8391,9 +8451,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSanCarlosApache = "1018-1";
 
     /// <summary>
+    /// Literal for code: V3RaceSanCarlosApache
+    /// </summary>
+    public const string LiteralV3RaceSanCarlosApache = "http://terminology.hl7.org/CodeSystem/v3-Race#1018-1";
+
+    /// <summary>
     /// Literal for code: WhiteMountainApache
     /// </summary>
     public const string LiteralWhiteMountainApache = "1019-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceWhiteMountainApache
+    /// </summary>
+    public const string LiteralV3RaceWhiteMountainApache = "http://terminology.hl7.org/CodeSystem/v3-Race#1019-9";
 
     /// <summary>
     /// Literal for code: Arapaho
@@ -8401,9 +8471,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArapaho = "1021-5";
 
     /// <summary>
+    /// Literal for code: V3RaceArapaho
+    /// </summary>
+    public const string LiteralV3RaceArapaho = "http://terminology.hl7.org/CodeSystem/v3-Race#1021-5";
+
+    /// <summary>
     /// Literal for code: NorthernArapaho
     /// </summary>
     public const string LiteralNorthernArapaho = "1022-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceNorthernArapaho
+    /// </summary>
+    public const string LiteralV3RaceNorthernArapaho = "http://terminology.hl7.org/CodeSystem/v3-Race#1022-3";
 
     /// <summary>
     /// Literal for code: SouthernArapaho
@@ -8411,9 +8491,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSouthernArapaho = "1023-1";
 
     /// <summary>
+    /// Literal for code: V3RaceSouthernArapaho
+    /// </summary>
+    public const string LiteralV3RaceSouthernArapaho = "http://terminology.hl7.org/CodeSystem/v3-Race#1023-1";
+
+    /// <summary>
     /// Literal for code: WindRiverArapaho
     /// </summary>
     public const string LiteralWindRiverArapaho = "1024-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceWindRiverArapaho
+    /// </summary>
+    public const string LiteralV3RaceWindRiverArapaho = "http://terminology.hl7.org/CodeSystem/v3-Race#1024-9";
 
     /// <summary>
     /// Literal for code: Arikara
@@ -8421,9 +8511,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArikara = "1026-4";
 
     /// <summary>
+    /// Literal for code: V3RaceArikara
+    /// </summary>
+    public const string LiteralV3RaceArikara = "http://terminology.hl7.org/CodeSystem/v3-Race#1026-4";
+
+    /// <summary>
     /// Literal for code: Assiniboine
     /// </summary>
     public const string LiteralAssiniboine = "1028-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceAssiniboine
+    /// </summary>
+    public const string LiteralV3RaceAssiniboine = "http://terminology.hl7.org/CodeSystem/v3-Race#1028-0";
 
     /// <summary>
     /// Literal for code: AssiniboineSioux
@@ -8431,9 +8531,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAssiniboineSioux = "1030-6";
 
     /// <summary>
+    /// Literal for code: V3RaceAssiniboineSioux
+    /// </summary>
+    public const string LiteralV3RaceAssiniboineSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1030-6";
+
+    /// <summary>
     /// Literal for code: FortPeckAssiniboineSioux
     /// </summary>
     public const string LiteralFortPeckAssiniboineSioux = "1031-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceFortPeckAssiniboineSioux
+    /// </summary>
+    public const string LiteralV3RaceFortPeckAssiniboineSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1031-4";
 
     /// <summary>
     /// Literal for code: Bannock
@@ -8441,9 +8551,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBannock = "1033-0";
 
     /// <summary>
+    /// Literal for code: V3RaceBannock
+    /// </summary>
+    public const string LiteralV3RaceBannock = "http://terminology.hl7.org/CodeSystem/v3-Race#1033-0";
+
+    /// <summary>
     /// Literal for code: Blackfeet
     /// </summary>
     public const string LiteralBlackfeet = "1035-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceBlackfeet
+    /// </summary>
+    public const string LiteralV3RaceBlackfeet = "http://terminology.hl7.org/CodeSystem/v3-Race#1035-5";
 
     /// <summary>
     /// Literal for code: Brotherton
@@ -8451,9 +8571,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBrotherton = "1037-1";
 
     /// <summary>
+    /// Literal for code: V3RaceBrotherton
+    /// </summary>
+    public const string LiteralV3RaceBrotherton = "http://terminology.hl7.org/CodeSystem/v3-Race#1037-1";
+
+    /// <summary>
     /// Literal for code: BurtLakeBand
     /// </summary>
     public const string LiteralBurtLakeBand = "1039-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceBurtLakeBand
+    /// </summary>
+    public const string LiteralV3RaceBurtLakeBand = "http://terminology.hl7.org/CodeSystem/v3-Race#1039-7";
 
     /// <summary>
     /// Literal for code: Caddo
@@ -8461,9 +8591,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCaddo = "1041-3";
 
     /// <summary>
+    /// Literal for code: V3RaceCaddo
+    /// </summary>
+    public const string LiteralV3RaceCaddo = "http://terminology.hl7.org/CodeSystem/v3-Race#1041-3";
+
+    /// <summary>
     /// Literal for code: OklahomaCado
     /// </summary>
     public const string LiteralOklahomaCado = "1042-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceOklahomaCado
+    /// </summary>
+    public const string LiteralV3RaceOklahomaCado = "http://terminology.hl7.org/CodeSystem/v3-Race#1042-1";
 
     /// <summary>
     /// Literal for code: Cahuilla
@@ -8471,9 +8611,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCahuilla = "1044-7";
 
     /// <summary>
+    /// Literal for code: V3RaceCahuilla
+    /// </summary>
+    public const string LiteralV3RaceCahuilla = "http://terminology.hl7.org/CodeSystem/v3-Race#1044-7";
+
+    /// <summary>
     /// Literal for code: AguaCalienteCahuilla
     /// </summary>
     public const string LiteralAguaCalienteCahuilla = "1045-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceAguaCalienteCahuilla
+    /// </summary>
+    public const string LiteralV3RaceAguaCalienteCahuilla = "http://terminology.hl7.org/CodeSystem/v3-Race#1045-4";
 
     /// <summary>
     /// Literal for code: Augustine
@@ -8481,9 +8631,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAugustine = "1046-2";
 
     /// <summary>
+    /// Literal for code: V3RaceAugustine
+    /// </summary>
+    public const string LiteralV3RaceAugustine = "http://terminology.hl7.org/CodeSystem/v3-Race#1046-2";
+
+    /// <summary>
     /// Literal for code: Cabazon
     /// </summary>
     public const string LiteralCabazon = "1047-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceCabazon
+    /// </summary>
+    public const string LiteralV3RaceCabazon = "http://terminology.hl7.org/CodeSystem/v3-Race#1047-0";
 
     /// <summary>
     /// Literal for code: LosCoyotes
@@ -8491,9 +8651,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLosCoyotes = "1048-8";
 
     /// <summary>
+    /// Literal for code: V3RaceLosCoyotes
+    /// </summary>
+    public const string LiteralV3RaceLosCoyotes = "http://terminology.hl7.org/CodeSystem/v3-Race#1048-8";
+
+    /// <summary>
     /// Literal for code: Morongo
     /// </summary>
     public const string LiteralMorongo = "1049-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceMorongo
+    /// </summary>
+    public const string LiteralV3RaceMorongo = "http://terminology.hl7.org/CodeSystem/v3-Race#1049-6";
 
     /// <summary>
     /// Literal for code: SantaRosaCahuilla
@@ -8501,9 +8671,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSantaRosaCahuilla = "1050-4";
 
     /// <summary>
+    /// Literal for code: V3RaceSantaRosaCahuilla
+    /// </summary>
+    public const string LiteralV3RaceSantaRosaCahuilla = "http://terminology.hl7.org/CodeSystem/v3-Race#1050-4";
+
+    /// <summary>
     /// Literal for code: TorresMartinez
     /// </summary>
     public const string LiteralTorresMartinez = "1051-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceTorresMartinez
+    /// </summary>
+    public const string LiteralV3RaceTorresMartinez = "http://terminology.hl7.org/CodeSystem/v3-Race#1051-2";
 
     /// <summary>
     /// Literal for code: CaliforniaTribes
@@ -8511,9 +8691,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCaliforniaTribes = "1053-8";
 
     /// <summary>
+    /// Literal for code: V3RaceCaliforniaTribes
+    /// </summary>
+    public const string LiteralV3RaceCaliforniaTribes = "http://terminology.hl7.org/CodeSystem/v3-Race#1053-8";
+
+    /// <summary>
     /// Literal for code: Cahto
     /// </summary>
     public const string LiteralCahto = "1054-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceCahto
+    /// </summary>
+    public const string LiteralV3RaceCahto = "http://terminology.hl7.org/CodeSystem/v3-Race#1054-6";
 
     /// <summary>
     /// Literal for code: Chimariko
@@ -8521,9 +8711,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChimariko = "1055-3";
 
     /// <summary>
+    /// Literal for code: V3RaceChimariko
+    /// </summary>
+    public const string LiteralV3RaceChimariko = "http://terminology.hl7.org/CodeSystem/v3-Race#1055-3";
+
+    /// <summary>
     /// Literal for code: CoastMiwok
     /// </summary>
     public const string LiteralCoastMiwok = "1056-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceCoastMiwok
+    /// </summary>
+    public const string LiteralV3RaceCoastMiwok = "http://terminology.hl7.org/CodeSystem/v3-Race#1056-1";
 
     /// <summary>
     /// Literal for code: Digger
@@ -8531,9 +8731,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDigger = "1057-9";
 
     /// <summary>
+    /// Literal for code: V3RaceDigger
+    /// </summary>
+    public const string LiteralV3RaceDigger = "http://terminology.hl7.org/CodeSystem/v3-Race#1057-9";
+
+    /// <summary>
     /// Literal for code: Kawaiisu
     /// </summary>
     public const string LiteralKawaiisu = "1058-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceKawaiisu
+    /// </summary>
+    public const string LiteralV3RaceKawaiisu = "http://terminology.hl7.org/CodeSystem/v3-Race#1058-7";
 
     /// <summary>
     /// Literal for code: KernRiver
@@ -8541,9 +8751,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKernRiver = "1059-5";
 
     /// <summary>
+    /// Literal for code: V3RaceKernRiver
+    /// </summary>
+    public const string LiteralV3RaceKernRiver = "http://terminology.hl7.org/CodeSystem/v3-Race#1059-5";
+
+    /// <summary>
     /// Literal for code: Mattole
     /// </summary>
     public const string LiteralMattole = "1060-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceMattole
+    /// </summary>
+    public const string LiteralV3RaceMattole = "http://terminology.hl7.org/CodeSystem/v3-Race#1060-3";
 
     /// <summary>
     /// Literal for code: RedWood
@@ -8551,9 +8771,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRedWood = "1061-1";
 
     /// <summary>
+    /// Literal for code: V3RaceRedWood
+    /// </summary>
+    public const string LiteralV3RaceRedWood = "http://terminology.hl7.org/CodeSystem/v3-Race#1061-1";
+
+    /// <summary>
     /// Literal for code: SantaRosa
     /// </summary>
     public const string LiteralSantaRosa = "1062-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceSantaRosa
+    /// </summary>
+    public const string LiteralV3RaceSantaRosa = "http://terminology.hl7.org/CodeSystem/v3-Race#1062-9";
 
     /// <summary>
     /// Literal for code: Takelma
@@ -8561,9 +8791,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTakelma = "1063-7";
 
     /// <summary>
+    /// Literal for code: V3RaceTakelma
+    /// </summary>
+    public const string LiteralV3RaceTakelma = "http://terminology.hl7.org/CodeSystem/v3-Race#1063-7";
+
+    /// <summary>
     /// Literal for code: Wappo
     /// </summary>
     public const string LiteralWappo = "1064-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceWappo
+    /// </summary>
+    public const string LiteralV3RaceWappo = "http://terminology.hl7.org/CodeSystem/v3-Race#1064-5";
 
     /// <summary>
     /// Literal for code: Yana
@@ -8571,9 +8811,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralYana = "1065-2";
 
     /// <summary>
+    /// Literal for code: V3RaceYana
+    /// </summary>
+    public const string LiteralV3RaceYana = "http://terminology.hl7.org/CodeSystem/v3-Race#1065-2";
+
+    /// <summary>
     /// Literal for code: Yuki
     /// </summary>
     public const string LiteralYuki = "1066-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceYuki
+    /// </summary>
+    public const string LiteralV3RaceYuki = "http://terminology.hl7.org/CodeSystem/v3-Race#1066-0";
 
     /// <summary>
     /// Literal for code: CanadianAndLatinAmericanIndian
@@ -8581,9 +8831,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCanadianAndLatinAmericanIndian = "1068-6";
 
     /// <summary>
+    /// Literal for code: V3RaceCanadianAndLatinAmericanIndian
+    /// </summary>
+    public const string LiteralV3RaceCanadianAndLatinAmericanIndian = "http://terminology.hl7.org/CodeSystem/v3-Race#1068-6";
+
+    /// <summary>
     /// Literal for code: CanadianIndian
     /// </summary>
     public const string LiteralCanadianIndian = "1069-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceCanadianIndian
+    /// </summary>
+    public const string LiteralV3RaceCanadianIndian = "http://terminology.hl7.org/CodeSystem/v3-Race#1069-4";
 
     /// <summary>
     /// Literal for code: CentralAmericanIndian
@@ -8591,9 +8851,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCentralAmericanIndian = "1070-2";
 
     /// <summary>
+    /// Literal for code: V3RaceCentralAmericanIndian
+    /// </summary>
+    public const string LiteralV3RaceCentralAmericanIndian = "http://terminology.hl7.org/CodeSystem/v3-Race#1070-2";
+
+    /// <summary>
     /// Literal for code: FrenchAmericanIndian
     /// </summary>
     public const string LiteralFrenchAmericanIndian = "1071-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceFrenchAmericanIndian
+    /// </summary>
+    public const string LiteralV3RaceFrenchAmericanIndian = "http://terminology.hl7.org/CodeSystem/v3-Race#1071-0";
 
     /// <summary>
     /// Literal for code: MexicanAmericanIndian
@@ -8601,9 +8871,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMexicanAmericanIndian = "1072-8";
 
     /// <summary>
+    /// Literal for code: V3RaceMexicanAmericanIndian
+    /// </summary>
+    public const string LiteralV3RaceMexicanAmericanIndian = "http://terminology.hl7.org/CodeSystem/v3-Race#1072-8";
+
+    /// <summary>
     /// Literal for code: SouthAmericanIndian
     /// </summary>
     public const string LiteralSouthAmericanIndian = "1073-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceSouthAmericanIndian
+    /// </summary>
+    public const string LiteralV3RaceSouthAmericanIndian = "http://terminology.hl7.org/CodeSystem/v3-Race#1073-6";
 
     /// <summary>
     /// Literal for code: SpanishAmericanIndian
@@ -8611,9 +8891,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpanishAmericanIndian = "1074-4";
 
     /// <summary>
+    /// Literal for code: V3RaceSpanishAmericanIndian
+    /// </summary>
+    public const string LiteralV3RaceSpanishAmericanIndian = "http://terminology.hl7.org/CodeSystem/v3-Race#1074-4";
+
+    /// <summary>
     /// Literal for code: Catawba
     /// </summary>
     public const string LiteralCatawba = "1076-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceCatawba
+    /// </summary>
+    public const string LiteralV3RaceCatawba = "http://terminology.hl7.org/CodeSystem/v3-Race#1076-9";
 
     /// <summary>
     /// Literal for code: Cayuse
@@ -8621,9 +8911,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCayuse = "1078-5";
 
     /// <summary>
+    /// Literal for code: V3RaceCayuse
+    /// </summary>
+    public const string LiteralV3RaceCayuse = "http://terminology.hl7.org/CodeSystem/v3-Race#1078-5";
+
+    /// <summary>
     /// Literal for code: Chehalis
     /// </summary>
     public const string LiteralChehalis = "1080-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceChehalis
+    /// </summary>
+    public const string LiteralV3RaceChehalis = "http://terminology.hl7.org/CodeSystem/v3-Race#1080-1";
 
     /// <summary>
     /// Literal for code: Chemakuan
@@ -8631,9 +8931,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChemakuan = "1082-7";
 
     /// <summary>
+    /// Literal for code: V3RaceChemakuan
+    /// </summary>
+    public const string LiteralV3RaceChemakuan = "http://terminology.hl7.org/CodeSystem/v3-Race#1082-7";
+
+    /// <summary>
     /// Literal for code: Hoh
     /// </summary>
     public const string LiteralHoh = "1083-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceHoh
+    /// </summary>
+    public const string LiteralV3RaceHoh = "http://terminology.hl7.org/CodeSystem/v3-Race#1083-5";
 
     /// <summary>
     /// Literal for code: Quileute
@@ -8641,9 +8951,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralQuileute = "1084-3";
 
     /// <summary>
+    /// Literal for code: V3RaceQuileute
+    /// </summary>
+    public const string LiteralV3RaceQuileute = "http://terminology.hl7.org/CodeSystem/v3-Race#1084-3";
+
+    /// <summary>
     /// Literal for code: Chemehuevi
     /// </summary>
     public const string LiteralChemehuevi = "1086-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceChemehuevi
+    /// </summary>
+    public const string LiteralV3RaceChemehuevi = "http://terminology.hl7.org/CodeSystem/v3-Race#1086-8";
 
     /// <summary>
     /// Literal for code: Cherokee
@@ -8651,9 +8971,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCherokee = "1088-4";
 
     /// <summary>
+    /// Literal for code: V3RaceCherokee
+    /// </summary>
+    public const string LiteralV3RaceCherokee = "http://terminology.hl7.org/CodeSystem/v3-Race#1088-4";
+
+    /// <summary>
     /// Literal for code: CherokeeAlabama
     /// </summary>
     public const string LiteralCherokeeAlabama = "1089-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceCherokeeAlabama
+    /// </summary>
+    public const string LiteralV3RaceCherokeeAlabama = "http://terminology.hl7.org/CodeSystem/v3-Race#1089-2";
 
     /// <summary>
     /// Literal for code: CherokeesOfNortheastAlabama
@@ -8661,9 +8991,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCherokeesOfNortheastAlabama = "1090-0";
 
     /// <summary>
+    /// Literal for code: V3RaceCherokeesOfNortheastAlabama
+    /// </summary>
+    public const string LiteralV3RaceCherokeesOfNortheastAlabama = "http://terminology.hl7.org/CodeSystem/v3-Race#1090-0";
+
+    /// <summary>
     /// Literal for code: CherokeesOfSoutheastAlabama
     /// </summary>
     public const string LiteralCherokeesOfSoutheastAlabama = "1091-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceCherokeesOfSoutheastAlabama
+    /// </summary>
+    public const string LiteralV3RaceCherokeesOfSoutheastAlabama = "http://terminology.hl7.org/CodeSystem/v3-Race#1091-8";
 
     /// <summary>
     /// Literal for code: EasternCherokee
@@ -8671,9 +9011,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEasternCherokee = "1092-6";
 
     /// <summary>
+    /// Literal for code: V3RaceEasternCherokee
+    /// </summary>
+    public const string LiteralV3RaceEasternCherokee = "http://terminology.hl7.org/CodeSystem/v3-Race#1092-6";
+
+    /// <summary>
     /// Literal for code: EchotaCherokee
     /// </summary>
     public const string LiteralEchotaCherokee = "1093-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceEchotaCherokee
+    /// </summary>
+    public const string LiteralV3RaceEchotaCherokee = "http://terminology.hl7.org/CodeSystem/v3-Race#1093-4";
 
     /// <summary>
     /// Literal for code: EtowahCherokee
@@ -8681,9 +9031,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEtowahCherokee = "1094-2";
 
     /// <summary>
+    /// Literal for code: V3RaceEtowahCherokee
+    /// </summary>
+    public const string LiteralV3RaceEtowahCherokee = "http://terminology.hl7.org/CodeSystem/v3-Race#1094-2";
+
+    /// <summary>
     /// Literal for code: NorthernCherokee
     /// </summary>
     public const string LiteralNorthernCherokee = "1095-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceNorthernCherokee
+    /// </summary>
+    public const string LiteralV3RaceNorthernCherokee = "http://terminology.hl7.org/CodeSystem/v3-Race#1095-9";
 
     /// <summary>
     /// Literal for code: Tuscola
@@ -8691,9 +9051,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTuscola = "1096-7";
 
     /// <summary>
+    /// Literal for code: V3RaceTuscola
+    /// </summary>
+    public const string LiteralV3RaceTuscola = "http://terminology.hl7.org/CodeSystem/v3-Race#1096-7";
+
+    /// <summary>
     /// Literal for code: UnitedKeetowahBandOfCherokee
     /// </summary>
     public const string LiteralUnitedKeetowahBandOfCherokee = "1097-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceUnitedKeetowahBandOfCherokee
+    /// </summary>
+    public const string LiteralV3RaceUnitedKeetowahBandOfCherokee = "http://terminology.hl7.org/CodeSystem/v3-Race#1097-5";
 
     /// <summary>
     /// Literal for code: WesternCherokee
@@ -8701,9 +9071,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWesternCherokee = "1098-3";
 
     /// <summary>
+    /// Literal for code: V3RaceWesternCherokee
+    /// </summary>
+    public const string LiteralV3RaceWesternCherokee = "http://terminology.hl7.org/CodeSystem/v3-Race#1098-3";
+
+    /// <summary>
     /// Literal for code: CherokeeShawnee
     /// </summary>
     public const string LiteralCherokeeShawnee = "1100-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceCherokeeShawnee
+    /// </summary>
+    public const string LiteralV3RaceCherokeeShawnee = "http://terminology.hl7.org/CodeSystem/v3-Race#1100-7";
 
     /// <summary>
     /// Literal for code: Cheyenne
@@ -8711,9 +9091,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCheyenne = "1102-3";
 
     /// <summary>
+    /// Literal for code: V3RaceCheyenne
+    /// </summary>
+    public const string LiteralV3RaceCheyenne = "http://terminology.hl7.org/CodeSystem/v3-Race#1102-3";
+
+    /// <summary>
     /// Literal for code: NorthernCheyenne
     /// </summary>
     public const string LiteralNorthernCheyenne = "1103-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceNorthernCheyenne
+    /// </summary>
+    public const string LiteralV3RaceNorthernCheyenne = "http://terminology.hl7.org/CodeSystem/v3-Race#1103-1";
 
     /// <summary>
     /// Literal for code: SouthernCheyenne
@@ -8721,9 +9111,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSouthernCheyenne = "1104-9";
 
     /// <summary>
+    /// Literal for code: V3RaceSouthernCheyenne
+    /// </summary>
+    public const string LiteralV3RaceSouthernCheyenne = "http://terminology.hl7.org/CodeSystem/v3-Race#1104-9";
+
+    /// <summary>
     /// Literal for code: CheyenneArapaho
     /// </summary>
     public const string LiteralCheyenneArapaho = "1106-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceCheyenneArapaho
+    /// </summary>
+    public const string LiteralV3RaceCheyenneArapaho = "http://terminology.hl7.org/CodeSystem/v3-Race#1106-4";
 
     /// <summary>
     /// Literal for code: Chickahominy
@@ -8731,9 +9131,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChickahominy = "1108-0";
 
     /// <summary>
+    /// Literal for code: V3RaceChickahominy
+    /// </summary>
+    public const string LiteralV3RaceChickahominy = "http://terminology.hl7.org/CodeSystem/v3-Race#1108-0";
+
+    /// <summary>
     /// Literal for code: EasternChickahominy
     /// </summary>
     public const string LiteralEasternChickahominy = "1109-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceEasternChickahominy
+    /// </summary>
+    public const string LiteralV3RaceEasternChickahominy = "http://terminology.hl7.org/CodeSystem/v3-Race#1109-8";
 
     /// <summary>
     /// Literal for code: WesternChickahominy
@@ -8741,9 +9151,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWesternChickahominy = "1110-6";
 
     /// <summary>
+    /// Literal for code: V3RaceWesternChickahominy
+    /// </summary>
+    public const string LiteralV3RaceWesternChickahominy = "http://terminology.hl7.org/CodeSystem/v3-Race#1110-6";
+
+    /// <summary>
     /// Literal for code: Chickasaw
     /// </summary>
     public const string LiteralChickasaw = "1112-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceChickasaw
+    /// </summary>
+    public const string LiteralV3RaceChickasaw = "http://terminology.hl7.org/CodeSystem/v3-Race#1112-2";
 
     /// <summary>
     /// Literal for code: Chinook
@@ -8751,9 +9171,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChinook = "1114-8";
 
     /// <summary>
+    /// Literal for code: V3RaceChinook
+    /// </summary>
+    public const string LiteralV3RaceChinook = "http://terminology.hl7.org/CodeSystem/v3-Race#1114-8";
+
+    /// <summary>
     /// Literal for code: Clatsop
     /// </summary>
     public const string LiteralClatsop = "1115-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceClatsop
+    /// </summary>
+    public const string LiteralV3RaceClatsop = "http://terminology.hl7.org/CodeSystem/v3-Race#1115-5";
 
     /// <summary>
     /// Literal for code: ColumbiaRiverChinook
@@ -8761,9 +9191,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralColumbiaRiverChinook = "1116-3";
 
     /// <summary>
+    /// Literal for code: V3RaceColumbiaRiverChinook
+    /// </summary>
+    public const string LiteralV3RaceColumbiaRiverChinook = "http://terminology.hl7.org/CodeSystem/v3-Race#1116-3";
+
+    /// <summary>
     /// Literal for code: Kathlamet
     /// </summary>
     public const string LiteralKathlamet = "1117-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceKathlamet
+    /// </summary>
+    public const string LiteralV3RaceKathlamet = "http://terminology.hl7.org/CodeSystem/v3-Race#1117-1";
 
     /// <summary>
     /// Literal for code: UpperChinook
@@ -8771,9 +9211,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUpperChinook = "1118-9";
 
     /// <summary>
+    /// Literal for code: V3RaceUpperChinook
+    /// </summary>
+    public const string LiteralV3RaceUpperChinook = "http://terminology.hl7.org/CodeSystem/v3-Race#1118-9";
+
+    /// <summary>
     /// Literal for code: WakiakumChinook
     /// </summary>
     public const string LiteralWakiakumChinook = "1119-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceWakiakumChinook
+    /// </summary>
+    public const string LiteralV3RaceWakiakumChinook = "http://terminology.hl7.org/CodeSystem/v3-Race#1119-7";
 
     /// <summary>
     /// Literal for code: WillapaChinook
@@ -8781,9 +9231,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWillapaChinook = "1120-5";
 
     /// <summary>
+    /// Literal for code: V3RaceWillapaChinook
+    /// </summary>
+    public const string LiteralV3RaceWillapaChinook = "http://terminology.hl7.org/CodeSystem/v3-Race#1120-5";
+
+    /// <summary>
     /// Literal for code: Wishram
     /// </summary>
     public const string LiteralWishram = "1121-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceWishram
+    /// </summary>
+    public const string LiteralV3RaceWishram = "http://terminology.hl7.org/CodeSystem/v3-Race#1121-3";
 
     /// <summary>
     /// Literal for code: Chippewa
@@ -8791,9 +9251,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChippewa = "1123-9";
 
     /// <summary>
+    /// Literal for code: V3RaceChippewa
+    /// </summary>
+    public const string LiteralV3RaceChippewa = "http://terminology.hl7.org/CodeSystem/v3-Race#1123-9";
+
+    /// <summary>
     /// Literal for code: BadRiver
     /// </summary>
     public const string LiteralBadRiver = "1124-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceBadRiver
+    /// </summary>
+    public const string LiteralV3RaceBadRiver = "http://terminology.hl7.org/CodeSystem/v3-Race#1124-7";
 
     /// <summary>
     /// Literal for code: BayMillsChippewa
@@ -8801,9 +9271,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBayMillsChippewa = "1125-4";
 
     /// <summary>
+    /// Literal for code: V3RaceBayMillsChippewa
+    /// </summary>
+    public const string LiteralV3RaceBayMillsChippewa = "http://terminology.hl7.org/CodeSystem/v3-Race#1125-4";
+
+    /// <summary>
     /// Literal for code: BoisForte
     /// </summary>
     public const string LiteralBoisForte = "1126-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceBoisForte
+    /// </summary>
+    public const string LiteralV3RaceBoisForte = "http://terminology.hl7.org/CodeSystem/v3-Race#1126-2";
 
     /// <summary>
     /// Literal for code: BurtLakeChippewa
@@ -8811,9 +9291,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBurtLakeChippewa = "1127-0";
 
     /// <summary>
+    /// Literal for code: V3RaceBurtLakeChippewa
+    /// </summary>
+    public const string LiteralV3RaceBurtLakeChippewa = "http://terminology.hl7.org/CodeSystem/v3-Race#1127-0";
+
+    /// <summary>
     /// Literal for code: FondDuLac
     /// </summary>
     public const string LiteralFondDuLac = "1128-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceFondDuLac
+    /// </summary>
+    public const string LiteralV3RaceFondDuLac = "http://terminology.hl7.org/CodeSystem/v3-Race#1128-8";
 
     /// <summary>
     /// Literal for code: GrandPortage
@@ -8821,9 +9311,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGrandPortage = "1129-6";
 
     /// <summary>
+    /// Literal for code: V3RaceGrandPortage
+    /// </summary>
+    public const string LiteralV3RaceGrandPortage = "http://terminology.hl7.org/CodeSystem/v3-Race#1129-6";
+
+    /// <summary>
     /// Literal for code: GrandTraverseBandOfOttawaChippewa
     /// </summary>
     public const string LiteralGrandTraverseBandOfOttawaChippewa = "1130-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceGrandTraverseBandOfOttawaChippewa
+    /// </summary>
+    public const string LiteralV3RaceGrandTraverseBandOfOttawaChippewa = "http://terminology.hl7.org/CodeSystem/v3-Race#1130-4";
 
     /// <summary>
     /// Literal for code: Keweenaw
@@ -8831,9 +9331,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKeweenaw = "1131-2";
 
     /// <summary>
+    /// Literal for code: V3RaceKeweenaw
+    /// </summary>
+    public const string LiteralV3RaceKeweenaw = "http://terminology.hl7.org/CodeSystem/v3-Race#1131-2";
+
+    /// <summary>
     /// Literal for code: LacCourteOreilles
     /// </summary>
     public const string LiteralLacCourteOreilles = "1132-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceLacCourteOreilles
+    /// </summary>
+    public const string LiteralV3RaceLacCourteOreilles = "http://terminology.hl7.org/CodeSystem/v3-Race#1132-0";
 
     /// <summary>
     /// Literal for code: LacDuFlambeau
@@ -8841,9 +9351,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLacDuFlambeau = "1133-8";
 
     /// <summary>
+    /// Literal for code: V3RaceLacDuFlambeau
+    /// </summary>
+    public const string LiteralV3RaceLacDuFlambeau = "http://terminology.hl7.org/CodeSystem/v3-Race#1133-8";
+
+    /// <summary>
     /// Literal for code: LacVieuxDesertChippewa
     /// </summary>
     public const string LiteralLacVieuxDesertChippewa = "1134-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceLacVieuxDesertChippewa
+    /// </summary>
+    public const string LiteralV3RaceLacVieuxDesertChippewa = "http://terminology.hl7.org/CodeSystem/v3-Race#1134-6";
 
     /// <summary>
     /// Literal for code: LakeSuperior
@@ -8851,9 +9371,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLakeSuperior = "1135-3";
 
     /// <summary>
+    /// Literal for code: V3RaceLakeSuperior
+    /// </summary>
+    public const string LiteralV3RaceLakeSuperior = "http://terminology.hl7.org/CodeSystem/v3-Race#1135-3";
+
+    /// <summary>
     /// Literal for code: LeechLake
     /// </summary>
     public const string LiteralLeechLake = "1136-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceLeechLake
+    /// </summary>
+    public const string LiteralV3RaceLeechLake = "http://terminology.hl7.org/CodeSystem/v3-Race#1136-1";
 
     /// <summary>
     /// Literal for code: LittleShellChippewa
@@ -8861,9 +9391,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLittleShellChippewa = "1137-9";
 
     /// <summary>
+    /// Literal for code: V3RaceLittleShellChippewa
+    /// </summary>
+    public const string LiteralV3RaceLittleShellChippewa = "http://terminology.hl7.org/CodeSystem/v3-Race#1137-9";
+
+    /// <summary>
     /// Literal for code: MilleLacs
     /// </summary>
     public const string LiteralMilleLacs = "1138-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceMilleLacs
+    /// </summary>
+    public const string LiteralV3RaceMilleLacs = "http://terminology.hl7.org/CodeSystem/v3-Race#1138-7";
 
     /// <summary>
     /// Literal for code: MinnesotaChippewa
@@ -8871,9 +9411,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMinnesotaChippewa = "1139-5";
 
     /// <summary>
+    /// Literal for code: V3RaceMinnesotaChippewa
+    /// </summary>
+    public const string LiteralV3RaceMinnesotaChippewa = "http://terminology.hl7.org/CodeSystem/v3-Race#1139-5";
+
+    /// <summary>
     /// Literal for code: Ontonagon
     /// </summary>
     public const string LiteralOntonagon = "1140-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceOntonagon
+    /// </summary>
+    public const string LiteralV3RaceOntonagon = "http://terminology.hl7.org/CodeSystem/v3-Race#1140-3";
 
     /// <summary>
     /// Literal for code: RedCliffChippewa
@@ -8881,9 +9431,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRedCliffChippewa = "1141-1";
 
     /// <summary>
+    /// Literal for code: V3RaceRedCliffChippewa
+    /// </summary>
+    public const string LiteralV3RaceRedCliffChippewa = "http://terminology.hl7.org/CodeSystem/v3-Race#1141-1";
+
+    /// <summary>
     /// Literal for code: RedLakeChippewa
     /// </summary>
     public const string LiteralRedLakeChippewa = "1142-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceRedLakeChippewa
+    /// </summary>
+    public const string LiteralV3RaceRedLakeChippewa = "http://terminology.hl7.org/CodeSystem/v3-Race#1142-9";
 
     /// <summary>
     /// Literal for code: SaginawChippewa
@@ -8891,9 +9451,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSaginawChippewa = "1143-7";
 
     /// <summary>
+    /// Literal for code: V3RaceSaginawChippewa
+    /// </summary>
+    public const string LiteralV3RaceSaginawChippewa = "http://terminology.hl7.org/CodeSystem/v3-Race#1143-7";
+
+    /// <summary>
     /// Literal for code: StCroixChippewa
     /// </summary>
     public const string LiteralStCroixChippewa = "1144-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceStCroixChippewa
+    /// </summary>
+    public const string LiteralV3RaceStCroixChippewa = "http://terminology.hl7.org/CodeSystem/v3-Race#1144-5";
 
     /// <summary>
     /// Literal for code: SaultSteMarieChippewa
@@ -8901,9 +9471,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSaultSteMarieChippewa = "1145-2";
 
     /// <summary>
+    /// Literal for code: V3RaceSaultSteMarieChippewa
+    /// </summary>
+    public const string LiteralV3RaceSaultSteMarieChippewa = "http://terminology.hl7.org/CodeSystem/v3-Race#1145-2";
+
+    /// <summary>
     /// Literal for code: SokoagonChippewa
     /// </summary>
     public const string LiteralSokoagonChippewa = "1146-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceSokoagonChippewa
+    /// </summary>
+    public const string LiteralV3RaceSokoagonChippewa = "http://terminology.hl7.org/CodeSystem/v3-Race#1146-0";
 
     /// <summary>
     /// Literal for code: TurtleMountain
@@ -8911,9 +9491,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTurtleMountain = "1147-8";
 
     /// <summary>
+    /// Literal for code: V3RaceTurtleMountain
+    /// </summary>
+    public const string LiteralV3RaceTurtleMountain = "http://terminology.hl7.org/CodeSystem/v3-Race#1147-8";
+
+    /// <summary>
     /// Literal for code: WhiteEarth
     /// </summary>
     public const string LiteralWhiteEarth = "1148-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceWhiteEarth
+    /// </summary>
+    public const string LiteralV3RaceWhiteEarth = "http://terminology.hl7.org/CodeSystem/v3-Race#1148-6";
 
     /// <summary>
     /// Literal for code: ChippewaCree
@@ -8921,9 +9511,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChippewaCree = "1150-2";
 
     /// <summary>
+    /// Literal for code: V3RaceChippewaCree
+    /// </summary>
+    public const string LiteralV3RaceChippewaCree = "http://terminology.hl7.org/CodeSystem/v3-Race#1150-2";
+
+    /// <summary>
     /// Literal for code: RockyBoyQuoteSChippewaCree
     /// </summary>
     public const string LiteralRockyBoyQuoteSChippewaCree = "1151-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceRockyBoyQuoteSChippewaCree
+    /// </summary>
+    public const string LiteralV3RaceRockyBoyQuoteSChippewaCree = "http://terminology.hl7.org/CodeSystem/v3-Race#1151-0";
 
     /// <summary>
     /// Literal for code: Chitimacha
@@ -8931,9 +9531,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChitimacha = "1153-6";
 
     /// <summary>
+    /// Literal for code: V3RaceChitimacha
+    /// </summary>
+    public const string LiteralV3RaceChitimacha = "http://terminology.hl7.org/CodeSystem/v3-Race#1153-6";
+
+    /// <summary>
     /// Literal for code: Choctaw
     /// </summary>
     public const string LiteralChoctaw = "1155-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceChoctaw
+    /// </summary>
+    public const string LiteralV3RaceChoctaw = "http://terminology.hl7.org/CodeSystem/v3-Race#1155-1";
 
     /// <summary>
     /// Literal for code: CliftonChoctaw
@@ -8941,9 +9551,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCliftonChoctaw = "1156-9";
 
     /// <summary>
+    /// Literal for code: V3RaceCliftonChoctaw
+    /// </summary>
+    public const string LiteralV3RaceCliftonChoctaw = "http://terminology.hl7.org/CodeSystem/v3-Race#1156-9";
+
+    /// <summary>
     /// Literal for code: JenaChoctaw
     /// </summary>
     public const string LiteralJenaChoctaw = "1157-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceJenaChoctaw
+    /// </summary>
+    public const string LiteralV3RaceJenaChoctaw = "http://terminology.hl7.org/CodeSystem/v3-Race#1157-7";
 
     /// <summary>
     /// Literal for code: MississippiChoctaw
@@ -8951,9 +9571,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMississippiChoctaw = "1158-5";
 
     /// <summary>
+    /// Literal for code: V3RaceMississippiChoctaw
+    /// </summary>
+    public const string LiteralV3RaceMississippiChoctaw = "http://terminology.hl7.org/CodeSystem/v3-Race#1158-5";
+
+    /// <summary>
     /// Literal for code: MowaBandOfChoctaw
     /// </summary>
     public const string LiteralMowaBandOfChoctaw = "1159-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceMowaBandOfChoctaw
+    /// </summary>
+    public const string LiteralV3RaceMowaBandOfChoctaw = "http://terminology.hl7.org/CodeSystem/v3-Race#1159-3";
 
     /// <summary>
     /// Literal for code: OklahomaChoctaw
@@ -8961,9 +9591,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOklahomaChoctaw = "1160-1";
 
     /// <summary>
+    /// Literal for code: V3RaceOklahomaChoctaw
+    /// </summary>
+    public const string LiteralV3RaceOklahomaChoctaw = "http://terminology.hl7.org/CodeSystem/v3-Race#1160-1";
+
+    /// <summary>
     /// Literal for code: Chumash
     /// </summary>
     public const string LiteralChumash = "1162-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceChumash
+    /// </summary>
+    public const string LiteralV3RaceChumash = "http://terminology.hl7.org/CodeSystem/v3-Race#1162-7";
 
     /// <summary>
     /// Literal for code: SantaYnez
@@ -8971,9 +9611,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSantaYnez = "1163-5";
 
     /// <summary>
+    /// Literal for code: V3RaceSantaYnez
+    /// </summary>
+    public const string LiteralV3RaceSantaYnez = "http://terminology.hl7.org/CodeSystem/v3-Race#1163-5";
+
+    /// <summary>
     /// Literal for code: ClearLake
     /// </summary>
     public const string LiteralClearLake = "1165-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceClearLake
+    /// </summary>
+    public const string LiteralV3RaceClearLake = "http://terminology.hl7.org/CodeSystem/v3-Race#1165-0";
 
     /// <summary>
     /// Literal for code: CoeurDQuoteAlene
@@ -8981,9 +9631,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoeurDQuoteAlene = "1167-6";
 
     /// <summary>
+    /// Literal for code: V3RaceCoeurDQuoteAlene
+    /// </summary>
+    public const string LiteralV3RaceCoeurDQuoteAlene = "http://terminology.hl7.org/CodeSystem/v3-Race#1167-6";
+
+    /// <summary>
     /// Literal for code: Coharie
     /// </summary>
     public const string LiteralCoharie = "1169-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceCoharie
+    /// </summary>
+    public const string LiteralV3RaceCoharie = "http://terminology.hl7.org/CodeSystem/v3-Race#1169-2";
 
     /// <summary>
     /// Literal for code: ColoradoRiver
@@ -8991,9 +9651,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralColoradoRiver = "1171-8";
 
     /// <summary>
+    /// Literal for code: V3RaceColoradoRiver
+    /// </summary>
+    public const string LiteralV3RaceColoradoRiver = "http://terminology.hl7.org/CodeSystem/v3-Race#1171-8";
+
+    /// <summary>
     /// Literal for code: Colville
     /// </summary>
     public const string LiteralColville = "1173-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceColville
+    /// </summary>
+    public const string LiteralV3RaceColville = "http://terminology.hl7.org/CodeSystem/v3-Race#1173-4";
 
     /// <summary>
     /// Literal for code: Comanche
@@ -9001,9 +9671,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralComanche = "1175-9";
 
     /// <summary>
+    /// Literal for code: V3RaceComanche
+    /// </summary>
+    public const string LiteralV3RaceComanche = "http://terminology.hl7.org/CodeSystem/v3-Race#1175-9";
+
+    /// <summary>
     /// Literal for code: OklahomaComanche
     /// </summary>
     public const string LiteralOklahomaComanche = "1176-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceOklahomaComanche
+    /// </summary>
+    public const string LiteralV3RaceOklahomaComanche = "http://terminology.hl7.org/CodeSystem/v3-Race#1176-7";
 
     /// <summary>
     /// Literal for code: CoosLowerUmpquaSiuslaw
@@ -9011,9 +9691,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoosLowerUmpquaSiuslaw = "1178-3";
 
     /// <summary>
+    /// Literal for code: V3RaceCoosLowerUmpquaSiuslaw
+    /// </summary>
+    public const string LiteralV3RaceCoosLowerUmpquaSiuslaw = "http://terminology.hl7.org/CodeSystem/v3-Race#1178-3";
+
+    /// <summary>
     /// Literal for code: Coos
     /// </summary>
     public const string LiteralCoos = "1180-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceCoos
+    /// </summary>
+    public const string LiteralV3RaceCoos = "http://terminology.hl7.org/CodeSystem/v3-Race#1180-9";
 
     /// <summary>
     /// Literal for code: Coquilles
@@ -9021,9 +9711,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoquilles = "1182-5";
 
     /// <summary>
+    /// Literal for code: V3RaceCoquilles
+    /// </summary>
+    public const string LiteralV3RaceCoquilles = "http://terminology.hl7.org/CodeSystem/v3-Race#1182-5";
+
+    /// <summary>
     /// Literal for code: Costanoan
     /// </summary>
     public const string LiteralCostanoan = "1184-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceCostanoan
+    /// </summary>
+    public const string LiteralV3RaceCostanoan = "http://terminology.hl7.org/CodeSystem/v3-Race#1184-1";
 
     /// <summary>
     /// Literal for code: Coushatta
@@ -9031,9 +9731,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoushatta = "1186-6";
 
     /// <summary>
+    /// Literal for code: V3RaceCoushatta
+    /// </summary>
+    public const string LiteralV3RaceCoushatta = "http://terminology.hl7.org/CodeSystem/v3-Race#1186-6";
+
+    /// <summary>
     /// Literal for code: AlabamaCoushatta
     /// </summary>
     public const string LiteralAlabamaCoushatta = "1187-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceAlabamaCoushatta
+    /// </summary>
+    public const string LiteralV3RaceAlabamaCoushatta = "http://terminology.hl7.org/CodeSystem/v3-Race#1187-4";
 
     /// <summary>
     /// Literal for code: Cowlitz
@@ -9041,9 +9751,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCowlitz = "1189-0";
 
     /// <summary>
+    /// Literal for code: V3RaceCowlitz
+    /// </summary>
+    public const string LiteralV3RaceCowlitz = "http://terminology.hl7.org/CodeSystem/v3-Race#1189-0";
+
+    /// <summary>
     /// Literal for code: Cree
     /// </summary>
     public const string LiteralCree = "1191-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceCree
+    /// </summary>
+    public const string LiteralV3RaceCree = "http://terminology.hl7.org/CodeSystem/v3-Race#1191-6";
 
     /// <summary>
     /// Literal for code: Creek
@@ -9051,9 +9771,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCreek = "1193-2";
 
     /// <summary>
+    /// Literal for code: V3RaceCreek
+    /// </summary>
+    public const string LiteralV3RaceCreek = "http://terminology.hl7.org/CodeSystem/v3-Race#1193-2";
+
+    /// <summary>
     /// Literal for code: AlabamaCreek
     /// </summary>
     public const string LiteralAlabamaCreek = "1194-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceAlabamaCreek
+    /// </summary>
+    public const string LiteralV3RaceAlabamaCreek = "http://terminology.hl7.org/CodeSystem/v3-Race#1194-0";
 
     /// <summary>
     /// Literal for code: AlabamaQuassarte
@@ -9061,9 +9791,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlabamaQuassarte = "1195-7";
 
     /// <summary>
+    /// Literal for code: V3RaceAlabamaQuassarte
+    /// </summary>
+    public const string LiteralV3RaceAlabamaQuassarte = "http://terminology.hl7.org/CodeSystem/v3-Race#1195-7";
+
+    /// <summary>
     /// Literal for code: EasternCreek
     /// </summary>
     public const string LiteralEasternCreek = "1196-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceEasternCreek
+    /// </summary>
+    public const string LiteralV3RaceEasternCreek = "http://terminology.hl7.org/CodeSystem/v3-Race#1196-5";
 
     /// <summary>
     /// Literal for code: EasternMuscogee
@@ -9071,9 +9811,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEasternMuscogee = "1197-3";
 
     /// <summary>
+    /// Literal for code: V3RaceEasternMuscogee
+    /// </summary>
+    public const string LiteralV3RaceEasternMuscogee = "http://terminology.hl7.org/CodeSystem/v3-Race#1197-3";
+
+    /// <summary>
     /// Literal for code: Kialegee
     /// </summary>
     public const string LiteralKialegee = "1198-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceKialegee
+    /// </summary>
+    public const string LiteralV3RaceKialegee = "http://terminology.hl7.org/CodeSystem/v3-Race#1198-1";
 
     /// <summary>
     /// Literal for code: LowerMuscogee
@@ -9081,9 +9831,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLowerMuscogee = "1199-9";
 
     /// <summary>
+    /// Literal for code: V3RaceLowerMuscogee
+    /// </summary>
+    public const string LiteralV3RaceLowerMuscogee = "http://terminology.hl7.org/CodeSystem/v3-Race#1199-9";
+
+    /// <summary>
     /// Literal for code: MachisLowerCreekIndian
     /// </summary>
     public const string LiteralMachisLowerCreekIndian = "1200-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceMachisLowerCreekIndian
+    /// </summary>
+    public const string LiteralV3RaceMachisLowerCreekIndian = "http://terminology.hl7.org/CodeSystem/v3-Race#1200-5";
 
     /// <summary>
     /// Literal for code: PoarchBand
@@ -9091,9 +9851,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPoarchBand = "1201-3";
 
     /// <summary>
+    /// Literal for code: V3RacePoarchBand
+    /// </summary>
+    public const string LiteralV3RacePoarchBand = "http://terminology.hl7.org/CodeSystem/v3-Race#1201-3";
+
+    /// <summary>
     /// Literal for code: PrincipalCreekIndianNation
     /// </summary>
     public const string LiteralPrincipalCreekIndianNation = "1202-1";
+
+    /// <summary>
+    /// Literal for code: V3RacePrincipalCreekIndianNation
+    /// </summary>
+    public const string LiteralV3RacePrincipalCreekIndianNation = "http://terminology.hl7.org/CodeSystem/v3-Race#1202-1";
 
     /// <summary>
     /// Literal for code: StarClanOfMuscogeeCreeks
@@ -9101,9 +9871,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStarClanOfMuscogeeCreeks = "1203-9";
 
     /// <summary>
+    /// Literal for code: V3RaceStarClanOfMuscogeeCreeks
+    /// </summary>
+    public const string LiteralV3RaceStarClanOfMuscogeeCreeks = "http://terminology.hl7.org/CodeSystem/v3-Race#1203-9";
+
+    /// <summary>
     /// Literal for code: Thlopthlocco
     /// </summary>
     public const string LiteralThlopthlocco = "1204-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceThlopthlocco
+    /// </summary>
+    public const string LiteralV3RaceThlopthlocco = "http://terminology.hl7.org/CodeSystem/v3-Race#1204-7";
 
     /// <summary>
     /// Literal for code: Tuckabachee
@@ -9111,9 +9891,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTuckabachee = "1205-4";
 
     /// <summary>
+    /// Literal for code: V3RaceTuckabachee
+    /// </summary>
+    public const string LiteralV3RaceTuckabachee = "http://terminology.hl7.org/CodeSystem/v3-Race#1205-4";
+
+    /// <summary>
     /// Literal for code: Croatan
     /// </summary>
     public const string LiteralCroatan = "1207-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceCroatan
+    /// </summary>
+    public const string LiteralV3RaceCroatan = "http://terminology.hl7.org/CodeSystem/v3-Race#1207-0";
 
     /// <summary>
     /// Literal for code: Crow
@@ -9121,9 +9911,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCrow = "1209-6";
 
     /// <summary>
+    /// Literal for code: V3RaceCrow
+    /// </summary>
+    public const string LiteralV3RaceCrow = "http://terminology.hl7.org/CodeSystem/v3-Race#1209-6";
+
+    /// <summary>
     /// Literal for code: Cupeno
     /// </summary>
     public const string LiteralCupeno = "1211-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceCupeno
+    /// </summary>
+    public const string LiteralV3RaceCupeno = "http://terminology.hl7.org/CodeSystem/v3-Race#1211-2";
 
     /// <summary>
     /// Literal for code: AguaCaliente
@@ -9131,9 +9931,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAguaCaliente = "1212-0";
 
     /// <summary>
+    /// Literal for code: V3RaceAguaCaliente
+    /// </summary>
+    public const string LiteralV3RaceAguaCaliente = "http://terminology.hl7.org/CodeSystem/v3-Race#1212-0";
+
+    /// <summary>
     /// Literal for code: Delaware
     /// </summary>
     public const string LiteralDelaware = "1214-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceDelaware
+    /// </summary>
+    public const string LiteralV3RaceDelaware = "http://terminology.hl7.org/CodeSystem/v3-Race#1214-6";
 
     /// <summary>
     /// Literal for code: EasternDelaware
@@ -9141,9 +9951,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEasternDelaware = "1215-3";
 
     /// <summary>
+    /// Literal for code: V3RaceEasternDelaware
+    /// </summary>
+    public const string LiteralV3RaceEasternDelaware = "http://terminology.hl7.org/CodeSystem/v3-Race#1215-3";
+
+    /// <summary>
     /// Literal for code: LenniLenape
     /// </summary>
     public const string LiteralLenniLenape = "1216-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceLenniLenape
+    /// </summary>
+    public const string LiteralV3RaceLenniLenape = "http://terminology.hl7.org/CodeSystem/v3-Race#1216-1";
 
     /// <summary>
     /// Literal for code: Munsee
@@ -9151,9 +9971,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMunsee = "1217-9";
 
     /// <summary>
+    /// Literal for code: V3RaceMunsee
+    /// </summary>
+    public const string LiteralV3RaceMunsee = "http://terminology.hl7.org/CodeSystem/v3-Race#1217-9";
+
+    /// <summary>
     /// Literal for code: OklahomaDelaware
     /// </summary>
     public const string LiteralOklahomaDelaware = "1218-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceOklahomaDelaware
+    /// </summary>
+    public const string LiteralV3RaceOklahomaDelaware = "http://terminology.hl7.org/CodeSystem/v3-Race#1218-7";
 
     /// <summary>
     /// Literal for code: RampoughMountain
@@ -9161,9 +9991,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRampoughMountain = "1219-5";
 
     /// <summary>
+    /// Literal for code: V3RaceRampoughMountain
+    /// </summary>
+    public const string LiteralV3RaceRampoughMountain = "http://terminology.hl7.org/CodeSystem/v3-Race#1219-5";
+
+    /// <summary>
     /// Literal for code: SandHill
     /// </summary>
     public const string LiteralSandHill = "1220-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceSandHill
+    /// </summary>
+    public const string LiteralV3RaceSandHill = "http://terminology.hl7.org/CodeSystem/v3-Race#1220-3";
 
     /// <summary>
     /// Literal for code: Diegueno
@@ -9171,9 +10011,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiegueno = "1222-9";
 
     /// <summary>
+    /// Literal for code: V3RaceDiegueno
+    /// </summary>
+    public const string LiteralV3RaceDiegueno = "http://terminology.hl7.org/CodeSystem/v3-Race#1222-9";
+
+    /// <summary>
     /// Literal for code: Campo
     /// </summary>
     public const string LiteralCampo = "1223-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceCampo
+    /// </summary>
+    public const string LiteralV3RaceCampo = "http://terminology.hl7.org/CodeSystem/v3-Race#1223-7";
 
     /// <summary>
     /// Literal for code: CapitanGrande
@@ -9181,9 +10031,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCapitanGrande = "1224-5";
 
     /// <summary>
+    /// Literal for code: V3RaceCapitanGrande
+    /// </summary>
+    public const string LiteralV3RaceCapitanGrande = "http://terminology.hl7.org/CodeSystem/v3-Race#1224-5";
+
+    /// <summary>
     /// Literal for code: Cuyapaipe
     /// </summary>
     public const string LiteralCuyapaipe = "1225-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceCuyapaipe
+    /// </summary>
+    public const string LiteralV3RaceCuyapaipe = "http://terminology.hl7.org/CodeSystem/v3-Race#1225-2";
 
     /// <summary>
     /// Literal for code: LaPosta
@@ -9191,9 +10051,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLaPosta = "1226-0";
 
     /// <summary>
+    /// Literal for code: V3RaceLaPosta
+    /// </summary>
+    public const string LiteralV3RaceLaPosta = "http://terminology.hl7.org/CodeSystem/v3-Race#1226-0";
+
+    /// <summary>
     /// Literal for code: Manzanita
     /// </summary>
     public const string LiteralManzanita = "1227-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceManzanita
+    /// </summary>
+    public const string LiteralV3RaceManzanita = "http://terminology.hl7.org/CodeSystem/v3-Race#1227-8";
 
     /// <summary>
     /// Literal for code: MesaGrande
@@ -9201,9 +10071,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMesaGrande = "1228-6";
 
     /// <summary>
+    /// Literal for code: V3RaceMesaGrande
+    /// </summary>
+    public const string LiteralV3RaceMesaGrande = "http://terminology.hl7.org/CodeSystem/v3-Race#1228-6";
+
+    /// <summary>
     /// Literal for code: SanPasqual
     /// </summary>
     public const string LiteralSanPasqual = "1229-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceSanPasqual
+    /// </summary>
+    public const string LiteralV3RaceSanPasqual = "http://terminology.hl7.org/CodeSystem/v3-Race#1229-4";
 
     /// <summary>
     /// Literal for code: SantaYsabel
@@ -9211,9 +10091,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSantaYsabel = "1230-2";
 
     /// <summary>
+    /// Literal for code: V3RaceSantaYsabel
+    /// </summary>
+    public const string LiteralV3RaceSantaYsabel = "http://terminology.hl7.org/CodeSystem/v3-Race#1230-2";
+
+    /// <summary>
     /// Literal for code: Sycuan
     /// </summary>
     public const string LiteralSycuan = "1231-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceSycuan
+    /// </summary>
+    public const string LiteralV3RaceSycuan = "http://terminology.hl7.org/CodeSystem/v3-Race#1231-0";
 
     /// <summary>
     /// Literal for code: EasternTribes
@@ -9221,9 +10111,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEasternTribes = "1233-6";
 
     /// <summary>
+    /// Literal for code: V3RaceEasternTribes
+    /// </summary>
+    public const string LiteralV3RaceEasternTribes = "http://terminology.hl7.org/CodeSystem/v3-Race#1233-6";
+
+    /// <summary>
     /// Literal for code: Attacapa
     /// </summary>
     public const string LiteralAttacapa = "1234-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceAttacapa
+    /// </summary>
+    public const string LiteralV3RaceAttacapa = "http://terminology.hl7.org/CodeSystem/v3-Race#1234-4";
 
     /// <summary>
     /// Literal for code: Biloxi
@@ -9231,9 +10131,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBiloxi = "1235-1";
 
     /// <summary>
+    /// Literal for code: V3RaceBiloxi
+    /// </summary>
+    public const string LiteralV3RaceBiloxi = "http://terminology.hl7.org/CodeSystem/v3-Race#1235-1";
+
+    /// <summary>
     /// Literal for code: Georgetown
     /// </summary>
     public const string LiteralGeorgetown = "1236-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceGeorgetown
+    /// </summary>
+    public const string LiteralV3RaceGeorgetown = "http://terminology.hl7.org/CodeSystem/v3-Race#1236-9";
 
     /// <summary>
     /// Literal for code: Moor
@@ -9241,9 +10151,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMoor = "1237-7";
 
     /// <summary>
+    /// Literal for code: V3RaceMoor
+    /// </summary>
+    public const string LiteralV3RaceMoor = "http://terminology.hl7.org/CodeSystem/v3-Race#1237-7";
+
+    /// <summary>
     /// Literal for code: Nansemond
     /// </summary>
     public const string LiteralNansemond = "1238-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceNansemond
+    /// </summary>
+    public const string LiteralV3RaceNansemond = "http://terminology.hl7.org/CodeSystem/v3-Race#1238-5";
 
     /// <summary>
     /// Literal for code: Natchez
@@ -9251,9 +10171,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNatchez = "1239-3";
 
     /// <summary>
+    /// Literal for code: V3RaceNatchez
+    /// </summary>
+    public const string LiteralV3RaceNatchez = "http://terminology.hl7.org/CodeSystem/v3-Race#1239-3";
+
+    /// <summary>
     /// Literal for code: NausuWaiwash
     /// </summary>
     public const string LiteralNausuWaiwash = "1240-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceNausuWaiwash
+    /// </summary>
+    public const string LiteralV3RaceNausuWaiwash = "http://terminology.hl7.org/CodeSystem/v3-Race#1240-1";
 
     /// <summary>
     /// Literal for code: Nipmuc
@@ -9261,9 +10191,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNipmuc = "1241-9";
 
     /// <summary>
+    /// Literal for code: V3RaceNipmuc
+    /// </summary>
+    public const string LiteralV3RaceNipmuc = "http://terminology.hl7.org/CodeSystem/v3-Race#1241-9";
+
+    /// <summary>
     /// Literal for code: Paugussett
     /// </summary>
     public const string LiteralPaugussett = "1242-7";
+
+    /// <summary>
+    /// Literal for code: V3RacePaugussett
+    /// </summary>
+    public const string LiteralV3RacePaugussett = "http://terminology.hl7.org/CodeSystem/v3-Race#1242-7";
 
     /// <summary>
     /// Literal for code: PocomokeAcohonock
@@ -9271,9 +10211,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPocomokeAcohonock = "1243-5";
 
     /// <summary>
+    /// Literal for code: V3RacePocomokeAcohonock
+    /// </summary>
+    public const string LiteralV3RacePocomokeAcohonock = "http://terminology.hl7.org/CodeSystem/v3-Race#1243-5";
+
+    /// <summary>
     /// Literal for code: SoutheasternIndians
     /// </summary>
     public const string LiteralSoutheasternIndians = "1244-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceSoutheasternIndians
+    /// </summary>
+    public const string LiteralV3RaceSoutheasternIndians = "http://terminology.hl7.org/CodeSystem/v3-Race#1244-3";
 
     /// <summary>
     /// Literal for code: Susquehanock
@@ -9281,9 +10231,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSusquehanock = "1245-0";
 
     /// <summary>
+    /// Literal for code: V3RaceSusquehanock
+    /// </summary>
+    public const string LiteralV3RaceSusquehanock = "http://terminology.hl7.org/CodeSystem/v3-Race#1245-0";
+
+    /// <summary>
     /// Literal for code: TunicaBiloxi
     /// </summary>
     public const string LiteralTunicaBiloxi = "1246-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceTunicaBiloxi
+    /// </summary>
+    public const string LiteralV3RaceTunicaBiloxi = "http://terminology.hl7.org/CodeSystem/v3-Race#1246-8";
 
     /// <summary>
     /// Literal for code: WaccamawSiousan
@@ -9291,9 +10251,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWaccamawSiousan = "1247-6";
 
     /// <summary>
+    /// Literal for code: V3RaceWaccamawSiousan
+    /// </summary>
+    public const string LiteralV3RaceWaccamawSiousan = "http://terminology.hl7.org/CodeSystem/v3-Race#1247-6";
+
+    /// <summary>
     /// Literal for code: Wicomico
     /// </summary>
     public const string LiteralWicomico = "1248-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceWicomico
+    /// </summary>
+    public const string LiteralV3RaceWicomico = "http://terminology.hl7.org/CodeSystem/v3-Race#1248-4";
 
     /// <summary>
     /// Literal for code: Esselen
@@ -9301,9 +10271,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEsselen = "1250-0";
 
     /// <summary>
+    /// Literal for code: V3RaceEsselen
+    /// </summary>
+    public const string LiteralV3RaceEsselen = "http://terminology.hl7.org/CodeSystem/v3-Race#1250-0";
+
+    /// <summary>
     /// Literal for code: FortBelknap
     /// </summary>
     public const string LiteralFortBelknap = "1252-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceFortBelknap
+    /// </summary>
+    public const string LiteralV3RaceFortBelknap = "http://terminology.hl7.org/CodeSystem/v3-Race#1252-6";
 
     /// <summary>
     /// Literal for code: FortBerthold
@@ -9311,9 +10291,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFortBerthold = "1254-2";
 
     /// <summary>
+    /// Literal for code: V3RaceFortBerthold
+    /// </summary>
+    public const string LiteralV3RaceFortBerthold = "http://terminology.hl7.org/CodeSystem/v3-Race#1254-2";
+
+    /// <summary>
     /// Literal for code: FortMcdowell
     /// </summary>
     public const string LiteralFortMcdowell = "1256-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceFortMcdowell
+    /// </summary>
+    public const string LiteralV3RaceFortMcdowell = "http://terminology.hl7.org/CodeSystem/v3-Race#1256-7";
 
     /// <summary>
     /// Literal for code: FortHall
@@ -9321,9 +10311,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFortHall = "1258-3";
 
     /// <summary>
+    /// Literal for code: V3RaceFortHall
+    /// </summary>
+    public const string LiteralV3RaceFortHall = "http://terminology.hl7.org/CodeSystem/v3-Race#1258-3";
+
+    /// <summary>
     /// Literal for code: Gabrieleno
     /// </summary>
     public const string LiteralGabrieleno = "1260-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceGabrieleno
+    /// </summary>
+    public const string LiteralV3RaceGabrieleno = "http://terminology.hl7.org/CodeSystem/v3-Race#1260-9";
 
     /// <summary>
     /// Literal for code: GrandRonde
@@ -9331,9 +10331,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGrandRonde = "1262-5";
 
     /// <summary>
+    /// Literal for code: V3RaceGrandRonde
+    /// </summary>
+    public const string LiteralV3RaceGrandRonde = "http://terminology.hl7.org/CodeSystem/v3-Race#1262-5";
+
+    /// <summary>
     /// Literal for code: GrosVentres
     /// </summary>
     public const string LiteralGrosVentres = "1264-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceGrosVentres
+    /// </summary>
+    public const string LiteralV3RaceGrosVentres = "http://terminology.hl7.org/CodeSystem/v3-Race#1264-1";
 
     /// <summary>
     /// Literal for code: Atsina
@@ -9341,9 +10351,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAtsina = "1265-8";
 
     /// <summary>
+    /// Literal for code: V3RaceAtsina
+    /// </summary>
+    public const string LiteralV3RaceAtsina = "http://terminology.hl7.org/CodeSystem/v3-Race#1265-8";
+
+    /// <summary>
     /// Literal for code: Haliwa
     /// </summary>
     public const string LiteralHaliwa = "1267-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceHaliwa
+    /// </summary>
+    public const string LiteralV3RaceHaliwa = "http://terminology.hl7.org/CodeSystem/v3-Race#1267-4";
 
     /// <summary>
     /// Literal for code: Hidatsa
@@ -9351,9 +10371,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHidatsa = "1269-0";
 
     /// <summary>
+    /// Literal for code: V3RaceHidatsa
+    /// </summary>
+    public const string LiteralV3RaceHidatsa = "http://terminology.hl7.org/CodeSystem/v3-Race#1269-0";
+
+    /// <summary>
     /// Literal for code: Hoopa
     /// </summary>
     public const string LiteralHoopa = "1271-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceHoopa
+    /// </summary>
+    public const string LiteralV3RaceHoopa = "http://terminology.hl7.org/CodeSystem/v3-Race#1271-6";
 
     /// <summary>
     /// Literal for code: Trinity
@@ -9361,9 +10391,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrinity = "1272-4";
 
     /// <summary>
+    /// Literal for code: V3RaceTrinity
+    /// </summary>
+    public const string LiteralV3RaceTrinity = "http://terminology.hl7.org/CodeSystem/v3-Race#1272-4";
+
+    /// <summary>
     /// Literal for code: Whilkut
     /// </summary>
     public const string LiteralWhilkut = "1273-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceWhilkut
+    /// </summary>
+    public const string LiteralV3RaceWhilkut = "http://terminology.hl7.org/CodeSystem/v3-Race#1273-2";
 
     /// <summary>
     /// Literal for code: HoopaExtension
@@ -9371,9 +10411,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHoopaExtension = "1275-7";
 
     /// <summary>
+    /// Literal for code: V3RaceHoopaExtension
+    /// </summary>
+    public const string LiteralV3RaceHoopaExtension = "http://terminology.hl7.org/CodeSystem/v3-Race#1275-7";
+
+    /// <summary>
     /// Literal for code: Houma
     /// </summary>
     public const string LiteralHouma = "1277-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceHouma
+    /// </summary>
+    public const string LiteralV3RaceHouma = "http://terminology.hl7.org/CodeSystem/v3-Race#1277-3";
 
     /// <summary>
     /// Literal for code: InajaCosmit
@@ -9381,9 +10431,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInajaCosmit = "1279-9";
 
     /// <summary>
+    /// Literal for code: V3RaceInajaCosmit
+    /// </summary>
+    public const string LiteralV3RaceInajaCosmit = "http://terminology.hl7.org/CodeSystem/v3-Race#1279-9";
+
+    /// <summary>
     /// Literal for code: Iowa
     /// </summary>
     public const string LiteralIowa = "1281-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceIowa
+    /// </summary>
+    public const string LiteralV3RaceIowa = "http://terminology.hl7.org/CodeSystem/v3-Race#1281-5";
 
     /// <summary>
     /// Literal for code: IowaOfKansasNebraska
@@ -9391,9 +10451,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIowaOfKansasNebraska = "1282-3";
 
     /// <summary>
+    /// Literal for code: V3RaceIowaOfKansasNebraska
+    /// </summary>
+    public const string LiteralV3RaceIowaOfKansasNebraska = "http://terminology.hl7.org/CodeSystem/v3-Race#1282-3";
+
+    /// <summary>
     /// Literal for code: IowaOfOklahoma
     /// </summary>
     public const string LiteralIowaOfOklahoma = "1283-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceIowaOfOklahoma
+    /// </summary>
+    public const string LiteralV3RaceIowaOfOklahoma = "http://terminology.hl7.org/CodeSystem/v3-Race#1283-1";
 
     /// <summary>
     /// Literal for code: Iroquois
@@ -9401,9 +10471,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIroquois = "1285-6";
 
     /// <summary>
+    /// Literal for code: V3RaceIroquois
+    /// </summary>
+    public const string LiteralV3RaceIroquois = "http://terminology.hl7.org/CodeSystem/v3-Race#1285-6";
+
+    /// <summary>
     /// Literal for code: Cayuga
     /// </summary>
     public const string LiteralCayuga = "1286-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceCayuga
+    /// </summary>
+    public const string LiteralV3RaceCayuga = "http://terminology.hl7.org/CodeSystem/v3-Race#1286-4";
 
     /// <summary>
     /// Literal for code: Mohawk
@@ -9411,9 +10491,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMohawk = "1287-2";
 
     /// <summary>
+    /// Literal for code: V3RaceMohawk
+    /// </summary>
+    public const string LiteralV3RaceMohawk = "http://terminology.hl7.org/CodeSystem/v3-Race#1287-2";
+
+    /// <summary>
     /// Literal for code: Oneida
     /// </summary>
     public const string LiteralOneida = "1288-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceOneida
+    /// </summary>
+    public const string LiteralV3RaceOneida = "http://terminology.hl7.org/CodeSystem/v3-Race#1288-0";
 
     /// <summary>
     /// Literal for code: Onondaga
@@ -9421,9 +10511,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOnondaga = "1289-8";
 
     /// <summary>
+    /// Literal for code: V3RaceOnondaga
+    /// </summary>
+    public const string LiteralV3RaceOnondaga = "http://terminology.hl7.org/CodeSystem/v3-Race#1289-8";
+
+    /// <summary>
     /// Literal for code: Seneca
     /// </summary>
     public const string LiteralSeneca = "1290-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceSeneca
+    /// </summary>
+    public const string LiteralV3RaceSeneca = "http://terminology.hl7.org/CodeSystem/v3-Race#1290-6";
 
     /// <summary>
     /// Literal for code: SenecaNation
@@ -9431,9 +10531,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSenecaNation = "1291-4";
 
     /// <summary>
+    /// Literal for code: V3RaceSenecaNation
+    /// </summary>
+    public const string LiteralV3RaceSenecaNation = "http://terminology.hl7.org/CodeSystem/v3-Race#1291-4";
+
+    /// <summary>
     /// Literal for code: SenecaCayuga
     /// </summary>
     public const string LiteralSenecaCayuga = "1292-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceSenecaCayuga
+    /// </summary>
+    public const string LiteralV3RaceSenecaCayuga = "http://terminology.hl7.org/CodeSystem/v3-Race#1292-2";
 
     /// <summary>
     /// Literal for code: TonawandaSeneca
@@ -9441,9 +10551,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTonawandaSeneca = "1293-0";
 
     /// <summary>
+    /// Literal for code: V3RaceTonawandaSeneca
+    /// </summary>
+    public const string LiteralV3RaceTonawandaSeneca = "http://terminology.hl7.org/CodeSystem/v3-Race#1293-0";
+
+    /// <summary>
     /// Literal for code: Tuscarora
     /// </summary>
     public const string LiteralTuscarora = "1294-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceTuscarora
+    /// </summary>
+    public const string LiteralV3RaceTuscarora = "http://terminology.hl7.org/CodeSystem/v3-Race#1294-8";
 
     /// <summary>
     /// Literal for code: Wyandotte
@@ -9451,9 +10571,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWyandotte = "1295-5";
 
     /// <summary>
+    /// Literal for code: V3RaceWyandotte
+    /// </summary>
+    public const string LiteralV3RaceWyandotte = "http://terminology.hl7.org/CodeSystem/v3-Race#1295-5";
+
+    /// <summary>
     /// Literal for code: Juaneno
     /// </summary>
     public const string LiteralJuaneno = "1297-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceJuaneno
+    /// </summary>
+    public const string LiteralV3RaceJuaneno = "http://terminology.hl7.org/CodeSystem/v3-Race#1297-1";
 
     /// <summary>
     /// Literal for code: Kalispel
@@ -9461,9 +10591,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKalispel = "1299-7";
 
     /// <summary>
+    /// Literal for code: V3RaceKalispel
+    /// </summary>
+    public const string LiteralV3RaceKalispel = "http://terminology.hl7.org/CodeSystem/v3-Race#1299-7";
+
+    /// <summary>
     /// Literal for code: Karuk
     /// </summary>
     public const string LiteralKaruk = "1301-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceKaruk
+    /// </summary>
+    public const string LiteralV3RaceKaruk = "http://terminology.hl7.org/CodeSystem/v3-Race#1301-1";
 
     /// <summary>
     /// Literal for code: Kaw
@@ -9471,9 +10611,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKaw = "1303-7";
 
     /// <summary>
+    /// Literal for code: V3RaceKaw
+    /// </summary>
+    public const string LiteralV3RaceKaw = "http://terminology.hl7.org/CodeSystem/v3-Race#1303-7";
+
+    /// <summary>
     /// Literal for code: Kickapoo
     /// </summary>
     public const string LiteralKickapoo = "1305-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceKickapoo
+    /// </summary>
+    public const string LiteralV3RaceKickapoo = "http://terminology.hl7.org/CodeSystem/v3-Race#1305-2";
 
     /// <summary>
     /// Literal for code: OklahomaKickapoo
@@ -9481,9 +10631,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOklahomaKickapoo = "1306-0";
 
     /// <summary>
+    /// Literal for code: V3RaceOklahomaKickapoo
+    /// </summary>
+    public const string LiteralV3RaceOklahomaKickapoo = "http://terminology.hl7.org/CodeSystem/v3-Race#1306-0";
+
+    /// <summary>
     /// Literal for code: TexasKickapoo
     /// </summary>
     public const string LiteralTexasKickapoo = "1307-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceTexasKickapoo
+    /// </summary>
+    public const string LiteralV3RaceTexasKickapoo = "http://terminology.hl7.org/CodeSystem/v3-Race#1307-8";
 
     /// <summary>
     /// Literal for code: Kiowa
@@ -9491,9 +10651,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKiowa = "1309-4";
 
     /// <summary>
+    /// Literal for code: V3RaceKiowa
+    /// </summary>
+    public const string LiteralV3RaceKiowa = "http://terminology.hl7.org/CodeSystem/v3-Race#1309-4";
+
+    /// <summary>
     /// Literal for code: OklahomaKiowa
     /// </summary>
     public const string LiteralOklahomaKiowa = "1310-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceOklahomaKiowa
+    /// </summary>
+    public const string LiteralV3RaceOklahomaKiowa = "http://terminology.hl7.org/CodeSystem/v3-Race#1310-2";
 
     /// <summary>
     /// Literal for code: Klallam
@@ -9501,9 +10671,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKlallam = "1312-8";
 
     /// <summary>
+    /// Literal for code: V3RaceKlallam
+    /// </summary>
+    public const string LiteralV3RaceKlallam = "http://terminology.hl7.org/CodeSystem/v3-Race#1312-8";
+
+    /// <summary>
     /// Literal for code: Jamestown
     /// </summary>
     public const string LiteralJamestown = "1313-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceJamestown
+    /// </summary>
+    public const string LiteralV3RaceJamestown = "http://terminology.hl7.org/CodeSystem/v3-Race#1313-6";
 
     /// <summary>
     /// Literal for code: LowerElwha
@@ -9511,9 +10691,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLowerElwha = "1314-4";
 
     /// <summary>
+    /// Literal for code: V3RaceLowerElwha
+    /// </summary>
+    public const string LiteralV3RaceLowerElwha = "http://terminology.hl7.org/CodeSystem/v3-Race#1314-4";
+
+    /// <summary>
     /// Literal for code: PortGambleKlallam
     /// </summary>
     public const string LiteralPortGambleKlallam = "1315-1";
+
+    /// <summary>
+    /// Literal for code: V3RacePortGambleKlallam
+    /// </summary>
+    public const string LiteralV3RacePortGambleKlallam = "http://terminology.hl7.org/CodeSystem/v3-Race#1315-1";
 
     /// <summary>
     /// Literal for code: Klamath
@@ -9521,9 +10711,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKlamath = "1317-7";
 
     /// <summary>
+    /// Literal for code: V3RaceKlamath
+    /// </summary>
+    public const string LiteralV3RaceKlamath = "http://terminology.hl7.org/CodeSystem/v3-Race#1317-7";
+
+    /// <summary>
     /// Literal for code: Konkow
     /// </summary>
     public const string LiteralKonkow = "1319-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceKonkow
+    /// </summary>
+    public const string LiteralV3RaceKonkow = "http://terminology.hl7.org/CodeSystem/v3-Race#1319-3";
 
     /// <summary>
     /// Literal for code: Kootenai
@@ -9531,9 +10731,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKootenai = "1321-9";
 
     /// <summary>
+    /// Literal for code: V3RaceKootenai
+    /// </summary>
+    public const string LiteralV3RaceKootenai = "http://terminology.hl7.org/CodeSystem/v3-Race#1321-9";
+
+    /// <summary>
     /// Literal for code: Lassik
     /// </summary>
     public const string LiteralLassik = "1323-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceLassik
+    /// </summary>
+    public const string LiteralV3RaceLassik = "http://terminology.hl7.org/CodeSystem/v3-Race#1323-5";
 
     /// <summary>
     /// Literal for code: LongIsland
@@ -9541,9 +10751,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLongIsland = "1325-0";
 
     /// <summary>
+    /// Literal for code: V3RaceLongIsland
+    /// </summary>
+    public const string LiteralV3RaceLongIsland = "http://terminology.hl7.org/CodeSystem/v3-Race#1325-0";
+
+    /// <summary>
     /// Literal for code: Matinecock
     /// </summary>
     public const string LiteralMatinecock = "1326-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceMatinecock
+    /// </summary>
+    public const string LiteralV3RaceMatinecock = "http://terminology.hl7.org/CodeSystem/v3-Race#1326-8";
 
     /// <summary>
     /// Literal for code: Montauk
@@ -9551,9 +10771,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMontauk = "1327-6";
 
     /// <summary>
+    /// Literal for code: V3RaceMontauk
+    /// </summary>
+    public const string LiteralV3RaceMontauk = "http://terminology.hl7.org/CodeSystem/v3-Race#1327-6";
+
+    /// <summary>
     /// Literal for code: Poospatuck
     /// </summary>
     public const string LiteralPoospatuck = "1328-4";
+
+    /// <summary>
+    /// Literal for code: V3RacePoospatuck
+    /// </summary>
+    public const string LiteralV3RacePoospatuck = "http://terminology.hl7.org/CodeSystem/v3-Race#1328-4";
 
     /// <summary>
     /// Literal for code: Setauket
@@ -9561,9 +10791,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSetauket = "1329-2";
 
     /// <summary>
+    /// Literal for code: V3RaceSetauket
+    /// </summary>
+    public const string LiteralV3RaceSetauket = "http://terminology.hl7.org/CodeSystem/v3-Race#1329-2";
+
+    /// <summary>
     /// Literal for code: Luiseno
     /// </summary>
     public const string LiteralLuiseno = "1331-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceLuiseno
+    /// </summary>
+    public const string LiteralV3RaceLuiseno = "http://terminology.hl7.org/CodeSystem/v3-Race#1331-8";
 
     /// <summary>
     /// Literal for code: LaJolla
@@ -9571,9 +10811,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLaJolla = "1332-6";
 
     /// <summary>
+    /// Literal for code: V3RaceLaJolla
+    /// </summary>
+    public const string LiteralV3RaceLaJolla = "http://terminology.hl7.org/CodeSystem/v3-Race#1332-6";
+
+    /// <summary>
     /// Literal for code: Pala
     /// </summary>
     public const string LiteralPala = "1333-4";
+
+    /// <summary>
+    /// Literal for code: V3RacePala
+    /// </summary>
+    public const string LiteralV3RacePala = "http://terminology.hl7.org/CodeSystem/v3-Race#1333-4";
 
     /// <summary>
     /// Literal for code: Pauma
@@ -9581,9 +10831,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPauma = "1334-2";
 
     /// <summary>
+    /// Literal for code: V3RacePauma
+    /// </summary>
+    public const string LiteralV3RacePauma = "http://terminology.hl7.org/CodeSystem/v3-Race#1334-2";
+
+    /// <summary>
     /// Literal for code: Pechanga
     /// </summary>
     public const string LiteralPechanga = "1335-9";
+
+    /// <summary>
+    /// Literal for code: V3RacePechanga
+    /// </summary>
+    public const string LiteralV3RacePechanga = "http://terminology.hl7.org/CodeSystem/v3-Race#1335-9";
 
     /// <summary>
     /// Literal for code: Soboba
@@ -9591,9 +10851,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSoboba = "1336-7";
 
     /// <summary>
+    /// Literal for code: V3RaceSoboba
+    /// </summary>
+    public const string LiteralV3RaceSoboba = "http://terminology.hl7.org/CodeSystem/v3-Race#1336-7";
+
+    /// <summary>
     /// Literal for code: TwentyNinePalms
     /// </summary>
     public const string LiteralTwentyNinePalms = "1337-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceTwentyNinePalms
+    /// </summary>
+    public const string LiteralV3RaceTwentyNinePalms = "http://terminology.hl7.org/CodeSystem/v3-Race#1337-5";
 
     /// <summary>
     /// Literal for code: Temecula
@@ -9601,9 +10871,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTemecula = "1338-3";
 
     /// <summary>
+    /// Literal for code: V3RaceTemecula
+    /// </summary>
+    public const string LiteralV3RaceTemecula = "http://terminology.hl7.org/CodeSystem/v3-Race#1338-3";
+
+    /// <summary>
     /// Literal for code: Lumbee
     /// </summary>
     public const string LiteralLumbee = "1340-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceLumbee
+    /// </summary>
+    public const string LiteralV3RaceLumbee = "http://terminology.hl7.org/CodeSystem/v3-Race#1340-9";
 
     /// <summary>
     /// Literal for code: Lummi
@@ -9611,9 +10891,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLummi = "1342-5";
 
     /// <summary>
+    /// Literal for code: V3RaceLummi
+    /// </summary>
+    public const string LiteralV3RaceLummi = "http://terminology.hl7.org/CodeSystem/v3-Race#1342-5";
+
+    /// <summary>
     /// Literal for code: Maidu
     /// </summary>
     public const string LiteralMaidu = "1344-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceMaidu
+    /// </summary>
+    public const string LiteralV3RaceMaidu = "http://terminology.hl7.org/CodeSystem/v3-Race#1344-1";
 
     /// <summary>
     /// Literal for code: MountainMaidu
@@ -9621,9 +10911,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMountainMaidu = "1345-8";
 
     /// <summary>
+    /// Literal for code: V3RaceMountainMaidu
+    /// </summary>
+    public const string LiteralV3RaceMountainMaidu = "http://terminology.hl7.org/CodeSystem/v3-Race#1345-8";
+
+    /// <summary>
     /// Literal for code: Nishinam
     /// </summary>
     public const string LiteralNishinam = "1346-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceNishinam
+    /// </summary>
+    public const string LiteralV3RaceNishinam = "http://terminology.hl7.org/CodeSystem/v3-Race#1346-6";
 
     /// <summary>
     /// Literal for code: Makah
@@ -9631,9 +10931,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMakah = "1348-2";
 
     /// <summary>
+    /// Literal for code: V3RaceMakah
+    /// </summary>
+    public const string LiteralV3RaceMakah = "http://terminology.hl7.org/CodeSystem/v3-Race#1348-2";
+
+    /// <summary>
     /// Literal for code: Maliseet
     /// </summary>
     public const string LiteralMaliseet = "1350-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceMaliseet
+    /// </summary>
+    public const string LiteralV3RaceMaliseet = "http://terminology.hl7.org/CodeSystem/v3-Race#1350-8";
 
     /// <summary>
     /// Literal for code: Mandan
@@ -9641,9 +10951,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMandan = "1352-4";
 
     /// <summary>
+    /// Literal for code: V3RaceMandan
+    /// </summary>
+    public const string LiteralV3RaceMandan = "http://terminology.hl7.org/CodeSystem/v3-Race#1352-4";
+
+    /// <summary>
     /// Literal for code: Mattaponi
     /// </summary>
     public const string LiteralMattaponi = "1354-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceMattaponi
+    /// </summary>
+    public const string LiteralV3RaceMattaponi = "http://terminology.hl7.org/CodeSystem/v3-Race#1354-0";
 
     /// <summary>
     /// Literal for code: Menominee
@@ -9651,9 +10971,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMenominee = "1356-5";
 
     /// <summary>
+    /// Literal for code: V3RaceMenominee
+    /// </summary>
+    public const string LiteralV3RaceMenominee = "http://terminology.hl7.org/CodeSystem/v3-Race#1356-5";
+
+    /// <summary>
     /// Literal for code: Miami
     /// </summary>
     public const string LiteralMiami = "1358-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceMiami
+    /// </summary>
+    public const string LiteralV3RaceMiami = "http://terminology.hl7.org/CodeSystem/v3-Race#1358-1";
 
     /// <summary>
     /// Literal for code: IllinoisMiami
@@ -9661,9 +10991,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIllinoisMiami = "1359-9";
 
     /// <summary>
+    /// Literal for code: V3RaceIllinoisMiami
+    /// </summary>
+    public const string LiteralV3RaceIllinoisMiami = "http://terminology.hl7.org/CodeSystem/v3-Race#1359-9";
+
+    /// <summary>
     /// Literal for code: IndianaMiami
     /// </summary>
     public const string LiteralIndianaMiami = "1360-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceIndianaMiami
+    /// </summary>
+    public const string LiteralV3RaceIndianaMiami = "http://terminology.hl7.org/CodeSystem/v3-Race#1360-7";
 
     /// <summary>
     /// Literal for code: OklahomaMiami
@@ -9671,9 +11011,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOklahomaMiami = "1361-5";
 
     /// <summary>
+    /// Literal for code: V3RaceOklahomaMiami
+    /// </summary>
+    public const string LiteralV3RaceOklahomaMiami = "http://terminology.hl7.org/CodeSystem/v3-Race#1361-5";
+
+    /// <summary>
     /// Literal for code: Miccosukee
     /// </summary>
     public const string LiteralMiccosukee = "1363-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceMiccosukee
+    /// </summary>
+    public const string LiteralV3RaceMiccosukee = "http://terminology.hl7.org/CodeSystem/v3-Race#1363-1";
 
     /// <summary>
     /// Literal for code: Micmac
@@ -9681,9 +11031,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicmac = "1365-6";
 
     /// <summary>
+    /// Literal for code: V3RaceMicmac
+    /// </summary>
+    public const string LiteralV3RaceMicmac = "http://terminology.hl7.org/CodeSystem/v3-Race#1365-6";
+
+    /// <summary>
     /// Literal for code: Aroostook
     /// </summary>
     public const string LiteralAroostook = "1366-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceAroostook
+    /// </summary>
+    public const string LiteralV3RaceAroostook = "http://terminology.hl7.org/CodeSystem/v3-Race#1366-4";
 
     /// <summary>
     /// Literal for code: MissionIndians
@@ -9691,9 +11051,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMissionIndians = "1368-0";
 
     /// <summary>
+    /// Literal for code: V3RaceMissionIndians
+    /// </summary>
+    public const string LiteralV3RaceMissionIndians = "http://terminology.hl7.org/CodeSystem/v3-Race#1368-0";
+
+    /// <summary>
     /// Literal for code: Miwok
     /// </summary>
     public const string LiteralMiwok = "1370-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceMiwok
+    /// </summary>
+    public const string LiteralV3RaceMiwok = "http://terminology.hl7.org/CodeSystem/v3-Race#1370-6";
 
     /// <summary>
     /// Literal for code: Modoc
@@ -9701,9 +11071,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralModoc = "1372-2";
 
     /// <summary>
+    /// Literal for code: V3RaceModoc
+    /// </summary>
+    public const string LiteralV3RaceModoc = "http://terminology.hl7.org/CodeSystem/v3-Race#1372-2";
+
+    /// <summary>
     /// Literal for code: Mohegan
     /// </summary>
     public const string LiteralMohegan = "1374-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceMohegan
+    /// </summary>
+    public const string LiteralV3RaceMohegan = "http://terminology.hl7.org/CodeSystem/v3-Race#1374-8";
 
     /// <summary>
     /// Literal for code: Mono
@@ -9711,9 +11091,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMono = "1376-3";
 
     /// <summary>
+    /// Literal for code: V3RaceMono
+    /// </summary>
+    public const string LiteralV3RaceMono = "http://terminology.hl7.org/CodeSystem/v3-Race#1376-3";
+
+    /// <summary>
     /// Literal for code: Nanticoke
     /// </summary>
     public const string LiteralNanticoke = "1378-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceNanticoke
+    /// </summary>
+    public const string LiteralV3RaceNanticoke = "http://terminology.hl7.org/CodeSystem/v3-Race#1378-9";
 
     /// <summary>
     /// Literal for code: Narragansett
@@ -9721,9 +11111,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNarragansett = "1380-5";
 
     /// <summary>
+    /// Literal for code: V3RaceNarragansett
+    /// </summary>
+    public const string LiteralV3RaceNarragansett = "http://terminology.hl7.org/CodeSystem/v3-Race#1380-5";
+
+    /// <summary>
     /// Literal for code: Navajo
     /// </summary>
     public const string LiteralNavajo = "1382-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceNavajo
+    /// </summary>
+    public const string LiteralV3RaceNavajo = "http://terminology.hl7.org/CodeSystem/v3-Race#1382-1";
 
     /// <summary>
     /// Literal for code: AlamoNavajo
@@ -9731,9 +11131,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlamoNavajo = "1383-9";
 
     /// <summary>
+    /// Literal for code: V3RaceAlamoNavajo
+    /// </summary>
+    public const string LiteralV3RaceAlamoNavajo = "http://terminology.hl7.org/CodeSystem/v3-Race#1383-9";
+
+    /// <summary>
     /// Literal for code: CanoncitoNavajo
     /// </summary>
     public const string LiteralCanoncitoNavajo = "1384-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceCanoncitoNavajo
+    /// </summary>
+    public const string LiteralV3RaceCanoncitoNavajo = "http://terminology.hl7.org/CodeSystem/v3-Race#1384-7";
 
     /// <summary>
     /// Literal for code: RamahNavajo
@@ -9741,9 +11151,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRamahNavajo = "1385-4";
 
     /// <summary>
+    /// Literal for code: V3RaceRamahNavajo
+    /// </summary>
+    public const string LiteralV3RaceRamahNavajo = "http://terminology.hl7.org/CodeSystem/v3-Race#1385-4";
+
+    /// <summary>
     /// Literal for code: NezPerce
     /// </summary>
     public const string LiteralNezPerce = "1387-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceNezPerce
+    /// </summary>
+    public const string LiteralV3RaceNezPerce = "http://terminology.hl7.org/CodeSystem/v3-Race#1387-0";
 
     /// <summary>
     /// Literal for code: Nomalaki
@@ -9751,9 +11171,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNomalaki = "1389-6";
 
     /// <summary>
+    /// Literal for code: V3RaceNomalaki
+    /// </summary>
+    public const string LiteralV3RaceNomalaki = "http://terminology.hl7.org/CodeSystem/v3-Race#1389-6";
+
+    /// <summary>
     /// Literal for code: NorthwestTribes
     /// </summary>
     public const string LiteralNorthwestTribes = "1391-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceNorthwestTribes
+    /// </summary>
+    public const string LiteralV3RaceNorthwestTribes = "http://terminology.hl7.org/CodeSystem/v3-Race#1391-2";
 
     /// <summary>
     /// Literal for code: Alsea
@@ -9761,9 +11191,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlsea = "1392-0";
 
     /// <summary>
+    /// Literal for code: V3RaceAlsea
+    /// </summary>
+    public const string LiteralV3RaceAlsea = "http://terminology.hl7.org/CodeSystem/v3-Race#1392-0";
+
+    /// <summary>
     /// Literal for code: Celilo
     /// </summary>
     public const string LiteralCelilo = "1393-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceCelilo
+    /// </summary>
+    public const string LiteralV3RaceCelilo = "http://terminology.hl7.org/CodeSystem/v3-Race#1393-8";
 
     /// <summary>
     /// Literal for code: Columbia
@@ -9771,9 +11211,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralColumbia = "1394-6";
 
     /// <summary>
+    /// Literal for code: V3RaceColumbia
+    /// </summary>
+    public const string LiteralV3RaceColumbia = "http://terminology.hl7.org/CodeSystem/v3-Race#1394-6";
+
+    /// <summary>
     /// Literal for code: Kalapuya
     /// </summary>
     public const string LiteralKalapuya = "1395-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceKalapuya
+    /// </summary>
+    public const string LiteralV3RaceKalapuya = "http://terminology.hl7.org/CodeSystem/v3-Race#1395-3";
 
     /// <summary>
     /// Literal for code: Molala
@@ -9781,9 +11231,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMolala = "1396-1";
 
     /// <summary>
+    /// Literal for code: V3RaceMolala
+    /// </summary>
+    public const string LiteralV3RaceMolala = "http://terminology.hl7.org/CodeSystem/v3-Race#1396-1";
+
+    /// <summary>
     /// Literal for code: Talakamish
     /// </summary>
     public const string LiteralTalakamish = "1397-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceTalakamish
+    /// </summary>
+    public const string LiteralV3RaceTalakamish = "http://terminology.hl7.org/CodeSystem/v3-Race#1397-9";
 
     /// <summary>
     /// Literal for code: Tenino
@@ -9791,9 +11251,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTenino = "1398-7";
 
     /// <summary>
+    /// Literal for code: V3RaceTenino
+    /// </summary>
+    public const string LiteralV3RaceTenino = "http://terminology.hl7.org/CodeSystem/v3-Race#1398-7";
+
+    /// <summary>
     /// Literal for code: Tillamook
     /// </summary>
     public const string LiteralTillamook = "1399-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceTillamook
+    /// </summary>
+    public const string LiteralV3RaceTillamook = "http://terminology.hl7.org/CodeSystem/v3-Race#1399-5";
 
     /// <summary>
     /// Literal for code: Wenatchee
@@ -9801,9 +11271,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWenatchee = "1400-1";
 
     /// <summary>
+    /// Literal for code: V3RaceWenatchee
+    /// </summary>
+    public const string LiteralV3RaceWenatchee = "http://terminology.hl7.org/CodeSystem/v3-Race#1400-1";
+
+    /// <summary>
     /// Literal for code: Yahooskin
     /// </summary>
     public const string LiteralYahooskin = "1401-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceYahooskin
+    /// </summary>
+    public const string LiteralV3RaceYahooskin = "http://terminology.hl7.org/CodeSystem/v3-Race#1401-9";
 
     /// <summary>
     /// Literal for code: Omaha
@@ -9811,9 +11291,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOmaha = "1403-5";
 
     /// <summary>
+    /// Literal for code: V3RaceOmaha
+    /// </summary>
+    public const string LiteralV3RaceOmaha = "http://terminology.hl7.org/CodeSystem/v3-Race#1403-5";
+
+    /// <summary>
     /// Literal for code: OregonAthabaskan
     /// </summary>
     public const string LiteralOregonAthabaskan = "1405-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceOregonAthabaskan
+    /// </summary>
+    public const string LiteralV3RaceOregonAthabaskan = "http://terminology.hl7.org/CodeSystem/v3-Race#1405-0";
 
     /// <summary>
     /// Literal for code: Osage
@@ -9821,9 +11311,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOsage = "1407-6";
 
     /// <summary>
+    /// Literal for code: V3RaceOsage
+    /// </summary>
+    public const string LiteralV3RaceOsage = "http://terminology.hl7.org/CodeSystem/v3-Race#1407-6";
+
+    /// <summary>
     /// Literal for code: OtoeMissouria
     /// </summary>
     public const string LiteralOtoeMissouria = "1409-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceOtoeMissouria
+    /// </summary>
+    public const string LiteralV3RaceOtoeMissouria = "http://terminology.hl7.org/CodeSystem/v3-Race#1409-2";
 
     /// <summary>
     /// Literal for code: Ottawa
@@ -9831,9 +11331,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOttawa = "1411-8";
 
     /// <summary>
+    /// Literal for code: V3RaceOttawa
+    /// </summary>
+    public const string LiteralV3RaceOttawa = "http://terminology.hl7.org/CodeSystem/v3-Race#1411-8";
+
+    /// <summary>
     /// Literal for code: BurtLakeOttawa
     /// </summary>
     public const string LiteralBurtLakeOttawa = "1412-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceBurtLakeOttawa
+    /// </summary>
+    public const string LiteralV3RaceBurtLakeOttawa = "http://terminology.hl7.org/CodeSystem/v3-Race#1412-6";
 
     /// <summary>
     /// Literal for code: MichiganOttawa
@@ -9841,9 +11351,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMichiganOttawa = "1413-4";
 
     /// <summary>
+    /// Literal for code: V3RaceMichiganOttawa
+    /// </summary>
+    public const string LiteralV3RaceMichiganOttawa = "http://terminology.hl7.org/CodeSystem/v3-Race#1413-4";
+
+    /// <summary>
     /// Literal for code: OklahomaOttawa
     /// </summary>
     public const string LiteralOklahomaOttawa = "1414-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceOklahomaOttawa
+    /// </summary>
+    public const string LiteralV3RaceOklahomaOttawa = "http://terminology.hl7.org/CodeSystem/v3-Race#1414-2";
 
     /// <summary>
     /// Literal for code: Paiute
@@ -9851,9 +11371,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPaiute = "1416-7";
 
     /// <summary>
+    /// Literal for code: V3RacePaiute
+    /// </summary>
+    public const string LiteralV3RacePaiute = "http://terminology.hl7.org/CodeSystem/v3-Race#1416-7";
+
+    /// <summary>
     /// Literal for code: Bishop
     /// </summary>
     public const string LiteralBishop = "1417-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceBishop
+    /// </summary>
+    public const string LiteralV3RaceBishop = "http://terminology.hl7.org/CodeSystem/v3-Race#1417-5";
 
     /// <summary>
     /// Literal for code: Bridgeport
@@ -9861,9 +11391,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBridgeport = "1418-3";
 
     /// <summary>
+    /// Literal for code: V3RaceBridgeport
+    /// </summary>
+    public const string LiteralV3RaceBridgeport = "http://terminology.hl7.org/CodeSystem/v3-Race#1418-3";
+
+    /// <summary>
     /// Literal for code: BurnsPaiute
     /// </summary>
     public const string LiteralBurnsPaiute = "1419-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceBurnsPaiute
+    /// </summary>
+    public const string LiteralV3RaceBurnsPaiute = "http://terminology.hl7.org/CodeSystem/v3-Race#1419-1";
 
     /// <summary>
     /// Literal for code: Cedarville
@@ -9871,9 +11411,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCedarville = "1420-9";
 
     /// <summary>
+    /// Literal for code: V3RaceCedarville
+    /// </summary>
+    public const string LiteralV3RaceCedarville = "http://terminology.hl7.org/CodeSystem/v3-Race#1420-9";
+
+    /// <summary>
     /// Literal for code: FortBidwell
     /// </summary>
     public const string LiteralFortBidwell = "1421-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceFortBidwell
+    /// </summary>
+    public const string LiteralV3RaceFortBidwell = "http://terminology.hl7.org/CodeSystem/v3-Race#1421-7";
 
     /// <summary>
     /// Literal for code: FortIndependence
@@ -9881,9 +11431,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFortIndependence = "1422-5";
 
     /// <summary>
+    /// Literal for code: V3RaceFortIndependence
+    /// </summary>
+    public const string LiteralV3RaceFortIndependence = "http://terminology.hl7.org/CodeSystem/v3-Race#1422-5";
+
+    /// <summary>
     /// Literal for code: Kaibab
     /// </summary>
     public const string LiteralKaibab = "1423-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceKaibab
+    /// </summary>
+    public const string LiteralV3RaceKaibab = "http://terminology.hl7.org/CodeSystem/v3-Race#1423-3";
 
     /// <summary>
     /// Literal for code: LasVegas
@@ -9891,9 +11451,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLasVegas = "1424-1";
 
     /// <summary>
+    /// Literal for code: V3RaceLasVegas
+    /// </summary>
+    public const string LiteralV3RaceLasVegas = "http://terminology.hl7.org/CodeSystem/v3-Race#1424-1";
+
+    /// <summary>
     /// Literal for code: LonePine
     /// </summary>
     public const string LiteralLonePine = "1425-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceLonePine
+    /// </summary>
+    public const string LiteralV3RaceLonePine = "http://terminology.hl7.org/CodeSystem/v3-Race#1425-8";
 
     /// <summary>
     /// Literal for code: Lovelock
@@ -9901,9 +11471,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLovelock = "1426-6";
 
     /// <summary>
+    /// Literal for code: V3RaceLovelock
+    /// </summary>
+    public const string LiteralV3RaceLovelock = "http://terminology.hl7.org/CodeSystem/v3-Race#1426-6";
+
+    /// <summary>
     /// Literal for code: MalheurPaiute
     /// </summary>
     public const string LiteralMalheurPaiute = "1427-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceMalheurPaiute
+    /// </summary>
+    public const string LiteralV3RaceMalheurPaiute = "http://terminology.hl7.org/CodeSystem/v3-Race#1427-4";
 
     /// <summary>
     /// Literal for code: Moapa
@@ -9911,9 +11491,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMoapa = "1428-2";
 
     /// <summary>
+    /// Literal for code: V3RaceMoapa
+    /// </summary>
+    public const string LiteralV3RaceMoapa = "http://terminology.hl7.org/CodeSystem/v3-Race#1428-2";
+
+    /// <summary>
     /// Literal for code: NorthernPaiute
     /// </summary>
     public const string LiteralNorthernPaiute = "1429-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceNorthernPaiute
+    /// </summary>
+    public const string LiteralV3RaceNorthernPaiute = "http://terminology.hl7.org/CodeSystem/v3-Race#1429-0";
 
     /// <summary>
     /// Literal for code: OwensValley
@@ -9921,9 +11511,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOwensValley = "1430-8";
 
     /// <summary>
+    /// Literal for code: V3RaceOwensValley
+    /// </summary>
+    public const string LiteralV3RaceOwensValley = "http://terminology.hl7.org/CodeSystem/v3-Race#1430-8";
+
+    /// <summary>
     /// Literal for code: PyramidLake
     /// </summary>
     public const string LiteralPyramidLake = "1431-6";
+
+    /// <summary>
+    /// Literal for code: V3RacePyramidLake
+    /// </summary>
+    public const string LiteralV3RacePyramidLake = "http://terminology.hl7.org/CodeSystem/v3-Race#1431-6";
 
     /// <summary>
     /// Literal for code: SanJuanSouthernPaiute
@@ -9931,9 +11531,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSanJuanSouthernPaiute = "1432-4";
 
     /// <summary>
+    /// Literal for code: V3RaceSanJuanSouthernPaiute
+    /// </summary>
+    public const string LiteralV3RaceSanJuanSouthernPaiute = "http://terminology.hl7.org/CodeSystem/v3-Race#1432-4";
+
+    /// <summary>
     /// Literal for code: SouthernPaiute
     /// </summary>
     public const string LiteralSouthernPaiute = "1433-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceSouthernPaiute
+    /// </summary>
+    public const string LiteralV3RaceSouthernPaiute = "http://terminology.hl7.org/CodeSystem/v3-Race#1433-2";
 
     /// <summary>
     /// Literal for code: SummitLake
@@ -9941,9 +11551,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSummitLake = "1434-0";
 
     /// <summary>
+    /// Literal for code: V3RaceSummitLake
+    /// </summary>
+    public const string LiteralV3RaceSummitLake = "http://terminology.hl7.org/CodeSystem/v3-Race#1434-0";
+
+    /// <summary>
     /// Literal for code: UtuUtuGwaituPaiute
     /// </summary>
     public const string LiteralUtuUtuGwaituPaiute = "1435-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceUtuUtuGwaituPaiute
+    /// </summary>
+    public const string LiteralV3RaceUtuUtuGwaituPaiute = "http://terminology.hl7.org/CodeSystem/v3-Race#1435-7";
 
     /// <summary>
     /// Literal for code: WalkerRiver
@@ -9951,9 +11571,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWalkerRiver = "1436-5";
 
     /// <summary>
+    /// Literal for code: V3RaceWalkerRiver
+    /// </summary>
+    public const string LiteralV3RaceWalkerRiver = "http://terminology.hl7.org/CodeSystem/v3-Race#1436-5";
+
+    /// <summary>
     /// Literal for code: YeringtonPaiute
     /// </summary>
     public const string LiteralYeringtonPaiute = "1437-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceYeringtonPaiute
+    /// </summary>
+    public const string LiteralV3RaceYeringtonPaiute = "http://terminology.hl7.org/CodeSystem/v3-Race#1437-3";
 
     /// <summary>
     /// Literal for code: Pamunkey
@@ -9961,9 +11591,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPamunkey = "1439-9";
 
     /// <summary>
+    /// Literal for code: V3RacePamunkey
+    /// </summary>
+    public const string LiteralV3RacePamunkey = "http://terminology.hl7.org/CodeSystem/v3-Race#1439-9";
+
+    /// <summary>
     /// Literal for code: Passamaquoddy
     /// </summary>
     public const string LiteralPassamaquoddy = "1441-5";
+
+    /// <summary>
+    /// Literal for code: V3RacePassamaquoddy
+    /// </summary>
+    public const string LiteralV3RacePassamaquoddy = "http://terminology.hl7.org/CodeSystem/v3-Race#1441-5";
 
     /// <summary>
     /// Literal for code: IndianTownship
@@ -9971,9 +11611,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIndianTownship = "1442-3";
 
     /// <summary>
+    /// Literal for code: V3RaceIndianTownship
+    /// </summary>
+    public const string LiteralV3RaceIndianTownship = "http://terminology.hl7.org/CodeSystem/v3-Race#1442-3";
+
+    /// <summary>
     /// Literal for code: PleasantPointPassamaquoddy
     /// </summary>
     public const string LiteralPleasantPointPassamaquoddy = "1443-1";
+
+    /// <summary>
+    /// Literal for code: V3RacePleasantPointPassamaquoddy
+    /// </summary>
+    public const string LiteralV3RacePleasantPointPassamaquoddy = "http://terminology.hl7.org/CodeSystem/v3-Race#1443-1";
 
     /// <summary>
     /// Literal for code: Pawnee
@@ -9981,9 +11631,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPawnee = "1445-6";
 
     /// <summary>
+    /// Literal for code: V3RacePawnee
+    /// </summary>
+    public const string LiteralV3RacePawnee = "http://terminology.hl7.org/CodeSystem/v3-Race#1445-6";
+
+    /// <summary>
     /// Literal for code: OklahomaPawnee
     /// </summary>
     public const string LiteralOklahomaPawnee = "1446-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceOklahomaPawnee
+    /// </summary>
+    public const string LiteralV3RaceOklahomaPawnee = "http://terminology.hl7.org/CodeSystem/v3-Race#1446-4";
 
     /// <summary>
     /// Literal for code: Penobscot
@@ -9991,9 +11651,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPenobscot = "1448-0";
 
     /// <summary>
+    /// Literal for code: V3RacePenobscot
+    /// </summary>
+    public const string LiteralV3RacePenobscot = "http://terminology.hl7.org/CodeSystem/v3-Race#1448-0";
+
+    /// <summary>
     /// Literal for code: Peoria
     /// </summary>
     public const string LiteralPeoria = "1450-6";
+
+    /// <summary>
+    /// Literal for code: V3RacePeoria
+    /// </summary>
+    public const string LiteralV3RacePeoria = "http://terminology.hl7.org/CodeSystem/v3-Race#1450-6";
 
     /// <summary>
     /// Literal for code: OklahomaPeoria
@@ -10001,9 +11671,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOklahomaPeoria = "1451-4";
 
     /// <summary>
+    /// Literal for code: V3RaceOklahomaPeoria
+    /// </summary>
+    public const string LiteralV3RaceOklahomaPeoria = "http://terminology.hl7.org/CodeSystem/v3-Race#1451-4";
+
+    /// <summary>
     /// Literal for code: Pequot
     /// </summary>
     public const string LiteralPequot = "1453-0";
+
+    /// <summary>
+    /// Literal for code: V3RacePequot
+    /// </summary>
+    public const string LiteralV3RacePequot = "http://terminology.hl7.org/CodeSystem/v3-Race#1453-0";
 
     /// <summary>
     /// Literal for code: MarshantucketPequot
@@ -10011,9 +11691,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMarshantucketPequot = "1454-8";
 
     /// <summary>
+    /// Literal for code: V3RaceMarshantucketPequot
+    /// </summary>
+    public const string LiteralV3RaceMarshantucketPequot = "http://terminology.hl7.org/CodeSystem/v3-Race#1454-8";
+
+    /// <summary>
     /// Literal for code: Pima
     /// </summary>
     public const string LiteralPima = "1456-3";
+
+    /// <summary>
+    /// Literal for code: V3RacePima
+    /// </summary>
+    public const string LiteralV3RacePima = "http://terminology.hl7.org/CodeSystem/v3-Race#1456-3";
 
     /// <summary>
     /// Literal for code: GilaRiverPimaMaricopa
@@ -10021,9 +11711,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGilaRiverPimaMaricopa = "1457-1";
 
     /// <summary>
+    /// Literal for code: V3RaceGilaRiverPimaMaricopa
+    /// </summary>
+    public const string LiteralV3RaceGilaRiverPimaMaricopa = "http://terminology.hl7.org/CodeSystem/v3-Race#1457-1";
+
+    /// <summary>
     /// Literal for code: SaltRiverPimaMaricopa
     /// </summary>
     public const string LiteralSaltRiverPimaMaricopa = "1458-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceSaltRiverPimaMaricopa
+    /// </summary>
+    public const string LiteralV3RaceSaltRiverPimaMaricopa = "http://terminology.hl7.org/CodeSystem/v3-Race#1458-9";
 
     /// <summary>
     /// Literal for code: Piscataway
@@ -10031,9 +11731,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPiscataway = "1460-5";
 
     /// <summary>
+    /// Literal for code: V3RacePiscataway
+    /// </summary>
+    public const string LiteralV3RacePiscataway = "http://terminology.hl7.org/CodeSystem/v3-Race#1460-5";
+
+    /// <summary>
     /// Literal for code: PitRiver
     /// </summary>
     public const string LiteralPitRiver = "1462-1";
+
+    /// <summary>
+    /// Literal for code: V3RacePitRiver
+    /// </summary>
+    public const string LiteralV3RacePitRiver = "http://terminology.hl7.org/CodeSystem/v3-Race#1462-1";
 
     /// <summary>
     /// Literal for code: Pomo
@@ -10041,9 +11751,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPomo = "1464-7";
 
     /// <summary>
+    /// Literal for code: V3RacePomo
+    /// </summary>
+    public const string LiteralV3RacePomo = "http://terminology.hl7.org/CodeSystem/v3-Race#1464-7";
+
+    /// <summary>
     /// Literal for code: CentralPomo
     /// </summary>
     public const string LiteralCentralPomo = "1465-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceCentralPomo
+    /// </summary>
+    public const string LiteralV3RaceCentralPomo = "http://terminology.hl7.org/CodeSystem/v3-Race#1465-4";
 
     /// <summary>
     /// Literal for code: DryCreek
@@ -10051,9 +11771,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDryCreek = "1466-2";
 
     /// <summary>
+    /// Literal for code: V3RaceDryCreek
+    /// </summary>
+    public const string LiteralV3RaceDryCreek = "http://terminology.hl7.org/CodeSystem/v3-Race#1466-2";
+
+    /// <summary>
     /// Literal for code: EasternPomo
     /// </summary>
     public const string LiteralEasternPomo = "1467-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceEasternPomo
+    /// </summary>
+    public const string LiteralV3RaceEasternPomo = "http://terminology.hl7.org/CodeSystem/v3-Race#1467-0";
 
     /// <summary>
     /// Literal for code: Kashia
@@ -10061,9 +11791,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKashia = "1468-8";
 
     /// <summary>
+    /// Literal for code: V3RaceKashia
+    /// </summary>
+    public const string LiteralV3RaceKashia = "http://terminology.hl7.org/CodeSystem/v3-Race#1468-8";
+
+    /// <summary>
     /// Literal for code: NorthernPomo
     /// </summary>
     public const string LiteralNorthernPomo = "1469-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceNorthernPomo
+    /// </summary>
+    public const string LiteralV3RaceNorthernPomo = "http://terminology.hl7.org/CodeSystem/v3-Race#1469-6";
 
     /// <summary>
     /// Literal for code: ScottsValley
@@ -10071,9 +11811,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralScottsValley = "1470-4";
 
     /// <summary>
+    /// Literal for code: V3RaceScottsValley
+    /// </summary>
+    public const string LiteralV3RaceScottsValley = "http://terminology.hl7.org/CodeSystem/v3-Race#1470-4";
+
+    /// <summary>
     /// Literal for code: Stonyford
     /// </summary>
     public const string LiteralStonyford = "1471-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceStonyford
+    /// </summary>
+    public const string LiteralV3RaceStonyford = "http://terminology.hl7.org/CodeSystem/v3-Race#1471-2";
 
     /// <summary>
     /// Literal for code: SulphurBank
@@ -10081,9 +11831,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSulphurBank = "1472-0";
 
     /// <summary>
+    /// Literal for code: V3RaceSulphurBank
+    /// </summary>
+    public const string LiteralV3RaceSulphurBank = "http://terminology.hl7.org/CodeSystem/v3-Race#1472-0";
+
+    /// <summary>
     /// Literal for code: Ponca
     /// </summary>
     public const string LiteralPonca = "1474-6";
+
+    /// <summary>
+    /// Literal for code: V3RacePonca
+    /// </summary>
+    public const string LiteralV3RacePonca = "http://terminology.hl7.org/CodeSystem/v3-Race#1474-6";
 
     /// <summary>
     /// Literal for code: NebraskaPonca
@@ -10091,9 +11851,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNebraskaPonca = "1475-3";
 
     /// <summary>
+    /// Literal for code: V3RaceNebraskaPonca
+    /// </summary>
+    public const string LiteralV3RaceNebraskaPonca = "http://terminology.hl7.org/CodeSystem/v3-Race#1475-3";
+
+    /// <summary>
     /// Literal for code: OklahomaPonca
     /// </summary>
     public const string LiteralOklahomaPonca = "1476-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceOklahomaPonca
+    /// </summary>
+    public const string LiteralV3RaceOklahomaPonca = "http://terminology.hl7.org/CodeSystem/v3-Race#1476-1";
 
     /// <summary>
     /// Literal for code: Potawatomi
@@ -10101,9 +11871,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPotawatomi = "1478-7";
 
     /// <summary>
+    /// Literal for code: V3RacePotawatomi
+    /// </summary>
+    public const string LiteralV3RacePotawatomi = "http://terminology.hl7.org/CodeSystem/v3-Race#1478-7";
+
+    /// <summary>
     /// Literal for code: CitizenBandPotawatomi
     /// </summary>
     public const string LiteralCitizenBandPotawatomi = "1479-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceCitizenBandPotawatomi
+    /// </summary>
+    public const string LiteralV3RaceCitizenBandPotawatomi = "http://terminology.hl7.org/CodeSystem/v3-Race#1479-5";
 
     /// <summary>
     /// Literal for code: ForestCounty
@@ -10111,9 +11891,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralForestCounty = "1480-3";
 
     /// <summary>
+    /// Literal for code: V3RaceForestCounty
+    /// </summary>
+    public const string LiteralV3RaceForestCounty = "http://terminology.hl7.org/CodeSystem/v3-Race#1480-3";
+
+    /// <summary>
     /// Literal for code: Hannahville
     /// </summary>
     public const string LiteralHannahville = "1481-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceHannahville
+    /// </summary>
+    public const string LiteralV3RaceHannahville = "http://terminology.hl7.org/CodeSystem/v3-Race#1481-1";
 
     /// <summary>
     /// Literal for code: HuronPotawatomi
@@ -10121,9 +11911,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHuronPotawatomi = "1482-9";
 
     /// <summary>
+    /// Literal for code: V3RaceHuronPotawatomi
+    /// </summary>
+    public const string LiteralV3RaceHuronPotawatomi = "http://terminology.hl7.org/CodeSystem/v3-Race#1482-9";
+
+    /// <summary>
     /// Literal for code: PokagonPotawatomi
     /// </summary>
     public const string LiteralPokagonPotawatomi = "1483-7";
+
+    /// <summary>
+    /// Literal for code: V3RacePokagonPotawatomi
+    /// </summary>
+    public const string LiteralV3RacePokagonPotawatomi = "http://terminology.hl7.org/CodeSystem/v3-Race#1483-7";
 
     /// <summary>
     /// Literal for code: PrairieBand
@@ -10131,9 +11931,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrairieBand = "1484-5";
 
     /// <summary>
+    /// Literal for code: V3RacePrairieBand
+    /// </summary>
+    public const string LiteralV3RacePrairieBand = "http://terminology.hl7.org/CodeSystem/v3-Race#1484-5";
+
+    /// <summary>
     /// Literal for code: WisconsinPotawatomi
     /// </summary>
     public const string LiteralWisconsinPotawatomi = "1485-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceWisconsinPotawatomi
+    /// </summary>
+    public const string LiteralV3RaceWisconsinPotawatomi = "http://terminology.hl7.org/CodeSystem/v3-Race#1485-2";
 
     /// <summary>
     /// Literal for code: Powhatan
@@ -10141,9 +11951,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPowhatan = "1487-8";
 
     /// <summary>
+    /// Literal for code: V3RacePowhatan
+    /// </summary>
+    public const string LiteralV3RacePowhatan = "http://terminology.hl7.org/CodeSystem/v3-Race#1487-8";
+
+    /// <summary>
     /// Literal for code: Pueblo
     /// </summary>
     public const string LiteralPueblo = "1489-4";
+
+    /// <summary>
+    /// Literal for code: V3RacePueblo
+    /// </summary>
+    public const string LiteralV3RacePueblo = "http://terminology.hl7.org/CodeSystem/v3-Race#1489-4";
 
     /// <summary>
     /// Literal for code: Acoma
@@ -10151,9 +11971,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcoma = "1490-2";
 
     /// <summary>
+    /// Literal for code: V3RaceAcoma
+    /// </summary>
+    public const string LiteralV3RaceAcoma = "http://terminology.hl7.org/CodeSystem/v3-Race#1490-2";
+
+    /// <summary>
     /// Literal for code: ArizonaTewa
     /// </summary>
     public const string LiteralArizonaTewa = "1491-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceArizonaTewa
+    /// </summary>
+    public const string LiteralV3RaceArizonaTewa = "http://terminology.hl7.org/CodeSystem/v3-Race#1491-0";
 
     /// <summary>
     /// Literal for code: Cochiti
@@ -10161,9 +11991,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCochiti = "1492-8";
 
     /// <summary>
+    /// Literal for code: V3RaceCochiti
+    /// </summary>
+    public const string LiteralV3RaceCochiti = "http://terminology.hl7.org/CodeSystem/v3-Race#1492-8";
+
+    /// <summary>
     /// Literal for code: Hopi
     /// </summary>
     public const string LiteralHopi = "1493-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceHopi
+    /// </summary>
+    public const string LiteralV3RaceHopi = "http://terminology.hl7.org/CodeSystem/v3-Race#1493-6";
 
     /// <summary>
     /// Literal for code: Isleta
@@ -10171,9 +12011,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIsleta = "1494-4";
 
     /// <summary>
+    /// Literal for code: V3RaceIsleta
+    /// </summary>
+    public const string LiteralV3RaceIsleta = "http://terminology.hl7.org/CodeSystem/v3-Race#1494-4";
+
+    /// <summary>
     /// Literal for code: Jemez
     /// </summary>
     public const string LiteralJemez = "1495-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceJemez
+    /// </summary>
+    public const string LiteralV3RaceJemez = "http://terminology.hl7.org/CodeSystem/v3-Race#1495-1";
 
     /// <summary>
     /// Literal for code: Keres
@@ -10181,9 +12031,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKeres = "1496-9";
 
     /// <summary>
+    /// Literal for code: V3RaceKeres
+    /// </summary>
+    public const string LiteralV3RaceKeres = "http://terminology.hl7.org/CodeSystem/v3-Race#1496-9";
+
+    /// <summary>
     /// Literal for code: Laguna
     /// </summary>
     public const string LiteralLaguna = "1497-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceLaguna
+    /// </summary>
+    public const string LiteralV3RaceLaguna = "http://terminology.hl7.org/CodeSystem/v3-Race#1497-7";
 
     /// <summary>
     /// Literal for code: Nambe
@@ -10191,9 +12051,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNambe = "1498-5";
 
     /// <summary>
+    /// Literal for code: V3RaceNambe
+    /// </summary>
+    public const string LiteralV3RaceNambe = "http://terminology.hl7.org/CodeSystem/v3-Race#1498-5";
+
+    /// <summary>
     /// Literal for code: Picuris
     /// </summary>
     public const string LiteralPicuris = "1499-3";
+
+    /// <summary>
+    /// Literal for code: V3RacePicuris
+    /// </summary>
+    public const string LiteralV3RacePicuris = "http://terminology.hl7.org/CodeSystem/v3-Race#1499-3";
 
     /// <summary>
     /// Literal for code: Piro
@@ -10201,9 +12071,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPiro = "1500-8";
 
     /// <summary>
+    /// Literal for code: V3RacePiro
+    /// </summary>
+    public const string LiteralV3RacePiro = "http://terminology.hl7.org/CodeSystem/v3-Race#1500-8";
+
+    /// <summary>
     /// Literal for code: Pojoaque
     /// </summary>
     public const string LiteralPojoaque = "1501-6";
+
+    /// <summary>
+    /// Literal for code: V3RacePojoaque
+    /// </summary>
+    public const string LiteralV3RacePojoaque = "http://terminology.hl7.org/CodeSystem/v3-Race#1501-6";
 
     /// <summary>
     /// Literal for code: SanFelipe
@@ -10211,9 +12091,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSanFelipe = "1502-4";
 
     /// <summary>
+    /// Literal for code: V3RaceSanFelipe
+    /// </summary>
+    public const string LiteralV3RaceSanFelipe = "http://terminology.hl7.org/CodeSystem/v3-Race#1502-4";
+
+    /// <summary>
     /// Literal for code: SanIldefonso
     /// </summary>
     public const string LiteralSanIldefonso = "1503-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceSanIldefonso
+    /// </summary>
+    public const string LiteralV3RaceSanIldefonso = "http://terminology.hl7.org/CodeSystem/v3-Race#1503-2";
 
     /// <summary>
     /// Literal for code: SanJuanPueblo
@@ -10221,9 +12111,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSanJuanPueblo = "1504-0";
 
     /// <summary>
+    /// Literal for code: V3RaceSanJuanPueblo
+    /// </summary>
+    public const string LiteralV3RaceSanJuanPueblo = "http://terminology.hl7.org/CodeSystem/v3-Race#1504-0";
+
+    /// <summary>
     /// Literal for code: SanJuanDe
     /// </summary>
     public const string LiteralSanJuanDe = "1505-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceSanJuanDe
+    /// </summary>
+    public const string LiteralV3RaceSanJuanDe = "http://terminology.hl7.org/CodeSystem/v3-Race#1505-7";
 
     /// <summary>
     /// Literal for code: SanJuan
@@ -10231,9 +12131,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSanJuan = "1506-5";
 
     /// <summary>
+    /// Literal for code: V3RaceSanJuan
+    /// </summary>
+    public const string LiteralV3RaceSanJuan = "http://terminology.hl7.org/CodeSystem/v3-Race#1506-5";
+
+    /// <summary>
     /// Literal for code: Sandia
     /// </summary>
     public const string LiteralSandia = "1507-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceSandia
+    /// </summary>
+    public const string LiteralV3RaceSandia = "http://terminology.hl7.org/CodeSystem/v3-Race#1507-3";
 
     /// <summary>
     /// Literal for code: SantaAna
@@ -10241,9 +12151,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSantaAna = "1508-1";
 
     /// <summary>
+    /// Literal for code: V3RaceSantaAna
+    /// </summary>
+    public const string LiteralV3RaceSantaAna = "http://terminology.hl7.org/CodeSystem/v3-Race#1508-1";
+
+    /// <summary>
     /// Literal for code: SantaClara
     /// </summary>
     public const string LiteralSantaClara = "1509-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceSantaClara
+    /// </summary>
+    public const string LiteralV3RaceSantaClara = "http://terminology.hl7.org/CodeSystem/v3-Race#1509-9";
 
     /// <summary>
     /// Literal for code: SantoDomingo
@@ -10251,9 +12171,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSantoDomingo = "1510-7";
 
     /// <summary>
+    /// Literal for code: V3RaceSantoDomingo
+    /// </summary>
+    public const string LiteralV3RaceSantoDomingo = "http://terminology.hl7.org/CodeSystem/v3-Race#1510-7";
+
+    /// <summary>
     /// Literal for code: Taos
     /// </summary>
     public const string LiteralTaos = "1511-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceTaos
+    /// </summary>
+    public const string LiteralV3RaceTaos = "http://terminology.hl7.org/CodeSystem/v3-Race#1511-5";
 
     /// <summary>
     /// Literal for code: Tesuque
@@ -10261,9 +12191,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTesuque = "1512-3";
 
     /// <summary>
+    /// Literal for code: V3RaceTesuque
+    /// </summary>
+    public const string LiteralV3RaceTesuque = "http://terminology.hl7.org/CodeSystem/v3-Race#1512-3";
+
+    /// <summary>
     /// Literal for code: Tewa
     /// </summary>
     public const string LiteralTewa = "1513-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceTewa
+    /// </summary>
+    public const string LiteralV3RaceTewa = "http://terminology.hl7.org/CodeSystem/v3-Race#1513-1";
 
     /// <summary>
     /// Literal for code: Tigua
@@ -10271,9 +12211,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTigua = "1514-9";
 
     /// <summary>
+    /// Literal for code: V3RaceTigua
+    /// </summary>
+    public const string LiteralV3RaceTigua = "http://terminology.hl7.org/CodeSystem/v3-Race#1514-9";
+
+    /// <summary>
     /// Literal for code: Zia
     /// </summary>
     public const string LiteralZia = "1515-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceZia
+    /// </summary>
+    public const string LiteralV3RaceZia = "http://terminology.hl7.org/CodeSystem/v3-Race#1515-6";
 
     /// <summary>
     /// Literal for code: Zuni
@@ -10281,9 +12231,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralZuni = "1516-4";
 
     /// <summary>
+    /// Literal for code: V3RaceZuni
+    /// </summary>
+    public const string LiteralV3RaceZuni = "http://terminology.hl7.org/CodeSystem/v3-Race#1516-4";
+
+    /// <summary>
     /// Literal for code: PugetSoundSalish
     /// </summary>
     public const string LiteralPugetSoundSalish = "1518-0";
+
+    /// <summary>
+    /// Literal for code: V3RacePugetSoundSalish
+    /// </summary>
+    public const string LiteralV3RacePugetSoundSalish = "http://terminology.hl7.org/CodeSystem/v3-Race#1518-0";
 
     /// <summary>
     /// Literal for code: Duwamish
@@ -10291,9 +12251,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDuwamish = "1519-8";
 
     /// <summary>
+    /// Literal for code: V3RaceDuwamish
+    /// </summary>
+    public const string LiteralV3RaceDuwamish = "http://terminology.hl7.org/CodeSystem/v3-Race#1519-8";
+
+    /// <summary>
     /// Literal for code: Kikiallus
     /// </summary>
     public const string LiteralKikiallus = "1520-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceKikiallus
+    /// </summary>
+    public const string LiteralV3RaceKikiallus = "http://terminology.hl7.org/CodeSystem/v3-Race#1520-6";
 
     /// <summary>
     /// Literal for code: LowerSkagit
@@ -10301,9 +12271,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLowerSkagit = "1521-4";
 
     /// <summary>
+    /// Literal for code: V3RaceLowerSkagit
+    /// </summary>
+    public const string LiteralV3RaceLowerSkagit = "http://terminology.hl7.org/CodeSystem/v3-Race#1521-4";
+
+    /// <summary>
     /// Literal for code: Muckleshoot
     /// </summary>
     public const string LiteralMuckleshoot = "1522-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceMuckleshoot
+    /// </summary>
+    public const string LiteralV3RaceMuckleshoot = "http://terminology.hl7.org/CodeSystem/v3-Race#1522-2";
 
     /// <summary>
     /// Literal for code: Nisqually
@@ -10311,9 +12291,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNisqually = "1523-0";
 
     /// <summary>
+    /// Literal for code: V3RaceNisqually
+    /// </summary>
+    public const string LiteralV3RaceNisqually = "http://terminology.hl7.org/CodeSystem/v3-Race#1523-0";
+
+    /// <summary>
     /// Literal for code: Nooksack
     /// </summary>
     public const string LiteralNooksack = "1524-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceNooksack
+    /// </summary>
+    public const string LiteralV3RaceNooksack = "http://terminology.hl7.org/CodeSystem/v3-Race#1524-8";
 
     /// <summary>
     /// Literal for code: PortMadison
@@ -10321,9 +12311,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPortMadison = "1525-5";
 
     /// <summary>
+    /// Literal for code: V3RacePortMadison
+    /// </summary>
+    public const string LiteralV3RacePortMadison = "http://terminology.hl7.org/CodeSystem/v3-Race#1525-5";
+
+    /// <summary>
     /// Literal for code: Puyallup
     /// </summary>
     public const string LiteralPuyallup = "1526-3";
+
+    /// <summary>
+    /// Literal for code: V3RacePuyallup
+    /// </summary>
+    public const string LiteralV3RacePuyallup = "http://terminology.hl7.org/CodeSystem/v3-Race#1526-3";
 
     /// <summary>
     /// Literal for code: Samish
@@ -10331,9 +12331,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSamish = "1527-1";
 
     /// <summary>
+    /// Literal for code: V3RaceSamish
+    /// </summary>
+    public const string LiteralV3RaceSamish = "http://terminology.hl7.org/CodeSystem/v3-Race#1527-1";
+
+    /// <summary>
     /// Literal for code: SaukSuiattle
     /// </summary>
     public const string LiteralSaukSuiattle = "1528-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceSaukSuiattle
+    /// </summary>
+    public const string LiteralV3RaceSaukSuiattle = "http://terminology.hl7.org/CodeSystem/v3-Race#1528-9";
 
     /// <summary>
     /// Literal for code: Skokomish
@@ -10341,9 +12351,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSkokomish = "1529-7";
 
     /// <summary>
+    /// Literal for code: V3RaceSkokomish
+    /// </summary>
+    public const string LiteralV3RaceSkokomish = "http://terminology.hl7.org/CodeSystem/v3-Race#1529-7";
+
+    /// <summary>
     /// Literal for code: Skykomish
     /// </summary>
     public const string LiteralSkykomish = "1530-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceSkykomish
+    /// </summary>
+    public const string LiteralV3RaceSkykomish = "http://terminology.hl7.org/CodeSystem/v3-Race#1530-5";
 
     /// <summary>
     /// Literal for code: Snohomish
@@ -10351,9 +12371,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSnohomish = "1531-3";
 
     /// <summary>
+    /// Literal for code: V3RaceSnohomish
+    /// </summary>
+    public const string LiteralV3RaceSnohomish = "http://terminology.hl7.org/CodeSystem/v3-Race#1531-3";
+
+    /// <summary>
     /// Literal for code: Snoqualmie
     /// </summary>
     public const string LiteralSnoqualmie = "1532-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceSnoqualmie
+    /// </summary>
+    public const string LiteralV3RaceSnoqualmie = "http://terminology.hl7.org/CodeSystem/v3-Race#1532-1";
 
     /// <summary>
     /// Literal for code: SquaxinIsland
@@ -10361,9 +12391,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSquaxinIsland = "1533-9";
 
     /// <summary>
+    /// Literal for code: V3RaceSquaxinIsland
+    /// </summary>
+    public const string LiteralV3RaceSquaxinIsland = "http://terminology.hl7.org/CodeSystem/v3-Race#1533-9";
+
+    /// <summary>
     /// Literal for code: Steilacoom
     /// </summary>
     public const string LiteralSteilacoom = "1534-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceSteilacoom
+    /// </summary>
+    public const string LiteralV3RaceSteilacoom = "http://terminology.hl7.org/CodeSystem/v3-Race#1534-7";
 
     /// <summary>
     /// Literal for code: Stillaguamish
@@ -10371,9 +12411,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStillaguamish = "1535-4";
 
     /// <summary>
+    /// Literal for code: V3RaceStillaguamish
+    /// </summary>
+    public const string LiteralV3RaceStillaguamish = "http://terminology.hl7.org/CodeSystem/v3-Race#1535-4";
+
+    /// <summary>
     /// Literal for code: Suquamish
     /// </summary>
     public const string LiteralSuquamish = "1536-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceSuquamish
+    /// </summary>
+    public const string LiteralV3RaceSuquamish = "http://terminology.hl7.org/CodeSystem/v3-Race#1536-2";
 
     /// <summary>
     /// Literal for code: Swinomish
@@ -10381,9 +12431,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSwinomish = "1537-0";
 
     /// <summary>
+    /// Literal for code: V3RaceSwinomish
+    /// </summary>
+    public const string LiteralV3RaceSwinomish = "http://terminology.hl7.org/CodeSystem/v3-Race#1537-0";
+
+    /// <summary>
     /// Literal for code: Tulalip
     /// </summary>
     public const string LiteralTulalip = "1538-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceTulalip
+    /// </summary>
+    public const string LiteralV3RaceTulalip = "http://terminology.hl7.org/CodeSystem/v3-Race#1538-8";
 
     /// <summary>
     /// Literal for code: UpperSkagit
@@ -10391,9 +12451,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUpperSkagit = "1539-6";
 
     /// <summary>
+    /// Literal for code: V3RaceUpperSkagit
+    /// </summary>
+    public const string LiteralV3RaceUpperSkagit = "http://terminology.hl7.org/CodeSystem/v3-Race#1539-6";
+
+    /// <summary>
     /// Literal for code: Quapaw
     /// </summary>
     public const string LiteralQuapaw = "1541-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceQuapaw
+    /// </summary>
+    public const string LiteralV3RaceQuapaw = "http://terminology.hl7.org/CodeSystem/v3-Race#1541-2";
 
     /// <summary>
     /// Literal for code: Quinault
@@ -10401,9 +12471,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralQuinault = "1543-8";
 
     /// <summary>
+    /// Literal for code: V3RaceQuinault
+    /// </summary>
+    public const string LiteralV3RaceQuinault = "http://terminology.hl7.org/CodeSystem/v3-Race#1543-8";
+
+    /// <summary>
     /// Literal for code: Rappahannock
     /// </summary>
     public const string LiteralRappahannock = "1545-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceRappahannock
+    /// </summary>
+    public const string LiteralV3RaceRappahannock = "http://terminology.hl7.org/CodeSystem/v3-Race#1545-3";
 
     /// <summary>
     /// Literal for code: RenoSparks
@@ -10411,9 +12491,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRenoSparks = "1547-9";
 
     /// <summary>
+    /// Literal for code: V3RaceRenoSparks
+    /// </summary>
+    public const string LiteralV3RaceRenoSparks = "http://terminology.hl7.org/CodeSystem/v3-Race#1547-9";
+
+    /// <summary>
     /// Literal for code: RoundValley
     /// </summary>
     public const string LiteralRoundValley = "1549-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceRoundValley
+    /// </summary>
+    public const string LiteralV3RaceRoundValley = "http://terminology.hl7.org/CodeSystem/v3-Race#1549-5";
 
     /// <summary>
     /// Literal for code: SacAndFox
@@ -10421,9 +12511,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSacAndFox = "1551-1";
 
     /// <summary>
+    /// Literal for code: V3RaceSacAndFox
+    /// </summary>
+    public const string LiteralV3RaceSacAndFox = "http://terminology.hl7.org/CodeSystem/v3-Race#1551-1";
+
+    /// <summary>
     /// Literal for code: IowaSacAndFox
     /// </summary>
     public const string LiteralIowaSacAndFox = "1552-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceIowaSacAndFox
+    /// </summary>
+    public const string LiteralV3RaceIowaSacAndFox = "http://terminology.hl7.org/CodeSystem/v3-Race#1552-9";
 
     /// <summary>
     /// Literal for code: MissouriSacAndFox
@@ -10431,9 +12531,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMissouriSacAndFox = "1553-7";
 
     /// <summary>
+    /// Literal for code: V3RaceMissouriSacAndFox
+    /// </summary>
+    public const string LiteralV3RaceMissouriSacAndFox = "http://terminology.hl7.org/CodeSystem/v3-Race#1553-7";
+
+    /// <summary>
     /// Literal for code: OklahomaSacAndFox
     /// </summary>
     public const string LiteralOklahomaSacAndFox = "1554-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceOklahomaSacAndFox
+    /// </summary>
+    public const string LiteralV3RaceOklahomaSacAndFox = "http://terminology.hl7.org/CodeSystem/v3-Race#1554-5";
 
     /// <summary>
     /// Literal for code: Salinan
@@ -10441,9 +12551,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSalinan = "1556-0";
 
     /// <summary>
+    /// Literal for code: V3RaceSalinan
+    /// </summary>
+    public const string LiteralV3RaceSalinan = "http://terminology.hl7.org/CodeSystem/v3-Race#1556-0";
+
+    /// <summary>
     /// Literal for code: Salish
     /// </summary>
     public const string LiteralSalish = "1558-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceSalish
+    /// </summary>
+    public const string LiteralV3RaceSalish = "http://terminology.hl7.org/CodeSystem/v3-Race#1558-6";
 
     /// <summary>
     /// Literal for code: SalishAndKootenai
@@ -10451,9 +12571,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSalishAndKootenai = "1560-2";
 
     /// <summary>
+    /// Literal for code: V3RaceSalishAndKootenai
+    /// </summary>
+    public const string LiteralV3RaceSalishAndKootenai = "http://terminology.hl7.org/CodeSystem/v3-Race#1560-2";
+
+    /// <summary>
     /// Literal for code: Schaghticoke
     /// </summary>
     public const string LiteralSchaghticoke = "1562-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceSchaghticoke
+    /// </summary>
+    public const string LiteralV3RaceSchaghticoke = "http://terminology.hl7.org/CodeSystem/v3-Race#1562-8";
 
     /// <summary>
     /// Literal for code: ScottValley
@@ -10461,9 +12591,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralScottValley = "1564-4";
 
     /// <summary>
+    /// Literal for code: V3RaceScottValley
+    /// </summary>
+    public const string LiteralV3RaceScottValley = "http://terminology.hl7.org/CodeSystem/v3-Race#1564-4";
+
+    /// <summary>
     /// Literal for code: Seminole
     /// </summary>
     public const string LiteralSeminole = "1566-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceSeminole
+    /// </summary>
+    public const string LiteralV3RaceSeminole = "http://terminology.hl7.org/CodeSystem/v3-Race#1566-9";
 
     /// <summary>
     /// Literal for code: BigCypress
@@ -10471,9 +12611,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBigCypress = "1567-7";
 
     /// <summary>
+    /// Literal for code: V3RaceBigCypress
+    /// </summary>
+    public const string LiteralV3RaceBigCypress = "http://terminology.hl7.org/CodeSystem/v3-Race#1567-7";
+
+    /// <summary>
     /// Literal for code: Brighton
     /// </summary>
     public const string LiteralBrighton = "1568-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceBrighton
+    /// </summary>
+    public const string LiteralV3RaceBrighton = "http://terminology.hl7.org/CodeSystem/v3-Race#1568-5";
 
     /// <summary>
     /// Literal for code: FloridaSeminole
@@ -10481,9 +12631,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFloridaSeminole = "1569-3";
 
     /// <summary>
+    /// Literal for code: V3RaceFloridaSeminole
+    /// </summary>
+    public const string LiteralV3RaceFloridaSeminole = "http://terminology.hl7.org/CodeSystem/v3-Race#1569-3";
+
+    /// <summary>
     /// Literal for code: HollywoodSeminole
     /// </summary>
     public const string LiteralHollywoodSeminole = "1570-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceHollywoodSeminole
+    /// </summary>
+    public const string LiteralV3RaceHollywoodSeminole = "http://terminology.hl7.org/CodeSystem/v3-Race#1570-1";
 
     /// <summary>
     /// Literal for code: OklahomaSeminole
@@ -10491,9 +12651,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOklahomaSeminole = "1571-9";
 
     /// <summary>
+    /// Literal for code: V3RaceOklahomaSeminole
+    /// </summary>
+    public const string LiteralV3RaceOklahomaSeminole = "http://terminology.hl7.org/CodeSystem/v3-Race#1571-9";
+
+    /// <summary>
     /// Literal for code: Serrano
     /// </summary>
     public const string LiteralSerrano = "1573-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceSerrano
+    /// </summary>
+    public const string LiteralV3RaceSerrano = "http://terminology.hl7.org/CodeSystem/v3-Race#1573-5";
 
     /// <summary>
     /// Literal for code: SanManual
@@ -10501,9 +12671,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSanManual = "1574-3";
 
     /// <summary>
+    /// Literal for code: V3RaceSanManual
+    /// </summary>
+    public const string LiteralV3RaceSanManual = "http://terminology.hl7.org/CodeSystem/v3-Race#1574-3";
+
+    /// <summary>
     /// Literal for code: Shasta
     /// </summary>
     public const string LiteralShasta = "1576-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceShasta
+    /// </summary>
+    public const string LiteralV3RaceShasta = "http://terminology.hl7.org/CodeSystem/v3-Race#1576-8";
 
     /// <summary>
     /// Literal for code: Shawnee
@@ -10511,9 +12691,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralShawnee = "1578-4";
 
     /// <summary>
+    /// Literal for code: V3RaceShawnee
+    /// </summary>
+    public const string LiteralV3RaceShawnee = "http://terminology.hl7.org/CodeSystem/v3-Race#1578-4";
+
+    /// <summary>
     /// Literal for code: AbsenteeShawnee
     /// </summary>
     public const string LiteralAbsenteeShawnee = "1579-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceAbsenteeShawnee
+    /// </summary>
+    public const string LiteralV3RaceAbsenteeShawnee = "http://terminology.hl7.org/CodeSystem/v3-Race#1579-2";
 
     /// <summary>
     /// Literal for code: EasternShawnee
@@ -10521,9 +12711,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEasternShawnee = "1580-0";
 
     /// <summary>
+    /// Literal for code: V3RaceEasternShawnee
+    /// </summary>
+    public const string LiteralV3RaceEasternShawnee = "http://terminology.hl7.org/CodeSystem/v3-Race#1580-0";
+
+    /// <summary>
     /// Literal for code: Shinnecock
     /// </summary>
     public const string LiteralShinnecock = "1582-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceShinnecock
+    /// </summary>
+    public const string LiteralV3RaceShinnecock = "http://terminology.hl7.org/CodeSystem/v3-Race#1582-6";
 
     /// <summary>
     /// Literal for code: ShoalwaterBay
@@ -10531,9 +12731,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralShoalwaterBay = "1584-2";
 
     /// <summary>
+    /// Literal for code: V3RaceShoalwaterBay
+    /// </summary>
+    public const string LiteralV3RaceShoalwaterBay = "http://terminology.hl7.org/CodeSystem/v3-Race#1584-2";
+
+    /// <summary>
     /// Literal for code: Shoshone
     /// </summary>
     public const string LiteralShoshone = "1586-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceShoshone
+    /// </summary>
+    public const string LiteralV3RaceShoshone = "http://terminology.hl7.org/CodeSystem/v3-Race#1586-7";
 
     /// <summary>
     /// Literal for code: BattleMountain
@@ -10541,9 +12751,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBattleMountain = "1587-5";
 
     /// <summary>
+    /// Literal for code: V3RaceBattleMountain
+    /// </summary>
+    public const string LiteralV3RaceBattleMountain = "http://terminology.hl7.org/CodeSystem/v3-Race#1587-5";
+
+    /// <summary>
     /// Literal for code: Duckwater
     /// </summary>
     public const string LiteralDuckwater = "1588-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceDuckwater
+    /// </summary>
+    public const string LiteralV3RaceDuckwater = "http://terminology.hl7.org/CodeSystem/v3-Race#1588-3";
 
     /// <summary>
     /// Literal for code: Elko
@@ -10551,9 +12771,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralElko = "1589-1";
 
     /// <summary>
+    /// Literal for code: V3RaceElko
+    /// </summary>
+    public const string LiteralV3RaceElko = "http://terminology.hl7.org/CodeSystem/v3-Race#1589-1";
+
+    /// <summary>
     /// Literal for code: Ely
     /// </summary>
     public const string LiteralEly = "1590-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceEly
+    /// </summary>
+    public const string LiteralV3RaceEly = "http://terminology.hl7.org/CodeSystem/v3-Race#1590-9";
 
     /// <summary>
     /// Literal for code: Goshute
@@ -10561,9 +12791,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGoshute = "1591-7";
 
     /// <summary>
+    /// Literal for code: V3RaceGoshute
+    /// </summary>
+    public const string LiteralV3RaceGoshute = "http://terminology.hl7.org/CodeSystem/v3-Race#1591-7";
+
+    /// <summary>
     /// Literal for code: Panamint
     /// </summary>
     public const string LiteralPanamint = "1592-5";
+
+    /// <summary>
+    /// Literal for code: V3RacePanamint
+    /// </summary>
+    public const string LiteralV3RacePanamint = "http://terminology.hl7.org/CodeSystem/v3-Race#1592-5";
 
     /// <summary>
     /// Literal for code: RubyValley
@@ -10571,9 +12811,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRubyValley = "1593-3";
 
     /// <summary>
+    /// Literal for code: V3RaceRubyValley
+    /// </summary>
+    public const string LiteralV3RaceRubyValley = "http://terminology.hl7.org/CodeSystem/v3-Race#1593-3";
+
+    /// <summary>
     /// Literal for code: SkullValley
     /// </summary>
     public const string LiteralSkullValley = "1594-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceSkullValley
+    /// </summary>
+    public const string LiteralV3RaceSkullValley = "http://terminology.hl7.org/CodeSystem/v3-Race#1594-1";
 
     /// <summary>
     /// Literal for code: SouthForkShoshone
@@ -10581,9 +12831,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSouthForkShoshone = "1595-8";
 
     /// <summary>
+    /// Literal for code: V3RaceSouthForkShoshone
+    /// </summary>
+    public const string LiteralV3RaceSouthForkShoshone = "http://terminology.hl7.org/CodeSystem/v3-Race#1595-8";
+
+    /// <summary>
     /// Literal for code: TeMoakWesternShoshone
     /// </summary>
     public const string LiteralTeMoakWesternShoshone = "1596-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceTeMoakWesternShoshone
+    /// </summary>
+    public const string LiteralV3RaceTeMoakWesternShoshone = "http://terminology.hl7.org/CodeSystem/v3-Race#1596-6";
 
     /// <summary>
     /// Literal for code: TimbiShaShoshone
@@ -10591,9 +12851,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTimbiShaShoshone = "1597-4";
 
     /// <summary>
+    /// Literal for code: V3RaceTimbiShaShoshone
+    /// </summary>
+    public const string LiteralV3RaceTimbiShaShoshone = "http://terminology.hl7.org/CodeSystem/v3-Race#1597-4";
+
+    /// <summary>
     /// Literal for code: Washakie
     /// </summary>
     public const string LiteralWashakie = "1598-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceWashakie
+    /// </summary>
+    public const string LiteralV3RaceWashakie = "http://terminology.hl7.org/CodeSystem/v3-Race#1598-2";
 
     /// <summary>
     /// Literal for code: WindRiverShoshone
@@ -10601,9 +12871,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWindRiverShoshone = "1599-0";
 
     /// <summary>
+    /// Literal for code: V3RaceWindRiverShoshone
+    /// </summary>
+    public const string LiteralV3RaceWindRiverShoshone = "http://terminology.hl7.org/CodeSystem/v3-Race#1599-0";
+
+    /// <summary>
     /// Literal for code: Yomba
     /// </summary>
     public const string LiteralYomba = "1600-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceYomba
+    /// </summary>
+    public const string LiteralV3RaceYomba = "http://terminology.hl7.org/CodeSystem/v3-Race#1600-6";
 
     /// <summary>
     /// Literal for code: ShoshonePaiute
@@ -10611,9 +12891,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralShoshonePaiute = "1602-2";
 
     /// <summary>
+    /// Literal for code: V3RaceShoshonePaiute
+    /// </summary>
+    public const string LiteralV3RaceShoshonePaiute = "http://terminology.hl7.org/CodeSystem/v3-Race#1602-2";
+
+    /// <summary>
     /// Literal for code: DuckValley
     /// </summary>
     public const string LiteralDuckValley = "1603-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceDuckValley
+    /// </summary>
+    public const string LiteralV3RaceDuckValley = "http://terminology.hl7.org/CodeSystem/v3-Race#1603-0";
 
     /// <summary>
     /// Literal for code: Fallon
@@ -10621,9 +12911,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFallon = "1604-8";
 
     /// <summary>
+    /// Literal for code: V3RaceFallon
+    /// </summary>
+    public const string LiteralV3RaceFallon = "http://terminology.hl7.org/CodeSystem/v3-Race#1604-8";
+
+    /// <summary>
     /// Literal for code: FortMcDermitt
     /// </summary>
     public const string LiteralFortMcDermitt = "1605-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceFortMcDermitt
+    /// </summary>
+    public const string LiteralV3RaceFortMcDermitt = "http://terminology.hl7.org/CodeSystem/v3-Race#1605-5";
 
     /// <summary>
     /// Literal for code: Siletz
@@ -10631,9 +12931,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSiletz = "1607-1";
 
     /// <summary>
+    /// Literal for code: V3RaceSiletz
+    /// </summary>
+    public const string LiteralV3RaceSiletz = "http://terminology.hl7.org/CodeSystem/v3-Race#1607-1";
+
+    /// <summary>
     /// Literal for code: Sioux
     /// </summary>
     public const string LiteralSioux = "1609-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceSioux
+    /// </summary>
+    public const string LiteralV3RaceSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1609-7";
 
     /// <summary>
     /// Literal for code: BlackfootSioux
@@ -10641,9 +12951,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBlackfootSioux = "1610-5";
 
     /// <summary>
+    /// Literal for code: V3RaceBlackfootSioux
+    /// </summary>
+    public const string LiteralV3RaceBlackfootSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1610-5";
+
+    /// <summary>
     /// Literal for code: BruleSioux
     /// </summary>
     public const string LiteralBruleSioux = "1611-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceBruleSioux
+    /// </summary>
+    public const string LiteralV3RaceBruleSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1611-3";
 
     /// <summary>
     /// Literal for code: CheyenneRiverSioux
@@ -10651,9 +12971,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCheyenneRiverSioux = "1612-1";
 
     /// <summary>
+    /// Literal for code: V3RaceCheyenneRiverSioux
+    /// </summary>
+    public const string LiteralV3RaceCheyenneRiverSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1612-1";
+
+    /// <summary>
     /// Literal for code: CrowCreekSioux
     /// </summary>
     public const string LiteralCrowCreekSioux = "1613-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceCrowCreekSioux
+    /// </summary>
+    public const string LiteralV3RaceCrowCreekSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1613-9";
 
     /// <summary>
     /// Literal for code: DakotaSioux
@@ -10661,9 +12991,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDakotaSioux = "1614-7";
 
     /// <summary>
+    /// Literal for code: V3RaceDakotaSioux
+    /// </summary>
+    public const string LiteralV3RaceDakotaSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1614-7";
+
+    /// <summary>
     /// Literal for code: FlandreauSantee
     /// </summary>
     public const string LiteralFlandreauSantee = "1615-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceFlandreauSantee
+    /// </summary>
+    public const string LiteralV3RaceFlandreauSantee = "http://terminology.hl7.org/CodeSystem/v3-Race#1615-4";
 
     /// <summary>
     /// Literal for code: FortPeck
@@ -10671,9 +13011,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFortPeck = "1616-2";
 
     /// <summary>
+    /// Literal for code: V3RaceFortPeck
+    /// </summary>
+    public const string LiteralV3RaceFortPeck = "http://terminology.hl7.org/CodeSystem/v3-Race#1616-2";
+
+    /// <summary>
     /// Literal for code: LakeTraverseSioux
     /// </summary>
     public const string LiteralLakeTraverseSioux = "1617-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceLakeTraverseSioux
+    /// </summary>
+    public const string LiteralV3RaceLakeTraverseSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1617-0";
 
     /// <summary>
     /// Literal for code: LowerBruleSioux
@@ -10681,9 +13031,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLowerBruleSioux = "1618-8";
 
     /// <summary>
+    /// Literal for code: V3RaceLowerBruleSioux
+    /// </summary>
+    public const string LiteralV3RaceLowerBruleSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1618-8";
+
+    /// <summary>
     /// Literal for code: LowerSioux
     /// </summary>
     public const string LiteralLowerSioux = "1619-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceLowerSioux
+    /// </summary>
+    public const string LiteralV3RaceLowerSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1619-6";
 
     /// <summary>
     /// Literal for code: MdewakantonSioux
@@ -10691,9 +13051,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMdewakantonSioux = "1620-4";
 
     /// <summary>
+    /// Literal for code: V3RaceMdewakantonSioux
+    /// </summary>
+    public const string LiteralV3RaceMdewakantonSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1620-4";
+
+    /// <summary>
     /// Literal for code: Miniconjou
     /// </summary>
     public const string LiteralMiniconjou = "1621-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceMiniconjou
+    /// </summary>
+    public const string LiteralV3RaceMiniconjou = "http://terminology.hl7.org/CodeSystem/v3-Race#1621-2";
 
     /// <summary>
     /// Literal for code: OglalaSioux
@@ -10701,9 +13071,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOglalaSioux = "1622-0";
 
     /// <summary>
+    /// Literal for code: V3RaceOglalaSioux
+    /// </summary>
+    public const string LiteralV3RaceOglalaSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1622-0";
+
+    /// <summary>
     /// Literal for code: PineRidgeSioux
     /// </summary>
     public const string LiteralPineRidgeSioux = "1623-8";
+
+    /// <summary>
+    /// Literal for code: V3RacePineRidgeSioux
+    /// </summary>
+    public const string LiteralV3RacePineRidgeSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1623-8";
 
     /// <summary>
     /// Literal for code: PipestoneSioux
@@ -10711,9 +13091,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPipestoneSioux = "1624-6";
 
     /// <summary>
+    /// Literal for code: V3RacePipestoneSioux
+    /// </summary>
+    public const string LiteralV3RacePipestoneSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1624-6";
+
+    /// <summary>
     /// Literal for code: PrairieIslandSioux
     /// </summary>
     public const string LiteralPrairieIslandSioux = "1625-3";
+
+    /// <summary>
+    /// Literal for code: V3RacePrairieIslandSioux
+    /// </summary>
+    public const string LiteralV3RacePrairieIslandSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1625-3";
 
     /// <summary>
     /// Literal for code: PriorLakeSioux
@@ -10721,9 +13111,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPriorLakeSioux = "1626-1";
 
     /// <summary>
+    /// Literal for code: V3RacePriorLakeSioux
+    /// </summary>
+    public const string LiteralV3RacePriorLakeSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1626-1";
+
+    /// <summary>
     /// Literal for code: RosebudSioux
     /// </summary>
     public const string LiteralRosebudSioux = "1627-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceRosebudSioux
+    /// </summary>
+    public const string LiteralV3RaceRosebudSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1627-9";
 
     /// <summary>
     /// Literal for code: SansArcSioux
@@ -10731,9 +13131,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSansArcSioux = "1628-7";
 
     /// <summary>
+    /// Literal for code: V3RaceSansArcSioux
+    /// </summary>
+    public const string LiteralV3RaceSansArcSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1628-7";
+
+    /// <summary>
     /// Literal for code: SanteeSioux
     /// </summary>
     public const string LiteralSanteeSioux = "1629-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceSanteeSioux
+    /// </summary>
+    public const string LiteralV3RaceSanteeSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1629-5";
 
     /// <summary>
     /// Literal for code: SissetonWahpeton
@@ -10741,9 +13151,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSissetonWahpeton = "1630-3";
 
     /// <summary>
+    /// Literal for code: V3RaceSissetonWahpeton
+    /// </summary>
+    public const string LiteralV3RaceSissetonWahpeton = "http://terminology.hl7.org/CodeSystem/v3-Race#1630-3";
+
+    /// <summary>
     /// Literal for code: SissetonSioux
     /// </summary>
     public const string LiteralSissetonSioux = "1631-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceSissetonSioux
+    /// </summary>
+    public const string LiteralV3RaceSissetonSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1631-1";
 
     /// <summary>
     /// Literal for code: SpiritLakeSioux
@@ -10751,9 +13171,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpiritLakeSioux = "1632-9";
 
     /// <summary>
+    /// Literal for code: V3RaceSpiritLakeSioux
+    /// </summary>
+    public const string LiteralV3RaceSpiritLakeSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1632-9";
+
+    /// <summary>
     /// Literal for code: StandingRockSioux
     /// </summary>
     public const string LiteralStandingRockSioux = "1633-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceStandingRockSioux
+    /// </summary>
+    public const string LiteralV3RaceStandingRockSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1633-7";
 
     /// <summary>
     /// Literal for code: TetonSioux
@@ -10761,9 +13191,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTetonSioux = "1634-5";
 
     /// <summary>
+    /// Literal for code: V3RaceTetonSioux
+    /// </summary>
+    public const string LiteralV3RaceTetonSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1634-5";
+
+    /// <summary>
     /// Literal for code: TwoKettleSioux
     /// </summary>
     public const string LiteralTwoKettleSioux = "1635-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceTwoKettleSioux
+    /// </summary>
+    public const string LiteralV3RaceTwoKettleSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1635-2";
 
     /// <summary>
     /// Literal for code: UpperSioux
@@ -10771,9 +13211,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUpperSioux = "1636-0";
 
     /// <summary>
+    /// Literal for code: V3RaceUpperSioux
+    /// </summary>
+    public const string LiteralV3RaceUpperSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1636-0";
+
+    /// <summary>
     /// Literal for code: WahpekuteSioux
     /// </summary>
     public const string LiteralWahpekuteSioux = "1637-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceWahpekuteSioux
+    /// </summary>
+    public const string LiteralV3RaceWahpekuteSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1637-8";
 
     /// <summary>
     /// Literal for code: WahpetonSioux
@@ -10781,9 +13231,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWahpetonSioux = "1638-6";
 
     /// <summary>
+    /// Literal for code: V3RaceWahpetonSioux
+    /// </summary>
+    public const string LiteralV3RaceWahpetonSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1638-6";
+
+    /// <summary>
     /// Literal for code: WazhazaSioux
     /// </summary>
     public const string LiteralWazhazaSioux = "1639-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceWazhazaSioux
+    /// </summary>
+    public const string LiteralV3RaceWazhazaSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1639-4";
 
     /// <summary>
     /// Literal for code: YanktonSioux
@@ -10791,9 +13251,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralYanktonSioux = "1640-2";
 
     /// <summary>
+    /// Literal for code: V3RaceYanktonSioux
+    /// </summary>
+    public const string LiteralV3RaceYanktonSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1640-2";
+
+    /// <summary>
     /// Literal for code: YanktonaiSioux
     /// </summary>
     public const string LiteralYanktonaiSioux = "1641-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceYanktonaiSioux
+    /// </summary>
+    public const string LiteralV3RaceYanktonaiSioux = "http://terminology.hl7.org/CodeSystem/v3-Race#1641-0";
 
     /// <summary>
     /// Literal for code: Siuslaw
@@ -10801,9 +13271,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSiuslaw = "1643-6";
 
     /// <summary>
+    /// Literal for code: V3RaceSiuslaw
+    /// </summary>
+    public const string LiteralV3RaceSiuslaw = "http://terminology.hl7.org/CodeSystem/v3-Race#1643-6";
+
+    /// <summary>
     /// Literal for code: Spokane
     /// </summary>
     public const string LiteralSpokane = "1645-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceSpokane
+    /// </summary>
+    public const string LiteralV3RaceSpokane = "http://terminology.hl7.org/CodeSystem/v3-Race#1645-1";
 
     /// <summary>
     /// Literal for code: Stewart
@@ -10811,9 +13291,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStewart = "1647-7";
 
     /// <summary>
+    /// Literal for code: V3RaceStewart
+    /// </summary>
+    public const string LiteralV3RaceStewart = "http://terminology.hl7.org/CodeSystem/v3-Race#1647-7";
+
+    /// <summary>
     /// Literal for code: Stockbridge
     /// </summary>
     public const string LiteralStockbridge = "1649-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceStockbridge
+    /// </summary>
+    public const string LiteralV3RaceStockbridge = "http://terminology.hl7.org/CodeSystem/v3-Race#1649-3";
 
     /// <summary>
     /// Literal for code: Susanville
@@ -10821,9 +13311,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSusanville = "1651-9";
 
     /// <summary>
+    /// Literal for code: V3RaceSusanville
+    /// </summary>
+    public const string LiteralV3RaceSusanville = "http://terminology.hl7.org/CodeSystem/v3-Race#1651-9";
+
+    /// <summary>
     /// Literal for code: TohonoOQuoteOdham
     /// </summary>
     public const string LiteralTohonoOQuoteOdham = "1653-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceTohonoOQuoteOdham
+    /// </summary>
+    public const string LiteralV3RaceTohonoOQuoteOdham = "http://terminology.hl7.org/CodeSystem/v3-Race#1653-5";
 
     /// <summary>
     /// Literal for code: AkChin
@@ -10831,9 +13331,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAkChin = "1654-3";
 
     /// <summary>
+    /// Literal for code: V3RaceAkChin
+    /// </summary>
+    public const string LiteralV3RaceAkChin = "http://terminology.hl7.org/CodeSystem/v3-Race#1654-3";
+
+    /// <summary>
     /// Literal for code: GilaBend
     /// </summary>
     public const string LiteralGilaBend = "1655-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceGilaBend
+    /// </summary>
+    public const string LiteralV3RaceGilaBend = "http://terminology.hl7.org/CodeSystem/v3-Race#1655-0";
 
     /// <summary>
     /// Literal for code: SanXavier
@@ -10841,9 +13351,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSanXavier = "1656-8";
 
     /// <summary>
+    /// Literal for code: V3RaceSanXavier
+    /// </summary>
+    public const string LiteralV3RaceSanXavier = "http://terminology.hl7.org/CodeSystem/v3-Race#1656-8";
+
+    /// <summary>
     /// Literal for code: Sells
     /// </summary>
     public const string LiteralSells = "1657-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceSells
+    /// </summary>
+    public const string LiteralV3RaceSells = "http://terminology.hl7.org/CodeSystem/v3-Race#1657-6";
 
     /// <summary>
     /// Literal for code: Tolowa
@@ -10851,9 +13371,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTolowa = "1659-2";
 
     /// <summary>
+    /// Literal for code: V3RaceTolowa
+    /// </summary>
+    public const string LiteralV3RaceTolowa = "http://terminology.hl7.org/CodeSystem/v3-Race#1659-2";
+
+    /// <summary>
     /// Literal for code: Tonkawa
     /// </summary>
     public const string LiteralTonkawa = "1661-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceTonkawa
+    /// </summary>
+    public const string LiteralV3RaceTonkawa = "http://terminology.hl7.org/CodeSystem/v3-Race#1661-8";
 
     /// <summary>
     /// Literal for code: Tygh
@@ -10861,9 +13391,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTygh = "1663-4";
 
     /// <summary>
+    /// Literal for code: V3RaceTygh
+    /// </summary>
+    public const string LiteralV3RaceTygh = "http://terminology.hl7.org/CodeSystem/v3-Race#1663-4";
+
+    /// <summary>
     /// Literal for code: Umatilla
     /// </summary>
     public const string LiteralUmatilla = "1665-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceUmatilla
+    /// </summary>
+    public const string LiteralV3RaceUmatilla = "http://terminology.hl7.org/CodeSystem/v3-Race#1665-9";
 
     /// <summary>
     /// Literal for code: Umpqua
@@ -10871,9 +13411,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUmpqua = "1667-5";
 
     /// <summary>
+    /// Literal for code: V3RaceUmpqua
+    /// </summary>
+    public const string LiteralV3RaceUmpqua = "http://terminology.hl7.org/CodeSystem/v3-Race#1667-5";
+
+    /// <summary>
     /// Literal for code: CowCreekUmpqua
     /// </summary>
     public const string LiteralCowCreekUmpqua = "1668-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceCowCreekUmpqua
+    /// </summary>
+    public const string LiteralV3RaceCowCreekUmpqua = "http://terminology.hl7.org/CodeSystem/v3-Race#1668-3";
 
     /// <summary>
     /// Literal for code: Ute
@@ -10881,9 +13431,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUte = "1670-9";
 
     /// <summary>
+    /// Literal for code: V3RaceUte
+    /// </summary>
+    public const string LiteralV3RaceUte = "http://terminology.hl7.org/CodeSystem/v3-Race#1670-9";
+
+    /// <summary>
     /// Literal for code: AllenCanyon
     /// </summary>
     public const string LiteralAllenCanyon = "1671-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceAllenCanyon
+    /// </summary>
+    public const string LiteralV3RaceAllenCanyon = "http://terminology.hl7.org/CodeSystem/v3-Race#1671-7";
 
     /// <summary>
     /// Literal for code: UintahUte
@@ -10891,9 +13451,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUintahUte = "1672-5";
 
     /// <summary>
+    /// Literal for code: V3RaceUintahUte
+    /// </summary>
+    public const string LiteralV3RaceUintahUte = "http://terminology.hl7.org/CodeSystem/v3-Race#1672-5";
+
+    /// <summary>
     /// Literal for code: UteMountainUte
     /// </summary>
     public const string LiteralUteMountainUte = "1673-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceUteMountainUte
+    /// </summary>
+    public const string LiteralV3RaceUteMountainUte = "http://terminology.hl7.org/CodeSystem/v3-Race#1673-3";
 
     /// <summary>
     /// Literal for code: Wailaki
@@ -10901,9 +13471,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWailaki = "1675-8";
 
     /// <summary>
+    /// Literal for code: V3RaceWailaki
+    /// </summary>
+    public const string LiteralV3RaceWailaki = "http://terminology.hl7.org/CodeSystem/v3-Race#1675-8";
+
+    /// <summary>
     /// Literal for code: WallaWalla
     /// </summary>
     public const string LiteralWallaWalla = "1677-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceWallaWalla
+    /// </summary>
+    public const string LiteralV3RaceWallaWalla = "http://terminology.hl7.org/CodeSystem/v3-Race#1677-4";
 
     /// <summary>
     /// Literal for code: Wampanoag
@@ -10911,9 +13491,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWampanoag = "1679-0";
 
     /// <summary>
+    /// Literal for code: V3RaceWampanoag
+    /// </summary>
+    public const string LiteralV3RaceWampanoag = "http://terminology.hl7.org/CodeSystem/v3-Race#1679-0";
+
+    /// <summary>
     /// Literal for code: GayHeadWampanoag
     /// </summary>
     public const string LiteralGayHeadWampanoag = "1680-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceGayHeadWampanoag
+    /// </summary>
+    public const string LiteralV3RaceGayHeadWampanoag = "http://terminology.hl7.org/CodeSystem/v3-Race#1680-8";
 
     /// <summary>
     /// Literal for code: MashpeeWampanoag
@@ -10921,9 +13511,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMashpeeWampanoag = "1681-6";
 
     /// <summary>
+    /// Literal for code: V3RaceMashpeeWampanoag
+    /// </summary>
+    public const string LiteralV3RaceMashpeeWampanoag = "http://terminology.hl7.org/CodeSystem/v3-Race#1681-6";
+
+    /// <summary>
     /// Literal for code: WarmSprings
     /// </summary>
     public const string LiteralWarmSprings = "1683-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceWarmSprings
+    /// </summary>
+    public const string LiteralV3RaceWarmSprings = "http://terminology.hl7.org/CodeSystem/v3-Race#1683-2";
 
     /// <summary>
     /// Literal for code: Wascopum
@@ -10931,9 +13531,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWascopum = "1685-7";
 
     /// <summary>
+    /// Literal for code: V3RaceWascopum
+    /// </summary>
+    public const string LiteralV3RaceWascopum = "http://terminology.hl7.org/CodeSystem/v3-Race#1685-7";
+
+    /// <summary>
     /// Literal for code: Washoe
     /// </summary>
     public const string LiteralWashoe = "1687-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceWashoe
+    /// </summary>
+    public const string LiteralV3RaceWashoe = "http://terminology.hl7.org/CodeSystem/v3-Race#1687-3";
 
     /// <summary>
     /// Literal for code: Alpine
@@ -10941,9 +13551,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlpine = "1688-1";
 
     /// <summary>
+    /// Literal for code: V3RaceAlpine
+    /// </summary>
+    public const string LiteralV3RaceAlpine = "http://terminology.hl7.org/CodeSystem/v3-Race#1688-1";
+
+    /// <summary>
     /// Literal for code: Carson
     /// </summary>
     public const string LiteralCarson = "1689-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceCarson
+    /// </summary>
+    public const string LiteralV3RaceCarson = "http://terminology.hl7.org/CodeSystem/v3-Race#1689-9";
 
     /// <summary>
     /// Literal for code: Dresslerville
@@ -10951,9 +13571,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDresslerville = "1690-7";
 
     /// <summary>
+    /// Literal for code: V3RaceDresslerville
+    /// </summary>
+    public const string LiteralV3RaceDresslerville = "http://terminology.hl7.org/CodeSystem/v3-Race#1690-7";
+
+    /// <summary>
     /// Literal for code: Wichita
     /// </summary>
     public const string LiteralWichita = "1692-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceWichita
+    /// </summary>
+    public const string LiteralV3RaceWichita = "http://terminology.hl7.org/CodeSystem/v3-Race#1692-3";
 
     /// <summary>
     /// Literal for code: WindRiver
@@ -10961,9 +13591,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWindRiver = "1694-9";
 
     /// <summary>
+    /// Literal for code: V3RaceWindRiver
+    /// </summary>
+    public const string LiteralV3RaceWindRiver = "http://terminology.hl7.org/CodeSystem/v3-Race#1694-9";
+
+    /// <summary>
     /// Literal for code: Winnebago
     /// </summary>
     public const string LiteralWinnebago = "1696-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceWinnebago
+    /// </summary>
+    public const string LiteralV3RaceWinnebago = "http://terminology.hl7.org/CodeSystem/v3-Race#1696-4";
 
     /// <summary>
     /// Literal for code: HoChunk
@@ -10971,9 +13611,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHoChunk = "1697-2";
 
     /// <summary>
+    /// Literal for code: V3RaceHoChunk
+    /// </summary>
+    public const string LiteralV3RaceHoChunk = "http://terminology.hl7.org/CodeSystem/v3-Race#1697-2";
+
+    /// <summary>
     /// Literal for code: NebraskaWinnebago
     /// </summary>
     public const string LiteralNebraskaWinnebago = "1698-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceNebraskaWinnebago
+    /// </summary>
+    public const string LiteralV3RaceNebraskaWinnebago = "http://terminology.hl7.org/CodeSystem/v3-Race#1698-0";
 
     /// <summary>
     /// Literal for code: Winnemucca
@@ -10981,9 +13631,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWinnemucca = "1700-4";
 
     /// <summary>
+    /// Literal for code: V3RaceWinnemucca
+    /// </summary>
+    public const string LiteralV3RaceWinnemucca = "http://terminology.hl7.org/CodeSystem/v3-Race#1700-4";
+
+    /// <summary>
     /// Literal for code: Wintun
     /// </summary>
     public const string LiteralWintun = "1702-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceWintun
+    /// </summary>
+    public const string LiteralV3RaceWintun = "http://terminology.hl7.org/CodeSystem/v3-Race#1702-0";
 
     /// <summary>
     /// Literal for code: Wiyot
@@ -10991,9 +13651,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWiyot = "1704-6";
 
     /// <summary>
+    /// Literal for code: V3RaceWiyot
+    /// </summary>
+    public const string LiteralV3RaceWiyot = "http://terminology.hl7.org/CodeSystem/v3-Race#1704-6";
+
+    /// <summary>
     /// Literal for code: TableBluff
     /// </summary>
     public const string LiteralTableBluff = "1705-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceTableBluff
+    /// </summary>
+    public const string LiteralV3RaceTableBluff = "http://terminology.hl7.org/CodeSystem/v3-Race#1705-3";
 
     /// <summary>
     /// Literal for code: Yakama
@@ -11001,9 +13671,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralYakama = "1707-9";
 
     /// <summary>
+    /// Literal for code: V3RaceYakama
+    /// </summary>
+    public const string LiteralV3RaceYakama = "http://terminology.hl7.org/CodeSystem/v3-Race#1707-9";
+
+    /// <summary>
     /// Literal for code: YakamaCowlitz
     /// </summary>
     public const string LiteralYakamaCowlitz = "1709-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceYakamaCowlitz
+    /// </summary>
+    public const string LiteralV3RaceYakamaCowlitz = "http://terminology.hl7.org/CodeSystem/v3-Race#1709-5";
 
     /// <summary>
     /// Literal for code: Yaqui
@@ -11011,9 +13691,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralYaqui = "1711-1";
 
     /// <summary>
+    /// Literal for code: V3RaceYaqui
+    /// </summary>
+    public const string LiteralV3RaceYaqui = "http://terminology.hl7.org/CodeSystem/v3-Race#1711-1";
+
+    /// <summary>
     /// Literal for code: BarrioLibre
     /// </summary>
     public const string LiteralBarrioLibre = "1712-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceBarrioLibre
+    /// </summary>
+    public const string LiteralV3RaceBarrioLibre = "http://terminology.hl7.org/CodeSystem/v3-Race#1712-9";
 
     /// <summary>
     /// Literal for code: PascuaYaqui
@@ -11021,9 +13711,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPascuaYaqui = "1713-7";
 
     /// <summary>
+    /// Literal for code: V3RacePascuaYaqui
+    /// </summary>
+    public const string LiteralV3RacePascuaYaqui = "http://terminology.hl7.org/CodeSystem/v3-Race#1713-7";
+
+    /// <summary>
     /// Literal for code: YavapaiApache
     /// </summary>
     public const string LiteralYavapaiApache = "1715-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceYavapaiApache
+    /// </summary>
+    public const string LiteralV3RaceYavapaiApache = "http://terminology.hl7.org/CodeSystem/v3-Race#1715-2";
 
     /// <summary>
     /// Literal for code: Yokuts
@@ -11031,9 +13731,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralYokuts = "1717-8";
 
     /// <summary>
+    /// Literal for code: V3RaceYokuts
+    /// </summary>
+    public const string LiteralV3RaceYokuts = "http://terminology.hl7.org/CodeSystem/v3-Race#1717-8";
+
+    /// <summary>
     /// Literal for code: Chukchansi
     /// </summary>
     public const string LiteralChukchansi = "1718-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceChukchansi
+    /// </summary>
+    public const string LiteralV3RaceChukchansi = "http://terminology.hl7.org/CodeSystem/v3-Race#1718-6";
 
     /// <summary>
     /// Literal for code: Tachi
@@ -11041,9 +13751,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTachi = "1719-4";
 
     /// <summary>
+    /// Literal for code: V3RaceTachi
+    /// </summary>
+    public const string LiteralV3RaceTachi = "http://terminology.hl7.org/CodeSystem/v3-Race#1719-4";
+
+    /// <summary>
     /// Literal for code: TuleRiver
     /// </summary>
     public const string LiteralTuleRiver = "1720-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceTuleRiver
+    /// </summary>
+    public const string LiteralV3RaceTuleRiver = "http://terminology.hl7.org/CodeSystem/v3-Race#1720-2";
 
     /// <summary>
     /// Literal for code: Yuchi
@@ -11051,9 +13771,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralYuchi = "1722-8";
 
     /// <summary>
+    /// Literal for code: V3RaceYuchi
+    /// </summary>
+    public const string LiteralV3RaceYuchi = "http://terminology.hl7.org/CodeSystem/v3-Race#1722-8";
+
+    /// <summary>
     /// Literal for code: Yuman
     /// </summary>
     public const string LiteralYuman = "1724-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceYuman
+    /// </summary>
+    public const string LiteralV3RaceYuman = "http://terminology.hl7.org/CodeSystem/v3-Race#1724-4";
 
     /// <summary>
     /// Literal for code: Cocopah
@@ -11061,9 +13791,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCocopah = "1725-1";
 
     /// <summary>
+    /// Literal for code: V3RaceCocopah
+    /// </summary>
+    public const string LiteralV3RaceCocopah = "http://terminology.hl7.org/CodeSystem/v3-Race#1725-1";
+
+    /// <summary>
     /// Literal for code: Havasupai
     /// </summary>
     public const string LiteralHavasupai = "1726-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceHavasupai
+    /// </summary>
+    public const string LiteralV3RaceHavasupai = "http://terminology.hl7.org/CodeSystem/v3-Race#1726-9";
 
     /// <summary>
     /// Literal for code: Hualapai
@@ -11071,9 +13811,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHualapai = "1727-7";
 
     /// <summary>
+    /// Literal for code: V3RaceHualapai
+    /// </summary>
+    public const string LiteralV3RaceHualapai = "http://terminology.hl7.org/CodeSystem/v3-Race#1727-7";
+
+    /// <summary>
     /// Literal for code: Maricopa
     /// </summary>
     public const string LiteralMaricopa = "1728-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceMaricopa
+    /// </summary>
+    public const string LiteralV3RaceMaricopa = "http://terminology.hl7.org/CodeSystem/v3-Race#1728-5";
 
     /// <summary>
     /// Literal for code: Mohave
@@ -11081,9 +13831,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMohave = "1729-3";
 
     /// <summary>
+    /// Literal for code: V3RaceMohave
+    /// </summary>
+    public const string LiteralV3RaceMohave = "http://terminology.hl7.org/CodeSystem/v3-Race#1729-3";
+
+    /// <summary>
     /// Literal for code: Quechan
     /// </summary>
     public const string LiteralQuechan = "1730-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceQuechan
+    /// </summary>
+    public const string LiteralV3RaceQuechan = "http://terminology.hl7.org/CodeSystem/v3-Race#1730-1";
 
     /// <summary>
     /// Literal for code: Yavapai
@@ -11091,9 +13851,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralYavapai = "1731-9";
 
     /// <summary>
+    /// Literal for code: V3RaceYavapai
+    /// </summary>
+    public const string LiteralV3RaceYavapai = "http://terminology.hl7.org/CodeSystem/v3-Race#1731-9";
+
+    /// <summary>
     /// Literal for code: Yurok
     /// </summary>
     public const string LiteralYurok = "1732-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceYurok
+    /// </summary>
+    public const string LiteralV3RaceYurok = "http://terminology.hl7.org/CodeSystem/v3-Race#1732-7";
 
     /// <summary>
     /// Literal for code: CoastYurok
@@ -11101,9 +13871,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoastYurok = "1733-5";
 
     /// <summary>
+    /// Literal for code: V3RaceCoastYurok
+    /// </summary>
+    public const string LiteralV3RaceCoastYurok = "http://terminology.hl7.org/CodeSystem/v3-Race#1733-5";
+
+    /// <summary>
     /// Literal for code: AlaskaNative
     /// </summary>
     public const string LiteralAlaskaNative = "1735-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceAlaskaNative
+    /// </summary>
+    public const string LiteralV3RaceAlaskaNative = "http://terminology.hl7.org/CodeSystem/v3-Race#1735-0";
 
     /// <summary>
     /// Literal for code: AlaskaIndian
@@ -11111,9 +13891,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlaskaIndian = "1737-6";
 
     /// <summary>
+    /// Literal for code: V3RaceAlaskaIndian
+    /// </summary>
+    public const string LiteralV3RaceAlaskaIndian = "http://terminology.hl7.org/CodeSystem/v3-Race#1737-6";
+
+    /// <summary>
     /// Literal for code: AlaskanAthabascan
     /// </summary>
     public const string LiteralAlaskanAthabascan = "1739-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceAlaskanAthabascan
+    /// </summary>
+    public const string LiteralV3RaceAlaskanAthabascan = "http://terminology.hl7.org/CodeSystem/v3-Race#1739-2";
 
     /// <summary>
     /// Literal for code: Ahtna
@@ -11121,9 +13911,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAhtna = "1740-0";
 
     /// <summary>
+    /// Literal for code: V3RaceAhtna
+    /// </summary>
+    public const string LiteralV3RaceAhtna = "http://terminology.hl7.org/CodeSystem/v3-Race#1740-0";
+
+    /// <summary>
     /// Literal for code: Alatna
     /// </summary>
     public const string LiteralAlatna = "1741-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceAlatna
+    /// </summary>
+    public const string LiteralV3RaceAlatna = "http://terminology.hl7.org/CodeSystem/v3-Race#1741-8";
 
     /// <summary>
     /// Literal for code: Alexander
@@ -11131,9 +13931,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlexander = "1742-6";
 
     /// <summary>
+    /// Literal for code: V3RaceAlexander
+    /// </summary>
+    public const string LiteralV3RaceAlexander = "http://terminology.hl7.org/CodeSystem/v3-Race#1742-6";
+
+    /// <summary>
     /// Literal for code: Allakaket
     /// </summary>
     public const string LiteralAllakaket = "1743-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceAllakaket
+    /// </summary>
+    public const string LiteralV3RaceAllakaket = "http://terminology.hl7.org/CodeSystem/v3-Race#1743-4";
 
     /// <summary>
     /// Literal for code: Alanvik
@@ -11141,9 +13951,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlanvik = "1744-2";
 
     /// <summary>
+    /// Literal for code: V3RaceAlanvik
+    /// </summary>
+    public const string LiteralV3RaceAlanvik = "http://terminology.hl7.org/CodeSystem/v3-Race#1744-2";
+
+    /// <summary>
     /// Literal for code: Anvik
     /// </summary>
     public const string LiteralAnvik = "1745-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceAnvik
+    /// </summary>
+    public const string LiteralV3RaceAnvik = "http://terminology.hl7.org/CodeSystem/v3-Race#1745-9";
 
     /// <summary>
     /// Literal for code: Arctic
@@ -11151,9 +13971,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArctic = "1746-7";
 
     /// <summary>
+    /// Literal for code: V3RaceArctic
+    /// </summary>
+    public const string LiteralV3RaceArctic = "http://terminology.hl7.org/CodeSystem/v3-Race#1746-7";
+
+    /// <summary>
     /// Literal for code: Beaver
     /// </summary>
     public const string LiteralBeaver = "1747-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceBeaver
+    /// </summary>
+    public const string LiteralV3RaceBeaver = "http://terminology.hl7.org/CodeSystem/v3-Race#1747-5";
 
     /// <summary>
     /// Literal for code: BirchCreek
@@ -11161,9 +13991,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBirchCreek = "1748-3";
 
     /// <summary>
+    /// Literal for code: V3RaceBirchCreek
+    /// </summary>
+    public const string LiteralV3RaceBirchCreek = "http://terminology.hl7.org/CodeSystem/v3-Race#1748-3";
+
+    /// <summary>
     /// Literal for code: Cantwell
     /// </summary>
     public const string LiteralCantwell = "1749-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceCantwell
+    /// </summary>
+    public const string LiteralV3RaceCantwell = "http://terminology.hl7.org/CodeSystem/v3-Race#1749-1";
 
     /// <summary>
     /// Literal for code: Chalkyitsik
@@ -11171,9 +14011,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChalkyitsik = "1750-9";
 
     /// <summary>
+    /// Literal for code: V3RaceChalkyitsik
+    /// </summary>
+    public const string LiteralV3RaceChalkyitsik = "http://terminology.hl7.org/CodeSystem/v3-Race#1750-9";
+
+    /// <summary>
     /// Literal for code: Chickaloon
     /// </summary>
     public const string LiteralChickaloon = "1751-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceChickaloon
+    /// </summary>
+    public const string LiteralV3RaceChickaloon = "http://terminology.hl7.org/CodeSystem/v3-Race#1751-7";
 
     /// <summary>
     /// Literal for code: Chistochina
@@ -11181,9 +14031,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChistochina = "1752-5";
 
     /// <summary>
+    /// Literal for code: V3RaceChistochina
+    /// </summary>
+    public const string LiteralV3RaceChistochina = "http://terminology.hl7.org/CodeSystem/v3-Race#1752-5";
+
+    /// <summary>
     /// Literal for code: Chitina
     /// </summary>
     public const string LiteralChitina = "1753-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceChitina
+    /// </summary>
+    public const string LiteralV3RaceChitina = "http://terminology.hl7.org/CodeSystem/v3-Race#1753-3";
 
     /// <summary>
     /// Literal for code: Circle
@@ -11191,9 +14051,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCircle = "1754-1";
 
     /// <summary>
+    /// Literal for code: V3RaceCircle
+    /// </summary>
+    public const string LiteralV3RaceCircle = "http://terminology.hl7.org/CodeSystem/v3-Race#1754-1";
+
+    /// <summary>
     /// Literal for code: CookInlet
     /// </summary>
     public const string LiteralCookInlet = "1755-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceCookInlet
+    /// </summary>
+    public const string LiteralV3RaceCookInlet = "http://terminology.hl7.org/CodeSystem/v3-Race#1755-8";
 
     /// <summary>
     /// Literal for code: CopperCenter
@@ -11201,9 +14071,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCopperCenter = "1756-6";
 
     /// <summary>
+    /// Literal for code: V3RaceCopperCenter
+    /// </summary>
+    public const string LiteralV3RaceCopperCenter = "http://terminology.hl7.org/CodeSystem/v3-Race#1756-6";
+
+    /// <summary>
     /// Literal for code: CopperRiver
     /// </summary>
     public const string LiteralCopperRiver = "1757-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceCopperRiver
+    /// </summary>
+    public const string LiteralV3RaceCopperRiver = "http://terminology.hl7.org/CodeSystem/v3-Race#1757-4";
 
     /// <summary>
     /// Literal for code: DotLake
@@ -11211,9 +14091,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDotLake = "1758-2";
 
     /// <summary>
+    /// Literal for code: V3RaceDotLake
+    /// </summary>
+    public const string LiteralV3RaceDotLake = "http://terminology.hl7.org/CodeSystem/v3-Race#1758-2";
+
+    /// <summary>
     /// Literal for code: Doyon
     /// </summary>
     public const string LiteralDoyon = "1759-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceDoyon
+    /// </summary>
+    public const string LiteralV3RaceDoyon = "http://terminology.hl7.org/CodeSystem/v3-Race#1759-0";
 
     /// <summary>
     /// Literal for code: Eagle
@@ -11221,9 +14111,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEagle = "1760-8";
 
     /// <summary>
+    /// Literal for code: V3RaceEagle
+    /// </summary>
+    public const string LiteralV3RaceEagle = "http://terminology.hl7.org/CodeSystem/v3-Race#1760-8";
+
+    /// <summary>
     /// Literal for code: Eklutna
     /// </summary>
     public const string LiteralEklutna = "1761-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceEklutna
+    /// </summary>
+    public const string LiteralV3RaceEklutna = "http://terminology.hl7.org/CodeSystem/v3-Race#1761-6";
 
     /// <summary>
     /// Literal for code: Evansville
@@ -11231,9 +14131,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEvansville = "1762-4";
 
     /// <summary>
+    /// Literal for code: V3RaceEvansville
+    /// </summary>
+    public const string LiteralV3RaceEvansville = "http://terminology.hl7.org/CodeSystem/v3-Race#1762-4";
+
+    /// <summary>
     /// Literal for code: FortYukon
     /// </summary>
     public const string LiteralFortYukon = "1763-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceFortYukon
+    /// </summary>
+    public const string LiteralV3RaceFortYukon = "http://terminology.hl7.org/CodeSystem/v3-Race#1763-2";
 
     /// <summary>
     /// Literal for code: Gakona
@@ -11241,9 +14151,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGakona = "1764-0";
 
     /// <summary>
+    /// Literal for code: V3RaceGakona
+    /// </summary>
+    public const string LiteralV3RaceGakona = "http://terminology.hl7.org/CodeSystem/v3-Race#1764-0";
+
+    /// <summary>
     /// Literal for code: Galena
     /// </summary>
     public const string LiteralGalena = "1765-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceGalena
+    /// </summary>
+    public const string LiteralV3RaceGalena = "http://terminology.hl7.org/CodeSystem/v3-Race#1765-7";
 
     /// <summary>
     /// Literal for code: Grayling
@@ -11251,9 +14171,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGrayling = "1766-5";
 
     /// <summary>
+    /// Literal for code: V3RaceGrayling
+    /// </summary>
+    public const string LiteralV3RaceGrayling = "http://terminology.hl7.org/CodeSystem/v3-Race#1766-5";
+
+    /// <summary>
     /// Literal for code: Gulkana
     /// </summary>
     public const string LiteralGulkana = "1767-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceGulkana
+    /// </summary>
+    public const string LiteralV3RaceGulkana = "http://terminology.hl7.org/CodeSystem/v3-Race#1767-3";
 
     /// <summary>
     /// Literal for code: HealyLake
@@ -11261,9 +14191,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealyLake = "1768-1";
 
     /// <summary>
+    /// Literal for code: V3RaceHealyLake
+    /// </summary>
+    public const string LiteralV3RaceHealyLake = "http://terminology.hl7.org/CodeSystem/v3-Race#1768-1";
+
+    /// <summary>
     /// Literal for code: HolyCross
     /// </summary>
     public const string LiteralHolyCross = "1769-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceHolyCross
+    /// </summary>
+    public const string LiteralV3RaceHolyCross = "http://terminology.hl7.org/CodeSystem/v3-Race#1769-9";
 
     /// <summary>
     /// Literal for code: Hughes
@@ -11271,9 +14211,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHughes = "1770-7";
 
     /// <summary>
+    /// Literal for code: V3RaceHughes
+    /// </summary>
+    public const string LiteralV3RaceHughes = "http://terminology.hl7.org/CodeSystem/v3-Race#1770-7";
+
+    /// <summary>
     /// Literal for code: Huslia
     /// </summary>
     public const string LiteralHuslia = "1771-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceHuslia
+    /// </summary>
+    public const string LiteralV3RaceHuslia = "http://terminology.hl7.org/CodeSystem/v3-Race#1771-5";
 
     /// <summary>
     /// Literal for code: Iliamna
@@ -11281,9 +14231,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIliamna = "1772-3";
 
     /// <summary>
+    /// Literal for code: V3RaceIliamna
+    /// </summary>
+    public const string LiteralV3RaceIliamna = "http://terminology.hl7.org/CodeSystem/v3-Race#1772-3";
+
+    /// <summary>
     /// Literal for code: Kaltag
     /// </summary>
     public const string LiteralKaltag = "1773-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceKaltag
+    /// </summary>
+    public const string LiteralV3RaceKaltag = "http://terminology.hl7.org/CodeSystem/v3-Race#1773-1";
 
     /// <summary>
     /// Literal for code: KlutiKaah
@@ -11291,9 +14251,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKlutiKaah = "1774-9";
 
     /// <summary>
+    /// Literal for code: V3RaceKlutiKaah
+    /// </summary>
+    public const string LiteralV3RaceKlutiKaah = "http://terminology.hl7.org/CodeSystem/v3-Race#1774-9";
+
+    /// <summary>
     /// Literal for code: Knik
     /// </summary>
     public const string LiteralKnik = "1775-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceKnik
+    /// </summary>
+    public const string LiteralV3RaceKnik = "http://terminology.hl7.org/CodeSystem/v3-Race#1775-6";
 
     /// <summary>
     /// Literal for code: Koyukuk
@@ -11301,9 +14271,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKoyukuk = "1776-4";
 
     /// <summary>
+    /// Literal for code: V3RaceKoyukuk
+    /// </summary>
+    public const string LiteralV3RaceKoyukuk = "http://terminology.hl7.org/CodeSystem/v3-Race#1776-4";
+
+    /// <summary>
     /// Literal for code: LakeMinchumina
     /// </summary>
     public const string LiteralLakeMinchumina = "1777-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceLakeMinchumina
+    /// </summary>
+    public const string LiteralV3RaceLakeMinchumina = "http://terminology.hl7.org/CodeSystem/v3-Race#1777-2";
 
     /// <summary>
     /// Literal for code: Lime
@@ -11311,9 +14291,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLime = "1778-0";
 
     /// <summary>
+    /// Literal for code: V3RaceLime
+    /// </summary>
+    public const string LiteralV3RaceLime = "http://terminology.hl7.org/CodeSystem/v3-Race#1778-0";
+
+    /// <summary>
     /// Literal for code: Mcgrath
     /// </summary>
     public const string LiteralMcgrath = "1779-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceMcgrath
+    /// </summary>
+    public const string LiteralV3RaceMcgrath = "http://terminology.hl7.org/CodeSystem/v3-Race#1779-8";
 
     /// <summary>
     /// Literal for code: ManleyHotSprings
@@ -11321,9 +14311,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralManleyHotSprings = "1780-6";
 
     /// <summary>
+    /// Literal for code: V3RaceManleyHotSprings
+    /// </summary>
+    public const string LiteralV3RaceManleyHotSprings = "http://terminology.hl7.org/CodeSystem/v3-Race#1780-6";
+
+    /// <summary>
     /// Literal for code: MentastaLake
     /// </summary>
     public const string LiteralMentastaLake = "1781-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceMentastaLake
+    /// </summary>
+    public const string LiteralV3RaceMentastaLake = "http://terminology.hl7.org/CodeSystem/v3-Race#1781-4";
 
     /// <summary>
     /// Literal for code: Minto
@@ -11331,9 +14331,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMinto = "1782-2";
 
     /// <summary>
+    /// Literal for code: V3RaceMinto
+    /// </summary>
+    public const string LiteralV3RaceMinto = "http://terminology.hl7.org/CodeSystem/v3-Race#1782-2";
+
+    /// <summary>
     /// Literal for code: Nenana
     /// </summary>
     public const string LiteralNenana = "1783-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceNenana
+    /// </summary>
+    public const string LiteralV3RaceNenana = "http://terminology.hl7.org/CodeSystem/v3-Race#1783-0";
 
     /// <summary>
     /// Literal for code: Nikolai
@@ -11341,9 +14351,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNikolai = "1784-8";
 
     /// <summary>
+    /// Literal for code: V3RaceNikolai
+    /// </summary>
+    public const string LiteralV3RaceNikolai = "http://terminology.hl7.org/CodeSystem/v3-Race#1784-8";
+
+    /// <summary>
     /// Literal for code: Ninilchik
     /// </summary>
     public const string LiteralNinilchik = "1785-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceNinilchik
+    /// </summary>
+    public const string LiteralV3RaceNinilchik = "http://terminology.hl7.org/CodeSystem/v3-Race#1785-5";
 
     /// <summary>
     /// Literal for code: Nondalton
@@ -11351,9 +14371,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNondalton = "1786-3";
 
     /// <summary>
+    /// Literal for code: V3RaceNondalton
+    /// </summary>
+    public const string LiteralV3RaceNondalton = "http://terminology.hl7.org/CodeSystem/v3-Race#1786-3";
+
+    /// <summary>
     /// Literal for code: Northway
     /// </summary>
     public const string LiteralNorthway = "1787-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceNorthway
+    /// </summary>
+    public const string LiteralV3RaceNorthway = "http://terminology.hl7.org/CodeSystem/v3-Race#1787-1";
 
     /// <summary>
     /// Literal for code: Nulato
@@ -11361,9 +14391,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNulato = "1788-9";
 
     /// <summary>
+    /// Literal for code: V3RaceNulato
+    /// </summary>
+    public const string LiteralV3RaceNulato = "http://terminology.hl7.org/CodeSystem/v3-Race#1788-9";
+
+    /// <summary>
     /// Literal for code: PedroBay
     /// </summary>
     public const string LiteralPedroBay = "1789-7";
+
+    /// <summary>
+    /// Literal for code: V3RacePedroBay
+    /// </summary>
+    public const string LiteralV3RacePedroBay = "http://terminology.hl7.org/CodeSystem/v3-Race#1789-7";
 
     /// <summary>
     /// Literal for code: Rampart
@@ -11371,9 +14411,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRampart = "1790-5";
 
     /// <summary>
+    /// Literal for code: V3RaceRampart
+    /// </summary>
+    public const string LiteralV3RaceRampart = "http://terminology.hl7.org/CodeSystem/v3-Race#1790-5";
+
+    /// <summary>
     /// Literal for code: Ruby
     /// </summary>
     public const string LiteralRuby = "1791-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceRuby
+    /// </summary>
+    public const string LiteralV3RaceRuby = "http://terminology.hl7.org/CodeSystem/v3-Race#1791-3";
 
     /// <summary>
     /// Literal for code: Salamatof
@@ -11381,9 +14431,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSalamatof = "1792-1";
 
     /// <summary>
+    /// Literal for code: V3RaceSalamatof
+    /// </summary>
+    public const string LiteralV3RaceSalamatof = "http://terminology.hl7.org/CodeSystem/v3-Race#1792-1";
+
+    /// <summary>
     /// Literal for code: Seldovia
     /// </summary>
     public const string LiteralSeldovia = "1793-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceSeldovia
+    /// </summary>
+    public const string LiteralV3RaceSeldovia = "http://terminology.hl7.org/CodeSystem/v3-Race#1793-9";
 
     /// <summary>
     /// Literal for code: Slana
@@ -11391,9 +14451,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSlana = "1794-7";
 
     /// <summary>
+    /// Literal for code: V3RaceSlana
+    /// </summary>
+    public const string LiteralV3RaceSlana = "http://terminology.hl7.org/CodeSystem/v3-Race#1794-7";
+
+    /// <summary>
     /// Literal for code: Shageluk
     /// </summary>
     public const string LiteralShageluk = "1795-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceShageluk
+    /// </summary>
+    public const string LiteralV3RaceShageluk = "http://terminology.hl7.org/CodeSystem/v3-Race#1795-4";
 
     /// <summary>
     /// Literal for code: Stevens
@@ -11401,9 +14471,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStevens = "1796-2";
 
     /// <summary>
+    /// Literal for code: V3RaceStevens
+    /// </summary>
+    public const string LiteralV3RaceStevens = "http://terminology.hl7.org/CodeSystem/v3-Race#1796-2";
+
+    /// <summary>
     /// Literal for code: StonyRiver
     /// </summary>
     public const string LiteralStonyRiver = "1797-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceStonyRiver
+    /// </summary>
+    public const string LiteralV3RaceStonyRiver = "http://terminology.hl7.org/CodeSystem/v3-Race#1797-0";
 
     /// <summary>
     /// Literal for code: Takotna
@@ -11411,9 +14491,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTakotna = "1798-8";
 
     /// <summary>
+    /// Literal for code: V3RaceTakotna
+    /// </summary>
+    public const string LiteralV3RaceTakotna = "http://terminology.hl7.org/CodeSystem/v3-Race#1798-8";
+
+    /// <summary>
     /// Literal for code: Tanacross
     /// </summary>
     public const string LiteralTanacross = "1799-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceTanacross
+    /// </summary>
+    public const string LiteralV3RaceTanacross = "http://terminology.hl7.org/CodeSystem/v3-Race#1799-6";
 
     /// <summary>
     /// Literal for code: Tanaina
@@ -11421,9 +14511,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTanaina = "1800-2";
 
     /// <summary>
+    /// Literal for code: V3RaceTanaina
+    /// </summary>
+    public const string LiteralV3RaceTanaina = "http://terminology.hl7.org/CodeSystem/v3-Race#1800-2";
+
+    /// <summary>
     /// Literal for code: Tanana
     /// </summary>
     public const string LiteralTanana = "1801-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceTanana
+    /// </summary>
+    public const string LiteralV3RaceTanana = "http://terminology.hl7.org/CodeSystem/v3-Race#1801-0";
 
     /// <summary>
     /// Literal for code: TananaChiefs
@@ -11431,9 +14531,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTananaChiefs = "1802-8";
 
     /// <summary>
+    /// Literal for code: V3RaceTananaChiefs
+    /// </summary>
+    public const string LiteralV3RaceTananaChiefs = "http://terminology.hl7.org/CodeSystem/v3-Race#1802-8";
+
+    /// <summary>
     /// Literal for code: Tazlina
     /// </summary>
     public const string LiteralTazlina = "1803-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceTazlina
+    /// </summary>
+    public const string LiteralV3RaceTazlina = "http://terminology.hl7.org/CodeSystem/v3-Race#1803-6";
 
     /// <summary>
     /// Literal for code: Telida
@@ -11441,9 +14551,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTelida = "1804-4";
 
     /// <summary>
+    /// Literal for code: V3RaceTelida
+    /// </summary>
+    public const string LiteralV3RaceTelida = "http://terminology.hl7.org/CodeSystem/v3-Race#1804-4";
+
+    /// <summary>
     /// Literal for code: Tetlin
     /// </summary>
     public const string LiteralTetlin = "1805-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceTetlin
+    /// </summary>
+    public const string LiteralV3RaceTetlin = "http://terminology.hl7.org/CodeSystem/v3-Race#1805-1";
 
     /// <summary>
     /// Literal for code: Tok
@@ -11451,9 +14571,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTok = "1806-9";
 
     /// <summary>
+    /// Literal for code: V3RaceTok
+    /// </summary>
+    public const string LiteralV3RaceTok = "http://terminology.hl7.org/CodeSystem/v3-Race#1806-9";
+
+    /// <summary>
     /// Literal for code: Tyonek
     /// </summary>
     public const string LiteralTyonek = "1807-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceTyonek
+    /// </summary>
+    public const string LiteralV3RaceTyonek = "http://terminology.hl7.org/CodeSystem/v3-Race#1807-7";
 
     /// <summary>
     /// Literal for code: Venetie
@@ -11461,9 +14591,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVenetie = "1808-5";
 
     /// <summary>
+    /// Literal for code: V3RaceVenetie
+    /// </summary>
+    public const string LiteralV3RaceVenetie = "http://terminology.hl7.org/CodeSystem/v3-Race#1808-5";
+
+    /// <summary>
     /// Literal for code: Wiseman
     /// </summary>
     public const string LiteralWiseman = "1809-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceWiseman
+    /// </summary>
+    public const string LiteralV3RaceWiseman = "http://terminology.hl7.org/CodeSystem/v3-Race#1809-3";
 
     /// <summary>
     /// Literal for code: SoutheastAlaska
@@ -11471,9 +14611,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSoutheastAlaska = "1811-9";
 
     /// <summary>
+    /// Literal for code: V3RaceSoutheastAlaska
+    /// </summary>
+    public const string LiteralV3RaceSoutheastAlaska = "http://terminology.hl7.org/CodeSystem/v3-Race#1811-9";
+
+    /// <summary>
     /// Literal for code: TlingitHaida
     /// </summary>
     public const string LiteralTlingitHaida = "1813-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceTlingitHaida
+    /// </summary>
+    public const string LiteralV3RaceTlingitHaida = "http://terminology.hl7.org/CodeSystem/v3-Race#1813-5";
 
     /// <summary>
     /// Literal for code: Angoon
@@ -11481,9 +14631,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAngoon = "1814-3";
 
     /// <summary>
+    /// Literal for code: V3RaceAngoon
+    /// </summary>
+    public const string LiteralV3RaceAngoon = "http://terminology.hl7.org/CodeSystem/v3-Race#1814-3";
+
+    /// <summary>
     /// Literal for code: CentralCouncilOfTlingitAndHaidaTribes
     /// </summary>
     public const string LiteralCentralCouncilOfTlingitAndHaidaTribes = "1815-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceCentralCouncilOfTlingitAndHaidaTribes
+    /// </summary>
+    public const string LiteralV3RaceCentralCouncilOfTlingitAndHaidaTribes = "http://terminology.hl7.org/CodeSystem/v3-Race#1815-0";
 
     /// <summary>
     /// Literal for code: Chilkat
@@ -11491,9 +14651,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChilkat = "1816-8";
 
     /// <summary>
+    /// Literal for code: V3RaceChilkat
+    /// </summary>
+    public const string LiteralV3RaceChilkat = "http://terminology.hl7.org/CodeSystem/v3-Race#1816-8";
+
+    /// <summary>
     /// Literal for code: Chilkoot
     /// </summary>
     public const string LiteralChilkoot = "1817-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceChilkoot
+    /// </summary>
+    public const string LiteralV3RaceChilkoot = "http://terminology.hl7.org/CodeSystem/v3-Race#1817-6";
 
     /// <summary>
     /// Literal for code: Craig
@@ -11501,9 +14671,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCraig = "1818-4";
 
     /// <summary>
+    /// Literal for code: V3RaceCraig
+    /// </summary>
+    public const string LiteralV3RaceCraig = "http://terminology.hl7.org/CodeSystem/v3-Race#1818-4";
+
+    /// <summary>
     /// Literal for code: Douglas
     /// </summary>
     public const string LiteralDouglas = "1819-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceDouglas
+    /// </summary>
+    public const string LiteralV3RaceDouglas = "http://terminology.hl7.org/CodeSystem/v3-Race#1819-2";
 
     /// <summary>
     /// Literal for code: Haida
@@ -11511,9 +14691,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHaida = "1820-0";
 
     /// <summary>
+    /// Literal for code: V3RaceHaida
+    /// </summary>
+    public const string LiteralV3RaceHaida = "http://terminology.hl7.org/CodeSystem/v3-Race#1820-0";
+
+    /// <summary>
     /// Literal for code: Hoonah
     /// </summary>
     public const string LiteralHoonah = "1821-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceHoonah
+    /// </summary>
+    public const string LiteralV3RaceHoonah = "http://terminology.hl7.org/CodeSystem/v3-Race#1821-8";
 
     /// <summary>
     /// Literal for code: Hydaburg
@@ -11521,9 +14711,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHydaburg = "1822-6";
 
     /// <summary>
+    /// Literal for code: V3RaceHydaburg
+    /// </summary>
+    public const string LiteralV3RaceHydaburg = "http://terminology.hl7.org/CodeSystem/v3-Race#1822-6";
+
+    /// <summary>
     /// Literal for code: Kake
     /// </summary>
     public const string LiteralKake = "1823-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceKake
+    /// </summary>
+    public const string LiteralV3RaceKake = "http://terminology.hl7.org/CodeSystem/v3-Race#1823-4";
 
     /// <summary>
     /// Literal for code: Kasaan
@@ -11531,9 +14731,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKasaan = "1824-2";
 
     /// <summary>
+    /// Literal for code: V3RaceKasaan
+    /// </summary>
+    public const string LiteralV3RaceKasaan = "http://terminology.hl7.org/CodeSystem/v3-Race#1824-2";
+
+    /// <summary>
     /// Literal for code: Kenaitze
     /// </summary>
     public const string LiteralKenaitze = "1825-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceKenaitze
+    /// </summary>
+    public const string LiteralV3RaceKenaitze = "http://terminology.hl7.org/CodeSystem/v3-Race#1825-9";
 
     /// <summary>
     /// Literal for code: Ketchikan
@@ -11541,9 +14751,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKetchikan = "1826-7";
 
     /// <summary>
+    /// Literal for code: V3RaceKetchikan
+    /// </summary>
+    public const string LiteralV3RaceKetchikan = "http://terminology.hl7.org/CodeSystem/v3-Race#1826-7";
+
+    /// <summary>
     /// Literal for code: Klawock
     /// </summary>
     public const string LiteralKlawock = "1827-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceKlawock
+    /// </summary>
+    public const string LiteralV3RaceKlawock = "http://terminology.hl7.org/CodeSystem/v3-Race#1827-5";
 
     /// <summary>
     /// Literal for code: Pelican
@@ -11551,9 +14771,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPelican = "1828-3";
 
     /// <summary>
+    /// Literal for code: V3RacePelican
+    /// </summary>
+    public const string LiteralV3RacePelican = "http://terminology.hl7.org/CodeSystem/v3-Race#1828-3";
+
+    /// <summary>
     /// Literal for code: Petersburg
     /// </summary>
     public const string LiteralPetersburg = "1829-1";
+
+    /// <summary>
+    /// Literal for code: V3RacePetersburg
+    /// </summary>
+    public const string LiteralV3RacePetersburg = "http://terminology.hl7.org/CodeSystem/v3-Race#1829-1";
 
     /// <summary>
     /// Literal for code: Saxman
@@ -11561,9 +14791,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSaxman = "1830-9";
 
     /// <summary>
+    /// Literal for code: V3RaceSaxman
+    /// </summary>
+    public const string LiteralV3RaceSaxman = "http://terminology.hl7.org/CodeSystem/v3-Race#1830-9";
+
+    /// <summary>
     /// Literal for code: Sitka
     /// </summary>
     public const string LiteralSitka = "1831-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceSitka
+    /// </summary>
+    public const string LiteralV3RaceSitka = "http://terminology.hl7.org/CodeSystem/v3-Race#1831-7";
 
     /// <summary>
     /// Literal for code: TenakeeSprings
@@ -11571,9 +14811,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTenakeeSprings = "1832-5";
 
     /// <summary>
+    /// Literal for code: V3RaceTenakeeSprings
+    /// </summary>
+    public const string LiteralV3RaceTenakeeSprings = "http://terminology.hl7.org/CodeSystem/v3-Race#1832-5";
+
+    /// <summary>
     /// Literal for code: Tlingit
     /// </summary>
     public const string LiteralTlingit = "1833-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceTlingit
+    /// </summary>
+    public const string LiteralV3RaceTlingit = "http://terminology.hl7.org/CodeSystem/v3-Race#1833-3";
 
     /// <summary>
     /// Literal for code: Wrangell
@@ -11581,9 +14831,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWrangell = "1834-1";
 
     /// <summary>
+    /// Literal for code: V3RaceWrangell
+    /// </summary>
+    public const string LiteralV3RaceWrangell = "http://terminology.hl7.org/CodeSystem/v3-Race#1834-1";
+
+    /// <summary>
     /// Literal for code: Yakutat
     /// </summary>
     public const string LiteralYakutat = "1835-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceYakutat
+    /// </summary>
+    public const string LiteralV3RaceYakutat = "http://terminology.hl7.org/CodeSystem/v3-Race#1835-8";
 
     /// <summary>
     /// Literal for code: Tsimshian
@@ -11591,9 +14851,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTsimshian = "1837-4";
 
     /// <summary>
+    /// Literal for code: V3RaceTsimshian
+    /// </summary>
+    public const string LiteralV3RaceTsimshian = "http://terminology.hl7.org/CodeSystem/v3-Race#1837-4";
+
+    /// <summary>
     /// Literal for code: Metlakatla
     /// </summary>
     public const string LiteralMetlakatla = "1838-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceMetlakatla
+    /// </summary>
+    public const string LiteralV3RaceMetlakatla = "http://terminology.hl7.org/CodeSystem/v3-Race#1838-2";
 
     /// <summary>
     /// Literal for code: Eskimo
@@ -11601,9 +14871,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEskimo = "1840-8";
 
     /// <summary>
+    /// Literal for code: V3RaceEskimo
+    /// </summary>
+    public const string LiteralV3RaceEskimo = "http://terminology.hl7.org/CodeSystem/v3-Race#1840-8";
+
+    /// <summary>
     /// Literal for code: GreenlandEskimo
     /// </summary>
     public const string LiteralGreenlandEskimo = "1842-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceGreenlandEskimo
+    /// </summary>
+    public const string LiteralV3RaceGreenlandEskimo = "http://terminology.hl7.org/CodeSystem/v3-Race#1842-4";
 
     /// <summary>
     /// Literal for code: InupiatEskimo
@@ -11611,9 +14891,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInupiatEskimo = "1844-0";
 
     /// <summary>
+    /// Literal for code: V3RaceInupiatEskimo
+    /// </summary>
+    public const string LiteralV3RaceInupiatEskimo = "http://terminology.hl7.org/CodeSystem/v3-Race#1844-0";
+
+    /// <summary>
     /// Literal for code: Ambler
     /// </summary>
     public const string LiteralAmbler = "1845-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceAmbler
+    /// </summary>
+    public const string LiteralV3RaceAmbler = "http://terminology.hl7.org/CodeSystem/v3-Race#1845-7";
 
     /// <summary>
     /// Literal for code: Anaktuvuk
@@ -11621,9 +14911,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnaktuvuk = "1846-5";
 
     /// <summary>
+    /// Literal for code: V3RaceAnaktuvuk
+    /// </summary>
+    public const string LiteralV3RaceAnaktuvuk = "http://terminology.hl7.org/CodeSystem/v3-Race#1846-5";
+
+    /// <summary>
     /// Literal for code: AnaktuvukPass
     /// </summary>
     public const string LiteralAnaktuvukPass = "1847-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceAnaktuvukPass
+    /// </summary>
+    public const string LiteralV3RaceAnaktuvukPass = "http://terminology.hl7.org/CodeSystem/v3-Race#1847-3";
 
     /// <summary>
     /// Literal for code: ArcticSlopeInupiat
@@ -11631,9 +14931,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArcticSlopeInupiat = "1848-1";
 
     /// <summary>
+    /// Literal for code: V3RaceArcticSlopeInupiat
+    /// </summary>
+    public const string LiteralV3RaceArcticSlopeInupiat = "http://terminology.hl7.org/CodeSystem/v3-Race#1848-1";
+
+    /// <summary>
     /// Literal for code: ArcticSlopeCorporation
     /// </summary>
     public const string LiteralArcticSlopeCorporation = "1849-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceArcticSlopeCorporation
+    /// </summary>
+    public const string LiteralV3RaceArcticSlopeCorporation = "http://terminology.hl7.org/CodeSystem/v3-Race#1849-9";
 
     /// <summary>
     /// Literal for code: Atqasuk
@@ -11641,9 +14951,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAtqasuk = "1850-7";
 
     /// <summary>
+    /// Literal for code: V3RaceAtqasuk
+    /// </summary>
+    public const string LiteralV3RaceAtqasuk = "http://terminology.hl7.org/CodeSystem/v3-Race#1850-7";
+
+    /// <summary>
     /// Literal for code: Barrow
     /// </summary>
     public const string LiteralBarrow = "1851-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceBarrow
+    /// </summary>
+    public const string LiteralV3RaceBarrow = "http://terminology.hl7.org/CodeSystem/v3-Race#1851-5";
 
     /// <summary>
     /// Literal for code: BeringStraitsInupiat
@@ -11651,9 +14971,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBeringStraitsInupiat = "1852-3";
 
     /// <summary>
+    /// Literal for code: V3RaceBeringStraitsInupiat
+    /// </summary>
+    public const string LiteralV3RaceBeringStraitsInupiat = "http://terminology.hl7.org/CodeSystem/v3-Race#1852-3";
+
+    /// <summary>
     /// Literal for code: BrevigMission
     /// </summary>
     public const string LiteralBrevigMission = "1853-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceBrevigMission
+    /// </summary>
+    public const string LiteralV3RaceBrevigMission = "http://terminology.hl7.org/CodeSystem/v3-Race#1853-1";
 
     /// <summary>
     /// Literal for code: Buckland
@@ -11661,9 +14991,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBuckland = "1854-9";
 
     /// <summary>
+    /// Literal for code: V3RaceBuckland
+    /// </summary>
+    public const string LiteralV3RaceBuckland = "http://terminology.hl7.org/CodeSystem/v3-Race#1854-9";
+
+    /// <summary>
     /// Literal for code: Chinik
     /// </summary>
     public const string LiteralChinik = "1855-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceChinik
+    /// </summary>
+    public const string LiteralV3RaceChinik = "http://terminology.hl7.org/CodeSystem/v3-Race#1855-6";
 
     /// <summary>
     /// Literal for code: Council
@@ -11671,9 +15011,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCouncil = "1856-4";
 
     /// <summary>
+    /// Literal for code: V3RaceCouncil
+    /// </summary>
+    public const string LiteralV3RaceCouncil = "http://terminology.hl7.org/CodeSystem/v3-Race#1856-4";
+
+    /// <summary>
     /// Literal for code: Deering
     /// </summary>
     public const string LiteralDeering = "1857-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceDeering
+    /// </summary>
+    public const string LiteralV3RaceDeering = "http://terminology.hl7.org/CodeSystem/v3-Race#1857-2";
 
     /// <summary>
     /// Literal for code: Elim
@@ -11681,9 +15031,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralElim = "1858-0";
 
     /// <summary>
+    /// Literal for code: V3RaceElim
+    /// </summary>
+    public const string LiteralV3RaceElim = "http://terminology.hl7.org/CodeSystem/v3-Race#1858-0";
+
+    /// <summary>
     /// Literal for code: Golovin
     /// </summary>
     public const string LiteralGolovin = "1859-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceGolovin
+    /// </summary>
+    public const string LiteralV3RaceGolovin = "http://terminology.hl7.org/CodeSystem/v3-Race#1859-8";
 
     /// <summary>
     /// Literal for code: InalikDiomede
@@ -11691,9 +15051,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInalikDiomede = "1860-6";
 
     /// <summary>
+    /// Literal for code: V3RaceInalikDiomede
+    /// </summary>
+    public const string LiteralV3RaceInalikDiomede = "http://terminology.hl7.org/CodeSystem/v3-Race#1860-6";
+
+    /// <summary>
     /// Literal for code: Inupiaq
     /// </summary>
     public const string LiteralInupiaq = "1861-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceInupiaq
+    /// </summary>
+    public const string LiteralV3RaceInupiaq = "http://terminology.hl7.org/CodeSystem/v3-Race#1861-4";
 
     /// <summary>
     /// Literal for code: Kaktovik
@@ -11701,9 +15071,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKaktovik = "1862-2";
 
     /// <summary>
+    /// Literal for code: V3RaceKaktovik
+    /// </summary>
+    public const string LiteralV3RaceKaktovik = "http://terminology.hl7.org/CodeSystem/v3-Race#1862-2";
+
+    /// <summary>
     /// Literal for code: Kawerak
     /// </summary>
     public const string LiteralKawerak = "1863-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceKawerak
+    /// </summary>
+    public const string LiteralV3RaceKawerak = "http://terminology.hl7.org/CodeSystem/v3-Race#1863-0";
 
     /// <summary>
     /// Literal for code: Kiana
@@ -11711,9 +15091,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKiana = "1864-8";
 
     /// <summary>
+    /// Literal for code: V3RaceKiana
+    /// </summary>
+    public const string LiteralV3RaceKiana = "http://terminology.hl7.org/CodeSystem/v3-Race#1864-8";
+
+    /// <summary>
     /// Literal for code: Kivalina
     /// </summary>
     public const string LiteralKivalina = "1865-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceKivalina
+    /// </summary>
+    public const string LiteralV3RaceKivalina = "http://terminology.hl7.org/CodeSystem/v3-Race#1865-5";
 
     /// <summary>
     /// Literal for code: Kobuk
@@ -11721,9 +15111,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKobuk = "1866-3";
 
     /// <summary>
+    /// Literal for code: V3RaceKobuk
+    /// </summary>
+    public const string LiteralV3RaceKobuk = "http://terminology.hl7.org/CodeSystem/v3-Race#1866-3";
+
+    /// <summary>
     /// Literal for code: Kotzebue
     /// </summary>
     public const string LiteralKotzebue = "1867-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceKotzebue
+    /// </summary>
+    public const string LiteralV3RaceKotzebue = "http://terminology.hl7.org/CodeSystem/v3-Race#1867-1";
 
     /// <summary>
     /// Literal for code: Koyuk
@@ -11731,9 +15131,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKoyuk = "1868-9";
 
     /// <summary>
+    /// Literal for code: V3RaceKoyuk
+    /// </summary>
+    public const string LiteralV3RaceKoyuk = "http://terminology.hl7.org/CodeSystem/v3-Race#1868-9";
+
+    /// <summary>
     /// Literal for code: Kwiguk
     /// </summary>
     public const string LiteralKwiguk = "1869-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceKwiguk
+    /// </summary>
+    public const string LiteralV3RaceKwiguk = "http://terminology.hl7.org/CodeSystem/v3-Race#1869-7";
 
     /// <summary>
     /// Literal for code: MaunelukInupiat
@@ -11741,9 +15151,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaunelukInupiat = "1870-5";
 
     /// <summary>
+    /// Literal for code: V3RaceMaunelukInupiat
+    /// </summary>
+    public const string LiteralV3RaceMaunelukInupiat = "http://terminology.hl7.org/CodeSystem/v3-Race#1870-5";
+
+    /// <summary>
     /// Literal for code: NanaInupiat
     /// </summary>
     public const string LiteralNanaInupiat = "1871-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceNanaInupiat
+    /// </summary>
+    public const string LiteralV3RaceNanaInupiat = "http://terminology.hl7.org/CodeSystem/v3-Race#1871-3";
 
     /// <summary>
     /// Literal for code: Noatak
@@ -11751,9 +15171,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNoatak = "1872-1";
 
     /// <summary>
+    /// Literal for code: V3RaceNoatak
+    /// </summary>
+    public const string LiteralV3RaceNoatak = "http://terminology.hl7.org/CodeSystem/v3-Race#1872-1";
+
+    /// <summary>
     /// Literal for code: Nome
     /// </summary>
     public const string LiteralNome = "1873-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceNome
+    /// </summary>
+    public const string LiteralV3RaceNome = "http://terminology.hl7.org/CodeSystem/v3-Race#1873-9";
 
     /// <summary>
     /// Literal for code: Noorvik
@@ -11761,9 +15191,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNoorvik = "1874-7";
 
     /// <summary>
+    /// Literal for code: V3RaceNoorvik
+    /// </summary>
+    public const string LiteralV3RaceNoorvik = "http://terminology.hl7.org/CodeSystem/v3-Race#1874-7";
+
+    /// <summary>
     /// Literal for code: Nuiqsut
     /// </summary>
     public const string LiteralNuiqsut = "1875-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceNuiqsut
+    /// </summary>
+    public const string LiteralV3RaceNuiqsut = "http://terminology.hl7.org/CodeSystem/v3-Race#1875-4";
 
     /// <summary>
     /// Literal for code: PointHope
@@ -11771,9 +15211,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPointHope = "1876-2";
 
     /// <summary>
+    /// Literal for code: V3RacePointHope
+    /// </summary>
+    public const string LiteralV3RacePointHope = "http://terminology.hl7.org/CodeSystem/v3-Race#1876-2";
+
+    /// <summary>
     /// Literal for code: PointLay
     /// </summary>
     public const string LiteralPointLay = "1877-0";
+
+    /// <summary>
+    /// Literal for code: V3RacePointLay
+    /// </summary>
+    public const string LiteralV3RacePointLay = "http://terminology.hl7.org/CodeSystem/v3-Race#1877-0";
 
     /// <summary>
     /// Literal for code: Selawik
@@ -11781,9 +15231,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSelawik = "1878-8";
 
     /// <summary>
+    /// Literal for code: V3RaceSelawik
+    /// </summary>
+    public const string LiteralV3RaceSelawik = "http://terminology.hl7.org/CodeSystem/v3-Race#1878-8";
+
+    /// <summary>
     /// Literal for code: Shaktoolik
     /// </summary>
     public const string LiteralShaktoolik = "1879-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceShaktoolik
+    /// </summary>
+    public const string LiteralV3RaceShaktoolik = "http://terminology.hl7.org/CodeSystem/v3-Race#1879-6";
 
     /// <summary>
     /// Literal for code: Shishmaref
@@ -11791,9 +15251,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralShishmaref = "1880-4";
 
     /// <summary>
+    /// Literal for code: V3RaceShishmaref
+    /// </summary>
+    public const string LiteralV3RaceShishmaref = "http://terminology.hl7.org/CodeSystem/v3-Race#1880-4";
+
+    /// <summary>
     /// Literal for code: Shungnak
     /// </summary>
     public const string LiteralShungnak = "1881-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceShungnak
+    /// </summary>
+    public const string LiteralV3RaceShungnak = "http://terminology.hl7.org/CodeSystem/v3-Race#1881-2";
 
     /// <summary>
     /// Literal for code: Solomon
@@ -11801,9 +15271,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSolomon = "1882-0";
 
     /// <summary>
+    /// Literal for code: V3RaceSolomon
+    /// </summary>
+    public const string LiteralV3RaceSolomon = "http://terminology.hl7.org/CodeSystem/v3-Race#1882-0";
+
+    /// <summary>
     /// Literal for code: Teller
     /// </summary>
     public const string LiteralTeller = "1883-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceTeller
+    /// </summary>
+    public const string LiteralV3RaceTeller = "http://terminology.hl7.org/CodeSystem/v3-Race#1883-8";
 
     /// <summary>
     /// Literal for code: Unalakleet
@@ -11811,9 +15291,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnalakleet = "1884-6";
 
     /// <summary>
+    /// Literal for code: V3RaceUnalakleet
+    /// </summary>
+    public const string LiteralV3RaceUnalakleet = "http://terminology.hl7.org/CodeSystem/v3-Race#1884-6";
+
+    /// <summary>
     /// Literal for code: Wainwright
     /// </summary>
     public const string LiteralWainwright = "1885-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceWainwright
+    /// </summary>
+    public const string LiteralV3RaceWainwright = "http://terminology.hl7.org/CodeSystem/v3-Race#1885-3";
 
     /// <summary>
     /// Literal for code: Wales
@@ -11821,9 +15311,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWales = "1886-1";
 
     /// <summary>
+    /// Literal for code: V3RaceWales
+    /// </summary>
+    public const string LiteralV3RaceWales = "http://terminology.hl7.org/CodeSystem/v3-Race#1886-1";
+
+    /// <summary>
     /// Literal for code: WhiteMountain
     /// </summary>
     public const string LiteralWhiteMountain = "1887-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceWhiteMountain
+    /// </summary>
+    public const string LiteralV3RaceWhiteMountain = "http://terminology.hl7.org/CodeSystem/v3-Race#1887-9";
 
     /// <summary>
     /// Literal for code: WhiteMountainInupiat
@@ -11831,9 +15331,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWhiteMountainInupiat = "1888-7";
 
     /// <summary>
+    /// Literal for code: V3RaceWhiteMountainInupiat
+    /// </summary>
+    public const string LiteralV3RaceWhiteMountainInupiat = "http://terminology.hl7.org/CodeSystem/v3-Race#1888-7";
+
+    /// <summary>
     /// Literal for code: MaryQuoteSIgloo
     /// </summary>
     public const string LiteralMaryQuoteSIgloo = "1889-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceMaryQuoteSIgloo
+    /// </summary>
+    public const string LiteralV3RaceMaryQuoteSIgloo = "http://terminology.hl7.org/CodeSystem/v3-Race#1889-5";
 
     /// <summary>
     /// Literal for code: SiberianEskimo
@@ -11841,9 +15351,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSiberianEskimo = "1891-1";
 
     /// <summary>
+    /// Literal for code: V3RaceSiberianEskimo
+    /// </summary>
+    public const string LiteralV3RaceSiberianEskimo = "http://terminology.hl7.org/CodeSystem/v3-Race#1891-1";
+
+    /// <summary>
     /// Literal for code: Gambell
     /// </summary>
     public const string LiteralGambell = "1892-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceGambell
+    /// </summary>
+    public const string LiteralV3RaceGambell = "http://terminology.hl7.org/CodeSystem/v3-Race#1892-9";
 
     /// <summary>
     /// Literal for code: Savoonga
@@ -11851,9 +15371,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSavoonga = "1893-7";
 
     /// <summary>
+    /// Literal for code: V3RaceSavoonga
+    /// </summary>
+    public const string LiteralV3RaceSavoonga = "http://terminology.hl7.org/CodeSystem/v3-Race#1893-7";
+
+    /// <summary>
     /// Literal for code: SiberianYupik
     /// </summary>
     public const string LiteralSiberianYupik = "1894-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceSiberianYupik
+    /// </summary>
+    public const string LiteralV3RaceSiberianYupik = "http://terminology.hl7.org/CodeSystem/v3-Race#1894-5";
 
     /// <summary>
     /// Literal for code: YupikEskimo
@@ -11861,9 +15391,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralYupikEskimo = "1896-0";
 
     /// <summary>
+    /// Literal for code: V3RaceYupikEskimo
+    /// </summary>
+    public const string LiteralV3RaceYupikEskimo = "http://terminology.hl7.org/CodeSystem/v3-Race#1896-0";
+
+    /// <summary>
     /// Literal for code: Akiachak
     /// </summary>
     public const string LiteralAkiachak = "1897-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceAkiachak
+    /// </summary>
+    public const string LiteralV3RaceAkiachak = "http://terminology.hl7.org/CodeSystem/v3-Race#1897-8";
 
     /// <summary>
     /// Literal for code: Akiak
@@ -11871,9 +15411,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAkiak = "1898-6";
 
     /// <summary>
+    /// Literal for code: V3RaceAkiak
+    /// </summary>
+    public const string LiteralV3RaceAkiak = "http://terminology.hl7.org/CodeSystem/v3-Race#1898-6";
+
+    /// <summary>
     /// Literal for code: Alakanuk
     /// </summary>
     public const string LiteralAlakanuk = "1899-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceAlakanuk
+    /// </summary>
+    public const string LiteralV3RaceAlakanuk = "http://terminology.hl7.org/CodeSystem/v3-Race#1899-4";
 
     /// <summary>
     /// Literal for code: Aleknagik
@@ -11881,9 +15431,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAleknagik = "1900-0";
 
     /// <summary>
+    /// Literal for code: V3RaceAleknagik
+    /// </summary>
+    public const string LiteralV3RaceAleknagik = "http://terminology.hl7.org/CodeSystem/v3-Race#1900-0";
+
+    /// <summary>
     /// Literal for code: Andreafsky
     /// </summary>
     public const string LiteralAndreafsky = "1901-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceAndreafsky
+    /// </summary>
+    public const string LiteralV3RaceAndreafsky = "http://terminology.hl7.org/CodeSystem/v3-Race#1901-8";
 
     /// <summary>
     /// Literal for code: Aniak
@@ -11891,9 +15451,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAniak = "1902-6";
 
     /// <summary>
+    /// Literal for code: V3RaceAniak
+    /// </summary>
+    public const string LiteralV3RaceAniak = "http://terminology.hl7.org/CodeSystem/v3-Race#1902-6";
+
+    /// <summary>
     /// Literal for code: Atmautluak
     /// </summary>
     public const string LiteralAtmautluak = "1903-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceAtmautluak
+    /// </summary>
+    public const string LiteralV3RaceAtmautluak = "http://terminology.hl7.org/CodeSystem/v3-Race#1903-4";
 
     /// <summary>
     /// Literal for code: Bethel
@@ -11901,9 +15471,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBethel = "1904-2";
 
     /// <summary>
+    /// Literal for code: V3RaceBethel
+    /// </summary>
+    public const string LiteralV3RaceBethel = "http://terminology.hl7.org/CodeSystem/v3-Race#1904-2";
+
+    /// <summary>
     /// Literal for code: BillMooreQuoteSSlough
     /// </summary>
     public const string LiteralBillMooreQuoteSSlough = "1905-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceBillMooreQuoteSSlough
+    /// </summary>
+    public const string LiteralV3RaceBillMooreQuoteSSlough = "http://terminology.hl7.org/CodeSystem/v3-Race#1905-9";
 
     /// <summary>
     /// Literal for code: BristolBayYupik
@@ -11911,9 +15491,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBristolBayYupik = "1906-7";
 
     /// <summary>
+    /// Literal for code: V3RaceBristolBayYupik
+    /// </summary>
+    public const string LiteralV3RaceBristolBayYupik = "http://terminology.hl7.org/CodeSystem/v3-Race#1906-7";
+
+    /// <summary>
     /// Literal for code: CalistaYupik
     /// </summary>
     public const string LiteralCalistaYupik = "1907-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceCalistaYupik
+    /// </summary>
+    public const string LiteralV3RaceCalistaYupik = "http://terminology.hl7.org/CodeSystem/v3-Race#1907-5";
 
     /// <summary>
     /// Literal for code: Chefornak
@@ -11921,9 +15511,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChefornak = "1908-3";
 
     /// <summary>
+    /// Literal for code: V3RaceChefornak
+    /// </summary>
+    public const string LiteralV3RaceChefornak = "http://terminology.hl7.org/CodeSystem/v3-Race#1908-3";
+
+    /// <summary>
     /// Literal for code: Chevak
     /// </summary>
     public const string LiteralChevak = "1909-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceChevak
+    /// </summary>
+    public const string LiteralV3RaceChevak = "http://terminology.hl7.org/CodeSystem/v3-Race#1909-1";
 
     /// <summary>
     /// Literal for code: Chuathbaluk
@@ -11931,9 +15531,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChuathbaluk = "1910-9";
 
     /// <summary>
+    /// Literal for code: V3RaceChuathbaluk
+    /// </summary>
+    public const string LiteralV3RaceChuathbaluk = "http://terminology.hl7.org/CodeSystem/v3-Race#1910-9";
+
+    /// <summary>
     /// Literal for code: ClarkQuoteSPoint
     /// </summary>
     public const string LiteralClarkQuoteSPoint = "1911-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceClarkQuoteSPoint
+    /// </summary>
+    public const string LiteralV3RaceClarkQuoteSPoint = "http://terminology.hl7.org/CodeSystem/v3-Race#1911-7";
 
     /// <summary>
     /// Literal for code: CrookedCreek
@@ -11941,9 +15551,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCrookedCreek = "1912-5";
 
     /// <summary>
+    /// Literal for code: V3RaceCrookedCreek
+    /// </summary>
+    public const string LiteralV3RaceCrookedCreek = "http://terminology.hl7.org/CodeSystem/v3-Race#1912-5";
+
+    /// <summary>
     /// Literal for code: Dillingham
     /// </summary>
     public const string LiteralDillingham = "1913-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceDillingham
+    /// </summary>
+    public const string LiteralV3RaceDillingham = "http://terminology.hl7.org/CodeSystem/v3-Race#1913-3";
 
     /// <summary>
     /// Literal for code: Eek
@@ -11951,9 +15571,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEek = "1914-1";
 
     /// <summary>
+    /// Literal for code: V3RaceEek
+    /// </summary>
+    public const string LiteralV3RaceEek = "http://terminology.hl7.org/CodeSystem/v3-Race#1914-1";
+
+    /// <summary>
     /// Literal for code: Ekuk
     /// </summary>
     public const string LiteralEkuk = "1915-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceEkuk
+    /// </summary>
+    public const string LiteralV3RaceEkuk = "http://terminology.hl7.org/CodeSystem/v3-Race#1915-8";
 
     /// <summary>
     /// Literal for code: Ekwok
@@ -11961,9 +15591,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEkwok = "1916-6";
 
     /// <summary>
+    /// Literal for code: V3RaceEkwok
+    /// </summary>
+    public const string LiteralV3RaceEkwok = "http://terminology.hl7.org/CodeSystem/v3-Race#1916-6";
+
+    /// <summary>
     /// Literal for code: Emmonak
     /// </summary>
     public const string LiteralEmmonak = "1917-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceEmmonak
+    /// </summary>
+    public const string LiteralV3RaceEmmonak = "http://terminology.hl7.org/CodeSystem/v3-Race#1917-4";
 
     /// <summary>
     /// Literal for code: GoodnewsBay
@@ -11971,9 +15611,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGoodnewsBay = "1918-2";
 
     /// <summary>
+    /// Literal for code: V3RaceGoodnewsBay
+    /// </summary>
+    public const string LiteralV3RaceGoodnewsBay = "http://terminology.hl7.org/CodeSystem/v3-Race#1918-2";
+
+    /// <summary>
     /// Literal for code: HooperBay
     /// </summary>
     public const string LiteralHooperBay = "1919-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceHooperBay
+    /// </summary>
+    public const string LiteralV3RaceHooperBay = "http://terminology.hl7.org/CodeSystem/v3-Race#1919-0";
 
     /// <summary>
     /// Literal for code: IqurmuitRussianMission
@@ -11981,9 +15631,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIqurmuitRussianMission = "1920-8";
 
     /// <summary>
+    /// Literal for code: V3RaceIqurmuitRussianMission
+    /// </summary>
+    public const string LiteralV3RaceIqurmuitRussianMission = "http://terminology.hl7.org/CodeSystem/v3-Race#1920-8";
+
+    /// <summary>
     /// Literal for code: Kalskag
     /// </summary>
     public const string LiteralKalskag = "1921-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceKalskag
+    /// </summary>
+    public const string LiteralV3RaceKalskag = "http://terminology.hl7.org/CodeSystem/v3-Race#1921-6";
 
     /// <summary>
     /// Literal for code: Kasigluk
@@ -11991,9 +15651,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKasigluk = "1922-4";
 
     /// <summary>
+    /// Literal for code: V3RaceKasigluk
+    /// </summary>
+    public const string LiteralV3RaceKasigluk = "http://terminology.hl7.org/CodeSystem/v3-Race#1922-4";
+
+    /// <summary>
     /// Literal for code: Kipnuk
     /// </summary>
     public const string LiteralKipnuk = "1923-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceKipnuk
+    /// </summary>
+    public const string LiteralV3RaceKipnuk = "http://terminology.hl7.org/CodeSystem/v3-Race#1923-2";
 
     /// <summary>
     /// Literal for code: Koliganek
@@ -12001,9 +15671,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKoliganek = "1924-0";
 
     /// <summary>
+    /// Literal for code: V3RaceKoliganek
+    /// </summary>
+    public const string LiteralV3RaceKoliganek = "http://terminology.hl7.org/CodeSystem/v3-Race#1924-0";
+
+    /// <summary>
     /// Literal for code: Kongiganak
     /// </summary>
     public const string LiteralKongiganak = "1925-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceKongiganak
+    /// </summary>
+    public const string LiteralV3RaceKongiganak = "http://terminology.hl7.org/CodeSystem/v3-Race#1925-7";
 
     /// <summary>
     /// Literal for code: Kotlik
@@ -12011,9 +15691,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKotlik = "1926-5";
 
     /// <summary>
+    /// Literal for code: V3RaceKotlik
+    /// </summary>
+    public const string LiteralV3RaceKotlik = "http://terminology.hl7.org/CodeSystem/v3-Race#1926-5";
+
+    /// <summary>
     /// Literal for code: Kwethluk
     /// </summary>
     public const string LiteralKwethluk = "1927-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceKwethluk
+    /// </summary>
+    public const string LiteralV3RaceKwethluk = "http://terminology.hl7.org/CodeSystem/v3-Race#1927-3";
 
     /// <summary>
     /// Literal for code: Kwigillingok
@@ -12021,9 +15711,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKwigillingok = "1928-1";
 
     /// <summary>
+    /// Literal for code: V3RaceKwigillingok
+    /// </summary>
+    public const string LiteralV3RaceKwigillingok = "http://terminology.hl7.org/CodeSystem/v3-Race#1928-1";
+
+    /// <summary>
     /// Literal for code: Levelock
     /// </summary>
     public const string LiteralLevelock = "1929-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceLevelock
+    /// </summary>
+    public const string LiteralV3RaceLevelock = "http://terminology.hl7.org/CodeSystem/v3-Race#1929-9";
 
     /// <summary>
     /// Literal for code: LowerKalskag
@@ -12031,9 +15731,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLowerKalskag = "1930-7";
 
     /// <summary>
+    /// Literal for code: V3RaceLowerKalskag
+    /// </summary>
+    public const string LiteralV3RaceLowerKalskag = "http://terminology.hl7.org/CodeSystem/v3-Race#1930-7";
+
+    /// <summary>
     /// Literal for code: Manokotak
     /// </summary>
     public const string LiteralManokotak = "1931-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceManokotak
+    /// </summary>
+    public const string LiteralV3RaceManokotak = "http://terminology.hl7.org/CodeSystem/v3-Race#1931-5";
 
     /// <summary>
     /// Literal for code: Marshall
@@ -12041,9 +15751,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMarshall = "1932-3";
 
     /// <summary>
+    /// Literal for code: V3RaceMarshall
+    /// </summary>
+    public const string LiteralV3RaceMarshall = "http://terminology.hl7.org/CodeSystem/v3-Race#1932-3";
+
+    /// <summary>
     /// Literal for code: Mekoryuk
     /// </summary>
     public const string LiteralMekoryuk = "1933-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceMekoryuk
+    /// </summary>
+    public const string LiteralV3RaceMekoryuk = "http://terminology.hl7.org/CodeSystem/v3-Race#1933-1";
 
     /// <summary>
     /// Literal for code: MountainVillage
@@ -12051,9 +15771,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMountainVillage = "1934-9";
 
     /// <summary>
+    /// Literal for code: V3RaceMountainVillage
+    /// </summary>
+    public const string LiteralV3RaceMountainVillage = "http://terminology.hl7.org/CodeSystem/v3-Race#1934-9";
+
+    /// <summary>
     /// Literal for code: Naknek
     /// </summary>
     public const string LiteralNaknek = "1935-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceNaknek
+    /// </summary>
+    public const string LiteralV3RaceNaknek = "http://terminology.hl7.org/CodeSystem/v3-Race#1935-6";
 
     /// <summary>
     /// Literal for code: Napaumute
@@ -12061,9 +15791,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNapaumute = "1936-4";
 
     /// <summary>
+    /// Literal for code: V3RaceNapaumute
+    /// </summary>
+    public const string LiteralV3RaceNapaumute = "http://terminology.hl7.org/CodeSystem/v3-Race#1936-4";
+
+    /// <summary>
     /// Literal for code: Napakiak
     /// </summary>
     public const string LiteralNapakiak = "1937-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceNapakiak
+    /// </summary>
+    public const string LiteralV3RaceNapakiak = "http://terminology.hl7.org/CodeSystem/v3-Race#1937-2";
 
     /// <summary>
     /// Literal for code: Napaskiak
@@ -12071,9 +15811,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNapaskiak = "1938-0";
 
     /// <summary>
+    /// Literal for code: V3RaceNapaskiak
+    /// </summary>
+    public const string LiteralV3RaceNapaskiak = "http://terminology.hl7.org/CodeSystem/v3-Race#1938-0";
+
+    /// <summary>
     /// Literal for code: Newhalen
     /// </summary>
     public const string LiteralNewhalen = "1939-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceNewhalen
+    /// </summary>
+    public const string LiteralV3RaceNewhalen = "http://terminology.hl7.org/CodeSystem/v3-Race#1939-8";
 
     /// <summary>
     /// Literal for code: NewStuyahok
@@ -12081,9 +15831,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNewStuyahok = "1940-6";
 
     /// <summary>
+    /// Literal for code: V3RaceNewStuyahok
+    /// </summary>
+    public const string LiteralV3RaceNewStuyahok = "http://terminology.hl7.org/CodeSystem/v3-Race#1940-6";
+
+    /// <summary>
     /// Literal for code: Newtok
     /// </summary>
     public const string LiteralNewtok = "1941-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceNewtok
+    /// </summary>
+    public const string LiteralV3RaceNewtok = "http://terminology.hl7.org/CodeSystem/v3-Race#1941-4";
 
     /// <summary>
     /// Literal for code: Nightmute
@@ -12091,9 +15851,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNightmute = "1942-2";
 
     /// <summary>
+    /// Literal for code: V3RaceNightmute
+    /// </summary>
+    public const string LiteralV3RaceNightmute = "http://terminology.hl7.org/CodeSystem/v3-Race#1942-2";
+
+    /// <summary>
     /// Literal for code: Nunapitchukv
     /// </summary>
     public const string LiteralNunapitchukv = "1943-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceNunapitchukv
+    /// </summary>
+    public const string LiteralV3RaceNunapitchukv = "http://terminology.hl7.org/CodeSystem/v3-Race#1943-0";
 
     /// <summary>
     /// Literal for code: Oscarville
@@ -12101,9 +15871,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOscarville = "1944-8";
 
     /// <summary>
+    /// Literal for code: V3RaceOscarville
+    /// </summary>
+    public const string LiteralV3RaceOscarville = "http://terminology.hl7.org/CodeSystem/v3-Race#1944-8";
+
+    /// <summary>
     /// Literal for code: PilotStation
     /// </summary>
     public const string LiteralPilotStation = "1945-5";
+
+    /// <summary>
+    /// Literal for code: V3RacePilotStation
+    /// </summary>
+    public const string LiteralV3RacePilotStation = "http://terminology.hl7.org/CodeSystem/v3-Race#1945-5";
 
     /// <summary>
     /// Literal for code: PitkasPoint
@@ -12111,9 +15891,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPitkasPoint = "1946-3";
 
     /// <summary>
+    /// Literal for code: V3RacePitkasPoint
+    /// </summary>
+    public const string LiteralV3RacePitkasPoint = "http://terminology.hl7.org/CodeSystem/v3-Race#1946-3";
+
+    /// <summary>
     /// Literal for code: Platinum
     /// </summary>
     public const string LiteralPlatinum = "1947-1";
+
+    /// <summary>
+    /// Literal for code: V3RacePlatinum
+    /// </summary>
+    public const string LiteralV3RacePlatinum = "http://terminology.hl7.org/CodeSystem/v3-Race#1947-1";
 
     /// <summary>
     /// Literal for code: PortageCreek
@@ -12121,9 +15911,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPortageCreek = "1948-9";
 
     /// <summary>
+    /// Literal for code: V3RacePortageCreek
+    /// </summary>
+    public const string LiteralV3RacePortageCreek = "http://terminology.hl7.org/CodeSystem/v3-Race#1948-9";
+
+    /// <summary>
     /// Literal for code: Quinhagak
     /// </summary>
     public const string LiteralQuinhagak = "1949-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceQuinhagak
+    /// </summary>
+    public const string LiteralV3RaceQuinhagak = "http://terminology.hl7.org/CodeSystem/v3-Race#1949-7";
 
     /// <summary>
     /// Literal for code: RedDevil
@@ -12131,9 +15931,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRedDevil = "1950-5";
 
     /// <summary>
+    /// Literal for code: V3RaceRedDevil
+    /// </summary>
+    public const string LiteralV3RaceRedDevil = "http://terminology.hl7.org/CodeSystem/v3-Race#1950-5";
+
+    /// <summary>
     /// Literal for code: StMichael
     /// </summary>
     public const string LiteralStMichael = "1951-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceStMichael
+    /// </summary>
+    public const string LiteralV3RaceStMichael = "http://terminology.hl7.org/CodeSystem/v3-Race#1951-3";
 
     /// <summary>
     /// Literal for code: ScammonBay
@@ -12141,9 +15951,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralScammonBay = "1952-1";
 
     /// <summary>
+    /// Literal for code: V3RaceScammonBay
+    /// </summary>
+    public const string LiteralV3RaceScammonBay = "http://terminology.hl7.org/CodeSystem/v3-Race#1952-1";
+
+    /// <summary>
     /// Literal for code: SheldonQuoteSPoint
     /// </summary>
     public const string LiteralSheldonQuoteSPoint = "1953-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceSheldonQuoteSPoint
+    /// </summary>
+    public const string LiteralV3RaceSheldonQuoteSPoint = "http://terminology.hl7.org/CodeSystem/v3-Race#1953-9";
 
     /// <summary>
     /// Literal for code: Sleetmute
@@ -12151,9 +15971,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSleetmute = "1954-7";
 
     /// <summary>
+    /// Literal for code: V3RaceSleetmute
+    /// </summary>
+    public const string LiteralV3RaceSleetmute = "http://terminology.hl7.org/CodeSystem/v3-Race#1954-7";
+
+    /// <summary>
     /// Literal for code: Stebbins
     /// </summary>
     public const string LiteralStebbins = "1955-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceStebbins
+    /// </summary>
+    public const string LiteralV3RaceStebbins = "http://terminology.hl7.org/CodeSystem/v3-Race#1955-4";
 
     /// <summary>
     /// Literal for code: Togiak
@@ -12161,9 +15991,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTogiak = "1956-2";
 
     /// <summary>
+    /// Literal for code: V3RaceTogiak
+    /// </summary>
+    public const string LiteralV3RaceTogiak = "http://terminology.hl7.org/CodeSystem/v3-Race#1956-2";
+
+    /// <summary>
     /// Literal for code: Toksook
     /// </summary>
     public const string LiteralToksook = "1957-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceToksook
+    /// </summary>
+    public const string LiteralV3RaceToksook = "http://terminology.hl7.org/CodeSystem/v3-Race#1957-0";
 
     /// <summary>
     /// Literal for code: Tulukskak
@@ -12171,9 +16011,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTulukskak = "1958-8";
 
     /// <summary>
+    /// Literal for code: V3RaceTulukskak
+    /// </summary>
+    public const string LiteralV3RaceTulukskak = "http://terminology.hl7.org/CodeSystem/v3-Race#1958-8";
+
+    /// <summary>
     /// Literal for code: Tuntutuliak
     /// </summary>
     public const string LiteralTuntutuliak = "1959-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceTuntutuliak
+    /// </summary>
+    public const string LiteralV3RaceTuntutuliak = "http://terminology.hl7.org/CodeSystem/v3-Race#1959-6";
 
     /// <summary>
     /// Literal for code: Tununak
@@ -12181,9 +16031,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTununak = "1960-4";
 
     /// <summary>
+    /// Literal for code: V3RaceTununak
+    /// </summary>
+    public const string LiteralV3RaceTununak = "http://terminology.hl7.org/CodeSystem/v3-Race#1960-4";
+
+    /// <summary>
     /// Literal for code: TwinHills
     /// </summary>
     public const string LiteralTwinHills = "1961-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceTwinHills
+    /// </summary>
+    public const string LiteralV3RaceTwinHills = "http://terminology.hl7.org/CodeSystem/v3-Race#1961-2";
 
     /// <summary>
     /// Literal for code: Georgetown_2
@@ -12191,9 +16051,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGeorgetown_2 = "1962-0";
 
     /// <summary>
+    /// Literal for code: V3RaceGeorgetown_2
+    /// </summary>
+    public const string LiteralV3RaceGeorgetown_2 = "http://terminology.hl7.org/CodeSystem/v3-Race#1962-0";
+
+    /// <summary>
     /// Literal for code: StMaryQuoteS
     /// </summary>
     public const string LiteralStMaryQuoteS = "1963-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceStMaryQuoteS
+    /// </summary>
+    public const string LiteralV3RaceStMaryQuoteS = "http://terminology.hl7.org/CodeSystem/v3-Race#1963-8";
 
     /// <summary>
     /// Literal for code: Umkumiate
@@ -12201,9 +16071,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUmkumiate = "1964-6";
 
     /// <summary>
+    /// Literal for code: V3RaceUmkumiate
+    /// </summary>
+    public const string LiteralV3RaceUmkumiate = "http://terminology.hl7.org/CodeSystem/v3-Race#1964-6";
+
+    /// <summary>
     /// Literal for code: Aleut
     /// </summary>
     public const string LiteralAleut = "1966-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceAleut
+    /// </summary>
+    public const string LiteralV3RaceAleut = "http://terminology.hl7.org/CodeSystem/v3-Race#1966-1";
 
     /// <summary>
     /// Literal for code: AlutiiqAleut
@@ -12211,9 +16091,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlutiiqAleut = "1968-7";
 
     /// <summary>
+    /// Literal for code: V3RaceAlutiiqAleut
+    /// </summary>
+    public const string LiteralV3RaceAlutiiqAleut = "http://terminology.hl7.org/CodeSystem/v3-Race#1968-7";
+
+    /// <summary>
     /// Literal for code: Tatitlek
     /// </summary>
     public const string LiteralTatitlek = "1969-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceTatitlek
+    /// </summary>
+    public const string LiteralV3RaceTatitlek = "http://terminology.hl7.org/CodeSystem/v3-Race#1969-5";
 
     /// <summary>
     /// Literal for code: Ugashik
@@ -12221,9 +16111,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUgashik = "1970-3";
 
     /// <summary>
+    /// Literal for code: V3RaceUgashik
+    /// </summary>
+    public const string LiteralV3RaceUgashik = "http://terminology.hl7.org/CodeSystem/v3-Race#1970-3";
+
+    /// <summary>
     /// Literal for code: BristolBayAleut
     /// </summary>
     public const string LiteralBristolBayAleut = "1972-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceBristolBayAleut
+    /// </summary>
+    public const string LiteralV3RaceBristolBayAleut = "http://terminology.hl7.org/CodeSystem/v3-Race#1972-9";
 
     /// <summary>
     /// Literal for code: Chignik
@@ -12231,9 +16131,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChignik = "1973-7";
 
     /// <summary>
+    /// Literal for code: V3RaceChignik
+    /// </summary>
+    public const string LiteralV3RaceChignik = "http://terminology.hl7.org/CodeSystem/v3-Race#1973-7";
+
+    /// <summary>
     /// Literal for code: ChignikLake
     /// </summary>
     public const string LiteralChignikLake = "1974-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceChignikLake
+    /// </summary>
+    public const string LiteralV3RaceChignikLake = "http://terminology.hl7.org/CodeSystem/v3-Race#1974-5";
 
     /// <summary>
     /// Literal for code: Egegik
@@ -12241,9 +16151,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEgegik = "1975-2";
 
     /// <summary>
+    /// Literal for code: V3RaceEgegik
+    /// </summary>
+    public const string LiteralV3RaceEgegik = "http://terminology.hl7.org/CodeSystem/v3-Race#1975-2";
+
+    /// <summary>
     /// Literal for code: Igiugig
     /// </summary>
     public const string LiteralIgiugig = "1976-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceIgiugig
+    /// </summary>
+    public const string LiteralV3RaceIgiugig = "http://terminology.hl7.org/CodeSystem/v3-Race#1976-0";
 
     /// <summary>
     /// Literal for code: IvanofBay
@@ -12251,9 +16171,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIvanofBay = "1977-8";
 
     /// <summary>
+    /// Literal for code: V3RaceIvanofBay
+    /// </summary>
+    public const string LiteralV3RaceIvanofBay = "http://terminology.hl7.org/CodeSystem/v3-Race#1977-8";
+
+    /// <summary>
     /// Literal for code: KingSalmon
     /// </summary>
     public const string LiteralKingSalmon = "1978-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceKingSalmon
+    /// </summary>
+    public const string LiteralV3RaceKingSalmon = "http://terminology.hl7.org/CodeSystem/v3-Race#1978-6";
 
     /// <summary>
     /// Literal for code: Kokhanok
@@ -12261,9 +16191,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKokhanok = "1979-4";
 
     /// <summary>
+    /// Literal for code: V3RaceKokhanok
+    /// </summary>
+    public const string LiteralV3RaceKokhanok = "http://terminology.hl7.org/CodeSystem/v3-Race#1979-4";
+
+    /// <summary>
     /// Literal for code: Perryville
     /// </summary>
     public const string LiteralPerryville = "1980-2";
+
+    /// <summary>
+    /// Literal for code: V3RacePerryville
+    /// </summary>
+    public const string LiteralV3RacePerryville = "http://terminology.hl7.org/CodeSystem/v3-Race#1980-2";
 
     /// <summary>
     /// Literal for code: PilotPoint
@@ -12271,9 +16211,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPilotPoint = "1981-0";
 
     /// <summary>
+    /// Literal for code: V3RacePilotPoint
+    /// </summary>
+    public const string LiteralV3RacePilotPoint = "http://terminology.hl7.org/CodeSystem/v3-Race#1981-0";
+
+    /// <summary>
     /// Literal for code: PortHeiden
     /// </summary>
     public const string LiteralPortHeiden = "1982-8";
+
+    /// <summary>
+    /// Literal for code: V3RacePortHeiden
+    /// </summary>
+    public const string LiteralV3RacePortHeiden = "http://terminology.hl7.org/CodeSystem/v3-Race#1982-8";
 
     /// <summary>
     /// Literal for code: ChugachAleut
@@ -12281,9 +16231,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChugachAleut = "1984-4";
 
     /// <summary>
+    /// Literal for code: V3RaceChugachAleut
+    /// </summary>
+    public const string LiteralV3RaceChugachAleut = "http://terminology.hl7.org/CodeSystem/v3-Race#1984-4";
+
+    /// <summary>
     /// Literal for code: Chenega
     /// </summary>
     public const string LiteralChenega = "1985-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceChenega
+    /// </summary>
+    public const string LiteralV3RaceChenega = "http://terminology.hl7.org/CodeSystem/v3-Race#1985-1";
 
     /// <summary>
     /// Literal for code: ChugachCorporation
@@ -12291,9 +16251,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChugachCorporation = "1986-9";
 
     /// <summary>
+    /// Literal for code: V3RaceChugachCorporation
+    /// </summary>
+    public const string LiteralV3RaceChugachCorporation = "http://terminology.hl7.org/CodeSystem/v3-Race#1986-9";
+
+    /// <summary>
     /// Literal for code: EnglishBay
     /// </summary>
     public const string LiteralEnglishBay = "1987-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceEnglishBay
+    /// </summary>
+    public const string LiteralV3RaceEnglishBay = "http://terminology.hl7.org/CodeSystem/v3-Race#1987-7";
 
     /// <summary>
     /// Literal for code: PortGraham
@@ -12301,9 +16271,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPortGraham = "1988-5";
 
     /// <summary>
+    /// Literal for code: V3RacePortGraham
+    /// </summary>
+    public const string LiteralV3RacePortGraham = "http://terminology.hl7.org/CodeSystem/v3-Race#1988-5";
+
+    /// <summary>
     /// Literal for code: Eyak
     /// </summary>
     public const string LiteralEyak = "1990-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceEyak
+    /// </summary>
+    public const string LiteralV3RaceEyak = "http://terminology.hl7.org/CodeSystem/v3-Race#1990-1";
 
     /// <summary>
     /// Literal for code: KoniagAleut
@@ -12311,9 +16291,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKoniagAleut = "1992-7";
 
     /// <summary>
+    /// Literal for code: V3RaceKoniagAleut
+    /// </summary>
+    public const string LiteralV3RaceKoniagAleut = "http://terminology.hl7.org/CodeSystem/v3-Race#1992-7";
+
+    /// <summary>
     /// Literal for code: Akhiok
     /// </summary>
     public const string LiteralAkhiok = "1993-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceAkhiok
+    /// </summary>
+    public const string LiteralV3RaceAkhiok = "http://terminology.hl7.org/CodeSystem/v3-Race#1993-5";
 
     /// <summary>
     /// Literal for code: Agdaagux
@@ -12321,9 +16311,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAgdaagux = "1994-3";
 
     /// <summary>
+    /// Literal for code: V3RaceAgdaagux
+    /// </summary>
+    public const string LiteralV3RaceAgdaagux = "http://terminology.hl7.org/CodeSystem/v3-Race#1994-3";
+
+    /// <summary>
     /// Literal for code: Karluk
     /// </summary>
     public const string LiteralKarluk = "1995-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceKarluk
+    /// </summary>
+    public const string LiteralV3RaceKarluk = "http://terminology.hl7.org/CodeSystem/v3-Race#1995-0";
 
     /// <summary>
     /// Literal for code: Kodiak
@@ -12331,9 +16331,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKodiak = "1996-8";
 
     /// <summary>
+    /// Literal for code: V3RaceKodiak
+    /// </summary>
+    public const string LiteralV3RaceKodiak = "http://terminology.hl7.org/CodeSystem/v3-Race#1996-8";
+
+    /// <summary>
     /// Literal for code: LarsenBay
     /// </summary>
     public const string LiteralLarsenBay = "1997-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceLarsenBay
+    /// </summary>
+    public const string LiteralV3RaceLarsenBay = "http://terminology.hl7.org/CodeSystem/v3-Race#1997-6";
 
     /// <summary>
     /// Literal for code: OldHarbor
@@ -12341,9 +16351,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOldHarbor = "1998-4";
 
     /// <summary>
+    /// Literal for code: V3RaceOldHarbor
+    /// </summary>
+    public const string LiteralV3RaceOldHarbor = "http://terminology.hl7.org/CodeSystem/v3-Race#1998-4";
+
+    /// <summary>
     /// Literal for code: Ouzinkie
     /// </summary>
     public const string LiteralOuzinkie = "1999-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceOuzinkie
+    /// </summary>
+    public const string LiteralV3RaceOuzinkie = "http://terminology.hl7.org/CodeSystem/v3-Race#1999-2";
 
     /// <summary>
     /// Literal for code: PortLions
@@ -12351,9 +16371,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPortLions = "2000-8";
 
     /// <summary>
+    /// Literal for code: V3RacePortLions
+    /// </summary>
+    public const string LiteralV3RacePortLions = "http://terminology.hl7.org/CodeSystem/v3-Race#2000-8";
+
+    /// <summary>
     /// Literal for code: Sugpiaq
     /// </summary>
     public const string LiteralSugpiaq = "2002-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceSugpiaq
+    /// </summary>
+    public const string LiteralV3RaceSugpiaq = "http://terminology.hl7.org/CodeSystem/v3-Race#2002-4";
 
     /// <summary>
     /// Literal for code: Suqpigaq
@@ -12361,9 +16391,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSuqpigaq = "2004-0";
 
     /// <summary>
+    /// Literal for code: V3RaceSuqpigaq
+    /// </summary>
+    public const string LiteralV3RaceSuqpigaq = "http://terminology.hl7.org/CodeSystem/v3-Race#2004-0";
+
+    /// <summary>
     /// Literal for code: UnanganAleut
     /// </summary>
     public const string LiteralUnanganAleut = "2006-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceUnanganAleut
+    /// </summary>
+    public const string LiteralV3RaceUnanganAleut = "http://terminology.hl7.org/CodeSystem/v3-Race#2006-5";
 
     /// <summary>
     /// Literal for code: Akutan
@@ -12371,9 +16411,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAkutan = "2007-3";
 
     /// <summary>
+    /// Literal for code: V3RaceAkutan
+    /// </summary>
+    public const string LiteralV3RaceAkutan = "http://terminology.hl7.org/CodeSystem/v3-Race#2007-3";
+
+    /// <summary>
     /// Literal for code: AleutCorporation
     /// </summary>
     public const string LiteralAleutCorporation = "2008-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceAleutCorporation
+    /// </summary>
+    public const string LiteralV3RaceAleutCorporation = "http://terminology.hl7.org/CodeSystem/v3-Race#2008-1";
 
     /// <summary>
     /// Literal for code: Aleutian
@@ -12381,9 +16431,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAleutian = "2009-9";
 
     /// <summary>
+    /// Literal for code: V3RaceAleutian
+    /// </summary>
+    public const string LiteralV3RaceAleutian = "http://terminology.hl7.org/CodeSystem/v3-Race#2009-9";
+
+    /// <summary>
     /// Literal for code: AleutianIslander
     /// </summary>
     public const string LiteralAleutianIslander = "2010-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceAleutianIslander
+    /// </summary>
+    public const string LiteralV3RaceAleutianIslander = "http://terminology.hl7.org/CodeSystem/v3-Race#2010-7";
 
     /// <summary>
     /// Literal for code: Atka
@@ -12391,9 +16451,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAtka = "2011-5";
 
     /// <summary>
+    /// Literal for code: V3RaceAtka
+    /// </summary>
+    public const string LiteralV3RaceAtka = "http://terminology.hl7.org/CodeSystem/v3-Race#2011-5";
+
+    /// <summary>
     /// Literal for code: Belkofski
     /// </summary>
     public const string LiteralBelkofski = "2012-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceBelkofski
+    /// </summary>
+    public const string LiteralV3RaceBelkofski = "http://terminology.hl7.org/CodeSystem/v3-Race#2012-3";
 
     /// <summary>
     /// Literal for code: ChignikLagoon
@@ -12401,9 +16471,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChignikLagoon = "2013-1";
 
     /// <summary>
+    /// Literal for code: V3RaceChignikLagoon
+    /// </summary>
+    public const string LiteralV3RaceChignikLagoon = "http://terminology.hl7.org/CodeSystem/v3-Race#2013-1";
+
+    /// <summary>
     /// Literal for code: KingCove
     /// </summary>
     public const string LiteralKingCove = "2014-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceKingCove
+    /// </summary>
+    public const string LiteralV3RaceKingCove = "http://terminology.hl7.org/CodeSystem/v3-Race#2014-9";
 
     /// <summary>
     /// Literal for code: FalsePass
@@ -12411,9 +16491,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFalsePass = "2015-6";
 
     /// <summary>
+    /// Literal for code: V3RaceFalsePass
+    /// </summary>
+    public const string LiteralV3RaceFalsePass = "http://terminology.hl7.org/CodeSystem/v3-Race#2015-6";
+
+    /// <summary>
     /// Literal for code: NelsonLagoon
     /// </summary>
     public const string LiteralNelsonLagoon = "2016-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceNelsonLagoon
+    /// </summary>
+    public const string LiteralV3RaceNelsonLagoon = "http://terminology.hl7.org/CodeSystem/v3-Race#2016-4";
 
     /// <summary>
     /// Literal for code: Nikolski
@@ -12421,9 +16511,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNikolski = "2017-2";
 
     /// <summary>
+    /// Literal for code: V3RaceNikolski
+    /// </summary>
+    public const string LiteralV3RaceNikolski = "http://terminology.hl7.org/CodeSystem/v3-Race#2017-2";
+
+    /// <summary>
     /// Literal for code: PauloffHarbor
     /// </summary>
     public const string LiteralPauloffHarbor = "2018-0";
+
+    /// <summary>
+    /// Literal for code: V3RacePauloffHarbor
+    /// </summary>
+    public const string LiteralV3RacePauloffHarbor = "http://terminology.hl7.org/CodeSystem/v3-Race#2018-0";
 
     /// <summary>
     /// Literal for code: QaganToyagungin
@@ -12431,9 +16531,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralQaganToyagungin = "2019-8";
 
     /// <summary>
+    /// Literal for code: V3RaceQaganToyagungin
+    /// </summary>
+    public const string LiteralV3RaceQaganToyagungin = "http://terminology.hl7.org/CodeSystem/v3-Race#2019-8";
+
+    /// <summary>
     /// Literal for code: Qawalangin
     /// </summary>
     public const string LiteralQawalangin = "2020-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceQawalangin
+    /// </summary>
+    public const string LiteralV3RaceQawalangin = "http://terminology.hl7.org/CodeSystem/v3-Race#2020-6";
 
     /// <summary>
     /// Literal for code: StGeorge
@@ -12441,9 +16551,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStGeorge = "2021-4";
 
     /// <summary>
+    /// Literal for code: V3RaceStGeorge
+    /// </summary>
+    public const string LiteralV3RaceStGeorge = "http://terminology.hl7.org/CodeSystem/v3-Race#2021-4";
+
+    /// <summary>
     /// Literal for code: StPaul
     /// </summary>
     public const string LiteralStPaul = "2022-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceStPaul
+    /// </summary>
+    public const string LiteralV3RaceStPaul = "http://terminology.hl7.org/CodeSystem/v3-Race#2022-2";
 
     /// <summary>
     /// Literal for code: SandPoint
@@ -12451,9 +16571,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSandPoint = "2023-0";
 
     /// <summary>
+    /// Literal for code: V3RaceSandPoint
+    /// </summary>
+    public const string LiteralV3RaceSandPoint = "http://terminology.hl7.org/CodeSystem/v3-Race#2023-0";
+
+    /// <summary>
     /// Literal for code: SouthNaknek
     /// </summary>
     public const string LiteralSouthNaknek = "2024-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceSouthNaknek
+    /// </summary>
+    public const string LiteralV3RaceSouthNaknek = "http://terminology.hl7.org/CodeSystem/v3-Race#2024-8";
 
     /// <summary>
     /// Literal for code: Unalaska
@@ -12461,9 +16591,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUnalaska = "2025-5";
 
     /// <summary>
+    /// Literal for code: V3RaceUnalaska
+    /// </summary>
+    public const string LiteralV3RaceUnalaska = "http://terminology.hl7.org/CodeSystem/v3-Race#2025-5";
+
+    /// <summary>
     /// Literal for code: Unga
     /// </summary>
     public const string LiteralUnga = "2026-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceUnga
+    /// </summary>
+    public const string LiteralV3RaceUnga = "http://terminology.hl7.org/CodeSystem/v3-Race#2026-3";
 
     /// <summary>
     /// Literal for code: Asian
@@ -12471,9 +16611,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAsian = "2028-9";
 
     /// <summary>
+    /// Literal for code: V3RaceAsian
+    /// </summary>
+    public const string LiteralV3RaceAsian = "http://terminology.hl7.org/CodeSystem/v3-Race#2028-9";
+
+    /// <summary>
     /// Literal for code: AsianIndian
     /// </summary>
     public const string LiteralAsianIndian = "2029-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceAsianIndian
+    /// </summary>
+    public const string LiteralV3RaceAsianIndian = "http://terminology.hl7.org/CodeSystem/v3-Race#2029-7";
 
     /// <summary>
     /// Literal for code: Bangladeshi
@@ -12481,9 +16631,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBangladeshi = "2030-5";
 
     /// <summary>
+    /// Literal for code: V3RaceBangladeshi
+    /// </summary>
+    public const string LiteralV3RaceBangladeshi = "http://terminology.hl7.org/CodeSystem/v3-Race#2030-5";
+
+    /// <summary>
     /// Literal for code: Bhutanese
     /// </summary>
     public const string LiteralBhutanese = "2031-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceBhutanese
+    /// </summary>
+    public const string LiteralV3RaceBhutanese = "http://terminology.hl7.org/CodeSystem/v3-Race#2031-3";
 
     /// <summary>
     /// Literal for code: Burmese
@@ -12491,9 +16651,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBurmese = "2032-1";
 
     /// <summary>
+    /// Literal for code: V3RaceBurmese
+    /// </summary>
+    public const string LiteralV3RaceBurmese = "http://terminology.hl7.org/CodeSystem/v3-Race#2032-1";
+
+    /// <summary>
     /// Literal for code: Cambodian
     /// </summary>
     public const string LiteralCambodian = "2033-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceCambodian
+    /// </summary>
+    public const string LiteralV3RaceCambodian = "http://terminology.hl7.org/CodeSystem/v3-Race#2033-9";
 
     /// <summary>
     /// Literal for code: Chinese
@@ -12501,9 +16671,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChinese = "2034-7";
 
     /// <summary>
+    /// Literal for code: V3RaceChinese
+    /// </summary>
+    public const string LiteralV3RaceChinese = "http://terminology.hl7.org/CodeSystem/v3-Race#2034-7";
+
+    /// <summary>
     /// Literal for code: Taiwanese
     /// </summary>
     public const string LiteralTaiwanese = "2035-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceTaiwanese
+    /// </summary>
+    public const string LiteralV3RaceTaiwanese = "http://terminology.hl7.org/CodeSystem/v3-Race#2035-4";
 
     /// <summary>
     /// Literal for code: Filipino
@@ -12511,9 +16691,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFilipino = "2036-2";
 
     /// <summary>
+    /// Literal for code: V3RaceFilipino
+    /// </summary>
+    public const string LiteralV3RaceFilipino = "http://terminology.hl7.org/CodeSystem/v3-Race#2036-2";
+
+    /// <summary>
     /// Literal for code: Hmong
     /// </summary>
     public const string LiteralHmong = "2037-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceHmong
+    /// </summary>
+    public const string LiteralV3RaceHmong = "http://terminology.hl7.org/CodeSystem/v3-Race#2037-0";
 
     /// <summary>
     /// Literal for code: Indonesian
@@ -12521,9 +16711,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIndonesian = "2038-8";
 
     /// <summary>
+    /// Literal for code: V3RaceIndonesian
+    /// </summary>
+    public const string LiteralV3RaceIndonesian = "http://terminology.hl7.org/CodeSystem/v3-Race#2038-8";
+
+    /// <summary>
     /// Literal for code: Japanese
     /// </summary>
     public const string LiteralJapanese = "2039-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceJapanese
+    /// </summary>
+    public const string LiteralV3RaceJapanese = "http://terminology.hl7.org/CodeSystem/v3-Race#2039-6";
 
     /// <summary>
     /// Literal for code: Korean
@@ -12531,9 +16731,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKorean = "2040-4";
 
     /// <summary>
+    /// Literal for code: V3RaceKorean
+    /// </summary>
+    public const string LiteralV3RaceKorean = "http://terminology.hl7.org/CodeSystem/v3-Race#2040-4";
+
+    /// <summary>
     /// Literal for code: Laotian
     /// </summary>
     public const string LiteralLaotian = "2041-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceLaotian
+    /// </summary>
+    public const string LiteralV3RaceLaotian = "http://terminology.hl7.org/CodeSystem/v3-Race#2041-2";
 
     /// <summary>
     /// Literal for code: Malaysian
@@ -12541,9 +16751,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMalaysian = "2042-0";
 
     /// <summary>
+    /// Literal for code: V3RaceMalaysian
+    /// </summary>
+    public const string LiteralV3RaceMalaysian = "http://terminology.hl7.org/CodeSystem/v3-Race#2042-0";
+
+    /// <summary>
     /// Literal for code: Okinawan
     /// </summary>
     public const string LiteralOkinawan = "2043-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceOkinawan
+    /// </summary>
+    public const string LiteralV3RaceOkinawan = "http://terminology.hl7.org/CodeSystem/v3-Race#2043-8";
 
     /// <summary>
     /// Literal for code: Pakistani
@@ -12551,9 +16771,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPakistani = "2044-6";
 
     /// <summary>
+    /// Literal for code: V3RacePakistani
+    /// </summary>
+    public const string LiteralV3RacePakistani = "http://terminology.hl7.org/CodeSystem/v3-Race#2044-6";
+
+    /// <summary>
     /// Literal for code: SriLankan
     /// </summary>
     public const string LiteralSriLankan = "2045-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceSriLankan
+    /// </summary>
+    public const string LiteralV3RaceSriLankan = "http://terminology.hl7.org/CodeSystem/v3-Race#2045-3";
 
     /// <summary>
     /// Literal for code: Thai
@@ -12561,9 +16791,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThai = "2046-1";
 
     /// <summary>
+    /// Literal for code: V3RaceThai
+    /// </summary>
+    public const string LiteralV3RaceThai = "http://terminology.hl7.org/CodeSystem/v3-Race#2046-1";
+
+    /// <summary>
     /// Literal for code: Vietnamese
     /// </summary>
     public const string LiteralVietnamese = "2047-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceVietnamese
+    /// </summary>
+    public const string LiteralV3RaceVietnamese = "http://terminology.hl7.org/CodeSystem/v3-Race#2047-9";
 
     /// <summary>
     /// Literal for code: IwoJiman
@@ -12571,9 +16811,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIwoJiman = "2048-7";
 
     /// <summary>
+    /// Literal for code: V3RaceIwoJiman
+    /// </summary>
+    public const string LiteralV3RaceIwoJiman = "http://terminology.hl7.org/CodeSystem/v3-Race#2048-7";
+
+    /// <summary>
     /// Literal for code: Maldivian
     /// </summary>
     public const string LiteralMaldivian = "2049-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceMaldivian
+    /// </summary>
+    public const string LiteralV3RaceMaldivian = "http://terminology.hl7.org/CodeSystem/v3-Race#2049-5";
 
     /// <summary>
     /// Literal for code: Nepalese
@@ -12581,9 +16831,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNepalese = "2050-3";
 
     /// <summary>
+    /// Literal for code: V3RaceNepalese
+    /// </summary>
+    public const string LiteralV3RaceNepalese = "http://terminology.hl7.org/CodeSystem/v3-Race#2050-3";
+
+    /// <summary>
     /// Literal for code: Singaporean
     /// </summary>
     public const string LiteralSingaporean = "2051-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceSingaporean
+    /// </summary>
+    public const string LiteralV3RaceSingaporean = "http://terminology.hl7.org/CodeSystem/v3-Race#2051-1";
 
     /// <summary>
     /// Literal for code: Madagascar
@@ -12591,9 +16851,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMadagascar = "2052-9";
 
     /// <summary>
+    /// Literal for code: V3RaceMadagascar
+    /// </summary>
+    public const string LiteralV3RaceMadagascar = "http://terminology.hl7.org/CodeSystem/v3-Race#2052-9";
+
+    /// <summary>
     /// Literal for code: BlackOrAfricanAmerican
     /// </summary>
     public const string LiteralBlackOrAfricanAmerican = "2054-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceBlackOrAfricanAmerican
+    /// </summary>
+    public const string LiteralV3RaceBlackOrAfricanAmerican = "http://terminology.hl7.org/CodeSystem/v3-Race#2054-5";
 
     /// <summary>
     /// Literal for code: Black
@@ -12601,9 +16871,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBlack = "2056-0";
 
     /// <summary>
+    /// Literal for code: V3RaceBlack
+    /// </summary>
+    public const string LiteralV3RaceBlack = "http://terminology.hl7.org/CodeSystem/v3-Race#2056-0";
+
+    /// <summary>
     /// Literal for code: AfricanAmerican
     /// </summary>
     public const string LiteralAfricanAmerican = "2058-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceAfricanAmerican
+    /// </summary>
+    public const string LiteralV3RaceAfricanAmerican = "http://terminology.hl7.org/CodeSystem/v3-Race#2058-6";
 
     /// <summary>
     /// Literal for code: African
@@ -12611,9 +16891,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAfrican = "2060-2";
 
     /// <summary>
+    /// Literal for code: V3RaceAfrican
+    /// </summary>
+    public const string LiteralV3RaceAfrican = "http://terminology.hl7.org/CodeSystem/v3-Race#2060-2";
+
+    /// <summary>
     /// Literal for code: Botswanan
     /// </summary>
     public const string LiteralBotswanan = "2061-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceBotswanan
+    /// </summary>
+    public const string LiteralV3RaceBotswanan = "http://terminology.hl7.org/CodeSystem/v3-Race#2061-0";
 
     /// <summary>
     /// Literal for code: Ethiopian
@@ -12621,9 +16911,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEthiopian = "2062-8";
 
     /// <summary>
+    /// Literal for code: V3RaceEthiopian
+    /// </summary>
+    public const string LiteralV3RaceEthiopian = "http://terminology.hl7.org/CodeSystem/v3-Race#2062-8";
+
+    /// <summary>
     /// Literal for code: Liberian
     /// </summary>
     public const string LiteralLiberian = "2063-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceLiberian
+    /// </summary>
+    public const string LiteralV3RaceLiberian = "http://terminology.hl7.org/CodeSystem/v3-Race#2063-6";
 
     /// <summary>
     /// Literal for code: Namibian
@@ -12631,9 +16931,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNamibian = "2064-4";
 
     /// <summary>
+    /// Literal for code: V3RaceNamibian
+    /// </summary>
+    public const string LiteralV3RaceNamibian = "http://terminology.hl7.org/CodeSystem/v3-Race#2064-4";
+
+    /// <summary>
     /// Literal for code: Nigerian
     /// </summary>
     public const string LiteralNigerian = "2065-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceNigerian
+    /// </summary>
+    public const string LiteralV3RaceNigerian = "http://terminology.hl7.org/CodeSystem/v3-Race#2065-1";
 
     /// <summary>
     /// Literal for code: Zairean
@@ -12641,9 +16951,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralZairean = "2066-9";
 
     /// <summary>
+    /// Literal for code: V3RaceZairean
+    /// </summary>
+    public const string LiteralV3RaceZairean = "http://terminology.hl7.org/CodeSystem/v3-Race#2066-9";
+
+    /// <summary>
     /// Literal for code: Bahamian
     /// </summary>
     public const string LiteralBahamian = "2067-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceBahamian
+    /// </summary>
+    public const string LiteralV3RaceBahamian = "http://terminology.hl7.org/CodeSystem/v3-Race#2067-7";
 
     /// <summary>
     /// Literal for code: Barbadian
@@ -12651,9 +16971,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBarbadian = "2068-5";
 
     /// <summary>
+    /// Literal for code: V3RaceBarbadian
+    /// </summary>
+    public const string LiteralV3RaceBarbadian = "http://terminology.hl7.org/CodeSystem/v3-Race#2068-5";
+
+    /// <summary>
     /// Literal for code: Dominican
     /// </summary>
     public const string LiteralDominican = "2069-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceDominican
+    /// </summary>
+    public const string LiteralV3RaceDominican = "http://terminology.hl7.org/CodeSystem/v3-Race#2069-3";
 
     /// <summary>
     /// Literal for code: DominicaIslander
@@ -12661,9 +16991,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDominicaIslander = "2070-1";
 
     /// <summary>
+    /// Literal for code: V3RaceDominicaIslander
+    /// </summary>
+    public const string LiteralV3RaceDominicaIslander = "http://terminology.hl7.org/CodeSystem/v3-Race#2070-1";
+
+    /// <summary>
     /// Literal for code: Haitian
     /// </summary>
     public const string LiteralHaitian = "2071-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceHaitian
+    /// </summary>
+    public const string LiteralV3RaceHaitian = "http://terminology.hl7.org/CodeSystem/v3-Race#2071-9";
 
     /// <summary>
     /// Literal for code: Jamaican
@@ -12671,9 +17011,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJamaican = "2072-7";
 
     /// <summary>
+    /// Literal for code: V3RaceJamaican
+    /// </summary>
+    public const string LiteralV3RaceJamaican = "http://terminology.hl7.org/CodeSystem/v3-Race#2072-7";
+
+    /// <summary>
     /// Literal for code: Tobagoan
     /// </summary>
     public const string LiteralTobagoan = "2073-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceTobagoan
+    /// </summary>
+    public const string LiteralV3RaceTobagoan = "http://terminology.hl7.org/CodeSystem/v3-Race#2073-5";
 
     /// <summary>
     /// Literal for code: Trinidadian
@@ -12681,9 +17031,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrinidadian = "2074-3";
 
     /// <summary>
+    /// Literal for code: V3RaceTrinidadian
+    /// </summary>
+    public const string LiteralV3RaceTrinidadian = "http://terminology.hl7.org/CodeSystem/v3-Race#2074-3";
+
+    /// <summary>
     /// Literal for code: WestIndian
     /// </summary>
     public const string LiteralWestIndian = "2075-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceWestIndian
+    /// </summary>
+    public const string LiteralV3RaceWestIndian = "http://terminology.hl7.org/CodeSystem/v3-Race#2075-0";
 
     /// <summary>
     /// Literal for code: NativeHawaiianOrOtherPacificIslander
@@ -12691,9 +17051,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNativeHawaiianOrOtherPacificIslander = "2076-8";
 
     /// <summary>
+    /// Literal for code: V3RaceNativeHawaiianOrOtherPacificIslander
+    /// </summary>
+    public const string LiteralV3RaceNativeHawaiianOrOtherPacificIslander = "http://terminology.hl7.org/CodeSystem/v3-Race#2076-8";
+
+    /// <summary>
     /// Literal for code: Polynesian
     /// </summary>
     public const string LiteralPolynesian = "2078-4";
+
+    /// <summary>
+    /// Literal for code: V3RacePolynesian
+    /// </summary>
+    public const string LiteralV3RacePolynesian = "http://terminology.hl7.org/CodeSystem/v3-Race#2078-4";
 
     /// <summary>
     /// Literal for code: NativeHawaiian
@@ -12701,9 +17071,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNativeHawaiian = "2079-2";
 
     /// <summary>
+    /// Literal for code: V3RaceNativeHawaiian
+    /// </summary>
+    public const string LiteralV3RaceNativeHawaiian = "http://terminology.hl7.org/CodeSystem/v3-Race#2079-2";
+
+    /// <summary>
     /// Literal for code: Samoan
     /// </summary>
     public const string LiteralSamoan = "2080-0";
+
+    /// <summary>
+    /// Literal for code: V3RaceSamoan
+    /// </summary>
+    public const string LiteralV3RaceSamoan = "http://terminology.hl7.org/CodeSystem/v3-Race#2080-0";
 
     /// <summary>
     /// Literal for code: Tahitian
@@ -12711,9 +17091,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTahitian = "2081-8";
 
     /// <summary>
+    /// Literal for code: V3RaceTahitian
+    /// </summary>
+    public const string LiteralV3RaceTahitian = "http://terminology.hl7.org/CodeSystem/v3-Race#2081-8";
+
+    /// <summary>
     /// Literal for code: Tongan
     /// </summary>
     public const string LiteralTongan = "2082-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceTongan
+    /// </summary>
+    public const string LiteralV3RaceTongan = "http://terminology.hl7.org/CodeSystem/v3-Race#2082-6";
 
     /// <summary>
     /// Literal for code: Tokelauan
@@ -12721,9 +17111,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTokelauan = "2083-4";
 
     /// <summary>
+    /// Literal for code: V3RaceTokelauan
+    /// </summary>
+    public const string LiteralV3RaceTokelauan = "http://terminology.hl7.org/CodeSystem/v3-Race#2083-4";
+
+    /// <summary>
     /// Literal for code: Micronesian
     /// </summary>
     public const string LiteralMicronesian = "2085-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceMicronesian
+    /// </summary>
+    public const string LiteralV3RaceMicronesian = "http://terminology.hl7.org/CodeSystem/v3-Race#2085-9";
 
     /// <summary>
     /// Literal for code: GuamanianOrChamorro
@@ -12731,9 +17131,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGuamanianOrChamorro = "2086-7";
 
     /// <summary>
+    /// Literal for code: V3RaceGuamanianOrChamorro
+    /// </summary>
+    public const string LiteralV3RaceGuamanianOrChamorro = "http://terminology.hl7.org/CodeSystem/v3-Race#2086-7";
+
+    /// <summary>
     /// Literal for code: Guamanian
     /// </summary>
     public const string LiteralGuamanian = "2087-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceGuamanian
+    /// </summary>
+    public const string LiteralV3RaceGuamanian = "http://terminology.hl7.org/CodeSystem/v3-Race#2087-5";
 
     /// <summary>
     /// Literal for code: Chamorro
@@ -12741,9 +17151,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChamorro = "2088-3";
 
     /// <summary>
+    /// Literal for code: V3RaceChamorro
+    /// </summary>
+    public const string LiteralV3RaceChamorro = "http://terminology.hl7.org/CodeSystem/v3-Race#2088-3";
+
+    /// <summary>
     /// Literal for code: MarianaIslander
     /// </summary>
     public const string LiteralMarianaIslander = "2089-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceMarianaIslander
+    /// </summary>
+    public const string LiteralV3RaceMarianaIslander = "http://terminology.hl7.org/CodeSystem/v3-Race#2089-1";
 
     /// <summary>
     /// Literal for code: Marshallese
@@ -12751,9 +17171,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMarshallese = "2090-9";
 
     /// <summary>
+    /// Literal for code: V3RaceMarshallese
+    /// </summary>
+    public const string LiteralV3RaceMarshallese = "http://terminology.hl7.org/CodeSystem/v3-Race#2090-9";
+
+    /// <summary>
     /// Literal for code: Palauan
     /// </summary>
     public const string LiteralPalauan = "2091-7";
+
+    /// <summary>
+    /// Literal for code: V3RacePalauan
+    /// </summary>
+    public const string LiteralV3RacePalauan = "http://terminology.hl7.org/CodeSystem/v3-Race#2091-7";
 
     /// <summary>
     /// Literal for code: Carolinian
@@ -12761,9 +17191,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCarolinian = "2092-5";
 
     /// <summary>
+    /// Literal for code: V3RaceCarolinian
+    /// </summary>
+    public const string LiteralV3RaceCarolinian = "http://terminology.hl7.org/CodeSystem/v3-Race#2092-5";
+
+    /// <summary>
     /// Literal for code: Kosraean
     /// </summary>
     public const string LiteralKosraean = "2093-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceKosraean
+    /// </summary>
+    public const string LiteralV3RaceKosraean = "http://terminology.hl7.org/CodeSystem/v3-Race#2093-3";
 
     /// <summary>
     /// Literal for code: Pohnpeian
@@ -12771,9 +17211,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPohnpeian = "2094-1";
 
     /// <summary>
+    /// Literal for code: V3RacePohnpeian
+    /// </summary>
+    public const string LiteralV3RacePohnpeian = "http://terminology.hl7.org/CodeSystem/v3-Race#2094-1";
+
+    /// <summary>
     /// Literal for code: Saipanese
     /// </summary>
     public const string LiteralSaipanese = "2095-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceSaipanese
+    /// </summary>
+    public const string LiteralV3RaceSaipanese = "http://terminology.hl7.org/CodeSystem/v3-Race#2095-8";
 
     /// <summary>
     /// Literal for code: Kiribati
@@ -12781,9 +17231,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKiribati = "2096-6";
 
     /// <summary>
+    /// Literal for code: V3RaceKiribati
+    /// </summary>
+    public const string LiteralV3RaceKiribati = "http://terminology.hl7.org/CodeSystem/v3-Race#2096-6";
+
+    /// <summary>
     /// Literal for code: Chuukese
     /// </summary>
     public const string LiteralChuukese = "2097-4";
+
+    /// <summary>
+    /// Literal for code: V3RaceChuukese
+    /// </summary>
+    public const string LiteralV3RaceChuukese = "http://terminology.hl7.org/CodeSystem/v3-Race#2097-4";
 
     /// <summary>
     /// Literal for code: Yapese
@@ -12791,9 +17251,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralYapese = "2098-2";
 
     /// <summary>
+    /// Literal for code: V3RaceYapese
+    /// </summary>
+    public const string LiteralV3RaceYapese = "http://terminology.hl7.org/CodeSystem/v3-Race#2098-2";
+
+    /// <summary>
     /// Literal for code: Melanesian
     /// </summary>
     public const string LiteralMelanesian = "2100-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceMelanesian
+    /// </summary>
+    public const string LiteralV3RaceMelanesian = "http://terminology.hl7.org/CodeSystem/v3-Race#2100-6";
 
     /// <summary>
     /// Literal for code: Fijian
@@ -12801,9 +17271,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFijian = "2101-4";
 
     /// <summary>
+    /// Literal for code: V3RaceFijian
+    /// </summary>
+    public const string LiteralV3RaceFijian = "http://terminology.hl7.org/CodeSystem/v3-Race#2101-4";
+
+    /// <summary>
     /// Literal for code: PapuaNewGuinean
     /// </summary>
     public const string LiteralPapuaNewGuinean = "2102-2";
+
+    /// <summary>
+    /// Literal for code: V3RacePapuaNewGuinean
+    /// </summary>
+    public const string LiteralV3RacePapuaNewGuinean = "http://terminology.hl7.org/CodeSystem/v3-Race#2102-2";
 
     /// <summary>
     /// Literal for code: SolomonIslander
@@ -12811,9 +17291,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSolomonIslander = "2103-0";
 
     /// <summary>
+    /// Literal for code: V3RaceSolomonIslander
+    /// </summary>
+    public const string LiteralV3RaceSolomonIslander = "http://terminology.hl7.org/CodeSystem/v3-Race#2103-0";
+
+    /// <summary>
     /// Literal for code: NewHebrides
     /// </summary>
     public const string LiteralNewHebrides = "2104-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceNewHebrides
+    /// </summary>
+    public const string LiteralV3RaceNewHebrides = "http://terminology.hl7.org/CodeSystem/v3-Race#2104-8";
 
     /// <summary>
     /// Literal for code: White
@@ -12821,9 +17311,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWhite = "2106-3";
 
     /// <summary>
+    /// Literal for code: V3RaceWhite
+    /// </summary>
+    public const string LiteralV3RaceWhite = "http://terminology.hl7.org/CodeSystem/v3-Race#2106-3";
+
+    /// <summary>
     /// Literal for code: European
     /// </summary>
     public const string LiteralEuropean = "2108-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceEuropean
+    /// </summary>
+    public const string LiteralV3RaceEuropean = "http://terminology.hl7.org/CodeSystem/v3-Race#2108-9";
 
     /// <summary>
     /// Literal for code: Armenian
@@ -12831,9 +17331,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArmenian = "2109-7";
 
     /// <summary>
+    /// Literal for code: V3RaceArmenian
+    /// </summary>
+    public const string LiteralV3RaceArmenian = "http://terminology.hl7.org/CodeSystem/v3-Race#2109-7";
+
+    /// <summary>
     /// Literal for code: English
     /// </summary>
     public const string LiteralEnglish = "2110-5";
+
+    /// <summary>
+    /// Literal for code: V3RaceEnglish
+    /// </summary>
+    public const string LiteralV3RaceEnglish = "http://terminology.hl7.org/CodeSystem/v3-Race#2110-5";
 
     /// <summary>
     /// Literal for code: French
@@ -12841,9 +17351,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFrench = "2111-3";
 
     /// <summary>
+    /// Literal for code: V3RaceFrench
+    /// </summary>
+    public const string LiteralV3RaceFrench = "http://terminology.hl7.org/CodeSystem/v3-Race#2111-3";
+
+    /// <summary>
     /// Literal for code: German
     /// </summary>
     public const string LiteralGerman = "2112-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceGerman
+    /// </summary>
+    public const string LiteralV3RaceGerman = "http://terminology.hl7.org/CodeSystem/v3-Race#2112-1";
 
     /// <summary>
     /// Literal for code: Irish
@@ -12851,9 +17371,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIrish = "2113-9";
 
     /// <summary>
+    /// Literal for code: V3RaceIrish
+    /// </summary>
+    public const string LiteralV3RaceIrish = "http://terminology.hl7.org/CodeSystem/v3-Race#2113-9";
+
+    /// <summary>
     /// Literal for code: Italian
     /// </summary>
     public const string LiteralItalian = "2114-7";
+
+    /// <summary>
+    /// Literal for code: V3RaceItalian
+    /// </summary>
+    public const string LiteralV3RaceItalian = "http://terminology.hl7.org/CodeSystem/v3-Race#2114-7";
 
     /// <summary>
     /// Literal for code: Polish
@@ -12861,9 +17391,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPolish = "2115-4";
 
     /// <summary>
+    /// Literal for code: V3RacePolish
+    /// </summary>
+    public const string LiteralV3RacePolish = "http://terminology.hl7.org/CodeSystem/v3-Race#2115-4";
+
+    /// <summary>
     /// Literal for code: Scottish
     /// </summary>
     public const string LiteralScottish = "2116-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceScottish
+    /// </summary>
+    public const string LiteralV3RaceScottish = "http://terminology.hl7.org/CodeSystem/v3-Race#2116-2";
 
     /// <summary>
     /// Literal for code: MiddleEasternOrNorthAfrican
@@ -12871,9 +17411,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMiddleEasternOrNorthAfrican = "2118-8";
 
     /// <summary>
+    /// Literal for code: V3RaceMiddleEasternOrNorthAfrican
+    /// </summary>
+    public const string LiteralV3RaceMiddleEasternOrNorthAfrican = "http://terminology.hl7.org/CodeSystem/v3-Race#2118-8";
+
+    /// <summary>
     /// Literal for code: Assyrian
     /// </summary>
     public const string LiteralAssyrian = "2119-6";
+
+    /// <summary>
+    /// Literal for code: V3RaceAssyrian
+    /// </summary>
+    public const string LiteralV3RaceAssyrian = "http://terminology.hl7.org/CodeSystem/v3-Race#2119-6";
 
     /// <summary>
     /// Literal for code: Egyptian
@@ -12881,9 +17431,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEgyptian = "2120-4";
 
     /// <summary>
+    /// Literal for code: V3RaceEgyptian
+    /// </summary>
+    public const string LiteralV3RaceEgyptian = "http://terminology.hl7.org/CodeSystem/v3-Race#2120-4";
+
+    /// <summary>
     /// Literal for code: Iranian
     /// </summary>
     public const string LiteralIranian = "2121-2";
+
+    /// <summary>
+    /// Literal for code: V3RaceIranian
+    /// </summary>
+    public const string LiteralV3RaceIranian = "http://terminology.hl7.org/CodeSystem/v3-Race#2121-2";
 
     /// <summary>
     /// Literal for code: Iraqi
@@ -12891,9 +17451,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIraqi = "2122-0";
 
     /// <summary>
+    /// Literal for code: V3RaceIraqi
+    /// </summary>
+    public const string LiteralV3RaceIraqi = "http://terminology.hl7.org/CodeSystem/v3-Race#2122-0";
+
+    /// <summary>
     /// Literal for code: Lebanese
     /// </summary>
     public const string LiteralLebanese = "2123-8";
+
+    /// <summary>
+    /// Literal for code: V3RaceLebanese
+    /// </summary>
+    public const string LiteralV3RaceLebanese = "http://terminology.hl7.org/CodeSystem/v3-Race#2123-8";
 
     /// <summary>
     /// Literal for code: Palestinian
@@ -12901,9 +17471,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPalestinian = "2124-6";
 
     /// <summary>
+    /// Literal for code: V3RacePalestinian
+    /// </summary>
+    public const string LiteralV3RacePalestinian = "http://terminology.hl7.org/CodeSystem/v3-Race#2124-6";
+
+    /// <summary>
     /// Literal for code: Syrian
     /// </summary>
     public const string LiteralSyrian = "2125-3";
+
+    /// <summary>
+    /// Literal for code: V3RaceSyrian
+    /// </summary>
+    public const string LiteralV3RaceSyrian = "http://terminology.hl7.org/CodeSystem/v3-Race#2125-3";
 
     /// <summary>
     /// Literal for code: Afghanistani
@@ -12911,9 +17491,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAfghanistani = "2126-1";
 
     /// <summary>
+    /// Literal for code: V3RaceAfghanistani
+    /// </summary>
+    public const string LiteralV3RaceAfghanistani = "http://terminology.hl7.org/CodeSystem/v3-Race#2126-1";
+
+    /// <summary>
     /// Literal for code: Israeili
     /// </summary>
     public const string LiteralIsraeili = "2127-9";
+
+    /// <summary>
+    /// Literal for code: V3RaceIsraeili
+    /// </summary>
+    public const string LiteralV3RaceIsraeili = "http://terminology.hl7.org/CodeSystem/v3-Race#2127-9";
 
     /// <summary>
     /// Literal for code: Arab
@@ -12921,9 +17511,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArab = "2129-5";
 
     /// <summary>
+    /// Literal for code: V3RaceArab
+    /// </summary>
+    public const string LiteralV3RaceArab = "http://terminology.hl7.org/CodeSystem/v3-Race#2129-5";
+
+    /// <summary>
     /// Literal for code: OtherRace
     /// </summary>
     public const string LiteralOtherRace = "2131-1";
+
+    /// <summary>
+    /// Literal for code: V3RaceOtherRace
+    /// </summary>
+    public const string LiteralV3RaceOtherRace = "http://terminology.hl7.org/CodeSystem/v3-Race#2131-1";
 
     /// <summary>
     /// Literal for code: VAL248152002
@@ -12931,9 +17531,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVAL248152002 = "248152002";
 
     /// <summary>
+    /// Literal for code: NONEVAL248152002
+    /// </summary>
+    public const string LiteralNONEVAL248152002 = "http://snomed.info/sct#248152002";
+
+    /// <summary>
     /// Literal for code: VAL248153007
     /// </summary>
     public const string LiteralVAL248153007 = "248153007";
+
+    /// <summary>
+    /// Literal for code: NONEVAL248153007
+    /// </summary>
+    public const string LiteralNONEVAL248153007 = "http://snomed.info/sct#248153007";
 
     /// <summary>
     /// Literal for code: OtherPacificIslander
@@ -12941,8 +17551,1872 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOtherPacificIslander = "2500-7";
 
     /// <summary>
+    /// Literal for code: V3RaceOtherPacificIslander
+    /// </summary>
+    public const string LiteralV3RaceOtherPacificIslander = "http://terminology.hl7.org/CodeSystem/v3-Race#2500-7";
+
+    /// <summary>
     /// Literal for code: VAL77386006
     /// </summary>
     public const string LiteralVAL77386006 = "77386006";
+
+    /// <summary>
+    /// Literal for code: NONEVAL77386006
+    /// </summary>
+    public const string LiteralNONEVAL77386006 = "http://snomed.info/sct#77386006";
+
+    /// <summary>
+    /// Dictionary for looking up ReferencerangeAppliesto Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1002-5", AmericanIndianOrAlaskaNative }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1002-5", AmericanIndianOrAlaskaNative }, 
+      { "1004-1", AmericanIndian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1004-1", AmericanIndian }, 
+      { "1006-6", Abenaki }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1006-6", Abenaki }, 
+      { "1008-2", Algonquian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1008-2", Algonquian }, 
+      { "1010-8", Apache }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1010-8", Apache }, 
+      { "1011-6", Chiricahua }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1011-6", Chiricahua }, 
+      { "1012-4", FortSillApache }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1012-4", FortSillApache }, 
+      { "1013-2", JicarillaApache }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1013-2", JicarillaApache }, 
+      { "1014-0", LipanApache }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1014-0", LipanApache }, 
+      { "1015-7", MescaleroApache }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1015-7", MescaleroApache }, 
+      { "1016-5", OklahomaApache }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1016-5", OklahomaApache }, 
+      { "1017-3", PaysonApache }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1017-3", PaysonApache }, 
+      { "1018-1", SanCarlosApache }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1018-1", SanCarlosApache }, 
+      { "1019-9", WhiteMountainApache }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1019-9", WhiteMountainApache }, 
+      { "1021-5", Arapaho }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1021-5", Arapaho }, 
+      { "1022-3", NorthernArapaho }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1022-3", NorthernArapaho }, 
+      { "1023-1", SouthernArapaho }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1023-1", SouthernArapaho }, 
+      { "1024-9", WindRiverArapaho }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1024-9", WindRiverArapaho }, 
+      { "1026-4", Arikara }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1026-4", Arikara }, 
+      { "1028-0", Assiniboine }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1028-0", Assiniboine }, 
+      { "1030-6", AssiniboineSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1030-6", AssiniboineSioux }, 
+      { "1031-4", FortPeckAssiniboineSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1031-4", FortPeckAssiniboineSioux }, 
+      { "1033-0", Bannock }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1033-0", Bannock }, 
+      { "1035-5", Blackfeet }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1035-5", Blackfeet }, 
+      { "1037-1", Brotherton }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1037-1", Brotherton }, 
+      { "1039-7", BurtLakeBand }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1039-7", BurtLakeBand }, 
+      { "1041-3", Caddo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1041-3", Caddo }, 
+      { "1042-1", OklahomaCado }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1042-1", OklahomaCado }, 
+      { "1044-7", Cahuilla }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1044-7", Cahuilla }, 
+      { "1045-4", AguaCalienteCahuilla }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1045-4", AguaCalienteCahuilla }, 
+      { "1046-2", Augustine }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1046-2", Augustine }, 
+      { "1047-0", Cabazon }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1047-0", Cabazon }, 
+      { "1048-8", LosCoyotes }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1048-8", LosCoyotes }, 
+      { "1049-6", Morongo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1049-6", Morongo }, 
+      { "1050-4", SantaRosaCahuilla }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1050-4", SantaRosaCahuilla }, 
+      { "1051-2", TorresMartinez }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1051-2", TorresMartinez }, 
+      { "1053-8", CaliforniaTribes }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1053-8", CaliforniaTribes }, 
+      { "1054-6", Cahto }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1054-6", Cahto }, 
+      { "1055-3", Chimariko }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1055-3", Chimariko }, 
+      { "1056-1", CoastMiwok }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1056-1", CoastMiwok }, 
+      { "1057-9", Digger }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1057-9", Digger }, 
+      { "1058-7", Kawaiisu }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1058-7", Kawaiisu }, 
+      { "1059-5", KernRiver }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1059-5", KernRiver }, 
+      { "1060-3", Mattole }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1060-3", Mattole }, 
+      { "1061-1", RedWood }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1061-1", RedWood }, 
+      { "1062-9", SantaRosa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1062-9", SantaRosa }, 
+      { "1063-7", Takelma }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1063-7", Takelma }, 
+      { "1064-5", Wappo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1064-5", Wappo }, 
+      { "1065-2", Yana }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1065-2", Yana }, 
+      { "1066-0", Yuki }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1066-0", Yuki }, 
+      { "1068-6", CanadianAndLatinAmericanIndian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1068-6", CanadianAndLatinAmericanIndian }, 
+      { "1069-4", CanadianIndian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1069-4", CanadianIndian }, 
+      { "1070-2", CentralAmericanIndian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1070-2", CentralAmericanIndian }, 
+      { "1071-0", FrenchAmericanIndian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1071-0", FrenchAmericanIndian }, 
+      { "1072-8", MexicanAmericanIndian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1072-8", MexicanAmericanIndian }, 
+      { "1073-6", SouthAmericanIndian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1073-6", SouthAmericanIndian }, 
+      { "1074-4", SpanishAmericanIndian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1074-4", SpanishAmericanIndian }, 
+      { "1076-9", Catawba }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1076-9", Catawba }, 
+      { "1078-5", Cayuse }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1078-5", Cayuse }, 
+      { "1080-1", Chehalis }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1080-1", Chehalis }, 
+      { "1082-7", Chemakuan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1082-7", Chemakuan }, 
+      { "1083-5", Hoh }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1083-5", Hoh }, 
+      { "1084-3", Quileute }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1084-3", Quileute }, 
+      { "1086-8", Chemehuevi }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1086-8", Chemehuevi }, 
+      { "1088-4", Cherokee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1088-4", Cherokee }, 
+      { "1089-2", CherokeeAlabama }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1089-2", CherokeeAlabama }, 
+      { "1090-0", CherokeesOfNortheastAlabama }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1090-0", CherokeesOfNortheastAlabama }, 
+      { "1091-8", CherokeesOfSoutheastAlabama }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1091-8", CherokeesOfSoutheastAlabama }, 
+      { "1092-6", EasternCherokee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1092-6", EasternCherokee }, 
+      { "1093-4", EchotaCherokee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1093-4", EchotaCherokee }, 
+      { "1094-2", EtowahCherokee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1094-2", EtowahCherokee }, 
+      { "1095-9", NorthernCherokee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1095-9", NorthernCherokee }, 
+      { "1096-7", Tuscola }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1096-7", Tuscola }, 
+      { "1097-5", UnitedKeetowahBandOfCherokee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1097-5", UnitedKeetowahBandOfCherokee }, 
+      { "1098-3", WesternCherokee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1098-3", WesternCherokee }, 
+      { "1100-7", CherokeeShawnee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1100-7", CherokeeShawnee }, 
+      { "1102-3", Cheyenne }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1102-3", Cheyenne }, 
+      { "1103-1", NorthernCheyenne }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1103-1", NorthernCheyenne }, 
+      { "1104-9", SouthernCheyenne }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1104-9", SouthernCheyenne }, 
+      { "1106-4", CheyenneArapaho }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1106-4", CheyenneArapaho }, 
+      { "1108-0", Chickahominy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1108-0", Chickahominy }, 
+      { "1109-8", EasternChickahominy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1109-8", EasternChickahominy }, 
+      { "1110-6", WesternChickahominy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1110-6", WesternChickahominy }, 
+      { "1112-2", Chickasaw }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1112-2", Chickasaw }, 
+      { "1114-8", Chinook }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1114-8", Chinook }, 
+      { "1115-5", Clatsop }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1115-5", Clatsop }, 
+      { "1116-3", ColumbiaRiverChinook }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1116-3", ColumbiaRiverChinook }, 
+      { "1117-1", Kathlamet }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1117-1", Kathlamet }, 
+      { "1118-9", UpperChinook }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1118-9", UpperChinook }, 
+      { "1119-7", WakiakumChinook }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1119-7", WakiakumChinook }, 
+      { "1120-5", WillapaChinook }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1120-5", WillapaChinook }, 
+      { "1121-3", Wishram }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1121-3", Wishram }, 
+      { "1123-9", Chippewa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1123-9", Chippewa }, 
+      { "1124-7", BadRiver }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1124-7", BadRiver }, 
+      { "1125-4", BayMillsChippewa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1125-4", BayMillsChippewa }, 
+      { "1126-2", BoisForte }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1126-2", BoisForte }, 
+      { "1127-0", BurtLakeChippewa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1127-0", BurtLakeChippewa }, 
+      { "1128-8", FondDuLac }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1128-8", FondDuLac }, 
+      { "1129-6", GrandPortage }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1129-6", GrandPortage }, 
+      { "1130-4", GrandTraverseBandOfOttawaChippewa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1130-4", GrandTraverseBandOfOttawaChippewa }, 
+      { "1131-2", Keweenaw }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1131-2", Keweenaw }, 
+      { "1132-0", LacCourteOreilles }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1132-0", LacCourteOreilles }, 
+      { "1133-8", LacDuFlambeau }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1133-8", LacDuFlambeau }, 
+      { "1134-6", LacVieuxDesertChippewa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1134-6", LacVieuxDesertChippewa }, 
+      { "1135-3", LakeSuperior }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1135-3", LakeSuperior }, 
+      { "1136-1", LeechLake }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1136-1", LeechLake }, 
+      { "1137-9", LittleShellChippewa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1137-9", LittleShellChippewa }, 
+      { "1138-7", MilleLacs }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1138-7", MilleLacs }, 
+      { "1139-5", MinnesotaChippewa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1139-5", MinnesotaChippewa }, 
+      { "1140-3", Ontonagon }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1140-3", Ontonagon }, 
+      { "1141-1", RedCliffChippewa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1141-1", RedCliffChippewa }, 
+      { "1142-9", RedLakeChippewa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1142-9", RedLakeChippewa }, 
+      { "1143-7", SaginawChippewa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1143-7", SaginawChippewa }, 
+      { "1144-5", StCroixChippewa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1144-5", StCroixChippewa }, 
+      { "1145-2", SaultSteMarieChippewa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1145-2", SaultSteMarieChippewa }, 
+      { "1146-0", SokoagonChippewa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1146-0", SokoagonChippewa }, 
+      { "1147-8", TurtleMountain }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1147-8", TurtleMountain }, 
+      { "1148-6", WhiteEarth }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1148-6", WhiteEarth }, 
+      { "1150-2", ChippewaCree }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1150-2", ChippewaCree }, 
+      { "1151-0", RockyBoyQuoteSChippewaCree }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1151-0", RockyBoyQuoteSChippewaCree }, 
+      { "1153-6", Chitimacha }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1153-6", Chitimacha }, 
+      { "1155-1", Choctaw }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1155-1", Choctaw }, 
+      { "1156-9", CliftonChoctaw }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1156-9", CliftonChoctaw }, 
+      { "1157-7", JenaChoctaw }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1157-7", JenaChoctaw }, 
+      { "1158-5", MississippiChoctaw }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1158-5", MississippiChoctaw }, 
+      { "1159-3", MowaBandOfChoctaw }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1159-3", MowaBandOfChoctaw }, 
+      { "1160-1", OklahomaChoctaw }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1160-1", OklahomaChoctaw }, 
+      { "1162-7", Chumash }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1162-7", Chumash }, 
+      { "1163-5", SantaYnez }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1163-5", SantaYnez }, 
+      { "1165-0", ClearLake }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1165-0", ClearLake }, 
+      { "1167-6", CoeurDQuoteAlene }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1167-6", CoeurDQuoteAlene }, 
+      { "1169-2", Coharie }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1169-2", Coharie }, 
+      { "1171-8", ColoradoRiver }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1171-8", ColoradoRiver }, 
+      { "1173-4", Colville }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1173-4", Colville }, 
+      { "1175-9", Comanche }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1175-9", Comanche }, 
+      { "1176-7", OklahomaComanche }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1176-7", OklahomaComanche }, 
+      { "1178-3", CoosLowerUmpquaSiuslaw }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1178-3", CoosLowerUmpquaSiuslaw }, 
+      { "1180-9", Coos }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1180-9", Coos }, 
+      { "1182-5", Coquilles }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1182-5", Coquilles }, 
+      { "1184-1", Costanoan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1184-1", Costanoan }, 
+      { "1186-6", Coushatta }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1186-6", Coushatta }, 
+      { "1187-4", AlabamaCoushatta }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1187-4", AlabamaCoushatta }, 
+      { "1189-0", Cowlitz }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1189-0", Cowlitz }, 
+      { "1191-6", Cree }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1191-6", Cree }, 
+      { "1193-2", Creek }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1193-2", Creek }, 
+      { "1194-0", AlabamaCreek }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1194-0", AlabamaCreek }, 
+      { "1195-7", AlabamaQuassarte }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1195-7", AlabamaQuassarte }, 
+      { "1196-5", EasternCreek }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1196-5", EasternCreek }, 
+      { "1197-3", EasternMuscogee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1197-3", EasternMuscogee }, 
+      { "1198-1", Kialegee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1198-1", Kialegee }, 
+      { "1199-9", LowerMuscogee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1199-9", LowerMuscogee }, 
+      { "1200-5", MachisLowerCreekIndian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1200-5", MachisLowerCreekIndian }, 
+      { "1201-3", PoarchBand }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1201-3", PoarchBand }, 
+      { "1202-1", PrincipalCreekIndianNation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1202-1", PrincipalCreekIndianNation }, 
+      { "1203-9", StarClanOfMuscogeeCreeks }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1203-9", StarClanOfMuscogeeCreeks }, 
+      { "1204-7", Thlopthlocco }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1204-7", Thlopthlocco }, 
+      { "1205-4", Tuckabachee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1205-4", Tuckabachee }, 
+      { "1207-0", Croatan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1207-0", Croatan }, 
+      { "1209-6", Crow }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1209-6", Crow }, 
+      { "1211-2", Cupeno }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1211-2", Cupeno }, 
+      { "1212-0", AguaCaliente }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1212-0", AguaCaliente }, 
+      { "1214-6", Delaware }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1214-6", Delaware }, 
+      { "1215-3", EasternDelaware }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1215-3", EasternDelaware }, 
+      { "1216-1", LenniLenape }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1216-1", LenniLenape }, 
+      { "1217-9", Munsee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1217-9", Munsee }, 
+      { "1218-7", OklahomaDelaware }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1218-7", OklahomaDelaware }, 
+      { "1219-5", RampoughMountain }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1219-5", RampoughMountain }, 
+      { "1220-3", SandHill }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1220-3", SandHill }, 
+      { "1222-9", Diegueno }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1222-9", Diegueno }, 
+      { "1223-7", Campo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1223-7", Campo }, 
+      { "1224-5", CapitanGrande }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1224-5", CapitanGrande }, 
+      { "1225-2", Cuyapaipe }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1225-2", Cuyapaipe }, 
+      { "1226-0", LaPosta }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1226-0", LaPosta }, 
+      { "1227-8", Manzanita }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1227-8", Manzanita }, 
+      { "1228-6", MesaGrande }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1228-6", MesaGrande }, 
+      { "1229-4", SanPasqual }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1229-4", SanPasqual }, 
+      { "1230-2", SantaYsabel }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1230-2", SantaYsabel }, 
+      { "1231-0", Sycuan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1231-0", Sycuan }, 
+      { "1233-6", EasternTribes }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1233-6", EasternTribes }, 
+      { "1234-4", Attacapa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1234-4", Attacapa }, 
+      { "1235-1", Biloxi }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1235-1", Biloxi }, 
+      { "1236-9", Georgetown }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1236-9", Georgetown }, 
+      { "1237-7", Moor }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1237-7", Moor }, 
+      { "1238-5", Nansemond }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1238-5", Nansemond }, 
+      { "1239-3", Natchez }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1239-3", Natchez }, 
+      { "1240-1", NausuWaiwash }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1240-1", NausuWaiwash }, 
+      { "1241-9", Nipmuc }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1241-9", Nipmuc }, 
+      { "1242-7", Paugussett }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1242-7", Paugussett }, 
+      { "1243-5", PocomokeAcohonock }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1243-5", PocomokeAcohonock }, 
+      { "1244-3", SoutheasternIndians }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1244-3", SoutheasternIndians }, 
+      { "1245-0", Susquehanock }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1245-0", Susquehanock }, 
+      { "1246-8", TunicaBiloxi }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1246-8", TunicaBiloxi }, 
+      { "1247-6", WaccamawSiousan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1247-6", WaccamawSiousan }, 
+      { "1248-4", Wicomico }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1248-4", Wicomico }, 
+      { "1250-0", Esselen }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1250-0", Esselen }, 
+      { "1252-6", FortBelknap }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1252-6", FortBelknap }, 
+      { "1254-2", FortBerthold }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1254-2", FortBerthold }, 
+      { "1256-7", FortMcdowell }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1256-7", FortMcdowell }, 
+      { "1258-3", FortHall }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1258-3", FortHall }, 
+      { "1260-9", Gabrieleno }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1260-9", Gabrieleno }, 
+      { "1262-5", GrandRonde }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1262-5", GrandRonde }, 
+      { "1264-1", GrosVentres }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1264-1", GrosVentres }, 
+      { "1265-8", Atsina }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1265-8", Atsina }, 
+      { "1267-4", Haliwa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1267-4", Haliwa }, 
+      { "1269-0", Hidatsa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1269-0", Hidatsa }, 
+      { "1271-6", Hoopa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1271-6", Hoopa }, 
+      { "1272-4", Trinity }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1272-4", Trinity }, 
+      { "1273-2", Whilkut }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1273-2", Whilkut }, 
+      { "1275-7", HoopaExtension }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1275-7", HoopaExtension }, 
+      { "1277-3", Houma }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1277-3", Houma }, 
+      { "1279-9", InajaCosmit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1279-9", InajaCosmit }, 
+      { "1281-5", Iowa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1281-5", Iowa }, 
+      { "1282-3", IowaOfKansasNebraska }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1282-3", IowaOfKansasNebraska }, 
+      { "1283-1", IowaOfOklahoma }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1283-1", IowaOfOklahoma }, 
+      { "1285-6", Iroquois }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1285-6", Iroquois }, 
+      { "1286-4", Cayuga }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1286-4", Cayuga }, 
+      { "1287-2", Mohawk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1287-2", Mohawk }, 
+      { "1288-0", Oneida }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1288-0", Oneida }, 
+      { "1289-8", Onondaga }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1289-8", Onondaga }, 
+      { "1290-6", Seneca }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1290-6", Seneca }, 
+      { "1291-4", SenecaNation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1291-4", SenecaNation }, 
+      { "1292-2", SenecaCayuga }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1292-2", SenecaCayuga }, 
+      { "1293-0", TonawandaSeneca }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1293-0", TonawandaSeneca }, 
+      { "1294-8", Tuscarora }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1294-8", Tuscarora }, 
+      { "1295-5", Wyandotte }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1295-5", Wyandotte }, 
+      { "1297-1", Juaneno }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1297-1", Juaneno }, 
+      { "1299-7", Kalispel }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1299-7", Kalispel }, 
+      { "1301-1", Karuk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1301-1", Karuk }, 
+      { "1303-7", Kaw }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1303-7", Kaw }, 
+      { "1305-2", Kickapoo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1305-2", Kickapoo }, 
+      { "1306-0", OklahomaKickapoo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1306-0", OklahomaKickapoo }, 
+      { "1307-8", TexasKickapoo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1307-8", TexasKickapoo }, 
+      { "1309-4", Kiowa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1309-4", Kiowa }, 
+      { "1310-2", OklahomaKiowa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1310-2", OklahomaKiowa }, 
+      { "1312-8", Klallam }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1312-8", Klallam }, 
+      { "1313-6", Jamestown }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1313-6", Jamestown }, 
+      { "1314-4", LowerElwha }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1314-4", LowerElwha }, 
+      { "1315-1", PortGambleKlallam }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1315-1", PortGambleKlallam }, 
+      { "1317-7", Klamath }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1317-7", Klamath }, 
+      { "1319-3", Konkow }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1319-3", Konkow }, 
+      { "1321-9", Kootenai }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1321-9", Kootenai }, 
+      { "1323-5", Lassik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1323-5", Lassik }, 
+      { "1325-0", LongIsland }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1325-0", LongIsland }, 
+      { "1326-8", Matinecock }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1326-8", Matinecock }, 
+      { "1327-6", Montauk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1327-6", Montauk }, 
+      { "1328-4", Poospatuck }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1328-4", Poospatuck }, 
+      { "1329-2", Setauket }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1329-2", Setauket }, 
+      { "1331-8", Luiseno }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1331-8", Luiseno }, 
+      { "1332-6", LaJolla }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1332-6", LaJolla }, 
+      { "1333-4", Pala }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1333-4", Pala }, 
+      { "1334-2", Pauma }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1334-2", Pauma }, 
+      { "1335-9", Pechanga }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1335-9", Pechanga }, 
+      { "1336-7", Soboba }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1336-7", Soboba }, 
+      { "1337-5", TwentyNinePalms }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1337-5", TwentyNinePalms }, 
+      { "1338-3", Temecula }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1338-3", Temecula }, 
+      { "1340-9", Lumbee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1340-9", Lumbee }, 
+      { "1342-5", Lummi }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1342-5", Lummi }, 
+      { "1344-1", Maidu }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1344-1", Maidu }, 
+      { "1345-8", MountainMaidu }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1345-8", MountainMaidu }, 
+      { "1346-6", Nishinam }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1346-6", Nishinam }, 
+      { "1348-2", Makah }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1348-2", Makah }, 
+      { "1350-8", Maliseet }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1350-8", Maliseet }, 
+      { "1352-4", Mandan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1352-4", Mandan }, 
+      { "1354-0", Mattaponi }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1354-0", Mattaponi }, 
+      { "1356-5", Menominee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1356-5", Menominee }, 
+      { "1358-1", Miami }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1358-1", Miami }, 
+      { "1359-9", IllinoisMiami }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1359-9", IllinoisMiami }, 
+      { "1360-7", IndianaMiami }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1360-7", IndianaMiami }, 
+      { "1361-5", OklahomaMiami }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1361-5", OklahomaMiami }, 
+      { "1363-1", Miccosukee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1363-1", Miccosukee }, 
+      { "1365-6", Micmac }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1365-6", Micmac }, 
+      { "1366-4", Aroostook }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1366-4", Aroostook }, 
+      { "1368-0", MissionIndians }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1368-0", MissionIndians }, 
+      { "1370-6", Miwok }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1370-6", Miwok }, 
+      { "1372-2", Modoc }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1372-2", Modoc }, 
+      { "1374-8", Mohegan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1374-8", Mohegan }, 
+      { "1376-3", Mono }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1376-3", Mono }, 
+      { "1378-9", Nanticoke }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1378-9", Nanticoke }, 
+      { "1380-5", Narragansett }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1380-5", Narragansett }, 
+      { "1382-1", Navajo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1382-1", Navajo }, 
+      { "1383-9", AlamoNavajo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1383-9", AlamoNavajo }, 
+      { "1384-7", CanoncitoNavajo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1384-7", CanoncitoNavajo }, 
+      { "1385-4", RamahNavajo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1385-4", RamahNavajo }, 
+      { "1387-0", NezPerce }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1387-0", NezPerce }, 
+      { "1389-6", Nomalaki }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1389-6", Nomalaki }, 
+      { "1391-2", NorthwestTribes }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1391-2", NorthwestTribes }, 
+      { "1392-0", Alsea }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1392-0", Alsea }, 
+      { "1393-8", Celilo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1393-8", Celilo }, 
+      { "1394-6", Columbia }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1394-6", Columbia }, 
+      { "1395-3", Kalapuya }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1395-3", Kalapuya }, 
+      { "1396-1", Molala }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1396-1", Molala }, 
+      { "1397-9", Talakamish }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1397-9", Talakamish }, 
+      { "1398-7", Tenino }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1398-7", Tenino }, 
+      { "1399-5", Tillamook }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1399-5", Tillamook }, 
+      { "1400-1", Wenatchee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1400-1", Wenatchee }, 
+      { "1401-9", Yahooskin }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1401-9", Yahooskin }, 
+      { "1403-5", Omaha }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1403-5", Omaha }, 
+      { "1405-0", OregonAthabaskan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1405-0", OregonAthabaskan }, 
+      { "1407-6", Osage }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1407-6", Osage }, 
+      { "1409-2", OtoeMissouria }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1409-2", OtoeMissouria }, 
+      { "1411-8", Ottawa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1411-8", Ottawa }, 
+      { "1412-6", BurtLakeOttawa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1412-6", BurtLakeOttawa }, 
+      { "1413-4", MichiganOttawa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1413-4", MichiganOttawa }, 
+      { "1414-2", OklahomaOttawa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1414-2", OklahomaOttawa }, 
+      { "1416-7", Paiute }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1416-7", Paiute }, 
+      { "1417-5", Bishop }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1417-5", Bishop }, 
+      { "1418-3", Bridgeport }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1418-3", Bridgeport }, 
+      { "1419-1", BurnsPaiute }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1419-1", BurnsPaiute }, 
+      { "1420-9", Cedarville }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1420-9", Cedarville }, 
+      { "1421-7", FortBidwell }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1421-7", FortBidwell }, 
+      { "1422-5", FortIndependence }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1422-5", FortIndependence }, 
+      { "1423-3", Kaibab }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1423-3", Kaibab }, 
+      { "1424-1", LasVegas }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1424-1", LasVegas }, 
+      { "1425-8", LonePine }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1425-8", LonePine }, 
+      { "1426-6", Lovelock }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1426-6", Lovelock }, 
+      { "1427-4", MalheurPaiute }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1427-4", MalheurPaiute }, 
+      { "1428-2", Moapa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1428-2", Moapa }, 
+      { "1429-0", NorthernPaiute }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1429-0", NorthernPaiute }, 
+      { "1430-8", OwensValley }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1430-8", OwensValley }, 
+      { "1431-6", PyramidLake }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1431-6", PyramidLake }, 
+      { "1432-4", SanJuanSouthernPaiute }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1432-4", SanJuanSouthernPaiute }, 
+      { "1433-2", SouthernPaiute }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1433-2", SouthernPaiute }, 
+      { "1434-0", SummitLake }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1434-0", SummitLake }, 
+      { "1435-7", UtuUtuGwaituPaiute }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1435-7", UtuUtuGwaituPaiute }, 
+      { "1436-5", WalkerRiver }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1436-5", WalkerRiver }, 
+      { "1437-3", YeringtonPaiute }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1437-3", YeringtonPaiute }, 
+      { "1439-9", Pamunkey }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1439-9", Pamunkey }, 
+      { "1441-5", Passamaquoddy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1441-5", Passamaquoddy }, 
+      { "1442-3", IndianTownship }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1442-3", IndianTownship }, 
+      { "1443-1", PleasantPointPassamaquoddy }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1443-1", PleasantPointPassamaquoddy }, 
+      { "1445-6", Pawnee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1445-6", Pawnee }, 
+      { "1446-4", OklahomaPawnee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1446-4", OklahomaPawnee }, 
+      { "1448-0", Penobscot }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1448-0", Penobscot }, 
+      { "1450-6", Peoria }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1450-6", Peoria }, 
+      { "1451-4", OklahomaPeoria }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1451-4", OklahomaPeoria }, 
+      { "1453-0", Pequot }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1453-0", Pequot }, 
+      { "1454-8", MarshantucketPequot }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1454-8", MarshantucketPequot }, 
+      { "1456-3", Pima }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1456-3", Pima }, 
+      { "1457-1", GilaRiverPimaMaricopa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1457-1", GilaRiverPimaMaricopa }, 
+      { "1458-9", SaltRiverPimaMaricopa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1458-9", SaltRiverPimaMaricopa }, 
+      { "1460-5", Piscataway }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1460-5", Piscataway }, 
+      { "1462-1", PitRiver }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1462-1", PitRiver }, 
+      { "1464-7", Pomo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1464-7", Pomo }, 
+      { "1465-4", CentralPomo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1465-4", CentralPomo }, 
+      { "1466-2", DryCreek }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1466-2", DryCreek }, 
+      { "1467-0", EasternPomo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1467-0", EasternPomo }, 
+      { "1468-8", Kashia }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1468-8", Kashia }, 
+      { "1469-6", NorthernPomo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1469-6", NorthernPomo }, 
+      { "1470-4", ScottsValley }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1470-4", ScottsValley }, 
+      { "1471-2", Stonyford }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1471-2", Stonyford }, 
+      { "1472-0", SulphurBank }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1472-0", SulphurBank }, 
+      { "1474-6", Ponca }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1474-6", Ponca }, 
+      { "1475-3", NebraskaPonca }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1475-3", NebraskaPonca }, 
+      { "1476-1", OklahomaPonca }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1476-1", OklahomaPonca }, 
+      { "1478-7", Potawatomi }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1478-7", Potawatomi }, 
+      { "1479-5", CitizenBandPotawatomi }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1479-5", CitizenBandPotawatomi }, 
+      { "1480-3", ForestCounty }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1480-3", ForestCounty }, 
+      { "1481-1", Hannahville }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1481-1", Hannahville }, 
+      { "1482-9", HuronPotawatomi }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1482-9", HuronPotawatomi }, 
+      { "1483-7", PokagonPotawatomi }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1483-7", PokagonPotawatomi }, 
+      { "1484-5", PrairieBand }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1484-5", PrairieBand }, 
+      { "1485-2", WisconsinPotawatomi }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1485-2", WisconsinPotawatomi }, 
+      { "1487-8", Powhatan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1487-8", Powhatan }, 
+      { "1489-4", Pueblo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1489-4", Pueblo }, 
+      { "1490-2", Acoma }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1490-2", Acoma }, 
+      { "1491-0", ArizonaTewa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1491-0", ArizonaTewa }, 
+      { "1492-8", Cochiti }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1492-8", Cochiti }, 
+      { "1493-6", Hopi }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1493-6", Hopi }, 
+      { "1494-4", Isleta }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1494-4", Isleta }, 
+      { "1495-1", Jemez }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1495-1", Jemez }, 
+      { "1496-9", Keres }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1496-9", Keres }, 
+      { "1497-7", Laguna }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1497-7", Laguna }, 
+      { "1498-5", Nambe }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1498-5", Nambe }, 
+      { "1499-3", Picuris }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1499-3", Picuris }, 
+      { "1500-8", Piro }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1500-8", Piro }, 
+      { "1501-6", Pojoaque }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1501-6", Pojoaque }, 
+      { "1502-4", SanFelipe }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1502-4", SanFelipe }, 
+      { "1503-2", SanIldefonso }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1503-2", SanIldefonso }, 
+      { "1504-0", SanJuanPueblo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1504-0", SanJuanPueblo }, 
+      { "1505-7", SanJuanDe }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1505-7", SanJuanDe }, 
+      { "1506-5", SanJuan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1506-5", SanJuan }, 
+      { "1507-3", Sandia }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1507-3", Sandia }, 
+      { "1508-1", SantaAna }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1508-1", SantaAna }, 
+      { "1509-9", SantaClara }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1509-9", SantaClara }, 
+      { "1510-7", SantoDomingo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1510-7", SantoDomingo }, 
+      { "1511-5", Taos }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1511-5", Taos }, 
+      { "1512-3", Tesuque }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1512-3", Tesuque }, 
+      { "1513-1", Tewa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1513-1", Tewa }, 
+      { "1514-9", Tigua }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1514-9", Tigua }, 
+      { "1515-6", Zia }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1515-6", Zia }, 
+      { "1516-4", Zuni }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1516-4", Zuni }, 
+      { "1518-0", PugetSoundSalish }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1518-0", PugetSoundSalish }, 
+      { "1519-8", Duwamish }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1519-8", Duwamish }, 
+      { "1520-6", Kikiallus }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1520-6", Kikiallus }, 
+      { "1521-4", LowerSkagit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1521-4", LowerSkagit }, 
+      { "1522-2", Muckleshoot }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1522-2", Muckleshoot }, 
+      { "1523-0", Nisqually }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1523-0", Nisqually }, 
+      { "1524-8", Nooksack }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1524-8", Nooksack }, 
+      { "1525-5", PortMadison }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1525-5", PortMadison }, 
+      { "1526-3", Puyallup }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1526-3", Puyallup }, 
+      { "1527-1", Samish }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1527-1", Samish }, 
+      { "1528-9", SaukSuiattle }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1528-9", SaukSuiattle }, 
+      { "1529-7", Skokomish }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1529-7", Skokomish }, 
+      { "1530-5", Skykomish }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1530-5", Skykomish }, 
+      { "1531-3", Snohomish }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1531-3", Snohomish }, 
+      { "1532-1", Snoqualmie }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1532-1", Snoqualmie }, 
+      { "1533-9", SquaxinIsland }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1533-9", SquaxinIsland }, 
+      { "1534-7", Steilacoom }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1534-7", Steilacoom }, 
+      { "1535-4", Stillaguamish }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1535-4", Stillaguamish }, 
+      { "1536-2", Suquamish }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1536-2", Suquamish }, 
+      { "1537-0", Swinomish }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1537-0", Swinomish }, 
+      { "1538-8", Tulalip }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1538-8", Tulalip }, 
+      { "1539-6", UpperSkagit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1539-6", UpperSkagit }, 
+      { "1541-2", Quapaw }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1541-2", Quapaw }, 
+      { "1543-8", Quinault }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1543-8", Quinault }, 
+      { "1545-3", Rappahannock }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1545-3", Rappahannock }, 
+      { "1547-9", RenoSparks }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1547-9", RenoSparks }, 
+      { "1549-5", RoundValley }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1549-5", RoundValley }, 
+      { "1551-1", SacAndFox }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1551-1", SacAndFox }, 
+      { "1552-9", IowaSacAndFox }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1552-9", IowaSacAndFox }, 
+      { "1553-7", MissouriSacAndFox }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1553-7", MissouriSacAndFox }, 
+      { "1554-5", OklahomaSacAndFox }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1554-5", OklahomaSacAndFox }, 
+      { "1556-0", Salinan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1556-0", Salinan }, 
+      { "1558-6", Salish }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1558-6", Salish }, 
+      { "1560-2", SalishAndKootenai }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1560-2", SalishAndKootenai }, 
+      { "1562-8", Schaghticoke }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1562-8", Schaghticoke }, 
+      { "1564-4", ScottValley }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1564-4", ScottValley }, 
+      { "1566-9", Seminole }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1566-9", Seminole }, 
+      { "1567-7", BigCypress }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1567-7", BigCypress }, 
+      { "1568-5", Brighton }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1568-5", Brighton }, 
+      { "1569-3", FloridaSeminole }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1569-3", FloridaSeminole }, 
+      { "1570-1", HollywoodSeminole }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1570-1", HollywoodSeminole }, 
+      { "1571-9", OklahomaSeminole }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1571-9", OklahomaSeminole }, 
+      { "1573-5", Serrano }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1573-5", Serrano }, 
+      { "1574-3", SanManual }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1574-3", SanManual }, 
+      { "1576-8", Shasta }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1576-8", Shasta }, 
+      { "1578-4", Shawnee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1578-4", Shawnee }, 
+      { "1579-2", AbsenteeShawnee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1579-2", AbsenteeShawnee }, 
+      { "1580-0", EasternShawnee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1580-0", EasternShawnee }, 
+      { "1582-6", Shinnecock }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1582-6", Shinnecock }, 
+      { "1584-2", ShoalwaterBay }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1584-2", ShoalwaterBay }, 
+      { "1586-7", Shoshone }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1586-7", Shoshone }, 
+      { "1587-5", BattleMountain }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1587-5", BattleMountain }, 
+      { "1588-3", Duckwater }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1588-3", Duckwater }, 
+      { "1589-1", Elko }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1589-1", Elko }, 
+      { "1590-9", Ely }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1590-9", Ely }, 
+      { "1591-7", Goshute }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1591-7", Goshute }, 
+      { "1592-5", Panamint }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1592-5", Panamint }, 
+      { "1593-3", RubyValley }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1593-3", RubyValley }, 
+      { "1594-1", SkullValley }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1594-1", SkullValley }, 
+      { "1595-8", SouthForkShoshone }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1595-8", SouthForkShoshone }, 
+      { "1596-6", TeMoakWesternShoshone }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1596-6", TeMoakWesternShoshone }, 
+      { "1597-4", TimbiShaShoshone }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1597-4", TimbiShaShoshone }, 
+      { "1598-2", Washakie }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1598-2", Washakie }, 
+      { "1599-0", WindRiverShoshone }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1599-0", WindRiverShoshone }, 
+      { "1600-6", Yomba }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1600-6", Yomba }, 
+      { "1602-2", ShoshonePaiute }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1602-2", ShoshonePaiute }, 
+      { "1603-0", DuckValley }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1603-0", DuckValley }, 
+      { "1604-8", Fallon }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1604-8", Fallon }, 
+      { "1605-5", FortMcDermitt }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1605-5", FortMcDermitt }, 
+      { "1607-1", Siletz }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1607-1", Siletz }, 
+      { "1609-7", Sioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1609-7", Sioux }, 
+      { "1610-5", BlackfootSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1610-5", BlackfootSioux }, 
+      { "1611-3", BruleSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1611-3", BruleSioux }, 
+      { "1612-1", CheyenneRiverSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1612-1", CheyenneRiverSioux }, 
+      { "1613-9", CrowCreekSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1613-9", CrowCreekSioux }, 
+      { "1614-7", DakotaSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1614-7", DakotaSioux }, 
+      { "1615-4", FlandreauSantee }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1615-4", FlandreauSantee }, 
+      { "1616-2", FortPeck }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1616-2", FortPeck }, 
+      { "1617-0", LakeTraverseSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1617-0", LakeTraverseSioux }, 
+      { "1618-8", LowerBruleSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1618-8", LowerBruleSioux }, 
+      { "1619-6", LowerSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1619-6", LowerSioux }, 
+      { "1620-4", MdewakantonSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1620-4", MdewakantonSioux }, 
+      { "1621-2", Miniconjou }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1621-2", Miniconjou }, 
+      { "1622-0", OglalaSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1622-0", OglalaSioux }, 
+      { "1623-8", PineRidgeSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1623-8", PineRidgeSioux }, 
+      { "1624-6", PipestoneSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1624-6", PipestoneSioux }, 
+      { "1625-3", PrairieIslandSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1625-3", PrairieIslandSioux }, 
+      { "1626-1", PriorLakeSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1626-1", PriorLakeSioux }, 
+      { "1627-9", RosebudSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1627-9", RosebudSioux }, 
+      { "1628-7", SansArcSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1628-7", SansArcSioux }, 
+      { "1629-5", SanteeSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1629-5", SanteeSioux }, 
+      { "1630-3", SissetonWahpeton }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1630-3", SissetonWahpeton }, 
+      { "1631-1", SissetonSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1631-1", SissetonSioux }, 
+      { "1632-9", SpiritLakeSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1632-9", SpiritLakeSioux }, 
+      { "1633-7", StandingRockSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1633-7", StandingRockSioux }, 
+      { "1634-5", TetonSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1634-5", TetonSioux }, 
+      { "1635-2", TwoKettleSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1635-2", TwoKettleSioux }, 
+      { "1636-0", UpperSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1636-0", UpperSioux }, 
+      { "1637-8", WahpekuteSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1637-8", WahpekuteSioux }, 
+      { "1638-6", WahpetonSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1638-6", WahpetonSioux }, 
+      { "1639-4", WazhazaSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1639-4", WazhazaSioux }, 
+      { "1640-2", YanktonSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1640-2", YanktonSioux }, 
+      { "1641-0", YanktonaiSioux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1641-0", YanktonaiSioux }, 
+      { "1643-6", Siuslaw }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1643-6", Siuslaw }, 
+      { "1645-1", Spokane }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1645-1", Spokane }, 
+      { "1647-7", Stewart }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1647-7", Stewart }, 
+      { "1649-3", Stockbridge }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1649-3", Stockbridge }, 
+      { "1651-9", Susanville }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1651-9", Susanville }, 
+      { "1653-5", TohonoOQuoteOdham }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1653-5", TohonoOQuoteOdham }, 
+      { "1654-3", AkChin }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1654-3", AkChin }, 
+      { "1655-0", GilaBend }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1655-0", GilaBend }, 
+      { "1656-8", SanXavier }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1656-8", SanXavier }, 
+      { "1657-6", Sells }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1657-6", Sells }, 
+      { "1659-2", Tolowa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1659-2", Tolowa }, 
+      { "1661-8", Tonkawa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1661-8", Tonkawa }, 
+      { "1663-4", Tygh }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1663-4", Tygh }, 
+      { "1665-9", Umatilla }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1665-9", Umatilla }, 
+      { "1667-5", Umpqua }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1667-5", Umpqua }, 
+      { "1668-3", CowCreekUmpqua }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1668-3", CowCreekUmpqua }, 
+      { "1670-9", Ute }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1670-9", Ute }, 
+      { "1671-7", AllenCanyon }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1671-7", AllenCanyon }, 
+      { "1672-5", UintahUte }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1672-5", UintahUte }, 
+      { "1673-3", UteMountainUte }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1673-3", UteMountainUte }, 
+      { "1675-8", Wailaki }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1675-8", Wailaki }, 
+      { "1677-4", WallaWalla }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1677-4", WallaWalla }, 
+      { "1679-0", Wampanoag }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1679-0", Wampanoag }, 
+      { "1680-8", GayHeadWampanoag }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1680-8", GayHeadWampanoag }, 
+      { "1681-6", MashpeeWampanoag }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1681-6", MashpeeWampanoag }, 
+      { "1683-2", WarmSprings }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1683-2", WarmSprings }, 
+      { "1685-7", Wascopum }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1685-7", Wascopum }, 
+      { "1687-3", Washoe }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1687-3", Washoe }, 
+      { "1688-1", Alpine }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1688-1", Alpine }, 
+      { "1689-9", Carson }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1689-9", Carson }, 
+      { "1690-7", Dresslerville }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1690-7", Dresslerville }, 
+      { "1692-3", Wichita }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1692-3", Wichita }, 
+      { "1694-9", WindRiver }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1694-9", WindRiver }, 
+      { "1696-4", Winnebago }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1696-4", Winnebago }, 
+      { "1697-2", HoChunk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1697-2", HoChunk }, 
+      { "1698-0", NebraskaWinnebago }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1698-0", NebraskaWinnebago }, 
+      { "1700-4", Winnemucca }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1700-4", Winnemucca }, 
+      { "1702-0", Wintun }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1702-0", Wintun }, 
+      { "1704-6", Wiyot }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1704-6", Wiyot }, 
+      { "1705-3", TableBluff }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1705-3", TableBluff }, 
+      { "1707-9", Yakama }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1707-9", Yakama }, 
+      { "1709-5", YakamaCowlitz }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1709-5", YakamaCowlitz }, 
+      { "1711-1", Yaqui }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1711-1", Yaqui }, 
+      { "1712-9", BarrioLibre }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1712-9", BarrioLibre }, 
+      { "1713-7", PascuaYaqui }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1713-7", PascuaYaqui }, 
+      { "1715-2", YavapaiApache }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1715-2", YavapaiApache }, 
+      { "1717-8", Yokuts }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1717-8", Yokuts }, 
+      { "1718-6", Chukchansi }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1718-6", Chukchansi }, 
+      { "1719-4", Tachi }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1719-4", Tachi }, 
+      { "1720-2", TuleRiver }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1720-2", TuleRiver }, 
+      { "1722-8", Yuchi }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1722-8", Yuchi }, 
+      { "1724-4", Yuman }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1724-4", Yuman }, 
+      { "1725-1", Cocopah }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1725-1", Cocopah }, 
+      { "1726-9", Havasupai }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1726-9", Havasupai }, 
+      { "1727-7", Hualapai }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1727-7", Hualapai }, 
+      { "1728-5", Maricopa }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1728-5", Maricopa }, 
+      { "1729-3", Mohave }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1729-3", Mohave }, 
+      { "1730-1", Quechan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1730-1", Quechan }, 
+      { "1731-9", Yavapai }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1731-9", Yavapai }, 
+      { "1732-7", Yurok }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1732-7", Yurok }, 
+      { "1733-5", CoastYurok }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1733-5", CoastYurok }, 
+      { "1735-0", AlaskaNative }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1735-0", AlaskaNative }, 
+      { "1737-6", AlaskaIndian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1737-6", AlaskaIndian }, 
+      { "1739-2", AlaskanAthabascan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1739-2", AlaskanAthabascan }, 
+      { "1740-0", Ahtna }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1740-0", Ahtna }, 
+      { "1741-8", Alatna }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1741-8", Alatna }, 
+      { "1742-6", Alexander }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1742-6", Alexander }, 
+      { "1743-4", Allakaket }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1743-4", Allakaket }, 
+      { "1744-2", Alanvik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1744-2", Alanvik }, 
+      { "1745-9", Anvik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1745-9", Anvik }, 
+      { "1746-7", Arctic }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1746-7", Arctic }, 
+      { "1747-5", Beaver }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1747-5", Beaver }, 
+      { "1748-3", BirchCreek }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1748-3", BirchCreek }, 
+      { "1749-1", Cantwell }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1749-1", Cantwell }, 
+      { "1750-9", Chalkyitsik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1750-9", Chalkyitsik }, 
+      { "1751-7", Chickaloon }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1751-7", Chickaloon }, 
+      { "1752-5", Chistochina }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1752-5", Chistochina }, 
+      { "1753-3", Chitina }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1753-3", Chitina }, 
+      { "1754-1", Circle }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1754-1", Circle }, 
+      { "1755-8", CookInlet }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1755-8", CookInlet }, 
+      { "1756-6", CopperCenter }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1756-6", CopperCenter }, 
+      { "1757-4", CopperRiver }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1757-4", CopperRiver }, 
+      { "1758-2", DotLake }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1758-2", DotLake }, 
+      { "1759-0", Doyon }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1759-0", Doyon }, 
+      { "1760-8", Eagle }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1760-8", Eagle }, 
+      { "1761-6", Eklutna }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1761-6", Eklutna }, 
+      { "1762-4", Evansville }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1762-4", Evansville }, 
+      { "1763-2", FortYukon }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1763-2", FortYukon }, 
+      { "1764-0", Gakona }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1764-0", Gakona }, 
+      { "1765-7", Galena }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1765-7", Galena }, 
+      { "1766-5", Grayling }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1766-5", Grayling }, 
+      { "1767-3", Gulkana }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1767-3", Gulkana }, 
+      { "1768-1", HealyLake }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1768-1", HealyLake }, 
+      { "1769-9", HolyCross }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1769-9", HolyCross }, 
+      { "1770-7", Hughes }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1770-7", Hughes }, 
+      { "1771-5", Huslia }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1771-5", Huslia }, 
+      { "1772-3", Iliamna }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1772-3", Iliamna }, 
+      { "1773-1", Kaltag }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1773-1", Kaltag }, 
+      { "1774-9", KlutiKaah }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1774-9", KlutiKaah }, 
+      { "1775-6", Knik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1775-6", Knik }, 
+      { "1776-4", Koyukuk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1776-4", Koyukuk }, 
+      { "1777-2", LakeMinchumina }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1777-2", LakeMinchumina }, 
+      { "1778-0", Lime }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1778-0", Lime }, 
+      { "1779-8", Mcgrath }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1779-8", Mcgrath }, 
+      { "1780-6", ManleyHotSprings }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1780-6", ManleyHotSprings }, 
+      { "1781-4", MentastaLake }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1781-4", MentastaLake }, 
+      { "1782-2", Minto }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1782-2", Minto }, 
+      { "1783-0", Nenana }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1783-0", Nenana }, 
+      { "1784-8", Nikolai }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1784-8", Nikolai }, 
+      { "1785-5", Ninilchik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1785-5", Ninilchik }, 
+      { "1786-3", Nondalton }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1786-3", Nondalton }, 
+      { "1787-1", Northway }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1787-1", Northway }, 
+      { "1788-9", Nulato }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1788-9", Nulato }, 
+      { "1789-7", PedroBay }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1789-7", PedroBay }, 
+      { "1790-5", Rampart }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1790-5", Rampart }, 
+      { "1791-3", Ruby }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1791-3", Ruby }, 
+      { "1792-1", Salamatof }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1792-1", Salamatof }, 
+      { "1793-9", Seldovia }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1793-9", Seldovia }, 
+      { "1794-7", Slana }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1794-7", Slana }, 
+      { "1795-4", Shageluk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1795-4", Shageluk }, 
+      { "1796-2", Stevens }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1796-2", Stevens }, 
+      { "1797-0", StonyRiver }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1797-0", StonyRiver }, 
+      { "1798-8", Takotna }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1798-8", Takotna }, 
+      { "1799-6", Tanacross }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1799-6", Tanacross }, 
+      { "1800-2", Tanaina }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1800-2", Tanaina }, 
+      { "1801-0", Tanana }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1801-0", Tanana }, 
+      { "1802-8", TananaChiefs }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1802-8", TananaChiefs }, 
+      { "1803-6", Tazlina }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1803-6", Tazlina }, 
+      { "1804-4", Telida }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1804-4", Telida }, 
+      { "1805-1", Tetlin }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1805-1", Tetlin }, 
+      { "1806-9", Tok }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1806-9", Tok }, 
+      { "1807-7", Tyonek }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1807-7", Tyonek }, 
+      { "1808-5", Venetie }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1808-5", Venetie }, 
+      { "1809-3", Wiseman }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1809-3", Wiseman }, 
+      { "1811-9", SoutheastAlaska }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1811-9", SoutheastAlaska }, 
+      { "1813-5", TlingitHaida }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1813-5", TlingitHaida }, 
+      { "1814-3", Angoon }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1814-3", Angoon }, 
+      { "1815-0", CentralCouncilOfTlingitAndHaidaTribes }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1815-0", CentralCouncilOfTlingitAndHaidaTribes }, 
+      { "1816-8", Chilkat }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1816-8", Chilkat }, 
+      { "1817-6", Chilkoot }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1817-6", Chilkoot }, 
+      { "1818-4", Craig }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1818-4", Craig }, 
+      { "1819-2", Douglas }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1819-2", Douglas }, 
+      { "1820-0", Haida }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1820-0", Haida }, 
+      { "1821-8", Hoonah }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1821-8", Hoonah }, 
+      { "1822-6", Hydaburg }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1822-6", Hydaburg }, 
+      { "1823-4", Kake }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1823-4", Kake }, 
+      { "1824-2", Kasaan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1824-2", Kasaan }, 
+      { "1825-9", Kenaitze }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1825-9", Kenaitze }, 
+      { "1826-7", Ketchikan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1826-7", Ketchikan }, 
+      { "1827-5", Klawock }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1827-5", Klawock }, 
+      { "1828-3", Pelican }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1828-3", Pelican }, 
+      { "1829-1", Petersburg }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1829-1", Petersburg }, 
+      { "1830-9", Saxman }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1830-9", Saxman }, 
+      { "1831-7", Sitka }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1831-7", Sitka }, 
+      { "1832-5", TenakeeSprings }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1832-5", TenakeeSprings }, 
+      { "1833-3", Tlingit }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1833-3", Tlingit }, 
+      { "1834-1", Wrangell }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1834-1", Wrangell }, 
+      { "1835-8", Yakutat }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1835-8", Yakutat }, 
+      { "1837-4", Tsimshian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1837-4", Tsimshian }, 
+      { "1838-2", Metlakatla }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1838-2", Metlakatla }, 
+      { "1840-8", Eskimo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1840-8", Eskimo }, 
+      { "1842-4", GreenlandEskimo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1842-4", GreenlandEskimo }, 
+      { "1844-0", InupiatEskimo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1844-0", InupiatEskimo }, 
+      { "1845-7", Ambler }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1845-7", Ambler }, 
+      { "1846-5", Anaktuvuk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1846-5", Anaktuvuk }, 
+      { "1847-3", AnaktuvukPass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1847-3", AnaktuvukPass }, 
+      { "1848-1", ArcticSlopeInupiat }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1848-1", ArcticSlopeInupiat }, 
+      { "1849-9", ArcticSlopeCorporation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1849-9", ArcticSlopeCorporation }, 
+      { "1850-7", Atqasuk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1850-7", Atqasuk }, 
+      { "1851-5", Barrow }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1851-5", Barrow }, 
+      { "1852-3", BeringStraitsInupiat }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1852-3", BeringStraitsInupiat }, 
+      { "1853-1", BrevigMission }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1853-1", BrevigMission }, 
+      { "1854-9", Buckland }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1854-9", Buckland }, 
+      { "1855-6", Chinik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1855-6", Chinik }, 
+      { "1856-4", Council }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1856-4", Council }, 
+      { "1857-2", Deering }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1857-2", Deering }, 
+      { "1858-0", Elim }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1858-0", Elim }, 
+      { "1859-8", Golovin }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1859-8", Golovin }, 
+      { "1860-6", InalikDiomede }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1860-6", InalikDiomede }, 
+      { "1861-4", Inupiaq }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1861-4", Inupiaq }, 
+      { "1862-2", Kaktovik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1862-2", Kaktovik }, 
+      { "1863-0", Kawerak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1863-0", Kawerak }, 
+      { "1864-8", Kiana }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1864-8", Kiana }, 
+      { "1865-5", Kivalina }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1865-5", Kivalina }, 
+      { "1866-3", Kobuk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1866-3", Kobuk }, 
+      { "1867-1", Kotzebue }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1867-1", Kotzebue }, 
+      { "1868-9", Koyuk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1868-9", Koyuk }, 
+      { "1869-7", Kwiguk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1869-7", Kwiguk }, 
+      { "1870-5", MaunelukInupiat }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1870-5", MaunelukInupiat }, 
+      { "1871-3", NanaInupiat }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1871-3", NanaInupiat }, 
+      { "1872-1", Noatak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1872-1", Noatak }, 
+      { "1873-9", Nome }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1873-9", Nome }, 
+      { "1874-7", Noorvik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1874-7", Noorvik }, 
+      { "1875-4", Nuiqsut }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1875-4", Nuiqsut }, 
+      { "1876-2", PointHope }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1876-2", PointHope }, 
+      { "1877-0", PointLay }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1877-0", PointLay }, 
+      { "1878-8", Selawik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1878-8", Selawik }, 
+      { "1879-6", Shaktoolik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1879-6", Shaktoolik }, 
+      { "1880-4", Shishmaref }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1880-4", Shishmaref }, 
+      { "1881-2", Shungnak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1881-2", Shungnak }, 
+      { "1882-0", Solomon }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1882-0", Solomon }, 
+      { "1883-8", Teller }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1883-8", Teller }, 
+      { "1884-6", Unalakleet }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1884-6", Unalakleet }, 
+      { "1885-3", Wainwright }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1885-3", Wainwright }, 
+      { "1886-1", Wales }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1886-1", Wales }, 
+      { "1887-9", WhiteMountain }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1887-9", WhiteMountain }, 
+      { "1888-7", WhiteMountainInupiat }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1888-7", WhiteMountainInupiat }, 
+      { "1889-5", MaryQuoteSIgloo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1889-5", MaryQuoteSIgloo }, 
+      { "1891-1", SiberianEskimo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1891-1", SiberianEskimo }, 
+      { "1892-9", Gambell }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1892-9", Gambell }, 
+      { "1893-7", Savoonga }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1893-7", Savoonga }, 
+      { "1894-5", SiberianYupik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1894-5", SiberianYupik }, 
+      { "1896-0", YupikEskimo }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1896-0", YupikEskimo }, 
+      { "1897-8", Akiachak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1897-8", Akiachak }, 
+      { "1898-6", Akiak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1898-6", Akiak }, 
+      { "1899-4", Alakanuk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1899-4", Alakanuk }, 
+      { "1900-0", Aleknagik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1900-0", Aleknagik }, 
+      { "1901-8", Andreafsky }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1901-8", Andreafsky }, 
+      { "1902-6", Aniak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1902-6", Aniak }, 
+      { "1903-4", Atmautluak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1903-4", Atmautluak }, 
+      { "1904-2", Bethel }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1904-2", Bethel }, 
+      { "1905-9", BillMooreQuoteSSlough }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1905-9", BillMooreQuoteSSlough }, 
+      { "1906-7", BristolBayYupik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1906-7", BristolBayYupik }, 
+      { "1907-5", CalistaYupik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1907-5", CalistaYupik }, 
+      { "1908-3", Chefornak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1908-3", Chefornak }, 
+      { "1909-1", Chevak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1909-1", Chevak }, 
+      { "1910-9", Chuathbaluk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1910-9", Chuathbaluk }, 
+      { "1911-7", ClarkQuoteSPoint }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1911-7", ClarkQuoteSPoint }, 
+      { "1912-5", CrookedCreek }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1912-5", CrookedCreek }, 
+      { "1913-3", Dillingham }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1913-3", Dillingham }, 
+      { "1914-1", Eek }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1914-1", Eek }, 
+      { "1915-8", Ekuk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1915-8", Ekuk }, 
+      { "1916-6", Ekwok }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1916-6", Ekwok }, 
+      { "1917-4", Emmonak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1917-4", Emmonak }, 
+      { "1918-2", GoodnewsBay }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1918-2", GoodnewsBay }, 
+      { "1919-0", HooperBay }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1919-0", HooperBay }, 
+      { "1920-8", IqurmuitRussianMission }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1920-8", IqurmuitRussianMission }, 
+      { "1921-6", Kalskag }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1921-6", Kalskag }, 
+      { "1922-4", Kasigluk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1922-4", Kasigluk }, 
+      { "1923-2", Kipnuk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1923-2", Kipnuk }, 
+      { "1924-0", Koliganek }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1924-0", Koliganek }, 
+      { "1925-7", Kongiganak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1925-7", Kongiganak }, 
+      { "1926-5", Kotlik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1926-5", Kotlik }, 
+      { "1927-3", Kwethluk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1927-3", Kwethluk }, 
+      { "1928-1", Kwigillingok }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1928-1", Kwigillingok }, 
+      { "1929-9", Levelock }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1929-9", Levelock }, 
+      { "1930-7", LowerKalskag }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1930-7", LowerKalskag }, 
+      { "1931-5", Manokotak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1931-5", Manokotak }, 
+      { "1932-3", Marshall }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1932-3", Marshall }, 
+      { "1933-1", Mekoryuk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1933-1", Mekoryuk }, 
+      { "1934-9", MountainVillage }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1934-9", MountainVillage }, 
+      { "1935-6", Naknek }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1935-6", Naknek }, 
+      { "1936-4", Napaumute }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1936-4", Napaumute }, 
+      { "1937-2", Napakiak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1937-2", Napakiak }, 
+      { "1938-0", Napaskiak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1938-0", Napaskiak }, 
+      { "1939-8", Newhalen }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1939-8", Newhalen }, 
+      { "1940-6", NewStuyahok }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1940-6", NewStuyahok }, 
+      { "1941-4", Newtok }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1941-4", Newtok }, 
+      { "1942-2", Nightmute }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1942-2", Nightmute }, 
+      { "1943-0", Nunapitchukv }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1943-0", Nunapitchukv }, 
+      { "1944-8", Oscarville }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1944-8", Oscarville }, 
+      { "1945-5", PilotStation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1945-5", PilotStation }, 
+      { "1946-3", PitkasPoint }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1946-3", PitkasPoint }, 
+      { "1947-1", Platinum }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1947-1", Platinum }, 
+      { "1948-9", PortageCreek }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1948-9", PortageCreek }, 
+      { "1949-7", Quinhagak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1949-7", Quinhagak }, 
+      { "1950-5", RedDevil }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1950-5", RedDevil }, 
+      { "1951-3", StMichael }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1951-3", StMichael }, 
+      { "1952-1", ScammonBay }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1952-1", ScammonBay }, 
+      { "1953-9", SheldonQuoteSPoint }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1953-9", SheldonQuoteSPoint }, 
+      { "1954-7", Sleetmute }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1954-7", Sleetmute }, 
+      { "1955-4", Stebbins }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1955-4", Stebbins }, 
+      { "1956-2", Togiak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1956-2", Togiak }, 
+      { "1957-0", Toksook }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1957-0", Toksook }, 
+      { "1958-8", Tulukskak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1958-8", Tulukskak }, 
+      { "1959-6", Tuntutuliak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1959-6", Tuntutuliak }, 
+      { "1960-4", Tununak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1960-4", Tununak }, 
+      { "1961-2", TwinHills }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1961-2", TwinHills }, 
+      { "1962-0", Georgetown_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1962-0", Georgetown_2 }, 
+      { "1963-8", StMaryQuoteS }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1963-8", StMaryQuoteS }, 
+      { "1964-6", Umkumiate }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1964-6", Umkumiate }, 
+      { "1966-1", Aleut }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1966-1", Aleut }, 
+      { "1968-7", AlutiiqAleut }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1968-7", AlutiiqAleut }, 
+      { "1969-5", Tatitlek }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1969-5", Tatitlek }, 
+      { "1970-3", Ugashik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1970-3", Ugashik }, 
+      { "1972-9", BristolBayAleut }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1972-9", BristolBayAleut }, 
+      { "1973-7", Chignik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1973-7", Chignik }, 
+      { "1974-5", ChignikLake }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1974-5", ChignikLake }, 
+      { "1975-2", Egegik }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1975-2", Egegik }, 
+      { "1976-0", Igiugig }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1976-0", Igiugig }, 
+      { "1977-8", IvanofBay }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1977-8", IvanofBay }, 
+      { "1978-6", KingSalmon }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1978-6", KingSalmon }, 
+      { "1979-4", Kokhanok }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1979-4", Kokhanok }, 
+      { "1980-2", Perryville }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1980-2", Perryville }, 
+      { "1981-0", PilotPoint }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1981-0", PilotPoint }, 
+      { "1982-8", PortHeiden }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1982-8", PortHeiden }, 
+      { "1984-4", ChugachAleut }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1984-4", ChugachAleut }, 
+      { "1985-1", Chenega }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1985-1", Chenega }, 
+      { "1986-9", ChugachCorporation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1986-9", ChugachCorporation }, 
+      { "1987-7", EnglishBay }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1987-7", EnglishBay }, 
+      { "1988-5", PortGraham }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1988-5", PortGraham }, 
+      { "1990-1", Eyak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1990-1", Eyak }, 
+      { "1992-7", KoniagAleut }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1992-7", KoniagAleut }, 
+      { "1993-5", Akhiok }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1993-5", Akhiok }, 
+      { "1994-3", Agdaagux }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1994-3", Agdaagux }, 
+      { "1995-0", Karluk }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1995-0", Karluk }, 
+      { "1996-8", Kodiak }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1996-8", Kodiak }, 
+      { "1997-6", LarsenBay }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1997-6", LarsenBay }, 
+      { "1998-4", OldHarbor }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1998-4", OldHarbor }, 
+      { "1999-2", Ouzinkie }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#1999-2", Ouzinkie }, 
+      { "2000-8", PortLions }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2000-8", PortLions }, 
+      { "2002-4", Sugpiaq }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2002-4", Sugpiaq }, 
+      { "2004-0", Suqpigaq }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2004-0", Suqpigaq }, 
+      { "2006-5", UnanganAleut }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2006-5", UnanganAleut }, 
+      { "2007-3", Akutan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2007-3", Akutan }, 
+      { "2008-1", AleutCorporation }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2008-1", AleutCorporation }, 
+      { "2009-9", Aleutian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2009-9", Aleutian }, 
+      { "2010-7", AleutianIslander }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2010-7", AleutianIslander }, 
+      { "2011-5", Atka }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2011-5", Atka }, 
+      { "2012-3", Belkofski }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2012-3", Belkofski }, 
+      { "2013-1", ChignikLagoon }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2013-1", ChignikLagoon }, 
+      { "2014-9", KingCove }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2014-9", KingCove }, 
+      { "2015-6", FalsePass }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2015-6", FalsePass }, 
+      { "2016-4", NelsonLagoon }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2016-4", NelsonLagoon }, 
+      { "2017-2", Nikolski }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2017-2", Nikolski }, 
+      { "2018-0", PauloffHarbor }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2018-0", PauloffHarbor }, 
+      { "2019-8", QaganToyagungin }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2019-8", QaganToyagungin }, 
+      { "2020-6", Qawalangin }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2020-6", Qawalangin }, 
+      { "2021-4", StGeorge }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2021-4", StGeorge }, 
+      { "2022-2", StPaul }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2022-2", StPaul }, 
+      { "2023-0", SandPoint }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2023-0", SandPoint }, 
+      { "2024-8", SouthNaknek }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2024-8", SouthNaknek }, 
+      { "2025-5", Unalaska }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2025-5", Unalaska }, 
+      { "2026-3", Unga }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2026-3", Unga }, 
+      { "2028-9", Asian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2028-9", Asian }, 
+      { "2029-7", AsianIndian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2029-7", AsianIndian }, 
+      { "2030-5", Bangladeshi }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2030-5", Bangladeshi }, 
+      { "2031-3", Bhutanese }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2031-3", Bhutanese }, 
+      { "2032-1", Burmese }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2032-1", Burmese }, 
+      { "2033-9", Cambodian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2033-9", Cambodian }, 
+      { "2034-7", Chinese }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2034-7", Chinese }, 
+      { "2035-4", Taiwanese }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2035-4", Taiwanese }, 
+      { "2036-2", Filipino }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2036-2", Filipino }, 
+      { "2037-0", Hmong }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2037-0", Hmong }, 
+      { "2038-8", Indonesian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2038-8", Indonesian }, 
+      { "2039-6", Japanese }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2039-6", Japanese }, 
+      { "2040-4", Korean }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2040-4", Korean }, 
+      { "2041-2", Laotian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2041-2", Laotian }, 
+      { "2042-0", Malaysian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2042-0", Malaysian }, 
+      { "2043-8", Okinawan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2043-8", Okinawan }, 
+      { "2044-6", Pakistani }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2044-6", Pakistani }, 
+      { "2045-3", SriLankan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2045-3", SriLankan }, 
+      { "2046-1", Thai }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2046-1", Thai }, 
+      { "2047-9", Vietnamese }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2047-9", Vietnamese }, 
+      { "2048-7", IwoJiman }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2048-7", IwoJiman }, 
+      { "2049-5", Maldivian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2049-5", Maldivian }, 
+      { "2050-3", Nepalese }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2050-3", Nepalese }, 
+      { "2051-1", Singaporean }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2051-1", Singaporean }, 
+      { "2052-9", Madagascar }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2052-9", Madagascar }, 
+      { "2054-5", BlackOrAfricanAmerican }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2054-5", BlackOrAfricanAmerican }, 
+      { "2056-0", Black }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2056-0", Black }, 
+      { "2058-6", AfricanAmerican }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2058-6", AfricanAmerican }, 
+      { "2060-2", African }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2060-2", African }, 
+      { "2061-0", Botswanan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2061-0", Botswanan }, 
+      { "2062-8", Ethiopian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2062-8", Ethiopian }, 
+      { "2063-6", Liberian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2063-6", Liberian }, 
+      { "2064-4", Namibian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2064-4", Namibian }, 
+      { "2065-1", Nigerian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2065-1", Nigerian }, 
+      { "2066-9", Zairean }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2066-9", Zairean }, 
+      { "2067-7", Bahamian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2067-7", Bahamian }, 
+      { "2068-5", Barbadian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2068-5", Barbadian }, 
+      { "2069-3", Dominican }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2069-3", Dominican }, 
+      { "2070-1", DominicaIslander }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2070-1", DominicaIslander }, 
+      { "2071-9", Haitian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2071-9", Haitian }, 
+      { "2072-7", Jamaican }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2072-7", Jamaican }, 
+      { "2073-5", Tobagoan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2073-5", Tobagoan }, 
+      { "2074-3", Trinidadian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2074-3", Trinidadian }, 
+      { "2075-0", WestIndian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2075-0", WestIndian }, 
+      { "2076-8", NativeHawaiianOrOtherPacificIslander }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2076-8", NativeHawaiianOrOtherPacificIslander }, 
+      { "2078-4", Polynesian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2078-4", Polynesian }, 
+      { "2079-2", NativeHawaiian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2079-2", NativeHawaiian }, 
+      { "2080-0", Samoan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2080-0", Samoan }, 
+      { "2081-8", Tahitian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2081-8", Tahitian }, 
+      { "2082-6", Tongan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2082-6", Tongan }, 
+      { "2083-4", Tokelauan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2083-4", Tokelauan }, 
+      { "2085-9", Micronesian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2085-9", Micronesian }, 
+      { "2086-7", GuamanianOrChamorro }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2086-7", GuamanianOrChamorro }, 
+      { "2087-5", Guamanian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2087-5", Guamanian }, 
+      { "2088-3", Chamorro }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2088-3", Chamorro }, 
+      { "2089-1", MarianaIslander }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2089-1", MarianaIslander }, 
+      { "2090-9", Marshallese }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2090-9", Marshallese }, 
+      { "2091-7", Palauan }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2091-7", Palauan }, 
+      { "2092-5", Carolinian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2092-5", Carolinian }, 
+      { "2093-3", Kosraean }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2093-3", Kosraean }, 
+      { "2094-1", Pohnpeian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2094-1", Pohnpeian }, 
+      { "2095-8", Saipanese }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2095-8", Saipanese }, 
+      { "2096-6", Kiribati }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2096-6", Kiribati }, 
+      { "2097-4", Chuukese }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2097-4", Chuukese }, 
+      { "2098-2", Yapese }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2098-2", Yapese }, 
+      { "2100-6", Melanesian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2100-6", Melanesian }, 
+      { "2101-4", Fijian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2101-4", Fijian }, 
+      { "2102-2", PapuaNewGuinean }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2102-2", PapuaNewGuinean }, 
+      { "2103-0", SolomonIslander }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2103-0", SolomonIslander }, 
+      { "2104-8", NewHebrides }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2104-8", NewHebrides }, 
+      { "2106-3", White }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2106-3", White }, 
+      { "2108-9", European }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2108-9", European }, 
+      { "2109-7", Armenian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2109-7", Armenian }, 
+      { "2110-5", English }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2110-5", English }, 
+      { "2111-3", French }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2111-3", French }, 
+      { "2112-1", German }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2112-1", German }, 
+      { "2113-9", Irish }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2113-9", Irish }, 
+      { "2114-7", Italian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2114-7", Italian }, 
+      { "2115-4", Polish }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2115-4", Polish }, 
+      { "2116-2", Scottish }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2116-2", Scottish }, 
+      { "2118-8", MiddleEasternOrNorthAfrican }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2118-8", MiddleEasternOrNorthAfrican }, 
+      { "2119-6", Assyrian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2119-6", Assyrian }, 
+      { "2120-4", Egyptian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2120-4", Egyptian }, 
+      { "2121-2", Iranian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2121-2", Iranian }, 
+      { "2122-0", Iraqi }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2122-0", Iraqi }, 
+      { "2123-8", Lebanese }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2123-8", Lebanese }, 
+      { "2124-6", Palestinian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2124-6", Palestinian }, 
+      { "2125-3", Syrian }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2125-3", Syrian }, 
+      { "2126-1", Afghanistani }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2126-1", Afghanistani }, 
+      { "2127-9", Israeili }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2127-9", Israeili }, 
+      { "2129-5", Arab }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2129-5", Arab }, 
+      { "2131-1", OtherRace }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2131-1", OtherRace }, 
+      { "248152002", VAL248152002 }, 
+      { "http://snomed.info/sct#248152002", VAL248152002 }, 
+      { "248153007", VAL248153007 }, 
+      { "http://snomed.info/sct#248153007", VAL248153007 }, 
+      { "2500-7", OtherPacificIslander }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-Race#2500-7", OtherPacificIslander }, 
+      { "77386006", VAL77386006 }, 
+      { "http://snomed.info/sct#77386006", VAL77386006 }, 
+    };
   };
 }

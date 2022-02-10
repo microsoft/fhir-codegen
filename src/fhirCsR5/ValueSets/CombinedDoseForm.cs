@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class CombinedDoseFormCodes
   {
     /// <summary>
-    /// 
+    /// Powder and solvent for oral solution
     /// </summary>
     public static readonly Coding PowderAndSolventForOralSolution = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for oral suspension
     /// </summary>
     public static readonly Coding PowderAndSolventForOralSuspension = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Eye drops, powder and solvent for solution
     /// </summary>
     public static readonly Coding EyeDropsPowderAndSolventForSolution = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Eye drops, powder and solvent for suspension
     /// </summary>
     public static readonly Coding EyeDropsPowderAndSolventForSuspension = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Ear drops, powder and solvent for suspension
     /// </summary>
     public static readonly Coding EarDropsPowderAndSolventForSuspension = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for solution for infusion
     /// </summary>
     public static readonly Coding PowderAndSolventForSolutionForInfusion = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for solution for injection
     /// </summary>
     public static readonly Coding PowderAndSolventForSolutionForInjection = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for suspension for injection
     /// </summary>
     public static readonly Coding PowderAndSolventForSuspensionForInjection = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for implantation paste
     /// </summary>
     public static readonly Coding PowderAndSolventForImplantationPaste = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Endotracheopulmonary instillation, powder and solvent for solution
     /// </summary>
     public static readonly Coding EndotracheopulmonaryInstillationPowderAndSolventForSolution = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for endocervical gel
     /// </summary>
     public static readonly Coding PowderAndSolventForEndocervicalGel = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for sealant
     /// </summary>
     public static readonly Coding PowderAndSolventForSealant = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Concentrate and solvent for concentrate for solution for infusion
     /// </summary>
     public static readonly Coding ConcentrateAndSolventForConcentrateForSolutionForInfusion = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Concentrate and solvent for cutaneous use
     /// </summary>
     public static readonly Coding ConcentrateAndSolventForCutaneousUse = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Concentrate and solvent for injection
     /// </summary>
     public static readonly Coding ConcentrateAndSolventForInjection = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Concentrate and solvent for solution for infusion
     /// </summary>
     public static readonly Coding ConcentrateAndSolventForSolutionForInfusion = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Concentrate and diluent for solution for infusion
     /// </summary>
     public static readonly Coding ConcentrateAndDiluentForSolutionForInfusion = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Concentrate and solvent for cutaneous solution
     /// </summary>
     public static readonly Coding ConcentrateAndSolventForCutaneousSolution = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Concentrate and solvent for solution for injection
     /// </summary>
     public static readonly Coding ConcentrateAndSolventForSolutionForInjection = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Concentrate and solvent for suspension for injection
     /// </summary>
     public static readonly Coding ConcentrateAndSolventForSuspensionForInjection = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Granules and solvent for suspension for injection
     /// </summary>
     public static readonly Coding GranulesAndSolventForSuspensionForInjection = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for concentrate for solution for infusion
     /// </summary>
     public static readonly Coding PowderAndSolventForConcentrateForSolutionForInfusion = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for cutaneous solution
     /// </summary>
     public static readonly Coding PowderAndSolventForCutaneousSolution = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for gingival gel
     /// </summary>
     public static readonly Coding PowderAndSolventForGingivalGel = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for prolonged-release suspension for injection
     /// </summary>
     public static readonly Coding PowderAndSolventForProlongedReleaseSuspensionForInjection = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for endosinusial solution
     /// </summary>
     public static readonly Coding PowderAndSolventForEndosinusialSolution = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for intraocular instillation solution
     /// </summary>
     public static readonly Coding PowderAndSolventForIntraocularInstillationSolution = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and suspension for suspension for injection
     /// </summary>
     public static readonly Coding PowderAndSuspensionForSuspensionForInjection = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Suspension and effervescent granules for oral suspension
     /// </summary>
     public static readonly Coding SuspensionAndEffervescentGranulesForOralSuspension = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Tablet and solvent for rectal suspension
     /// </summary>
     public static readonly Coding TabletAndSolventForRectalSuspension = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for dental gel
     /// </summary>
     public static readonly Coding PowderAndSolventForDentalGel = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Gas and solvent for dispersion for injection/infusion
     /// </summary>
     public static readonly Coding GasAndSolventForDispersionForInjectionInfusion = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for solution for injection/infusion
     /// </summary>
     public static readonly Coding PowderAndSolventForSolutionForInjectionInfusion = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Suspension and solution for spray
     /// </summary>
     public static readonly Coding SuspensionAndSolutionForSpray = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Tablet and powder for oral solution
     /// </summary>
     public static readonly Coding TabletAndPowderForOralSolution = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Emulsion and suspension for emulsion for injection
     /// </summary>
     public static readonly Coding EmulsionAndSuspensionForEmulsionForInjection = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for dispersion for injection
     /// </summary>
     public static readonly Coding PowderAndSolventForDispersionForInjection = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder for mouth wash
     /// </summary>
     public static readonly Coding PowderForMouthWash = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Lyophilisate and solvent for solution for injection
     /// </summary>
     public static readonly Coding LyophilisateAndSolventForSolutionForInjection = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Fibrin sealant-powder and solvent for fibrin sealant
     /// </summary>
     public static readonly Coding FibrinSealantPowderAndSolventForFibrinSealant = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Granules and solvent for oral suspension
     /// </summary>
     public static readonly Coding GranulesAndSolventForOralSuspension = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Lyophilisate and solvent for suspension for injection
     /// </summary>
     public static readonly Coding LyophilisateAndSolventForSuspensionForInjection = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and gel for gel
     /// </summary>
     public static readonly Coding PowderAndGelForGel = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solution for solution for injection
     /// </summary>
     public static readonly Coding PowderAndSolutionForSolutionForInjection = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for epilesional solution
     /// </summary>
     public static readonly Coding PowderAndSolventForEpilesionalSolution = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for intravesical solution
     /// </summary>
     public static readonly Coding PowderAndSolventForIntravesicalSolution = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for intravesical suspension
     /// </summary>
     public static readonly Coding PowderAndSolventForIntravesicalSuspension = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for nebuliser solution
     /// </summary>
     public static readonly Coding PowderAndSolventForNebuliserSolution = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder, dispersion and solvent for concentrate for dispersion for infusion
     /// </summary>
     public static readonly Coding PowderDispersionAndSolventForConcentrateForDispersionForInfusion = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for emulsion for injection
     /// </summary>
     public static readonly Coding PowderAndSolventForEmulsionForInjection = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Nasal drops, powder and solvent for solution
     /// </summary>
     public static readonly Coding NasalDropsPowderAndSolventForSolution = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Suspension and solvent for suspension for injection
     /// </summary>
     public static readonly Coding SuspensionAndSolventForSuspensionForInjection = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Concentrate and solvent for solution for injection/infusion
     /// </summary>
     public static readonly Coding ConcentrateAndSolventForSolutionForInjectionInfusion = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for solution for injection/skin-prick test
     /// </summary>
     public static readonly Coding PowderAndSolventForSolutionForInjectionSkinPrickTest = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Lyophilisate and solvent for suspension for nasal administration
     /// </summary>
     public static readonly Coding LyophilisateAndSolventForSuspensionForNasalAdministration = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for solution for sealant
     /// </summary>
     public static readonly Coding PowderAndSolventForSolutionForSealant = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Solution for dispersion for injection/infusion
     /// </summary>
     public static readonly Coding SolutionForDispersionForInjectionInfusion = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solution for dental cement
     /// </summary>
     public static readonly Coding PowderAndSolutionForDentalCement = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Endotracheopulmonary instillation, powder and solvent for suspension
     /// </summary>
     public static readonly Coding EndotracheopulmonaryInstillationPowderAndSolventForSuspension = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder, solvent and matrix for implantation matrix
     /// </summary>
     public static readonly Coding PowderSolventAndMatrixForImplantationMatrix = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Nasal drops, lyophilisate and solvent for suspension
     /// </summary>
     public static readonly Coding NasalDropsLyophilisateAndSolventForSuspension = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Lyophilisate and suspension for suspension for injection
     /// </summary>
     public static readonly Coding LyophilisateAndSuspensionForSuspensionForInjection = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder for concentrate and solution for solution for infusion
     /// </summary>
     public static readonly Coding PowderForConcentrateAndSolutionForSolutionForInfusion = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solution for bee-hive solution
     /// </summary>
     public static readonly Coding PowderAndSolutionForBeeHiveSolution = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Suspension and solvent for oral spray
     /// </summary>
     public static readonly Coding SuspensionAndSolventForOralSpray = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Lyophilisate and solvent for oral suspension
     /// </summary>
     public static readonly Coding LyophilisateAndSolventForOralSuspension = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Concentrate and solvent for concentrate for oral spray, suspension
     /// </summary>
     public static readonly Coding ConcentrateAndSolventForConcentrateForOralSpraySuspension = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Lyophilisate and solvent for oculonasal suspension
     /// </summary>
     public static readonly Coding LyophilisateAndSolventForOculonasalSuspension = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Emulsion and lyophilisate for suspension for injection
     /// </summary>
     public static readonly Coding EmulsionAndLyophilisateForSuspensionForInjection = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solvent for syrup
     /// </summary>
     public static readonly Coding PowderAndSolventForSyrup = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Nasal spray, lyophilisate and solvent for suspension
     /// </summary>
     public static readonly Coding NasalSprayLyophilisateAndSolventForSuspension = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solution for bee-hive dispersion
     /// </summary>
     public static readonly Coding PowderAndSolutionForBeeHiveDispersion = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Solution and dispersion for nebuliser dispersion
     /// </summary>
     public static readonly Coding SolutionAndDispersionForNebuliserDispersion = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Effervescent powder and powder for oral suspension
     /// </summary>
     public static readonly Coding EffervescentPowderAndPowderForOralSuspension = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Lyophilisate and solvent for emulsion for injection
     /// </summary>
     public static readonly Coding LyophilisateAndSolventForEmulsionForInjection = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Powder and solution for suspension for injection
     /// </summary>
     public static readonly Coding PowderAndSolutionForSuspensionForInjection = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR5.ValueSets
       System = "http://hl7.org/fhir/combined-dose-form"
     };
     /// <summary>
-    /// 
+    /// Lyophilisate and solvent for suspension for nasal spray or injection
     /// </summary>
     public static readonly Coding LyophilisateAndSolventForSuspensionForNasalSprayOrInjection = new Coding
     {
@@ -711,9 +711,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowderAndSolventForOralSolution = "100000073366";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForOralSolution
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForOralSolution = "http://hl7.org/fhir/combined-dose-form#100000073366";
+
+    /// <summary>
     /// Literal for code: PowderAndSolventForOralSuspension
     /// </summary>
     public const string LiteralPowderAndSolventForOralSuspension = "100000073651";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForOralSuspension
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForOralSuspension = "http://hl7.org/fhir/combined-dose-form#100000073651";
 
     /// <summary>
     /// Literal for code: EyeDropsPowderAndSolventForSolution
@@ -721,9 +731,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEyeDropsPowderAndSolventForSolution = "100000073774";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormEyeDropsPowderAndSolventForSolution
+    /// </summary>
+    public const string LiteralCombinedDoseFormEyeDropsPowderAndSolventForSolution = "http://hl7.org/fhir/combined-dose-form#100000073774";
+
+    /// <summary>
     /// Literal for code: EyeDropsPowderAndSolventForSuspension
     /// </summary>
     public const string LiteralEyeDropsPowderAndSolventForSuspension = "100000073781";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormEyeDropsPowderAndSolventForSuspension
+    /// </summary>
+    public const string LiteralCombinedDoseFormEyeDropsPowderAndSolventForSuspension = "http://hl7.org/fhir/combined-dose-form#100000073781";
 
     /// <summary>
     /// Literal for code: EarDropsPowderAndSolventForSuspension
@@ -731,9 +751,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEarDropsPowderAndSolventForSuspension = "100000073801";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormEarDropsPowderAndSolventForSuspension
+    /// </summary>
+    public const string LiteralCombinedDoseFormEarDropsPowderAndSolventForSuspension = "http://hl7.org/fhir/combined-dose-form#100000073801";
+
+    /// <summary>
     /// Literal for code: PowderAndSolventForSolutionForInfusion
     /// </summary>
     public const string LiteralPowderAndSolventForSolutionForInfusion = "100000073860";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForSolutionForInfusion
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForSolutionForInfusion = "http://hl7.org/fhir/combined-dose-form#100000073860";
 
     /// <summary>
     /// Literal for code: PowderAndSolventForSolutionForInjection
@@ -741,9 +771,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowderAndSolventForSolutionForInjection = "100000073868";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForSolutionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForSolutionForInjection = "http://hl7.org/fhir/combined-dose-form#100000073868";
+
+    /// <summary>
     /// Literal for code: PowderAndSolventForSuspensionForInjection
     /// </summary>
     public const string LiteralPowderAndSolventForSuspensionForInjection = "100000073869";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForSuspensionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForSuspensionForInjection = "http://hl7.org/fhir/combined-dose-form#100000073869";
 
     /// <summary>
     /// Literal for code: PowderAndSolventForImplantationPaste
@@ -751,9 +791,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowderAndSolventForImplantationPaste = "100000073884";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForImplantationPaste
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForImplantationPaste = "http://hl7.org/fhir/combined-dose-form#100000073884";
+
+    /// <summary>
     /// Literal for code: EndotracheopulmonaryInstillationPowderAndSolventForSolution
     /// </summary>
     public const string LiteralEndotracheopulmonaryInstillationPowderAndSolventForSolution = "100000073891";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormEndotracheopulmonaryInstillationPowderAndSolventForSolution
+    /// </summary>
+    public const string LiteralCombinedDoseFormEndotracheopulmonaryInstillationPowderAndSolventForSolution = "http://hl7.org/fhir/combined-dose-form#100000073891";
 
     /// <summary>
     /// Literal for code: PowderAndSolventForEndocervicalGel
@@ -761,9 +811,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowderAndSolventForEndocervicalGel = "100000073892";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForEndocervicalGel
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForEndocervicalGel = "http://hl7.org/fhir/combined-dose-form#100000073892";
+
+    /// <summary>
     /// Literal for code: PowderAndSolventForSealant
     /// </summary>
     public const string LiteralPowderAndSolventForSealant = "100000073941";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForSealant
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForSealant = "http://hl7.org/fhir/combined-dose-form#100000073941";
 
     /// <summary>
     /// Literal for code: ConcentrateAndSolventForConcentrateForSolutionForInfusion
@@ -771,9 +831,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralConcentrateAndSolventForConcentrateForSolutionForInfusion = "100000073972";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormConcentrateAndSolventForConcentrateForSolutionForInfusion
+    /// </summary>
+    public const string LiteralCombinedDoseFormConcentrateAndSolventForConcentrateForSolutionForInfusion = "http://hl7.org/fhir/combined-dose-form#100000073972";
+
+    /// <summary>
     /// Literal for code: ConcentrateAndSolventForCutaneousUse
     /// </summary>
     public const string LiteralConcentrateAndSolventForCutaneousUse = "100000073973";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormConcentrateAndSolventForCutaneousUse
+    /// </summary>
+    public const string LiteralCombinedDoseFormConcentrateAndSolventForCutaneousUse = "http://hl7.org/fhir/combined-dose-form#100000073973";
 
     /// <summary>
     /// Literal for code: ConcentrateAndSolventForInjection
@@ -781,9 +851,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralConcentrateAndSolventForInjection = "100000073974";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormConcentrateAndSolventForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormConcentrateAndSolventForInjection = "http://hl7.org/fhir/combined-dose-form#100000073974";
+
+    /// <summary>
     /// Literal for code: ConcentrateAndSolventForSolutionForInfusion
     /// </summary>
     public const string LiteralConcentrateAndSolventForSolutionForInfusion = "100000073975";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormConcentrateAndSolventForSolutionForInfusion
+    /// </summary>
+    public const string LiteralCombinedDoseFormConcentrateAndSolventForSolutionForInfusion = "http://hl7.org/fhir/combined-dose-form#100000073975";
 
     /// <summary>
     /// Literal for code: ConcentrateAndDiluentForSolutionForInfusion
@@ -791,9 +871,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralConcentrateAndDiluentForSolutionForInfusion = "100000073987";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormConcentrateAndDiluentForSolutionForInfusion
+    /// </summary>
+    public const string LiteralCombinedDoseFormConcentrateAndDiluentForSolutionForInfusion = "http://hl7.org/fhir/combined-dose-form#100000073987";
+
+    /// <summary>
     /// Literal for code: ConcentrateAndSolventForCutaneousSolution
     /// </summary>
     public const string LiteralConcentrateAndSolventForCutaneousSolution = "100000073988";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormConcentrateAndSolventForCutaneousSolution
+    /// </summary>
+    public const string LiteralCombinedDoseFormConcentrateAndSolventForCutaneousSolution = "http://hl7.org/fhir/combined-dose-form#100000073988";
 
     /// <summary>
     /// Literal for code: ConcentrateAndSolventForSolutionForInjection
@@ -801,9 +891,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralConcentrateAndSolventForSolutionForInjection = "100000073989";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormConcentrateAndSolventForSolutionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormConcentrateAndSolventForSolutionForInjection = "http://hl7.org/fhir/combined-dose-form#100000073989";
+
+    /// <summary>
     /// Literal for code: ConcentrateAndSolventForSuspensionForInjection
     /// </summary>
     public const string LiteralConcentrateAndSolventForSuspensionForInjection = "100000073990";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormConcentrateAndSolventForSuspensionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormConcentrateAndSolventForSuspensionForInjection = "http://hl7.org/fhir/combined-dose-form#100000073990";
 
     /// <summary>
     /// Literal for code: GranulesAndSolventForSuspensionForInjection
@@ -811,9 +911,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGranulesAndSolventForSuspensionForInjection = "100000073999";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormGranulesAndSolventForSuspensionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormGranulesAndSolventForSuspensionForInjection = "http://hl7.org/fhir/combined-dose-form#100000073999";
+
+    /// <summary>
     /// Literal for code: PowderAndSolventForConcentrateForSolutionForInfusion
     /// </summary>
     public const string LiteralPowderAndSolventForConcentrateForSolutionForInfusion = "100000074015";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForConcentrateForSolutionForInfusion
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForConcentrateForSolutionForInfusion = "http://hl7.org/fhir/combined-dose-form#100000074015";
 
     /// <summary>
     /// Literal for code: PowderAndSolventForCutaneousSolution
@@ -821,9 +931,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowderAndSolventForCutaneousSolution = "100000074016";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForCutaneousSolution
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForCutaneousSolution = "http://hl7.org/fhir/combined-dose-form#100000074016";
+
+    /// <summary>
     /// Literal for code: PowderAndSolventForGingivalGel
     /// </summary>
     public const string LiteralPowderAndSolventForGingivalGel = "100000074017";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForGingivalGel
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForGingivalGel = "http://hl7.org/fhir/combined-dose-form#100000074017";
 
     /// <summary>
     /// Literal for code: PowderAndSolventForProlongedReleaseSuspensionForInjection
@@ -831,9 +951,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowderAndSolventForProlongedReleaseSuspensionForInjection = "100000074018";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForProlongedReleaseSuspensionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForProlongedReleaseSuspensionForInjection = "http://hl7.org/fhir/combined-dose-form#100000074018";
+
+    /// <summary>
     /// Literal for code: PowderAndSolventForEndosinusialSolution
     /// </summary>
     public const string LiteralPowderAndSolventForEndosinusialSolution = "100000074030";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForEndosinusialSolution
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForEndosinusialSolution = "http://hl7.org/fhir/combined-dose-form#100000074030";
 
     /// <summary>
     /// Literal for code: PowderAndSolventForIntraocularInstillationSolution
@@ -841,9 +971,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowderAndSolventForIntraocularInstillationSolution = "100000074031";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForIntraocularInstillationSolution
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForIntraocularInstillationSolution = "http://hl7.org/fhir/combined-dose-form#100000074031";
+
+    /// <summary>
     /// Literal for code: PowderAndSuspensionForSuspensionForInjection
     /// </summary>
     public const string LiteralPowderAndSuspensionForSuspensionForInjection = "100000074032";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSuspensionForSuspensionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSuspensionForSuspensionForInjection = "http://hl7.org/fhir/combined-dose-form#100000074032";
 
     /// <summary>
     /// Literal for code: SuspensionAndEffervescentGranulesForOralSuspension
@@ -851,9 +991,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSuspensionAndEffervescentGranulesForOralSuspension = "100000074048";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormSuspensionAndEffervescentGranulesForOralSuspension
+    /// </summary>
+    public const string LiteralCombinedDoseFormSuspensionAndEffervescentGranulesForOralSuspension = "http://hl7.org/fhir/combined-dose-form#100000074048";
+
+    /// <summary>
     /// Literal for code: TabletAndSolventForRectalSuspension
     /// </summary>
     public const string LiteralTabletAndSolventForRectalSuspension = "100000074051";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormTabletAndSolventForRectalSuspension
+    /// </summary>
+    public const string LiteralCombinedDoseFormTabletAndSolventForRectalSuspension = "http://hl7.org/fhir/combined-dose-form#100000074051";
 
     /// <summary>
     /// Literal for code: PowderAndSolventForDentalGel
@@ -861,9 +1011,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowderAndSolventForDentalGel = "100000074053";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForDentalGel
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForDentalGel = "http://hl7.org/fhir/combined-dose-form#100000074053";
+
+    /// <summary>
     /// Literal for code: GasAndSolventForDispersionForInjectionInfusion
     /// </summary>
     public const string LiteralGasAndSolventForDispersionForInjectionInfusion = "100000074056";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormGasAndSolventForDispersionForInjectionInfusion
+    /// </summary>
+    public const string LiteralCombinedDoseFormGasAndSolventForDispersionForInjectionInfusion = "http://hl7.org/fhir/combined-dose-form#100000074056";
 
     /// <summary>
     /// Literal for code: PowderAndSolventForSolutionForInjectionInfusion
@@ -871,9 +1031,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowderAndSolventForSolutionForInjectionInfusion = "100000074057";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForSolutionForInjectionInfusion
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForSolutionForInjectionInfusion = "http://hl7.org/fhir/combined-dose-form#100000074057";
+
+    /// <summary>
     /// Literal for code: SuspensionAndSolutionForSpray
     /// </summary>
     public const string LiteralSuspensionAndSolutionForSpray = "100000074061";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormSuspensionAndSolutionForSpray
+    /// </summary>
+    public const string LiteralCombinedDoseFormSuspensionAndSolutionForSpray = "http://hl7.org/fhir/combined-dose-form#100000074061";
 
     /// <summary>
     /// Literal for code: TabletAndPowderForOralSolution
@@ -881,9 +1051,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTabletAndPowderForOralSolution = "100000074064";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormTabletAndPowderForOralSolution
+    /// </summary>
+    public const string LiteralCombinedDoseFormTabletAndPowderForOralSolution = "http://hl7.org/fhir/combined-dose-form#100000074064";
+
+    /// <summary>
     /// Literal for code: EmulsionAndSuspensionForEmulsionForInjection
     /// </summary>
     public const string LiteralEmulsionAndSuspensionForEmulsionForInjection = "100000075580";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormEmulsionAndSuspensionForEmulsionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormEmulsionAndSuspensionForEmulsionForInjection = "http://hl7.org/fhir/combined-dose-form#100000075580";
 
     /// <summary>
     /// Literal for code: PowderAndSolventForDispersionForInjection
@@ -891,9 +1071,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowderAndSolventForDispersionForInjection = "100000075584";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForDispersionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForDispersionForInjection = "http://hl7.org/fhir/combined-dose-form#100000075584";
+
+    /// <summary>
     /// Literal for code: PowderForMouthWash
     /// </summary>
     public const string LiteralPowderForMouthWash = "100000075587";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderForMouthWash
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderForMouthWash = "http://hl7.org/fhir/combined-dose-form#100000075587";
 
     /// <summary>
     /// Literal for code: LyophilisateAndSolventForSolutionForInjection
@@ -901,9 +1091,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLyophilisateAndSolventForSolutionForInjection = "100000116137";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormLyophilisateAndSolventForSolutionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormLyophilisateAndSolventForSolutionForInjection = "http://hl7.org/fhir/combined-dose-form#100000116137";
+
+    /// <summary>
     /// Literal for code: FibrinSealantPowderAndSolventForFibrinSealant
     /// </summary>
     public const string LiteralFibrinSealantPowderAndSolventForFibrinSealant = "100000116141";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormFibrinSealantPowderAndSolventForFibrinSealant
+    /// </summary>
+    public const string LiteralCombinedDoseFormFibrinSealantPowderAndSolventForFibrinSealant = "http://hl7.org/fhir/combined-dose-form#100000116141";
 
     /// <summary>
     /// Literal for code: GranulesAndSolventForOralSuspension
@@ -911,9 +1111,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGranulesAndSolventForOralSuspension = "100000116155";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormGranulesAndSolventForOralSuspension
+    /// </summary>
+    public const string LiteralCombinedDoseFormGranulesAndSolventForOralSuspension = "http://hl7.org/fhir/combined-dose-form#100000116155";
+
+    /// <summary>
     /// Literal for code: LyophilisateAndSolventForSuspensionForInjection
     /// </summary>
     public const string LiteralLyophilisateAndSolventForSuspensionForInjection = "100000116160";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormLyophilisateAndSolventForSuspensionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormLyophilisateAndSolventForSuspensionForInjection = "http://hl7.org/fhir/combined-dose-form#100000116160";
 
     /// <summary>
     /// Literal for code: PowderAndGelForGel
@@ -921,9 +1131,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowderAndGelForGel = "100000116172";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndGelForGel
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndGelForGel = "http://hl7.org/fhir/combined-dose-form#100000116172";
+
+    /// <summary>
     /// Literal for code: PowderAndSolutionForSolutionForInjection
     /// </summary>
     public const string LiteralPowderAndSolutionForSolutionForInjection = "100000116173";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolutionForSolutionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolutionForSolutionForInjection = "http://hl7.org/fhir/combined-dose-form#100000116173";
 
     /// <summary>
     /// Literal for code: PowderAndSolventForEpilesionalSolution
@@ -931,9 +1151,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowderAndSolventForEpilesionalSolution = "100000116174";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForEpilesionalSolution
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForEpilesionalSolution = "http://hl7.org/fhir/combined-dose-form#100000116174";
+
+    /// <summary>
     /// Literal for code: PowderAndSolventForIntravesicalSolution
     /// </summary>
     public const string LiteralPowderAndSolventForIntravesicalSolution = "100000116175";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForIntravesicalSolution
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForIntravesicalSolution = "http://hl7.org/fhir/combined-dose-form#100000116175";
 
     /// <summary>
     /// Literal for code: PowderAndSolventForIntravesicalSuspension
@@ -941,9 +1171,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowderAndSolventForIntravesicalSuspension = "100000116176";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForIntravesicalSuspension
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForIntravesicalSuspension = "http://hl7.org/fhir/combined-dose-form#100000116176";
+
+    /// <summary>
     /// Literal for code: PowderAndSolventForNebuliserSolution
     /// </summary>
     public const string LiteralPowderAndSolventForNebuliserSolution = "100000116177";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForNebuliserSolution
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForNebuliserSolution = "http://hl7.org/fhir/combined-dose-form#100000116177";
 
     /// <summary>
     /// Literal for code: PowderDispersionAndSolventForConcentrateForDispersionForInfusion
@@ -951,9 +1191,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowderDispersionAndSolventForConcentrateForDispersionForInfusion = "100000116179";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormPowderDispersionAndSolventForConcentrateForDispersionForInfusion
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderDispersionAndSolventForConcentrateForDispersionForInfusion = "http://hl7.org/fhir/combined-dose-form#100000116179";
+
+    /// <summary>
     /// Literal for code: PowderAndSolventForEmulsionForInjection
     /// </summary>
     public const string LiteralPowderAndSolventForEmulsionForInjection = "100000125746";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForEmulsionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForEmulsionForInjection = "http://hl7.org/fhir/combined-dose-form#100000125746";
 
     /// <summary>
     /// Literal for code: NasalDropsPowderAndSolventForSolution
@@ -961,9 +1211,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNasalDropsPowderAndSolventForSolution = "100000125747";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormNasalDropsPowderAndSolventForSolution
+    /// </summary>
+    public const string LiteralCombinedDoseFormNasalDropsPowderAndSolventForSolution = "http://hl7.org/fhir/combined-dose-form#100000125747";
+
+    /// <summary>
     /// Literal for code: SuspensionAndSolventForSuspensionForInjection
     /// </summary>
     public const string LiteralSuspensionAndSolventForSuspensionForInjection = "100000125777";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormSuspensionAndSolventForSuspensionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormSuspensionAndSolventForSuspensionForInjection = "http://hl7.org/fhir/combined-dose-form#100000125777";
 
     /// <summary>
     /// Literal for code: ConcentrateAndSolventForSolutionForInjectionInfusion
@@ -971,9 +1231,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralConcentrateAndSolventForSolutionForInjectionInfusion = "100000136318";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormConcentrateAndSolventForSolutionForInjectionInfusion
+    /// </summary>
+    public const string LiteralCombinedDoseFormConcentrateAndSolventForSolutionForInjectionInfusion = "http://hl7.org/fhir/combined-dose-form#100000136318";
+
+    /// <summary>
     /// Literal for code: PowderAndSolventForSolutionForInjectionSkinPrickTest
     /// </summary>
     public const string LiteralPowderAndSolventForSolutionForInjectionSkinPrickTest = "100000136325";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForSolutionForInjectionSkinPrickTest
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForSolutionForInjectionSkinPrickTest = "http://hl7.org/fhir/combined-dose-form#100000136325";
 
     /// <summary>
     /// Literal for code: LyophilisateAndSolventForSuspensionForNasalAdministration
@@ -981,9 +1251,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLyophilisateAndSolventForSuspensionForNasalAdministration = "100000136558";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormLyophilisateAndSolventForSuspensionForNasalAdministration
+    /// </summary>
+    public const string LiteralCombinedDoseFormLyophilisateAndSolventForSuspensionForNasalAdministration = "http://hl7.org/fhir/combined-dose-form#100000136558";
+
+    /// <summary>
     /// Literal for code: PowderAndSolventForSolutionForSealant
     /// </summary>
     public const string LiteralPowderAndSolventForSolutionForSealant = "100000136560";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForSolutionForSealant
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForSolutionForSealant = "http://hl7.org/fhir/combined-dose-form#100000136560";
 
     /// <summary>
     /// Literal for code: SolutionForDispersionForInjectionInfusion
@@ -991,9 +1271,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSolutionForDispersionForInjectionInfusion = "100000136907";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormSolutionForDispersionForInjectionInfusion
+    /// </summary>
+    public const string LiteralCombinedDoseFormSolutionForDispersionForInjectionInfusion = "http://hl7.org/fhir/combined-dose-form#100000136907";
+
+    /// <summary>
     /// Literal for code: PowderAndSolutionForDentalCement
     /// </summary>
     public const string LiteralPowderAndSolutionForDentalCement = "100000143502";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolutionForDentalCement
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolutionForDentalCement = "http://hl7.org/fhir/combined-dose-form#100000143502";
 
     /// <summary>
     /// Literal for code: EndotracheopulmonaryInstillationPowderAndSolventForSuspension
@@ -1001,9 +1291,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEndotracheopulmonaryInstillationPowderAndSolventForSuspension = "100000143546";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormEndotracheopulmonaryInstillationPowderAndSolventForSuspension
+    /// </summary>
+    public const string LiteralCombinedDoseFormEndotracheopulmonaryInstillationPowderAndSolventForSuspension = "http://hl7.org/fhir/combined-dose-form#100000143546";
+
+    /// <summary>
     /// Literal for code: PowderSolventAndMatrixForImplantationMatrix
     /// </summary>
     public const string LiteralPowderSolventAndMatrixForImplantationMatrix = "100000143552";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderSolventAndMatrixForImplantationMatrix
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderSolventAndMatrixForImplantationMatrix = "http://hl7.org/fhir/combined-dose-form#100000143552";
 
     /// <summary>
     /// Literal for code: NasalDropsLyophilisateAndSolventForSuspension
@@ -1011,9 +1311,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNasalDropsLyophilisateAndSolventForSuspension = "100000156068";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormNasalDropsLyophilisateAndSolventForSuspension
+    /// </summary>
+    public const string LiteralCombinedDoseFormNasalDropsLyophilisateAndSolventForSuspension = "http://hl7.org/fhir/combined-dose-form#100000156068";
+
+    /// <summary>
     /// Literal for code: LyophilisateAndSuspensionForSuspensionForInjection
     /// </summary>
     public const string LiteralLyophilisateAndSuspensionForSuspensionForInjection = "100000157796";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormLyophilisateAndSuspensionForSuspensionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormLyophilisateAndSuspensionForSuspensionForInjection = "http://hl7.org/fhir/combined-dose-form#100000157796";
 
     /// <summary>
     /// Literal for code: PowderForConcentrateAndSolutionForSolutionForInfusion
@@ -1021,9 +1331,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPowderForConcentrateAndSolutionForSolutionForInfusion = "100000164467";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormPowderForConcentrateAndSolutionForSolutionForInfusion
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderForConcentrateAndSolutionForSolutionForInfusion = "http://hl7.org/fhir/combined-dose-form#100000164467";
+
+    /// <summary>
     /// Literal for code: PowderAndSolutionForBeeHiveSolution
     /// </summary>
     public const string LiteralPowderAndSolutionForBeeHiveSolution = "100000169997";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolutionForBeeHiveSolution
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolutionForBeeHiveSolution = "http://hl7.org/fhir/combined-dose-form#100000169997";
 
     /// <summary>
     /// Literal for code: SuspensionAndSolventForOralSpray
@@ -1031,9 +1351,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSuspensionAndSolventForOralSpray = "100000170588";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormSuspensionAndSolventForOralSpray
+    /// </summary>
+    public const string LiteralCombinedDoseFormSuspensionAndSolventForOralSpray = "http://hl7.org/fhir/combined-dose-form#100000170588";
+
+    /// <summary>
     /// Literal for code: LyophilisateAndSolventForOralSuspension
     /// </summary>
     public const string LiteralLyophilisateAndSolventForOralSuspension = "100000171127";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormLyophilisateAndSolventForOralSuspension
+    /// </summary>
+    public const string LiteralCombinedDoseFormLyophilisateAndSolventForOralSuspension = "http://hl7.org/fhir/combined-dose-form#100000171127";
 
     /// <summary>
     /// Literal for code: ConcentrateAndSolventForConcentrateForOralSpraySuspension
@@ -1041,9 +1371,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralConcentrateAndSolventForConcentrateForOralSpraySuspension = "100000171193";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormConcentrateAndSolventForConcentrateForOralSpraySuspension
+    /// </summary>
+    public const string LiteralCombinedDoseFormConcentrateAndSolventForConcentrateForOralSpraySuspension = "http://hl7.org/fhir/combined-dose-form#100000171193";
+
+    /// <summary>
     /// Literal for code: LyophilisateAndSolventForOculonasalSuspension
     /// </summary>
     public const string LiteralLyophilisateAndSolventForOculonasalSuspension = "100000171238";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormLyophilisateAndSolventForOculonasalSuspension
+    /// </summary>
+    public const string LiteralCombinedDoseFormLyophilisateAndSolventForOculonasalSuspension = "http://hl7.org/fhir/combined-dose-form#100000171238";
 
     /// <summary>
     /// Literal for code: EmulsionAndLyophilisateForSuspensionForInjection
@@ -1051,9 +1391,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEmulsionAndLyophilisateForSuspensionForInjection = "100000171935";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormEmulsionAndLyophilisateForSuspensionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormEmulsionAndLyophilisateForSuspensionForInjection = "http://hl7.org/fhir/combined-dose-form#100000171935";
+
+    /// <summary>
     /// Literal for code: PowderAndSolventForSyrup
     /// </summary>
     public const string LiteralPowderAndSolventForSyrup = "100000174065";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolventForSyrup
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolventForSyrup = "http://hl7.org/fhir/combined-dose-form#100000174065";
 
     /// <summary>
     /// Literal for code: NasalSprayLyophilisateAndSolventForSuspension
@@ -1061,9 +1411,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralNasalSprayLyophilisateAndSolventForSuspension = "200000002161";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormNasalSprayLyophilisateAndSolventForSuspension
+    /// </summary>
+    public const string LiteralCombinedDoseFormNasalSprayLyophilisateAndSolventForSuspension = "http://hl7.org/fhir/combined-dose-form#200000002161";
+
+    /// <summary>
     /// Literal for code: PowderAndSolutionForBeeHiveDispersion
     /// </summary>
     public const string LiteralPowderAndSolutionForBeeHiveDispersion = "200000002287";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolutionForBeeHiveDispersion
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolutionForBeeHiveDispersion = "http://hl7.org/fhir/combined-dose-form#200000002287";
 
     /// <summary>
     /// Literal for code: SolutionAndDispersionForNebuliserDispersion
@@ -1071,9 +1431,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSolutionAndDispersionForNebuliserDispersion = "200000004201";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormSolutionAndDispersionForNebuliserDispersion
+    /// </summary>
+    public const string LiteralCombinedDoseFormSolutionAndDispersionForNebuliserDispersion = "http://hl7.org/fhir/combined-dose-form#200000004201";
+
+    /// <summary>
     /// Literal for code: EffervescentPowderAndPowderForOralSuspension
     /// </summary>
     public const string LiteralEffervescentPowderAndPowderForOralSuspension = "200000004819";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormEffervescentPowderAndPowderForOralSuspension
+    /// </summary>
+    public const string LiteralCombinedDoseFormEffervescentPowderAndPowderForOralSuspension = "http://hl7.org/fhir/combined-dose-form#200000004819";
 
     /// <summary>
     /// Literal for code: LyophilisateAndSolventForEmulsionForInjection
@@ -1081,13 +1451,188 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLyophilisateAndSolventForEmulsionForInjection = "200000004820";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormLyophilisateAndSolventForEmulsionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormLyophilisateAndSolventForEmulsionForInjection = "http://hl7.org/fhir/combined-dose-form#200000004820";
+
+    /// <summary>
     /// Literal for code: PowderAndSolutionForSuspensionForInjection
     /// </summary>
     public const string LiteralPowderAndSolutionForSuspensionForInjection = "200000005547";
 
     /// <summary>
+    /// Literal for code: CombinedDoseFormPowderAndSolutionForSuspensionForInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormPowderAndSolutionForSuspensionForInjection = "http://hl7.org/fhir/combined-dose-form#200000005547";
+
+    /// <summary>
     /// Literal for code: LyophilisateAndSolventForSuspensionForNasalSprayOrInjection
     /// </summary>
     public const string LiteralLyophilisateAndSolventForSuspensionForNasalSprayOrInjection = "200000010382";
+
+    /// <summary>
+    /// Literal for code: CombinedDoseFormLyophilisateAndSolventForSuspensionForNasalSprayOrInjection
+    /// </summary>
+    public const string LiteralCombinedDoseFormLyophilisateAndSolventForSuspensionForNasalSprayOrInjection = "http://hl7.org/fhir/combined-dose-form#200000010382";
+
+    /// <summary>
+    /// Dictionary for looking up CombinedDoseForm Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "100000073366", PowderAndSolventForOralSolution }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073366", PowderAndSolventForOralSolution }, 
+      { "100000073651", PowderAndSolventForOralSuspension }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073651", PowderAndSolventForOralSuspension }, 
+      { "100000073774", EyeDropsPowderAndSolventForSolution }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073774", EyeDropsPowderAndSolventForSolution }, 
+      { "100000073781", EyeDropsPowderAndSolventForSuspension }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073781", EyeDropsPowderAndSolventForSuspension }, 
+      { "100000073801", EarDropsPowderAndSolventForSuspension }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073801", EarDropsPowderAndSolventForSuspension }, 
+      { "100000073860", PowderAndSolventForSolutionForInfusion }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073860", PowderAndSolventForSolutionForInfusion }, 
+      { "100000073868", PowderAndSolventForSolutionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073868", PowderAndSolventForSolutionForInjection }, 
+      { "100000073869", PowderAndSolventForSuspensionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073869", PowderAndSolventForSuspensionForInjection }, 
+      { "100000073884", PowderAndSolventForImplantationPaste }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073884", PowderAndSolventForImplantationPaste }, 
+      { "100000073891", EndotracheopulmonaryInstillationPowderAndSolventForSolution }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073891", EndotracheopulmonaryInstillationPowderAndSolventForSolution }, 
+      { "100000073892", PowderAndSolventForEndocervicalGel }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073892", PowderAndSolventForEndocervicalGel }, 
+      { "100000073941", PowderAndSolventForSealant }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073941", PowderAndSolventForSealant }, 
+      { "100000073972", ConcentrateAndSolventForConcentrateForSolutionForInfusion }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073972", ConcentrateAndSolventForConcentrateForSolutionForInfusion }, 
+      { "100000073973", ConcentrateAndSolventForCutaneousUse }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073973", ConcentrateAndSolventForCutaneousUse }, 
+      { "100000073974", ConcentrateAndSolventForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073974", ConcentrateAndSolventForInjection }, 
+      { "100000073975", ConcentrateAndSolventForSolutionForInfusion }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073975", ConcentrateAndSolventForSolutionForInfusion }, 
+      { "100000073987", ConcentrateAndDiluentForSolutionForInfusion }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073987", ConcentrateAndDiluentForSolutionForInfusion }, 
+      { "100000073988", ConcentrateAndSolventForCutaneousSolution }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073988", ConcentrateAndSolventForCutaneousSolution }, 
+      { "100000073989", ConcentrateAndSolventForSolutionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073989", ConcentrateAndSolventForSolutionForInjection }, 
+      { "100000073990", ConcentrateAndSolventForSuspensionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073990", ConcentrateAndSolventForSuspensionForInjection }, 
+      { "100000073999", GranulesAndSolventForSuspensionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000073999", GranulesAndSolventForSuspensionForInjection }, 
+      { "100000074015", PowderAndSolventForConcentrateForSolutionForInfusion }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000074015", PowderAndSolventForConcentrateForSolutionForInfusion }, 
+      { "100000074016", PowderAndSolventForCutaneousSolution }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000074016", PowderAndSolventForCutaneousSolution }, 
+      { "100000074017", PowderAndSolventForGingivalGel }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000074017", PowderAndSolventForGingivalGel }, 
+      { "100000074018", PowderAndSolventForProlongedReleaseSuspensionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000074018", PowderAndSolventForProlongedReleaseSuspensionForInjection }, 
+      { "100000074030", PowderAndSolventForEndosinusialSolution }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000074030", PowderAndSolventForEndosinusialSolution }, 
+      { "100000074031", PowderAndSolventForIntraocularInstillationSolution }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000074031", PowderAndSolventForIntraocularInstillationSolution }, 
+      { "100000074032", PowderAndSuspensionForSuspensionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000074032", PowderAndSuspensionForSuspensionForInjection }, 
+      { "100000074048", SuspensionAndEffervescentGranulesForOralSuspension }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000074048", SuspensionAndEffervescentGranulesForOralSuspension }, 
+      { "100000074051", TabletAndSolventForRectalSuspension }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000074051", TabletAndSolventForRectalSuspension }, 
+      { "100000074053", PowderAndSolventForDentalGel }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000074053", PowderAndSolventForDentalGel }, 
+      { "100000074056", GasAndSolventForDispersionForInjectionInfusion }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000074056", GasAndSolventForDispersionForInjectionInfusion }, 
+      { "100000074057", PowderAndSolventForSolutionForInjectionInfusion }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000074057", PowderAndSolventForSolutionForInjectionInfusion }, 
+      { "100000074061", SuspensionAndSolutionForSpray }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000074061", SuspensionAndSolutionForSpray }, 
+      { "100000074064", TabletAndPowderForOralSolution }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000074064", TabletAndPowderForOralSolution }, 
+      { "100000075580", EmulsionAndSuspensionForEmulsionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000075580", EmulsionAndSuspensionForEmulsionForInjection }, 
+      { "100000075584", PowderAndSolventForDispersionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000075584", PowderAndSolventForDispersionForInjection }, 
+      { "100000075587", PowderForMouthWash }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000075587", PowderForMouthWash }, 
+      { "100000116137", LyophilisateAndSolventForSolutionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000116137", LyophilisateAndSolventForSolutionForInjection }, 
+      { "100000116141", FibrinSealantPowderAndSolventForFibrinSealant }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000116141", FibrinSealantPowderAndSolventForFibrinSealant }, 
+      { "100000116155", GranulesAndSolventForOralSuspension }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000116155", GranulesAndSolventForOralSuspension }, 
+      { "100000116160", LyophilisateAndSolventForSuspensionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000116160", LyophilisateAndSolventForSuspensionForInjection }, 
+      { "100000116172", PowderAndGelForGel }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000116172", PowderAndGelForGel }, 
+      { "100000116173", PowderAndSolutionForSolutionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000116173", PowderAndSolutionForSolutionForInjection }, 
+      { "100000116174", PowderAndSolventForEpilesionalSolution }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000116174", PowderAndSolventForEpilesionalSolution }, 
+      { "100000116175", PowderAndSolventForIntravesicalSolution }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000116175", PowderAndSolventForIntravesicalSolution }, 
+      { "100000116176", PowderAndSolventForIntravesicalSuspension }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000116176", PowderAndSolventForIntravesicalSuspension }, 
+      { "100000116177", PowderAndSolventForNebuliserSolution }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000116177", PowderAndSolventForNebuliserSolution }, 
+      { "100000116179", PowderDispersionAndSolventForConcentrateForDispersionForInfusion }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000116179", PowderDispersionAndSolventForConcentrateForDispersionForInfusion }, 
+      { "100000125746", PowderAndSolventForEmulsionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000125746", PowderAndSolventForEmulsionForInjection }, 
+      { "100000125747", NasalDropsPowderAndSolventForSolution }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000125747", NasalDropsPowderAndSolventForSolution }, 
+      { "100000125777", SuspensionAndSolventForSuspensionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000125777", SuspensionAndSolventForSuspensionForInjection }, 
+      { "100000136318", ConcentrateAndSolventForSolutionForInjectionInfusion }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000136318", ConcentrateAndSolventForSolutionForInjectionInfusion }, 
+      { "100000136325", PowderAndSolventForSolutionForInjectionSkinPrickTest }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000136325", PowderAndSolventForSolutionForInjectionSkinPrickTest }, 
+      { "100000136558", LyophilisateAndSolventForSuspensionForNasalAdministration }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000136558", LyophilisateAndSolventForSuspensionForNasalAdministration }, 
+      { "100000136560", PowderAndSolventForSolutionForSealant }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000136560", PowderAndSolventForSolutionForSealant }, 
+      { "100000136907", SolutionForDispersionForInjectionInfusion }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000136907", SolutionForDispersionForInjectionInfusion }, 
+      { "100000143502", PowderAndSolutionForDentalCement }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000143502", PowderAndSolutionForDentalCement }, 
+      { "100000143546", EndotracheopulmonaryInstillationPowderAndSolventForSuspension }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000143546", EndotracheopulmonaryInstillationPowderAndSolventForSuspension }, 
+      { "100000143552", PowderSolventAndMatrixForImplantationMatrix }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000143552", PowderSolventAndMatrixForImplantationMatrix }, 
+      { "100000156068", NasalDropsLyophilisateAndSolventForSuspension }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000156068", NasalDropsLyophilisateAndSolventForSuspension }, 
+      { "100000157796", LyophilisateAndSuspensionForSuspensionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000157796", LyophilisateAndSuspensionForSuspensionForInjection }, 
+      { "100000164467", PowderForConcentrateAndSolutionForSolutionForInfusion }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000164467", PowderForConcentrateAndSolutionForSolutionForInfusion }, 
+      { "100000169997", PowderAndSolutionForBeeHiveSolution }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000169997", PowderAndSolutionForBeeHiveSolution }, 
+      { "100000170588", SuspensionAndSolventForOralSpray }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000170588", SuspensionAndSolventForOralSpray }, 
+      { "100000171127", LyophilisateAndSolventForOralSuspension }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000171127", LyophilisateAndSolventForOralSuspension }, 
+      { "100000171193", ConcentrateAndSolventForConcentrateForOralSpraySuspension }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000171193", ConcentrateAndSolventForConcentrateForOralSpraySuspension }, 
+      { "100000171238", LyophilisateAndSolventForOculonasalSuspension }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000171238", LyophilisateAndSolventForOculonasalSuspension }, 
+      { "100000171935", EmulsionAndLyophilisateForSuspensionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000171935", EmulsionAndLyophilisateForSuspensionForInjection }, 
+      { "100000174065", PowderAndSolventForSyrup }, 
+      { "http://hl7.org/fhir/combined-dose-form#100000174065", PowderAndSolventForSyrup }, 
+      { "200000002161", NasalSprayLyophilisateAndSolventForSuspension }, 
+      { "http://hl7.org/fhir/combined-dose-form#200000002161", NasalSprayLyophilisateAndSolventForSuspension }, 
+      { "200000002287", PowderAndSolutionForBeeHiveDispersion }, 
+      { "http://hl7.org/fhir/combined-dose-form#200000002287", PowderAndSolutionForBeeHiveDispersion }, 
+      { "200000004201", SolutionAndDispersionForNebuliserDispersion }, 
+      { "http://hl7.org/fhir/combined-dose-form#200000004201", SolutionAndDispersionForNebuliserDispersion }, 
+      { "200000004819", EffervescentPowderAndPowderForOralSuspension }, 
+      { "http://hl7.org/fhir/combined-dose-form#200000004819", EffervescentPowderAndPowderForOralSuspension }, 
+      { "200000004820", LyophilisateAndSolventForEmulsionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#200000004820", LyophilisateAndSolventForEmulsionForInjection }, 
+      { "200000005547", PowderAndSolutionForSuspensionForInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#200000005547", PowderAndSolutionForSuspensionForInjection }, 
+      { "200000010382", LyophilisateAndSolventForSuspensionForNasalSprayOrInjection }, 
+      { "http://hl7.org/fhir/combined-dose-form#200000010382", LyophilisateAndSolventForSuspensionForNasalSprayOrInjection }, 
+    };
   };
 }

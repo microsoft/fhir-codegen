@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class ImmunizationStatusReasonCodes
   {
     /// <summary>
-    /// 
+    /// No consent - Tetanus/low dose diphtheria vaccine (finding)
     /// </summary>
     public static readonly Coding NoConsentTetanusLowDoseDiphtheriaVaccineFinding = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pertussis vaccine refused
     /// </summary>
     public static readonly Coding PertussisVaccineRefused = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent - diphtheria immunization
     /// </summary>
     public static readonly Coding NoConsentDiphtheriaImmunization = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent - tetanus immunization
     /// </summary>
     public static readonly Coding NoConsentTetanusImmunization = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polio immunization refused
     /// </summary>
     public static readonly Coding PolioImmunizationRefused = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent - measles immunization
     /// </summary>
     public static readonly Coding NoConsentMeaslesImmunization = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent - rubella immunization
     /// </summary>
     public static readonly Coding NoConsentRubellaImmunization = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent - BCG
     /// </summary>
     public static readonly Coding NoConsentBCG = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent - influenza immunization
     /// </summary>
     public static readonly Coding NoConsentInfluenzaImmunization = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent for MMR
     /// </summary>
     public static readonly Coding NoConsentForMMR = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent for any primary immunization (finding)
     /// </summary>
     public static readonly Coding NoConsentForAnyPrimaryImmunizationFinding = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent - pre-school vaccinations
     /// </summary>
     public static readonly Coding NoConsentPreSchoolVaccinations = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent - school exit vaccinations
     /// </summary>
     public static readonly Coding NoConsentSchoolExitVaccinations = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent - Haemophilus influenzae type B immunization (finding)
     /// </summary>
     public static readonly Coding NoConsentHaemophilusInfluenzaeTypeBImmunizationFinding = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent pneumococcal immunization
     /// </summary>
     public static readonly Coding NoConsentPneumococcalImmunization = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent for MR - Measles/rubella vaccine
     /// </summary>
     public static readonly Coding NoConsentForMRMeaslesRubellaVaccine = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent for any immunization
     /// </summary>
     public static readonly Coding NoConsentForAnyImmunization = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immunization consent not given
     /// </summary>
     public static readonly Coding ImmunizationConsentNotGiven = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent for MMR1
     /// </summary>
     public static readonly Coding NoConsentForMMR1 = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent for measles/mumps/rubella two
     /// </summary>
     public static readonly Coding NoConsentForMeaslesMumpsRubellaTwo = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent DTP immunization
     /// </summary>
     public static readonly Coding NoConsentDTPImmunization = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent DT immunization
     /// </summary>
     public static readonly Coding NoConsentDTImmunization = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent for meningitis C immunization
     /// </summary>
     public static readonly Coding NoConsentForMeningitisCImmunization = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// No consent for 3rd HIB booster
     /// </summary>
     public static readonly Coding NoConsentFor3rdHIBBooster = new Coding
     {
@@ -266,9 +266,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNoConsentTetanusLowDoseDiphtheriaVaccineFinding = "171257003";
 
     /// <summary>
+    /// Literal for code: NONENoConsentTetanusLowDoseDiphtheriaVaccineFinding
+    /// </summary>
+    public const string LiteralNONENoConsentTetanusLowDoseDiphtheriaVaccineFinding = "http://snomed.info/sct#171257003";
+
+    /// <summary>
     /// Literal for code: PertussisVaccineRefused
     /// </summary>
     public const string LiteralPertussisVaccineRefused = "171265000";
+
+    /// <summary>
+    /// Literal for code: NONEPertussisVaccineRefused
+    /// </summary>
+    public const string LiteralNONEPertussisVaccineRefused = "http://snomed.info/sct#171265000";
 
     /// <summary>
     /// Literal for code: NoConsentDiphtheriaImmunization
@@ -276,9 +286,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNoConsentDiphtheriaImmunization = "171266004";
 
     /// <summary>
+    /// Literal for code: NONENoConsentDiphtheriaImmunization
+    /// </summary>
+    public const string LiteralNONENoConsentDiphtheriaImmunization = "http://snomed.info/sct#171266004";
+
+    /// <summary>
     /// Literal for code: NoConsentTetanusImmunization
     /// </summary>
     public const string LiteralNoConsentTetanusImmunization = "171267008";
+
+    /// <summary>
+    /// Literal for code: NONENoConsentTetanusImmunization
+    /// </summary>
+    public const string LiteralNONENoConsentTetanusImmunization = "http://snomed.info/sct#171267008";
 
     /// <summary>
     /// Literal for code: PolioImmunizationRefused
@@ -286,9 +306,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPolioImmunizationRefused = "171268003";
 
     /// <summary>
+    /// Literal for code: NONEPolioImmunizationRefused
+    /// </summary>
+    public const string LiteralNONEPolioImmunizationRefused = "http://snomed.info/sct#171268003";
+
+    /// <summary>
     /// Literal for code: NoConsentMeaslesImmunization
     /// </summary>
     public const string LiteralNoConsentMeaslesImmunization = "171269006";
+
+    /// <summary>
+    /// Literal for code: NONENoConsentMeaslesImmunization
+    /// </summary>
+    public const string LiteralNONENoConsentMeaslesImmunization = "http://snomed.info/sct#171269006";
 
     /// <summary>
     /// Literal for code: NoConsentRubellaImmunization
@@ -296,9 +326,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNoConsentRubellaImmunization = "171270007";
 
     /// <summary>
+    /// Literal for code: NONENoConsentRubellaImmunization
+    /// </summary>
+    public const string LiteralNONENoConsentRubellaImmunization = "http://snomed.info/sct#171270007";
+
+    /// <summary>
     /// Literal for code: NoConsentBCG
     /// </summary>
     public const string LiteralNoConsentBCG = "171271006";
+
+    /// <summary>
+    /// Literal for code: NONENoConsentBCG
+    /// </summary>
+    public const string LiteralNONENoConsentBCG = "http://snomed.info/sct#171271006";
 
     /// <summary>
     /// Literal for code: NoConsentInfluenzaImmunization
@@ -306,9 +346,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNoConsentInfluenzaImmunization = "171272004";
 
     /// <summary>
+    /// Literal for code: NONENoConsentInfluenzaImmunization
+    /// </summary>
+    public const string LiteralNONENoConsentInfluenzaImmunization = "http://snomed.info/sct#171272004";
+
+    /// <summary>
     /// Literal for code: NoConsentForMMR
     /// </summary>
     public const string LiteralNoConsentForMMR = "171280006";
+
+    /// <summary>
+    /// Literal for code: NONENoConsentForMMR
+    /// </summary>
+    public const string LiteralNONENoConsentForMMR = "http://snomed.info/sct#171280006";
 
     /// <summary>
     /// Literal for code: NoConsentForAnyPrimaryImmunizationFinding
@@ -316,9 +366,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNoConsentForAnyPrimaryImmunizationFinding = "171283008";
 
     /// <summary>
+    /// Literal for code: NONENoConsentForAnyPrimaryImmunizationFinding
+    /// </summary>
+    public const string LiteralNONENoConsentForAnyPrimaryImmunizationFinding = "http://snomed.info/sct#171283008";
+
+    /// <summary>
     /// Literal for code: NoConsentPreSchoolVaccinations
     /// </summary>
     public const string LiteralNoConsentPreSchoolVaccinations = "171285001";
+
+    /// <summary>
+    /// Literal for code: NONENoConsentPreSchoolVaccinations
+    /// </summary>
+    public const string LiteralNONENoConsentPreSchoolVaccinations = "http://snomed.info/sct#171285001";
 
     /// <summary>
     /// Literal for code: NoConsentSchoolExitVaccinations
@@ -326,9 +386,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNoConsentSchoolExitVaccinations = "171286000";
 
     /// <summary>
+    /// Literal for code: NONENoConsentSchoolExitVaccinations
+    /// </summary>
+    public const string LiteralNONENoConsentSchoolExitVaccinations = "http://snomed.info/sct#171286000";
+
+    /// <summary>
     /// Literal for code: NoConsentHaemophilusInfluenzaeTypeBImmunizationFinding
     /// </summary>
     public const string LiteralNoConsentHaemophilusInfluenzaeTypeBImmunizationFinding = "171291004";
+
+    /// <summary>
+    /// Literal for code: NONENoConsentHaemophilusInfluenzaeTypeBImmunizationFinding
+    /// </summary>
+    public const string LiteralNONENoConsentHaemophilusInfluenzaeTypeBImmunizationFinding = "http://snomed.info/sct#171291004";
 
     /// <summary>
     /// Literal for code: NoConsentPneumococcalImmunization
@@ -336,9 +406,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNoConsentPneumococcalImmunization = "171292006";
 
     /// <summary>
+    /// Literal for code: NONENoConsentPneumococcalImmunization
+    /// </summary>
+    public const string LiteralNONENoConsentPneumococcalImmunization = "http://snomed.info/sct#171292006";
+
+    /// <summary>
     /// Literal for code: NoConsentForMRMeaslesRubellaVaccine
     /// </summary>
     public const string LiteralNoConsentForMRMeaslesRubellaVaccine = "171293001";
+
+    /// <summary>
+    /// Literal for code: NONENoConsentForMRMeaslesRubellaVaccine
+    /// </summary>
+    public const string LiteralNONENoConsentForMRMeaslesRubellaVaccine = "http://snomed.info/sct#171293001";
 
     /// <summary>
     /// Literal for code: NoConsentForAnyImmunization
@@ -346,9 +426,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNoConsentForAnyImmunization = "268559007";
 
     /// <summary>
+    /// Literal for code: NONENoConsentForAnyImmunization
+    /// </summary>
+    public const string LiteralNONENoConsentForAnyImmunization = "http://snomed.info/sct#268559007";
+
+    /// <summary>
     /// Literal for code: ImmunizationConsentNotGiven
     /// </summary>
     public const string LiteralImmunizationConsentNotGiven = "310376006";
+
+    /// <summary>
+    /// Literal for code: NONEImmunizationConsentNotGiven
+    /// </summary>
+    public const string LiteralNONEImmunizationConsentNotGiven = "http://snomed.info/sct#310376006";
 
     /// <summary>
     /// Literal for code: NoConsentForMMR1
@@ -356,9 +446,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNoConsentForMMR1 = "310839003";
 
     /// <summary>
+    /// Literal for code: NONENoConsentForMMR1
+    /// </summary>
+    public const string LiteralNONENoConsentForMMR1 = "http://snomed.info/sct#310839003";
+
+    /// <summary>
     /// Literal for code: NoConsentForMeaslesMumpsRubellaTwo
     /// </summary>
     public const string LiteralNoConsentForMeaslesMumpsRubellaTwo = "310840001";
+
+    /// <summary>
+    /// Literal for code: NONENoConsentForMeaslesMumpsRubellaTwo
+    /// </summary>
+    public const string LiteralNONENoConsentForMeaslesMumpsRubellaTwo = "http://snomed.info/sct#310840001";
 
     /// <summary>
     /// Literal for code: NoConsentDTPImmunization
@@ -366,9 +466,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNoConsentDTPImmunization = "314768003";
 
     /// <summary>
+    /// Literal for code: NONENoConsentDTPImmunization
+    /// </summary>
+    public const string LiteralNONENoConsentDTPImmunization = "http://snomed.info/sct#314768003";
+
+    /// <summary>
     /// Literal for code: NoConsentDTImmunization
     /// </summary>
     public const string LiteralNoConsentDTImmunization = "314769006";
+
+    /// <summary>
+    /// Literal for code: NONENoConsentDTImmunization
+    /// </summary>
+    public const string LiteralNONENoConsentDTImmunization = "http://snomed.info/sct#314769006";
 
     /// <summary>
     /// Literal for code: NoConsentForMeningitisCImmunization
@@ -376,9 +486,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNoConsentForMeningitisCImmunization = "314936001";
 
     /// <summary>
+    /// Literal for code: NONENoConsentForMeningitisCImmunization
+    /// </summary>
+    public const string LiteralNONENoConsentForMeningitisCImmunization = "http://snomed.info/sct#314936001";
+
+    /// <summary>
     /// Literal for code: NoConsentFor3rdHIBBooster
     /// </summary>
     public const string LiteralNoConsentFor3rdHIBBooster = "407598009";
+
+    /// <summary>
+    /// Literal for code: NONENoConsentFor3rdHIBBooster
+    /// </summary>
+    public const string LiteralNONENoConsentFor3rdHIBBooster = "http://snomed.info/sct#407598009";
 
     /// <summary>
     /// Literal for code: IMMUNE
@@ -386,9 +506,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIMMUNE = "IMMUNE";
 
     /// <summary>
+    /// Literal for code: V3ActReasonIMMUNE
+    /// </summary>
+    public const string LiteralV3ActReasonIMMUNE = "http://terminology.hl7.org/CodeSystem/v3-ActReason#IMMUNE";
+
+    /// <summary>
     /// Literal for code: MEDPREC
     /// </summary>
     public const string LiteralMEDPREC = "MEDPREC";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonMEDPREC
+    /// </summary>
+    public const string LiteralV3ActReasonMEDPREC = "http://terminology.hl7.org/CodeSystem/v3-ActReason#MEDPREC";
 
     /// <summary>
     /// Literal for code: OSTOCK
@@ -396,8 +526,80 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOSTOCK = "OSTOCK";
 
     /// <summary>
+    /// Literal for code: V3ActReasonOSTOCK
+    /// </summary>
+    public const string LiteralV3ActReasonOSTOCK = "http://terminology.hl7.org/CodeSystem/v3-ActReason#OSTOCK";
+
+    /// <summary>
     /// Literal for code: PATOBJ
     /// </summary>
     public const string LiteralPATOBJ = "PATOBJ";
+
+    /// <summary>
+    /// Literal for code: V3ActReasonPATOBJ
+    /// </summary>
+    public const string LiteralV3ActReasonPATOBJ = "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATOBJ";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationStatusReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "171257003", NoConsentTetanusLowDoseDiphtheriaVaccineFinding }, 
+      { "http://snomed.info/sct#171257003", NoConsentTetanusLowDoseDiphtheriaVaccineFinding }, 
+      { "171265000", PertussisVaccineRefused }, 
+      { "http://snomed.info/sct#171265000", PertussisVaccineRefused }, 
+      { "171266004", NoConsentDiphtheriaImmunization }, 
+      { "http://snomed.info/sct#171266004", NoConsentDiphtheriaImmunization }, 
+      { "171267008", NoConsentTetanusImmunization }, 
+      { "http://snomed.info/sct#171267008", NoConsentTetanusImmunization }, 
+      { "171268003", PolioImmunizationRefused }, 
+      { "http://snomed.info/sct#171268003", PolioImmunizationRefused }, 
+      { "171269006", NoConsentMeaslesImmunization }, 
+      { "http://snomed.info/sct#171269006", NoConsentMeaslesImmunization }, 
+      { "171270007", NoConsentRubellaImmunization }, 
+      { "http://snomed.info/sct#171270007", NoConsentRubellaImmunization }, 
+      { "171271006", NoConsentBCG }, 
+      { "http://snomed.info/sct#171271006", NoConsentBCG }, 
+      { "171272004", NoConsentInfluenzaImmunization }, 
+      { "http://snomed.info/sct#171272004", NoConsentInfluenzaImmunization }, 
+      { "171280006", NoConsentForMMR }, 
+      { "http://snomed.info/sct#171280006", NoConsentForMMR }, 
+      { "171283008", NoConsentForAnyPrimaryImmunizationFinding }, 
+      { "http://snomed.info/sct#171283008", NoConsentForAnyPrimaryImmunizationFinding }, 
+      { "171285001", NoConsentPreSchoolVaccinations }, 
+      { "http://snomed.info/sct#171285001", NoConsentPreSchoolVaccinations }, 
+      { "171286000", NoConsentSchoolExitVaccinations }, 
+      { "http://snomed.info/sct#171286000", NoConsentSchoolExitVaccinations }, 
+      { "171291004", NoConsentHaemophilusInfluenzaeTypeBImmunizationFinding }, 
+      { "http://snomed.info/sct#171291004", NoConsentHaemophilusInfluenzaeTypeBImmunizationFinding }, 
+      { "171292006", NoConsentPneumococcalImmunization }, 
+      { "http://snomed.info/sct#171292006", NoConsentPneumococcalImmunization }, 
+      { "171293001", NoConsentForMRMeaslesRubellaVaccine }, 
+      { "http://snomed.info/sct#171293001", NoConsentForMRMeaslesRubellaVaccine }, 
+      { "268559007", NoConsentForAnyImmunization }, 
+      { "http://snomed.info/sct#268559007", NoConsentForAnyImmunization }, 
+      { "310376006", ImmunizationConsentNotGiven }, 
+      { "http://snomed.info/sct#310376006", ImmunizationConsentNotGiven }, 
+      { "310839003", NoConsentForMMR1 }, 
+      { "http://snomed.info/sct#310839003", NoConsentForMMR1 }, 
+      { "310840001", NoConsentForMeaslesMumpsRubellaTwo }, 
+      { "http://snomed.info/sct#310840001", NoConsentForMeaslesMumpsRubellaTwo }, 
+      { "314768003", NoConsentDTPImmunization }, 
+      { "http://snomed.info/sct#314768003", NoConsentDTPImmunization }, 
+      { "314769006", NoConsentDTImmunization }, 
+      { "http://snomed.info/sct#314769006", NoConsentDTImmunization }, 
+      { "314936001", NoConsentForMeningitisCImmunization }, 
+      { "http://snomed.info/sct#314936001", NoConsentForMeningitisCImmunization }, 
+      { "407598009", NoConsentFor3rdHIBBooster }, 
+      { "http://snomed.info/sct#407598009", NoConsentFor3rdHIBBooster }, 
+      { "IMMUNE", IMMUNE }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#IMMUNE", IMMUNE }, 
+      { "MEDPREC", MEDPREC }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#MEDPREC", MEDPREC }, 
+      { "OSTOCK", OSTOCK }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#OSTOCK", OSTOCK }, 
+      { "PATOBJ", PATOBJ }, 
+      { "http://terminology.hl7.org/CodeSystem/v3-ActReason#PATOBJ", PATOBJ }, 
+    };
   };
 }

@@ -144,9 +144,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAttachment = "attachment";
 
     /// <summary>
+    /// Literal for code: ClaimInformationcategoryAttachment
+    /// </summary>
+    public const string LiteralClaimInformationcategoryAttachment = "http://terminology.hl7.org/CodeSystem/claiminformationcategory#attachment";
+
+    /// <summary>
     /// Literal for code: Discharge
     /// </summary>
     public const string LiteralDischarge = "discharge";
+
+    /// <summary>
+    /// Literal for code: ClaimInformationcategoryDischarge
+    /// </summary>
+    public const string LiteralClaimInformationcategoryDischarge = "http://terminology.hl7.org/CodeSystem/claiminformationcategory#discharge";
 
     /// <summary>
     /// Literal for code: EmploymentImpacted
@@ -154,9 +164,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEmploymentImpacted = "employmentimpacted";
 
     /// <summary>
+    /// Literal for code: ClaimInformationcategoryEmploymentImpacted
+    /// </summary>
+    public const string LiteralClaimInformationcategoryEmploymentImpacted = "http://terminology.hl7.org/CodeSystem/claiminformationcategory#employmentimpacted";
+
+    /// <summary>
     /// Literal for code: Exception
     /// </summary>
     public const string LiteralException = "exception";
+
+    /// <summary>
+    /// Literal for code: ClaimInformationcategoryException
+    /// </summary>
+    public const string LiteralClaimInformationcategoryException = "http://terminology.hl7.org/CodeSystem/claiminformationcategory#exception";
 
     /// <summary>
     /// Literal for code: ExternalCaause
@@ -164,9 +184,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExternalCaause = "externalcause";
 
     /// <summary>
+    /// Literal for code: ClaimInformationcategoryExternalCaause
+    /// </summary>
+    public const string LiteralClaimInformationcategoryExternalCaause = "http://terminology.hl7.org/CodeSystem/claiminformationcategory#externalcause";
+
+    /// <summary>
     /// Literal for code: Hospitalized
     /// </summary>
     public const string LiteralHospitalized = "hospitalized";
+
+    /// <summary>
+    /// Literal for code: ClaimInformationcategoryHospitalized
+    /// </summary>
+    public const string LiteralClaimInformationcategoryHospitalized = "http://terminology.hl7.org/CodeSystem/claiminformationcategory#hospitalized";
 
     /// <summary>
     /// Literal for code: Information
@@ -174,9 +204,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInformation = "info";
 
     /// <summary>
+    /// Literal for code: ClaimInformationcategoryInformation
+    /// </summary>
+    public const string LiteralClaimInformationcategoryInformation = "http://terminology.hl7.org/CodeSystem/claiminformationcategory#info";
+
+    /// <summary>
     /// Literal for code: MaterialsForwarded
     /// </summary>
     public const string LiteralMaterialsForwarded = "material";
+
+    /// <summary>
+    /// Literal for code: ClaimInformationcategoryMaterialsForwarded
+    /// </summary>
+    public const string LiteralClaimInformationcategoryMaterialsForwarded = "http://terminology.hl7.org/CodeSystem/claiminformationcategory#material";
 
     /// <summary>
     /// Literal for code: MissingTooth
@@ -184,9 +224,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMissingTooth = "missingtooth";
 
     /// <summary>
+    /// Literal for code: ClaimInformationcategoryMissingTooth
+    /// </summary>
+    public const string LiteralClaimInformationcategoryMissingTooth = "http://terminology.hl7.org/CodeSystem/claiminformationcategory#missingtooth";
+
+    /// <summary>
     /// Literal for code: Onset
     /// </summary>
     public const string LiteralOnset = "onset";
+
+    /// <summary>
+    /// Literal for code: ClaimInformationcategoryOnset
+    /// </summary>
+    public const string LiteralClaimInformationcategoryOnset = "http://terminology.hl7.org/CodeSystem/claiminformationcategory#onset";
 
     /// <summary>
     /// Literal for code: Other
@@ -194,9 +244,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOther = "other";
 
     /// <summary>
+    /// Literal for code: ClaimInformationcategoryOther
+    /// </summary>
+    public const string LiteralClaimInformationcategoryOther = "http://terminology.hl7.org/CodeSystem/claiminformationcategory#other";
+
+    /// <summary>
     /// Literal for code: PatientReasonForVisit
     /// </summary>
     public const string LiteralPatientReasonForVisit = "patientreasonforvisit";
+
+    /// <summary>
+    /// Literal for code: ClaimInformationcategoryPatientReasonForVisit
+    /// </summary>
+    public const string LiteralClaimInformationcategoryPatientReasonForVisit = "http://terminology.hl7.org/CodeSystem/claiminformationcategory#patientreasonforvisit";
 
     /// <summary>
     /// Literal for code: Prosthesis
@@ -204,8 +264,52 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProsthesis = "prosthesis";
 
     /// <summary>
+    /// Literal for code: ClaimInformationcategoryProsthesis
+    /// </summary>
+    public const string LiteralClaimInformationcategoryProsthesis = "http://terminology.hl7.org/CodeSystem/claiminformationcategory#prosthesis";
+
+    /// <summary>
     /// Literal for code: RelatedServices
     /// </summary>
     public const string LiteralRelatedServices = "related";
+
+    /// <summary>
+    /// Literal for code: ClaimInformationcategoryRelatedServices
+    /// </summary>
+    public const string LiteralClaimInformationcategoryRelatedServices = "http://terminology.hl7.org/CodeSystem/claiminformationcategory#related";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimInformationcategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "attachment", Attachment }, 
+      { "http://terminology.hl7.org/CodeSystem/claiminformationcategory#attachment", Attachment }, 
+      { "discharge", Discharge }, 
+      { "http://terminology.hl7.org/CodeSystem/claiminformationcategory#discharge", Discharge }, 
+      { "employmentimpacted", EmploymentImpacted }, 
+      { "http://terminology.hl7.org/CodeSystem/claiminformationcategory#employmentimpacted", EmploymentImpacted }, 
+      { "exception", Exception }, 
+      { "http://terminology.hl7.org/CodeSystem/claiminformationcategory#exception", Exception }, 
+      { "externalcause", ExternalCaause }, 
+      { "http://terminology.hl7.org/CodeSystem/claiminformationcategory#externalcause", ExternalCaause }, 
+      { "hospitalized", Hospitalized }, 
+      { "http://terminology.hl7.org/CodeSystem/claiminformationcategory#hospitalized", Hospitalized }, 
+      { "info", Information }, 
+      { "http://terminology.hl7.org/CodeSystem/claiminformationcategory#info", Information }, 
+      { "material", MaterialsForwarded }, 
+      { "http://terminology.hl7.org/CodeSystem/claiminformationcategory#material", MaterialsForwarded }, 
+      { "missingtooth", MissingTooth }, 
+      { "http://terminology.hl7.org/CodeSystem/claiminformationcategory#missingtooth", MissingTooth }, 
+      { "onset", Onset }, 
+      { "http://terminology.hl7.org/CodeSystem/claiminformationcategory#onset", Onset }, 
+      { "other", Other }, 
+      { "http://terminology.hl7.org/CodeSystem/claiminformationcategory#other", Other }, 
+      { "patientreasonforvisit", PatientReasonForVisit }, 
+      { "http://terminology.hl7.org/CodeSystem/claiminformationcategory#patientreasonforvisit", PatientReasonForVisit }, 
+      { "prosthesis", Prosthesis }, 
+      { "http://terminology.hl7.org/CodeSystem/claiminformationcategory#prosthesis", Prosthesis }, 
+      { "related", RelatedServices }, 
+      { "http://terminology.hl7.org/CodeSystem/claiminformationcategory#related", RelatedServices }, 
+    };
   };
 }

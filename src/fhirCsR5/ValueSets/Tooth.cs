@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ToothCodes
   {
     /// <summary>
-    /// 
+    /// Oral cavity
     /// </summary>
     public static readonly Coding OralCavity = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 1
     /// </summary>
     public static readonly Coding VAL1 = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 11
     /// </summary>
     public static readonly Coding VAL11 = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 12
     /// </summary>
     public static readonly Coding VAL12 = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 13
     /// </summary>
     public static readonly Coding VAL13 = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 14
     /// </summary>
     public static readonly Coding VAL14 = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 15
     /// </summary>
     public static readonly Coding VAL15 = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 16
     /// </summary>
     public static readonly Coding VAL16 = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 17
     /// </summary>
     public static readonly Coding VAL17 = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 18
     /// </summary>
     public static readonly Coding VAL18 = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 2
     /// </summary>
     public static readonly Coding VAL2 = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 21
     /// </summary>
     public static readonly Coding VAL21 = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 22
     /// </summary>
     public static readonly Coding VAL22 = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 23
     /// </summary>
     public static readonly Coding VAL23 = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 24
     /// </summary>
     public static readonly Coding VAL24 = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 25
     /// </summary>
     public static readonly Coding VAL25 = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 26
     /// </summary>
     public static readonly Coding VAL26 = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 27
     /// </summary>
     public static readonly Coding VAL27 = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 28
     /// </summary>
     public static readonly Coding VAL28 = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 3
     /// </summary>
     public static readonly Coding VAL3 = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 31
     /// </summary>
     public static readonly Coding VAL31 = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 32
     /// </summary>
     public static readonly Coding VAL32 = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 33
     /// </summary>
     public static readonly Coding VAL33 = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 34
     /// </summary>
     public static readonly Coding VAL34 = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 35
     /// </summary>
     public static readonly Coding VAL35 = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 36
     /// </summary>
     public static readonly Coding VAL36 = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 37
     /// </summary>
     public static readonly Coding VAL37 = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 38
     /// </summary>
     public static readonly Coding VAL38 = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 4
     /// </summary>
     public static readonly Coding VAL4 = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 41
     /// </summary>
     public static readonly Coding VAL41 = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 42
     /// </summary>
     public static readonly Coding VAL42 = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 43
     /// </summary>
     public static readonly Coding VAL43 = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 44
     /// </summary>
     public static readonly Coding VAL44 = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 45
     /// </summary>
     public static readonly Coding VAL45 = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 46
     /// </summary>
     public static readonly Coding VAL46 = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 47
     /// </summary>
     public static readonly Coding VAL47 = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 48
     /// </summary>
     public static readonly Coding VAL48 = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 5
     /// </summary>
     public static readonly Coding VAL5 = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 6
     /// </summary>
     public static readonly Coding VAL6 = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 7
     /// </summary>
     public static readonly Coding VAL7 = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/ex-tooth"
     };
     /// <summary>
-    /// 
+    /// 8
     /// </summary>
     public static readonly Coding VAL8 = new Coding
     {
@@ -387,9 +387,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOralCavity = "0";
 
     /// <summary>
+    /// Literal for code: ExToothOralCavity
+    /// </summary>
+    public const string LiteralExToothOralCavity = "http://terminology.hl7.org/CodeSystem/ex-tooth#0";
+
+    /// <summary>
     /// Literal for code: VAL1
     /// </summary>
     public const string LiteralVAL1 = "1";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL1
+    /// </summary>
+    public const string LiteralExToothVAL1 = "http://terminology.hl7.org/CodeSystem/ex-tooth#1";
 
     /// <summary>
     /// Literal for code: VAL11
@@ -397,9 +407,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL11 = "11";
 
     /// <summary>
+    /// Literal for code: ExToothVAL11
+    /// </summary>
+    public const string LiteralExToothVAL11 = "http://terminology.hl7.org/CodeSystem/ex-tooth#11";
+
+    /// <summary>
     /// Literal for code: VAL12
     /// </summary>
     public const string LiteralVAL12 = "12";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL12
+    /// </summary>
+    public const string LiteralExToothVAL12 = "http://terminology.hl7.org/CodeSystem/ex-tooth#12";
 
     /// <summary>
     /// Literal for code: VAL13
@@ -407,9 +427,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL13 = "13";
 
     /// <summary>
+    /// Literal for code: ExToothVAL13
+    /// </summary>
+    public const string LiteralExToothVAL13 = "http://terminology.hl7.org/CodeSystem/ex-tooth#13";
+
+    /// <summary>
     /// Literal for code: VAL14
     /// </summary>
     public const string LiteralVAL14 = "14";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL14
+    /// </summary>
+    public const string LiteralExToothVAL14 = "http://terminology.hl7.org/CodeSystem/ex-tooth#14";
 
     /// <summary>
     /// Literal for code: VAL15
@@ -417,9 +447,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL15 = "15";
 
     /// <summary>
+    /// Literal for code: ExToothVAL15
+    /// </summary>
+    public const string LiteralExToothVAL15 = "http://terminology.hl7.org/CodeSystem/ex-tooth#15";
+
+    /// <summary>
     /// Literal for code: VAL16
     /// </summary>
     public const string LiteralVAL16 = "16";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL16
+    /// </summary>
+    public const string LiteralExToothVAL16 = "http://terminology.hl7.org/CodeSystem/ex-tooth#16";
 
     /// <summary>
     /// Literal for code: VAL17
@@ -427,9 +467,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL17 = "17";
 
     /// <summary>
+    /// Literal for code: ExToothVAL17
+    /// </summary>
+    public const string LiteralExToothVAL17 = "http://terminology.hl7.org/CodeSystem/ex-tooth#17";
+
+    /// <summary>
     /// Literal for code: VAL18
     /// </summary>
     public const string LiteralVAL18 = "18";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL18
+    /// </summary>
+    public const string LiteralExToothVAL18 = "http://terminology.hl7.org/CodeSystem/ex-tooth#18";
 
     /// <summary>
     /// Literal for code: VAL2
@@ -437,9 +487,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL2 = "2";
 
     /// <summary>
+    /// Literal for code: ExToothVAL2
+    /// </summary>
+    public const string LiteralExToothVAL2 = "http://terminology.hl7.org/CodeSystem/ex-tooth#2";
+
+    /// <summary>
     /// Literal for code: VAL21
     /// </summary>
     public const string LiteralVAL21 = "21";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL21
+    /// </summary>
+    public const string LiteralExToothVAL21 = "http://terminology.hl7.org/CodeSystem/ex-tooth#21";
 
     /// <summary>
     /// Literal for code: VAL22
@@ -447,9 +507,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL22 = "22";
 
     /// <summary>
+    /// Literal for code: ExToothVAL22
+    /// </summary>
+    public const string LiteralExToothVAL22 = "http://terminology.hl7.org/CodeSystem/ex-tooth#22";
+
+    /// <summary>
     /// Literal for code: VAL23
     /// </summary>
     public const string LiteralVAL23 = "23";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL23
+    /// </summary>
+    public const string LiteralExToothVAL23 = "http://terminology.hl7.org/CodeSystem/ex-tooth#23";
 
     /// <summary>
     /// Literal for code: VAL24
@@ -457,9 +527,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL24 = "24";
 
     /// <summary>
+    /// Literal for code: ExToothVAL24
+    /// </summary>
+    public const string LiteralExToothVAL24 = "http://terminology.hl7.org/CodeSystem/ex-tooth#24";
+
+    /// <summary>
     /// Literal for code: VAL25
     /// </summary>
     public const string LiteralVAL25 = "25";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL25
+    /// </summary>
+    public const string LiteralExToothVAL25 = "http://terminology.hl7.org/CodeSystem/ex-tooth#25";
 
     /// <summary>
     /// Literal for code: VAL26
@@ -467,9 +547,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL26 = "26";
 
     /// <summary>
+    /// Literal for code: ExToothVAL26
+    /// </summary>
+    public const string LiteralExToothVAL26 = "http://terminology.hl7.org/CodeSystem/ex-tooth#26";
+
+    /// <summary>
     /// Literal for code: VAL27
     /// </summary>
     public const string LiteralVAL27 = "27";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL27
+    /// </summary>
+    public const string LiteralExToothVAL27 = "http://terminology.hl7.org/CodeSystem/ex-tooth#27";
 
     /// <summary>
     /// Literal for code: VAL28
@@ -477,9 +567,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL28 = "28";
 
     /// <summary>
+    /// Literal for code: ExToothVAL28
+    /// </summary>
+    public const string LiteralExToothVAL28 = "http://terminology.hl7.org/CodeSystem/ex-tooth#28";
+
+    /// <summary>
     /// Literal for code: VAL3
     /// </summary>
     public const string LiteralVAL3 = "3";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL3
+    /// </summary>
+    public const string LiteralExToothVAL3 = "http://terminology.hl7.org/CodeSystem/ex-tooth#3";
 
     /// <summary>
     /// Literal for code: VAL31
@@ -487,9 +587,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL31 = "31";
 
     /// <summary>
+    /// Literal for code: ExToothVAL31
+    /// </summary>
+    public const string LiteralExToothVAL31 = "http://terminology.hl7.org/CodeSystem/ex-tooth#31";
+
+    /// <summary>
     /// Literal for code: VAL32
     /// </summary>
     public const string LiteralVAL32 = "32";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL32
+    /// </summary>
+    public const string LiteralExToothVAL32 = "http://terminology.hl7.org/CodeSystem/ex-tooth#32";
 
     /// <summary>
     /// Literal for code: VAL33
@@ -497,9 +607,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL33 = "33";
 
     /// <summary>
+    /// Literal for code: ExToothVAL33
+    /// </summary>
+    public const string LiteralExToothVAL33 = "http://terminology.hl7.org/CodeSystem/ex-tooth#33";
+
+    /// <summary>
     /// Literal for code: VAL34
     /// </summary>
     public const string LiteralVAL34 = "34";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL34
+    /// </summary>
+    public const string LiteralExToothVAL34 = "http://terminology.hl7.org/CodeSystem/ex-tooth#34";
 
     /// <summary>
     /// Literal for code: VAL35
@@ -507,9 +627,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL35 = "35";
 
     /// <summary>
+    /// Literal for code: ExToothVAL35
+    /// </summary>
+    public const string LiteralExToothVAL35 = "http://terminology.hl7.org/CodeSystem/ex-tooth#35";
+
+    /// <summary>
     /// Literal for code: VAL36
     /// </summary>
     public const string LiteralVAL36 = "36";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL36
+    /// </summary>
+    public const string LiteralExToothVAL36 = "http://terminology.hl7.org/CodeSystem/ex-tooth#36";
 
     /// <summary>
     /// Literal for code: VAL37
@@ -517,9 +647,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL37 = "37";
 
     /// <summary>
+    /// Literal for code: ExToothVAL37
+    /// </summary>
+    public const string LiteralExToothVAL37 = "http://terminology.hl7.org/CodeSystem/ex-tooth#37";
+
+    /// <summary>
     /// Literal for code: VAL38
     /// </summary>
     public const string LiteralVAL38 = "38";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL38
+    /// </summary>
+    public const string LiteralExToothVAL38 = "http://terminology.hl7.org/CodeSystem/ex-tooth#38";
 
     /// <summary>
     /// Literal for code: VAL4
@@ -527,9 +667,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL4 = "4";
 
     /// <summary>
+    /// Literal for code: ExToothVAL4
+    /// </summary>
+    public const string LiteralExToothVAL4 = "http://terminology.hl7.org/CodeSystem/ex-tooth#4";
+
+    /// <summary>
     /// Literal for code: VAL41
     /// </summary>
     public const string LiteralVAL41 = "41";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL41
+    /// </summary>
+    public const string LiteralExToothVAL41 = "http://terminology.hl7.org/CodeSystem/ex-tooth#41";
 
     /// <summary>
     /// Literal for code: VAL42
@@ -537,9 +687,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL42 = "42";
 
     /// <summary>
+    /// Literal for code: ExToothVAL42
+    /// </summary>
+    public const string LiteralExToothVAL42 = "http://terminology.hl7.org/CodeSystem/ex-tooth#42";
+
+    /// <summary>
     /// Literal for code: VAL43
     /// </summary>
     public const string LiteralVAL43 = "43";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL43
+    /// </summary>
+    public const string LiteralExToothVAL43 = "http://terminology.hl7.org/CodeSystem/ex-tooth#43";
 
     /// <summary>
     /// Literal for code: VAL44
@@ -547,9 +707,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL44 = "44";
 
     /// <summary>
+    /// Literal for code: ExToothVAL44
+    /// </summary>
+    public const string LiteralExToothVAL44 = "http://terminology.hl7.org/CodeSystem/ex-tooth#44";
+
+    /// <summary>
     /// Literal for code: VAL45
     /// </summary>
     public const string LiteralVAL45 = "45";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL45
+    /// </summary>
+    public const string LiteralExToothVAL45 = "http://terminology.hl7.org/CodeSystem/ex-tooth#45";
 
     /// <summary>
     /// Literal for code: VAL46
@@ -557,9 +727,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL46 = "46";
 
     /// <summary>
+    /// Literal for code: ExToothVAL46
+    /// </summary>
+    public const string LiteralExToothVAL46 = "http://terminology.hl7.org/CodeSystem/ex-tooth#46";
+
+    /// <summary>
     /// Literal for code: VAL47
     /// </summary>
     public const string LiteralVAL47 = "47";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL47
+    /// </summary>
+    public const string LiteralExToothVAL47 = "http://terminology.hl7.org/CodeSystem/ex-tooth#47";
 
     /// <summary>
     /// Literal for code: VAL48
@@ -567,9 +747,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL48 = "48";
 
     /// <summary>
+    /// Literal for code: ExToothVAL48
+    /// </summary>
+    public const string LiteralExToothVAL48 = "http://terminology.hl7.org/CodeSystem/ex-tooth#48";
+
+    /// <summary>
     /// Literal for code: VAL5
     /// </summary>
     public const string LiteralVAL5 = "5";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL5
+    /// </summary>
+    public const string LiteralExToothVAL5 = "http://terminology.hl7.org/CodeSystem/ex-tooth#5";
 
     /// <summary>
     /// Literal for code: VAL6
@@ -577,13 +767,116 @@ namespace fhirCsR5.ValueSets
     public const string LiteralVAL6 = "6";
 
     /// <summary>
+    /// Literal for code: ExToothVAL6
+    /// </summary>
+    public const string LiteralExToothVAL6 = "http://terminology.hl7.org/CodeSystem/ex-tooth#6";
+
+    /// <summary>
     /// Literal for code: VAL7
     /// </summary>
     public const string LiteralVAL7 = "7";
 
     /// <summary>
+    /// Literal for code: ExToothVAL7
+    /// </summary>
+    public const string LiteralExToothVAL7 = "http://terminology.hl7.org/CodeSystem/ex-tooth#7";
+
+    /// <summary>
     /// Literal for code: VAL8
     /// </summary>
     public const string LiteralVAL8 = "8";
+
+    /// <summary>
+    /// Literal for code: ExToothVAL8
+    /// </summary>
+    public const string LiteralExToothVAL8 = "http://terminology.hl7.org/CodeSystem/ex-tooth#8";
+
+    /// <summary>
+    /// Dictionary for looking up Tooth Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "0", OralCavity }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#0", OralCavity }, 
+      { "1", VAL1 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#1", VAL1 }, 
+      { "11", VAL11 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#11", VAL11 }, 
+      { "12", VAL12 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#12", VAL12 }, 
+      { "13", VAL13 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#13", VAL13 }, 
+      { "14", VAL14 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#14", VAL14 }, 
+      { "15", VAL15 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#15", VAL15 }, 
+      { "16", VAL16 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#16", VAL16 }, 
+      { "17", VAL17 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#17", VAL17 }, 
+      { "18", VAL18 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#18", VAL18 }, 
+      { "2", VAL2 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#2", VAL2 }, 
+      { "21", VAL21 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#21", VAL21 }, 
+      { "22", VAL22 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#22", VAL22 }, 
+      { "23", VAL23 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#23", VAL23 }, 
+      { "24", VAL24 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#24", VAL24 }, 
+      { "25", VAL25 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#25", VAL25 }, 
+      { "26", VAL26 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#26", VAL26 }, 
+      { "27", VAL27 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#27", VAL27 }, 
+      { "28", VAL28 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#28", VAL28 }, 
+      { "3", VAL3 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#3", VAL3 }, 
+      { "31", VAL31 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#31", VAL31 }, 
+      { "32", VAL32 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#32", VAL32 }, 
+      { "33", VAL33 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#33", VAL33 }, 
+      { "34", VAL34 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#34", VAL34 }, 
+      { "35", VAL35 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#35", VAL35 }, 
+      { "36", VAL36 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#36", VAL36 }, 
+      { "37", VAL37 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#37", VAL37 }, 
+      { "38", VAL38 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#38", VAL38 }, 
+      { "4", VAL4 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#4", VAL4 }, 
+      { "41", VAL41 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#41", VAL41 }, 
+      { "42", VAL42 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#42", VAL42 }, 
+      { "43", VAL43 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#43", VAL43 }, 
+      { "44", VAL44 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#44", VAL44 }, 
+      { "45", VAL45 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#45", VAL45 }, 
+      { "46", VAL46 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#46", VAL46 }, 
+      { "47", VAL47 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#47", VAL47 }, 
+      { "48", VAL48 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#48", VAL48 }, 
+      { "5", VAL5 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#5", VAL5 }, 
+      { "6", VAL6 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#6", VAL6 }, 
+      { "7", VAL7 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#7", VAL7 }, 
+      { "8", VAL8 }, 
+      { "http://terminology.hl7.org/CodeSystem/ex-tooth#8", VAL8 }, 
+    };
   };
 }

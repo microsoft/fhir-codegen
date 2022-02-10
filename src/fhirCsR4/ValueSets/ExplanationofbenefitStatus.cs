@@ -54,9 +54,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: ExplanationofbenefitStatusActive
+    /// </summary>
+    public const string LiteralExplanationofbenefitStatusActive = "http://hl7.org/fhir/explanationofbenefit-status#active";
+
+    /// <summary>
     /// Literal for code: Cancelled
     /// </summary>
     public const string LiteralCancelled = "cancelled";
+
+    /// <summary>
+    /// Literal for code: ExplanationofbenefitStatusCancelled
+    /// </summary>
+    public const string LiteralExplanationofbenefitStatusCancelled = "http://hl7.org/fhir/explanationofbenefit-status#cancelled";
 
     /// <summary>
     /// Literal for code: Draft
@@ -64,8 +74,32 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDraft = "draft";
 
     /// <summary>
+    /// Literal for code: ExplanationofbenefitStatusDraft
+    /// </summary>
+    public const string LiteralExplanationofbenefitStatusDraft = "http://hl7.org/fhir/explanationofbenefit-status#draft";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: ExplanationofbenefitStatusEnteredInError
+    /// </summary>
+    public const string LiteralExplanationofbenefitStatusEnteredInError = "http://hl7.org/fhir/explanationofbenefit-status#entered-in-error";
+
+    /// <summary>
+    /// Dictionary for looking up ExplanationofbenefitStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/explanationofbenefit-status#active", Active }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/explanationofbenefit-status#cancelled", Cancelled }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/explanationofbenefit-status#draft", Draft }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/explanationofbenefit-status#entered-in-error", EnteredInError }, 
+    };
   };
 }

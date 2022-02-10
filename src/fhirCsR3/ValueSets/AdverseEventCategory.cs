@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class AdverseEventCategoryCodes
   {
     /// <summary>
-    /// 
+    /// Adverse Event
     /// </summary>
     public static readonly Coding AdverseEvent = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/adverse-event-category"
     };
     /// <summary>
-    /// 
+    /// Potential Adverse Event
     /// </summary>
     public static readonly Coding PotentialAdverseEvent = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAdverseEvent = "AE";
 
     /// <summary>
+    /// Literal for code: AdverseEventCategoryAdverseEvent
+    /// </summary>
+    public const string LiteralAdverseEventCategoryAdverseEvent = "http://hl7.org/fhir/adverse-event-category#AE";
+
+    /// <summary>
     /// Literal for code: PotentialAdverseEvent
     /// </summary>
     public const string LiteralPotentialAdverseEvent = "PAE";
+
+    /// <summary>
+    /// Literal for code: AdverseEventCategoryPotentialAdverseEvent
+    /// </summary>
+    public const string LiteralAdverseEventCategoryPotentialAdverseEvent = "http://hl7.org/fhir/adverse-event-category#PAE";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "AE", AdverseEvent }, 
+      { "http://hl7.org/fhir/adverse-event-category#AE", AdverseEvent }, 
+      { "PAE", PotentialAdverseEvent }, 
+      { "http://hl7.org/fhir/adverse-event-category#PAE", PotentialAdverseEvent }, 
+    };
   };
 }

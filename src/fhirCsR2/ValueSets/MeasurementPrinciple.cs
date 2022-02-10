@@ -117,9 +117,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralMSPAcoustical = "acoustical";
 
     /// <summary>
+    /// Literal for code: MeasurementPrincipleMSPAcoustical
+    /// </summary>
+    public const string LiteralMeasurementPrincipleMSPAcoustical = "http://hl7.org/fhir/measurement-principle#acoustical";
+
+    /// <summary>
     /// Literal for code: MSPBiological
     /// </summary>
     public const string LiteralMSPBiological = "biological";
+
+    /// <summary>
+    /// Literal for code: MeasurementPrincipleMSPBiological
+    /// </summary>
+    public const string LiteralMeasurementPrincipleMSPBiological = "http://hl7.org/fhir/measurement-principle#biological";
 
     /// <summary>
     /// Literal for code: MSPChemical
@@ -127,9 +137,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralMSPChemical = "chemical";
 
     /// <summary>
+    /// Literal for code: MeasurementPrincipleMSPChemical
+    /// </summary>
+    public const string LiteralMeasurementPrincipleMSPChemical = "http://hl7.org/fhir/measurement-principle#chemical";
+
+    /// <summary>
     /// Literal for code: MSPElectrical
     /// </summary>
     public const string LiteralMSPElectrical = "electrical";
+
+    /// <summary>
+    /// Literal for code: MeasurementPrincipleMSPElectrical
+    /// </summary>
+    public const string LiteralMeasurementPrincipleMSPElectrical = "http://hl7.org/fhir/measurement-principle#electrical";
 
     /// <summary>
     /// Literal for code: MSPImpedance
@@ -137,9 +157,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralMSPImpedance = "impedance";
 
     /// <summary>
+    /// Literal for code: MeasurementPrincipleMSPImpedance
+    /// </summary>
+    public const string LiteralMeasurementPrincipleMSPImpedance = "http://hl7.org/fhir/measurement-principle#impedance";
+
+    /// <summary>
     /// Literal for code: MSPManual
     /// </summary>
     public const string LiteralMSPManual = "manual";
+
+    /// <summary>
+    /// Literal for code: MeasurementPrincipleMSPManual
+    /// </summary>
+    public const string LiteralMeasurementPrincipleMSPManual = "http://hl7.org/fhir/measurement-principle#manual";
 
     /// <summary>
     /// Literal for code: MSPMechanical
@@ -147,9 +177,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralMSPMechanical = "mechanical";
 
     /// <summary>
+    /// Literal for code: MeasurementPrincipleMSPMechanical
+    /// </summary>
+    public const string LiteralMeasurementPrincipleMSPMechanical = "http://hl7.org/fhir/measurement-principle#mechanical";
+
+    /// <summary>
     /// Literal for code: MSPNuclear
     /// </summary>
     public const string LiteralMSPNuclear = "nuclear";
+
+    /// <summary>
+    /// Literal for code: MeasurementPrincipleMSPNuclear
+    /// </summary>
+    public const string LiteralMeasurementPrincipleMSPNuclear = "http://hl7.org/fhir/measurement-principle#nuclear";
 
     /// <summary>
     /// Literal for code: MSPOptical
@@ -157,13 +197,56 @@ namespace fhirCsR2.ValueSets
     public const string LiteralMSPOptical = "optical";
 
     /// <summary>
+    /// Literal for code: MeasurementPrincipleMSPOptical
+    /// </summary>
+    public const string LiteralMeasurementPrincipleMSPOptical = "http://hl7.org/fhir/measurement-principle#optical";
+
+    /// <summary>
     /// Literal for code: MSPOther
     /// </summary>
     public const string LiteralMSPOther = "other";
 
     /// <summary>
+    /// Literal for code: MeasurementPrincipleMSPOther
+    /// </summary>
+    public const string LiteralMeasurementPrincipleMSPOther = "http://hl7.org/fhir/measurement-principle#other";
+
+    /// <summary>
     /// Literal for code: MSPThermal
     /// </summary>
     public const string LiteralMSPThermal = "thermal";
+
+    /// <summary>
+    /// Literal for code: MeasurementPrincipleMSPThermal
+    /// </summary>
+    public const string LiteralMeasurementPrincipleMSPThermal = "http://hl7.org/fhir/measurement-principle#thermal";
+
+    /// <summary>
+    /// Dictionary for looking up MeasurementPrinciple Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "acoustical", MSPAcoustical }, 
+      { "http://hl7.org/fhir/measurement-principle#acoustical", MSPAcoustical }, 
+      { "biological", MSPBiological }, 
+      { "http://hl7.org/fhir/measurement-principle#biological", MSPBiological }, 
+      { "chemical", MSPChemical }, 
+      { "http://hl7.org/fhir/measurement-principle#chemical", MSPChemical }, 
+      { "electrical", MSPElectrical }, 
+      { "http://hl7.org/fhir/measurement-principle#electrical", MSPElectrical }, 
+      { "impedance", MSPImpedance }, 
+      { "http://hl7.org/fhir/measurement-principle#impedance", MSPImpedance }, 
+      { "manual", MSPManual }, 
+      { "http://hl7.org/fhir/measurement-principle#manual", MSPManual }, 
+      { "mechanical", MSPMechanical }, 
+      { "http://hl7.org/fhir/measurement-principle#mechanical", MSPMechanical }, 
+      { "nuclear", MSPNuclear }, 
+      { "http://hl7.org/fhir/measurement-principle#nuclear", MSPNuclear }, 
+      { "optical", MSPOptical }, 
+      { "http://hl7.org/fhir/measurement-principle#optical", MSPOptical }, 
+      { "other", MSPOther }, 
+      { "http://hl7.org/fhir/measurement-principle#other", MSPOther }, 
+      { "thermal", MSPThermal }, 
+      { "http://hl7.org/fhir/measurement-principle#thermal", MSPThermal }, 
+    };
   };
 }

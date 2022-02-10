@@ -28,6 +28,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Required { get; set; }
     /// <summary>
+    /// Extension container element for Required
+    /// </summary>
+    public Element _Required { get; set; }
+    /// <summary>
     /// Participation status of the actor.
     /// </summary>
     public string Status { get; set; }
@@ -82,6 +86,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("required", (bool)Required!);
       }
 
+      if (_Required != null)
+      {
+        writer.WritePropertyName("_required");
+        _Required.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Status))
       {
         writer.WriteString("status", (string)Status!);
@@ -117,6 +127,11 @@ namespace fhirCsR5.Models
 
         case "required":
           Required = reader.GetBoolean();
+          break;
+
+        case "_required":
+          _Required = new fhirCsR5.Models.Element();
+          _Required.DeserializeJson(ref reader, options);
           break;
 
         case "status":
@@ -194,6 +209,12 @@ namespace fhirCsR5.Models
     public const string DECLINED = "declined";
     public const string TENTATIVE = "tentative";
     public const string NEEDS_ACTION = "needs-action";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "accepted",
+      "declined",
+      "tentative",
+      "needs-action",
+    };
   }
   /// <summary>
   /// A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).
@@ -1111,5 +1132,17 @@ namespace fhirCsR5.Models
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string CHECKED_IN = "checked-in";
     public const string WAITLIST = "waitlist";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposed",
+      "pending",
+      "booked",
+      "arrived",
+      "fulfilled",
+      "cancelled",
+      "noshow",
+      "entered-in-error",
+      "checked-in",
+      "waitlist",
+    };
   }
 }

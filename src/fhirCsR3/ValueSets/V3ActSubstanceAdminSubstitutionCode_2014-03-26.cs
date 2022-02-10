@@ -153,9 +153,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBrandComposition = "BC";
 
     /// <summary>
+    /// Literal for code: V3SubstanceAdminSubstitutionBrandComposition
+    /// </summary>
+    public const string LiteralV3SubstanceAdminSubstitutionBrandComposition = "http://hl7.org/fhir/v3/substanceAdminSubstitution#BC";
+
+    /// <summary>
     /// Literal for code: Equivalent
     /// </summary>
     public const string LiteralEquivalent = "E";
+
+    /// <summary>
+    /// Literal for code: V3SubstanceAdminSubstitutionEquivalent
+    /// </summary>
+    public const string LiteralV3SubstanceAdminSubstitutionEquivalent = "http://hl7.org/fhir/v3/substanceAdminSubstitution#E";
 
     /// <summary>
     /// Literal for code: EquivalentComposition
@@ -163,9 +173,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEquivalentComposition = "EC";
 
     /// <summary>
+    /// Literal for code: V3SubstanceAdminSubstitutionEquivalentComposition
+    /// </summary>
+    public const string LiteralV3SubstanceAdminSubstitutionEquivalentComposition = "http://hl7.org/fhir/v3/substanceAdminSubstitution#EC";
+
+    /// <summary>
     /// Literal for code: Formulary
     /// </summary>
     public const string LiteralFormulary = "F";
+
+    /// <summary>
+    /// Literal for code: V3SubstanceAdminSubstitutionFormulary
+    /// </summary>
+    public const string LiteralV3SubstanceAdminSubstitutionFormulary = "http://hl7.org/fhir/v3/substanceAdminSubstitution#F";
 
     /// <summary>
     /// Literal for code: GenericComposition
@@ -173,9 +193,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralGenericComposition = "G";
 
     /// <summary>
+    /// Literal for code: V3SubstanceAdminSubstitutionGenericComposition
+    /// </summary>
+    public const string LiteralV3SubstanceAdminSubstitutionGenericComposition = "http://hl7.org/fhir/v3/substanceAdminSubstitution#G";
+
+    /// <summary>
     /// Literal for code: None
     /// </summary>
     public const string LiteralNone = "N";
+
+    /// <summary>
+    /// Literal for code: V3SubstanceAdminSubstitutionNone
+    /// </summary>
+    public const string LiteralV3SubstanceAdminSubstitutionNone = "http://hl7.org/fhir/v3/substanceAdminSubstitution#N";
 
     /// <summary>
     /// Literal for code: TherapeuticBrand
@@ -183,13 +213,52 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTherapeuticBrand = "TB";
 
     /// <summary>
+    /// Literal for code: V3SubstanceAdminSubstitutionTherapeuticBrand
+    /// </summary>
+    public const string LiteralV3SubstanceAdminSubstitutionTherapeuticBrand = "http://hl7.org/fhir/v3/substanceAdminSubstitution#TB";
+
+    /// <summary>
     /// Literal for code: TherapeuticAlternative
     /// </summary>
     public const string LiteralTherapeuticAlternative = "TE";
 
     /// <summary>
+    /// Literal for code: V3SubstanceAdminSubstitutionTherapeuticAlternative
+    /// </summary>
+    public const string LiteralV3SubstanceAdminSubstitutionTherapeuticAlternative = "http://hl7.org/fhir/v3/substanceAdminSubstitution#TE";
+
+    /// <summary>
     /// Literal for code: TherapeuticGeneric
     /// </summary>
     public const string LiteralTherapeuticGeneric = "TG";
+
+    /// <summary>
+    /// Literal for code: V3SubstanceAdminSubstitutionTherapeuticGeneric
+    /// </summary>
+    public const string LiteralV3SubstanceAdminSubstitutionTherapeuticGeneric = "http://hl7.org/fhir/v3/substanceAdminSubstitution#TG";
+
+    /// <summary>
+    /// Dictionary for looking up V3ActSubstanceAdminSubstitutionCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "BC", BrandComposition }, 
+      { "http://hl7.org/fhir/v3/substanceAdminSubstitution#BC", BrandComposition }, 
+      { "E", Equivalent }, 
+      { "http://hl7.org/fhir/v3/substanceAdminSubstitution#E", Equivalent }, 
+      { "EC", EquivalentComposition }, 
+      { "http://hl7.org/fhir/v3/substanceAdminSubstitution#EC", EquivalentComposition }, 
+      { "F", Formulary }, 
+      { "http://hl7.org/fhir/v3/substanceAdminSubstitution#F", Formulary }, 
+      { "G", GenericComposition }, 
+      { "http://hl7.org/fhir/v3/substanceAdminSubstitution#G", GenericComposition }, 
+      { "N", None }, 
+      { "http://hl7.org/fhir/v3/substanceAdminSubstitution#N", None }, 
+      { "TB", TherapeuticBrand }, 
+      { "http://hl7.org/fhir/v3/substanceAdminSubstitution#TB", TherapeuticBrand }, 
+      { "TE", TherapeuticAlternative }, 
+      { "http://hl7.org/fhir/v3/substanceAdminSubstitution#TE", TherapeuticAlternative }, 
+      { "TG", TherapeuticGeneric }, 
+      { "http://hl7.org/fhir/v3/substanceAdminSubstitution#TG", TherapeuticGeneric }, 
+    };
   };
 }

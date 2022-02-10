@@ -463,5 +463,10 @@ namespace fhirCsR2.Models
     public const string HIGH = "high";
     public const string MODERATE = "moderate";
     public const string LOW = "low";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "high",
+      "moderate",
+      "low",
+    };
   }
 }

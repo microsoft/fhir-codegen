@@ -119,6 +119,11 @@ namespace fhirCsR2.Models
     public const string INCLUDES = "includes";
     public const string REPLACES = "replaces";
     public const string FULFILLS = "fulfills";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "includes",
+      "replaces",
+      "fulfills",
+    };
   }
   /// <summary>
   /// Allows representation of care teams, helps scope care plan.  In some cases may be a determiner of access permissions.
@@ -713,6 +718,14 @@ namespace fhirCsR2.Models
     public const string ON_HOLD = "on-hold";
     public const string COMPLETED = "completed";
     public const string CANCELLED = "cancelled";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "not-started",
+      "scheduled",
+      "in-progress",
+      "on-hold",
+      "completed",
+      "cancelled",
+    };
   }
   /// <summary>
   /// Allows systems to prompt for performance of planned activities, and validate plans against best practice.
@@ -1509,5 +1522,12 @@ namespace fhirCsR2.Models
     public const string ACTIVE = "active";
     public const string COMPLETED = "completed";
     public const string CANCELLED = "cancelled";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposed",
+      "draft",
+      "active",
+      "completed",
+      "cancelled",
+    };
   }
 }

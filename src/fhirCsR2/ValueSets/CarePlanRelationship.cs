@@ -45,13 +45,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralFulfills = "fulfills";
 
     /// <summary>
+    /// Literal for code: CarePlanRelationshipFulfills
+    /// </summary>
+    public const string LiteralCarePlanRelationshipFulfills = "http://hl7.org/fhir/care-plan-relationship#fulfills";
+
+    /// <summary>
     /// Literal for code: Includes
     /// </summary>
     public const string LiteralIncludes = "includes";
 
     /// <summary>
+    /// Literal for code: CarePlanRelationshipIncludes
+    /// </summary>
+    public const string LiteralCarePlanRelationshipIncludes = "http://hl7.org/fhir/care-plan-relationship#includes";
+
+    /// <summary>
     /// Literal for code: Replaces
     /// </summary>
     public const string LiteralReplaces = "replaces";
+
+    /// <summary>
+    /// Literal for code: CarePlanRelationshipReplaces
+    /// </summary>
+    public const string LiteralCarePlanRelationshipReplaces = "http://hl7.org/fhir/care-plan-relationship#replaces";
+
+    /// <summary>
+    /// Dictionary for looking up CarePlanRelationship Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "fulfills", Fulfills }, 
+      { "http://hl7.org/fhir/care-plan-relationship#fulfills", Fulfills }, 
+      { "includes", Includes }, 
+      { "http://hl7.org/fhir/care-plan-relationship#includes", Includes }, 
+      { "replaces", Replaces }, 
+      { "http://hl7.org/fhir/care-plan-relationship#replaces", Replaces }, 
+    };
   };
 }

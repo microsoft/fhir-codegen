@@ -54,9 +54,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralComplete = "complete";
 
     /// <summary>
+    /// Literal for code: ClaimUseLinkComplete
+    /// </summary>
+    public const string LiteralClaimUseLinkComplete = "http://hl7.org/fhir/claim-use-link#complete";
+
+    /// <summary>
     /// Literal for code: Exploratory
     /// </summary>
     public const string LiteralExploratory = "exploratory";
+
+    /// <summary>
+    /// Literal for code: ClaimUseLinkExploratory
+    /// </summary>
+    public const string LiteralClaimUseLinkExploratory = "http://hl7.org/fhir/claim-use-link#exploratory";
 
     /// <summary>
     /// Literal for code: Other
@@ -64,8 +74,32 @@ namespace fhirCsR2.ValueSets
     public const string LiteralOther = "other";
 
     /// <summary>
+    /// Literal for code: ClaimUseLinkOther
+    /// </summary>
+    public const string LiteralClaimUseLinkOther = "http://hl7.org/fhir/claim-use-link#other";
+
+    /// <summary>
     /// Literal for code: Proposed
     /// </summary>
     public const string LiteralProposed = "proposed";
+
+    /// <summary>
+    /// Literal for code: ClaimUseLinkProposed
+    /// </summary>
+    public const string LiteralClaimUseLinkProposed = "http://hl7.org/fhir/claim-use-link#proposed";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimUseLink Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", Complete }, 
+      { "http://hl7.org/fhir/claim-use-link#complete", Complete }, 
+      { "exploratory", Exploratory }, 
+      { "http://hl7.org/fhir/claim-use-link#exploratory", Exploratory }, 
+      { "other", Other }, 
+      { "http://hl7.org/fhir/claim-use-link#other", Other }, 
+      { "proposed", Proposed }, 
+      { "http://hl7.org/fhir/claim-use-link#proposed", Proposed }, 
+    };
   };
 }

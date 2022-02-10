@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class BodysiteLateralityCodes
   {
     /// <summary>
-    /// 
+    /// Unilateral left
     /// </summary>
     public static readonly Coding UnilateralLeft = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Unilateral right
     /// </summary>
     public static readonly Coding UnilateralRight = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral
     /// </summary>
     public static readonly Coding Bilateral = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralUnilateralLeft = "419161000";
 
     /// <summary>
+    /// Literal for code: NONEUnilateralLeft
+    /// </summary>
+    public const string LiteralNONEUnilateralLeft = "http://snomed.info/sct#419161000";
+
+    /// <summary>
     /// Literal for code: UnilateralRight
     /// </summary>
     public const string LiteralUnilateralRight = "419465000";
 
     /// <summary>
+    /// Literal for code: NONEUnilateralRight
+    /// </summary>
+    public const string LiteralNONEUnilateralRight = "http://snomed.info/sct#419465000";
+
+    /// <summary>
     /// Literal for code: Bilateral
     /// </summary>
     public const string LiteralBilateral = "51440002";
+
+    /// <summary>
+    /// Literal for code: NONEBilateral
+    /// </summary>
+    public const string LiteralNONEBilateral = "http://snomed.info/sct#51440002";
+
+    /// <summary>
+    /// Dictionary for looking up BodysiteLaterality Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "419161000", UnilateralLeft }, 
+      { "http://snomed.info/sct#419161000", UnilateralLeft }, 
+      { "419465000", UnilateralRight }, 
+      { "http://snomed.info/sct#419465000", UnilateralRight }, 
+      { "51440002", Bilateral }, 
+      { "http://snomed.info/sct#51440002", Bilateral }, 
+    };
   };
 }

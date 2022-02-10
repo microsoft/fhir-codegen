@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralClinicalProtocol = "clinical-protocol";
 
     /// <summary>
+    /// Literal for code: PlanDefinitionTypeClinicalProtocol
+    /// </summary>
+    public const string LiteralPlanDefinitionTypeClinicalProtocol = "http://terminology.hl7.org/CodeSystem/plan-definition-type#clinical-protocol";
+
+    /// <summary>
     /// Literal for code: ECARule
     /// </summary>
     public const string LiteralECARule = "eca-rule";
+
+    /// <summary>
+    /// Literal for code: PlanDefinitionTypeECARule
+    /// </summary>
+    public const string LiteralPlanDefinitionTypeECARule = "http://terminology.hl7.org/CodeSystem/plan-definition-type#eca-rule";
 
     /// <summary>
     /// Literal for code: OrderSet
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOrderSet = "order-set";
 
     /// <summary>
+    /// Literal for code: PlanDefinitionTypeOrderSet
+    /// </summary>
+    public const string LiteralPlanDefinitionTypeOrderSet = "http://terminology.hl7.org/CodeSystem/plan-definition-type#order-set";
+
+    /// <summary>
     /// Literal for code: WorkflowDefinition
     /// </summary>
     public const string LiteralWorkflowDefinition = "workflow-definition";
+
+    /// <summary>
+    /// Literal for code: PlanDefinitionTypeWorkflowDefinition
+    /// </summary>
+    public const string LiteralPlanDefinitionTypeWorkflowDefinition = "http://terminology.hl7.org/CodeSystem/plan-definition-type#workflow-definition";
+
+    /// <summary>
+    /// Dictionary for looking up PlanDefinitionType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "clinical-protocol", ClinicalProtocol }, 
+      { "http://terminology.hl7.org/CodeSystem/plan-definition-type#clinical-protocol", ClinicalProtocol }, 
+      { "eca-rule", ECARule }, 
+      { "http://terminology.hl7.org/CodeSystem/plan-definition-type#eca-rule", ECARule }, 
+      { "order-set", OrderSet }, 
+      { "http://terminology.hl7.org/CodeSystem/plan-definition-type#order-set", OrderSet }, 
+      { "workflow-definition", WorkflowDefinition }, 
+      { "http://terminology.hl7.org/CodeSystem/plan-definition-type#workflow-definition", WorkflowDefinition }, 
+    };
   };
 }

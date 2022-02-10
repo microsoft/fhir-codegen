@@ -81,9 +81,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralAccepted = "accepted";
 
     /// <summary>
+    /// Literal for code: ReferralstatusAccepted
+    /// </summary>
+    public const string LiteralReferralstatusAccepted = "http://hl7.org/fhir/referralstatus#accepted";
+
+    /// <summary>
     /// Literal for code: Active
     /// </summary>
     public const string LiteralActive = "active";
+
+    /// <summary>
+    /// Literal for code: ReferralstatusActive
+    /// </summary>
+    public const string LiteralReferralstatusActive = "http://hl7.org/fhir/referralstatus#active";
 
     /// <summary>
     /// Literal for code: Cancelled
@@ -91,9 +101,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralCancelled = "cancelled";
 
     /// <summary>
+    /// Literal for code: ReferralstatusCancelled
+    /// </summary>
+    public const string LiteralReferralstatusCancelled = "http://hl7.org/fhir/referralstatus#cancelled";
+
+    /// <summary>
     /// Literal for code: Completed
     /// </summary>
     public const string LiteralCompleted = "completed";
+
+    /// <summary>
+    /// Literal for code: ReferralstatusCompleted
+    /// </summary>
+    public const string LiteralReferralstatusCompleted = "http://hl7.org/fhir/referralstatus#completed";
 
     /// <summary>
     /// Literal for code: Draft
@@ -101,13 +121,48 @@ namespace fhirCsR2.ValueSets
     public const string LiteralDraft = "draft";
 
     /// <summary>
+    /// Literal for code: ReferralstatusDraft
+    /// </summary>
+    public const string LiteralReferralstatusDraft = "http://hl7.org/fhir/referralstatus#draft";
+
+    /// <summary>
     /// Literal for code: Rejected
     /// </summary>
     public const string LiteralRejected = "rejected";
 
     /// <summary>
+    /// Literal for code: ReferralstatusRejected
+    /// </summary>
+    public const string LiteralReferralstatusRejected = "http://hl7.org/fhir/referralstatus#rejected";
+
+    /// <summary>
     /// Literal for code: Requested
     /// </summary>
     public const string LiteralRequested = "requested";
+
+    /// <summary>
+    /// Literal for code: ReferralstatusRequested
+    /// </summary>
+    public const string LiteralReferralstatusRequested = "http://hl7.org/fhir/referralstatus#requested";
+
+    /// <summary>
+    /// Dictionary for looking up Referralstatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "accepted", Accepted }, 
+      { "http://hl7.org/fhir/referralstatus#accepted", Accepted }, 
+      { "active", Active }, 
+      { "http://hl7.org/fhir/referralstatus#active", Active }, 
+      { "cancelled", Cancelled }, 
+      { "http://hl7.org/fhir/referralstatus#cancelled", Cancelled }, 
+      { "completed", Completed }, 
+      { "http://hl7.org/fhir/referralstatus#completed", Completed }, 
+      { "draft", Draft }, 
+      { "http://hl7.org/fhir/referralstatus#draft", Draft }, 
+      { "rejected", Rejected }, 
+      { "http://hl7.org/fhir/referralstatus#rejected", Rejected }, 
+      { "requested", Requested }, 
+      { "http://hl7.org/fhir/referralstatus#requested", Requested }, 
+    };
   };
 }

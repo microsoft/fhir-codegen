@@ -36,8 +36,28 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDue = "due";
 
     /// <summary>
+    /// Literal for code: ImmunizationRecommendationStatusDue
+    /// </summary>
+    public const string LiteralImmunizationRecommendationStatusDue = "http://hl7.org/fhir/immunization-recommendation-status#due";
+
+    /// <summary>
     /// Literal for code: Overdue
     /// </summary>
     public const string LiteralOverdue = "overdue";
+
+    /// <summary>
+    /// Literal for code: ImmunizationRecommendationStatusOverdue
+    /// </summary>
+    public const string LiteralImmunizationRecommendationStatusOverdue = "http://hl7.org/fhir/immunization-recommendation-status#overdue";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationRecommendationStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "due", Due }, 
+      { "http://hl7.org/fhir/immunization-recommendation-status#due", Due }, 
+      { "overdue", Overdue }, 
+      { "http://hl7.org/fhir/immunization-recommendation-status#overdue", Overdue }, 
+    };
   };
 }

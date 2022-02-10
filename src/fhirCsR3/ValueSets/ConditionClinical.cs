@@ -63,9 +63,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: ConditionClinicalActive
+    /// </summary>
+    public const string LiteralConditionClinicalActive = "http://hl7.org/fhir/condition-clinical#active";
+
+    /// <summary>
     /// Literal for code: Inactive
     /// </summary>
     public const string LiteralInactive = "inactive";
+
+    /// <summary>
+    /// Literal for code: ConditionClinicalInactive
+    /// </summary>
+    public const string LiteralConditionClinicalInactive = "http://hl7.org/fhir/condition-clinical#inactive";
 
     /// <summary>
     /// Literal for code: Recurrence
@@ -73,13 +83,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralRecurrence = "recurrence";
 
     /// <summary>
+    /// Literal for code: ConditionClinicalRecurrence
+    /// </summary>
+    public const string LiteralConditionClinicalRecurrence = "http://hl7.org/fhir/condition-clinical#recurrence";
+
+    /// <summary>
     /// Literal for code: Remission
     /// </summary>
     public const string LiteralRemission = "remission";
 
     /// <summary>
+    /// Literal for code: ConditionClinicalRemission
+    /// </summary>
+    public const string LiteralConditionClinicalRemission = "http://hl7.org/fhir/condition-clinical#remission";
+
+    /// <summary>
     /// Literal for code: Resolved
     /// </summary>
     public const string LiteralResolved = "resolved";
+
+    /// <summary>
+    /// Literal for code: ConditionClinicalResolved
+    /// </summary>
+    public const string LiteralConditionClinicalResolved = "http://hl7.org/fhir/condition-clinical#resolved";
+
+    /// <summary>
+    /// Dictionary for looking up ConditionClinical Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/condition-clinical#active", Active }, 
+      { "inactive", Inactive }, 
+      { "http://hl7.org/fhir/condition-clinical#inactive", Inactive }, 
+      { "recurrence", Recurrence }, 
+      { "http://hl7.org/fhir/condition-clinical#recurrence", Recurrence }, 
+      { "remission", Remission }, 
+      { "http://hl7.org/fhir/condition-clinical#remission", Remission }, 
+      { "resolved", Resolved }, 
+      { "http://hl7.org/fhir/condition-clinical#resolved", Resolved }, 
+    };
   };
 }

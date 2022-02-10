@@ -20,6 +20,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Authoritative { get; set; }
     /// <summary>
+    /// Extension container element for Authoritative
+    /// </summary>
+    public Element _Authoritative { get; set; }
+    /// <summary>
     /// e.g. "must be used in Germany" or "was initially published in error with this value".
     /// </summary>
     public string Comment { get; set; }
@@ -35,6 +39,10 @@ namespace fhirCsR5.Models
     /// Indicates whether this identifier is the "preferred" identifier of this type.
     /// </summary>
     public bool? Preferred { get; set; }
+    /// <summary>
+    /// Extension container element for Preferred
+    /// </summary>
+    public Element _Preferred { get; set; }
     /// <summary>
     /// Different identifier types may be used in different types of communications (OIDs for v3, URIs for FHIR, etc.).  Other includes RUIDs from v3, standard v2 code name strings, etc.
     /// </summary>
@@ -89,6 +97,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("preferred", (bool)Preferred!);
       }
 
+      if (_Preferred != null)
+      {
+        writer.WritePropertyName("_preferred");
+        _Preferred.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Comment))
       {
         writer.WriteString("comment", (string)Comment!);
@@ -111,6 +125,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("authoritative", (bool)Authoritative!);
       }
 
+      if (_Authoritative != null)
+      {
+        writer.WritePropertyName("_authoritative");
+        _Authoritative.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -125,6 +145,11 @@ namespace fhirCsR5.Models
       {
         case "authoritative":
           Authoritative = reader.GetBoolean();
+          break;
+
+        case "_authoritative":
+          _Authoritative = new fhirCsR5.Models.Element();
+          _Authoritative.DeserializeJson(ref reader, options);
           break;
 
         case "comment":
@@ -143,6 +168,11 @@ namespace fhirCsR5.Models
 
         case "preferred":
           Preferred = reader.GetBoolean();
+          break;
+
+        case "_preferred":
+          _Preferred = new fhirCsR5.Models.Element();
+          _Preferred.DeserializeJson(ref reader, options);
           break;
 
         case "type":
@@ -203,6 +233,13 @@ namespace fhirCsR5.Models
     public const string URI = "uri";
     public const string V2CSMNEMONIC = "v2csmnemonic";
     public const string OTHER = "other";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "oid",
+      "uuid",
+      "uri",
+      "v2csmnemonic",
+      "other",
+    };
   }
   /// <summary>
   /// A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a "System" used within the Identifier and Coding data types.
@@ -781,6 +818,11 @@ namespace fhirCsR5.Models
     public const string CODESYSTEM = "codesystem";
     public const string IDENTIFIER = "identifier";
     public const string ROOT = "root";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "codesystem",
+      "identifier",
+      "root",
+    };
   }
   /// <summary>
   /// Code Values for the NamingSystem.status field
@@ -790,5 +832,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

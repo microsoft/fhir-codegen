@@ -172,6 +172,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Active { get; set; }
     /// <summary>
+    /// Extension container element for Active
+    /// </summary>
+    public Element _Active { get; set; }
+    /// <summary>
     /// The PractitionerRole does not have an address value on it, as it is expected that the location property be used for this purpose (which has an address).
     /// </summary>
     public List<Address> Address { get; set; }
@@ -191,6 +195,10 @@ namespace fhirCsR5.Models
     /// If there's no value in the instance, it means there is no statement on whether or not the practitioner is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
     /// </summary>
     public bool? DeceasedBoolean { get; set; }
+    /// <summary>
+    /// Extension container element for DeceasedBoolean
+    /// </summary>
+    public Element _DeceasedBoolean { get; set; }
     /// <summary>
     /// If there's no value in the instance, it means there is no statement on whether or not the practitioner is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.
     /// </summary>
@@ -268,6 +276,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("active", (bool)Active!);
       }
 
+      if (_Active != null)
+      {
+        writer.WritePropertyName("_active");
+        _Active.SerializeJson(writer, options);
+      }
+
       if ((Name != null) && (Name.Count != 0))
       {
         writer.WritePropertyName("name");
@@ -297,6 +311,12 @@ namespace fhirCsR5.Models
       if (DeceasedBoolean != null)
       {
         writer.WriteBoolean("deceasedBoolean", (bool)DeceasedBoolean!);
+      }
+
+      if (_DeceasedBoolean != null)
+      {
+        writer.WritePropertyName("_deceasedBoolean");
+        _DeceasedBoolean.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(DeceasedDateTime))
@@ -400,6 +420,11 @@ namespace fhirCsR5.Models
           Active = reader.GetBoolean();
           break;
 
+        case "_active":
+          _Active = new fhirCsR5.Models.Element();
+          _Active.DeserializeJson(ref reader, options);
+          break;
+
         case "address":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -465,6 +490,11 @@ namespace fhirCsR5.Models
 
         case "deceasedBoolean":
           DeceasedBoolean = reader.GetBoolean();
+          break;
+
+        case "_deceasedBoolean":
+          _DeceasedBoolean = new fhirCsR5.Models.Element();
+          _DeceasedBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "deceasedDateTime":
@@ -659,5 +689,11 @@ namespace fhirCsR5.Models
     public const string FEMALE = "female";
     public const string OTHER = "other";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "male",
+      "female",
+      "other",
+      "unknown",
+    };
   }
 }

@@ -47,13 +47,40 @@ namespace fhirCsR2.ValueSets
     public const string LiteralPostalAndPhysical = "both";
 
     /// <summary>
+    /// Literal for code: AddressTypePostalAndPhysical
+    /// </summary>
+    public const string LiteralAddressTypePostalAndPhysical = "http://hl7.org/fhir/address-type#both";
+
+    /// <summary>
     /// Literal for code: Physical
     /// </summary>
     public const string LiteralPhysical = "physical";
 
     /// <summary>
+    /// Literal for code: AddressTypePhysical
+    /// </summary>
+    public const string LiteralAddressTypePhysical = "http://hl7.org/fhir/address-type#physical";
+
+    /// <summary>
     /// Literal for code: Postal
     /// </summary>
     public const string LiteralPostal = "postal";
+
+    /// <summary>
+    /// Literal for code: AddressTypePostal
+    /// </summary>
+    public const string LiteralAddressTypePostal = "http://hl7.org/fhir/address-type#postal";
+
+    /// <summary>
+    /// Dictionary for looking up AddressType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "both", PostalAndPhysical }, 
+      { "http://hl7.org/fhir/address-type#both", PostalAndPhysical }, 
+      { "physical", Physical }, 
+      { "http://hl7.org/fhir/address-type#physical", Physical }, 
+      { "postal", Postal }, 
+      { "http://hl7.org/fhir/address-type#postal", Postal }, 
+    };
   };
 }

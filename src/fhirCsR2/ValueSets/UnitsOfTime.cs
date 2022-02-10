@@ -74,9 +74,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralNONE = "a";
 
     /// <summary>
+    /// Literal for code: NONENONE
+    /// </summary>
+    public const string LiteralNONENONE = "http://unitsofmeasure.org#a";
+
+    /// <summary>
     /// Literal for code: NONE_2
     /// </summary>
     public const string LiteralNONE_2 = "d";
+
+    /// <summary>
+    /// Literal for code: NONENONE_2
+    /// </summary>
+    public const string LiteralNONENONE_2 = "http://unitsofmeasure.org#d";
 
     /// <summary>
     /// Literal for code: NONE_3
@@ -84,9 +94,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralNONE_3 = "h";
 
     /// <summary>
+    /// Literal for code: NONENONE_3
+    /// </summary>
+    public const string LiteralNONENONE_3 = "http://unitsofmeasure.org#h";
+
+    /// <summary>
     /// Literal for code: NONE_4
     /// </summary>
     public const string LiteralNONE_4 = "min";
+
+    /// <summary>
+    /// Literal for code: NONENONE_4
+    /// </summary>
+    public const string LiteralNONENONE_4 = "http://unitsofmeasure.org#min";
 
     /// <summary>
     /// Literal for code: NONE_5
@@ -94,13 +114,48 @@ namespace fhirCsR2.ValueSets
     public const string LiteralNONE_5 = "mo";
 
     /// <summary>
+    /// Literal for code: NONENONE_5
+    /// </summary>
+    public const string LiteralNONENONE_5 = "http://unitsofmeasure.org#mo";
+
+    /// <summary>
     /// Literal for code: NONE_6
     /// </summary>
     public const string LiteralNONE_6 = "s";
 
     /// <summary>
+    /// Literal for code: NONENONE_6
+    /// </summary>
+    public const string LiteralNONENONE_6 = "http://unitsofmeasure.org#s";
+
+    /// <summary>
     /// Literal for code: NONE_7
     /// </summary>
     public const string LiteralNONE_7 = "wk";
+
+    /// <summary>
+    /// Literal for code: NONENONE_7
+    /// </summary>
+    public const string LiteralNONENONE_7 = "http://unitsofmeasure.org#wk";
+
+    /// <summary>
+    /// Dictionary for looking up UnitsOfTime Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "a", NONE }, 
+      { "http://unitsofmeasure.org#a", NONE }, 
+      { "d", NONE_2 }, 
+      { "http://unitsofmeasure.org#d", NONE_2 }, 
+      { "h", NONE_3 }, 
+      { "http://unitsofmeasure.org#h", NONE_3 }, 
+      { "min", NONE_4 }, 
+      { "http://unitsofmeasure.org#min", NONE_4 }, 
+      { "mo", NONE_5 }, 
+      { "http://unitsofmeasure.org#mo", NONE_5 }, 
+      { "s", NONE_6 }, 
+      { "http://unitsofmeasure.org#s", NONE_6 }, 
+      { "wk", NONE_7 }, 
+      { "http://unitsofmeasure.org#wk", NONE_7 }, 
+    };
   };
 }

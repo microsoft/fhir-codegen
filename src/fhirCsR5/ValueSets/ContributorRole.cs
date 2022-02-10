@@ -81,9 +81,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAuthorCreator = "author";
 
     /// <summary>
+    /// Literal for code: ContributorRoleAuthorCreator
+    /// </summary>
+    public const string LiteralContributorRoleAuthorCreator = "http://terminology.hl7.org/CodeSystem/contributor-role#author";
+
+    /// <summary>
     /// Literal for code: Editor
     /// </summary>
     public const string LiteralEditor = "editor";
+
+    /// <summary>
+    /// Literal for code: ContributorRoleEditor
+    /// </summary>
+    public const string LiteralContributorRoleEditor = "http://terminology.hl7.org/CodeSystem/contributor-role#editor";
 
     /// <summary>
     /// Literal for code: Endorser
@@ -91,9 +101,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralEndorser = "endorser";
 
     /// <summary>
+    /// Literal for code: ContributorRoleEndorser
+    /// </summary>
+    public const string LiteralContributorRoleEndorser = "http://terminology.hl7.org/CodeSystem/contributor-role#endorser";
+
+    /// <summary>
     /// Literal for code: Funder
     /// </summary>
     public const string LiteralFunder = "funder";
+
+    /// <summary>
+    /// Literal for code: ContributorRoleFunder
+    /// </summary>
+    public const string LiteralContributorRoleFunder = "http://terminology.hl7.org/CodeSystem/contributor-role#funder";
 
     /// <summary>
     /// Literal for code: Informant
@@ -101,13 +121,48 @@ namespace fhirCsR5.ValueSets
     public const string LiteralInformant = "informant";
 
     /// <summary>
+    /// Literal for code: ContributorRoleInformant
+    /// </summary>
+    public const string LiteralContributorRoleInformant = "http://terminology.hl7.org/CodeSystem/contributor-role#informant";
+
+    /// <summary>
     /// Literal for code: Publisher
     /// </summary>
     public const string LiteralPublisher = "publisher";
 
     /// <summary>
+    /// Literal for code: ContributorRolePublisher
+    /// </summary>
+    public const string LiteralContributorRolePublisher = "http://terminology.hl7.org/CodeSystem/contributor-role#publisher";
+
+    /// <summary>
     /// Literal for code: Reviewer
     /// </summary>
     public const string LiteralReviewer = "reviewer";
+
+    /// <summary>
+    /// Literal for code: ContributorRoleReviewer
+    /// </summary>
+    public const string LiteralContributorRoleReviewer = "http://terminology.hl7.org/CodeSystem/contributor-role#reviewer";
+
+    /// <summary>
+    /// Dictionary for looking up ContributorRole Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "author", AuthorCreator }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-role#author", AuthorCreator }, 
+      { "editor", Editor }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-role#editor", Editor }, 
+      { "endorser", Endorser }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-role#endorser", Endorser }, 
+      { "funder", Funder }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-role#funder", Funder }, 
+      { "informant", Informant }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-role#informant", Informant }, 
+      { "publisher", Publisher }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-role#publisher", Publisher }, 
+      { "reviewer", Reviewer }, 
+      { "http://terminology.hl7.org/CodeSystem/contributor-role#reviewer", Reviewer }, 
+    };
   };
 }

@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class IdentifierTypeCodes
   {
     /// <summary>
-    /// 
+    /// Accession ID
     /// </summary>
     public static readonly Coding AccessionID = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// Breed Registry Number
     /// </summary>
     public static readonly Coding BreedRegistryNumber = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// Driver's license number
     /// </summary>
     public static readonly Coding DriverQuoteSLicenseNumber = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// Donor Registration Number
     /// </summary>
     public static readonly Coding DonorRegistrationNumber = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// Employer number
     /// </summary>
     public static readonly Coding EmployerNumber = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// Filler Identifier
     /// </summary>
     public static readonly Coding FillerIdentifier = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// Jurisdictional health number (Canada)
     /// </summary>
     public static readonly Coding JurisdictionalHealthNumberCanada = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// Microchip Number
     /// </summary>
     public static readonly Coding MicrochipNumber = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// Medical License number
     /// </summary>
     public static readonly Coding MedicalLicenseNumber = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// Medical record number
     /// </summary>
     public static readonly Coding MedicalRecordNumber = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// National Insurance Payor Identifier (Payor)
     /// </summary>
     public static readonly Coding NationalInsurancePayorIdentifierPayor = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// Placer Identifier
     /// </summary>
     public static readonly Coding PlacerIdentifier = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// Passport number
     /// </summary>
     public static readonly Coding PassportNumber = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// Provider number
     /// </summary>
     public static readonly Coding ProviderNumber = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// Social Beneficiary Identifier
     /// </summary>
     public static readonly Coding SocialBeneficiaryIdentifier = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// Serial Number
     /// </summary>
     public static readonly Coding SerialNumber = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// Tax ID number
     /// </summary>
     public static readonly Coding TaxIDNumber = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0203"
     };
     /// <summary>
-    /// 
+    /// Universal Device Identifier
     /// </summary>
     public static readonly Coding UniversalDeviceIdentifier = new Coding
     {
@@ -180,9 +180,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAccessionID = "ACSN";
 
     /// <summary>
+    /// Literal for code: V20203AccessionID
+    /// </summary>
+    public const string LiteralV20203AccessionID = "http://terminology.hl7.org/CodeSystem/v2-0203#ACSN";
+
+    /// <summary>
     /// Literal for code: BreedRegistryNumber
     /// </summary>
     public const string LiteralBreedRegistryNumber = "BRN";
+
+    /// <summary>
+    /// Literal for code: V20203BreedRegistryNumber
+    /// </summary>
+    public const string LiteralV20203BreedRegistryNumber = "http://terminology.hl7.org/CodeSystem/v2-0203#BRN";
 
     /// <summary>
     /// Literal for code: DriverQuoteSLicenseNumber
@@ -190,9 +200,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDriverQuoteSLicenseNumber = "DL";
 
     /// <summary>
+    /// Literal for code: V20203DriverQuoteSLicenseNumber
+    /// </summary>
+    public const string LiteralV20203DriverQuoteSLicenseNumber = "http://terminology.hl7.org/CodeSystem/v2-0203#DL";
+
+    /// <summary>
     /// Literal for code: DonorRegistrationNumber
     /// </summary>
     public const string LiteralDonorRegistrationNumber = "DR";
+
+    /// <summary>
+    /// Literal for code: V20203DonorRegistrationNumber
+    /// </summary>
+    public const string LiteralV20203DonorRegistrationNumber = "http://terminology.hl7.org/CodeSystem/v2-0203#DR";
 
     /// <summary>
     /// Literal for code: EmployerNumber
@@ -200,9 +220,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmployerNumber = "EN";
 
     /// <summary>
+    /// Literal for code: V20203EmployerNumber
+    /// </summary>
+    public const string LiteralV20203EmployerNumber = "http://terminology.hl7.org/CodeSystem/v2-0203#EN";
+
+    /// <summary>
     /// Literal for code: FillerIdentifier
     /// </summary>
     public const string LiteralFillerIdentifier = "FILL";
+
+    /// <summary>
+    /// Literal for code: V20203FillerIdentifier
+    /// </summary>
+    public const string LiteralV20203FillerIdentifier = "http://terminology.hl7.org/CodeSystem/v2-0203#FILL";
 
     /// <summary>
     /// Literal for code: JurisdictionalHealthNumberCanada
@@ -210,9 +240,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJurisdictionalHealthNumberCanada = "JHN";
 
     /// <summary>
+    /// Literal for code: V20203JurisdictionalHealthNumberCanada
+    /// </summary>
+    public const string LiteralV20203JurisdictionalHealthNumberCanada = "http://terminology.hl7.org/CodeSystem/v2-0203#JHN";
+
+    /// <summary>
     /// Literal for code: MicrochipNumber
     /// </summary>
     public const string LiteralMicrochipNumber = "MCN";
+
+    /// <summary>
+    /// Literal for code: V20203MicrochipNumber
+    /// </summary>
+    public const string LiteralV20203MicrochipNumber = "http://terminology.hl7.org/CodeSystem/v2-0203#MCN";
 
     /// <summary>
     /// Literal for code: MedicalLicenseNumber
@@ -220,9 +260,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedicalLicenseNumber = "MD";
 
     /// <summary>
+    /// Literal for code: V20203MedicalLicenseNumber
+    /// </summary>
+    public const string LiteralV20203MedicalLicenseNumber = "http://terminology.hl7.org/CodeSystem/v2-0203#MD";
+
+    /// <summary>
     /// Literal for code: MedicalRecordNumber
     /// </summary>
     public const string LiteralMedicalRecordNumber = "MR";
+
+    /// <summary>
+    /// Literal for code: V20203MedicalRecordNumber
+    /// </summary>
+    public const string LiteralV20203MedicalRecordNumber = "http://terminology.hl7.org/CodeSystem/v2-0203#MR";
 
     /// <summary>
     /// Literal for code: NationalInsurancePayorIdentifierPayor
@@ -230,9 +280,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNationalInsurancePayorIdentifierPayor = "NIIP";
 
     /// <summary>
+    /// Literal for code: V20203NationalInsurancePayorIdentifierPayor
+    /// </summary>
+    public const string LiteralV20203NationalInsurancePayorIdentifierPayor = "http://terminology.hl7.org/CodeSystem/v2-0203#NIIP";
+
+    /// <summary>
     /// Literal for code: PlacerIdentifier
     /// </summary>
     public const string LiteralPlacerIdentifier = "PLAC";
+
+    /// <summary>
+    /// Literal for code: V20203PlacerIdentifier
+    /// </summary>
+    public const string LiteralV20203PlacerIdentifier = "http://terminology.hl7.org/CodeSystem/v2-0203#PLAC";
 
     /// <summary>
     /// Literal for code: PassportNumber
@@ -240,9 +300,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPassportNumber = "PPN";
 
     /// <summary>
+    /// Literal for code: V20203PassportNumber
+    /// </summary>
+    public const string LiteralV20203PassportNumber = "http://terminology.hl7.org/CodeSystem/v2-0203#PPN";
+
+    /// <summary>
     /// Literal for code: ProviderNumber
     /// </summary>
     public const string LiteralProviderNumber = "PRN";
+
+    /// <summary>
+    /// Literal for code: V20203ProviderNumber
+    /// </summary>
+    public const string LiteralV20203ProviderNumber = "http://terminology.hl7.org/CodeSystem/v2-0203#PRN";
 
     /// <summary>
     /// Literal for code: SocialBeneficiaryIdentifier
@@ -250,9 +320,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSocialBeneficiaryIdentifier = "SB";
 
     /// <summary>
+    /// Literal for code: V20203SocialBeneficiaryIdentifier
+    /// </summary>
+    public const string LiteralV20203SocialBeneficiaryIdentifier = "http://terminology.hl7.org/CodeSystem/v2-0203#SB";
+
+    /// <summary>
     /// Literal for code: SerialNumber
     /// </summary>
     public const string LiteralSerialNumber = "SNO";
+
+    /// <summary>
+    /// Literal for code: V20203SerialNumber
+    /// </summary>
+    public const string LiteralV20203SerialNumber = "http://terminology.hl7.org/CodeSystem/v2-0203#SNO";
 
     /// <summary>
     /// Literal for code: TaxIDNumber
@@ -260,8 +340,60 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTaxIDNumber = "TAX";
 
     /// <summary>
+    /// Literal for code: V20203TaxIDNumber
+    /// </summary>
+    public const string LiteralV20203TaxIDNumber = "http://terminology.hl7.org/CodeSystem/v2-0203#TAX";
+
+    /// <summary>
     /// Literal for code: UniversalDeviceIdentifier
     /// </summary>
     public const string LiteralUniversalDeviceIdentifier = "UDI";
+
+    /// <summary>
+    /// Literal for code: V20203UniversalDeviceIdentifier
+    /// </summary>
+    public const string LiteralV20203UniversalDeviceIdentifier = "http://terminology.hl7.org/CodeSystem/v2-0203#UDI";
+
+    /// <summary>
+    /// Dictionary for looking up IdentifierType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ACSN", AccessionID }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#ACSN", AccessionID }, 
+      { "BRN", BreedRegistryNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#BRN", BreedRegistryNumber }, 
+      { "DL", DriverQuoteSLicenseNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#DL", DriverQuoteSLicenseNumber }, 
+      { "DR", DonorRegistrationNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#DR", DonorRegistrationNumber }, 
+      { "EN", EmployerNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#EN", EmployerNumber }, 
+      { "FILL", FillerIdentifier }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#FILL", FillerIdentifier }, 
+      { "JHN", JurisdictionalHealthNumberCanada }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#JHN", JurisdictionalHealthNumberCanada }, 
+      { "MCN", MicrochipNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#MCN", MicrochipNumber }, 
+      { "MD", MedicalLicenseNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#MD", MedicalLicenseNumber }, 
+      { "MR", MedicalRecordNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#MR", MedicalRecordNumber }, 
+      { "NIIP", NationalInsurancePayorIdentifierPayor }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#NIIP", NationalInsurancePayorIdentifierPayor }, 
+      { "PLAC", PlacerIdentifier }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#PLAC", PlacerIdentifier }, 
+      { "PPN", PassportNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#PPN", PassportNumber }, 
+      { "PRN", ProviderNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#PRN", ProviderNumber }, 
+      { "SB", SocialBeneficiaryIdentifier }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#SB", SocialBeneficiaryIdentifier }, 
+      { "SNO", SerialNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#SNO", SerialNumber }, 
+      { "TAX", TaxIDNumber }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#TAX", TaxIDNumber }, 
+      { "UDI", UniversalDeviceIdentifier }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0203#UDI", UniversalDeviceIdentifier }, 
+    };
   };
 }

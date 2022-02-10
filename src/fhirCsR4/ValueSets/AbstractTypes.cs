@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAny = "Any";
 
     /// <summary>
+    /// Literal for code: AbstractTypesAny
+    /// </summary>
+    public const string LiteralAbstractTypesAny = "http://hl7.org/fhir/abstract-types#Any";
+
+    /// <summary>
     /// Literal for code: Type
     /// </summary>
     public const string LiteralType = "Type";
+
+    /// <summary>
+    /// Literal for code: AbstractTypesType
+    /// </summary>
+    public const string LiteralAbstractTypesType = "http://hl7.org/fhir/abstract-types#Type";
+
+    /// <summary>
+    /// Dictionary for looking up AbstractTypes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "Any", Any }, 
+      { "http://hl7.org/fhir/abstract-types#Any", Any }, 
+      { "Type", Type }, 
+      { "http://hl7.org/fhir/abstract-types#Type", Type }, 
+    };
   };
 }

@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDeferred = "deferred";
 
     /// <summary>
+    /// Literal for code: ProcessPriorityDeferred
+    /// </summary>
+    public const string LiteralProcessPriorityDeferred = "http://hl7.org/fhir/processpriority#deferred";
+
+    /// <summary>
     /// Literal for code: Normal
     /// </summary>
     public const string LiteralNormal = "normal";
 
     /// <summary>
+    /// Literal for code: ProcessPriorityNormal
+    /// </summary>
+    public const string LiteralProcessPriorityNormal = "http://hl7.org/fhir/processpriority#normal";
+
+    /// <summary>
     /// Literal for code: Immediate
     /// </summary>
     public const string LiteralImmediate = "stat";
+
+    /// <summary>
+    /// Literal for code: ProcessPriorityImmediate
+    /// </summary>
+    public const string LiteralProcessPriorityImmediate = "http://hl7.org/fhir/processpriority#stat";
+
+    /// <summary>
+    /// Dictionary for looking up ProcessPriority Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "deferred", Deferred }, 
+      { "http://hl7.org/fhir/processpriority#deferred", Deferred }, 
+      { "normal", Normal }, 
+      { "http://hl7.org/fhir/processpriority#normal", Normal }, 
+      { "stat", Immediate }, 
+      { "http://hl7.org/fhir/processpriority#stat", Immediate }, 
+    };
   };
 }

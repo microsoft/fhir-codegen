@@ -867,5 +867,17 @@ namespace fhirCsR3.Models
     public const string CANCELLED = "cancelled";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "registered",
+      "partial",
+      "preliminary",
+      "final",
+      "amended",
+      "corrected",
+      "appended",
+      "cancelled",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

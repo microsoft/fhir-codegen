@@ -125,6 +125,17 @@ namespace fhirCsR4.Models
     public const string CANCELLED = "cancelled";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "planned",
+      "arrived",
+      "triaged",
+      "in-progress",
+      "onleave",
+      "finished",
+      "cancelled",
+      "entered-in-error",
+      "unknown",
+    };
   }
   /// <summary>
   /// The class history permits the tracking of the encounters transitions without needing to go  through the resource history.  This would be used for a case where an admission starts of as an emergency encounter, then transitions into an inpatient scenario. Doing this and not restarting a new encounter ensures that any lab/diagnostic results can more easily follow the patient and not require re-processing and not get lost or cancelled during a kind of discharge from emergency to inpatient.
@@ -873,6 +884,12 @@ namespace fhirCsR4.Models
     public const string ACTIVE = "active";
     public const string RESERVED = "reserved";
     public const string COMPLETED = "completed";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "planned",
+      "active",
+      "reserved",
+      "completed",
+    };
   }
   /// <summary>
   /// An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.
@@ -1693,5 +1710,16 @@ namespace fhirCsR4.Models
     public const string CANCELLED = "cancelled";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "planned",
+      "arrived",
+      "triaged",
+      "in-progress",
+      "onleave",
+      "finished",
+      "cancelled",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

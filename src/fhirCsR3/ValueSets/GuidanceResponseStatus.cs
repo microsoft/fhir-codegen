@@ -72,9 +72,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDataRequested = "data-requested";
 
     /// <summary>
+    /// Literal for code: GuidanceResponseStatusDataRequested
+    /// </summary>
+    public const string LiteralGuidanceResponseStatusDataRequested = "http://hl7.org/fhir/guidance-response-status#data-requested";
+
+    /// <summary>
     /// Literal for code: DataRequired
     /// </summary>
     public const string LiteralDataRequired = "data-required";
+
+    /// <summary>
+    /// Literal for code: GuidanceResponseStatusDataRequired
+    /// </summary>
+    public const string LiteralGuidanceResponseStatusDataRequired = "http://hl7.org/fhir/guidance-response-status#data-required";
 
     /// <summary>
     /// Literal for code: EnteredInError
@@ -82,9 +92,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEnteredInError = "entered-in-error";
 
     /// <summary>
+    /// Literal for code: GuidanceResponseStatusEnteredInError
+    /// </summary>
+    public const string LiteralGuidanceResponseStatusEnteredInError = "http://hl7.org/fhir/guidance-response-status#entered-in-error";
+
+    /// <summary>
     /// Literal for code: Failure
     /// </summary>
     public const string LiteralFailure = "failure";
+
+    /// <summary>
+    /// Literal for code: GuidanceResponseStatusFailure
+    /// </summary>
+    public const string LiteralGuidanceResponseStatusFailure = "http://hl7.org/fhir/guidance-response-status#failure";
 
     /// <summary>
     /// Literal for code: InProgress
@@ -92,8 +112,36 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInProgress = "in-progress";
 
     /// <summary>
+    /// Literal for code: GuidanceResponseStatusInProgress
+    /// </summary>
+    public const string LiteralGuidanceResponseStatusInProgress = "http://hl7.org/fhir/guidance-response-status#in-progress";
+
+    /// <summary>
     /// Literal for code: Success
     /// </summary>
     public const string LiteralSuccess = "success";
+
+    /// <summary>
+    /// Literal for code: GuidanceResponseStatusSuccess
+    /// </summary>
+    public const string LiteralGuidanceResponseStatusSuccess = "http://hl7.org/fhir/guidance-response-status#success";
+
+    /// <summary>
+    /// Dictionary for looking up GuidanceResponseStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "data-requested", DataRequested }, 
+      { "http://hl7.org/fhir/guidance-response-status#data-requested", DataRequested }, 
+      { "data-required", DataRequired }, 
+      { "http://hl7.org/fhir/guidance-response-status#data-required", DataRequired }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/guidance-response-status#entered-in-error", EnteredInError }, 
+      { "failure", Failure }, 
+      { "http://hl7.org/fhir/guidance-response-status#failure", Failure }, 
+      { "in-progress", InProgress }, 
+      { "http://hl7.org/fhir/guidance-response-status#in-progress", InProgress }, 
+      { "success", Success }, 
+      { "http://hl7.org/fhir/guidance-response-status#success", Success }, 
+    };
   };
 }

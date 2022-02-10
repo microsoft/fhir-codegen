@@ -90,9 +90,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAppointment = "Appointment";
 
     /// <summary>
+    /// Literal for code: ResourceTypesAppointment
+    /// </summary>
+    public const string LiteralResourceTypesAppointment = "http://hl7.org/fhir/resource-types#Appointment";
+
+    /// <summary>
     /// Literal for code: CommunicationRequest
     /// </summary>
     public const string LiteralCommunicationRequest = "CommunicationRequest";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesCommunicationRequest
+    /// </summary>
+    public const string LiteralResourceTypesCommunicationRequest = "http://hl7.org/fhir/resource-types#CommunicationRequest";
 
     /// <summary>
     /// Literal for code: DeviceRequest
@@ -100,9 +110,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeviceRequest = "DeviceRequest";
 
     /// <summary>
+    /// Literal for code: ResourceTypesDeviceRequest
+    /// </summary>
+    public const string LiteralResourceTypesDeviceRequest = "http://hl7.org/fhir/resource-types#DeviceRequest";
+
+    /// <summary>
     /// Literal for code: MedicationRequest
     /// </summary>
     public const string LiteralMedicationRequest = "MedicationRequest";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesMedicationRequest
+    /// </summary>
+    public const string LiteralResourceTypesMedicationRequest = "http://hl7.org/fhir/resource-types#MedicationRequest";
 
     /// <summary>
     /// Literal for code: NutritionOrder
@@ -110,9 +130,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNutritionOrder = "NutritionOrder";
 
     /// <summary>
+    /// Literal for code: ResourceTypesNutritionOrder
+    /// </summary>
+    public const string LiteralResourceTypesNutritionOrder = "http://hl7.org/fhir/resource-types#NutritionOrder";
+
+    /// <summary>
     /// Literal for code: ServiceRequest
     /// </summary>
     public const string LiteralServiceRequest = "ServiceRequest";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesServiceRequest
+    /// </summary>
+    public const string LiteralResourceTypesServiceRequest = "http://hl7.org/fhir/resource-types#ServiceRequest";
 
     /// <summary>
     /// Literal for code: Task
@@ -120,8 +150,40 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTask = "Task";
 
     /// <summary>
+    /// Literal for code: ResourceTypesTask
+    /// </summary>
+    public const string LiteralResourceTypesTask = "http://hl7.org/fhir/resource-types#Task";
+
+    /// <summary>
     /// Literal for code: VisionPrescription
     /// </summary>
     public const string LiteralVisionPrescription = "VisionPrescription";
+
+    /// <summary>
+    /// Literal for code: ResourceTypesVisionPrescription
+    /// </summary>
+    public const string LiteralResourceTypesVisionPrescription = "http://hl7.org/fhir/resource-types#VisionPrescription";
+
+    /// <summary>
+    /// Dictionary for looking up CarePlanActivityKind Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "Appointment", Appointment }, 
+      { "http://hl7.org/fhir/resource-types#Appointment", Appointment }, 
+      { "CommunicationRequest", CommunicationRequest }, 
+      { "http://hl7.org/fhir/resource-types#CommunicationRequest", CommunicationRequest }, 
+      { "DeviceRequest", DeviceRequest }, 
+      { "http://hl7.org/fhir/resource-types#DeviceRequest", DeviceRequest }, 
+      { "MedicationRequest", MedicationRequest }, 
+      { "http://hl7.org/fhir/resource-types#MedicationRequest", MedicationRequest }, 
+      { "NutritionOrder", NutritionOrder }, 
+      { "http://hl7.org/fhir/resource-types#NutritionOrder", NutritionOrder }, 
+      { "ServiceRequest", ServiceRequest }, 
+      { "http://hl7.org/fhir/resource-types#ServiceRequest", ServiceRequest }, 
+      { "Task", Task }, 
+      { "http://hl7.org/fhir/resource-types#Task", Task }, 
+      { "VisionPrescription", VisionPrescription }, 
+      { "http://hl7.org/fhir/resource-types#VisionPrescription", VisionPrescription }, 
+    };
   };
 }

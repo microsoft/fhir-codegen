@@ -478,6 +478,11 @@ namespace fhirCsR5.Models
     public const string OK = "ok";
     public const string TRANSIENT_ERROR = "transient-error";
     public const string FATAL_ERROR = "fatal-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "ok",
+      "transient-error",
+      "fatal-error",
+    };
   }
   /// <summary>
   /// The header for a message exchange that is either requesting or responding to an action.  The reference(s) that are the subject of the action as well as other information related to the action are typically transmitted in a bundle in which the MessageHeader resource instance is the first resource in the bundle.

@@ -81,9 +81,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAllergen = "allergen";
 
     /// <summary>
+    /// Literal for code: SubstanceCategoryAllergen
+    /// </summary>
+    public const string LiteralSubstanceCategoryAllergen = "http://hl7.org/fhir/substance-category#allergen";
+
+    /// <summary>
     /// Literal for code: BiologicalSubstance
     /// </summary>
     public const string LiteralBiologicalSubstance = "biological";
+
+    /// <summary>
+    /// Literal for code: SubstanceCategoryBiologicalSubstance
+    /// </summary>
+    public const string LiteralSubstanceCategoryBiologicalSubstance = "http://hl7.org/fhir/substance-category#biological";
 
     /// <summary>
     /// Literal for code: BodySubstance
@@ -91,9 +101,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralBodySubstance = "body";
 
     /// <summary>
+    /// Literal for code: SubstanceCategoryBodySubstance
+    /// </summary>
+    public const string LiteralSubstanceCategoryBodySubstance = "http://hl7.org/fhir/substance-category#body";
+
+    /// <summary>
     /// Literal for code: Chemical
     /// </summary>
     public const string LiteralChemical = "chemical";
+
+    /// <summary>
+    /// Literal for code: SubstanceCategoryChemical
+    /// </summary>
+    public const string LiteralSubstanceCategoryChemical = "http://hl7.org/fhir/substance-category#chemical";
 
     /// <summary>
     /// Literal for code: DrugOrMedicament
@@ -101,13 +121,48 @@ namespace fhirCsR3.ValueSets
     public const string LiteralDrugOrMedicament = "drug";
 
     /// <summary>
+    /// Literal for code: SubstanceCategoryDrugOrMedicament
+    /// </summary>
+    public const string LiteralSubstanceCategoryDrugOrMedicament = "http://hl7.org/fhir/substance-category#drug";
+
+    /// <summary>
     /// Literal for code: DietarySubstance
     /// </summary>
     public const string LiteralDietarySubstance = "food";
 
     /// <summary>
+    /// Literal for code: SubstanceCategoryDietarySubstance
+    /// </summary>
+    public const string LiteralSubstanceCategoryDietarySubstance = "http://hl7.org/fhir/substance-category#food";
+
+    /// <summary>
     /// Literal for code: Material
     /// </summary>
     public const string LiteralMaterial = "material";
+
+    /// <summary>
+    /// Literal for code: SubstanceCategoryMaterial
+    /// </summary>
+    public const string LiteralSubstanceCategoryMaterial = "http://hl7.org/fhir/substance-category#material";
+
+    /// <summary>
+    /// Dictionary for looking up SubstanceCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "allergen", Allergen }, 
+      { "http://hl7.org/fhir/substance-category#allergen", Allergen }, 
+      { "biological", BiologicalSubstance }, 
+      { "http://hl7.org/fhir/substance-category#biological", BiologicalSubstance }, 
+      { "body", BodySubstance }, 
+      { "http://hl7.org/fhir/substance-category#body", BodySubstance }, 
+      { "chemical", Chemical }, 
+      { "http://hl7.org/fhir/substance-category#chemical", Chemical }, 
+      { "drug", DrugOrMedicament }, 
+      { "http://hl7.org/fhir/substance-category#drug", DrugOrMedicament }, 
+      { "food", DietarySubstance }, 
+      { "http://hl7.org/fhir/substance-category#food", DietarySubstance }, 
+      { "material", Material }, 
+      { "http://hl7.org/fhir/substance-category#material", Material }, 
+    };
   };
 }

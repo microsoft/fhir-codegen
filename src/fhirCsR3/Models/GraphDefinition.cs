@@ -189,6 +189,12 @@ namespace fhirCsR3.Models
     public const string MATCHING = "matching";
     public const string DIFFERENT = "different";
     public const string CUSTOM = "custom";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "identical",
+      "matching",
+      "different",
+      "custom",
+    };
   }
   /// <summary>
   /// Potential target for the link.
@@ -419,6 +425,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public int? Min { get; set; }
     /// <summary>
+    /// Extension container element for Min
+    /// </summary>
+    public Element _Min { get; set; }
+    /// <summary>
     /// The path can be a literal path (e.g. Observation.subject), or it can be a query for reverse links (e.g. Provenance?target=[id]).
     /// </summary>
     public string Path { get; set; }
@@ -474,6 +484,12 @@ namespace fhirCsR3.Models
       if (Min != null)
       {
         writer.WriteNumber("min", (int)Min!);
+      }
+
+      if (_Min != null)
+      {
+        writer.WritePropertyName("_min");
+        _Min.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Max))
@@ -543,6 +559,11 @@ namespace fhirCsR3.Models
 
         case "min":
           Min = reader.GetInt32();
+          break;
+
+        case "_min":
+          _Min = new fhirCsR3.Models.Element();
+          _Min.DeserializeJson(ref reader, options);
           break;
 
         case "path":
@@ -654,6 +675,10 @@ namespace fhirCsR3.Models
     /// Allows filtering of graph definition that are appropriate for use vs. not. This is labeled as "Is Modifier" because applications should not use an experimental graph definition in production.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// It may be possible for the graph definition to be used in jurisdictions other than those for which it was originally designed or intended.
     /// </summary>
@@ -795,6 +820,12 @@ namespace fhirCsR3.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -974,6 +1005,11 @@ namespace fhirCsR3.Models
 
         case "experimental":
           Experimental = reader.GetBoolean();
+          break;
+
+        case "_experimental":
+          _Experimental = new fhirCsR3.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
           break;
 
         case "jurisdiction":
@@ -1168,5 +1204,11 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

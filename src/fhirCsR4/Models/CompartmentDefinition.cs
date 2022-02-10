@@ -253,6 +253,10 @@ namespace fhirCsR4.Models
     /// </summary>
     public bool? Experimental { get; set; }
     /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
+    /// <summary>
     /// The name is not expected to be globally unique. The name should be a simple alphanumeric type name to ensure that it is machine-processing friendly.This is often the same as the code for the parameter, but does not need to be.
     /// </summary>
     public string Name { get; set; }
@@ -284,6 +288,10 @@ namespace fhirCsR4.Models
     /// Servers may define and use compartments to manage logical access without implementing the compartment related syntax.
     /// </summary>
     public bool Search { get; set; }
+    /// <summary>
+    /// Extension container element for Search
+    /// </summary>
+    public Element _Search { get; set; }
     /// <summary>
     /// Allows filtering of compartment definitions that are appropriate for use versus not.
     /// </summary>
@@ -380,6 +388,12 @@ namespace fhirCsR4.Models
         writer.WriteBoolean("experimental", (bool)Experimental!);
       }
 
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
+      }
+
       if (!string.IsNullOrEmpty(Date))
       {
         writer.WriteString("date", (string)Date!);
@@ -462,6 +476,12 @@ namespace fhirCsR4.Models
       }
 
       writer.WriteBoolean("search", Search);
+
+      if (_Search != null)
+      {
+        writer.WritePropertyName("_search");
+        _Search.SerializeJson(writer, options);
+      }
 
       if ((Resource != null) && (Resource.Count != 0))
       {
@@ -546,6 +566,11 @@ namespace fhirCsR4.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR4.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "name":
           Name = reader.GetString();
           break;
@@ -602,6 +627,11 @@ namespace fhirCsR4.Models
 
         case "search":
           Search = reader.GetBoolean();
+          break;
+
+        case "_search":
+          _Search = new fhirCsR4.Models.Element();
+          _Search.DeserializeJson(ref reader, options);
           break;
 
         case "status":
@@ -698,6 +728,13 @@ namespace fhirCsR4.Models
     public const string RELATEDPERSON = "RelatedPerson";
     public const string PRACTITIONER = "Practitioner";
     public const string DEVICE = "Device";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "Patient",
+      "Encounter",
+      "RelatedPerson",
+      "Practitioner",
+      "Device",
+    };
   }
   /// <summary>
   /// Code Values for the CompartmentDefinition.status field
@@ -707,5 +744,11 @@ namespace fhirCsR4.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

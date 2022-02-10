@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralProcessingComplete = "complete";
 
     /// <summary>
+    /// Literal for code: EligibilityOutcomeProcessingComplete
+    /// </summary>
+    public const string LiteralEligibilityOutcomeProcessingComplete = "http://hl7.org/fhir/eligibility-outcome#complete";
+
+    /// <summary>
     /// Literal for code: Error
     /// </summary>
     public const string LiteralError = "error";
+
+    /// <summary>
+    /// Literal for code: EligibilityOutcomeError
+    /// </summary>
+    public const string LiteralEligibilityOutcomeError = "http://hl7.org/fhir/eligibility-outcome#error";
 
     /// <summary>
     /// Literal for code: PartialProcessing
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralPartialProcessing = "partial";
 
     /// <summary>
+    /// Literal for code: EligibilityOutcomePartialProcessing
+    /// </summary>
+    public const string LiteralEligibilityOutcomePartialProcessing = "http://hl7.org/fhir/eligibility-outcome#partial";
+
+    /// <summary>
     /// Literal for code: Queued
     /// </summary>
     public const string LiteralQueued = "queued";
+
+    /// <summary>
+    /// Literal for code: EligibilityOutcomeQueued
+    /// </summary>
+    public const string LiteralEligibilityOutcomeQueued = "http://hl7.org/fhir/eligibility-outcome#queued";
+
+    /// <summary>
+    /// Dictionary for looking up EligibilityOutcome Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", ProcessingComplete }, 
+      { "http://hl7.org/fhir/eligibility-outcome#complete", ProcessingComplete }, 
+      { "error", Error }, 
+      { "http://hl7.org/fhir/eligibility-outcome#error", Error }, 
+      { "partial", PartialProcessing }, 
+      { "http://hl7.org/fhir/eligibility-outcome#partial", PartialProcessing }, 
+      { "queued", Queued }, 
+      { "http://hl7.org/fhir/eligibility-outcome#queued", Queued }, 
+    };
   };
 }

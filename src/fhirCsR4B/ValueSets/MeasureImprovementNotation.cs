@@ -36,8 +36,28 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDecreasedScoreIndicatesImprovement = "decrease";
 
     /// <summary>
+    /// Literal for code: MeasureImprovementNotationDecreasedScoreIndicatesImprovement
+    /// </summary>
+    public const string LiteralMeasureImprovementNotationDecreasedScoreIndicatesImprovement = "http://terminology.hl7.org/CodeSystem/measure-improvement-notation#decrease";
+
+    /// <summary>
     /// Literal for code: IncreasedScoreIndicatesImprovement
     /// </summary>
     public const string LiteralIncreasedScoreIndicatesImprovement = "increase";
+
+    /// <summary>
+    /// Literal for code: MeasureImprovementNotationIncreasedScoreIndicatesImprovement
+    /// </summary>
+    public const string LiteralMeasureImprovementNotationIncreasedScoreIndicatesImprovement = "http://terminology.hl7.org/CodeSystem/measure-improvement-notation#increase";
+
+    /// <summary>
+    /// Dictionary for looking up MeasureImprovementNotation Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "decrease", DecreasedScoreIndicatesImprovement }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-improvement-notation#decrease", DecreasedScoreIndicatesImprovement }, 
+      { "increase", IncreasedScoreIndicatesImprovement }, 
+      { "http://terminology.hl7.org/CodeSystem/measure-improvement-notation#increase", IncreasedScoreIndicatesImprovement }, 
+    };
   };
 }

@@ -148,6 +148,12 @@ namespace fhirCsR5.Models
     public const string PROFESSIONAL = "professional";
     public const string LEGAL = "legal";
     public const string OFFICIAL = "official";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "personal",
+      "professional",
+      "legal",
+      "official",
+    };
   }
   /// <summary>
   /// This element is labeled as a modifier because documents that append to other documents are incomplete on their own.
@@ -1123,6 +1129,13 @@ namespace fhirCsR5.Models
     public const string AMENDED = "amended";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string DEPRECATED = "deprecated";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "preliminary",
+      "final",
+      "amended",
+      "entered-in-error",
+      "deprecated",
+    };
   }
   /// <summary>
   /// Code Values for the DocumentReference.status field
@@ -1131,5 +1144,10 @@ namespace fhirCsR5.Models
     public const string CURRENT = "current";
     public const string SUPERSEDED = "superseded";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "current",
+      "superseded",
+      "entered-in-error",
+    };
   }
 }

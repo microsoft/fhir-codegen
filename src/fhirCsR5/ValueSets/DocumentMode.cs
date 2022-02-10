@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralConsumer = "consumer";
 
     /// <summary>
+    /// Literal for code: DocumentModeConsumer
+    /// </summary>
+    public const string LiteralDocumentModeConsumer = "http://hl7.org/fhir/document-mode#consumer";
+
+    /// <summary>
     /// Literal for code: Producer
     /// </summary>
     public const string LiteralProducer = "producer";
+
+    /// <summary>
+    /// Literal for code: DocumentModeProducer
+    /// </summary>
+    public const string LiteralDocumentModeProducer = "http://hl7.org/fhir/document-mode#producer";
+
+    /// <summary>
+    /// Dictionary for looking up DocumentMode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "consumer", Consumer }, 
+      { "http://hl7.org/fhir/document-mode#consumer", Consumer }, 
+      { "producer", Producer }, 
+      { "http://hl7.org/fhir/document-mode#producer", Producer }, 
+    };
   };
 }

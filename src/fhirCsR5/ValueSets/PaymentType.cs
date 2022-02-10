@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class PaymentTypeCodes
   {
     /// <summary>
-    /// 
+    /// Adjustment
     /// </summary>
     public static readonly Coding Adjustment = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/payment-type"
     };
     /// <summary>
-    /// 
+    /// Advance
     /// </summary>
     public static readonly Coding Advance = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/payment-type"
     };
     /// <summary>
-    /// 
+    /// Payment
     /// </summary>
     public static readonly Coding Payment = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAdjustment = "adjustment";
 
     /// <summary>
+    /// Literal for code: PaymentTypeAdjustment
+    /// </summary>
+    public const string LiteralPaymentTypeAdjustment = "http://terminology.hl7.org/CodeSystem/payment-type#adjustment";
+
+    /// <summary>
     /// Literal for code: Advance
     /// </summary>
     public const string LiteralAdvance = "advance";
 
     /// <summary>
+    /// Literal for code: PaymentTypeAdvance
+    /// </summary>
+    public const string LiteralPaymentTypeAdvance = "http://terminology.hl7.org/CodeSystem/payment-type#advance";
+
+    /// <summary>
     /// Literal for code: Payment
     /// </summary>
     public const string LiteralPayment = "payment";
+
+    /// <summary>
+    /// Literal for code: PaymentTypePayment
+    /// </summary>
+    public const string LiteralPaymentTypePayment = "http://terminology.hl7.org/CodeSystem/payment-type#payment";
+
+    /// <summary>
+    /// Dictionary for looking up PaymentType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "adjustment", Adjustment }, 
+      { "http://terminology.hl7.org/CodeSystem/payment-type#adjustment", Adjustment }, 
+      { "advance", Advance }, 
+      { "http://terminology.hl7.org/CodeSystem/payment-type#advance", Advance }, 
+      { "payment", Payment }, 
+      { "http://terminology.hl7.org/CodeSystem/payment-type#payment", Payment }, 
+    };
   };
 }

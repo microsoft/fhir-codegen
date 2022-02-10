@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class ServicerequestCategoryCodes
   {
     /// <summary>
-    /// 
+    /// Laboratory procedure
     /// </summary>
     public static readonly Coding LaboratoryProcedure = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Imaging
     /// </summary>
     public static readonly Coding Imaging = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgical procedure
     /// </summary>
     public static readonly Coding SurgicalProcedure = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Counselling
     /// </summary>
     public static readonly Coding Counselling = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Education
     /// </summary>
     public static readonly Coding Education = new Coding
     {
@@ -63,9 +63,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLaboratoryProcedure = "108252007";
 
     /// <summary>
+    /// Literal for code: NONELaboratoryProcedure
+    /// </summary>
+    public const string LiteralNONELaboratoryProcedure = "http://snomed.info/sct#108252007";
+
+    /// <summary>
     /// Literal for code: Imaging
     /// </summary>
     public const string LiteralImaging = "363679005";
+
+    /// <summary>
+    /// Literal for code: NONEImaging
+    /// </summary>
+    public const string LiteralNONEImaging = "http://snomed.info/sct#363679005";
 
     /// <summary>
     /// Literal for code: SurgicalProcedure
@@ -73,13 +83,44 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSurgicalProcedure = "387713003";
 
     /// <summary>
+    /// Literal for code: NONESurgicalProcedure
+    /// </summary>
+    public const string LiteralNONESurgicalProcedure = "http://snomed.info/sct#387713003";
+
+    /// <summary>
     /// Literal for code: Counselling
     /// </summary>
     public const string LiteralCounselling = "409063005";
 
     /// <summary>
+    /// Literal for code: NONECounselling
+    /// </summary>
+    public const string LiteralNONECounselling = "http://snomed.info/sct#409063005";
+
+    /// <summary>
     /// Literal for code: Education
     /// </summary>
     public const string LiteralEducation = "409073007";
+
+    /// <summary>
+    /// Literal for code: NONEEducation
+    /// </summary>
+    public const string LiteralNONEEducation = "http://snomed.info/sct#409073007";
+
+    /// <summary>
+    /// Dictionary for looking up ServicerequestCategory Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "108252007", LaboratoryProcedure }, 
+      { "http://snomed.info/sct#108252007", LaboratoryProcedure }, 
+      { "363679005", Imaging }, 
+      { "http://snomed.info/sct#363679005", Imaging }, 
+      { "387713003", SurgicalProcedure }, 
+      { "http://snomed.info/sct#387713003", SurgicalProcedure }, 
+      { "409063005", Counselling }, 
+      { "http://snomed.info/sct#409063005", Counselling }, 
+      { "409073007", Education }, 
+      { "http://snomed.info/sct#409073007", Education }, 
+    };
   };
 }

@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class CarePlanActivityOutcomeCodes
   {
     /// <summary>
-    /// 
+    /// Deficient knowledge: diagnostic test
     /// </summary>
     public static readonly Coding DeficientKnowledgeDiagnosticTest = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of dietary regimen
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfDietaryRegimen = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge: disease process
     /// </summary>
     public static readonly Coding DeficientKnowledgeDiseaseProcess = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of fluid volume management
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfFluidVolumeManagement = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge: medication regimen
     /// </summary>
     public static readonly Coding DeficientKnowledgeMedicationRegimen = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of safety precautions
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfSafetyPrecautions = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge: therapeutic regimen
     /// </summary>
     public static readonly Coding DeficientKnowledgeTherapeuticRegimen = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient misunderstood treatment instructions
     /// </summary>
     public static readonly Coding PatientMisunderstoodTreatmentInstructions = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Demonstrates knowledge of expected responses to operative procedure (finding)
     /// </summary>
     public static readonly Coding DemonstratesKnowledgeOfExpectedResponsesToOperativeProcedureFinding = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Demonstrates knowledge of nutritional requirements related to operative procedure (finding)
     /// </summary>
     public static readonly Coding DemonstratesKnowledgeOfNutritionalRequirementsRelatedToOperativeProcedureFinding = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Healthcare knowledge finding (finding)
     /// </summary>
     public static readonly Coding HealthcareKnowledgeFindingFinding = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Demonstrates knowledge of wound healing process (finding)
     /// </summary>
     public static readonly Coding DemonstratesKnowledgeOfWoundHealingProcessFinding = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Demonstrates knowledge of medication management (finding)
     /// </summary>
     public static readonly Coding DemonstratesKnowledgeOfMedicationManagementFinding = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Demonstrates knowledge of pain management (finding)
     /// </summary>
     public static readonly Coding DemonstratesKnowledgeOfPainManagementFinding = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Patient does not understand why taking all medication (finding)
     /// </summary>
     public static readonly Coding PatientDoesNotUnderstandWhyTakingAllMedicationFinding = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of family planning methods (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfFamilyPlanningMethodsFinding = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of preconception health practices (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfPreconceptionHealthPracticesFinding = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeFinding = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of breast feeding
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfBreastFeeding = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of peritoneal dialysis (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfPeritonealDialysisFinding = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of sexual behavior
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfSexualBehavior = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of oral hygiene (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfOralHygieneFinding = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of child development
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfChildDevelopment = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of community services
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfCommunityServices = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of physical therapy (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfPhysicalTherapyFinding = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of fall prevention (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfFallPreventionFinding = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of pain management
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfPainManagement = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of symptom
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfSymptom = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of exercise (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfExerciseFinding = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of traditional therapy (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfTraditionalTherapyFinding = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of behavior change process (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfBehaviorChangeProcessFinding = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of patient controlled analgesia
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfPatientControlledAnalgesia = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of medication (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfMedicationFinding = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Demonstrates knowledge of who to contact in medical emergency (finding)
     /// </summary>
     public static readonly Coding DemonstratesKnowledgeOfWhoToContactInMedicalEmergencyFinding = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of travel health (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfTravelHealthFinding = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of parenting (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfParentingFinding = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of infant feeding (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfInfantFeedingFinding = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of infant care (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfInfantCareFinding = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of childbirth
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfChildbirth = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of fetal development (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfFetalDevelopmentFinding = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deficient knowledge of pregnancy (finding)
     /// </summary>
     public static readonly Coding DeficientKnowledgeOfPregnancyFinding = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Able to adapt to sensory changes in body part (finding)
     /// </summary>
     public static readonly Coding AbleToAdaptToSensoryChangesInBodyPartFinding = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Able to recognize need for pressure area care (finding)
     /// </summary>
     public static readonly Coding AbleToRecognizeNeedForPressureAreaCareFinding = new Coding
     {
@@ -405,9 +405,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeDiagnosticTest = "129862009";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeDiagnosticTest
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeDiagnosticTest = "http://snomed.info/sct#129862009";
+
+    /// <summary>
     /// Literal for code: DeficientKnowledgeOfDietaryRegimen
     /// </summary>
     public const string LiteralDeficientKnowledgeOfDietaryRegimen = "129863004";
+
+    /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfDietaryRegimen
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfDietaryRegimen = "http://snomed.info/sct#129863004";
 
     /// <summary>
     /// Literal for code: DeficientKnowledgeDiseaseProcess
@@ -415,9 +425,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeDiseaseProcess = "129864005";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeDiseaseProcess
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeDiseaseProcess = "http://snomed.info/sct#129864005";
+
+    /// <summary>
     /// Literal for code: DeficientKnowledgeOfFluidVolumeManagement
     /// </summary>
     public const string LiteralDeficientKnowledgeOfFluidVolumeManagement = "129865006";
+
+    /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfFluidVolumeManagement
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfFluidVolumeManagement = "http://snomed.info/sct#129865006";
 
     /// <summary>
     /// Literal for code: DeficientKnowledgeMedicationRegimen
@@ -425,9 +445,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeMedicationRegimen = "129866007";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeMedicationRegimen
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeMedicationRegimen = "http://snomed.info/sct#129866007";
+
+    /// <summary>
     /// Literal for code: DeficientKnowledgeOfSafetyPrecautions
     /// </summary>
     public const string LiteralDeficientKnowledgeOfSafetyPrecautions = "129867003";
+
+    /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfSafetyPrecautions
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfSafetyPrecautions = "http://snomed.info/sct#129867003";
 
     /// <summary>
     /// Literal for code: DeficientKnowledgeTherapeuticRegimen
@@ -435,9 +465,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeTherapeuticRegimen = "129868008";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeTherapeuticRegimen
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeTherapeuticRegimen = "http://snomed.info/sct#129868008";
+
+    /// <summary>
     /// Literal for code: PatientMisunderstoodTreatmentInstructions
     /// </summary>
     public const string LiteralPatientMisunderstoodTreatmentInstructions = "182891003";
+
+    /// <summary>
+    /// Literal for code: NONEPatientMisunderstoodTreatmentInstructions
+    /// </summary>
+    public const string LiteralNONEPatientMisunderstoodTreatmentInstructions = "http://snomed.info/sct#182891003";
 
     /// <summary>
     /// Literal for code: DemonstratesKnowledgeOfExpectedResponsesToOperativeProcedureFinding
@@ -445,9 +485,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDemonstratesKnowledgeOfExpectedResponsesToOperativeProcedureFinding = "397588000";
 
     /// <summary>
+    /// Literal for code: NONEDemonstratesKnowledgeOfExpectedResponsesToOperativeProcedureFinding
+    /// </summary>
+    public const string LiteralNONEDemonstratesKnowledgeOfExpectedResponsesToOperativeProcedureFinding = "http://snomed.info/sct#397588000";
+
+    /// <summary>
     /// Literal for code: DemonstratesKnowledgeOfNutritionalRequirementsRelatedToOperativeProcedureFinding
     /// </summary>
     public const string LiteralDemonstratesKnowledgeOfNutritionalRequirementsRelatedToOperativeProcedureFinding = "397598006";
+
+    /// <summary>
+    /// Literal for code: NONEDemonstratesKnowledgeOfNutritionalRequirementsRelatedToOperativeProcedureFinding
+    /// </summary>
+    public const string LiteralNONEDemonstratesKnowledgeOfNutritionalRequirementsRelatedToOperativeProcedureFinding = "http://snomed.info/sct#397598006";
 
     /// <summary>
     /// Literal for code: HealthcareKnowledgeFindingFinding
@@ -455,9 +505,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHealthcareKnowledgeFindingFinding = "397640006";
 
     /// <summary>
+    /// Literal for code: NONEHealthcareKnowledgeFindingFinding
+    /// </summary>
+    public const string LiteralNONEHealthcareKnowledgeFindingFinding = "http://snomed.info/sct#397640006";
+
+    /// <summary>
     /// Literal for code: DemonstratesKnowledgeOfWoundHealingProcessFinding
     /// </summary>
     public const string LiteralDemonstratesKnowledgeOfWoundHealingProcessFinding = "397675006";
+
+    /// <summary>
+    /// Literal for code: NONEDemonstratesKnowledgeOfWoundHealingProcessFinding
+    /// </summary>
+    public const string LiteralNONEDemonstratesKnowledgeOfWoundHealingProcessFinding = "http://snomed.info/sct#397675006";
 
     /// <summary>
     /// Literal for code: DemonstratesKnowledgeOfMedicationManagementFinding
@@ -465,9 +525,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDemonstratesKnowledgeOfMedicationManagementFinding = "397699006";
 
     /// <summary>
+    /// Literal for code: NONEDemonstratesKnowledgeOfMedicationManagementFinding
+    /// </summary>
+    public const string LiteralNONEDemonstratesKnowledgeOfMedicationManagementFinding = "http://snomed.info/sct#397699006";
+
+    /// <summary>
     /// Literal for code: DemonstratesKnowledgeOfPainManagementFinding
     /// </summary>
     public const string LiteralDemonstratesKnowledgeOfPainManagementFinding = "397724004";
+
+    /// <summary>
+    /// Literal for code: NONEDemonstratesKnowledgeOfPainManagementFinding
+    /// </summary>
+    public const string LiteralNONEDemonstratesKnowledgeOfPainManagementFinding = "http://snomed.info/sct#397724004";
 
     /// <summary>
     /// Literal for code: PatientDoesNotUnderstandWhyTakingAllMedicationFinding
@@ -475,9 +545,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPatientDoesNotUnderstandWhyTakingAllMedicationFinding = "408364003";
 
     /// <summary>
+    /// Literal for code: NONEPatientDoesNotUnderstandWhyTakingAllMedicationFinding
+    /// </summary>
+    public const string LiteralNONEPatientDoesNotUnderstandWhyTakingAllMedicationFinding = "http://snomed.info/sct#408364003";
+
+    /// <summary>
     /// Literal for code: DeficientKnowledgeOfFamilyPlanningMethodsFinding
     /// </summary>
     public const string LiteralDeficientKnowledgeOfFamilyPlanningMethodsFinding = "423875000";
+
+    /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfFamilyPlanningMethodsFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfFamilyPlanningMethodsFinding = "http://snomed.info/sct#423875000";
 
     /// <summary>
     /// Literal for code: DeficientKnowledgeOfPreconceptionHealthPracticesFinding
@@ -485,9 +565,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeOfPreconceptionHealthPracticesFinding = "424537004";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfPreconceptionHealthPracticesFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfPreconceptionHealthPracticesFinding = "http://snomed.info/sct#424537004";
+
+    /// <summary>
     /// Literal for code: DeficientKnowledgeFinding
     /// </summary>
     public const string LiteralDeficientKnowledgeFinding = "54777007";
+
+    /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeFinding = "http://snomed.info/sct#54777007";
 
     /// <summary>
     /// Literal for code: DeficientKnowledgeOfBreastFeeding
@@ -495,9 +585,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeOfBreastFeeding = "704375003";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfBreastFeeding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfBreastFeeding = "http://snomed.info/sct#704375003";
+
+    /// <summary>
     /// Literal for code: DeficientKnowledgeOfPeritonealDialysisFinding
     /// </summary>
     public const string LiteralDeficientKnowledgeOfPeritonealDialysisFinding = "704377006";
+
+    /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfPeritonealDialysisFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfPeritonealDialysisFinding = "http://snomed.info/sct#704377006";
 
     /// <summary>
     /// Literal for code: DeficientKnowledgeOfSexualBehavior
@@ -505,9 +605,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeOfSexualBehavior = "704379009";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfSexualBehavior
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfSexualBehavior = "http://snomed.info/sct#704379009";
+
+    /// <summary>
     /// Literal for code: DeficientKnowledgeOfOralHygieneFinding
     /// </summary>
     public const string LiteralDeficientKnowledgeOfOralHygieneFinding = "704381006";
+
+    /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfOralHygieneFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfOralHygieneFinding = "http://snomed.info/sct#704381006";
 
     /// <summary>
     /// Literal for code: DeficientKnowledgeOfChildDevelopment
@@ -515,9 +625,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeOfChildDevelopment = "704383009";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfChildDevelopment
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfChildDevelopment = "http://snomed.info/sct#704383009";
+
+    /// <summary>
     /// Literal for code: DeficientKnowledgeOfCommunityServices
     /// </summary>
     public const string LiteralDeficientKnowledgeOfCommunityServices = "704400005";
+
+    /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfCommunityServices
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfCommunityServices = "http://snomed.info/sct#704400005";
 
     /// <summary>
     /// Literal for code: DeficientKnowledgeOfPhysicalTherapyFinding
@@ -525,9 +645,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeOfPhysicalTherapyFinding = "704402002";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfPhysicalTherapyFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfPhysicalTherapyFinding = "http://snomed.info/sct#704402002";
+
+    /// <summary>
     /// Literal for code: DeficientKnowledgeOfFallPreventionFinding
     /// </summary>
     public const string LiteralDeficientKnowledgeOfFallPreventionFinding = "704403007";
+
+    /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfFallPreventionFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfFallPreventionFinding = "http://snomed.info/sct#704403007";
 
     /// <summary>
     /// Literal for code: DeficientKnowledgeOfPainManagement
@@ -535,9 +665,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeOfPainManagement = "704404001";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfPainManagement
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfPainManagement = "http://snomed.info/sct#704404001";
+
+    /// <summary>
     /// Literal for code: DeficientKnowledgeOfSymptom
     /// </summary>
     public const string LiteralDeficientKnowledgeOfSymptom = "704406004";
+
+    /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfSymptom
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfSymptom = "http://snomed.info/sct#704406004";
 
     /// <summary>
     /// Literal for code: DeficientKnowledgeOfExerciseFinding
@@ -545,9 +685,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeOfExerciseFinding = "704446005";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfExerciseFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfExerciseFinding = "http://snomed.info/sct#704446005";
+
+    /// <summary>
     /// Literal for code: DeficientKnowledgeOfTraditionalTherapyFinding
     /// </summary>
     public const string LiteralDeficientKnowledgeOfTraditionalTherapyFinding = "704491001";
+
+    /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfTraditionalTherapyFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfTraditionalTherapyFinding = "http://snomed.info/sct#704491001";
 
     /// <summary>
     /// Literal for code: DeficientKnowledgeOfBehaviorChangeProcessFinding
@@ -555,9 +705,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeOfBehaviorChangeProcessFinding = "704680001";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfBehaviorChangeProcessFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfBehaviorChangeProcessFinding = "http://snomed.info/sct#704680001";
+
+    /// <summary>
     /// Literal for code: DeficientKnowledgeOfPatientControlledAnalgesia
     /// </summary>
     public const string LiteralDeficientKnowledgeOfPatientControlledAnalgesia = "705086000";
+
+    /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfPatientControlledAnalgesia
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfPatientControlledAnalgesia = "http://snomed.info/sct#705086000";
 
     /// <summary>
     /// Literal for code: DeficientKnowledgeOfMedicationFinding
@@ -565,9 +725,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeOfMedicationFinding = "706869001";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfMedicationFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfMedicationFinding = "http://snomed.info/sct#706869001";
+
+    /// <summary>
     /// Literal for code: DemonstratesKnowledgeOfWhoToContactInMedicalEmergencyFinding
     /// </summary>
     public const string LiteralDemonstratesKnowledgeOfWhoToContactInMedicalEmergencyFinding = "708571001";
+
+    /// <summary>
+    /// Literal for code: NONEDemonstratesKnowledgeOfWhoToContactInMedicalEmergencyFinding
+    /// </summary>
+    public const string LiteralNONEDemonstratesKnowledgeOfWhoToContactInMedicalEmergencyFinding = "http://snomed.info/sct#708571001";
 
     /// <summary>
     /// Literal for code: DeficientKnowledgeOfTravelHealthFinding
@@ -575,9 +745,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeOfTravelHealthFinding = "713398008";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfTravelHealthFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfTravelHealthFinding = "http://snomed.info/sct#713398008";
+
+    /// <summary>
     /// Literal for code: DeficientKnowledgeOfParentingFinding
     /// </summary>
     public const string LiteralDeficientKnowledgeOfParentingFinding = "713447003";
+
+    /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfParentingFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfParentingFinding = "http://snomed.info/sct#713447003";
 
     /// <summary>
     /// Literal for code: DeficientKnowledgeOfInfantFeedingFinding
@@ -585,9 +765,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeOfInfantFeedingFinding = "713448008";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfInfantFeedingFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfInfantFeedingFinding = "http://snomed.info/sct#713448008";
+
+    /// <summary>
     /// Literal for code: DeficientKnowledgeOfInfantCareFinding
     /// </summary>
     public const string LiteralDeficientKnowledgeOfInfantCareFinding = "713449000";
+
+    /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfInfantCareFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfInfantCareFinding = "http://snomed.info/sct#713449000";
 
     /// <summary>
     /// Literal for code: DeficientKnowledgeOfChildbirth
@@ -595,9 +785,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeOfChildbirth = "713451001";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfChildbirth
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfChildbirth = "http://snomed.info/sct#713451001";
+
+    /// <summary>
     /// Literal for code: DeficientKnowledgeOfFetalDevelopmentFinding
     /// </summary>
     public const string LiteralDeficientKnowledgeOfFetalDevelopmentFinding = "713452008";
+
+    /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfFetalDevelopmentFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfFetalDevelopmentFinding = "http://snomed.info/sct#713452008";
 
     /// <summary>
     /// Literal for code: DeficientKnowledgeOfPregnancyFinding
@@ -605,13 +805,120 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeficientKnowledgeOfPregnancyFinding = "714670007";
 
     /// <summary>
+    /// Literal for code: NONEDeficientKnowledgeOfPregnancyFinding
+    /// </summary>
+    public const string LiteralNONEDeficientKnowledgeOfPregnancyFinding = "http://snomed.info/sct#714670007";
+
+    /// <summary>
     /// Literal for code: AbleToAdaptToSensoryChangesInBodyPartFinding
     /// </summary>
     public const string LiteralAbleToAdaptToSensoryChangesInBodyPartFinding = "716391009";
 
     /// <summary>
+    /// Literal for code: NONEAbleToAdaptToSensoryChangesInBodyPartFinding
+    /// </summary>
+    public const string LiteralNONEAbleToAdaptToSensoryChangesInBodyPartFinding = "http://snomed.info/sct#716391009";
+
+    /// <summary>
     /// Literal for code: AbleToRecognizeNeedForPressureAreaCareFinding
     /// </summary>
     public const string LiteralAbleToRecognizeNeedForPressureAreaCareFinding = "716438000";
+
+    /// <summary>
+    /// Literal for code: NONEAbleToRecognizeNeedForPressureAreaCareFinding
+    /// </summary>
+    public const string LiteralNONEAbleToRecognizeNeedForPressureAreaCareFinding = "http://snomed.info/sct#716438000";
+
+    /// <summary>
+    /// Dictionary for looking up CarePlanActivityOutcome Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "129862009", DeficientKnowledgeDiagnosticTest }, 
+      { "http://snomed.info/sct#129862009", DeficientKnowledgeDiagnosticTest }, 
+      { "129863004", DeficientKnowledgeOfDietaryRegimen }, 
+      { "http://snomed.info/sct#129863004", DeficientKnowledgeOfDietaryRegimen }, 
+      { "129864005", DeficientKnowledgeDiseaseProcess }, 
+      { "http://snomed.info/sct#129864005", DeficientKnowledgeDiseaseProcess }, 
+      { "129865006", DeficientKnowledgeOfFluidVolumeManagement }, 
+      { "http://snomed.info/sct#129865006", DeficientKnowledgeOfFluidVolumeManagement }, 
+      { "129866007", DeficientKnowledgeMedicationRegimen }, 
+      { "http://snomed.info/sct#129866007", DeficientKnowledgeMedicationRegimen }, 
+      { "129867003", DeficientKnowledgeOfSafetyPrecautions }, 
+      { "http://snomed.info/sct#129867003", DeficientKnowledgeOfSafetyPrecautions }, 
+      { "129868008", DeficientKnowledgeTherapeuticRegimen }, 
+      { "http://snomed.info/sct#129868008", DeficientKnowledgeTherapeuticRegimen }, 
+      { "182891003", PatientMisunderstoodTreatmentInstructions }, 
+      { "http://snomed.info/sct#182891003", PatientMisunderstoodTreatmentInstructions }, 
+      { "397588000", DemonstratesKnowledgeOfExpectedResponsesToOperativeProcedureFinding }, 
+      { "http://snomed.info/sct#397588000", DemonstratesKnowledgeOfExpectedResponsesToOperativeProcedureFinding }, 
+      { "397598006", DemonstratesKnowledgeOfNutritionalRequirementsRelatedToOperativeProcedureFinding }, 
+      { "http://snomed.info/sct#397598006", DemonstratesKnowledgeOfNutritionalRequirementsRelatedToOperativeProcedureFinding }, 
+      { "397640006", HealthcareKnowledgeFindingFinding }, 
+      { "http://snomed.info/sct#397640006", HealthcareKnowledgeFindingFinding }, 
+      { "397675006", DemonstratesKnowledgeOfWoundHealingProcessFinding }, 
+      { "http://snomed.info/sct#397675006", DemonstratesKnowledgeOfWoundHealingProcessFinding }, 
+      { "397699006", DemonstratesKnowledgeOfMedicationManagementFinding }, 
+      { "http://snomed.info/sct#397699006", DemonstratesKnowledgeOfMedicationManagementFinding }, 
+      { "397724004", DemonstratesKnowledgeOfPainManagementFinding }, 
+      { "http://snomed.info/sct#397724004", DemonstratesKnowledgeOfPainManagementFinding }, 
+      { "408364003", PatientDoesNotUnderstandWhyTakingAllMedicationFinding }, 
+      { "http://snomed.info/sct#408364003", PatientDoesNotUnderstandWhyTakingAllMedicationFinding }, 
+      { "423875000", DeficientKnowledgeOfFamilyPlanningMethodsFinding }, 
+      { "http://snomed.info/sct#423875000", DeficientKnowledgeOfFamilyPlanningMethodsFinding }, 
+      { "424537004", DeficientKnowledgeOfPreconceptionHealthPracticesFinding }, 
+      { "http://snomed.info/sct#424537004", DeficientKnowledgeOfPreconceptionHealthPracticesFinding }, 
+      { "54777007", DeficientKnowledgeFinding }, 
+      { "http://snomed.info/sct#54777007", DeficientKnowledgeFinding }, 
+      { "704375003", DeficientKnowledgeOfBreastFeeding }, 
+      { "http://snomed.info/sct#704375003", DeficientKnowledgeOfBreastFeeding }, 
+      { "704377006", DeficientKnowledgeOfPeritonealDialysisFinding }, 
+      { "http://snomed.info/sct#704377006", DeficientKnowledgeOfPeritonealDialysisFinding }, 
+      { "704379009", DeficientKnowledgeOfSexualBehavior }, 
+      { "http://snomed.info/sct#704379009", DeficientKnowledgeOfSexualBehavior }, 
+      { "704381006", DeficientKnowledgeOfOralHygieneFinding }, 
+      { "http://snomed.info/sct#704381006", DeficientKnowledgeOfOralHygieneFinding }, 
+      { "704383009", DeficientKnowledgeOfChildDevelopment }, 
+      { "http://snomed.info/sct#704383009", DeficientKnowledgeOfChildDevelopment }, 
+      { "704400005", DeficientKnowledgeOfCommunityServices }, 
+      { "http://snomed.info/sct#704400005", DeficientKnowledgeOfCommunityServices }, 
+      { "704402002", DeficientKnowledgeOfPhysicalTherapyFinding }, 
+      { "http://snomed.info/sct#704402002", DeficientKnowledgeOfPhysicalTherapyFinding }, 
+      { "704403007", DeficientKnowledgeOfFallPreventionFinding }, 
+      { "http://snomed.info/sct#704403007", DeficientKnowledgeOfFallPreventionFinding }, 
+      { "704404001", DeficientKnowledgeOfPainManagement }, 
+      { "http://snomed.info/sct#704404001", DeficientKnowledgeOfPainManagement }, 
+      { "704406004", DeficientKnowledgeOfSymptom }, 
+      { "http://snomed.info/sct#704406004", DeficientKnowledgeOfSymptom }, 
+      { "704446005", DeficientKnowledgeOfExerciseFinding }, 
+      { "http://snomed.info/sct#704446005", DeficientKnowledgeOfExerciseFinding }, 
+      { "704491001", DeficientKnowledgeOfTraditionalTherapyFinding }, 
+      { "http://snomed.info/sct#704491001", DeficientKnowledgeOfTraditionalTherapyFinding }, 
+      { "704680001", DeficientKnowledgeOfBehaviorChangeProcessFinding }, 
+      { "http://snomed.info/sct#704680001", DeficientKnowledgeOfBehaviorChangeProcessFinding }, 
+      { "705086000", DeficientKnowledgeOfPatientControlledAnalgesia }, 
+      { "http://snomed.info/sct#705086000", DeficientKnowledgeOfPatientControlledAnalgesia }, 
+      { "706869001", DeficientKnowledgeOfMedicationFinding }, 
+      { "http://snomed.info/sct#706869001", DeficientKnowledgeOfMedicationFinding }, 
+      { "708571001", DemonstratesKnowledgeOfWhoToContactInMedicalEmergencyFinding }, 
+      { "http://snomed.info/sct#708571001", DemonstratesKnowledgeOfWhoToContactInMedicalEmergencyFinding }, 
+      { "713398008", DeficientKnowledgeOfTravelHealthFinding }, 
+      { "http://snomed.info/sct#713398008", DeficientKnowledgeOfTravelHealthFinding }, 
+      { "713447003", DeficientKnowledgeOfParentingFinding }, 
+      { "http://snomed.info/sct#713447003", DeficientKnowledgeOfParentingFinding }, 
+      { "713448008", DeficientKnowledgeOfInfantFeedingFinding }, 
+      { "http://snomed.info/sct#713448008", DeficientKnowledgeOfInfantFeedingFinding }, 
+      { "713449000", DeficientKnowledgeOfInfantCareFinding }, 
+      { "http://snomed.info/sct#713449000", DeficientKnowledgeOfInfantCareFinding }, 
+      { "713451001", DeficientKnowledgeOfChildbirth }, 
+      { "http://snomed.info/sct#713451001", DeficientKnowledgeOfChildbirth }, 
+      { "713452008", DeficientKnowledgeOfFetalDevelopmentFinding }, 
+      { "http://snomed.info/sct#713452008", DeficientKnowledgeOfFetalDevelopmentFinding }, 
+      { "714670007", DeficientKnowledgeOfPregnancyFinding }, 
+      { "http://snomed.info/sct#714670007", DeficientKnowledgeOfPregnancyFinding }, 
+      { "716391009", AbleToAdaptToSensoryChangesInBodyPartFinding }, 
+      { "http://snomed.info/sct#716391009", AbleToAdaptToSensoryChangesInBodyPartFinding }, 
+      { "716438000", AbleToRecognizeNeedForPressureAreaCareFinding }, 
+      { "http://snomed.info/sct#716438000", AbleToRecognizeNeedForPressureAreaCareFinding }, 
+    };
   };
 }

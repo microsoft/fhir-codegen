@@ -324,9 +324,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChargeItem = "ChargeItem";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesChargeItem
+    /// </summary>
+    public const string LiteralEventResourceTypesChargeItem = "http://hl7.org/fhir/event-resource-types#ChargeItem";
+
+    /// <summary>
     /// Literal for code: ClaimResponse
     /// </summary>
     public const string LiteralClaimResponse = "ClaimResponse";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesClaimResponse
+    /// </summary>
+    public const string LiteralEventResourceTypesClaimResponse = "http://hl7.org/fhir/event-resource-types#ClaimResponse";
 
     /// <summary>
     /// Literal for code: ClinicalImpression
@@ -334,9 +344,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralClinicalImpression = "ClinicalImpression";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesClinicalImpression
+    /// </summary>
+    public const string LiteralEventResourceTypesClinicalImpression = "http://hl7.org/fhir/event-resource-types#ClinicalImpression";
+
+    /// <summary>
     /// Literal for code: Communication
     /// </summary>
     public const string LiteralCommunication = "Communication";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesCommunication
+    /// </summary>
+    public const string LiteralEventResourceTypesCommunication = "http://hl7.org/fhir/event-resource-types#Communication";
 
     /// <summary>
     /// Literal for code: Composition
@@ -344,9 +364,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralComposition = "Composition";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesComposition
+    /// </summary>
+    public const string LiteralEventResourceTypesComposition = "http://hl7.org/fhir/event-resource-types#Composition";
+
+    /// <summary>
     /// Literal for code: Condition
     /// </summary>
     public const string LiteralCondition = "Condition";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesCondition
+    /// </summary>
+    public const string LiteralEventResourceTypesCondition = "http://hl7.org/fhir/event-resource-types#Condition";
 
     /// <summary>
     /// Literal for code: Consent
@@ -354,9 +384,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralConsent = "Consent";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesConsent
+    /// </summary>
+    public const string LiteralEventResourceTypesConsent = "http://hl7.org/fhir/event-resource-types#Consent";
+
+    /// <summary>
     /// Literal for code: Coverage
     /// </summary>
     public const string LiteralCoverage = "Coverage";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesCoverage
+    /// </summary>
+    public const string LiteralEventResourceTypesCoverage = "http://hl7.org/fhir/event-resource-types#Coverage";
 
     /// <summary>
     /// Literal for code: DeviceUseStatement
@@ -364,9 +404,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDeviceUseStatement = "DeviceUseStatement";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesDeviceUseStatement
+    /// </summary>
+    public const string LiteralEventResourceTypesDeviceUseStatement = "http://hl7.org/fhir/event-resource-types#DeviceUseStatement";
+
+    /// <summary>
     /// Literal for code: DiagnosticReport
     /// </summary>
     public const string LiteralDiagnosticReport = "DiagnosticReport";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesDiagnosticReport
+    /// </summary>
+    public const string LiteralEventResourceTypesDiagnosticReport = "http://hl7.org/fhir/event-resource-types#DiagnosticReport";
 
     /// <summary>
     /// Literal for code: DocumentManifest
@@ -374,9 +424,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDocumentManifest = "DocumentManifest";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesDocumentManifest
+    /// </summary>
+    public const string LiteralEventResourceTypesDocumentManifest = "http://hl7.org/fhir/event-resource-types#DocumentManifest";
+
+    /// <summary>
     /// Literal for code: DocumentReference
     /// </summary>
     public const string LiteralDocumentReference = "DocumentReference";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesDocumentReference
+    /// </summary>
+    public const string LiteralEventResourceTypesDocumentReference = "http://hl7.org/fhir/event-resource-types#DocumentReference";
 
     /// <summary>
     /// Literal for code: Encounter
@@ -384,9 +444,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEncounter = "Encounter";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesEncounter
+    /// </summary>
+    public const string LiteralEventResourceTypesEncounter = "http://hl7.org/fhir/event-resource-types#Encounter";
+
+    /// <summary>
     /// Literal for code: EnrollmentResponse
     /// </summary>
     public const string LiteralEnrollmentResponse = "EnrollmentResponse";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesEnrollmentResponse
+    /// </summary>
+    public const string LiteralEventResourceTypesEnrollmentResponse = "http://hl7.org/fhir/event-resource-types#EnrollmentResponse";
 
     /// <summary>
     /// Literal for code: EpisodeOfCare
@@ -394,9 +464,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEpisodeOfCare = "EpisodeOfCare";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesEpisodeOfCare
+    /// </summary>
+    public const string LiteralEventResourceTypesEpisodeOfCare = "http://hl7.org/fhir/event-resource-types#EpisodeOfCare";
+
+    /// <summary>
     /// Literal for code: ExplanationOfBenefit
     /// </summary>
     public const string LiteralExplanationOfBenefit = "ExplanationOfBenefit";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesExplanationOfBenefit
+    /// </summary>
+    public const string LiteralEventResourceTypesExplanationOfBenefit = "http://hl7.org/fhir/event-resource-types#ExplanationOfBenefit";
 
     /// <summary>
     /// Literal for code: FamilyMemberHistory
@@ -404,9 +484,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFamilyMemberHistory = "FamilyMemberHistory";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesFamilyMemberHistory
+    /// </summary>
+    public const string LiteralEventResourceTypesFamilyMemberHistory = "http://hl7.org/fhir/event-resource-types#FamilyMemberHistory";
+
+    /// <summary>
     /// Literal for code: GuidanceResponse
     /// </summary>
     public const string LiteralGuidanceResponse = "GuidanceResponse";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesGuidanceResponse
+    /// </summary>
+    public const string LiteralEventResourceTypesGuidanceResponse = "http://hl7.org/fhir/event-resource-types#GuidanceResponse";
 
     /// <summary>
     /// Literal for code: ImagingStudy
@@ -414,9 +504,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralImagingStudy = "ImagingStudy";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesImagingStudy
+    /// </summary>
+    public const string LiteralEventResourceTypesImagingStudy = "http://hl7.org/fhir/event-resource-types#ImagingStudy";
+
+    /// <summary>
     /// Literal for code: Immunization
     /// </summary>
     public const string LiteralImmunization = "Immunization";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesImmunization
+    /// </summary>
+    public const string LiteralEventResourceTypesImmunization = "http://hl7.org/fhir/event-resource-types#Immunization";
 
     /// <summary>
     /// Literal for code: MeasureReport
@@ -424,9 +524,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMeasureReport = "MeasureReport";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesMeasureReport
+    /// </summary>
+    public const string LiteralEventResourceTypesMeasureReport = "http://hl7.org/fhir/event-resource-types#MeasureReport";
+
+    /// <summary>
     /// Literal for code: Media
     /// </summary>
     public const string LiteralMedia = "Media";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesMedia
+    /// </summary>
+    public const string LiteralEventResourceTypesMedia = "http://hl7.org/fhir/event-resource-types#Media";
 
     /// <summary>
     /// Literal for code: MedicationAdministration
@@ -434,9 +544,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMedicationAdministration = "MedicationAdministration";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesMedicationAdministration
+    /// </summary>
+    public const string LiteralEventResourceTypesMedicationAdministration = "http://hl7.org/fhir/event-resource-types#MedicationAdministration";
+
+    /// <summary>
     /// Literal for code: MedicationDispense
     /// </summary>
     public const string LiteralMedicationDispense = "MedicationDispense";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesMedicationDispense
+    /// </summary>
+    public const string LiteralEventResourceTypesMedicationDispense = "http://hl7.org/fhir/event-resource-types#MedicationDispense";
 
     /// <summary>
     /// Literal for code: MedicationStatement
@@ -444,9 +564,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMedicationStatement = "MedicationStatement";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesMedicationStatement
+    /// </summary>
+    public const string LiteralEventResourceTypesMedicationStatement = "http://hl7.org/fhir/event-resource-types#MedicationStatement";
+
+    /// <summary>
     /// Literal for code: Observation
     /// </summary>
     public const string LiteralObservation = "Observation";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesObservation
+    /// </summary>
+    public const string LiteralEventResourceTypesObservation = "http://hl7.org/fhir/event-resource-types#Observation";
 
     /// <summary>
     /// Literal for code: PaymentNotice
@@ -454,9 +584,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPaymentNotice = "PaymentNotice";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesPaymentNotice
+    /// </summary>
+    public const string LiteralEventResourceTypesPaymentNotice = "http://hl7.org/fhir/event-resource-types#PaymentNotice";
+
+    /// <summary>
     /// Literal for code: PaymentReconciliation
     /// </summary>
     public const string LiteralPaymentReconciliation = "PaymentReconciliation";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesPaymentReconciliation
+    /// </summary>
+    public const string LiteralEventResourceTypesPaymentReconciliation = "http://hl7.org/fhir/event-resource-types#PaymentReconciliation";
 
     /// <summary>
     /// Literal for code: Procedure
@@ -464,9 +604,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProcedure = "Procedure";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesProcedure
+    /// </summary>
+    public const string LiteralEventResourceTypesProcedure = "http://hl7.org/fhir/event-resource-types#Procedure";
+
+    /// <summary>
     /// Literal for code: ProcessResponse
     /// </summary>
     public const string LiteralProcessResponse = "ProcessResponse";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesProcessResponse
+    /// </summary>
+    public const string LiteralEventResourceTypesProcessResponse = "http://hl7.org/fhir/event-resource-types#ProcessResponse";
 
     /// <summary>
     /// Literal for code: QuestionnaireResponse
@@ -474,9 +624,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralQuestionnaireResponse = "QuestionnaireResponse";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesQuestionnaireResponse
+    /// </summary>
+    public const string LiteralEventResourceTypesQuestionnaireResponse = "http://hl7.org/fhir/event-resource-types#QuestionnaireResponse";
+
+    /// <summary>
     /// Literal for code: RiskAssessment
     /// </summary>
     public const string LiteralRiskAssessment = "RiskAssessment";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesRiskAssessment
+    /// </summary>
+    public const string LiteralEventResourceTypesRiskAssessment = "http://hl7.org/fhir/event-resource-types#RiskAssessment";
 
     /// <summary>
     /// Literal for code: SupplyDelivery
@@ -484,8 +644,92 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSupplyDelivery = "SupplyDelivery";
 
     /// <summary>
+    /// Literal for code: EventResourceTypesSupplyDelivery
+    /// </summary>
+    public const string LiteralEventResourceTypesSupplyDelivery = "http://hl7.org/fhir/event-resource-types#SupplyDelivery";
+
+    /// <summary>
     /// Literal for code: Task
     /// </summary>
     public const string LiteralTask = "Task";
+
+    /// <summary>
+    /// Literal for code: EventResourceTypesTask
+    /// </summary>
+    public const string LiteralEventResourceTypesTask = "http://hl7.org/fhir/event-resource-types#Task";
+
+    /// <summary>
+    /// Dictionary for looking up EventResourceTypes Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "ChargeItem", ChargeItem }, 
+      { "http://hl7.org/fhir/event-resource-types#ChargeItem", ChargeItem }, 
+      { "ClaimResponse", ClaimResponse }, 
+      { "http://hl7.org/fhir/event-resource-types#ClaimResponse", ClaimResponse }, 
+      { "ClinicalImpression", ClinicalImpression }, 
+      { "http://hl7.org/fhir/event-resource-types#ClinicalImpression", ClinicalImpression }, 
+      { "Communication", Communication }, 
+      { "http://hl7.org/fhir/event-resource-types#Communication", Communication }, 
+      { "Composition", Composition }, 
+      { "http://hl7.org/fhir/event-resource-types#Composition", Composition }, 
+      { "Condition", Condition }, 
+      { "http://hl7.org/fhir/event-resource-types#Condition", Condition }, 
+      { "Consent", Consent }, 
+      { "http://hl7.org/fhir/event-resource-types#Consent", Consent }, 
+      { "Coverage", Coverage }, 
+      { "http://hl7.org/fhir/event-resource-types#Coverage", Coverage }, 
+      { "DeviceUseStatement", DeviceUseStatement }, 
+      { "http://hl7.org/fhir/event-resource-types#DeviceUseStatement", DeviceUseStatement }, 
+      { "DiagnosticReport", DiagnosticReport }, 
+      { "http://hl7.org/fhir/event-resource-types#DiagnosticReport", DiagnosticReport }, 
+      { "DocumentManifest", DocumentManifest }, 
+      { "http://hl7.org/fhir/event-resource-types#DocumentManifest", DocumentManifest }, 
+      { "DocumentReference", DocumentReference }, 
+      { "http://hl7.org/fhir/event-resource-types#DocumentReference", DocumentReference }, 
+      { "Encounter", Encounter }, 
+      { "http://hl7.org/fhir/event-resource-types#Encounter", Encounter }, 
+      { "EnrollmentResponse", EnrollmentResponse }, 
+      { "http://hl7.org/fhir/event-resource-types#EnrollmentResponse", EnrollmentResponse }, 
+      { "EpisodeOfCare", EpisodeOfCare }, 
+      { "http://hl7.org/fhir/event-resource-types#EpisodeOfCare", EpisodeOfCare }, 
+      { "ExplanationOfBenefit", ExplanationOfBenefit }, 
+      { "http://hl7.org/fhir/event-resource-types#ExplanationOfBenefit", ExplanationOfBenefit }, 
+      { "FamilyMemberHistory", FamilyMemberHistory }, 
+      { "http://hl7.org/fhir/event-resource-types#FamilyMemberHistory", FamilyMemberHistory }, 
+      { "GuidanceResponse", GuidanceResponse }, 
+      { "http://hl7.org/fhir/event-resource-types#GuidanceResponse", GuidanceResponse }, 
+      { "ImagingStudy", ImagingStudy }, 
+      { "http://hl7.org/fhir/event-resource-types#ImagingStudy", ImagingStudy }, 
+      { "Immunization", Immunization }, 
+      { "http://hl7.org/fhir/event-resource-types#Immunization", Immunization }, 
+      { "MeasureReport", MeasureReport }, 
+      { "http://hl7.org/fhir/event-resource-types#MeasureReport", MeasureReport }, 
+      { "Media", Media }, 
+      { "http://hl7.org/fhir/event-resource-types#Media", Media }, 
+      { "MedicationAdministration", MedicationAdministration }, 
+      { "http://hl7.org/fhir/event-resource-types#MedicationAdministration", MedicationAdministration }, 
+      { "MedicationDispense", MedicationDispense }, 
+      { "http://hl7.org/fhir/event-resource-types#MedicationDispense", MedicationDispense }, 
+      { "MedicationStatement", MedicationStatement }, 
+      { "http://hl7.org/fhir/event-resource-types#MedicationStatement", MedicationStatement }, 
+      { "Observation", Observation }, 
+      { "http://hl7.org/fhir/event-resource-types#Observation", Observation }, 
+      { "PaymentNotice", PaymentNotice }, 
+      { "http://hl7.org/fhir/event-resource-types#PaymentNotice", PaymentNotice }, 
+      { "PaymentReconciliation", PaymentReconciliation }, 
+      { "http://hl7.org/fhir/event-resource-types#PaymentReconciliation", PaymentReconciliation }, 
+      { "Procedure", Procedure }, 
+      { "http://hl7.org/fhir/event-resource-types#Procedure", Procedure }, 
+      { "ProcessResponse", ProcessResponse }, 
+      { "http://hl7.org/fhir/event-resource-types#ProcessResponse", ProcessResponse }, 
+      { "QuestionnaireResponse", QuestionnaireResponse }, 
+      { "http://hl7.org/fhir/event-resource-types#QuestionnaireResponse", QuestionnaireResponse }, 
+      { "RiskAssessment", RiskAssessment }, 
+      { "http://hl7.org/fhir/event-resource-types#RiskAssessment", RiskAssessment }, 
+      { "SupplyDelivery", SupplyDelivery }, 
+      { "http://hl7.org/fhir/event-resource-types#SupplyDelivery", SupplyDelivery }, 
+      { "Task", Task }, 
+      { "http://hl7.org/fhir/event-resource-types#Task", Task }, 
+    };
   };
 }

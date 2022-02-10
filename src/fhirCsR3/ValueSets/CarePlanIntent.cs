@@ -55,9 +55,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralOption = "option";
 
     /// <summary>
+    /// Literal for code: CarePlanIntentOption
+    /// </summary>
+    public const string LiteralCarePlanIntentOption = "http://hl7.org/fhir/care-plan-intent#option";
+
+    /// <summary>
     /// Literal for code: Order
     /// </summary>
     public const string LiteralOrder = "order";
+
+    /// <summary>
+    /// Literal for code: CarePlanIntentOrder
+    /// </summary>
+    public const string LiteralCarePlanIntentOrder = "http://hl7.org/fhir/care-plan-intent#order";
 
     /// <summary>
     /// Literal for code: Plan
@@ -65,8 +75,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPlan = "plan";
 
     /// <summary>
+    /// Literal for code: CarePlanIntentPlan
+    /// </summary>
+    public const string LiteralCarePlanIntentPlan = "http://hl7.org/fhir/care-plan-intent#plan";
+
+    /// <summary>
     /// Literal for code: Proposal
     /// </summary>
     public const string LiteralProposal = "proposal";
+
+    /// <summary>
+    /// Literal for code: CarePlanIntentProposal
+    /// </summary>
+    public const string LiteralCarePlanIntentProposal = "http://hl7.org/fhir/care-plan-intent#proposal";
+
+    /// <summary>
+    /// Dictionary for looking up CarePlanIntent Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "option", Option }, 
+      { "http://hl7.org/fhir/care-plan-intent#option", Option }, 
+      { "order", Order }, 
+      { "http://hl7.org/fhir/care-plan-intent#order", Order }, 
+      { "plan", Plan }, 
+      { "http://hl7.org/fhir/care-plan-intent#plan", Plan }, 
+      { "proposal", Proposal }, 
+      { "http://hl7.org/fhir/care-plan-intent#proposal", Proposal }, 
+    };
   };
 }

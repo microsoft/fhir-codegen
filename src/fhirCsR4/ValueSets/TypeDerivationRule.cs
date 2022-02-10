@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConstraint = "constraint";
 
     /// <summary>
+    /// Literal for code: TypeDerivationRuleConstraint
+    /// </summary>
+    public const string LiteralTypeDerivationRuleConstraint = "http://hl7.org/fhir/type-derivation-rule#constraint";
+
+    /// <summary>
     /// Literal for code: Specialization
     /// </summary>
     public const string LiteralSpecialization = "specialization";
+
+    /// <summary>
+    /// Literal for code: TypeDerivationRuleSpecialization
+    /// </summary>
+    public const string LiteralTypeDerivationRuleSpecialization = "http://hl7.org/fhir/type-derivation-rule#specialization";
+
+    /// <summary>
+    /// Dictionary for looking up TypeDerivationRule Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "constraint", Constraint }, 
+      { "http://hl7.org/fhir/type-derivation-rule#constraint", Constraint }, 
+      { "specialization", Specialization }, 
+      { "http://hl7.org/fhir/type-derivation-rule#specialization", Specialization }, 
+    };
   };
 }

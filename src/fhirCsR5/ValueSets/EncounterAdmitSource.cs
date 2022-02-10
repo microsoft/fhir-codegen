@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class EncounterAdmitSourceCodes
   {
     /// <summary>
-    /// 
+    /// Born in hospital
     /// </summary>
     public static readonly Coding BornInHospital = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/admit-source"
     };
     /// <summary>
-    /// 
+    /// From accident/emergency department
     /// </summary>
     public static readonly Coding FromAccidentEmergencyDepartment = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/admit-source"
     };
     /// <summary>
-    /// 
+    /// General Practitioner referral
     /// </summary>
     public static readonly Coding GeneralPractitionerReferral = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/admit-source"
     };
     /// <summary>
-    /// 
+    /// Transferred from other hospital
     /// </summary>
     public static readonly Coding TransferredFromOtherHospital = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/admit-source"
     };
     /// <summary>
-    /// 
+    /// Medical Practitioner/physician referral
     /// </summary>
     public static readonly Coding MedicalPractitionerPhysicianReferral = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/admit-source"
     };
     /// <summary>
-    /// 
+    /// From nursing home
     /// </summary>
     public static readonly Coding FromNursingHome = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/admit-source"
     };
     /// <summary>
-    /// 
+    /// Other
     /// </summary>
     public static readonly Coding Other = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/admit-source"
     };
     /// <summary>
-    /// 
+    /// From outpatient department
     /// </summary>
     public static readonly Coding FromOutpatientDepartment = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/admit-source"
     };
     /// <summary>
-    /// 
+    /// From psychiatric hospital
     /// </summary>
     public static readonly Coding FromPsychiatricHospital = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/admit-source"
     };
     /// <summary>
-    /// 
+    /// From rehabilitation facility
     /// </summary>
     public static readonly Coding FromRehabilitationFacility = new Coding
     {
@@ -108,9 +108,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralBornInHospital = "born";
 
     /// <summary>
+    /// Literal for code: AdmitSourceBornInHospital
+    /// </summary>
+    public const string LiteralAdmitSourceBornInHospital = "http://terminology.hl7.org/CodeSystem/admit-source#born";
+
+    /// <summary>
     /// Literal for code: FromAccidentEmergencyDepartment
     /// </summary>
     public const string LiteralFromAccidentEmergencyDepartment = "emd";
+
+    /// <summary>
+    /// Literal for code: AdmitSourceFromAccidentEmergencyDepartment
+    /// </summary>
+    public const string LiteralAdmitSourceFromAccidentEmergencyDepartment = "http://terminology.hl7.org/CodeSystem/admit-source#emd";
 
     /// <summary>
     /// Literal for code: GeneralPractitionerReferral
@@ -118,9 +128,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralGeneralPractitionerReferral = "gp";
 
     /// <summary>
+    /// Literal for code: AdmitSourceGeneralPractitionerReferral
+    /// </summary>
+    public const string LiteralAdmitSourceGeneralPractitionerReferral = "http://terminology.hl7.org/CodeSystem/admit-source#gp";
+
+    /// <summary>
     /// Literal for code: TransferredFromOtherHospital
     /// </summary>
     public const string LiteralTransferredFromOtherHospital = "hosp-trans";
+
+    /// <summary>
+    /// Literal for code: AdmitSourceTransferredFromOtherHospital
+    /// </summary>
+    public const string LiteralAdmitSourceTransferredFromOtherHospital = "http://terminology.hl7.org/CodeSystem/admit-source#hosp-trans";
 
     /// <summary>
     /// Literal for code: MedicalPractitionerPhysicianReferral
@@ -128,9 +148,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralMedicalPractitionerPhysicianReferral = "mp";
 
     /// <summary>
+    /// Literal for code: AdmitSourceMedicalPractitionerPhysicianReferral
+    /// </summary>
+    public const string LiteralAdmitSourceMedicalPractitionerPhysicianReferral = "http://terminology.hl7.org/CodeSystem/admit-source#mp";
+
+    /// <summary>
     /// Literal for code: FromNursingHome
     /// </summary>
     public const string LiteralFromNursingHome = "nursing";
+
+    /// <summary>
+    /// Literal for code: AdmitSourceFromNursingHome
+    /// </summary>
+    public const string LiteralAdmitSourceFromNursingHome = "http://terminology.hl7.org/CodeSystem/admit-source#nursing";
 
     /// <summary>
     /// Literal for code: Other
@@ -138,9 +168,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOther = "other";
 
     /// <summary>
+    /// Literal for code: AdmitSourceOther
+    /// </summary>
+    public const string LiteralAdmitSourceOther = "http://terminology.hl7.org/CodeSystem/admit-source#other";
+
+    /// <summary>
     /// Literal for code: FromOutpatientDepartment
     /// </summary>
     public const string LiteralFromOutpatientDepartment = "outp";
+
+    /// <summary>
+    /// Literal for code: AdmitSourceFromOutpatientDepartment
+    /// </summary>
+    public const string LiteralAdmitSourceFromOutpatientDepartment = "http://terminology.hl7.org/CodeSystem/admit-source#outp";
 
     /// <summary>
     /// Literal for code: FromPsychiatricHospital
@@ -148,8 +188,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralFromPsychiatricHospital = "psych";
 
     /// <summary>
+    /// Literal for code: AdmitSourceFromPsychiatricHospital
+    /// </summary>
+    public const string LiteralAdmitSourceFromPsychiatricHospital = "http://terminology.hl7.org/CodeSystem/admit-source#psych";
+
+    /// <summary>
     /// Literal for code: FromRehabilitationFacility
     /// </summary>
     public const string LiteralFromRehabilitationFacility = "rehab";
+
+    /// <summary>
+    /// Literal for code: AdmitSourceFromRehabilitationFacility
+    /// </summary>
+    public const string LiteralAdmitSourceFromRehabilitationFacility = "http://terminology.hl7.org/CodeSystem/admit-source#rehab";
+
+    /// <summary>
+    /// Dictionary for looking up EncounterAdmitSource Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "born", BornInHospital }, 
+      { "http://terminology.hl7.org/CodeSystem/admit-source#born", BornInHospital }, 
+      { "emd", FromAccidentEmergencyDepartment }, 
+      { "http://terminology.hl7.org/CodeSystem/admit-source#emd", FromAccidentEmergencyDepartment }, 
+      { "gp", GeneralPractitionerReferral }, 
+      { "http://terminology.hl7.org/CodeSystem/admit-source#gp", GeneralPractitionerReferral }, 
+      { "hosp-trans", TransferredFromOtherHospital }, 
+      { "http://terminology.hl7.org/CodeSystem/admit-source#hosp-trans", TransferredFromOtherHospital }, 
+      { "mp", MedicalPractitionerPhysicianReferral }, 
+      { "http://terminology.hl7.org/CodeSystem/admit-source#mp", MedicalPractitionerPhysicianReferral }, 
+      { "nursing", FromNursingHome }, 
+      { "http://terminology.hl7.org/CodeSystem/admit-source#nursing", FromNursingHome }, 
+      { "other", Other }, 
+      { "http://terminology.hl7.org/CodeSystem/admit-source#other", Other }, 
+      { "outp", FromOutpatientDepartment }, 
+      { "http://terminology.hl7.org/CodeSystem/admit-source#outp", FromOutpatientDepartment }, 
+      { "psych", FromPsychiatricHospital }, 
+      { "http://terminology.hl7.org/CodeSystem/admit-source#psych", FromPsychiatricHospital }, 
+      { "rehab", FromRehabilitationFacility }, 
+      { "http://terminology.hl7.org/CodeSystem/admit-source#rehab", FromRehabilitationFacility }, 
+    };
   };
 }

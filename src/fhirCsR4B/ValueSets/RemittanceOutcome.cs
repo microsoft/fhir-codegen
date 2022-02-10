@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralComplete = "complete";
 
     /// <summary>
+    /// Literal for code: RemittanceOutcomeComplete
+    /// </summary>
+    public const string LiteralRemittanceOutcomeComplete = "http://hl7.org/fhir/remittance-outcome#complete";
+
+    /// <summary>
     /// Literal for code: Error
     /// </summary>
     public const string LiteralError = "error";
+
+    /// <summary>
+    /// Literal for code: RemittanceOutcomeError
+    /// </summary>
+    public const string LiteralRemittanceOutcomeError = "http://hl7.org/fhir/remittance-outcome#error";
 
     /// <summary>
     /// Literal for code: Partial
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPartial = "partial";
 
     /// <summary>
+    /// Literal for code: RemittanceOutcomePartial
+    /// </summary>
+    public const string LiteralRemittanceOutcomePartial = "http://hl7.org/fhir/remittance-outcome#partial";
+
+    /// <summary>
     /// Literal for code: Queued
     /// </summary>
     public const string LiteralQueued = "queued";
+
+    /// <summary>
+    /// Literal for code: RemittanceOutcomeQueued
+    /// </summary>
+    public const string LiteralRemittanceOutcomeQueued = "http://hl7.org/fhir/remittance-outcome#queued";
+
+    /// <summary>
+    /// Dictionary for looking up RemittanceOutcome Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "complete", Complete }, 
+      { "http://hl7.org/fhir/remittance-outcome#complete", Complete }, 
+      { "error", Error }, 
+      { "http://hl7.org/fhir/remittance-outcome#error", Error }, 
+      { "partial", Partial }, 
+      { "http://hl7.org/fhir/remittance-outcome#partial", Partial }, 
+      { "queued", Queued }, 
+      { "http://hl7.org/fhir/remittance-outcome#queued", Queued }, 
+    };
   };
 }

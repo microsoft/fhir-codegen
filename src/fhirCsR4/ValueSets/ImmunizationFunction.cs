@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class ImmunizationFunctionCodes
   {
     /// <summary>
-    /// 
+    /// Administering Provider
     /// </summary>
     public static readonly Coding AdministeringProvider = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/v2-0443"
     };
     /// <summary>
-    /// 
+    /// Ordering Provider
     /// </summary>
     public static readonly Coding OrderingProvider = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdministeringProvider = "AP";
 
     /// <summary>
+    /// Literal for code: V20443AdministeringProvider
+    /// </summary>
+    public const string LiteralV20443AdministeringProvider = "http://terminology.hl7.org/CodeSystem/v2-0443#AP";
+
+    /// <summary>
     /// Literal for code: OrderingProvider
     /// </summary>
     public const string LiteralOrderingProvider = "OP";
+
+    /// <summary>
+    /// Literal for code: V20443OrderingProvider
+    /// </summary>
+    public const string LiteralV20443OrderingProvider = "http://terminology.hl7.org/CodeSystem/v2-0443#OP";
+
+    /// <summary>
+    /// Dictionary for looking up ImmunizationFunction Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "AP", AdministeringProvider }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0443#AP", AdministeringProvider }, 
+      { "OP", OrderingProvider }, 
+      { "http://terminology.hl7.org/CodeSystem/v2-0443#OP", OrderingProvider }, 
+    };
   };
 }

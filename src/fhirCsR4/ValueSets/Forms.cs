@@ -36,8 +36,28 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFormNumber1 = "1";
 
     /// <summary>
+    /// Literal for code: FormsFormNumber1
+    /// </summary>
+    public const string LiteralFormsFormNumber1 = "http://terminology.hl7.org/CodeSystem/forms-codes#1";
+
+    /// <summary>
     /// Literal for code: FormNumber1_2
     /// </summary>
     public const string LiteralFormNumber1_2 = "2";
+
+    /// <summary>
+    /// Literal for code: FormsFormNumber1_2
+    /// </summary>
+    public const string LiteralFormsFormNumber1_2 = "http://terminology.hl7.org/CodeSystem/forms-codes#2";
+
+    /// <summary>
+    /// Dictionary for looking up Forms Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "1", FormNumber1 }, 
+      { "http://terminology.hl7.org/CodeSystem/forms-codes#1", FormNumber1 }, 
+      { "2", FormNumber1_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/forms-codes#2", FormNumber1_2 }, 
+    };
   };
 }

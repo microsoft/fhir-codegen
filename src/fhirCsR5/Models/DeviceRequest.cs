@@ -36,6 +36,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? ValueBoolean { get; set; }
     /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
+    /// <summary>
     /// Serialize to a JSON object
     /// </summary>
     public new void SerializeJson(Utf8JsonWriter writer, JsonSerializerOptions options, bool includeStartObject = true)
@@ -75,6 +79,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (includeStartObject)
       {
         writer.WriteEndObject();
@@ -109,6 +119,11 @@ namespace fhirCsR5.Models
 
         case "valueBoolean":
           ValueBoolean = reader.GetBoolean();
+          break;
+
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR5.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
           break;
 
         default:
@@ -171,6 +186,10 @@ namespace fhirCsR5.Models
     /// If do not perform is not specified, the request is a positive request e.g. "do perform". DeviceRequest.reasonCode includes the reason for marking the DeviceRequest as 'do not perform'.
     /// </summary>
     public bool? DoNotPerform { get; set; }
+    /// <summary>
+    /// Extension container element for DoNotPerform
+    /// </summary>
+    public Element _DoNotPerform { get; set; }
     /// <summary>
     /// An encounter that provides additional context in which this request is made.
     /// </summary>
@@ -259,6 +278,10 @@ namespace fhirCsR5.Models
     /// The number of devices to be provided.
     /// </summary>
     public int? Quantity { get; set; }
+    /// <summary>
+    /// Extension container element for Quantity
+    /// </summary>
+    public Element _Quantity { get; set; }
     /// <summary>
     /// Reason or justification for the use of this device.
     /// </summary>
@@ -441,6 +464,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("doNotPerform", (bool)DoNotPerform!);
       }
 
+      if (_DoNotPerform != null)
+      {
+        writer.WritePropertyName("_doNotPerform");
+        _DoNotPerform.SerializeJson(writer, options);
+      }
+
       if (Code != null)
       {
         writer.WritePropertyName("code");
@@ -450,6 +479,12 @@ namespace fhirCsR5.Models
       if (Quantity != null)
       {
         writer.WriteNumber("quantity", (int)Quantity!);
+      }
+
+      if (_Quantity != null)
+      {
+        writer.WritePropertyName("_quantity");
+        _Quantity.SerializeJson(writer, options);
       }
 
       if ((Parameter != null) && (Parameter.Count != 0))
@@ -649,6 +684,11 @@ namespace fhirCsR5.Models
 
         case "doNotPerform":
           DoNotPerform = reader.GetBoolean();
+          break;
+
+        case "_doNotPerform":
+          _DoNotPerform = new fhirCsR5.Models.Element();
+          _DoNotPerform.DeserializeJson(ref reader, options);
           break;
 
         case "encounter":
@@ -951,6 +991,11 @@ namespace fhirCsR5.Models
           Quantity = reader.GetInt32();
           break;
 
+        case "_quantity":
+          _Quantity = new fhirCsR5.Models.Element();
+          _Quantity.DeserializeJson(ref reader, options);
+          break;
+
         case "reason":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -1095,6 +1140,17 @@ namespace fhirCsR5.Models
     public const string FILLER_ORDER = "filler-order";
     public const string INSTANCE_ORDER = "instance-order";
     public const string OPTION = "option";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposal",
+      "plan",
+      "directive",
+      "order",
+      "original-order",
+      "reflex-order",
+      "filler-order",
+      "instance-order",
+      "option",
+    };
   }
   /// <summary>
   /// Code Values for the DeviceRequest.priority field
@@ -1104,6 +1160,12 @@ namespace fhirCsR5.Models
     public const string URGENT = "urgent";
     public const string ASAP = "asap";
     public const string STAT = "stat";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "routine",
+      "urgent",
+      "asap",
+      "stat",
+    };
   }
   /// <summary>
   /// Code Values for the DeviceRequest.status field
@@ -1116,5 +1178,14 @@ namespace fhirCsR5.Models
     public const string COMPLETED = "completed";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "on-hold",
+      "revoked",
+      "completed",
+      "entered-in-error",
+      "unknown",
+    };
   }
 }

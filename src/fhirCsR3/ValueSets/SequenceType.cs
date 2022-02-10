@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralAASequence = "aa";
 
     /// <summary>
+    /// Literal for code: SequenceTypeAASequence
+    /// </summary>
+    public const string LiteralSequenceTypeAASequence = "http://hl7.org/fhir/sequence-type#aa";
+
+    /// <summary>
     /// Literal for code: DNASequence
     /// </summary>
     public const string LiteralDNASequence = "dna";
 
     /// <summary>
+    /// Literal for code: SequenceTypeDNASequence
+    /// </summary>
+    public const string LiteralSequenceTypeDNASequence = "http://hl7.org/fhir/sequence-type#dna";
+
+    /// <summary>
     /// Literal for code: RNASequence
     /// </summary>
     public const string LiteralRNASequence = "rna";
+
+    /// <summary>
+    /// Literal for code: SequenceTypeRNASequence
+    /// </summary>
+    public const string LiteralSequenceTypeRNASequence = "http://hl7.org/fhir/sequence-type#rna";
+
+    /// <summary>
+    /// Dictionary for looking up SequenceType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "aa", AASequence }, 
+      { "http://hl7.org/fhir/sequence-type#aa", AASequence }, 
+      { "dna", DNASequence }, 
+      { "http://hl7.org/fhir/sequence-type#dna", DNASequence }, 
+      { "rna", RNASequence }, 
+      { "http://hl7.org/fhir/sequence-type#rna", RNASequence }, 
+    };
   };
 }

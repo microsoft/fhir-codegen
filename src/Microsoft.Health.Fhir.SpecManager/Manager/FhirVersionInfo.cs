@@ -279,6 +279,7 @@ public class FhirVersionInfo : FhirInfoBase, IFhirInfo
     /// Initializes a new instance of the <see cref="FhirVersionInfo"/> class.
     /// </summary>
     public FhirVersionInfo()
+        : base()
     {
         // create our info dictionaries
         _primitiveTypesByName = new Dictionary<string, FhirPrimitive>();
@@ -319,14 +320,16 @@ public class FhirVersionInfo : FhirInfoBase, IFhirInfo
 #pragma warning restore CS0618 // Type or member is obsolete
         ReleaseName = release.Major.ToString();
         BallotPrefix = release.BallotPrefix;
-        PackageName = $"hl7.fhir.{ReleaseName.ToLowerInvariant()}.core";
-        ExamplesPackageName = $"hl7.fhir.{ReleaseName.ToLowerInvariant()}.examples";
-        ExpansionsPackageName = $"hl7.fhir.{ReleaseName.ToLowerInvariant()}.expansions";
         VersionString = release.Version;
         IsDevBuild = false;
         IsLocalBuild = false;
         IsOnDisk = false;
         BuildId = string.Empty;
+
+        string packageSegment = PackageSegmentForRelease(release.Major);
+        PackageName = $"hl7.fhir.{packageSegment}.core";
+        ExamplesPackageName = $"hl7.fhir.{packageSegment}.examples";
+        ExpansionsPackageName = $"hl7.fhir.{packageSegment}.expansions";
 
         _fhirConverter = ConverterHelper.ConverterForVersion(release.Major);
     }
@@ -352,15 +355,17 @@ public class FhirVersionInfo : FhirInfoBase, IFhirInfo
 #pragma warning restore CS0618 // Type or member is obsolete
         ReleaseName = fhirCoreVersion.ToString();
         BallotPrefix = string.Empty;
-        PackageName = $"hl7.fhir.{ReleaseName.ToLowerInvariant()}.core";
-        ExamplesPackageName = string.Empty;                 // ci builds do not have examples
-        ExpansionsPackageName = $"hl7.fhir.{ReleaseName.ToLowerInvariant()}.expansions";
         VersionString = version;
         IsDevBuild = true;
         IsLocalBuild = false;
         IsOnDisk = false;
         DevBranch = ciBranchName;
         BuildId = buildId;
+
+        string packageSegment = PackageSegmentForRelease(fhirCoreVersion);
+        PackageName = $"hl7.fhir.{packageSegment}.core";
+        ExamplesPackageName = string.Empty;                 // ci builds do not have examples
+        ExpansionsPackageName = $"hl7.fhir.{packageSegment}.expansions";
 
         _fhirConverter = ConverterHelper.ConverterForVersion(fhirCoreVersion);
     }
@@ -375,6 +380,24 @@ public class FhirVersionInfo : FhirInfoBase, IFhirInfo
         : base(source, options)
     {
         _fhirConverter = ConverterHelper.ConverterForVersion(source.MajorVersionEnum);
+    }
+
+    /// <summary>Package segment for release.</summary>
+    /// <param name="release">The release.</param>
+    /// <returns>A string.</returns>
+    private static string PackageSegmentForRelease(FhirCoreVersion release)
+    {
+        switch (release)
+        {
+            case FhirCoreVersion.DSTU2:
+                return "r2";
+
+            case FhirCoreVersion.STU3:
+                return "r3";
+
+            default:
+                return release.ToString().ToLowerInvariant();
+        }
     }
 
     /// <summary>Determine if we should process resource.</summary>

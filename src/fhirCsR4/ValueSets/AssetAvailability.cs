@@ -25,5 +25,18 @@ namespace fhirCsR4.ValueSets
     /// Literal for code: Lease
     /// </summary>
     public const string LiteralLease = "lease";
+
+    /// <summary>
+    /// Literal for code: AssetAvailabilityLease
+    /// </summary>
+    public const string LiteralAssetAvailabilityLease = "http://hl7.org/fhir/asset-availability#lease";
+
+    /// <summary>
+    /// Dictionary for looking up AssetAvailability Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "lease", Lease }, 
+      { "http://hl7.org/fhir/asset-availability#lease", Lease }, 
+    };
   };
 }

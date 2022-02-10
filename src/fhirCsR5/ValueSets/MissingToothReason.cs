@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class MissingToothReasonCodes
   {
     /// <summary>
-    /// 
+    /// C
     /// </summary>
     public static readonly Coding C = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/missingtoothreason"
     };
     /// <summary>
-    /// 
+    /// E
     /// </summary>
     public static readonly Coding E = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/missingtoothreason"
     };
     /// <summary>
-    /// 
+    /// O
     /// </summary>
     public static readonly Coding O = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/missingtoothreason"
     };
     /// <summary>
-    /// 
+    /// U
     /// </summary>
     public static readonly Coding U = new Coding
     {
@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralC = "c";
 
     /// <summary>
+    /// Literal for code: MissingtoothreasonC
+    /// </summary>
+    public const string LiteralMissingtoothreasonC = "http://terminology.hl7.org/CodeSystem/missingtoothreason#c";
+
+    /// <summary>
     /// Literal for code: E
     /// </summary>
     public const string LiteralE = "e";
+
+    /// <summary>
+    /// Literal for code: MissingtoothreasonE
+    /// </summary>
+    public const string LiteralMissingtoothreasonE = "http://terminology.hl7.org/CodeSystem/missingtoothreason#e";
 
     /// <summary>
     /// Literal for code: O
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralO = "o";
 
     /// <summary>
+    /// Literal for code: MissingtoothreasonO
+    /// </summary>
+    public const string LiteralMissingtoothreasonO = "http://terminology.hl7.org/CodeSystem/missingtoothreason#o";
+
+    /// <summary>
     /// Literal for code: U
     /// </summary>
     public const string LiteralU = "u";
+
+    /// <summary>
+    /// Literal for code: MissingtoothreasonU
+    /// </summary>
+    public const string LiteralMissingtoothreasonU = "http://terminology.hl7.org/CodeSystem/missingtoothreason#u";
+
+    /// <summary>
+    /// Dictionary for looking up MissingToothReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "c", C }, 
+      { "http://terminology.hl7.org/CodeSystem/missingtoothreason#c", C }, 
+      { "e", E }, 
+      { "http://terminology.hl7.org/CodeSystem/missingtoothreason#e", E }, 
+      { "o", O }, 
+      { "http://terminology.hl7.org/CodeSystem/missingtoothreason#o", O }, 
+      { "u", U }, 
+      { "http://terminology.hl7.org/CodeSystem/missingtoothreason#u", U }, 
+    };
   };
 }

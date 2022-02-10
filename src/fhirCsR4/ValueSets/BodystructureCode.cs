@@ -12,7 +12,7 @@ namespace fhirCsR4.ValueSets
   public static class BodystructureCodeCodes
   {
     /// <summary>
-    /// 
+    /// Eccrine papillary adenoma
     /// </summary>
     public static readonly Coding EccrinePapillaryAdenoma = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant giant cell tumor of bone
     /// </summary>
     public static readonly Coding MalignantGiantCellTumorOfBone = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital partial hypoplasia
     /// </summary>
     public static readonly Coding CongenitalPartialHypoplasia = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Accretion
     /// </summary>
     public static readonly Coding Accretion = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chief cell adenocarcinoma
     /// </summary>
     public static readonly Coding ChiefCellAdenocarcinoma = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Xanthosis
     /// </summary>
     public static readonly Coding Xanthosis = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epidermoid carcinoma - spindle cell
     /// </summary>
     public static readonly Coding EpidermoidCarcinomaSpindleCell = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital giant pigmented nevus
     /// </summary>
     public static readonly Coding CongenitalGiantPigmentedNevus = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Papillary carcinoma in situ
     /// </summary>
     public static readonly Coding PapillaryCarcinomaInSitu = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior open dislocation
     /// </summary>
     public static readonly Coding AnteriorOpenDislocation = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serous atrophy
     /// </summary>
     public static readonly Coding SerousAtrophy = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glomus tumor
     /// </summary>
     public static readonly Coding GlomusTumor = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spontaneous fistula
     /// </summary>
     public static readonly Coding SpontaneousFistula = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retroversion
     /// </summary>
     public static readonly Coding Retroversion = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stomatocyte
     /// </summary>
     public static readonly Coding Stomatocyte = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Basophilic stain reaction
     /// </summary>
     public static readonly Coding BasophilicStainReaction = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plasmacytoma
     /// </summary>
     public static readonly Coding Plasmacytoma = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atheromatous embolus
     /// </summary>
     public static readonly Coding AtheromatousEmbolus = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mucinous adenofibroma
     /// </summary>
     public static readonly Coding MucinousAdenofibroma = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Micronodular regeneration
     /// </summary>
     public static readonly Coding MicronodularRegeneration = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ameloblastic fibroma
     /// </summary>
     public static readonly Coding AmeloblasticFibroma = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Racemose hemangioma
     /// </summary>
     public static readonly Coding RacemoseHemangioma = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mixed liposarcoma
     /// </summary>
     public static readonly Coding MixedLiposarcoma = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neuronal achromasia
     /// </summary>
     public static readonly Coding NeuronalAchromasia = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epithelioid cell nevus
     /// </summary>
     public static readonly Coding EpithelioidCellNevus = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dehiscence
     /// </summary>
     public static readonly Coding Dehiscence = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dyskaryosis
     /// </summary>
     public static readonly Coding Dyskaryosis = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abnormally short growth
     /// </summary>
     public static readonly Coding AbnormallyShortGrowth = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Interstitial emphysema
     /// </summary>
     public static readonly Coding InterstitialEmphysema = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic membranous inflammation
     /// </summary>
     public static readonly Coding ChronicMembranousInflammation = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Closed dislocation, incomplete
     /// </summary>
     public static readonly Coding ClosedDislocationIncomplete = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acidophilic body
     /// </summary>
     public static readonly Coding AcidophilicBody = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Moderate squamous cell atypia
     /// </summary>
     public static readonly Coding ModerateSquamousCellAtypia = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Capillary lymphangioma
     /// </summary>
     public static readonly Coding CapillaryLymphangioma = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hilus cell tumor
     /// </summary>
     public static readonly Coding HilusCellTumor = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Algor mortis
     /// </summary>
     public static readonly Coding AlgorMortis = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mucinosis
     /// </summary>
     public static readonly Coding Mucinosis = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arteriovenous aneurysm
     /// </summary>
     public static readonly Coding ArteriovenousAneurysm = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bubo
     /// </summary>
     public static readonly Coding Bubo = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gunpowder burn
     /// </summary>
     public static readonly Coding GunpowderBurn = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Puncture
     /// </summary>
     public static readonly Coding Puncture = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Giant hypertrophy
     /// </summary>
     public static readonly Coding GiantHypertrophy = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adenoid cystic carcinoma
     /// </summary>
     public static readonly Coding AdenoidCysticCarcinoma = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chromosome mosaicism
     /// </summary>
     public static readonly Coding ChromosomeMosaicism = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mesoblastic nephroma
     /// </summary>
     public static readonly Coding MesoblasticNephroma = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibrous nodule
     /// </summary>
     public static readonly Coding FibrousNodule = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Suture line of skin
     /// </summary>
     public static readonly Coding SutureLineOfSkin = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superior open dislocation
     /// </summary>
     public static readonly Coding SuperiorOpenDislocation = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital hyperrotation
     /// </summary>
     public static readonly Coding CongenitalHyperrotation = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abiotrophy
     /// </summary>
     public static readonly Coding Abiotrophy = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acquired valgus deformity
     /// </summary>
     public static readonly Coding AcquiredValgusDeformity = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Binucleated plasmablast
     /// </summary>
     public static readonly Coding BinucleatedPlasmablast = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ganglioneuromatosis
     /// </summary>
     public static readonly Coding Ganglioneuromatosis = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Embryonic cyst
     /// </summary>
     public static readonly Coding EmbryonicCyst = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphocyst
     /// </summary>
     public static readonly Coding Lymphocyst = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Granular cell tumor
     /// </summary>
     public static readonly Coding GranularCellTumor = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rosette
     /// </summary>
     public static readonly Coding Rosette = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fracture, ununited, stellate
     /// </summary>
     public static readonly Coding FractureUnunitedStellate = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chief cell adenoma
     /// </summary>
     public static readonly Coding ChiefCellAdenoma = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Erythrocyte abnormality
     /// </summary>
     public static readonly Coding ErythrocyteAbnormality = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Round cell osteosarcoma
     /// </summary>
     public static readonly Coding RoundCellOsteosarcoma = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant androblastoma
     /// </summary>
     public static readonly Coding MalignantAndroblastoma = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retinoblastoma - undifferentiated
     /// </summary>
     public static readonly Coding RetinoblastomaUndifferentiated = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Purpura
     /// </summary>
     public static readonly Coding Purpura = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Papillary urothelial carcinoma
     /// </summary>
     public static readonly Coding PapillaryUrothelialCarcinoma = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scar
     /// </summary>
     public static readonly Coding Scar = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trophic gangrene
     /// </summary>
     public static readonly Coding TrophicGangrene = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microinvasive squamous cell carcinoma
     /// </summary>
     public static readonly Coding MicroinvasiveSquamousCellCarcinoma = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acquired absence
     /// </summary>
     public static readonly Coding AcquiredAbsence = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muscle fiber atrophy, type II
     /// </summary>
     public static readonly Coding MuscleFiberAtrophyTypeII = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Primary sequestrum
     /// </summary>
     public static readonly Coding PrimarySequestrum = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Internal fistula
     /// </summary>
     public static readonly Coding InternalFistula = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lobular adenoma
     /// </summary>
     public static readonly Coding LobularAdenoma = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clear cell sarcoma (except of Kidney M-89643)
     /// </summary>
     public static readonly Coding ClearCellSarcomaExceptOfKidneyM89643 = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibroblastic osteosarcoma
     /// </summary>
     public static readonly Coding FibroblasticOsteosarcoma = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microcalcification
     /// </summary>
     public static readonly Coding Microcalcification = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nonsuppurative inflammation
     /// </summary>
     public static readonly Coding NonsuppurativeInflammation = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multiple injuries
     /// </summary>
     public static readonly Coding MultipleInjuries = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Varix
     /// </summary>
     public static readonly Coding Varix = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sweat gland tumor
     /// </summary>
     public static readonly Coding SweatGlandTumor = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Primitive polar spongioblastoma [obs]
     /// </summary>
     public static readonly Coding PrimitivePolarSpongioblastomaObs = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acid chemical burn
     /// </summary>
     public static readonly Coding AcidChemicalBurn = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dislocation, multiple, open
     /// </summary>
     public static readonly Coding DislocationMultipleOpen = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neovascularization
     /// </summary>
     public static readonly Coding Neovascularization = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psammoma bodies
     /// </summary>
     public static readonly Coding PsammomaBodies = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wolffian duct tumor
     /// </summary>
     public static readonly Coding WolffianDuctTumor = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fracture, open, incomplete
     /// </summary>
     public static readonly Coding FractureOpenIncomplete = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injection site
     /// </summary>
     public static readonly Coding InjectionSite = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant granular cell tumor
     /// </summary>
     public static readonly Coding MalignantGranularCellTumor = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Comminuted
     /// </summary>
     public static readonly Coding Comminuted = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atrophic
     /// </summary>
     public static readonly Coding Atrophic = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// BCC - Basal cell carcinoma
     /// </summary>
     public static readonly Coding BCCBasalCellCarcinoma = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pseudocyst
     /// </summary>
     public static readonly Coding Pseudocyst = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pannus
     /// </summary>
     public static readonly Coding Pannus = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mast cell sarcoma
     /// </summary>
     public static readonly Coding MastCellSarcoma = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital decrease in cellularity
     /// </summary>
     public static readonly Coding CongenitalDecreaseInCellularity = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gunshot wound, contact
     /// </summary>
     public static readonly Coding GunshotWoundContact = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Partial obstruction
     /// </summary>
     public static readonly Coding PartialObstruction = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thromboembolus
     /// </summary>
     public static readonly Coding Thromboembolus = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital dislocation
     /// </summary>
     public static readonly Coding CongenitalDislocation = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypertrophy of bone
     /// </summary>
     public static readonly Coding HypertrophyOfBone = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glomangiosarcoma
     /// </summary>
     public static readonly Coding Glomangiosarcoma = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fat-laden macrophage
     /// </summary>
     public static readonly Coding FatLadenMacrophage = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital turning upward
     /// </summary>
     public static readonly Coding CongenitalTurningUpward = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wound
     /// </summary>
     public static readonly Coding Wound = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decalcified structure
     /// </summary>
     public static readonly Coding DecalcifiedStructure = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Racemose aneurysm
     /// </summary>
     public static readonly Coding RacemoseAneurysm = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Koplik spot
     /// </summary>
     public static readonly Coding KoplikSpot = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pseudopalisade formation
     /// </summary>
     public static readonly Coding PseudopalisadeFormation = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Internal spontaneous fistula
     /// </summary>
     public static readonly Coding InternalSpontaneousFistula = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Embryonal rhabdomyosarcoma, pleomorphic
     /// </summary>
     public static readonly Coding EmbryonalRhabdomyosarcomaPleomorphic = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// M6B
     /// </summary>
     public static readonly Coding M6B = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiomatosis
     /// </summary>
     public static readonly Coding Angiomatosis = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Koilocytotic atypia
     /// </summary>
     public static readonly Coding KoilocytoticAtypia = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chromophobe carcinoma
     /// </summary>
     public static readonly Coding ChromophobeCarcinoma = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Generalized keratoacanthoma
     /// </summary>
     public static readonly Coding GeneralizedKeratoacanthoma = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Meningeal sarcomatosis
     /// </summary>
     public static readonly Coding MeningealSarcomatosis = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Colloid milium
     /// </summary>
     public static readonly Coding ColloidMilium = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hodgkin lymphoma
     /// </summary>
     public static readonly Coding HodgkinLymphoma = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic fibrinous inflammation
     /// </summary>
     public static readonly Coding ChronicFibrinousInflammation = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cystic degeneration
     /// </summary>
     public static readonly Coding CysticDegeneration = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jet lesion
     /// </summary>
     public static readonly Coding JetLesion = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fracture, delayed union, oblique
     /// </summary>
     public static readonly Coding FractureDelayedUnionOblique = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neoplasm, metastatic
     /// </summary>
     public static readonly Coding NeoplasmMetastatic = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Triploidy
     /// </summary>
     public static readonly Coding Triploidy = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rasmussen's aneurysm
     /// </summary>
     public static readonly Coding RasmussenQuoteSAneurysm = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vesiculobullous rash
     /// </summary>
     public static readonly Coding VesiculobullousRash = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mutilating wound
     /// </summary>
     public static readonly Coding MutilatingWound = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chondrosarcoma morphology
     /// </summary>
     public static readonly Coding ChondrosarcomaMorphology = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neurogenic ulcer
     /// </summary>
     public static readonly Coding NeurogenicUlcer = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inverted keratosis
     /// </summary>
     public static readonly Coding InvertedKeratosis = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Melanotic neuroectodermal tumor
     /// </summary>
     public static readonly Coding MelanoticNeuroectodermalTumor = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adenocarcinoma with squamous metaplasia
     /// </summary>
     public static readonly Coding AdenocarcinomaWithSquamousMetaplasia = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plaque
     /// </summary>
     public static readonly Coding Plaque = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Factitial ulcer
     /// </summary>
     public static readonly Coding FactitialUlcer = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spontaneous perforation
     /// </summary>
     public static readonly Coding SpontaneousPerforation = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypoploidy
     /// </summary>
     public static readonly Coding Hypoploidy = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superficial ulcer
     /// </summary>
     public static readonly Coding SuperficialUlcer = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Molluscum bodies
     /// </summary>
     public static readonly Coding MolluscumBodies = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Combined abnormal curvature
     /// </summary>
     public static readonly Coding CombinedAbnormalCurvature = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obliteration
     /// </summary>
     public static readonly Coding Obliteration = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ball thrombus
     /// </summary>
     public static readonly Coding BallThrombus = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microlithiasis
     /// </summary>
     public static readonly Coding Microlithiasis = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swollen sarcoplasmic reticulum
     /// </summary>
     public static readonly Coding SwollenSarcoplasmicReticulum = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepatocellular carcinoma, fibrolamellar
     /// </summary>
     public static readonly Coding HepatocellularCarcinomaFibrolamellar = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Primary serous papillary carcinoma of peritoneum
     /// </summary>
     public static readonly Coding PrimarySerousPapillaryCarcinomaOfPeritoneum = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tortuosity
     /// </summary>
     public static readonly Coding Tortuosity = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Benign fibrous mesothelioma
     /// </summary>
     public static readonly Coding BenignFibrousMesothelioma = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subependymal giant cell astrocytoma
     /// </summary>
     public static readonly Coding SubependymalGiantCellAstrocytoma = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chromosomal translocation
     /// </summary>
     public static readonly Coding ChromosomalTranslocation = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bridging necrosis
     /// </summary>
     public static readonly Coding BridgingNecrosis = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital vascular proliferation
     /// </summary>
     public static readonly Coding CongenitalVascularProliferation = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant thymoma
     /// </summary>
     public static readonly Coding MalignantThymoma = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Giant cell histiocytoma
     /// </summary>
     public static readonly Coding GiantCellHistiocytoma = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypersegmentation of nucleus
     /// </summary>
     public static readonly Coding HypersegmentationOfNucleus = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cemental dysplasia
     /// </summary>
     public static readonly Coding CementalDysplasia = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibrin deposition
     /// </summary>
     public static readonly Coding FibrinDeposition = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myxoid leiomyosarcoma
     /// </summary>
     public static readonly Coding MyxoidLeiomyosarcoma = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thermal injury
     /// </summary>
     public static readonly Coding ThermalInjury = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Segmental glomerulosclerosis
     /// </summary>
     public static readonly Coding SegmentalGlomerulosclerosis = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adult rhabdomyoma
     /// </summary>
     public static readonly Coding AdultRhabdomyoma = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ossified nodule
     /// </summary>
     public static readonly Coding OssifiedNodule = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gastrin cell tumor
     /// </summary>
     public static readonly Coding GastrinCellTumor = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Herring's bodies
     /// </summary>
     public static readonly Coding HerringQuoteSBodies = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gaucher cell
     /// </summary>
     public static readonly Coding GaucherCell = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myxopapillary ependymoma
     /// </summary>
     public static readonly Coding MyxopapillaryEpendymoma = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fenestration
     /// </summary>
     public static readonly Coding Fenestration = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Collapse
     /// </summary>
     public static readonly Coding Collapse = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital opacity
     /// </summary>
     public static readonly Coding CongenitalOpacity = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inappropriate lobular activity of breast
     /// </summary>
     public static readonly Coding InappropriateLobularActivityOfBreast = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Russell body
     /// </summary>
     public static readonly Coding RussellBody = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Benign phyllodes tumor
     /// </summary>
     public static readonly Coding BenignPhyllodesTumor = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior open dislocation
     /// </summary>
     public static readonly Coding PosteriorOpenDislocation = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Separation
     /// </summary>
     public static readonly Coding Separation = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anasarca
     /// </summary>
     public static readonly Coding Anasarca = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pleomorphic carcinoma
     /// </summary>
     public static readonly Coding PleomorphicCarcinoma = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic eosinophilic inflammation
     /// </summary>
     public static readonly Coding ChronicEosinophilicInflammation = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant carotid body tumor
     /// </summary>
     public static readonly Coding MalignantCarotidBodyTumor = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Classical Hodgkin lymphoma, lymphocyte depletion, diffuse fibrosis
     /// </summary>
     public static readonly Coding ClassicalHodgkinLymphomaLymphocyteDepletionDiffuseFibrosis = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acral lentiginous melanoma, malignant
     /// </summary>
     public static readonly Coding AcralLentiginousMelanomaMalignant = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foam cell
     /// </summary>
     public static readonly Coding FoamCell = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral open dislocation
     /// </summary>
     public static readonly Coding LateralOpenDislocation = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spillage of feces
     /// </summary>
     public static readonly Coding SpillageOfFeces = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carcinoma in pleomorphic adenoma
     /// </summary>
     public static readonly Coding CarcinomaInPleomorphicAdenoma = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fat embolus
     /// </summary>
     public static readonly Coding FatEmbolus = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cerebellar sarcoma
     /// </summary>
     public static readonly Coding CerebellarSarcoma = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transudate
     /// </summary>
     public static readonly Coding Transudate = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital non-rotation
     /// </summary>
     public static readonly Coding CongenitalNonRotation = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anteversion
     /// </summary>
     public static readonly Coding Anteversion = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Capillary hemangioma of granulation tissue type
     /// </summary>
     public static readonly Coding CapillaryHemangiomaOfGranulationTissueType = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atypical glandular hyperplasia
     /// </summary>
     public static readonly Coding AtypicalGlandularHyperplasia = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clear cell adenoma
     /// </summary>
     public static readonly Coding ClearCellAdenoma = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Emphysematous bleb
     /// </summary>
     public static readonly Coding EmphysematousBleb = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metaplasia
     /// </summary>
     public static readonly Coding Metaplasia = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Accumulation of fluid
     /// </summary>
     public static readonly Coding AccumulationOfFluid = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Protein cast
     /// </summary>
     public static readonly Coding ProteinCast = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chédiak-Higashi cell
     /// </summary>
     public static readonly Coding ChediakHigashiCell = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Curvilinear bodies
     /// </summary>
     public static readonly Coding CurvilinearBodies = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute non-lymphocytic leukemia
     /// </summary>
     public static readonly Coding AcuteNonLymphocyticLeukemia = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sudanophilic stain reaction
     /// </summary>
     public static readonly Coding SudanophilicStainReaction = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiation injury with fibrosis
     /// </summary>
     public static readonly Coding RadiationInjuryWithFibrosis = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neuronevus
     /// </summary>
     public static readonly Coding Neuronevus = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arteriolosclerosis
     /// </summary>
     public static readonly Coding Arteriolosclerosis = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mucinous degeneration
     /// </summary>
     public static readonly Coding MucinousDegeneration = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phlebosclerosis
     /// </summary>
     public static readonly Coding Phlebosclerosis = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Choroid plexus papilloma, no ICD-O subtype
     /// </summary>
     public static readonly Coding ChoroidPlexusPapillomaNoICDOSubtype = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Keratinizing squamous cell carcinoma - large cell
     /// </summary>
     public static readonly Coding KeratinizingSquamousCellCarcinomaLargeCell = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eruption
     /// </summary>
     public static readonly Coding Eruption = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Achromasia
     /// </summary>
     public static readonly Coding Achromasia = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Micronucleus
     /// </summary>
     public static readonly Coding Micronucleus = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant endometrioid cystadenofibroma
     /// </summary>
     public static readonly Coding MalignantEndometrioidCystadenofibroma = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pathologically calcified structure
     /// </summary>
     public static readonly Coding PathologicallyCalcifiedStructure = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diverticulitis
     /// </summary>
     public static readonly Coding Diverticulitis = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gunshot wound, exit
     /// </summary>
     public static readonly Coding GunshotWoundExit = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brown edema
     /// </summary>
     public static readonly Coding BrownEdema = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gudden atrophy
     /// </summary>
     public static readonly Coding GuddenAtrophy = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canalization
     /// </summary>
     public static readonly Coding Canalization = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-communicating cerebrospinal fluid retention
     /// </summary>
     public static readonly Coding NonCommunicatingCerebrospinalFluidRetention = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Double structure
     /// </summary>
     public static readonly Coding DoubleStructure = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stellate fracture
     /// </summary>
     public static readonly Coding StellateFracture = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Queyrat erythroplasia
     /// </summary>
     public static readonly Coding QueyratErythroplasia = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adrenal cortical adenoma morphology
     /// </summary>
     public static readonly Coding AdrenalCorticalAdenomaMorphology = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant melanoma in melanosis
     /// </summary>
     public static readonly Coding MalignantMelanomaInMelanosis = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anomalous origin of vein
     /// </summary>
     public static readonly Coding AnomalousOriginOfVein = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute membranous inflammation
     /// </summary>
     public static readonly Coding AcuteMembranousInflammation = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anastomosis, end to end
     /// </summary>
     public static readonly Coding AnastomosisEndToEnd = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Synovial sarcoma - biphasic
     /// </summary>
     public static readonly Coding SynovialSarcomaBiphasic = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Depigmentation
     /// </summary>
     public static readonly Coding Depigmentation = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraductal carcinoma and lobular carcinoma in situ
     /// </summary>
     public static readonly Coding IntraductalCarcinomaAndLobularCarcinomaInSitu = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyaline body
     /// </summary>
     public static readonly Coding HyalineBody = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// C cell tumor
     /// </summary>
     public static readonly Coding CCellTumor = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sclerosing lipogranuloma
     /// </summary>
     public static readonly Coding SclerosingLipogranuloma = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Invasive hydatidiform mole
     /// </summary>
     public static readonly Coding InvasiveHydatidiformMole = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// External fistula
     /// </summary>
     public static readonly Coding ExternalFistula = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant struma ovarii
     /// </summary>
     public static readonly Coding MalignantStrumaOvarii = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant granulosa cell tumor
     /// </summary>
     public static readonly Coding MalignantGranulosaCellTumor = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dense tubules
     /// </summary>
     public static readonly Coding DenseTubules = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Councilman body
     /// </summary>
     public static readonly Coding CouncilmanBody = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adrenal cortical adenoma - clear cell
     /// </summary>
     public static readonly Coding AdrenalCorticalAdenomaClearCell = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyaline degeneration
     /// </summary>
     public static readonly Coding HyalineDegeneration = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epithelioid leiomyoma
     /// </summary>
     public static readonly Coding EpithelioidLeiomyoma = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spontaneous closed dislocation
     /// </summary>
     public static readonly Coding SpontaneousClosedDislocation = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyperorthokeratosis
     /// </summary>
     public static readonly Coding Hyperorthokeratosis = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Traumatic abnormality
     /// </summary>
     public static readonly Coding TraumaticAbnormality = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fascial fibrosarcoma
     /// </summary>
     public static readonly Coding FascialFibrosarcoma = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Marantic thrombus
     /// </summary>
     public static readonly Coding MaranticThrombus = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FB - Foreign body
     /// </summary>
     public static readonly Coding FBForeignBody = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// B-cell lymphoma, no ICD-O subtype
     /// </summary>
     public static readonly Coding BCellLymphomaNoICDOSubtype = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cytoid body
     /// </summary>
     public static readonly Coding CytoidBody = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adrenal cortical adenoma - glomerulosa cell
     /// </summary>
     public static readonly Coding AdrenalCorticalAdenomaGlomerulosaCell = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant lymphoma, lymphoplasmacytic
     /// </summary>
     public static readonly Coding MalignantLymphomaLymphoplasmacytic = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute empyema
     /// </summary>
     public static readonly Coding AcuteEmpyema = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sclerosing segmental glomerulosclerosis with hyalinosis
     /// </summary>
     public static readonly Coding SclerosingSegmentalGlomerulosclerosisWithHyalinosis = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stain reaction
     /// </summary>
     public static readonly Coding StainReaction = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Feathery degeneration
     /// </summary>
     public static readonly Coding FeatheryDegeneration = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MGM - Meningioma
     /// </summary>
     public static readonly Coding MGMMeningioma = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant teratoblastoma
     /// </summary>
     public static readonly Coding MalignantTeratoblastoma = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serofibrinous effusion
     /// </summary>
     public static readonly Coding SerofibrinousEffusion = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital levorotation
     /// </summary>
     public static readonly Coding CongenitalLevorotation = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open wounds involving multiple body regions
     /// </summary>
     public static readonly Coding OpenWoundsInvolvingMultipleBodyRegions = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endoreduplication
     /// </summary>
     public static readonly Coding Endoreduplication = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lightning burn
     /// </summary>
     public static readonly Coding LightningBurn = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mucous cyst
     /// </summary>
     public static readonly Coding MucousCyst = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pyogranuloma, granuloma with pus
     /// </summary>
     public static readonly Coding PyogranulomaGranulomaWithPus = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Micromyeloblast
     /// </summary>
     public static readonly Coding Micromyeloblast = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tubular adenoma, no ICD-O subtype
     /// </summary>
     public static readonly Coding TubularAdenomaNoICDOSubtype = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Predominance of parabasal cells
     /// </summary>
     public static readonly Coding PredominanceOfParabasalCells = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Erythrocyte agglutination
     /// </summary>
     public static readonly Coding ErythrocyteAgglutination = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Condyloma
     /// </summary>
     public static readonly Coding Condyloma = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stasis
     /// </summary>
     public static readonly Coding Stasis = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant G cell tumor
     /// </summary>
     public static readonly Coding MalignantGCellTumor = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brain sand, calcified structure
     /// </summary>
     public static readonly Coding BrainSandCalcifiedStructure = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deforming fibrosis
     /// </summary>
     public static readonly Coding DeformingFibrosis = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MPNST - Malignant peripheral nerve sheath tumor
     /// </summary>
     public static readonly Coding MPNSTMalignantPeripheralNerveSheathTumor = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retinoblastoma - morphology
     /// </summary>
     public static readonly Coding RetinoblastomaMorphology = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complement deposit
     /// </summary>
     public static readonly Coding ComplementDeposit = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Crushing injury (morphology)
     /// </summary>
     public static readonly Coding CrushingInjuryMorphology = new Coding
     {
@@ -2505,7 +2505,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibromatosis
     /// </summary>
     public static readonly Coding Fibromatosis = new Coding
     {
@@ -2514,7 +2514,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiomyolipoma
     /// </summary>
     public static readonly Coding Angiomyolipoma = new Coding
     {
@@ -2523,7 +2523,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lichenification
     /// </summary>
     public static readonly Coding Lichenification = new Coding
     {
@@ -2532,7 +2532,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elastic vascular sclerosis
     /// </summary>
     public static readonly Coding ElasticVascularSclerosis = new Coding
     {
@@ -2541,7 +2541,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Numeric atrophy
     /// </summary>
     public static readonly Coding NumericAtrophy = new Coding
     {
@@ -2550,7 +2550,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pseudoainhum
     /// </summary>
     public static readonly Coding Pseudoainhum = new Coding
     {
@@ -2559,7 +2559,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Major open wound
     /// </summary>
     public static readonly Coding MajorOpenWound = new Coding
     {
@@ -2568,7 +2568,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital telangiectasis
     /// </summary>
     public static readonly Coding CongenitalTelangiectasis = new Coding
     {
@@ -2577,7 +2577,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intramural hemorrhage
     /// </summary>
     public static readonly Coding IntramuralHemorrhage = new Coding
     {
@@ -2586,7 +2586,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic necrosis
     /// </summary>
     public static readonly Coding ChronicNecrosis = new Coding
     {
@@ -2595,7 +2595,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microlymphoblast
     /// </summary>
     public static readonly Coding Microlymphoblast = new Coding
     {
@@ -2604,7 +2604,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Postmortem fracture
     /// </summary>
     public static readonly Coding PostmortemFracture = new Coding
     {
@@ -2613,7 +2613,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myocytolysis
     /// </summary>
     public static readonly Coding Myocytolysis = new Coding
     {
@@ -2622,7 +2622,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sarcoplasmic bodies
     /// </summary>
     public static readonly Coding SarcoplasmicBodies = new Coding
     {
@@ -2631,7 +2631,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyperplastic dystrophy
     /// </summary>
     public static readonly Coding HyperplasticDystrophy = new Coding
     {
@@ -2640,7 +2640,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glandular proliferation
     /// </summary>
     public static readonly Coding GlandularProliferation = new Coding
     {
@@ -2649,7 +2649,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serous adenofibroma
     /// </summary>
     public static readonly Coding SerousAdenofibroma = new Coding
     {
@@ -2658,7 +2658,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adnexal nevus
     /// </summary>
     public static readonly Coding AdnexalNevus = new Coding
     {
@@ -2667,7 +2667,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vulvar intraepithelial neoplasia, grade III
     /// </summary>
     public static readonly Coding VulvarIntraepithelialNeoplasiaGradeIII = new Coding
     {
@@ -2676,7 +2676,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic mucous inflammation
     /// </summary>
     public static readonly Coding ChronicMucousInflammation = new Coding
     {
@@ -2685,7 +2685,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ameloblastic fibrodentinosarcoma
     /// </summary>
     public static readonly Coding AmeloblasticFibrodentinosarcoma = new Coding
     {
@@ -2694,7 +2694,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Loose body
     /// </summary>
     public static readonly Coding LooseBody = new Coding
     {
@@ -2703,7 +2703,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adamantinoma
     /// </summary>
     public static readonly Coding Adamantinoma = new Coding
     {
@@ -2712,7 +2712,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Perforated diverticulum
     /// </summary>
     public static readonly Coding PerforatedDiverticulum = new Coding
     {
@@ -2721,7 +2721,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stellate laceration
     /// </summary>
     public static readonly Coding StellateLaceration = new Coding
     {
@@ -2730,7 +2730,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute necrosis
     /// </summary>
     public static readonly Coding AcuteNecrosis = new Coding
     {
@@ -2739,7 +2739,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pappenheimer body
     /// </summary>
     public static readonly Coding PappenheimerBody = new Coding
     {
@@ -2748,7 +2748,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Flattening deformity
     /// </summary>
     public static readonly Coding FlatteningDeformity = new Coding
     {
@@ -2757,7 +2757,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myosarcoma
     /// </summary>
     public static readonly Coding Myosarcoma = new Coding
     {
@@ -2766,7 +2766,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fracture, closed, oblique
     /// </summary>
     public static readonly Coding FractureClosedOblique = new Coding
     {
@@ -2775,7 +2775,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atherosclerotic fibrous plaque
     /// </summary>
     public static readonly Coding AtheroscleroticFibrousPlaque = new Coding
     {
@@ -2784,7 +2784,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hydrops
     /// </summary>
     public static readonly Coding Hydrops = new Coding
     {
@@ -2793,7 +2793,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Re-epithelialization
     /// </summary>
     public static readonly Coding ReEpithelialization = new Coding
     {
@@ -2802,7 +2802,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adenolymphoma
     /// </summary>
     public static readonly Coding Adenolymphoma = new Coding
     {
@@ -2811,7 +2811,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myelolipoma
     /// </summary>
     public static readonly Coding Myelolipoma = new Coding
     {
@@ -2820,7 +2820,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endometrioid adenofibroma
     /// </summary>
     public static readonly Coding EndometrioidAdenofibroma = new Coding
     {
@@ -2829,7 +2829,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polypoid hyperplasia
     /// </summary>
     public static readonly Coding PolypoidHyperplasia = new Coding
     {
@@ -2838,7 +2838,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mallory bodies
     /// </summary>
     public static readonly Coding MalloryBodies = new Coding
     {
@@ -2847,7 +2847,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MM - Malignant melanoma
     /// </summary>
     public static readonly Coding MMMalignantMelanoma = new Coding
     {
@@ -2856,7 +2856,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fracture, closed
     /// </summary>
     public static readonly Coding FractureClosed = new Coding
     {
@@ -2865,7 +2865,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant beta cell tumor
     /// </summary>
     public static readonly Coding MalignantBetaCellTumor = new Coding
     {
@@ -2874,7 +2874,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dyskeratosis
     /// </summary>
     public static readonly Coding Dyskeratosis = new Coding
     {
@@ -2883,7 +2883,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Verrucous keratotic hemangioma
     /// </summary>
     public static readonly Coding VerrucousKeratoticHemangioma = new Coding
     {
@@ -2892,7 +2892,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemangioma - morphology
     /// </summary>
     public static readonly Coding HemangiomaMorphology = new Coding
     {
@@ -2901,7 +2901,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cystadenocarcinoma
     /// </summary>
     public static readonly Coding Cystadenocarcinoma = new Coding
     {
@@ -2910,7 +2910,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dalen-Fuchs nodule
     /// </summary>
     public static readonly Coding DalenFuchsNodule = new Coding
     {
@@ -2919,7 +2919,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute fibrosis
     /// </summary>
     public static readonly Coding AcuteFibrosis = new Coding
     {
@@ -2928,7 +2928,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acidophil adenoma
     /// </summary>
     public static readonly Coding AcidophilAdenoma = new Coding
     {
@@ -2937,7 +2937,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pigmented nevus, no ICD-O subtype
     /// </summary>
     public static readonly Coding PigmentedNevusNoICDOSubtype = new Coding
     {
@@ -2946,7 +2946,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multiple superficial injuries
     /// </summary>
     public static readonly Coding MultipleSuperficialInjuries = new Coding
     {
@@ -2955,7 +2955,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Organization
     /// </summary>
     public static readonly Coding Organization = new Coding
     {
@@ -2964,7 +2964,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Benign thymoma
     /// </summary>
     public static readonly Coding BenignThymoma = new Coding
     {
@@ -2973,7 +2973,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pressure atrophy
     /// </summary>
     public static readonly Coding PressureAtrophy = new Coding
     {
@@ -2982,7 +2982,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mixed small cell carcinoma
     /// </summary>
     public static readonly Coding MixedSmallCellCarcinoma = new Coding
     {
@@ -2991,7 +2991,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foreign body giant cell
     /// </summary>
     public static readonly Coding ForeignBodyGiantCell = new Coding
     {
@@ -3000,7 +3000,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Developmental abnormality
     /// </summary>
     public static readonly Coding DevelopmentalAbnormality = new Coding
     {
@@ -3009,7 +3009,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pleomorphic lipoma
     /// </summary>
     public static readonly Coding PleomorphicLipoma = new Coding
     {
@@ -3018,7 +3018,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// NM - Nodular melanoma
     /// </summary>
     public static readonly Coding NMNodularMelanoma = new Coding
     {
@@ -3027,7 +3027,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microglial nodules
     /// </summary>
     public static readonly Coding MicroglialNodules = new Coding
     {
@@ -3036,7 +3036,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Massive necrosis
     /// </summary>
     public static readonly Coding MassiveNecrosis = new Coding
     {
@@ -3045,7 +3045,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abnormally short and broad growth
     /// </summary>
     public static readonly Coding AbnormallyShortAndBroadGrowth = new Coding
     {
@@ -3054,7 +3054,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ependymoma, anaplastic
     /// </summary>
     public static readonly Coding EpendymomaAnaplastic = new Coding
     {
@@ -3063,7 +3063,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteosarcoma, no ICD-O subtype
     /// </summary>
     public static readonly Coding OsteosarcomaNoICDOSubtype = new Coding
     {
@@ -3072,7 +3072,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cast
     /// </summary>
     public static readonly Coding Cast = new Coding
     {
@@ -3081,7 +3081,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Electrical burn
     /// </summary>
     public static readonly Coding ElectricalBurn = new Coding
     {
@@ -3090,7 +3090,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// External blind congenital fistula
     /// </summary>
     public static readonly Coding ExternalBlindCongenitalFistula = new Coding
     {
@@ -3099,7 +3099,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant teratoma - intermediate
     /// </summary>
     public static readonly Coding MalignantTeratomaIntermediate = new Coding
     {
@@ -3108,7 +3108,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neuroglial-lined cyst
     /// </summary>
     public static readonly Coding NeuroglialLinedCyst = new Coding
     {
@@ -3117,7 +3117,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trabecular adenoma
     /// </summary>
     public static readonly Coding TrabecularAdenoma = new Coding
     {
@@ -3126,7 +3126,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Compression fracture
     /// </summary>
     public static readonly Coding CompressionFracture = new Coding
     {
@@ -3135,7 +3135,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microglioma [obs]
     /// </summary>
     public static readonly Coding MicrogliomaObs = new Coding
     {
@@ -3144,7 +3144,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Papillary adenocarcinoma - follicular variant
     /// </summary>
     public static readonly Coding PapillaryAdenocarcinomaFollicularVariant = new Coding
     {
@@ -3153,7 +3153,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plasma cell granuloma
     /// </summary>
     public static readonly Coding PlasmaCellGranuloma = new Coding
     {
@@ -3162,7 +3162,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prestenotic dilatation
     /// </summary>
     public static readonly Coding PrestenoticDilatation = new Coding
     {
@@ -3171,7 +3171,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Massive disruption
     /// </summary>
     public static readonly Coding MassiveDisruption = new Coding
     {
@@ -3180,7 +3180,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lipoadenoma
     /// </summary>
     public static readonly Coding Lipoadenoma = new Coding
     {
@@ -3189,7 +3189,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pseudoaneurysm
     /// </summary>
     public static readonly Coding Pseudoaneurysm = new Coding
     {
@@ -3198,7 +3198,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ruptured aneurysm
     /// </summary>
     public static readonly Coding RupturedAneurysm = new Coding
     {
@@ -3207,7 +3207,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Postmortem blood clot
     /// </summary>
     public static readonly Coding PostmortemBloodClot = new Coding
     {
@@ -3216,7 +3216,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Papillary serous cystadenoma
     /// </summary>
     public static readonly Coding PapillarySerousCystadenoma = new Coding
     {
@@ -3225,7 +3225,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endothelial degeneration
     /// </summary>
     public static readonly Coding EndothelialDegeneration = new Coding
     {
@@ -3234,7 +3234,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// FAB L3 [obs]
     /// </summary>
     public static readonly Coding FABL3Obs = new Coding
     {
@@ -3243,7 +3243,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant mesonephroma
     /// </summary>
     public static readonly Coding MalignantMesonephroma = new Coding
     {
@@ -3252,7 +3252,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oligoastrocytoma
     /// </summary>
     public static readonly Coding Oligoastrocytoma = new Coding
     {
@@ -3261,7 +3261,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muscle fiber small group atrophy
     /// </summary>
     public static readonly Coding MuscleFiberSmallGroupAtrophy = new Coding
     {
@@ -3270,7 +3270,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibrous hamartoma
     /// </summary>
     public static readonly Coding FibrousHamartoma = new Coding
     {
@@ -3279,7 +3279,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adrenal cortical carcinoma
     /// </summary>
     public static readonly Coding AdrenalCorticalCarcinoma = new Coding
     {
@@ -3288,7 +3288,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eosinophilic stain reaction
     /// </summary>
     public static readonly Coding EosinophilicStainReaction = new Coding
     {
@@ -3297,7 +3297,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Version
     /// </summary>
     public static readonly Coding Version = new Coding
     {
@@ -3306,7 +3306,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Normal karyotype
     /// </summary>
     public static readonly Coding NormalKaryotype = new Coding
     {
@@ -3315,7 +3315,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute monocytic leukemia, morphology
     /// </summary>
     public static readonly Coding AcuteMonocyticLeukemiaMorphology = new Coding
     {
@@ -3324,7 +3324,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Uric acid infarct
     /// </summary>
     public static readonly Coding UricAcidInfarct = new Coding
     {
@@ -3333,7 +3333,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Thrombosed varices
     /// </summary>
     public static readonly Coding ThrombosedVarices = new Coding
     {
@@ -3342,7 +3342,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elastoid degeneration
     /// </summary>
     public static readonly Coding ElastoidDegeneration = new Coding
     {
@@ -3351,7 +3351,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiation injury with inflammation
     /// </summary>
     public static readonly Coding RadiationInjuryWithInflammation = new Coding
     {
@@ -3360,7 +3360,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subependymal gliosis
     /// </summary>
     public static readonly Coding SubependymalGliosis = new Coding
     {
@@ -3369,7 +3369,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Warty dyskeratoma
     /// </summary>
     public static readonly Coding WartyDyskeratoma = new Coding
     {
@@ -3378,7 +3378,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pathologic fracture
     /// </summary>
     public static readonly Coding PathologicFracture = new Coding
     {
@@ -3387,7 +3387,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serous effusion
     /// </summary>
     public static readonly Coding SerousEffusion = new Coding
     {
@@ -3396,7 +3396,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Large cell carcinoma
     /// </summary>
     public static readonly Coding LargeCellCarcinoma = new Coding
     {
@@ -3405,7 +3405,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adenocarcinoma with apocrine metaplasia
     /// </summary>
     public static readonly Coding AdenocarcinomaWithApocrineMetaplasia = new Coding
     {
@@ -3414,7 +3414,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// HSIL
     /// </summary>
     public static readonly Coding HSIL = new Coding
     {
@@ -3423,7 +3423,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Connective tissue nevus
     /// </summary>
     public static readonly Coding ConnectiveTissueNevus = new Coding
     {
@@ -3432,7 +3432,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dicentric chromosome
     /// </summary>
     public static readonly Coding DicentricChromosome = new Coding
     {
@@ -3441,7 +3441,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Moderate columnar cell atypia
     /// </summary>
     public static readonly Coding ModerateColumnarCellAtypia = new Coding
     {
@@ -3450,7 +3450,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Focal nodular hyperplasia
     /// </summary>
     public static readonly Coding FocalNodularHyperplasia = new Coding
     {
@@ -3459,7 +3459,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sinus histiocytosis
     /// </summary>
     public static readonly Coding SinusHistiocytosis = new Coding
     {
@@ -3468,7 +3468,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Marinesco body
     /// </summary>
     public static readonly Coding MarinescoBody = new Coding
     {
@@ -3477,7 +3477,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mild squamous cell atypia
     /// </summary>
     public static readonly Coding MildSquamousCellAtypia = new Coding
     {
@@ -3486,7 +3486,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sarcomatoid carcinoma
     /// </summary>
     public static readonly Coding SarcomatoidCarcinoma = new Coding
     {
@@ -3495,7 +3495,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital fold
     /// </summary>
     public static readonly Coding CongenitalFold = new Coding
     {
@@ -3504,7 +3504,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Benign cementoblastoma
     /// </summary>
     public static readonly Coding BenignCementoblastoma = new Coding
     {
@@ -3513,7 +3513,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Isochromosome for long arm
     /// </summary>
     public static readonly Coding IsochromosomeForLongArm = new Coding
     {
@@ -3522,7 +3522,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delayed union of incomplete fracture
     /// </summary>
     public static readonly Coding DelayedUnionOfIncompleteFracture = new Coding
     {
@@ -3531,7 +3531,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glandular hyperplasia
     /// </summary>
     public static readonly Coding GlandularHyperplasia = new Coding
     {
@@ -3540,7 +3540,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macrocytic hyperchromic erythrocyte
     /// </summary>
     public static readonly Coding MacrocyticHyperchromicErythrocyte = new Coding
     {
@@ -3549,7 +3549,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ring chromosome
     /// </summary>
     public static readonly Coding RingChromosome = new Coding
     {
@@ -3558,7 +3558,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fatigue fracture
     /// </summary>
     public static readonly Coding FatigueFracture = new Coding
     {
@@ -3567,7 +3567,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mixed acidophil-basophil carcinoma
     /// </summary>
     public static readonly Coding MixedAcidophilBasophilCarcinoma = new Coding
     {
@@ -3576,7 +3576,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adenomatoid tumor
     /// </summary>
     public static readonly Coding AdenomatoidTumor = new Coding
     {
@@ -3585,7 +3585,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Avulsion fracture
     /// </summary>
     public static readonly Coding AvulsionFracture = new Coding
     {
@@ -3594,7 +3594,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glycogen deposition
     /// </summary>
     public static readonly Coding GlycogenDeposition = new Coding
     {
@@ -3603,7 +3603,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Organizing hematoma
     /// </summary>
     public static readonly Coding OrganizingHematoma = new Coding
     {
@@ -3612,7 +3612,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inflammation
     /// </summary>
     public static readonly Coding Inflammation = new Coding
     {
@@ -3621,7 +3621,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Granulovacuolar degeneration of Simchowicz
     /// </summary>
     public static readonly Coding GranulovacuolarDegenerationOfSimchowicz = new Coding
     {
@@ -3630,7 +3630,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cartilaginous hamartoma
     /// </summary>
     public static readonly Coding CartilaginousHamartoma = new Coding
     {
@@ -3639,7 +3639,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acanthosis
     /// </summary>
     public static readonly Coding Acanthosis = new Coding
     {
@@ -3648,7 +3648,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Papilloma, no ICD-O subtype (except papilloma of bladder M-81201)
     /// </summary>
     public static readonly Coding PapillomaNoICDOSubtypeExceptPapillomaOfBladderM81201 = new Coding
     {
@@ -3657,7 +3657,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital growth alteration
     /// </summary>
     public static readonly Coding CongenitalGrowthAlteration = new Coding
     {
@@ -3666,7 +3666,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chylous effusion
     /// </summary>
     public static readonly Coding ChylousEffusion = new Coding
     {
@@ -3675,7 +3675,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibrosiderotic nodule
     /// </summary>
     public static readonly Coding FibrosideroticNodule = new Coding
     {
@@ -3684,7 +3684,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypersecretory gestational endometrium
     /// </summary>
     public static readonly Coding HypersecretoryGestationalEndometrium = new Coding
     {
@@ -3693,7 +3693,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fracture, ununited, comminuted
     /// </summary>
     public static readonly Coding FractureUnunitedComminuted = new Coding
     {
@@ -3702,7 +3702,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clear cell sarcoma of kidney
     /// </summary>
     public static readonly Coding ClearCellSarcomaOfKidney = new Coding
     {
@@ -3711,7 +3711,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corrected transposition
     /// </summary>
     public static readonly Coding CorrectedTransposition = new Coding
     {
@@ -3720,7 +3720,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Meibomian adenoma
     /// </summary>
     public static readonly Coding MeibomianAdenoma = new Coding
     {
@@ -3729,7 +3729,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Enterogenous cyst
     /// </summary>
     public static readonly Coding EnterogenousCyst = new Coding
     {
@@ -3738,7 +3738,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intramuscular lipoma
     /// </summary>
     public static readonly Coding IntramuscularLipoma = new Coding
     {
@@ -3747,7 +3747,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stem cell leukemia
     /// </summary>
     public static readonly Coding StemCellLeukemia = new Coding
     {
@@ -3756,7 +3756,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maculopapule
     /// </summary>
     public static readonly Coding Maculopapule = new Coding
     {
@@ -3765,7 +3765,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibrinous polyp
     /// </summary>
     public static readonly Coding FibrinousPolyp = new Coding
     {
@@ -3774,7 +3774,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital absence
     /// </summary>
     public static readonly Coding CongenitalAbsence = new Coding
     {
@@ -3783,7 +3783,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant mesenchymal tumor
     /// </summary>
     public static readonly Coding MalignantMesenchymalTumor = new Coding
     {
@@ -3792,7 +3792,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brown atrophy
     /// </summary>
     public static readonly Coding BrownAtrophy = new Coding
     {
@@ -3801,7 +3801,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Squamous intraepithelial lesion
     /// </summary>
     public static readonly Coding SquamousIntraepithelialLesion = new Coding
     {
@@ -3810,7 +3810,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serosanguineous effusion
     /// </summary>
     public static readonly Coding SerosanguineousEffusion = new Coding
     {
@@ -3819,7 +3819,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Struma ovarii
     /// </summary>
     public static readonly Coding StrumaOvarii = new Coding
     {
@@ -3828,7 +3828,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pregnancy alteration of vagina
     /// </summary>
     public static readonly Coding PregnancyAlterationOfVagina = new Coding
     {
@@ -3837,7 +3837,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Injection site granuloma
     /// </summary>
     public static readonly Coding InjectionSiteGranuloma = new Coding
     {
@@ -3846,7 +3846,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nuclear/cytoplasmic ratio decreased
     /// </summary>
     public static readonly Coding NuclearCytoplasmicRatioDecreased = new Coding
     {
@@ -3855,7 +3855,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subcapsular hemorrhage
     /// </summary>
     public static readonly Coding SubcapsularHemorrhage = new Coding
     {
@@ -3864,7 +3864,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypersegmented leukocyte
     /// </summary>
     public static readonly Coding HypersegmentedLeukocyte = new Coding
     {
@@ -3873,7 +3873,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atypical adenoma
     /// </summary>
     public static readonly Coding AtypicalAdenoma = new Coding
     {
@@ -3882,7 +3882,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adenocarcinoma - diffuse type
     /// </summary>
     public static readonly Coding AdenocarcinomaDiffuseType = new Coding
     {
@@ -3891,7 +3891,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complex caries
     /// </summary>
     public static readonly Coding ComplexCaries = new Coding
     {
@@ -3900,7 +3900,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arteriovenous malformation
     /// </summary>
     public static readonly Coding ArteriovenousMalformation = new Coding
     {
@@ -3909,7 +3909,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pseudohypertrophic dystrophy
     /// </summary>
     public static readonly Coding PseudohypertrophicDystrophy = new Coding
     {
@@ -3918,7 +3918,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medullomyoblastoma
     /// </summary>
     public static readonly Coding Medullomyoblastoma = new Coding
     {
@@ -3927,7 +3927,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Moderate cytologic atypia
     /// </summary>
     public static readonly Coding ModerateCytologicAtypia = new Coding
     {
@@ -3936,7 +3936,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Guarnieri bodies
     /// </summary>
     public static readonly Coding GuarnieriBodies = new Coding
     {
@@ -3945,7 +3945,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spindle cell melanoma - type A
     /// </summary>
     public static readonly Coding SpindleCellMelanomaTypeA = new Coding
     {
@@ -3954,7 +3954,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Internal traumatic fistula
     /// </summary>
     public static readonly Coding InternalTraumaticFistula = new Coding
     {
@@ -3963,7 +3963,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insect bite
     /// </summary>
     public static readonly Coding InsectBite = new Coding
     {
@@ -3972,7 +3972,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant pilomatrixoma
     /// </summary>
     public static readonly Coding MalignantPilomatrixoma = new Coding
     {
@@ -3981,7 +3981,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wolffian duct rest
     /// </summary>
     public static readonly Coding WolffianDuctRest = new Coding
     {
@@ -3990,7 +3990,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serous inflammation
     /// </summary>
     public static readonly Coding SerousInflammation = new Coding
     {
@@ -3999,7 +3999,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lipid-rich Sertoli cell tumor
     /// </summary>
     public static readonly Coding LipidRichSertoliCellTumor = new Coding
     {
@@ -4008,7 +4008,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abnormal white blood cell
     /// </summary>
     public static readonly Coding AbnormalWhiteBloodCell = new Coding
     {
@@ -4017,7 +4017,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cavity
     /// </summary>
     public static readonly Coding Cavity = new Coding
     {
@@ -4026,7 +4026,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maceration
     /// </summary>
     public static readonly Coding Maceration = new Coding
     {
@@ -4035,7 +4035,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Navicular cell
     /// </summary>
     public static readonly Coding NavicularCell = new Coding
     {
@@ -4044,7 +4044,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Involutional atrophy
     /// </summary>
     public static readonly Coding InvolutionalAtrophy = new Coding
     {
@@ -4053,7 +4053,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nephroblastoma
     /// </summary>
     public static readonly Coding Nephroblastoma = new Coding
     {
@@ -4062,7 +4062,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dimpled structure
     /// </summary>
     public static readonly Coding DimpledStructure = new Coding
     {
@@ -4071,7 +4071,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blister due to degeneration of the basement zone
     /// </summary>
     public static readonly Coding BlisterDueToDegenerationOfTheBasementZone = new Coding
     {
@@ -4080,7 +4080,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neuroma, no ICD-O subtype
     /// </summary>
     public static readonly Coding NeuromaNoICDOSubtype = new Coding
     {
@@ -4089,7 +4089,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carcinoma - intestinal type
     /// </summary>
     public static readonly Coding CarcinomaIntestinalType = new Coding
     {
@@ -4098,7 +4098,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epidermal nevus
     /// </summary>
     public static readonly Coding EpidermalNevus = new Coding
     {
@@ -4107,7 +4107,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphangiomyoma
     /// </summary>
     public static readonly Coding Lymphangiomyoma = new Coding
     {
@@ -4116,7 +4116,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital dysplasia
     /// </summary>
     public static readonly Coding CongenitalDysplasia = new Coding
     {
@@ -4125,7 +4125,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Phytobezoar
     /// </summary>
     public static readonly Coding Phytobezoar = new Coding
     {
@@ -4134,7 +4134,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dilatation
     /// </summary>
     public static readonly Coding Dilatation = new Coding
     {
@@ -4143,7 +4143,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Insulinoma
     /// </summary>
     public static readonly Coding Insulinoma = new Coding
     {
@@ -4152,7 +4152,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hepatocellular carcinoma
     /// </summary>
     public static readonly Coding HepatocellularCarcinoma = new Coding
     {
@@ -4161,7 +4161,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// High level estrogen effect present
     /// </summary>
     public static readonly Coding HighLevelEstrogenEffectPresent = new Coding
     {
@@ -4170,7 +4170,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital deviation
     /// </summary>
     public static readonly Coding CongenitalDeviation = new Coding
     {
@@ -4179,7 +4179,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Seborrheic keratosis
     /// </summary>
     public static readonly Coding SeborrheicKeratosis = new Coding
     {
@@ -4188,7 +4188,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calcified nodule
     /// </summary>
     public static readonly Coding CalcifiedNodule = new Coding
     {
@@ -4197,7 +4197,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Claw-shaped deformity
     /// </summary>
     public static readonly Coding ClawShapedDeformity = new Coding
     {
@@ -4206,7 +4206,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ossifying fibroma, calcified structure
     /// </summary>
     public static readonly Coding OssifyingFibromaCalcifiedStructure = new Coding
     {
@@ -4215,7 +4215,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dysplastic platelet
     /// </summary>
     public static readonly Coding DysplasticPlatelet = new Coding
     {
@@ -4224,7 +4224,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spontaneous gangrene
     /// </summary>
     public static readonly Coding SpontaneousGangrene = new Coding
     {
@@ -4233,7 +4233,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Narrowed structure
     /// </summary>
     public static readonly Coding NarrowedStructure = new Coding
     {
@@ -4242,7 +4242,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral hyperplasia
     /// </summary>
     public static readonly Coding BilateralHyperplasia = new Coding
     {
@@ -4251,7 +4251,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Papule
     /// </summary>
     public static readonly Coding Papule = new Coding
     {
@@ -4260,7 +4260,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Traction diverticulum
     /// </summary>
     public static readonly Coding TractionDiverticulum = new Coding
     {
@@ -4269,7 +4269,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dysplasia
     /// </summary>
     public static readonly Coding Dysplasia = new Coding
     {
@@ -4278,7 +4278,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Burn injury with charring
     /// </summary>
     public static readonly Coding BurnInjuryWithCharring = new Coding
     {
@@ -4287,7 +4287,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Loss of fluid
     /// </summary>
     public static readonly Coding LossOfFluid = new Coding
     {
@@ -4296,7 +4296,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anomalous arterial connection
     /// </summary>
     public static readonly Coding AnomalousArterialConnection = new Coding
     {
@@ -4305,7 +4305,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deep caries
     /// </summary>
     public static readonly Coding DeepCaries = new Coding
     {
@@ -4314,7 +4314,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Healing ulcer
     /// </summary>
     public static readonly Coding HealingUlcer = new Coding
     {
@@ -4323,7 +4323,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endometrioid cystadenofibroma - borderline malignancy
     /// </summary>
     public static readonly Coding EndometrioidCystadenofibromaBorderlineMalignancy = new Coding
     {
@@ -4332,7 +4332,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Benign fibrous histiocytoma
     /// </summary>
     public static readonly Coding BenignFibrousHistiocytoma = new Coding
     {
@@ -4341,7 +4341,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibrous body
     /// </summary>
     public static readonly Coding FibrousBody = new Coding
     {
@@ -4350,7 +4350,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Papillary carcinoma
     /// </summary>
     public static readonly Coding PapillaryCarcinoma = new Coding
     {
@@ -4359,7 +4359,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute mucous inflammation
     /// </summary>
     public static readonly Coding AcuteMucousInflammation = new Coding
     {
@@ -4368,7 +4368,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retinoblastoma - differentiated
     /// </summary>
     public static readonly Coding RetinoblastomaDifferentiated = new Coding
     {
@@ -4377,7 +4377,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obstruction
     /// </summary>
     public static readonly Coding Obstruction = new Coding
     {
@@ -4386,7 +4386,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gliomatosis cerebri
     /// </summary>
     public static readonly Coding GliomatosisCerebri = new Coding
     {
@@ -4395,7 +4395,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Giant comedo
     /// </summary>
     public static readonly Coding GiantComedo = new Coding
     {
@@ -4404,7 +4404,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Juxtacortical chondrosarcoma
     /// </summary>
     public static readonly Coding JuxtacorticalChondrosarcoma = new Coding
     {
@@ -4413,7 +4413,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plasma cell inflammation
     /// </summary>
     public static readonly Coding PlasmaCellInflammation = new Coding
     {
@@ -4422,7 +4422,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Poststenotic dilatation
     /// </summary>
     public static readonly Coding PoststenoticDilatation = new Coding
     {
@@ -4431,7 +4431,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fold
     /// </summary>
     public static readonly Coding Fold = new Coding
     {
@@ -4440,7 +4440,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute ulcer
     /// </summary>
     public static readonly Coding AcuteUlcer = new Coding
     {
@@ -4449,7 +4449,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Melanocytoma
     /// </summary>
     public static readonly Coding Melanocytoma = new Coding
     {
@@ -4458,7 +4458,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anomalous venous drainage
     /// </summary>
     public static readonly Coding AnomalousVenousDrainage = new Coding
     {
@@ -4467,7 +4467,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Luteoma
     /// </summary>
     public static readonly Coding Luteoma = new Coding
     {
@@ -4476,7 +4476,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dislocation, incomplete
     /// </summary>
     public static readonly Coding DislocationIncomplete = new Coding
     {
@@ -4485,7 +4485,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atypical fibrous histiocytoma
     /// </summary>
     public static readonly Coding AtypicalFibrousHistiocytoma = new Coding
     {
@@ -4494,7 +4494,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Draining wound
     /// </summary>
     public static readonly Coding DrainingWound = new Coding
     {
@@ -4503,7 +4503,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macrofollicular adenoma
     /// </summary>
     public static readonly Coding MacrofollicularAdenoma = new Coding
     {
@@ -4512,7 +4512,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spontaneous amputated structure
     /// </summary>
     public static readonly Coding SpontaneousAmputatedStructure = new Coding
     {
@@ -4521,7 +4521,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Water-clear cell adenoma
     /// </summary>
     public static readonly Coding WaterClearCellAdenoma = new Coding
     {
@@ -4530,7 +4530,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chemical burn
     /// </summary>
     public static readonly Coding ChemicalBurn = new Coding
     {
@@ -4539,7 +4539,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-occlusive thrombus
     /// </summary>
     public static readonly Coding NonOcclusiveThrombus = new Coding
     {
@@ -4548,7 +4548,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multiple thromboembolism
     /// </summary>
     public static readonly Coding MultipleThromboembolism = new Coding
     {
@@ -4557,7 +4557,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gynandroblastoma
     /// </summary>
     public static readonly Coding Gynandroblastoma = new Coding
     {
@@ -4566,7 +4566,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Organizing inflammation
     /// </summary>
     public static readonly Coding OrganizingInflammation = new Coding
     {
@@ -4575,7 +4575,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Embryonal rest
     /// </summary>
     public static readonly Coding EmbryonalRest = new Coding
     {
@@ -4584,7 +4584,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiokeratoma
     /// </summary>
     public static readonly Coding Angiokeratoma = new Coding
     {
@@ -4593,7 +4593,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tart cell
     /// </summary>
     public static readonly Coding TartCell = new Coding
     {
@@ -4602,7 +4602,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dissecting aneurysm
     /// </summary>
     public static readonly Coding DissectingAneurysm = new Coding
     {
@@ -4611,7 +4611,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Secondary hypertrophy
     /// </summary>
     public static readonly Coding SecondaryHypertrophy = new Coding
     {
@@ -4620,7 +4620,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant odontogenic tumor
     /// </summary>
     public static readonly Coding MalignantOdontogenicTumor = new Coding
     {
@@ -4629,7 +4629,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Minor disruption
     /// </summary>
     public static readonly Coding MinorDisruption = new Coding
     {
@@ -4638,7 +4638,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyperkeratosis
     /// </summary>
     public static readonly Coding Hyperkeratosis = new Coding
     {
@@ -4647,7 +4647,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vasculitic eruption
     /// </summary>
     public static readonly Coding VasculiticEruption = new Coding
     {
@@ -4656,7 +4656,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Necrotizing granulomatous inflammation
     /// </summary>
     public static readonly Coding NecrotizingGranulomatousInflammation = new Coding
     {
@@ -4665,7 +4665,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Solid pseudopapillary tumor
     /// </summary>
     public static readonly Coding SolidPseudopapillaryTumor = new Coding
     {
@@ -4674,7 +4674,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// TCC - Transitional cell carcinoma
     /// </summary>
     public static readonly Coding TCCTransitionalCellCarcinoma = new Coding
     {
@@ -4683,7 +4683,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ameloblastic fibrosarcoma
     /// </summary>
     public static readonly Coding AmeloblasticFibrosarcoma = new Coding
     {
@@ -4692,7 +4692,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibrolipoma
     /// </summary>
     public static readonly Coding Fibrolipoma = new Coding
     {
@@ -4701,7 +4701,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Haploidy
     /// </summary>
     public static readonly Coding Haploidy = new Coding
     {
@@ -4710,7 +4710,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Basal cell adenoma
     /// </summary>
     public static readonly Coding BasalCellAdenoma = new Coding
     {
@@ -4719,7 +4719,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pseudo-obstruction
     /// </summary>
     public static readonly Coding PseudoObstruction = new Coding
     {
@@ -4728,7 +4728,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spindle cell lipoma
     /// </summary>
     public static readonly Coding SpindleCellLipoma = new Coding
     {
@@ -4737,7 +4737,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complete transposition
     /// </summary>
     public static readonly Coding CompleteTransposition = new Coding
     {
@@ -4746,7 +4746,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atypical gastric metaplasia
     /// </summary>
     public static readonly Coding AtypicalGastricMetaplasia = new Coding
     {
@@ -4755,7 +4755,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Basophilic degeneration
     /// </summary>
     public static readonly Coding BasophilicDegeneration = new Coding
     {
@@ -4764,7 +4764,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Major injury
     /// </summary>
     public static readonly Coding MajorInjury = new Coding
     {
@@ -4773,7 +4773,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Papillary cystadenocarcinoma
     /// </summary>
     public static readonly Coding PapillaryCystadenocarcinoma = new Coding
     {
@@ -4782,7 +4782,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wrinkled structure
     /// </summary>
     public static readonly Coding WrinkledStructure = new Coding
     {
@@ -4791,7 +4791,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hamartomatous polyp
     /// </summary>
     public static readonly Coding HamartomatousPolyp = new Coding
     {
@@ -4800,7 +4800,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Immunoproliferative small intestinal disease
     /// </summary>
     public static readonly Coding ImmunoproliferativeSmallIntestinalDisease = new Coding
     {
@@ -4809,7 +4809,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fracture, open, stellate
     /// </summary>
     public static readonly Coding FractureOpenStellate = new Coding
     {
@@ -4818,7 +4818,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Avulsion
     /// </summary>
     public static readonly Coding Avulsion = new Coding
     {
@@ -4827,7 +4827,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stricture
     /// </summary>
     public static readonly Coding Stricture = new Coding
     {
@@ -4836,7 +4836,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abnormal nuclear/cytoplasmic ratio
     /// </summary>
     public static readonly Coding AbnormalNuclearCytoplasmicRatio = new Coding
     {
@@ -4845,7 +4845,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endometrial gestational alteration
     /// </summary>
     public static readonly Coding EndometrialGestationalAlteration = new Coding
     {
@@ -4854,7 +4854,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Comedo
     /// </summary>
     public static readonly Coding Comedo = new Coding
     {
@@ -4863,7 +4863,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// von Meyenburg complex
     /// </summary>
     public static readonly Coding VonMeyenburgComplex = new Coding
     {
@@ -4872,7 +4872,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Postinflammatory hypopigmentation
     /// </summary>
     public static readonly Coding PostinflammatoryHypopigmentation = new Coding
     {
@@ -4881,7 +4881,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Progressive obstruction
     /// </summary>
     public static readonly Coding ProgressiveObstruction = new Coding
     {
@@ -4890,7 +4890,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Traction injury
     /// </summary>
     public static readonly Coding TractionInjury = new Coding
     {
@@ -4899,7 +4899,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myxoid liposarcoma
     /// </summary>
     public static readonly Coding MyxoidLiposarcoma = new Coding
     {
@@ -4908,7 +4908,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multiple infarcts
     /// </summary>
     public static readonly Coding MultipleInfarcts = new Coding
     {
@@ -4917,7 +4917,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bony callus
     /// </summary>
     public static readonly Coding BonyCallus = new Coding
     {
@@ -4926,7 +4926,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cervical mucous arborization
     /// </summary>
     public static readonly Coding CervicalMucousArborization = new Coding
     {
@@ -4935,7 +4935,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nodule
     /// </summary>
     public static readonly Coding Nodule = new Coding
     {
@@ -4944,7 +4944,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital multiseptation
     /// </summary>
     public static readonly Coding CongenitalMultiseptation = new Coding
     {
@@ -4953,7 +4953,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Embryonal carcinoma
     /// </summary>
     public static readonly Coding EmbryonalCarcinoma = new Coding
     {
@@ -4962,7 +4962,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cutaneous T-cell lymphoma
     /// </summary>
     public static readonly Coding CutaneousTCellLymphoma = new Coding
     {
@@ -4971,7 +4971,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delayed union of fracture
     /// </summary>
     public static readonly Coding DelayedUnionOfFracture = new Coding
     {
@@ -4980,7 +4980,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Severe koilocytotic atypia
     /// </summary>
     public static readonly Coding SevereKoilocytoticAtypia = new Coding
     {
@@ -4989,7 +4989,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lipochrome histiocytosis
     /// </summary>
     public static readonly Coding LipochromeHistiocytosis = new Coding
     {
@@ -4998,7 +4998,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Follicular adenocarcinoma - well differentiated
     /// </summary>
     public static readonly Coding FollicularAdenocarcinomaWellDifferentiated = new Coding
     {
@@ -5007,7 +5007,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Edematous infarct
     /// </summary>
     public static readonly Coding EdematousInfarct = new Coding
     {
@@ -5016,7 +5016,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Severe columnar cell atypia
     /// </summary>
     public static readonly Coding SevereColumnarCellAtypia = new Coding
     {
@@ -5025,7 +5025,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Melanotic neurofibroma
     /// </summary>
     public static readonly Coding MelanoticNeurofibroma = new Coding
     {
@@ -5034,7 +5034,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Germinoma
     /// </summary>
     public static readonly Coding Germinoma = new Coding
     {
@@ -5043,7 +5043,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Embryonal carcinoma - polyembryonal type
     /// </summary>
     public static readonly Coding EmbryonalCarcinomaPolyembryonalType = new Coding
     {
@@ -5052,7 +5052,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myxosarcoma
     /// </summary>
     public static readonly Coding Myxosarcoma = new Coding
     {
@@ -5061,7 +5061,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Visceromegaly
     /// </summary>
     public static readonly Coding Visceromegaly = new Coding
     {
@@ -5070,7 +5070,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Villous adenocarcinoma
     /// </summary>
     public static readonly Coding VillousAdenocarcinoma = new Coding
     {
@@ -5079,7 +5079,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muscle fiber change
     /// </summary>
     public static readonly Coding MuscleFiberChange = new Coding
     {
@@ -5088,7 +5088,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Liposarcoma - differentiated
     /// </summary>
     public static readonly Coding LiposarcomaDifferentiated = new Coding
     {
@@ -5097,7 +5097,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Odontogenic cyst
     /// </summary>
     public static readonly Coding OdontogenicCyst = new Coding
     {
@@ -5106,7 +5106,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Compound odontoma
     /// </summary>
     public static readonly Coding CompoundOdontoma = new Coding
     {
@@ -5115,7 +5115,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Internal hyperostosis
     /// </summary>
     public static readonly Coding InternalHyperostosis = new Coding
     {
@@ -5124,7 +5124,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pancake cell
     /// </summary>
     public static readonly Coding PancakeCell = new Coding
     {
@@ -5133,7 +5133,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anisokaryosis
     /// </summary>
     public static readonly Coding Anisokaryosis = new Coding
     {
@@ -5142,7 +5142,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gunshot contusion ring
     /// </summary>
     public static readonly Coding GunshotContusionRing = new Coding
     {
@@ -5151,7 +5151,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Impacted fracture
     /// </summary>
     public static readonly Coding ImpactedFracture = new Coding
     {
@@ -5160,7 +5160,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Internal blind congenital fistula
     /// </summary>
     public static readonly Coding InternalBlindCongenitalFistula = new Coding
     {
@@ -5169,7 +5169,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibrin thrombus
     /// </summary>
     public static readonly Coding FibrinThrombus = new Coding
     {
@@ -5178,7 +5178,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// SCC - Squamous cell carcinoma
     /// </summary>
     public static readonly Coding SCCSquamousCellCarcinoma = new Coding
     {
@@ -5187,7 +5187,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital adhesion
     /// </summary>
     public static readonly Coding CongenitalAdhesion = new Coding
     {
@@ -5196,7 +5196,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute promyelocytic leukemia, t(15;17)(q22;q11-12)
     /// </summary>
     public static readonly Coding AcutePromyelocyticLeukemiaT1517Q22Q1112 = new Coding
     {
@@ -5205,7 +5205,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Angiomyosarcoma
     /// </summary>
     public static readonly Coding Angiomyosarcoma = new Coding
     {
@@ -5214,7 +5214,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arteriosclerosis
     /// </summary>
     public static readonly Coding Arteriosclerosis = new Coding
     {
@@ -5223,7 +5223,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Complex odontoma
     /// </summary>
     public static readonly Coding ComplexOdontoma = new Coding
     {
@@ -5232,7 +5232,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Central cores
     /// </summary>
     public static readonly Coding CentralCores = new Coding
     {
@@ -5241,7 +5241,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fatty degeneration
     /// </summary>
     public static readonly Coding FattyDegeneration = new Coding
     {
@@ -5250,7 +5250,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alzheimer glial change
     /// </summary>
     public static readonly Coding AlzheimerGlialChange = new Coding
     {
@@ -5259,7 +5259,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant pheochromocytoma
     /// </summary>
     public static readonly Coding MalignantPheochromocytoma = new Coding
     {
@@ -5268,7 +5268,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Keratin plug
     /// </summary>
     public static readonly Coding KeratinPlug = new Coding
     {
@@ -5277,7 +5277,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calcified atheroma
     /// </summary>
     public static readonly Coding CalcifiedAtheroma = new Coding
     {
@@ -5286,7 +5286,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Proliferative inflammation
     /// </summary>
     public static readonly Coding ProliferativeInflammation = new Coding
     {
@@ -5295,7 +5295,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Microglandular hyperplasia
     /// </summary>
     public static readonly Coding MicroglandularHyperplasia = new Coding
     {
@@ -5304,7 +5304,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Supernumerary deciduous tooth
     /// </summary>
     public static readonly Coding SupernumeraryDeciduousTooth = new Coding
     {
@@ -5313,7 +5313,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adenofibroma, no ICD-O subtype
     /// </summary>
     public static readonly Coding AdenofibromaNoICDOSubtype = new Coding
     {
@@ -5322,7 +5322,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prolapse
     /// </summary>
     public static readonly Coding Prolapse = new Coding
     {
@@ -5331,7 +5331,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wolffian body rest
     /// </summary>
     public static readonly Coding WolffianBodyRest = new Coding
     {
@@ -5340,7 +5340,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trabecular adenocarcinoma
     /// </summary>
     public static readonly Coding TrabecularAdenocarcinoma = new Coding
     {
@@ -5349,7 +5349,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mammary Paget's disease
     /// </summary>
     public static readonly Coding MammaryPagetQuoteSDisease = new Coding
     {
@@ -5358,7 +5358,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chromosome fragment
     /// </summary>
     public static readonly Coding ChromosomeFragment = new Coding
     {
@@ -5367,7 +5367,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tetrasomy
     /// </summary>
     public static readonly Coding Tetrasomy = new Coding
     {
@@ -5376,7 +5376,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyperemia
     /// </summary>
     public static readonly Coding Hyperemia = new Coding
     {
@@ -5385,7 +5385,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ductal carcinoma, cribriform type
     /// </summary>
     public static readonly Coding DuctalCarcinomaCribriformType = new Coding
     {
@@ -5394,7 +5394,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphatic edema
     /// </summary>
     public static readonly Coding LymphaticEdema = new Coding
     {
@@ -5403,7 +5403,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Proliferation
     /// </summary>
     public static readonly Coding Proliferation = new Coding
     {
@@ -5412,7 +5412,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Verruca
     /// </summary>
     public static readonly Coding Verruca = new Coding
     {
@@ -5421,7 +5421,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Endometrioid carcinoma
     /// </summary>
     public static readonly Coding EndometrioidCarcinoma = new Coding
     {
@@ -5430,7 +5430,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foetal adenoma
     /// </summary>
     public static readonly Coding FoetalAdenoma = new Coding
     {
@@ -5439,7 +5439,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Remyelination
     /// </summary>
     public static readonly Coding Remyelination = new Coding
     {
@@ -5448,7 +5448,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant biphasic mesothelioma
     /// </summary>
     public static readonly Coding MalignantBiphasicMesothelioma = new Coding
     {
@@ -5457,7 +5457,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiation injury with necrosis
     /// </summary>
     public static readonly Coding RadiationInjuryWithNecrosis = new Coding
     {
@@ -5466,7 +5466,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leukostasis
     /// </summary>
     public static readonly Coding Leukostasis = new Coding
     {
@@ -5475,7 +5475,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteolysis
     /// </summary>
     public static readonly Coding Osteolysis = new Coding
     {
@@ -5484,7 +5484,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Buhot cell
     /// </summary>
     public static readonly Coding BuhotCell = new Coding
     {
@@ -5493,7 +5493,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Junctional melanocytic nevus
     /// </summary>
     public static readonly Coding JunctionalMelanocyticNevus = new Coding
     {
@@ -5502,7 +5502,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fracture, incomplete
     /// </summary>
     public static readonly Coding FractureIncomplete = new Coding
     {
@@ -5511,7 +5511,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mesonephroid clear cell adenocarcinoma
     /// </summary>
     public static readonly Coding MesonephroidClearCellAdenocarcinoma = new Coding
     {
@@ -5520,7 +5520,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-infiltrating intraductal papillary adenocarcinoma
     /// </summary>
     public static readonly Coding NonInfiltratingIntraductalPapillaryAdenocarcinoma = new Coding
     {
@@ -5529,7 +5529,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antemortem injury
     /// </summary>
     public static readonly Coding AntemortemInjury = new Coding
     {
@@ -5538,7 +5538,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Basal cell tumor, uncertain whether benign or malignant
     /// </summary>
     public static readonly Coding BasalCellTumorUncertainWhetherBenignOrMalignant = new Coding
     {
@@ -5547,7 +5547,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Menstrual alteration of vagina
     /// </summary>
     public static readonly Coding MenstrualAlterationOfVagina = new Coding
     {
@@ -5556,7 +5556,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atypical lymphoid hyperplasia
     /// </summary>
     public static readonly Coding AtypicalLymphoidHyperplasia = new Coding
     {
@@ -5565,7 +5565,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anomalous origin of artery
     /// </summary>
     public static readonly Coding AnomalousOriginOfArtery = new Coding
     {
@@ -5574,7 +5574,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incomplete blind congenital fistula
     /// </summary>
     public static readonly Coding IncompleteBlindCongenitalFistula = new Coding
     {
@@ -5583,7 +5583,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carotid body tumor
     /// </summary>
     public static readonly Coding CarotidBodyTumor = new Coding
     {
@@ -5592,7 +5592,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hypernephroid tumor
     /// </summary>
     public static readonly Coding HypernephroidTumor = new Coding
     {
@@ -5601,7 +5601,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Capillary telangiectasia
     /// </summary>
     public static readonly Coding CapillaryTelangiectasia = new Coding
     {
@@ -5610,7 +5610,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Heavy metal pigmentation
     /// </summary>
     public static readonly Coding HeavyMetalPigmentation = new Coding
     {
@@ -5619,7 +5619,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Overriding structures
     /// </summary>
     public static readonly Coding OverridingStructures = new Coding
     {
@@ -5628,7 +5628,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carnification
     /// </summary>
     public static readonly Coding Carnification = new Coding
     {
@@ -5637,7 +5637,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mummification
     /// </summary>
     public static readonly Coding Mummification = new Coding
     {
@@ -5646,7 +5646,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fracture, open, impacted
     /// </summary>
     public static readonly Coding FractureOpenImpacted = new Coding
     {
@@ -5655,7 +5655,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rhabdomyosarcoma, no subtype
     /// </summary>
     public static readonly Coding RhabdomyosarcomaNoSubtype = new Coding
     {
@@ -5664,7 +5664,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Langhans giant cell
     /// </summary>
     public static readonly Coding LanghansGiantCell = new Coding
     {
@@ -5673,7 +5673,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute myelomonocytic leukemia
     /// </summary>
     public static readonly Coding AcuteMyelomonocyticLeukemia = new Coding
     {
@@ -5682,7 +5682,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anaplastic oligodendroglioma
     /// </summary>
     public static readonly Coding AnaplasticOligodendroglioma = new Coding
     {
@@ -5691,7 +5691,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Linear circular atrophy of lower extremities
     /// </summary>
     public static readonly Coding LinearCircularAtrophyOfLowerExtremities = new Coding
     {
@@ -5700,7 +5700,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibroepithelial polyp
     /// </summary>
     public static readonly Coding FibroepithelialPolyp = new Coding
     {
@@ -5709,7 +5709,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zahn infarct
     /// </summary>
     public static readonly Coding ZahnInfarct = new Coding
     {
@@ -5718,7 +5718,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Massive fibrosis
     /// </summary>
     public static readonly Coding MassiveFibrosis = new Coding
     {
@@ -5727,7 +5727,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Benign hemangioendothelioma
     /// </summary>
     public static readonly Coding BenignHemangioendothelioma = new Coding
     {
@@ -5736,7 +5736,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Diverticulum
     /// </summary>
     public static readonly Coding Diverticulum = new Coding
     {
@@ -5745,7 +5745,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vipoma, malignant
     /// </summary>
     public static readonly Coding VipomaMalignant = new Coding
     {
@@ -5754,7 +5754,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chondroma
     /// </summary>
     public static readonly Coding Chondroma = new Coding
     {
@@ -5763,7 +5763,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delayed union of stellate fracture
     /// </summary>
     public static readonly Coding DelayedUnionOfStellateFracture = new Coding
     {
@@ -5772,7 +5772,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Theca cell - granulosa cell tumor
     /// </summary>
     public static readonly Coding ThecaCellGranulosaCellTumor = new Coding
     {
@@ -5781,7 +5781,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bridging fibrosis
     /// </summary>
     public static readonly Coding BridgingFibrosis = new Coding
     {
@@ -5790,7 +5790,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epithelial hyperplasia
     /// </summary>
     public static readonly Coding EpithelialHyperplasia = new Coding
     {
@@ -5799,7 +5799,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ballooning degeneration
     /// </summary>
     public static readonly Coding BallooningDegeneration = new Coding
     {
@@ -5808,7 +5808,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mucocarcinoid tumor, malignant
     /// </summary>
     public static readonly Coding MucocarcinoidTumorMalignant = new Coding
     {
@@ -5817,7 +5817,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adenosarcoma
     /// </summary>
     public static readonly Coding Adenosarcoma = new Coding
     {
@@ -5826,7 +5826,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rhagades
     /// </summary>
     public static readonly Coding Rhagades = new Coding
     {
@@ -5835,7 +5835,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibrous nonunion
     /// </summary>
     public static readonly Coding FibrousNonunion = new Coding
     {
@@ -5844,7 +5844,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ferrocalcinotic deposition
     /// </summary>
     public static readonly Coding FerrocalcinoticDeposition = new Coding
     {
@@ -5853,7 +5853,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Minimal lesion
     /// </summary>
     public static readonly Coding MinimalLesion = new Coding
     {
@@ -5862,7 +5862,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibromuscular dysplasia
     /// </summary>
     public static readonly Coding FibromuscularDysplasia = new Coding
     {
@@ -5871,7 +5871,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transitional pineal tumor
     /// </summary>
     public static readonly Coding TransitionalPinealTumor = new Coding
     {
@@ -5880,7 +5880,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphoepithelioid lymphoma
     /// </summary>
     public static readonly Coding LymphoepithelioidLymphoma = new Coding
     {
@@ -5889,7 +5889,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral abnormal curvature
     /// </summary>
     public static readonly Coding LateralAbnormalCurvature = new Coding
     {
@@ -5898,7 +5898,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bilateral congenital failure of fusion
     /// </summary>
     public static readonly Coding BilateralCongenitalFailureOfFusion = new Coding
     {
@@ -5907,7 +5907,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sympathetic paraganglioma
     /// </summary>
     public static readonly Coding SympatheticParaganglioma = new Coding
     {
@@ -5916,7 +5916,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Persistent embryonic structure
     /// </summary>
     public static readonly Coding PersistentEmbryonicStructure = new Coding
     {
@@ -5925,7 +5925,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ruptured epithelial inclusion cyst
     /// </summary>
     public static readonly Coding RupturedEpithelialInclusionCyst = new Coding
     {
@@ -5934,7 +5934,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fused structure
     /// </summary>
     public static readonly Coding FusedStructure = new Coding
     {
@@ -5943,7 +5943,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Necrotizing inflammation
     /// </summary>
     public static readonly Coding NecrotizingInflammation = new Coding
     {
@@ -5952,7 +5952,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Animal bite
     /// </summary>
     public static readonly Coding AnimalBite = new Coding
     {
@@ -5961,7 +5961,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mild transitional cell atypia
     /// </summary>
     public static readonly Coding MildTransitionalCellAtypia = new Coding
     {
@@ -5970,7 +5970,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Jugulotympanic paraganglioma
     /// </summary>
     public static readonly Coding JugulotympanicParaganglioma = new Coding
     {
@@ -5979,7 +5979,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adenoma, no subtype
     /// </summary>
     public static readonly Coding AdenomaNoSubtype = new Coding
     {
@@ -5988,7 +5988,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Strumal carcinoid
     /// </summary>
     public static readonly Coding StrumalCarcinoid = new Coding
     {
@@ -5997,7 +5997,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Papillary cystadenoma
     /// </summary>
     public static readonly Coding PapillaryCystadenoma = new Coding
     {
@@ -6006,7 +6006,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coagulative necrosis
     /// </summary>
     public static readonly Coding CoagulativeNecrosis = new Coding
     {
@@ -6015,7 +6015,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sweat gland adenocarcinoma
     /// </summary>
     public static readonly Coding SweatGlandAdenocarcinoma = new Coding
     {
@@ -6024,7 +6024,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stellate spontaneous pseudoscars
     /// </summary>
     public static readonly Coding StellateSpontaneousPseudoscars = new Coding
     {
@@ -6033,7 +6033,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subacute lymphoid leukemia [obs]
     /// </summary>
     public static readonly Coding SubacuteLymphoidLeukemiaObs = new Coding
     {
@@ -6042,7 +6042,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Serous cyst
     /// </summary>
     public static readonly Coding SerousCyst = new Coding
     {
@@ -6051,7 +6051,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraductal papillomatosis
     /// </summary>
     public static readonly Coding IntraductalPapillomatosis = new Coding
     {
@@ -6060,7 +6060,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subchondral bone cyst
     /// </summary>
     public static readonly Coding SubchondralBoneCyst = new Coding
     {
@@ -6069,7 +6069,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Piecemeal necrosis
     /// </summary>
     public static readonly Coding PiecemealNecrosis = new Coding
     {
@@ -6078,7 +6078,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atypical hyperplasia
     /// </summary>
     public static readonly Coding AtypicalHyperplasia = new Coding
     {
@@ -6087,7 +6087,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pulmonary adenomatosis
     /// </summary>
     public static readonly Coding PulmonaryAdenomatosis = new Coding
     {
@@ -6096,7 +6096,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Desmoplastic nodular medulloblastoma
     /// </summary>
     public static readonly Coding DesmoplasticNodularMedulloblastoma = new Coding
     {
@@ -6105,7 +6105,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant non-chromaffin paraganglioma
     /// </summary>
     public static readonly Coding MalignantNonChromaffinParaganglioma = new Coding
     {
@@ -6114,7 +6114,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fatty nevus
     /// </summary>
     public static readonly Coding FattyNevus = new Coding
     {
@@ -6123,7 +6123,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arteriolosclerosis with fibrinoid necrosis
     /// </summary>
     public static readonly Coding ArteriolosclerosisWithFibrinoidNecrosis = new Coding
     {
@@ -6132,7 +6132,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Demyelination
     /// </summary>
     public static readonly Coding Demyelination = new Coding
     {
@@ -6141,7 +6141,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital vascular anomaly
     /// </summary>
     public static readonly Coding CongenitalVascularAnomaly = new Coding
     {
@@ -6150,7 +6150,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Follicular papule
     /// </summary>
     public static readonly Coding FollicularPapule = new Coding
     {
@@ -6159,7 +6159,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemangioblastomatosis
     /// </summary>
     public static readonly Coding Hemangioblastomatosis = new Coding
     {
@@ -6168,7 +6168,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mixed teratoma and seminoma
     /// </summary>
     public static readonly Coding MixedTeratomaAndSeminoma = new Coding
     {
@@ -6177,7 +6177,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hematin pigmentation
     /// </summary>
     public static readonly Coding HematinPigmentation = new Coding
     {
@@ -6186,7 +6186,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medullary carcinoma
     /// </summary>
     public static readonly Coding MedullaryCarcinoma = new Coding
     {
@@ -6195,7 +6195,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reed-Sternberg cell
     /// </summary>
     public static readonly Coding ReedSternbergCell = new Coding
     {
@@ -6204,7 +6204,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inflammatory carcinoma
     /// </summary>
     public static readonly Coding InflammatoryCarcinoma = new Coding
     {
@@ -6213,7 +6213,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Trichofolliculoma
     /// </summary>
     public static readonly Coding Trichofolliculoma = new Coding
     {
@@ -6222,7 +6222,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fracture, ununited
     /// </summary>
     public static readonly Coding FractureUnunited = new Coding
     {
@@ -6231,7 +6231,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hematoidin pigmentation
     /// </summary>
     public static readonly Coding HematoidinPigmentation = new Coding
     {
@@ -6240,7 +6240,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic superficial ulcer
     /// </summary>
     public static readonly Coding ChronicSuperficialUlcer = new Coding
     {
@@ -6249,7 +6249,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mucinous adenoma
     /// </summary>
     public static readonly Coding MucinousAdenoma = new Coding
     {
@@ -6258,7 +6258,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant hemangioendothelioma
     /// </summary>
     public static readonly Coding MalignantHemangioendothelioma = new Coding
     {
@@ -6267,7 +6267,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delayed union of longitudinal fracture
     /// </summary>
     public static readonly Coding DelayedUnionOfLongitudinalFracture = new Coding
     {
@@ -6276,7 +6276,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Micromegakaryocyte
     /// </summary>
     public static readonly Coding Micromegakaryocyte = new Coding
     {
@@ -6285,7 +6285,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mild epithelial dysplasia
     /// </summary>
     public static readonly Coding MildEpithelialDysplasia = new Coding
     {
@@ -6294,7 +6294,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Degeneration
     /// </summary>
     public static readonly Coding Degeneration = new Coding
     {
@@ -6303,7 +6303,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cavernous hemangioma
     /// </summary>
     public static readonly Coding CavernousHemangioma = new Coding
     {
@@ -6312,7 +6312,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Generalized recession
     /// </summary>
     public static readonly Coding GeneralizedRecession = new Coding
     {
@@ -6321,7 +6321,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intracystic hyperplasia
     /// </summary>
     public static readonly Coding IntracysticHyperplasia = new Coding
     {
@@ -6330,7 +6330,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fracture, ununited, segmental
     /// </summary>
     public static readonly Coding FractureUnunitedSegmental = new Coding
     {
@@ -6339,7 +6339,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Menstrual involution of breast
     /// </summary>
     public static readonly Coding MenstrualInvolutionOfBreast = new Coding
     {
@@ -6348,7 +6348,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neuropil thread
     /// </summary>
     public static readonly Coding NeuropilThread = new Coding
     {
@@ -6357,7 +6357,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vascular wall degeneration
     /// </summary>
     public static readonly Coding VascularWallDegeneration = new Coding
     {
@@ -6366,7 +6366,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osteosarcoma in Paget disease of bone
     /// </summary>
     public static readonly Coding OsteosarcomaInPagetDiseaseOfBone = new Coding
     {
@@ -6375,7 +6375,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superficial injury
     /// </summary>
     public static readonly Coding SuperficialInjury = new Coding
     {
@@ -6384,7 +6384,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Subacute necrosis
     /// </summary>
     public static readonly Coding SubacuteNecrosis = new Coding
     {
@@ -6393,7 +6393,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Small non-cleaved cell
     /// </summary>
     public static readonly Coding SmallNonCleavedCell = new Coding
     {
@@ -6402,7 +6402,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Convoluted cell
     /// </summary>
     public static readonly Coding ConvolutedCell = new Coding
     {
@@ -6411,7 +6411,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atypical lobular hyperplasia
     /// </summary>
     public static readonly Coding AtypicalLobularHyperplasia = new Coding
     {
@@ -6420,7 +6420,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blister
     /// </summary>
     public static readonly Coding Blister = new Coding
     {
@@ -6429,7 +6429,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Histiocytoid hemangioma
     /// </summary>
     public static readonly Coding HistiocytoidHemangioma = new Coding
     {
@@ -6438,7 +6438,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Caseous necrosis
     /// </summary>
     public static readonly Coding CaseousNecrosis = new Coding
     {
@@ -6447,7 +6447,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bite
     /// </summary>
     public static readonly Coding Bite = new Coding
     {
@@ -6456,7 +6456,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bowing deformity
     /// </summary>
     public static readonly Coding BowingDeformity = new Coding
     {
@@ -6465,7 +6465,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nuclear degeneration
     /// </summary>
     public static readonly Coding NuclearDegeneration = new Coding
     {
@@ -6474,7 +6474,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Post-radiation cytologic changes with dysplasia
     /// </summary>
     public static readonly Coding PostRadiationCytologicChangesWithDysplasia = new Coding
     {
@@ -6483,7 +6483,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemiatrophy
     /// </summary>
     public static readonly Coding Hemiatrophy = new Coding
     {
@@ -6492,7 +6492,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sertoli-Leydig cell tumor, well differentiated
     /// </summary>
     public static readonly Coding SertoliLeydigCellTumorWellDifferentiated = new Coding
     {
@@ -6501,7 +6501,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lengthening of short arm
     /// </summary>
     public static readonly Coding LengtheningOfShortArm = new Coding
     {
@@ -6510,7 +6510,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rheumatic inflammation
     /// </summary>
     public static readonly Coding RheumaticInflammation = new Coding
     {
@@ -6519,7 +6519,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Traumatic dislocation of multiple joints
     /// </summary>
     public static readonly Coding TraumaticDislocationOfMultipleJoints = new Coding
     {
@@ -6528,7 +6528,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fracture, multiple, closed
     /// </summary>
     public static readonly Coding FractureMultipleClosed = new Coding
     {
@@ -6537,7 +6537,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prolactinoma
     /// </summary>
     public static readonly Coding Prolactinoma = new Coding
     {
@@ -6546,7 +6546,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Concentric hypertrophy
     /// </summary>
     public static readonly Coding ConcentricHypertrophy = new Coding
     {
@@ -6555,7 +6555,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant fibrous histiocytoma
     /// </summary>
     public static readonly Coding MalignantFibrousHistiocytoma = new Coding
     {
@@ -6564,7 +6564,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glandular necrotizing metaplasia
     /// </summary>
     public static readonly Coding GlandularNecrotizingMetaplasia = new Coding
     {
@@ -6573,7 +6573,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decidual alteration
     /// </summary>
     public static readonly Coding DecidualAlteration = new Coding
     {
@@ -6582,7 +6582,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Osmiophilic stain reaction
     /// </summary>
     public static readonly Coding OsmiophilicStainReaction = new Coding
     {
@@ -6591,7 +6591,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Communicating cerebrospinal fluid retention
     /// </summary>
     public static readonly Coding CommunicatingCerebrospinalFluidRetention = new Coding
     {
@@ -6600,7 +6600,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glomangiomyoma
     /// </summary>
     public static readonly Coding Glomangiomyoma = new Coding
     {
@@ -6609,7 +6609,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Basal cell adenocarcinoma
     /// </summary>
     public static readonly Coding BasalCellAdenocarcinoma = new Coding
     {
@@ -6618,7 +6618,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Regeneration
     /// </summary>
     public static readonly Coding Regeneration = new Coding
     {
@@ -6627,7 +6627,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Smudge cell
     /// </summary>
     public static readonly Coding SmudgeCell = new Coding
     {
@@ -6636,7 +6636,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Menstrual endometrium
     /// </summary>
     public static readonly Coding MenstrualEndometrium = new Coding
     {
@@ -6645,7 +6645,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lipolysis
     /// </summary>
     public static readonly Coding Lipolysis = new Coding
     {
@@ -6654,7 +6654,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital incomplete expansion
     /// </summary>
     public static readonly Coding CongenitalIncompleteExpansion = new Coding
     {
@@ -6663,7 +6663,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tumor necrosis
     /// </summary>
     public static readonly Coding TumorNecrosis = new Coding
     {
@@ -6672,7 +6672,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Giant fibroadenoma
     /// </summary>
     public static readonly Coding GiantFibroadenoma = new Coding
     {
@@ -6681,7 +6681,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Odontogenic myxoma
     /// </summary>
     public static readonly Coding OdontogenicMyxoma = new Coding
     {
@@ -6690,7 +6690,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Purulent discharge
     /// </summary>
     public static readonly Coding PurulentDischarge = new Coding
     {
@@ -6699,7 +6699,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inflammatory pseudotumor
     /// </summary>
     public static readonly Coding InflammatoryPseudotumor = new Coding
     {
@@ -6708,7 +6708,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infiltrating lobular carcinoma and ductal carcinoma in situ
     /// </summary>
     public static readonly Coding InfiltratingLobularCarcinomaAndDuctalCarcinomaInSitu = new Coding
     {
@@ -6717,7 +6717,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gliosarcoma
     /// </summary>
     public static readonly Coding Gliosarcoma = new Coding
     {
@@ -6726,7 +6726,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myeloid sarcoma, morphology
     /// </summary>
     public static readonly Coding MyeloidSarcomaMorphology = new Coding
     {
@@ -6735,7 +6735,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intussusception
     /// </summary>
     public static readonly Coding Intussusception = new Coding
     {
@@ -6744,7 +6744,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gunshot wound, entrance, close shot
     /// </summary>
     public static readonly Coding GunshotWoundEntranceCloseShot = new Coding
     {
@@ -6753,7 +6753,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Triton tumor, malignant
     /// </summary>
     public static readonly Coding TritonTumorMalignant = new Coding
     {
@@ -6762,7 +6762,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Autophagic bodies
     /// </summary>
     public static readonly Coding AutophagicBodies = new Coding
     {
@@ -6771,7 +6771,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sweat retention
     /// </summary>
     public static readonly Coding SweatRetention = new Coding
     {
@@ -6780,7 +6780,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Waldenstrom macroglobulinemia
     /// </summary>
     public static readonly Coding WaldenstromMacroglobulinemia = new Coding
     {
@@ -6789,7 +6789,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hematoma
     /// </summary>
     public static readonly Coding Hematoma = new Coding
     {
@@ -6798,7 +6798,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// MGUS
     /// </summary>
     public static readonly Coding MGUS = new Coding
     {
@@ -6807,7 +6807,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital lymphangiomatosis
     /// </summary>
     public static readonly Coding CongenitalLymphangiomatosis = new Coding
     {
@@ -6816,7 +6816,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ruptured infarct
     /// </summary>
     public static readonly Coding RupturedInfarct = new Coding
     {
@@ -6825,7 +6825,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemangioblastic meningioma
     /// </summary>
     public static readonly Coding HemangioblasticMeningioma = new Coding
     {
@@ -6834,7 +6834,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Minor injury
     /// </summary>
     public static readonly Coding MinorInjury = new Coding
     {
@@ -6843,7 +6843,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Postmortem change
     /// </summary>
     public static readonly Coding PostmortemChange = new Coding
     {
@@ -6852,7 +6852,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Non-keratinizing squamous cell carcinoma - small cell
     /// </summary>
     public static readonly Coding NonKeratinizingSquamousCellCarcinomaSmallCell = new Coding
     {
@@ -6861,7 +6861,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Postinflammatory atrophy
     /// </summary>
     public static readonly Coding PostinflammatoryAtrophy = new Coding
     {
@@ -6870,7 +6870,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibrocystic change, proliferative type with atypia
     /// </summary>
     public static readonly Coding FibrocysticChangeProliferativeTypeWithAtypia = new Coding
     {
@@ -6879,7 +6879,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malacia
     /// </summary>
     public static readonly Coding Malacia = new Coding
     {
@@ -6888,7 +6888,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic empyema
     /// </summary>
     public static readonly Coding ChronicEmpyema = new Coding
     {
@@ -6897,7 +6897,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Secondary hyperplasia
     /// </summary>
     public static readonly Coding SecondaryHyperplasia = new Coding
     {
@@ -6906,7 +6906,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adenocarcinoma, no subtype
     /// </summary>
     public static readonly Coding AdenocarcinomaNoSubtype = new Coding
     {
@@ -6915,7 +6915,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tear - wound
     /// </summary>
     public static readonly Coding TearWound = new Coding
     {
@@ -6924,7 +6924,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radiation ulcer
     /// </summary>
     public static readonly Coding RadiationUlcer = new Coding
     {
@@ -6933,7 +6933,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Predecidual alteration
     /// </summary>
     public static readonly Coding PredecidualAlteration = new Coding
     {
@@ -6942,7 +6942,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gangrenous
     /// </summary>
     public static readonly Coding Gangrenous = new Coding
     {
@@ -6951,7 +6951,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemangiopericytic meningioma [obs]
     /// </summary>
     public static readonly Coding HemangiopericyticMeningiomaObs = new Coding
     {
@@ -6960,7 +6960,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adenocarcinoma in villous adenoma
     /// </summary>
     public static readonly Coding AdenocarcinomaInVillousAdenoma = new Coding
     {
@@ -6969,7 +6969,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// External spontaneous fistula
     /// </summary>
     public static readonly Coding ExternalSpontaneousFistula = new Coding
     {
@@ -6978,7 +6978,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wallerian degeneration
     /// </summary>
     public static readonly Coding WallerianDegeneration = new Coding
     {
@@ -6987,7 +6987,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Perforation
     /// </summary>
     public static readonly Coding Perforation = new Coding
     {
@@ -6996,7 +6996,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nodular hyperplasia
     /// </summary>
     public static readonly Coding NodularHyperplasia = new Coding
     {
@@ -7005,7 +7005,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Air embolus
     /// </summary>
     public static readonly Coding AirEmbolus = new Coding
     {
@@ -7014,7 +7014,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Delayed union of intraarticular fracture
     /// </summary>
     public static readonly Coding DelayedUnionOfIntraarticularFracture = new Coding
     {
@@ -7023,7 +7023,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lipogranuloma
     /// </summary>
     public static readonly Coding Lipogranuloma = new Coding
     {
@@ -7032,7 +7032,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alveolar adenocarcinoma
     /// </summary>
     public static readonly Coding AlveolarAdenocarcinoma = new Coding
     {
@@ -7041,7 +7041,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apocrine cystadenoma
     /// </summary>
     public static readonly Coding ApocrineCystadenoma = new Coding
     {
@@ -7050,7 +7050,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Muscle fiber hypertrophy, type II
     /// </summary>
     public static readonly Coding MuscleFiberHypertrophyTypeII = new Coding
     {
@@ -7059,7 +7059,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic suppurative inflammation
     /// </summary>
     public static readonly Coding ChronicSuppurativeInflammation = new Coding
     {
@@ -7068,7 +7068,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pregnancy luteoma
     /// </summary>
     public static readonly Coding PregnancyLuteoma = new Coding
     {
@@ -7077,7 +7077,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Surgically constructed organ
     /// </summary>
     public static readonly Coding SurgicallyConstructedOrgan = new Coding
     {
@@ -7086,7 +7086,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low-output external fistula
     /// </summary>
     public static readonly Coding LowOutputExternalFistula = new Coding
     {
@@ -7095,7 +7095,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ankylosis
     /// </summary>
     public static readonly Coding Ankylosis = new Coding
     {
@@ -7104,7 +7104,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cystic infarct
     /// </summary>
     public static readonly Coding CysticInfarct = new Coding
     {
@@ -7113,7 +7113,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psoriasiform eruption
     /// </summary>
     public static readonly Coding PsoriasiformEruption = new Coding
     {
@@ -7122,7 +7122,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clubbing
     /// </summary>
     public static readonly Coding Clubbing = new Coding
     {
@@ -7131,7 +7131,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Papillary mucinous cystadenoma
     /// </summary>
     public static readonly Coding PapillaryMucinousCystadenoma = new Coding
     {
@@ -7140,7 +7140,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sacculation
     /// </summary>
     public static readonly Coding Sacculation = new Coding
     {
@@ -7149,7 +7149,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Seminoma, no ICD-O subtype
     /// </summary>
     public static readonly Coding SeminomaNoICDOSubtype = new Coding
     {
@@ -7158,7 +7158,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Polycystic change
     /// </summary>
     public static readonly Coding PolycysticChange = new Coding
     {
@@ -7167,7 +7167,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Major multiple injuries
     /// </summary>
     public static readonly Coding MajorMultipleInjuries = new Coding
     {
@@ -7176,7 +7176,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dislocation, multiple, closed and open
     /// </summary>
     public static readonly Coding DislocationMultipleClosedAndOpen = new Coding
     {
@@ -7185,7 +7185,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Retention
     /// </summary>
     public static readonly Coding Retention = new Coding
     {
@@ -7194,7 +7194,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Focal epithelial hyperplasia
     /// </summary>
     public static readonly Coding FocalEpithelialHyperplasia = new Coding
     {
@@ -7203,7 +7203,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chromophobe adenoma
     /// </summary>
     public static readonly Coding ChromophobeAdenoma = new Coding
     {
@@ -7212,7 +7212,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Foreign body giant cell granuloma
     /// </summary>
     public static readonly Coding ForeignBodyGiantCellGranuloma = new Coding
     {
@@ -7221,7 +7221,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral displacement
     /// </summary>
     public static readonly Coding LateralDisplacement = new Coding
     {
@@ -7230,7 +7230,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lipomatosis
     /// </summary>
     public static readonly Coding Lipomatosis = new Coding
     {
@@ -7239,7 +7239,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epithelioid cell melanoma
     /// </summary>
     public static readonly Coding EpithelioidCellMelanoma = new Coding
     {
@@ -7248,7 +7248,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glandular and muscular hyperplasia
     /// </summary>
     public static readonly Coding GlandularAndMuscularHyperplasia = new Coding
     {
@@ -7257,7 +7257,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superficial wound
     /// </summary>
     public static readonly Coding SuperficialWound = new Coding
     {
@@ -7266,7 +7266,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Synovial sarcoma - spindle cell
     /// </summary>
     public static readonly Coding SynovialSarcomaSpindleCell = new Coding
     {
@@ -7275,7 +7275,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decreased melanin pigmentation
     /// </summary>
     public static readonly Coding DecreasedMelaninPigmentation = new Coding
     {
@@ -7284,7 +7284,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cementoma
     /// </summary>
     public static readonly Coding Cementoma = new Coding
     {
@@ -7293,7 +7293,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Secretory endometrium
     /// </summary>
     public static readonly Coding SecretoryEndometrium = new Coding
     {
@@ -7302,7 +7302,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amyloid tumor
     /// </summary>
     public static readonly Coding AmyloidTumor = new Coding
     {
@@ -7311,7 +7311,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eventration
     /// </summary>
     public static readonly Coding Eventration = new Coding
     {
@@ -7320,7 +7320,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blunt injury
     /// </summary>
     public static readonly Coding BluntInjury = new Coding
     {
@@ -7329,7 +7329,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Odontogenic tumor
     /// </summary>
     public static readonly Coding OdontogenicTumor = new Coding
     {
@@ -7338,7 +7338,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lipid-rich carcinoma
     /// </summary>
     public static readonly Coding LipidRichCarcinoma = new Coding
     {
@@ -7347,7 +7347,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Urate tophus
     /// </summary>
     public static readonly Coding UrateTophus = new Coding
     {
@@ -7356,7 +7356,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Benign tumor morphology
     /// </summary>
     public static readonly Coding BenignTumorMorphology = new Coding
     {
@@ -7365,7 +7365,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abnormal trabeculation
     /// </summary>
     public static readonly Coding AbnormalTrabeculation = new Coding
     {
@@ -7374,7 +7374,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Severe transitional cell atypia
     /// </summary>
     public static readonly Coding SevereTransitionalCellAtypia = new Coding
     {
@@ -7383,7 +7383,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Recurrent closed dislocation
     /// </summary>
     public static readonly Coding RecurrentClosedDislocation = new Coding
     {
@@ -7392,7 +7392,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mucoepidermoid carcinoma
     /// </summary>
     public static readonly Coding MucoepidermoidCarcinoma = new Coding
     {
@@ -7401,7 +7401,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multilobular chondroma and osteoma
     /// </summary>
     public static readonly Coding MultilobularChondromaAndOsteoma = new Coding
     {
@@ -7410,7 +7410,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bursal cyst
     /// </summary>
     public static readonly Coding BursalCyst = new Coding
     {
@@ -7419,7 +7419,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mass
     /// </summary>
     public static readonly Coding Mass = new Coding
     {
@@ -7428,7 +7428,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Functional dilatation
     /// </summary>
     public static readonly Coding FunctionalDilatation = new Coding
     {
@@ -7437,7 +7437,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eversion
     /// </summary>
     public static readonly Coding Eversion = new Coding
     {
@@ -7446,7 +7446,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anastomosis, heterocladic
     /// </summary>
     public static readonly Coding AnastomosisHeterocladic = new Coding
     {
@@ -7455,7 +7455,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Türk cell
     /// </summary>
     public static readonly Coding TurkCell = new Coding
     {
@@ -7464,7 +7464,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pacinian neurofibroma
     /// </summary>
     public static readonly Coding PacinianNeurofibroma = new Coding
     {
@@ -7473,7 +7473,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metastatic signet ring cell carcinoma
     /// </summary>
     public static readonly Coding MetastaticSignetRingCellCarcinoma = new Coding
     {
@@ -7482,7 +7482,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant mixed tumor, osteosarcomatous type
     /// </summary>
     public static readonly Coding MalignantMixedTumorOsteosarcomatousType = new Coding
     {
@@ -7491,7 +7491,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atypical glandular cells of undetermined significance
     /// </summary>
     public static readonly Coding AtypicalGlandularCellsOfUndeterminedSignificance = new Coding
     {
@@ -7500,7 +7500,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chromocenter alteration
     /// </summary>
     public static readonly Coding ChromocenterAlteration = new Coding
     {
@@ -7509,7 +7509,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Obstruction by torsion and angulation, combined mechanism
     /// </summary>
     public static readonly Coding ObstructionByTorsionAndAngulationCombinedMechanism = new Coding
     {
@@ -7518,7 +7518,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute inflammation
     /// </summary>
     public static readonly Coding AcuteInflammation = new Coding
     {
@@ -7527,7 +7527,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Papulovesicular eruption
     /// </summary>
     public static readonly Coding PapulovesicularEruption = new Coding
     {
@@ -7536,7 +7536,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital failure of fusion
     /// </summary>
     public static readonly Coding CongenitalFailureOfFusion = new Coding
     {
@@ -7545,7 +7545,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mixed subependymoma-ependymoma
     /// </summary>
     public static readonly Coding MixedSubependymomaEpendymoma = new Coding
     {
@@ -7554,7 +7554,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Scirrhous adenocarcinoma
     /// </summary>
     public static readonly Coding ScirrhousAdenocarcinoma = new Coding
     {
@@ -7563,7 +7563,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metastatic adenocarcinoma
     /// </summary>
     public static readonly Coding MetastaticAdenocarcinoma = new Coding
     {
@@ -7572,7 +7572,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital dextrorotation
     /// </summary>
     public static readonly Coding CongenitalDextrorotation = new Coding
     {
@@ -7581,7 +7581,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tubular adenocarcinoma
     /// </summary>
     public static readonly Coding TubularAdenocarcinoma = new Coding
     {
@@ -7590,7 +7590,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mesonephric duct hyperplasia
     /// </summary>
     public static readonly Coding MesonephricDuctHyperplasia = new Coding
     {
@@ -7599,7 +7599,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blister due to degeneration of basal cells
     /// </summary>
     public static readonly Coding BlisterDueToDegenerationOfBasalCells = new Coding
     {
@@ -7608,7 +7608,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dystrophy
     /// </summary>
     public static readonly Coding Dystrophy = new Coding
     {
@@ -7617,7 +7617,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Papillary adenocarcinoma
     /// </summary>
     public static readonly Coding PapillaryAdenocarcinoma = new Coding
     {
@@ -7626,7 +7626,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyperpigmentation
     /// </summary>
     public static readonly Coding Hyperpigmentation = new Coding
     {
@@ -7635,7 +7635,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sequestrum
     /// </summary>
     public static readonly Coding Sequestrum = new Coding
     {
@@ -7644,7 +7644,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Coil/whorled fibers
     /// </summary>
     public static readonly Coding CoilWhorledFibers = new Coding
     {
@@ -7653,7 +7653,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute obstruction
     /// </summary>
     public static readonly Coding AcuteObstruction = new Coding
     {
@@ -7662,7 +7662,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pleomorphism
     /// </summary>
     public static readonly Coding Pleomorphism = new Coding
     {
@@ -7671,7 +7671,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital protrusion
     /// </summary>
     public static readonly Coding CongenitalProtrusion = new Coding
     {
@@ -7680,7 +7680,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adenocarcinoma in situ in villous adenoma
     /// </summary>
     public static readonly Coding AdenocarcinomaInSituInVillousAdenoma = new Coding
     {
@@ -7689,7 +7689,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contraction bands
     /// </summary>
     public static readonly Coding ContractionBands = new Coding
     {
@@ -7698,7 +7698,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sezary syndrome
     /// </summary>
     public static readonly Coding SezarySyndrome = new Coding
     {
@@ -7707,7 +7707,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eccrine spiradenoma
     /// </summary>
     public static readonly Coding EccrineSpiradenoma = new Coding
     {
@@ -7716,7 +7716,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pitting edema
     /// </summary>
     public static readonly Coding PittingEdema = new Coding
     {
@@ -7725,7 +7725,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Benign interstitial cell tumor
     /// </summary>
     public static readonly Coding BenignInterstitialCellTumor = new Coding
     {
@@ -7734,7 +7734,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Primary cutaneous neuroendocrine carcinoma
     /// </summary>
     public static readonly Coding PrimaryCutaneousNeuroendocrineCarcinoma = new Coding
     {
@@ -7743,7 +7743,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibrous meningioma
     /// </summary>
     public static readonly Coding FibrousMeningioma = new Coding
     {
@@ -7752,7 +7752,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Benign synovioma
     /// </summary>
     public static readonly Coding BenignSynovioma = new Coding
     {
@@ -7761,7 +7761,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inferior closed dislocation
     /// </summary>
     public static readonly Coding InferiorClosedDislocation = new Coding
     {
@@ -7770,7 +7770,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Round calculus
     /// </summary>
     public static readonly Coding RoundCalculus = new Coding
     {
@@ -7779,7 +7779,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pautrier microabscess
     /// </summary>
     public static readonly Coding PautrierMicroabscess = new Coding
     {
@@ -7788,7 +7788,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Synechia
     /// </summary>
     public static readonly Coding Synechia = new Coding
     {
@@ -7797,7 +7797,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intraductal papilloma
     /// </summary>
     public static readonly Coding IntraductalPapilloma = new Coding
     {
@@ -7806,7 +7806,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Follicular adenocarcinoma
     /// </summary>
     public static readonly Coding FollicularAdenocarcinoma = new Coding
     {
@@ -7815,7 +7815,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute dilatation
     /// </summary>
     public static readonly Coding AcuteDilatation = new Coding
     {
@@ -7824,7 +7824,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bowenoid papulosis
     /// </summary>
     public static readonly Coding BowenoidPapulosis = new Coding
     {
@@ -7833,7 +7833,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dissecting hemorrhage
     /// </summary>
     public static readonly Coding DissectingHemorrhage = new Coding
     {
@@ -7842,7 +7842,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Traumatic eviscerated structure
     /// </summary>
     public static readonly Coding TraumaticEvisceratedStructure = new Coding
     {
@@ -7851,7 +7851,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fracture, multiple
     /// </summary>
     public static readonly Coding FractureMultiple = new Coding
     {
@@ -7860,7 +7860,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Canalized thrombus
     /// </summary>
     public static readonly Coding CanalizedThrombus = new Coding
     {
@@ -7869,7 +7869,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Schneiderian carcinoma
     /// </summary>
     public static readonly Coding SchneiderianCarcinoma = new Coding
     {
@@ -7878,7 +7878,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Granular atrophy
     /// </summary>
     public static readonly Coding GranularAtrophy = new Coding
     {
@@ -7887,7 +7887,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adenocarcinoma in tubulovillous adenoma
     /// </summary>
     public static readonly Coding AdenocarcinomaInTubulovillousAdenoma = new Coding
     {
@@ -7896,7 +7896,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Squamous cell carcinoma in situ with questionable stromal invasion
     /// </summary>
     public static readonly Coding SquamousCellCarcinomaInSituWithQuestionableStromalInvasion = new Coding
     {
@@ -7905,7 +7905,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pressure groove
     /// </summary>
     public static readonly Coding PressureGroove = new Coding
     {
@@ -7914,7 +7914,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cholesteatoma
     /// </summary>
     public static readonly Coding Cholesteatoma = new Coding
     {
@@ -7923,7 +7923,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cystic hyperplasia
     /// </summary>
     public static readonly Coding CysticHyperplasia = new Coding
     {
@@ -7932,7 +7932,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decompression injury
     /// </summary>
     public static readonly Coding DecompressionInjury = new Coding
     {
@@ -7941,7 +7941,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital growth disproportion
     /// </summary>
     public static readonly Coding CongenitalGrowthDisproportion = new Coding
     {
@@ -7950,7 +7950,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Basaloid carcinoma
     /// </summary>
     public static readonly Coding BasaloidCarcinoma = new Coding
     {
@@ -7959,7 +7959,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glial cell reaction
     /// </summary>
     public static readonly Coding GlialCellReaction = new Coding
     {
@@ -7968,7 +7968,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mucous membrane eruption
     /// </summary>
     public static readonly Coding MucousMembraneEruption = new Coding
     {
@@ -7977,7 +7977,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multiple internal injuries
     /// </summary>
     public static readonly Coding MultipleInternalInjuries = new Coding
     {
@@ -7986,7 +7986,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glandular-stromal asynchrony of endometrium
     /// </summary>
     public static readonly Coding GlandularStromalAsynchronyOfEndometrium = new Coding
     {
@@ -7995,7 +7995,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Small cell carcinoma, intermediate cell
     /// </summary>
     public static readonly Coding SmallCellCarcinomaIntermediateCell = new Coding
     {
@@ -8004,7 +8004,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Depressed structure
     /// </summary>
     public static readonly Coding DepressedStructure = new Coding
     {
@@ -8013,7 +8013,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pressure cone
     /// </summary>
     public static readonly Coding PressureCone = new Coding
     {
@@ -8022,7 +8022,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fracture, open, longitudinal
     /// </summary>
     public static readonly Coding FractureOpenLongitudinal = new Coding
     {
@@ -8031,7 +8031,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Severe inflammatory atypia
     /// </summary>
     public static readonly Coding SevereInflammatoryAtypia = new Coding
     {
@@ -8040,7 +8040,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mucus retention
     /// </summary>
     public static readonly Coding MucusRetention = new Coding
     {
@@ -8049,7 +8049,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deformity
     /// </summary>
     public static readonly Coding Deformity = new Coding
     {
@@ -8058,7 +8058,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oncocytic metaplasia
     /// </summary>
     public static readonly Coding OncocyticMetaplasia = new Coding
     {
@@ -8067,7 +8067,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Amphophilic stain reaction
     /// </summary>
     public static readonly Coding AmphophilicStainReaction = new Coding
     {
@@ -8076,7 +8076,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neoplasm, malignant, uncertain whether primary or metastatic
     /// </summary>
     public static readonly Coding NeoplasmMalignantUncertainWhetherPrimaryOrMetastatic = new Coding
     {
@@ -8085,7 +8085,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mild koilocytotic atypia
     /// </summary>
     public static readonly Coding MildKoilocytoticAtypia = new Coding
     {
@@ -8094,7 +8094,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibromyxosarcoma
     /// </summary>
     public static readonly Coding Fibromyxosarcoma = new Coding
     {
@@ -8103,7 +8103,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Granulomatous inflammation
     /// </summary>
     public static readonly Coding GranulomatousInflammation = new Coding
     {
@@ -8112,7 +8112,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Collagenolysis
     /// </summary>
     public static readonly Coding Collagenolysis = new Coding
     {
@@ -8121,7 +8121,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multiple adenomatous polyps
     /// </summary>
     public static readonly Coding MultipleAdenomatousPolyps = new Coding
     {
@@ -8130,7 +8130,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alpha heavy chain disease
     /// </summary>
     public static readonly Coding AlphaHeavyChainDisease = new Coding
     {
@@ -8139,7 +8139,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Membranous inflammation
     /// </summary>
     public static readonly Coding MembranousInflammation = new Coding
     {
@@ -8148,7 +8148,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dentinoma
     /// </summary>
     public static readonly Coding Dentinoma = new Coding
     {
@@ -8157,7 +8157,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Klatskin's tumor
     /// </summary>
     public static readonly Coding KlatskinQuoteSTumor = new Coding
     {
@@ -8166,7 +8166,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Necrosis
     /// </summary>
     public static readonly Coding Necrosis = new Coding
     {
@@ -8175,7 +8175,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sebum retention
     /// </summary>
     public static readonly Coding SebumRetention = new Coding
     {
@@ -8184,7 +8184,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Intrinsic obstruction
     /// </summary>
     public static readonly Coding IntrinsicObstruction = new Coding
     {
@@ -8193,7 +8193,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spongiosis
     /// </summary>
     public static readonly Coding Spongiosis = new Coding
     {
@@ -8202,7 +8202,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Metatypical carcinoma
     /// </summary>
     public static readonly Coding MetatypicalCarcinoma = new Coding
     {
@@ -8211,7 +8211,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Atypical intraductal hyperplasia
     /// </summary>
     public static readonly Coding AtypicalIntraductalHyperplasia = new Coding
     {
@@ -8220,7 +8220,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemoglobin cast
     /// </summary>
     public static readonly Coding HemoglobinCast = new Coding
     {
@@ -8229,7 +8229,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Desmoplastic fibroma
     /// </summary>
     public static readonly Coding DesmoplasticFibroma = new Coding
     {
@@ -8238,7 +8238,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macronucleus
     /// </summary>
     public static readonly Coding Macronucleus = new Coding
     {
@@ -8247,7 +8247,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Defect
     /// </summary>
     public static readonly Coding Defect = new Coding
     {
@@ -8256,7 +8256,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chronic hemorrhage
     /// </summary>
     public static readonly Coding ChronicHemorrhage = new Coding
     {
@@ -8265,7 +8265,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Carcinomatosis
     /// </summary>
     public static readonly Coding Carcinomatosis = new Coding
     {
@@ -8274,7 +8274,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lupus erythematosus cell
     /// </summary>
     public static readonly Coding LupusErythematosusCell = new Coding
     {
@@ -8283,7 +8283,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemosiderin pigmentation
     /// </summary>
     public static readonly Coding HemosiderinPigmentation = new Coding
     {
@@ -8292,7 +8292,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dilated pore of Winer
     /// </summary>
     public static readonly Coding DilatedPoreOfWiner = new Coding
     {
@@ -8301,7 +8301,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decidual cast
     /// </summary>
     public static readonly Coding DecidualCast = new Coding
     {
@@ -8310,7 +8310,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lymphoepithelial carcinoma
     /// </summary>
     public static readonly Coding LymphoepithelialCarcinoma = new Coding
     {
@@ -8319,7 +8319,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open dislocation, incomplete
     /// </summary>
     public static readonly Coding OpenDislocationIncomplete = new Coding
     {
@@ -8328,7 +8328,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inflammatory atypia
     /// </summary>
     public static readonly Coding InflammatoryAtypia = new Coding
     {
@@ -8337,7 +8337,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ball valve obstruction
     /// </summary>
     public static readonly Coding BallValveObstruction = new Coding
     {
@@ -8346,7 +8346,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Glomangioma
     /// </summary>
     public static readonly Coding Glomangioma = new Coding
     {
@@ -8355,7 +8355,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Calcified hematoma
     /// </summary>
     public static readonly Coding CalcifiedHematoma = new Coding
     {
@@ -8364,7 +8364,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congestive hypertrophy
     /// </summary>
     public static readonly Coding CongestiveHypertrophy = new Coding
     {
@@ -8373,7 +8373,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lipogenic pigmentation
     /// </summary>
     public static readonly Coding LipogenicPigmentation = new Coding
     {
@@ -8382,7 +8382,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Xanthine calculus
     /// </summary>
     public static readonly Coding XanthineCalculus = new Coding
     {
@@ -8391,7 +8391,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macrocytic normochromic erythrocyte
     /// </summary>
     public static readonly Coding MacrocyticNormochromicErythrocyte = new Coding
     {
@@ -8400,7 +8400,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Karyotype morphology
     /// </summary>
     public static readonly Coding KaryotypeMorphology = new Coding
     {
@@ -8409,7 +8409,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Linear oblique
     /// </summary>
     public static readonly Coding LinearOblique = new Coding
     {
@@ -8418,7 +8418,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open dislocation
     /// </summary>
     public static readonly Coding OpenDislocation = new Coding
     {
@@ -8427,7 +8427,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Localized edema
     /// </summary>
     public static readonly Coding LocalizedEdema = new Coding
     {
@@ -8436,7 +8436,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Incomplete transposition
     /// </summary>
     public static readonly Coding IncompleteTransposition = new Coding
     {
@@ -8445,7 +8445,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Paraganglioma
     /// </summary>
     public static readonly Coding Paraganglioma = new Coding
     {
@@ -8454,7 +8454,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Secretory alteration of vagina
     /// </summary>
     public static readonly Coding SecretoryAlterationOfVagina = new Coding
     {
@@ -8463,7 +8463,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alveolar adenoma
     /// </summary>
     public static readonly Coding AlveolarAdenoma = new Coding
     {
@@ -8472,7 +8472,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spindle cell nevus
     /// </summary>
     public static readonly Coding SpindleCellNevus = new Coding
     {
@@ -8481,7 +8481,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acentric chromosome
     /// </summary>
     public static readonly Coding AcentricChromosome = new Coding
     {
@@ -8490,7 +8490,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deposition of oxalate crystals
     /// </summary>
     public static readonly Coding DepositionOfOxalateCrystals = new Coding
     {
@@ -8499,7 +8499,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant mixed salivary gland tumor
     /// </summary>
     public static readonly Coding MalignantMixedSalivaryGlandTumor = new Coding
     {
@@ -8508,7 +8508,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Corpora amylacea
     /// </summary>
     public static readonly Coding CorporaAmylacea = new Coding
     {
@@ -8517,7 +8517,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hemolymphangioma
     /// </summary>
     public static readonly Coding Hemolymphangioma = new Coding
     {
@@ -8526,7 +8526,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Balloon cell nevus
     /// </summary>
     public static readonly Coding BalloonCellNevus = new Coding
     {
@@ -8535,7 +8535,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Moderate transitional cell atypia
     /// </summary>
     public static readonly Coding ModerateTransitionalCellAtypia = new Coding
     {
@@ -8544,7 +8544,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Peripheral T-cell lymphoma, AILD (Angioimmunoblastic Lymphadenopathy with Dysproteinemia)
     /// </summary>
     public static readonly Coding PeripheralTCellLymphomaAILDAngioimmunoblasticLymphadenopathyWithDysproteinemia = new Coding
     {
@@ -8553,7 +8553,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mixed salivary gland tumor
     /// </summary>
     public static readonly Coding MixedSalivaryGlandTumor = new Coding
     {
@@ -8562,7 +8562,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Actinic keratosis
     /// </summary>
     public static readonly Coding ActinicKeratosis = new Coding
     {
@@ -8571,7 +8571,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Autosomal chromosome mosaicism
     /// </summary>
     public static readonly Coding AutosomalChromosomeMosaicism = new Coding
     {
@@ -8580,7 +8580,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acute hemorrhage
     /// </summary>
     public static readonly Coding AcuteHemorrhage = new Coding
     {
@@ -8589,7 +8589,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fibromyxoma
     /// </summary>
     public static readonly Coding Fibromyxoma = new Coding
     {
@@ -8598,7 +8598,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Segmental demyelination
     /// </summary>
     public static readonly Coding SegmentalDemyelination = new Coding
     {
@@ -8607,7 +8607,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Choriocarcinoma combined with germ cell elements
     /// </summary>
     public static readonly Coding ChoriocarcinomaCombinedWithGermCellElements = new Coding
     {
@@ -8616,7 +8616,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Passive congestion
     /// </summary>
     public static readonly Coding PassiveCongestion = new Coding
     {
@@ -8625,7 +8625,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital cystic dilatation with accumulation of fluid
     /// </summary>
     public static readonly Coding CongenitalCysticDilatationWithAccumulationOfFluid = new Coding
     {
@@ -8634,7 +8634,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Open dislocation, complete
     /// </summary>
     public static readonly Coding OpenDislocationComplete = new Coding
     {
@@ -8643,7 +8643,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mosaicism
     /// </summary>
     public static readonly Coding Mosaicism = new Coding
     {
@@ -8652,7 +8652,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Papillary syringadenoma
     /// </summary>
     public static readonly Coding PapillarySyringadenoma = new Coding
     {
@@ -8661,7 +8661,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Proliferative cyclic alteration of breast
     /// </summary>
     public static readonly Coding ProliferativeCyclicAlterationOfBreast = new Coding
     {
@@ -8670,7 +8670,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mucin-producing adenocarcinoma
     /// </summary>
     public static readonly Coding MucinProducingAdenocarcinoma = new Coding
     {
@@ -8679,7 +8679,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chondroblastoma morphology
     /// </summary>
     public static readonly Coding ChondroblastomaMorphology = new Coding
     {
@@ -8688,7 +8688,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lobar atrophy
     /// </summary>
     public static readonly Coding LobarAtrophy = new Coding
     {
@@ -8697,7 +8697,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medullary adenoma
     /// </summary>
     public static readonly Coding MedullaryAdenoma = new Coding
     {
@@ -8706,7 +8706,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mild columnar cell atypia
     /// </summary>
     public static readonly Coding MildColumnarCellAtypia = new Coding
     {
@@ -8715,7 +8715,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant melanoma in junctional nevus
     /// </summary>
     public static readonly Coding MalignantMelanomaInJunctionalNevus = new Coding
     {
@@ -8724,7 +8724,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Squamous odontogenic tumor
     /// </summary>
     public static readonly Coding SquamousOdontogenicTumor = new Coding
     {
@@ -8733,7 +8733,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leukokeratosis
     /// </summary>
     public static readonly Coding Leukokeratosis = new Coding
     {
@@ -8742,7 +8742,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Staghorn calculus
     /// </summary>
     public static readonly Coding StaghornCalculus = new Coding
     {
@@ -8751,7 +8751,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eccentric hypertrophy
     /// </summary>
     public static readonly Coding EccentricHypertrophy = new Coding
     {
@@ -8760,7 +8760,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Niemann-Pick cell
     /// </summary>
     public static readonly Coding NiemannPickCell = new Coding
     {
@@ -8769,7 +8769,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Juxtacortical chondroma
     /// </summary>
     public static readonly Coding JuxtacorticalChondroma = new Coding
     {
@@ -8778,7 +8778,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Colloid cyst
     /// </summary>
     public static readonly Coding ColloidCyst = new Coding
     {
@@ -8787,7 +8787,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spermatocytic seminoma
     /// </summary>
     public static readonly Coding SpermatocyticSeminoma = new Coding
     {
@@ -8796,7 +8796,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inactive endometrium
     /// </summary>
     public static readonly Coding InactiveEndometrium = new Coding
     {
@@ -8805,7 +8805,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sarcomatosis
     /// </summary>
     public static readonly Coding Sarcomatosis = new Coding
     {
@@ -8814,7 +8814,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Senile hyperplasia
     /// </summary>
     public static readonly Coding SenileHyperplasia = new Coding
     {
@@ -8823,7 +8823,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Basophil adenoma
     /// </summary>
     public static readonly Coding BasophilAdenoma = new Coding
     {
@@ -8832,7 +8832,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Multiple polyps
     /// </summary>
     public static readonly Coding MultiplePolyps = new Coding
     {
@@ -8841,7 +8841,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Shift
     /// </summary>
     public static readonly Coding Shift = new Coding
     {
@@ -8850,7 +8850,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bronchogenic cyst
     /// </summary>
     public static readonly Coding BronchogenicCyst = new Coding
     {
@@ -8859,7 +8859,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Epithelial-myoepithelial carcinoma
     /// </summary>
     public static readonly Coding EpithelialMyoepithelialCarcinoma = new Coding
     {
@@ -8868,7 +8868,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Consolidation
     /// </summary>
     public static readonly Coding Consolidation = new Coding
     {
@@ -8877,7 +8877,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Elastofibroma
     /// </summary>
     public static readonly Coding Elastofibroma = new Coding
     {
@@ -8886,7 +8886,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Deposition of carbon
     /// </summary>
     public static readonly Coding DepositionOfCarbon = new Coding
     {
@@ -8895,7 +8895,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blue edema
     /// </summary>
     public static readonly Coding BlueEdema = new Coding
     {
@@ -8904,7 +8904,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wire loop lesion
     /// </summary>
     public static readonly Coding WireLoopLesion = new Coding
     {
@@ -8913,7 +8913,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hyperchromatism
     /// </summary>
     public static readonly Coding Hyperchromatism = new Coding
     {
@@ -8922,7 +8922,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital lateral deviation
     /// </summary>
     public static readonly Coding CongenitalLateralDeviation = new Coding
     {
@@ -8931,7 +8931,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Spindle cell sarcoma
     /// </summary>
     public static readonly Coding SpindleCellSarcoma = new Coding
     {
@@ -8940,7 +8940,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rice body
     /// </summary>
     public static readonly Coding RiceBody = new Coding
     {
@@ -8949,7 +8949,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leukedema
     /// </summary>
     public static readonly Coding Leukedema = new Coding
     {
@@ -8958,7 +8958,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Myxoid degeneration
     /// </summary>
     public static readonly Coding MyxoidDegeneration = new Coding
     {
@@ -8967,7 +8967,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Psammomatous schwannoma
     /// </summary>
     public static readonly Coding PsammomatousSchwannoma = new Coding
     {
@@ -8976,7 +8976,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wet gangrene
     /// </summary>
     public static readonly Coding WetGangrene = new Coding
     {
@@ -8985,7 +8985,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Malignant paraganglioma
     /// </summary>
     public static readonly Coding MalignantParaganglioma = new Coding
     {
@@ -8994,7 +8994,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Congenital accumulation of fluid
     /// </summary>
     public static readonly Coding CongenitalAccumulationOfFluid = new Coding
     {
@@ -9003,7 +9003,7 @@ namespace fhirCsR4.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mixed ductal-endocrine carcinoma
     /// </summary>
     public static readonly Coding MixedDuctalEndocrineCarcinoma = new Coding
     {
@@ -9018,9 +9018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEccrinePapillaryAdenoma = "10060008";
 
     /// <summary>
+    /// Literal for code: NONEEccrinePapillaryAdenoma
+    /// </summary>
+    public const string LiteralNONEEccrinePapillaryAdenoma = "http://snomed.info/sct#10060008";
+
+    /// <summary>
     /// Literal for code: MalignantGiantCellTumorOfBone
     /// </summary>
     public const string LiteralMalignantGiantCellTumorOfBone = "10069009";
+
+    /// <summary>
+    /// Literal for code: NONEMalignantGiantCellTumorOfBone
+    /// </summary>
+    public const string LiteralNONEMalignantGiantCellTumorOfBone = "http://snomed.info/sct#10069009";
 
     /// <summary>
     /// Literal for code: CongenitalPartialHypoplasia
@@ -9028,9 +9038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalPartialHypoplasia = "10115009";
 
     /// <summary>
+    /// Literal for code: NONECongenitalPartialHypoplasia
+    /// </summary>
+    public const string LiteralNONECongenitalPartialHypoplasia = "http://snomed.info/sct#10115009";
+
+    /// <summary>
     /// Literal for code: Accretion
     /// </summary>
     public const string LiteralAccretion = "10122001";
+
+    /// <summary>
+    /// Literal for code: NONEAccretion
+    /// </summary>
+    public const string LiteralNONEAccretion = "http://snomed.info/sct#10122001";
 
     /// <summary>
     /// Literal for code: ChiefCellAdenocarcinoma
@@ -9038,9 +9058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChiefCellAdenocarcinoma = "10146008";
 
     /// <summary>
+    /// Literal for code: NONEChiefCellAdenocarcinoma
+    /// </summary>
+    public const string LiteralNONEChiefCellAdenocarcinoma = "http://snomed.info/sct#10146008";
+
+    /// <summary>
     /// Literal for code: Xanthosis
     /// </summary>
     public const string LiteralXanthosis = "10219009";
+
+    /// <summary>
+    /// Literal for code: NONEXanthosis
+    /// </summary>
+    public const string LiteralNONEXanthosis = "http://snomed.info/sct#10219009";
 
     /// <summary>
     /// Literal for code: EpidermoidCarcinomaSpindleCell
@@ -9048,9 +9078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEpidermoidCarcinomaSpindleCell = "10288008";
 
     /// <summary>
+    /// Literal for code: NONEEpidermoidCarcinomaSpindleCell
+    /// </summary>
+    public const string LiteralNONEEpidermoidCarcinomaSpindleCell = "http://snomed.info/sct#10288008";
+
+    /// <summary>
     /// Literal for code: CongenitalGiantPigmentedNevus
     /// </summary>
     public const string LiteralCongenitalGiantPigmentedNevus = "10291008";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalGiantPigmentedNevus
+    /// </summary>
+    public const string LiteralNONECongenitalGiantPigmentedNevus = "http://snomed.info/sct#10291008";
 
     /// <summary>
     /// Literal for code: PapillaryCarcinomaInSitu
@@ -9058,9 +9098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPapillaryCarcinomaInSitu = "10376009";
 
     /// <summary>
+    /// Literal for code: NONEPapillaryCarcinomaInSitu
+    /// </summary>
+    public const string LiteralNONEPapillaryCarcinomaInSitu = "http://snomed.info/sct#10376009";
+
+    /// <summary>
     /// Literal for code: AnteriorOpenDislocation
     /// </summary>
     public const string LiteralAnteriorOpenDislocation = "1040005";
+
+    /// <summary>
+    /// Literal for code: NONEAnteriorOpenDislocation
+    /// </summary>
+    public const string LiteralNONEAnteriorOpenDislocation = "http://snomed.info/sct#1040005";
 
     /// <summary>
     /// Literal for code: SerousAtrophy
@@ -9068,9 +9118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSerousAtrophy = "10403004";
 
     /// <summary>
+    /// Literal for code: NONESerousAtrophy
+    /// </summary>
+    public const string LiteralNONESerousAtrophy = "http://snomed.info/sct#10403004";
+
+    /// <summary>
     /// Literal for code: GlomusTumor
     /// </summary>
     public const string LiteralGlomusTumor = "10438002";
+
+    /// <summary>
+    /// Literal for code: NONEGlomusTumor
+    /// </summary>
+    public const string LiteralNONEGlomusTumor = "http://snomed.info/sct#10438002";
 
     /// <summary>
     /// Literal for code: SpontaneousFistula
@@ -9078,9 +9138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpontaneousFistula = "10445002";
 
     /// <summary>
+    /// Literal for code: NONESpontaneousFistula
+    /// </summary>
+    public const string LiteralNONESpontaneousFistula = "http://snomed.info/sct#10445002";
+
+    /// <summary>
     /// Literal for code: Retroversion
     /// </summary>
     public const string LiteralRetroversion = "10505008";
+
+    /// <summary>
+    /// Literal for code: NONERetroversion
+    /// </summary>
+    public const string LiteralNONERetroversion = "http://snomed.info/sct#10505008";
 
     /// <summary>
     /// Literal for code: Stomatocyte
@@ -9088,9 +9158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStomatocyte = "10636005";
 
     /// <summary>
+    /// Literal for code: NONEStomatocyte
+    /// </summary>
+    public const string LiteralNONEStomatocyte = "http://snomed.info/sct#10636005";
+
+    /// <summary>
     /// Literal for code: BasophilicStainReaction
     /// </summary>
     public const string LiteralBasophilicStainReaction = "10637001";
+
+    /// <summary>
+    /// Literal for code: NONEBasophilicStainReaction
+    /// </summary>
+    public const string LiteralNONEBasophilicStainReaction = "http://snomed.info/sct#10637001";
 
     /// <summary>
     /// Literal for code: Plasmacytoma
@@ -9098,9 +9178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPlasmacytoma = "10639003";
 
     /// <summary>
+    /// Literal for code: NONEPlasmacytoma
+    /// </summary>
+    public const string LiteralNONEPlasmacytoma = "http://snomed.info/sct#10639003";
+
+    /// <summary>
     /// Literal for code: AtheromatousEmbolus
     /// </summary>
     public const string LiteralAtheromatousEmbolus = "10690002";
+
+    /// <summary>
+    /// Literal for code: NONEAtheromatousEmbolus
+    /// </summary>
+    public const string LiteralNONEAtheromatousEmbolus = "http://snomed.info/sct#10690002";
 
     /// <summary>
     /// Literal for code: MucinousAdenofibroma
@@ -9108,9 +9198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMucinousAdenofibroma = "10705005";
 
     /// <summary>
+    /// Literal for code: NONEMucinousAdenofibroma
+    /// </summary>
+    public const string LiteralNONEMucinousAdenofibroma = "http://snomed.info/sct#10705005";
+
+    /// <summary>
     /// Literal for code: MicronodularRegeneration
     /// </summary>
     public const string LiteralMicronodularRegeneration = "10873006";
+
+    /// <summary>
+    /// Literal for code: NONEMicronodularRegeneration
+    /// </summary>
+    public const string LiteralNONEMicronodularRegeneration = "http://snomed.info/sct#10873006";
 
     /// <summary>
     /// Literal for code: AmeloblasticFibroma
@@ -9118,9 +9218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAmeloblasticFibroma = "11063000";
 
     /// <summary>
+    /// Literal for code: NONEAmeloblasticFibroma
+    /// </summary>
+    public const string LiteralNONEAmeloblasticFibroma = "http://snomed.info/sct#11063000";
+
+    /// <summary>
     /// Literal for code: RacemoseHemangioma
     /// </summary>
     public const string LiteralRacemoseHemangioma = "11071001";
+
+    /// <summary>
+    /// Literal for code: NONERacemoseHemangioma
+    /// </summary>
+    public const string LiteralNONERacemoseHemangioma = "http://snomed.info/sct#11071001";
 
     /// <summary>
     /// Literal for code: MixedLiposarcoma
@@ -9128,9 +9238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMixedLiposarcoma = "11073003";
 
     /// <summary>
+    /// Literal for code: NONEMixedLiposarcoma
+    /// </summary>
+    public const string LiteralNONEMixedLiposarcoma = "http://snomed.info/sct#11073003";
+
+    /// <summary>
     /// Literal for code: NeuronalAchromasia
     /// </summary>
     public const string LiteralNeuronalAchromasia = "11080001";
+
+    /// <summary>
+    /// Literal for code: NONENeuronalAchromasia
+    /// </summary>
+    public const string LiteralNONENeuronalAchromasia = "http://snomed.info/sct#11080001";
 
     /// <summary>
     /// Literal for code: EpithelioidCellNevus
@@ -9138,9 +9258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEpithelioidCellNevus = "11099005";
 
     /// <summary>
+    /// Literal for code: NONEEpithelioidCellNevus
+    /// </summary>
+    public const string LiteralNONEEpithelioidCellNevus = "http://snomed.info/sct#11099005";
+
+    /// <summary>
     /// Literal for code: Dehiscence
     /// </summary>
     public const string LiteralDehiscence = "11108009";
+
+    /// <summary>
+    /// Literal for code: NONEDehiscence
+    /// </summary>
+    public const string LiteralNONEDehiscence = "http://snomed.info/sct#11108009";
 
     /// <summary>
     /// Literal for code: Dyskaryosis
@@ -9148,9 +9278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDyskaryosis = "11117009";
 
     /// <summary>
+    /// Literal for code: NONEDyskaryosis
+    /// </summary>
+    public const string LiteralNONEDyskaryosis = "http://snomed.info/sct#11117009";
+
+    /// <summary>
     /// Literal for code: AbnormallyShortGrowth
     /// </summary>
     public const string LiteralAbnormallyShortGrowth = "11182007";
+
+    /// <summary>
+    /// Literal for code: NONEAbnormallyShortGrowth
+    /// </summary>
+    public const string LiteralNONEAbnormallyShortGrowth = "http://snomed.info/sct#11182007";
 
     /// <summary>
     /// Literal for code: InterstitialEmphysema
@@ -9158,9 +9298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInterstitialEmphysema = "11211003";
 
     /// <summary>
+    /// Literal for code: NONEInterstitialEmphysema
+    /// </summary>
+    public const string LiteralNONEInterstitialEmphysema = "http://snomed.info/sct#11211003";
+
+    /// <summary>
     /// Literal for code: ChronicMembranousInflammation
     /// </summary>
     public const string LiteralChronicMembranousInflammation = "11224003";
+
+    /// <summary>
+    /// Literal for code: NONEChronicMembranousInflammation
+    /// </summary>
+    public const string LiteralNONEChronicMembranousInflammation = "http://snomed.info/sct#11224003";
 
     /// <summary>
     /// Literal for code: ClosedDislocationIncomplete
@@ -9168,9 +9318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClosedDislocationIncomplete = "11284000";
 
     /// <summary>
+    /// Literal for code: NONEClosedDislocationIncomplete
+    /// </summary>
+    public const string LiteralNONEClosedDislocationIncomplete = "http://snomed.info/sct#11284000";
+
+    /// <summary>
     /// Literal for code: AcidophilicBody
     /// </summary>
     public const string LiteralAcidophilicBody = "1129000";
+
+    /// <summary>
+    /// Literal for code: NONEAcidophilicBody
+    /// </summary>
+    public const string LiteralNONEAcidophilicBody = "http://snomed.info/sct#1129000";
 
     /// <summary>
     /// Literal for code: ModerateSquamousCellAtypia
@@ -9178,9 +9338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralModerateSquamousCellAtypia = "1138003";
 
     /// <summary>
+    /// Literal for code: NONEModerateSquamousCellAtypia
+    /// </summary>
+    public const string LiteralNONEModerateSquamousCellAtypia = "http://snomed.info/sct#1138003";
+
+    /// <summary>
     /// Literal for code: CapillaryLymphangioma
     /// </summary>
     public const string LiteralCapillaryLymphangioma = "11467009";
+
+    /// <summary>
+    /// Literal for code: NONECapillaryLymphangioma
+    /// </summary>
+    public const string LiteralNONECapillaryLymphangioma = "http://snomed.info/sct#11467009";
 
     /// <summary>
     /// Literal for code: HilusCellTumor
@@ -9188,9 +9358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHilusCellTumor = "11506001";
 
     /// <summary>
+    /// Literal for code: NONEHilusCellTumor
+    /// </summary>
+    public const string LiteralNONEHilusCellTumor = "http://snomed.info/sct#11506001";
+
+    /// <summary>
     /// Literal for code: AlgorMortis
     /// </summary>
     public const string LiteralAlgorMortis = "11514007";
+
+    /// <summary>
+    /// Literal for code: NONEAlgorMortis
+    /// </summary>
+    public const string LiteralNONEAlgorMortis = "http://snomed.info/sct#11514007";
 
     /// <summary>
     /// Literal for code: Mucinosis
@@ -9198,9 +9378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMucinosis = "11528001";
 
     /// <summary>
+    /// Literal for code: NONEMucinosis
+    /// </summary>
+    public const string LiteralNONEMucinosis = "http://snomed.info/sct#11528001";
+
+    /// <summary>
     /// Literal for code: ArteriovenousAneurysm
     /// </summary>
     public const string LiteralArteriovenousAneurysm = "11556006";
+
+    /// <summary>
+    /// Literal for code: NONEArteriovenousAneurysm
+    /// </summary>
+    public const string LiteralNONEArteriovenousAneurysm = "http://snomed.info/sct#11556006";
 
     /// <summary>
     /// Literal for code: Bubo
@@ -9208,9 +9398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBubo = "11585000";
 
     /// <summary>
+    /// Literal for code: NONEBubo
+    /// </summary>
+    public const string LiteralNONEBubo = "http://snomed.info/sct#11585000";
+
+    /// <summary>
     /// Literal for code: GunpowderBurn
     /// </summary>
     public const string LiteralGunpowderBurn = "11607000";
+
+    /// <summary>
+    /// Literal for code: NONEGunpowderBurn
+    /// </summary>
+    public const string LiteralNONEGunpowderBurn = "http://snomed.info/sct#11607000";
 
     /// <summary>
     /// Literal for code: Puncture
@@ -9218,9 +9418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPuncture = "11639007";
 
     /// <summary>
+    /// Literal for code: NONEPuncture
+    /// </summary>
+    public const string LiteralNONEPuncture = "http://snomed.info/sct#11639007";
+
+    /// <summary>
     /// Literal for code: GiantHypertrophy
     /// </summary>
     public const string LiteralGiantHypertrophy = "11650005";
+
+    /// <summary>
+    /// Literal for code: NONEGiantHypertrophy
+    /// </summary>
+    public const string LiteralNONEGiantHypertrophy = "http://snomed.info/sct#11650005";
 
     /// <summary>
     /// Literal for code: AdenoidCysticCarcinoma
@@ -9228,9 +9438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdenoidCysticCarcinoma = "11671000";
 
     /// <summary>
+    /// Literal for code: NONEAdenoidCysticCarcinoma
+    /// </summary>
+    public const string LiteralNONEAdenoidCysticCarcinoma = "http://snomed.info/sct#11671000";
+
+    /// <summary>
     /// Literal for code: ChromosomeMosaicism
     /// </summary>
     public const string LiteralChromosomeMosaicism = "11704001";
+
+    /// <summary>
+    /// Literal for code: NONEChromosomeMosaicism
+    /// </summary>
+    public const string LiteralNONEChromosomeMosaicism = "http://snomed.info/sct#11704001";
 
     /// <summary>
     /// Literal for code: MesoblasticNephroma
@@ -9238,9 +9458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMesoblasticNephroma = "11793003";
 
     /// <summary>
+    /// Literal for code: NONEMesoblasticNephroma
+    /// </summary>
+    public const string LiteralNONEMesoblasticNephroma = "http://snomed.info/sct#11793003";
+
+    /// <summary>
     /// Literal for code: FibrousNodule
     /// </summary>
     public const string LiteralFibrousNodule = "11854003";
+
+    /// <summary>
+    /// Literal for code: NONEFibrousNodule
+    /// </summary>
+    public const string LiteralNONEFibrousNodule = "http://snomed.info/sct#11854003";
 
     /// <summary>
     /// Literal for code: SutureLineOfSkin
@@ -9248,9 +9478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSutureLineOfSkin = "11858000";
 
     /// <summary>
+    /// Literal for code: NONESutureLineOfSkin
+    /// </summary>
+    public const string LiteralNONESutureLineOfSkin = "http://snomed.info/sct#11858000";
+
+    /// <summary>
     /// Literal for code: SuperiorOpenDislocation
     /// </summary>
     public const string LiteralSuperiorOpenDislocation = "1188006";
+
+    /// <summary>
+    /// Literal for code: NONESuperiorOpenDislocation
+    /// </summary>
+    public const string LiteralNONESuperiorOpenDislocation = "http://snomed.info/sct#1188006";
 
     /// <summary>
     /// Literal for code: CongenitalHyperrotation
@@ -9258,9 +9498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalHyperrotation = "11884006";
 
     /// <summary>
+    /// Literal for code: NONECongenitalHyperrotation
+    /// </summary>
+    public const string LiteralNONECongenitalHyperrotation = "http://snomed.info/sct#11884006";
+
+    /// <summary>
     /// Literal for code: Abiotrophy
     /// </summary>
     public const string LiteralAbiotrophy = "11889001";
+
+    /// <summary>
+    /// Literal for code: NONEAbiotrophy
+    /// </summary>
+    public const string LiteralNONEAbiotrophy = "http://snomed.info/sct#11889001";
 
     /// <summary>
     /// Literal for code: AcquiredValgusDeformity
@@ -9268,9 +9518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcquiredValgusDeformity = "11904005";
 
     /// <summary>
+    /// Literal for code: NONEAcquiredValgusDeformity
+    /// </summary>
+    public const string LiteralNONEAcquiredValgusDeformity = "http://snomed.info/sct#11904005";
+
+    /// <summary>
     /// Literal for code: BinucleatedPlasmablast
     /// </summary>
     public const string LiteralBinucleatedPlasmablast = "11908008";
+
+    /// <summary>
+    /// Literal for code: NONEBinucleatedPlasmablast
+    /// </summary>
+    public const string LiteralNONEBinucleatedPlasmablast = "http://snomed.info/sct#11908008";
 
     /// <summary>
     /// Literal for code: Ganglioneuromatosis
@@ -9278,9 +9538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGanglioneuromatosis = "12060004";
 
     /// <summary>
+    /// Literal for code: NONEGanglioneuromatosis
+    /// </summary>
+    public const string LiteralNONEGanglioneuromatosis = "http://snomed.info/sct#12060004";
+
+    /// <summary>
     /// Literal for code: EmbryonicCyst
     /// </summary>
     public const string LiteralEmbryonicCyst = "12143007";
+
+    /// <summary>
+    /// Literal for code: NONEEmbryonicCyst
+    /// </summary>
+    public const string LiteralNONEEmbryonicCyst = "http://snomed.info/sct#12143007";
 
     /// <summary>
     /// Literal for code: Lymphocyst
@@ -9288,9 +9558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLymphocyst = "12167004";
 
     /// <summary>
+    /// Literal for code: NONELymphocyst
+    /// </summary>
+    public const string LiteralNONELymphocyst = "http://snomed.info/sct#12167004";
+
+    /// <summary>
     /// Literal for code: GranularCellTumor
     /// </summary>
     public const string LiteralGranularCellTumor = "12169001";
+
+    /// <summary>
+    /// Literal for code: NONEGranularCellTumor
+    /// </summary>
+    public const string LiteralNONEGranularCellTumor = "http://snomed.info/sct#12169001";
 
     /// <summary>
     /// Literal for code: Rosette
@@ -9298,9 +9578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRosette = "12170000";
 
     /// <summary>
+    /// Literal for code: NONERosette
+    /// </summary>
+    public const string LiteralNONERosette = "http://snomed.info/sct#12170000";
+
+    /// <summary>
     /// Literal for code: FractureUnunitedStellate
     /// </summary>
     public const string LiteralFractureUnunitedStellate = "12191008";
+
+    /// <summary>
+    /// Literal for code: NONEFractureUnunitedStellate
+    /// </summary>
+    public const string LiteralNONEFractureUnunitedStellate = "http://snomed.info/sct#12191008";
 
     /// <summary>
     /// Literal for code: ChiefCellAdenoma
@@ -9308,9 +9598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChiefCellAdenoma = "12205003";
 
     /// <summary>
+    /// Literal for code: NONEChiefCellAdenoma
+    /// </summary>
+    public const string LiteralNONEChiefCellAdenoma = "http://snomed.info/sct#12205003";
+
+    /// <summary>
     /// Literal for code: ErythrocyteAbnormality
     /// </summary>
     public const string LiteralErythrocyteAbnormality = "12222001";
+
+    /// <summary>
+    /// Literal for code: NONEErythrocyteAbnormality
+    /// </summary>
+    public const string LiteralNONEErythrocyteAbnormality = "http://snomed.info/sct#12222001";
 
     /// <summary>
     /// Literal for code: RoundCellOsteosarcoma
@@ -9318,9 +9618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRoundCellOsteosarcoma = "12302002";
 
     /// <summary>
+    /// Literal for code: NONERoundCellOsteosarcoma
+    /// </summary>
+    public const string LiteralNONERoundCellOsteosarcoma = "http://snomed.info/sct#12302002";
+
+    /// <summary>
     /// Literal for code: MalignantAndroblastoma
     /// </summary>
     public const string LiteralMalignantAndroblastoma = "12323008";
+
+    /// <summary>
+    /// Literal for code: NONEMalignantAndroblastoma
+    /// </summary>
+    public const string LiteralNONEMalignantAndroblastoma = "http://snomed.info/sct#12323008";
 
     /// <summary>
     /// Literal for code: RetinoblastomaUndifferentiated
@@ -9328,9 +9638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRetinoblastomaUndifferentiated = "12354007";
 
     /// <summary>
+    /// Literal for code: NONERetinoblastomaUndifferentiated
+    /// </summary>
+    public const string LiteralNONERetinoblastomaUndifferentiated = "http://snomed.info/sct#12354007";
+
+    /// <summary>
     /// Literal for code: Purpura
     /// </summary>
     public const string LiteralPurpura = "12393003";
+
+    /// <summary>
+    /// Literal for code: NONEPurpura
+    /// </summary>
+    public const string LiteralNONEPurpura = "http://snomed.info/sct#12393003";
 
     /// <summary>
     /// Literal for code: PapillaryUrothelialCarcinoma
@@ -9338,9 +9658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPapillaryUrothelialCarcinoma = "12400006";
 
     /// <summary>
+    /// Literal for code: NONEPapillaryUrothelialCarcinoma
+    /// </summary>
+    public const string LiteralNONEPapillaryUrothelialCarcinoma = "http://snomed.info/sct#12400006";
+
+    /// <summary>
     /// Literal for code: Scar
     /// </summary>
     public const string LiteralScar = "12402003";
+
+    /// <summary>
+    /// Literal for code: NONEScar
+    /// </summary>
+    public const string LiteralNONEScar = "http://snomed.info/sct#12402003";
 
     /// <summary>
     /// Literal for code: TrophicGangrene
@@ -9348,9 +9678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrophicGangrene = "12404002";
 
     /// <summary>
+    /// Literal for code: NONETrophicGangrene
+    /// </summary>
+    public const string LiteralNONETrophicGangrene = "http://snomed.info/sct#12404002";
+
+    /// <summary>
     /// Literal for code: MicroinvasiveSquamousCellCarcinoma
     /// </summary>
     public const string LiteralMicroinvasiveSquamousCellCarcinoma = "12478003";
+
+    /// <summary>
+    /// Literal for code: NONEMicroinvasiveSquamousCellCarcinoma
+    /// </summary>
+    public const string LiteralNONEMicroinvasiveSquamousCellCarcinoma = "http://snomed.info/sct#12478003";
 
     /// <summary>
     /// Literal for code: AcquiredAbsence
@@ -9358,9 +9698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcquiredAbsence = "12535006";
 
     /// <summary>
+    /// Literal for code: NONEAcquiredAbsence
+    /// </summary>
+    public const string LiteralNONEAcquiredAbsence = "http://snomed.info/sct#12535006";
+
+    /// <summary>
     /// Literal for code: MuscleFiberAtrophyTypeII
     /// </summary>
     public const string LiteralMuscleFiberAtrophyTypeII = "12540003";
+
+    /// <summary>
+    /// Literal for code: NONEMuscleFiberAtrophyTypeII
+    /// </summary>
+    public const string LiteralNONEMuscleFiberAtrophyTypeII = "http://snomed.info/sct#12540003";
 
     /// <summary>
     /// Literal for code: PrimarySequestrum
@@ -9368,9 +9718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrimarySequestrum = "12560006";
 
     /// <summary>
+    /// Literal for code: NONEPrimarySequestrum
+    /// </summary>
+    public const string LiteralNONEPrimarySequestrum = "http://snomed.info/sct#12560006";
+
+    /// <summary>
     /// Literal for code: InternalFistula
     /// </summary>
     public const string LiteralInternalFistula = "12582004";
+
+    /// <summary>
+    /// Literal for code: NONEInternalFistula
+    /// </summary>
+    public const string LiteralNONEInternalFistula = "http://snomed.info/sct#12582004";
 
     /// <summary>
     /// Literal for code: LobularAdenoma
@@ -9378,9 +9738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLobularAdenoma = "12583009";
 
     /// <summary>
+    /// Literal for code: NONELobularAdenoma
+    /// </summary>
+    public const string LiteralNONELobularAdenoma = "http://snomed.info/sct#12583009";
+
+    /// <summary>
     /// Literal for code: ClearCellSarcomaExceptOfKidneyM89643
     /// </summary>
     public const string LiteralClearCellSarcomaExceptOfKidneyM89643 = "12622007";
+
+    /// <summary>
+    /// Literal for code: NONEClearCellSarcomaExceptOfKidneyM89643
+    /// </summary>
+    public const string LiteralNONEClearCellSarcomaExceptOfKidneyM89643 = "http://snomed.info/sct#12622007";
 
     /// <summary>
     /// Literal for code: FibroblasticOsteosarcoma
@@ -9388,9 +9758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFibroblasticOsteosarcoma = "12690005";
 
     /// <summary>
+    /// Literal for code: NONEFibroblasticOsteosarcoma
+    /// </summary>
+    public const string LiteralNONEFibroblasticOsteosarcoma = "http://snomed.info/sct#12690005";
+
+    /// <summary>
     /// Literal for code: Microcalcification
     /// </summary>
     public const string LiteralMicrocalcification = "12747003";
+
+    /// <summary>
+    /// Literal for code: NONEMicrocalcification
+    /// </summary>
+    public const string LiteralNONEMicrocalcification = "http://snomed.info/sct#12747003";
 
     /// <summary>
     /// Literal for code: NonsuppurativeInflammation
@@ -9398,9 +9778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonsuppurativeInflammation = "12794006";
 
     /// <summary>
+    /// Literal for code: NONENonsuppurativeInflammation
+    /// </summary>
+    public const string LiteralNONENonsuppurativeInflammation = "http://snomed.info/sct#12794006";
+
+    /// <summary>
     /// Literal for code: MultipleInjuries
     /// </summary>
     public const string LiteralMultipleInjuries = "12835000";
+
+    /// <summary>
+    /// Literal for code: NONEMultipleInjuries
+    /// </summary>
+    public const string LiteralNONEMultipleInjuries = "http://snomed.info/sct#12835000";
 
     /// <summary>
     /// Literal for code: Varix
@@ -9408,9 +9798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVarix = "12856003";
 
     /// <summary>
+    /// Literal for code: NONEVarix
+    /// </summary>
+    public const string LiteralNONEVarix = "http://snomed.info/sct#12856003";
+
+    /// <summary>
     /// Literal for code: SweatGlandTumor
     /// </summary>
     public const string LiteralSweatGlandTumor = "12933008";
+
+    /// <summary>
+    /// Literal for code: NONESweatGlandTumor
+    /// </summary>
+    public const string LiteralNONESweatGlandTumor = "http://snomed.info/sct#12933008";
 
     /// <summary>
     /// Literal for code: PrimitivePolarSpongioblastomaObs
@@ -9418,9 +9818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrimitivePolarSpongioblastomaObs = "12943006";
 
     /// <summary>
+    /// Literal for code: NONEPrimitivePolarSpongioblastomaObs
+    /// </summary>
+    public const string LiteralNONEPrimitivePolarSpongioblastomaObs = "http://snomed.info/sct#12943006";
+
+    /// <summary>
     /// Literal for code: AcidChemicalBurn
     /// </summary>
     public const string LiteralAcidChemicalBurn = "12944000";
+
+    /// <summary>
+    /// Literal for code: NONEAcidChemicalBurn
+    /// </summary>
+    public const string LiteralNONEAcidChemicalBurn = "http://snomed.info/sct#12944000";
 
     /// <summary>
     /// Literal for code: DislocationMultipleOpen
@@ -9428,9 +9838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDislocationMultipleOpen = "12973002";
 
     /// <summary>
+    /// Literal for code: NONEDislocationMultipleOpen
+    /// </summary>
+    public const string LiteralNONEDislocationMultipleOpen = "http://snomed.info/sct#12973002";
+
+    /// <summary>
     /// Literal for code: Neovascularization
     /// </summary>
     public const string LiteralNeovascularization = "13018008";
+
+    /// <summary>
+    /// Literal for code: NONENeovascularization
+    /// </summary>
+    public const string LiteralNONENeovascularization = "http://snomed.info/sct#13018008";
 
     /// <summary>
     /// Literal for code: PsammomaBodies
@@ -9438,9 +9858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPsammomaBodies = "13062004";
 
     /// <summary>
+    /// Literal for code: NONEPsammomaBodies
+    /// </summary>
+    public const string LiteralNONEPsammomaBodies = "http://snomed.info/sct#13062004";
+
+    /// <summary>
     /// Literal for code: WolffianDuctTumor
     /// </summary>
     public const string LiteralWolffianDuctTumor = "13071008";
+
+    /// <summary>
+    /// Literal for code: NONEWolffianDuctTumor
+    /// </summary>
+    public const string LiteralNONEWolffianDuctTumor = "http://snomed.info/sct#13071008";
 
     /// <summary>
     /// Literal for code: FractureOpenIncomplete
@@ -9448,9 +9878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFractureOpenIncomplete = "13129009";
 
     /// <summary>
+    /// Literal for code: NONEFractureOpenIncomplete
+    /// </summary>
+    public const string LiteralNONEFractureOpenIncomplete = "http://snomed.info/sct#13129009";
+
+    /// <summary>
     /// Literal for code: InjectionSite
     /// </summary>
     public const string LiteralInjectionSite = "13136005";
+
+    /// <summary>
+    /// Literal for code: NONEInjectionSite
+    /// </summary>
+    public const string LiteralNONEInjectionSite = "http://snomed.info/sct#13136005";
 
     /// <summary>
     /// Literal for code: MalignantGranularCellTumor
@@ -9458,9 +9898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMalignantGranularCellTumor = "13238004";
 
     /// <summary>
+    /// Literal for code: NONEMalignantGranularCellTumor
+    /// </summary>
+    public const string LiteralNONEMalignantGranularCellTumor = "http://snomed.info/sct#13238004";
+
+    /// <summary>
     /// Literal for code: Comminuted
     /// </summary>
     public const string LiteralComminuted = "13321001";
+
+    /// <summary>
+    /// Literal for code: NONEComminuted
+    /// </summary>
+    public const string LiteralNONEComminuted = "http://snomed.info/sct#13321001";
 
     /// <summary>
     /// Literal for code: Atrophic
@@ -9468,9 +9918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAtrophic = "13331008";
 
     /// <summary>
+    /// Literal for code: NONEAtrophic
+    /// </summary>
+    public const string LiteralNONEAtrophic = "http://snomed.info/sct#13331008";
+
+    /// <summary>
     /// Literal for code: BCCBasalCellCarcinoma
     /// </summary>
     public const string LiteralBCCBasalCellCarcinoma = "1338007";
+
+    /// <summary>
+    /// Literal for code: NONEBCCBasalCellCarcinoma
+    /// </summary>
+    public const string LiteralNONEBCCBasalCellCarcinoma = "http://snomed.info/sct#1338007";
 
     /// <summary>
     /// Literal for code: Pseudocyst
@@ -9478,9 +9938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPseudocyst = "13467000";
 
     /// <summary>
+    /// Literal for code: NONEPseudocyst
+    /// </summary>
+    public const string LiteralNONEPseudocyst = "http://snomed.info/sct#13467000";
+
+    /// <summary>
     /// Literal for code: Pannus
     /// </summary>
     public const string LiteralPannus = "13485007";
+
+    /// <summary>
+    /// Literal for code: NONEPannus
+    /// </summary>
+    public const string LiteralNONEPannus = "http://snomed.info/sct#13485007";
 
     /// <summary>
     /// Literal for code: MastCellSarcoma
@@ -9488,9 +9958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMastCellSarcoma = "13583002";
 
     /// <summary>
+    /// Literal for code: NONEMastCellSarcoma
+    /// </summary>
+    public const string LiteralNONEMastCellSarcoma = "http://snomed.info/sct#13583002";
+
+    /// <summary>
     /// Literal for code: CongenitalDecreaseInCellularity
     /// </summary>
     public const string LiteralCongenitalDecreaseInCellularity = "13593009";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalDecreaseInCellularity
+    /// </summary>
+    public const string LiteralNONECongenitalDecreaseInCellularity = "http://snomed.info/sct#13593009";
 
     /// <summary>
     /// Literal for code: GunshotWoundContact
@@ -9498,9 +9978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGunshotWoundContact = "13599008";
 
     /// <summary>
+    /// Literal for code: NONEGunshotWoundContact
+    /// </summary>
+    public const string LiteralNONEGunshotWoundContact = "http://snomed.info/sct#13599008";
+
+    /// <summary>
     /// Literal for code: PartialObstruction
     /// </summary>
     public const string LiteralPartialObstruction = "13705009";
+
+    /// <summary>
+    /// Literal for code: NONEPartialObstruction
+    /// </summary>
+    public const string LiteralNONEPartialObstruction = "http://snomed.info/sct#13705009";
 
     /// <summary>
     /// Literal for code: Thromboembolus
@@ -9508,9 +9998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThromboembolus = "13713005";
 
     /// <summary>
+    /// Literal for code: NONEThromboembolus
+    /// </summary>
+    public const string LiteralNONEThromboembolus = "http://snomed.info/sct#13713005";
+
+    /// <summary>
     /// Literal for code: CongenitalDislocation
     /// </summary>
     public const string LiteralCongenitalDislocation = "13810000";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalDislocation
+    /// </summary>
+    public const string LiteralNONECongenitalDislocation = "http://snomed.info/sct#13810000";
 
     /// <summary>
     /// Literal for code: HypertrophyOfBone
@@ -9518,9 +10018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHypertrophyOfBone = "13814009";
 
     /// <summary>
+    /// Literal for code: NONEHypertrophyOfBone
+    /// </summary>
+    public const string LiteralNONEHypertrophyOfBone = "http://snomed.info/sct#13814009";
+
+    /// <summary>
     /// Literal for code: Glomangiosarcoma
     /// </summary>
     public const string LiteralGlomangiosarcoma = "13875003";
+
+    /// <summary>
+    /// Literal for code: NONEGlomangiosarcoma
+    /// </summary>
+    public const string LiteralNONEGlomangiosarcoma = "http://snomed.info/sct#13875003";
 
     /// <summary>
     /// Literal for code: FatLadenMacrophage
@@ -9528,9 +10038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFatLadenMacrophage = "13901007";
 
     /// <summary>
+    /// Literal for code: NONEFatLadenMacrophage
+    /// </summary>
+    public const string LiteralNONEFatLadenMacrophage = "http://snomed.info/sct#13901007";
+
+    /// <summary>
     /// Literal for code: CongenitalTurningUpward
     /// </summary>
     public const string LiteralCongenitalTurningUpward = "13908001";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalTurningUpward
+    /// </summary>
+    public const string LiteralNONECongenitalTurningUpward = "http://snomed.info/sct#13908001";
 
     /// <summary>
     /// Literal for code: Wound
@@ -9538,9 +10058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWound = "13924000";
 
     /// <summary>
+    /// Literal for code: NONEWound
+    /// </summary>
+    public const string LiteralNONEWound = "http://snomed.info/sct#13924000";
+
+    /// <summary>
     /// Literal for code: DecalcifiedStructure
     /// </summary>
     public const string LiteralDecalcifiedStructure = "14093007";
+
+    /// <summary>
+    /// Literal for code: NONEDecalcifiedStructure
+    /// </summary>
+    public const string LiteralNONEDecalcifiedStructure = "http://snomed.info/sct#14093007";
 
     /// <summary>
     /// Literal for code: RacemoseAneurysm
@@ -9548,9 +10078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRacemoseAneurysm = "14156004";
 
     /// <summary>
+    /// Literal for code: NONERacemoseAneurysm
+    /// </summary>
+    public const string LiteralNONERacemoseAneurysm = "http://snomed.info/sct#14156004";
+
+    /// <summary>
     /// Literal for code: KoplikSpot
     /// </summary>
     public const string LiteralKoplikSpot = "14166007";
+
+    /// <summary>
+    /// Literal for code: NONEKoplikSpot
+    /// </summary>
+    public const string LiteralNONEKoplikSpot = "http://snomed.info/sct#14166007";
 
     /// <summary>
     /// Literal for code: PseudopalisadeFormation
@@ -9558,9 +10098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPseudopalisadeFormation = "14212006";
 
     /// <summary>
+    /// Literal for code: NONEPseudopalisadeFormation
+    /// </summary>
+    public const string LiteralNONEPseudopalisadeFormation = "http://snomed.info/sct#14212006";
+
+    /// <summary>
     /// Literal for code: InternalSpontaneousFistula
     /// </summary>
     public const string LiteralInternalSpontaneousFistula = "14217000";
+
+    /// <summary>
+    /// Literal for code: NONEInternalSpontaneousFistula
+    /// </summary>
+    public const string LiteralNONEInternalSpontaneousFistula = "http://snomed.info/sct#14217000";
 
     /// <summary>
     /// Literal for code: EmbryonalRhabdomyosarcomaPleomorphic
@@ -9568,9 +10118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmbryonalRhabdomyosarcomaPleomorphic = "14269005";
 
     /// <summary>
+    /// Literal for code: NONEEmbryonalRhabdomyosarcomaPleomorphic
+    /// </summary>
+    public const string LiteralNONEEmbryonalRhabdomyosarcomaPleomorphic = "http://snomed.info/sct#14269005";
+
+    /// <summary>
     /// Literal for code: M6B
     /// </summary>
     public const string LiteralM6B = "14317002";
+
+    /// <summary>
+    /// Literal for code: NONEM6B
+    /// </summary>
+    public const string LiteralNONEM6B = "http://snomed.info/sct#14317002";
 
     /// <summary>
     /// Literal for code: Angiomatosis
@@ -9578,9 +10138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAngiomatosis = "14350002";
 
     /// <summary>
+    /// Literal for code: NONEAngiomatosis
+    /// </summary>
+    public const string LiteralNONEAngiomatosis = "http://snomed.info/sct#14350002";
+
+    /// <summary>
     /// Literal for code: KoilocytoticAtypia
     /// </summary>
     public const string LiteralKoilocytoticAtypia = "14391000";
+
+    /// <summary>
+    /// Literal for code: NONEKoilocytoticAtypia
+    /// </summary>
+    public const string LiteralNONEKoilocytoticAtypia = "http://snomed.info/sct#14391000";
 
     /// <summary>
     /// Literal for code: ChromophobeCarcinoma
@@ -9588,9 +10158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChromophobeCarcinoma = "1443001";
 
     /// <summary>
+    /// Literal for code: NONEChromophobeCarcinoma
+    /// </summary>
+    public const string LiteralNONEChromophobeCarcinoma = "http://snomed.info/sct#1443001";
+
+    /// <summary>
     /// Literal for code: GeneralizedKeratoacanthoma
     /// </summary>
     public const string LiteralGeneralizedKeratoacanthoma = "14442007";
+
+    /// <summary>
+    /// Literal for code: NONEGeneralizedKeratoacanthoma
+    /// </summary>
+    public const string LiteralNONEGeneralizedKeratoacanthoma = "http://snomed.info/sct#14442007";
 
     /// <summary>
     /// Literal for code: MeningealSarcomatosis
@@ -9598,9 +10178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeningealSarcomatosis = "14494009";
 
     /// <summary>
+    /// Literal for code: NONEMeningealSarcomatosis
+    /// </summary>
+    public const string LiteralNONEMeningealSarcomatosis = "http://snomed.info/sct#14494009";
+
+    /// <summary>
     /// Literal for code: ColloidMilium
     /// </summary>
     public const string LiteralColloidMilium = "145009";
+
+    /// <summary>
+    /// Literal for code: NONEColloidMilium
+    /// </summary>
+    public const string LiteralNONEColloidMilium = "http://snomed.info/sct#145009";
 
     /// <summary>
     /// Literal for code: HodgkinLymphoma
@@ -9608,9 +10198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHodgkinLymphoma = "14537002";
 
     /// <summary>
+    /// Literal for code: NONEHodgkinLymphoma
+    /// </summary>
+    public const string LiteralNONEHodgkinLymphoma = "http://snomed.info/sct#14537002";
+
+    /// <summary>
     /// Literal for code: ChronicFibrinousInflammation
     /// </summary>
     public const string LiteralChronicFibrinousInflammation = "1454006";
+
+    /// <summary>
+    /// Literal for code: NONEChronicFibrinousInflammation
+    /// </summary>
+    public const string LiteralNONEChronicFibrinousInflammation = "http://snomed.info/sct#1454006";
 
     /// <summary>
     /// Literal for code: CysticDegeneration
@@ -9618,9 +10218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCysticDegeneration = "14696003";
 
     /// <summary>
+    /// Literal for code: NONECysticDegeneration
+    /// </summary>
+    public const string LiteralNONECysticDegeneration = "http://snomed.info/sct#14696003";
+
+    /// <summary>
     /// Literal for code: JetLesion
     /// </summary>
     public const string LiteralJetLesion = "14737000";
+
+    /// <summary>
+    /// Literal for code: NONEJetLesion
+    /// </summary>
+    public const string LiteralNONEJetLesion = "http://snomed.info/sct#14737000";
 
     /// <summary>
     /// Literal for code: FractureDelayedUnionOblique
@@ -9628,9 +10238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFractureDelayedUnionOblique = "14797003";
 
     /// <summary>
+    /// Literal for code: NONEFractureDelayedUnionOblique
+    /// </summary>
+    public const string LiteralNONEFractureDelayedUnionOblique = "http://snomed.info/sct#14797003";
+
+    /// <summary>
     /// Literal for code: NeoplasmMetastatic
     /// </summary>
     public const string LiteralNeoplasmMetastatic = "14799000";
+
+    /// <summary>
+    /// Literal for code: NONENeoplasmMetastatic
+    /// </summary>
+    public const string LiteralNONENeoplasmMetastatic = "http://snomed.info/sct#14799000";
 
     /// <summary>
     /// Literal for code: Triploidy
@@ -9638,9 +10258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTriploidy = "14847005";
 
     /// <summary>
+    /// Literal for code: NONETriploidy
+    /// </summary>
+    public const string LiteralNONETriploidy = "http://snomed.info/sct#14847005";
+
+    /// <summary>
     /// Literal for code: RasmussenQuoteSAneurysm
     /// </summary>
     public const string LiteralRasmussenQuoteSAneurysm = "14889002";
+
+    /// <summary>
+    /// Literal for code: NONERasmussenQuoteSAneurysm
+    /// </summary>
+    public const string LiteralNONERasmussenQuoteSAneurysm = "http://snomed.info/sct#14889002";
 
     /// <summary>
     /// Literal for code: VesiculobullousRash
@@ -9648,9 +10278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVesiculobullousRash = "14912003";
 
     /// <summary>
+    /// Literal for code: NONEVesiculobullousRash
+    /// </summary>
+    public const string LiteralNONEVesiculobullousRash = "http://snomed.info/sct#14912003";
+
+    /// <summary>
     /// Literal for code: MutilatingWound
     /// </summary>
     public const string LiteralMutilatingWound = "14962008";
+
+    /// <summary>
+    /// Literal for code: NONEMutilatingWound
+    /// </summary>
+    public const string LiteralNONEMutilatingWound = "http://snomed.info/sct#14962008";
 
     /// <summary>
     /// Literal for code: ChondrosarcomaMorphology
@@ -9658,9 +10298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChondrosarcomaMorphology = "14990007";
 
     /// <summary>
+    /// Literal for code: NONEChondrosarcomaMorphology
+    /// </summary>
+    public const string LiteralNONEChondrosarcomaMorphology = "http://snomed.info/sct#14990007";
+
+    /// <summary>
     /// Literal for code: NeurogenicUlcer
     /// </summary>
     public const string LiteralNeurogenicUlcer = "15074003";
+
+    /// <summary>
+    /// Literal for code: NONENeurogenicUlcer
+    /// </summary>
+    public const string LiteralNONENeurogenicUlcer = "http://snomed.info/sct#15074003";
 
     /// <summary>
     /// Literal for code: InvertedKeratosis
@@ -9668,9 +10318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInvertedKeratosis = "15112009";
 
     /// <summary>
+    /// Literal for code: NONEInvertedKeratosis
+    /// </summary>
+    public const string LiteralNONEInvertedKeratosis = "http://snomed.info/sct#15112009";
+
+    /// <summary>
     /// Literal for code: MelanoticNeuroectodermalTumor
     /// </summary>
     public const string LiteralMelanoticNeuroectodermalTumor = "1513001";
+
+    /// <summary>
+    /// Literal for code: NONEMelanoticNeuroectodermalTumor
+    /// </summary>
+    public const string LiteralNONEMelanoticNeuroectodermalTumor = "http://snomed.info/sct#1513001";
 
     /// <summary>
     /// Literal for code: AdenocarcinomaWithSquamousMetaplasia
@@ -9678,9 +10338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdenocarcinomaWithSquamousMetaplasia = "15176003";
 
     /// <summary>
+    /// Literal for code: NONEAdenocarcinomaWithSquamousMetaplasia
+    /// </summary>
+    public const string LiteralNONEAdenocarcinomaWithSquamousMetaplasia = "http://snomed.info/sct#15176003";
+
+    /// <summary>
     /// Literal for code: Plaque
     /// </summary>
     public const string LiteralPlaque = "1522000";
+
+    /// <summary>
+    /// Literal for code: NONEPlaque
+    /// </summary>
+    public const string LiteralNONEPlaque = "http://snomed.info/sct#1522000";
 
     /// <summary>
     /// Literal for code: FactitialUlcer
@@ -9688,9 +10358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFactitialUlcer = "15304008";
 
     /// <summary>
+    /// Literal for code: NONEFactitialUlcer
+    /// </summary>
+    public const string LiteralNONEFactitialUlcer = "http://snomed.info/sct#15304008";
+
+    /// <summary>
     /// Literal for code: SpontaneousPerforation
     /// </summary>
     public const string LiteralSpontaneousPerforation = "15418000";
+
+    /// <summary>
+    /// Literal for code: NONESpontaneousPerforation
+    /// </summary>
+    public const string LiteralNONESpontaneousPerforation = "http://snomed.info/sct#15418000";
 
     /// <summary>
     /// Literal for code: Hypoploidy
@@ -9698,9 +10378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHypoploidy = "15486006";
 
     /// <summary>
+    /// Literal for code: NONEHypoploidy
+    /// </summary>
+    public const string LiteralNONEHypoploidy = "http://snomed.info/sct#15486006";
+
+    /// <summary>
     /// Literal for code: SuperficialUlcer
     /// </summary>
     public const string LiteralSuperficialUlcer = "15498001";
+
+    /// <summary>
+    /// Literal for code: NONESuperficialUlcer
+    /// </summary>
+    public const string LiteralNONESuperficialUlcer = "http://snomed.info/sct#15498001";
 
     /// <summary>
     /// Literal for code: MolluscumBodies
@@ -9708,9 +10398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMolluscumBodies = "15503003";
 
     /// <summary>
+    /// Literal for code: NONEMolluscumBodies
+    /// </summary>
+    public const string LiteralNONEMolluscumBodies = "http://snomed.info/sct#15503003";
+
+    /// <summary>
     /// Literal for code: CombinedAbnormalCurvature
     /// </summary>
     public const string LiteralCombinedAbnormalCurvature = "15519005";
+
+    /// <summary>
+    /// Literal for code: NONECombinedAbnormalCurvature
+    /// </summary>
+    public const string LiteralNONECombinedAbnormalCurvature = "http://snomed.info/sct#15519005";
 
     /// <summary>
     /// Literal for code: Obliteration
@@ -9718,9 +10418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralObliteration = "15524008";
 
     /// <summary>
+    /// Literal for code: NONEObliteration
+    /// </summary>
+    public const string LiteralNONEObliteration = "http://snomed.info/sct#15524008";
+
+    /// <summary>
     /// Literal for code: BallThrombus
     /// </summary>
     public const string LiteralBallThrombus = "15556001";
+
+    /// <summary>
+    /// Literal for code: NONEBallThrombus
+    /// </summary>
+    public const string LiteralNONEBallThrombus = "http://snomed.info/sct#15556001";
 
     /// <summary>
     /// Literal for code: Microlithiasis
@@ -9728,9 +10438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicrolithiasis = "15588009";
 
     /// <summary>
+    /// Literal for code: NONEMicrolithiasis
+    /// </summary>
+    public const string LiteralNONEMicrolithiasis = "http://snomed.info/sct#15588009";
+
+    /// <summary>
     /// Literal for code: SwollenSarcoplasmicReticulum
     /// </summary>
     public const string LiteralSwollenSarcoplasmicReticulum = "1561008";
+
+    /// <summary>
+    /// Literal for code: NONESwollenSarcoplasmicReticulum
+    /// </summary>
+    public const string LiteralNONESwollenSarcoplasmicReticulum = "http://snomed.info/sct#1561008";
 
     /// <summary>
     /// Literal for code: HepatocellularCarcinomaFibrolamellar
@@ -9738,9 +10458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHepatocellularCarcinomaFibrolamellar = "15619004";
 
     /// <summary>
+    /// Literal for code: NONEHepatocellularCarcinomaFibrolamellar
+    /// </summary>
+    public const string LiteralNONEHepatocellularCarcinomaFibrolamellar = "http://snomed.info/sct#15619004";
+
+    /// <summary>
     /// Literal for code: PrimarySerousPapillaryCarcinomaOfPeritoneum
     /// </summary>
     public const string LiteralPrimarySerousPapillaryCarcinomaOfPeritoneum = "15674004";
+
+    /// <summary>
+    /// Literal for code: NONEPrimarySerousPapillaryCarcinomaOfPeritoneum
+    /// </summary>
+    public const string LiteralNONEPrimarySerousPapillaryCarcinomaOfPeritoneum = "http://snomed.info/sct#15674004";
 
     /// <summary>
     /// Literal for code: Tortuosity
@@ -9748,9 +10478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTortuosity = "15690004";
 
     /// <summary>
+    /// Literal for code: NONETortuosity
+    /// </summary>
+    public const string LiteralNONETortuosity = "http://snomed.info/sct#15690004";
+
+    /// <summary>
     /// Literal for code: BenignFibrousMesothelioma
     /// </summary>
     public const string LiteralBenignFibrousMesothelioma = "15702005";
+
+    /// <summary>
+    /// Literal for code: NONEBenignFibrousMesothelioma
+    /// </summary>
+    public const string LiteralNONEBenignFibrousMesothelioma = "http://snomed.info/sct#15702005";
 
     /// <summary>
     /// Literal for code: SubependymalGiantCellAstrocytoma
@@ -9758,9 +10498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubependymalGiantCellAstrocytoma = "1586004";
 
     /// <summary>
+    /// Literal for code: NONESubependymalGiantCellAstrocytoma
+    /// </summary>
+    public const string LiteralNONESubependymalGiantCellAstrocytoma = "http://snomed.info/sct#1586004";
+
+    /// <summary>
     /// Literal for code: ChromosomalTranslocation
     /// </summary>
     public const string LiteralChromosomalTranslocation = "15897004";
+
+    /// <summary>
+    /// Literal for code: NONEChromosomalTranslocation
+    /// </summary>
+    public const string LiteralNONEChromosomalTranslocation = "http://snomed.info/sct#15897004";
 
     /// <summary>
     /// Literal for code: BridgingNecrosis
@@ -9768,9 +10518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBridgingNecrosis = "15904002";
 
     /// <summary>
+    /// Literal for code: NONEBridgingNecrosis
+    /// </summary>
+    public const string LiteralNONEBridgingNecrosis = "http://snomed.info/sct#15904002";
+
+    /// <summary>
     /// Literal for code: CongenitalVascularProliferation
     /// </summary>
     public const string LiteralCongenitalVascularProliferation = "15937000";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalVascularProliferation
+    /// </summary>
+    public const string LiteralNONECongenitalVascularProliferation = "http://snomed.info/sct#15937000";
 
     /// <summary>
     /// Literal for code: MalignantThymoma
@@ -9778,9 +10538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMalignantThymoma = "15949004";
 
     /// <summary>
+    /// Literal for code: NONEMalignantThymoma
+    /// </summary>
+    public const string LiteralNONEMalignantThymoma = "http://snomed.info/sct#15949004";
+
+    /// <summary>
     /// Literal for code: GiantCellHistiocytoma
     /// </summary>
     public const string LiteralGiantCellHistiocytoma = "15960008";
+
+    /// <summary>
+    /// Literal for code: NONEGiantCellHistiocytoma
+    /// </summary>
+    public const string LiteralNONEGiantCellHistiocytoma = "http://snomed.info/sct#15960008";
 
     /// <summary>
     /// Literal for code: HypersegmentationOfNucleus
@@ -9788,9 +10558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHypersegmentationOfNucleus = "15967006";
 
     /// <summary>
+    /// Literal for code: NONEHypersegmentationOfNucleus
+    /// </summary>
+    public const string LiteralNONEHypersegmentationOfNucleus = "http://snomed.info/sct#15967006";
+
+    /// <summary>
     /// Literal for code: CementalDysplasia
     /// </summary>
     public const string LiteralCementalDysplasia = "15988002";
+
+    /// <summary>
+    /// Literal for code: NONECementalDysplasia
+    /// </summary>
+    public const string LiteralNONECementalDysplasia = "http://snomed.info/sct#15988002";
 
     /// <summary>
     /// Literal for code: FibrinDeposition
@@ -9798,9 +10578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFibrinDeposition = "16080000";
 
     /// <summary>
+    /// Literal for code: NONEFibrinDeposition
+    /// </summary>
+    public const string LiteralNONEFibrinDeposition = "http://snomed.info/sct#16080000";
+
+    /// <summary>
     /// Literal for code: MyxoidLeiomyosarcoma
     /// </summary>
     public const string LiteralMyxoidLeiomyosarcoma = "16090008";
+
+    /// <summary>
+    /// Literal for code: NONEMyxoidLeiomyosarcoma
+    /// </summary>
+    public const string LiteralNONEMyxoidLeiomyosarcoma = "http://snomed.info/sct#16090008";
 
     /// <summary>
     /// Literal for code: ThermalInjury
@@ -9808,9 +10598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThermalInjury = "161006";
 
     /// <summary>
+    /// Literal for code: NONEThermalInjury
+    /// </summary>
+    public const string LiteralNONEThermalInjury = "http://snomed.info/sct#161006";
+
+    /// <summary>
     /// Literal for code: SegmentalGlomerulosclerosis
     /// </summary>
     public const string LiteralSegmentalGlomerulosclerosis = "16104005";
+
+    /// <summary>
+    /// Literal for code: NONESegmentalGlomerulosclerosis
+    /// </summary>
+    public const string LiteralNONESegmentalGlomerulosclerosis = "http://snomed.info/sct#16104005";
 
     /// <summary>
     /// Literal for code: AdultRhabdomyoma
@@ -9818,9 +10618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdultRhabdomyoma = "16107003";
 
     /// <summary>
+    /// Literal for code: NONEAdultRhabdomyoma
+    /// </summary>
+    public const string LiteralNONEAdultRhabdomyoma = "http://snomed.info/sct#16107003";
+
+    /// <summary>
     /// Literal for code: OssifiedNodule
     /// </summary>
     public const string LiteralOssifiedNodule = "16163002";
+
+    /// <summary>
+    /// Literal for code: NONEOssifiedNodule
+    /// </summary>
+    public const string LiteralNONEOssifiedNodule = "http://snomed.info/sct#16163002";
 
     /// <summary>
     /// Literal for code: GastrinCellTumor
@@ -9828,9 +10638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGastrinCellTumor = "16189002";
 
     /// <summary>
+    /// Literal for code: NONEGastrinCellTumor
+    /// </summary>
+    public const string LiteralNONEGastrinCellTumor = "http://snomed.info/sct#16189002";
+
+    /// <summary>
     /// Literal for code: HerringQuoteSBodies
     /// </summary>
     public const string LiteralHerringQuoteSBodies = "16190006";
+
+    /// <summary>
+    /// Literal for code: NONEHerringQuoteSBodies
+    /// </summary>
+    public const string LiteralNONEHerringQuoteSBodies = "http://snomed.info/sct#16190006";
 
     /// <summary>
     /// Literal for code: GaucherCell
@@ -9838,9 +10658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGaucherCell = "16216007";
 
     /// <summary>
+    /// Literal for code: NONEGaucherCell
+    /// </summary>
+    public const string LiteralNONEGaucherCell = "http://snomed.info/sct#16216007";
+
+    /// <summary>
     /// Literal for code: MyxopapillaryEpendymoma
     /// </summary>
     public const string LiteralMyxopapillaryEpendymoma = "1623000";
+
+    /// <summary>
+    /// Literal for code: NONEMyxopapillaryEpendymoma
+    /// </summary>
+    public const string LiteralNONEMyxopapillaryEpendymoma = "http://snomed.info/sct#1623000";
 
     /// <summary>
     /// Literal for code: Fenestration
@@ -9848,9 +10678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFenestration = "16255008";
 
     /// <summary>
+    /// Literal for code: NONEFenestration
+    /// </summary>
+    public const string LiteralNONEFenestration = "http://snomed.info/sct#16255008";
+
+    /// <summary>
     /// Literal for code: Collapse
     /// </summary>
     public const string LiteralCollapse = "16277007";
+
+    /// <summary>
+    /// Literal for code: NONECollapse
+    /// </summary>
+    public const string LiteralNONECollapse = "http://snomed.info/sct#16277007";
 
     /// <summary>
     /// Literal for code: CongenitalOpacity
@@ -9858,9 +10698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalOpacity = "16301006";
 
     /// <summary>
+    /// Literal for code: NONECongenitalOpacity
+    /// </summary>
+    public const string LiteralNONECongenitalOpacity = "http://snomed.info/sct#16301006";
+
+    /// <summary>
     /// Literal for code: InappropriateLobularActivityOfBreast
     /// </summary>
     public const string LiteralInappropriateLobularActivityOfBreast = "16479008";
+
+    /// <summary>
+    /// Literal for code: NONEInappropriateLobularActivityOfBreast
+    /// </summary>
+    public const string LiteralNONEInappropriateLobularActivityOfBreast = "http://snomed.info/sct#16479008";
 
     /// <summary>
     /// Literal for code: RussellBody
@@ -9868,9 +10718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRussellBody = "16483008";
 
     /// <summary>
+    /// Literal for code: NONERussellBody
+    /// </summary>
+    public const string LiteralNONERussellBody = "http://snomed.info/sct#16483008";
+
+    /// <summary>
     /// Literal for code: BenignPhyllodesTumor
     /// </summary>
     public const string LiteralBenignPhyllodesTumor = "16566002";
+
+    /// <summary>
+    /// Literal for code: NONEBenignPhyllodesTumor
+    /// </summary>
+    public const string LiteralNONEBenignPhyllodesTumor = "http://snomed.info/sct#16566002";
 
     /// <summary>
     /// Literal for code: PosteriorOpenDislocation
@@ -9878,9 +10738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPosteriorOpenDislocation = "16578003";
 
     /// <summary>
+    /// Literal for code: NONEPosteriorOpenDislocation
+    /// </summary>
+    public const string LiteralNONEPosteriorOpenDislocation = "http://snomed.info/sct#16578003";
+
+    /// <summary>
     /// Literal for code: Separation
     /// </summary>
     public const string LiteralSeparation = "16640008";
+
+    /// <summary>
+    /// Literal for code: NONESeparation
+    /// </summary>
+    public const string LiteralNONESeparation = "http://snomed.info/sct#16640008";
 
     /// <summary>
     /// Literal for code: Anasarca
@@ -9888,9 +10758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnasarca = "16740003";
 
     /// <summary>
+    /// Literal for code: NONEAnasarca
+    /// </summary>
+    public const string LiteralNONEAnasarca = "http://snomed.info/sct#16740003";
+
+    /// <summary>
     /// Literal for code: PleomorphicCarcinoma
     /// </summary>
     public const string LiteralPleomorphicCarcinoma = "16741004";
+
+    /// <summary>
+    /// Literal for code: NONEPleomorphicCarcinoma
+    /// </summary>
+    public const string LiteralNONEPleomorphicCarcinoma = "http://snomed.info/sct#16741004";
 
     /// <summary>
     /// Literal for code: ChronicEosinophilicInflammation
@@ -9898,9 +10778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChronicEosinophilicInflammation = "16759001";
 
     /// <summary>
+    /// Literal for code: NONEChronicEosinophilicInflammation
+    /// </summary>
+    public const string LiteralNONEChronicEosinophilicInflammation = "http://snomed.info/sct#16759001";
+
+    /// <summary>
     /// Literal for code: MalignantCarotidBodyTumor
     /// </summary>
     public const string LiteralMalignantCarotidBodyTumor = "16822006";
+
+    /// <summary>
+    /// Literal for code: NONEMalignantCarotidBodyTumor
+    /// </summary>
+    public const string LiteralNONEMalignantCarotidBodyTumor = "http://snomed.info/sct#16822006";
 
     /// <summary>
     /// Literal for code: ClassicalHodgkinLymphomaLymphocyteDepletionDiffuseFibrosis
@@ -9908,9 +10798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClassicalHodgkinLymphomaLymphocyteDepletionDiffuseFibrosis = "16893006";
 
     /// <summary>
+    /// Literal for code: NONEClassicalHodgkinLymphomaLymphocyteDepletionDiffuseFibrosis
+    /// </summary>
+    public const string LiteralNONEClassicalHodgkinLymphomaLymphocyteDepletionDiffuseFibrosis = "http://snomed.info/sct#16893006";
+
+    /// <summary>
     /// Literal for code: AcralLentiginousMelanomaMalignant
     /// </summary>
     public const string LiteralAcralLentiginousMelanomaMalignant = "16974005";
+
+    /// <summary>
+    /// Literal for code: NONEAcralLentiginousMelanomaMalignant
+    /// </summary>
+    public const string LiteralNONEAcralLentiginousMelanomaMalignant = "http://snomed.info/sct#16974005";
 
     /// <summary>
     /// Literal for code: FoamCell
@@ -9918,9 +10818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFoamCell = "16980002";
 
     /// <summary>
+    /// Literal for code: NONEFoamCell
+    /// </summary>
+    public const string LiteralNONEFoamCell = "http://snomed.info/sct#16980002";
+
+    /// <summary>
     /// Literal for code: LateralOpenDislocation
     /// </summary>
     public const string LiteralLateralOpenDislocation = "17015005";
+
+    /// <summary>
+    /// Literal for code: NONELateralOpenDislocation
+    /// </summary>
+    public const string LiteralNONELateralOpenDislocation = "http://snomed.info/sct#17015005";
 
     /// <summary>
     /// Literal for code: SpillageOfFeces
@@ -9928,9 +10838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpillageOfFeces = "17201003";
 
     /// <summary>
+    /// Literal for code: NONESpillageOfFeces
+    /// </summary>
+    public const string LiteralNONESpillageOfFeces = "http://snomed.info/sct#17201003";
+
+    /// <summary>
     /// Literal for code: CarcinomaInPleomorphicAdenoma
     /// </summary>
     public const string LiteralCarcinomaInPleomorphicAdenoma = "17264009";
+
+    /// <summary>
+    /// Literal for code: NONECarcinomaInPleomorphicAdenoma
+    /// </summary>
+    public const string LiteralNONECarcinomaInPleomorphicAdenoma = "http://snomed.info/sct#17264009";
 
     /// <summary>
     /// Literal for code: FatEmbolus
@@ -9938,9 +10858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFatEmbolus = "17289003";
 
     /// <summary>
+    /// Literal for code: NONEFatEmbolus
+    /// </summary>
+    public const string LiteralNONEFatEmbolus = "http://snomed.info/sct#17289003";
+
+    /// <summary>
     /// Literal for code: CerebellarSarcoma
     /// </summary>
     public const string LiteralCerebellarSarcoma = "17302008";
+
+    /// <summary>
+    /// Literal for code: NONECerebellarSarcoma
+    /// </summary>
+    public const string LiteralNONECerebellarSarcoma = "http://snomed.info/sct#17302008";
 
     /// <summary>
     /// Literal for code: Transudate
@@ -9948,9 +10878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTransudate = "17307002";
 
     /// <summary>
+    /// Literal for code: NONETransudate
+    /// </summary>
+    public const string LiteralNONETransudate = "http://snomed.info/sct#17307002";
+
+    /// <summary>
     /// Literal for code: CongenitalNonRotation
     /// </summary>
     public const string LiteralCongenitalNonRotation = "17351006";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalNonRotation
+    /// </summary>
+    public const string LiteralNONECongenitalNonRotation = "http://snomed.info/sct#17351006";
 
     /// <summary>
     /// Literal for code: Anteversion
@@ -9958,9 +10898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnteversion = "1736008";
 
     /// <summary>
+    /// Literal for code: NONEAnteversion
+    /// </summary>
+    public const string LiteralNONEAnteversion = "http://snomed.info/sct#1736008";
+
+    /// <summary>
     /// Literal for code: CapillaryHemangiomaOfGranulationTissueType
     /// </summary>
     public const string LiteralCapillaryHemangiomaOfGranulationTissueType = "17372009";
+
+    /// <summary>
+    /// Literal for code: NONECapillaryHemangiomaOfGranulationTissueType
+    /// </summary>
+    public const string LiteralNONECapillaryHemangiomaOfGranulationTissueType = "http://snomed.info/sct#17372009";
 
     /// <summary>
     /// Literal for code: AtypicalGlandularHyperplasia
@@ -9968,9 +10918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAtypicalGlandularHyperplasia = "17474009";
 
     /// <summary>
+    /// Literal for code: NONEAtypicalGlandularHyperplasia
+    /// </summary>
+    public const string LiteralNONEAtypicalGlandularHyperplasia = "http://snomed.info/sct#17474009";
+
+    /// <summary>
     /// Literal for code: ClearCellAdenoma
     /// </summary>
     public const string LiteralClearCellAdenoma = "1752006";
+
+    /// <summary>
+    /// Literal for code: NONEClearCellAdenoma
+    /// </summary>
+    public const string LiteralNONEClearCellAdenoma = "http://snomed.info/sct#1752006";
 
     /// <summary>
     /// Literal for code: EmphysematousBleb
@@ -9978,9 +10938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEmphysematousBleb = "17569003";
 
     /// <summary>
+    /// Literal for code: NONEEmphysematousBleb
+    /// </summary>
+    public const string LiteralNONEEmphysematousBleb = "http://snomed.info/sct#17569003";
+
+    /// <summary>
     /// Literal for code: Metaplasia
     /// </summary>
     public const string LiteralMetaplasia = "17665002";
+
+    /// <summary>
+    /// Literal for code: NONEMetaplasia
+    /// </summary>
+    public const string LiteralNONEMetaplasia = "http://snomed.info/sct#17665002";
 
     /// <summary>
     /// Literal for code: AccumulationOfFluid
@@ -9988,9 +10958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAccumulationOfFluid = "17672001";
 
     /// <summary>
+    /// Literal for code: NONEAccumulationOfFluid
+    /// </summary>
+    public const string LiteralNONEAccumulationOfFluid = "http://snomed.info/sct#17672001";
+
+    /// <summary>
     /// Literal for code: ProteinCast
     /// </summary>
     public const string LiteralProteinCast = "17684004";
+
+    /// <summary>
+    /// Literal for code: NONEProteinCast
+    /// </summary>
+    public const string LiteralNONEProteinCast = "http://snomed.info/sct#17684004";
 
     /// <summary>
     /// Literal for code: ChediakHigashiCell
@@ -9998,9 +10978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChediakHigashiCell = "17734002";
 
     /// <summary>
+    /// Literal for code: NONEChediakHigashiCell
+    /// </summary>
+    public const string LiteralNONEChediakHigashiCell = "http://snomed.info/sct#17734002";
+
+    /// <summary>
     /// Literal for code: CurvilinearBodies
     /// </summary>
     public const string LiteralCurvilinearBodies = "17781001";
+
+    /// <summary>
+    /// Literal for code: NONECurvilinearBodies
+    /// </summary>
+    public const string LiteralNONECurvilinearBodies = "http://snomed.info/sct#17781001";
 
     /// <summary>
     /// Literal for code: AcuteNonLymphocyticLeukemia
@@ -10008,9 +10998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcuteNonLymphocyticLeukemia = "17788007";
 
     /// <summary>
+    /// Literal for code: NONEAcuteNonLymphocyticLeukemia
+    /// </summary>
+    public const string LiteralNONEAcuteNonLymphocyticLeukemia = "http://snomed.info/sct#17788007";
+
+    /// <summary>
     /// Literal for code: SudanophilicStainReaction
     /// </summary>
     public const string LiteralSudanophilicStainReaction = "17815009";
+
+    /// <summary>
+    /// Literal for code: NONESudanophilicStainReaction
+    /// </summary>
+    public const string LiteralNONESudanophilicStainReaction = "http://snomed.info/sct#17815009";
 
     /// <summary>
     /// Literal for code: RadiationInjuryWithFibrosis
@@ -10018,9 +11018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRadiationInjuryWithFibrosis = "1791001";
 
     /// <summary>
+    /// Literal for code: NONERadiationInjuryWithFibrosis
+    /// </summary>
+    public const string LiteralNONERadiationInjuryWithFibrosis = "http://snomed.info/sct#1791001";
+
+    /// <summary>
     /// Literal for code: Neuronevus
     /// </summary>
     public const string LiteralNeuronevus = "17930004";
+
+    /// <summary>
+    /// Literal for code: NONENeuronevus
+    /// </summary>
+    public const string LiteralNONENeuronevus = "http://snomed.info/sct#17930004";
 
     /// <summary>
     /// Literal for code: Arteriolosclerosis
@@ -10028,9 +11038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArteriolosclerosis = "17941002";
 
     /// <summary>
+    /// Literal for code: NONEArteriolosclerosis
+    /// </summary>
+    public const string LiteralNONEArteriolosclerosis = "http://snomed.info/sct#17941002";
+
+    /// <summary>
     /// Literal for code: MucinousDegeneration
     /// </summary>
     public const string LiteralMucinousDegeneration = "17968002";
+
+    /// <summary>
+    /// Literal for code: NONEMucinousDegeneration
+    /// </summary>
+    public const string LiteralNONEMucinousDegeneration = "http://snomed.info/sct#17968002";
 
     /// <summary>
     /// Literal for code: Phlebosclerosis
@@ -10038,9 +11058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPhlebosclerosis = "18016009";
 
     /// <summary>
+    /// Literal for code: NONEPhlebosclerosis
+    /// </summary>
+    public const string LiteralNONEPhlebosclerosis = "http://snomed.info/sct#18016009";
+
+    /// <summary>
     /// Literal for code: ChoroidPlexusPapillomaNoICDOSubtype
     /// </summary>
     public const string LiteralChoroidPlexusPapillomaNoICDOSubtype = "18021007";
+
+    /// <summary>
+    /// Literal for code: NONEChoroidPlexusPapillomaNoICDOSubtype
+    /// </summary>
+    public const string LiteralNONEChoroidPlexusPapillomaNoICDOSubtype = "http://snomed.info/sct#18021007";
 
     /// <summary>
     /// Literal for code: KeratinizingSquamousCellCarcinomaLargeCell
@@ -10048,9 +11078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKeratinizingSquamousCellCarcinomaLargeCell = "18048008";
 
     /// <summary>
+    /// Literal for code: NONEKeratinizingSquamousCellCarcinomaLargeCell
+    /// </summary>
+    public const string LiteralNONEKeratinizingSquamousCellCarcinomaLargeCell = "http://snomed.info/sct#18048008";
+
+    /// <summary>
     /// Literal for code: Eruption
     /// </summary>
     public const string LiteralEruption = "1806006";
+
+    /// <summary>
+    /// Literal for code: NONEEruption
+    /// </summary>
+    public const string LiteralNONEEruption = "http://snomed.info/sct#1806006";
 
     /// <summary>
     /// Literal for code: Achromasia
@@ -10058,9 +11098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAchromasia = "18064000";
 
     /// <summary>
+    /// Literal for code: NONEAchromasia
+    /// </summary>
+    public const string LiteralNONEAchromasia = "http://snomed.info/sct#18064000";
+
+    /// <summary>
     /// Literal for code: Micronucleus
     /// </summary>
     public const string LiteralMicronucleus = "18072003";
+
+    /// <summary>
+    /// Literal for code: NONEMicronucleus
+    /// </summary>
+    public const string LiteralNONEMicronucleus = "http://snomed.info/sct#18072003";
 
     /// <summary>
     /// Literal for code: MalignantEndometrioidCystadenofibroma
@@ -10068,9 +11118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMalignantEndometrioidCystadenofibroma = "18105004";
 
     /// <summary>
+    /// Literal for code: NONEMalignantEndometrioidCystadenofibroma
+    /// </summary>
+    public const string LiteralNONEMalignantEndometrioidCystadenofibroma = "http://snomed.info/sct#18105004";
+
+    /// <summary>
     /// Literal for code: PathologicallyCalcifiedStructure
     /// </summary>
     public const string LiteralPathologicallyCalcifiedStructure = "18115005";
+
+    /// <summary>
+    /// Literal for code: NONEPathologicallyCalcifiedStructure
+    /// </summary>
+    public const string LiteralNONEPathologicallyCalcifiedStructure = "http://snomed.info/sct#18115005";
 
     /// <summary>
     /// Literal for code: Diverticulitis
@@ -10078,9 +11138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiverticulitis = "18126004";
 
     /// <summary>
+    /// Literal for code: NONEDiverticulitis
+    /// </summary>
+    public const string LiteralNONEDiverticulitis = "http://snomed.info/sct#18126004";
+
+    /// <summary>
     /// Literal for code: GunshotWoundExit
     /// </summary>
     public const string LiteralGunshotWoundExit = "18130001";
+
+    /// <summary>
+    /// Literal for code: NONEGunshotWoundExit
+    /// </summary>
+    public const string LiteralNONEGunshotWoundExit = "http://snomed.info/sct#18130001";
 
     /// <summary>
     /// Literal for code: BrownEdema
@@ -10088,9 +11158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBrownEdema = "18174004";
 
     /// <summary>
+    /// Literal for code: NONEBrownEdema
+    /// </summary>
+    public const string LiteralNONEBrownEdema = "http://snomed.info/sct#18174004";
+
+    /// <summary>
     /// Literal for code: GuddenAtrophy
     /// </summary>
     public const string LiteralGuddenAtrophy = "18189008";
+
+    /// <summary>
+    /// Literal for code: NONEGuddenAtrophy
+    /// </summary>
+    public const string LiteralNONEGuddenAtrophy = "http://snomed.info/sct#18189008";
 
     /// <summary>
     /// Literal for code: Canalization
@@ -10098,9 +11178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCanalization = "182000";
 
     /// <summary>
+    /// Literal for code: NONECanalization
+    /// </summary>
+    public const string LiteralNONECanalization = "http://snomed.info/sct#182000";
+
+    /// <summary>
     /// Literal for code: NonCommunicatingCerebrospinalFluidRetention
     /// </summary>
     public const string LiteralNonCommunicatingCerebrospinalFluidRetention = "18203003";
+
+    /// <summary>
+    /// Literal for code: NONENonCommunicatingCerebrospinalFluidRetention
+    /// </summary>
+    public const string LiteralNONENonCommunicatingCerebrospinalFluidRetention = "http://snomed.info/sct#18203003";
 
     /// <summary>
     /// Literal for code: DoubleStructure
@@ -10108,9 +11198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDoubleStructure = "18295000";
 
     /// <summary>
+    /// Literal for code: NONEDoubleStructure
+    /// </summary>
+    public const string LiteralNONEDoubleStructure = "http://snomed.info/sct#18295000";
+
+    /// <summary>
     /// Literal for code: StellateFracture
     /// </summary>
     public const string LiteralStellateFracture = "18334002";
+
+    /// <summary>
+    /// Literal for code: NONEStellateFracture
+    /// </summary>
+    public const string LiteralNONEStellateFracture = "http://snomed.info/sct#18334002";
 
     /// <summary>
     /// Literal for code: QueyratErythroplasia
@@ -10118,9 +11218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralQueyratErythroplasia = "18348002";
 
     /// <summary>
+    /// Literal for code: NONEQueyratErythroplasia
+    /// </summary>
+    public const string LiteralNONEQueyratErythroplasia = "http://snomed.info/sct#18348002";
+
+    /// <summary>
     /// Literal for code: AdrenalCorticalAdenomaMorphology
     /// </summary>
     public const string LiteralAdrenalCorticalAdenomaMorphology = "18365006";
+
+    /// <summary>
+    /// Literal for code: NONEAdrenalCorticalAdenomaMorphology
+    /// </summary>
+    public const string LiteralNONEAdrenalCorticalAdenomaMorphology = "http://snomed.info/sct#18365006";
 
     /// <summary>
     /// Literal for code: MalignantMelanomaInMelanosis
@@ -10128,9 +11238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMalignantMelanomaInMelanosis = "18450009";
 
     /// <summary>
+    /// Literal for code: NONEMalignantMelanomaInMelanosis
+    /// </summary>
+    public const string LiteralNONEMalignantMelanomaInMelanosis = "http://snomed.info/sct#18450009";
+
+    /// <summary>
     /// Literal for code: AnomalousOriginOfVein
     /// </summary>
     public const string LiteralAnomalousOriginOfVein = "18465005";
+
+    /// <summary>
+    /// Literal for code: NONEAnomalousOriginOfVein
+    /// </summary>
+    public const string LiteralNONEAnomalousOriginOfVein = "http://snomed.info/sct#18465005";
 
     /// <summary>
     /// Literal for code: AcuteMembranousInflammation
@@ -10138,9 +11258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcuteMembranousInflammation = "18498000";
 
     /// <summary>
+    /// Literal for code: NONEAcuteMembranousInflammation
+    /// </summary>
+    public const string LiteralNONEAcuteMembranousInflammation = "http://snomed.info/sct#18498000";
+
+    /// <summary>
     /// Literal for code: AnastomosisEndToEnd
     /// </summary>
     public const string LiteralAnastomosisEndToEnd = "18568009";
+
+    /// <summary>
+    /// Literal for code: NONEAnastomosisEndToEnd
+    /// </summary>
+    public const string LiteralNONEAnastomosisEndToEnd = "http://snomed.info/sct#18568009";
 
     /// <summary>
     /// Literal for code: SynovialSarcomaBiphasic
@@ -10148,9 +11278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSynovialSarcomaBiphasic = "18588008";
 
     /// <summary>
+    /// Literal for code: NONESynovialSarcomaBiphasic
+    /// </summary>
+    public const string LiteralNONESynovialSarcomaBiphasic = "http://snomed.info/sct#18588008";
+
+    /// <summary>
     /// Literal for code: Depigmentation
     /// </summary>
     public const string LiteralDepigmentation = "18655006";
+
+    /// <summary>
+    /// Literal for code: NONEDepigmentation
+    /// </summary>
+    public const string LiteralNONEDepigmentation = "http://snomed.info/sct#18655006";
 
     /// <summary>
     /// Literal for code: IntraductalCarcinomaAndLobularCarcinomaInSitu
@@ -10158,9 +11298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntraductalCarcinomaAndLobularCarcinomaInSitu = "18680006";
 
     /// <summary>
+    /// Literal for code: NONEIntraductalCarcinomaAndLobularCarcinomaInSitu
+    /// </summary>
+    public const string LiteralNONEIntraductalCarcinomaAndLobularCarcinomaInSitu = "http://snomed.info/sct#18680006";
+
+    /// <summary>
     /// Literal for code: HyalineBody
     /// </summary>
     public const string LiteralHyalineBody = "18695008";
+
+    /// <summary>
+    /// Literal for code: NONEHyalineBody
+    /// </summary>
+    public const string LiteralNONEHyalineBody = "http://snomed.info/sct#18695008";
 
     /// <summary>
     /// Literal for code: CCellTumor
@@ -10168,9 +11318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCCellTumor = "18727002";
 
     /// <summary>
+    /// Literal for code: NONECCellTumor
+    /// </summary>
+    public const string LiteralNONECCellTumor = "http://snomed.info/sct#18727002";
+
+    /// <summary>
     /// Literal for code: SclerosingLipogranuloma
     /// </summary>
     public const string LiteralSclerosingLipogranuloma = "18765009";
+
+    /// <summary>
+    /// Literal for code: NONESclerosingLipogranuloma
+    /// </summary>
+    public const string LiteralNONESclerosingLipogranuloma = "http://snomed.info/sct#18765009";
 
     /// <summary>
     /// Literal for code: InvasiveHydatidiformMole
@@ -10178,9 +11338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInvasiveHydatidiformMole = "18799007";
 
     /// <summary>
+    /// Literal for code: NONEInvasiveHydatidiformMole
+    /// </summary>
+    public const string LiteralNONEInvasiveHydatidiformMole = "http://snomed.info/sct#18799007";
+
+    /// <summary>
     /// Literal for code: ExternalFistula
     /// </summary>
     public const string LiteralExternalFistula = "18802003";
+
+    /// <summary>
+    /// Literal for code: NONEExternalFistula
+    /// </summary>
+    public const string LiteralNONEExternalFistula = "http://snomed.info/sct#18802003";
 
     /// <summary>
     /// Literal for code: MalignantStrumaOvarii
@@ -10188,9 +11358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMalignantStrumaOvarii = "18854008";
 
     /// <summary>
+    /// Literal for code: NONEMalignantStrumaOvarii
+    /// </summary>
+    public const string LiteralNONEMalignantStrumaOvarii = "http://snomed.info/sct#18854008";
+
+    /// <summary>
     /// Literal for code: MalignantGranulosaCellTumor
     /// </summary>
     public const string LiteralMalignantGranulosaCellTumor = "18861007";
+
+    /// <summary>
+    /// Literal for code: NONEMalignantGranulosaCellTumor
+    /// </summary>
+    public const string LiteralNONEMalignantGranulosaCellTumor = "http://snomed.info/sct#18861007";
 
     /// <summary>
     /// Literal for code: DenseTubules
@@ -10198,9 +11378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDenseTubules = "18915006";
 
     /// <summary>
+    /// Literal for code: NONEDenseTubules
+    /// </summary>
+    public const string LiteralNONEDenseTubules = "http://snomed.info/sct#18915006";
+
+    /// <summary>
     /// Literal for code: CouncilmanBody
     /// </summary>
     public const string LiteralCouncilmanBody = "18958005";
+
+    /// <summary>
+    /// Literal for code: NONECouncilmanBody
+    /// </summary>
+    public const string LiteralNONECouncilmanBody = "http://snomed.info/sct#18958005";
 
     /// <summary>
     /// Literal for code: AdrenalCorticalAdenomaClearCell
@@ -10208,9 +11398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdrenalCorticalAdenomaClearCell = "18977007";
 
     /// <summary>
+    /// Literal for code: NONEAdrenalCorticalAdenomaClearCell
+    /// </summary>
+    public const string LiteralNONEAdrenalCorticalAdenomaClearCell = "http://snomed.info/sct#18977007";
+
+    /// <summary>
     /// Literal for code: HyalineDegeneration
     /// </summary>
     public const string LiteralHyalineDegeneration = "19010006";
+
+    /// <summary>
+    /// Literal for code: NONEHyalineDegeneration
+    /// </summary>
+    public const string LiteralNONEHyalineDegeneration = "http://snomed.info/sct#19010006";
 
     /// <summary>
     /// Literal for code: EpithelioidLeiomyoma
@@ -10218,9 +11418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEpithelioidLeiomyoma = "19071004";
 
     /// <summary>
+    /// Literal for code: NONEEpithelioidLeiomyoma
+    /// </summary>
+    public const string LiteralNONEEpithelioidLeiomyoma = "http://snomed.info/sct#19071004";
+
+    /// <summary>
     /// Literal for code: SpontaneousClosedDislocation
     /// </summary>
     public const string LiteralSpontaneousClosedDislocation = "19104009";
+
+    /// <summary>
+    /// Literal for code: NONESpontaneousClosedDislocation
+    /// </summary>
+    public const string LiteralNONESpontaneousClosedDislocation = "http://snomed.info/sct#19104009";
 
     /// <summary>
     /// Literal for code: Hyperorthokeratosis
@@ -10228,9 +11438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHyperorthokeratosis = "19128006";
 
     /// <summary>
+    /// Literal for code: NONEHyperorthokeratosis
+    /// </summary>
+    public const string LiteralNONEHyperorthokeratosis = "http://snomed.info/sct#19128006";
+
+    /// <summary>
     /// Literal for code: TraumaticAbnormality
     /// </summary>
     public const string LiteralTraumaticAbnormality = "19130008";
+
+    /// <summary>
+    /// Literal for code: NONETraumaticAbnormality
+    /// </summary>
+    public const string LiteralNONETraumaticAbnormality = "http://snomed.info/sct#19130008";
 
     /// <summary>
     /// Literal for code: FascialFibrosarcoma
@@ -10238,9 +11458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFascialFibrosarcoma = "19134004";
 
     /// <summary>
+    /// Literal for code: NONEFascialFibrosarcoma
+    /// </summary>
+    public const string LiteralNONEFascialFibrosarcoma = "http://snomed.info/sct#19134004";
+
+    /// <summary>
     /// Literal for code: MaranticThrombus
     /// </summary>
     public const string LiteralMaranticThrombus = "19137006";
+
+    /// <summary>
+    /// Literal for code: NONEMaranticThrombus
+    /// </summary>
+    public const string LiteralNONEMaranticThrombus = "http://snomed.info/sct#19137006";
 
     /// <summary>
     /// Literal for code: FBForeignBody
@@ -10248,9 +11478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFBForeignBody = "19227008";
 
     /// <summary>
+    /// Literal for code: NONEFBForeignBody
+    /// </summary>
+    public const string LiteralNONEFBForeignBody = "http://snomed.info/sct#19227008";
+
+    /// <summary>
     /// Literal for code: BCellLymphomaNoICDOSubtype
     /// </summary>
     public const string LiteralBCellLymphomaNoICDOSubtype = "1929004";
+
+    /// <summary>
+    /// Literal for code: NONEBCellLymphomaNoICDOSubtype
+    /// </summary>
+    public const string LiteralNONEBCellLymphomaNoICDOSubtype = "http://snomed.info/sct#1929004";
 
     /// <summary>
     /// Literal for code: CytoidBody
@@ -10258,9 +11498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCytoidBody = "19316008";
 
     /// <summary>
+    /// Literal for code: NONECytoidBody
+    /// </summary>
+    public const string LiteralNONECytoidBody = "http://snomed.info/sct#19316008";
+
+    /// <summary>
     /// Literal for code: AdrenalCorticalAdenomaGlomerulosaCell
     /// </summary>
     public const string LiteralAdrenalCorticalAdenomaGlomerulosaCell = "19329008";
+
+    /// <summary>
+    /// Literal for code: NONEAdrenalCorticalAdenomaGlomerulosaCell
+    /// </summary>
+    public const string LiteralNONEAdrenalCorticalAdenomaGlomerulosaCell = "http://snomed.info/sct#19329008";
 
     /// <summary>
     /// Literal for code: MalignantLymphomaLymphoplasmacytic
@@ -10268,9 +11518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMalignantLymphomaLymphoplasmacytic = "19340000";
 
     /// <summary>
+    /// Literal for code: NONEMalignantLymphomaLymphoplasmacytic
+    /// </summary>
+    public const string LiteralNONEMalignantLymphomaLymphoplasmacytic = "http://snomed.info/sct#19340000";
+
+    /// <summary>
     /// Literal for code: AcuteEmpyema
     /// </summary>
     public const string LiteralAcuteEmpyema = "19365003";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteEmpyema
+    /// </summary>
+    public const string LiteralNONEAcuteEmpyema = "http://snomed.info/sct#19365003";
 
     /// <summary>
     /// Literal for code: SclerosingSegmentalGlomerulosclerosisWithHyalinosis
@@ -10278,9 +11538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSclerosingSegmentalGlomerulosclerosisWithHyalinosis = "19380009";
 
     /// <summary>
+    /// Literal for code: NONESclerosingSegmentalGlomerulosclerosisWithHyalinosis
+    /// </summary>
+    public const string LiteralNONESclerosingSegmentalGlomerulosclerosisWithHyalinosis = "http://snomed.info/sct#19380009";
+
+    /// <summary>
     /// Literal for code: StainReaction
     /// </summary>
     public const string LiteralStainReaction = "19436005";
+
+    /// <summary>
+    /// Literal for code: NONEStainReaction
+    /// </summary>
+    public const string LiteralNONEStainReaction = "http://snomed.info/sct#19436005";
 
     /// <summary>
     /// Literal for code: FeatheryDegeneration
@@ -10288,9 +11558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFeatheryDegeneration = "19438006";
 
     /// <summary>
+    /// Literal for code: NONEFeatheryDegeneration
+    /// </summary>
+    public const string LiteralNONEFeatheryDegeneration = "http://snomed.info/sct#19438006";
+
+    /// <summary>
     /// Literal for code: MGMMeningioma
     /// </summary>
     public const string LiteralMGMMeningioma = "19453003";
+
+    /// <summary>
+    /// Literal for code: NONEMGMMeningioma
+    /// </summary>
+    public const string LiteralNONEMGMMeningioma = "http://snomed.info/sct#19453003";
 
     /// <summary>
     /// Literal for code: MalignantTeratoblastoma
@@ -10298,9 +11578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMalignantTeratoblastoma = "19467007";
 
     /// <summary>
+    /// Literal for code: NONEMalignantTeratoblastoma
+    /// </summary>
+    public const string LiteralNONEMalignantTeratoblastoma = "http://snomed.info/sct#19467007";
+
+    /// <summary>
     /// Literal for code: SerofibrinousEffusion
     /// </summary>
     public const string LiteralSerofibrinousEffusion = "19504001";
+
+    /// <summary>
+    /// Literal for code: NONESerofibrinousEffusion
+    /// </summary>
+    public const string LiteralNONESerofibrinousEffusion = "http://snomed.info/sct#19504001";
 
     /// <summary>
     /// Literal for code: CongenitalLevorotation
@@ -10308,9 +11598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalLevorotation = "19561006";
 
     /// <summary>
+    /// Literal for code: NONECongenitalLevorotation
+    /// </summary>
+    public const string LiteralNONECongenitalLevorotation = "http://snomed.info/sct#19561006";
+
+    /// <summary>
     /// Literal for code: OpenWoundsInvolvingMultipleBodyRegions
     /// </summary>
     public const string LiteralOpenWoundsInvolvingMultipleBodyRegions = "19571008";
+
+    /// <summary>
+    /// Literal for code: NONEOpenWoundsInvolvingMultipleBodyRegions
+    /// </summary>
+    public const string LiteralNONEOpenWoundsInvolvingMultipleBodyRegions = "http://snomed.info/sct#19571008";
 
     /// <summary>
     /// Literal for code: Endoreduplication
@@ -10318,9 +11618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndoreduplication = "19607003";
 
     /// <summary>
+    /// Literal for code: NONEEndoreduplication
+    /// </summary>
+    public const string LiteralNONEEndoreduplication = "http://snomed.info/sct#19607003";
+
+    /// <summary>
     /// Literal for code: LightningBurn
     /// </summary>
     public const string LiteralLightningBurn = "19614001";
+
+    /// <summary>
+    /// Literal for code: NONELightningBurn
+    /// </summary>
+    public const string LiteralNONELightningBurn = "http://snomed.info/sct#19614001";
 
     /// <summary>
     /// Literal for code: MucousCyst
@@ -10328,9 +11638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMucousCyst = "19633006";
 
     /// <summary>
+    /// Literal for code: NONEMucousCyst
+    /// </summary>
+    public const string LiteralNONEMucousCyst = "http://snomed.info/sct#19633006";
+
+    /// <summary>
     /// Literal for code: PyogranulomaGranulomaWithPus
     /// </summary>
     public const string LiteralPyogranulomaGranulomaWithPus = "19643009";
+
+    /// <summary>
+    /// Literal for code: NONEPyogranulomaGranulomaWithPus
+    /// </summary>
+    public const string LiteralNONEPyogranulomaGranulomaWithPus = "http://snomed.info/sct#19643009";
 
     /// <summary>
     /// Literal for code: Micromyeloblast
@@ -10338,9 +11658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicromyeloblast = "19651007";
 
     /// <summary>
+    /// Literal for code: NONEMicromyeloblast
+    /// </summary>
+    public const string LiteralNONEMicromyeloblast = "http://snomed.info/sct#19651007";
+
+    /// <summary>
     /// Literal for code: TubularAdenomaNoICDOSubtype
     /// </summary>
     public const string LiteralTubularAdenomaNoICDOSubtype = "19665009";
+
+    /// <summary>
+    /// Literal for code: NONETubularAdenomaNoICDOSubtype
+    /// </summary>
+    public const string LiteralNONETubularAdenomaNoICDOSubtype = "http://snomed.info/sct#19665009";
 
     /// <summary>
     /// Literal for code: PredominanceOfParabasalCells
@@ -10348,9 +11678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPredominanceOfParabasalCells = "19668006";
 
     /// <summary>
+    /// Literal for code: NONEPredominanceOfParabasalCells
+    /// </summary>
+    public const string LiteralNONEPredominanceOfParabasalCells = "http://snomed.info/sct#19668006";
+
+    /// <summary>
     /// Literal for code: ErythrocyteAgglutination
     /// </summary>
     public const string LiteralErythrocyteAgglutination = "19669003";
+
+    /// <summary>
+    /// Literal for code: NONEErythrocyteAgglutination
+    /// </summary>
+    public const string LiteralNONEErythrocyteAgglutination = "http://snomed.info/sct#19669003";
 
     /// <summary>
     /// Literal for code: Condyloma
@@ -10358,9 +11698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCondyloma = "19672005";
 
     /// <summary>
+    /// Literal for code: NONECondyloma
+    /// </summary>
+    public const string LiteralNONECondyloma = "http://snomed.info/sct#19672005";
+
+    /// <summary>
     /// Literal for code: Stasis
     /// </summary>
     public const string LiteralStasis = "19685008";
+
+    /// <summary>
+    /// Literal for code: NONEStasis
+    /// </summary>
+    public const string LiteralNONEStasis = "http://snomed.info/sct#19685008";
 
     /// <summary>
     /// Literal for code: MalignantGCellTumor
@@ -10368,9 +11718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMalignantGCellTumor = "19756007";
 
     /// <summary>
+    /// Literal for code: NONEMalignantGCellTumor
+    /// </summary>
+    public const string LiteralNONEMalignantGCellTumor = "http://snomed.info/sct#19756007";
+
+    /// <summary>
     /// Literal for code: BrainSandCalcifiedStructure
     /// </summary>
     public const string LiteralBrainSandCalcifiedStructure = "19795008";
+
+    /// <summary>
+    /// Literal for code: NONEBrainSandCalcifiedStructure
+    /// </summary>
+    public const string LiteralNONEBrainSandCalcifiedStructure = "http://snomed.info/sct#19795008";
 
     /// <summary>
     /// Literal for code: DeformingFibrosis
@@ -10378,9 +11738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDeformingFibrosis = "19836000";
 
     /// <summary>
+    /// Literal for code: NONEDeformingFibrosis
+    /// </summary>
+    public const string LiteralNONEDeformingFibrosis = "http://snomed.info/sct#19836000";
+
+    /// <summary>
     /// Literal for code: MPNSTMalignantPeripheralNerveSheathTumor
     /// </summary>
     public const string LiteralMPNSTMalignantPeripheralNerveSheathTumor = "19897006";
+
+    /// <summary>
+    /// Literal for code: NONEMPNSTMalignantPeripheralNerveSheathTumor
+    /// </summary>
+    public const string LiteralNONEMPNSTMalignantPeripheralNerveSheathTumor = "http://snomed.info/sct#19897006";
 
     /// <summary>
     /// Literal for code: RetinoblastomaMorphology
@@ -10388,9 +11758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRetinoblastomaMorphology = "19906005";
 
     /// <summary>
+    /// Literal for code: NONERetinoblastomaMorphology
+    /// </summary>
+    public const string LiteralNONERetinoblastomaMorphology = "http://snomed.info/sct#19906005";
+
+    /// <summary>
     /// Literal for code: ComplementDeposit
     /// </summary>
     public const string LiteralComplementDeposit = "19909003";
+
+    /// <summary>
+    /// Literal for code: NONEComplementDeposit
+    /// </summary>
+    public const string LiteralNONEComplementDeposit = "http://snomed.info/sct#19909003";
 
     /// <summary>
     /// Literal for code: CrushingInjuryMorphology
@@ -10398,9 +11778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCrushingInjuryMorphology = "19921004";
 
     /// <summary>
+    /// Literal for code: NONECrushingInjuryMorphology
+    /// </summary>
+    public const string LiteralNONECrushingInjuryMorphology = "http://snomed.info/sct#19921004";
+
+    /// <summary>
     /// Literal for code: Fibromatosis
     /// </summary>
     public const string LiteralFibromatosis = "19928005";
+
+    /// <summary>
+    /// Literal for code: NONEFibromatosis
+    /// </summary>
+    public const string LiteralNONEFibromatosis = "http://snomed.info/sct#19928005";
 
     /// <summary>
     /// Literal for code: Angiomyolipoma
@@ -10408,9 +11798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAngiomyolipoma = "19929002";
 
     /// <summary>
+    /// Literal for code: NONEAngiomyolipoma
+    /// </summary>
+    public const string LiteralNONEAngiomyolipoma = "http://snomed.info/sct#19929002";
+
+    /// <summary>
     /// Literal for code: Lichenification
     /// </summary>
     public const string LiteralLichenification = "19940005";
+
+    /// <summary>
+    /// Literal for code: NONELichenification
+    /// </summary>
+    public const string LiteralNONELichenification = "http://snomed.info/sct#19940005";
 
     /// <summary>
     /// Literal for code: ElasticVascularSclerosis
@@ -10418,9 +11818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralElasticVascularSclerosis = "19952003";
 
     /// <summary>
+    /// Literal for code: NONEElasticVascularSclerosis
+    /// </summary>
+    public const string LiteralNONEElasticVascularSclerosis = "http://snomed.info/sct#19952003";
+
+    /// <summary>
     /// Literal for code: NumericAtrophy
     /// </summary>
     public const string LiteralNumericAtrophy = "1996000";
+
+    /// <summary>
+    /// Literal for code: NONENumericAtrophy
+    /// </summary>
+    public const string LiteralNONENumericAtrophy = "http://snomed.info/sct#1996000";
 
     /// <summary>
     /// Literal for code: Pseudoainhum
@@ -10428,9 +11838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPseudoainhum = "19988008";
 
     /// <summary>
+    /// Literal for code: NONEPseudoainhum
+    /// </summary>
+    public const string LiteralNONEPseudoainhum = "http://snomed.info/sct#19988008";
+
+    /// <summary>
     /// Literal for code: MajorOpenWound
     /// </summary>
     public const string LiteralMajorOpenWound = "20012006";
+
+    /// <summary>
+    /// Literal for code: NONEMajorOpenWound
+    /// </summary>
+    public const string LiteralNONEMajorOpenWound = "http://snomed.info/sct#20012006";
 
     /// <summary>
     /// Literal for code: CongenitalTelangiectasis
@@ -10438,9 +11858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalTelangiectasis = "20092005";
 
     /// <summary>
+    /// Literal for code: NONECongenitalTelangiectasis
+    /// </summary>
+    public const string LiteralNONECongenitalTelangiectasis = "http://snomed.info/sct#20092005";
+
+    /// <summary>
     /// Literal for code: IntramuralHemorrhage
     /// </summary>
     public const string LiteralIntramuralHemorrhage = "20108002";
+
+    /// <summary>
+    /// Literal for code: NONEIntramuralHemorrhage
+    /// </summary>
+    public const string LiteralNONEIntramuralHemorrhage = "http://snomed.info/sct#20108002";
 
     /// <summary>
     /// Literal for code: ChronicNecrosis
@@ -10448,9 +11878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChronicNecrosis = "20131002";
 
     /// <summary>
+    /// Literal for code: NONEChronicNecrosis
+    /// </summary>
+    public const string LiteralNONEChronicNecrosis = "http://snomed.info/sct#20131002";
+
+    /// <summary>
     /// Literal for code: Microlymphoblast
     /// </summary>
     public const string LiteralMicrolymphoblast = "2014001";
+
+    /// <summary>
+    /// Literal for code: NONEMicrolymphoblast
+    /// </summary>
+    public const string LiteralNONEMicrolymphoblast = "http://snomed.info/sct#2014001";
 
     /// <summary>
     /// Literal for code: PostmortemFracture
@@ -10458,9 +11898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPostmortemFracture = "20175003";
 
     /// <summary>
+    /// Literal for code: NONEPostmortemFracture
+    /// </summary>
+    public const string LiteralNONEPostmortemFracture = "http://snomed.info/sct#20175003";
+
+    /// <summary>
     /// Literal for code: Myocytolysis
     /// </summary>
     public const string LiteralMyocytolysis = "20182004";
+
+    /// <summary>
+    /// Literal for code: NONEMyocytolysis
+    /// </summary>
+    public const string LiteralNONEMyocytolysis = "http://snomed.info/sct#20182004";
 
     /// <summary>
     /// Literal for code: SarcoplasmicBodies
@@ -10468,9 +11918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSarcoplasmicBodies = "2019006";
 
     /// <summary>
+    /// Literal for code: NONESarcoplasmicBodies
+    /// </summary>
+    public const string LiteralNONESarcoplasmicBodies = "http://snomed.info/sct#2019006";
+
+    /// <summary>
     /// Literal for code: HyperplasticDystrophy
     /// </summary>
     public const string LiteralHyperplasticDystrophy = "20194008";
+
+    /// <summary>
+    /// Literal for code: NONEHyperplasticDystrophy
+    /// </summary>
+    public const string LiteralNONEHyperplasticDystrophy = "http://snomed.info/sct#20194008";
 
     /// <summary>
     /// Literal for code: GlandularProliferation
@@ -10478,9 +11938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGlandularProliferation = "20256001";
 
     /// <summary>
+    /// Literal for code: NONEGlandularProliferation
+    /// </summary>
+    public const string LiteralNONEGlandularProliferation = "http://snomed.info/sct#20256001";
+
+    /// <summary>
     /// Literal for code: SerousAdenofibroma
     /// </summary>
     public const string LiteralSerousAdenofibroma = "2026006";
+
+    /// <summary>
+    /// Literal for code: NONESerousAdenofibroma
+    /// </summary>
+    public const string LiteralNONESerousAdenofibroma = "http://snomed.info/sct#2026006";
 
     /// <summary>
     /// Literal for code: AdnexalNevus
@@ -10488,9 +11958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdnexalNevus = "20351009";
 
     /// <summary>
+    /// Literal for code: NONEAdnexalNevus
+    /// </summary>
+    public const string LiteralNONEAdnexalNevus = "http://snomed.info/sct#20351009";
+
+    /// <summary>
     /// Literal for code: VulvarIntraepithelialNeoplasiaGradeIII
     /// </summary>
     public const string LiteralVulvarIntraepithelialNeoplasiaGradeIII = "20365006";
+
+    /// <summary>
+    /// Literal for code: NONEVulvarIntraepithelialNeoplasiaGradeIII
+    /// </summary>
+    public const string LiteralNONEVulvarIntraepithelialNeoplasiaGradeIII = "http://snomed.info/sct#20365006";
 
     /// <summary>
     /// Literal for code: ChronicMucousInflammation
@@ -10498,9 +11978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChronicMucousInflammation = "20369000";
 
     /// <summary>
+    /// Literal for code: NONEChronicMucousInflammation
+    /// </summary>
+    public const string LiteralNONEChronicMucousInflammation = "http://snomed.info/sct#20369000";
+
+    /// <summary>
     /// Literal for code: AmeloblasticFibrodentinosarcoma
     /// </summary>
     public const string LiteralAmeloblasticFibrodentinosarcoma = "20380000";
+
+    /// <summary>
+    /// Literal for code: NONEAmeloblasticFibrodentinosarcoma
+    /// </summary>
+    public const string LiteralNONEAmeloblasticFibrodentinosarcoma = "http://snomed.info/sct#20380000";
 
     /// <summary>
     /// Literal for code: LooseBody
@@ -10508,9 +11998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLooseBody = "20456003";
 
     /// <summary>
+    /// Literal for code: NONELooseBody
+    /// </summary>
+    public const string LiteralNONELooseBody = "http://snomed.info/sct#20456003";
+
+    /// <summary>
     /// Literal for code: Adamantinoma
     /// </summary>
     public const string LiteralAdamantinoma = "20462008";
+
+    /// <summary>
+    /// Literal for code: NONEAdamantinoma
+    /// </summary>
+    public const string LiteralNONEAdamantinoma = "http://snomed.info/sct#20462008";
 
     /// <summary>
     /// Literal for code: PerforatedDiverticulum
@@ -10518,9 +12018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPerforatedDiverticulum = "20464009";
 
     /// <summary>
+    /// Literal for code: NONEPerforatedDiverticulum
+    /// </summary>
+    public const string LiteralNONEPerforatedDiverticulum = "http://snomed.info/sct#20464009";
+
+    /// <summary>
     /// Literal for code: StellateLaceration
     /// </summary>
     public const string LiteralStellateLaceration = "20473001";
+
+    /// <summary>
+    /// Literal for code: NONEStellateLaceration
+    /// </summary>
+    public const string LiteralNONEStellateLaceration = "http://snomed.info/sct#20473001";
 
     /// <summary>
     /// Literal for code: AcuteNecrosis
@@ -10528,9 +12038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcuteNecrosis = "2052000";
 
     /// <summary>
+    /// Literal for code: NONEAcuteNecrosis
+    /// </summary>
+    public const string LiteralNONEAcuteNecrosis = "http://snomed.info/sct#2052000";
+
+    /// <summary>
     /// Literal for code: PappenheimerBody
     /// </summary>
     public const string LiteralPappenheimerBody = "20589000";
+
+    /// <summary>
+    /// Literal for code: NONEPappenheimerBody
+    /// </summary>
+    public const string LiteralNONEPappenheimerBody = "http://snomed.info/sct#20589000";
 
     /// <summary>
     /// Literal for code: FlatteningDeformity
@@ -10538,9 +12058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFlatteningDeformity = "20601007";
 
     /// <summary>
+    /// Literal for code: NONEFlatteningDeformity
+    /// </summary>
+    public const string LiteralNONEFlatteningDeformity = "http://snomed.info/sct#20601007";
+
+    /// <summary>
     /// Literal for code: Myosarcoma
     /// </summary>
     public const string LiteralMyosarcoma = "20667008";
+
+    /// <summary>
+    /// Literal for code: NONEMyosarcoma
+    /// </summary>
+    public const string LiteralNONEMyosarcoma = "http://snomed.info/sct#20667008";
 
     /// <summary>
     /// Literal for code: FractureClosedOblique
@@ -10548,9 +12078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFractureClosedOblique = "20700001";
 
     /// <summary>
+    /// Literal for code: NONEFractureClosedOblique
+    /// </summary>
+    public const string LiteralNONEFractureClosedOblique = "http://snomed.info/sct#20700001";
+
+    /// <summary>
     /// Literal for code: AtheroscleroticFibrousPlaque
     /// </summary>
     public const string LiteralAtheroscleroticFibrousPlaque = "20717008";
+
+    /// <summary>
+    /// Literal for code: NONEAtheroscleroticFibrousPlaque
+    /// </summary>
+    public const string LiteralNONEAtheroscleroticFibrousPlaque = "http://snomed.info/sct#20717008";
 
     /// <summary>
     /// Literal for code: Hydrops
@@ -10558,9 +12098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHydrops = "20741006";
 
     /// <summary>
+    /// Literal for code: NONEHydrops
+    /// </summary>
+    public const string LiteralNONEHydrops = "http://snomed.info/sct#20741006";
+
+    /// <summary>
     /// Literal for code: ReEpithelialization
     /// </summary>
     public const string LiteralReEpithelialization = "20774006";
+
+    /// <summary>
+    /// Literal for code: NONEReEpithelialization
+    /// </summary>
+    public const string LiteralNONEReEpithelialization = "http://snomed.info/sct#20774006";
 
     /// <summary>
     /// Literal for code: Adenolymphoma
@@ -10568,9 +12118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdenolymphoma = "20776008";
 
     /// <summary>
+    /// Literal for code: NONEAdenolymphoma
+    /// </summary>
+    public const string LiteralNONEAdenolymphoma = "http://snomed.info/sct#20776008";
+
+    /// <summary>
     /// Literal for code: Myelolipoma
     /// </summary>
     public const string LiteralMyelolipoma = "20810002";
+
+    /// <summary>
+    /// Literal for code: NONEMyelolipoma
+    /// </summary>
+    public const string LiteralNONEMyelolipoma = "http://snomed.info/sct#20810002";
 
     /// <summary>
     /// Literal for code: EndometrioidAdenofibroma
@@ -10578,9 +12138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEndometrioidAdenofibroma = "20829008";
 
     /// <summary>
+    /// Literal for code: NONEEndometrioidAdenofibroma
+    /// </summary>
+    public const string LiteralNONEEndometrioidAdenofibroma = "http://snomed.info/sct#20829008";
+
+    /// <summary>
     /// Literal for code: PolypoidHyperplasia
     /// </summary>
     public const string LiteralPolypoidHyperplasia = "20893004";
+
+    /// <summary>
+    /// Literal for code: NONEPolypoidHyperplasia
+    /// </summary>
+    public const string LiteralNONEPolypoidHyperplasia = "http://snomed.info/sct#20893004";
 
     /// <summary>
     /// Literal for code: MalloryBodies
@@ -10588,9 +12158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMalloryBodies = "20894005";
 
     /// <summary>
+    /// Literal for code: NONEMalloryBodies
+    /// </summary>
+    public const string LiteralNONEMalloryBodies = "http://snomed.info/sct#20894005";
+
+    /// <summary>
     /// Literal for code: MMMalignantMelanoma
     /// </summary>
     public const string LiteralMMMalignantMelanoma = "2092003";
+
+    /// <summary>
+    /// Literal for code: NONEMMMalignantMelanoma
+    /// </summary>
+    public const string LiteralNONEMMMalignantMelanoma = "http://snomed.info/sct#2092003";
 
     /// <summary>
     /// Literal for code: FractureClosed
@@ -10598,9 +12178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFractureClosed = "20946005";
 
     /// <summary>
+    /// Literal for code: NONEFractureClosed
+    /// </summary>
+    public const string LiteralNONEFractureClosed = "http://snomed.info/sct#20946005";
+
+    /// <summary>
     /// Literal for code: MalignantBetaCellTumor
     /// </summary>
     public const string LiteralMalignantBetaCellTumor = "20955008";
+
+    /// <summary>
+    /// Literal for code: NONEMalignantBetaCellTumor
+    /// </summary>
+    public const string LiteralNONEMalignantBetaCellTumor = "http://snomed.info/sct#20955008";
 
     /// <summary>
     /// Literal for code: Dyskeratosis
@@ -10608,9 +12198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDyskeratosis = "2097009";
 
     /// <summary>
+    /// Literal for code: NONEDyskeratosis
+    /// </summary>
+    public const string LiteralNONEDyskeratosis = "http://snomed.info/sct#2097009";
+
+    /// <summary>
     /// Literal for code: VerrucousKeratoticHemangioma
     /// </summary>
     public const string LiteralVerrucousKeratoticHemangioma = "20985003";
+
+    /// <summary>
+    /// Literal for code: NONEVerrucousKeratoticHemangioma
+    /// </summary>
+    public const string LiteralNONEVerrucousKeratoticHemangioma = "http://snomed.info/sct#20985003";
 
     /// <summary>
     /// Literal for code: HemangiomaMorphology
@@ -10618,9 +12218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHemangiomaMorphology = "2099007";
 
     /// <summary>
+    /// Literal for code: NONEHemangiomaMorphology
+    /// </summary>
+    public const string LiteralNONEHemangiomaMorphology = "http://snomed.info/sct#2099007";
+
+    /// <summary>
     /// Literal for code: Cystadenocarcinoma
     /// </summary>
     public const string LiteralCystadenocarcinoma = "21008007";
+
+    /// <summary>
+    /// Literal for code: NONECystadenocarcinoma
+    /// </summary>
+    public const string LiteralNONECystadenocarcinoma = "http://snomed.info/sct#21008007";
 
     /// <summary>
     /// Literal for code: DalenFuchsNodule
@@ -10628,9 +12238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDalenFuchsNodule = "21046000";
 
     /// <summary>
+    /// Literal for code: NONEDalenFuchsNodule
+    /// </summary>
+    public const string LiteralNONEDalenFuchsNodule = "http://snomed.info/sct#21046000";
+
+    /// <summary>
     /// Literal for code: AcuteFibrosis
     /// </summary>
     public const string LiteralAcuteFibrosis = "21103001";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteFibrosis
+    /// </summary>
+    public const string LiteralNONEAcuteFibrosis = "http://snomed.info/sct#21103001";
 
     /// <summary>
     /// Literal for code: AcidophilAdenoma
@@ -10638,9 +12258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcidophilAdenoma = "21109002";
 
     /// <summary>
+    /// Literal for code: NONEAcidophilAdenoma
+    /// </summary>
+    public const string LiteralNONEAcidophilAdenoma = "http://snomed.info/sct#21109002";
+
+    /// <summary>
     /// Literal for code: PigmentedNevusNoICDOSubtype
     /// </summary>
     public const string LiteralPigmentedNevusNoICDOSubtype = "21119008";
+
+    /// <summary>
+    /// Literal for code: NONEPigmentedNevusNoICDOSubtype
+    /// </summary>
+    public const string LiteralNONEPigmentedNevusNoICDOSubtype = "http://snomed.info/sct#21119008";
 
     /// <summary>
     /// Literal for code: MultipleSuperficialInjuries
@@ -10648,9 +12278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMultipleSuperficialInjuries = "21135001";
 
     /// <summary>
+    /// Literal for code: NONEMultipleSuperficialInjuries
+    /// </summary>
+    public const string LiteralNONEMultipleSuperficialInjuries = "http://snomed.info/sct#21135001";
+
+    /// <summary>
     /// Literal for code: Organization
     /// </summary>
     public const string LiteralOrganization = "21139007";
+
+    /// <summary>
+    /// Literal for code: NONEOrganization
+    /// </summary>
+    public const string LiteralNONEOrganization = "http://snomed.info/sct#21139007";
 
     /// <summary>
     /// Literal for code: BenignThymoma
@@ -10658,9 +12298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBenignThymoma = "21181001";
 
     /// <summary>
+    /// Literal for code: NONEBenignThymoma
+    /// </summary>
+    public const string LiteralNONEBenignThymoma = "http://snomed.info/sct#21181001";
+
+    /// <summary>
     /// Literal for code: PressureAtrophy
     /// </summary>
     public const string LiteralPressureAtrophy = "2122006";
+
+    /// <summary>
+    /// Literal for code: NONEPressureAtrophy
+    /// </summary>
+    public const string LiteralNONEPressureAtrophy = "http://snomed.info/sct#2122006";
 
     /// <summary>
     /// Literal for code: MixedSmallCellCarcinoma
@@ -10668,9 +12318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMixedSmallCellCarcinoma = "21326004";
 
     /// <summary>
+    /// Literal for code: NONEMixedSmallCellCarcinoma
+    /// </summary>
+    public const string LiteralNONEMixedSmallCellCarcinoma = "http://snomed.info/sct#21326004";
+
+    /// <summary>
     /// Literal for code: ForeignBodyGiantCell
     /// </summary>
     public const string LiteralForeignBodyGiantCell = "21386001";
+
+    /// <summary>
+    /// Literal for code: NONEForeignBodyGiantCell
+    /// </summary>
+    public const string LiteralNONEForeignBodyGiantCell = "http://snomed.info/sct#21386001";
 
     /// <summary>
     /// Literal for code: DevelopmentalAbnormality
@@ -10678,9 +12338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDevelopmentalAbnormality = "21390004";
 
     /// <summary>
+    /// Literal for code: NONEDevelopmentalAbnormality
+    /// </summary>
+    public const string LiteralNONEDevelopmentalAbnormality = "http://snomed.info/sct#21390004";
+
+    /// <summary>
     /// Literal for code: PleomorphicLipoma
     /// </summary>
     public const string LiteralPleomorphicLipoma = "21396005";
+
+    /// <summary>
+    /// Literal for code: NONEPleomorphicLipoma
+    /// </summary>
+    public const string LiteralNONEPleomorphicLipoma = "http://snomed.info/sct#21396005";
 
     /// <summary>
     /// Literal for code: NMNodularMelanoma
@@ -10688,9 +12358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNMNodularMelanoma = "2142002";
 
     /// <summary>
+    /// Literal for code: NONENMNodularMelanoma
+    /// </summary>
+    public const string LiteralNONENMNodularMelanoma = "http://snomed.info/sct#2142002";
+
+    /// <summary>
     /// Literal for code: MicroglialNodules
     /// </summary>
     public const string LiteralMicroglialNodules = "21444008";
+
+    /// <summary>
+    /// Literal for code: NONEMicroglialNodules
+    /// </summary>
+    public const string LiteralNONEMicroglialNodules = "http://snomed.info/sct#21444008";
 
     /// <summary>
     /// Literal for code: MassiveNecrosis
@@ -10698,9 +12378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMassiveNecrosis = "21453001";
 
     /// <summary>
+    /// Literal for code: NONEMassiveNecrosis
+    /// </summary>
+    public const string LiteralNONEMassiveNecrosis = "http://snomed.info/sct#21453001";
+
+    /// <summary>
     /// Literal for code: AbnormallyShortAndBroadGrowth
     /// </summary>
     public const string LiteralAbnormallyShortAndBroadGrowth = "21465002";
+
+    /// <summary>
+    /// Literal for code: NONEAbnormallyShortAndBroadGrowth
+    /// </summary>
+    public const string LiteralNONEAbnormallyShortAndBroadGrowth = "http://snomed.info/sct#21465002";
 
     /// <summary>
     /// Literal for code: EpendymomaAnaplastic
@@ -10708,9 +12398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEpendymomaAnaplastic = "21589007";
 
     /// <summary>
+    /// Literal for code: NONEEpendymomaAnaplastic
+    /// </summary>
+    public const string LiteralNONEEpendymomaAnaplastic = "http://snomed.info/sct#21589007";
+
+    /// <summary>
     /// Literal for code: OsteosarcomaNoICDOSubtype
     /// </summary>
     public const string LiteralOsteosarcomaNoICDOSubtype = "21708004";
+
+    /// <summary>
+    /// Literal for code: NONEOsteosarcomaNoICDOSubtype
+    /// </summary>
+    public const string LiteralNONEOsteosarcomaNoICDOSubtype = "http://snomed.info/sct#21708004";
 
     /// <summary>
     /// Literal for code: Cast
@@ -10718,9 +12418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCast = "21718009";
 
     /// <summary>
+    /// Literal for code: NONECast
+    /// </summary>
+    public const string LiteralNONECast = "http://snomed.info/sct#21718009";
+
+    /// <summary>
     /// Literal for code: ElectricalBurn
     /// </summary>
     public const string LiteralElectricalBurn = "21720007";
+
+    /// <summary>
+    /// Literal for code: NONEElectricalBurn
+    /// </summary>
+    public const string LiteralNONEElectricalBurn = "http://snomed.info/sct#21720007";
 
     /// <summary>
     /// Literal for code: ExternalBlindCongenitalFistula
@@ -10728,9 +12438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralExternalBlindCongenitalFistula = "21758006";
 
     /// <summary>
+    /// Literal for code: NONEExternalBlindCongenitalFistula
+    /// </summary>
+    public const string LiteralNONEExternalBlindCongenitalFistula = "http://snomed.info/sct#21758006";
+
+    /// <summary>
     /// Literal for code: MalignantTeratomaIntermediate
     /// </summary>
     public const string LiteralMalignantTeratomaIntermediate = "21912003";
+
+    /// <summary>
+    /// Literal for code: NONEMalignantTeratomaIntermediate
+    /// </summary>
+    public const string LiteralNONEMalignantTeratomaIntermediate = "http://snomed.info/sct#21912003";
 
     /// <summary>
     /// Literal for code: NeuroglialLinedCyst
@@ -10738,9 +12458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeuroglialLinedCyst = "21925006";
 
     /// <summary>
+    /// Literal for code: NONENeuroglialLinedCyst
+    /// </summary>
+    public const string LiteralNONENeuroglialLinedCyst = "http://snomed.info/sct#21925006";
+
+    /// <summary>
     /// Literal for code: TrabecularAdenoma
     /// </summary>
     public const string LiteralTrabecularAdenoma = "21930005";
+
+    /// <summary>
+    /// Literal for code: NONETrabecularAdenoma
+    /// </summary>
+    public const string LiteralNONETrabecularAdenoma = "http://snomed.info/sct#21930005";
 
     /// <summary>
     /// Literal for code: CompressionFracture
@@ -10748,9 +12478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCompressionFracture = "21947006";
 
     /// <summary>
+    /// Literal for code: NONECompressionFracture
+    /// </summary>
+    public const string LiteralNONECompressionFracture = "http://snomed.info/sct#21947006";
+
+    /// <summary>
     /// Literal for code: MicrogliomaObs
     /// </summary>
     public const string LiteralMicrogliomaObs = "21964009";
+
+    /// <summary>
+    /// Literal for code: NONEMicrogliomaObs
+    /// </summary>
+    public const string LiteralNONEMicrogliomaObs = "http://snomed.info/sct#21964009";
 
     /// <summary>
     /// Literal for code: PapillaryAdenocarcinomaFollicularVariant
@@ -10758,9 +12498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPapillaryAdenocarcinomaFollicularVariant = "21968007";
 
     /// <summary>
+    /// Literal for code: NONEPapillaryAdenocarcinomaFollicularVariant
+    /// </summary>
+    public const string LiteralNONEPapillaryAdenocarcinomaFollicularVariant = "http://snomed.info/sct#21968007";
+
+    /// <summary>
     /// Literal for code: PlasmaCellGranuloma
     /// </summary>
     public const string LiteralPlasmaCellGranuloma = "21971004";
+
+    /// <summary>
+    /// Literal for code: NONEPlasmaCellGranuloma
+    /// </summary>
+    public const string LiteralNONEPlasmaCellGranuloma = "http://snomed.info/sct#21971004";
 
     /// <summary>
     /// Literal for code: PrestenoticDilatation
@@ -10768,9 +12518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrestenoticDilatation = "21980004";
 
     /// <summary>
+    /// Literal for code: NONEPrestenoticDilatation
+    /// </summary>
+    public const string LiteralNONEPrestenoticDilatation = "http://snomed.info/sct#21980004";
+
+    /// <summary>
     /// Literal for code: MassiveDisruption
     /// </summary>
     public const string LiteralMassiveDisruption = "21997005";
+
+    /// <summary>
+    /// Literal for code: NONEMassiveDisruption
+    /// </summary>
+    public const string LiteralNONEMassiveDisruption = "http://snomed.info/sct#21997005";
 
     /// <summary>
     /// Literal for code: Lipoadenoma
@@ -10778,9 +12538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLipoadenoma = "22024005";
 
     /// <summary>
+    /// Literal for code: NONELipoadenoma
+    /// </summary>
+    public const string LiteralNONELipoadenoma = "http://snomed.info/sct#22024005";
+
+    /// <summary>
     /// Literal for code: Pseudoaneurysm
     /// </summary>
     public const string LiteralPseudoaneurysm = "22036004";
+
+    /// <summary>
+    /// Literal for code: NONEPseudoaneurysm
+    /// </summary>
+    public const string LiteralNONEPseudoaneurysm = "http://snomed.info/sct#22036004";
 
     /// <summary>
     /// Literal for code: RupturedAneurysm
@@ -10788,9 +12558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRupturedAneurysm = "22039006";
 
     /// <summary>
+    /// Literal for code: NONERupturedAneurysm
+    /// </summary>
+    public const string LiteralNONERupturedAneurysm = "http://snomed.info/sct#22039006";
+
+    /// <summary>
     /// Literal for code: PostmortemBloodClot
     /// </summary>
     public const string LiteralPostmortemBloodClot = "22084008";
+
+    /// <summary>
+    /// Literal for code: NONEPostmortemBloodClot
+    /// </summary>
+    public const string LiteralNONEPostmortemBloodClot = "http://snomed.info/sct#22084008";
 
     /// <summary>
     /// Literal for code: PapillarySerousCystadenoma
@@ -10798,9 +12578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPapillarySerousCystadenoma = "22116003";
 
     /// <summary>
+    /// Literal for code: NONEPapillarySerousCystadenoma
+    /// </summary>
+    public const string LiteralNONEPapillarySerousCystadenoma = "http://snomed.info/sct#22116003";
+
+    /// <summary>
     /// Literal for code: EndothelialDegeneration
     /// </summary>
     public const string LiteralEndothelialDegeneration = "2218006";
+
+    /// <summary>
+    /// Literal for code: NONEEndothelialDegeneration
+    /// </summary>
+    public const string LiteralNONEEndothelialDegeneration = "http://snomed.info/sct#2218006";
 
     /// <summary>
     /// Literal for code: FABL3Obs
@@ -10808,9 +12598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFABL3Obs = "22197008";
 
     /// <summary>
+    /// Literal for code: NONEFABL3Obs
+    /// </summary>
+    public const string LiteralNONEFABL3Obs = "http://snomed.info/sct#22197008";
+
+    /// <summary>
     /// Literal for code: MalignantMesonephroma
     /// </summary>
     public const string LiteralMalignantMesonephroma = "2221008";
+
+    /// <summary>
+    /// Literal for code: NONEMalignantMesonephroma
+    /// </summary>
+    public const string LiteralNONEMalignantMesonephroma = "http://snomed.info/sct#2221008";
 
     /// <summary>
     /// Literal for code: Oligoastrocytoma
@@ -10818,9 +12618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOligoastrocytoma = "22217002";
 
     /// <summary>
+    /// Literal for code: NONEOligoastrocytoma
+    /// </summary>
+    public const string LiteralNONEOligoastrocytoma = "http://snomed.info/sct#22217002";
+
+    /// <summary>
     /// Literal for code: MuscleFiberSmallGroupAtrophy
     /// </summary>
     public const string LiteralMuscleFiberSmallGroupAtrophy = "22222002";
+
+    /// <summary>
+    /// Literal for code: NONEMuscleFiberSmallGroupAtrophy
+    /// </summary>
+    public const string LiteralNONEMuscleFiberSmallGroupAtrophy = "http://snomed.info/sct#22222002";
 
     /// <summary>
     /// Literal for code: FibrousHamartoma
@@ -10828,9 +12638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFibrousHamartoma = "22257004";
 
     /// <summary>
+    /// Literal for code: NONEFibrousHamartoma
+    /// </summary>
+    public const string LiteralNONEFibrousHamartoma = "http://snomed.info/sct#22257004";
+
+    /// <summary>
     /// Literal for code: AdrenalCorticalCarcinoma
     /// </summary>
     public const string LiteralAdrenalCorticalCarcinoma = "2227007";
+
+    /// <summary>
+    /// Literal for code: NONEAdrenalCorticalCarcinoma
+    /// </summary>
+    public const string LiteralNONEAdrenalCorticalCarcinoma = "http://snomed.info/sct#2227007";
 
     /// <summary>
     /// Literal for code: EosinophilicStainReaction
@@ -10838,9 +12658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEosinophilicStainReaction = "22287005";
 
     /// <summary>
+    /// Literal for code: NONEEosinophilicStainReaction
+    /// </summary>
+    public const string LiteralNONEEosinophilicStainReaction = "http://snomed.info/sct#22287005";
+
+    /// <summary>
     /// Literal for code: Version
     /// </summary>
     public const string LiteralVersion = "22303008";
+
+    /// <summary>
+    /// Literal for code: NONEVersion
+    /// </summary>
+    public const string LiteralNONEVersion = "http://snomed.info/sct#22303008";
 
     /// <summary>
     /// Literal for code: NormalKaryotype
@@ -10848,9 +12678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNormalKaryotype = "2232008";
 
     /// <summary>
+    /// Literal for code: NONENormalKaryotype
+    /// </summary>
+    public const string LiteralNONENormalKaryotype = "http://snomed.info/sct#2232008";
+
+    /// <summary>
     /// Literal for code: AcuteMonocyticLeukemiaMorphology
     /// </summary>
     public const string LiteralAcuteMonocyticLeukemiaMorphology = "22331004";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteMonocyticLeukemiaMorphology
+    /// </summary>
+    public const string LiteralNONEAcuteMonocyticLeukemiaMorphology = "http://snomed.info/sct#22331004";
 
     /// <summary>
     /// Literal for code: UricAcidInfarct
@@ -10858,9 +12698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralUricAcidInfarct = "22333001";
 
     /// <summary>
+    /// Literal for code: NONEUricAcidInfarct
+    /// </summary>
+    public const string LiteralNONEUricAcidInfarct = "http://snomed.info/sct#22333001";
+
+    /// <summary>
     /// Literal for code: ThrombosedVarices
     /// </summary>
     public const string LiteralThrombosedVarices = "22341001";
+
+    /// <summary>
+    /// Literal for code: NONEThrombosedVarices
+    /// </summary>
+    public const string LiteralNONEThrombosedVarices = "http://snomed.info/sct#22341001";
 
     /// <summary>
     /// Literal for code: ElastoidDegeneration
@@ -10868,9 +12718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralElastoidDegeneration = "22427006";
 
     /// <summary>
+    /// Literal for code: NONEElastoidDegeneration
+    /// </summary>
+    public const string LiteralNONEElastoidDegeneration = "http://snomed.info/sct#22427006";
+
+    /// <summary>
     /// Literal for code: RadiationInjuryWithInflammation
     /// </summary>
     public const string LiteralRadiationInjuryWithInflammation = "22483007";
+
+    /// <summary>
+    /// Literal for code: NONERadiationInjuryWithInflammation
+    /// </summary>
+    public const string LiteralNONERadiationInjuryWithInflammation = "http://snomed.info/sct#22483007";
 
     /// <summary>
     /// Literal for code: SubependymalGliosis
@@ -10878,9 +12738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubependymalGliosis = "22517003";
 
     /// <summary>
+    /// Literal for code: NONESubependymalGliosis
+    /// </summary>
+    public const string LiteralNONESubependymalGliosis = "http://snomed.info/sct#22517003";
+
+    /// <summary>
     /// Literal for code: WartyDyskeratoma
     /// </summary>
     public const string LiteralWartyDyskeratoma = "22524002";
+
+    /// <summary>
+    /// Literal for code: NONEWartyDyskeratoma
+    /// </summary>
+    public const string LiteralNONEWartyDyskeratoma = "http://snomed.info/sct#22524002";
 
     /// <summary>
     /// Literal for code: PathologicFracture
@@ -10888,9 +12758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPathologicFracture = "22640007";
 
     /// <summary>
+    /// Literal for code: NONEPathologicFracture
+    /// </summary>
+    public const string LiteralNONEPathologicFracture = "http://snomed.info/sct#22640007";
+
+    /// <summary>
     /// Literal for code: SerousEffusion
     /// </summary>
     public const string LiteralSerousEffusion = "22641006";
+
+    /// <summary>
+    /// Literal for code: NONESerousEffusion
+    /// </summary>
+    public const string LiteralNONESerousEffusion = "http://snomed.info/sct#22641006";
 
     /// <summary>
     /// Literal for code: LargeCellCarcinoma
@@ -10898,9 +12778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLargeCellCarcinoma = "22687000";
 
     /// <summary>
+    /// Literal for code: NONELargeCellCarcinoma
+    /// </summary>
+    public const string LiteralNONELargeCellCarcinoma = "http://snomed.info/sct#22687000";
+
+    /// <summary>
     /// Literal for code: AdenocarcinomaWithApocrineMetaplasia
     /// </summary>
     public const string LiteralAdenocarcinomaWithApocrineMetaplasia = "22694002";
+
+    /// <summary>
+    /// Literal for code: NONEAdenocarcinomaWithApocrineMetaplasia
+    /// </summary>
+    public const string LiteralNONEAdenocarcinomaWithApocrineMetaplasia = "http://snomed.info/sct#22694002";
 
     /// <summary>
     /// Literal for code: HSIL
@@ -10908,9 +12798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHSIL = "22725004";
 
     /// <summary>
+    /// Literal for code: NONEHSIL
+    /// </summary>
+    public const string LiteralNONEHSIL = "http://snomed.info/sct#22725004";
+
+    /// <summary>
     /// Literal for code: ConnectiveTissueNevus
     /// </summary>
     public const string LiteralConnectiveTissueNevus = "22858003";
+
+    /// <summary>
+    /// Literal for code: NONEConnectiveTissueNevus
+    /// </summary>
+    public const string LiteralNONEConnectiveTissueNevus = "http://snomed.info/sct#22858003";
 
     /// <summary>
     /// Literal for code: DicentricChromosome
@@ -10918,9 +12818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDicentricChromosome = "2289007";
 
     /// <summary>
+    /// Literal for code: NONEDicentricChromosome
+    /// </summary>
+    public const string LiteralNONEDicentricChromosome = "http://snomed.info/sct#2289007";
+
+    /// <summary>
     /// Literal for code: ModerateColumnarCellAtypia
     /// </summary>
     public const string LiteralModerateColumnarCellAtypia = "22984005";
+
+    /// <summary>
+    /// Literal for code: NONEModerateColumnarCellAtypia
+    /// </summary>
+    public const string LiteralNONEModerateColumnarCellAtypia = "http://snomed.info/sct#22984005";
 
     /// <summary>
     /// Literal for code: FocalNodularHyperplasia
@@ -10928,9 +12838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFocalNodularHyperplasia = "22995004";
 
     /// <summary>
+    /// Literal for code: NONEFocalNodularHyperplasia
+    /// </summary>
+    public const string LiteralNONEFocalNodularHyperplasia = "http://snomed.info/sct#22995004";
+
+    /// <summary>
     /// Literal for code: SinusHistiocytosis
     /// </summary>
     public const string LiteralSinusHistiocytosis = "23041001";
+
+    /// <summary>
+    /// Literal for code: NONESinusHistiocytosis
+    /// </summary>
+    public const string LiteralNONESinusHistiocytosis = "http://snomed.info/sct#23041001";
 
     /// <summary>
     /// Literal for code: MarinescoBody
@@ -10938,9 +12858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMarinescoBody = "23048007";
 
     /// <summary>
+    /// Literal for code: NONEMarinescoBody
+    /// </summary>
+    public const string LiteralNONEMarinescoBody = "http://snomed.info/sct#23048007";
+
+    /// <summary>
     /// Literal for code: MildSquamousCellAtypia
     /// </summary>
     public const string LiteralMildSquamousCellAtypia = "23108001";
+
+    /// <summary>
+    /// Literal for code: NONEMildSquamousCellAtypia
+    /// </summary>
+    public const string LiteralNONEMildSquamousCellAtypia = "http://snomed.info/sct#23108001";
 
     /// <summary>
     /// Literal for code: SarcomatoidCarcinoma
@@ -10948,9 +12878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSarcomatoidCarcinoma = "23109009";
 
     /// <summary>
+    /// Literal for code: NONESarcomatoidCarcinoma
+    /// </summary>
+    public const string LiteralNONESarcomatoidCarcinoma = "http://snomed.info/sct#23109009";
+
+    /// <summary>
     /// Literal for code: CongenitalFold
     /// </summary>
     public const string LiteralCongenitalFold = "232001";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalFold
+    /// </summary>
+    public const string LiteralNONECongenitalFold = "http://snomed.info/sct#232001";
 
     /// <summary>
     /// Literal for code: BenignCementoblastoma
@@ -10958,9 +12898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBenignCementoblastoma = "23255001";
 
     /// <summary>
+    /// Literal for code: NONEBenignCementoblastoma
+    /// </summary>
+    public const string LiteralNONEBenignCementoblastoma = "http://snomed.info/sct#23255001";
+
+    /// <summary>
     /// Literal for code: IsochromosomeForLongArm
     /// </summary>
     public const string LiteralIsochromosomeForLongArm = "23280001";
+
+    /// <summary>
+    /// Literal for code: NONEIsochromosomeForLongArm
+    /// </summary>
+    public const string LiteralNONEIsochromosomeForLongArm = "http://snomed.info/sct#23280001";
 
     /// <summary>
     /// Literal for code: DelayedUnionOfIncompleteFracture
@@ -10968,9 +12918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDelayedUnionOfIncompleteFracture = "23286007";
 
     /// <summary>
+    /// Literal for code: NONEDelayedUnionOfIncompleteFracture
+    /// </summary>
+    public const string LiteralNONEDelayedUnionOfIncompleteFracture = "http://snomed.info/sct#23286007";
+
+    /// <summary>
     /// Literal for code: GlandularHyperplasia
     /// </summary>
     public const string LiteralGlandularHyperplasia = "23290009";
+
+    /// <summary>
+    /// Literal for code: NONEGlandularHyperplasia
+    /// </summary>
+    public const string LiteralNONEGlandularHyperplasia = "http://snomed.info/sct#23290009";
 
     /// <summary>
     /// Literal for code: MacrocyticHyperchromicErythrocyte
@@ -10978,9 +12938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMacrocyticHyperchromicErythrocyte = "23305007";
 
     /// <summary>
+    /// Literal for code: NONEMacrocyticHyperchromicErythrocyte
+    /// </summary>
+    public const string LiteralNONEMacrocyticHyperchromicErythrocyte = "http://snomed.info/sct#23305007";
+
+    /// <summary>
     /// Literal for code: RingChromosome
     /// </summary>
     public const string LiteralRingChromosome = "23345003";
+
+    /// <summary>
+    /// Literal for code: NONERingChromosome
+    /// </summary>
+    public const string LiteralNONERingChromosome = "http://snomed.info/sct#23345003";
 
     /// <summary>
     /// Literal for code: FatigueFracture
@@ -10988,9 +12958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFatigueFracture = "23382007";
 
     /// <summary>
+    /// Literal for code: NONEFatigueFracture
+    /// </summary>
+    public const string LiteralNONEFatigueFracture = "http://snomed.info/sct#23382007";
+
+    /// <summary>
     /// Literal for code: MixedAcidophilBasophilCarcinoma
     /// </summary>
     public const string LiteralMixedAcidophilBasophilCarcinoma = "23444003";
+
+    /// <summary>
+    /// Literal for code: NONEMixedAcidophilBasophilCarcinoma
+    /// </summary>
+    public const string LiteralNONEMixedAcidophilBasophilCarcinoma = "http://snomed.info/sct#23444003";
 
     /// <summary>
     /// Literal for code: AdenomatoidTumor
@@ -10998,9 +12978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdenomatoidTumor = "2348006";
 
     /// <summary>
+    /// Literal for code: NONEAdenomatoidTumor
+    /// </summary>
+    public const string LiteralNONEAdenomatoidTumor = "http://snomed.info/sct#2348006";
+
+    /// <summary>
     /// Literal for code: AvulsionFracture
     /// </summary>
     public const string LiteralAvulsionFracture = "23482006";
+
+    /// <summary>
+    /// Literal for code: NONEAvulsionFracture
+    /// </summary>
+    public const string LiteralNONEAvulsionFracture = "http://snomed.info/sct#23482006";
 
     /// <summary>
     /// Literal for code: GlycogenDeposition
@@ -11008,9 +12998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGlycogenDeposition = "23521003";
 
     /// <summary>
+    /// Literal for code: NONEGlycogenDeposition
+    /// </summary>
+    public const string LiteralNONEGlycogenDeposition = "http://snomed.info/sct#23521003";
+
+    /// <summary>
     /// Literal for code: OrganizingHematoma
     /// </summary>
     public const string LiteralOrganizingHematoma = "23539007";
+
+    /// <summary>
+    /// Literal for code: NONEOrganizingHematoma
+    /// </summary>
+    public const string LiteralNONEOrganizingHematoma = "http://snomed.info/sct#23539007";
 
     /// <summary>
     /// Literal for code: Inflammation
@@ -11018,9 +13018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInflammation = "23583003";
 
     /// <summary>
+    /// Literal for code: NONEInflammation
+    /// </summary>
+    public const string LiteralNONEInflammation = "http://snomed.info/sct#23583003";
+
+    /// <summary>
     /// Literal for code: GranulovacuolarDegenerationOfSimchowicz
     /// </summary>
     public const string LiteralGranulovacuolarDegenerationOfSimchowicz = "23596002";
+
+    /// <summary>
+    /// Literal for code: NONEGranulovacuolarDegenerationOfSimchowicz
+    /// </summary>
+    public const string LiteralNONEGranulovacuolarDegenerationOfSimchowicz = "http://snomed.info/sct#23596002";
 
     /// <summary>
     /// Literal for code: CartilaginousHamartoma
@@ -11028,9 +13038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCartilaginousHamartoma = "23604003";
 
     /// <summary>
+    /// Literal for code: NONECartilaginousHamartoma
+    /// </summary>
+    public const string LiteralNONECartilaginousHamartoma = "http://snomed.info/sct#23604003";
+
+    /// <summary>
     /// Literal for code: Acanthosis
     /// </summary>
     public const string LiteralAcanthosis = "23620008";
+
+    /// <summary>
+    /// Literal for code: NONEAcanthosis
+    /// </summary>
+    public const string LiteralNONEAcanthosis = "http://snomed.info/sct#23620008";
 
     /// <summary>
     /// Literal for code: PapillomaNoICDOSubtypeExceptPapillomaOfBladderM81201
@@ -11038,9 +13058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPapillomaNoICDOSubtypeExceptPapillomaOfBladderM81201 = "23730008";
 
     /// <summary>
+    /// Literal for code: NONEPapillomaNoICDOSubtypeExceptPapillomaOfBladderM81201
+    /// </summary>
+    public const string LiteralNONEPapillomaNoICDOSubtypeExceptPapillomaOfBladderM81201 = "http://snomed.info/sct#23730008";
+
+    /// <summary>
     /// Literal for code: CongenitalGrowthAlteration
     /// </summary>
     public const string LiteralCongenitalGrowthAlteration = "23756001";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalGrowthAlteration
+    /// </summary>
+    public const string LiteralNONECongenitalGrowthAlteration = "http://snomed.info/sct#23756001";
 
     /// <summary>
     /// Literal for code: ChylousEffusion
@@ -11048,9 +13078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChylousEffusion = "23839001";
 
     /// <summary>
+    /// Literal for code: NONEChylousEffusion
+    /// </summary>
+    public const string LiteralNONEChylousEffusion = "http://snomed.info/sct#23839001";
+
+    /// <summary>
     /// Literal for code: FibrosideroticNodule
     /// </summary>
     public const string LiteralFibrosideroticNodule = "23844008";
+
+    /// <summary>
+    /// Literal for code: NONEFibrosideroticNodule
+    /// </summary>
+    public const string LiteralNONEFibrosideroticNodule = "http://snomed.info/sct#23844008";
 
     /// <summary>
     /// Literal for code: HypersecretoryGestationalEndometrium
@@ -11058,9 +13098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHypersecretoryGestationalEndometrium = "23870009";
 
     /// <summary>
+    /// Literal for code: NONEHypersecretoryGestationalEndometrium
+    /// </summary>
+    public const string LiteralNONEHypersecretoryGestationalEndometrium = "http://snomed.info/sct#23870009";
+
+    /// <summary>
     /// Literal for code: FractureUnunitedComminuted
     /// </summary>
     public const string LiteralFractureUnunitedComminuted = "23990004";
+
+    /// <summary>
+    /// Literal for code: NONEFractureUnunitedComminuted
+    /// </summary>
+    public const string LiteralNONEFractureUnunitedComminuted = "http://snomed.info/sct#23990004";
 
     /// <summary>
     /// Literal for code: ClearCellSarcomaOfKidney
@@ -11068,9 +13118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClearCellSarcomaOfKidney = "24007003";
 
     /// <summary>
+    /// Literal for code: NONEClearCellSarcomaOfKidney
+    /// </summary>
+    public const string LiteralNONEClearCellSarcomaOfKidney = "http://snomed.info/sct#24007003";
+
+    /// <summary>
     /// Literal for code: CorrectedTransposition
     /// </summary>
     public const string LiteralCorrectedTransposition = "24016004";
+
+    /// <summary>
+    /// Literal for code: NONECorrectedTransposition
+    /// </summary>
+    public const string LiteralNONECorrectedTransposition = "http://snomed.info/sct#24016004";
 
     /// <summary>
     /// Literal for code: MeibomianAdenoma
@@ -11078,9 +13138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMeibomianAdenoma = "24017008";
 
     /// <summary>
+    /// Literal for code: NONEMeibomianAdenoma
+    /// </summary>
+    public const string LiteralNONEMeibomianAdenoma = "http://snomed.info/sct#24017008";
+
+    /// <summary>
     /// Literal for code: EnterogenousCyst
     /// </summary>
     public const string LiteralEnterogenousCyst = "24018003";
+
+    /// <summary>
+    /// Literal for code: NONEEnterogenousCyst
+    /// </summary>
+    public const string LiteralNONEEnterogenousCyst = "http://snomed.info/sct#24018003";
 
     /// <summary>
     /// Literal for code: IntramuscularLipoma
@@ -11088,9 +13158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntramuscularLipoma = "24045002";
 
     /// <summary>
+    /// Literal for code: NONEIntramuscularLipoma
+    /// </summary>
+    public const string LiteralNONEIntramuscularLipoma = "http://snomed.info/sct#24045002";
+
+    /// <summary>
     /// Literal for code: StemCellLeukemia
     /// </summary>
     public const string LiteralStemCellLeukemia = "24072005";
+
+    /// <summary>
+    /// Literal for code: NONEStemCellLeukemia
+    /// </summary>
+    public const string LiteralNONEStemCellLeukemia = "http://snomed.info/sct#24072005";
 
     /// <summary>
     /// Literal for code: Maculopapule
@@ -11098,9 +13178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaculopapule = "2412005";
 
     /// <summary>
+    /// Literal for code: NONEMaculopapule
+    /// </summary>
+    public const string LiteralNONEMaculopapule = "http://snomed.info/sct#2412005";
+
+    /// <summary>
     /// Literal for code: FibrinousPolyp
     /// </summary>
     public const string LiteralFibrinousPolyp = "24183004";
+
+    /// <summary>
+    /// Literal for code: NONEFibrinousPolyp
+    /// </summary>
+    public const string LiteralNONEFibrinousPolyp = "http://snomed.info/sct#24183004";
 
     /// <summary>
     /// Literal for code: CongenitalAbsence
@@ -11108,9 +13198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalAbsence = "24216005";
 
     /// <summary>
+    /// Literal for code: NONECongenitalAbsence
+    /// </summary>
+    public const string LiteralNONECongenitalAbsence = "http://snomed.info/sct#24216005";
+
+    /// <summary>
     /// Literal for code: MalignantMesenchymalTumor
     /// </summary>
     public const string LiteralMalignantMesenchymalTumor = "2424003";
+
+    /// <summary>
+    /// Literal for code: NONEMalignantMesenchymalTumor
+    /// </summary>
+    public const string LiteralNONEMalignantMesenchymalTumor = "http://snomed.info/sct#2424003";
 
     /// <summary>
     /// Literal for code: BrownAtrophy
@@ -11118,9 +13218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBrownAtrophy = "24244006";
 
     /// <summary>
+    /// Literal for code: NONEBrownAtrophy
+    /// </summary>
+    public const string LiteralNONEBrownAtrophy = "http://snomed.info/sct#24244006";
+
+    /// <summary>
     /// Literal for code: SquamousIntraepithelialLesion
     /// </summary>
     public const string LiteralSquamousIntraepithelialLesion = "24253004";
+
+    /// <summary>
+    /// Literal for code: NONESquamousIntraepithelialLesion
+    /// </summary>
+    public const string LiteralNONESquamousIntraepithelialLesion = "http://snomed.info/sct#24253004";
 
     /// <summary>
     /// Literal for code: SerosanguineousEffusion
@@ -11128,9 +13238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSerosanguineousEffusion = "24283008";
 
     /// <summary>
+    /// Literal for code: NONESerosanguineousEffusion
+    /// </summary>
+    public const string LiteralNONESerosanguineousEffusion = "http://snomed.info/sct#24283008";
+
+    /// <summary>
     /// Literal for code: StrumaOvarii
     /// </summary>
     public const string LiteralStrumaOvarii = "24327009";
+
+    /// <summary>
+    /// Literal for code: NONEStrumaOvarii
+    /// </summary>
+    public const string LiteralNONEStrumaOvarii = "http://snomed.info/sct#24327009";
 
     /// <summary>
     /// Literal for code: PregnancyAlterationOfVagina
@@ -11138,9 +13258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPregnancyAlterationOfVagina = "24373006";
 
     /// <summary>
+    /// Literal for code: NONEPregnancyAlterationOfVagina
+    /// </summary>
+    public const string LiteralNONEPregnancyAlterationOfVagina = "http://snomed.info/sct#24373006";
+
+    /// <summary>
     /// Literal for code: InjectionSiteGranuloma
     /// </summary>
     public const string LiteralInjectionSiteGranuloma = "24389009";
+
+    /// <summary>
+    /// Literal for code: NONEInjectionSiteGranuloma
+    /// </summary>
+    public const string LiteralNONEInjectionSiteGranuloma = "http://snomed.info/sct#24389009";
 
     /// <summary>
     /// Literal for code: NuclearCytoplasmicRatioDecreased
@@ -11148,9 +13278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNuclearCytoplasmicRatioDecreased = "24398007";
 
     /// <summary>
+    /// Literal for code: NONENuclearCytoplasmicRatioDecreased
+    /// </summary>
+    public const string LiteralNONENuclearCytoplasmicRatioDecreased = "http://snomed.info/sct#24398007";
+
+    /// <summary>
     /// Literal for code: SubcapsularHemorrhage
     /// </summary>
     public const string LiteralSubcapsularHemorrhage = "24421006";
+
+    /// <summary>
+    /// Literal for code: NONESubcapsularHemorrhage
+    /// </summary>
+    public const string LiteralNONESubcapsularHemorrhage = "http://snomed.info/sct#24421006";
 
     /// <summary>
     /// Literal for code: HypersegmentedLeukocyte
@@ -11158,9 +13298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHypersegmentedLeukocyte = "24481008";
 
     /// <summary>
+    /// Literal for code: NONEHypersegmentedLeukocyte
+    /// </summary>
+    public const string LiteralNONEHypersegmentedLeukocyte = "http://snomed.info/sct#24481008";
+
+    /// <summary>
     /// Literal for code: AtypicalAdenoma
     /// </summary>
     public const string LiteralAtypicalAdenoma = "24482001";
+
+    /// <summary>
+    /// Literal for code: NONEAtypicalAdenoma
+    /// </summary>
+    public const string LiteralNONEAtypicalAdenoma = "http://snomed.info/sct#24482001";
 
     /// <summary>
     /// Literal for code: AdenocarcinomaDiffuseType
@@ -11168,9 +13318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdenocarcinomaDiffuseType = "24505004";
 
     /// <summary>
+    /// Literal for code: NONEAdenocarcinomaDiffuseType
+    /// </summary>
+    public const string LiteralNONEAdenocarcinomaDiffuseType = "http://snomed.info/sct#24505004";
+
+    /// <summary>
     /// Literal for code: ComplexCaries
     /// </summary>
     public const string LiteralComplexCaries = "24531002";
+
+    /// <summary>
+    /// Literal for code: NONEComplexCaries
+    /// </summary>
+    public const string LiteralNONEComplexCaries = "http://snomed.info/sct#24531002";
 
     /// <summary>
     /// Literal for code: ArteriovenousMalformation
@@ -11178,9 +13338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArteriovenousMalformation = "24551003";
 
     /// <summary>
+    /// Literal for code: NONEArteriovenousMalformation
+    /// </summary>
+    public const string LiteralNONEArteriovenousMalformation = "http://snomed.info/sct#24551003";
+
+    /// <summary>
     /// Literal for code: PseudohypertrophicDystrophy
     /// </summary>
     public const string LiteralPseudohypertrophicDystrophy = "24582004";
+
+    /// <summary>
+    /// Literal for code: NONEPseudohypertrophicDystrophy
+    /// </summary>
+    public const string LiteralNONEPseudohypertrophicDystrophy = "http://snomed.info/sct#24582004";
 
     /// <summary>
     /// Literal for code: Medullomyoblastoma
@@ -11188,9 +13358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedullomyoblastoma = "24604009";
 
     /// <summary>
+    /// Literal for code: NONEMedullomyoblastoma
+    /// </summary>
+    public const string LiteralNONEMedullomyoblastoma = "http://snomed.info/sct#24604009";
+
+    /// <summary>
     /// Literal for code: ModerateCytologicAtypia
     /// </summary>
     public const string LiteralModerateCytologicAtypia = "2464004";
+
+    /// <summary>
+    /// Literal for code: NONEModerateCytologicAtypia
+    /// </summary>
+    public const string LiteralNONEModerateCytologicAtypia = "http://snomed.info/sct#2464004";
 
     /// <summary>
     /// Literal for code: GuarnieriBodies
@@ -11198,9 +13378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGuarnieriBodies = "24645001";
 
     /// <summary>
+    /// Literal for code: NONEGuarnieriBodies
+    /// </summary>
+    public const string LiteralNONEGuarnieriBodies = "http://snomed.info/sct#24645001";
+
+    /// <summary>
     /// Literal for code: SpindleCellMelanomaTypeA
     /// </summary>
     public const string LiteralSpindleCellMelanomaTypeA = "24653009";
+
+    /// <summary>
+    /// Literal for code: NONESpindleCellMelanomaTypeA
+    /// </summary>
+    public const string LiteralNONESpindleCellMelanomaTypeA = "http://snomed.info/sct#24653009";
 
     /// <summary>
     /// Literal for code: InternalTraumaticFistula
@@ -11208,9 +13398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInternalTraumaticFistula = "24726002";
 
     /// <summary>
+    /// Literal for code: NONEInternalTraumaticFistula
+    /// </summary>
+    public const string LiteralNONEInternalTraumaticFistula = "http://snomed.info/sct#24726002";
+
+    /// <summary>
     /// Literal for code: InsectBite
     /// </summary>
     public const string LiteralInsectBite = "24734008";
+
+    /// <summary>
+    /// Literal for code: NONEInsectBite
+    /// </summary>
+    public const string LiteralNONEInsectBite = "http://snomed.info/sct#24734008";
 
     /// <summary>
     /// Literal for code: MalignantPilomatrixoma
@@ -11218,9 +13418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMalignantPilomatrixoma = "24762001";
 
     /// <summary>
+    /// Literal for code: NONEMalignantPilomatrixoma
+    /// </summary>
+    public const string LiteralNONEMalignantPilomatrixoma = "http://snomed.info/sct#24762001";
+
+    /// <summary>
     /// Literal for code: WolffianDuctRest
     /// </summary>
     public const string LiteralWolffianDuctRest = "24804006";
+
+    /// <summary>
+    /// Literal for code: NONEWolffianDuctRest
+    /// </summary>
+    public const string LiteralNONEWolffianDuctRest = "http://snomed.info/sct#24804006";
 
     /// <summary>
     /// Literal for code: SerousInflammation
@@ -11228,9 +13438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSerousInflammation = "24811005";
 
     /// <summary>
+    /// Literal for code: NONESerousInflammation
+    /// </summary>
+    public const string LiteralNONESerousInflammation = "http://snomed.info/sct#24811005";
+
+    /// <summary>
     /// Literal for code: LipidRichSertoliCellTumor
     /// </summary>
     public const string LiteralLipidRichSertoliCellTumor = "24815001";
+
+    /// <summary>
+    /// Literal for code: NONELipidRichSertoliCellTumor
+    /// </summary>
+    public const string LiteralNONELipidRichSertoliCellTumor = "http://snomed.info/sct#24815001";
 
     /// <summary>
     /// Literal for code: AbnormalWhiteBloodCell
@@ -11238,9 +13458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAbnormalWhiteBloodCell = "24827003";
 
     /// <summary>
+    /// Literal for code: NONEAbnormalWhiteBloodCell
+    /// </summary>
+    public const string LiteralNONEAbnormalWhiteBloodCell = "http://snomed.info/sct#24827003";
+
+    /// <summary>
     /// Literal for code: Cavity
     /// </summary>
     public const string LiteralCavity = "2483006";
+
+    /// <summary>
+    /// Literal for code: NONECavity
+    /// </summary>
+    public const string LiteralNONECavity = "http://snomed.info/sct#2483006";
 
     /// <summary>
     /// Literal for code: Maceration
@@ -11248,9 +13478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMaceration = "24887001";
 
     /// <summary>
+    /// Literal for code: NONEMaceration
+    /// </summary>
+    public const string LiteralNONEMaceration = "http://snomed.info/sct#24887001";
+
+    /// <summary>
     /// Literal for code: NavicularCell
     /// </summary>
     public const string LiteralNavicularCell = "25006003";
+
+    /// <summary>
+    /// Literal for code: NONENavicularCell
+    /// </summary>
+    public const string LiteralNONENavicularCell = "http://snomed.info/sct#25006003";
 
     /// <summary>
     /// Literal for code: InvolutionalAtrophy
@@ -11258,9 +13498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInvolutionalAtrophy = "25063008";
 
     /// <summary>
+    /// Literal for code: NONEInvolutionalAtrophy
+    /// </summary>
+    public const string LiteralNONEInvolutionalAtrophy = "http://snomed.info/sct#25063008";
+
+    /// <summary>
     /// Literal for code: Nephroblastoma
     /// </summary>
     public const string LiteralNephroblastoma = "25081006";
+
+    /// <summary>
+    /// Literal for code: NONENephroblastoma
+    /// </summary>
+    public const string LiteralNONENephroblastoma = "http://snomed.info/sct#25081006";
 
     /// <summary>
     /// Literal for code: DimpledStructure
@@ -11268,9 +13518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDimpledStructure = "25088000";
 
     /// <summary>
+    /// Literal for code: NONEDimpledStructure
+    /// </summary>
+    public const string LiteralNONEDimpledStructure = "http://snomed.info/sct#25088000";
+
+    /// <summary>
     /// Literal for code: BlisterDueToDegenerationOfTheBasementZone
     /// </summary>
     public const string LiteralBlisterDueToDegenerationOfTheBasementZone = "25154008";
+
+    /// <summary>
+    /// Literal for code: NONEBlisterDueToDegenerationOfTheBasementZone
+    /// </summary>
+    public const string LiteralNONEBlisterDueToDegenerationOfTheBasementZone = "http://snomed.info/sct#25154008";
 
     /// <summary>
     /// Literal for code: NeuromaNoICDOSubtype
@@ -11278,9 +13538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeuromaNoICDOSubtype = "25169009";
 
     /// <summary>
+    /// Literal for code: NONENeuromaNoICDOSubtype
+    /// </summary>
+    public const string LiteralNONENeuromaNoICDOSubtype = "http://snomed.info/sct#25169009";
+
+    /// <summary>
     /// Literal for code: CarcinomaIntestinalType
     /// </summary>
     public const string LiteralCarcinomaIntestinalType = "25190001";
+
+    /// <summary>
+    /// Literal for code: NONECarcinomaIntestinalType
+    /// </summary>
+    public const string LiteralNONECarcinomaIntestinalType = "http://snomed.info/sct#25190001";
 
     /// <summary>
     /// Literal for code: EpidermalNevus
@@ -11288,9 +13558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEpidermalNevus = "25201003";
 
     /// <summary>
+    /// Literal for code: NONEEpidermalNevus
+    /// </summary>
+    public const string LiteralNONEEpidermalNevus = "http://snomed.info/sct#25201003";
+
+    /// <summary>
     /// Literal for code: Lymphangiomyoma
     /// </summary>
     public const string LiteralLymphangiomyoma = "25239006";
+
+    /// <summary>
+    /// Literal for code: NONELymphangiomyoma
+    /// </summary>
+    public const string LiteralNONELymphangiomyoma = "http://snomed.info/sct#25239006";
 
     /// <summary>
     /// Literal for code: CongenitalDysplasia
@@ -11298,9 +13578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalDysplasia = "25283002";
 
     /// <summary>
+    /// Literal for code: NONECongenitalDysplasia
+    /// </summary>
+    public const string LiteralNONECongenitalDysplasia = "http://snomed.info/sct#25283002";
+
+    /// <summary>
     /// Literal for code: Phytobezoar
     /// </summary>
     public const string LiteralPhytobezoar = "25295002";
+
+    /// <summary>
+    /// Literal for code: NONEPhytobezoar
+    /// </summary>
+    public const string LiteralNONEPhytobezoar = "http://snomed.info/sct#25295002";
 
     /// <summary>
     /// Literal for code: Dilatation
@@ -11308,9 +13598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDilatation = "25322007";
 
     /// <summary>
+    /// Literal for code: NONEDilatation
+    /// </summary>
+    public const string LiteralNONEDilatation = "http://snomed.info/sct#25322007";
+
+    /// <summary>
     /// Literal for code: Insulinoma
     /// </summary>
     public const string LiteralInsulinoma = "25324008";
+
+    /// <summary>
+    /// Literal for code: NONEInsulinoma
+    /// </summary>
+    public const string LiteralNONEInsulinoma = "http://snomed.info/sct#25324008";
 
     /// <summary>
     /// Literal for code: HepatocellularCarcinoma
@@ -11318,9 +13618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHepatocellularCarcinoma = "25370001";
 
     /// <summary>
+    /// Literal for code: NONEHepatocellularCarcinoma
+    /// </summary>
+    public const string LiteralNONEHepatocellularCarcinoma = "http://snomed.info/sct#25370001";
+
+    /// <summary>
     /// Literal for code: HighLevelEstrogenEffectPresent
     /// </summary>
     public const string LiteralHighLevelEstrogenEffectPresent = "25371002";
+
+    /// <summary>
+    /// Literal for code: NONEHighLevelEstrogenEffectPresent
+    /// </summary>
+    public const string LiteralNONEHighLevelEstrogenEffectPresent = "http://snomed.info/sct#25371002";
 
     /// <summary>
     /// Literal for code: CongenitalDeviation
@@ -11328,9 +13638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalDeviation = "25393007";
 
     /// <summary>
+    /// Literal for code: NONECongenitalDeviation
+    /// </summary>
+    public const string LiteralNONECongenitalDeviation = "http://snomed.info/sct#25393007";
+
+    /// <summary>
     /// Literal for code: SeborrheicKeratosis
     /// </summary>
     public const string LiteralSeborrheicKeratosis = "25499005";
+
+    /// <summary>
+    /// Literal for code: NONESeborrheicKeratosis
+    /// </summary>
+    public const string LiteralNONESeborrheicKeratosis = "http://snomed.info/sct#25499005";
 
     /// <summary>
     /// Literal for code: CalcifiedNodule
@@ -11338,9 +13658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCalcifiedNodule = "255003";
 
     /// <summary>
+    /// Literal for code: NONECalcifiedNodule
+    /// </summary>
+    public const string LiteralNONECalcifiedNodule = "http://snomed.info/sct#255003";
+
+    /// <summary>
     /// Literal for code: ClawShapedDeformity
     /// </summary>
     public const string LiteralClawShapedDeformity = "2559001";
+
+    /// <summary>
+    /// Literal for code: NONEClawShapedDeformity
+    /// </summary>
+    public const string LiteralNONEClawShapedDeformity = "http://snomed.info/sct#2559001";
 
     /// <summary>
     /// Literal for code: OssifyingFibromaCalcifiedStructure
@@ -11348,9 +13678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOssifyingFibromaCalcifiedStructure = "25603007";
 
     /// <summary>
+    /// Literal for code: NONEOssifyingFibromaCalcifiedStructure
+    /// </summary>
+    public const string LiteralNONEOssifyingFibromaCalcifiedStructure = "http://snomed.info/sct#25603007";
+
+    /// <summary>
     /// Literal for code: DysplasticPlatelet
     /// </summary>
     public const string LiteralDysplasticPlatelet = "25624002";
+
+    /// <summary>
+    /// Literal for code: NONEDysplasticPlatelet
+    /// </summary>
+    public const string LiteralNONEDysplasticPlatelet = "http://snomed.info/sct#25624002";
 
     /// <summary>
     /// Literal for code: SpontaneousGangrene
@@ -11358,9 +13698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpontaneousGangrene = "25655008";
 
     /// <summary>
+    /// Literal for code: NONESpontaneousGangrene
+    /// </summary>
+    public const string LiteralNONESpontaneousGangrene = "http://snomed.info/sct#25655008";
+
+    /// <summary>
     /// Literal for code: NarrowedStructure
     /// </summary>
     public const string LiteralNarrowedStructure = "25659002";
+
+    /// <summary>
+    /// Literal for code: NONENarrowedStructure
+    /// </summary>
+    public const string LiteralNONENarrowedStructure = "http://snomed.info/sct#25659002";
 
     /// <summary>
     /// Literal for code: BilateralHyperplasia
@@ -11368,9 +13718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBilateralHyperplasia = "25672001";
 
     /// <summary>
+    /// Literal for code: NONEBilateralHyperplasia
+    /// </summary>
+    public const string LiteralNONEBilateralHyperplasia = "http://snomed.info/sct#25672001";
+
+    /// <summary>
     /// Literal for code: Papule
     /// </summary>
     public const string LiteralPapule = "25694009";
+
+    /// <summary>
+    /// Literal for code: NONEPapule
+    /// </summary>
+    public const string LiteralNONEPapule = "http://snomed.info/sct#25694009";
 
     /// <summary>
     /// Literal for code: TractionDiverticulum
@@ -11378,9 +13738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTractionDiverticulum = "2570008";
 
     /// <summary>
+    /// Literal for code: NONETractionDiverticulum
+    /// </summary>
+    public const string LiteralNONETractionDiverticulum = "http://snomed.info/sct#2570008";
+
+    /// <summary>
     /// Literal for code: Dysplasia
     /// </summary>
     public const string LiteralDysplasia = "25723000";
+
+    /// <summary>
+    /// Literal for code: NONEDysplasia
+    /// </summary>
+    public const string LiteralNONEDysplasia = "http://snomed.info/sct#25723000";
 
     /// <summary>
     /// Literal for code: BurnInjuryWithCharring
@@ -11388,9 +13758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBurnInjuryWithCharring = "25733008";
 
     /// <summary>
+    /// Literal for code: NONEBurnInjuryWithCharring
+    /// </summary>
+    public const string LiteralNONEBurnInjuryWithCharring = "http://snomed.info/sct#25733008";
+
+    /// <summary>
     /// Literal for code: LossOfFluid
     /// </summary>
     public const string LiteralLossOfFluid = "25751009";
+
+    /// <summary>
+    /// Literal for code: NONELossOfFluid
+    /// </summary>
+    public const string LiteralNONELossOfFluid = "http://snomed.info/sct#25751009";
 
     /// <summary>
     /// Literal for code: AnomalousArterialConnection
@@ -11398,9 +13778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnomalousArterialConnection = "25774008";
 
     /// <summary>
+    /// Literal for code: NONEAnomalousArterialConnection
+    /// </summary>
+    public const string LiteralNONEAnomalousArterialConnection = "http://snomed.info/sct#25774008";
+
+    /// <summary>
     /// Literal for code: DeepCaries
     /// </summary>
     public const string LiteralDeepCaries = "25840002";
+
+    /// <summary>
+    /// Literal for code: NONEDeepCaries
+    /// </summary>
+    public const string LiteralNONEDeepCaries = "http://snomed.info/sct#25840002";
 
     /// <summary>
     /// Literal for code: HealingUlcer
@@ -11408,9 +13798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHealingUlcer = "25845007";
 
     /// <summary>
+    /// Literal for code: NONEHealingUlcer
+    /// </summary>
+    public const string LiteralNONEHealingUlcer = "http://snomed.info/sct#25845007";
+
+    /// <summary>
     /// Literal for code: EndometrioidCystadenofibromaBorderlineMalignancy
     /// </summary>
     public const string LiteralEndometrioidCystadenofibromaBorderlineMalignancy = "25874003";
+
+    /// <summary>
+    /// Literal for code: NONEEndometrioidCystadenofibromaBorderlineMalignancy
+    /// </summary>
+    public const string LiteralNONEEndometrioidCystadenofibromaBorderlineMalignancy = "http://snomed.info/sct#25874003";
 
     /// <summary>
     /// Literal for code: BenignFibrousHistiocytoma
@@ -11418,9 +13818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBenignFibrousHistiocytoma = "25889007";
 
     /// <summary>
+    /// Literal for code: NONEBenignFibrousHistiocytoma
+    /// </summary>
+    public const string LiteralNONEBenignFibrousHistiocytoma = "http://snomed.info/sct#25889007";
+
+    /// <summary>
     /// Literal for code: FibrousBody
     /// </summary>
     public const string LiteralFibrousBody = "259009";
+
+    /// <summary>
+    /// Literal for code: NONEFibrousBody
+    /// </summary>
+    public const string LiteralNONEFibrousBody = "http://snomed.info/sct#259009";
 
     /// <summary>
     /// Literal for code: PapillaryCarcinoma
@@ -11428,9 +13838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPapillaryCarcinoma = "25910003";
 
     /// <summary>
+    /// Literal for code: NONEPapillaryCarcinoma
+    /// </summary>
+    public const string LiteralNONEPapillaryCarcinoma = "http://snomed.info/sct#25910003";
+
+    /// <summary>
     /// Literal for code: AcuteMucousInflammation
     /// </summary>
     public const string LiteralAcuteMucousInflammation = "25979007";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteMucousInflammation
+    /// </summary>
+    public const string LiteralNONEAcuteMucousInflammation = "http://snomed.info/sct#25979007";
 
     /// <summary>
     /// Literal for code: RetinoblastomaDifferentiated
@@ -11438,9 +13858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRetinoblastomaDifferentiated = "26019009";
 
     /// <summary>
+    /// Literal for code: NONERetinoblastomaDifferentiated
+    /// </summary>
+    public const string LiteralNONERetinoblastomaDifferentiated = "http://snomed.info/sct#26019009";
+
+    /// <summary>
     /// Literal for code: Obstruction
     /// </summary>
     public const string LiteralObstruction = "26036001";
+
+    /// <summary>
+    /// Literal for code: NONEObstruction
+    /// </summary>
+    public const string LiteralNONEObstruction = "http://snomed.info/sct#26036001";
 
     /// <summary>
     /// Literal for code: GliomatosisCerebri
@@ -11448,9 +13878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGliomatosisCerebri = "26138003";
 
     /// <summary>
+    /// Literal for code: NONEGliomatosisCerebri
+    /// </summary>
+    public const string LiteralNONEGliomatosisCerebri = "http://snomed.info/sct#26138003";
+
+    /// <summary>
     /// Literal for code: GiantComedo
     /// </summary>
     public const string LiteralGiantComedo = "26209007";
+
+    /// <summary>
+    /// Literal for code: NONEGiantComedo
+    /// </summary>
+    public const string LiteralNONEGiantComedo = "http://snomed.info/sct#26209007";
 
     /// <summary>
     /// Literal for code: JuxtacorticalChondrosarcoma
@@ -11458,9 +13898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJuxtacorticalChondrosarcoma = "26211003";
 
     /// <summary>
+    /// Literal for code: NONEJuxtacorticalChondrosarcoma
+    /// </summary>
+    public const string LiteralNONEJuxtacorticalChondrosarcoma = "http://snomed.info/sct#26211003";
+
+    /// <summary>
     /// Literal for code: PlasmaCellInflammation
     /// </summary>
     public const string LiteralPlasmaCellInflammation = "26246006";
+
+    /// <summary>
+    /// Literal for code: NONEPlasmaCellInflammation
+    /// </summary>
+    public const string LiteralNONEPlasmaCellInflammation = "http://snomed.info/sct#26246006";
 
     /// <summary>
     /// Literal for code: PoststenoticDilatation
@@ -11468,9 +13918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPoststenoticDilatation = "26269009";
 
     /// <summary>
+    /// Literal for code: NONEPoststenoticDilatation
+    /// </summary>
+    public const string LiteralNONEPoststenoticDilatation = "http://snomed.info/sct#26269009";
+
+    /// <summary>
     /// Literal for code: Fold
     /// </summary>
     public const string LiteralFold = "26310004";
+
+    /// <summary>
+    /// Literal for code: NONEFold
+    /// </summary>
+    public const string LiteralNONEFold = "http://snomed.info/sct#26310004";
 
     /// <summary>
     /// Literal for code: AcuteUlcer
@@ -11478,9 +13938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcuteUlcer = "26317001";
 
     /// <summary>
+    /// Literal for code: NONEAcuteUlcer
+    /// </summary>
+    public const string LiteralNONEAcuteUlcer = "http://snomed.info/sct#26317001";
+
+    /// <summary>
     /// Literal for code: Melanocytoma
     /// </summary>
     public const string LiteralMelanocytoma = "26325004";
+
+    /// <summary>
+    /// Literal for code: NONEMelanocytoma
+    /// </summary>
+    public const string LiteralNONEMelanocytoma = "http://snomed.info/sct#26325004";
 
     /// <summary>
     /// Literal for code: AnomalousVenousDrainage
@@ -11488,9 +13958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnomalousVenousDrainage = "26344006";
 
     /// <summary>
+    /// Literal for code: NONEAnomalousVenousDrainage
+    /// </summary>
+    public const string LiteralNONEAnomalousVenousDrainage = "http://snomed.info/sct#26344006";
+
+    /// <summary>
     /// Literal for code: Luteoma
     /// </summary>
     public const string LiteralLuteoma = "26372004";
+
+    /// <summary>
+    /// Literal for code: NONELuteoma
+    /// </summary>
+    public const string LiteralNONELuteoma = "http://snomed.info/sct#26372004";
 
     /// <summary>
     /// Literal for code: DislocationIncomplete
@@ -11498,9 +13978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDislocationIncomplete = "26396009";
 
     /// <summary>
+    /// Literal for code: NONEDislocationIncomplete
+    /// </summary>
+    public const string LiteralNONEDislocationIncomplete = "http://snomed.info/sct#26396009";
+
+    /// <summary>
     /// Literal for code: AtypicalFibrousHistiocytoma
     /// </summary>
     public const string LiteralAtypicalFibrousHistiocytoma = "26496005";
+
+    /// <summary>
+    /// Literal for code: NONEAtypicalFibrousHistiocytoma
+    /// </summary>
+    public const string LiteralNONEAtypicalFibrousHistiocytoma = "http://snomed.info/sct#26496005";
 
     /// <summary>
     /// Literal for code: DrainingWound
@@ -11508,9 +13998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDrainingWound = "26514007";
 
     /// <summary>
+    /// Literal for code: NONEDrainingWound
+    /// </summary>
+    public const string LiteralNONEDrainingWound = "http://snomed.info/sct#26514007";
+
+    /// <summary>
     /// Literal for code: MacrofollicularAdenoma
     /// </summary>
     public const string LiteralMacrofollicularAdenoma = "26545006";
+
+    /// <summary>
+    /// Literal for code: NONEMacrofollicularAdenoma
+    /// </summary>
+    public const string LiteralNONEMacrofollicularAdenoma = "http://snomed.info/sct#26545006";
 
     /// <summary>
     /// Literal for code: SpontaneousAmputatedStructure
@@ -11518,9 +14018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpontaneousAmputatedStructure = "26577009";
 
     /// <summary>
+    /// Literal for code: NONESpontaneousAmputatedStructure
+    /// </summary>
+    public const string LiteralNONESpontaneousAmputatedStructure = "http://snomed.info/sct#26577009";
+
+    /// <summary>
     /// Literal for code: WaterClearCellAdenoma
     /// </summary>
     public const string LiteralWaterClearCellAdenoma = "26638004";
+
+    /// <summary>
+    /// Literal for code: NONEWaterClearCellAdenoma
+    /// </summary>
+    public const string LiteralNONEWaterClearCellAdenoma = "http://snomed.info/sct#26638004";
 
     /// <summary>
     /// Literal for code: ChemicalBurn
@@ -11528,9 +14038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChemicalBurn = "26696002";
 
     /// <summary>
+    /// Literal for code: NONEChemicalBurn
+    /// </summary>
+    public const string LiteralNONEChemicalBurn = "http://snomed.info/sct#26696002";
+
+    /// <summary>
     /// Literal for code: NonOcclusiveThrombus
     /// </summary>
     public const string LiteralNonOcclusiveThrombus = "26713004";
+
+    /// <summary>
+    /// Literal for code: NONENonOcclusiveThrombus
+    /// </summary>
+    public const string LiteralNONENonOcclusiveThrombus = "http://snomed.info/sct#26713004";
 
     /// <summary>
     /// Literal for code: MultipleThromboembolism
@@ -11538,9 +14058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMultipleThromboembolism = "26727009";
 
     /// <summary>
+    /// Literal for code: NONEMultipleThromboembolism
+    /// </summary>
+    public const string LiteralNONEMultipleThromboembolism = "http://snomed.info/sct#26727009";
+
+    /// <summary>
     /// Literal for code: Gynandroblastoma
     /// </summary>
     public const string LiteralGynandroblastoma = "26735007";
+
+    /// <summary>
+    /// Literal for code: NONEGynandroblastoma
+    /// </summary>
+    public const string LiteralNONEGynandroblastoma = "http://snomed.info/sct#26735007";
 
     /// <summary>
     /// Literal for code: OrganizingInflammation
@@ -11548,9 +14078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOrganizingInflammation = "26751004";
 
     /// <summary>
+    /// Literal for code: NONEOrganizingInflammation
+    /// </summary>
+    public const string LiteralNONEOrganizingInflammation = "http://snomed.info/sct#26751004";
+
+    /// <summary>
     /// Literal for code: EmbryonalRest
     /// </summary>
     public const string LiteralEmbryonalRest = "26759002";
+
+    /// <summary>
+    /// Literal for code: NONEEmbryonalRest
+    /// </summary>
+    public const string LiteralNONEEmbryonalRest = "http://snomed.info/sct#26759002";
 
     /// <summary>
     /// Literal for code: Angiokeratoma
@@ -11558,9 +14098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAngiokeratoma = "26810009";
 
     /// <summary>
+    /// Literal for code: NONEAngiokeratoma
+    /// </summary>
+    public const string LiteralNONEAngiokeratoma = "http://snomed.info/sct#26810009";
+
+    /// <summary>
     /// Literal for code: TartCell
     /// </summary>
     public const string LiteralTartCell = "26819005";
+
+    /// <summary>
+    /// Literal for code: NONETartCell
+    /// </summary>
+    public const string LiteralNONETartCell = "http://snomed.info/sct#26819005";
 
     /// <summary>
     /// Literal for code: DissectingAneurysm
@@ -11568,9 +14118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDissectingAneurysm = "26845001";
 
     /// <summary>
+    /// Literal for code: NONEDissectingAneurysm
+    /// </summary>
+    public const string LiteralNONEDissectingAneurysm = "http://snomed.info/sct#26845001";
+
+    /// <summary>
     /// Literal for code: SecondaryHypertrophy
     /// </summary>
     public const string LiteralSecondaryHypertrophy = "26860003";
+
+    /// <summary>
+    /// Literal for code: NONESecondaryHypertrophy
+    /// </summary>
+    public const string LiteralNONESecondaryHypertrophy = "http://snomed.info/sct#26860003";
 
     /// <summary>
     /// Literal for code: MalignantOdontogenicTumor
@@ -11578,9 +14138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMalignantOdontogenicTumor = "26888009";
 
     /// <summary>
+    /// Literal for code: NONEMalignantOdontogenicTumor
+    /// </summary>
+    public const string LiteralNONEMalignantOdontogenicTumor = "http://snomed.info/sct#26888009";
+
+    /// <summary>
     /// Literal for code: MinorDisruption
     /// </summary>
     public const string LiteralMinorDisruption = "26927002";
+
+    /// <summary>
+    /// Literal for code: NONEMinorDisruption
+    /// </summary>
+    public const string LiteralNONEMinorDisruption = "http://snomed.info/sct#26927002";
 
     /// <summary>
     /// Literal for code: Hyperkeratosis
@@ -11588,9 +14158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHyperkeratosis = "26996000";
 
     /// <summary>
+    /// Literal for code: NONEHyperkeratosis
+    /// </summary>
+    public const string LiteralNONEHyperkeratosis = "http://snomed.info/sct#26996000";
+
+    /// <summary>
     /// Literal for code: VasculiticEruption
     /// </summary>
     public const string LiteralVasculiticEruption = "27006004";
+
+    /// <summary>
+    /// Literal for code: NONEVasculiticEruption
+    /// </summary>
+    public const string LiteralNONEVasculiticEruption = "http://snomed.info/sct#27006004";
 
     /// <summary>
     /// Literal for code: NecrotizingGranulomatousInflammation
@@ -11598,9 +14178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNecrotizingGranulomatousInflammation = "27058005";
 
     /// <summary>
+    /// Literal for code: NONENecrotizingGranulomatousInflammation
+    /// </summary>
+    public const string LiteralNONENecrotizingGranulomatousInflammation = "http://snomed.info/sct#27058005";
+
+    /// <summary>
     /// Literal for code: SolidPseudopapillaryTumor
     /// </summary>
     public const string LiteralSolidPseudopapillaryTumor = "27078002";
+
+    /// <summary>
+    /// Literal for code: NONESolidPseudopapillaryTumor
+    /// </summary>
+    public const string LiteralNONESolidPseudopapillaryTumor = "http://snomed.info/sct#27078002";
 
     /// <summary>
     /// Literal for code: TCCTransitionalCellCarcinoma
@@ -11608,9 +14198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTCCTransitionalCellCarcinoma = "27090000";
 
     /// <summary>
+    /// Literal for code: NONETCCTransitionalCellCarcinoma
+    /// </summary>
+    public const string LiteralNONETCCTransitionalCellCarcinoma = "http://snomed.info/sct#27090000";
+
+    /// <summary>
     /// Literal for code: AmeloblasticFibrosarcoma
     /// </summary>
     public const string LiteralAmeloblasticFibrosarcoma = "27092008";
+
+    /// <summary>
+    /// Literal for code: NONEAmeloblasticFibrosarcoma
+    /// </summary>
+    public const string LiteralNONEAmeloblasticFibrosarcoma = "http://snomed.info/sct#27092008";
 
     /// <summary>
     /// Literal for code: Fibrolipoma
@@ -11618,9 +14218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFibrolipoma = "2710003";
 
     /// <summary>
+    /// Literal for code: NONEFibrolipoma
+    /// </summary>
+    public const string LiteralNONEFibrolipoma = "http://snomed.info/sct#2710003";
+
+    /// <summary>
     /// Literal for code: Haploidy
     /// </summary>
     public const string LiteralHaploidy = "27159004";
+
+    /// <summary>
+    /// Literal for code: NONEHaploidy
+    /// </summary>
+    public const string LiteralNONEHaploidy = "http://snomed.info/sct#27159004";
 
     /// <summary>
     /// Literal for code: BasalCellAdenoma
@@ -11628,9 +14238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBasalCellAdenoma = "27230006";
 
     /// <summary>
+    /// Literal for code: NONEBasalCellAdenoma
+    /// </summary>
+    public const string LiteralNONEBasalCellAdenoma = "http://snomed.info/sct#27230006";
+
+    /// <summary>
     /// Literal for code: PseudoObstruction
     /// </summary>
     public const string LiteralPseudoObstruction = "27266007";
+
+    /// <summary>
+    /// Literal for code: NONEPseudoObstruction
+    /// </summary>
+    public const string LiteralNONEPseudoObstruction = "http://snomed.info/sct#27266007";
 
     /// <summary>
     /// Literal for code: SpindleCellLipoma
@@ -11638,9 +14258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpindleCellLipoma = "27313007";
 
     /// <summary>
+    /// Literal for code: NONESpindleCellLipoma
+    /// </summary>
+    public const string LiteralNONESpindleCellLipoma = "http://snomed.info/sct#27313007";
+
+    /// <summary>
     /// Literal for code: CompleteTransposition
     /// </summary>
     public const string LiteralCompleteTransposition = "27317008";
+
+    /// <summary>
+    /// Literal for code: NONECompleteTransposition
+    /// </summary>
+    public const string LiteralNONECompleteTransposition = "http://snomed.info/sct#27317008";
 
     /// <summary>
     /// Literal for code: AtypicalGastricMetaplasia
@@ -11648,9 +14278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAtypicalGastricMetaplasia = "27325005";
 
     /// <summary>
+    /// Literal for code: NONEAtypicalGastricMetaplasia
+    /// </summary>
+    public const string LiteralNONEAtypicalGastricMetaplasia = "http://snomed.info/sct#27325005";
+
+    /// <summary>
     /// Literal for code: BasophilicDegeneration
     /// </summary>
     public const string LiteralBasophilicDegeneration = "27329004";
+
+    /// <summary>
+    /// Literal for code: NONEBasophilicDegeneration
+    /// </summary>
+    public const string LiteralNONEBasophilicDegeneration = "http://snomed.info/sct#27329004";
 
     /// <summary>
     /// Literal for code: MajorInjury
@@ -11658,9 +14298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMajorInjury = "2734008";
 
     /// <summary>
+    /// Literal for code: NONEMajorInjury
+    /// </summary>
+    public const string LiteralNONEMajorInjury = "http://snomed.info/sct#2734008";
+
+    /// <summary>
     /// Literal for code: PapillaryCystadenocarcinoma
     /// </summary>
     public const string LiteralPapillaryCystadenocarcinoma = "2735009";
+
+    /// <summary>
+    /// Literal for code: NONEPapillaryCystadenocarcinoma
+    /// </summary>
+    public const string LiteralNONEPapillaryCystadenocarcinoma = "http://snomed.info/sct#2735009";
 
     /// <summary>
     /// Literal for code: WrinkledStructure
@@ -11668,9 +14318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWrinkledStructure = "27367001";
 
     /// <summary>
+    /// Literal for code: NONEWrinkledStructure
+    /// </summary>
+    public const string LiteralNONEWrinkledStructure = "http://snomed.info/sct#27367001";
+
+    /// <summary>
     /// Literal for code: HamartomatousPolyp
     /// </summary>
     public const string LiteralHamartomatousPolyp = "27391005";
+
+    /// <summary>
+    /// Literal for code: NONEHamartomatousPolyp
+    /// </summary>
+    public const string LiteralNONEHamartomatousPolyp = "http://snomed.info/sct#27391005";
 
     /// <summary>
     /// Literal for code: ImmunoproliferativeSmallIntestinalDisease
@@ -11678,9 +14338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralImmunoproliferativeSmallIntestinalDisease = "27461004";
 
     /// <summary>
+    /// Literal for code: NONEImmunoproliferativeSmallIntestinalDisease
+    /// </summary>
+    public const string LiteralNONEImmunoproliferativeSmallIntestinalDisease = "http://snomed.info/sct#27461004";
+
+    /// <summary>
     /// Literal for code: FractureOpenStellate
     /// </summary>
     public const string LiteralFractureOpenStellate = "27510006";
+
+    /// <summary>
+    /// Literal for code: NONEFractureOpenStellate
+    /// </summary>
+    public const string LiteralNONEFractureOpenStellate = "http://snomed.info/sct#27510006";
 
     /// <summary>
     /// Literal for code: Avulsion
@@ -11688,9 +14358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAvulsion = "27515001";
 
     /// <summary>
+    /// Literal for code: NONEAvulsion
+    /// </summary>
+    public const string LiteralNONEAvulsion = "http://snomed.info/sct#27515001";
+
+    /// <summary>
     /// Literal for code: Stricture
     /// </summary>
     public const string LiteralStricture = "27551008";
+
+    /// <summary>
+    /// Literal for code: NONEStricture
+    /// </summary>
+    public const string LiteralNONEStricture = "http://snomed.info/sct#27551008";
 
     /// <summary>
     /// Literal for code: AbnormalNuclearCytoplasmicRatio
@@ -11698,9 +14378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAbnormalNuclearCytoplasmicRatio = "27580004";
 
     /// <summary>
+    /// Literal for code: NONEAbnormalNuclearCytoplasmicRatio
+    /// </summary>
+    public const string LiteralNONEAbnormalNuclearCytoplasmicRatio = "http://snomed.info/sct#27580004";
+
+    /// <summary>
     /// Literal for code: EndometrialGestationalAlteration
     /// </summary>
     public const string LiteralEndometrialGestationalAlteration = "27605001";
+
+    /// <summary>
+    /// Literal for code: NONEEndometrialGestationalAlteration
+    /// </summary>
+    public const string LiteralNONEEndometrialGestationalAlteration = "http://snomed.info/sct#27605001";
 
     /// <summary>
     /// Literal for code: Comedo
@@ -11708,9 +14398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralComedo = "2763006";
 
     /// <summary>
+    /// Literal for code: NONEComedo
+    /// </summary>
+    public const string LiteralNONEComedo = "http://snomed.info/sct#2763006";
+
+    /// <summary>
     /// Literal for code: VonMeyenburgComplex
     /// </summary>
     public const string LiteralVonMeyenburgComplex = "27721004";
+
+    /// <summary>
+    /// Literal for code: NONEVonMeyenburgComplex
+    /// </summary>
+    public const string LiteralNONEVonMeyenburgComplex = "http://snomed.info/sct#27721004";
 
     /// <summary>
     /// Literal for code: PostinflammatoryHypopigmentation
@@ -11718,9 +14418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPostinflammatoryHypopigmentation = "27799005";
 
     /// <summary>
+    /// Literal for code: NONEPostinflammatoryHypopigmentation
+    /// </summary>
+    public const string LiteralNONEPostinflammatoryHypopigmentation = "http://snomed.info/sct#27799005";
+
+    /// <summary>
     /// Literal for code: ProgressiveObstruction
     /// </summary>
     public const string LiteralProgressiveObstruction = "27809005";
+
+    /// <summary>
+    /// Literal for code: NONEProgressiveObstruction
+    /// </summary>
+    public const string LiteralNONEProgressiveObstruction = "http://snomed.info/sct#27809005";
 
     /// <summary>
     /// Literal for code: TractionInjury
@@ -11728,9 +14438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTractionInjury = "2784001";
 
     /// <summary>
+    /// Literal for code: NONETractionInjury
+    /// </summary>
+    public const string LiteralNONETractionInjury = "http://snomed.info/sct#2784001";
+
+    /// <summary>
     /// Literal for code: MyxoidLiposarcoma
     /// </summary>
     public const string LiteralMyxoidLiposarcoma = "27849002";
+
+    /// <summary>
+    /// Literal for code: NONEMyxoidLiposarcoma
+    /// </summary>
+    public const string LiteralNONEMyxoidLiposarcoma = "http://snomed.info/sct#27849002";
 
     /// <summary>
     /// Literal for code: MultipleInfarcts
@@ -11738,9 +14458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMultipleInfarcts = "27876002";
 
     /// <summary>
+    /// Literal for code: NONEMultipleInfarcts
+    /// </summary>
+    public const string LiteralNONEMultipleInfarcts = "http://snomed.info/sct#27876002";
+
+    /// <summary>
     /// Literal for code: BonyCallus
     /// </summary>
     public const string LiteralBonyCallus = "27881006";
+
+    /// <summary>
+    /// Literal for code: NONEBonyCallus
+    /// </summary>
+    public const string LiteralNONEBonyCallus = "http://snomed.info/sct#27881006";
 
     /// <summary>
     /// Literal for code: CervicalMucousArborization
@@ -11748,9 +14478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCervicalMucousArborization = "27890004";
 
     /// <summary>
+    /// Literal for code: NONECervicalMucousArborization
+    /// </summary>
+    public const string LiteralNONECervicalMucousArborization = "http://snomed.info/sct#27890004";
+
+    /// <summary>
     /// Literal for code: Nodule
     /// </summary>
     public const string LiteralNodule = "27925004";
+
+    /// <summary>
+    /// Literal for code: NONENodule
+    /// </summary>
+    public const string LiteralNONENodule = "http://snomed.info/sct#27925004";
 
     /// <summary>
     /// Literal for code: CongenitalMultiseptation
@@ -11758,9 +14498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalMultiseptation = "27952009";
 
     /// <summary>
+    /// Literal for code: NONECongenitalMultiseptation
+    /// </summary>
+    public const string LiteralNONECongenitalMultiseptation = "http://snomed.info/sct#27952009";
+
+    /// <summary>
     /// Literal for code: EmbryonalCarcinoma
     /// </summary>
     public const string LiteralEmbryonalCarcinoma = "28047004";
+
+    /// <summary>
+    /// Literal for code: NONEEmbryonalCarcinoma
+    /// </summary>
+    public const string LiteralNONEEmbryonalCarcinoma = "http://snomed.info/sct#28047004";
 
     /// <summary>
     /// Literal for code: CutaneousTCellLymphoma
@@ -11768,9 +14518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCutaneousTCellLymphoma = "28054005";
 
     /// <summary>
+    /// Literal for code: NONECutaneousTCellLymphoma
+    /// </summary>
+    public const string LiteralNONECutaneousTCellLymphoma = "http://snomed.info/sct#28054005";
+
+    /// <summary>
     /// Literal for code: DelayedUnionOfFracture
     /// </summary>
     public const string LiteralDelayedUnionOfFracture = "28087009";
+
+    /// <summary>
+    /// Literal for code: NONEDelayedUnionOfFracture
+    /// </summary>
+    public const string LiteralNONEDelayedUnionOfFracture = "http://snomed.info/sct#28087009";
 
     /// <summary>
     /// Literal for code: SevereKoilocytoticAtypia
@@ -11778,9 +14538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSevereKoilocytoticAtypia = "28126000";
 
     /// <summary>
+    /// Literal for code: NONESevereKoilocytoticAtypia
+    /// </summary>
+    public const string LiteralNONESevereKoilocytoticAtypia = "http://snomed.info/sct#28126000";
+
+    /// <summary>
     /// Literal for code: LipochromeHistiocytosis
     /// </summary>
     public const string LiteralLipochromeHistiocytosis = "28146005";
+
+    /// <summary>
+    /// Literal for code: NONELipochromeHistiocytosis
+    /// </summary>
+    public const string LiteralNONELipochromeHistiocytosis = "http://snomed.info/sct#28146005";
 
     /// <summary>
     /// Literal for code: FollicularAdenocarcinomaWellDifferentiated
@@ -11788,9 +14558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFollicularAdenocarcinomaWellDifferentiated = "28173006";
 
     /// <summary>
+    /// Literal for code: NONEFollicularAdenocarcinomaWellDifferentiated
+    /// </summary>
+    public const string LiteralNONEFollicularAdenocarcinomaWellDifferentiated = "http://snomed.info/sct#28173006";
+
+    /// <summary>
     /// Literal for code: EdematousInfarct
     /// </summary>
     public const string LiteralEdematousInfarct = "28208008";
+
+    /// <summary>
+    /// Literal for code: NONEEdematousInfarct
+    /// </summary>
+    public const string LiteralNONEEdematousInfarct = "http://snomed.info/sct#28208008";
 
     /// <summary>
     /// Literal for code: SevereColumnarCellAtypia
@@ -11798,9 +14578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSevereColumnarCellAtypia = "28218003";
 
     /// <summary>
+    /// Literal for code: NONESevereColumnarCellAtypia
+    /// </summary>
+    public const string LiteralNONESevereColumnarCellAtypia = "http://snomed.info/sct#28218003";
+
+    /// <summary>
     /// Literal for code: MelanoticNeurofibroma
     /// </summary>
     public const string LiteralMelanoticNeurofibroma = "28237007";
+
+    /// <summary>
+    /// Literal for code: NONEMelanoticNeurofibroma
+    /// </summary>
+    public const string LiteralNONEMelanoticNeurofibroma = "http://snomed.info/sct#28237007";
 
     /// <summary>
     /// Literal for code: Germinoma
@@ -11808,9 +14598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGerminoma = "28307001";
 
     /// <summary>
+    /// Literal for code: NONEGerminoma
+    /// </summary>
+    public const string LiteralNONEGerminoma = "http://snomed.info/sct#28307001";
+
+    /// <summary>
     /// Literal for code: EmbryonalCarcinomaPolyembryonalType
     /// </summary>
     public const string LiteralEmbryonalCarcinomaPolyembryonalType = "28325008";
+
+    /// <summary>
+    /// Literal for code: NONEEmbryonalCarcinomaPolyembryonalType
+    /// </summary>
+    public const string LiteralNONEEmbryonalCarcinomaPolyembryonalType = "http://snomed.info/sct#28325008";
 
     /// <summary>
     /// Literal for code: Myxosarcoma
@@ -11818,9 +14618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMyxosarcoma = "28351005";
 
     /// <summary>
+    /// Literal for code: NONEMyxosarcoma
+    /// </summary>
+    public const string LiteralNONEMyxosarcoma = "http://snomed.info/sct#28351005";
+
+    /// <summary>
     /// Literal for code: Visceromegaly
     /// </summary>
     public const string LiteralVisceromegaly = "28543008";
+
+    /// <summary>
+    /// Literal for code: NONEVisceromegaly
+    /// </summary>
+    public const string LiteralNONEVisceromegaly = "http://snomed.info/sct#28543008";
 
     /// <summary>
     /// Literal for code: VillousAdenocarcinoma
@@ -11828,9 +14638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVillousAdenocarcinoma = "28558000";
 
     /// <summary>
+    /// Literal for code: NONEVillousAdenocarcinoma
+    /// </summary>
+    public const string LiteralNONEVillousAdenocarcinoma = "http://snomed.info/sct#28558000";
+
+    /// <summary>
     /// Literal for code: MuscleFiberChange
     /// </summary>
     public const string LiteralMuscleFiberChange = "28569002";
+
+    /// <summary>
+    /// Literal for code: NONEMuscleFiberChange
+    /// </summary>
+    public const string LiteralNONEMuscleFiberChange = "http://snomed.info/sct#28569002";
 
     /// <summary>
     /// Literal for code: LiposarcomaDifferentiated
@@ -11838,9 +14658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLiposarcomaDifferentiated = "28655007";
 
     /// <summary>
+    /// Literal for code: NONELiposarcomaDifferentiated
+    /// </summary>
+    public const string LiteralNONELiposarcomaDifferentiated = "http://snomed.info/sct#28655007";
+
+    /// <summary>
     /// Literal for code: OdontogenicCyst
     /// </summary>
     public const string LiteralOdontogenicCyst = "28727003";
+
+    /// <summary>
+    /// Literal for code: NONEOdontogenicCyst
+    /// </summary>
+    public const string LiteralNONEOdontogenicCyst = "http://snomed.info/sct#28727003";
 
     /// <summary>
     /// Literal for code: CompoundOdontoma
@@ -11848,9 +14678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCompoundOdontoma = "28733007";
 
     /// <summary>
+    /// Literal for code: NONECompoundOdontoma
+    /// </summary>
+    public const string LiteralNONECompoundOdontoma = "http://snomed.info/sct#28733007";
+
+    /// <summary>
     /// Literal for code: InternalHyperostosis
     /// </summary>
     public const string LiteralInternalHyperostosis = "28781000";
+
+    /// <summary>
+    /// Literal for code: NONEInternalHyperostosis
+    /// </summary>
+    public const string LiteralNONEInternalHyperostosis = "http://snomed.info/sct#28781000";
 
     /// <summary>
     /// Literal for code: PancakeCell
@@ -11858,9 +14698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPancakeCell = "28789003";
 
     /// <summary>
+    /// Literal for code: NONEPancakeCell
+    /// </summary>
+    public const string LiteralNONEPancakeCell = "http://snomed.info/sct#28789003";
+
+    /// <summary>
     /// Literal for code: Anisokaryosis
     /// </summary>
     public const string LiteralAnisokaryosis = "2881000";
+
+    /// <summary>
+    /// Literal for code: NONEAnisokaryosis
+    /// </summary>
+    public const string LiteralNONEAnisokaryosis = "http://snomed.info/sct#2881000";
 
     /// <summary>
     /// Literal for code: GunshotContusionRing
@@ -11868,9 +14718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGunshotContusionRing = "28831000";
 
     /// <summary>
+    /// Literal for code: NONEGunshotContusionRing
+    /// </summary>
+    public const string LiteralNONEGunshotContusionRing = "http://snomed.info/sct#28831000";
+
+    /// <summary>
     /// Literal for code: ImpactedFracture
     /// </summary>
     public const string LiteralImpactedFracture = "28836005";
+
+    /// <summary>
+    /// Literal for code: NONEImpactedFracture
+    /// </summary>
+    public const string LiteralNONEImpactedFracture = "http://snomed.info/sct#28836005";
 
     /// <summary>
     /// Literal for code: InternalBlindCongenitalFistula
@@ -11878,9 +14738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInternalBlindCongenitalFistula = "28852008";
 
     /// <summary>
+    /// Literal for code: NONEInternalBlindCongenitalFistula
+    /// </summary>
+    public const string LiteralNONEInternalBlindCongenitalFistula = "http://snomed.info/sct#28852008";
+
+    /// <summary>
     /// Literal for code: FibrinThrombus
     /// </summary>
     public const string LiteralFibrinThrombus = "28878004";
+
+    /// <summary>
+    /// Literal for code: NONEFibrinThrombus
+    /// </summary>
+    public const string LiteralNONEFibrinThrombus = "http://snomed.info/sct#28878004";
 
     /// <summary>
     /// Literal for code: SCCSquamousCellCarcinoma
@@ -11888,9 +14758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSCCSquamousCellCarcinoma = "28899001";
 
     /// <summary>
+    /// Literal for code: NONESCCSquamousCellCarcinoma
+    /// </summary>
+    public const string LiteralNONESCCSquamousCellCarcinoma = "http://snomed.info/sct#28899001";
+
+    /// <summary>
     /// Literal for code: CongenitalAdhesion
     /// </summary>
     public const string LiteralCongenitalAdhesion = "28941001";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalAdhesion
+    /// </summary>
+    public const string LiteralNONECongenitalAdhesion = "http://snomed.info/sct#28941001";
 
     /// <summary>
     /// Literal for code: AcutePromyelocyticLeukemiaT1517Q22Q1112
@@ -11898,9 +14778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcutePromyelocyticLeukemiaT1517Q22Q1112 = "28950004";
 
     /// <summary>
+    /// Literal for code: NONEAcutePromyelocyticLeukemiaT1517Q22Q1112
+    /// </summary>
+    public const string LiteralNONEAcutePromyelocyticLeukemiaT1517Q22Q1112 = "http://snomed.info/sct#28950004";
+
+    /// <summary>
     /// Literal for code: Angiomyosarcoma
     /// </summary>
     public const string LiteralAngiomyosarcoma = "28953002";
+
+    /// <summary>
+    /// Literal for code: NONEAngiomyosarcoma
+    /// </summary>
+    public const string LiteralNONEAngiomyosarcoma = "http://snomed.info/sct#28953002";
 
     /// <summary>
     /// Literal for code: Arteriosclerosis
@@ -11908,9 +14798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralArteriosclerosis = "28960008";
 
     /// <summary>
+    /// Literal for code: NONEArteriosclerosis
+    /// </summary>
+    public const string LiteralNONEArteriosclerosis = "http://snomed.info/sct#28960008";
+
+    /// <summary>
     /// Literal for code: ComplexOdontoma
     /// </summary>
     public const string LiteralComplexOdontoma = "29020002";
+
+    /// <summary>
+    /// Literal for code: NONEComplexOdontoma
+    /// </summary>
+    public const string LiteralNONEComplexOdontoma = "http://snomed.info/sct#29020002";
 
     /// <summary>
     /// Literal for code: CentralCores
@@ -11918,9 +14818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCentralCores = "29144003";
 
     /// <summary>
+    /// Literal for code: NONECentralCores
+    /// </summary>
+    public const string LiteralNONECentralCores = "http://snomed.info/sct#29144003";
+
+    /// <summary>
     /// Literal for code: FattyDegeneration
     /// </summary>
     public const string LiteralFattyDegeneration = "29185008";
+
+    /// <summary>
+    /// Literal for code: NONEFattyDegeneration
+    /// </summary>
+    public const string LiteralNONEFattyDegeneration = "http://snomed.info/sct#29185008";
 
     /// <summary>
     /// Literal for code: AlzheimerGlialChange
@@ -11928,9 +14838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlzheimerGlialChange = "29209006";
 
     /// <summary>
+    /// Literal for code: NONEAlzheimerGlialChange
+    /// </summary>
+    public const string LiteralNONEAlzheimerGlialChange = "http://snomed.info/sct#29209006";
+
+    /// <summary>
     /// Literal for code: MalignantPheochromocytoma
     /// </summary>
     public const string LiteralMalignantPheochromocytoma = "29370006";
+
+    /// <summary>
+    /// Literal for code: NONEMalignantPheochromocytoma
+    /// </summary>
+    public const string LiteralNONEMalignantPheochromocytoma = "http://snomed.info/sct#29370006";
 
     /// <summary>
     /// Literal for code: KeratinPlug
@@ -11938,9 +14858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKeratinPlug = "29463007";
 
     /// <summary>
+    /// Literal for code: NONEKeratinPlug
+    /// </summary>
+    public const string LiteralNONEKeratinPlug = "http://snomed.info/sct#29463007";
+
+    /// <summary>
     /// Literal for code: CalcifiedAtheroma
     /// </summary>
     public const string LiteralCalcifiedAtheroma = "29483008";
+
+    /// <summary>
+    /// Literal for code: NONECalcifiedAtheroma
+    /// </summary>
+    public const string LiteralNONECalcifiedAtheroma = "http://snomed.info/sct#29483008";
 
     /// <summary>
     /// Literal for code: ProliferativeInflammation
@@ -11948,9 +14878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProliferativeInflammation = "2952002";
 
     /// <summary>
+    /// Literal for code: NONEProliferativeInflammation
+    /// </summary>
+    public const string LiteralNONEProliferativeInflammation = "http://snomed.info/sct#2952002";
+
+    /// <summary>
     /// Literal for code: MicroglandularHyperplasia
     /// </summary>
     public const string LiteralMicroglandularHyperplasia = "2953007";
+
+    /// <summary>
+    /// Literal for code: NONEMicroglandularHyperplasia
+    /// </summary>
+    public const string LiteralNONEMicroglandularHyperplasia = "http://snomed.info/sct#2953007";
 
     /// <summary>
     /// Literal for code: SupernumeraryDeciduousTooth
@@ -11958,9 +14898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSupernumeraryDeciduousTooth = "2954001";
 
     /// <summary>
+    /// Literal for code: NONESupernumeraryDeciduousTooth
+    /// </summary>
+    public const string LiteralNONESupernumeraryDeciduousTooth = "http://snomed.info/sct#2954001";
+
+    /// <summary>
     /// Literal for code: AdenofibromaNoICDOSubtype
     /// </summary>
     public const string LiteralAdenofibromaNoICDOSubtype = "2962009";
+
+    /// <summary>
+    /// Literal for code: NONEAdenofibromaNoICDOSubtype
+    /// </summary>
+    public const string LiteralNONEAdenofibromaNoICDOSubtype = "http://snomed.info/sct#2962009";
 
     /// <summary>
     /// Literal for code: Prolapse
@@ -11968,9 +14918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralProlapse = "29696001";
 
     /// <summary>
+    /// Literal for code: NONEProlapse
+    /// </summary>
+    public const string LiteralNONEProlapse = "http://snomed.info/sct#29696001";
+
+    /// <summary>
     /// Literal for code: WolffianBodyRest
     /// </summary>
     public const string LiteralWolffianBodyRest = "29771007";
+
+    /// <summary>
+    /// Literal for code: NONEWolffianBodyRest
+    /// </summary>
+    public const string LiteralNONEWolffianBodyRest = "http://snomed.info/sct#29771007";
 
     /// <summary>
     /// Literal for code: TrabecularAdenocarcinoma
@@ -11978,9 +14938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTrabecularAdenocarcinoma = "29792007";
 
     /// <summary>
+    /// Literal for code: NONETrabecularAdenocarcinoma
+    /// </summary>
+    public const string LiteralNONETrabecularAdenocarcinoma = "http://snomed.info/sct#29792007";
+
+    /// <summary>
     /// Literal for code: MammaryPagetQuoteSDisease
     /// </summary>
     public const string LiteralMammaryPagetQuoteSDisease = "2985005";
+
+    /// <summary>
+    /// Literal for code: NONEMammaryPagetQuoteSDisease
+    /// </summary>
+    public const string LiteralNONEMammaryPagetQuoteSDisease = "http://snomed.info/sct#2985005";
 
     /// <summary>
     /// Literal for code: ChromosomeFragment
@@ -11988,9 +14958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChromosomeFragment = "29856000";
 
     /// <summary>
+    /// Literal for code: NONEChromosomeFragment
+    /// </summary>
+    public const string LiteralNONEChromosomeFragment = "http://snomed.info/sct#29856000";
+
+    /// <summary>
     /// Literal for code: Tetrasomy
     /// </summary>
     public const string LiteralTetrasomy = "29996004";
+
+    /// <summary>
+    /// Literal for code: NONETetrasomy
+    /// </summary>
+    public const string LiteralNONETetrasomy = "http://snomed.info/sct#29996004";
 
     /// <summary>
     /// Literal for code: Hyperemia
@@ -11998,9 +14978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHyperemia = "30098003";
 
     /// <summary>
+    /// Literal for code: NONEHyperemia
+    /// </summary>
+    public const string LiteralNONEHyperemia = "http://snomed.info/sct#30098003";
+
+    /// <summary>
     /// Literal for code: DuctalCarcinomaCribriformType
     /// </summary>
     public const string LiteralDuctalCarcinomaCribriformType = "30156004";
+
+    /// <summary>
+    /// Literal for code: NONEDuctalCarcinomaCribriformType
+    /// </summary>
+    public const string LiteralNONEDuctalCarcinomaCribriformType = "http://snomed.info/sct#30156004";
 
     /// <summary>
     /// Literal for code: LymphaticEdema
@@ -12008,9 +14998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLymphaticEdema = "30213001";
 
     /// <summary>
+    /// Literal for code: NONELymphaticEdema
+    /// </summary>
+    public const string LiteralNONELymphaticEdema = "http://snomed.info/sct#30213001";
+
+    /// <summary>
     /// Literal for code: Proliferation
     /// </summary>
     public const string LiteralProliferation = "30217000";
+
+    /// <summary>
+    /// Literal for code: NONEProliferation
+    /// </summary>
+    public const string LiteralNONEProliferation = "http://snomed.info/sct#30217000";
 
     /// <summary>
     /// Literal for code: Verruca
@@ -12018,9 +15018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralVerruca = "30285000";
 
     /// <summary>
+    /// Literal for code: NONEVerruca
+    /// </summary>
+    public const string LiteralNONEVerruca = "http://snomed.info/sct#30285000";
+
+    /// <summary>
     /// Literal for code: EndometrioidCarcinoma
     /// </summary>
     public const string LiteralEndometrioidCarcinoma = "30289006";
+
+    /// <summary>
+    /// Literal for code: NONEEndometrioidCarcinoma
+    /// </summary>
+    public const string LiteralNONEEndometrioidCarcinoma = "http://snomed.info/sct#30289006";
 
     /// <summary>
     /// Literal for code: FoetalAdenoma
@@ -12028,9 +15038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFoetalAdenoma = "30301008";
 
     /// <summary>
+    /// Literal for code: NONEFoetalAdenoma
+    /// </summary>
+    public const string LiteralNONEFoetalAdenoma = "http://snomed.info/sct#30301008";
+
+    /// <summary>
     /// Literal for code: Remyelination
     /// </summary>
     public const string LiteralRemyelination = "30321009";
+
+    /// <summary>
+    /// Literal for code: NONERemyelination
+    /// </summary>
+    public const string LiteralNONERemyelination = "http://snomed.info/sct#30321009";
 
     /// <summary>
     /// Literal for code: MalignantBiphasicMesothelioma
@@ -12038,9 +15058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMalignantBiphasicMesothelioma = "30383009";
 
     /// <summary>
+    /// Literal for code: NONEMalignantBiphasicMesothelioma
+    /// </summary>
+    public const string LiteralNONEMalignantBiphasicMesothelioma = "http://snomed.info/sct#30383009";
+
+    /// <summary>
     /// Literal for code: RadiationInjuryWithNecrosis
     /// </summary>
     public const string LiteralRadiationInjuryWithNecrosis = "30386001";
+
+    /// <summary>
+    /// Literal for code: NONERadiationInjuryWithNecrosis
+    /// </summary>
+    public const string LiteralNONERadiationInjuryWithNecrosis = "http://snomed.info/sct#30386001";
 
     /// <summary>
     /// Literal for code: Leukostasis
@@ -12048,9 +15078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLeukostasis = "30419000";
 
     /// <summary>
+    /// Literal for code: NONELeukostasis
+    /// </summary>
+    public const string LiteralNONELeukostasis = "http://snomed.info/sct#30419000";
+
+    /// <summary>
     /// Literal for code: Osteolysis
     /// </summary>
     public const string LiteralOsteolysis = "30425001";
+
+    /// <summary>
+    /// Literal for code: NONEOsteolysis
+    /// </summary>
+    public const string LiteralNONEOsteolysis = "http://snomed.info/sct#30425001";
 
     /// <summary>
     /// Literal for code: BuhotCell
@@ -12058,9 +15098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBuhotCell = "30469008";
 
     /// <summary>
+    /// Literal for code: NONEBuhotCell
+    /// </summary>
+    public const string LiteralNONEBuhotCell = "http://snomed.info/sct#30469008";
+
+    /// <summary>
     /// Literal for code: JunctionalMelanocyticNevus
     /// </summary>
     public const string LiteralJunctionalMelanocyticNevus = "30494009";
+
+    /// <summary>
+    /// Literal for code: NONEJunctionalMelanocyticNevus
+    /// </summary>
+    public const string LiteralNONEJunctionalMelanocyticNevus = "http://snomed.info/sct#30494009";
 
     /// <summary>
     /// Literal for code: FractureIncomplete
@@ -12068,9 +15118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFractureIncomplete = "30543000";
 
     /// <summary>
+    /// Literal for code: NONEFractureIncomplete
+    /// </summary>
+    public const string LiteralNONEFractureIncomplete = "http://snomed.info/sct#30543000";
+
+    /// <summary>
     /// Literal for code: MesonephroidClearCellAdenocarcinoma
     /// </summary>
     public const string LiteralMesonephroidClearCellAdenocarcinoma = "30546008";
+
+    /// <summary>
+    /// Literal for code: NONEMesonephroidClearCellAdenocarcinoma
+    /// </summary>
+    public const string LiteralNONEMesonephroidClearCellAdenocarcinoma = "http://snomed.info/sct#30546008";
 
     /// <summary>
     /// Literal for code: NonInfiltratingIntraductalPapillaryAdenocarcinoma
@@ -12078,9 +15138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonInfiltratingIntraductalPapillaryAdenocarcinoma = "30566004";
 
     /// <summary>
+    /// Literal for code: NONENonInfiltratingIntraductalPapillaryAdenocarcinoma
+    /// </summary>
+    public const string LiteralNONENonInfiltratingIntraductalPapillaryAdenocarcinoma = "http://snomed.info/sct#30566004";
+
+    /// <summary>
     /// Literal for code: AntemortemInjury
     /// </summary>
     public const string LiteralAntemortemInjury = "30619009";
+
+    /// <summary>
+    /// Literal for code: NONEAntemortemInjury
+    /// </summary>
+    public const string LiteralNONEAntemortemInjury = "http://snomed.info/sct#30619009";
 
     /// <summary>
     /// Literal for code: BasalCellTumorUncertainWhetherBenignOrMalignant
@@ -12088,9 +15158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBasalCellTumorUncertainWhetherBenignOrMalignant = "30649006";
 
     /// <summary>
+    /// Literal for code: NONEBasalCellTumorUncertainWhetherBenignOrMalignant
+    /// </summary>
+    public const string LiteralNONEBasalCellTumorUncertainWhetherBenignOrMalignant = "http://snomed.info/sct#30649006";
+
+    /// <summary>
     /// Literal for code: MenstrualAlterationOfVagina
     /// </summary>
     public const string LiteralMenstrualAlterationOfVagina = "30651005";
+
+    /// <summary>
+    /// Literal for code: NONEMenstrualAlterationOfVagina
+    /// </summary>
+    public const string LiteralNONEMenstrualAlterationOfVagina = "http://snomed.info/sct#30651005";
 
     /// <summary>
     /// Literal for code: AtypicalLymphoidHyperplasia
@@ -12098,9 +15178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAtypicalLymphoidHyperplasia = "30685006";
 
     /// <summary>
+    /// Literal for code: NONEAtypicalLymphoidHyperplasia
+    /// </summary>
+    public const string LiteralNONEAtypicalLymphoidHyperplasia = "http://snomed.info/sct#30685006";
+
+    /// <summary>
     /// Literal for code: AnomalousOriginOfArtery
     /// </summary>
     public const string LiteralAnomalousOriginOfArtery = "30691008";
+
+    /// <summary>
+    /// Literal for code: NONEAnomalousOriginOfArtery
+    /// </summary>
+    public const string LiteralNONEAnomalousOriginOfArtery = "http://snomed.info/sct#30691008";
 
     /// <summary>
     /// Literal for code: IncompleteBlindCongenitalFistula
@@ -12108,9 +15198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIncompleteBlindCongenitalFistula = "30695004";
 
     /// <summary>
+    /// Literal for code: NONEIncompleteBlindCongenitalFistula
+    /// </summary>
+    public const string LiteralNONEIncompleteBlindCongenitalFistula = "http://snomed.info/sct#30695004";
+
+    /// <summary>
     /// Literal for code: CarotidBodyTumor
     /// </summary>
     public const string LiteralCarotidBodyTumor = "30699005";
+
+    /// <summary>
+    /// Literal for code: NONECarotidBodyTumor
+    /// </summary>
+    public const string LiteralNONECarotidBodyTumor = "http://snomed.info/sct#30699005";
 
     /// <summary>
     /// Literal for code: HypernephroidTumor
@@ -12118,9 +15218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHypernephroidTumor = "30713000";
 
     /// <summary>
+    /// Literal for code: NONEHypernephroidTumor
+    /// </summary>
+    public const string LiteralNONEHypernephroidTumor = "http://snomed.info/sct#30713000";
+
+    /// <summary>
     /// Literal for code: CapillaryTelangiectasia
     /// </summary>
     public const string LiteralCapillaryTelangiectasia = "30727005";
+
+    /// <summary>
+    /// Literal for code: NONECapillaryTelangiectasia
+    /// </summary>
+    public const string LiteralNONECapillaryTelangiectasia = "http://snomed.info/sct#30727005";
 
     /// <summary>
     /// Literal for code: HeavyMetalPigmentation
@@ -12128,9 +15238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHeavyMetalPigmentation = "30771009";
 
     /// <summary>
+    /// Literal for code: NONEHeavyMetalPigmentation
+    /// </summary>
+    public const string LiteralNONEHeavyMetalPigmentation = "http://snomed.info/sct#30771009";
+
+    /// <summary>
     /// Literal for code: OverridingStructures
     /// </summary>
     public const string LiteralOverridingStructures = "30812002";
+
+    /// <summary>
+    /// Literal for code: NONEOverridingStructures
+    /// </summary>
+    public const string LiteralNONEOverridingStructures = "http://snomed.info/sct#30812002";
 
     /// <summary>
     /// Literal for code: Carnification
@@ -12138,9 +15258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCarnification = "30867001";
 
     /// <summary>
+    /// Literal for code: NONECarnification
+    /// </summary>
+    public const string LiteralNONECarnification = "http://snomed.info/sct#30867001";
+
+    /// <summary>
     /// Literal for code: Mummification
     /// </summary>
     public const string LiteralMummification = "30891005";
+
+    /// <summary>
+    /// Literal for code: NONEMummification
+    /// </summary>
+    public const string LiteralNONEMummification = "http://snomed.info/sct#30891005";
 
     /// <summary>
     /// Literal for code: FractureOpenImpacted
@@ -12148,9 +15278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFractureOpenImpacted = "30902005";
 
     /// <summary>
+    /// Literal for code: NONEFractureOpenImpacted
+    /// </summary>
+    public const string LiteralNONEFractureOpenImpacted = "http://snomed.info/sct#30902005";
+
+    /// <summary>
     /// Literal for code: RhabdomyosarcomaNoSubtype
     /// </summary>
     public const string LiteralRhabdomyosarcomaNoSubtype = "30924005";
+
+    /// <summary>
+    /// Literal for code: NONERhabdomyosarcomaNoSubtype
+    /// </summary>
+    public const string LiteralNONERhabdomyosarcomaNoSubtype = "http://snomed.info/sct#30924005";
 
     /// <summary>
     /// Literal for code: LanghansGiantCell
@@ -12158,9 +15298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLanghansGiantCell = "30938003";
 
     /// <summary>
+    /// Literal for code: NONELanghansGiantCell
+    /// </summary>
+    public const string LiteralNONELanghansGiantCell = "http://snomed.info/sct#30938003";
+
+    /// <summary>
     /// Literal for code: AcuteMyelomonocyticLeukemia
     /// </summary>
     public const string LiteralAcuteMyelomonocyticLeukemia = "30962008";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteMyelomonocyticLeukemia
+    /// </summary>
+    public const string LiteralNONEAcuteMyelomonocyticLeukemia = "http://snomed.info/sct#30962008";
 
     /// <summary>
     /// Literal for code: AnaplasticOligodendroglioma
@@ -12168,9 +15318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnaplasticOligodendroglioma = "3102004";
 
     /// <summary>
+    /// Literal for code: NONEAnaplasticOligodendroglioma
+    /// </summary>
+    public const string LiteralNONEAnaplasticOligodendroglioma = "http://snomed.info/sct#3102004";
+
+    /// <summary>
     /// Literal for code: LinearCircularAtrophyOfLowerExtremities
     /// </summary>
     public const string LiteralLinearCircularAtrophyOfLowerExtremities = "31040001";
+
+    /// <summary>
+    /// Literal for code: NONELinearCircularAtrophyOfLowerExtremities
+    /// </summary>
+    public const string LiteralNONELinearCircularAtrophyOfLowerExtremities = "http://snomed.info/sct#31040001";
 
     /// <summary>
     /// Literal for code: FibroepithelialPolyp
@@ -12178,9 +15338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFibroepithelialPolyp = "31069005";
 
     /// <summary>
+    /// Literal for code: NONEFibroepithelialPolyp
+    /// </summary>
+    public const string LiteralNONEFibroepithelialPolyp = "http://snomed.info/sct#31069005";
+
+    /// <summary>
     /// Literal for code: ZahnInfarct
     /// </summary>
     public const string LiteralZahnInfarct = "31092005";
+
+    /// <summary>
+    /// Literal for code: NONEZahnInfarct
+    /// </summary>
+    public const string LiteralNONEZahnInfarct = "http://snomed.info/sct#31092005";
 
     /// <summary>
     /// Literal for code: MassiveFibrosis
@@ -12188,9 +15358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMassiveFibrosis = "31098009";
 
     /// <summary>
+    /// Literal for code: NONEMassiveFibrosis
+    /// </summary>
+    public const string LiteralNONEMassiveFibrosis = "http://snomed.info/sct#31098009";
+
+    /// <summary>
     /// Literal for code: BenignHemangioendothelioma
     /// </summary>
     public const string LiteralBenignHemangioendothelioma = "31104000";
+
+    /// <summary>
+    /// Literal for code: NONEBenignHemangioendothelioma
+    /// </summary>
+    public const string LiteralNONEBenignHemangioendothelioma = "http://snomed.info/sct#31104000";
 
     /// <summary>
     /// Literal for code: Diverticulum
@@ -12198,9 +15378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDiverticulum = "31113003";
 
     /// <summary>
+    /// Literal for code: NONEDiverticulum
+    /// </summary>
+    public const string LiteralNONEDiverticulum = "http://snomed.info/sct#31113003";
+
+    /// <summary>
     /// Literal for code: VipomaMalignant
     /// </summary>
     public const string LiteralVipomaMalignant = "31131002";
+
+    /// <summary>
+    /// Literal for code: NONEVipomaMalignant
+    /// </summary>
+    public const string LiteralNONEVipomaMalignant = "http://snomed.info/sct#31131002";
 
     /// <summary>
     /// Literal for code: Chondroma
@@ -12208,9 +15398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChondroma = "31186001";
 
     /// <summary>
+    /// Literal for code: NONEChondroma
+    /// </summary>
+    public const string LiteralNONEChondroma = "http://snomed.info/sct#31186001";
+
+    /// <summary>
     /// Literal for code: DelayedUnionOfStellateFracture
     /// </summary>
     public const string LiteralDelayedUnionOfStellateFracture = "31279000";
+
+    /// <summary>
+    /// Literal for code: NONEDelayedUnionOfStellateFracture
+    /// </summary>
+    public const string LiteralNONEDelayedUnionOfStellateFracture = "http://snomed.info/sct#31279000";
 
     /// <summary>
     /// Literal for code: ThecaCellGranulosaCellTumor
@@ -12218,9 +15418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralThecaCellGranulosaCellTumor = "31296004";
 
     /// <summary>
+    /// Literal for code: NONEThecaCellGranulosaCellTumor
+    /// </summary>
+    public const string LiteralNONEThecaCellGranulosaCellTumor = "http://snomed.info/sct#31296004";
+
+    /// <summary>
     /// Literal for code: BridgingFibrosis
     /// </summary>
     public const string LiteralBridgingFibrosis = "31313009";
+
+    /// <summary>
+    /// Literal for code: NONEBridgingFibrosis
+    /// </summary>
+    public const string LiteralNONEBridgingFibrosis = "http://snomed.info/sct#31313009";
 
     /// <summary>
     /// Literal for code: EpithelialHyperplasia
@@ -12228,9 +15438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralEpithelialHyperplasia = "31390008";
 
     /// <summary>
+    /// Literal for code: NONEEpithelialHyperplasia
+    /// </summary>
+    public const string LiteralNONEEpithelialHyperplasia = "http://snomed.info/sct#31390008";
+
+    /// <summary>
     /// Literal for code: BallooningDegeneration
     /// </summary>
     public const string LiteralBallooningDegeneration = "3139003";
+
+    /// <summary>
+    /// Literal for code: NONEBallooningDegeneration
+    /// </summary>
+    public const string LiteralNONEBallooningDegeneration = "http://snomed.info/sct#3139003";
 
     /// <summary>
     /// Literal for code: MucocarcinoidTumorMalignant
@@ -12238,9 +15458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMucocarcinoidTumorMalignant = "31396002";
 
     /// <summary>
+    /// Literal for code: NONEMucocarcinoidTumorMalignant
+    /// </summary>
+    public const string LiteralNONEMucocarcinoidTumorMalignant = "http://snomed.info/sct#31396002";
+
+    /// <summary>
     /// Literal for code: Adenosarcoma
     /// </summary>
     public const string LiteralAdenosarcoma = "31470003";
+
+    /// <summary>
+    /// Literal for code: NONEAdenosarcoma
+    /// </summary>
+    public const string LiteralNONEAdenosarcoma = "http://snomed.info/sct#31470003";
 
     /// <summary>
     /// Literal for code: Rhagades
@@ -12248,9 +15478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRhagades = "31478005";
 
     /// <summary>
+    /// Literal for code: NONERhagades
+    /// </summary>
+    public const string LiteralNONERhagades = "http://snomed.info/sct#31478005";
+
+    /// <summary>
     /// Literal for code: FibrousNonunion
     /// </summary>
     public const string LiteralFibrousNonunion = "31511007";
+
+    /// <summary>
+    /// Literal for code: NONEFibrousNonunion
+    /// </summary>
+    public const string LiteralNONEFibrousNonunion = "http://snomed.info/sct#31511007";
 
     /// <summary>
     /// Literal for code: FerrocalcinoticDeposition
@@ -12258,9 +15498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFerrocalcinoticDeposition = "31590009";
 
     /// <summary>
+    /// Literal for code: NONEFerrocalcinoticDeposition
+    /// </summary>
+    public const string LiteralNONEFerrocalcinoticDeposition = "http://snomed.info/sct#31590009";
+
+    /// <summary>
     /// Literal for code: MinimalLesion
     /// </summary>
     public const string LiteralMinimalLesion = "31593006";
+
+    /// <summary>
+    /// Literal for code: NONEMinimalLesion
+    /// </summary>
+    public const string LiteralNONEMinimalLesion = "http://snomed.info/sct#31593006";
 
     /// <summary>
     /// Literal for code: FibromuscularDysplasia
@@ -12268,9 +15518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFibromuscularDysplasia = "31653004";
 
     /// <summary>
+    /// Literal for code: NONEFibromuscularDysplasia
+    /// </summary>
+    public const string LiteralNONEFibromuscularDysplasia = "http://snomed.info/sct#31653004";
+
+    /// <summary>
     /// Literal for code: TransitionalPinealTumor
     /// </summary>
     public const string LiteralTransitionalPinealTumor = "31671006";
+
+    /// <summary>
+    /// Literal for code: NONETransitionalPinealTumor
+    /// </summary>
+    public const string LiteralNONETransitionalPinealTumor = "http://snomed.info/sct#31671006";
 
     /// <summary>
     /// Literal for code: LymphoepithelioidLymphoma
@@ -12278,9 +15538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLymphoepithelioidLymphoma = "3172003";
 
     /// <summary>
+    /// Literal for code: NONELymphoepithelioidLymphoma
+    /// </summary>
+    public const string LiteralNONELymphoepithelioidLymphoma = "http://snomed.info/sct#3172003";
+
+    /// <summary>
     /// Literal for code: LateralAbnormalCurvature
     /// </summary>
     public const string LiteralLateralAbnormalCurvature = "31739005";
+
+    /// <summary>
+    /// Literal for code: NONELateralAbnormalCurvature
+    /// </summary>
+    public const string LiteralNONELateralAbnormalCurvature = "http://snomed.info/sct#31739005";
 
     /// <summary>
     /// Literal for code: BilateralCongenitalFailureOfFusion
@@ -12288,9 +15558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBilateralCongenitalFailureOfFusion = "31765009";
 
     /// <summary>
+    /// Literal for code: NONEBilateralCongenitalFailureOfFusion
+    /// </summary>
+    public const string LiteralNONEBilateralCongenitalFailureOfFusion = "http://snomed.info/sct#31765009";
+
+    /// <summary>
     /// Literal for code: SympatheticParaganglioma
     /// </summary>
     public const string LiteralSympatheticParaganglioma = "31794002";
+
+    /// <summary>
+    /// Literal for code: NONESympatheticParaganglioma
+    /// </summary>
+    public const string LiteralNONESympatheticParaganglioma = "http://snomed.info/sct#31794002";
 
     /// <summary>
     /// Literal for code: PersistentEmbryonicStructure
@@ -12298,9 +15578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPersistentEmbryonicStructure = "31807009";
 
     /// <summary>
+    /// Literal for code: NONEPersistentEmbryonicStructure
+    /// </summary>
+    public const string LiteralNONEPersistentEmbryonicStructure = "http://snomed.info/sct#31807009";
+
+    /// <summary>
     /// Literal for code: RupturedEpithelialInclusionCyst
     /// </summary>
     public const string LiteralRupturedEpithelialInclusionCyst = "31830003";
+
+    /// <summary>
+    /// Literal for code: NONERupturedEpithelialInclusionCyst
+    /// </summary>
+    public const string LiteralNONERupturedEpithelialInclusionCyst = "http://snomed.info/sct#31830003";
 
     /// <summary>
     /// Literal for code: FusedStructure
@@ -12308,9 +15598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFusedStructure = "31883006";
 
     /// <summary>
+    /// Literal for code: NONEFusedStructure
+    /// </summary>
+    public const string LiteralNONEFusedStructure = "http://snomed.info/sct#31883006";
+
+    /// <summary>
     /// Literal for code: NecrotizingInflammation
     /// </summary>
     public const string LiteralNecrotizingInflammation = "31980008";
+
+    /// <summary>
+    /// Literal for code: NONENecrotizingInflammation
+    /// </summary>
+    public const string LiteralNONENecrotizingInflammation = "http://snomed.info/sct#31980008";
 
     /// <summary>
     /// Literal for code: AnimalBite
@@ -12318,9 +15618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnimalBite = "31986002";
 
     /// <summary>
+    /// Literal for code: NONEAnimalBite
+    /// </summary>
+    public const string LiteralNONEAnimalBite = "http://snomed.info/sct#31986002";
+
+    /// <summary>
     /// Literal for code: MildTransitionalCellAtypia
     /// </summary>
     public const string LiteralMildTransitionalCellAtypia = "32008003";
+
+    /// <summary>
+    /// Literal for code: NONEMildTransitionalCellAtypia
+    /// </summary>
+    public const string LiteralNONEMildTransitionalCellAtypia = "http://snomed.info/sct#32008003";
 
     /// <summary>
     /// Literal for code: JugulotympanicParaganglioma
@@ -12328,9 +15638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralJugulotympanicParaganglioma = "32037004";
 
     /// <summary>
+    /// Literal for code: NONEJugulotympanicParaganglioma
+    /// </summary>
+    public const string LiteralNONEJugulotympanicParaganglioma = "http://snomed.info/sct#32037004";
+
+    /// <summary>
     /// Literal for code: AdenomaNoSubtype
     /// </summary>
     public const string LiteralAdenomaNoSubtype = "32048006";
+
+    /// <summary>
+    /// Literal for code: NONEAdenomaNoSubtype
+    /// </summary>
+    public const string LiteralNONEAdenomaNoSubtype = "http://snomed.info/sct#32048006";
 
     /// <summary>
     /// Literal for code: StrumalCarcinoid
@@ -12338,9 +15658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStrumalCarcinoid = "32071008";
 
     /// <summary>
+    /// Literal for code: NONEStrumalCarcinoid
+    /// </summary>
+    public const string LiteralNONEStrumalCarcinoid = "http://snomed.info/sct#32071008";
+
+    /// <summary>
     /// Literal for code: PapillaryCystadenoma
     /// </summary>
     public const string LiteralPapillaryCystadenoma = "32140001";
+
+    /// <summary>
+    /// Literal for code: NONEPapillaryCystadenoma
+    /// </summary>
+    public const string LiteralNONEPapillaryCystadenoma = "http://snomed.info/sct#32140001";
 
     /// <summary>
     /// Literal for code: CoagulativeNecrosis
@@ -12348,9 +15678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoagulativeNecrosis = "32224006";
 
     /// <summary>
+    /// Literal for code: NONECoagulativeNecrosis
+    /// </summary>
+    public const string LiteralNONECoagulativeNecrosis = "http://snomed.info/sct#32224006";
+
+    /// <summary>
     /// Literal for code: SweatGlandAdenocarcinoma
     /// </summary>
     public const string LiteralSweatGlandAdenocarcinoma = "32272007";
+
+    /// <summary>
+    /// Literal for code: NONESweatGlandAdenocarcinoma
+    /// </summary>
+    public const string LiteralNONESweatGlandAdenocarcinoma = "http://snomed.info/sct#32272007";
 
     /// <summary>
     /// Literal for code: StellateSpontaneousPseudoscars
@@ -12358,9 +15698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStellateSpontaneousPseudoscars = "32274008";
 
     /// <summary>
+    /// Literal for code: NONEStellateSpontaneousPseudoscars
+    /// </summary>
+    public const string LiteralNONEStellateSpontaneousPseudoscars = "http://snomed.info/sct#32274008";
+
+    /// <summary>
     /// Literal for code: SubacuteLymphoidLeukemiaObs
     /// </summary>
     public const string LiteralSubacuteLymphoidLeukemiaObs = "32280000";
+
+    /// <summary>
+    /// Literal for code: NONESubacuteLymphoidLeukemiaObs
+    /// </summary>
+    public const string LiteralNONESubacuteLymphoidLeukemiaObs = "http://snomed.info/sct#32280000";
 
     /// <summary>
     /// Literal for code: SerousCyst
@@ -12368,9 +15718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSerousCyst = "32288007";
 
     /// <summary>
+    /// Literal for code: NONESerousCyst
+    /// </summary>
+    public const string LiteralNONESerousCyst = "http://snomed.info/sct#32288007";
+
+    /// <summary>
     /// Literal for code: IntraductalPapillomatosis
     /// </summary>
     public const string LiteralIntraductalPapillomatosis = "32296002";
+
+    /// <summary>
+    /// Literal for code: NONEIntraductalPapillomatosis
+    /// </summary>
+    public const string LiteralNONEIntraductalPapillomatosis = "http://snomed.info/sct#32296002";
 
     /// <summary>
     /// Literal for code: SubchondralBoneCyst
@@ -12378,9 +15738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubchondralBoneCyst = "32322008";
 
     /// <summary>
+    /// Literal for code: NONESubchondralBoneCyst
+    /// </summary>
+    public const string LiteralNONESubchondralBoneCyst = "http://snomed.info/sct#32322008";
+
+    /// <summary>
     /// Literal for code: PiecemealNecrosis
     /// </summary>
     public const string LiteralPiecemealNecrosis = "32408007";
+
+    /// <summary>
+    /// Literal for code: NONEPiecemealNecrosis
+    /// </summary>
+    public const string LiteralNONEPiecemealNecrosis = "http://snomed.info/sct#32408007";
 
     /// <summary>
     /// Literal for code: AtypicalHyperplasia
@@ -12388,9 +15758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAtypicalHyperplasia = "32416003";
 
     /// <summary>
+    /// Literal for code: NONEAtypicalHyperplasia
+    /// </summary>
+    public const string LiteralNONEAtypicalHyperplasia = "http://snomed.info/sct#32416003";
+
+    /// <summary>
     /// Literal for code: PulmonaryAdenomatosis
     /// </summary>
     public const string LiteralPulmonaryAdenomatosis = "32434004";
+
+    /// <summary>
+    /// Literal for code: NONEPulmonaryAdenomatosis
+    /// </summary>
+    public const string LiteralNONEPulmonaryAdenomatosis = "http://snomed.info/sct#32434004";
 
     /// <summary>
     /// Literal for code: DesmoplasticNodularMedulloblastoma
@@ -12398,9 +15778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDesmoplasticNodularMedulloblastoma = "32456001";
 
     /// <summary>
+    /// Literal for code: NONEDesmoplasticNodularMedulloblastoma
+    /// </summary>
+    public const string LiteralNONEDesmoplasticNodularMedulloblastoma = "http://snomed.info/sct#32456001";
+
+    /// <summary>
     /// Literal for code: MalignantNonChromaffinParaganglioma
     /// </summary>
     public const string LiteralMalignantNonChromaffinParaganglioma = "32512003";
+
+    /// <summary>
+    /// Literal for code: NONEMalignantNonChromaffinParaganglioma
+    /// </summary>
+    public const string LiteralNONEMalignantNonChromaffinParaganglioma = "http://snomed.info/sct#32512003";
 
     /// <summary>
     /// Literal for code: FattyNevus
@@ -12408,9 +15798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFattyNevus = "32525006";
 
     /// <summary>
+    /// Literal for code: NONEFattyNevus
+    /// </summary>
+    public const string LiteralNONEFattyNevus = "http://snomed.info/sct#32525006";
+
+    /// <summary>
     /// Literal for code: ArteriolosclerosisWithFibrinoidNecrosis
     /// </summary>
     public const string LiteralArteriolosclerosisWithFibrinoidNecrosis = "32651000";
+
+    /// <summary>
+    /// Literal for code: NONEArteriolosclerosisWithFibrinoidNecrosis
+    /// </summary>
+    public const string LiteralNONEArteriolosclerosisWithFibrinoidNecrosis = "http://snomed.info/sct#32651000";
 
     /// <summary>
     /// Literal for code: Demyelination
@@ -12418,9 +15818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDemyelination = "32693004";
 
     /// <summary>
+    /// Literal for code: NONEDemyelination
+    /// </summary>
+    public const string LiteralNONEDemyelination = "http://snomed.info/sct#32693004";
+
+    /// <summary>
     /// Literal for code: CongenitalVascularAnomaly
     /// </summary>
     public const string LiteralCongenitalVascularAnomaly = "32776006";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalVascularAnomaly
+    /// </summary>
+    public const string LiteralNONECongenitalVascularAnomaly = "http://snomed.info/sct#32776006";
 
     /// <summary>
     /// Literal for code: FollicularPapule
@@ -12428,9 +15838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFollicularPapule = "328005";
 
     /// <summary>
+    /// Literal for code: NONEFollicularPapule
+    /// </summary>
+    public const string LiteralNONEFollicularPapule = "http://snomed.info/sct#328005";
+
+    /// <summary>
     /// Literal for code: Hemangioblastomatosis
     /// </summary>
     public const string LiteralHemangioblastomatosis = "32837003";
+
+    /// <summary>
+    /// Literal for code: NONEHemangioblastomatosis
+    /// </summary>
+    public const string LiteralNONEHemangioblastomatosis = "http://snomed.info/sct#32837003";
 
     /// <summary>
     /// Literal for code: MixedTeratomaAndSeminoma
@@ -12438,9 +15858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMixedTeratomaAndSeminoma = "32844007";
 
     /// <summary>
+    /// Literal for code: NONEMixedTeratomaAndSeminoma
+    /// </summary>
+    public const string LiteralNONEMixedTeratomaAndSeminoma = "http://snomed.info/sct#32844007";
+
+    /// <summary>
     /// Literal for code: HematinPigmentation
     /// </summary>
     public const string LiteralHematinPigmentation = "32884003";
+
+    /// <summary>
+    /// Literal for code: NONEHematinPigmentation
+    /// </summary>
+    public const string LiteralNONEHematinPigmentation = "http://snomed.info/sct#32884003";
 
     /// <summary>
     /// Literal for code: MedullaryCarcinoma
@@ -12448,9 +15878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMedullaryCarcinoma = "32913002";
 
     /// <summary>
+    /// Literal for code: NONEMedullaryCarcinoma
+    /// </summary>
+    public const string LiteralNONEMedullaryCarcinoma = "http://snomed.info/sct#32913002";
+
+    /// <summary>
     /// Literal for code: ReedSternbergCell
     /// </summary>
     public const string LiteralReedSternbergCell = "32915009";
+
+    /// <summary>
+    /// Literal for code: NONEReedSternbergCell
+    /// </summary>
+    public const string LiteralNONEReedSternbergCell = "http://snomed.info/sct#32915009";
 
     /// <summary>
     /// Literal for code: InflammatoryCarcinoma
@@ -12458,9 +15898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInflammatoryCarcinoma = "32968003";
 
     /// <summary>
+    /// Literal for code: NONEInflammatoryCarcinoma
+    /// </summary>
+    public const string LiteralNONEInflammatoryCarcinoma = "http://snomed.info/sct#32968003";
+
+    /// <summary>
     /// Literal for code: Trichofolliculoma
     /// </summary>
     public const string LiteralTrichofolliculoma = "33059009";
+
+    /// <summary>
+    /// Literal for code: NONETrichofolliculoma
+    /// </summary>
+    public const string LiteralNONETrichofolliculoma = "http://snomed.info/sct#33059009";
 
     /// <summary>
     /// Literal for code: FractureUnunited
@@ -12468,9 +15918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFractureUnunited = "33080003";
 
     /// <summary>
+    /// Literal for code: NONEFractureUnunited
+    /// </summary>
+    public const string LiteralNONEFractureUnunited = "http://snomed.info/sct#33080003";
+
+    /// <summary>
     /// Literal for code: HematoidinPigmentation
     /// </summary>
     public const string LiteralHematoidinPigmentation = "33125008";
+
+    /// <summary>
+    /// Literal for code: NONEHematoidinPigmentation
+    /// </summary>
+    public const string LiteralNONEHematoidinPigmentation = "http://snomed.info/sct#33125008";
 
     /// <summary>
     /// Literal for code: ChronicSuperficialUlcer
@@ -12478,9 +15938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChronicSuperficialUlcer = "3313007";
 
     /// <summary>
+    /// Literal for code: NONEChronicSuperficialUlcer
+    /// </summary>
+    public const string LiteralNONEChronicSuperficialUlcer = "http://snomed.info/sct#3313007";
+
+    /// <summary>
     /// Literal for code: MucinousAdenoma
     /// </summary>
     public const string LiteralMucinousAdenoma = "33170000";
+
+    /// <summary>
+    /// Literal for code: NONEMucinousAdenoma
+    /// </summary>
+    public const string LiteralNONEMucinousAdenoma = "http://snomed.info/sct#33170000";
 
     /// <summary>
     /// Literal for code: MalignantHemangioendothelioma
@@ -12488,9 +15958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMalignantHemangioendothelioma = "33176006";
 
     /// <summary>
+    /// Literal for code: NONEMalignantHemangioendothelioma
+    /// </summary>
+    public const string LiteralNONEMalignantHemangioendothelioma = "http://snomed.info/sct#33176006";
+
+    /// <summary>
     /// Literal for code: DelayedUnionOfLongitudinalFracture
     /// </summary>
     public const string LiteralDelayedUnionOfLongitudinalFracture = "33178007";
+
+    /// <summary>
+    /// Literal for code: NONEDelayedUnionOfLongitudinalFracture
+    /// </summary>
+    public const string LiteralNONEDelayedUnionOfLongitudinalFracture = "http://snomed.info/sct#33178007";
 
     /// <summary>
     /// Literal for code: Micromegakaryocyte
@@ -12498,9 +15978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMicromegakaryocyte = "33196003";
 
     /// <summary>
+    /// Literal for code: NONEMicromegakaryocyte
+    /// </summary>
+    public const string LiteralNONEMicromegakaryocyte = "http://snomed.info/sct#33196003";
+
+    /// <summary>
     /// Literal for code: MildEpithelialDysplasia
     /// </summary>
     public const string LiteralMildEpithelialDysplasia = "33288004";
+
+    /// <summary>
+    /// Literal for code: NONEMildEpithelialDysplasia
+    /// </summary>
+    public const string LiteralNONEMildEpithelialDysplasia = "http://snomed.info/sct#33288004";
 
     /// <summary>
     /// Literal for code: Degeneration
@@ -12508,9 +15998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDegeneration = "33359002";
 
     /// <summary>
+    /// Literal for code: NONEDegeneration
+    /// </summary>
+    public const string LiteralNONEDegeneration = "http://snomed.info/sct#33359002";
+
+    /// <summary>
     /// Literal for code: CavernousHemangioma
     /// </summary>
     public const string LiteralCavernousHemangioma = "33377007";
+
+    /// <summary>
+    /// Literal for code: NONECavernousHemangioma
+    /// </summary>
+    public const string LiteralNONECavernousHemangioma = "http://snomed.info/sct#33377007";
 
     /// <summary>
     /// Literal for code: GeneralizedRecession
@@ -12518,9 +16018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGeneralizedRecession = "33385003";
 
     /// <summary>
+    /// Literal for code: NONEGeneralizedRecession
+    /// </summary>
+    public const string LiteralNONEGeneralizedRecession = "http://snomed.info/sct#33385003";
+
+    /// <summary>
     /// Literal for code: IntracysticHyperplasia
     /// </summary>
     public const string LiteralIntracysticHyperplasia = "33387006";
+
+    /// <summary>
+    /// Literal for code: NONEIntracysticHyperplasia
+    /// </summary>
+    public const string LiteralNONEIntracysticHyperplasia = "http://snomed.info/sct#33387006";
 
     /// <summary>
     /// Literal for code: FractureUnunitedSegmental
@@ -12528,9 +16038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFractureUnunitedSegmental = "33408004";
 
     /// <summary>
+    /// Literal for code: NONEFractureUnunitedSegmental
+    /// </summary>
+    public const string LiteralNONEFractureUnunitedSegmental = "http://snomed.info/sct#33408004";
+
+    /// <summary>
     /// Literal for code: MenstrualInvolutionOfBreast
     /// </summary>
     public const string LiteralMenstrualInvolutionOfBreast = "33429008";
+
+    /// <summary>
+    /// Literal for code: NONEMenstrualInvolutionOfBreast
+    /// </summary>
+    public const string LiteralNONEMenstrualInvolutionOfBreast = "http://snomed.info/sct#33429008";
 
     /// <summary>
     /// Literal for code: NeuropilThread
@@ -12538,9 +16058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeuropilThread = "33475000";
 
     /// <summary>
+    /// Literal for code: NONENeuropilThread
+    /// </summary>
+    public const string LiteralNONENeuropilThread = "http://snomed.info/sct#33475000";
+
+    /// <summary>
     /// Literal for code: VascularWallDegeneration
     /// </summary>
     public const string LiteralVascularWallDegeneration = "33593002";
+
+    /// <summary>
+    /// Literal for code: NONEVascularWallDegeneration
+    /// </summary>
+    public const string LiteralNONEVascularWallDegeneration = "http://snomed.info/sct#33593002";
 
     /// <summary>
     /// Literal for code: OsteosarcomaInPagetDiseaseOfBone
@@ -12548,9 +16078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOsteosarcomaInPagetDiseaseOfBone = "33681003";
 
     /// <summary>
+    /// Literal for code: NONEOsteosarcomaInPagetDiseaseOfBone
+    /// </summary>
+    public const string LiteralNONEOsteosarcomaInPagetDiseaseOfBone = "http://snomed.info/sct#33681003";
+
+    /// <summary>
     /// Literal for code: SuperficialInjury
     /// </summary>
     public const string LiteralSuperficialInjury = "3380003";
+
+    /// <summary>
+    /// Literal for code: NONESuperficialInjury
+    /// </summary>
+    public const string LiteralNONESuperficialInjury = "http://snomed.info/sct#3380003";
 
     /// <summary>
     /// Literal for code: SubacuteNecrosis
@@ -12558,9 +16098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSubacuteNecrosis = "33851008";
 
     /// <summary>
+    /// Literal for code: NONESubacuteNecrosis
+    /// </summary>
+    public const string LiteralNONESubacuteNecrosis = "http://snomed.info/sct#33851008";
+
+    /// <summary>
     /// Literal for code: SmallNonCleavedCell
     /// </summary>
     public const string LiteralSmallNonCleavedCell = "33872006";
+
+    /// <summary>
+    /// Literal for code: NONESmallNonCleavedCell
+    /// </summary>
+    public const string LiteralNONESmallNonCleavedCell = "http://snomed.info/sct#33872006";
 
     /// <summary>
     /// Literal for code: ConvolutedCell
@@ -12568,9 +16118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConvolutedCell = "33873001";
 
     /// <summary>
+    /// Literal for code: NONEConvolutedCell
+    /// </summary>
+    public const string LiteralNONEConvolutedCell = "http://snomed.info/sct#33873001";
+
+    /// <summary>
     /// Literal for code: AtypicalLobularHyperplasia
     /// </summary>
     public const string LiteralAtypicalLobularHyperplasia = "33889003";
+
+    /// <summary>
+    /// Literal for code: NONEAtypicalLobularHyperplasia
+    /// </summary>
+    public const string LiteralNONEAtypicalLobularHyperplasia = "http://snomed.info/sct#33889003";
 
     /// <summary>
     /// Literal for code: Blister
@@ -12578,9 +16138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBlister = "339008";
 
     /// <summary>
+    /// Literal for code: NONEBlister
+    /// </summary>
+    public const string LiteralNONEBlister = "http://snomed.info/sct#339008";
+
+    /// <summary>
     /// Literal for code: HistiocytoidHemangioma
     /// </summary>
     public const string LiteralHistiocytoidHemangioma = "33929001";
+
+    /// <summary>
+    /// Literal for code: NONEHistiocytoidHemangioma
+    /// </summary>
+    public const string LiteralNONEHistiocytoidHemangioma = "http://snomed.info/sct#33929001";
 
     /// <summary>
     /// Literal for code: CaseousNecrosis
@@ -12588,9 +16158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCaseousNecrosis = "33940009";
 
     /// <summary>
+    /// Literal for code: NONECaseousNecrosis
+    /// </summary>
+    public const string LiteralNONECaseousNecrosis = "http://snomed.info/sct#33940009";
+
+    /// <summary>
     /// Literal for code: Bite
     /// </summary>
     public const string LiteralBite = "3404009";
+
+    /// <summary>
+    /// Literal for code: NONEBite
+    /// </summary>
+    public const string LiteralNONEBite = "http://snomed.info/sct#3404009";
 
     /// <summary>
     /// Literal for code: BowingDeformity
@@ -12598,9 +16178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBowingDeformity = "34058006";
 
     /// <summary>
+    /// Literal for code: NONEBowingDeformity
+    /// </summary>
+    public const string LiteralNONEBowingDeformity = "http://snomed.info/sct#34058006";
+
+    /// <summary>
     /// Literal for code: NuclearDegeneration
     /// </summary>
     public const string LiteralNuclearDegeneration = "34064004";
+
+    /// <summary>
+    /// Literal for code: NONENuclearDegeneration
+    /// </summary>
+    public const string LiteralNONENuclearDegeneration = "http://snomed.info/sct#34064004";
 
     /// <summary>
     /// Literal for code: PostRadiationCytologicChangesWithDysplasia
@@ -12608,9 +16198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPostRadiationCytologicChangesWithDysplasia = "34081008";
 
     /// <summary>
+    /// Literal for code: NONEPostRadiationCytologicChangesWithDysplasia
+    /// </summary>
+    public const string LiteralNONEPostRadiationCytologicChangesWithDysplasia = "http://snomed.info/sct#34081008";
+
+    /// <summary>
     /// Literal for code: Hemiatrophy
     /// </summary>
     public const string LiteralHemiatrophy = "34087007";
+
+    /// <summary>
+    /// Literal for code: NONEHemiatrophy
+    /// </summary>
+    public const string LiteralNONEHemiatrophy = "http://snomed.info/sct#34087007";
 
     /// <summary>
     /// Literal for code: SertoliLeydigCellTumorWellDifferentiated
@@ -12618,9 +16218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSertoliLeydigCellTumorWellDifferentiated = "34110004";
 
     /// <summary>
+    /// Literal for code: NONESertoliLeydigCellTumorWellDifferentiated
+    /// </summary>
+    public const string LiteralNONESertoliLeydigCellTumorWellDifferentiated = "http://snomed.info/sct#34110004";
+
+    /// <summary>
     /// Literal for code: LengtheningOfShortArm
     /// </summary>
     public const string LiteralLengtheningOfShortArm = "3416003";
+
+    /// <summary>
+    /// Literal for code: NONELengtheningOfShortArm
+    /// </summary>
+    public const string LiteralNONELengtheningOfShortArm = "http://snomed.info/sct#3416003";
 
     /// <summary>
     /// Literal for code: RheumaticInflammation
@@ -12628,9 +16238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRheumaticInflammation = "34248003";
 
     /// <summary>
+    /// Literal for code: NONERheumaticInflammation
+    /// </summary>
+    public const string LiteralNONERheumaticInflammation = "http://snomed.info/sct#34248003";
+
+    /// <summary>
     /// Literal for code: TraumaticDislocationOfMultipleJoints
     /// </summary>
     public const string LiteralTraumaticDislocationOfMultipleJoints = "34277002";
+
+    /// <summary>
+    /// Literal for code: NONETraumaticDislocationOfMultipleJoints
+    /// </summary>
+    public const string LiteralNONETraumaticDislocationOfMultipleJoints = "http://snomed.info/sct#34277002";
 
     /// <summary>
     /// Literal for code: FractureMultipleClosed
@@ -12638,9 +16258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFractureMultipleClosed = "34305007";
 
     /// <summary>
+    /// Literal for code: NONEFractureMultipleClosed
+    /// </summary>
+    public const string LiteralNONEFractureMultipleClosed = "http://snomed.info/sct#34305007";
+
+    /// <summary>
     /// Literal for code: Prolactinoma
     /// </summary>
     public const string LiteralProlactinoma = "34337008";
+
+    /// <summary>
+    /// Literal for code: NONEProlactinoma
+    /// </summary>
+    public const string LiteralNONEProlactinoma = "http://snomed.info/sct#34337008";
 
     /// <summary>
     /// Literal for code: ConcentricHypertrophy
@@ -12648,9 +16278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConcentricHypertrophy = "34344004";
 
     /// <summary>
+    /// Literal for code: NONEConcentricHypertrophy
+    /// </summary>
+    public const string LiteralNONEConcentricHypertrophy = "http://snomed.info/sct#34344004";
+
+    /// <summary>
     /// Literal for code: MalignantFibrousHistiocytoma
     /// </summary>
     public const string LiteralMalignantFibrousHistiocytoma = "34360000";
+
+    /// <summary>
+    /// Literal for code: NONEMalignantFibrousHistiocytoma
+    /// </summary>
+    public const string LiteralNONEMalignantFibrousHistiocytoma = "http://snomed.info/sct#34360000";
 
     /// <summary>
     /// Literal for code: GlandularNecrotizingMetaplasia
@@ -12658,9 +16298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGlandularNecrotizingMetaplasia = "34418003";
 
     /// <summary>
+    /// Literal for code: NONEGlandularNecrotizingMetaplasia
+    /// </summary>
+    public const string LiteralNONEGlandularNecrotizingMetaplasia = "http://snomed.info/sct#34418003";
+
+    /// <summary>
     /// Literal for code: DecidualAlteration
     /// </summary>
     public const string LiteralDecidualAlteration = "34419006";
+
+    /// <summary>
+    /// Literal for code: NONEDecidualAlteration
+    /// </summary>
+    public const string LiteralNONEDecidualAlteration = "http://snomed.info/sct#34419006";
 
     /// <summary>
     /// Literal for code: OsmiophilicStainReaction
@@ -12668,9 +16318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOsmiophilicStainReaction = "34493008";
 
     /// <summary>
+    /// Literal for code: NONEOsmiophilicStainReaction
+    /// </summary>
+    public const string LiteralNONEOsmiophilicStainReaction = "http://snomed.info/sct#34493008";
+
+    /// <summary>
     /// Literal for code: CommunicatingCerebrospinalFluidRetention
     /// </summary>
     public const string LiteralCommunicatingCerebrospinalFluidRetention = "34494002";
+
+    /// <summary>
+    /// Literal for code: NONECommunicatingCerebrospinalFluidRetention
+    /// </summary>
+    public const string LiteralNONECommunicatingCerebrospinalFluidRetention = "http://snomed.info/sct#34494002";
 
     /// <summary>
     /// Literal for code: Glomangiomyoma
@@ -12678,9 +16338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGlomangiomyoma = "34550005";
 
     /// <summary>
+    /// Literal for code: NONEGlomangiomyoma
+    /// </summary>
+    public const string LiteralNONEGlomangiomyoma = "http://snomed.info/sct#34550005";
+
+    /// <summary>
     /// Literal for code: BasalCellAdenocarcinoma
     /// </summary>
     public const string LiteralBasalCellAdenocarcinoma = "34603009";
+
+    /// <summary>
+    /// Literal for code: NONEBasalCellAdenocarcinoma
+    /// </summary>
+    public const string LiteralNONEBasalCellAdenocarcinoma = "http://snomed.info/sct#34603009";
 
     /// <summary>
     /// Literal for code: Regeneration
@@ -12688,9 +16358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRegeneration = "34636005";
 
     /// <summary>
+    /// Literal for code: NONERegeneration
+    /// </summary>
+    public const string LiteralNONERegeneration = "http://snomed.info/sct#34636005";
+
+    /// <summary>
     /// Literal for code: SmudgeCell
     /// </summary>
     public const string LiteralSmudgeCell = "34717007";
+
+    /// <summary>
+    /// Literal for code: NONESmudgeCell
+    /// </summary>
+    public const string LiteralNONESmudgeCell = "http://snomed.info/sct#34717007";
 
     /// <summary>
     /// Literal for code: MenstrualEndometrium
@@ -12698,9 +16378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMenstrualEndometrium = "34720004";
 
     /// <summary>
+    /// Literal for code: NONEMenstrualEndometrium
+    /// </summary>
+    public const string LiteralNONEMenstrualEndometrium = "http://snomed.info/sct#34720004";
+
+    /// <summary>
     /// Literal for code: Lipolysis
     /// </summary>
     public const string LiteralLipolysis = "34785007";
+
+    /// <summary>
+    /// Literal for code: NONELipolysis
+    /// </summary>
+    public const string LiteralNONELipolysis = "http://snomed.info/sct#34785007";
 
     /// <summary>
     /// Literal for code: CongenitalIncompleteExpansion
@@ -12708,9 +16398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalIncompleteExpansion = "34807008";
 
     /// <summary>
+    /// Literal for code: NONECongenitalIncompleteExpansion
+    /// </summary>
+    public const string LiteralNONECongenitalIncompleteExpansion = "http://snomed.info/sct#34807008";
+
+    /// <summary>
     /// Literal for code: TumorNecrosis
     /// </summary>
     public const string LiteralTumorNecrosis = "34823008";
+
+    /// <summary>
+    /// Literal for code: NONETumorNecrosis
+    /// </summary>
+    public const string LiteralNONETumorNecrosis = "http://snomed.info/sct#34823008";
 
     /// <summary>
     /// Literal for code: GiantFibroadenoma
@@ -12718,9 +16418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGiantFibroadenoma = "34882000";
 
     /// <summary>
+    /// Literal for code: NONEGiantFibroadenoma
+    /// </summary>
+    public const string LiteralNONEGiantFibroadenoma = "http://snomed.info/sct#34882000";
+
+    /// <summary>
     /// Literal for code: OdontogenicMyxoma
     /// </summary>
     public const string LiteralOdontogenicMyxoma = "34941004";
+
+    /// <summary>
+    /// Literal for code: NONEOdontogenicMyxoma
+    /// </summary>
+    public const string LiteralNONEOdontogenicMyxoma = "http://snomed.info/sct#34941004";
 
     /// <summary>
     /// Literal for code: PurulentDischarge
@@ -12728,9 +16438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPurulentDischarge = "35013009";
 
     /// <summary>
+    /// Literal for code: NONEPurulentDischarge
+    /// </summary>
+    public const string LiteralNONEPurulentDischarge = "http://snomed.info/sct#35013009";
+
+    /// <summary>
     /// Literal for code: InflammatoryPseudotumor
     /// </summary>
     public const string LiteralInflammatoryPseudotumor = "35073002";
+
+    /// <summary>
+    /// Literal for code: NONEInflammatoryPseudotumor
+    /// </summary>
+    public const string LiteralNONEInflammatoryPseudotumor = "http://snomed.info/sct#35073002";
 
     /// <summary>
     /// Literal for code: InfiltratingLobularCarcinomaAndDuctalCarcinomaInSitu
@@ -12738,9 +16458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInfiltratingLobularCarcinomaAndDuctalCarcinomaInSitu = "35232005";
 
     /// <summary>
+    /// Literal for code: NONEInfiltratingLobularCarcinomaAndDuctalCarcinomaInSitu
+    /// </summary>
+    public const string LiteralNONEInfiltratingLobularCarcinomaAndDuctalCarcinomaInSitu = "http://snomed.info/sct#35232005";
+
+    /// <summary>
     /// Literal for code: Gliosarcoma
     /// </summary>
     public const string LiteralGliosarcoma = "35262004";
+
+    /// <summary>
+    /// Literal for code: NONEGliosarcoma
+    /// </summary>
+    public const string LiteralNONEGliosarcoma = "http://snomed.info/sct#35262004";
 
     /// <summary>
     /// Literal for code: MyeloidSarcomaMorphology
@@ -12748,9 +16478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMyeloidSarcomaMorphology = "35287006";
 
     /// <summary>
+    /// Literal for code: NONEMyeloidSarcomaMorphology
+    /// </summary>
+    public const string LiteralNONEMyeloidSarcomaMorphology = "http://snomed.info/sct#35287006";
+
+    /// <summary>
     /// Literal for code: Intussusception
     /// </summary>
     public const string LiteralIntussusception = "35327006";
+
+    /// <summary>
+    /// Literal for code: NONEIntussusception
+    /// </summary>
+    public const string LiteralNONEIntussusception = "http://snomed.info/sct#35327006";
 
     /// <summary>
     /// Literal for code: GunshotWoundEntranceCloseShot
@@ -12758,9 +16498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGunshotWoundEntranceCloseShot = "35336005";
 
     /// <summary>
+    /// Literal for code: NONEGunshotWoundEntranceCloseShot
+    /// </summary>
+    public const string LiteralNONEGunshotWoundEntranceCloseShot = "http://snomed.info/sct#35336005";
+
+    /// <summary>
     /// Literal for code: TritonTumorMalignant
     /// </summary>
     public const string LiteralTritonTumorMalignant = "354002";
+
+    /// <summary>
+    /// Literal for code: NONETritonTumorMalignant
+    /// </summary>
+    public const string LiteralNONETritonTumorMalignant = "http://snomed.info/sct#354002";
 
     /// <summary>
     /// Literal for code: AutophagicBodies
@@ -12768,9 +16518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAutophagicBodies = "35453004";
 
     /// <summary>
+    /// Literal for code: NONEAutophagicBodies
+    /// </summary>
+    public const string LiteralNONEAutophagicBodies = "http://snomed.info/sct#35453004";
+
+    /// <summary>
     /// Literal for code: SweatRetention
     /// </summary>
     public const string LiteralSweatRetention = "35506000";
+
+    /// <summary>
+    /// Literal for code: NONESweatRetention
+    /// </summary>
+    public const string LiteralNONESweatRetention = "http://snomed.info/sct#35506000";
 
     /// <summary>
     /// Literal for code: WaldenstromMacroglobulinemia
@@ -12778,9 +16538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWaldenstromMacroglobulinemia = "35562000";
 
     /// <summary>
+    /// Literal for code: NONEWaldenstromMacroglobulinemia
+    /// </summary>
+    public const string LiteralNONEWaldenstromMacroglobulinemia = "http://snomed.info/sct#35562000";
+
+    /// <summary>
     /// Literal for code: Hematoma
     /// </summary>
     public const string LiteralHematoma = "35566002";
+
+    /// <summary>
+    /// Literal for code: NONEHematoma
+    /// </summary>
+    public const string LiteralNONEHematoma = "http://snomed.info/sct#35566002";
 
     /// <summary>
     /// Literal for code: MGUS
@@ -12788,9 +16558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMGUS = "35601003";
 
     /// <summary>
+    /// Literal for code: NONEMGUS
+    /// </summary>
+    public const string LiteralNONEMGUS = "http://snomed.info/sct#35601003";
+
+    /// <summary>
     /// Literal for code: CongenitalLymphangiomatosis
     /// </summary>
     public const string LiteralCongenitalLymphangiomatosis = "35662008";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalLymphangiomatosis
+    /// </summary>
+    public const string LiteralNONECongenitalLymphangiomatosis = "http://snomed.info/sct#35662008";
 
     /// <summary>
     /// Literal for code: RupturedInfarct
@@ -12798,9 +16578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRupturedInfarct = "35696001";
 
     /// <summary>
+    /// Literal for code: NONERupturedInfarct
+    /// </summary>
+    public const string LiteralNONERupturedInfarct = "http://snomed.info/sct#35696001";
+
+    /// <summary>
     /// Literal for code: HemangioblasticMeningioma
     /// </summary>
     public const string LiteralHemangioblasticMeningioma = "35701008";
+
+    /// <summary>
+    /// Literal for code: NONEHemangioblasticMeningioma
+    /// </summary>
+    public const string LiteralNONEHemangioblasticMeningioma = "http://snomed.info/sct#35701008";
 
     /// <summary>
     /// Literal for code: MinorInjury
@@ -12808,9 +16598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMinorInjury = "35712008";
 
     /// <summary>
+    /// Literal for code: NONEMinorInjury
+    /// </summary>
+    public const string LiteralNONEMinorInjury = "http://snomed.info/sct#35712008";
+
+    /// <summary>
     /// Literal for code: PostmortemChange
     /// </summary>
     public const string LiteralPostmortemChange = "35714009";
+
+    /// <summary>
+    /// Literal for code: NONEPostmortemChange
+    /// </summary>
+    public const string LiteralNONEPostmortemChange = "http://snomed.info/sct#35714009";
 
     /// <summary>
     /// Literal for code: NonKeratinizingSquamousCellCarcinomaSmallCell
@@ -12818,9 +16618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNonKeratinizingSquamousCellCarcinomaSmallCell = "35718007";
 
     /// <summary>
+    /// Literal for code: NONENonKeratinizingSquamousCellCarcinomaSmallCell
+    /// </summary>
+    public const string LiteralNONENonKeratinizingSquamousCellCarcinomaSmallCell = "http://snomed.info/sct#35718007";
+
+    /// <summary>
     /// Literal for code: PostinflammatoryAtrophy
     /// </summary>
     public const string LiteralPostinflammatoryAtrophy = "35787005";
+
+    /// <summary>
+    /// Literal for code: NONEPostinflammatoryAtrophy
+    /// </summary>
+    public const string LiteralNONEPostinflammatoryAtrophy = "http://snomed.info/sct#35787005";
 
     /// <summary>
     /// Literal for code: FibrocysticChangeProliferativeTypeWithAtypia
@@ -12828,9 +16638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFibrocysticChangeProliferativeTypeWithAtypia = "35813005";
 
     /// <summary>
+    /// Literal for code: NONEFibrocysticChangeProliferativeTypeWithAtypia
+    /// </summary>
+    public const string LiteralNONEFibrocysticChangeProliferativeTypeWithAtypia = "http://snomed.info/sct#35813005";
+
+    /// <summary>
     /// Literal for code: Malacia
     /// </summary>
     public const string LiteralMalacia = "35828005";
+
+    /// <summary>
+    /// Literal for code: NONEMalacia
+    /// </summary>
+    public const string LiteralNONEMalacia = "http://snomed.info/sct#35828005";
 
     /// <summary>
     /// Literal for code: ChronicEmpyema
@@ -12838,9 +16658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChronicEmpyema = "35851005";
 
     /// <summary>
+    /// Literal for code: NONEChronicEmpyema
+    /// </summary>
+    public const string LiteralNONEChronicEmpyema = "http://snomed.info/sct#35851005";
+
+    /// <summary>
     /// Literal for code: SecondaryHyperplasia
     /// </summary>
     public const string LiteralSecondaryHyperplasia = "35872008";
+
+    /// <summary>
+    /// Literal for code: NONESecondaryHyperplasia
+    /// </summary>
+    public const string LiteralNONESecondaryHyperplasia = "http://snomed.info/sct#35872008";
 
     /// <summary>
     /// Literal for code: AdenocarcinomaNoSubtype
@@ -12848,9 +16678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdenocarcinomaNoSubtype = "35917007";
 
     /// <summary>
+    /// Literal for code: NONEAdenocarcinomaNoSubtype
+    /// </summary>
+    public const string LiteralNONEAdenocarcinomaNoSubtype = "http://snomed.info/sct#35917007";
+
+    /// <summary>
     /// Literal for code: TearWound
     /// </summary>
     public const string LiteralTearWound = "35933005";
+
+    /// <summary>
+    /// Literal for code: NONETearWound
+    /// </summary>
+    public const string LiteralNONETearWound = "http://snomed.info/sct#35933005";
 
     /// <summary>
     /// Literal for code: RadiationUlcer
@@ -12858,9 +16698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRadiationUlcer = "35944002";
 
     /// <summary>
+    /// Literal for code: NONERadiationUlcer
+    /// </summary>
+    public const string LiteralNONERadiationUlcer = "http://snomed.info/sct#35944002";
+
+    /// <summary>
     /// Literal for code: PredecidualAlteration
     /// </summary>
     public const string LiteralPredecidualAlteration = "35992002";
+
+    /// <summary>
+    /// Literal for code: NONEPredecidualAlteration
+    /// </summary>
+    public const string LiteralNONEPredecidualAlteration = "http://snomed.info/sct#35992002";
 
     /// <summary>
     /// Literal for code: Gangrenous
@@ -12868,9 +16718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGangrenous = "36024000";
 
     /// <summary>
+    /// Literal for code: NONEGangrenous
+    /// </summary>
+    public const string LiteralNONEGangrenous = "http://snomed.info/sct#36024000";
+
+    /// <summary>
     /// Literal for code: HemangiopericyticMeningiomaObs
     /// </summary>
     public const string LiteralHemangiopericyticMeningiomaObs = "36060005";
+
+    /// <summary>
+    /// Literal for code: NONEHemangiopericyticMeningiomaObs
+    /// </summary>
+    public const string LiteralNONEHemangiopericyticMeningiomaObs = "http://snomed.info/sct#36060005";
 
     /// <summary>
     /// Literal for code: AdenocarcinomaInVillousAdenoma
@@ -12878,9 +16738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdenocarcinomaInVillousAdenoma = "36087009";
 
     /// <summary>
+    /// Literal for code: NONEAdenocarcinomaInVillousAdenoma
+    /// </summary>
+    public const string LiteralNONEAdenocarcinomaInVillousAdenoma = "http://snomed.info/sct#36087009";
+
+    /// <summary>
     /// Literal for code: ExternalSpontaneousFistula
     /// </summary>
     public const string LiteralExternalSpontaneousFistula = "3612005";
+
+    /// <summary>
+    /// Literal for code: NONEExternalSpontaneousFistula
+    /// </summary>
+    public const string LiteralNONEExternalSpontaneousFistula = "http://snomed.info/sct#3612005";
 
     /// <summary>
     /// Literal for code: WallerianDegeneration
@@ -12888,9 +16758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWallerianDegeneration = "36161006";
 
     /// <summary>
+    /// Literal for code: NONEWallerianDegeneration
+    /// </summary>
+    public const string LiteralNONEWallerianDegeneration = "http://snomed.info/sct#36161006";
+
+    /// <summary>
     /// Literal for code: Perforation
     /// </summary>
     public const string LiteralPerforation = "36191001";
+
+    /// <summary>
+    /// Literal for code: NONEPerforation
+    /// </summary>
+    public const string LiteralNONEPerforation = "http://snomed.info/sct#36191001";
 
     /// <summary>
     /// Literal for code: NodularHyperplasia
@@ -12898,9 +16778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNodularHyperplasia = "36195005";
 
     /// <summary>
+    /// Literal for code: NONENodularHyperplasia
+    /// </summary>
+    public const string LiteralNONENodularHyperplasia = "http://snomed.info/sct#36195005";
+
+    /// <summary>
     /// Literal for code: AirEmbolus
     /// </summary>
     public const string LiteralAirEmbolus = "36207003";
+
+    /// <summary>
+    /// Literal for code: NONEAirEmbolus
+    /// </summary>
+    public const string LiteralNONEAirEmbolus = "http://snomed.info/sct#36207003";
 
     /// <summary>
     /// Literal for code: DelayedUnionOfIntraarticularFracture
@@ -12908,9 +16798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDelayedUnionOfIntraarticularFracture = "36223003";
 
     /// <summary>
+    /// Literal for code: NONEDelayedUnionOfIntraarticularFracture
+    /// </summary>
+    public const string LiteralNONEDelayedUnionOfIntraarticularFracture = "http://snomed.info/sct#36223003";
+
+    /// <summary>
     /// Literal for code: Lipogranuloma
     /// </summary>
     public const string LiteralLipogranuloma = "36279001";
+
+    /// <summary>
+    /// Literal for code: NONELipogranuloma
+    /// </summary>
+    public const string LiteralNONELipogranuloma = "http://snomed.info/sct#36279001";
 
     /// <summary>
     /// Literal for code: AlveolarAdenocarcinoma
@@ -12918,9 +16818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlveolarAdenocarcinoma = "36310008";
 
     /// <summary>
+    /// Literal for code: NONEAlveolarAdenocarcinoma
+    /// </summary>
+    public const string LiteralNONEAlveolarAdenocarcinoma = "http://snomed.info/sct#36310008";
+
+    /// <summary>
     /// Literal for code: ApocrineCystadenoma
     /// </summary>
     public const string LiteralApocrineCystadenoma = "36318001";
+
+    /// <summary>
+    /// Literal for code: NONEApocrineCystadenoma
+    /// </summary>
+    public const string LiteralNONEApocrineCystadenoma = "http://snomed.info/sct#36318001";
 
     /// <summary>
     /// Literal for code: MuscleFiberHypertrophyTypeII
@@ -12928,9 +16838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMuscleFiberHypertrophyTypeII = "36373003";
 
     /// <summary>
+    /// Literal for code: NONEMuscleFiberHypertrophyTypeII
+    /// </summary>
+    public const string LiteralNONEMuscleFiberHypertrophyTypeII = "http://snomed.info/sct#36373003";
+
+    /// <summary>
     /// Literal for code: ChronicSuppurativeInflammation
     /// </summary>
     public const string LiteralChronicSuppurativeInflammation = "36390009";
+
+    /// <summary>
+    /// Literal for code: NONEChronicSuppurativeInflammation
+    /// </summary>
+    public const string LiteralNONEChronicSuppurativeInflammation = "http://snomed.info/sct#36390009";
 
     /// <summary>
     /// Literal for code: PregnancyLuteoma
@@ -12938,9 +16858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPregnancyLuteoma = "3645005";
 
     /// <summary>
+    /// Literal for code: NONEPregnancyLuteoma
+    /// </summary>
+    public const string LiteralNONEPregnancyLuteoma = "http://snomed.info/sct#3645005";
+
+    /// <summary>
     /// Literal for code: SurgicallyConstructedOrgan
     /// </summary>
     public const string LiteralSurgicallyConstructedOrgan = "36468008";
+
+    /// <summary>
+    /// Literal for code: NONESurgicallyConstructedOrgan
+    /// </summary>
+    public const string LiteralNONESurgicallyConstructedOrgan = "http://snomed.info/sct#36468008";
 
     /// <summary>
     /// Literal for code: LowOutputExternalFistula
@@ -12948,9 +16878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLowOutputExternalFistula = "36475009";
 
     /// <summary>
+    /// Literal for code: NONELowOutputExternalFistula
+    /// </summary>
+    public const string LiteralNONELowOutputExternalFistula = "http://snomed.info/sct#36475009";
+
+    /// <summary>
     /// Literal for code: Ankylosis
     /// </summary>
     public const string LiteralAnkylosis = "36504009";
+
+    /// <summary>
+    /// Literal for code: NONEAnkylosis
+    /// </summary>
+    public const string LiteralNONEAnkylosis = "http://snomed.info/sct#36504009";
 
     /// <summary>
     /// Literal for code: CysticInfarct
@@ -12958,9 +16898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCysticInfarct = "36560003";
 
     /// <summary>
+    /// Literal for code: NONECysticInfarct
+    /// </summary>
+    public const string LiteralNONECysticInfarct = "http://snomed.info/sct#36560003";
+
+    /// <summary>
     /// Literal for code: PsoriasiformEruption
     /// </summary>
     public const string LiteralPsoriasiformEruption = "36639000";
+
+    /// <summary>
+    /// Literal for code: NONEPsoriasiformEruption
+    /// </summary>
+    public const string LiteralNONEPsoriasiformEruption = "http://snomed.info/sct#36639000";
 
     /// <summary>
     /// Literal for code: Clubbing
@@ -12968,9 +16918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralClubbing = "367004";
 
     /// <summary>
+    /// Literal for code: NONEClubbing
+    /// </summary>
+    public const string LiteralNONEClubbing = "http://snomed.info/sct#367004";
+
+    /// <summary>
     /// Literal for code: PapillaryMucinousCystadenoma
     /// </summary>
     public const string LiteralPapillaryMucinousCystadenoma = "36721002";
+
+    /// <summary>
+    /// Literal for code: NONEPapillaryMucinousCystadenoma
+    /// </summary>
+    public const string LiteralNONEPapillaryMucinousCystadenoma = "http://snomed.info/sct#36721002";
 
     /// <summary>
     /// Literal for code: Sacculation
@@ -12978,9 +16938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSacculation = "36731009";
 
     /// <summary>
+    /// Literal for code: NONESacculation
+    /// </summary>
+    public const string LiteralNONESacculation = "http://snomed.info/sct#36731009";
+
+    /// <summary>
     /// Literal for code: SeminomaNoICDOSubtype
     /// </summary>
     public const string LiteralSeminomaNoICDOSubtype = "36741007";
+
+    /// <summary>
+    /// Literal for code: NONESeminomaNoICDOSubtype
+    /// </summary>
+    public const string LiteralNONESeminomaNoICDOSubtype = "http://snomed.info/sct#36741007";
 
     /// <summary>
     /// Literal for code: PolycysticChange
@@ -12988,9 +16958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPolycysticChange = "3679006";
 
     /// <summary>
+    /// Literal for code: NONEPolycysticChange
+    /// </summary>
+    public const string LiteralNONEPolycysticChange = "http://snomed.info/sct#3679006";
+
+    /// <summary>
     /// Literal for code: MajorMultipleInjuries
     /// </summary>
     public const string LiteralMajorMultipleInjuries = "36818005";
+
+    /// <summary>
+    /// Literal for code: NONEMajorMultipleInjuries
+    /// </summary>
+    public const string LiteralNONEMajorMultipleInjuries = "http://snomed.info/sct#36818005";
 
     /// <summary>
     /// Literal for code: DislocationMultipleClosedAndOpen
@@ -12998,9 +16978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDislocationMultipleClosedAndOpen = "36839003";
 
     /// <summary>
+    /// Literal for code: NONEDislocationMultipleClosedAndOpen
+    /// </summary>
+    public const string LiteralNONEDislocationMultipleClosedAndOpen = "http://snomed.info/sct#36839003";
+
+    /// <summary>
     /// Literal for code: Retention
     /// </summary>
     public const string LiteralRetention = "36850000";
+
+    /// <summary>
+    /// Literal for code: NONERetention
+    /// </summary>
+    public const string LiteralNONERetention = "http://snomed.info/sct#36850000";
 
     /// <summary>
     /// Literal for code: FocalEpithelialHyperplasia
@@ -13008,9 +16998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFocalEpithelialHyperplasia = "36949004";
 
     /// <summary>
+    /// Literal for code: NONEFocalEpithelialHyperplasia
+    /// </summary>
+    public const string LiteralNONEFocalEpithelialHyperplasia = "http://snomed.info/sct#36949004";
+
+    /// <summary>
     /// Literal for code: ChromophobeAdenoma
     /// </summary>
     public const string LiteralChromophobeAdenoma = "37039006";
+
+    /// <summary>
+    /// Literal for code: NONEChromophobeAdenoma
+    /// </summary>
+    public const string LiteralNONEChromophobeAdenoma = "http://snomed.info/sct#37039006";
 
     /// <summary>
     /// Literal for code: ForeignBodyGiantCellGranuloma
@@ -13018,9 +17018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralForeignBodyGiantCellGranuloma = "37058002";
 
     /// <summary>
+    /// Literal for code: NONEForeignBodyGiantCellGranuloma
+    /// </summary>
+    public const string LiteralNONEForeignBodyGiantCellGranuloma = "http://snomed.info/sct#37058002";
+
+    /// <summary>
     /// Literal for code: LateralDisplacement
     /// </summary>
     public const string LiteralLateralDisplacement = "37068007";
+
+    /// <summary>
+    /// Literal for code: NONELateralDisplacement
+    /// </summary>
+    public const string LiteralNONELateralDisplacement = "http://snomed.info/sct#37068007";
 
     /// <summary>
     /// Literal for code: Lipomatosis
@@ -13028,9 +17038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLipomatosis = "37095002";
 
     /// <summary>
+    /// Literal for code: NONELipomatosis
+    /// </summary>
+    public const string LiteralNONELipomatosis = "http://snomed.info/sct#37095002";
+
+    /// <summary>
     /// Literal for code: EpithelioidCellMelanoma
     /// </summary>
     public const string LiteralEpithelioidCellMelanoma = "37138001";
+
+    /// <summary>
+    /// Literal for code: NONEEpithelioidCellMelanoma
+    /// </summary>
+    public const string LiteralNONEEpithelioidCellMelanoma = "http://snomed.info/sct#37138001";
 
     /// <summary>
     /// Literal for code: GlandularAndMuscularHyperplasia
@@ -13038,9 +17058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGlandularAndMuscularHyperplasia = "37159008";
 
     /// <summary>
+    /// Literal for code: NONEGlandularAndMuscularHyperplasia
+    /// </summary>
+    public const string LiteralNONEGlandularAndMuscularHyperplasia = "http://snomed.info/sct#37159008";
+
+    /// <summary>
     /// Literal for code: SuperficialWound
     /// </summary>
     public const string LiteralSuperficialWound = "37205004";
+
+    /// <summary>
+    /// Literal for code: NONESuperficialWound
+    /// </summary>
+    public const string LiteralNONESuperficialWound = "http://snomed.info/sct#37205004";
 
     /// <summary>
     /// Literal for code: SynovialSarcomaSpindleCell
@@ -13048,9 +17078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSynovialSarcomaSpindleCell = "37206003";
 
     /// <summary>
+    /// Literal for code: NONESynovialSarcomaSpindleCell
+    /// </summary>
+    public const string LiteralNONESynovialSarcomaSpindleCell = "http://snomed.info/sct#37206003";
+
+    /// <summary>
     /// Literal for code: DecreasedMelaninPigmentation
     /// </summary>
     public const string LiteralDecreasedMelaninPigmentation = "37257004";
+
+    /// <summary>
+    /// Literal for code: NONEDecreasedMelaninPigmentation
+    /// </summary>
+    public const string LiteralNONEDecreasedMelaninPigmentation = "http://snomed.info/sct#37257004";
 
     /// <summary>
     /// Literal for code: Cementoma
@@ -13058,9 +17098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCementoma = "37258009";
 
     /// <summary>
+    /// Literal for code: NONECementoma
+    /// </summary>
+    public const string LiteralNONECementoma = "http://snomed.info/sct#37258009";
+
+    /// <summary>
     /// Literal for code: SecretoryEndometrium
     /// </summary>
     public const string LiteralSecretoryEndometrium = "37266000";
+
+    /// <summary>
+    /// Literal for code: NONESecretoryEndometrium
+    /// </summary>
+    public const string LiteralNONESecretoryEndometrium = "http://snomed.info/sct#37266000";
 
     /// <summary>
     /// Literal for code: AmyloidTumor
@@ -13068,9 +17118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAmyloidTumor = "37279009";
 
     /// <summary>
+    /// Literal for code: NONEAmyloidTumor
+    /// </summary>
+    public const string LiteralNONEAmyloidTumor = "http://snomed.info/sct#37279009";
+
+    /// <summary>
     /// Literal for code: Eventration
     /// </summary>
     public const string LiteralEventration = "37291000";
+
+    /// <summary>
+    /// Literal for code: NONEEventration
+    /// </summary>
+    public const string LiteralNONEEventration = "http://snomed.info/sct#37291000";
 
     /// <summary>
     /// Literal for code: BluntInjury
@@ -13078,9 +17138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBluntInjury = "3821009";
 
     /// <summary>
+    /// Literal for code: NONEBluntInjury
+    /// </summary>
+    public const string LiteralNONEBluntInjury = "http://snomed.info/sct#3821009";
+
+    /// <summary>
     /// Literal for code: OdontogenicTumor
     /// </summary>
     public const string LiteralOdontogenicTumor = "3833004";
+
+    /// <summary>
+    /// Literal for code: NONEOdontogenicTumor
+    /// </summary>
+    public const string LiteralNONEOdontogenicTumor = "http://snomed.info/sct#3833004";
 
     /// <summary>
     /// Literal for code: LipidRichCarcinoma
@@ -13088,9 +17158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLipidRichCarcinoma = "3839000";
 
     /// <summary>
+    /// Literal for code: NONELipidRichCarcinoma
+    /// </summary>
+    public const string LiteralNONELipidRichCarcinoma = "http://snomed.info/sct#3839000";
+
+    /// <summary>
     /// Literal for code: UrateTophus
     /// </summary>
     public const string LiteralUrateTophus = "3875003";
+
+    /// <summary>
+    /// Literal for code: NONEUrateTophus
+    /// </summary>
+    public const string LiteralNONEUrateTophus = "http://snomed.info/sct#3875003";
 
     /// <summary>
     /// Literal for code: BenignTumorMorphology
@@ -13098,9 +17178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBenignTumorMorphology = "3898006";
 
     /// <summary>
+    /// Literal for code: NONEBenignTumorMorphology
+    /// </summary>
+    public const string LiteralNONEBenignTumorMorphology = "http://snomed.info/sct#3898006";
+
+    /// <summary>
     /// Literal for code: AbnormalTrabeculation
     /// </summary>
     public const string LiteralAbnormalTrabeculation = "394000";
+
+    /// <summary>
+    /// Literal for code: NONEAbnormalTrabeculation
+    /// </summary>
+    public const string LiteralNONEAbnormalTrabeculation = "http://snomed.info/sct#394000";
 
     /// <summary>
     /// Literal for code: SevereTransitionalCellAtypia
@@ -13108,9 +17198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSevereTransitionalCellAtypia = "4000000";
 
     /// <summary>
+    /// Literal for code: NONESevereTransitionalCellAtypia
+    /// </summary>
+    public const string LiteralNONESevereTransitionalCellAtypia = "http://snomed.info/sct#4000000";
+
+    /// <summary>
     /// Literal for code: RecurrentClosedDislocation
     /// </summary>
     public const string LiteralRecurrentClosedDislocation = "4023002";
+
+    /// <summary>
+    /// Literal for code: NONERecurrentClosedDislocation
+    /// </summary>
+    public const string LiteralNONERecurrentClosedDislocation = "http://snomed.info/sct#4023002";
 
     /// <summary>
     /// Literal for code: MucoepidermoidCarcinoma
@@ -13118,9 +17218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMucoepidermoidCarcinoma = "4079000";
 
     /// <summary>
+    /// Literal for code: NONEMucoepidermoidCarcinoma
+    /// </summary>
+    public const string LiteralNONEMucoepidermoidCarcinoma = "http://snomed.info/sct#4079000";
+
+    /// <summary>
     /// Literal for code: MultilobularChondromaAndOsteoma
     /// </summary>
     public const string LiteralMultilobularChondromaAndOsteoma = "4118000";
+
+    /// <summary>
+    /// Literal for code: NONEMultilobularChondromaAndOsteoma
+    /// </summary>
+    public const string LiteralNONEMultilobularChondromaAndOsteoma = "http://snomed.info/sct#4118000";
 
     /// <summary>
     /// Literal for code: BursalCyst
@@ -13128,9 +17238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBursalCyst = "4125007";
 
     /// <summary>
+    /// Literal for code: NONEBursalCyst
+    /// </summary>
+    public const string LiteralNONEBursalCyst = "http://snomed.info/sct#4125007";
+
+    /// <summary>
     /// Literal for code: Mass
     /// </summary>
     public const string LiteralMass = "4147007";
+
+    /// <summary>
+    /// Literal for code: NONEMass
+    /// </summary>
+    public const string LiteralNONEMass = "http://snomed.info/sct#4147007";
 
     /// <summary>
     /// Literal for code: FunctionalDilatation
@@ -13138,9 +17258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFunctionalDilatation = "419008";
 
     /// <summary>
+    /// Literal for code: NONEFunctionalDilatation
+    /// </summary>
+    public const string LiteralNONEFunctionalDilatation = "http://snomed.info/sct#419008";
+
+    /// <summary>
     /// Literal for code: Eversion
     /// </summary>
     public const string LiteralEversion = "4196002";
+
+    /// <summary>
+    /// Literal for code: NONEEversion
+    /// </summary>
+    public const string LiteralNONEEversion = "http://snomed.info/sct#4196002";
 
     /// <summary>
     /// Literal for code: AnastomosisHeterocladic
@@ -13148,9 +17278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAnastomosisHeterocladic = "420002";
 
     /// <summary>
+    /// Literal for code: NONEAnastomosisHeterocladic
+    /// </summary>
+    public const string LiteralNONEAnastomosisHeterocladic = "http://snomed.info/sct#420002";
+
+    /// <summary>
     /// Literal for code: TurkCell
     /// </summary>
     public const string LiteralTurkCell = "4205002";
+
+    /// <summary>
+    /// Literal for code: NONETurkCell
+    /// </summary>
+    public const string LiteralNONETurkCell = "http://snomed.info/sct#4205002";
 
     /// <summary>
     /// Literal for code: PacinianNeurofibroma
@@ -13158,9 +17298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPacinianNeurofibroma = "4230004";
 
     /// <summary>
+    /// Literal for code: NONEPacinianNeurofibroma
+    /// </summary>
+    public const string LiteralNONEPacinianNeurofibroma = "http://snomed.info/sct#4230004";
+
+    /// <summary>
     /// Literal for code: MetastaticSignetRingCellCarcinoma
     /// </summary>
     public const string LiteralMetastaticSignetRingCellCarcinoma = "4305004";
+
+    /// <summary>
+    /// Literal for code: NONEMetastaticSignetRingCellCarcinoma
+    /// </summary>
+    public const string LiteralNONEMetastaticSignetRingCellCarcinoma = "http://snomed.info/sct#4305004";
 
     /// <summary>
     /// Literal for code: MalignantMixedTumorOsteosarcomatousType
@@ -13168,9 +17318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMalignantMixedTumorOsteosarcomatousType = "4392007";
 
     /// <summary>
+    /// Literal for code: NONEMalignantMixedTumorOsteosarcomatousType
+    /// </summary>
+    public const string LiteralNONEMalignantMixedTumorOsteosarcomatousType = "http://snomed.info/sct#4392007";
+
+    /// <summary>
     /// Literal for code: AtypicalGlandularCellsOfUndeterminedSignificance
     /// </summary>
     public const string LiteralAtypicalGlandularCellsOfUndeterminedSignificance = "4476003";
+
+    /// <summary>
+    /// Literal for code: NONEAtypicalGlandularCellsOfUndeterminedSignificance
+    /// </summary>
+    public const string LiteralNONEAtypicalGlandularCellsOfUndeterminedSignificance = "http://snomed.info/sct#4476003";
 
     /// <summary>
     /// Literal for code: ChromocenterAlteration
@@ -13178,9 +17338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChromocenterAlteration = "4484004";
 
     /// <summary>
+    /// Literal for code: NONEChromocenterAlteration
+    /// </summary>
+    public const string LiteralNONEChromocenterAlteration = "http://snomed.info/sct#4484004";
+
+    /// <summary>
     /// Literal for code: ObstructionByTorsionAndAngulationCombinedMechanism
     /// </summary>
     public const string LiteralObstructionByTorsionAndAngulationCombinedMechanism = "4513002";
+
+    /// <summary>
+    /// Literal for code: NONEObstructionByTorsionAndAngulationCombinedMechanism
+    /// </summary>
+    public const string LiteralNONEObstructionByTorsionAndAngulationCombinedMechanism = "http://snomed.info/sct#4513002";
 
     /// <summary>
     /// Literal for code: AcuteInflammation
@@ -13188,9 +17358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcuteInflammation = "4532008";
 
     /// <summary>
+    /// Literal for code: NONEAcuteInflammation
+    /// </summary>
+    public const string LiteralNONEAcuteInflammation = "http://snomed.info/sct#4532008";
+
+    /// <summary>
     /// Literal for code: PapulovesicularEruption
     /// </summary>
     public const string LiteralPapulovesicularEruption = "4538007";
+
+    /// <summary>
+    /// Literal for code: NONEPapulovesicularEruption
+    /// </summary>
+    public const string LiteralNONEPapulovesicularEruption = "http://snomed.info/sct#4538007";
 
     /// <summary>
     /// Literal for code: CongenitalFailureOfFusion
@@ -13198,9 +17378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalFailureOfFusion = "4541003";
 
     /// <summary>
+    /// Literal for code: NONECongenitalFailureOfFusion
+    /// </summary>
+    public const string LiteralNONECongenitalFailureOfFusion = "http://snomed.info/sct#4541003";
+
+    /// <summary>
     /// Literal for code: MixedSubependymomaEpendymoma
     /// </summary>
     public const string LiteralMixedSubependymomaEpendymoma = "4553004";
+
+    /// <summary>
+    /// Literal for code: NONEMixedSubependymomaEpendymoma
+    /// </summary>
+    public const string LiteralNONEMixedSubependymomaEpendymoma = "http://snomed.info/sct#4553004";
 
     /// <summary>
     /// Literal for code: ScirrhousAdenocarcinoma
@@ -13208,9 +17398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralScirrhousAdenocarcinoma = "4584002";
 
     /// <summary>
+    /// Literal for code: NONEScirrhousAdenocarcinoma
+    /// </summary>
+    public const string LiteralNONEScirrhousAdenocarcinoma = "http://snomed.info/sct#4584002";
+
+    /// <summary>
     /// Literal for code: MetastaticAdenocarcinoma
     /// </summary>
     public const string LiteralMetastaticAdenocarcinoma = "4590003";
+
+    /// <summary>
+    /// Literal for code: NONEMetastaticAdenocarcinoma
+    /// </summary>
+    public const string LiteralNONEMetastaticAdenocarcinoma = "http://snomed.info/sct#4590003";
 
     /// <summary>
     /// Literal for code: CongenitalDextrorotation
@@ -13218,9 +17418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalDextrorotation = "4618001";
 
     /// <summary>
+    /// Literal for code: NONECongenitalDextrorotation
+    /// </summary>
+    public const string LiteralNONECongenitalDextrorotation = "http://snomed.info/sct#4618001";
+
+    /// <summary>
     /// Literal for code: TubularAdenocarcinoma
     /// </summary>
     public const string LiteralTubularAdenocarcinoma = "4631006";
+
+    /// <summary>
+    /// Literal for code: NONETubularAdenocarcinoma
+    /// </summary>
+    public const string LiteralNONETubularAdenocarcinoma = "http://snomed.info/sct#4631006";
 
     /// <summary>
     /// Literal for code: MesonephricDuctHyperplasia
@@ -13228,9 +17438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMesonephricDuctHyperplasia = "4684005";
 
     /// <summary>
+    /// Literal for code: NONEMesonephricDuctHyperplasia
+    /// </summary>
+    public const string LiteralNONEMesonephricDuctHyperplasia = "http://snomed.info/sct#4684005";
+
+    /// <summary>
     /// Literal for code: BlisterDueToDegenerationOfBasalCells
     /// </summary>
     public const string LiteralBlisterDueToDegenerationOfBasalCells = "4686007";
+
+    /// <summary>
+    /// Literal for code: NONEBlisterDueToDegenerationOfBasalCells
+    /// </summary>
+    public const string LiteralNONEBlisterDueToDegenerationOfBasalCells = "http://snomed.info/sct#4686007";
 
     /// <summary>
     /// Literal for code: Dystrophy
@@ -13238,9 +17458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDystrophy = "4720007";
 
     /// <summary>
+    /// Literal for code: NONEDystrophy
+    /// </summary>
+    public const string LiteralNONEDystrophy = "http://snomed.info/sct#4720007";
+
+    /// <summary>
     /// Literal for code: PapillaryAdenocarcinoma
     /// </summary>
     public const string LiteralPapillaryAdenocarcinoma = "4797003";
+
+    /// <summary>
+    /// Literal for code: NONEPapillaryAdenocarcinoma
+    /// </summary>
+    public const string LiteralNONEPapillaryAdenocarcinoma = "http://snomed.info/sct#4797003";
 
     /// <summary>
     /// Literal for code: Hyperpigmentation
@@ -13248,9 +17478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHyperpigmentation = "4830009";
 
     /// <summary>
+    /// Literal for code: NONEHyperpigmentation
+    /// </summary>
+    public const string LiteralNONEHyperpigmentation = "http://snomed.info/sct#4830009";
+
+    /// <summary>
     /// Literal for code: Sequestrum
     /// </summary>
     public const string LiteralSequestrum = "4857006";
+
+    /// <summary>
+    /// Literal for code: NONESequestrum
+    /// </summary>
+    public const string LiteralNONESequestrum = "http://snomed.info/sct#4857006";
 
     /// <summary>
     /// Literal for code: CoilWhorledFibers
@@ -13258,9 +17498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCoilWhorledFibers = "487002";
 
     /// <summary>
+    /// Literal for code: NONECoilWhorledFibers
+    /// </summary>
+    public const string LiteralNONECoilWhorledFibers = "http://snomed.info/sct#487002";
+
+    /// <summary>
     /// Literal for code: AcuteObstruction
     /// </summary>
     public const string LiteralAcuteObstruction = "4876008";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteObstruction
+    /// </summary>
+    public const string LiteralNONEAcuteObstruction = "http://snomed.info/sct#4876008";
 
     /// <summary>
     /// Literal for code: Pleomorphism
@@ -13268,9 +17518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPleomorphism = "4916000";
 
     /// <summary>
+    /// Literal for code: NONEPleomorphism
+    /// </summary>
+    public const string LiteralNONEPleomorphism = "http://snomed.info/sct#4916000";
+
+    /// <summary>
     /// Literal for code: CongenitalProtrusion
     /// </summary>
     public const string LiteralCongenitalProtrusion = "4919007";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalProtrusion
+    /// </summary>
+    public const string LiteralNONECongenitalProtrusion = "http://snomed.info/sct#4919007";
 
     /// <summary>
     /// Literal for code: AdenocarcinomaInSituInVillousAdenoma
@@ -13278,9 +17538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAdenocarcinomaInSituInVillousAdenoma = "4935000";
 
     /// <summary>
+    /// Literal for code: NONEAdenocarcinomaInSituInVillousAdenoma
+    /// </summary>
+    public const string LiteralNONEAdenocarcinomaInSituInVillousAdenoma = "http://snomed.info/sct#4935000";
+
+    /// <summary>
     /// Literal for code: ContractionBands
     /// </summary>
     public const string LiteralContractionBands = "4947006";
+
+    /// <summary>
+    /// Literal for code: NONEContractionBands
+    /// </summary>
+    public const string LiteralNONEContractionBands = "http://snomed.info/sct#4947006";
 
     /// <summary>
     /// Literal for code: SezarySyndrome
@@ -13288,9 +17558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSezarySyndrome = "4950009";
 
     /// <summary>
+    /// Literal for code: NONESezarySyndrome
+    /// </summary>
+    public const string LiteralNONESezarySyndrome = "http://snomed.info/sct#4950009";
+
+    /// <summary>
     /// Literal for code: EccrineSpiradenoma
     /// </summary>
     public const string LiteralEccrineSpiradenoma = "4977000";
+
+    /// <summary>
+    /// Literal for code: NONEEccrineSpiradenoma
+    /// </summary>
+    public const string LiteralNONEEccrineSpiradenoma = "http://snomed.info/sct#4977000";
 
     /// <summary>
     /// Literal for code: PittingEdema
@@ -13298,9 +17578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPittingEdema = "5008001";
 
     /// <summary>
+    /// Literal for code: NONEPittingEdema
+    /// </summary>
+    public const string LiteralNONEPittingEdema = "http://snomed.info/sct#5008001";
+
+    /// <summary>
     /// Literal for code: BenignInterstitialCellTumor
     /// </summary>
     public const string LiteralBenignInterstitialCellTumor = "5014008";
+
+    /// <summary>
+    /// Literal for code: NONEBenignInterstitialCellTumor
+    /// </summary>
+    public const string LiteralNONEBenignInterstitialCellTumor = "http://snomed.info/sct#5014008";
 
     /// <summary>
     /// Literal for code: PrimaryCutaneousNeuroendocrineCarcinoma
@@ -13308,9 +17598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPrimaryCutaneousNeuroendocrineCarcinoma = "5052009";
 
     /// <summary>
+    /// Literal for code: NONEPrimaryCutaneousNeuroendocrineCarcinoma
+    /// </summary>
+    public const string LiteralNONEPrimaryCutaneousNeuroendocrineCarcinoma = "http://snomed.info/sct#5052009";
+
+    /// <summary>
     /// Literal for code: FibrousMeningioma
     /// </summary>
     public const string LiteralFibrousMeningioma = "511008";
+
+    /// <summary>
+    /// Literal for code: NONEFibrousMeningioma
+    /// </summary>
+    public const string LiteralNONEFibrousMeningioma = "http://snomed.info/sct#511008";
 
     /// <summary>
     /// Literal for code: BenignSynovioma
@@ -13318,9 +17618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBenignSynovioma = "5178002";
 
     /// <summary>
+    /// Literal for code: NONEBenignSynovioma
+    /// </summary>
+    public const string LiteralNONEBenignSynovioma = "http://snomed.info/sct#5178002";
+
+    /// <summary>
     /// Literal for code: InferiorClosedDislocation
     /// </summary>
     public const string LiteralInferiorClosedDislocation = "5183005";
+
+    /// <summary>
+    /// Literal for code: NONEInferiorClosedDislocation
+    /// </summary>
+    public const string LiteralNONEInferiorClosedDislocation = "http://snomed.info/sct#5183005";
 
     /// <summary>
     /// Literal for code: RoundCalculus
@@ -13328,9 +17638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRoundCalculus = "5188001";
 
     /// <summary>
+    /// Literal for code: NONERoundCalculus
+    /// </summary>
+    public const string LiteralNONERoundCalculus = "http://snomed.info/sct#5188001";
+
+    /// <summary>
     /// Literal for code: PautrierMicroabscess
     /// </summary>
     public const string LiteralPautrierMicroabscess = "5237007";
+
+    /// <summary>
+    /// Literal for code: NONEPautrierMicroabscess
+    /// </summary>
+    public const string LiteralNONEPautrierMicroabscess = "http://snomed.info/sct#5237007";
 
     /// <summary>
     /// Literal for code: Synechia
@@ -13338,9 +17658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSynechia = "5242004";
 
     /// <summary>
+    /// Literal for code: NONESynechia
+    /// </summary>
+    public const string LiteralNONESynechia = "http://snomed.info/sct#5242004";
+
+    /// <summary>
     /// Literal for code: IntraductalPapilloma
     /// </summary>
     public const string LiteralIntraductalPapilloma = "5244003";
+
+    /// <summary>
+    /// Literal for code: NONEIntraductalPapilloma
+    /// </summary>
+    public const string LiteralNONEIntraductalPapilloma = "http://snomed.info/sct#5244003";
 
     /// <summary>
     /// Literal for code: FollicularAdenocarcinoma
@@ -13348,9 +17678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFollicularAdenocarcinoma = "5257006";
 
     /// <summary>
+    /// Literal for code: NONEFollicularAdenocarcinoma
+    /// </summary>
+    public const string LiteralNONEFollicularAdenocarcinoma = "http://snomed.info/sct#5257006";
+
+    /// <summary>
     /// Literal for code: AcuteDilatation
     /// </summary>
     public const string LiteralAcuteDilatation = "5314004";
+
+    /// <summary>
+    /// Literal for code: NONEAcuteDilatation
+    /// </summary>
+    public const string LiteralNONEAcuteDilatation = "http://snomed.info/sct#5314004";
 
     /// <summary>
     /// Literal for code: BowenoidPapulosis
@@ -13358,9 +17698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBowenoidPapulosis = "5356000";
 
     /// <summary>
+    /// Literal for code: NONEBowenoidPapulosis
+    /// </summary>
+    public const string LiteralNONEBowenoidPapulosis = "http://snomed.info/sct#5356000";
+
+    /// <summary>
     /// Literal for code: DissectingHemorrhage
     /// </summary>
     public const string LiteralDissectingHemorrhage = "5399005";
+
+    /// <summary>
+    /// Literal for code: NONEDissectingHemorrhage
+    /// </summary>
+    public const string LiteralNONEDissectingHemorrhage = "http://snomed.info/sct#5399005";
 
     /// <summary>
     /// Literal for code: TraumaticEvisceratedStructure
@@ -13368,9 +17718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralTraumaticEvisceratedStructure = "5409002";
 
     /// <summary>
+    /// Literal for code: NONETraumaticEvisceratedStructure
+    /// </summary>
+    public const string LiteralNONETraumaticEvisceratedStructure = "http://snomed.info/sct#5409002";
+
+    /// <summary>
     /// Literal for code: FractureMultiple
     /// </summary>
     public const string LiteralFractureMultiple = "5468008";
+
+    /// <summary>
+    /// Literal for code: NONEFractureMultiple
+    /// </summary>
+    public const string LiteralNONEFractureMultiple = "http://snomed.info/sct#5468008";
 
     /// <summary>
     /// Literal for code: CanalizedThrombus
@@ -13378,9 +17738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCanalizedThrombus = "5480000";
 
     /// <summary>
+    /// Literal for code: NONECanalizedThrombus
+    /// </summary>
+    public const string LiteralNONECanalizedThrombus = "http://snomed.info/sct#5480000";
+
+    /// <summary>
     /// Literal for code: SchneiderianCarcinoma
     /// </summary>
     public const string LiteralSchneiderianCarcinoma = "5600009";
+
+    /// <summary>
+    /// Literal for code: NONESchneiderianCarcinoma
+    /// </summary>
+    public const string LiteralNONESchneiderianCarcinoma = "http://snomed.info/sct#5600009";
 
     /// <summary>
     /// Literal for code: GranularAtrophy
@@ -13388,9 +17758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGranularAtrophy = "5640003";
 
     /// <summary>
+    /// Literal for code: NONEGranularAtrophy
+    /// </summary>
+    public const string LiteralNONEGranularAtrophy = "http://snomed.info/sct#5640003";
+
+    /// <summary>
     /// Literal for code: AdenocarcinomaInTubulovillousAdenoma
     /// </summary>
     public const string LiteralAdenocarcinomaInTubulovillousAdenoma = "5658009";
+
+    /// <summary>
+    /// Literal for code: NONEAdenocarcinomaInTubulovillousAdenoma
+    /// </summary>
+    public const string LiteralNONEAdenocarcinomaInTubulovillousAdenoma = "http://snomed.info/sct#5658009";
 
     /// <summary>
     /// Literal for code: SquamousCellCarcinomaInSituWithQuestionableStromalInvasion
@@ -13398,9 +17778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSquamousCellCarcinomaInSituWithQuestionableStromalInvasion = "5688000";
 
     /// <summary>
+    /// Literal for code: NONESquamousCellCarcinomaInSituWithQuestionableStromalInvasion
+    /// </summary>
+    public const string LiteralNONESquamousCellCarcinomaInSituWithQuestionableStromalInvasion = "http://snomed.info/sct#5688000";
+
+    /// <summary>
     /// Literal for code: PressureGroove
     /// </summary>
     public const string LiteralPressureGroove = "5734001";
+
+    /// <summary>
+    /// Literal for code: NONEPressureGroove
+    /// </summary>
+    public const string LiteralNONEPressureGroove = "http://snomed.info/sct#5734001";
 
     /// <summary>
     /// Literal for code: Cholesteatoma
@@ -13408,9 +17798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCholesteatoma = "575006";
 
     /// <summary>
+    /// Literal for code: NONECholesteatoma
+    /// </summary>
+    public const string LiteralNONECholesteatoma = "http://snomed.info/sct#575006";
+
+    /// <summary>
     /// Literal for code: CysticHyperplasia
     /// </summary>
     public const string LiteralCysticHyperplasia = "5755004";
+
+    /// <summary>
+    /// Literal for code: NONECysticHyperplasia
+    /// </summary>
+    public const string LiteralNONECysticHyperplasia = "http://snomed.info/sct#5755004";
 
     /// <summary>
     /// Literal for code: DecompressionInjury
@@ -13418,9 +17818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDecompressionInjury = "5770003";
 
     /// <summary>
+    /// Literal for code: NONEDecompressionInjury
+    /// </summary>
+    public const string LiteralNONEDecompressionInjury = "http://snomed.info/sct#5770003";
+
+    /// <summary>
     /// Literal for code: CongenitalGrowthDisproportion
     /// </summary>
     public const string LiteralCongenitalGrowthDisproportion = "5804003";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalGrowthDisproportion
+    /// </summary>
+    public const string LiteralNONECongenitalGrowthDisproportion = "http://snomed.info/sct#5804003";
 
     /// <summary>
     /// Literal for code: BasaloidCarcinoma
@@ -13428,9 +17838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBasaloidCarcinoma = "5843004";
 
     /// <summary>
+    /// Literal for code: NONEBasaloidCarcinoma
+    /// </summary>
+    public const string LiteralNONEBasaloidCarcinoma = "http://snomed.info/sct#5843004";
+
+    /// <summary>
     /// Literal for code: GlialCellReaction
     /// </summary>
     public const string LiteralGlialCellReaction = "5849000";
+
+    /// <summary>
+    /// Literal for code: NONEGlialCellReaction
+    /// </summary>
+    public const string LiteralNONEGlialCellReaction = "http://snomed.info/sct#5849000";
 
     /// <summary>
     /// Literal for code: MucousMembraneEruption
@@ -13438,9 +17858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMucousMembraneEruption = "5862001";
 
     /// <summary>
+    /// Literal for code: NONEMucousMembraneEruption
+    /// </summary>
+    public const string LiteralNONEMucousMembraneEruption = "http://snomed.info/sct#5862001";
+
+    /// <summary>
     /// Literal for code: MultipleInternalInjuries
     /// </summary>
     public const string LiteralMultipleInternalInjuries = "5901005";
+
+    /// <summary>
+    /// Literal for code: NONEMultipleInternalInjuries
+    /// </summary>
+    public const string LiteralNONEMultipleInternalInjuries = "http://snomed.info/sct#5901005";
 
     /// <summary>
     /// Literal for code: GlandularStromalAsynchronyOfEndometrium
@@ -13448,9 +17878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGlandularStromalAsynchronyOfEndometrium = "5909007";
 
     /// <summary>
+    /// Literal for code: NONEGlandularStromalAsynchronyOfEndometrium
+    /// </summary>
+    public const string LiteralNONEGlandularStromalAsynchronyOfEndometrium = "http://snomed.info/sct#5909007";
+
+    /// <summary>
     /// Literal for code: SmallCellCarcinomaIntermediateCell
     /// </summary>
     public const string LiteralSmallCellCarcinomaIntermediateCell = "5958006";
+
+    /// <summary>
+    /// Literal for code: NONESmallCellCarcinomaIntermediateCell
+    /// </summary>
+    public const string LiteralNONESmallCellCarcinomaIntermediateCell = "http://snomed.info/sct#5958006";
 
     /// <summary>
     /// Literal for code: DepressedStructure
@@ -13458,9 +17898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDepressedStructure = "5960008";
 
     /// <summary>
+    /// Literal for code: NONEDepressedStructure
+    /// </summary>
+    public const string LiteralNONEDepressedStructure = "http://snomed.info/sct#5960008";
+
+    /// <summary>
     /// Literal for code: PressureCone
     /// </summary>
     public const string LiteralPressureCone = "5974001";
+
+    /// <summary>
+    /// Literal for code: NONEPressureCone
+    /// </summary>
+    public const string LiteralNONEPressureCone = "http://snomed.info/sct#5974001";
 
     /// <summary>
     /// Literal for code: FractureOpenLongitudinal
@@ -13468,9 +17918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFractureOpenLongitudinal = "5978003";
 
     /// <summary>
+    /// Literal for code: NONEFractureOpenLongitudinal
+    /// </summary>
+    public const string LiteralNONEFractureOpenLongitudinal = "http://snomed.info/sct#5978003";
+
+    /// <summary>
     /// Literal for code: SevereInflammatoryAtypia
     /// </summary>
     public const string LiteralSevereInflammatoryAtypia = "605004";
+
+    /// <summary>
+    /// Literal for code: NONESevereInflammatoryAtypia
+    /// </summary>
+    public const string LiteralNONESevereInflammatoryAtypia = "http://snomed.info/sct#605004";
 
     /// <summary>
     /// Literal for code: MucusRetention
@@ -13478,9 +17938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMucusRetention = "6078006";
 
     /// <summary>
+    /// Literal for code: NONEMucusRetention
+    /// </summary>
+    public const string LiteralNONEMucusRetention = "http://snomed.info/sct#6078006";
+
+    /// <summary>
     /// Literal for code: Deformity
     /// </summary>
     public const string LiteralDeformity = "6081001";
+
+    /// <summary>
+    /// Literal for code: NONEDeformity
+    /// </summary>
+    public const string LiteralNONEDeformity = "http://snomed.info/sct#6081001";
 
     /// <summary>
     /// Literal for code: OncocyticMetaplasia
@@ -13488,9 +17958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOncocyticMetaplasia = "6120000";
 
     /// <summary>
+    /// Literal for code: NONEOncocyticMetaplasia
+    /// </summary>
+    public const string LiteralNONEOncocyticMetaplasia = "http://snomed.info/sct#6120000";
+
+    /// <summary>
     /// Literal for code: AmphophilicStainReaction
     /// </summary>
     public const string LiteralAmphophilicStainReaction = "6151007";
+
+    /// <summary>
+    /// Literal for code: NONEAmphophilicStainReaction
+    /// </summary>
+    public const string LiteralNONEAmphophilicStainReaction = "http://snomed.info/sct#6151007";
 
     /// <summary>
     /// Literal for code: NeoplasmMalignantUncertainWhetherPrimaryOrMetastatic
@@ -13498,9 +17978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNeoplasmMalignantUncertainWhetherPrimaryOrMetastatic = "6219000";
 
     /// <summary>
+    /// Literal for code: NONENeoplasmMalignantUncertainWhetherPrimaryOrMetastatic
+    /// </summary>
+    public const string LiteralNONENeoplasmMalignantUncertainWhetherPrimaryOrMetastatic = "http://snomed.info/sct#6219000";
+
+    /// <summary>
     /// Literal for code: MildKoilocytoticAtypia
     /// </summary>
     public const string LiteralMildKoilocytoticAtypia = "6223008";
+
+    /// <summary>
+    /// Literal for code: NONEMildKoilocytoticAtypia
+    /// </summary>
+    public const string LiteralNONEMildKoilocytoticAtypia = "http://snomed.info/sct#6223008";
 
     /// <summary>
     /// Literal for code: Fibromyxosarcoma
@@ -13508,9 +17998,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralFibromyxosarcoma = "6250003";
 
     /// <summary>
+    /// Literal for code: NONEFibromyxosarcoma
+    /// </summary>
+    public const string LiteralNONEFibromyxosarcoma = "http://snomed.info/sct#6250003";
+
+    /// <summary>
     /// Literal for code: GranulomatousInflammation
     /// </summary>
     public const string LiteralGranulomatousInflammation = "6266001";
+
+    /// <summary>
+    /// Literal for code: NONEGranulomatousInflammation
+    /// </summary>
+    public const string LiteralNONEGranulomatousInflammation = "http://snomed.info/sct#6266001";
 
     /// <summary>
     /// Literal for code: Collagenolysis
@@ -13518,9 +18018,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCollagenolysis = "6320008";
 
     /// <summary>
+    /// Literal for code: NONECollagenolysis
+    /// </summary>
+    public const string LiteralNONECollagenolysis = "http://snomed.info/sct#6320008";
+
+    /// <summary>
     /// Literal for code: MultipleAdenomatousPolyps
     /// </summary>
     public const string LiteralMultipleAdenomatousPolyps = "6379007";
+
+    /// <summary>
+    /// Literal for code: NONEMultipleAdenomatousPolyps
+    /// </summary>
+    public const string LiteralNONEMultipleAdenomatousPolyps = "http://snomed.info/sct#6379007";
 
     /// <summary>
     /// Literal for code: AlphaHeavyChainDisease
@@ -13528,9 +18038,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAlphaHeavyChainDisease = "6381009";
 
     /// <summary>
+    /// Literal for code: NONEAlphaHeavyChainDisease
+    /// </summary>
+    public const string LiteralNONEAlphaHeavyChainDisease = "http://snomed.info/sct#6381009";
+
+    /// <summary>
     /// Literal for code: MembranousInflammation
     /// </summary>
     public const string LiteralMembranousInflammation = "6406002";
+
+    /// <summary>
+    /// Literal for code: NONEMembranousInflammation
+    /// </summary>
+    public const string LiteralNONEMembranousInflammation = "http://snomed.info/sct#6406002";
 
     /// <summary>
     /// Literal for code: Dentinoma
@@ -13538,9 +18058,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDentinoma = "6437002";
 
     /// <summary>
+    /// Literal for code: NONEDentinoma
+    /// </summary>
+    public const string LiteralNONEDentinoma = "http://snomed.info/sct#6437002";
+
+    /// <summary>
     /// Literal for code: KlatskinQuoteSTumor
     /// </summary>
     public const string LiteralKlatskinQuoteSTumor = "6492006";
+
+    /// <summary>
+    /// Literal for code: NONEKlatskinQuoteSTumor
+    /// </summary>
+    public const string LiteralNONEKlatskinQuoteSTumor = "http://snomed.info/sct#6492006";
 
     /// <summary>
     /// Literal for code: Necrosis
@@ -13548,9 +18078,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNecrosis = "6574001";
 
     /// <summary>
+    /// Literal for code: NONENecrosis
+    /// </summary>
+    public const string LiteralNONENecrosis = "http://snomed.info/sct#6574001";
+
+    /// <summary>
     /// Literal for code: SebumRetention
     /// </summary>
     public const string LiteralSebumRetention = "6579006";
+
+    /// <summary>
+    /// Literal for code: NONESebumRetention
+    /// </summary>
+    public const string LiteralNONESebumRetention = "http://snomed.info/sct#6579006";
 
     /// <summary>
     /// Literal for code: IntrinsicObstruction
@@ -13558,9 +18098,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIntrinsicObstruction = "6582001";
 
     /// <summary>
+    /// Literal for code: NONEIntrinsicObstruction
+    /// </summary>
+    public const string LiteralNONEIntrinsicObstruction = "http://snomed.info/sct#6582001";
+
+    /// <summary>
     /// Literal for code: Spongiosis
     /// </summary>
     public const string LiteralSpongiosis = "6609001";
+
+    /// <summary>
+    /// Literal for code: NONESpongiosis
+    /// </summary>
+    public const string LiteralNONESpongiosis = "http://snomed.info/sct#6609001";
 
     /// <summary>
     /// Literal for code: MetatypicalCarcinoma
@@ -13568,9 +18118,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMetatypicalCarcinoma = "6641007";
 
     /// <summary>
+    /// Literal for code: NONEMetatypicalCarcinoma
+    /// </summary>
+    public const string LiteralNONEMetatypicalCarcinoma = "http://snomed.info/sct#6641007";
+
+    /// <summary>
     /// Literal for code: AtypicalIntraductalHyperplasia
     /// </summary>
     public const string LiteralAtypicalIntraductalHyperplasia = "6660000";
+
+    /// <summary>
+    /// Literal for code: NONEAtypicalIntraductalHyperplasia
+    /// </summary>
+    public const string LiteralNONEAtypicalIntraductalHyperplasia = "http://snomed.info/sct#6660000";
 
     /// <summary>
     /// Literal for code: HemoglobinCast
@@ -13578,9 +18138,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHemoglobinCast = "6780007";
 
     /// <summary>
+    /// Literal for code: NONEHemoglobinCast
+    /// </summary>
+    public const string LiteralNONEHemoglobinCast = "http://snomed.info/sct#6780007";
+
+    /// <summary>
     /// Literal for code: DesmoplasticFibroma
     /// </summary>
     public const string LiteralDesmoplasticFibroma = "6842002";
+
+    /// <summary>
+    /// Literal for code: NONEDesmoplasticFibroma
+    /// </summary>
+    public const string LiteralNONEDesmoplasticFibroma = "http://snomed.info/sct#6842002";
 
     /// <summary>
     /// Literal for code: Macronucleus
@@ -13588,9 +18158,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMacronucleus = "6855001";
 
     /// <summary>
+    /// Literal for code: NONEMacronucleus
+    /// </summary>
+    public const string LiteralNONEMacronucleus = "http://snomed.info/sct#6855001";
+
+    /// <summary>
     /// Literal for code: Defect
     /// </summary>
     public const string LiteralDefect = "6920004";
+
+    /// <summary>
+    /// Literal for code: NONEDefect
+    /// </summary>
+    public const string LiteralNONEDefect = "http://snomed.info/sct#6920004";
 
     /// <summary>
     /// Literal for code: ChronicHemorrhage
@@ -13598,9 +18178,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralChronicHemorrhage = "7003006";
 
     /// <summary>
+    /// Literal for code: NONEChronicHemorrhage
+    /// </summary>
+    public const string LiteralNONEChronicHemorrhage = "http://snomed.info/sct#7003006";
+
+    /// <summary>
     /// Literal for code: Carcinomatosis
     /// </summary>
     public const string LiteralCarcinomatosis = "7010000";
+
+    /// <summary>
+    /// Literal for code: NONECarcinomatosis
+    /// </summary>
+    public const string LiteralNONECarcinomatosis = "http://snomed.info/sct#7010000";
 
     /// <summary>
     /// Literal for code: LupusErythematosusCell
@@ -13608,9 +18198,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLupusErythematosusCell = "7055007";
 
     /// <summary>
+    /// Literal for code: NONELupusErythematosusCell
+    /// </summary>
+    public const string LiteralNONELupusErythematosusCell = "http://snomed.info/sct#7055007";
+
+    /// <summary>
     /// Literal for code: HemosiderinPigmentation
     /// </summary>
     public const string LiteralHemosiderinPigmentation = "7078001";
+
+    /// <summary>
+    /// Literal for code: NONEHemosiderinPigmentation
+    /// </summary>
+    public const string LiteralNONEHemosiderinPigmentation = "http://snomed.info/sct#7078001";
 
     /// <summary>
     /// Literal for code: DilatedPoreOfWiner
@@ -13618,9 +18218,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDilatedPoreOfWiner = "7094008";
 
     /// <summary>
+    /// Literal for code: NONEDilatedPoreOfWiner
+    /// </summary>
+    public const string LiteralNONEDilatedPoreOfWiner = "http://snomed.info/sct#7094008";
+
+    /// <summary>
     /// Literal for code: DecidualCast
     /// </summary>
     public const string LiteralDecidualCast = "7244004";
+
+    /// <summary>
+    /// Literal for code: NONEDecidualCast
+    /// </summary>
+    public const string LiteralNONEDecidualCast = "http://snomed.info/sct#7244004";
 
     /// <summary>
     /// Literal for code: LymphoepithelialCarcinoma
@@ -13628,9 +18238,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLymphoepithelialCarcinoma = "7300000";
 
     /// <summary>
+    /// Literal for code: NONELymphoepithelialCarcinoma
+    /// </summary>
+    public const string LiteralNONELymphoepithelialCarcinoma = "http://snomed.info/sct#7300000";
+
+    /// <summary>
     /// Literal for code: OpenDislocationIncomplete
     /// </summary>
     public const string LiteralOpenDislocationIncomplete = "7313006";
+
+    /// <summary>
+    /// Literal for code: NONEOpenDislocationIncomplete
+    /// </summary>
+    public const string LiteralNONEOpenDislocationIncomplete = "http://snomed.info/sct#7313006";
 
     /// <summary>
     /// Literal for code: InflammatoryAtypia
@@ -13638,9 +18258,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInflammatoryAtypia = "7372009";
 
     /// <summary>
+    /// Literal for code: NONEInflammatoryAtypia
+    /// </summary>
+    public const string LiteralNONEInflammatoryAtypia = "http://snomed.info/sct#7372009";
+
+    /// <summary>
     /// Literal for code: BallValveObstruction
     /// </summary>
     public const string LiteralBallValveObstruction = "738003";
+
+    /// <summary>
+    /// Literal for code: NONEBallValveObstruction
+    /// </summary>
+    public const string LiteralNONEBallValveObstruction = "http://snomed.info/sct#738003";
 
     /// <summary>
     /// Literal for code: Glomangioma
@@ -13648,9 +18278,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralGlomangioma = "7429002";
 
     /// <summary>
+    /// Literal for code: NONEGlomangioma
+    /// </summary>
+    public const string LiteralNONEGlomangioma = "http://snomed.info/sct#7429002";
+
+    /// <summary>
     /// Literal for code: CalcifiedHematoma
     /// </summary>
     public const string LiteralCalcifiedHematoma = "7643002";
+
+    /// <summary>
+    /// Literal for code: NONECalcifiedHematoma
+    /// </summary>
+    public const string LiteralNONECalcifiedHematoma = "http://snomed.info/sct#7643002";
 
     /// <summary>
     /// Literal for code: CongestiveHypertrophy
@@ -13658,9 +18298,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongestiveHypertrophy = "7744000";
 
     /// <summary>
+    /// Literal for code: NONECongestiveHypertrophy
+    /// </summary>
+    public const string LiteralNONECongestiveHypertrophy = "http://snomed.info/sct#7744000";
+
+    /// <summary>
     /// Literal for code: LipogenicPigmentation
     /// </summary>
     public const string LiteralLipogenicPigmentation = "7796002";
+
+    /// <summary>
+    /// Literal for code: NONELipogenicPigmentation
+    /// </summary>
+    public const string LiteralNONELipogenicPigmentation = "http://snomed.info/sct#7796002";
 
     /// <summary>
     /// Literal for code: XanthineCalculus
@@ -13668,9 +18318,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralXanthineCalculus = "7828002";
 
     /// <summary>
+    /// Literal for code: NONEXanthineCalculus
+    /// </summary>
+    public const string LiteralNONEXanthineCalculus = "http://snomed.info/sct#7828002";
+
+    /// <summary>
     /// Literal for code: MacrocyticNormochromicErythrocyte
     /// </summary>
     public const string LiteralMacrocyticNormochromicErythrocyte = "7841003";
+
+    /// <summary>
+    /// Literal for code: NONEMacrocyticNormochromicErythrocyte
+    /// </summary>
+    public const string LiteralNONEMacrocyticNormochromicErythrocyte = "http://snomed.info/sct#7841003";
 
     /// <summary>
     /// Literal for code: KaryotypeMorphology
@@ -13678,9 +18338,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralKaryotypeMorphology = "7894007";
 
     /// <summary>
+    /// Literal for code: NONEKaryotypeMorphology
+    /// </summary>
+    public const string LiteralNONEKaryotypeMorphology = "http://snomed.info/sct#7894007";
+
+    /// <summary>
     /// Literal for code: LinearOblique
     /// </summary>
     public const string LiteralLinearOblique = "7905002";
+
+    /// <summary>
+    /// Literal for code: NONELinearOblique
+    /// </summary>
+    public const string LiteralNONELinearOblique = "http://snomed.info/sct#7905002";
 
     /// <summary>
     /// Literal for code: OpenDislocation
@@ -13688,9 +18358,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenDislocation = "7906001";
 
     /// <summary>
+    /// Literal for code: NONEOpenDislocation
+    /// </summary>
+    public const string LiteralNONEOpenDislocation = "http://snomed.info/sct#7906001";
+
+    /// <summary>
     /// Literal for code: LocalizedEdema
     /// </summary>
     public const string LiteralLocalizedEdema = "7939003";
+
+    /// <summary>
+    /// Literal for code: NONELocalizedEdema
+    /// </summary>
+    public const string LiteralNONELocalizedEdema = "http://snomed.info/sct#7939003";
 
     /// <summary>
     /// Literal for code: IncompleteTransposition
@@ -13698,9 +18378,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralIncompleteTransposition = "8005002";
 
     /// <summary>
+    /// Literal for code: NONEIncompleteTransposition
+    /// </summary>
+    public const string LiteralNONEIncompleteTransposition = "http://snomed.info/sct#8005002";
+
+    /// <summary>
     /// Literal for code: Paraganglioma
     /// </summary>
     public const string LiteralParaganglioma = "803009";
+
+    /// <summary>
+    /// Literal for code: NONEParaganglioma
+    /// </summary>
+    public const string LiteralNONEParaganglioma = "http://snomed.info/sct#803009";
 
     /// <summary>
     /// Literal for code: SecretoryAlterationOfVagina
@@ -13708,9 +18398,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSecretoryAlterationOfVagina = "8070006";
 
     /// <summary>
+    /// Literal for code: NONESecretoryAlterationOfVagina
+    /// </summary>
+    public const string LiteralNONESecretoryAlterationOfVagina = "http://snomed.info/sct#8070006";
+
+    /// <summary>
     /// Literal for code: AlveolarAdenoma
     /// </summary>
     public const string LiteralAlveolarAdenoma = "8097004";
+
+    /// <summary>
+    /// Literal for code: NONEAlveolarAdenoma
+    /// </summary>
+    public const string LiteralNONEAlveolarAdenoma = "http://snomed.info/sct#8097004";
 
     /// <summary>
     /// Literal for code: SpindleCellNevus
@@ -13718,9 +18418,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSpindleCellNevus = "810003";
 
     /// <summary>
+    /// Literal for code: NONESpindleCellNevus
+    /// </summary>
+    public const string LiteralNONESpindleCellNevus = "http://snomed.info/sct#810003";
+
+    /// <summary>
     /// Literal for code: AcentricChromosome
     /// </summary>
     public const string LiteralAcentricChromosome = "8120005";
+
+    /// <summary>
+    /// Literal for code: NONEAcentricChromosome
+    /// </summary>
+    public const string LiteralNONEAcentricChromosome = "http://snomed.info/sct#8120005";
 
     /// <summary>
     /// Literal for code: DepositionOfOxalateCrystals
@@ -13728,9 +18438,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDepositionOfOxalateCrystals = "8129006";
 
     /// <summary>
+    /// Literal for code: NONEDepositionOfOxalateCrystals
+    /// </summary>
+    public const string LiteralNONEDepositionOfOxalateCrystals = "http://snomed.info/sct#8129006";
+
+    /// <summary>
     /// Literal for code: MalignantMixedSalivaryGlandTumor
     /// </summary>
     public const string LiteralMalignantMixedSalivaryGlandTumor = "8145008";
+
+    /// <summary>
+    /// Literal for code: NONEMalignantMixedSalivaryGlandTumor
+    /// </summary>
+    public const string LiteralNONEMalignantMixedSalivaryGlandTumor = "http://snomed.info/sct#8145008";
 
     /// <summary>
     /// Literal for code: CorporaAmylacea
@@ -13738,9 +18458,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCorporaAmylacea = "8210009";
 
     /// <summary>
+    /// Literal for code: NONECorporaAmylacea
+    /// </summary>
+    public const string LiteralNONECorporaAmylacea = "http://snomed.info/sct#8210009";
+
+    /// <summary>
     /// Literal for code: Hemolymphangioma
     /// </summary>
     public const string LiteralHemolymphangioma = "8241005";
+
+    /// <summary>
+    /// Literal for code: NONEHemolymphangioma
+    /// </summary>
+    public const string LiteralNONEHemolymphangioma = "http://snomed.info/sct#8241005";
 
     /// <summary>
     /// Literal for code: BalloonCellNevus
@@ -13748,9 +18478,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBalloonCellNevus = "8276007";
 
     /// <summary>
+    /// Literal for code: NONEBalloonCellNevus
+    /// </summary>
+    public const string LiteralNONEBalloonCellNevus = "http://snomed.info/sct#8276007";
+
+    /// <summary>
     /// Literal for code: ModerateTransitionalCellAtypia
     /// </summary>
     public const string LiteralModerateTransitionalCellAtypia = "8309002";
+
+    /// <summary>
+    /// Literal for code: NONEModerateTransitionalCellAtypia
+    /// </summary>
+    public const string LiteralNONEModerateTransitionalCellAtypia = "http://snomed.info/sct#8309002";
 
     /// <summary>
     /// Literal for code: PeripheralTCellLymphomaAILDAngioimmunoblasticLymphadenopathyWithDysproteinemia
@@ -13758,9 +18498,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPeripheralTCellLymphomaAILDAngioimmunoblasticLymphadenopathyWithDysproteinemia = "835009";
 
     /// <summary>
+    /// Literal for code: NONEPeripheralTCellLymphomaAILDAngioimmunoblasticLymphadenopathyWithDysproteinemia
+    /// </summary>
+    public const string LiteralNONEPeripheralTCellLymphomaAILDAngioimmunoblasticLymphadenopathyWithDysproteinemia = "http://snomed.info/sct#835009";
+
+    /// <summary>
     /// Literal for code: MixedSalivaryGlandTumor
     /// </summary>
     public const string LiteralMixedSalivaryGlandTumor = "8360001";
+
+    /// <summary>
+    /// Literal for code: NONEMixedSalivaryGlandTumor
+    /// </summary>
+    public const string LiteralNONEMixedSalivaryGlandTumor = "http://snomed.info/sct#8360001";
 
     /// <summary>
     /// Literal for code: ActinicKeratosis
@@ -13768,9 +18518,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralActinicKeratosis = "856006";
 
     /// <summary>
+    /// Literal for code: NONEActinicKeratosis
+    /// </summary>
+    public const string LiteralNONEActinicKeratosis = "http://snomed.info/sct#856006";
+
+    /// <summary>
     /// Literal for code: AutosomalChromosomeMosaicism
     /// </summary>
     public const string LiteralAutosomalChromosomeMosaicism = "8566008";
+
+    /// <summary>
+    /// Literal for code: NONEAutosomalChromosomeMosaicism
+    /// </summary>
+    public const string LiteralNONEAutosomalChromosomeMosaicism = "http://snomed.info/sct#8566008";
 
     /// <summary>
     /// Literal for code: AcuteHemorrhage
@@ -13778,9 +18538,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralAcuteHemorrhage = "8573003";
 
     /// <summary>
+    /// Literal for code: NONEAcuteHemorrhage
+    /// </summary>
+    public const string LiteralNONEAcuteHemorrhage = "http://snomed.info/sct#8573003";
+
+    /// <summary>
     /// Literal for code: Fibromyxoma
     /// </summary>
     public const string LiteralFibromyxoma = "8664001";
+
+    /// <summary>
+    /// Literal for code: NONEFibromyxoma
+    /// </summary>
+    public const string LiteralNONEFibromyxoma = "http://snomed.info/sct#8664001";
 
     /// <summary>
     /// Literal for code: SegmentalDemyelination
@@ -13788,9 +18558,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSegmentalDemyelination = "8723003";
 
     /// <summary>
+    /// Literal for code: NONESegmentalDemyelination
+    /// </summary>
+    public const string LiteralNONESegmentalDemyelination = "http://snomed.info/sct#8723003";
+
+    /// <summary>
     /// Literal for code: ChoriocarcinomaCombinedWithGermCellElements
     /// </summary>
     public const string LiteralChoriocarcinomaCombinedWithGermCellElements = "8734000";
+
+    /// <summary>
+    /// Literal for code: NONEChoriocarcinomaCombinedWithGermCellElements
+    /// </summary>
+    public const string LiteralNONEChoriocarcinomaCombinedWithGermCellElements = "http://snomed.info/sct#8734000";
 
     /// <summary>
     /// Literal for code: PassiveCongestion
@@ -13798,9 +18578,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPassiveCongestion = "8804002";
 
     /// <summary>
+    /// Literal for code: NONEPassiveCongestion
+    /// </summary>
+    public const string LiteralNONEPassiveCongestion = "http://snomed.info/sct#8804002";
+
+    /// <summary>
     /// Literal for code: CongenitalCysticDilatationWithAccumulationOfFluid
     /// </summary>
     public const string LiteralCongenitalCysticDilatationWithAccumulationOfFluid = "8819001";
+
+    /// <summary>
+    /// Literal for code: NONECongenitalCysticDilatationWithAccumulationOfFluid
+    /// </summary>
+    public const string LiteralNONECongenitalCysticDilatationWithAccumulationOfFluid = "http://snomed.info/sct#8819001";
 
     /// <summary>
     /// Literal for code: OpenDislocationComplete
@@ -13808,9 +18598,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOpenDislocationComplete = "8833001";
 
     /// <summary>
+    /// Literal for code: NONEOpenDislocationComplete
+    /// </summary>
+    public const string LiteralNONEOpenDislocationComplete = "http://snomed.info/sct#8833001";
+
+    /// <summary>
     /// Literal for code: Mosaicism
     /// </summary>
     public const string LiteralMosaicism = "8855009";
+
+    /// <summary>
+    /// Literal for code: NONEMosaicism
+    /// </summary>
+    public const string LiteralNONEMosaicism = "http://snomed.info/sct#8855009";
 
     /// <summary>
     /// Literal for code: PapillarySyringadenoma
@@ -13818,9 +18618,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralPapillarySyringadenoma = "8934006";
 
     /// <summary>
+    /// Literal for code: NONEPapillarySyringadenoma
+    /// </summary>
+    public const string LiteralNONEPapillarySyringadenoma = "http://snomed.info/sct#8934006";
+
+    /// <summary>
     /// Literal for code: ProliferativeCyclicAlterationOfBreast
     /// </summary>
     public const string LiteralProliferativeCyclicAlterationOfBreast = "8978002";
+
+    /// <summary>
+    /// Literal for code: NONEProliferativeCyclicAlterationOfBreast
+    /// </summary>
+    public const string LiteralNONEProliferativeCyclicAlterationOfBreast = "http://snomed.info/sct#8978002";
 
     /// <summary>
     /// Literal for code: MucinProducingAdenocarcinoma
@@ -13828,9 +18638,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMucinProducingAdenocarcinoma = "900006";
 
     /// <summary>
+    /// Literal for code: NONEMucinProducingAdenocarcinoma
+    /// </summary>
+    public const string LiteralNONEMucinProducingAdenocarcinoma = "http://snomed.info/sct#900006";
+
+    /// <summary>
     /// Literal for code: ChondroblastomaMorphology
     /// </summary>
     public const string LiteralChondroblastomaMorphology = "9001003";
+
+    /// <summary>
+    /// Literal for code: NONEChondroblastomaMorphology
+    /// </summary>
+    public const string LiteralNONEChondroblastomaMorphology = "http://snomed.info/sct#9001003";
 
     /// <summary>
     /// Literal for code: LobarAtrophy
@@ -13838,9 +18658,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralLobarAtrophy = "9088006";
 
     /// <summary>
+    /// Literal for code: NONELobarAtrophy
+    /// </summary>
+    public const string LiteralNONELobarAtrophy = "http://snomed.info/sct#9088006";
+
+    /// <summary>
     /// Literal for code: MedullaryAdenoma
     /// </summary>
     public const string LiteralMedullaryAdenoma = "9098000";
+
+    /// <summary>
+    /// Literal for code: NONEMedullaryAdenoma
+    /// </summary>
+    public const string LiteralNONEMedullaryAdenoma = "http://snomed.info/sct#9098000";
 
     /// <summary>
     /// Literal for code: MildColumnarCellAtypia
@@ -13848,9 +18678,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMildColumnarCellAtypia = "9138001";
 
     /// <summary>
+    /// Literal for code: NONEMildColumnarCellAtypia
+    /// </summary>
+    public const string LiteralNONEMildColumnarCellAtypia = "http://snomed.info/sct#9138001";
+
+    /// <summary>
     /// Literal for code: MalignantMelanomaInJunctionalNevus
     /// </summary>
     public const string LiteralMalignantMelanomaInJunctionalNevus = "915007";
+
+    /// <summary>
+    /// Literal for code: NONEMalignantMelanomaInJunctionalNevus
+    /// </summary>
+    public const string LiteralNONEMalignantMelanomaInJunctionalNevus = "http://snomed.info/sct#915007";
 
     /// <summary>
     /// Literal for code: SquamousOdontogenicTumor
@@ -13858,9 +18698,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSquamousOdontogenicTumor = "9155002";
 
     /// <summary>
+    /// Literal for code: NONESquamousOdontogenicTumor
+    /// </summary>
+    public const string LiteralNONESquamousOdontogenicTumor = "http://snomed.info/sct#9155002";
+
+    /// <summary>
     /// Literal for code: Leukokeratosis
     /// </summary>
     public const string LiteralLeukokeratosis = "9187004";
+
+    /// <summary>
+    /// Literal for code: NONELeukokeratosis
+    /// </summary>
+    public const string LiteralNONELeukokeratosis = "http://snomed.info/sct#9187004";
 
     /// <summary>
     /// Literal for code: StaghornCalculus
@@ -13868,9 +18718,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStaghornCalculus = "9196004";
 
     /// <summary>
+    /// Literal for code: NONEStaghornCalculus
+    /// </summary>
+    public const string LiteralNONEStaghornCalculus = "http://snomed.info/sct#9196004";
+
+    /// <summary>
     /// Literal for code: EccentricHypertrophy
     /// </summary>
     public const string LiteralEccentricHypertrophy = "9235006";
+
+    /// <summary>
+    /// Literal for code: NONEEccentricHypertrophy
+    /// </summary>
+    public const string LiteralNONEEccentricHypertrophy = "http://snomed.info/sct#9235006";
 
     /// <summary>
     /// Literal for code: NiemannPickCell
@@ -13878,9 +18738,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralNiemannPickCell = "9240003";
 
     /// <summary>
+    /// Literal for code: NONENiemannPickCell
+    /// </summary>
+    public const string LiteralNONENiemannPickCell = "http://snomed.info/sct#9240003";
+
+    /// <summary>
     /// Literal for code: JuxtacorticalChondroma
     /// </summary>
     public const string LiteralJuxtacorticalChondroma = "9266000";
+
+    /// <summary>
+    /// Literal for code: NONEJuxtacorticalChondroma
+    /// </summary>
+    public const string LiteralNONEJuxtacorticalChondroma = "http://snomed.info/sct#9266000";
 
     /// <summary>
     /// Literal for code: ColloidCyst
@@ -13888,9 +18758,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralColloidCyst = "9287005";
 
     /// <summary>
+    /// Literal for code: NONEColloidCyst
+    /// </summary>
+    public const string LiteralNONEColloidCyst = "http://snomed.info/sct#9287005";
+
+    /// <summary>
     /// Literal for code: SpermatocyticSeminoma
     /// </summary>
     public const string LiteralSpermatocyticSeminoma = "9294008";
+
+    /// <summary>
+    /// Literal for code: NONESpermatocyticSeminoma
+    /// </summary>
+    public const string LiteralNONESpermatocyticSeminoma = "http://snomed.info/sct#9294008";
 
     /// <summary>
     /// Literal for code: InactiveEndometrium
@@ -13898,9 +18778,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralInactiveEndometrium = "9324003";
 
     /// <summary>
+    /// Literal for code: NONEInactiveEndometrium
+    /// </summary>
+    public const string LiteralNONEInactiveEndometrium = "http://snomed.info/sct#9324003";
+
+    /// <summary>
     /// Literal for code: Sarcomatosis
     /// </summary>
     public const string LiteralSarcomatosis = "9395006";
+
+    /// <summary>
+    /// Literal for code: NONESarcomatosis
+    /// </summary>
+    public const string LiteralNONESarcomatosis = "http://snomed.info/sct#9395006";
 
     /// <summary>
     /// Literal for code: SenileHyperplasia
@@ -13908,9 +18798,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralSenileHyperplasia = "9435009";
 
     /// <summary>
+    /// Literal for code: NONESenileHyperplasia
+    /// </summary>
+    public const string LiteralNONESenileHyperplasia = "http://snomed.info/sct#9435009";
+
+    /// <summary>
     /// Literal for code: BasophilAdenoma
     /// </summary>
     public const string LiteralBasophilAdenoma = "9436005";
+
+    /// <summary>
+    /// Literal for code: NONEBasophilAdenoma
+    /// </summary>
+    public const string LiteralNONEBasophilAdenoma = "http://snomed.info/sct#9436005";
 
     /// <summary>
     /// Literal for code: MultiplePolyps
@@ -13918,9 +18818,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMultiplePolyps = "9499001";
 
     /// <summary>
+    /// Literal for code: NONEMultiplePolyps
+    /// </summary>
+    public const string LiteralNONEMultiplePolyps = "http://snomed.info/sct#9499001";
+
+    /// <summary>
     /// Literal for code: Shift
     /// </summary>
     public const string LiteralShift = "9546005";
+
+    /// <summary>
+    /// Literal for code: NONEShift
+    /// </summary>
+    public const string LiteralNONEShift = "http://snomed.info/sct#9546005";
 
     /// <summary>
     /// Literal for code: BronchogenicCyst
@@ -13928,9 +18838,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralBronchogenicCyst = "9550003";
 
     /// <summary>
+    /// Literal for code: NONEBronchogenicCyst
+    /// </summary>
+    public const string LiteralNONEBronchogenicCyst = "http://snomed.info/sct#9550003";
+
+    /// <summary>
     /// Literal for code: EpithelialMyoepithelialCarcinoma
     /// </summary>
     public const string LiteralEpithelialMyoepithelialCarcinoma = "9618003";
+
+    /// <summary>
+    /// Literal for code: NONEEpithelialMyoepithelialCarcinoma
+    /// </summary>
+    public const string LiteralNONEEpithelialMyoepithelialCarcinoma = "http://snomed.info/sct#9618003";
 
     /// <summary>
     /// Literal for code: Consolidation
@@ -13938,9 +18858,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralConsolidation = "9656002";
 
     /// <summary>
+    /// Literal for code: NONEConsolidation
+    /// </summary>
+    public const string LiteralNONEConsolidation = "http://snomed.info/sct#9656002";
+
+    /// <summary>
     /// Literal for code: Elastofibroma
     /// </summary>
     public const string LiteralElastofibroma = "9671003";
+
+    /// <summary>
+    /// Literal for code: NONEElastofibroma
+    /// </summary>
+    public const string LiteralNONEElastofibroma = "http://snomed.info/sct#9671003";
 
     /// <summary>
     /// Literal for code: DepositionOfCarbon
@@ -13948,9 +18878,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralDepositionOfCarbon = "9688005";
 
     /// <summary>
+    /// Literal for code: NONEDepositionOfCarbon
+    /// </summary>
+    public const string LiteralNONEDepositionOfCarbon = "http://snomed.info/sct#9688005";
+
+    /// <summary>
     /// Literal for code: BlueEdema
     /// </summary>
     public const string LiteralBlueEdema = "9729005";
+
+    /// <summary>
+    /// Literal for code: NONEBlueEdema
+    /// </summary>
+    public const string LiteralNONEBlueEdema = "http://snomed.info/sct#9729005";
 
     /// <summary>
     /// Literal for code: WireLoopLesion
@@ -13958,9 +18898,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWireLoopLesion = "9751002";
 
     /// <summary>
+    /// Literal for code: NONEWireLoopLesion
+    /// </summary>
+    public const string LiteralNONEWireLoopLesion = "http://snomed.info/sct#9751002";
+
+    /// <summary>
     /// Literal for code: Hyperchromatism
     /// </summary>
     public const string LiteralHyperchromatism = "9767008";
+
+    /// <summary>
+    /// Literal for code: NONEHyperchromatism
+    /// </summary>
+    public const string LiteralNONEHyperchromatism = "http://snomed.info/sct#9767008";
 
     /// <summary>
     /// Literal for code: CongenitalLateralDeviation
@@ -13968,9 +18918,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalLateralDeviation = "9795008";
 
     /// <summary>
+    /// Literal for code: NONECongenitalLateralDeviation
+    /// </summary>
+    public const string LiteralNONECongenitalLateralDeviation = "http://snomed.info/sct#9795008";
+
+    /// <summary>
     /// Literal for code: SpindleCellSarcoma
     /// </summary>
     public const string LiteralSpindleCellSarcoma = "9801004";
+
+    /// <summary>
+    /// Literal for code: NONESpindleCellSarcoma
+    /// </summary>
+    public const string LiteralNONESpindleCellSarcoma = "http://snomed.info/sct#9801004";
 
     /// <summary>
     /// Literal for code: RiceBody
@@ -13978,9 +18938,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRiceBody = "9805008";
 
     /// <summary>
+    /// Literal for code: NONERiceBody
+    /// </summary>
+    public const string LiteralNONERiceBody = "http://snomed.info/sct#9805008";
+
+    /// <summary>
     /// Literal for code: Leukedema
     /// </summary>
     public const string LiteralLeukedema = "9816001";
+
+    /// <summary>
+    /// Literal for code: NONELeukedema
+    /// </summary>
+    public const string LiteralNONELeukedema = "http://snomed.info/sct#9816001";
 
     /// <summary>
     /// Literal for code: MyxoidDegeneration
@@ -13988,9 +18958,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralMyxoidDegeneration = "9831005";
 
     /// <summary>
+    /// Literal for code: NONEMyxoidDegeneration
+    /// </summary>
+    public const string LiteralNONEMyxoidDegeneration = "http://snomed.info/sct#9831005";
+
+    /// <summary>
     /// Literal for code: PsammomatousSchwannoma
     /// </summary>
     public const string LiteralPsammomatousSchwannoma = "985004";
+
+    /// <summary>
+    /// Literal for code: NONEPsammomatousSchwannoma
+    /// </summary>
+    public const string LiteralNONEPsammomatousSchwannoma = "http://snomed.info/sct#985004";
 
     /// <summary>
     /// Literal for code: WetGangrene
@@ -13998,9 +18978,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralWetGangrene = "988002";
 
     /// <summary>
+    /// Literal for code: NONEWetGangrene
+    /// </summary>
+    public const string LiteralNONEWetGangrene = "http://snomed.info/sct#988002";
+
+    /// <summary>
     /// Literal for code: MalignantParaganglioma
     /// </summary>
     public const string LiteralMalignantParaganglioma = "9903002";
+
+    /// <summary>
+    /// Literal for code: NONEMalignantParaganglioma
+    /// </summary>
+    public const string LiteralNONEMalignantParaganglioma = "http://snomed.info/sct#9903002";
 
     /// <summary>
     /// Literal for code: CongenitalAccumulationOfFluid
@@ -14008,8 +18998,2024 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCongenitalAccumulationOfFluid = "9971001";
 
     /// <summary>
+    /// Literal for code: NONECongenitalAccumulationOfFluid
+    /// </summary>
+    public const string LiteralNONECongenitalAccumulationOfFluid = "http://snomed.info/sct#9971001";
+
+    /// <summary>
     /// Literal for code: MixedDuctalEndocrineCarcinoma
     /// </summary>
     public const string LiteralMixedDuctalEndocrineCarcinoma = "999000";
+
+    /// <summary>
+    /// Literal for code: NONEMixedDuctalEndocrineCarcinoma
+    /// </summary>
+    public const string LiteralNONEMixedDuctalEndocrineCarcinoma = "http://snomed.info/sct#999000";
+
+    /// <summary>
+    /// Dictionary for looking up BodystructureCode Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "10060008", EccrinePapillaryAdenoma }, 
+      { "http://snomed.info/sct#10060008", EccrinePapillaryAdenoma }, 
+      { "10069009", MalignantGiantCellTumorOfBone }, 
+      { "http://snomed.info/sct#10069009", MalignantGiantCellTumorOfBone }, 
+      { "10115009", CongenitalPartialHypoplasia }, 
+      { "http://snomed.info/sct#10115009", CongenitalPartialHypoplasia }, 
+      { "10122001", Accretion }, 
+      { "http://snomed.info/sct#10122001", Accretion }, 
+      { "10146008", ChiefCellAdenocarcinoma }, 
+      { "http://snomed.info/sct#10146008", ChiefCellAdenocarcinoma }, 
+      { "10219009", Xanthosis }, 
+      { "http://snomed.info/sct#10219009", Xanthosis }, 
+      { "10288008", EpidermoidCarcinomaSpindleCell }, 
+      { "http://snomed.info/sct#10288008", EpidermoidCarcinomaSpindleCell }, 
+      { "10291008", CongenitalGiantPigmentedNevus }, 
+      { "http://snomed.info/sct#10291008", CongenitalGiantPigmentedNevus }, 
+      { "10376009", PapillaryCarcinomaInSitu }, 
+      { "http://snomed.info/sct#10376009", PapillaryCarcinomaInSitu }, 
+      { "1040005", AnteriorOpenDislocation }, 
+      { "http://snomed.info/sct#1040005", AnteriorOpenDislocation }, 
+      { "10403004", SerousAtrophy }, 
+      { "http://snomed.info/sct#10403004", SerousAtrophy }, 
+      { "10438002", GlomusTumor }, 
+      { "http://snomed.info/sct#10438002", GlomusTumor }, 
+      { "10445002", SpontaneousFistula }, 
+      { "http://snomed.info/sct#10445002", SpontaneousFistula }, 
+      { "10505008", Retroversion }, 
+      { "http://snomed.info/sct#10505008", Retroversion }, 
+      { "10636005", Stomatocyte }, 
+      { "http://snomed.info/sct#10636005", Stomatocyte }, 
+      { "10637001", BasophilicStainReaction }, 
+      { "http://snomed.info/sct#10637001", BasophilicStainReaction }, 
+      { "10639003", Plasmacytoma }, 
+      { "http://snomed.info/sct#10639003", Plasmacytoma }, 
+      { "10690002", AtheromatousEmbolus }, 
+      { "http://snomed.info/sct#10690002", AtheromatousEmbolus }, 
+      { "10705005", MucinousAdenofibroma }, 
+      { "http://snomed.info/sct#10705005", MucinousAdenofibroma }, 
+      { "10873006", MicronodularRegeneration }, 
+      { "http://snomed.info/sct#10873006", MicronodularRegeneration }, 
+      { "11063000", AmeloblasticFibroma }, 
+      { "http://snomed.info/sct#11063000", AmeloblasticFibroma }, 
+      { "11071001", RacemoseHemangioma }, 
+      { "http://snomed.info/sct#11071001", RacemoseHemangioma }, 
+      { "11073003", MixedLiposarcoma }, 
+      { "http://snomed.info/sct#11073003", MixedLiposarcoma }, 
+      { "11080001", NeuronalAchromasia }, 
+      { "http://snomed.info/sct#11080001", NeuronalAchromasia }, 
+      { "11099005", EpithelioidCellNevus }, 
+      { "http://snomed.info/sct#11099005", EpithelioidCellNevus }, 
+      { "11108009", Dehiscence }, 
+      { "http://snomed.info/sct#11108009", Dehiscence }, 
+      { "11117009", Dyskaryosis }, 
+      { "http://snomed.info/sct#11117009", Dyskaryosis }, 
+      { "11182007", AbnormallyShortGrowth }, 
+      { "http://snomed.info/sct#11182007", AbnormallyShortGrowth }, 
+      { "11211003", InterstitialEmphysema }, 
+      { "http://snomed.info/sct#11211003", InterstitialEmphysema }, 
+      { "11224003", ChronicMembranousInflammation }, 
+      { "http://snomed.info/sct#11224003", ChronicMembranousInflammation }, 
+      { "11284000", ClosedDislocationIncomplete }, 
+      { "http://snomed.info/sct#11284000", ClosedDislocationIncomplete }, 
+      { "1129000", AcidophilicBody }, 
+      { "http://snomed.info/sct#1129000", AcidophilicBody }, 
+      { "1138003", ModerateSquamousCellAtypia }, 
+      { "http://snomed.info/sct#1138003", ModerateSquamousCellAtypia }, 
+      { "11467009", CapillaryLymphangioma }, 
+      { "http://snomed.info/sct#11467009", CapillaryLymphangioma }, 
+      { "11506001", HilusCellTumor }, 
+      { "http://snomed.info/sct#11506001", HilusCellTumor }, 
+      { "11514007", AlgorMortis }, 
+      { "http://snomed.info/sct#11514007", AlgorMortis }, 
+      { "11528001", Mucinosis }, 
+      { "http://snomed.info/sct#11528001", Mucinosis }, 
+      { "11556006", ArteriovenousAneurysm }, 
+      { "http://snomed.info/sct#11556006", ArteriovenousAneurysm }, 
+      { "11585000", Bubo }, 
+      { "http://snomed.info/sct#11585000", Bubo }, 
+      { "11607000", GunpowderBurn }, 
+      { "http://snomed.info/sct#11607000", GunpowderBurn }, 
+      { "11639007", Puncture }, 
+      { "http://snomed.info/sct#11639007", Puncture }, 
+      { "11650005", GiantHypertrophy }, 
+      { "http://snomed.info/sct#11650005", GiantHypertrophy }, 
+      { "11671000", AdenoidCysticCarcinoma }, 
+      { "http://snomed.info/sct#11671000", AdenoidCysticCarcinoma }, 
+      { "11704001", ChromosomeMosaicism }, 
+      { "http://snomed.info/sct#11704001", ChromosomeMosaicism }, 
+      { "11793003", MesoblasticNephroma }, 
+      { "http://snomed.info/sct#11793003", MesoblasticNephroma }, 
+      { "11854003", FibrousNodule }, 
+      { "http://snomed.info/sct#11854003", FibrousNodule }, 
+      { "11858000", SutureLineOfSkin }, 
+      { "http://snomed.info/sct#11858000", SutureLineOfSkin }, 
+      { "1188006", SuperiorOpenDislocation }, 
+      { "http://snomed.info/sct#1188006", SuperiorOpenDislocation }, 
+      { "11884006", CongenitalHyperrotation }, 
+      { "http://snomed.info/sct#11884006", CongenitalHyperrotation }, 
+      { "11889001", Abiotrophy }, 
+      { "http://snomed.info/sct#11889001", Abiotrophy }, 
+      { "11904005", AcquiredValgusDeformity }, 
+      { "http://snomed.info/sct#11904005", AcquiredValgusDeformity }, 
+      { "11908008", BinucleatedPlasmablast }, 
+      { "http://snomed.info/sct#11908008", BinucleatedPlasmablast }, 
+      { "12060004", Ganglioneuromatosis }, 
+      { "http://snomed.info/sct#12060004", Ganglioneuromatosis }, 
+      { "12143007", EmbryonicCyst }, 
+      { "http://snomed.info/sct#12143007", EmbryonicCyst }, 
+      { "12167004", Lymphocyst }, 
+      { "http://snomed.info/sct#12167004", Lymphocyst }, 
+      { "12169001", GranularCellTumor }, 
+      { "http://snomed.info/sct#12169001", GranularCellTumor }, 
+      { "12170000", Rosette }, 
+      { "http://snomed.info/sct#12170000", Rosette }, 
+      { "12191008", FractureUnunitedStellate }, 
+      { "http://snomed.info/sct#12191008", FractureUnunitedStellate }, 
+      { "12205003", ChiefCellAdenoma }, 
+      { "http://snomed.info/sct#12205003", ChiefCellAdenoma }, 
+      { "12222001", ErythrocyteAbnormality }, 
+      { "http://snomed.info/sct#12222001", ErythrocyteAbnormality }, 
+      { "12302002", RoundCellOsteosarcoma }, 
+      { "http://snomed.info/sct#12302002", RoundCellOsteosarcoma }, 
+      { "12323008", MalignantAndroblastoma }, 
+      { "http://snomed.info/sct#12323008", MalignantAndroblastoma }, 
+      { "12354007", RetinoblastomaUndifferentiated }, 
+      { "http://snomed.info/sct#12354007", RetinoblastomaUndifferentiated }, 
+      { "12393003", Purpura }, 
+      { "http://snomed.info/sct#12393003", Purpura }, 
+      { "12400006", PapillaryUrothelialCarcinoma }, 
+      { "http://snomed.info/sct#12400006", PapillaryUrothelialCarcinoma }, 
+      { "12402003", Scar }, 
+      { "http://snomed.info/sct#12402003", Scar }, 
+      { "12404002", TrophicGangrene }, 
+      { "http://snomed.info/sct#12404002", TrophicGangrene }, 
+      { "12478003", MicroinvasiveSquamousCellCarcinoma }, 
+      { "http://snomed.info/sct#12478003", MicroinvasiveSquamousCellCarcinoma }, 
+      { "12535006", AcquiredAbsence }, 
+      { "http://snomed.info/sct#12535006", AcquiredAbsence }, 
+      { "12540003", MuscleFiberAtrophyTypeII }, 
+      { "http://snomed.info/sct#12540003", MuscleFiberAtrophyTypeII }, 
+      { "12560006", PrimarySequestrum }, 
+      { "http://snomed.info/sct#12560006", PrimarySequestrum }, 
+      { "12582004", InternalFistula }, 
+      { "http://snomed.info/sct#12582004", InternalFistula }, 
+      { "12583009", LobularAdenoma }, 
+      { "http://snomed.info/sct#12583009", LobularAdenoma }, 
+      { "12622007", ClearCellSarcomaExceptOfKidneyM89643 }, 
+      { "http://snomed.info/sct#12622007", ClearCellSarcomaExceptOfKidneyM89643 }, 
+      { "12690005", FibroblasticOsteosarcoma }, 
+      { "http://snomed.info/sct#12690005", FibroblasticOsteosarcoma }, 
+      { "12747003", Microcalcification }, 
+      { "http://snomed.info/sct#12747003", Microcalcification }, 
+      { "12794006", NonsuppurativeInflammation }, 
+      { "http://snomed.info/sct#12794006", NonsuppurativeInflammation }, 
+      { "12835000", MultipleInjuries }, 
+      { "http://snomed.info/sct#12835000", MultipleInjuries }, 
+      { "12856003", Varix }, 
+      { "http://snomed.info/sct#12856003", Varix }, 
+      { "12933008", SweatGlandTumor }, 
+      { "http://snomed.info/sct#12933008", SweatGlandTumor }, 
+      { "12943006", PrimitivePolarSpongioblastomaObs }, 
+      { "http://snomed.info/sct#12943006", PrimitivePolarSpongioblastomaObs }, 
+      { "12944000", AcidChemicalBurn }, 
+      { "http://snomed.info/sct#12944000", AcidChemicalBurn }, 
+      { "12973002", DislocationMultipleOpen }, 
+      { "http://snomed.info/sct#12973002", DislocationMultipleOpen }, 
+      { "13018008", Neovascularization }, 
+      { "http://snomed.info/sct#13018008", Neovascularization }, 
+      { "13062004", PsammomaBodies }, 
+      { "http://snomed.info/sct#13062004", PsammomaBodies }, 
+      { "13071008", WolffianDuctTumor }, 
+      { "http://snomed.info/sct#13071008", WolffianDuctTumor }, 
+      { "13129009", FractureOpenIncomplete }, 
+      { "http://snomed.info/sct#13129009", FractureOpenIncomplete }, 
+      { "13136005", InjectionSite }, 
+      { "http://snomed.info/sct#13136005", InjectionSite }, 
+      { "13238004", MalignantGranularCellTumor }, 
+      { "http://snomed.info/sct#13238004", MalignantGranularCellTumor }, 
+      { "13321001", Comminuted }, 
+      { "http://snomed.info/sct#13321001", Comminuted }, 
+      { "13331008", Atrophic }, 
+      { "http://snomed.info/sct#13331008", Atrophic }, 
+      { "1338007", BCCBasalCellCarcinoma }, 
+      { "http://snomed.info/sct#1338007", BCCBasalCellCarcinoma }, 
+      { "13467000", Pseudocyst }, 
+      { "http://snomed.info/sct#13467000", Pseudocyst }, 
+      { "13485007", Pannus }, 
+      { "http://snomed.info/sct#13485007", Pannus }, 
+      { "13583002", MastCellSarcoma }, 
+      { "http://snomed.info/sct#13583002", MastCellSarcoma }, 
+      { "13593009", CongenitalDecreaseInCellularity }, 
+      { "http://snomed.info/sct#13593009", CongenitalDecreaseInCellularity }, 
+      { "13599008", GunshotWoundContact }, 
+      { "http://snomed.info/sct#13599008", GunshotWoundContact }, 
+      { "13705009", PartialObstruction }, 
+      { "http://snomed.info/sct#13705009", PartialObstruction }, 
+      { "13713005", Thromboembolus }, 
+      { "http://snomed.info/sct#13713005", Thromboembolus }, 
+      { "13810000", CongenitalDislocation }, 
+      { "http://snomed.info/sct#13810000", CongenitalDislocation }, 
+      { "13814009", HypertrophyOfBone }, 
+      { "http://snomed.info/sct#13814009", HypertrophyOfBone }, 
+      { "13875003", Glomangiosarcoma }, 
+      { "http://snomed.info/sct#13875003", Glomangiosarcoma }, 
+      { "13901007", FatLadenMacrophage }, 
+      { "http://snomed.info/sct#13901007", FatLadenMacrophage }, 
+      { "13908001", CongenitalTurningUpward }, 
+      { "http://snomed.info/sct#13908001", CongenitalTurningUpward }, 
+      { "13924000", Wound }, 
+      { "http://snomed.info/sct#13924000", Wound }, 
+      { "14093007", DecalcifiedStructure }, 
+      { "http://snomed.info/sct#14093007", DecalcifiedStructure }, 
+      { "14156004", RacemoseAneurysm }, 
+      { "http://snomed.info/sct#14156004", RacemoseAneurysm }, 
+      { "14166007", KoplikSpot }, 
+      { "http://snomed.info/sct#14166007", KoplikSpot }, 
+      { "14212006", PseudopalisadeFormation }, 
+      { "http://snomed.info/sct#14212006", PseudopalisadeFormation }, 
+      { "14217000", InternalSpontaneousFistula }, 
+      { "http://snomed.info/sct#14217000", InternalSpontaneousFistula }, 
+      { "14269005", EmbryonalRhabdomyosarcomaPleomorphic }, 
+      { "http://snomed.info/sct#14269005", EmbryonalRhabdomyosarcomaPleomorphic }, 
+      { "14317002", M6B }, 
+      { "http://snomed.info/sct#14317002", M6B }, 
+      { "14350002", Angiomatosis }, 
+      { "http://snomed.info/sct#14350002", Angiomatosis }, 
+      { "14391000", KoilocytoticAtypia }, 
+      { "http://snomed.info/sct#14391000", KoilocytoticAtypia }, 
+      { "1443001", ChromophobeCarcinoma }, 
+      { "http://snomed.info/sct#1443001", ChromophobeCarcinoma }, 
+      { "14442007", GeneralizedKeratoacanthoma }, 
+      { "http://snomed.info/sct#14442007", GeneralizedKeratoacanthoma }, 
+      { "14494009", MeningealSarcomatosis }, 
+      { "http://snomed.info/sct#14494009", MeningealSarcomatosis }, 
+      { "145009", ColloidMilium }, 
+      { "http://snomed.info/sct#145009", ColloidMilium }, 
+      { "14537002", HodgkinLymphoma }, 
+      { "http://snomed.info/sct#14537002", HodgkinLymphoma }, 
+      { "1454006", ChronicFibrinousInflammation }, 
+      { "http://snomed.info/sct#1454006", ChronicFibrinousInflammation }, 
+      { "14696003", CysticDegeneration }, 
+      { "http://snomed.info/sct#14696003", CysticDegeneration }, 
+      { "14737000", JetLesion }, 
+      { "http://snomed.info/sct#14737000", JetLesion }, 
+      { "14797003", FractureDelayedUnionOblique }, 
+      { "http://snomed.info/sct#14797003", FractureDelayedUnionOblique }, 
+      { "14799000", NeoplasmMetastatic }, 
+      { "http://snomed.info/sct#14799000", NeoplasmMetastatic }, 
+      { "14847005", Triploidy }, 
+      { "http://snomed.info/sct#14847005", Triploidy }, 
+      { "14889002", RasmussenQuoteSAneurysm }, 
+      { "http://snomed.info/sct#14889002", RasmussenQuoteSAneurysm }, 
+      { "14912003", VesiculobullousRash }, 
+      { "http://snomed.info/sct#14912003", VesiculobullousRash }, 
+      { "14962008", MutilatingWound }, 
+      { "http://snomed.info/sct#14962008", MutilatingWound }, 
+      { "14990007", ChondrosarcomaMorphology }, 
+      { "http://snomed.info/sct#14990007", ChondrosarcomaMorphology }, 
+      { "15074003", NeurogenicUlcer }, 
+      { "http://snomed.info/sct#15074003", NeurogenicUlcer }, 
+      { "15112009", InvertedKeratosis }, 
+      { "http://snomed.info/sct#15112009", InvertedKeratosis }, 
+      { "1513001", MelanoticNeuroectodermalTumor }, 
+      { "http://snomed.info/sct#1513001", MelanoticNeuroectodermalTumor }, 
+      { "15176003", AdenocarcinomaWithSquamousMetaplasia }, 
+      { "http://snomed.info/sct#15176003", AdenocarcinomaWithSquamousMetaplasia }, 
+      { "1522000", Plaque }, 
+      { "http://snomed.info/sct#1522000", Plaque }, 
+      { "15304008", FactitialUlcer }, 
+      { "http://snomed.info/sct#15304008", FactitialUlcer }, 
+      { "15418000", SpontaneousPerforation }, 
+      { "http://snomed.info/sct#15418000", SpontaneousPerforation }, 
+      { "15486006", Hypoploidy }, 
+      { "http://snomed.info/sct#15486006", Hypoploidy }, 
+      { "15498001", SuperficialUlcer }, 
+      { "http://snomed.info/sct#15498001", SuperficialUlcer }, 
+      { "15503003", MolluscumBodies }, 
+      { "http://snomed.info/sct#15503003", MolluscumBodies }, 
+      { "15519005", CombinedAbnormalCurvature }, 
+      { "http://snomed.info/sct#15519005", CombinedAbnormalCurvature }, 
+      { "15524008", Obliteration }, 
+      { "http://snomed.info/sct#15524008", Obliteration }, 
+      { "15556001", BallThrombus }, 
+      { "http://snomed.info/sct#15556001", BallThrombus }, 
+      { "15588009", Microlithiasis }, 
+      { "http://snomed.info/sct#15588009", Microlithiasis }, 
+      { "1561008", SwollenSarcoplasmicReticulum }, 
+      { "http://snomed.info/sct#1561008", SwollenSarcoplasmicReticulum }, 
+      { "15619004", HepatocellularCarcinomaFibrolamellar }, 
+      { "http://snomed.info/sct#15619004", HepatocellularCarcinomaFibrolamellar }, 
+      { "15674004", PrimarySerousPapillaryCarcinomaOfPeritoneum }, 
+      { "http://snomed.info/sct#15674004", PrimarySerousPapillaryCarcinomaOfPeritoneum }, 
+      { "15690004", Tortuosity }, 
+      { "http://snomed.info/sct#15690004", Tortuosity }, 
+      { "15702005", BenignFibrousMesothelioma }, 
+      { "http://snomed.info/sct#15702005", BenignFibrousMesothelioma }, 
+      { "1586004", SubependymalGiantCellAstrocytoma }, 
+      { "http://snomed.info/sct#1586004", SubependymalGiantCellAstrocytoma }, 
+      { "15897004", ChromosomalTranslocation }, 
+      { "http://snomed.info/sct#15897004", ChromosomalTranslocation }, 
+      { "15904002", BridgingNecrosis }, 
+      { "http://snomed.info/sct#15904002", BridgingNecrosis }, 
+      { "15937000", CongenitalVascularProliferation }, 
+      { "http://snomed.info/sct#15937000", CongenitalVascularProliferation }, 
+      { "15949004", MalignantThymoma }, 
+      { "http://snomed.info/sct#15949004", MalignantThymoma }, 
+      { "15960008", GiantCellHistiocytoma }, 
+      { "http://snomed.info/sct#15960008", GiantCellHistiocytoma }, 
+      { "15967006", HypersegmentationOfNucleus }, 
+      { "http://snomed.info/sct#15967006", HypersegmentationOfNucleus }, 
+      { "15988002", CementalDysplasia }, 
+      { "http://snomed.info/sct#15988002", CementalDysplasia }, 
+      { "16080000", FibrinDeposition }, 
+      { "http://snomed.info/sct#16080000", FibrinDeposition }, 
+      { "16090008", MyxoidLeiomyosarcoma }, 
+      { "http://snomed.info/sct#16090008", MyxoidLeiomyosarcoma }, 
+      { "161006", ThermalInjury }, 
+      { "http://snomed.info/sct#161006", ThermalInjury }, 
+      { "16104005", SegmentalGlomerulosclerosis }, 
+      { "http://snomed.info/sct#16104005", SegmentalGlomerulosclerosis }, 
+      { "16107003", AdultRhabdomyoma }, 
+      { "http://snomed.info/sct#16107003", AdultRhabdomyoma }, 
+      { "16163002", OssifiedNodule }, 
+      { "http://snomed.info/sct#16163002", OssifiedNodule }, 
+      { "16189002", GastrinCellTumor }, 
+      { "http://snomed.info/sct#16189002", GastrinCellTumor }, 
+      { "16190006", HerringQuoteSBodies }, 
+      { "http://snomed.info/sct#16190006", HerringQuoteSBodies }, 
+      { "16216007", GaucherCell }, 
+      { "http://snomed.info/sct#16216007", GaucherCell }, 
+      { "1623000", MyxopapillaryEpendymoma }, 
+      { "http://snomed.info/sct#1623000", MyxopapillaryEpendymoma }, 
+      { "16255008", Fenestration }, 
+      { "http://snomed.info/sct#16255008", Fenestration }, 
+      { "16277007", Collapse }, 
+      { "http://snomed.info/sct#16277007", Collapse }, 
+      { "16301006", CongenitalOpacity }, 
+      { "http://snomed.info/sct#16301006", CongenitalOpacity }, 
+      { "16479008", InappropriateLobularActivityOfBreast }, 
+      { "http://snomed.info/sct#16479008", InappropriateLobularActivityOfBreast }, 
+      { "16483008", RussellBody }, 
+      { "http://snomed.info/sct#16483008", RussellBody }, 
+      { "16566002", BenignPhyllodesTumor }, 
+      { "http://snomed.info/sct#16566002", BenignPhyllodesTumor }, 
+      { "16578003", PosteriorOpenDislocation }, 
+      { "http://snomed.info/sct#16578003", PosteriorOpenDislocation }, 
+      { "16640008", Separation }, 
+      { "http://snomed.info/sct#16640008", Separation }, 
+      { "16740003", Anasarca }, 
+      { "http://snomed.info/sct#16740003", Anasarca }, 
+      { "16741004", PleomorphicCarcinoma }, 
+      { "http://snomed.info/sct#16741004", PleomorphicCarcinoma }, 
+      { "16759001", ChronicEosinophilicInflammation }, 
+      { "http://snomed.info/sct#16759001", ChronicEosinophilicInflammation }, 
+      { "16822006", MalignantCarotidBodyTumor }, 
+      { "http://snomed.info/sct#16822006", MalignantCarotidBodyTumor }, 
+      { "16893006", ClassicalHodgkinLymphomaLymphocyteDepletionDiffuseFibrosis }, 
+      { "http://snomed.info/sct#16893006", ClassicalHodgkinLymphomaLymphocyteDepletionDiffuseFibrosis }, 
+      { "16974005", AcralLentiginousMelanomaMalignant }, 
+      { "http://snomed.info/sct#16974005", AcralLentiginousMelanomaMalignant }, 
+      { "16980002", FoamCell }, 
+      { "http://snomed.info/sct#16980002", FoamCell }, 
+      { "17015005", LateralOpenDislocation }, 
+      { "http://snomed.info/sct#17015005", LateralOpenDislocation }, 
+      { "17201003", SpillageOfFeces }, 
+      { "http://snomed.info/sct#17201003", SpillageOfFeces }, 
+      { "17264009", CarcinomaInPleomorphicAdenoma }, 
+      { "http://snomed.info/sct#17264009", CarcinomaInPleomorphicAdenoma }, 
+      { "17289003", FatEmbolus }, 
+      { "http://snomed.info/sct#17289003", FatEmbolus }, 
+      { "17302008", CerebellarSarcoma }, 
+      { "http://snomed.info/sct#17302008", CerebellarSarcoma }, 
+      { "17307002", Transudate }, 
+      { "http://snomed.info/sct#17307002", Transudate }, 
+      { "17351006", CongenitalNonRotation }, 
+      { "http://snomed.info/sct#17351006", CongenitalNonRotation }, 
+      { "1736008", Anteversion }, 
+      { "http://snomed.info/sct#1736008", Anteversion }, 
+      { "17372009", CapillaryHemangiomaOfGranulationTissueType }, 
+      { "http://snomed.info/sct#17372009", CapillaryHemangiomaOfGranulationTissueType }, 
+      { "17474009", AtypicalGlandularHyperplasia }, 
+      { "http://snomed.info/sct#17474009", AtypicalGlandularHyperplasia }, 
+      { "1752006", ClearCellAdenoma }, 
+      { "http://snomed.info/sct#1752006", ClearCellAdenoma }, 
+      { "17569003", EmphysematousBleb }, 
+      { "http://snomed.info/sct#17569003", EmphysematousBleb }, 
+      { "17665002", Metaplasia }, 
+      { "http://snomed.info/sct#17665002", Metaplasia }, 
+      { "17672001", AccumulationOfFluid }, 
+      { "http://snomed.info/sct#17672001", AccumulationOfFluid }, 
+      { "17684004", ProteinCast }, 
+      { "http://snomed.info/sct#17684004", ProteinCast }, 
+      { "17734002", ChediakHigashiCell }, 
+      { "http://snomed.info/sct#17734002", ChediakHigashiCell }, 
+      { "17781001", CurvilinearBodies }, 
+      { "http://snomed.info/sct#17781001", CurvilinearBodies }, 
+      { "17788007", AcuteNonLymphocyticLeukemia }, 
+      { "http://snomed.info/sct#17788007", AcuteNonLymphocyticLeukemia }, 
+      { "17815009", SudanophilicStainReaction }, 
+      { "http://snomed.info/sct#17815009", SudanophilicStainReaction }, 
+      { "1791001", RadiationInjuryWithFibrosis }, 
+      { "http://snomed.info/sct#1791001", RadiationInjuryWithFibrosis }, 
+      { "17930004", Neuronevus }, 
+      { "http://snomed.info/sct#17930004", Neuronevus }, 
+      { "17941002", Arteriolosclerosis }, 
+      { "http://snomed.info/sct#17941002", Arteriolosclerosis }, 
+      { "17968002", MucinousDegeneration }, 
+      { "http://snomed.info/sct#17968002", MucinousDegeneration }, 
+      { "18016009", Phlebosclerosis }, 
+      { "http://snomed.info/sct#18016009", Phlebosclerosis }, 
+      { "18021007", ChoroidPlexusPapillomaNoICDOSubtype }, 
+      { "http://snomed.info/sct#18021007", ChoroidPlexusPapillomaNoICDOSubtype }, 
+      { "18048008", KeratinizingSquamousCellCarcinomaLargeCell }, 
+      { "http://snomed.info/sct#18048008", KeratinizingSquamousCellCarcinomaLargeCell }, 
+      { "1806006", Eruption }, 
+      { "http://snomed.info/sct#1806006", Eruption }, 
+      { "18064000", Achromasia }, 
+      { "http://snomed.info/sct#18064000", Achromasia }, 
+      { "18072003", Micronucleus }, 
+      { "http://snomed.info/sct#18072003", Micronucleus }, 
+      { "18105004", MalignantEndometrioidCystadenofibroma }, 
+      { "http://snomed.info/sct#18105004", MalignantEndometrioidCystadenofibroma }, 
+      { "18115005", PathologicallyCalcifiedStructure }, 
+      { "http://snomed.info/sct#18115005", PathologicallyCalcifiedStructure }, 
+      { "18126004", Diverticulitis }, 
+      { "http://snomed.info/sct#18126004", Diverticulitis }, 
+      { "18130001", GunshotWoundExit }, 
+      { "http://snomed.info/sct#18130001", GunshotWoundExit }, 
+      { "18174004", BrownEdema }, 
+      { "http://snomed.info/sct#18174004", BrownEdema }, 
+      { "18189008", GuddenAtrophy }, 
+      { "http://snomed.info/sct#18189008", GuddenAtrophy }, 
+      { "182000", Canalization }, 
+      { "http://snomed.info/sct#182000", Canalization }, 
+      { "18203003", NonCommunicatingCerebrospinalFluidRetention }, 
+      { "http://snomed.info/sct#18203003", NonCommunicatingCerebrospinalFluidRetention }, 
+      { "18295000", DoubleStructure }, 
+      { "http://snomed.info/sct#18295000", DoubleStructure }, 
+      { "18334002", StellateFracture }, 
+      { "http://snomed.info/sct#18334002", StellateFracture }, 
+      { "18348002", QueyratErythroplasia }, 
+      { "http://snomed.info/sct#18348002", QueyratErythroplasia }, 
+      { "18365006", AdrenalCorticalAdenomaMorphology }, 
+      { "http://snomed.info/sct#18365006", AdrenalCorticalAdenomaMorphology }, 
+      { "18450009", MalignantMelanomaInMelanosis }, 
+      { "http://snomed.info/sct#18450009", MalignantMelanomaInMelanosis }, 
+      { "18465005", AnomalousOriginOfVein }, 
+      { "http://snomed.info/sct#18465005", AnomalousOriginOfVein }, 
+      { "18498000", AcuteMembranousInflammation }, 
+      { "http://snomed.info/sct#18498000", AcuteMembranousInflammation }, 
+      { "18568009", AnastomosisEndToEnd }, 
+      { "http://snomed.info/sct#18568009", AnastomosisEndToEnd }, 
+      { "18588008", SynovialSarcomaBiphasic }, 
+      { "http://snomed.info/sct#18588008", SynovialSarcomaBiphasic }, 
+      { "18655006", Depigmentation }, 
+      { "http://snomed.info/sct#18655006", Depigmentation }, 
+      { "18680006", IntraductalCarcinomaAndLobularCarcinomaInSitu }, 
+      { "http://snomed.info/sct#18680006", IntraductalCarcinomaAndLobularCarcinomaInSitu }, 
+      { "18695008", HyalineBody }, 
+      { "http://snomed.info/sct#18695008", HyalineBody }, 
+      { "18727002", CCellTumor }, 
+      { "http://snomed.info/sct#18727002", CCellTumor }, 
+      { "18765009", SclerosingLipogranuloma }, 
+      { "http://snomed.info/sct#18765009", SclerosingLipogranuloma }, 
+      { "18799007", InvasiveHydatidiformMole }, 
+      { "http://snomed.info/sct#18799007", InvasiveHydatidiformMole }, 
+      { "18802003", ExternalFistula }, 
+      { "http://snomed.info/sct#18802003", ExternalFistula }, 
+      { "18854008", MalignantStrumaOvarii }, 
+      { "http://snomed.info/sct#18854008", MalignantStrumaOvarii }, 
+      { "18861007", MalignantGranulosaCellTumor }, 
+      { "http://snomed.info/sct#18861007", MalignantGranulosaCellTumor }, 
+      { "18915006", DenseTubules }, 
+      { "http://snomed.info/sct#18915006", DenseTubules }, 
+      { "18958005", CouncilmanBody }, 
+      { "http://snomed.info/sct#18958005", CouncilmanBody }, 
+      { "18977007", AdrenalCorticalAdenomaClearCell }, 
+      { "http://snomed.info/sct#18977007", AdrenalCorticalAdenomaClearCell }, 
+      { "19010006", HyalineDegeneration }, 
+      { "http://snomed.info/sct#19010006", HyalineDegeneration }, 
+      { "19071004", EpithelioidLeiomyoma }, 
+      { "http://snomed.info/sct#19071004", EpithelioidLeiomyoma }, 
+      { "19104009", SpontaneousClosedDislocation }, 
+      { "http://snomed.info/sct#19104009", SpontaneousClosedDislocation }, 
+      { "19128006", Hyperorthokeratosis }, 
+      { "http://snomed.info/sct#19128006", Hyperorthokeratosis }, 
+      { "19130008", TraumaticAbnormality }, 
+      { "http://snomed.info/sct#19130008", TraumaticAbnormality }, 
+      { "19134004", FascialFibrosarcoma }, 
+      { "http://snomed.info/sct#19134004", FascialFibrosarcoma }, 
+      { "19137006", MaranticThrombus }, 
+      { "http://snomed.info/sct#19137006", MaranticThrombus }, 
+      { "19227008", FBForeignBody }, 
+      { "http://snomed.info/sct#19227008", FBForeignBody }, 
+      { "1929004", BCellLymphomaNoICDOSubtype }, 
+      { "http://snomed.info/sct#1929004", BCellLymphomaNoICDOSubtype }, 
+      { "19316008", CytoidBody }, 
+      { "http://snomed.info/sct#19316008", CytoidBody }, 
+      { "19329008", AdrenalCorticalAdenomaGlomerulosaCell }, 
+      { "http://snomed.info/sct#19329008", AdrenalCorticalAdenomaGlomerulosaCell }, 
+      { "19340000", MalignantLymphomaLymphoplasmacytic }, 
+      { "http://snomed.info/sct#19340000", MalignantLymphomaLymphoplasmacytic }, 
+      { "19365003", AcuteEmpyema }, 
+      { "http://snomed.info/sct#19365003", AcuteEmpyema }, 
+      { "19380009", SclerosingSegmentalGlomerulosclerosisWithHyalinosis }, 
+      { "http://snomed.info/sct#19380009", SclerosingSegmentalGlomerulosclerosisWithHyalinosis }, 
+      { "19436005", StainReaction }, 
+      { "http://snomed.info/sct#19436005", StainReaction }, 
+      { "19438006", FeatheryDegeneration }, 
+      { "http://snomed.info/sct#19438006", FeatheryDegeneration }, 
+      { "19453003", MGMMeningioma }, 
+      { "http://snomed.info/sct#19453003", MGMMeningioma }, 
+      { "19467007", MalignantTeratoblastoma }, 
+      { "http://snomed.info/sct#19467007", MalignantTeratoblastoma }, 
+      { "19504001", SerofibrinousEffusion }, 
+      { "http://snomed.info/sct#19504001", SerofibrinousEffusion }, 
+      { "19561006", CongenitalLevorotation }, 
+      { "http://snomed.info/sct#19561006", CongenitalLevorotation }, 
+      { "19571008", OpenWoundsInvolvingMultipleBodyRegions }, 
+      { "http://snomed.info/sct#19571008", OpenWoundsInvolvingMultipleBodyRegions }, 
+      { "19607003", Endoreduplication }, 
+      { "http://snomed.info/sct#19607003", Endoreduplication }, 
+      { "19614001", LightningBurn }, 
+      { "http://snomed.info/sct#19614001", LightningBurn }, 
+      { "19633006", MucousCyst }, 
+      { "http://snomed.info/sct#19633006", MucousCyst }, 
+      { "19643009", PyogranulomaGranulomaWithPus }, 
+      { "http://snomed.info/sct#19643009", PyogranulomaGranulomaWithPus }, 
+      { "19651007", Micromyeloblast }, 
+      { "http://snomed.info/sct#19651007", Micromyeloblast }, 
+      { "19665009", TubularAdenomaNoICDOSubtype }, 
+      { "http://snomed.info/sct#19665009", TubularAdenomaNoICDOSubtype }, 
+      { "19668006", PredominanceOfParabasalCells }, 
+      { "http://snomed.info/sct#19668006", PredominanceOfParabasalCells }, 
+      { "19669003", ErythrocyteAgglutination }, 
+      { "http://snomed.info/sct#19669003", ErythrocyteAgglutination }, 
+      { "19672005", Condyloma }, 
+      { "http://snomed.info/sct#19672005", Condyloma }, 
+      { "19685008", Stasis }, 
+      { "http://snomed.info/sct#19685008", Stasis }, 
+      { "19756007", MalignantGCellTumor }, 
+      { "http://snomed.info/sct#19756007", MalignantGCellTumor }, 
+      { "19795008", BrainSandCalcifiedStructure }, 
+      { "http://snomed.info/sct#19795008", BrainSandCalcifiedStructure }, 
+      { "19836000", DeformingFibrosis }, 
+      { "http://snomed.info/sct#19836000", DeformingFibrosis }, 
+      { "19897006", MPNSTMalignantPeripheralNerveSheathTumor }, 
+      { "http://snomed.info/sct#19897006", MPNSTMalignantPeripheralNerveSheathTumor }, 
+      { "19906005", RetinoblastomaMorphology }, 
+      { "http://snomed.info/sct#19906005", RetinoblastomaMorphology }, 
+      { "19909003", ComplementDeposit }, 
+      { "http://snomed.info/sct#19909003", ComplementDeposit }, 
+      { "19921004", CrushingInjuryMorphology }, 
+      { "http://snomed.info/sct#19921004", CrushingInjuryMorphology }, 
+      { "19928005", Fibromatosis }, 
+      { "http://snomed.info/sct#19928005", Fibromatosis }, 
+      { "19929002", Angiomyolipoma }, 
+      { "http://snomed.info/sct#19929002", Angiomyolipoma }, 
+      { "19940005", Lichenification }, 
+      { "http://snomed.info/sct#19940005", Lichenification }, 
+      { "19952003", ElasticVascularSclerosis }, 
+      { "http://snomed.info/sct#19952003", ElasticVascularSclerosis }, 
+      { "1996000", NumericAtrophy }, 
+      { "http://snomed.info/sct#1996000", NumericAtrophy }, 
+      { "19988008", Pseudoainhum }, 
+      { "http://snomed.info/sct#19988008", Pseudoainhum }, 
+      { "20012006", MajorOpenWound }, 
+      { "http://snomed.info/sct#20012006", MajorOpenWound }, 
+      { "20092005", CongenitalTelangiectasis }, 
+      { "http://snomed.info/sct#20092005", CongenitalTelangiectasis }, 
+      { "20108002", IntramuralHemorrhage }, 
+      { "http://snomed.info/sct#20108002", IntramuralHemorrhage }, 
+      { "20131002", ChronicNecrosis }, 
+      { "http://snomed.info/sct#20131002", ChronicNecrosis }, 
+      { "2014001", Microlymphoblast }, 
+      { "http://snomed.info/sct#2014001", Microlymphoblast }, 
+      { "20175003", PostmortemFracture }, 
+      { "http://snomed.info/sct#20175003", PostmortemFracture }, 
+      { "20182004", Myocytolysis }, 
+      { "http://snomed.info/sct#20182004", Myocytolysis }, 
+      { "2019006", SarcoplasmicBodies }, 
+      { "http://snomed.info/sct#2019006", SarcoplasmicBodies }, 
+      { "20194008", HyperplasticDystrophy }, 
+      { "http://snomed.info/sct#20194008", HyperplasticDystrophy }, 
+      { "20256001", GlandularProliferation }, 
+      { "http://snomed.info/sct#20256001", GlandularProliferation }, 
+      { "2026006", SerousAdenofibroma }, 
+      { "http://snomed.info/sct#2026006", SerousAdenofibroma }, 
+      { "20351009", AdnexalNevus }, 
+      { "http://snomed.info/sct#20351009", AdnexalNevus }, 
+      { "20365006", VulvarIntraepithelialNeoplasiaGradeIII }, 
+      { "http://snomed.info/sct#20365006", VulvarIntraepithelialNeoplasiaGradeIII }, 
+      { "20369000", ChronicMucousInflammation }, 
+      { "http://snomed.info/sct#20369000", ChronicMucousInflammation }, 
+      { "20380000", AmeloblasticFibrodentinosarcoma }, 
+      { "http://snomed.info/sct#20380000", AmeloblasticFibrodentinosarcoma }, 
+      { "20456003", LooseBody }, 
+      { "http://snomed.info/sct#20456003", LooseBody }, 
+      { "20462008", Adamantinoma }, 
+      { "http://snomed.info/sct#20462008", Adamantinoma }, 
+      { "20464009", PerforatedDiverticulum }, 
+      { "http://snomed.info/sct#20464009", PerforatedDiverticulum }, 
+      { "20473001", StellateLaceration }, 
+      { "http://snomed.info/sct#20473001", StellateLaceration }, 
+      { "2052000", AcuteNecrosis }, 
+      { "http://snomed.info/sct#2052000", AcuteNecrosis }, 
+      { "20589000", PappenheimerBody }, 
+      { "http://snomed.info/sct#20589000", PappenheimerBody }, 
+      { "20601007", FlatteningDeformity }, 
+      { "http://snomed.info/sct#20601007", FlatteningDeformity }, 
+      { "20667008", Myosarcoma }, 
+      { "http://snomed.info/sct#20667008", Myosarcoma }, 
+      { "20700001", FractureClosedOblique }, 
+      { "http://snomed.info/sct#20700001", FractureClosedOblique }, 
+      { "20717008", AtheroscleroticFibrousPlaque }, 
+      { "http://snomed.info/sct#20717008", AtheroscleroticFibrousPlaque }, 
+      { "20741006", Hydrops }, 
+      { "http://snomed.info/sct#20741006", Hydrops }, 
+      { "20774006", ReEpithelialization }, 
+      { "http://snomed.info/sct#20774006", ReEpithelialization }, 
+      { "20776008", Adenolymphoma }, 
+      { "http://snomed.info/sct#20776008", Adenolymphoma }, 
+      { "20810002", Myelolipoma }, 
+      { "http://snomed.info/sct#20810002", Myelolipoma }, 
+      { "20829008", EndometrioidAdenofibroma }, 
+      { "http://snomed.info/sct#20829008", EndometrioidAdenofibroma }, 
+      { "20893004", PolypoidHyperplasia }, 
+      { "http://snomed.info/sct#20893004", PolypoidHyperplasia }, 
+      { "20894005", MalloryBodies }, 
+      { "http://snomed.info/sct#20894005", MalloryBodies }, 
+      { "2092003", MMMalignantMelanoma }, 
+      { "http://snomed.info/sct#2092003", MMMalignantMelanoma }, 
+      { "20946005", FractureClosed }, 
+      { "http://snomed.info/sct#20946005", FractureClosed }, 
+      { "20955008", MalignantBetaCellTumor }, 
+      { "http://snomed.info/sct#20955008", MalignantBetaCellTumor }, 
+      { "2097009", Dyskeratosis }, 
+      { "http://snomed.info/sct#2097009", Dyskeratosis }, 
+      { "20985003", VerrucousKeratoticHemangioma }, 
+      { "http://snomed.info/sct#20985003", VerrucousKeratoticHemangioma }, 
+      { "2099007", HemangiomaMorphology }, 
+      { "http://snomed.info/sct#2099007", HemangiomaMorphology }, 
+      { "21008007", Cystadenocarcinoma }, 
+      { "http://snomed.info/sct#21008007", Cystadenocarcinoma }, 
+      { "21046000", DalenFuchsNodule }, 
+      { "http://snomed.info/sct#21046000", DalenFuchsNodule }, 
+      { "21103001", AcuteFibrosis }, 
+      { "http://snomed.info/sct#21103001", AcuteFibrosis }, 
+      { "21109002", AcidophilAdenoma }, 
+      { "http://snomed.info/sct#21109002", AcidophilAdenoma }, 
+      { "21119008", PigmentedNevusNoICDOSubtype }, 
+      { "http://snomed.info/sct#21119008", PigmentedNevusNoICDOSubtype }, 
+      { "21135001", MultipleSuperficialInjuries }, 
+      { "http://snomed.info/sct#21135001", MultipleSuperficialInjuries }, 
+      { "21139007", Organization }, 
+      { "http://snomed.info/sct#21139007", Organization }, 
+      { "21181001", BenignThymoma }, 
+      { "http://snomed.info/sct#21181001", BenignThymoma }, 
+      { "2122006", PressureAtrophy }, 
+      { "http://snomed.info/sct#2122006", PressureAtrophy }, 
+      { "21326004", MixedSmallCellCarcinoma }, 
+      { "http://snomed.info/sct#21326004", MixedSmallCellCarcinoma }, 
+      { "21386001", ForeignBodyGiantCell }, 
+      { "http://snomed.info/sct#21386001", ForeignBodyGiantCell }, 
+      { "21390004", DevelopmentalAbnormality }, 
+      { "http://snomed.info/sct#21390004", DevelopmentalAbnormality }, 
+      { "21396005", PleomorphicLipoma }, 
+      { "http://snomed.info/sct#21396005", PleomorphicLipoma }, 
+      { "2142002", NMNodularMelanoma }, 
+      { "http://snomed.info/sct#2142002", NMNodularMelanoma }, 
+      { "21444008", MicroglialNodules }, 
+      { "http://snomed.info/sct#21444008", MicroglialNodules }, 
+      { "21453001", MassiveNecrosis }, 
+      { "http://snomed.info/sct#21453001", MassiveNecrosis }, 
+      { "21465002", AbnormallyShortAndBroadGrowth }, 
+      { "http://snomed.info/sct#21465002", AbnormallyShortAndBroadGrowth }, 
+      { "21589007", EpendymomaAnaplastic }, 
+      { "http://snomed.info/sct#21589007", EpendymomaAnaplastic }, 
+      { "21708004", OsteosarcomaNoICDOSubtype }, 
+      { "http://snomed.info/sct#21708004", OsteosarcomaNoICDOSubtype }, 
+      { "21718009", Cast }, 
+      { "http://snomed.info/sct#21718009", Cast }, 
+      { "21720007", ElectricalBurn }, 
+      { "http://snomed.info/sct#21720007", ElectricalBurn }, 
+      { "21758006", ExternalBlindCongenitalFistula }, 
+      { "http://snomed.info/sct#21758006", ExternalBlindCongenitalFistula }, 
+      { "21912003", MalignantTeratomaIntermediate }, 
+      { "http://snomed.info/sct#21912003", MalignantTeratomaIntermediate }, 
+      { "21925006", NeuroglialLinedCyst }, 
+      { "http://snomed.info/sct#21925006", NeuroglialLinedCyst }, 
+      { "21930005", TrabecularAdenoma }, 
+      { "http://snomed.info/sct#21930005", TrabecularAdenoma }, 
+      { "21947006", CompressionFracture }, 
+      { "http://snomed.info/sct#21947006", CompressionFracture }, 
+      { "21964009", MicrogliomaObs }, 
+      { "http://snomed.info/sct#21964009", MicrogliomaObs }, 
+      { "21968007", PapillaryAdenocarcinomaFollicularVariant }, 
+      { "http://snomed.info/sct#21968007", PapillaryAdenocarcinomaFollicularVariant }, 
+      { "21971004", PlasmaCellGranuloma }, 
+      { "http://snomed.info/sct#21971004", PlasmaCellGranuloma }, 
+      { "21980004", PrestenoticDilatation }, 
+      { "http://snomed.info/sct#21980004", PrestenoticDilatation }, 
+      { "21997005", MassiveDisruption }, 
+      { "http://snomed.info/sct#21997005", MassiveDisruption }, 
+      { "22024005", Lipoadenoma }, 
+      { "http://snomed.info/sct#22024005", Lipoadenoma }, 
+      { "22036004", Pseudoaneurysm }, 
+      { "http://snomed.info/sct#22036004", Pseudoaneurysm }, 
+      { "22039006", RupturedAneurysm }, 
+      { "http://snomed.info/sct#22039006", RupturedAneurysm }, 
+      { "22084008", PostmortemBloodClot }, 
+      { "http://snomed.info/sct#22084008", PostmortemBloodClot }, 
+      { "22116003", PapillarySerousCystadenoma }, 
+      { "http://snomed.info/sct#22116003", PapillarySerousCystadenoma }, 
+      { "2218006", EndothelialDegeneration }, 
+      { "http://snomed.info/sct#2218006", EndothelialDegeneration }, 
+      { "22197008", FABL3Obs }, 
+      { "http://snomed.info/sct#22197008", FABL3Obs }, 
+      { "2221008", MalignantMesonephroma }, 
+      { "http://snomed.info/sct#2221008", MalignantMesonephroma }, 
+      { "22217002", Oligoastrocytoma }, 
+      { "http://snomed.info/sct#22217002", Oligoastrocytoma }, 
+      { "22222002", MuscleFiberSmallGroupAtrophy }, 
+      { "http://snomed.info/sct#22222002", MuscleFiberSmallGroupAtrophy }, 
+      { "22257004", FibrousHamartoma }, 
+      { "http://snomed.info/sct#22257004", FibrousHamartoma }, 
+      { "2227007", AdrenalCorticalCarcinoma }, 
+      { "http://snomed.info/sct#2227007", AdrenalCorticalCarcinoma }, 
+      { "22287005", EosinophilicStainReaction }, 
+      { "http://snomed.info/sct#22287005", EosinophilicStainReaction }, 
+      { "22303008", Version }, 
+      { "http://snomed.info/sct#22303008", Version }, 
+      { "2232008", NormalKaryotype }, 
+      { "http://snomed.info/sct#2232008", NormalKaryotype }, 
+      { "22331004", AcuteMonocyticLeukemiaMorphology }, 
+      { "http://snomed.info/sct#22331004", AcuteMonocyticLeukemiaMorphology }, 
+      { "22333001", UricAcidInfarct }, 
+      { "http://snomed.info/sct#22333001", UricAcidInfarct }, 
+      { "22341001", ThrombosedVarices }, 
+      { "http://snomed.info/sct#22341001", ThrombosedVarices }, 
+      { "22427006", ElastoidDegeneration }, 
+      { "http://snomed.info/sct#22427006", ElastoidDegeneration }, 
+      { "22483007", RadiationInjuryWithInflammation }, 
+      { "http://snomed.info/sct#22483007", RadiationInjuryWithInflammation }, 
+      { "22517003", SubependymalGliosis }, 
+      { "http://snomed.info/sct#22517003", SubependymalGliosis }, 
+      { "22524002", WartyDyskeratoma }, 
+      { "http://snomed.info/sct#22524002", WartyDyskeratoma }, 
+      { "22640007", PathologicFracture }, 
+      { "http://snomed.info/sct#22640007", PathologicFracture }, 
+      { "22641006", SerousEffusion }, 
+      { "http://snomed.info/sct#22641006", SerousEffusion }, 
+      { "22687000", LargeCellCarcinoma }, 
+      { "http://snomed.info/sct#22687000", LargeCellCarcinoma }, 
+      { "22694002", AdenocarcinomaWithApocrineMetaplasia }, 
+      { "http://snomed.info/sct#22694002", AdenocarcinomaWithApocrineMetaplasia }, 
+      { "22725004", HSIL }, 
+      { "http://snomed.info/sct#22725004", HSIL }, 
+      { "22858003", ConnectiveTissueNevus }, 
+      { "http://snomed.info/sct#22858003", ConnectiveTissueNevus }, 
+      { "2289007", DicentricChromosome }, 
+      { "http://snomed.info/sct#2289007", DicentricChromosome }, 
+      { "22984005", ModerateColumnarCellAtypia }, 
+      { "http://snomed.info/sct#22984005", ModerateColumnarCellAtypia }, 
+      { "22995004", FocalNodularHyperplasia }, 
+      { "http://snomed.info/sct#22995004", FocalNodularHyperplasia }, 
+      { "23041001", SinusHistiocytosis }, 
+      { "http://snomed.info/sct#23041001", SinusHistiocytosis }, 
+      { "23048007", MarinescoBody }, 
+      { "http://snomed.info/sct#23048007", MarinescoBody }, 
+      { "23108001", MildSquamousCellAtypia }, 
+      { "http://snomed.info/sct#23108001", MildSquamousCellAtypia }, 
+      { "23109009", SarcomatoidCarcinoma }, 
+      { "http://snomed.info/sct#23109009", SarcomatoidCarcinoma }, 
+      { "232001", CongenitalFold }, 
+      { "http://snomed.info/sct#232001", CongenitalFold }, 
+      { "23255001", BenignCementoblastoma }, 
+      { "http://snomed.info/sct#23255001", BenignCementoblastoma }, 
+      { "23280001", IsochromosomeForLongArm }, 
+      { "http://snomed.info/sct#23280001", IsochromosomeForLongArm }, 
+      { "23286007", DelayedUnionOfIncompleteFracture }, 
+      { "http://snomed.info/sct#23286007", DelayedUnionOfIncompleteFracture }, 
+      { "23290009", GlandularHyperplasia }, 
+      { "http://snomed.info/sct#23290009", GlandularHyperplasia }, 
+      { "23305007", MacrocyticHyperchromicErythrocyte }, 
+      { "http://snomed.info/sct#23305007", MacrocyticHyperchromicErythrocyte }, 
+      { "23345003", RingChromosome }, 
+      { "http://snomed.info/sct#23345003", RingChromosome }, 
+      { "23382007", FatigueFracture }, 
+      { "http://snomed.info/sct#23382007", FatigueFracture }, 
+      { "23444003", MixedAcidophilBasophilCarcinoma }, 
+      { "http://snomed.info/sct#23444003", MixedAcidophilBasophilCarcinoma }, 
+      { "2348006", AdenomatoidTumor }, 
+      { "http://snomed.info/sct#2348006", AdenomatoidTumor }, 
+      { "23482006", AvulsionFracture }, 
+      { "http://snomed.info/sct#23482006", AvulsionFracture }, 
+      { "23521003", GlycogenDeposition }, 
+      { "http://snomed.info/sct#23521003", GlycogenDeposition }, 
+      { "23539007", OrganizingHematoma }, 
+      { "http://snomed.info/sct#23539007", OrganizingHematoma }, 
+      { "23583003", Inflammation }, 
+      { "http://snomed.info/sct#23583003", Inflammation }, 
+      { "23596002", GranulovacuolarDegenerationOfSimchowicz }, 
+      { "http://snomed.info/sct#23596002", GranulovacuolarDegenerationOfSimchowicz }, 
+      { "23604003", CartilaginousHamartoma }, 
+      { "http://snomed.info/sct#23604003", CartilaginousHamartoma }, 
+      { "23620008", Acanthosis }, 
+      { "http://snomed.info/sct#23620008", Acanthosis }, 
+      { "23730008", PapillomaNoICDOSubtypeExceptPapillomaOfBladderM81201 }, 
+      { "http://snomed.info/sct#23730008", PapillomaNoICDOSubtypeExceptPapillomaOfBladderM81201 }, 
+      { "23756001", CongenitalGrowthAlteration }, 
+      { "http://snomed.info/sct#23756001", CongenitalGrowthAlteration }, 
+      { "23839001", ChylousEffusion }, 
+      { "http://snomed.info/sct#23839001", ChylousEffusion }, 
+      { "23844008", FibrosideroticNodule }, 
+      { "http://snomed.info/sct#23844008", FibrosideroticNodule }, 
+      { "23870009", HypersecretoryGestationalEndometrium }, 
+      { "http://snomed.info/sct#23870009", HypersecretoryGestationalEndometrium }, 
+      { "23990004", FractureUnunitedComminuted }, 
+      { "http://snomed.info/sct#23990004", FractureUnunitedComminuted }, 
+      { "24007003", ClearCellSarcomaOfKidney }, 
+      { "http://snomed.info/sct#24007003", ClearCellSarcomaOfKidney }, 
+      { "24016004", CorrectedTransposition }, 
+      { "http://snomed.info/sct#24016004", CorrectedTransposition }, 
+      { "24017008", MeibomianAdenoma }, 
+      { "http://snomed.info/sct#24017008", MeibomianAdenoma }, 
+      { "24018003", EnterogenousCyst }, 
+      { "http://snomed.info/sct#24018003", EnterogenousCyst }, 
+      { "24045002", IntramuscularLipoma }, 
+      { "http://snomed.info/sct#24045002", IntramuscularLipoma }, 
+      { "24072005", StemCellLeukemia }, 
+      { "http://snomed.info/sct#24072005", StemCellLeukemia }, 
+      { "2412005", Maculopapule }, 
+      { "http://snomed.info/sct#2412005", Maculopapule }, 
+      { "24183004", FibrinousPolyp }, 
+      { "http://snomed.info/sct#24183004", FibrinousPolyp }, 
+      { "24216005", CongenitalAbsence }, 
+      { "http://snomed.info/sct#24216005", CongenitalAbsence }, 
+      { "2424003", MalignantMesenchymalTumor }, 
+      { "http://snomed.info/sct#2424003", MalignantMesenchymalTumor }, 
+      { "24244006", BrownAtrophy }, 
+      { "http://snomed.info/sct#24244006", BrownAtrophy }, 
+      { "24253004", SquamousIntraepithelialLesion }, 
+      { "http://snomed.info/sct#24253004", SquamousIntraepithelialLesion }, 
+      { "24283008", SerosanguineousEffusion }, 
+      { "http://snomed.info/sct#24283008", SerosanguineousEffusion }, 
+      { "24327009", StrumaOvarii }, 
+      { "http://snomed.info/sct#24327009", StrumaOvarii }, 
+      { "24373006", PregnancyAlterationOfVagina }, 
+      { "http://snomed.info/sct#24373006", PregnancyAlterationOfVagina }, 
+      { "24389009", InjectionSiteGranuloma }, 
+      { "http://snomed.info/sct#24389009", InjectionSiteGranuloma }, 
+      { "24398007", NuclearCytoplasmicRatioDecreased }, 
+      { "http://snomed.info/sct#24398007", NuclearCytoplasmicRatioDecreased }, 
+      { "24421006", SubcapsularHemorrhage }, 
+      { "http://snomed.info/sct#24421006", SubcapsularHemorrhage }, 
+      { "24481008", HypersegmentedLeukocyte }, 
+      { "http://snomed.info/sct#24481008", HypersegmentedLeukocyte }, 
+      { "24482001", AtypicalAdenoma }, 
+      { "http://snomed.info/sct#24482001", AtypicalAdenoma }, 
+      { "24505004", AdenocarcinomaDiffuseType }, 
+      { "http://snomed.info/sct#24505004", AdenocarcinomaDiffuseType }, 
+      { "24531002", ComplexCaries }, 
+      { "http://snomed.info/sct#24531002", ComplexCaries }, 
+      { "24551003", ArteriovenousMalformation }, 
+      { "http://snomed.info/sct#24551003", ArteriovenousMalformation }, 
+      { "24582004", PseudohypertrophicDystrophy }, 
+      { "http://snomed.info/sct#24582004", PseudohypertrophicDystrophy }, 
+      { "24604009", Medullomyoblastoma }, 
+      { "http://snomed.info/sct#24604009", Medullomyoblastoma }, 
+      { "2464004", ModerateCytologicAtypia }, 
+      { "http://snomed.info/sct#2464004", ModerateCytologicAtypia }, 
+      { "24645001", GuarnieriBodies }, 
+      { "http://snomed.info/sct#24645001", GuarnieriBodies }, 
+      { "24653009", SpindleCellMelanomaTypeA }, 
+      { "http://snomed.info/sct#24653009", SpindleCellMelanomaTypeA }, 
+      { "24726002", InternalTraumaticFistula }, 
+      { "http://snomed.info/sct#24726002", InternalTraumaticFistula }, 
+      { "24734008", InsectBite }, 
+      { "http://snomed.info/sct#24734008", InsectBite }, 
+      { "24762001", MalignantPilomatrixoma }, 
+      { "http://snomed.info/sct#24762001", MalignantPilomatrixoma }, 
+      { "24804006", WolffianDuctRest }, 
+      { "http://snomed.info/sct#24804006", WolffianDuctRest }, 
+      { "24811005", SerousInflammation }, 
+      { "http://snomed.info/sct#24811005", SerousInflammation }, 
+      { "24815001", LipidRichSertoliCellTumor }, 
+      { "http://snomed.info/sct#24815001", LipidRichSertoliCellTumor }, 
+      { "24827003", AbnormalWhiteBloodCell }, 
+      { "http://snomed.info/sct#24827003", AbnormalWhiteBloodCell }, 
+      { "2483006", Cavity }, 
+      { "http://snomed.info/sct#2483006", Cavity }, 
+      { "24887001", Maceration }, 
+      { "http://snomed.info/sct#24887001", Maceration }, 
+      { "25006003", NavicularCell }, 
+      { "http://snomed.info/sct#25006003", NavicularCell }, 
+      { "25063008", InvolutionalAtrophy }, 
+      { "http://snomed.info/sct#25063008", InvolutionalAtrophy }, 
+      { "25081006", Nephroblastoma }, 
+      { "http://snomed.info/sct#25081006", Nephroblastoma }, 
+      { "25088000", DimpledStructure }, 
+      { "http://snomed.info/sct#25088000", DimpledStructure }, 
+      { "25154008", BlisterDueToDegenerationOfTheBasementZone }, 
+      { "http://snomed.info/sct#25154008", BlisterDueToDegenerationOfTheBasementZone }, 
+      { "25169009", NeuromaNoICDOSubtype }, 
+      { "http://snomed.info/sct#25169009", NeuromaNoICDOSubtype }, 
+      { "25190001", CarcinomaIntestinalType }, 
+      { "http://snomed.info/sct#25190001", CarcinomaIntestinalType }, 
+      { "25201003", EpidermalNevus }, 
+      { "http://snomed.info/sct#25201003", EpidermalNevus }, 
+      { "25239006", Lymphangiomyoma }, 
+      { "http://snomed.info/sct#25239006", Lymphangiomyoma }, 
+      { "25283002", CongenitalDysplasia }, 
+      { "http://snomed.info/sct#25283002", CongenitalDysplasia }, 
+      { "25295002", Phytobezoar }, 
+      { "http://snomed.info/sct#25295002", Phytobezoar }, 
+      { "25322007", Dilatation }, 
+      { "http://snomed.info/sct#25322007", Dilatation }, 
+      { "25324008", Insulinoma }, 
+      { "http://snomed.info/sct#25324008", Insulinoma }, 
+      { "25370001", HepatocellularCarcinoma }, 
+      { "http://snomed.info/sct#25370001", HepatocellularCarcinoma }, 
+      { "25371002", HighLevelEstrogenEffectPresent }, 
+      { "http://snomed.info/sct#25371002", HighLevelEstrogenEffectPresent }, 
+      { "25393007", CongenitalDeviation }, 
+      { "http://snomed.info/sct#25393007", CongenitalDeviation }, 
+      { "25499005", SeborrheicKeratosis }, 
+      { "http://snomed.info/sct#25499005", SeborrheicKeratosis }, 
+      { "255003", CalcifiedNodule }, 
+      { "http://snomed.info/sct#255003", CalcifiedNodule }, 
+      { "2559001", ClawShapedDeformity }, 
+      { "http://snomed.info/sct#2559001", ClawShapedDeformity }, 
+      { "25603007", OssifyingFibromaCalcifiedStructure }, 
+      { "http://snomed.info/sct#25603007", OssifyingFibromaCalcifiedStructure }, 
+      { "25624002", DysplasticPlatelet }, 
+      { "http://snomed.info/sct#25624002", DysplasticPlatelet }, 
+      { "25655008", SpontaneousGangrene }, 
+      { "http://snomed.info/sct#25655008", SpontaneousGangrene }, 
+      { "25659002", NarrowedStructure }, 
+      { "http://snomed.info/sct#25659002", NarrowedStructure }, 
+      { "25672001", BilateralHyperplasia }, 
+      { "http://snomed.info/sct#25672001", BilateralHyperplasia }, 
+      { "25694009", Papule }, 
+      { "http://snomed.info/sct#25694009", Papule }, 
+      { "2570008", TractionDiverticulum }, 
+      { "http://snomed.info/sct#2570008", TractionDiverticulum }, 
+      { "25723000", Dysplasia }, 
+      { "http://snomed.info/sct#25723000", Dysplasia }, 
+      { "25733008", BurnInjuryWithCharring }, 
+      { "http://snomed.info/sct#25733008", BurnInjuryWithCharring }, 
+      { "25751009", LossOfFluid }, 
+      { "http://snomed.info/sct#25751009", LossOfFluid }, 
+      { "25774008", AnomalousArterialConnection }, 
+      { "http://snomed.info/sct#25774008", AnomalousArterialConnection }, 
+      { "25840002", DeepCaries }, 
+      { "http://snomed.info/sct#25840002", DeepCaries }, 
+      { "25845007", HealingUlcer }, 
+      { "http://snomed.info/sct#25845007", HealingUlcer }, 
+      { "25874003", EndometrioidCystadenofibromaBorderlineMalignancy }, 
+      { "http://snomed.info/sct#25874003", EndometrioidCystadenofibromaBorderlineMalignancy }, 
+      { "25889007", BenignFibrousHistiocytoma }, 
+      { "http://snomed.info/sct#25889007", BenignFibrousHistiocytoma }, 
+      { "259009", FibrousBody }, 
+      { "http://snomed.info/sct#259009", FibrousBody }, 
+      { "25910003", PapillaryCarcinoma }, 
+      { "http://snomed.info/sct#25910003", PapillaryCarcinoma }, 
+      { "25979007", AcuteMucousInflammation }, 
+      { "http://snomed.info/sct#25979007", AcuteMucousInflammation }, 
+      { "26019009", RetinoblastomaDifferentiated }, 
+      { "http://snomed.info/sct#26019009", RetinoblastomaDifferentiated }, 
+      { "26036001", Obstruction }, 
+      { "http://snomed.info/sct#26036001", Obstruction }, 
+      { "26138003", GliomatosisCerebri }, 
+      { "http://snomed.info/sct#26138003", GliomatosisCerebri }, 
+      { "26209007", GiantComedo }, 
+      { "http://snomed.info/sct#26209007", GiantComedo }, 
+      { "26211003", JuxtacorticalChondrosarcoma }, 
+      { "http://snomed.info/sct#26211003", JuxtacorticalChondrosarcoma }, 
+      { "26246006", PlasmaCellInflammation }, 
+      { "http://snomed.info/sct#26246006", PlasmaCellInflammation }, 
+      { "26269009", PoststenoticDilatation }, 
+      { "http://snomed.info/sct#26269009", PoststenoticDilatation }, 
+      { "26310004", Fold }, 
+      { "http://snomed.info/sct#26310004", Fold }, 
+      { "26317001", AcuteUlcer }, 
+      { "http://snomed.info/sct#26317001", AcuteUlcer }, 
+      { "26325004", Melanocytoma }, 
+      { "http://snomed.info/sct#26325004", Melanocytoma }, 
+      { "26344006", AnomalousVenousDrainage }, 
+      { "http://snomed.info/sct#26344006", AnomalousVenousDrainage }, 
+      { "26372004", Luteoma }, 
+      { "http://snomed.info/sct#26372004", Luteoma }, 
+      { "26396009", DislocationIncomplete }, 
+      { "http://snomed.info/sct#26396009", DislocationIncomplete }, 
+      { "26496005", AtypicalFibrousHistiocytoma }, 
+      { "http://snomed.info/sct#26496005", AtypicalFibrousHistiocytoma }, 
+      { "26514007", DrainingWound }, 
+      { "http://snomed.info/sct#26514007", DrainingWound }, 
+      { "26545006", MacrofollicularAdenoma }, 
+      { "http://snomed.info/sct#26545006", MacrofollicularAdenoma }, 
+      { "26577009", SpontaneousAmputatedStructure }, 
+      { "http://snomed.info/sct#26577009", SpontaneousAmputatedStructure }, 
+      { "26638004", WaterClearCellAdenoma }, 
+      { "http://snomed.info/sct#26638004", WaterClearCellAdenoma }, 
+      { "26696002", ChemicalBurn }, 
+      { "http://snomed.info/sct#26696002", ChemicalBurn }, 
+      { "26713004", NonOcclusiveThrombus }, 
+      { "http://snomed.info/sct#26713004", NonOcclusiveThrombus }, 
+      { "26727009", MultipleThromboembolism }, 
+      { "http://snomed.info/sct#26727009", MultipleThromboembolism }, 
+      { "26735007", Gynandroblastoma }, 
+      { "http://snomed.info/sct#26735007", Gynandroblastoma }, 
+      { "26751004", OrganizingInflammation }, 
+      { "http://snomed.info/sct#26751004", OrganizingInflammation }, 
+      { "26759002", EmbryonalRest }, 
+      { "http://snomed.info/sct#26759002", EmbryonalRest }, 
+      { "26810009", Angiokeratoma }, 
+      { "http://snomed.info/sct#26810009", Angiokeratoma }, 
+      { "26819005", TartCell }, 
+      { "http://snomed.info/sct#26819005", TartCell }, 
+      { "26845001", DissectingAneurysm }, 
+      { "http://snomed.info/sct#26845001", DissectingAneurysm }, 
+      { "26860003", SecondaryHypertrophy }, 
+      { "http://snomed.info/sct#26860003", SecondaryHypertrophy }, 
+      { "26888009", MalignantOdontogenicTumor }, 
+      { "http://snomed.info/sct#26888009", MalignantOdontogenicTumor }, 
+      { "26927002", MinorDisruption }, 
+      { "http://snomed.info/sct#26927002", MinorDisruption }, 
+      { "26996000", Hyperkeratosis }, 
+      { "http://snomed.info/sct#26996000", Hyperkeratosis }, 
+      { "27006004", VasculiticEruption }, 
+      { "http://snomed.info/sct#27006004", VasculiticEruption }, 
+      { "27058005", NecrotizingGranulomatousInflammation }, 
+      { "http://snomed.info/sct#27058005", NecrotizingGranulomatousInflammation }, 
+      { "27078002", SolidPseudopapillaryTumor }, 
+      { "http://snomed.info/sct#27078002", SolidPseudopapillaryTumor }, 
+      { "27090000", TCCTransitionalCellCarcinoma }, 
+      { "http://snomed.info/sct#27090000", TCCTransitionalCellCarcinoma }, 
+      { "27092008", AmeloblasticFibrosarcoma }, 
+      { "http://snomed.info/sct#27092008", AmeloblasticFibrosarcoma }, 
+      { "2710003", Fibrolipoma }, 
+      { "http://snomed.info/sct#2710003", Fibrolipoma }, 
+      { "27159004", Haploidy }, 
+      { "http://snomed.info/sct#27159004", Haploidy }, 
+      { "27230006", BasalCellAdenoma }, 
+      { "http://snomed.info/sct#27230006", BasalCellAdenoma }, 
+      { "27266007", PseudoObstruction }, 
+      { "http://snomed.info/sct#27266007", PseudoObstruction }, 
+      { "27313007", SpindleCellLipoma }, 
+      { "http://snomed.info/sct#27313007", SpindleCellLipoma }, 
+      { "27317008", CompleteTransposition }, 
+      { "http://snomed.info/sct#27317008", CompleteTransposition }, 
+      { "27325005", AtypicalGastricMetaplasia }, 
+      { "http://snomed.info/sct#27325005", AtypicalGastricMetaplasia }, 
+      { "27329004", BasophilicDegeneration }, 
+      { "http://snomed.info/sct#27329004", BasophilicDegeneration }, 
+      { "2734008", MajorInjury }, 
+      { "http://snomed.info/sct#2734008", MajorInjury }, 
+      { "2735009", PapillaryCystadenocarcinoma }, 
+      { "http://snomed.info/sct#2735009", PapillaryCystadenocarcinoma }, 
+      { "27367001", WrinkledStructure }, 
+      { "http://snomed.info/sct#27367001", WrinkledStructure }, 
+      { "27391005", HamartomatousPolyp }, 
+      { "http://snomed.info/sct#27391005", HamartomatousPolyp }, 
+      { "27461004", ImmunoproliferativeSmallIntestinalDisease }, 
+      { "http://snomed.info/sct#27461004", ImmunoproliferativeSmallIntestinalDisease }, 
+      { "27510006", FractureOpenStellate }, 
+      { "http://snomed.info/sct#27510006", FractureOpenStellate }, 
+      { "27515001", Avulsion }, 
+      { "http://snomed.info/sct#27515001", Avulsion }, 
+      { "27551008", Stricture }, 
+      { "http://snomed.info/sct#27551008", Stricture }, 
+      { "27580004", AbnormalNuclearCytoplasmicRatio }, 
+      { "http://snomed.info/sct#27580004", AbnormalNuclearCytoplasmicRatio }, 
+      { "27605001", EndometrialGestationalAlteration }, 
+      { "http://snomed.info/sct#27605001", EndometrialGestationalAlteration }, 
+      { "2763006", Comedo }, 
+      { "http://snomed.info/sct#2763006", Comedo }, 
+      { "27721004", VonMeyenburgComplex }, 
+      { "http://snomed.info/sct#27721004", VonMeyenburgComplex }, 
+      { "27799005", PostinflammatoryHypopigmentation }, 
+      { "http://snomed.info/sct#27799005", PostinflammatoryHypopigmentation }, 
+      { "27809005", ProgressiveObstruction }, 
+      { "http://snomed.info/sct#27809005", ProgressiveObstruction }, 
+      { "2784001", TractionInjury }, 
+      { "http://snomed.info/sct#2784001", TractionInjury }, 
+      { "27849002", MyxoidLiposarcoma }, 
+      { "http://snomed.info/sct#27849002", MyxoidLiposarcoma }, 
+      { "27876002", MultipleInfarcts }, 
+      { "http://snomed.info/sct#27876002", MultipleInfarcts }, 
+      { "27881006", BonyCallus }, 
+      { "http://snomed.info/sct#27881006", BonyCallus }, 
+      { "27890004", CervicalMucousArborization }, 
+      { "http://snomed.info/sct#27890004", CervicalMucousArborization }, 
+      { "27925004", Nodule }, 
+      { "http://snomed.info/sct#27925004", Nodule }, 
+      { "27952009", CongenitalMultiseptation }, 
+      { "http://snomed.info/sct#27952009", CongenitalMultiseptation }, 
+      { "28047004", EmbryonalCarcinoma }, 
+      { "http://snomed.info/sct#28047004", EmbryonalCarcinoma }, 
+      { "28054005", CutaneousTCellLymphoma }, 
+      { "http://snomed.info/sct#28054005", CutaneousTCellLymphoma }, 
+      { "28087009", DelayedUnionOfFracture }, 
+      { "http://snomed.info/sct#28087009", DelayedUnionOfFracture }, 
+      { "28126000", SevereKoilocytoticAtypia }, 
+      { "http://snomed.info/sct#28126000", SevereKoilocytoticAtypia }, 
+      { "28146005", LipochromeHistiocytosis }, 
+      { "http://snomed.info/sct#28146005", LipochromeHistiocytosis }, 
+      { "28173006", FollicularAdenocarcinomaWellDifferentiated }, 
+      { "http://snomed.info/sct#28173006", FollicularAdenocarcinomaWellDifferentiated }, 
+      { "28208008", EdematousInfarct }, 
+      { "http://snomed.info/sct#28208008", EdematousInfarct }, 
+      { "28218003", SevereColumnarCellAtypia }, 
+      { "http://snomed.info/sct#28218003", SevereColumnarCellAtypia }, 
+      { "28237007", MelanoticNeurofibroma }, 
+      { "http://snomed.info/sct#28237007", MelanoticNeurofibroma }, 
+      { "28307001", Germinoma }, 
+      { "http://snomed.info/sct#28307001", Germinoma }, 
+      { "28325008", EmbryonalCarcinomaPolyembryonalType }, 
+      { "http://snomed.info/sct#28325008", EmbryonalCarcinomaPolyembryonalType }, 
+      { "28351005", Myxosarcoma }, 
+      { "http://snomed.info/sct#28351005", Myxosarcoma }, 
+      { "28543008", Visceromegaly }, 
+      { "http://snomed.info/sct#28543008", Visceromegaly }, 
+      { "28558000", VillousAdenocarcinoma }, 
+      { "http://snomed.info/sct#28558000", VillousAdenocarcinoma }, 
+      { "28569002", MuscleFiberChange }, 
+      { "http://snomed.info/sct#28569002", MuscleFiberChange }, 
+      { "28655007", LiposarcomaDifferentiated }, 
+      { "http://snomed.info/sct#28655007", LiposarcomaDifferentiated }, 
+      { "28727003", OdontogenicCyst }, 
+      { "http://snomed.info/sct#28727003", OdontogenicCyst }, 
+      { "28733007", CompoundOdontoma }, 
+      { "http://snomed.info/sct#28733007", CompoundOdontoma }, 
+      { "28781000", InternalHyperostosis }, 
+      { "http://snomed.info/sct#28781000", InternalHyperostosis }, 
+      { "28789003", PancakeCell }, 
+      { "http://snomed.info/sct#28789003", PancakeCell }, 
+      { "2881000", Anisokaryosis }, 
+      { "http://snomed.info/sct#2881000", Anisokaryosis }, 
+      { "28831000", GunshotContusionRing }, 
+      { "http://snomed.info/sct#28831000", GunshotContusionRing }, 
+      { "28836005", ImpactedFracture }, 
+      { "http://snomed.info/sct#28836005", ImpactedFracture }, 
+      { "28852008", InternalBlindCongenitalFistula }, 
+      { "http://snomed.info/sct#28852008", InternalBlindCongenitalFistula }, 
+      { "28878004", FibrinThrombus }, 
+      { "http://snomed.info/sct#28878004", FibrinThrombus }, 
+      { "28899001", SCCSquamousCellCarcinoma }, 
+      { "http://snomed.info/sct#28899001", SCCSquamousCellCarcinoma }, 
+      { "28941001", CongenitalAdhesion }, 
+      { "http://snomed.info/sct#28941001", CongenitalAdhesion }, 
+      { "28950004", AcutePromyelocyticLeukemiaT1517Q22Q1112 }, 
+      { "http://snomed.info/sct#28950004", AcutePromyelocyticLeukemiaT1517Q22Q1112 }, 
+      { "28953002", Angiomyosarcoma }, 
+      { "http://snomed.info/sct#28953002", Angiomyosarcoma }, 
+      { "28960008", Arteriosclerosis }, 
+      { "http://snomed.info/sct#28960008", Arteriosclerosis }, 
+      { "29020002", ComplexOdontoma }, 
+      { "http://snomed.info/sct#29020002", ComplexOdontoma }, 
+      { "29144003", CentralCores }, 
+      { "http://snomed.info/sct#29144003", CentralCores }, 
+      { "29185008", FattyDegeneration }, 
+      { "http://snomed.info/sct#29185008", FattyDegeneration }, 
+      { "29209006", AlzheimerGlialChange }, 
+      { "http://snomed.info/sct#29209006", AlzheimerGlialChange }, 
+      { "29370006", MalignantPheochromocytoma }, 
+      { "http://snomed.info/sct#29370006", MalignantPheochromocytoma }, 
+      { "29463007", KeratinPlug }, 
+      { "http://snomed.info/sct#29463007", KeratinPlug }, 
+      { "29483008", CalcifiedAtheroma }, 
+      { "http://snomed.info/sct#29483008", CalcifiedAtheroma }, 
+      { "2952002", ProliferativeInflammation }, 
+      { "http://snomed.info/sct#2952002", ProliferativeInflammation }, 
+      { "2953007", MicroglandularHyperplasia }, 
+      { "http://snomed.info/sct#2953007", MicroglandularHyperplasia }, 
+      { "2954001", SupernumeraryDeciduousTooth }, 
+      { "http://snomed.info/sct#2954001", SupernumeraryDeciduousTooth }, 
+      { "2962009", AdenofibromaNoICDOSubtype }, 
+      { "http://snomed.info/sct#2962009", AdenofibromaNoICDOSubtype }, 
+      { "29696001", Prolapse }, 
+      { "http://snomed.info/sct#29696001", Prolapse }, 
+      { "29771007", WolffianBodyRest }, 
+      { "http://snomed.info/sct#29771007", WolffianBodyRest }, 
+      { "29792007", TrabecularAdenocarcinoma }, 
+      { "http://snomed.info/sct#29792007", TrabecularAdenocarcinoma }, 
+      { "2985005", MammaryPagetQuoteSDisease }, 
+      { "http://snomed.info/sct#2985005", MammaryPagetQuoteSDisease }, 
+      { "29856000", ChromosomeFragment }, 
+      { "http://snomed.info/sct#29856000", ChromosomeFragment }, 
+      { "29996004", Tetrasomy }, 
+      { "http://snomed.info/sct#29996004", Tetrasomy }, 
+      { "30098003", Hyperemia }, 
+      { "http://snomed.info/sct#30098003", Hyperemia }, 
+      { "30156004", DuctalCarcinomaCribriformType }, 
+      { "http://snomed.info/sct#30156004", DuctalCarcinomaCribriformType }, 
+      { "30213001", LymphaticEdema }, 
+      { "http://snomed.info/sct#30213001", LymphaticEdema }, 
+      { "30217000", Proliferation }, 
+      { "http://snomed.info/sct#30217000", Proliferation }, 
+      { "30285000", Verruca }, 
+      { "http://snomed.info/sct#30285000", Verruca }, 
+      { "30289006", EndometrioidCarcinoma }, 
+      { "http://snomed.info/sct#30289006", EndometrioidCarcinoma }, 
+      { "30301008", FoetalAdenoma }, 
+      { "http://snomed.info/sct#30301008", FoetalAdenoma }, 
+      { "30321009", Remyelination }, 
+      { "http://snomed.info/sct#30321009", Remyelination }, 
+      { "30383009", MalignantBiphasicMesothelioma }, 
+      { "http://snomed.info/sct#30383009", MalignantBiphasicMesothelioma }, 
+      { "30386001", RadiationInjuryWithNecrosis }, 
+      { "http://snomed.info/sct#30386001", RadiationInjuryWithNecrosis }, 
+      { "30419000", Leukostasis }, 
+      { "http://snomed.info/sct#30419000", Leukostasis }, 
+      { "30425001", Osteolysis }, 
+      { "http://snomed.info/sct#30425001", Osteolysis }, 
+      { "30469008", BuhotCell }, 
+      { "http://snomed.info/sct#30469008", BuhotCell }, 
+      { "30494009", JunctionalMelanocyticNevus }, 
+      { "http://snomed.info/sct#30494009", JunctionalMelanocyticNevus }, 
+      { "30543000", FractureIncomplete }, 
+      { "http://snomed.info/sct#30543000", FractureIncomplete }, 
+      { "30546008", MesonephroidClearCellAdenocarcinoma }, 
+      { "http://snomed.info/sct#30546008", MesonephroidClearCellAdenocarcinoma }, 
+      { "30566004", NonInfiltratingIntraductalPapillaryAdenocarcinoma }, 
+      { "http://snomed.info/sct#30566004", NonInfiltratingIntraductalPapillaryAdenocarcinoma }, 
+      { "30619009", AntemortemInjury }, 
+      { "http://snomed.info/sct#30619009", AntemortemInjury }, 
+      { "30649006", BasalCellTumorUncertainWhetherBenignOrMalignant }, 
+      { "http://snomed.info/sct#30649006", BasalCellTumorUncertainWhetherBenignOrMalignant }, 
+      { "30651005", MenstrualAlterationOfVagina }, 
+      { "http://snomed.info/sct#30651005", MenstrualAlterationOfVagina }, 
+      { "30685006", AtypicalLymphoidHyperplasia }, 
+      { "http://snomed.info/sct#30685006", AtypicalLymphoidHyperplasia }, 
+      { "30691008", AnomalousOriginOfArtery }, 
+      { "http://snomed.info/sct#30691008", AnomalousOriginOfArtery }, 
+      { "30695004", IncompleteBlindCongenitalFistula }, 
+      { "http://snomed.info/sct#30695004", IncompleteBlindCongenitalFistula }, 
+      { "30699005", CarotidBodyTumor }, 
+      { "http://snomed.info/sct#30699005", CarotidBodyTumor }, 
+      { "30713000", HypernephroidTumor }, 
+      { "http://snomed.info/sct#30713000", HypernephroidTumor }, 
+      { "30727005", CapillaryTelangiectasia }, 
+      { "http://snomed.info/sct#30727005", CapillaryTelangiectasia }, 
+      { "30771009", HeavyMetalPigmentation }, 
+      { "http://snomed.info/sct#30771009", HeavyMetalPigmentation }, 
+      { "30812002", OverridingStructures }, 
+      { "http://snomed.info/sct#30812002", OverridingStructures }, 
+      { "30867001", Carnification }, 
+      { "http://snomed.info/sct#30867001", Carnification }, 
+      { "30891005", Mummification }, 
+      { "http://snomed.info/sct#30891005", Mummification }, 
+      { "30902005", FractureOpenImpacted }, 
+      { "http://snomed.info/sct#30902005", FractureOpenImpacted }, 
+      { "30924005", RhabdomyosarcomaNoSubtype }, 
+      { "http://snomed.info/sct#30924005", RhabdomyosarcomaNoSubtype }, 
+      { "30938003", LanghansGiantCell }, 
+      { "http://snomed.info/sct#30938003", LanghansGiantCell }, 
+      { "30962008", AcuteMyelomonocyticLeukemia }, 
+      { "http://snomed.info/sct#30962008", AcuteMyelomonocyticLeukemia }, 
+      { "3102004", AnaplasticOligodendroglioma }, 
+      { "http://snomed.info/sct#3102004", AnaplasticOligodendroglioma }, 
+      { "31040001", LinearCircularAtrophyOfLowerExtremities }, 
+      { "http://snomed.info/sct#31040001", LinearCircularAtrophyOfLowerExtremities }, 
+      { "31069005", FibroepithelialPolyp }, 
+      { "http://snomed.info/sct#31069005", FibroepithelialPolyp }, 
+      { "31092005", ZahnInfarct }, 
+      { "http://snomed.info/sct#31092005", ZahnInfarct }, 
+      { "31098009", MassiveFibrosis }, 
+      { "http://snomed.info/sct#31098009", MassiveFibrosis }, 
+      { "31104000", BenignHemangioendothelioma }, 
+      { "http://snomed.info/sct#31104000", BenignHemangioendothelioma }, 
+      { "31113003", Diverticulum }, 
+      { "http://snomed.info/sct#31113003", Diverticulum }, 
+      { "31131002", VipomaMalignant }, 
+      { "http://snomed.info/sct#31131002", VipomaMalignant }, 
+      { "31186001", Chondroma }, 
+      { "http://snomed.info/sct#31186001", Chondroma }, 
+      { "31279000", DelayedUnionOfStellateFracture }, 
+      { "http://snomed.info/sct#31279000", DelayedUnionOfStellateFracture }, 
+      { "31296004", ThecaCellGranulosaCellTumor }, 
+      { "http://snomed.info/sct#31296004", ThecaCellGranulosaCellTumor }, 
+      { "31313009", BridgingFibrosis }, 
+      { "http://snomed.info/sct#31313009", BridgingFibrosis }, 
+      { "31390008", EpithelialHyperplasia }, 
+      { "http://snomed.info/sct#31390008", EpithelialHyperplasia }, 
+      { "3139003", BallooningDegeneration }, 
+      { "http://snomed.info/sct#3139003", BallooningDegeneration }, 
+      { "31396002", MucocarcinoidTumorMalignant }, 
+      { "http://snomed.info/sct#31396002", MucocarcinoidTumorMalignant }, 
+      { "31470003", Adenosarcoma }, 
+      { "http://snomed.info/sct#31470003", Adenosarcoma }, 
+      { "31478005", Rhagades }, 
+      { "http://snomed.info/sct#31478005", Rhagades }, 
+      { "31511007", FibrousNonunion }, 
+      { "http://snomed.info/sct#31511007", FibrousNonunion }, 
+      { "31590009", FerrocalcinoticDeposition }, 
+      { "http://snomed.info/sct#31590009", FerrocalcinoticDeposition }, 
+      { "31593006", MinimalLesion }, 
+      { "http://snomed.info/sct#31593006", MinimalLesion }, 
+      { "31653004", FibromuscularDysplasia }, 
+      { "http://snomed.info/sct#31653004", FibromuscularDysplasia }, 
+      { "31671006", TransitionalPinealTumor }, 
+      { "http://snomed.info/sct#31671006", TransitionalPinealTumor }, 
+      { "3172003", LymphoepithelioidLymphoma }, 
+      { "http://snomed.info/sct#3172003", LymphoepithelioidLymphoma }, 
+      { "31739005", LateralAbnormalCurvature }, 
+      { "http://snomed.info/sct#31739005", LateralAbnormalCurvature }, 
+      { "31765009", BilateralCongenitalFailureOfFusion }, 
+      { "http://snomed.info/sct#31765009", BilateralCongenitalFailureOfFusion }, 
+      { "31794002", SympatheticParaganglioma }, 
+      { "http://snomed.info/sct#31794002", SympatheticParaganglioma }, 
+      { "31807009", PersistentEmbryonicStructure }, 
+      { "http://snomed.info/sct#31807009", PersistentEmbryonicStructure }, 
+      { "31830003", RupturedEpithelialInclusionCyst }, 
+      { "http://snomed.info/sct#31830003", RupturedEpithelialInclusionCyst }, 
+      { "31883006", FusedStructure }, 
+      { "http://snomed.info/sct#31883006", FusedStructure }, 
+      { "31980008", NecrotizingInflammation }, 
+      { "http://snomed.info/sct#31980008", NecrotizingInflammation }, 
+      { "31986002", AnimalBite }, 
+      { "http://snomed.info/sct#31986002", AnimalBite }, 
+      { "32008003", MildTransitionalCellAtypia }, 
+      { "http://snomed.info/sct#32008003", MildTransitionalCellAtypia }, 
+      { "32037004", JugulotympanicParaganglioma }, 
+      { "http://snomed.info/sct#32037004", JugulotympanicParaganglioma }, 
+      { "32048006", AdenomaNoSubtype }, 
+      { "http://snomed.info/sct#32048006", AdenomaNoSubtype }, 
+      { "32071008", StrumalCarcinoid }, 
+      { "http://snomed.info/sct#32071008", StrumalCarcinoid }, 
+      { "32140001", PapillaryCystadenoma }, 
+      { "http://snomed.info/sct#32140001", PapillaryCystadenoma }, 
+      { "32224006", CoagulativeNecrosis }, 
+      { "http://snomed.info/sct#32224006", CoagulativeNecrosis }, 
+      { "32272007", SweatGlandAdenocarcinoma }, 
+      { "http://snomed.info/sct#32272007", SweatGlandAdenocarcinoma }, 
+      { "32274008", StellateSpontaneousPseudoscars }, 
+      { "http://snomed.info/sct#32274008", StellateSpontaneousPseudoscars }, 
+      { "32280000", SubacuteLymphoidLeukemiaObs }, 
+      { "http://snomed.info/sct#32280000", SubacuteLymphoidLeukemiaObs }, 
+      { "32288007", SerousCyst }, 
+      { "http://snomed.info/sct#32288007", SerousCyst }, 
+      { "32296002", IntraductalPapillomatosis }, 
+      { "http://snomed.info/sct#32296002", IntraductalPapillomatosis }, 
+      { "32322008", SubchondralBoneCyst }, 
+      { "http://snomed.info/sct#32322008", SubchondralBoneCyst }, 
+      { "32408007", PiecemealNecrosis }, 
+      { "http://snomed.info/sct#32408007", PiecemealNecrosis }, 
+      { "32416003", AtypicalHyperplasia }, 
+      { "http://snomed.info/sct#32416003", AtypicalHyperplasia }, 
+      { "32434004", PulmonaryAdenomatosis }, 
+      { "http://snomed.info/sct#32434004", PulmonaryAdenomatosis }, 
+      { "32456001", DesmoplasticNodularMedulloblastoma }, 
+      { "http://snomed.info/sct#32456001", DesmoplasticNodularMedulloblastoma }, 
+      { "32512003", MalignantNonChromaffinParaganglioma }, 
+      { "http://snomed.info/sct#32512003", MalignantNonChromaffinParaganglioma }, 
+      { "32525006", FattyNevus }, 
+      { "http://snomed.info/sct#32525006", FattyNevus }, 
+      { "32651000", ArteriolosclerosisWithFibrinoidNecrosis }, 
+      { "http://snomed.info/sct#32651000", ArteriolosclerosisWithFibrinoidNecrosis }, 
+      { "32693004", Demyelination }, 
+      { "http://snomed.info/sct#32693004", Demyelination }, 
+      { "32776006", CongenitalVascularAnomaly }, 
+      { "http://snomed.info/sct#32776006", CongenitalVascularAnomaly }, 
+      { "328005", FollicularPapule }, 
+      { "http://snomed.info/sct#328005", FollicularPapule }, 
+      { "32837003", Hemangioblastomatosis }, 
+      { "http://snomed.info/sct#32837003", Hemangioblastomatosis }, 
+      { "32844007", MixedTeratomaAndSeminoma }, 
+      { "http://snomed.info/sct#32844007", MixedTeratomaAndSeminoma }, 
+      { "32884003", HematinPigmentation }, 
+      { "http://snomed.info/sct#32884003", HematinPigmentation }, 
+      { "32913002", MedullaryCarcinoma }, 
+      { "http://snomed.info/sct#32913002", MedullaryCarcinoma }, 
+      { "32915009", ReedSternbergCell }, 
+      { "http://snomed.info/sct#32915009", ReedSternbergCell }, 
+      { "32968003", InflammatoryCarcinoma }, 
+      { "http://snomed.info/sct#32968003", InflammatoryCarcinoma }, 
+      { "33059009", Trichofolliculoma }, 
+      { "http://snomed.info/sct#33059009", Trichofolliculoma }, 
+      { "33080003", FractureUnunited }, 
+      { "http://snomed.info/sct#33080003", FractureUnunited }, 
+      { "33125008", HematoidinPigmentation }, 
+      { "http://snomed.info/sct#33125008", HematoidinPigmentation }, 
+      { "3313007", ChronicSuperficialUlcer }, 
+      { "http://snomed.info/sct#3313007", ChronicSuperficialUlcer }, 
+      { "33170000", MucinousAdenoma }, 
+      { "http://snomed.info/sct#33170000", MucinousAdenoma }, 
+      { "33176006", MalignantHemangioendothelioma }, 
+      { "http://snomed.info/sct#33176006", MalignantHemangioendothelioma }, 
+      { "33178007", DelayedUnionOfLongitudinalFracture }, 
+      { "http://snomed.info/sct#33178007", DelayedUnionOfLongitudinalFracture }, 
+      { "33196003", Micromegakaryocyte }, 
+      { "http://snomed.info/sct#33196003", Micromegakaryocyte }, 
+      { "33288004", MildEpithelialDysplasia }, 
+      { "http://snomed.info/sct#33288004", MildEpithelialDysplasia }, 
+      { "33359002", Degeneration }, 
+      { "http://snomed.info/sct#33359002", Degeneration }, 
+      { "33377007", CavernousHemangioma }, 
+      { "http://snomed.info/sct#33377007", CavernousHemangioma }, 
+      { "33385003", GeneralizedRecession }, 
+      { "http://snomed.info/sct#33385003", GeneralizedRecession }, 
+      { "33387006", IntracysticHyperplasia }, 
+      { "http://snomed.info/sct#33387006", IntracysticHyperplasia }, 
+      { "33408004", FractureUnunitedSegmental }, 
+      { "http://snomed.info/sct#33408004", FractureUnunitedSegmental }, 
+      { "33429008", MenstrualInvolutionOfBreast }, 
+      { "http://snomed.info/sct#33429008", MenstrualInvolutionOfBreast }, 
+      { "33475000", NeuropilThread }, 
+      { "http://snomed.info/sct#33475000", NeuropilThread }, 
+      { "33593002", VascularWallDegeneration }, 
+      { "http://snomed.info/sct#33593002", VascularWallDegeneration }, 
+      { "33681003", OsteosarcomaInPagetDiseaseOfBone }, 
+      { "http://snomed.info/sct#33681003", OsteosarcomaInPagetDiseaseOfBone }, 
+      { "3380003", SuperficialInjury }, 
+      { "http://snomed.info/sct#3380003", SuperficialInjury }, 
+      { "33851008", SubacuteNecrosis }, 
+      { "http://snomed.info/sct#33851008", SubacuteNecrosis }, 
+      { "33872006", SmallNonCleavedCell }, 
+      { "http://snomed.info/sct#33872006", SmallNonCleavedCell }, 
+      { "33873001", ConvolutedCell }, 
+      { "http://snomed.info/sct#33873001", ConvolutedCell }, 
+      { "33889003", AtypicalLobularHyperplasia }, 
+      { "http://snomed.info/sct#33889003", AtypicalLobularHyperplasia }, 
+      { "339008", Blister }, 
+      { "http://snomed.info/sct#339008", Blister }, 
+      { "33929001", HistiocytoidHemangioma }, 
+      { "http://snomed.info/sct#33929001", HistiocytoidHemangioma }, 
+      { "33940009", CaseousNecrosis }, 
+      { "http://snomed.info/sct#33940009", CaseousNecrosis }, 
+      { "3404009", Bite }, 
+      { "http://snomed.info/sct#3404009", Bite }, 
+      { "34058006", BowingDeformity }, 
+      { "http://snomed.info/sct#34058006", BowingDeformity }, 
+      { "34064004", NuclearDegeneration }, 
+      { "http://snomed.info/sct#34064004", NuclearDegeneration }, 
+      { "34081008", PostRadiationCytologicChangesWithDysplasia }, 
+      { "http://snomed.info/sct#34081008", PostRadiationCytologicChangesWithDysplasia }, 
+      { "34087007", Hemiatrophy }, 
+      { "http://snomed.info/sct#34087007", Hemiatrophy }, 
+      { "34110004", SertoliLeydigCellTumorWellDifferentiated }, 
+      { "http://snomed.info/sct#34110004", SertoliLeydigCellTumorWellDifferentiated }, 
+      { "3416003", LengtheningOfShortArm }, 
+      { "http://snomed.info/sct#3416003", LengtheningOfShortArm }, 
+      { "34248003", RheumaticInflammation }, 
+      { "http://snomed.info/sct#34248003", RheumaticInflammation }, 
+      { "34277002", TraumaticDislocationOfMultipleJoints }, 
+      { "http://snomed.info/sct#34277002", TraumaticDislocationOfMultipleJoints }, 
+      { "34305007", FractureMultipleClosed }, 
+      { "http://snomed.info/sct#34305007", FractureMultipleClosed }, 
+      { "34337008", Prolactinoma }, 
+      { "http://snomed.info/sct#34337008", Prolactinoma }, 
+      { "34344004", ConcentricHypertrophy }, 
+      { "http://snomed.info/sct#34344004", ConcentricHypertrophy }, 
+      { "34360000", MalignantFibrousHistiocytoma }, 
+      { "http://snomed.info/sct#34360000", MalignantFibrousHistiocytoma }, 
+      { "34418003", GlandularNecrotizingMetaplasia }, 
+      { "http://snomed.info/sct#34418003", GlandularNecrotizingMetaplasia }, 
+      { "34419006", DecidualAlteration }, 
+      { "http://snomed.info/sct#34419006", DecidualAlteration }, 
+      { "34493008", OsmiophilicStainReaction }, 
+      { "http://snomed.info/sct#34493008", OsmiophilicStainReaction }, 
+      { "34494002", CommunicatingCerebrospinalFluidRetention }, 
+      { "http://snomed.info/sct#34494002", CommunicatingCerebrospinalFluidRetention }, 
+      { "34550005", Glomangiomyoma }, 
+      { "http://snomed.info/sct#34550005", Glomangiomyoma }, 
+      { "34603009", BasalCellAdenocarcinoma }, 
+      { "http://snomed.info/sct#34603009", BasalCellAdenocarcinoma }, 
+      { "34636005", Regeneration }, 
+      { "http://snomed.info/sct#34636005", Regeneration }, 
+      { "34717007", SmudgeCell }, 
+      { "http://snomed.info/sct#34717007", SmudgeCell }, 
+      { "34720004", MenstrualEndometrium }, 
+      { "http://snomed.info/sct#34720004", MenstrualEndometrium }, 
+      { "34785007", Lipolysis }, 
+      { "http://snomed.info/sct#34785007", Lipolysis }, 
+      { "34807008", CongenitalIncompleteExpansion }, 
+      { "http://snomed.info/sct#34807008", CongenitalIncompleteExpansion }, 
+      { "34823008", TumorNecrosis }, 
+      { "http://snomed.info/sct#34823008", TumorNecrosis }, 
+      { "34882000", GiantFibroadenoma }, 
+      { "http://snomed.info/sct#34882000", GiantFibroadenoma }, 
+      { "34941004", OdontogenicMyxoma }, 
+      { "http://snomed.info/sct#34941004", OdontogenicMyxoma }, 
+      { "35013009", PurulentDischarge }, 
+      { "http://snomed.info/sct#35013009", PurulentDischarge }, 
+      { "35073002", InflammatoryPseudotumor }, 
+      { "http://snomed.info/sct#35073002", InflammatoryPseudotumor }, 
+      { "35232005", InfiltratingLobularCarcinomaAndDuctalCarcinomaInSitu }, 
+      { "http://snomed.info/sct#35232005", InfiltratingLobularCarcinomaAndDuctalCarcinomaInSitu }, 
+      { "35262004", Gliosarcoma }, 
+      { "http://snomed.info/sct#35262004", Gliosarcoma }, 
+      { "35287006", MyeloidSarcomaMorphology }, 
+      { "http://snomed.info/sct#35287006", MyeloidSarcomaMorphology }, 
+      { "35327006", Intussusception }, 
+      { "http://snomed.info/sct#35327006", Intussusception }, 
+      { "35336005", GunshotWoundEntranceCloseShot }, 
+      { "http://snomed.info/sct#35336005", GunshotWoundEntranceCloseShot }, 
+      { "354002", TritonTumorMalignant }, 
+      { "http://snomed.info/sct#354002", TritonTumorMalignant }, 
+      { "35453004", AutophagicBodies }, 
+      { "http://snomed.info/sct#35453004", AutophagicBodies }, 
+      { "35506000", SweatRetention }, 
+      { "http://snomed.info/sct#35506000", SweatRetention }, 
+      { "35562000", WaldenstromMacroglobulinemia }, 
+      { "http://snomed.info/sct#35562000", WaldenstromMacroglobulinemia }, 
+      { "35566002", Hematoma }, 
+      { "http://snomed.info/sct#35566002", Hematoma }, 
+      { "35601003", MGUS }, 
+      { "http://snomed.info/sct#35601003", MGUS }, 
+      { "35662008", CongenitalLymphangiomatosis }, 
+      { "http://snomed.info/sct#35662008", CongenitalLymphangiomatosis }, 
+      { "35696001", RupturedInfarct }, 
+      { "http://snomed.info/sct#35696001", RupturedInfarct }, 
+      { "35701008", HemangioblasticMeningioma }, 
+      { "http://snomed.info/sct#35701008", HemangioblasticMeningioma }, 
+      { "35712008", MinorInjury }, 
+      { "http://snomed.info/sct#35712008", MinorInjury }, 
+      { "35714009", PostmortemChange }, 
+      { "http://snomed.info/sct#35714009", PostmortemChange }, 
+      { "35718007", NonKeratinizingSquamousCellCarcinomaSmallCell }, 
+      { "http://snomed.info/sct#35718007", NonKeratinizingSquamousCellCarcinomaSmallCell }, 
+      { "35787005", PostinflammatoryAtrophy }, 
+      { "http://snomed.info/sct#35787005", PostinflammatoryAtrophy }, 
+      { "35813005", FibrocysticChangeProliferativeTypeWithAtypia }, 
+      { "http://snomed.info/sct#35813005", FibrocysticChangeProliferativeTypeWithAtypia }, 
+      { "35828005", Malacia }, 
+      { "http://snomed.info/sct#35828005", Malacia }, 
+      { "35851005", ChronicEmpyema }, 
+      { "http://snomed.info/sct#35851005", ChronicEmpyema }, 
+      { "35872008", SecondaryHyperplasia }, 
+      { "http://snomed.info/sct#35872008", SecondaryHyperplasia }, 
+      { "35917007", AdenocarcinomaNoSubtype }, 
+      { "http://snomed.info/sct#35917007", AdenocarcinomaNoSubtype }, 
+      { "35933005", TearWound }, 
+      { "http://snomed.info/sct#35933005", TearWound }, 
+      { "35944002", RadiationUlcer }, 
+      { "http://snomed.info/sct#35944002", RadiationUlcer }, 
+      { "35992002", PredecidualAlteration }, 
+      { "http://snomed.info/sct#35992002", PredecidualAlteration }, 
+      { "36024000", Gangrenous }, 
+      { "http://snomed.info/sct#36024000", Gangrenous }, 
+      { "36060005", HemangiopericyticMeningiomaObs }, 
+      { "http://snomed.info/sct#36060005", HemangiopericyticMeningiomaObs }, 
+      { "36087009", AdenocarcinomaInVillousAdenoma }, 
+      { "http://snomed.info/sct#36087009", AdenocarcinomaInVillousAdenoma }, 
+      { "3612005", ExternalSpontaneousFistula }, 
+      { "http://snomed.info/sct#3612005", ExternalSpontaneousFistula }, 
+      { "36161006", WallerianDegeneration }, 
+      { "http://snomed.info/sct#36161006", WallerianDegeneration }, 
+      { "36191001", Perforation }, 
+      { "http://snomed.info/sct#36191001", Perforation }, 
+      { "36195005", NodularHyperplasia }, 
+      { "http://snomed.info/sct#36195005", NodularHyperplasia }, 
+      { "36207003", AirEmbolus }, 
+      { "http://snomed.info/sct#36207003", AirEmbolus }, 
+      { "36223003", DelayedUnionOfIntraarticularFracture }, 
+      { "http://snomed.info/sct#36223003", DelayedUnionOfIntraarticularFracture }, 
+      { "36279001", Lipogranuloma }, 
+      { "http://snomed.info/sct#36279001", Lipogranuloma }, 
+      { "36310008", AlveolarAdenocarcinoma }, 
+      { "http://snomed.info/sct#36310008", AlveolarAdenocarcinoma }, 
+      { "36318001", ApocrineCystadenoma }, 
+      { "http://snomed.info/sct#36318001", ApocrineCystadenoma }, 
+      { "36373003", MuscleFiberHypertrophyTypeII }, 
+      { "http://snomed.info/sct#36373003", MuscleFiberHypertrophyTypeII }, 
+      { "36390009", ChronicSuppurativeInflammation }, 
+      { "http://snomed.info/sct#36390009", ChronicSuppurativeInflammation }, 
+      { "3645005", PregnancyLuteoma }, 
+      { "http://snomed.info/sct#3645005", PregnancyLuteoma }, 
+      { "36468008", SurgicallyConstructedOrgan }, 
+      { "http://snomed.info/sct#36468008", SurgicallyConstructedOrgan }, 
+      { "36475009", LowOutputExternalFistula }, 
+      { "http://snomed.info/sct#36475009", LowOutputExternalFistula }, 
+      { "36504009", Ankylosis }, 
+      { "http://snomed.info/sct#36504009", Ankylosis }, 
+      { "36560003", CysticInfarct }, 
+      { "http://snomed.info/sct#36560003", CysticInfarct }, 
+      { "36639000", PsoriasiformEruption }, 
+      { "http://snomed.info/sct#36639000", PsoriasiformEruption }, 
+      { "367004", Clubbing }, 
+      { "http://snomed.info/sct#367004", Clubbing }, 
+      { "36721002", PapillaryMucinousCystadenoma }, 
+      { "http://snomed.info/sct#36721002", PapillaryMucinousCystadenoma }, 
+      { "36731009", Sacculation }, 
+      { "http://snomed.info/sct#36731009", Sacculation }, 
+      { "36741007", SeminomaNoICDOSubtype }, 
+      { "http://snomed.info/sct#36741007", SeminomaNoICDOSubtype }, 
+      { "3679006", PolycysticChange }, 
+      { "http://snomed.info/sct#3679006", PolycysticChange }, 
+      { "36818005", MajorMultipleInjuries }, 
+      { "http://snomed.info/sct#36818005", MajorMultipleInjuries }, 
+      { "36839003", DislocationMultipleClosedAndOpen }, 
+      { "http://snomed.info/sct#36839003", DislocationMultipleClosedAndOpen }, 
+      { "36850000", Retention }, 
+      { "http://snomed.info/sct#36850000", Retention }, 
+      { "36949004", FocalEpithelialHyperplasia }, 
+      { "http://snomed.info/sct#36949004", FocalEpithelialHyperplasia }, 
+      { "37039006", ChromophobeAdenoma }, 
+      { "http://snomed.info/sct#37039006", ChromophobeAdenoma }, 
+      { "37058002", ForeignBodyGiantCellGranuloma }, 
+      { "http://snomed.info/sct#37058002", ForeignBodyGiantCellGranuloma }, 
+      { "37068007", LateralDisplacement }, 
+      { "http://snomed.info/sct#37068007", LateralDisplacement }, 
+      { "37095002", Lipomatosis }, 
+      { "http://snomed.info/sct#37095002", Lipomatosis }, 
+      { "37138001", EpithelioidCellMelanoma }, 
+      { "http://snomed.info/sct#37138001", EpithelioidCellMelanoma }, 
+      { "37159008", GlandularAndMuscularHyperplasia }, 
+      { "http://snomed.info/sct#37159008", GlandularAndMuscularHyperplasia }, 
+      { "37205004", SuperficialWound }, 
+      { "http://snomed.info/sct#37205004", SuperficialWound }, 
+      { "37206003", SynovialSarcomaSpindleCell }, 
+      { "http://snomed.info/sct#37206003", SynovialSarcomaSpindleCell }, 
+      { "37257004", DecreasedMelaninPigmentation }, 
+      { "http://snomed.info/sct#37257004", DecreasedMelaninPigmentation }, 
+      { "37258009", Cementoma }, 
+      { "http://snomed.info/sct#37258009", Cementoma }, 
+      { "37266000", SecretoryEndometrium }, 
+      { "http://snomed.info/sct#37266000", SecretoryEndometrium }, 
+      { "37279009", AmyloidTumor }, 
+      { "http://snomed.info/sct#37279009", AmyloidTumor }, 
+      { "37291000", Eventration }, 
+      { "http://snomed.info/sct#37291000", Eventration }, 
+      { "3821009", BluntInjury }, 
+      { "http://snomed.info/sct#3821009", BluntInjury }, 
+      { "3833004", OdontogenicTumor }, 
+      { "http://snomed.info/sct#3833004", OdontogenicTumor }, 
+      { "3839000", LipidRichCarcinoma }, 
+      { "http://snomed.info/sct#3839000", LipidRichCarcinoma }, 
+      { "3875003", UrateTophus }, 
+      { "http://snomed.info/sct#3875003", UrateTophus }, 
+      { "3898006", BenignTumorMorphology }, 
+      { "http://snomed.info/sct#3898006", BenignTumorMorphology }, 
+      { "394000", AbnormalTrabeculation }, 
+      { "http://snomed.info/sct#394000", AbnormalTrabeculation }, 
+      { "4000000", SevereTransitionalCellAtypia }, 
+      { "http://snomed.info/sct#4000000", SevereTransitionalCellAtypia }, 
+      { "4023002", RecurrentClosedDislocation }, 
+      { "http://snomed.info/sct#4023002", RecurrentClosedDislocation }, 
+      { "4079000", MucoepidermoidCarcinoma }, 
+      { "http://snomed.info/sct#4079000", MucoepidermoidCarcinoma }, 
+      { "4118000", MultilobularChondromaAndOsteoma }, 
+      { "http://snomed.info/sct#4118000", MultilobularChondromaAndOsteoma }, 
+      { "4125007", BursalCyst }, 
+      { "http://snomed.info/sct#4125007", BursalCyst }, 
+      { "4147007", Mass }, 
+      { "http://snomed.info/sct#4147007", Mass }, 
+      { "419008", FunctionalDilatation }, 
+      { "http://snomed.info/sct#419008", FunctionalDilatation }, 
+      { "4196002", Eversion }, 
+      { "http://snomed.info/sct#4196002", Eversion }, 
+      { "420002", AnastomosisHeterocladic }, 
+      { "http://snomed.info/sct#420002", AnastomosisHeterocladic }, 
+      { "4205002", TurkCell }, 
+      { "http://snomed.info/sct#4205002", TurkCell }, 
+      { "4230004", PacinianNeurofibroma }, 
+      { "http://snomed.info/sct#4230004", PacinianNeurofibroma }, 
+      { "4305004", MetastaticSignetRingCellCarcinoma }, 
+      { "http://snomed.info/sct#4305004", MetastaticSignetRingCellCarcinoma }, 
+      { "4392007", MalignantMixedTumorOsteosarcomatousType }, 
+      { "http://snomed.info/sct#4392007", MalignantMixedTumorOsteosarcomatousType }, 
+      { "4476003", AtypicalGlandularCellsOfUndeterminedSignificance }, 
+      { "http://snomed.info/sct#4476003", AtypicalGlandularCellsOfUndeterminedSignificance }, 
+      { "4484004", ChromocenterAlteration }, 
+      { "http://snomed.info/sct#4484004", ChromocenterAlteration }, 
+      { "4513002", ObstructionByTorsionAndAngulationCombinedMechanism }, 
+      { "http://snomed.info/sct#4513002", ObstructionByTorsionAndAngulationCombinedMechanism }, 
+      { "4532008", AcuteInflammation }, 
+      { "http://snomed.info/sct#4532008", AcuteInflammation }, 
+      { "4538007", PapulovesicularEruption }, 
+      { "http://snomed.info/sct#4538007", PapulovesicularEruption }, 
+      { "4541003", CongenitalFailureOfFusion }, 
+      { "http://snomed.info/sct#4541003", CongenitalFailureOfFusion }, 
+      { "4553004", MixedSubependymomaEpendymoma }, 
+      { "http://snomed.info/sct#4553004", MixedSubependymomaEpendymoma }, 
+      { "4584002", ScirrhousAdenocarcinoma }, 
+      { "http://snomed.info/sct#4584002", ScirrhousAdenocarcinoma }, 
+      { "4590003", MetastaticAdenocarcinoma }, 
+      { "http://snomed.info/sct#4590003", MetastaticAdenocarcinoma }, 
+      { "4618001", CongenitalDextrorotation }, 
+      { "http://snomed.info/sct#4618001", CongenitalDextrorotation }, 
+      { "4631006", TubularAdenocarcinoma }, 
+      { "http://snomed.info/sct#4631006", TubularAdenocarcinoma }, 
+      { "4684005", MesonephricDuctHyperplasia }, 
+      { "http://snomed.info/sct#4684005", MesonephricDuctHyperplasia }, 
+      { "4686007", BlisterDueToDegenerationOfBasalCells }, 
+      { "http://snomed.info/sct#4686007", BlisterDueToDegenerationOfBasalCells }, 
+      { "4720007", Dystrophy }, 
+      { "http://snomed.info/sct#4720007", Dystrophy }, 
+      { "4797003", PapillaryAdenocarcinoma }, 
+      { "http://snomed.info/sct#4797003", PapillaryAdenocarcinoma }, 
+      { "4830009", Hyperpigmentation }, 
+      { "http://snomed.info/sct#4830009", Hyperpigmentation }, 
+      { "4857006", Sequestrum }, 
+      { "http://snomed.info/sct#4857006", Sequestrum }, 
+      { "487002", CoilWhorledFibers }, 
+      { "http://snomed.info/sct#487002", CoilWhorledFibers }, 
+      { "4876008", AcuteObstruction }, 
+      { "http://snomed.info/sct#4876008", AcuteObstruction }, 
+      { "4916000", Pleomorphism }, 
+      { "http://snomed.info/sct#4916000", Pleomorphism }, 
+      { "4919007", CongenitalProtrusion }, 
+      { "http://snomed.info/sct#4919007", CongenitalProtrusion }, 
+      { "4935000", AdenocarcinomaInSituInVillousAdenoma }, 
+      { "http://snomed.info/sct#4935000", AdenocarcinomaInSituInVillousAdenoma }, 
+      { "4947006", ContractionBands }, 
+      { "http://snomed.info/sct#4947006", ContractionBands }, 
+      { "4950009", SezarySyndrome }, 
+      { "http://snomed.info/sct#4950009", SezarySyndrome }, 
+      { "4977000", EccrineSpiradenoma }, 
+      { "http://snomed.info/sct#4977000", EccrineSpiradenoma }, 
+      { "5008001", PittingEdema }, 
+      { "http://snomed.info/sct#5008001", PittingEdema }, 
+      { "5014008", BenignInterstitialCellTumor }, 
+      { "http://snomed.info/sct#5014008", BenignInterstitialCellTumor }, 
+      { "5052009", PrimaryCutaneousNeuroendocrineCarcinoma }, 
+      { "http://snomed.info/sct#5052009", PrimaryCutaneousNeuroendocrineCarcinoma }, 
+      { "511008", FibrousMeningioma }, 
+      { "http://snomed.info/sct#511008", FibrousMeningioma }, 
+      { "5178002", BenignSynovioma }, 
+      { "http://snomed.info/sct#5178002", BenignSynovioma }, 
+      { "5183005", InferiorClosedDislocation }, 
+      { "http://snomed.info/sct#5183005", InferiorClosedDislocation }, 
+      { "5188001", RoundCalculus }, 
+      { "http://snomed.info/sct#5188001", RoundCalculus }, 
+      { "5237007", PautrierMicroabscess }, 
+      { "http://snomed.info/sct#5237007", PautrierMicroabscess }, 
+      { "5242004", Synechia }, 
+      { "http://snomed.info/sct#5242004", Synechia }, 
+      { "5244003", IntraductalPapilloma }, 
+      { "http://snomed.info/sct#5244003", IntraductalPapilloma }, 
+      { "5257006", FollicularAdenocarcinoma }, 
+      { "http://snomed.info/sct#5257006", FollicularAdenocarcinoma }, 
+      { "5314004", AcuteDilatation }, 
+      { "http://snomed.info/sct#5314004", AcuteDilatation }, 
+      { "5356000", BowenoidPapulosis }, 
+      { "http://snomed.info/sct#5356000", BowenoidPapulosis }, 
+      { "5399005", DissectingHemorrhage }, 
+      { "http://snomed.info/sct#5399005", DissectingHemorrhage }, 
+      { "5409002", TraumaticEvisceratedStructure }, 
+      { "http://snomed.info/sct#5409002", TraumaticEvisceratedStructure }, 
+      { "5468008", FractureMultiple }, 
+      { "http://snomed.info/sct#5468008", FractureMultiple }, 
+      { "5480000", CanalizedThrombus }, 
+      { "http://snomed.info/sct#5480000", CanalizedThrombus }, 
+      { "5600009", SchneiderianCarcinoma }, 
+      { "http://snomed.info/sct#5600009", SchneiderianCarcinoma }, 
+      { "5640003", GranularAtrophy }, 
+      { "http://snomed.info/sct#5640003", GranularAtrophy }, 
+      { "5658009", AdenocarcinomaInTubulovillousAdenoma }, 
+      { "http://snomed.info/sct#5658009", AdenocarcinomaInTubulovillousAdenoma }, 
+      { "5688000", SquamousCellCarcinomaInSituWithQuestionableStromalInvasion }, 
+      { "http://snomed.info/sct#5688000", SquamousCellCarcinomaInSituWithQuestionableStromalInvasion }, 
+      { "5734001", PressureGroove }, 
+      { "http://snomed.info/sct#5734001", PressureGroove }, 
+      { "575006", Cholesteatoma }, 
+      { "http://snomed.info/sct#575006", Cholesteatoma }, 
+      { "5755004", CysticHyperplasia }, 
+      { "http://snomed.info/sct#5755004", CysticHyperplasia }, 
+      { "5770003", DecompressionInjury }, 
+      { "http://snomed.info/sct#5770003", DecompressionInjury }, 
+      { "5804003", CongenitalGrowthDisproportion }, 
+      { "http://snomed.info/sct#5804003", CongenitalGrowthDisproportion }, 
+      { "5843004", BasaloidCarcinoma }, 
+      { "http://snomed.info/sct#5843004", BasaloidCarcinoma }, 
+      { "5849000", GlialCellReaction }, 
+      { "http://snomed.info/sct#5849000", GlialCellReaction }, 
+      { "5862001", MucousMembraneEruption }, 
+      { "http://snomed.info/sct#5862001", MucousMembraneEruption }, 
+      { "5901005", MultipleInternalInjuries }, 
+      { "http://snomed.info/sct#5901005", MultipleInternalInjuries }, 
+      { "5909007", GlandularStromalAsynchronyOfEndometrium }, 
+      { "http://snomed.info/sct#5909007", GlandularStromalAsynchronyOfEndometrium }, 
+      { "5958006", SmallCellCarcinomaIntermediateCell }, 
+      { "http://snomed.info/sct#5958006", SmallCellCarcinomaIntermediateCell }, 
+      { "5960008", DepressedStructure }, 
+      { "http://snomed.info/sct#5960008", DepressedStructure }, 
+      { "5974001", PressureCone }, 
+      { "http://snomed.info/sct#5974001", PressureCone }, 
+      { "5978003", FractureOpenLongitudinal }, 
+      { "http://snomed.info/sct#5978003", FractureOpenLongitudinal }, 
+      { "605004", SevereInflammatoryAtypia }, 
+      { "http://snomed.info/sct#605004", SevereInflammatoryAtypia }, 
+      { "6078006", MucusRetention }, 
+      { "http://snomed.info/sct#6078006", MucusRetention }, 
+      { "6081001", Deformity }, 
+      { "http://snomed.info/sct#6081001", Deformity }, 
+      { "6120000", OncocyticMetaplasia }, 
+      { "http://snomed.info/sct#6120000", OncocyticMetaplasia }, 
+      { "6151007", AmphophilicStainReaction }, 
+      { "http://snomed.info/sct#6151007", AmphophilicStainReaction }, 
+      { "6219000", NeoplasmMalignantUncertainWhetherPrimaryOrMetastatic }, 
+      { "http://snomed.info/sct#6219000", NeoplasmMalignantUncertainWhetherPrimaryOrMetastatic }, 
+      { "6223008", MildKoilocytoticAtypia }, 
+      { "http://snomed.info/sct#6223008", MildKoilocytoticAtypia }, 
+      { "6250003", Fibromyxosarcoma }, 
+      { "http://snomed.info/sct#6250003", Fibromyxosarcoma }, 
+      { "6266001", GranulomatousInflammation }, 
+      { "http://snomed.info/sct#6266001", GranulomatousInflammation }, 
+      { "6320008", Collagenolysis }, 
+      { "http://snomed.info/sct#6320008", Collagenolysis }, 
+      { "6379007", MultipleAdenomatousPolyps }, 
+      { "http://snomed.info/sct#6379007", MultipleAdenomatousPolyps }, 
+      { "6381009", AlphaHeavyChainDisease }, 
+      { "http://snomed.info/sct#6381009", AlphaHeavyChainDisease }, 
+      { "6406002", MembranousInflammation }, 
+      { "http://snomed.info/sct#6406002", MembranousInflammation }, 
+      { "6437002", Dentinoma }, 
+      { "http://snomed.info/sct#6437002", Dentinoma }, 
+      { "6492006", KlatskinQuoteSTumor }, 
+      { "http://snomed.info/sct#6492006", KlatskinQuoteSTumor }, 
+      { "6574001", Necrosis }, 
+      { "http://snomed.info/sct#6574001", Necrosis }, 
+      { "6579006", SebumRetention }, 
+      { "http://snomed.info/sct#6579006", SebumRetention }, 
+      { "6582001", IntrinsicObstruction }, 
+      { "http://snomed.info/sct#6582001", IntrinsicObstruction }, 
+      { "6609001", Spongiosis }, 
+      { "http://snomed.info/sct#6609001", Spongiosis }, 
+      { "6641007", MetatypicalCarcinoma }, 
+      { "http://snomed.info/sct#6641007", MetatypicalCarcinoma }, 
+      { "6660000", AtypicalIntraductalHyperplasia }, 
+      { "http://snomed.info/sct#6660000", AtypicalIntraductalHyperplasia }, 
+      { "6780007", HemoglobinCast }, 
+      { "http://snomed.info/sct#6780007", HemoglobinCast }, 
+      { "6842002", DesmoplasticFibroma }, 
+      { "http://snomed.info/sct#6842002", DesmoplasticFibroma }, 
+      { "6855001", Macronucleus }, 
+      { "http://snomed.info/sct#6855001", Macronucleus }, 
+      { "6920004", Defect }, 
+      { "http://snomed.info/sct#6920004", Defect }, 
+      { "7003006", ChronicHemorrhage }, 
+      { "http://snomed.info/sct#7003006", ChronicHemorrhage }, 
+      { "7010000", Carcinomatosis }, 
+      { "http://snomed.info/sct#7010000", Carcinomatosis }, 
+      { "7055007", LupusErythematosusCell }, 
+      { "http://snomed.info/sct#7055007", LupusErythematosusCell }, 
+      { "7078001", HemosiderinPigmentation }, 
+      { "http://snomed.info/sct#7078001", HemosiderinPigmentation }, 
+      { "7094008", DilatedPoreOfWiner }, 
+      { "http://snomed.info/sct#7094008", DilatedPoreOfWiner }, 
+      { "7244004", DecidualCast }, 
+      { "http://snomed.info/sct#7244004", DecidualCast }, 
+      { "7300000", LymphoepithelialCarcinoma }, 
+      { "http://snomed.info/sct#7300000", LymphoepithelialCarcinoma }, 
+      { "7313006", OpenDislocationIncomplete }, 
+      { "http://snomed.info/sct#7313006", OpenDislocationIncomplete }, 
+      { "7372009", InflammatoryAtypia }, 
+      { "http://snomed.info/sct#7372009", InflammatoryAtypia }, 
+      { "738003", BallValveObstruction }, 
+      { "http://snomed.info/sct#738003", BallValveObstruction }, 
+      { "7429002", Glomangioma }, 
+      { "http://snomed.info/sct#7429002", Glomangioma }, 
+      { "7643002", CalcifiedHematoma }, 
+      { "http://snomed.info/sct#7643002", CalcifiedHematoma }, 
+      { "7744000", CongestiveHypertrophy }, 
+      { "http://snomed.info/sct#7744000", CongestiveHypertrophy }, 
+      { "7796002", LipogenicPigmentation }, 
+      { "http://snomed.info/sct#7796002", LipogenicPigmentation }, 
+      { "7828002", XanthineCalculus }, 
+      { "http://snomed.info/sct#7828002", XanthineCalculus }, 
+      { "7841003", MacrocyticNormochromicErythrocyte }, 
+      { "http://snomed.info/sct#7841003", MacrocyticNormochromicErythrocyte }, 
+      { "7894007", KaryotypeMorphology }, 
+      { "http://snomed.info/sct#7894007", KaryotypeMorphology }, 
+      { "7905002", LinearOblique }, 
+      { "http://snomed.info/sct#7905002", LinearOblique }, 
+      { "7906001", OpenDislocation }, 
+      { "http://snomed.info/sct#7906001", OpenDislocation }, 
+      { "7939003", LocalizedEdema }, 
+      { "http://snomed.info/sct#7939003", LocalizedEdema }, 
+      { "8005002", IncompleteTransposition }, 
+      { "http://snomed.info/sct#8005002", IncompleteTransposition }, 
+      { "803009", Paraganglioma }, 
+      { "http://snomed.info/sct#803009", Paraganglioma }, 
+      { "8070006", SecretoryAlterationOfVagina }, 
+      { "http://snomed.info/sct#8070006", SecretoryAlterationOfVagina }, 
+      { "8097004", AlveolarAdenoma }, 
+      { "http://snomed.info/sct#8097004", AlveolarAdenoma }, 
+      { "810003", SpindleCellNevus }, 
+      { "http://snomed.info/sct#810003", SpindleCellNevus }, 
+      { "8120005", AcentricChromosome }, 
+      { "http://snomed.info/sct#8120005", AcentricChromosome }, 
+      { "8129006", DepositionOfOxalateCrystals }, 
+      { "http://snomed.info/sct#8129006", DepositionOfOxalateCrystals }, 
+      { "8145008", MalignantMixedSalivaryGlandTumor }, 
+      { "http://snomed.info/sct#8145008", MalignantMixedSalivaryGlandTumor }, 
+      { "8210009", CorporaAmylacea }, 
+      { "http://snomed.info/sct#8210009", CorporaAmylacea }, 
+      { "8241005", Hemolymphangioma }, 
+      { "http://snomed.info/sct#8241005", Hemolymphangioma }, 
+      { "8276007", BalloonCellNevus }, 
+      { "http://snomed.info/sct#8276007", BalloonCellNevus }, 
+      { "8309002", ModerateTransitionalCellAtypia }, 
+      { "http://snomed.info/sct#8309002", ModerateTransitionalCellAtypia }, 
+      { "835009", PeripheralTCellLymphomaAILDAngioimmunoblasticLymphadenopathyWithDysproteinemia }, 
+      { "http://snomed.info/sct#835009", PeripheralTCellLymphomaAILDAngioimmunoblasticLymphadenopathyWithDysproteinemia }, 
+      { "8360001", MixedSalivaryGlandTumor }, 
+      { "http://snomed.info/sct#8360001", MixedSalivaryGlandTumor }, 
+      { "856006", ActinicKeratosis }, 
+      { "http://snomed.info/sct#856006", ActinicKeratosis }, 
+      { "8566008", AutosomalChromosomeMosaicism }, 
+      { "http://snomed.info/sct#8566008", AutosomalChromosomeMosaicism }, 
+      { "8573003", AcuteHemorrhage }, 
+      { "http://snomed.info/sct#8573003", AcuteHemorrhage }, 
+      { "8664001", Fibromyxoma }, 
+      { "http://snomed.info/sct#8664001", Fibromyxoma }, 
+      { "8723003", SegmentalDemyelination }, 
+      { "http://snomed.info/sct#8723003", SegmentalDemyelination }, 
+      { "8734000", ChoriocarcinomaCombinedWithGermCellElements }, 
+      { "http://snomed.info/sct#8734000", ChoriocarcinomaCombinedWithGermCellElements }, 
+      { "8804002", PassiveCongestion }, 
+      { "http://snomed.info/sct#8804002", PassiveCongestion }, 
+      { "8819001", CongenitalCysticDilatationWithAccumulationOfFluid }, 
+      { "http://snomed.info/sct#8819001", CongenitalCysticDilatationWithAccumulationOfFluid }, 
+      { "8833001", OpenDislocationComplete }, 
+      { "http://snomed.info/sct#8833001", OpenDislocationComplete }, 
+      { "8855009", Mosaicism }, 
+      { "http://snomed.info/sct#8855009", Mosaicism }, 
+      { "8934006", PapillarySyringadenoma }, 
+      { "http://snomed.info/sct#8934006", PapillarySyringadenoma }, 
+      { "8978002", ProliferativeCyclicAlterationOfBreast }, 
+      { "http://snomed.info/sct#8978002", ProliferativeCyclicAlterationOfBreast }, 
+      { "900006", MucinProducingAdenocarcinoma }, 
+      { "http://snomed.info/sct#900006", MucinProducingAdenocarcinoma }, 
+      { "9001003", ChondroblastomaMorphology }, 
+      { "http://snomed.info/sct#9001003", ChondroblastomaMorphology }, 
+      { "9088006", LobarAtrophy }, 
+      { "http://snomed.info/sct#9088006", LobarAtrophy }, 
+      { "9098000", MedullaryAdenoma }, 
+      { "http://snomed.info/sct#9098000", MedullaryAdenoma }, 
+      { "9138001", MildColumnarCellAtypia }, 
+      { "http://snomed.info/sct#9138001", MildColumnarCellAtypia }, 
+      { "915007", MalignantMelanomaInJunctionalNevus }, 
+      { "http://snomed.info/sct#915007", MalignantMelanomaInJunctionalNevus }, 
+      { "9155002", SquamousOdontogenicTumor }, 
+      { "http://snomed.info/sct#9155002", SquamousOdontogenicTumor }, 
+      { "9187004", Leukokeratosis }, 
+      { "http://snomed.info/sct#9187004", Leukokeratosis }, 
+      { "9196004", StaghornCalculus }, 
+      { "http://snomed.info/sct#9196004", StaghornCalculus }, 
+      { "9235006", EccentricHypertrophy }, 
+      { "http://snomed.info/sct#9235006", EccentricHypertrophy }, 
+      { "9240003", NiemannPickCell }, 
+      { "http://snomed.info/sct#9240003", NiemannPickCell }, 
+      { "9266000", JuxtacorticalChondroma }, 
+      { "http://snomed.info/sct#9266000", JuxtacorticalChondroma }, 
+      { "9287005", ColloidCyst }, 
+      { "http://snomed.info/sct#9287005", ColloidCyst }, 
+      { "9294008", SpermatocyticSeminoma }, 
+      { "http://snomed.info/sct#9294008", SpermatocyticSeminoma }, 
+      { "9324003", InactiveEndometrium }, 
+      { "http://snomed.info/sct#9324003", InactiveEndometrium }, 
+      { "9395006", Sarcomatosis }, 
+      { "http://snomed.info/sct#9395006", Sarcomatosis }, 
+      { "9435009", SenileHyperplasia }, 
+      { "http://snomed.info/sct#9435009", SenileHyperplasia }, 
+      { "9436005", BasophilAdenoma }, 
+      { "http://snomed.info/sct#9436005", BasophilAdenoma }, 
+      { "9499001", MultiplePolyps }, 
+      { "http://snomed.info/sct#9499001", MultiplePolyps }, 
+      { "9546005", Shift }, 
+      { "http://snomed.info/sct#9546005", Shift }, 
+      { "9550003", BronchogenicCyst }, 
+      { "http://snomed.info/sct#9550003", BronchogenicCyst }, 
+      { "9618003", EpithelialMyoepithelialCarcinoma }, 
+      { "http://snomed.info/sct#9618003", EpithelialMyoepithelialCarcinoma }, 
+      { "9656002", Consolidation }, 
+      { "http://snomed.info/sct#9656002", Consolidation }, 
+      { "9671003", Elastofibroma }, 
+      { "http://snomed.info/sct#9671003", Elastofibroma }, 
+      { "9688005", DepositionOfCarbon }, 
+      { "http://snomed.info/sct#9688005", DepositionOfCarbon }, 
+      { "9729005", BlueEdema }, 
+      { "http://snomed.info/sct#9729005", BlueEdema }, 
+      { "9751002", WireLoopLesion }, 
+      { "http://snomed.info/sct#9751002", WireLoopLesion }, 
+      { "9767008", Hyperchromatism }, 
+      { "http://snomed.info/sct#9767008", Hyperchromatism }, 
+      { "9795008", CongenitalLateralDeviation }, 
+      { "http://snomed.info/sct#9795008", CongenitalLateralDeviation }, 
+      { "9801004", SpindleCellSarcoma }, 
+      { "http://snomed.info/sct#9801004", SpindleCellSarcoma }, 
+      { "9805008", RiceBody }, 
+      { "http://snomed.info/sct#9805008", RiceBody }, 
+      { "9816001", Leukedema }, 
+      { "http://snomed.info/sct#9816001", Leukedema }, 
+      { "9831005", MyxoidDegeneration }, 
+      { "http://snomed.info/sct#9831005", MyxoidDegeneration }, 
+      { "985004", PsammomatousSchwannoma }, 
+      { "http://snomed.info/sct#985004", PsammomatousSchwannoma }, 
+      { "988002", WetGangrene }, 
+      { "http://snomed.info/sct#988002", WetGangrene }, 
+      { "9903002", MalignantParaganglioma }, 
+      { "http://snomed.info/sct#9903002", MalignantParaganglioma }, 
+      { "9971001", CongenitalAccumulationOfFluid }, 
+      { "http://snomed.info/sct#9971001", CongenitalAccumulationOfFluid }, 
+      { "999000", MixedDuctalEndocrineCarcinoma }, 
+      { "http://snomed.info/sct#999000", MixedDuctalEndocrineCarcinoma }, 
+    };
   };
 }

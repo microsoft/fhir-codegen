@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class MediaViewCodes
   {
     /// <summary>
-    /// 
+    /// Projection
     /// </summary>
     public static readonly Coding Projection = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left lateral oblique
     /// </summary>
     public static readonly Coding LeftLateralOblique = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// C1-C2 left oblique
     /// </summary>
     public static readonly Coding C1C2LeftOblique = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right lateral oblique
     /// </summary>
     public static readonly Coding RightLateralOblique = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// C1-C2 right oblique
     /// </summary>
     public static readonly Coding C1C2RightOblique = new Coding
     {
@@ -57,7 +57,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medial oblique
     /// </summary>
     public static readonly Coding MedialOblique = new Coding
     {
@@ -66,7 +66,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oblique lateral
     /// </summary>
     public static readonly Coding ObliqueLateral = new Coding
     {
@@ -75,7 +75,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mandible X-ray - lateral oblique
     /// </summary>
     public static readonly Coding MandibleXRayLateralOblique = new Coding
     {
@@ -84,7 +84,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anteroposterior left lateral decubitus
     /// </summary>
     public static readonly Coding AnteroposteriorLeftLateralDecubitus = new Coding
     {
@@ -93,7 +93,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// C1-C2 left lateral
     /// </summary>
     public static readonly Coding C1C2LeftLateral = new Coding
     {
@@ -102,7 +102,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left true lateral
     /// </summary>
     public static readonly Coding LeftTrueLateral = new Coding
     {
@@ -111,7 +111,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anteroposterior right lateral decubitus
     /// </summary>
     public static readonly Coding AnteroposteriorRightLateralDecubitus = new Coding
     {
@@ -120,7 +120,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// C1-C2 right lateral
     /// </summary>
     public static readonly Coding C1C2RightLateral = new Coding
     {
@@ -129,7 +129,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right true lateral
     /// </summary>
     public static readonly Coding RightTrueLateral = new Coding
     {
@@ -138,7 +138,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral vertical beam
     /// </summary>
     public static readonly Coding LateralVerticalBeam = new Coding
     {
@@ -147,7 +147,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral horizontal beam
     /// </summary>
     public static readonly Coding LateralHorizontalBeam = new Coding
     {
@@ -156,7 +156,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral inverted
     /// </summary>
     public static readonly Coding LateralInverted = new Coding
     {
@@ -165,7 +165,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// True lateral of mandible
     /// </summary>
     public static readonly Coding TrueLateralOfMandible = new Coding
     {
@@ -174,7 +174,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frog lateral
     /// </summary>
     public static readonly Coding FrogLateral = new Coding
     {
@@ -183,7 +183,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Erect lateral
     /// </summary>
     public static readonly Coding ErectLateral = new Coding
     {
@@ -192,7 +192,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anteroposterior inverted
     /// </summary>
     public static readonly Coding AnteroposteriorInverted = new Coding
     {
@@ -201,7 +201,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// PA - Rotated posteroanterior
     /// </summary>
     public static readonly Coding PARotatedPosteroanterior = new Coding
     {
@@ -210,7 +210,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posteroanterior 20 degree
     /// </summary>
     public static readonly Coding Posteroanterior20Degree = new Coding
     {
@@ -219,7 +219,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posteroanterior in ulnar deviation
     /// </summary>
     public static readonly Coding PosteroanteriorInUlnarDeviation = new Coding
     {
@@ -228,7 +228,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Penetrated posteroanterior
     /// </summary>
     public static readonly Coding PenetratedPosteroanterior = new Coding
     {
@@ -237,7 +237,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lordotic projection
     /// </summary>
     public static readonly Coding LordoticProjection = new Coding
     {
@@ -246,7 +246,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Supine decubitus
     /// </summary>
     public static readonly Coding SupineDecubitus = new Coding
     {
@@ -255,7 +255,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Decubitus
     /// </summary>
     public static readonly Coding Decubitus = new Coding
     {
@@ -264,7 +264,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Internal/external rotation
     /// </summary>
     public static readonly Coding InternalExternalRotation = new Coding
     {
@@ -273,7 +273,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// 45 degree projection
     /// </summary>
     public static readonly Coding VAL45DegreeProjection = new Coding
     {
@@ -282,7 +282,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Head and neck projection
     /// </summary>
     public static readonly Coding HeadAndNeckProjection = new Coding
     {
@@ -291,7 +291,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Slit anteroposterior
     /// </summary>
     public static readonly Coding SlitAnteroposterior = new Coding
     {
@@ -300,7 +300,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Reverse Towne's
     /// </summary>
     public static readonly Coding ReverseTowneQuoteS = new Coding
     {
@@ -309,7 +309,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Slit 35 degree fronto-occipital
     /// </summary>
     public static readonly Coding Slit35DegreeFrontoOccipital = new Coding
     {
@@ -318,7 +318,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vertex projection
     /// </summary>
     public static readonly Coding VertexProjection = new Coding
     {
@@ -327,7 +327,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left Stenver's
     /// </summary>
     public static readonly Coding LeftStenverQuoteS = new Coding
     {
@@ -336,7 +336,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right Stenver's
     /// </summary>
     public static readonly Coding RightStenverQuoteS = new Coding
     {
@@ -345,7 +345,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occipitofrontal projection
     /// </summary>
     public static readonly Coding OccipitofrontalProjection = new Coding
     {
@@ -354,7 +354,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occipitomental projection
     /// </summary>
     public static readonly Coding OccipitomentalProjection = new Coding
     {
@@ -363,7 +363,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occipitomental - erect
     /// </summary>
     public static readonly Coding OccipitomentalErect = new Coding
     {
@@ -372,7 +372,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occipitomental - tilted
     /// </summary>
     public static readonly Coding OccipitomentalTilted = new Coding
     {
@@ -381,7 +381,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occipitomental - prone
     /// </summary>
     public static readonly Coding OccipitomentalProne = new Coding
     {
@@ -390,7 +390,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occipitomental - 15 degree
     /// </summary>
     public static readonly Coding Occipitomental15Degree = new Coding
     {
@@ -399,7 +399,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occipitomental - 30 degree
     /// </summary>
     public static readonly Coding Occipitomental30Degree = new Coding
     {
@@ -408,7 +408,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occipitomental - 45 degree
     /// </summary>
     public static readonly Coding Occipitomental45Degree = new Coding
     {
@@ -417,7 +417,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Waters - 35 degree tilt to radiographic baseline
     /// </summary>
     public static readonly Coding Waters35DegreeTiltToRadiographicBaseline = new Coding
     {
@@ -426,7 +426,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Submentovertical reduced exposure for zygomatic arches
     /// </summary>
     public static readonly Coding SubmentoverticalReducedExposureForZygomaticArches = new Coding
     {
@@ -435,7 +435,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Slit SMV
     /// </summary>
     public static readonly Coding SlitSMV = new Coding
     {
@@ -444,7 +444,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental/oral projection
     /// </summary>
     public static readonly Coding DentalOralProjection = new Coding
     {
@@ -453,7 +453,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Body - molar
     /// </summary>
     public static readonly Coding BodyMolar = new Coding
     {
@@ -462,7 +462,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Body - premolar
     /// </summary>
     public static readonly Coding BodyPremolar = new Coding
     {
@@ -471,7 +471,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ramus projection
     /// </summary>
     public static readonly Coding RamusProjection = new Coding
     {
@@ -480,7 +480,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bimolar projection
     /// </summary>
     public static readonly Coding BimolarProjection = new Coding
     {
@@ -489,7 +489,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Toller projection
     /// </summary>
     public static readonly Coding TollerProjection = new Coding
     {
@@ -498,7 +498,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transmaxillary projection
     /// </summary>
     public static readonly Coding TransmaxillaryProjection = new Coding
     {
@@ -507,7 +507,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Temporomandibular joint setting
     /// </summary>
     public static readonly Coding TemporomandibularJointSetting = new Coding
     {
@@ -516,7 +516,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Maxillary sinus setting
     /// </summary>
     public static readonly Coding MaxillarySinusSetting = new Coding
     {
@@ -525,7 +525,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dental panoramic
     /// </summary>
     public static readonly Coding DentalPanoramic = new Coding
     {
@@ -534,7 +534,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Implant setting projection
     /// </summary>
     public static readonly Coding ImplantSettingProjection = new Coding
     {
@@ -543,7 +543,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Segmental setting
     /// </summary>
     public static readonly Coding SegmentalSetting = new Coding
     {
@@ -552,7 +552,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Axial view for sesamoid bones
     /// </summary>
     public static readonly Coding AxialViewForSesamoidBones = new Coding
     {
@@ -561,7 +561,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Brewerton's projection
     /// </summary>
     public static readonly Coding BrewertonQuoteSProjection = new Coding
     {
@@ -570,7 +570,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Harris Beath axial projection
     /// </summary>
     public static readonly Coding HarrisBeathAxialProjection = new Coding
     {
@@ -579,7 +579,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tunnel projection
     /// </summary>
     public static readonly Coding TunnelProjection = new Coding
     {
@@ -588,7 +588,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Judet projection
     /// </summary>
     public static readonly Coding JudetProjection = new Coding
     {
@@ -597,7 +597,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mortice projection
     /// </summary>
     public static readonly Coding MorticeProjection = new Coding
     {
@@ -606,7 +606,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Occlusal projection
     /// </summary>
     public static readonly Coding OcclusalProjection = new Coding
     {
@@ -615,7 +615,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Projected oblique occlusal
     /// </summary>
     public static readonly Coding ProjectedObliqueOcclusal = new Coding
     {
@@ -624,7 +624,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lower true occlusal
     /// </summary>
     public static readonly Coding LowerTrueOcclusal = new Coding
     {
@@ -633,7 +633,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Power grip series
     /// </summary>
     public static readonly Coding PowerGripSeries = new Coding
     {
@@ -642,7 +642,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Radial head projection
     /// </summary>
     public static readonly Coding RadialHeadProjection = new Coding
     {
@@ -651,7 +651,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Skyline projection
     /// </summary>
     public static readonly Coding SkylineProjection = new Coding
     {
@@ -660,7 +660,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Van Rosen projection
     /// </summary>
     public static readonly Coding VanRosenProjection = new Coding
     {
@@ -669,7 +669,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inferosuperior projection
     /// </summary>
     public static readonly Coding InferosuperiorProjection = new Coding
     {
@@ -678,7 +678,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apical projection
     /// </summary>
     public static readonly Coding ApicalProjection = new Coding
     {
@@ -687,7 +687,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Vertical projection
     /// </summary>
     public static readonly Coding VerticalProjection = new Coding
     {
@@ -696,7 +696,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Prone projection
     /// </summary>
     public static readonly Coding ProneProjection = new Coding
     {
@@ -705,7 +705,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Supine projection
     /// </summary>
     public static readonly Coding SupineProjection = new Coding
     {
@@ -714,7 +714,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior projection
     /// </summary>
     public static readonly Coding AnteriorProjection = new Coding
     {
@@ -723,7 +723,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right posterior projection
     /// </summary>
     public static readonly Coding RightPosteriorProjection = new Coding
     {
@@ -732,7 +732,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left posterior projection
     /// </summary>
     public static readonly Coding LeftPosteriorProjection = new Coding
     {
@@ -741,7 +741,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Perorbital projection
     /// </summary>
     public static readonly Coding PerorbitalProjection = new Coding
     {
@@ -750,7 +750,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Temporomandibular joint projection
     /// </summary>
     public static readonly Coding TemporomandibularJointProjection = new Coding
     {
@@ -759,7 +759,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Optic foramen projection
     /// </summary>
     public static readonly Coding OpticForamenProjection = new Coding
     {
@@ -768,7 +768,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral facial skeleton projection
     /// </summary>
     public static readonly Coding LateralFacialSkeletonProjection = new Coding
     {
@@ -777,7 +777,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ear projection
     /// </summary>
     public static readonly Coding EarProjection = new Coding
     {
@@ -786,7 +786,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mid face projection
     /// </summary>
     public static readonly Coding MidFaceProjection = new Coding
     {
@@ -795,7 +795,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cervical spine projection
     /// </summary>
     public static readonly Coding CervicalSpineProjection = new Coding
     {
@@ -804,7 +804,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Macro projection
     /// </summary>
     public static readonly Coding MacroProjection = new Coding
     {
@@ -813,7 +813,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Outlet projection
     /// </summary>
     public static readonly Coding OutletProjection = new Coding
     {
@@ -822,7 +822,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swimmer's projection
     /// </summary>
     public static readonly Coding SwimmerQuoteSProjection = new Coding
     {
@@ -831,7 +831,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tibial tuberosity projection
     /// </summary>
     public static readonly Coding TibialTuberosityProjection = new Coding
     {
@@ -840,7 +840,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transthoracic projection
     /// </summary>
     public static readonly Coding TransthoracicProjection = new Coding
     {
@@ -849,7 +849,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transcranial projection
     /// </summary>
     public static readonly Coding TranscranialProjection = new Coding
     {
@@ -858,7 +858,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posteroanterior projection
     /// </summary>
     public static readonly Coding PosteroanteriorProjection = new Coding
     {
@@ -867,7 +867,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Horizontal projection
     /// </summary>
     public static readonly Coding HorizontalProjection = new Coding
     {
@@ -876,7 +876,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Erect projection
     /// </summary>
     public static readonly Coding ErectProjection = new Coding
     {
@@ -885,7 +885,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adduction projection
     /// </summary>
     public static readonly Coding AdductionProjection = new Coding
     {
@@ -894,7 +894,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// True projection
     /// </summary>
     public static readonly Coding TrueProjection = new Coding
     {
@@ -903,7 +903,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Contralateral projection
     /// </summary>
     public static readonly Coding ContralateralProjection = new Coding
     {
@@ -912,7 +912,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior projection
     /// </summary>
     public static readonly Coding PosteriorProjection = new Coding
     {
@@ -921,7 +921,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Abduction projection
     /// </summary>
     public static readonly Coding AbductionProjection = new Coding
     {
@@ -930,7 +930,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zimmer projection
     /// </summary>
     public static readonly Coding ZimmerProjection = new Coding
     {
@@ -939,7 +939,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Leonard-George projection (qualifier value)
     /// </summary>
     public static readonly Coding LeonardGeorgeProjectionQualifierValue = new Coding
     {
@@ -948,7 +948,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mayer projection (qualifier value)
     /// </summary>
     public static readonly Coding MayerProjectionQualifierValue = new Coding
     {
@@ -957,7 +957,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Posterior emissive projection (qualifier value)
     /// </summary>
     public static readonly Coding PosteriorEmissiveProjectionQualifierValue = new Coding
     {
@@ -966,7 +966,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nolke projection (qualifier value)
     /// </summary>
     public static readonly Coding NolkeProjectionQualifierValue = new Coding
     {
@@ -975,7 +975,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hughston projection (qualifier value)
     /// </summary>
     public static readonly Coding HughstonProjectionQualifierValue = new Coding
     {
@@ -984,7 +984,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oblique axial projection (qualifier value)
     /// </summary>
     public static readonly Coding ObliqueAxialProjectionQualifierValue = new Coding
     {
@@ -993,7 +993,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Miller projection (qualifier value)
     /// </summary>
     public static readonly Coding MillerProjectionQualifierValue = new Coding
     {
@@ -1002,7 +1002,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left posterior oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding LeftPosteriorObliqueProjectionQualifierValue = new Coding
     {
@@ -1011,7 +1011,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Axillary tail mammography view (qualifier value)
     /// </summary>
     public static readonly Coding AxillaryTailMammographyViewQualifierValue = new Coding
     {
@@ -1020,7 +1020,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medial-lateral emissive projection (qualifier value)
     /// </summary>
     public static readonly Coding MedialLateralEmissiveProjectionQualifierValue = new Coding
     {
@@ -1029,7 +1029,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chassard-Lapin projection (qualifier value)
     /// </summary>
     public static readonly Coding ChassardLapinProjectionQualifierValue = new Coding
     {
@@ -1038,7 +1038,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pirie projection (qualifier value)
     /// </summary>
     public static readonly Coding PirieProjectionQualifierValue = new Coding
     {
@@ -1047,7 +1047,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// May projection (qualifier value)
     /// </summary>
     public static readonly Coding MayProjectionQualifierValue = new Coding
     {
@@ -1056,7 +1056,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ischerwood projection (qualifier value)
     /// </summary>
     public static readonly Coding IscherwoodProjectionQualifierValue = new Coding
     {
@@ -1065,7 +1065,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Zanelli projection (qualifier value)
     /// </summary>
     public static readonly Coding ZanelliProjectionQualifierValue = new Coding
     {
@@ -1074,7 +1074,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clements projection (qualifier value)
     /// </summary>
     public static readonly Coding ClementsProjectionQualifierValue = new Coding
     {
@@ -1083,7 +1083,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frontal projection (qualifier value)
     /// </summary>
     public static readonly Coding FrontalProjectionQualifierValue = new Coding
     {
@@ -1092,7 +1092,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lewis projection (qualifier value)
     /// </summary>
     public static readonly Coding LewisProjectionQualifierValue = new Coding
     {
@@ -1101,7 +1101,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right posterior oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding RightPosteriorObliqueProjectionQualifierValue = new Coding
     {
@@ -1110,7 +1110,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Postero-anterior oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding PosteroAnteriorObliqueProjectionQualifierValue = new Coding
     {
@@ -1119,7 +1119,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Axial projection (qualifier value)
     /// </summary>
     public static readonly Coding AxialProjectionQualifierValue = new Coding
     {
@@ -1128,7 +1128,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Causton projection (qualifier value)
     /// </summary>
     public static readonly Coding CaustonProjectionQualifierValue = new Coding
     {
@@ -1137,7 +1137,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral projection (qualifier value)
     /// </summary>
     public static readonly Coding LateralProjectionQualifierValue = new Coding
     {
@@ -1146,7 +1146,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Plantodorsal projection (qualifier value)
     /// </summary>
     public static readonly Coding PlantodorsalProjectionQualifierValue = new Coding
     {
@@ -1155,7 +1155,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fuchs projection (qualifier value)
     /// </summary>
     public static readonly Coding FuchsProjectionQualifierValue = new Coding
     {
@@ -1164,7 +1164,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left anterior oblique emissive projection (qualifier value)
     /// </summary>
     public static readonly Coding LeftAnteriorObliqueEmissiveProjectionQualifierValue = new Coding
     {
@@ -1173,7 +1173,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right posterior oblique emissive projection (qualifier value)
     /// </summary>
     public static readonly Coding RightPosteriorObliqueEmissiveProjectionQualifierValue = new Coding
     {
@@ -1182,7 +1182,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kuchendorf projection (qualifier value)
     /// </summary>
     public static readonly Coding KuchendorfProjectionQualifierValue = new Coding
     {
@@ -1191,7 +1191,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Gaynor-Hart projection (qualifier value)
     /// </summary>
     public static readonly Coding GaynorHartProjectionQualifierValue = new Coding
     {
@@ -1200,7 +1200,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hsieh projection (qualifier value)
     /// </summary>
     public static readonly Coding HsiehProjectionQualifierValue = new Coding
     {
@@ -1209,7 +1209,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oblique axial emissive projection (qualifier value)
     /// </summary>
     public static readonly Coding ObliqueAxialEmissiveProjectionQualifierValue = new Coding
     {
@@ -1218,7 +1218,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Staunig projection (qualifier value)
     /// </summary>
     public static readonly Coding StaunigProjectionQualifierValue = new Coding
     {
@@ -1227,7 +1227,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Latero-medial oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding LateroMedialObliqueProjectionQualifierValue = new Coding
     {
@@ -1236,7 +1236,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cranio-caudal projection exaggerated medially (qualifier value)
     /// </summary>
     public static readonly Coding CranioCaudalProjectionExaggeratedMediallyQualifierValue = new Coding
     {
@@ -1245,7 +1245,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Friedman projection (qualifier value)
     /// </summary>
     public static readonly Coding FriedmanProjectionQualifierValue = new Coding
     {
@@ -1254,7 +1254,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right anterior oblique emissive projection (qualifier value)
     /// </summary>
     public static readonly Coding RightAnteriorObliqueEmissiveProjectionQualifierValue = new Coding
     {
@@ -1263,7 +1263,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tangential projection (qualifier value)
     /// </summary>
     public static readonly Coding TangentialProjectionQualifierValue = new Coding
     {
@@ -1272,7 +1272,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eponymous projection (qualifier value)
     /// </summary>
     public static readonly Coding EponymousProjectionQualifierValue = new Coding
     {
@@ -1281,7 +1281,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left lateral emissive projection (qualifier value)
     /// </summary>
     public static readonly Coding LeftLateralEmissiveProjectionQualifierValue = new Coding
     {
@@ -1290,7 +1290,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Twining projection (qualifier value)
     /// </summary>
     public static readonly Coding TwiningProjectionQualifierValue = new Coding
     {
@@ -1299,7 +1299,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Teufel projection (qualifier value)
     /// </summary>
     public static readonly Coding TeufelProjectionQualifierValue = new Coding
     {
@@ -1308,7 +1308,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Holly projection (qualifier value)
     /// </summary>
     public static readonly Coding HollyProjectionQualifierValue = new Coding
     {
@@ -1317,7 +1317,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// West Point projection (qualifier value)
     /// </summary>
     public static readonly Coding WestPointProjectionQualifierValue = new Coding
     {
@@ -1326,7 +1326,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frontal-oblique axial projection (qualifier value)
     /// </summary>
     public static readonly Coding FrontalObliqueAxialProjectionQualifierValue = new Coding
     {
@@ -1335,7 +1335,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left anterior oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding LeftAnteriorObliqueProjectionQualifierValue = new Coding
     {
@@ -1344,7 +1344,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left posterior oblique emissive projection (qualifier value)
     /// </summary>
     public static readonly Coding LeftPosteriorObliqueEmissiveProjectionQualifierValue = new Coding
     {
@@ -1353,7 +1353,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Penner projection (qualifier value)
     /// </summary>
     public static readonly Coding PennerProjectionQualifierValue = new Coding
     {
@@ -1362,7 +1362,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Albers-Schönberg projection (qualifier value)
     /// </summary>
     public static readonly Coding AlbersSchonbergProjectionQualifierValue = new Coding
     {
@@ -1371,7 +1371,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grashey projection (qualifier value)
     /// </summary>
     public static readonly Coding GrasheyProjectionQualifierValue = new Coding
     {
@@ -1380,7 +1380,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chamberlain projection (qualifier value)
     /// </summary>
     public static readonly Coding ChamberlainProjectionQualifierValue = new Coding
     {
@@ -1389,7 +1389,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kandel projection (qualifier value)
     /// </summary>
     public static readonly Coding KandelProjectionQualifierValue = new Coding
     {
@@ -1398,7 +1398,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Laquerriere-Pierquin projection (qualifier value)
     /// </summary>
     public static readonly Coding LaquerrierePierquinProjectionQualifierValue = new Coding
     {
@@ -1407,7 +1407,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Norgaard's projection (qualifier value)
     /// </summary>
     public static readonly Coding NorgaardQuoteSProjectionQualifierValue = new Coding
     {
@@ -1416,7 +1416,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Latero-medial oblique emissive projection (qualifier value)
     /// </summary>
     public static readonly Coding LateroMedialObliqueEmissiveProjectionQualifierValue = new Coding
     {
@@ -1425,7 +1425,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Frontal oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding FrontalObliqueProjectionQualifierValue = new Coding
     {
@@ -1434,7 +1434,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cleavage mammography view (qualifier value)
     /// </summary>
     public static readonly Coding CleavageMammographyViewQualifierValue = new Coding
     {
@@ -1443,7 +1443,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cranio-caudal projection (qualifier value)
     /// </summary>
     public static readonly Coding CranioCaudalProjectionQualifierValue = new Coding
     {
@@ -1452,7 +1452,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Magnified projection (qualifier value)
     /// </summary>
     public static readonly Coding MagnifiedProjectionQualifierValue = new Coding
     {
@@ -1461,7 +1461,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hough projection (qualifier value)
     /// </summary>
     public static readonly Coding HoughProjectionQualifierValue = new Coding
     {
@@ -1470,7 +1470,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lauenstein projection (qualifier value)
     /// </summary>
     public static readonly Coding LauensteinProjectionQualifierValue = new Coding
     {
@@ -1479,7 +1479,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ottonello projection (qualifier value)
     /// </summary>
     public static readonly Coding OttonelloProjectionQualifierValue = new Coding
     {
@@ -1488,7 +1488,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left lateral projection (qualifier value)
     /// </summary>
     public static readonly Coding LeftLateralProjectionQualifierValue = new Coding
     {
@@ -1497,7 +1497,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lawrence projection (qualifier value)
     /// </summary>
     public static readonly Coding LawrenceProjectionQualifierValue = new Coding
     {
@@ -1506,7 +1506,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pawlow projection (qualifier value)
     /// </summary>
     public static readonly Coding PawlowProjectionQualifierValue = new Coding
     {
@@ -1515,7 +1515,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding ObliqueProjectionQualifierValue = new Coding
     {
@@ -1524,7 +1524,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding LeftObliqueProjectionQualifierValue = new Coding
     {
@@ -1533,7 +1533,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Superolateral to inferomedial oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding SuperolateralToInferomedialObliqueProjectionQualifierValue = new Coding
     {
@@ -1542,7 +1542,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cranio-caudal projection exaggerated laterally (qualifier value)
     /// </summary>
     public static readonly Coding CranioCaudalProjectionExaggeratedLaterallyQualifierValue = new Coding
     {
@@ -1551,7 +1551,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Caudo-cranial projection (qualifier value)
     /// </summary>
     public static readonly Coding CaudoCranialProjectionQualifierValue = new Coding
     {
@@ -1560,7 +1560,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right lateral projection (qualifier value)
     /// </summary>
     public static readonly Coding RightLateralProjectionQualifierValue = new Coding
     {
@@ -1569,7 +1569,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Henschen projection (qualifier value)
     /// </summary>
     public static readonly Coding HenschenProjectionQualifierValue = new Coding
     {
@@ -1578,7 +1578,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Judd projection (qualifier value)
     /// </summary>
     public static readonly Coding JuddProjectionQualifierValue = new Coding
     {
@@ -1587,7 +1587,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Law projection (qualifier value)
     /// </summary>
     public static readonly Coding LawProjectionQualifierValue = new Coding
     {
@@ -1596,7 +1596,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Camp-Coventry projection (qualifier value)
     /// </summary>
     public static readonly Coding CampCoventryProjectionQualifierValue = new Coding
     {
@@ -1605,7 +1605,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wigby-Taylor projection (qualifier value)
     /// </summary>
     public static readonly Coding WigbyTaylorProjectionQualifierValue = new Coding
     {
@@ -1614,7 +1614,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Arcelin projection (qualifier value)
     /// </summary>
     public static readonly Coding ArcelinProjectionQualifierValue = new Coding
     {
@@ -1623,7 +1623,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oblique caudo-cranial projection (qualifier value)
     /// </summary>
     public static readonly Coding ObliqueCaudoCranialProjectionQualifierValue = new Coding
     {
@@ -1632,7 +1632,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kemp Harper projection (qualifier value)
     /// </summary>
     public static readonly Coding KempHarperProjectionQualifierValue = new Coding
     {
@@ -1641,7 +1641,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rhese projection (qualifier value)
     /// </summary>
     public static readonly Coding RheseProjectionQualifierValue = new Coding
     {
@@ -1650,7 +1650,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding RightObliqueProjectionQualifierValue = new Coding
     {
@@ -1659,7 +1659,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Alexander projection (qualifier value)
     /// </summary>
     public static readonly Coding AlexanderProjectionQualifierValue = new Coding
     {
@@ -1668,7 +1668,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Titterington projection (qualifier value)
     /// </summary>
     public static readonly Coding TitteringtonProjectionQualifierValue = new Coding
     {
@@ -1677,7 +1677,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Acanthioparietal projection (qualifier value)
     /// </summary>
     public static readonly Coding AcanthioparietalProjectionQualifierValue = new Coding
     {
@@ -1686,7 +1686,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Settegast projection (qualifier value)
     /// </summary>
     public static readonly Coding SettegastProjectionQualifierValue = new Coding
     {
@@ -1695,7 +1695,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cleaves projection (qualifier value)
     /// </summary>
     public static readonly Coding CleavesProjectionQualifierValue = new Coding
     {
@@ -1704,7 +1704,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Blackett-Healy projection (qualifier value)
     /// </summary>
     public static readonly Coding BlackettHealyProjectionQualifierValue = new Coding
     {
@@ -1713,7 +1713,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Tarrant projection (qualifier value)
     /// </summary>
     public static readonly Coding TarrantProjectionQualifierValue = new Coding
     {
@@ -1722,7 +1722,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lorenz projection (qualifier value)
     /// </summary>
     public static readonly Coding LorenzProjectionQualifierValue = new Coding
     {
@@ -1731,7 +1731,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Submentovertical projection (qualifier value)
     /// </summary>
     public static readonly Coding SubmentoverticalProjectionQualifierValue = new Coding
     {
@@ -1740,7 +1740,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medial-lateral projection
     /// </summary>
     public static readonly Coding MedialLateralProjection = new Coding
     {
@@ -1749,7 +1749,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Beclere projection (qualifier value)
     /// </summary>
     public static readonly Coding BeclereProjectionQualifierValue = new Coding
     {
@@ -1758,7 +1758,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Exaggerated cranio-caudal projection (qualifier value)
     /// </summary>
     public static readonly Coding ExaggeratedCranioCaudalProjectionQualifierValue = new Coding
     {
@@ -1767,7 +1767,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medio-lateral oblique emissive projection (qualifier value)
     /// </summary>
     public static readonly Coding MedioLateralObliqueEmissiveProjectionQualifierValue = new Coding
     {
@@ -1776,7 +1776,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Towne's projection (qualifier value)
     /// </summary>
     public static readonly Coding TowneQuoteSProjectionQualifierValue = new Coding
     {
@@ -1785,7 +1785,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parietoacanthial projection (qualifier value)
     /// </summary>
     public static readonly Coding ParietoacanthialProjectionQualifierValue = new Coding
     {
@@ -1794,7 +1794,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sagittal-oblique axial emissive projection (qualifier value)
     /// </summary>
     public static readonly Coding SagittalObliqueAxialEmissiveProjectionQualifierValue = new Coding
     {
@@ -1803,7 +1803,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hickey projection (qualifier value)
     /// </summary>
     public static readonly Coding HickeyProjectionQualifierValue = new Coding
     {
@@ -1812,7 +1812,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cahoon projection (qualifier value)
     /// </summary>
     public static readonly Coding CahoonProjectionQualifierValue = new Coding
     {
@@ -1821,7 +1821,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kasabach projection (qualifier value)
     /// </summary>
     public static readonly Coding KasabachProjectionQualifierValue = new Coding
     {
@@ -1830,7 +1830,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fleischner projection (qualifier value)
     /// </summary>
     public static readonly Coding FleischnerProjectionQualifierValue = new Coding
     {
@@ -1839,7 +1839,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Merchant projection (qualifier value)
     /// </summary>
     public static readonly Coding MerchantProjectionQualifierValue = new Coding
     {
@@ -1848,7 +1848,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Holmblad projection (qualifier value)
     /// </summary>
     public static readonly Coding HolmbladProjectionQualifierValue = new Coding
     {
@@ -1857,7 +1857,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Oblique cranio-caudal projection (qualifier value)
     /// </summary>
     public static readonly Coding ObliqueCranioCaudalProjectionQualifierValue = new Coding
     {
@@ -1866,7 +1866,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Schuller projection
     /// </summary>
     public static readonly Coding SchullerProjection = new Coding
     {
@@ -1875,7 +1875,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stecher projection (qualifier value)
     /// </summary>
     public static readonly Coding StecherProjectionQualifierValue = new Coding
     {
@@ -1884,7 +1884,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Taylor projection (qualifier value)
     /// </summary>
     public static readonly Coding TaylorProjectionQualifierValue = new Coding
     {
@@ -1893,7 +1893,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right lateral emissive projection (qualifier value)
     /// </summary>
     public static readonly Coding RightLateralEmissiveProjectionQualifierValue = new Coding
     {
@@ -1902,7 +1902,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral-medial emissive projection (qualifier value)
     /// </summary>
     public static readonly Coding LateralMedialEmissiveProjectionQualifierValue = new Coding
     {
@@ -1911,7 +1911,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dunlap projection (qualifier value)
     /// </summary>
     public static readonly Coding DunlapProjectionQualifierValue = new Coding
     {
@@ -1920,7 +1920,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lindblom projection (qualifier value)
     /// </summary>
     public static readonly Coding LindblomProjectionQualifierValue = new Coding
     {
@@ -1929,7 +1929,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Grandy projection (qualifier value)
     /// </summary>
     public static readonly Coding GrandyProjectionQualifierValue = new Coding
     {
@@ -1938,7 +1938,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antero-posterior oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding AnteroPosteriorObliqueProjectionQualifierValue = new Coding
     {
@@ -1947,7 +1947,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Swanson projection (qualifier value)
     /// </summary>
     public static readonly Coding SwansonProjectionQualifierValue = new Coding
     {
@@ -1956,7 +1956,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Parieto-orbital projection (qualifier value)
     /// </summary>
     public static readonly Coding ParietoOrbitalProjectionQualifierValue = new Coding
     {
@@ -1965,7 +1965,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kovacs projection (qualifier value)
     /// </summary>
     public static readonly Coding KovacsProjectionQualifierValue = new Coding
     {
@@ -1974,7 +1974,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Clements-Nakayama projection (qualifier value)
     /// </summary>
     public static readonly Coding ClementsNakayamaProjectionQualifierValue = new Coding
     {
@@ -1983,7 +1983,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Anterior emissive projection (qualifier value)
     /// </summary>
     public static readonly Coding AnteriorEmissiveProjectionQualifierValue = new Coding
     {
@@ -1992,7 +1992,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Sagittal-oblique axial projection (qualifier value)
     /// </summary>
     public static readonly Coding SagittalObliqueAxialProjectionQualifierValue = new Coding
     {
@@ -2001,7 +2001,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Low-Beer projection (qualifier value)
     /// </summary>
     public static readonly Coding LowBeerProjectionQualifierValue = new Coding
     {
@@ -2010,7 +2010,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Valdini projection (qualifier value)
     /// </summary>
     public static readonly Coding ValdiniProjectionQualifierValue = new Coding
     {
@@ -2019,7 +2019,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kurzbauer projection (qualifier value)
     /// </summary>
     public static readonly Coding KurzbauerProjectionQualifierValue = new Coding
     {
@@ -2028,7 +2028,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dorsoplantar projection (qualifier value)
     /// </summary>
     public static readonly Coding DorsoplantarProjectionQualifierValue = new Coding
     {
@@ -2037,7 +2037,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Haas projection (qualifier value)
     /// </summary>
     public static readonly Coding HaasProjectionQualifierValue = new Coding
     {
@@ -2046,7 +2046,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lilienfeld projection (qualifier value)
     /// </summary>
     public static readonly Coding LilienfeldProjectionQualifierValue = new Coding
     {
@@ -2055,7 +2055,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Broden projection (qualifier value)
     /// </summary>
     public static readonly Coding BrodenProjectionQualifierValue = new Coding
     {
@@ -2064,7 +2064,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Antero-posterior projection (qualifier value)
     /// </summary>
     public static readonly Coding AnteroPosteriorProjectionQualifierValue = new Coding
     {
@@ -2073,7 +2073,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stenver's projection (qualifier value)
     /// </summary>
     public static readonly Coding StenverQuoteSProjectionQualifierValue = new Coding
     {
@@ -2082,7 +2082,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Orbito-parietal projection (qualifier value)
     /// </summary>
     public static readonly Coding OrbitoParietalProjectionQualifierValue = new Coding
     {
@@ -2091,7 +2091,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lateral-medial projection (qualifier value)
     /// </summary>
     public static readonly Coding LateralMedialProjectionQualifierValue = new Coding
     {
@@ -2100,7 +2100,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Chausse projection (qualifier value)
     /// </summary>
     public static readonly Coding ChausseProjectionQualifierValue = new Coding
     {
@@ -2109,7 +2109,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right anterior oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding RightAnteriorObliqueProjectionQualifierValue = new Coding
     {
@@ -2118,7 +2118,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Caldwell projection (qualifier value)
     /// </summary>
     public static readonly Coding CaldwellProjectionQualifierValue = new Coding
     {
@@ -2127,7 +2127,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Verticosubmental projection (qualifier value)
     /// </summary>
     public static readonly Coding VerticosubmentalProjectionQualifierValue = new Coding
     {
@@ -2136,7 +2136,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nuclear medicine projection (qualifier value)
     /// </summary>
     public static readonly Coding NuclearMedicineProjectionQualifierValue = new Coding
     {
@@ -2145,7 +2145,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Bertel projection (qualifier value)
     /// </summary>
     public static readonly Coding BertelProjectionQualifierValue = new Coding
     {
@@ -2154,7 +2154,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Pearson projection (qualifier value)
     /// </summary>
     public static readonly Coding PearsonProjectionQualifierValue = new Coding
     {
@@ -2163,7 +2163,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Medio-lateral oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding MedioLateralObliqueProjectionQualifierValue = new Coding
     {
@@ -2172,7 +2172,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Lysholm projection (qualifier value)
     /// </summary>
     public static readonly Coding LysholmProjectionQualifierValue = new Coding
     {
@@ -2181,7 +2181,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ferguson projection (qualifier value)
     /// </summary>
     public static readonly Coding FergusonProjectionQualifierValue = new Coding
     {
@@ -2190,7 +2190,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cranial left anterior oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding CranialLeftAnteriorObliqueProjectionQualifierValue = new Coding
     {
@@ -2199,7 +2199,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Caudal left anterior oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding CaudalLeftAnteriorObliqueProjectionQualifierValue = new Coding
     {
@@ -2208,7 +2208,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Cranial right anterior oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding CranialRightAnteriorObliqueProjectionQualifierValue = new Coding
     {
@@ -2217,7 +2217,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Caudal right anterior oblique projection (qualifier value)
     /// </summary>
     public static readonly Coding CaudalRightAnteriorObliqueProjectionQualifierValue = new Coding
     {
@@ -2226,7 +2226,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rafert-Long projection (qualifier value)
     /// </summary>
     public static readonly Coding RafertLongProjectionQualifierValue = new Coding
     {
@@ -2235,7 +2235,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Moore projection (qualifier value)
     /// </summary>
     public static readonly Coding MooreProjectionQualifierValue = new Coding
     {
@@ -2244,7 +2244,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Apple projection (qualifier value)
     /// </summary>
     public static readonly Coding AppleProjectionQualifierValue = new Coding
     {
@@ -2253,7 +2253,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Neer projection (qualifier value)
     /// </summary>
     public static readonly Coding NeerProjectionQualifierValue = new Coding
     {
@@ -2262,7 +2262,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Burman projection (qualifier value)
     /// </summary>
     public static readonly Coding BurmanProjectionQualifierValue = new Coding
     {
@@ -2271,7 +2271,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stryker projection (qualifier value)
     /// </summary>
     public static readonly Coding StrykerProjectionQualifierValue = new Coding
     {
@@ -2280,7 +2280,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Wolf projection (qualifier value)
     /// </summary>
     public static readonly Coding WolfProjectionQualifierValue = new Coding
     {
@@ -2289,7 +2289,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Colcher-Sussman projection (qualifier value)
     /// </summary>
     public static readonly Coding ColcherSussmanProjectionQualifierValue = new Coding
     {
@@ -2298,7 +2298,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rafer projection (qualifier value)
     /// </summary>
     public static readonly Coding RaferProjectionQualifierValue = new Coding
     {
@@ -2307,7 +2307,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Hirtz Modification projection (qualifier value)
     /// </summary>
     public static readonly Coding HirtzModificationProjectionQualifierValue = new Coding
     {
@@ -2316,7 +2316,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Eraso Modification projection (qualifier value)
     /// </summary>
     public static readonly Coding ErasoModificationProjectionQualifierValue = new Coding
     {
@@ -2325,7 +2325,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Danelius-Miller projection (qualifier value)
     /// </summary>
     public static readonly Coding DaneliusMillerProjectionQualifierValue = new Coding
     {
@@ -2334,7 +2334,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Fisk projection (qualifier value)
     /// </summary>
     public static readonly Coding FiskProjectionQualifierValue = new Coding
     {
@@ -2343,7 +2343,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Kite projection (qualifier value)
     /// </summary>
     public static readonly Coding KiteProjectionQualifierValue = new Coding
     {
@@ -2352,7 +2352,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Robert projection (qualifier value)
     /// </summary>
     public static readonly Coding RobertProjectionQualifierValue = new Coding
     {
@@ -2361,7 +2361,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Rosenberg projection (qualifier value)
     /// </summary>
     public static readonly Coding RosenbergProjectionQualifierValue = new Coding
     {
@@ -2370,7 +2370,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Folio projection (qualifier value)
     /// </summary>
     public static readonly Coding FolioProjectionQualifierValue = new Coding
     {
@@ -2379,7 +2379,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Garth projection (qualifier value)
     /// </summary>
     public static readonly Coding GarthProjectionQualifierValue = new Coding
     {
@@ -2388,7 +2388,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dorsopalmar projection
     /// </summary>
     public static readonly Coding DorsopalmarProjection = new Coding
     {
@@ -2397,7 +2397,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Inferomedial to superolateral oblique view
     /// </summary>
     public static readonly Coding InferomedialToSuperolateralObliqueView = new Coding
     {
@@ -2406,7 +2406,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Dorso-ventral projection
     /// </summary>
     public static readonly Coding DorsoVentralProjection = new Coding
     {
@@ -2415,7 +2415,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Mammography view
     /// </summary>
     public static readonly Coding MammographyView = new Coding
     {
@@ -2424,7 +2424,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stereoscopic view
     /// </summary>
     public static readonly Coding StereoscopicView = new Coding
     {
@@ -2433,7 +2433,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Ventro-dorsal projection
     /// </summary>
     public static readonly Coding VentroDorsalProjection = new Coding
     {
@@ -2442,7 +2442,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Axillary tissue mammography view
     /// </summary>
     public static readonly Coding AxillaryTissueMammographyView = new Coding
     {
@@ -2451,7 +2451,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Nipple in profile mammography view
     /// </summary>
     public static readonly Coding NippleInProfileMammographyView = new Coding
     {
@@ -2460,7 +2460,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Infra-mammary fold mammography view
     /// </summary>
     public static readonly Coding InfraMammaryFoldMammographyView = new Coding
     {
@@ -2469,7 +2469,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Right stereoscopic view
     /// </summary>
     public static readonly Coding RightStereoscopicView = new Coding
     {
@@ -2478,7 +2478,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Left stereoscopic view
     /// </summary>
     public static readonly Coding LeftStereoscopicView = new Coding
     {
@@ -2487,7 +2487,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stereoscopic view incremented from baseline
     /// </summary>
     public static readonly Coding StereoscopicViewIncrementedFromBaseline = new Coding
     {
@@ -2496,7 +2496,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Stereoscopic view decremented from baseline
     /// </summary>
     public static readonly Coding StereoscopicViewDecrementedFromBaseline = new Coding
     {
@@ -2511,9 +2511,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProjection = "260419006";
 
     /// <summary>
+    /// Literal for code: NONEProjection
+    /// </summary>
+    public const string LiteralNONEProjection = "http://snomed.info/sct#260419006";
+
+    /// <summary>
     /// Literal for code: LeftLateralOblique
     /// </summary>
     public const string LiteralLeftLateralOblique = "260421001";
+
+    /// <summary>
+    /// Literal for code: NONELeftLateralOblique
+    /// </summary>
+    public const string LiteralNONELeftLateralOblique = "http://snomed.info/sct#260421001";
 
     /// <summary>
     /// Literal for code: C1C2LeftOblique
@@ -2521,9 +2531,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralC1C2LeftOblique = "260422008";
 
     /// <summary>
+    /// Literal for code: NONEC1C2LeftOblique
+    /// </summary>
+    public const string LiteralNONEC1C2LeftOblique = "http://snomed.info/sct#260422008";
+
+    /// <summary>
     /// Literal for code: RightLateralOblique
     /// </summary>
     public const string LiteralRightLateralOblique = "260424009";
+
+    /// <summary>
+    /// Literal for code: NONERightLateralOblique
+    /// </summary>
+    public const string LiteralNONERightLateralOblique = "http://snomed.info/sct#260424009";
 
     /// <summary>
     /// Literal for code: C1C2RightOblique
@@ -2531,9 +2551,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralC1C2RightOblique = "260425005";
 
     /// <summary>
+    /// Literal for code: NONEC1C2RightOblique
+    /// </summary>
+    public const string LiteralNONEC1C2RightOblique = "http://snomed.info/sct#260425005";
+
+    /// <summary>
     /// Literal for code: MedialOblique
     /// </summary>
     public const string LiteralMedialOblique = "260426006";
+
+    /// <summary>
+    /// Literal for code: NONEMedialOblique
+    /// </summary>
+    public const string LiteralNONEMedialOblique = "http://snomed.info/sct#260426006";
 
     /// <summary>
     /// Literal for code: ObliqueLateral
@@ -2541,9 +2571,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralObliqueLateral = "260427002";
 
     /// <summary>
+    /// Literal for code: NONEObliqueLateral
+    /// </summary>
+    public const string LiteralNONEObliqueLateral = "http://snomed.info/sct#260427002";
+
+    /// <summary>
     /// Literal for code: MandibleXRayLateralOblique
     /// </summary>
     public const string LiteralMandibleXRayLateralOblique = "260428007";
+
+    /// <summary>
+    /// Literal for code: NONEMandibleXRayLateralOblique
+    /// </summary>
+    public const string LiteralNONEMandibleXRayLateralOblique = "http://snomed.info/sct#260428007";
 
     /// <summary>
     /// Literal for code: AnteroposteriorLeftLateralDecubitus
@@ -2551,9 +2591,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAnteroposteriorLeftLateralDecubitus = "260430009";
 
     /// <summary>
+    /// Literal for code: NONEAnteroposteriorLeftLateralDecubitus
+    /// </summary>
+    public const string LiteralNONEAnteroposteriorLeftLateralDecubitus = "http://snomed.info/sct#260430009";
+
+    /// <summary>
     /// Literal for code: C1C2LeftLateral
     /// </summary>
     public const string LiteralC1C2LeftLateral = "260431008";
+
+    /// <summary>
+    /// Literal for code: NONEC1C2LeftLateral
+    /// </summary>
+    public const string LiteralNONEC1C2LeftLateral = "http://snomed.info/sct#260431008";
 
     /// <summary>
     /// Literal for code: LeftTrueLateral
@@ -2561,9 +2611,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLeftTrueLateral = "260432001";
 
     /// <summary>
+    /// Literal for code: NONELeftTrueLateral
+    /// </summary>
+    public const string LiteralNONELeftTrueLateral = "http://snomed.info/sct#260432001";
+
+    /// <summary>
     /// Literal for code: AnteroposteriorRightLateralDecubitus
     /// </summary>
     public const string LiteralAnteroposteriorRightLateralDecubitus = "260434000";
+
+    /// <summary>
+    /// Literal for code: NONEAnteroposteriorRightLateralDecubitus
+    /// </summary>
+    public const string LiteralNONEAnteroposteriorRightLateralDecubitus = "http://snomed.info/sct#260434000";
 
     /// <summary>
     /// Literal for code: C1C2RightLateral
@@ -2571,9 +2631,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralC1C2RightLateral = "260435004";
 
     /// <summary>
+    /// Literal for code: NONEC1C2RightLateral
+    /// </summary>
+    public const string LiteralNONEC1C2RightLateral = "http://snomed.info/sct#260435004";
+
+    /// <summary>
     /// Literal for code: RightTrueLateral
     /// </summary>
     public const string LiteralRightTrueLateral = "260436003";
+
+    /// <summary>
+    /// Literal for code: NONERightTrueLateral
+    /// </summary>
+    public const string LiteralNONERightTrueLateral = "http://snomed.info/sct#260436003";
 
     /// <summary>
     /// Literal for code: LateralVerticalBeam
@@ -2581,9 +2651,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLateralVerticalBeam = "260437007";
 
     /// <summary>
+    /// Literal for code: NONELateralVerticalBeam
+    /// </summary>
+    public const string LiteralNONELateralVerticalBeam = "http://snomed.info/sct#260437007";
+
+    /// <summary>
     /// Literal for code: LateralHorizontalBeam
     /// </summary>
     public const string LiteralLateralHorizontalBeam = "260438002";
+
+    /// <summary>
+    /// Literal for code: NONELateralHorizontalBeam
+    /// </summary>
+    public const string LiteralNONELateralHorizontalBeam = "http://snomed.info/sct#260438002";
 
     /// <summary>
     /// Literal for code: LateralInverted
@@ -2591,9 +2671,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLateralInverted = "260439005";
 
     /// <summary>
+    /// Literal for code: NONELateralInverted
+    /// </summary>
+    public const string LiteralNONELateralInverted = "http://snomed.info/sct#260439005";
+
+    /// <summary>
     /// Literal for code: TrueLateralOfMandible
     /// </summary>
     public const string LiteralTrueLateralOfMandible = "260440007";
+
+    /// <summary>
+    /// Literal for code: NONETrueLateralOfMandible
+    /// </summary>
+    public const string LiteralNONETrueLateralOfMandible = "http://snomed.info/sct#260440007";
 
     /// <summary>
     /// Literal for code: FrogLateral
@@ -2601,9 +2691,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFrogLateral = "260441006";
 
     /// <summary>
+    /// Literal for code: NONEFrogLateral
+    /// </summary>
+    public const string LiteralNONEFrogLateral = "http://snomed.info/sct#260441006";
+
+    /// <summary>
     /// Literal for code: ErectLateral
     /// </summary>
     public const string LiteralErectLateral = "260442004";
+
+    /// <summary>
+    /// Literal for code: NONEErectLateral
+    /// </summary>
+    public const string LiteralNONEErectLateral = "http://snomed.info/sct#260442004";
 
     /// <summary>
     /// Literal for code: AnteroposteriorInverted
@@ -2611,9 +2711,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAnteroposteriorInverted = "260443009";
 
     /// <summary>
+    /// Literal for code: NONEAnteroposteriorInverted
+    /// </summary>
+    public const string LiteralNONEAnteroposteriorInverted = "http://snomed.info/sct#260443009";
+
+    /// <summary>
     /// Literal for code: PARotatedPosteroanterior
     /// </summary>
     public const string LiteralPARotatedPosteroanterior = "260444003";
+
+    /// <summary>
+    /// Literal for code: NONEPARotatedPosteroanterior
+    /// </summary>
+    public const string LiteralNONEPARotatedPosteroanterior = "http://snomed.info/sct#260444003";
 
     /// <summary>
     /// Literal for code: Posteroanterior20Degree
@@ -2621,9 +2731,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPosteroanterior20Degree = "260445002";
 
     /// <summary>
+    /// Literal for code: NONEPosteroanterior20Degree
+    /// </summary>
+    public const string LiteralNONEPosteroanterior20Degree = "http://snomed.info/sct#260445002";
+
+    /// <summary>
     /// Literal for code: PosteroanteriorInUlnarDeviation
     /// </summary>
     public const string LiteralPosteroanteriorInUlnarDeviation = "260446001";
+
+    /// <summary>
+    /// Literal for code: NONEPosteroanteriorInUlnarDeviation
+    /// </summary>
+    public const string LiteralNONEPosteroanteriorInUlnarDeviation = "http://snomed.info/sct#260446001";
 
     /// <summary>
     /// Literal for code: PenetratedPosteroanterior
@@ -2631,9 +2751,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPenetratedPosteroanterior = "260447005";
 
     /// <summary>
+    /// Literal for code: NONEPenetratedPosteroanterior
+    /// </summary>
+    public const string LiteralNONEPenetratedPosteroanterior = "http://snomed.info/sct#260447005";
+
+    /// <summary>
     /// Literal for code: LordoticProjection
     /// </summary>
     public const string LiteralLordoticProjection = "260450008";
+
+    /// <summary>
+    /// Literal for code: NONELordoticProjection
+    /// </summary>
+    public const string LiteralNONELordoticProjection = "http://snomed.info/sct#260450008";
 
     /// <summary>
     /// Literal for code: SupineDecubitus
@@ -2641,9 +2771,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSupineDecubitus = "260451007";
 
     /// <summary>
+    /// Literal for code: NONESupineDecubitus
+    /// </summary>
+    public const string LiteralNONESupineDecubitus = "http://snomed.info/sct#260451007";
+
+    /// <summary>
     /// Literal for code: Decubitus
     /// </summary>
     public const string LiteralDecubitus = "260452000";
+
+    /// <summary>
+    /// Literal for code: NONEDecubitus
+    /// </summary>
+    public const string LiteralNONEDecubitus = "http://snomed.info/sct#260452000";
 
     /// <summary>
     /// Literal for code: InternalExternalRotation
@@ -2651,9 +2791,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInternalExternalRotation = "260453005";
 
     /// <summary>
+    /// Literal for code: NONEInternalExternalRotation
+    /// </summary>
+    public const string LiteralNONEInternalExternalRotation = "http://snomed.info/sct#260453005";
+
+    /// <summary>
     /// Literal for code: VAL45DegreeProjection
     /// </summary>
     public const string LiteralVAL45DegreeProjection = "260454004";
+
+    /// <summary>
+    /// Literal for code: NONEVAL45DegreeProjection
+    /// </summary>
+    public const string LiteralNONEVAL45DegreeProjection = "http://snomed.info/sct#260454004";
 
     /// <summary>
     /// Literal for code: HeadAndNeckProjection
@@ -2661,9 +2811,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHeadAndNeckProjection = "260455003";
 
     /// <summary>
+    /// Literal for code: NONEHeadAndNeckProjection
+    /// </summary>
+    public const string LiteralNONEHeadAndNeckProjection = "http://snomed.info/sct#260455003";
+
+    /// <summary>
     /// Literal for code: SlitAnteroposterior
     /// </summary>
     public const string LiteralSlitAnteroposterior = "260458001";
+
+    /// <summary>
+    /// Literal for code: NONESlitAnteroposterior
+    /// </summary>
+    public const string LiteralNONESlitAnteroposterior = "http://snomed.info/sct#260458001";
 
     /// <summary>
     /// Literal for code: ReverseTowneQuoteS
@@ -2671,9 +2831,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralReverseTowneQuoteS = "260459009";
 
     /// <summary>
+    /// Literal for code: NONEReverseTowneQuoteS
+    /// </summary>
+    public const string LiteralNONEReverseTowneQuoteS = "http://snomed.info/sct#260459009";
+
+    /// <summary>
     /// Literal for code: Slit35DegreeFrontoOccipital
     /// </summary>
     public const string LiteralSlit35DegreeFrontoOccipital = "260460004";
+
+    /// <summary>
+    /// Literal for code: NONESlit35DegreeFrontoOccipital
+    /// </summary>
+    public const string LiteralNONESlit35DegreeFrontoOccipital = "http://snomed.info/sct#260460004";
 
     /// <summary>
     /// Literal for code: VertexProjection
@@ -2681,9 +2851,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVertexProjection = "260461000";
 
     /// <summary>
+    /// Literal for code: NONEVertexProjection
+    /// </summary>
+    public const string LiteralNONEVertexProjection = "http://snomed.info/sct#260461000";
+
+    /// <summary>
     /// Literal for code: LeftStenverQuoteS
     /// </summary>
     public const string LiteralLeftStenverQuoteS = "260463002";
+
+    /// <summary>
+    /// Literal for code: NONELeftStenverQuoteS
+    /// </summary>
+    public const string LiteralNONELeftStenverQuoteS = "http://snomed.info/sct#260463002";
 
     /// <summary>
     /// Literal for code: RightStenverQuoteS
@@ -2691,9 +2871,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRightStenverQuoteS = "260464008";
 
     /// <summary>
+    /// Literal for code: NONERightStenverQuoteS
+    /// </summary>
+    public const string LiteralNONERightStenverQuoteS = "http://snomed.info/sct#260464008";
+
+    /// <summary>
     /// Literal for code: OccipitofrontalProjection
     /// </summary>
     public const string LiteralOccipitofrontalProjection = "260465009";
+
+    /// <summary>
+    /// Literal for code: NONEOccipitofrontalProjection
+    /// </summary>
+    public const string LiteralNONEOccipitofrontalProjection = "http://snomed.info/sct#260465009";
 
     /// <summary>
     /// Literal for code: OccipitomentalProjection
@@ -2701,9 +2891,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOccipitomentalProjection = "260466005";
 
     /// <summary>
+    /// Literal for code: NONEOccipitomentalProjection
+    /// </summary>
+    public const string LiteralNONEOccipitomentalProjection = "http://snomed.info/sct#260466005";
+
+    /// <summary>
     /// Literal for code: OccipitomentalErect
     /// </summary>
     public const string LiteralOccipitomentalErect = "260467001";
+
+    /// <summary>
+    /// Literal for code: NONEOccipitomentalErect
+    /// </summary>
+    public const string LiteralNONEOccipitomentalErect = "http://snomed.info/sct#260467001";
 
     /// <summary>
     /// Literal for code: OccipitomentalTilted
@@ -2711,9 +2911,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOccipitomentalTilted = "260468006";
 
     /// <summary>
+    /// Literal for code: NONEOccipitomentalTilted
+    /// </summary>
+    public const string LiteralNONEOccipitomentalTilted = "http://snomed.info/sct#260468006";
+
+    /// <summary>
     /// Literal for code: OccipitomentalProne
     /// </summary>
     public const string LiteralOccipitomentalProne = "260469003";
+
+    /// <summary>
+    /// Literal for code: NONEOccipitomentalProne
+    /// </summary>
+    public const string LiteralNONEOccipitomentalProne = "http://snomed.info/sct#260469003";
 
     /// <summary>
     /// Literal for code: Occipitomental15Degree
@@ -2721,9 +2931,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOccipitomental15Degree = "260470002";
 
     /// <summary>
+    /// Literal for code: NONEOccipitomental15Degree
+    /// </summary>
+    public const string LiteralNONEOccipitomental15Degree = "http://snomed.info/sct#260470002";
+
+    /// <summary>
     /// Literal for code: Occipitomental30Degree
     /// </summary>
     public const string LiteralOccipitomental30Degree = "260471003";
+
+    /// <summary>
+    /// Literal for code: NONEOccipitomental30Degree
+    /// </summary>
+    public const string LiteralNONEOccipitomental30Degree = "http://snomed.info/sct#260471003";
 
     /// <summary>
     /// Literal for code: Occipitomental45Degree
@@ -2731,9 +2951,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOccipitomental45Degree = "260472005";
 
     /// <summary>
+    /// Literal for code: NONEOccipitomental45Degree
+    /// </summary>
+    public const string LiteralNONEOccipitomental45Degree = "http://snomed.info/sct#260472005";
+
+    /// <summary>
     /// Literal for code: Waters35DegreeTiltToRadiographicBaseline
     /// </summary>
     public const string LiteralWaters35DegreeTiltToRadiographicBaseline = "260473000";
+
+    /// <summary>
+    /// Literal for code: NONEWaters35DegreeTiltToRadiographicBaseline
+    /// </summary>
+    public const string LiteralNONEWaters35DegreeTiltToRadiographicBaseline = "http://snomed.info/sct#260473000";
 
     /// <summary>
     /// Literal for code: SubmentoverticalReducedExposureForZygomaticArches
@@ -2741,9 +2971,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSubmentoverticalReducedExposureForZygomaticArches = "260475007";
 
     /// <summary>
+    /// Literal for code: NONESubmentoverticalReducedExposureForZygomaticArches
+    /// </summary>
+    public const string LiteralNONESubmentoverticalReducedExposureForZygomaticArches = "http://snomed.info/sct#260475007";
+
+    /// <summary>
     /// Literal for code: SlitSMV
     /// </summary>
     public const string LiteralSlitSMV = "260476008";
+
+    /// <summary>
+    /// Literal for code: NONESlitSMV
+    /// </summary>
+    public const string LiteralNONESlitSMV = "http://snomed.info/sct#260476008";
 
     /// <summary>
     /// Literal for code: DentalOralProjection
@@ -2751,9 +2991,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDentalOralProjection = "260477004";
 
     /// <summary>
+    /// Literal for code: NONEDentalOralProjection
+    /// </summary>
+    public const string LiteralNONEDentalOralProjection = "http://snomed.info/sct#260477004";
+
+    /// <summary>
     /// Literal for code: BodyMolar
     /// </summary>
     public const string LiteralBodyMolar = "260478009";
+
+    /// <summary>
+    /// Literal for code: NONEBodyMolar
+    /// </summary>
+    public const string LiteralNONEBodyMolar = "http://snomed.info/sct#260478009";
 
     /// <summary>
     /// Literal for code: BodyPremolar
@@ -2761,9 +3011,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBodyPremolar = "260479001";
 
     /// <summary>
+    /// Literal for code: NONEBodyPremolar
+    /// </summary>
+    public const string LiteralNONEBodyPremolar = "http://snomed.info/sct#260479001";
+
+    /// <summary>
     /// Literal for code: RamusProjection
     /// </summary>
     public const string LiteralRamusProjection = "260481004";
+
+    /// <summary>
+    /// Literal for code: NONERamusProjection
+    /// </summary>
+    public const string LiteralNONERamusProjection = "http://snomed.info/sct#260481004";
 
     /// <summary>
     /// Literal for code: BimolarProjection
@@ -2771,9 +3031,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBimolarProjection = "260482006";
 
     /// <summary>
+    /// Literal for code: NONEBimolarProjection
+    /// </summary>
+    public const string LiteralNONEBimolarProjection = "http://snomed.info/sct#260482006";
+
+    /// <summary>
     /// Literal for code: TollerProjection
     /// </summary>
     public const string LiteralTollerProjection = "260483001";
+
+    /// <summary>
+    /// Literal for code: NONETollerProjection
+    /// </summary>
+    public const string LiteralNONETollerProjection = "http://snomed.info/sct#260483001";
 
     /// <summary>
     /// Literal for code: TransmaxillaryProjection
@@ -2781,9 +3051,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTransmaxillaryProjection = "260484007";
 
     /// <summary>
+    /// Literal for code: NONETransmaxillaryProjection
+    /// </summary>
+    public const string LiteralNONETransmaxillaryProjection = "http://snomed.info/sct#260484007";
+
+    /// <summary>
     /// Literal for code: TemporomandibularJointSetting
     /// </summary>
     public const string LiteralTemporomandibularJointSetting = "260485008";
+
+    /// <summary>
+    /// Literal for code: NONETemporomandibularJointSetting
+    /// </summary>
+    public const string LiteralNONETemporomandibularJointSetting = "http://snomed.info/sct#260485008";
 
     /// <summary>
     /// Literal for code: MaxillarySinusSetting
@@ -2791,9 +3071,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMaxillarySinusSetting = "260486009";
 
     /// <summary>
+    /// Literal for code: NONEMaxillarySinusSetting
+    /// </summary>
+    public const string LiteralNONEMaxillarySinusSetting = "http://snomed.info/sct#260486009";
+
+    /// <summary>
     /// Literal for code: DentalPanoramic
     /// </summary>
     public const string LiteralDentalPanoramic = "260487000";
+
+    /// <summary>
+    /// Literal for code: NONEDentalPanoramic
+    /// </summary>
+    public const string LiteralNONEDentalPanoramic = "http://snomed.info/sct#260487000";
 
     /// <summary>
     /// Literal for code: ImplantSettingProjection
@@ -2801,9 +3091,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralImplantSettingProjection = "260489002";
 
     /// <summary>
+    /// Literal for code: NONEImplantSettingProjection
+    /// </summary>
+    public const string LiteralNONEImplantSettingProjection = "http://snomed.info/sct#260489002";
+
+    /// <summary>
     /// Literal for code: SegmentalSetting
     /// </summary>
     public const string LiteralSegmentalSetting = "260490006";
+
+    /// <summary>
+    /// Literal for code: NONESegmentalSetting
+    /// </summary>
+    public const string LiteralNONESegmentalSetting = "http://snomed.info/sct#260490006";
 
     /// <summary>
     /// Literal for code: AxialViewForSesamoidBones
@@ -2811,9 +3111,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAxialViewForSesamoidBones = "260491005";
 
     /// <summary>
+    /// Literal for code: NONEAxialViewForSesamoidBones
+    /// </summary>
+    public const string LiteralNONEAxialViewForSesamoidBones = "http://snomed.info/sct#260491005";
+
+    /// <summary>
     /// Literal for code: BrewertonQuoteSProjection
     /// </summary>
     public const string LiteralBrewertonQuoteSProjection = "260492003";
+
+    /// <summary>
+    /// Literal for code: NONEBrewertonQuoteSProjection
+    /// </summary>
+    public const string LiteralNONEBrewertonQuoteSProjection = "http://snomed.info/sct#260492003";
 
     /// <summary>
     /// Literal for code: HarrisBeathAxialProjection
@@ -2821,9 +3131,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHarrisBeathAxialProjection = "260493008";
 
     /// <summary>
+    /// Literal for code: NONEHarrisBeathAxialProjection
+    /// </summary>
+    public const string LiteralNONEHarrisBeathAxialProjection = "http://snomed.info/sct#260493008";
+
+    /// <summary>
     /// Literal for code: TunnelProjection
     /// </summary>
     public const string LiteralTunnelProjection = "260494002";
+
+    /// <summary>
+    /// Literal for code: NONETunnelProjection
+    /// </summary>
+    public const string LiteralNONETunnelProjection = "http://snomed.info/sct#260494002";
 
     /// <summary>
     /// Literal for code: JudetProjection
@@ -2831,9 +3151,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralJudetProjection = "260496000";
 
     /// <summary>
+    /// Literal for code: NONEJudetProjection
+    /// </summary>
+    public const string LiteralNONEJudetProjection = "http://snomed.info/sct#260496000";
+
+    /// <summary>
     /// Literal for code: MorticeProjection
     /// </summary>
     public const string LiteralMorticeProjection = "260497009";
+
+    /// <summary>
+    /// Literal for code: NONEMorticeProjection
+    /// </summary>
+    public const string LiteralNONEMorticeProjection = "http://snomed.info/sct#260497009";
 
     /// <summary>
     /// Literal for code: OcclusalProjection
@@ -2841,9 +3171,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOcclusalProjection = "260499007";
 
     /// <summary>
+    /// Literal for code: NONEOcclusalProjection
+    /// </summary>
+    public const string LiteralNONEOcclusalProjection = "http://snomed.info/sct#260499007";
+
+    /// <summary>
     /// Literal for code: ProjectedObliqueOcclusal
     /// </summary>
     public const string LiteralProjectedObliqueOcclusal = "260500003";
+
+    /// <summary>
+    /// Literal for code: NONEProjectedObliqueOcclusal
+    /// </summary>
+    public const string LiteralNONEProjectedObliqueOcclusal = "http://snomed.info/sct#260500003";
 
     /// <summary>
     /// Literal for code: LowerTrueOcclusal
@@ -2851,9 +3191,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLowerTrueOcclusal = "260501004";
 
     /// <summary>
+    /// Literal for code: NONELowerTrueOcclusal
+    /// </summary>
+    public const string LiteralNONELowerTrueOcclusal = "http://snomed.info/sct#260501004";
+
+    /// <summary>
     /// Literal for code: PowerGripSeries
     /// </summary>
     public const string LiteralPowerGripSeries = "260502006";
+
+    /// <summary>
+    /// Literal for code: NONEPowerGripSeries
+    /// </summary>
+    public const string LiteralNONEPowerGripSeries = "http://snomed.info/sct#260502006";
 
     /// <summary>
     /// Literal for code: RadialHeadProjection
@@ -2861,9 +3211,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRadialHeadProjection = "260503001";
 
     /// <summary>
+    /// Literal for code: NONERadialHeadProjection
+    /// </summary>
+    public const string LiteralNONERadialHeadProjection = "http://snomed.info/sct#260503001";
+
+    /// <summary>
     /// Literal for code: SkylineProjection
     /// </summary>
     public const string LiteralSkylineProjection = "260504007";
+
+    /// <summary>
+    /// Literal for code: NONESkylineProjection
+    /// </summary>
+    public const string LiteralNONESkylineProjection = "http://snomed.info/sct#260504007";
 
     /// <summary>
     /// Literal for code: VanRosenProjection
@@ -2871,9 +3231,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralVanRosenProjection = "260506009";
 
     /// <summary>
+    /// Literal for code: NONEVanRosenProjection
+    /// </summary>
+    public const string LiteralNONEVanRosenProjection = "http://snomed.info/sct#260506009";
+
+    /// <summary>
     /// Literal for code: InferosuperiorProjection
     /// </summary>
     public const string LiteralInferosuperiorProjection = "272455005";
+
+    /// <summary>
+    /// Literal for code: NONEInferosuperiorProjection
+    /// </summary>
+    public const string LiteralNONEInferosuperiorProjection = "http://snomed.info/sct#272455005";
 
     /// <summary>
     /// Literal for code: ApicalProjection
@@ -2881,9 +3251,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralApicalProjection = "272456006";
 
     /// <summary>
+    /// Literal for code: NONEApicalProjection
+    /// </summary>
+    public const string LiteralNONEApicalProjection = "http://snomed.info/sct#272456006";
+
+    /// <summary>
     /// Literal for code: VerticalProjection
     /// </summary>
     public const string LiteralVerticalProjection = "272457002";
+
+    /// <summary>
+    /// Literal for code: NONEVerticalProjection
+    /// </summary>
+    public const string LiteralNONEVerticalProjection = "http://snomed.info/sct#272457002";
 
     /// <summary>
     /// Literal for code: ProneProjection
@@ -2891,9 +3271,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProneProjection = "272458007";
 
     /// <summary>
+    /// Literal for code: NONEProneProjection
+    /// </summary>
+    public const string LiteralNONEProneProjection = "http://snomed.info/sct#272458007";
+
+    /// <summary>
     /// Literal for code: SupineProjection
     /// </summary>
     public const string LiteralSupineProjection = "272459004";
+
+    /// <summary>
+    /// Literal for code: NONESupineProjection
+    /// </summary>
+    public const string LiteralNONESupineProjection = "http://snomed.info/sct#272459004";
 
     /// <summary>
     /// Literal for code: AnteriorProjection
@@ -2901,9 +3291,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAnteriorProjection = "272460009";
 
     /// <summary>
+    /// Literal for code: NONEAnteriorProjection
+    /// </summary>
+    public const string LiteralNONEAnteriorProjection = "http://snomed.info/sct#272460009";
+
+    /// <summary>
     /// Literal for code: RightPosteriorProjection
     /// </summary>
     public const string LiteralRightPosteriorProjection = "272461008";
+
+    /// <summary>
+    /// Literal for code: NONERightPosteriorProjection
+    /// </summary>
+    public const string LiteralNONERightPosteriorProjection = "http://snomed.info/sct#272461008";
 
     /// <summary>
     /// Literal for code: LeftPosteriorProjection
@@ -2911,9 +3311,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLeftPosteriorProjection = "272462001";
 
     /// <summary>
+    /// Literal for code: NONELeftPosteriorProjection
+    /// </summary>
+    public const string LiteralNONELeftPosteriorProjection = "http://snomed.info/sct#272462001";
+
+    /// <summary>
     /// Literal for code: PerorbitalProjection
     /// </summary>
     public const string LiteralPerorbitalProjection = "272464000";
+
+    /// <summary>
+    /// Literal for code: NONEPerorbitalProjection
+    /// </summary>
+    public const string LiteralNONEPerorbitalProjection = "http://snomed.info/sct#272464000";
 
     /// <summary>
     /// Literal for code: TemporomandibularJointProjection
@@ -2921,9 +3331,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTemporomandibularJointProjection = "272465004";
 
     /// <summary>
+    /// Literal for code: NONETemporomandibularJointProjection
+    /// </summary>
+    public const string LiteralNONETemporomandibularJointProjection = "http://snomed.info/sct#272465004";
+
+    /// <summary>
     /// Literal for code: OpticForamenProjection
     /// </summary>
     public const string LiteralOpticForamenProjection = "272466003";
+
+    /// <summary>
+    /// Literal for code: NONEOpticForamenProjection
+    /// </summary>
+    public const string LiteralNONEOpticForamenProjection = "http://snomed.info/sct#272466003";
 
     /// <summary>
     /// Literal for code: LateralFacialSkeletonProjection
@@ -2931,9 +3351,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLateralFacialSkeletonProjection = "272467007";
 
     /// <summary>
+    /// Literal for code: NONELateralFacialSkeletonProjection
+    /// </summary>
+    public const string LiteralNONELateralFacialSkeletonProjection = "http://snomed.info/sct#272467007";
+
+    /// <summary>
     /// Literal for code: EarProjection
     /// </summary>
     public const string LiteralEarProjection = "272468002";
+
+    /// <summary>
+    /// Literal for code: NONEEarProjection
+    /// </summary>
+    public const string LiteralNONEEarProjection = "http://snomed.info/sct#272468002";
 
     /// <summary>
     /// Literal for code: MidFaceProjection
@@ -2941,9 +3371,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMidFaceProjection = "272469005";
 
     /// <summary>
+    /// Literal for code: NONEMidFaceProjection
+    /// </summary>
+    public const string LiteralNONEMidFaceProjection = "http://snomed.info/sct#272469005";
+
+    /// <summary>
     /// Literal for code: CervicalSpineProjection
     /// </summary>
     public const string LiteralCervicalSpineProjection = "272470006";
+
+    /// <summary>
+    /// Literal for code: NONECervicalSpineProjection
+    /// </summary>
+    public const string LiteralNONECervicalSpineProjection = "http://snomed.info/sct#272470006";
 
     /// <summary>
     /// Literal for code: MacroProjection
@@ -2951,9 +3391,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMacroProjection = "272472003";
 
     /// <summary>
+    /// Literal for code: NONEMacroProjection
+    /// </summary>
+    public const string LiteralNONEMacroProjection = "http://snomed.info/sct#272472003";
+
+    /// <summary>
     /// Literal for code: OutletProjection
     /// </summary>
     public const string LiteralOutletProjection = "272473008";
+
+    /// <summary>
+    /// Literal for code: NONEOutletProjection
+    /// </summary>
+    public const string LiteralNONEOutletProjection = "http://snomed.info/sct#272473008";
 
     /// <summary>
     /// Literal for code: SwimmerQuoteSProjection
@@ -2961,9 +3411,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSwimmerQuoteSProjection = "272474002";
 
     /// <summary>
+    /// Literal for code: NONESwimmerQuoteSProjection
+    /// </summary>
+    public const string LiteralNONESwimmerQuoteSProjection = "http://snomed.info/sct#272474002";
+
+    /// <summary>
     /// Literal for code: TibialTuberosityProjection
     /// </summary>
     public const string LiteralTibialTuberosityProjection = "272475001";
+
+    /// <summary>
+    /// Literal for code: NONETibialTuberosityProjection
+    /// </summary>
+    public const string LiteralNONETibialTuberosityProjection = "http://snomed.info/sct#272475001";
 
     /// <summary>
     /// Literal for code: TransthoracicProjection
@@ -2971,9 +3431,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTransthoracicProjection = "272476000";
 
     /// <summary>
+    /// Literal for code: NONETransthoracicProjection
+    /// </summary>
+    public const string LiteralNONETransthoracicProjection = "http://snomed.info/sct#272476000";
+
+    /// <summary>
     /// Literal for code: TranscranialProjection
     /// </summary>
     public const string LiteralTranscranialProjection = "272478004";
+
+    /// <summary>
+    /// Literal for code: NONETranscranialProjection
+    /// </summary>
+    public const string LiteralNONETranscranialProjection = "http://snomed.info/sct#272478004";
 
     /// <summary>
     /// Literal for code: PosteroanteriorProjection
@@ -2981,9 +3451,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPosteroanteriorProjection = "272479007";
 
     /// <summary>
+    /// Literal for code: NONEPosteroanteriorProjection
+    /// </summary>
+    public const string LiteralNONEPosteroanteriorProjection = "http://snomed.info/sct#272479007";
+
+    /// <summary>
     /// Literal for code: HorizontalProjection
     /// </summary>
     public const string LiteralHorizontalProjection = "272480005";
+
+    /// <summary>
+    /// Literal for code: NONEHorizontalProjection
+    /// </summary>
+    public const string LiteralNONEHorizontalProjection = "http://snomed.info/sct#272480005";
 
     /// <summary>
     /// Literal for code: ErectProjection
@@ -2991,9 +3471,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralErectProjection = "272481009";
 
     /// <summary>
+    /// Literal for code: NONEErectProjection
+    /// </summary>
+    public const string LiteralNONEErectProjection = "http://snomed.info/sct#272481009";
+
+    /// <summary>
     /// Literal for code: AdductionProjection
     /// </summary>
     public const string LiteralAdductionProjection = "272482002";
+
+    /// <summary>
+    /// Literal for code: NONEAdductionProjection
+    /// </summary>
+    public const string LiteralNONEAdductionProjection = "http://snomed.info/sct#272482002";
 
     /// <summary>
     /// Literal for code: TrueProjection
@@ -3001,9 +3491,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTrueProjection = "272483007";
 
     /// <summary>
+    /// Literal for code: NONETrueProjection
+    /// </summary>
+    public const string LiteralNONETrueProjection = "http://snomed.info/sct#272483007";
+
+    /// <summary>
     /// Literal for code: ContralateralProjection
     /// </summary>
     public const string LiteralContralateralProjection = "272484001";
+
+    /// <summary>
+    /// Literal for code: NONEContralateralProjection
+    /// </summary>
+    public const string LiteralNONEContralateralProjection = "http://snomed.info/sct#272484001";
 
     /// <summary>
     /// Literal for code: PosteriorProjection
@@ -3011,9 +3511,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPosteriorProjection = "278255003";
 
     /// <summary>
+    /// Literal for code: NONEPosteriorProjection
+    /// </summary>
+    public const string LiteralNONEPosteriorProjection = "http://snomed.info/sct#278255003";
+
+    /// <summary>
     /// Literal for code: AbductionProjection
     /// </summary>
     public const string LiteralAbductionProjection = "278267001";
+
+    /// <summary>
+    /// Literal for code: NONEAbductionProjection
+    /// </summary>
+    public const string LiteralNONEAbductionProjection = "http://snomed.info/sct#278267001";
 
     /// <summary>
     /// Literal for code: ZimmerProjection
@@ -3021,9 +3531,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralZimmerProjection = "278318001";
 
     /// <summary>
+    /// Literal for code: NONEZimmerProjection
+    /// </summary>
+    public const string LiteralNONEZimmerProjection = "http://snomed.info/sct#278318001";
+
+    /// <summary>
     /// Literal for code: LeonardGeorgeProjectionQualifierValue
     /// </summary>
     public const string LiteralLeonardGeorgeProjectionQualifierValue = "398996004";
+
+    /// <summary>
+    /// Literal for code: NONELeonardGeorgeProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELeonardGeorgeProjectionQualifierValue = "http://snomed.info/sct#398996004";
 
     /// <summary>
     /// Literal for code: MayerProjectionQualifierValue
@@ -3031,9 +3551,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMayerProjectionQualifierValue = "399000008";
 
     /// <summary>
+    /// Literal for code: NONEMayerProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEMayerProjectionQualifierValue = "http://snomed.info/sct#399000008";
+
+    /// <summary>
     /// Literal for code: PosteriorEmissiveProjectionQualifierValue
     /// </summary>
     public const string LiteralPosteriorEmissiveProjectionQualifierValue = "399001007";
+
+    /// <summary>
+    /// Literal for code: NONEPosteriorEmissiveProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEPosteriorEmissiveProjectionQualifierValue = "http://snomed.info/sct#399001007";
 
     /// <summary>
     /// Literal for code: NolkeProjectionQualifierValue
@@ -3041,9 +3571,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNolkeProjectionQualifierValue = "399002000";
 
     /// <summary>
+    /// Literal for code: NONENolkeProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONENolkeProjectionQualifierValue = "http://snomed.info/sct#399002000";
+
+    /// <summary>
     /// Literal for code: HughstonProjectionQualifierValue
     /// </summary>
     public const string LiteralHughstonProjectionQualifierValue = "399003005";
+
+    /// <summary>
+    /// Literal for code: NONEHughstonProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEHughstonProjectionQualifierValue = "http://snomed.info/sct#399003005";
 
     /// <summary>
     /// Literal for code: ObliqueAxialProjectionQualifierValue
@@ -3051,9 +3591,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralObliqueAxialProjectionQualifierValue = "399004004";
 
     /// <summary>
+    /// Literal for code: NONEObliqueAxialProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEObliqueAxialProjectionQualifierValue = "http://snomed.info/sct#399004004";
+
+    /// <summary>
     /// Literal for code: MillerProjectionQualifierValue
     /// </summary>
     public const string LiteralMillerProjectionQualifierValue = "399005003";
+
+    /// <summary>
+    /// Literal for code: NONEMillerProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEMillerProjectionQualifierValue = "http://snomed.info/sct#399005003";
 
     /// <summary>
     /// Literal for code: LeftPosteriorObliqueProjectionQualifierValue
@@ -3061,9 +3611,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLeftPosteriorObliqueProjectionQualifierValue = "399006002";
 
     /// <summary>
+    /// Literal for code: NONELeftPosteriorObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELeftPosteriorObliqueProjectionQualifierValue = "http://snomed.info/sct#399006002";
+
+    /// <summary>
     /// Literal for code: AxillaryTailMammographyViewQualifierValue
     /// </summary>
     public const string LiteralAxillaryTailMammographyViewQualifierValue = "399011000";
+
+    /// <summary>
+    /// Literal for code: NONEAxillaryTailMammographyViewQualifierValue
+    /// </summary>
+    public const string LiteralNONEAxillaryTailMammographyViewQualifierValue = "http://snomed.info/sct#399011000";
 
     /// <summary>
     /// Literal for code: MedialLateralEmissiveProjectionQualifierValue
@@ -3071,9 +3631,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMedialLateralEmissiveProjectionQualifierValue = "399012007";
 
     /// <summary>
+    /// Literal for code: NONEMedialLateralEmissiveProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEMedialLateralEmissiveProjectionQualifierValue = "http://snomed.info/sct#399012007";
+
+    /// <summary>
     /// Literal for code: ChassardLapinProjectionQualifierValue
     /// </summary>
     public const string LiteralChassardLapinProjectionQualifierValue = "399013002";
+
+    /// <summary>
+    /// Literal for code: NONEChassardLapinProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEChassardLapinProjectionQualifierValue = "http://snomed.info/sct#399013002";
 
     /// <summary>
     /// Literal for code: PirieProjectionQualifierValue
@@ -3081,9 +3651,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPirieProjectionQualifierValue = "399022001";
 
     /// <summary>
+    /// Literal for code: NONEPirieProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEPirieProjectionQualifierValue = "http://snomed.info/sct#399022001";
+
+    /// <summary>
     /// Literal for code: MayProjectionQualifierValue
     /// </summary>
     public const string LiteralMayProjectionQualifierValue = "399024000";
+
+    /// <summary>
+    /// Literal for code: NONEMayProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEMayProjectionQualifierValue = "http://snomed.info/sct#399024000";
 
     /// <summary>
     /// Literal for code: IscherwoodProjectionQualifierValue
@@ -3091,9 +3671,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralIscherwoodProjectionQualifierValue = "399025004";
 
     /// <summary>
+    /// Literal for code: NONEIscherwoodProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEIscherwoodProjectionQualifierValue = "http://snomed.info/sct#399025004";
+
+    /// <summary>
     /// Literal for code: ZanelliProjectionQualifierValue
     /// </summary>
     public const string LiteralZanelliProjectionQualifierValue = "399026003";
+
+    /// <summary>
+    /// Literal for code: NONEZanelliProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEZanelliProjectionQualifierValue = "http://snomed.info/sct#399026003";
 
     /// <summary>
     /// Literal for code: ClementsProjectionQualifierValue
@@ -3101,9 +3691,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralClementsProjectionQualifierValue = "399028002";
 
     /// <summary>
+    /// Literal for code: NONEClementsProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEClementsProjectionQualifierValue = "http://snomed.info/sct#399028002";
+
+    /// <summary>
     /// Literal for code: FrontalProjectionQualifierValue
     /// </summary>
     public const string LiteralFrontalProjectionQualifierValue = "399033003";
+
+    /// <summary>
+    /// Literal for code: NONEFrontalProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEFrontalProjectionQualifierValue = "http://snomed.info/sct#399033003";
 
     /// <summary>
     /// Literal for code: LewisProjectionQualifierValue
@@ -3111,9 +3711,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLewisProjectionQualifierValue = "399037002";
 
     /// <summary>
+    /// Literal for code: NONELewisProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELewisProjectionQualifierValue = "http://snomed.info/sct#399037002";
+
+    /// <summary>
     /// Literal for code: RightPosteriorObliqueProjectionQualifierValue
     /// </summary>
     public const string LiteralRightPosteriorObliqueProjectionQualifierValue = "399038007";
+
+    /// <summary>
+    /// Literal for code: NONERightPosteriorObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONERightPosteriorObliqueProjectionQualifierValue = "http://snomed.info/sct#399038007";
 
     /// <summary>
     /// Literal for code: PosteroAnteriorObliqueProjectionQualifierValue
@@ -3121,9 +3731,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPosteroAnteriorObliqueProjectionQualifierValue = "399059000";
 
     /// <summary>
+    /// Literal for code: NONEPosteroAnteriorObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEPosteroAnteriorObliqueProjectionQualifierValue = "http://snomed.info/sct#399059000";
+
+    /// <summary>
     /// Literal for code: AxialProjectionQualifierValue
     /// </summary>
     public const string LiteralAxialProjectionQualifierValue = "399061009";
+
+    /// <summary>
+    /// Literal for code: NONEAxialProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEAxialProjectionQualifierValue = "http://snomed.info/sct#399061009";
 
     /// <summary>
     /// Literal for code: CaustonProjectionQualifierValue
@@ -3131,9 +3751,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCaustonProjectionQualifierValue = "399065000";
 
     /// <summary>
+    /// Literal for code: NONECaustonProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONECaustonProjectionQualifierValue = "http://snomed.info/sct#399065000";
+
+    /// <summary>
     /// Literal for code: LateralProjectionQualifierValue
     /// </summary>
     public const string LiteralLateralProjectionQualifierValue = "399067008";
+
+    /// <summary>
+    /// Literal for code: NONELateralProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELateralProjectionQualifierValue = "http://snomed.info/sct#399067008";
 
     /// <summary>
     /// Literal for code: PlantodorsalProjectionQualifierValue
@@ -3141,9 +3771,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPlantodorsalProjectionQualifierValue = "399071006";
 
     /// <summary>
+    /// Literal for code: NONEPlantodorsalProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEPlantodorsalProjectionQualifierValue = "http://snomed.info/sct#399071006";
+
+    /// <summary>
     /// Literal for code: FuchsProjectionQualifierValue
     /// </summary>
     public const string LiteralFuchsProjectionQualifierValue = "399073009";
+
+    /// <summary>
+    /// Literal for code: NONEFuchsProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEFuchsProjectionQualifierValue = "http://snomed.info/sct#399073009";
 
     /// <summary>
     /// Literal for code: LeftAnteriorObliqueEmissiveProjectionQualifierValue
@@ -3151,9 +3791,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLeftAnteriorObliqueEmissiveProjectionQualifierValue = "399074003";
 
     /// <summary>
+    /// Literal for code: NONELeftAnteriorObliqueEmissiveProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELeftAnteriorObliqueEmissiveProjectionQualifierValue = "http://snomed.info/sct#399074003";
+
+    /// <summary>
     /// Literal for code: RightPosteriorObliqueEmissiveProjectionQualifierValue
     /// </summary>
     public const string LiteralRightPosteriorObliqueEmissiveProjectionQualifierValue = "399075002";
+
+    /// <summary>
+    /// Literal for code: NONERightPosteriorObliqueEmissiveProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONERightPosteriorObliqueEmissiveProjectionQualifierValue = "http://snomed.info/sct#399075002";
 
     /// <summary>
     /// Literal for code: KuchendorfProjectionQualifierValue
@@ -3161,9 +3811,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralKuchendorfProjectionQualifierValue = "399080006";
 
     /// <summary>
+    /// Literal for code: NONEKuchendorfProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEKuchendorfProjectionQualifierValue = "http://snomed.info/sct#399080006";
+
+    /// <summary>
     /// Literal for code: GaynorHartProjectionQualifierValue
     /// </summary>
     public const string LiteralGaynorHartProjectionQualifierValue = "399082003";
+
+    /// <summary>
+    /// Literal for code: NONEGaynorHartProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEGaynorHartProjectionQualifierValue = "http://snomed.info/sct#399082003";
 
     /// <summary>
     /// Literal for code: HsiehProjectionQualifierValue
@@ -3171,9 +3831,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHsiehProjectionQualifierValue = "399083008";
 
     /// <summary>
+    /// Literal for code: NONEHsiehProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEHsiehProjectionQualifierValue = "http://snomed.info/sct#399083008";
+
+    /// <summary>
     /// Literal for code: ObliqueAxialEmissiveProjectionQualifierValue
     /// </summary>
     public const string LiteralObliqueAxialEmissiveProjectionQualifierValue = "399089007";
+
+    /// <summary>
+    /// Literal for code: NONEObliqueAxialEmissiveProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEObliqueAxialEmissiveProjectionQualifierValue = "http://snomed.info/sct#399089007";
 
     /// <summary>
     /// Literal for code: StaunigProjectionQualifierValue
@@ -3181,9 +3851,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStaunigProjectionQualifierValue = "399098005";
 
     /// <summary>
+    /// Literal for code: NONEStaunigProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEStaunigProjectionQualifierValue = "http://snomed.info/sct#399098005";
+
+    /// <summary>
     /// Literal for code: LateroMedialObliqueProjectionQualifierValue
     /// </summary>
     public const string LiteralLateroMedialObliqueProjectionQualifierValue = "399099002";
+
+    /// <summary>
+    /// Literal for code: NONELateroMedialObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELateroMedialObliqueProjectionQualifierValue = "http://snomed.info/sct#399099002";
 
     /// <summary>
     /// Literal for code: CranioCaudalProjectionExaggeratedMediallyQualifierValue
@@ -3191,9 +3871,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCranioCaudalProjectionExaggeratedMediallyQualifierValue = "399101009";
 
     /// <summary>
+    /// Literal for code: NONECranioCaudalProjectionExaggeratedMediallyQualifierValue
+    /// </summary>
+    public const string LiteralNONECranioCaudalProjectionExaggeratedMediallyQualifierValue = "http://snomed.info/sct#399101009";
+
+    /// <summary>
     /// Literal for code: FriedmanProjectionQualifierValue
     /// </summary>
     public const string LiteralFriedmanProjectionQualifierValue = "399103007";
+
+    /// <summary>
+    /// Literal for code: NONEFriedmanProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEFriedmanProjectionQualifierValue = "http://snomed.info/sct#399103007";
 
     /// <summary>
     /// Literal for code: RightAnteriorObliqueEmissiveProjectionQualifierValue
@@ -3201,9 +3891,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRightAnteriorObliqueEmissiveProjectionQualifierValue = "399108003";
 
     /// <summary>
+    /// Literal for code: NONERightAnteriorObliqueEmissiveProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONERightAnteriorObliqueEmissiveProjectionQualifierValue = "http://snomed.info/sct#399108003";
+
+    /// <summary>
     /// Literal for code: TangentialProjectionQualifierValue
     /// </summary>
     public const string LiteralTangentialProjectionQualifierValue = "399110001";
+
+    /// <summary>
+    /// Literal for code: NONETangentialProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONETangentialProjectionQualifierValue = "http://snomed.info/sct#399110001";
 
     /// <summary>
     /// Literal for code: EponymousProjectionQualifierValue
@@ -3211,9 +3911,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralEponymousProjectionQualifierValue = "399113004";
 
     /// <summary>
+    /// Literal for code: NONEEponymousProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEEponymousProjectionQualifierValue = "http://snomed.info/sct#399113004";
+
+    /// <summary>
     /// Literal for code: LeftLateralEmissiveProjectionQualifierValue
     /// </summary>
     public const string LiteralLeftLateralEmissiveProjectionQualifierValue = "399118008";
+
+    /// <summary>
+    /// Literal for code: NONELeftLateralEmissiveProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELeftLateralEmissiveProjectionQualifierValue = "http://snomed.info/sct#399118008";
 
     /// <summary>
     /// Literal for code: TwiningProjectionQualifierValue
@@ -3221,9 +3931,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTwiningProjectionQualifierValue = "399125001";
 
     /// <summary>
+    /// Literal for code: NONETwiningProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONETwiningProjectionQualifierValue = "http://snomed.info/sct#399125001";
+
+    /// <summary>
     /// Literal for code: TeufelProjectionQualifierValue
     /// </summary>
     public const string LiteralTeufelProjectionQualifierValue = "399127009";
+
+    /// <summary>
+    /// Literal for code: NONETeufelProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONETeufelProjectionQualifierValue = "http://snomed.info/sct#399127009";
 
     /// <summary>
     /// Literal for code: HollyProjectionQualifierValue
@@ -3231,9 +3951,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHollyProjectionQualifierValue = "399129007";
 
     /// <summary>
+    /// Literal for code: NONEHollyProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEHollyProjectionQualifierValue = "http://snomed.info/sct#399129007";
+
+    /// <summary>
     /// Literal for code: WestPointProjectionQualifierValue
     /// </summary>
     public const string LiteralWestPointProjectionQualifierValue = "399130002";
+
+    /// <summary>
+    /// Literal for code: NONEWestPointProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEWestPointProjectionQualifierValue = "http://snomed.info/sct#399130002";
 
     /// <summary>
     /// Literal for code: FrontalObliqueAxialProjectionQualifierValue
@@ -3241,9 +3971,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFrontalObliqueAxialProjectionQualifierValue = "399132005";
 
     /// <summary>
+    /// Literal for code: NONEFrontalObliqueAxialProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEFrontalObliqueAxialProjectionQualifierValue = "http://snomed.info/sct#399132005";
+
+    /// <summary>
     /// Literal for code: LeftAnteriorObliqueProjectionQualifierValue
     /// </summary>
     public const string LiteralLeftAnteriorObliqueProjectionQualifierValue = "399135007";
+
+    /// <summary>
+    /// Literal for code: NONELeftAnteriorObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELeftAnteriorObliqueProjectionQualifierValue = "http://snomed.info/sct#399135007";
 
     /// <summary>
     /// Literal for code: LeftPosteriorObliqueEmissiveProjectionQualifierValue
@@ -3251,9 +3991,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLeftPosteriorObliqueEmissiveProjectionQualifierValue = "399136008";
 
     /// <summary>
+    /// Literal for code: NONELeftPosteriorObliqueEmissiveProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELeftPosteriorObliqueEmissiveProjectionQualifierValue = "http://snomed.info/sct#399136008";
+
+    /// <summary>
     /// Literal for code: PennerProjectionQualifierValue
     /// </summary>
     public const string LiteralPennerProjectionQualifierValue = "399138009";
+
+    /// <summary>
+    /// Literal for code: NONEPennerProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEPennerProjectionQualifierValue = "http://snomed.info/sct#399138009";
 
     /// <summary>
     /// Literal for code: AlbersSchonbergProjectionQualifierValue
@@ -3261,9 +4011,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAlbersSchonbergProjectionQualifierValue = "399142007";
 
     /// <summary>
+    /// Literal for code: NONEAlbersSchonbergProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEAlbersSchonbergProjectionQualifierValue = "http://snomed.info/sct#399142007";
+
+    /// <summary>
     /// Literal for code: GrasheyProjectionQualifierValue
     /// </summary>
     public const string LiteralGrasheyProjectionQualifierValue = "399146005";
+
+    /// <summary>
+    /// Literal for code: NONEGrasheyProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEGrasheyProjectionQualifierValue = "http://snomed.info/sct#399146005";
 
     /// <summary>
     /// Literal for code: ChamberlainProjectionQualifierValue
@@ -3271,9 +4031,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChamberlainProjectionQualifierValue = "399148006";
 
     /// <summary>
+    /// Literal for code: NONEChamberlainProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEChamberlainProjectionQualifierValue = "http://snomed.info/sct#399148006";
+
+    /// <summary>
     /// Literal for code: KandelProjectionQualifierValue
     /// </summary>
     public const string LiteralKandelProjectionQualifierValue = "399152006";
+
+    /// <summary>
+    /// Literal for code: NONEKandelProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEKandelProjectionQualifierValue = "http://snomed.info/sct#399152006";
 
     /// <summary>
     /// Literal for code: LaquerrierePierquinProjectionQualifierValue
@@ -3281,9 +4051,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLaquerrierePierquinProjectionQualifierValue = "399156009";
 
     /// <summary>
+    /// Literal for code: NONELaquerrierePierquinProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELaquerrierePierquinProjectionQualifierValue = "http://snomed.info/sct#399156009";
+
+    /// <summary>
     /// Literal for code: NorgaardQuoteSProjectionQualifierValue
     /// </summary>
     public const string LiteralNorgaardQuoteSProjectionQualifierValue = "399157000";
+
+    /// <summary>
+    /// Literal for code: NONENorgaardQuoteSProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONENorgaardQuoteSProjectionQualifierValue = "http://snomed.info/sct#399157000";
 
     /// <summary>
     /// Literal for code: LateroMedialObliqueEmissiveProjectionQualifierValue
@@ -3291,9 +4071,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLateroMedialObliqueEmissiveProjectionQualifierValue = "399159002";
 
     /// <summary>
+    /// Literal for code: NONELateroMedialObliqueEmissiveProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELateroMedialObliqueEmissiveProjectionQualifierValue = "http://snomed.info/sct#399159002";
+
+    /// <summary>
     /// Literal for code: FrontalObliqueProjectionQualifierValue
     /// </summary>
     public const string LiteralFrontalObliqueProjectionQualifierValue = "399160007";
+
+    /// <summary>
+    /// Literal for code: NONEFrontalObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEFrontalObliqueProjectionQualifierValue = "http://snomed.info/sct#399160007";
 
     /// <summary>
     /// Literal for code: CleavageMammographyViewQualifierValue
@@ -3301,9 +4091,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCleavageMammographyViewQualifierValue = "399161006";
 
     /// <summary>
+    /// Literal for code: NONECleavageMammographyViewQualifierValue
+    /// </summary>
+    public const string LiteralNONECleavageMammographyViewQualifierValue = "http://snomed.info/sct#399161006";
+
+    /// <summary>
     /// Literal for code: CranioCaudalProjectionQualifierValue
     /// </summary>
     public const string LiteralCranioCaudalProjectionQualifierValue = "399162004";
+
+    /// <summary>
+    /// Literal for code: NONECranioCaudalProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONECranioCaudalProjectionQualifierValue = "http://snomed.info/sct#399162004";
 
     /// <summary>
     /// Literal for code: MagnifiedProjectionQualifierValue
@@ -3311,9 +4111,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMagnifiedProjectionQualifierValue = "399163009";
 
     /// <summary>
+    /// Literal for code: NONEMagnifiedProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEMagnifiedProjectionQualifierValue = "http://snomed.info/sct#399163009";
+
+    /// <summary>
     /// Literal for code: HoughProjectionQualifierValue
     /// </summary>
     public const string LiteralHoughProjectionQualifierValue = "399168000";
+
+    /// <summary>
+    /// Literal for code: NONEHoughProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEHoughProjectionQualifierValue = "http://snomed.info/sct#399168000";
 
     /// <summary>
     /// Literal for code: LauensteinProjectionQualifierValue
@@ -3321,9 +4131,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLauensteinProjectionQualifierValue = "399169008";
 
     /// <summary>
+    /// Literal for code: NONELauensteinProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELauensteinProjectionQualifierValue = "http://snomed.info/sct#399169008";
+
+    /// <summary>
     /// Literal for code: OttonelloProjectionQualifierValue
     /// </summary>
     public const string LiteralOttonelloProjectionQualifierValue = "399171008";
+
+    /// <summary>
+    /// Literal for code: NONEOttonelloProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEOttonelloProjectionQualifierValue = "http://snomed.info/sct#399171008";
 
     /// <summary>
     /// Literal for code: LeftLateralProjectionQualifierValue
@@ -3331,9 +4151,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLeftLateralProjectionQualifierValue = "399173006";
 
     /// <summary>
+    /// Literal for code: NONELeftLateralProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELeftLateralProjectionQualifierValue = "http://snomed.info/sct#399173006";
+
+    /// <summary>
     /// Literal for code: LawrenceProjectionQualifierValue
     /// </summary>
     public const string LiteralLawrenceProjectionQualifierValue = "399179005";
+
+    /// <summary>
+    /// Literal for code: NONELawrenceProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELawrenceProjectionQualifierValue = "http://snomed.info/sct#399179005";
 
     /// <summary>
     /// Literal for code: PawlowProjectionQualifierValue
@@ -3341,9 +4171,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPawlowProjectionQualifierValue = "399181007";
 
     /// <summary>
+    /// Literal for code: NONEPawlowProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEPawlowProjectionQualifierValue = "http://snomed.info/sct#399181007";
+
+    /// <summary>
     /// Literal for code: ObliqueProjectionQualifierValue
     /// </summary>
     public const string LiteralObliqueProjectionQualifierValue = "399182000";
+
+    /// <summary>
+    /// Literal for code: NONEObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEObliqueProjectionQualifierValue = "http://snomed.info/sct#399182000";
 
     /// <summary>
     /// Literal for code: LeftObliqueProjectionQualifierValue
@@ -3351,9 +4191,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLeftObliqueProjectionQualifierValue = "399184004";
 
     /// <summary>
+    /// Literal for code: NONELeftObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELeftObliqueProjectionQualifierValue = "http://snomed.info/sct#399184004";
+
+    /// <summary>
     /// Literal for code: SuperolateralToInferomedialObliqueProjectionQualifierValue
     /// </summary>
     public const string LiteralSuperolateralToInferomedialObliqueProjectionQualifierValue = "399188001";
+
+    /// <summary>
+    /// Literal for code: NONESuperolateralToInferomedialObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONESuperolateralToInferomedialObliqueProjectionQualifierValue = "http://snomed.info/sct#399188001";
 
     /// <summary>
     /// Literal for code: CranioCaudalProjectionExaggeratedLaterallyQualifierValue
@@ -3361,9 +4211,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCranioCaudalProjectionExaggeratedLaterallyQualifierValue = "399192008";
 
     /// <summary>
+    /// Literal for code: NONECranioCaudalProjectionExaggeratedLaterallyQualifierValue
+    /// </summary>
+    public const string LiteralNONECranioCaudalProjectionExaggeratedLaterallyQualifierValue = "http://snomed.info/sct#399192008";
+
+    /// <summary>
     /// Literal for code: CaudoCranialProjectionQualifierValue
     /// </summary>
     public const string LiteralCaudoCranialProjectionQualifierValue = "399196006";
+
+    /// <summary>
+    /// Literal for code: NONECaudoCranialProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONECaudoCranialProjectionQualifierValue = "http://snomed.info/sct#399196006";
 
     /// <summary>
     /// Literal for code: RightLateralProjectionQualifierValue
@@ -3371,9 +4231,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRightLateralProjectionQualifierValue = "399198007";
 
     /// <summary>
+    /// Literal for code: NONERightLateralProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONERightLateralProjectionQualifierValue = "http://snomed.info/sct#399198007";
+
+    /// <summary>
     /// Literal for code: HenschenProjectionQualifierValue
     /// </summary>
     public const string LiteralHenschenProjectionQualifierValue = "399199004";
+
+    /// <summary>
+    /// Literal for code: NONEHenschenProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEHenschenProjectionQualifierValue = "http://snomed.info/sct#399199004";
 
     /// <summary>
     /// Literal for code: JuddProjectionQualifierValue
@@ -3381,9 +4251,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralJuddProjectionQualifierValue = "399201002";
 
     /// <summary>
+    /// Literal for code: NONEJuddProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEJuddProjectionQualifierValue = "http://snomed.info/sct#399201002";
+
+    /// <summary>
     /// Literal for code: LawProjectionQualifierValue
     /// </summary>
     public const string LiteralLawProjectionQualifierValue = "399206007";
+
+    /// <summary>
+    /// Literal for code: NONELawProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELawProjectionQualifierValue = "http://snomed.info/sct#399206007";
 
     /// <summary>
     /// Literal for code: CampCoventryProjectionQualifierValue
@@ -3391,9 +4271,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCampCoventryProjectionQualifierValue = "399212002";
 
     /// <summary>
+    /// Literal for code: NONECampCoventryProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONECampCoventryProjectionQualifierValue = "http://snomed.info/sct#399212002";
+
+    /// <summary>
     /// Literal for code: WigbyTaylorProjectionQualifierValue
     /// </summary>
     public const string LiteralWigbyTaylorProjectionQualifierValue = "399215000";
+
+    /// <summary>
+    /// Literal for code: NONEWigbyTaylorProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEWigbyTaylorProjectionQualifierValue = "http://snomed.info/sct#399215000";
 
     /// <summary>
     /// Literal for code: ArcelinProjectionQualifierValue
@@ -3401,9 +4291,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralArcelinProjectionQualifierValue = "399218003";
 
     /// <summary>
+    /// Literal for code: NONEArcelinProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEArcelinProjectionQualifierValue = "http://snomed.info/sct#399218003";
+
+    /// <summary>
     /// Literal for code: ObliqueCaudoCranialProjectionQualifierValue
     /// </summary>
     public const string LiteralObliqueCaudoCranialProjectionQualifierValue = "399225005";
+
+    /// <summary>
+    /// Literal for code: NONEObliqueCaudoCranialProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEObliqueCaudoCranialProjectionQualifierValue = "http://snomed.info/sct#399225005";
 
     /// <summary>
     /// Literal for code: KempHarperProjectionQualifierValue
@@ -3411,9 +4311,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralKempHarperProjectionQualifierValue = "399227002";
 
     /// <summary>
+    /// Literal for code: NONEKempHarperProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEKempHarperProjectionQualifierValue = "http://snomed.info/sct#399227002";
+
+    /// <summary>
     /// Literal for code: RheseProjectionQualifierValue
     /// </summary>
     public const string LiteralRheseProjectionQualifierValue = "399234000";
+
+    /// <summary>
+    /// Literal for code: NONERheseProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONERheseProjectionQualifierValue = "http://snomed.info/sct#399234000";
 
     /// <summary>
     /// Literal for code: RightObliqueProjectionQualifierValue
@@ -3421,9 +4331,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRightObliqueProjectionQualifierValue = "399236003";
 
     /// <summary>
+    /// Literal for code: NONERightObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONERightObliqueProjectionQualifierValue = "http://snomed.info/sct#399236003";
+
+    /// <summary>
     /// Literal for code: AlexanderProjectionQualifierValue
     /// </summary>
     public const string LiteralAlexanderProjectionQualifierValue = "399237007";
+
+    /// <summary>
+    /// Literal for code: NONEAlexanderProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEAlexanderProjectionQualifierValue = "http://snomed.info/sct#399237007";
 
     /// <summary>
     /// Literal for code: TitteringtonProjectionQualifierValue
@@ -3431,9 +4351,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTitteringtonProjectionQualifierValue = "399241006";
 
     /// <summary>
+    /// Literal for code: NONETitteringtonProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONETitteringtonProjectionQualifierValue = "http://snomed.info/sct#399241006";
+
+    /// <summary>
     /// Literal for code: AcanthioparietalProjectionQualifierValue
     /// </summary>
     public const string LiteralAcanthioparietalProjectionQualifierValue = "399242004";
+
+    /// <summary>
+    /// Literal for code: NONEAcanthioparietalProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEAcanthioparietalProjectionQualifierValue = "http://snomed.info/sct#399242004";
 
     /// <summary>
     /// Literal for code: SettegastProjectionQualifierValue
@@ -3441,9 +4371,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSettegastProjectionQualifierValue = "399243009";
 
     /// <summary>
+    /// Literal for code: NONESettegastProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONESettegastProjectionQualifierValue = "http://snomed.info/sct#399243009";
+
+    /// <summary>
     /// Literal for code: CleavesProjectionQualifierValue
     /// </summary>
     public const string LiteralCleavesProjectionQualifierValue = "399245002";
+
+    /// <summary>
+    /// Literal for code: NONECleavesProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONECleavesProjectionQualifierValue = "http://snomed.info/sct#399245002";
 
     /// <summary>
     /// Literal for code: BlackettHealyProjectionQualifierValue
@@ -3451,9 +4391,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBlackettHealyProjectionQualifierValue = "399246001";
 
     /// <summary>
+    /// Literal for code: NONEBlackettHealyProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEBlackettHealyProjectionQualifierValue = "http://snomed.info/sct#399246001";
+
+    /// <summary>
     /// Literal for code: TarrantProjectionQualifierValue
     /// </summary>
     public const string LiteralTarrantProjectionQualifierValue = "399247005";
+
+    /// <summary>
+    /// Literal for code: NONETarrantProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONETarrantProjectionQualifierValue = "http://snomed.info/sct#399247005";
 
     /// <summary>
     /// Literal for code: LorenzProjectionQualifierValue
@@ -3461,9 +4411,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLorenzProjectionQualifierValue = "399251007";
 
     /// <summary>
+    /// Literal for code: NONELorenzProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELorenzProjectionQualifierValue = "http://snomed.info/sct#399251007";
+
+    /// <summary>
     /// Literal for code: SubmentoverticalProjectionQualifierValue
     /// </summary>
     public const string LiteralSubmentoverticalProjectionQualifierValue = "399255003";
+
+    /// <summary>
+    /// Literal for code: NONESubmentoverticalProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONESubmentoverticalProjectionQualifierValue = "http://snomed.info/sct#399255003";
 
     /// <summary>
     /// Literal for code: MedialLateralProjection
@@ -3471,9 +4431,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralMedialLateralProjection = "399260004";
 
     /// <summary>
+    /// Literal for code: NONEMedialLateralProjection
+    /// </summary>
+    public const string LiteralNONEMedialLateralProjection = "http://snomed.info/sct#399260004";
+
+    /// <summary>
     /// Literal for code: BeclereProjectionQualifierValue
     /// </summary>
     public const string LiteralBeclereProjectionQualifierValue = "399263002";
+
+    /// <summary>
+    /// Literal for code: NONEBeclereProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEBeclereProjectionQualifierValue = "http://snomed.info/sct#399263002";
 
     /// <summary>
     /// Literal for code: ExaggeratedCranioCaudalProjectionQualifierValue
@@ -3481,9 +4451,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralExaggeratedCranioCaudalProjectionQualifierValue = "399265009";
 
     /// <summary>
+    /// Literal for code: NONEExaggeratedCranioCaudalProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEExaggeratedCranioCaudalProjectionQualifierValue = "http://snomed.info/sct#399265009";
+
+    /// <summary>
     /// Literal for code: MedioLateralObliqueEmissiveProjectionQualifierValue
     /// </summary>
     public const string LiteralMedioLateralObliqueEmissiveProjectionQualifierValue = "399268006";
+
+    /// <summary>
+    /// Literal for code: NONEMedioLateralObliqueEmissiveProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEMedioLateralObliqueEmissiveProjectionQualifierValue = "http://snomed.info/sct#399268006";
 
     /// <summary>
     /// Literal for code: TowneQuoteSProjectionQualifierValue
@@ -3491,9 +4471,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTowneQuoteSProjectionQualifierValue = "399270002";
 
     /// <summary>
+    /// Literal for code: NONETowneQuoteSProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONETowneQuoteSProjectionQualifierValue = "http://snomed.info/sct#399270002";
+
+    /// <summary>
     /// Literal for code: ParietoacanthialProjectionQualifierValue
     /// </summary>
     public const string LiteralParietoacanthialProjectionQualifierValue = "399272005";
+
+    /// <summary>
+    /// Literal for code: NONEParietoacanthialProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEParietoacanthialProjectionQualifierValue = "http://snomed.info/sct#399272005";
 
     /// <summary>
     /// Literal for code: SagittalObliqueAxialEmissiveProjectionQualifierValue
@@ -3501,9 +4491,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSagittalObliqueAxialEmissiveProjectionQualifierValue = "399273000";
 
     /// <summary>
+    /// Literal for code: NONESagittalObliqueAxialEmissiveProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONESagittalObliqueAxialEmissiveProjectionQualifierValue = "http://snomed.info/sct#399273000";
+
+    /// <summary>
     /// Literal for code: HickeyProjectionQualifierValue
     /// </summary>
     public const string LiteralHickeyProjectionQualifierValue = "399277004";
+
+    /// <summary>
+    /// Literal for code: NONEHickeyProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEHickeyProjectionQualifierValue = "http://snomed.info/sct#399277004";
 
     /// <summary>
     /// Literal for code: CahoonProjectionQualifierValue
@@ -3511,9 +4511,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCahoonProjectionQualifierValue = "399278009";
 
     /// <summary>
+    /// Literal for code: NONECahoonProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONECahoonProjectionQualifierValue = "http://snomed.info/sct#399278009";
+
+    /// <summary>
     /// Literal for code: KasabachProjectionQualifierValue
     /// </summary>
     public const string LiteralKasabachProjectionQualifierValue = "399280003";
+
+    /// <summary>
+    /// Literal for code: NONEKasabachProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEKasabachProjectionQualifierValue = "http://snomed.info/sct#399280003";
 
     /// <summary>
     /// Literal for code: FleischnerProjectionQualifierValue
@@ -3521,9 +4531,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFleischnerProjectionQualifierValue = "399281004";
 
     /// <summary>
+    /// Literal for code: NONEFleischnerProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEFleischnerProjectionQualifierValue = "http://snomed.info/sct#399281004";
+
+    /// <summary>
     /// Literal for code: MerchantProjectionQualifierValue
     /// </summary>
     public const string LiteralMerchantProjectionQualifierValue = "399284007";
+
+    /// <summary>
+    /// Literal for code: NONEMerchantProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEMerchantProjectionQualifierValue = "http://snomed.info/sct#399284007";
 
     /// <summary>
     /// Literal for code: HolmbladProjectionQualifierValue
@@ -3531,9 +4551,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralHolmbladProjectionQualifierValue = "399285008";
 
     /// <summary>
+    /// Literal for code: NONEHolmbladProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEHolmbladProjectionQualifierValue = "http://snomed.info/sct#399285008";
+
+    /// <summary>
     /// Literal for code: ObliqueCranioCaudalProjectionQualifierValue
     /// </summary>
     public const string LiteralObliqueCranioCaudalProjectionQualifierValue = "399288005";
+
+    /// <summary>
+    /// Literal for code: NONEObliqueCranioCaudalProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEObliqueCranioCaudalProjectionQualifierValue = "http://snomed.info/sct#399288005";
 
     /// <summary>
     /// Literal for code: SchullerProjection
@@ -3541,9 +4571,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSchullerProjection = "399290006";
 
     /// <summary>
+    /// Literal for code: NONESchullerProjection
+    /// </summary>
+    public const string LiteralNONESchullerProjection = "http://snomed.info/sct#399290006";
+
+    /// <summary>
     /// Literal for code: StecherProjectionQualifierValue
     /// </summary>
     public const string LiteralStecherProjectionQualifierValue = "399292003";
+
+    /// <summary>
+    /// Literal for code: NONEStecherProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEStecherProjectionQualifierValue = "http://snomed.info/sct#399292003";
 
     /// <summary>
     /// Literal for code: TaylorProjectionQualifierValue
@@ -3551,9 +4591,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTaylorProjectionQualifierValue = "399296000";
 
     /// <summary>
+    /// Literal for code: NONETaylorProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONETaylorProjectionQualifierValue = "http://snomed.info/sct#399296000";
+
+    /// <summary>
     /// Literal for code: RightLateralEmissiveProjectionQualifierValue
     /// </summary>
     public const string LiteralRightLateralEmissiveProjectionQualifierValue = "399297009";
+
+    /// <summary>
+    /// Literal for code: NONERightLateralEmissiveProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONERightLateralEmissiveProjectionQualifierValue = "http://snomed.info/sct#399297009";
 
     /// <summary>
     /// Literal for code: LateralMedialEmissiveProjectionQualifierValue
@@ -3561,9 +4611,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLateralMedialEmissiveProjectionQualifierValue = "399300004";
 
     /// <summary>
+    /// Literal for code: NONELateralMedialEmissiveProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELateralMedialEmissiveProjectionQualifierValue = "http://snomed.info/sct#399300004";
+
+    /// <summary>
     /// Literal for code: DunlapProjectionQualifierValue
     /// </summary>
     public const string LiteralDunlapProjectionQualifierValue = "399303002";
+
+    /// <summary>
+    /// Literal for code: NONEDunlapProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEDunlapProjectionQualifierValue = "http://snomed.info/sct#399303002";
 
     /// <summary>
     /// Literal for code: LindblomProjectionQualifierValue
@@ -3571,9 +4631,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLindblomProjectionQualifierValue = "399308006";
 
     /// <summary>
+    /// Literal for code: NONELindblomProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELindblomProjectionQualifierValue = "http://snomed.info/sct#399308006";
+
+    /// <summary>
     /// Literal for code: GrandyProjectionQualifierValue
     /// </summary>
     public const string LiteralGrandyProjectionQualifierValue = "399311007";
+
+    /// <summary>
+    /// Literal for code: NONEGrandyProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEGrandyProjectionQualifierValue = "http://snomed.info/sct#399311007";
 
     /// <summary>
     /// Literal for code: AnteroPosteriorObliqueProjectionQualifierValue
@@ -3581,9 +4651,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAnteroPosteriorObliqueProjectionQualifierValue = "399312000";
 
     /// <summary>
+    /// Literal for code: NONEAnteroPosteriorObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEAnteroPosteriorObliqueProjectionQualifierValue = "http://snomed.info/sct#399312000";
+
+    /// <summary>
     /// Literal for code: SwansonProjectionQualifierValue
     /// </summary>
     public const string LiteralSwansonProjectionQualifierValue = "399313005";
+
+    /// <summary>
+    /// Literal for code: NONESwansonProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONESwansonProjectionQualifierValue = "http://snomed.info/sct#399313005";
 
     /// <summary>
     /// Literal for code: ParietoOrbitalProjectionQualifierValue
@@ -3591,9 +4671,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralParietoOrbitalProjectionQualifierValue = "399316002";
 
     /// <summary>
+    /// Literal for code: NONEParietoOrbitalProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEParietoOrbitalProjectionQualifierValue = "http://snomed.info/sct#399316002";
+
+    /// <summary>
     /// Literal for code: KovacsProjectionQualifierValue
     /// </summary>
     public const string LiteralKovacsProjectionQualifierValue = "399318001";
+
+    /// <summary>
+    /// Literal for code: NONEKovacsProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEKovacsProjectionQualifierValue = "http://snomed.info/sct#399318001";
 
     /// <summary>
     /// Literal for code: ClementsNakayamaProjectionQualifierValue
@@ -3601,9 +4691,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralClementsNakayamaProjectionQualifierValue = "399320003";
 
     /// <summary>
+    /// Literal for code: NONEClementsNakayamaProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEClementsNakayamaProjectionQualifierValue = "http://snomed.info/sct#399320003";
+
+    /// <summary>
     /// Literal for code: AnteriorEmissiveProjectionQualifierValue
     /// </summary>
     public const string LiteralAnteriorEmissiveProjectionQualifierValue = "399321004";
+
+    /// <summary>
+    /// Literal for code: NONEAnteriorEmissiveProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEAnteriorEmissiveProjectionQualifierValue = "http://snomed.info/sct#399321004";
 
     /// <summary>
     /// Literal for code: SagittalObliqueAxialProjectionQualifierValue
@@ -3611,9 +4711,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSagittalObliqueAxialProjectionQualifierValue = "399325008";
 
     /// <summary>
+    /// Literal for code: NONESagittalObliqueAxialProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONESagittalObliqueAxialProjectionQualifierValue = "http://snomed.info/sct#399325008";
+
+    /// <summary>
     /// Literal for code: LowBeerProjectionQualifierValue
     /// </summary>
     public const string LiteralLowBeerProjectionQualifierValue = "399327000";
+
+    /// <summary>
+    /// Literal for code: NONELowBeerProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELowBeerProjectionQualifierValue = "http://snomed.info/sct#399327000";
 
     /// <summary>
     /// Literal for code: ValdiniProjectionQualifierValue
@@ -3621,9 +4731,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralValdiniProjectionQualifierValue = "399330007";
 
     /// <summary>
+    /// Literal for code: NONEValdiniProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEValdiniProjectionQualifierValue = "http://snomed.info/sct#399330007";
+
+    /// <summary>
     /// Literal for code: KurzbauerProjectionQualifierValue
     /// </summary>
     public const string LiteralKurzbauerProjectionQualifierValue = "399332004";
+
+    /// <summary>
+    /// Literal for code: NONEKurzbauerProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEKurzbauerProjectionQualifierValue = "http://snomed.info/sct#399332004";
 
     /// <summary>
     /// Literal for code: DorsoplantarProjectionQualifierValue
@@ -3631,9 +4751,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDorsoplantarProjectionQualifierValue = "399335002";
 
     /// <summary>
+    /// Literal for code: NONEDorsoplantarProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEDorsoplantarProjectionQualifierValue = "http://snomed.info/sct#399335002";
+
+    /// <summary>
     /// Literal for code: HaasProjectionQualifierValue
     /// </summary>
     public const string LiteralHaasProjectionQualifierValue = "399341009";
+
+    /// <summary>
+    /// Literal for code: NONEHaasProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEHaasProjectionQualifierValue = "http://snomed.info/sct#399341009";
 
     /// <summary>
     /// Literal for code: LilienfeldProjectionQualifierValue
@@ -3641,9 +4771,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLilienfeldProjectionQualifierValue = "399342002";
 
     /// <summary>
+    /// Literal for code: NONELilienfeldProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELilienfeldProjectionQualifierValue = "http://snomed.info/sct#399342002";
+
+    /// <summary>
     /// Literal for code: BrodenProjectionQualifierValue
     /// </summary>
     public const string LiteralBrodenProjectionQualifierValue = "399344001";
+
+    /// <summary>
+    /// Literal for code: NONEBrodenProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEBrodenProjectionQualifierValue = "http://snomed.info/sct#399344001";
 
     /// <summary>
     /// Literal for code: AnteroPosteriorProjectionQualifierValue
@@ -3651,9 +4791,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAnteroPosteriorProjectionQualifierValue = "399348003";
 
     /// <summary>
+    /// Literal for code: NONEAnteroPosteriorProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEAnteroPosteriorProjectionQualifierValue = "http://snomed.info/sct#399348003";
+
+    /// <summary>
     /// Literal for code: StenverQuoteSProjectionQualifierValue
     /// </summary>
     public const string LiteralStenverQuoteSProjectionQualifierValue = "399349006";
+
+    /// <summary>
+    /// Literal for code: NONEStenverQuoteSProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEStenverQuoteSProjectionQualifierValue = "http://snomed.info/sct#399349006";
 
     /// <summary>
     /// Literal for code: OrbitoParietalProjectionQualifierValue
@@ -3661,9 +4811,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralOrbitoParietalProjectionQualifierValue = "399351005";
 
     /// <summary>
+    /// Literal for code: NONEOrbitoParietalProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEOrbitoParietalProjectionQualifierValue = "http://snomed.info/sct#399351005";
+
+    /// <summary>
     /// Literal for code: LateralMedialProjectionQualifierValue
     /// </summary>
     public const string LiteralLateralMedialProjectionQualifierValue = "399352003";
+
+    /// <summary>
+    /// Literal for code: NONELateralMedialProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELateralMedialProjectionQualifierValue = "http://snomed.info/sct#399352003";
 
     /// <summary>
     /// Literal for code: ChausseProjectionQualifierValue
@@ -3671,9 +4831,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralChausseProjectionQualifierValue = "399355001";
 
     /// <summary>
+    /// Literal for code: NONEChausseProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEChausseProjectionQualifierValue = "http://snomed.info/sct#399355001";
+
+    /// <summary>
     /// Literal for code: RightAnteriorObliqueProjectionQualifierValue
     /// </summary>
     public const string LiteralRightAnteriorObliqueProjectionQualifierValue = "399356000";
+
+    /// <summary>
+    /// Literal for code: NONERightAnteriorObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONERightAnteriorObliqueProjectionQualifierValue = "http://snomed.info/sct#399356000";
 
     /// <summary>
     /// Literal for code: CaldwellProjectionQualifierValue
@@ -3681,9 +4851,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCaldwellProjectionQualifierValue = "399358004";
 
     /// <summary>
+    /// Literal for code: NONECaldwellProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONECaldwellProjectionQualifierValue = "http://snomed.info/sct#399358004";
+
+    /// <summary>
     /// Literal for code: VerticosubmentalProjectionQualifierValue
     /// </summary>
     public const string LiteralVerticosubmentalProjectionQualifierValue = "399360002";
+
+    /// <summary>
+    /// Literal for code: NONEVerticosubmentalProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEVerticosubmentalProjectionQualifierValue = "http://snomed.info/sct#399360002";
 
     /// <summary>
     /// Literal for code: NuclearMedicineProjectionQualifierValue
@@ -3691,9 +4871,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralNuclearMedicineProjectionQualifierValue = "399361003";
 
     /// <summary>
+    /// Literal for code: NONENuclearMedicineProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONENuclearMedicineProjectionQualifierValue = "http://snomed.info/sct#399361003";
+
+    /// <summary>
     /// Literal for code: BertelProjectionQualifierValue
     /// </summary>
     public const string LiteralBertelProjectionQualifierValue = "399362005";
+
+    /// <summary>
+    /// Literal for code: NONEBertelProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEBertelProjectionQualifierValue = "http://snomed.info/sct#399362005";
 
     /// <summary>
     /// Literal for code: PearsonProjectionQualifierValue
@@ -3701,9 +4891,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPearsonProjectionQualifierValue = "399365007";
 
     /// <summary>
+    /// Literal for code: NONEPearsonProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEPearsonProjectionQualifierValue = "http://snomed.info/sct#399365007";
+
+    /// <summary>
     /// Literal for code: MedioLateralObliqueProjectionQualifierValue
     /// </summary>
     public const string LiteralMedioLateralObliqueProjectionQualifierValue = "399368009";
+
+    /// <summary>
+    /// Literal for code: NONEMedioLateralObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEMedioLateralObliqueProjectionQualifierValue = "http://snomed.info/sct#399368009";
 
     /// <summary>
     /// Literal for code: LysholmProjectionQualifierValue
@@ -3711,9 +4911,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLysholmProjectionQualifierValue = "399370000";
 
     /// <summary>
+    /// Literal for code: NONELysholmProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONELysholmProjectionQualifierValue = "http://snomed.info/sct#399370000";
+
+    /// <summary>
     /// Literal for code: FergusonProjectionQualifierValue
     /// </summary>
     public const string LiteralFergusonProjectionQualifierValue = "399372008";
+
+    /// <summary>
+    /// Literal for code: NONEFergusonProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEFergusonProjectionQualifierValue = "http://snomed.info/sct#399372008";
 
     /// <summary>
     /// Literal for code: CranialLeftAnteriorObliqueProjectionQualifierValue
@@ -3721,9 +4931,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCranialLeftAnteriorObliqueProjectionQualifierValue = "408723005";
 
     /// <summary>
+    /// Literal for code: NONECranialLeftAnteriorObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONECranialLeftAnteriorObliqueProjectionQualifierValue = "http://snomed.info/sct#408723005";
+
+    /// <summary>
     /// Literal for code: CaudalLeftAnteriorObliqueProjectionQualifierValue
     /// </summary>
     public const string LiteralCaudalLeftAnteriorObliqueProjectionQualifierValue = "408724004";
+
+    /// <summary>
+    /// Literal for code: NONECaudalLeftAnteriorObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONECaudalLeftAnteriorObliqueProjectionQualifierValue = "http://snomed.info/sct#408724004";
 
     /// <summary>
     /// Literal for code: CranialRightAnteriorObliqueProjectionQualifierValue
@@ -3731,9 +4951,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralCranialRightAnteriorObliqueProjectionQualifierValue = "408725003";
 
     /// <summary>
+    /// Literal for code: NONECranialRightAnteriorObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONECranialRightAnteriorObliqueProjectionQualifierValue = "http://snomed.info/sct#408725003";
+
+    /// <summary>
     /// Literal for code: CaudalRightAnteriorObliqueProjectionQualifierValue
     /// </summary>
     public const string LiteralCaudalRightAnteriorObliqueProjectionQualifierValue = "408726002";
+
+    /// <summary>
+    /// Literal for code: NONECaudalRightAnteriorObliqueProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONECaudalRightAnteriorObliqueProjectionQualifierValue = "http://snomed.info/sct#408726002";
 
     /// <summary>
     /// Literal for code: RafertLongProjectionQualifierValue
@@ -3741,9 +4971,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRafertLongProjectionQualifierValue = "422534007";
 
     /// <summary>
+    /// Literal for code: NONERafertLongProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONERafertLongProjectionQualifierValue = "http://snomed.info/sct#422534007";
+
+    /// <summary>
     /// Literal for code: MooreProjectionQualifierValue
     /// </summary>
     public const string LiteralMooreProjectionQualifierValue = "422568001";
+
+    /// <summary>
+    /// Literal for code: NONEMooreProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEMooreProjectionQualifierValue = "http://snomed.info/sct#422568001";
 
     /// <summary>
     /// Literal for code: AppleProjectionQualifierValue
@@ -3751,9 +4991,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAppleProjectionQualifierValue = "422670003";
 
     /// <summary>
+    /// Literal for code: NONEAppleProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEAppleProjectionQualifierValue = "http://snomed.info/sct#422670003";
+
+    /// <summary>
     /// Literal for code: NeerProjectionQualifierValue
     /// </summary>
     public const string LiteralNeerProjectionQualifierValue = "422795009";
+
+    /// <summary>
+    /// Literal for code: NONENeerProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONENeerProjectionQualifierValue = "http://snomed.info/sct#422795009";
 
     /// <summary>
     /// Literal for code: BurmanProjectionQualifierValue
@@ -3761,9 +5011,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralBurmanProjectionQualifierValue = "422861003";
 
     /// <summary>
+    /// Literal for code: NONEBurmanProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEBurmanProjectionQualifierValue = "http://snomed.info/sct#422861003";
+
+    /// <summary>
     /// Literal for code: StrykerProjectionQualifierValue
     /// </summary>
     public const string LiteralStrykerProjectionQualifierValue = "422954003";
+
+    /// <summary>
+    /// Literal for code: NONEStrykerProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEStrykerProjectionQualifierValue = "http://snomed.info/sct#422954003";
 
     /// <summary>
     /// Literal for code: WolfProjectionQualifierValue
@@ -3771,9 +5031,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWolfProjectionQualifierValue = "422996004";
 
     /// <summary>
+    /// Literal for code: NONEWolfProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEWolfProjectionQualifierValue = "http://snomed.info/sct#422996004";
+
+    /// <summary>
     /// Literal for code: ColcherSussmanProjectionQualifierValue
     /// </summary>
     public const string LiteralColcherSussmanProjectionQualifierValue = "423091003";
+
+    /// <summary>
+    /// Literal for code: NONEColcherSussmanProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEColcherSussmanProjectionQualifierValue = "http://snomed.info/sct#423091003";
 
     /// <summary>
     /// Literal for code: RaferProjectionQualifierValue
@@ -3781,9 +5051,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRaferProjectionQualifierValue = "423720000";
 
     /// <summary>
+    /// Literal for code: NONERaferProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONERaferProjectionQualifierValue = "http://snomed.info/sct#423720000";
+
+    /// <summary>
     /// Literal for code: HirtzModificationProjectionQualifierValue
     /// </summary>
     public const string LiteralHirtzModificationProjectionQualifierValue = "424086005";
+
+    /// <summary>
+    /// Literal for code: NONEHirtzModificationProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEHirtzModificationProjectionQualifierValue = "http://snomed.info/sct#424086005";
 
     /// <summary>
     /// Literal for code: ErasoModificationProjectionQualifierValue
@@ -3791,9 +5071,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralErasoModificationProjectionQualifierValue = "424655003";
 
     /// <summary>
+    /// Literal for code: NONEErasoModificationProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEErasoModificationProjectionQualifierValue = "http://snomed.info/sct#424655003";
+
+    /// <summary>
     /// Literal for code: DaneliusMillerProjectionQualifierValue
     /// </summary>
     public const string LiteralDaneliusMillerProjectionQualifierValue = "424811006";
+
+    /// <summary>
+    /// Literal for code: NONEDaneliusMillerProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEDaneliusMillerProjectionQualifierValue = "http://snomed.info/sct#424811006";
 
     /// <summary>
     /// Literal for code: FiskProjectionQualifierValue
@@ -3801,9 +5091,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFiskProjectionQualifierValue = "424962005";
 
     /// <summary>
+    /// Literal for code: NONEFiskProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEFiskProjectionQualifierValue = "http://snomed.info/sct#424962005";
+
+    /// <summary>
     /// Literal for code: KiteProjectionQualifierValue
     /// </summary>
     public const string LiteralKiteProjectionQualifierValue = "425030002";
+
+    /// <summary>
+    /// Literal for code: NONEKiteProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEKiteProjectionQualifierValue = "http://snomed.info/sct#425030002";
 
     /// <summary>
     /// Literal for code: RobertProjectionQualifierValue
@@ -3811,9 +5111,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRobertProjectionQualifierValue = "425035007";
 
     /// <summary>
+    /// Literal for code: NONERobertProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONERobertProjectionQualifierValue = "http://snomed.info/sct#425035007";
+
+    /// <summary>
     /// Literal for code: RosenbergProjectionQualifierValue
     /// </summary>
     public const string LiteralRosenbergProjectionQualifierValue = "425042007";
+
+    /// <summary>
+    /// Literal for code: NONERosenbergProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONERosenbergProjectionQualifierValue = "http://snomed.info/sct#425042007";
 
     /// <summary>
     /// Literal for code: FolioProjectionQualifierValue
@@ -3821,9 +5131,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFolioProjectionQualifierValue = "425157002";
 
     /// <summary>
+    /// Literal for code: NONEFolioProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEFolioProjectionQualifierValue = "http://snomed.info/sct#425157002";
+
+    /// <summary>
     /// Literal for code: GarthProjectionQualifierValue
     /// </summary>
     public const string LiteralGarthProjectionQualifierValue = "425188003";
+
+    /// <summary>
+    /// Literal for code: NONEGarthProjectionQualifierValue
+    /// </summary>
+    public const string LiteralNONEGarthProjectionQualifierValue = "http://snomed.info/sct#425188003";
 
     /// <summary>
     /// Literal for code: DorsopalmarProjection
@@ -3831,9 +5151,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDorsopalmarProjection = "441505008";
 
     /// <summary>
+    /// Literal for code: NONEDorsopalmarProjection
+    /// </summary>
+    public const string LiteralNONEDorsopalmarProjection = "http://snomed.info/sct#441505008";
+
+    /// <summary>
     /// Literal for code: InferomedialToSuperolateralObliqueView
     /// </summary>
     public const string LiteralInferomedialToSuperolateralObliqueView = "441555000";
+
+    /// <summary>
+    /// Literal for code: NONEInferomedialToSuperolateralObliqueView
+    /// </summary>
+    public const string LiteralNONEInferomedialToSuperolateralObliqueView = "http://snomed.info/sct#441555000";
 
     /// <summary>
     /// Literal for code: DorsoVentralProjection
@@ -3841,9 +5171,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDorsoVentralProjection = "441672003";
 
     /// <summary>
+    /// Literal for code: NONEDorsoVentralProjection
+    /// </summary>
+    public const string LiteralNONEDorsoVentralProjection = "http://snomed.info/sct#441672003";
+
+    /// <summary>
     /// Literal for code: MammographyView
     /// </summary>
     public const string LiteralMammographyView = "441753009";
+
+    /// <summary>
+    /// Literal for code: NONEMammographyView
+    /// </summary>
+    public const string LiteralNONEMammographyView = "http://snomed.info/sct#441753009";
 
     /// <summary>
     /// Literal for code: StereoscopicView
@@ -3851,9 +5191,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStereoscopicView = "442361004";
 
     /// <summary>
+    /// Literal for code: NONEStereoscopicView
+    /// </summary>
+    public const string LiteralNONEStereoscopicView = "http://snomed.info/sct#442361004";
+
+    /// <summary>
     /// Literal for code: VentroDorsalProjection
     /// </summary>
     public const string LiteralVentroDorsalProjection = "442441009";
+
+    /// <summary>
+    /// Literal for code: NONEVentroDorsalProjection
+    /// </summary>
+    public const string LiteralNONEVentroDorsalProjection = "http://snomed.info/sct#442441009";
 
     /// <summary>
     /// Literal for code: AxillaryTissueMammographyView
@@ -3861,9 +5211,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAxillaryTissueMammographyView = "442580003";
 
     /// <summary>
+    /// Literal for code: NONEAxillaryTissueMammographyView
+    /// </summary>
+    public const string LiteralNONEAxillaryTissueMammographyView = "http://snomed.info/sct#442580003";
+
+    /// <summary>
     /// Literal for code: NippleInProfileMammographyView
     /// </summary>
     public const string LiteralNippleInProfileMammographyView = "442581004";
+
+    /// <summary>
+    /// Literal for code: NONENippleInProfileMammographyView
+    /// </summary>
+    public const string LiteralNONENippleInProfileMammographyView = "http://snomed.info/sct#442581004";
 
     /// <summary>
     /// Literal for code: InfraMammaryFoldMammographyView
@@ -3871,9 +5231,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInfraMammaryFoldMammographyView = "442593008";
 
     /// <summary>
+    /// Literal for code: NONEInfraMammaryFoldMammographyView
+    /// </summary>
+    public const string LiteralNONEInfraMammaryFoldMammographyView = "http://snomed.info/sct#442593008";
+
+    /// <summary>
     /// Literal for code: RightStereoscopicView
     /// </summary>
     public const string LiteralRightStereoscopicView = "442594002";
+
+    /// <summary>
+    /// Literal for code: NONERightStereoscopicView
+    /// </summary>
+    public const string LiteralNONERightStereoscopicView = "http://snomed.info/sct#442594002";
 
     /// <summary>
     /// Literal for code: LeftStereoscopicView
@@ -3881,13 +5251,588 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralLeftStereoscopicView = "442640004";
 
     /// <summary>
+    /// Literal for code: NONELeftStereoscopicView
+    /// </summary>
+    public const string LiteralNONELeftStereoscopicView = "http://snomed.info/sct#442640004";
+
+    /// <summary>
     /// Literal for code: StereoscopicViewIncrementedFromBaseline
     /// </summary>
     public const string LiteralStereoscopicViewIncrementedFromBaseline = "442653001";
 
     /// <summary>
+    /// Literal for code: NONEStereoscopicViewIncrementedFromBaseline
+    /// </summary>
+    public const string LiteralNONEStereoscopicViewIncrementedFromBaseline = "http://snomed.info/sct#442653001";
+
+    /// <summary>
     /// Literal for code: StereoscopicViewDecrementedFromBaseline
     /// </summary>
     public const string LiteralStereoscopicViewDecrementedFromBaseline = "442667005";
+
+    /// <summary>
+    /// Literal for code: NONEStereoscopicViewDecrementedFromBaseline
+    /// </summary>
+    public const string LiteralNONEStereoscopicViewDecrementedFromBaseline = "http://snomed.info/sct#442667005";
+
+    /// <summary>
+    /// Dictionary for looking up MediaView Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "260419006", Projection }, 
+      { "http://snomed.info/sct#260419006", Projection }, 
+      { "260421001", LeftLateralOblique }, 
+      { "http://snomed.info/sct#260421001", LeftLateralOblique }, 
+      { "260422008", C1C2LeftOblique }, 
+      { "http://snomed.info/sct#260422008", C1C2LeftOblique }, 
+      { "260424009", RightLateralOblique }, 
+      { "http://snomed.info/sct#260424009", RightLateralOblique }, 
+      { "260425005", C1C2RightOblique }, 
+      { "http://snomed.info/sct#260425005", C1C2RightOblique }, 
+      { "260426006", MedialOblique }, 
+      { "http://snomed.info/sct#260426006", MedialOblique }, 
+      { "260427002", ObliqueLateral }, 
+      { "http://snomed.info/sct#260427002", ObliqueLateral }, 
+      { "260428007", MandibleXRayLateralOblique }, 
+      { "http://snomed.info/sct#260428007", MandibleXRayLateralOblique }, 
+      { "260430009", AnteroposteriorLeftLateralDecubitus }, 
+      { "http://snomed.info/sct#260430009", AnteroposteriorLeftLateralDecubitus }, 
+      { "260431008", C1C2LeftLateral }, 
+      { "http://snomed.info/sct#260431008", C1C2LeftLateral }, 
+      { "260432001", LeftTrueLateral }, 
+      { "http://snomed.info/sct#260432001", LeftTrueLateral }, 
+      { "260434000", AnteroposteriorRightLateralDecubitus }, 
+      { "http://snomed.info/sct#260434000", AnteroposteriorRightLateralDecubitus }, 
+      { "260435004", C1C2RightLateral }, 
+      { "http://snomed.info/sct#260435004", C1C2RightLateral }, 
+      { "260436003", RightTrueLateral }, 
+      { "http://snomed.info/sct#260436003", RightTrueLateral }, 
+      { "260437007", LateralVerticalBeam }, 
+      { "http://snomed.info/sct#260437007", LateralVerticalBeam }, 
+      { "260438002", LateralHorizontalBeam }, 
+      { "http://snomed.info/sct#260438002", LateralHorizontalBeam }, 
+      { "260439005", LateralInverted }, 
+      { "http://snomed.info/sct#260439005", LateralInverted }, 
+      { "260440007", TrueLateralOfMandible }, 
+      { "http://snomed.info/sct#260440007", TrueLateralOfMandible }, 
+      { "260441006", FrogLateral }, 
+      { "http://snomed.info/sct#260441006", FrogLateral }, 
+      { "260442004", ErectLateral }, 
+      { "http://snomed.info/sct#260442004", ErectLateral }, 
+      { "260443009", AnteroposteriorInverted }, 
+      { "http://snomed.info/sct#260443009", AnteroposteriorInverted }, 
+      { "260444003", PARotatedPosteroanterior }, 
+      { "http://snomed.info/sct#260444003", PARotatedPosteroanterior }, 
+      { "260445002", Posteroanterior20Degree }, 
+      { "http://snomed.info/sct#260445002", Posteroanterior20Degree }, 
+      { "260446001", PosteroanteriorInUlnarDeviation }, 
+      { "http://snomed.info/sct#260446001", PosteroanteriorInUlnarDeviation }, 
+      { "260447005", PenetratedPosteroanterior }, 
+      { "http://snomed.info/sct#260447005", PenetratedPosteroanterior }, 
+      { "260450008", LordoticProjection }, 
+      { "http://snomed.info/sct#260450008", LordoticProjection }, 
+      { "260451007", SupineDecubitus }, 
+      { "http://snomed.info/sct#260451007", SupineDecubitus }, 
+      { "260452000", Decubitus }, 
+      { "http://snomed.info/sct#260452000", Decubitus }, 
+      { "260453005", InternalExternalRotation }, 
+      { "http://snomed.info/sct#260453005", InternalExternalRotation }, 
+      { "260454004", VAL45DegreeProjection }, 
+      { "http://snomed.info/sct#260454004", VAL45DegreeProjection }, 
+      { "260455003", HeadAndNeckProjection }, 
+      { "http://snomed.info/sct#260455003", HeadAndNeckProjection }, 
+      { "260458001", SlitAnteroposterior }, 
+      { "http://snomed.info/sct#260458001", SlitAnteroposterior }, 
+      { "260459009", ReverseTowneQuoteS }, 
+      { "http://snomed.info/sct#260459009", ReverseTowneQuoteS }, 
+      { "260460004", Slit35DegreeFrontoOccipital }, 
+      { "http://snomed.info/sct#260460004", Slit35DegreeFrontoOccipital }, 
+      { "260461000", VertexProjection }, 
+      { "http://snomed.info/sct#260461000", VertexProjection }, 
+      { "260463002", LeftStenverQuoteS }, 
+      { "http://snomed.info/sct#260463002", LeftStenverQuoteS }, 
+      { "260464008", RightStenverQuoteS }, 
+      { "http://snomed.info/sct#260464008", RightStenverQuoteS }, 
+      { "260465009", OccipitofrontalProjection }, 
+      { "http://snomed.info/sct#260465009", OccipitofrontalProjection }, 
+      { "260466005", OccipitomentalProjection }, 
+      { "http://snomed.info/sct#260466005", OccipitomentalProjection }, 
+      { "260467001", OccipitomentalErect }, 
+      { "http://snomed.info/sct#260467001", OccipitomentalErect }, 
+      { "260468006", OccipitomentalTilted }, 
+      { "http://snomed.info/sct#260468006", OccipitomentalTilted }, 
+      { "260469003", OccipitomentalProne }, 
+      { "http://snomed.info/sct#260469003", OccipitomentalProne }, 
+      { "260470002", Occipitomental15Degree }, 
+      { "http://snomed.info/sct#260470002", Occipitomental15Degree }, 
+      { "260471003", Occipitomental30Degree }, 
+      { "http://snomed.info/sct#260471003", Occipitomental30Degree }, 
+      { "260472005", Occipitomental45Degree }, 
+      { "http://snomed.info/sct#260472005", Occipitomental45Degree }, 
+      { "260473000", Waters35DegreeTiltToRadiographicBaseline }, 
+      { "http://snomed.info/sct#260473000", Waters35DegreeTiltToRadiographicBaseline }, 
+      { "260475007", SubmentoverticalReducedExposureForZygomaticArches }, 
+      { "http://snomed.info/sct#260475007", SubmentoverticalReducedExposureForZygomaticArches }, 
+      { "260476008", SlitSMV }, 
+      { "http://snomed.info/sct#260476008", SlitSMV }, 
+      { "260477004", DentalOralProjection }, 
+      { "http://snomed.info/sct#260477004", DentalOralProjection }, 
+      { "260478009", BodyMolar }, 
+      { "http://snomed.info/sct#260478009", BodyMolar }, 
+      { "260479001", BodyPremolar }, 
+      { "http://snomed.info/sct#260479001", BodyPremolar }, 
+      { "260481004", RamusProjection }, 
+      { "http://snomed.info/sct#260481004", RamusProjection }, 
+      { "260482006", BimolarProjection }, 
+      { "http://snomed.info/sct#260482006", BimolarProjection }, 
+      { "260483001", TollerProjection }, 
+      { "http://snomed.info/sct#260483001", TollerProjection }, 
+      { "260484007", TransmaxillaryProjection }, 
+      { "http://snomed.info/sct#260484007", TransmaxillaryProjection }, 
+      { "260485008", TemporomandibularJointSetting }, 
+      { "http://snomed.info/sct#260485008", TemporomandibularJointSetting }, 
+      { "260486009", MaxillarySinusSetting }, 
+      { "http://snomed.info/sct#260486009", MaxillarySinusSetting }, 
+      { "260487000", DentalPanoramic }, 
+      { "http://snomed.info/sct#260487000", DentalPanoramic }, 
+      { "260489002", ImplantSettingProjection }, 
+      { "http://snomed.info/sct#260489002", ImplantSettingProjection }, 
+      { "260490006", SegmentalSetting }, 
+      { "http://snomed.info/sct#260490006", SegmentalSetting }, 
+      { "260491005", AxialViewForSesamoidBones }, 
+      { "http://snomed.info/sct#260491005", AxialViewForSesamoidBones }, 
+      { "260492003", BrewertonQuoteSProjection }, 
+      { "http://snomed.info/sct#260492003", BrewertonQuoteSProjection }, 
+      { "260493008", HarrisBeathAxialProjection }, 
+      { "http://snomed.info/sct#260493008", HarrisBeathAxialProjection }, 
+      { "260494002", TunnelProjection }, 
+      { "http://snomed.info/sct#260494002", TunnelProjection }, 
+      { "260496000", JudetProjection }, 
+      { "http://snomed.info/sct#260496000", JudetProjection }, 
+      { "260497009", MorticeProjection }, 
+      { "http://snomed.info/sct#260497009", MorticeProjection }, 
+      { "260499007", OcclusalProjection }, 
+      { "http://snomed.info/sct#260499007", OcclusalProjection }, 
+      { "260500003", ProjectedObliqueOcclusal }, 
+      { "http://snomed.info/sct#260500003", ProjectedObliqueOcclusal }, 
+      { "260501004", LowerTrueOcclusal }, 
+      { "http://snomed.info/sct#260501004", LowerTrueOcclusal }, 
+      { "260502006", PowerGripSeries }, 
+      { "http://snomed.info/sct#260502006", PowerGripSeries }, 
+      { "260503001", RadialHeadProjection }, 
+      { "http://snomed.info/sct#260503001", RadialHeadProjection }, 
+      { "260504007", SkylineProjection }, 
+      { "http://snomed.info/sct#260504007", SkylineProjection }, 
+      { "260506009", VanRosenProjection }, 
+      { "http://snomed.info/sct#260506009", VanRosenProjection }, 
+      { "272455005", InferosuperiorProjection }, 
+      { "http://snomed.info/sct#272455005", InferosuperiorProjection }, 
+      { "272456006", ApicalProjection }, 
+      { "http://snomed.info/sct#272456006", ApicalProjection }, 
+      { "272457002", VerticalProjection }, 
+      { "http://snomed.info/sct#272457002", VerticalProjection }, 
+      { "272458007", ProneProjection }, 
+      { "http://snomed.info/sct#272458007", ProneProjection }, 
+      { "272459004", SupineProjection }, 
+      { "http://snomed.info/sct#272459004", SupineProjection }, 
+      { "272460009", AnteriorProjection }, 
+      { "http://snomed.info/sct#272460009", AnteriorProjection }, 
+      { "272461008", RightPosteriorProjection }, 
+      { "http://snomed.info/sct#272461008", RightPosteriorProjection }, 
+      { "272462001", LeftPosteriorProjection }, 
+      { "http://snomed.info/sct#272462001", LeftPosteriorProjection }, 
+      { "272464000", PerorbitalProjection }, 
+      { "http://snomed.info/sct#272464000", PerorbitalProjection }, 
+      { "272465004", TemporomandibularJointProjection }, 
+      { "http://snomed.info/sct#272465004", TemporomandibularJointProjection }, 
+      { "272466003", OpticForamenProjection }, 
+      { "http://snomed.info/sct#272466003", OpticForamenProjection }, 
+      { "272467007", LateralFacialSkeletonProjection }, 
+      { "http://snomed.info/sct#272467007", LateralFacialSkeletonProjection }, 
+      { "272468002", EarProjection }, 
+      { "http://snomed.info/sct#272468002", EarProjection }, 
+      { "272469005", MidFaceProjection }, 
+      { "http://snomed.info/sct#272469005", MidFaceProjection }, 
+      { "272470006", CervicalSpineProjection }, 
+      { "http://snomed.info/sct#272470006", CervicalSpineProjection }, 
+      { "272472003", MacroProjection }, 
+      { "http://snomed.info/sct#272472003", MacroProjection }, 
+      { "272473008", OutletProjection }, 
+      { "http://snomed.info/sct#272473008", OutletProjection }, 
+      { "272474002", SwimmerQuoteSProjection }, 
+      { "http://snomed.info/sct#272474002", SwimmerQuoteSProjection }, 
+      { "272475001", TibialTuberosityProjection }, 
+      { "http://snomed.info/sct#272475001", TibialTuberosityProjection }, 
+      { "272476000", TransthoracicProjection }, 
+      { "http://snomed.info/sct#272476000", TransthoracicProjection }, 
+      { "272478004", TranscranialProjection }, 
+      { "http://snomed.info/sct#272478004", TranscranialProjection }, 
+      { "272479007", PosteroanteriorProjection }, 
+      { "http://snomed.info/sct#272479007", PosteroanteriorProjection }, 
+      { "272480005", HorizontalProjection }, 
+      { "http://snomed.info/sct#272480005", HorizontalProjection }, 
+      { "272481009", ErectProjection }, 
+      { "http://snomed.info/sct#272481009", ErectProjection }, 
+      { "272482002", AdductionProjection }, 
+      { "http://snomed.info/sct#272482002", AdductionProjection }, 
+      { "272483007", TrueProjection }, 
+      { "http://snomed.info/sct#272483007", TrueProjection }, 
+      { "272484001", ContralateralProjection }, 
+      { "http://snomed.info/sct#272484001", ContralateralProjection }, 
+      { "278255003", PosteriorProjection }, 
+      { "http://snomed.info/sct#278255003", PosteriorProjection }, 
+      { "278267001", AbductionProjection }, 
+      { "http://snomed.info/sct#278267001", AbductionProjection }, 
+      { "278318001", ZimmerProjection }, 
+      { "http://snomed.info/sct#278318001", ZimmerProjection }, 
+      { "398996004", LeonardGeorgeProjectionQualifierValue }, 
+      { "http://snomed.info/sct#398996004", LeonardGeorgeProjectionQualifierValue }, 
+      { "399000008", MayerProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399000008", MayerProjectionQualifierValue }, 
+      { "399001007", PosteriorEmissiveProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399001007", PosteriorEmissiveProjectionQualifierValue }, 
+      { "399002000", NolkeProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399002000", NolkeProjectionQualifierValue }, 
+      { "399003005", HughstonProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399003005", HughstonProjectionQualifierValue }, 
+      { "399004004", ObliqueAxialProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399004004", ObliqueAxialProjectionQualifierValue }, 
+      { "399005003", MillerProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399005003", MillerProjectionQualifierValue }, 
+      { "399006002", LeftPosteriorObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399006002", LeftPosteriorObliqueProjectionQualifierValue }, 
+      { "399011000", AxillaryTailMammographyViewQualifierValue }, 
+      { "http://snomed.info/sct#399011000", AxillaryTailMammographyViewQualifierValue }, 
+      { "399012007", MedialLateralEmissiveProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399012007", MedialLateralEmissiveProjectionQualifierValue }, 
+      { "399013002", ChassardLapinProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399013002", ChassardLapinProjectionQualifierValue }, 
+      { "399022001", PirieProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399022001", PirieProjectionQualifierValue }, 
+      { "399024000", MayProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399024000", MayProjectionQualifierValue }, 
+      { "399025004", IscherwoodProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399025004", IscherwoodProjectionQualifierValue }, 
+      { "399026003", ZanelliProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399026003", ZanelliProjectionQualifierValue }, 
+      { "399028002", ClementsProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399028002", ClementsProjectionQualifierValue }, 
+      { "399033003", FrontalProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399033003", FrontalProjectionQualifierValue }, 
+      { "399037002", LewisProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399037002", LewisProjectionQualifierValue }, 
+      { "399038007", RightPosteriorObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399038007", RightPosteriorObliqueProjectionQualifierValue }, 
+      { "399059000", PosteroAnteriorObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399059000", PosteroAnteriorObliqueProjectionQualifierValue }, 
+      { "399061009", AxialProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399061009", AxialProjectionQualifierValue }, 
+      { "399065000", CaustonProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399065000", CaustonProjectionQualifierValue }, 
+      { "399067008", LateralProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399067008", LateralProjectionQualifierValue }, 
+      { "399071006", PlantodorsalProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399071006", PlantodorsalProjectionQualifierValue }, 
+      { "399073009", FuchsProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399073009", FuchsProjectionQualifierValue }, 
+      { "399074003", LeftAnteriorObliqueEmissiveProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399074003", LeftAnteriorObliqueEmissiveProjectionQualifierValue }, 
+      { "399075002", RightPosteriorObliqueEmissiveProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399075002", RightPosteriorObliqueEmissiveProjectionQualifierValue }, 
+      { "399080006", KuchendorfProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399080006", KuchendorfProjectionQualifierValue }, 
+      { "399082003", GaynorHartProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399082003", GaynorHartProjectionQualifierValue }, 
+      { "399083008", HsiehProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399083008", HsiehProjectionQualifierValue }, 
+      { "399089007", ObliqueAxialEmissiveProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399089007", ObliqueAxialEmissiveProjectionQualifierValue }, 
+      { "399098005", StaunigProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399098005", StaunigProjectionQualifierValue }, 
+      { "399099002", LateroMedialObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399099002", LateroMedialObliqueProjectionQualifierValue }, 
+      { "399101009", CranioCaudalProjectionExaggeratedMediallyQualifierValue }, 
+      { "http://snomed.info/sct#399101009", CranioCaudalProjectionExaggeratedMediallyQualifierValue }, 
+      { "399103007", FriedmanProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399103007", FriedmanProjectionQualifierValue }, 
+      { "399108003", RightAnteriorObliqueEmissiveProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399108003", RightAnteriorObliqueEmissiveProjectionQualifierValue }, 
+      { "399110001", TangentialProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399110001", TangentialProjectionQualifierValue }, 
+      { "399113004", EponymousProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399113004", EponymousProjectionQualifierValue }, 
+      { "399118008", LeftLateralEmissiveProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399118008", LeftLateralEmissiveProjectionQualifierValue }, 
+      { "399125001", TwiningProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399125001", TwiningProjectionQualifierValue }, 
+      { "399127009", TeufelProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399127009", TeufelProjectionQualifierValue }, 
+      { "399129007", HollyProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399129007", HollyProjectionQualifierValue }, 
+      { "399130002", WestPointProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399130002", WestPointProjectionQualifierValue }, 
+      { "399132005", FrontalObliqueAxialProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399132005", FrontalObliqueAxialProjectionQualifierValue }, 
+      { "399135007", LeftAnteriorObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399135007", LeftAnteriorObliqueProjectionQualifierValue }, 
+      { "399136008", LeftPosteriorObliqueEmissiveProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399136008", LeftPosteriorObliqueEmissiveProjectionQualifierValue }, 
+      { "399138009", PennerProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399138009", PennerProjectionQualifierValue }, 
+      { "399142007", AlbersSchonbergProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399142007", AlbersSchonbergProjectionQualifierValue }, 
+      { "399146005", GrasheyProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399146005", GrasheyProjectionQualifierValue }, 
+      { "399148006", ChamberlainProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399148006", ChamberlainProjectionQualifierValue }, 
+      { "399152006", KandelProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399152006", KandelProjectionQualifierValue }, 
+      { "399156009", LaquerrierePierquinProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399156009", LaquerrierePierquinProjectionQualifierValue }, 
+      { "399157000", NorgaardQuoteSProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399157000", NorgaardQuoteSProjectionQualifierValue }, 
+      { "399159002", LateroMedialObliqueEmissiveProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399159002", LateroMedialObliqueEmissiveProjectionQualifierValue }, 
+      { "399160007", FrontalObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399160007", FrontalObliqueProjectionQualifierValue }, 
+      { "399161006", CleavageMammographyViewQualifierValue }, 
+      { "http://snomed.info/sct#399161006", CleavageMammographyViewQualifierValue }, 
+      { "399162004", CranioCaudalProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399162004", CranioCaudalProjectionQualifierValue }, 
+      { "399163009", MagnifiedProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399163009", MagnifiedProjectionQualifierValue }, 
+      { "399168000", HoughProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399168000", HoughProjectionQualifierValue }, 
+      { "399169008", LauensteinProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399169008", LauensteinProjectionQualifierValue }, 
+      { "399171008", OttonelloProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399171008", OttonelloProjectionQualifierValue }, 
+      { "399173006", LeftLateralProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399173006", LeftLateralProjectionQualifierValue }, 
+      { "399179005", LawrenceProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399179005", LawrenceProjectionQualifierValue }, 
+      { "399181007", PawlowProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399181007", PawlowProjectionQualifierValue }, 
+      { "399182000", ObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399182000", ObliqueProjectionQualifierValue }, 
+      { "399184004", LeftObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399184004", LeftObliqueProjectionQualifierValue }, 
+      { "399188001", SuperolateralToInferomedialObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399188001", SuperolateralToInferomedialObliqueProjectionQualifierValue }, 
+      { "399192008", CranioCaudalProjectionExaggeratedLaterallyQualifierValue }, 
+      { "http://snomed.info/sct#399192008", CranioCaudalProjectionExaggeratedLaterallyQualifierValue }, 
+      { "399196006", CaudoCranialProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399196006", CaudoCranialProjectionQualifierValue }, 
+      { "399198007", RightLateralProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399198007", RightLateralProjectionQualifierValue }, 
+      { "399199004", HenschenProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399199004", HenschenProjectionQualifierValue }, 
+      { "399201002", JuddProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399201002", JuddProjectionQualifierValue }, 
+      { "399206007", LawProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399206007", LawProjectionQualifierValue }, 
+      { "399212002", CampCoventryProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399212002", CampCoventryProjectionQualifierValue }, 
+      { "399215000", WigbyTaylorProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399215000", WigbyTaylorProjectionQualifierValue }, 
+      { "399218003", ArcelinProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399218003", ArcelinProjectionQualifierValue }, 
+      { "399225005", ObliqueCaudoCranialProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399225005", ObliqueCaudoCranialProjectionQualifierValue }, 
+      { "399227002", KempHarperProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399227002", KempHarperProjectionQualifierValue }, 
+      { "399234000", RheseProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399234000", RheseProjectionQualifierValue }, 
+      { "399236003", RightObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399236003", RightObliqueProjectionQualifierValue }, 
+      { "399237007", AlexanderProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399237007", AlexanderProjectionQualifierValue }, 
+      { "399241006", TitteringtonProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399241006", TitteringtonProjectionQualifierValue }, 
+      { "399242004", AcanthioparietalProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399242004", AcanthioparietalProjectionQualifierValue }, 
+      { "399243009", SettegastProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399243009", SettegastProjectionQualifierValue }, 
+      { "399245002", CleavesProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399245002", CleavesProjectionQualifierValue }, 
+      { "399246001", BlackettHealyProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399246001", BlackettHealyProjectionQualifierValue }, 
+      { "399247005", TarrantProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399247005", TarrantProjectionQualifierValue }, 
+      { "399251007", LorenzProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399251007", LorenzProjectionQualifierValue }, 
+      { "399255003", SubmentoverticalProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399255003", SubmentoverticalProjectionQualifierValue }, 
+      { "399260004", MedialLateralProjection }, 
+      { "http://snomed.info/sct#399260004", MedialLateralProjection }, 
+      { "399263002", BeclereProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399263002", BeclereProjectionQualifierValue }, 
+      { "399265009", ExaggeratedCranioCaudalProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399265009", ExaggeratedCranioCaudalProjectionQualifierValue }, 
+      { "399268006", MedioLateralObliqueEmissiveProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399268006", MedioLateralObliqueEmissiveProjectionQualifierValue }, 
+      { "399270002", TowneQuoteSProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399270002", TowneQuoteSProjectionQualifierValue }, 
+      { "399272005", ParietoacanthialProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399272005", ParietoacanthialProjectionQualifierValue }, 
+      { "399273000", SagittalObliqueAxialEmissiveProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399273000", SagittalObliqueAxialEmissiveProjectionQualifierValue }, 
+      { "399277004", HickeyProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399277004", HickeyProjectionQualifierValue }, 
+      { "399278009", CahoonProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399278009", CahoonProjectionQualifierValue }, 
+      { "399280003", KasabachProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399280003", KasabachProjectionQualifierValue }, 
+      { "399281004", FleischnerProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399281004", FleischnerProjectionQualifierValue }, 
+      { "399284007", MerchantProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399284007", MerchantProjectionQualifierValue }, 
+      { "399285008", HolmbladProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399285008", HolmbladProjectionQualifierValue }, 
+      { "399288005", ObliqueCranioCaudalProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399288005", ObliqueCranioCaudalProjectionQualifierValue }, 
+      { "399290006", SchullerProjection }, 
+      { "http://snomed.info/sct#399290006", SchullerProjection }, 
+      { "399292003", StecherProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399292003", StecherProjectionQualifierValue }, 
+      { "399296000", TaylorProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399296000", TaylorProjectionQualifierValue }, 
+      { "399297009", RightLateralEmissiveProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399297009", RightLateralEmissiveProjectionQualifierValue }, 
+      { "399300004", LateralMedialEmissiveProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399300004", LateralMedialEmissiveProjectionQualifierValue }, 
+      { "399303002", DunlapProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399303002", DunlapProjectionQualifierValue }, 
+      { "399308006", LindblomProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399308006", LindblomProjectionQualifierValue }, 
+      { "399311007", GrandyProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399311007", GrandyProjectionQualifierValue }, 
+      { "399312000", AnteroPosteriorObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399312000", AnteroPosteriorObliqueProjectionQualifierValue }, 
+      { "399313005", SwansonProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399313005", SwansonProjectionQualifierValue }, 
+      { "399316002", ParietoOrbitalProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399316002", ParietoOrbitalProjectionQualifierValue }, 
+      { "399318001", KovacsProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399318001", KovacsProjectionQualifierValue }, 
+      { "399320003", ClementsNakayamaProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399320003", ClementsNakayamaProjectionQualifierValue }, 
+      { "399321004", AnteriorEmissiveProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399321004", AnteriorEmissiveProjectionQualifierValue }, 
+      { "399325008", SagittalObliqueAxialProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399325008", SagittalObliqueAxialProjectionQualifierValue }, 
+      { "399327000", LowBeerProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399327000", LowBeerProjectionQualifierValue }, 
+      { "399330007", ValdiniProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399330007", ValdiniProjectionQualifierValue }, 
+      { "399332004", KurzbauerProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399332004", KurzbauerProjectionQualifierValue }, 
+      { "399335002", DorsoplantarProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399335002", DorsoplantarProjectionQualifierValue }, 
+      { "399341009", HaasProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399341009", HaasProjectionQualifierValue }, 
+      { "399342002", LilienfeldProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399342002", LilienfeldProjectionQualifierValue }, 
+      { "399344001", BrodenProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399344001", BrodenProjectionQualifierValue }, 
+      { "399348003", AnteroPosteriorProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399348003", AnteroPosteriorProjectionQualifierValue }, 
+      { "399349006", StenverQuoteSProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399349006", StenverQuoteSProjectionQualifierValue }, 
+      { "399351005", OrbitoParietalProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399351005", OrbitoParietalProjectionQualifierValue }, 
+      { "399352003", LateralMedialProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399352003", LateralMedialProjectionQualifierValue }, 
+      { "399355001", ChausseProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399355001", ChausseProjectionQualifierValue }, 
+      { "399356000", RightAnteriorObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399356000", RightAnteriorObliqueProjectionQualifierValue }, 
+      { "399358004", CaldwellProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399358004", CaldwellProjectionQualifierValue }, 
+      { "399360002", VerticosubmentalProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399360002", VerticosubmentalProjectionQualifierValue }, 
+      { "399361003", NuclearMedicineProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399361003", NuclearMedicineProjectionQualifierValue }, 
+      { "399362005", BertelProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399362005", BertelProjectionQualifierValue }, 
+      { "399365007", PearsonProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399365007", PearsonProjectionQualifierValue }, 
+      { "399368009", MedioLateralObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399368009", MedioLateralObliqueProjectionQualifierValue }, 
+      { "399370000", LysholmProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399370000", LysholmProjectionQualifierValue }, 
+      { "399372008", FergusonProjectionQualifierValue }, 
+      { "http://snomed.info/sct#399372008", FergusonProjectionQualifierValue }, 
+      { "408723005", CranialLeftAnteriorObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#408723005", CranialLeftAnteriorObliqueProjectionQualifierValue }, 
+      { "408724004", CaudalLeftAnteriorObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#408724004", CaudalLeftAnteriorObliqueProjectionQualifierValue }, 
+      { "408725003", CranialRightAnteriorObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#408725003", CranialRightAnteriorObliqueProjectionQualifierValue }, 
+      { "408726002", CaudalRightAnteriorObliqueProjectionQualifierValue }, 
+      { "http://snomed.info/sct#408726002", CaudalRightAnteriorObliqueProjectionQualifierValue }, 
+      { "422534007", RafertLongProjectionQualifierValue }, 
+      { "http://snomed.info/sct#422534007", RafertLongProjectionQualifierValue }, 
+      { "422568001", MooreProjectionQualifierValue }, 
+      { "http://snomed.info/sct#422568001", MooreProjectionQualifierValue }, 
+      { "422670003", AppleProjectionQualifierValue }, 
+      { "http://snomed.info/sct#422670003", AppleProjectionQualifierValue }, 
+      { "422795009", NeerProjectionQualifierValue }, 
+      { "http://snomed.info/sct#422795009", NeerProjectionQualifierValue }, 
+      { "422861003", BurmanProjectionQualifierValue }, 
+      { "http://snomed.info/sct#422861003", BurmanProjectionQualifierValue }, 
+      { "422954003", StrykerProjectionQualifierValue }, 
+      { "http://snomed.info/sct#422954003", StrykerProjectionQualifierValue }, 
+      { "422996004", WolfProjectionQualifierValue }, 
+      { "http://snomed.info/sct#422996004", WolfProjectionQualifierValue }, 
+      { "423091003", ColcherSussmanProjectionQualifierValue }, 
+      { "http://snomed.info/sct#423091003", ColcherSussmanProjectionQualifierValue }, 
+      { "423720000", RaferProjectionQualifierValue }, 
+      { "http://snomed.info/sct#423720000", RaferProjectionQualifierValue }, 
+      { "424086005", HirtzModificationProjectionQualifierValue }, 
+      { "http://snomed.info/sct#424086005", HirtzModificationProjectionQualifierValue }, 
+      { "424655003", ErasoModificationProjectionQualifierValue }, 
+      { "http://snomed.info/sct#424655003", ErasoModificationProjectionQualifierValue }, 
+      { "424811006", DaneliusMillerProjectionQualifierValue }, 
+      { "http://snomed.info/sct#424811006", DaneliusMillerProjectionQualifierValue }, 
+      { "424962005", FiskProjectionQualifierValue }, 
+      { "http://snomed.info/sct#424962005", FiskProjectionQualifierValue }, 
+      { "425030002", KiteProjectionQualifierValue }, 
+      { "http://snomed.info/sct#425030002", KiteProjectionQualifierValue }, 
+      { "425035007", RobertProjectionQualifierValue }, 
+      { "http://snomed.info/sct#425035007", RobertProjectionQualifierValue }, 
+      { "425042007", RosenbergProjectionQualifierValue }, 
+      { "http://snomed.info/sct#425042007", RosenbergProjectionQualifierValue }, 
+      { "425157002", FolioProjectionQualifierValue }, 
+      { "http://snomed.info/sct#425157002", FolioProjectionQualifierValue }, 
+      { "425188003", GarthProjectionQualifierValue }, 
+      { "http://snomed.info/sct#425188003", GarthProjectionQualifierValue }, 
+      { "441505008", DorsopalmarProjection }, 
+      { "http://snomed.info/sct#441505008", DorsopalmarProjection }, 
+      { "441555000", InferomedialToSuperolateralObliqueView }, 
+      { "http://snomed.info/sct#441555000", InferomedialToSuperolateralObliqueView }, 
+      { "441672003", DorsoVentralProjection }, 
+      { "http://snomed.info/sct#441672003", DorsoVentralProjection }, 
+      { "441753009", MammographyView }, 
+      { "http://snomed.info/sct#441753009", MammographyView }, 
+      { "442361004", StereoscopicView }, 
+      { "http://snomed.info/sct#442361004", StereoscopicView }, 
+      { "442441009", VentroDorsalProjection }, 
+      { "http://snomed.info/sct#442441009", VentroDorsalProjection }, 
+      { "442580003", AxillaryTissueMammographyView }, 
+      { "http://snomed.info/sct#442580003", AxillaryTissueMammographyView }, 
+      { "442581004", NippleInProfileMammographyView }, 
+      { "http://snomed.info/sct#442581004", NippleInProfileMammographyView }, 
+      { "442593008", InfraMammaryFoldMammographyView }, 
+      { "http://snomed.info/sct#442593008", InfraMammaryFoldMammographyView }, 
+      { "442594002", RightStereoscopicView }, 
+      { "http://snomed.info/sct#442594002", RightStereoscopicView }, 
+      { "442640004", LeftStereoscopicView }, 
+      { "http://snomed.info/sct#442640004", LeftStereoscopicView }, 
+      { "442653001", StereoscopicViewIncrementedFromBaseline }, 
+      { "http://snomed.info/sct#442653001", StereoscopicViewIncrementedFromBaseline }, 
+      { "442667005", StereoscopicViewDecrementedFromBaseline }, 
+      { "http://snomed.info/sct#442667005", StereoscopicViewDecrementedFromBaseline }, 
+    };
   };
 }

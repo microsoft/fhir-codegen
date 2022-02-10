@@ -725,5 +725,20 @@ namespace fhirCsR3.Models
     public const string CANCELLED = "cancelled";
     public const string ENTERED_IN_ERROR = "entered-in-error";
     public const string REJECTED = "rejected";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposed",
+      "accepted",
+      "planned",
+      "in-progress",
+      "on-target",
+      "ahead-of-target",
+      "behind-target",
+      "sustaining",
+      "achieved",
+      "on-hold",
+      "cancelled",
+      "entered-in-error",
+      "rejected",
+    };
   }
 }

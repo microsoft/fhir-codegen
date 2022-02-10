@@ -641,5 +641,10 @@ namespace fhirCsR3.Models
     public const string CURRENT = "current";
     public const string SUPERSEDED = "superseded";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "current",
+      "superseded",
+      "entered-in-error",
+    };
   }
 }

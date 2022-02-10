@@ -36,8 +36,28 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdverseEvent = "actual";
 
     /// <summary>
+    /// Literal for code: AdverseEventActualityAdverseEvent
+    /// </summary>
+    public const string LiteralAdverseEventActualityAdverseEvent = "http://hl7.org/fhir/adverse-event-actuality#actual";
+
+    /// <summary>
     /// Literal for code: PotentialAdverseEvent
     /// </summary>
     public const string LiteralPotentialAdverseEvent = "potential";
+
+    /// <summary>
+    /// Literal for code: AdverseEventActualityPotentialAdverseEvent
+    /// </summary>
+    public const string LiteralAdverseEventActualityPotentialAdverseEvent = "http://hl7.org/fhir/adverse-event-actuality#potential";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventActuality Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "actual", AdverseEvent }, 
+      { "http://hl7.org/fhir/adverse-event-actuality#actual", AdverseEvent }, 
+      { "potential", PotentialAdverseEvent }, 
+      { "http://hl7.org/fhir/adverse-event-actuality#potential", PotentialAdverseEvent }, 
+    };
   };
 }

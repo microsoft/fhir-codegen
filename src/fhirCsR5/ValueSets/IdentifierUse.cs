@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralOfficial = "official";
 
     /// <summary>
+    /// Literal for code: IdentifierUseOfficial
+    /// </summary>
+    public const string LiteralIdentifierUseOfficial = "http://hl7.org/fhir/identifier-use#official";
+
+    /// <summary>
     /// Literal for code: Old
     /// </summary>
     public const string LiteralOld = "old";
+
+    /// <summary>
+    /// Literal for code: IdentifierUseOld
+    /// </summary>
+    public const string LiteralIdentifierUseOld = "http://hl7.org/fhir/identifier-use#old";
 
     /// <summary>
     /// Literal for code: Secondary
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralSecondary = "secondary";
 
     /// <summary>
+    /// Literal for code: IdentifierUseSecondary
+    /// </summary>
+    public const string LiteralIdentifierUseSecondary = "http://hl7.org/fhir/identifier-use#secondary";
+
+    /// <summary>
     /// Literal for code: Temp
     /// </summary>
     public const string LiteralTemp = "temp";
 
     /// <summary>
+    /// Literal for code: IdentifierUseTemp
+    /// </summary>
+    public const string LiteralIdentifierUseTemp = "http://hl7.org/fhir/identifier-use#temp";
+
+    /// <summary>
     /// Literal for code: Usual
     /// </summary>
     public const string LiteralUsual = "usual";
+
+    /// <summary>
+    /// Literal for code: IdentifierUseUsual
+    /// </summary>
+    public const string LiteralIdentifierUseUsual = "http://hl7.org/fhir/identifier-use#usual";
+
+    /// <summary>
+    /// Dictionary for looking up IdentifierUse Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "official", Official }, 
+      { "http://hl7.org/fhir/identifier-use#official", Official }, 
+      { "old", Old }, 
+      { "http://hl7.org/fhir/identifier-use#old", Old }, 
+      { "secondary", Secondary }, 
+      { "http://hl7.org/fhir/identifier-use#secondary", Secondary }, 
+      { "temp", Temp }, 
+      { "http://hl7.org/fhir/identifier-use#temp", Temp }, 
+      { "usual", Usual }, 
+      { "http://hl7.org/fhir/identifier-use#usual", Usual }, 
+    };
   };
 }

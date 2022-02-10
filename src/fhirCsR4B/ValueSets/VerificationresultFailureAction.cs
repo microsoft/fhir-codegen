@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class VerificationresultFailureActionCodes
   {
     /// <summary>
-    /// 
+    /// Fatal
     /// </summary>
     public static readonly Coding Fatal = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/failure-action"
     };
     /// <summary>
-    /// 
+    /// None
     /// </summary>
     public static readonly Coding None = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/failure-action"
     };
     /// <summary>
-    /// 
+    /// Record only
     /// </summary>
     public static readonly Coding RecordOnly = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/failure-action"
     };
     /// <summary>
-    /// 
+    /// Warning
     /// </summary>
     public static readonly Coding Warning = new Coding
     {
@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFatal = "fatal";
 
     /// <summary>
+    /// Literal for code: FailureActionFatal
+    /// </summary>
+    public const string LiteralFailureActionFatal = "http://terminology.hl7.org/CodeSystem/failure-action#fatal";
+
+    /// <summary>
     /// Literal for code: None
     /// </summary>
     public const string LiteralNone = "none";
+
+    /// <summary>
+    /// Literal for code: FailureActionNone
+    /// </summary>
+    public const string LiteralFailureActionNone = "http://terminology.hl7.org/CodeSystem/failure-action#none";
 
     /// <summary>
     /// Literal for code: RecordOnly
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralRecordOnly = "rec-only";
 
     /// <summary>
+    /// Literal for code: FailureActionRecordOnly
+    /// </summary>
+    public const string LiteralFailureActionRecordOnly = "http://terminology.hl7.org/CodeSystem/failure-action#rec-only";
+
+    /// <summary>
     /// Literal for code: Warning
     /// </summary>
     public const string LiteralWarning = "warn";
+
+    /// <summary>
+    /// Literal for code: FailureActionWarning
+    /// </summary>
+    public const string LiteralFailureActionWarning = "http://terminology.hl7.org/CodeSystem/failure-action#warn";
+
+    /// <summary>
+    /// Dictionary for looking up VerificationresultFailureAction Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "fatal", Fatal }, 
+      { "http://terminology.hl7.org/CodeSystem/failure-action#fatal", Fatal }, 
+      { "none", None }, 
+      { "http://terminology.hl7.org/CodeSystem/failure-action#none", None }, 
+      { "rec-only", RecordOnly }, 
+      { "http://terminology.hl7.org/CodeSystem/failure-action#rec-only", RecordOnly }, 
+      { "warn", Warning }, 
+      { "http://terminology.hl7.org/CodeSystem/failure-action#warn", Warning }, 
+    };
   };
 }

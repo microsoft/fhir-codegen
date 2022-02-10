@@ -23,6 +23,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? AnswerBoolean { get; set; }
     /// <summary>
+    /// Extension container element for AnswerBoolean
+    /// </summary>
+    public Element _AnswerBoolean { get; set; }
+    /// <summary>
     /// Multiple answers are treated as "or".  E.g. Enable if question 1 = A, C or E.  
     /// Components not specified in the answer do not need to match.  For example, if enableWhen specifies code + system for a Coding, it is ok if the answer has a "display" element.  I.e. treat the answer as a 'pattern'.
     /// The dataType of this element must be the same as the data type of the question being referenced.
@@ -38,6 +42,10 @@ namespace fhirCsR3.Models
     /// The dataType of this element must be the same as the data type of the question being referenced.
     /// </summary>
     public int? AnswerInteger { get; set; }
+    /// <summary>
+    /// Extension container element for AnswerInteger
+    /// </summary>
+    public Element _AnswerInteger { get; set; }
     /// <summary>
     /// Multiple answers are treated as "or".  E.g. Enable if question 1 = A, C or E.  
     /// Components not specified in the answer do not need to match.  For example, if enableWhen specifies code + system for a Coding, it is ok if the answer has a "display" element.  I.e. treat the answer as a 'pattern'.
@@ -117,6 +125,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? HasAnswer { get; set; }
     /// <summary>
+    /// Extension container element for HasAnswer
+    /// </summary>
+    public Element _HasAnswer { get; set; }
+    /// <summary>
     /// If multiple question occurrences are present for the same question (same linkId), then this refers to the nearest question occurrence reachable by tracing first the "ancestor" axis and then the "preceding" axis and then the "following" axis.
     /// </summary>
     public string Question { get; set; }
@@ -151,9 +163,21 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("hasAnswer", (bool)HasAnswer!);
       }
 
+      if (_HasAnswer != null)
+      {
+        writer.WritePropertyName("_hasAnswer");
+        _HasAnswer.SerializeJson(writer, options);
+      }
+
       if (AnswerBoolean != null)
       {
         writer.WriteBoolean("answerBoolean", (bool)AnswerBoolean!);
+      }
+
+      if (_AnswerBoolean != null)
+      {
+        writer.WritePropertyName("_answerBoolean");
+        _AnswerBoolean.SerializeJson(writer, options);
       }
 
       if (AnswerDecimal != null)
@@ -170,6 +194,12 @@ namespace fhirCsR3.Models
       if (AnswerInteger != null)
       {
         writer.WriteNumber("answerInteger", (int)AnswerInteger!);
+      }
+
+      if (_AnswerInteger != null)
+      {
+        writer.WritePropertyName("_answerInteger");
+        _AnswerInteger.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(AnswerDate))
@@ -267,6 +297,11 @@ namespace fhirCsR3.Models
           AnswerBoolean = reader.GetBoolean();
           break;
 
+        case "_answerBoolean":
+          _AnswerBoolean = new fhirCsR3.Models.Element();
+          _AnswerBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "answerDecimal":
           AnswerDecimal = reader.GetDecimal();
           break;
@@ -278,6 +313,11 @@ namespace fhirCsR3.Models
 
         case "answerInteger":
           AnswerInteger = reader.GetInt32();
+          break;
+
+        case "_answerInteger":
+          _AnswerInteger = new fhirCsR3.Models.Element();
+          _AnswerInteger.DeserializeJson(ref reader, options);
           break;
 
         case "answerDate":
@@ -349,6 +389,11 @@ namespace fhirCsR3.Models
           HasAnswer = reader.GetBoolean();
           break;
 
+        case "_hasAnswer":
+          _HasAnswer = new fhirCsR3.Models.Element();
+          _HasAnswer.DeserializeJson(ref reader, options);
+          break;
+
         case "question":
           Question = reader.GetString();
           break;
@@ -399,6 +444,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public int? ValueInteger { get; set; }
     /// <summary>
+    /// Extension container element for ValueInteger
+    /// </summary>
+    public Element _ValueInteger { get; set; }
+    /// <summary>
     /// The data type of the value must agree with the item.type.
     /// </summary>
     public string ValueDate { get; set; }
@@ -440,6 +489,12 @@ namespace fhirCsR3.Models
       if (ValueInteger != null)
       {
         writer.WriteNumber("valueInteger", (int)ValueInteger!);
+      }
+
+      if (_ValueInteger != null)
+      {
+        writer.WritePropertyName("_valueInteger");
+        _ValueInteger.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(ValueDate))
@@ -495,6 +550,11 @@ namespace fhirCsR3.Models
       {
         case "valueInteger":
           ValueInteger = reader.GetInt32();
+          break;
+
+        case "_valueInteger":
+          _ValueInteger = new fhirCsR3.Models.Element();
+          _ValueInteger.DeserializeJson(ref reader, options);
           break;
 
         case "valueDate":
@@ -588,6 +648,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? InitialBoolean { get; set; }
     /// <summary>
+    /// Extension container element for InitialBoolean
+    /// </summary>
+    public Element _InitialBoolean { get; set; }
+    /// <summary>
     /// The user is allowed to change the value and override the default (unless marked as read-only). If the user doesn't change the value, then this initial value will be persisted when the QuestionnaireResponse is initially created.  Note that default values can influence results.
     /// The data type of initial[x] must agree with the item.type.
     /// </summary>
@@ -601,6 +665,10 @@ namespace fhirCsR3.Models
     /// The data type of initial[x] must agree with the item.type.
     /// </summary>
     public int? InitialInteger { get; set; }
+    /// <summary>
+    /// Extension container element for InitialInteger
+    /// </summary>
+    public Element _InitialInteger { get; set; }
     /// <summary>
     /// The user is allowed to change the value and override the default (unless marked as read-only). If the user doesn't change the value, then this initial value will be persisted when the QuestionnaireResponse is initially created.  Note that default values can influence results.
     /// The data type of initial[x] must agree with the item.type.
@@ -683,6 +751,10 @@ namespace fhirCsR3.Models
     /// </summary>
     public int? MaxLength { get; set; }
     /// <summary>
+    /// Extension container element for MaxLength
+    /// </summary>
+    public Element _MaxLength { get; set; }
+    /// <summary>
     /// This element can be used when the value set machinery of options is deemed too cumbersome or when there's a need to capture options that are not codes.
     /// </summary>
     public List<QuestionnaireItemOption> Option { get; set; }
@@ -705,13 +777,25 @@ namespace fhirCsR3.Models
     /// </summary>
     public bool? ReadOnly { get; set; }
     /// <summary>
+    /// Extension container element for ReadOnly
+    /// </summary>
+    public Element _ReadOnly { get; set; }
+    /// <summary>
     /// If a question is marked as repeats=true, then multiple answers can be provided for the question in the corresponding QuestionnaireResponse.  When rendering the questionnaire, it is up to the rendering software whether to render the question text for each answer repetition or to simply list each of the answers beneath the question.  (Which is most appropriate visually may depend on the type of answer as well as whether there are nested items.). The value may come from the ElementDefinition referred to by .definition.
     /// </summary>
     public bool? Repeats { get; set; }
     /// <summary>
+    /// Extension container element for Repeats
+    /// </summary>
+    public Element _Repeats { get; set; }
+    /// <summary>
     /// Questionnaire.item.required only has meaning for elements that are conditionally enabled with enableWhen if the condition evaluates to true.  If an item that contains other items is marked as required, that does not automatically make the contained elements required (though required groups must contain at least one child element). The value may come from the ElementDefinition referred to by .definition.
     /// </summary>
     public bool? Required { get; set; }
+    /// <summary>
+    /// Extension container element for Required
+    /// </summary>
+    public Element _Required { get; set; }
     /// <summary>
     /// The name of a section, the text of a question or text content for a display item.
     /// </summary>
@@ -825,9 +909,21 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("required", (bool)Required!);
       }
 
+      if (_Required != null)
+      {
+        writer.WritePropertyName("_required");
+        _Required.SerializeJson(writer, options);
+      }
+
       if (Repeats != null)
       {
         writer.WriteBoolean("repeats", (bool)Repeats!);
+      }
+
+      if (_Repeats != null)
+      {
+        writer.WritePropertyName("_repeats");
+        _Repeats.SerializeJson(writer, options);
       }
 
       if (ReadOnly != null)
@@ -835,9 +931,21 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("readOnly", (bool)ReadOnly!);
       }
 
+      if (_ReadOnly != null)
+      {
+        writer.WritePropertyName("_readOnly");
+        _ReadOnly.SerializeJson(writer, options);
+      }
+
       if (MaxLength != null)
       {
         writer.WriteNumber("maxLength", (int)MaxLength!);
+      }
+
+      if (_MaxLength != null)
+      {
+        writer.WritePropertyName("_maxLength");
+        _MaxLength.SerializeJson(writer, options);
       }
 
       if (Options != null)
@@ -864,6 +972,12 @@ namespace fhirCsR3.Models
         writer.WriteBoolean("initialBoolean", (bool)InitialBoolean!);
       }
 
+      if (_InitialBoolean != null)
+      {
+        writer.WritePropertyName("_initialBoolean");
+        _InitialBoolean.SerializeJson(writer, options);
+      }
+
       if (InitialDecimal != null)
       {
         writer.WriteNumber("initialDecimal", (decimal)InitialDecimal!);
@@ -878,6 +992,12 @@ namespace fhirCsR3.Models
       if (InitialInteger != null)
       {
         writer.WriteNumber("initialInteger", (int)InitialInteger!);
+      }
+
+      if (_InitialInteger != null)
+      {
+        writer.WritePropertyName("_initialInteger");
+        _InitialInteger.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(InitialDate))
@@ -1051,6 +1171,11 @@ namespace fhirCsR3.Models
           InitialBoolean = reader.GetBoolean();
           break;
 
+        case "_initialBoolean":
+          _InitialBoolean = new fhirCsR3.Models.Element();
+          _InitialBoolean.DeserializeJson(ref reader, options);
+          break;
+
         case "initialDecimal":
           InitialDecimal = reader.GetDecimal();
           break;
@@ -1062,6 +1187,11 @@ namespace fhirCsR3.Models
 
         case "initialInteger":
           InitialInteger = reader.GetInt32();
+          break;
+
+        case "_initialInteger":
+          _InitialInteger = new fhirCsR3.Models.Element();
+          _InitialInteger.DeserializeJson(ref reader, options);
           break;
 
         case "initialDate":
@@ -1169,6 +1299,11 @@ namespace fhirCsR3.Models
           MaxLength = reader.GetInt32();
           break;
 
+        case "_maxLength":
+          _MaxLength = new fhirCsR3.Models.Element();
+          _MaxLength.DeserializeJson(ref reader, options);
+          break;
+
         case "option":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -1214,12 +1349,27 @@ namespace fhirCsR3.Models
           ReadOnly = reader.GetBoolean();
           break;
 
+        case "_readOnly":
+          _ReadOnly = new fhirCsR3.Models.Element();
+          _ReadOnly.DeserializeJson(ref reader, options);
+          break;
+
         case "repeats":
           Repeats = reader.GetBoolean();
           break;
 
+        case "_repeats":
+          _Repeats = new fhirCsR3.Models.Element();
+          _Repeats.DeserializeJson(ref reader, options);
+          break;
+
         case "required":
           Required = reader.GetBoolean();
+          break;
+
+        case "_required":
+          _Required = new fhirCsR3.Models.Element();
+          _Required.DeserializeJson(ref reader, options);
           break;
 
         case "text":
@@ -1292,6 +1442,25 @@ namespace fhirCsR3.Models
     public const string ATTACHMENT = "attachment";
     public const string REFERENCE = "reference";
     public const string QUANTITY = "quantity";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "group",
+      "display",
+      "question",
+      "boolean",
+      "decimal",
+      "integer",
+      "date",
+      "dateTime",
+      "time",
+      "string",
+      "text",
+      "url",
+      "choice",
+      "open-choice",
+      "attachment",
+      "reference",
+      "quantity",
+    };
   }
   /// <summary>
   /// A structured set of questions intended to guide the collection of answers from end-users. Questionnaires provide detailed control over order, presentation, phraseology and grouping to allow coherent, consistent data collection.
@@ -1350,6 +1519,10 @@ namespace fhirCsR3.Models
     /// Allows filtering of questionnaire that are appropriate for use vs. not. This is labeled as "Is Modifier" because applications should not use an experimental questionnaire in production.
     /// </summary>
     public bool? Experimental { get; set; }
+    /// <summary>
+    /// Extension container element for Experimental
+    /// </summary>
+    public Element _Experimental { get; set; }
     /// <summary>
     /// Typically, this is used for identifiers that can go in an HL7 V3 II (instance identifier) data type, e.g., to identify this questionnaire outside of FHIR, where it is not possible to use the logical URI.
     /// </summary>
@@ -1527,6 +1700,12 @@ namespace fhirCsR3.Models
       if (Experimental != null)
       {
         writer.WriteBoolean("experimental", (bool)Experimental!);
+      }
+
+      if (_Experimental != null)
+      {
+        writer.WritePropertyName("_experimental");
+        _Experimental.SerializeJson(writer, options);
       }
 
       if (!string.IsNullOrEmpty(Date))
@@ -1814,6 +1993,11 @@ namespace fhirCsR3.Models
           Experimental = reader.GetBoolean();
           break;
 
+        case "_experimental":
+          _Experimental = new fhirCsR3.Models.Element();
+          _Experimental.DeserializeJson(ref reader, options);
+          break;
+
         case "identifier":
           if ((reader.TokenType != JsonTokenType.StartArray) || (!reader.Read()))
           {
@@ -2085,5 +2269,11 @@ namespace fhirCsR3.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

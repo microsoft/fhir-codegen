@@ -24,6 +24,10 @@ namespace fhirCsR5.Models
     /// </summary>
     public bool? Exclude { get; set; }
     /// <summary>
+    /// Extension container element for Exclude
+    /// </summary>
+    public Element _Exclude { get; set; }
+    /// <summary>
     /// Timeframe for the characteristic.
     /// </summary>
     public Period Period { get; set; }
@@ -39,6 +43,10 @@ namespace fhirCsR5.Models
     /// Example 1 is Citation #37. Example 2 is selecting clinical outcomes. Example 3 is 1-year mortality.
     /// </summary>
     public bool? ValueBoolean { get; set; }
+    /// <summary>
+    /// Extension container element for ValueBoolean
+    /// </summary>
+    public Element _ValueBoolean { get; set; }
     /// <summary>
     /// Example 1 is Citation #37. Example 2 is selecting clinical outcomes. Example 3 is 1-year mortality.
     /// </summary>
@@ -81,6 +89,12 @@ namespace fhirCsR5.Models
         writer.WriteBoolean("valueBoolean", (bool)ValueBoolean!);
       }
 
+      if (_ValueBoolean != null)
+      {
+        writer.WritePropertyName("_valueBoolean");
+        _ValueBoolean.SerializeJson(writer, options);
+      }
+
       if (ValueQuantity != null)
       {
         writer.WritePropertyName("valueQuantity");
@@ -96,6 +110,12 @@ namespace fhirCsR5.Models
       if (Exclude != null)
       {
         writer.WriteBoolean("exclude", (bool)Exclude!);
+      }
+
+      if (_Exclude != null)
+      {
+        writer.WritePropertyName("_exclude");
+        _Exclude.SerializeJson(writer, options);
       }
 
       if (Period != null)
@@ -125,6 +145,11 @@ namespace fhirCsR5.Models
           Exclude = reader.GetBoolean();
           break;
 
+        case "_exclude":
+          _Exclude = new fhirCsR5.Models.Element();
+          _Exclude.DeserializeJson(ref reader, options);
+          break;
+
         case "period":
           Period = new fhirCsR5.Models.Period();
           Period.DeserializeJson(ref reader, options);
@@ -142,6 +167,11 @@ namespace fhirCsR5.Models
 
         case "valueBoolean":
           ValueBoolean = reader.GetBoolean();
+          break;
+
+        case "_valueBoolean":
+          _ValueBoolean = new fhirCsR5.Models.Element();
+          _ValueBoolean.DeserializeJson(ref reader, options);
           break;
 
         case "valueQuantity":
@@ -591,6 +621,16 @@ namespace fhirCsR5.Models
     public const string AMENDEDWITH = "amendedWith";
     public const string APPENDEDWITH = "appendedWith";
     public const string TRANSFORMEDWITH = "transformedWith";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "replaces",
+      "amends",
+      "appends",
+      "transforms",
+      "replacedWith",
+      "amendedWith",
+      "appendedWith",
+      "transformedWith",
+    };
   }
   /// <summary>
   /// The root of the sections that make up the composition.
@@ -1010,6 +1050,11 @@ namespace fhirCsR5.Models
     public const string WORKING = "working";
     public const string SNAPSHOT = "snapshot";
     public const string CHANGES = "changes";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "working",
+      "snapshot",
+      "changes",
+    };
   }
   /// <summary>
   /// The EvidenceReport Resource is a specialized container for a collection of resources and codeable concepts, adapted to support compositions of Evidence, EvidenceVariable, and Citation resources and related concepts.
@@ -1773,5 +1818,11 @@ namespace fhirCsR5.Models
     public const string ACTIVE = "active";
     public const string RETIRED = "retired";
     public const string UNKNOWN = "unknown";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "draft",
+      "active",
+      "retired",
+      "unknown",
+    };
   }
 }

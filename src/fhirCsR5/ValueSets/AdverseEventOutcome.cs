@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class AdverseEventOutcomeCodes
   {
     /// <summary>
-    /// 
+    /// Transient abnormality unnoticed by the patient (finding)
     /// </summary>
     public static readonly Coding TransientAbnormalityUnnoticedByThePatientFinding = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Transient abnormality with full recovery (finding)
     /// </summary>
     public static readonly Coding TransientAbnormalityWithFullRecoveryFinding = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adverse incident resulting in potentially permanent but not disabling damage (finding)
     /// </summary>
     public static readonly Coding AdverseIncidentResultingInPotentiallyPermanentButNotDisablingDamageFinding = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adverse incident resulting in potentially permanent disabling damage (finding)
     /// </summary>
     public static readonly Coding AdverseIncidentResultingInPotentiallyPermanentDisablingDamageFinding = new Coding
     {
@@ -48,7 +48,7 @@ namespace fhirCsR5.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Adverse incident resulting in death (finding)
     /// </summary>
     public static readonly Coding AdverseIncidentResultingInDeathFinding = new Coding
     {
@@ -63,9 +63,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralTransientAbnormalityUnnoticedByThePatientFinding = "397882007";
 
     /// <summary>
+    /// Literal for code: NONETransientAbnormalityUnnoticedByThePatientFinding
+    /// </summary>
+    public const string LiteralNONETransientAbnormalityUnnoticedByThePatientFinding = "http://snomed.info/sct#397882007";
+
+    /// <summary>
     /// Literal for code: TransientAbnormalityWithFullRecoveryFinding
     /// </summary>
     public const string LiteralTransientAbnormalityWithFullRecoveryFinding = "398056004";
+
+    /// <summary>
+    /// Literal for code: NONETransientAbnormalityWithFullRecoveryFinding
+    /// </summary>
+    public const string LiteralNONETransientAbnormalityWithFullRecoveryFinding = "http://snomed.info/sct#398056004";
 
     /// <summary>
     /// Literal for code: AdverseIncidentResultingInPotentiallyPermanentButNotDisablingDamageFinding
@@ -73,13 +83,44 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAdverseIncidentResultingInPotentiallyPermanentButNotDisablingDamageFinding = "405531001";
 
     /// <summary>
+    /// Literal for code: NONEAdverseIncidentResultingInPotentiallyPermanentButNotDisablingDamageFinding
+    /// </summary>
+    public const string LiteralNONEAdverseIncidentResultingInPotentiallyPermanentButNotDisablingDamageFinding = "http://snomed.info/sct#405531001";
+
+    /// <summary>
     /// Literal for code: AdverseIncidentResultingInPotentiallyPermanentDisablingDamageFinding
     /// </summary>
     public const string LiteralAdverseIncidentResultingInPotentiallyPermanentDisablingDamageFinding = "405532008";
 
     /// <summary>
+    /// Literal for code: NONEAdverseIncidentResultingInPotentiallyPermanentDisablingDamageFinding
+    /// </summary>
+    public const string LiteralNONEAdverseIncidentResultingInPotentiallyPermanentDisablingDamageFinding = "http://snomed.info/sct#405532008";
+
+    /// <summary>
     /// Literal for code: AdverseIncidentResultingInDeathFinding
     /// </summary>
     public const string LiteralAdverseIncidentResultingInDeathFinding = "405535005";
+
+    /// <summary>
+    /// Literal for code: NONEAdverseIncidentResultingInDeathFinding
+    /// </summary>
+    public const string LiteralNONEAdverseIncidentResultingInDeathFinding = "http://snomed.info/sct#405535005";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventOutcome Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "397882007", TransientAbnormalityUnnoticedByThePatientFinding }, 
+      { "http://snomed.info/sct#397882007", TransientAbnormalityUnnoticedByThePatientFinding }, 
+      { "398056004", TransientAbnormalityWithFullRecoveryFinding }, 
+      { "http://snomed.info/sct#398056004", TransientAbnormalityWithFullRecoveryFinding }, 
+      { "405531001", AdverseIncidentResultingInPotentiallyPermanentButNotDisablingDamageFinding }, 
+      { "http://snomed.info/sct#405531001", AdverseIncidentResultingInPotentiallyPermanentButNotDisablingDamageFinding }, 
+      { "405532008", AdverseIncidentResultingInPotentiallyPermanentDisablingDamageFinding }, 
+      { "http://snomed.info/sct#405532008", AdverseIncidentResultingInPotentiallyPermanentDisablingDamageFinding }, 
+      { "405535005", AdverseIncidentResultingInDeathFinding }, 
+      { "http://snomed.info/sct#405535005", AdverseIncidentResultingInDeathFinding }, 
+    };
   };
 }

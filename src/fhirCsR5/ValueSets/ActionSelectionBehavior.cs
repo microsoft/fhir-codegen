@@ -72,9 +72,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAll = "all";
 
     /// <summary>
+    /// Literal for code: ActionSelectionBehaviorAll
+    /// </summary>
+    public const string LiteralActionSelectionBehaviorAll = "http://hl7.org/fhir/action-selection-behavior#all";
+
+    /// <summary>
     /// Literal for code: AllOrNone
     /// </summary>
     public const string LiteralAllOrNone = "all-or-none";
+
+    /// <summary>
+    /// Literal for code: ActionSelectionBehaviorAllOrNone
+    /// </summary>
+    public const string LiteralActionSelectionBehaviorAllOrNone = "http://hl7.org/fhir/action-selection-behavior#all-or-none";
 
     /// <summary>
     /// Literal for code: Any
@@ -82,9 +92,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralAny = "any";
 
     /// <summary>
+    /// Literal for code: ActionSelectionBehaviorAny
+    /// </summary>
+    public const string LiteralActionSelectionBehaviorAny = "http://hl7.org/fhir/action-selection-behavior#any";
+
+    /// <summary>
     /// Literal for code: AtMostOne
     /// </summary>
     public const string LiteralAtMostOne = "at-most-one";
+
+    /// <summary>
+    /// Literal for code: ActionSelectionBehaviorAtMostOne
+    /// </summary>
+    public const string LiteralActionSelectionBehaviorAtMostOne = "http://hl7.org/fhir/action-selection-behavior#at-most-one";
 
     /// <summary>
     /// Literal for code: ExactlyOne
@@ -92,8 +112,36 @@ namespace fhirCsR5.ValueSets
     public const string LiteralExactlyOne = "exactly-one";
 
     /// <summary>
+    /// Literal for code: ActionSelectionBehaviorExactlyOne
+    /// </summary>
+    public const string LiteralActionSelectionBehaviorExactlyOne = "http://hl7.org/fhir/action-selection-behavior#exactly-one";
+
+    /// <summary>
     /// Literal for code: OneOrMore
     /// </summary>
     public const string LiteralOneOrMore = "one-or-more";
+
+    /// <summary>
+    /// Literal for code: ActionSelectionBehaviorOneOrMore
+    /// </summary>
+    public const string LiteralActionSelectionBehaviorOneOrMore = "http://hl7.org/fhir/action-selection-behavior#one-or-more";
+
+    /// <summary>
+    /// Dictionary for looking up ActionSelectionBehavior Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "all", All }, 
+      { "http://hl7.org/fhir/action-selection-behavior#all", All }, 
+      { "all-or-none", AllOrNone }, 
+      { "http://hl7.org/fhir/action-selection-behavior#all-or-none", AllOrNone }, 
+      { "any", Any }, 
+      { "http://hl7.org/fhir/action-selection-behavior#any", Any }, 
+      { "at-most-one", AtMostOne }, 
+      { "http://hl7.org/fhir/action-selection-behavior#at-most-one", AtMostOne }, 
+      { "exactly-one", ExactlyOne }, 
+      { "http://hl7.org/fhir/action-selection-behavior#exactly-one", ExactlyOne }, 
+      { "one-or-more", OneOrMore }, 
+      { "http://hl7.org/fhir/action-selection-behavior#one-or-more", OneOrMore }, 
+    };
   };
 }

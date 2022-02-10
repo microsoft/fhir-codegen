@@ -162,9 +162,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAccount = "account";
 
     /// <summary>
+    /// Literal for code: BasicResourceTypeAccount
+    /// </summary>
+    public const string LiteralBasicResourceTypeAccount = "http://terminology.hl7.org/CodeSystem/basic-resource-type#account";
+
+    /// <summary>
     /// Literal for code: InvoiceAdjudication
     /// </summary>
     public const string LiteralInvoiceAdjudication = "adjudicat";
+
+    /// <summary>
+    /// Literal for code: BasicResourceTypeInvoiceAdjudication
+    /// </summary>
+    public const string LiteralBasicResourceTypeInvoiceAdjudication = "http://terminology.hl7.org/CodeSystem/basic-resource-type#adjudicat";
 
     /// <summary>
     /// Literal for code: AdministrativeActivity
@@ -172,9 +182,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAdministrativeActivity = "adminact";
 
     /// <summary>
+    /// Literal for code: BasicResourceTypeAdministrativeActivity
+    /// </summary>
+    public const string LiteralBasicResourceTypeAdministrativeActivity = "http://terminology.hl7.org/CodeSystem/basic-resource-type#adminact";
+
+    /// <summary>
     /// Literal for code: AdverseEvent
     /// </summary>
     public const string LiteralAdverseEvent = "advevent";
+
+    /// <summary>
+    /// Literal for code: BasicResourceTypeAdverseEvent
+    /// </summary>
+    public const string LiteralBasicResourceTypeAdverseEvent = "http://terminology.hl7.org/CodeSystem/basic-resource-type#advevent";
 
     /// <summary>
     /// Literal for code: AppointmentRequest
@@ -182,9 +202,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralAppointmentRequest = "aptmtreq";
 
     /// <summary>
+    /// Literal for code: BasicResourceTypeAppointmentRequest
+    /// </summary>
+    public const string LiteralBasicResourceTypeAppointmentRequest = "http://terminology.hl7.org/CodeSystem/basic-resource-type#aptmtreq";
+
+    /// <summary>
     /// Literal for code: Consent
     /// </summary>
     public const string LiteralConsent = "consent";
+
+    /// <summary>
+    /// Literal for code: BasicResourceTypeConsent
+    /// </summary>
+    public const string LiteralBasicResourceTypeConsent = "http://terminology.hl7.org/CodeSystem/basic-resource-type#consent";
 
     /// <summary>
     /// Literal for code: Diet
@@ -192,9 +222,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDiet = "diet";
 
     /// <summary>
+    /// Literal for code: BasicResourceTypeDiet
+    /// </summary>
+    public const string LiteralBasicResourceTypeDiet = "http://terminology.hl7.org/CodeSystem/basic-resource-type#diet";
+
+    /// <summary>
     /// Literal for code: Exposure
     /// </summary>
     public const string LiteralExposure = "exposure";
+
+    /// <summary>
+    /// Literal for code: BasicResourceTypeExposure
+    /// </summary>
+    public const string LiteralBasicResourceTypeExposure = "http://terminology.hl7.org/CodeSystem/basic-resource-type#exposure";
 
     /// <summary>
     /// Literal for code: Investigation
@@ -202,9 +242,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInvestigation = "investigation";
 
     /// <summary>
+    /// Literal for code: BasicResourceTypeInvestigation
+    /// </summary>
+    public const string LiteralBasicResourceTypeInvestigation = "http://terminology.hl7.org/CodeSystem/basic-resource-type#investigation";
+
+    /// <summary>
     /// Literal for code: Invoice
     /// </summary>
     public const string LiteralInvoice = "invoice";
+
+    /// <summary>
+    /// Literal for code: BasicResourceTypeInvoice
+    /// </summary>
+    public const string LiteralBasicResourceTypeInvoice = "http://terminology.hl7.org/CodeSystem/basic-resource-type#invoice";
 
     /// <summary>
     /// Literal for code: Predetermination
@@ -212,9 +262,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralPredetermination = "predetermine";
 
     /// <summary>
+    /// Literal for code: BasicResourceTypePredetermination
+    /// </summary>
+    public const string LiteralBasicResourceTypePredetermination = "http://terminology.hl7.org/CodeSystem/basic-resource-type#predetermine";
+
+    /// <summary>
     /// Literal for code: PreDeterminationRequest
     /// </summary>
     public const string LiteralPreDeterminationRequest = "predetreq";
+
+    /// <summary>
+    /// Literal for code: BasicResourceTypePreDeterminationRequest
+    /// </summary>
+    public const string LiteralBasicResourceTypePreDeterminationRequest = "http://terminology.hl7.org/CodeSystem/basic-resource-type#predetreq";
 
     /// <summary>
     /// Literal for code: Protocol
@@ -222,9 +282,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProtocol = "protocol";
 
     /// <summary>
+    /// Literal for code: BasicResourceTypeProtocol
+    /// </summary>
+    public const string LiteralBasicResourceTypeProtocol = "http://terminology.hl7.org/CodeSystem/basic-resource-type#protocol";
+
+    /// <summary>
     /// Literal for code: Referral
     /// </summary>
     public const string LiteralReferral = "referral";
+
+    /// <summary>
+    /// Literal for code: BasicResourceTypeReferral
+    /// </summary>
+    public const string LiteralBasicResourceTypeReferral = "http://terminology.hl7.org/CodeSystem/basic-resource-type#referral";
 
     /// <summary>
     /// Literal for code: Study
@@ -232,8 +302,56 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralStudy = "study";
 
     /// <summary>
+    /// Literal for code: BasicResourceTypeStudy
+    /// </summary>
+    public const string LiteralBasicResourceTypeStudy = "http://terminology.hl7.org/CodeSystem/basic-resource-type#study";
+
+    /// <summary>
     /// Literal for code: Transfer
     /// </summary>
     public const string LiteralTransfer = "transfer";
+
+    /// <summary>
+    /// Literal for code: BasicResourceTypeTransfer
+    /// </summary>
+    public const string LiteralBasicResourceTypeTransfer = "http://terminology.hl7.org/CodeSystem/basic-resource-type#transfer";
+
+    /// <summary>
+    /// Dictionary for looking up BasicResourceType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "account", Account }, 
+      { "http://terminology.hl7.org/CodeSystem/basic-resource-type#account", Account }, 
+      { "adjudicat", InvoiceAdjudication }, 
+      { "http://terminology.hl7.org/CodeSystem/basic-resource-type#adjudicat", InvoiceAdjudication }, 
+      { "adminact", AdministrativeActivity }, 
+      { "http://terminology.hl7.org/CodeSystem/basic-resource-type#adminact", AdministrativeActivity }, 
+      { "advevent", AdverseEvent }, 
+      { "http://terminology.hl7.org/CodeSystem/basic-resource-type#advevent", AdverseEvent }, 
+      { "aptmtreq", AppointmentRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/basic-resource-type#aptmtreq", AppointmentRequest }, 
+      { "consent", Consent }, 
+      { "http://terminology.hl7.org/CodeSystem/basic-resource-type#consent", Consent }, 
+      { "diet", Diet }, 
+      { "http://terminology.hl7.org/CodeSystem/basic-resource-type#diet", Diet }, 
+      { "exposure", Exposure }, 
+      { "http://terminology.hl7.org/CodeSystem/basic-resource-type#exposure", Exposure }, 
+      { "investigation", Investigation }, 
+      { "http://terminology.hl7.org/CodeSystem/basic-resource-type#investigation", Investigation }, 
+      { "invoice", Invoice }, 
+      { "http://terminology.hl7.org/CodeSystem/basic-resource-type#invoice", Invoice }, 
+      { "predetermine", Predetermination }, 
+      { "http://terminology.hl7.org/CodeSystem/basic-resource-type#predetermine", Predetermination }, 
+      { "predetreq", PreDeterminationRequest }, 
+      { "http://terminology.hl7.org/CodeSystem/basic-resource-type#predetreq", PreDeterminationRequest }, 
+      { "protocol", Protocol }, 
+      { "http://terminology.hl7.org/CodeSystem/basic-resource-type#protocol", Protocol }, 
+      { "referral", Referral }, 
+      { "http://terminology.hl7.org/CodeSystem/basic-resource-type#referral", Referral }, 
+      { "study", Study }, 
+      { "http://terminology.hl7.org/CodeSystem/basic-resource-type#study", Study }, 
+      { "transfer", Transfer }, 
+      { "http://terminology.hl7.org/CodeSystem/basic-resource-type#transfer", Transfer }, 
+    };
   };
 }

@@ -144,9 +144,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralConceptualization = "conceptualization";
 
     /// <summary>
+    /// Literal for code: ArtifactContributionTypeConceptualization
+    /// </summary>
+    public const string LiteralArtifactContributionTypeConceptualization = "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#conceptualization";
+
+    /// <summary>
     /// Literal for code: DataCuration
     /// </summary>
     public const string LiteralDataCuration = "data-curation";
+
+    /// <summary>
+    /// Literal for code: ArtifactContributionTypeDataCuration
+    /// </summary>
+    public const string LiteralArtifactContributionTypeDataCuration = "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#data-curation";
 
     /// <summary>
     /// Literal for code: FormalAnalysis
@@ -154,9 +164,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralFormalAnalysis = "formal-analysis";
 
     /// <summary>
+    /// Literal for code: ArtifactContributionTypeFormalAnalysis
+    /// </summary>
+    public const string LiteralArtifactContributionTypeFormalAnalysis = "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#formal-analysis";
+
+    /// <summary>
     /// Literal for code: FundingAcquisition
     /// </summary>
     public const string LiteralFundingAcquisition = "funding-acquisition";
+
+    /// <summary>
+    /// Literal for code: ArtifactContributionTypeFundingAcquisition
+    /// </summary>
+    public const string LiteralArtifactContributionTypeFundingAcquisition = "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#funding-acquisition";
 
     /// <summary>
     /// Literal for code: Investigation
@@ -164,9 +184,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralInvestigation = "investigation";
 
     /// <summary>
+    /// Literal for code: ArtifactContributionTypeInvestigation
+    /// </summary>
+    public const string LiteralArtifactContributionTypeInvestigation = "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#investigation";
+
+    /// <summary>
     /// Literal for code: Methodology
     /// </summary>
     public const string LiteralMethodology = "methodology";
+
+    /// <summary>
+    /// Literal for code: ArtifactContributionTypeMethodology
+    /// </summary>
+    public const string LiteralArtifactContributionTypeMethodology = "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#methodology";
 
     /// <summary>
     /// Literal for code: ProjectAdministration
@@ -174,9 +204,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralProjectAdministration = "project-administration";
 
     /// <summary>
+    /// Literal for code: ArtifactContributionTypeProjectAdministration
+    /// </summary>
+    public const string LiteralArtifactContributionTypeProjectAdministration = "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#project-administration";
+
+    /// <summary>
     /// Literal for code: Resources
     /// </summary>
     public const string LiteralResources = "resources";
+
+    /// <summary>
+    /// Literal for code: ArtifactContributionTypeResources
+    /// </summary>
+    public const string LiteralArtifactContributionTypeResources = "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#resources";
 
     /// <summary>
     /// Literal for code: Software
@@ -184,9 +224,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSoftware = "software";
 
     /// <summary>
+    /// Literal for code: ArtifactContributionTypeSoftware
+    /// </summary>
+    public const string LiteralArtifactContributionTypeSoftware = "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#software";
+
+    /// <summary>
     /// Literal for code: Supervision
     /// </summary>
     public const string LiteralSupervision = "supervision";
+
+    /// <summary>
+    /// Literal for code: ArtifactContributionTypeSupervision
+    /// </summary>
+    public const string LiteralArtifactContributionTypeSupervision = "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#supervision";
 
     /// <summary>
     /// Literal for code: Validation
@@ -194,9 +244,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralValidation = "validation";
 
     /// <summary>
+    /// Literal for code: ArtifactContributionTypeValidation
+    /// </summary>
+    public const string LiteralArtifactContributionTypeValidation = "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#validation";
+
+    /// <summary>
     /// Literal for code: Visualization
     /// </summary>
     public const string LiteralVisualization = "visualization";
+
+    /// <summary>
+    /// Literal for code: ArtifactContributionTypeVisualization
+    /// </summary>
+    public const string LiteralArtifactContributionTypeVisualization = "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#visualization";
 
     /// <summary>
     /// Literal for code: WritingOriginalDraft
@@ -204,8 +264,52 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralWritingOriginalDraft = "writing-original-draft";
 
     /// <summary>
+    /// Literal for code: ArtifactContributionTypeWritingOriginalDraft
+    /// </summary>
+    public const string LiteralArtifactContributionTypeWritingOriginalDraft = "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#writing-original-draft";
+
+    /// <summary>
     /// Literal for code: WritingReviewAndEditing
     /// </summary>
     public const string LiteralWritingReviewAndEditing = "writing-review-editing";
+
+    /// <summary>
+    /// Literal for code: ArtifactContributionTypeWritingReviewAndEditing
+    /// </summary>
+    public const string LiteralArtifactContributionTypeWritingReviewAndEditing = "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#writing-review-editing";
+
+    /// <summary>
+    /// Dictionary for looking up ArtifactContributionType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "conceptualization", Conceptualization }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#conceptualization", Conceptualization }, 
+      { "data-curation", DataCuration }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#data-curation", DataCuration }, 
+      { "formal-analysis", FormalAnalysis }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#formal-analysis", FormalAnalysis }, 
+      { "funding-acquisition", FundingAcquisition }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#funding-acquisition", FundingAcquisition }, 
+      { "investigation", Investigation }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#investigation", Investigation }, 
+      { "methodology", Methodology }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#methodology", Methodology }, 
+      { "project-administration", ProjectAdministration }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#project-administration", ProjectAdministration }, 
+      { "resources", Resources }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#resources", Resources }, 
+      { "software", Software }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#software", Software }, 
+      { "supervision", Supervision }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#supervision", Supervision }, 
+      { "validation", Validation }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#validation", Validation }, 
+      { "visualization", Visualization }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#visualization", Visualization }, 
+      { "writing-original-draft", WritingOriginalDraft }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#writing-original-draft", WritingOriginalDraft }, 
+      { "writing-review-editing", WritingReviewAndEditing }, 
+      { "http://terminology.hl7.org/CodeSystem/artifact-contribution-type#writing-review-editing", WritingReviewAndEditing }, 
+    };
   };
 }

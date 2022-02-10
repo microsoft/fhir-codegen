@@ -12,7 +12,7 @@ namespace fhirCsR4B.ValueSets
   public static class SpecimenContainerTypeCodes
   {
     /// <summary>
-    /// 
+    /// Specimen container (physical object)
     /// </summary>
     public static readonly Coding SpecimenContainerPhysicalObject = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specimen vial (physical object)
     /// </summary>
     public static readonly Coding SpecimenVialPhysicalObject = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Specimen well (physical object)
     /// </summary>
     public static readonly Coding SpecimenWellPhysicalObject = new Coding
     {
@@ -39,7 +39,7 @@ namespace fhirCsR4B.ValueSets
       System = "http://snomed.info/sct"
     };
     /// <summary>
-    /// 
+    /// Breath specimen container (physical object)
     /// </summary>
     public static readonly Coding BreathSpecimenContainerPhysicalObject = new Coding
     {
@@ -54,9 +54,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpecimenContainerPhysicalObject = "434711009";
 
     /// <summary>
+    /// Literal for code: NONESpecimenContainerPhysicalObject
+    /// </summary>
+    public const string LiteralNONESpecimenContainerPhysicalObject = "http://snomed.info/sct#434711009";
+
+    /// <summary>
     /// Literal for code: SpecimenVialPhysicalObject
     /// </summary>
     public const string LiteralSpecimenVialPhysicalObject = "434746001";
+
+    /// <summary>
+    /// Literal for code: NONESpecimenVialPhysicalObject
+    /// </summary>
+    public const string LiteralNONESpecimenVialPhysicalObject = "http://snomed.info/sct#434746001";
 
     /// <summary>
     /// Literal for code: SpecimenWellPhysicalObject
@@ -64,8 +74,32 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralSpecimenWellPhysicalObject = "434822004";
 
     /// <summary>
+    /// Literal for code: NONESpecimenWellPhysicalObject
+    /// </summary>
+    public const string LiteralNONESpecimenWellPhysicalObject = "http://snomed.info/sct#434822004";
+
+    /// <summary>
     /// Literal for code: BreathSpecimenContainerPhysicalObject
     /// </summary>
     public const string LiteralBreathSpecimenContainerPhysicalObject = "713791004";
+
+    /// <summary>
+    /// Literal for code: NONEBreathSpecimenContainerPhysicalObject
+    /// </summary>
+    public const string LiteralNONEBreathSpecimenContainerPhysicalObject = "http://snomed.info/sct#713791004";
+
+    /// <summary>
+    /// Dictionary for looking up SpecimenContainerType Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "434711009", SpecimenContainerPhysicalObject }, 
+      { "http://snomed.info/sct#434711009", SpecimenContainerPhysicalObject }, 
+      { "434746001", SpecimenVialPhysicalObject }, 
+      { "http://snomed.info/sct#434746001", SpecimenVialPhysicalObject }, 
+      { "434822004", SpecimenWellPhysicalObject }, 
+      { "http://snomed.info/sct#434822004", SpecimenWellPhysicalObject }, 
+      { "713791004", BreathSpecimenContainerPhysicalObject }, 
+      { "http://snomed.info/sct#713791004", BreathSpecimenContainerPhysicalObject }, 
+    };
   };
 }

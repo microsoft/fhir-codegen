@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class ClaimExceptionCodes
   {
     /// <summary>
-    /// 
+    /// Disabled
     /// </summary>
     public static readonly Coding Disabled = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/claim-exception"
     };
     /// <summary>
-    /// 
+    /// Student (Fulltime)
     /// </summary>
     public static readonly Coding StudentFulltime = new Coding
     {
@@ -36,8 +36,28 @@ namespace fhirCsR5.ValueSets
     public const string LiteralDisabled = "disabled";
 
     /// <summary>
+    /// Literal for code: ClaimExceptionDisabled
+    /// </summary>
+    public const string LiteralClaimExceptionDisabled = "http://terminology.hl7.org/CodeSystem/claim-exception#disabled";
+
+    /// <summary>
     /// Literal for code: StudentFulltime
     /// </summary>
     public const string LiteralStudentFulltime = "student";
+
+    /// <summary>
+    /// Literal for code: ClaimExceptionStudentFulltime
+    /// </summary>
+    public const string LiteralClaimExceptionStudentFulltime = "http://terminology.hl7.org/CodeSystem/claim-exception#student";
+
+    /// <summary>
+    /// Dictionary for looking up ClaimException Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "disabled", Disabled }, 
+      { "http://terminology.hl7.org/CodeSystem/claim-exception#disabled", Disabled }, 
+      { "student", StudentFulltime }, 
+      { "http://terminology.hl7.org/CodeSystem/claim-exception#student", StudentFulltime }, 
+    };
   };
 }

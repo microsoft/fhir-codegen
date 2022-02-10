@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCommunity = "community";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseAdminLocationCommunity
+    /// </summary>
+    public const string LiteralMedicationdispenseAdminLocationCommunity = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-admin-location#community";
+
+    /// <summary>
     /// Literal for code: Inpatient
     /// </summary>
     public const string LiteralInpatient = "inpatient";
 
     /// <summary>
+    /// Literal for code: MedicationdispenseAdminLocationInpatient
+    /// </summary>
+    public const string LiteralMedicationdispenseAdminLocationInpatient = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-admin-location#inpatient";
+
+    /// <summary>
     /// Literal for code: Outpatient
     /// </summary>
     public const string LiteralOutpatient = "outpatient";
+
+    /// <summary>
+    /// Literal for code: MedicationdispenseAdminLocationOutpatient
+    /// </summary>
+    public const string LiteralMedicationdispenseAdminLocationOutpatient = "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-admin-location#outpatient";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationdispenseAdminLocation Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "community", Community }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-admin-location#community", Community }, 
+      { "inpatient", Inpatient }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-admin-location#inpatient", Inpatient }, 
+      { "outpatient", Outpatient }, 
+      { "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-admin-location#outpatient", Outpatient }, 
+    };
   };
 }

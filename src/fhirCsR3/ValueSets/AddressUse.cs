@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralHome = "home";
 
     /// <summary>
+    /// Literal for code: AddressUseHome
+    /// </summary>
+    public const string LiteralAddressUseHome = "http://hl7.org/fhir/address-use#home";
+
+    /// <summary>
     /// Literal for code: OldIncorrect
     /// </summary>
     public const string LiteralOldIncorrect = "old";
+
+    /// <summary>
+    /// Literal for code: AddressUseOldIncorrect
+    /// </summary>
+    public const string LiteralAddressUseOldIncorrect = "http://hl7.org/fhir/address-use#old";
 
     /// <summary>
     /// Literal for code: Temporary
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralTemporary = "temp";
 
     /// <summary>
+    /// Literal for code: AddressUseTemporary
+    /// </summary>
+    public const string LiteralAddressUseTemporary = "http://hl7.org/fhir/address-use#temp";
+
+    /// <summary>
     /// Literal for code: Work
     /// </summary>
     public const string LiteralWork = "work";
+
+    /// <summary>
+    /// Literal for code: AddressUseWork
+    /// </summary>
+    public const string LiteralAddressUseWork = "http://hl7.org/fhir/address-use#work";
+
+    /// <summary>
+    /// Dictionary for looking up AddressUse Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "home", Home }, 
+      { "http://hl7.org/fhir/address-use#home", Home }, 
+      { "old", OldIncorrect }, 
+      { "http://hl7.org/fhir/address-use#old", OldIncorrect }, 
+      { "temp", Temporary }, 
+      { "http://hl7.org/fhir/address-use#temp", Temporary }, 
+      { "work", Work }, 
+      { "http://hl7.org/fhir/address-use#work", Work }, 
+    };
   };
 }

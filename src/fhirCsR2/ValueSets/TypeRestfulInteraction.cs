@@ -90,9 +90,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralCreate = "create";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionCreate
+    /// </summary>
+    public const string LiteralRestfulInteractionCreate = "http://hl7.org/fhir/restful-interaction#create";
+
+    /// <summary>
     /// Literal for code: Delete
     /// </summary>
     public const string LiteralDelete = "delete";
+
+    /// <summary>
+    /// Literal for code: RestfulInteractionDelete
+    /// </summary>
+    public const string LiteralRestfulInteractionDelete = "http://hl7.org/fhir/restful-interaction#delete";
 
     /// <summary>
     /// Literal for code: HistoryInstance
@@ -100,9 +110,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralHistoryInstance = "history-instance";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionHistoryInstance
+    /// </summary>
+    public const string LiteralRestfulInteractionHistoryInstance = "http://hl7.org/fhir/restful-interaction#history-instance";
+
+    /// <summary>
     /// Literal for code: HistoryType
     /// </summary>
     public const string LiteralHistoryType = "history-type";
+
+    /// <summary>
+    /// Literal for code: RestfulInteractionHistoryType
+    /// </summary>
+    public const string LiteralRestfulInteractionHistoryType = "http://hl7.org/fhir/restful-interaction#history-type";
 
     /// <summary>
     /// Literal for code: Read
@@ -110,9 +130,19 @@ namespace fhirCsR2.ValueSets
     public const string LiteralRead = "read";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionRead
+    /// </summary>
+    public const string LiteralRestfulInteractionRead = "http://hl7.org/fhir/restful-interaction#read";
+
+    /// <summary>
     /// Literal for code: SearchType
     /// </summary>
     public const string LiteralSearchType = "search-type";
+
+    /// <summary>
+    /// Literal for code: RestfulInteractionSearchType
+    /// </summary>
+    public const string LiteralRestfulInteractionSearchType = "http://hl7.org/fhir/restful-interaction#search-type";
 
     /// <summary>
     /// Literal for code: Update
@@ -120,13 +150,52 @@ namespace fhirCsR2.ValueSets
     public const string LiteralUpdate = "update";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionUpdate
+    /// </summary>
+    public const string LiteralRestfulInteractionUpdate = "http://hl7.org/fhir/restful-interaction#update";
+
+    /// <summary>
     /// Literal for code: Validate
     /// </summary>
     public const string LiteralValidate = "validate";
 
     /// <summary>
+    /// Literal for code: RestfulInteractionValidate
+    /// </summary>
+    public const string LiteralRestfulInteractionValidate = "http://hl7.org/fhir/restful-interaction#validate";
+
+    /// <summary>
     /// Literal for code: Vread
     /// </summary>
     public const string LiteralVread = "vread";
+
+    /// <summary>
+    /// Literal for code: RestfulInteractionVread
+    /// </summary>
+    public const string LiteralRestfulInteractionVread = "http://hl7.org/fhir/restful-interaction#vread";
+
+    /// <summary>
+    /// Dictionary for looking up TypeRestfulInteraction Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "create", Create }, 
+      { "http://hl7.org/fhir/restful-interaction#create", Create }, 
+      { "delete", Delete }, 
+      { "http://hl7.org/fhir/restful-interaction#delete", Delete }, 
+      { "history-instance", HistoryInstance }, 
+      { "http://hl7.org/fhir/restful-interaction#history-instance", HistoryInstance }, 
+      { "history-type", HistoryType }, 
+      { "http://hl7.org/fhir/restful-interaction#history-type", HistoryType }, 
+      { "read", Read }, 
+      { "http://hl7.org/fhir/restful-interaction#read", Read }, 
+      { "search-type", SearchType }, 
+      { "http://hl7.org/fhir/restful-interaction#search-type", SearchType }, 
+      { "update", Update }, 
+      { "http://hl7.org/fhir/restful-interaction#update", Update }, 
+      { "validate", Validate }, 
+      { "http://hl7.org/fhir/restful-interaction#validate", Validate }, 
+      { "vread", Vread }, 
+      { "http://hl7.org/fhir/restful-interaction#vread", Vread }, 
+    };
   };
 }

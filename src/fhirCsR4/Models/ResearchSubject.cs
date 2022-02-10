@@ -284,5 +284,20 @@ namespace fhirCsR4.Models
     public const string POTENTIAL_CANDIDATE = "potential-candidate";
     public const string SCREENING = "screening";
     public const string WITHDRAWN = "withdrawn";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "candidate",
+      "eligible",
+      "follow-up",
+      "ineligible",
+      "not-registered",
+      "off-study",
+      "on-study",
+      "on-study-intervention",
+      "on-study-observation",
+      "pending-on-study",
+      "potential-candidate",
+      "screening",
+      "withdrawn",
+    };
   }
 }

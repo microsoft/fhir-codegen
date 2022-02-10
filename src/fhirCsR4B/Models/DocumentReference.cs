@@ -120,6 +120,12 @@ namespace fhirCsR4B.Models
     public const string TRANSFORMS = "transforms";
     public const string SIGNS = "signs";
     public const string APPENDS = "appends";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "replaces",
+      "transforms",
+      "signs",
+      "appends",
+    };
   }
   /// <summary>
   /// The document and format referenced. There may be multiple content element repetitions, each with a different format.
@@ -1006,6 +1012,12 @@ namespace fhirCsR4B.Models
     public const string FINAL = "final";
     public const string AMENDED = "amended";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "preliminary",
+      "final",
+      "amended",
+      "entered-in-error",
+    };
   }
   /// <summary>
   /// Code Values for the DocumentReference.status field
@@ -1014,5 +1026,10 @@ namespace fhirCsR4B.Models
     public const string CURRENT = "current";
     public const string SUPERSEDED = "superseded";
     public const string ENTERED_IN_ERROR = "entered-in-error";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "current",
+      "superseded",
+      "entered-in-error",
+    };
   }
 }

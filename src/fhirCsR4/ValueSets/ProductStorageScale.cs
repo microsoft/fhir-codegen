@@ -45,13 +45,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralCelsius = "celsius";
 
     /// <summary>
+    /// Literal for code: ProductStorageScaleCelsius
+    /// </summary>
+    public const string LiteralProductStorageScaleCelsius = "http://hl7.org/fhir/product-storage-scale#celsius";
+
+    /// <summary>
     /// Literal for code: Fahrenheit
     /// </summary>
     public const string LiteralFahrenheit = "farenheit";
 
     /// <summary>
+    /// Literal for code: ProductStorageScaleFahrenheit
+    /// </summary>
+    public const string LiteralProductStorageScaleFahrenheit = "http://hl7.org/fhir/product-storage-scale#farenheit";
+
+    /// <summary>
     /// Literal for code: Kelvin
     /// </summary>
     public const string LiteralKelvin = "kelvin";
+
+    /// <summary>
+    /// Literal for code: ProductStorageScaleKelvin
+    /// </summary>
+    public const string LiteralProductStorageScaleKelvin = "http://hl7.org/fhir/product-storage-scale#kelvin";
+
+    /// <summary>
+    /// Dictionary for looking up ProductStorageScale Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "celsius", Celsius }, 
+      { "http://hl7.org/fhir/product-storage-scale#celsius", Celsius }, 
+      { "farenheit", Fahrenheit }, 
+      { "http://hl7.org/fhir/product-storage-scale#farenheit", Fahrenheit }, 
+      { "kelvin", Kelvin }, 
+      { "http://hl7.org/fhir/product-storage-scale#kelvin", Kelvin }, 
+    };
   };
 }

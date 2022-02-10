@@ -90,9 +90,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralHardwareDisconnected = "hw-discon";
 
     /// <summary>
+    /// Literal for code: DeviceStatusReasonHardwareDisconnected
+    /// </summary>
+    public const string LiteralDeviceStatusReasonHardwareDisconnected = "http://terminology.hl7.org/CodeSystem/device-status-reason#hw-discon";
+
+    /// <summary>
     /// Literal for code: NotReady
     /// </summary>
     public const string LiteralNotReady = "not-ready";
+
+    /// <summary>
+    /// Literal for code: DeviceStatusReasonNotReady
+    /// </summary>
+    public const string LiteralDeviceStatusReasonNotReady = "http://terminology.hl7.org/CodeSystem/device-status-reason#not-ready";
 
     /// <summary>
     /// Literal for code: Off
@@ -100,9 +110,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOff = "off";
 
     /// <summary>
+    /// Literal for code: DeviceStatusReasonOff
+    /// </summary>
+    public const string LiteralDeviceStatusReasonOff = "http://terminology.hl7.org/CodeSystem/device-status-reason#off";
+
+    /// <summary>
     /// Literal for code: Offline
     /// </summary>
     public const string LiteralOffline = "offline";
+
+    /// <summary>
+    /// Literal for code: DeviceStatusReasonOffline
+    /// </summary>
+    public const string LiteralDeviceStatusReasonOffline = "http://terminology.hl7.org/CodeSystem/device-status-reason#offline";
 
     /// <summary>
     /// Literal for code: Online
@@ -110,9 +130,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralOnline = "online";
 
     /// <summary>
+    /// Literal for code: DeviceStatusReasonOnline
+    /// </summary>
+    public const string LiteralDeviceStatusReasonOnline = "http://terminology.hl7.org/CodeSystem/device-status-reason#online";
+
+    /// <summary>
     /// Literal for code: Paused
     /// </summary>
     public const string LiteralPaused = "paused";
+
+    /// <summary>
+    /// Literal for code: DeviceStatusReasonPaused
+    /// </summary>
+    public const string LiteralDeviceStatusReasonPaused = "http://terminology.hl7.org/CodeSystem/device-status-reason#paused";
 
     /// <summary>
     /// Literal for code: Standby
@@ -120,8 +150,40 @@ namespace fhirCsR4.ValueSets
     public const string LiteralStandby = "standby";
 
     /// <summary>
+    /// Literal for code: DeviceStatusReasonStandby
+    /// </summary>
+    public const string LiteralDeviceStatusReasonStandby = "http://terminology.hl7.org/CodeSystem/device-status-reason#standby";
+
+    /// <summary>
     /// Literal for code: TransducerDisconnected
     /// </summary>
     public const string LiteralTransducerDisconnected = "transduc-discon";
+
+    /// <summary>
+    /// Literal for code: DeviceStatusReasonTransducerDisconnected
+    /// </summary>
+    public const string LiteralDeviceStatusReasonTransducerDisconnected = "http://terminology.hl7.org/CodeSystem/device-status-reason#transduc-discon";
+
+    /// <summary>
+    /// Dictionary for looking up DeviceStatusReason Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "hw-discon", HardwareDisconnected }, 
+      { "http://terminology.hl7.org/CodeSystem/device-status-reason#hw-discon", HardwareDisconnected }, 
+      { "not-ready", NotReady }, 
+      { "http://terminology.hl7.org/CodeSystem/device-status-reason#not-ready", NotReady }, 
+      { "off", Off }, 
+      { "http://terminology.hl7.org/CodeSystem/device-status-reason#off", Off }, 
+      { "offline", Offline }, 
+      { "http://terminology.hl7.org/CodeSystem/device-status-reason#offline", Offline }, 
+      { "online", Online }, 
+      { "http://terminology.hl7.org/CodeSystem/device-status-reason#online", Online }, 
+      { "paused", Paused }, 
+      { "http://terminology.hl7.org/CodeSystem/device-status-reason#paused", Paused }, 
+      { "standby", Standby }, 
+      { "http://terminology.hl7.org/CodeSystem/device-status-reason#standby", Standby }, 
+      { "transduc-discon", TransducerDisconnected }, 
+      { "http://terminology.hl7.org/CodeSystem/device-status-reason#transduc-discon", TransducerDisconnected }, 
+    };
   };
 }

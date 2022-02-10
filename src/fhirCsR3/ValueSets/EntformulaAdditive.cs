@@ -63,9 +63,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralCarbohydrate = "carbohydrate";
 
     /// <summary>
+    /// Literal for code: EntformulaAdditiveCarbohydrate
+    /// </summary>
+    public const string LiteralEntformulaAdditiveCarbohydrate = "http://hl7.org/fhir/entformula-additive#carbohydrate";
+
+    /// <summary>
     /// Literal for code: Fiber
     /// </summary>
     public const string LiteralFiber = "fiber";
+
+    /// <summary>
+    /// Literal for code: EntformulaAdditiveFiber
+    /// </summary>
+    public const string LiteralEntformulaAdditiveFiber = "http://hl7.org/fhir/entformula-additive#fiber";
 
     /// <summary>
     /// Literal for code: Lipid
@@ -73,13 +83,44 @@ namespace fhirCsR3.ValueSets
     public const string LiteralLipid = "lipid";
 
     /// <summary>
+    /// Literal for code: EntformulaAdditiveLipid
+    /// </summary>
+    public const string LiteralEntformulaAdditiveLipid = "http://hl7.org/fhir/entformula-additive#lipid";
+
+    /// <summary>
     /// Literal for code: Protein
     /// </summary>
     public const string LiteralProtein = "protein";
 
     /// <summary>
+    /// Literal for code: EntformulaAdditiveProtein
+    /// </summary>
+    public const string LiteralEntformulaAdditiveProtein = "http://hl7.org/fhir/entformula-additive#protein";
+
+    /// <summary>
     /// Literal for code: Water
     /// </summary>
     public const string LiteralWater = "water";
+
+    /// <summary>
+    /// Literal for code: EntformulaAdditiveWater
+    /// </summary>
+    public const string LiteralEntformulaAdditiveWater = "http://hl7.org/fhir/entformula-additive#water";
+
+    /// <summary>
+    /// Dictionary for looking up EntformulaAdditive Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "carbohydrate", Carbohydrate }, 
+      { "http://hl7.org/fhir/entformula-additive#carbohydrate", Carbohydrate }, 
+      { "fiber", Fiber }, 
+      { "http://hl7.org/fhir/entformula-additive#fiber", Fiber }, 
+      { "lipid", Lipid }, 
+      { "http://hl7.org/fhir/entformula-additive#lipid", Lipid }, 
+      { "protein", Protein }, 
+      { "http://hl7.org/fhir/entformula-additive#protein", Protein }, 
+      { "water", Water }, 
+      { "http://hl7.org/fhir/entformula-additive#water", Water }, 
+    };
   };
 }

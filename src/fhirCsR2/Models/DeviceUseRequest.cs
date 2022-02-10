@@ -550,6 +550,12 @@ namespace fhirCsR2.Models
     public const string URGENT = "urgent";
     public const string STAT = "stat";
     public const string ASAP = "asap";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "routine",
+      "urgent",
+      "stat",
+      "asap",
+    };
   }
   /// <summary>
   /// Code Values for the DeviceUseRequest.status field
@@ -565,5 +571,17 @@ namespace fhirCsR2.Models
     public const string SUSPENDED = "suspended";
     public const string REJECTED = "rejected";
     public const string ABORTED = "aborted";
+    public static HashSet<string> Values = new HashSet<string>() {
+      "proposed",
+      "planned",
+      "requested",
+      "received",
+      "accepted",
+      "in-progress",
+      "completed",
+      "suspended",
+      "rejected",
+      "aborted",
+    };
   }
 }

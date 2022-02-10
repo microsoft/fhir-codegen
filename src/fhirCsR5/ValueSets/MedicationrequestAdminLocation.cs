@@ -12,7 +12,7 @@ namespace fhirCsR5.ValueSets
   public static class MedicationrequestAdminLocationCodes
   {
     /// <summary>
-    /// 
+    /// Community
     /// </summary>
     public static readonly Coding Community = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/medicationrequest-admin-location"
     };
     /// <summary>
-    /// 
+    /// Inpatient
     /// </summary>
     public static readonly Coding Inpatient = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR5.ValueSets
       System = "http://terminology.hl7.org/CodeSystem/medicationrequest-admin-location"
     };
     /// <summary>
-    /// 
+    /// Outpatient
     /// </summary>
     public static readonly Coding Outpatient = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR5.ValueSets
     public const string LiteralCommunity = "community";
 
     /// <summary>
+    /// Literal for code: MedicationrequestAdminLocationCommunity
+    /// </summary>
+    public const string LiteralMedicationrequestAdminLocationCommunity = "http://terminology.hl7.org/CodeSystem/medicationrequest-admin-location#community";
+
+    /// <summary>
     /// Literal for code: Inpatient
     /// </summary>
     public const string LiteralInpatient = "inpatient";
 
     /// <summary>
+    /// Literal for code: MedicationrequestAdminLocationInpatient
+    /// </summary>
+    public const string LiteralMedicationrequestAdminLocationInpatient = "http://terminology.hl7.org/CodeSystem/medicationrequest-admin-location#inpatient";
+
+    /// <summary>
     /// Literal for code: Outpatient
     /// </summary>
     public const string LiteralOutpatient = "outpatient";
+
+    /// <summary>
+    /// Literal for code: MedicationrequestAdminLocationOutpatient
+    /// </summary>
+    public const string LiteralMedicationrequestAdminLocationOutpatient = "http://terminology.hl7.org/CodeSystem/medicationrequest-admin-location#outpatient";
+
+    /// <summary>
+    /// Dictionary for looking up MedicationrequestAdminLocation Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "community", Community }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-admin-location#community", Community }, 
+      { "inpatient", Inpatient }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-admin-location#inpatient", Inpatient }, 
+      { "outpatient", Outpatient }, 
+      { "http://terminology.hl7.org/CodeSystem/medicationrequest-admin-location#outpatient", Outpatient }, 
+    };
   };
 }

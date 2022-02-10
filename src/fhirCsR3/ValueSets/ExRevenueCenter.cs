@@ -99,9 +99,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralVisionClinic = "0010";
 
     /// <summary>
+    /// Literal for code: ExRevenueCenterVisionClinic
+    /// </summary>
+    public const string LiteralExRevenueCenterVisionClinic = "http://hl7.org/fhir/ex-revenue-center#0010";
+
+    /// <summary>
     /// Literal for code: Anaesthesia
     /// </summary>
     public const string LiteralAnaesthesia = "0370";
+
+    /// <summary>
+    /// Literal for code: ExRevenueCenterAnaesthesia
+    /// </summary>
+    public const string LiteralExRevenueCenterAnaesthesia = "http://hl7.org/fhir/ex-revenue-center#0370";
 
     /// <summary>
     /// Literal for code: PhysicalTherapy
@@ -109,9 +119,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralPhysicalTherapy = "0420";
 
     /// <summary>
+    /// Literal for code: ExRevenueCenterPhysicalTherapy
+    /// </summary>
+    public const string LiteralExRevenueCenterPhysicalTherapy = "http://hl7.org/fhir/ex-revenue-center#0420";
+
+    /// <summary>
     /// Literal for code: PhysicalTherapy_2
     /// </summary>
     public const string LiteralPhysicalTherapy_2 = "0421";
+
+    /// <summary>
+    /// Literal for code: ExRevenueCenterPhysicalTherapy_2
+    /// </summary>
+    public const string LiteralExRevenueCenterPhysicalTherapy_2 = "http://hl7.org/fhir/ex-revenue-center#0421";
 
     /// <summary>
     /// Literal for code: SpeechLanguagePathology
@@ -119,9 +139,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralSpeechLanguagePathology = "0440";
 
     /// <summary>
+    /// Literal for code: ExRevenueCenterSpeechLanguagePathology
+    /// </summary>
+    public const string LiteralExRevenueCenterSpeechLanguagePathology = "http://hl7.org/fhir/ex-revenue-center#0440";
+
+    /// <summary>
     /// Literal for code: SpeechLanguagePathologyVisit
     /// </summary>
     public const string LiteralSpeechLanguagePathologyVisit = "0441";
+
+    /// <summary>
+    /// Literal for code: ExRevenueCenterSpeechLanguagePathologyVisit
+    /// </summary>
+    public const string LiteralExRevenueCenterSpeechLanguagePathologyVisit = "http://hl7.org/fhir/ex-revenue-center#0441";
 
     /// <summary>
     /// Literal for code: EmergencyRoom
@@ -129,13 +159,52 @@ namespace fhirCsR3.ValueSets
     public const string LiteralEmergencyRoom = "0450";
 
     /// <summary>
+    /// Literal for code: ExRevenueCenterEmergencyRoom
+    /// </summary>
+    public const string LiteralExRevenueCenterEmergencyRoom = "http://hl7.org/fhir/ex-revenue-center#0450";
+
+    /// <summary>
     /// Literal for code: EmergencyRoomEMEMTALA
     /// </summary>
     public const string LiteralEmergencyRoomEMEMTALA = "0451";
 
     /// <summary>
+    /// Literal for code: ExRevenueCenterEmergencyRoomEMEMTALA
+    /// </summary>
+    public const string LiteralExRevenueCenterEmergencyRoomEMEMTALA = "http://hl7.org/fhir/ex-revenue-center#0451";
+
+    /// <summary>
     /// Literal for code: EmergencyRoomBeyondEMTALA
     /// </summary>
     public const string LiteralEmergencyRoomBeyondEMTALA = "0452";
+
+    /// <summary>
+    /// Literal for code: ExRevenueCenterEmergencyRoomBeyondEMTALA
+    /// </summary>
+    public const string LiteralExRevenueCenterEmergencyRoomBeyondEMTALA = "http://hl7.org/fhir/ex-revenue-center#0452";
+
+    /// <summary>
+    /// Dictionary for looking up ExRevenueCenter Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "0010", VisionClinic }, 
+      { "http://hl7.org/fhir/ex-revenue-center#0010", VisionClinic }, 
+      { "0370", Anaesthesia }, 
+      { "http://hl7.org/fhir/ex-revenue-center#0370", Anaesthesia }, 
+      { "0420", PhysicalTherapy }, 
+      { "http://hl7.org/fhir/ex-revenue-center#0420", PhysicalTherapy }, 
+      { "0421", PhysicalTherapy_2 }, 
+      { "http://hl7.org/fhir/ex-revenue-center#0421", PhysicalTherapy_2 }, 
+      { "0440", SpeechLanguagePathology }, 
+      { "http://hl7.org/fhir/ex-revenue-center#0440", SpeechLanguagePathology }, 
+      { "0441", SpeechLanguagePathologyVisit }, 
+      { "http://hl7.org/fhir/ex-revenue-center#0441", SpeechLanguagePathologyVisit }, 
+      { "0450", EmergencyRoom }, 
+      { "http://hl7.org/fhir/ex-revenue-center#0450", EmergencyRoom }, 
+      { "0451", EmergencyRoomEMEMTALA }, 
+      { "http://hl7.org/fhir/ex-revenue-center#0451", EmergencyRoomEMEMTALA }, 
+      { "0452", EmergencyRoomBeyondEMTALA }, 
+      { "http://hl7.org/fhir/ex-revenue-center#0452", EmergencyRoomBeyondEMTALA }, 
+    };
   };
 }

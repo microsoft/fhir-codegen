@@ -54,9 +54,19 @@ namespace fhirCsR3.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: DeviceStatusActive
+    /// </summary>
+    public const string LiteralDeviceStatusActive = "http://hl7.org/fhir/device-status#active";
+
+    /// <summary>
     /// Literal for code: EnteredInError
     /// </summary>
     public const string LiteralEnteredInError = "entered-in-error";
+
+    /// <summary>
+    /// Literal for code: DeviceStatusEnteredInError
+    /// </summary>
+    public const string LiteralDeviceStatusEnteredInError = "http://hl7.org/fhir/device-status#entered-in-error";
 
     /// <summary>
     /// Literal for code: Inactive
@@ -64,8 +74,32 @@ namespace fhirCsR3.ValueSets
     public const string LiteralInactive = "inactive";
 
     /// <summary>
+    /// Literal for code: DeviceStatusInactive
+    /// </summary>
+    public const string LiteralDeviceStatusInactive = "http://hl7.org/fhir/device-status#inactive";
+
+    /// <summary>
     /// Literal for code: Unknown
     /// </summary>
     public const string LiteralUnknown = "unknown";
+
+    /// <summary>
+    /// Literal for code: DeviceStatusUnknown
+    /// </summary>
+    public const string LiteralDeviceStatusUnknown = "http://hl7.org/fhir/device-status#unknown";
+
+    /// <summary>
+    /// Dictionary for looking up DeviceStatus Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://hl7.org/fhir/device-status#active", Active }, 
+      { "entered-in-error", EnteredInError }, 
+      { "http://hl7.org/fhir/device-status#entered-in-error", EnteredInError }, 
+      { "inactive", Inactive }, 
+      { "http://hl7.org/fhir/device-status#inactive", Inactive }, 
+      { "unknown", Unknown }, 
+      { "http://hl7.org/fhir/device-status#unknown", Unknown }, 
+    };
   };
 }

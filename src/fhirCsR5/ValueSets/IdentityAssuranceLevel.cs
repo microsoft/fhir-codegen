@@ -54,9 +54,19 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLevel1 = "level1";
 
     /// <summary>
+    /// Literal for code: IdentityAssuranceLevelLevel1
+    /// </summary>
+    public const string LiteralIdentityAssuranceLevelLevel1 = "http://hl7.org/fhir/identity-assuranceLevel#level1";
+
+    /// <summary>
     /// Literal for code: Level2
     /// </summary>
     public const string LiteralLevel2 = "level2";
+
+    /// <summary>
+    /// Literal for code: IdentityAssuranceLevelLevel2
+    /// </summary>
+    public const string LiteralIdentityAssuranceLevelLevel2 = "http://hl7.org/fhir/identity-assuranceLevel#level2";
 
     /// <summary>
     /// Literal for code: Level3
@@ -64,8 +74,32 @@ namespace fhirCsR5.ValueSets
     public const string LiteralLevel3 = "level3";
 
     /// <summary>
+    /// Literal for code: IdentityAssuranceLevelLevel3
+    /// </summary>
+    public const string LiteralIdentityAssuranceLevelLevel3 = "http://hl7.org/fhir/identity-assuranceLevel#level3";
+
+    /// <summary>
     /// Literal for code: Level4
     /// </summary>
     public const string LiteralLevel4 = "level4";
+
+    /// <summary>
+    /// Literal for code: IdentityAssuranceLevelLevel4
+    /// </summary>
+    public const string LiteralIdentityAssuranceLevelLevel4 = "http://hl7.org/fhir/identity-assuranceLevel#level4";
+
+    /// <summary>
+    /// Dictionary for looking up IdentityAssuranceLevel Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "level1", Level1 }, 
+      { "http://hl7.org/fhir/identity-assuranceLevel#level1", Level1 }, 
+      { "level2", Level2 }, 
+      { "http://hl7.org/fhir/identity-assuranceLevel#level2", Level2 }, 
+      { "level3", Level3 }, 
+      { "http://hl7.org/fhir/identity-assuranceLevel#level3", Level3 }, 
+      { "level4", Level4 }, 
+      { "http://hl7.org/fhir/identity-assuranceLevel#level4", Level4 }, 
+    };
   };
 }

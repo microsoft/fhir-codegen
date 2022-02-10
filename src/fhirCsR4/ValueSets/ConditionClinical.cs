@@ -72,9 +72,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralActive = "active";
 
     /// <summary>
+    /// Literal for code: ConditionClinicalActive
+    /// </summary>
+    public const string LiteralConditionClinicalActive = "http://terminology.hl7.org/CodeSystem/condition-clinical#active";
+
+    /// <summary>
     /// Literal for code: Inactive
     /// </summary>
     public const string LiteralInactive = "inactive";
+
+    /// <summary>
+    /// Literal for code: ConditionClinicalInactive
+    /// </summary>
+    public const string LiteralConditionClinicalInactive = "http://terminology.hl7.org/CodeSystem/condition-clinical#inactive";
 
     /// <summary>
     /// Literal for code: Recurrence
@@ -82,9 +92,19 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRecurrence = "recurrence";
 
     /// <summary>
+    /// Literal for code: ConditionClinicalRecurrence
+    /// </summary>
+    public const string LiteralConditionClinicalRecurrence = "http://terminology.hl7.org/CodeSystem/condition-clinical#recurrence";
+
+    /// <summary>
     /// Literal for code: Relapse
     /// </summary>
     public const string LiteralRelapse = "relapse";
+
+    /// <summary>
+    /// Literal for code: ConditionClinicalRelapse
+    /// </summary>
+    public const string LiteralConditionClinicalRelapse = "http://terminology.hl7.org/CodeSystem/condition-clinical#relapse";
 
     /// <summary>
     /// Literal for code: Remission
@@ -92,8 +112,36 @@ namespace fhirCsR4.ValueSets
     public const string LiteralRemission = "remission";
 
     /// <summary>
+    /// Literal for code: ConditionClinicalRemission
+    /// </summary>
+    public const string LiteralConditionClinicalRemission = "http://terminology.hl7.org/CodeSystem/condition-clinical#remission";
+
+    /// <summary>
     /// Literal for code: Resolved
     /// </summary>
     public const string LiteralResolved = "resolved";
+
+    /// <summary>
+    /// Literal for code: ConditionClinicalResolved
+    /// </summary>
+    public const string LiteralConditionClinicalResolved = "http://terminology.hl7.org/CodeSystem/condition-clinical#resolved";
+
+    /// <summary>
+    /// Dictionary for looking up ConditionClinical Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "active", Active }, 
+      { "http://terminology.hl7.org/CodeSystem/condition-clinical#active", Active }, 
+      { "inactive", Inactive }, 
+      { "http://terminology.hl7.org/CodeSystem/condition-clinical#inactive", Inactive }, 
+      { "recurrence", Recurrence }, 
+      { "http://terminology.hl7.org/CodeSystem/condition-clinical#recurrence", Recurrence }, 
+      { "relapse", Relapse }, 
+      { "http://terminology.hl7.org/CodeSystem/condition-clinical#relapse", Relapse }, 
+      { "remission", Remission }, 
+      { "http://terminology.hl7.org/CodeSystem/condition-clinical#remission", Remission }, 
+      { "resolved", Resolved }, 
+      { "http://terminology.hl7.org/CodeSystem/condition-clinical#resolved", Resolved }, 
+    };
   };
 }

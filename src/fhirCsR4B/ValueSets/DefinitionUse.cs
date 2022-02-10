@@ -72,9 +72,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDomainAnalysisModel = "archetype";
 
     /// <summary>
+    /// Literal for code: DefinitionUseDomainAnalysisModel
+    /// </summary>
+    public const string LiteralDefinitionUseDomainAnalysisModel = "http://terminology.hl7.org/CodeSystem/definition-use#archetype";
+
+    /// <summary>
     /// Literal for code: CustomResource
     /// </summary>
     public const string LiteralCustomResource = "custom-resource";
+
+    /// <summary>
+    /// Literal for code: DefinitionUseCustomResource
+    /// </summary>
+    public const string LiteralDefinitionUseCustomResource = "http://terminology.hl7.org/CodeSystem/definition-use#custom-resource";
 
     /// <summary>
     /// Literal for code: DomainAnalysisModel_2
@@ -82,9 +92,19 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralDomainAnalysisModel_2 = "dam";
 
     /// <summary>
+    /// Literal for code: DefinitionUseDomainAnalysisModel_2
+    /// </summary>
+    public const string LiteralDefinitionUseDomainAnalysisModel_2 = "http://terminology.hl7.org/CodeSystem/definition-use#dam";
+
+    /// <summary>
     /// Literal for code: FHIRStructure
     /// </summary>
     public const string LiteralFHIRStructure = "fhir-structure";
+
+    /// <summary>
+    /// Literal for code: DefinitionUseFHIRStructure
+    /// </summary>
+    public const string LiteralDefinitionUseFHIRStructure = "http://terminology.hl7.org/CodeSystem/definition-use#fhir-structure";
 
     /// <summary>
     /// Literal for code: Template
@@ -92,8 +112,36 @@ namespace fhirCsR4B.ValueSets
     public const string LiteralTemplate = "template";
 
     /// <summary>
+    /// Literal for code: DefinitionUseTemplate
+    /// </summary>
+    public const string LiteralDefinitionUseTemplate = "http://terminology.hl7.org/CodeSystem/definition-use#template";
+
+    /// <summary>
     /// Literal for code: WireFormat
     /// </summary>
     public const string LiteralWireFormat = "wire-format";
+
+    /// <summary>
+    /// Literal for code: DefinitionUseWireFormat
+    /// </summary>
+    public const string LiteralDefinitionUseWireFormat = "http://terminology.hl7.org/CodeSystem/definition-use#wire-format";
+
+    /// <summary>
+    /// Dictionary for looking up DefinitionUse Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "archetype", DomainAnalysisModel }, 
+      { "http://terminology.hl7.org/CodeSystem/definition-use#archetype", DomainAnalysisModel }, 
+      { "custom-resource", CustomResource }, 
+      { "http://terminology.hl7.org/CodeSystem/definition-use#custom-resource", CustomResource }, 
+      { "dam", DomainAnalysisModel_2 }, 
+      { "http://terminology.hl7.org/CodeSystem/definition-use#dam", DomainAnalysisModel_2 }, 
+      { "fhir-structure", FHIRStructure }, 
+      { "http://terminology.hl7.org/CodeSystem/definition-use#fhir-structure", FHIRStructure }, 
+      { "template", Template }, 
+      { "http://terminology.hl7.org/CodeSystem/definition-use#template", Template }, 
+      { "wire-format", WireFormat }, 
+      { "http://terminology.hl7.org/CodeSystem/definition-use#wire-format", WireFormat }, 
+    };
   };
 }

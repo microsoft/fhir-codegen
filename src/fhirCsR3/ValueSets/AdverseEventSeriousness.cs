@@ -12,7 +12,7 @@ namespace fhirCsR3.ValueSets
   public static class AdverseEventSeriousnessCodes
   {
     /// <summary>
-    /// 
+    /// Mild
     /// </summary>
     public static readonly Coding Mild = new Coding
     {
@@ -21,7 +21,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/adverse-event-seriousness"
     };
     /// <summary>
-    /// 
+    /// Moderate
     /// </summary>
     public static readonly Coding Moderate = new Coding
     {
@@ -30,7 +30,7 @@ namespace fhirCsR3.ValueSets
       System = "http://hl7.org/fhir/adverse-event-seriousness"
     };
     /// <summary>
-    /// 
+    /// Severe
     /// </summary>
     public static readonly Coding Severe = new Coding
     {
@@ -45,13 +45,40 @@ namespace fhirCsR3.ValueSets
     public const string LiteralMild = "Mild";
 
     /// <summary>
+    /// Literal for code: AdverseEventSeriousnessMild
+    /// </summary>
+    public const string LiteralAdverseEventSeriousnessMild = "http://hl7.org/fhir/adverse-event-seriousness#Mild";
+
+    /// <summary>
     /// Literal for code: Moderate
     /// </summary>
     public const string LiteralModerate = "Moderate";
 
     /// <summary>
+    /// Literal for code: AdverseEventSeriousnessModerate
+    /// </summary>
+    public const string LiteralAdverseEventSeriousnessModerate = "http://hl7.org/fhir/adverse-event-seriousness#Moderate";
+
+    /// <summary>
     /// Literal for code: Severe
     /// </summary>
     public const string LiteralSevere = "Severe";
+
+    /// <summary>
+    /// Literal for code: AdverseEventSeriousnessSevere
+    /// </summary>
+    public const string LiteralAdverseEventSeriousnessSevere = "http://hl7.org/fhir/adverse-event-seriousness#Severe";
+
+    /// <summary>
+    /// Dictionary for looking up AdverseEventSeriousness Codings based on Codes
+    /// </summary>
+    public static Dictionary<string, Coding> Values = new Dictionary<string, Coding>() {
+      { "Mild", Mild }, 
+      { "http://hl7.org/fhir/adverse-event-seriousness#Mild", Mild }, 
+      { "Moderate", Moderate }, 
+      { "http://hl7.org/fhir/adverse-event-seriousness#Moderate", Moderate }, 
+      { "Severe", Severe }, 
+      { "http://hl7.org/fhir/adverse-event-seriousness#Severe", Severe }, 
+    };
   };
 }
